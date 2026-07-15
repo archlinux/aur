@@ -9,3 +9,4 @@
 *.run
 *.license
 FFS_tx
+.pkgver

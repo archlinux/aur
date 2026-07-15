@@ -21,8 +21,8 @@ makedepends=("curl" "unzip")
 install=".install"
 options=(!strip !debug)
 
-# Donation transaction ID: env var takes precedence, else read from ./FFS_tx
-_FFS_TX="${_FFS_TX:-$(cat "${startdir}/FFS_tx")}"
+# Donation transaction ID: env var takes precedence, else read from FFS_tx
+_FFS_TX="${_FFS_TX:-$(cat FFS_tx)}"
 
 _update_and_cache_flag='update_and_cache'
 
@@ -78,7 +78,8 @@ prepare() {
 
     # Extract installer archive from the .run binary and unpack inner archives
     local _run_file="FreeFileSync_${pkgver}_[Donation_Edition]_Install.run"
-    local offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
+    local offset
+    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
     offset=$((offset + 16))
     tail -c +$offset "$_run_file" | tar -xf - --wildcards \
         FreeFileSync.tar.gz \
@@ -115,6 +116,7 @@ package() {
     for tmpl in "$srcdir"/*.template.desktop; do
         f="${tmpl/.template/}"
         # eliminate FFS_INSTALL_PATH and fix quoting of Exec command
+        # shellcheck disable=SC2016 # $() is intentionally literal for the desktop file
         new='Exec=/bin/bash -c '"'"'paths=(%F); cd "$(dirname "${paths[0]}")"; "/opt/freefilesync/\1" "${paths[@]}"'"'"
         sed -E -e 's#^Exec=.+FFS_INSTALL_PATH/([^\\"]+)\\".+$'"#$new#" \
             -e 's#^(Exec=")FFS_INSTALL_PATH/([^"]+")#\1/opt/freefilesync/\2#' \
@@ -126,3 +128,5 @@ package() {
     sed -e 's#^X-KDE-Priority=TopLevel$#X-KDE-Priority=TopLevel\nIcon=FreeFileSync.png\nCategories=Utility;FileTools;Archiving;#' \
         -i "$pkgdir/usr/share/applications/FreeFileSync-edit-with.desktop"
 }
+
+# vim:set ts=2 sw=2 et ft=PKGBUILD:
