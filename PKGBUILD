@@ -1,0 +1,102 @@
+# Maintainer: Juerg Rechsteiner <jrechsteiner@bluewin.ch>
+# Maintainer homepage: http://computer-experte.ch
+# Contributor: wergosam
+# URL: https://github.com/wergosam/Pachul
+
+# Hinweis: Im Repo gibt es (noch) keine Git-Tags/Releases, darum baut dieses
+# Paket immer den aktuellen main-Branch (pkgver() zählt Commits + Hash statt
+# eine Tag-Version zu lesen). Sobald du irgendwann Release-Tags (z.B. v2.2.1)
+# pushst, wird "git describe" die automatisch aufgreifen - kein Änderungsbedarf.
+
+pkgname=pachul
+pkgver=r48.g0b2b359
+pkgrel=1
+pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
+arch=('any')
+url="https://github.com/wergosam/Pachul"
+license=('GPL-2.0-only')
+depends=(
+    'python'
+    'gtk4'
+    'libadwaita'
+    'python-gobject'
+    'pacman-contrib'
+    'libnotify'
+)
+optdepends=(
+    'timeshift: snapshot integration (before/after transactions)'
+    'snapper: snapshot integration (before/after transactions)'
+)
+makedepends=('git')
+source=(
+    "$pkgname::git+$url.git"
+    "io.github.wergosam.pachul.desktop"
+)
+sha256sums=(
+    'SKIP'
+    '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
+)
+
+pkgver() {
+    cd "$pkgname"
+    # Letzten Tag als Basis nehmen, sonst reine Commit-Anzahl+Hash.
+    # (Wichtig: Exit-Status von "git describe" über eine Variable prüfen,
+    # nicht über die Pipe direkt an sed - eine Pipe liefert immer den
+    # Exit-Status des letzten Befehls, also von sed, der auch bei leerer
+    # Eingabe erfolgreich (0) durchläuft. Damit würde der ||-Fallback nie
+    # greifen und pkgver() eine leere Version zurückgeben.)
+    local _ver
+    if _ver=$(git describe --long --tags 2>/dev/null); then
+        printf '%s' "$_ver" | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+    else
+        printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
+}
+
+prepare() {
+    cd "$pkgname"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # Wichtig für die Paketierung: app.py legt sein privates GTK-Icon-Theme
+    # standardmässig NEBEN den eigenen Programmdateien an
+    # (APP_DIR/.icon-theme/...). Bei einer System-Installation liegen die
+    # Programmdateien aber unter /usr/share/pachul und gehören root -
+    # ein normaler User kann dort zur Laufzeit keine Symlinks/Dateien mehr
+    # anlegen. Wir biegen das hier auf ein User-Cache-Verzeichnis um, damit
+    # das Icon-Theme beim ersten Start pro Benutzer in ~/.cache/pachul
+    # aufgebaut wird, statt einen PermissionError zu werfen.
+    # ─────────────────────────────────────────────────────────────────────
+    sed -i \
+        's|^ICON_THEME_DIR = os.path.join(APP_DIR, "\.icon-theme")|ICON_THEME_DIR = os.path.join(os.path.expanduser("~/.cache/pachul"), "icon-theme")|' \
+        app.py
+}
+
+package() {
+    cd "$pkgname"
+
+    # Python-Module
+    install -d "$pkgdir/usr/share/$pkgname"
+    install -m644 app.py backend.py dialogs.py i18n.py icons.py models.py \
+        notifier.py styles.py window.py "$pkgdir/usr/share/$pkgname/"
+
+    # Master-SVG-Icon liegt laut app.py direkt neben den Modulen
+    install -m644 io.github.wergosam.pachul.svg "$pkgdir/usr/share/$pkgname/"
+
+    # Launcher
+    install -d "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/pachul" <<'EOF'
+#!/usr/bin/env bash
+exec python3 /usr/share/pachul/app.py "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/pachul"
+
+    # Desktop-Datei + hicolor-Icon (für Menü/Dock, unabhängig vom internen
+    # .icon-theme-Mechanismus von app.py)
+    install -Dm644 "$srcdir/io.github.wergosam.pachul.desktop" \
+        "$pkgdir/usr/share/applications/io.github.wergosam.pachul.desktop"
+    install -Dm644 io.github.wergosam.pachul.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.wergosam.pachul.svg"
+
+    # Lizenz
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

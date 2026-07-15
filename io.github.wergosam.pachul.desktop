@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Pachul
+GenericName=Package Manager
+GenericName[de]=Paketverwaltung
+Comment=A powerful Pacman/AUR front end
+Comment[de]=Ein leistungsstarkes Pacman/AUR-Frontend
+Exec=pachul
+Icon=io.github.wergosam.pachul
+Categories=System;PackageManager;
+Keywords=pacman;aur;packages;arch;pkg;
+Terminal=false
+StartupWMClass=pachul
+StartupNotify=true
