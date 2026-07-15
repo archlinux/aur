@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mboost
-_pkgver=2.9-11
+_pkgver=2.9-12
 pkgname=r-${_pkgname,,}
-pkgver=2.9.11
+pkgver=2.9.12
 pkgrel=1
 pkgdesc='Model-Based Boosting'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-th.data
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f37a50c7ff594b8332a31725ae144c48f50c1c9891d44b721cd37e895bfbc58')
+sha256sums=('cd1b9eda8fe7bb907918f8ed578548702339a53e511d13096c54dd41b80f73f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
