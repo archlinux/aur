@@ -24,7 +24,7 @@ prepare() {
 LASTFM_API_KEY=${ASTRA_LASTFM_KEY}
 LASTFM_SHARED_SECRET=${ASTRA_LASTFM_SECRET}
 EOF
-    echo -e "\n[INFO] LastFM API Key and Secret Set\n\n"
+    echo -e "\n[\033[1;32mINFO\033[0m] LastFM API Key and Secret Set\n"
   fi
 
   npm install
