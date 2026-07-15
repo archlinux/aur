@@ -1,5 +1,5 @@
 pkgbase = stremio-bin
-	pkgdesc = Freedom to Stream. Streaming client for free streaming
+	pkgdesc = Freedom to Stream. Streaming client for free, with addons
 	pkgver = 4.4.168
 	pkgrel = 1
 	url = https://stremio.com

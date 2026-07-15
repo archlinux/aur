@@ -1,5 +1,10 @@
 # Maintainer: Saba Goginashvili <mindhardware@protonmail.com>
 
+# WARNING:
+# For qt5-webengine, qt5webchannel and qt5-location, to avoid compiling them
+# is highly recommended to install via pacman -U downloading the .okg.tar.zst
+# from CachyOS mirror (https://mirror.cachyos.org/repo/x86_64/cachyos/) searching them.
+# If you use aurutils, it's important to import the packages to the custom database.
 pkgname=stremio-bin
 pkgver=4.4.168
 pkgrel=1
