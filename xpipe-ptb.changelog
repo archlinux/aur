@@ -1,54 +1,5 @@
-## Wake-on-LAN
-
-This release introduces support for Wake-on-LAN:
-
-![WOL](https://xpipe.io/assets/images/BlogPage/wol.png)
-
-You can create a Wake-on-LAN entry for any network interface and broadcast address. For convenience, there is an automatic finder for available network interfaces and broadcast addresses on a system, so you won't have to fill in anything manually:
-
-![WOL config](https://xpipe.io/assets/images/BlogPage/wol-config.png)
-
-The Wake-on-LAN support works through shell sessions, meaning that it also supports remote networks and is not limited to your local one.
-
-## Remote desktop gateways
-
-You can now create and use remote desktop gateway servers for RDP:
-
-![RDG](https://xpipe.io/assets/images/BlogPage/rdg.png)
-
-Simply create an RD gateway entry and set it as a gateway for your RDP connection. SSH gateways via tunneling are also still supported for RDP, you can now choose between both of these gateway types.
-
-## Connection templates
-
-You can now create connection templates to allow for a more dynamic connection usage without having to create new entries every time. Any connection can be designated as a template:
-
-![Template](https://xpipe.io/assets/images/BlogPage/template.png)
-
-You can then use this template to connect to an individual system directly without having to store this connection configuration. You can still do so if you want to however.
-
-## macOS container machines
-
-The latest release of the [apple container runtime](https://github.com/apple/container) introduces support for container machines, which is essentially just WSL for macOS. This releases adds support for those environments as well:
-
-![Container Machines](https://xpipe.io/assets/images/BlogPage/container-machines.png)
-
-## Other
-
-- There are now multiple new UI themes available for you to choose from
-- The API endpoints for /connection/... have been renamed to /store/...
-- Add option to reinstall XPipe on Windows if an incremental update fails
-- The network scan dialog now supports choosing the broadcast address
-- File transfers in SFTP sessions now show the progress and speed
-- The custom agent setting now resolves environment variables in the socket path
-- The terminal prompts like starship will now check whether /tmp execution is disabled with noexec
-- The Windows Credentials password manager integration now also supports retrieving Windows credentials in addition to generic ones
-- RDP file entries have been replaced by a new RDP file import to create regular RDP connections from a file
-- Add support for the wayland versions of freerdp
-- You can now configure additional custom launch arguments/options for Remmina and FreeRDP in the settings menu
-- Improve key mapping settings for Hashicorp Vault and OpenBao
-- The search filter now also checks for any associated connection notes 
-
-## Fixes
-
-- Fix various rendering performance issues
-- Fix macos performance mode still using a lot of GPU
+- Fix VNC rendering issues when server did not support resize
+- Fix git sync error about missing HEAD on first commit
+- Fix Windows updater breaking when XPipe is run as admin
+- Fix RealVNC v8 app on macOS not being detected
+- Fix various NullPointers
