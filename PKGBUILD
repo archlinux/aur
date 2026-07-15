@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
 _pkgver=6.18.38
-_pkgrel=2
+_pkgrel=3
 pkgbase="${_pkgname}-versioned-bin"
 _KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
@@ -19,9 +19,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-lts-6.18.38-2-x86_64.pkg.tar.zst
-_headerspkg=linux-lts-headers-6.18.38-2-x86_64.pkg.tar.zst
-_docspkg=linux-lts-docs-6.18.38-2-x86_64.pkg.tar.zst
+_kernpkg=linux-lts-6.18.38-3-x86_64.pkg.tar.zst
+_headerspkg=linux-lts-headers-6.18.38-3-x86_64.pkg.tar.zst
+_docspkg=linux-lts-docs-6.18.38-3-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -29,9 +29,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('2aa95351516ec4582814b676f4203612d4bb10d2c3eb324e1d33aa1730616483'
-            '6de0cedeee8757f93ca27b0b1837ae651f7300370de1a5a948d09b133f05d47d'
-            '9eca951ad899f7671ff64d822b75a3cc0036c6fcd82d05dbfeaf1da774fbbd9e')
+sha256sums=('a85c86f24b571ef106a68eaa15c24ca8845020ceeca4a054936bb4eb03a27f13'
+            'a36ba1c310cef1b1d9d95426c9e8b5d07f9a5f7993de3382bc2b126510678425'
+            '59ae0a5a5986fe8dce4fcda2853793f2fdfd9d1d5db5a61a24cc4f77996cd176')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -49,7 +49,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.18.38-2-lts-bin() {
+package_linux6.18.38-3-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -68,7 +68,7 @@ package_linux6.18.38-2-lts-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
-package_linux6.18.38-2-lts-headers-bin() {
+package_linux6.18.38-3-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -79,7 +79,7 @@ package_linux6.18.38-2-lts-headers-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}-headers","${_versioned_pkgname}-headers-bin"}
 }
 
-package_linux6.18.38-2-lts-docs-bin() {
+package_linux6.18.38-3-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
