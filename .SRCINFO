@@ -1,6 +1,6 @@
 pkgbase = nowledge-mem-bin
 	pkgdesc = 你的智能体、AI 助手、代码工具，共享一套记忆
-	pkgver = 0.10.27
+	pkgver = 0.10.28
 	pkgrel = 1
 	url = https://mem.nowledge.co
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = nowledge-mem-bin
 	depends = libayatana-appindicator
 	optdepends = gnome-keyring: for credential storage
 	optdepends = xdg-utils: for opening links and nowledgemem:// URLs
-	provides = nowledge-mem=0.10.27
-	provides = nmem-cli=0.10.27
+	provides = nowledge-mem=0.10.28
+	provides = nmem-cli=0.10.28
 	conflicts = nowledge-mem
 	conflicts = nmem-cli
 	options = !debug
 	options = !strip
-	source_x86_64 = nowledge-mem-0.10.27.deb::https://download-mem.nowledge.co/app/0.10.27/x86_64-unknown-linux-gnu.deb
-	sha256sums_x86_64 = b58b4f765dabb8bed73f7f46802caf263f5603adfcc108f70f7e2659eb488044
+	source_x86_64 = nowledge-mem-0.10.28.deb::https://download-mem.nowledge.co/app/0.10.28/x86_64-unknown-linux-gnu.deb
+	sha256sums_x86_64 = 554d9c1f806daff2dd07189685d87d3f4b6c25f541ca7144d175d850ae79b7c4
 
 pkgname = nowledge-mem-bin
