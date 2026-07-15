@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tRNAdbImport
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ac62740295581c726ee93cc441fe7669')
-b2sums=('50288963eb2f33c92d137e0fee9b4eb2e82e727019f64a3a3782b44f894bbcceda83bbbd065805e6fc3dbdd0c0e55ed7666fab2abd6271d010d2315263610506')
+md5sums=('e5fb868f068e6fdd0b4843dad7148c33')
+b2sums=('975dade6ef526045ab03738e5fc4aa9c88f1dde80dc0e2a8ac6caf7cbbb549e82b2e10ff88d936a3cbbab34e199fdfca65702974622e47aa88dd4cb7b4b95535')
 
 build() {
   mkdir build
