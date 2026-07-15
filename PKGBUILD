@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=selectolax
 pkgname=python-${_base}
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Fast HTML5 parser with CSS selectors"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools cython python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a6d964b91b3c496115740485c00510f172d0146d604c2a3e9399e081d317027b753b340d40f677a70481906fef5057d72d381fbb1bc2e02546931e6ae4620a00')
+sha512sums=('cb68d996787240460b27e2cab002fd9aa549f47b4090a14ab71ee10c721f622272197ea43da6973479db5a109a351e82079a0dadd2377c2cb725509e68f4c8a0')
 
 build() {
   cd ${_base}-${pkgver}
