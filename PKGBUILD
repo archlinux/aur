@@ -1,12 +1,12 @@
 # PKGBUILD
 pkgname=majestic-linux-runner-git
-pkgver=r65.d57b9f3
+pkgver=r76.283e6b7
 pkgrel=1
 pkgdesc="Python orchestration runner for Majestic RP on Linux via Proton"
 arch=('any')
 url="https://github.com/j0kertrup/majestic-rp-linux"
 license=('MIT')
-depends=('python' 'asar')
+depends=('python' 'asar' 'cmake' 'mingw-w64-gcc')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 provides=('majestic-linux-runner')
 conflicts=('majestic-linux-runner')
