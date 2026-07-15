@@ -1,6 +1,6 @@
 # Maintainer: Mehmet Can <trwinner9@gmail.com>
 pkgname=helium-sync
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Zero-resource cloud synchronization daemon and DRM fixer for Helium Browser"
 arch=('x86_64')
