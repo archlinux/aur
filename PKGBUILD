@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Modstrings
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Working with modified nucleotide sequences'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9873fb6c981ce8edd5a24e5657518066d56135d939c75f111f9befe343889895')
+sha256sums=('9488b8967fde0b7ef7d4a73bbf5e743dccd512b6c6f651042466616dffa6af63')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
