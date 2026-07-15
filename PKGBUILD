@@ -24,6 +24,7 @@ build() {
   cmake -B build -S "${_pkgname}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DPLATFORM=Desktop \
     -DGLFW_BUILD_WAYLAND=ON \
     -DGLFW_BUILD_X11=OFF \
