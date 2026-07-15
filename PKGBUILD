@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety-git
-pkgver=0.10.0.r12.g811434c
+pkgver=0.10.0.r14.gaf9d6b4
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (development version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -10,6 +10,7 @@ license=('GPL-3.0-or-later')
 provides=('greetd-greeter' 'greetd-tuigreety' 'tuigreety')
 conflicts=('greetd-tuigreet' 'greetd-tuigreety' 'greetd-tuigreety-bin' 'tuigreety' 'tuigreety-bin' 'tuigreety-git')
 makedepends=('git' 'rust' 'scdoc')
+backup=('etc/tuigreet/config.toml')
 source=('git+https://github.com/Tobiichi-Origuchi/tuigreety.git' 'tuigreet.conf')
 sha256sums=('SKIP'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
@@ -36,7 +37,7 @@ package() {
   cd tuigreety
   install -Dm755 target/release/tuigreet "$pkgdir/usr/bin/tuigreet"
   install -Dm644 tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
-  install -Dm644 contrib/tuigreet.toml "$pkgdir/usr/share/doc/$pkgname/examples/config.toml"
+  install -Dm644 contrib/tuigreet.toml "$pkgdir/etc/tuigreet/config.toml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/tuigreet.conf" "$pkgdir/usr/lib/tmpfiles.d/tuigreet.conf"
 }

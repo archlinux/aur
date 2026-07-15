@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreety-git
 	pkgdesc = A minimal, configurable console greeter for greetd (development version)
-	pkgver = 0.10.0.r12.g811434c
+	pkgver = 0.10.0.r14.gaf9d6b4
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/tuigreety
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = greetd-tuigreety-git
 	conflicts = tuigreety
 	conflicts = tuigreety-bin
 	conflicts = tuigreety-git
+	backup = etc/tuigreet/config.toml
 	source = git+https://github.com/Tobiichi-Origuchi/tuigreety.git
 	source = tuigreet.conf
 	sha256sums = SKIP
