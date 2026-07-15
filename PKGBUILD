@@ -3,14 +3,23 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=moltis
-pkgver=20260603.01
-_commit=d70d6920c805afb5712ef8d92c8453851b915936
+pkgver=20260714.11
+_commit=a1da60b
 pkgrel=1
 pkgdesc="A secure persistent personal agent server in Rust"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/moltis-org/moltis"
-license=('MIT')
-depends=('libgcc_s.so')
+license=(MIT)
+depends=(
+    glibc
+    openssl     libcrypto.so libssl.so
+    libgomp     libgomp.so
+    libgcc      libgcc_s.so
+    libstdc++   libstdc++.so
+    sqlite      libsqlite3.so
+    zlib        libz.so
+    zstd        libzstd.so
+)
 makedepends=(
     clang
     cargo
@@ -18,11 +27,10 @@ makedepends=(
     git
     nodejs
     npm
-    just
-)
+    just)
 options=(!lto !debug)
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('0af0808f3f4a4fcf6f93b3afcee2adb19fd8c41bfae715c4dade65c585089ad0')
+sha256sums=('57b390189449f479dfdf273bfafde44a25f82cc765eb7a2fa72c7d59230397dd')
 validpgpkeys=('310320A8CC1C5BA86AD09040C0451BADF7649BBF')
 
 prepare() {
@@ -47,6 +55,9 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export OPENSSL_NO_VENDOR=1
+    export ZSTD_SYS_USE_PKG_CONFIG=1
     
     # Build web UI assets
     just build-web-assets
