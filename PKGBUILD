@@ -9,7 +9,7 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('gentics')
 options=('!strip' '!debug')
-source=("agentics-vocal-auth-0.1.11-x86_64.enc::https://software.agentics.co.za/agentics/x86_64/agentics-vocal-auth-0.1.11-x86_64.enc")
+source=("agentics-vocal-auth-0.1.11-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-vocal-auth-0.1.11-x86_64.enc")
 sha512sums=('b045b98cc29cd636f9066a6f1f450157cb34fd52644ef2080d53a11c9a913f07d94fa9a24812408abac58cdc5c239c51bffd26b968144dc2350afdde8af6aa8d')
 
 package() {
