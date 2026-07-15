@@ -1,11 +1,12 @@
 # Maintainer: Envoy5371 <aur.underpass328 at simplelogin dot com>
 pkgname=niform
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Shader-based audio visualizer for Wayland'
 arch=('x86_64')
 url='https://gitlab.com/khailz04/niform'
 license=('MIT')
+install=niform.install
 depends=('gcc-libs' 'glibc' 'libpulse' 'wayland')
 optdepends=(
     'libglvnd: OpenGL rendering backend'

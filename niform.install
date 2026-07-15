@@ -1,0 +1,4 @@
+post_install() {
+    echo 'Enable and start niform for your user with:'
+    echo '  systemctl --user enable --now niform.service'
+}

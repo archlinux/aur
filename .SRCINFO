@@ -1,8 +1,9 @@
 pkgbase = niform
 	pkgdesc = Shader-based audio visualizer for Wayland
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/khailz04/niform
+	install = niform.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
