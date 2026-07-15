@@ -1,0 +1,19 @@
+pkgbase = atp-bin
+	pkgdesc = Fountain-coded file transfer (RaptorQ over UDP/QUIC) that outruns tuned rsync on real networks
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/Dicklesworthstone/atp
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-MIT-with-OpenAI-Anthropic-Rider
+	depends = gcc-libs
+	depends = glibc
+	provides = atp
+	conflicts = atp
+	options = !debug
+	source_x86_64 = atp-0.3.8-x86_64.tar.gz::https://github.com/Dicklesworthstone/atp/releases/download/v0.3.8/atp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 88a5594d829ab0bdb57456053fd30c38da9aa9f0c8336e6229567d836ee5ab48
+	source_aarch64 = atp-0.3.8-aarch64.tar.gz::https://github.com/Dicklesworthstone/atp/releases/download/v0.3.8/atp-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1470f45d2f8b23f32b72ad40a5da315db5f59f1e84f84b9f15b6d1bf160569cc
+
+pkgname = atp-bin
