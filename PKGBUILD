@@ -2,7 +2,7 @@
 # Created with assistance from DeepSeek V4 Flash.
 
 pkgname=zxc-full-bin
-pkgver=0.12.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('zxc-full')
 options=('!debug' '!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('ab905a9d71114b95095a89f038330264a4ef143056b044fda9f6dd737173ae64')
-sha256sums_aarch64=('d1ae4aa535e08d8a79ba69f06fe5492b3d8954ec7e56f98deacf8619f8e3093b')
+sha256sums_x86_64=('c2f5947813f6e5f38b291ef486f87df79b6e0f78d313c17a8cd295d5a57859bc')
+sha256sums_aarch64=('82698c6f74b6b6c9b06ea2359fe16c50fa781d8f0fbaf14f73e9fe91a53ee9ea')
 
 package() {
   local _arch="${CARCH}"
