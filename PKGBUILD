@@ -1,6 +1,6 @@
 # Maintainer: Aixiao <aixiaoo@outlook.com>
 pkgname=skillsplusplus-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Skills 安装与管理工具 — 汇总全网 skills、一键安装（预编译）"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/cpcc/SkillsPlusPlus"
 license=('custom:none')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/skills++-v${pkgver}-Linux-x86_64.deb")
-sha256sums=('847ac93bee14b0044d0f7da02059acd05244bee9cca873ef40ed65addb9ccb78')
+sha256sums=('9906c2ca6c9b7e1f7163b179d274edf973e6ec89bbdd3e85f7df7eef453f6e64')
 options=('!debug')
 
 package() {
