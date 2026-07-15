@@ -1,0 +1,4 @@
+[cargo-leptos-bin]
+source = "github"
+github = "leptos-rs/cargo-leptos"
+use_latest_release = true

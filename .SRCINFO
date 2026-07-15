@@ -1,0 +1,22 @@
+pkgbase = cargo-leptos-bin
+	pkgdesc = Build tool for the Rust framework Leptos (pre-built binary)
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/leptos-rs/cargo-leptos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = cargo
+	depends = cargo-generate
+	depends = binaryen
+	optdepends = dart-sass: sass support
+	provides = cargo-leptos=0.3.7
+	conflicts = cargo-leptos
+	conflicts = cargo-leptos-git
+	options = !debug
+	source_x86_64 = https://github.com/leptos-rs/cargo-leptos/releases/download/v0.3.7/cargo-leptos-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fda80f4845e92d0e8f5ec13cf1a46982ba7a518ae01182e7e4201312944bc05d
+	source_aarch64 = https://github.com/leptos-rs/cargo-leptos/releases/download/v0.3.7/cargo-leptos-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 70e0c1cdf47f3c26c90ab4a020f8fcd9206233cc34b321c1aa37f7a554aa3bad
+
+pkgname = cargo-leptos-bin
