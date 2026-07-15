@@ -14,10 +14,10 @@
 
 pkgname=rkd-dev-bin
 pkgver=0.2.0_beta.14
-pkgrel=1
-pkgdesc="RKD desktop client (beta/development channel, Electron build)"
+pkgrel=2
+pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
-url="https://git.rkd.nanoya.biz/nanoya-biz/rkd"
+url="https://git.rkd.nanoya.biz/rkd/releases"
 license=(LicenseRef-custom)
 # Prebuilt vendor binaries (chrome-sandbox, libvulkan.so.1, ...) — stripping
 # or gdb-add-index'ing them corrupts the setuid helper and wastes time on

@@ -1,8 +1,8 @@
 pkgbase = rkd-dev-bin
-	pkgdesc = RKD desktop client (beta/development channel, Electron build)
+	pkgdesc = RKD desktop client (beta/development channel)
 	pkgver = 0.2.0_beta.14
-	pkgrel = 1
-	url = https://git.rkd.nanoya.biz/nanoya-biz/rkd
+	pkgrel = 2
+	url = https://git.rkd.nanoya.biz/rkd/releases
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = alsa-lib
