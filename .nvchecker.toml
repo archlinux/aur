@@ -1,0 +1,5 @@
+[ufwall-bin]
+source = "github"
+github = "The-Robin-Hood/ufWall"
+use_latest_release = true
+prefix = "v"
