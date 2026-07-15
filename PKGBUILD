@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioassayR
-_pkgver=1.46.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Cross-target analysis of small molecule bioactivity'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7971768804509f75b3e6bb4751dc1a378f9e5c1bfcccbc7fb877be9bba1f9b9f')
+sha256sums=('9d4961af8cb924d432029b0508f98ef7cac9642dbecd9d41f8171bb2059a5ae5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
