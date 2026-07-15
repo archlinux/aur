@@ -1,6 +1,6 @@
 # Maintainer: Aleksandr Sinichkin <aleksandr.sinichkin@flant.com>
 pkgname=airpods-battery-git
-pkgver=r5.c91f637
+pkgver=r7.c1fe649
 pkgrel=1
 pkgdesc='AirPods battery daemon for Linux via BlueZ BatteryProvider1'
 arch=('x86_64')
