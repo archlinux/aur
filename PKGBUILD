@@ -1,6 +1,6 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
@@ -17,8 +17,8 @@ conflicts=(freesmlauncher)
 options=(!strip)
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/$pkgver/FreesmLauncher-Linux-x86_64.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::https://github.com/FreesmTeam/FreesmLauncher/releases/download/$pkgver/FreesmLauncher-Linux-aarch64.AppImage")
-sha256sums_x86_64=('0bd2e7b93fb76fc3add5b8d588d7958217458b9641c0e5d6c226a04cda710dc2')
-sha256sums_aarch64=('1add41fc57e66f2dd46bbe8c8ed2ba117d65f62bff40a7cfc1c6560540b38ee1')
+sha256sums_x86_64=('c4e9e7513e606057903e4eaba901148f8e07c0f0c4c4d7bc4c3feafe47170514')
+sha256sums_aarch64=('8e6be23a945ab5e7a099f6661671d1067e933c0fc5a16a28fadb3453da171381')
 noextract=("$pkgname-$pkgver-x86_64.AppImage" "$pkgname-$pkgver-aarch64.AppImage")
 
 prepare() {
