@@ -1,0 +1,20 @@
+pkgbase = hyprkit-git
+	pkgdesc = A companion CLI for managing and improving your Hyprland setup
+	pkgver = r8.75f2b27
+	pkgrel = 1
+	url = https://github.com/Kolgrim33/hyprkit
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = hyprland
+	provides = hyprkit
+	conflicts = hyprkit
+	source = hyprkit-git::git+https://github.com/Kolgrim33/hyprkit.git
+	sha256sums = SKIP
+
+pkgname = hyprkit-git
