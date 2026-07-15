@@ -4,6 +4,7 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="D-Bus remote bridge letting vanilla steamos-manager control TDP and GPU clock through Handheld Daemon"
 arch=('x86_64')
+url='https://github.com/OuinOuin74/hhd-steamos-bridge'
 license=('MIT')
 depends=('gcc-libs' 'hhd' 'steamos-manager')
 makedepends=('cargo')
