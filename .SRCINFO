@@ -1,6 +1,6 @@
 pkgbase = graphify-bin
 	pkgdesc = AI coding assistant skill - turn any folder into a queryable knowledge graph
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://graphify.net
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = graphify-bin
 	depends = python
 	depends = python-pip
 	provides = graphify
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.15.tar.gz
-	sha256sums = 48741d332ca910b072e10b5e75d9281d69ac86dabed31b03f56bb94b60b0c368
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.16.tar.gz
+	sha256sums = a43294922aa07ffe5d2f0c3e00b0413f089cf8b1bbff37f946bc586920843100
 
 pkgname = graphify-bin
