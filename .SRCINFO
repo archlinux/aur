@@ -1,6 +1,6 @@
 pkgbase = r-lola
 	pkgdesc = Locus overlap analysis for enrichment of genomic ranges
-	pkgver = 1.38.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LOLA
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-lola
 	optdepends = r-rmarkdown
 	optdepends = r-simplecache
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LOLA_1.38.0.tar.gz
-	sha256sums = d0eaf66817c3c13d0c0dbad279080a304c19e468a86c52ec11ae0db2f391ee4c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LOLA_1.42.0.tar.gz
+	sha256sums = 5100c75cfa68bc2595eb45d360ba4e122fcc10b6c1d4374eeb8cd351ee697efa
 
 pkgname = r-lola

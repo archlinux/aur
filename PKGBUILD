@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LOLA
-_pkgver=1.38.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Locus overlap analysis for enrichment of genomic ranges'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d0eaf66817c3c13d0c0dbad279080a304c19e468a86c52ec11ae0db2f391ee4c')
+sha256sums=('5100c75cfa68bc2595eb45d360ba4e122fcc10b6c1d4374eeb8cd351ee697efa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
