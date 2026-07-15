@@ -7,8 +7,8 @@
 # Zach Ward & Beth Randall   They have been there from my best day to my worst
 # And everyone else who I did'nt mention by name    You are all important to me
 pkgname=radegast-ng
-pkgver=2.51
-pkgrel=2
+pkgver=2.54
+pkgrel=1
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
@@ -18,24 +18,23 @@ conflicts=('radegast' 'radegast-git')
 makedepends=('dos2unix' 'recode')
 
 #https://github.com/cinderblocks/radegast/releases/download/latest/Radegast_x64-2.41.357.tbz
-#source=(https://github.com/cinderblocks/radegast/releases/tag/v${pkgver}/Radegast_x64_${pkgver}.tbz
-source=(https://github.com/cinderblocks/radegast/releases/download/v2.51/Radegast_x64-2.51.530.tbz
+source=(https://github.com/cinderblocks/radegast/releases/download/Legacy%2F${pkgver}/Radegast_x64_${pkgver}.tbz
         radegast.desktop radegast)
-sha256sums=('9c79f355b34b91df48cb8dad6f13f539c8f38f616c19a688bcd236b12c720bf1'
+sha256sums=('571cad84536448a64905f5dac64826ae2869cbf86be479cd965560f464fb26ef'
             '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 package() {
-  cd ../src/Release/
+  cd ../src/
   find . -type d -print0 | xargs -0 chmod 755
   find . -type f -print0 | xargs -0 chmod 644
   install -dm755 "${pkgdir}"/usr/share/Radegast
   cp -a -- * "${pkgdir}"/usr/share/Radegast
-  install -Dm644 ../Release/radegast.png "${pkgdir}"/usr/share/icons/radegast.png
+  install -Dm644 ./radegast.png "${pkgdir}"/usr/share/icons/radegast.png
   install -Dm644 "${srcdir}"/radegast.desktop "${pkgdir}"/usr/share/applications/radegast.desktop
   install -Dm755 "${srcdir}"/radegast "${pkgdir}"/usr/bin/radegast
 
   install -dm755 "${pkgdir}"/usr/share/licenses/radegast
-  recode windows-1252..utf8 < ../Release/license.txt > "${pkgdir}"/usr/share/licenses/radegast/COPYING
+  recode windows-1252..utf8 < ./license.txt > "${pkgdir}"/usr/share/licenses/radegast/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
