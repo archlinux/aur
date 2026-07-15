@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=v2
-pkgver=0.15.6
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A local-first, privacy oriented rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
@@ -27,7 +27,7 @@ makedepends=(git
 optdepends=('libappindicator-gtk3: tray icon support')
 source=("git+$_url.git#tag=v$pkgver"
         "$pkgname.sh.in")
-sha256sums=('eb18c7a27ba9965966f3b04b28e39ece7831bad89795651771afc13dc4e2fc30'
+sha256sums=('34d15e7af056df5c0c925a415d6e6a0def2e202ab783edfaa2185ecac0501855'
             '4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1')
 
 _icons=(16 32 48 64 128 256 512)
@@ -44,8 +44,7 @@ prepare(){
 	local _origElectron="electron$(jq -r '.devDependencies.electron | split(".")[0]' package.json | sed -E 's/[^0-9]//')"
 	if [[ "$_electron" != "$_origElectron" ]]; then
 		echo "Electron version mismatch: $_electron vs $_origElectron"
-		# https://github.com/oktana-coop/v2/issues/383
-		# exit 1
+		exit 1
 	fi
 	# Substitute our exact distro packaged version of Electron
 	local _electronVersion="$(< "/usr/lib/$_electron/version")"
