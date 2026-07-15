@@ -4,7 +4,7 @@
 
 pkgname=baballonia
 pkgver=v1.1.1.0rc6
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Project-Babble/Baballonia"
