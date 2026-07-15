@@ -29,7 +29,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r2115.24455f9d
+pkgver=r2186.4c27285c
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -166,6 +166,7 @@ backup=(
   "etc/mlogind/variables.toml"
   "etc/pam.d/mlogind"
   "etc/pam.d/mlogind-greeter"
+  "etc/pam.d/mlogind-autologin"
   "etc/mlogind/xsetup.sh"
 )
 # Cargo profile already enables thin LTO; the outer makepkg LTO
@@ -646,6 +647,12 @@ package() {
   # login. pacman's systemd-sysusers hook creates the user for us.
   install -Dm644 "mlogind/extra/mlogind-greeter.pam" \
     "$pkgdir/etc/pam.d/mlogind-greeter"
+  # Autologin ([autologin] in config.toml, off by default). auth is
+  # pam_permit — nobody is at the keyboard — but account/session are the
+  # real login stack, so a locked account still fails and the session is
+  # a first-class logind session. Inert while [autologin] is unset.
+  install -Dm644 "mlogind/extra/mlogind-autologin.pam" \
+    "$pkgdir/etc/pam.d/mlogind-autologin"
   install -Dm644 "mlogind/extra/mlogind.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/mlogind.conf"
   # Not on the greeter's own path (its power keys go through the root
