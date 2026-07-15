@@ -2,7 +2,7 @@ pkgbase = sysevents
 	pkgdesc = Show boot, shutdown, suspend and resume events for a given date, read from the systemd journal
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/haruki-san-git/sysevents
+	url = https://github.com/utsuro-dev/sysevents
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = sysevents
 	depends = systemd
 	depends = gcc-libs
 	options = !lto
-	source = sysevents-1.0.0.tar.gz::https://github.com/haruki-san-git/sysevents/archive/refs/tags/v1.0.0.tar.gz
+	source = sysevents-1.0.0.tar.gz::https://github.com/utsuro-dev/sysevents/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 183f64d4b7d981d26fb4f1847634890bd7baf940e305f4f16cda77c6281ed843
 
 pkgname = sysevents
