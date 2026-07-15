@@ -7,7 +7,7 @@ pkgver=3.44.0
 pkgrel=1
 pkgdesc="A set of free MIT-licensed high-quality icons"
 arch=('any')
-url="https://tabler.io/icons"
+url="https://github.com/tabler/tabler-icons"
 license=('MIT')
 
 source=("https://registry.npmjs.org/@tabler/icons-webfont/-/icons-webfont-${pkgver}.tgz"

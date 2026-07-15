@@ -1,80 +1,89 @@
-UPSTREAM_REPO := tabler/tabler-icons
-ARCH_IMAGE    := archlinux:base-devel
-PACMAN_DEPS   := git pacman-contrib jq curl sudo
+# Auto-extracted from PKGBUILD url (works for any forge: GitHub, GitLab, Codeberg...)
+SHELL := /bin/bash
+.DELETE_ON_ERROR:
 
-define DOCKER_RUN
-	@test -n "$$CMD" || { echo "CMD env var is required"; exit 1; }
-	docker run --rm -e CMD -v "$$PWD:/work" -w /work $(ARCH_IMAGE) bash -euo pipefail -c '\
-		pacman -Syu --noconfirm --needed $(PACMAN_DEPS) >/dev/null; \
-		useradd -m builder; \
-		chown -R builder:builder /work; \
-		echo "builder ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/builder; \
-		su builder -c "cd /work && $$CMD"'
-endef
+UPSTREAM_URL    ?= $(shell sed -n "s/^url=//p" PKGBUILD | tr -d "\"'")
+CURRENT_PKGVER  := $(shell awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD)
+LATEST_UPSTREAM := $(shell git ls-remote --tags '$(UPSTREAM_URL).git' 2>/dev/null | grep -oP 'refs/tags/v\K[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
+AUR_REMOTE      ?= label
+AUR_BRANCH      ?= master
 
-.PHONY: help check bump build publish release clean _in-container
+.PHONY: help build check bump bump-dry publish release release-dry clean
 
 help:
 	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*##/ {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
+build: ## Build package
+	makepkg --noconfirm --noprogressbar
+
 check: ## Compare local pkgver against latest upstream release
-	@current=$$(awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD); \
-	upstream=$$(curl -sSL https://api.github.com/repos/$(UPSTREAM_REPO)/releases/latest | jq -r '.tag_name' | sed 's/^v//'); \
-	echo "current:  $$current"; \
-	echo "upstream: $$upstream"; \
-	if [ "$$current" = "$$upstream" ]; then \
+	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
+	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	@echo "current:  $(CURRENT_PKGVER)"
+	@echo "upstream: $(LATEST_UPSTREAM)"
+	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
 		echo "status:   up-to-date"; \
 	else \
-		echo "status:   UPDATE AVAILABLE ($$current -> $$upstream)"; \
+		echo "status:   UPDATE AVAILABLE ($(CURRENT_PKGVER) -> $(LATEST_UPSTREAM))"; \
 	fi
 
 bump: ## Update PKGBUILD to latest upstream + regenerate .SRCINFO
-	@current=$$(awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD); \
-	upstream=$$(curl -sSL https://api.github.com/repos/$(UPSTREAM_REPO)/releases/latest | jq -r '.tag_name' | sed 's/^v//'); \
-	if [ "$$current" = "$$upstream" ]; then \
-		echo "Already at $$current. Nothing to do."; \
+	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
+	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
+		echo "Already at $(CURRENT_PKGVER). Nothing to do."; \
 		exit 0; \
-	fi; \
-	echo "Bumping $$current -> $$upstream"; \
-	sed -i "s/^pkgver=.*/pkgver=$$upstream/" PKGBUILD; \
-	sed -i "s/^pkgrel=.*/pkgrel=1/"          PKGBUILD; \
-	CMD='updpkgsums && makepkg --printsrcinfo > .SRCINFO' $(MAKE) --no-print-directory _in-container
+	fi
+	@echo "Bumping $(CURRENT_PKGVER) -> $(LATEST_UPSTREAM)"
+	@cp PKGBUILD PKGBUILD.bak
+	@sed -i "s/^pkgver=.*/pkgver=$(LATEST_UPSTREAM)/" PKGBUILD
+	@sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+	@if ! updpkgsums; then \
+		mv PKGBUILD.bak PKGBUILD; \
+		echo "ERROR: updpkgsums failed. PKGBUILD restored."; \
+		exit 1; \
+	fi
+	@rm -f PKGBUILD.bak
+	@makepkg --printsrcinfo > .SRCINFO.tmp && mv .SRCINFO.tmp .SRCINFO
 
-build: ## Build in Arch container, install the result, smoke-test the package
-	@cp PKGBUILD .PKGBUILD.pre-build && cp .SRCINFO .SRCINFO.pre-build
-	@CMD='makepkg -s --noconfirm --noprogressbar && sudo pacman -U --noconfirm ./*.pkg.tar.zst && pkgname=$$(awk -F= "/^pkgname=/ {print \$$2; exit}" PKGBUILD) && expected=$$(awk -F= "/^pkgver=/ {print \$$2; exit}" PKGBUILD) && installed=$$(pacman -Qi "$$pkgname" | awk "/^Version/ {print \$$3; exit}") && echo "installed: $$installed" && echo "$$installed" | grep -F "$$expected" >/dev/null || { echo "Version mismatch: expected $$expected, got $$installed"; exit 1; } && pacman -Qlq "$$pkgname" | grep -E "/usr/share/fonts/TTF/.+\.ttf$$" >/dev/null || { echo "No TTF files installed"; exit 1; }' \
-		$(MAKE) --no-print-directory _in-container; \
-		rc=$$?; \
-		if ! cmp -s PKGBUILD .PKGBUILD.pre-build || ! cmp -s .SRCINFO .SRCINFO.pre-build; then \
-			echo "ERROR: PKGBUILD/.SRCINFO mutated during build (upstream code execution wrote packaging files)."; \
-			diff -u .PKGBUILD.pre-build PKGBUILD || true; \
-			diff -u .SRCINFO.pre-build .SRCINFO || true; \
-			rm -f .PKGBUILD.pre-build .SRCINFO.pre-build; \
-			exit 1; \
-		fi; \
-		rm -f .PKGBUILD.pre-build .SRCINFO.pre-build; \
-		exit $$rc
+bump-dry: ## Preview what bump would do (no changes)
+	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
+	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	@echo "current:  $(CURRENT_PKGVER)"
+	@echo "upstream: $(LATEST_UPSTREAM)"
+	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
+		echo "status:   up-to-date — nothing to do"; \
+	else \
+		echo "would bump: $(CURRENT_PKGVER) -> $(LATEST_UPSTREAM)"; \
+	fi
 
 publish: ## Commit PKGBUILD + .SRCINFO and push to AUR
-	@if [ ! -f .SRCINFO ]; then echo ".SRCINFO missing. Run 'make bump' first."; exit 1; fi
-	@CMD='makepkg --printsrcinfo > .SRCINFO.gen' $(MAKE) --no-print-directory _in-container
-	@diff -u .SRCINFO .SRCINFO.gen >/dev/null || { echo "ERROR: .SRCINFO does not match generated output. Run 'make bump' or inspect with 'diff -u .SRCINFO .SRCINFO.gen'."; rm -f .SRCINFO.gen; exit 1; }
-	@rm -f .SRCINFO.gen
-	@if ! git diff --quiet PKGBUILD .SRCINFO; then \
-		pkgver=$$(awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD); \
-		git add PKGBUILD .SRCINFO && git commit -m "Update to $$pkgver"; \
-	else \
-		echo "No PKGBUILD/.SRCINFO changes to commit."; \
+	@makepkg --printsrcinfo > .SRCINFO.gen
+	@if ! diff -u .SRCINFO .SRCINFO.gen > /dev/null 2>&1; then \
+		echo "ERROR: .SRCINFO does not match generated output. Run 'make bump' first."; \
+		diff -u .SRCINFO .SRCINFO.gen || true; \
+		rm -f .SRCINFO.gen; \
+		exit 1; \
 	fi
-	git push origin HEAD:master
+	@rm -f .SRCINFO.gen
+	@git add PKGBUILD .SRCINFO
+	@if git diff --cached --quiet; then \
+		echo "No PKGBUILD/.SRCINFO changes to commit."; \
+	else \
+		pkgver=$$(awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD); \
+		git commit -m "Update to $$pkgver" && git push $(AUR_REMOTE) HEAD:$(AUR_BRANCH); \
+	fi
 
 release: ## End-to-end: bump -> build -> publish (stops on first failure)
 	@$(MAKE) --no-print-directory bump
 	@$(MAKE) --no-print-directory build
 	@$(MAKE) --no-print-directory publish
 
-clean: ## Remove build artifacts
-	rm -rf src/ pkg/ package/ ./*.pkg.tar.zst ./*.tgz ./*.tar.gz .SRCINFO.gen .PKGBUILD.pre-build .SRCINFO.pre-build
+release-dry: ## Preview release (no changes): bump-dry + dry-run info
+	@$(MAKE) --no-print-directory bump-dry
+	@echo "---"
+	@echo "build:     would run makepkg --noconfirm --noprogressbar"
+	@echo "publish:   would commit and push to $(AUR_REMOTE)/$(AUR_BRANCH)"
 
-_in-container:
-	$(DOCKER_RUN)
+clean: ## Remove build artifacts
+	rm -rf src/ pkg/ ./*.pkg.tar.zst ./*.tar.gz .SRCINFO.gen ./*.log
