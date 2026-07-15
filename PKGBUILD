@@ -1,6 +1,6 @@
 # Maintainer: Ahmet Diler <ahmet.diler@hotmail.de>
 pkgname=md-viewer-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload (prebuilt binary)"
 arch=('x86_64')
@@ -31,12 +31,14 @@ source=(
     "md-viewer.desktop::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/md-viewer.desktop"
     "io.github.aydiler.md-viewer.png::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/io.github.aydiler.md-viewer.png"
     "LICENSE::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/LICENSE"
+    "THIRD_PARTY_NOTICES::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/THIRD_PARTY_NOTICES"
 )
 sha256sums=(
-    '2e572b1e6bab3164b5bf54bf20df513bbc26171093878c479597c28315dd7e87'
+    '7b7a9a32a600af654d0953385674453abd08fe4925dfb509c7dfecd24c463f0a'
     '7d786706389bf20531f1e2ace18bc1d2057b1745c059df6e804695cbbc8fe69c'
     '46d7a5b2a50e845d8c63146441914d37df5c411036a22d5412f1844126330b1b'
     '1a12042bdcb8eb609fd272b10a1dac618aec3aebdae90f5dd49af264a358444e'
+    '73e68165cb7f2e0baca654ecfdf4ebfcfc2d50393d1514b51ad01cf9f9ff9912'
 )
 
 package() {
@@ -48,4 +50,6 @@ package() {
         "${pkgdir}/usr/share/pixmaps/io.github.aydiler.md-viewer.png"
     install -Dm644 "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/THIRD_PARTY_NOTICES" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES"
 }
