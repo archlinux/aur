@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneRxCluster
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='gRx Differential Clustering'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a6b8916b65bee64eb83b8b892c424f7e59fdcbfcbe3228ab3cea3f5e7c20b9b4')
+sha256sums=('388be981ef3f820a923c8a7584c658130a34d7bfeba1407ba6c40d441a01bc66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
