@@ -15,7 +15,7 @@ source=("helium-sync-daemon::git+https://github.com/MehmetCanWT/Helium-Sync.git"
 sha256sums=('SKIP'
             '9ecacceabb426d38ea4df1312cf6ca7607ca00ad112d61c1b36254939673fc2e'
             '953ea2b41fd9b29921ef8b5a02a75aff846d36009373b0ab4c7bbe3c06c89b60'
-            '56db515209f0fc5333c665d5786cd1cba3280a60c15ee701348162582808158d')
+            '003901f94ba89055e7b4d0b11053cd2a4d3e1466d25ea67b1858a2716233d9cc')
 
 build() {
   # Build embedded Rust binary (no nodejs/npm dependency anymore)
