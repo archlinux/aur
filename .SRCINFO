@@ -1,0 +1,19 @@
+pkgbase = ddsh-git
+	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland windows (git)
+	pkgver = r11.g732ed0a
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	depends = glibc
+	provides = ddsh
+	conflicts = ddsh
+	conflicts = ddsh-bin
+	source = git+https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland.git
+	sha256sums = SKIP
+
+pkgname = ddsh-git
