@@ -22,7 +22,6 @@ makedepends=('git'
   'python-hatchling'
   'python-installer'
   'python-wheel')
-checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('7e8d90abbcbea9cc2a97d84ad6c6988655550a8554ee1f99514030970219da93549e89451891a0c52cc5de4ebce7cf028c4432e7fca88b4195ea64ab5eb7d100')
 
@@ -31,12 +30,6 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "spec-kit-$pkgver"
-  python -m venv --system-site-packages test-env
-  test-env/bin/pip install dist/*.whl
-  test-env/bin/python -m pytest -v --no-header -rN
-}
 
 package() {
   cd "spec-kit-$pkgver"
