@@ -1,0 +1,18 @@
+pkgbase = airpods-battery-git
+	pkgdesc = AirPods battery daemon for Linux via BlueZ BatteryProvider1
+	pkgver = r5.c91f637
+	pkgrel = 1
+	url = https://github.com/AlwxSin/airpods-battery
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = bluez
+	depends = upower
+	provides = airpods-battery
+	conflicts = airpods-battery
+	options = !debug
+	source = airpods-battery-git::git+https://github.com/AlwxSin/airpods-battery.git
+	sha256sums = SKIP
+
+pkgname = airpods-battery-git
