@@ -7,7 +7,7 @@
 
 # Maintainer: patchouli
 
-pkgver=9.3.0
+pkgver=9.4.0
 pkgname="ida-pro"
 pkgrel=1
 pkgdesc="Hex-Rays IDA Pro"
@@ -24,15 +24,13 @@ depends=('libgl'
 	)
 options=('!strip')
 
-_installer='ida-pro_93_x64linux.run'
+_installer='ida-pro_94_x64linux.run'
 
 source=("file://${_installer}"
-		"${pkgname}.desktop"
-		"${pkgname}-teams.desktop")
+		"${pkgname}.desktop")
 
-sha256sums=('2ed43ae4bb84d74dcae6f0099210dfa8d61bfea4952f5f9a07a9aae16cb70f82'
-            '662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5'
-            '437fc36a8edd8dd6adadd773dd777966797640d93f499892bdd1217afaf1b636')
+sha256sums=('37c64a622933f4eb58ce173c7cdb27d304db461db7bcf6ab7cda9002dba5d066'
+            '662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5')
 
 arch=('x86_64')
 
@@ -55,7 +53,7 @@ package() {
 
 	# the installer needlessly makes a lot of files executable
 	find "${pkgdir}"/opt/${pkgname} -type f -exec chmod -x {} \;
-	chmod +x "${pkgdir}"/opt/${pkgname}/{hv,ida,idapyswitch,idat,picture_decoder,upg32}
+	chmod +x "${pkgdir}"/opt/${pkgname}/{hv,ida,idapyswitch,idat,lc,lsadm,picture_decoder,upg32}
 
 	# 9.3 change docs permissions
 	find "${pkgdir}"/opt/${pkgname}/docs -type d -exec chmod 755 {} \;
@@ -65,7 +63,6 @@ package() {
 
 	install "${srcdir}"/${pkgname}*.desktop "${pkgdir}"/usr/share/applications
 	ln -s /opt/${pkgname}/appico.png "${pkgdir}"/usr/share/icons/${pkgname}.png
-	ln -s /opt/${pkgname}/hvui.png "${pkgdir}"/usr/share/icons/${pkgname}-teams.png
 	ln -s /opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 	ln -s /opt/${pkgname}/ida "${pkgdir}"/usr/bin/ida
 }

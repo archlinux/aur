@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=IDA Teams
-Comment=Teams for The Interactive Disassembler
-Exec=/opt/ida-pro/hvui
-Icon=ida-pro-teams
-Terminal=false
-Type=Application
-Categories=Development
