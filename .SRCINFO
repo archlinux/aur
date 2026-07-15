@@ -1,0 +1,25 @@
+pkgbase = felfeldm-git
+	pkgdesc = Modern download manager for Linux with queue management, speed limiting and proxy support
+	pkgver = 2.0.0.r53.g54beeb0
+	pkgrel = 1
+	url = https://github.com/hoomaanf/FelfelDM
+	install = felfeldm.install
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = python
+	depends = aria2
+	depends = python-pyqt6
+	depends = python-requests
+	depends = python-appdirs
+	depends = python-keyring
+	depends = python-websocket-client
+	depends = python-cryptography
+	depends = python-packaging
+	depends = yt-dlp
+	provides = felfeldm
+	conflicts = felfeldm
+	source = git+https://github.com/hoomaanf/FelfelDM.git
+	sha256sums = SKIP
+
+pkgname = felfeldm-git
