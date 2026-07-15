@@ -1,12 +1,12 @@
 # Maintainer: Mehmet Can <trwinner9@gmail.com>
 pkgname=helium-sync
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Zero-resource cloud synchronization daemon and DRM fixer for Helium Browser"
 arch=('x86_64')
 url="https://github.com/MehmetCanWT/Helium-Sync"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'python-pyqt6' 'python-pyqt6-webengine')
+depends=('gcc-libs' 'glibc' 'python-pyqt6')
 makedepends=('cargo')
 source=("helium-sync-daemon::git+https://github.com/MehmetCanWT/Helium-Sync.git"
         "helium-sync.service"
