@@ -1,0 +1,13 @@
+pkgbase = mly
+	pkgdesc = A tiny, feature-filled programmer's editor!
+	pkgver = 0.0.8
+	pkgrel = 1
+	epoch = 0
+	url = https://codeberg.org/emmowo/mly
+	arch = any
+	license = ISC
+	depends = ncurses
+	source = mly-0.0.8.tar.gz::https://codeberg.org/emmowo/mly/archive/0.0.8.tar.gz
+	sha256sums = 06417becaff17a81bf1fd0b461fb1f2e8ac2dbeee392b114b46165964d9abee4
+
+pkgname = mly
