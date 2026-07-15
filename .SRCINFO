@@ -1,5 +1,5 @@
 pkgbase = mineradio
-	pkgdesc = Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)
+	pkgdesc = 沉浸式音乐播放器，融合天气电台、歌词舞台、粒子视觉和 3D 歌单架 (Linux port, 原作者 XxHuberrr)
 	pkgver = 1.1.1
 	pkgrel = 9
 	url = https://github.com/XxHuberrr/Mineradio

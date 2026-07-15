@@ -1,16 +1,23 @@
 # Maintainer: Sthn
 #
-# This is a community-maintained Linux (AUR) port of Mineradio,
-# originally created by XxHuberrr for Windows.
-# Upstream: https://github.com/XxHuberrr/Mineradio
-# Licensed under GPL-3.0. The Linux packaging patches (platform-specific
-# GPU switches, icon format, cache paths) are maintained by the AUR submitter.
-# All visual design, branding, and core code belong to the original author.
+# ─── 关于 / About ───────────────────────────────────────────────────────
+# Mineradio 是一款沉浸式音乐播放器，融合天气电台、歌词舞台、粒子视觉和 3D 歌单架。
+# 原项目由 XxHuberrr 设计与开发，仅支持 Windows。
+# https://github.com/XxHuberrr/Mineradio
+#
+# 本 AUR 包是社区维护的 Linux 移植版，在原作者代码基础上做了以下适配：
+#   1. GPU 渲染：移除 Windows 专属的 use-angle=d3d11 开关，修复 Linux 下 GPU 崩溃
+#   2. 图标格式：Linux 下使用 icon.png 替代 icon.ico
+#   3. 缓存路径：将 D:\MineradioCache 改为 ~/.cache/Mineradio（符合 XDG 规范）
+#   4. 构建配置：添加 electron-builder Linux 构建目标
+#
+# 所有视觉设计、品牌、核心代码版权归原作者 XxHuberrr 所有。
+# 本包遵循 GPL-3.0 授权。第三方音乐平台接入仅用于个人学习，请遵守各平台用户协议。
 
 pkgname=mineradio
 pkgver=1.1.1
 pkgrel=9
-pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)'
+pkgdesc='沉浸式音乐播放器，融合天气电台、歌词舞台、粒子视觉和 3D 歌单架 (Linux port, 原作者 XxHuberrr)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
 license=('GPL-3.0-only')
