@@ -26,7 +26,7 @@ depends=(
     lttng-ust
     fontconfig
     libglvnd
-    libjpeg
+    libjpeg.so
     hicolor-icon-theme
     gstreamer
     gst-plugins-base-libs
