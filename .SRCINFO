@@ -1,13 +1,13 @@
 pkgbase = nak-bin
 	pkgdesc = a command line tool for doing all things Nostr
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/fiatjaf/nak
 	arch = x86_64
 	license = Unlicense
 	provides = nak
 	conflicts = nak
-	source = nak-bin-0.20.0::https://github.com/fiatjaf/nak/releases/download/v0.20.0/nak-v0.20.0-linux-amd64
-	sha256sums = c92c30eb04fb5519cb385f9b5ad10248c961792c936c7a333ef0e895ef5869b9
+	source = nak-bin-0.20.1::https://github.com/fiatjaf/nak/releases/download/v0.20.1/nak-v0.20.1-linux-amd64
+	sha256sums = d39647993228948575597d63b77abbc66203ade99984ef8ff517760301d8db74
 
 pkgname = nak-bin
