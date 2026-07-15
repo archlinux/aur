@@ -1,0 +1,13 @@
+pkgbase = pkgstory
+	pkgdesc = Your Arch Linux journey, told through pacman.log
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Kolgrim33/pkgstory
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rich
+	source = pkgstory-0.3.0.tar.gz::https://github.com/Kolgrim33/pkgstory/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = pkgstory
