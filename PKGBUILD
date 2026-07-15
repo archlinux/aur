@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fmcsR
-_pkgver=1.50.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Mismatch Tolerant Maximum Common Substructure Searching'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de166d5b20ca965685ddbc5632fcae475624562541b648eba6a35c58da2f474b')
+sha256sums=('146113fdfa3b24f6f0d731efa62b28c3a9cd3e510a4d11b00e8755e78f4a0514')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
