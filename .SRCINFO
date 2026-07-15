@@ -1,0 +1,16 @@
+pkgbase = gfetch-git
+	pkgdesc = Minimal system info fetch written in Go
+	pkgver = r1.87dbeb3
+	pkgrel = 1
+	url = https://github.com/xelframe/gfetch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = gfetch
+	conflicts = gfetch
+	source = git+https://github.com/xelframe/gfetch.git
+	sha256sums = SKIP
+
+pkgname = gfetch-git
