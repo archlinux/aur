@@ -32,6 +32,7 @@ bump: ## Update PKGBUILD to latest upstream + regenerate .SRCINFO
 	echo "Bumping $$current -> $$upstream"; \
 	sed -i "s/^pkgver=.*/pkgver=$$upstream/" PKGBUILD; \
 	sed -i "s/^pkgrel=.*/pkgrel=1/"          PKGBUILD; \
+	updpkgsums; \
 	makepkg --printsrcinfo > .SRCINFO
 
 publish: ## Commit PKGBUILD + .SRCINFO and push to AUR
