@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=lstr
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A fast, minimalist directory tree viewer, written in Rust."
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ makedepends=('rust' 'cargo' 'git')
 depends=('glibc' 'gcc-libs' 'libgit2')
 options=('strip' 'lto') 
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fec5f7444cbf32c826c10a932e30fdc1a1a4673828c11b82929c585e5614fbf8')
+sha256sums=('9b9fe1c43027e6fdc04b67bd60ebfa10166797a4810bdaa9087c0aa817fd6943')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
