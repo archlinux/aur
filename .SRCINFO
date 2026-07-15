@@ -1,0 +1,21 @@
+pkgbase = xgrep-search-bin
+	pkgdesc = Ultra-fast indexed code search engine with MCP server for AI coding tools
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/momokun7/xgrep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = xgrep-search
+	conflicts = xgrep-search
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/momokun7/xgrep/v0.7.0/LICENSE
+	sha256sums = afc4a6b887a756554f216a80c628c58c3b891832232cb31e5791997b691d0205
+	source_x86_64 = xg-0.7.0-x86_64.tar.gz::https://github.com/momokun7/xgrep/releases/download/v0.7.0/xg-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 78fc6cb56cbd1052d2ed4fa8cf9899d240ffed7cbd9cc2879a127d2bbc1c0d6e
+	source_aarch64 = xg-0.7.0-aarch64.tar.gz::https://github.com/momokun7/xgrep/releases/download/v0.7.0/xg-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bd806e5242b4c453c32e6ebf9887b44d68ae99ebbc1a50a2a28d2996f8a9021d
+
+pkgname = xgrep-search-bin
