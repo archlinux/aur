@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreety
 	pkgdesc = A minimal, configurable console greeter for greetd
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/tuigreety
 	arch = x86_64
@@ -18,9 +18,10 @@ pkgbase = greetd-tuigreety
 	conflicts = tuigreety
 	conflicts = tuigreety-bin
 	conflicts = tuigreety-git
-	source = greetd-tuigreety-0.10.0.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/archive/refs/tags/0.10.0.tar.gz
+	backup = etc/tuigreet/config.toml
+	source = greetd-tuigreety-0.10.1.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/archive/refs/tags/0.10.1.tar.gz
 	source = tuigreet.conf
-	sha256sums = 765368fd34f92648144881a91923b6fc670a4bad0000678d5052eff58c1c9a7e
+	sha256sums = fa1ebbfeeac86657f61c9d7619a73a72f2a71c97db76dfc0093a9f71edc2a279
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreety
