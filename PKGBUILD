@@ -10,13 +10,13 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=259.rc3.r85286.7524671f74c
+pkgver=262.devel.r90669.afff448cf47
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
+             'intltool' 'iptables' 'kmod' 'libarchive' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
@@ -36,32 +36,32 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         # pacman / libalpm hooks
         'systemd-hook'
         '20-systemd-sysusers.hook'
-        '30-systemd-binfmt.hook'
-        '30-systemd-catalog.hook'
+        '21-systemd-tmpfiles.hook'
+        '25-systemd-binfmt.hook'
+        '25-systemd-catalog.hook'
+        '25-systemd-hwdb.hook'
+        '25-systemd-sysctl.hook'
         '30-systemd-daemon-reload-system.hook'
         '30-systemd-daemon-reload-user.hook'
-        '30-systemd-hwdb.hook'
-        '30-systemd-restart-marked.hook'
-        '30-systemd-sysctl.hook'
-        '30-systemd-tmpfiles.hook'
-        '30-systemd-udev-reload.hook'
-        '30-systemd-update.hook')
+        '35-systemd-enqueue-marked.hook'
+        '35-systemd-udev-reload.hook'
+        '35-systemd-update.hook')
 sha512sums=('SKIP'
-            '91112cd9aa7e396d6b77c2dc4418347df1febd747e38223bde98f8ffe5d619f82c8cc16a8b3debfba1633b4c48c255ebc11438da309262cfc73aa897451b5b87'
+            'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             '32580b82e97573d3e499821e2ce415ff134c0ec52c9b44a3c0862c4007d347f55636d6afac3dfc6831a9b384c7448075bdf3a12f369b4d8b62b24dfdb9c8a76a'
-            '05a3b19a2132c8c3048a66f2d06a9f8790e9c84c9ebdacc358456e38c5ebc8c02c542838f6aca3301f19ae83bc9fda66e701c682624dd5cf9fb119e452338a56'
+            '03269a4822e86142b30165f3c3f72d2dcb1bfa16949f6a0379a0ce7b354269862a5a2d2e053b1690bda9fabc0e93c64ec9796c65d3d4b1b51dfc9dfa561e12a1'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
+            'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
+            'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
+            '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
             'a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a'
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
-            'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
-            'f6b154fdc612916d7788720cf703e34255b43ba2d19413de5f3f63f07508f4ce561ca138f987c2118c7128e1dfb01976b0ac7d5efee4d9ebaadd180e70fa013e'
-            '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
-            'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
+            '51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
@@ -70,8 +70,8 @@ pkgver() {
   # Upstream versioning is incompatible with pacman's version comparisons, one
   # way or another. So we replace dashes and tildes to make sure pacman's
   # version comparing does the right thing for rc versions:
-  local _major=`sed 's/~/./g' meson.version`
-  printf "%s.r%s.%s" "${_major}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _major=$(sed 's/~/./g' meson.version)
+  printf '%s.r%s.%s' "${_major}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -114,9 +114,11 @@ build() {
     -Dman=enabled
     -Dselinux=disabled
     -Dsshdprivsepdir=/usr/share/empty.sshd
+    -Dsysupdated=enabled
     -Dvmlinux-h=provided
     -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
 
+    -Dcompat-sysv-interfaces=false
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
     -Ddefault-kill-user-processes=false
@@ -128,8 +130,6 @@ build() {
     -Dntp-servers="${_timeservers[*]}"
     -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
-    -Dsysvinit-path=
-    -Dsysvrcnd-path=
 
     -Dsbat-distro='arch'
     -Dsbat-distro-summary='Arch Linux AUR'
@@ -140,7 +140,6 @@ build() {
 
   arch-meson "${pkgbase}-stable" build "${_meson_options[@]}"
 
-  #meson compile -C build --verbose
   meson compile -C build
 }
 
@@ -158,34 +157,37 @@ package_systemd-git() {
   )
   # Not all libs are linked, but opened via dlopen() pointed out by 6511918 at
   # https://aur.archlinux.org/pkgbase/systemd-git#comment-1041291
-  depends=("systemd-libs-git=${pkgver}"
-           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
-           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
-           'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
-           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
-           'openssl' 'libcrypto.so' 'libssl.so')
+  depends=(
+    "systemd-libs-git=${pkgver}"
+    'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+    'dbus-units' 'kbd' 'kmod' 'hwdata'
+    'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
+    'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
+    'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
+    'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
   provides+=("systemd=${pkgver}")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts+=('systemd')
-  optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
-              'apparmor: additional security features'
-              'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
-              "systemd-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
-              'polkit: allow administration as unprivileged user'
-              'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
-              'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
-              'qrencode: show QR codes'
-              'iptables: firewall features'
-              'libarchive: convert DDIs to tarballs'
-              'libbpf: support BPF programs'
-              'libpwquality: check password quality'
-              'libfido2: unlocking LUKS2 volumes with FIDO2 token'
-              'libp11-kit: support PKCS#11'
-              'tpm2-tss: unlocking LUKS2 volumes with TPM2')
+  optdepends=(
+    'apparmor: additional security features'
+    'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
+    'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
+    'iptables: firewall features'
+    'libarchive: convert DDIs to tarballs'
+    'libbpf: support BPF programs'
+    'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+    'libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
+    'libp11-kit: support PKCS#11'
+    'libpwquality: check password quality'
+    'polkit: allow administration as unprivileged user'
+    'qemu-base: systemd-vmspawn'
+    'qrencode: show QR codes'
+    'quota-tools: kernel-level quota management'
+    'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+    "systemd-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
+    'tpm2-tss: unlocking LUKS2 volumes with TPM2')
   backup=(etc/systemd/coredump.conf
           etc/systemd/homed.conf
           etc/systemd/journald.conf
@@ -206,15 +208,14 @@ package_systemd-git() {
 
   meson install -C build --no-rebuild --destdir "${pkgdir}"
 
-  # we'll create this on installation
-  rmdir "$pkgdir"/var/log/journal/remote
-
   # runtime libraries shipped with systemd-libs
   install -d -m0755 systemd-libs/lib/
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
   mv "$pkgdir"/usr/lib/pkgconfig systemd-libs/lib/pkgconfig
   mv "$pkgdir"/usr/include systemd-libs/include
   mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
+  install -d -m0755 systemd-libs/man8/
+  mv "$pkgdir"/usr/share/man/man8/*nss* systemd-libs/man8/
 
   # ukify shipped in separate package
   install -d -m0755 systemd-ukify/{bin,systemd,man1,install.d}
@@ -226,6 +227,7 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/kernel/install.d/60-ukify.install systemd-ukify/install.d
 
   # manpages shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/share/man/man1/init.1
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
@@ -269,12 +271,16 @@ package_systemd-git() {
   # handle uncommon license
   install -d -m0755 "$pkgdir/usr/share/licenses/$pkgbase"
   ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
+
+  # symlink kernel-install to installkernel
+  ln -s kernel-install "$pkgdir"/usr/bin/installkernel
+  ln -s kernel-install.8.gz "$pkgdir"/usr/share/man/man8/installkernel.8.gz
 }
 
 package_systemd-libs-git() {
   pkgdesc='systemd client libraries'
   pkgdesc+=' (git version)'
-  depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
+  depends=('glibc' 'libgcc' 'libgcc_s.so' 'libgcrypt' 'lz4' 'xz'  'zstd')
   license+=(
     'CC0-1.0' # siphash
     'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
@@ -289,6 +295,7 @@ package_systemd-libs-git() {
   mv systemd-libs/lib "$pkgdir"/usr/lib
   mv systemd-libs/include "$pkgdir"/usr/include
   mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
+  mv systemd-libs/man8 "$pkgdir"/usr/share/man/man8
 }
 
 package_systemd-resolvconf-git() {
@@ -315,6 +322,8 @@ package_systemd-sysvcompat-git() {
   depends=("systemd-git=${pkgver}")
   provides=("systemd-sysvcompat=${pkgver}")
 
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man1 \
+    build/man/init.1
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
 
