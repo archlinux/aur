@@ -3,8 +3,8 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r6813.b745534e
-pkgrel=2
+pkgver=r7331.f22e4c12
+pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
@@ -51,7 +51,7 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/iafonov/multipart-parser-c.git'
         'git+https://github.com/grumpycoders/nanovg.git'
         'git+https://github.com/grumpycoders/nanosvg.git'
-        'git+https://github.com/lunarmodules/luafilesystem.git'
+        'git+https://github.com/nicolasnoble/luafilesystem.git'
         'git+https://github.com/grumpycoders/luacov.git'
         'git+https://github.com/bluebird75/luaunit.git'
         'git+https://github.com/uriparser/uriparser.git'
