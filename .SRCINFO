@@ -1,0 +1,21 @@
+pkgbase = foxguard-bin
+	pkgdesc = Fast universal code security scanner with built-in rules and external YAML support
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://foxguard.dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = foxguard
+	conflicts = foxguard
+	noextract = foxguard-0.12.0-x86_64
+	noextract = foxguard-0.12.0-aarch64
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/0sec-labs/foxguard/v0.12.0/LICENSE
+	sha256sums = 7c4f23d521b8c2e512af730ef2081c533c2c7e1438143b04758ad4bc9373fb97
+	source_x86_64 = foxguard-0.12.0-x86_64::https://github.com/0sec-labs/foxguard/releases/download/v0.12.0/foxguard-linux-x86_64
+	sha256sums_x86_64 = 0f82260e1cf944b1b5e318206777bb6df5a3accdd390421d704f5646cfc91374
+	source_aarch64 = foxguard-0.12.0-aarch64::https://github.com/0sec-labs/foxguard/releases/download/v0.12.0/foxguard-linux-aarch64
+	sha256sums_aarch64 = 26c65e4458a2540d2328975c70a5feabfa9af92ce897f1d3ec810bef16872a8e
+
+pkgname = foxguard-bin
