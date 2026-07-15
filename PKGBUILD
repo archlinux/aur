@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=tasks-bin
-pkgver=15.7.3
+pkgver=15.7.4
 pkgrel=1
 pkgdesc="Tasks.org To-Do Lists & Reminders that's Powerful and flexible, Customizable and mutilingual, with Multiple sync options"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(glibc libstdc++ hicolor-icon-theme zlib)
 provides=('tasks')
 conflicts=('tasks')
 source_x86_64=("https://github.com/tasks/tasks/releases/download/${pkgver}/tasks-org-$pkgver-linux-amd64.tar.gz")
-sha256sums_x86_64=('da843f3a27fa249c44fb4fc3dc68ddeaaccfc2aa9e183174be770c6527658e5b')
+sha256sums_x86_64=('3ba1b1cc092d82a6b572012f89ec793583a5c3b974a04a2bdb7ee60382497020')
 #noextract=("tasks-org-$pkgver-linux-amd64.tar.gz")
 
 package() {
