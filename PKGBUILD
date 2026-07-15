@@ -18,7 +18,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=6.2.0
-pkgrel=3
+pkgrel=4
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -50,6 +50,12 @@ build() {
     ./target/release/hnefatafl-server --man
     ./target/release/hnefatafl-server-full --man
     ./target/release/hnefatafl-text-protocol --man
+
+    gzip --no-name --best taflzero.1
+    gzip --no-name --best hnefatafl-server.1
+    gzip --no-name --best hnefatafl-server-full.1
+    gzip --no-name --best hnefatafl-text-protocol.1
+    gzip --no-name --best hnefatafl-client.1
 }
 
 package() {
