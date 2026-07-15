@@ -1,7 +1,7 @@
 pkgbase = hachimi-world-bin
 	pkgdesc = A community-driven open-source meme culture music community, bin version.
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 4
 	url = https://hachimi.world/
 	arch = x86_64
 	license = AGPL-3.0
