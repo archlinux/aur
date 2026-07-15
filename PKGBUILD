@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=3.9.8
+pkgver=3.9.10
 pkgrel=1
 pkgdesc="Context Engineering Layer for AI Coding — 81 MCP tools, 10 read modes, 95+ shell patterns, persistent knowledge, multi-agent orchestration. Privacy-first, opt-in only."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'gcc')
 # resolver finds it — no manual install, no runtime download.
 depends=('gcc-libs' 'onnxruntime')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-$pkgver-source.tar.gz")
-sha256sums=('45185a6c553cfa4c0bb970cc2e8c88a1beca9926e5ce75a3b49bf9602f2ae566')
+sha256sums=('9309360b4d781f8cb27082624597ea2f17f907474742338eb99470bbe5bbc333')
 
 prepare() {
   cd "$pkgname-$pkgver/rust"
@@ -48,3 +48,4 @@ package() {
   install -Dm755 "rust/target/release/lean-ctx" "$pkgdir/usr/bin/lean-ctx"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
