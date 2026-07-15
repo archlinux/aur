@@ -1,0 +1,20 @@
+pkgbase = cram-srs-git
+	pkgdesc = Spaced repetition TUI for programming problems and academic concepts, powered by FSRS-4.5
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/animishraa05/cram
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	provides = cram
+	conflicts = cram
+	source = git+https://github.com/animishraa05/cram.git
+	sha256sums = SKIP
+
+pkgname = cram-srs-git
