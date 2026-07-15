@@ -1,0 +1,19 @@
+pkgbase = hygg-bin
+	pkgdesc = Minimalistic Vim-like TUI document reader.
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/kruseio/hygg
+	arch = x86_64
+	license = AGPL-3.0
+	license = MIT
+	makedepends = cargo
+	provides = hygg
+	conflicts = hygg-git
+	conflicts = hygg
+	options = !lto
+	options = !debug
+	options = !strip
+	source = hygg-0.1.24-bin.tar.gz::https://github.com/kruseio/hygg/releases/download/0.1.24/hygg-cli-0.1.24-x86_64-linux.tar.gz
+	sha256sums = 1e195a41a0a0f87718faaa2c584dd414a20c7ac843f0477c8c53b209719e5e4f
+
+pkgname = hygg-bin
