@@ -2,7 +2,7 @@
 # Maintainer: Hugo <hugo@cluion.com>
 
 pkgname='mogura-bin'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Interactive disk cleaner and analyzer for Linux — dig out caches, build artifacts and orphaned configs'
 url='https://github.com/cluion/Mogura'
@@ -12,10 +12,10 @@ provides=('mogura')
 conflicts=('mogura')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cluion/Mogura/releases/download/v${pkgver}/mogura_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('995e63ec2b9de53025878214120f78de5c6539098b3b8eb8378133a79cb7ef42')
+sha256sums_aarch64=('c6afa0e4943dd24770435b5a53951298a7a222f8491d2d6d505387422f3ebdf4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cluion/Mogura/releases/download/v${pkgver}/mogura_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f676edf18649783b4f2673970e31c143e6125cc935af69e61df8040049ab02ea')
+sha256sums_x86_64=('189a52336bada9ec84b3ca8a032ae14bdf4b0ab5a639b50dc39c2471a527c915')
 
 package() {
   install -Dm755 ./mogura "${pkgdir}/usr/bin/mogura"
