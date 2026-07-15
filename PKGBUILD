@@ -2,7 +2,7 @@
 
 pkgname=harbor-stremio-git
 _pkgname=harbor
-pkgver=0.9.87.r280.g8a8ef36
+pkgver=0.9.21.r464.gdc6320e
 pkgrel=1
 pkgdesc='A Stremio client built for adventure'
 arch=('x86_64')
@@ -51,17 +51,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  cat > pnpm-workspace.yaml <<'EOF'
-packages:
-  - "."
-
-allowBuilds:
-  esbuild: true
-
-onlyBuiltDependencies:
-  - esbuild
-EOF
 
   pnpm install --frozen-lockfile
   pnpm run setup:fonts
