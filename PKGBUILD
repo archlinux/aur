@@ -2,7 +2,7 @@
 
 _pkgname=gallery-tui
 pkgname=$_pkgname-git
-pkgver=0.1.6.r0.gad0137a
+pkgver=0.2.0.r0.gd9a5043
 pkgrel=1
 pkgdesc="A terminal image gallery powered by ratatui and chafa."
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
