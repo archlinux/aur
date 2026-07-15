@@ -1,8 +1,9 @@
 # kappastream-git — AUR submission staging
 
-A ready-to-submit snapshot of the `kappastream-git` AUR package (the
-build-from-source variant), staged here so the publish is a copy-paste once
-you're ready.
+The committed snapshot of the `kappastream-git` AUR package (the build-from-source
+variant). This package is **published** at
+https://aur.archlinux.org/packages/kappastream-git — these staged files are the
+source of truth for the next update push.
 
 Contents:
 - `PKGBUILD` — snapshot of `../../PKGBUILD` (the source of truth for `-git`).
@@ -21,23 +22,23 @@ here is only a snapshot.
    makepkg --printsrcinfo > .SRCINFO
    ```
 
-## Submit
+## Update
 
 ```
 git clone ssh://aur@aur.archlinux.org/kappastream-git.git
 cd kappastream-git
 cp /path/to/here/{PKGBUILD,.SRCINFO,.gitignore,README.md} .
 git add PKGBUILD .SRCINFO .gitignore README.md
-git commit -m "Initial import: kappastream-git"
+git commit -m "Update to <version>"
 git push
 ```
 
-First push creates the package on the AUR; later pushes update it.
+The package already exists on the AUR; pushes update it in place.
 
-## Notes / things to consider before publishing
+## Notes / things to consider
 
 - **`gst-libav` is in `depends=`** for parity with `kappastream-bin` and the
   deb/rpm bundles: `avdec_h264` (Twitch is H.264) isn't pulled in by
   `webkit2gtk-4.1`, so without `gst-libav` streams play audio + black video.
 - The `pkgver()` `git describe` form requires at least one release tag to be
-  reachable from `HEAD` (v0.1.0/.1/.2 exist, so this holds).
+  reachable from `HEAD` (v0.1.0/.1/.2/.3 exist, so this holds).
