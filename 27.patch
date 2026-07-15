@@ -1,0 +1,21 @@
+--- a/test/test_find_plugin.py
++++ b/test/test_find_plugin.py
+@@ -1,14 +1,15 @@
+ # note: tests require pybtex-docutils to be installed
+ # so its entry points can be found
+ 
++from importlib.metadata import entry_points
++
+ import pytest
+ import pybtex_docutils
+ 
+ 
+ @pytest.mark.plugin
+-def test_pkg_resources_entry_point():
+-    from pkg_resources import iter_entry_points
+-    for ep in iter_entry_points("pybtex.backends", "docutils"):
++def test_importlib_metadata_entry_point():
++    for ep in entry_points(group="pybtex.backends", name="docutils"):
+         assert ep.load() is pybtex_docutils.Backend
+ 
+ 
