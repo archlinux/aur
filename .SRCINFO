@@ -1,6 +1,6 @@
 pkgbase = r-chromplot
 	pkgdesc = Global visualization tool of genomic data
-	pkgver = 1.36.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chromPlot
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-chromplot
 	optdepends = r-genomicfeatures
 	optdepends = r-qtl
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/chromPlot_1.36.0.tar.gz
-	sha256sums = 2c6152195927d48b5d1adad019066b5a7e7426fff933581353dfd7cdc0849c27
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/chromPlot_1.40.0.tar.gz
+	sha256sums = c714afe4df610660f3cb1880c65d100a68aa908c17f6b3915345c6065b5b6e26
 
 pkgname = r-chromplot
