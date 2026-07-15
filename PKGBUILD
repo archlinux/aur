@@ -12,7 +12,7 @@ license=('GNU V3')
 depends=('sed' 'oath-toolkit' 'openssl' 'zbar' 'curl')
 provides=('gashell')
 source=(https://github.com/DDoctorzeus/$_pkgname/archive/$pkgver.tar.gz)
-sha256sums=('2872a9e9feaa961ae6e5a215fd5b9db4ebc765bc22d76a2679a81b4ff9a45972')
+sha256sums=('1b1c389ffe7db6c82303f854f5127643de4aad818af3e84b0cb050b5c1498ae8')
 
 package() {
     mkdir -p "$pkgdir/usr/share/$pkgname/";
