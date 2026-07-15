@@ -3,6 +3,7 @@ pkgbase = freefilesync-bin
 	pkgver = 14.10
 	pkgrel = 1
 	url = https://freefilesync.org
+	install = .install
 	arch = x86_64
 	license = LicenseRef-freefilesync.org
 	makedepends = curl

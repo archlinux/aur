@@ -18,6 +18,7 @@ provides=("freefilesync")
 conflicts=("freefilesync")
 depends=("gtk3")
 makedepends=("curl" "unzip")
+install=".install"
 options=(!strip !debug)
 
 # Donation transaction ID: env var takes precedence, else read from ./FFS_tx
