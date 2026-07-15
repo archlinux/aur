@@ -1,0 +1,30 @@
+pkgbase = go2tv-bin
+	pkgdesc = Cast media files to Smart TVs and Chromecast devices (pre-built binary)
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/alexballas/go2tv
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	optdepends = ffmpeg: transcoding support
+	provides = go2tv=2.4.0
+	conflicts = go2tv
+	source = LICENSE::https://raw.githubusercontent.com/alexballas/go2tv/v2.4.0/LICENSE
+	source = app.go2tv.go2tv.desktop::https://raw.githubusercontent.com/alexballas/go2tv/v2.4.0/assets/linux/app.go2tv.go2tv.desktop
+	source = app.go2tv.go2tv.appdata.xml::https://raw.githubusercontent.com/alexballas/go2tv/v2.4.0/assets/linux/app.go2tv.go2tv.appdata.xml
+	source = go2tv-icon-desktop-512.png::https://raw.githubusercontent.com/alexballas/go2tv/v2.4.0/assets/go2tv-icon-desktop-512.png
+	source = go2tv-icon-color.svg::https://raw.githubusercontent.com/alexballas/go2tv/v2.4.0/assets/go2tv-icon-color.svg
+	sha256sums = f3e74b19ba21d7c94eb917b4a9027e069de8350629d25a14e95161c4f6e6fe51
+	sha256sums = cb4563f5856fac6b51f4c8b08e25520501bd7cca0dab48606025f350cdf1cc9a
+	sha256sums = c770a5d1f90cd5f5c9bdfddf39e11fe80001a6738f4cb77c6675e3d555a39c72
+	sha256sums = 06ddd76db63dc6733dd12b3645fe817bb9e8c659cec6f1756031bcf91d459f23
+	sha256sums = d1825ec83521c2e46399955cd42813a3df2051b856c6296cf122dc435d9ed570
+	source_x86_64 = go2tv-2.4.0-amd64.zip::https://github.com/alexballas/go2tv/releases/download/v2.4.0/go2tv_v2.4.0_linux_amd64.zip
+	sha256sums_x86_64 = e0ba0b38691482edf8487c95c779c62a881df9eee5404aa9153620df102266b7
+	source_aarch64 = go2tv-2.4.0-arm64.zip::https://github.com/alexballas/go2tv/releases/download/v2.4.0/go2tv_v2.4.0_linux_arm64.zip
+	sha256sums_aarch64 = fe02f7e9cb83f2da30237fdfc91629f87d78b3d813a653d7439974a2689950f3
+	source_armv7h = go2tv-2.4.0-arm.zip::https://github.com/alexballas/go2tv/releases/download/v2.4.0/go2tv_v2.4.0_linux_arm.zip
+	sha256sums_armv7h = 75617838e0934c942ef49b510c7072a0dc15a5dd87a9df1ee30a201f145a65b3
+
+pkgname = go2tv-bin
