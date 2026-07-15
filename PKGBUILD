@@ -2,13 +2,13 @@
 
 pkgname=teleport-client
 pkgver=18.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=(AGPL-3.0-only)
 depends=(glibc libfido2)
-makedepends=(go git)
+makedepends=(go git cargo)
 provides=(teleport-client tctl tsh)
 conflicts=(teleport teleport-client-bin tctl tsh)
 source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
