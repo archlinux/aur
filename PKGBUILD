@@ -2,7 +2,7 @@
 
 pkgname=libva-v4l2_request
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='VA-API implementation for V4L2 stateless video decoders'
 arch=(x86_64 aarch64)
 url=https://xff.cz/git/libva-v4l2_request/about/
@@ -11,7 +11,7 @@ depends=(
   glibc
   libva
   libdrm
-  linux-headers
+  linux-api-headers
 )
 makedepends=(
   git
