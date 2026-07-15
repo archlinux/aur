@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=shinymanager
-_pkgver=1.0.410
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Authentication Management for 'Shiny' Applications"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,6 +13,7 @@ depends=(
   r-billboarder
   r-dbi
   r-dt
+  r-glue
   r-htmltools
   r-openssl
   r-r.utils
@@ -20,6 +21,7 @@ depends=(
   r-rsqlite
   r-scrypt
   r-shiny
+  r-yaml
 )
 checkdepends=(
   r-testthat
@@ -28,11 +30,13 @@ optdepends=(
   r-keyring
   r-knitr
   r-rmarkdown
+  r-rpostgres
+  r-sparklyr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d5c4711312e295b09dcdd35cdac7ba88')
-b2sums=('162ed86cdfc35e336387539da6891dc656835ab311ede9d1178e72b13f94f71d510b934fd8215901c42e91f32a7e2ef66566f07e819932633be01893f44442cc')
+md5sums=('f3bf2e80b10e22c3d680d3bee861c610')
+b2sums=('75c97548cb37bc3f98a69c2b80bc936ce7f906c3e6f4882a78a8db8d2f40cab44a665d753ad58a8538fd3e948558020de7b5a8b68c47cba07ddffc68f11a469c')
 
 build() {
   mkdir build
