@@ -6,7 +6,7 @@
 
 pkgname=gtkhash-thunar
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK+ utility for computing message digests or checksums (Gtkhash with Thunar filemanager plugin)"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -16,7 +16,7 @@ depends=(
     'gtk3'
     'libb2'
     'libgcrypt'
-    'nettle'
+    'nettle3'
     'thunar'
 )
 
