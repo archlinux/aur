@@ -1,0 +1,22 @@
+pkgbase = shararam-linux-bin
+	pkgdesc = Оригинальный Шарарам, портированный под Linux на основе Electron и Clean Flash
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/itsflameee/shararam-linux
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = bash
+	provides = shararam-linux
+	conflicts = shararam-linux
+	source = shararam-linux-bin-2.0.6.tar.gz::https://github.com/itsflameee/shararam-linux/archive/refs/heads/main.tar.gz
+	source = electron-bin::https://github.com/itsflameee/shararam-linux/releases/download/v2.0.6/electron
+	sha256sums = SKIP
+	sha256sums = 7b1d423e48c77e5b5c79d138eba372e97d5c94159d9a27f3909f785d10ed289a
+
+pkgname = shararam-linux-bin
