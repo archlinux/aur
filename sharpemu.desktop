@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SharpEmu
+GenericName=PlayStation 5 Emulator
+Comment=Experimental PlayStation 5 emulator
+Exec=sharpemu %f
+Icon=sharpemu
+Terminal=false
+Categories=Game;Emulator;
+Keywords=PS5;PlayStation;Emulator;

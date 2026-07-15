@@ -1,0 +1,28 @@
+pkgbase = sharpemu-git
+	pkgdesc = Experimental PlayStation 5 emulator written in C#
+	pkgver = 0.0.1.r234.gad92ab3
+	pkgrel = 1
+	url = https://github.com/sharpemu/sharpemu
+	arch = x86_64
+	license = GPL-2.0-or-later AND MIT
+	makedepends = git
+	makedepends = dotnet-sdk>=10.0
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = icu
+	depends = openssl
+	depends = fontconfig
+	depends = libx11
+	depends = vulkan-icd-loader
+	optdepends = vulkan-driver: Vulkan GPU driver (vulkan-radeon, vulkan-intel, nvidia-utils, ...)
+	provides = sharpemu
+	conflicts = sharpemu
+	options = !strip
+	options = !debug
+	source = sharpemu::git+https://github.com/sharpemu/sharpemu.git
+	source = sharpemu.desktop
+	sha256sums = SKIP
+	sha256sums = 5136e942050b7756659c91391de742a29e0db9e4064db3d045de0397752d567d
+
+pkgname = sharpemu-git
