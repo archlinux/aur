@@ -1,6 +1,6 @@
 pkgbase = qidi-studio-appimage
 	pkgdesc = QIDIStudio is a professional 3D printer slicing software for QiDi 3D printers (AppImage version)
-	pkgver = 2.06.00.51
+	pkgver = 2.07.02.10
 	pkgrel = 1
 	url = https://github.com/QIDITECH/QIDIStudio
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = qidi-studio-appimage
 	depends = zlib
 	depends = fuse2
 	depends = webkit2gtk-4.1
-	noextract = qidi-studio-appimage-2.06.00.51.AppImage
+	noextract = qidi-studio-appimage-2.07.02.10.AppImage
 	options = !strip
-	source_x86_64 = qidi-studio-appimage-2.06.00.51.AppImage::https://github.com/QIDITECH/QIDIStudio/releases/download/v2.06.00.51/QIDIStudio_v02.06.00.51_Ubuntu24.AppImage
-	sha256sums_x86_64 = 41bfcd6f28ce0ad220ef83b9c8fc57f49ab41dff768495e8f51a904d087f1123
+	source_x86_64 = qidi-studio-appimage-2.07.02.10.AppImage::https://github.com/QIDITECH/QIDIStudio/releases/download/v2.07.02.10/QIDIStudio_v02.07.02.10_Ubuntu24.AppImage
+	sha256sums_x86_64 = 122e4f57f5d15ad08c957174ec026ef545a9952afef06770005bd7c031374e93
 
 pkgname = qidi-studio-appimage
