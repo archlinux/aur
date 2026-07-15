@@ -1,6 +1,6 @@
 # Maintainer: MaloLeNono malo.gabriel.2@gmail.com
 pkgname=dontdoas
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Does not execute your command'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/malolenono/dontdoas'
 license=('MIT')
 makedepends=('gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/malolenono/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('232b2a7b6542bee4d1e637faf2afdccfbdd874a1e70b5ede09e8e6c2cfe368cd')
+sha256sums=('9ab95c25d3275614777412b03fdeee1e1b73739853a502bd6a6ecb997ea9cc1d')
 
 build() {
     cd "$pkgname-$pkgver"

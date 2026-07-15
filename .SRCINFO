@@ -1,12 +1,12 @@
 pkgbase = dontdoas
 	pkgdesc = Does not execute your command
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/malolenono/dontdoas
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
-	source = dontdoas-1.1.0.tar.gz::https://github.com/malolenono/dontdoas/archive/v1.1.0.tar.gz
-	sha256sums = 232b2a7b6542bee4d1e637faf2afdccfbdd874a1e70b5ede09e8e6c2cfe368cd
+	source = dontdoas-1.2.0.tar.gz::https://github.com/malolenono/dontdoas/archive/v1.2.0.tar.gz
+	sha256sums = 9ab95c25d3275614777412b03fdeee1e1b73739853a502bd6a6ecb997ea9cc1d
 
 pkgname = dontdoas
