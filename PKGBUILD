@@ -17,19 +17,19 @@ sha256sums=('e2ab68a49107d822fc67b824dae766658c63aad5300d2f8226b80b8604fddedc')
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --release
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo test --frozen 2>/dev/null || true
+    cargo test 2>/dev/null || true
 }
 
 package() {
