@@ -1,6 +1,6 @@
 pkgbase = python-foamlib
 	pkgdesc = A Python interface for interacting with OpenFOAM
-	pkgver = 1.6.2
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/gerlero/foamlib
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-foamlib
 	optdepends = python-defusedxml: postprocessing and examples
 	optdepends = python-plotly: examples
 	optdepends = python-scipy: examples
-	source = foamlib-1.6.2.tar.gz::https://github.com/gerlero/foamlib/archive/v1.6.2.tar.gz
-	sha512sums = 6b127bc5034b07b7ccff8a66069f091a8303b732345365e66a8e3ae4ac87211337413a1e6721bc7e95812015cef0664be2685c156859561d06f254d33f422f87
+	source = foamlib-1.7.1.tar.gz::https://github.com/gerlero/foamlib/archive/v1.7.1.tar.gz
+	sha512sums = 99bcfdd8a35fb1c748dc19bceb986d77f47cbc60d16f0ebf82aa8dc04cab607bd71141a6d2b8e4aa8babba372a9c64d4a13f42b09eea688f04979fa7e286c9c8
 
 pkgname = python-foamlib
