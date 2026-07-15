@@ -75,22 +75,19 @@ prepare() {
 
     # The .license file is the donor activation key; save it for package()
     cp "FreeFileSync_${pkgver}_[Donation_Edition]_Install.license" "${srcdir}/Registered.dat"
+
+    # Extract installer archive from the .run binary and unpack inner archives
+    local _run_file="FreeFileSync_${pkgver}_[Donation_Edition]_Install.run"
+    local offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
+    offset=$((offset + 16))
+    tail -c +$offset "$_run_file" | tar -xf - --wildcards \
+        FreeFileSync.tar.gz \
+        freefilesync-mime.xml \
+        '*.desktop'
 }
 
 package() {
     install -d "$pkgdir/opt/$_pkgname"
-
-    # extract installer archive from installer binary
-    local _run_file="FreeFileSync_${pkgver}_[Donation_Edition]_Install.run"
-    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$srcdir/$_run_file" | cut -d : -f 1)
-    offset=$((offset + 16))
-    tail -c +$offset "$srcdir/$_run_file" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
-
-    # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
-    tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
-        FreeFileSync.tar.gz \
-        freefilesync-mime.xml \
-        '*.desktop'
 
     # extract inner archive
     tar -xzf "$srcdir/FreeFileSync.tar.gz" --no-same-owner -C "$pkgdir/opt/$_pkgname"
