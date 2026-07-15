@@ -6,8 +6,8 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.12.2
-pkgrel=2
+pkgver=3.12.3
+pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64')
 url="https://www.cyrusimap.org/"
@@ -29,7 +29,7 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0') # ellie timoney <ellie@fastmail.com>
-sha512sums=('bcb57f8d0c0fa4a2e9e4d9f356b1abe647f568398705376cae0b4dd1081cc27681ab381201804131ee470cdba8f9dc41ad39489d00e8830af8977dab317a087e'
+sha512sums=('7778684a04a8d5435c4d9f03d67864fd69d19fe816f7e8c8708bbd8fd5e0cb70c5d702677a40743be2b5d76e5c29d223d56ec9a8e03ec4913bf50af0d6954bcb'
             'SKIP'
             '281110cc226b110cf9825cf8c3b213400a7e8a7754e40631240d3f5d424472b1e496c477c57333b94ede3b4b1acb8a99fb33fa334464aec548019849b4b2ac5c'
             '36e8374ebc5b233b6ccdb7f7010920212bb4436aac8e104d7e60bca3d21d79eb8988c425b5809de12200067a360bb31d68f1d19c033b1938fd9b9404c029632c'
@@ -52,9 +52,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-
-  # libchardet's pkgconf flags are broken, so we have to specify them manually
-  export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
 
   # Support for libical 4 is unreleased and it seems there's a nontrivial amount
   # of other changes, so let's play it safe and stick with version 3
