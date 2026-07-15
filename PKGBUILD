@@ -3,7 +3,7 @@
 
 pkgname=mosek
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=11.1.5
+pkgver=11.2.2
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -16,13 +16,7 @@ makedepends=('python-setuptools' 'execstack')
 optdepends=('python: Python bindings')
 options=('!strip')
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
-sha256sums=('e4f6c9b2735e6a551fdc0770e508981d2ba1f7816737f3c3668d1514bd21fd01')
-
-prepare() {
-	# Work around "ImportError: libmosek64.so.11.0: cannot enable executable
-	# stack as shared object requires: Invalid argument"
-	execstack -c "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/bin/libmosek64.so.${_ver}"
-}
+sha256sums=('0d5499fbc82098aec4ca2687602523c50ff7998e467149605d545f45e881922c')
 
 package() {
 	# Install shared libraries.

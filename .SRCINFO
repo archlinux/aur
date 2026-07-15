@@ -1,6 +1,6 @@
 pkgbase = mosek
 	pkgdesc = A commercial solver for mathematical optimization problems.
-	pkgver = 11.1.5
+	pkgver = 11.2.2
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mosek.com
@@ -12,7 +12,7 @@ pkgbase = mosek
 	depends = openmp
 	optdepends = python: Python bindings
 	options = !strip
-	source = mosek-11.1.5.tar.bz2::https://download.mosek.com/stable/11.1.5/mosektoolslinux64x86.tar.bz2
-	sha256sums = e4f6c9b2735e6a551fdc0770e508981d2ba1f7816737f3c3668d1514bd21fd01
+	source = mosek-11.2.2.tar.bz2::https://download.mosek.com/stable/11.2.2/mosektoolslinux64x86.tar.bz2
+	sha256sums = 0d5499fbc82098aec4ca2687602523c50ff7998e467149605d545f45e881922c
 
 pkgname = mosek
