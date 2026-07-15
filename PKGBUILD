@@ -1,66 +1,53 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-
-_pkgauthor=ghreprimand
-_pkgname=odytty
-_appname=${_pkgname}
-pkgname=${_pkgname}
-pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
-
-pkgver=0.8.8
+# Maintainer: Unfinished Works <admin@unfinished-works.com>
+#
+# Source-of-truth PKGBUILD for the `odytty` AUR package. The AUR holds its own
+# git repository; this copy is the upstream template. On each release tag the
+# `aur` job in .github/workflows/release.yml stamps pkgver, runs `updpkgsums`
+# to replace the placeholder checksum with the real release-tarball sha256,
+# regenerates `.SRCINFO`, and pushes to the AUR remote — the same pattern the
+# `scoop` job uses for the Windows manifest. The manual runbook in
+# dist/aur/README.md remains the fallback if the automated push fails.
+#
+# This builds from the published GitHub release source tarball (the same
+# `git archive` tarball the Release workflow attaches), so the package is
+# versioned, owned by pacman, and reproducible from a fixed source.
+pkgname=odytty
+pkgver=0.8.9
 pkgrel=1
-_pkgvername=v${pkgver}
-
-arch=('x86_64' 'aarch64')
-
-url="https://github.com/${_pkgauthor}/${_pkgname}"
-
+pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
+arch=('x86_64')
+url="https://github.com/ghreprimand/odytty"
 license=('GPL-3.0-only')
-
-makedepends=('rust' 'cargo')
-depends=('glibc' 'libgcc' 'bzip2' 'libxkbcommon' 'fontconfig' 'freetype2' 'vulkan-icd-loader' 'hicolor-icon-theme')
-
-provides=("${_appname}")
-
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
-sha256sums=('015e1ea488bdee030c1c1470379fe987561ed59a58afe38943b8bc8a1b963e1e')
-
+depends=('fontconfig' 'freetype2' 'vulkan-icd-loader' 'libxkbcommon' 'hicolor-icon-theme')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ghreprimand/odytty/releases/download/v$pkgver/odytty-$pkgver.tar.gz")
+# Replaced with the real checksum by `updpkgsums` before each AUR publish.
+sha256sums=('d98407882fa9a20543fb403f26a7c276fa10397299ffe31f7e1b58ed9e772df3')
 
 prepare() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
-
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
-
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --release --frozen
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --frozen
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+    cd "$pkgname-$pkgver"
 
-	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
-
-	install -Dm644 "dist/linux/io.unfinished_works.odytty.desktop" "${pkgdir}/usr/share/applications/io.unfinished_works.odytty.desktop"
-	install -Dm644 "dist/linux/io.unfinished_works.odytty.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.unfinished_works.odytty.metainfo.xml"
-
-	install -d "${pkgdir}/usr/share/icons"
-	cp -a "dist/icons/hicolor" "${pkgdir}/usr/share/icons/"
-
-	for doc in docs/*.md; do
-		file="$(basename ${doc})"
-		name="${file%.*}"
-		ext="${file##*.}"
-		new_name="${name^^}.${ext}"
-
-		install -Dm644 "${doc}" "${pkgdir}/usr/share/doc/${pkgname}/${new_name}"
-	done
-
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 target/release/odytty "$pkgdir/usr/bin/odytty"
+    install -Dm644 dist/linux/io.unfinished_works.odytty.desktop \
+        "$pkgdir/usr/share/applications/io.unfinished_works.odytty.desktop"
+    install -Dm644 dist/linux/io.unfinished_works.odytty.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/io.unfinished_works.odytty.metainfo.xml"
+    install -d "$pkgdir/usr/share/icons"
+    cp -a dist/icons/hicolor "$pkgdir/usr/share/icons/"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 docs/install.md "$pkgdir/usr/share/doc/$pkgname/install.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
