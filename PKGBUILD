@@ -1,7 +1,7 @@
 # Maintainer: fdossena <info@fdossena.com>
 
 pkgname=flogo
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Create and run programs using flow charts'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,11 +10,11 @@ license=('AGPL-3.0-or-later')
 depends=('electron')
 makedepends=()
 provides=('flogo')
-source=(https://downloads.fdossena.com/Projects/Flogo/Flogo-1.3.0-asar.tar.gz
+source=(https://downloads.fdossena.com/Projects/Flogo/Flogo-1.3.1-asar.tar.gz
         flogo.desktop
         flogo.sh
         flogo-mime.xml)
-sha256sums=(9573b1b75f55f695d3510092a529acb101afc118a390dbc25d7a907e40ca390e SKIP SKIP SKIP)
+sha256sums=(82df50ac8d5b426b2d23360e951e0311324844d6ff8e9069b5d2c6de5aa4142a SKIP SKIP SKIP)
 
 package() {
   mkdir -p "$pkgdir/usr/lib/$pkgname"
