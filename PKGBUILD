@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=chron
-_pkgver=2.3-62
+_pkgver=2.3-63
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-scales
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('23964d5235079139c588b19ad2e6ed80')
-b2sums=('a35776da83ce8a84017e8f0bce857a530502892f842921ba5e1e98342644f8d1ee20840e35a80d950558930fdf3170f50a783b58e022ced37b92fc608c58382d')
+md5sums=('7024d9acee42e3cd1c2fe8fe2a0fc855')
+b2sums=('05743b44a9befecbbcdd96e4c6368a22d7815e83c394015f96344998633ef588240608ddfeab34cd19693e7a5508f90d97cc4c77d094da97da502a40502e51b6')
 
 build() {
   mkdir build
