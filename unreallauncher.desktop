@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Unreal Launcher
+Comment=Launcher made for UnrealStudios needs
+Exec=unreallauncher
+Icon=unreallauncher
+Terminal=false
+Type=Application
+Categories=Game;
