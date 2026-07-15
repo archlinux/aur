@@ -1,5 +1,5 @@
 # Maintainer: OuinOuin74 ouinouin@ouinouin.eu
-pkgname=hhd-steamos-bridge
+pkgname=steamos-manager-hhd-bridge
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="D-Bus remote bridge letting vanilla steamos-manager control TDP and GPU clock through Handheld Daemon"

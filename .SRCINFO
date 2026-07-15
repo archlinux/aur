@@ -1,15 +1,15 @@
-pkgbase = hhd-steamos-bridge
+pkgbase = steamos-manager-hhd-bridge
 	pkgdesc = D-Bus remote bridge letting vanilla steamos-manager control TDP and GPU clock through Handheld Daemon
 	pkgver = 0.2.1
 	pkgrel = 1
-	install = hhd-steamos-bridge.install
+	install = steamos-manager-hhd-bridge.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = hhd
 	depends = steamos-manager
-	source = hhd-steamos-bridge::git+https://github.com/OuinOuin74/hhd-steamos-bridge.git#tag=v0.2.1
+	source = steamos-manager-hhd-bridge::git+https://github.com/OuinOuin74/hhd-steamos-bridge.git#tag=v0.2.1
 	sha256sums = af7b1a419189d6cc5d56eaa7a96dcc9a8f8be073565baee2645a57803f1f52d4
 
-pkgname = hhd-steamos-bridge
+pkgname = steamos-manager-hhd-bridge
