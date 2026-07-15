@@ -1,6 +1,6 @@
 pkgbase = crosswords
 	pkgdesc = Crossword player and editor for GNOME
-	pkgver = 0.3.18
+	pkgver = 0.3.18.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jrb/crosswords
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = crosswords
 	depends = python-lxml
 	depends = python-puzpy
 	depends = python-regex
-	source = https://gitlab.gnome.org/jrb/crosswords/-/archive/0.3.18/crosswords-0.3.18.tar.gz
-	sha256sums = 7e56689f9b03f28aeb8adf3d07e891c0beef54fda4d6ae6009105eb92dd43540
+	source = https://gitlab.gnome.org/jrb/crosswords/-/archive/0.3.18.1/crosswords-0.3.18.1.tar.gz
+	sha256sums = 493623de5aa3c4ee1a465ae41ffd389d365f72af87afcd0e2ef66a90d45a76e9
 
 pkgname = crosswords
