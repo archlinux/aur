@@ -9,7 +9,7 @@
 
 pkgname=mineradio
 pkgver=1.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
@@ -41,17 +41,21 @@ sha256sums=('SKIP'
 build() {
   cd "$srcdir/Mineradio-$pkgver"
 
-  # Fix 1: Use icon.png on Linux instead of icon.ico
-  sed -i "s|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');|const APP_ICON_ICO = path.join(__dirname, '..', 'build', process.platform === 'win32' ? 'icon.ico' : 'icon.png');|" desktop/main.js
+  # Apply all Linux compatibility fixes via Python (avoid sed escaping issues)
+  python3 << 'PATCH_EOF'
+import re
 
-  # Fix 2: Replace Windows-only GPU switches with Linux-compatible ones
-  # Find the CHROMIUM_PERFORMANCE_SWITCHES block and rewrite it
-  python3 -c "
-import re, sys
+# Fix 1: desktop/main.js - icon path
 with open('desktop/main.js', 'r') as f:
     content = f.read()
 
-old = '''const CHROMIUM_PERFORMANCE_SWITCHES = [
+content = content.replace(
+    "const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');",
+    "const APP_ICON_ICO = path.join(__dirname, '..', 'build', process.platform === 'win32' ? 'icon.ico' : 'icon.png');"
+)
+
+# Fix 2: desktop/main.js - GPU switches
+old_switches = """const CHROMIUM_PERFORMANCE_SWITCHES = [
   ['autoplay-policy', 'no-user-gesture-required'],
   ['ignore-gpu-blocklist'],
   ['enable-gpu-rasterization'],
@@ -63,9 +67,9 @@ old = '''const CHROMIUM_PERFORMANCE_SWITCHES = [
   ['disable-backgrounding-occluded-windows'],
   ['force_high_performance_gpu'],
   ['use-angle', 'd3d11'],
-];'''
+];"""
 
-new = '''const CHROMIUM_PERFORMANCE_SWITCHES = [
+new_switches = """const CHROMIUM_PERFORMANCE_SWITCHES = [
   ['autoplay-policy', 'no-user-gesture-required'],
   ...(process.platform === 'win32' ? [
     ['ignore-gpu-blocklist'],
@@ -83,15 +87,27 @@ new = '''const CHROMIUM_PERFORMANCE_SWITCHES = [
   ['disable-background-timer-throttling'],
   ['disable-renderer-backgrounding'],
   ['disable-backgrounding-occluded-windows'],
-];'''
+];"""
 
-content = content.replace(old, new)
+content = content.replace(old_switches, new_switches)
+
 with open('desktop/main.js', 'w') as f:
     f.write(content)
-"
 
-  # Fix 3: Fix beatmap cache path for Linux
-  sed -i "s|const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || 'D:\\\\\\\\MineradioCache\\\\\\\\beatmaps';|const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || (process.platform === 'win32' ? 'D:\\\\\\\\MineradioCache\\\\\\\\beatmaps' : path.join(require('os').homedir(), '.cache', 'Mineradio', 'beatmaps'));|" server.js
+# Fix 3: server.js - beatmap cache path
+with open('server.js', 'r') as f:
+    content = f.read()
+
+old_cache = "const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || 'D:\\\\MineradioCache\\\\beatmaps';"
+new_cache = "const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || (process.platform === 'win32' ? 'D:\\\\MineradioCache\\\\beatmaps' : path.join(require('os').homedir(), '.cache', 'Mineradio', 'beatmaps'));"
+
+content = content.replace(old_cache, new_cache)
+
+with open('server.js', 'w') as f:
+    f.write(content)
+
+print("All patches applied successfully")
+PATCH_EOF
 
   # Install npm dependencies (including devDependencies for electron-builder)
   npm install --prefer-offline
