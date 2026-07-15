@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'libnice'
   'libnotify'
   'playerctl'
+  'python-av'
   'python-click'
   'python-cryptography'
   'python-distro'
@@ -33,10 +34,12 @@ depends=(
   'python-packaging'
   'python-pefile'
   'python-pillow'
+  'python-prettytable'
   'python-psutil'
   'python-pyautogui'
   'python-pydantic'
   'python-qrcode'
+  'python-questionary'
   'python-requests'
   'python-websockets'
   'python-wsproto'
@@ -70,7 +73,7 @@ optdepends=(
 _commit=a8798f26530933f3e41791d5c5304f6df83c90b2
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/BYTEDz/FerrumCast.git#commit=${_commit}")
-sha256sums=('256fbe3e66622f6f29794f1c0f3a89fd615c9e7884e283aba62b7d019753cda3'
+sha256sums=('618dd952d49e9780d605e829953eb00bfc7d33caf94285cbde83cd6a0651ec52'
             '75c2627b16d1b3074f9bd68ac274c74533dced37e32ff5c38b76173747a52bc6')
 
 prepare() {
