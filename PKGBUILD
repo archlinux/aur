@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.21459.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -51,10 +51,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.21459.0/claude-desktop-1.21459.0-linux.tar.gz")
-sha256sums_x86_64=('b7e1e28e8a647d1921a71defde4594b1477fc1bf4818a57720e08d92e9627962')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.21459.0/claude-desktop-1.21459.0-linux-aarch64.tar.gz")
-sha256sums_aarch64=('e214cff1e4f20c92b3031391784f205aa98ff2119e72cdea929d61736fb4a3b5')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.21459.0-2/claude-desktop-1.21459.0-linux.tar.gz")
+sha256sums_x86_64=('6223aa2efb7b3165957ef420e69fe82a72e13bdad75fb29f694fe44fd7471b04')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.21459.0-2/claude-desktop-1.21459.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('4dbf54d8be9a8498b06cf270a70a5b1848ded46827950a48d14b72e0c075c2d8')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -82,15 +82,17 @@ package() {
     install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
 
     # Install desktop entry.
-    # Filename is "claude-desktop.desktop" to match the live window app_id
-    # "claude-desktop" (Chromium's GetXdgAppId() reads the app's desktopName
-    # "claude-desktop.desktop" from app.asar package.json, strips ".desktop").
-    # On native Wayland there is no WM_CLASS, so KWin/GNOME match by app_id; if
-    # the .desktop basename doesn't equal the app_id the dock icon is generic and
-    # Alt+Tab shows a duplicate (issue #148). StartupWMClass=claude-desktop fixes
-    # the X11/XWayland path. Content mirrors the official Claude Desktop .deb.
+    # Filename is "com.anthropic.Claude.desktop" to match the live window app_id
+    # "com.anthropic.Claude" (Chromium's GetXdgAppId() reads the app's desktopName
+    # "com.anthropic.Claude.desktop" from app.asar package.json, strips ".desktop").
+    # We now ride upstream's official "com.anthropic.Claude" app identity rather
+    # than pinning our own "claude-desktop". On native Wayland there is no
+    # WM_CLASS, so KWin/GNOME match by app_id; if the .desktop basename doesn't
+    # equal the app_id the dock icon is generic and Alt+Tab shows a duplicate
+    # (issue #148). StartupWMClass=com.anthropic.Claude fixes the X11/XWayland
+    # path. Content mirrors the official Claude Desktop .deb.
     install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/claude-desktop.desktop" << 'EOF'
+    cat > "$pkgdir/usr/share/applications/com.anthropic.Claude.desktop" << 'EOF'
 [Desktop Entry]
 Name=Claude
 Comment=Desktop application for Claude.ai
@@ -100,7 +102,7 @@ Exec=claude-desktop %U
 Icon=claude-desktop
 Type=Application
 StartupNotify=true
-StartupWMClass=claude-desktop
+StartupWMClass=com.anthropic.Claude
 # second-instance just focuses mainWindow; suppress GNOME's default "New Window" item
 SingleMainWindow=true
 Categories=Utility;Development;
