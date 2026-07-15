@@ -80,7 +80,7 @@ prepare() {
     local _run_file="FreeFileSync_${pkgver}_[Donation_Edition]_Install.run"
     local offset
     offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
-    offset=$((offset + 16))
+    offset=$((offset + 16))  # skip past the <FFS_TAR_START> marker (16 bytes)
     tail -c +$offset "$_run_file" | tar -xf - --wildcards \
         FreeFileSync.tar.gz \
         freefilesync-mime.xml \
