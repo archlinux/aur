@@ -4,7 +4,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 # Contributor: Ryan Steed <ryan.steed.usa@pm.me>
 pkgname=opensnitch-git
-pkgver=1.8.0.r18.65480fa5
+pkgver=1.8.0.r215.5c79d419
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -57,7 +57,7 @@ source=(
 )
 sha256sums=('SKIP'
             'd88cfe1acce3389ab577958048e5b642fc3b34d12f2f2f69123113bfe49d0099'
-            '812824386d1ef72effd10c193d4fcbe371bf987a072cea77f9bc45bd526dc36e'
+            '34890f234ef868919d29ba19ab2a9179d626dcc457465d3dffc8aa1af0019c28'
             'e77d2f6a6ada2761a987828e00c7725dee0c06bdb8793ae414d0df7fb1eb44a7'
             '09bd2cda97f74033617fd31efce8eba68eac03b29ea6d0f55aba2cef18824a72')
 
