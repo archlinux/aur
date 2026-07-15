@@ -1,6 +1,6 @@
 pkgbase = python-eccodes
 	pkgdesc = Python interface to the ecCodes GRIB/BUFR decoder/encoder
-	pkgver = 2.47.0
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://github.com/ecmwf/eccodes-python
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-eccodes
 	depends = python-cffi
 	depends = python-findlibs
 	depends = python-numpy
-	source = eccodes::git+https://github.com/ecmwf/eccodes-python.git#tag=2.47.0
-	b2sums = f73a4e74f8756a16763322e27773a29449e7e5722e5c57029300a947ebcad93464dc77e5087bbf6837f5871631d5df37aab26f3c25882bd1e11863ccb34d4b74
+	source = eccodes::git+https://github.com/ecmwf/eccodes-python.git#tag=2.48.0
+	b2sums = 55c8d4d1c2e08556f5904bc989e8616b66776661ad0ca59fe3c322c68970f59f4524632c5f338c591472bbb440b5f23fa3c2ee6bc98677e437c50bae47e7e853
 
 pkgname = python-eccodes
