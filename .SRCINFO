@@ -1,0 +1,16 @@
+pkgbase = gondolin
+	pkgdesc = Micro-VM sandbox CLI for running untrusted code with controlled filesystem and network access
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/earendil-works/gondolin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs>=23.6.0
+	depends = qemu-base
+	depends = qemu-img
+	options = !strip
+	source = https://registry.npmjs.org/@earendil-works/gondolin/-/gondolin-0.12.0.tgz
+	sha256sums = 27ad66f75fe76a848388291fa218e9ac9ac6dac47b9a818a3fcc589016a3f9e2
+
+pkgname = gondolin
