@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="cargo-diet"
-_cratever="1.3.0"
+_cratever="1.3.2"
 pkgname="cargo-diet"
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo m...'
 url='https://crates.io/crates/cargo-diet'
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-diet/1.3.0/download")
-sha512sums=('3bd20bced81771c706f5ee4cd528ce22d75c08066d0d1d023f2f8d2078d9f7d74c706f1d8abc369416fd1e87b4dc944e3e739758a3663e99be549de518f1e1ac')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-diet/1.3.2/download")
+sha512sums=('c900f72a588cec841df28ee88ae6c71f4d28c02e9b9a268d375857e272d37e717cb8543f7451e79389e5b4512380cf36b41884a0075ecd8bc0743b35fa0cce01')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_crate-$_cratever"
-	
+
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
@@ -37,6 +37,24 @@ build() {
 	cargo auditable build \
 		--frozen \
 		--release
+}
+
+_check() {
+	cd "$srcdir/$_crate-$_cratever"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	cargo test \
+		--frozen \
+		--release \
+		"${@}"
+}
+
+check() {
+	_check --bins
+	_check --lib
 }
 
 package() {
