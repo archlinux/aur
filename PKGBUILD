@@ -5,18 +5,24 @@
 
 pkgname=feluda
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 _commit=c0f13c9
 pkgdesc='Detect license usage restrictions in your project'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/anistark/$pkgname"
-license=('MIT')
-depends=('glibc' 'libgcc' 'openssl' 'zlib')
-makedepends=('cargo' 'git')
+license=(MIT)
+depends=(
+    glibc
+    libgcc      libgcc_s.so
+    libgit2     libgit2.so
+    libssh2     libssh2.so
+    openssl     libssl.so
+)
+makedepends=(cargo git)
 source=("$pkgname::git+$url#commit=${_commit}?signed")
 sha256sums=('bebe4dc1dbedd1b9248f94c74856e0d53aae7a49dbfa54dcb5697fb2ec6f9810')
-validpgpkeys=('40B91E0A4E89F8434EA16C9E9864F6B815BC2B00') # Kumar Aniruhda
-options=('!lto')
+validpgpkeys=(40B91E0A4E89F8434EA16C9E9864F6B815BC2B00) # Kumar Aniruhda
+options=(!lto)
 
 prepare() {
     cd "$pkgname"
@@ -31,6 +37,8 @@ build() {
     export CARGO_PROFILE_RELEASE_STRIP=symbols
     export RUSTFLAGS="--remap-path-prefix=$srcdir=/ --remap-path-prefix=$(pwd)=/"
     export OPENSSL_NO_VENDOR=1
+    export LIBGIT2_NO_VENDOR=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cd "$pkgname"
     cargo build --frozen --release --all-features
 }
