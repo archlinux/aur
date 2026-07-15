@@ -1,13 +1,13 @@
 pkgbase = opkssh
 	pkgdesc = opkssh (OpenPubkey SSH)
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/openpubkey/opkssh
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
 	makedepends = git
-	source = opkssh-0.15.0-1.tar.gz::https://github.com/openpubkey/opkssh/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = 036287cf27ce2baa3715fe917e2d6b300a499ee8766c1895bfb708690162502c
+	source = opkssh-0.16.0-1.tar.gz::https://github.com/openpubkey/opkssh/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = b7c326b24d6fe97056d459f2d5ef7eafb25890b70279537746a368467fe2dc3b
 
 pkgname = opkssh
