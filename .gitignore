@@ -1,7 +1,5 @@
-/*
-!/.github
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
-!/PKGBUILD.template
-!/.nvchecker.toml
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
