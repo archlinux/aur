@@ -1,15 +1,15 @@
 # Maintainer: jcvega <jcvega0b1@gmail.com>
 pkgname=hypr-relay
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Lightweight daemon for Hyprland that bridges system events to desktop notifications"
 arch=('x86_64')
 url="https://github.com/Vega-0b1/hypr-relay"
 license=('MIT')
-depends=('wireplumber' 'brightnessctl' 'bluez-utils')
+depends=('libpulse' 'wireplumber' 'brightnessctl' 'bluez-utils')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Vega-0b1/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ad69785594bf3f55d7f72d2768be221d1e385650c01beb4c982f56f46f50f5c1')
+sha256sums=('3511076c6d96ac2b3a4f4c7d47653a76e347c28444ffb0a2c996f6b3d6f63f59')
 
 prepare() {
     cd "$pkgname-$pkgver"
