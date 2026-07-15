@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=(any)
@@ -20,6 +20,7 @@ depends=(
     python-requests
     python-requests-ntlm
     python-samplomatic
+    python-scipy
     python-urllib3
 )
 optdepends=(
@@ -39,7 +40,7 @@ checkdepends=(
     python-pytest
 )
 source=($_pkgname::git+https://github.com/Qiskit/$_pkgname.git#tag=$pkgver)
-b2sums=('0e998cc505152a92755d7b55de095885d7ec81b00b8b27d51b26e5b79773038561a6f2041f2e69567ebb85337b65c29a741a0f0b08b180cbabb382a69c596850')
+b2sums=('32bb930cafbb3aed777e3afa26a978b4d613fecfbcbc874e401342bd13bbdfd96e7df3c99d5220f082182f45a1d505b00c13668afd380475baf9d624bde29063')
 
 build() {
     cd $_pkgname
