@@ -1,5 +1,5 @@
 pkgname=hawkbit-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform CLI client for Eclipse hawkBit Management API"
 arch=("any")
