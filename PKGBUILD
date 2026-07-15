@@ -6,7 +6,7 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard-beta
-pkgver=5.40.beta.129
+pkgver=5.40.beta.130
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=(
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
 sha512sums=(
-    'cf5c7750a95e603ff5f99cd63eff9f8d713728c0b56b6913644b2937bd3fdf186d6b8a1642c3e9c84efc52f822dcdc2008de0cf922003d6bb36162b6b3a3c86a'
+    '00384eed0db35a84725122798b069494eb93f06e8c29a8ea6fbaf9cf3eb19a9fe12557bc8eca695094409de3d086549adc68849c21e6bf003964a41d35c59a53'
     '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
 )
 
