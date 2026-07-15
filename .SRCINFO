@@ -1,0 +1,30 @@
+pkgbase = ros2-lyrical
+	pkgdesc = A set of software libraries and tools for building robot applications
+	pkgver = 2026.06.23
+	pkgrel = 1
+	url = https://docs.ros.org/en/lyrical/
+	install = ros2-lyrical.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = gcc
+	depends = ros2-arch-deps
+	depends = qt6-base
+	depends = nvidia-cg-toolkit
+	depends = assimp
+	depends = gmock
+	depends = lttng-ust
+	depends = pyside6
+	depends = python-pyqt6
+	depends = python-pyqt6-sip
+	depends = pyqt-builder
+	depends = orocos-kdl
+	depends = zenoh-cpp
+	optdepends = gz-harmonic: For Gazebo Simulation support
+	conflicts = ros2-lyrical-base
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-lyrical-20260623
+	sha256sums = SKIP
+
+pkgname = ros2-lyrical
