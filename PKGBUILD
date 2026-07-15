@@ -1,8 +1,8 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.19.1
-pkgrel=5
+pkgver=2.20.0
+pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -63,14 +63,12 @@ checkdepends=(
 source=(
   "git+${url}.git#tag=v${pkgver}" 
   "vibe_reduce_relayouts.patch::https://github.com/mistralai/mistral-vibe/compare/main...ikicic:mistral-vibe:reduce_relayouts.patch")
-sha256sums=('aa7cde48b4543d50fa5f76ed56a326bb648fdd46fec68dc64f96a15e615d4b6c'
+sha256sums=('c16ca06da705f325163be129dc2cf1682b869ef1b5ea30d6c5d5009b59bca830'
             '126311122dfefdcf235f41a209d2606000741d1d1b7392e8264c74f55cd1d0d3')
 
 prepare() {
     cd "$pkgname"
-    # Upstream PR (Ivica Kičić): skip relayouts for animation frames and
-    # for the loading-hint / narrator-status single-line updates that don't
-    # change width between ticks; avoids whole-screen relayouts and high CPU.
+    # Upstream WIP (Ivica Kičić): reduce relayouts / CPU usage.
     patch -Np1 -i "../vibe_reduce_relayouts.patch"
 }
 
