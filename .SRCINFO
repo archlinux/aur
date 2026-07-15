@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-arch-logo-symbol-blue
+	pkgdesc = A Plymouth boot splash theme for Arch Linux featuring a minimalist official Arch Linux logo and progress bar in classic blue
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/brawler2011/plymouth-theme-arch-logo-symbol-blue
+	arch = any
+	license = MIT
+	depends = plymouth
+	source = plymouth-theme-arch-logo-symbol-blue-1.0.0.tar.gz::https://github.com/brawler2011/plymouth-theme-arch-logo-symbol-blue/archive/v1.0.0.tar.gz
+	sha256sums = bc79acfcc6a8ca0bcc41b410bcf2cd4b010f4e03f107736ace2ad3d4a1d68392
+
+pkgname = plymouth-theme-arch-logo-symbol-blue
