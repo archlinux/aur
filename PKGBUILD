@@ -1,7 +1,7 @@
 # Maintainer: OuinOuin74 ouinouin@ouinouin.eu
 pkgname=steamos-manager-hhd-bridge
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus remote bridge letting vanilla steamos-manager control TDP and GPU clock through Handheld Daemon"
 arch=('x86_64')
 url='https://github.com/OuinOuin74/hhd-steamos-bridge'
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'hhd' 'steamos-manager')
 makedepends=('cargo')
 install=$pkgname.install
 source=("${pkgname}::git+https://github.com/OuinOuin74/hhd-steamos-bridge.git#tag=v${pkgver}")
-sha256sums=('cf3c5900dc6183dee7a54e0cef0804c04a2bdf37f71291cb341229ff3c2435b2')
+sha256sums=('a650f6c6078266cec84a0327511aa77acaff66eafc88e26fd322c2e884dd7c32')
 
 prepare() {
   cd "$pkgname"
