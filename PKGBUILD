@@ -1,32 +1,35 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=sshp
-pkgver=1.1.3
-pkgrel=10
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='Parallel SSH Executor'
-arch=('x86_64')
-url='https://github.com/bahamas10/sshp'
-license=('MIT')
-depends=('glibc')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3a3dde753df3bd27b605dd9b72920287b3d348c5e7dcf3d334e1eaa7d48e11d15dd52d5b0445b674ac30d76b8a53564b404ed319e5a0a4ff39e0752069b2f2a3')
+arch=(x86_64)
+url=https://github.com/bahamas10/sshp
+license=(MIT)
+depends=(glibc)
+source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('a762956f3582724c2bd078fb277db254b420afdeb54801b641d7043acb4b0f09ce831898deee642f23f578d22618a7fa8435baf1a247da77d99e1928218e5e34')
+
+prepare() {
+    cd $pkgname-$pkgver
+    sed -i 's|$(CFLAGS) $^|$(CFLAGS) $(LDFLAGS) $^|' Makefile
+}
 
 build() {
     cd $pkgname-$pkgver
-    export CFLAGS+=' -fPIE -Wl,-z,relro,-z,now'
     make
 }
 
 check() {
     cd $pkgname-$pkgver
-    make -k check
+    make test
 }
 
 package() {
     cd $pkgname-$pkgver
     install -Dm755 sshp -t "$pkgdir/usr/bin"
     install -Dm644 man/sshp.1 -t "$pkgdir/usr/share/man/man1"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/sshp"
     install -Dm644 CHANGES.md -t "$pkgdir/usr/share/doc/sshp"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/sshp"
 }
