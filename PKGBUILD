@@ -4,7 +4,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.25.0
+pkgver=7.26.0
 _bettersqlite3ver=12.9.0
 _bufferutilver=4.0.9
 _elecronver=145 # whenever update the bettersqlite, update this one by one to try the proper version.
@@ -35,7 +35,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('acab293a256863c6b78586f32f93774cd1edb5cd6213da1a615142628c90e975'
+sha256sums=('91ab6dc764fa71ba9cb1cfdf6206f8ff0a28b4acba0ccedb3e934dbf7ec240ad'
             '59d9e3beed32ff516fa79fc09bfb819a7abd84d077a77abfc68d85a6d79ac757'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             '916f75f612d353651d3d04a414c29d157521a06765683742a66279acac904744'
@@ -85,9 +85,10 @@ prepare() {
 	sg_patch \
 		'if("darwin"===process.platform)$MAC;else if("win32"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}' \
 		'if("darwin"===process.platform)$MAC;else if("linux"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}'
+	# System Electron includes app.asar in argv; do not treat it as a Markdown file.
 	sg_patch \
-		'if($COND){$$$A}else $APP.app.quit()' \
-		'if($COND){$$$A}else return $APP.app.quit(),1;'
+		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&!$ARG.startsWith(`${$CONFIG.default.protocol}:`)&&$EXT.length>0&&".exe"!==$EXT}' \
+		'function $F($ARG){const $EXT=$PATH.default.extname($ARG).toLowerCase();return!$ARG.startsWith("-")&&!$ARG.startsWith(`${$CONFIG.default.protocol}:`)&&$EXT.length>0&&".exe"!==$EXT&&".asar"!==$EXT}'
 	sg_patch \
 		'($$$PRE,function(){$$$INIT}(),0)' \
 		'($$$PRE,function(){$$$INIT}())'
