@@ -35,17 +35,12 @@ pkgver() {
         cat "$_pkgver_cache_file" && return 0
     fi
 
-    # Fetch the thank-you page and extract the version from the Linux download URL
-    local _page
-    _page=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}")
-
-    # Extract version from: FreeFileSync_14.10_%5BDonation_Edition%5D_Linux.zip
+    # Extract version from the Linux download URL on the thank-you page:
+    # FreeFileSync_14.10_%5BDonation_Edition%5D_Linux.zip
     local _ver
-    _ver=$(printf '%s\n' "$_page" \
-        | grep -o 'FreeFileSync_[0-9.]*_%5BDonation_Edition%5D_Linux\.zip' \
-        | head -1 \
-        | grep -oE '[0-9]+\.[0-9]+([0-9]+)?(\.[0-9]+)?' \
-        | head -1)
+    _ver=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}" \
+        | grep -oE 'FreeFileSync_[0-9.]+_%5BDonation_Edition%5D_Linux\.zip' \
+        | head -1 | grep -oE '[0-9]+\.[0-9]+([0-9]+)?(\.[0-9]+)?' | head -1)
 
     if [[ -z "$_ver" ]]; then
         echo "Error: could not determine version from thank-you page" >&2
@@ -59,14 +54,12 @@ prepare() {
     pkgver=$(pkgver "${_update_and_cache_flag}")
     echo "Downloading FreeFileSync ${pkgver} Donation Edition..."
 
-    # Fetch the thank-you page to get the full download URL (with expire & hash)
-    local _page
-    _page=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}")
+    local _zip_file="FreeFileSync_${pkgver}_Donation_Edition_Linux.zip"
 
-    # Extract the full Linux download URL from the HTML
+    # Fetch the thank-you page to get the full download URL (with expire & hash)
     local _dl_url
-    _dl_url=$(printf '%s\n' "$_page" \
-        | grep -o 'https://freefilesync.org/supporter-edition/FreeFileSync_[^"]*Linux\.zip[^"]*' \
+    _dl_url=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}" \
+        | grep -oE 'https://freefilesync.org/supporter-edition/FreeFileSync_[^"]*Linux\.zip[^"]*' \
         | head -1)
 
     if [[ -z "$_dl_url" ]]; then
@@ -76,31 +69,22 @@ prepare() {
 
     cd "${srcdir}"
 
-    # Download the Donation Edition zip
-    curl -fL -A Mozilla -o "FreeFileSync_${pkgver}_Donation_Edition_Linux.zip" "$_dl_url"
-
-    # Extract the .run installer and .license key
-    unzip -o "FreeFileSync_${pkgver}_Donation_Edition_Linux.zip" -d "${srcdir}"
+    # Download and extract the Donation Edition zip
+    curl -fL -A Mozilla -o "$_zip_file" "$_dl_url"
+    unzip -o "$_zip_file" -d "${srcdir}"
 
     # The .license file is the donor activation key; save it for package()
-    local _license_file
-    _license_file=$(find "${srcdir}" -name '*.license' | head -1)
-    if [[ -z "$_license_file" ]]; then
-        echo "Error: .license file not found in zip" >&2
-        return 1
-    fi
-    cp "$_license_file" "${srcdir}/Registered.dat"
+    cp "FreeFileSync_${pkgver}_[Donation_Edition]_Install.license" "${srcdir}/Registered.dat"
 }
 
 package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    local _run_file
-    _run_file=$(find "$srcdir" -name '*Install.run' | head -1)
-    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
+    local _run_file="FreeFileSync_${pkgver}_[Donation_Edition]_Install.run"
+    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$srcdir/$_run_file" | cut -d : -f 1)
     offset=$((offset + 16))
-    tail -c +$offset "$_run_file" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    tail -c +$offset "$srcdir/$_run_file" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
     # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
     tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
