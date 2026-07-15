@@ -1,7 +1,7 @@
 # Maintainer: Alwyn Kik <alwyn at kik dot pw>
 
 pkgname=terraform-provider-gandi
-pkgver=2.0.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Terraform provider for Gandi LiveDNS"
 url="https://github.com/tiramiseb/terraform-provider-gandi"
@@ -10,7 +10,7 @@ arch=("x86_64")
 makedepends=("go" "git")
 _gourl="github.com/terraform-providers"
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('2db68a5f917b1159991f89246231fcce6f0ec8b2a27f29702c29f110d43d2322')
+sha256sums=('4155dfda35c3484d10ad38d0d00406812c6716fd00a2d5dc7e2a55d0c1e9f697')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
