@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.matrix
-_pkgver=1.6.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,15 +35,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('267132d3e3c59086b32db98044946d97')
-b2sums=('2712a3afd22b7f9a8c9ad2d2c5bfcd9c4ec24b95ac9587f4cbbd15d58556ea5845757a0a3579004e6a6ae61353b24893c93110e72788a846b1c3e6f86fcfa035')
+md5sums=('0121ee8563a09299dcb7681f0655dd4f')
+b2sums=('7ec1922f7d26968c1b67697d0902d68542c99ea7ab28bac44ed0d2f46f887a096ffb1df1bf51886babf80083fb8117794fcabd17c0b2032da6bfddb9ef9e8919')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
