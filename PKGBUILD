@@ -4,7 +4,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -52,10 +52,8 @@ source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
   git+https://skia.googlesource.com/skcms.git#commit=96d9171c94b937a1b5f0293de7309ac16311b722
   git+https://github.com/webmproject/sjpeg.git#commit=94e0df6d0f8b44228de5be0ff35efb9f946a13c9
-  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=2.1.5.1
 )
 sha256sums=(
-  SKIP
   SKIP
   SKIP
   SKIP
