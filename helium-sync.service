@@ -5,6 +5,11 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/helium-sync-daemon
 Restart=always
+# Give the daemon up to 30 seconds to finish sync before killing on shutdown
+TimeoutStopSec=30
+# Send SIGTERM first, then SIGKILL after timeout
+KillMode=mixed
+KillSignal=SIGTERM
 
 [Install]
 WantedBy=default.target
