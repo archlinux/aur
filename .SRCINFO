@@ -7,7 +7,7 @@ pkgbase = agentics-desktop
 	license = custom
 	options = !strip
 	options = !debug
-	source = agentics-desktop-0.1.34-x86_64.AppImage::https://software.agentics.co.za/agentics/x86_64/agentics-desktop-0.1.34-x86_64.AppImage
+	source = agentics-desktop-0.1.34-x86_64.AppImage::https://repo.agentics.co.za/x86_64/agentics-desktop-0.1.34-x86_64.AppImage
 	sha512sums = 48323e47740d2d1e22792b0d4a2de141b98cf2eb8ae6f6c6f8e1dcde0552d58936eecef4081bb78e8b109434ed8c933c60c1739b49bf053e0cc66e60ef34f584
 
 pkgname = agentics-desktop
