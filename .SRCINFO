@@ -1,6 +1,6 @@
 pkgbase = python-ufo2ft
 	pkgdesc = A bridge from UFOs to FontTools objects
-	pkgver = 3.8.2
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/googlefonts/ufo2ft
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-ufo2ft
 	depends = python-fs
 	optdepends = python-compreffor
 	optdepends = python-skia-pathops
-	source = https://files.pythonhosted.org/packages/source/u/ufo2ft/ufo2ft-3.8.2.tar.gz
-	sha256sums = 8304ba15a23c901b99f8a129fa04364546e6c9f9a4ed37e627c11844fd7ea8d4
+	source = https://files.pythonhosted.org/packages/source/u/ufo2ft/ufo2ft-3.9.0.tar.gz
+	sha256sums = 2fea363d651a78fc00c7ef2f94ae5fb0c843bf53cc76c480f7b5227c7fbe3e2d
 
 pkgname = python-ufo2ft
