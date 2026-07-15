@@ -1,0 +1,3401 @@
+diff --git a/libs/basic_games/games/game_openmw.py b/libs/basic_games/games/game_openmw.py
+index a8f4856..1dbfb52 100644
+--- a/libs/basic_games/games/game_openmw.py
++++ b/libs/basic_games/games/game_openmw.py
+@@ -13,6 +13,10 @@ Unlike the Windows Morrowind plugin this:
+     order instead of dropping them, and routes groundcover plugins to
+     groundcover= lines (listed in <profile>/groundcover.txt) so they don't tank
+     performance as content= entries.
++  - uses OpenMW's native config-directory chaining for MO2 profiles with local
++    settings, making the profile OpenMW's writable user-config directory without
++    copying or classifying settings/storage files, and synchronizes the
++    launcher's separate content list with the generated native paths.
+ """
+ 
+ from __future__ import annotations
+@@ -26,7 +30,37 @@ from PyQt6.QtCore import QDir, QFileInfo, qInfo, qWarning
+ import mobase
+ 
+ from ..basic_game import BasicGame
+-from .openmw_support.openmw_cfg import write_openmw_cfg
++from .openmw_support.flatpak_access import (
++    PathRequirement,
++    format_access_failures,
++    merge_requirements,
++    probe_flatpak_access,
++)
++from .openmw_support.openmw_cfg import (
++    create_selection_state,
++    find_openmw_cfg,
++    format_name_sample,
++    filter_selected_files,
++    is_openmw_player_stub,
++    normalize_plugin_loadorder,
++    order_plugins_by_loadorder,
++    order_selected_files,
++    read_openmw_selection,
++    read_profile_selector,
++    read_selection_state,
++    restore_profile_config_entries,
++    rollback_file_changes,
++    suspend_profile_config_entries,
++    update_selection_state,
++    unranked_native_plugins,
++    upgrade_selection_state,
++    validate_file_roles,
++    write_local_saves,
++    write_openmw_cfg,
++    write_openmw_launcher_cfg,
++    write_profile_selector,
++    write_selection_state,
++)
+ 
+ _FLATPAK_ID = "org.openmw.OpenMW"
+ 
+@@ -48,15 +82,7 @@ def _flatpak_installed() -> bool:
+ 
+ def _detect_openmw_cfg(prefer_flatpak: bool) -> Path | None:
+     """Return the openmw.cfg to manage, or None if none exists yet."""
+-    candidates = (
+-        [_FLATPAK_CFG, _native_cfg()]
+-        if prefer_flatpak
+-        else [_native_cfg(), _FLATPAK_CFG]
+-    )
+-    for cfg in candidates:
+-        if cfg.is_file():
+-            return cfg
+-    return None
++    return find_openmw_cfg(_native_cfg(), _FLATPAK_CFG, prefer_flatpak)
+ 
+ 
+ # Directories/extensions that mark a folder as valid OpenMW/Morrowind mod data.
+@@ -67,30 +93,7 @@ _VALID_DIRS = {
+ }
+ _PLUGIN_EXTS = {".esp", ".esm", ".omwaddon", ".omwgame", ".omwscripts"}
+ 
+-# Kezyma's "OpenMW Player" drops an empty TES3 stub ESP next to each
+-# OpenMW-native plugin so MO2's right pane can list and order it. The stub is
+-# named "<plugin>.esp" (e.g. "Sun's Dusk.omwaddon.esp" for the real
+-# "Sun's Dusk.omwaddon"). MO2's loadorder.txt therefore records STUB names, but
+-# we emit the real files (_scan_mod skips the stubs), so a stub's rank must be
+-# mapped onto the real name when sorting content= — otherwise every
+-# .omwaddon/.omwscripts/.omwgame plugin is unranked and the content= sort
+-# ignores master-before-dependent order (e.g. SDServiceRefusal.omwaddon before
+-# its parent Sun's Dusk.omwaddon, which makes OpenMW abort on launch).
+-_KEZYMA_STUB_SUFFIXES = (".omwaddon.esp", ".omwscripts.esp", ".omwgame.esp")
+-
+-
+-def _destub_plugin_name(name: str) -> str:
+-    """Return the real OpenMW-native plugin name for a Kezyma stub, else ``name``.
+-
+-    Strips the trailing ``.esp`` wrapper from names like
+-    ``Sun's Dusk.omwaddon.esp`` -> ``Sun's Dusk.omwaddon``. Real .esp/.esm plugins
+-    (no OpenMW-native stem) and names that are already real pass through
+-    unchanged. The suffix check is case-insensitive; the returned name
+-    preserves the original casing of the stem.
+-    """
+-    if name.lower().endswith(_KEZYMA_STUB_SUFFIXES):
+-        return name[:-4]  # strip the trailing ".esp" wrapper
+-    return name
++_SELECTION_STATE_FILE = "fluorine-openmw-selection.json"
+ 
+ 
+ class OpenMWModDataChecker(mobase.ModDataChecker):
+@@ -180,10 +183,9 @@ class OpenMWGame(BasicGame):
+         # 'flatpak' here is our OpenMW launcher (we only register it for OpenMW).
+         return base in {"openmw", "openmw-launcher", "flatpak"}
+ 
+-    def _read_groundcover_txt(self) -> list[str]:
++    def _read_groundcover_txt(self, fallback: list[str]) -> list[str]:
+         """Plugins flagged as groundcover, from <profile>/groundcover.txt,
+-        falling back to groundcover= entries in <profile>/openmw.cfg (Kezyma's
+-        OpenMW Player output) when groundcover.txt is absent."""
++        falling back to the durable profile selection when the file is absent."""
+         try:
+             profile_dir = Path(self._organizer.profile().absolutePath())
+         except Exception:
+@@ -200,27 +202,7 @@ class OpenMWGame(BasicGame):
+                 if line and not line.startswith("#"):
+                     out.append(line)
+             return out
+-
+-        # Fallback: groundcover= entries in the profile's openmw.cfg. Kezyma's
+-        # OpenMW Player writes these directly (Wabbajack modlists like NEMAS
+-        # ship them instead of a groundcover.txt), so parsing them here makes
+-        # Fluorine route grass mods to groundcover= out-of-the-box. We split on
+-        # the first '=' (not startswith) so 'groundcover = X' with spaces around
+-        # '=' is handled the same as 'groundcover=X'.
+-        profile_cfg = profile_dir / "openmw.cfg"
+-        if not profile_cfg.is_file():
+-            return []
+-        out = []
+-        for raw in profile_cfg.read_text(encoding="utf-8", errors="replace").splitlines():
+-            line = raw.strip()
+-            if not line or line.startswith("#") or "=" not in line:
+-                continue
+-            key, _, value = line.partition("=")
+-            if key.strip().lower() == "groundcover":
+-                value = value.strip()
+-                if value:
+-                    out.append(value)
+-        return out
++        return list(fallback)
+ 
+     def _read_loadorder_txt(self) -> list[str]:
+         """Plugin load order from <profile>/loadorder.txt (MO2 right-pane order).
+@@ -245,7 +227,25 @@ class OpenMWGame(BasicGame):
+         for raw in lo_file.read_text(encoding="utf-8", errors="replace").splitlines():
+             line = raw.strip()
+             if line and not line.startswith("#"):
+-                out.append(_destub_plugin_name(line))
++                out.append(line)
++        return normalize_plugin_loadorder(out)
++
++    def _read_archives_txt(self) -> list[str]:
++        """Read additional enabled archives from the active MO2 profile."""
++        try:
++            profile_dir = Path(self._organizer.profile().absolutePath())
++        except Exception:
++            return []
++        archives_file = profile_dir / "archives.txt"
++        if not archives_file.is_file():
++            return []
++        out: list[str] = []
++        for raw in archives_file.read_text(
++            encoding="utf-8", errors="replace"
++        ).splitlines():
++            line = raw.strip().lstrip("*").strip().lstrip("\ufeff")
++            if line and not line.startswith("#"):
++                out.append(line)
+         return out
+ 
+     def _export_openmw_cfg(self, app_name: str) -> bool:
+@@ -254,16 +254,55 @@ class OpenMWGame(BasicGame):
+             return True
+         try:
+             organizer = self._organizer
++            profile = organizer.profile()
++            profile_dir = Path(profile.absolutePath())
++            local_settings = profile.localSettingsEnabled()
++            local_saves = profile.localSavesEnabled()
+             game_dir = Path(self.gameDirectory().absolutePath())
+             data_files = game_dir / "Data Files"
+ 
+-            cfg = _detect_openmw_cfg(prefer_flatpak="flatpak" in Path(app_name).name.lower())
+-            if cfg is None:
++            root_cfg = _detect_openmw_cfg(
++                prefer_flatpak="flatpak" in Path(app_name).name.lower()
++            )
++            if root_cfg is None:
+                 qWarning(
+                     "OpenMW: no openmw.cfg found. Run openmw-launcher once to "
+                     "create it, then mods will be applied on the next launch."
+                 )
+                 return True
++            profile_cfg = profile_dir / "openmw.cfg"
++            profile_target = profile_cfg.resolve(strict=False)
++            root_target = root_cfg.resolve(strict=False)
++            chained_profile = local_settings and profile_target != root_target
++            cfg = profile_cfg if chained_profile else root_cfg
++            previous_profile_dir = read_profile_selector(root_cfg)
++            if previous_profile_dir is not None:
++                known_profiles: dict[Path, str] = {}
++                for profile_name in organizer.profileNames():
++                    known_profile = organizer.getProfile(profile_name)
++                    if known_profile is None:
++                        continue
++                    known_path = Path(
++                        known_profile.absolutePath()
++                    ).resolve(strict=False)
++                    if known_path in known_profiles:
++                        raise ValueError(
++                            "OpenMW profiles resolve to the same directory: "
++                            f"{known_profiles[known_path]} and {profile_name}"
++                        )
++                    known_profiles[known_path] = str(profile_name)
++                if previous_profile_dir not in known_profiles:
++                    qWarning(
++                        "OpenMW: ignoring previous Fluorine profile selector "
++                        f"that is not a known profile: {previous_profile_dir}"
++                    )
++                    previous_profile_dir = None
++            selection_cfg = (
++                profile_cfg
++                if chained_profile and profile_cfg.is_file()
++                else root_cfg
++            )
++            configured = read_openmw_selection(selection_cfg)
+ 
+             modlist = organizer.modList()
+ 
+@@ -272,6 +311,21 @@ class OpenMWGame(BasicGame):
+             # ordering of AnyOldName3's MO2 exporter.
+             data_dirs: list[Path] = [data_files]
+             bsa_archives: list[str] = []
++
++            def _scan_archives(path: Path) -> None:
++                try:
++                    entries = sorted(path.iterdir(), key=lambda p: p.name.lower())
++                except OSError:
++                    return
++                bsa_archives.extend(
++                    entry.name
++                    for entry in entries
++                    if entry.is_file() and entry.suffix.lower() == ".bsa"
++                )
++
++            # Data Files may contain enabled archives that are not one of the
++            # canonical vanilla BSAs, such as Morrowind - Invalidation.bsa.
++            _scan_archives(data_files)
+             # content= is built by scanning each active mod's directory for plugin
+             # files, NOT from the core plugin list. The core plugin list (right
+             # pane) is empty for this game: BasicGame returns the default
+@@ -297,14 +351,13 @@ class OpenMWGame(BasicGame):
+                 for f in entries:
+                     if not f.is_file():
+                         continue
+-                    low = f.name.lower()
+                     # Skip Kezyma "OpenMW Player" stub esps: empty TES3 esps named
+                     # <name>.omwaddon.esp / <name>.omwscripts.esp that some MO2<->OpenMW
+                     # tools drop next to the real .omwaddon/.omwscripts purely so the
+                     # entry shows up in MO2's plugin list. The real file is scanned
+                     # separately; loading the empty stub as content= is at best useless
+                     # and at worst aborts OpenMW ("sub-record incomplete").
+-                    if low.endswith(_KEZYMA_STUB_SUFFIXES):
++                    if is_openmw_player_stub(f.name):
+                         continue
+                     ext = f.suffix.lower()
+                     if ext in {".esm", ".omwgame"}:
+@@ -340,29 +393,152 @@ class OpenMWGame(BasicGame):
+             except Exception:
+                 pass
+ 
++            if Path(app_name).name.casefold() == "flatpak":
++                flatpak = (
++                    app_name
++                    if Path(app_name).is_file()
++                    else shutil.which("flatpak")
++                )
++                if not flatpak:
++                    raise RuntimeError("Flatpak executable is unavailable")
++                requirements = [
++                    PathRequirement(path, False) for path in data_dirs
++                ]
++                requirements.append(
++                    PathRequirement(root_cfg.parent, not chained_profile)
++                )
++                if chained_profile or local_saves:
++                    requirements.append(PathRequirement(profile_dir, True))
++                requirements = merge_requirements(requirements)
++                failures = probe_flatpak_access(
++                    flatpak, _FLATPAK_ID, requirements
++                )
++                if failures:
++                    qWarning(
++                        "OpenMW: Flatpak sandbox access preflight failed:\n"
++                        f"{format_access_failures(failures)}\n"
++                        "Grant narrowly scoped access with 'flatpak override "
++                        f"--user --filesystem=PATH {_FLATPAK_ID}'."
++                    )
++                    return False
++                qInfo(
++                    "OpenMW: Flatpak sandbox access preflight passed for "
++                    f"{len(requirements)} path(s)."
++                )
++
+             # content=: masters → normal plugins → Lua scripts (see _scan_mod),
+             # minus any the user routed to groundcover. build_managed_block
+             # prepends the vanilla masters and dedups case-insensitively, so a mod
+             # re-shipping a vanilla esm (or two mods sharing a plugin name) won't
+             # produce duplicate content= lines.
+-            all_plugins = masters + normal_plugins + omw_scripts
+             loadorder = self._read_loadorder_txt()
+-            if loadorder:
+-                rank = {name.lower(): i for i, name in enumerate(loadorder)}
+-                # Stable sort: ranked plugins by loadorder.txt position, unranked
+-                # (.omwaddon/.omwscripts/.omwgame not in MO2's list) keep their
+-                # current order after all ranked ones.
+-                all_plugins.sort(
+-                    key=lambda p: rank.get(p.lower(), len(rank))
+-                )
++            all_plugins = order_plugins_by_loadorder(
++                masters + normal_plugins + omw_scripts, loadorder
++            )
+             plugin_lower = {p.lower() for p in all_plugins}
+ 
+-            groundcover = self._read_groundcover_txt()
++            state_path = profile_dir / _SELECTION_STATE_FILE
++            state = read_selection_state(state_path)
++            state_dirty = False
++            state_upgraded = False
++            if state is None:
++                state = create_selection_state(
++                    configured,
++                    loadorder,
++                    all_plugins,
++                    bsa_archives,
++                    self._read_archives_txt(),
++                )
++                state_dirty = True
++            else:
++                state_upgraded = upgrade_selection_state(state)
++                state_dirty = state_upgraded
++            if (
++                state_upgraded
++                and previous_profile_dir == profile_dir.resolve(strict=False)
++            ):
++                state["profile_config_terminal"] = True
++                qWarning(
++                    "OpenMW: migrated a previously terminal profile without a "
++                    "nested config backup; selectors removed by an older "
++                    "Fluorine version cannot be recovered automatically."
++                )
++
++            groundcover = self._read_groundcover_txt(state["groundcover"])
++            if update_selection_state(
++                state, all_plugins, bsa_archives, groundcover
++            ):
++                state_dirty = True
++            if chained_profile and suspend_profile_config_entries(
++                state, profile_cfg
++            ):
++                state_dirty = True
++
++            restore_current_profile = (
++                not chained_profile and state["profile_config_terminal"]
++            )
++            if restore_current_profile:
++                state["profile_config_terminal"] = False
++                state_dirty = True
++
++            previous_state_path: Path | None = None
++            previous_cfg: Path | None = None
++            previous_state = None
++            previous_state_dirty = False
++            restore_previous_profile = False
++            if (
++                previous_profile_dir is not None
++                and previous_profile_dir != profile_dir.resolve(strict=False)
++            ):
++                candidate_state_path = (
++                    previous_profile_dir / _SELECTION_STATE_FILE
++                )
++                candidate_state = read_selection_state(candidate_state_path)
++                if candidate_state is not None:
++                    previous_state_path = candidate_state_path
++                    previous_cfg = previous_profile_dir / "openmw.cfg"
++                    previous_state = candidate_state
++                    previous_state_dirty = upgrade_selection_state(previous_state)
++                    if previous_state_dirty:
++                        previous_state["profile_config_terminal"] = True
++                        qWarning(
++                            "OpenMW: previous profile was terminal before nested "
++                            "config backups were available; removed selectors "
++                            "cannot be recovered automatically."
++                        )
++                    restore_previous_profile = previous_state[
++                        "profile_config_terminal"
++                    ]
++                    if restore_previous_profile:
++                        previous_state["profile_config_terminal"] = False
++                        previous_state_dirty = True
+             gc_lower = {g.lower() for g in groundcover}
+ 
+-            content = [p for p in all_plugins if p.lower() not in gc_lower]
++            # loadorder.txt contains disabled plugins too, so preserve activation
++            # from the durable profile selection captured before the first export.
++            enabled_plugins = filter_selected_files(
++                all_plugins, state["enabled_plugins"]
++            )
++            content = [p for p in enabled_plugins if p.lower() not in gc_lower]
++            unranked = unranked_native_plugins(content, loadorder)
++            if unranked:
++                qWarning(
++                    f"OpenMW: {len(unranked)} enabled native content file(s) "
++                    "have no loadorder.txt rank and will use fallback order: "
++                    f"{format_name_sample(unranked)}"
++                )
+             # Only emit groundcover= for plugins that are actually present/active.
+-            active_groundcover = [g for g in groundcover if g.lower() in plugin_lower]
++            enabled_lower = {p.lower() for p in enabled_plugins}
++            active_groundcover = [
++                g
++                for g in groundcover
++                if g.lower() in plugin_lower
++                and g.lower() in enabled_lower
++            ]
++
++            selected_archives = order_selected_files(
++                bsa_archives, state["archives"]
++            )
+ 
+             # Helpful, non-destructive nudge: flag likely groundcover plugins the
+             # user hasn't listed yet (we never reroute automatically).
+@@ -375,18 +551,106 @@ class OpenMWGame(BasicGame):
+                         "so it loads as groundcover= (better performance)."
+                     )
+ 
+-            write_openmw_cfg(
+-                cfg,
+-                data_dirs=data_dirs,
+-                content_plugins=content,
+-                groundcover_plugins=active_groundcover,
+-                fallback_archives=bsa_archives,
+-                log_fn=lambda m: qInfo("OpenMW:" + m),
+-            )
++            log_fn = lambda m: qInfo("OpenMW:" + m)
++            launcher_cfg = cfg.parent / "launcher.cfg"
++            file_roles = {
++                "selection state": state_path,
++                "launcher config": launcher_cfg,
++                "root config": root_cfg,
++            }
++            if profile_target != root_target:
++                file_roles["profile config"] = profile_cfg
++            if previous_cfg is not None and (
++                restore_previous_profile or previous_state_dirty
++            ):
++                file_roles["previous profile config"] = previous_cfg
++            if previous_state_path is not None and previous_state_dirty:
++                file_roles["previous profile state"] = previous_state_path
++            validate_file_roles(file_roles)
++
++            with rollback_file_changes(file_roles.values()):
++                if state_dirty and chained_profile:
++                    write_selection_state(state_path, state)
++                write_openmw_cfg(
++                    cfg,
++                    data_dirs=data_dirs,
++                    content_plugins=content,
++                    groundcover_plugins=active_groundcover,
++                    fallback_archives=selected_archives,
++                    replace_managed=chained_profile,
++                    strip_config=chained_profile,
++                    log_fn=log_fn,
++                )
++                write_openmw_launcher_cfg(
++                    launcher_cfg,
++                    data_dirs=data_dirs,
++                    content_plugins=content,
++                    fallback_archives=selected_archives,
++                    log_fn=log_fn,
++                )
++                if chained_profile:
++                    # The profile is the highest-priority OpenMW config directory.
++                    # OpenMW consequently reads and writes settings.cfg, Lua storage,
++                    # key bindings, shaders.yaml, launcher.cfg, and future config
++                    # artifacts there without Fluorine needing a filename list.
++                    write_local_saves(
++                        profile_cfg,
++                        profile_dir if local_saves else None,
++                        log_fn=log_fn,
++                    )
++                    # Clear a stale root-level local-saves override before selecting
++                    # the profile. Only Fluorine's marked block is removed.
++                    write_local_saves(root_cfg, None, log_fn=log_fn)
++                    write_profile_selector(
++                        root_cfg,
++                        profile_dir,
++                        strip_managed=True,
++                        log_fn=log_fn,
++                    )
++                else:
++                    # Without a separate profile config, keep the generated config
++                    # in OpenMW's normal user directory. Local saves remain
++                    # independent of that choice.
++                    write_local_saves(
++                        root_cfg,
++                        profile_dir if local_saves else None,
++                        log_fn=log_fn,
++                    )
++                    # Remove a stale local-saves marker left in this profile if the
++                    # profile previously used local settings.
++                    if profile_target != root_target:
++                        write_local_saves(profile_cfg, None, log_fn=log_fn)
++                    write_profile_selector(root_cfg, None, log_fn=log_fn)
++                    if restore_current_profile:
++                        restore_profile_config_entries(
++                            profile_cfg, state["profile_config_entries"]
++                        )
++                    if state_dirty:
++                        write_selection_state(state_path, state)
++
++                if (
++                    restore_previous_profile
++                    and previous_cfg is not None
++                    and previous_state is not None
++                ):
++                    restore_profile_config_entries(
++                        previous_cfg,
++                        previous_state["profile_config_entries"],
++                    )
++                if (
++                    previous_state_dirty
++                    and previous_state_path is not None
++                    and previous_state is not None
++                ):
++                    write_selection_state(previous_state_path, previous_state)
+             qInfo(
+                 f"OpenMW: wrote {len(data_dirs)} data dir(s) and "
+                 f"{len(content)} content plugin(s) to {cfg}."
+             )
+-        except Exception as e:  # never block a launch on export failure
++        except Exception as e:
+             qWarning(f"OpenMW: openmw.cfg export failed: {e}")
++            # The profile selector, openmw.cfg, and launcher.cfg form one
++            # configuration. Launching after a partial update can select stale
++            # paths or the wrong profile; let the user retry instead.
++            return False
+         return True
+diff --git a/libs/basic_games/games/openmw_support/flatpak_access.py b/libs/basic_games/games/openmw_support/flatpak_access.py
+new file mode 100644
+index 0000000..8b21579
+--- /dev/null
++++ b/libs/basic_games/games/openmw_support/flatpak_access.py
+@@ -0,0 +1,155 @@
++from __future__ import annotations
++
++import os
++import subprocess
++from pathlib import Path
++from typing import Iterable, NamedTuple
++
++
++_PROBE_SCRIPT = r"""
++while [ "$#" -ge 3 ]; do
++    required=$1
++    expected=$2
++    path=$3
++    shift 3
++
++    actual=$(stat -Lc '%d:%i' -- "$path" 2>/dev/null) || {
++        printf 'hidden\000'
++        continue
++    }
++    if [ "$actual" != "$expected" ] ||
++       [ ! -d "$path" ] || [ ! -r "$path" ] || [ ! -x "$path" ]; then
++        printf 'hidden\000'
++    elif [ "$required" = rw ] && [ ! -w "$path" ]; then
++        printf 'read-only\000'
++    else
++        printf 'ok\000'
++    fi
++done
++[ "$#" -eq 0 ] || exit 64
++"""
++
++
++class PathRequirement(NamedTuple):
++    path: Path
++    writable: bool
++
++
++class AccessFailure(NamedTuple):
++    requirement: PathRequirement
++    status: str
++
++
++def merge_requirements(
++    requirements: Iterable[PathRequirement],
++) -> list[PathRequirement]:
++    result: list[PathRequirement] = []
++    positions: dict[str, int] = {}
++    for requirement in requirements:
++        path = Path(os.path.abspath(requirement.path))
++        key = os.path.normcase(str(path))
++        normalized = PathRequirement(path, requirement.writable)
++        if key not in positions:
++            positions[key] = len(result)
++            result.append(normalized)
++        elif requirement.writable and not result[positions[key]].writable:
++            result[positions[key]] = normalized
++    return result
++
++
++def parse_probe_output(
++    output: bytes, requirements: list[PathRequirement]
++) -> list[AccessFailure]:
++    records = output.split(b"\0")
++    if not records or records[-1] != b"":
++        raise RuntimeError("Flatpak access probe returned unterminated output")
++    records.pop()
++    if len(records) != len(requirements):
++        raise RuntimeError(
++            "Flatpak access probe returned an unexpected result count: "
++            f"expected {len(requirements)}, got {len(records)}"
++        )
++
++    failures: list[AccessFailure] = []
++    for requirement, raw_status in zip(requirements, records):
++        try:
++            status = raw_status.decode("ascii")
++        except UnicodeDecodeError as error:
++            raise RuntimeError("Flatpak access probe returned invalid output") from error
++        if status not in {"ok", "hidden", "read-only"}:
++            raise RuntimeError(
++                f"Flatpak access probe returned an unknown status: {status!r}"
++            )
++        if status == "hidden" or (status == "read-only" and requirement.writable):
++            failures.append(AccessFailure(requirement, status))
++    return failures
++
++
++def probe_flatpak_access(
++    flatpak: str,
++    app_id: str,
++    requirements: Iterable[PathRequirement],
++    timeout: float = 30,
++) -> list[AccessFailure]:
++    requirements = merge_requirements(requirements)
++    arguments = [
++        flatpak,
++        "run",
++        "--command=sh",
++        app_id,
++        "-c",
++        _PROBE_SCRIPT,
++        "fluorine-flatpak-preflight",
++    ]
++    for requirement in requirements:
++        try:
++            stat = requirement.path.stat()
++        except OSError as error:
++            raise RuntimeError(
++                f"Required OpenMW path is unavailable: {requirement.path}: {error}"
++            ) from error
++        if not requirement.path.is_dir():
++            raise RuntimeError(
++                f"Required OpenMW path is not a directory: {requirement.path}"
++            )
++        arguments.extend(
++            (
++                "rw" if requirement.writable else "ro",
++                f"{stat.st_dev}:{stat.st_ino}",
++                str(requirement.path),
++            )
++        )
++
++    try:
++        completed = subprocess.run(
++            arguments,
++            stdin=subprocess.DEVNULL,
++            stdout=subprocess.PIPE,
++            stderr=subprocess.PIPE,
++            timeout=timeout,
++            check=False,
++        )
++    except (OSError, subprocess.TimeoutExpired) as error:
++        raise RuntimeError(f"Unable to run Flatpak access probe: {error}") from error
++    if completed.returncode != 0:
++        stderr = completed.stderr.decode("utf-8", errors="replace").strip()
++        detail = f": {stderr}" if stderr else ""
++        raise RuntimeError(
++            f"Flatpak access probe exited with code {completed.returncode}{detail}"
++        )
++    return parse_probe_output(completed.stdout, requirements)
++
++
++def format_access_failures(failures: Iterable[AccessFailure], limit: int = 10) -> str:
++    failures = list(failures)
++    lines: list[str] = []
++    for failure in failures[:limit]:
++        required = "read/write" if failure.requirement.writable else "read"
++        lines.append(
++            f"{failure.requirement.path} requires {required} access "
++            f"(sandbox status: {failure.status})"
++        )
++    omitted = len(failures) - limit
++    if omitted > 0:
++        lines.append(f"(+{omitted} more inaccessible paths)")
++    return "\n".join(lines)
+diff --git a/libs/basic_games/games/openmw_support/openmw_cfg.py b/libs/basic_games/games/openmw_support/openmw_cfg.py
+index d6d0d01..eda7180 100644
+--- a/libs/basic_games/games/openmw_support/openmw_cfg.py
++++ b/libs/basic_games/games/openmw_support/openmw_cfg.py
+@@ -19,8 +19,15 @@ mod (native OpenMW VFS) — this module stays agnostic about that choice.
+ 
+ from __future__ import annotations
+ 
++import base64
++import binascii
++import json
++import os
++import shutil
++import tempfile
++from contextlib import contextmanager, suppress
+ from pathlib import Path
+-from typing import Iterable
++from typing import Iterable, Iterator, TextIO, TypedDict
+ 
+ # Morrowind masters, in canonical load order.
+ #
+@@ -44,6 +51,41 @@ VANILLA_BSAS: list[str] = [
+ 
+ # Keys this module fully owns (lowercase, exact match).
+ _MANAGED_KEYS = frozenset({"data", "content", "groundcover", "fallback-archive"})
++# The global OpenMW config contributes its required resources/vfs-mw data dir.
++# Keep inherited data entries while replacing the other generated lists.
++_REPLACED_MANAGED_KEYS = _MANAGED_KEYS - {"data"}
++
++_PROFILE_BEGIN = "# BEGIN FLUORINE OPENMW PROFILE"
++_PROFILE_END = "# END FLUORINE OPENMW PROFILE"
++_LOCAL_SAVES_BEGIN = "# BEGIN FLUORINE OPENMW LOCAL SAVES"
++_LOCAL_SAVES_END = "# END FLUORINE OPENMW LOCAL SAVES"
++_LOCAL_SAVES_ORIGINAL = "# FLUORINE ORIGINAL USER-DATA "
++
++_SELECTION_KEYS = ("content", "groundcover", "fallback-archive")
++_SELECTION_STATE_VERSION = 2
++_OPENMW_NATIVE_SUFFIXES = (".omwaddon", ".omwgame", ".omwscripts")
++_OPENMW_PLAYER_STUB_SUFFIXES = tuple(
++    suffix + ".esp" for suffix in _OPENMW_NATIVE_SUFFIXES
++)
++
++
++class OpenMWSelectionState(TypedDict):
++    version: int
++    known_plugins: list[str]
++    enabled_plugins: list[str]
++    groundcover: list[str]
++    known_archives: list[str]
++    archives: list[str]
++    profile_config_entries: list[str]
++    profile_config_entries_known: bool
++    profile_config_terminal: bool
++
++
++def find_openmw_cfg(
++    native_cfg: Path, flatpak_cfg: Path, flatpak_launch: bool
++) -> Path | None:
++    candidate = flatpak_cfg if flatpak_launch else native_cfg
++    return candidate if candidate.is_file() else None
+ 
+ 
+ def escape_data_path(path: str) -> str:
+@@ -69,16 +111,740 @@ def _is_managed(line: str) -> bool:
+     return s.split("=", 1)[0].strip().lower() in _MANAGED_KEYS
+ 
+ 
+-def _preserve_non_managed(cfg_path: Path) -> list[str]:
++def _read_lines(cfg_path: Path) -> list[str]:
++    if not cfg_path.is_file():
++        return []
++    return cfg_path.read_text(encoding="utf-8", errors="replace").splitlines()
++
++
++def read_openmw_selection(cfg_path: Path) -> dict[str, list[str]]:
++    """Read the ordered plugin and archive selections from an OpenMW config."""
++    result = {key: [] for key in _SELECTION_KEYS}
++    seen = {key: set() for key in _SELECTION_KEYS}
++    for raw in _read_lines(cfg_path):
++        line = raw.strip()
++        if not line or line.startswith("#") or "=" not in line:
++            continue
++        key, value = line.split("=", 1)
++        key = key.strip().lower()
++        value = value.strip()
++        if key not in result or not value:
++            continue
++        folded = value.casefold()
++        if folded not in seen[key]:
++            seen[key].add(folded)
++            result[key].append(value)
++    return result
++
++
++def filter_selected_files(
++    available: Iterable[str], selected: Iterable[str]
++) -> list[str]:
++    """Keep available files selected by name, preserving available-file order."""
++    selected_keys = {name.casefold() for name in selected}
++    return [name for name in available if name.casefold() in selected_keys]
++
++
++def order_selected_files(
++    available: Iterable[str], selected: Iterable[str]
++) -> list[str]:
++    """Return selected available files in selection order and provider casing."""
++    available_by_name: dict[str, str] = {}
++    for name in available:
++        available_by_name[name.casefold()] = name
++
++    result: list[str] = []
++    emitted: set[str] = set()
++    for name in selected:
++        folded = name.casefold()
++        if folded in available_by_name and folded not in emitted:
++            emitted.add(folded)
++            result.append(available_by_name[folded])
++    return result
++
++
++def _unique_names(*groups: Iterable[str]) -> list[str]:
++    result: list[str] = []
++    seen: set[str] = set()
++    for group in groups:
++        for name in group:
++            folded = name.casefold()
++            if name and folded not in seen:
++                seen.add(folded)
++                result.append(name)
++    return result
++
++
++def collapse_file_providers(available: Iterable[str]) -> list[str]:
++    """Deduplicate logical names while retaining highest-priority provider casing."""
++    result: list[str] = []
++    positions: dict[str, int] = {}
++    for name in available:
++        folded = name.casefold()
++        if folded in positions:
++            result[positions[folded]] = name
++        else:
++            positions[folded] = len(result)
++            result.append(name)
++    return result
++
++
++def is_openmw_player_stub(name: str) -> bool:
++    return name.casefold().endswith(_OPENMW_PLAYER_STUB_SUFFIXES)
++
++
++def destub_plugin_name(name: str) -> str:
++    return name[:-4] if is_openmw_player_stub(name) else name
++
++
++def normalize_plugin_loadorder(names: Iterable[str]) -> list[str]:
++    result: list[str] = []
++    seen: set[str] = set()
++    for raw in names:
++        name = destub_plugin_name(raw)
++        folded = name.casefold()
++        if folded not in seen:
++            seen.add(folded)
++            result.append(name)
++    return result
++
++
++def order_plugins_by_loadorder(
++    available: Iterable[str], loadorder: Iterable[str]
++) -> list[str]:
++    available = collapse_file_providers(available)
++    normalized = normalize_plugin_loadorder(loadorder)
++    if not normalized:
++        return available
++    rank = {name.casefold(): index for index, name in enumerate(normalized)}
++    return sorted(
++        available,
++        key=lambda name: (
++            (0, rank[name.casefold()])
++            if name.casefold() in rank
++            else (1, 0)
++        ),
++    )
++
++
++def unranked_native_plugins(
++    content_plugins: Iterable[str], loadorder: Iterable[str]
++) -> list[str]:
++    normalized = normalize_plugin_loadorder(loadorder)
++    if not normalized:
++        return []
++    ranked = {name.casefold() for name in normalized}
++    result: list[str] = []
++    seen: set[str] = set()
++    for name in content_plugins:
++        folded = name.casefold()
++        if (
++            folded.endswith(_OPENMW_NATIVE_SUFFIXES)
++            and folded not in ranked
++            and folded not in seen
++        ):
++            seen.add(folded)
++            result.append(name)
++    return result
++
++
++def format_name_sample(names: Iterable[str], limit: int = 10) -> str:
++    names = list(names)
++    shown = ", ".join(repr(name) for name in names[:limit])
++    omitted = len(names) - limit
++    return f"{shown} (+{omitted} more)" if omitted > 0 else shown
++
++
++def create_selection_state(
++    configured: dict[str, list[str]],
++    loadorder: Iterable[str],
++    available_plugins: Iterable[str],
++    available_archives: Iterable[str],
++    supplemental_archives: Iterable[str] = (),
++) -> OpenMWSelectionState:
++    """Capture durable activation state before replacing a legacy profile config."""
++    available_plugins = list(available_plugins)
++    available_archives = list(available_archives)
++    configured_plugins = _unique_names(
++        configured["content"], configured["groundcover"]
++    )
++    enabled_plugins = configured_plugins or _unique_names(available_plugins)
++
++    configured_archives = _unique_names(
++        configured["fallback-archive"], supplemental_archives
++    )
++    if not configured["fallback-archive"]:
++        configured_archives = _unique_names(configured_archives, available_archives)
++
++    return {
++        "version": _SELECTION_STATE_VERSION,
++        "known_plugins": _unique_names(loadorder, available_plugins, enabled_plugins),
++        "enabled_plugins": enabled_plugins,
++        "groundcover": _unique_names(configured["groundcover"]),
++        "known_archives": _unique_names(available_archives, configured_archives),
++        "archives": configured_archives,
++        "profile_config_entries": [],
++        "profile_config_entries_known": True,
++        "profile_config_terminal": False,
++    }
++
++
++def update_selection_state(
++    state: OpenMWSelectionState,
++    available_plugins: Iterable[str],
++    available_archives: Iterable[str],
++    groundcover: Iterable[str],
++) -> bool:
++    """Enable newly discovered files and persist explicit groundcover changes."""
++    original = json.dumps(state, sort_keys=True)
++    known_plugin_keys = {name.casefold() for name in state["known_plugins"]}
++    enabled_plugin_keys = {name.casefold() for name in state["enabled_plugins"]}
++    for name in available_plugins:
++        folded = name.casefold()
++        if folded not in known_plugin_keys:
++            known_plugin_keys.add(folded)
++            state["known_plugins"].append(name)
++            enabled_plugin_keys.add(folded)
++            state["enabled_plugins"].append(name)
++
++    groundcover = _unique_names(groundcover)
++    for name in groundcover:
++        folded = name.casefold()
++        if folded not in known_plugin_keys:
++            known_plugin_keys.add(folded)
++            state["known_plugins"].append(name)
++        if folded not in enabled_plugin_keys:
++            enabled_plugin_keys.add(folded)
++            state["enabled_plugins"].append(name)
++    state["groundcover"] = groundcover
++
++    known_archive_keys = {name.casefold() for name in state["known_archives"]}
++    archive_keys = {name.casefold() for name in state["archives"]}
++    for name in available_archives:
++        folded = name.casefold()
++        if folded not in known_archive_keys:
++            known_archive_keys.add(folded)
++            state["known_archives"].append(name)
++            archive_keys.add(folded)
++            state["archives"].append(name)
++    return original != json.dumps(state, sort_keys=True)
++
++
++def read_selection_state(state_path: Path) -> OpenMWSelectionState | None:
++    if not state_path.is_file():
++        return None
++    data = json.loads(state_path.read_text(encoding="utf-8"))
++    keys = (
++        "known_plugins",
++        "enabled_plugins",
++        "groundcover",
++        "known_archives",
++        "archives",
++    )
++    if not isinstance(data, dict) or data.get("version") not in (
++        1,
++        _SELECTION_STATE_VERSION,
++    ):
++        raise ValueError(f"Unsupported OpenMW selection state: {state_path}")
++    if any(
++        not isinstance(data.get(key), list)
++        or any(not isinstance(value, str) for value in data[key])
++        for key in keys
++    ):
++        raise ValueError(f"Invalid OpenMW selection state: {state_path}")
++    if data["version"] == _SELECTION_STATE_VERSION and (
++        not isinstance(data.get("profile_config_entries"), list)
++        or any(
++            not isinstance(value, str)
++            for value in data["profile_config_entries"]
++        )
++        or not isinstance(data.get("profile_config_entries_known"), bool)
++        or not isinstance(data.get("profile_config_terminal"), bool)
++    ):
++        raise ValueError(f"Invalid OpenMW selection state: {state_path}")
++    return data
++
++
++def upgrade_selection_state(state: OpenMWSelectionState) -> bool:
++    if state["version"] == _SELECTION_STATE_VERSION:
++        return False
++    state["version"] = _SELECTION_STATE_VERSION
++    state["profile_config_entries"] = []
++    state["profile_config_entries_known"] = False
++    state["profile_config_terminal"] = False
++    return True
++
++
++def write_selection_state(
++    state_path: Path, state: OpenMWSelectionState
++) -> None:
++    with _atomic_text_writer(state_path) as stream:
++        json.dump(state, stream, ensure_ascii=True, indent=2)
++        stream.write("\n")
++
++
++def _trim_trailing_blanks(lines: list[str]) -> list[str]:
++    while lines and not lines[-1].strip():
++        lines.pop()
++    return lines
++
++
++def _split_marked_blocks(
++    lines: Iterable[str], begin: str, end: str
++) -> tuple[list[str], list[list[str]]]:
++    """Remove complete marker blocks and return their contents.
++
++    Malformed or nested ownership markers are ambiguous, so fail without
++    rewriting the file. The launch hook will then block OpenMW rather than use a
++    stale profile or save path.
++    """
++    source = list(lines)
++    out: list[str] = []
++    blocks: list[list[str]] = []
++    i = 0
++    while i < len(source):
++        marker = source[i].strip()
++        if marker == end:
++            raise ValueError(f"Found '{end}' without a matching '{begin}'")
++        if marker != begin:
++            out.append(source[i])
++            i += 1
++            continue
++        end_index = None
++        for j in range(i + 1, len(source)):
++            marker = source[j].strip()
++            if marker == begin:
++                raise ValueError(f"Found nested '{begin}' marker")
++            if marker == end:
++                end_index = j
++                break
++        if end_index is None:
++            raise ValueError(f"Found '{begin}' without a matching '{end}'")
++        blocks.append(source[i + 1 : end_index])
++        i = end_index + 1
++    return out, blocks
++
++
++def _without_marked_block(lines: Iterable[str], begin: str, end: str) -> list[str]:
++    return _split_marked_blocks(lines, begin, end)[0]
++
++
++def _option_value(line: str, option: str) -> str | None:
++    stripped = line.strip()
++    if not stripped or stripped.startswith("#") or "=" not in stripped:
++        return None
++    key, value = stripped.split("=", 1)
++    return value.strip() if key.strip().lower() == option else None
++
++
++def capture_profile_config_entries(cfg_path: Path) -> list[str]:
++    """Capture raw nested config options before making a profile terminal."""
++    return [
++        line for line in _read_lines(cfg_path) if _option_value(line, "config") is not None
++    ]
++
++
++def suspend_profile_config_entries(
++    state: OpenMWSelectionState, cfg_path: Path
++) -> bool:
++    """Save visible nested selectors and mark the profile as terminal."""
++    original = json.dumps(state, sort_keys=True)
++    visible = capture_profile_config_entries(cfg_path)
++    if state["profile_config_terminal"]:
++        saved_counts: dict[str, int] = {}
++        for line in state["profile_config_entries"]:
++            saved_counts[line] = saved_counts.get(line, 0) + 1
++        visible_counts: dict[str, int] = {}
++        for line in visible:
++            visible_counts[line] = visible_counts.get(line, 0) + 1
++            if visible_counts[line] > saved_counts.get(line, 0):
++                state["profile_config_entries"].append(line)
++    else:
++        state["profile_config_entries"] = visible
++    state["profile_config_terminal"] = True
++    return original != json.dumps(state, sort_keys=True)
++
++
++def restore_profile_config_entries(
++    cfg_path: Path, entries: Iterable[str]
++) -> bool:
++    """Restore suspended nested selectors without duplicating visible occurrences."""
++    lines = _read_lines(cfg_path)
++    existing_counts: dict[str, int] = {}
++    for line in capture_profile_config_entries(cfg_path):
++        existing_counts[line] = existing_counts.get(line, 0) + 1
++
++    seen: dict[str, int] = {}
++    missing: list[str] = []
++    for line in entries:
++        seen[line] = seen.get(line, 0) + 1
++        if seen[line] > existing_counts.get(line, 0):
++            missing.append(line)
++    if not missing:
++        return False
++    if lines and lines[-1].strip():
++        lines.append("")
++    lines.extend(missing)
++    _write_lines(cfg_path, lines)
++    return True
++
++
++def _parse_openmw_path(value: str) -> str:
++    if not value.startswith('"'):
++        return value.strip()
++    result: list[str] = []
++    escaped = False
++    for character in value[1:]:
++        if escaped:
++            result.append(character)
++            escaped = False
++        elif character == "&":
++            escaped = True
++        elif character == '"':
++            break
++        else:
++            result.append(character)
++    if escaped:
++        result.append("&")
++    return "".join(result)
++
++
++def read_profile_selector(cfg_path: Path) -> Path | None:
++    """Read the profile path from Fluorine's owned root selector block."""
++    _, blocks = _split_marked_blocks(
++        _read_lines(cfg_path), _PROFILE_BEGIN, _PROFILE_END
++    )
++    destinations: list[Path] = []
++    for block in blocks:
++        for line in block:
++            value = _option_value(line, "config")
++            if value is None:
++                continue
++            path = Path(_parse_openmw_path(value)).expanduser()
++            if not path.is_absolute():
++                path = cfg_path.parent / path
++            destinations.append(path.resolve(strict=False))
++    unique = list(dict.fromkeys(destinations))
++    if len(unique) > 1:
++        raise ValueError("Conflicting Fluorine OpenMW profile selectors")
++    return unique[0] if unique else None
++
++
++def _fsync_directory(path: Path) -> None:
++    with suppress(OSError):
++        directory = os.open(
++            path,
++            os.O_RDONLY | getattr(os, "O_DIRECTORY", 0),
++        )
++        try:
++            os.fsync(directory)
++        finally:
++            os.close(directory)
++
++
++@contextmanager
++def _atomic_text_writer(cfg_path: Path) -> Iterator[TextIO]:
++    """Yield a same-directory temporary stream and atomically replace cfg_path."""
++    target = cfg_path.absolute().resolve(strict=False)
++    target.parent.mkdir(parents=True, exist_ok=True)
++    fd, temporary = tempfile.mkstemp(
++        prefix=f".{target.name}.", suffix=".tmp", dir=target.parent
++    )
++    temp_path = Path(temporary)
++    try:
++        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as stream:
++            yield stream
++            stream.flush()
++            os.fsync(stream.fileno())
++        if target.exists():
++            shutil.copymode(target, temp_path)
++            if hasattr(os, "listxattr"):
++                for attribute in os.listxattr(target):
++                    with suppress(OSError):
++                        os.setxattr(
++                            temp_path,
++                            attribute,
++                            os.getxattr(target, attribute),
++                        )
++        os.replace(temp_path, target)
++        _fsync_directory(target.parent)
++    except BaseException:
++        temp_path.unlink(missing_ok=True)
++        raise
++
++
++class _FileSnapshot:
++    def __init__(self, target: Path, existed: bool, backup: Path | None):
++        self.target = target
++        self.existed = existed
++        self.backup = backup
++
++
++def _transaction_target(path: Path) -> Path:
++    return path.absolute().resolve(strict=False)
++
++
++def validate_file_roles(roles: dict[str, Path]) -> None:
++    """Reject different export roles that resolve to the same destination."""
++    destinations: dict[Path, str] = {}
++    for role, path in roles.items():
++        target = _transaction_target(path)
++        if target in destinations:
++            raise ValueError(
++                f"OpenMW export roles '{destinations[target]}' and '{role}' "
++                f"resolve to the same file: {target}"
++            )
++        destinations[target] = role
++
++
++def _create_file_snapshots(paths: Iterable[Path]) -> list[_FileSnapshot]:
++    snapshots: list[_FileSnapshot] = []
++    seen: set[Path] = set()
++    try:
++        for logical_path in paths:
++            target = _transaction_target(logical_path)
++            if target in seen:
++                continue
++            seen.add(target)
++            if not target.parent.is_dir():
++                raise ValueError(
++                    f"Transaction target parent does not exist: {target.parent}"
++                )
++            if not target.exists():
++                snapshots.append(_FileSnapshot(target, False, None))
++                continue
++            if not target.is_file():
++                raise ValueError(f"Transaction target is not a file: {target}")
++
++            fd, temporary = tempfile.mkstemp(
++                prefix=f".{target.name}.", suffix=".rollback", dir=target.parent
++            )
++            os.close(fd)
++            backup = Path(temporary)
++            try:
++                backup.unlink()
++                try:
++                    os.link(target, backup)
++                except OSError:
++                    shutil.copy2(target, backup)
++            except BaseException:
++                backup.unlink(missing_ok=True)
++                raise
++            snapshots.append(_FileSnapshot(target, True, backup))
++        return snapshots
++    except BaseException:
++        for snapshot in snapshots:
++            if snapshot.backup is not None:
++                snapshot.backup.unlink(missing_ok=True)
++        raise
++
++
++@contextmanager
++def rollback_file_changes(paths: Iterable[Path]) -> Iterator[None]:
++    """Restore every listed file if a later atomic export write fails."""
++    snapshots = _create_file_snapshots(paths)
++    try:
++        yield
++    except BaseException as original:
++        rollback_errors: list[str] = []
++        for snapshot in reversed(snapshots):
++            try:
++                if snapshot.existed:
++                    if snapshot.backup is None:
++                        raise RuntimeError("missing rollback snapshot")
++                    os.replace(snapshot.backup, snapshot.target)
++                    snapshot.backup = None
++                else:
++                    snapshot.target.unlink(missing_ok=True)
++                _fsync_directory(snapshot.target.parent)
++            except BaseException as error:
++                rollback_errors.append(f"{snapshot.target}: {error}")
++        if rollback_errors:
++            raise RuntimeError(
++                "OpenMW export failed and rollback was incomplete: "
++                + "; ".join(rollback_errors)
++            ) from original
++        raise
++    else:
++        cleanup_errors: list[str] = []
++        for snapshot in snapshots:
++            if snapshot.backup is not None:
++                try:
++                    snapshot.backup.unlink()
++                except OSError as error:
++                    cleanup_errors.append(f"{snapshot.backup}: {error}")
++                _fsync_directory(snapshot.target.parent)
++        if cleanup_errors:
++            raise RuntimeError(
++                "OpenMW export committed but rollback snapshot cleanup failed: "
++                + "; ".join(cleanup_errors)
++            )
++
++
++def _write_lines(cfg_path: Path, lines: Iterable[str]) -> None:
++    with _atomic_text_writer(cfg_path) as stream:
++        for line in lines:
++            stream.write(line)
++            stream.write("\n")
++
++
++def _preserve_non_managed(
++    cfg_path: Path,
++    *,
++    strip_config: bool = False,
++    strip_replace: bool = False,
++) -> list[str]:
+     """Return existing cfg lines minus the keys we manage, trailing blanks trimmed."""
+-    kept: list[str] = []
+-    if cfg_path.is_file():
+-        for raw in cfg_path.read_text(encoding="utf-8", errors="replace").splitlines():
+-            if not _is_managed(raw):
+-                kept.append(raw)
+-    while kept and not kept[-1].strip():
+-        kept.pop()
+-    return kept
++    lines = _read_lines(cfg_path)
++    return _trim_trailing_blanks(
++        [
++            line
++            for line in lines
++            if not _is_managed(line)
++            and not (
++                strip_config
++                and "=" in line
++                and line.split("=", 1)[0].strip().lower() == "config"
++            )
++            and not (
++                strip_replace
++                and "=" in line
++                and line.split("=", 1)[0].strip().lower() == "replace"
++                and line.split("=", 1)[1].strip().lower() in _MANAGED_KEYS
++            )
++        ]
++    )
++
++
++def _write_marked_path(
++    cfg_path: Path,
++    value: Path | None,
++    *,
++    begin: str,
++    end: str,
++    key: str,
++    strip_managed: bool = False,
++) -> bool:
++    original = _read_lines(cfg_path)
++    had_marker = any(line.strip() in (begin, end) for line in original)
++    if value is None and not strip_managed and not had_marker:
++        return False
++    lines = _without_marked_block(original, begin, end)
++    if strip_managed:
++        lines = _trim_trailing_blanks(
++            [line for line in lines if not _is_managed(line)]
++        )
++    lines = _trim_trailing_blanks(lines)
++    if value is not None:
++        if lines:
++            lines.append("")
++        lines.extend((begin, f"{key}={escape_data_path(str(value))}", end))
++    if lines == original or (not lines and not cfg_path.exists()):
++        return False
++    _write_lines(cfg_path, lines)
++    return True
++
++
++def write_profile_selector(
++    cfg_path: Path,
++    profile_dir: Path | None,
++    *,
++    strip_managed: bool = False,
++    log_fn=None,
++) -> None:
++    """Select ``profile_dir`` as OpenMW's highest-priority config directory.
++
++    Only the Fluorine-owned marker block is replaced; existing user ``config=``
++    entries and unrelated settings are preserved. When ``strip_managed`` is
++    true, data/content/archive keys previously managed in the root config are
++    removed because they now live in the selected profile's openmw.cfg.
++    """
++    changed = _write_marked_path(
++        cfg_path,
++        profile_dir,
++        begin=_PROFILE_BEGIN,
++        end=_PROFILE_END,
++        key="config",
++        strip_managed=strip_managed,
++    )
++    if changed:
++        _log = log_fn or (lambda _: None)
++        if profile_dir is None:
++            _log(f"  Removed Fluorine profile selector from {cfg_path}.")
++        else:
++            _log(f"  Selected OpenMW profile config dir: {profile_dir}.")
++
++
++def write_local_saves(
++    cfg_path: Path,
++    user_data: Path | None,
++    *,
++    log_fn=None,
++) -> None:
++    """Set or remove profile-local saves while restoring user-owned settings."""
++    original = _read_lines(cfg_path)
++    lines, blocks = _split_marked_blocks(
++        original, _LOCAL_SAVES_BEGIN, _LOCAL_SAVES_END
++    )
++
++    restored: list[tuple[int, str]] = []
++    for block in blocks:
++        for line in block:
++            if line.startswith(_LOCAL_SAVES_ORIGINAL):
++                payload = line[len(_LOCAL_SAVES_ORIGINAL) :]
++                try:
++                    index_text, encoded = payload.split(":", 1)
++                    restored.append(
++                        (
++                            int(index_text),
++                            base64.b64decode(encoded, validate=True).decode("utf-8"),
++                        )
++                    )
++                except (ValueError, binascii.Error, UnicodeDecodeError) as e:
++                    raise ValueError("Invalid saved user-data setting") from e
++    seen_indexes: set[int] = set()
++    for index, line in sorted(restored):
++        if index < 0 or index > len(lines) or index in seen_indexes:
++            raise ValueError("Invalid saved user-data position")
++        seen_indexes.add(index)
++        lines.insert(index, line)
++
++    if user_data is not None:
++        user_data_lines = [
++            (index, line)
++            for index, line in enumerate(lines)
++            if "=" in line
++            and line.split("=", 1)[0].strip().lower() == "user-data"
++        ]
++        user_data_indexes = {index for index, _ in user_data_lines}
++        insertion_index = (
++            sum(1 for index in range(user_data_lines[0][0]) if index not in user_data_indexes)
++            if user_data_lines
++            else len(lines)
++        )
++        lines = [
++            line for index, line in enumerate(lines) if index not in user_data_indexes
++        ]
++        block = [_LOCAL_SAVES_BEGIN]
++        block.extend(
++            f"{_LOCAL_SAVES_ORIGINAL}{index}:"
++            + base64.b64encode(line.encode("utf-8")).decode("ascii")
++            for index, line in user_data_lines
++        )
++        block.extend(
++            (
++                f"user-data={escape_data_path(str(user_data))}",
++                _LOCAL_SAVES_END,
++            )
++        )
++        lines[insertion_index:insertion_index] = block
++
++    if lines == original or (not lines and not cfg_path.exists()):
++        return
++    _write_lines(cfg_path, lines)
++    if user_data is not None:
++        _log = log_fn or (lambda _: None)
++        _log(f"  Selected profile-local OpenMW user data dir: {user_data}.")
+ 
+ 
+ def _dedup_preserving_order(
+@@ -95,6 +861,117 @@ def _dedup_preserving_order(
+     return result
+ 
+ 
++def _dedup_paths_preserving_order(paths: Iterable[Path | str]) -> list[str]:
++    """Deduplicate paths without folding case on case-sensitive filesystems."""
++    result: list[str] = []
++    seen: set[str] = set()
++    for path in paths:
++        value = str(path)
++        if value not in seen:
++            seen.add(value)
++            result.append(value)
++    return result
++
++
++def write_openmw_launcher_cfg(
++    cfg_path: Path,
++    data_dirs: Iterable[Path | str],
++    content_plugins: Iterable[str],
++    fallback_archives: Iterable[str] = (),
++    *,
++    vanilla_masters: Iterable[str] = VANILLA_MASTERS,
++    vanilla_bsas: Iterable[str] = VANILLA_BSAS,
++    profile_name: str = "Fluorine",
++    log_fn=None,
++) -> None:
++    """Synchronize OpenMW Launcher's content list with Fluorine's generated one.
++
++    The launcher stores data paths and selected content separately in
++    ``launcher.cfg`` and gives that list precedence over ``openmw.cfg``. Update
++    only a named Fluorine profile and the current-profile selector; unrelated
++    content lists and launcher settings remain intact.
++    """
++    _log = log_fn or (lambda _: None)
++    data = _dedup_paths_preserving_order(data_dirs)
++    content = _dedup_preserving_order(vanilla_masters, content_plugins)
++    archives = _dedup_preserving_order(vanilla_bsas, fallback_archives)
++
++    def write_line(stream: TextIO, line: str = "") -> None:
++        stream.write(line)
++        stream.write("\n")
++
++    def write_generated_profile(stream: TextIO) -> None:
++        for name in archives:
++            write_line(stream, f"{profile_name}/fallback-archive={name}")
++        for path in data:
++            write_line(stream, f"{profile_name}/data={path}")
++        for name in content:
++            write_line(stream, f"{profile_name}/content={name}")
++
++    saw_profiles = False
++    saw_general = False
++    in_profiles = False
++    in_general = False
++    general_has_first_run = False
++    first_profiles_section = True
++
++    with _atomic_text_writer(cfg_path) as output:
++        def finish_section() -> None:
++            nonlocal general_has_first_run, first_profiles_section
++            if in_general and not general_has_first_run:
++                write_line(output, "firstrun=false")
++            if in_profiles and first_profiles_section:
++                write_generated_profile(output)
++                first_profiles_section = False
++
++        if cfg_path.is_file():
++            with cfg_path.open("r", encoding="utf-8", errors="replace") as source:
++                for raw in source:
++                    line = raw.rstrip("\r\n")
++                    stripped = line.strip()
++                    is_section = stripped.startswith("[") and stripped.endswith("]")
++                    if is_section:
++                        finish_section()
++                        section = stripped[1:-1].strip().lower()
++                        in_profiles = section == "profiles"
++                        in_general = section == "general"
++                        general_has_first_run = False
++                        saw_profiles = saw_profiles or in_profiles
++                        saw_general = saw_general or in_general
++                        write_line(output, line)
++                        if in_profiles and first_profiles_section:
++                            write_line(output, f"currentprofile={profile_name}")
++                        continue
++
++                    if in_profiles and "=" in line:
++                        key = line.split("=", 1)[0].strip()
++                        profile, separator, _ = key.rpartition("/")
++                        if key.lower() == "currentprofile" or (
++                            separator and profile == profile_name
++                        ):
++                            continue
++                    if in_general and "=" in line:
++                        key = line.split("=", 1)[0].strip().lower()
++                        general_has_first_run = general_has_first_run or key == "firstrun"
++                    write_line(output, line)
++            finish_section()
++
++        if not saw_general:
++            write_line(output)
++            write_line(output, "[General]")
++            write_line(output, "firstrun=false")
++        if not saw_profiles:
++            write_line(output)
++            write_line(output, "[Profiles]")
++            write_line(output, f"currentprofile={profile_name}")
++            write_generated_profile(output)
++
++    _log(
++        f"  Wrote launcher.cfg content list: {len(data)} data dir(s) to "
++        f"{cfg_path}."
++    )
++
++
+ def build_managed_block(
+     data_dirs: Iterable[Path | str],
+     content_plugins: Iterable[str],
+@@ -103,12 +980,15 @@ def build_managed_block(
+     *,
+     vanilla_masters: Iterable[str] = VANILLA_MASTERS,
+     vanilla_bsas: Iterable[str] = VANILLA_BSAS,
++    replace_managed: bool = False,
+ ) -> list[str]:
+     """Build the managed cfg lines (no I/O), in the order OpenMW expects."""
+     content = _dedup_preserving_order(vanilla_masters, content_plugins)
+     archives = _dedup_preserving_order(vanilla_bsas, fallback_archives)
+ 
+     block: list[str] = [""]  # blank separator from the preserved section
++    if replace_managed:
++        block += [f"replace={key}" for key in sorted(_REPLACED_MANAGED_KEYS)]
+     block += [f"data={escape_data_path(str(d))}" for d in data_dirs]
+     block += [f"content={c}" for c in content]
+     block += [f"groundcover={g}" for g in groundcover_plugins]
+@@ -125,12 +1005,24 @@ def write_openmw_cfg(
+     *,
+     vanilla_masters: Iterable[str] = VANILLA_MASTERS,
+     vanilla_bsas: Iterable[str] = VANILLA_BSAS,
++    replace_managed: bool = False,
++    strip_config: bool = False,
+     log_fn=None,
+ ) -> None:
+-    """Rewrite the managed data=/content=/groundcover=/fallback-archive= block."""
++    """Rewrite the managed data=/content=/groundcover=/fallback-archive= block.
++
++    ``strip_config`` makes this file a terminal config source. This is required
++    for a selected MO2 profile because OpenMW writes settings and Lua storage to
++    the final active config directory; a nested ``config=`` would otherwise
++    redirect those writes away from the profile.
++    """
+     _log = log_fn or (lambda _: None)
+     data_dirs = list(data_dirs)  # consumed twice (block + log); avoid generator exhaustion
+-    kept = _preserve_non_managed(cfg_path)
++    kept = _preserve_non_managed(
++        cfg_path,
++        strip_config=strip_config,
++        strip_replace=replace_managed,
++    )
+     block = build_managed_block(
+         data_dirs,
+         content_plugins,
+@@ -138,9 +1030,9 @@ def write_openmw_cfg(
+         fallback_archives,
+         vanilla_masters=vanilla_masters,
+         vanilla_bsas=vanilla_bsas,
++        replace_managed=replace_managed,
+     )
+-    cfg_path.parent.mkdir(parents=True, exist_ok=True)
+-    cfg_path.write_text("\n".join(kept + block) + "\n", encoding="utf-8")
++    _write_lines(cfg_path, kept + block)
+     _log(f"  Wrote openmw.cfg: {len(data_dirs)} data dir(s) to {cfg_path}.")
+ 
+ 
+@@ -165,5 +1057,5 @@ def restore_openmw_cfg(
+         vanilla_masters=vanilla_masters,
+         vanilla_bsas=vanilla_bsas,
+     )
+-    cfg_path.write_text("\n".join(kept + block) + "\n", encoding="utf-8")
++    _write_lines(cfg_path, kept + block)
+     _log(f"  Restored openmw.cfg to vanilla content at {cfg_path}.")
+diff --git a/libs/esptk/include/esptk/espfile.h b/libs/esptk/include/esptk/espfile.h
+index 04be76e..d9776e0 100644
+--- a/libs/esptk/include/esptk/espfile.h
++++ b/libs/esptk/include/esptk/espfile.h
+@@ -45,21 +45,14 @@ private:
+ 
+   struct
+   {
+-    float version;
+-    int32_t numRecords;
+-    uint32_t nextObjectId;
++    float version{};
++    int32_t numRecords{};
++    uint32_t nextObjectId{};
+   } m_Header;
+ 
+-  struct
+-  {
+-    float version;
+-    uint32_t unknown;
+-    char author[32];
+-    char description[256];
+-    uint32_t numRecords;
+-  } m_TES3Header;
+-
+   Record m_MainRecord;
++  bool m_IsTES3{false};
++  bool m_TES3Master{false};
+ 
+   std::string m_Author;
+   std::string m_Description;
+diff --git a/libs/esptk/include/esptk/tes3record.h b/libs/esptk/include/esptk/tes3record.h
+index 19fa040..acafdf8 100644
+--- a/libs/esptk/include/esptk/tes3record.h
++++ b/libs/esptk/include/esptk/tes3record.h
+@@ -18,13 +18,13 @@ public:
+ 
+   bool readFrom(std::istream& stream);
+ 
++  uint32_t dataSize() const { return m_DataSize; }
++  uint32_t flags() const { return m_Flags; }
++
+ private:
+-  struct Header
+-  {
+-    char type[4];
+-    float version;
+-    long unknown;
+-  } m_Header;
++  uint32_t m_DataSize;
++  uint32_t m_Unknown;
++  uint32_t m_Flags;
+ };
+ 
+ }  // namespace ESP
+diff --git a/libs/esptk/src/espfile.cpp b/libs/esptk/src/espfile.cpp
+index a88398d..df73c4c 100644
+--- a/libs/esptk/src/espfile.cpp
++++ b/libs/esptk/src/espfile.cpp
+@@ -1,10 +1,38 @@
+ #include "espfile.h"
+ #include "espexceptions.h"
+ #include "subrecord.h"
+-#include "tes3subrecord.h"
+-#include <bitset>
++#include <algorithm>
++#include <array>
+ #include <cstring>
+ #include <sstream>
++#include <vector>
++
++namespace
++{
++
++uint32_t decodeLittleEndian32(const unsigned char* bytes)
++{
++  return static_cast<uint32_t>(bytes[0]) | (static_cast<uint32_t>(bytes[1]) << 8) |
++         (static_cast<uint32_t>(bytes[2]) << 16) |
++         (static_cast<uint32_t>(bytes[3]) << 24);
++}
++
++void readExact(std::istream& stream, void* destination, std::streamsize size,
++               const char* message)
++{
++  if (!stream.read(static_cast<char*>(destination), size)) {
++    throw ESP::InvalidRecordException(message);
++  }
++}
++
++std::string boundedString(const unsigned char* bytes, size_t size)
++{
++  const auto* end = std::find(bytes, bytes + size, 0);
++  return std::string(reinterpret_cast<const char*>(bytes),
++                     static_cast<size_t>(end - bytes));
++}
++
++}  // namespace
+ 
+ ESP::File::File(const std::string& fileName)
+ {
+@@ -69,36 +97,82 @@ void ESP::File::init()
+     throw ESP::InvalidFileException("file incomplete");
+   }
+   if (memcmp(type, "TES3", 4) == 0) {
++    m_IsTES3 = true;
++
+     ESP::TES3Record rec;
+-    rec.readFrom(m_File);
++    if (!rec.readFrom(m_File)) {
++      throw ESP::InvalidRecordException("TES3 record header incomplete");
++    }
+ 
+-    while (!m_File.eof() && !m_File.fail()) {
+-      ESP::TES3SubRecord subRec;
+-      bool success   = subRec.readFrom(m_File);
+-      int headerSize = sizeof(m_TES3Header);
+-      if (success) {
+-        if (subRec.type() != TES3SubRecord::TYPE_UNKNOWN) {
+-          switch (subRec.type()) {
+-          case TES3SubRecord::TYPE_HEDR:
+-            if (subRec.data().size() != sizeof(m_TES3Header)) {
+-              printf("invalid header size\n");
+-              m_Header.version    = 0.0f;
+-              m_Header.numRecords = 1;  // prevent this esp appear like a dummy
+-            } else {
+-              memcpy(&m_TES3Header, &subRec.data()[0], sizeof(m_TES3Header));
+-            }
+-            m_Header.version    = m_TES3Header.version;
+-            m_Header.numRecords = m_TES3Header.numRecords;
+-            m_Author            = reinterpret_cast<const char*>(m_TES3Header.author);
+-            m_Description = reinterpret_cast<const char*>(m_TES3Header.description);
+-            break;
+-          case TES3SubRecord::TYPE_MAST:
+-            if (subRec.data().size() > 0)
+-              m_Masters.insert(reinterpret_cast<const char*>(&subRec.data()[0]));
+-            break;
+-          }
++    const auto payloadStart = m_File.tellg();
++    m_File.seekg(0, std::ios::end);
++    const auto fileEnd = m_File.tellg();
++    if (payloadStart < 0 || fileEnd < payloadStart ||
++        static_cast<uint64_t>(fileEnd - payloadStart) < rec.dataSize()) {
++      throw ESP::InvalidRecordException("TES3 record data incomplete");
++    }
++    m_File.seekg(payloadStart);
++
++    uint32_t remaining = rec.dataSize();
++    bool hasHeader     = false;
++    while (remaining > 0) {
++      if (remaining < 8) {
++        throw ESP::InvalidRecordException("TES3 sub-record header incomplete");
++      }
++
++      std::array<char, 4> subrecordType{};
++      std::array<unsigned char, 4> sizeBytes{};
++      readExact(m_File, subrecordType.data(), subrecordType.size(),
++                "TES3 sub-record type incomplete");
++      readExact(m_File, sizeBytes.data(), sizeBytes.size(),
++                "TES3 sub-record size incomplete");
++      remaining -= 8;
++
++      const uint32_t dataSize = decodeLittleEndian32(sizeBytes.data());
++      if (dataSize > remaining) {
++        throw ESP::InvalidRecordException("TES3 sub-record data exceeds record size");
++      }
++
++      if (memcmp(subrecordType.data(), "HEDR", 4) == 0) {
++        constexpr size_t headerSize = 300;
++        if (dataSize != headerSize) {
++          throw ESP::InvalidRecordException("invalid TES3 HEDR size");
++        }
++
++        std::array<unsigned char, headerSize> header{};
++        readExact(m_File, header.data(), header.size(), "TES3 HEDR incomplete");
++
++        const uint32_t versionBits = decodeLittleEndian32(header.data());
++        static_assert(sizeof(m_Header.version) == sizeof(versionBits));
++        memcpy(&m_Header.version, &versionBits, sizeof(versionBits));
++        m_TES3Master  = (decodeLittleEndian32(header.data() + 4) & 1U) != 0;
++        m_Author      = boundedString(header.data() + 8, 32);
++        m_Description = boundedString(header.data() + 40, 256);
++        m_Header.numRecords =
++            static_cast<int32_t>(decodeLittleEndian32(header.data() + 296));
++        hasHeader = true;
++      } else if (memcmp(subrecordType.data(), "MAST", 4) == 0) {
++        constexpr uint32_t maxMasterNameSize = 4096;
++        if (dataSize > maxMasterNameSize) {
++          throw ESP::InvalidRecordException("TES3 MAST is unreasonably large");
++        }
++        std::vector<unsigned char> master(dataSize);
++        if (dataSize > 0) {
++          readExact(m_File, master.data(), master.size(), "TES3 MAST incomplete");
++          m_Masters.insert(boundedString(master.data(), master.size()));
++        }
++      } else {
++        m_File.seekg(static_cast<std::streamoff>(dataSize), std::ios::cur);
++        if (!m_File) {
++          throw ESP::InvalidRecordException("TES3 sub-record data incomplete");
+         }
+       }
++
++      remaining -= dataSize;
++    }
++
++    if (!hasHeader) {
++      throw ESP::InvalidRecordException("TES3 record has no HEDR sub-record");
+     }
+   } else if (memcmp(type, "TES4", 4) == 0) {
+     m_File.seekg(0);
+@@ -130,6 +204,9 @@ void ESP::File::init()
+           case SubRecord::TYPE_SNAM:
+             onSNAM(rec);
+             break;
++          case SubRecord::TYPE_UNKNOWN:
++          case SubRecord::TYPE_ONAM:
++            break;
+           }
+         }
+       }
+@@ -177,6 +254,9 @@ ESP::Record ESP::File::readRecord()
+ 
+ bool ESP::File::isMaster() const
+ {
++  if (m_IsTES3) {
++    return m_TES3Master;
++  }
+   return m_MainRecord.flagSet(Record::FLAG_MASTER);
+ }
+ 
+diff --git a/libs/esptk/src/tes3record.cpp b/libs/esptk/src/tes3record.cpp
+index 6f0fe60..0ac3722 100644
+--- a/libs/esptk/src/tes3record.cpp
++++ b/libs/esptk/src/tes3record.cpp
+@@ -1,16 +1,34 @@
+ #include "tes3record.h"
+ #include "espexceptions.h"
++#include <array>
+ 
+-ESP::TES3Record::TES3Record() : m_Header() {}
++namespace
++{
++
++uint32_t decodeLittleEndian32(const unsigned char* bytes)
++{
++  return static_cast<uint32_t>(bytes[0]) | (static_cast<uint32_t>(bytes[1]) << 8) |
++         (static_cast<uint32_t>(bytes[2]) << 16) |
++         (static_cast<uint32_t>(bytes[3]) << 24);
++}
++
++}  // namespace
++
++ESP::TES3Record::TES3Record() : m_DataSize(0), m_Unknown(0), m_Flags(0) {}
+ 
+ bool ESP::TES3Record::readFrom(std::istream& stream)
+ {
+-  if (!stream.read(reinterpret_cast<char*>(&m_Header), sizeof(Header))) {
++  std::array<unsigned char, 12> header{};
++  if (!stream.read(reinterpret_cast<char*>(header.data()), header.size())) {
+     if (stream.gcount() == 0) {
+       return false;
+     } else {
+       throw ESP::InvalidRecordException("record incomplete");
+     }
+   }
++
++  m_DataSize = decodeLittleEndian32(header.data());
++  m_Unknown  = decodeLittleEndian32(header.data() + 4);
++  m_Flags    = decodeLittleEndian32(header.data() + 8);
+   return true;
+ }
+diff --git a/libs/esptk/src/tes3subrecord.cpp b/libs/esptk/src/tes3subrecord.cpp
+index 1f6c137..90132cc 100644
+--- a/libs/esptk/src/tes3subrecord.cpp
++++ b/libs/esptk/src/tes3subrecord.cpp
+@@ -1,10 +1,22 @@
+ #include "tes3subrecord.h"
+ #include "espexceptions.h"
+-#include "esptypes.h"
++#include <array>
+ #include <cstdint>
+ #include <string>
+ #include <unordered_map>
+ 
++namespace
++{
++
++uint32_t decodeLittleEndian32(const unsigned char* bytes)
++{
++  return static_cast<uint32_t>(bytes[0]) | (static_cast<uint32_t>(bytes[1]) << 8) |
++         (static_cast<uint32_t>(bytes[2]) << 16) |
++         (static_cast<uint32_t>(bytes[3]) << 24);
++}
++
++}  // namespace
++
+ ESP::TES3SubRecord::TES3SubRecord() : m_Type(TYPE_UNKNOWN), m_Data() {}
+ 
+ bool ESP::TES3SubRecord::readFrom(std::istream& stream, uint32_t sizeOverride)
+@@ -26,19 +38,21 @@ bool ESP::TES3SubRecord::readFrom(std::istream& stream, uint32_t sizeOverride)
+   }
+   typeString[4] = '\0';  // not sure if this is required, shouldn't be
+   auto iter     = s_TypeMap.find(std::string(typeString));
+-  uint32_t dataSize;
+-  if (iter != s_TypeMap.end()) {
+-    m_Type   = iter->second;
+-    dataSize = readType<uint32_t>(stream);
+-  } else {
+-    m_Type   = TYPE_UNKNOWN;
+-    dataSize = readType<uint32_t>(stream);
+-    stream.seekg(8, std::istream::cur);
++  m_Type        = iter != s_TypeMap.end() ? iter->second : TYPE_UNKNOWN;
++
++  std::array<unsigned char, 4> sizeBytes{};
++  if (!stream.read(reinterpret_cast<char*>(sizeBytes.data()), sizeBytes.size())) {
++    throw ESP::InvalidRecordException("sub-record size incomplete");
+   }
++  uint32_t dataSize = decodeLittleEndian32(sizeBytes.data());
+ 
+   if (sizeOverride != 0UL) {
+     dataSize = sizeOverride;
+   }
++  constexpr uint32_t maxSubrecordSize = 64U * 1024U * 1024U;
++  if (dataSize > maxSubrecordSize) {
++    throw ESP::InvalidRecordException("sub-record is unreasonably large");
++  }
+   m_Data.resize(dataSize);
+ 
+   if (dataSize > 0) {
+diff --git a/src/src/plugincompatibility.cpp b/src/src/plugincompatibility.cpp
+new file mode 100644
+index 0000000..751fbeb
+--- /dev/null
++++ b/src/src/plugincompatibility.cpp
+@@ -0,0 +1,49 @@
++#include "plugincompatibility.h"
++
++#include <QByteArray>
++#include <Qt>
++
++namespace PluginCompatibility
++{
++
++namespace
++{
++
++const QString openMWPlayerRuleId = QStringLiteral("openmwplayer-native-openmw");
++
++}  // namespace
++
++std::optional<Block> blockedRule(const QString& gameName,
++                                 const QStringList& pluginAncestry,
++                                 const QSet<QString>& allowedRuleIds)
++{
++  if (allowedRuleIds.contains(openMWPlayerRuleId)) {
++    return std::nullopt;
++  }
++  if (gameName != QStringLiteral("Morrowind (OpenMW)")) {
++    return std::nullopt;
++  }
++  if (!pluginAncestry.contains(QStringLiteral("OpenMWPlayer"))) {
++    return std::nullopt;
++  }
++  return Block{
++      openMWPlayerRuleId,
++      QStringLiteral("OpenMWPlayer conflicts with Fluorine's native OpenMW "
++                     "configuration and launch management."),
++  };
++}
++
++QSet<QString> environmentOverrides()
++{
++  QSet<QString> result;
++  const auto value = qgetenv("FLUORINE_ALLOW_INCOMPATIBLE_PLUGINS");
++  for (const auto& part : value.split(',')) {
++    const auto id = QString::fromUtf8(part).trimmed();
++    if (!id.isEmpty()) {
++      result.insert(id);
++    }
++  }
++  return result;
++}
++
++}  // namespace PluginCompatibility
+diff --git a/src/src/plugincompatibility.h b/src/src/plugincompatibility.h
+new file mode 100644
+index 0000000..a080d02
+--- /dev/null
++++ b/src/src/plugincompatibility.h
+@@ -0,0 +1,43 @@
++#ifndef PLUGINCOMPATIBILITY_H
++#define PLUGINCOMPATIBILITY_H
++
++#include <QSet>
++#include <QString>
++#include <QStringList>
++
++#include <optional>
++#include <set>
++
++namespace PluginCompatibility
++{
++
++struct Block
++{
++  QString id;
++  QString reason;
++};
++
++std::optional<Block> blockedRule(const QString& gameName,
++                                 const QStringList& pluginAncestry,
++                                 const QSet<QString>& allowedRuleIds = {});
++
++QSet<QString> environmentOverrides();
++
++template <typename Plugin, typename NameGetter, typename MasterGetter>
++std::optional<Block> blockedRuleForPlugin(const QString& gameName, Plugin* plugin,
++                                          NameGetter nameGetter,
++                                          MasterGetter masterGetter,
++                                          const QSet<QString>& allowedRuleIds = {})
++{
++  QStringList ancestry;
++  std::set<Plugin*> visited;
++  while (plugin != nullptr && visited.insert(plugin).second) {
++    ancestry.append(nameGetter(plugin));
++    plugin = masterGetter(plugin);
++  }
++  return blockedRule(gameName, ancestry, allowedRuleIds);
++}
++
++}  // namespace PluginCompatibility
++
++#endif  // PLUGINCOMPATIBILITY_H
+diff --git a/src/src/plugincontainer.cpp b/src/src/plugincontainer.cpp
+index 767a9d2..5e140b9 100644
+--- a/src/src/plugincontainer.cpp
++++ b/src/src/plugincontainer.cpp
+@@ -2,6 +2,7 @@
+ #include "iuserinterface.h"
+ #include "organizercore.h"
+ #include "organizerproxy.h"
++#include "plugincompatibility.h"
+ #include "report.h"
+ #include "shared/appconfig.h"
+ #include <QAction>
+@@ -29,6 +30,22 @@ static void printPluginDiagToStderr(const QString&)
+ {
+ }
+ 
++static std::optional<PluginCompatibility::Block>
++compatibilityBlock(const PluginContainer& container, IPlugin* plugin)
++{
++  if (plugin == nullptr || container.managedGame() == nullptr) {
++    return std::nullopt;
++  }
++
++  return PluginCompatibility::blockedRuleForPlugin(
++      container.managedGame()->gameName(), plugin, [](IPlugin* current) {
++        return current->name();
++      }, [&container](IPlugin* current) {
++        return container.requirements(current).master();
++      },
++      PluginCompatibility::environmentOverrides());
++}
++
+ // Welcome to the wonderful world of MO2 plugin management!
+ //
+ // We'll start by the C++ side.
+@@ -683,6 +700,10 @@ IPluginGame* PluginContainer::managedGame() const
+ 
+ bool PluginContainer::isEnabled(IPlugin* plugin) const
+ {
++  if (::compatibilityBlock(*this, plugin)) {
++    return false;
++  }
++
+   // Check if it's a game plugin:
+   if (implementInterface<IPluginGame>(plugin)) {
+     return plugin == m_Organizer->managedGame();
+@@ -812,6 +833,9 @@ void PluginContainer::startPluginsImpl(const std::vector<QObject*>& plugins) con
+   // setUserInterface()
+   if (m_UserInterface) {
+     for (auto* plugin : plugins) {
++      if (::compatibilityBlock(*this, qobject_cast<IPlugin*>(plugin))) {
++        continue;
++      }
+       if (auto* proxy = qobject_cast<IPluginProxy*>(plugin)) {
+         proxy->setParentWidget(m_UserInterface->mainWindow());
+       }
+@@ -831,6 +855,15 @@ void PluginContainer::startPluginsImpl(const std::vector<QObject*>& plugins) con
+   if (m_Organizer) {
+     for (auto* object : plugins) {
+       auto* plugin = qobject_cast<IPlugin*>(object);
++      if (const auto block = ::compatibilityBlock(*this, plugin)) {
++        if (plugin->name() == QStringLiteral("OpenMWPlayer")) {
++          log::warn(
++              "compatibility rule '{}' disabled plugin '{}' for this session: {} "
++              "Set FLUORINE_ALLOW_INCOMPATIBLE_PLUGINS={} to override.",
++              block->id, plugin->name(), block->reason, block->id);
++        }
++        continue;
++      }
+       auto* oproxy = organizerProxy(plugin);
+       oproxy->connectSignals();
+       oproxy->m_ProfileChanged(nullptr, m_Organizer->currentProfile().get());
+diff --git a/src/tests/CMakeLists.txt b/src/tests/CMakeLists.txt
+index ee895dd..64e22a4 100644
+--- a/src/tests/CMakeLists.txt
++++ b/src/tests/CMakeLists.txt
+@@ -3,6 +3,59 @@ cmake_minimum_required(VERSION 3.16)
+ find_package(Qt6 REQUIRED COMPONENTS Core)
+ find_package(GTest REQUIRED)
+ find_package(SQLite3 REQUIRED)
++find_package(Python3 REQUIRED COMPONENTS Interpreter)
++
++# ---------------------------------------------------------------------------
++# OpenMW native config generation tests
++# ---------------------------------------------------------------------------
++add_test(
++    NAME test_openmw_cfg
++    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_openmw_cfg.py
++)
++add_test(
++    NAME test_flatpak_access
++    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_flatpak_access.py
++)
++
++# ---------------------------------------------------------------------------
++# TES3 metadata and OpenMW Player stub parsing tests
++# ---------------------------------------------------------------------------
++add_executable(test_esptk_tes3 EXCLUDE_FROM_ALL
++    test_esptk_tes3.cpp
++)
++set_target_properties(test_esptk_tes3 PROPERTIES
++    AUTOMOC OFF
++    CXX_STANDARD 23
++    CXX_STANDARD_REQUIRED ON
++)
++target_link_libraries(test_esptk_tes3 PRIVATE
++    mo2::esptk
++    GTest::gtest
++    GTest::gtest_main
++)
++add_test(NAME test_esptk_tes3 COMMAND test_esptk_tes3)
++
++# ---------------------------------------------------------------------------
++# Session-only plugin compatibility policy tests
++# ---------------------------------------------------------------------------
++add_executable(test_plugincompatibility EXCLUDE_FROM_ALL
++    test_plugincompatibility.cpp
++    ${CMAKE_SOURCE_DIR}/src/src/plugincompatibility.cpp
++)
++set_target_properties(test_plugincompatibility PROPERTIES
++    AUTOMOC OFF
++    CXX_STANDARD 23
++    CXX_STANDARD_REQUIRED ON
++)
++target_include_directories(test_plugincompatibility PRIVATE
++    ${CMAKE_SOURCE_DIR}/src/src
++)
++target_link_libraries(test_plugincompatibility PRIVATE
++    Qt6::Core
++    GTest::gtest
++    GTest::gtest_main
++)
++add_test(NAME test_plugincompatibility COMMAND test_plugincompatibility)
+ 
+ # ---------------------------------------------------------------------------
+ # meta.ini case-normalization helper tests
+@@ -124,5 +177,6 @@ add_test(NAME test_vfs_catalog COMMAND test_vfs_catalog)
+ 
+ # Register a "fluorine-tests" umbrella target that builds every test exe.
+ add_custom_target(fluorine-tests
+-    DEPENDS test_metainiutils test_external_dir_mapping test_overwrite_duplicates
+-            test_vfs_file_ops test_vfs_catalog)
++    DEPENDS test_esptk_tes3 test_plugincompatibility test_metainiutils
++            test_external_dir_mapping test_overwrite_duplicates test_vfs_file_ops
++            test_vfs_catalog)
+diff --git a/src/tests/test_esptk_tes3.cpp b/src/tests/test_esptk_tes3.cpp
+new file mode 100644
+index 0000000..994c7f4
+--- /dev/null
++++ b/src/tests/test_esptk_tes3.cpp
+@@ -0,0 +1,207 @@
++#include <gtest/gtest.h>
++
++#include <esptk/espexceptions.h>
++#include <esptk/espfile.h>
++
++#include <algorithm>
++#include <atomic>
++#include <chrono>
++#include <cstdint>
++#include <cstring>
++#include <filesystem>
++#include <fstream>
++#include <set>
++#include <string>
++#include <string_view>
++#include <vector>
++
++namespace
++{
++
++using Bytes = std::vector<unsigned char>;
++
++void append(Bytes& bytes, std::string_view value)
++{
++  bytes.insert(bytes.end(), value.begin(), value.end());
++}
++
++void appendLittleEndian32(Bytes& bytes, uint32_t value)
++{
++  bytes.push_back(static_cast<unsigned char>(value));
++  bytes.push_back(static_cast<unsigned char>(value >> 8));
++  bytes.push_back(static_cast<unsigned char>(value >> 16));
++  bytes.push_back(static_cast<unsigned char>(value >> 24));
++}
++
++void writeLittleEndian32(Bytes& bytes, size_t offset, uint32_t value)
++{
++  bytes[offset]     = static_cast<unsigned char>(value);
++  bytes[offset + 1] = static_cast<unsigned char>(value >> 8);
++  bytes[offset + 2] = static_cast<unsigned char>(value >> 16);
++  bytes[offset + 3] = static_cast<unsigned char>(value >> 24);
++}
++
++void writeFloat(Bytes& bytes, size_t offset, float value)
++{
++  uint32_t bits = 0;
++  static_assert(sizeof(bits) == sizeof(value));
++  std::memcpy(&bits, &value, sizeof(bits));
++  writeLittleEndian32(bytes, offset, bits);
++}
++
++Bytes makeHedr(float version, uint32_t fileType, std::string_view author,
++               std::string_view description, uint32_t recordCount)
++{
++  Bytes header(300, 0);
++  writeFloat(header, 0, version);
++  writeLittleEndian32(header, 4, fileType);
++  std::copy_n(author.begin(), std::min<size_t>(author.size(), 32), header.begin() + 8);
++  std::copy_n(description.begin(), std::min<size_t>(description.size(), 256),
++              header.begin() + 40);
++  writeLittleEndian32(header, 296, recordCount);
++  return header;
++}
++
++void appendSubrecord(Bytes& payload, std::string_view type, const Bytes& data)
++{
++  ASSERT_EQ(type.size(), 4);
++  append(payload, type);
++  appendLittleEndian32(payload, static_cast<uint32_t>(data.size()));
++  payload.insert(payload.end(), data.begin(), data.end());
++}
++
++Bytes makePlugin(const Bytes& payload, const Bytes& trailing = {})
++{
++  Bytes file;
++  append(file, "TES3");
++  appendLittleEndian32(file, static_cast<uint32_t>(payload.size()));
++  appendLittleEndian32(file, 0);
++  appendLittleEndian32(file, 0);
++  file.insert(file.end(), payload.begin(), payload.end());
++  file.insert(file.end(), trailing.begin(), trailing.end());
++  return file;
++}
++
++class TemporaryPlugin
++{
++public:
++  explicit TemporaryPlugin(const Bytes& contents,
++                           std::string_view suffix = ".esp")
++  {
++    static std::atomic_uint64_t counter{0};
++    const auto id = static_cast<uint64_t>(
++                        std::chrono::steady_clock::now().time_since_epoch().count()) +
++                    counter++;
++    m_Path = std::filesystem::temp_directory_path() /
++             ("fluorine-esptk-" + std::to_string(id) + std::string(suffix));
++
++    std::ofstream file(m_Path, std::ios::binary);
++    if (!contents.empty()) {
++      file.write(reinterpret_cast<const char*>(contents.data()),
++                 static_cast<std::streamsize>(contents.size()));
++    }
++    file.close();
++  }
++
++  ~TemporaryPlugin()
++  {
++    std::error_code ignored;
++    std::filesystem::remove(m_Path, ignored);
++  }
++
++  const std::filesystem::path& path() const { return m_Path; }
++
++private:
++  std::filesystem::path m_Path;
++};
++
++}  // namespace
++
++TEST(EspTkTes3, ParsesMetadataAndStopsAtHeaderRecordBoundary)
++{
++  const std::string author(32, 'A');
++  const std::string description(256, 'D');
++
++  Bytes payload;
++  appendSubrecord(payload, "UNKN", Bytes{1, 2, 3});
++  appendSubrecord(payload, "HEDR", makeHedr(1.3F, 1, author, description, 42));
++  Bytes master;
++  append(master, "Morrowind.esm");
++  master.push_back(0);
++  appendSubrecord(payload, "MAST", master);
++  appendSubrecord(payload, "DATA", Bytes(8, 0));
++
++  // Bytes after the declared TES3 payload are later top-level records and must not be
++  // interpreted as TES3 header subrecords.
++  TemporaryPlugin plugin(makePlugin(payload, Bytes{0xff, 0xff, 0xff}));
++  ESP::File file(plugin.path().string());
++
++  EXPECT_FLOAT_EQ(file.headerVersion(), 1.3F);
++  EXPECT_TRUE(file.isMaster());
++  EXPECT_FALSE(file.isDummy());
++  EXPECT_EQ(file.author(), author);
++  EXPECT_EQ(file.description(), description);
++  EXPECT_EQ(file.masters(), std::set<std::string>({"Morrowind.esm"}));
++}
++
++TEST(EspTkTes3, ParsesKezymaOpenMWPlayerStubAsDummy)
++{
++  constexpr std::string_view description =
++      "This is an empty esp used by OpenMW Player to represent omwaddon and "
++      "omwscripts files in Mod Organizer 2.";
++
++  Bytes payload;
++  appendSubrecord(payload, "HEDR", makeHedr(1.0F, 0, "Kezyma", description, 0));
++  const Bytes contents = makePlugin(payload);
++  ASSERT_EQ(contents.size(), 324);
++
++  TemporaryPlugin plugin(contents, ".omwscripts.esp");
++  ESP::File file(plugin.path().string());
++
++  EXPECT_FLOAT_EQ(file.headerVersion(), 1.0F);
++  EXPECT_FALSE(file.isMaster());
++  EXPECT_TRUE(file.isDummy());
++  EXPECT_EQ(file.author(), "Kezyma");
++  EXPECT_EQ(file.description(), description);
++  EXPECT_TRUE(file.masters().empty());
++}
++
++TEST(EspTkTes3, RejectsTruncatedOuterRecord)
++{
++  Bytes payload;
++  appendSubrecord(payload, "HEDR", makeHedr(1.2F, 0, "Author", "Description", 1));
++  Bytes contents = makePlugin(payload);
++  contents.pop_back();
++  TemporaryPlugin plugin(contents);
++
++  EXPECT_THROW(ESP::File file(plugin.path().string()), ESP::InvalidRecordException);
++}
++
++TEST(EspTkTes3, RejectsSubrecordOutsideDeclaredBoundary)
++{
++  Bytes payload;
++  append(payload, "HEDR");
++  appendLittleEndian32(payload, UINT32_MAX);
++  payload.insert(payload.end(), 10, 0);
++  TemporaryPlugin plugin(makePlugin(payload));
++
++  EXPECT_THROW(ESP::File file(plugin.path().string()), ESP::InvalidRecordException);
++}
++
++TEST(EspTkTes3, RejectsMissingHedr)
++{
++  Bytes payload;
++  appendSubrecord(payload, "UNKN", Bytes{1, 2, 3});
++  TemporaryPlugin plugin(makePlugin(payload));
++
++  EXPECT_THROW(ESP::File file(plugin.path().string()), ESP::InvalidRecordException);
++}
++
++TEST(EspTkTes3, RejectsInvalidHedrSize)
++{
++  Bytes payload;
++  appendSubrecord(payload, "HEDR", Bytes(299, 0));
++  TemporaryPlugin plugin(makePlugin(payload));
++
++  EXPECT_THROW(ESP::File file(plugin.path().string()), ESP::InvalidRecordException);
++}
+diff --git a/src/tests/test_flatpak_access.py b/src/tests/test_flatpak_access.py
+new file mode 100644
+index 0000000..fe0ea7f
+--- /dev/null
++++ b/src/tests/test_flatpak_access.py
+@@ -0,0 +1,141 @@
++from __future__ import annotations
++
++import importlib.util
++import subprocess
++import tempfile
++import unittest
++from pathlib import Path
++from types import SimpleNamespace
++from unittest import mock
++
++
++MODULE_PATH = (
++    Path(__file__).parents[2]
++    / "libs"
++    / "basic_games"
++    / "games"
++    / "openmw_support"
++    / "flatpak_access.py"
++)
++SPEC = importlib.util.spec_from_file_location("flatpak_access", MODULE_PATH)
++if SPEC is None or SPEC.loader is None:
++    raise RuntimeError(f"Unable to load {MODULE_PATH}")
++flatpak_access = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(flatpak_access)
++
++
++class FlatpakAccessTests(unittest.TestCase):
++    def test_merges_duplicate_paths_using_stronger_requirement(self) -> None:
++        path = Path("/tmp/example")
++
++        self.assertEqual(
++            flatpak_access.merge_requirements(
++                [
++                    flatpak_access.PathRequirement(path, False),
++                    flatpak_access.PathRequirement(path, True),
++                ]
++            ),
++            [flatpak_access.PathRequirement(path, True)],
++        )
++
++    def test_parses_hidden_and_read_only_results(self) -> None:
++        requirements = [
++            flatpak_access.PathRequirement(Path("/read-only-data"), False),
++            flatpak_access.PathRequirement(Path("/hidden-data"), False),
++            flatpak_access.PathRequirement(Path("/writable-profile"), True),
++        ]
++
++        failures = flatpak_access.parse_probe_output(
++            b"read-only\0hidden\0read-only\0", requirements
++        )
++
++        self.assertEqual(
++            failures,
++            [
++                flatpak_access.AccessFailure(requirements[1], "hidden"),
++                flatpak_access.AccessFailure(requirements[2], "read-only"),
++            ],
++        )
++
++    def test_rejects_malformed_probe_output(self) -> None:
++        requirement = flatpak_access.PathRequirement(Path("/data"), False)
++        with self.assertRaisesRegex(RuntimeError, "unterminated"):
++            flatpak_access.parse_probe_output(b"ok", [requirement])
++        with self.assertRaisesRegex(RuntimeError, "result count"):
++            flatpak_access.parse_probe_output(b"ok\0hidden\0", [requirement])
++        with self.assertRaisesRegex(RuntimeError, "unknown status"):
++            flatpak_access.parse_probe_output(b"surprise\0", [requirement])
++
++    def test_probes_all_paths_in_one_flatpak_process(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            root = Path(temporary)
++            data = root / 'Data Files "quoted"'
++            profile = root / "Profile\nWith Newline"
++            data.mkdir()
++            profile.mkdir()
++            completed = SimpleNamespace(
++                returncode=0,
++                stdout=b"ok\0read-only\0",
++                stderr=b"",
++            )
++
++            with mock.patch.object(
++                flatpak_access.subprocess, "run", return_value=completed
++            ) as run:
++                failures = flatpak_access.probe_flatpak_access(
++                    "/usr/bin/flatpak",
++                    "org.openmw.OpenMW",
++                    [
++                        flatpak_access.PathRequirement(data, False),
++                        flatpak_access.PathRequirement(profile, True),
++                    ],
++                )
++
++            self.assertEqual(
++                failures,
++                [
++                    flatpak_access.AccessFailure(
++                        flatpak_access.PathRequirement(profile, True),
++                        "read-only",
++                    )
++                ],
++            )
++            run.assert_called_once()
++            arguments = run.call_args.args[0]
++            self.assertIn(str(data), arguments)
++            self.assertIn(str(profile), arguments)
++            self.assertNotIn("shell", run.call_args.kwargs)
++
++    def test_reports_probe_process_failures(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            path = Path(temporary)
++            with mock.patch.object(
++                flatpak_access.subprocess,
++                "run",
++                side_effect=subprocess.TimeoutExpired("flatpak", 30),
++            ):
++                with self.assertRaisesRegex(RuntimeError, "Unable to run"):
++                    flatpak_access.probe_flatpak_access(
++                        "flatpak",
++                        "org.openmw.OpenMW",
++                        [flatpak_access.PathRequirement(path, False)],
++                    )
++
++            completed = SimpleNamespace(
++                returncode=1,
++                stdout=b"",
++                stderr=b"not installed",
++            )
++            with mock.patch.object(
++                flatpak_access.subprocess, "run", return_value=completed
++            ):
++                with self.assertRaisesRegex(RuntimeError, "not installed"):
++                    flatpak_access.probe_flatpak_access(
++                        "flatpak",
++                        "org.openmw.OpenMW",
++                        [flatpak_access.PathRequirement(path, False)],
++                    )
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/src/tests/test_openmw_cfg.py b/src/tests/test_openmw_cfg.py
+new file mode 100644
+index 0000000..f16d982
+--- /dev/null
++++ b/src/tests/test_openmw_cfg.py
+@@ -0,0 +1,655 @@
++from __future__ import annotations
++
++import importlib.util
++import json
++import os
++import tempfile
++import unittest
++from pathlib import Path
++from unittest import mock
++
++
++MODULE_PATH = (
++    Path(__file__).parents[2]
++    / "libs"
++    / "basic_games"
++    / "games"
++    / "openmw_support"
++    / "openmw_cfg.py"
++)
++SPEC = importlib.util.spec_from_file_location("openmw_cfg", MODULE_PATH)
++if SPEC is None or SPEC.loader is None:
++    raise RuntimeError(f"Unable to load {MODULE_PATH}")
++openmw_cfg = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(openmw_cfg)
++
++
++class OpenMWConfigTests(unittest.TestCase):
++    def test_selects_only_the_launch_type_config_root(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            native = directory / "native" / "openmw.cfg"
++            flatpak = directory / "flatpak" / "openmw.cfg"
++            flatpak.parent.mkdir()
++            flatpak.write_text("flatpak\n", encoding="utf-8")
++
++            self.assertIsNone(openmw_cfg.find_openmw_cfg(native, flatpak, False))
++            self.assertEqual(
++                openmw_cfg.find_openmw_cfg(native, flatpak, True), flatpak
++            )
++
++            native.parent.mkdir()
++            native.write_text("native\n", encoding="utf-8")
++            self.assertEqual(
++                openmw_cfg.find_openmw_cfg(native, flatpak, False), native
++            )
++
++    def test_normalizes_openmw_player_stub_loadorder(self) -> None:
++        self.assertEqual(
++            openmw_cfg.normalize_plugin_loadorder(
++                [
++                    "Addon.omwaddon.esp",
++                    "addon.OMWADDON.ESP",
++                    "Game.omwgame.ESP",
++                    "Scripts.OMWSCRIPTS.esp",
++                    "Ordinary.esp",
++                ]
++            ),
++            [
++                "Addon.omwaddon",
++                "Game.omwgame",
++                "Scripts.OMWSCRIPTS",
++                "Ordinary.esp",
++            ],
++        )
++        self.assertTrue(openmw_cfg.is_openmw_player_stub("Addon.OMWADDON.esp"))
++        self.assertFalse(openmw_cfg.is_openmw_player_stub("Ordinary.esp"))
++
++    def test_loadorder_keeps_ranked_plugins_before_unranked_plugins(self) -> None:
++        self.assertEqual(
++            openmw_cfg.order_plugins_by_loadorder(
++                ["Unranked.omwaddon", "Ranked.omwaddon"],
++                ["Duplicate.esp", "duplicate.ESP", "Ranked.omwaddon.esp"],
++            ),
++            ["Ranked.omwaddon", "Unranked.omwaddon"],
++        )
++
++    def test_loadorder_collapses_duplicate_providers(self) -> None:
++        self.assertEqual(
++            openmw_cfg.order_plugins_by_loadorder(
++                ["Addon.omwaddon", "ADDON.OMWADDON"],
++                ["Addon.omwaddon.esp"],
++            ),
++            ["ADDON.OMWADDON"],
++        )
++
++    def test_reports_only_unranked_native_content(self) -> None:
++        self.assertEqual(
++            openmw_cfg.unranked_native_plugins(
++                [
++                    "Ranked.omwaddon",
++                    "Unranked.omwscripts",
++                    "Ordinary.esp",
++                    "Master.esm",
++                    "UNRANKED.OMWSCRIPTS",
++                ],
++                ["Ranked.omwaddon.esp"],
++            ),
++            ["Unranked.omwscripts"],
++        )
++        self.assertEqual(
++            openmw_cfg.unranked_native_plugins(
++                ["Unranked.omwscripts"], []
++            ),
++            [],
++        )
++
++    def test_formats_bounded_unranked_name_sample(self) -> None:
++        self.assertEqual(
++            openmw_cfg.format_name_sample(["One", "Two", "Three"], limit=2),
++            "'One', 'Two' (+1 more)",
++        )
++
++    def test_reads_curated_selection_and_deduplicates_names(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            cfg_path = Path(temporary) / "openmw.cfg"
++            cfg_path.write_text(
++                "\n".join(
++                    (
++                        "# preserved profile selection",
++                        " Content = Enabled.esp ",
++                        "content=enabled.ESP",
++                        "groundcover=Grass.esp",
++                        "fallback-archive=Morrowind.bsa",
++                        "Fallback-Archive=Morrowind - Invalidation.bsa",
++                        "data=/ignored",
++                    )
++                ),
++                encoding="utf-8",
++            )
++
++            self.assertEqual(
++                openmw_cfg.read_openmw_selection(cfg_path),
++                {
++                    "content": ["Enabled.esp"],
++                    "groundcover": ["Grass.esp"],
++                    "fallback-archive": [
++                        "Morrowind.bsa",
++                        "Morrowind - Invalidation.bsa",
++                    ],
++                },
++            )
++
++    def test_filters_curated_content_activation(self) -> None:
++        available = [
++            "Enabled.esp",
++            "Siege at Firemoth.esp",
++            "Helm of Tohan Naturalized.esp",
++            "Grass.esp",
++        ]
++        configured = ["Enabled.esp", "Grass.esp"]
++
++        self.assertEqual(
++            openmw_cfg.filter_selected_files(available, configured),
++            ["Enabled.esp", "Grass.esp"],
++        )
++
++    def test_preserves_curated_archive_order(self) -> None:
++        available = [
++            "Bloodmoon.bsa",
++            "Morrowind - Invalidation.bsa",
++            "dynamicsounds.bsa",
++            "Morrowind.bsa",
++            "Protection From Sun Damage.bsa",
++            "Tribunal.bsa",
++            "Hiding Vampirism Under Helmets.bsa",
++            "Disabled.bsa",
++        ]
++        configured = [
++            "Morrowind.bsa",
++            "Tribunal.bsa",
++            "Bloodmoon.bsa",
++            "Morrowind - Invalidation.bsa",
++            "Hiding Vampirism Under Helmets.bsa",
++            "Protection From Sun Damage.bsa",
++            "dynamicsounds.bsa",
++        ]
++
++        self.assertEqual(
++            openmw_cfg.order_selected_files(available, configured),
++            configured,
++        )
++
++    def test_migrates_curated_profile_to_durable_selection(self) -> None:
++        configured = {
++            "content": ["Morrowind.esm", "Enabled.esp"],
++            "groundcover": ["Grass.esp"],
++            "fallback-archive": [
++                "Morrowind.bsa",
++                "Tribunal.bsa",
++                "Bloodmoon.bsa",
++                "Morrowind - Invalidation.bsa",
++                "Enabled Mod.bsa",
++            ],
++        }
++        available_plugins = [
++            "Enabled.esp",
++            "Siege at Firemoth.esp",
++            "Helm of Tohan Naturalized.esp",
++            "Grass.esp",
++        ]
++        state = openmw_cfg.create_selection_state(
++            configured,
++            loadorder=available_plugins,
++            available_plugins=available_plugins,
++            available_archives=[
++                "Morrowind.bsa",
++                "Tribunal.bsa",
++                "Bloodmoon.bsa",
++                "Morrowind - Invalidation.bsa",
++                "Enabled Mod.bsa",
++                "Disabled Mod.bsa",
++            ],
++            supplemental_archives=["Morrowind - Invalidation.bsa"],
++        )
++
++        self.assertEqual(
++            openmw_cfg.filter_selected_files(
++                available_plugins, state["enabled_plugins"]
++            ),
++            ["Enabled.esp", "Grass.esp"],
++        )
++        self.assertEqual(state["groundcover"], ["Grass.esp"])
++        self.assertNotIn("Disabled Mod.bsa", state["archives"])
++        self.assertIn("Siege at Firemoth.esp", state["known_plugins"])
++        self.assertNotIn("Siege at Firemoth.esp", state["enabled_plugins"])
++
++    def test_selection_survives_missing_files_and_enables_new_files(self) -> None:
++        state = openmw_cfg.create_selection_state(
++            {
++                "content": ["Enabled.esp"],
++                "groundcover": ["Grass.esp"],
++                "fallback-archive": ["Enabled.bsa"],
++            },
++            loadorder=["Enabled.esp", "Disabled.esp", "Grass.esp"],
++            available_plugins=["Enabled.esp", "Disabled.esp", "Grass.esp"],
++            available_archives=["Enabled.bsa", "Disabled.bsa"],
++        )
++
++        self.assertFalse(
++            openmw_cfg.update_selection_state(
++                state,
++                available_plugins=["Disabled.esp"],
++                available_archives=["Disabled.bsa"],
++                groundcover=["Grass.esp"],
++            )
++        )
++        self.assertIn("Enabled.esp", state["enabled_plugins"])
++        self.assertIn("Enabled.bsa", state["archives"])
++
++        self.assertTrue(
++            openmw_cfg.update_selection_state(
++                state,
++                available_plugins=["Enabled.esp", "New.omwaddon"],
++                available_archives=["Enabled.bsa", "New.bsa"],
++                groundcover=["Grass.esp"],
++            )
++        )
++        self.assertIn("New.omwaddon", state["enabled_plugins"])
++        self.assertIn("New.bsa", state["archives"])
++        self.assertNotIn("Disabled.esp", state["enabled_plugins"])
++        self.assertNotIn("Disabled.bsa", state["archives"])
++
++    def test_selection_state_round_trips_atomically(self) -> None:
++        state = openmw_cfg.create_selection_state(
++            {
++                "content": ["Enabled.esp"],
++                "groundcover": [],
++                "fallback-archive": ["Enabled.bsa"],
++            },
++            loadorder=["Enabled.esp"],
++            available_plugins=["Enabled.esp"],
++            available_archives=["Enabled.bsa"],
++        )
++        with tempfile.TemporaryDirectory() as temporary:
++            state_path = Path(temporary) / "fluorine-openmw-selection.json"
++            openmw_cfg.write_selection_state(state_path, state)
++
++            self.assertEqual(openmw_cfg.read_selection_state(state_path), state)
++            self.assertTrue(state_path.read_text(encoding="utf-8").endswith("\n"))
++
++    def test_migrates_version_one_selection_state(self) -> None:
++        state_v1 = {
++            "version": 1,
++            "known_plugins": ["Known.esp"],
++            "enabled_plugins": ["Known.esp"],
++            "groundcover": [],
++            "known_archives": ["Known.bsa"],
++            "archives": ["Known.bsa"],
++        }
++        with tempfile.TemporaryDirectory() as temporary:
++            state_path = Path(temporary) / "fluorine-openmw-selection.json"
++            state_path.write_text(json.dumps(state_v1), encoding="utf-8")
++            state = openmw_cfg.read_selection_state(state_path)
++            self.assertIsNotNone(state)
++
++            self.assertTrue(openmw_cfg.upgrade_selection_state(state))
++            self.assertEqual(state["version"], 2)
++            self.assertEqual(state["profile_config_entries"], [])
++            self.assertFalse(state["profile_config_entries_known"])
++            self.assertFalse(state["profile_config_terminal"])
++            self.assertFalse(openmw_cfg.upgrade_selection_state(state))
++
++    def test_suspends_and_restores_exact_profile_config_entries(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            cfg_path = Path(temporary) / "openmw.cfg"
++            entries = [
++                '  Config = "../Nested &"Config"  ',
++                "config=?local?/nested",
++                "config=?local?/nested",
++            ]
++            cfg_path.write_text(
++                "setting=value\n" + "\n".join(entries) + "\ncontent=Old.esp\n",
++                encoding="utf-8",
++            )
++            state = openmw_cfg.create_selection_state(
++                {
++                    "content": ["Old.esp"],
++                    "groundcover": [],
++                    "fallback-archive": [],
++                },
++                loadorder=["Old.esp"],
++                available_plugins=["Old.esp"],
++                available_archives=[],
++            )
++
++            self.assertTrue(
++                openmw_cfg.suspend_profile_config_entries(state, cfg_path)
++            )
++            self.assertEqual(state["profile_config_entries"], entries)
++            self.assertTrue(state["profile_config_entries_known"])
++            self.assertTrue(state["profile_config_terminal"])
++
++            openmw_cfg.write_openmw_cfg(
++                cfg_path,
++                data_dirs=["/data"],
++                content_plugins=["Old.esp"],
++                strip_config=True,
++                vanilla_masters=(),
++                vanilla_bsas=(),
++            )
++            self.assertEqual(
++                openmw_cfg.capture_profile_config_entries(cfg_path), []
++            )
++            self.assertFalse(
++                openmw_cfg.suspend_profile_config_entries(state, cfg_path)
++            )
++
++            self.assertTrue(
++                openmw_cfg.restore_profile_config_entries(
++                    cfg_path, state["profile_config_entries"]
++                )
++            )
++            self.assertEqual(
++                openmw_cfg.capture_profile_config_entries(cfg_path), entries
++            )
++            self.assertFalse(
++                openmw_cfg.restore_profile_config_entries(
++                    cfg_path, state["profile_config_entries"]
++                )
++            )
++
++    def test_restores_entries_captured_with_unknown_legacy_backup(self) -> None:
++        state = openmw_cfg.create_selection_state(
++            {"content": [], "groundcover": [], "fallback-archive": []},
++            loadorder=[],
++            available_plugins=[],
++            available_archives=[],
++        )
++        state["profile_config_entries_known"] = False
++        state["profile_config_terminal"] = True
++        with tempfile.TemporaryDirectory() as temporary:
++            cfg_path = Path(temporary) / "openmw.cfg"
++            cfg_path.write_text("config=../re-added\n", encoding="utf-8")
++
++            self.assertTrue(
++                openmw_cfg.suspend_profile_config_entries(state, cfg_path)
++            )
++            self.assertFalse(state["profile_config_entries_known"])
++            self.assertEqual(
++                state["profile_config_entries"], ["config=../re-added"]
++            )
++            openmw_cfg.write_openmw_cfg(
++                cfg_path,
++                data_dirs=["/data"],
++                content_plugins=[],
++                strip_config=True,
++                vanilla_masters=(),
++                vanilla_bsas=(),
++            )
++
++            self.assertTrue(
++                openmw_cfg.restore_profile_config_entries(
++                    cfg_path, state["profile_config_entries"]
++                )
++            )
++            self.assertEqual(
++                openmw_cfg.capture_profile_config_entries(cfg_path),
++                ["config=../re-added"],
++            )
++
++    def test_profile_selector_path_round_trips_escaped_characters(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "openmw.cfg"
++            profile_path = directory / 'Profile & "Quoted"'
++
++            openmw_cfg.write_profile_selector(cfg_path, profile_path)
++
++            self.assertEqual(
++                openmw_cfg.read_profile_selector(cfg_path),
++                profile_path.resolve(strict=False),
++            )
++
++    def test_config_restoration_rolls_back_with_state(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "openmw.cfg"
++            state_path = directory / "fluorine-openmw-selection.json"
++            cfg_path.write_text("terminal=true\n", encoding="utf-8")
++            state = openmw_cfg.create_selection_state(
++                {"content": [], "groundcover": [], "fallback-archive": []},
++                loadorder=[],
++                available_plugins=[],
++                available_archives=[],
++            )
++            state["profile_config_entries"] = ["config=../nested"]
++            state["profile_config_terminal"] = True
++            openmw_cfg.write_selection_state(state_path, state)
++            original_state = state_path.read_text(encoding="utf-8")
++
++            with self.assertRaisesRegex(RuntimeError, "injected failure"):
++                with openmw_cfg.rollback_file_changes([cfg_path, state_path]):
++                    openmw_cfg.restore_profile_config_entries(
++                        cfg_path, state["profile_config_entries"]
++                    )
++                    state["profile_config_terminal"] = False
++                    openmw_cfg.write_selection_state(state_path, state)
++                    raise RuntimeError("injected failure")
++
++            self.assertEqual(
++                cfg_path.read_text(encoding="utf-8"), "terminal=true\n"
++            )
++            self.assertEqual(state_path.read_text(encoding="utf-8"), original_state)
++
++    def test_transaction_rolls_back_existing_and_new_files(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "openmw.cfg"
++            launcher_path = directory / "launcher.cfg"
++            state_path = directory / "fluorine-openmw-selection.json"
++            cfg_path.write_text("original config\n", encoding="utf-8")
++            launcher_path.write_text("original launcher\n", encoding="utf-8")
++
++            with self.assertRaisesRegex(RuntimeError, "injected failure"):
++                with openmw_cfg.rollback_file_changes(
++                    [cfg_path, launcher_path, state_path, cfg_path]
++                ):
++                    openmw_cfg._write_lines(cfg_path, ["new config"])
++                    openmw_cfg._write_lines(launcher_path, ["new launcher"])
++                    openmw_cfg._write_lines(state_path, ["new state"])
++                    raise RuntimeError("injected failure")
++
++            self.assertEqual(
++                cfg_path.read_text(encoding="utf-8"), "original config\n"
++            )
++            self.assertEqual(
++                launcher_path.read_text(encoding="utf-8"), "original launcher\n"
++            )
++            self.assertFalse(state_path.exists())
++            self.assertEqual(list(directory.glob(".*.rollback")), [])
++
++    def test_transaction_commits_and_removes_snapshots(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "openmw.cfg"
++            cfg_path.write_text("original\n", encoding="utf-8")
++
++            with openmw_cfg.rollback_file_changes([cfg_path]):
++                backups = list(directory.glob(".*.rollback"))
++                self.assertEqual(len(backups), 1)
++                self.assertEqual(os.stat(backups[0]).st_ino, os.stat(cfg_path).st_ino)
++                openmw_cfg._write_lines(cfg_path, ["committed"])
++
++            self.assertEqual(cfg_path.read_text(encoding="utf-8"), "committed\n")
++            self.assertEqual(list(directory.glob(".*.rollback")), [])
++
++    def test_transaction_restores_symlink_target(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            target_path = directory / "target.cfg"
++            link_path = directory / "openmw.cfg"
++            target_path.write_text("original\n", encoding="utf-8")
++            try:
++                link_path.symlink_to(target_path)
++            except OSError as error:
++                self.skipTest(f"Symlinks unavailable: {error}")
++
++            with self.assertRaisesRegex(RuntimeError, "injected failure"):
++                with openmw_cfg.rollback_file_changes([link_path]):
++                    openmw_cfg._write_lines(link_path, ["changed"])
++                    raise RuntimeError("injected failure")
++
++            self.assertTrue(link_path.is_symlink())
++            self.assertEqual(target_path.read_text(encoding="utf-8"), "original\n")
++            self.assertEqual(list(directory.glob(".*.rollback")), [])
++
++    def test_late_marker_failure_restores_earlier_write(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "profile.cfg"
++            root_path = directory / "root.cfg"
++            cfg_path.write_text("original profile\n", encoding="utf-8")
++            root_path.write_text(
++                "# BEGIN FLUORINE OPENMW LOCAL SAVES\n",
++                encoding="utf-8",
++            )
++
++            with self.assertRaisesRegex(ValueError, "without a matching"):
++                with openmw_cfg.rollback_file_changes([cfg_path, root_path]):
++                    openmw_cfg._write_lines(cfg_path, ["changed profile"])
++                    openmw_cfg.write_local_saves(root_path, None)
++
++            self.assertEqual(
++                cfg_path.read_text(encoding="utf-8"), "original profile\n"
++            )
++            self.assertEqual(
++                root_path.read_text(encoding="utf-8"),
++                "# BEGIN FLUORINE OPENMW LOCAL SAVES\n",
++            )
++
++    def test_rejects_export_roles_aliased_through_parent_symlink(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            real_profile = directory / "real-profile"
++            alias_profile = directory / "alias-profile"
++            real_profile.mkdir()
++            try:
++                alias_profile.symlink_to(real_profile, target_is_directory=True)
++            except OSError as error:
++                self.skipTest(f"Symlinks unavailable: {error}")
++
++            with self.assertRaisesRegex(ValueError, "resolve to the same file"):
++                openmw_cfg.validate_file_roles(
++                    {
++                        "root config": real_profile / "openmw.cfg",
++                        "profile config": alias_profile / "openmw.cfg",
++                    }
++                )
++
++    def test_rejects_absent_transaction_parent(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            missing_path = Path(temporary) / "missing" / "openmw.cfg"
++
++            with self.assertRaisesRegex(ValueError, "parent does not exist"):
++                with openmw_cfg.rollback_file_changes([missing_path]):
++                    self.fail("Transaction should not start")
++
++            self.assertFalse(missing_path.parent.exists())
++
++    def test_removes_partial_copy_when_snapshot_creation_fails(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            directory = Path(temporary)
++            cfg_path = directory / "openmw.cfg"
++            cfg_path.write_text("original\n", encoding="utf-8")
++
++            def fail_after_partial_copy(_source, destination):
++                Path(destination).write_text("partial", encoding="utf-8")
++                raise OSError("injected copy failure")
++
++            with mock.patch.object(
++                openmw_cfg.os, "link", side_effect=OSError("no hard links")
++            ), mock.patch.object(
++                openmw_cfg.shutil, "copy2", side_effect=fail_after_partial_copy
++            ):
++                with self.assertRaisesRegex(OSError, "injected copy failure"):
++                    with openmw_cfg.rollback_file_changes([cfg_path]):
++                        self.fail("Transaction should not start")
++
++            self.assertEqual(cfg_path.read_text(encoding="utf-8"), "original\n")
++            self.assertEqual(list(directory.glob(".*.rollback")), [])
++
++    def test_profile_block_preserves_inherited_data(self) -> None:
++        block = openmw_cfg.build_managed_block(
++            ["/game/Data Files", "/mods/example"],
++            ["Example.esp"],
++            replace_managed=True,
++        )
++
++        self.assertEqual(
++            [line for line in block if line.startswith("replace=")],
++            [
++                "replace=content",
++                "replace=fallback-archive",
++                "replace=groundcover",
++            ],
++        )
++        self.assertNotIn("replace=data", block)
++        self.assertIn('data="/game/Data Files"', block)
++        self.assertIn('data="/mods/example"', block)
++
++    def test_profile_rewrite_removes_stale_data_replacement(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            cfg_path = Path(temporary) / "openmw.cfg"
++            cfg_path.write_text(
++                "\n".join(
++                    (
++                        'resources="/keep/resources"',
++                        "replace=config",
++                        "replace = DATA",
++                        "replace=content",
++                        "replace=groundcover",
++                        "replace=fallback-archive",
++                        'data="/stale/data"',
++                        "content=Stale.esp",
++                        "groundcover=StaleGrass.esp",
++                        "fallback-archive=Stale.bsa",
++                        "",
++                    )
++                ),
++                encoding="utf-8",
++            )
++
++            def rewrite() -> str:
++                openmw_cfg.write_openmw_cfg(
++                    cfg_path,
++                    data_dirs=["/game/Data Files", "/mods/current"],
++                    content_plugins=["Current.esp"],
++                    replace_managed=True,
++                    vanilla_masters=(),
++                    vanilla_bsas=(),
++                )
++                return cfg_path.read_text(encoding="utf-8")
++
++            first = rewrite()
++            second = rewrite()
++
++            self.assertEqual(first, second)
++            self.assertIn('resources="/keep/resources"', first)
++            self.assertIn("replace=config", first)
++            self.assertNotIn("replace=data", first.lower().replace(" ", ""))
++            self.assertEqual(first.count("replace=content\n"), 1)
++            self.assertEqual(first.count("replace=fallback-archive\n"), 1)
++            self.assertEqual(first.count("replace=groundcover\n"), 1)
++            self.assertNotIn("/stale/data", first)
++            self.assertNotIn("Stale.esp", first)
++            self.assertNotIn("StaleGrass.esp", first)
++            self.assertNotIn("Stale.bsa", first)
++            self.assertEqual(first.count("data="), 2)
++            self.assertIn('data="/game/Data Files"', first)
++            self.assertIn('data="/mods/current"', first)
++            self.assertIn("content=Current.esp", first)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/src/tests/test_plugincompatibility.cpp b/src/tests/test_plugincompatibility.cpp
+new file mode 100644
+index 0000000..70f4349
+--- /dev/null
++++ b/src/tests/test_plugincompatibility.cpp
+@@ -0,0 +1,94 @@
++#include <gtest/gtest.h>
++
++#include "plugincompatibility.h"
++
++namespace
++{
++
++struct FakePlugin
++{
++  QString name;
++  FakePlugin* master{nullptr};
++};
++
++std::optional<PluginCompatibility::Block> blocked(FakePlugin* plugin)
++{
++  return PluginCompatibility::blockedRuleForPlugin(
++      QStringLiteral("Morrowind (OpenMW)"), plugin,
++      [](FakePlugin* current) { return current->name; },
++      [](FakePlugin* current) { return current->master; });
++}
++
++}  // namespace
++
++TEST(PluginCompatibility, BlocksOpenMWPlayerForNativeOpenMW)
++{
++  const auto block = PluginCompatibility::blockedRule(
++      QStringLiteral("Morrowind (OpenMW)"), {QStringLiteral("OpenMWPlayer")});
++
++  ASSERT_TRUE(block.has_value());
++  EXPECT_EQ(block->id, QStringLiteral("openmwplayer-native-openmw"));
++}
++
++TEST(PluginCompatibility, BlocksDescendantsByMasterAncestry)
++{
++  EXPECT_TRUE(PluginCompatibility::blockedRule(
++                  QStringLiteral("Morrowind (OpenMW)"),
++                  {QStringLiteral("OpenMWPlayer Launcher"),
++                   QStringLiteral("OpenMWPlayer")})
++                  .has_value());
++}
++
++TEST(PluginCompatibility, TraversesMasterAncestryAndStopsAtCycles)
++{
++  FakePlugin root{QStringLiteral("OpenMWPlayer")};
++  FakePlugin child{QStringLiteral("OpenMWPlayer Launcher"), &root};
++  FakePlugin grandchild{QStringLiteral("OpenMWPlayer Child Tool"), &child};
++
++  EXPECT_TRUE(blocked(&grandchild).has_value());
++
++  root.master = &grandchild;
++  EXPECT_TRUE(blocked(&grandchild).has_value());
++}
++
++TEST(PluginCompatibility, AllowsClassicMorrowindAndOtherPlugins)
++{
++  EXPECT_FALSE(PluginCompatibility::blockedRule(
++                   QStringLiteral("Morrowind"), {QStringLiteral("OpenMWPlayer")})
++                   .has_value());
++  EXPECT_FALSE(PluginCompatibility::blockedRule(
++                   QStringLiteral("Morrowind (OpenMW)"),
++                   {QStringLiteral("Unrelated Plugin")})
++                   .has_value());
++  EXPECT_FALSE(PluginCompatibility::blockedRule(
++                   QStringLiteral("morrowind (openmw)"),
++                   {QStringLiteral("OpenMWPlayer")})
++                   .has_value());
++}
++
++TEST(PluginCompatibility, SessionOverrideAllowsBlockedRule)
++{
++  EXPECT_FALSE(PluginCompatibility::blockedRule(
++                   QStringLiteral("Morrowind (OpenMW)"),
++                   {QStringLiteral("OpenMWPlayer")},
++                   {QStringLiteral("openmwplayer-native-openmw")})
++                   .has_value());
++}
++
++TEST(PluginCompatibility, ReadsSessionOverridesFromEnvironment)
++{
++  const auto variable = QByteArrayLiteral("FLUORINE_ALLOW_INCOMPATIBLE_PLUGINS");
++  const auto original = qgetenv(variable.constData());
++  qputenv(variable.constData(),
++          QByteArrayLiteral("other-rule, openmwplayer-native-openmw"));
++
++  const auto overrides = PluginCompatibility::environmentOverrides();
++
++  if (original.isNull()) {
++    qunsetenv(variable.constData());
++  } else {
++    qputenv(variable.constData(), original);
++  }
++  EXPECT_TRUE(overrides.contains(QStringLiteral("other-rule")));
++  EXPECT_TRUE(overrides.contains(QStringLiteral("openmwplayer-native-openmw")));
++}

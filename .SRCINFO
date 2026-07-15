@@ -1,7 +1,7 @@
 pkgbase = fluorine-manager-git
 	pkgdesc = A native Linux mod manager for Bethesda and other games, built on MO2
-	pkgver = 0.3.0.r34.gb56ab21
-	pkgrel = 4
+	pkgver = 0.3.0.r54.g3cf734d
+	pkgrel = 1
 	url = https://github.com/SulfurNitride/Fluorine-Manager
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,14 +13,8 @@ pkgbase = fluorine-manager-git
 	conflicts = fluorine-manager-bin
 	options = !strip
 	source = git+https://github.com/SulfurNitride/Fluorine-Manager.git
-	source = fluorine-manager-order-openmw-content-by-loadorder.patch
-	source = fluorine-manager-groundcover-cfg-fallback.patch
-	source = fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch
-	source = fluorine-manager-fix-appversion-versioninfo-python-binding.patch
+	source = fluorine-manager-use-openmw-config-chaining-for-profile-settings.patch
 	sha256sums = SKIP
-	sha256sums = 23b44a869e2a90893c3fb0fb4a89a7e4f223e18c4bdd86b97b4b3a2140178865
-	sha256sums = 6a0ee0fc4a0e9c43e54908f3d94c8ec4ccb4e186002d9c91d658be0b94b5111a
-	sha256sums = 8c531af71e4d56f804c5eb9153bc6aa0ff73ecefe0e1b8b2e988cd79c4a9ecd7
-	sha256sums = 4a5f0c6740b27c64383e1fb58a1782e743c66826dd9cc31920456da15ab20bd8
+	sha256sums = 97b8502c0af4d76743b66996bd4b10134344f0621b601fce56e7d0460121733c
 
 pkgname = fluorine-manager-git
