@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Helium Sync
+Comment=Cloud synchronization daemon and DRM fixer for Helium Browser
+Exec=helium-sync-gui
+Icon=helium-sync
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;Utility;
+StartupNotify=true

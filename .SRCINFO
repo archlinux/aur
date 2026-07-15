@@ -10,9 +10,13 @@ pkgbase = helium-sync
 	makedepends = npm
 	depends = gcc-libs
 	depends = glibc
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
 	source = helium-sync-daemon::git+https://github.com/MehmetCanWT/Helium-Sync.git
 	source = helium-sync.service
+	source = helium-sync.desktop
 	sha256sums = SKIP
 	sha256sums = 9ecacceabb426d38ea4df1312cf6ca7607ca00ad112d61c1b36254939673fc2e
+	sha256sums = 953ea2b41fd9b29921ef8b5a02a75aff846d36009373b0ab4c7bbe3c06c89b60
 
 pkgname = helium-sync
