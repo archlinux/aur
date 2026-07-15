@@ -1,8 +1,8 @@
 # Maintainer: enihcam <enihcam@noreply.gitcode.com>
 
 pkgname=python-jiuwenswarm
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Open-source multi-agent orchestration framework (Python backend + bundled React frontend + native TUI built from source)"
 arch=('x86_64')
 url="https://pypi.org/project/jiuwenswarm/"
@@ -79,11 +79,11 @@ optdepends=(
 # Git sources are inherently unstable so checksum is SKIP; pin by commit in a follow-up.
 _tag="JiuwenSwarm${pkgver}"
 source=(
-    "jiuwenswarm-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/83/0f/d8368cccd39019ffb7fa3610151fa5f2b129385b163b4f09c9451e1a1eb4/jiuwenswarm-${pkgver}-py3-none-any.whl"
+    "jiuwenswarm-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/28/eb/024b218d2761ae2db59362ed62ad05ab0dc3200e51cc2026dbbdaae8aafe/jiuwenswarm-${pkgver}-py3-none-any.whl"
     "${_tag}.tar.gz::git+https://gitcode.com/openJiuwen/jiuwenswarm.git#tag=${_tag}"
 )
 sha256sums=(
-    '2a5814b6865dd5932497c4d61ca2374483a174c905652937d671c1f4f99ce817'  # main PyPI wheel
+    'b0bb02b030e66a5a12c492ff5a06e91c0f9e207d49dce93bcc174a76916c3430'  # main PyPI wheel
     'SKIP'                                                                # git tag, verified via git fetch + checkout
 )
 
