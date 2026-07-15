@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/mineradio/mineradio --disable-gpu "$@"
+exec /opt/mineradio/mineradio "$@"

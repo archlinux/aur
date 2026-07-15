@@ -1,5 +1,5 @@
 diff --git a/desktop/main.js b/desktop/main.js
-index 1518835..3292046 100644
+index 1518835..f000001 100644
 --- a/desktop/main.js
 +++ b/desktop/main.js
 @@ -31,7 +31,7 @@ const MIN_WINDOWED_WIDTH = 960;
@@ -11,7 +11,7 @@ index 1518835..3292046 100644
  const NETEASE_LOGIN_PARTITION = 'persist:mineradio-netease-login';
  const NETEASE_LOGIN_URL = 'https://music.163.com/#/login';
  const QQ_LOGIN_PARTITION = 'persist:mineradio-qqmusic-login';
-@@ -39,16 +39,18 @@ const QQ_LOGIN_URL = 'https://y.qq.com/n/ryqq/profile';
+@@ -39,16 +39,21 @@ const QQ_LOGIN_URL = 'https://y.qq.com/n/ryqq/profile';
  
  const CHROMIUM_PERFORMANCE_SWITCHES = [
    ['autoplay-policy', 'no-user-gesture-required'],
@@ -28,7 +28,11 @@ index 1518835..3292046 100644
 +    ['enable-accelerated-2d-canvas'],
 +    ['force_high_performance_gpu'],
 +    ['use-angle', 'd3d11'],
-+  ] : []),
++  ] : [
++    ['disable-gpu'],
++    ['disable-software-rasterizer'],
++    ['in-process-gpu'],
++  ]),
    ['disable-background-timer-throttling'],
    ['disable-renderer-backgrounding'],
    ['disable-backgrounding-occluded-windows'],
