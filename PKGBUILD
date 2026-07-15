@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 pkgname=openjiuwen
-pkgver=0.1.15.post3
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Agent framework SDK: agents, workflows, harness, single_agent API, and team MCP server"
 arch=(any)
@@ -92,8 +92,8 @@ optdepends=(
   'python-docx: DOCX parsing [AUR]'
 )
 
-source=("https://files.pythonhosted.org/packages/41/47/4e028f70277b5cfa3e3ce6c304de9bcf34f058993104813624b6686eb640/openjiuwen-${pkgver}.tar.gz")
-sha256sums=('a520d51e55a9f30eae7c55956b3dd25c20dedaf6f8f7096b232ca3ba6c7a613b')
+source=("https://files.pythonhosted.org/packages/f2/c0/f2ec3dbd8935747824f8838a8cd866548deb1930c390c88b745682c233b1/openjiuwen-${pkgver}.tar.gz")
+sha256sums=('8ba6f6a8b1502cc95688c55e7705b38db253f22498e68a3ce9887181b6427162')
 
 build() {
   cd "${srcdir}/openjiuwen-${pkgver}"
