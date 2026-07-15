@@ -2,7 +2,7 @@
 pkgname=tpdf
 _reponame=TermPDF
 _executable=termpdf
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal PDF viewer written in Rust, with vim key-bindings and watch mode."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cargo')
 checkdepends=('cargo')
 conflicts=('tpdf-git' 'tpdf-bin')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('4cba7fe5983fe7dc5544817740da8ba77e28309a9ee35314296631bb262c7c98')
+sha256sums=('96c770cde4d1b427946e699a44c0e514638edbb16d0d49426608d0f5ce89a6cd')
 
 build() {
 	cd "${srcdir}/${_reponame}"
