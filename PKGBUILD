@@ -10,11 +10,11 @@ license=('MIT')
 depends=('glibc')
 provides=('ddsh')
 conflicts=('ddsh' 'ddsh-git')
-source=("$url/releases/download/v$pkgver/discord-dynamic-status-hyprland")
-sha256sums=('dd8ff739386b3824fed21a3f920331424a8f1cb199e7cab64a3355a90e7f0a2c')
+source=("$url/releases/download/v$pkgver/ddsh")
+sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "$srcdir/discord-dynamic-status-hyprland" "$pkgdir/usr/bin/ddsh"
+    install -Dm755 "$srcdir/ddsh" "$pkgdir/usr/bin/ddsh"
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<'LICENSE'
 MIT License
 

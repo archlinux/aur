@@ -9,7 +9,7 @@ pkgbase = ddsh-bin
 	provides = ddsh
 	conflicts = ddsh
 	conflicts = ddsh-git
-	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/releases/download/v1.1.1/discord-dynamic-status-hyprland
-	sha256sums = dd8ff739386b3824fed21a3f920331424a8f1cb199e7cab64a3355a90e7f0a2c
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/releases/download/v1.1.1/ddsh
+	sha256sums = SKIP
 
 pkgname = ddsh-bin
