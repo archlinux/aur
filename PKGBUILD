@@ -1,6 +1,6 @@
 # Maintainer: Kirill Pinchuk <https://github.com/cybergrind/>
 pkgname=octobrowser
-pkgver=3.0.3
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='Fast anti-detect browser for multi-accounting with maximum protection against browser identification'
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=('!strip')
 provides=('octobrowser')
 conflicts=('octobrowser')
 source=("https://binaries.octobrowser.net/releases/installer/OctoBrowser_${pkgver}.linux.tar.gz")
-sha256sums=('a13da69dd47adc2f8d4d64bbff87710b2d8c30c8d804e5fe794aa70a78a373ea')
+sha256sums=('a33f115f466dcf5398edc7d9f86654b4366a02c53f47c2e03dd2422e0387396c')
 depends=(libxcrypt-compat
          libselinux
          unzip
