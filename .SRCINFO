@@ -1,0 +1,15 @@
+pkgbase = ttf-cogslab-nerd
+	pkgdesc = Cogwheel's customized Iosevka Slab font
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://codeberg.org/cogwheel/cogslab
+	arch = any
+	groups = nerd-fonts
+	license = OFL-1.1
+	source = https://codeberg.org/cogwheel/cogslab/releases/download/v2.7/Cogslab-2.7.zip
+	source = https://codeberg.org/cogwheel/cogslab/releases/download/v2.7/Cogslab-2.7.zip.asc
+	validpgpkeys = D4D61C0CA9FFCD6426B08F7C111B8156BAA8DA4C
+	sha256sums = 130e7b94e0d8b670ea6d9fab721670f43a4a41f4326ed0b8ada708db6239b358
+	sha256sums = SKIP
+
+pkgname = ttf-cogslab-nerd

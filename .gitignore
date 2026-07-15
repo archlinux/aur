@@ -1,0 +1,10 @@
+# Ignore everything
+
+*
+
+# Except the ones we want
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!REUSE.toml
