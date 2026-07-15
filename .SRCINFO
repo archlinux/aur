@@ -1,0 +1,19 @@
+pkgbase = loqi-bin
+	pkgdesc = A local-first, hackable, scriptable translation tool for desktop and developer workflows. Translate text, files, docs and structured content using local LLMs.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/danterolle/loqi
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = loqi
+	conflicts = loqi
+	options = !strip
+	source = TECHNICAL-0.6.4.md::https://raw.githubusercontent.com/danterolle/loqi/v0.6.4/docs/TECHNICAL.md
+	source = BENCHMARKS-0.6.4.md::https://raw.githubusercontent.com/danterolle/loqi/v0.6.4/docs/BENCHMARKS.md
+	sha256sums = 8f90f93b83a54181dbce7751089228dcc5dea713f5ed23f3f21f54e17bcb6cf7
+	sha256sums = d492d3d6be30999b60533bc8dd4f7832e60b5657f315684b604fc8275db0dab0
+	source_x86_64 = loqi-x86_64-0.6.4.tgz::https://github.com/danterolle/loqi/releases/download/v0.6.4/loqi_0.6.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8f5fc6439474054dbfc30e4f46ec567556a77cf4e7509c9acfa1da2a04f43970
+
+pkgname = loqi-bin

@@ -1,0 +1,5 @@
+[loqi-bin]
+source = "github"
+github = "danterolle/loqi"
+use_latest_release = true
+prefix = "v"
