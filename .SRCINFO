@@ -1,12 +1,12 @@
 pkgbase = r-annotationhub
 	pkgdesc = Client to access AnnotationHub resources
-	pkgver = 3.16.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnnotationHub
 	arch = x86_64
 	license = Artistic2.0
-	depends = r
 	depends = r-annotationdbi
+	depends = r-biocbaseutils
 	depends = r-biocfilecache
 	depends = r-biocgenerics
 	depends = r-biocmanager
@@ -43,7 +43,7 @@ pkgbase = r-annotationhub
 	optdepends = r-runit
 	optdepends = r-summarizedexperiment
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationHub_3.16.1.tar.gz
-	sha256sums = 97b0db3ae4ea08dd93f2d246a7d417bd3554c88a672099755274e5b9e6183c9a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationHub_4.2.2.tar.gz
+	sha256sums = a589d443b1c9ff99fc52d021cfbf73613417edda2366f2dfdf4643d07caa292a
 
 pkgname = r-annotationhub

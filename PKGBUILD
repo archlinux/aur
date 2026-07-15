@@ -1,17 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnnotationHub
-_pkgver=3.16.1
+_pkgver=4.2.2
 pkgname=r-${_pkgname,,}
-pkgver=3.16.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='Client to access AnnotationHub resources'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
-  r
   r-annotationdbi
+  r-biocbaseutils
   r-biocfilecache
   r-biocgenerics
   r-biocmanager
@@ -52,7 +52,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('97b0db3ae4ea08dd93f2d246a7d417bd3554c88a672099755274e5b9e6183c9a')
+sha256sums=('a589d443b1c9ff99fc52d021cfbf73613417edda2366f2dfdf4643d07caa292a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
