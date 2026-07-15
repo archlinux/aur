@@ -2,13 +2,13 @@
 _pkgname=cahute
 pkgname=$_pkgname-git
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A toolkit to handle communication and file formats related to CASIO calculators"
 arch=('x86_64')
 url="https://next.cahuteproject.org"
 license=('custom:CeCILL')
 depends=('libusb' 'sdl3')
-makedepends=('cmake' 'python' 'python-toml')
+makedepends=('cmake' 'python')
 provides=('p7' 'libp7' 'p7screen' 'p7os' 'cahute')
 conflicts=('p7' 'libp7' 'p7screen' 'p7os' 'cahute')
 options=(!strip)

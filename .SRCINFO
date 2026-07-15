@@ -1,14 +1,13 @@
 pkgbase = cahute-git
 	pkgdesc = A toolkit to handle communication and file formats related to CASIO calculators
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://next.cahuteproject.org
 	install = cahute-git.install
 	arch = x86_64
 	license = custom:CeCILL
 	makedepends = cmake
 	makedepends = python
-	makedepends = python-toml
 	depends = libusb
 	depends = sdl3
 	provides = p7
