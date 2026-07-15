@@ -18,7 +18,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=6.2.0
-pkgrel=4
+pkgrel=5
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -30,32 +30,32 @@ source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.
 sha256sums=("f336f668ab3851378eef21caeb447d03453ed92d67f1e70aa392defa50dd73a1" "e7015c7e682f63a4ce7fca971f46543a88233e8f8d3525e3a62e2534d0cfc762")
 
 prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+
     cd "hnefatafl"
 
     sed -i 's/cargo-/arch-/' src/lib.rs;
-
     sed -i 's/games/bin/' packages/hnefatafl-ai-attacker.service
     sed -i 's/games/bin/' packages/hnefatafl-ai-defender.service
     sed -i 's/games/bin/' packages/hnefatafl.service
+
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
     cd "hnefatafl"
 
-    cargo build --release --examples
-    cargo build --release
+    cargo build --frozen --release --examples
+    cargo build --frozen --release
 
     ./target/release/examples/taflzero --man --username ""
     ./target/release/hnefatafl-client --man
     ./target/release/hnefatafl-server --man
     ./target/release/hnefatafl-server-full --man
     ./target/release/hnefatafl-text-protocol --man
-
-    gzip --no-name --best taflzero.1
-    gzip --no-name --best hnefatafl-server.1
-    gzip --no-name --best hnefatafl-server-full.1
-    gzip --no-name --best hnefatafl-text-protocol.1
-    gzip --no-name --best hnefatafl-client.1
 }
 
 package() {
@@ -71,11 +71,11 @@ package() {
     install -Dm644 "packages/hnefatafl-ai-defender.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     install -Dm644 "website/src/images/helmet.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.hnefatafl.hnefatafl_client.svg"
-    install -Dm644 "taflzero.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1.gz"
-    install -Dm644 "hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
-    install -Dm644 "hnefatafl-server.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-server.1.gz"
-    install -Dm644 "hnefatafl-server-full.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-server-full.1.gz"
-    install -Dm644 "hnefatafl-text-protocol.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-text-protocol.1.gz"
+    install -Dm644 "taflzero.1" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1"
+    install -Dm644 "hnefatafl-client.1" "$pkgdir/usr/share/man/man1/hnefatafl-client.1"
+    install -Dm644 "hnefatafl-server.1" "$pkgdir/usr/share/man/man1/hnefatafl-server.1"
+    install -Dm644 "hnefatafl-server-full.1" "$pkgdir/usr/share/man/man1/hnefatafl-server-full.1"
+    install -Dm644 "hnefatafl-text-protocol.1" "$pkgdir/usr/share/man/man1/hnefatafl-text-protocol.1"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
     install -Dm644 "default_nn.onnx" -t "$pkgdir/usr/share/taflzero"
 }
