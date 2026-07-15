@@ -1,0 +1,26 @@
+reload_dbus() {
+  dbus-send --system --type=method_call \
+    --dest=org.freedesktop.DBus /org/freedesktop/DBus \
+    org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
+}
+
+stop_daemon() {
+  pkill -x timedated-shim >/dev/null 2>&1 || true
+}
+
+post_install() {
+  reload_dbus
+}
+
+post_upgrade() {
+  stop_daemon
+  reload_dbus
+}
+
+pre_remove() {
+  stop_daemon
+}
+
+post_remove() {
+  reload_dbus
+}

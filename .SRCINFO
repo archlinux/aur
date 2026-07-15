@@ -1,0 +1,23 @@
+pkgbase = timedated-shim
+	pkgdesc = Portable org.freedesktop.timedate1 service for non-systemd Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NeuroMarshal/timedated-shim
+	install = timedated-shim.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = polkit
+	depends = procps-ng
+	depends = tzdata
+	depends = util-linux
+	provides = timedated
+	conflicts = openrc-settingsd
+	conflicts = systemd
+	source = timedated-shim-0.1.0.tar.gz::https://github.com/NeuroMarshal/timedated-shim/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ef3269be6a1cef4d7e641b4ed3c01c696379cbc559c29fe69e23bdf334a85f82
+
+pkgname = timedated-shim
