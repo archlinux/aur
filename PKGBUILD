@@ -1,6 +1,6 @@
 # Maintainer: dennisreyoonjiho <dennisreyoonjiho@gmail.com>
 pkgname=easykiconverter
-pkgver=3.1.12
+pkgver=3.1.11
 pkgrel=1
 pkgdesc="Convert LCSC and EasyEDA components to KiCad libraries"
 arch=('x86_64' 'aarch64')
