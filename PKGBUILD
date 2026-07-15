@@ -2,7 +2,7 @@
 
 pkgname=seanime-denshi
 _pkgname=seanime-denshi
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=0
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)"
 arch=(x86_64)
