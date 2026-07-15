@@ -1,6 +1,6 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=bookmark-organisator
-pkgver=r11.f1cd9d9 # Wird beim Bauen automatisch aktualisiert
+pkgver=r13.aaf56a2 # Wird beim Bauen automatisch aktualisiert
 pkgrel=1
 pkgdesc="Ein Tool zum Organisieren von Lesezeichen (Bookmarks)"
 arch=('any')
