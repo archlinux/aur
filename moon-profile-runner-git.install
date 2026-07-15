@@ -1,0 +1,7 @@
+post_install() {
+	echo ":: Run 'systemctl --user enable --now moon-profile-runner.service' to start MoonProfile Runner now and on every login."
+}
+
+post_upgrade() {
+	post_install
+}
