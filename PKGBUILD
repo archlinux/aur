@@ -1,5 +1,5 @@
 pkgname=alt-sendme
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '648ba56d58ec19e0cf70c3b18baca78d6bb311c1e91bfeda9a404efd4cb6606b'
+  '2ce6a47fd07e945c63158ea511b7bf061eb6804890bf22a507bcf6cf54ef1e4c'
 )
 
 prepare() {
@@ -83,7 +83,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  local _built_bin="src-tauri/target/release/${pkgname}"
+  local _built_bin="src-tauri/target/release/AltSendme"
   if [[ ! -x "${_built_bin}" ]]; then
     echo "Could not find built binary at ${_built_bin}" >&2
     return 1
