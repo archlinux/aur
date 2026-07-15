@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-enhanced
 	pkgdesc = A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition)
 	pkgver = 5.2.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,8 +20,8 @@ pkgbase = qbittorrent-enhanced
 	provides = qbittorrent
 	conflicts = qbittorrent
 	source = qbittorrent-enhanced-5.2.1.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-5.2.1.10.tar.gz
-	source = https://patch-diff.githubusercontent.com/raw/c0re100/qBittorrent-Enhanced-Edition/pull/715.patch
+	source = https://github.com/c0re100/qBittorrent-Enhanced-Edition/commit/a53304b5376f45becbfb43bc77f67eec10101f3e.patch
 	sha256sums = ee5e05db67ba52a9380b01501260473bcd6595b4750c5775c037ed3b6815e30b
-	sha256sums = c8202238e8f3933ddea5636bfb5f3c0782c78995aa7ef7f5cf6a719addbc3b8d
+	sha256sums = 5376db81675d6a5bf1cee305745224e9eba495d3afcc04274cc7e8e6a7a6a6dd
 
 pkgname = qbittorrent-enhanced

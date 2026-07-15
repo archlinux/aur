@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@hardrain980.com>
 pkgname=qbittorrent-enhanced
 pkgver=5.2.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition)"
 arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
@@ -13,17 +13,17 @@ provides=('qbittorrent')
 conflicts=('qbittorrent')
 source=(
 	"qbittorrent-enhanced-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz"
-	'https://patch-diff.githubusercontent.com/raw/c0re100/qBittorrent-Enhanced-Edition/pull/715.patch'
+	'https://github.com/c0re100/qBittorrent-Enhanced-Edition/commit/a53304b5376f45becbfb43bc77f67eec10101f3e.patch'
 )
 sha256sums=(
 	'ee5e05db67ba52a9380b01501260473bcd6595b4750c5775c037ed3b6815e30b'
-	'c8202238e8f3933ddea5636bfb5f3c0782c78995aa7ef7f5cf6a719addbc3b8d'
+	'5376db81675d6a5bf1cee305745224e9eba495d3afcc04274cc7e8e6a7a6a6dd'
 )
 
 prepare() {
 	cd qBittorrent-Enhanced-Edition-release-$pkgver
 	# apply patch for libtorrent-rasterbar >= 2.1.0
-	patch -Np1 -i $srcdir/715.patch
+	patch -Np1 -i $srcdir/a53304b5376f45becbfb43bc77f67eec10101f3e.patch
 }
 
 build() {
