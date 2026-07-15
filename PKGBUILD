@@ -3,17 +3,18 @@
 
 _reponame=mold
 pkgname=${_reponame}-git
-pkgver=2.40.4.r76.gfc96c1b9
+pkgver=2.40.4.r224.gbe3d214c
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
 url="https://github.com/rui314/$_reponame"
 license=('MIT')
-# bundled: xxhash, mimalloc
+# bundled: xxhash
 depends=(
   glibc
   libblake3
   libstdc++
+  mimalloc
   tbb
   zlib
   zstd
@@ -45,10 +46,12 @@ build() {
     -B build
     -G Ninja
     -W no-author
-    -D CMAKE_BUILD_TYPE='None'
+    -D CMAKE_BUILD_TYPE='Release'
+    -D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
+    -D CMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
     -D CMAKE_INSTALL_PREFIX='/usr'
     -D CMAKE_INSTALL_LIBEXECDIR='lib'
-    -D MOLD_USE_SYSTEM_MIMALLOC=OFF
+    -D MOLD_USE_SYSTEM_MIMALLOC=ON
     -D MOLD_USE_SYSTEM_TBB=ON
     -D MOLD_LTO=ON
     -D MOLD_USE_MOLD=ON

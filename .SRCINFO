@@ -1,6 +1,6 @@
 pkgbase = mold-git
 	pkgdesc = A Modern Linker
-	pkgver = 2.40.4.r76.gfc96c1b9
+	pkgver = 2.40.4.r224.gbe3d214c
 	pkgrel = 1
 	url = https://github.com/rui314/mold
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = mold-git
 	depends = glibc
 	depends = libblake3
 	depends = libstdc++
+	depends = mimalloc
 	depends = tbb
 	depends = zlib
 	depends = zstd
-	provides = mold=2.40.4.r76.gfc96c1b9
+	provides = mold=2.40.4.r224.gbe3d214c
 	conflicts = mold
 	source = git+https://github.com/rui314/mold.git
 	b2sums = SKIP
