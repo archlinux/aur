@@ -1,7 +1,7 @@
 # Maintainer: Dmitry <dimflix.official@gmail.com>
 pkgname=pawlette
 conflicts=('pawlette-git' 'pawlette-git')
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Modern theme manager for linux with template engine and dynamic theming"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-uv' 'python-hatchling' 'python-virtualenv' 'git')
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7cc82761efaf5b70578d9c65609a0dc5797cc81ecb61a733bb341435ee1b242')
+sha256sums=('d1f2075deaf27daa52f20e48b1b60a65a03277411bf3b97546b25b145c3a96a1')
 
 prepare() {
   echo "=== Checking for old pawlette version ==="
