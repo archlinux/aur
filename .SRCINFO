@@ -1,0 +1,14 @@
+pkgbase = yes_or_no
+	pkgdesc = A drop-in replacement to "yes" utility which allows alternative answers based on probability
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dimitrismistriotis/yes_or_no
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	source = yes_or_no-0.1.0.tar.gz::https://github.com/dimitrismistriotis/yes_or_no/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 69d2fb67f2d67fc5f24811515faa56f880249ddf97bccc0d381fde4635785ac6
+
+pkgname = yes_or_no
