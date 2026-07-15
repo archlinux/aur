@@ -1,14 +1,14 @@
 pkgbase = pi-ext-cursor-rules
 	pkgdesc = Cursor-style project rules (.cursor/rules/) for pi-coding-agent
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/dougefresher/pi-ext-cursor-rules
 	install = pi-ext.install
 	arch = any
 	license = MIT
 	optdepends = pi-coding-agent
 	optdepends = pi-coding-agent-git
-	source = pi-ext-cursor-rules-1.0.0.tar.gz::https://github.com/dougefresher/pi-ext-cursor-rules/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 498a09344e7c4da9002013354e35b22eb90b0691eda2628af5da0e1d4a66e934
+	source = pi-ext-cursor-rules-1.0.1.tar.gz::https://github.com/dougefresher/pi-ext-cursor-rules/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e694c0f1b95d3660ea9ecf97db0d4fded0c8d23b9d5da24593351aa5dd99b20b
 
 pkgname = pi-ext-cursor-rules
