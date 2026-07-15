@@ -1,0 +1,4 @@
+[glibc-eac]
+source = "archpkg"
+archpkg = "glibc"
+strip_release = "true"
