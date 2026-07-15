@@ -1,7 +1,7 @@
 pkgbase = ligolo-ng
 	pkgdesc = An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicocha30/ligolo-ng
 	install = ligolo-ng.install
 	arch = x86_64

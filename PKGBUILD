@@ -2,7 +2,7 @@
 
 pkgname=ligolo-ng
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/nicocha30/ligolo-ng"
@@ -33,9 +33,11 @@ build() {
     
     for platform in linux windows; do
         for arch in amd64 arm64 arm; do
+            # Go dropped the windows/arm (32-bit) port; skip it.
+            [[ "${platform}" == "windows" && "${arch}" == "arm" ]] && continue
             GOOS=${platform} GOARCH=${arch} go build -o ${platform}/${arch}/agent cmd/agent/main.go
         done
-    done    
+    done
 }
 
 package() {
