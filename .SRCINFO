@@ -1,0 +1,23 @@
+pkgbase = networkmanager-airvpn
+	pkgdesc = NetworkManager VPN plugin for AirVPN (OpenVPN, with GNOME editor)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LiteApplication/networkmanager-airvpn
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	depends = networkmanager
+	depends = openvpn
+	depends = curl
+	depends = glib2
+	depends = gtk3
+	depends = gtk4
+	depends = libnma
+	depends = libnma-gtk4
+	depends = libsecret
+	depends = json-glib
+	source = networkmanager-airvpn-0.1.0.tar.gz::https://github.com/LiteApplication/networkmanager-airvpn/archive/v0.1.0.tar.gz
+	sha256sums = 8f0c6b5dc0811e1248be40fec34d0b530582cbd2d00cd801e378764ccd34086c
+
+pkgname = networkmanager-airvpn
