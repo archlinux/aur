@@ -1,7 +1,7 @@
 # Maintainer: pentago <pentago@users.noreply.github.com>
 
 pkgname=spec-kit
-pkgver=0.12.15
+pkgver=0.12.16
 pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects for Spec-Driven Development'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('git'
   'python-installer'
   'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('7e8d90abbcbea9cc2a97d84ad6c6988655550a8554ee1f99514030970219da93549e89451891a0c52cc5de4ebce7cf028c4432e7fca88b4195ea64ab5eb7d100')
+b2sums=('7e74983a92b595711eea57eead5062c7d032cfb67936b043ae37f863ba6fd43f4072a9d2a87c83eb6137054531da4f377cc94c54fce14e5e13b050fd9d9231ac')
 
 build() {
   cd "spec-kit-$pkgver"
