@@ -1,6 +1,6 @@
 pkgbase = hexxengenerator
 	pkgdesc = Charakter Generator für Hexxen 1733
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://gitlab.com/Patschke/Hexxen-Generator
 	arch = any
