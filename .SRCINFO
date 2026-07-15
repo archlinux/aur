@@ -1,0 +1,30 @@
+pkgbase = massiveeq-git
+	pkgdesc = Beta device-aware equalizer for PipeWire and Wayland desktops
+	pkgver = 0.3.0.beta.1.r0.g00571ee
+	pkgrel = 1
+	url = https://github.com/massiveadam/massiveeq
+	install = massiveeq.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = pipewire>=1:1.4
+	depends = libpipewire
+	depends = wireplumber>=0.5
+	depends = gtk4>=4.18
+	depends = libadwaita>=1.8
+	depends = glib2
+	depends = cairo
+	depends = libsndfile
+	depends = libsamplerate
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = massiveeq
+	conflicts = massiveeq
+	options = !debug
+	source = massiveeq-git::git+https://github.com/massiveadam/massiveeq.git
+	sha256sums = SKIP
+
+pkgname = massiveeq-git
