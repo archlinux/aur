@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Upstream name
-_pkgnamefmt=LibreOfficeDev
+_pkgnamefmt=LibreOffice
 
 # Package version
-pkgver=26.8.0.0.beta1
+pkgver=26.8.0.1
 
 #
-pkgrel=2
+pkgrel=1
 
 sed -i "6s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
