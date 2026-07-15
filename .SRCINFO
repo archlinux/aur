@@ -1,0 +1,20 @@
+pkgbase = gaming-command-center
+	pkgdesc = Linux gaming optimisation — CPU CCD parking, NVIDIA GPU overclocking, one-click game fixes and a system doctor
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/LordHayne/GCC
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-yaml
+	depends = polkit
+	optdepends = lm_sensors: CPU temperature readout on the dashboard
+	optdepends = nvidia-utils: NVIDIA GPU overclocking and live monitoring (nvidia-settings)
+	optdepends = gamemode: Feral GameMode integration
+	source = gaming-command-center-0.1.5.tar.gz::https://github.com/LordHayne/GCC/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 51f003b2c1181e706cc64f8102b01cc1030543e08cedb10f7b43ed1448cd2223
+
+pkgname = gaming-command-center
