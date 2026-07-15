@@ -92,13 +92,13 @@ secs = 3
 nanos = 0
 
 [client-rate-limits]
-per-second = 16
+per-hour = 5760 # 16/sec
 custom = []
 
 [local-rate-limits]
-per-second = 32
+per-hour = 8320 # 32/sec
 custom = []
 
 [general-purpose-rate-limits]
-per-second = 8
+per-hour = 2880 # 8/sec
 custom = []
