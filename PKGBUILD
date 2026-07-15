@@ -3,7 +3,7 @@
 pkgname="astra-music-git"
 pkgdesc="Audiophile music player with advanced visualization"
 pkgrel=1
-pkgver="v0.6.1_beta_167_gbb2804f"
+pkgver="v0.6.1_beta_170_gca243f8"
 
 url="https://github.com/Boof2015/astra"
 arch=('x86_64')
@@ -18,6 +18,13 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/astra"
+
+  if [[ -v ASTRA_LASTFM_KEY ]] && [[ -v ASTRA_LASTFM_SECRET ]]; then
+    cat >.env.local <<EOF
+LASTFM_API_KEY=${ASTRA_LASTFM_KEY}
+LASTFM_SHARED_SECRET=${ASTRA_LASTFM_SECRET}
+EOF
+  fi
 
   npm install
 
