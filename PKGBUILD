@@ -1,5 +1,5 @@
 pkgname=open-design
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=7
 _tag="open-design-v${pkgver}"
 # Upstream CLI name is `od`; this package installs `open-design` because /usr/bin/od is coreutils (octal dump).
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('python' 'make' 'gcc')
 options=('!strip')
 source=("${url}/archive/refs/tags/${_tag}.tar.gz" 'open-design')
-sha256sums=('35e0f3b89cc6b1b5afb30539dc3d0c7f5e91ec8154fb728c4c40c0eabaa2cabb'
+sha256sums=('112da3e2c9500238384eefb116981650c1674fbd84fc7592a85e5b6c8261d13a'
             'f8fde1bc96045529c0d45a2fd6bcd47fc4f63fe7c07624292113b9e8ff55717c')
 
 _sourcedir="open-design-${_tag}"
