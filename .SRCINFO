@@ -1,6 +1,6 @@
 pkgbase = harness
 	pkgdesc = Minimal agent loop in bash
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/wedow/harness
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = harness
 	depends = curl
 	depends = jq
 	depends = perl
-	source = harness-0.3.0.tar.gz::https://github.com/wedow/harness/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 3663f8b8dc623850b8f3da94248e5bb81cd3531c58ff73824053dd21d3875ddd
+	source = harness-0.3.1.tar.gz::https://github.com/wedow/harness/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 8e333471f64ee869df8b07833535ec3d3df48a740cd2f28a0175ff3b21fd016c
 
 pkgname = harness
