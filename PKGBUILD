@@ -1,18 +1,18 @@
 # Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
 
 pkgname=ttf-lxgw-neo-xihei-code
-pkgver=1.303
+pkgver=1.304
 pkgrel=1
 pkgdesc='A monospaced CJK font merged from LXGW NeoXiHei and legacy M+ for programming use.'
 arch=('any')
 url='https://github.com/lxgw/NeoXiHei-Code'
 license=('IPA')
 source=("$pkgname-$pkgver.ttf::$url/raw/v$pkgver/NeoXiHeiCode-Regular.ttf"
-        "IPA_Font_License_Agreement_v1.0-$pkgver.txt::$url/raw/v$pkgver/IPA_Font_License_Agreement_v1.0.txt")
-sha256sums=('7e0ff36c7ec840c0a7bdd857b6f650f725058a1f71af9a376ee01cf7a1bfa12e'
-            'daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd')
+        "License-$pkgver.txt::$url/raw/v$pkgver/License.txt")
+b2sums=('81f54824f2744f08dfb1ac37fdb7401f8465762428fb53024ff1df6c89b08d323c979fc2fd36b6a0199b030fa6a41f7d4d5ff86bcfa3d3a6972d85fac4b7be2e'
+        'ccb79bec5d352b18591f925ddbbaf6d86a6274bfbbea318e126690e5b52ee8be80d2deb99ab7e5b5b1194e2b8c8ee47464713b89e75c629dd462f1a80691e38d')
 
 package() {
   install -Dm644 "$pkgname-$pkgver.ttf" "$pkgdir/usr/share/fonts/TTF/NeoXiHeiCode-Regular.ttf"
-  install -Dm644 "IPA_Font_License_Agreement_v1.0-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "License-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,13 +1,13 @@
 pkgbase = ttf-lxgw-neo-xihei-code
 	pkgdesc = A monospaced CJK font merged from LXGW NeoXiHei and legacy M+ for programming use.
-	pkgver = 1.303
+	pkgver = 1.304
 	pkgrel = 1
 	url = https://github.com/lxgw/NeoXiHei-Code
 	arch = any
 	license = IPA
-	source = ttf-lxgw-neo-xihei-code-1.303.ttf::https://github.com/lxgw/NeoXiHei-Code/raw/v1.303/NeoXiHeiCode-Regular.ttf
-	source = IPA_Font_License_Agreement_v1.0-1.303.txt::https://github.com/lxgw/NeoXiHei-Code/raw/v1.303/IPA_Font_License_Agreement_v1.0.txt
-	sha256sums = 7e0ff36c7ec840c0a7bdd857b6f650f725058a1f71af9a376ee01cf7a1bfa12e
-	sha256sums = daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd
+	source = ttf-lxgw-neo-xihei-code-1.304.ttf::https://github.com/lxgw/NeoXiHei-Code/raw/v1.304/NeoXiHeiCode-Regular.ttf
+	source = License-1.304.txt::https://github.com/lxgw/NeoXiHei-Code/raw/v1.304/License.txt
+	b2sums = 81f54824f2744f08dfb1ac37fdb7401f8465762428fb53024ff1df6c89b08d323c979fc2fd36b6a0199b030fa6a41f7d4d5ff86bcfa3d3a6972d85fac4b7be2e
+	b2sums = ccb79bec5d352b18591f925ddbbaf6d86a6274bfbbea318e126690e5b52ee8be80d2deb99ab7e5b5b1194e2b8c8ee47464713b89e75c629dd462f1a80691e38d
 
 pkgname = ttf-lxgw-neo-xihei-code
