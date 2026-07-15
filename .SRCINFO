@@ -1,0 +1,27 @@
+pkgbase = spec-kit
+	pkgdesc = Bootstrap and manage Spec Kit projects for Spec-Driven Development
+	pkgver = 0.12.15
+	pkgrel = 1
+	url = https://github.com/github/spec-kit
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-json5
+	depends = python-packaging
+	depends = python-pathspec
+	depends = python-platformdirs
+	depends = python-yaml
+	depends = python-readchar
+	depends = python-rich
+	depends = python-typer
+	source = spec-kit-0.12.15.tar.gz::https://github.com/github/spec-kit/archive/refs/tags/v0.12.15.tar.gz
+	b2sums = 7e8d90abbcbea9cc2a97d84ad6c6988655550a8554ee1f99514030970219da93549e89451891a0c52cc5de4ebce7cf028c4432e7fca88b4195ea64ab5eb7d100
+
+pkgname = spec-kit
