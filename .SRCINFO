@@ -1,0 +1,16 @@
+pkgbase = isola-bin
+	pkgdesc = Isolated dev environment for every git worktree: ports, proxy, and databases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cyucelen/isola
+	license = MIT
+	conflicts = isola
+	provides = isola
+	arch = aarch64
+	source_aarch64 = https://github.com/cyucelen/isola/releases/download/v0.1.0/isola_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5e3e64fbf6db2a0d143719904ec1c19a4397fc3cda12dde53e53665f092661d2
+	arch = x86_64
+	source_x86_64 = https://github.com/cyucelen/isola/releases/download/v0.1.0/isola_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7e97c79b7a157e6aad7de2fdc7d3f63574cec62097ccd0e67b016561745ea696
+	
+pkgname = isola-bin
