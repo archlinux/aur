@@ -1,5 +1,5 @@
 pkgname=md-viewer-git
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload"
 arch=('x86_64')
@@ -48,4 +48,5 @@ package() {
     install -Dm755 "target/release/md-viewer" "$pkgdir/usr/bin/md-viewer"
     install -Dm644 "data/md-viewer.desktop" "$pkgdir/usr/share/applications/md-viewer.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "THIRD_PARTY_NOTICES" "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES"
 }
