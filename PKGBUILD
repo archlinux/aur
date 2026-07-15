@@ -1,6 +1,6 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=batzconverter
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Batman Timezone Converter - show times in different timezones with bash"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
   'imagemagick: PNG screenshot rendering (alternative)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chmouel/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('6ebbb11dc8bf9b4a709aaf782a81acfd053ef742bbd503cce8bdd6def5171407')
+sha256sums=('68dc6add1d6e35d20ca46a82b42a027d403d5068e77ebe25fa675b1047649114')
 
 package() {
   cd "$pkgname-$pkgver" || exit
