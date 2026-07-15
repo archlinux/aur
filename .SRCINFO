@@ -1,6 +1,6 @@
 pkgbase = git-statuses
 	pkgdesc = A command-line tool to display the status of multiple Git repositories.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/bircni/git-statuses
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = git-statuses
 	depends = libgit2
 	conflicts = git-statuses-bin
 	options = !lto
-	source = git-statuses-0.8.1.tar.gz::https://github.com/bircni/git-statuses/archive/refs/tags/0.8.1.tar.gz
-	sha256sums = b0593212350025ea5bd4d3d08bf92cc9c692395b692558f7b7c3369cd9038852
+	source = git-statuses-0.8.2.tar.gz::https://github.com/bircni/git-statuses/archive/refs/tags/0.8.2.tar.gz
+	sha256sums = dda812c0f6e92f661779d7562751d77752de3c3e1df0592dc1055dd96ed7cc37
 
 pkgname = git-statuses
