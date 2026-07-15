@@ -12,7 +12,7 @@ pkgname=(
  aspnet-targeting-pack-9.0
  dotnet-source-built-artifacts-9.0
 )
-pkgver=9.0.17.sdk118
+pkgver=9.0.18.sdk119
 pkgrel=1
 arch=(x86_64)
 url=https://dotnet.microsoft.com
@@ -44,7 +44,7 @@ options=(
 )
 _tag=14d5ddefede18b29eb0f2ea918c79861a5211177
 source=(git+https://github.com/dotnet/dotnet.git#tag=v${pkgver/.*.sdk/.0.})
-b2sums=('bdd6a0470cf6d36f398f947f15bb5a9eea434453b06a95c425c093537be6151d0d83a7f381132562f400a69bd640f97952b76ce44699faa412891c8134b38619')
+b2sums=('671a7c3ee9b7e86ce48e5a2441a6f45438de223a9de366ea55bf198d9abf8fedc54a3861577f332e26cf3993a39b7d0c2b5393566ccb67bd8cdbd656b437420b')
 
 prepare() {
   cd dotnet
@@ -91,8 +91,9 @@ package_dotnet-runtime-9.0() {
   pkgdesc='The .NET Core runtime'
   depends=(
     dotnet-host
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     icu
     krb5
     libunwind
@@ -123,7 +124,8 @@ package_dotnet-sdk-9.0() {
     dotnet-runtime-9.0
     dotnet-targeting-pack-9.0
     glibc
-    gcc-libs
+    libgcc
+    libstdc++
     netstandard-targeting-pack
   )
   optdepends=('aspnet-targeting-pack: Build ASP.NET Core applications')
@@ -131,6 +133,7 @@ package_dotnet-sdk-9.0() {
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner sdk sdk-manifests templates
+  install -dm 755 "${pkgdir}"/usr/share/dotnet/metadata/workloads/${pkgver%.*.sdk*}.${pkgver#*.sdk}
   touch "${pkgdir}"/usr/share/dotnet/metadata/workloads/${pkgver%.*.sdk*}.${pkgver#*.sdk}/userlocal
   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-sdk-9.0
 }
