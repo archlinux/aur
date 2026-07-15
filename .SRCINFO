@@ -1,0 +1,21 @@
+pkgbase = llmux-bin
+	pkgdesc = Multi-provider, multi-account Claude proxy with automatic quota-based rotation
+	pkgver = 0.2.17
+	pkgrel = 1
+	url = https://github.com/2lab-ai/llmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = llmux
+	conflicts = llmux
+	options = !debug
+	source = LICENSE-0.2.17::https://raw.githubusercontent.com/2lab-ai/llmux/v0.2.17/LICENSE
+	sha256sums = 18c9008778e81e8815589c8cb3c528f19daac96bc531908f180c7a816278cfd1
+	source_x86_64 = llmux-bin-0.2.17-x86_64::https://github.com/2lab-ai/llmux/releases/download/v0.2.17/llmux-linux-x86_64
+	sha256sums_x86_64 = 24ac1bbd21b66d3491149de84932ed3a941a30fc7ee274b95e4b98679f28ccf9
+	source_aarch64 = llmux-bin-0.2.17-aarch64::https://github.com/2lab-ai/llmux/releases/download/v0.2.17/llmux-linux-aarch64
+	sha256sums_aarch64 = 617f98aad7b831d107b9065744a7593e913ddd5b78d21b7729b8c545d48b6937
+
+pkgname = llmux-bin
