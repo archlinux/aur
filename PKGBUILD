@@ -52,6 +52,7 @@ build() {
     -D MOLD_USE_SYSTEM_TBB=ON
     -D MOLD_LTO=ON
     -D MOLD_USE_MOLD=ON
+    -W no-author
   )
 
   cmake "${_cmake_options[@]}"
