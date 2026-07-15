@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
