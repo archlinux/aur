@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-nnedi3vk-git
+	pkgdesc = Plugin for Vapoursynth: nnedi3vk (GIT version)
+	pkgver = 1.0.gd3aabea
+	pkgrel = 1
+	url = https://github.com/HolyWu/VapourSynth-nnedi3vk
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = vapoursynth
+	provides = vapoursynth-plugin-nnedi3vk
+	conflicts = vapoursynth-plugin-nnedi3vk
+	source = nnedi3vk::git+https://github.com/HolyWu/VapourSynth-nnedi3vk.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-nnedi3vk-git
