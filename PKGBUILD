@@ -2,7 +2,7 @@
 
 pkgname=dygmate-bin
 _pkgname=dygmate
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Dygma wireless keyboards battery indicator'
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=('dygmate-git')
 install="${pkgname}.install"
 source=("${_pkgname}-${pkgver}-${CARCH}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.tar.gz")
 # Run `updpkgsums` after each release to refresh this checksum.
-sha256sums=('944b91bfc60735274537edf7bde2610b8791c1c7fe109044069ebdb7f1085239')
+sha256sums=('5f534b5e70500f17ee2910490038797cf099c7213ab509e29f5d12d4b585cb38')
 
 package() {
     install -Dm755 "${srcdir}/dygmate" "${pkgdir}/usr/bin/dygmate"
