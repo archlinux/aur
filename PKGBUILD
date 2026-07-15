@@ -1,13 +1,13 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.15.6
+pkgver=3.15.13
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
 url="https://www.ivpn.net"
 license=('GPL3')
-depends=('ivpn>=3.15.6')
+depends=('ivpn>=3.15.13')
 makedepends=('npm' 'nvm')
 install="ivpn-ui.install"
 
@@ -15,7 +15,7 @@ install="ivpn-ui.install"
 
 # Default installation sources
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('6abe8e7fc608582dae4d3a5cd1743f7873ff873ceb7feffde528459e911b96d6')
+sha256sums=('f4416fecd2e49437b1b07bcbf3e856448ae291629ee17e65d97e75e595ad8c62')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
 prepare() {
   # https://wiki.archlinux.org/title/Node.js_package_guidelines
   _ensure_local_nvm
-  nvm install 18.19.0
+  nvm install 22.12.0
 }
 
 build() {
