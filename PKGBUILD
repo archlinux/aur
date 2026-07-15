@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="cargo-readme"
-_cratever="3.3.2"
+_cratever="3.3.3"
 pkgname="cargo-readme"
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='A cargo subcommand to generate README.md content from doc comments'
 url='https://crates.io/crates/cargo-readme'
@@ -13,8 +13,8 @@ license=('Apache-2.0' 'MIT')
 depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-readme/3.3.2/download")
-sha512sums=('2f5bd484b9e2f0c873854d32906a9f32129b0e77ae9e2275104a4636c4f96c1c2b35f3fc2f12b2f3032ed00d214d8dc38f16d82cb3069d1de580c03e12645a40')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-readme/3.3.3/download")
+sha512sums=('51ab615b6dfe7c79002f42509718f0f3ecac78b4b87f9cce3bf337ce906fc7bbbee6d1ada20d6e8c9443e8160a8da59e18fe746d6c9dda7aa1781511f3522a82')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_crate-$_cratever"
-	
+
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
