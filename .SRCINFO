@@ -1,0 +1,21 @@
+pkgbase = thpm
+	pkgdesc = Omarchy 4-native manager for external theme integrations
+	pkgver = 1.0.0rc1
+	pkgrel = 1
+	url = https://github.com/oldjobobo/thpm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-textual>=8.2.8
+	depends = omarchy
+	provides = theme-hook-plugin-manager
+	conflicts = theme-hook-plugin-manager
+	replaces = theme-hook-plugin-manager
+	source = thpm-1.0.0rc1.tar.gz::https://github.com/oldjobobo/thpm/releases/download/v1.0.0rc1/thpm-1.0.0rc1.tar.gz
+	sha256sums = 3509d7f449f533d49ea40be18c56afcafcc52d62206d91ca17df370f7f4bbb73
+
+pkgname = thpm
