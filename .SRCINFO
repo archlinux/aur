@@ -1,0 +1,18 @@
+pkgbase = teletify-bin
+	pkgdesc = Desktop music player that indexes and plays audio from your Telegram channels
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/amoyrlet/teletify
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = openssl
+	depends = hicolor-icon-theme
+	provides = teletify
+	conflicts = teletify
+	source = teletify-arch-installer-0.1.0.tar.gz::https://github.com/amoyrlet/teletify/releases/download/v0.1.0/teletify-arch-installer.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = teletify-bin
