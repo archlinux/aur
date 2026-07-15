@@ -1,0 +1,24 @@
+pkgbase = monstar
+	pkgdesc = Linux-native Wayland terminal built on Ghostty terminal core
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rockorager/monstar
+	arch = x86_64
+	license = MIT
+	makedepends = wayland-protocols>=1.49
+	makedepends = zig>=0.16.0
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = ghostty-terminfo
+	depends = glibc
+	depends = harfbuzz
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = systemd: launch additional terminal windows
+	optdepends = xdg-desktop-portal: open links and files through a desktop portal
+	optdepends = xdg-utils: open links when a desktop portal is unavailable
+	source = monstar-0.1.0.tar.gz::https://github.com/rockorager/monstar/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = ac1ce9c85e9a1bdf960d1dce36ef3a70dbb547645f84e785e26fb9db0f90f89f3864d355c4ec9752e2f38085b991b9d2e66f43368d75050f96626dd30eada4c4
+
+pkgname = monstar
