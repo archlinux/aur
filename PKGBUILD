@@ -2,7 +2,7 @@
 # Contributor: Karol Babioch <karol at babioch dot de>
 
 pkgname=getssl
-pkgver=2.49
+pkgver=2.52
 pkgrel=1
 pkgdesc="Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python: optional update scripts'
             'python-dnspython: optional update scripts'
             'python-boto3: optional update scripts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/srvrco/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('4283799134ec09b2c70901c3340f87e25dc88e8c8a242c7bcb00c26b435e807567fba4e160559dce5021831253632b5eb06bec5c8d2cd3a3642fe887a7a26945')
+sha512sums=('62168710ac048b69ab57eded1c046172714c3adc8ca43bc7b02bf266d6c057446aae58e9f1de3cfd473936cadf91e797bca3da9e6e3753fb3aec806ebd5309e4')
 
 package() {
     cd "$pkgname-$pkgver"
