@@ -2,7 +2,7 @@
 
 pkgname=timedated-shim
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable org.freedesktop.timedate1 service for non-systemd Linux'
 arch=('x86_64')
 url='https://github.com/NeuroMarshal/timedated-shim'
@@ -12,27 +12,31 @@ makedepends=('cargo')
 provides=('timedated')
 conflicts=('openrc-settingsd')
 install=timedated-shim.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef3269be6a1cef4d7e641b4ed3c01c696379cbc559c29fe69e23bdf334a85f82')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target x86_64-unknown-linux-gnu
-}
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver-vendor.tar.zst::$url/releases/download/v$pkgver/$pkgname-$pkgver-vendor.tar.zst"
+)
+sha256sums=(
+  'ef3269be6a1cef4d7e641b4ed3c01c696379cbc559c29fe69e23bdf334a85f82'
+  'd0748213690f2ebdd20fd961d8aa0aba3060f169bad745fd8311ee30b7a5aabc'
+)
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  export CARGO_NET_OFFLINE=true
+  cargo build --frozen --offline --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR=target
-  cargo test --frozen
+  export CARGO_NET_OFFLINE=true
+  cargo test --frozen --offline
 }
 
 package() {
