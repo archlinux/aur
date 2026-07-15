@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genomeIntervals
-_pkgver=1.64.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Operations on genomic intervals'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-s4vectors
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f484224f7f2b7bf7ffd092283d37e3bb32581dd1bda5275eda335514fb9750fd')
+sha256sums=('0fbc340a297b545eac6f9896d54407c6c7bbecc0ad8a56ae88e90f20e5d1baaf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
