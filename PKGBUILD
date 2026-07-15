@@ -4,7 +4,7 @@
 
 pkgname=teleport
 _pkgname=teleport
-pkgver=18.7.0
+pkgver=18.10.0
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -61,8 +61,12 @@ build() {
     export GOPATH="${srcdir}/go"
     export CARGO_HOME="${srcdir}/cargo"
     export RUSTUP_HOME="${srcdir}/rustup"
+    export CC="clang"
+    export CXX="clang++"
 
     # See: https://wiki.archlinux.org/index.php/Go_package_guidelines
+    export CGO_CC="clang"
+    export CGO_CXX="clang++"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -114,7 +118,7 @@ package_teleport() {
     cp -r examples "${pkgdir}/usr/share/teleport/"
 }
 
-sha512sums=('fb28c345a9712dcce34236b8beceacaa62a233e1787abb7040fd0b6d68ba9d22b92096529af64a596116b0f65f5471432a209690ba259232017b3fbd152617ed'
+sha512sums=('d0dd50863cb08d85944c58cc635111b5a18d9b3df5f6201a3f4a25061713f7b6f6586829979bc645f4e10baa1e333d10bbd36270c1f6761c59c81bdcc58b6898'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
             '71edc21c14d83fec85be730eb6c83c5371932cc08113d0d69167e1bc7a810965b82b3a8591ee7adb3f4b1004db66ee1857350d4fd30a30dcbf20f1146ffdc345')
