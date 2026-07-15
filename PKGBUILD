@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cnvGSA
-_pkgver=1.52.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Gene Set Analysis of (Rare) Copy Number Variants'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88eb2f6f64215ce49423fd7fc1f5fc79d0cd7da1eb501df1ca235e5b8f7085f2')
+sha256sums=('0ecda5cf3af03f91c6e983620ae41ad4a9e9ab4c2605495b57236acaa800404e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
