@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader-git
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture) — git build"
 arch=('x86_64')
@@ -44,7 +44,7 @@ Icon=mini-downloader
 Terminal=false
 Type=Application
 Categories=Network;FileTransfer;Utility;
-MimeType=x-scheme-handler/magnet;x-scheme-handler/minidownloader;
+MimeType=x-scheme-handler/minidownloader;
 DESKTOP
 
   # Firefox native-messaging host (system-wide).
