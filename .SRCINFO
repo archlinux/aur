@@ -1,6 +1,6 @@
 pkgbase = rush-shell-git
 	pkgdesc = POSIX-facing shell with modern interactive features
-	pkgver = r2806.21436f4
+	pkgver = r2810.504935f
 	pkgrel = 1
 	url = https://rush.horse
 	install = rush-shell.install
@@ -10,7 +10,7 @@ pkgbase = rush-shell-git
 	makedepends = zig>=0.16.0
 	depends = glibc
 	depends = sqlite
-	provides = rush-shell=r2806.21436f4
+	provides = rush-shell=r2810.504935f
 	conflicts = rush
 	conflicts = rush-shell
 	source = rush::git+https://github.com/rockorager/rush.git

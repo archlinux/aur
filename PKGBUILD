@@ -1,7 +1,7 @@
 # Maintainer: Tim Culverhouse <tim at timculverhouse dot com>
 
 pkgname=rush-shell-git
-pkgver=r2806.21436f4
+pkgver=r2810.504935f
 pkgrel=1
 pkgdesc='POSIX-facing shell with modern interactive features'
 arch=(x86_64)
