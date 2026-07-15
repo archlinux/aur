@@ -1,7 +1,7 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
-pkgname=tdns-git
 _pkgname=tdns
+pkgname="${_pkgname}-git"
 pkgver=v0.7.0.r0.d3aee8b
 pkgrel=1
 
