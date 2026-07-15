@@ -1,0 +1,21 @@
+pkgbase = raylib-wayland-git
+	pkgdesc = A simple and easy-to-use library to enjoy videogames programming (compiled natively for Wayland)
+	pkgver = 6.0.r225.g4640c84
+	pkgrel = 1
+	url = https://www.raylib.com/
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = glu
+	provides = raylib
+	conflicts = raylib
+	options = !debug
+	source = git+https://github.com/raysan5/raylib.git
+	sha256sums = SKIP
+
+pkgname = raylib-wayland-git
