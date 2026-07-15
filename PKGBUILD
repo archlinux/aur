@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AssessORF
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Assess Gene Predictions Using Proteomics and Evolutionary Conservation'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('37c3e2819479174cca884351f270281dd9b4b7e4ede44d270a8416e144eea1f1')
+sha256sums=('f6e3feddaac1ae7f0eb80435d1ba128e0392adba7b7eb7ace2088e203c9111c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
