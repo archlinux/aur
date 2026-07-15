@@ -1,16 +1,19 @@
 pkgbase = cyphergatevpn-bin
 	pkgdesc = Cross-platform VPN GUI for OpenVPN - Binary release
-	pkgver = 2.0.0
-	pkgrel = 6
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/Cypher-Monarch/CypherGate
 	install = cyphergatevpn-bin.install
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0
 	depends = openvpn
 	depends = bind
 	provides = cyphergate-vpn
 	conflicts = cyphergate-vpn
-	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.0/CypherGate-Linux-v2.0.0.tar.xz
-	sha256sums = 194e5ef9262568e21bfbb5e009ddbce5f656341e37884d5b1b92b9790c19bfda
+	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.1/CypherGate-Linux-v2.0.1.tar.xz
+	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.1/CypherGate-Linux-v2.0.1.tar.xz.sig
+	validpgpkeys = 9ED87F6065033606670941AAC6C9B498797C980E
+	sha256sums = ea5f120c309da2ea6355bf236c0a7344f6c5b675cdce5fd37e88cc9d278c1b27
+	sha256sums = SKIP
 
 pkgname = cyphergatevpn-bin

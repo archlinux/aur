@@ -1,18 +1,29 @@
 # Maintainer: Cypher-Monarch <monarchcypher@gmail.com>
 
 pkgname=cyphergatevpn-bin
-pkgver=2.0.0
-pkgrel=6
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Cross-platform VPN GUI for OpenVPN - Binary release"
 arch=('x86_64')
 url="https://github.com/Cypher-Monarch/CypherGate"
-license=('MIT')
+license=('GPL-3.0')
 depends=('openvpn' 'bind')
 provides=('cyphergate-vpn')
 conflicts=('cyphergate-vpn')
 
-source=("https://github.com/Cypher-Monarch/CypherGate/releases/download/v$pkgver/CypherGate-Linux-v${pkgver}.tar.xz")
-sha256sums=('194e5ef9262568e21bfbb5e009ddbce5f656341e37884d5b1b92b9790c19bfda')
+source=(
+  "https://github.com/Cypher-Monarch/CypherGate/releases/download/v$pkgver/CypherGate-Linux-v${pkgver}.tar.xz"
+  "https://github.com/Cypher-Monarch/CypherGate/releases/download/v$pkgver/CypherGate-Linux-v${pkgver}.tar.xz.sig"
+)
+
+sha256sums=(
+  'ea5f120c309da2ea6355bf236c0a7344f6c5b675cdce5fd37e88cc9d278c1b27'
+  'SKIP'
+)
+
+validpgpkeys=(
+  '9ED87F6065033606670941AAC6C9B498797C980E'
+)
 
 install=cyphergatevpn-bin.install
 
@@ -47,9 +58,17 @@ Description=CypherGate Root Daemon
 After=network.target
 
 [Service]
+Type=simple
 ExecStart=/opt/CypherGate/cyphergated
 Restart=always
+
 User=root
+Group=cyphergate
+
+RuntimeDirectory=cyphergate
+RuntimeDirectoryMode=0750
+
+NoNewPrivileges=true
 
 [Install]
 WantedBy=multi-user.target
