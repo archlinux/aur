@@ -4,7 +4,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -38,14 +38,12 @@ provides=(
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 conflicts=(
   $_pkgname
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 optdepends=(
   'libjxl-doc: for documentation'
@@ -67,7 +65,7 @@ prepare() {
   git -C $_pkgname submodule init third_party/{skcms,sjpeg,libjpeg-turbo}
   git -C $_pkgname config submodule.third_party/skcms.url "$srcdir"/skcms
   git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir"/sjpeg
-  git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir"/libjpeg-turbo
+  #git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir"/libjpeg-turbo
   git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
