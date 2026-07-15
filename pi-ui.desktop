@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=pi-ui
-Comment=Desktop GUI for pi
+Comment=Minimal GUI for pi
 Exec=pi-ui
 Icon=pi-ui
 Terminal=false

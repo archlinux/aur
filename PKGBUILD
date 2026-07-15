@@ -1,37 +1,68 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
-pkgdesc="Desktop GUI for pi"
+pkgdesc="Minimal GUI for pi"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hyperpuncher/pi-ui"
 license=('MIT')
-depends=('fuse2')
+depends=(
+  'alsa-lib'
+  'at-spi2-core'
+  'bash'
+  'cairo'
+  'dbus'
+  'expat'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libgcc'
+  'libstdc++'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxi'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
+)
+makedepends=('patchelf')
+options=('!strip')
 provides=("pi-ui=$pkgver")
 conflicts=('pi-ui')
 
 source=("pi-logo.svg" "pi-ui.desktop" "LICENSE")
 sha256sums=(
   'a5624bc3b8cac94de75f6f13701eca2ad3ef67bbeba286c4af3f398806f0858a'
-  'e22214365f6c7f8537be9dcc2b50c1af97cc197e5d159677b0408e29f80bd182'
+  '2554a747e3d834f1ffd588530ceb46e3a3b8af4773282997df958d292bfc1b11'
   '6b7faf66323093e92a63a7d6d0cd20ef3718b77a2192e06cb00466fe870f14cf'
 )
 
-source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.AppImage")
-sha256sums_x86_64=('4cb55e104069d30361792dbe13d19755ae6c77938273013e436fd843af7af96f')
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.tar.zst")
+sha256sums_x86_64=('c835392d6d49aa5177117100e8955a5464a430be0087db8e8160cbf9abd742a3')
 
-source_aarch64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.AppImage")
-sha256sums_aarch64=('5def8ba002cfc9a0c240380263547adc93713f220f33b61bb9437199073f444e')
-
-noextract=("$pkgname-$pkgver.AppImage")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.tar.zst")
+sha256sums_aarch64=('49a0e3bc47d3dc9bbc7a3f1fd06556f46ca086f26a36848acc00d15f12ec89f3')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver.AppImage" "$pkgdir/opt/pi-ui/pi-ui.AppImage"
-  install -dm755 "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/lib/pi-ui"
+  cp -a "$srcdir/pi-ui/." "$pkgdir/usr/lib/pi-ui/"
+  # shellcheck disable=SC2016
+  patchelf --set-rpath '$ORIGIN' "$pkgdir/usr/lib/pi-ui/pi-ui"
+  install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/pi-ui" <<'EOF'
-#!/bin/sh
-exec /opt/pi-ui/pi-ui.AppImage \
+#!/usr/bin/bash
+exec /usr/lib/pi-ui/pi-ui \
   --disable-spell-checking \
   "$@"
 EOF
