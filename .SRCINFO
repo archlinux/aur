@@ -1,0 +1,25 @@
+pkgbase = read-aware-bin
+	pkgdesc = A local-first, AI-native reader that turns books, highlights, notes, and conversations into durable context
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/ahpxex/read-aware
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = read-aware
+	conflicts = read-aware
+	options = !debug
+	source = LICENSE-0.2.7::https://raw.githubusercontent.com/ahpxex/read-aware/v0.2.7/LICENSE
+	sha256sums = 40e7f8c7b6b6731ce608e9650911192c297e3d29ef44b873b80c4565ba60f8ed
+	source_x86_64 = ReadAware_0.2.7_amd64.deb::https://github.com/ahpxex/read-aware/releases/download/v0.2.7/ReadAware_0.2.7_amd64.deb
+	sha256sums_x86_64 = 1378ebd4a8ede3a0474165ce65eac78b7fab0b20d197797f19417f2fb8cad475
+
+pkgname = read-aware-bin
