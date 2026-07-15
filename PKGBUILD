@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    unset GOROOT
     export CGO_ENABLED=0
     go build -trimpath -mod=readonly \
         -ldflags="-s -w" \
