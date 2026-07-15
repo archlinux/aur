@@ -1,0 +1,25 @@
+pkgbase = clipsnip
+	pkgdesc = Desktop clip-trimming tool with live multi-track audio mixing and lossless export (Tauri + React)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/mikilimj/ClipSnip
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = ffmpeg
+	depends = rclone
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = hicolor-icon-theme
+	options = !lto
+	source = clipsnip-1.2.1.tar.gz::https://github.com/mikilimj/ClipSnip/archive/refs/tags/v1.2.1.tar.gz
+	source = clipsnip.desktop
+	sha256sums = ad242f0a138a09cda231593c986c13bf9c8201a2386d3449179de7ce7becd5a5
+	sha256sums = 02189bfc35a0e6e518638e9db5b75fe98aa9f22f24bfade04957bc8a14408c88
+
+pkgname = clipsnip

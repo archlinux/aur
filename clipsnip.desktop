@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ClipSnip
+Comment=Trim video clips with live multi-track audio mixing
+Exec=clipsnip
+Icon=clipsnip
+Terminal=false
+Categories=AudioVideo;Video;AudioVideoEditing;
+StartupWMClass=ClipSnip
