@@ -12,7 +12,7 @@ license=('LicenseRef-Babble Software Distribution License 1.0')
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --abbrev=0 main
+    git describe --tags --abbrev=0 --match 'v[0-9]*' main
 }
 
 makedepends=(
