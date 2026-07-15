@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r1025.b8553d7
+pkgver=r1031.d4e0c60
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -95,7 +95,7 @@ package() {
     local _lib="$pkgdir/usr/lib/franki"
 
     # Directorios
-    install -dm755 "$_lib/backend"/{bin,tools,sentidos,data,fasciculos,fibras_musculares,prompt_library,templates}
+    install -dm755 "$_lib/backend"/{bin,tools,sentidos,data,fasciculos,fibras_musculares,prompt_library,templates,osint}
     install -dm755 "$pkgdir/usr/share/franki/frontend"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
@@ -120,6 +120,7 @@ package() {
     cp -r fibras_musculares/. "$_lib/backend/fibras_musculares/"
     cp -r prompt_library/.   "$_lib/backend/prompt_library/"
     cp -r templates/.        "$_lib/backend/templates/"
+    cp -r osint/.            "$_lib/backend/osint/"
     # Excluir modelos de voz binarios (descargados por franki.install post-install hook)
     rm -f "$_lib/backend/sentidos/voces/"*.onnx "$_lib/backend/sentidos/voces/"*.onnx.json
     # data/: copiar excluyendo knowledge_graph.json (gitignored, generado en runtime)
