@@ -1,0 +1,22 @@
+pkgbase = nerva-desktop-bin
+	pkgdesc = Persistent focus workspace for deep work — timers, notes, habits, tasks
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://nerva.bytical.ai
+	arch = x86_64
+	license = Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = libnotify
+	optdepends = libsecret: keyring storage for AI provider tokens
+	provides = nerva-desktop
+	conflicts = nerva
+	conflicts = nerva-bin
+	options = !strip
+	options = !emptydirs
+	source = nerva-0.1.11.deb::https://github.com/piyushptiwari1/nerva/releases/download/v0.1.11/Nerva_0.1.11_amd64.deb
+	sha256sums = 542180d5e916f2c4e5cb92e2b0817778de46aac6899efb8d42bc86a84f176610
+
+pkgname = nerva-desktop-bin
