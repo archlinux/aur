@@ -4,9 +4,9 @@
 
 pkgname="libfprint-goodixtls-55x4-fixed"
 _pkgbase="libfprint-goodixtls-55x4"
-pkgdesc="libfprint fork for goodixtls 55x4 devices with host-side finger detection fix (MCU FDT-down reply doesn't block on this firmware)"
+pkgdesc="libfprint fork for goodixtls 55x4 devices with host-side finger detection fix (MCU FDT-down reply doesn't block on this firmware) and opencv5 build fix"
 pkgver=r1804.d1ca62a
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=("LGPL2")
 makedepends=("git" "meson" "pkgconf" "gobject-introspection" "gtk-doc" "doctest" "glib2-devel")
@@ -15,8 +15,10 @@ conflicts=("libfprint" "${_pkgbase}")
 depends=('libgusb' 'openssl' 'pixman' 'nss' 'libgudev' 'opencv')
 optdepends=('fprintd: D-Bus daemon for managing readers')
 source=("${_pkgbase}::git+https://github.com/TheWeirdDev/libfprint.git"
-        "0001-goodix55x4-host-side-finger-detect.patch")
+        "0001-goodix55x4-host-side-finger-detect.patch"
+        "0002-sigfm-opencv-pkgconfig-fallback.patch")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -30,6 +32,7 @@ prepare() {
     git switch '55b4-experimental'
     git pull -f origin 55b4-experimental
     patch -Np1 -i "${srcdir}/0001-goodix55x4-host-side-finger-detect.patch"
+    patch -Np1 -i "${srcdir}/0002-sigfm-opencv-pkgconfig-fallback.patch"
 }
 
 build() {

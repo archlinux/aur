@@ -1,7 +1,7 @@
 pkgbase = libfprint-goodixtls-55x4-fixed
-	pkgdesc = libfprint fork for goodixtls 55x4 devices with host-side finger detection fix (MCU FDT-down reply doesn't block on this firmware)
+	pkgdesc = libfprint fork for goodixtls 55x4 devices with host-side finger detection fix (MCU FDT-down reply doesn't block on this firmware) and opencv5 build fix
 	pkgver = r1804.d1ca62a
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = LGPL2
 	makedepends = git
@@ -25,6 +25,8 @@ pkgbase = libfprint-goodixtls-55x4-fixed
 	conflicts = libfprint-goodixtls-55x4
 	source = libfprint-goodixtls-55x4::git+https://github.com/TheWeirdDev/libfprint.git
 	source = 0001-goodix55x4-host-side-finger-detect.patch
+	source = 0002-sigfm-opencv-pkgconfig-fallback.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
