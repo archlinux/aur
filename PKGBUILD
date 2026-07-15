@@ -4,7 +4,7 @@
 pkgname=babbletrainer
 # real tag has hyphens not underscores, but makepkg doesn't allow so remap later
 pkgver=1.3.8_linux_paths
-pkgrel=3
+pkgrel=4
 pkgdesc="On-device B.A.B.A.L.L.S. trainer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Project-Babble/BabbleTrainer"
@@ -24,7 +24,7 @@ makedepends=(
 )
 depends=(
     python
-    opencv
+    opencv4
     python-pytorch
     python-numpy
     python-opencv

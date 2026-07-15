@@ -1,7 +1,7 @@
 pkgbase = babbletrainer
 	pkgdesc = On-device B.A.B.A.L.L.S. trainer
 	pkgver = 1.3.8_linux_paths
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Project-Babble/BabbleTrainer
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = babbletrainer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = opencv
+	depends = opencv4
 	depends = python-pytorch
 	depends = python-numpy
 	depends = python-opencv
