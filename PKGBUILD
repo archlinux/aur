@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-sdl3"
-pkgver=159.5
+pkgver=159.6
 pkgrel=1
 pkgdesc="SDL3 backend version of Mindustry."
 url="https://github.com/Anuken/Mindustry"
@@ -30,8 +30,8 @@ source=(
   '0001-mindustry-use-sdl3-backend.patch'
   '0002-arc-sdl3-preserve-wheel-delta.patch'
 )
-sha256sums=('33606fd13dc559bdedd7336a90f73f4f4c2da56b33a950a61eab6160f8694c1d'
-            'df27cc878ee6defda1d9dcbd962f909fa6a3ac67c6ef20954e6b0f99ac4b524e'
+sha256sums=('96c7aa6b7320528b52bd7d7931b710095c0633e662532e1e34beec4915c474a0'
+            '4d046ca0cdd8ddc495b1f5b134fe2461f7af879f5174863b3329939bd75b3c50'
             '61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013'
             'bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215')
 
