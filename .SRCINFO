@@ -1,0 +1,21 @@
+pkgbase = termheat
+	pkgdesc = 🔥 Animated terminal heatmap of your GitHub contributions, zero auth, zero config, npx and done.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/moeen-mahmud/termheat
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = git
+	provides = termheat
+	noextract = termheat-1.0.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = termheat-1.0.0.tgz::https://registry.npmjs.org/termheat/-/termheat-1.0.0.tgz
+	b2sums = d6c351215869923f2d6a18d628c3ed7183c5cef8ca9fcadf75e9495e570e415b034b24733fcfe30df31731fa4edd9fe7b2edbe36824ad1306ec6a9c6be72fa8e
+
+pkgname = termheat
