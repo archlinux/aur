@@ -2,9 +2,9 @@
 # Contributor: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
-pkgver=1.0.22.r1.ge1cd9b2
+pkgver=1.0.22.r5.gc5d0d13
 pkgrel=1
-pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
+pkgdesc="Hotkey and custom fan control on System76 laptops with Clevo proprietary firmware"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
 license=('GPL-2.0-or-later')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   sed -i "s/#MODULE_VERSION#/${pkgver//.r*/}/" "debian/${pkgname%-git}.dkms"
-  echo "BUILT_MODULE_LOCATION[0]=\"src\"" >>"debian/${pkgname%-git}.dkms"
+  echo "BUILT_MODULE_LOCATION[1]=\"src\"" >>"debian/${pkgname%-git}.dkms"
 }
 
 package() {
