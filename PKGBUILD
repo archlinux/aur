@@ -3,7 +3,7 @@
 
 _pkgbase=rtw89
 pkgname=rtw89-dkms-git
-pkgver=r1871.8987afc
+pkgver=r1873.08b8d32
 pkgrel=1
 pkgdesc="Drivers for Realtek Wi-Fi 6/6E and Wi-Fi 7 adapters"
 arch=('any')
@@ -18,7 +18,6 @@ sha256sums=('SKIP')
 prepare() {
 	cd "${srcdir}"/${_pkgbase}
 	sed -i "s/\" __stringify(GIT_COMMIT) \"/$(git rev-parse HEAD)/g" core.c
-	sed -i "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"@PKGVER@\"/g" dkms.conf
 }
 
 pkgver() {
@@ -30,5 +29,5 @@ package() {
 	cd "${srcdir}"/${_pkgbase}
 	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
 	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d rtw89.conf
- 	sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+ 	sed "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/g" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
