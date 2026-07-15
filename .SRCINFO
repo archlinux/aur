@@ -1,0 +1,18 @@
+pkgbase = swissknife-graph-bin
+	pkgdesc = SwissKnife for MS Graph — Microsoft Graph desktop client for IT admins (binary release)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/Nemu-x/SwissKnife-for-MS-Graph
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = swissknife-graph
+	conflicts = swissknife-graph
+	options = !strip
+	source = swissknife-graph.desktop-v0.6.0::https://raw.githubusercontent.com/Nemu-x/SwissKnife-for-MS-Graph/v0.6.0/packaging/linux/swissknife-graph.desktop
+	sha256sums = SKIP
+	source_x86_64 = swissknife-graph-v0.6.0-x86_64.tar.gz::https://github.com/Nemu-x/SwissKnife-for-MS-Graph/releases/download/v0.6.0/SwissKnifeGraph-linux-amd64.tar.gz
+	sha256sums_x86_64 = 401cbc1e294cb0f96fed8639bf2a1191ec9be90cb1de4960224e9d06189983a3
+
+pkgname = swissknife-graph-bin
