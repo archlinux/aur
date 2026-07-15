@@ -1,6 +1,6 @@
 pkgbase = solitaire
 	pkgdesc = Play patience games
-	pkgver = 50.2.1
+	pkgver = 50.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/wwarner/Solitaire
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = solitaire
 	makedepends = vala
 	depends = gtk4
 	depends = libadwaita
-	source = https://gitlab.gnome.org/wwarner/Solitaire/-/archive/50.2.1/Solitaire-50.2.1.tar.gz
-	sha256sums = 6ab07326187732b1cd40b601ec9f6050542b92c2175759f53ddde6cea9e62800
+	source = https://gitlab.gnome.org/wwarner/Solitaire/-/archive/50.3/Solitaire-50.3.tar.gz
+	sha256sums = 725eb81532bb7033674affdc6ba0c5361a22e6e0ae2a63b0fd71e3fd74544888
 
 pkgname = solitaire
