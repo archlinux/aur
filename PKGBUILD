@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('yt-dlp: video/HLS/DASH grabbing')
 makedepends=('rust' 'cargo' 'nodejs' 'pnpm' 'git')
 conflicts=('mini-downloader-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fd8b46f903c1380f9120718b5ba3e4ffe1d5633ed2ffe97f5059edb724f49ff')
+sha256sums=('7cc210ab268196ef2bce47b06413d666b97c5c19e0748de45f6edb95033bf38e')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -38,7 +38,7 @@ Icon=mini-downloader
 Terminal=false
 Type=Application
 Categories=Network;FileTransfer;Utility;
-MimeType=x-scheme-handler/magnet;x-scheme-handler/minidownloader;
+MimeType=x-scheme-handler/minidownloader;
 DESKTOP
 
   # Firefox native-messaging host (system-wide).
