@@ -9,7 +9,7 @@
 
 pkgname=mineradio
 pkgver=1.1.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
@@ -34,7 +34,7 @@ install=mineradio.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XxHuberrr/Mineradio/archive/refs/tags/v$pkgver.tar.gz"
         'mineradio.desktop'
         'mineradio.sh'
-        'linux-compat.patch')
+        'apply-linux-fixes.py')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -43,8 +43,8 @@ sha256sums=('SKIP'
 build() {
   cd "$srcdir/Mineradio-$pkgver"
 
-  # Apply Linux compatibility patches
-  patch -p1 < "$srcdir/linux-compat.patch"
+  # Apply Linux compatibility fixes (icon, GPU switches, cache path)
+  python3 "$srcdir/apply-linux-fixes.py" .
 
   # Install npm dependencies (including devDependencies for electron-builder)
   npm install --prefer-offline
