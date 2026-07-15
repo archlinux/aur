@@ -2,7 +2,7 @@
 
 pkgname=mediawarp-git
 _name=MediaWarp
-pkgver=0.2.3.r15.gf7cad16
+pkgver=0.2.4.r12.g070ad99
 pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
@@ -12,8 +12,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(
-    glibc
-    sh)
+    sh
+)
 optdepends=(
     'alist: File list program that supports multiple storage'
     'autofilm: A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp.'
