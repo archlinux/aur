@@ -1,13 +1,16 @@
 pkgbase = python-pycdlib
-	pkgdesc = parse, write, and create ISO9660 and UDF image
-	pkgver = 1.15.0
+	pkgdesc = Python library to read and write ISOs
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/clalancette/pycdlib
 	arch = any
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = pycdlib-1.15.0.tar.gz::https://github.com/clalancette/pycdlib/archive/v1.15.0.tar.gz
-	sha512sums = 200ded591a60d7cf82b4715b93952da5d26562e787fbd14b0eef487a1fe136c42ebcee92d6089ab6852996fe5834af09d1423257a911f808862b2adcf35cb26c
+	source = python-pycdlib-1.16.0.tar.gz::https://github.com/clalancette/pycdlib/archive/v1.16.0.tar.gz
+	sha512sums = 4665920ad8ae4df1a2436a8a77158736936c409e124f5409801f7250b0a8bf0a1b219031475e07e9a68cb469361b131a5fdf65191f7ab4a096cbab7e46ec833f
 
 pkgname = python-pycdlib

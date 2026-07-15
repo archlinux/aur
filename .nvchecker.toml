@@ -1,0 +1,4 @@
+[python-pycdlib]
+source = "git"
+git = "https://github.com/clalancette/pycdlib.git"
+prefix = "v"
