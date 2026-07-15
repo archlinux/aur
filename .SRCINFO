@@ -1,0 +1,27 @@
+pkgbase = monstar-git
+	pkgdesc = Small Wayland terminal emulator built on Ghostty terminal core
+	pkgver = r170.7538e56
+	pkgrel = 1
+	url = https://github.com/rockorager/monstar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland-protocols>=1.49
+	makedepends = zig>=0.16.0
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = ghostty-terminfo
+	depends = glibc
+	depends = harfbuzz
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = systemd: launch additional terminal windows
+	optdepends = xdg-desktop-portal: open links and files through a desktop portal
+	optdepends = xdg-utils: open links when a desktop portal is unavailable
+	provides = monstar=r170.7538e56
+	conflicts = monstar
+	source = monstar::git+https://github.com/rockorager/monstar.git
+	b2sums = SKIP
+
+pkgname = monstar-git
