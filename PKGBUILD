@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Thilo-Alexander Ginkel <tg@tgbyte.de>
 # Contributor: Francisco Demartino <demartino.francisco@gmail.com>
 # Contributor: Chris Heien <chris.h.heien@gmail.com>
@@ -7,7 +7,7 @@
 
 _pkgname="pdfbox"
 pkgname="$_pkgname"
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc="Java tool for working with PDF documents"
 url="https://pdfbox.apache.org"
@@ -31,9 +31,9 @@ source=(
 )
 
 sha256sums=(
-  'bf70b90aca964bda6f1438d7b87d6f99cfaa9912ba6fcebc0541d9d90ee5ef54'
-  '697254b7a6741eb241b18ac1075622eeedcb461a002fcf7eed9ec249c9b8507a'
-  '3765ae0580f280c3b7375488e4e3be98f17c4d81779bd7c4f3f59a9640dfe55e'
+  'f6b3a80c39747ff0ef5d06708bc03882152403de58dbef4a1fbffbee568eceb1'
+  '7275fd6251e5005a5cf6b257e563dc0a1ae4502b98994fe1bbe90a5b14769e7b'
+  'd8f8b2fa102aa06178174710fcef4087e23535832e877d5fe52b4d296571e530'
 )
 
 package() {
