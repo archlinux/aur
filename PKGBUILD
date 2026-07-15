@@ -1,8 +1,8 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
-pkgver=1.5.0beta14
-pkgrel=3
-_pkgver=1.5.0-beta.14
+pkgver=1.5.0beta15
+pkgrel=1
+_pkgver=1.5.0-beta.15
 _reponame=StreamController-$_pkgver
 _pkgname=${pkgname}
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
@@ -12,7 +12,7 @@ license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('02f06f07a954f22a032f3c6dfe5321954e1755ea04403cb594dd8c815ddff998')
+sha256sums=('a32c4bb58468ffff48f217f0e3fa82b27871c8d2e758f1139e8b7856293f7e74')
 provides=('streamcontroller')
 conflicts=('streamcontroller-git')
 
@@ -49,9 +49,13 @@ EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
   # Install application entry (use upstream desktop file with corrected Exec and StartupWMClass)
-  sed 's|Exec=.*|Exec=streamcontroller|' "$srcdir/$_reponame/flatpak/launch.desktop" > /tmp/sc.desktop
-  echo "StartupWMClass=com.core447.StreamController" >> /tmp/sc.desktop
-  install -Dm644 /tmp/sc.desktop "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
+  sed -e 's|Exec=.*|Exec=streamcontroller|' \
+      -e 's|^Categories=Utility$|Categories=Utility;|' \
+      "$srcdir/$_reponame/flatpak/launch.desktop" > "$srcdir/sc.desktop"
+  # Upstream's launch.desktop has no trailing newline; the leading \n keeps
+  # StartupWMClass from being appended onto the Categories line
+  printf '\nStartupWMClass=com.core447.StreamController\n' >> "$srcdir/sc.desktop"
+  install -Dm644 "$srcdir/sc.desktop" "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
 
   # Install icon under reverse-domain name matching the app's GApplication ID
   install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.core447.StreamController.png"

@@ -1,7 +1,7 @@
 pkgbase = streamcontroller
 	pkgdesc = An elegant Linux app for the Elgato Stream Deck with support for plugins
-	pkgver = 1.5.0beta14
-	pkgrel = 3
+	pkgver = 1.5.0beta15
+	pkgrel = 1
 	url = https://github.com/StreamController/StreamController
 	arch = any
 	license = GPL-3
@@ -15,7 +15,7 @@ pkgbase = streamcontroller
 	depends = gobject-introspection
 	provides = streamcontroller
 	conflicts = streamcontroller-git
-	source = streamcontroller-1.5.0beta14.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/1.5.0-beta.14.tar.gz
-	sha256sums = 02f06f07a954f22a032f3c6dfe5321954e1755ea04403cb594dd8c815ddff998
+	source = streamcontroller-1.5.0beta15.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/1.5.0-beta.15.tar.gz
+	sha256sums = a32c4bb58468ffff48f217f0e3fa82b27871c8d2e758f1139e8b7856293f7e74
 
 pkgname = streamcontroller
