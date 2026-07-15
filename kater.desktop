@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kater
+Comment=Linux-Adressbuch mit vCard-Unterstützung
+Exec=kater %u
+Icon=kater
+Type=Application
+Categories=Office;ContactManagement;
+StartupWMClass=Kater
+Keywords=Adressbuch;Kontakte;vCard;
+Terminal=false

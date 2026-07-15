@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Ohren (hinter Kopf) -->
+  <polygon points="35,90 55,30 85,75" fill="#4a90d9" stroke="#2c5f8a" stroke-width="2" stroke-linejoin="round"/>
+  <polygon points="115,75 145,30 165,90" fill="#4a90d9" stroke="#2c5f8a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Innenohr links -->
+  <polygon points="45,82 60,42 78,72" fill="#c9e0f5"/>
+  <!-- Innenohr rechts -->
+  <polygon points="122,72 140,42 155,82" fill="#c9e0f5"/>
+
+  <!-- Kopf -->
+  <ellipse cx="100" cy="115" rx="70" ry="65" fill="#4a90d9" stroke="#2c5f8a" stroke-width="2.5"/>
+
+  <!-- Gesicht (hellere Schnauzenpartie) -->
+  <ellipse cx="100" cy="130" rx="38" ry="28" fill="#c9e0f5"/>
+
+  <!-- Augen -->
+  <ellipse cx="76" cy="105" rx="13" ry="14" fill="white"/>
+  <ellipse cx="124" cy="105" rx="13" ry="14" fill="white"/>
+  <!-- Pupillen (vertikal, Katze!) -->
+  <ellipse cx="76" cy="105" rx="5" ry="11" fill="#1a1a2e"/>
+  <ellipse cx="124" cy="105" rx="5" ry="11" fill="#1a1a2e"/>
+  <!-- Augenglanz -->
+  <ellipse cx="79" cy="100" rx="2.5" ry="3.5" fill="white" opacity="0.8"/>
+  <ellipse cx="127" cy="100" rx="2.5" ry="3.5" fill="white" opacity="0.8"/>
+  <!-- Augenrand -->
+  <ellipse cx="76" cy="105" rx="13" ry="14" fill="none" stroke="#2c5f8a" stroke-width="1.5"/>
+  <ellipse cx="124" cy="105" rx="13" ry="14" fill="none" stroke="#2c5f8a" stroke-width="1.5"/>
+
+  <!-- Nase -->
+  <polygon points="100,122 94,129 106,129" fill="#2c5f8a" stroke="#1a3d5c" stroke-width="1"/>
+
+  <!-- Mund -->
+  <path d="M 94,129 Q 100,136 106,129" fill="none" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="100" y1="129" x2="100" y2="133" stroke="#2c5f8a" stroke-width="1.5"/>
+
+  <!-- Schnurrhaare links -->
+  <line x1="92" y1="127" x2="55" y2="120" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="92" y1="130" x2="55" y2="130" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="92" y1="133" x2="55" y2="140" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Schnurrhaare rechts -->
+  <line x1="108" y1="127" x2="145" y2="120" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="108" y1="130" x2="145" y2="130" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="108" y1="133" x2="145" y2="140" stroke="#2c5f8a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+</svg>
