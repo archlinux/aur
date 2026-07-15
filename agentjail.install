@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'MSG'
+  agentjail binaries are installed under /usr/bin.
+
+  To wire agentjail into your coding agents (Claude Code, Codex, Cursor) and
+  start the per-user daemon, run as your normal user:
+
+      agentjail install
+
+  This registers a PreToolUse hook in each detected agent's config and enables
+  a systemd --user service (~/.config/systemd/user/agentjail-daemon.service).
+  It only affects your user account; re-run it after adding a new agent.
+
+  To remove that wiring later:
+
+      agentjail uninstall
+MSG
+}
+
+post_upgrade() {
+  post_install
+}
