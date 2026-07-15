@@ -17,7 +17,6 @@ depends=('mono')
 conflicts=('radegast' 'radegast-git')
 makedepends=('dos2unix' 'recode')
 
-#https://github.com/cinderblocks/radegast/releases/download/latest/Radegast_x64-2.41.357.tbz
 source=(https://github.com/cinderblocks/radegast/releases/download/Legacy%2F${pkgver}/Radegast_x64_${pkgver}.tbz
         radegast.desktop radegast)
 sha256sums=('571cad84536448a64905f5dac64826ae2869cbf86be479cd965560f464fb26ef'
