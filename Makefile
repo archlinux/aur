@@ -45,7 +45,7 @@ publish: ## Commit PKGBUILD + .SRCINFO and push to AUR
 	else \
 		echo "No PKGBUILD/.SRCINFO changes to commit."; \
 	fi; \
-	git push aur HEAD:master
+	git push label HEAD:master
 
 release: ## End-to-end: bump -> build -> publish (stops on first failure)
 	@$(MAKE) --no-print-directory bump
