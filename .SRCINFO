@@ -1,16 +1,16 @@
 pkgbase = mogura-bin
 	pkgdesc = Interactive disk cleaner and analyzer for Linux — dig out caches, build artifacts and orphaned configs
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cluion/Mogura
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = mogura
 	conflicts = mogura
-	source_x86_64 = https://github.com/cluion/Mogura/releases/download/v0.8.2/mogura_0.8.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = fdc1b1d8af3772e1e9e17cd04c440b247b99606735edf9f31f34be22af843129
-	source_aarch64 = https://github.com/cluion/Mogura/releases/download/v0.8.2/mogura_0.8.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = e954fde5d40ba489d2fae0fca0970d49f5175241c5028f6103938e897c22014e
-
+	provides = mogura
+	arch = aarch64
+	source_aarch64 = https://github.com/cluion/Mogura/releases/download/v0.9.0/mogura_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b8c9155e8e7bf45b0898929a5defc05c4047078a2bd4f1cc74fcfb3f99fda38a
+	arch = x86_64
+	source_x86_64 = https://github.com/cluion/Mogura/releases/download/v0.9.0/mogura_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e64456e1c5523bd9aa1434fe765e6e3a7e1f47ce4c57c719c7b210da8fad86a7
+	
 pkgname = mogura-bin
