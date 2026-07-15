@@ -1,7 +1,7 @@
 # Maintainer: SummerBreeze630 <xzwf2003@163.com>
 
 pkgname=knowledge-base
-pkgver=1.14.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="本地知识库桌面应用 - 全文搜索、双向链接、知识图谱"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${_download_url}/v${pkgver}/Knowledge.Base_${pkgver//_/-}_amd64.deb"
         "https://raw.githubusercontent.com/bkywksj/knowledge-base/master/LICENSE"
 )
 
-sha256sums=('c572a4ff896a49027c19d0c798d34fd96932946182e9479bc366cb61243d664d'
+sha256sums=('8b02f9b4b20f02d293cdfe753b2be0cf89d08b2cdda4edd42d6d5bfd86b7dd62'
             'c7e6053c950190960d461e086b82bf804a9727d6281c39bc2ff3acdb7ef175ac')
 
 package() {
