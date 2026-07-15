@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hygg
-pkgver=0.1.21
+pkgver=0.1.24
 pkgrel=1
 pkgdesc='Minimalistic Vim-like TUI document reader.'
 arch=(
@@ -23,7 +23,7 @@ provides=(
 )
 conflicts=($pkgname-git $pkgname-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c0f3005bf97940881d695b7e8bde55318daf4de48c927cb4a9150d3b86ccb181')
+sha256sums=('0be91ce2ecceeaebcd40926b3c78f4867c056b93615c2a5ff01b4578d1f4b9dd')
 
 prepare() {
     cd "$pkgname-$pkgver"
