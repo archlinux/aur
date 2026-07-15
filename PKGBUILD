@@ -1,7 +1,7 @@
 # Maintainer: jemand <wertzlino@gmail.com>
 pkgname=cancept
 _pkgname=CANcept
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A CAN-Centric Environment for Automotive Bus Testing and Analysis"
 arch=('x86_64')
