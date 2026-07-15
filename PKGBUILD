@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.93.1.185.r0.36c77f062
+pkgver=1.93.1.193.r0.a8818f549
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 groups=('game')
 depends=(bash libglvnd glibc zlib gnustep-base hicolor-icon-theme libstdc++ libobjc libgcc 
           espeak-ng glu nspr openal sdl3 libvorbis libpng)
-makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make gitversion jq)
+makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         oolite-git.sh
 )
@@ -45,7 +45,8 @@ package() {
   # Create folders where files will be manually placed
   mkdir -p "$pkgdir"/usr/share/{$pkgname/AddOns,applications,icons/hicolor/256x256/apps}
   
-  #Resources folder is created under /usr/share/oolite move it and create symlink
+  #folders are created under /usr/share/oolite and some of the sourcecode (OBJ-C) will break if another path is used 
+  # move it to stay closer to archlinux package guidelines and create symlink to prevent breakage
   pushd "$pkgdir"/usr/share
   mv oolite/* oolite-git/
   rmdir oolite
@@ -61,7 +62,4 @@ package() {
     <$pkgname/installers/FreeDesktop/space.oolite.Oolite.desktop \
     >"$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
   chmod 644 "$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
-  
-  # debug.oxp
-  cp -r $pkgname/DebugOXP/Debug.oxp "$pkgdir"/usr/share/$pkgname/AddOns/Basic-debug.oxp
 }
