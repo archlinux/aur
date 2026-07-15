@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rebased
+Comment=Standalone Git client based on IntelliJ platform
+Exec=rebased %f
+Icon=rebased
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-rebased
+Categories=Development;IDE;RevisionControl;
+Keywords=git;vcs;jetbrains;
