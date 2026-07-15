@@ -1,7 +1,7 @@
 pkgbase = mangowm
 	pkgdesc = A Wayland compositor with smooth animation
 	pkgver = 0.15.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DreamMaoMao/mangowc
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,9 +9,15 @@ pkgbase = mangowm
 	makedepends = ninja
 	makedepends = wayland-protocols>=1.41
 	depends = glibc
+	depends = libxcb
+	depends = xorg-xwayland
+	depends = libliftoff
+	depends = libdisplay-info
+	depends = seatd
 	depends = pango
-	depends = wayland>=1.23.1
-	depends = libinput>=1.27.1
+	depends = wayland
+	depends = wayland-protocols
+	depends = libinput
 	depends = libdrm
 	depends = pixman
 	depends = libxkbcommon
