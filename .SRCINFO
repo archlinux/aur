@@ -1,0 +1,19 @@
+pkgbase = yay-friend-git
+	pkgdesc = Security-focused wrapper around yay that uses Claude Code to analyze AUR PKGBUILDs for security entropy (git version)
+	pkgver = 0.1.0.r19.gd85b2c1
+	pkgrel = 1
+	url = https://github.com/aaronsb/yay-friend
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.23
+	depends = git
+	depends = yay
+	optdepends = claude-code: default AI provider for security analysis (any `claude` CLI on PATH also works)
+	provides = yay-friend
+	conflicts = yay-friend
+	options = !debug
+	source = yay-friend::git+https://github.com/aaronsb/yay-friend.git
+	sha256sums = SKIP
+
+pkgname = yay-friend-git
