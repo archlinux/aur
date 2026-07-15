@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-next-bin
 	pkgdesc = Upcoming FireDragon v13
-	pkgver = 13.0.0_rc.21
+	pkgver = 13.0.0_rc.22
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	arch = x86_64
@@ -44,14 +44,14 @@ pkgbase = firedragon-catppuccin-next-bin
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = firedragon
 	conflicts = firedragon
-	noextract = firedragon-catppuccin-v13.0.0-rc.21.linux-x64.tar.xz
-	noextract = firedragon-catppuccin-v13.0.0-rc.21.linux-arm64.tar.xz
+	noextract = firedragon-catppuccin-v13.0.0-rc.22.linux-x64.tar.xz
+	noextract = firedragon-catppuccin-v13.0.0-rc.22.linux-arm64.tar.xz
 	options = !emptydirs
-	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.0.0-rc.21
-	sha256sums = c5c206a0713066f6e5810dd274c1a37bc6ad1ca7a9943b4285026d41b7582807
-	source_x86_64 = firedragon-catppuccin-v13.0.0-rc.21.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.21/downloads/firedragon-catppuccin.linux-x64.tar.xz
-	sha256sums_x86_64 = fdd178f88848a0c6d6e4202344908f5ce8287d0ee2232d955a11e766ce045ae7
-	source_aarch64 = firedragon-catppuccin-v13.0.0-rc.21.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.21/downloads/firedragon-catppuccin.linux-arm64.tar.xz
-	sha256sums_aarch64 = b68e5f950e015f4c4a5ccedbd588500fbabceff80534125c3e2579b5e8a0f68c
+	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.0.0-rc.22
+	sha256sums = 7e0a3a2c7a21305d1d929b82a44b4266ac028857c17e08fb8077b530c51e366f
+	source_x86_64 = firedragon-catppuccin-v13.0.0-rc.22.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.22/downloads/firedragon-catppuccin.linux-x64.tar.xz
+	sha256sums_x86_64 = 7fea6a2a16b91a75f6eaa345545821c5511845c73c140a7fc420b27c85277204
+	source_aarch64 = firedragon-catppuccin-v13.0.0-rc.22.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.22/downloads/firedragon-catppuccin.linux-arm64.tar.xz
+	sha256sums_aarch64 = 17a19e3589b38aaf5f23ac1a2b943e0f971595536fcb44efc8eba0d99ed684cd
 
 pkgname = firedragon-catppuccin-next-bin
