@@ -3,22 +3,17 @@ post_install() {
 ==> hhd-steamos-bridge: manual steps required
 
   1. D-Bus policy (mandatory, once). Copy the template and set YOUR username:
-       install -m644 /usr/share/doc/hhd-steamos-bridge/com.steampowered.HhdBridge.conf.example \
+       install -m644 /usr/share/doc/steamos-manager-hhd-bridge/com.steampowered.HhdBridge.conf.example \
            /etc/dbus-1/system.d/com.steampowered.HhdBridge.conf
        $EDITOR /etc/dbus-1/system.d/com.steampowered.HhdBridge.conf
        systemctl reload dbus
 
   2. Enable the user service (as your regular user):
        systemctl --user daemon-reload
-       systemctl --user enable hhd-steamos-bridge.service
+       systemctl --user enable steamos-manager-hhd-bridge.service
        systemctl --user restart steamos-manager
 
   3. Restart the Steam client to make it re-probe available interfaces.
-
-  If you previously installed these files manually, remove the duplicates:
-    /etc/steamos-manager/remotes.d/hhd.toml
-    /etc/systemd/user/hhd-steamos-bridge.service
-  (the package now ships them under /usr).
 MSG
 }
 
