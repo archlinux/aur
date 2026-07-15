@@ -1,6 +1,6 @@
 pkgbase = rv-bin
 	pkgdesc = A declarative R package manager
-	pkgver = 0.22.1
+	pkgver = 0.22.2
 	pkgrel = 1
 	url = https://github.com/a2-ai/rv
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rv-bin
 	depends = glibc
 	conflicts = rv
 	options = !debug
-	source_x86_64 = rv-bin-0.22.1.tar.gz::https://github.com/a2-ai/rv/releases/download/v0.22.1/rv-v0.22.1-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/a2-ai/rv/refs/tags/v0.22.1/LICENSE
-	provides_x86_64 = rv=0.22.1
-	sha256sums_x86_64 = 135a26043d36dd235d53f1b77ddf3c7fef4d0dfd25274bc406b6c6e5739ff6ee
+	source_x86_64 = rv-bin-0.22.2.tar.gz::https://github.com/a2-ai/rv/releases/download/v0.22.2/rv-v0.22.2-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/a2-ai/rv/refs/tags/v0.22.2/LICENSE
+	provides_x86_64 = rv=0.22.2
+	sha256sums_x86_64 = 9805dbad14eb049265c0052635873c9b7891bc7334d445662c13fbad61cb269c
 	sha256sums_x86_64 = 74fe1333138eafb27da61b5066f2f8039448ab87df0ce2d07982629c2195a520
 
 pkgname = rv-bin
