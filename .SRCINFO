@@ -1,6 +1,6 @@
 pkgbase = perl-crypt-openssl-aes
 	pkgdesc = Perl/CPAN Module Crypt::OpenSSL::AES
-	pkgver = 0.21
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://metacpan.org/pod/Crypt::OpenSSL::AES
 	arch = x86_64
@@ -8,10 +8,11 @@ pkgbase = perl-crypt-openssl-aes
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-file-which
+	checkdepends = perl-crypt-urandom
 	depends = openssl
 	depends = perl-crypt-openssl-guess
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Crypt-OpenSSL-AES-0.21.tar.gz
-	sha256sums = 0f699d73703af4e54446295dce395f66b95efc4c6ba45d4c69eff12d668792ee
+	source = https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Crypt-OpenSSL-AES-0.23.tar.gz
+	sha256sums = a70bc89c8d5eabde9b83dec7131b756c247b5c1fb8980f23a42bdd47751d4887
 
 pkgname = perl-crypt-openssl-aes
