@@ -1,0 +1,18 @@
+pkgbase = moon-profile-runner-git
+	pkgdesc = Local daemon that detects the end of Apollo/Moonlight streaming sessions and controls the host display (MoonProfile)
+	pkgver = r62.4a6463e
+	pkgrel = 1
+	url = https://github.com/egionCode/moon_profile
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = moon-profile-runner
+	conflicts = moon-profile-runner
+	source = moon-profile-runner::git+https://github.com/egionCode/moon_profile.git
+	sha256sums = SKIP
+
+pkgname = moon-profile-runner-git
