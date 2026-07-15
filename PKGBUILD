@@ -27,7 +27,7 @@ pkgdesc="BastionGuard - transparent security control plane for Linux desktops"
 arch=('x86_64')
 url="https://bastionguard.eu/"
 license=('GPL-3.0-only')
-# Documentation: https://bastionguard.eu/documentation
+# Documentation: https://bastionguard.eu/documentation/bastionguard-documentation/technical-documentation-application-install/installation-package/
 
 depends=(
   'glibc' 'gcc-libs'
