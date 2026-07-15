@@ -2,7 +2,7 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.15.6
+pkgver=3.15.13
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
@@ -10,14 +10,14 @@ url="https://www.ivpn.net"
 license=('GPL3')
 depends=('glibc' 'lsof' 'openvpn')
 optdepends=('bash-completion')
-makedepends=('make' 'curl' 'go>=1.21' 'git' 'cmake' 'ninja')
+makedepends=('make' 'curl' 'go>=1.26' 'git' 'cmake' 'ninja')
 install="ivpn.install"
 
 # INSTALLATION SOURCES
 
 # Default installation sources
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('6abe8e7fc608582dae4d3a5cd1743f7873ff873ceb7feffde528459e911b96d6')
+sha256sums=('f4416fecd2e49437b1b07bcbf3e856448ae291629ee17e65d97e75e595ad8c62')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
@@ -64,7 +64,7 @@ EOF
 package() {
   cd "$srcdir/$src_prj_dir_name/daemon"
 
-  install -Dm755 -g root -o root References/Linux/scripts/_out_bin/ivpn-service "$pkgdir/usr/bin/ivpn-service"
+  install -Dm755 -g root -o root References/Linux/scripts/_out_bin/amd64/ivpn-service "$pkgdir/usr/bin/ivpn-service"
 
   install -Dm700 -g root -o root References/Linux/etc/client.down "$pkgdir/opt/ivpn/etc/client.down"
   install -Dm700 -g root -o root References/Linux/etc/client.up "$pkgdir/opt/ivpn/etc/client.up"
@@ -74,19 +74,19 @@ package() {
   install -Dm400 -g root -o root References/common/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
   install -Dm400 -g root -o root References/common/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
 
-  install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg-quick "$pkgdir/opt/ivpn/wireguard-tools/wg-quick"
-  install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg "$pkgdir/opt/ivpn/wireguard-tools/wg"
-  install -Dm755 -g root -o root References/Linux/_deps/obfs4proxy_inst/obfs4proxy "$pkgdir/opt/ivpn/obfsproxy/obfs4proxy"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/wireguard-tools_inst/wg-quick "$pkgdir/opt/ivpn/wireguard-tools/wg-quick"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/wireguard-tools_inst/wg "$pkgdir/opt/ivpn/wireguard-tools/wg"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/obfs4proxy_inst/obfs4proxy "$pkgdir/opt/ivpn/obfsproxy/obfs4proxy"
 
-  install -Dm755 -g root -o root References/Linux/_deps/dnscryptproxy_inst/dnscrypt-proxy "$pkgdir/opt/ivpn/dnscrypt-proxy/dnscrypt-proxy"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/dnscryptproxy_inst/dnscrypt-proxy "$pkgdir/opt/ivpn/dnscrypt-proxy/dnscrypt-proxy"
   install -Dm400 -g root -o root References/common/etc/dnscrypt-proxy-template.toml "$pkgdir/opt/ivpn/etc/dnscrypt-proxy-template.toml"
 
-  install -Dm755 -g root -o root References/Linux/_deps/kem-helper/kem-helper-bin/kem-helper "$pkgdir/opt/ivpn/kem/kem-helper"
-  install -Dm755 -g root -o root References/Linux/_deps/v2ray_inst/v2ray "$pkgdir/opt/ivpn/v2ray/v2ray"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/kem-helper/kem-helper-bin/kem-helper "$pkgdir/opt/ivpn/kem/kem-helper"
+  install -Dm755 -g root -o root References/Linux/_deps/amd64/v2ray_inst/v2ray "$pkgdir/opt/ivpn/v2ray/v2ray"
 
   cd "$srcdir/$src_prj_dir_name/cli"
-  install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
-  install -Dm644 References/Linux/_out_bin/ivpn.bash-completion "$pkgdir/usr/share/bash-completion/completions/ivpn"
+  install -Dm755 -g root -o root References/Linux/_out_bin/amd64/ivpn "$pkgdir/usr/bin/ivpn"
+  install -Dm644 References/Linux/_out_bin/amd64/ivpn.bash-completion "$pkgdir/usr/share/bash-completion/completions/ivpn"
   
 
   cd "$srcdir"
