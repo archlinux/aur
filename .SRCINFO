@@ -1,6 +1,6 @@
 pkgbase = sshpilot-bin
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = 5.5.0
+	pkgver = 5.5.1
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = sshpilot-bin
 	provides = sshpilot
 	conflicts = sshpilot
 	options = !strip
-	source = sshpilot_5.5.0.deb::https://github.com/mfat/sshpilot/releases/download/v5.5.0/sshpilot_5.5.0-1_all.deb
-	sha512sums = a3d56389fb63b33a2afcf81c9c1a3f197f0a5348e2b55fa2b453a4be3bab72d9f7c0ab2adc27781d4a199d072b5cb178cecf642507317ea52e85bdf956c0a987
+	source = sshpilot_5.5.1.deb::https://github.com/mfat/sshpilot/releases/download/v5.5.1/sshpilot_5.5.1-1_all.deb
+	sha512sums = 7e1d7edf42157037b2e91f50d7313eb0fe0a5884979e9cbe299fc8bf3f6f6356a8589df5c7db4294e4e5978e8fb42458d5463c1ad2c57c21ede10674d645f42d
 
 pkgname = sshpilot-bin
 	depends = gtk4
