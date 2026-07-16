@@ -9,7 +9,7 @@ license=('MIT')
 provides=('nodewipe')
 conflicts=('nodewipe')
 source=("nodewipe-${pkgver}::https://github.com/KADHIRAVANEG/nodewipe/releases/download/v${pkgver}/nodewipe-linux-x86_64")
-sha256sums=('2f673aab4578e99e0cd35adccc6e6beec1110e92a5a790834d223f9374ca948b')
+sha256sums=('8ead41d56f71221a3bb3b3d1ceb65484a69d557bcce798766497124ccb5c4603')
 
 package() {
     install -Dm755 "${srcdir}/nodewipe-${pkgver}" "${pkgdir}/usr/bin/nodewipe"
