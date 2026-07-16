@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=(
     ${_ggml_sha256sum}
-    2389838195777ef00dce012ef63a52a25dd119880b35e8c811c35f66d3d5b940
+    b5b80ba3647d207a653dee190461b92e3792b0c5c610549d2ef4f48de0ad8565
 )
 
 prepare() {
