@@ -1,0 +1,17 @@
+pkgbase = fasthex-bin
+	pkgdesc = A very fast hex dumper (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = 42ebd65
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fasthex
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	provides = fasthex
+	conflicts = fasthex
+	source = fasthex::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex
+	source = fasthex.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fasthex-bin
