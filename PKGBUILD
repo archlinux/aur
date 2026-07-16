@@ -4,7 +4,7 @@
 
 pkgname=supabase-bin
 pkgver=2.109.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
 url="https://supabase.com/docs/reference/cli/about"
@@ -14,7 +14,7 @@ provides=(supabase)
 conflicts=(supabase)
 options=(!strip)  # breaks Bun packaging
 
-source=(https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/apps/cli-go/LICENSE)
+source=("LICENSE.$pkgver::https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/apps/cli-go/LICENSE")
 sha256sums=("81f7d60afa4316010b1c0df8eb8f0c80b27586a86b72f1bde85e129bfd10d52a")
 
 source_x86_64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
@@ -39,7 +39,8 @@ build() {
 package() {
   cd "$srcdir"
   install -vDm755 supabase "$pkgdir/usr/bin/supabase"
-  install -vDm644 LICENSE "$pkgdir/usr/share/licenses/supabase-bin/LICENSE"
+  install -vDm755 supabase-go "$pkgdir/usr/bin/supabase-go"
+  install -vDm644 "LICENSE.$pkgver" "$pkgdir/usr/share/licenses/supabase-bin/LICENSE"
 
   cd completions
   install -vDm644 supabase.bash "$pkgdir/usr/share/bash-completion/completions/supabase"
