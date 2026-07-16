@@ -2,7 +2,7 @@
 
 pkgname=opa-regal
 _pkgname=regal
-pkgver=0.39.0 # renovate: datasource=github-tags depName=open-policy-agent/regal extractVersion='^v?(?<version>.*)$'
+pkgver=0.42.0 # renovate: datasource=github-tags depName=open-policy-agent/regal extractVersion='^v?(?<version>.*)$'
 pkgrel=1
 pkgdesc="Regal is a linter and language server for Rego"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('go')
 source=(
   "$url/archive/refs/tags/v${pkgver}.zip"
 )
-sha512sums=('0388c7bac88012bf25de39c7a64ce87736b855f5aa6d3f2b65b8aa233a380036c17cd486da56d154e8ca9bf21e37c23c12b901cd539e8194499f72fccc8ff67e')
-b2sums=('333c1a0da0475be53279f5252c133b82f291afab6a72eb75a7248006a86ecd02dd18ebd93504b61dcc657fd0692b85a0095a67daf268b4b529ffa6d7ccde6ec8')
+sha512sums=('f1ceddf88ac08a2949e2fd847015ff1b9d00296ac7186ebbadd00a36c86dfd766a8e497ef9a8ad328139474d8451bcbf0effc4756c9864c297b611bc5d876a53')
+b2sums=('1467acc61a66de1b1d70255441bbfa41a78b2ec6bbf6bc3c4947c854acfbe2ed1de27dc67c018aebfc7bdb7e3942007d69943d7e721e2c2930fa437c523529b8')
 
 prepare() {
   cd ${_pkgname}-${pkgver}

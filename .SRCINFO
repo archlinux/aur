@@ -1,6 +1,6 @@
 pkgbase = opa-regal
 	pkgdesc = Regal is a linter and language server for Rego
-	pkgver = 0.38.1
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/open-policy-agent/regal
 	arch = armv7h
@@ -8,8 +8,8 @@ pkgbase = opa-regal
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = go
-	source = https://github.com/open-policy-agent/regal/archive/refs/tags/v0.38.1.zip
-	sha512sums = 5d6f093b17743d22d0fa65e850f8e55f5b55150d48d66b185af46858977ad7df51f6071ed987a3d4bcbf5e068e6e2735f5cf256f19b61b2fd3fac2a9822e117e
-	b2sums = 2a6f8bef4ec0f77aad7544d83d8b759ab45278fd66edee207073870c08a53b599bbcbbef4c6a2ecbaeaa8d82a015b4822417d2f2c02501086bc1209ec78b9fca
+	source = https://github.com/open-policy-agent/regal/archive/refs/tags/v0.42.0.zip
+	sha512sums = f1ceddf88ac08a2949e2fd847015ff1b9d00296ac7186ebbadd00a36c86dfd766a8e497ef9a8ad328139474d8451bcbf0effc4756c9864c297b611bc5d876a53
+	b2sums = 1467acc61a66de1b1d70255441bbfa41a78b2ec6bbf6bc3c4947c854acfbe2ed1de27dc67c018aebfc7bdb7e3942007d69943d7e721e2c2930fa437c523529b8
 
 pkgname = opa-regal
