@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MMDiff2
-_pkgver=1.36.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Statistical Testing for ChIP-Seq data sets'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-motifdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83873ed5352b3670912842135913094348f57efe25f26dfa05daf555e7afa8b9')
+sha256sums=('4ae5053a48e64d71e61d4898b25cb2bda820f1f67989a2a35a56fdd098ae461b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
