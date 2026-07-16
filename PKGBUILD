@@ -1,10 +1,10 @@
-pkgname=dim-caelestia-cli-git
-_pkgname=caelestia-cli
+pkgname=dim-caelestia-shell-git
+_pkgname=caelestia-shell
 pkgver=r623.20351c6
 pkgrel=1
-pkgdesc="The CLI tool for the Caelestia project (Git development version)"
+pkgdesc="shell"
 arch=('any')
-url="https://github.com/dim-ghub/caelestia-cli"
+url="https://github.com/dim-ghub/caelestia-shell"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
@@ -20,10 +20,10 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  # Insira os comandos de compilação aqui (ex: cargo build, go build, etc.)
+  
 }
 
 package() {
   cd "${_pkgname}"
-  # Insira os comandos de instalação aqui
+  
 }
