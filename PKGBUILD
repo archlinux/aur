@@ -1,6 +1,6 @@
 # Maintainer: SpeeNotPee <heckingmaster666@gmail.com>
 pkgname=pigment-launcher
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Roblox launcher and manager for Linux (drives the Sober runtime)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('flatpak: required to install and run the Sober runtime'
 # GitHub generates this tarball for the tag; it extracts to Pigment-$pkgver/.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SpeeNotPee/Pigment/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('69dffbe3bc300b59f74f67bad0f6bb4645a913669a6f468a9fba11e4b67f39d5')
+sha256sums=('16285a1929825b1f9cf70b492de22fc7ccb781d6a5dfcb868dec356fc6faa938')
 
 prepare() {
   cd "$srcdir/Pigment-$pkgver"

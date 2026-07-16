@@ -1,6 +1,6 @@
 pkgbase = pigment-launcher
 	pkgdesc = Roblox launcher and manager for Linux (drives the Sober runtime)
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/SpeeNotPee/Pigment
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pigment-launcher
 	optdepends = xdg-utils: to set Pigment as the default roblox:// handler
 	optdepends = kdesu: KDE service-cache refresh when changing the handler
 	options = !lto
-	source = pigment-launcher-0.1.2.tar.gz::https://github.com/SpeeNotPee/Pigment/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 69dffbe3bc300b59f74f67bad0f6bb4645a913669a6f468a9fba11e4b67f39d5
+	source = pigment-launcher-0.2.0.tar.gz::https://github.com/SpeeNotPee/Pigment/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 16285a1929825b1f9cf70b492de22fc7ccb781d6a5dfcb868dec356fc6faa938
 
 pkgname = pigment-launcher
