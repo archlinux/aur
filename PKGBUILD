@@ -2,13 +2,13 @@
 
 pkgname=manora-git
 _pkgname="${pkgname%-git}"
-pkgver=2.2.0.r196.e2dad24
+pkgver=2.2.4.r212.ce35f7d
 pkgrel=1
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files (git version)"
 url="https://github.com/Antiz96/manora"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('glibc' 'libgcc' 'man' 'groff' 'xdg-utils')
+depends=('glibc' 'libgcc' 'man' 'groff' 'xdg-utils' 'util-linux')
 makedepends=('cargo' 'git' 'scdoc')
 optdepends=("zathura: fallback PDF reader"
             "zathura-pdf-poppler: PDF support for zathura (poppler backend)"
