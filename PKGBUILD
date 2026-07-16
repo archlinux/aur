@@ -3,8 +3,8 @@
 _pkgname=Eden
 pkgname=eden-nightly-bin
 
-_tagstamp=1783970082
-_buildcommit=9a0e6b3c28
+_tagstamp=1784055937
+_buildcommit=8b8034a2a0
 _upstream_tag="v${_tagstamp}.${_buildcommit}"
 
 pkgver="${_tagstamp}.${_buildcommit}"
@@ -19,7 +19,7 @@ provides=('eden')
 conflicts=('eden')
 _appimage="Eden-Linux-${_buildcommit}-amd64-clang-pgo.AppImage"
 source=("${_appimage}::https://nightly.eden-emu.dev/${_upstream_tag}/${_appimage}")
-sha256sums=('751f9a502d9cdd90f15d65db65cd8db4b50d55af289bc6935757419c22718c4b')
+sha256sums=('b81840b646c7f6f22689e8dc06ef5e519d251e6038ccd65e6200056aa2a67f28')
 
 prepare() {
     chmod +x "${_appimage}"
