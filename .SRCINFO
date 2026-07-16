@@ -1,6 +1,6 @@
 pkgbase = r-schot
 	pkgdesc = single-cell higher order testing
-	pkgver = 1.20.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scHOT
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-schot
 	optdepends = r-scales
 	optdepends = r-scater
 	optdepends = r-scattermore
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scHOT_1.20.1.tar.gz
-	sha256sums = d382418e03c2dd62f666b102bee18ac6530284743814e15e2d48f7ac773e2e74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scHOT_1.24.0.tar.gz
+	sha256sums = dfb746c6a8d5143f5cb43a30d35d4bd7a8a3a6d0318f4ce4852152e308127951
 
 pkgname = r-schot
