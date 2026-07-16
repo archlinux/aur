@@ -1,5 +1,5 @@
 pkgbase = wget2
-	pkgdesc = GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader
+	pkgdesc = GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader(without docs)
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://gitlab.com/gnuwget/wget2

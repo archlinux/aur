@@ -4,7 +4,7 @@ pkgname=wget2
 pkgver=2.2.1
 pkgrel=1
 #pkgdesc="Updated version of the popular wget URL retrieval tool"
-pkgdesc="GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader"
+pkgdesc="GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader(without docs)"
 arch=('x86_64')
 url="https://gitlab.com/gnuwget/wget2"
 license=('GPL-3.0-or-later')
@@ -23,20 +23,14 @@ validpgpkeys=("1CB27DBC98614B2D5841646D08302DB6A2670428")
 build() {
   cd ${pkgname}-${pkgver}
 
-  local PANDOC=no
-  [[ -s /bin/pandoc ]] && PANDOC=yes
-  local DOXYGEN=no
-  [[ -s /bin/doxygen ]] && DOXYGEN=yes
-
   ./configure --prefix=/usr --sysconfdir=/etc \
     --with-openssl=no \
     --with-ssl=gnutls \
     --without-libhsts \
     --without-libidn \
     --without-pcre \
-    --with-bzip2 \
-    --with-docs="$PANDOC" \
-    --with-doxygen="$DOXYGEN"
+    --disable-doc
+
   make
 }
 
