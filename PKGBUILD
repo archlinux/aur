@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=chihaya
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c514f17b2ed2c6544708206be95d14aa')
-b2sums=('a4c077afea475788bf25c0d66521804ea0b9bac8bcffc07fdf9f3855d81657a6c3c49b4fc5fccd4fc865d1a860f20dc74047d1e05bd6f81aba867196532deebd')
+md5sums=('f560aac2fcbfbf634e46d0e30d02b3f8')
+b2sums=('259933037cca323bd28896d348a9a9b933a957829076818e2ecff3ac7e34458389f66d1ae509f7e5fc649e80b89376b4d817096466489d1719b6d2a5f69c37a6')
 
 build() {
   mkdir build
