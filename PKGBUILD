@@ -1,5 +1,5 @@
 pkgname=vigaphone-bin
-pkgver=1.6.0_a
+pkgver=1.6.1
 pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('c43147151ec0a888a81216f9540ea763eb8d98dc4ee69d9d7b3203cb72ebc9df')
+sha256sums=('45f2b456060f7a33d7739c0743841392eab5186ffddb5a31100c8dff1d87bd86')
 
 depends=(
     'alsa-lib'
