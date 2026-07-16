@@ -1,6 +1,6 @@
 pkgbase = wooting-bg-service
 	pkgdesc = Wooting Background Service for Wootility
-	pkgver = 0.4.8
+	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://wooting.io/wootility
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = wooting-bg-service
 	depends = zlib
 	provides = wooting-bg-service
 	conflicts = wooting-bg-service
-	noextract = wooting-bg-service-0.4.8.AppImage
+	noextract = wooting-bg-service-0.5.0.AppImage
 	options = !strip
-	source = wooting-bg-service-0.4.8.AppImage::https://api.wooting.io/public/bg-service/download-installer?target=linux&version=0.4.8
-	sha256sums = b327b3871dcc139c05c4b6dadd6ebe51dacf1740df6f109dd6efbac970abeb32
+	source = wooting-bg-service-0.5.0.AppImage::https://api.wooting.io/public/bg-service/download-installer?target=linux&version=0.5.0
+	sha256sums = 7b9350f6b131766be86d73044037eb9d4d287c80ce775e0011f1fb4a4442e955
 
 pkgname = wooting-bg-service
