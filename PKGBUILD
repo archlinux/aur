@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 _zigwlver=0.6.0
@@ -11,11 +11,13 @@ license=('MIT')
 depends=('wayland' 'river' 'libxkbcommon')
 makedepends=('wayland-protocols' 'zig')
 install=rill.install
-source=(https://codeberg.org/lzj15/rill/archive/"$pkgver".tar.gz
+source=(
+  # Checksums keep failing for the archive so this will do
+  $pkgname-$pkgver::git+$url.git"#tag=${pkgver}"
 	zig-wayland-$_zigwlver.tar.gz::https://github.com/ifreund/zig-wayland/archive/refs/tags/v$_zigwlver.tar.gz
 	zig-xkbcommon-$_xkbver.tar.gz::https://github.com/ifreund/zig-xkbcommon/archive/refs/tags/v$_xkbver.tar.gz
-       )
-sha256sums=('6477efbb83dfed2fe63682c95a68821096e650953175cc37fa516874e3b99f2e'
+)
+sha256sums=('1218228fe2f1a2c9f9055d3cdea81da13ea719ce1e38a56506f02208c38a276b'
             'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
             'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
 optdepends=('alacritty: Default terminal emulator'
