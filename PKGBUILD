@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-smda
-pkgver=4.2.0
+pkgver=4.2.16
 pkgrel=1
 pkgdesc="Recursive diassembler optimized for CFG recovery from memory dumps"
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD-2-Clause)
 depends=(python python-capstone python-dncil python-dnfile lief)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-$pkgver.tar.gz")
-sha256sums=('a3a3ef7999762c3e58fa826fcadf3b03a375672f6f702d01610d8969cec42c82')
+sha256sums=('b526610952740c8a785f947b8cc05f8e4f22768b22e1b5ccbca2050949bd1b10')
 
 build() {
     cd "smda-$pkgver"
