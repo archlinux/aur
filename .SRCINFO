@@ -11,6 +11,6 @@ pkgbase = logseq-appimage
 	source = https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage
 	source = https://github.com/logseq/logseq/raw/2.0.1/LICENSE.md
 	sha256sums = 49de367078b37670febdb987e562b75dee1e1ae96c28bfb8738779c42297dd0c
-	sha256sums = SKIP
+	sha256sums = 2467b8901ba62f7708c479944468a677897472a39ecbda1d23818ecf9538620b
 
 pkgname = logseq-appimage

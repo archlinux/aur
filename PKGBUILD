@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   49de367078b37670febdb987e562b75dee1e1ae96c28bfb8738779c42297dd0c
-  SKIP
+  2467b8901ba62f7708c479944468a677897472a39ecbda1d23818ecf9538620b
 )
 _filename="Logseq-linux-x86_64-${pkgver}.AppImage"
 _squashfs_desktop_file="logseq.desktop"
