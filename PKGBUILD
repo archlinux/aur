@@ -3,8 +3,8 @@
 # Contributor(s): Formal Mind
 # Contributor(s): Heinrich-Heine-University
 
-_major_version='1.13'
-_minor_version='0'
+_major_version='1.15'
+_minor_version='1'
 
 pkgname='prob'
 pkgver=${_major_version}.${_minor_version}
@@ -14,14 +14,13 @@ arch=('x86_64')
 url="https://www3.hhu.de/stups/prob/"
 license=('EPL 1.0')
 depends=('tk>=8.5.0'
-         'tcl>=8.5.0'
-         'java-runtime')
+  'tcl>=8.5.0'
+  'java-runtime')
 optdepends=('graphviz: visualizations'
-            'gv: PostScript visualizations')
+  'gv: PostScript visualizations')
 
 source_x86_64=("http://www3.hhu.de/stups/downloads/prob/tcltk/releases/${_major_version}.${_minor_version}/ProB.linux64.tar.gz")
-md5sums_x86_64=('c2ca46e1b7343948e974a8a8f852bd4e')
-
+md5sums_x86_64=('e269f52ebdca276bd9f57ab7f0d61365')
 
 package() {
   rm ${srcdir}/ProB.linux64.tar.gz
