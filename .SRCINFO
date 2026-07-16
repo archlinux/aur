@@ -1,6 +1,6 @@
 pkgbase = r-shinyepico
 	pkgdesc = ShinyÉPICo
-	pkgver = 1.16.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/shinyepico
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-shinyepico
 	optdepends = r-mcsea
 	optdepends = r-minfidata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinyepico_1.16.0.tar.gz
-	sha256sums = e49ac33defa49da24a27c32b96616c509b0637bc979583823d0e37a0e127f6ce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinyepico_1.20.0.tar.gz
+	sha256sums = 4042d0b485759d1bfaae0d02afa0fa880c0f57036961af02de0d03f2c4744fd3
 
 pkgname = r-shinyepico
