@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidySingleCellExperiment
-_pkgver=1.18.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Brings SingleCellExperiment to the Tidyverse'
 arch=('any')
@@ -50,7 +50,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d5e6ebc97d04369add75bb45c22ba0e1bfbce4c227a8c5226452222668e2cb89')
+sha256sums=('d9d17a1c0f1ab8a2eb7ce4e8c31ad37200069267f992b5f67b9a759862d48120')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
