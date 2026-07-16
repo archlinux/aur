@@ -1,84 +1,56 @@
 # Maintainer: DonutsDelivery <donutsdelivery@users.noreply.github.com>
+# The historical package name is retained so existing AUR users upgrade in place.
 pkgname=localbooru-donut
-pkgver=0.2.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Local image library with automatic AI tagging"
+pkgdesc="Private local image and video library with optional AI tagging"
 arch=('x86_64')
 url="https://github.com/DonutsDelivery/LocalBooru"
 license=('MIT')
-depends=(
-    'electron'
-    'python'
-    'python-pip'
-    'python-fastapi'
-    'python-uvicorn'
-    'python-sqlalchemy'
-    'python-aiosqlite'
-    'python-pillow'
-    'python-pydantic'
-    'python-httpx'
-    'python-watchdog'
-    'python-numpy'
-    'python-opencv'
+depends=('fuse2' 'zlib')
+options=('!strip')
+source=(
+    "localbooru-icon-${pkgver}.png::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v${pkgver}/assets/icon.png"
+    "localbooru-license-${pkgver}::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v${pkgver}/LICENSE"
 )
-makedepends=(
-    'npm'
-    'nodejs'
+source_x86_64=(
+    "LocalBooru-Linux-${pkgver}.AppImage::https://github.com/DonutsDelivery/LocalBooru/releases/download/v${pkgver}/LocalBooru-Linux.AppImage"
 )
-optdepends=(
-    'python-pytorch: For AI tagging and age detection'
-    'python-transformers: For AI models'
+sha256sums=(
+    '1c21d4fc5e5dbf6df38e739d8284e048e0d6be83dc9973c882b6eb69d92fb341'
+    '3306b10d23af40e7666e965b0f0a4ea95b4528ade79ecccee0a3b68e583ab21d'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
-
-build() {
-    cd "LocalBooru-${pkgver}"
-
-    # Build frontend
-    cd frontend
-    npm ci
-    npm run build
-    cd ..
-}
+sha256sums_x86_64=(
+    '6bee3a7e9a0d418b6a58159de49604fc7b53520ef4bc8f35e8caf840a4509c21'
+)
 
 package() {
-    cd "LocalBooru-${pkgver}"
+    install -Dm755 "LocalBooru-Linux-${pkgver}.AppImage" \
+        "${pkgdir}/opt/${pkgname}/LocalBooru.AppImage"
+    install -Dm644 "localbooru-icon-${pkgver}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "localbooru-license-${pkgver}" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    # Install application files
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -r electron "${pkgdir}/opt/${pkgname}/"
-    cp -r frontend/dist "${pkgdir}/opt/${pkgname}/frontend/"
-    cp -r api "${pkgdir}/opt/${pkgname}/"
-    cp -r assets "${pkgdir}/opt/${pkgname}/"
-    cp package.json "${pkgdir}/opt/${pkgname}/"
-
-    # Create tagger directory (models downloaded on first use)
-    install -dm755 "${pkgdir}/opt/${pkgname}/tagger"
-
-    # Install launcher script
     install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
-#!/bin/bash
-exec electron /opt/localbooru-donut "$@"
-EOF
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
+    printf '%s\n' \
+        '#!/bin/sh' \
+        'exec /opt/localbooru-donut/LocalBooru.AppImage "$@"' \
+        > "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-    # Install desktop file
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
-[Desktop Entry]
-Name=LocalBooru
-Comment=Local image library with automatic AI tagging
-Exec=${pkgname}
-Icon=${pkgname}
-Type=Application
-Categories=Graphics;Photography;
-StartupWMClass=LocalBooru
-EOF
-
-    # Install icon
-    install -Dm644 assets/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-
-    # Install license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    printf '%s\n' \
+        '[Desktop Entry]' \
+        'Name=LocalBooru' \
+        'Comment=Private local image and video library' \
+        'Exec=localbooru-donut %f' \
+        'TryExec=localbooru-donut' \
+        'Icon=localbooru-donut' \
+        'Terminal=false' \
+        'Type=Application' \
+        'Categories=Graphics;Photography;' \
+        'StartupWMClass=LocalBooru' \
+        'MimeType=image/jpeg;image/png;image/gif;image/webp;video/mp4;video/x-matroska;video/webm;video/quicktime;' \
+        > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
