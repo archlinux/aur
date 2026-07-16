@@ -1,10 +1,10 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=IlluminaHumanMethylationEPICv2manifest
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Manifest for Illumina's EPIC v2.0 methylation arrays"
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,8 +18,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d9480f6b284efa2a0e5205c1d21659bf')
-b2sums=('e4dad427de1b4cd213fbc4ee7861b92384051bef6a4f7605c4cb319e2c444a7172ad9cc3f5919f177df045523caa01f7d9d8a3ba47d042c1148d35bb30cf22bd')
+md5sums=('a8d085aa52b1237a3d62daf59b350323')
+b2sums=('12c52736f8477657423a527fa5990372754a3ba69056ede784fe1e70872a254a79cbe1683769b2a45e16151dc8a1d3b9af2fee2bc89e53308a78f69ed61ee635')
 
 build() {
   mkdir build
