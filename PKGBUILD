@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-runner
-pkgver=6.27.0
+pkgver=6.28.0
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)
@@ -26,7 +26,7 @@ provides=(krunner)
 conflicts=(krunner)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('96eecff3f5f4bf44dd6103095a29a3a6c37be629de3016ed1def5d4d78fb9f52')
+sha256sums=('075803b0645516069ca6842bf13d4b7509c74a12a6634bbc38482bc599681cd9')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
