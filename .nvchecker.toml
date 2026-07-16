@@ -1,0 +1,5 @@
+[undo-bin]
+source = "github"
+github = "nvrmnd-png/undo"
+use_latest_release = true
+prefix = "v"
