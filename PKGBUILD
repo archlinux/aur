@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LinkHD
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='LinkHD: a versatile framework to explore and integrate heterogeneous data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7818d7c0b2cc6b0b7ad04709dfe94d13479e138de0823322890b2a12c1bd098d')
+sha256sums=('f24fbd4226365470b6d6da75cc7858059ccb5000975ea2f955b6891a52512ffe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
