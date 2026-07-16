@@ -1,0 +1,24 @@
+pkgbase = m-overlay
+	pkgdesc = A gamecube controller input display for use with Dolphin Emulator
+	pkgver = 2.1.8d
+	pkgrel = 1
+	url = https://github.com/bkacjios/m-overlay
+	install = m-overlay.install
+	arch = x86_64
+	license = MIT
+	depends = lua51-sec
+	depends = libcap
+	depends = love>=11.3
+	optdepends = dolphin-emu: For running Gamecube and Wii games with M-Overlay
+	optdepends = slippi-launcher: For running Super Smash Bros. Melee online with M-Overlay
+	noextract = m-overlay-x64-installer.love
+	source = https://github.com/bkacjios/m-overlay/releases/latest/download/m-overlay-x64-installer.love
+	source = LICENSE::https://raw.githubusercontent.com/bkacjios/m-overlay/refs/heads/master/LICENSE
+	source = m-overlay.desktop
+	source = m-overlay.sh
+	sha256sums = f080f25e353bc6c374c3cf2b4fa779cb1288500051af53a8d964cd4d934071f2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = m-overlay

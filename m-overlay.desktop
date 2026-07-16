@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=M-overlay
+Comment=A gamecube controller input display for use with Dolphin Emulator
+Exec=/usr/bin/love /usr/share/m-overlay/m-overlay-x64-installer.love "$@"
+Icon=m-overlay
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;

@@ -1,0 +1,4 @@
+post_install() {
+	#Enables M-Overlay to read the running memory of Dolphin Emulator
+	setcap cap_sys_ptrace=eip /usr/bin/love
+}
