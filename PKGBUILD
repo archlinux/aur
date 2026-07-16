@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ATACseqTFEA
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,6 @@ license=('GPL-3.0-only')
 depends=(
   r-biocgenerics
   r-dplyr
-  r-genomeinfodb
   r-genomicalignments
   r-genomicranges
   r-ggplot2
@@ -24,6 +23,7 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-summarizedexperiment
   r-tfbstools
 )
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ae46bc71037149e2387785f8da442d42')
-b2sums=('17adacd20fe24c68add2823e19a771060309da7f2605b4256617f1daa78341525320d01a4d41b709ebfe4af86571b3702a82fd72567ed09ba38d8030b7394faf')
+md5sums=('043d9e4b57e436f4cc47587f6cd758ae')
+b2sums=('af35d1ef1f589c0c700da7e08f4abff0ff69e81560af31c8c1136d1a4ba264450c8643a0d7f31fef20513cae8180bed144cfe5fca0410ba47f24cbdec064d0bd')
 
 build() {
   mkdir build
