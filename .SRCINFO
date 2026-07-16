@@ -1,1 +1,18 @@
+pkgbase = dsxtool-git
+	pkgdesc = A modular, interactive Linux setup tool powered by fzf (git version)
+	pkgver = 1.7.6.r0.g8e45899
+	pkgrel = 1
+	url = https://github.com/csouzape/dsxtool
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = fzf
+	depends = git
+	depends = sudo
+	provides = dsxtool
+	conflicts = dsxtool
+	source = dsxtool::git+https://github.com/csouzape/dsxtool.git
+	sha256sums = SKIP
 
+pkgname = dsxtool-git
