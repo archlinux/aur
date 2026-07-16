@@ -8,6 +8,7 @@ pkgbase = cider-studio
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = curl
+	makedepends = git
 	depends = sdl2
 	depends = libgl
 	depends = zlib
@@ -15,7 +16,6 @@ pkgbase = cider-studio
 	depends = curl
 	depends = cabextract
 	depends = wine
-	depends = git
 	optdepends = bubblewrap: filesystem sandbox for studio
 
 pkgname = cider-studio
