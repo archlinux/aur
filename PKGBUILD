@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PhIPData
-_pkgver=1.16.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2bde0ef9027db5f773cc4bc315f07d43')
-b2sums=('be38e44ed9f42294e69d6cd8544870d4ff0e332630c987c6bd62229c839735e3c591697a05e11e6be9c42442d3c80d31a895cad1ee667cbca4e107442962fbc0')
+md5sums=('55b79f6c4a6c8b6958b5937c2ba3d831')
+b2sums=('4c4b288663363d359b8a970153031c374c75f9c0e3d382df120dc8edf557a3b6cbbd2d2ff3edc3fdc2aab95ec075b36ea75b9342ea395a8770b780ec2e4f0b51')
 
 build() {
   mkdir build
