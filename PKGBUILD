@@ -1,5 +1,3 @@
-# Maintainer: ahmed-x86 <ahmdasnmr7@gmail.com>
-
 pkgname=shamela-bin
 pkgver=1447.11
 pkgrel=5
@@ -13,8 +11,7 @@ conflicts=('shamela')
 options=('!strip' '!debug')
 install=shamela.install
 
-source=("shamela-linux.tar.xz::https://archive.org/download/shamela_download/shamela-linux-1447.11.tar.xz"
-        "launch.sh"
+source=("launch.sh"
         "shamela.desktop"
         "shamela.install"
         "shamela_icon.png")
@@ -22,31 +19,53 @@ source=("shamela-linux.tar.xz::https://archive.org/download/shamela_download/sha
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
-package() {
+prepare() {
+    exec < /dev/tty
     
-    install -d "${pkgdir}/opt/shamela"
+    echo -n "Do you have the Shamela library archive (shamela-linux.tar.xz) locally? (y/n): "
+    read -r has_local
+    
+    if [[ "$has_local" == "y" || "$has_local" == "Y" ]]; then
+        echo -n "Enter the full path to the archive file: "
+        read -r local_path
+        cp "$local_path" "$srcdir/shamela-linux.tar.xz"
+    else
+        curl -L -o "$srcdir/shamela-linux.tar.xz" "https://archive.org/download/shamela_download/shamela-linux-1447.11.tar.xz"
+    fi
+    
+    tar -xf "$srcdir/shamela-linux.tar.xz" -C "$srcdir/"
+    
+    echo -n "Enter the installation path (Press Enter to choose /opt/shamela): "
+    read -r custom_path
+    
+    if [[ -z "$custom_path" ]]; then
+        custom_path="/opt/shamela"
+    fi
+    
+    echo "$custom_path" > "$srcdir/install_path.txt"
+    
+    sed -i "s|/opt/shamela|$custom_path|g" "$srcdir/shamela.desktop"
+    sed -i "s|/opt/shamela|$custom_path|g" "$srcdir/launch.sh"
+}
+
+package() {
+    _install_path=$(cat "$srcdir/install_path.txt")
+    
+    install -d "${pkgdir}${_install_path}"
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 
+    cp -r "${srcdir}/shamela/"* "${pkgdir}${_install_path}/"
     
-    cp -r "${srcdir}/shamela/"* "${pkgdir}/opt/shamela/"
-
-
-    install -m644 "${srcdir}/shamela_icon.png" "${pkgdir}/opt/shamela/shamela_icon.png" 
-    
-
+    install -m644 "${srcdir}/shamela_icon.png" "${pkgdir}${_install_path}/shamela_icon.png" 
     install -m644 "${srcdir}/shamela_icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/shamela.png"
+    install -m755 "${srcdir}/launch.sh" "${pkgdir}${_install_path}/launch.sh" 
     
-
-    install -m755 "${srcdir}/launch.sh" "${pkgdir}/opt/shamela/launch.sh" 
-    
-
-    ln -s /opt/shamela/launch.sh "${pkgdir}/usr/bin/shamela" 
-    
-
+    ln -s "${_install_path}/launch.sh" "${pkgdir}/usr/bin/shamela" 
     install -m644 "${srcdir}/shamela.desktop" "${pkgdir}/usr/share/applications/shamela.desktop" 
+    
+    echo "${_install_path}" > "${pkgdir}/usr/share/shamela-bin.conf"
 }

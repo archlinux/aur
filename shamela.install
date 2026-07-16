@@ -1,9 +1,8 @@
 post_install() {
-    # ضبط الصلاحيات للمجلد
-    chmod -R 777 /opt/shamela
+    _install_path=$(cat /usr/share/shamela-bin.conf)
     
-    # تحديث كاش الأيقونات وقاعدة بيانات التطبيقات
-    echo "==> Updating icon cache and desktop database..."
+    chmod -R 777 "$_install_path"
+    
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     update-desktop-database -q
 }
@@ -13,12 +12,14 @@ post_upgrade() {
 }
 
 post_remove() {
-    # تنظيف المجلد المتبقي
-    if [ -d "/opt/shamela" ]; then
-        rm -rf "/opt/shamela"
+    _install_path=$(cat /usr/share/shamela-bin.conf)
+    
+    if [ -d "$_install_path" ]; then
+        rm -rf "$_install_path"
     fi
     
-    # تحديث الكاش بعد الحذف لضمان اختفاء الأيقونة
+    rm -f /usr/share/shamela-bin.conf
+    
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     update-desktop-database -q
 }
