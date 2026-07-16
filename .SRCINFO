@@ -1,6 +1,6 @@
 pkgbase = r-hicbricks
 	pkgdesc = Framework for Storing and Accessing Hi-C Data Through HDF Files
-	pkgver = 1.26.0
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCBricks
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-hicbricks
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCBricks_1.26.0.tar.gz
-	sha256sums = 7e8664cb6aecab6445f90896e824567dd791b8da58814489ec7cdefb32b0c93e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCBricks_1.29.0.tar.gz
+	sha256sums = 034a19734d7d15f4c71979a0d54d05c9a3c5e2b228a6dc13e3d9d24bd29f20a8
 
 pkgname = r-hicbricks

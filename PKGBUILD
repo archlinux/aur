@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiCBricks
-_pkgver=1.26.0
+_pkgver=1.29.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='Framework for Storing and Accessing Hi-C Data Through HDF Files'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7e8664cb6aecab6445f90896e824567dd791b8da58814489ec7cdefb32b0c93e')
+sha256sums=('034a19734d7d15f4c71979a0d54d05c9a3c5e2b228a6dc13e3d9d24bd29f20a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
