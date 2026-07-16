@@ -1,6 +1,6 @@
 pkgbase = seanime-git
 	pkgdesc = Open-source media server with a web interface and desktop app for anime and manga.
-	pkgver = v3.9.1.r0.g46d7aec
+	pkgver = v3.10.0.r0.gb0da396
 	pkgrel = 1
 	url = https://seanime.app
 	arch = x86_64

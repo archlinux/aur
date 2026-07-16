@@ -4,7 +4,7 @@ pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=42
-pkgver=v3.9.1.r0.g46d7aec
+pkgver=v3.10.0.r0.gb0da396
 pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
@@ -47,8 +47,9 @@ build() {
     cd "${_pkgname}/seanime-web"
 
     # Mirror the workflow, build order webapp > server > denshi, start with webapp below
+    # By default npm do not allow remote packages to be install add an exception for mpv-prism
 
-    npm ci
+    npm ci --allow-remote=root
     make build-all
 
     # Prepare for the server (go)
@@ -69,6 +70,7 @@ build() {
 
     # https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
     # (cgo) is required for linking and its enabled by default
+    # TODO: debug symbols for GO
 
     # Fail if we have to downlaod (go) from the internet
     export GOTOOLCHAIN=path
@@ -100,7 +102,8 @@ build() {
     electronVer=$(electron$_electronver --version | tail -c +2)
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    npm ci
+    npm ci --allow-remote=root
+    npm run build:main
     npm run sync:mpv-prism -- linux-${_Arch}
     npm exec -- electron-builder build --linux --${_Arch} --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
@@ -121,6 +124,8 @@ package_seanime-denshi-git() {
         'hicolor-icon-theme' 
         "electron$_electronver")
 
+    # TODO: debug symbols nag from mpv-prism
+
     install -Dm644 "app.seanime.seanime_denshi.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm755 "seanime-denshi.sh" "${pkgdir}/usr/bin/${_pkgname}-denshi"
     install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-denshi"
@@ -130,7 +135,7 @@ package_seanime-denshi-git() {
 
     install -Dm644 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgname}-denshi"
     install -Dm755 "dist/linux-unpacked/resources/binaries/seanime-server-linux-${GOARCH}" -t "${pkgdir}/usr/lib/electron$_electronver/resources/binaries"
-    mv -v "native-builds/" "${pkgdir}/usr/lib/electron$_electronver/resources/"
+    cp -r "dist/linux-unpacked/resources/native-builds" "${pkgdir}/usr/lib/electron$_electronver/resources/"
 
     for icon in $(find assets -regex '.*/[0-9]+x[0-9]+\.png' | sort -n); do
     size=$(basename -s .png "$icon")
