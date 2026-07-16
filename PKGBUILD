@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=StructuralVariantAnnotation
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ac4f8f29d045efae1e14f930a08aec4e')
-b2sums=('9b9357760610e4672d5a8b132b82c1a0aac4ed950b8666118e94ea01e28fc9e2ceba119c76f73f7fd14af3644f01ba47428379cd79c8489fd2fb27645e998265')
+md5sums=('af0b4821d3392d8c5d3c6785546292ca')
+b2sums=('3118febf7f4d281227a9a021f8004898d3ab8356721449295ad1ebcac9ab04e4ab5e2e325b4a1ac9236973129a75a2ab58f634316c362d107187def1df91300c')
 
 build() {
   mkdir build
