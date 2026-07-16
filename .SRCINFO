@@ -1,0 +1,15 @@
+pkgbase = kache
+	pkgdesc = Zero-copy, content-addressed build cache for Rust, C/C++ and more
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://kunobi.ninja/docs/kache
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = libgcc
+	options = !lto
+	source = kache-0.10.0.tar.gz::https://github.com/kunobi-ninja/kache/archive/v0.10.0.tar.gz
+	sha256sums = 8e6635f438486a64b64117faa19ed3acc8ee1c575739bf972b0cb0cbe6407df4
+	b2sums = b0d37fb240c74c04933f45f9d1bbde1637d1ede81f28d8862e41a4ff99cb05fc8cf176c046962824ce6e7478843ebad449bcf99a4a6bc5e7d23add3095319539
+
+pkgname = kache
