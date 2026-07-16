@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methrix
-_pkgver=1.22.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Fast and efficient summarization of generic bedGraph files from Bisufite sequencing'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('effd84fbd3d0fd62694dbe76b12538896fc6f939efc29a987322b0fbe332882f')
+sha256sums=('f17bb39c28113766cd24761b7cc79ef094489f669dc2686f5afae60071b3edfe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
