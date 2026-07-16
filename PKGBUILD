@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=drugTargetInteractions
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Drug-Target Interactions'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7ae7a4922384853098a9e89564f3c653e23715d918e86ad3572638a5ce6a2b89')
+sha256sums=('3c4ef199622f04b414648807badb8a677d48df338afd62d07251724c933df0d9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
