@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=aws-nuke-bin
 pkgdesc='Nuke a whole AWS account and delete all its resources.'
-pkgver=3.65.0
+pkgver=3.66.0
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url=https://github.com/ekristen/aws-nuke
@@ -12,9 +12,9 @@ _src="${url}/releases/download/v${pkgver}/aws-nuke-v${pkgver}-linux"
 source_x86_64=("$_src"-amd64.tar.gz)
 source_aarch64=("$_src"-arm64.tar.gz)
 source_armv7h=("$_src"-arm7.tar.gz)
-sha256sums_x86_64=('6b9041ce20f5d667a6982f6acf9f8349a26039622a5b29422efa95e65bbe1265')
-sha256sums_aarch64=('ad101e7fdc4c5329aa57c027ee59074d86aa5149a5b0d8c2596bfc4aead4cb86')
-sha256sums_armv7h=('85ae57ecbadf98d9cac63d7d1482d6f076cae515e56401bda38449a8c0a7b757')
+sha256sums_x86_64=('65a361f164cc5075b7ecd947b355cd6ae19680f9eea32d52cba441d4bf2677f9')
+sha256sums_aarch64=('de6a23b2cd06af8caaa85603531a9229bdc601cbf84557d50cb8269ec1652a4c')
+sha256sums_armv7h=('f3547a46420a5b186c039f889cc47743ef89faa5a3c7ff34571d8f50d3599c67')
 
 package() {
   install -Dm755 "${srcdir}/aws-nuke" -t "$pkgdir"/usr/bin
