@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=regsplice
-_pkgver=1.34.1
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.1
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='L1-regularization based methods for detection of differential splicing'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21489937ae8a84621141fdfaa9180b38c6e7b19560bb67d85f2a77ff885f5b71')
+sha256sums=('98260f57d9c5e00a7b1dd0ad828609c03b8818fc90cdb1ba9b5f1069e9c9bfb1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
