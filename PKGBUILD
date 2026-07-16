@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dobiáš <mail@paveldobias.eu>
 
 pkgname=kf6-kio-ftps
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A port of FTPS kioworker to KDE Frameworks 6.'
 arch=(x86_64)
@@ -22,18 +22,19 @@ makedepends=(
 provides=("${pkgname}" "kio-ftps")
 conflicts=("kio-ftps")
 options=(!debug)
-
+#"https://github.com/efeciftci/${pkgname}/archive/refs/tags/v${pkgver}.zip"
 source=(
-  "https://github.com/efeciftci/${pkgname}/archive/refs/tags/v${pkgver}.zip"
+  "https://github.com/efeciftci/${pkgname}/archive/refs/tags/0.4-1.zip"
 )
 
 sha256sums=(
-  'e49c327243b226d70f1f067247b35c27f511d02c93672104bc4e504efa12befa'
+  '2a99b6b6f48628f3fd1ac1dbea787427d96b02d5a80614a47bf306ab2ecff043'
 )
 
+#-S "${srcdir}/${pkgname}-${pkgver}"
 build() {
   cmake -B "${srcdir}/build" \
-    -S "${srcdir}/${pkgname}-${pkgver}" \
+    -S "${srcdir}/${pkgname}-0.4-1" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON

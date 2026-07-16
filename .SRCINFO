@@ -1,6 +1,6 @@
 pkgbase = kf6-kio-ftps
 	pkgdesc = A port of FTPS kioworker to KDE Frameworks 6.
-	pkgver = 0.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/efeciftci/kf6-kio-ftps
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kf6-kio-ftps
 	provides = kio-ftps
 	conflicts = kio-ftps
 	options = !debug
-	source = https://github.com/efeciftci/kf6-kio-ftps/archive/refs/tags/v0.4.zip
-	sha256sums = e49c327243b226d70f1f067247b35c27f511d02c93672104bc4e504efa12befa
+	source = https://github.com/efeciftci/kf6-kio-ftps/archive/refs/tags/0.4-1.zip
+	sha256sums = 2a99b6b6f48628f3fd1ac1dbea787427d96b02d5a80614a47bf306ab2ecff043
 
 pkgname = kf6-kio-ftps
