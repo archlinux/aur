@@ -1,7 +1,7 @@
 pkgbase = alt-sendme
 	pkgdesc = Peer-to-peer file and folder transfer app without cloud storage
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonyantony300/alt-sendme
 	arch = x86_64
 	arch = aarch64

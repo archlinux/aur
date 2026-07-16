@@ -1,6 +1,6 @@
 pkgname=alt-sendme
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonyantony300/alt-sendme"
@@ -61,23 +61,18 @@ build() {
   export CI=true
   export TAURI_LINUX_AYATANA_APPINDICATOR=1
 
-  env \
-    CC=clang \
-    CXX=clang++ \
-    CC_wasm32_unknown_unknown=clang \
-    CXX_wasm32_unknown_unknown=clang++ \
-    CFLAGS= \
-    CXXFLAGS= \
-    CPPFLAGS= \
-    LDFLAGS= \
-    CFLAGS_wasm32_unknown_unknown="-O2" \
-    CXXFLAGS_wasm32_unknown_unknown="-O2" \
-    pnpm run build:wasm
+  export CC=clang
+  export CXX=clang++
+  export CC_wasm32_unknown_unknown=clang
+  export CXX_wasm32_unknown_unknown=clang++
+  export CFLAGS=
+  export CXXFLAGS=
+  export CPPFLAGS=
+  export LDFLAGS=
+  export CFLAGS_wasm32_unknown_unknown="-O2"
+  export CXXFLAGS_wasm32_unknown_unknown="-O2"
 
-  pnpm run build
-
-  local _tauri_config='{"build":{"beforeBuildCommand":"true"}}'
-  pnpm run tauri build --no-bundle --config "${_tauri_config}"
+  pnpm run tauri build --no-bundle
 }
 
 package() {
