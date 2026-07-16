@@ -10,11 +10,15 @@ arch=('x86_64')
 license=('GPL-3.0-only')
 provides=('astra')
 conflicts=('astra')
-depends=('fuse2')
-makedepends=('npm' 'base-devel' 'python' 'alsa-lib')
+makedepends=('npm' 'python' 'alsa-lib' 'git')
 options=('!strip' '!debug')
 source=("git+$url.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/astra"
+  git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/_/g'
+}
 
 prepare() {
   cd "${srcdir}/astra"
@@ -44,18 +48,19 @@ EOF
 
 build() {
   cd "${srcdir}/astra"
-  npm run build && npx electron-builder --linux --dir
+  npm run build
+  npx electron-builder --linux --dir
 }
 
 package() {
-  basedir="${srcdir}/astra"
+  _basedir="${srcdir}/astra"
 
-  install -Dm644 "${basedir}/LICENSE" "${pkgdir}/usr/share/licenses/astra/LICENSE"
+  install -Dm644 "${_basedir}/LICENSE" "${pkgdir}/usr/share/licenses/astra/LICENSE"
 
   install -d "${pkgdir}/opt/astra"
-  cp -r "${basedir}/dist/linux-unpacked/"* "${pkgdir}/opt/astra/"
+  cp -r "${_basedir}/dist/linux-unpacked/"* "${pkgdir}/opt/astra/"
 
-  install -Dm644 "${basedir}/assets/logo/astra-logo-static.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/astra.svg"
+  install -Dm644 "${_basedir}/assets/logo/astra-logo-static.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/astra.svg"
 
   install -Dm644 "${srcdir}/astra.desktop" "${pkgdir}/usr/share/applications/astra.desktop"
 }
