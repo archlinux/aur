@@ -1,6 +1,6 @@
 pkgbase = r-awst
 	pkgdesc = Asymmetric Within-Sample Transformation
-	pkgver = 1.16.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/awst
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-awst
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/awst_1.16.0.tar.gz
-	sha256sums = d288be2db096a672667b26270a304f2d1b5bab5473ca7d389c03b680cb5bf03a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/awst_1.20.0.tar.gz
+	sha256sums = ea86a7291c9d87fea658f33c98617d982a4917912acad1d00a75b0c989bdefe1
 
 pkgname = r-awst
