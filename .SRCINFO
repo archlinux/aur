@@ -1,6 +1,6 @@
 pkgbase = tuxedo-bin
 	pkgdesc = A fast, keyboard-driven terminal UI for todo.txt
-	pkgver = 2026.6.3
+	pkgver = 2026.7.1
 	pkgrel = 1
 	url = https://github.com/webstonehq/tuxedo
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = tuxedo-bin
 	provides = tuxedo
 	conflicts = tuxedo
 	options = !strip
-	source_x86_64 = tuxedo-x86_64-2026.6.3.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.6.3/tuxedo-v2026.6.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 80528e402857d835bb5dd5c8b3fe687c4342699efcaeae0120ac11b9f6bb0285
-	source_aarch64 = tuxedo-aarch64-2026.6.3.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.6.3/tuxedo-v2026.6.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 80528e402857d835bb5dd5c8b3fe687c4342699efcaeae0120ac11b9f6bb0285
+	source_x86_64 = tuxedo-x86_64-2026.7.1.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.7.1/tuxedo-v2026.7.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 746c70496fd61053a0ef90046bacc891326beefead5b10ca7bf2d17e37eac0c6
+	source_aarch64 = tuxedo-aarch64-2026.7.1.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.7.1/tuxedo-v2026.7.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 746c70496fd61053a0ef90046bacc891326beefead5b10ca7bf2d17e37eac0c6
 
 pkgname = tuxedo-bin
