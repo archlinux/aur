@@ -1,6 +1,6 @@
 pkgbase = r-codex
 	pkgdesc = A Normalization and Copy Number Variation Detection Method for Whole Exome Sequencing
-	pkgver = 1.40.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CODEX
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-codex
 	depends = r-rsamtools
 	depends = r-s4vectors
 	optdepends = r-wes.1kg.wugsc
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CODEX_1.40.0.tar.gz
-	sha256sums = 5f31141a48ced4ba0c2cc18ffb68a9f3c64ec56fbfbc19f44873890a2ecec851
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CODEX_1.44.0.tar.gz
+	sha256sums = ab8e89fd49a1572257cf9fe9630ef573d60f8e660934775b35f03dd227201d89
 
 pkgname = r-codex
