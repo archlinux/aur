@@ -1,0 +1,5 @@
+# Ignore built packages and source extractions
+/pkg/
+/src/
+/*.AppImage
+/*.tar.*

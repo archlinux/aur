@@ -1,0 +1,16 @@
+pkgbase = nuvio-desktop
+	pkgdesc = A modern media hub desktop application (Pre-compiled AppImage)
+	pkgver = 0.1.13_alpha
+	pkgrel = 1
+	url = https://github.com/aelrased/NuvioDesktop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = mpv
+	depends = fuse2
+	depends = zlib
+	provides = nuvio-desktop
+	conflicts = nuvio-desktop
+	source = Nuvio-0.1.13_alpha-x86_64.AppImage::https://github.com/aelrased/NuvioDesktop/releases/download/0.1.13-alpha/Nuvio-0.1.13-alpha-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = nuvio-desktop
