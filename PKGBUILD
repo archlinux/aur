@@ -2,7 +2,7 @@
 
 pkgname=gitte
 _srcname=Gitte
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A GTK4/libadwaita Git client for the GNOME desktop"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=('cargo' 'git' 'meson' 'ninja')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('920f127238638c669b890b9126117fd3f5b763d0e7edf42fa75f39a221088b5a')
+sha256sums=('e529efb71395050dd2e41f29d8e1cac15ced3911008a298e1e62af33c3b32f77')
 
 build() {
 	export CFLAGS+=" -ffat-lto-objects"
