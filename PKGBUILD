@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomAutomorphism
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,12 +17,12 @@ depends=(
   r-doparallel
   r-dplyr
   r-foreach
-  r-genomeinfodb
   r-genomicranges
   r-iranges
   r-matrixstats
   r-numbers
   r-s4vectors
+  r-seqinfo
   r-xvector
 )
 checkdepends=(
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52ceb7627ca1d85ba0fc37a3461b393f')
-b2sums=('967576aea4735f0cf1d50b089db17bacc75f6950f97b142c8a03b37040226c6b79ebad3cd4d967208609968a98504d4a7fe821ff93450dec9bcd27c6ac6c8290')
+md5sums=('3e98576d4b0226d3d737483fe840254f')
+b2sums=('30edea4e504958d2f2556a8844ecf6befd3ba29920127fff5f77436a8df8dcc6384de91a89e75bd276780107ca929c6f149c5ac227baca7deb34378b8ceb13a5')
 
 build() {
   mkdir build
