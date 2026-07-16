@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=EyeTrackVR
+Comment=Open-source, affordable VR eye tracking
+Exec=/opt/eyetrackvr/eyetrackvr
+Icon=/opt/eyetrackvr/_internal/Images/logo.png
+Terminal=false
+Categories=Utility;Game;
+StartupWMClass=eyetrackvr
