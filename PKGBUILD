@@ -1,14 +1,14 @@
 # Maintainer: Kanehekili <kanehekili.media@gmail.com>
 pkgname=audiocut
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="MP3/FLAC/WAV audio cutter"
 url="https://github.com/kanehekili/AudioCut"
 license=('GPL-2.0-or-later')
 depends=('python-pyqt6' 'ffmpeg' 'python-numpy')
 arch=('x86_64' 'aarch64')
-source=(https://github.com/kanehekili/AudioCut/releases/download/V1.0.1/audiocut1.0.1.tar)
-md5sums=(ffb9d225a9372a28a771211534aeb1ac)
+source=(https://github.com/kanehekili/AudioCut/releases/download/V1.0.3/audiocut1.0.3.tar)
+md5sums=(77fd471fc97b18ce7334104474e060ea)
 
 package() {
   cd "${srcdir}/audiocut"
