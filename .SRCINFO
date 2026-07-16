@@ -1,0 +1,14 @@
+pkgbase = chicle
+	pkgdesc = A platform-agnostic command-line tool for managing multiple Git identities
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/permadart/chicle
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	provides = chicle
+	source = chicle-0.0.5.tgz::https://github.com/permadart/chicle/archive/v0.0.5.tar.gz
+	sha256sums = 062c34f897539edd47069fbd09165fd670f0da4868db141f4ac122ad16216edc
+
+pkgname = chicle

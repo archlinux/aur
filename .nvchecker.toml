@@ -1,0 +1,5 @@
+[chicle]
+source = "github"
+github = "permadart/chicle"
+use_latest_release = true
+prefix = "v"
