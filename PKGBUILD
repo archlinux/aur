@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=specify-cli
-pkgver=0.5.0
+pkgver=0.12.16
 pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ license=('MIT')
 depends=(
   'python'
   'python-click'
-  'python-httpx'
   'python-json5'
   'python-packaging'
   'python-pathspec'
@@ -18,7 +17,6 @@ depends=(
   'python-pyyaml'
   'python-readchar'
   'python-rich'
-  'python-truststore'
   'python-typer'
 )
 makedepends=(
@@ -51,7 +49,7 @@ optdepends=(
 )
 options=(!debug)
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('9934ac497f703b8eceef42416c5065ba4a20723d3824eb36b85de893aae2cf28d135e9212a1727abf20ac5e95b2de3a8c8427c03d8999403ad0edf6e18f6f0f0')
+b2sums=('48e482f1a3a7a29bdf80265cd7499cc0bc910e91371d6a17cf7ce234e7ed7bc85e03a96af7bf4035dcf8b14edcbe469bf51e44755f7aee5e9a4a5133306cefa4')
 
 build() {
   cd spec-kit
