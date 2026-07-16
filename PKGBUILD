@@ -5,7 +5,7 @@
 # by CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run-bin
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Universal project task runner (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,7 +17,7 @@ provides=('runner-run')
 conflicts=('runner-run')
 
 # Per-arch release tarballs. Basenames already carry the Rust triple, so
-# each arch downloads to a distinct file — no `name::` rename needed (and
+# each arch downloads to a distinct file, no `name::` rename needed (and
 # none with a literal arch that namcap would flag).
 _url="https://github.com/kjanat/runner/releases/download/v$pkgver/runner-v$pkgver"
 # Arch-independent man pages (one archive for all arches).
@@ -25,10 +25,10 @@ source=("$_url-man.tar.gz")
 source_x86_64=("$_url-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_url-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_url-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums=('afcc14fe831a2e2e5377e0ffdb9b7e6528a468c31680b10593a96939e9995e4e')
-sha256sums_x86_64=('3fa29243a0b3b77acce8c2a3947ada51c87ff5f045a63d81afa7f4ecd7e57bfd')
-sha256sums_aarch64=('d2d66ec3b4fed4353fbf58b0fb977b8542377829c4aa5c5b1d7c10d4714fa4dd')
-sha256sums_armv7h=('cc91d66d2715f00699477655f53af63af8399c9394eaa1972116cf1199b7006f')
+sha256sums=('50eea78a073c4a4bfd9af641f4b93262c2f1cc0b05dc196e09928bc36644308e')
+sha256sums_x86_64=('a3cc841e8910a6c914a7db18fead23f61a1dfd08e71e6caa8b705fce4879e81d')
+sha256sums_aarch64=('e9ca62a9686b0d4737653d7c53b607cc6de681ab8e5b50d23dc9cd93e48f54e2')
+sha256sums_armv7h=('2485d9caa79df3ab86c03868aa52ea413701e582f3065c35898c90a57d16e4f4')
 
 package() {
 	# Archives are flat: runner, run, README.md, LICENSE at the root.
@@ -42,7 +42,7 @@ package() {
 	# `runner` binary baked in via `current_exe()`. Strategy:
 	#   1. Generate the combined stream for each shell.
 	#   2. sed-rewrite the baked $srcdir paths to /usr/bin/{runner,run}.
-	#      Longer match first — `$srcdir/run` is a prefix of `$srcdir/runner`.
+	#      Longer match first, `$srcdir/run` is a prefix of `$srcdir/runner`.
 	#   3. awk-split bash + zsh on their start-of-line boundaries so each
 	#      command gets its own autoload file. Fish stays as one file.
 	local g="$srcdir/_compl"
@@ -62,13 +62,13 @@ package() {
 	install -Dm0644 "$g/run.bash"    "$pkgdir/usr/share/bash-completion/completions/run"
 	install -Dm0644 "$g/_runner"     "$pkgdir/usr/share/zsh/site-functions/_runner"
 	install -Dm0644 "$g/_run"        "$pkgdir/usr/share/zsh/site-functions/_run"
-	# Fish autoloads completion files by command basename — `runner.fish` is
+	# Fish autoloads completion files by command basename; `runner.fish` is
 	# sourced on `runner<TAB>` but never on `run<TAB>`. Install the (identical)
 	# combined stream under both names so each command's first tab works in
 	# a fresh shell, without depending on session order.
 	install -Dm0644 "$g/fish.combined" "$pkgdir/usr/share/fish/vendor_completions.d/runner.fish"
 	install -Dm0644 "$g/fish.combined" "$pkgdir/usr/share/fish/vendor_completions.d/run.fish"
-	# PowerShell has no system autoload dir on Linux — pwsh users dot-source
+	# PowerShell has no system autoload dir on Linux; pwsh users dot-source
 	# this file from their `$PROFILE`:  . /usr/share/runner/runner.ps1
 	install -Dm0644 "$g/runner.ps1" "$pkgdir/usr/share/runner/runner.ps1"
 
