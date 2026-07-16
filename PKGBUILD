@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=singscore
-_pkgver=1.28.1
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Rank-based single-sample gene set scoring method'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56f0155ace1cfe48dcb219631c3eda6fc5e4d1877b9b2bcfafde6e965be95f49')
+sha256sums=('b4ffcbcb215ec99b9c8159bcf47cebba02517ff2c76c6aebabd2d7848298fd5a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
