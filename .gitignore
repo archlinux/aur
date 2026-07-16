@@ -1,0 +1,5 @@
+bedrock-on-linux-git/
+pkg/
+src/
+*.pkg.*
+*.whl
