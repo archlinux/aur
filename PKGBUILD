@@ -1,7 +1,7 @@
 # Maintainer: Dmitry <dimflix.official@gmail.com>
 pkgname=pawlette
 conflicts=('pawlette-git' 'pawlette-git')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Modern theme manager for linux with template engine and dynamic theming"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-uv' 'python-hatchling' 'python-virtualenv' 'git')
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d1f2075deaf27daa52f20e48b1b60a65a03277411bf3b97546b25b145c3a96a1')
+sha256sums=('ab1e950e0d50c96d69893ccf68c33664304dfbc600a81b60212b7ee585244cd1')
 
 prepare() {
   echo "=== Checking for old pawlette version ==="
@@ -67,9 +67,11 @@ EOF
 package() {
   cd "$srcdir/pawlette-$pkgver"
 
+  export UV_PYTHON_PREFERENCE=only-system
+
   # Install virtual environment
   install -d -m755 "$pkgdir/opt/$pkgname"
-  python -m venv "$pkgdir/opt/$pkgname/.venv"
+  /usr/bin/python -m venv "$pkgdir/opt/$pkgname/.venv"
   uv sync --no-dev --frozen --compile-bytecode
 
   # Install application files

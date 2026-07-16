@@ -1,6 +1,6 @@
 pkgbase = pawlette
 	pkgdesc = Modern theme manager for linux with template engine and dynamic theming
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/meowrch/pawlette
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pawlette
 	conflicts = pawlette-git
 	conflicts = pawlette-git
 	options = !debug
-	source = https://github.com/meowrch/pawlette/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = d1f2075deaf27daa52f20e48b1b60a65a03277411bf3b97546b25b145c3a96a1
+	source = https://github.com/meowrch/pawlette/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = ab1e950e0d50c96d69893ccf68c33664304dfbc600a81b60212b7ee585244cd1
 
 pkgname = pawlette
