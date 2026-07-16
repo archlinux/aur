@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNVRanger
-_pkgver=1.24.2
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.2
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Summarization and expression/phenotype association of CNV ranges'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bca744ac8c7427280a786c90f9acedc32fb1502674df02d3efd722171f697ad3')
+sha256sums=('79651c2c4dc1d688b9dafe037b5d23f740531e5e5ac1ed52892832ae6723c806')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
