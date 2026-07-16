@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rbec
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Rbec: a tool for analysis of amplicon sequencing data from synthetic microbial communities'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d4382c6ec3f39245551abf663cb440831464a5238a8be9cbe2b2579c95f1e72')
+sha256sums=('f5c620bf7fd6e0b539be7e0e460b075d52cd41bec54bfd97836b52e6b4ad51a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
