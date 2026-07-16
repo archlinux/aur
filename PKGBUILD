@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phantasusLite
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3a532310f618a1576993bcc86287becc')
-b2sums=('b6135165a6dfe29aa81289ba856c3b6c1b8c1c9514a72a8b2e59a048a1df46e53af03bf06bef0703004a1736db5c705ce4c4173791d1374a20290c9be8e44e61')
+md5sums=('b3a578c9da8f8f9944a3a0ee100c371d')
+b2sums=('8d9315f4cbb2e5d7605f4c845e8758be5c79546511320e449e73a57da3b216a6e73d70c98530a58106428b1ab011aa961ef90ce40b2a2b1e1d891ef3b4f9cfbb')
 
 build() {
   mkdir build
