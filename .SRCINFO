@@ -1,0 +1,15 @@
+pkgbase = waytime
+	pkgdesc = Per-app and per-website screen time tracker for KDE Plasma on Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ieatfood314/waytime
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = kwin
+	source = waytime-0.1.0.tar.gz::https://github.com/ieatfood314/waytime/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 091ba7a118bbbbc1ff4c86434ac8b5fbb58769c5fd005dd42ffa1594b23f15e0
+
+pkgname = waytime
