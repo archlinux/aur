@@ -8,9 +8,11 @@ arch=('any')
 url="https://gitea.osmocom.org/fixeria/sedbgmux"
 license=('GPL-3.0-or-later')
 depends=('python-construct'
+         'python-cryptography'
          'python-pyserial'
          'python-cmd2')
-optdepends=('python-pyshark: btpcap dump format support')
+optdepends=('python-pyshark: btpcap dump format support'
+            'python-scapy: cdcpcap dump format support')
 makedepends=('git'
              'python-build'
              'python-installer'
