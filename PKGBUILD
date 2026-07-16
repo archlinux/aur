@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=easylift
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('69e19649fd61a038a6aa745bec5b13ec')
-b2sums=('e1810ef68362d94c77ccdf7969eca77b03ca633115ff5da1dba243006a3c632426df478d2045e8fabb5ccdaa992aadae5e8015861c4e24a343a9dd0468e2367b')
+md5sums=('452a62c94c882f655ae7bc9e76eb7092')
+b2sums=('50596eb8688573718bf56499309004494b413e58995f705904e6eb928e56f0cec680b050139cc1c669ee8a03d3522f3ad57b7508c644b94d3bbf87c2c7ee1078')
 
 build() {
   mkdir build
