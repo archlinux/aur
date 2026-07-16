@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PAA
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='PAA (Protein Array Analyzer)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('63f60f4d86082d11302ca1d3008449b165c302a7c3bace17754cbee029c32b0f')
+sha256sums=('78ead2a367155bc47d740c8f6712142223a2fb2cd53bb38148cb505223f7cfba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
