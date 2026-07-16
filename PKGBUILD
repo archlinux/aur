@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5
-_pkgver=2.54.1
+_pkgver=2.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,10 +10,10 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
-  curl
-  openssl
   r-rhdf5filters
   r-rhdf5lib
+  curl
+  openssl
   zlib
 )
 optdepends=(
@@ -21,16 +21,17 @@ optdepends=(
   r-biocparallel
   r-biocstyle
   r-bit64
+  r-curl
   r-dplyr
   r-ggplot2
   r-knitr
-  r-mockery
   r-rmarkdown
   r-testthat
+  r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8119f8297280f843c28d84afbeacd5d9')
-b2sums=('d2b065782e1806070106c987f53362192ee669e4a4cc558cde31e053f5f5fb211d1f1950564b4ae0c2fde4ff5aecd7f22dd710fe0784550f41c30f9c714e66da')
+md5sums=('17fc17865826726bf9563b9820299ee1')
+b2sums=('eba413062c3bf516b2cf8da8e56b2b337250b0e67982e9b8b37bb11e5ecd4ff4c6c70056cf67688417241a1fb58b680438edccd4f2b672f037173e74c53bc3e7')
 
 build() {
   mkdir build
