@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=podkat
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Position-Dependent Kernel Association Test'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9c3007f264de780bb088ec1d1b2e9d640f046e20453b08d9f6eb4ca36536e46d')
+sha256sums=('b70b832759870499dea9e19293387ad56b5995d431beef6e895bf0f7827b5fe3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
