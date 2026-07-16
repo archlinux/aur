@@ -1,6 +1,6 @@
 pkgbase = r-minfi
 	pkgdesc = Analyze Illumina Infinium DNA methylation arrays
-	pkgver = 1.54.1
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/minfi
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-minfi
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/minfi_1.54.1.tar.gz
-	sha256sums = 39881e5e7e37f945ea012454b03197ec95db421013a2551fb79e4aac421a57a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/minfi_1.58.0.tar.gz
+	sha256sums = 9acd28199fc1dc92891c9ff8adee0b952bcd4d4183e371aabe8d660361b36052
 
 pkgname = r-minfi
