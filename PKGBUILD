@@ -3,14 +3,14 @@
 
 pkgname=manora-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files (bin version)"
 url="https://github.com/Antiz96/manora"
 _raw_url="https://raw.githubusercontent.com/Antiz96/manora"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('man' 'groff' 'xdg-utils')
+depends=('man' 'groff' 'xdg-utils' 'util-linux')
 makedepends=('scdoc')
 optdepends=("zathura: fallback PDF reader"
             "zathura-pdf-poppler: PDF support for zathura (poppler backend)"
@@ -27,9 +27,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver
 sha256sums=('513e952b835fbfa53afb6d38e3fd13632cd497d930510586dd903eb39927d6f8'
             '4d69bf24b06648b4f22232ecaa64f43a688dc3c3baa9036b076edb50eb7ba881'
             '5da5f43e58cf2eedc3d320620b82d744d0056160e0090bf0919148d8b77c3744'
-            'f6216b0de75edc339386ed2ca7097960f2990997942507a6b6e50fe082c6f66d'
-            'e2d15fb1f4f80ee5f28a27d653701fb8398638466d9057b9a8f7925258fcd599')
-sha256sums_x86_64=('ae497a141f1980adaf89af3754434ebf14d1e68ddbe006ebccbc5486916fe951')
+            '6ba06463a863822a5e91531aa39123108f0fd7aa30bd31e6e707c09031e42aa3'
+            '45b72276d32a63c2df3696ba169f2cfe9c3f8c0f35c7fdcea26e124fbe75959c')
+sha256sums_x86_64=('faf11ab5b1283795b11b493fb864e51d8d97b239f4727a1a6c3388bc7687dd3c')
 
 build() {
        scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
