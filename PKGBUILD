@@ -5,7 +5,7 @@
 
 pkgname=prisma-access-browser-bin
 _pkgname=prisma-access-browser
-pkgver=149.26.3.156
+pkgver=150.49.4.125
 pkgrel=1
 pkgdesc="Prisma Access Browser - the secure enterprise browser by Palo Alto Networks"
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=("$_pkgname")
 options=('!emptydirs' '!strip')
 _channel=stable
 source=("https://updates.talon-sec.com/linux/${_pkgname}/deb/pool/stable/main/${_pkgname}-${_channel}_${pkgver}-1_amd64.deb")
-sha256sums=('2873743769f0b82aa87ed1747e1bd215febb49e57b55833461ff921fc69795a1')
+sha256sums=('118b0c893c0efb7e9d18007c26157f781b129df21a21ed5b2826801a0798f35b')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
