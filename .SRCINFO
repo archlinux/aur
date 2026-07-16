@@ -1,6 +1,6 @@
 pkgbase = r-proda
 	pkgdesc = Differential Abundance Analysis of Label-Free Mass Spectrometry Data
-	pkgver = 1.22.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/proDA
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-proda
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/proDA_1.22.1.tar.gz
-	sha256sums = 35574d5fada23b52194529352a90a2338baa99b576dffd8d43d2c61ce544b331
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/proDA_1.26.0.tar.gz
+	sha256sums = 1983e2eeec0da2a08bc4483c728f1b066a2fec64973fec2fdef6a2f42dad613b
 
 pkgname = r-proda
