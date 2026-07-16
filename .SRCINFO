@@ -1,10 +1,13 @@
-pkgbase = cider-studio
-	pkgdesc = run & control roblox studio advancedly on linux (pre-built binary)
+pkgbase = cider
+	pkgdesc = run & control roblox studio advancedly on linux
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://ifwerez.ru/git/rez/cider
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = curl
 	depends = sdl2
 	depends = libgl
 	depends = zlib
@@ -12,8 +15,7 @@ pkgbase = cider-studio
 	depends = curl
 	depends = cabextract
 	depends = wine
-	source = https://ifwerez.ru/git/rez/cider/releases/download/1.8.0/cider-1.8.0-linux-x86_64
-	source = cider.png::https://ifwerez.ru/git/rez/cider/raw/branch/main/src/resources/cider.png
-	sha256sums = SKIP
+	depends = git
+	optdepends = bubblewrap: filesystem sandbox for studio
 
-pkgname = cider-studio
+pkgname = cider

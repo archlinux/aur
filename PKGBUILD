@@ -1,23 +1,30 @@
 # Maintainer: rez <rez@ifwerez.ru>
-# Alternative PKGBUILD — downloads pre-built binary instead of compiling.
-# Usage: makepkg -sf --file PKGBUILD-bin
-# (Or rename to PKGBUILD and use makepkg -si directly.)
-pkgname=cider-studio
+pkgname=cider
 pkgver=1.8.0
 pkgrel=1
-pkgdesc="run & control roblox studio advancedly on linux (pre-built binary)"
+pkgdesc="run & control roblox studio advancedly on linux"
 arch=('x86_64')
 url="https://ifwerez.ru/git/rez/cider"
 license=('MIT')
-depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
-source=("${url}/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
-        "cider.png::${url}/raw/branch/main/src/resources/cider.png")
-sha256sums=('SKIP')
+depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine' 'git')
+makedepends=('cmake' 'gcc' 'curl')
+optdepends=('bubblewrap: filesystem sandbox for studio')
+source=()
+sha256sums=()
+
+build() {
+    rm -rf src
+    git -c advice.detachedHead=false clone --branch "${pkgver}" --depth 1 "${url}.git" src
+    cd src
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build -j"$(nproc)"
+}
 
 package() {
-    install -Dm755 "cider-${pkgver}-linux-x86_64" "${pkgdir}/usr/bin/cider"
+    cd src
+    install -Dm755 build/cider "${pkgdir}/usr/bin/cider"
 
-    install -Dm644 cider.png \
+    install -Dm644 src/resources/cider.png \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cider.png"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/cider.desktop" <<EOF
