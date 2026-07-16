@@ -1,0 +1,23 @@
+pkgbase = python-jupyterhub-dockerspawner
+	pkgdesc = Spawns JupyterHub single user servers in Docker containers
+	pkgver = 14.0.0
+	pkgrel = 1
+	url = https://github.com/jupyterhub/dockerspawner
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-psutil
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-tornado
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = docker
+	depends = jupyterhub>4
+	depends = python-docker
+	depends = python-escapism
+	source = dockerspawner-14.0.0.tar.gz::https://github.com/jupyterhub/dockerspawner/archive/14.0.0.tar.gz
+	b2sums = 5d4b07677b1a4622e4da86ac518f81beaa0254ff81bcb719f2ff69b49a4102e3fde97ebf7527eb53d23c140f30f2987e5ead898ede83abb0bdd1c03efe79a555
+
+pkgname = python-jupyterhub-dockerspawner
