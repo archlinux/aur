@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=plyinteractions
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,13 +12,13 @@ license=('Artistic-2.0')
 depends=(
   r-biocgenerics
   r-dplyr
-  r-genomeinfodb
   r-genomicranges
   r-interactionset
   r-iranges
   r-plyranges
   r-rlang
   r-s4vectors
+  r-seqinfo
   r-tibble
   r-tidyselect
 )
@@ -31,6 +31,7 @@ optdepends=(
   r-biostrings
   r-bsgenome.mmusculus.ucsc.mm10
   r-covr
+  r-genomeinfodb
   r-hicontactsdata
   r-knitr
   r-refmanager
@@ -42,8 +43,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2b717f95be19fe69ba157a7030c94729')
-b2sums=('2796ede79888f3081d437602afc7417d65e8527f7ae6c24a052529f072ed59c738086d0d94831e66347512166fd5529410edff75ce84a1cc52a53bcd5372d02d')
+md5sums=('234654b3e83c4b6b4b96147a94379726')
+b2sums=('9e19798be1dbb727daae7fdaa90ecdb1c9a2083005cbf6433c3c748b7c820a3df9f77500269e263c9e75f230d35b4b35f1355d0d2ce4554c5ac408ba4f291ea5')
 
 build() {
   mkdir build
