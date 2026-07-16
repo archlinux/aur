@@ -1,7 +1,7 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=arbit-bin
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor"
 arch=('x86_64')
 url="https://donutsdelivery.online/donutstudio"
@@ -23,34 +23,48 @@ optdepends=(
   'xdg-utils: desktop integration helpers'
 )
 options=('!strip')
+provides=('arbit' 'donutstudio')
+conflicts=('donutstudio-bin')
 install="${pkgname}.install"
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('5d2aa976e07586de1fdb63075c132851d05db7e2faca0a832930e85c11f17c5e')
+sha256sums=('45d38e9990e90d0991b98ac6e98fc2c8c0187c74b7136bbbffb33d42a4fe1957')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
-  cp -a "${srcdir}/Arbit" "${pkgdir}/opt/arbit/"
+  install -Dm755 "${srcdir}/DonutStudio" "${pkgdir}/opt/arbit/DonutStudio"
+  install -Dm755 "${srcdir}/DonutStudio Updater" "${pkgdir}/opt/arbit/DonutStudio Updater"
+  install -Dm755 "${srcdir}/ArbitPluginHost" "${pkgdir}/opt/arbit/ArbitPluginHost"
+  install -Dm755 "${srcdir}/ArbitPluginScanner" "${pkgdir}/opt/arbit/ArbitPluginScanner"
   cp -a "${srcdir}/Soundfonts" "${pkgdir}/opt/arbit/"
-  install -Dm644 "${srcdir}/ArbitIcon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/arbit.svg"
+  cp -a "${srcdir}/video-helper" "${pkgdir}/opt/arbit/"
+  for content_dir in shader-packs mod-presets example-projects; do
+    cp -a "${srcdir}/${content_dir}" "${pkgdir}/opt/arbit/"
+  done
+  install -Dm644 "${srcdir}/DonutStudio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/arbit.svg"
 
   install -dm755 "${pkgdir}/usr/lib/clap"
-  install -Dm644 "${srcdir}/Arbit.clap" "${pkgdir}/usr/lib/clap/Arbit.clap"
+  install -Dm755 "${srcdir}/DonutStudio.clap" "${pkgdir}/usr/lib/clap/DonutStudio.clap"
 
   install -dm755 "${pkgdir}/usr/lib/vst3"
-  cp -a "${srcdir}/Arbit.vst3" "${pkgdir}/usr/lib/vst3/"
+  cp -a "${srcdir}/DonutStudio.vst3" "${pkgdir}/usr/lib/vst3/"
 
   find "${pkgdir}/opt/arbit" -type d -exec chmod 755 {} +
   find "${pkgdir}/opt/arbit" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/opt/arbit/Arbit"
+  chmod 755 "${pkgdir}/opt/arbit/DonutStudio"
+  chmod 755 "${pkgdir}/opt/arbit/DonutStudio Updater"
+  chmod 755 "${pkgdir}/opt/arbit/ArbitPluginHost"
+  chmod 755 "${pkgdir}/opt/arbit/ArbitPluginScanner"
+  chmod 755 "${pkgdir}/opt/arbit/video-helper/arbit-video-helper"
 
-  find "${pkgdir}/usr/lib/vst3/Arbit.vst3" -type d -exec chmod 755 {} +
-  find "${pkgdir}/usr/lib/vst3/Arbit.vst3" -type f -exec chmod 644 {} +
-  find "${pkgdir}/usr/lib/vst3/Arbit.vst3" -name '*.so' -exec chmod 755 {} +
+  find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -type d -exec chmod 755 {} +
+  find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -type f -exec chmod 644 {} +
+  find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -name '*.so' -exec chmod 755 {} +
 
-  install -Dm644 "${srcdir}/PureHarmony.control.js" "${pkgdir}/usr/share/arbit/PureHarmony.control.js"
+  install -Dm644 "${srcdir}/DonutStudio.control.js" "${pkgdir}/usr/share/arbit/DonutStudio.control.js"
+  install -Dm644 "${srcdir}/THIRD_PARTY_LICENSES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_LICENSES.md"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/arbit/Arbit "${pkgdir}/usr/bin/arbit"
+  ln -s /opt/arbit/DonutStudio "${pkgdir}/usr/bin/arbit"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/arbit.desktop" <<'EOF'
 [Desktop Entry]
