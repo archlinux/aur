@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=jubler-bin
-pkgver=9.0.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='A tool to edit text-based subtitles.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme')
 options=(!strip)
 #conflicts=('')
 source=( "${_appimage}::https://github.com/teras/Jubler/releases/download/v${pkgver}/Jubler-${pkgver}-x86_64.AppImage")
-sha256sums=('b10684d930479069f500ae3b4870ffe8319bcf335720d2a2551932442f70b093')
+sha256sums=('513d9cde8346f2592455eb14b257df98bcf406fefbecb87157acc995f7d54289')
 
 prepare() {
     chmod +x ${_appimage}
