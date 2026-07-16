@@ -11,7 +11,7 @@ optdepends=('pipewire-alsa: audio output on PipeWire systems'
   'pulseaudio-alsa: audio output on PulseAudio systems')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('076334e70500b62fcc069d926686a1fa080c489ad580bdfdda912cc00946afb0')
+sha256sums=('fcabbbb8ba35fd7a9054fb10417c87ac4561fca377b9d6e98f7f6c1770cfe664')
 
 build() {
     cd "${pkgname}-${pkgver}"
