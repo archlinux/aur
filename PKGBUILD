@@ -15,8 +15,7 @@ optdepends=('python-pyshark: btpcap dump format support'
             'python-scapy: cdcpcap dump format support')
 makedepends=('git'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/fixeria/sedbgmux.git")
 sha256sums=('SKIP')
