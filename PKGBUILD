@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=ez2lazer
-pkgver=2026.712.0
+pkgver=2026.716.0
 pkgrel=1
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=("Ez2Lazer-${pkgver}.tar.gz::https://github.com/SK-la/Ez2Lazer/archive/${
   'ez2lazer.desktop'
   'ez2lazer-uri-handler.desktop'
   'ez2lazer')
-sha256sums=('ed79376e2fff6b26093315f6720b0b5174e2742cd87ccec7d86f7575d715d42c'
+sha256sums=('ba633b763b049d6573c0619201b09491297c8b8b7bee4e2afcfc2d5d5bc9ed2b'
             'ae382d6f50b8a767ccb30f49925020b610805f5403b7a99cd331a4f7b720e8ac'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'c59ce9a6c90cfafb97c6a8f5f01c7a95191565c7169603c40fa785fc01e0b557'
