@@ -1,6 +1,6 @@
 pkgbase = r-slingshot
 	pkgdesc = Tools for ordering single-cell sequencing
-	pkgver = 2.16.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/slingshot
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-slingshot
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/slingshot_2.16.0.tar.gz
-	sha256sums = f5e1ad6b2d1211ea9cdf43b35d315f58fbf078f95da320282b86eb565acd499f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/slingshot_2.20.0.tar.gz
+	sha256sums = 5fe183e9404215e917385c142fb552f015ae3321ca6ef02986b63237758920c7
 
 pkgname = r-slingshot
