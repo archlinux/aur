@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNEr
-_pkgver=1.42.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,6 +29,7 @@ depends=(
   r-rsqlite
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-xvector
 )
 optdepends=(
@@ -44,8 +45,8 @@ optdepends=(
   r-txdb.drerio.ucsc.danrer10.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9eeb740891291deab2ec013e894d6cdc')
-b2sums=('a0f116edefca65479d1ba8a13e47ba46f885570631a29edada25e22b42e614b220b1801564be399bbc32bed057964796ce985cae406f2e87dedf7383e1f4500b')
+md5sums=('2d1b5e22415790430a213ccaea172277')
+b2sums=('96b6247fb3ca75b9d4ac98990cb818ad3443b59345931335206dbf87509810d99de69241921ef38295292e1ccef2449fb87370a43cf6cb4b5fb12da8212bf3d0')
 
 build() {
   mkdir build
