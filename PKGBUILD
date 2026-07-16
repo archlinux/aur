@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpliceWiz
-_pkgver=1.8.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,9 +25,11 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-ggplot2
+  r-h5mread
   r-hdf5array
   r-heatmaply
   r-htmltools
+  r-httr
   r-iranges
   r-magrittr
   r-matrixstats
@@ -54,7 +56,6 @@ depends=(
   r-stringi
   r-summarizedexperiment
   zlib
-  r-httr
 )
 makedepends=(
   r-rcppprogress
@@ -80,9 +81,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "link-zlib.patch")
-md5sums=('610351969ab7832e2ab4fae3aa691736'
+md5sums=('e7701b381610071592c179523423e10c'
          '6d95a56e1b05ba50e118ddbbee00f1cf')
-b2sums=('f4cbe176182a3ad2f89a37affc15ea078d45ffccc40b4922d2bc0df5df410a7b34b9b8f141e15a334601758a9dddc662ca34deda5c4fd26891da2521fa1d5512'
+b2sums=('194198f3804a7b7cff56d848eae8403a749592cf256c6e778e4bc1c51195fffe8628b6b07d354c14dad896ab304877d247431d54338c7c1a3b011672cb1f5081'
         'c81190033eaba3e11043f9eb9ab2e0275b37a40ba6d5ad821a37560c74f3dc65a0fe3e0e9c4825fcc23e6bd9a7084ff0ba144daa6ef7b564517e4af2b4471362')
 
 prepare() {
