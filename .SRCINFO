@@ -1,0 +1,13 @@
+pkgbase = denokv-bin
+	pkgdesc = A self-hosted backend for Deno KV, the JavaScript first key-value database
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://deno.com/kv
+	arch = x86_64
+	license = MIT
+	provides = denokv
+	conflicts = denokv
+	source = denokv-0.14.0.zip::https://github.com/denoland/denokv/releases/download/0.14.0/denokv-x86_64-unknown-linux-gnu.zip
+	b2sums = 3daca9bb09fd1a2728934c4d38500c4ec3a718f1616158ef89d8bcf2eeb2e5c1490e4d9d3331572f01a00980be6681b10de98c0bac35fc3a5dc28a22c58a5eee
+
+pkgname = denokv-bin
