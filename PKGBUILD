@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MotifDb
-_pkgver=1.50.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='An Annotated Collection of Protein-DNA Binding Sequence Motifs'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-seqlogo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46a0077fe0966cd6359851888fd169a9f020fc4992c987e115ed306e5e81f1c4')
+sha256sums=('5cc3906dadb8363cbde1a5a2ee20a1f0ea8c6cd1e2f591384e14e4acb5b47b4e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
