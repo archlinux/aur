@@ -10,11 +10,11 @@
 +endif()
  
  if (GGML_STANDALONE)
++    if (NOT GGML_USE_SYSTEM_BASE)
      configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ggml.pc.in
          ${CMAKE_CURRENT_BINARY_DIR}/ggml.pc
          @ONLY)
  
-+    if (NOT GGML_USE_SYSTEM_BASE)
      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ggml.pc
          DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 +    endif()
