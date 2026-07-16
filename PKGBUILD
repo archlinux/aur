@@ -1,7 +1,7 @@
 # Maintainer: quantulr <quantulr at gmail dot com>
 
 pkgname=rustfs-bin
-pkgver=1.0.0_beta.8
+pkgver=1.0.0_beta.9
 pkgrel=1
 pkgdesc="🚀 High-performance distributed object storage for MinIO alternative."
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("rustfs-${pkgver//_/-}-x86_64.zip::https://github.com/rustfs/rust
 source_aarch64=("rustfs-${pkgver//_/-}-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/${pkgver//_/-}/rustfs-linux-aarch64-musl-v${pkgver//_/-}.zip")
 sha256sums=('9e05f7cf55881318759f3850b6a9202fd8f89cb589f9973598ea1377836b4303'
             'a8fbeca6f2bd3a54cba5c029804a6df8ccbaaadfc51e758266b7385db7b74eb5')
-sha256sums_x86_64=('8175fc82f23ec4ae42bc285c321f87f3fe1763d201c01537cb8e80acfa72aeaf')
-sha256sums_aarch64=('7003f45070ec634f85c21e3c46dcff4d25de22dd3af3f3a4a1ddbd1cea89502b')
+sha256sums_x86_64=('244e1fe098456938627f5cebbeed76033c7c862fec4dc52c386e4577a7edca39')
+sha256sums_aarch64=('2b863c36d31ed1ed8708108f92a0f59d510d2a213b64d02ca5310577afb1c7c5')
 
 package() {
 	cd "${srcdir}"
