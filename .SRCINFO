@@ -1,7 +1,7 @@
 pkgbase = rocm-bin-extras
-	pkgdesc = ROCm Core SDK and TheRock Build System - Extras
+	pkgdesc = ROCm Core SDK - Extras (MIGraphX)
 	pkgver = 7.14.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64

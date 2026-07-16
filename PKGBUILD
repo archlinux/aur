@@ -2,9 +2,9 @@
 
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-bin-extras
-pkgdesc="ROCm Core SDK and TheRock Build System - Extras"
+pkgdesc="ROCm Core SDK - Extras (MIGraphX)"
 pkgver=7.14.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
