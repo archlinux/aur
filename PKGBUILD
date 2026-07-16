@@ -2,7 +2,7 @@
 # Contributor: RAprogramm <andrey.rozanov.vl@gmail.com>
 
 pkgname=twc-rs
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(glibc libgcc libgcc_s.so)
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a6e675b812363adde30559d17c47ae23536c5435e7f5403a9ce180f5f36b96a9')
+sha256sums=('df8e87670e6b26b5a9186bd6c2de7486c99e6c53c1af3b3e1cfbb3467cc8654f')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
