@@ -2,7 +2,7 @@
 # Maintainer: Sakshham Bhagat <sakshhamtg@gmail.com>
 
 pkgname='adbt-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A modern, keyboard-driven Android Debug Bridge TUI.'
 url='https://github.com/SakshhamTheCoder/adbt'
@@ -12,10 +12,10 @@ provides=('adbt')
 conflicts=('adbt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v${pkgver}/adbt_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b2a5ec4dd9c22f22049d752c4825cee3e255b2c01962a9cff8d0c7cb546edd9b')
+sha256sums_aarch64=('b73f073b1458a43c7d6762cf4f0be3d0714b02434b532df6f5e942b7168905fd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/SakshhamTheCoder/adbt/releases/download/v${pkgver}/adbt_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('5377eaed2e0c8ce18227e40b1326eaf1a0283364fe9599a8d708653815bc6cb7')
+sha256sums_x86_64=('442aee09c9251b31586e32565276d3d6fd42acd5f2f38306aab7d476969f737f')
 
 package() {
   install -Dm755 "./adbt" "${pkgdir}/usr/bin/adbt"
