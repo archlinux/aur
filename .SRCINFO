@@ -1,4 +1,4 @@
-pkgbase = freefilesync-bin
+pkgbase = freefilesync-donation-bin-release
 	pkgdesc = Folder comparison and synchronization (Donation Edition)
 	pkgver = 14.10
 	pkgrel = 1
@@ -11,7 +11,8 @@ pkgbase = freefilesync-bin
 	depends = gtk3
 	provides = freefilesync
 	conflicts = freefilesync
+	conflicts = freefilesync-bin
 	options = !strip
 	options = !debug
 
-pkgname = freefilesync-bin
+pkgname = freefilesync-donation-bin-release

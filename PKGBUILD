@@ -6,7 +6,7 @@
 # with the donor license key activated.
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
-pkgname=freefilesync-bin
+pkgname=freefilesync-donation-bin-release
 _pkgname=freefilesync
 pkgver=14.10
 pkgrel=1
@@ -15,7 +15,7 @@ arch=("x86_64")
 url="https://freefilesync.org"
 license=('LicenseRef-freefilesync.org')
 provides=("freefilesync")
-conflicts=("freefilesync")
+conflicts=("freefilesync" "freefilesync-bin")
 depends=("gtk3")
 makedepends=("curl" "unzip")
 install=".install"
