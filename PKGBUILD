@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genomation
-_pkgver=1.40.1
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.1
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Summary, annotation and visualization of genomic data'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da31e690cfe49aed6c9faa83579cf09d523b9a3da619abf3c54dc5c9b7805de6')
+sha256sums=('446e415e65b7188ec98569fcbb1c41f45514ace9cdf621c69a566e8cec106a5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

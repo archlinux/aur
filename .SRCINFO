@@ -1,6 +1,6 @@
 pkgbase = r-genomation
 	pkgdesc = Summary, annotation and visualization of genomic data
-	pkgver = 1.40.1
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genomation
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = r-genomation
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomation_1.40.1.tar.gz
-	sha256sums = da31e690cfe49aed6c9faa83579cf09d523b9a3da619abf3c54dc5c9b7805de6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomation_1.44.0.tar.gz
+	sha256sums = 446e415e65b7188ec98569fcbb1c41f45514ace9cdf621c69a566e8cec106a5e
 
 pkgname = r-genomation
