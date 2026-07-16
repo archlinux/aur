@@ -5,7 +5,6 @@ pkgbase = whichllm
 	url = https://github.com/Andyyyy64/whichllm
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

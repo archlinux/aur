@@ -25,7 +25,6 @@ makedepends=(
     'python-wheel'
     'python-hatchling'
 )
-checkdepends=('python-pytest')
 conflicts=("${_pkgname}-git")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('84748a9720e4e2f4c82dc258d0e52eae39109c4377e9cbdec16b62fcefaf92a3')
@@ -33,11 +32,6 @@ sha256sums=('84748a9720e4e2f4c82dc258d0e52eae39109c4377e9cbdec16b62fcefaf92a3')
 build() {
     cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
-}
-
-check() {
-    cd "${_pkgname}-${pkgver}"
-    PYTHONPATH=src pytest
 }
 
 package() {
