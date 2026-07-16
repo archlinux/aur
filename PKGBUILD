@@ -4,7 +4,7 @@
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.268.5
+pkgver=1.269.0
 pkgrel=1
 pkgdesc='Clash.Meta Dashboard, The Official One, XD (Precompiled version)'
 arch=('any')
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/compressed-dist.tgz"
         "${url}/raw/main/LICENSE")
-sha256sums=('9ad64c0a2e0fccbc354b8c2dd99dae6f08f2fd8ddba938770922e9ab8aeffedb'
+sha256sums=('22704e7bdea257bc69498e790760c6b8098885972273d3dcb3ea647451a1151e'
             'cd0735ba06f26a0008bbca399890c7ca87fe129aacc302c2e33fb03e60a4e8c3')
 
 package() {
