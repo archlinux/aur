@@ -1,13 +1,13 @@
 pkgbase = jpeginfo
 	pkgdesc = Jpeg information utility
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kokkonen.net/tjko/projects.html
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL
-	depends = libjpeg
+	depends = libjpeg-turbo
 	source = https://www.kokkonen.net/tjko/src/jpeginfo-1.7.1.tar.gz
 	sha256sums = 274f6be23fd089bd9e8715b67643a66ca2f63a503028bdea3e571228d50b669e
 
