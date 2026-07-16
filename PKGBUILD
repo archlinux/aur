@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A delicious REST client for your terminal"
 
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('11ad635d58ec456b9aa34e3198f14ca0a660914113fa07bedb0a7442c972a13f'
             'fcf353912854f70ba3768b3755a934d16b8cbc98ed183cc1e8124639b179ef01')
-sha256sums_x86_64=('91d2cd278302f330fec603ef1d56d83070c96294b461e2cdfaaaf566e50c0bb0')
-sha256sums_aarch64=('9ba06db5e58deae019d0ea6c399870a81dbd2301f44844ec36edfced7fec068d')
+sha256sums_x86_64=('2198ef029e85e71b2ea249cef5485a666250ab60ee764ee9685fab71c1b2c650')
+sha256sums_aarch64=('65e2275fd1e003ec59eeeba397e1257ab310bc123886e9f9216ce0c61db081e6')
 
 
 package() {
