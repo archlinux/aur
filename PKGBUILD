@@ -1,7 +1,7 @@
 # Maintainer: Ruiqi "Richard" Niu <rniu5@jh.edu>
 # Contributor: Claude Opus 4.8/Sonnet 4.6 (Anthropic) <https://claude.ai>
 pkgname=actflow-git
-pkgver=r791.f830e76
+pkgver=r803.cbdbee0
 pkgrel=1
 pkgdesc="The ACT asynchronous VLSI design flow (core ACT tools, actsim, interact, chp2prs, layout, routing, etc.)"
 arch=('x86_64')
@@ -21,6 +21,8 @@ conflicts=('actflow')
 options=('!debug')
 source=("$pkgname::git+https://github.com/asyncvlsi/actflow.git")
 sha256sums=('SKIP')
+# pre/post install hooks
+install=actflow-git.install
 
 _actdir=/opt/actflow
 
@@ -87,6 +89,9 @@ package() {
 	# 3) Rewrite the staging path baked into generated text files (e.g. scripts/config).
 	grep -rIl "$srcdir/staging$_actdir" "$pkgdir$_actdir" 2>/dev/null \
 		| xargs -r sed -i "s|$srcdir/staging$_actdir|$_actdir|g"
+
+	# Create shared cache directory for expropt (chp2prs/synth2 abc/yosys results).
+    install -d -m 1777 "$pkgdir$_actdir/shared_cache"
 
 	# Set ACT_HOME and PATH for every login shell.
 	install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/actflow.sh" <<EOF

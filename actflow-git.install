@@ -1,0 +1,4 @@
+# Remove shared cache directory for expropt (chp2prs/synth2 abc/yosys results).
+pre_remove() {                                                                                                                                
+    rm -rf /opt/actflow/shared_cache                                                                                                          
+}

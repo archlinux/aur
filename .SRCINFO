@@ -1,8 +1,9 @@
 pkgbase = actflow-git
 	pkgdesc = The ACT asynchronous VLSI design flow (core ACT tools, actsim, interact, chp2prs, layout, routing, etc.)
-	pkgver = r791.f830e76
+	pkgver = r803.cbdbee0
 	pkgrel = 1
 	url = https://github.com/asyncvlsi/actflow
+	install = actflow-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
