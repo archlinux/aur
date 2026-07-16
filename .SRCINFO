@@ -1,6 +1,6 @@
 pkgbase = r-orthos
 	pkgdesc = `orthos` is an R package for variance decomposition using conditional variational auto-encoders
-	pkgver = 1.6.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/orthos
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = r-orthos
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/orthos_1.6.2.tar.gz
-	md5sums = fc387ad91ee65971623d3ee90e59d5ab
-	b2sums = 0eb6ebd348f6be488cbafb755b3d2475b26ad027cee452c61cece5368188db1893f4b9b9b450835bff8f75b70eac31531dcc8b324e47447fbfcce4b360ed257d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/orthos_1.10.0.tar.gz
+	md5sums = 5b833e1d0d846a15ec85f27fb3c38d02
+	b2sums = e62da2d7f6017d1a0b7015bcda9502063d9c945f235e20c6a61d82b97a92c872f259d4db44f959ad30f3500578a8baaeabf2603072cbfc9d413d03a1dd6f2926
 
 pkgname = r-orthos
