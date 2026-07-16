@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Gviz
-_pkgver=1.52.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Plotting data and annotation information along genomic coordinates'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7cc86d4af5c0563f2627a313b3234b2e83099982121067514f196bd92b825bcb')
+sha256sums=('10e4826727f0210a292921b2310d4208570f3e40bef59d7f7e6c25e7d32a895e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
