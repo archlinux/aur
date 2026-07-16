@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AUCell
-_pkgver=1.30.1
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="AUCell: Analysis of 'gene set' activity in single-cell RNA-seq data (e.g. identify cells with specific gene signatures)"
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('023631bdad74a43b166eec2f6bf838ee9fc1b2d48fb0e04765669657e8b17a72')
+sha256sums=('a7c706e5e6ad6ac6490caaaece0f33e88fd58653a24be23afed42b741e5cd867')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
