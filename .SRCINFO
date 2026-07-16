@@ -1,6 +1,6 @@
 pkgbase = bc250-control-center-git
 	pkgdesc = Graphical control center for AMD BC-250 community tools
-	pkgver = 0.1.0.r9.g69c0617
+	pkgver = 0.1.0.r17.g4a6a940
 	pkgrel = 1
 	url = https://github.com/movacx/bc250-control-center
 	install = bc250-control-center.install
@@ -22,6 +22,7 @@ pkgbase = bc250-control-center-git
 	optdepends = polkit: graphical authentication for elevated actions
 	optdepends = vulkan-tools: Vulkan diagnostics
 	optdepends = mesa-utils: OpenGL diagnostics
+	optdepends = nct6687d-dkms-git: experimental PWM fan control on BC-250
 	provides = bc250-control-center
 	conflicts = bc250-control-center
 	source = git+https://github.com/movacx/bc250-control-center.git

@@ -1,7 +1,7 @@
 # Maintainer: Fabian Beita <fabianbeita@users.noreply.github.com>
 
 pkgname=bc250-control-center-git
-pkgver=0.1.0.r9.g69c0617
+pkgver=0.1.0.r17.g4a6a940
 pkgrel=1
 pkgdesc='Graphical control center for AMD BC-250 community tools'
 arch=('any')
@@ -26,6 +26,7 @@ optdepends=(
   'polkit: graphical authentication for elevated actions'
   'vulkan-tools: Vulkan diagnostics'
   'mesa-utils: OpenGL diagnostics'
+  'nct6687d-dkms-git: experimental PWM fan control on BC-250'
 )
 provides=('bc250-control-center')
 conflicts=('bc250-control-center')
