@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hummingbird
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Bayesian Hidden Markov Model for the detection of differentially methylated regions'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23c793946b4c45a88b8d784c336772da761b6e4d0bfdf6b1b063c857dddb394d')
+sha256sums=('d76c62346618a80420e8c61f26f6654bc2a78067419dfa50158a54e02f83c256')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
