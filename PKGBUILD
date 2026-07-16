@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RolDE
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3488b6fa0319a155e37baf7048e22758')
-b2sums=('d8796cca6a16f1cd3bdb94b5ed12631067caa8ca32826998bd0511b1b2ab5ba7715f24c1084ea587db63c0a96dfa12af0b885d864a0c9946cc2fa46455fb4de4')
+md5sums=('09c512267a8f13a3a49ccf832405b68f')
+b2sums=('dd84ed500d9cc0d05cb29a2de8972bb87ddbbbfa5f4efd8a14cacd8bce0ce39bb1f937fd5211bce9d15495e6332ecc9304eae63d0568031aacc5e287f3046299')
 
 build() {
   mkdir build
