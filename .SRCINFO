@@ -1,6 +1,6 @@
 pkgbase = osc-dreamchatbox
 	pkgdesc = Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)
-	pkgver = 1.0.6_alpha
+	pkgver = 1.0.7_alpha
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/OSC-DreamChatbox
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = osc-dreamchatbox
 	optdepends = python-deepl: DeepL translation backend
 	optdepends = mesa-utils: exact GPU name detection (glxinfo)
 	optdepends = nvidia-utils: NVIDIA GPU stats (nvidia-smi)
-	source = osc-dreamchatbox-1.0.6_alpha.tar.gz::https://github.com/yakuda-stack/OSC-DreamChatbox/archive/refs/tags/v1.0.6-alpha.tar.gz
-	sha256sums = 63722f206287df1d0979d0cf8dc1f02d02dfce7e9cc7e1f4dcdf4b430471674e
+	source = osc-dreamchatbox-1.0.7_alpha.tar.gz::https://github.com/yakuda-stack/OSC-DreamChatbox/archive/refs/tags/v1.0.7-alpha.tar.gz
+	sha256sums = f0ef873315c4787b596554c0e08ddde8feedc5631c999552ca57d8fcc66ff809
 
 pkgname = osc-dreamchatbox
