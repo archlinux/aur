@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VanillaICE
-_pkgver=1.70.1
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.1
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='A Hidden Markov Model for high throughput genotyping arrays'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('665aebefdf5cc087ed2f1481e275e6eb8a5c2b2400d92748185469af6b115934')
+sha256sums=('866d37374127a70db9ad4e97bee98341133c579372e6e78547335331399dbd69')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
