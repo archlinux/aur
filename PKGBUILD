@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=heynote
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 _electronversion=39
 pkgdesc="A dedicated scratchpad for developers"
@@ -12,12 +12,15 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heyman/heynote/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('df60250157b027d1b437b6e791dd44b096f540c02cd4032c852db948a744a4ef'
+sha256sums=('5da83c84a5c2bd6b19acd789029e99d9bac0afb071e37af598a3869964a05655'
             '22eca2d471190a5c59d3bfc9d95333071a7f63711e89c11991b12ebe068197ad'
             '01f72b81076197876af162436ce58754ceb35a0f7726f00255bfa55a5936f5ff')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
@@ -27,7 +30,6 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  npm install
   npm run prebuild
   npx electron-builder --linux dir -c electron-builder.json5 \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
