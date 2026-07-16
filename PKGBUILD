@@ -17,7 +17,7 @@ package() {
   cd "$srcdir/Firestudio-$pkgver-Linux-x64"
 
   install -dm755 "$pkgdir/opt/firestudio"
-  cp -a. "$pkgdir/opt/firestudio/"
+  cp -a . "$pkgdir/opt/firestudio/"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -sf /opt/firestudio/firestudio "$pkgdir/usr/bin/firestudio"
