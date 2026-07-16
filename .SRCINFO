@@ -1,0 +1,22 @@
+pkgbase = nuvio-desktop-git
+	pkgdesc = A modern media hub desktop application (built from git source)
+	pkgver = 0.1.30_alpha
+	pkgrel = 1
+	url = https://github.com/NuvioMedia/NuvioDesktop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = java-environment>=17
+	makedepends = patchelf
+	makedepends = pkgconf
+	depends = java-runtime>=17
+	depends = mpv
+	provides = nuvio-desktop-git
+	conflicts = nuvio-desktop-git
+	conflicts = nuvio-desktop-bin
+	conflicts = nuvio
+	conflicts = nuvio-desktop
+	source = nuvio-desktop-git::git+https://github.com/NuvioMedia/NuvioDesktop.git#tag=0.1.30-alpha
+	sha256sums = SKIP
+
+pkgname = nuvio-desktop-git

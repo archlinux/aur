@@ -1,0 +1,7 @@
+# Ignore built packages and source extractions
+/pkg/
+/src/
+/*.AppImage
+/*.tar.*
+/nuvio-desktop
+/nuvio-desktop-git
