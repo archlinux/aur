@@ -1,6 +1,6 @@
 # Maintainer: Simon Curtis <simon@jitzu.dev>
 pkgname=jz-bin
-pkgver=0.1.35
+pkgver=0.1.36
 pkgrel=1
 pkgdesc="The Jitzu programming language interpreter and shell"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('jz')
 depends=('glibc')
 options=('!strip')
 source=("https://github.com/jitzulang/jitzu/releases/download/v${pkgver}/jitzu-${pkgver}-linux-x64.zip")
-sha256sums=('8562c2091b3ce452dd89bf59dda8b839c31940894b46c33d07132e4dd5415254')
+sha256sums=('cfb8f283e44d976f4d1f8f8b653b213de4fb038689976434b2c507c75e401536')
 
 package() {
     install -Dm755 jz "${pkgdir}/usr/bin/jz"
