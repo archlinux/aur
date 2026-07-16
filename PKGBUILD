@@ -1,11 +1,16 @@
 pkgname=eshot-bin
-pkgver=4.0.6
+pkgver=4.0.9
 pkgrel=1
 pkgdesc='Screenshot, annotation, OCR, GIF and video capture tool'
 arch=('x86_64')
 url='https://github.com/Benoks/EShot'
 license=('MIT')
-depends=('fuse2')
+depends=('fuse2' 'xdg-desktop-portal')
+optdepends=('xdg-desktop-portal-gnome: GNOME screenshot and recording integration'
+            'xdg-desktop-portal-kde: KDE Plasma screenshot and recording integration'
+            'ffmpeg: GIF encoding and media export'
+            'tesseract: OCR support'
+            'gst-plugin-pipewire: Wayland GIF and video recording')
 provides=('eshot')
 conflicts=('eshot')
 options=('!strip')
@@ -13,7 +18,7 @@ options=('!strip')
 _appimage="EShot-v${pkgver}-x86_64.AppImage"
 source=("${_appimage}::https://github.com/Benoks/EShot/releases/download/v${pkgver}/${_appimage}"
         'eshot')
-sha256sums=('33698b8458307830569446e4f81636377c76f1df42370e7a83c5611bf04edc4b'
+sha256sums=('4e7d2d051cf6a5e9b5a65d0d4b0a1052f6c8c701e052db45fc71264c275d763b'
             'SKIP')
 
 prepare() {
@@ -26,8 +31,12 @@ package() {
     install -Dm755 "${srcdir}/eshot" "${pkgdir}/usr/bin/eshot"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/io.github.benoks.EShot.desktop" \
         "${pkgdir}/usr/share/applications/io.github.benoks.EShot.desktop"
-    sed -i 's|^Exec=.*|Exec=eshot|' \
+    sed -i -E 's|^Exec=eshot-launcher(.*)$|Exec=eshot\1|' \
         "${pkgdir}/usr/share/applications/io.github.benoks.EShot.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/io.github.benoks.EShot.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.benoks.EShot.svg"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/io.github.benoks.EShot-v4.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.benoks.EShot-v4.svg"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/io.github.benoks.EShot.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/io.github.benoks.EShot.metainfo.xml"
 }
