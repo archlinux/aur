@@ -1,6 +1,6 @@
 pkgbase = r-hitc
 	pkgdesc = High Throughput Chromosome Conformation Capture analysis
-	pkgver = 1.52.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiTC
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-hitc
 	depends = r-rtracklayer
 	optdepends = r-biocstyle
 	optdepends = r-hicdatahumanimr90
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiTC_1.52.0.tar.gz
-	sha256sums = 498925f143b946ef9a4f7bebf34331231014303d32fa0fe66ce97ac3c3cf1a78
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiTC_1.56.0.tar.gz
+	sha256sums = f2f83db2d35c64d0d363fb3c2486de413492bf1ca7af28bc8646d82f1b5ca7fe
 
 pkgname = r-hitc
