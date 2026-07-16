@@ -1,6 +1,6 @@
 pkgbase = r-rocpai
 	pkgdesc = Receiver Operating Characteristic Partial Area Indexes for evaluating classifiers
-	pkgver = 1.20.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ROCpAI
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rocpai
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROCpAI_1.20.0.tar.gz
-	sha256sums = b48d0d7a1390eefc47fc879c619700fea59a9159aebc82edacf656159cb29b26
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROCpAI_1.24.0.tar.gz
+	sha256sums = 1de80b6e9b35cacfd887a3809c4ccd7ae98a5cebfbd49d1d67875c9175d7c1a4
 
 pkgname = r-rocpai
