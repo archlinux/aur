@@ -1,12 +1,13 @@
 pkgbase = lxdui
 	pkgdesc = Web UI for the native Linux container technology LXD/LXC
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaptiveScale/lxdui
 	install = lxdui.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = python-virtualenv
+	makedepends = python-setuptools
 	depends = lxd
 	depends = python-flask
 	depends = python-netaddr
@@ -36,4 +37,3 @@ pkgbase = lxdui
 	sha256sums = 5fea7e09d4d21499e90f3012bddb947900b1555742b6feab93f2e858fa78532e
 
 pkgname = lxdui
-

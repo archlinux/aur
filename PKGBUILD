@@ -2,7 +2,7 @@
 
 pkgname=lxdui
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI for the native Linux container technology LXD/LXC"
 arch=(x86_64)
 url="https://github.com/AdaptiveScale/lxdui"
@@ -26,7 +26,7 @@ depends=(lxd
 #	python-xstatic
 #	python-xstatic-term.js
 )
-makedepends=('python-virtualenv')
+makedepends=('python-virtualenv' 'python-setuptools')
 provides=(lxdui)
 install=lxdui.install
 backup=(etc/lxdui/lxdui.conf
@@ -93,8 +93,7 @@ package()
 
 	PYVER=$($pkgdir/usr/lib/$pkgname/bin/python --version|cut -d\  -f2|cut -d. -f1,2)
 
-#	mv $pkgdir/usr/lib/$pkgname/lib/python$PYVER/site-packages/conf/* $pkgdir/etc/$pkgname
-	mv $pkgdir/usr/lib/$pkgname/lib/python$PYVER/site-packages/LXDUI-$pkgver-py$PYVER.egg/conf/* $pkgdir/etc/$pkgname
+	mv $pkgdir/usr/lib/$pkgname/lib/python$PYVER/site-packages/conf/* $pkgdir/etc/$pkgname
 	chmod 600 $pkgdir/etc/$pkgname/auth.conf
 }
 
