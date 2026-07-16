@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nullrangesData
-_pkgver=1.14.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('74717a562978e47cd32e954ba63889a6')
-b2sums=('aa7c37716c4e72bf7fec3a227e85b6360b9ff4be7269d73ad7c03ed1ab1bec8d3fbd03104f05e7196ef2575c1a64882b19fb21c579f69d094374d0694ff074d5')
+md5sums=('d19d3c3e9f045bd47c52983fc1372eb5')
+b2sums=('3bdfd96808cdce9007272096d59c096e9fd84cd03f9c59643f0032d1648aa571040414bc1079333d1595c94c95d1079a89c3ce8e4955fdffae15b52317032e5f')
 
 build() {
   mkdir build
