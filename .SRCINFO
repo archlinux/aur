@@ -1,6 +1,6 @@
 pkgbase = zerowhats-bin
 	pkgdesc = A privacy-first WhatsApp Web desktop client
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/ZauJulio/ZeroWhats
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = zerowhats-bin
 	provides = zerowhats
 	conflicts = zerowhats
 	options = !strip
-	source = ZeroWhats_1.5.1_amd64.deb::https://github.com/ZauJulio/ZeroWhats/releases/download/v1.5.1/ZeroWhats_1.5.1_amd64.deb
+	source = ZeroWhats_1.5.2_amd64.deb::https://github.com/ZauJulio/ZeroWhats/releases/download/v1.5.2/ZeroWhats_1.5.2_amd64.deb
 	sha256sums = SKIP
 
 pkgname = zerowhats-bin
