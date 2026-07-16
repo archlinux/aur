@@ -1,0 +1,29 @@
+pkgbase = noctalia-plugin-screenshot-ocr
+	pkgdesc = Noctalia Shell screenshot OCR plugin powered by Mistral OCR
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MartianInGreen/noctalia-screenshot-ocr
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = grim
+	depends = jq
+	depends = noctalia-shell>=4.0.0
+	depends = slurp
+	depends = wl-clipboard
+	optdepends = imagemagick: resize large screenshots before OCR
+	source = BarWidget.qml::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/BarWidget.qml
+	source = PluginSettings.qml::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/PluginSettings.qml
+	source = manifest.json::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/manifest.json
+	source = README.md::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/README.md
+	source = screenshot-ocr.sh::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/scripts/screenshot-ocr.sh
+	source = LICENSE::https://raw.githubusercontent.com/MartianInGreen/noctalia-screenshot-ocr/v1.0.0/LICENSE
+	sha256sums = 80a8a8b46e41e13b5fa09cdf17d01e74929438267b2ff05aa1058e4a2eef6f1a
+	sha256sums = 65c2492060e0603ee55bd7b7ae83ffdbcb7aaa86f04374a398f2d5ba5ae63d58
+	sha256sums = 31d69e704fe2845aab0adb1be965a2b05a93b1d76a72472772e9cbd84756fd60
+	sha256sums = 0d5ed3b202cac1dbc8048f19351f1831af0793714c0d29210dcd2e77a876e9c5
+	sha256sums = 6b36c235d461703b4adfd15664f13d9410d89551271a15204937dd7cfcf08a22
+	sha256sums = 3afa37d3b9e20561118f1bccc10ed6e17ec9b76270a228d7f8794e4a5e132eab
+
+pkgname = noctalia-plugin-screenshot-ocr
