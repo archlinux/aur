@@ -1,6 +1,6 @@
 pkgbase = r-sigspack
 	pkgdesc = Mutational Signature Estimation for Single Samples
-	pkgver = 1.22.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SigsPack
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = r-sigspack
 	optdepends = r-iranges
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigsPack_1.22.0.tar.gz
-	md5sums = b6349cf6e3bf39af8e31793658cd1827
-	b2sums = ccaa31d8cdb84ba3e39a68f01361d588c03734d51c7a2f6110888377fc0c944b3cc175175b300c7ccdc7c1ae852b65be7f5ebc7bc2a4c3f3fa73aeab42d42d5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigsPack_1.26.0.tar.gz
+	md5sums = 84e60df7ca5c0a5e9ac0d5ba1019ded9
+	b2sums = 94db89dbb73a6edf04023ba2d6a71d9ae5f832e86e060a21fe8be2606d46fa8dbf147b5dc34a2f2ed92c6383984647cadda39574fa9be5d9bc63b563f5d54c07
 
 pkgname = r-sigspack
