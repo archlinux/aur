@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scTHI
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Indentification of significantly activated ligand-receptor interactions across clusters of cells from single-cell RNA sequencing data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-scthi.data
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('413ba6a0fbf9008df15200a8d019d37b939a60d317f7c7efec27f490f142634a')
+sha256sums=('643fa86f6d36dc292897942783019d6b74fedd69e1d8ef9dbd3b4a2943d9321b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
