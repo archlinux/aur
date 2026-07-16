@@ -1,6 +1,6 @@
 pkgbase = rsenv
 	pkgdesc = Hierarchical environment management with secure vault storage
-	pkgver = 5.2.5
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/sysid/rs-env
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rsenv
 	depends = direnv
 	depends = sops
 	provides = rsenv
-	source = rsenv-v5.2.5.tgz::https://github.com/sysid/rs-env/archive/v5.2.5.tar.gz
-	sha256sums = 31f5782719844c63337e0f05b430cc9e2d763638c9efbc24d1ab74360fcccae4
+	source = rsenv-v5.3.1.tgz::https://github.com/sysid/rs-env/archive/v5.3.1.tar.gz
+	sha256sums = 31befa71b1aa9f8f27407039d718832747009663e34949c66b218823827efdd6
 
 pkgname = rsenv
