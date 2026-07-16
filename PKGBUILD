@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EpiMix
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,7 +23,6 @@ depends=(
   r-epimix.data
   r-experimenthub
   r-foreach
-  r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
@@ -38,6 +37,7 @@ depends=(
   r-rlang
   r-rpmm
   r-s4vectors
+  r-seqinfo
   r-summarizedexperiment
   r-tibble
   r-tidyr
@@ -65,8 +65,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d0681128378b5066107a293e0202d38a')
-b2sums=('9ef9b222ff3d427a120e76b2a9b13eab197d340c45489d9762c7d6d2116e1fe41a9b8fc8049fe1a692c76d439aae2cbfae6ca5878e4761cfe6315d44e97410dd')
+md5sums=('9cfc3c222802f2bc91b77f7514793d17')
+b2sums=('2107235118cdd9dd4617ab27a717670772ccf9ba2a932ed00fecd3516ed6752c489019302ae8c36e8ca0e8a0fb33c0b4af6c1c60ec716357e197d1b6fb6f0866')
 
 build() {
   mkdir build
