@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChromHeatMap
-_pkgver=1.62.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Heat map plotting by genome coordinate'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-hgu95av2.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5169425b38c01394b08447a900f6697a8403fde1306f72e6add3d1bd1be7f134')
+sha256sums=('b2137976e2013638cda6831ac6dfc27bd69f5ab86d963db331626d2503125d5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
