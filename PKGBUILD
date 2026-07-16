@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mosaics
-_pkgver=2.46.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
-pkgver=2.46.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc='MOSAiCS (MOdel-based one and two Sample Analysis and Inference for ChIP-Seq)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3bf3fe688946ea2031a0fe10463bb4b079f4456a8573b23a48eadd59b2341f9')
+sha256sums=('3c750bfc4c3ed0f1d159e5330cc38681bb272330693223273083870d77cd8a25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
