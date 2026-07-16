@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/emutastic-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emutastic-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Beautiful retro game library and emulation frontend (libretro)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Emutastic-$pkgver-linux-x64.tar.gz"
         "$url/raw/v$pkgver/LICENSE"
         "emutastic-logo.png::$url/raw/v$pkgver/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png")
-sha256sums=('6bc517aac3ce4baf36b9bfb6957097b37791d19324ab9dd3e48c61ced3749c32'
+sha256sums=('474940ce592edd00f26b66fc4728240b1acbc31423d81b27683ce1cd5e7720c0'
             'SKIP'
             'SKIP')
 
