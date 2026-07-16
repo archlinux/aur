@@ -1,0 +1,16 @@
+pkgbase = revolut-x-cli
+	pkgdesc = Command-line interface for Revolut X crypto exchange trading
+	pkgver = 1.0.47
+	pkgrel = 1
+	url = https://github.com/revolut-engineering/revolut-x-api
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=20
+	noextract = revolut-x-cli-1.0.47.tgz
+	source = revolut-x-cli-1.0.47.tgz::https://registry.npmjs.org/@revolut/revolut-x-cli/-/revolut-x-cli-1.0.47.tgz
+	source = revolut-x-cli-1.0.47-LICENSE::https://raw.githubusercontent.com/revolut-engineering/revolut-x-api/v1.0.47/LICENSE
+	sha256sums = fb6f09bc6e81c445c3011cf6ff2ba572ab11aee6585d3892303612d13b83cbb1
+	sha256sums = 72380798af61d6131287b0dd3c8dc5345535df641002fece3a02d7ef109c5f8e
+
+pkgname = revolut-x-cli
