@@ -22,6 +22,7 @@ sha512sums=("a250249bf5916500b70eab85d565f54f019282443d9100a8e36818b7f9077aeedbe
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     ./gradlew -F lenient -x test build
 }
 
