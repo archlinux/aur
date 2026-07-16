@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FeatSeekR
-_pkgver=1.6.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,14 +19,13 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
-  r-dmelsgi
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('23c49ca8d640009f029e1d88ae812f0c')
-b2sums=('8a596c0e1a17588743805a813b51cf60901d3bf63f02a68174b59d2e71f3670e395db459523c12e4e4094ad35062071b05188a54ff8ffe8dcbc0e93220597423')
+md5sums=('a8b374caed318449956d082a04b5687b')
+b2sums=('3ebfc4f65cec4b833b32b03476fb0b76c092902d3a798012a90c188abcf81cc7e16a3930ae91363d67a17f1789feaf3579d66fba5a5b64aac27e89c4b8e6016a')
 
 build() {
   mkdir build
