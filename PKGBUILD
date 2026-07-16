@@ -1,4 +1,5 @@
 # Maintainer: Unfinished Works <admin@unfinished-works.com>
+# Contributor: Rafael Dominiquini
 #
 # Source-of-truth PKGBUILD for the `odytty` AUR package. The AUR holds its own
 # git repository; this copy is the upstream template. On each release tag the
@@ -12,7 +13,7 @@
 # `git archive` tarball the Release workflow attaches), so the package is
 # versioned, owned by pacman, and reproducible from a fixed source.
 pkgname=odytty
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
 arch=('x86_64')
@@ -22,7 +23,7 @@ depends=('fontconfig' 'freetype2' 'vulkan-icd-loader' 'libxkbcommon' 'hicolor-ic
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ghreprimand/odytty/releases/download/v$pkgver/odytty-$pkgver.tar.gz")
 # Replaced with the real checksum by `updpkgsums` before each AUR publish.
-sha256sums=('d98407882fa9a20543fb403f26a7c276fa10397299ffe31f7e1b58ed9e772df3')
+sha256sums=('d5598259572ea4ed43ca1c051f0f115ba3cf503610d82c341d56412982196515')
 
 prepare() {
     cd "$pkgname-$pkgver"
