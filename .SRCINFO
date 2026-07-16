@@ -1,6 +1,6 @@
 pkgbase = pomerium-cli
 	pkgdesc = CLI component for Pomerium
-	pkgver = 0.32.0
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://github.com/pomerium/cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pomerium-cli
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = pomerium-cli-0.32.0.tar.gz::https://github.com/pomerium/cli/archive/v0.32.0.tar.gz
-	sha256sums = 25b8ab9e35a2656989efa708d28d3ba1b60bcee36429dcd211f8c679a31071e4
+	source = pomerium-cli-0.32.2.tar.gz::https://github.com/pomerium/cli/archive/v0.32.2.tar.gz
+	sha256sums = 1801aeb11fe1680e76a43e6fe8663b5110759a32e244d6557cdd3e0692c80a88
 
 pkgname = pomerium-cli

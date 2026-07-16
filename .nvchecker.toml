@@ -1,0 +1,4 @@
+[pomerium-cli]
+source = "git"
+git = "https://github.com/pomerium/cli.git"
+prefix = "v"
