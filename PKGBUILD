@@ -1,7 +1,7 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cli-proxy-api
-pkgver=7.2.74
+pkgver=7.2.80
 pkgrel=1
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   'cli-proxy-api.sysusers'
   'cli-proxy-api.tmpfiles'
 )
-sha256sums=('eaba1bc9c8219fd8d84e880a2be7aa81de71b1daa44cd04251c221c2008a6b3c'
+sha256sums=('43ddf12bfb78ddf8aa3b17e7002f42d8358de6b704f706c01d01e7e2d9a732ae'
             '789be86c8b7ce964a0b7c78b07bd561a2263f9ada2c927b2dd789c88fb07494e'
             '216ce81546d176c915838a42d555cd144b2b15fb8cd50dc17f14572a9e6e469a'
             '86cec862115e7d26bcc68668b7dfa181539aeb6ff32fb061cead8ed50627502e')
