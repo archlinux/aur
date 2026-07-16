@@ -3,8 +3,8 @@
 _pkgname=aster-mail
 pkgname="${_pkgname}"-bin
 pkgver=1.4.50
-pkgrel=1
-pkgdesc="Encrypted email client for Aster Mail (AppImage version)"
+pkgrel=2
+pkgdesc="Encrypted email client for Aster Mail"
 arch=('x86_64')
 url="https://github.com/Aster-Privacy/Aster-Mail"
 license=('AGPL-3.0-only')

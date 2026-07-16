@@ -1,7 +1,7 @@
 pkgbase = aster-mail-bin
-	pkgdesc = Encrypted email client for Aster Mail (AppImage version)
+	pkgdesc = Encrypted email client for Aster Mail
 	pkgver = 1.4.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aster-Privacy/Aster-Mail
 	arch = x86_64
 	license = AGPL-3.0-only
