@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cliphist C++
+Comment=Wayland Clipboard Manager History GUI
+Exec=cliphist-cpp
+Icon=edit-paste
+Terminal=false
+Type=Application
+Categories=Utility;

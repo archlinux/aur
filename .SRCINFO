@@ -1,0 +1,21 @@
+pkgbase = cliphist-cpp
+	pkgdesc = Wayland clipboard manager history GUI and daemon written in C++ and GTK3, configurable via ~/.config/cliphist/config.ini
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/filonsli/cliphist-cpp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = wl-clipboard
+	source = main.cpp
+	source = Makefile
+	source = cliphist-cpp.service
+	source = cliphist-cpp.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cliphist-cpp
