@@ -1,6 +1,6 @@
 pkgbase = r-qfeatures
 	pkgdesc = Quantitative features for mass spectrometry data
-	pkgver = 1.18.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QFeatures
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = r-qfeatures
 	depends = r-summarizedexperiment
 	depends = r-tidyr
 	depends = r-tidyselect
+	optdepends = r-arrow
 	optdepends = r-biocstyle
 	optdepends = r-complexheatmap
 	optdepends = r-dplyr
@@ -43,8 +44,8 @@ pkgbase = r-qfeatures
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QFeatures_1.18.0.tar.gz
-	md5sums = ea333a9416cf561fa5601abc2369ca9d
-	b2sums = 2a916ee4d7da27031cf120e6b5d9e8312e516c5a935808866c49a7a59b758a244ea3074d306039f59d8a983983c42b8a639eb084cc2cc02d68be4935cbd54bfe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QFeatures_1.22.0.tar.gz
+	md5sums = f353735501524059f9bb1c3845d4711c
+	b2sums = 119d8e6a53b838af0bd41bbad42d51669c5676bc6c85698a4d5f8b2bd6f4413edd37fcf675c1436d480b535fcf4420afa96929c2a027b2c53e26ebce32821263
 
 pkgname = r-qfeatures
