@@ -1,36 +1,23 @@
 # Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
-pkgname=burning-windows
-pkgver=0.1.3
-pkgrel=1
-pkgdesc='Burning Windows effect for KDE Plasma/KWin'
-arch=('x86_64')
-url='https://github.com/yousefvand/Burning-Windows'
-license=('GPL')
-depends=(
-  'kwin'
-  'kcoreaddons'
-  'kconfig'
-  'kconfigwidgets'
-  'ki18n'
-  'kcmutils'
-  'qt6-base'
-  'qt6-declarative'
-)
-makedepends=(
-  'cmake'
-  'extra-cmake-modules'
-  'ninja'
-  'gcc'
-)
-install='burning-windows.install'
-source=("burning-windows-0.1.3.tar.gz::https://github.com/yousefvand/Burning-Windows/archive/refs/tags/0.1.3.tar.gz")
-sha256sums=('71e4aeae5ac2efcfecac8714959500785779bc2def6397b699ed5d570fb461e7')
 
-build() {
-  cmake -S "$srcdir/Burning-Windows-0.1.3" -B build -G Ninja     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=/usr     -DKDE_INSTALL_LIBDIR=lib     -DKDE_INSTALL_LIBEXECDIR=lib     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  cmake --build build
-}
+pkgname=burning-windows
+pkgver=0.1.1
+pkgrel=1
+pkgdesc='Bottom-to-top burning close animation for KDE Plasma 6 KWin'
+arch=('any')
+url='https://github.com/yousefvand/Burning-Windows'
+license=('MIT')
+
+depends=('kwin>=6.0')
+makedepends=('git')
+
+_commit='cd13f04fbb590e7430a4025521e5ef9f894591f4'
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+    cd "$srcdir/$pkgname"
+
+    install -d "$pkgdir/usr/share/kwin/effects/kwin4_effect_burning_windows"
+    cp -a package/. "$pkgdir/usr/share/kwin/effects/kwin4_effect_burning_windows/"
 }

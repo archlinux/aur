@@ -1,24 +1,13 @@
 pkgbase = burning-windows
-	pkgdesc = Burning Windows effect for KDE Plasma/KWin
-	pkgver = 0.1.3
+	pkgdesc = Bottom-to-top burning close animation for KDE Plasma 6 KWin
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/yousefvand/Burning-Windows
-	install = burning-windows.install
-	arch = x86_64
-	license = GPL
-	makedepends = cmake
-	makedepends = extra-cmake-modules
-	makedepends = ninja
-	makedepends = gcc
-	depends = kwin
-	depends = kcoreaddons
-	depends = kconfig
-	depends = kconfigwidgets
-	depends = ki18n
-	depends = kcmutils
-	depends = qt6-base
-	depends = qt6-declarative
-	source = burning-windows-0.1.3.tar.gz::https://github.com/yousefvand/Burning-Windows/archive/refs/tags/0.1.3.tar.gz
-	sha256sums = 71e4aeae5ac2efcfecac8714959500785779bc2def6397b699ed5d570fb461e7
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kwin>=6.0
+	source = burning-windows::git+https://github.com/yousefvand/Burning-Windows.git#commit=cd13f04fbb590e7430a4025521e5ef9f894591f4
+	sha256sums = SKIP
 
 pkgname = burning-windows
