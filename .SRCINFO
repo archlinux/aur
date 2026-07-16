@@ -1,6 +1,6 @@
 pkgbase = harmony-im-git
 	pkgdesc = An extensible [matrix] client.
-	pkgver = v0.1.0.r35.g6195c78
+	pkgver = v0.2.0.r0.g2889d9a
 	pkgrel = 1
 	url = https://codeberg.org/catcraft/harmony
 	arch = any
