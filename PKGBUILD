@@ -12,7 +12,7 @@ license=('MIT')
 depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
 source=("${url}/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
         "cider.png::${url}/raw/branch/main/src/resources/cider.png")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -Dm755 "cider-${pkgver}-linux-x86_64" "${pkgdir}/usr/bin/cider"
