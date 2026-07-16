@@ -1,6 +1,6 @@
 pkgbase = archtoys
 	pkgdesc = PowerToys-like color picker for Linux (Slint-based)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	install = archtoys.install
