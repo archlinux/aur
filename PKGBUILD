@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cpvSNP
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Gene set analysis methods for SNP association p-values that lie in genes in given gene sets'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da86c3b9160e6cfc0c845c3ec4c0d740712f7304ea51be2955219115f080679f')
+sha256sums=('2b7d308de1cdfacd7dc71cde3eca6c29ecd1c45be74e0358997a8f9b0ecb1d34')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
