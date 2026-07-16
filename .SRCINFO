@@ -1,0 +1,18 @@
+pkgbase = panobble-git
+	pkgdesc = Minimal MPRIS to Last.fm scrobbler daemon
+	pkgver = r14.0000000
+	pkgrel = 1
+	url = https://github.com/arrufat/panobble
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = xdg-utils: open the Last.fm authorization page during auth
+	provides = panobble
+	conflicts = panobble
+	source = panobble::git+https://github.com/arrufat/panobble.git
+	sha256sums = SKIP
+
+pkgname = panobble-git
