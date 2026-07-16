@@ -1,7 +1,7 @@
 pkgbase = aster-mail-appimage
 	pkgdesc = Encrypted email client for Aster Mail (AppImage version)
 	pkgver = 1.4.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aster-Privacy/Aster-Mail
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = aster-mail-appimage
 	conflicts = aster-mail-git
 	options = !strip
 	options = !emptydirs
-	source = aster-mail-1.4.50.AppImage::https://github.com/Aster-Privacy/Aster-Mail/releases/download/v1.4.50/Aster.Mail_{1.4.50}_amd64.AppImage
+	source = aster-mail-1.4.50.AppImage::https://github.com/Aster-Privacy/Aster-Mail/releases/download/v1.4.50/Aster.Mail_1.4.50_amd64.AppImage
 	source = https://raw.githubusercontent.com/Aster-Privacy/Aster-Mail/refs/heads/main/LICENSE
 	source = aster-mail.png::https://raw.githubusercontent.com/Aster-Privacy/Aster-Mail/refs/heads/main/android/app/src/main/res/drawable-land-mdpi/splash.png
 	source = aster-mail.desktop

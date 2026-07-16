@@ -3,7 +3,7 @@
 _pkgname=aster-mail
 pkgname="${_pkgname}"-appimage
 pkgver=1.4.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypted email client for Aster Mail (AppImage version)"
 arch=('x86_64')
 url="https://github.com/Aster-Privacy/Aster-Mail"
@@ -16,7 +16,8 @@ conflicts=(
 )
 options=('!strip' '!emptydirs')
 _appimage="${_pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::$url/releases/download/v$pkgver/Aster.Mail_{$pkgver}_amd64.AppImage"
+#source=("${_appimage}::$url/releases/download/v$pkgver/Aster.Mail_{$pkgver}_amd64.AppImage"
+source=("${_appimage}::$url/releases/download/v$pkgver/Aster.Mail_1.4.50_amd64.AppImage"
         "https://raw.githubusercontent.com/Aster-Privacy/Aster-Mail/refs/heads/main/LICENSE"
         "$_pkgname.png::https://raw.githubusercontent.com/Aster-Privacy/Aster-Mail/refs/heads/main/android/app/src/main/res/drawable-land-mdpi/splash.png"
         "$_pkgname.desktop")
