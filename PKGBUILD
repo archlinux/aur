@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=VDJdive
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('547c9385b4dbcadab17a4044fd58218c')
-b2sums=('5a5269e15c848916f502ba14a315f9c0142335fbbf4e3df89436d52124e05aed9ddcefdf3f9797b15043ebe4fc9c910a59c840a8215b9a325e5f81be40da6790')
+md5sums=('232c43959f88e49848809abef77c6291')
+b2sums=('e76cc538a2f15b0e2247443e4d89fa7a3a1613d6b1877288474c01cc461abb467ca4103057b3e5535028d19ccf3e2bf3baaaa1063f7b97d9284d7f7e5f471838')
 
 build() {
   mkdir build
