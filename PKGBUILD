@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=$_pkgname-git
-pkgver=v0.2.0.r4.gfe81f43
+pkgver=v0.2.0.r4.gfe81f43.1
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris"
 arch=('x86_64')
