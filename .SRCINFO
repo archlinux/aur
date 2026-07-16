@@ -1,6 +1,6 @@
 pkgbase = r-tfbstools
 	pkgdesc = Software Package for Transcription Factor Binding Site (TFBS) Analysis
-	pkgver = 1.44.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TFBSTools
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = r-tfbstools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFBSTools_1.44.0.tar.gz
-	sha256sums = 2c35c71631d0d46545378562889c36719a45e678a508fea28b17c4b1299d3889
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFBSTools_1.50.0.tar.gz
+	sha256sums = 09e46e337ae6d719cb3cd6a6b0bacfbf3ce4f79cacd86b72003e2ea49a00f96d
 
 pkgname = r-tfbstools
