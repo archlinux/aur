@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DELocal
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('281b7de1b95c06e1018f006375c6672d')
-b2sums=('d5cf2b14bf4e2134b7abe9911c3eaac6ec9b86a42ba9c4916c898543569f3e82d863e0472278ff7c4a12a83ba2db34fb2b5909d9529fd94e9bff45bc998e23b3')
+md5sums=('4472b0a7f5a72789ac0678207c810c21')
+b2sums=('9dbe8fe3dfa68b6e638905ccfd286c85c29ef148b8ce573d5a9fe1d7c472b6e36ac8a37d1f9c2c416cb7b891e0c0de3ccd09307dccba2a5139371dd401967dec')
 
 build() {
   mkdir build
