@@ -1,0 +1,22 @@
+post_install() {
+    cat <<'EOF'
+==> doubletap runs as a systemd *user* service. To set it up:
+
+    1. Give yourself access to /dev/input/* and /dev/uinput, then re-login:
+         sudo usermod -aG input $USER
+
+    2. (Optional) Copy the example config and set your keyboard's path:
+         mkdir -p ~/.config/doubletap
+         cp /usr/share/doubletap/config.yaml ~/.config/doubletap/
+
+    3. Enable the service:
+         systemctl --user enable --now doubletap
+
+    For realtime scheduling install realtime-privileges and add
+    yourself to the `realtime` group.
+EOF
+}
+
+post_upgrade() {
+    :
+}
