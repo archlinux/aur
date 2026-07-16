@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=deltaCaptureC
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='This Package Discovers Meso-scale Chromatin Remodeling from 3C Data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9a53c7b35080858a7a5d674d22dbd575154a3e27a6ef9406e960a4a5565f1b93')
+sha256sums=('bf527367934471d315f73564e146b19e3623a9ace1c383d83bcadfaefc2f5941')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
