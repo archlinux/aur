@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=plutonic-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Suikalike game where you shoot planets in space"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('plutonic')
 conflicts=('plutonic')
 options=('!strip')
 source=("https://raw.githubusercontent.com/mlm-games/plutonic/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
-source_x86_64=("plutonic-1.0.2-x64::https://github.com/mlm-games/plutonic/releases/download/1.0.2/plutonic.x86_64")
-source_aarch64=("plutonic-1.0.2-arm64::https://github.com/mlm-games/plutonic/releases/download/1.0.2/plutonic.arm64")
+source_x86_64=("plutonic-1.1.0-x64::https://github.com/mlm-games/plutonic/releases/download/1.1.0/plutonic.x86_64")
+source_aarch64=("plutonic-1.1.0-arm64::https://github.com/mlm-games/plutonic/releases/download/1.1.0/plutonic.arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('9269e270edfe7e3c19e0d30c097cf22bd4189e2be6eb5c019cfcf686ca163fe9')
-sha256sums_aarch64=('0d80ab4939d992a0d5ade7c6b753044c16829f6fbed86429b9dec5a8090bca0c')
+sha256sums_x86_64=('611de0bd31510fc4ec9aea152fba79f9d505e3f4f0d829dca87bccbc775b1d10')
+sha256sums_aarch64=('8839a5569e0412266b9b0a4b4f3fae05bd0414605dd9c70657f40190160c6a37')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
@@ -26,9 +26,9 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
-        install -Dm755 "$srcdir/plutonic-1.0.2-x64" "${pkgdir}/opt/${pkgname}/plutonic"
+        install -Dm755 "$srcdir/plutonic-1.1.0-x64" "${pkgdir}/opt/${pkgname}/plutonic"
     elif [[ $CARCH == "aarch64" ]]; then
-        install -Dm755 "$srcdir/plutonic-1.0.2-arm64" "${pkgdir}/opt/${pkgname}/plutonic"
+        install -Dm755 "$srcdir/plutonic-1.1.0-arm64" "${pkgdir}/opt/${pkgname}/plutonic"
     fi
 
     ln -s "/opt/${pkgname}/plutonic" "${pkgdir}/usr/bin/plutonic"
