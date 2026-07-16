@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeqGSEA
-_pkgver=1.48.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Gene Set Enrichment Analysis (GSEA) of RNA-Seq Data: integrating differential expression and splicing'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-genomicranges
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd0d3b647747ffdb02f30a2b20bc4ab0c0f75095e50f0d9ae75b5f26e10218c1')
+sha256sums=('30cbc64996cf7d293447e37b4d53a5b591e88130a5b763afe8f996d3bf8f9558')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
