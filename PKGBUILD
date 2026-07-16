@@ -30,7 +30,7 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=36307.edk2.stable202605.341.g6a6ec8a228
+pkgver=36326.edk2.stable202605.360.g3a4556803d
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
@@ -49,13 +49,27 @@ install="${_pkgname}.install"
 source=(
 	"${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
 	"brotli::git+https://github.com/google/brotli"
-	"softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git"
-	"cmocka::git+https://git.cryptomilk.org/projects/cmocka.git"
+	"edk2-cmocka::git+https://github.com/tianocore/edk2-cmocka.git"
+	"jansson::git+https://github.com/akheron/jansson"
+	"googletest::git+https://github.com/google/googletest.git"
+	"libspdm::git+https://github.com/DMTF/libspdm.git"
+	"mbedtls::git+https://github.com/ARMmbed/mbedtls"
+	"mipisyst::git+https://github.com/MIPI-Alliance/public-mipi-sys-t.git"
 	"oniguruma::git+https://github.com/kkos/oniguruma"
 	"openssl::git+https://github.com/openssl/openssl"
+	"pylibfdt::git+https://github.com/devicetree-org/pylibfdt.git"
+	"subhook::git+https://github.com/tianocore/edk2-subhook.git"
+	"TPM::git+https://github.com/TrustedComputingGroup/TPM"
 )
 
 sha1sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -78,25 +92,21 @@ _setup_env_vars() {
 _prepare_tianocore_sources() {
 	cd "${_UDK_DIR}/"
 
-	declare -A _submod_path
-	_submod_path["CryptoPkg/Library/OpensslLib/openssl"]="openssl"
-	_submod_path["SoftFloat"]="softfloat"
-	_submod_path["UnitTestFrameworkPkg/Library/CmockaLib/cmocka"]="cmocka"
-	_submod_path["MdeModulePkg/Universal/RegularExpressionDxe/oniguruma"]="oniguruma"
-	_submod_path["MdeModulePkg/Library/BrotliCustomDecompressLib/brotli"]="brotli"
-	_submod_path["BaseTools/Source/C/BrotliCompress/brotli"]="brotli"
+	local _source _source_name _source_url
+	for _source in "${source[@]}"; do
+		_source_name=${_source%%::*}
+		_source_url=${_source#*::}
+		_source_url=${_source_url#git+}
+		_source_url=${_source_url%%#*}
+		git config "url.${srcdir}/${_source_name}.insteadOf" "${_source_url}"
+	done
 
 	msg "Updating submodules"
 	git submodule init
-	for _module in "${!_submod_path[@]}"; do
-		git config submodule."$_module".url "$srcdir/${_submod_path[$_module]}"
-	done
-
-	# Apply same fix as adopted by other projects when this change dropped. Example:
-	#   https://github.com/microsoft/go-infra/pull/71/files
-	# Also covered by this in Arch:
-	#   https://bugs.archlinux.org/task/76255
-	git -c protocol.file.allow=always submodule update
+	if ! git -c protocol.allow=never -c protocol.file.allow=always submodule update; then
+		msg 'Submodule update failed; add its repository to source=() first.'
+		return 1
+	fi
 
 	msg "Cleanup UDK config files"
 	rm -rf "${_UDK_DIR}/Build/" || true
@@ -131,7 +141,7 @@ prepare() {
 	_setup_env_vars
 
 	msg "Prepare Tianocore Sources"
-	_prepare_tianocore_sources
+	_prepare_tianocore_sources || return 1
 	echo
 }
 
