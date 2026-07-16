@@ -44,8 +44,10 @@ check() {
   test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
   # Skipping tests that require docker to be running, as this is not feasible in a clean chroot environment.
   # If we do build using makepkg in a user's normal environment, then some tests still fail.
-  # Disabling them for now.
-  #test-env/bin/python -m pytest -v
+  # This behaviour is also inconsistent since some tests pass/fail randomly if makepkg is run multiple times in a row.
+  # 1. Swarm tests are skipped because they require a swarm to be running.
+  # 2. Disabling all of them for now.
+  #test-env/bin/python -m pytest -v -k "not swarm"
 }
 
 package() {
