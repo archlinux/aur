@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=python-sedbgmux-git
-pkgver=r115.63c16fc
+pkgver=r289.9d1d6ae
 pkgrel=1
 pkgdesc="DebugMux client for [Sony] Ericsson phones and modems"
 arch=('any')

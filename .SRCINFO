@@ -1,6 +1,6 @@
 pkgbase = python-sedbgmux-git
 	pkgdesc = DebugMux client for [Sony] Ericsson phones and modems
-	pkgver = r115.63c16fc
+	pkgver = r289.9d1d6ae
 	pkgrel = 1
 	url = https://gitea.osmocom.org/fixeria/sedbgmux
 	arch = any
