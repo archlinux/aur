@@ -1,0 +1,5 @@
+[lumen-bin]
+source = "github"
+github = "jnsahaj/lumen"
+use_latest_release = true
+prefix = "v"
