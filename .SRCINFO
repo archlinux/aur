@@ -1,9 +1,9 @@
 pkgbase = packemon-git
 	pkgdesc = TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces (development version)
-	pkgver = 1.8.3.r0.g6d4ab66
+	pkgver = 1.8.26.r0.g3f0cf76
 	pkgrel = 1
 	url = https://github.com/ddddddO/packemon
-	install = packemon-git.install
+	install = packemon.install
 	arch = aarch64
 	arch = x86_64
 	license = BSD-2-Clause

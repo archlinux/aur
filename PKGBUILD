@@ -5,20 +5,20 @@
 
 pkgname='packemon-git'
 _pkgname="${pkgname/-git/}"
-pkgver=1.8.3.r0.g6d4ab66
-pkgrel=1
 pkgdesc='TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces (development version)'
+pkgver=1.8.26.r0.g3f0cf76
+pkgrel=1
+url='https://github.com/ddddddO/packemon'
+install="$_pkgname.install"
 arch=('aarch64' 'x86_64')
 license=('BSD-2-Clause')
-url='https://github.com/ddddddO/packemon'
+checkdepends=('iproute2')
 makedepends=('awk' 'git' 'go')
 depends=('glibc')
-checkdepends=('iproute2')
-source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+source=("git+$url.git")
 sha256sums=('SKIP')
-install="$pkgname.install"
 
 pkgver() {
   cd "$_pkgname"
@@ -79,9 +79,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" build/packemon
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" CREDITS ./*.md
+  install -Dm0755 -t "$pkgdir/usr/bin" build/packemon
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" CREDITS ./*.md
 }
 
 # eof
