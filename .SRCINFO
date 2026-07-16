@@ -1,6 +1,6 @@
 pkgbase = r-infinityflow
 	pkgdesc = Augmenting Massively Parallel Cytometry Experiments Using Multivariate Non-Linear Regressions
-	pkgver = 1.18.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/infinityFlow
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-infinityflow
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tensorflow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/infinityFlow_1.18.0.tar.gz
-	sha256sums = 009c8edef3d857ec60090acc1e28d2f63fc5823a6d781036ab4a7084cd3c7d0f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/infinityFlow_1.22.0.tar.gz
+	sha256sums = dde1f410013578da0b975de8592a0c287589f2298493ab005779dfad62aa7166
 
 pkgname = r-infinityflow
