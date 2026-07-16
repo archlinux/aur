@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.SRCINFO
+!PKGBUILD
+!log-path.diff
+!mautrix-instagram.service
+!mautrix-instagram.tmpfiles
+!sysusers-mautrix-instagram.conf
+
+!.gitignore

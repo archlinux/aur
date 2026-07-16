@@ -1,0 +1,11 @@
+--- a/mautrix-instagram.yaml	2026-07-16 16:05:46.634845335 +0200
++++ b/mautrix-instagram.yaml	2026-07-16 16:08:08.930867570 +0200
+@@ -549,7 +549,7 @@
+           format: pretty-colored
+         - type: file
+           format: json
+-          filename: ./logs/bridge.log
++          filename: /var/log/mautrix-instagram/bridge.log
+           max_size: 100
+           max_backups: 10
+           compress: false
