@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-core-addons
 	pkgdesc = Addons to QtCore
-	pkgver = 6.27.0
+	pkgver = 6.28.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-core-addons
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = sonic-frameworks-core-addons
 	makedepends = python-setuptools
 	makedepends = qt6-declarative
 	makedepends = qt6-tools
+	makedepends = shiboken6-generator
 	makedepends = sonic-frameworks-cmake-modules
 	depends = glibc
 	depends = libgcc
@@ -25,6 +26,6 @@ pkgbase = sonic-frameworks-core-addons
 	provides = kcoreaddons
 	conflicts = kcoreaddons
 	source = sonic-frameworks-core-addons-6.27.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-core-addons/archive/refs/tags/6.27.0.tar.gz
-	sha256sums = 35ffabcd8774afd4fadd4ae5ac83b62ef36c6675b1542fef5a004c93dd8299a8
+	sha256sums = 35e9732a78f9c045b505ab1428ba5f5af09cafa1b8145a266a4801e48d0d2af1
 
 pkgname = sonic-frameworks-core-addons
