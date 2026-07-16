@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=syntenet
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,7 +21,6 @@ depends=(
   r-rcolorbrewer
   r-rcpp
   r-rlang
-  r-rtracklayer
 )
 makedepends=(
   r-testthat
@@ -35,14 +34,15 @@ optdepends=(
   r-ggtree
   r-knitr
   r-labdsv
+  r-networkd3
   r-rmarkdown
+  r-rtracklayer
   r-testthat
   r-xml2
-  r-networkd3
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f09df9c4c0dcf3091a2294f9f5668108')
-b2sums=('076b4420ed8971ac7ad0d75e37574f1998ecddc160b8c2d43f33b22176a5be20a233f0dbf105afb5c6a75acec3bf30313b950920f4a8f3f04f38cc9af4640432')
+md5sums=('37b2833ca59ffa90209216f5fd842d49')
+b2sums=('18a74408f5df4936ddfd10ea9e9a870fc1c334bf7ca98e3ea13d27a575c5d32a1d87c118fa7029394ac678fdaf4c49a150596a7ec2f4f08dde4581cf213b3fca')
 
 #prepare() {
   # skip tests that cause a coredump
