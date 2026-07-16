@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Motif2Site
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('186f607a24d6fe0ac2e8646d28f4cbe7')
-b2sums=('b9b684d8d7ce75c0f3030f8fb4ae686ec5f73c071a4785a53846e2cd49450fd464e30a736a9a41eede012e8a1ab8c3ea7d03829a440045b1011127fc78c449fd')
+md5sums=('a8e9dd25e270c7e940092767e36c668e')
+b2sums=('887715938dd89483ae010a65a507487e53289c4357fc88e007674ac4ef7613016e5bc32d4cd6ef56dc9b555438af7e1b08bd4de722a91821d0bdc263308490ef')
 
 build() {
   mkdir build
