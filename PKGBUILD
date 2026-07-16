@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=QTLExperiment
-_pkgver=2.0.1
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b12d7ef7433a9dde9eba854c840313c2')
-b2sums=('0ca85ed2bdb5943ff738842a348510a6c13c69ab3f4e40d0107393b8fe4082703290c0a72690589c25cc5742e4010ea0016b2b14860a64b75ef108de98695bca')
+md5sums=('6eec02c192567f820b4a4e0bf836a4ba')
+b2sums=('0e45964c14e8c301f5364701e3cab28058745e120ac2ed320bd2472f9ead737370107cbb0821462f7305cd927c5062f25bf7a5e58e8bd5ea0cf3a9c084a02396')
 
 build() {
   mkdir build
