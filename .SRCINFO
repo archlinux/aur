@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (mingw-w64)
-	pkgver = 2026.2
+	pkgver = 2026.3
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-shaderc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = shaderc-2026.2.tar.gz::https://github.com/google/shaderc/archive/v2026.2.tar.gz
-	sha256sums = f924178e75e3293082481b25ed64d5e48a795b479dac3bd3c83d23070855df42
+	source = shaderc-2026.3.tar.gz::https://github.com/google/shaderc/archive/v2026.3.tar.gz
+	sha256sums = ee493ccf1b3038b4ef2fe024664c5eb2dc4bcc1f6b05b33e3909de0e19c81024
 
 pkgname = mingw-w64-shaderc

@@ -2,7 +2,7 @@
 
 _pkgname=shaderc
 pkgname=mingw-w64-${_pkgname}
-pkgver=2026.2
+pkgver=2026.3
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation (mingw-w64)'
 url="https://github.com/google/${_pkgname}"
@@ -12,7 +12,7 @@ depends=('mingw-w64-glslang')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'mingw-w64-spirv-tools' 'python' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f924178e75e3293082481b25ed64d5e48a795b479dac3bd3c83d23070855df42')
+sha256sums=('ee493ccf1b3038b4ef2fe024664c5eb2dc4bcc1f6b05b33e3909de0e19c81024')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -62,7 +62,7 @@ build() {
 }
 
 package() {
-  for _arch in ${_architectures}; do
+	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		rm -rf "$pkgdir/usr/${_arch}/static/bin"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
