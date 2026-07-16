@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="CLI tool to list directory content"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,14 +26,13 @@ conflicts=("${_appname}")
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('da23c6622ed46513e0b17d73163112c94a82ad59287cdc0b1d52dc8ed84a4e48')
+sha256sums=('c9abfa96709777ad3b3d310385ab5e9e57c621cd63826170eeb1933e0fa77cd8')
 
 
 prepare() {
 	cd ${srcdir}/${_appname}-${pkgver} || exit 1
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo update --precise "${pkgver}" --package "${_appname}"
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
