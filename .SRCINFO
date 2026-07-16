@@ -1,7 +1,7 @@
 pkgbase = openbsd-comp-mans
 	pkgdesc = Man pages from OpenBSD's compXX.tgz file set
 	pkgver = 7.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openbsd.org/
 	install = openbsd-comp-mans.install
 	arch = any

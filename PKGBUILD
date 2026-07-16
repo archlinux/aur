@@ -1,6 +1,6 @@
 pkgname="openbsd-comp-mans"
 pkgver=7.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Man pages from OpenBSD's compXX.tgz file set"
 url="https://www.openbsd.org/"
 license=('unknown')
