@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-io-extras
-pkgver=26.04.2
-pkgrel=2
+pkgver=26.04.3
+pkgrel=1
 pkgdesc='Additional components to increase the functionality of sonic-frameworks-io'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-frameworks-io-extras'
@@ -62,7 +62,7 @@ provides=(kio-extras)
 conflicts=(kio-extras)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c90470650067cf1482b50713fd1143ab90e434efba2c5a43683992de8724ba03')
+sha256sums=('6c2b6b9383d0a40a7d004eb1a3d807fdb2c6ea8819518152d98a906d88e6cc88')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

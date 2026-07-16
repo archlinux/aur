@@ -1,7 +1,7 @@
 pkgbase = sonic-frameworks-io-extras
 	pkgdesc = Additional components to increase the functionality of sonic-frameworks-io
-	pkgver = 26.04.2
-	pkgrel = 2
+	pkgver = 26.04.3
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-io-extras
 	arch = x86_64
 	groups = sonicde-frameworks
@@ -56,7 +56,7 @@ pkgbase = sonic-frameworks-io-extras
 	optdepends = taglib: audio file thumbnails
 	provides = kio-extras
 	conflicts = kio-extras
-	source = sonic-frameworks-io-extras-26.04.2.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-io-extras/archive/refs/tags/26.04.2.tar.gz
-	sha256sums = c90470650067cf1482b50713fd1143ab90e434efba2c5a43683992de8724ba03
+	source = sonic-frameworks-io-extras-26.04.3.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-io-extras/archive/refs/tags/26.04.3.tar.gz
+	sha256sums = 6c2b6b9383d0a40a7d004eb1a3d807fdb2c6ea8819518152d98a906d88e6cc88
 
 pkgname = sonic-frameworks-io-extras
