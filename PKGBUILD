@@ -1,6 +1,6 @@
 # Maintainer: Marcus Baw <marcus@bawmedical.co.uk>
 pkgname=sct-rs-bin
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc="Local-first SNOMED CT toolchain"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ url="https://github.com/pacharanero/sct"
 license=('AGPL-3.0-or-later')
 provides=("sct-rs=${pkgver}")
 conflicts=('sct-rs' 'sct')
-source_x86_64=("sct-rs-bin-${pkgver}-x86_64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.18.6/sct-linux-x86_64.tar.gz")
-source_aarch64=("sct-rs-bin-${pkgver}-aarch64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.18.6/sct-linux-aarch64.tar.gz")
-sha256sums_x86_64=('7ca3fdfa02e0bd40d6d4aa6273e0a9f143058281fcdbf6040ea108b45b6cb2ca')
-sha256sums_aarch64=('4c75b823dcfce65ddc115c9c83de086f29f31b5bf7bf976aec0cbcc047fb7a34')
+source_x86_64=("sct-rs-bin-${pkgver}-x86_64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.18.7/sct-linux-x86_64.tar.gz")
+source_aarch64=("sct-rs-bin-${pkgver}-aarch64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.18.7/sct-linux-aarch64.tar.gz")
+sha256sums_x86_64=('ee8447f8c9999785f1f6ce2f38eb574fae9decb0a006d7f83e0f92614a471195')
+sha256sums_aarch64=('ef6d0de863c8ec529c99a5c4f7cb2263b25a1a6a51b731c9eca039d4196c1740')
 
 package() {
   install -Dm755 "${srcdir}/sct" "${pkgdir}/usr/bin/sct"
