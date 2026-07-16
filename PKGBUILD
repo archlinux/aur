@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pageRank
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Temporal and Multiplex PageRank for Gene Regulatory Network Analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2205fef5c06c53e0a61d41ef1e38c29c14b265d43dad8e941ed213449f689e8c')
+sha256sums=('a3d6ebc3856c3a8d62000bd8cc5405a64e8c78692b485d4e611c44f137e2b4c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
