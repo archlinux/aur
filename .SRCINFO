@@ -1,6 +1,6 @@
 pkgbase = oa-sdk-git
 	pkgdesc = OA SDK — Development headers, CMake configs, and shader sources (git version)
-	pkgver = 0.7.1
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/realminc/oa
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oa-sdk-git
 	makedepends = ninja
 	makedepends = clang
 	depends = oa-git
-	source = git+ssh://git@github.com/realminc/oa.git
+	source = git+https://github.com/realminc/oa.git
 	source = slang-2026.4.2-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v2026.4.2/slang-2026.4.2-linux-x86_64.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP

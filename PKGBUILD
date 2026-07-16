@@ -1,6 +1,6 @@
 # Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-sdk-git
-pkgver=0.7.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="OA SDK — Development headers, CMake configs, and shader sources (git version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('oa-git')
 # Fetch the pinned upstream release, matching OA's CI.
 makedepends=('git' 'cmake' 'ninja' 'clang')
 _slangver=2026.4.2
-source=("git+ssh://git@github.com/realminc/oa.git"
+source=("git+https://github.com/realminc/oa.git"
         "slang-${_slangver}-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v${_slangver}/slang-${_slangver}-linux-x86_64.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
