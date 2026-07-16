@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCExperiment
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,12 +14,12 @@ depends=(
   r-biocio
   r-biocparallel
   r-dplyr
-  r-genomeinfodb
   r-genomicranges
   r-interactionset
   r-iranges
   r-rhdf5
   r-s4vectors
+  r-seqinfo
   r-strawr
   r-vroom
 )
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ce623858b111c992c068438b0b2d6254')
-b2sums=('2ffd8506e1e37728077e0039e0d92c54b62c928185247bb74311cc29ed79abf48698e77904a9da0e46ac1d7adf5624abb1ea6d19f8989906e52b3d342f5d15da')
+md5sums=('e00ad4bb0f7b67c3414426afb811731a')
+b2sums=('da0ce91d4a9d2819efde02f2ab06f262b32be4430926054f44a668d24cbc10561cc7df61453c95cc70192aaddfdb553ddf69b32603887251d5788808583b5552')
 
 build() {
   mkdir build
