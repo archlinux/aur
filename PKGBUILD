@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=marinerData
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a28af2d4fa0fd17d3f51631db7a9740d')
-b2sums=('cbedb513b461dc1d44db76e47715c2436b243223a6cfcb5000face055d07e336fa2702ec1b1d3eb4bb4b53301bc9eb8f19bb9c61bebff06c17865ecb1428070b')
+md5sums=('8a0b56752221a8fed1273889c6cc8bc8')
+b2sums=('74e987f99a8b26dccd3ccb9cc3a9bc8d72c006903f694d2faf608a1050e6ad8d8fc6c7aea7afd65110f4dced712adda168e05b70810ec95d2c16f533065a721f')
 
 build() {
   mkdir build
