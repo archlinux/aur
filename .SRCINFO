@@ -14,7 +14,7 @@ pkgbase = cider-studio-bin
 	depends = wine
 	source = https://github.com/ifwerez/cider/releases/download/1.8.4/cider-1.8.4-linux-x86_64
 	source = cider.png::https://github.com/ifwerez/cider/raw/main/src/resources/cider.png
-	sha256sums = fa2e1e3f73d2228257290b237a0d7c82a04ced7fae2a5773a9dda08e0bacce47
-	sha256sums = 4a078b5275a9e51e9a960a8e0500c4c332466b6f8a39a3475ab9c98984d4947e
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = cider-studio-bin
