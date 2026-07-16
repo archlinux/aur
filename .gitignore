@@ -1,0 +1,6 @@
+*.log
+*.tar.zst
+*.git
+kirigami-app-components*
+pkg
+src
