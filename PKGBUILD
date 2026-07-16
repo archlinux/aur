@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mbkmeans
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Mini-batch K-means Clustering for Single-Cell RNA-seq'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3713aee6847c41bd54a3d855ce39bce4c088c3bbcca5da16f1819709d800eb46')
+sha256sums=('f5f8e03db8159872c57b325307d09c54ac26c510e7e43425fb061356bf32ab08')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
