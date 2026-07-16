@@ -1,11 +1,14 @@
 pkgbase = python-pytest-flask
 	pkgdesc = A set of pytest fixtures to test Flask applications.
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytest-dev/pytest-flask
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-pytest
 	depends = python-flask
 	depends = python-werkzeug
