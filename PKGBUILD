@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metabolomicsWorkbenchR
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Metabolomics Workbench in R'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d6f1bda8bce226f14eaf9681005f2ce3c61104bf29d2c0356e244cc596b64fa')
+sha256sums=('222046e50f33d0f7241eb92ef9ac2fb316c34a5190fbdc24458f128d7a588e55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
