@@ -1,7 +1,7 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=donutstudio-bin
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DonutStudio — harmonic composition workstation and MIDI editor (just-intonation native)"
 arch=('x86_64')
 url="https://donutsdelivery.online/donutstudio"
@@ -26,78 +26,55 @@ options=('!strip')
 provides=('donutstudio')
 conflicts=('donutstudio')
 install="${pkgname}.install"
-# Source: published zip from the project download server (VPS serves
-# DonutStudio-linux.zip as a symlink alias for Arbit-linux.zip; same SHA256).
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('5d2aa976e07586de1fdb63075c132851d05db7e2faca0a832930e85c11f17c5e')
+sha256sums=('45d38e9990e90d0991b98ac6e98fc2c8c0187c74b7136bbbffb33d42a4fe1957')
 
 package() {
-  # Standalone goes to /opt/donutstudio/. The binary inside the zip is still
-  # named 'Arbit' (engine-internal codename) — that's the actual ELF executable.
   install -dm755 "${pkgdir}/opt/donutstudio"
-  cp -a "${srcdir}/Arbit" "${pkgdir}/opt/donutstudio/"
+  install -Dm755 "${srcdir}/DonutStudio" "${pkgdir}/opt/donutstudio/DonutStudio"
+  install -Dm755 "${srcdir}/DonutStudio Updater" "${pkgdir}/opt/donutstudio/DonutStudio Updater"
+  install -Dm755 "${srcdir}/ArbitPluginHost" "${pkgdir}/opt/donutstudio/ArbitPluginHost"
+  install -Dm755 "${srcdir}/ArbitPluginScanner" "${pkgdir}/opt/donutstudio/ArbitPluginScanner"
   cp -a "${srcdir}/Soundfonts" "${pkgdir}/opt/donutstudio/"
+  cp -a "${srcdir}/video-helper" "${pkgdir}/opt/donutstudio/"
 
-  # Sandboxed plugin host (optional, only in full builds)
-  if [ -f "${srcdir}/ArbitPluginHost" ]; then
-    cp -a "${srcdir}/ArbitPluginHost" "${pkgdir}/opt/donutstudio/"
-  fi
+  for content_dir in shader-packs mod-presets example-projects; do
+    cp -a "${srcdir}/${content_dir}" "${pkgdir}/opt/donutstudio/"
+  done
 
-  # Video-helper sidecar (GPL FFmpeg/ncnn helper)
-  if [ -d "${srcdir}/video-helper" ]; then
-    cp -a "${srcdir}/video-helper" "${pkgdir}/opt/donutstudio/"
-  fi
+  install -Dm644 "${srcdir}/DonutStudio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/donutstudio.svg"
 
-  # Icon (zip's icon is still ArbitIcon.svg — engine-internal filename)
-  install -Dm644 "${srcdir}/ArbitIcon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/donutstudio.svg"
-
-  # Plugin bundles. The zip contains 'Arbit.vst3' and 'Arbit.clap' (engine-internal
-  # codenames). We rename to DonutStudio.* at install time so DAWs that show the
-  # bundle path see the public name, matching the Windows/macOS install scripts.
   install -dm755 "${pkgdir}/usr/lib/clap"
-  install -Dm644 "${srcdir}/Arbit.clap" "${pkgdir}/usr/lib/clap/DonutStudio.clap"
+  install -Dm755 "${srcdir}/DonutStudio.clap" "${pkgdir}/usr/lib/clap/DonutStudio.clap"
 
   install -dm755 "${pkgdir}/usr/lib/vst3"
-  cp -a "${srcdir}/Arbit.vst3" "${pkgdir}/usr/lib/vst3/DonutStudio.vst3"
+  cp -a "${srcdir}/DonutStudio.vst3" "${pkgdir}/usr/lib/vst3/DonutStudio.vst3"
 
   # MIDI debug plugin (developer target; same rename for consistency)
   if [ -d "${srcdir}/MIDI Debug.vst3" ]; then
     cp -a "${srcdir}/MIDI Debug.vst3" "${pkgdir}/usr/lib/vst3/MIDI Debug.vst3"
   fi
 
-  # Bundled content (shader packs, mod presets) — placed next to the
-  # standalone binary so ShaderPackEnumerator path #2 finds them.
-  for content_dir in shader-packs mod-presets; do
-    if [ -d "${srcdir}/${content_dir}" ]; then
-      cp -a "${srcdir}/${content_dir}" "${pkgdir}/opt/donutstudio/"
-    fi
-  done
-
   # Permissions
   find "${pkgdir}/opt/donutstudio" -type d -exec chmod 755 {} +
   find "${pkgdir}/opt/donutstudio" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/opt/donutstudio/Arbit"
-  if [ -f "${pkgdir}/opt/donutstudio/ArbitPluginHost" ]; then
-    chmod 755 "${pkgdir}/opt/donutstudio/ArbitPluginHost"
-  fi
-  if [ -f "${pkgdir}/opt/donutstudio/video-helper/arbit-video-helper" ]; then
-    chmod 755 "${pkgdir}/opt/donutstudio/video-helper/arbit-video-helper"
-  fi
+  chmod 755 "${pkgdir}/opt/donutstudio/DonutStudio"
+  chmod 755 "${pkgdir}/opt/donutstudio/DonutStudio Updater"
+  chmod 755 "${pkgdir}/opt/donutstudio/ArbitPluginHost"
+  chmod 755 "${pkgdir}/opt/donutstudio/ArbitPluginScanner"
+  chmod 755 "${pkgdir}/opt/donutstudio/video-helper/arbit-video-helper"
 
   # VST3 bundle permissions
   find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -type d -exec chmod 755 {} +
   find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -type f -exec chmod 644 {} +
   find "${pkgdir}/usr/lib/vst3/DonutStudio.vst3" -name '*.so' -exec chmod 755 {} +
 
-  # Bitwig controller script (the zip's filename is still PureHarmony.control.js
-  # at the moment; rename to DonutStudio.control.js for consistency with the
-  # install scripts on Windows/macOS. The internal OSC protocol namespace stays
-  # /arbit/... since the engine's BitwigBridge.cpp uses those addresses.
-  install -Dm644 "${srcdir}/PureHarmony.control.js"     "${pkgdir}/usr/share/donutstudio/DonutStudio.control.js"
+  install -Dm644 "${srcdir}/DonutStudio.control.js" "${pkgdir}/usr/share/donutstudio/DonutStudio.control.js"
+  install -Dm644 "${srcdir}/THIRD_PARTY_LICENSES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_LICENSES.md"
 
   # Symlink for CLI
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/donutstudio/Arbit "${pkgdir}/usr/bin/donutstudio"
+  ln -s /opt/donutstudio/DonutStudio "${pkgdir}/usr/bin/donutstudio"
 
   # Desktop file
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/donutstudio.desktop" <<'EOF'
