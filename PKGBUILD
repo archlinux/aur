@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.46.2
+pkgver=1.48.0
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dldir="${pkgver%.*}"
 source=("http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 	"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
 )
-sha256sums=('71669ee6873970643797e2daaee64d1ca5f4453c8f472596005565de2243efa0'
+sha256sums=('5b90ed8277c514889e54e2b703ccf85086015d7174bbf10dd16e16f5e35d9cef'
             'SKIP')
 
 build() {
@@ -42,10 +42,8 @@ build() {
 
 	autoreconf -i
 
-	# libtorrent requires boost as a build dependency
-	if ! pacman -Qi boost >/dev/null 2>&1; then
-		LIBTORRENT_ARGS=--disable-torrent
-	fi
+	# The plugin does not compile against latest libtorrent
+	LIBTORRENT_ARGS=--disable-torrent
 
 	./configure --prefix=/usr --sbindir=/usr/bin $LIBTORRENT_ARGS
 	make
