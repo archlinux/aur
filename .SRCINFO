@@ -1,6 +1,6 @@
 pkgbase = r-rnbeads
 	pkgdesc = RnBeads
-	pkgver = 2.26.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RnBeads
 	arch = any
@@ -61,7 +61,7 @@ pkgbase = r-rnbeads
 	optdepends = r-watermelon
 	optdepends = r-wordcloud
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RnBeads_2.26.0.tar.gz
-	sha256sums = 3d298e01ddc8ca09e6ed67c875152b2aa78ae3fb89edc8d7c6b48707082b7797
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RnBeads_2.30.0.tar.gz
+	sha256sums = 991c43d727bfec3eb932efdd545e9c6c4ec834ad8485130382e7a704f5558c2a
 
 pkgname = r-rnbeads
