@@ -2,7 +2,7 @@
 
 pkgname=specify-cli
 pkgver=0.12.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
 url='https://github.com/github/spec-kit'
@@ -46,6 +46,10 @@ optdepends=(
   'tabnine: Supported Agent'
   'visual-studio-code-bin: Visual Studio Code'
   'windsurf: Supported Agent, IDE-based'
+)
+conflicts=(
+  'spec-kit'
+  'specify-cli-bin'
 )
 options=(!debug)
 source=("git+$url.git#tag=v$pkgver")
