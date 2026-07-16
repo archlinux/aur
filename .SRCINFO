@@ -1,6 +1,6 @@
 pkgbase = r-mzr
 	pkgdesc = parser for netCDF, mzXML, mzData and mzML and mzIdentML files (mass spectrometry data)
-	pkgver = 2.44.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mzR
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-mzr
 	options = !lto
 	options = !buildflags
 	options = staticlibs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mzR_2.44.0.tar.gz
-	sha256sums = 8230ae865a4abd978d76b7ec067744f5bf8a393bdc6781588c6d0d005fdc3511
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mzR_2.46.0.tar.gz
+	sha256sums = c1cd891663c7b8a187f032f956c496a2ff41cdbac1f3d6b7a21be61dbf743a61
 
 pkgname = r-mzr
