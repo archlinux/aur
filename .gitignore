@@ -7,3 +7,8 @@ nodewipe-*[0-9]
 !.SRCINFO
 !.gitignore
 !README.md
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+nodewipe-*[0-9]
