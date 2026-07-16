@@ -2,7 +2,7 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 _projectname='msgraph-sdk-python-core'
 pkgname='python-msgraph-core'
-pkgver='1.5.0'
+pkgver='1.5.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline'
@@ -11,9 +11,9 @@ url="https://github.com/microsoftgraph/$_projectname"
 license=('MIT')
 depends=('python>=3.10.0' 'python-h2' 'python-httpx>=0.23.0' 'python-microsoft-kiota-abstractions>=1.11.6' 'python-microsoft-kiota-authentication-azure>=1.11.6' 'python-microsoft-kiota-http>=1.11.6')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-azure-identity' 'python-deprecated' 'python-dotenv' 'python-pytest' 'python-pytest-asyncio')
+checkdepends=('python-azure-identity' 'python-deprecated' 'python-dotenv' 'python-microsoft-kiota-serialization-json>=1.11.6' 'python-pytest' 'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a09718f71f4e6887669c0302f9c64d6d94cd90600f9b351909e3204f211680197973dec0ba688efbba9dab81f0edf3c6f521a8122b6d62e74daab50eee183e12')
+b2sums=('5239b58af4b280055fb1461e5d4ec9cdfa9087d7a960f2d3341ec3e255a445ffd62c705dc66b9a94a68fc37f997a6e93f133f8d354b3d4ee4866e738babe839f')
 
 _sourcedirectory="$_projectname-$pkgver"
 

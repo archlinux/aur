@@ -1,6 +1,6 @@
 pkgbase = python-msgraph-core
 	pkgdesc = Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/microsoftgraph/msgraph-sdk-python-core
@@ -9,6 +9,7 @@ pkgbase = python-msgraph-core
 	checkdepends = python-azure-identity
 	checkdepends = python-deprecated
 	checkdepends = python-dotenv
+	checkdepends = python-microsoft-kiota-serialization-json>=1.11.6
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	makedepends = python-build
@@ -21,7 +22,7 @@ pkgbase = python-msgraph-core
 	depends = python-microsoft-kiota-abstractions>=1.11.6
 	depends = python-microsoft-kiota-authentication-azure>=1.11.6
 	depends = python-microsoft-kiota-http>=1.11.6
-	source = python-msgraph-core-1.5.0.tar.gz::https://github.com/microsoftgraph/msgraph-sdk-python-core/archive/refs/tags/v1.5.0.tar.gz
-	b2sums = a09718f71f4e6887669c0302f9c64d6d94cd90600f9b351909e3204f211680197973dec0ba688efbba9dab81f0edf3c6f521a8122b6d62e74daab50eee183e12
+	source = python-msgraph-core-1.5.1.tar.gz::https://github.com/microsoftgraph/msgraph-sdk-python-core/archive/refs/tags/v1.5.1.tar.gz
+	b2sums = 5239b58af4b280055fb1461e5d4ec9cdfa9087d7a960f2d3341ec3e255a445ffd62c705dc66b9a94a68fc37f997a6e93f133f8d354b3d4ee4866e738babe839f
 
 pkgname = python-msgraph-core
