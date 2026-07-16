@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Guitar
-_pkgver=2.24.0
+_pkgver=2.28.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Guitar'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('986342647104108323661f3054b56e07a36b74e8630a628ecd0507ee7874bd5a')
+sha256sums=('67395d34e80c089619254ac9d2d0bcf5f6353908a9ededa77349dee9d467bb83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
