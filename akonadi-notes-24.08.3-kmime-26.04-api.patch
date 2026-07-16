@@ -1,0 +1,122 @@
+--- a/src/noteutils.cpp
++++ b/src/noteutils.cpp
+@@ -193,13 +193,13 @@
+         qCWarning(AKONADINOTES_LOG) << "Empty message";
+         return;
+     }
+-    title = msg->subject(true)->asUnicodeString();
+-    text = msg->mainBodyPart()->decodedText(true); // remove trailing whitespace, so we get rid of "  " in empty notes
+-    if (msg->from(false)) {
+-        from = msg->from(false)->asUnicodeString();
++    title = msg->subject(KMime::Create)->asUnicodeString();
++    text = msg->mainBodyPart()->decodedText(KMime::Content::TrimSpaces); // remove trailing whitespace, so we get rid of "  " in empty notes
++    if (msg->from(KMime::DontCreate)) {
++        from = msg->from(KMime::DontCreate)->asUnicodeString();
+     }
+-    creationDate = msg->date(true)->dateTime();
+-    if (msg->mainBodyPart()->contentType(false) && msg->mainBodyPart()->contentType()->mimeType() == "text/html") {
++    creationDate = msg->date(KMime::Create)->dateTime();
++    if (msg->mainBodyPart()->contentType(KMime::DontCreate) && msg->mainBodyPart()->contentType()->mimeType() == "text/html") {
+         textFormat = Qt::RichText;
+     }
+ 
+@@ -262,8 +262,8 @@
+ {
+     auto content = new KMime::Content();
+     auto header = new KMime::Headers::Generic(X_NOTES_CONTENTTYPE_HEADER);
+-    header->fromUnicodeString(CONTENT_TYPE_CUSTOM, ENCODING);
+-    content->appendHeader(header);
++    header->fromUnicodeString(CONTENT_TYPE_CUSTOM);
++    content->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+     QDomDocument document = createXMLDocument();
+     QDomElement element = document.createElement(QStringLiteral("custom"));
+     element.setAttribute(QStringLiteral("version"), QStringLiteral("1.0"));
+@@ -306,12 +306,12 @@
+ {
+     auto content = new KMime::Content();
+     auto header = new KMime::Headers::Generic(X_NOTES_CONTENTTYPE_HEADER);
+-    header->fromUnicodeString(CONTENT_TYPE_ATTACHMENT, ENCODING);
+-    content->appendHeader(header);
++    header->fromUnicodeString(CONTENT_TYPE_ATTACHMENT);
++    content->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+     if (a.url().isValid()) {
+         header = new KMime::Headers::Generic(X_NOTES_URL_HEADER);
+-        header->fromUnicodeString(a.url().toString(), ENCODING);
+-        content->appendHeader(header);
++        header->fromUnicodeString(a.url().toString());
++        content->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+     } else {
+         if (a.dataBase64Encoded()) {
+             content->setEncodedBody(a.data());
+@@ -322,8 +322,8 @@
+     content->contentType()->setMimeType(a.mimetype().toLatin1());
+     if (!a.label().isEmpty()) {
+         header = new KMime::Headers::Generic(X_NOTES_LABEL_HEADER);
+-        header->fromUnicodeString(a.label(), ENCODING);
+-        content->appendHeader(header);
++        header->fromUnicodeString(a.label());
++        content->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+     }
+     content->contentTransferEncoding()->setEncoding(KMime::Headers::CEbase64);
+     content->contentDisposition()->setDisposition(KMime::Headers::CDattachment);
+@@ -346,7 +346,7 @@
+         attachment.setContentID(QString::fromLatin1(part->contentID()->identifier()));
+         attachments.append(attachment);
+     } else {
+-        Attachment attachment(part->decodedContent(), QLatin1StringView(part->contentType()->mimeType()));
++        Attachment attachment(part->decodedBody(), QLatin1StringView(part->contentType()->mimeType()));
+         attachment.setLabel(label);
+         attachment.setContentID(QString::fromLatin1(part->contentID()->identifier()));
+         attachments.append(attachment);
+@@ -397,17 +397,17 @@
+         uid = QUuid::createUuid().toString().mid(1, 36);
+     }
+ 
+-    msg->subject(true)->fromUnicodeString(title, ENCODING);
+-    msg->date(true)->setDateTime(creationDate);
+-    msg->from(true)->fromUnicodeString(d->from, ENCODING);
++    msg->subject(KMime::Create)->fromUnicodeString(title);
++    msg->date(KMime::Create)->setDateTime(creationDate);
++    msg->from(KMime::Create)->fromUnicodeString(d->from);
+     const QString formatDate = QLocale::c().toString(lastModifiedDate, QStringLiteral("ddd, ")) + lastModifiedDate.toString(Qt::RFC2822Date);
+ 
+     auto header = new KMime::Headers::Generic(X_NOTES_LASTMODIFIED_HEADER);
+-    header->fromUnicodeString(formatDate, ENCODING);
+-    msg->appendHeader(header);
++    header->fromUnicodeString(formatDate);
++    msg->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+     header = new KMime::Headers::Generic(X_NOTES_UID_HEADER);
+-    header->fromUnicodeString(uid, ENCODING);
+-    msg->appendHeader(header);
++    header->fromUnicodeString(uid);
++    msg->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+ 
+     QString classification = CLASSIFICATION_PUBLIC;
+     switch (d->classification) {
+@@ -422,20 +422,20 @@
+         break;
+     }
+     header = new KMime::Headers::Generic(X_NOTES_CLASSIFICATION_HEADER);
+-    header->fromUnicodeString(classification, ENCODING);
+-    msg->appendHeader(header);
++    header->fromUnicodeString(classification);
++    msg->appendHeader(std::unique_ptr<KMime::Headers::Generic>(header));
+ 
+     for (const Attachment &a : std::as_const(d->attachments)) {
+-        msg->appendContent(d->createAttachmentPart(a));
++        msg->appendContent(std::unique_ptr<KMime::Content>(d->createAttachmentPart(a)));
+     }
+ 
+     if (!d->custom.isEmpty()) {
+-        msg->appendContent(d->createCustomPart());
++        msg->appendContent(std::unique_ptr<KMime::Content>(d->createCustomPart()));
+     }
+ 
+-    msg->mainBodyPart()->contentType(true)->setCharset(ENCODING);
++    msg->mainBodyPart()->contentType(KMime::Create)->setCharset(ENCODING);
+     msg->mainBodyPart()->fromUnicodeString(text);
+-    msg->mainBodyPart()->contentType(true)->setMimeType(d->textFormat == Qt::RichText ? "text/html" : "text/plain");
++    msg->mainBodyPart()->contentType(KMime::Create)->setMimeType(d->textFormat == Qt::RichText ? "text/html" : "text/plain");
+ 
+     msg->assemble();
+     return msg;
