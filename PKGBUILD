@@ -1,7 +1,7 @@
 # Maintainer: Mitkomm <Mitkomm at proton dot me>
 
 pkgname=cubiclauncher
-pkgver=31
+pkgver=31.0.0
 pkgrel=1
 pkgdesc="Open-source Minecraft launcher"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
   'git'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CubicLauncherDevs/CubicLauncher/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7528894abefa2a0f5673b4e5db6ab3d3183e8624c6d3bb1d856d36f18edb34ae')
+sha256sums=('1c04437cce4a37c81a033fd99993bc7faf7535f437648ee7b0bd60672e07bc63')
 
 options=(!lto)
 

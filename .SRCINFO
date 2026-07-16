@@ -1,6 +1,6 @@
 pkgbase = cubiclauncher
 	pkgdesc = Open-source Minecraft launcher
-	pkgver = 31
+	pkgver = 31.0.0
 	pkgrel = 1
 	url = https://github.com/CubicLauncherDevs/CubicLauncher
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cubiclauncher
 	depends = zstd
 	depends = openssl
 	options = !lto
-	source = cubiclauncher-31.tar.gz::https://github.com/CubicLauncherDevs/CubicLauncher/archive/refs/tags/v31.tar.gz
-	sha256sums = 7528894abefa2a0f5673b4e5db6ab3d3183e8624c6d3bb1d856d36f18edb34ae
+	source = cubiclauncher-31.0.0.tar.gz::https://github.com/CubicLauncherDevs/CubicLauncher/archive/refs/tags/v31.0.0.tar.gz
+	sha256sums = 1c04437cce4a37c81a033fd99993bc7faf7535f437648ee7b0bd60672e07bc63
 
 pkgname = cubiclauncher
