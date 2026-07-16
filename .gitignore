@@ -1,2 +1,5 @@
+# SPDX-License-Identifier: 0BSD
+# SPDX-FileCopyrightText: Arch Linux contributors
+
 # Ignore every file, require forced additions
 *
