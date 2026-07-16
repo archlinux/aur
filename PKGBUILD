@@ -3,30 +3,37 @@
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 # Contributor: Sebastian Bøe <$(base64 --decode <<<'c2ViYXN0aWFuYm9vZUBnbWFpbC5jb20K')>
 
-: ${_build_python:=true}
 : ${_build_patch:=true}
-
-: ${_commit=}
 
 _pkgname="yosys"
 pkgname="$_pkgname-git"
-pkgver=0.64.r157.gec0a102
+pkgver=0.67.r40.g45ea2b8
 pkgrel=1
 pkgdesc="A framework for RTL synthesis"
 url="https://github.com/YosysHQ/yosys"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 license=('ISC')
 
 depends=(
-  'boost-libs'
   'gtkwave' # vcd2fst
-  'libffi'
   'tcl'
+
+  # for python module
+  'python'
+  'python-click'
 )
 makedepends=(
-  'boost'
+  'cmake'
   'git'
-  'python'
+  'ninja'
+
+  # for python module
+  'pybind11'
+  'python-build'
+  'python-cxxheaderparser'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
 optdepends=(
   'graphviz: Schematics display support'
@@ -36,36 +43,14 @@ checkdepends=(
   'iverilog'
 )
 
-if [[ "${_build_python::1}" == "t" ]]; then
-  depends+=(
-    'pybind11'
-    'python'
-    'python-click'
-  )
-  makedepends+=(
-    'python-cxxheaderparser' # AUR
-
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
-  )
-fi
-
-provides=("$_pkgname=${pkgver%.g*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 options=('!lto')
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
-  "git+https://github.com/YosysHQ/abc.git"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 if [[ "${_build_patch::1}" == "t" ]]; then
   source+=(
@@ -80,17 +65,18 @@ fi
 
 prepare() {
   cd "$_pkgsrc"
-  git submodule init
-  git config submodule.abc.url "$srcdir/abc"
-  git -c protocol.file.allow=always submodule update
+  git submodule update --init --depth=1
 
-  if [[ "${_build_patch::1}" == "t" ]]; then
-    patch -Np1 -F100 -i ../0001-verilog-port-renaming.patch
-    patch -Np1 -F100 -i ../0002-verilog-port-renaming-tests.patch
-  fi
-
-  # disable lto
-  sed -e '/flto/d' -i Makefile
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 pkgver() {
@@ -99,42 +85,32 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-_make() {
-  local _make_config=(
-    CONFIG=gcc
-    PREFIX="/usr"
-    ENABLE_LIBYOSYS=1
-    STRIP=':'
+build() {
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_TESTING=$CHECKFUNC
+    -Wno-author
+
+    -DYOSYS_INSTALL_DRIVER=ON
+    -DYOSYS_INSTALL_LIBRARY=ON
+    -DYOSYS_INSTALL_PYTHON=ON
+    -DYOSYS_USE_BUNDLED_LIBS=ON
+    -DYOSYS_WITH_PYTHON=ON
   )
 
-  if [[ "${_build_python::1}" == "t" ]]; then
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    local python_version_combined=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-    export BOOST_PYTHON_LIB="-lpython${python_version} -lboost_python${python_version_combined}"
-
-    _make_config+=(
-      ENABLE_PYOSYS=1
-      PYOSYS_USE_UV=0
-    )
-  else
-    _make_config+=(ENABLE_PYOSYS=0)
-  fi
-
-  make "${_make_config[@]}" "$@"
-}
-
-build() {
-  cd "$_pkgsrc"
-  _make
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
-  cd "$_pkgsrc"
-  _make vanilla-test
+  ctest --test-dir build/tests/unit --rerun-failed --output-on-failure
 }
 
 package() {
-  cd "$_pkgsrc"
-  _make DESTDIR="$pkgdir" PYTHON_PREFIX="$pkgdir/usr" install
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc"/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
