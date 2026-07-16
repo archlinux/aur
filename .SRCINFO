@@ -1,6 +1,6 @@
 pkgbase = stream-overlay
 	pkgdesc = Borderless, transparent, click-through browser windows for streaming
-	pkgver = 5.0.0
+	pkgver = 6.1.0
 	pkgrel = 2
 	url = https://github.com/hperrin/stream-overlay/
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = stream-overlay
 	depends = hicolor-icon-theme
 	depends = bash
 	depends = nodejs
-	source = https://github.com/hperrin/stream-overlay/archive/refs/tags/v5.0.0.tar.gz
+	source = https://github.com/hperrin/stream-overlay/archive/refs/tags/v6.1.0.tar.gz
 	source = stream-overlay.png
 	source = stream-overlay.desktop
 	source = stream-overlay.sh
-	sha256sums = 8e9629728c52a46de42bc948e8aa4b32dd6f7732351c40f3045620bbdd27ca0c
-	sha256sums = f2f99d2aed697ee813c0e351f949979148ac22d73271f667f0a7f5690124635e
-	sha256sums = b936d6454c941232565e282f566845b8de2ee133bdcfeaff127a8f7e43f5b28e
-	sha256sums = 85dfd699c65ba774343def1522c1d929b63ca90af8dd1c3c17e6a6f0fb6f4191
+	sha256sums = 9b8b97a4686e70461e10a56eef736e3359041402ba7a7de7a24fb5f5dc91f759
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = stream-overlay
