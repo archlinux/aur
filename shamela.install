@@ -1,7 +1,9 @@
 post_install() {
-    _install_path=$(cat /usr/share/shamela-bin.conf)
+    _install_path=$(cat /usr/share/shamela-bin.conf 2>/dev/null)
     
-    chmod -R 777 "$_install_path"
+    if [ -n "$_install_path" ]; then
+        chmod -R 777 "$_install_path"
+    fi
     
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     update-desktop-database -q
@@ -12,13 +14,25 @@ post_upgrade() {
 }
 
 post_remove() {
-    _install_path=$(cat /usr/share/shamela-bin.conf)
+    _install_path=$(cat /usr/share/shamela-bin.conf 2>/dev/null)
     
-    if [ -d "$_install_path" ]; then
+
+    if [ -n "$_install_path" ] && [ -d "$_install_path" ]; then
         rm -rf "$_install_path"
     fi
     
     rm -f /usr/share/shamela-bin.conf
+    
+
+    for user_home in /home/*; do
+        if [ -f "$user_home/.local/share/applications/shamela.desktop" ]; then
+            rm -f "$user_home/.local/share/applications/shamela.desktop"
+        fi
+    done
+    
+    if [ -f "/root/.local/share/applications/shamela.desktop" ]; then
+        rm -f "/root/.local/share/applications/shamela.desktop"
+    fi
     
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     update-desktop-database -q
