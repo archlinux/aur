@@ -2,8 +2,8 @@
 
 _pkgname=docmancer
 pkgname=$_pkgname-git
-pkgver=r137.15b884e
-pkgrel=1
+pkgver=r156.e9c30b2
+pkgrel=2
 pkgdesc="Fetch docs, embed locally, expose to AI agents via skills"
 arch=('any')
 url="https://github.com/docmancer/docmancer"
@@ -12,8 +12,6 @@ depends=(
   'python>=3.11'
   'python-pydantic'
   'python-pydantic-settings'
-  'python-qdrant-client'
-  'python-fastembed'
   'python-httpx'
   'python-click'
   'python-yaml'
@@ -24,16 +22,25 @@ depends=(
   'python-ultimate-sitemap-parser'
   'python-beautifulsoup4'
   'python-jsonschema'
-  'python-mcp'
+  'python-sqlite-vec'
+  'python-model2vec'
+  'python-charset-normalizer'
+  'python-pypdf'
 )
+# striprtf (RTF loader) is unpackaged on Arch; the loader degrades gracefully without it.
 optdepends=(
+  'python-pdfplumber: PDF table/layout extraction fallback'
+  'python-docx: DOCX ingestion'
+  'python-mcp: MCP server (docmancer mcp; pulls starlette + sse-starlette)'
+  'python-fastembed: heavy ONNX embeddings provider'
+  'python-qdrant-client: qdrant vector store backend'
   'python-playwright: browser extraction'
   'python-datasets: benchmark datasets'
   'python-openai: OpenAI benchmark provider'
   'python-anthropic: Anthropic benchmark provider'
   'python-google-genai: Gemini benchmark provider'
 )
-makedepends=('git' 'python-build' 'python-installer')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/docmancer/docmancer.git")
@@ -46,7 +53,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  python -m build --wheel
+  # --no-isolation: build against Arch's hatchling instead of downloading one at
+  # build time. Upstream pins hatchling<1.27 (metadata conservatism); the wheel
+  # builds and installs correctly with current hatchling, so skip the dep check.
+  # Upstream's requires-python <3.14 cap is likewise metadata-only: the package
+  # runs on Arch's 3.14 (exercised end-to-end: index, embed, hybrid query).
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
