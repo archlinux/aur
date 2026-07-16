@@ -1,0 +1,11 @@
+--- Makefile	2026-07-17 02:08:35.136250061 +1000
++++ Makefile.npm-fix	2026-07-17 02:10:53.277342025 +1000
+@@ -24,7 +24,7 @@
+ 	rm -rf node_modules
+ 
+ node_modules: package.json
+-	npm install --deps
++	npm install
+ 
+ build/main.js: node_modules $(jssources)
+ 	npm run build

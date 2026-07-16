@@ -2,15 +2,19 @@
 
 _appname=groupfolders
 pkgname=nextcloud-app-groupfolders
-pkgver=22.0.2
+pkgver=22.0.3
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
 url="https://github.com/nextcloud/groupfolders"
 license=('AGPL-3.0-or-later')
 makedepends=('npm' 'jq' 'yq' 'rsync')
-source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('af5ef367ea20ce0f6f1910f6178fc9567dc7714fe9011c5c20383584cdf0bebdb2975796cb0db17ae664b500b0d29697f969a641e6d423c0b9ee5b339d4a405d')
+source=(
+    "${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "npm-v12-unknown-deps-flag-fix.patch"
+)
+sha512sums=('5e7abfe7b9380901b38b819fe81f9a688a93bf713a665321c1febcd79b0b15d5acce9b9b227e521ab316e39e28efb0a961a8e0884cad215af09cabd6db3390f1'
+            '882a51e0593e62d3e39fb72ad56fe5b576550125eba49eda41bf4b9ef1c3f494f4006630e800804b3a9828f075388decda32f7639d074ad24120d3eefab25b62')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
@@ -30,10 +34,15 @@ prepare() {
 
     # Fix incorrect version string in Makefile
     sed -i -e "s/\<version+=.*\>/version+=${pkgver}/g" "${srcdir}/${_appname}/Makefile"
+
     # Add version string to npm package.json
     _tmp=$(mktemp)
     _package_json="${srcdir}/${_appname}/package.json"
     jq --arg v "${pkgver}" '.version = $v' ${_package_json} > "${_tmp}" && mv "${_tmp}" "${_package_json}"
+
+    # Apply patch to fix npm v12 unknown cli flag '--deps' issue
+    echo "Applying patch to fix npm v12 unknown deps flag issue"
+    patch -d "${srcdir}/${_appname}" -Np0 -i "${srcdir}/npm-v12-unknown-deps-flag-fix.patch"
 }
 
 build() {
