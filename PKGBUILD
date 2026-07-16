@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RareVariantVis
-_pkgver=2.36.0
+_pkgver=2.40.0
 pkgname=r-${_pkgname,,}
-pkgver=2.36.0
+pkgver=2.40.0
 pkgrel=1
 pkgdesc='A suite for analysis of rare genomic variants in whole genome sequencing data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e31c5c2d8bbfcccb305db7341e9b499b3e33fe6d16368d623ad50b9a135196f9')
+sha256sums=('307ad8e91a10e7b2a5a63522f75d3c240a966976902cf658092cd1a13bc696a4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
