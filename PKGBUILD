@@ -1,5 +1,5 @@
 pkgname=byedpi-gtk
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="GTK frontend for byedpi to bypass DPI restrictions"
 arch=('any')
