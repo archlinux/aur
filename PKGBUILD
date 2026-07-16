@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowBin
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Combining multitube flow cytometry data by binning'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('52b3c5f1405008bd383f30fbea4176c92ecccebb976921078a4527cc736b30e5')
+sha256sums=('2878e66905b229f27799b0775d21304cd73fa5a25df21b1f158bed84d54306e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
