@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=OGRE
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,6 +21,7 @@ depends=(
   r-iranges
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-shiny
   r-shinybs
   r-shinydashboard
@@ -36,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('723fdc8739adaf8b7c3716e2028a213c')
-b2sums=('0ab10c1dffdeca097728809de1232308d28ed6778073567535630f2075a6d184e435f388bbdcd5f73a86081eaaa9661b1ada86f05ae23b0512e8125756d536c8')
+md5sums=('fe5fac5c93b11989a8d912115f5fa0b7')
+b2sums=('39e3c90ce041856a1ce771e58f07158ca525759a4739aee57946e6de793a9d2b752a0df2978014ddac5938d68ceeaeb79bd01586e11be58f66a5f7e120b6e8ec')
 
 build() {
   mkdir build
