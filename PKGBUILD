@@ -4,12 +4,11 @@
 pkgname=rocm-gfx120x-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - RDNA4"
 pkgver=7.14.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
-makedepends=('wget')
 depends=('ocl-icd' 'gcc-libs')
 provides=('opencl-driver' 'amdrocm-amdsmi' 'amdrocm-llvm' 'amdrocm-runtime' 'amdrocm-fft' 'amdrocm-blas' 'amdrocm-sparse' 'amdrocm-solver' 'amdrocm-dnn' 'amdrocm-rand' 'amdrocm-ccl' 'amdrocm-profiler' 'amdrocm-profiler-base' 'amdrocm-base' 'amdrocm-ck'
 'amdrocm-debugger' 'amdrocm-hipify' 'amdrocm-opencl' 'amdrocm-decode' 'amdrocm-jpeg' 'amdrocm-rccl' 'amdrocm-rocshmem' 'amdrocm-rdc' 'amdrocm-sysdeps')
@@ -33,7 +32,6 @@ prepare() {
 }
 
 package() {
-
     mv "${srcdir}/opt/" "${pkgdir}/"
 
     mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
