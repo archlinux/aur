@@ -1,0 +1,14 @@
+pkgbase = cosmic-comp-macos-touchpad-curve
+	pkgdesc = macOS-style libinput accel curve for the COSMIC touchpad, installed as a /usr/share/cosmic default (auto-applies unless you have a per-user override)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lxp-git/cosmic-ext-applet-inhibit-status
+	arch = any
+	license = GPL-3.0-only
+	depends = cosmic-comp-inhibit-export
+	source = input_touchpad
+	source = cosmic-apply-macos-touchpad-curve
+	b2sums = c572e6f56f8a323b586c911c3599eba715a77bef18f065826ba84ec122127cd97655a5117e044326d9c8844014a054ffa6b5776f767ba55151466b0c5d94ba0b
+	b2sums = 7336e5bbafbbf967042e14804d29bb7006c42d08523b95063211e8324a16ab52240fb1c25a48e79379c34e63d458e38e20ecb7cc103e04323c179b4a8dc99daf
+
+pkgname = cosmic-comp-macos-touchpad-curve

@@ -1,0 +1,25 @@
+(
+    state: Enabled,
+    acceleration: Some((
+        profile: Some(Custom),
+        speed: 0.0,
+        custom_points: Some((
+            step: 0.5,
+            motion: [0.0, 0.05, 0.11, 0.195, 0.32, 0.494, 0.735, 1.06, 1.488, 2.05, 2.775, 3.69, 4.83, 6.235, 7.95, 9.994, 12.4, 15.2, 17.1, 18.05, 19.0, 19.95],
+        )),
+    )),
+    click_method: Some(Clickfinger),
+    left_handed: Some(false),
+    scroll_config: Some((
+        method: Some(TwoFinger),
+        natural_scroll: None,
+        scroll_button: None,
+        scroll_factor: Some(0.3),
+    )),
+    tap_config: Some((
+        enabled: true,
+        button_map: Some(LeftRightMiddle),
+        drag: false,
+        drag_lock: false,
+    )),
+)

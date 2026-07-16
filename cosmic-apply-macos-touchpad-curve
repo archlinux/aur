@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Copy the packaged macOS-style touchpad curve into the current user's COSMIC
+# config, overriding any existing ~/.config touchpad settings. cosmic-comp
+# watches cosmic-config, so this applies live -- no relog needed.
+#
+# You normally do NOT need this: the package installs the same curve as a
+# /usr/share/cosmic system default, which cosmic-comp already uses when you have
+# no per-user override. Run this only to force the curve onto a machine where
+# you already have a personal touchpad config shadowing the default.
+#
+# Requires a custom-accel-capable cosmic-comp (e.g. the AUR package
+# cosmic-comp-inhibit-export); stock cosmic-comp cannot deserialize `Custom` and
+# falls back to default accel. Do NOT touch Settings > Touchpad afterwards -- the
+# stock GUI rewrites this file and drops custom_points.
+set -euo pipefail
+src=/usr/share/cosmic/com.system76.CosmicComp/v1/input_touchpad
+dst="${XDG_CONFIG_HOME:-$HOME/.config}/cosmic/com.system76.CosmicComp/v1/input_touchpad"
+[ -f "$src" ] || { echo "missing $src -- reinstall cosmic-comp-macos-touchpad-curve" >&2; exit 1; }
+mkdir -p "$(dirname "$dst")"
+[ -f "$dst" ] && cp -- "$dst" "$dst.bak" && echo "-> backed up existing config to $dst.bak"
+cp -- "$src" "$dst"
+echo "-> applied macOS touchpad curve to $dst"
