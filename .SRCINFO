@@ -1,6 +1,6 @@
 pkgbase = mark-shot
 	pkgdesc = Qt 6 Wayland screenshot selection and annotation tool
-	pkgver = 0.1.40
+	pkgver = 0.1.41
 	pkgrel = 1
 	url = https://github.com/jswysnemc/mark-shot
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = mark-shot
 	optdepends = python-pillow: image processing for code scanning
 	optdepends = python-zxing-cpp: preferred QR/barcode scanning backend
 	optdepends = tesseract: fallback OCR backend
-	source = mark-shot-0.1.40::git+https://github.com/jswysnemc/mark-shot.git#tag=v0.1.40
+	source = mark-shot-0.1.41::git+https://github.com/jswysnemc/mark-shot.git#tag=v0.1.41
 	sha256sums = SKIP
 
 pkgname = mark-shot
