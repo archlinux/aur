@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PPInfer
-_pkgver=1.34.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Inferring functionally related proteins using protein interaction networks'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   r-yeastexpdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('80906cd6a89af64c1faf31ff1440a15f068019603332be5ef5d077b97a3e8943')
+sha256sums=('aa623f2cb5596a2fe80a275c32b2d4a1dc6395a71a32998141a37db74d8eec54')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
