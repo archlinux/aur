@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-desktop-interface
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=2
 pkgdesc='Sonic Desktop Interface'
 arch=(x86_64)
@@ -98,7 +98,7 @@ provides=(plasma-desktop)
 conflicts=(plasma-desktop)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8de4c3b8e7ee79bb6f8cbf204c9aa2bb2d08d5850e31fd44b47f6f7d6885cb47')
+sha256sums=('1fc2cce5a35fc8153ea0c4c0ac76dc080fc57cfba97cb3a13dddfff53d5ef4bb')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
