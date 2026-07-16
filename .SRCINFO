@@ -1,13 +1,12 @@
 pkgbase = tally
-	pkgdesc = GNU wc reimplementation: byte-identical output, SIMD word counting
-	pkgver = 0.1.1
+	pkgdesc = From-scratch C reimplementation of GNU wc(1); byte-identical, faster on every measured workload
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/tally
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
-	makedepends = gcc
-	source = https://github.com/tenseleyFlow/tally/releases/download/v0.1.1/tally-0.1.1.tar.gz
-	sha256sums = 65eb5860c9e07b217f212fcec2301ef9d30e3b649b7315632b075ebadb051ddd
+	license = GPL-3.0-only
+	source = https://github.com/tenseleyFlow/tally/releases/download/v0.2.0/tally-0.2.0.tar.gz
+	sha256sums = 75ee496b0b822bd9c9d20caf045df1fe2a8e00fd38f4a66d67e155f2d246a7ae
 
 pkgname = tally
