@@ -1,13 +1,14 @@
 pkgbase = firestudio-bin
 	pkgdesc = A powerful open-source GUI client for Firebase Firestore
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Flowdesktech/firestudio
 	arch = x86_64
 	license = MIT
-	depends = electron
 	provides = firestudio
 	conflicts = firestudio
+	options = !strip
+	options = !debug
 	source = https://github.com/Flowdesktech/firestudio/releases/download/v1.9.1/Firestudio-1.9.1-Linux-x64.tar.gz
 	sha256sums = a30f5664267bd08bd21e6e0cfe0c37d2c7d3d1baecdea03d1ed1b6ed95fb6dd8
 

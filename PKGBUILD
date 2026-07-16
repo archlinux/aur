@@ -2,14 +2,14 @@
 
 pkgname=firestudio-bin
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful open-source GUI client for Firebase Firestore'
 arch=(x86_64)
 url='https://github.com/Flowdesktech/firestudio'
 license=(MIT)
-depends=(electron)
 provides=(firestudio)
 conflicts=(firestudio)
+options=(!strip !debug)
 source=("$url/releases/download/v$pkgver/Firestudio-$pkgver-Linux-x64.tar.gz")
 sha256sums=('a30f5664267bd08bd21e6e0cfe0c37d2c7d3d1baecdea03d1ed1b6ed95fb6dd8')
 
@@ -17,7 +17,7 @@ package() {
   cd "$srcdir/Firestudio-$pkgver-Linux-x64"
 
   install -dm755 "$pkgdir/opt/firestudio"
-  cp -r . "$pkgdir/opt/firestudio/"
+  cp -a. "$pkgdir/opt/firestudio/"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -sf /opt/firestudio/firestudio "$pkgdir/usr/bin/firestudio"
