@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
 source=("${url}/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
         "cider.png::${url}/raw/branch/main/src/resources/cider.png")
-sha256sums=('9ee3acf3139db375f79f1ce19f97386ba017a4ed24f3bb6be9b90dc5a2c10bb4'
+sha256sums=('b199a33746d7a46898035bb779c1252d612d2336b8cbfeba2ac2da5a96e42549'
             '4a078b5275a9e51e9a960a8e0500c4c332466b6f8a39a3475ab9c98984d4947e')
 
 package() {
