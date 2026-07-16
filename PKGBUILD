@@ -3,7 +3,7 @@
 
 _pkgname=prometheus-redis-exporter
 pkgname=${_pkgname}-bin
-pkgver=1.86.0
+pkgver=1.87.0
 pkgrel=1
 pkgdesc="Prometheus exporter for Redis (binary version)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7' 'mips64' 'mips64le' 'ppc64' 'ppc64le' 's390x')
@@ -32,15 +32,15 @@ source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${url}/releases/download/v
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${url}/releases/download/v${pkgver}/redis_exporter-v${pkgver}.linux-s390x.tar.gz")
 
 sha256sums=('1c05b90c56e9740c5ab757e629f677471b88e92d5a22a16c8e26e44820ac6e47')
-sha256sums_x86_64=('20a97421cabceb8156aad227002ee813781e318d7c2192a439c86a91b5ef70ea')
-sha256sums_aarch64=('a4ecc3bc631713835c1016ad5d6fb3dee8a05a9fbd7a90d4f0e00655bce6d5f3')
-sha256sums_i686=('e596a9c7f7e34708cc7e68d1659286e08a9f0c8b3cfcc211618492d5716b866e')
-sha256sums_armv7=('cd9a042785b7749b14f2ab56d1ba601192d4a92215b2614a66f55512efae5a2b')
-sha256sums_mips64=('04c1d7e2dfbb376779351464fbffd119161d129022819d0963f2648458259086')
-sha256sums_mips64le=('fb6ce7ab3c3648ec4b5f7d59605c742fe1c087b48b0c76ecae3e0c72eb69a56e')
-sha256sums_ppc64=('b732c85d91fb4d31527d9bf87826c21b6650a902f1cc260329eb4f520abd5708')
-sha256sums_ppc64le=('dc55e11196e1ae86dfb4dd3f7d35882aeb33ec02e9272e0dd83d32ad02de1a10')
-sha256sums_s390x=('1ffb38025987a3bc90d2ad071bdaf7016ae646adb957366d97c27aeb01953a04')
+sha256sums_x86_64=('f9d7b1d432a7f67fff5510de7b20ae1afae7490630749835b171d5c016c6b959')
+sha256sums_aarch64=('e1b2bf3be908b25f66f4191a72199271ba3b13bef0b86f7d23983e0635a1fb04')
+sha256sums_i686=('9ca609153f62d2b0c945f693496dcda4be2f1b2ce338dbc2698bc2063f54682e')
+sha256sums_armv7=('9074f89baeb4db602036ddf8b51b12e215defef78374265e894191fb665950aa')
+sha256sums_mips64=('01f324580a27698cd7a218c534afbfd8030b3e530ea4b53d672de702ee033e9c')
+sha256sums_mips64le=('e42a675685769f9dd46c372ebe6018ec65b56ddba084bde9b19513ab8ef365d0')
+sha256sums_ppc64=('c833a3820b2d43e8684cdf86615fcde2aea5b32352b4cb5ba91214f169572fb0')
+sha256sums_ppc64le=('c4d3cc1847d1a523cffa9c5dfb62ba9293e84820f5ac2f7a788e70365433c00e')
+sha256sums_s390x=('6a7bbfefdedbe092fbf7b159d635ea0e9a1b8817a400354d0008b6d4ad8e3336')
 
 package() {
 	case $CARCH in
