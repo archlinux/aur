@@ -1,6 +1,6 @@
 pkgbase = r-spsimseq
 	pkgdesc = Semi-parametric simulation tool for bulk and single-cell RNA sequencing data
-	pkgver = 1.18.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPsimSeq
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-spsimseq
 	optdepends = r-lsd
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPsimSeq_1.18.0.tar.gz
-	sha256sums = 46fde86517806a8445f876fb4df9c798052f5b2201ae900d272c89689f320d2c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPsimSeq_1.22.0.tar.gz
+	sha256sums = 3a2131795f41733f93d731330993d3b86cd71db1e61c722eca5b4ace3fa4afc5
 
 pkgname = r-spsimseq
