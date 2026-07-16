@@ -1,8 +1,8 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=clyocloud-git
-_commit=81f18bb2c96dd8aba3fc5a68856b9cea1afd7334
-pkgver=2.4.2.r${_commit:0:7}
+_commit=a6852da00afacd4afb29511634a61e193fb1ee0b
+pkgver=2.4.3.r${_commit:0:7}
 pkgrel=1
 pkgdesc="A sleek personal cloud storage and media streaming server built with Nuxt (git version)"
 arch=('any')
