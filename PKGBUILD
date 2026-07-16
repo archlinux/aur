@@ -1,8 +1,9 @@
 pkgname=libelectron
 pkgver=2026.4
-pkgrel=2
+pkgrel=3
 libsplashver=1.0
 libadblockver=1.1
+libuseragent=150.0.0.0
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron"
 license=('GPL')
@@ -11,11 +12,13 @@ pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
 sha256sums=('5619174b56786bf6fde393aa2f9915992457f3ffec691d5ac007e71a5f1ee170'
             'faaa3f1b356e816068e49b745add4bf80f4fedb8c9d5ddf51c57cba6b019aa51'
-            'c16de890530e33759716b98e331b0661feb3212568f680ae3b0275321f1f8e35')
+            'c16de890530e33759716b98e331b0661feb3212568f680ae3b0275321f1f8e35'
+            'ae44825fc3a66aa62bfb0bf25c5258ac9b2cecc305793dda3c8af0c8c72bac27')
 source=(
 "$url/libelectron/-/archive/$pkgver/libelectron-$pkgver.tar.bz2"
 "$url/libsplash/-/archive/$libsplashver/libsplash-$libsplashver.tar.bz2"
-"$url/libadblock/libadblock/-/archive/$libadblockver/libadblock-$libadblockver.tar.bz2")
+"$url/libadblock/libadblock/-/archive/$libadblockver/libadblock-$libadblockver.tar.bz2"
+"$url/libuseragent/-/archive/$libuseragent/libuseragent-$libuseragent.tar.bz2")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -38,4 +41,8 @@ package() {
     #Libadblock
     install -dm755 "$pkgdir/opt/libelectron/libadblock"
     cp -a "$srcdir/libadblock-$libadblockver/." "$pkgdir/opt/libelectron/libadblock/"
+
+    #Libuseragent
+    install -dm755 "$pkgdir/opt/libelectron/libuseragent"
+    cp -a "$srcdir/libuseragent-$libuseragent/." "$pkgdir/opt/libelectron/libuseragent/"
 }
