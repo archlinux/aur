@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal text editor IDE"
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,10 +31,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}")
-sha256sums=('ab756f8d63d2fbbd8154d93bcbfce65a11527fe8ff2f3518d731f35c913ab54c'
+sha256sums=('d7e94addc682499bbfab1bf71ce4241062eb3962f63569bca541d67b70c912fc'
             'c707616518e3fce85635504ec18ab7d12e204686a56f0b683601e300e6429aa2')
-sha256sums_x86_64=('db51203e5ef6278eaaf19e880757e2f718e1dacef88974306cb2f9f3e36b696f')
-sha256sums_aarch64=('1f6c7ca1be84b1a8e03d0b807ca007f6c9fe07b855468fb1e504d4adf74f4bfd')
+sha256sums_x86_64=('84ab6284e5969a7cbd899e99d98bef465220f655e4afef1b2fd1dfe54bf8c30f')
+sha256sums_aarch64=('5d7430fda4424d8aa3a72a77c968035aa1e699526956dac3fd3d5b3a1b816e62')
 
 
 prepare() {
