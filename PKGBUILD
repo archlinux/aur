@@ -4,7 +4,7 @@
 
 pkgname=fastmail
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Email made better'
 license=('custom:fastmail')
 url='https://www.fastmail.com'
@@ -16,7 +16,7 @@ _appimg="com.fastmail.Fastmail-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
 sha512sums=('f142d795209e4ff3253b4aa6730287826692899bf3edd01618b896aa83a8ad2916b0d67ef5d46ed8f85998191d53793447671626c03ac40e1456266d39270fd1'
-            'c544bd5496ec83a0b2475eb12070951ac92da66a6314357165ba517f986412f2c54b303186efc2c068562ac345108eeef56e7926a920cbbd820e700607d8b220')
+            'e336da034d45735cf62687e8b917e9d995a446685b1341d823ea032f9256751a92ecf5501c48ed4daf18a76df30a3a89b4a6f07aa4f6b2c2d34224c352435d89')
 
 prepare() {
   chmod +x "${_appimg}"

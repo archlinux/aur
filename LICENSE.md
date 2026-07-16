@@ -1,7 +1,8 @@
 # Terms of Service
 
-These Terms of Service came into effect on **October 10th, 2025**. You can also find our previous Terms of Service online:
+These Terms of Service came into effect on **July 2nd, 2026**. You can also find our previous Terms of Service online:
 
+- [Oct 10, 2025](https://www.fastmail.com/policies/terms-of-service/archive/2025-10/)
 - [Feb 3, 2025](https://www.fastmail.com/policies/terms-of-service/archive/2025-02/)
 - [Dec 12, 2022](https://www.fastmail.com/policies/terms-of-service/archive/2022-12/)
 - [May 23, 2022](https://www.fastmail.com/policies/terms-of-service/archive/2022-05/)
@@ -9,7 +10,9 @@ These Terms of Service came into effect on **October 10th, 2025**. You can also
 - [May 24, 2018](https://www.fastmail.com/policies/terms-of-service/archive/2018-05/)
 - [October 1, 2017](https://www.fastmail.com/policies/terms-of-service/archive/2017-10/)
 
-The change from our previous terms is explicitly mentioning that the use of email warming or deliverability testing (probing) tools is unacceptable.
+Changes from our previous terms of service:
+
+- Updated our conduct rules to clarify that Fastmail is for human email communications, not for collecting, processing or forwarding high volumes of automated logs, bounce messages or other machine-generated records from third-party services.
 
 ## Terms of Service
 
@@ -69,6 +72,7 @@ You agree to abide by all applicable local, state, national and international la
 15. Use the Services without having their own User Account. An Account Holder may create additional User Accounts that are shared between multiple people who also have their own User Accounts.
 16. Engage in email warming, which refers to the practice of artificially increasing email sending volume or engagement (e.g., opening, replying, or marking emails as important) to manipulate sender reputation or improve inbox placement. This includes using automated tools, bots, or third-party services to simulate legitimate email activity.
 17. Engage in deliverability testing which refers to the use of automated systems, seed lists, or third-party platforms to test how emails are delivered (e.g., inbox vs. spam folder) across various email providers, with the intent of circumventing spam filters or optimizing delivery tactics outside of normal user behaviour.
+18. Use the Services to collect, store, process or forward an excessive volume of automated logs, machine-generated transaction records, bounce messages or other system-generated communications from third-party services. Fastmail is designed for email communications that humans expect to receive and read, not as a platform for automated data processing, system monitoring or similar machine-to-machine workflows.
 
 Fastmail has no obligation to monitor the Services or any User’s use thereof or retain the content of any login session. However, Fastmail reserves the right at all times to monitor, review, retain, prevent the transmission of, and/or disclose any information as necessary to monitor compliance with these Terms, and as otherwise necessary to comply with any law, regulation, legal process, or governmental request.
 
