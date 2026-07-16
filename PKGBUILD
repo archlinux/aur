@@ -1,7 +1,7 @@
 pkgname="openbsd-comp-mans"
 pkgver=7.9
 pkgvernodot=${pkgver/./}
-pkgrel=1
+pkgrel=2
 pkgdesc="Man pages from OpenBSD's compXX.tgz file set"
 url="https://www.openbsd.org/"
 license=('unknown')
