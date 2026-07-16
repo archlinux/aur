@@ -1,6 +1,6 @@
 pkgbase = r-compepitools
 	pkgdesc = Tools for computational epigenomics
-	pkgver = 1.42.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/compEpiTools
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-compepitools
 	optdepends = r-org.mm.eg.db
 	optdepends = r-rtracklayer
 	optdepends = r-txdb.mmusculus.ucsc.mm9.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/compEpiTools_1.42.0.tar.gz
-	sha256sums = 89d05a01834786b148f7eea5abb177d592a6367d004f8cc8d1c6534cde68bab6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/compEpiTools_1.46.0.tar.gz
+	sha256sums = 39b02d15bfc23a75ca8fa206be68a3316635607c36db5786e2b2d3d8155dc2f4
 
 pkgname = r-compepitools
