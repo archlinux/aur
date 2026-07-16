@@ -7,7 +7,7 @@ _appalias=mdless
 pkgname=${_gitname}-bin
 pkgdesc="Fancy 'cat' for Markdown"
 
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 _gitversion=mdcat-${pkgver}
 
@@ -27,7 +27,7 @@ conflicts=("${_appname}")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('668337063f1dfdbaf64a8594557ec38ccb6502f1717fd618277fa667d858b910')
+sha256sums_x86_64=('483d8abb25447e24ef82f9c5ce054408d0dc2d4cfeef51a4442fce3663644e01')
 
 
 case ${CARCH} in
