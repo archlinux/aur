@@ -1,17 +1,19 @@
 pkgname=fixplay-diagnosetool-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Cross-platform diagnostic tool for gaming consoles (AppImage release build)"
 arch=('x86_64')
 url="https://github.com/fabioudev/fixplay-diagnoseTool"
 license=('custom:unknown')
 # libwayland-client.so.0 is NOT bundled in the AppImage — a bundled copy
-# breaks EGL (tauri#8541, blank window), so the release.yml linuxdeploy/
-# appimagetool wrappers strip it. It must come from the host instead. Declare
-# the dep so pacman pulls it on minimal systems. (The GL stack — libGL/
-# libEGL/libdrm — is likewise host-provided but ubiquitous on any desktop and
-# was never bundled; pre-existing state, unchanged here.)
-depends=('libwayland')
+# breaks EGL (tauri#8541, blank window), so the release.yml repack step strips
+# it. It must come from the host instead. On Arch the package is `wayland`
+# (it provides libwayland-client.so.0) — NOT `libwayland`, which is the Debian
+# name and does not exist on Arch (paru/pacman abort: "not all required packages
+# found: libwayland"). The GL stack (libGL/libEGL/libdrm) is likewise host-
+# provided but ubiquitous on any desktop and was never bundled; pre-existing
+# state, unchanged here.
+depends=('wayland')
 optdepends=('flashrom: use the system flashrom binary instead of the bundled one')
 provides=('fixplay-diagnosetool')
 conflicts=('fixplay-diagnosetool')
