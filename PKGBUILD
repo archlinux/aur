@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=magrene
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a5d9fd4a9881a39d5faa96da68cb14fb')
-b2sums=('8c5bdf29f9073af16a4a77038939f958e114da8c9e0a364584cd098a2fabe88b7a61183b07e68f0f44dcad3d921ca3d56c4f2ab2f8c47a89393d6b5ec01c713c')
+md5sums=('978c655701fec4b75c8d20f45c97b8e5')
+b2sums=('1fe1cc887844e928b30532932243743da0b197a2ec9eaa9981c332bb61b9b8497f68e0fb3f1f20007afa14d63e4c9db182159759c812c8150a91031396c9d661')
 
 build() {
   mkdir build
