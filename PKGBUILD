@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bumphunter
-_pkgver=1.50.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Bump Hunter'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bf50487a1b6a97b779a053422c9725abf041da6fe6b1299534f8a93e54e9ba15')
+sha256sums=('3c672caa2db907b54085292e92ec71cf72c82ffe6c006fd36d65a44c477010e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
