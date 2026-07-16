@@ -1,6 +1,6 @@
 # Maintainer: umceko <support@stockimg.ai>
 pkgname=hush-mic-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="NVIDIA Maxine AI noise-suppression virtual microphone (prebuilt binaries)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('hush-mic')
 # 'hush'/'hush-bin' (an unrelated Lua shell) also install /usr/bin/hush
 conflicts=('hush-mic' 'hush' 'hush-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/UMCEKO/hush/releases/download/v$pkgver/hush_v${pkgver}_x86_64-linux.tar.gz")
-sha256sums=('9b249b30dac83893a49c6f78bc6b007c641290b28844f0eeff943867f5264dd6')
+sha256sums=('ccd2f63c13aabf741903fe1bb880714aba1bcda0c7ea0967304d9d13afb15d32')
 
 package() {
     cd "hush_v${pkgver}_x86_64-linux"

@@ -1,6 +1,6 @@
 pkgbase = hush-mic-bin
 	pkgdesc = NVIDIA Maxine AI noise-suppression virtual microphone (prebuilt binaries)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/UMCEKO/hush
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = hush-mic-bin
 	conflicts = hush-mic
 	conflicts = hush
 	conflicts = hush-bin
-	source = hush-mic-bin-1.0.0.tar.gz::https://github.com/UMCEKO/hush/releases/download/v1.0.0/hush_v1.0.0_x86_64-linux.tar.gz
-	sha256sums = 9b249b30dac83893a49c6f78bc6b007c641290b28844f0eeff943867f5264dd6
+	source = hush-mic-bin-1.0.1.tar.gz::https://github.com/UMCEKO/hush/releases/download/v1.0.1/hush_v1.0.1_x86_64-linux.tar.gz
+	sha256sums = ccd2f63c13aabf741903fe1bb880714aba1bcda0c7ea0967304d9d13afb15d32
 
 pkgname = hush-mic-bin
