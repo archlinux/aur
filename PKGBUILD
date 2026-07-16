@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biovizBase
-_pkgver=1.56.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Basic graphic utilities for visualization of genomic data.'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eac1d804a2a1c26fa5c600d6e8d0175c303413fc301131561e48f0e024dbb493')
+sha256sums=('6f92a8103a3c94ebfaed879dee0e10d3240abad96e28a1718a40d1023c5dc04a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
