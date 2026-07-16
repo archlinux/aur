@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TBX20BamSubset
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Subset of BAM files from the "TBX20" experiment'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3cb9c821f3167418d64eb13c09d9021c29258d8cb1d715188581e65afd7f05ca')
+sha256sums=('8bcbe6a64800e4f40e327ecaf726302f6f396eaac91c7c8ac1378ab472d4ce0f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
