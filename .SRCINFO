@@ -1,0 +1,16 @@
+pkgbase = create-awesome-python-app
+	pkgdesc = Composable scaffolding CLI for production-ready Python apps
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Create-Python-App/create-python-app
+	arch = any
+	license = MIT
+	depends = python>=3.12
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/c/create-awesome-python-app/create_awesome_python_app-0.1.0.tar.gz
+	sha256sums = 9f49508c578b9bf030b92af37059e463ee68b4bca079600a941b7947f42b7ca9
+
+pkgname = create-awesome-python-app
