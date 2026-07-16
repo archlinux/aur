@@ -1,6 +1,6 @@
 pkgbase = r-myvariant
 	pkgdesc = Accesses MyVariant.info variant query and annotation services
-	pkgver = 1.38.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/myvariant
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-myvariant
 	depends = r-s4vectors
 	depends = r-variantannotation
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/myvariant_1.38.0.tar.gz
-	sha256sums = e4beb41b863382bfa13f782e283a27a81c659af9e408daff89b9a8949b6584ce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/myvariant_1.42.0.tar.gz
+	sha256sums = fd9f157657a7d8feadb295f9785c1551f912d86012a9dd6b4543511e0eb93b24
 
 pkgname = r-myvariant
