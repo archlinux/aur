@@ -1,7 +1,7 @@
 pkgbase = libwrap
 	pkgdesc = Monitors and Controls incoming TCP connections
 	pkgver = 7.6.37
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ftp.porcupine.org/pub/security/index.html
 	arch = x86_64
 	license = TCP-wrappers

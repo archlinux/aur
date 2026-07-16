@@ -7,7 +7,7 @@
 
 pkgname=libwrap
 pkgver=7.6.37
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitors and Controls incoming TCP connections'
 arch=(x86_64)
 url="http://ftp.porcupine.org/pub/security/index.html"
@@ -46,14 +46,7 @@ cflags: config-check\
 build() {
   cd tcp_wrappers_${pkgver%.*}
 
-  # first run of make fails but second succeeds!???
-  # if you read this, please help me find a better fix than to run twice make
   make \
-    COPTS="$CFLAGS" \
-    LDOPTS="$LDFLAGS" \
-    REAL_DAEMON_DIR=/usr/bin \
-    STYLE='-DPROCESS_OPTIONS' \
-    linux || make \
     COPTS="$CFLAGS" \
     LDOPTS="$LDFLAGS" \
     REAL_DAEMON_DIR=/usr/bin \
