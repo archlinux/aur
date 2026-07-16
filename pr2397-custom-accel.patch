@@ -1,0 +1,147 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index b5ebbb06..bb9e2347 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -117,6 +117,7 @@ features = ["svg"]
+ optional = true
+ 
+ [features]
++custom-accel = ["cosmic-comp-config/custom-accel"]
+ debug = ["egui", "egui_plot", "smithay-egui", "anyhow/backtrace"]
+ default = ["systemd"]
+ logind = ["logind-zbus"]
+diff --git a/cosmic-comp-config/Cargo.toml b/cosmic-comp-config/Cargo.toml
+index f01a4bb3..5712b2d3 100644
+--- a/cosmic-comp-config/Cargo.toml
++++ b/cosmic-comp-config/Cargo.toml
+@@ -17,5 +17,6 @@ tracing = { version = "0.1.44", features = [
+ 
+ [features]
+ default = []
++custom-accel = ["input/libinput_1_30"]
+ output = ["ron", "tracing"]
+ randr = ["cosmic-randr-shell", "output"]
+diff --git a/cosmic-comp-config/src/input.rs b/cosmic-comp-config/src/input.rs
+index df6f34c2..122fb596 100644
+--- a/cosmic-comp-config/src/input.rs
++++ b/cosmic-comp-config/src/input.rs
+@@ -38,6 +38,24 @@ pub struct AccelConfig {
+     #[serde(with = "AccelProfileDef")]
+     pub profile: Option<AccelProfile>,
+     pub speed: f64,
++    #[serde(skip_serializing_if = "Option::is_none", default)]
++    pub custom_points: Option<CustomAccelPoints>,
++}
++
++// Custom acceleration curve points for the `Custom` libinput accel profile.
++// `step` is the input-velocity step in device units / ms.
++// `motion` (and optional `scroll`) are the multipliers at i*step.
++// `anchors` is editor-only state (cosmic-settings curve handles, expressed as
++// (mm/s, multiplier) pairs). cosmic-comp ignores it; only `motion` is fed to
++// libinput. cosmic-settings owns and round-trips it.
++#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
++pub struct CustomAccelPoints {
++    pub step: f64,
++    pub motion: Vec<f64>,
++    #[serde(skip_serializing_if = "Option::is_none", default)]
++    pub scroll: Option<Vec<f64>>,
++    #[serde(skip_serializing_if = "Option::is_none", default)]
++    pub anchors: Option<Vec<(f64, f64)>>,
+ }
+ 
+ #[derive(Clone, Debug, Default, PartialEq, Deserialize, Serialize)]
+@@ -115,17 +133,24 @@ mod AccelProfileDef {
+     enum AccelProfile {
+         Flat,
+         Adaptive,
++        Custom,
+     }
+ 
+     pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<AccelProfileOrig>, D::Error>
+     where
+         D: Deserializer<'de>,
+     {
+-        let o = Option::deserialize(deserializer)?;
+-        Ok(o.map(|x| match x {
+-            AccelProfile::Flat => AccelProfileOrig::Flat,
+-            AccelProfile::Adaptive => AccelProfileOrig::Adaptive,
+-        }))
++        let Some(x) = Option::deserialize(deserializer)? else {
++            return Ok(None);
++        };
++        Ok(match x {
++            AccelProfile::Flat => Some(AccelProfileOrig::Flat),
++            AccelProfile::Adaptive => Some(AccelProfileOrig::Adaptive),
++            #[cfg(feature = "custom-accel")]
++            AccelProfile::Custom => Some(AccelProfileOrig::Custom),
++            #[cfg(not(feature = "custom-accel"))]
++            AccelProfile::Custom => None,
++        })
+     }
+ 
+     pub fn serialize<S>(arg: &Option<AccelProfileOrig>, ser: S) -> Result<S::Ok, S::Error>
+@@ -135,6 +160,8 @@ mod AccelProfileDef {
+         let arg = match arg {
+             Some(AccelProfileOrig::Flat) => Some(AccelProfile::Flat),
+             Some(AccelProfileOrig::Adaptive) => Some(AccelProfile::Adaptive),
++            #[cfg(feature = "custom-accel")]
++            Some(AccelProfileOrig::Custom) => Some(AccelProfile::Custom),
+             Some(_) | None => None,
+         };
+         Option::serialize(&arg, ser)
+diff --git a/src/config/input_config.rs b/src/config/input_config.rs
+index ae74da68..b7f20b04 100644
+--- a/src/config/input_config.rs
++++ b/src/config/input_config.rs
+@@ -1,3 +1,5 @@
++#[cfg(feature = "custom-accel")]
++use smithay::reexports::input::{AccelConfig as LibinputAccelConfig, AccelProfile, AccelType};
+ use smithay::reexports::input::{
+     Device as InputDevice, DeviceConfigError, DragLockState, ScrollMethod, SendEventsMode,
+ };
+@@ -20,6 +22,7 @@ pub fn for_device(device: &InputDevice) -> InputConfig {
+             Some(AccelConfig {
+                 profile: device.config_accel_profile(),
+                 speed: device.config_accel_speed(),
++                custom_points: None,
+             })
+         } else {
+             None
+@@ -142,10 +145,33 @@ pub fn update_device(
+         );
+     }
+     if let Some((accel, is_default)) = config!(|x| x.acceleration.as_ref()) {
+-        if let Some(profile) = accel.profile
+-            && let Err(err) = device.config_accel_set_profile(profile)
+-        {
+-            config_set_error(device, "acceleration profile", profile, err, is_default);
++        let profile_result = match (accel.profile, accel.custom_points.as_ref()) {
++            #[cfg(feature = "custom-accel")]
++            (Some(AccelProfile::Custom), Some(pts)) => {
++                match LibinputAccelConfig::new(AccelProfile::Custom) {
++                    Some(cfg) => {
++                        let mut err = cfg.set_points(AccelType::Motion, pts.step, &pts.motion);
++                        if err.is_ok()
++                            && let Some(scroll) = pts.scroll.as_ref()
++                        {
++                            err = cfg.set_points(AccelType::Scroll, pts.step, scroll);
++                        }
++                        err.and_then(|()| device.config_accel_apply(cfg))
++                    }
++                    None => Err(DeviceConfigError::Unsupported),
++                }
++            }
++            (Some(profile), _) => device.config_accel_set_profile(profile),
++            (None, _) => Ok(()),
++        };
++        if let Err(err) = profile_result {
++            config_set_error(
++                device,
++                "acceleration profile",
++                accel.profile,
++                err,
++                is_default,
++            );
+         }
+         if let Err(err) = device.config_accel_set_speed(accel.speed) {
+             config_set_error(device, "acceleration speed", accel.speed, err, is_default);
