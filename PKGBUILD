@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=magpie
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-tbx20bamsubset
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3268730ed580168d150558c1c93a327f')
-b2sums=('a0aaf726eb9b6b26b1f42dac1d8f585f340a5800006a4e849f6f0ad0b0a9555a3953c4b22e054b800ec06608272086ac28ebbccb8c787619446726ccfbc2dcfe')
+md5sums=('20902b05e3439eb9d71d5b03845b4a0b')
+b2sums=('0b957fb02a9112e8d5c90c22cea275399db56d36f3b9717b015707904ef2088be37bf69b10d85516d72513197e0a5e90fc6417c588d4a0629fb462e9395804ee')
 
 build() {
   mkdir build
