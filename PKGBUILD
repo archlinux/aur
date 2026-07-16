@@ -7,7 +7,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="TUI log analysis tool"
 
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source=("USAGE_GUIDE-${pkgver}.md::${_urlraw}/USAGE_GUIDE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('3ebf38fe0fce57e39a0f8fd6cde50b92944311825fdfaab78698316bb71d9deb')
-sha256sums_x86_64=('fb0a6d66677f10e31f8b510692ac62eb50784000d5f3557a0c3568f604748a2c')
-sha256sums_aarch64=('35d5bd0f0e52a9f76c65a3073bd75c7fdff5aa8ddb064bda3fa503dcc827bed5')
+sha256sums_x86_64=('c4d7db82117a57d35e033fd03d509d0b64802c7d321936aab9948cc1c8c28ab3')
+sha256sums_aarch64=('b191a21ab72461e9e8d8b4be5617705b413dbae553fb7858a2bdc124e3a340d3')
 
 
 check() {
