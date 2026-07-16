@@ -1,0 +1,21 @@
+pkgbase = derkruns-bin
+	pkgdesc = Cartoony retro run-and-gun adventure with vehicles and a multi-phase boss
+	pkgver = 1.0.0.beta.2
+	pkgrel = 1
+	url = https://github.com/Shizzzzoo/DerkRuns
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = derkruns
+	conflicts = derkruns
+	options = !strip
+	options = !debug
+	source = derkruns-bin-1.0.0.beta.2.zip::https://github.com/Shizzzzoo/DerkRuns/releases/download/v1.0.0-beta.2/DerkRuns-linux-x64.zip
+	source = derkruns.png::https://raw.githubusercontent.com/Shizzzzoo/DerkRuns/v1.0.0-beta.2/assets/retro_assault_key_art.png
+	source = derkruns.desktop
+	sha256sums = 71fed45b390c8f4eef22c8998131dbf92a541297329ae41aedeabf419d902262
+	sha256sums = 249db102c9c5dbdc209c70f8ed62273f8c4fbdefe2537a7123cd48426e5ac0b7
+	sha256sums = 0335946f3d0d8520cd8f636d03204cde8e4384e473b0209330bf58df89715678
+
+pkgname = derkruns-bin

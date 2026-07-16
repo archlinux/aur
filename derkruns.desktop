@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DerkRuns: Retro Assault
+Comment=Cartoony retro run-and-gun adventure
+Exec=derkruns
+Icon=derkruns
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;ArcadeGame;
+Keywords=retro;arcade;run-and-gun;pygame;
+StartupNotify=true
