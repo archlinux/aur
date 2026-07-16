@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AllelicImbalance
-_pkgver=1.46.1
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.1
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Investigates Allele Specific Expression'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d735339bac1744fc627294da721e064b6d4cce2019fd34b660c4e3210d740ec')
+sha256sums=('4661174faf8d92cb0682fc99e2387945ef51ec7a628c2ff51593bc69b954bf25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

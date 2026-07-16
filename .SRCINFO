@@ -1,6 +1,6 @@
 pkgbase = r-allelicimbalance
 	pkgdesc = Investigates Allele Specific Expression
-	pkgver = 1.46.1
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AllelicImbalance
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-allelicimbalance
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AllelicImbalance_1.46.1.tar.gz
-	sha256sums = 1d735339bac1744fc627294da721e064b6d4cce2019fd34b660c4e3210d740ec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AllelicImbalance_1.50.0.tar.gz
+	sha256sums = 4661174faf8d92cb0682fc99e2387945ef51ec7a628c2ff51593bc69b954bf25
 
 pkgname = r-allelicimbalance
