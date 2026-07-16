@@ -1,6 +1,6 @@
 pkgbase = python-sklearn-morpho
 	pkgdesc = Scikit-learn estimator toolbox for morphological perceptrons
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/d-002/sklearn-morpho
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-sklearn-morpho
 	depends = python-cvxpy
 	depends = python-numpy
 	depends = python-scikit-learn
-	source = https://files.pythonhosted.org/packages/source/s/sklearn_morpho/sklearn_morpho-0.2.3.tar.gz
-	sha256sums = a0451822efbfef83e45940560560eae443fb7bbb045167b66b9d53a09656c0af
+	source = https://files.pythonhosted.org/packages/source/s/sklearn_morpho/sklearn_morpho-0.2.4.tar.gz
+	sha256sums = 863484716b257579e1128e5b4efb2d96dacfead4d58a8152bd4c4f872d7fb742
 
 pkgname = python-sklearn-morpho
