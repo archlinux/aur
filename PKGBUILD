@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname="invoiceninja"
-pkgver=5.13.22
+pkgver=5.13.26
 pkgrel=1
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com/"
