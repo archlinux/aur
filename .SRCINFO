@@ -7,7 +7,7 @@ pkgbase = gos-bin
 	license = MIT
 	provides = gos
 	conflicts = gos
-	source = https://github.com/lxsh-S/gos/releases/tag/v0.6.5/gos-linux-amd64.tar.gz
+	source = https://github.com/lxsh-S/gos/releases/download/v0.6.5/gos-linux-amd64.tar.gz
 	sha256sums = SKIP
 
 pkgname = gos-bin

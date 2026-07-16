@@ -11,7 +11,7 @@ makedepends=()
 provides=('gos')
 conflicts=('gos')
 
-source=("https://github.com/lxsh-S/gos/releases/tag/v${pkgver}/gos-linux-amd64.tar.gz")
+source=("https://github.com/lxsh-S/gos/releases/download/v${pkgver}/gos-linux-amd64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
