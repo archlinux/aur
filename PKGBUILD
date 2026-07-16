@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EDASeq
-_pkgver=2.42.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Exploratory Data Analysis and Normalization for RNA-Seq'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-yeastrnaseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('250e48908fb37e318c7bd1b6136823fda41c904b4c8f4ecd309af4a288524246')
+sha256sums=('de4879a9d2506a0572fbf5002dcbfd6c8ee4b0846873ccbd2b24709a29ab02c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
