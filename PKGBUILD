@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.38.1
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,6 +18,7 @@ depends=(
   r-fancova
   r-ggplot2
   r-gplots
+  r-gtools
   r-iterators
   r-limma
   r-lme4
@@ -25,6 +26,7 @@ depends=(
   r-matrixstats
   r-pbkrtest
   r-rdpack
+  r-reformulas
   r-remacor
   r-reshape2
   r-rhpcblasctl
@@ -58,8 +60,8 @@ optdepends=(
   r-zenith
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8a6fa1251bf05c3ddc3b75268337186')
-b2sums=('05e20fd4834572d4955da6af303e1ab86f5fb3bd3235d3dd398960c7c73017113e01ef435a8046402eca6d7d4089eea403609a5feabbef3ec33ac0f52d5c45e2')
+md5sums=('2864a77efcd8ede6796bfd8199b280e7')
+b2sums=('f852ff0280057219c6db48cbf96f91e2af2ec8b6cdc9fc10aa3a631f494aaac24340d5da154e13bd77c8bd2f87503516391c6d2b13001f4da856802c09ca25f1')
 
 build() {
   mkdir build
