@@ -2,11 +2,12 @@
 
 _gitauthor=danterolle
 _gitname=tund
+_suffix=cli
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Lightweight virtual LAN tool that creates a private IPv4 subnet over UDP. Hub-and-spoke architecture, TUN interface, SipHash-2-4 auth, pure C."
+pkgdesc="Lightweight virtual LAN tool that creates a private IPv4 subnet over UDP. Hub-and-spoke architecture, TUN interface, SipHash-2-4 auth and written in C."
 
-pkgver=1.8
+pkgver=1.10
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,12 +28,16 @@ options=(!strip)
 
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
-		"TECHNICAL-${pkgver}.md::${_ghurlraw}/docs/TECHNICAL.md")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
+		"USAGE-${pkgver}.md::${_ghurlraw}/docs/USAGE.md"
+		"TECHNICAL-${pkgver}.md::${_ghurlraw}/docs/TECHNICAL.md"
+		"TROUBLESHOOTING-${pkgver}.md::${_ghurlraw}/docs/TROUBLESHOOTING.md")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_suffix}-${_barch[0]}")
 sha256sums=('c01a423b28a33749256456bc1a70597afc875614705f78dd5cc4face0f994933'
-            'bfe31b29b2a4a7c669d98fc6796e75372fa44d5e2eb83cabb1e2adaf06db0ea2'
-            '20b6732516f57dd840ade77411c86febd4893340d316aeb7e7bb1cad652c0a56')
-sha256sums_x86_64=('87ac91e934bfe204f538e665f8d291c53f9224c9a42463c24161bca933e398c0')
+            'd4e9300a9ffe6506115acc73087971ba811efbae889f0ed34da3ff268dea2b1f'
+            'afef7425ed16d491353334645fb71301eb98a2a00c82e407fa9fee4b1c4e38ab'
+            '2500e9ada332ac45496ee142cdf1eca36e694b25cd5cbd9216b365a2b6bb7106'
+            '82a0dc61edb83a5057f90fe5ebbf2b0bfb4f5c2d5687511480e5d43684a39165')
+sha256sums_x86_64=('f1e0ce055e44527e077f2f3994cebfc78c91d6a954ea440d2933f7a50c85994e')
 
 
 package() {
@@ -41,7 +46,10 @@ package() {
 	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "USAGE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/USAGE.md"
 	install -Dm644 "TECHNICAL-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TECHNICAL.md"
+	install -Dm644 "TROUBLESHOOTING-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TROUBLESHOOTING.md"
 
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
