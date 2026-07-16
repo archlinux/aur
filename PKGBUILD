@@ -1,7 +1,7 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 _pkgname=souko
 pkgname=${_pkgname}-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
@@ -13,8 +13,8 @@ conflicts=('souko')
 provides=('souko')
 source_x86_64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b6679255556ea9d8f17ae74f661efe4639a46805ee56e972e1623dd16f8d5cc0')
-sha256sums_aarch64=('92fde204faae6473670792d9ebd3ef673002c80d46bbf3c9f391a8e2540bef91')
+sha256sums_x86_64=('c83f655ad7ba45a6916995ee708540757f6d3f7f075ab17a73ee1ad334a17bec')
+sha256sums_aarch64=('5f37557ef5909454917fd392f32195050c45f4f6dfefb43c1247fece4b891330')
 
 package() {
         cd "$srcdir/"
