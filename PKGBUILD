@@ -3,14 +3,14 @@
 _pkgsuffix=bin
 _pkgauthor=abenz1267
 _pkgname=elephant
-_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets niriactions nirisessions bookmarks 1password dnfpackages bitwarden wireplumber playerctl)
+_pkgproviders=(1password aptpackages archlinuxpkgs bitwarden bluetooth bookmarks calc clipboard desktopapplications dnfpackages files menus niriactions nirisessions playerctl protonpass providerlist runner snippets symbols todo unicode websearch windows wireplumber)
 
 pkgbase=${_pkgname}-${_pkgsuffix}
 pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
 
 _packages=(${pkgname[@]})
 
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -33,31 +33,33 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}.tar.gz"
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '77c380f4172541442054e2c23c2c0c1d0184b453ee52a26e352c1460972b65f1')
-sha256sums_x86_64=('42d847bbb171abd5ed89db8d61d60acc895d0d04fa304552e4fa295c1e3f6cea'
-                   'c49cd4fe71d13923a3231509d3de7cfc0bc4c69f14d89583e25e011f406f4708'
-                   '40e47f96456db63bb37ca8edadb7b6c7570d10cf6aab1ee1f97dc53792cb2334'
-                   'b194075d35b34869ccb819933ff8ad545aaeeec65646b7bf0b1af41379ff2d43'
-                   '79b5ae243d1eea3789790a5ae26ec3beb3744c63ab8eee86befadaff0d95c6a3'
-                   '13f444b7d658a942ec1ce9e489110334469c63872b266604ae4ec2bc60b66e45'
-                   '2fdc4d25bb263a976d8da87a9ac10d3077b4232c1fdbe7a76e7255613ceb6294'
-                   '866fdc3cd33778f371a9ef16108e7419c102494e26aeef2525c59cb9ac08412d'
-                   '0fde611d275456ea0de83f0dc2c0484a51c8ecf0b12cfde6b255b26154c737d0'
-                   '2455b4056fed56255fb7cb7e0c3746176d299eef8bbef643953e1663c3281f83'
-                   '70749bd5c2935ed2836abfb36838f562b984e596c24346c04c71f78a23ee7e03'
-                   '183fbddab9c0e378e2e6cf62a3e117992d51194d53f7daa296a33599eca43870'
-                   '4f6f1cac5f9696bc78e2aeaf177a5e984291760a92fad27914fd0b96a618e5cd'
-                   '40e7d279783fb91d0db7e6730ae85fb1e6f2dcf62b84c709202bf0b6bbbb6a62'
-                   '6cd204ef069d98f0afb21c25102d237340cbf2d9275cd1b09c6bced709945229'
-                   '0df07612acf7e17f2754c109b3a8517b056eadfbf60bb399d6c40b2cd0708f9b'
-                   '3e9211c4b78c4d1f71fe2d361cf5cfac8f1e2377b79462fec987287c06856d0d'
-                   'a0aa71bfa051e9a2c879c6b696031a9161bff5f4aed07c4ee2483cd8119a0602'
-                   '2dfadad577062e2347f43fa2ca01ae0c4221f254663f06ca74fc5aa4086bc1cc'
-                   '4a34ca7fb7d9b1c691daa5d012b8c4a81c52f7c446265b6806eff955d277f1fd'
-                   '15110126c02899ff7d8ac26f6d381091458e7d4cddd9d47df019fe5aeb695f83'
-                   '07dc60577d5a437392409b2c729c91cef21aa20717e3aea22af7c1a8118f6b8f'
-                   '1cc06efe1661b754586daa407ad9ebb3956d8b2f30601f487e5defc4d47d5784'
-                   '121b13e8cf26201846d4681cf420ea5b2b50d30b822989ba3a4fcb861bc78cf8')
+            'aa19a7e2d1c07bf1852b65fd38ca24a6b04bba0dacfd9f6cb02ada0ee0b61389')
+sha256sums_x86_64=('4370562d65ae23eb3398e0b80ad429e7049197e17647e8c7526c709b89df8340'
+                   '51953a93acd556fe30bdf90d2b8ba81a1e85b0fab0217267a93dd6858b9a6b68'
+                   '2d28a95c53a36d323c9dfdb241261602228a250d34b6448f6ec61533af9e7550'
+                   '6df6195450576d79e0bc2b398bb73857a282d8f7e9878e2a89288845964ee1dd'
+                   'cc80fdd3fab616082a6193934fb88cb25c6090d8edf7c4fc4e276b40a2f16407'
+                   'c544fc88cf0543cee60d682ce71d5323e43931e7057ed3983b27b3be3a970cef'
+                   '49041b19175048c97338be68e1560751ea2ead783a949cba3886f651907bc789'
+                   '960dc4319f407aac242fbd54cf1171d13aa31901cd071b7a05ac53079d5bde85'
+                   '9af4030af240339b8027143d50f178350c2734c0167062e1ed8aeaf051f3e722'
+                   'c5e527d2538b60b51297d9fe3cb0ce0867db89dce264464be278a4896658eb54'
+                   '30269e84e7ed0d9876c63e188bb89cfa85c09e5907dddf8b309e3e82674f7cc9'
+                   'cb25ec2349697ea2280cfc3ad39c106473a57929a5967a68466162c42f66a3a9'
+                   'b93795af000ca2269b77b43d1035292087b39fe45c12728c4b299efe6140e9a6'
+                   '8403184838275c1daee02c32e6950c6378c28edfbf7f404c4b9edc59991479f8'
+                   'e932874f13238e31e6b20d0a85877857a8ff56f76b637cd12e2f5090eff9bc86'
+                   '7db5f9360647102136f3e1cdc9e3a77f30b4c34600cce297c6282f27defdfd4d'
+                   '6e9a783d27f7918339ed28137303338769d9f8580127758266b5dfea3e8d4a78'
+                   '82f0de50e4e0e343cee1333e67b1f4ac372f44b94bc24390cd7ace5cce97f500'
+                   '2d46ee6310b31265b8eca767b049f5d481396c10aa9e6090106ad5a45062929a'
+                   'b506653cc119dd8a6e1be9361bbf249f56827593b5c4b9effe8d4d878eb57c11'
+                   'de2a636e625a02d30986cd46ef3fa38dc09959d53d25ad39e8fe4d25610fd956'
+                   '7b1ede83cfd07396bd62cf014d4e223bd1bcef30f97a8034b01c2a2546900761'
+                   '0ef57abe964f3e4767d303f88c2dfa5ec1a6a945eaa223ceb109630d08247243'
+                   '4f6102f44b04e04cb83a88aa711dc0c90bec9ce44d912371fe23a9de7e42fbeb'
+                   '852a9bb3dc821ae939fa4c2968a73ce8f6535556229d6b61d7fcb5377e0890a7'
+                   '3a5df7b8f90da310999d6b3557e806e1d8eef21f780a807de025b0f2726cd118')
 
 case $CARCH in
     ${arch[0]})
@@ -89,12 +91,12 @@ package_elephant-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-websearch-bin() {
+package_elephant-1password-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
 
     cd "${srcdir}/" || exit
 
@@ -103,138 +105,12 @@ package_elephant-websearch-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-unicode-bin() {
+package_elephant-aptpackages-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-todo-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-symbols-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-runner-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-providerlist-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-menus-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-files-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "fd")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-desktopapplications-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-clipboard-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "wl-clipboard" "imagemagick")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_elephant-calc-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "libqalculate")
+    depends+=("${_pkgname}-${_pkgsuffix}" "apt")
 
     cd "${srcdir}/" || exit
 
@@ -257,6 +133,20 @@ package_elephant-archlinuxpkgs-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+package_elephant-bitwarden-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "rbw")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
 package_elephant-bluetooth-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
@@ -271,7 +161,79 @@ package_elephant-bluetooth-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-windows-bin() {
+package_elephant-bookmarks-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-calc-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "libqalculate")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-clipboard-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "wl-clipboard" "imagemagick")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-desktopapplications-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-dnfpackages-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "dnf5")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -dm755 "${pkgdir}/usr/bin/" && ln -sf "/usr/bin/dnf5" "${pkgdir}/usr/bin/dnf"
+}
+
+package_elephant-files-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
@@ -285,12 +247,12 @@ package_elephant-windows-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-snippets-bin() {
+package_elephant-menus-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "wtype")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -327,12 +289,12 @@ package_elephant-nirisessions-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-bookmarks-bin() {
+package_elephant-playerctl-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
+    depends+=("${_pkgname}-${_pkgsuffix}" "playerctl")
 
     cd "${srcdir}/" || exit
 
@@ -341,12 +303,12 @@ package_elephant-bookmarks-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-1password-bin() {
+package_elephant-protonpass-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
+    depends+=("${_pkgname}-${_pkgsuffix}" "proton-pass-cli")
 
     cd "${srcdir}/" || exit
 
@@ -355,28 +317,110 @@ package_elephant-1password-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_elephant-dnfpackages-bin() {
+package_elephant-providerlist-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "dnf5")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
     install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    install -dm755 "${pkgdir}/usr/bin/" && ln -sf "/usr/bin/dnf5" "${pkgdir}/usr/bin/dnf"
 }
 
-package_elephant-bitwarden-bin() {
+package_elephant-runner-bin() {
     pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "rbw")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-snippets-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "wtype")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-symbols-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-todo-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-unicode-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-websearch-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-windows-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "fd")
 
     cd "${srcdir}/" || exit
 
@@ -398,18 +442,3 @@ package_elephant-wireplumber-bin() {
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-package_elephant-playerctl-bin() {
-    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
-
-    conflicts=("${pkgname%%-${_pkgsuffix}}")
-    provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}-${_pkgsuffix}" "playerctl")
-
-    cd "${srcdir}/" || exit
-
-    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
-
-    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
