@@ -1,0 +1,18 @@
+pkgbase = agentpane-bin
+	pkgdesc = Manage many terminal and AI-agent sessions from one keyboard-driven window
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Summonshr/agentpane
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = agentpane
+	conflicts = agentpane
+	conflicts = agentpane-git
+	options = !strip
+	source = agentpane-0.1.0.deb::https://github.com/Summonshr/agentpane-dist/releases/download/v0.1.0/agentpane_0.1.0_amd64.deb
+	sha256sums = 660c0ba623d07c4d8b3ec41b0b399b81df118865cde5c8c970210f5fb0dbed38
+
+pkgname = agentpane-bin
