@@ -1,6 +1,6 @@
 # Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-git
-pkgver=0.7.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="OA — High-performance C++ compute engine for ML, audio, and graphics (git version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('liburing')
 # official repos, so we fetch the pinned upstream release, exactly like OA's CI.
 makedepends=('git' 'cmake' 'ninja' 'clang')
 _slangver=2026.4.2
-source=("git+ssh://git@github.com/realminc/oa.git"
+source=("git+https://github.com/realminc/oa.git"
         "slang-${_slangver}-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v${_slangver}/slang-${_slangver}-linux-x86_64.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
