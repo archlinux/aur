@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Basic4Cseq
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Basic4Cseq: an R/Bioconductor package for analyzing 4C-seq data'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-bsgenome.hsapiens.ucsc.hg19
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('24bc06f34132701b3980276a23512dc393163933281b1d1b930ada1f830147ac')
+sha256sums=('7300b5c4363ae68e43fcfd26ed72b92497e5d14c3f9b2bee6eb5b5d1eb713a91')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
