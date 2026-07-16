@@ -1,0 +1,13 @@
+post_install() {
+    cat <<'EOF'
+==> ps4rpc-go installed. Run it from the terminal:
+      ps4rpc-go
+==> Config is stored per-user in ~/.local/share/ps4rpc-go/
+==> A disabled systemd user unit is installed. To enable it:
+      systemctl --user enable --now ps4rpc-go
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

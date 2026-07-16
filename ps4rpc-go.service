@@ -1,0 +1,11 @@
+[Unit]
+Description=Fork of PS4RPD - Discord Rich Presence (RPC) for PS4 with GoldHEN, written in Go
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/ps4rpc-go
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
