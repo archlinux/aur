@@ -6,7 +6,6 @@ pkgbase = vulkan-low-latency-layer-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	makedepends = vulkan-headers
 	makedepends = vulkan-utility-libraries
@@ -14,7 +13,7 @@ pkgbase = vulkan-low-latency-layer-bin
 	depends = gcc-libs
 	provides = vulkan-low-latency-layer
 	conflicts = vulkan-low-latency-layer
-	source = git+https://github.com/Korthos-Software/low_latency_layer.git
-	sha256sums = SKIP
+	source = low_latency_layer-0.2.0.tar.gz::https://github.com/Korthos-Software/low_latency_layer/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 197cce2253372b663f8319fe479cc95790a55aa20e87cfb5018ca350f5df735a
 
 pkgname = vulkan-low-latency-layer-bin
