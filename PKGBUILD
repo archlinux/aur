@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    npm install --cache "${srcdir}/npm-cache"
+    NPM_CONFIG_ALLOW_GIT=all npm install --cache "${srcdir}/npm-cache"
     npm run build:vite
     npm prune --omit=dev
 }
