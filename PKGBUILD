@@ -1,5 +1,4 @@
-# Maintainer: Manuel Schmitzberger <ms@ms-sw.at>
-# Co-maintainer: Pauls Nartišs <paulsnar@paulsnar.lv>
+# Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 
 pkgname=vmutils-bin
 pkgver=1.147.0
