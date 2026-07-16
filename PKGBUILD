@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsh-bin
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland windows"
 arch=('x86_64')

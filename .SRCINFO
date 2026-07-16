@@ -1,6 +1,6 @@
 pkgbase = ddsh-bin
 	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland windows
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ddsh-bin
 	provides = ddsh
 	conflicts = ddsh
 	conflicts = ddsh-git
-	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/releases/download/v1.2.0/ddsh
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/releases/download/v1.2.2/ddsh
 	sha256sums = SKIP
 
 pkgname = ddsh-bin
