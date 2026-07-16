@@ -1,0 +1,15 @@
+pkgbase = dim-caelestia-cli-git
+	pkgdesc = The CLI tool for the Caelestia project (Git development version)
+	pkgver = r623.20351c6
+	pkgrel = 1
+	url = https://github.com/dim-ghub/caelestia-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = caelestia-cli
+	conflicts = caelestia-cli
+	source = caelestia-cli::git+https://github.com/dim-ghub/caelestia-cli.git
+	md5sums = SKIP
+
+pkgname = dim-caelestia-cli-git
