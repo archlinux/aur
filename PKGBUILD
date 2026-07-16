@@ -1,7 +1,4 @@
 # Maintainer: rez <rez@ifwerez.ru>
-# Alternative PKGBUILD — downloads pre-built binary instead of compiling.
-# Usage: makepkg -sf --file PKGBUILD-bin
-# (Or rename to PKGBUILD and use makepkg -si directly.)
 pkgname=cider-studio-bin
 pkgver=1.8.0
 pkgrel=1
