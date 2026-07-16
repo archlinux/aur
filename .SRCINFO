@@ -1,7 +1,7 @@
 pkgbase = system76-dkms-git
 	pkgdesc = Hotkey and custom fan control on System76 laptops with Clevo proprietary firmware
 	pkgver = 1.0.22.r5.gc5d0d13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-dkms
 	arch = x86_64
 	license = GPL-2.0-or-later

@@ -3,7 +3,7 @@
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
 pkgver=1.0.22.r5.gc5d0d13
-pkgrel=1
+pkgrel=2
 pkgdesc="Hotkey and custom fan control on System76 laptops with Clevo proprietary firmware"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
@@ -23,6 +23,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   sed -i "s/#MODULE_VERSION#/${pkgver//.r*/}/" "debian/${pkgname%-git}.dkms"
+  echo "BUILT_MODULE_LOCATION[0]=\"src\"" >>"debian/${pkgname%-git}.dkms"
   echo "BUILT_MODULE_LOCATION[1]=\"src\"" >>"debian/${pkgname%-git}.dkms"
 }
 
