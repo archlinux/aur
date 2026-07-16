@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CHETAH
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0dbb8c959511f9dd1104d965bbbb0f6d')
-b2sums=('a2de9b717d23f7141a146a6d03af77e107dadb0456c32afd881ab318f9c3de8864c36c0fa9a88312263333186ae160914b1d4aadd64310cedfb940a24a83db69')
+md5sums=('8cde64c32f4421e99442ec0d3ed5464f')
+b2sums=('5e9e0aef308610847be9e7036d6281079139f7909effc272ea60271f99ee3480b873f7ec26d2d4aa752cb991ec6b6ca33701f867473e97ffdbbfdec26bf26b9a')
 
 build() {
   mkdir build
