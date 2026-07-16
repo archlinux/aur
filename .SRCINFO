@@ -1,6 +1,6 @@
 pkgbase = rancher-k3d
 	pkgdesc = Little helper to run CNCF's k3s in Docker
-	pkgver = 5.8.3
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = https://github.com/k3d-io/k3d
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rancher-k3d
 	provides = k3d
 	conflicts = rancher-k3d-bin
 	conflicts = rancher-k3d-beta-bin
-	source = k3d-5.8.3.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v5.8.3.tar.gz
-	sha256sums = 2ef51e029f43e70dcda616de98980017ca7de18848265525bf7882d2bd66f9f2
+	source = k3d-5.9.0.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v5.9.0.tar.gz
+	sha256sums = 969cce82c4871bb829be798655abe2b6709b77cc0f42f7ff69293c621dfbbab0
 
 pkgname = rancher-k3d
