@@ -4,9 +4,9 @@ _pkgname=noctalia
 _tagver=5.0.0-beta.3
 pkgname=noctalia
 pkgver=5.0.0_beta.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
 license=('MIT')
 options=('!debug')
@@ -16,6 +16,7 @@ depends=(
   'fontconfig'
   'freetype2'
   'gcc-libs'
+  'git'
   'glib2'
   'glibc'
   'jemalloc'
