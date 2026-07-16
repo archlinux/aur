@@ -13,8 +13,8 @@ pkgbase = ggml-core
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
-	provides = libggml=0.16.0
-	provides = ggml=0.16.0
+	provides = libggml
+	provides = ggml
 	conflicts = libggml
 	conflicts = ggml
 	options = lto

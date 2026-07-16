@@ -21,8 +21,8 @@ makedepends=(
     patch
 )
 provides=(
-    "libggml=${pkgver}"
-    "ggml=${pkgver}"
+    libggml
+    ggml
 )
 conflicts=(
     libggml
