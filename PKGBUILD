@@ -2,7 +2,7 @@
 
 pkgname=ksud
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='KernelSU userspace cli'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
@@ -27,6 +27,7 @@ sha512sums=('c5a0104bb90c663a8039f267f0e973e1aa9320f5157a4bb559b3eee42e55603f5f9
             '14681da81a1a904ac97be98d7df7914e90a50d380878ab8fa12b7f46caf2225fde125f732e4fb03ec25d4d68501d6908558628088b3212135fb6f2ffe7831d0e'
             '72ff9e6f5f217196163fe45333d477f1f4d2835e495bc3b42dc6d0561434c477296c2eca3d40b6f6597a75d10847ae8a4b589695801329537db6873580f3aa96'
             '295037676bf87e897f30eb4c4a3d56aa3caa7ffa36b8da04c16e9c1087093a98adf6fb69c559c8132064d0258cea9923d67d1755c2e3afeef2d043ce1eb9eaf2')
+options=(!lto)
 
 prepare() {
     cd "$_srcname-$pkgver/userspace/ksud/"
@@ -53,7 +54,10 @@ build() {
     # vendored `libzstd.a` library will cause some issue when
     # `options=(lto)` is turned on, so we link dynamically
     # to system zstd library to prevent this from happening
-    export ZSTD_SYS_USE_PKG_CONFIG=1
+    ## disabled due to the `lz4-sys` does not give us an option
+    ## to use system lz4 library, so currently we disable lto
+    ## to avoid all the linking issue
+    # export ZSTD_SYS_USE_PKG_CONFIG=1
 
     cargo build --frozen --release --all-features
 }
