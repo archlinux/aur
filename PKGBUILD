@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneAttribution
-_pkgver=1.34.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Identification of candidate genes associated with genetic variation'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5455159c112f461bde096d8e7207257f14b5c4f0a46c02313c9060be4833c44')
+sha256sums=('cf9a69df29a12f93e66302c0aa302dfd2c317f600a088e8c390015cbcefe350d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
