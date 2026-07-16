@@ -5,7 +5,7 @@
 # CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Universal project task runner'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('just')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('511d51c49adb1198dc0cb446a1a9f2884394100c399cd6dbdd741a0a979286ef')
+sha256sums=('5087e6bdcab664a7b259045140d404c64c47107736a7d5d7166e423c0939f64e')
 
 prepare() {
 	cd "runner-$pkgver"
@@ -50,7 +50,7 @@ package() {
 	# `runner` binary baked in via `current_exe()`. Strategy:
 	#   1. Generate the combined stream for each shell.
 	#   2. sed-rewrite the baked target/release paths to /usr/bin/{runner,run}.
-	#      Longer match first — `…/run` is a prefix of `…/runner`.
+	#      Longer match first, `…/run` is a prefix of `…/runner`.
 	#   3. awk-split bash + zsh on their start-of-line boundaries so each
 	#      command gets its own autoload file. Fish stays as one file.
 	local g="$srcdir/_compl"
@@ -72,13 +72,13 @@ package() {
 	install -Dm0644 "$g/run.bash"    "$pkgdir/usr/share/bash-completion/completions/run"
 	install -Dm0644 "$g/_runner"     "$pkgdir/usr/share/zsh/site-functions/_runner"
 	install -Dm0644 "$g/_run"        "$pkgdir/usr/share/zsh/site-functions/_run"
-	# Fish autoloads completion files by command basename — `runner.fish` is
+	# Fish autoloads completion files by command basename; `runner.fish` is
 	# sourced on `runner<TAB>` but never on `run<TAB>`. Install the (identical)
 	# combined stream under both names so each command's first tab works in
 	# a fresh shell, without depending on session order.
 	install -Dm0644 "$g/fish.combined" "$pkgdir/usr/share/fish/vendor_completions.d/runner.fish"
 	install -Dm0644 "$g/fish.combined" "$pkgdir/usr/share/fish/vendor_completions.d/run.fish"
-	# PowerShell has no system autoload dir on Linux — pwsh users dot-source
+	# PowerShell has no system autoload dir on Linux; pwsh users dot-source
 	# this file from their `$PROFILE`:  . /usr/share/runner/runner.ps1
 	install -Dm0644 "$g/runner.ps1" "$pkgdir/usr/share/runner/runner.ps1"
 
