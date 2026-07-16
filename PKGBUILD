@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsDataHub
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc522c7b8986bb2d26244bba320ed7bc')
-b2sums=('bcf7e0d10fad725c94c3bc2a3bc5f4cd0734a4d738d7258a79a7f6830f103d39556b392fb600404bfc0cde662f447d178c1a0f73d0642d4d75d43676904f0c43')
+md5sums=('2c14bec070867e66379cd8112f526548')
+b2sums=('1ee65a01783a480ffaa2d163f48daf114362d259fa9ae9a787e9eb6267b20cd9ec71b2bd923470e41db3357eed24c9849abe43c12b9bcebb862cea5c835ae6f7')
 
 build() {
   mkdir build
