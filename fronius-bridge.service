@@ -5,6 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+EnvironmentFile=-/etc/fronius-bridge/.env
 ExecStart=/usr/bin/fronius-bridge --config /etc/fronius-bridge/config.yaml
 User=meter
 Group=meter
