@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/screwys/Rufin'
 license=('GPL-3.0-or-later')
 depends=(
   'gcc-libs'
-  'gdk-pixbuf2'
+  'glib2'
   'glibc'
   'gst-libav'
   'gst-plugins-bad'
@@ -31,7 +31,7 @@ makedepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('417936b2a50e3d4b3ac38b692e637a1c2218b0a1eda9c68a139b5ce2fe22d7f7')
+sha256sums=('7f065f6c9eb7f4a039f996ea0ae556e21a7fc393dd8c376fdc4fa4895b6f98d9')
 
 prepare() {
   cd "Rufin-${pkgver}" || return
@@ -67,7 +67,7 @@ package() {
     data/icons/hicolor/64x64/apps/*.png
 
   local lang po_file
-  for po_file in locales/*.po; do
+  for po_file in crates/localization/locales/*.po; do
     [[ -f $po_file ]] || continue
     lang=${po_file##*/}
     lang=${lang%.po}
