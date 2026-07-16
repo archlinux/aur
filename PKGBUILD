@@ -18,10 +18,11 @@ _urlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversi
 license=('MIT')
 
 provides=("${_appname}")
-makedepends=('go')
-depends=('glibc')
 
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/refs/tags/${_gitversion}.tar.gz")
+makedepends=('go')
+depends=('glibc' 'git')
+
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/${_gitversion}.tar.gz")
 sha256sums=('064e89c87b51c3ed0d00ca959fd52ecfcaad81b0db2127f4b1a91bd053d87408')
 
 
