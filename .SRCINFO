@@ -1,6 +1,6 @@
 pkgbase = r-systempiper
 	pkgdesc = systemPipeR: NGS workflow and report generation environment
-	pkgver = 2.14.2
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/systemPipeR
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-systempiper
 	optdepends = r-systempiperdata
 	optdepends = r-testthat
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeR_2.14.2.tar.gz
-	sha256sums = f853cc191f7f49b39a2c05a67ca69eca74da925bfdb144831dc3177082157050
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeR_2.18.0.tar.gz
+	sha256sums = 18daf6ebbd76b6192f83c44e2fff5d746a50c4f5d719d6517d1a7a61967d747f
 
 pkgname = r-systempiper
