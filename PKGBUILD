@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TAPseq
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Targeted scRNA-seq primer design for TAP-seq'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1dfeae3a61730e2e00a933a49146b2fe75c0aa348695a6d99b9ddf847af29dc')
+sha256sums=('4767f3bcd1d06a6018d4b03db5cb4ae79302b695cd9ead40b9f899e638ae120d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
