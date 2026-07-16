@@ -1,6 +1,6 @@
 pkgname=agent-deck-bin
 pkgver=1.9.73
-pkgrel=2
+pkgrel=1
 pkgdesc="Terminal session manager for AI coding agents"
 arch=(x86_64 aarch64)
 url="https://github.com/asheshgoplani/agent-deck"
