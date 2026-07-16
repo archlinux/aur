@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=fernflower-bin
-pkgver=261.26222.65
+pkgver=262.8665.258
 pkgrel=1
 pkgdesc="Analytical decompiler for Java bytecode by JetBrains"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!debug')
 
 _repobase="https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/java/java-decompiler-engine"
 source=("${pkgname}-${pkgver}.jar::${_repobase}/${pkgver}/java-decompiler-engine-${pkgver}.jar")
-sha256sums=('42c80bd7ffbd27f156f949040da2db04c5d1c230a05931cc4bf75d10adeb1cb0')
+sha256sums=('2885f0ff6526eb5791367c21055f685b8f9010cb841666cccaec7fc248a6d5e7')
 noextract=("${pkgname}-${pkgver}.jar")
 
 latestver() {
