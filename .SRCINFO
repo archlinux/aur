@@ -1,6 +1,6 @@
 pkgbase = wayfire-plugin-gtk4-decorator-git
 	pkgdesc = 3D wayland compositor GTK4 decorator plugin
-	pkgver = r38.b8a9b62
+	pkgver = r88.2c2c3b3
 	pkgrel = 1
 	url = https://github.com/soreau/wf-csd-deco
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wayfire-plugin-gtk4-decorator-git
 	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
 	provides = wayfire-plugin-gtk4-decorator
 	conflicts = wayfire-plugin-gtk4-decorator
-	source = git+https://github.com/soreau/wf-csd-deco#branch=groups-n-tabs
+	source = git+https://github.com/soreau/wf-csd-deco
 	sha256sums = SKIP
 
 pkgname = wayfire-plugin-gtk4-decorator-git
