@@ -7,6 +7,13 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260714
+
+### Added
+
+- Autoridade_Certificadora_SDI_v2.crt
+- Autoridade_Certificadora_SIRIUS.crt
+
 ## 20260706
 
 ### Added
