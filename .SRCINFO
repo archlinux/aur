@@ -1,0 +1,18 @@
+pkgbase = ps3mca_tool-git
+	pkgdesc = Command line utility to manage Playstation 2 Memory Cards using the PS3 Memory Card Adapter
+	pkgver = r3.26acc6b
+	pkgrel = 1
+	url = https://github.com/Dewey-Wilkerson/ps3mca_tool_linux/
+	install = ps3mca_tool-git.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	depends = libusb-compat
+	source = git+https://github.com/Dewey-Wilkerson/ps3mca_tool_linux#branch=linux
+	source = 60-ps3mca.rules
+	sha256sums = SKIP
+	sha256sums = ba91b198d3174d132aebf3712eaf3e53d0375c93cf25483ccb4d03029576d252
+
+pkgname = ps3mca_tool-git
