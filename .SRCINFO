@@ -1,6 +1,6 @@
 pkgbase = cove-bin
 	pkgdesc = Media streaming desktop app — discover, track, and stream movies and TV shows
-	pkgver = 0.26.1
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://github.com/coveninja/cove
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cove-bin
 	depends = mpv
 	provides = cove
 	conflicts = cove
-	source = cove-bin-0.26.1.tar.gz::https://github.com/coveninja/cove/releases/download/v0.26.1/cove-linux-amd64.tar.gz
-	sha256sums = ad12edfcebf3cc7afa124c2dab0391743a364d616f45153bb39ec03e77988e36
+	source = cove-bin-0.26.4.tar.gz::https://github.com/coveninja/cove/releases/download/v0.26.4/cove-linux-amd64.tar.gz
+	sha256sums = 30ce2670d1bcdfb44e655810987e805650188e2db2c229ed8b8b727575ac3935
 
 pkgname = cove-bin

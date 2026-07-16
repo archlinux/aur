@@ -1,6 +1,6 @@
 # Maintainer: coveninja
 pkgname=cove-bin
-pkgver=0.26.1
+pkgver=0.26.4
 pkgrel=1
 pkgdesc="Media streaming desktop app — discover, track, and stream movies and TV shows"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt6-webengine' 'qt6-webchannel' 'mpv')
 provides=('cove')
 conflicts=('cove')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coveninja/cove/releases/download/v${pkgver}/cove-linux-amd64.tar.gz")
-sha256sums=('ad12edfcebf3cc7afa124c2dab0391743a364d616f45153bb39ec03e77988e36')
+sha256sums=('30ce2670d1bcdfb44e655810987e805650188e2db2c229ed8b8b727575ac3935')
 
 package() {
     install -Dm755 "${srcdir}/bin/cove"                "${pkgdir}/usr/bin/cove"
