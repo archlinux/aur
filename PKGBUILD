@@ -1,4 +1,4 @@
-# Maintainer: MinecraftPEayer <boingli227 at gmail dot com>
+# Maintainer: MinecraftPEayer <boingli227 at outlook dot com>
 
 pkgname=qtautoclicker-git
 _pkgname=AutoClicker
