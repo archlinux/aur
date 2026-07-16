@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-quake-terminal
 	pkgdesc = Quake-style dropdown terminal for COSMIC Desktop
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/m0rf30/cosmic-ext-quake-terminal
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = cosmic-ext-quake-terminal
 	depends = glibc
 	depends = libxkbcommon
 	depends = wayland
-	source = cosmic-ext-quake-terminal-0.1.0.tar.gz::https://github.com/m0rf30/cosmic-ext-quake-terminal/archive/0.1.0.tar.gz
-	sha256sums = 46c5dd950018e931ab813f650e5ef974822b4eb048233e35b8ac2fdff76d8ac7
+	source = cosmic-ext-quake-terminal-0.2.0.tar.gz::https://github.com/m0rf30/cosmic-ext-quake-terminal/archive/0.2.0.tar.gz
+	sha256sums = 3de0e6a42b1d127885bae2e3f54bbd51cf206dc220351d98ecc00221f1e04b02
 
 pkgname = cosmic-ext-quake-terminal

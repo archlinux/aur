@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=cosmic-ext-quake-terminal
-pkgver=0.1.0 # renovate: datasource=github-tags depName=m0rf30/cosmic-ext-quake-terminal
+pkgver=0.2.0 # renovate: datasource=github-tags depName=m0rf30/cosmic-ext-quake-terminal
 pkgrel=1
 pkgdesc='Quake-style dropdown terminal for COSMIC Desktop'
 arch=(aarch64 x86_64)
@@ -20,7 +20,7 @@ makedepends=(
   lld
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('46c5dd950018e931ab813f650e5ef974822b4eb048233e35b8ac2fdff76d8ac7')
+sha256sums=('3de0e6a42b1d127885bae2e3f54bbd51cf206dc220351d98ecc00221f1e04b02')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
