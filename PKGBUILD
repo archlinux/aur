@@ -2,8 +2,8 @@
 
 pkgname=codex-lb
 _pkgname=codex_lb
-pkgver=1.20.1
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='Load balancer and proxy for ChatGPT accounts with usage dashboard and OpenAI-compatible API'
 arch=('any')
 url='https://github.com/Soju06/codex-lb'
@@ -67,7 +67,7 @@ source=(
   'codex-lb.install'
 )
 sha256sums=(
-  'd45adc3f5b266c5ca9a3067b7d54a68da1d9291e66aaf783b7172830723746e5'
+  'f8bff75f0f6909603ce160f9bf049c2dfc3b1506ff7413a89b30b019b7b40c13'
   '0c63ea72ce0f73dab98653feb8e38b4a6f8fc8cbb0902f8472b08de31e602aeb'
   '31df28070b4619b52a31823b236ec0a6777e00f6f4017bc6b2349539e605727c'
   'f4b5f162049f22a71e63c15dc8012e102479191fdca065ecc9f23e3557c30611'
