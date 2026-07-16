@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IONiseR
-_pkgver=2.32.0
+_pkgver=2.35.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.35.0
 pkgrel=1
 pkgdesc='Quality Assessment Tools for Oxford Nanopore MinION data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('370313643239612a9228527735cb771203126426daf7268cf234693ed97e6ef1')
+sha256sums=('5d55ccc4e8ff203dcd63b516a766c52d89d12cab8e494f53a4972f9d1e8a46bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
