@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBSEA
-_pkgver=1.36.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Exon Based Strategy for Expression Analysis of genes'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48349ec673c8ebb00488f556ba133536b8fc561f1a17e306109b789bb50dfda6')
+sha256sums=('c3bf0fd35f6f275fb8c33e0e1b3257aae676b66d347c185bcca31b5bf9fce770')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
