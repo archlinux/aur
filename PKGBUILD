@@ -51,3 +51,4 @@ EOF
 </mime-info>
 EOF
 }
+ 
