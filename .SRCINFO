@@ -1,0 +1,19 @@
+pkgbase = akari-tool
+	pkgdesc = Gaming setup tool for vanilla Arch — dependencies, drivers, kernels & diagnosis
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isleap9/Akari-Tool-Arch
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = pyside6
+	depends = bash
+	depends = polkit
+	depends = pciutils
+	optdepends = paru: AUR extras (Heroic, ProtonUp-Qt, GOverlay, linux-cachyos)
+	optdepends = yay: AUR extras (alternative helper)
+	optdepends = game-devices-udev: controller permissions
+	source = akari-tool-0.1.0.tar.gz::https://github.com/isleap9/Akari-Tool-Arch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9a727229aff4d65272ac91d3d434a980f41698b9718e6813cdaebfe09ecddbb4
+
+pkgname = akari-tool
