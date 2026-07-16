@@ -12,8 +12,6 @@ pkgbase = omniclicker
 	depends = libx11
 	depends = libxtst
 	depends = qt6-base
-	optdepends = hyprland: Hyprland IPC support
-	optdepends = sway: Sway IPC support
 	source = omniclicker-1.0.0.tar.gz::https://github.com/limonyx/omniclicker/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 4a1226e5ef92693d84f29b9c80e73ba1e6280890179d3711363de0a143967127
 

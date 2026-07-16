@@ -8,8 +8,6 @@ url='https://github.com/limonyx/omniclicker'
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'kglobalaccel' 'libx11' 'libxtst' 'qt6-base')
 makedepends=('cmake' 'ninja')
-optdepends=('hyprland: Hyprland IPC support'
-  'sway: Sway IPC support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4a1226e5ef92693d84f29b9c80e73ba1e6280890179d3711363de0a143967127')
 
