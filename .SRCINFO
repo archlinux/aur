@@ -1,6 +1,6 @@
 pkgbase = jupyterhub
 	pkgdesc = Multi-user server for Jupyter notebooks
-	pkgver = 5.4.6
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://jupyter.org/hub
 	install = jupyterhub.install
@@ -46,11 +46,13 @@ pkgbase = jupyterhub
 	optdepends = python-pycurl: improved HTTP performance
 	optdepends = python-statsd: send metrics to a StatsD server
 	backup = etc/jupyterhub/jupyterhub_config.py
-	source = git+https://github.com/jupyterhub/jupyterhub.git#tag=5.4.6
+	source = git+https://github.com/jupyterhub/jupyterhub.git#tag=5.5.0
 	source = jupyterhub.service
 	source = tests_use_random_ports.patch
-	sha256sums = 7dfaa80cc1c7c56bb32dbc1705e51eb6360d69c24f6848225a876e8686f91d6d
+	source = no_unsafe_perm.patch
+	sha256sums = a8bcc22782638cf3e06c744a7194917498645e8f60f622fc28f4a42e0360085a
 	sha256sums = f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997
 	sha256sums = f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b
+	sha256sums = aa14808598dc85435527c024be3afd2c6ea66526cd5380bc0413a2bab2a93137
 
 pkgname = jupyterhub

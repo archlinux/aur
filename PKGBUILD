@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.4.6
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -66,16 +66,19 @@ source=(
   "git+https://github.com/jupyterhub/jupyterhub.git#tag=$pkgver"
   'jupyterhub.service'
   'tests_use_random_ports.patch'
+  'no_unsafe_perm.patch'
 )
 sha256sums=(
-  '7dfaa80cc1c7c56bb32dbc1705e51eb6360d69c24f6848225a876e8686f91d6d'
+  'a8bcc22782638cf3e06c744a7194917498645e8f60f622fc28f4a42e0360085a'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
+  'aa14808598dc85435527c024be3afd2c6ea66526cd5380bc0413a2bab2a93137'
 )
 
 prepare() {
   cd "${srcdir}/jupyterhub"
   patch -p0 -i "${srcdir}/tests_use_random_ports.patch"
+  patch -p0 -i "${srcdir}/no_unsafe_perm.patch"
 }
 
 build() {
@@ -112,6 +115,7 @@ check() {
     'test_external_service'
     'test_single_user_spawner'
     'test_nbclassic_control_panel'
+    'test_connection_hub_with_external_ssl_authority'
   )
 
   # The community package jupyter-nbclassic provides and conflicts with

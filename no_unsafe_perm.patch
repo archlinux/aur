@@ -1,0 +1,20 @@
+--- setup.py
++++ setup2.py
+@@ -100,7 +100,7 @@ NPM 7 no longer has --unsafe-perm flag
+ 
+         print("installing js dependencies with npm")
+         check_call(
+-            ['npm', 'install', '--progress=false', '--unsafe-perm'],
++            ['npm', 'install', '--progress=false'],
+             cwd=here,
+             shell=shell,
+         )
+@@ -191,7 +191,7 @@
+ 
+         print("Installing JSX admin app requirements")
+         check_call(
+-            ['npm', 'install', '--progress=false', '--unsafe-perm'],
++            ['npm', 'install', '--progress=false'],
+             cwd=self.jsx_dir,
+             shell=shell,
+         )
