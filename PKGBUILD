@@ -6,12 +6,11 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}
 pkgdesc="Git Worktree Manager"
 
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -27,7 +26,7 @@ depends=('glibc' 'libgcc' 'zlib' 'git')
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-
+sha256sums=('72f6f960ba1a2e30eb2be6e406a8cae5672134d3267d0237bfad232a6fcf8709')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
@@ -58,4 +57,3 @@ package() {
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('e3e35a6480742e51fcf7eb6e8147983acfa0db37b46f4a7bdbdd4dd45b1a75b1')
