@@ -2,19 +2,19 @@
 
 pkgname=pdf-tui-bin
 _pkgname=pdf-tui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64')
 url="https://github.com/WindustH/pdf-tui"
 license=('MIT')
-depends=('chafa' 'poppler')
+depends=('chafa' 'pdftk' 'poppler')
 optdepends=('perl-image-exiftool: edit PDF metadata')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('49fceec935b904bb1b38fb86411784405ed766929938f9384aaf74f43ff01dca')
+sha256sums=('fc3597063abe5d1ecdde92062bbd7108ef5c697558a8474391192c111ea17a13')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
