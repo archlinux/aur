@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MAST
-_pkgver=1.33.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-zinbwave
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('32f6eba6564fd970099df0d9e2beaa44')
-b2sums=('1a13eab5de7c673c65decf80d256eecc390345cede5642ee6974e795b9436800341515260c12bac0a72743485d4e408849ce096cd63e48a6b5d75520d28e0194')
+md5sums=('07396afb22ac8623c40178489b82ce27')
+b2sums=('02faef85b31eefc00c63d58cead971a76ed31252e13485b581911df5ea6ef219dacb3f322d6f145317e6d10383b553c432b830773278016f2005b5c99cf57bfc')
 
 build() {
   mkdir build
