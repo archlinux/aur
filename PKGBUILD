@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.11.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pyopenssl' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-xdist' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer' 'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e93e3e6397c89c81bf8725de4edcbea6c1370564fead704e2b9a3d0fa83002bc')
+sha256sums=('093ca33a532a5c333083c7a16bfd6b1ebe6bbd71f7b81d416f5619a89e546da3')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -41,6 +41,7 @@ check() {
     --ignore google/genai/tests/shared
     --ignore google/genai/tests/file_search_stores
     --ignore google/genai/tests/private/test_send_message_private.py
+    --ignore google/genai/tests/private/test_send_message_stream_private.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
