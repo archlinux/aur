@@ -1,0 +1,15 @@
+pkgbase = amd_pmc-ideapad-dkms-git
+	pkgdesc = AMD PMC kernel module patched to fix keyboard/lid switch broken after suspend on Lenovo IdeaPad Slim 3 AMD laptops (DKMS)
+	pkgver = r20.99f0d01
+	pkgrel = 1
+	url = https://github.com/DanielGibson/amd_pmc-ideapad
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = amd_pmc-ideapad-dkms
+	conflicts = amd_pmc-ideapad-dkms
+	source = git+https://github.com/DanielGibson/amd_pmc-ideapad.git
+	sha256sums = SKIP
+
+pkgname = amd_pmc-ideapad-dkms-git
