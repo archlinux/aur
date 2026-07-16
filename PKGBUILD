@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantAnnotation
-_pkgver=1.54.1
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,15 +10,13 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
-  bzip2
-  curl
   r-annotationdbi
   r-biobase
   r-biocgenerics
   r-biostrings
   r-bsgenome
+  r-curl
   r-dbi
-  r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
   r-iranges
@@ -26,8 +24,11 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-summarizedexperiment
   r-xvector
+  bzip2
+  curl
   xz
   zlib
 )
@@ -38,6 +39,7 @@ optdepends=(
   r-annotationhub
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg19
+  r-genomeinfodb
   r-ggplot2
   r-httr
   r-jsonlite
@@ -53,8 +55,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fa87a1d665f6cc10417b53bf4f289b89')
-b2sums=('f9e5f7c83eec22a298bf7cf9d28615a2f2f482ae265c9c45d6b44926a682ee1299ebd4a848e8446eddc688c6d8408d5d5513bc8e3a9611dcd9fa3644dd4a91fa')
+md5sums=('96879f37b37f8407b57701ae0a125615')
+b2sums=('18ee61622ab345b9ab3bd2551811cace5da76f642a8d7707885d03a47fa4b077e8e18e30ae7f154aa68364cd0bd4b7c6256733ddb72dfa8d0703a45ab5749433')
 
 build() {
   mkdir build
