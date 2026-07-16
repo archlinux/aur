@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 _zigwlver=0.6.0
@@ -27,7 +27,7 @@ optdepends=('alacritty: Default terminal emulator'
 
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   DESTDIR="build" zig build \
     --summary all \
     --prefix /usr \
@@ -45,7 +45,7 @@ build() {
 
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   cp -a build/* "$pkgdir"
 
