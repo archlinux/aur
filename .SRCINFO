@@ -12,7 +12,7 @@ pkgbase = feishin-bin
 	provides = feishin
 	conflicts = feishin
 	noextract = feishin.tar.xz
-	source = feishin.tar.xz::https://github.com/jeffvli/feishin/releases/download/v1.14.0/Feishin-linux-x64.tar.xz
+	source = Feishin-linux-x64-1.14.0.tar.xz::https://github.com/jeffvli/feishin/releases/download/v1.14.0/Feishin-linux-x64.tar.xz
 	sha256sums = a81cbffa4fa74de52048e0cf4a14698643a9b4ca8d4292f92e19b95dadb8aa81
 
 pkgname = feishin-bin
