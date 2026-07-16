@@ -1,4 +1,4 @@
-# Maintainer: NodeRelay <joseph.d.harris78@gmail.com>
+# Maintainer: NodeRelay <joe@linuxdojo.org>
 pkgname=uplink-irc
 pkgver=2026.7.6
 pkgrel=1
