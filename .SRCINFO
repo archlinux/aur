@@ -1,0 +1,27 @@
+pkgbase = yurigram-bin
+	pkgdesc = Yet another unofficial tdesktop client, but forked from yukigram
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/Revincx/Yukigram
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = fontconfig
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = freetype2
+	optdepends = geoclue: geoinformation support
+	optdepends = geocode-glib-2: geocoding support
+	optdepends = webkit2gtk: embedded browser features
+	optdepends = xdg-desktop-portal: desktop integration
+	provides = yurigram
+	conflicts = yurigram
+	conflicts = yukigram-rua
+	conflicts = yukigram-rua-bin
+	replaces = yukigram-rua
+	replaces = yukigram-rua-bin
+	source = yurigram-7.0.1-1-x86_64.tar.gz::https://github.com/Revincx/Yukigram/releases/download/7.0.1-1/yurigram-7.0.1-1-x86_64.tar.gz
+	sha256sums = 3e0dfdce8e316a403200d868f1119f916f58781de7087c0b1d8829b738cd5092
+
+pkgname = yurigram-bin
