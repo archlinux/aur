@@ -4,10 +4,13 @@ pkgbase = sailcut
 	pkgrel = 1
 	url = https://www.sailcut.com/
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-only
 	makedepends = fig2dev
 	makedepends = qt6-tools
+	makedepends = docbook-xsl
 	depends = qt6-base
+	depends = qt6-svg
+	depends = hicolor-icon-theme
 	source = sailcut-v1.5.1.tar.gz::https://github.com/sailcut/sailcut/archive/refs/tags/v1.5.1.tar.gz
 	sha256sums = db63293d38f72795a0a92b0002cbef7d0b0b611f765c4c7bcc1ed6e0144d474b
 
