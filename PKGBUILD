@@ -2,7 +2,7 @@
 
 pkgname=libsignal-ffi
 _pkgname=libsignal
-pkgver=0.94.4
+pkgver=0.97.2
 pkgrel=1
 pkgdesc='Library for the Signal Protocol (ffi component)'
 url="https://github.com/signalapp/${_pkgname}/tree/main/rust/bridge/ffi"
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('ca8fb5fb3437c083263138079f512988581a94c65e407c8fe1c7c9c6310e60fa')
+sha256sums=('94eb4a3f00753f9b311c43225782576c029dad7ef3ef7e9be392748a3d834f35')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
