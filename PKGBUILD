@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dcGSA
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Distance-correlation based Gene Set Analysis for longitudinal gene expression profiles'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7920a1a6c1428bb08f757e9bffa6d909bf2d9875a12a18920eff0e81f64d6b5')
+sha256sums=('1bd51249bb54cf603ebe92df15448434751fc654a3d646a5f45ce6eac71632b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
