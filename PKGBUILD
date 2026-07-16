@@ -6,7 +6,7 @@
 # edit the placeholders in-tree.
 
 pkgname=winpodx
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)"
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('19619aca02915ff931aaefa5f8c3052883c16d1b6992c17ef14cfd73cf405115')
+sha256sums=('e34b14988ca8aa07cc7d144fa87f9464726c093aca515f513766440904795fa4')
 install=winpodx.install
 
 build() {
