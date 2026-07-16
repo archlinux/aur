@@ -1,7 +1,7 @@
 pkgbase = openobex
 	pkgdesc = Implementation of the OBject EXchange (OBEX) protocol
 	pkgver = 1.7.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://dev.zuckschwerdt.org/openobex/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = openobex
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = java-environment
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
 	depends = libusb
 	depends = bluez-libs
 	options = staticlibs
