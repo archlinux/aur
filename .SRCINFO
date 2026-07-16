@@ -1,6 +1,6 @@
 pkgbase = r-spatialexperiment
 	pkgdesc = S4 Class for Spatial Experiments handling
-	pkgver = 1.18.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpatialExperiment
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-spatialexperiment
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialExperiment_1.18.1.tar.gz
-	sha256sums = dfaec4e05bd310a0116fc2449edff385b0d5969b675f0c68d1a08c6e08b58d67
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialExperiment_1.22.0.tar.gz
+	sha256sums = a57f4be93e48d6345c14332a3aded3cdd5ecd8c37c59b7f8a534fd63587432b3
 
 pkgname = r-spatialexperiment

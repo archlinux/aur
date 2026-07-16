@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SpatialExperiment
-_pkgver=1.18.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='S4 Class for Spatial Experiments handling'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dfaec4e05bd310a0116fc2449edff385b0d5969b675f0c68d1a08c6e08b58d67')
+sha256sums=('a57f4be93e48d6345c14332a3aded3cdd5ecd8c37c59b7f8a534fd63587432b3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
