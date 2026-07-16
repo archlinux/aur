@@ -22,7 +22,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=(
-            '408a8f16892cda49ef35c57a99b4f8d17fcc25173ff3b54f2799039590dc658b'
+            '74faa1e2edc74eb4a3897cee9a08c371133311cd41d6da673c0905aad4708479'
             '1f5dede1712658ac3e276d83ac4cad541a636c54f084b07d8c7778b8c69bce95'
             '308fea8ed4ebac8e0c27dc76488c9b98427ba832c0de2562cf4c48e5891b89e8'
             '8935cbf7f78c697f3915d40e124916aa29cbeffdbbf024c01da6a6257b4d27c7'
