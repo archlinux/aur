@@ -1,6 +1,6 @@
 pkgbase = r-chipenrich
 	pkgdesc = Gene Set Enrichment For ChIP-seq Peak Data
-	pkgver = 2.32.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chipenrich
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-chipenrich
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/chipenrich_2.32.0.tar.gz
-	sha256sums = e100874242774e75b6341df6ea3317e8e8da5f0adc008abd9fcd987115352a46
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/chipenrich_2.36.0.tar.gz
+	sha256sums = 14b0c148628d7299110735272705e453f226272d8ed1246f5b6bb7aa1f614052
 
 pkgname = r-chipenrich

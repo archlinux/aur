@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chipenrich
-_pkgver=2.32.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Gene Set Enrichment For ChIP-seq Peak Data'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e100874242774e75b6341df6ea3317e8e8da5f0adc008abd9fcd987115352a46')
+sha256sums=('14b0c148628d7299110735272705e453f226272d8ed1246f5b6bb7aa1f614052')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
