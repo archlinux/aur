@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast CLI for searching, tracing, and streaming logs across files, Docker containers, and remote hosts"
 
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('linux-amd64' 'linux-arm64')
+_barch=('linux_amd64' 'linux_arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -28,12 +28,12 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('e797424ab6e1b787dddfc5e0df9643eef10c3b46dbd5a7c2951d5c2dc421796f'
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
+sha256sums=('fe74b81387008efdffb26c37184d92157b7c175446bc727e84b43ab2f3fa562f'
             '9f88798985c010e225b1ec2a9336fd560317a5be0553e45e188d25287e514a58')
-sha256sums_x86_64=('1ab0e1db3844450d7047e3aa5d67ef445f30db704207f8add1f90148bb29f11d')
-sha256sums_aarch64=('e7e48bf41d7b11dbd2c12d50be7b4354e9776ea4ebd7ecc47c10c34252505f18')
+sha256sums_x86_64=('bf9df3201b617243a63d0ba408ed9b5d934b7d29fb217777d51a0a3355600817')
+sha256sums_aarch64=('303e9dc8fe509c3d2a1fe4fbfaf7158c51f21dcbcaaaae6eaa7362faff771bb2')
 
 
 case ${CARCH} in
