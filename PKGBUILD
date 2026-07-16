@@ -1,7 +1,7 @@
 # Maintainer: gimletlove
 
 pkgname=imagecompare-bin
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Image Compare lets you inspect two or more images side by side, in a stacked view, or with a heatmap of perceptual differences. With various other helpful features.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('imagecompare')
 conflicts=('imagecompare')
 source=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/v$pkgver/imagecompare-$pkgver-linux-x86_64.zip")
 noextract=("$pkgname-$pkgver-x86_64.zip")
-sha256sums=('970a81c0ce8449578275cefec8d638763f4844f87f094b9572bf2780afcd59c7')
+sha256sums=('809cb53ba7b6c3042d0a34410de5073548521bb46e910ca47e70b660f20cf7fd')
 
 package() {
   local _archive="$srcdir/$pkgname-$pkgver-x86_64.zip"
