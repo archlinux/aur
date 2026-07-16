@@ -2,7 +2,7 @@
 
 pkgname=vacuumtube
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial wrapper of YouTube Leanback with a built-in adblocker and minor enhancements.'
 arch=('any')
 url='https://github.com/shy1132/VacuumTube'
@@ -47,7 +47,7 @@ package() {
 
 	install -Dm755 <(cat << EOF
 #!/usr/bin/env sh
-electron /usr/share/${pkgname}/app.asar "\$@"
+exec electron /usr/share/${pkgname}/app.asar "\$@"
 EOF
 	) "${pkgdir}/usr/bin/startvacuumtube"
 
