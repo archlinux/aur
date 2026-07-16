@@ -49,7 +49,7 @@ esac
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-${_CARCH}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
