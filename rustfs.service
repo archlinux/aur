@@ -10,7 +10,7 @@ User=root
 Group=root
 WorkingDirectory=/usr
 EnvironmentFile=-/etc/default/rustfs
-ExecStart=/usr/bin/rustfs  $RUSTFS_VOLUMES
+ExecStart=/usr/bin/rustfs
 LimitNOFILE=1048576
 LimitNPROC=32768
 TasksMax=infinity
@@ -30,7 +30,5 @@ ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
 RestrictRealtime=true
-StandardOutput=append:/var/logs/rustfs/rustfs.log
-StandardError=append:/var/logs/rustfs/rustfs-err.log
 [Install]
 WantedBy=multi-user.target

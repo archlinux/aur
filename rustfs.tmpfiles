@@ -1,0 +1,2 @@
+d /data/rustfs0 0750 rustfs rustfs -
+d /var/log/rustfs 0755 root root -
