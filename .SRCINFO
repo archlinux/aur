@@ -1,0 +1,22 @@
+pkgbase = python-openreview
+	pkgdesc = Official Python client library for the OpenReview API
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/openreview/openreview-py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-deprecated
+	depends = python-editdistance
+	depends = python-pycryptodome
+	depends = python-pyjwt
+	depends = python-pylatexenc
+	depends = python-requests
+	depends = python-tld
+	depends = python-tqdm
+	source = python-openreview-2.3.1.tar.gz::https://github.com/openreview/openreview-py/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 7ff67817ea92b79791a314d99568f04a964eeb2c054b0e41cc43825772f1c746
+
+pkgname = python-openreview
