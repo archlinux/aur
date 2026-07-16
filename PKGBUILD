@@ -11,7 +11,7 @@ conflicts=('jz')
 depends=('glibc')
 options=('!strip')
 source=("https://github.com/jitzulang/jitzu/releases/download/v${pkgver}/jitzu-${pkgver}-linux-x64.zip")
-sha256sums=('cfb8f283e44d976f4d1f8f8b653b213de4fb038689976434b2c507c75e401536')
+sha256sums=('698bec4995e8d2845ba29f826084d471ad58f1a11f67c8f594754c46ff9aa0d0')
 
 package() {
     install -Dm755 jz "${pkgdir}/usr/bin/jz"
