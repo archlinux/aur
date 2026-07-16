@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scry
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Small-Count Analysis Methods for High-Dimensional Data'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcf5954c71068df8eb1df78af1c61122b5dd9076f1ca07504b34fee6c932691f')
+sha256sums=('c5994fa6d256dec3991c1e42a89085522d03eef2d0c636568c768a07cc6e3434')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

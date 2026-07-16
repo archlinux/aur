@@ -1,6 +1,6 @@
 pkgbase = r-scry
 	pkgdesc = Small-Count Analysis Methods for High-Dimensional Data
-	pkgver = 1.20.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scry
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-scry
 	optdepends = r-rmarkdown
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scry_1.20.0.tar.gz
-	sha256sums = bcf5954c71068df8eb1df78af1c61122b5dd9076f1ca07504b34fee6c932691f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scry_1.24.0.tar.gz
+	sha256sums = c5994fa6d256dec3991c1e42a89085522d03eef2d0c636568c768a07cc6e3434
 
 pkgname = r-scry
