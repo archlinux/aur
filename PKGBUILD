@@ -1,6 +1,6 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vacuum
-pkgver=0.29.9
+pkgver=0.29.10
 pkgrel=1
 pkgdesc='fast, lightweight OpenAPI linter and quality checking tool'
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'go' 'npm')
 source=(
     "git+https://github.com/daveshanley/vacuum.git#tag=v${pkgver}"
 )
-sha256sums=('7f5168e4c01fa7f8ac866da5b677124b6c487b4866c784d9c83efb6a31d16fc6')
+sha256sums=('b79dc0bb41968018e98ef8f5dbf9fa49e7a2842a487fe3446174edf0716ac326')
 
 build() {
     cd "$pkgname"
