@@ -1,0 +1,57 @@
+diff --git a/src/freedesktop_screensaver.rs b/src/freedesktop_screensaver.rs
+index d9e9243..486de05 100644
+--- a/src/freedesktop_screensaver.rs
++++ b/src/freedesktop_screensaver.rs
+@@ -73,6 +73,29 @@ impl Screensaver {
+     }
+ }
+ 
++/// Read-only export of the current org.freedesktop.ScreenSaver inhibitors, so a
++/// panel applet can show which applications are inhibiting idle. Served on the
++/// same connection under an extra well-known name.
++struct InhibitorsExport {
++    inhibitors: Arc<Mutex<Vec<Inhibitor>>>,
++}
++
++#[zbus::interface(name = "com.system76.CosmicIdle.Inhibitors")]
++impl InhibitorsExport {
++    /// `(application_name, reason)` for each active screensaver inhibitor.
++    fn list_inhibitors(&self) -> Vec<(String, String)> {
++        self.inhibitors
++            .lock()
++            .map(|inhibitors| {
++                inhibitors
++                    .iter()
++                    .map(|i| (i.application_name.clone(), i.reason_for_inhibit.clone()))
++                    .collect()
++            })
++            .unwrap_or_default()
++    }
++}
++
+ pub async fn serve(event_sender: EventSender) -> zbus::Result<()> {
+     let inhibitors = Arc::new(Mutex::new(Vec::new()));
+ 
+@@ -86,6 +109,12 @@ pub async fn serve(event_sender: EventSender) -> zbus::Result<()> {
+     let conn = zbus::connection::Builder::session()?
+         .serve_at("/ScreenSaver", screensaver.clone())?
+         .serve_at("/org/freedesktop/ScreenSaver", screensaver)?
++        .serve_at(
++            "/com/system76/CosmicIdle",
++            InhibitorsExport {
++                inhibitors: inhibitors.clone(),
++            },
++        )?
+         .build()
+         .await?;
+     conn.request_name_with_flags(
+@@ -93,6 +122,9 @@ pub async fn serve(event_sender: EventSender) -> zbus::Result<()> {
+         zbus::fdo::RequestNameFlags::ReplaceExisting.into(),
+     )
+     .await?;
++    // Extra name for the inhibitor-list export (best-effort; the screensaver
++    // service keeps working even if this name can't be acquired).
++    let _ = conn.request_name("com.system76.CosmicIdle").await;
+ 
+     // If a client disconnects from DBus, remove any inhibitors it has added.
+     let dbus = zbus::fdo::DBusProxy::new(&conn).await?;
