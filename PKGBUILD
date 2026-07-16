@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-system-monitor-library
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=(x86_64)
@@ -38,7 +38,7 @@ conflicts=(libksysguard)
 replaces=(sonic-sysguard-library)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7b6c7584216d95ef5a12a8d12e6e270fe2a101f131c3fc23ab84133a8d685da9')
+sha256sums=('215d75951ff8c02a0967528ead263b10e4d592cd6ed623a6a2adc7f0d073ca46')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
