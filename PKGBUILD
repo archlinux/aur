@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miQC
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Flexible, probabilistic metrics for quality control of scRNA-seq data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-scrnaseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec93dde482b94ec2a7fb42b5f04f21f460c8216369f9a90c71146da4b2d0b349')
+sha256sums=('82accef7761823776b6645688b85e55d7fcf0feff73c1324ccd2d8af08c3d906')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
