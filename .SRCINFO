@@ -1,0 +1,21 @@
+pkgbase = libretro-uzem-git
+	pkgdesc = Uzebox core
+	pkgver = r77.d4fe82c
+	pkgrel = 1
+	url = https://github.com/libretro/libretro-uzem
+	arch = x86_64
+	arch = i686
+	arch = arm7hf
+	groups = libretro
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	depends = libretro-core-info
+	provides = libretro-uzem=r77.d4fe82c
+	conflicts = libretro-uzem
+	source = libretro-uzem::git+https://github.com/libretro/libretro-uzem.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 524047f2ae0f963f4e81c354e0cb726eaaccd23901520206526deac66b124952
+
+pkgname = libretro-uzem-git
