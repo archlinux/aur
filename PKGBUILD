@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gmapR
-_pkgver=1.50.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='An R interface to the GMAP/GSNAP/GSTRUCT suite'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb15c240b888058d529dc1b21fe70e4e93fe38c6cab2a9b62807daba47e04b78')
+sha256sums=('6ab52e0f2de26a996d41632f624320f3bed8320c0b0264711cd477d5dcc3c1e7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
