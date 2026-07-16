@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TRESS
-_pkgver=1.14.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Toolbox for mRNA epigenetics sequencing analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('beeb8a90974cf42022dfee84d830cbc545e550ae74bc66bb0e7a86f16c2987c1')
+sha256sums=('d5fab2ac01039f455796436c36f7d1909ecff28def2743a6d386f260ee3c6c33')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
