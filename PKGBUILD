@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="High-performance secrets scanner with 400+ detection rules with live credential validation"
 
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}")
-sha256sums=('a06e87f6aa260d469940e510c3e6de73c64cc4f4700a59bb3c1d5b624940afb3'
+sha256sums=('d1f718aa354e0bd376f8a17d800c49fb2284093922e879f1c0307e643f578751'
             'c79772859956ceea1389d4f13fc6791d66cf67057cdfda13e137f7e4fe1e5b08')
-sha256sums_x86_64=('cfffab7026107c094177b2f5cfd966d6b0d8977386cf1f5117561058d27d453e')
-sha256sums_aarch64=('268b6e52ca36989b4aef474fe8198bb9244caed250d768e60609665a1b592f0c')
+sha256sums_x86_64=('725b2e3c840612536c43b1c3bb7aa8e2bff659ef49474f5768af10bdfdf49cf2')
+sha256sums_aarch64=('162e24ca1645391d9cbc61367da28ea882cd1e3aa2789c7d19b87716049c92c4')
 
 
 package() {
