@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCANVIS
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='SCANVIS - a tool for SCoring, ANnotating and VISualizing splice junctions'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a0419df7197c82fc77b06a6ca8c2a5bc79c0d97e581b40b1c73d1eded8475098')
+sha256sums=('ae72577cf109f09bf80e77c03b2b4dbaa3c843245aae9d0e572c1fe01d937131')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
