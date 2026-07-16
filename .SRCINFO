@@ -1,0 +1,14 @@
+pkgbase = ps3mca-ps1-git
+	pkgdesc = Command line utility to manage Playstation 1 Memory Cards using the PS3 Memory Card Adapter
+	pkgver = r78.f07c9f3
+	pkgrel = 1
+	url = https://github.com/paolo-caroni/ps3mca-ps1
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = libusb
+	depends = ps3mca-udev-rules
+	source = git+https://github.com/paolo-caroni/ps3mca-ps1
+	sha256sums = SKIP
+
+pkgname = ps3mca-ps1-git
