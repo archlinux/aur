@@ -1,8 +1,8 @@
 # Maintainer: Yellow <yellow@example.com>
 pkgname=nuvio-desktop-bin
-_pkgver=0.1.9-alpha
-pkgver=0.1.9alpha
-pkgrel=1
+_pkgver=0.1.13-alpha
+pkgver=0.1.13alpha
+pkgrel=2
 pkgdesc="Desktop media app to browse, organize, and play media from sources you add"
 arch=('x86_64')
 
@@ -38,9 +38,9 @@ depends=(
   'vulkan-icd-loader' # vulkan ICD loading
 )
 options=('!strip' '!debug')  # prebuilt binaries: don't strip, don't emit a debug package
-source=("nuvio-${_pkgver}.deb::${url}/releases/download/${_pkgver}/Nuvio-${_pkgver}_amd64.deb")
+source=("nuvio-${_pkgver}.deb::${url}/releases/download/${_pkgver}/nuvio_${_pkgver}_amd64.deb")
 noextract=("nuvio-${_pkgver}.deb")
-sha256sums=('e19f978cea7d820436d694650e03f08a82d23f226aa65b1352d2da99d69a1db6')
+sha256sums=('46016f91c727ceaedc3e3940a815f7919206322bbede105b8d51e38827883952')
 
 package() {
   bsdtar -xf "${srcdir}/nuvio-${_pkgver}.deb" -C "${srcdir}" data.tar.xz
@@ -50,8 +50,12 @@ package() {
         "${pkgdir}/opt/nuvio/Nuvio.desktop" \
         "${pkgdir}/opt/nuvio/Nuvio.png"
 
-  # The .deb ships 775 directories and some 777 files; normalize to Arch
-  # conventions (755 dirs, drop group/other write from files, keep exec bits).
+  install -Dm644 "${pkgdir}/opt/nuvio/lib/nuvio-Nuvio.desktop" \
+    "${pkgdir}/usr/share/applications/nuvio.desktop"
+  install -Dm644 "${pkgdir}/opt/nuvio/lib/Nuvio.png" \
+    "${pkgdir}/usr/share/pixmaps/nuvio.png"
+  sed -i 's|^Icon=.*|Icon=nuvio|' "${pkgdir}/usr/share/applications/nuvio.desktop"
+
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod go-w {} +
 }
