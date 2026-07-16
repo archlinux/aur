@@ -1,8 +1,8 @@
 pkgbase = mpg123-svn
 	pkgdesc = A fast and free real time MPEG Audio Layer 1, 2 and 3 decoding library and console player
-	pkgver = r5560
+	pkgver = r5580
 	pkgrel = 1
-	url = https://www.mpg123.org/
+	url = https://www.mpg123.de/
 	arch = i686
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -16,7 +16,7 @@ pkgbase = mpg123-svn
 	optdepends = libpulse: for pulse audio support
 	optdepends = perl: for conplay
 	optdepends = sdl2: for sdl audio support
-	provides = mpg123=r5560
+	provides = mpg123=r5580
 	provides = libmpg123.so
 	provides = libout123.so
 	provides = libsyn123.so

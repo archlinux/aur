@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mpg123-svn
-pkgver=r5560
+pkgver=r5580
 pkgrel=1
 pkgdesc="A fast and free real time MPEG Audio Layer 1, 2 and 3 decoding library and console player"
 arch=('i686' 'x86_64')
-url="https://www.mpg123.org/"
+url="https://www.mpg123.de/"
 license=('LGPL-2.1-or-later')
 depends=('glibc' 'alsa-lib')
 makedepends=('subversion' 'jack' 'libpulse' 'sdl2')
