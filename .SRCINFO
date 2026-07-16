@@ -1,13 +1,13 @@
 pkgbase = mql
 	pkgdesc = Cloud-Native Query - Asset Inventory Framework
-	pkgver = 13.29.1
+	pkgver = 13.29.2
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
 	license = BUSL-1.1
 	conflicts = cnquery
 	replaces = cnquery
-	source = https://releases.mondoo.com/mql/13.29.1/mql_13.29.1_linux_amd64.tar.gz
-	sha256sums = 4a42ae4955eae1e31e3bf609d0b09a6c6d55a5111636f8bc07ccc12477cf475b
+	source = https://releases.mondoo.com/mql/13.29.2/mql_13.29.2_linux_amd64.tar.gz
+	sha256sums = 4009fa7a3baaa970543e660046ee00fa87fde51daa965d0da219e64be01ae3eb
 
 pkgname = mql
