@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Anaquin
-_pkgver=2.32.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Statistical analysis of sequins'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74a95ab9f1fa5ddbf948a77856a1f1634265bb3722c02dfbe2f04b03bcbbc125')
+sha256sums=('a1197856538609413a69e90bec3c3c005ded6a973cea4cf0841d3d124e12239d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
