@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=grub-reboot-picker
 _app_id=com.mendhak.grubrebootpicker
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 )
 optdepends=('molly-guard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('36b25eb9b3de961a785fe46f54f4e0c995e4ec902bb67dce9a702a3e728f401d')
+sha256sums=('3fc383ae6fd1f9588db950d804fd50efd8b40ce284229dc13f1918b9b3d35198')
 
 prepare() {
   cd "$pkgname-$pkgver"
