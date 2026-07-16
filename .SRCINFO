@@ -1,6 +1,6 @@
 pkgbase = r-multimodalexperiment
 	pkgdesc = Integrative Bulk and Single-Cell Experiment Container
-	pkgver = 1.8.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MultimodalExperiment
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-multimodalexperiment
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultimodalExperiment_1.8.0.tar.gz
-	md5sums = 2c096f7e482c7b73efa40ebf9b8d62f3
-	b2sums = 039000529b10eac07636883535336e744b239e01dccc86dbce8269f7f8124e6ab10133efbebcb4749903919c046c47dc567edb934139dcb6fce76f145181686e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultimodalExperiment_1.12.0.tar.gz
+	md5sums = 8d5019d568c1b908cc9fa1edbcd83d91
+	b2sums = cefe80c7720f5b72d8690750dd26956cb815a0e51b880dd17a84eff6224f1e5907ee82de6efd767ea03cd48193ad5768b773f52750dd4530a02cbaabaab5caa0
 
 pkgname = r-multimodalexperiment
