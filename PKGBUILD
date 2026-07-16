@@ -1,8 +1,8 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
-pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, shader precompilation, and benchmarks for Steam on Linux"
+pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, MangoHud benchmarks, and controller navigation for Steam on Linux"
 arch=('any')
 _repo=proton_command_center
 url="https://github.com/mrcgibb9876-hash/proton_command_center"
@@ -15,7 +15,11 @@ optdepends=(
     'nvidia-utils: DLSS DLL management and driver-aware compile tracking'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5d2dccce10c25a62850996cdcedc2abb8c68744e021d13bdd31d62e973f8413')
+# Placeholder — regenerate with `updpkgsums` before every release.
+# Deliberately a WRONG hash rather than 'SKIP': if it's forgotten, makepkg
+# fails loudly with a validity check error instead of silently shipping a
+# package with integrity checking disabled for every user who installs it.
+sha256sums=('0cb673ff9169b15cf1e562adf7898161e2c7711a0fde0f8273859a9fddefaad5')
 
 package() {
     cd "$srcdir/$_repo-$pkgver"
