@@ -1,0 +1,18 @@
+pkgbase = sonobus-bin
+	pkgdesc = An easy to use application for streaming high-quality, low-latency peer-to-peer audio
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://sonobus.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = opus
+	provides = sonobus-bin
+	conflicts = sonobus-bin
+	source = https://raw.githubusercontent.com/sonosaurus/sonobus-packages/refs/heads/gh-pages/freight/apt/stable/main/sonobus_1.7.2-0_ubuntu_amd64.deb
+	sha256sums = a525deec2d7eac4fd8c6d602da81f24ba6ae4dde27ad5b19c2a89990f03c99d9
+
+pkgname = sonobus-bin
