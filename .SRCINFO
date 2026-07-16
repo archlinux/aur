@@ -1,0 +1,19 @@
+pkgbase = projectum
+	pkgdesc = Keyboard-first desktop tracker for the projects, playlists, tasks and notes in a folder
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/wleeaf/projectum
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = pyside6
+	depends = yt-dlp
+	depends = hicolor-icon-theme
+	source = projectum-2.4.0.tar.gz::https://github.com/wleeaf/projectum/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 1554e5b4369cca7c10e47f9b7b7cd662647f1dda06d7fbd2c76f9f3c5d411788
+
+pkgname = projectum
