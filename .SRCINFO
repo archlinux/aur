@@ -1,5 +1,5 @@
 pkgbase = fs_cli-rs
-	pkgdesc = Interactive FreeSWITCH ESL CLI client, standalone without the full FreeSWITCH suite
+	pkgdesc = Interactive FreeSWITCH ESL CLI client (fs-cli), standalone without the full FreeSWITCH suite
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/ticpu/fs_cli-rs

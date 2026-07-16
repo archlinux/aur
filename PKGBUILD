@@ -2,7 +2,7 @@
 pkgname=fs_cli-rs
 pkgver=1.4.2
 pkgrel=1
-pkgdesc="Interactive FreeSWITCH ESL CLI client, standalone without the full FreeSWITCH suite"
+pkgdesc="Interactive FreeSWITCH ESL CLI client (fs-cli), standalone without the full FreeSWITCH suite"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ticpu/fs_cli-rs"
 license=('MIT OR Apache-2.0')
