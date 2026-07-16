@@ -1,6 +1,6 @@
 pkgbase = googlemessages
 	pkgdesc = Unnofficial Google messages desktop app
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/googlemessages
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = googlemessages
 	license = GPL
 	makedepends = unzip
 	depends = libelectron-electron-meta
-	depends = libelectron>=2025.1
+	depends = libelectron>=2026.3
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/googlemessages/application/-/archive/1.0.8/application-1.0.8.tar.bz2
-	sha256sums = fc02ae2a43a0391f7ef06fef787e636e12c8c4f9d2f7a578f92262ce558f2987
+	source = https://gitlab.com/linuxbombay/googlemessages/application/-/archive/1.1.0/application-1.1.0.tar.bz2
+	sha256sums = 02de630a07e25b100e370cb99f9ed3747387fb43bf4babda2433054a3aa48e42
 
 pkgname = googlemessages
