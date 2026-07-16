@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=moanin
-_pkgver=1.16.1
+_pkgver=1.19.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='An R Package for Time Course RNASeq Data Analysis'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-timecoursedata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b2439549c240e45a918810101ece639185482052b8747c5400ce3286160c6600')
+sha256sums=('d9f48ff7852907f72f8d47f7cdddeef7277f5acf7ebc330895f7ab29520cf48b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
