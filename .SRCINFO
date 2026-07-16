@@ -25,6 +25,6 @@ pkgbase = ggml-vulkan-backend
 	source = ggml-0.16.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.16.0.tar.gz
 	source = ggml-use-system-base.patch
 	sha256sums = 8e1741cd44c036468ee2b8531343bbe1205bc26bc63b866030679cc5f28ec0bf
-	sha256sums = 2389838195777ef00dce012ef63a52a25dd119880b35e8c811c35f66d3d5b940
+	sha256sums = b5b80ba3647d207a653dee190461b92e3792b0c5c610549d2ef4f48de0ad8565
 
 pkgname = ggml-vulkan-backend
