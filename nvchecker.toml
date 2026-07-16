@@ -1,0 +1,5 @@
+[hledger-beta]
+source = "github"
+github = "simonmichael/hledger"
+use_latest_release = true
+include_prereleases = true

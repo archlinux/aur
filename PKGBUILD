@@ -1,13 +1,9 @@
-# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy dot co dot uk>
+# Contributor: Gesh <gesh@gesh.uni.cx>
 # Contributor: dude <brrtsm@gmail.com>
 
-pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
-# The 1.51.2 release was updated in-place, I'm pretending this was a 1.51.2.1
-# patch release instead so as to avoid collisions in pacman's source cache.
-# However, I'm leaving the pkgver in place to avoid miscommunications with
-# upstream
-pkgver=1.52.1
-_pkgver="$pkgver".1
+pkgname=(hledger-beta-bin hledger-ui-beta-bin hledger-web-beta-bin)
+pkgver=1.99.3
 pkgrel=1
 pkgdesc='Easy-to-use command-line/curses/web plaintext accounting tool'
 arch=('x86_64')
@@ -16,12 +12,12 @@ license=('GPL-3.0-or-later')
 optdepends=('asciinema: hledger demo support')
 _url=https://github.com/simonmichael/hledger
 source=(
-    hledger-${_pkgver}.tar.gz::$_url/releases/download/${pkgver}/hledger-linux-x64.tar.gz
+    hledger-${pkgver}.tar.gz::$_url/releases/download/${pkgver}/hledger-linux-x64.tar.gz
 )
-sha256sums=('55bff5785d7528b939e4642a21d3c12a75a8095fedc973340b31dfd7367dd7a2')
+sha256sums=('7a296cbf550a60fc6caf868dcd10d1df0c163c58597b4c40417415d6bd9b5deb')
 
 _common_package() {
-    _pkgname="$1"
+    _pkgname="${1}"
     install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
     install -Dm 644 hledger-completion.bash \
         "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
@@ -33,21 +29,21 @@ check() {
     ./hledger test
 }
 
-package_hledger-bin() {
+package_hledger-beta-bin() {
     pkgdesc='Command-line interface for the hledger accounting system'
     provides=(hledger="$pkgver")
     conflicts=(hledger)
     _common_package hledger
 }
 
-package_hledger-ui-bin() {
+package_hledger-ui-beta-bin() {
     pkgdesc='Curses-style terminal interface for the hledger accounting system'
     provides=(hledger-ui="$pkgver")
     conflicts=(hledger-ui)
     _common_package hledger-ui
 }
 
-package_hledger-web-bin() {
+package_hledger-web-beta-bin() {
     pkgdesc='Web-based user interface for the hledger accounting system'
     provides=(hledger-web="$pkgver")
     conflicts=(hledger-web)
