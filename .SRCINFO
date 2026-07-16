@@ -6,12 +6,15 @@ pkgbase = lib32-dav1d
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = doxygen
+	makedepends = lib32-gcc-libs
 	makedepends = lib32-glibc
 	makedepends = graphviz
 	makedepends = meson
 	makedepends = nasm
 	makedepends = ninja
 	makedepends = xxhash
+	conflicts = lib32-libdav1d
+	replaces = lib32-libdav1d
 	source = https://downloads.videolan.org/pub/videolan/dav1d/1.5.3/dav1d-1.5.3.tar.xz
 	source = https://downloads.videolan.org/pub/videolan/dav1d/1.5.3/dav1d-1.5.3.tar.xz.asc
 	source = https://code.videolan.org/videolan/dav1d-test-data/-/archive/1.5.3/dav1d-test-data-1.5.3.tar.gz
@@ -24,13 +27,9 @@ pkgbase = lib32-dav1d
 	b2sums = eaa18260b5c7596c8318b4f7c75ecf0a5c96101990ad4bbad57bb3825a6a9f11c9f3c1eac4e789847daaf09f432df1c5ee6f61189736f574251c462153c9e46d
 
 pkgname = lib32-dav1d
-	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (32 bit)
-	depends = lib32-glibc
-	depends = lib32-libdav1d
-
-pkgname = lib32-libdav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness - library (32 bit)
 	depends = dav1d>=1.5.3
+	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = lib32-dav1d
 	provides = libdav1d.so

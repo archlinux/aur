@@ -1,15 +1,18 @@
 # Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
 
 _pkgbasename=dav1d
-pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
+pkgname=("lib32-$_pkgbasename")
 pkgver=1.5.3
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
 license=('BSD-2-Clause')
+replaces=("lib32-lib$_pkgbasename")
+conflicts=("lib32-lib$_pkgbasename")
 makedepends=(
       'doxygen'
+      'lib32-gcc-libs'
       'lib32-glibc'
       'graphviz'
       'meson'
@@ -66,50 +69,32 @@ check() {
 #  meson test
 }
 
-package_lib32-libdav1d(){
+package_lib32-dav1d(){
   pkgdesc='AV1 cross-platform decoder focused on speed and correctness - library (32 bit)'
   depends=(
     "${_pkgbasename}>=${pkgver}"
+    'lib32-gcc-libs'
     'lib32-glibc'
   )
   provides=('lib32-dav1d' 'libdav1d.so')
-
- cd ${_pkgbasename}-${pkgver}
-
-  DESTDIR="${pkgdir}" ninja -C build install
-
-  rm -r "$pkgdir"/usr/{include,bin}
-
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s "/usr/share/doc/${_pkgbasename}/"README.md "${pkgdir}/usr/share/doc/${pkgname}/"
-  ln -s "/usr/share/doc/${_pkgbasename}/"CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/"
-  ln -s "/usr/share/doc/${_pkgbasename}/"NEWS "${pkgdir}/usr/share/doc/${pkgname}/"
-  ln -s "/usr/share/licenses/${_pkgbasename}/"COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
-}
-
-package_lib32-dav1d() {
-  pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
-  depends=(
-    'lib32-glibc' 
-    'lib32-libdav1d'
-  )
 
   cd ${_pkgbasename}-${pkgver}
 
   DESTDIR="${pkgdir}" ninja -C build install
 
-  # Keep files in bin since this is not a library only package. 
+  # Keep files in bin since this is not a library only package.
   # Use the same naming scheme as proposed in Arch's wiki:  https://wiki.archlinux.org/index.php/32-bit_package_guidelines
   # which is "--program-suffix="-32" with Autoconf
   for i in "${pkgdir}/usr/bin/"*; do
     mv "$i" "$i"-32
   done
 
-  rm -r "$pkgdir"/usr/{include,lib32}
+  rm -r "${pkgdir}"/usr/include
 
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/share/doc/${_pkgbasename}/"README.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  ln -s "/usr/share/doc/${_pkgbasename}/"CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  ln -s "/usr/share/doc/${_pkgbasename}/"NEWS "${pkgdir}/usr/share/doc/${pkgname}/"
   ln -s "/usr/share/licenses/${_pkgbasename}/"COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
