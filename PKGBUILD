@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CTdata
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('96937c66bee5d27959303bd03a7f8694')
-b2sums=('df1627eabb7d77b605d3a921ae81e080a50e767ebf0048f6036acbbaeaf31f234bdd08d3366845fa5fcbe3cca931654ce77353011bf153bbc66844f4c0f2792b')
+md5sums=('fa261025afe905e7b207d898d64f9661')
+b2sums=('9e2e2b989ecc09b6d46bb8f38d96375ec4da29ff11e7bb1d53d8bb33b6b6fc82360c75910c325c8af4d8c55b3bd4b6c2689fc4dbf61f8010cbe5608fcdeea884')
 
 build() {
   mkdir build
