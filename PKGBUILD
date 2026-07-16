@@ -3,7 +3,7 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='10.2.1'
+pkgver='10.2.2'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
@@ -27,7 +27,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 	'remove-requires-python.diff'
 )
-b2sums=('719a48057cbe2b54b31c4c84ce94e90a920e7eaa1370309d091adb3dba1c4c15b5dad7d588ab830c2be79b440ecd246a83c45324f3bf2746452ab44eb2287760'
+b2sums=('3bdb1791ff374b4dbbba8982d2cddbd356c076e6bf26785e0a64391afa19053685fbb2ecbb8895fec270acc150dc01bbb03e7a0b9354d62eb7e84b988167fecb'
         '811ce80732a7f2c0f840bc0dea08cf849508068bbe1d5767a0685b1b656416e5b28fe180d34d52fef244939b55afd2500a0af1c8edcde4552671e32cfc0e6fff')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -48,7 +48,7 @@ check() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Run unit tests (with GITHUB_ACTIONS set to true to skip DNS lookups)
-	TZ='UTC' GITHUB_ACTIONS='true' python -m pytest 'tests/'
+	GITHUB_ACTIONS='true' python -m pytest 'tests/'
 
 	# Create a config file for testing
 	cat << EOF > 'test.ini'
