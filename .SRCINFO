@@ -1,0 +1,21 @@
+pkgbase = classicimageviewer
+	pkgdesc = Simple and fast multi-platform image viewer and (simple) editor.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/classicimageviewer/ClassicImageViewer
+	install = classicimageviewer.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = qt6-imageformats
+	depends = qt6-tools
+	depends = hicolor-icon-theme
+	depends = graphicsmagick
+	source = ClassicImageViewer-2.0.1.tar.gz::https://github.com/classicimageviewer/ClassicImageViewer/archive/refs/tags/v2.0.1.tar.gz
+	source = classicimageviewer.install
+	sha256sums = d0f5c0f05893f67aaf0720bc6870515de8b314558c651a706196e1b095f8452a
+	sha256sums = bfab7ab18f30e2975dfff94da8b8b44137ae3542687314b18705689f0c42002c
+
+pkgname = classicimageviewer

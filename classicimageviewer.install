@@ -1,0 +1,11 @@
+post_install() {
+    echo "---------------------------------------------------"
+    echo "On Wayland, if you experience window sizing issues,"
+    echo "try to set QT_QPA_PLATFORM to xcb - like this:"
+    echo "'export QT_QPA_PLATFORM=xcb ; civ'"
+    echo "---------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}
