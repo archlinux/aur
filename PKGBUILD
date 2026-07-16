@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=InteractionSet
-_pkgver=1.36.1
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.1
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Base Classes for Storing Genomic Interaction Data'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1fa05abfcf73b32652d0a36a96dd7f4213e37bbd5337aa5abf4250a5f3887d10')
+sha256sums=('8904f7cca9436a4e8b0792182c49d6d4ad6a82097bfeab30d724a690a5144595')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
