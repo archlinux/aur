@@ -1,6 +1,6 @@
 pkgbase = r-sictools
 	pkgdesc = Find SNV/Indel differences between two bam files with near relationship
-	pkgver = 1.38.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SICtools
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-sictools
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SICtools_1.38.0.tar.gz
-	sha256sums = c5b7c86610985a9cb4f1896f1ab3f0e02afa44749355ee03a56ce36e779e2db8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SICtools_1.42.0.tar.gz
+	sha256sums = 263486321c7e9dae6fb4e3129ab112a27dc09e6f87e46cf9816be074deafcc6c
 
 pkgname = r-sictools

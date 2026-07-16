@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SICtools
-_pkgver=1.38.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Find SNV/Indel differences between two bam files with near relationship'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c5b7c86610985a9cb4f1896f1ab3f0e02afa44749355ee03a56ce36e779e2db8')
+sha256sums=('263486321c7e9dae6fb4e3129ab112a27dc09e6f87e46cf9816be074deafcc6c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
