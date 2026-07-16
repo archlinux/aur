@@ -1,0 +1,16 @@
+pkgbase = logseq-appimage
+	pkgdesc = A privacy-first, open-source platform for knowledge management and collaboration.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/logseq/logseq
+	arch = x86_64
+	license = AGPL-3.0
+	depends = fuse2
+	conflicts = logseq-desktop
+	options = !strip
+	source = https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage
+	source = https://github.com/logseq/logseq/raw/2.0.1/LICENSE.md
+	sha256sums = 49de367078b37670febdb987e562b75dee1e1ae96c28bfb8738779c42297dd0c
+	sha256sums = SKIP
+
+pkgname = logseq-appimage
