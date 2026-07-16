@@ -10,7 +10,7 @@ depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
 source=("${url}/releases/download/${pkgver}/cider-${pkgver}-linux-x86_64"
         "cider.png::${url}/raw/branch/main/src/resources/cider.png")
 sha256sums=('d175736f881b59da9237510be601dabefff61f4c05fdbdb41ae95bb48107d40e'
-            'b199a33746d7a46898035bb779c1252d612d2336b8cbfeba2ac2da5a96e42549')
+            '9ee3acf3139db375f79f1ce19f97386ba017a4ed24f3bb6be9b90dc5a2c10bb4')
 
 package() {
     install -Dm755 "cider-${pkgver}-linux-x86_64" "${pkgdir}/usr/bin/cider"
