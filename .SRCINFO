@@ -1,6 +1,6 @@
 pkgbase = r-metabomxtr
 	pkgdesc = A package to run mixture models for truncated metabolomics data with normal or lognormal distributions
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metabomxtr
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-metabomxtr
 	depends = r-plyr
 	optdepends = r-reshape2
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metabomxtr_1.44.0.tar.gz
-	sha256sums = 36aef027dfb1c7d22eb0bdce71242751025c6d5952dfafee45204f21ba95bde6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metabomxtr_1.46.0.tar.gz
+	sha256sums = cb6939d7dd2af4a7ce9f623436755b15041d1ffa9e1ed58430e866d42e0e715e
 
 pkgname = r-metabomxtr
