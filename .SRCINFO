@@ -1,0 +1,20 @@
+pkgbase = yakc
+	pkgdesc = Yet Another Key Caster — cross-platform key & mouse click visualizer
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/iammodev/YAKC
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libxkbcommon
+	depends = libappindicator-gtk3
+	optdepends = speech-dispatcher: text-to-speech for keystrokes
+	source = yakc-2.0.0.tar.gz::https://github.com/iammodev/YAKC/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = c2f6d26c5bbdad8285682397e3e8b0f3c228c656e6a64bcb477174739d18e941
+
+pkgname = yakc
