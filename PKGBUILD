@@ -25,6 +25,7 @@ makedepends=(
     'base-devel'
     'clang'
 	'cmake'
+	'git'
     'xorg-server-devel'
 	'qt6-tools'
     'qt6-translations'
@@ -42,7 +43,7 @@ pkgver() {
 
 prepare() {
   cd AzaharPlus
-  git submodule update --init --recursive --depth 1
+  git submodule update --init --recursive
   sed -i '/check_submodules_present()/d' CMakeLists.txt
 }
 

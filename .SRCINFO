@@ -8,6 +8,7 @@ pkgbase = azaharplus-git
 	makedepends = base-devel
 	makedepends = clang
 	makedepends = cmake
+	makedepends = git
 	makedepends = xorg-server-devel
 	makedepends = qt6-tools
 	makedepends = qt6-translations
