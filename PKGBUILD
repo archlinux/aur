@@ -3,7 +3,7 @@
 pkgname=scribus-unstable
 _pkgname=scribus
 pkgver=1.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop publishing program - Unstable branch 1.7.x"
 arch=('x86_64')
 license=('GPL' 'LGPL')
@@ -22,7 +22,7 @@ depends=(
 	libcdr
 	libcups
 	libfreehand
-	libjpeg
+	libjpeg.so
 	libmspub
 	libpagemaker
 	libpng
@@ -50,11 +50,13 @@ conflicts=('scribus')
 provides=('scribus')
 source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
 		"https://github.com/scribusproject/scribus/commit/14a287fc1db2a44abfe1743260554447b31b4adf.patch"
-		"https://github.com/scribusproject/scribus/commit/2b9405a00a96a09e0183190ddc9f83d44963d4e0.patch")
+		"https://github.com/scribusproject/scribus/commit/2b9405a00a96a09e0183190ddc9f83d44963d4e0.patch"
+		"https://github.com/scribusproject/scribus/commit/ba246c3a2dd086b4e84517723beab159736ba9ba.patch")
 sha256sums=('882ee55ca4497c02c4e05f30acc689ea1f485c2e8023c9eb293f51c2c5be06ad'
             'SKIP'
             'f1b3150a4da6fb634cded0d4fd111974324ad9af458b758c9f2eb41a1c475d88'
-            'e92ba1f60d8ce5ff6f6fda85ecf070c8acf06970a4b0ca625ec85fbfa5076b84')
+            'e92ba1f60d8ce5ff6f6fda85ecf070c8acf06970a4b0ca625ec85fbfa5076b84'
+            '26954ed2fbff02416c106012e1300924db9f8adc1346875c7596b1bfd3fe3a0f')
 validpgpkeys=(5086B8D68E70FDDF4C40045AEF7B95E7F60166DA  # Peter Linnell <plinnell@scribus.net>
               757F5E9B13DD648887AD50092D47C099E782504E  # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
               6558BE84D27273A438A151198BEA48118AEBEE64) # Craig Bradney <cbradney@zipworld.com.au>
@@ -64,6 +66,7 @@ prepare() {
 
   patch -f -p1 < "${srcdir}/14a287fc1db2a44abfe1743260554447b31b4adf.patch" || true
   patch -f -p1 < "${srcdir}/2b9405a00a96a09e0183190ddc9f83d44963d4e0.patch" || true
+  patch -f -p1 < "${srcdir}/ba246c3a2dd086b4e84517723beab159736ba9ba.patch" || true
 }
 
 build() {
