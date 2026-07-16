@@ -1,22 +1,27 @@
 pkgbase = python-typing-validation
 	pkgdesc = A simple library for runtime type-checking
-	pkgver = 1.2.12
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://typing-validation.readthedocs.io
 	arch = any
-	license = MIT
+	license = LGPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-numpy
-	makedepends = python-setuptools-scm>=6.2
+	checkdepends = mypy
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/t/typing_validation/typing_validation-1.2.12.tar.gz
-	md5sums = c4ecf70bf701f96683b5a91cc6aecd4d
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpy
+	source = https://github.com/hashberg-io/typing-validation/archive/refs/tags/v2.2.0.tar.gz
+	md5sums = 290b65863eab2eef1674e5ad13fca515
 
 pkgname = python-typing-validation
-	depends = python>=3.7
-	depends = python-typing_extensions>=4.6.0
+	depends = python>=3.14
 	optdepends = python-typing-validation-doc: Documentation for typing-validation
-	provides = python-typing_validation
-	conflicts = python-typing_validation
+	provides = python-typing-validation
+	conflicts = python-typing-validation
+
+pkgname = python-typing-validation-doc
+	pkgdesc = Documentation for Python typing-validation
