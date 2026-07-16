@@ -3,7 +3,7 @@
 
 pkgname=mmx-cli
 _pkgname=mmx-cli
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc='CLI for the MiniMax AI platform'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs>=18')
 makedepends=('npm' 'jq')
 optdepends=('bun: run from source for development')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha512sums=('6f7d8d79a5ece764d8ae0daafb2ab2d23bcc0f130accba5947fb0cf3d758a46b9db5eb4dee038946d545e0f0cebbb2b947fa2e9c8959460270606504fcd25b78')
+sha512sums=('9b0a43505b8568383e812ba2b618de030dda3507cce119c861ea94108c07c177e4285acb4698dd5bdf5306a2648ce65b2a23c7f4b470cb841f531e8ba611aa82')
 
 noextract=("$_pkgname-$pkgver.tgz")
 
