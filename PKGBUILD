@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRNAseq
-_pkgver=2.20.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9712b05cec1dd4c33c67fffa06e3257d')
-b2sums=('0be070ca9527a9da80ef6fe25b07bbb4c246b46ee24bcac2d3f3730c2ed6bd7ac3891200696264dee92b520b6b6502442cd65b20872e54a69f1b9ae8772277e3')
+md5sums=('6b93f67c72fac3ff1eb22285550538ea')
+b2sums=('ade2cb6c41cb5ef753dbd67b271b56fea5a988ce5febe5df8c01637417efb1154f8de6d7b166db0ebb45824b750a4f3aac965e865f9cd34452cade2da4477d22')
 
 build() {
   mkdir build
