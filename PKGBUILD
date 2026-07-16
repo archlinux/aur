@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-mkinitcpio-hook"
-_pkgver=1.37.0
+_pkgver=1.37.1
 _extver=""
 pkgver="${_pkgver}${_extver}"
 pkgrel=1
@@ -9,8 +9,8 @@ pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("${_pkgname}::git+${url}.git#tag=${pkgver}")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.1.3/graalvm-community-jdk-25i1-25.0.3_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.1.3/graalvm-community-jdk-25i1-25.0.3_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
 options=(!debug !strip)
@@ -30,13 +30,13 @@ optdepends=(
 makedepends=('git' 'gradle')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('7ca6dbfa9ca2df9a6d94cec6b385907aa7e36706bbc00031e7669a5e0a29e44c')
-sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
-sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
+sha256sums=('e0a1d5800ef1b0a79eee935d1a295d4b929a713686e8bb8340484d402deb5621')
+sha256sums_x86_64=('e9cd1637be853e105f8b09125b4b19fbce385696465d782cbca8bb80e1df8f0d')
+sha256sums_aarch64=('5e79978983439d28506ebef82254fe9f98995121208dc8be77c604f4ad5bc579')
 
 prepare() {
 	[[ -d "${_graalvm_version}" ]] && rm -rf "${_graalvm_version}"
-	mv graalvm-community-openjdk-*/ "${_graalvm_version}"
+	mv graalvm-community-*/ "${_graalvm_version}"
 	if ! command -v "${_graalvm_version}"/bin/javac >/dev/null 2>&1; then
 		echo "Error: ${_graalvm_version}/bin/javac not found." >&2
 		return 1
@@ -47,7 +47,7 @@ build() {
 	cd "$srcdir/${_pkgname}"
 	export GRAALVM_HOME="$srcdir/${_graalvm_version}"
 	export JAVA_HOME="${GRAALVM_HOME}"
-	export NATIVE_IMAGE_OPTIONS="-march=compatibility"
+	export NATIVE_IMAGE_OPTIONS="-march=compatibility --future-defaults=all"
 	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
