@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DMCHMM
-_pkgver=1.30.1
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Differentially Methylated CpG using Hidden Markov Model'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2cc5a9d519803b734a6c02e4301001d65fae1073744efcff88b0a84b108b56f5')
+sha256sums=('13533f1ac002b7c070014e18b0663580512ec4f96c3b6cd094eea0a8a9325eb2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
