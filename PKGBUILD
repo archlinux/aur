@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-doctools
-pkgver=6.27.0
+pkgver=6.28.0
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64)
@@ -26,7 +26,7 @@ provides=(kdoctools)
 conflicts=(kdoctools)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e11c8f24e389787429b819645b763f35c8f8533ea48dc7318699070fae08866b')
+sha256sums=('876d02c6c46926c3cd08c1430c32ddd51dbbd25098b58089a43155a56cfcaf58')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
