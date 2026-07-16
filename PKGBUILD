@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=doppelgangR
-_pkgver=1.36.1
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.1
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Identify likely duplicate samples from genomic or meta-data'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4cc6e190283b3369e234c8ced6413c730b712a127e97c5bfb6b7405d6eb1a431')
+sha256sums=('5ce8eebbccfdec0bbe77a65673d81973725ae6950de2ac4362157347c55ae4b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
