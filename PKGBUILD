@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiSeq
-_pkgver=1.48.1
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.1
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Processing and analyzing bisulfite sequencing data'
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83fb7f38b7690d837bb1153c1cec0b893b10db33ef9637cece2cc34a96b2a213')
+sha256sums=('d064b4faeb250e976a874089c3f07d492d689fa01093bc4e045b901285ead377')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
