@@ -1,6 +1,6 @@
 pkgbase = r-ropls
 	pkgdesc = PCA, PLS(-DA) and OPLS(-DA) for multivariate analysis and feature selection of omics data
-	pkgver = 1.40.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ropls
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-ropls
 	optdepends = r-omicade4
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ropls_1.40.0.tar.gz
-	sha256sums = 7bcd2a8fcc200003892a28c82bf6445d258ac053ef8cae47177d05d1aa905411
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ropls_1.44.0.tar.gz
+	sha256sums = e68817b307b6e014ecec6f21b13e8074be93a77f3800287fff4ca80a66610701
 
 pkgname = r-ropls

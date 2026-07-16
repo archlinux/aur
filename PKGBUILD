@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ropls
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='PCA, PLS(-DA) and OPLS(-DA) for multivariate analysis and feature selection of omics data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7bcd2a8fcc200003892a28c82bf6445d258ac053ef8cae47177d05d1aa905411')
+sha256sums=('e68817b307b6e014ecec6f21b13e8074be93a77f3800287fff4ca80a66610701')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
