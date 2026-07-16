@@ -1,0 +1,6 @@
+pkg/*
+src/*
+open-vm-tools/*
+*.tar.*
+*.t?z
+nohup.out
