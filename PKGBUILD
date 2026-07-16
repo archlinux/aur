@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VarCon
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='VarCon: an R package for retrieving neighboring nucleotides of an SNV'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6b339d2e5c153af449e740a04d848f9684a5c6e4113c3f8b3f7c6d183295b6b')
+sha256sums=('c63d67a13fdb7d3c4819e3bf6783e0673efb29113f9a82cb7f627c36f2938d3b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
