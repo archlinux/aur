@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=MTS LinkChats
-Exec="/usr/bin/mts-linkchats-desktop" %U
+Exec="/usr/bin/mts-linkchats-desktop" --force-device-scale-factor=1.15 %U
 Terminal=false
 Type=Application
 Icon=mts-linkchats-desktop
