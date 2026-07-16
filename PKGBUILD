@@ -3,13 +3,13 @@
 pkgname=classicimageviewer
 _pkgname=ClassicImageViewer
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and fast multi-platform image viewer and (simple) editor.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-imageformats' 'qt6-tools' 'hicolor-icon-theme' 'graphicsmagick')
-# makedepends=('cmake' 'ninja')
+depends=('qt6-base' 'qt6-imageformats' 'qt6-tools' 'graphicsmagick' 'hicolor-icon-theme')
+optdepends=('exiftool: for information about images')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.install")
 sha256sums=('d0f5c0f05893f67aaf0720bc6870515de8b314558c651a706196e1b095f8452a'
