@@ -20,10 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=cdb117cb9e8e014f90a978a108df811bb2c3a0c8} # daily-963
+: ${_runtime_commit:=06c3a6a5c360f06a54aaac07be727e236bfb5ba9} # daily-977
+
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.15.3
+pkgver=12.16.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -34,18 +35,10 @@ depends=(
   dbus
   ffmpeg
   gtk3
-  libevent
-  libjpeg.so # libjpeg-turbo
-  libpulse
-  libvpx.so  # libvpx
-  libwebp.so # libwebp
   libxss
   libxt
   mime-types
-  nspr
-  nss
   ttf-font
-  zlib
 )
 makedepends=(
   cargo
@@ -83,6 +76,21 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
+if [[ "${_build_system_libs::1}" == "t" ]]; then
+  depends+=(
+    libffi.so          # libffi
+    libjpeg.so         # libjpeg-turbo
+    libpipewire-0.3.so # libpipewire
+    libpixman-1.so     # pixman
+    libvpx.so          # libvpx
+    libwebp.so         # libwebp
+    libwebpdemux.so    # libwebp
+    libz.so            # zlib
+    nspr
+    nss
+  )
+fi
+
 if [[ "${_build_pgo::1}" == "t" ]]; then
   if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
     makedepends+=(
@@ -114,7 +122,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '6269a271fcc2d3a3e1bce1f4c08e03676f1e9e9708082e4934d535996ff146af'
+  '6cb1a25b95db35f367e371438096862ac7ace9c752b7ee1ee4a0a99e7ec66117'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -214,11 +222,19 @@ END
 
   if [[ "${_build_system_libs::1}" == "t" ]]; then
     cat >> mozconfig << END
+# ac_add_options --with-system-av1
+# ac_add_options --with-system-icu
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-png
+ac_add_options --with-system-ffi
+ac_add_options --with-system-gbm
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
+ac_add_options --with-system-libdrm
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-pipewire
+ac_add_options --with-system-pixman
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 END
@@ -264,9 +280,6 @@ END
       patch -d "$_pkgsrc_runtime" -Np1 -F100 -f -i "${srcdir:?}/$src"
     fi
   done
-
-  # workaround for missing EVENT__SIZEOF_TIME_T
-  sed -e '/CHECK_EVENT_SIZEOF(TIME_T/d' -i "$_pkgsrc_runtime"/ipc/chromium/src/base/message_pump_libevent.cc
 )
 
 build() (
