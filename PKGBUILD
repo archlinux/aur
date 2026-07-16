@@ -6,6 +6,7 @@ pkgdesc="Python bindings for Velopack"
 arch=('x86_64')
 url="https://github.com/velopack/velopack"
 license=('MIT')
+options=('!debug')
 
 depends=('python')
 makedepends=('python-installer')
