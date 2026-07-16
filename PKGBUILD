@@ -4,7 +4,7 @@ _gitauthor=sassman
 _gitname=putzen-rs
 _appname=${_gitname%-rs}
 pkgname=${_appname}
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="It helps keeping your disk clean of build and dependency artifacts safely."
 
@@ -20,7 +20,7 @@ depends=('glibc' 'libgcc')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e2676268f50df6f7288a0c0c7a7ce14f4d09877f8a2e023e435ea192b1f87faa')
+sha256sums=('7c402d8e3f33e38ea58986639e55fa1f2968c98365456d087c92599540eb11ee')
 
 prepare() {
 	cd "${_gitname}-${pkgver}" || exit
