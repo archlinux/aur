@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=consICA
-_pkgver=2.6.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0438168fe9a893f920ebf526132d3546')
-b2sums=('1dda705903c773443b82edd65fda56cb51a25363b45d2a3219619879a674b7c8a40d745e3342ee61def26c280f4baad3348278dad7b75f3d9d8bc3b037e69b73')
+md5sums=('b3f790619bd3d2557236aa1bc3fbcae5')
+b2sums=('43313db299deec90596d2912df4eba8a554ee8b8cdb61bb3773bbddf443268966380c3bb8cdc17f42277c87b21560342e2543010ada2f4b3e38e6749df2cbf83')
 
 build() {
   mkdir build
