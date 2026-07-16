@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R453Plus1Toolbox
-_pkgver=1.58.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc="A package for importing and analyzing data from Roche's Genome Sequencer System"
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf517a5e21936996dfe66d5ef24ea6f571502286e300170557499b167d4185c9')
+sha256sums=('c5f7de59c53ab8d4d5a31f776e4f7d9d0e429aec988f07becaaa985eb8786174')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
