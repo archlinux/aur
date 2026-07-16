@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=made4
-_pkgver=1.82.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.82.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='Multivariate analysis of microarray data using ADE4'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2efbb878a2720e33d4f0bbcb16ae6b8f7b6220b376c3a88a26e05f1bf847eb3f')
+sha256sums=('02d65ecbf758f8b08ea60985102014ded9f64f6ad6f97a5371918306e470a793')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
