@@ -9,7 +9,7 @@
 pkgname=freefilesync-donation-bin-release
 _pkgname=freefilesync
 pkgver=14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization (Donation Edition)"
 arch=("x86_64")
 url="https://freefilesync.org"
