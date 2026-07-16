@@ -1,7 +1,7 @@
 # Maintainer: umceko <support@stockimg.ai>
 pkgname=hush-mic
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Maxine AI noise-suppression virtual microphone (built from source)"
 arch=('x86_64')
 url="https://github.com/UMCEKO/hush"
@@ -9,6 +9,9 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'glib-networking' 'pipewire' 'libpulse' 'dbus' 'gcc-libs')
 makedepends=('rust>=1.88' 'cargo' 'pkgconf' 'clang')
 optdepends=('nvidia-utils: nvidia-smi GPU detection (required at runtime)')
+# makepkg's -flto=auto in CFLAGS turns ring's C objects into GCC LTO bitcode,
+# which rust-lld can't read -> undefined ring_core_* symbols at link time.
+options=('!lto')
 provides=('hush-mic')
 # 'hush'/'hush-bin' (an unrelated Lua shell) also install /usr/bin/hush
 conflicts=('hush-mic-bin' 'hush' 'hush-bin')
