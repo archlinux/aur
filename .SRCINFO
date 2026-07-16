@@ -9,6 +9,7 @@ pkgbase = openbsd-comp-mans
 	options = !strip
 	options = !docs
 	options = !libtool
+	options = !debug
 	source = https://mirror.planetunix.net/pub/OpenBSD/7.9/amd64/comp79.tgz
 	sha256sums = 21a67af20aebcabf85b09f4206fc95b4cae0a35d42b154b976f0159f457724f9
 

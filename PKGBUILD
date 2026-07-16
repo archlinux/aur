@@ -9,7 +9,7 @@ arch=('any')
 install="${pkgname}.install"
 source=("https://mirror.planetunix.net/pub/OpenBSD/${pkgver}/amd64/comp${pkgvernodot}.tgz")
 sha256sums=('21a67af20aebcabf85b09f4206fc95b4cae0a35d42b154b976f0159f457724f9')
-options=('!strip' '!docs' '!libtool')
+options=('!strip' '!docs' '!libtool' '!debug')
 
 build() {
 	cd "${srcdir}/usr/share/man"
