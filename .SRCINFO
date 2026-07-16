@@ -1,0 +1,19 @@
+pkgbase = bincue-studio
+	pkgdesc = Audio CD authoring studio — assemble tracks, export BIN/CUE, burn, and design labels (includes cdlabel)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TheGameratorT/bincue-studio
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-svg
+	depends = taglib
+	depends = ffmpeg
+	optdepends = cdrdao: burn the exported BIN/CUE to disc
+	source = bincue-studio-1.0.0.tar.gz::https://github.com/TheGameratorT/bincue-studio/archive/v1.0.0.tar.gz
+	source = hostkit-1.0.0.tar.gz::https://github.com/TheGameratorT/hostkit/archive/v1.0.0.tar.gz
+	sha256sums = ea14e67ef5cca77b11b39e648fc99c9a6fc6c425b9f92b5a3b2c07550fcd5570
+	sha256sums = decb486c77cc0ad5e243d9eeb9c1fc57b9c95ef79b605c9056d39b0d46112456
+
+pkgname = bincue-studio
