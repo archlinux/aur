@@ -137,14 +137,15 @@ let patchedAny = false;
   }
 }
 
-// 3. Keep application menu refreshes from recreating a visible Linux menu bar
-// while preserving the menu model used by the app-controlled menu UI.
+// 3. Keep application menu refreshes from recreating a visible Linux menu bar.
+// Do not remove the per-window menu here: Electron registers Linux menu-item
+// accelerators through that menu, even while its menu bar is hidden.
 {
   const hideAllWindowMenus =
-    "process.platform===`linux`&&$1.BrowserWindow.getAllWindows().forEach(e=>{e.isDestroyed()||(e.setMenuBarVisibility(!1),e.removeMenu())})";
+    "process.platform===`linux`&&$1.BrowserWindow.getAllWindows().forEach(e=>{e.isDestroyed()||e.setMenuBarVisibility(!1)})";
   const replacement =
     `$1.Menu.setApplicationMenu($2),${hideAllWindowMenus},$3($4)`;
-  const alreadyMarker = "BrowserWindow.getAllWindows().forEach(e=>{e.isDestroyed()||(e.setMenuBarVisibility(!1),e.removeMenu())})";
+  const alreadyMarker = "BrowserWindow.getAllWindows().forEach(e=>{e.isDestroyed()||e.setMenuBarVisibility(!1)})";
   if (source.includes(alreadyMarker)) {
     console.log(`${TAG}: Linux application menu refresh hiding already patched`);
   } else {

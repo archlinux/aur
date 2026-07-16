@@ -3,7 +3,7 @@
 
 pkgname=chatgpt-desktop-bin
 pkgver=26.707.72221
-pkgrel=1
+pkgrel=2
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
@@ -59,7 +59,7 @@ sha256sums=('d47a2c0dfb07afec21c415fcec672035a2e90410ecb7c6dc60141518fba524e0'
             'edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c'
             '74b0c62a48ea4a8bf91f8851c7b3c8ce6845e9107af651f5ee40eb9e3161d8bf'
             '49ca13daf940980a03179d7d12d45f950df4f033da2089a39d8e3fc4aadc99c7'
-            'e82a09993d1c4bb58f6a4e1f5593c7126c23c28d4e1a541fd71f951791c4a70c')
+            '9c5d7410cbe94145089fa79cc08ac6bb7197cc8751ad5b45f0ae2331dc39d168')
 
 prepare() {
   cd "${srcdir}"
