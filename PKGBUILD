@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RNAseqCovarImpute
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c393bd4177d5bab473ed5e53e4f8118a')
-b2sums=('c238d04201d517092d40472b18ed1d075d91b909f55e49ad8956ae51e663f70e0c4c5d258f97304ee8e5b52df0f5a3d218b192548b8c8177776be75ebaaee2ad')
+md5sums=('c2db4adf6859359ac66e4c9870082dce')
+b2sums=('d8af3017f49ea71ba1089507636c2bd19e594f72abb75f3193e6d7e42c1d143fcc194983357239d8414d9118eaf6f7fc27df1f1f26b22313b841d40d6fb60059')
 
 build() {
   mkdir build
