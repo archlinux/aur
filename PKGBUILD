@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quantiseqr
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e71a3f4916dd52efb89aee2a821ff63')
-b2sums=('cd5912592469e6b3555680ff1d20ec077925a993c5a3a7545a519d2e88dcf04cc9959e682cdc9ddde018e8af2ea11f43c0e764d806c2ef65296ca3ebde08acdf')
+md5sums=('d9223142821342034defe5d89d23791a')
+b2sums=('203291668ce24b78981a7f23c9a4d69abbb5c33819ff56d3fb8c153aa96ce516aae464867bfbf480b3935e377cc1f80a8e5066f9d7ee9737e78f5844d0494054')
 
 build() {
   mkdir build
