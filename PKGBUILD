@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=roar
-_pkgver=1.44.1
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.1
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Identify differential APA usage from RNA-seq alignments'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b74e1255c0f1b6d501cfb5a96e07392784113696badf19fbd3ad639d33594589')
+sha256sums=('0a6562ec3054b503abe2204f5413b85f8a1bf00e9969def6d6cdd8ef8b61b0ec')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
