@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scds
-_pkgver=1.24.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='In-Silico Annotation of Doublets for Single Cell RNA Sequencing Data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-scater
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d7abbf19409352f02100ea53f78c0a856c77bbe5ef11e6223329bff7a83d483')
+sha256sums=('f6b7e4c591659387a49e8c8d3d586dc6a1973341c3457737c472737d78bd2225')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
