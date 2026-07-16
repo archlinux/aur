@@ -1,7 +1,7 @@
 # Maintainer: Mitkomm <Mitkomm at proton dot me>
 
 pkgname=cubiclauncher
-pkgver=30
+pkgver=31
 pkgrel=1
 pkgdesc="Open-source Minecraft launcher"
 arch=('x86_64')
