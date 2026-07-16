@@ -1,6 +1,6 @@
 pkgbase = sound-blasterx-g6-control-git
 	pkgdesc = Linux controller for the Creative Sound BlasterX G6 (USB 041e:3256): DSP, EQ, output mode, DAC filter
-	pkgver = r8.d53a56c
+	pkgver = r17.063ef1a
 	pkgrel = 1
 	url = https://github.com/xuda-ye-math/Sound-BlasterX-G6-Control
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = sound-blasterx-g6-control-git
 	depends = alsa-utils
 	depends = libpulse
 	depends = wayland
+	depends = libx11
 	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	depends = mesa
 	depends = fontconfig
 	optdepends = polkit: required for the GUI Setup buttons (pkexec)

@@ -1,7 +1,7 @@
 # Maintainer: Xuda Ye <abneryepku at outlook dot com>
 pkgname=sound-blasterx-g6-control-git
 _pkgname=sound-blasterx-g6-control
-pkgver=r8.d53a56c
+pkgver=r17.063ef1a
 pkgrel=1
 pkgdesc="Linux controller for the Creative Sound BlasterX G6 (USB 041e:3256): DSP, EQ, output mode, DAC filter"
 arch=('x86_64')
@@ -14,7 +14,9 @@ depends=(
     'alsa-utils'     # amixer / arecord for `init`, `watch`, `test mic`
     'libpulse'       # pactl / paplay (works against pipewire-pulse or pulseaudio)
     'wayland'        # GUI: eframe wayland backend
+    'libx11'         # GUI: eframe X11 backend (e.g. LXQt/X11)
     'libxkbcommon'   # GUI: egui input
+    'libxkbcommon-x11' # GUI: X11 keyboard input
     'mesa'           # GUI: OpenGL via glow
     'fontconfig'     # GUI: font discovery
 )
@@ -52,10 +54,17 @@ pkgver() {
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$pkgname"
+    export CARGO_HOME="$srcdir/cargo-home"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
     cd "$pkgname"
+    export CARGO_HOME="$srcdir/cargo-home"
     export CARGO_TARGET_DIR=target
-    cargo build --release --locked --workspace
+    cargo build --release --frozen --workspace
 }
 
 package() {

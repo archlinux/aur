@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/sound-blasterx-g6-control-git/
+/*.pkg.tar.*
+/*.log
