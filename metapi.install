@@ -1,0 +1,30 @@
+post_install() {
+  # Create the metapi system user if it doesn't exist
+  if ! getent passwd metapi >/dev/null 2>&1; then
+    useradd --system --no-create-home \
+      --home-dir /var/lib/metapi \
+      --shell /usr/sbin/nologin \
+      --comment 'Metapi service user' \
+      metapi
+  fi
+  # Ensure data directory exists and is owned by metapi
+  mkdir -p /var/lib/metapi
+  chown metapi:metapi /var/lib/metapi
+
+  echo ":: Metapi service installed. To start:"
+  echo "   sudo systemctl daemon-reload"
+  echo "   sudo systemctl enable --now metapi"
+  echo ""
+  echo ":: Edit /etc/metapi/env to set AUTH_TOKEN and PROXY_TOKEN first."
+}
+
+pre_remove() {
+  echo ":: Removing metapi package. Note: /var/lib/metapi/ (database)"
+  echo "   and /etc/metapi/env (config) will NOT be removed automatically."
+}
+
+post_upgrade() {
+  # Re-apply data directory ownership on upgrade
+  mkdir -p /var/lib/metapi
+  chown metapi:metapi /var/lib/metapi 2>/dev/null || true
+}

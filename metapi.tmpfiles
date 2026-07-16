@@ -1,0 +1,8 @@
+# tmpfiles.d entries for metapi
+# Ensure data directory has correct ownership
+
+# Create /var/lib/metapi directory if it doesn't exist
+d /var/lib/metapi 0755 metapi metapi -
+
+# Ensure /etc/metapi is readable by metapi user
+# (metapi.conf is installed as 644, which is readable by all users including metapi)

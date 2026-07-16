@@ -1,0 +1,28 @@
+pkgbase = metapi
+	pkgdesc = Meta-layer management and unified proxy for AI API aggregation platforms
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/wyf9661/metapi
+	install = metapi.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=25
+	optdepends = mysql2: MySQL database support
+	optdepends = postgresql: PostgreSQL database support
+	options = !debug
+	backup = etc/metapi/env
+	source = metapi-v1.3.1.tar.gz::https://github.com/wyf9661/metapi/archive/refs/tags/v1.3.1.tar.gz
+	source = metapi.service
+	source = metapi.conf
+	source = metapi.install
+	source = metapi.sysusers
+	source = metapi.tmpfiles
+	sha256sums = 408a8f16892cda49ef35c57a99b4f8d17fcc25173ff3b54f2799039590dc658b
+	sha256sums = 1f5dede1712658ac3e276d83ac4cad541a636c54f084b07d8c7778b8c69bce95
+	sha256sums = 308fea8ed4ebac8e0c27dc76488c9b98427ba832c0de2562cf4c48e5891b89e8
+	sha256sums = 8935cbf7f78c697f3915d40e124916aa29cbeffdbbf024c01da6a6257b4d27c7
+	sha256sums = 355b30e8ae273a87d14bd7afcac367cee0d44f01d57d41eac6747c67d17afb40
+	sha256sums = 6f52d5800aa5cd0c8e5eb5a463fb09711c7460bcf9f6c95a477c3303f37f067c
+
+pkgname = metapi

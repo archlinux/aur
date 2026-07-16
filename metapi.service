@@ -1,0 +1,28 @@
+[Unit]
+Description=Metapi - AI API meta-aggregation gateway
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=metapi
+Group=metapi
+WorkingDirectory=/usr/share/metapi
+Environment=NODE_ENV=production
+Environment=DATA_DIR=/var/lib/metapi
+Environment=PORT=5000
+EnvironmentFile=-/etc/metapi/env
+ExecStart=/usr/bin/node dist/server/index.js
+ExecStartPre=/usr/bin/node dist/server/db/migrate.js
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65536
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/var/lib/metapi /etc/metapi
+
+[Install]
+WantedBy=multi-user.target
