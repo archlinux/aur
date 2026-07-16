@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alakazam
-_pkgver=1.4.1
+_pkgver=1.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,13 +29,14 @@ depends=(
   r-tidyr
 )
 optdepends=(
+  r-cigarillo
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f50233c3437ef233a287563f472952fe')
-b2sums=('ff1ed7ad3c46c3a13758b3cfa0bdff62120f3e8bfcf243c262726aca862adf818a7f7df5f885c70e8c3547278446c1f9ecf00c27c0fcfcbcfcca41e891483500')
+md5sums=('54943e0d3ea71d7a12293e10f2e6fd5b')
+b2sums=('3065f51981ca69f31918b1a7ea2840c8d6d95f65045b743c10296e252e26d208bb7522428d2cba4ac6e5061b259b6e5b5fec995214e432764e6e225747590b01')
 
 build() {
   mkdir build
