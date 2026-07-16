@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.93.1.193.r0.a8818f549
+pkgver=1.93.1.194.r0.ffb5c5aae
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 groups=('game')
 depends=(bash libglvnd glibc zlib gnustep-base hicolor-icon-theme libstdc++ libobjc libgcc 
           espeak-ng glu nspr openal sdl3 libvorbis libpng)
-makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make)
+makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make procps-ng)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         oolite-git.sh
 )
