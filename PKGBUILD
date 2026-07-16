@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ballgown
-_pkgver=2.40.0
+_pkgver=2.43.0
 pkgname=r-${_pkgname,,}
-pkgver=2.40.0
+pkgver=2.43.0
 pkgrel=1
 pkgdesc='Flexible, isoform-level differential expression analysis'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('715beec2c50d109236a6ae9ae71e58a18ab2fee1112df2bd54be2ea87ca8917d')
+sha256sums=('1c340cd0038038d4ef9756e38af37848b8eda8c9ef5e69e582fb461eda214fce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
