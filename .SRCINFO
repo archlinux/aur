@@ -1,10 +1,9 @@
 pkgbase = droidstar-9m2pju-bin
-	pkgdesc = DroidStar-9M2PJU - amateur radio digital modes client (binary release)
-	pkgver = 1.0.cc11110
+	pkgdesc = DroidStar-9M2PJU - amateur radio digital modes client (binary release, Arch-native)
+	pkgver = 1.0.51b24dc
 	pkgrel = 1
 	url = https://github.com/9M2PJU/DroidStar-Linux
 	arch = x86_64
-	arch = aarch64
 	license = GPL-3.0-or-later
 	depends = qt6-base
 	depends = qt6-declarative
@@ -18,9 +17,7 @@ pkgbase = droidstar-9m2pju-bin
 	conflicts = droidstar-git
 	options = !strip
 	options = !debug
-	source_x86_64 = DroidStar-9M2PJU-1.0.cc11110-x86_64.pkg.tar.zst::https://github.com/9M2PJU/DroidStar-Linux/releases/download/DroidStar-9M2PJU-cc11110/DroidStar-9M2PJU-1.0.cc11110-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 27d2becb578b06da2c49e38abf75610e9e21f451cafb4e482e19115722bdf168
-	source_aarch64 = DroidStar-9M2PJU-1.0.cc11110-aarch64.pkg.tar.zst::https://github.com/9M2PJU/DroidStar-Linux/releases/download/DroidStar-9M2PJU-cc11110/DroidStar-9M2PJU-1.0.cc11110-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = f2a0323f789e1349cb5f83795801d595187103762260ed1ad8b24b9d22522258
+	source_x86_64 = DroidStar-9M2PJU-1.0.51b24dc-x86_64.pkg.tar.zst::https://github.com/9M2PJU/DroidStar-Linux/releases/download/DroidStar-9M2PJU-51b24dc/DroidStar-9M2PJU-1.0.51b24dc-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 0a0bdd9119972972fc3b00630b11742d8627bc40516c098ad067b9bcb2462f11
 
 pkgname = droidstar-9m2pju-bin
