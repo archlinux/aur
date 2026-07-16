@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiContacts
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -53,8 +53,8 @@ optdepends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5f0068eaed27b245884ebe145564c740')
-b2sums=('5c53d544d0c22aba49d439ea9542642cf98b1f7ce021204254671eac654cd403206fae46333456ada41a64d225ef30732a496005e5f81dde4a2e50602245bd1a')
+md5sums=('b2f0b879e1442e86902648997ee9cd96')
+b2sums=('77006b94479cf489b9b0d49411adc1a9a2cab06e197f70460c52b0185d4fbbca7a0448105c338f8367012a2cc5de67999c7cec6e2b962a78c0d2fb6093f541b9')
 
 build() {
   mkdir build
