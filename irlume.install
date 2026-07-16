@@ -1,0 +1,32 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now irlumed.service 2>/dev/null || true
+    cat <<'EOF'
+irlume installed. Next steps:
+  irlume tui                      # enroll your face + configure
+  sudo irlume login enable --apply   # opt-in: wire greeter/lock screen
+(enrollment auto-enables the 850nm IR emitter when IR frames are black;
+ manual fallback for IR cameras: sudo irlume ir-setup)
+Arch has no SELinux/AppArmor by default; the SO_PEERCRED + socket-group
+boundary is the daemon's protection. Password is always the fallback.
+EOF
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart irlumed.service 2>/dev/null || true
+    # 0.1.x -> 0.2.0 removed the IR adapter; IR templates enrolled before 0.2.0
+    # no longer match. Bright-light (RGB) login still works; the password is
+    # unaffected. Compare the just-installed version against the old one.
+    if [ "$(vercmp "$2" 0.2.0)" -lt 0 ]; then
+        cat <<'EOF'
+irlume 0.2.0: the IR adapter was removed. If you enrolled before 0.2.0,
+dark/dim face login needs a re-enroll:  irlume enroll
+Bright-light login keeps working and your password is unaffected.
+EOF
+    fi
+}
+
+pre_remove() {
+    systemctl disable --now irlumed.service 2>/dev/null || true
+}
