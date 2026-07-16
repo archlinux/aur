@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AlphaBeta
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Computational inference of epimutation rates and spectra from high-throughput DNA methylation data in plants'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a107c387fd51e3fd5b73a1f2ecdf22fecc8d2782ca4bb5038ca25acdea06a568')
+sha256sums=('0e4fe258d241c0a5a8400b1e002aacc848ca6a54379a7b1e88b8a1554b36d4b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
