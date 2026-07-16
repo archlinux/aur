@@ -18,10 +18,12 @@ depends=(
     python-websocket-client
     python-cryptography
     python-packaging
+    python-jaraco.context
+    python-jaraco.classes
+    python-jaraco.functools
     yt-dlp
-    papirus-icon-theme 
+    papirus-icon-theme
 )
-
 makedepends=('git')
 
 provides=('felfeldm')
