@@ -72,7 +72,7 @@ conflicts=(kwin-x11)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 install="$pkgname.install"
-sha256sums=('b189ee8d308c0a7b1ba5123e01241f11fa889dcc903380507f2bf860f0903914')
+sha256sums=('724346a9fbe692741e4aab451c2c5ecb9c5dc3c94999eec82904b2fee3265d79')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
