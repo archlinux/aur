@@ -1,6 +1,6 @@
 pkgbase = ragnar-git
 	pkgdesc = Mount an existing remote LUKS device with NBD over SSH
-	pkgver = 0.53.96f2195
+	pkgver = 0.54.3f93898
 	pkgrel = 1
 	url = https://github.com/gavinhungry/ragnar
 	arch = any

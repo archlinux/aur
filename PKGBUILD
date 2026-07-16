@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=ragnar-git
-pkgver=0.53.96f2195
+pkgver=0.54.3f93898
 pkgrel=1
 pkgdesc="Mount an existing remote LUKS device with NBD over SSH"
 arch=('any')
@@ -27,4 +27,5 @@ package() {
   install -m 755 abash/abash.sh "${pkgdir}"/usr/bin/ragnar
   echo >> "${pkgdir}"/usr/bin/ragnar
   cat ragnar.sh >> "${pkgdir}"/usr/bin/ragnar
+  install -Dm644 ragnar.bash-completion "${pkgdir}"/usr/share/bash-completion/completions/ragnar
 }
