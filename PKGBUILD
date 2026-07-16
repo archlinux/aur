@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MAGAR
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-venndiagram
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5bbea1d6b1f144b9ce4d4a3c9ca37eaa')
-b2sums=('0c8a858a04d1660bdc48c5234365a624e2d1a163baf36c96013f67c97f06c3f0e0d4aee461a44a66c999d323e101bf72b06890980ad0de7dd1c201f2941577fb')
+md5sums=('68a9f4deaeb5dbb88937ce6a9051d82d')
+b2sums=('85bb310e3617188e492e8d62d3f92e6fc774af7e106c84c40201d07137cac70fe98cf1741b8a30d4185340c705ef4c7139860d3a75750aa4c2a31b48912d68b4')
 
 build() {
   mkdir build
