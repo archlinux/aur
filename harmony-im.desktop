@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Harmony
+Exec=/usr/bin/harmony-im %U
+Comment=An extensible [matrix] client.
+Terminal=false
+Type=Application
+Icon=harmony-im
+GenericName=Internet Messenger
+Categories=Network;Chat;
+Keywords=electron;chat;matrix;
