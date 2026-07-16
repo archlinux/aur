@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=segmentSeq
-_pkgver=2.42.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Methods for identifying small RNA loci from high-throughput sequencing data'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c257639a23ef2d4f3a32642d3919f7b1e5be2899949392dd0b443a472003ab6a')
+sha256sums=('6757a8a1ceb2446aa07dc6297efee3498ab7cb6ab2fbffab3faef8cfa1400815')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

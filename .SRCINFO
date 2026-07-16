@@ -1,6 +1,6 @@
 pkgbase = r-segmentseq
 	pkgdesc = Methods for identifying small RNA loci from high-throughput sequencing data
-	pkgver = 2.42.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/segmentSeq
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-segmentseq
 	depends = r-shortread
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/segmentSeq_2.42.0.tar.gz
-	sha256sums = c257639a23ef2d4f3a32642d3919f7b1e5be2899949392dd0b443a472003ab6a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/segmentSeq_2.46.0.tar.gz
+	sha256sums = 6757a8a1ceb2446aa07dc6297efee3498ab7cb6ab2fbffab3faef8cfa1400815
 
 pkgname = r-segmentseq
