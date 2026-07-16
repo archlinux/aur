@@ -1,8 +1,7 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=9977
-_ggml_version=0.16.0
-_llama_cpp_sha256sum=4ebfd8fdf34f6eff05abcd7db8e0a2e78ef87a05056651f01584a8dd7e1d2c98
+_llama_cpp_version=10046
+_llama_cpp_sha256sum=dc7851f89e4c401a05f3dd42c8225961085df9c0ceecb3538ecec350e795597e
 pkgname=llama.cpp-system
 pkgver=0.0.0.b${_llama_cpp_version}
 pkgrel=1
@@ -11,7 +10,7 @@ arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 depends=(
-    "ggml-core=${_ggml_version}"
+    ggml-core
     glibc
     libstdc++
     libgcc
