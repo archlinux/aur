@@ -1,6 +1,6 @@
 pkgbase = nerdfonts-installer-bin
 	pkgdesc = Interactive Nerd Fonts installer written in C
-	pkgver = 2026.06.09
+	pkgver = 2026.07.17
 	pkgrel = 1
 	url = https://github.com/fam007e/nerd_fonts_installer
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nerdfonts-installer-bin
 	depends = fontconfig
 	depends = jansson
 	options = !debug
-	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/v2026.06.09/nerdfonts-installer-2026.06.09.tar.gz
-	sha256sums = b15a69fb87896454a3cd6ba683d49b411d5c4442396edd430a2a146737de08ef
+	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/v2026.07.17/nerdfonts-installer-2026.07.17.tar.gz
+	sha256sums = 6a2684f98f19e8dbd9fde74ea7b3461021a47026cecb610ea9a95fa12c29008b
 
 pkgname = nerdfonts-installer-bin
