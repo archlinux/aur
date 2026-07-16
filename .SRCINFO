@@ -1,0 +1,10 @@
+pkgbase = ps3mca-udev-rules
+	pkgdesc = udev rule for the PS3 Memory Card Adapter
+	pkgver = 1
+	pkgrel = 1
+	install = ps3mca-udev-rules.install
+	arch = any
+	source = 60-ps3mca.rules
+	sha256sums = ba91b198d3174d132aebf3712eaf3e53d0375c93cf25483ccb4d03029576d252
+
+pkgname = ps3mca-udev-rules
