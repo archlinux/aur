@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A system-wide ASCII keyboard visualizer in the terminal"
 
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ provides=("${_appname}")
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('969fb9547520ab51be97a949138f59158758a9690ebb4777a73bac8a1627e719')
+sha256sums=('9135accfbe7b46a3c7bcab3ff499f85c87100df613d01071cf8f2845c49cf2e4')
 
 
 prepare() {
