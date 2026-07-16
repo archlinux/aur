@@ -1,5 +1,5 @@
 pkgname=fixplay-diagnosetool
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Cross-platform diagnostic tool for gaming consoles"
 arch=('x86_64')
@@ -16,6 +16,10 @@ depends=(
 makedepends=('rust' 'cargo' 'npm' 'curl')
 provides=('fixplay-diagnosetool')
 conflicts=('fixplay-diagnosetool-bin')
+# Ship the exact tested release binary (frontend embedded) — don't let
+# makepkg strip it. Matches the -bin PKGBUILD's !strip and guarantees the
+# installed fixplay-tauri is byte-identical to the build output.
+options=('!strip')
 source=("fixplay-diagnoseTool-v${pkgver}.tar.gz::https://github.com/fabioudev/fixplay-diagnoseTool/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
