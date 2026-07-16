@@ -1,6 +1,6 @@
 pkgbase = packemon-bin
 	pkgdesc = A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces.
-	pkgver = 1.8.25
+	pkgver = 1.8.26
 	pkgrel = 1
 	url = https://github.com/ddddddO/packemon
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = packemon-bin
 	license = BSD-2-Clause
 	provides = packemon
 	conflicts = packemon
-	source = LICENSE-1.8.25::https://raw.githubusercontent.com/ddddddO/packemon/v1.8.25/LICENSE
-	source = README-1.8.25::https://raw.githubusercontent.com/ddddddO/packemon/v1.8.25/README.md
+	source = LICENSE-1.8.26::https://raw.githubusercontent.com/ddddddO/packemon/v1.8.26/LICENSE
+	source = README-1.8.26::https://raw.githubusercontent.com/ddddddO/packemon/v1.8.26/README.md
 	sha256sums = fdcd2452a52c79ce8d1a57390a43d60acddb1413696fc119ca124543f9d988f4
 	sha256sums = e3edeb19e21abb9f25655aee77e8805d0db6ac2aaf2f05fa96ce66c5101bed44
-	source_x86_64 = https://github.com/ddddddO/packemon/releases/download/v1.8.25/packemon_1.8.25-1_amd64.deb
-	sha256sums_x86_64 = 690eb90c4d27355e17396cab9d6b220310546572d4f8353c998b5f03150df88f
-	source_aarch64 = https://github.com/ddddddO/packemon/releases/download/v1.8.25/packemon_1.8.25-1_arm64.deb
-	sha256sums_aarch64 = be9fe68d8fae8368607fce9e41ad462acc319d1b34ff9a159e265725874aa782
+	source_x86_64 = https://github.com/ddddddO/packemon/releases/download/v1.8.26/packemon_1.8.26-1_amd64.deb
+	sha256sums_x86_64 = 2ff8a9201a33491c8f64e5ffcb0c62d1e11278bf9a9dc5a0784a6dc4c41ae152
+	source_aarch64 = https://github.com/ddddddO/packemon/releases/download/v1.8.26/packemon_1.8.26-1_arm64.deb
+	sha256sums_aarch64 = c3fc4f0dba0e9fb07e6a4278beab0785628eff212ca0f94dde8622500996b8ae
 
 pkgname = packemon-bin
