@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=NetActivity
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cccfd27668529198cd5cc1bc83566c73')
-b2sums=('7a7ac96913b773015326583a7a419f151cda44490a857878effdff9e5de11c8364a833df337631109c7e7aa386729c30434bbcf8abb993e2b96c4fc0dd6523b1')
+md5sums=('79dfa0f7962d71735e9bea2fe45e169c')
+b2sums=('3807f9e0e95b92712ce238d8c39f2d39c1cbed3236c9bcc3f62d429368062642ad9e37bed75a6b41b00d976272bc664fad362b0a91fd70b516a19e74a467245a')
 
 build() {
   mkdir build
