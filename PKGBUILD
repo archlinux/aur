@@ -2,7 +2,7 @@
 
 pkgname=ingit
 pkgauthor=capaj
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 
 _npmname=cli
@@ -25,7 +25,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz" "fix_cli.patch")
-b2sums=('9e8ce4d158de943a8cd8c44da023e011c623a7c74f4791b6b357c2529d67df09dcf85305c6131004c35740680dbe2e9495bd7e3b1213df8292377dc67faa3e33'
+b2sums=('01389683fe94c3c52e74730824694c5280f0162b99bbfaf0ed32eb71d83feb0f857a0a9da99ddc4be6b5e4cfbe1488746a34161776018040c52b896a6688dc81'
         '885684be2625c652f4344e50341cde0ac028904677b10be43a71d604e4b9627ed4afc46ddd15d9fabdb8d304419b062b5ba177ddbae3de62bc6df52122c5fd5e')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
