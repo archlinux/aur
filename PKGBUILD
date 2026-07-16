@@ -14,7 +14,7 @@
 # (bundle-sqlite defaults off), so it's a runtime depends, not a build input.
 
 pkgname=zigoku
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Terminal anime browser & player"
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ source=(
 )
 # git sources pin by commit, so their integrity anchor is the SHA, not a checksum.
 sha256sums=(
-  'e2173059255c11f4a3b60a96e14625abb74e8c0efe84b6e1da644d6a063df7d5'
+  '027667868ae667c07a977a07affbcdf9f5c5a2978b21e5bcd514055db49c6b8d'
   'SKIP'
   'SKIP'
   'SKIP'
