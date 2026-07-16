@@ -1,6 +1,6 @@
 pkgbase = r-lionessr
 	pkgdesc = Modeling networks for individual samples using LIONESS
-	pkgver = 1.22.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lionessR
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-lionessr
 	optdepends = r-limma
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lionessR_1.22.0.tar.gz
-	sha256sums = 0ae008a1f98bf56d5d4bce5fd7ab8416ec6c0e72d28a13f93f43c04f5b8b0bb4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lionessR_1.26.0.tar.gz
+	sha256sums = 5fec0ff3b534cdb5b3b16691a123ed4788bfa17023e2b09d38847fe8020d7f43
 
 pkgname = r-lionessr
