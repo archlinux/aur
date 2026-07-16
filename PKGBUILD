@@ -1,22 +1,17 @@
 # Maintainer: vantroy <vantroy@gmail.com>
 #
-# Source-of-truth for the AUR `zigoku` package (ROD-146). Reviewed here, then
-# copied to the AUR git repo (ssh://aur@aur.archlinux.org/zigoku.git) where users
-# reach it via `paru -S zigoku` / `yay -S zigoku`.
+# Source build (the plain package name): compiles the tagged release with the
+# system Zig. A prebuilt binary package would be named zigoku-bin.
 #
-# Source build on purpose: the plain package name is the from-source build (a
-# prebuilt would be `-bin`). It compiles the tagged release with the system Zig.
+# Why the dependency handling below looks unusual: `zig build` normally fetches
+# vaxis/zigimg/uucode over the network, but a clean-chroot build() has none. So
+# the three Zig deps are declared as git sources (fetched in makepkg's download
+# phase, where network is allowed), remapped in prepare() into a dir named by
+# each dep's Zig content-hash, then resolved by `zig build --system` with
+# fetching disabled. Builds cleanly with an empty ZIG_GLOBAL_CACHE_DIR.
 #
-# Clean-chroot dep story — the reason this file looks the way it does:
-#   `zig build` normally fetches vaxis/zigimg/uucode from the network, but AUR
-#   chroots have no network in build(). So the three Zig deps are pulled as git
-#   sources (fetched in makepkg's download phase, which IS allowed network),
-#   remapped in prepare() into a package dir named by each dep's Zig content-hash,
-#   then `zig build --system` resolves everything from that dir with fetching
-#   hard-disabled. Verified to build with an empty ZIG_GLOBAL_CACHE_DIR.
-#
-# sqlite is NOT vendored: on Linux the build links the system libsqlite3
-# (bundle-sqlite defaults off), so it's a runtime `depends`, not a build input.
+# sqlite is not vendored: on Linux the build links the system libsqlite3
+# (bundle-sqlite defaults off), so it's a runtime depends, not a build input.
 
 pkgname=zigoku
 pkgver=0.4.5
@@ -26,14 +21,14 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/vantroy/zigoku"
 license=('GPL-3.0-or-later')
 depends=('sqlite' 'glibc' 'mpv')
-# mpv is a runtime shell-out (src/player.zig), not a linked lib — namcap can't
-# see it, so it's declared by hand. sqlite + glibc are the actual ldd deps.
+# mpv is a runtime shell-out, not a linked lib, so namcap can't see it; it's
+# declared by hand. sqlite + glibc are the actual ldd deps.
 makedepends=('zig>=0.16' 'git')
 # zigoku pins minimum_zig_version = 0.16.0. Zig is pre-1.0 and ships breaking
 # changes between minors; if a future extra/zig outruns what this release builds
 # against, pin makedepends to the matching version until the pkgver catches up.
 
-# Zig content-hashes — these NAME the dirs `zig build --system` looks for, and
+# Zig content-hashes: these name the dirs `zig build --system` looks for, and
 # come verbatim from each dep's build.zig.zon (zigoku's for vaxis+uucode, vaxis's
 # for zigimg). Bump them in lockstep with the #commit pins in source=() below.
 _vaxis_hash='vaxis-0.6.0-BWNV_GL1CQAHFfQHs_adjb8BKJyqW6njxz1IZr5yf-fW'
@@ -65,7 +60,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   # --system: fetching off, deps resolved from the vendored dir (chroot-safe).
-  # -Dcpu=baseline: portable across the arch — never bake in the builder's CPU.
+  # -Dcpu=baseline: portable across the arch, never baking in the builder's CPU.
   # ReleaseSafe + -Dstrip: matches the release artifacts (safety checks kept).
   zig build \
     --system "$srcdir/zig-pkg" \
@@ -79,7 +74,7 @@ package() {
   install -Dm755 "$srcdir/out/bin/zigoku" "$pkgdir/usr/bin/zigoku"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # Bundled libwebp is BSD-3 + patent grant; its notices must ship too (ROD-244).
+  # Bundled libwebp is BSD-3 + patent grant; its notices must ship too.
   install -Dm644 "$srcdir/$pkgname-$pkgver/src/c/webp/COPYING" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.libwebp"
   install -Dm644 "$srcdir/$pkgname-$pkgver/src/c/webp/PATENTS" \
@@ -89,5 +84,5 @@ package() {
 # Zig strips via -Dstrip; keep makepkg's GNU strip off the finished binary
 # (it has mangled Zig output before). See release.yml, which strips the same way.
 # !debug: nothing to split out of an already-stripped binary, so skip the debug
-# package — otherwise devtools leaves an empty /usr/src/debug/zigoku (namcap W).
+# package, else devtools leaves an empty /usr/src/debug/zigoku (namcap W).
 options=('!strip' '!debug')
