@@ -1,0 +1,157 @@
+diff --git a/src/dbus/idle_inhibit_export.rs b/src/dbus/idle_inhibit_export.rs
+new file mode 100644
+index 00000000..f13a5a19
+--- /dev/null
++++ b/src/dbus/idle_inhibit_export.rs
+@@ -0,0 +1,68 @@
++// SPDX-License-Identifier: GPL-3.0-only
++//! Exports the set of clients currently holding a Wayland idle-inhibitor
++//! (`zwp_idle_inhibitor_v1`) over the session bus, so a panel applet can show
++//! which applications are preventing the system from going idle / sleeping.
++//!
++//! Only the compositor knows about Wayland idle-inhibitors, and there is no way
++//! for another client to enumerate them, so we surface them here. This runs on
++//! its own thread with a blocking zbus connection and communicates with the
++//! compositor purely through an `Arc<Mutex<..>>`; any failure only logs and can
++//! never affect the compositor's main loop.
++
++use std::{
++    collections::HashMap,
++    sync::{Arc, Mutex},
++};
++
++/// Maps a `wl_surface` protocol id -> (client pid, best-effort app id) for every
++/// surface that currently holds an idle-inhibitor. Shared between the compositor
++/// thread (writer) and the D-Bus server thread (reader).
++pub type IdleInhibitors = Arc<Mutex<HashMap<u32, (u32, String)>>>;
++
++/// Create an empty, shareable inhibitor table.
++pub fn new() -> IdleInhibitors {
++    Arc::new(Mutex::new(HashMap::new()))
++}
++
++struct Export {
++    inhibitors: IdleInhibitors,
++}
++
++#[zbus::interface(name = "com.system76.CosmicComp.IdleInhibit")]
++impl Export {
++    /// `(pid, app_id)` for each surface currently holding a Wayland
++    /// idle-inhibitor. The same pid may appear more than once (one entry per
++    /// inhibiting surface); dedup on the client side if desired. `app_id` is
++    /// best-effort and may be empty — resolve the pid via `/proc` if needed.
++    fn list_inhibitors(&self) -> Vec<(u32, String)> {
++        self.inhibitors
++            .lock()
++            .map(|map| map.values().cloned().collect())
++            .unwrap_or_default()
++    }
++}
++
++/// Spawn the D-Bus export server on a dedicated thread. Returns immediately;
++/// errors (e.g. no session bus, name already taken) are logged and the thread
++/// simply exits without disturbing the compositor.
++pub fn spawn(inhibitors: IdleInhibitors) {
++    let _ = std::thread::Builder::new()
++        .name("idle-inhibit-dbus".into())
++        .spawn(move || {
++            if let Err(err) = serve(inhibitors) {
++                tracing::warn!(?err, "idle-inhibitor D-Bus export unavailable");
++            }
++        });
++}
++
++fn serve(inhibitors: IdleInhibitors) -> zbus::Result<()> {
++    let _conn = zbus::blocking::connection::Builder::session()?
++        .name("com.system76.CosmicComp")?
++        .serve_at("/com/system76/CosmicComp", Export { inhibitors })?
++        .build()?;
++    // Keep the connection (and thus the bus name + served object) alive for the
++    // lifetime of the compositor. zbus services I/O on its own internal threads.
++    loop {
++        std::thread::park();
++    }
++}
+diff --git a/src/dbus/mod.rs b/src/dbus/mod.rs
+index 5b9754c3..83ef3c86 100644
+--- a/src/dbus/mod.rs
++++ b/src/dbus/mod.rs
+@@ -18,6 +18,7 @@ use a11y_keyboard_monitor::A11yKeyboardMonitorState;
+ pub mod logind;
+ mod name_owners;
+ mod power;
++pub mod idle_inhibit_export;
+ 
+ #[derive(Clone, Debug)]
+ pub struct DBusState(Rc<DBusStateInner>);
+diff --git a/src/state.rs b/src/state.rs
+index cf66aeaa..155c14f9 100644
+--- a/src/state.rs
++++ b/src/state.rs
+@@ -272,6 +272,7 @@ pub struct Common {
+     pub idle_notifier_state: IdleNotifierState<State>,
+     pub idle_inhibit_manager_state: IdleInhibitManagerState,
+     pub idle_inhibiting_surfaces: HashSet<WlSurface>,
++    pub idle_inhibitors_export: crate::dbus::idle_inhibit_export::IdleInhibitors,
+     pub shm_state: ShmState,
+     pub cursor_shape_manager_state: CursorShapeManagerState,
+     pub wl_drm_state: WlDrmState<Option<DrmNode>>,
+@@ -693,6 +694,10 @@ impl State {
+         let idle_notifier_state = IdleNotifierState::<Self>::new(dh, handle.clone());
+         let idle_inhibit_manager_state = IdleInhibitManagerState::new::<State>(dh);
+         let idle_inhibiting_surfaces = HashSet::new();
++        // Export Wayland idle-inhibitors over the session bus (own thread; a
++        // failure here only logs and never affects the compositor).
++        let idle_inhibitors_export = crate::dbus::idle_inhibit_export::new();
++        crate::dbus::idle_inhibit_export::spawn(idle_inhibitors_export.clone());
+ 
+         let ext_data_control_state = ExtDataControlState::new::<Self, _>(
+             dh,
+@@ -765,6 +770,7 @@ impl State {
+                 idle_notifier_state,
+                 idle_inhibit_manager_state,
+                 idle_inhibiting_surfaces,
++                idle_inhibitors_export,
+                 cosmic_image_capture_source_state,
+                 output_capture_source_state,
+                 toplevel_capture_source_state,
+diff --git a/src/wayland/handlers/idle_inhibit.rs b/src/wayland/handlers/idle_inhibit.rs
+index 26e34bf8..631e25d4 100644
+--- a/src/wayland/handlers/idle_inhibit.rs
++++ b/src/wayland/handlers/idle_inhibit.rs
+@@ -1,5 +1,5 @@
+ use smithay::{
+-    reexports::wayland_server::protocol::wl_surface::WlSurface,
++    reexports::wayland_server::{Resource, protocol::wl_surface::WlSurface},
+     wayland::idle_inhibit::IdleInhibitHandler,
+ };
+ 
+@@ -7,11 +7,28 @@ use crate::state::State;
+ 
+ impl IdleInhibitHandler for State {
+     fn inhibit(&mut self, surface: WlSurface) {
++        // Record the inhibiting client's pid for the D-Bus export (best-effort;
++        // never fails the inhibit itself).
++        let key = surface.id().protocol_id();
++        let pid = surface
++            .client()
++            .and_then(|client| client.get_credentials(&self.common.display_handle).ok())
++            .map(|creds| creds.pid as u32)
++            .unwrap_or(0);
++        if let Ok(mut map) = self.common.idle_inhibitors_export.lock() {
++            map.insert(key, (pid, String::new()));
++        }
++
+         self.common.idle_inhibiting_surfaces.insert(surface);
+         self.common.idle_notifier_state.set_is_inhibited(true);
+     }
+ 
+     fn uninhibit(&mut self, surface: WlSurface) {
++        let key = surface.id().protocol_id();
++        if let Ok(mut map) = self.common.idle_inhibitors_export.lock() {
++            map.remove(&key);
++        }
++
+         self.common.idle_inhibiting_surfaces.remove(&surface);
+         self.common.refresh_idle_inhibit();
+     }
