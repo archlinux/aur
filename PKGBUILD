@@ -1,9 +1,9 @@
-# Maintainer: archibald869 <archibald869 at web dot de>
 # Maintainer: Tom Hale <tom at hale dot ee>
-#
+
 # Binary variant of freefilesync: tracks the latest Donation Edition
 # release from freefilesync.org and installs the pre-built binaries
 # with the donor license key activated.
+
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=freefilesync-donation-bin-release
