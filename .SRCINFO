@@ -1,6 +1,6 @@
 pkgbase = xsane
 	pkgver = 0.999
-	pkgrel = 8
+	pkgrel = 9
 	url = https://gitlab.com/sane-project/frontend/xsane
 	arch = x86_64
 	license = GPL2
@@ -8,7 +8,7 @@ pkgbase = xsane
 	makedepends = lcms2
 	makedepends = sane
 	makedepends = zlib
-	makedepends = libjpeg
+	makedepends = libjpeg-turbo
 	makedepends = gimp
 	source = http://http.debian.net/debian/pool/main/x/xsane/xsane_0.999.orig.tar.gz
 	source = xsane-0.995-xdg-open.patch
@@ -32,7 +32,7 @@ pkgname = xsane
 	depends = lcms2
 	depends = sane
 	depends = zlib
-	depends = libjpeg
+	depends = libjpeg-turbo
 	optdepends = xsane-gimp: for GIMP plugin support
 
 pkgname = xsane-gimp
