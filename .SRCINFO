@@ -1,6 +1,6 @@
 pkgbase = pdf-tui-git
 	pkgdesc = Terminal PDF reader built with ratatui and terminal graphics protocols.
-	pkgver = 0.1.2.r0.g3826c9b
+	pkgver = 0.1.2.r1.g4441504
 	pkgrel = 1
 	url = https://github.com/WindustH/pdf-tui
 	arch = x86_64
