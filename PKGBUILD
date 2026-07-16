@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TENxPBMCData
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='PBMC data from 10X Genomics'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b94a30270ff26401536fd404272b5fc540014b6315e452ed317c000ce2097fa')
+sha256sums=('d388233e1b4751fe3956d1039db2c389c897e22e366497aa9a742e051337fdd0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

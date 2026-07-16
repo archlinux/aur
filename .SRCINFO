@@ -1,6 +1,6 @@
 pkgbase = r-tenxpbmcdata
 	pkgdesc = PBMC data from 10X Genomics
-	pkgver = 1.26.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TENxPBMCData
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-tenxpbmcdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TENxPBMCData_1.26.0.tar.gz
-	sha256sums = 3b94a30270ff26401536fd404272b5fc540014b6315e452ed317c000ce2097fa
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TENxPBMCData_1.30.0.tar.gz
+	sha256sums = d388233e1b4751fe3956d1039db2c389c897e22e366497aa9a742e051337fdd0
 
 pkgname = r-tenxpbmcdata
