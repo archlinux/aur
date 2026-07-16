@@ -1,4 +1,4 @@
-pkgbase = cider
+pkgbase = cider-studio
 	pkgdesc = run & control roblox studio advancedly on linux
 	pkgver = 1.8.0
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = cider
 	depends = git
 	optdepends = bubblewrap: filesystem sandbox for studio
 
-pkgname = cider
+pkgname = cider-studio
