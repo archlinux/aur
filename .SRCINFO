@@ -8,7 +8,7 @@ pkgbase = circleci-cli-bin
 	provides = circleci-cli
 	conflicts = circleci-cli
 	source = circleci-cli-0.1.36202.tar.gz::https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.36202/circleci-cli_0.1.36202_linux_amd64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/refs/tags/v0.1.36202/LICENSE
 	sha256sums = 1b9d01983d4cd8e802f3e1182a72023740183764d59b16b7eecf50764fd33199
 	sha256sums = 89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9
 
