@@ -1,6 +1,6 @@
 pkgbase = klack
 	pkgdesc = A mechanical keyboard sound simulator
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://codeberg.org/ForeverZer0/klack
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = klack
 	makedepends = zig>=0.16.0
 	depends = alsa-lib
 	depends = pipewire-alsa
-	source = klack-1.0.2.tar.gz::https://codeberg.org/ForeverZer0/klack/archive/v1.0.2.tar.gz
-	sha256sums = 4429db8cf596fc92eb64669a2b62395a4f33b2b5451a255bb32bce18daee039e
+	source = klack-1.1.0.tar.gz::https://codeberg.org/ForeverZer0/klack/archive/v1.1.0.tar.gz
+	sha256sums = cedb4ccf464b17e5bc77238864ecc799312b8d3a757364b10a3f5730dc13196a
 
 pkgname = klack

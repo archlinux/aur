@@ -1,7 +1,7 @@
 # Maintainer: ForeverZer0 <efreed09@gmail.com>
 
 pkgname=klack
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A mechanical keyboard sound simulator"
 url="https://codeberg.org/ForeverZer0/$pkgname"
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 depends=('alsa-lib' 'pipewire-alsa')
 makedepends=('zig>=0.16.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4429db8cf596fc92eb64669a2b62395a4f33b2b5451a255bb32bce18daee039e')
+sha256sums=('cedb4ccf464b17e5bc77238864ecc799312b8d3a757364b10a3f5730dc13196a')
 
 build() {
   cd "${srcdir}/${pkgname}"
