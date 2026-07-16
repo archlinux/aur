@@ -2,7 +2,7 @@
 # Maintainer: nuixyz
 
 pkgname='kanarenshu-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='A minimal TUI application to practise Japanese from the terminal.'
 url='https://github.com/nuixyz/kanarenshu'
@@ -12,10 +12,10 @@ provides=('kanarenshu')
 conflicts=('kanarenshu')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nuixyz/kanarenshu/releases/download/v${pkgver}/kanarenshu_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1dcab13ac961c1d153b199ca531c41149668835e1253e88e4186827153f2f542')
+sha256sums_aarch64=('ba4e511e7546771522ab6a92eea5d6aa72f6812ffe25da109fe8a6579112bc33')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nuixyz/kanarenshu/releases/download/v${pkgver}/kanarenshu_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ac7963578efe18f2eef293e4fead6e2e364815ad44ccc8981cc835601bbd2dc1')
+sha256sums_x86_64=('51cf5d7f2fae47e24f18e2d24ce486c6e053a454e6babe74b5ff3b57fcec7812')
 
 package() {
   install -Dm755 "./kanarenshu" "${pkgdir}/usr/bin/kanarenshu"
