@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SpatialCPie
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Cluster analysis of Spatial Transcriptomics data'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af01588accc3b2e92ad73728c1f970e625ce00bb5f70b60b325f636814b4bf5e')
+sha256sums=('a003b33df2a273b6706ee98ef99961156e5df6aa24a4d0c4416b9696364554f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
