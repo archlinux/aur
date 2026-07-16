@@ -1,0 +1,13 @@
+pkgbase = code-maat
+	pkgdesc = A command line tool to mine and analyze data from version-control systems
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/adamtornhill/code-maat
+	arch = any
+	license = GPL3
+	depends = java-runtime-headless>=8
+	noextract = code-maat-1.0.4-standalone.jar
+	source = code-maat-1.0.4-standalone.jar::https://github.com/adamtornhill/code-maat/releases/download/v1.0.4/code-maat-1.0.4-standalone.jar
+	sha256sums = 4287ae2034901844450f769547bc4497a0da1a6d1c7fa6fadc858705e6743b5f
+
+pkgname = code-maat
