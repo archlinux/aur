@@ -3,8 +3,8 @@
 
 
 pkgname=intellij-idea-ultimate-edition
-pkgver=2026.1.4
-pkgrel=2
+pkgver=2026.2
+pkgrel=1
 jbr_ver=25.0.3
 jbr_build=aarch64-b508
 jbr_minor=16
@@ -21,8 +21,8 @@ source_aarch64=("https://download.jetbrains.com/idea/ideaIU-$pkgver-aarch64.tar.
                 "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
                  "fsnotifier-${pkgver}::https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
 sha256sums=('83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
-sha256sums_x86_64=('3104d85d9507ff882065e3f8eb9506402b4a8129092d2682662bb6e9c4f063fc')
-sha256sums_aarch64=('303645b8bad4c5c0887346618b842180a3de53b3e0b3da09fc5c501f59f78013'
+sha256sums_x86_64=('a8055cadef1a6eed4558f8bc9bd591c3a4939f4c8c34560fdf58ab4d2a5c783d')
+sha256sums_aarch64=('41ca911b590f9c1982802bae1a6b5c90cc479e65885f54172824a85f227bc76e'
                     '8704ffff0723bbe00992a02e455cda6a76697b40f9a5b833fc853e3c3b05dd14'
                     'aa812c5acac06435217b9018aa3e187a3546ea8d3cf136481a2d50aee4b9b23a')
 
@@ -58,7 +58,7 @@ package_intellij-idea-ultimate-edition() {
   mv "$srcdir"/jbr "$pkgdir"/opt/$pkgbase
 
   # https://youtrack.jetbrains.com/issue/IDEA-185828
-  chmod +x "$pkgdir"/opt/$pkgbase/plugins/maven/lib/maven3/bin/mvn
+  chmod +x "$pkgdir"/opt/$pkgbase/plugins/maven-plugin/lib/maven3/bin/mvn
 
   ln -s /opt/$pkgname/bin/idea "$pkgdir"/usr/bin/$pkgname
   ln -s /opt/$pkgname/bin/idea.sh "$pkgdir"/usr/bin/idea
