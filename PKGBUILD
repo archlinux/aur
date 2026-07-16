@@ -1,6 +1,6 @@
 # Maintainer: tobocop <tobias.perelstein@gmail.com>
 pkgname=lilbee-cuda
-pkgver=0.6.90b420.dev720
+pkgver=0.6.90b420.dev721
 pkgrel=1
 pkgdesc="The whole local AI stack in one executable: run and manage local AI models, and search your files, code, and crawled web pages, with cited answers (CUDA build)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('lilbee')
 provides=('lilbee')
 options=('!strip' '!debug')
 source_x86_64=("lilbee-${pkgver}-cu125::${url}/releases/download/v${pkgver}/lilbee-linux-${CARCH}-cu125")
-sha256sums_x86_64=('437b427dfe2b6d2cd6ee706c36608bb7681570315bbcae20c2863cfabbcaa7ce')
+sha256sums_x86_64=('23348e0368d2df039d6cf925a615d92c3d93e7a5b426300dcf8494383b8b57cb')
 source=("lilbee.service::${url}/raw/v${pkgver}/packaging/systemd/lilbee.service")
 sha256sums=('8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d')
 
