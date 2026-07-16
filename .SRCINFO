@@ -1,5 +1,5 @@
 pkgbase = open-vm-tools-clipway
-	pkgdesc = The Open Virtual Machine Tools (open-vm-tools) are the open source implementation of VMware Tools with clipway patch
+	pkgdesc = open-vm-tools for VMware with clipway patch (Wayland sessions clipboard fix)
 	pkgver = 13.1.0
 	pkgrel = 2
 	epoch = 6
