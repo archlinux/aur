@@ -45,6 +45,10 @@ package() {
   cd ${pkgname}-${pkgver}
 
   make DESTDIR="$pkgdir"/ install
+  install -Dm644 docs/man/man1/wget2.1 -t "$pkgdir"/usr/share/man/man1/
+  install -Dm644 docs/man/man3/*.3 -t "$pkgdir"/usr/share/man/man3/
+  install -Dm644 docs/wget2.info -t "$pkgdir"/usr/share/info/
+  install -Dm644 docs/wget2.md -t "$pkgdir"/usr/share/doc/$pkgname/
 
   # AFAICT wget2_noinstall is meant run `make check` before installing
   # wget2 itself. Normally, wget2 links to libwget, which is located
