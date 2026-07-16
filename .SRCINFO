@@ -1,0 +1,19 @@
+pkgbase = pomogo-bin
+	pkgdesc = A beautiful terminal deep-work companion for developers.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Ibnu-Afdel/pomogo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = libnotify: desktop notification fallback via notify-send
+	optdepends = libcanberra: transition sounds via canberra-gtk-play
+	provides = pomogo
+	conflicts = pomogo
+	options = !debug
+	source_x86_64 = pomogo-bin-2.0.0-x86_64.tar.gz::https://github.com/Ibnu-Afdel/pomogo/releases/download/v2.0.0/pomogo-2.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2de8cf2895fbd4457040c6157375954f45c66c661166d185f53d7b2ed3c982ee
+	source_aarch64 = pomogo-bin-2.0.0-aarch64.tar.gz::https://github.com/Ibnu-Afdel/pomogo/releases/download/v2.0.0/pomogo-2.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0b559fbbd0b59a5375ade97ae67856bc2dfc71e1fe30415387bc62503f1e7c77
+
+pkgname = pomogo-bin
