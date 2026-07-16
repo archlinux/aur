@@ -1,6 +1,6 @@
 pkgbase = r-tracktables
 	pkgdesc = Build IGV tracks and HTML reports
-	pkgver = 1.42.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tracktables
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-tracktables
 	depends = r-xvector
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tracktables_1.42.0.tar.gz
-	sha256sums = ca6051704b0402938d90fb13c8857c01a0726c0d3abaf9166a12db6f2e914483
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tracktables_1.46.0.tar.gz
+	sha256sums = e219143dfd59f31fe091e318ae2f5ad5282e3947be8ebfa2e3660c53746d2f9e
 
 pkgname = r-tracktables
