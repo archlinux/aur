@@ -21,8 +21,23 @@ makedepends=("curl" "unzip")
 install=".install"
 options=(!strip !debug)
 
-# Donation transaction ID: env var takes precedence, else read from FFS_tx
-_FFS_TX="${_FFS_TX:-$(cat FFS_tx)}"
+
+_donation_tx_file=$XDG_CONFIG_HOME/FreeFileSync/DonationLicenceTx
+tx_token_error() {
+  cat <<EOF
+
+ERROR: Donation transaction token not found, either via (in order):
+- \$_FFS_TX
+- $_donation_tx_file
+
+NOTE: expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
+EOF
+  exit 1
+}
+
+# Donation transaction ID: env var takes precedence, else read from config directory
+# Expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
+_FFS_TX="${_FFS_TX:-$(cat "${_donation_tx_file}")}" || tx_token_error
 
 _update_and_cache_flag='update_and_cache'
 
