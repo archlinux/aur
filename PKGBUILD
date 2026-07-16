@@ -22,7 +22,7 @@ _filename="Logseq-linux-x86_64-${pkgver}.AppImage"
 _squashfs_desktop_file="logseq.desktop"
 _squashfs_icon_file="logseq.png"
 _desktop_file="/usr/share/applications/logseq.desktop"
-_appimage_name=$(echo "${_filename}" | sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
+_appimage_name=$(echo "${_filename}" | sed -E 's/-[0-9]+\.[0-9]+\.[0-9]+//')
 _install_path="/opt/appimages/${_appimage_name}"
 
 package() {
