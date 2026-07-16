@@ -1,6 +1,6 @@
 pkgbase = r-classifyr
 	pkgdesc = A framework for cross-validated classification problems, with applications to differential variability and differential distribution testing
-	pkgver = 3.12.5
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ClassifyR
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = r-classifyr
 	optdepends = r-robustbase
 	optdepends = r-scales
 	optdepends = r-xgboost
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClassifyR_3.12.5.tar.gz
-	sha256sums = cff38c4683f2ba29a1f9bdcf6617c52c3db3cf5edfb23da1dfb66267b985ca39
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClassifyR_3.16.0.tar.gz
+	sha256sums = 5f8f9d226b1b4e04cfd90c3f42e35ade8f602fd2e76b7cccbcd9964415cca173
 
 pkgname = r-classifyr
