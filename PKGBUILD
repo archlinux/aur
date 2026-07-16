@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GA4GHclient
-_pkgver=1.32.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='A Bioconductor package for accessing GA4GH API data servers'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2353c905f91e7c69f839bfe76e9a94c162c9838958fcb90e5477cfb9d5e0c618')
+sha256sums=('9eba947d70191c9d51ee98d03d073002debe34e952cf5fa62ab2f7049bf0eb93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
