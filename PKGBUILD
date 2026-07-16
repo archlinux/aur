@@ -1,9 +1,9 @@
 # Maintainer: Sam M <contact@s-mc.io>
 pkgname=nuvio-desktop
 _pkgname=nuvio
-pkgver=0.1.12_alpha # Set this to the target release tag (using _ instead of -)
+pkgver=0.1.13_alpha
 pkgrel=1
-pkgdesc="A modern media hub desktop application"
+pkgdesc="A modern media hub desktop application (built from git source)"
 arch=('x86_64')
 url="https://github.com/NuvioMedia/NuvioDesktop"
 license=("GPL-3.0-or-later")
