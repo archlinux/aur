@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytoviewer
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d1b25ac4a15756ce2ae1d41d4eb75a9c')
-b2sums=('f321dcbd4c6c2520d279acfa515a46feb411fe8f49e30d7b984ebb491e3a8560b92bb6f1bed9b110c494ae4f546103d00e4c6b8ecf5e937222341e0af8f25dbd')
+md5sums=('d6f011976b7ca0e3ba938f8cad838f57')
+b2sums=('c9b81784307b8b489a1c026edb7988569836bc07cbc72d451bd149246004f9f4285858eaa6384f5ab26f89d6e938898616ce5bf5012dc9f3e1f5b90efd768c61')
 
 build() {
   mkdir build
