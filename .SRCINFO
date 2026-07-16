@@ -1,6 +1,6 @@
 pkgbase = facecast
 	pkgdesc = Mirror your desktop to a phone in a Google Cardboard headset (SBS VR, lens correction, audio, wired mode)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ieatfood314/facecast
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = facecast
 	depends = xdg-utils
 	optdepends = android-tools: enable tethering and open the viewer on the phone automatically
 	optdepends = qrencode: show the viewer URL as a QR code
-	source = facecast-0.1.0.tar.gz::https://github.com/ieatfood314/facecast/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8f869ecac44e5f23ba622ef609ca1cde4e1bbdcb04621248f400269da56e8528
+	source = facecast-0.1.1.tar.gz::https://github.com/ieatfood314/facecast/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 6a9bf9611a91a3e85195bed8f37ae2ff991fdf8ae7e34eecac79dc3168633715
 
 pkgname = facecast

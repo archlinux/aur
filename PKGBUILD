@@ -1,6 +1,6 @@
 # Maintainer: Aidan Heeney <aidan.heeney@proton.me>
 pkgname=facecast
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Mirror your desktop to a phone in a Google Cardboard headset (SBS VR, lens correction, audio, wired mode)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'bash' 'curl' 'iproute2' 'networkmanager' 'xdg-utils')
 optdepends=('android-tools: enable tethering and open the viewer on the phone automatically'
             'qrencode: show the viewer URL as a QR code')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8f869ecac44e5f23ba622ef609ca1cde4e1bbdcb04621248f400269da56e8528')
+sha256sums=('6a9bf9611a91a3e85195bed8f37ae2ff991fdf8ae7e34eecac79dc3168633715')
 
 package() {
   cd "$pkgname-$pkgver"
