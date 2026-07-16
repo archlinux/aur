@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=154.0a1+20260629.1+h2cfe577bd498
+pkgver=154.0a1+20260716.1+hfd15e652209e
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -86,7 +86,13 @@ source=(
   $pkgname-symbolic.svg
   $pkgname.desktop
   org.mozilla.$pkgname.metainfo.xml
+
+  # Make different channels installable in parallel
   0001-Install-under-remoting-name.patch
+
+  # Fix fallout from https://bugzilla.mozilla.org/show_bug.cgi?id=2054311
+  0002-Bug-2055018-Add-some-missing-X11UndefineNone-include.patch
+  0003-Bug-2055288-Add-missing-include-cstdint-to-DataChann.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -97,12 +103,16 @@ sha256sums=('SKIP'
             'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
-            '3cef02fd2fa711204ce25e73c8dc896a2a2bd0d48cd4a05df4d6349199645bb2')
+            '844423079aa1ffc5f6ee66df2f43d27879d2a761073939747945da5409bec191'
+            'add89c5abc3463548b4a401f5cde7b94df67dfe19fea09864db238dbb2681648'
+            'f1151ff907231aacf604a71c21dc17259146eb6c51d7ea01a7d728e19e62f07d')
 b2sums=('SKIP'
         'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
-        '9d652eb28c3762c91131e25e31912d8ad47a5143cebd0d8dd3a6042b219de44007703b318d13600c9fae9d3227c7f15bdd8c917837a1a07e8cbea6c75c9fcc41')
+        '70e8bfd40bf23afa3f6de2d975aa69043cb88ae14b625702b754cd3de56215be159cf69ba4ed522ca7122b8bbdb50cfe763694e7c7595f2fdcec40bab5e2739f'
+        '457f9d30311823107177558872a83ce2742de4d09b67f138e7914bfa73ca51c262cf1a8650b29d7d7e0d60ea8ce34375cc93ef0541ebdee3421985df3035d783'
+        '6421e6a2e5a02cd079ed00358373051e7a2380e9b97f45b181f6bb7267701325f232e18ef725f388f4ed0e4f56c94a08b074f10587b2f7c146192cf781fc81c6')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -134,8 +144,15 @@ prepare() {
   mkdir mozbuild
   cd mozilla-central
 
-  # Make different channels installable in parallel
-  patch -Np1 -i ../0001-Install-under-remoting-name.patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   echo -n "$_google_api_key" >google-api-key
 
