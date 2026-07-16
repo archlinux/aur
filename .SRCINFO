@@ -1,7 +1,7 @@
 pkgbase = doomtools-bin
 	pkgdesc = Set of command-line utilities for building projects or for other things related to Doom Engine games.
 	pkgver = 2026.07.12.133154070
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mtrop.github.io/DoomTools/
 	arch = any
 	license = MIT
@@ -26,6 +26,6 @@ pkgbase = doomtools-bin
 	source = doomtools.desktop
 	sha256sums = 3f669e1b88fb022d1cb356279354a69a8a2e5caf7395468c3e8039f16afc7e3d
 	sha256sums = dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673
-	sha256sums = e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57
+	sha256sums = bd71a7337b5e026ac3a816b6815deb2e4343fa093f738a4096b42cdff29dd767
 
 pkgname = doomtools-bin
