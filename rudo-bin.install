@@ -1,0 +1,8 @@
+post_install() {
+    printf '%s\n' \
+        ':: Rudo includes a systemd user service for autostart on niri.' \
+        '   Enable it as your desktop user with:' \
+        '     systemctl --user enable --now rudo.service' \
+        '' \
+        '   Remove any existing `spawn-at-startup "rudo"` entry first.'
+}
