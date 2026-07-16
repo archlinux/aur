@@ -1,6 +1,6 @@
 pkgbase = r-diffbind
 	pkgdesc = Differential Binding Analysis of ChIP-Seq Peak Data
-	pkgver = 3.18.0
+	pkgver = 3.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DiffBind
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = r-diffbind
 	optdepends = r-testthat
 	optdepends = r-xlconnect
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DiffBind_3.18.0.tar.gz
-	sha256sums = f12d04957dc64578025e4ffe1d1ec283c6facc78d5163baf2b71b48f16d58db5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DiffBind_3.22.1.tar.gz
+	sha256sums = 9e52beba28aa2590d918b080288150fb5dfed0c906f4df154136136609b2f737
 
 pkgname = r-diffbind
