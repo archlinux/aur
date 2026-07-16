@@ -1,4 +1,4 @@
-# Maintainer: Cristo Cola <cristomcflirt@gmail.com>
+# Maintainer: Cristo Cola <kristokola@hotmail.com>
 pkgname=fast-folder-bin
 pkgver=1.0.0
 pkgrel=1
