@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam at noreply dot gitcode dot com>
 
 pkgname=python-slack-bolt
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="The Bolt Framework for Python — build Slack apps with sync or async (asyncio) execution"
 arch=('any')
@@ -34,7 +34,7 @@ makedepends=(
 # Upstream PyPI sdist filename uses an underscore (`slack_bolt-<ver>.tar.gz`),
 # but we rename on download so the source matches the pkgname.
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/slack-bolt/slack_bolt-$pkgver.tar.gz")
-sha256sums=('b6271ba0a9b71e319c86b40632e6cb6240aacd0433773615b76b890b9a574762')
+sha256sums=('af38258d41f801ad9c74503090e0f39accd66c49f667f7e55c97fcdb0e51b886')
 
 build() {
   cd "$srcdir/slack_bolt-$pkgver"
