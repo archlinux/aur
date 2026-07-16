@@ -1,6 +1,6 @@
 pkgbase = python-perplexityai
 	pkgdesc = The official Python library for the Perplexity API
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/perplexityai/perplexity-py
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-perplexityai
 	depends = python-anyio
 	depends = python-distro
 	depends = python-sniffio
-	source = python-perplexityai-0.40.0.tar.gz::https://files.pythonhosted.org/packages/source/p/perplexityai/perplexityai-0.40.0.tar.gz
-	sha256sums = 7f385a9d953bc4c810b7b6d3c781f2798ddb494f1214bf893ff4578381ebb113
+	source = python-perplexityai-0.41.0.tar.gz::https://files.pythonhosted.org/packages/source/p/perplexityai/perplexityai-0.41.0.tar.gz
+	sha256sums = cba175b8ec9a8f006d19aec1a1e991c1b972f9bea4ae24373671c35721732f3c
 
 pkgname = python-perplexityai
