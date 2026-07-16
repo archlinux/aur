@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ssPATHS
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='ssPATHS: Single Sample PATHway Score'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aced944e3df0e8a486e1da6a7d93e093a561075247ad5b10d3d70a885e2f2721')
+sha256sums=('dca74b60b1da9f31dbb368c4760166e0e2ca2ec9ab72b37c8356d7dd1e0e1c05')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
