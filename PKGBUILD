@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=raer
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,8 +10,6 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  bzip2
-  curl
   r-biocgenerics
   r-biocparallel
   r-biostrings
@@ -25,8 +23,11 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-singlecellexperiment
   r-summarizedexperiment
+  bzip2
+  curl
   xz
   zlib
 )
@@ -58,8 +59,8 @@ optdepends=(
   r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('21a412efc0f2119b08dfa4218cb21652')
-b2sums=('1081aef7cf2cc5f0204c8c68c15bfd16572e6a94f1d0a52ab7b3011fa7ad436bf7114f9771d3ed9f5274f4142207d3b6cd62ad7fc17e0bf6ee02957cb29eafc9')
+md5sums=('023888385d5e863b23723fd056563851')
+b2sums=('58006eb879fa182ed32068e818b963067790aa4b28de6c4d1358d30d4c761754aa2ea099588deed1ee80bb5bc761daa4be7230b377764d73eaf12f7bb95588c3')
 
 build() {
   mkdir build
