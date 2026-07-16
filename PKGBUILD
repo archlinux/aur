@@ -1,9 +1,9 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse-git
 _pkgname=hypruse
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="Computer use for Hyprland, an MCP server giving AI agents native control of a Wayland desktop (git)"
+pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)"
 arch=('any')
 url="https://github.com/IlyasKhallouki/hypruse"
 license=('MIT')
