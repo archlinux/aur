@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scp
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0463655505c24bfb2b38775e64652534')
-b2sums=('961b5ab3b5aec75c12f17a948192dbc8a6a040d29430f9f5d1690f9e6c37b841de440876144d089eb9a54b8c77f045b98582d1e3307b6b030b13b63afc69d88d')
+md5sums=('43d20e51ba11af852b9e94cf15d5f7b5')
+b2sums=('e0d432b4ff48227639e80119916d4d236e5ab9e40d8f97e2b02da1ece232b7082b2e4b68926081f96880d79038e080d0326924f5f31ad8366dac1b2395300807')
 
 build() {
   mkdir build
