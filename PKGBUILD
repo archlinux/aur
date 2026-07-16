@@ -2,7 +2,7 @@
 
 pkgname=gallery-tui-bin
 _pkgname=gallery-tui
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A terminal image gallery powered by ratatui and chafa."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('8c4620ea64ae41fda55471a4e038283b71d0023dbbed4bddf3d909b00efb5592')
+sha256sums=('205800525c2d452e795779354f9cd84c6eba83121acd6628831d8f942dda7b6d')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
