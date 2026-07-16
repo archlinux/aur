@@ -3,7 +3,7 @@
 
 pkgname=manora-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files (bin version)"
 url="https://github.com/Antiz96/manora"
@@ -27,9 +27,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver
 sha256sums=('513e952b835fbfa53afb6d38e3fd13632cd497d930510586dd903eb39927d6f8'
             '4d69bf24b06648b4f22232ecaa64f43a688dc3c3baa9036b076edb50eb7ba881'
             '5da5f43e58cf2eedc3d320620b82d744d0056160e0090bf0919148d8b77c3744'
-            '207a473773025b59e08c21bb1537d05b75d38b191f9baa6c9239ef7e82bd6aa6'
+            'f6216b0de75edc339386ed2ca7097960f2990997942507a6b6e50fe082c6f66d'
             'e2d15fb1f4f80ee5f28a27d653701fb8398638466d9057b9a8f7925258fcd599')
-sha256sums_x86_64=('e5d7ebd84626daf8b78c4322caed112d81f48ea9a44e27702ae579d52b5f314b')
+sha256sums_x86_64=('ae497a141f1980adaf89af3754434ebf14d1e68ddbe006ebccbc5486916fe951')
 
 build() {
        scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
