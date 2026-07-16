@@ -1,13 +1,13 @@
 # Maintainer: Pierpaolo Spadafora <pierpaolospadafora@proton.me>
 pkgname=vesta-bin
 _pkgname=vesta
-_srcname=VESTA 
+_srcname=vesta 
 _appid=com.vesta.desktop
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Video Extraction, Sync & Translation for Anki"
 arch=('x86_64')
-url="https://github.com/pierspad/VESTA"
+url="https://github.com/pierspad/vesta"
 license=('GPL-3.0-only')
 
 depends=(
@@ -25,17 +25,18 @@ depends=(
     'gst-plugins-bad'
     'gst-plugins-ugly'
     'gst-libav'
+    'vulkan-icd-loader'
 )
 
-provides=("${_pkgname}" "VESTA" "Vesta" "vesta")
-conflicts=("${_pkgname}" "VESTA" "Vesta" "vesta")
+provides=("${_pkgname}" "vesta" "Vesta" "vesta")
+conflicts=("${_pkgname}" "vesta" "Vesta" "vesta")
 options=('!debug')
 
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_srcname}_${pkgver}_amd64.deb"
-        "LICENSE::https://raw.githubusercontent.com/pierspad/VESTA/main/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/pierspad/vesta/main/LICENSE")
 
-sha256sums=('530553813db72f42918d969e11b7ffbdc3d71fcf49b1f8c361cd5decb47531c1'
-            '144ee8f9fbaee3025c001b0b0e854eb6a80c1025a6548ead97ab5fb90df7aca6')
+sha256sums=('2bb4cec1900daa8c441040cf1369b356a0f30ea9799710e966cfb696824a89bd'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
     bsdtar -O -xf "${srcdir}/${_pkgname}-${pkgver}.deb" data.tar* | bsdtar -C "${pkgdir}" -xvf -
@@ -51,7 +52,7 @@ package() {
 [Desktop Entry]
 Version=${pkgver}
 Type=Application
-Name=VESTA
+Name=vesta
 Comment=${pkgdesc}
 Exec=${_pkgname}
 Icon=${_pkgname}
