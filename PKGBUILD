@@ -2,7 +2,7 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
     'python-cryptography'
 
     # DBus
-    'python-jeepney'
+    'python-jeepney' # Also handling file dialog
 
     # Serialization
     'python-msgpack'
@@ -44,11 +44,11 @@ depends=(
     'python-bsdiff4'
 )
 optdepends=(
-    # 'zenity: native dialog'
-    # 'kdialog: native dialog'
+    'zenity: fallback native dialog (prefer to use XDG portal instead)'
+    'kdialog: fallback native dialog (prefer to use XDG portal instead)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd8ae45485c42f6246a7c6545230e448c64ed9eb249d78d5db764f597b749390')
+sha256sums=('21d1960c19ae09885e4792e0d845006b83428e865614124135616d237da6cf31')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
