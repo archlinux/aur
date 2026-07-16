@@ -1,5 +1,5 @@
 pkgbase = dim-caelestia-cli-git
-	pkgdesc = The CLI tool for the Caelestia project (Git development version)
+	pkgdesc = cli
 	pkgver = r623.20351c6
 	pkgrel = 1
 	url = https://github.com/dim-ghub/caelestia-cli
