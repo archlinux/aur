@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GDSArray
-_pkgver=1.28.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Representing GDS files as array-like objects'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f27d3f32a89c5388fb2585dab28d2200dd503adcaca529ff9b436e94e40c5336')
+sha256sums=('3fd6e9e45475198b248b363cde7e3715814b49406e44d06f28192febc1e629fe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
