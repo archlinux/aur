@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aster Mail Client
+Comment=Encrypted email client for Aster Mail
+Exec=/usr/bin/aster-mail
+Icon=/opt/aster-mail/aster-mail.png
+Terminal=false
+Type=Application
+Categories=Network
