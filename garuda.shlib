@@ -3,5 +3,10 @@
 # Adds a notice that will be shown at the end of garuda-update
 garudalib_add_update_notice() {
 	mkdir -p /var/lib/garuda/tmp
-	echo "$(date +%F)	${1//	/    }" >>/var/lib/garuda/tmp/update_notices
+	local notice_file="/var/lib/garuda/tmp/update_notices"
+	local notice_text="${1//	/    }"
+
+	if [[ ! -f "$notice_file" ]] || gawk -v msg="$notice_text" -F'\t' '$2 == msg { exit 1 }' "$notice_file"; then
+		echo "$(date +%F)	$notice_text" >> "$notice_file"
+	fi
 }
