@@ -1,0 +1,18 @@
+pkgbase = pinclip
+	pkgdesc = Pin clipboard text or images as always-on-top desktop notes
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.neosora.cc/awaae001/pinclip
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = kglobalaccel
+	depends = kglobalacceld
+	depends = kwindowsystem
+	depends = qt6-base
+	optdepends = wl-clipboard: clipboard fallback under Wayland
+	optdepends = xclip: clipboard fallback under X11
+	source = pinclip-0.1.1.tar.gz::https://git.neosora.cc/awaae001/pinclip/archive/0.1.1.tar.gz
+	sha256sums = 9763166b47651e429611b2d46ac45f58da57ec102c5a3a98cd365a09780328c4
+
+pkgname = pinclip
