@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=motifmatchr
-_pkgver=1.28.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Fast Motif Matching in R'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('824907004221ab9895233bfc1d70ceeeee98cefa065f4aef14029f46dd695028')
+sha256sums=('e944ecacdc7515ee1b927a1597337ad254e88b20b145618d6d385cffa022ed76')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
