@@ -8,7 +8,7 @@ fi
 
 _pkgname=PhoenixBrowser
 _binname=phoenixbrowser
-pkgver=0.78
+pkgver=0.79
 pkgrel=1
 pkgdesc="A light and snappy web browser"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=('libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
 depends_x86_64=('electron-castlab-bin')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
-sha256sums=('ef3d4e382337d0beb2b8a0b7fd9ba87c88783edd514b861024f99e07c23d0219')
+sha256sums=('13620db493b13703ccf5df2e5a1520432bbfc9e24aca4796cab33e4aa1b7922f')
 
 _package_common() {
     install -dm755 "$pkgdir/opt/$_pkgname"
@@ -28,6 +28,13 @@ _package_common() {
     cd "$srcdir/phoenix-$pkgver"
     chmod +x "$_binname"
     ln -sf "/opt/libelectron/node_modules" "$srcdir/phoenix-$pkgver"
+    #dep cleanup to use LibElectron deps instead
+    rm -rf \
+  "$srcdir/phoenix-$pkgver/libadblock" \
+  "$srcdir/phoenix-$pkgver/libuseragent" \
+    #link libelectron deps
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/phoenix-$pkgver/libadblock"
+    ln -sf "/opt/libelectron/libuseragent" "$srcdir/phoenix-$pkgver/libuseragent"
 
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/sysicons/icon.svg" "$pkgdir/usr/share/pixmaps/$_binname.svg"
