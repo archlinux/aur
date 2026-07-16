@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASICS
-_pkgver=2.24.0
+_pkgver=2.28.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Automatic Statistical Identification in Complex Spectra'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0cfb11a844d7f063236d9f76543ce6e5a2110c05c1e00a5f714a8f4175397b9c')
+sha256sums=('7e124559db5fccc9a443f34cce34c8c01ad16d03499301a779c27432ec720044')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
