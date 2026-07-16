@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=simpleSeg
-_pkgver=1.10.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e9e332e87cadeee8eb6ede7a28311754')
-b2sums=('94aaec8faf1484013bffb87b92b7ad8dd8a8f3b4373a0069fda723154e29ebe957a2deb64b30380b6a9d30b6d6950029bd93965b9332efca02a71902aaffa224')
+md5sums=('b09374166775ed69ab7888019ce0f74b')
+b2sums=('76581b0596ad217ce67b06bf4bb1f780684b3dfdbfd46aadc8dc5cdacf136b82c2ca29348ad16d1f8b04801130ea36d5e6dea47d796b2881413fb2c1d6c5e87a')
 
 build() {
   mkdir build
