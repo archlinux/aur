@@ -1,6 +1,6 @@
 pkgbase = noodle-bin
 	pkgdesc = A delicious REST client for your terminal
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/wilfredinni/noodle
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = noodle-bin
 	provides = noodle
 	conflicts = noodle
 	options = !strip
-	source = README-0.4.2.md::https://raw.githubusercontent.com/wilfredinni/noodle/0.4.2/README.md
-	source = LICENSE-0.4.2::https://raw.githubusercontent.com/wilfredinni/noodle/0.4.2/LICENSE
+	source = README-0.4.3.md::https://raw.githubusercontent.com/wilfredinni/noodle/0.4.3/README.md
+	source = LICENSE-0.4.3::https://raw.githubusercontent.com/wilfredinni/noodle/0.4.3/LICENSE
 	sha256sums = 110b68215a6c49fcb32b73d25502e2c07bbb994486b8d979c9e59df525d58bd6
 	sha256sums = fcf353912854f70ba3768b3755a934d16b8cbc98ed183cc1e8124639b179ef01
-	source_x86_64 = noodle-x86_64-0.4.2::https://github.com/wilfredinni/noodle/releases/download/0.4.2/noodle-linux-x86_64
-	sha256sums_x86_64 = aba63000c7430b554883f4132665a85ef7b84877484a30bfb319ff5e2c759122
-	source_aarch64 = noodle-aarch64-0.4.2::https://github.com/wilfredinni/noodle/releases/download/0.4.2/noodle-linux-arm64
-	sha256sums_aarch64 = 92d48de1392dae70d1f4086e682bd34057cc401f363dc6251adc9856a92bf5ce
+	source_x86_64 = noodle-x86_64-0.4.3::https://github.com/wilfredinni/noodle/releases/download/0.4.3/noodle-linux-x86_64
+	sha256sums_x86_64 = b03f2c21608a0edc4f97227a9e319532c7441e84deaf1b62741340805c82be84
+	source_aarch64 = noodle-aarch64-0.4.3::https://github.com/wilfredinni/noodle/releases/download/0.4.3/noodle-linux-arm64
+	sha256sums_aarch64 = 78531b044bc9951d853f49f9e212057210bef339d01c411c2ffeda36792595f0
 
 pkgname = noodle-bin
