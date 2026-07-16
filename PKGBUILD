@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cyanoFilter
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Phytoplankton Population Identification using Cell Pigmentation and/or Complexity'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('505d87a4ab89060875f1f746e00e616de662ad7ead81bb0398f037ffce7b34d4')
+sha256sums=('8e99a41a993912f2c0edc7cfad79f8688bb38563948370ed6983955f7e09a866')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
