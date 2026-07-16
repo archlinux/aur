@@ -1,13 +1,13 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname='radae-decoder-git'
-pkgver=r195.b61e613
-pkgrel=1
+pkgver=r213.7301646
+pkgrel=3
 pkgdesc='FreeDV RADEv1 decoder/encoder with GUI (RADAE_Gui) and CLI tools including webrx_rade_decode'
 arch=('x86_64' 'aarch64')
 url='https://github.com/peterbmarks/radae_decoder'
 license=('BSD-2-Clause')
-depends=('gtk3' 'hamlib' 'libpulse')
+depends=('cairo' 'gcc-libs' 'glib2' 'gtk3' 'hamlib' 'libpulse')
 makedepends=('git' 'cmake')
 provides=('radae-decoder')
 conflicts=('radae-decoder')
