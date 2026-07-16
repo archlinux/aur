@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+:: Xeneon Edge Linux Hub installed.
+   Dashboard:  xeneon-edge-hub      Manager:  xeneon-edge-manager
+
+:: Auto-rotate (optional): the Edge's orientation sensor needs the installed
+   udev rule + your user in the 'users' group:
+     groups | grep -qw users || sudo gpasswd -a "$USER" users
+     sudo udevadm control --reload && sudo udevadm trigger --subsystem-match=hidraw
+   Everything else works without it (manual orientation modes still apply).
+EOF
+}
+
+post_upgrade() {
+  :
+}

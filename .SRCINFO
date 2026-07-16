@@ -1,0 +1,24 @@
+pkgbase = xeneon-edge-hub
+	pkgdesc = Native Linux widget dashboard for the Corsair Xeneon Edge and other secondary touchscreens (includes the companion Manager)
+	pkgver = 1.0.0alpha.2
+	pkgrel = 1
+	url = https://github.com/skyphoenix-it/XeneonEdge_Linux
+	install = xeneon-edge-hub.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = rust
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-virtualkeyboard
+	depends = qt6-wayland
+	depends = hicolor-icon-theme
+	source = xeneon-edge-hub-1.0.0-alpha.2.tar.gz::https://github.com/skyphoenix-it/XeneonEdge_Linux/releases/download/v1.0.0-alpha.2/xeneon-edge-hub-1.0.0-alpha.2.tar.gz
+	source = xeneon-edge-hub-1.0.0-alpha.2.tar.gz.sig::https://github.com/skyphoenix-it/XeneonEdge_Linux/releases/download/v1.0.0-alpha.2/xeneon-edge-hub-1.0.0-alpha.2.tar.gz.sig
+	validpgpkeys = 2F0CAD36DC1D46F3347B7EF293CDC77EACF98990
+	sha256sums = 77a4de6fa9833bc3527bf1757a92cd223b70f335392d35ad017fb9da08542777
+	sha256sums = SKIP
+
+pkgname = xeneon-edge-hub
