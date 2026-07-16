@@ -1,24 +1,29 @@
-# Maintainer: Jose Riha <jose1711 [at] gmail (dot) com>
-# Contributor: josephgbr
+# Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=racer
 pkgver=1.1.64
-pkgrel=3
-pkgdesc="2D car racing game"
+pkgrel=4
+pkgdesc='2D car racing game'
 arch=('i686' 'x86_64')
 url="http://hippo.nipax.cz/download.cz.php?id=64"
-license=("GPL2")
-depends=('allegro4' 'libjpeg')
-source=("http://hippo.nipax.cz/src/${pkgname}-${pkgver}.tar.gz")
-md5sums=('063e87c43071e6dcb112807abc422bd7')
-install=racer.install
+license=('GPL-2.0-only')
+depends=('allegro4' 'libjpeg-turbo')
+source=("http://hippo.nipax.cz/src/${pkgname}-${pkgver}.tar.gz"
+	"${pkgname}.install")
+sha256sums=('cefe897592038e7abbea6b7990945cc435eaf83723f446e773a20ac56ad60969'
+	    'b4c42bc1c80201529ab639daefabb4853ee583bd7072293a88f39b8ed26ee0a2')
+install="${pkgname}.install"
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "$srcdir/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}"/usr install
+
+  # finally, copy the license and readme files from srcdir to /usr/share/racer:
+  cp ./COPYING $pkgdir/usr/share/${pkgname}
+  cp ./README $pkgdir/usr/share/${pkgname}
 }

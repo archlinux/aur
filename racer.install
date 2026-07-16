@@ -1,17 +1,9 @@
 post_install() {
-  /bin/true
+   echo "--- Group games membership is no more a requirement for configuration saving. ---"
+   echo "--- Configuration is now saved into ~/.racer ---"
+   echo "--- For controls, see file README in /usr/share/racer ---"
 }
 
 post_upgrade() {
-   echo "-- Group games membership is no more a requirement for configuration saving. Configuration is now saved into ~/.racer --"
-/bin/true
+   post_install
 }
-
-pre_remove() {
-/bin/true
-}
-
-op=$1
-shift
-
-$op "$@"
