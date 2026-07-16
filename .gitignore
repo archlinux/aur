@@ -1,1 +1,6 @@
-*.log
+/*
+
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
