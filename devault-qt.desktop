@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DeVault Core
+Comment=Connect to the DeVault peer-to-peer network
+Exec=devault-qt %u
+Icon=devault-128
+Terminal=false
+Categories=Network;Finance;P2P;
+MimeType=x-scheme-handler/devault;
+StartupWMClass=DeVault-qt

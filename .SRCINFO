@@ -1,6 +1,6 @@
 pkgbase = devaultcore-git
-	pkgdesc = QT Desktop wallet for the dvt blockchain
-	pkgver = r17054.5756dc49e
+	pkgdesc = QT Desktop wallet for the DVT blockchain
+	pkgver = r21833.bd1cbe44e
 	pkgrel = 1
 	url = https://github.com/devaultcrypto/
 	arch = x86_64
@@ -19,7 +19,8 @@ pkgbase = devaultcore-git
 	conflicts = devault
 	conflicts = devaultcore
 	source = git+https://github.com/devaultcrypto/devault.git
-	md5sums = SKIP
+	source = devault-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 2cc2b644725c95da87fcdc89dcac32d54934fadb681dfce616d059e97ab26255
 
 pkgname = devaultcore-git
-
