@@ -16,11 +16,14 @@ license=(GPL-3.0-only
 #pkgdesc='Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)'
 #depends=('mingw-w64-qt6-base-static' 'mingw-w64-jasper' 'mingw-w64-libmng' 'mingw-w64-libwebp')
 # FIXME: It doesn't actually build with MNG support at this point.
-pkgdesc='Plugins for additional image formats: TIFF, TGA, WBMP (mingw-w64)'
+pkgdesc='Plugins for additional image formats: TGA, WBMP (mingw-w64)'
 depends=('mingw-w64-qt6-base-static')
 makedepends=('mingw-w64-cmake-static' 'qt6-base' 'ninja' 'git')
 if ! [[ $pkgname =~ .*-clang-.* ]]; then
-  depends+=('mingw-w64-jasper' 'mingw-w64-libwebp')
+  # remarks:
+  # - Clang-based builds so far rely on the bundled libtiff and libwebp and don't support jasper/jp2.
+  # - libwebp pulls in libtiff but the dependency on libtiff is stated explicitly like in the regular qt6-imageformat package.
+  depends+=('mingw-w64-libtiff' 'mingw-w64-jasper' 'mingw-w64-libwebp')
 fi
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
