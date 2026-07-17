@@ -1,7 +1,7 @@
 pkgbase = dwl-git-azerty
 	pkgdesc = Simple, hackable dynamic tiling Wayland compositor (Custom build)
 	pkgver = 0.8.dev.r87.a2d03cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dwl/dwl
 	arch = x86_64
 	license = GPL

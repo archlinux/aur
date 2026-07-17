@@ -1,7 +1,7 @@
 # Maintainer: azerty-xmpp <your.email@example.com>
 pkgname=dwl-git-azerty
 pkgver=0.8.dev.r87.a2d03cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom build)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
