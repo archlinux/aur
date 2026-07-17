@@ -11,11 +11,13 @@ post_install() {
   mkdir -p /var/lib/metapi
   chown metapi:metapi /var/lib/metapi
 
-  echo ":: Metapi service installed. To start:"
-  echo "   sudo systemctl daemon-reload"
-  echo "   sudo systemctl enable --now metapi"
-  echo ""
-  echo ":: Edit /etc/metapi/env to set AUTH_TOKEN and PROXY_TOKEN first."
+  echo ":: Metapi service installed (production). Before start:"
+  echo "   1) Edit /etc/metapi/env"
+  echo "      - AUTH_TOKEN (>=8 chars, not the default)"
+  echo "      - ACCOUNT_CREDENTIAL_SECRET (>=8 chars, different from AUTH_TOKEN)"
+  echo "   2) sudo systemctl daemon-reload"
+  echo "   3) sudo systemctl enable --now metapi"
+  echo "   4) Create downstream API keys in the UI (not PROXY_TOKEN)"
 }
 
 pre_remove() {
