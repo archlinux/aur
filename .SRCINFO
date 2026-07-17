@@ -1,0 +1,30 @@
+pkgbase = rlshim
+	pkgdesc = A lightweight, native Linux launcher for RuneLite.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/RdrSeraphim/rlshim
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = clang
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = curl
+	makedepends = git
+	makedepends = libx11
+	makedepends = libxcursor
+	makedepends = libxi
+	makedepends = libxinerama
+	makedepends = libxrandr
+	depends = libsecret
+	depends = openssl
+	depends = glfw
+	depends = glibc
+	depends = java-runtime>=11
+	provides = rlshim
+	conflicts = rlshim
+	source = rlshim-1.3.0.tar.gz::https://github.com/RdrSeraphim/rlshim/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 62a8f318cb893cc872d415ccc5c5e78a0bed0351a1ee2240c1b29cc91446a7b9
+
+pkgname = rlshim
