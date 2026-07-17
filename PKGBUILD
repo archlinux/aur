@@ -1,16 +1,17 @@
-# Maintainer: screwys
+# Maintainer: screwy <screwygit@proton.me>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=rufin-git
-pkgver=0.1.3.r0.gd2acaff
+pkgver=0.9.0.r35.gfda58af
 pkgrel=1
-pkgdesc='Native GTK4 Jellyfin/Subsonic Client in Rust'
+pkgdesc='Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/screwys/Rufin'
 license=('GPL-3.0-or-later')
+# Generated Linux package dependencies start.
 depends=(
   'gcc-libs'
-  'gdk-pixbuf2'
+  'glib2'
   'glibc'
   'gst-libav'
   'gst-plugins-bad'
@@ -29,10 +30,7 @@ makedepends=(
   'git'
   'pkgconf'
 )
-optdepends=(
-  'gnome-keyring: Secret Service provider for saving Jellyfin tokens'
-  'kwallet: Secret Service provider for saving Jellyfin tokens'
-)
+# Generated Linux package dependencies end.
 provides=('rufin')
 conflicts=('rufin')
 options=('!lto')
@@ -61,14 +59,7 @@ build() {
   cd Rufin || return
 
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p rufin-app
-}
-
-check() {
-  cd Rufin || return
-
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --workspace
+  cargo build --frozen --release -p rufin
 }
 
 package() {
@@ -81,9 +72,17 @@ package() {
     "$pkgdir/usr/share/metainfo/io.github.screwys.Rufin.metainfo.xml"
   install -Dm644 data/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/actions" \
+    data/icons/hicolor/scalable/actions/*.svg
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/status" \
+    data/icons/hicolor/scalable/status/*.svg
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/512x512/apps" \
+    data/icons/hicolor/512x512/apps/*.png
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/64x64/apps" \
+    data/icons/hicolor/64x64/apps/*.png
 
   local lang po_file
-  for po_file in po/*.po; do
+  for po_file in crates/localization/locales/*.po; do
     [[ -f $po_file ]] || continue
     lang=${po_file##*/}
     lang=${lang%.po}
