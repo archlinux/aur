@@ -2,7 +2,7 @@
 _base=autoray
 pkgname=python-${_base}
 pkgdesc="Abstract your array operations"
-pkgver=0.8.11
+pkgver=0.9.0
 pkgrel=1
 arch=(any)
 url="https://github.com/jcmgray/${_base}"
@@ -14,7 +14,7 @@ optdepends=('python-matplotlib: for visualizations'
   'python-networkx: for computational graph drawing'
   'python-pygraphviz: for graph layouts')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f40ed9a29c2ad107f1444aad7e770a168e12eb4d6704c714f06664895cf695d1416c001a577a30ce5211c98a62760a08386b77d95f8cf060e4b13be9d425aaf5')
+sha512sums=('fed06199ce57127828caf053bf1394726b9fdaa8d3f1fd8a84ccb028f88cf76e32fdfa62a6d99c9d6caf02e3e9ae69ca307cdaa5f5d5d0e60db88860822f7c1a')
 
 build() {
   cd ${_base}-${pkgver}
