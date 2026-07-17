@@ -10,7 +10,7 @@ depends=('aura')
 optdepends=('asp: for --abs support (build from ABS source)'
   'gnupg: for PGP verification when building from ABS')
 makedepends=('rust' 'cargo' 'git')
-conflicts=('portageq')
+conflicts=('portage')
 install=aura-emerge.install
 backup=('etc/emerge/world.set')
 #git tag -a v1.23.0 -m "..." && git push origin v1.23.0

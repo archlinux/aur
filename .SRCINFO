@@ -12,7 +12,7 @@ pkgbase = aura-emerge
 	depends = aura
 	optdepends = asp: for --abs support (build from ABS source)
 	optdepends = gnupg: for PGP verification when building from ABS
-	conflicts = portageq
+	conflicts = portage
 	backup = etc/emerge/world.set
 	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v1.25.0
 	sha256sums = SKIP
