@@ -9,3 +9,4 @@ PrefersNonDefaultGPU=true
 Type=Application
 Categories=Development;IDE;
 StartupWMClass=GodotHub
+StartupNotify=true
