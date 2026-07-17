@@ -1,5 +1,5 @@
 pkgbase = python-torchaudio-cuda12.9
-	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch
+	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch (Maxwell/Pascal/Volta support)
 	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/pytorch/audio
