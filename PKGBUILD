@@ -7,7 +7,7 @@
 _pkgname=picard
 pkgname="${_pkgname}3"
 pkgver=3.0.0b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
 url="https://github.com/metabrainz/picard"
@@ -18,6 +18,8 @@ depends=(
   glibc
   hicolor-icon-theme
   python
+  python-cffi
+  python-charset-normalizer
   python-dateutil
   python-discid
   python-fasteners
@@ -25,6 +27,7 @@ depends=(
   python-mutagen
   python-pyjwt
   python-pyqt6
+  python-tomlkit
   python-yaml
 )
 makedepends=(
