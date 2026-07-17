@@ -1,7 +1,7 @@
 # Maintainer: TwoWells <mwellsa@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=lattice-markdown-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Markdown predicate linter and backlink reconciler, shipped as an LSP server (prebuilt binary)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ _target="x86_64-unknown-linux-gnu"
 # fetched separately from the tagged tree.
 source=("lattice-$pkgver-$_target.tar.gz::https://github.com/TwoWells/Lattice/releases/download/v$pkgver/lattice-$_target.tar.gz"
     "LICENSE-$pkgver::https://raw.githubusercontent.com/TwoWells/Lattice/v$pkgver/LICENSE")
-sha256sums=('88cf24373f631db6f3e7a6e2e599efb58d05f3fc2f9c960f633893a9ce5fb664'
-    '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
+sha256sums=('34944be80ff0f97dd267a08c98434b6563eb286cc071aefaa2647083462789d2'
+            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
     install -Dm755 "lattice" "$pkgdir/usr/bin/lattice"
