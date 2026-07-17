@@ -1,0 +1,22 @@
+pkgbase = jaclang-git
+	pkgdesc = Jac programming language - self-contained native 'jac' binary built from git (Python-like syntax; compiles to Python bytecode, JavaScript, and native machine code; bundles its own CPython runtime)
+	pkgver = dev.r0.gb48c1a40a1
+	pkgrel = 1
+	url = https://github.com/jaseci-labs/jaseci
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig>=0.16.0
+	makedepends = cmake
+	depends = glibc
+	provides = jac
+	provides = jaclang
+	conflicts = jac
+	conflicts = jaclang
+	options = !strip
+	options = !debug
+	source = git+https://github.com/jaseci-labs/jaseci.git
+	sha256sums = SKIP
+
+pkgname = jaclang-git
