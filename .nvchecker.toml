@@ -1,0 +1,5 @@
+[cronstable-bin]
+source = "github"
+github = "ptweezy/cronstable"
+use_latest_release = true
+prefix = ""
