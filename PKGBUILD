@@ -2,7 +2,7 @@
 # Contributor: Arjun Nayak <arjun@zosma.ai>
 
 pkgname=zosma-cowork-bin
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Desktop AI coworker built on the pi coding agent — streaming, thinking, tool calls"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("zosma-cowork-${pkgver}.deb::${url}/releases/download/v${pkgver}/zosma-cowork_${pkgver}_amd64.deb")
-sha256sums=('b0f68a0090c2a6a73dbf0ea7920e36ef8c7862ed8ad686a54cc031a8168fb3dd')
+sha256sums=('955b12f6cbd86ba255f7d4a91c4f78ab71d630b5e2f919a94a057c27ecb86d79')
 options=('!strip')
 
 package() {
