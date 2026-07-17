@@ -2,8 +2,8 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.4
-pkgrel=9
+pkgver=1.5
+pkgrel=1
 pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
 url="https://github.com/iswad-lab/TouchDesigner-Linux"

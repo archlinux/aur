@@ -2,6 +2,7 @@
 """TouchDesigner launcher for AUR package - handles prefix setup + .toe patching."""
 
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -51,13 +52,21 @@ def restore_license():
 
 
 def ensure_drives():
-    """Ensure essential drive symlinks exist (c:, z:)."""
+    """Ensure essential drive symlinks exist (c:, z:).
+
+    These are skipped during prefix copy because copytree with symlinks=True
+    can't safely recreate circular/device symlinks (z:/ -> /, com* -> /dev/ttyS*)
+    when the destination already exists. Wine will create additional symlinks
+    (d:, com*, etc.) on first wineboot.
+    """
     os.makedirs(DOSDEVICES, exist_ok=True)
 
     z_path = os.path.join(DOSDEVICES, "z:")
     if not os.path.islink(z_path):
         if os.path.isdir(z_path):
-            print("  Repairing z: drive (was copied as directory instead of symlink)...")
+            print(
+                "  Repairing z: drive (was copied as directory instead of symlink)..."
+            )
             shutil.rmtree(z_path)
         os.symlink("/", z_path)
 
@@ -127,23 +136,116 @@ def ensure_wine_ready():
         open(INIT_FLAG, "w").close()
 
 
+def _detect_logical_dpi() -> int | None:
+    """Detect the logical display DPI from Xft.dpi or xdpyinfo.
+
+    This already accounts for the user's display scale factor.
+    Returns the DPI value (typically 96, 120, 144, etc.) or None.
+    """
+    # Method 1: Xft.dpi from xrdb (fast, reliable)
+    try:
+        result = subprocess.run(
+            ["xrdb", "-query"],
+            capture_output=True, text=True, timeout=5,
+        )
+        for line in result.stdout.split("\n"):
+            if line.strip().startswith("Xft.dpi"):
+                parts = line.split(":", 1)
+                if len(parts) == 2:
+                    val = int(parts[1].strip())
+                    if 72 <= val <= 240:
+                        # Round to standard values (96, 120, 144, 192)
+                        if val < 108:
+                            return 96
+                        elif val < 132:
+                            return 120
+                        elif val < 168:
+                            return 144
+                        else:
+                            return 192
+    except (FileNotFoundError, ValueError, subprocess.TimeoutExpired):
+        pass
+
+    # Method 2: xdpyinfo (fallback)
+    try:
+        result = subprocess.run(
+            ["xdpyinfo"],
+            capture_output=True, text=True, timeout=5,
+        )
+        for line in result.stdout.split("\n"):
+            if "resolution" in line:
+                m = re.search(r"(\d+)x(\d+)", line)
+                if m:
+                    val = int(m.group(1))
+                    if 72 <= val <= 240:
+                        if val < 108:
+                            return 96
+                        elif val < 132:
+                            return 120
+                        elif val < 168:
+                            return 144
+                        else:
+                            return 192
+    except (FileNotFoundError, ValueError, subprocess.TimeoutExpired):
+        pass
+
+    return None
+
+
 def apply_font_dpi():
     """Set LogPixels DPI for readable UI fonts in TouchDesigner.
 
-    Wine defaults to 96 DPI which makes TD UI fonts very small on
-    high-resolution displays. This sets 120 DPI (0x78) in the registry
-    after wineboot so the setting persists across launches.
+    Reads the system's logical DPI (Xft.dpi) which already accounts
+    for the user's display scale factor, and applies it to Wine.
+
+    - First launch: auto-detect and apply.
+    - Subsequent launches: skip unless TD_DPI is set.
+    - Override: TD_DPI=96, TD_DPI=144, TD_DPI=auto
     """
+    dpi_env = os.environ.get("TD_DPI", "").strip().lower()
+    is_first_launch = not os.path.isfile(INIT_FLAG)
+
+    if dpi_env == "auto":
+        dpi_val = _detect_logical_dpi()
+        if dpi_val:
+            print(f"  Detected system DPI: {dpi_val}")
+        else:
+            dpi_val = 96
+            print("  Could not detect DPI, using LogPixels 96")
+    elif dpi_env:
+        try:
+            dpi_val = int(dpi_env)
+        except ValueError:
+            print(f"  TD_DPI: invalid value '{dpi_env}', ignoring")
+            return
+    elif is_first_launch:
+        dpi_val = _detect_logical_dpi()
+        if dpi_val:
+            print(f"  Detected system DPI: {dpi_val}")
+        else:
+            dpi_val = 96
+            print("  Using default LogPixels 96")
+    else:
+        return
+
+    if dpi_val < 72:
+        dpi_val = 96
+    if dpi_val > 240:
+        dpi_val = 240
+
     tmp = tempfile.mkdtemp(prefix="td_dpi_")
     reg_file = os.path.join(tmp, "dpi.reg")
     with open(reg_file, "w") as f:
         f.write(
             "REGEDIT4\n\n"
             "[HKEY_CURRENT_CONFIG\\Software\\Fonts]\n"
-            '"LogPixels"=dword:00000078\n'
+            f'"LogPixels"=dword:{dpi_val:08x}\n'
         )
     wine_run([WINE, "regedit", f"z:{reg_file}"], timeout=10)
     shutil.rmtree(tmp, True)
+
+    if dpi_env:
+        print(f"  LogPixels DPI set to {dpi_val} (from TD_DPI)")
 
 
 def patch_toe(toe_path):
@@ -258,6 +360,7 @@ def resolve_path(path):
         return None
     if path.startswith("file://"):
         from urllib.parse import unquote
+
         path = unquote(path[7:])
     if len(path) > 2 and path[1:3] in (":/", ":\\"):
         path = path[2:]
