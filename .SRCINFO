@@ -1,13 +1,15 @@
 pkgbase = corral
 	pkgdesc = Pony dependency manager tool
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ponylang/corral
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = ponyc
 	makedepends = git
 	source = corral-0.9.2.tar.gz::https://github.com/ponylang/corral/archive/0.9.2.tar.gz
+	source = corral-0.9.2-unreachable-else.patch::https://github.com/ponylang/corral/commit/10b85e36e5c7ec4503ecb80ff51aa2342e459805.patch
 	sha256sums = c6b0000fe2f5c451923988e2fc44da3f2a3c37dd35f2125239028edebdb408b5
+	sha256sums = dbe95350a51fc295a520b2284d78e7f5b487554a1261f30fc1cab0955eb6c49e
 
 pkgname = corral
