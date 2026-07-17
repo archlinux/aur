@@ -1,13 +1,14 @@
 pkgbase = pacman-systemd-inhibit
 	pkgdesc = Inhibit system shutdown, reboot etc. when pacman is upgrading the system
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/amishmm/pacman-systemd-inhibit
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = pacman
 	depends = systemd
-	source = pacman-systemd-inhibit-1.0.tar.gz::https://github.com/amishmm/pacman-systemd-inhibit/archive/v1.0.tar.gz
-	sha256sums = 74b8017d8e76efcd38b142d2efb0c25223f7950b932d3666e55a7574dad689e5
+	backup = etc/pacman.d/battery.conf
+	source = pacman-systemd-inhibit-2.1.tar.gz::https://github.com/amishmm/pacman-systemd-inhibit/archive/v2.1.tar.gz
+	sha256sums = 744b2608d94a51ed60c264cd5a1b08dac4429245da43d117c5b5e26fa12b3bfb
 
 pkgname = pacman-systemd-inhibit
