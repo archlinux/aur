@@ -1,0 +1,4 @@
+# Simagic devices with 0x3670 VID (GT Neo, Evo wheelbases)
+KERNEL=="hidraw*", ATTRS{idVendor}=="3670", MODE="0666", TAG+="uaccess"
+# Simagic devices with 0x0483 VID (older wheelbases)
+KERNEL=="hidraw*", ATTRS{idVendor}=="0483", MODE="0666", TAG+="uaccess"

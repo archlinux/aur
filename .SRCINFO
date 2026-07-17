@@ -1,0 +1,16 @@
+pkgbase = simagic-ff-dkms
+	pkgdesc = DKMS kernel module adding native force feedback support for Simagic steering wheelbases (post firmware v159)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/JacKeTUs/simagic-ff
+	arch = any
+	license = GPL-2.0-only
+	depends = dkms
+	provides = simagic-ff
+	conflicts = simagic-ff
+	source = simagic-ff-2.0.0.tar.gz::https://github.com/JacKeTUs/simagic-ff/archive/refs/tags/2.0.0.tar.gz
+	source = 11-simagic.rules
+	sha256sums = 799b0ed482819f8a9b293cc4e3571da0f1bbeaeef58ebb81c441da101837d078
+	sha256sums = b06327e889acbbc90b15d3c76803e325238e083e3a2ec38db2eba28d843a020a
+
+pkgname = simagic-ff-dkms
