@@ -2,7 +2,7 @@
 # Maintainer: makesometh.ing <noreply@makesometh.ing>
 
 pkgname='trainer-bin'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Terminal app for browsing and managing installed agent skills'
 url='https://github.com/makesometh-ing/trainer'
@@ -12,10 +12,10 @@ provides=('trainer')
 conflicts=('trainer')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/makesometh-ing/trainer/releases/download/v${pkgver}/trainer_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4ebeaa1179c2b541a933131a99ceb927ad8cfff1791c8d4366c8b80630dbb861')
+sha256sums_aarch64=('5b2c230090a0d777bf74aebf234070f737ed413fcbe7544adc80085e18da5ddd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/makesometh-ing/trainer/releases/download/v${pkgver}/trainer_Linux_amd64.tar.gz")
-sha256sums_x86_64=('e6653964bbacb066d46bfdf572aae76fb30821451dbb07d81d6242564bbb7fa1')
+sha256sums_x86_64=('047928373a7a52f6c1b9c3b97db9d085344facc5d1f7fdffcab6f6a5beb1c490')
 
 package() {
   install -Dm755 "./trainer" "${pkgdir}/usr/bin/trainer"
