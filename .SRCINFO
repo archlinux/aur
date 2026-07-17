@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-qt6-imageformats
-	pkgdesc = Plugins for additional image formats: TIFF, TGA, WBMP (mingw-w64)
+	pkgdesc = Plugins for additional image formats: TGA, WBMP (mingw-w64)
 	pkgver = 6.11.1
 	pkgrel = 1
 	url = https://www.qt.io
@@ -14,6 +14,7 @@ pkgbase = mingw-w64-qt6-imageformats
 	makedepends = ninja
 	makedepends = git
 	depends = mingw-w64-qt6-base
+	depends = mingw-w64-libtiff
 	depends = mingw-w64-jasper
 	depends = mingw-w64-libwebp
 	options = !strip
