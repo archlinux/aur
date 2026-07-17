@@ -1,0 +1,16 @@
+pkgbase = golfetch-git
+	pkgdesc = A minimalist, suckless-style system fetch utility written in Go.
+	pkgver = r0.g1a2b3c4
+	pkgrel = 1
+	url = https://github.com/snowvy01/golfetch
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = golfetch
+	conflicts = golfetch
+	source = golfetch-git::git+https://github.com/snowvy01/golfetch.git
+	md5sums = SKIP
+
+pkgname = golfetch-git
