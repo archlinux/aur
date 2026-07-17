@@ -1,6 +1,6 @@
 pkgbase = vocalinux
 	pkgdesc = Free, offline voice dictation for Linux
-	pkgver = 0.14.1beta
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/jatinkrmalik/vocalinux
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = vocalinux
 	optdepends = python-onnxruntime: Silero VAD
 	optdepends = xdotool: X11 injection fallback
 	conflicts = vocalinux-git
-	source = vocalinux-0.14.1-beta.tar.gz::https://github.com/jatinkrmalik/vocalinux/archive/refs/tags/v0.14.1-beta.tar.gz
-	sha256sums = ceb0b7357039fa7c386e0a4821fd407671925b2da462e5ef1a60117e6d252ef1
+	source = vocalinux-0.14.1.tar.gz::https://github.com/jatinkrmalik/vocalinux/archive/refs/tags/v0.14.1.tar.gz
+	sha256sums = 16f8baa6e03d90303cf07824cf8402dd708d31a922f154a05030d994e95b4c4d
 
 pkgname = vocalinux
