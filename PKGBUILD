@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.2.0_devel.226079.9e6e6e5db7c.d41d8cd
+pkgver=26.3.0_devel.226471.80e1e584d73.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -348,7 +348,7 @@ build () {
         -D gallium-drivers=panfrost,virgl,svga,softpipe,llvmpipe,lima,zink,rocket,d3d12
         -D gallium-extra-hud=true
         -D gallium-rusticl=${_rusticl}
-	#-D panfrost-rust=true
+	-D panfrost-rust=true
         -D gallium-va=enabled
         -D gbm=enabled
         -D gles1=enabled
@@ -368,9 +368,9 @@ build () {
         -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit
         -D tools=panfrost
         -D zstd=enabled
-        -D buildtype=plain
+        -D buildtype=release
         --wrap-mode=nofallback
-        --force-fallback-for=syn,paste,rustc-hash
+        --force-fallback-for=syn,paste,rustc-hash,bitflags,xml
         -D prefix=/usr
         -D sysconfdir=/etc
 #        -D legacy-x11=dri2
