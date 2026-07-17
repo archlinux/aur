@@ -1,0 +1,27 @@
+pkgbase = animalinux
+	pkgdesc = Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Sergi122/AnimalinuxApp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-pillow
+	depends = gtk4-layer-shell
+	depends = libayatana-appindicator
+	optdepends = python-numpy: rendimiento mejorado de pinceles y blend modes
+	optdepends = mpv: reproducción de audio en el editor de animación
+	optdepends = ffmpeg: exportar animaciones como MP4
+	optdepends = python-rembg: recorte de fondo con IA (requiere onnxruntime)
+	optdepends = python-onnxruntime: motor IA para rembg
+	source = animalinux-0.3.0.tar.gz::https://github.com/Sergi122/AnimalinuxApp/archive/v0.3.0.tar.gz
+	sha256sums = 51bfc2783253784addcd5477aa52f7221e94b7255262699f8cc37f48ed6981a4
+
+pkgname = animalinux
