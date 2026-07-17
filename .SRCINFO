@@ -1,6 +1,6 @@
 pkgbase = tpdf
 	pkgdesc = A terminal PDF viewer written in Rust, with vim key-bindings and watch mode.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://www.github.com/NiJingzhe/TermPDF
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tpdf
 	depends = libpdfium
 	conflicts = tpdf-git
 	conflicts = tpdf-bin
-	source = git+https://www.github.com/NiJingzhe/TermPDF.git#tag=v0.4.1
-	sha256sums = 9e84eba8d0a53e954ee6e9b4114baefabd42f3beb4fd2a25c85eff53fbfedd34
+	source = git+https://www.github.com/NiJingzhe/TermPDF.git#tag=v0.4.2
+	sha256sums = fae74961f9f9546155368de057d4f91086323d44ee0eb75b30a978aa4cda4085
 
 pkgname = tpdf
