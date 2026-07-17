@@ -150,8 +150,10 @@ try:
     bind_to_launcher()
     with TCPServer(("127.0.0.1", 0), Handler) as httpd:
         threading.Thread(target=monitor_lifecycle, daemon=True).start()
-        with open(ready_file, "w") as f:
-            f.write(str(httpd.server_address[1]))
+        ready_tmp = f"{ready_file}.tmp"
+        with open(ready_tmp, "w") as f:
+            f.write(f"{httpd.server_address[1]}\n")
+        os.replace(ready_tmp, ready_file)
         httpd.serve_forever()
 except Exception as e:
     with open(fail_file, "w") as f:

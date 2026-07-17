@@ -194,12 +194,13 @@ let patchedAny = false;
     console.log(`${TAG}: Linux titlebar overlay theme sync already patched`);
   } else {
     const appearanceResolverMatch = source.match(
-      /isOpaqueWindowsEnabled\(\)\{return\(([A-Za-z_$][\w$]*)\(this\.options\.settingsStore\.getEffective\(n\.Gi\.theme\.key\)\?\?`system`\)===`light`/,
+      /isOpaqueWindowsEnabled\(\)\{return\(([A-Za-z_$][\w$]*)\(this\.options\.settingsStore\.getEffective\(([A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*)\.theme\.key\)\?\?`system`\)===`light`/,
     );
     if (!appearanceResolverMatch) {
       fail("could not find active appearance resolver");
     }
     const appearanceResolver = appearanceResolverMatch[1];
+    const settingsKeys = appearanceResolverMatch[2];
     const setWindowZoomBefore =
       "n.setTitleBarOverlay(j9(t))";
     const setWindowZoomAfter =
@@ -207,9 +208,9 @@ let patchedAny = false;
     const installOverlayBefore =
       "installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==`win32`&&process.platform!==`linux`||t!==`primary`&&t!==`quickChat`)return;let n=()=>{e.isDestroyed()||e.setTitleBarOverlay(j9(this.windowZooms.get(e.id)))};return c.nativeTheme.on(`updated`,n),n(),()=>{c.nativeTheme.off(`updated`,n)}}";
     const overlayMethod =
-      `linuxTitleBarOverlay(e=1){let t=${appearanceResolver}(this.options.settingsStore.getEffective(n.Gi.theme.key)??\`system\`),r=t===\`light\`?this.options.settingsStore.getEffective(n.Gi.lightChromeTheme.key):this.options.settingsStore.getEffective(n.Gi.darkChromeTheme.key),i=r?.surface,a=r?.ink;return{...j9(e),color:typeof i===\`string\`?i:c.nativeTheme.shouldUseDarkColors?\`#000000\`:\`#f9f9f9\`,symbolColor:typeof a===\`string\`?a:c.nativeTheme.shouldUseDarkColors?\`#ffffff\`:\`#1f1f1f\`}}`;
+      `linuxTitleBarOverlay(e=1){let t=${appearanceResolver}(this.options.settingsStore.getEffective(${settingsKeys}.theme.key)??\`system\`),r=t===\`light\`?this.options.settingsStore.getEffective(${settingsKeys}.lightChromeTheme.key):this.options.settingsStore.getEffective(${settingsKeys}.darkChromeTheme.key),i=r?.surface,a=r?.ink;return{...j9(e),color:typeof i===\`string\`?i:c.nativeTheme.shouldUseDarkColors?\`#000000\`:\`#f9f9f9\`,symbolColor:typeof a===\`string\`?a:c.nativeTheme.shouldUseDarkColors?\`#ffffff\`:\`#1f1f1f\`}}`;
     const installOverlayAfter =
-      `${overlayMethod}installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==\`win32\`&&process.platform!==\`linux\`||t!==\`primary\`&&t!==\`quickChat\`)return;let r=()=>{e.isDestroyed()||e.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay(this.windowZooms.get(e.id)):j9(this.windowZooms.get(e.id)))},i=process.platform===\`linux\`?[this.options.settingsStore.onDidChange(n.Gi.theme.key,r),this.options.settingsStore.onDidChange(n.Gi.lightChromeTheme.key,r),this.options.settingsStore.onDidChange(n.Gi.darkChromeTheme.key,r)]:[];return c.nativeTheme.on(\`updated\`,r),r(),()=>{c.nativeTheme.off(\`updated\`,r),i.forEach(e=>e())}}`;
+      `${overlayMethod}installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==\`win32\`&&process.platform!==\`linux\`||t!==\`primary\`&&t!==\`quickChat\`)return;let r=()=>{e.isDestroyed()||e.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay(this.windowZooms.get(e.id)):j9(this.windowZooms.get(e.id)))},i=process.platform===\`linux\`?[this.options.settingsStore.onDidChange(${settingsKeys}.theme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.lightChromeTheme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.darkChromeTheme.key,r)]:[];return c.nativeTheme.on(\`updated\`,r),r(),()=>{c.nativeTheme.off(\`updated\`,r),i.forEach(e=>e())}}`;
 
     let result = replaceExact(
       source,

@@ -65,7 +65,7 @@ if (targetFiles.length === 0) {
 function findRequireBinding(source, moduleName) {
   const escapedModuleName = moduleName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const pattern = new RegExp(
-    String.raw`(?:^|[;,])(?:let |const |var )?([A-Za-z_$][\w$]*)=require\(\`node:${escapedModuleName}\`\)`,
+    String.raw`(?:^|[;,])(?:let |const |var )?([A-Za-z_$][\w$]*)=require\(["'\`]node:${escapedModuleName}["'\`]\)`,
   );
   return source.match(pattern)?.[1] ?? null;
 }

@@ -2,8 +2,8 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=chatgpt-desktop-bin
-pkgver=26.707.72221
-pkgrel=5
+pkgver=26.715.21425
+pkgrel=1
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
@@ -14,7 +14,7 @@ conflicts=('openai-codex-desktop')
 replaces=('openai-codex-desktop')
 
 depends=(
-  'electron39'
+  'electron42'
   'openai-codex'
   'python'
   'hicolor-icon-theme'
@@ -30,9 +30,9 @@ makedepends=(
 
 source=(
   "ChatGPT-${pkgver}.zip::https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-${pkgver}.zip"
-  'better-sqlite3-12.9.0.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.9.0.tgz'
+  'better-sqlite3-12.11.1.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.11.1.tgz'
   'node-pty-1.1.0.tgz::https://registry.npmjs.org/node-pty/-/node-pty-1.1.0.tgz'
-  'electron-v39.8.10-headers.tar.gz::https://electronjs.org/headers/v39.8.10/node-v39.8.10-headers.tar.gz'
+  'electron-v42.3.0-headers.tar.gz::https://electronjs.org/headers/v42.3.0/node-v42.3.0-headers.tar.gz'
   'chatgpt-desktop.sh'
   'ChatGPT.desktop'
   'asar-tools.mjs'
@@ -45,23 +45,23 @@ source=(
 
 noextract=(
   "ChatGPT-${pkgver}.zip"
-  'better-sqlite3-12.9.0.tgz'
+  'better-sqlite3-12.11.1.tgz'
   'node-pty-1.1.0.tgz'
-  'electron-v39.8.10-headers.tar.gz'
+  'electron-v42.3.0-headers.tar.gz'
 )
 
-sha256sums=('d47a2c0dfb07afec21c415fcec672035a2e90410ecb7c6dc60141518fba524e0'
-            'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
+sha256sums=('e3af7a3b1f14eeaf9b17a410a7b229d1f293f4eafede5f5d396b43c1fc250e50'
+            'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-            '61069dec76ed8d1c10ab6825b194bdf5a19b653286a7c2684b09c62681427446'
-            '689f8d6a2eae8104761842956854e8f536282963521b47c9b9cc2a6d538bcbcd'
+            '821009f9c1830050d894aef9e61906cb0a537b2000b2d9bbed9985fff1d5e0d0'
+            '5f876f3ee21fd728dad487a79fc9c3e460b759515651a3ef16da1b18885b082c'
             '5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d'
             '6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56'
             'edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c'
-            '74b0c62a48ea4a8bf91f8851c7b3c8ce6845e9107af651f5ee40eb9e3161d8bf'
+            '248654f95bedd3c117af7398955312d7d07ab1bd395f7ce178c1d3ab90327cfb'
             '49ca13daf940980a03179d7d12d45f950df4f033da2089a39d8e3fc4aadc99c7'
             '2ca5f140a91e340266ea663b31cbd197d094a55973b413cb56dcdb88115a07c5'
-            '9c5d7410cbe94145089fa79cc08ac6bb7197cc8751ad5b45f0ae2331dc39d168')
+            '848c1b012274d9d42c210ea36c73d4e57d280163cd10aa652dd49950bcec4ced')
 
 prepare() {
   cd "${srcdir}"
@@ -89,10 +89,10 @@ prepare() {
     app-extracted \
     "${resources_dir}/app.asar.unpacked"
 
-  tar -xzf "${srcdir}/electron-v39.8.10-headers.tar.gz" -C native-build
+  tar -xzf "${srcdir}/electron-v42.3.0-headers.tar.gz" -C native-build
   mkdir -p native-build/node_modules
 
-  tar -xzf "${srcdir}/better-sqlite3-12.9.0.tgz" -C native-build/node_modules
+  tar -xzf "${srcdir}/better-sqlite3-12.11.1.tgz" -C native-build/node_modules
   mv native-build/node_modules/package native-build/node_modules/better-sqlite3
 
   tar -xzf "${srcdir}/node-pty-1.1.0.tgz" -C native-build/node_modules
@@ -121,6 +121,13 @@ prepare() {
   )
 
   rm -rf app-extracted/node_modules/better-sqlite3/build
+  cp -a --no-preserve=ownership \
+    native-build/node_modules/better-sqlite3/LICENSE \
+    native-build/node_modules/better-sqlite3/README.md \
+    native-build/node_modules/better-sqlite3/binding.gyp \
+    native-build/node_modules/better-sqlite3/lib \
+    native-build/node_modules/better-sqlite3/package.json \
+    app-extracted/node_modules/better-sqlite3/
   mkdir -p app-extracted/node_modules/better-sqlite3/build/Release
   cp -a --no-preserve=ownership \
     native-build/node_modules/better-sqlite3/build/Release/better_sqlite3.node \
@@ -172,7 +179,7 @@ package() {
       "${pkgdir}/usr/lib/${pkgname}/content/"
   fi
 
-  ln -s /usr/lib/electron39/electron \
+  ln -s /usr/lib/electron42/electron \
     "${pkgdir}/usr/lib/${pkgname}/chatgpt"
 
   install -Dm755 chatgpt-desktop.sh \
