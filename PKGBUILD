@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=neanes-bin
 _pkgname=Neanes
-pkgver=0.5.42
+pkgver=0.5.43
 _electronversion=43
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('ccf97043e229c82154bc9bffa8bf6aa246f828baf7134ae95c8a55728c403e86')
-sha256sums_x86_64=('4a01ed164e9aff63dd46c0e9802fa1c0fdd0e7c28ccb3580157ae22459db31c4')
+sha256sums_aarch64=('927525f99d2b36178c3bf980322b554f7635bd3d03c834ebd05f4934ffeaa8b9')
+sha256sums_x86_64=('07414c3f526b0d65ff3f6fc84ea117c297a6ae13b1a31cece2e56e9a219b683f')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
