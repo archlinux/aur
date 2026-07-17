@@ -1,0 +1,11 @@
+diff --git a/src/tiny_main/helper.rs b/src/tiny_main/helper.rs
+index 64a40eb..786445f 100644
+--- a/src/tiny_main/helper.rs
++++ b/src/tiny_main/helper.rs
+@@ -234,6 +234,7 @@ fn full_helper_candidates(current_exe: &Path) -> Vec<PathBuf> {
+             .join("libexec")
+             .join("rmux")
+             .join(helper_file_name()),
++        Path::new("/usr/lib/rmux/libexec").join(helper_file_name()),
+     ]
+ }
