@@ -1,14 +1,14 @@
 # Maintainer: ChouChiu
 # SPDX-FileCopyrightText: 2026 ChouChiu
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: AGPL-3.0-only
 
 pkgname=floatlyrics-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Floating synchronized lyrics for Spotify on Linux Wayland (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/ChouChiu/FloatLyrics'
-license=('GPL-3.0-or-later')
+license=('AGPL-3.0-only')
 depends=(
     'cairo'
     'glib2'
@@ -18,11 +18,12 @@ depends=(
     'libgcc'
     'openssl'
     'pango'
+    'webkitgtk-6.0'
 )
 provides=("floatlyrics=$pkgver")
 conflicts=('floatlyrics')
 source_x86_64=("$pkgname-$pkgver.rpm::$url/releases/download/v$pkgver/floatlyrics-$pkgver-1.$CARCH.rpm")
-sha256sums_x86_64=('26804dc4c4071d54f8b6a963112bd57633ce07a10edfcf0fafb69d5f29e716be')
+sha256sums_x86_64=('a154a005133cb69a6feb66d1a8365a463da3f77306bef76693b2c057bfc9808b')
 
 package() {
     cp -a usr "$pkgdir/"
