@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=iSCSI Util
+Comment=A simple and modern GUI for managing iSCSI.
+Exec=iscsi-util
+Icon=iscsi-util
+Terminal=false
+Type=Application
+Categories=Utility;
+
