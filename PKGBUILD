@@ -9,7 +9,7 @@
 pkgname=freefilesync-donation-bin-release
 _pkgname=freefilesync
 pkgver=14.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder comparison and synchronization (Donation Edition)"
 arch=("x86_64")
 url="https://freefilesync.org"
@@ -21,25 +21,7 @@ makedepends=("curl" "unzip")
 install=".install"
 options=(!strip !debug)
 
-
-_donation_tx_file=$XDG_CONFIG_HOME/FreeFileSync/DonationLicenceTx
-tx_token_error() {
-  cat <<EOF
-
-ERROR: Donation transaction token not found, either via (in order):
-- \$_FFS_TX
-- $_donation_tx_file
-
-NOTE: expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
-EOF
-  exit 1
-}
-
-# Donation transaction ID: env var takes precedence, else read from config directory
-# Expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
-_FFS_TX="${_FFS_TX:-$(cat "${_donation_tx_file}")}" || tx_token_error
-
-_update_and_cache_flag='update_and_cache'
+_update_and_cache_flag='This is used by prepare() calling pkgver() to save version of the downloaded release'
 
 # Called from prepare() with arg: "${_pkgver_cache_file}" to write to file.
 # With no argument (eg usual makepkg), print the version already cached.
@@ -66,6 +48,22 @@ pkgver() {
 }
 
 prepare() {
+    local _donation_tx_file=$XDG_CONFIG_HOME/FreeFileSync/DonationLicenceTx
+
+    # Donation transaction ID: env var $_FFS_TX takes precedence, else read from $_donation_tx_file
+    # Expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
+    _FFS_TX="${_FFS_TX:-$(cat "${_donation_tx_file}")}" || {
+        cat <<EOF
+
+ERROR: Donation transaction token not found, either via (in order):
+- \$_FFS_TX
+- $_donation_tx_file
+
+NOTE: expected value is in format: pi_xxxxxxxxxxxxxxxxxxxxxxxx
+EOF
+        exit 1
+    }
+
     pkgver=$(pkgver "${_update_and_cache_flag}")
     echo "Downloading FreeFileSync ${pkgver} Donation Edition..."
 

@@ -1,7 +1,7 @@
 pkgbase = freefilesync-donation-bin-release
 	pkgdesc = Folder comparison and synchronization (Donation Edition)
 	pkgver = 14.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freefilesync.org
 	install = .install
 	arch = x86_64
