@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
-pkgver=0.1.6.r0.g8a41101b
+pkgver=0.1.7.r0.gf9d700b0
 pkgrel=1
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -93,12 +93,10 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  # Real binary → /usr/lib (kept out of $PATH). A launcher wrapper → /usr/bin
-  # exports WEBKIT_DISABLE_COMPOSITING_MODE=1, which WebKitGTK needs on most
-  # Wayland compositors to avoid "Error 71 (Protocol error) dispatching to
-  # Wayland display" at startup (its composited-surface path trips compositors
-  # lacking certain subsurface protocols). The var is a harmless no-op on X11,
-  # so setting it unconditionally is safe.
+  # Real binary → /usr/lib (kept out of $PATH). A thin launcher wrapper →
+  # /usr/bin execs it; NVIDIA EGL-Wayland explicit-sync compat (needed to avoid
+  # "Error 71 dispatching to Wayland display" on NVIDIA Wayland) is applied
+  # inside the binary at startup (src/compat.rs), so AMD/Intel/X11 are untouched.
   install -Dm755 "src-tauri/target/release/${_pkgname}" \
     "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
   # Assets under packaging/shared/ are reused by the Debian and Fedora packages

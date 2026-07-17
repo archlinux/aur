@@ -41,4 +41,5 @@ The package already exists on the AUR; pushes update it in place.
   deb/rpm bundles: `avdec_h264` (Twitch is H.264) isn't pulled in by
   `webkit2gtk-4.1`, so without `gst-libav` streams play audio + black video.
 - The `pkgver()` `git describe` form requires at least one release tag to be
-  reachable from `HEAD` (v0.1.0/.1/.2/.3 exist, so this holds).
+  reachable from `HEAD` (run `git tag` in the source repo to see the current
+  set; any `v<version>` tag will do).
