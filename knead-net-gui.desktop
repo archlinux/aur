@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Knead Net
+Comment=Automatic breadboard layout from KiCad schematics
+Exec=knead-net-gui
+Icon=knead-net-gui
+Categories=Development;Electronics;
+Terminal=false
