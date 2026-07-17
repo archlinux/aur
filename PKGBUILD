@@ -1,5 +1,5 @@
 pkgname=eshot-bin
-pkgver=4.0.9
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Screenshot, annotation, OCR, GIF and video capture tool'
 arch=('x86_64')
@@ -7,6 +7,7 @@ url='https://github.com/Benoks/EShot'
 license=('MIT')
 depends=('fuse2' 'xdg-desktop-portal')
 optdepends=('xdg-desktop-portal-gnome: GNOME screenshot and recording integration'
+            'gnome-shell-extension-appindicator: tray icon support on GNOME'
             'xdg-desktop-portal-kde: KDE Plasma screenshot and recording integration'
             'ffmpeg: GIF encoding and media export'
             'tesseract: OCR support'
@@ -18,7 +19,7 @@ options=('!strip')
 _appimage="EShot-v${pkgver}-x86_64.AppImage"
 source=("${_appimage}::https://github.com/Benoks/EShot/releases/download/v${pkgver}/${_appimage}"
         'eshot')
-sha256sums=('4e7d2d051cf6a5e9b5a65d0d4b0a1052f6c8c701e052db45fc71264c275d763b'
+sha256sums=('26f480fc14567405ead830b8c1f3d4a497bfc0f32307eb3d8654e0c6e43066ff'
             'SKIP')
 
 prepare() {
