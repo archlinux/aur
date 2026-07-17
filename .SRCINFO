@@ -1,7 +1,7 @@
 pkgbase = hanako-bin
 	pkgdesc = HanaAgent - a personal AI agent with memory and soul
 	pkgver = 0.407.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liliMozi/openhanako
 	arch = x86_64
 	license = Apache-2.0

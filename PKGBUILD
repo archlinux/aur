@@ -3,7 +3,7 @@
 
 pkgname=hanako-bin
 pkgver=0.407.15
-pkgrel=1
+pkgrel=2
 pkgdesc="HanaAgent - a personal AI agent with memory and soul"
 arch=('x86_64')
 url="https://github.com/liliMozi/openhanako"
