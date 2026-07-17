@@ -1,0 +1,5 @@
+[monostack-bin]
+source = "github"
+github = "JoaoOliveira889/monostack"
+use_latest_release = true
+prefix = "v"
