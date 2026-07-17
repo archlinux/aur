@@ -1,32 +1,39 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex
-pkgver=0.3.0
+pkgver=42ebd65
 pkgrel=1
-pkgdesc="A very fast hex dumper (x86_64 Linux only) — builds from source"
+pkgdesc="A very fast hex dumper (x86_64 Linux only) — builds from source, always tracks latest"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('fasthex')
 conflicts=('fasthex-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('216977031b5d9b453a5300484b48c507022dc1cebf9608d10c24e8de7a734cf9')
+source=("fasthex-latest.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/latest.tar.gz")
+sha256sums=('SKIP')
+
+pkgver() {
+    git ls-remote "https://github.com/CallMeAlphabet/fasthex.git" refs/tags/latest | cut -c1-7
+}
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    rm -rf "$srcdir/build"
+    mkdir -p "$srcdir/build"
+    tar -xzf "$srcdir/fasthex-latest.tar.gz" --strip-components=1 -C "$srcdir/build"
+    cd "$srcdir/build"
     cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/build"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/build"
     install -Dm755 "target/release/fasthex" "$pkgdir/usr/bin/fasthex"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"

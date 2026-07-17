@@ -1,15 +1,16 @@
 pkgbase = fasthex
-	pkgdesc = A very fast hex dumper (x86_64 Linux only) — builds from source
-	pkgver = 0.3.0
+	pkgdesc = A very fast hex dumper (x86_64 Linux only) — builds from source, always tracks latest
+	pkgver = 42ebd65
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fasthex
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	provides = fasthex
 	conflicts = fasthex-bin
-	source = fasthex-0.3.0.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 216977031b5d9b453a5300484b48c507022dc1cebf9608d10c24e8de7a734cf9
+	source = fasthex-latest.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/latest.tar.gz
+	sha256sums = SKIP
 
 pkgname = fasthex
