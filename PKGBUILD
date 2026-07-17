@@ -1,6 +1,6 @@
 _phpbase=83
 pkgname=php83-redis
-pkgver=6.1.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
@@ -30,4 +30,4 @@ package() {
   rm redis.ini
 }
 
-sha256sums=('f10405f639fe415e9ed4ec99538e72c90694d8dbd62868edcfcd6a453466b48c')
+sha256sums=('0d5141f634bd1db6c1ddcda053d25ecf2c4fc1c395430d534fd3f8d51dd7f0b5')
