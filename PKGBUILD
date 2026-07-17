@@ -1,7 +1,7 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=create-awesome-python-app
 _name=${pkgname//-/_}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Composable scaffolding CLI for production-ready Python apps"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.12')
 makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${pkgname}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9f49508c578b9bf030b92af37059e463ee68b4bca079600a941b7947f42b7ca9')
+sha256sums=('b2d794ea0a693993c31ba8e74ae585120b64c53826b868385a29044de2709cf8')
 
 package() {
   # Install the published sdist with its PyPI dependencies (parity with
