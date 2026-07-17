@@ -3,7 +3,7 @@ pkgname=vesta-bin
 _pkgname=vesta
 _srcname=vesta 
 _appid=com.vesta.desktop
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Video Extraction, Sync & Translation for Anki"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_srcname}_${pkgver}_amd64.deb"
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 
-sha256sums=('d726b56143cdb468a57078e660fae9a80a0607ae9b70db4c03788b95289e3482'
+sha256sums=('81332cb3bf3a39978737d80e0e0c85d7bec6574d761a8333eab73ae78599c304'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
