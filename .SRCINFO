@@ -1,7 +1,7 @@
 pkgbase = rmux-bin
 	pkgdesc = Universal Rust multiplexer with a typed SDK
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Helvesec/rmux
 	arch = x86_64
 	license = MIT

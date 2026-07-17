@@ -2,7 +2,7 @@
 
 pkgname=rmux-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64')
 url=https://github.com/Helvesec/rmux
@@ -23,5 +23,10 @@ package() {
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "share/man/man1/${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1/"
-  install -Dm0755 "bin/${pkgname%-bin}" -t "$pkgdir/usr/bin/"
+  install -Dm644 "share/bash-completion/completions/${pkgname%-bin}" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm644 "share/elvish/lib/${pkgname%-bin}.elv" -t "$pkgdir/usr/share/elvish/lib/"
+  install -Dm644 "share/fish/vendor_completions.d/${pkgname%-bin}.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "share/zsh/site-functions/_${pkgname%-bin}" -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm0755 "libexec/${pkgname%-bin}/${pkgname%-bin}" -t "$pkgdir/usr/bin/"
+  install -Dm0755 "bin/${pkgname%-bin}-daemon" -t "$pkgdir/usr/bin/"
 }
