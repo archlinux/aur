@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.21.1
+pkgver=3.21.2
 pkgrel=1
 pkgdesc="This script helps you decide when to update Arch Linux or its derivatives."
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
     'snap-pac: for automatic Btrfs snapshots on update (if using snapper)'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16ad1b53ee0f07ae0fce352f18cc43c00b26cef6059c141b0417f9a148fc6bdb')
+sha256sums=('64da5f462249af64f5302d39e8a4dca4343c04c2a1d7972dc7bf0b0ad95d6941')
 
 package() {
     cd "arch-smart-update-${pkgver}"
