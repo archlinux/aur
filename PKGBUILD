@@ -8,8 +8,8 @@ pkgdesc='Python framework for efficient cluster administration'
 arch=(any)
 url='https://clustershell.github.io/clustershell/'
 license=('LGPL-2.1-or-later')
-depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('python' 'python-yaml')
 optdepends=(
     'openssh: Secure SHell client to connect to distant machines'
     'vim: Vi Improved'
