@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=2.3.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('LGPL')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('c7cb9988a015b9abe29fb008e73d89f54dd0e3826550e7a3910fdcdd245c0484')
+sha256sums=('5658cfbd12cb1d5332d5a2520cbaf43461691c29768d6241504e146d1a1feb64')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
@@ -21,14 +21,14 @@ build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir/aGrUM-${pkgver}"
   for _arch in ${_architectures}; do
-    cd "$srcdir/aGrUM-${pkgver}/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
