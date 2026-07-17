@@ -1,7 +1,7 @@
 # Maintainer: Zaid Ajo <zaidejjodev@gmail.com>
 
 pkgname=yvid
-pkgver=1.0.0
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Modern Video Downloader — interactive YouTube search, playlist downloads, smart resume, desktop notifications"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b7fcc047e63cc43ebd6a8aece3cf3ff6f86a5f13688dfedb25c7b09afdc0ac9c')
+sha256sums=('77aafe38c668daf7b2cf2c14b97f1d4b224a355a07017c17b5d1af5a5bc76e95')
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
