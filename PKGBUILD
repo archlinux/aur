@@ -1,7 +1,7 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Hello-style face login for Linux"
 arch=('x86_64')
 url="https://github.com/archledger/irlume"
@@ -12,7 +12,9 @@ license=('GPL-3.0-or-later')
 # choose onnxruntime-cpu unless you want GPU execution providers.
 depends=('onnxruntime' 'tpm2-tss' 'pam')
 optdepends=('fprintd: fingerprint companion factor')
-makedepends=('rust' 'cargo' 'gcc' 'git-lfs')
+# clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
+# libclang at build time; without it makepkg fails on a clean system.
+makedepends=('rust' 'cargo' 'gcc' 'clang' 'git-lfs')
 # Models ride in the tag via Git LFS. GitHub's auto-generated tag tarballs do
 # NOT include LFS objects (they ship 131-byte pointer stubs) — that is exactly
 # why this PKGBUILD clones the git tag and runs `git lfs pull` instead of using
