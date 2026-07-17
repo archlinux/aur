@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -54,6 +54,14 @@ package() {
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/org.musescore.MuseScore4portable.desktop"\
             "${pkgdir}/usr/share/applications/org.musescore.MuseScore4portable.desktop"
+
+    # MIME type definitions (.mscz/.mscx/MusicXML/... — fixes .mscz being detected as zip)
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/musescore4portable.xml"\
+            "${pkgdir}/usr/share/mime/packages/musescore4portable.xml"
+
+    # AppStream metadata
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/org.musescore.MuseScore4portable.appdata.xml"\
+            "${pkgdir}/usr/share/metainfo/org.musescore.MuseScore4portable.appdata.xml"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"

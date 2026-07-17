@@ -1,7 +1,7 @@
 pkgbase = musescore-bin
 	pkgdesc = Create, play and print beautiful sheet music / AppImage version
 	pkgver = 4.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://musescore.org/
 	arch = x86_64
 	groups = pro-audio
