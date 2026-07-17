@@ -1,6 +1,6 @@
 # Maintainer: Hannes Spitz <h.spitz@outlook.de>
 pkgname=sidemark-git
-pkgver=0.4.0.r3.g9fa45aa
+pkgver=0.5.0.r0.g8e2ed12
 pkgrel=1
 pkgdesc="PDF viewer and annotator with a live markdown notes sidebar"
 arch=('any')
