@@ -144,7 +144,7 @@ January 16, 2019</license>
     <localPackage path="cmdline-tools;latest" obsolete="false">
         <type-details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns5:genericDetailsType"/>
         <revision>
-            <major>21</major>
+            <major>22</major>
             <minor>0</minor>
         </revision>
         <display-name>Android SDK Command-line Tools (latest)</display-name>
