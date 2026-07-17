@@ -1,0 +1,9 @@
+post_install() {
+  udevadm control --reload-rules
+  udevadm trigger
+}
+
+post_upgrade() {
+  udevadm control --reload-rules
+  udevadm trigger
+}
