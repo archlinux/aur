@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -39,12 +39,12 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # packaging/aur/build-release-tarball.sh). No makedepends, no build() — this
 # is a pure -bin repackage.
 source=("${_repo}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('dc12c1d5770b05c92f8180c7ca107cf8369744d87c6cb9dfa417d53c10d7962e')   # kappastream-0.1.6-x86_64.tar.gz (v0.1.6 release asset)
+sha256sums=('2dd7a63e0a5652519944c87cb946e4ce1ff4eb97699c9029dff3a82f037eef18')   # sha256 of the release tarball; bump alongside pkgver on each release
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-x86_64"
 	# Real binary → /usr/lib/kappastream (out of $PATH); wrapper at /usr/bin
-	# exports WEBKIT_DISABLE_COMPOSITING_MODE=1 (Wayland workaround).
+	# is a thin launcher; NVIDIA Wayland compat is handled in the binary.
 	install -Dm755 "${_pkgname}"                          "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
 	install -Dm755 "${_pkgname}.sh"                        "${pkgdir}/usr/bin/${_pkgname}"
 

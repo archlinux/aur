@@ -24,7 +24,7 @@ git clone ssh://aur@aur.archlinux.org/kappastream-bin.git
 cd kappastream-bin
 cp /path/to/here/{PKGBUILD,.SRCINFO} .
 git add PKGBUILD .SRCINFO
-git commit -m "Update to 0.1.3"
+git commit -m "Update to <version>"
 git push
 ```
 
