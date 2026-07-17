@@ -14,11 +14,11 @@ optdepends=('dpkg: Enable amber-pm-convert (A tool to convert Debian packages to
 conflicts=('ace-host-integration')
 # provides=('amber-package-manager')
 
-# source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::https://www.gitlink.org.cn/api/shenmo7192/amber-pm/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
+# source=("$pkgname-$pkgver.tar.gz::https://www.gitlink.org.cn/api/shenmo7192/amber-pm/archive/1.3.4.0.tar.gz")
 # source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
 source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
-sha256sums=('5603ed7ec63327715168320b34a29a9f0e62beb4e420785be6d6784f647bf284')
+sha256sums=('5465b15970dd9c041af49f67a2862d74bf4161fcc50c5c606be5e0e34ba513db')
 sha256sums_aarch64=('b99a96854f8fcba405d46b8a749b07edf584e6119f8bf9b131dfcaaa9b4ad552')
 
 install=amber-package-manager.install
