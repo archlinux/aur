@@ -1,0 +1,7 @@
+pkg/
+src/
+redis-*
+php82-redis-*
+*.tar.xz
+*.tar.*
+nohup.out
