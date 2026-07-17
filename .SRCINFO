@@ -14,6 +14,6 @@ pkgbase = stirling-pdf-desktop-bin
 	conflicts = stirling-pdf
 	conflicts = stirling-pdf-bin
 	source = Stirling-PDF-linux-x86_64-2.14.2.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v2.14.2/Stirling-PDF-linux-x86_64.deb
-	sha256sums = SKIP
+	sha256sums = 28cb044190cdf1d971b90597c91efb1605c4d32fc471e9f8d60a05ca262935e2
 
 pkgname = stirling-pdf-desktop-bin

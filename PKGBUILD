@@ -9,7 +9,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'java-runtime-headless')
 provides=('stirling-pdf-desktop')
 conflicts=('stirling-pdf-desktop' 'stirling-pdf' 'stirling-pdf-bin')
 source=("Stirling-PDF-linux-x86_64-${pkgver}.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v${pkgver}/Stirling-PDF-linux-x86_64.deb")
-sha256sums=('SKIP')
+sha256sums=('28cb044190cdf1d971b90597c91efb1605c4d32fc471e9f8d60a05ca262935e2')
 
 package() {
     cd "$srcdir"
