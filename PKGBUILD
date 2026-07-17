@@ -13,7 +13,7 @@ depends=('python' 'python-yaml')
 optdepends=(
     'openssh: Secure SHell client to connect to distant machines'
     'vim: Vi Improved'
-    'bash-completion'
+    'bash-completion: Bash completion support'
 )
 backup=(etc/clustershell/{clush.conf,groups.conf,groups.d/local.cfg})
 changelog=ChangeLog
