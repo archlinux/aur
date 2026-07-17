@@ -1,5 +1,5 @@
 pkgname=dsxtool-git
-pkgver=1.6.0.r51.ge88270c
+pkgver=1.6.0.r56.g7a5cdd7
 pkgrel=1
 pkgdesc="A modular, interactive Linux setup tool powered by fzf (git version)"
 arch=('any')
