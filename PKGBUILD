@@ -1,7 +1,7 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=(meshoptimizer gltfpack)
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 _basis_pkgver=88e813c46b3ff42e56ef947b3fa11eeee7a504b0
 pkgdesc='Mesh optimization library that makes meshes smaller and faster to render'
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=("meshoptimizer-v$pkgver.tar.gz::https://github.com/zeux/meshoptimizer/ar
         # gigabyte (!) of sample files.
         "basis-universal-${_basis_pkgver}.tar.gz::https://github.com/zeux/basis_universal/archive/${_basis_pkgver}.tar.gz"
         "use-system-zstd.patch")
-sha256sums=('b787011f81b4b3069c2f9065b7c191efdd4189a49be32ba5282dd5579f05261a'
+sha256sums=('e40f71b809cdf3361b9a4def85fd44534e8733ce29d4b943c145b76859e4c2b4'
             '5855894bdd7e6b14bd419f6d632079bf4debeac2ac221b181cd06b1329d75ad9'
             'e773a16c8cf6ce14fa304c26162a3df18a143bbf76f2e8ee547d48fa4e24afa3')
 
