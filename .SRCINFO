@@ -1,10 +1,15 @@
 pkgbase = mystralnative-bin
 	pkgdesc = Native WebGPU JS runtime with SDL3 (V8 + Dawn)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mystralengine/mystralnative
 	arch = x86_64
 	license = MIT
+	depends = vulkan-icd-loader
+	depends = libx11
+	depends = libxrandr
+	depends = libxcursor
+	depends = libxi
 	provides = mystralnative
 	conflicts = mystralnative
 	conflicts = mystralnative-git
