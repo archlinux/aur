@@ -1,13 +1,12 @@
-# Maintainer: jms <dev at jstover dot net>
+# Maintainer: kstover-dev <dev at kstover dot net>
 #
 pkgname=breezewiki-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An alternative frontend for Fandom"
 arch=("x86_64")
 url="https://breezewiki.com"
 license=("AGPLv3")
-provides=("breezewiki=1.0.0")
 options=('!debug')
 source=(
     "https://docs.breezewiki.com/files/breezewiki-dist.tar.gz"
@@ -16,7 +15,7 @@ source=(
     "config.ini"
 )
 sha256sums=(
-    "a6a3c16bb3240f5a45e5617a497200fa74fd723f70bf00576f4cb9aeafde6f80"
+    "f1b9bc650a02a4c36c09574620a513c89707a3b7a4db38daf6e2673238593688"
     "8d45dc2f15933fad713351eb359f5927c9ff1752f248f6a79fd1697b693bc85d"
     "613d5fccd3fa60800b20f5c88c64ec6e3f1d714425b3c2355b8e113d5920b375"
     "4f1d1625c8fa4a41f8d73744288ac099dc90de08cd28386785e36588723dfa29"
