@@ -1,19 +1,19 @@
 # Maintainer: msg (salihgerdan on github)
 pkgname=spaceman-git
-pkgver=0.1.1.beta1.r0.g256585f
+pkgver=0.2.1.r4.g03e459f
 pkgrel=1
 pkgdesc="Treemap disk usage analyzer (graphical visualizer, SpaceSniffer alternative)"
 arch=('any')
 url="https://github.com/salihgerdan/spaceman"
 license=('GPL')
-depends=(gtk4)
-makedepends=(gtk4 cargo)
+depends=()
+makedepends=(cargo)
 source=(git+https://github.com/salihgerdan/spaceman.git)
 md5sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/spaceman"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

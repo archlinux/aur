@@ -1,13 +1,11 @@
 pkgbase = spaceman-git
 	pkgdesc = Treemap disk usage analyzer (graphical visualizer, SpaceSniffer alternative)
-	pkgver = 0.1.1.beta1.r0.g256585f
+	pkgver = 0.2.1.r4.g03e459f
 	pkgrel = 1
 	url = https://github.com/salihgerdan/spaceman
 	arch = any
 	license = GPL
-	makedepends = gtk4
 	makedepends = cargo
-	depends = gtk4
 	source = git+https://github.com/salihgerdan/spaceman.git
 	md5sums = SKIP
 
