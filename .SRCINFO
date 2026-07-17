@@ -1,9 +1,10 @@
 pkgbase = norgolith-git
 	pkgdesc = The monolithic Norg static site generator built with Rust
-	pkgver = r295.ca23762
+	pkgver = r506.147e058
 	pkgrel = 1
-	url = https://github.com/NTBBloodbath/norgolith
+	url = https://github.com/norgolith/core
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cargo
@@ -14,7 +15,7 @@ pkgbase = norgolith-git
 	makedepends = pkg-config
 	options = !debug
 	options = !lto
-	source = norgolith::git+https://github.com/NTBBloodbath/norgolith.git
+	source = norgolith::git+https://github.com/norgolith/core.git
 	sha256sums = SKIP
 
 pkgname = norgolith-git
