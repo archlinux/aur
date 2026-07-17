@@ -1,7 +1,7 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 pkgname=forsakenac-git
 pkgver=r12.3b9aafc
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-solver for Forsaken (Roblox) Numberlink puzzles - Linux Edition"
 arch=('x86_64')
 url="https://github.com/MapleProjects/ForsakenAutoComplete-Linux"
@@ -31,6 +31,12 @@ package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/forsakenac" << 'LAUNCHER'
 #!/bin/bash
 cd /opt/forsakenac
+
+# Ensure ydotoold daemon is running (required for ydotool absolute positioning)
+if ! pgrep -x ydotoold > /dev/null 2>&1; then
+    ydotoold &
+    sleep 0.3
+fi
 
 # Auto-detect XWayland display for tkinter (needs X11)
 if [ -z "$DISPLAY" ]; then

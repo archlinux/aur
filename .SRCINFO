@@ -1,7 +1,7 @@
 pkgbase = forsakenac-git
 	pkgdesc = Auto-solver for Forsaken (Roblox) Numberlink puzzles - Linux Edition
 	pkgver = r12.3b9aafc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MapleProjects/ForsakenAutoComplete-Linux
 	arch = x86_64
 	license = MIT
