@@ -1,27 +1,28 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
 url="https://github.com/Plan-B-Development/control-ofc-gui"
-license=('MIT')
+license=('MIT' 'OFL-1.1')
 # python-colorama: required transitive runtime dep — pyqtgraph imports
 # `colorama.win32`/`colorama.winterm` unconditionally at module load
 # (the platform check happens after the import). Arch's
 # `python-pyqtgraph` package omits the dep upstream; declaring it here
 # is load-bearing on clean systems. See DEC-103. Do not remove.
-# control-ofc-daemon floor tracks the README pairing (≥ v2.8.1 — the daemon
-# that shipped the NVIDIA duty_pct wire field + W1 audit hardening the current
-# GUI consumes). Bump in lockstep when the documented pairing floor moves.
-depends=('control-ofc-daemon>=2.8.1' 'python' 'pyside6' 'python-httpx'
+# control-ofc-daemon floor tracks the README pairing (≥ v2.11.0 — the daemon
+# that shipped the DEC-207 shared readiness assessment + the /status·/poll
+# readiness rollup the current GUI's Hardware page consumes). This is what the
+# GUI *requires*, not the ship-time pairing — bump only when that floor moves.
+depends=('control-ofc-daemon>=2.11.0' 'python' 'pyside6' 'python-httpx'
          'python-pyqtgraph' 'python-numpy' 'python-colorama'
          'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums runs at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('45b4dc4bbc5b6cb49ed4e964ec25ca848bd6181d93a5bac3786e43a2492827bf')
+sha256sums=('ff01649403e60728facaf6e77554f678becb9a4cb463f81abcd5513a1a4c2f8a')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -83,4 +84,11 @@ package() {
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Bundled font licences — DM Sans + Space Grotesk ship inside the wheel;
+    # OFL-1.1 §2 wants the licence carried alongside the fonts (DEC-208).
+    install -Dm644 src/control_ofc/ui/fonts/OFL-DMSans.txt \
+        "$pkgdir/usr/share/licenses/$pkgname/OFL-DMSans.txt"
+    install -Dm644 src/control_ofc/ui/fonts/OFL-SpaceGrotesk.txt \
+        "$pkgdir/usr/share/licenses/$pkgname/OFL-SpaceGrotesk.txt"
 }
