@@ -1,10 +1,10 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
-_gpuarch=gfx120X-all
+_gpuarch=gfx120X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.15.0a20260715
+pkgver=7.15.0a20260716
 pkgrel=1
-pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
+pkgdesc="AMD ROCm Nightly Release (RDNA4) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
 license=('MIT' 'custom:LicenseRef-ROCm-EULA')
@@ -34,8 +34,8 @@ _rocm_packages=(
 provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
-source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('97c06cbd2d0ef12c6f5e42832fa60b9ecd4cee93b540c5cc1487d227b4161d93')
+source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-all-${pkgver}.tar.gz")
+sha256sums=('86b912e706d39e7bd52f4bc47d72f7cf5d2290122b62ffcf591e7bc1d54df2fc')
 
 noextract=("${source[@]##*/}")
 
