@@ -1,0 +1,17 @@
+pkgbase = netman-git
+	pkgdesc = TUI applet analogue of network-manager-applet
+	pkgver = r23.g5903dce
+	pkgrel = 1
+	url = https://github.com/Gigas002/netman
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = networkmanager
+	depends = dbus
+	provides = netman
+	conflicts = netman
+	source = netman::git+https://github.com/Gigas002/netman.git
+	b2sums = SKIP
+
+pkgname = netman-git
