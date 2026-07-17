@@ -1,30 +1,27 @@
 # Maintainer: AndroidHyper <iuseopensusebtw@gmail.com>
 pkgname=superinstall-bin
-pkgver=1.5
+pkgver=1.8
 pkgrel=1
-pkgdesc="A security-focused package manager alternative to paru and yay (Pre-compiled binaries)"
-arch=('x86_64' 'aarch64' 'i686')
+pkgdesc="A security-focused package manager alternative to paru and yay (C & Raylib Port - Binary)"
+arch=('x86_64')
 url="https://github.com/AndroidHyperOfficial/superinstall-aur-helper"
 license=('GPL-3.0')
-depends=('pacman' 'git' 'curl' 'gnupg' 'glibc')
+depends=('pacman' 'git' 'curl' 'gnupg' 'glibc' 'raylib' 'libx11')
 provides=('superinstall')
 conflicts=('superinstall')
+options=(!debug !strip)
 
-source_x86_64=("superinstall-x86_64::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v${pkgver}/superinstall-x86_64")
-source_aarch64=("superinstall-arm64::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v${pkgver}/superinstall-arm64")
-source_i686=("superinstall-386::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v${pkgver}/superinstall-386")
-
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
-sha256sums_i686=('SKIP')
+# Downloads the pre-compiled binary and the source tag archive (to grab the font file)
+source=(
+    "superinstall::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/${pkgver}V/superinstall"
+    "https://github.com/AndroidHyperOfficial/superinstall-aur-helper/archive/refs/tags/${pkgver}V.tar.gz"
+)
+sha256sums=('SKIP' 'SKIP')
 
 package() {
-    local _arch_bin="superinstall-x86_64"
-    if [ "$CARCH" = "aarch64" ]; then
-        _arch_bin="superinstall-arm64"
-    elif [ "$CARCH" = "i686" ]; then
-        _arch_bin="superinstall-386"
-    fi
-
-    install -Dm755 "${srcdir}/${_arch_bin}" "${pkgdir}/usr/bin/superinstall"
+    # 1. Install the pre-compiled executable binary
+    install -Dm755 "${srcdir}/superinstall" "${pkgdir}/usr/bin/superinstall"
+    
+    # 2. Extract and install the font file from the source archive
+    install -Dm644 "${srcdir}/superinstall-aur-helper-${pkgver}V/fonts/UbuntuMonoNerdFont-Regular.ttf" "${pkgdir}/usr/share/fonts/TTF/UbuntuMonoNerdFont-Regular.ttf"
 }
