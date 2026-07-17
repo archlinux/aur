@@ -1,16 +1,16 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=hyprselect-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lightweight TUI screen share picker for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZauJulio/hyprselect"
 license=('MIT')
 depends=('slurp')
-optdepends=('ghostty: default terminal for the picker wrapper'
-            'kitty: alternative terminal for the picker wrapper'
-            'foot: alternative terminal for the picker wrapper'
-            'alacritty: alternative terminal for the picker wrapper')
+optdepends=('ghostty: terminal for the picker UI'
+            'kitty: terminal for the picker UI'
+            'foot: terminal for the picker UI'
+            'alacritty: terminal for the picker UI')
 provides=('hyprselect')
 conflicts=('hyprselect')
 install=hyprselect.install
@@ -23,7 +23,6 @@ sha256sums_aarch64=('SKIP')
 
 package() {
     install -Dm755 hyprselect "${pkgdir}/usr/bin/hyprselect"
-    install -Dm755 hyprselect-picker "${pkgdir}/usr/bin/hyprselect-picker"
     install -Dm644 share/hyprselect/xdph.conf "${pkgdir}/usr/share/hyprselect/xdph.conf"
     install -Dm644 share/hyprselect/portals.conf "${pkgdir}/usr/share/hyprselect/portals.conf"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
