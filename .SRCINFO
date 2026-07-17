@@ -1,13 +1,14 @@
 pkgbase = uolt
-	pkgdesc = 34 Unix tools in x86_64 assembly: no libc, no heap, direct syscalls
-	pkgver = 0.1.0
+	pkgdesc = 34 Unix tools in assembly (x86_64/aarch64): no libc, no heap, direct syscalls
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/thooams/uolt
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = clang
 	makedepends = binutils
-	source = uolt-0.1.0.tar.gz::https://github.com/thooams/uolt/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 9cfdbdefa998abff76ad3e58f8dce1102ae3632b38568c2a6d4458cdb4d21520
+	source = uolt-0.2.0.tar.gz::https://github.com/thooams/uolt/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = fd227a458be4dea888de824ffef4bcf1fbf68212702f52da73b84c047584724f
 
 pkgname = uolt

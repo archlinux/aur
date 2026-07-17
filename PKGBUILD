@@ -1,14 +1,14 @@
 # Maintainer: Thomas <thomas@hummel.link>
 pkgname=uolt
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="34 Unix tools in x86_64 assembly: no libc, no heap, direct syscalls"
-arch=('x86_64')
+pkgdesc="34 Unix tools in assembly (x86_64/aarch64): no libc, no heap, direct syscalls"
+arch=('x86_64' 'aarch64')
 url="https://github.com/thooams/uolt"
 license=('MIT')
 makedepends=('clang' 'binutils')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thooams/uolt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9cfdbdefa998abff76ad3e58f8dce1102ae3632b38568c2a6d4458cdb4d21520')
+sha256sums=('fd227a458be4dea888de824ffef4bcf1fbf68212702f52da73b84c047584724f')
 
 build() {
     cd "$pkgname-$pkgver"
