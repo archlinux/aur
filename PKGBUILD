@@ -16,6 +16,7 @@ depends=(
     'python-pillow'
     'python-customtkinter'
     'ffmpeg'
+    'python-secretstorage'
 )
 makedepends=(
     'python-build'
