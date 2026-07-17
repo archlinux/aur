@@ -4,22 +4,22 @@ pkgver=r1783.7aef471
 pkgrel=1
 pkgdesc="Local Battle Cats seed tracking server with high-performance C seeker"
 arch=('x86_64')
-url="https://gitlab.com/godfat/battle-cats-rolls"
+url="https://gitlab.com/godfat/battle-cats-rolls-git"
 license=("Apache-2.0")
 depends=('ruby' 'memcached' 'clang' 'zenity' 'curl')
 makedepends=('git')
-provides=('battle-cats-rolls')
-conflicts=('battle-cats-rolls')
+provides=('battle-cats-rolls-git')
+conflicts=('battle-cats-rolls-git')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/battle-cats-rolls"
+  cd "${srcdir}/battle-cats-rolls-git"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/battle-cats-rolls"
+  cd "${srcdir}/battle-cats-rolls-git"
   echo ":: Compiling VampireFlower C seeker engine..."
   ./Seeker/bin/build-VampireFlower.sh
 
@@ -38,41 +38,41 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/battle-cats-rolls"
+  cd "${srcdir}/battle-cats-rolls-git"
 
-  install -d "${pkgdir}/usr/share/webapps/battle-cats-rolls"
+  install -d "${pkgdir}/usr/share/webapps/battle-cats-rolls-git"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/pixmaps"
 
   echo ":: Copying core files to application directory..."
-  cp -r Seeker bin config lib Gemfile config.ru Rakefile build data "${pkgdir}/usr/share/webapps/battle-cats-rolls/"
-  cp "${srcdir}/battle-cats-rolls/lib/battle-cats-rolls/asset/image/treasure.png" "${pkgdir}/usr/share/pixmaps/battle-cats-rolls.png"
+  cp -r Seeker bin config lib Gemfile config.ru Rakefile build data "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/"
+  cp "${srcdir}/battle-cats-rolls-git/lib/battle-cats-rolls-git/asset/image/treasure.png" "${pkgdir}/usr/share/pixmaps/battle-cats-rolls-git.png"
 
-  [ -d public ] && cp -r public "${pkgdir}/usr/share/webapps/battle-cats-rolls/"
+  [ -d public ] && cp -r public "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/"
 
-  touch "${pkgdir}/usr/share/webapps/battle-cats-rolls/.env"
+  touch "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/.env"
 
   echo ":: Deploying sandboxed Ruby environment..."
-  export GEM_HOME="${pkgdir}/usr/share/webapps/battle-cats-rolls/vendor/bundle"
+  export GEM_HOME="${pkgdir}/usr/share/webapps/battle-cats-rolls-git/vendor/bundle"
   export PATH="$PATH:$GEM_HOME/bin"
 
   gem install --no-document --install-dir "$GEM_HOME" bundler erb dalli
 
   bundle config set --local path "$GEM_HOME"
   bundle config set --local without 'cache:test'
-  bundle install --gemfile="${pkgdir}/usr/share/webapps/battle-cats-rolls/Gemfile"
+  bundle install --gemfile="${pkgdir}/usr/share/webapps/battle-cats-rolls-git/Gemfile"
 
-  find "${pkgdir}/usr/share/webapps/battle-cats-rolls" -type d -exec chmod 755 {} +
-  find "${pkgdir}/usr/share/webapps/battle-cats-rolls" -type f -exec chmod 644 {} +
+  find "${pkgdir}/usr/share/webapps/battle-cats-rolls-git" -type d -exec chmod 755 {} +
+  find "${pkgdir}/usr/share/webapps/battle-cats-rolls-git" -type f -exec chmod 644 {} +
 
-  if [ -d "${pkgdir}/usr/share/webapps/battle-cats-rolls/vendor/bundle/bin" ]; then
-      chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls/vendor/bundle/bin/"*
+  if [ -d "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/vendor/bundle/bin" ]; then
+      chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/vendor/bundle/bin/"*
   fi
-  chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls/bin/server"
-  chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls/Seeker/Seeker-VampireFlower"
+  chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/bin/server"
+  chmod +x "${pkgdir}/usr/share/webapps/battle-cats-rolls-git/Seeker/Seeker-VampireFlower"
 
-  cat <<'EOF' > "${pkgdir}/usr/bin/battle-cats-rolls-run"
+  cat <<'EOF' > "${pkgdir}/usr/bin/battle-cats-rolls-git-run"
 #!/bin/bash
 
 echo "=================================================="
@@ -91,8 +91,8 @@ if ! systemctl is-active --quiet memcached; then
     echo ""
 fi
 
-cd "/usr/share/webapps/battle-cats-rolls" || exit
-export GEM_HOME="/usr/share/webapps/battle-cats-rolls/vendor/bundle"
+cd "/usr/share/webapps/battle-cats-rolls-git" || exit
+export GEM_HOME="/usr/share/webapps/battle-cats-rolls-git/vendor/bundle"
 export PATH="$PATH:$GEM_HOME/bin"
 
 LOCAL_IP=$(ip route get 1.1.1.1 2>/dev/null | grep -oP 'src \K\S+')
@@ -120,9 +120,9 @@ if ! bundle exec ./bin/server; then
     read -r
 fi
 EOF
-  chmod +x "${pkgdir}/usr/bin/battle-cats-rolls-run"
+  chmod +x "${pkgdir}/usr/bin/battle-cats-rolls-git-run"
 
-  cat <<'EOF' > "${pkgdir}/usr/bin/battle-cats-rolls-launcher"
+  cat <<'EOF' > "${pkgdir}/usr/bin/battle-cats-rolls-git-launcher"
 #!/bin/bash
 
 TERMINALS=('kitty' 'alacritty' 'ghostty' 'foot' 'gnome-terminal' 'konsole' 'xfce4-terminal' 'terminator' 'guake' 'yakuake')
@@ -146,29 +146,29 @@ fi
 
 case "$FOUND_TERM" in
     "kitty" | "foot")
-        $FOUND_TERM /usr/bin/battle-cats-rolls-run
+        $FOUND_TERM /usr/bin/battle-cats-rolls-git-run
         ;;
     "alacritty" | "ghostty" | "terminator" | "guake" | "yakuake")
-        $FOUND_TERM -e /usr/bin/battle-cats-rolls-run
+        $FOUND_TERM -e /usr/bin/battle-cats-rolls-git-run
         ;;
     "gnome-terminal" | "konsole" | "xfce4-terminal")
-        $FOUND_TERM -- /usr/bin/battle-cats-rolls-run
+        $FOUND_TERM -- /usr/bin/battle-cats-rolls-git-run
         ;;
     *)
-        $FOUND_TERM -e /usr/bin/battle-cats-rolls-run
+        $FOUND_TERM -e /usr/bin/battle-cats-rolls-git-run
         ;;
 esac
 EOF
-  chmod +x "${pkgdir}/usr/bin/battle-cats-rolls-launcher"
+  chmod +x "${pkgdir}/usr/bin/battle-cats-rolls-git-launcher"
 
-  cat <<EOF > "${pkgdir}/usr/share/applications/battle-cats-rolls.desktop"
+  cat <<EOF > "${pkgdir}/usr/share/applications/battle-cats-rolls-git.desktop"
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=Battle Cats Rolls
 Comment=Launch the local seed tracking engine inside a terminal window
-Exec=/usr/bin/battle-cats-rolls-launcher
-Icon=battle-cats-rolls
+Exec=/usr/bin/battle-cats-rolls-git-launcher
+Icon=battle-cats-rolls-git
 Terminal=false
 Categories=Game;Utility;
 StartupNotify=true
