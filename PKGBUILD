@@ -5,7 +5,7 @@
 
 _pkgname=open-stage-control
 pkgname=$_pkgname-bin
-pkgver=1.29.5
+pkgver=1.30.4
 pkgrel=1
 _dist=${_pkgname}_${pkgver}_linux-x64
 pkgdesc='A libre desktop OSC bi-directional control surface application'
@@ -16,7 +16,7 @@ depends=(gtk3 libcups libx11 nss)
 optdepends=('python-rtmidi: send and receive MIDI messages')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("https://github.com/jean-emmanuel/$_pkgname/releases/download/v$pkgver/$_dist.zip")
+source=("https://openstagecontrol.ammd.net/packages/open-stage-control_${pkgver}_linux-x64.zip")
 
 package() {
   cd $_dist
@@ -26,4 +26,4 @@ package() {
   install -vdm 755 "$pkgdir"/usr/bin
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin
 }
-sha256sums=('a68ef296683acd05c49d0bdd2b3de561785c98694ae41e50df16b721d5d767a0')
+sha256sums=('eb44ee1729f0ced0cdb6199e9114d90432607c15fca8a1bcb6b54cc5cf71eb83')
