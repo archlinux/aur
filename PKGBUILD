@@ -1,7 +1,7 @@
 # Maintainer:
 _pkgname=kh-melonmix
 pkgname=$_pkgname-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
@@ -19,7 +19,7 @@ kh-melonmix-days.desktop
 kh-melonmix-recoded.desktop
 kh-melonmix
 )
-sha256sums=("b34bdc67b2c22bf0f6954c79c17cf3ca97a862881cbe3c8eb5ebc9b651060b61"
+sha256sums=("e36f1632d420e234a1888e9cbd7afd3627845207550f98ebbaa155de51f2528c"
 	SKIP
 	SKIP
 	SKIP
