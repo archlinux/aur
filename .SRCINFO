@@ -1,6 +1,6 @@
 pkgbase = hypruse
 	pkgdesc = Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/IlyasKhallouki/hypruse
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = hypruse
 	depends = grim
 	depends = wtype
 	optdepends = wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)
-	source = hypruse-0.4.1.tar.gz::https://github.com/IlyasKhallouki/hypruse/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 8cbcbdceebff3d88bea0427d44ce84ce32c01a3c546fb2996ca68b53154d82ea
+	source = hypruse-0.5.0.tar.gz::https://github.com/IlyasKhallouki/hypruse/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 8e97d407a60393e14736efa8f3b8506d79f2502111aad0b1aa760041c1cfc78d
 
 pkgname = hypruse
