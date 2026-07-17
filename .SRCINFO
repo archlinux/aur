@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-openssl-3
+	pkgdesc = The Open Source toolkit for cryptography and Transport Layer Security (mingw-w64)
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = https://www.openssl.org
+	arch = any
+	license = Apache-2.0
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-environment
+	makedepends = perl
+	depends = mingw-w64-zlib
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	options = !lto
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.6.3/openssl-3.6.3.tar.gz
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.6.3/openssl-3.6.3.tar.gz.asc
+	validpgpkeys = EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5
+	validpgpkeys = BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
+	sha256sums = 243a86649cf6f23eeb6a2ff2456e09e5d77dd9018a54d3d96b0c6bdd6ba6c7f1
+	sha256sums = SKIP
+
+pkgname = mingw-w64-openssl-3
