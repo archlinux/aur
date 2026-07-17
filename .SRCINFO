@@ -1,7 +1,7 @@
 pkgbase = chatgpt-desktop-bin
 	pkgdesc = ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux
 	pkgver = 26.707.72221
-	pkgrel = 4
+	pkgrel = 5
 	url = https://chatgpt.com/download
 	arch = x86_64
 	license = custom
@@ -39,7 +39,7 @@ pkgbase = chatgpt-desktop-bin
 	sha256sums = ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250
 	sha256sums = c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60
 	sha256sums = 61069dec76ed8d1c10ab6825b194bdf5a19b653286a7c2684b09c62681427446
-	sha256sums = 60256a33a15fec4245fe6fd1fa51fa1f288e9c5c1f5b67b70ee1041e771d3095
+	sha256sums = 689f8d6a2eae8104761842956854e8f536282963521b47c9b9cc2a6d538bcbcd
 	sha256sums = 5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d
 	sha256sums = 6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56
 	sha256sums = edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c
