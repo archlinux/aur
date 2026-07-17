@@ -1,0 +1,25 @@
+pkgbase = mcpelauncher-linux-bin
+	pkgdesc = Minecraft Bedrock Launcher for Linux
+	pkgver = 1.7.6.28199233421.1~bookworm
+	pkgrel = 1
+	url = https://minecraft-linux.github.io
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webengine
+	depends = freeglut
+	depends = zlib
+	provides = mcpelauncher-client
+	conflicts = mcpelauncher-linux
+	conflicts = mcpelauncher-linux-git
+	noextract = mcpelauncher-manifest_1.7.6.28199233421.1~bookworm_amd64.deb
+	source = https://minecraft-linux.github.io/pkg/deb/pool/bookworm/main/m/mcpelauncher-manifest/mcpelauncher-manifest_1.7.6.28199233421.1~bookworm_amd64.deb
+	b2sums = SKIP
+
+pkgname = mcpelauncher-linux-bin
