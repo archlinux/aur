@@ -1,4 +1,4 @@
-# Maintainer: Felitendo <felitendoyt@gmail.com>
+# Maintainer: Felitendo
 # This PKGBUILD is updated automatically:
 # https://github.com/Felitendo/PKGBUILDS
 
