@@ -1,4 +1,4 @@
-# Maintainer: Ilham Setiawan <me@ilhamsetiawan.web.id>
+# Maintainer: Ilham Setiawan <me@ilhamset.id>
 
 # Check for new releases at: https://github.com/luxury-yacht/app/releases
 
