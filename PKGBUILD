@@ -1,6 +1,6 @@
 # Maintainer: Pieter Lenaerts <pieter.lenaerts@outlook.be>
 pkgname=eml2pdf
-pkgver=1.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Convert .eml (email) files to PDF using Python and Pango."
 arch=(any)
@@ -8,19 +8,25 @@ url="https://github.com/plenaerts/eml2pdf"
 license=('MIT')
 depends=('python-weasyprint' 'python-beautifulsoup4' 'python-markdown'
         'python-hurry-filesize')
+checkdepends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-wheel'
         'python-setuptools-scm' 'git')
 replaces=('eml_to_pdf-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plenaerts/eml2pdf/archive/${pkgver}.tar.gz")
-sha256sums=('05672e11175ba10a34bc29f4e3f53f6f6436674f5580590c97659d48783007e9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plenaerts/eml2pdf/archive/tags/v${pkgver}.tar.gz")
+sha256sums=('b36cd88ee675543b313033706a2ba1e20f8e62e8f3dee1745d1ee677e6c49d72')
+
+check() {
+    cd "${pkgname}-tags-v${pkgver}"
+    pytest
+}
 
 build() {
     SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-tags-v${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-tags-v${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
