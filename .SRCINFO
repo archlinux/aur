@@ -5,11 +5,11 @@ pkgbase = php85-redis
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
 	license = PHP
-	makedepends = php83
+	makedepends = php85
 	makedepends = liblzf
-	depends = php83
+	depends = php85
 	depends = liblzf
-	backup = etc/php83/conf.d/40-redis.ini
+	backup = etc/php85/conf.d/40-redis.ini
 	source = http://pecl.php.net/get/redis-6.3.0.tgz
 	sha256sums = 0d5141f634bd1db6c1ddcda053d25ecf2c4fc1c395430d534fd3f8d51dd7f0b5
 

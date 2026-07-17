@@ -1,4 +1,4 @@
-_phpbase=83
+_phpbase=85
 pkgname=php85-redis
 pkgver=6.3.0
 pkgrel=1
