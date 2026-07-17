@@ -51,7 +51,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '1b762bb064c664f8e70c438db0fd877dd525cd563427078667133452d4c3c3d6'
+  '790e708ba7df7831cb1bfd28daa51340ab19ea7b3426512994122a6c761dc017'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
