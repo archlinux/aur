@@ -1,18 +1,19 @@
 # Maintainer: Max Jeschek <max@jeschek.dev>
-# Template: CI substitutes 0.1.1 / 5bf4305797e75c215f99f6dbe9fe18c580a919ee31cc9918317ac07ac5fbeb0d (.github/workflows/release.yml).
+# Template: CI substitutes 0.1.2 / 4dbbbc43665a5f195352d1bf3609c8fc26b74ed7e36a074483beccdc6a69d48e (.github/workflows/release.yml).
 pkgname=flurfunk-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Self-hosted team chat with encrypted voice calls — client and server"
 arch=('x86_64')
 url="https://github.com/maxischmaxi/flurfunk"
 license=('MIT')
 # Audio libs (opus, rnnoise, speexdsp) are statically linked.
-depends=('glibc' 'libx11')
+# curl: the server talks to OAuth providers via libcurl.
+depends=('glibc' 'libx11' 'curl')
 provides=('flurfunk')
 conflicts=('flurfunk')
 source=("https://github.com/maxischmaxi/flurfunk/releases/download/v${pkgver}/flurfunk-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('5bf4305797e75c215f99f6dbe9fe18c580a919ee31cc9918317ac07ac5fbeb0d')
+sha256sums=('4dbbbc43665a5f195352d1bf3609c8fc26b74ed7e36a074483beccdc6a69d48e')
 
 package() {
 	cd "flurfunk-${pkgver}-linux-x86_64"

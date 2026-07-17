@@ -1,15 +1,16 @@
 pkgbase = flurfunk-bin
 	pkgdesc = Self-hosted team chat with encrypted voice calls — client and server
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/maxischmaxi/flurfunk
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libx11
+	depends = curl
 	provides = flurfunk
 	conflicts = flurfunk
-	source = https://github.com/maxischmaxi/flurfunk/releases/download/v0.1.1/flurfunk-0.1.1-linux-x86_64.tar.gz
-	sha256sums = 5bf4305797e75c215f99f6dbe9fe18c580a919ee31cc9918317ac07ac5fbeb0d
+	source = https://github.com/maxischmaxi/flurfunk/releases/download/v0.1.2/flurfunk-0.1.2-linux-x86_64.tar.gz
+	sha256sums = 4dbbbc43665a5f195352d1bf3609c8fc26b74ed7e36a074483beccdc6a69d48e
 
 pkgname = flurfunk-bin
