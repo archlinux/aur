@@ -1,8 +1,8 @@
-# Maintainer: azerty-xmpp
+# Maintainer: azerty-xmpp <your.email@example.com>
 pkgname=dwl-git-azerty
 pkgver=0.8.dev.r87.a2d03cf
 pkgrel=1
-pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom config)"
+pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom build)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
 license=('GPL')
@@ -11,8 +11,9 @@ makedepends=('git' 'make' 'wayland-protocols')
 source=(
     'git+https://codeberg.org/dwl/dwl'
     'tearing.patch::https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/tearing/tearing.patch'
+    'unclutter.patch::https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/unclutter/unclutter.patch'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/dwl"
@@ -22,16 +23,18 @@ pkgver() {
 prepare() {
     cd "$srcdir/dwl"
     
-    # 1. Apply the Tearing Patch
+    # 1. Apply the Patches
     patch -p1 < "$srcdir/tearing.patch"
+    patch -p1 < "$srcdir/unclutter.patch"
     
     # 2. Force Tearing EVERYWHERE (The Catch-All Rule)
-    # Using NULL for both values tells dwl to apply this to all clients.
-    sed -i '/static const ForceTearingRule force_tearing\[\] = {/a \t{.title = NULL, .appid = NULL},' config.def.h
+    # Using standard spaces instead of \t to prevent sed literal parsing errors
+    sed -i '/static const ForceTearingRule force_tearing\[\] = {/a \    {.title = NULL, .appid = NULL},' config.def.h
     
     # 3. Aesthetics & Term
     sed -i 's/borderpx = .*/borderpx = 0;/g' config.def.h
-    sed -i 's/COLOR(0x.*)/COLOR(0x000000ff);/g' config.def.h
+    # Removed the trailing semicolon in the replacement to prevent ';;' compilation errors
+    sed -i 's/COLOR(0x.*)/COLOR(0x000000ff)/g' config.def.h
     sed -i 's/termcmd\[\] = .*/termcmd[] = { "havoc", NULL };/g' config.def.h
     
     # 4. Meta Key
