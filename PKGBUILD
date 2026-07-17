@@ -1,6 +1,6 @@
 # Maintainer: kharec <sandro@cazzaniga.fr>
 pkgname=nixd
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='Nix language server'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('nix' 'llvm' 'boost' 'nlohmann-json')
 makedepends=('meson' 'ninja' 'pkgconf' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nixd/archive/refs/tags/$pkgver.tar.gz"
         "nixd-llvm19-compat.patch")
-sha256sums=('845278d18f13476c8f2dc3b548b727411f8c8f0d601721270c4b3f76ab36b592'
+sha256sums=('2b46cc1e91fcf76e7b939905fa696217ea96639af9e9444cfe8afa18088cccbd'
             'a2fc1f82264e43873a34e4742b456383f4a32fb474c5618da598f80e6895f8f1')
 
 prepare() {
