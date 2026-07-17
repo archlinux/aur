@@ -6,7 +6,7 @@
 pkgname=mingw-w64-qt6-svg
 _qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL-3.0-only
