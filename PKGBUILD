@@ -1,8 +1,8 @@
 # Maintainer: avionix <avionix at gmx dot com>
 
 pkgname=ttf-astacid-mono
-_commit='4c999ce4fc31b1f0ce60306a43db8cde065c309a'
-pkgver='2.0'
+_commit='fca83c318d8f385b9d5694595128d85a72706a75'
+pkgver='2.1'
 pkgrel=1
 pkgdesc='A DejaVu Sans Mono-based font for programming, patched with Nerd Fonts'
 arch=('any')
@@ -16,10 +16,10 @@ source=(
 	"${pkgname}-${pkgver}-MIT.txt::${url}/raw/${_commit}/LICENSE"
 )
 sha256sums=(
-	'e60f569c21c46bd66ba425a3daf2902997db559dbaf484361d2d7a2db31b47b6'
-	'7d8e5614caf057d82add7c0d07ec04e8a34e93676118ed6d1d35129d2a0bf9f1'
-	'df7d4db56513d5890891f2e15bde59324125f2c96e1fe4a68fd1dfa0aa756e8f'
-	'669b8fd4afb9494469bddcc582affece8751d5601df189d5a38999427fc9fa8b'
+	'6b4dd832649ac1174c374eee74c7bdd634d2fb09e92b668d8bd4be77b5942206'
+	'e90426c375b877d77a36ef79b07ec6db3899bd11143c757d53a2bc16a5b649db'
+	'346d6efd6ae4a777f10845425ab1c4fa11d89424cbea43b186e82058f8e11d5b'
+	'767dc5dc909224ef1c8d91f589f22098393fa0f24b30516eb309eedfb5769079'
 	'f4f617a9242f6faa4be05e3df0378cc3d7e9c49f73217b15cc4af7956646657c'
 )
 
