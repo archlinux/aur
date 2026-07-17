@@ -51,6 +51,7 @@ depends=(
   polkit
   re2
   seatd
+  sdbus-cpp
   systemd-libs
   tomlplusplus
   util-linux-libs

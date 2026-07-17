@@ -51,6 +51,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = polkit
 	depends = re2
 	depends = seatd
+	depends = sdbus-cpp
 	depends = systemd-libs
 	depends = tomlplusplus
 	depends = util-linux-libs
