@@ -1,6 +1,6 @@
 pkgbase = pgtidy-bin
 	pkgdesc = PostgreSQL SQL formatter and linter
-	pkgver = 0.0.4
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://git.warky.dev/wdevs/pgtidy
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pgtidy-bin
 	license = MIT
 	provides = pgtidy
 	conflicts = pgtidy
-	source_x86_64 = pgtidy-bin-0.0.4.tar.gz::https://git.warky.dev/wdevs/pgtidy/releases/download/v0.0.4/pgtidy_0.0.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0eacf129227da4c044cc8f0e4a911e8d2a88405309870fa8ef6f9a07e954608e
-	source_aarch64 = pgtidy-bin-0.0.4.tar.gz::https://git.warky.dev/wdevs/pgtidy/releases/download/v0.0.4/pgtidy_0.0.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = a44bdf52ac6854a485d2aeeaecffc43fc96f7b5e0b469b209d8359cbb1319955
+	source_x86_64 = pgtidy-bin-0.0.6.tar.gz::https://git.warky.dev/wdevs/pgtidy/releases/download/v0.0.6/pgtidy_0.0.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = a5e9cad0e69dec689825cf31d42018b28b64017718e3226ffb688dddefeaf518
+	source_aarch64 = pgtidy-bin-0.0.6.tar.gz::https://git.warky.dev/wdevs/pgtidy/releases/download/v0.0.6/pgtidy_0.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = fcd199f862caa8527ad40f2edbc87bb539b2a4e698115bbaaa0d643d1dbe181e
 
 pkgname = pgtidy-bin
