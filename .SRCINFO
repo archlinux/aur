@@ -1,6 +1,6 @@
 pkgbase = picard3
 	pkgdesc = Official MusicBrainz tagger
-	pkgver = 3.0.0b5
+	pkgver = 3.0.0b7
 	pkgrel = 1
 	url = https://github.com/metabrainz/picard
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = picard3
 	optdepends = qt6-translations: full UI translation
 	provides = picard
 	conflicts = picard
-	source = http://data.musicbrainz.org/pub/musicbrainz/picard/picard-3.0.0b5.tar.gz
-	sha256sums = e6610daa8be9f04eff66d461458b9a4e06e903a21f2494ec22580457b1cc4292
+	source = http://data.musicbrainz.org/pub/musicbrainz/picard/picard-3.0.0b7.tar.gz
+	sha256sums = 075e3e77a6e8425b2c38dd3e83e81fc0e255209ab03f771ca6a936aedc4e8d70
 
 pkgname = picard3
