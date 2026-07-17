@@ -1,7 +1,7 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
 pkgname=cargo-shear
-pkgver="1.13.0"
+pkgver="1.13.2"
 pkgrel=1
 pkgdesc="Remove unused dependencies in a Rust project"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Boshen/cargo-shear"
 license=('MIT')
 depends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c9b7103f39a2b1dd6da03dd6604e326790c021d00b5022c6b3dadb8a6346954e1cf8efddab43ceaa7af34347ce3dc6069e84ace66a0fb86a542ad30db5e241d8')
+sha512sums=('ea3339d0cec34131fe4eb4ef81eb0fe069987fc44a7d9efae086380bf11501934fce06b1aa3477c6339cca57a6ba59552820955adde52b60f3efbb62883e0e28')
 
 prepare() {
   cd "$pkgname-$pkgver"
