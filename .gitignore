@@ -4,5 +4,7 @@
 !LICENSE
 !PKGBUILD
 !REUSE.toml
+!flake.lock
+!flake.nix
 !LICENSES
 !LICENSES/**
