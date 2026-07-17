@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader(without docs)"
 arch=('x86_64')
 url="https://gitlab.com/gnuwget/wget2"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later AND LGPL-3.0-or-later')
 depends=('glibc' 'pcre2' 'libidn2' 'zstd' 'brotli' 'xz' 'zlib' 'gpgme' 'bzip2' 'libnghttp2' 'libpsl' 'gnutls' 'ca-certificates')
 # libhsts is optional but not in any repository. I currently don't feel
 # the motivation to package it myself since it requires regularly
@@ -28,7 +28,7 @@ build() {
     --with-ssl=gnutls \
     --without-libhsts \
     --without-libidn \
-    --without-pcre \
+    --without-libpcre \
     --disable-doc
 
   make
@@ -49,6 +49,7 @@ package() {
   install -Dm644 docs/man/man3/*.3 -t "$pkgdir"/usr/share/man/man3/
   install -Dm644 docs/wget2.info -t "$pkgdir"/usr/share/info/
   install -Dm644 docs/wget2.md -t "$pkgdir"/usr/share/doc/$pkgname/
+  install -Dm644 COPYING COPYING.LESSER -t "$pkgdir"/usr/share/licenses/$pkgname/
 
   # AFAICT wget2_noinstall is meant run `make check` before installing
   # wget2 itself. Normally, wget2 links to libwget, which is located
