@@ -1,0 +1,17 @@
+pkgbase = optmusic
+	pkgdesc = Minimal black and white CLI music player powered by MPV
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/fireflylabss/optMusic
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = mpv
+	depends = gcc-libs
+	depends = glibc
+	optdepends = cava: optional spectrum bars
+	options = !lto
+	source = optmusic-0.2.4.tar.gz::https://github.com/fireflylabss/optMusic/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = baa5933ab4935030c3ca9bb644e9090554f5a1c92c68b8953fb0c0811118869f
+
+pkgname = optmusic
