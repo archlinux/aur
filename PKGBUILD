@@ -2,7 +2,7 @@
 # Maintainer: Michael Placzek <heymaikol@proton.me>
 
 pkgname='network-doctor'
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Terminal UI that diagnoses network connectivity and explains where the connection breaks'
 url='https://github.com/heymaikol/network-doctor'
@@ -12,15 +12,15 @@ provides=('network-doctor')
 conflicts=('network-doctor')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/heymaikol/network-doctor/releases/download/v${pkgver}/network-doctor-${pkgver}.tar.gz")
-sha256sums=('d4371e54fd3abb8bad4aaf6e03a7f73f02dc410d92feb911b9f5db71567c273c')
+sha256sums=('e80b476855cc70c840256e0e1f1827db2ce3427822b91808d74413266ffe5331')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X main.version=${pkgver}" -o "${pkgname}" .
+  go build -ldflags "-s -w -X main.version=${pkgver}" -o netdoc .
 }
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 netdoc "${pkgdir}/usr/bin/netdoc"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
