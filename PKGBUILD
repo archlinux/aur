@@ -3,8 +3,8 @@
 
 pkgname=freetube
 _pkgname=FreeTube
-pkgver=0.24.1
-_electron=electron41
+pkgver=0.25.0
+_electron=electron42
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,16 +15,15 @@ url=https://freetubeapp.io
 source=(https://github.com/FreeTubeApp/FreeTube/archive/v$pkgver-beta.tar.gz
         freetube.desktop
         freetube.sh)
-sha256sums=('bf45838a6d094e9ffe5ecce8381b0c9eeed49e443bd882b785a357e07d83b98e'
+sha256sums=('3eae2b5fa67d943597c4c6aa6b07352fc0d350a6a4d6ad7750dc56f1e08970d3'
             'ada2b4b8f6a1e8896acbce4f4d311228d2c86026c273ffa00afa3247294f8b1e'
-            'c91fb1dab3b6439967833efce9ee9356a0fc9f803fee53c9cbe25b00c85fab59')
+            '1b202a62d3ba821df518926bdea76f6a4532f6c30a5c21d44cb9b9b374e543f7')
 
 prepare() {
   sed -i "5i electronDist: '/usr/lib/$_electron'," "$srcdir/$_pkgname-$pkgver-beta/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname-$pkgver-beta/_scripts/build.mjs"
   sed -i "s/_electron_/$_electron/" "$srcdir/freetube.sh"
   echo "strictDepBuilds: false" > "$srcdir/$_pkgname-$pkgver-beta/pnpm-workspace.yaml"
-  # sed -i "6i strictDepBuilds: false" "$srcdir/$_pkgname-$pkgver-beta/pnpm-workspace.yaml"
 }
 
 build() {
