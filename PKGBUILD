@@ -2,7 +2,7 @@
 # Contributor: Fermín Olaiz <ferminolaiz@gmail.com>
 
 pkgname=aerion-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="An Open Source Lightweight E-Mail Client"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('aerion')
 conflicts=('aerion')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/hkdb/aerion/releases/download/v$pkgver/aerion-linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/hkdb/aerion/releases/download/v$pkgver/aerion-linux-arm64.tar.gz")
-sha256sums_x86_64=('4de5f673b256a683790d263c4adb85beed1601c711d0368ff2d4633707e933a1')
-sha256sums_aarch64=('cecd8d17295a77cf65d41278f692a1325ff27f0c46e3f639167c0f5fb576c749')
+sha256sums_x86_64=('f4c8820b03c6e82a5c78656e094212dd3429bab01ef4e0cb36f0e346d2371020')
+sha256sums_aarch64=('c0ab850187d9827204547a1fff165913973d8fd29a6eb25d1c5e83fe45693577')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" aerion
