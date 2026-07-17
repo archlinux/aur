@@ -24,8 +24,12 @@ pkgbase = newsboat-og
 	source = newsboat-og-2.13.2.tar.gz::https://github.com/andreasbaumann/newsboat-og/archive/r2.13.2.tar.gz
 	source = newsboat-og-curl-proxytype-cast.patch::https://github.com/andreasbaumann/newsboat-og/commit/f2b404c3c4853d27f5def7d21e0040dcffc0fe61.patch
 	source = newsboat-og-json-c-isystem.patch::https://github.com/andreasbaumann/newsboat-og/commit/d11e3705b53cc219a47c7d6790faea841153d6c1.patch
+	source = newsboat-og-image-count.patch::https://github.com/andreasbaumann/newsboat-og/commit/ae260fcecc786ab07fd37df00105d410726883bc.patch
+	source = newsboat-og-json-hpp-3.11.3.patch::https://github.com/andreasbaumann/newsboat-og/commit/1ab71d889a38a4b3d8251da7c955d1ac1f362215.patch
 	sha256sums = b6646c92e87590b8780111a03ecda139faa846c1fb030bf02f0d89edbff9b8cc
 	sha256sums = 83ae846553482e11d3ffae9c8190b167f2f83c3e08622e24df712a643d487907
 	sha256sums = 48bdbf4fd88005d52a3c513d89dbfe5a2f9900419370259c9d7a3c7e4e1565b6
+	sha256sums = 92213e3ed1b7f1eb1d8678a3f2c243c9592e7fab6e32af14df247ee1fbdfce91
+	sha256sums = 93d152d5434a079a7bd2ca6b2a1e224bed002fb4e08058f62a42b60342fde533
 
 pkgname = newsboat-og
