@@ -3,7 +3,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=weaviate-bin
-pkgver=1.38.3
+pkgver=1.38.5
 pkgrel=1
 pkgdesc='An open source vector database written in Go'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ sha256sums=('a375b1c55be48563ea3284a264352f1673c3f8e8f83bfd337c2ddfaeb532ce6d'
             '1507f4003ed6d3d5230cc9570e6f69c3be6177b52496b976f10a93519626b86a'
             'a644fc4eaa46e97381df09b5321e60a9ca1cfdac67277b8fe103fb4bd96d4fa0'
             '557f6c52ca3c4dc261a5ff11e4d998b9f66690c8ee2075450a2a225107b58f57')
-sha256sums_x86_64=('9eb44933c1252aa885ef222a5d4803d2938b4e9b23f3ac284cbdf4731ff0e779')
-sha256sums_aarch64=('b15aa87c7c8178c984d3cfb8188e45cd7379a42e66759a3f440de396b4ab06ec')
+sha256sums_x86_64=('d7b8ecb2cb3a624a1d987ec83321c6fb91cb9b7699e6f4cd865fe3ebe29c6cea')
+sha256sums_aarch64=('9d9f0fb35ba49c3b995021b4f1559cdaade249abd2a11534084cec2a81574436')
 
 package() {
   # binary
