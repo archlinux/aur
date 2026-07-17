@@ -1,6 +1,6 @@
 pkgbase = py3status-knmiweather
 	pkgdesc = Py3status module for displaying the local weather using the Dutch KNMI data
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://codeberg.org/jackodirks/py3status-knmiweather
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = py3status-knmiweather
 	depends = python-netcdf4
 	depends = python-numpy
 	depends = python-requests
-	source = https://codeberg.org/jackodirks/py3status-knmiweather/archive/v0.0.4.tar.gz
-	sha512sums = 707597b7d5db21ef0f174ed951965c1e428984cb775de4eb04d522aa7db5772d93f02825a67441a6810cd18ab2ee41c67765ed795f8bb74df8b91d5ff3402318
+	source = https://codeberg.org/jackodirks/py3status-knmiweather/archive/v0.0.5.tar.gz
+	sha512sums = cd2964093ae9229f24579277e71e2d83d8a67172d3618701a1b821d151b852fd0339960753d1260f36edea281d9d4bb00c52dbaf3035a860f2a468e6bc5f6360
 
 pkgname = py3status-knmiweather
