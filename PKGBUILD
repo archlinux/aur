@@ -1,6 +1,6 @@
 # Maintainer: Mark Roboff <mark.roboff@bluecircuit.ai>
 pkgname=vm-curator
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A TUI application to manage QEMU/KVM VMs"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
     'polkit: privilege escalation for KVM'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mroboff/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('11563411f9e174993879c81582cdc0864dc3f8646960f139b2690870562b5162')
+sha256sums=('3d4007264b74d10ced9cc945660c5d5f7c480adbf4191bc20a83ec996d1dad27')
 
 prepare() {
     cd "$pkgname-$pkgver"
