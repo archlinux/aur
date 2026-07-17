@@ -1,7 +1,7 @@
 From c122876cd248322ed9101b45da376e5535300de4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 9 May 2025 22:26:39 +0200
-Subject: [PATCH 18/24] Fix Android build after
+Subject: [PATCH 18/25] Fix Android build after
  ec2e3e7ac92d000e0df0c693b9a636390d34a9eb
 
 Change-Id: I02563b129a949c36aff91a4645b6ee10a8cfba2c
@@ -23,5 +23,5 @@ index 8021af7e4fd..4c1e023be97 100644
  {
      std::array<char, 16> name{};
 -- 
-2.54.0
+2.55.0
 
