@@ -1,15 +1,16 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server"
 arch=('any')
 url="https://github.com/IlyasKhallouki/hypruse"
 license=('MIT')
 depends=('python' 'python-mcp' 'grim' 'wtype')
+optdepends=('wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9e984cc56f9fb9f934c9f2de1e932780f8403b78403ef90ba7ce39727e26aa4')
+sha256sums=('6189638996b5852697ad74a428194ad2cf4e4e8a6e4a65a622e158a5d38a7268')
 
 build() {
   cd "$pkgname-$pkgver"
