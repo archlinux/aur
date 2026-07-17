@@ -1,7 +1,7 @@
 pkgbase = newsboat-og
 	pkgdesc = An RSS/Atom feed reader for text terminals (old gen)
 	pkgver = 2.13.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/andreasbaumann/newsboat-og
 	arch = x86_64
 	arch = i486
@@ -23,7 +23,9 @@ pkgbase = newsboat-og
 	options = !makeflags
 	source = newsboat-og-2.13.2.tar.gz::https://github.com/andreasbaumann/newsboat-og/archive/r2.13.2.tar.gz
 	source = newsboat-og-curl-proxytype-cast.patch::https://github.com/andreasbaumann/newsboat-og/commit/f2b404c3c4853d27f5def7d21e0040dcffc0fe61.patch
+	source = newsboat-og-json-c-isystem.patch::https://github.com/andreasbaumann/newsboat-og/commit/d11e3705b53cc219a47c7d6790faea841153d6c1.patch
 	sha256sums = b6646c92e87590b8780111a03ecda139faa846c1fb030bf02f0d89edbff9b8cc
 	sha256sums = 83ae846553482e11d3ffae9c8190b167f2f83c3e08622e24df712a643d487907
+	sha256sums = 48bdbf4fd88005d52a3c513d89dbfe5a2f9900419370259c9d7a3c7e4e1565b6
 
 pkgname = newsboat-og
