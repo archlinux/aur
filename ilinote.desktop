@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ilinote
+Comment=A modern note-taking app with graph view, tags, and internal links
+Exec=ilinote
+Icon=ilinote
+Terminal=false
+Categories=Office;Utility;
+Keywords=note;notes;markdown;graph;obsidian;
+StartupNotify=true
