@@ -1,0 +1,21 @@
+pkgbase = superinstall
+	pkgdesc = A security-focused package manager alternative to paru and yay (Built from source)
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/AndroidHyperOfficial/superinstall-aur-helper
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0
+	makedepends = go
+	depends = pacman
+	depends = git
+	depends = curl
+	depends = gnupg
+	depends = glibc
+	provides = superinstall
+	conflicts = superinstall-bin
+	source = superinstall-1.5.tar.gz::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/archive/refs/tags/v1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = superinstall
