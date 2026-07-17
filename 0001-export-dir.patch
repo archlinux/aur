@@ -1,0 +1,20 @@
+diff --git a/electron-builder.mjs b/electron-builder.mjs
+index fc04128..3caaa41 100644
+--- a/electron-builder.mjs
++++ b/electron-builder.mjs
+@@ -19,14 +19,10 @@ export default /** @type import('electron-builder').Configuration */
+     releaseType: 'release',
+   },
+   linux: {
+-    target: ['flatpak'],
++    target: ['dir'],
+     category: 'Utility',
+     syncDesktopName: true,
+   },
+-  flatpak: {
+-    runtimeVersion: '24.08',
+-    baseVersion: '24.08',
+-  },
+   win: {
+     target: [{
+       target: 'nsis',

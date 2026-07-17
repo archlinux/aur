@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PD2MM
+Exec=/usr/bin/pd2mm %U
+Terminal=false
+Type=Application
+Icon=pd2mm
+StartupWMClass=pd2mm
+Categories=Game;
+Keywords=payday;mod;
+Comment=PD2MM is a desktop application for installing and managing PAYDAY 2 mods with a fast, modern workflow.
+MimeType=x-scheme-handler/mws-pdmm

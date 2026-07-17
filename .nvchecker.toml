@@ -1,0 +1,4 @@
+[pd2mm]
+source = "git"
+git = "https://github.com/CloodDev/PD2MM.git"
+prefix = "v"
