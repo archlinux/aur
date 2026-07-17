@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreety-git
 	pkgdesc = A minimal, configurable console greeter for greetd (development version)
-	pkgver = 0.10.1.r0.g0000000
+	pkgver = 0.10.2.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/tuigreety
 	arch = x86_64
