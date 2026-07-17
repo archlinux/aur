@@ -1,11 +1,14 @@
 pkgbase = clustershell
 	pkgdesc = Python framework for efficient cluster administration
-	pkgver = 1.9.3
-	pkgrel = 2
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://clustershell.github.io/clustershell/
 	changelog = ChangeLog
 	arch = any
 	license = LGPL-2.1-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	optdepends = openssh: Secure SHell client to connect to distant machines
@@ -14,7 +17,7 @@ pkgbase = clustershell
 	backup = etc/clustershell/clush.conf
 	backup = etc/clustershell/groups.conf
 	backup = etc/clustershell/groups.d/local.cfg
-	source = clustershell-1.9.3.tar.gz::https://github.com/cea-hpc/clustershell/archive/v1.9.3.tar.gz
-	sha256sums = 94c97e8de4d701ceb953772a4cfd88b60323dd5b50bfd9ad765e92fe543303f3
+	source = clustershell-1.10.1.tar.gz::https://github.com/cea-hpc/clustershell/archive/v1.10.1.tar.gz
+	sha256sums = dc56ba1dcee453914b6ee2783dcee6a5b220db64f8cb91fdfd8a73d57875cfb3
 
 pkgname = clustershell

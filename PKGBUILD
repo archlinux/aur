@@ -2,14 +2,14 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 pkgname=clustershell
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Python framework for efficient cluster administration'
 arch=(any)
 url='https://clustershell.github.io/clustershell/'
 license=('LGPL-2.1-or-later')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=(
     'openssh: Secure SHell client to connect to distant machines'
     'vim: Vi Improved'
@@ -18,15 +18,15 @@ optdepends=(
 backup=(etc/clustershell/{clush.conf,groups.conf,groups.d/local.cfg})
 changelog=ChangeLog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('94c97e8de4d701ceb953772a4cfd88b60323dd5b50bfd9ad765e92fe543303f3')
+sha256sums=('dc56ba1dcee453914b6ee2783dcee6a5b220db64f8cb91fdfd8a73d57875cfb3')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 package(){
     cd "${pkgname}-${pkgver}"
-    python setup.py install -O1 --skip-build --root="${pkgdir}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     # config files
     install -d "${pkgdir}/etc/"
