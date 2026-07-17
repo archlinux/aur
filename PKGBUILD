@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
     cd jay
-    install -Dm755 main "$pkgdir/usr/bin/jay"
+    install -Dm755 main.sh "$pkgdir/usr/bin/jay"
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
     install -Dm644 modules/base.sh "$pkgdir/usr/share/jay/base.sh"
     install -Dm644 modules/logging.sh "$pkgdir/usr/share/jay/logging.sh"
