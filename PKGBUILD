@@ -2,7 +2,7 @@
 
 _pkgname=pdf-tui
 pkgname=$_pkgname-git
-pkgver=0.1.5.r1.g8b064e5
+pkgver=0.1.6.r0.gb7d335f
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64' 'aarch64')
