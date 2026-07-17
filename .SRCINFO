@@ -1,0 +1,17 @@
+pkgbase = stirling-pdf-desktop-bin
+	pkgdesc = Stirling PDF desktop application (unofficial bin package with working .desktop entry and NVIDIA Wayland fix)
+	pkgver = 2.14.2
+	pkgrel = 1
+	url = https://github.com/Stirling-Tools/Stirling-PDF
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = java-runtime-headless
+	provides = stirling-pdf-desktop
+	conflicts = stirling-pdf-desktop
+	source = Stirling-PDF-linux-x86_64-2.14.2.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v2.14.2/Stirling-PDF-linux-x86_64.deb
+	sha256sums = SKIP
+
+pkgname = stirling-pdf-desktop-bin
