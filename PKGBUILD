@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=optmusic
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('cava: optional spectrum bars')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('baa5933ab4935030c3ca9bb644e9090554f5a1c92c68b8953fb0c0811118869f')
+sha256sums=('77aad366df76b37c337c06034d1089b475c58c4073472a35d0cfc8a627076498')
 
 prepare() {
   cd "optMusic-$pkgver"
