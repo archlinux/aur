@@ -1,12 +1,12 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5fpc
 pkgver=7270.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(aarch64 armv7h x86_64)
 
 source=('LICENSE')
-mirror=vpn.brown.edu
+mirror=ntg-vpn.brown.edu
 source_aarch64=("linux_f5cli-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_f5cli.aarch64.deb")
 source_armv7h=("linux_f5cli-${pkgver}.armv7h.deb::https://${mirror}/public/download/linux_f5cli.armhf.deb")
 source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_f5cli.x86_64.deb")
