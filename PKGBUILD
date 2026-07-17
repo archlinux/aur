@@ -1,14 +1,14 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.5.6.r35.gaf96bd2
+pkgver=v1.5.6.r40.g5b3676c
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'npm' 'nvm')
+makedepends=('git' 'npm' 'nvm' 'libxcrypt-compat')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip') # DepotDownloader breaks without this
