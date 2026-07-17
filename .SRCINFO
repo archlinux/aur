@@ -1,15 +1,14 @@
 pkgbase = comskip
-	pkgdesc = Comskip is a free MPEG commercial break detector.
+	pkgdesc = MPEG commercial break detector
 	pkgver = 0.83
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = http://github.com/erikkaashoek/Comskip
 	arch = x86_64
-	arch = i686
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = ffmpeg4.4
 	depends = argtable
+	optdepends = comchap: Detect commercials with Comskip and add chapter marks (comchap) or cut them (comcut)
 	source = https://github.com/erikkaashoek/Comskip/archive/V0.83.tar.gz
 	sha256sums = bd90d7922916e0b04ea9f3426ea7747d347f218f3f915fb4d251961d0730876e
 
