@@ -1,7 +1,7 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tristanheaven/gtkhash
 	arch = x86_64
 	license = GPL

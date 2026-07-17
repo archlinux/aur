@@ -6,7 +6,7 @@
 
 pkgname=gtkhash
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -42,6 +42,8 @@ prepare() {
 
 
 build() {
+  export PKG_CONFIG_PATH=/usr/lib/nettle3/pkgconfig
+
   arch-meson "$pkgbase-$pkgver" build \
     -Dglib-checksums='true' \
     -Dlinux-crypto='true' \
