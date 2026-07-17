@@ -1,11 +1,13 @@
-pkgbase = ttf-hancomfont
+pkgbase = ttf-hamchorom
 	pkgdesc = A versatile typeface by Hancom Office for readability, aesthetics, and usability.
 	pkgver = 2.120
-	pkgrel = 3
-	url = https://github.com/OctopusET/HancomFont
+	pkgrel = 4
+	url = https://github.com/FreeHWP/hamchorom
 	arch = any
 	license = custom
-	source = https://github.com/OctopusET/HancomFont/releases/download/v2.120-201700407/HancomFont.tar.gz
+	provides = ttf-hancomfont
+	conflicts = ttf-hancomfont
+	source = https://github.com/FreeHWP/hamchorom/releases/download/v2.120-201700407/HancomFont.tar.gz
 	sha256sums = 483e0746c1c21ba23f66d6d2337a29145442cc707e5c620c102eaaae153dc795
 
-pkgname = ttf-hancomfont
+pkgname = ttf-hamchorom
