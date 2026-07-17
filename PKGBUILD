@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
-pkgver=0.10.0.r0.g67c8153
+pkgver=0.10.0.r2.g995229d
 pkgrel=1
 pkgdesc="A modern meme editor built with GTK 4 and Libadwaita (git version)"
 arch=('x86_64' 'aarch64')
@@ -33,12 +33,15 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  meson setup build \
-    --prefix=/usr \
-    --buildtype=release \
-    --wrap-mode=nodownload
+  arch-meson build
   meson compile -C build
 }
+
+check() {
+  cd "${pkgname%-git}"
+  meson test -C build --print-errorlogs
+}
+
 
 package() {
   cd "${pkgname%-git}"
