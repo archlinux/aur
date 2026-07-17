@@ -8,18 +8,47 @@ url="https://github.com/iliarezaei/ilinote"
 license=('GPLv3')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/iliarezaei/ilinote/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+# upx اختیاری است، برای کاهش حجم استفاده می‌شود
+# اگر upx نصب نباشد، خطا نمی‌دهد (با 2>/dev/null)
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/iliarezaei/ilinote/archive/v$pkgver.tar.gz"
+        "ilinote.desktop"
+        "ilinote.svg")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     qmake ilinote.pro
-    make
+    make -j$(nproc)
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+    
+    # حذف اطلاعات دیباگ
+    strip --strip-unneeded ilinote
+    
+    # فشرده‌سازی با upx (در صورت وجود)
+    if command -v upx &>/dev/null; then
+        upx --best --lzma ilinote 2>/dev/null || true
+    fi
+    
+    # نصب فایل اجرایی
     install -Dm755 ilinote "$pkgdir/usr/bin/ilinote"
-    install -Dm644 ilinote.desktop "$pkgdir/usr/share/applications/ilinote.desktop" 2>/dev/null || true
-    install -Dm644 ilinote.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ilinote.svg" 2>/dev/null || true
+    
+    # نصب فایل دسکتاپ (اگر وجود داشته باشد)
+    if [[ -f "$srcdir/ilinote.desktop" ]]; then
+        install -Dm644 "$srcdir/ilinote.desktop" "$pkgdir/usr/share/applications/ilinote.desktop"
+    elif [[ -f "$srcdir/$pkgname-$pkgver/ilinote.desktop" ]]; then
+        install -Dm644 "$srcdir/$pkgname-$pkgver/ilinote.desktop" "$pkgdir/usr/share/applications/ilinote.desktop"
+    fi
+    
+    # نصب آیکون (اگر وجود داشته باشد)
+    if [[ -f "$srcdir/ilinote.svg" ]]; then
+        install -Dm644 "$srcdir/ilinote.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/ilinote.svg"
+    elif [[ -f "$srcdir/$pkgname-$pkgver/ilinote.svg" ]]; then
+        install -Dm644 "$srcdir/$pkgname-$pkgver/ilinote.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/ilinote.svg"
+    fi
 }

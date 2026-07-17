@@ -10,6 +10,10 @@ pkgbase = ilinote
 	makedepends = make
 	depends = qt5-base
 	source = ilinote-0.1.0.tar.gz::https://github.com/iliarezaei/ilinote/archive/v0.1.0.tar.gz
+	source = ilinote.desktop
+	source = ilinote.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ilinote
