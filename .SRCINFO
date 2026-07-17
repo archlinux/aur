@@ -1,10 +1,9 @@
 pkgbase = deskreen-ce-bin-next
 	pkgdesc = Turn any device into a secondary screen for your computer - Community Edition (binary release, NEXT-branch maintainer)
-	pkgver = 3.2.15
+	pkgver = 3.2.16
 	pkgrel = 1
 	url = https://github.com
 	arch = x86_64
-	arch = aarch64
 	license = AGPL-3.0-only
 	depends = avahi
 	depends = gtk3
@@ -22,7 +21,5 @@ pkgbase = deskreen-ce-bin-next
 	options = !strip
 	source_x86_64 = https://sourceforge.net
 	sha256sums_x86_64 = 883ab2ed42791f27d01dc9496e9ed13537be095ce937e62a30b71793c0a24b38
-	source_aarch64 = https://sourceforge.net
-	sha256sums_aarch64 = 883ab2ed42791f27d01dc9496e9ed13537be095ce937e62a30b71793c0a24b38
 
 pkgname = deskreen-ce-bin-next
