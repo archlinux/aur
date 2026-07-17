@@ -1,0 +1,22 @@
+pkgbase = timetable-bin
+	pkgdesc = GTK4 + LibAdwaita client for WebUntis (prebuilt, bundles python-webuntis)
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://codeberg.org/ostfriese4/untis
+	arch = any
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-requests
+	depends = glib2
+	depends = hicolor-icon-theme
+	provides = untis
+	provides = timetable
+	conflicts = untis
+	conflicts = timetable
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/timetable-bin-3.1/timetable-bin-3.1.tar.zst
+	sha256sums = ffd735d1a08204fe18e563815813b3a62f7625bce5bd5d4c086f1456422e0590
+
+pkgname = timetable-bin
