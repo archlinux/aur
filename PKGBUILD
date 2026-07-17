@@ -1,6 +1,6 @@
 # Maintainer: Samet Kum <kumsamet@gmail.com>
 pkgname=klustr-bin
-pkgver=0.72.1
+pkgver=0.72.2
 pkgrel=1
 pkgdesc="Native Kubernetes desktop client — multi-context cluster management with live updates, logs, exec, port-forward, RBAC, CRDs, Helm, Argo CD and Gateway API support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("klustr-v${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgve
         "klustr.desktop::${url}/raw/v${pkgver}/build/linux/klustr.desktop"
         "klustr.png::${url}/raw/v${pkgver}/build/appicon.png"
         "klustr.svg::${url}/raw/v${pkgver}/build/appicon.svg")
-sha256sums=('50838fe85d84b9ef93a8350dd8695a675d0ad8c367084b2c58c4d579bece0d57'
+sha256sums=('7ad6dc0bd78ab2a1e0b42ccc6526ede6d578a70d6845180bd143b672131bbb74'
             'b7bf5cd84bf1f5fcf987b660582882ad8bf28a7598241626193a3407b0000757'
             '1d89bab43b688bff3f9c27b26c9d84b6a049f02326deb514f77ae7410a11edd5'
             '7606e49d6ef759ae28de88a8f45132d2822393bc0620ffb5af06d259361e0472')
