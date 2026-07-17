@@ -2,7 +2,7 @@
 # Template for the AUR package. `make release-aur` fills in the
 # @PLACEHOLDER@ values and pushes the result to the AUR.
 pkgname=voyager-disco
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ options=('!lto' '!debug')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         '50-zsa.rules')
-sha256sums=('132e03f6d65cb081edc4d2aa44316a8db17831879432a3afa96e19fe102545e3'
+sha256sums=('dda15d066d48ae4061422f65433b203cb4cb8dfea377f6113e6c8fb3e7d7f514'
             'e9f20d846ef6f72937022fa7e2925fbb31a82592ca17f99345a5a6160aa9b64c')
 
 prepare() {

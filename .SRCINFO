@@ -1,6 +1,6 @@
 pkgbase = voyager-disco
 	pkgdesc = Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/monorkin/voyager-disco
 	install = voyager-disco.install
@@ -11,9 +11,9 @@ pkgbase = voyager-disco
 	depends = systemd-libs
 	options = !lto
 	options = !debug
-	source = voyager-disco-0.4.0.tar.gz::https://github.com/monorkin/voyager-disco/archive/v0.4.0.tar.gz
+	source = voyager-disco-0.5.0.tar.gz::https://github.com/monorkin/voyager-disco/archive/v0.5.0.tar.gz
 	source = 50-zsa.rules
-	sha256sums = 132e03f6d65cb081edc4d2aa44316a8db17831879432a3afa96e19fe102545e3
+	sha256sums = dda15d066d48ae4061422f65433b203cb4cb8dfea377f6113e6c8fb3e7d7f514
 	sha256sums = e9f20d846ef6f72937022fa7e2925fbb31a82592ca17f99345a5a6160aa9b64c
 
 pkgname = voyager-disco
