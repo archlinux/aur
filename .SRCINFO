@@ -1,0 +1,15 @@
+pkgbase = ilinote
+	pkgdesc = A modern note-taking app with graph view, tags, and internal links
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/iliarezaei/ilinote
+	arch = x86_64
+	license = GPLv3
+	makedepends = qt5-tools
+	makedepends = gcc
+	makedepends = make
+	depends = qt5-base
+	source = ilinote-0.1.0.tar.gz::https://github.com/iliarezaei/ilinote/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ilinote
