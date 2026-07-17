@@ -1,13 +1,13 @@
 # Maintainer: NodeRelay <joe@linuxdojo.org>
 pkgname=uplink-irc-git
 pkgver=2026.7.6.r1.g886d74f
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, secure, IRCv3-featured IRC client (Qt6, development build)"
 arch=('x86_64')
 url="https://uplinkirc.chat"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-svg' 'qt6-websockets' 'qtkeychain-qt6' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'tomlplusplus')
+depends=('qt6-base' 'qt6-svg' 'qt6-websockets' 'qtkeychain-qt6' 'tomlplusplus' 'hicolor-icon-theme')
+makedepends=('cmake' 'git')
 provides=('uplink-irc')
 conflicts=('uplink-irc')
 source=("uplink-irc::git+https://github.com/noderelay/UplinkIRC.git")
