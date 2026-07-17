@@ -4,7 +4,7 @@
 # PKGBUILD by hand, edit this template instead.
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=26.7.7
+pkgver=26.7.8
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust. (Prebuilt version)"
 arch=(
@@ -26,8 +26,8 @@ depends=(
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
-sha256sums_aarch64=('66cfb5b77ba0cd07491206db35665b112db44c56ec023ed01e004c5a8258038c')
-sha256sums_x86_64=('4d0a9f23a94ec66d47f76f12e67f78bf6c0658d356de66a48719da9924258c0d')
+sha256sums_aarch64=('42c535adf93ed66f6b92e0497b9ba477ce35affe1b61220688754b5d4e37022a')
+sha256sums_x86_64=('83d0b048743394f31ba13204c6394dafd703b20a089141b92e1e3474c05b4abd')
 
 prepare() {
     local desktop="${srcdir}/usr/share/applications/${_pkgname}.desktop"
