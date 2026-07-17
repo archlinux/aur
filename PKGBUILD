@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/qdrant
 
 pkgname=qdrant
-pkgver=1.17.0 # renovate: datasource=github-tags depName=qdrant/qdrant
+pkgver=1.18.3 # renovate: datasource=github-tags depName=qdrant/qdrant versioning=semver-coerced extractVersion=^v?(?<version>.*)$
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/qdrant/qdrant/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('6ee985c23a8290bfa1b3792723f599274e37cd8fefe615e669860689ed883c95')
+sha256sums=('c5f918b4f37279ec00b22b718ca54bca7b43c9d17628b28b8eba363beceb0c96')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
