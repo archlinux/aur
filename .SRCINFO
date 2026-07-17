@@ -1,7 +1,7 @@
 pkgbase = gnome-night-shift-git
 	pkgdesc = ::Rolling release:: A Small utility to switch the selected preferred mode.
 	pkgver = r20.639c1bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/christophermca/gnome-night-shift
 	arch = any
 	license = GPL-1.0-or-later
@@ -12,6 +12,7 @@ pkgbase = gnome-night-shift-git
 	provides = auto-update-gnome-theme.path
 	provides = auto-update-gnome-theme.service
 	provides = stop-night-shift-timer.service
+	conflicts = gnome-mode-shift-git
 	conflicts = alacritty-use-theme-with-redshift
 	conflicts = alacritty-use-theme-with-redshift-git
 	source = gnome-night-shift-git::git+https://github.com/christophermca/gnome-night-shift.git/

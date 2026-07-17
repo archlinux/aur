@@ -1,14 +1,15 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-night-shift-git"
 pkgver=r20.639c1bf
-pkgrel=1
+pkgrel=2
 pkgdesc="::Rolling release:: A Small utility to switch the selected preferred mode."
 arch=('any')
 url="https://github.com/christophermca/gnome-night-shift"
 license=('GPL-1.0-or-later')
 makedepends=('git')
 provides=('gnome-night-shift.service' 'auto-update-gnome-theme.path' 'auto-update-gnome-theme.service' 'stop-night-shift-timer.service')
-conflicts=( 'alacritty-use-theme-with-redshift'
+conflicts=( 'gnome-mode-shift-git'
+            'alacritty-use-theme-with-redshift'
             'alacritty-use-theme-with-redshift-git')
 source=("$pkgname::git+https://github.com/christophermca/gnome-night-shift.git/")
 sha256sums=('SKIP')
