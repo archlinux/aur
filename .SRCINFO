@@ -1,7 +1,7 @@
 pkgbase = voyager-disco
 	pkgdesc = Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/monorkin/voyager-disco
 	install = voyager-disco.install
 	arch = x86_64

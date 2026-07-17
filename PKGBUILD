@@ -3,7 +3,7 @@
 # @PLACEHOLDER@ values and pushes the result to the AUR.
 pkgname=voyager-disco
 pkgver=0.4.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/monorkin/voyager-disco"
