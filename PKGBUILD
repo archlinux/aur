@@ -2,7 +2,7 @@
 # Maintainer: janosmiko <janosmiko@users.noreply.github.com>
 
 pkgname='lfk-bin'
-pkgver=0.15.9
+pkgver=0.15.10
 pkgrel=1
 pkgdesc='Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters'
 url='https://github.com/janosmiko/lfk'
@@ -13,10 +13,10 @@ conflicts=('lfk')
 optdepends=('kubectl: Kubernetes CLI integration' 'helm: Helm release management' 'trivy: Container image vulnerability scanning')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v${pkgver}/lfk_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('cc4461e23ec2e546176a27084146ea37b16100179ce3517c29789a6ca924fb44')
+sha256sums_aarch64=('fc4b9b79b12c56c55f924ca58b68ea21c0c7bfe834abb5eb75687fe307fffb6d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/janosmiko/lfk/releases/download/v${pkgver}/lfk_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('67b56145d7a7865393d49a714ec5c8dbfc1aaa862dea69ded9984aee44fc6585')
+sha256sums_x86_64=('ca26dbc050c41a0857d939127d051a303505d74f4035bc06d31ca35a065ab722')
 
 package() {
   install -Dm755 "./lfk" "${pkgdir}/usr/bin/lfk"
