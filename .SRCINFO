@@ -1,5 +1,5 @@
 pkgbase = netbird
-	pkgver = 0.74.6
+	pkgver = 0.74.7
 	pkgrel = 1
 	url = https://netbird.io
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = netbird
 	makedepends = libxinerama
 	makedepends = libxrandr
 	makedepends = libxxf86vm
-	source = netbird-0.74.6.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.74.6.tar.gz
+	source = netbird-0.74.7.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.74.7.tar.gz
 	source = netbird-server.service
-	sha256sums = 5411df9359174be55f4cb6aab48ee4d0a51bea27a7cd36c8dcf3615e3848d7cd
+	sha256sums = 22df87176e6c9f3551506039cd2e6ea63c6f957fb14206436d467786b9a573dc
 	sha256sums = 6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9
 
 pkgname = netbird
