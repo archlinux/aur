@@ -1,11 +1,24 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.11.0 ➙ 6.3.0
-              : 2026-06-29 ➙ 2026-07-13
+ Tags         : 6.0.0 ➙ 6.4.0
+              : 2026-07-04 ➙ 2026-07-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-13   : 6.3.0
+ 2026-07-17   : 6.4.0
+              - **6.4.0**
+            
+                * BugFix: sd-find-boot was not showing output unless verbose = 2 in version 6.3.0.
+                * Change how older efi-tool versions are removed when updating/(re)installing:
+                    - Scan for older versions which is more robust than a file database tracker.
+                    - When multiple older versions are found, they are all removed
+                * Uses libalpm instead of spawning pacman to get some package info.
+                  Note libalpm uses libcurl/libcrypto from which valgrind
+                  finds some (benign) reachable memory leaks. We treat any memory leak as
+                  an error, including any from external libraries. Add valgrind suppression rules
+                  to ignore these specific ones.
+
+ 2026-07-13   : 6.3.0, origin/master
               - **6.3.0**
             
                 * Copy file with kernel mediated copy_file_range:
@@ -13,7 +26,7 @@
                   devices and filesystems, fallback to (slower) read source and write destination.
                 * Bug fix: file that tracks previous version can fail to be updated
 
- 2026-07-09   : 6.2.0, origin/master
+ 2026-07-09   : 6.2.0
               - **6.2.0**
             
                 * Comment on building package:
@@ -66,29 +79,3 @@
                 * bump major version since quite a few files were touched.
                   git diff --stat:
                   75 files changed, 1919 insertions(+), 2146 deletions(-)
-
- 2026-06-29   : 5.11.0
-              - **5.11.0**
-            
-                * Remove *sd-boot* as a trigger in hooks - it is not needed.
-            
-                * Change location of dracut and kernel-install config files from /etc to:
-            
-                  - /usr/lib/kernel/install.conf.d/
-                  - /usr/lib/dracut/dracut.conf.d
-            
-                  They were incorrectly installed in /etc/dracut.conf.d and /etc/kernel/
-            
-                * Updating all managed packages.
-            
-                  - *sd-boot-kernel-update* and *sd-boot-efi-update* may now be applied to
-                    all kernels and efi-tools managed by sd-boot. This is done by using
-                    "--all--" as the package name instead of one specific package.
-            
-                * Code improvements.
-                  - more code reorg and simplifications.
-                  - additional checks reading triggers from stdin.
-                  - tests that must be run sequentially are now grouped into "suites".
-                    tests in each suite are run sequentially.
-                    Assists testing non-trivial "remove" by ensuring that an "add" is
-                    completed before the remove.

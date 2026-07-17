@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="6.3.0"
+pkgver="6.4.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -24,7 +24,7 @@ depends=(
     efifs
     glibc
     libcyaml
-    rsync
+    pacman
     sbctl
     systemd
     systemd-ukify
@@ -40,6 +40,7 @@ makedepends=(
     gcc
     git
     meson
+    rsync
 )
 
 # clang provides clang-tidy (static source code analysis)
