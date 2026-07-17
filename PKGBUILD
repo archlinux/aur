@@ -2,11 +2,12 @@
 pkgname=gaze-bin
 pkgver=0.2.4
 pkgrel=1
-pkgdesc="Binary wrapper for gaze from Gundu Labs"
+pkgdesc="Daemon, CLI, and PAM integration for Gaze"
 arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('opencv<5.1' 'opencv>=5.0' 'pam' 'tpm2-tss' )
+backup=('etc/gaze/config.toml' )
 source=("gaze-0.2.4-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.4-1-x86_64.pkg.tar.zst")
 sha256sums=('e3549624c2954355cdb73539fb94ee0c850512e98e1296db8a9e5159125443a3')
 
