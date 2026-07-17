@@ -46,21 +46,47 @@ _backup_old_data() {
     fi
 }
 
+_tun_setup_info() {
+    echo ""
+    echo "============================================"
+    echo "  Hiddify Desktop - TUN Mode Setup Guide"
+    echo "============================================"
+    echo ""
+    echo "  For TUN mode to work, ensure the following:"
+    echo ""
+    echo "  1. TUN device exists:"
+    echo "     ls -l /dev/net/tun"
+    echo "     If missing: sudo modprobe tun"
+    echo ""
+    echo "  2. System proxy should be DISABLED when using TUN mode."
+    echo "     In Hiddify: Settings -> System Proxy -> Disable"
+    echo ""
+    echo "  3. Stop other VPN/TUN clients before starting Hiddify:"
+    echo "     sudo systemctl stop HiddifyTunnelService.service"
+    echo "     pkill -9 nekoray || true"
+    echo "     pkill -9 sing-box || true"
+    echo ""
+    echo "  4. Start Hiddify:"
+    echo "     hiddify"
+    echo ""
+    echo "  5. Verify connection:"
+    echo "     curl -4 https://ifconfig.me"
+    echo ""
+    echo "  For more info: https://github.com/hiddify/hiddify-app"
+    echo "============================================"
+}
+
 post_install() {
     _backup_old_data
-    echo ":: Hiddify Desktop 4.1.1 installed successfully."
-    echo ":: If you had an older version, any incompatible data has been backed up."
-    echo ":: The application will now run without the database error."
+    _tun_setup_info
 }
 
 post_upgrade() {
-    # Check if we are upgrading from a version older than 4.1.1
     if [[ $(vercmp "$2" 4.1.1) -lt 0 ]]; then
         _backup_old_data
         echo ":: Upgraded from version $2 to 4.1.1."
         echo ":: Due to major database changes, old user data has been backed up automatically."
         echo ":: You can safely start using the new version."
     fi
+    _tun_setup_info
 }
-
-# No pre_remove or pre_upgrade needed
