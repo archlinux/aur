@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 _project=tuigreety
 pkgdesc='A minimal, configurable console greeter for greetd'
@@ -11,12 +11,13 @@ license=('GPL-3.0-or-later')
 provides=('greetd-greeter' 'tuigreety')
 conflicts=('greetd-tuigreet' 'greetd-tuigreety-bin' 'greetd-tuigreety-git' 'tuigreety' 'tuigreety-bin' 'tuigreety-git')
 makedepends=('rust' 'scdoc')
+depends=('glibc' 'libgcc' 'greetd')
 backup=('etc/tuigreet/config.toml')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   'tuigreet.conf'
 )
-sha256sums=('fa1ebbfeeac86657f61c9d7619a73a72f2a71c97db76dfc0093a9f71edc2a279'
+sha256sums=('05ce6457b4062699b2298add577035b231a71c71749f87d8cbe7dac1bfe4faf2'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 prepare() {
@@ -32,7 +33,6 @@ build() {
 }
 
 package() {
-  depends=('gcc-libs' 'greetd')
   cd "$_project-$pkgver"
   install -Dm755 target/release/tuigreet "$pkgdir/usr/bin/tuigreet"
   install -Dm644 tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
