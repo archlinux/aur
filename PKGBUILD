@@ -1,6 +1,6 @@
 # Maintainer: Lumina Nao <luminanao at duck.com>
 pkgname=freeclaw
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="Community fork of OpenClaw with local inference improvements"
 arch=(x86_64)
