@@ -25,7 +25,7 @@ depends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi_v3.0/ISCSI-Util.tar.gz")
+source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v3.0/ISCSI-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
