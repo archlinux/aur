@@ -10,6 +10,7 @@ pkgbase = fillin-bin
 	depends = libgcc
 	provides = fillin
 	conflicts = fillin
+	options = !strip
 	source_x86_64 = fillin-x86_64-0.3.3.tgz::https://github.com/itchyny/fillin/releases/download/v0.3.3/fillin_v0.3.3_linux_amd64.tar.gz
 	sha256sums_x86_64 = 36a8e39407bc0cadbcc155e07ed2dcb503c7d9df4c596f135c7f6a64a2c31d11
 	source_aarch64 = fillin-aarch64-0.3.3.tgz::https://github.com/itchyny/fillin/releases/download/v0.3.3/fillin_v0.3.3_linux_arm64.tar.gz
