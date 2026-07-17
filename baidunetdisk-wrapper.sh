@@ -1,2 +1,2 @@
 #!/bin/sh
-LD_PRELOAD="/usr/lib/baidunetdisk/libbrowserengine.so:/usr/lib/baidunetdisk/libkernel.so" exec electron11 /usr/lib/baidunetdisk/resources/app.asar "$@"
+ELECTRON_FORCE_IS_PACKAGED=1 exec electron22 /usr/lib/baidunetdisk/baidunetdisk-main.js "$@"
