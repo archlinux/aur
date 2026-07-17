@@ -1,6 +1,6 @@
 pkgbase = hyprselect-bin
 	pkgdesc = Lightweight TUI screen share picker for Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ZauJulio/hyprselect
 	install = hyprselect.install
@@ -14,17 +14,9 @@ pkgbase = hyprselect-bin
 	optdepends = alacritty: alternative terminal for the picker wrapper
 	provides = hyprselect
 	conflicts = hyprselect
-	source = LICENSE-0.1.1::https://github.com/ZauJulio/hyprselect/raw/v0.1.1/LICENSE
-	source = hyprselect-picker-0.1.1::https://github.com/ZauJulio/hyprselect/raw/v0.1.1/scripts/hyprselect-picker.sh
-	source = xdph.conf-0.1.1::https://github.com/ZauJulio/hyprselect/raw/v0.1.1/config/xdph.conf
-	source = portals.conf-0.1.1::https://github.com/ZauJulio/hyprselect/raw/v0.1.1/config/portals.conf
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	source_x86_64 = https://github.com/ZauJulio/hyprselect/releases/download/v0.1.1/hyprselect-0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/ZauJulio/hyprselect/releases/download/v0.2.0/hyprselect-0.2.0-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/ZauJulio/hyprselect/releases/download/v0.1.1/hyprselect-0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/ZauJulio/hyprselect/releases/download/v0.2.0/hyprselect-0.2.0-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = hyprselect-bin
