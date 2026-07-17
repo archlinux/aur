@@ -1,7 +1,7 @@
 # Maintainer: ismailivanov <https://github.com/ismailivanov>
 pkgname=godot-hub-bin
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for managing Godot Engine versions and projects"
 arch=('x86_64')
 url="https://github.com/ismailivanov/godot-hub"
@@ -11,8 +11,8 @@ conflicts=('godot-hub')
 install=godot-hub-bin.install
 source=(
     "GodotHub-Linux.zip::https://github.com/ismailivanov/godot-hub/releases/download/v${pkgver}/GodotHub-Linux.zip"
-    "godot-hub.png::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/icon.png"
-    "LICENSE::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/LICENSE"
+    "godot-hub-${pkgver}.png::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/icon.png"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/LICENSE"
     "godot-hub.desktop"
     "godot-hub-bin.install"
 )
@@ -24,10 +24,10 @@ sha256sums=('2892560dece9dbd4ac9c230bb97ac8e60a3185e5f08d5f03057e103206ec2dbb'
 
 package() {
     install -Dm755 "${srcdir}/GodotHub.x86_64"  "${pkgdir}/usr/bin/godot-hub"
-    install -Dm644 "${srcdir}/godot-hub.png" \
+    install -Dm644 "${srcdir}/godot-hub-${pkgver}.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/godot-hub.png"
     install -Dm644 "${srcdir}/godot-hub.desktop" \
         "${pkgdir}/usr/share/applications/godot-hub.desktop"
-    install -Dm644 "${srcdir}/LICENSE" \
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
