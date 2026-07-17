@@ -1,18 +1,16 @@
 pkgbase = codex-acp
 	pkgdesc = ACP adapter for OpenAI Codex
-	pkgver = 0.16.0
-	pkgrel = 1
-	url = https://github.com/zed-industries/codex-acp
+	pkgver = 1.1.4
+	pkgrel = 3
+	url = https://github.com/agentclientprotocol/codex-acp
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	depends = openai-codex
-	provides = codex-acp
-	conflicts = codex-acp
+	makedepends = npm
+	depends = nodejs
+	noextract = codex-acp-1.1.4.tgz
 	options = !debug
-	source_x86_64 = codex-acp-0.16.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.16.0/codex-acp-0.16.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0a9ad6c31ec9b2b87dccb7e9da3faf5d387e74470d24dbced75a160ed7b22d06
-	source_aarch64 = codex-acp-0.16.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.16.0/codex-acp-0.16.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = cb72820f53c91a63982a804bd6ab251bde51bc9371d8e638946f02d7d78580b5
+	source = https://registry.npmjs.org/@agentclientprotocol/codex-acp/-/codex-acp-1.1.4.tgz
+	sha256sums = a12269b45c7bb6f625f3d22e0e1eec72d38ca23b856b06bbbc38b52a0ed49a42
 
 pkgname = codex-acp
