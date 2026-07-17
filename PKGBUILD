@@ -7,6 +7,7 @@ pkgdesc='Mesh optimization library that makes meshes smaller and faster to rende
 arch=(x86_64)
 url='https://meshoptimizer.org'
 license=(MIT)
+depends=(glibc libgcc libstdc++)
 makedepends=(cmake libwebp zstd)
 source=("meshoptimizer-v$pkgver.tar.gz::https://github.com/zeux/meshoptimizer/archive/v$pkgver.tar.gz"
         # Use zeux's own fork that contains important fixes such as
