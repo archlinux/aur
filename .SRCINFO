@@ -1,0 +1,17 @@
+pkgbase = fastcp-bin
+	pkgdesc = A fast cp wrapper using --reflink=always (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = cdb708a
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fastcp
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	provides = fastcp
+	conflicts = fastcp
+	source = fastcp::https://github.com/CallMeAlphabet/fastcp/releases/download/latest/fastcp
+	source = fastcp.sha256::https://github.com/CallMeAlphabet/fastcp/releases/download/latest/fastcp.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fastcp-bin
