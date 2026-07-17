@@ -1,0 +1,25 @@
+pkgbase = arcane-launcher-git
+	pkgdesc = Open-source, self-contained Battle.net launcher for World of Warcraft (no Battle.net client)
+	pkgver = 0.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://codeberg.org/symb0l/arcane-launcher
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = qt6-webengine
+	depends = qt6-base
+	depends = protobuf
+	depends = curl
+	depends = openssl
+	depends = libzip
+	depends = hicolor-icon-theme
+	optdepends = umu-launcher: launch games under Proton (recommended backend)
+	provides = arcane-launcher
+	conflicts = arcane-launcher
+	source = arcane-launcher::git+https://codeberg.org/symb0l/arcane-launcher.git
+	sha256sums = SKIP
+
+pkgname = arcane-launcher-git
