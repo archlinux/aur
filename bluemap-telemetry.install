@@ -14,9 +14,15 @@ post_install() {
   echo ""
   echo ">>> Optional: install the marker datapack into a world (replace WORLD, e.g. /srv/minecraft/world):"
   echo ">>>   cp -a /usr/share/bluemap-telemetry/datapack WORLD/datapacks/bluemap-telemetry"
-  echo ">>> Re-copy after package upgrades. Symlinks require allowed_symlinks.txt — see datapack README."
+  echo ">>> Re-copy the datapack after package upgrades (or use a world symlink + allowed_symlinks.txt)."
   echo ">>> Then run /reload in-game or restart the Minecraft server."
-  echo ">>> See /usr/share/bluemap-telemetry/datapack/README.md for details."
+  echo ""
+  echo ">>> Optional typed-marker icons (once; survives package upgrades):"
+  echo ">>> Symlink the icon dir into the BlueMap web root (next to index.html, NOT into assets/):"
+  echo ">>>   ln -s /usr/share/bluemap-telemetry/assets/markers /srv/http/bluemap-telemetry"
+  echo ">>> Keep MARKER_ICON_BASE=bluemap-telemetry in /etc/bluemap-telemetry/config.env"
+  echo ">>> (or change both the link name and MARKER_ICON_BASE together)."
+  echo ">>> Details: /usr/share/bluemap-telemetry/datapack/README.md (Marker types / icons)."
 }
 
 post_upgrade() {

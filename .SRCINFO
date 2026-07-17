@@ -1,6 +1,6 @@
 pkgbase = bluemap-telemetry
 	pkgdesc = Minecraft RCON daemon that writes live player positions to map web roots
-	pkgver = 0.2.4
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.macaw.me/blue/bluemap-telemetry
 	install = bluemap-telemetry.install
@@ -8,7 +8,7 @@ pkgbase = bluemap-telemetry
 	license = MIT
 	depends = bun
 	optdepends = minecraftd: provides the minecraft system user
-	source = bluemap-telemetry-0.2.4.tar.gz::https://git.macaw.me/blue/bluemap-telemetry/archive/0.2.4.tar.gz
-	sha256sums = 4a102ba675582504ba4bf7027f448622443d2608395733c7bca05198b9bb2e71
+	source = bluemap-telemetry-0.3.0.tar.gz::https://git.macaw.me/blue/bluemap-telemetry/archive/0.3.0.tar.gz
+	sha256sums = 504d7d59ad973ea2ebd0f33529077e3580a4e216200744340a2baf0f9b0f6b24
 
 pkgname = bluemap-telemetry
