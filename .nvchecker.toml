@@ -1,0 +1,5 @@
+[crawley-bin]
+source = "github"
+github = "s0rg/crawley"
+use_latest_release = true
+prefix = "v"

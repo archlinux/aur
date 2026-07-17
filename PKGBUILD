@@ -1,20 +1,44 @@
-# Maintainer: Ícar N. S. <icar.nin@protonmail.com>
-_name=crawley
-pkgname=$_name-bin
-pkgver=1.7.18
-pkgrel=1
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Ícar N. S. <icar.nin@protonmail.com>
+
+_gitauthor=s0rg
+_gitname=crawley
+_appname=${_gitname}
+pkgname=${_appname}-bin
 pkgdesc="The unix-way web crawler"
-arch=(x86_64 aarch64)
-url="https://github.com/s0rg/crawley"
+
+pkgver=1.7.20
+pkgrel=1
+_gitversion=v${pkgver}
+
+arch=('x86_64' 'aarch64')
+_barch=('linux_x86_64' 'linux_arm64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
 license=('MIT')
-provides=($_name)
-conflicts=($_name $_name-git)
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/crawley_v${pkgver}_linux_x86_64.tar.gz")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v${pkgver}/crawley_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('3ffa3987df73a929768a9a68f2a000349466fa90c5150fa9cd56b19e89368706')
-sha256sums_aarch64=('e638b65e9d113eee6bb2bcf7536c3fdefa482cdbb99e6000e827f867c870aaa3')
+
+provides=("${_appname}")
+conflicts=("${pkgname%-bin}")
+
+depends=('glibc' 'libgcc')
+
+options=(!strip)
+
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
+sha256sums_x86_64=('f545e35a6a24684ce063f5cbf7467144a507716c712f1c054b706fb39a7161eb')
+sha256sums_aarch64=('38972123e49ea38815aa6f777e9a2360cb8acb29f39f3c61b197f5224b4f3f28')
+
 
 package() {
-    install -Dm775 $_name "$pkgdir"/usr/bin/$_name
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
