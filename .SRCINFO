@@ -1,6 +1,6 @@
 pkgbase = claude-desktop
 	pkgdesc = Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code
-	pkgver = 1.21459.3
+	pkgver = 1.22209.0
 	pkgrel = 1
 	url = https://claude.com/download
 	arch = x86_64
@@ -50,13 +50,13 @@ pkgbase = claude-desktop
 	conflicts = claude-desktop-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_1.21459.3_amd64.deb
+	source_x86_64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_1.22209.0_amd64.deb
 	depends_x86_64 = qemu-system-x86
 	depends_x86_64 = edk2-ovmf
-	sha256sums_x86_64 = 332d24ef8dfda7cdd633ef624ef335ceb31ab54b471e28d785abc6016ae6a9be
-	source_aarch64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_1.21459.3_arm64.deb
+	sha256sums_x86_64 = 6d18ae792c2bddad01edc97c2c3f4cf489004cefe8fed6760a696ed25c49bf61
+	source_aarch64 = https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_1.22209.0_arm64.deb
 	depends_aarch64 = qemu-system-aarch64
 	depends_aarch64 = edk2-aarch64
-	sha256sums_aarch64 = 9994ce03330c9cacf3c22f91a5994d34c9b6e5db86264430fbb7cf76645c3ca5
+	sha256sums_aarch64 = 7323fe6c3ab6b7078e81a9bf0200806e3486e73bc5873420ee9d26f10b66e1e9
 
 pkgname = claude-desktop
