@@ -1,6 +1,6 @@
 pkgname=jay-bin
 pkgver=7.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/xmlzitos154/jay"
