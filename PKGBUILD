@@ -19,7 +19,6 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc')
 
 options=(!strip)
 
