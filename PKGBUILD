@@ -11,7 +11,7 @@ makedepends=()
 provides=('keevault')
 conflicts=('keevault')
 source=("$url/releases/download/v$pkgver/KeeVault-v$pkgver-linux-x64.tar.gz")
-sha256sums=('fce6e60fc3dcea1b33e1967976a40be0fe0502cb0bbfd77d50255868d459934f')
+sha256sums=('194e1650b21dc37770b66734be6704f95ffa00b0ee6e33070ea32b9f588b7fcd')
 
 package() {
   cd "$srcdir"
