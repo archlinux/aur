@@ -2,9 +2,9 @@
 
 pkgname=redumper-gui
 epoch=
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
-pkgdesc='A cross-platform digital fidget spinner and GUI for redumper.'
+pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
 url='https://github.com/Deterous/Redumper-GUI'
 license=('GPL-3.0')
@@ -16,26 +16,35 @@ depends=(
     redumper=729-1
 )
 
+makedepends=(
+    'cargo'
+)
+
 source=(
-#    "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/Redumper-GUI-$pkgver.tar.gz"
-    "https://github.com/Deterous/Redumper-GUI/releases/download/v1.0.0/Redumper-GUI-Linux-x64.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/v$pkgver.tar.gz"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/LICENSE"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md"
 )
 
-sha256sums=('1adfde174169b1990aff668fb0c1ed4b4a3ac7a269093442979213eab741fa9f'
+sha256sums=('32fd05bf6e11bcbadb17d032949b5fabc84d571adfef0bf1756d26a891f0b37e'
 'SKIP'
 'SKIP')
 
-package() {
+# Arch default makepkg LTO settings cause a build failure without the added CFLAGS
+# Source of fix: https://github.com/mozilla/sccache/issues/862#issuecomment-2186738388
 
+build() {
+        cd ${srcdir}/Redumper-GUI-$pkgver
+        CFLAGS+=' -ffat-lto-objects' cargo build --release --verbose --target x86_64-unknown-linux-gnu 
+}
+
+package() {
 	# install binary
-	install -Dm 755 ${srcdir}/redumper-gui ${pkgdir}/usr/bin/${pkgname}
+	install -Dm 755 ${srcdir}/Redumper-GUI-${pkgver}/target/x86_64-unknown-linux-gnu/release/redumper-gui ${pkgdir}/usr/bin/${pkgname}
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md ${pkgdir}/usr/local/share/doc/${_prgname}/README.md
 
 	# install license
 	install -Dm 644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${_prgname}/LICENSE
-
 }
