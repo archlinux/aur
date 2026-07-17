@@ -2,11 +2,11 @@
 pkgbase="norgolith-git"
 pkgname=('norgolith-git')
 _pkgname=norgolith
-pkgver=r295.ca23762
+pkgver=r506.147e058
 pkgrel=1
 pkgdesc="The monolithic Norg static site generator built with Rust"
 arch=(x86_64 aarch64)
-url="https://github.com/NTBBloodbath/norgolith"
+url="https://github.com/norgolith/core"
 license=('GPL-2.0-only')
 makedepends=(git cargo openssl libgit2 libssh2 zlib pkg-config)
 source=("$_pkgname::git+$url.git")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --manifest-path=$_pkgname/Cargo.toml --target-dir=$_pkgname/target
+  cargo build --release --manifest-path=$_pkgname/core/Cargo.toml --target-dir=$_pkgname/target
 }
 
 _package() {
