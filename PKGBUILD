@@ -8,7 +8,7 @@
 
 pkgname=synara
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal desktop GUI for coding agents (Codex, Claude, Cursor, and more)"
 arch=('x86_64')
 url="https://trysynara.com"
@@ -42,6 +42,9 @@ package() {
   rm -f "${pkgdir}/opt/${pkgname}/AppRun"
   rm -f "${pkgdir}/opt/${pkgname}/synara.desktop"
   rm -f "${pkgdir}/opt/${pkgname}/.DirIcon"
+
+  # AppImage extract uses mode 700 trees; open them for normal users.
+  chmod -R u=rwX,go=rX "${pkgdir}/opt/${pkgname}"
 
   # Electron sandbox helper expects setuid when not using --no-sandbox.
   if [[ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]]; then

@@ -1,7 +1,7 @@
 pkgbase = synara
 	pkgdesc = Minimal desktop GUI for coding agents (Codex, Claude, Cursor, and more)
 	pkgver = 0.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://trysynara.com
 	arch = x86_64
 	license = MIT
