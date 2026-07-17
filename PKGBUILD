@@ -1,8 +1,8 @@
-# Maintainer: azerty-xmpp <your.email@example.com>
+# Maintainer: azerty-xmpp
 pkgname=dwl-git-azerty
 pkgver=0.8.dev.r87.a2d03cf
 pkgrel=1
-pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom Azerty/Havoc/Tearing build)"
+pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom config)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
 license=('GPL')
@@ -36,6 +36,9 @@ prepare() {
     
     # 4. Meta Key
     sed -i 's/WLR_MODIFIER_ALT/WLR_MODIFIER_LOGO/g' config.def.h
+
+    # 5. Mouse Sensitivity (160% of baseline)
+    sed -i 's/accel_speed = 0.0;/accel_speed = 0.6;/g' config.def.h
 }
 
 build() {
