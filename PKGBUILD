@@ -39,5 +39,6 @@ package() {
   install -Dm644 tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
   install -Dm644 contrib/tuigreet.toml "$pkgdir/etc/tuigreet/config.toml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm644 "$srcdir/tuigreet.conf" "$pkgdir/usr/lib/tmpfiles.d/tuigreet.conf"
 }
