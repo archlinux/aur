@@ -1,5 +1,0 @@
-pkg/
-src/
-*.pkg.tar.*
-*.src.tar.*
-profile-sync-daemon-openrc/
