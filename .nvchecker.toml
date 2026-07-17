@@ -1,0 +1,5 @@
+[nope-bin]
+source = "github"
+github = "v81d/nope"
+use_latest_release = true
+prefix = ""
