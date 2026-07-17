@@ -1,6 +1,6 @@
 # Maintainer: Yury Gubich <blue@macaw.me>
 pkgname=bluemap-telemetry
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Minecraft RCON daemon that writes live player positions to map web roots"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 install=bluemap-telemetry.install
 
 source=("bluemap-telemetry-$pkgver.tar.gz::https://git.macaw.me/blue/bluemap-telemetry/archive/$pkgver.tar.gz")
-sha256sums=('6495253d1155f5bd6a6b529e4bc18fda46a719f31718720628b74c07c903faf1')
+sha256sums=('0b19d8bcfd60975ddf0fbff85910c8f51b1c355871d778edb0881cea9b27cc3d')
 
 build() {
   cd "$srcdir/bluemap-telemetry"
