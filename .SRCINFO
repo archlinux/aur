@@ -1,0 +1,24 @@
+pkgbase = superinstall-bin
+	pkgdesc = A security-focused package manager alternative to paru and yay (Pre-compiled binaries)
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/AndroidHyperOfficial/superinstall-aur-helper
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0
+	depends = pacman
+	depends = git
+	depends = curl
+	depends = gnupg
+	depends = glibc
+	provides = superinstall
+	conflicts = superinstall
+	source_x86_64 = superinstall-x86_64::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v1.5/superinstall-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = superinstall-arm64::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v1.5/superinstall-arm64
+	sha256sums_aarch64 = SKIP
+	source_i686 = superinstall-386::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v1.5/superinstall-386
+	sha256sums_i686 = SKIP
+
+pkgname = superinstall-bin
