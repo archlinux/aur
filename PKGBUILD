@@ -7,14 +7,13 @@ _projectname=electron
 _major=44
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='0.0-alpha.3'
+_subver='0.0-alpha.4'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
-    'armv7h'
     'x86_64'
 )
 url='https://electronjs.org'
@@ -49,21 +48,15 @@ source_aarch64=(
     "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-arm64.zip"
     "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-arm64.zip"
 )
-source_armv7h=(
-    "${_pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-armv7l.zip"
-    "${_pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip"
-)
 source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
 sha256sums=('ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
-sha256sums_aarch64=('6958c03d6e6d8bdcb5ad485275b5b6db406fdbcf863afe96186d7157e384135b'
-                    '1066a944d17e01d271506b08b7989cea938e812368fce749df61f88c5f2ff2f0')
-sha256sums_armv7h=('fd9d96e300e3be8f1a355ec17a5b1b7db5d513a3f024c5e26abe1d7dd225d479'
-                   '800f08ca58b4c95cc934ead97b91d807c666cda39fb489e9afd130d35156b9cc')
-sha256sums_x86_64=('a2b791df8e5bcf7f2c74e4c76412261b36deb2a1d3e48df908138dc500139aa1'
-                   '683d8e624417324c57b660f07dc0ab35b24157aaabae11e2f35f9362c74afbb6')
+sha256sums_aarch64=('a440912290b4ac396f3c285e3cfe3522af74e4732a95e4063b1e375a40d9eebe'
+                    'bbcbec10873cd80bffafd8e540e0256e2829b88bb8fb45373aa1aac3ba71fb1c')
+sha256sums_x86_64=('3e97b24aaa96ea470e2549d57d115d480f285fa741f8898898d57899e1b786fd'
+                   'ee634e02528c1b1fcf672084fb579ba204bb3a3248e7bd9e0f5c1a9bedd3f29f')
 prepare() {
     sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${_pkgname}"
