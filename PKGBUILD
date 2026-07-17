@@ -1,18 +1,18 @@
-# Maintainer: safalski <https://github.com/RyuZinOh>
+# Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi
 pkgver=0.0.4
 pkgrel=1
 pkgdesc="A typing application"
 arch=('x86_64')
-url="https://github.com/RyuZinOh/typeShi"
+url="https://git.safallama.com.np/safalski/typeShi"
 license=('BSD-2-Clause')
 depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/RyuZinOh/typeShi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ab6878c2412573d7a9d427aa4203d23498bfd534fd2f290588d7d6c30fc719b')
+source=("$pkgname-$pkgver.tar.gz::https://git.safallama.com.np/safalski/typeShi/archive/v$pkgver.tar.gz")
+sha256sums=('318c179675e2aa281c3bc770addd305002266af71f7cf560e129369b5c6a54f5')
 
 build() {
-  cmake -B build -S "typeShi-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
+  cmake -B build -S "typeshi" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
   ninja -C build
 }
 
