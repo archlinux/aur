@@ -1,0 +1,17 @@
+pkgbase = gcx-git
+	pkgdesc = A CLI for managing Grafana Cloud resources, optimized for agentic usage (VCS, builds the main branch)
+	pkgver = 0.4.0.r6.gf28846f
+	pkgrel = 1
+	url = https://github.com/grafana/gcx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.26.2
+	makedepends = git
+	provides = gcx
+	conflicts = gcx
+	options = !debug
+	source = gcx-git::git+https://github.com/grafana/gcx.git
+	sha256sums = SKIP
+
+pkgname = gcx-git
