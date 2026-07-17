@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="83"
 _suffix=""
-pkgver="8.3.30"
+pkgver="8.3.32"
 pkgbase_rc=""
 pkgrel="1"
 pkgbase="php83"
-pkgdesc="PHP 8.3.30 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.3.32 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -205,20 +205,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "openssl"
 )
 _ext_depends_intl=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "icu"
 )
 _ext_depends_imap=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "pam"
     "krb5"
     "c-client"
@@ -226,45 +226,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "gd"
 )
 _ext_depends_mysql=(
-    "php83=8.3.30"
-    "php83-pdo=8.3.30"
-    "php83-openssl=8.3.30"
+    "php83=8.3.32"
+    "php83-pdo=8.3.32"
+    "php83-openssl=8.3.32"
 )
 _ext_depends_dba=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "unixodbc"
-    "php83-pdo=8.3.30"
+    "php83-pdo=8.3.32"
 )
 _ext_depends_pgsql=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "postgresql-libs"
-    "php83-pdo=8.3.30"
+    "php83-pdo=8.3.32"
 )
 _ext_depends_firebird=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "libfbclient"
-    "php83-pdo=8.3.30"
+    "php83-pdo=8.3.32"
 )
 _ext_depends_sqlite=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "sqlite"
-    "php83-pdo=8.3.30"
+    "php83-pdo=8.3.32"
 )
 _ext_depends_mbstring=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php83=8.3.30"
+    "php83=8.3.32"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1476,7 +1476,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            '67f084d36852daab6809561a7c8023d130ca07fc6af8fb040684dd1414934d48'
+            '8698ec1f9402fa5e5e872ae3d0916b62f5f27503c1fbfc9cc3521e113355ea92'
             'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             '267c8ea589c2aec13e481ebfa2ae2e78176ce070000ed25fbc613ab52abd4e21')
