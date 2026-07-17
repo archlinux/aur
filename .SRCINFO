@@ -1,5 +1,5 @@
 pkgbase = superinstall
-	pkgdesc = A security-focused package manager alternative to paru and yay (C & Raylib Port - Source)
+	pkgdesc = A security-focused package manager alternative to paru and yay (C & Raylib Port)
 	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/AndroidHyperOfficial/superinstall-aur-helper
@@ -8,6 +8,7 @@ pkgbase = superinstall
 	arch = i686
 	license = GPL-3.0
 	makedepends = gcc
+	makedepends = git
 	depends = pacman
 	depends = git
 	depends = curl
@@ -19,7 +20,7 @@ pkgbase = superinstall
 	conflicts = superinstall-bin
 	options = !debug
 	options = !strip
-	source = superinstall-1.8.tar.gz::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/archive/refs/tags/1.8V.tar.gz
+	source = git+https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
 	sha256sums = SKIP
 
 pkgname = superinstall
