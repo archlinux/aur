@@ -1,0 +1,5 @@
+[yacron-bin]
+source = "github"
+github = "gjcarneiro/yacron"
+use_latest_release = true
+prefix = ""
