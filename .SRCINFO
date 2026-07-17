@@ -1,0 +1,17 @@
+pkgbase = yubihsm-connector
+	pkgdesc = Enables communication between a YubiHSM 2 and applications over HTTP
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = https://developers.yubico.com/yubihsm-connector/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = libusb
+	backup = etc/yubihsm-connector.yaml
+	source = yubihsm-connector-3.0.7.tar.gz::https://github.com/Yubico/yubihsm-connector/archive/refs/tags/3.0.7.tar.gz
+	source = yubihsm-connector.sysusers
+	sha256sums = 2127b754afb3b191fb71e536c2c160a0e6975dad48b3d469c0e3f3290c0ee31c
+	sha256sums = 9e714c4f7e9b947b4c99466ce7a978df7000acafb4368df3279317be021c4353
+
+pkgname = yubihsm-connector
