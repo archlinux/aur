@@ -1,6 +1,6 @@
 pkgbase = weaviate
 	pkgdesc = An open source vector database written in Go
-	pkgver = 1.38.3
+	pkgver = 1.38.5
 	pkgrel = 1
 	url = https://github.com/weaviate/weaviate
 	arch = x86_64
