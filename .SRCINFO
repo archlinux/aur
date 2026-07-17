@@ -1,0 +1,11 @@
+pkgbase = cdev
+	pkgdesc = Claude Code devcontainer environment (metapackage)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.kolosowscy.pl/cdev/cdev
+	arch = any
+	license = GPL-3.0-or-later
+	depends = cdev-launcher
+	depends = cdev-mcp
+
+pkgname = cdev
