@@ -2,11 +2,12 @@
 pkgname=gaze-hyprlock-bin
 pkgver=0.2.4
 pkgrel=1
-pkgdesc="Binary wrapper for gaze-hyprlock from Gundu Labs"
+pkgdesc="Hyprlock PAM integration for Gaze"
 arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('custom')
 depends=()
+backup=('etc/pam.d/hyprlock-gaze' 'etc/pam.d/hyprlock-gaze-simultaneous' )
 source=("gaze-hyprlock-0.2.4-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.2.4-1-x86_64.pkg.tar.zst")
 sha256sums=('5fc1eddadf4f6aa5b52e59ca9a19b2fa50f46569950c286e6551bdf1124e97e1')
 
