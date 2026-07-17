@@ -1,6 +1,6 @@
 pkgbase = visual-paradigm
 	pkgdesc = UML design application
-	pkgver = 18.1.20260623
+	pkgver = 18.1.20260628
 	pkgrel = 1
 	url = https://www.visual-paradigm.com/download/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = visual-paradigm
 	source = visual-paradigm.png
 	source = LICENSE.txt
 	source = x-visual-paradigm.xml
-	sha256sums = 35998991a1735abccc691257eb76a97ac59673a062734c22a6c0e03d186fcea9
+	sha256sums = 537bb51c276a6207b2e39ec138ab24b84f8a3480c274edde82c80ad3553a3586
 	sha256sums = f59e20eeeae9f03c95edff2f0d0302db872221fb7a5493ca736077f1d7bab7df
 	sha256sums = 41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15
 	sha256sums = d2201888fc79de759b34c2d4c16610151b9fb2eae00990fe729a8588ec1e1727
