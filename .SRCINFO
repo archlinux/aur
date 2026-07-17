@@ -1,6 +1,6 @@
 pkgbase = dsxtool-git
 	pkgdesc = A modular, interactive Linux setup tool powered by fzf (git version)
-	pkgver = 1.6.0.r56.g7a5cdd7
+	pkgver = 1.7.7.r0.gaf8d408
 	pkgrel = 1
 	url = https://github.com/csouzape/dsxtool
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = dsxtool-git
 	depends = sudo
 	provides = dsxtool
 	conflicts = dsxtool
-	source = dsxtool::git+https://github.com/csouzape/dsxtool.git#branch=testing
+	source = dsxtool::git+https://github.com/csouzape/dsxtool.git
 	sha256sums = SKIP
 
 pkgname = dsxtool-git

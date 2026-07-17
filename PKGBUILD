@@ -1,5 +1,5 @@
 pkgname=dsxtool-git
-pkgver=1.6.0.r56.g7a5cdd7
+pkgver=1.7.7.r0.gaf8d408
 pkgrel=1
 pkgdesc="A modular, interactive Linux setup tool powered by fzf (git version)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('bash' 'fzf' 'git' 'sudo')
 makedepends=('git')
 provides=('dsxtool')
 conflicts=('dsxtool')
-source=("dsxtool::git+https://github.com/csouzape/dsxtool.git#branch=testing")
+source=("dsxtool::git+https://github.com/csouzape/dsxtool.git")
 sha256sums=('SKIP')
 
 pkgver() {
