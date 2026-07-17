@@ -7,6 +7,6 @@ Exec=synara %U
 Icon=synara
 Terminal=false
 Categories=Development;IDE;
-StartupWMClass=Synara
+StartupWMClass=synara
 MimeType=x-scheme-handler/synara;
 Keywords=ai;agent;codex;claude;cursor;
