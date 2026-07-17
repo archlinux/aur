@@ -15,8 +15,8 @@ options=('!strip')
 source_x86_64=("https://sourceforge.net")
 source_aarch64=("https://sourceforge.net")
 
-sha256sums_x86_64=('883ab2ed42791f27d01dc9496e9ed13537be095ce937e62a30b71793c0a24b38')
-sha256sums_aarch64=('883ab2ed42791f27d01dc9496e9ed13537be095ce937e62a30b71793c0a24b38')
+sha256sums_x86_64=('b8328c1a13f869918058991c090ff3a8b58ac79fe65289f589b0e0daf45f4149')
+sha256sums_aarch64=('b8328c1a13f869918058991c090ff3a8b58ac79fe65289f589b0e0daf45f4149')
 
 package() {
   # Nutzt die automatische Vorentpackung von makepkg
