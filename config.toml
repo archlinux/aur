@@ -21,17 +21,6 @@ target = "/opt/wechat/wechat"
 # arguments holds an array of arguments passed to the application, this is also used when starting secondary instances.
 arguments = []
 
-# D-Bus activation works by installing a service under /usr/share/dbus-1/services. It is used by UnifiedPush to process notifications without showing a window. You should modify the activation cmdline to call portable with "--dbus-activation".
-[busActivation]
-# Whether or not to enable D-Bus activation. Defaults to false.
-enable = false
-
-# target is the same as exec.target.
-target = "gtk4-demo"
-
-# arguments is the same as exec.arguments.
-arguments = ["--gapplication-service"]
-
 # The processes section defines how Portable tracks tasks.
 [processes]
 # Watch for spawned commands. When all of them exits, automatically terminate the sandbox. Defaults to true.
@@ -42,25 +31,19 @@ track = true
 # Whether or not an application can call Inhibit Portal to prevent automatic suspend. Defaults to false.
 inhibitSuspend = false
 
-# Whether or not an application can call GlobalShortcuts Portal to request shortcuts registration. Defaults to false.
-globalShortcuts = false
+# Specifies the "max" value of cgroup's cpu.uclamp property. This influences
+# 	frequency selection of schedutil and Energy / Capacity Aware scheduling.
+# Lower value yields more energy efficiency, while higher trades efficiency
+# 	for performance.
+# Defaults to 100, i.e. unlimited.
+uclamp = "50"
 
-# Whether or not to expose all GPUs and prefer discrete graphics card. By default, Portable blocks any GPU except the integrated one to improve user experience and power consumption on hybrid systems.
-gameMode = false
-
-# Inhibit suspend and idle on behalf of applications. Requires system.inhibitSuspend being true
-inhibitOnBehalf = false
+deviceAllow = ["camera"]
 
 # The network section defines behaviour of Portable's network firewall. Requires netsock for filtering.
 [network]
 # Whether or not an application can use network interfaces. Defaults to true.
 enable = true
-
-# Whether or not to enable filtering on network packets. Defaults to false.
-filter = false
-
-# Destinations to deny. Only effective if netsock is running and listening on /run/netsock/control.sock. IP literals are resolved directly, while strings are mapped to IP addresses by the system resolver. A special string of "private" means private IPs. Note that :53 is allowed regardless to avoid breaking DNS. Defaults to none, meaning sandbox can connect to whatever address.
-filterDest = ["private"]
 
 # The privacy section defines several device exposure preference. By default, Portable does not allow apps to see physical devices. This includes discrete GPUs when gameMode is off, input devices, cameras, and all other PCI devices.
 [privacy]
@@ -68,16 +51,9 @@ filterDest = ["private"]
 x11 = true
 
 # When false, prevents application from connecting to legacy notifications endpoint. Defaults to true.
-classicNotifications = true
+classicNotifications = false
 
-# When true, exposes camera devices in the sandbox. Defaults to false.
-cameras = true
-
-# When true, allows application to connect to PipeWire server. Note that a proxy is set up to prevent privileged actions. Defaults to false.
-pipeWire = false
-
-# When true, allows application to receive Input events, particularly useful for Games. Defaults to false.
-input = false
+lockdown = true
 
 # Do not use. May break apps.
 [advanced]
@@ -87,6 +63,3 @@ mprisName = []
 trayWake = true
 kDEStatus = true
 flatpakInfo = true
-
-# Enables landlock for additional protection, breaks many apps.
-landlock = true
