@@ -3,7 +3,7 @@
 
 _pkgname="fsearch"
 pkgname="$_pkgname"
-pkgver=0.3
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc="A fast graphical file search utility"
 url="https://github.com/cboxdoerfer/fsearch"
@@ -24,7 +24,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
-sha256sums=('17e9bb26f0c6077192dc1f40800c5c2e6074d93ef0e7f95b42180eb6b143b556')
+sha256sums=('b16ab75556d841bf858633710d71c92f35d34362614b8584b0a5b71690a72c39')
 
 build() {
   local _meson_options=(
