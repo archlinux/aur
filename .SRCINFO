@@ -1,6 +1,6 @@
 pkgbase = cc-switchy-bin
 	pkgdesc = CLI/TUI for restoring CC Switch cloud snapshots from WebDAV or S3
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ca-x/cc-switchy
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cc-switchy-bin
 	provides = cc-switchy
 	conflicts = cc-switchy
 	options = !debug
-	source_x86_64 = cc-switchy-bin-0.3.0-x86_64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v0.3.0/cc-switchy-v0.3.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = fd33e91d367c953d271e55f26a997b356d8d001f3d89622f552b08f5a5cc45da
-	source_aarch64 = cc-switchy-bin-0.3.0-aarch64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v0.3.0/cc-switchy-v0.3.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 5496f9bf840efa464460d5997c1ff5e471fb19ff414cf98dc2fa47be1e1f9367
+	source_x86_64 = cc-switchy-bin-0.3.1-x86_64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v0.3.1/cc-switchy-v0.3.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 105b921a64c23ce2b8c4c1c8c9f5f48525192d482fdef69e279bb2a4bbccc2e4
+	source_aarch64 = cc-switchy-bin-0.3.1-aarch64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v0.3.1/cc-switchy-v0.3.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 5c84930e805fddeae48514601a46dcf13a2faf3c1ff8b47b6dc18b63d3c9cb0e
 
 pkgname = cc-switchy-bin
