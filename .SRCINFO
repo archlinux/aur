@@ -1,5 +1,5 @@
 pkgbase = stirling-pdf-desktop-bin
-	pkgdesc = Stirling PDF desktop application (unofficial bin package with working .desktop entry and NVIDIA Wayland fix)
+	pkgdesc = GitHub's #1 PDF application with 30m downloads. Lightning-fast reading, editing, and 60+ more PDF operations.
 	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://github.com/Stirling-Tools/Stirling-PDF
@@ -11,6 +11,8 @@ pkgbase = stirling-pdf-desktop-bin
 	depends = java-runtime-headless
 	provides = stirling-pdf-desktop
 	conflicts = stirling-pdf-desktop
+	conflicts = stirling-pdf
+	conflicts = stirling-pdf-bin
 	source = Stirling-PDF-linux-x86_64-2.14.2.deb::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v2.14.2/Stirling-PDF-linux-x86_64.deb
 	sha256sums = SKIP
 
