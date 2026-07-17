@@ -1,6 +1,6 @@
 pkgbase = ringo-phone-bin
 	pkgdesc = A terminal SIP softphone built on baresip
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/davidborzek/ringo
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ringo-phone-bin
 	depends = spandsp
 	provides = ringo-phone
 	conflicts = ringo-phone
-	source_x86_64 = ringo-0.11.1-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.11.1/ringo-0.11.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0dafd20d4227540a9ac11a784c509520d85ea3b1a0205740789e2174fa992d9a
-	source_aarch64 = ringo-0.11.1-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.11.1/ringo-0.11.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8c3c42e40d003d5bb15e1831a972205f910b494357ef0caf94af86fdec5059f5
+	source_x86_64 = ringo-0.12.0-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.12.0/ringo-0.12.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 000ec94aab9975682ea62eb38f8d3bdd613a29bfec8c96ae2e75222079956b4b
+	source_aarch64 = ringo-0.12.0-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.12.0/ringo-0.12.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 227a78d870e092ef5f70a04c914e8fce7ea155064708da5ec16c7010b2e2031b
 
 pkgname = ringo-phone-bin

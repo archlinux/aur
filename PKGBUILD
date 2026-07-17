@@ -3,7 +3,7 @@
 # bare `ringo` name is taken on the AUR by an unrelated project. The binary it
 # installs is still `ringo`.
 pkgname=ringo-phone-bin
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A terminal SIP softphone built on baresip"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ license=('MIT')
 depends=('opus' 'spandsp')
 provides=('ringo-phone')
 conflicts=('ringo-phone')
-source_x86_64=("ringo-$pkgver-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.11.1/ringo-0.11.1-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("ringo-$pkgver-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.11.1/ringo-0.11.1-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('0dafd20d4227540a9ac11a784c509520d85ea3b1a0205740789e2174fa992d9a')
-sha256sums_aarch64=('8c3c42e40d003d5bb15e1831a972205f910b494357ef0caf94af86fdec5059f5')
+source_x86_64=("ringo-$pkgver-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.12.0/ringo-0.12.0-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("ringo-$pkgver-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-phone-v0.12.0/ringo-0.12.0-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('000ec94aab9975682ea62eb38f8d3bdd613a29bfec8c96ae2e75222079956b4b')
+sha256sums_aarch64=('227a78d870e092ef5f70a04c914e8fce7ea155064708da5ec16c7010b2e2031b')
 
 package() {
   case "$CARCH" in
