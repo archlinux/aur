@@ -1,6 +1,6 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center
-pkgver=1.14.4
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, MangoHud benchmarks, and controller navigation for Steam on Linux"
 arch=('any')
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Deliberately a WRONG hash rather than 'SKIP': if it's forgotten, makepkg
 # fails loudly with a validity check error instead of silently shipping a
 # package with integrity checking disabled for every user who installs it.
-sha256sums=('6ef814ad17eb3ef81ba8a59307954d2181fa1bc762c332ba6307a2f0b69d9328')
+sha256sums=('883d7d6bcaaa3bc9a152084d3462581d52e288c004a9c739c3d59436d9bface9')
 
 package() {
     cd "$srcdir/$_repo-$pkgver"
