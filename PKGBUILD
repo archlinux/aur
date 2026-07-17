@@ -5,11 +5,11 @@ _pkgname=steam-game-idler
 # pkgver is a placeholder — the real version is computed by pkgver() at build
 # time from the upstream tauri.conf.json + the steam-game-idler submodule's
 # commit history. The AUR publish workflow updates this line before pushing.
-pkgver=5.0.19.r1742.g4277d0c3
+pkgver=5.0.20.r1743.gcc2c86ed
 pkgrel=1
 # Release automation pins this to the GitHub release version. Normal AUR builds
 # leave it empty and build the version declared by the checked-out source.
-_release_version='5.0.19'
+_release_version='5.0.20'
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
 url='https://github.com/bernardopg/SGI'
@@ -38,7 +38,7 @@ makedepends=(
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
 options=('!lto' '!strip' '!debug')
-source=('git+https://github.com/bernardopg/SGI.git#commit=2b20ca635b363d4392bea26c597640795df69b49')
+source=('git+https://github.com/bernardopg/SGI.git#commit=c681b8e02024ee64c0bed39d61a9229fe67f8367')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -46,7 +46,7 @@ pkgver() {
     git submodule update --init --recursive
 
     local appver rev hash
-    appver='5.0.19'
+    appver='5.0.20'
     rev=$(git -C steam-game-idler rev-list --count HEAD)
     hash=$(git -C steam-game-idler rev-parse --short HEAD)
 
