@@ -1,6 +1,6 @@
 # Maintainer: darkinsun <42946064+darkinsun@users.noreply.github.com>
 pkgname=bingspotany-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A modern, cross-platform daily wallpaper manager fetching from Bing and Spotlight"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('bingspotany')
 # Fetch source dynamically using the pkgver variable
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darkinsun/BingSpotAny/releases/download/v${pkgver}/BingSpotAny-Linux-x64.tar.gz")
 # REPLACE THIS WITH YOUR HASH
-sha256sums=('924ba258087fcf325928cbb58d34d0e25e06976acaaf7dce063f2fc8d3454ccb')
+sha256sums=('ebaa24ec8a62674f1ee9b64f0071d6f1a706551c221bb76eb7b667e67214c86a')
 
 # PREVENT BINARY CORRUPTION
 options=('!strip')
