@@ -8,7 +8,7 @@ pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
 url="https://github.com/iswad-lab/TouchDesigner-Linux"
 license=('custom:custom')
-_td_ver=2025.32820
+_td_ver=2025.33070
 
 depends=(
     'python' 'git' 'curl' 'wget' 'tar' 'xz'
