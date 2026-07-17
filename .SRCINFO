@@ -1,7 +1,7 @@
 pkgbase = flclashx-bin
 	pkgdesc = Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pluralplay/FlClashX
 	arch = aarch64
 	arch = x86_64
