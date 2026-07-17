@@ -1,10 +1,12 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
-pkgname=libclc
+pkgname=libclc-patch-broken-flush-denormal
 pkgver=22.1.8
 pkgrel=2
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
+conflicts=('libclc')
+provides=('libclc')
 url="https://libclc.llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=('cmake' 'ninja' 'clang' 'llvm' 'python' 'spirv-llvm-translator')

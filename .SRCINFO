@@ -1,7 +1,7 @@
-pkgbase = libclc
+pkgbase = libclc-patch-broken-flush-denormal
 	pkgdesc = Library requirements of the OpenCL C programming language
 	pkgver = 22.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libclc.llvm.org/
 	arch = any
 	license = Apache-2.0 WITH LLVM-exception
@@ -11,6 +11,8 @@ pkgbase = libclc
 	makedepends = llvm
 	makedepends = python
 	makedepends = spirv-llvm-translator
+	provides = libclc
+	conflicts = libclc
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz.sig
 	source = https://github.com/llvm/llvm-project/commit/4ee4864ec296d9dc07f0919f18a0c03c19083b1b.diff
@@ -22,4 +24,4 @@ pkgbase = libclc
 	sha256sums = SKIP
 	sha256sums = ca4e4056d8e7d2f513343b5df8cfa3aca3516cf242a575567405f2866d66fa8f
 
-pkgname = libclc
+pkgname = libclc-patch-broken-flush-denormal
