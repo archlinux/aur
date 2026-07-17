@@ -1,0 +1,19 @@
+pkgbase = vpngfetch
+	pkgdesc = A hyper-fast, lightweight system fetch utility written in pure C with native image rendering
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AndroidHyperOfficial/vpngfetch
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = i686
+	arch = i486
+	arch = i586
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	source = git+https://github.com/AndroidHyperOfficial/vpngfetch.git
+	md5sums = SKIP
+
+pkgname = vpngfetch
