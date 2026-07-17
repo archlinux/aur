@@ -5,8 +5,11 @@ _pkgname=steam-game-idler
 # pkgver is a placeholder — the real version is computed by pkgver() at build
 # time from the upstream tauri.conf.json + the steam-game-idler submodule's
 # commit history. The AUR publish workflow updates this line before pushing.
-pkgver=5.0.18.r1741.g5151d27b
+pkgver=5.0.19.r1742.g4277d0c3
 pkgrel=1
+# Release automation pins this to the GitHub release version. Normal AUR builds
+# leave it empty and build the version declared by the checked-out source.
+_release_version='5.0.19'
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
 url='https://github.com/bernardopg/SGI'
@@ -35,7 +38,7 @@ makedepends=(
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
 options=('!lto' '!strip' '!debug')
-source=('git+https://github.com/bernardopg/SGI.git#commit=15de54cd5ab84f3dfa925540e490a370b90a9f7c')
+source=('git+https://github.com/bernardopg/SGI.git#commit=2b20ca635b363d4392bea26c597640795df69b49')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,7 +46,7 @@ pkgver() {
     git submodule update --init --recursive
 
     local appver rev hash
-    appver='5.0.18'
+    appver='5.0.19'
     rev=$(git -C steam-game-idler rev-list --count HEAD)
     hash=$(git -C steam-game-idler rev-parse --short HEAD)
 
@@ -55,6 +58,13 @@ prepare() {
     git submodule update --init --recursive
 
     cd steam-game-idler
+
+    local release_version="$_release_version"
+    if [[ -z "$release_version" ]]; then
+        release_version=$(node -p "require('./package.json').version")
+    fi
+    node scripts/set-release-version.mjs "$release_version"
+    node scripts/check-release-version.mjs "$release_version"
 
     # pnpm 10+ enforces strictDepBuilds: native deps with postinstall scripts
     # (sharp, esbuild, @heroui/shared-utils) must be explicitly approved or the
@@ -95,6 +105,7 @@ build() {
 
     # pacman handles updates; disable Tauri updater artifact generation (requires a signing key)
     sed -i 's/"createUpdaterArtifacts": "[^"]*"/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
+    pnpm check:release-version
 
     export NEXT_TELEMETRY_DISABLED=1
     export TAURI_CI=1
