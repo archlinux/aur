@@ -1,0 +1,30 @@
+pkgbase = rufin-bin
+	pkgdesc = Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/screwys/Rufin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gst-libav
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gstreamer
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	provides = rufin=0.9.0
+	conflicts = rufin
+	conflicts = rufin-git
+	replaces = rufin
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/screwys/Rufin/releases/download/v0.9.0/rufin-0.9.0-archlinux-x86_64.tar.zst
+	sha256sums_x86_64 = dd45432de7acc4d6346854ea12e7e6171a628ca01c921cad0e938b19f1fa6004
+
+pkgname = rufin-bin
