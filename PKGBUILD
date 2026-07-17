@@ -1,6 +1,6 @@
 # Maintainer: HaxL0p4 <haxl0p4@proton.me>
 pkgname=l0p4map
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Professional network monitoring & visualization tool combining ARP discovery with nmap"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HaxL0p4/L0p4Map/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23f17c8d0c8225bb6a51b148cb0445e09c954628744dd3302e681b8465d43107')
+sha256sums=('286fbd889cd62796061e7a7f0c1742e0fd01b62f740ea00a6637ba00e01e345a')
 
 build() {
     cd "L0p4Map-$pkgver"

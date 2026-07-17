@@ -1,6 +1,6 @@
 pkgbase = l0p4map
 	pkgdesc = Professional network monitoring & visualization tool combining ARP discovery with nmap
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/HaxL0p4/L0p4Map
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = l0p4map
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
 	depends = nmap
-	source = l0p4map-1.0.1.tar.gz::https://github.com/HaxL0p4/L0p4Map/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 23f17c8d0c8225bb6a51b148cb0445e09c954628744dd3302e681b8465d43107
+	source = l0p4map-1.0.2.tar.gz::https://github.com/HaxL0p4/L0p4Map/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 286fbd889cd62796061e7a7f0c1742e0fd01b62f740ea00a6637ba00e01e345a
 
 pkgname = l0p4map
