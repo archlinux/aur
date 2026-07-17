@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -41,11 +41,12 @@ optdepends=(
     'tlp: for TLP power profile controls'
     'polkit: for applying TLP profiles via pkexec'
     'sudo: alternative for applying TLP profiles'
+    'zenity: for Ask-mode TLP password prompts when no Polkit agent is running'
 )
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c6c1d867f5d4d0aa0678f6b6c006e28d97c2a0631b36e680a923966cc23ba76e')
+sha256sums=('5652d184b47b3eb3ef30ce2b7a1d6174187fb1b4cfc616404ef8a07fb254ad37')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
