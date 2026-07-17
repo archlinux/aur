@@ -1,7 +1,7 @@
 # Maintainer: Bartek Laskowski <bartek at undg dot dev>
 
 pkgname=pulse-remote-git
-pkgver=0.9.17.r0.g1008250
+pkgver=0.10.0.r1.g8ef1875
 pkgrel=1
 pkgdesc="Server and web interface to control your Linux PC audio from any device"
 arch=('x86_64')

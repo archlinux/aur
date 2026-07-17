@@ -1,6 +1,6 @@
 pkgbase = pulse-remote-git
-	pkgdesc = Remote Audio Control for PulseAudio/PipeWire. Use your phone to adjust volume on your PC.
-	pkgver = 0.9.17.r0.g1008250
+	pkgdesc = Server and web interface to control your Linux PC audio from any device
+	pkgver = 0.10.0.r1.g8ef1875
 	pkgrel = 1
 	url = https://github.com/undg/pulse-remote
 	install = pulse-remote-git.install
