@@ -2,7 +2,7 @@
 
 _gpuarch=gfx1151
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.15.0a20260716
+pkgver=7.15.0a20260717
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=("${_rocm_packages[@]}" "rocm=${pkgver}" "opencl-driver")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('8920ae1b868b25f93265f323f74a7ca8f7112a61165891ca4a15f6e7b530dc2b')
+sha256sums=('411684d07ad0a0aef816112cabd74b5589247dd811f29039c9d8eef5e2e293e9')
 
 package() {
     local _tarball_name=$(basename "${source[0]}")
