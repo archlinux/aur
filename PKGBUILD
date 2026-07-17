@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.4.1.r11.g553ef66
+pkgver=v1.4.2
 pkgrel=1
 pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
 arch=('x86_64' 'i686' 'aarch64')
