@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=150.0.7871.124
+pkgver=150.0.7871.128
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -105,8 +105,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('f5d783831eb3f9de85873be34c2018e94ad382c2fb436db780e5aedf62c911ba'
-            '3b6528ae81cbfacc48fc4764f629d78b0ad1bba6af9d121eac9487f14a767935'
+sha256sums=('b8eca4b15c7232e27237f9db99e607e19fa0c26830ff4d68ceba6b66209ff663'
+            '05a29765278d46432619390857e0d119afe08e2a8c9f06cb0c5270badd241b71'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
