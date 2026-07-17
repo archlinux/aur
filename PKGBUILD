@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('cava: optional spectrum bars')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('77aad366df76b37c337c06034d1089b475c58c4073472a35d0cfc8a627076498')
+sha256sums=('ba3a2f0da5120b530aa3d3f0be1ba9c4fe33a06df6b6bf643bbd83be0e3202ee')
 
 prepare() {
   cd "optMusic-$pkgver"
