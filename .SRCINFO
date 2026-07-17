@@ -1,0 +1,16 @@
+pkgbase = timeit
+	pkgdesc = A precise command timing utility (x86_64 Linux only) — builds from source, always tracks latest
+	pkgver = 106fde4
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/timeit
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = timeit
+	conflicts = timeit-bin
+	source = timeit-latest.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/refs/tags/latest.tar.gz
+	sha256sums = SKIP
+
+pkgname = timeit
