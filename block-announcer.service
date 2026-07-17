@@ -3,4 +3,4 @@ Description=Schedule Announcer — AI voice + desktop notifications at schedule 
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/timeout 90 /usr/bin/block-announcer
+ExecStart=/usr/bin/timeout 150 /usr/bin/block-announcer
