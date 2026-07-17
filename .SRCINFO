@@ -1,0 +1,17 @@
+pkgbase = yubihsm-manager
+	pkgdesc = Command line tool for YubiHSM 2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yubico/yubihsm-manager
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libyubihsm
+	depends = openssl
+	source = yubihsm-manager-1.0.0.tar.gz::https://github.com/Yubico/yubihsm-manager/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = cd9b077d18863680c0ef3cee93b0b3b6d5f50869b2e3760aa251d661c4421fed
+
+pkgname = yubihsm-manager
