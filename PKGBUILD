@@ -17,8 +17,8 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=6.2.0
-pkgrel=5
+pkgver=6.2.2
+pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -26,8 +26,14 @@ license=("AGPL-3.0-or-later")
 arch=("x86_64")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("clang" "llvm" "mold" "rustup" "wget")
-source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz" "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx")
-sha256sums=("f336f668ab3851378eef21caeb447d03453ed92d67f1e70aa392defa50dd73a1" "e7015c7e682f63a4ce7fca971f46543a88233e8f8d3525e3a62e2534d0cfc762")
+source=(
+    "https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz"
+    "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx"
+)
+sha256sums=(
+    "2131cef01e8503c16a869e53c6accc154227572c7c92708278848f5e70fe15b8"
+    "e7015c7e682f63a4ce7fca971f46543a88233e8f8d3525e3a62e2534d0cfc762"
+)
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
