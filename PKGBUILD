@@ -8,8 +8,9 @@ url="https://github.com/C-Yassin/FlameGet"
 license=('MIT' 'LGPL3')
 
 depends=('python' 'python-gobject' 'python-flask' 'gtk4' 'libappindicator'
-         'aria2' 'python-pycurl' 'yt-dlp' 'python-certifi' 'python-requests' 'python-waitress' 'xdg-user-dirs'
-         'ffmpeg')
+         'aria2' 'python-pycurl' 'yt-dlp' 'python-certifi' 'python-requests'
+         'python-waitress' 'xdg-user-dirs' 'ffmpeg' 'python-loguru'
+         'python-platformdirs' 'python-websocket-client')
 makedepends=('git' 'python-installer')
 
 provides=('aria2p')
