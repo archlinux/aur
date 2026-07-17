@@ -1,8 +1,8 @@
 # Maintainer: Alleop <aur dot contest432 at passinbox dot com>
 _pkgname=freetube
-_electronver=41
+_electronver=42
 pkgname=$_pkgname-electron-bin
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind, with the system electron (unsupported).'
 arch=('any')
@@ -10,10 +10,10 @@ url='https://github.com/FreeTubeApp/FreeTube'
 license=('AGPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('freetube.sh' "$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_armv7l.deb"
+source=('freetube.sh' "$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_arm64.deb"
         "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/refs/tags/v$pkgver-beta/LICENSE")
 b2sums=('d3d3e9a0e3f6bce5127cb54886214f8f1b364c8b004be670e4564df61b215e07dcb4548834c8dc1c13db4e64e534e2340e33931af599e508cd1c9e8b7f736335'
-        '414a4576d8b47ca75798506f0356b172313ef100686ecba27fa1fe9eb863301155a5aac6f6da2b5a2ce4b69fbb54ef99735d607e644fd386fe89f3f454b9c73c'
+        '0bb5edfe91ac73433c22a9884503cca510a593c53b3185c03ab2c26dc1fca293a8491583b9485de41b6311ddec90c66a15ef21090dc76f4cdfe7f5769a8f95c1'
         '6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237')
 
 prepare() {
