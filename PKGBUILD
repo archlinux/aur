@@ -1,6 +1,6 @@
 # Maintainer: dongdongbh <dongdongbhbh@gmail.com>
 pkgname=mindwtr-bin-beta
-pkgver=1.1.5rc1
+pkgver=1.1.5rc2
 epoch=1
 pkgrel=1
 pkgdesc="A complete Getting Things Done (GTD) productivity system - Mind Like Water (beta binary release)"
@@ -10,10 +10,10 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 provides=('mindwtr' 'mindwtr-bin')
 conflicts=('mindwtr' 'mindwtr-bin')
-_release_tag=v1.1.5-rc.1
-_asset_version=1.1.5-rc.1
+_release_tag=v1.1.5-rc.2
+_asset_version=1.1.5-rc.2
 source_x86_64=("${url}/releases/download/${_release_tag}/mindwtr_${_asset_version}_amd64.deb")
-sha256sums_x86_64=('d0ce8dcdf6e0666e8b857fb589304320c801fb4b23f51edf458aaaa11f29de52')
+sha256sums_x86_64=('cabe43da1796e0ca7ed70e9de64b0cba6ff36753ef7a5b2e17e137ef0a8bf450')
 
 package() {
     tar -xf data.tar.zst -C "${pkgdir}" || tar -xf data.tar.gz -C "${pkgdir}"
