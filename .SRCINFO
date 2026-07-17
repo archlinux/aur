@@ -1,6 +1,6 @@
 pkgbase = tailwindcss-cli
 	pkgdesc = A utility-first CSS framework for rapidly building custom user interfaces.
-	pkgver = 4.3.2
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://tailwindcss.com
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = tailwindcss-cli
 	depends = gcc-libs
 	depends = glibc
 	provides = tailwindcss
-	noextract = cli-4.3.2.tgz
-	source = https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.3.2.tgz
-	source = LICENSE-4.3.2::https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v4.3.2/LICENSE
-	sha256sums = b1da208095ba8886d4d6f4ff055cd402bdefd218359a195d7ecd2dd608e14bf2
+	noextract = cli-4.3.3.tgz
+	source = https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.3.3.tgz
+	source = LICENSE-4.3.3::https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v4.3.3/LICENSE
+	sha256sums = 5c968209a4dc93decd370bf8bd41f5a8ea692bd2d82e7693a96c951a6ed77200
 	sha256sums = 60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985
 
 pkgname = tailwindcss-cli
