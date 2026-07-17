@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=irtt
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
-license=('BSD')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heistp/irtt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('796538208275798b9bd7a9b4c1565a9590999c3db711e38026f2bd21f00b43ef')
+sha256sums=('dd5eebf0e01e3764edf10fb6f4743b064239e7e89f4c27ca4177676b1f6ae60b')
 validpgpkeys=('35C296FC733AA777B03DB9A8CAEC8F418885D165')  # Pete Heist <pete@eventide.io>
 
 
