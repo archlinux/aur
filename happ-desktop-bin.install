@@ -24,13 +24,17 @@ post_install() {
     chmod +x /opt/happ/bin/tun2/tun2proxy-bin 2>/dev/null || true
     chmod +x /opt/happ/bin/antifilter/antifilter 2>/dev/null || true
 
-    # Enable and start happd daemon (runs as root — needed for TUN/VPN)
+    # Enable and (re)start happd daemon (runs as root — needed for TUN/VPN).
+    # Must be `restart`, not `start`: post_upgrade routes here too, and `start`
+    # is a no-op against the still-running old daemon, which would leave a
+    # version-skewed happd serving the new client. `restart` also starts the
+    # unit when it isn't running, so it is correct for post_install as well.
     echo "Configuring happd daemon..."
     if command -v systemctl &>/dev/null; then
         systemctl daemon-reload || true
         systemctl enable happd.service || true
-        systemctl start happd.service || true
-        echo "happd daemon enabled and started"
+        systemctl restart happd.service || true
+        echo "happd daemon enabled and (re)started"
     fi
 
     echo ""
