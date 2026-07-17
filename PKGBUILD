@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-bin
 _pkgname=Mustang
-pkgver=0.9.32
+pkgver=0.9.33
 _electronversion=41
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman")
 sha256sums=('b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('d3da0f1c167fe1c046c54b5ac879defbabc7d2c08c9f3dfe2986a943a3877321')
-sha256sums_x86_64=('1bbe8f4580a9b5d0d151fcf253e214b97229ce3c4ee35b340277362e3a7b367d')
+sha256sums_aarch64=('663fb41f12e97f4fc5dd9464b5d5f62417e139bd48f3d8b135ffe6c0ea1b18b8')
+sha256sums_x86_64=('4014c5b0626ca66aeb6104ea06bd6481e3823662d1179ce1f6d547128a3ab4bf')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -54,7 +54,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/32x32/apps/${pkgname%-bin}.png" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/resources/icon.png"
     find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
