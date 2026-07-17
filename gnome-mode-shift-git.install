@@ -1,6 +1,0 @@
-post_install() {
-  echo -e "====================[gnome-mode-shift]====================\n"
-  echo -e "Run this command to enable and start the services:"
-  echo -e "\`systemctl --user enable --now gnome-mode-shift.service gnome-mode-shift.timer auto-update-gnome-theme.path auto-update-gnome-theme.service stop-mode-shift-timer.service\`"
-  echo -e "====================\n"
-}
