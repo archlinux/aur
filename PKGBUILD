@@ -1,6 +1,6 @@
 # Maintainer: Duncan Mac-Vicar P. <duncan@mac-vicar.eu>
 pkgname=agentjail
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Local policy guardrails that intercept and validate AI coding-agent tool calls before they run'
 arch=('x86_64' 'aarch64')
