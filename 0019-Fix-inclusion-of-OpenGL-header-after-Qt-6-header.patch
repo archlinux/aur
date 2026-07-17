@@ -1,7 +1,7 @@
 From 0266bae5879c7b7c4024c0cad1c1e65e1e083903 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:23:41 +0100
-Subject: [PATCH 19/24] Fix inclusion of OpenGL header after Qt 6 header
+Subject: [PATCH 19/25] Fix inclusion of OpenGL header after Qt 6 header
 
 Avoid issue for projects that include <GL/glu.h> after <QOpenGLContext>
 on Windows.
@@ -58,5 +58,5 @@ index e9a11080ce6..a97f73c3c3c 100644
  
  #endif // QOPENGL_H
 -- 
-2.54.0
+2.55.0
 
