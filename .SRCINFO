@@ -1,7 +1,7 @@
 pkgbase = wayshot-git
 	pkgdesc = Screenshotting tool for wayland compositors
-	pkgver = r506.100dff7
-	pkgrel = 1
+	pkgver = r543.687a52e
+	pkgrel = 2
 	url = https://github.com/waycrate/wayshot
 	arch = x86_64
 	license = GPL-3.0-only
