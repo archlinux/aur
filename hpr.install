@@ -6,6 +6,21 @@ post_upgrade() {
     _hpr_install_config
 }
 
+pre_remove() {
+    echo ""
+    echo "================================================"
+    echo "  HPR Removal Notice"
+    echo "================================================"
+    echo ""
+    echo "  Your personal configuration at ~/.config/HPR/"
+    echo "  has NOT been removed."
+    echo ""
+    echo "  To fully clean up, run:"
+    echo "    rm -rf ~/.config/HPR"
+    echo ""
+    echo "================================================"
+}
+
 _hpr_install_config() {
     REAL_USER="${SUDO_USER:-$USER}"
     USER_HOME="$(getent passwd "$REAL_USER" | cut -d: -f6)"
@@ -14,15 +29,12 @@ _hpr_install_config() {
     DATA_DIR="$USER_HOME/.local/share/HPR"
     SCRIPT_DIR="/usr/share/hpr"
 
-    echo "================================================"
-    echo "       HPR Configuration Installer"
-    echo "================================================"
     echo ""
-    echo "This script will copy HPR's required config files"
-    echo "and UI/assets to the correct locations on your system."
+    echo "================================================"
+    echo "       HPR Configuration Setup"
+    echo "================================================"
     echo ""
 
-    # Create dirs
     echo ">> Creating config directories if they don't exist..."
     mkdir -p "$CONFIG_DIR"
     mkdir -p "$DATA_DIR"
@@ -30,117 +42,74 @@ _hpr_install_config() {
     echo "   Data dir   : $DATA_DIR"
     echo ""
 
-    # aliases.csv
-    if [[ -f "$CONFIG_DIR/aliases.csv" ]]; then
-        read -p ">> aliases.csv already exists. Overwrite? (y/N): " confirm_aliases
-        if [[ "$confirm_aliases" == "y" || "$confirm_aliases" == "Y" ]]; then
-            cp "$SCRIPT_DIR/aliases.csv" "$CONFIG_DIR/aliases.csv"
-            echo "   aliases.csv overwritten."
-        else
-            echo "   aliases.csv skipped. Your edits are safe."
-        fi
-    else
+    # aliases.csv — copy only if missing, never overwrite
+    if [[ ! -f "$CONFIG_DIR/aliases.csv" ]]; then
         cp "$SCRIPT_DIR/aliases.csv" "$CONFIG_DIR/aliases.csv"
-        echo ">> aliases.csv copied successfully."
+        echo ">> aliases.csv copied."
+    else
+        echo "   aliases.csv already exists. Preserving your edits."
     fi
 
-    echo ""
-
-    # tabAliases.csv
-    if [[ -f "$CONFIG_DIR/tabAliases.csv" ]]; then
-        read -p ">> tabAliases.csv already exists. Overwrite? (y/N): " confirm_tabaliases
-        if [[ "$confirm_tabaliases" == "y" || "$confirm_tabaliases" == "Y" ]]; then
-            cp "$SCRIPT_DIR/tabAliases.csv" "$CONFIG_DIR/tabAliases.csv"
-            echo "   tabAliases.csv overwritten."
-        else
-            echo "   tabAliases.csv skipped. Your edits are safe."
-        fi
-    else
+    # tabAliases.csv — copy only if missing, never overwrite
+    if [[ ! -f "$CONFIG_DIR/tabAliases.csv" ]]; then
         cp "$SCRIPT_DIR/tabAliases.csv" "$CONFIG_DIR/tabAliases.csv"
-        echo ">> tabAliases.csv copied successfully."
+        echo ">> tabAliases.csv copied."
+    else
+        echo "   tabAliases.csv already exists. Preserving your edits."
     fi
 
-    echo ""
-
-    # projectAliases.csv
-    if [[ -f "$CONFIG_DIR/projectAliases.csv" ]]; then
-        read -p ">> projectAliases.csv already exists. Overwrite? (y/N): " confirm_projectaliases
-        if [[ "$confirm_projectaliases" == "y" || "$confirm_projectaliases" == "Y" ]]; then
-            cp "$SCRIPT_DIR/projectAliases.csv" "$CONFIG_DIR/projectAliases.csv"
-            echo "   projectAliases.csv overwritten."
-        else
-            echo "   projectAliases.csv skipped. Your edits are safe."
-        fi
-    else
+    # projectAliases.csv — copy only if missing, never overwrite
+    if [[ ! -f "$CONFIG_DIR/projectAliases.csv" ]]; then
         cp "$SCRIPT_DIR/projectAliases.csv" "$CONFIG_DIR/projectAliases.csv"
-        echo ">> projectAliases.csv copied successfully."
+        echo ">> projectAliases.csv copied."
+    else
+        echo "   projectAliases.csv already exists. Preserving your edits."
     fi
 
-    echo ""
-
-
-    # config.csv
-    if [[ -f "$CONFIG_DIR/config.csv" ]]; then
-        read -p ">> config.csv already exists. Overwrite? (y/N): " confirm_config
-        if [[ "$confirm_config" == "y" || "$confirm_config" == "Y" ]]; then
-            cp "$SCRIPT_DIR/config.csv" "$CONFIG_DIR/config.csv"
-            echo "   config.csv overwritten."
-        else
-            echo "   config.csv skipped. Your edits are safe."
-        fi
-    else
+    # config.csv — copy only if missing, never overwrite
+    if [[ ! -f "$CONFIG_DIR/config.csv" ]]; then
         cp "$SCRIPT_DIR/config.csv" "$CONFIG_DIR/config.csv"
-        echo ">> config.csv copied successfully."
-    fi
-
-    echo ""
-
-    # ui-REFERENCEONLY — ALWAYS overwrite silently
-    if [[ -d "$CONFIG_DIR/ui-REFERENCEONLY" ]]; then
-        rm -rf "$CONFIG_DIR/ui-REFERENCEONLY"
-    fi
-    cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui-REFERENCEONLY"
-    echo ">> ui-REFERENCEONLY/ updated to latest defaults silently."
-
-    echo ""
-
-    # ui/ — only copy if doesnt exist, ask if it does
-    if [[ -d "$CONFIG_DIR/ui" ]]; then
-        read -p ">> ui/ folder already exists. Overwrite? (y/N): " confirm_ui
-        if [[ "$confirm_ui" == "y" || "$confirm_ui" == "Y" ]]; then
-            rm -rf "$CONFIG_DIR/ui"
-            cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui"
-            echo "   ui/ overwritten. Your custom UI has been replaced with defaults."
-        else
-            echo "   ui/ skipped. Your custom UI is safe."
-            echo "   Reference the latest default UI at:"
-            echo "   $CONFIG_DIR/ui-REFERENCEONLY/"
-        fi
+        echo ">> config.csv copied."
     else
+        echo "   config.csv already exists. Preserving your edits."
+    fi
+
+    # ui-REFERENCEONLY — always overwrite silently (this is just a reference, not user-edited)
+    rm -rf "$CONFIG_DIR/ui-REFERENCEONLY"
+    cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui-REFERENCEONLY"
+    echo ">> ui-REFERENCEONLY/ updated to latest defaults."
+
+    # ui/ — copy only if missing, never overwrite (user may have customized)
+    if [[ ! -d "$CONFIG_DIR/ui" ]]; then
         cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui"
-        echo ">> ui/ folder copied successfully."
+        echo ">> ui/ folder copied."
+    else
+        echo "   ui/ already exists. Preserving your customizations."
+        echo "   Latest default UI is always available at:"
+        echo "   $CONFIG_DIR/ui-REFERENCEONLY/"
     fi
 
-    echo ""
-
-    # assets/ — ALWAYS replace silently
-    if [[ -d "$CONFIG_DIR/assets" ]]; then
-        rm -rf "$CONFIG_DIR/assets"
-    fi
+    # assets/ — always replace silently (not user-editable)
+    rm -rf "$CONFIG_DIR/assets"
     cp -r "$SCRIPT_DIR/assets" "$CONFIG_DIR/"
-    echo ">> assets/ folder updated silently."
+    echo ">> assets/ updated to latest."
 
     chown -R "$REAL_USER:$REAL_USER" "$CONFIG_DIR"
     chown -R "$REAL_USER:$REAL_USER" "$DATA_DIR"
 
+    # Refresh desktop integration caches
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor &>/dev/null || true
+    update-desktop-database /usr/share/applications &>/dev/null || true
+
     echo ""
     echo "================================================"
-    echo "  Done! You can now run HPR."
+    echo "  HPR setup complete! You can now run: hpr"
     echo ""
-    echo "  Your configuration is located at:"
+    echo "  Your configuration is at:"
     echo "  $CONFIG_DIR"
     echo ""
-    echo "  Latest default UI is always available at:"
-    echo "  $CONFIG_DIR/ui-REFERENCEONLY/"
+    echo "  GNOME Wayland users — to enable window tracking,"
+    echo "  run: /usr/share/hpr/installWindowCallsExtension.sh"
     echo "================================================"
+    echo ""
 }
