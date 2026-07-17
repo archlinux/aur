@@ -1,0 +1,18 @@
+pkgbase = verlauf-leeren
+	pkgdesc = Ein Tool zum Leeren des Verlaufs
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/wergosam/verlauf-leeren
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	provides = verlauf-leeren
+	conflicts = verlauf-leeren
+	source = verlauf-leeren::git+https://github.com/wergosam/verlauf-leeren.git
+	source = verlauf-leeren.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = verlauf-leeren

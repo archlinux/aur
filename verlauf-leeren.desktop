@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Verlauf löschen
+Name[en]=Clear History
+Comment=KDE- und GTK-Verlaufs-/Cache-Daten selektiv löschen
+Comment[en]=Selectively clear KDE and GTK history/cache data
+Exec=verlauf-leeren
+Icon=verlauf-leeren
+Terminal=false
+Categories=Qt;KDE;System;Utility;
+Keywords=Verlauf;Cache;Baloo;Cleaner;History;Cleanup;
+StartupNotify=true
+StartupWMClass=verlauf-leeren
