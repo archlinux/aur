@@ -37,7 +37,7 @@ fi
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
-export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://localhost:5175/}"
+export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://127.0.0.1:5175/}"
 
 http_pid=""
 electron_pid=""
@@ -87,6 +87,12 @@ os.chdir(root)
 class Handler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass
+
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
 
 class TCPServer(socketserver.TCPServer):
     allow_reuse_address = True
