@@ -2,7 +2,7 @@
 
 pkgbase=dosr
 pkgname=('dosr')
-pkgver=3.2.4
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented'
 url='https://lechatp.github.io/RootAsRole/'
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 arch=('x86_64')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v${pkgver}.tar.gz")
-sha256sums=('127941467817b58b475b47800628b285ddc14653212139e1ee22fda0595decd3')
+sha256sums=('77dd6e520c9cd1c804acc3f601f336c3cd7bc8a265cb95b6f4648cb9dac79e9b')
 depends=('pcre2' 'pam' 'libseccomp' 'glibc' 'gcc-libs')
 makedepends=(cargo e2fsprogs)
 optdepends=('pandoc: for building man pages')
@@ -68,8 +68,8 @@ package_dosr() {
 
     # Install man pages if they were built
     if [ -f man/en/dosr.8 ]; then
-        gzip 'man/en/dosr.8'
-        gzip 'man/fr/dosr.8'
+        gzip -f 'man/en/dosr.8'
+        gzip -f 'man/fr/dosr.8'
 
         install -Dm644 'man/en/dosr.8.gz' -t "$pkgdir/usr/share/man/man8"
         ln -s dosr.8.gz "$pkgdir/usr/share/man/man8/chsr.8.gz"
