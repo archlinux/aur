@@ -1,6 +1,6 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.64b0
-	pkgrel = 3
+	pkgver = 0.65b0
+	pkgrel = 1
 	arch = any
 	license = Apache-2.0
 	makedepends = git
@@ -9,8 +9,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib::git+https://github.com/open-telemetry/opentelemetry-python-contrib.git#tag=v0.64b0
-	b2sums = e513ab89301e015b89d7cd26701a0fc93ab59c155649b4a0067f507fce75c2b7293295678d818612d8b83a5116acd39e11aacb47bab03b52eb83544983484960
+	source = opentelemetry-python-contrib::git+https://github.com/open-telemetry/opentelemetry-python-contrib.git#tag=v0.65b0
+	b2sums = 15cf459a695cf073fac7e5ad852fd2f3871180193d36f5e718639b75ce7f1df84d93aab5de1073b03c98a057c91d92030bbdd5ff8703118516c9453f7c4a7ea2
 
 pkgname = python-opentelemetry-exporter-credential-provider-gcp
 	pkgdesc = GCP OTLP Exporter Credential Provider for OpenTelemetry
@@ -275,15 +275,6 @@ pkgname = python-opentelemetry-instrumentation-django
 	optdepends = python-django
 	optdepends = python-opentelemetry-instrumentation-asgi
 
-pkgname = python-opentelemetry-instrumentation-elasticsearch
-	pkgdesc = OpenTelemetry elasticsearch instrumentation
-	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-elasticsearch
-	depends = python-opentelemetry-api
-	depends = python-opentelemetry-instrumentation
-	depends = python-opentelemetry-semantic-conventions
-	depends = python-wrapt
-	optdepends = python-elasticsearch
-
 pkgname = python-opentelemetry-instrumentation-exceptions
 	pkgdesc = OpenTelemetry unhandled exceptions instrumentation
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-exceptions
@@ -342,6 +333,7 @@ pkgname = python-opentelemetry-instrumentation-httpx
 	depends = python-opentelemetry-util-http
 	depends = python-wrapt
 	optdepends = python-httpx
+	optdepends = python-httpx2
 
 pkgname = python-opentelemetry-instrumentation-jinja2
 	pkgdesc = OpenTelemetry jinja2 instrumentation
@@ -508,6 +500,14 @@ pkgname = python-opentelemetry-instrumentation-starlette
 	depends = python-opentelemetry-util-http
 	optdepends = python-starlette
 
+pkgname = python-opentelemetry-instrumentation-structlog
+	pkgdesc = OpenTelemetry structlog instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-structlog
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = python-structlog
+
 pkgname = python-opentelemetry-instrumentation-system-metrics
 	pkgdesc = OpenTelemetry System Metrics Instrumentation
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-system-metrics
@@ -600,7 +600,6 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-confluent-kafka
 	depends = python-opentelemetry-instrumentation-dbapi
 	depends = python-opentelemetry-instrumentation-django
-	depends = python-opentelemetry-instrumentation-elasticsearch
 	depends = python-opentelemetry-instrumentation-exceptions
 	depends = python-opentelemetry-instrumentation-falcon
 	depends = python-opentelemetry-instrumentation-fastapi
@@ -626,6 +625,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-sqlalchemy
 	depends = python-opentelemetry-instrumentation-sqlite3
 	depends = python-opentelemetry-instrumentation-starlette
+	depends = python-opentelemetry-instrumentation-structlog
 	depends = python-opentelemetry-instrumentation-system-metrics
 	depends = python-opentelemetry-instrumentation-threading
 	depends = python-opentelemetry-instrumentation-tornado
@@ -684,6 +684,14 @@ pkgname = python-opentelemetry-resource-detector-containerid
 	pkgdesc = Container Resource Detector for OpenTelemetry
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-containerid
 	depends = python-opentelemetry-sdk
+	optdepends = 
+
+pkgname = python-opentelemetry-resourcedetector-gcp
+	pkgdesc = Google Cloud Resource Detector for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resourcedetector-gcp
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+	depends = python-requests
 	optdepends = 
 
 pkgname = python-opentelemetry-sdk-extension-aws
