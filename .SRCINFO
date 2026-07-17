@@ -9,6 +9,6 @@ pkgbase = ccp_tree
 	makedepends = cargo
 	depends = gcc-libs
 	source = ccp_tree-0.1.5.tar.gz::https://github.com/AradPilevarJavid/ccp_tree/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = db4091faeda85d0bcaf4b21cea219ce1514fc7ba39c88d1e98252eb23fe2259a
+	sha256sums = 144271f115b3c1574fca33e53cc8398338db2d9aaaa9f173d79279bfc54c017f
 
 pkgname = ccp_tree
