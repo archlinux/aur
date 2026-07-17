@@ -1,0 +1,17 @@
+pkgbase = fastcount-bin
+	pkgdesc = An incredibly fast, incredibly useless counter (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = e06b228
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fastcount
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	provides = fastcount
+	conflicts = fastcount
+	source = fastcount::https://github.com/CallMeAlphabet/fastcount/releases/download/latest/fastcount
+	source = fastcount.sha256::https://github.com/CallMeAlphabet/fastcount/releases/download/latest/fastcount.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fastcount-bin
