@@ -2,7 +2,7 @@
 
 pkgname=deltacp
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A copy tool designed for incremental backup of block devices by utilizing reflink (CoW)"
 url="https://codeberg.org/sharow/deltacp"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=(zipman !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('96ba7663fc83870dcc7ad8a3375f98ad4575e433573c872cdf2d493bec8f5343')
+sha256sums=('3e1f446ac785783acb4c396adcfe75a6176471784255bd0790dfb81c18b50a4a')
 
 build() {
     cd "${srcdir}/${pkgname}"
