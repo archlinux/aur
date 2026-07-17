@@ -1,9 +1,10 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
-# Contributor: mutlu_inek <mutlu_inek@yahoo.de>
+# Contributor: diomekes <goodmans at protonmail dot com>
+# Contributor: mutlu_inek <mutlu_inek at <yahoo dot de>
 # Contributor: jnbek
 pkgname=ttf-vista-fonts
 pkgver=1
-pkgrel=11
+pkgrel=12
 pkgdesc="Microsoft Vista and Office 2007 True Type Fonts"
 url="https://docs.microsoft.com/en-us/typography/fonts/font-faq"
 license=('custom:microsoft')
@@ -12,7 +13,7 @@ depends=()
 makedepends=('fontforge' 'fontconfig' 'cabextract')
 replaces=('vista-fonts')
 install=$pkgname.install
-source=("${pkgname}.cab::https://web.archive.org/web/20171225132744/http://download.microsoft.com/download/E/6/7/E675FFFC-2A6D-4AB0-B3EB-27C9F8C8F696/PowerPointViewer.exe")
+source=("${pkgname}.cab::https://archive.org/download/PowerPointViewer_201801/PowerPointViewer.exe")
 sha256sums=('249473568eba7a1e4f95498acba594e0f42e6581add4dead70c1dfb908a09423')
 
 package() {
