@@ -3,12 +3,12 @@
 # binary-repackage approach — there's no separate from-source build yet, so
 # `vem-bin` exists purely for AUR naming-convention discoverability).
 # CI (.github/workflows/release.yml, publish-aur job) substitutes
-# vem-bin / 0.1.6 / 1 / https://github.com/vemjs/vem-desktop/releases/download/v0.1.6/Vem_0.1.6_amd64.deb / https://github.com/vemjs/vem-desktop/releases/download/v0.1.6/Vem_0.1.6_arm64.deb and
+# vem-bin / 0.1.7 / 1 / https://github.com/vemjs/vem-desktop/releases/download/v0.1.7/Vem_0.1.7_amd64.deb / https://github.com/vemjs/vem-desktop/releases/download/v0.1.7/Vem_0.1.7_arm64.deb and
 # writes the result to PKGBUILD before running updpkgsums + makepkg.
 # Don't hand-edit a generated PKGBUILD in the AUR checkout; edit this
 # template and cut a new release (or re-run the workflow via dispatch).
 pkgname=vem-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A next-generation Vim editor powered by VectoJS, running natively via Tauri"
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,10 @@ else
   conflicts=('vem-bin')
 fi
 options=('!strip')
-source_x86_64=("vem-${pkgver}-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.6/Vem_0.1.6_amd64.deb")
-source_aarch64=("vem-${pkgver}-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.6/Vem_0.1.6_arm64.deb")
-sha256sums_x86_64=('080cd3aefc0e23a1762ec09a5f92e2d29a1743f7d764e22708fefa9380c31de5')
-sha256sums_aarch64=('c20b1c6639b3b487990efa7cf7d2eeec6e758a1a855e0fe77f6c56ecf07219b6')
+source_x86_64=("vem-${pkgver}-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.7/Vem_0.1.7_amd64.deb")
+source_aarch64=("vem-${pkgver}-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.7/Vem_0.1.7_arm64.deb")
+sha256sums_x86_64=('e638cf2806fd43776064eb5d30f633c7624df3371802285ce4a82a05a6212a58')
+sha256sums_aarch64=('ac7f02bc9dd0c4782682407eee2a9b92ee6df82b8c89fbbd0d0793aca0f67ac8')
 
 package() {
   case "$CARCH" in
