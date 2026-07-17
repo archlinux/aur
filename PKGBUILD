@@ -1,6 +1,6 @@
 # Maintainer: lyj404 <lyj404 at proton dot me>
 pkgname=keevault-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A KeePass-compatible password manager built with Flutter'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=()
 provides=('keevault')
 conflicts=('keevault')
 source=("$url/releases/download/v$pkgver/KeeVault-v$pkgver-linux-x64.tar.gz")
-sha256sums=('194e1650b21dc37770b66734be6704f95ffa00b0ee6e33070ea32b9f588b7fcd')
+sha256sums=('23036064886108f4a47c510d4ae9bf9584258f3fcd77cd5b159ce784bf66f738')
 
 package() {
   cd "$srcdir"
