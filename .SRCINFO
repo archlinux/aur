@@ -1,0 +1,23 @@
+pkgbase = yvid
+	pkgdesc = Modern Video Downloader — interactive YouTube search, playlist downloads, smart resume, desktop notifications
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zaidejjo/yvid
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = yt-dlp
+	depends = python-rich
+	depends = python-questionary
+	depends = python-colorama
+	depends = python-pillow
+	depends = python-customtkinter
+	depends = ffmpeg
+	source = https://github.com/zaidejjo/yvid/archive/v1.0.0/yvid-v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = yvid
