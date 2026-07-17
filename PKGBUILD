@@ -2,12 +2,13 @@
 
 pkgname=val
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='an arbitrary precision calculator language'
 url="https://github.com/terror/$pkgname"
 arch=(x86_64)
 license=(CC0-1.0)
 depends=(glibc # libc.so
+         gmp # libgmp.so
          libgcc libgcc_s.so
          mpfr libmpfr.so)
 makedepends=(cargo)
