@@ -12,6 +12,6 @@ pkgbase = optmusic
 	optdepends = cava: optional spectrum bars
 	options = !lto
 	source = optmusic-0.2.5.tar.gz::https://github.com/fireflylabss/optMusic/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = ba3a2f0da5120b530aa3d3f0be1ba9c4fe33a06df6b6bf643bbd83be0e3202ee
+	sha256sums = 17ac38118824069a70d9178f7142fdf6b9358493621ca01ff9b02940679276ed
 
 pkgname = optmusic
