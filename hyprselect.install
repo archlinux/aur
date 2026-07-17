@@ -1,0 +1,26 @@
+post_install() {
+    echo ""
+    echo "══════════════════════════════════════════════════════════════"
+    echo "  hyprselect installed!"
+    echo ""
+    echo "  To complete setup, copy the example configs:"
+    echo ""
+    echo "    # Portal picker config (required)"
+    echo "    cp /usr/share/hyprselect/xdph.conf ~/.config/hypr/xdph.conf"
+    echo ""
+    echo "    # Portal routing (if not already configured)"
+    echo "    mkdir -p ~/.config/xdg-desktop-portal"
+    echo "    cp /usr/share/hyprselect/portals.conf ~/.config/xdg-desktop-portal/portals.conf"
+    echo ""
+    echo "  Then edit ~/.local/bin/hyprselect-picker (or /usr/bin/hyprselect-picker)"
+    echo "  to set your preferred terminal (default: ghostty)."
+    echo ""
+    echo "  Finally, restart the portal services:"
+    echo "    systemctl --user restart xdg-desktop-portal-hyprland xdg-desktop-portal"
+    echo "══════════════════════════════════════════════════════════════"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
