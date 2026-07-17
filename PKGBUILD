@@ -1,6 +1,6 @@
 pkgname=verde-bin
-pkgver=0.1.99
-pkgrel=2
+pkgver=0.1.100
+pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
 url='https://github.com/JonathanRiche/verde'
@@ -51,7 +51,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '790e708ba7df7831cb1bfd28daa51340ab19ea7b3426512994122a6c761dc017'
+  '317531a6947395bee4169295f048ae5a9987c5821fa6fb1cbf673c2c6d486e47'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
@@ -60,18 +60,20 @@ package() {
   local install_root="${pkgdir}/usr/lib/verde"
 
   install -d "${install_root}"
-  cp -a "${release_root}/bin/." "${install_root}/"
+  install -d "${install_root}/share"
+  cp -a "${release_root}/bin" "${install_root}/bin"
+  cp -a "${release_root}/share/verde" "${install_root}/share/verde"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/verde" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
-exec /usr/lib/verde/verde "$@"
+exec /usr/lib/verde/bin/verde "$@"
 EOF
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/verde-launch" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
-exec /usr/lib/verde/verde-launch "$@"
+exec /usr/lib/verde/bin/verde-launch "$@"
 EOF
 
   install -Dm644 "${release_root}/share/applications/verde.desktop" \
