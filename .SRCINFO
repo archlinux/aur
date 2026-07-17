@@ -1,7 +1,7 @@
 pkgbase = silver-browser-bin
 	pkgdesc = A privacy-focused desktop web browser built on Qt WebEngine/Chromium (Binary Version)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tudorioan1/silver-browser
 	arch = x86_64
 	license = GPL3
