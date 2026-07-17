@@ -1,2 +1,6 @@
 #!/bin/sh
-HOME="${HOME:-/tmp}/.local/share/baidu" exec /usr/lib/baidunetdisk/baidunetdisk "$@"
+set -eu
+
+appdir=/usr/lib/baidunetdisk
+export LD_LIBRARY_PATH="$appdir/legacy-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec "$appdir/baidunetdisk" --no-sandbox "$@"

@@ -3,53 +3,120 @@
 # Contributor: lilydjwg <lilydjwg at gmail dot com>
 # Contributor: kearneyBack <191615342 at qq dot com>
 
-_pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
-pkgver=4.17.8
+pkgver=8.6.0
 pkgrel=1
-#_mainver=${pkgver%.*}
-pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version)."
+pkgdesc='Baidu Netdisk - a cloud storage client (Linux Version)'
 arch=('x86_64')
-depends=('libnotify' 'libsecret' 'libxss' 'gtk3' 'nss')
-provides=("baidunetdisk")
-conflicts=("baidunetdisk")
-url="https://pan.baidu.com"
-license=("custom")
-options=('!strip')
+url='https://pan.baidu.com'
+license=('LicenseRef-custom')
+depends=('gtk3' 'alsa-lib' 'libnotify' 'libsecret' 'libxss' 'nss' 'hicolor-icon-theme'
+         'libappindicator-gtk3')
+provides=('baidunetdisk')
+conflicts=('baidunetdisk')
+options=('!strip' '!debug')
 
-source=("0001-baidunetdisk-bin-desktop-file.patch"
-        "baidunetdisk-wrapper.sh")
+source=(
+  'baidunetdisk-wrapper.sh'
+  'https://deb.debian.org/debian/pool/main/a/atkmm1.6/libatkmm-1.6-1v5_2.28.3-1_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/c/cairomm/libcairomm-1.0-1v5_1.14.4-2_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/g/glibmm2.4/libglibmm-2.4-1v5_2.66.5-2_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/g/gtk+2.0/libgtk2.0-0_2.24.33-2+deb12u1_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/g/gtkmm2.4/libgtkmm-2.4-1v5_2.24.5-4+b1_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/p/pangomm/libpangomm-1.4-1v5_2.46.3-1_amd64.deb'
+  'https://deb.debian.org/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0v5_2.12.0-1_amd64.deb'
+)
+source_x86_64=(
+  "baidunetdisk-${pkgver}.${CARCH}.deb::http://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb"
+)
 
-#source_x86_64=("${pkgname}-${pkgver}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${_mainver}/${_pkgname}_linux_${pkgver}.deb")
-source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb")
+sha256sums=(
+  '3f6655276fe99fec31915e799e044e75853cb3bb180f013cc0e7f21910f9bf72'
+  'f98c29a1962bb98d147c72e05a92eeba36f829ff1538eaaed550301a841fad95'
+  '6cb05750d23a03c4a3161e023e44051240bb27458da06c316fbe0c31b9807a49'
+  'a11c03dd8f9b454eaeae38ce782ceb45d9b52f5695d86d1d262c9062c678a2ba'
+  'd1e9a26a5961748f220c5989c89516fead2a5054b80914f94c71c3fee6fdebe3'
+  '028c21afe635dfcad591118049364f15bacc5dc0af18ea814f3bebb1e9c00afa'
+  '3bcb2bb2c7dece7be81cd12f0c2eb25a0964642ba1e62e7a98264cb0ab4cde9e'
+  '60d62e980e199094e37a09c5896f736fc64354c0b0b9dbefb1b588ec26bc0bf9'
+)
+sha256sums_x86_64=('28f62882fe35469b4008c1324e43d2a9109395bcbdfc05207e048a8487759d56')
 
-sha256sums=('1e0d9616c58d3b772b42d4790625cf2c34ab671f586b8534a2c544c2117bb5d0'
-            'c0035e038344a154421301b7855c274049ad432a5b06b52efc74831daa73e02e')
-sha256sums_x86_64=('ad3a4ce3fdbdbb44d3e157fa072f692c0629be7e6e94e9151cfc3408c0d5ba23')
+_extract_deb() {
+  local deb="$1" dest="$2" data
+  data=$(ar t "$deb" | awk '/^data\.tar\./ { print; exit }')
+  case "$data" in
+    *.xz)  ar p "$deb" "$data" | bsdtar -xJf - -C "$dest" ;;
+    *.bz2) ar p "$deb" "$data" | bsdtar -xjf - -C "$dest" ;;
+    *.zst) ar p "$deb" "$data" | bsdtar --zstd -xf - -C "$dest" ;;
+    *.gz)  ar p "$deb" "$data" | bsdtar -xzf - -C "$dest" ;;
+    *)     printf 'Unsupported Debian archive payload: %s\n' "$data" >&2; return 1 ;;
+  esac
+}
 
 prepare() {
-    bsdtar -xpf "data.tar.bz2"
+  mkdir -p extracted legacy-root
+  _extract_deb "${srcdir}/baidunetdisk-${pkgver}.${CARCH}.deb" "${srcdir}/extracted"
 
-    patch -d "usr" -p1 <"0001-baidunetdisk-bin-desktop-file.patch"
-    sed -i '/Name/a Name[zh_CN]=百度网盘' usr/share/applications/${_pkgname}.desktop
+  local deb
+  for deb in "${srcdir}"/lib*.deb; do
+    _extract_deb "$deb" "${srcdir}/legacy-root"
+  done
 }
 
 package() {
-    cd "${srcdir}"
+  local appdir="${pkgdir}/usr/lib/baidunetdisk"
+  local legacy_dir
+  legacy_dir=$(find "${srcdir}/legacy-root/usr/lib" -mindepth 1 -maxdepth 1 -type d -print -quit)
+  local legacy_lib
+  local legacy_libs=(
+    'libatkmm-1.6.so.1*'
+    'libcairomm-1.0.so.1*'
+    'libgdk-x11-2.0.so.0*'
+    'libgdkmm-2.4.so.1*'
+    'libgiomm-2.4.so.1*'
+    'libglibmm-2.4.so.1*'
+    'libgtk-x11-2.0.so.0*'
+    'libgtkmm-2.4.so.1*'
+    'libpangomm-1.4.so.1*'
+    'libsigc-2.0.so.0*'
+  )
 
-    # install application data
-    mv "usr" "${pkgdir}"
-    install -dm755 "${pkgdir}/usr/lib" "${pkgdir}/usr/share/licenses/${_pkgname}"
-    mv "opt/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}"
-#   install -Dm755 "${srcdir}/baidunetdisk-wrapper.sh" "${pkgdir}/usr/bin/baidunetdisk"
+  install -dm755 "$appdir" "${appdir}/legacy-libs"
+  cp -a --no-preserve=ownership "${srcdir}/extracted/opt/baidunetdisk/." "$appdir/"
+  for legacy_lib in "${legacy_libs[@]}"; do
+    find "$legacy_dir" -maxdepth 1 \( -type f -o -type l \) \
+      -name "$legacy_lib" \
+      -exec cp -a --no-preserve=ownership {} "${appdir}/legacy-libs/" \;
+  done
 
-    # fix promission
-    chmod 644 "${pkgdir}/usr/lib/${_pkgname}/"*.so
-    find ${pkgdir} -type d -exec chmod 755 {} \;
+  # Sentry CLI is only used while building/uploading sourcemaps.
+  rm -rf "$appdir/resources/app.asar.unpacked/node_modules/@sentry"
 
-    # install license
-    ln -s "/usr/lib/${_pkgname}/LICENSE.electron.txt" \
-        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.electron.txt"
-    ln -s "/usr/lib/${_pkgname}/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
+  sed -i -E 's|^Exec=.*|Exec=/usr/bin/baidunetdisk %U|' "$appdir/baidunetdisk.desktop"
+  sed -i -E \
+    -e 's|^Exec=.*|Exec=/usr/bin/baidunetdisk -diskopen|' \
+    -e 's|^Icon=.*|Icon=baidunetdisk|' \
+    "$appdir/baidunetdiskv.desktop"
+  sed -i -E 's|^Exec=.*|Exec=/usr/bin/baidunetdisk --menuupload %F|' \
+    "$appdir/baiduNetdiskContext.conf"
+
+  install -Dm644 "$appdir/baidunetdisk.desktop" \
+    "${pkgdir}/usr/share/applications/baidunetdisk.desktop"
+  install -Dm644 "$appdir/baidunetdisk.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/baidunetdisk.svg"
+  install -Dm644 "$appdir/baidunetdiskv.desktop" \
+    "${pkgdir}/usr/share/dde-file-manager/extensions/appEntry/baidunetdiskv.desktop"
+  install -Dm644 "$appdir/baiduNetdiskContext.conf" \
+    "${pkgdir}/usr/share/applications/context-menus/baiduNetdiskContext.conf"
+  install -Dm755 "${srcdir}/baidunetdisk-wrapper.sh" \
+    "${pkgdir}/usr/bin/baidunetdisk"
+
+  install -Dm644 "$appdir/LICENSE.electron.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+  install -Dm644 "$appdir/LICENSES.chromium.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+
+  find "$appdir" -type d -exec chmod 755 {} +
+  find "$appdir" -type f -name '*.so*' -exec chmod 644 {} +
 }
