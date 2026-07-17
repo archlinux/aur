@@ -1,6 +1,6 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgver=9.0.17.sdk315
+pkgver=9.0.18.sdk316
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
@@ -38,9 +38,9 @@ noextract+=(
   \"\${source_${_carch}[@]##*/}\"
 )"
 done
-sha512sums_aarch64=('4d8c9e5f95063095608f8775b729ef41d6dc910e14992ddb533eac38a44b157cdd67bc2446a362908eacf0453328001ce7161b3f0ceb4191a69c454f1f8cc169')
-sha512sums_x86_64=('1723a70563003566880600dc074f10366428bfb54db2a749b75c684f6dca0763d80a1cf9a2bfa014e5a41f7ab4e84f21d044e70152165a84ce86edbfa913afb1')
-sha512sums_armv7h=('ba4f048c9a69bc9c7f60201e243160c622eff58630465da179eadd79f547f2cfca567f73dd57a85e78aab2bf2c33441dda6795a86e655cd8b73b26612b3841c5')
+sha512sums_aarch64=('408324fd4ee828cafa17926e33c12cc48460699b58a8322c8a1891ef81eddec0c72df12fa7afa86f5e22fa26bc3750c0fb60481bd167e4b808d5cfb951df0638')
+sha512sums_x86_64=('5a8558afd648c14a835e00ae08fa556083f50e3ada164d3e73293fcd4850b0519a27c11f2dae95a9bbe4af432be33bf14451ef11ba69527e34f9cf3077a1c2b5')
+sha512sums_armv7h=('c86ab03d2acdf49bd701c1c021a3132e16c9cbe72ed45e84e62a440d2c053f34bd76d645dcee314bf3e8129a28ae5bba58474fc278a940eb7769aa43ffb2d22a')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
