@@ -1,5 +1,5 @@
 pkgbase = gaze-gui-bin
-	pkgdesc = Binary wrapper for gaze-gui from Gundu Labs
+	pkgdesc = GTK4/Adwaita GUI for Gaze
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://gaze.gundulabs.com

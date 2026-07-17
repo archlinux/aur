@@ -2,11 +2,12 @@
 pkgname=gaze-gui-bin
 pkgver=0.2.4
 pkgrel=1
-pkgdesc="Binary wrapper for gaze-gui from Gundu Labs"
+pkgdesc="GTK4/Adwaita GUI for Gaze"
 arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gtk4' 'libadwaita' )
+backup=()
 source=("gaze-gui-0.2.4-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.2.4-1-x86_64.pkg.tar.zst")
 sha256sums=('e866d93b3a2403f5d7c32ae72ccd87e95aaaf29af023c46fd058c26423b05d80')
 
