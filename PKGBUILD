@@ -1,13 +1,13 @@
 # Maintainer: BNDays27 <brionical at proton.me>
 pkgname=hedgemodmanager-git
-pkgver=8.0.0.beta5.r0
+pkgver=8.0.0.beta7.r6
 pkgrel=1
 pkgdesc="(UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC."
 arch=(x86_64)
 url="https://github.com/hedge-dev/HedgeModManager"
 license=('MIT')
-depends=('dotnet-runtime-8.0')
-makedepends=('dotnet-sdk-8.0' 'git')
+depends=('dotnet-runtime-10.0')
+makedepends=('dotnet-sdk-10.0' 'git')
 provides=('hedgemodmanager')
 source=("hedgemodmanager::git+https://github.com/hedge-dev/HedgeModManager.git")
 sha256sums=(SKIP)
