@@ -1,7 +1,7 @@
 From dd79c0ca0147623ab34cb9adad5bf6e8ab3db852 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
-Subject: [PATCH 17/24] Workaround linker error about missing symbol
+Subject: [PATCH 17/25] Workaround linker error about missing symbol
  `__sync_bool_compare_and_swap_16`
 
 This error only happens when compiling for the x86_64-w64-mingw32 target
@@ -83,5 +83,5 @@ index 40f173c8c82..56d3e981037 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.54.0
+2.55.0
 
