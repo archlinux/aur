@@ -1,7 +1,7 @@
 pkgbase = verde-bin
 	pkgdesc = Desktop GUI for coding agents like Codex and OpenCode
 	pkgver = 0.1.99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JonathanRiche/verde
 	arch = x86_64
 	license = MIT

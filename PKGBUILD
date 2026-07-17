@@ -1,6 +1,6 @@
 pkgname=verde-bin
 pkgver=0.1.99
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
 url='https://github.com/JonathanRiche/verde'
