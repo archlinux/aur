@@ -1,6 +1,6 @@
 pkgbase = fixplay-diagnosetool
 	pkgdesc = Cross-platform diagnostic tool for gaming consoles
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/fabioudev/fixplay-diagnoseTool
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fixplay-diagnosetool
 	provides = fixplay-diagnosetool
 	conflicts = fixplay-diagnosetool-bin
 	options = !strip
-	source = fixplay-diagnoseTool-v0.1.13.tar.gz::https://github.com/fabioudev/fixplay-diagnoseTool/archive/refs/tags/v0.1.13.tar.gz
+	source = fixplay-diagnoseTool-v0.1.14.tar.gz::https://github.com/fabioudev/fixplay-diagnoseTool/archive/refs/tags/v0.1.14.tar.gz
 	sha256sums = SKIP
 
 pkgname = fixplay-diagnosetool
