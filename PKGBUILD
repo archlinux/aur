@@ -1,7 +1,7 @@
 # Maintainer: TwoWells <mwellsa@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=lattice-markdown
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Markdown predicate linter and backlink reconciler, shipped as an LSP server"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('lattice-markdown-bin' 'lattice' 'lattice-bin')
 # The upstream project (and its binary) is plain `lattice`; the pkgname carries
 # the -markdown suffix only because the AUR name is taken.
 source=("lattice-$pkgver.tar.gz::https://github.com/TwoWells/Lattice/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3a03b25fcb64f67bcc24cb9982667504482d826aa9784e6140cf3b8d4eb79e6')
+sha256sums=('1c1f87a67feaa10ae7c4ad195982f58b3d919c86464ad02d486075ff19d00abd')
 
 # The GitHub archive extracts to Lattice-$pkgver/ (the repo name is capitalized).
 _srcdir="Lattice-$pkgver"

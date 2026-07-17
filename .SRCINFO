@@ -1,6 +1,6 @@
 pkgbase = lattice-markdown
 	pkgdesc = Markdown predicate linter and backlink reconciler, shipped as an LSP server
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/TwoWells/Lattice
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lattice-markdown
 	conflicts = lattice-markdown-bin
 	conflicts = lattice
 	conflicts = lattice-bin
-	source = lattice-0.5.0.tar.gz::https://github.com/TwoWells/Lattice/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = e3a03b25fcb64f67bcc24cb9982667504482d826aa9784e6140cf3b8d4eb79e6
+	source = lattice-0.6.0.tar.gz::https://github.com/TwoWells/Lattice/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 1c1f87a67feaa10ae7c4ad195982f58b3d919c86464ad02d486075ff19d00abd
 
 pkgname = lattice-markdown
