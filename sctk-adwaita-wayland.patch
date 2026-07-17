@@ -1847,10 +1847,10 @@ index 136f5f18b..d468d84db 100644
 -    }
 -}
 diff --git a/window/src/os/wayland/state.rs b/window/src/os/wayland/state.rs
-index 31885b58d..b1379ed8b 100644
+index 6178c6a65..621c9c87a 100644
 --- a/window/src/os/wayland/state.rs
 +++ b/window/src/os/wayland/state.rs
-@@ -55,6 +55,7 @@ pub(super) struct WaylandState {
+@@ -56,6 +56,7 @@ pub(super) struct WaylandState {
      pub(super) windows: RefCell<HashMap<usize, Rc<RefCell<WaylandWindowInner>>>>,
  
      pub(super) active_surface_id: RefCell<Option<ObjectId>>,
@@ -1858,7 +1858,7 @@ index 31885b58d..b1379ed8b 100644
      pub(super) last_serial: RefCell<u32>,
      pub(super) keyboard: Option<WlKeyboard>,
      pub(super) keyboard_mapper: Option<KeyboardWithFallback>,
-@@ -116,6 +117,7 @@ impl WaylandState {
+@@ -122,6 +123,7 @@ impl WaylandState {
              seat: SeatState::new(globals, qh),
              xdg: XdgShell::bind(globals, qh)?,
              active_surface_id: RefCell::new(None),
@@ -1867,7 +1867,7 @@ index 31885b58d..b1379ed8b 100644
              keyboard: None,
              keyboard_mapper: None,
 diff --git a/window/src/os/wayland/window.rs b/window/src/os/wayland/window.rs
-index 2fe2f284c..e74ea3318 100644
+index c0b37d064..dd64f5491 100644
 --- a/window/src/os/wayland/window.rs
 +++ b/window/src/os/wayland/window.rs
 @@ -20,15 +20,15 @@ use raw_window_handle::{
@@ -1897,7 +1897,7 @@ index 2fe2f284c..e74ea3318 100644
  use wayland_client::protocol::wl_region::WlRegion;
  use wayland_client::protocol::wl_surface::WlSurface;
  use wayland_client::{Connection as WConnection, Dispatch, Proxy, QueueHandle};
-@@ -246,43 +246,13 @@ impl WaylandWindow {
+@@ -248,43 +248,13 @@ impl WaylandWindow {
          window.set_title(name.to_string());
          let decorations = config.window_decorations;
  
@@ -1942,7 +1942,7 @@ index 2fe2f284c..e74ea3318 100644
          window.commit();
  
          let pending_mouse = PendingMouse::create(window_id);
-@@ -299,7 +269,7 @@ impl WaylandWindow {
+@@ -301,7 +271,7 @@ impl WaylandWindow {
              surface_factor: 1.0,
              invalidated: false,
              window: Some(window),
@@ -1951,15 +1951,15 @@ index 2fe2f284c..e74ea3318 100644
              dimensions,
              resize_increments: None,
              window_state: WindowState::default(),
-@@ -327,6 +297,7 @@ impl WaylandWindow {
+@@ -329,6 +299,7 @@ impl WaylandWindow {
  
              wegl_surface: None,
              gl_state: None,
 +            start_time: Instant::now(),
+             ext_background_effect_surface: None,
          }));
  
-         let window_handle = Window::Wayland(WaylandWindow(window_id));
-@@ -345,6 +316,14 @@ impl WaylandWindow {
+@@ -348,6 +319,14 @@ impl WaylandWindow {
  
          wait_configure.recv().await?;
  
@@ -1974,7 +1974,7 @@ index 2fe2f284c..e74ea3318 100644
          Ok(window_handle)
      }
  }
-@@ -397,9 +376,22 @@ impl WindowOps for WaylandWindow {
+@@ -400,9 +379,22 @@ impl WindowOps for WaylandWindow {
          });
      }
  
@@ -1998,7 +1998,7 @@ index 2fe2f284c..e74ea3318 100644
              Ok(())
          });
      }
-@@ -577,7 +569,7 @@ pub struct WaylandWindowInner {
+@@ -580,7 +572,7 @@ pub struct WaylandWindowInner {
      pub(crate) events: WindowEventSender,
      surface_factor: f64,
      window: Option<XdgWindow>,
@@ -2007,15 +2007,15 @@ index 2fe2f284c..e74ea3318 100644
      dimensions: Dimensions,
      resize_increments: Option<ResizeIncrement>,
      window_state: WindowState,
-@@ -605,6 +597,7 @@ pub struct WaylandWindowInner {
+@@ -608,6 +600,7 @@ pub struct WaylandWindowInner {
      // libraries will segfault on shutdown
      wegl_surface: Option<WlEglSurface>,
      gl_state: Option<Rc<glium::backend::Context>>,
 +    start_time: Instant,
+     ext_background_effect_surface: Option<ExtBackgroundEffectSurfaceV1>,
  }
  
- impl WaylandWindowInner {
-@@ -633,11 +626,37 @@ impl WaylandWindowInner {
+@@ -637,11 +630,37 @@ impl WaylandWindowInner {
      }
  
      fn refresh_frame(&mut self) {
@@ -2055,7 +2055,7 @@ index 2fe2f284c..e74ea3318 100644
      fn enable_opengl(&mut self) -> anyhow::Result<Rc<glium::backend::Context>> {
          let wayland_conn = Connection::get().unwrap().wayland();
          let mut wegl_surface = None;
-@@ -717,6 +736,31 @@ impl WaylandWindowInner {
+@@ -721,6 +740,31 @@ impl WaylandWindowInner {
      pub(crate) fn dispatch_pending_mouse(&mut self) {
          let pending_mouse = Arc::clone(&self.pending_mouse);
  
@@ -2087,7 +2087,7 @@ index 2fe2f284c..e74ea3318 100644
          if let Some((x, y)) = PendingMouse::coords(&pending_mouse) {
              let coords = Point::new(
                  self.surface_to_pixels(x as i32) as isize,
-@@ -851,9 +895,11 @@ impl WaylandWindowInner {
+@@ -855,9 +899,11 @@ impl WaylandWindowInner {
          }
  
          if let Some(ref window_config) = pending.window_configure {
@@ -2102,7 +2102,7 @@ index 2fe2f284c..e74ea3318 100644
          }
  
          if let Some((mut w, mut h)) = pending.configure.take() {
-@@ -872,8 +918,9 @@ impl WaylandWindowInner {
+@@ -876,8 +922,9 @@ impl WaylandWindowInner {
                  let mut pixel_width = self.surface_to_pixels(w.try_into().unwrap());
                  let mut pixel_height = self.surface_to_pixels(h.try_into().unwrap());
  
@@ -2114,7 +2114,7 @@ index 2fe2f284c..e74ea3318 100644
                      if let Some(incr) = self.resize_increments {
                          let min_width = incr.base_width + incr.x;
                          let min_height = incr.base_height + incr.y;
-@@ -886,6 +933,9 @@ impl WaylandWindowInner {
+@@ -890,6 +937,9 @@ impl WaylandWindowInner {
                          h = self.pixels_to_surface(desired_pixel_height) as u32;
                          pixel_width = self.surface_to_pixels(w.try_into().unwrap());
                          pixel_height = self.surface_to_pixels(h.try_into().unwrap());
@@ -2124,7 +2124,7 @@ index 2fe2f284c..e74ea3318 100644
                      }
                  }
  
-@@ -897,22 +947,34 @@ impl WaylandWindowInner {
+@@ -901,22 +951,34 @@ impl WaylandWindowInner {
                  pixel_height = (pixel_height / scale) * scale;
  
                  log::trace!("Resizing frame");
@@ -2174,7 +2174,7 @@ index 2fe2f284c..e74ea3318 100644
                  let new_dimensions = Dimensions {
                      pixel_width: pixel_width.try_into().unwrap(),
                      pixel_height: pixel_height.try_into().unwrap(),
-@@ -946,23 +1008,38 @@ impl WaylandWindowInner {
+@@ -950,23 +1012,38 @@ impl WaylandWindowInner {
                      if let Some(wegl_surface) = self.wegl_surface.as_mut() {
                          wegl_surface.resize(pixel_width, pixel_height, 0, 0);
                      }
@@ -2224,8 +2224,8 @@ index 2fe2f284c..e74ea3318 100644
 +                            }
                          }
                      }
-                 }
-@@ -981,7 +1058,7 @@ impl WaylandWindowInner {
+                     self.update_window_background_blur();
+@@ -986,7 +1063,7 @@ impl WaylandWindowInner {
          }
      }
  
@@ -2234,7 +2234,7 @@ index 2fe2f284c..e74ea3318 100644
          if !PendingMouse::in_window(&self.pending_mouse) {
              return;
          }
-@@ -995,16 +1072,7 @@ impl WaylandWindowInner {
+@@ -1000,16 +1077,7 @@ impl WaylandWindowInner {
  
          match cursor {
              Some(cursor) => {
@@ -2252,7 +2252,7 @@ index 2fe2f284c..e74ea3318 100644
                      log::error!("set_cursor: {}", err);
                  }
              }
-@@ -1063,6 +1131,9 @@ impl WaylandWindowInner {
+@@ -1068,6 +1136,9 @@ impl WaylandWindowInner {
          }
          if let Some(window) = self.window.as_ref() {
              window.set_title(title.clone());
@@ -2262,7 +2262,7 @@ index 2fe2f284c..e74ea3318 100644
          }
          self.refresh_frame();
          self.title = Some(title);
-@@ -1131,6 +1202,124 @@ impl WaylandWindowInner {
+@@ -1136,6 +1207,124 @@ impl WaylandWindowInner {
          Ok(())
      }
  
@@ -2387,7 +2387,7 @@ index 2fe2f284c..e74ea3318 100644
      fn surface(&self) -> &WlSurface {
          self.window
              .as_ref()
-@@ -1185,29 +1374,39 @@ impl WaylandWindowInner {
+@@ -1190,29 +1379,39 @@ impl WaylandWindowInner {
                  self.emit_focus(mapper, false);
              }
              WlKeyboardEvent::Key { key, state, .. } => {
@@ -2450,7 +2450,7 @@ index 2fe2f284c..e74ea3318 100644
                      }
                  }
              }
-@@ -1237,9 +1436,16 @@ impl WaylandWindowInner {
+@@ -1242,9 +1441,16 @@ impl WaylandWindowInner {
          }
      }
  
@@ -2468,7 +2468,7 @@ index 2fe2f284c..e74ea3318 100644
          match action {
              FrameAction::Close => self.events.dispatch(WindowEvent::CloseRequested),
              FrameAction::Minimize => self.window.as_ref().unwrap().set_minimized(),
-@@ -1284,8 +1490,18 @@ impl WaylandWindowInner {
+@@ -1289,8 +1495,18 @@ impl WaylandWindowInner {
      }
  
      fn config_did_change(&mut self, config: ConfigHandle) {
@@ -2486,8 +2486,8 @@ index 2fe2f284c..e74ea3318 100644
 +        }
      }
  
-     fn update_window_background_blur(&self) {
-@@ -1317,63 +1533,52 @@ impl WaylandState {
+     fn update_window_background_blur(&mut self) {
+@@ -1384,63 +1600,52 @@ impl WaylandState {
              .window_by_id(window_id)
              .expect("Inner Window should exist");
  
@@ -2525,13 +2525,20 @@ index 2fe2f284c..e74ea3318 100644
 -                let mut state = WindowState::default();
 -                if configure.state.contains(SCTKWindowState::FULLSCREEN) {
 -                    state |= WindowState::FULL_SCREEN;
--                }
--                if configure.state.contains(SCTKWindowState::MAXIMIZED) {
--                    state |= WindowState::MAXIMIZED;
 +            match event {
 +                WaylandWindowEvent::Close => {
 +                    pending.close = true;
                  }
+-                if configure.state.contains(SCTKWindowState::MAXIMIZED) {
+-                    state |= WindowState::MAXIMIZED;
+-                }
+-
+-                log::debug!(
+-                    "Config: self.window_state={:?}, states: {:?} {:?}",
+-                    pending_event.window_state,
+-                    state,
+-                    configure.state
+-                );
 +                WaylandWindowEvent::Request(configure) => {
 +                    pending.window_configure = Some(configure.clone());
 +                    pending.had_configure_event = true;
@@ -2554,13 +2561,6 @@ index 2fe2f284c..e74ea3318 100644
 +                        }
 +                    }
  
--                log::debug!(
--                    "Config: self.window_state={:?}, states: {:?} {:?}",
--                    pending_event.window_state,
--                    state,
--                    configure.state
--                );
--
 -                if pending_event.window_state.is_none() && state != WindowState::default() {
 -                    changed = true;
 +                    let mut state = WindowState::default();
@@ -2592,7 +2592,7 @@ index 2fe2f284c..e74ea3318 100644
      }
  }
  
-@@ -1382,10 +1587,24 @@ impl CompositorHandler for WaylandState {
+@@ -1449,10 +1654,24 @@ impl CompositorHandler for WaylandState {
          &mut self,
          _conn: &WConnection,
          _qh: &wayland_client::QueueHandle<Self>,

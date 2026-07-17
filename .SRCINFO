@@ -1,6 +1,6 @@
 pkgbase = wezterm-sctk-adwaita-wayland-git
 	pkgdesc = Wezterm with sctk-adwaita Wayland CSD support (PR #7095)
-	pkgver = 20240203.110809.r857.gfff02ca
+	pkgver = 20240203.110809.r869.g76b606e
 	pkgrel = 1
 	url = https://github.com/wezterm/wezterm
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = wezterm-sctk-adwaita-wayland-git
 	conflicts = wezterm-shell-integration
 	replaces = wezterm-shell-integration
 	options = !lto
-	source = wezterm::git+https://github.com/wezterm/wezterm.git
+	source = wezterm::git+https://github.com/wezterm/wezterm.git#commit=76b606ec597a3c0263fa60321548637451c0a547
 	source = wezterm-freetype2::git+https://github.com/freetype/freetype2.git
 	source = wezterm-zlib::git+https://github.com/madler/zlib.git
 	source = wezterm-harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git
@@ -50,6 +50,6 @@ pkgbase = wezterm-sctk-adwaita-wayland-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ac74467adb6aa4e38a31ff2c3779586e08d2660c757c3177892e529bd1086743
+	sha256sums = 27456e4d79fce0cc98e26b3cbfd495379781e512de89af1e0a1c665f43db0d77
 
 pkgname = wezterm-sctk-adwaita-wayland-git

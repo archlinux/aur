@@ -4,8 +4,10 @@
 
 _pkgname=wezterm
 pkgname="$_pkgname-sctk-adwaita-wayland-git"
-pkgver=20240203.110809.r857.gfff02ca
+pkgver=20240203.110809.r869.g76b606e
 pkgrel=1
+# Upstream commit the patch is generated against; bump together with the patch.
+_commit=76b606ec597a3c0263fa60321548637451c0a547
 pkgdesc="Wezterm with sctk-adwaita Wayland CSD support (PR #7095)"
 arch=('x86_64')
 url="https://github.com/wezterm/wezterm"
@@ -42,7 +44,7 @@ conflicts=("$_pkgname" 'wezterm-git' 'wezterm-nightly-bin' 'wezterm-shell-integr
 replaces=('wezterm-shell-integration')
 options=('!lto')
 source=(
-  "$_pkgname::git+$url.git"
+  "$_pkgname::git+$url.git#commit=$_commit"
   "$_pkgname-freetype2::git+https://github.com/freetype/freetype2.git"
   "$_pkgname-zlib::git+https://github.com/madler/zlib.git"
   "$_pkgname-harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
@@ -54,7 +56,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ac74467adb6aa4e38a31ff2c3779586e08d2660c757c3177892e529bd1086743')
+            '27456e4d79fce0cc98e26b3cbfd495379781e512de89af1e0a1c665f43db0d77')
 
 pkgver() {
   cd "$_pkgname"
