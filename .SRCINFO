@@ -1,6 +1,6 @@
 pkgbase = gallery-tui-bin
 	pkgdesc = A terminal image gallery powered by ratatui and chafa.
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/WindustH/gallery-tui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gallery-tui-bin
 	conflicts = gallery-tui
 	conflicts = gallery-tui-git
 	options = !strip
-	source = gallery-tui-0.2.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/gallery-tui/releases/download/v0.2.3/gallery-tui-0.2.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 205800525c2d452e795779354f9cd84c6eba83121acd6628831d8f942dda7b6d
+	source = gallery-tui-0.2.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/gallery-tui/releases/download/v0.2.4/gallery-tui-0.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d8c52fbbf31f73d8fc58dd0f57e73f0ade62f2454863b8e25e083e519e0173ef
 
 pkgname = gallery-tui-bin
