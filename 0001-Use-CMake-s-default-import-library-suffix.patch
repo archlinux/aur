@@ -1,7 +1,7 @@
 From 72effb4a509ce592bf10899409a816d302aa633e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
-Subject: [PATCH 01/24] Use CMake's default import library suffix
+Subject: [PATCH 01/25] Use CMake's default import library suffix
 
 Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
 ---
@@ -110,5 +110,5 @@ index 5a260e71d16..8b08f265bac 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.54.0
+2.55.0
 
