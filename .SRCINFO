@@ -12,6 +12,6 @@ pkgbase = papyrus-wallpaper
 	depends = python-pillow
 	depends = mpvpaper
 	source = https://github.com/PSGtatitos/papyrus/archive/v1.2.2.tar.gz
-	sha256sums = 7de45fe17882db8335a299c303e724b8c8b0a1f767c3b9c297e17401dea7b7ab
+	sha256sums = 5a8087cf17ef1d22b65f6360e116ed9ae025a4092957fa9c11ac631d4fe6fb5d
 
 pkgname = papyrus-wallpaper
