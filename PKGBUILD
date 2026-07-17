@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=codiff-bin
-_tag="1.7.0"
-pkgver=1.7.0
+_tag="1.9.0"
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A beautiful, minimal, local diff viewer for reviewing staged and unstaged Git changes before committing"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'nss' 'at-spi2-core' 'alsa-lib' 'cups' 'mesa' 'libxcomposite' 'l
 provides=('codiff')
 conflicts=('codiff')
 source_x86_64=("codiff_${pkgver}_amd64.deb::https://github.com/nkzw-tech/codiff/releases/download/v${_tag}/codiff_${pkgver}_amd64.deb")
-sha256sums_x86_64=('90b4f9ff5940059fd254e4d3b3ebd63d344ab9054455292bbf5775cd6c2207e6')
+sha256sums_x86_64=('00758e6bf8d188eb8bff4a0ef4dc324ec936854e4be7408b7d1494f70ccce830')
 
 package() {
     bsdtar -xOf "${srcdir}/codiff_${pkgver}_amd64.deb" data.tar.zst | bsdtar -xC "${pkgdir}"
