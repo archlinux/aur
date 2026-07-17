@@ -1,6 +1,5 @@
-# Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
-pkgver=7.4.1
+pkgver=7.4.3
 pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
@@ -12,19 +11,24 @@ optdepends=(
     'reflector: mirror optimization support'
     'expac: system statistics'
 )
+source=("git+$url.git")
+sha256sums=('SKIP')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a7cddd243860626577b804855aa4d38c62013341dc2132799765db4c620378e3')
+pkgver() {
+    cd jay
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-    cd "jay-$pkgver"
+    cd jay
     install -Dm755 main "$pkgdir/usr/bin/jay"
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
-    install -Dm644 languages/en.sh "$pkgdir/usr/share/jay/en.sh"
-    install -Dm644 languages/pt.sh "$pkgdir/usr/share/jay/pt.sh"
     install -Dm644 modules/base.sh "$pkgdir/usr/share/jay/base.sh"
     install -Dm644 modules/logging.sh "$pkgdir/usr/share/jay/logging.sh"
     install -Dm644 modules/cache.sh "$pkgdir/usr/share/jay/cache.sh"
-    install -Dm644 modules/flatpak.sh "$pkgdir/usr/share/jay/flatpak.sh"
     install -Dm644 modules/etc.sh "$pkgdir/usr/share/jay/etc.sh"
+    install -Dm644 modules/flatpak.sh "$pkgdir/usr/share/jay/flatpak.sh"
+    install -Dm644 languages/pt.sh "$pkgdir/usr/share/jay/pt.sh"
+    install -Dm644 languages/en.sh "$pkgdir/usr/share/jay/en.sh"
 }
