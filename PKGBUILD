@@ -1,7 +1,7 @@
 # Maintainer: Lev <levpr1c@proton.me>
 
 pkgname=mediavault-bin
-pkgver=1.4.0
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Self-hosted media vault — browse, tag, manage images and comics'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('gnome-keyring: encrypt API keys in system keychain')
 provides=('mediavault')
 conflicts=('mediavault')
 source=("mediavault-v$pkgver-linux-amd64::https://github.com/levpr1c/MediaVault/releases/download/v$pkgver/mediavault-linux-amd64")
-sha256sums=('53416d5bba67096f8106e3dae0978846c9b6aac107dd893a98e572fa0fdcfadb')
+sha256sums=('e952fdf76e9716b7d0dcb804df9c1f8d3f5ad2f6ed29c77f431dbf4355c1a2a5')
 
 package() {
   install -Dm755 "$srcdir/mediavault-v$pkgver-linux-amd64" "$pkgdir/usr/bin/mediavault"
