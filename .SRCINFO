@@ -1,6 +1,6 @@
 pkgbase = vigaphone-bin
 	pkgdesc = ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Sound and Timbre Analyzer, Instrument Tuner and more...
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vigaphone-bin
 	depends = rsync
 	options = !strip
 	options = !debug
-	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.6.1/ViGAPhoneR_linux_amd64.tar.gz
-	sha256sums = 45f2b456060f7a33d7739c0743841392eab5186ffddb5a31100c8dff1d87bd86
+	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.6.2/ViGAPhoneR_linux_amd64.tar.gz
+	sha256sums = sha256:b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f
 
 pkgname = vigaphone-bin
