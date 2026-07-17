@@ -1,0 +1,18 @@
+pkgbase = f00
+	pkgdesc = Modern, friendly directory lister (ls rewrite in Rust)
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://f00.sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	provides = f00
+	source_x86_64 = https://github.com/theesfeld/f00/releases/download/v0.10.4/f00-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 060420f2af3efd73ef6a6acbaed940f9e52dea8f597c6dd0383f85a7e27e3c47
+	source_aarch64 = https://github.com/theesfeld/f00/releases/download/v0.10.4/f00-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0c0f6fd886da8099f086d037ddacd75c3fa51943068cd135397a13177b876cb3
+
+pkgname = f00
