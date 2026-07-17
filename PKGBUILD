@@ -5,7 +5,7 @@
 # `updpkgsums` (or makepkg -g) against the published release assets.
 
 pkgname=rhythr-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Unofficial community tool that renders Rhythia (.rhr) replays into pixel-accurate videos"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/KillerOp007/rhythr/v$pkgver/LICENSE"
 )
 noextract=("rhythr_${pkgver}_amd64.deb")
-sha256sums=('218a747d53f1ed7e039d6840aa0973e4cafa6c8a5b76e27117945b4a0c66c3e3'
+sha256sums=('952316b12501e0c3ea5ca345420190bca6f5ffa7bc6e79f845d26c6be50b5b25'
             '74f100c0e5ed1b3e3dd697ebb21c868526375dd03e9a1dd93c2e2609c1444bdc')
 
 package() {
