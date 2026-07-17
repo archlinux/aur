@@ -19,7 +19,7 @@ depends=(
 makedepends=()
 optdepends=()
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('7de45fe17882db8335a299c303e724b8c8b0a1f767c3b9c297e17401dea7b7ab')
+sha256sums=('c6d93471063aa0759a854da537cc6e9beb5fd18e6fce6568dc0c64ad5cb0c343')
 
 package() {
   cd "$srcdir/papyrus-$pkgver"
