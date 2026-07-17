@@ -1,6 +1,6 @@
 pkgbase = mumudvb
 	pkgdesc = Redistribute a stream from DVB on a network in multicast or in HTTP unicast
-	pkgver = 2.1.0
+	pkgver = 20260716
 	pkgrel = 1
 	url = http://www.mumudvb.net/
 	install = mumudvb.install
@@ -9,12 +9,9 @@ pkgbase = mumudvb
 	arch = armv7h
 	license = GPL2
 	depends = glibc
-	source = https://github.com/braice/MuMuDVB/archive/2.1.0.zip
+	source = https://github.com/braice/MuMuDVB/archive/20260716.zip
 	source = mumudvb.conf
-	source = 0001-Fix-compiling-with-kernels-4.14.patch
-	sha256sums = 43706f0d899cebc934dc7a2076497d221b44464b4d986dc263dd2a6c91ae9088
+	sha256sums = 26de4f41c53820f6d9f3477584e7a16b1c313fe5a0fb8bd86d529a12c1b4902d
 	sha256sums = abe3c74a528f59b990e18f91858cb9bb9dd61c715c8904eb561aa7ee4cb79281
-	sha256sums = f9cc41c30a204ddf71522de6f5f0fa0432c7f02a62dbd521b95d3258003dc5dd
 
 pkgname = mumudvb
-
