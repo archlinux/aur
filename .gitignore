@@ -1,0 +1,6 @@
+/shader-desk/
+
+/src/
+/pkg/
+
+*.pkg.tar.zst

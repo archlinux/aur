@@ -1,0 +1,27 @@
+pkgbase = shader-desk-git
+	pkgdesc = Interactive Wayland wallpaper engine using OpenGL GLESv2 shaders
+	pkgver = r70.8b33e0e
+	pkgrel = 1
+	url = https://github.com/KMartianov/shader-desk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = mesa
+	depends = luajit
+	depends = nlohmann-json
+	depends = glm
+	depends = libpulse
+	depends = fftw
+	depends = libevdev
+	depends = mpv
+	depends = python
+	provides = shader-desk
+	conflicts = shader-desk
+	source = shader-desk::git+https://github.com/KMartianov/shader-desk.git
+	sha256sums = SKIP
+
+pkgname = shader-desk-git
