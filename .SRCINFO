@@ -1,7 +1,7 @@
 pkgbase = yarr
 	pkgdesc = Yet Another RSS Reader: Self-hosted, web-based feed aggregator with an embedded sqlite database
-	pkgver = 2.7
-	pkgrel = 2
+	pkgver = 2.8
+	pkgrel = 0
 	url = https://github.com/nkanaev/yarr
 	changelog = yarr.changelog
 	arch = aarch64
@@ -10,8 +10,9 @@ pkgbase = yarr
 	makedepends = git
 	makedepends = go
 	makedepends = make
+	makedepends = npm
 	depends = glibc
-	source = yarr-2.7.tar.gz::https://github.com/nkanaev/yarr/archive/refs/tags/v2.7.tar.gz
-	sha256sums = 8a22bc1ae43a6855ea8f6cf9936080b936d63550e7a53da115201a00b412e140
+	source = yarr-2.8.tar.gz::https://github.com/nkanaev/yarr/archive/refs/tags/v2.8.tar.gz
+	sha256sums = c15adc91c9c0ef085ce6161c81f296e96b066e99352416b920288ef9a8d0aafa
 
 pkgname = yarr

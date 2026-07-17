@@ -1,20 +1,20 @@
 # shellcheck shell=bash
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=yarr
 pkgdesc='Yet Another RSS Reader: Self-hosted, web-based feed aggregator with an embedded sqlite database'
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=0
 url='https://github.com/nkanaev/yarr'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
 license=('MIT')
-makedepends=('git' 'go' 'make')
+makedepends=('git' 'go' 'make' 'npm')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a22bc1ae43a6855ea8f6cf9936080b936d63550e7a53da115201a00b412e140')
+sha256sums=('c15adc91c9c0ef085ce6161c81f296e96b066e99352416b920288ef9a8d0aafa')
 
 _githash=05d57a2
 
