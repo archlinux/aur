@@ -1,6 +1,6 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=bookmark-organisator
-pkgver=r14.88f1c3d # Wird beim Bauen automatisch aktualisiert
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Ein Tool zum Organisieren von Lesezeichen (Bookmarks)"
 arch=('any')
@@ -14,12 +14,6 @@ install=bookmark-organisator.install
 
 source=("${pkgname}::git+https://github.com/wergosam/bookmark-organisator.git")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "${pkgname}"
-    # Generiert die Version basierend auf der Commit-Anzahl und dem letzten Hash
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
     cd "${pkgname}"
