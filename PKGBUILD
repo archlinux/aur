@@ -1,7 +1,7 @@
 # Maintainer: Robert Schiele <rschiele@gmail.com>
 
 pkgname=openscad-ldraw
-pkgver=2026.05
+pkgver=2026.06
 pkgrel=1
 pkgdesc="The entire LDraw.org library as OpenSCAD files"
 arch=('any')
@@ -10,7 +10,7 @@ license=('CC-BY-4.0')
 depends=('openscad')
 options=('!strip')
 source=("https://github.com/schiele/openscad-ldraw/archive/refs/tags/v${pkgver/./-}.tar.gz")
-sha256sums=('9cce80c65e592c581f4b76ccabe9da91135ce5f0f48c4ab592b17bb9e64802d0')
+sha256sums=('28abaf1c7ebf442afebcc7dbfab4c4d14377642292456cbc9e67c04a12135e18')
 
 package() {
     cd ${pkgname}-${pkgver/./-}
