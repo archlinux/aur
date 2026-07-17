@@ -1,15 +1,15 @@
 pkgname=inav-configurator-bin
-pkgver=9.0.2
-pkgrel=2
+pkgver=9.1.1
+pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iNavFlight/inav-configurator"
 
-source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/untagged-58a74ccc453672f866b7/INAV-Configurator_linux_x64_9.0.2.deb)
-sha256sums_x86_64=('247332476ee65bbbd031550ef0b7cae8f20f8e7094fcbca2d13a8123634d1e03')
-sha256sums_aarch64=('cf3a1d557f9f3414511413ea0a6342af8f15d7054eac61f4106341b7c376d624')
+source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/$pkgver/INAV-Configurator_linux_x64_$pkgver.deb)
+sha256sums_x86_64=('cf74be8e479224bd89b4703778c088fa1e278d324a9d1ae2cbd176e990cbe113')
+sha256sums_aarch64=('1867f37f3d450798966e795450d2a102e572c6630ede95d7a9082984490d193b')
 
-source_aarch64=(https://github.com/iNavFlight/inav-configurator/releases/download/untagged-58a74ccc453672f866b7/INAV-Configurator_linux_arm64_9.0.2.deb)
+source_aarch64=(https://github.com/iNavFlight/inav-configurator/releases/download/$pkgver/INAV-Configurator_linux_arm64_$pkgver.deb)
 
 provides=('inav-configurator')
 conflicts=('inav-configurator')
@@ -30,5 +30,5 @@ package() {
 	bsdtar -xf "$srcdir/INAV-Configurator_linux_${deb_arch}_$pkgver.deb"
 	bsdtar -xf data.tar.*
 
-	rm -rf DEBIAN
+	rm -rf DEBIAN debian-binary control.tar.* data.tar.*
 }
