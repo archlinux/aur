@@ -1,6 +1,6 @@
 pkgbase = python-chibi
 	pkgdesc = python snippets and other useful things
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-chibi
 	depends = python-chibi-donkey
 	depends = python-chibi-atlas
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi/chibi-0.20.0.tar.gz
-	sha256sums = b69c45fcf156f1f7abd4293780031239514836ebd7bda92a1726603dcbbe2224
+	source = https://files.pythonhosted.org/packages/source/c/chibi/chibi-0.21.0.tar.gz
+	sha256sums = 917bc0a8ab1b6f568cf10ce1dd8d8c3039b729202c9b1d3bc19b90591ea63da9
 
 pkgname = python-chibi
