@@ -15,7 +15,7 @@ makedepends=('python-build'
              'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('28369f88fbdb096fc318c5f678a74abc801837c49011cad37e4af510ba8dcffe')
 
 build() {
   cd "${_pkgname}-${pkgver}"

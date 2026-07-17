@@ -15,6 +15,6 @@ pkgbase = python-words2num2
 	depends = python-docopt
 	depends = python-num2words2
 	source = https://files.pythonhosted.org/packages/source/w/words2num2/words2num2-0.3.0.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 28369f88fbdb096fc318c5f678a74abc801837c49011cad37e4af510ba8dcffe
 
 pkgname = python-words2num2
