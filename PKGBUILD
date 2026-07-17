@@ -1,8 +1,9 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Jingbei Li <i@jingbei.li>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributer: Jose Riha <jose1711 gmail com>
 
-pkgname=python-torchaudio
+pkgname=python-torchaudio-cuda12.9
 _pkgname=audio
 pkgver=2.11.0
 pkgrel=1
@@ -10,21 +11,26 @@ pkgdesc="Data manipulation and transformation for audio signal processing, power
 arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
 license=('BSD-2-Clause')
-depends=('python' 'python-pytorch' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' 'libvorbis' 'opus' 'opusfile' 'zlib')
-optdepends=('cuda')
+depends=('python' 'python-pytorch-cuda12.9' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' 'libvorbis' 'opus' 'opusfile' 'zlib')
+optdepends=('cuda-12.9')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
-conflicts=('python-torchaudio-git')
+provides+=('python-torchaudio')
+conflicts=('python-torchaudio' 'python-torchaudio-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('599ec24e7e1eef476ef21f0178e33da00e2434f930ba42e9cc20bf4002220486')
 
 build() {
+	# Use GCC 14 for CUDA 12.9
+	export CC=gcc-14
+	export CXX=g++-14
+
 	cd "$srcdir/${_pkgname}-${pkgver}"
 
 	export CUDACXX=/opt/cuda/bin/nvcc
 	export CUDAHOSTCXX=$CXX
-	# Follow architectures used by pytorch
-	# https://github.com/archlinux/svntogit-community/blob/packages/python-pytorch/trunk/PKGBUILD
-	export TORCH_CUDA_ARCH_LIST="7.5 8.0 8.6 8.7 8.9 9.0 10.0 10.3 11.0 12.0 12.1"
+	# Follow architectures used by python-pytorch-cuda12.9
+	# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python-pytorch-cuda12.9
+	export TORCH_CUDA_ARCH_LIST="5.2 5.3 6.0 6.1 6.2 7.0 7.2"
 
 	CUDA_HOME=/opt/cuda/ python setup.py build
 }
