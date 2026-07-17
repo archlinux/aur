@@ -14,7 +14,7 @@ source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_
         "openchrom.desktop"
         "openchrom.png")
 noextract=("openchrom_linux.x86_64_${pkgver}.tar.gz")
-sha256sums=('38bc685721e12bc452b305d381fa5693c2b16d927340b0211ba457d8dd1b055d'
+sha256sums=('91ce8689af9e586d6aad99242b12a6234c02aa6234189dee0c860b2d1a5de19b'
             '700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1'
             '5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f')
 depends=('org.freedesktop.secrets' 'webkit2gtk-4.1')
