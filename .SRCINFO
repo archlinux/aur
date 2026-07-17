@@ -1,0 +1,16 @@
+pkgbase = fastcp
+	pkgdesc = A fast cp wrapper using --reflink=always (x86_64 Linux only) — builds from source, always tracks latest
+	pkgver = cdb708a
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fastcp
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = fastcp
+	conflicts = fastcp-bin
+	source = fastcp-latest.tar.gz::https://github.com/CallMeAlphabet/fastcp/archive/refs/tags/latest.tar.gz
+	sha256sums = SKIP
+
+pkgname = fastcp
