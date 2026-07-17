@@ -1,6 +1,6 @@
 pkgbase = amux-bin
 	pkgdesc = TUI for easily running parallel coding agents
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/andyrewlee/amux
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = amux-bin
 	provides = amux
 	conflicts = amux
 	options = !strip
-	source_x86_64 = amux-x86_64-0.0.19.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.19/amux_0.0.19_linux_amd64.tar.gz
-	sha256sums_x86_64 = bc3097f4a18faa1c3893fac4ecc33f926274e6444a336e975740b48100c26cb1
-	source_aarch64 = amux-aarch64-0.0.19.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.19/amux_0.0.19_linux_amd64.tar.gz
-	sha256sums_aarch64 = bc3097f4a18faa1c3893fac4ecc33f926274e6444a336e975740b48100c26cb1
+	source_x86_64 = amux-x86_64-0.0.20.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.20/amux_0.0.20_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9f929e47e08dbd7b11b30d7ae60ce5c75582e609b26e4566d2ce24883a0f21aa
+	source_aarch64 = amux-aarch64-0.0.20.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.20/amux_0.0.20_linux_amd64.tar.gz
+	sha256sums_aarch64 = 9f929e47e08dbd7b11b30d7ae60ce5c75582e609b26e4566d2ce24883a0f21aa
 
 pkgname = amux-bin
