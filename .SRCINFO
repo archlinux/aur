@@ -10,6 +10,6 @@ pkgbase = flurfunk-bin
 	provides = flurfunk
 	conflicts = flurfunk
 	source = https://github.com/maxischmaxi/flurfunk/releases/download/v0.1.1/flurfunk-0.1.1-linux-x86_64.tar.gz
-	sha256sums = 5b609624c1c22ddea0ed81c88d6dd1104babfc7d8da76ff813632d3ccaa7de44
+	sha256sums = 5bf4305797e75c215f99f6dbe9fe18c580a919ee31cc9918317ac07ac5fbeb0d
 
 pkgname = flurfunk-bin
