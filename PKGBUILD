@@ -7,32 +7,36 @@ pkgdesc="Modern Video Downloader — interactive YouTube search, playlist downlo
 arch=('any')
 url="https://github.com/zaidejjo/yvid"
 license=('MIT')
+
+# تعريف اسم المجلد كما يظهر في GitHub
+_archive="$pkgname-$pkgver"
+
 depends=(
-    'python'
-    'yt-dlp'
-    'python-rich'
-    'python-questionary'
-    'python-colorama'
-    'python-pillow'
-    'python-customtkinter'
-    'ffmpeg'
-    'python-secretstorage'
+  'python'
+  'yt-dlp'
+  'python-rich'
+  'python-questionary'
+  'python-colorama'
+  'python-pillow'
+  'python-customtkinter'
+  'ffmpeg'
+  'python-secretstorage'
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-wheel'
-    'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
 )
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('77aafe38c668daf7b2cf2c14b97f1d4b224a355a07017c17b5d1af5a5bc76e95')
 
 build() {
-    cd "$srcdir/$pkgname-v$pkgver"
-    python -m build --wheel --no-isolation
+  cd "$srcdir/$_archive"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-v$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/$_archive"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
