@@ -45,7 +45,6 @@ prepare() {
 		--shamefully-hoist \
 		# EOL
 
-	cd radicle-httpd
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
@@ -63,8 +62,6 @@ build() {
 	CXXFLAGS+=" -ffat-lto-objects"
 
 	export LIBGIT2_NO_VENDOR=1
-
-	cd radicle-httpd
 	export RADICLE_VERSION="$pkgver"
 	cargo build \
 		--frozen \
@@ -73,7 +70,7 @@ build() {
 		# EOL
 
 	mkdir -p target/release/man
-	for _man in *.adoc; do
+	for _man in crates/*/*.adoc; do
 		asciidoctor --doctype manpage --backend manpage --destination-dir target/release/man "$_man"
 	done
 
@@ -82,7 +79,7 @@ build() {
 }
 
 check() {
-	cd radicle-explorer/radicle-httpd
+	cd radicle-explorer
 	(
 	# Ideally, we'd use `env -i`, but `cargo test` forces a recompilation
 	# if build flags don't match (+ we want to test what we ship anyway).
@@ -138,10 +135,11 @@ package_radicle-httpd-git() {
 	provides=('radicle-httpd')
 	conflicts=('radicle-httpd')
 
-	cd radicle-explorer/radicle-httpd
+	cd radicle-explorer
 
 	install -Dm755 \
 		target/dist/radicle-httpd \
+		target/dist/radicle-search \
 		-t "$pkgdir/usr/bin"
 
 	install -Dm644 \
@@ -159,7 +157,6 @@ package_radicle-httpd-git() {
 		"$pkgdir/usr/share/doc/$pkgname/nginx/radicle-explorer.conf"
 
 	install -Dm644 \
-		LICENSE-APACHE \
-		LICENSE-MIT \
+		crates/*/LICENSE-* \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
