@@ -1,6 +1,6 @@
 pkgbase = codebase-posters
 	pkgdesc = Your repository as generative art
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/unable12/codebase-posters
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = codebase-posters
 	makedepends = jq
 	depends = nodejs
 	provides = codebase-posters
-	noextract = codebase-posters-0.6.2.tgz
+	noextract = codebase-posters-0.7.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = codebase-posters-0.6.2.tgz::https://registry.npmjs.org/codebase-posters/-/codebase-posters-0.6.2.tgz
-	b2sums = f2caaa0c29c370ac37f6c92220d393bf716d2baa982d7be8c20a651ee68be105c371c6767a11a33cfa506d51e3270b59df100fc92e5d8d3d402d1b15752a8fc3
+	source = codebase-posters-0.7.0.tgz::https://registry.npmjs.org/codebase-posters/-/codebase-posters-0.7.0.tgz
+	b2sums = 1d2cc85212638fc1123c8574132c201b8696d548e9d5a553824f10e57aeeedf9ccf3f04af5d7adc54094ee1cf63b9877948465cfd5a06e3020a6125fccb20834
 
 pkgname = codebase-posters
