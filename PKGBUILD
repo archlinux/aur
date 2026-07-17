@@ -1,5 +1,5 @@
 # Maintainer: Max Jeschek <max@jeschek.dev>
-# Template: CI substitutes 0.1.1 / 7b1d716dc40959dc1fd45ab0d7ceb815034934792dfcee13945a50f4055e9eb9 (.github/workflows/release.yml).
+# Template: CI substitutes 0.1.1 / 5b609624c1c22ddea0ed81c88d6dd1104babfc7d8da76ff813632d3ccaa7de44 (.github/workflows/release.yml).
 pkgname=flurfunk-bin
 pkgver=0.1.1
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('glibc' 'libx11')
 provides=('flurfunk')
 conflicts=('flurfunk')
 source=("https://github.com/maxischmaxi/flurfunk/releases/download/v${pkgver}/flurfunk-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('7b1d716dc40959dc1fd45ab0d7ceb815034934792dfcee13945a50f4055e9eb9')
+sha256sums=('5b609624c1c22ddea0ed81c88d6dd1104babfc7d8da76ff813632d3ccaa7de44')
 
 package() {
 	cd "flurfunk-${pkgver}-linux-x86_64"
