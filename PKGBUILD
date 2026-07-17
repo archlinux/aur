@@ -5,7 +5,7 @@ pkgbase="stm32cubeclt"
 pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
@@ -16,14 +16,14 @@ makedepends=('tar'
              'bash')
 options=('!strip')
 
-_prefix="27995"
-_date="20260219"
-_suffix="1804"
-_pkg_name=${pkgbase}_${pkgver}
-_pkg_license_name="SLA0048_${_pkgname}.pdf"
-_pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
-_pkg_tar_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.tar.gz"
-_pkg_zip_name="${_pkg_sh_name}.zip"
+_prefix="29188"
+_date="20260626"
+_suffix="1359"
+_pkg_name="${pkgbase}_${pkgver}"
+_pkg_license_name="SLA0048_${_pkgname}.txt"
+_pkg_sh_name="${_pkg_name}_${_prefix}_${_date}_${_suffix}-Lin-x86_64.sh"
+_pkg_tar_name="${_pkg_name}_${_prefix}_${_date}_${_suffix}-Lin.tar.gz"
+_pkg_zip_name="${_pkg_name}-Lin-x86_64.sh.zip"
 
 if [[ "$(ps -o args=$PID 2>/dev/null)" != *"--printsrcinfo"* ]]; then
   if [ ! -f "${SRCDEST:-$startdir}/${_pkg_zip_name}" ] && [ ! -f "${startdir}/${_pkg_zip_name}" ]; then
@@ -39,22 +39,14 @@ if [[ "$(ps -o args=$PID 2>/dev/null)" != *"--printsrcinfo"* ]]; then
   fi
 fi
 
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              -H "@${srcdir}http_headers" \
-              -o %o -L --compressed %u")
-source=("local://${_pkg_zip_name}"
-        'http_headers'
-        "https://www.st.com/resource/en/license/${_pkg_license_name}")
-sha256sums=('c9aa0d3c366278685217437675120904b2f9f58f53f79214424031efc3951358'
-            '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
-            '0792ee061576afb2c9a11d80e7cdcd0ab2da6f223de6442c9bf1e0ebefd17bcd')
+source=("local://${_pkg_zip_name}")
+sha256sums=('8bebfb8811e28dcc26977c058a6109cdea4bcc930b2c4cf833d8309036b93b0d')
 
 # not used, reserved.
 _pkgname_stlink_server="stlink-server"
 _pkgname_stlink_udev_rules="stlink-udev-rules"
 _pkgver_stlink_server="2.1.1-1"
-_pkgver_stlink_udev_rules="1.0.3-3"
+_pkgver_stlink_udev_rules="1.1.0-1"
 
 # not used, reserved.
 _pkg_stlink_server_name="${_pkgname_stlink_server}.${_pkgver_stlink_server}"
@@ -79,7 +71,10 @@ _create_profile_script() {
   local stlinkgdb_bindir="${pkg_root_dir}/STLink-gdb-server/bin"
   local gnu_bindir="${pkg_root_dir}/GNU-tools-for-STM32/bin"
   local cmake_bindir="${pkg_root_dir}/CMake/bin"
+  local make_bindir="${pkg_root_dir}/Make/bin"
   local ninja_bindir="${pkg_root_dir}/Ninja/bin"
+  local clang_root="${pkg_root_dir}/st-arm-clang"
+  local clang_bindir="${clang_root}/bin"
   local metadata_dir="${pkg_root_dir}"
 
   echo "Installing shell profile $(basename ${profile})..."
@@ -97,9 +92,20 @@ prepend_path () {
     esac
 }
 
+append_path () {
+    case ":\$PATH:" in
+        *:"\$1":*)
+            ;;
+        *)
+            PATH="\${PATH:+\$PATH:}\$1"
+    esac
+}
+
 if [ \$OVERRIDE_SYSTEM_TOOLS -ge 1 ];then
   prepend_path "$gnu_bindir"
+  prepend_path "$clang_bindir"
   prepend_path "$ninja_bindir"
+  prepend_path "$make_bindir"
   prepend_path "$cmake_bindir"
   prepend_path "$stlinkgdb_bindir"
   prepend_path "$cubeprog_bindir"
@@ -109,19 +115,30 @@ else
   append_path "$cubeprog_bindir"
   append_path "$stlinkgdb_bindir"
   append_path "$cmake_bindir"
+  append_path "$make_bindir"
   append_path "$ninja_bindir"
+  append_path "$clang_bindir"
   append_path "$gnu_bindir"
 fi
 
 export PATH
+export CLANG_GCC_CMSIS_COMPILER="$clang_root"
+export GCC_TOOLCHAIN_ROOT="$gnu_bindir"
 END
 
 }
 
-_install_license_pdf() {
+_install_license() {
+  local license_source="${srcdir}/${_pkg_name}/prompt_linux_license.sh"
+
   echo "Installing license ${_pkg_license_name}..."
-  install -Dm644 ${srcdir}/${_pkg_license_name} -t \
-                  "${pkgdir}/usr/share/licenses/${pkgname}/"
+  grep -q '^SLA0048 Rev' "${license_source}"
+  awk '
+    /^cat << EOF$/ { copying = 1; next }
+    copying && /^EOF$/ { exit }
+    copying { sub(/\r$/, ""); print }
+  ' "${license_source}" | install -Dm644 /dev/stdin \
+      "${pkgdir}/usr/share/licenses/${pkgname}/${_pkg_license_name}"
 }
 
 prepare() {
@@ -165,7 +182,7 @@ package_stm32cubeclt() {
 
   _create_profile_script "${pkgdir}/etc/profile.d/${profile}"
 
-  _install_license_pdf
+  _install_license
 }
 
 # not used, split to stand-alone stlink-server on AUR https://aur.archlinux.org/packages/stlink-server.
@@ -187,7 +204,7 @@ package_stlink-server() {
   echo "Installing stlink-server ${version_string} ${timestamp}..."
   install -Dm755 ${_pkgname_stlink_server} -t ${pkgdir}/usr/bin
 
-  _install_license_pdf
+  _install_license
 }
 
 # not unsed, replace it with stlink package from offical repo
@@ -203,6 +220,6 @@ package_stlink-udev-rules() {
     install -Dm644 "${_udev_rule}" -t "${pkgdir}/usr/lib/rules.d/"
   done
 
-  _install_license_pdf
+  _install_license
 }
 # vim: set sw=2 ts=2 et:
