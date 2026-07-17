@@ -4,13 +4,13 @@
 _phpbase=82
 pkgname=php82-imagick
 _name=imagick
-pkgver=3.7.0
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="PHP 8.2 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
 url="https://github.com/imagick/imagick"
 license=('PHP')
-depends=('imagemagick' 'ttf-font')
+depends=('imagemagick' 'ttf-font' "php${_phpbase}")
 makedepends=("php${_phpbase}" 'librsvg')
 checkdepends=('ttf-dejavu')
 backup=("etc/php${_phpbase}/conf.d/${_name}.ini")
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/${_name}/${_name}/archive/refs/tags/${pkgver}.tar.gz"
   "${_name}.ini"
 )
-sha512sums=('67cf7e76ee59dcf2fbb6230956344033022ea2b93f82fcdb949998638ce9990004948fddf13e7f4649b2115ce6f402a1eb4f95aa36a3b6a26f3f016b0e958bc3'
+sha512sums=('b584394ce2c785a206211454208d23f5675e05162ccf76dacd267a1e4f6e8cb8d373dd3f660c42da5b399df4e89256be7d08465c3aa8d8666207fe61e0fadfd5'
             '4b22a3a3b425632b7012c34e171315b1bf5310fd0ed411eeda59e7224266698890ac2d5e6af536542acbfa31408446e3eb6539b004b2ba1b4ea9387102097ffc')
 
 prepare() {
