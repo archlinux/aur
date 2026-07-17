@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse-git
 _pkgname=hypruse
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)"
 arch=('any')
