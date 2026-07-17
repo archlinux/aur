@@ -13,6 +13,8 @@ trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends $tmp_optdepends" EXIT
 ## pkgname
 _gen_pkgname() {
     echo "$infos" | awk -F '/' '{print $NF}' | sed 's|^|    \"python-|' | sed 's|$|\"|'
+    # meta 包：包名与 pkgbase 一致，用于触发 lilac 自动更新流程，无需编译
+    echo "    \"${pkgbase}\""
     echo ")"
 }
 
@@ -27,6 +29,8 @@ print(data.get('project', {}).get('description', ''))
 ")
         echo "    \"$pkgdesc\""
     done
+    # meta 包描述
+    echo "    \"OpenTelemetry Python Contrib meta package (depends on all instrumentation sub-packages)\""
     echo ")"
 }
 
@@ -35,6 +39,8 @@ _gen_urls() {
     for info in $infos; do
         echo "    \"\${_url}/tree/main/${info}\""
     done
+    # meta 包使用仓库主地址
+    echo "    \"\${_url}\""
     echo ")"
 }
 
@@ -61,6 +67,9 @@ for dep in deps:
         fi
         echo "    \""${depends[@]}"\""
     done
+    # meta 包依赖：所有子包，无需编译
+    meta_deps=$(echo "$infos" | awk -F '/' '{print $NF}' | sed 's|^|python-|' | tr '\n' ' ')
+    echo "    \"${meta_deps}\""
     echo ")"
 }
 
@@ -89,6 +98,8 @@ for group, deps in opt.items():
         ))
         echo "    \""${depends[@]}"\""
     done
+    # meta 包无可选依赖
+    echo '    ""'
     echo ")"
 }
 
@@ -105,11 +116,11 @@ _gen_urls > $tmp_urls
 _gen_depends > $tmp_depends
 _gen_optdepends > $tmp_optdepends
 
-sed -e "/^pkgname=(/,/)/c\pkgname=(" \
-    -e "/^_pkgdescs=(/,/)/c\_pkgdescs=(" \
-    -e "/^_urls=(/,/)/c\_urls=(" \
-    -e "/^_depends=(/,/)/c\_depends=(" \
-    -e "/^_optdepends=(/,/)/c\_optdepends=(" \
+sed -e "/^pkgname=(/,/^)/c\pkgname=(" \
+    -e "/^_pkgdescs=(/,/^)/c\_pkgdescs=(" \
+    -e "/^_urls=(/,/^)/c\_urls=(" \
+    -e "/^_depends=(/,/^)/c\_depends=(" \
+    -e "/^_optdepends=(/,/^)/c\_optdepends=(" \
     -i PKGBUILD
 
 sed -e "/^pkgname=/r $tmp_pkgname" \
