@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd sharpemu
   local ver
-  ver=$(sed -n 's|.*<SharpEmuVersion>\(.*\)</SharpEmuVersion>.*|\1|p' Directory.Build.props)
+  ver=$(sed -n 's|.*<SharpEmuVersion>\(.*\)</SharpEmuVersion>.*|\1|p' Directory.Build.props | tr '-' '.')
   printf '%s.r%s.g%s' "${ver:-0.0.1}" "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
