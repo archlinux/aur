@@ -1,13 +1,13 @@
 pkgbase = rust-i18n-cli
 	pkgdesc = cargo-i18n tool for the rust-i18n crate
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/longbridge/rust-i18n
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = rust-i18n-cli-4.2.0.tar.gz::https://github.com/longbridge/rust-i18n/archive/v4.2.0.tar.gz
-	sha256sums = d8fc3c31ae00638094a064de93c265a5e8502d85992d7642f8a58edc9b9ec870
+	source = rust-i18n-cli-4.2.1.tar.gz::https://github.com/longbridge/rust-i18n/archive/v4.2.1.tar.gz
+	sha256sums = fb99ffe89c5237751f2ac8d2d51943fa630fb2e96601865fc06021d438bc58dc
 
 pkgname = rust-i18n-cli
