@@ -1,6 +1,6 @@
 pkgbase = tu58fs-git
 	pkgdesc = Filesharing between DEC PDP-11 and modern hardware over TU58 tape emulator
-	pkgver = 0.01
+	pkgver = 1.2.0.r13.gafe0bcb
 	pkgrel = 1
 	url = https://github.com/j-hoppe/tu58fs
 	arch = any

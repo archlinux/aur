@@ -1,6 +1,6 @@
 # Maintainer: Majenko <matt@majenko.co.uk>
 pkgname=tu58fs-git
-pkgver=0.01
+pkgver=1.2.0.r13.gafe0bcb
 pkgrel=1
 pkgdesc="Filesharing between DEC PDP-11 and modern hardware over TU58 tape emulator"
 arch=('any')
@@ -9,6 +9,11 @@ license=('BSD')
 
 source=("git+https://github.com/j-hoppe/tu58fs")
 cksums=(SKIP)
+
+pkgver() {
+  cd "tu58fs"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "tu58fs"
