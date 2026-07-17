@@ -8,6 +8,7 @@ license=('GPL-3.0-only' 'MIT')
 provides=(mcpelauncher-client)
 conflicts=(mcpelauncher-linux mcpelauncher-linux-git)
 depends=(glibc libgcc libstdc++ openssl qt6-base qt6-declarative qt6-webengine freeglut zlib)
+optdepends=('mcpelauncher-ui: GUI for Launcher')
 
 source=("https://minecraft-linux.github.io/pkg/deb/pool/bookworm/main/m/mcpelauncher-manifest/mcpelauncher-manifest_${pkgver}_amd64.deb")
 b2sums=('SKIP')

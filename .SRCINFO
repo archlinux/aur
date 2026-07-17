@@ -15,6 +15,7 @@ pkgbase = mcpelauncher-linux-bin
 	depends = qt6-webengine
 	depends = freeglut
 	depends = zlib
+	optdepends = mcpelauncher-ui: GUI for Launcher
 	provides = mcpelauncher-client
 	conflicts = mcpelauncher-linux
 	conflicts = mcpelauncher-linux-git
