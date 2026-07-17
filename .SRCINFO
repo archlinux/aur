@@ -1,7 +1,7 @@
 pkgbase = bilibili-deb-bin
-	pkgdesc = 基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快)
+	pkgdesc = 基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快更新修复输入法问题)
 	pkgver = 1.17.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/msojocs/bilibili-linux/
 	arch = x86_64
 	arch = aarch64

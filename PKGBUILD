@@ -3,8 +3,8 @@
 pkgname=bilibili-deb-bin
 _pkgname=io.github.msojocs.bilibili
 pkgver=1.17.9
-pkgrel=1
-pkgdesc='基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快) '
+pkgrel=2
+pkgdesc='基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快更新修复输入法问题) '
 options=('!strip' '!debug' '!emptydirs')
 arch=('x86_64' 'aarch64')
 url='https://github.com/msojocs/bilibili-linux/'
@@ -22,4 +22,10 @@ package() {
     ar x "${_pkgname}_${pkgver}-1_amd64.deb"
     fi
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
+    cd "$pkgdir"
+    cd ./opt/apps/io.github.msojocs.bilibili/files/bin
+    rm -rf electron
+    cd bin
+    sed -i 's|"\$root_dir/electron/electron"|electron|g' bilibili
+   
 }
