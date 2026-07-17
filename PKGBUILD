@@ -1,7 +1,7 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname="yarr-bin"
-pkgver=2.7
+pkgver=2.8
 _pkgver=v$pkgver
 pkgrel=1
 pkgdesc="yet another rss reader"
@@ -26,9 +26,9 @@ sha256sums=(
     "9af883d6a5859f0779652c651018f54575cced70a655e3665e83b409b657c626"
     "c182429525da2f9229082f2b5d7c4be60ac0d4804021a0e1b040b31b6ee12bbe"
 )
-sha256sums_x86_64=("f83892fa9eadcfdc605026a981cc6447e8c91b9abdf6b530bb246c444f89ad07")
-sha256sums_aarch64=("fdcd3648391f63f4c168ccc39ce7e2503aa35af50cccef4eed9dd619c35b746a")
-sha256sums_armv7h=("0c4c9a30228ebe7feab6d208ee8ccbc194dd6654df286e1ba52810707cd19d28")
+sha256sums_x86_64=("2b8f7ffdcbf939a77192cf69551a9cfbb4ba9fb3f2be7c6ff75a6afb94168bbd")
+sha256sums_aarch64=("6fbd40f437522367bcb07139d00d77351efce8fd8aee6c3cc9f25efe290234b0")
+sha256sums_armv7h=("9ad660c8b09901376a34820c643b191acf1ee8948188a09ff60ad15012366af8")
 
 package () {
     install -Dm0755 yarr "$pkgdir/usr/bin/yarr"
