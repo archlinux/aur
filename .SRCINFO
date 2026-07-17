@@ -1,6 +1,6 @@
 pkgbase = proton-command-center
 	pkgdesc = Per-game launch options, Proton selection, DLSS DLL management, MangoHud benchmarks, and controller navigation for Steam on Linux
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/mrcgibb9876-hash/proton_command_center
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = proton-command-center
 	optdepends = mangohud: performance overlay toggle and benchmark tab
 	optdepends = gamescope: compositor wrapper toggle in the launch builder
 	optdepends = nvidia-utils: DLSS DLL management and driver-aware compile tracking
-	source = proton-command-center-1.15.0.tar.gz::https://github.com/mrcgibb9876-hash/proton_command_center/archive/refs/tags/v1.15.0.tar.gz
-	sha256sums = 883d7d6bcaaa3bc9a152084d3462581d52e288c004a9c739c3d59436d9bface9
+	source = proton-command-center-1.15.1.tar.gz::https://github.com/mrcgibb9876-hash/proton_command_center/archive/refs/tags/v1.15.1.tar.gz
+	sha256sums = dd6e6168359cde7bdcc69bf7b0316e4af7a8252acec835c4b00fe7ac2efa3020
 
 pkgname = proton-command-center
