@@ -1,0 +1,24 @@
+pkgbase = synara
+	pkgdesc = Minimal desktop GUI for coding agents (Codex, Claude, Cursor, and more)
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://trysynara.com
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = synara-bin
+	options = !strip
+	options = !debug
+	source = Synara-0.5.5-x86_64.AppImage::https://github.com/Emanuele-web04/synara/releases/download/v0.5.5/Synara-0.5.5-x86_64.AppImage
+	source = synara.desktop
+	source = synara.png
+	source = LICENSE::https://raw.githubusercontent.com/Emanuele-web04/synara/v0.5.5/LICENSE
+	sha256sums = 597a6e2af3fa770a0670532dd5e626bb6e205c5e4a5f3f296a69b5eb7fbd25e8
+	sha256sums = 7a9888dbb0f79a0c718c786f2317f458a1056a9c50d445f0ab4f9305e6377196
+	sha256sums = 3914e01ffa931a12adef6531e90adbdeb1a267cf3721dbfe8291fe81a77b05b3
+	sha256sums = 6c263925edf74f9255c979b585b2b012b16c730f4c455a0aad4db8ddd5c91c5f
+
+pkgname = synara
