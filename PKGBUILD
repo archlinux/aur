@@ -4,13 +4,16 @@ _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
 pkgver=0.19.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source AI agent originally based on Gemini CLI by QwenLM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/QwenLM/${_pkgname}"
 license=('Apache-2.0')
 depends=('nodejs>=22.0.0' 'ripgrep')
-optdepends=('xdg-utils: open links and launch browser integration')
+optdepends=('xdg-utils: open links and launch browser integration'
+            'docker: run agent tools in a sandboxed container'
+            'podman: run agent tools in a sandboxed container'
+            'git: version control integrations')
 provides=("$_pkgname" "${_name}")
 conflicts=("$_pkgname" "${_name}")
 

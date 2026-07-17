@@ -1,7 +1,7 @@
 pkgbase = qwen-code-bin
 	pkgdesc = Open-source AI agent originally based on Gemini CLI by QwenLM
 	pkgver = 0.19.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QwenLM/qwen-code
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,9 @@ pkgbase = qwen-code-bin
 	depends = nodejs>=22.0.0
 	depends = ripgrep
 	optdepends = xdg-utils: open links and launch browser integration
+	optdepends = docker: run agent tools in a sandboxed container
+	optdepends = podman: run agent tools in a sandboxed container
+	optdepends = git: version control integrations
 	provides = qwen-code
 	provides = qwen
 	conflicts = qwen-code
