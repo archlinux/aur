@@ -1,0 +1,19 @@
+pkgbase = sdme
+	pkgdesc = The systemd machine editor
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://sdme.io
+	install = sdme.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = systemd>=255
+	optdepends = qemu-base: QCOW2 disk image import support
+	optdepends = apparmor: security profile support
+	options = !lto
+	backup = etc/apparmor.d/sdme-default
+	source = sdme-0.14.0.tar.gz::https://github.com/fiorix/sdme/archive/v0.14.0.tar.gz
+	sha256sums = bd3242979a476a301c0871478a8e39280e134693f5f9d6de36354329827bd7ae
+
+pkgname = sdme
