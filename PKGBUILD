@@ -1,4 +1,5 @@
 # Maintainer: Kimiblock Moe
+# Contributor: AlphaLynx
 
 pkgname=continuwuity
 pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
@@ -6,10 +7,10 @@ url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
 arch=("x86_64" "aarch64")
 pkgver=26.6.2
-pkgrel=1
+pkgrel=3
 epoch=2
 makedepends=("rust" "cargo" "git" "clang")
-depends=("gcc-libs" "glibc" "liburing" "jemalloc")
+depends=("gcc-libs" "glibc" "liburing" "jemalloc" "zstd")
 source=("git+https://forgejo.ellis.link/continuwuation/continuwuity.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')")
 sha256sums=('90832b58f92efb21767131f34d8ab1e791ef2f703c16f73ccfc1ef7c3fca22d3')
 provides=("conduwuit" "continuwuity")
@@ -23,6 +24,9 @@ backup=("etc/conduwuit/conduwuit.toml")
 #}
 
 function prepare() {
+	export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
+	export CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target host-tuple
@@ -30,6 +34,9 @@ function prepare() {
 }
 
 function build() {
+	export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
+	export CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -37,6 +44,9 @@ function build() {
 }
 
 function check() {
+	export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
+	export CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --locked
