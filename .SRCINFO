@@ -1,6 +1,6 @@
 pkgbase = farmos
 	pkgdesc = A web-based farm record keeping application.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/farmOS/farmOS
 	arch = any
@@ -29,9 +29,9 @@ pkgbase = farmos
 	optdepends = sqlite: Database.
 	optdepends = uwsgi-plugin-php: CGI.
 	optdepends = uwsgi-plugin-php-legacy: CGI.
-	source = farmos-v4.0.3.tar.gz::https://github.com/farmOS/farmOS/releases/download/4.0.3/farmOS-4.0.3.tar.gz
+	source = farmos-v4.0.4.tar.gz::https://github.com/farmOS/farmOS/releases/download/4.0.4/farmOS-4.0.4.tar.gz
 	source = override-farmos.conf
-	sha256sums = 13051bc635e1e4a7ce14ba14a4a0cc6477482b1cf14142ec249d6319aca874c4
+	sha256sums = 73887e7d31c73183619f0bd8bc30323c06df2d05273bdcd358be04bc5702b866
 	sha256sums = d42161c817011222d256232cacecf6b176901d48f8e7db70a10de5e98ea102bd
 
 pkgname = farmos
