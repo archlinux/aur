@@ -1,29 +1,28 @@
-pkgname=dim-caelestia-cli-git
-_pkgname=caelestia-cli
-pkgver=r623.20351c6
+pkgname='dim-caelestia-cli-git'
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="cli"
+pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
-url="https://github.com/dim-ghub/caelestia-cli"
-license=('MIT')
-depends=('glibc')
-makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+url='https://github.com/dim-ghub/caelestia-cli'
+license=('GPL-3.0-only')
+depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
+         'wl-clipboard' 'slurp' 'gpu-screen-recorder' 'dconf' 'cliphist' 'fuzzel')
+optdepends=('caelestia-shell: shell control and screenshot function')
+makedepends=('python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs')
+provides=('caelestia-cli')
+conflicts=('caelestia-cli')
+_archive="caelestia-$pkgver"
+## install=message.install
+source=("${pkgname}::git+https://github.com/dim-ghub/caelestia-cli.git")
+sha256sums=('SKIP')
 
 build() {
-  cd "${_pkgname}"
-  # build
+    cd "${srcdir}/${pkgname}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}"
-  # install cmd
+    cd "${srcdir}/${pkgname}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 ./completions/caelestia.fish "$pkgdir"/usr/share/fish/vendor_completions.d/caelestia.fish
 }
