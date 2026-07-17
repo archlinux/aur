@@ -1,13 +1,13 @@
 pkgbase = mycelium
 	pkgdesc = Mycelium end-2-end encrypted IPv6 overlay network
-	pkgver = 0.7.9
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://github.com/threefoldtech/mycelium
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/threefoldtech/mycelium/archive/refs/tags/v0.7.9.tar.gz
-	sha256sums = ad421a4c6aac36329b13344e34265798d3751d220b10e8e724065d1e6d64bdad
+	source = https://github.com/threefoldtech/mycelium/archive/refs/tags/v0.7.10.tar.gz
+	sha256sums = cc5d624366dd90b1b96d91faddeb3cbe5862128da5b3628f9327a3dfdc9db5d6
 
 pkgname = mycelium
