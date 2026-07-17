@@ -1,0 +1,14 @@
+pkgbase = ccp_tree
+	pkgdesc = AI-friendly project tree generator
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/AradPilevarJavid/ccp_tree
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = ccp_tree-0.1.4.tar.gz::https://github.com/AradPilevarJavid/ccp_tree/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 0a267e73717f8bca2765a970644da2e7cee5c5ffcce404a3b11ef8eee6f31ac2
+
+pkgname = ccp_tree
