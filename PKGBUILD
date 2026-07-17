@@ -82,7 +82,12 @@ check() {
   #appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
 
   # Run the unit tests
-  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
+  (
+  unset "${!GIT_@}"
+  GIT_CONFIG_SYSTEM=/dev/null \
+  GIT_CONFIG_GLOBAL=/dev/null \
+  LC_ALL="C.UTF-8" make test V=2
+  )
 }
 
 package() {
