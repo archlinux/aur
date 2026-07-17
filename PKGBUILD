@@ -3,10 +3,10 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-opencl
-pkgver=b9222
+pkgver=b10064
 pkgrel=1
-_build_number=9222
-_commit_id=9a532ae
+_build_number=10064
+_commit_id=86d86ed
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -29,8 +29,8 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
   'python-gguf: needed for convert_hf_to_gguf.py'
 )
-conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-clblast llama.cpp-openvino)
-provides=(llama.cpp)
+conflicts=(ggml llama-cpp llama.cpp-clblast llama.cpp-openvino)
+provides=(ggml llama-cpp)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
