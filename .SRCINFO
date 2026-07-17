@@ -1,0 +1,15 @@
+pkgbase = ttynvt
+	pkgdesc = Virtual Network Terminal supporting the Com Port Control Option (RFC2217)
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://gitlab.com/lars-thrane-as/ttynvt
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = glibc
+	makedepends = fuse2
+	depends = fuse2
+	conflicts = ttynvt
+	source = git+https://gitlab.com/lars-thrane-as/ttynvt.git#tag=v0.17
+	sha256sums = 1790b2c2685743d750a4f9736476698a4e952013a111548fe66e5052b0e3b111
+
+pkgname = ttynvt
