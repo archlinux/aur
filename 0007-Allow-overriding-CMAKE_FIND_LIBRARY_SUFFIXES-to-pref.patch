@@ -1,7 +1,7 @@
 From fd1db5637f26f2d0b878040382625201fce4e057 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
-Subject: [PATCH 07/24] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+Subject: [PATCH 07/25] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
  static libraries
 
 Change-Id: Ibb688ac503ecdf1dd3bd838890efdfc01bf706aa
@@ -25,5 +25,5 @@ index 3a1920beb72..9eb5bf89853 100644
  
  # This depends on qt_internal_read_repo_dependencies existing.
 -- 
-2.54.0
+2.55.0
 

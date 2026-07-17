@@ -1,7 +1,7 @@
 From 4b7b1b765bbc337b29052a185131f9aa8b633a06 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:31:42 +0100
-Subject: [PATCH 22/24] Export some constexpr variables
+Subject: [PATCH 22/25] Export some constexpr variables
 
 From MINGW-packages commit e5c4652cad95df5f6435b6c564c52a7ae7d8e5f7.
 
@@ -71,5 +71,5 @@ index 82632110d32..25ae9fb9396 100644
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv4Protocol;
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv6Protocol;
 -- 
-2.54.0
+2.55.0
 
