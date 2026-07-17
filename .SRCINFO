@@ -1,6 +1,6 @@
 pkgbase = rutorrent
 	pkgdesc = Yet another web front-end for rTorrent
-	pkgver = 5.3.7
+	pkgver = 5.3.8
 	pkgrel = 1
 	url = https://github.com/Novik/ruTorrent
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = rutorrent
 	backup = etc/webapps/rutorrent/conf/config.php
 	backup = etc/webapps/rutorrent/conf/plugins.ini
 	backup = etc/webapps/rutorrent/conf/access.ini
-	source = rutorrent-5.3.7.tar.gz::https://github.com/Novik/ruTorrent/archive/v5.3.7.tar.gz
+	source = rutorrent-5.3.8.tar.gz::https://github.com/Novik/ruTorrent/archive/v5.3.8.tar.gz
 	source = apache.example.conf
 	source = apache.example.site.conf
-	sha256sums = 53039fdc14b4b9b46d54970ae871168f03917bcb552a38fee080b5b5c1b5a983
+	sha256sums = 1eaa56eafb4797778275ec8c4ccc7d6ef8298f02c092c73495a5803ea815a86d
 	sha256sums = 79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c
 	sha256sums = 9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa
 
