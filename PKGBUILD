@@ -1,4 +1,4 @@
-pkgname=jay-bin
+pkgname=jay-aur
 pkgver=7.4.3
 pkgrel=2
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
