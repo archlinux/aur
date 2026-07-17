@@ -2,11 +2,12 @@
 pkgname=gaze-gnome-extension-bin
 pkgver=0.2.4
 pkgrel=1
-pkgdesc="Binary wrapper for gaze-gnome-extension from Gundu Labs"
+pkgdesc="GNOME Shell extension for Gaze"
 arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gnome-shell' )
+backup=('etc/dconf/db/gdm.d/00-gaze-defaults' 'etc/dconf/profile/gdm' 'etc/pam.d/gdm-face' )
 source=("gaze-gnome-extension-0.2.4-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.2.4-1-x86_64.pkg.tar.zst")
 sha256sums=('db9ea1c780ce83fd675db138c42b29e1b314dd11585bec7b53f05aa1e84fc9a3')
 
