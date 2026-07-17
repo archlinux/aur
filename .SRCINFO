@@ -1,0 +1,19 @@
+pkgbase = infinix-mecha-bar
+	pkgdesc = Unofficial Linux CLI for Infinix GT Book rear Mecha bar (UART)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sanidhyy/infinix-gtbook-mecha-bar
+	install = infinix-mecha-bar.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyserial
+	options = !strip
+	source = infinix-gtbook-mecha-bar-0.1.1.tar.gz::https://github.com/sanidhyy/infinix-gtbook-mecha-bar/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 95eaaac4ae0162857535d0f3acf4111c35e3554a8ddcfa3f944310f7614c5f9d
+
+pkgname = infinix-mecha-bar
