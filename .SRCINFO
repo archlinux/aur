@@ -1,6 +1,6 @@
 pkgbase = control-ofc-daemon
 	pkgdesc = Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/Plan-B-Development/control-ofc-daemon
 	install = control-ofc-daemon.install
@@ -23,7 +23,7 @@ pkgbase = control-ofc-daemon
 	backup = etc/control-ofc/daemon.toml
 	backup = etc/control-ofc/profiles/quiet.json
 	backup = etc/modules-load.d/control-ofc.conf
-	source = control-ofc-daemon-2.11.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-daemon/archive/v2.11.0.tar.gz
-	sha256sums = 5ae0fed53c9d6cb391fb24d63739b8a4959181f2223fa629224836cbdcdf7798
+	source = control-ofc-daemon-2.12.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-daemon/archive/v2.12.0.tar.gz
+	sha256sums = 0be8e5479c75136bff317346c4d77e3e954204c5aac0f2f0b0677b51efad898c
 
 pkgname = control-ofc-daemon

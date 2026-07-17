@@ -5,7 +5,7 @@ post_install() {
    Start now:        sudo systemctl enable --now control-ofc-daemon
    Load modules:     sudo systemctl start systemd-modules-load   (or reboot)
    Setup guide:      man control-ofc-daemon
-   Hardware check:   open the GUI -> Diagnostics -> Troubleshooting
+   Hardware check:   open the GUI -> Hardware page
 
    Fan-control prerequisites — if a motherboard header or GPU fan is
    discovered but never responds, one of these is usually missing:
@@ -16,8 +16,8 @@ post_install() {
                          command line for the Super I/O chip to bind.
      * AMD RDNA3+ GPU:   PMFW fan curves need 'amdgpu.ppfeaturemask=0xffffffff'
                          on the kernel command line.
-   The GUI's Diagnostics -> Hardware Readiness and Super-I/O panels detect each
-   of these and show the exact driver + fix for your machine.
+   The GUI's Hardware page (readiness + Super-I/O detection) detects each of
+   these and shows the exact driver + fix for your machine.
 
    Advanced (optional): an OPT-IN active Super-I/O port probe can identify an
    unbound chip whose driver you don't yet know. It is OFF by default and needs
