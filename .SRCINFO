@@ -1,0 +1,16 @@
+pkgbase = radmin-vpn
+	pkgdesc = Radmin VPN — бесплатный VPN для игр и удалённого доступа (использует системный Wine)
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://www.radmin-vpn.com/
+	arch = x86_64
+	license = custom:proprietary
+	depends = wine
+	depends = glibc
+	depends = gcc-libs
+	depends = sudo
+	depends = zenity
+	source = https://github.com/baptisterajaut/radmin-vpn-linux/releases/download/v0.3.4/RadminVPN-Linux-x86_64.AppImage
+	sha256sums = 4362e98bc26c639790d737454dbb23376cd804ac02740aaf1f9c6fc21c7f3440
+
+pkgname = radmin-vpn
