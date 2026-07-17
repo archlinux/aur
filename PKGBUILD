@@ -6,7 +6,7 @@
 _pkgname=termark
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Termark 是一款专为现代开发者设计的 SSH 客户端，面向资产管理、终端操作和安全访问等日常工作流"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://f.typesafe.cn/termark/Termark-${pkgver}.AppImage")
 source_aarch64=("${_appimage}::https://f.typesafe.cn/termark/Termark-${pkgver}-arm64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('aee2d3ec7ec5bf6873a9336c39a08084b1794d245eefb2fd317027e0ac069c63')
-sha256sums_aarch64=('b1b27712716c156b1a8fa05949bfe28a3885265ab318d863295e28b01e57a5e6')
+sha256sums_x86_64=('44144f86c91e0f604650018a14df36fee5de3977293b42c0dc16fe69abe1816d')
+sha256sums_aarch64=('e5ca66b3cb796ef186e8c23395c4b044c8c5d6ac6c9a891f8c295699481ca6ed')
 
 prepare() {
     chmod +x "${_appimage}"
