@@ -1,6 +1,6 @@
 # Maintainer: James Verhoef jamesverhoef2010@gmail.com
 pkgname=rockscript
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Esolang named rockscript"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('f068791a066b79b1ab3e4a71e4d22b8d68c34050adde419621a21d7277843673')
+sha256sums=('532ef9b7c8643fddb05346a235626f429c2401d7ab2779b12a9b65e7bcf2cad7')
 
 build() {
     cd "$pkgname-$pkgver"
