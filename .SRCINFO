@@ -1,6 +1,6 @@
 pkgbase = python-alibabacloud-esa20240910
 	pkgdesc = Alibaba Cloud ESA (20240910) SDK Library for Python
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://pypi.org/project/alibabacloud_esa20240910
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-alibabacloud-esa20240910
 	conflicts = python-alibabacloud-esa20240910
 	options = !strip
 	options = !debug
-	source = alibabacloud_esa20240910-3.8.0.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_esa20240910/alibabacloud_esa20240910-3.8.0.tar.gz
-	sha256sums = 66dc6f27764bdb275e564d81ef32d5c7f8f741a7cafbaae9146219e2a751a1a7
+	source = alibabacloud_esa20240910-3.9.0.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_esa20240910/alibabacloud_esa20240910-3.9.0.tar.gz
+	sha256sums = 15fc340f53b0474cc899e371a6113b34e69fbc81a036acaafb0c0f16257746dc
 
 pkgname = python-alibabacloud-esa20240910
