@@ -3,7 +3,7 @@
 # For the latest master HEAD instead, use sidemark-git (PKGBUILD in the repo root).
 # pkgver + sha256sums are updated by publish.sh on every release.
 pkgname=sidemark
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="PDF viewer and annotator with a live markdown notes sidebar"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 )
 conflicts=('sidemark-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('44bc27295a7af4741f59576058efddb75ef5d701e29549d318933803e06800b7')
+sha256sums=('1e5025b60a835968b146c01b384e33dfccf9ab798faab6e430a761696a28e8e0')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

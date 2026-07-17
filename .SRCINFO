@@ -1,6 +1,6 @@
 pkgbase = sidemark
 	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/brokkoli71/sidemark
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = sidemark
 	optdepends = qrencode: show a QR code to share the PDF to a phone
 	optdepends = jq: recent-files menu for the walker launcher
 	conflicts = sidemark-git
-	source = sidemark-0.4.0.tar.gz::https://github.com/brokkoli71/sidemark/archive/refs/tags/0.4.0.tar.gz
-	sha256sums = 44bc27295a7af4741f59576058efddb75ef5d701e29549d318933803e06800b7
+	source = sidemark-0.5.0.tar.gz::https://github.com/brokkoli71/sidemark/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 1e5025b60a835968b146c01b384e33dfccf9ab798faab6e430a761696a28e8e0
 
 pkgname = sidemark
