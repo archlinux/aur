@@ -1,6 +1,6 @@
 # Maintainer: ismailivanov <https://github.com/ismailivanov>
 pkgname=godot-hub-bin
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Desktop app for managing Godot Engine versions and projects"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "godot-hub.desktop"
     "godot-hub-bin.install"
 )
-sha256sums=('32e8bf545c6ee40f43195039907bf2d3d47b4a3e655093c75926b67de182c4a5'
+sha256sums=('3a0e4c908016493169d672f2901b000866c27f72dd66b2170cbba22bda9be1d5'
             '3f4e46e17ce981776edaacd2b534a49746bb09cd189f7ac08bb7334e0d95e555'
             'ef92b4be2ed32e2d785634bfe8e9cf157e9069ffcb3e5ef8ecac4244355e8852'
             '00d7dc9a289643902a5edcb3d0eb4c8b62102144eb06b729fcbd367f36a25500'
