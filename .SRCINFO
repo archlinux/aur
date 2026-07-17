@@ -1,6 +1,6 @@
 pkgbase = archon-lite-bin
 	pkgdesc = Archon Lite Uploader - pre-built binary AppImage
-	pkgver = 9.3.85
+	pkgver = 9.3.172
 	pkgrel = 1
 	url = https://github.com/RPGLogs/Uploaders-archon-lite
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = archon-lite-bin
 	depends = fuse2
 	provides = archon-lite
 	conflicts = archon-lite-appimage
-	noextract = archon-lite-v9.3.85.AppImage
+	noextract = archon-lite-v9.3.172.AppImage
 	options = !strip
-	source_x86_64 = archon-lite-v9.3.85.AppImage::https://github.com/RPGLogs/Uploaders-archon-lite/releases/download/v9.3.85/archon-lite-v9.3.85.AppImage
+	source_x86_64 = archon-lite-v9.3.172.AppImage::https://github.com/RPGLogs/Uploaders-archon-lite/releases/download/v9.3.172/archon-lite-v9.3.172.AppImage
 	source_x86_64 = archon-lite.desktop
-	sha256sums_x86_64 = a2836f81bb55e872a0cd12e01d9ba5f7634b9c407ca17e9f1cbea2c1f1da8d50
+	sha256sums_x86_64 = 265d7fe348ed746f5a71bd9249e7f81bdd61b3f6f551d3a9ea03e7a063e743ad
 	sha256sums_x86_64 = 19e8f7d78d5f621fd9a0aab1ebed74015a63beb797d8d942362e32be479077c0
 
 pkgname = archon-lite-bin
