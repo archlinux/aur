@@ -1,0 +1,26 @@
+pkgbase = jellium-desktop-git
+	pkgdesc = A Jellyfin Desktop Client
+	pkgver = 0.r1025.f224a4b
+	pkgrel = 1
+	url = https://github.com/andrewrabert/jellium-desktop
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = cef
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = mpv
+	depends = wayland
+	depends = xdg-utils
+	provides = jellium-desktop
+	conflicts = jellium-desktop
+	options = !debug
+	options = !lto
+	source = git+https://github.com/andrewrabert/jellium-desktop.git
+	sha256sums = SKIP
+
+pkgname = jellium-desktop-git
