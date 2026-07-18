@@ -1,6 +1,6 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=greetd-dms-greeter-bin
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='DankMaterialShell greeter for greetd (binary release)'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ install=greetd-dms-greeter.install
 source_x86_64=("dms-full-amd64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-amd64.tar.gz")
 source_aarch64=("dms-full-arm64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-arm64.tar.gz")
 
-sha256sums_x86_64=('fb7112590dbff32f44e3328ef00dd8cdec5f7080e322aefa0efc0943b11c4717')
-sha256sums_aarch64=('c66f6d59ac971bd75a49651f796f2c0c7d0605fab98e89afa9d779ad753c98f0')
+sha256sums_x86_64=('4469218d2d5dc11aab1c11e926807eb23ff7d549454fa8a7df67d1c13d0850ec')
+sha256sums_aarch64=('116d994733f67221bab2097a2edace0aef04a11b719a0d9f51a984ea4d118206')
 
 package() {
     cd "${srcdir}/dms"
