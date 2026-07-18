@@ -1,7 +1,7 @@
 pkgbase = refurb-git
 	pkgdesc = A tool for refurbishing and modernizing Python codebases (development version)
 	pkgver = 2.3.1.r0.g0dbb127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dosisod/refurb
 	arch = any
 	license = GPL-3.0-or-later
