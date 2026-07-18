@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.5.0.r128.g8fc38de
+pkgver=1.5.0.r132.g0cdb065
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -21,7 +21,8 @@ optdepends=('cava: Audio visualizer'
             'qt6ct: Qt6 application theming'
             'cups-pk-helper: Printer Management')
 makedepends=(git
-             go)
+             go
+             make)
 provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
 source=(
@@ -73,19 +74,18 @@ build() {
 
 	LDFLAGS_GO="-s -w -X main.Version=${VERSION} -X main.buildTime=${BUILD_TIME} -X main.commit=${COMMIT} -linkmode=external"
 
+	make sync-shell
+
 	GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -tags distro_binary -ldflags "${LDFLAGS_GO}" ${GOFLAGS} -o dms ./cmd/dms
+	go build -tags 'distro_binary withshell' -ldflags "${LDFLAGS_GO}" ${GOFLAGS} -o dms ./cmd/dms
 }
 
 package_dms-shell-git() {
         optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install="$pkgname.install"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
-	install -dm0755 "$pkgdir/usr/share/quickshell/dms"
-	cp -rL "$_pkgname/quickshell"/* "$pkgdir/usr/share/quickshell/dms/"
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
 	cp -r "$_pkgname/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
 	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
 	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
 	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
