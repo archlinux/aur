@@ -1,58 +1,59 @@
-# Maintainer: envolution
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-cohere
-_pkgname=cohere-python
+pkgdesc='Python Library for Accessing the Cohere API'
 pkgver=5.20.0
 pkgrel=1
-pkgdesc="Python Library for Accessing the Cohere API"
+url='https://github.com/cohere-ai/cohere-python'
 arch=(any)
-url="https://github.com/cohere-ai/cohere-python"
-license=(MIT)
-depends=(
-  python
-  python-boto3
-  python-botocore
-  python-fastavro
-  python-httpx
-  python-httpx-sse
-  python-pydantic
-  python-pydantic-core
-  python-requests
-  python-tokenizers
-  python-typing_extensions
+license=('MIT')
+checkdepends=(
+  'python-pytest'
+  'python-pytest-asyncio'
 )
 makedepends=(
-  python-build
-  python-installer
-  python-poetry
-  python-wheel
+  'python-build'
+  'python-installer'
+  'python-poetry'
+  'python-wheel'
 )
-checkdepends=(
-  python-pytest
-  python-pytest-asyncio
+depends=(
+  'python'
+  'python-fastavro'
+  'python-httpx'
+  'python-httpx-sse'
+  'python-pydantic'
+  'python-pydantic-core'
+  'python-requests'
+  'python-tokenizers'
+  'python-typing_extensions'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('82e1733803c7023b0b0e8d4567fb5f0b1daa4a43529d1f00a31d09a75fdea952')
+optdepends=(
+  'python-boto3: AWS client'
+  'python-botocore: AWS client'
+)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+b2sums=('9fabe3c1568e66716a1bf8a39b7b166a117cdbf1deda08707e45a9057510b6d4801bc054256f848f3f201d6dd9ea806426e1f4f08b5842193fe488b0a9294835')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd "cohere-python-${pkgver}"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver
+  cd "cohere-python-${pkgver}"
 
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
   # Only run tests that do not require a valid API key. The one below is a mock
   # one and is required for test collection.
   export CO_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
-  pytest \
+  test-env/bin/python -P -m pytest \
     tests/test_async_client.py::TestClient::test_context_manager \
     tests/test_async_client.py::TestClient::test_deprecated_fn \
     tests/test_async_client.py::TestClient::test_moved_fn \
@@ -69,8 +70,9 @@ check() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd "cohere-python-${pkgver}"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
 }
