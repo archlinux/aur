@@ -2,15 +2,40 @@
 # Contributor: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
 pkgname=bpftrace-git
 _pkgname=bpftrace
-pkgver=v0.24.rc0.r180.g57c2b5863
+pkgver=v0.25.rc0.r167.g6022a783a
 pkgrel=1
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/bpftrace/bpftrace"
 license=('Apache-2.0')
-depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'bpf' 'libpcap' 'zstd' 'systemd-libs')
-makedepends=('binutils' 'cmake' 'cargo' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
-             'asciidoctor' 'xxd')
+depends=(
+  'bcc'
+  'clang'
+  'gcc-libs'
+  'glibc'
+  'libelf'
+  'libpcap'
+  'libstdc++'
+  'llvm-libs'
+  'systemd-libs'
+  'zip'
+  'zlib'
+  'zstd'
+)
+makedepends=(
+  'asciidoctor'
+  'binutils'
+  'bpf'
+  'cargo'
+  'cereal'
+  'cmake'
+  'git'
+  'gtest'
+  'linux-headers'
+  'llvm'
+  'ninja'
+  'xxd'
+)
 conflicts=('bpftrace')
 provides=('bpftrace')
 _blazesymver=v0.2.0
@@ -42,7 +67,7 @@ prepare() {
     cd bpftrace
     git submodule init
     git config submodule.libbpf.url "$srcdir/libbpf"
-    git -c protocol.file.allow=always submodule update
+    git -c protocol.file.allow=always submodule update libbpf
   )
 }
 
@@ -61,6 +86,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_SYSTEMD=ON \
+    -W no-dev \
     -DLIBBLAZESYM_INCLUDE_DIRS=${srcdir}/blazesym-install/include \
     -DLIBBLAZESYM_LIBRARIES=${srcdir}/blazesym-install/lib/libblazesym_c.a
   cmake --build build
