@@ -64,7 +64,7 @@ package_rmlint-shredder-git() {
     'python-colorlog'
     'python-gobject'
     'python-parsedatetime'
-    'rmlint'
+    'rmlint-git'
     'librsvg'
     'xdg-utils' )
 
