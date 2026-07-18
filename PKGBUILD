@@ -2,7 +2,7 @@
 pkgname=fastcount
 pkgver=e06b228
 pkgrel=1
-pkgdesc="An incredibly fast, incredibly useless counter (x86_64 Linux only) — builds from source, always tracks latest"
+pkgdesc="fastcount, an incredibly fast, incredibly useless counter, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcount"
 license=('GPL-3.0-or-later')
