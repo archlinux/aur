@@ -10,6 +10,7 @@ pkgbase = bili-tools-bin
 	provides = bili-tools
 	conflicts = bili-tools
 	conflicts = bili-tools-git
+	options = !debug
 	source_x86_64 = https://github.com/QwerProg/bili-tools/releases/download/v0.1.4/bt-x86_64-linux.tar.gz
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://github.com/QwerProg/bili-tools/releases/download/v0.1.4/bt-arm64-linux.tar.gz

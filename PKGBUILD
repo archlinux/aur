@@ -9,6 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 provides=('bili-tools')
 conflicts=('bili-tools' 'bili-tools-git')
+options=('!debug')
 
 source_x86_64=("https://github.com/QwerProg/bili-tools/releases/download/v${pkgver}/bt-x86_64-linux.tar.gz")
 source_aarch64=("https://github.com/QwerProg/bili-tools/releases/download/v${pkgver}/bt-arm64-linux.tar.gz")
