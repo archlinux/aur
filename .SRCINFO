@@ -1,6 +1,6 @@
 pkgbase = paketkoll
 	pkgdesc = Fast integrity check for files installed by pacman
-	pkgver = 0.3.15
+	pkgver = 0.3.16
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/paketkoll
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = paketkoll
 	makedepends = cmake
 	makedepends = clang
 	options = !lto
-	source = paketkoll-0.3.15.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/paketkoll-v0.3.15.tar.gz
-	sha256sums = fc90515eb077bb483a7cbb307c51d3f521b5e75fa4a4505818dcab18314c6886
+	source = paketkoll-0.3.16.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/paketkoll-v0.3.16.tar.gz
+	sha256sums = 82d984b1691f046d69ede2f0582fc67e41666d12295518037a8fa4512b9897c7
 
 pkgname = paketkoll
