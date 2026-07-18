@@ -1,0 +1,32 @@
+pkgbase = river-opacity
+	pkgdesc = A dynamic tiling Wayland compositor (with window opacity patch)
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://isaacfreund.com/software/river/
+	arch = x86_64
+	license = 0BSD
+	license = CC-BY-SA-4.0
+	license = GPL-3.0-only
+	license = MIT
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	makedepends = zig
+	makedepends = clang
+	depends = glibc
+	depends = libevdev
+	depends = libinput
+	depends = libxkbcommon
+	depends = pixman
+	depends = wayland
+	depends = wlroots0.20
+	depends = xorg-xwayland
+	conflicts = river-classic
+	conflicts = river
+	noextract = river-opacity.patch
+	source = git+https://codeberg.org/river/river.git#tag=v0.4.5
+	source = river-opacity.patch
+	sha256sums = 87b6d9ca61be97e1493c539887ae18c5bd9a9b0bbf13ada0458e0b4f3ce0b93b
+	sha256sums = aa33997bdb4299828fdc001b8f2e7cf04e513c577cd0c7de86b71c624d11a67a
+
+pkgname = river-opacity

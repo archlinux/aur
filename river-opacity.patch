@@ -1,0 +1,169 @@
+From f790c88ac82076ee7178a72813aa8c500f7bb9f7 Mon Sep 17 00:00:00 2001
+From: oldkingOK <oldkingok@qq.com>
+Date: Sun, 19 Jul 2026 02:02:15 +0800
+Subject: [PATCH] Window: implement compositor-side window opacity
+
+Add set_opacity request to the river-window-management protocol (v5),
+allowing the window manager to set per-window opacity.
+
+In the compositor, handle the request by applying opacity to all scene
+buffers via wlr_scene_buffer_set_opacity(). A pre-render refresh in
+Output.renderAndCommit() ensures the compositor's opacity persists
+through surface commits that would otherwise override SceneBuffer
+opacity with the client's alpha_modifier.
+---
+ protocol/river-window-management-v1.xml | 15 ++++++++++
+ river/Output.zig                        |  5 ++++
+ river/Window.zig                        | 39 +++++++++++++++++++++++++
+ river/WindowManager.zig                 | 13 +++++++++
+ 4 files changed, 72 insertions(+)
+
+diff --git a/protocol/river-window-management-v1.xml b/protocol/river-window-management-v1.xml
+index baa96d7..2723956 100644
+--- a/protocol/river-window-management-v1.xml
++++ b/protocol/river-window-management-v1.xml
+@@ -1116,6 +1116,21 @@
+       <arg name="max_width" type="int" summary="maximum width"/>
+       <arg name="max_height" type="int" summary="maximum height"/>
+     </request>
++
++    <request name="set_opacity" since="4">
++      <description summary="set the opacity of the window">
++        Set the opacity of the window, including borders and decoration surfaces.
++        The opacity value uses the fixed-point representation (24.8) and must be
++        in the range [0, 1], where 0 is fully transparent and 1 is fully opaque.
++
++        The default value is 1 (fully opaque). Setting this to a value less than
++        1 makes the window translucent.
++
++        This request modifies rendering state and may only be made as part of a
++        render sequence, see the river_window_manager_v1 description.
++      </description>
++      <arg name="opacity" type="fixed" summary="opacity value, range [0, 1]"/>
++    </request>
+   </interface>
+ 
+   <interface name="river_decoration_v1" version="4">
+diff --git a/river/Output.zig b/river/Output.zig
+index 2ed7273..f5412cf 100644
+--- a/river/Output.zig
++++ b/river/Output.zig
+@@ -463,6 +463,11 @@ fn renderAndCommit(output: *Output) !void {
+ 
+     output.current.applyNoModeset(&state);
+ 
++    // Re-apply compositor opacity before rendering to override any client
++    // alpha_modifier changes that may have reset SceneBuffer opacity since
++    // the last render sequence.
++    server.wm.refreshOpacity();
++
+     if (!output.scene_output.?.buildState(&state, null)) return error.CommitFailed;
+ 
+     if (output.rendering_current.tearing) {
+diff --git a/river/Window.zig b/river/Window.zig
+index fb91514..065713f 100644
+--- a/river/Window.zig
++++ b/river/Window.zig
+@@ -131,6 +131,7 @@ const RenderingRequested = struct {
+     border: Border,
+     clip: wlr.Box,
+     content_clip: wlr.Box,
++    opacity: f32 = 1.0,
+ 
+     pub const init: RenderingRequested = .{
+         .x = 0,
+@@ -139,6 +140,7 @@ const RenderingRequested = struct {
+         .border = .{},
+         .clip = .{ .x = 0, .y = 0, .width = 0, .height = 0 },
+         .content_clip = .{ .x = 0, .y = 0, .width = 0, .height = 0 },
++        .opacity = 1.0,
+     };
+ };
+ 
+@@ -740,6 +742,10 @@ fn handleRequest(
+                 .height = @intCast(args.max_height),
+             };
+         },
++        .set_opacity => |args| {
++            if (!server.wm.ensureRendering()) return;
++            rendering_requested.opacity = @floatCast(args.opacity.toDouble());
++        },
+     }
+ }
+ 
+@@ -948,11 +954,19 @@ pub fn renderFinish(window: *Window) void {
+         window.box.x = requested.x;
+         window.box.y = requested.y;
+         window.fullscreen_background.node.setEnabled(false);
++        const orig_border_a = window.rendering_requested.border.a;
++        if (requested.opacity < 1.0) {
++            const alpha = @as(f64, @floatFromInt(orig_border_a)) / @as(f64, math.maxInt(u32));
++            window.rendering_requested.border.a = @intFromFloat(alpha * @as(f64, @floatCast(requested.opacity)) * @as(f64, math.maxInt(u32)));
++        }
+         window.drawBorders();
++        window.rendering_requested.border.a = orig_border_a;
+     }
+     window.tree.node.setPosition(window.box.x, window.box.y);
+     window.popup_tree.node.setPosition(window.box.x, window.box.y);
+ 
++    window.applyOpacity(requested.opacity);
++
+     switch (window.impl) {
+         .xwayland => |*xwindow| _ = xwindow.configure(),
+         .toplevel, .destroying => {},
+@@ -1068,6 +1082,31 @@ fn applySurfaceClip(window: *Window, a: *const wlr.Box, b: *const wlr.Box) void
+     }
+ }
+ 
++/// Apply opacity to all scene buffers in the window's tree, including
++/// surfaces, decorations, and popups.
++pub fn applyOpacity(window: *Window, opacity: f32) void {
++    var o = opacity;
++    window.tree.node.forEachBuffer(
++        *f32,
++        (struct {
++            fn callback(buffer: *wlr.SceneBuffer, _: c_int, _: c_int, data: *f32) void {
++                buffer.setOpacity(data.*);
++            }
++        }).callback,
++        &o,
++    );
++
++    window.popup_tree.node.forEachBuffer(
++        *f32,
++        (struct {
++            fn callback(buffer: *wlr.SceneBuffer, _: c_int, _: c_int, data: *f32) void {
++                buffer.setOpacity(data.*);
++            }
++        }).callback,
++        &o,
++    );
++}
++
+ /// Returns null if the window is currently being destroyed and no longer has
+ /// an associated surface.
+ /// May also return null for Xwayland windows that are not currently mapped.
+diff --git a/river/WindowManager.zig b/river/WindowManager.zig
+index 868d10a..6bb8717 100644
+--- a/river/WindowManager.zig
++++ b/river/WindowManager.zig
+@@ -560,3 +560,16 @@ fn renderFinish(wm: *WindowManager) void {
+ 
+     server.input_manager.processEvents();
+ }
++
++/// Re-apply compositor opacity to all windows' scene buffers right before rendering.
++/// This is needed because wlroots' surface commit processing may override SceneBuffer
++/// opacity with the client's alpha_modifier value. Calling this right before
++/// buildState() ensures the compositor's desired opacity always wins.
++pub fn refreshOpacity(wm: *WindowManager) void {
++    var it = wm.windows.iterator();
++    while (it.next()) |window| {
++        if (window.state == .mapped or window.state == .closing) {
++            window.applyOpacity(window.rendering_requested.opacity);
++        }
++    }
++}
+-- 
+2.55.0
+
