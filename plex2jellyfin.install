@@ -17,7 +17,7 @@ post_install() {
     systemctl daemon-reload || true
 
     _print_banner
-    echo "==> plex2jellyfin v0.1.0 installed successfully!"
+    echo "==> plex2jellyfin $1 installed successfully!"
     echo ""
     echo "Units are installed but not enabled. Pick a setup path:"
     echo ""
@@ -47,7 +47,7 @@ post_upgrade() {
     systemctl daemon-reload || true
 
     _print_banner
-    echo "==> plex2jellyfin upgraded to v0.1.0!"
+    echo "==> plex2jellyfin upgraded to $1!"
     echo ""
     echo "If services were already running:"
     echo "  sudo systemctl restart plex2jellyfin-daemon plex2jellyfin-web"
