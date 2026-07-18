@@ -1,6 +1,6 @@
 pkgname=jay-aur
-pkgver=7.4.3
-pkgrel=2
+pkgver=7.4.4
+pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/xmlzitos154/jay"
@@ -24,11 +24,11 @@ package() {
     cd jay
     install -Dm755 main.sh "$pkgdir/usr/bin/jay"
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
-    install -Dm644 modules/base.sh "$pkgdir/usr/share/jay/base.sh"
-    install -Dm644 modules/logging.sh "$pkgdir/usr/share/jay/logging.sh"
-    install -Dm644 modules/cache.sh "$pkgdir/usr/share/jay/cache.sh"
-    install -Dm644 modules/etc.sh "$pkgdir/usr/share/jay/etc.sh"
-    install -Dm644 modules/flatpak.sh "$pkgdir/usr/share/jay/flatpak.sh"
-    install -Dm644 languages/pt.sh "$pkgdir/usr/share/jay/pt.sh"
-    install -Dm644 languages/en.sh "$pkgdir/usr/share/jay/en.sh"
+    install -Dm644 modules/mod_01.sh "$pkgdir/usr/share/jay/mod_01.sh"
+    install -Dm644 modules/mod_02.sh "$pkgdir/usr/share/jay/mod_02.sh"
+    install -Dm644 modules/mod_03.sh "$pkgdir/usr/share/jay/mod_03.sh"
+    install -Dm644 modules/mod_04.sh "$pkgdir/usr/share/jay/mod_04.sh"
+    install -Dm644 modules/mod_05.sh "$pkgdir/usr/share/jay/mod_05.sh"
+    install -Dm644 languages/lang_mod_pt.sh "$pkgdir/usr/share/jay/lang_mod_pt.sh"
+    install -Dm644 languages/lang_mod_en.sh "$pkgdir/usr/share/jay/lang_mod_en.sh"
 }
