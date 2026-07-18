@@ -1,0 +1,20 @@
+pkgbase = lumalarm
+	pkgdesc = A professional glassmorphism alarm clock for Linux with rtcwake support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shinigami1231111/lumalarm
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-declarative
+	depends = qt6-quickcontrols2
+	depends = util-linux
+	source = lumalarm-1.0.0.tar.gz::https://github.com/shinigami1231111/lumalarm/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lumalarm
