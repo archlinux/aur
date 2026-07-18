@@ -1,5 +1,6 @@
 *
 !.nvchecker.toml
+!update*.sh
 !.gitignore
 !PKGBUILD
 !.SRCINFO
