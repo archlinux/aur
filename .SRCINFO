@@ -1,6 +1,6 @@
 pkgbase = tlp-battery-tuner
 	pkgdesc = Battery-focused TLP tuning config (turbo, PCIe ASPM, USB/SATA/audio power save, WiFi power save)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/YatoVoid/tlp-battery-tuner
 	install = tlp-battery-tuner.install
@@ -8,7 +8,7 @@ pkgbase = tlp-battery-tuner
 	license = MIT
 	depends = tlp
 	backup = etc/tlp.d/00-battery-tuner.conf
-	source = tlp-battery-tuner-1.0.0.tar.gz::https://github.com/YatoVoid/tlp-battery-tuner/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 43b0711f9efa0014754e69cbd4e10bf36abbecef5d8cc36d71410588c255e24d
+	source = tlp-battery-tuner-1.0.1.tar.gz::https://github.com/YatoVoid/tlp-battery-tuner/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 1a2d0680e3364aeecd893b3149e4479a497da0cd1445de63fb44d390613da2a4
 
 pkgname = tlp-battery-tuner

@@ -1,6 +1,6 @@
 # Maintainer: Wali Lambert <wali.lambert1960@gmail.com>
 pkgname=tlp-battery-tuner
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Battery-focused TLP tuning config (turbo, PCIe ASPM, USB/SATA/audio power save, WiFi power save)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tlp')
 backup=("etc/tlp.d/00-battery-tuner.conf")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YatoVoid/tlp-battery-tuner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('43b0711f9efa0014754e69cbd4e10bf36abbecef5d8cc36d71410588c255e24d')
+sha256sums=('1a2d0680e3364aeecd893b3149e4479a497da0cd1445de63fb44d390613da2a4')
 install=tlp-battery-tuner.install
 
 package() {
