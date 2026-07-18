@@ -1,0 +1,20 @@
+pkgbase = drxpkg-git
+	pkgdesc = A terminal user interface for searching and installing Arch Linux packages
+	pkgver = 0.1.0.r264.6f0854f
+	pkgrel = 1
+	url = https://github.com/druxorey/drxpkg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = pacman
+	depends = glibc
+	provides = drxpkg
+	conflicts = drxpkg
+	conflicts = drxpkg-bin
+	options = !debug
+	source = git+https://github.com/druxorey/drxpkg.git
+	sha256sums = SKIP
+
+pkgname = drxpkg-git
