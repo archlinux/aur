@@ -5,7 +5,7 @@ _pkgauthor=majoraexp
 _pkgname=taskwire
 
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Modern Linux System Monitor"
 
@@ -21,14 +21,14 @@ provides=("${_appname}")
 source=("${_pkgname}.desktop"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
-        "${_pkgname}-${pkgver}.png::${_urlraw}/${_appname}/app_icon.png")
+        "${_pkgname}-${pkgver}.png::${_urlraw}/${_appname}_CPP/app_icon.png")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_appname}")
 
 sha256sums=('99afca95edd7d783972c0c9ba84a0bd8dc06327c066b5abc738b987e75f36ae3'
             'ab57324b3ea51d1c3ecc4706fa8783f06994d2fa4581a6d27b7cc7e57048c71c'
-            'ed368287e7aa3ce392b3fd4413abff3665d3b312310680015ef71debd473c3a5'
+            'c164bae951a3a280b284beb0f7d4b67c159f99fe897b1771a548622570f9e86b'
             '3e797e8cc15333328259c2d675c7feededb7c16710ace0f6ba4727643e634b83')
-sha256sums_x86_64=('571b4a6c80a30447e8249c95d842a892a84ca7c86ff863b0829b7e06f052eb66')
+sha256sums_x86_64=('8c6e8c922fc52e0ed5ec1d3042d7dcf23bd50c5a8cb14fbdeba9a6eceb00f9b5')
 
 
 package() {
