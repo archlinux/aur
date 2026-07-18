@@ -38,6 +38,8 @@ prepare() {
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+
+  sed -e "s|Viper v[0-9\.]* — Python interpreter|Viper v${pkgver} — Python interpreter|g" -i "src/main.rs"
 }
 
 build() {
