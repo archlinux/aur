@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
-pkgver=1.9.0
-pkgrel=8
+pkgver=1.9.1
+pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
@@ -17,7 +17,7 @@ source=(
   com.github.aliencoweatcake.imageviewer.appdata.xml
 )
 sha256sums=(
-  '7ca56ebc29a90e56897c53ac27414df7952a504f5508f54e02ab58e14a28371b'
+  'd304c47afcba88a95e1309fca5b75710dd5f919ed5f62c6a8895e2c383d76c00'
   '1a6c1e058714e80740e6caf8f73be2cd646c994d7abea0988005b1f777d3533e'
   '240692987a63667433c1a85587ad86bd15a7895c9c91325265450515c0b595a5'
 )

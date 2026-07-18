@@ -1,7 +1,7 @@
 pkgbase = imageviewer
 	pkgdesc = Simple, cross-platform image viewer
-	pkgver = 1.9.0
-	pkgrel = 8
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://github.com/AlienCowEatCake/ImageViewer
 	arch = x86_64
 	license = GPL-3.0-or-later
