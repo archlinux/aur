@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tlp')
 backup=("etc/tlp.d/00-battery-tuner.conf")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YatoVoid/tlp-battery-tuner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a2d0680e3364aeecd893b3149e4479a497da0cd1445de63fb44d390613da2a4')
+sha256sums=('d7b407a9edd31ddb121fad314bf63cfa0f1a104b09de274fe2fdbbebcdf2a871')
 install=tlp-battery-tuner.install
 
 package() {
