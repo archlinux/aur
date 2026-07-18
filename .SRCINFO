@@ -1,6 +1,6 @@
 pkgbase = ax-cli
 	pkgdesc = ax — TUI API Client: a terminal-based HTTP client with xh/httpie-style syntax parsing
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/zaidejjo/ax
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ax-cli
 	optdepends = wl-clipboard: Wayland clipboard support
 	provides = ax
 	conflicts = ax
-	source = ax-cli-0.1.0.tar.gz::https://github.com/zaidejjo/ax/archive/refs/tags/v0.1.0.tar.gz
+	source = ax-cli-0.1.1.tar.gz::https://github.com/zaidejjo/ax/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ax-cli
