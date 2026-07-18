@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/aur/rxvt-unicode-truecolor-wide-glyphs/patch-builder.sh
+# path:   /home/klassiker/Projects/aur/rxvt-unicode-truecolor-wide-glyphs/patch-builder.sh
 # author: klassiker [mrdotx]
 # url:    https://aur.archlinux.org/packages/rxvt-unicode-truecolor-wide-glyphs
-# date:   2026-05-17T05:04:13+0200
+# date:   2026-07-18T04:00:06+0200
 
 # config
 pkgname="rxvt-unicode"
