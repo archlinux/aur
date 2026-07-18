@@ -1,8 +1,8 @@
 # Maintainer: Keiran <keircn@proton.me>
 
 pkgname=pince-bin
-pkgver=0.9.2
-pkgrel=1
+pkgver=0.9.3
+pkgrel=0
 pkgdesc="Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB"
 arch=('x86_64')
 url="https://github.com/korcankaraokcu/PINCE"
