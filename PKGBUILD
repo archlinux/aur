@@ -1,6 +1,6 @@
 # Maintainer: wanxp
 
-pkgname=codex-hub-desktop-bin
+pkgname=codex-hub-bin
 pkgver=0.4.6
 pkgrel=1
 pkgdesc='Desktop control console for Codex App SSH workspaces'
@@ -20,8 +20,8 @@ depends=(
   'webkit2gtk-4.1'
   'xdg-utils'
 )
-provides=("codex-hub=${pkgver}" "codex-hub-desktop=${pkgver}")
-conflicts=('codex-hub' 'codex-hub-desktop')
+provides=("codex-hub=${pkgver}")
+conflicts=('codex-hub')
 options=('!strip' '!debug')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Jurio0304/CodexHub/v${pkgver}/LICENSE")
 source_x86_64=("CodexHub-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/CodexHub_${pkgver}_amd64.deb")

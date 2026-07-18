@@ -1,4 +1,4 @@
-pkgbase = codex-hub-desktop-bin
+pkgbase = codex-hub-bin
 	pkgdesc = Desktop control console for Codex App SSH workspaces
 	pkgver = 0.4.6
 	pkgrel = 1
@@ -18,9 +18,7 @@ pkgbase = codex-hub-desktop-bin
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
 	provides = codex-hub=0.4.6
-	provides = codex-hub-desktop=0.4.6
 	conflicts = codex-hub
-	conflicts = codex-hub-desktop
 	options = !strip
 	options = !debug
 	source = LICENSE-0.4.6::https://raw.githubusercontent.com/Jurio0304/CodexHub/v0.4.6/LICENSE
@@ -30,4 +28,4 @@ pkgbase = codex-hub-desktop-bin
 	source_aarch64 = CodexHub-0.4.6-aarch64.deb::https://github.com/Jurio0304/CodexHub/releases/download/v0.4.6/CodexHub_0.4.6_arm64.deb
 	sha256sums_aarch64 = 6da95ee987a8ca8eb5e9e11a08f479a7da64e0510a2d33dcd2f5a6eb3d988899
 
-pkgname = codex-hub-desktop-bin
+pkgname = codex-hub-bin
