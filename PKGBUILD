@@ -1,4 +1,4 @@
-# Maintainer: Kristoffer Risanger <kristoffer@risanger.no>
+# Maintainer: kristofferR <481270+kristofferR@users.noreply.github.com>
 #
 # Template for the AUR package. The `aur` job in .github/workflows/release.yml
 # fills in the version and checksum placeholders and pushes the result (with a
