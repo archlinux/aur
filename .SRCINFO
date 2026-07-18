@@ -1,0 +1,20 @@
+pkgbase = magic-context-dashboard-bin
+	pkgdesc = Dashboard for Magic Context (Tauri App)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/cortexkit/magic-context
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	provides = magic-context-dashboard
+	conflicts = magic-context-dashboard
+	noextract = magic-context-dashboard-0.10.0.deb
+	options = !strip
+	source = magic-context-dashboard-0.10.0.deb::https://github.com/cortexkit/magic-context/releases/download/dashboard-v0.10.0/magic-context-dashboard-linux-x64.deb
+	source = LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/master/LICENSE
+	sha256sums = 14683838cd50aedf579e007651d0bdc5b44f089bfe82a92fd042fdb81fb6a799
+	sha256sums = 0e3d1aa1cbe4aec50224fc6c91eb898d42949d6ff84fe515f9e2bb0663f5d483
+
+pkgname = magic-context-dashboard-bin
