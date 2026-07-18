@@ -15,7 +15,10 @@ options=('!strip')
 source=("sugarrush-${pkgver}.tar.xz::https://github.com/ronaldlokers/sugarrush/releases/download/v${pkgver}/sugarrush-x86_64-unknown-linux-musl.tar.xz")
 sha256sums=('844f461dd220703ffe2c4e21af90b818503896d44d0448202334d497c420e133')
 
+# cargo-dist archives wrap their files in a "<name>-<target>" directory.
+_dir="sugarrush-x86_64-unknown-linux-musl"
+
 package() {
-  install -Dm755 sugarrush "${pkgdir}/usr/bin/sugarrush"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${_dir}/sugarrush" "${pkgdir}/usr/bin/sugarrush"
+  install -Dm644 "${_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
