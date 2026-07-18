@@ -4,8 +4,8 @@
 # AUR: biosaka
 
 pkgname=biosaka
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="C. elegans neural simulation in your terminal — 307 neurons, ~2800 synapses, LIF spiking network, ratatui TUI"
 arch=('x86_64')
 url="https://github.com/BerkeOruc/biosaka"
