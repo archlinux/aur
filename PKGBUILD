@@ -2,7 +2,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=okular
+_pkgname=okular
+pkgname=okular-no-phonon
 pkgver=26.04.3
 pkgrel=1
 pkgdesc='Document Viewer'
@@ -34,7 +35,7 @@ depends=(discount
          libspectre
          libstdc++
          libtiff
-         phonon-qt6
+         # phonon-qt6
          poppler-qt6
          purpose
          qt6-base
@@ -52,18 +53,20 @@ optdepends=('ebook-tools: mobi and epub support'
             'unarchiver: Comic Book Archive support (alternative)'
             'unrar: Comic Book Archive support')
 groups=(kde-applications
-        kde-graphics)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('a6e4a571acd3b70bb67eec476834b009f710540b793091f51f707b53b6facbca'
-            'SKIP')
-validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
-              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
-              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+  kde-graphics)
+provides=(okular)
+conflicts=(okular)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz)
+sha256sums=('a6e4a571acd3b70bb67eec476834b009f710540b793091f51f707b53b6facbca')
+# validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
+  cmake -B build -S $_pkgname-$pkgver \
+    -DBUILD_TESTING=OFF \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES=Phonon4Qt6
   cmake --build build
 }
 
