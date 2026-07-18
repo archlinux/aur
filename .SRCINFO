@@ -1,6 +1,6 @@
 pkgbase = shed-sh-git
 	pkgdesc = Shell that strives to be POSIX compliant, with a powerful line editor and IPC socket extensibility (development version)
-	pkgver = 0.22.0.r2.g866a439
+	pkgver = 0.37.2.r1.gea8303b
 	pkgrel = 1
 	url = https://github.com/km-clay/shed
 	install = shed.install
@@ -12,6 +12,7 @@ pkgbase = shed-sh-git
 	depends = glibc
 	depends = libgcc
 	depends = sqlite
+	optdepends = python: needed to run the copilot example code
 	provides = shed
 	provides = shed-sh
 	conflicts = shed
