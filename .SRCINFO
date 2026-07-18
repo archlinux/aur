@@ -1,0 +1,17 @@
+pkgbase = python-iphone-backup-decrypt
+	pkgdesc = Decrypt and extract files from an iOS13+ encrypted local iTunes/iOS backup offline using the backup password
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/jsharkey13/iphone_backup_decrypt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-pycryptodome
+	optdepends = python-fastpbkdf2: faster key derivation (PBKDF2) via a C extension
+	source = https://files.pythonhosted.org/packages/source/i/iphone_backup_decrypt/iphone_backup_decrypt-0.9.0.tar.gz
+	sha256sums = 13b18fef3c8e3af627914f8c1a429bbc5555dfb0505239ba49efe99984cc0c96
+
+pkgname = python-iphone-backup-decrypt
