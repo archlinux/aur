@@ -1,5 +1,5 @@
 pkgbase = fasthex-bin
-	pkgdesc = A very fast hex dumper (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgdesc = fasthex, a very fast hex dumper, prebuilt binary
 	pkgver = 42ebd65
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fasthex
