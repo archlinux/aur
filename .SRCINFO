@@ -1,6 +1,6 @@
 pkgbase = scholaread-cn-bin
 	pkgdesc = Scholaread（靠岸学术）集论文PDF阅读、论文翻译、AI问答解析、文献多设备管理于一体
-	pkgver = 1.1.67
+	pkgver = 1.1.75
 	pkgrel = 1
 	url = https://scholaread.cn
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = scholaread-cn-bin
 	optdepends = at-spi2-core: accessibility support
 	optdepends = util-linux-libs: UUID generation support
 	optdepends = libappindicator: system tray icon support
-	source = scholaread-cn-bin-1.1.67.deb::https://cdn.scholaread.cn/assets/pc-releases/1.1.67/cn/Scholaread-linux-amd64-1.1.67.deb
-	sha256sums = 6552545d7b2f689f226ff32065b7574411c1b6ae418a8b8ef162a08c9fc0e485
+	source = scholaread-cn-bin-1.1.75.deb::https://cdn.scholaread.cn/assets/pc-releases/1.1.75/cn/Scholaread-linux-amd64-1.1.75.deb
+	sha256sums = c2f288709d93c1ad03c40d3b584c67d84abb32fc3503ce480e1ce3299ac5b0c0
 
 pkgname = scholaread-cn-bin
