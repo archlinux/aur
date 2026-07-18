@@ -21,6 +21,7 @@ makedepends=(
     llvm
     clang
     lld
+    git
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/superg/redumper/archive/refs/tags/b$pkgver.tar.gz"
