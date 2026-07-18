@@ -25,7 +25,7 @@ optdepends=(
 # makedepends=('git') <- Nicht mehr benötigt, da wir kein Git klonen
 
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "io.github.wergosam.pachul.desktop"
 )
 # Hinweis: Du musst die sha256sum für das v2.2.1.tar.gz noch generieren.
@@ -34,19 +34,10 @@ sha256sums=('42437ad25cdabe6f6b7d3bee42cf911a4ee61d3502230b2fd8494d6573792717'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2')
 
 prepare() {
-    # GitHub entpackt das Archiv standardmäßig in einen Ordner namens "Projektname-Version"
+    # GitHub benennt den Ordner im Quellcode-Archiv bei Groß-/Kleinschreibung
+    # exakt wie das Repository, gefolgt von der Version OHNE das 'v'.
     cd "$srcdir/Pachul-$pkgver"
 
-    # ─────────────────────────────────────────────────────────────────────
-    # Wichtig für die Paketierung: app.py legt sein privates GTK-Icon-Theme
-    # standardmässig NEBEN den eigenen Programmdateien an
-    # (APP_DIR/.icon-theme/...). Bei einer System-Installation liegen die
-    # Programmdateien aber unter /usr/share/pachul und gehören root -
-    # ein normaler User kann dort zur Laufzeit keine Symlinks/Dateien mehr
-    # anlegen. Wir biegen das hier auf ein User-Cache-Verzeichnis um, damit
-    # das Icon-Theme beim ersten Start pro Benutzer in ~/.cache/pachul
-    # aufgebaut wird, statt einen PermissionError zu werfen.
-    # ─────────────────────────────────────────────────────────────────────
     sed -i \
         's|^ICON_THEME_DIR = os.path.join(APP_DIR, "\.icon-theme")|ICON_THEME_DIR = os.path.join(os.path.expanduser("~/.cache/pachul"), "icon-theme")|' \
         app.py
@@ -71,8 +62,7 @@ exec python3 /usr/share/pachul/app.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/pachul"
 
-    # Desktop-Datei + hicolor-Icon (für Menü/Dock, unabhängig vom internen
-    # .icon-theme-Mechanismus von app.py)
+    # Desktop-Datei + hicolor-Icon
     install -Dm644 "$srcdir/io.github.wergosam.pachul.desktop" \
         "$pkgdir/usr/share/applications/io.github.wergosam.pachul.desktop"
     install -Dm644 io.github.wergosam.pachul.svg \
