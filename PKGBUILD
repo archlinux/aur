@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Maizo <maizogabriel@proton.me>
 
 pkgname=kio-rclone
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Browse rclone remotes from Dolphin and other KIO applications'
 url='https://github.com/Undead34/kio-rclone'
