@@ -1,6 +1,6 @@
 pkgbase = zigoku
 	pkgdesc = Terminal anime browser & player
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/vantroy/zigoku
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = zigoku
 	depends = mpv
 	options = !strip
 	options = !debug
-	source = zigoku-0.4.7.tar.gz::https://github.com/vantroy/zigoku/archive/refs/tags/v0.4.7.tar.gz
+	source = zigoku-0.4.8.tar.gz::https://github.com/vantroy/zigoku/archive/refs/tags/v0.4.8.tar.gz
 	source = vaxis::git+https://github.com/vantroy/libvaxis.git#commit=fbe8f695b2e68b4881fa7cd7dde65266f810f97b
 	source = zigimg::git+https://github.com/zigimg/zigimg.git#commit=d695acd97c02e57bb151e8f659d1280f5cd6ca70
 	source = uucode::git+https://github.com/jacobsandlund/uucode.git#commit=2826a37a4562284fdacd8fa029d49509cc9bffcd
-	sha256sums = 4bce7960002d8753d18aa47f65241049ca7037e990f113db707dfe2c9b5687be
+	sha256sums = 8edad242584ece575573d298f4e4a910909c6b4c86d1d0af45ec2389af7f8db1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
