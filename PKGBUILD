@@ -2,7 +2,7 @@
 # Maintainer: Christian Kohlstedde <christian+archlinux@kohlsted.de>
 
 pkgname=connect-tunnel
-pkgver=12.50.00221
+pkgver=12.50.00247
 pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 	"https://software.sonicwall.com/CT-NX-VPNClients/CT-$(sed 's/[0-9]$/.&/' <<<"${pkgver%.*}")/ConnectTunnel_Linux64-${pkgver}.tar"
 	"https://www.sonicwall.com/legal/general-product-agreement"
 )
-md5sums=('70a87fdc32b910c064a94f9988b5d6f9'
+md5sums=('c7d3aa2f0cfe725bb2d28eeef434ca8c'
          'SKIP')
 
 prepare() {
