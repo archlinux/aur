@@ -1,0 +1,12 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now qtet-daemon.service 2>/dev/null || true
+}
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart qtet-daemon.service 2>/dev/null || true
+}
+pre_remove() {
+    systemctl stop qtet-daemon.service 2>/dev/null || true
+    systemctl disable qtet-daemon.service 2>/dev/null || true
+}
