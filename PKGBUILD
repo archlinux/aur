@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 pkgname=cc-switch
-pkgver=3.16.5
+pkgver=3.17.0
 pkgrel=1
 pkgdesc='All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI'
 arch=('x86_64')
@@ -28,17 +28,14 @@ makedepends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "0001-feat-universal-provider-Auto-sync-after-adding.patch"
   "0002-feat-universal-provider-Add-one-click-sync-all-providers.patch"
 )
-sha256sums=('b0c0379a34947ae8dd315d14ec714f1eaf164237c0310f10dc54c88509f514f7'
-            '9686d576fd9dd596edf805507e0f8752abd3fa8a6ca85664afcd1582188b04e7'
+sha256sums=('8ae7c878c7de955ff9bd1f13dc22ff9b680267b889ec9b285f62aae03142ab40'
             '333ef252456975051f0163c9b8bcf37fadec3a43bc05f192cb4ec87b2761b3f6')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0001-feat-universal-provider-Auto-sync-after-adding.patch"
   patch -p1 -i "${srcdir}/0002-feat-universal-provider-Add-one-click-sync-all-providers.patch"
   cargo fetch --locked --target host-tuple --manifest-path src-tauri/Cargo.toml
 }
