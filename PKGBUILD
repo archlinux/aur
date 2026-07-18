@@ -1,13 +1,13 @@
 # Maintainer: Elk Cloner <dev [at] elkcl [dot] ru>
 
 pkgname=yukigram-bin
-pkgver=7.0.1.0
+pkgver=7.0.2.0
 pkgrel=1
 pkgdesc="Unofficial patch-based Telegram Desktop fork — minus the bullshit, plus the features"
 arch=(x86_64)
 url="https://github.com/yukigram/yukigram"
 license=('GPL-3.0-or-later WITH sqlitestudio-OpenSSL-exception')
-depends=(glibc fontconfig glib2 hicolor-icon-theme libx11 freetype2)
+depends=(glibc fontconfig glib2 hicolor-icon-theme freetype2)
 optdepends=(
 	'geoclue: geoinformation support'
 	'crow-translate: translation provider'
@@ -20,7 +20,7 @@ conflicts=(yukigram-desktop)
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/binary-${CARCH}.tar.gz")
-sha256sums=('64377c3177171720e8fd0553cad33c708d2f050e5272958cea247f5e23148c6d')
+sha256sums=('a2ffc9780cb8bdc646da3a7d6ad746dacf7773692d610f6d2f9aedcf3dd49781')
 noextract=("${source[0]%%::*}")
 
 prepare() {
