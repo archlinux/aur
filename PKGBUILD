@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 _project=tuigreety
 pkgdesc='A minimal, configurable console greeter for greetd'
@@ -17,7 +17,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   'tuigreet.conf'
 )
-sha256sums=('05ce6457b4062699b2298add577035b231a71c71749f87d8cbe7dac1bfe4faf2'
+sha256sums=('9a5ebc8dd4c5ac843b32b0ffa0f13310920a18fceab0bcf86c45a639b8169b5f'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 prepare() {
@@ -38,5 +38,6 @@ package() {
   install -Dm644 tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
   install -Dm644 contrib/tuigreet.toml "$pkgdir/etc/tuigreet/config.toml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm644 "$srcdir/tuigreet.conf" "$pkgdir/usr/lib/tmpfiles.d/tuigreet.conf"
 }
