@@ -23,10 +23,10 @@ build() {
 }
 
 package() {
+	install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system"
 	cd $pkgname-$pkgver
 	install -Dm755 target/release/cfproxy-rs -t "$pkgdir/usr/bin"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 config_full.json "$pkgdir/etc/cfproxy-rs/config.json"
-	install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
