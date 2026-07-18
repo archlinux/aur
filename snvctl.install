@@ -1,0 +1,7 @@
+post_upgrade() {
+    if [ -f /etc/systemd/system/snvctl.service ]; then
+        systemctl disable --now snvctl.service || true
+        rm -f /etc/systemd/system/snvctl.service
+        systemctl daemon-reload
+    fi
+}
