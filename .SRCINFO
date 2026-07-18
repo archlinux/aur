@@ -1,18 +1,23 @@
 pkgbase = libxsmm
 	pkgdesc = A library for small dense and small sparse matrix-matrix multiplications
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libxsmm/libxsmm
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
+	checkdepends = time
 	makedepends = gcc-fortran
 	makedepends = python
 	depends = gcc-libs
 	depends = glibc
 	source = libxsmm-2.0.0.tar.gz::https://github.com/libxsmm/libxsmm/archive/2.0.0.tar.gz
-	source = fortran-pc-requires.patch
+	source = fortran.patch
+	source = gcc16.patch
+	source = eltwise.patch
 	sha256sums = 7e532dc5520f864ce6d7f44f3fd50365e3edb23da97dbdc54fd53845d86a290b
 	sha256sums = 4d0bb916c3f80b7ed372ea2e2703553afc5cbd757564380ec2f9957465336077
+	sha256sums = 025131293bd25aefed83448bd5f25ef1948d58d8d736524d552f15caa475ee67
+	sha256sums = 21a107584397d736dfc9da4c762e0061c27d0232aa9fc4dd284caa83cf892528
 
 pkgname = libxsmm

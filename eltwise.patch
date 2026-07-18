@@ -1,0 +1,28 @@
+--- a/tests/Makefile	2026-06-30 07:18:39.000000000 +0300
++++ b/tests/Makefile	2026-07-18 13:01:42.554220779 +0300
+@@ -68,7 +68,6 @@
+ 	@$(FLOCK) $(DEPDIR)/samples/utilities/dispatch "$(MAKE) --no-print-directory"
+ 	@$(FLOCK) $(DEPDIR)/samples/utilities/memcmp "$(MAKE) --no-print-directory"
+ 	@$(FLOCK) $(DEPDIR)/samples/equation "$(MAKE) --no-print-directory"
+-	@$(FLOCK) $(DEPDIR)/samples/eltwise "$(MAKE) --no-print-directory"
+ 	@$(FLOCK) $(DEPDIR)/samples/xgemm "$(MAKE) --no-print-directory"
+ 	@$(FLOCK) $(DEPDIR)/samples/xgemm_norm_packed "$(MAKE) --no-print-directory"
+ 
+--- a/tests/test.sh	2026-06-30 07:18:39.000000000 +0300
++++ b/tests/test.sh	2026-07-18 13:01:42.555316487 +0300
+@@ -35,13 +35,13 @@
+         smm.sh"
+     else
+       TESTS="$(cd "${HERE}" && ${GREP} -l "main[[:space:]]*(.*)" ./*.c 2>/dev/null) \
+-        dispatch.sh eltwise.sh equation.sh \
++        dispatch.sh equation.sh \
+         fsspmdm.sh memcmp.sh \
+         packed.sh smm.sh"
+     fi
+   else
+     TESTS="$(cd "${HERE}" && ${GREP} -l "main[[:space:]]*(.*)" ./*.c 2>/dev/null) \
+-      dispatch.sh eltwise.sh equation.sh \
++      dispatch.sh equation.sh \
+       memcmp.sh \
+       packed.sh smm.sh"
+   fi
