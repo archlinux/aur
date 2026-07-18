@@ -29,10 +29,14 @@ depends=(
 )
 install=spark-store.install
 options=(!strip !debug)
-source_x86_64=("https://gitee.com/spark-store-project/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_amd64.deb")
-source_aarch64=("https://gitee.com/spark-store-project/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_arm64.deb")
-sha256sums_x86_64=('b0715c9de9d73824bd1f6eff0056a9861004a3be4d66bbe3225cc4d83c169ee8')
-sha256sums_aarch64=('eb84841f2df584a597b6d1befc640b60ffe01eecbce1ea245a41ff64116b4709')
+# source_x86_64=("https://gitee.com/spark-store-project/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_amd64.deb")
+source_x86_64=("https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_amd64.deb")
+
+# source_aarch64=("https://gitee.com/spark-store-project/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_arm64.deb")
+source_aarch64=("https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_arm64.deb")
+
+sha256sums_x86_64=('88ae82ce4e487ff0e1f7172cc089bdc50332d5abf8183ddae4b9e6650cac2d55')
+sha256sums_aarch64=('8d4d5e0f03e3dea0bb8a4f1647a67cb2907f4c0071d02cd7eeb05b0a10fd3fb3')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     rm -rf "${pkgdir}/lib"
