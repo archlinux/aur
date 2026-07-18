@@ -1,6 +1,6 @@
 pkgbase = planify
 	pkgdesc = Task manager with Todoist and Nextcloud support
-	pkgver = 4.19.4
+	pkgver = 4.19.5
 	pkgrel = 1
 	url = https://useplanify.com
 	arch = x86_64
@@ -25,9 +25,11 @@ pkgbase = planify
 	depends = libspelling
 	depends = sqlite
 	conflicts = elementary-planner
-	source = git+https://github.com/alainm23/planify.git#tag=v4.19.4
+	source = git+https://github.com/alainm23/planify.git#tag=v4.19.5
+	source = git+https://github.com/alainm23/chrono.git#tag=1.0.0
 	source = quick-add.patch
-	sha256sums = 7099d8265544e7e47949d780c9fc4bea02ce8b37310178fe93203176af57c678
+	sha256sums = 19646fa129263453d83e46b9fd2ee2e45b37aabe2140adbf9f5807223684b925
+	sha256sums = 6c36a5e2cbf4e03cf8d692e2045072221da2998820fadfb3514e29aed84072e2
 	sha256sums = d331bbd14369fc45ffe24fabbddaa1b7f994e5ae68d06720e31d89dd7ed003fc
 
 pkgname = planify
