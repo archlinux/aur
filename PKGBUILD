@@ -1,7 +1,7 @@
-# Maintainer: Ergin <your-email@example.com>
+# Maintainer: İbrahim Hakkı Ergin <ibrahimh.ergin@gmail.com>
 pkgname=pardus-boot-analyzer-git
 _pkgname=pardus-boot-analyzer
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Graphical (GUI) tool to analyze system boot time and manage startup applications"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = pardus-boot-analyzer-git
 	pkgdesc = Graphical (GUI) tool to analyze system boot time and manage startup applications
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/06ergin06/pardus-boot-analyzer
 	arch = any
