@@ -9,7 +9,6 @@ pkgbase = ntfsprogs-plus
 	makedepends = libgcrypt
 	depends = util-linux-libs
 	depends = hwinfo
-	depends = libx86emu
 	provides = ntfsprogs
 	provides = ntfs-3g
 	provides = ntfsprogs-plus

@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='NTFS filesystem utilities.'
 arch=('x86_64')
 
-depends=('util-linux-libs' 'hwinfo' 'libx86emu')
+depends=('util-linux-libs' 'hwinfo')
 makedepends=('libgcrypt')
 
 conflicts=('ntfsprogs' 'ntfs-3g' "${pkgname}-git")
@@ -53,13 +53,6 @@ package() {
     rootsbindir=/usr/bin \
     rootlibdir=/usr/lib \
     install
-
-  # ntfs-3g compat
-  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfs"
-  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfsplus"
-  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfs-3g"
-  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.lowntfs-3g"
-  ln -s /usr/bin/fsck.ntfs "${pkgdir}/usr/bin/ntfsfix"
 
   # Upstream License
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
