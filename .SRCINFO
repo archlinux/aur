@@ -1,20 +1,31 @@
 pkgbase = shelly-cli
-	pkgdesc = Command line helper for Shelly desktop
-	pkgver = r0.g0000000
+	pkgdesc = Native Shelly package-manager CLI beta
+	pkgver = 3.0.0.0.r3380.g2065d5c
 	pkgrel = 1
-	url = https://github.com/manpreet113/shelly-cli
+	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = git
-	makedepends = cargo
-	depends = shelly-shell
-	depends = quickshell
-	depends = hyprland
-	depends = slurp
-	depends = grim
-	depends = wl-clipboard
-	depends = libnotify
-	source = git+https://github.com/manpreet113/shelly-cli.git
+	makedepends = pkgconf
+	makedepends = zig>=0.16.0
+	depends = diffutils
+	depends = flatpak
+	depends = git
+	depends = glibc
+	depends = glib2
+	depends = libarchive
+	depends = pacman
+	depends = sudo
+	optdepends = base-devel: build and install AUR packages
+	optdepends = devtools: build AUR packages in a clean chroot
+	optdepends = desktop-file-utils: update AppImage desktop entries
+	optdepends = fuse2: run AppImages that require FUSE 2
+	optdepends = gtk-update-icon-cache: update AppImage icons
+	optdepends = opendoas: alternative privilege elevator to sudo
+	optdepends = plocate: locate-based pacfile discovery
+	optdepends = vim: default visual pacfile diff viewer
+	provides = shelly-beta
+	source = shelly-cli::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
 	sha256sums = SKIP
 
 pkgname = shelly-cli
