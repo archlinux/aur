@@ -32,10 +32,9 @@ package () {
   cd zlib-${pkgver}
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" cmake --install build-${_arch}
-    # see zlib_static_suffix
-    cp "$pkgdir"/usr/${_arch}/lib/libzs.a "$pkgdir"/usr/${_arch}/lib/libz.a
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ln -vrs "$pkgdir"/usr/${_arch}/lib/libzs.a "$pkgdir"/usr/${_arch}/lib/libz.a
   done
 }
