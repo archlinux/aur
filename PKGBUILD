@@ -1,7 +1,6 @@
 # Maintainer: Locez <locez@locez.com>
-pkgname=bilihud-git
-_pkgname=bilihud
-pkgver=0.3.0.r0.gIT_REV_Here
+pkgname=bilihud
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
 arch=('any')
@@ -30,37 +29,25 @@ makedepends=(
     'python-hatch-build-scripts' # Needed for custom build hook
     'python-wheel'
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+$url.git"
+source=("git+$url.git#tag=v$pkgver"
         "git+https://github.com/xfgryujk/blivedm.git")
-sha256sums=('SKIP' 'SKIP')
-
-pkgver() {
-    cd "$_pkgname"
-    # Extract version from pyproject.toml
-    local _ver
-    _ver=$(grep -m1 'version =' pyproject.toml | cut -d '"' -f2)
-    # If fails, default to 0.0.0
-    if [ -z "$_ver" ]; then _ver=0.0.0; fi
-    
-    printf "%s.r%s.g%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+sha256sums=('9ed09913fb9b61de9f91d79622a04eed7894c6aa386aaf7552111115bbf44d39'
+            'SKIP')
 
 prepare() {
-    cd "$_pkgname"
+    cd "$pkgname"
     git submodule init
     git config submodule.vendor/blivedm.url "$srcdir/blivedm"
     git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd "$_pkgname"
+    cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Install desktop entry and icon if available
