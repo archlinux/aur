@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='refurb'
 pkgname="$_pkgname-git"
@@ -10,7 +10,7 @@ pkgver=2.3.1.r0.g0dbb127
 pkgrel=1
 url='https://github.com/dosisod/refurb'
 arch=('any')
-license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+license=('GPL-3.0-or-later')
 makedepends=(
   'git'
   'python-build'
@@ -42,6 +42,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
