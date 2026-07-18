@@ -1,5 +1,5 @@
 pkgbase = fastcount-bin
-	pkgdesc = An incredibly fast, incredibly useless counter (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgdesc = fastcount, an incredibly fast, incredibly useless counter, prebuilt binary
 	pkgver = e06b228
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcount
