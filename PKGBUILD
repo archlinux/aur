@@ -10,7 +10,7 @@
 # `llama-sycl` launcher — so this survives oneAPI version bumps with no rebuild.
 
 pkgname=llama.cpp-sycl-bin
-pkgver=b10054
+pkgver=b10066
 pkgrel=1
 pkgdesc="llama.cpp on Intel Arc GPU via SYCL — official precompiled binary (no compilation)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   'llama-sycl'
 )
 sha256sums=(
-  'ded6ae8fecf0fe3c524fe19c4037fdb4e0539af1975d6eba6b01fd8998cc8784'
+  '3c766e207515079a56f884ee6bea65c7802b393df40ed1b3b9068085addc9be2'
   'SKIP'
 )
 
