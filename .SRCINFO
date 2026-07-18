@@ -1,6 +1,6 @@
 pkgbase = yumic-server
 	pkgdesc = Native Linux WO Mic client with GTK4/Libadwaita UI, system tray, and auto-reconnect
-	pkgver = 1.0.1
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/Excez0/yumic-server
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = yumic-server
 	depends = pipewire
 	provides = yumic-server
 	conflicts = yumic-server-git
-	source = yumic-server-1.0.1.tar.gz::https://github.com/Excez0/yumic-server/archive/refs/tags/v1.0.1.tar.gz
+	source = yumic-server-1.0.8.tar.gz::https://github.com/Excez0/yumic-server/archive/refs/tags/v1.0.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = yumic-server

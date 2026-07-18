@@ -1,6 +1,6 @@
 # Maintainer: Excez0 <github@excez0.dev>
 pkgname=yumic-server
-pkgver=1.0.1
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Native Linux WO Mic client with GTK4/Libadwaita UI, system tray, and auto-reconnect"
 arch=('x86_64')
