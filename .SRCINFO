@@ -7,6 +7,8 @@ pkgbase = soundkeeper-linux
 	license = MIT
 	depends = sox
 	source = soundkeeper-linux-1.0.0.tar.gz::https://github.com/arnav4o4/soundkeeper-linux/archive/refs/tags/v1.0.0.tar.gz
+	source = soundkeeper.service
 	sha256sums = 2146ea5c27f7ba0e44a15aaffdd109056a06708aaa6617bc7293d883d193fa45
+	sha256sums = a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524
 
 pkgname = soundkeeper-linux
