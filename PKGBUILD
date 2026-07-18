@@ -2,11 +2,11 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 
 _dotnet_version=10.0
-_download_dotnet_version="$_dotnet_version"
+_system_dotnet=false
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.1.0.r0.g86122510b
+pkgver=3.1.0.r1.gc16ffa08e
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -17,7 +17,7 @@ depends=(
     # libSkiaSharp.so
     'fontconfig' 'freetype2' 'expat' 'zlib' 'bzip2' 'libpng' 'harfbuzz' 'brotli' 'glib2' 'graphite' 'pcre2'
 )
-makedepends=('git' 'dotnet-install') # We need to install some workloads so dotnet-sdk is not available here
+makedepends=('git')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
@@ -39,7 +39,7 @@ source=(
     'git+https://github.com/BeyondDimension/Titanium-Web-Proxy.git'
     'git+https://github.com/BeyondDimension/SteamAchievementManager.git'
     'git+https://github.com/JustArchiNET/ASF-ui.git'
-    'wiki::git+https://github.com/JustArchiNET/ArchiSteamFarm.wiki.git'
+    'git+https://github.com/JustArchiNET/ArchiSteamFarm.wiki.git'
     'git+https://github.com/BeyondDimension/SteamClient.git'
     'git+https://github.com/quamotion/dotnet-packaging.git'
     'git+https://github.com/BeyondDimension/WTTS.MicroServices.ClientSDK.git'
@@ -52,7 +52,7 @@ source=(
     'git+https://github.com/reactiveui/Fusillade.git'
     'git+https://github.com/BeyondDimension/Avalonia8.git'
     'git+https://github.com/BeyondDimension/SteamKit.git'
-    'Protobufs::git+https://github.com/steamdatabase/protobufs.git')
+    'git+https://github.com/steamdatabase/protobufs.git')
 sha256sums=('SKIP'
             'SKIP'
             '971f095988215965ba7256158a2c23af8be27222ea4f50655acd6c3bf3c4a23a'
@@ -97,34 +97,88 @@ declare -Ag _plugins=(
     #[BD.WTTS.Client.Plugins.Update]=Update
 )
 
-_fill_submodules_recursively(){
-    if [[ -f "$1/.gitmodules" ]]
-    then
-        while read -r submodule
-        do
-            echo "Filling submodule $submodule in $1/.gitmodules..."
-            local path new_url
-            path="$(git config get --file "$1/.gitmodules" "submodule.$submodule.path")"
-            new_url="file://$srcdir/$(basename "$path")"
-            git -C "$1" submodule set-url "$path" "$new_url"
-            echo "Setting url of $path to $new_url"
-            git -C "$1" -c protocol.file.allow=always submodule update --init "$path"
-            _fill_submodules_recursively "$1/$path"
-        done < <(git config list --file "$1/.gitmodules" --name-only | cut -d . -f 2- | rev | cut -d . -f 2- | rev | sort -u)
-    fi
-}
+if "$_system_dotnet"
+then
+    depends+=("dotnet-runtime-$_dotnet_version" "aspnet-runtime-$_dotnet_version")
+    makedepends+=("dotnet-sdk>=$_dotnet_version" "dotnet-targeting-pack-$_dotnet_version" "aspnet-targeting-pack-$_dotnet_version")
+else
+    makedepends+=('dotnet-install')
+fi
 
 prepare(){
     #https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
-    _fill_submodules_recursively "${srcdir}/SteamTools"
-    # Install dotnet-sdk
-    export DOTNET_ROOT="$srcdir/dotnet-sdk"
-    export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
-    dotnet-install --channel ${_download_dotnet_version} --install-dir "${DOTNET_ROOT}" --no-path
-    if [[ "${_dotnet_version}" != "${_download_dotnet_version}" ]]
+    git -C "${srcdir}/SteamTools" submodule init
+    git -C "${srcdir}/SteamTools" config submodule."ref/DirectoryPackages".url              "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools" config submodule."ref/ArchiSteamFarm".url                 "file://${srcdir}/ArchiSteamFarm"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Avalonia.Image2".url                "file://${srcdir}/Avalonia.Image2"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Gameloop.Vdf".url                   "file://${srcdir}/Gameloop.Vdf"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Steam4NET".url                      "file://${srcdir}/Steam4NET"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Titanium-Web-Proxy".url             "file://${srcdir}/Titanium-Web-Proxy"
+    git -C "${srcdir}/SteamTools" config submodule."ref/SteamAchievementManager".url        "file://${srcdir}/SteamAchievementManager"
+    git -C "${srcdir}/SteamTools" config submodule."ref/SteamClient".url                    "file://${srcdir}/SteamClient"
+    git -C "${srcdir}/SteamTools" config submodule."ref/dotnet-packaging".url               "file://${srcdir}/dotnet-packaging"
+    git -C "${srcdir}/SteamTools" config submodule."ref/WTTS.MicroServices.ClientSDK".url   "file://${srcdir}/WTTS.MicroServices.ClientSDK"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Common".url                         "file://${srcdir}/Common"
+    git -C "${srcdir}/SteamTools" config submodule."ref/WinAuth".url                        "file://${srcdir}/WinAuth"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Facepunch.Steamworks".url           "file://${srcdir}/Facepunch.Steamworks"
+    git -C "${srcdir}/SteamTools" config submodule."ref/appcenter-sdk-dotnet".url           "file://${srcdir}/appcenter-sdk-dotnet"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Fusillade".url                      "file://${srcdir}/Fusillade"
+    git -C "${srcdir}/SteamTools" config submodule."ref/Avalonia8".url                      "file://${srcdir}/Avalonia8"
+    git -C "${srcdir}/SteamTools" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/ArchiSteamFarm" submodule init
+    git -C "${srcdir}/SteamTools/ref/ArchiSteamFarm" config submodule."ASF-ui".url  "file://${srcdir}/ASF-ui"
+    git -C "${srcdir}/SteamTools/ref/ArchiSteamFarm" config submodule."wiki".url    "file://${srcdir}/ArchiSteamFarm.wiki"
+    git -C "${srcdir}/SteamTools/ref/ArchiSteamFarm" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/Avalonia.Image2" submodule init
+    git -C "${srcdir}/SteamTools/ref/Avalonia.Image2" config submodule."ref/DirectoryPackages".url "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/Avalonia.Image2" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/SteamClient" submodule init
+    git -C "${srcdir}/SteamTools/ref/SteamClient" config submodule."ref/DirectoryPackages".url          "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/SteamClient" config submodule."ref/Gameloop.Vdf".url               "file://${srcdir}/Gameloop.Vdf"
+    git -C "${srcdir}/SteamTools/ref/SteamClient" config submodule."ref/SteamAchievementManager".url    "file://${srcdir}/SteamAchievementManager"
+    git -C "${srcdir}/SteamTools/ref/SteamClient" config submodule."ref/Steam4NET".url                  "file://${srcdir}/Steam4NET"
+    git -C "${srcdir}/SteamTools/ref/SteamClient" config submodule."ref/ValveKeyValue".url              "file://${srcdir}/ValveKeyValue"
+    git -C "${srcdir}/SteamTools/ref/SteamClient" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" submodule init
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" config submodule."ref/DirectoryPackages".url "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" config submodule."ref/WTTS.Public".url       "file://${srcdir}/WTTS.Public"
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/Common" submodule init
+    git -C "${srcdir}/SteamTools/ref/Common" config submodule."ref/DirectoryPackages".url "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/Common" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/WinAuth" submodule init
+    git -C "${srcdir}/SteamTools/ref/WinAuth" config submodule."ref/DirectoryPackages".url "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/WinAuth" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/Avalonia8" submodule init
+    git -C "${srcdir}/SteamTools/ref/Avalonia8" config submodule."ref/Common".url "file://${srcdir}/Common"
+    git -C "${srcdir}/SteamTools/ref/Avalonia8" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public" submodule init
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public" config submodule."ref/DirectoryPackages".url "file://${srcdir}/DirectoryPackages"
+    git -C "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common" submodule init
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common" config submodule."ref/SteamKit".url "file://${srcdir}/SteamKit"
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common" -c protocol.file.allow=always submodule update
+
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" submodule init
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" config submodule."‎Resources/Protobufs".url "file://${srcdir}/protobufs"
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" -c protocol.file.allow=always submodule update
+
+    if ! "$_system_dotnet"
     then
-        dotnet-install --channel ${_dotnet_version} --install-dir "${DOTNET_ROOT}" --no-path --runtime dotnet
+        export DOTNET_ROOT="${srcdir}/dotnet-sdk"
+        export PATH="$DOTNET_ROOT:$PATH"
+        dotnet-install --channel "$_dotnet_version" --install-dir "${DOTNET_ROOT}" --no-path
     fi
+
     dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _platform
     local _platform
     _platform="$(< _platform)"
@@ -153,12 +207,16 @@ build(){
 
     _platform="$(< _platform)"
     cd "${srcdir}/SteamTools"
-    export DOTNET_ROOT="${srcdir}/dotnet-sdk"
-    export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
+
+    if ! "$_system_dotnet"
+    then
+        export DOTNET_ROOT="${srcdir}/dotnet-sdk"
+        export PATH="$DOTNET_ROOT:$PATH"
+    fi
 
     echo "Building BD.WTTS.Client.Avalonia.App..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-        -c Release --framework "net${_dotnet_version}" --runtime "${_platform}"
+        -c Release --framework "net${_dotnet_version}" --runtime "${_platform}" --self-contained="$("$_system_dotnet" && echo false || echo true)"
     for _id in "${!_plugins[@]}"
     do
         echo "Building plugin ${_id}..."
@@ -170,7 +228,7 @@ build(){
                 ;;
             *)
                 dotnet publish "src/${_id}/${_id}.csproj" --no-restore -c Release --nologo -v q -p:WarningLevel=1 \
-                    --framework "net${_dotnet_version}" --runtime "${_platform}" \
+                    --self-contained="$("$_system_dotnet" && echo false || echo true)" --framework "net${_dotnet_version}" --runtime "${_platform}" \
                     -p:EnableWindowsTargeting=true
                 ;;
         esac
@@ -178,7 +236,7 @@ build(){
 }
 package(){
     depends+=(
-        'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'bash' 'hicolor-icon-theme'
+        'libcap' 'nss' 'bash' 'hicolor-icon-theme'
         # Steam++.Accelerator
         'gcc-libs'
     )
