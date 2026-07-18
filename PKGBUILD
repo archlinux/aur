@@ -1,7 +1,7 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=verlauf-leeren
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ein Tool zum Leeren des Verlaufs"
 arch=('any')
 url="https://github.com/wergosam/verlauf-leeren"
