@@ -1,0 +1,15 @@
+pkgbase = saby-desktop
+	pkgdesc = SabyDesktop предоставит доступ к дополнительным инструментам и сервисам
+	pkgver = 26.2232.38
+	pkgrel = 2
+	url = https://saby.ru/
+	arch = x86_64
+	license = Custom
+	source = saby.deb::file:///home/leone/.tmp/Tensor/Saby/saby.deb
+	source = nmh-transport.deb::file:///home/leone/.tmp/Tensor/Saby/nmh-transport.deb
+	source = sabycenter.deb::file:///home/leone/.tmp/Tensor/Saby/sabycenter.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = saby-desktop
