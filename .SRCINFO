@@ -1,13 +1,13 @@
 pkgbase = dsd-fme
 	pkgdesc = Digital Speech Decoder - Florida Man Edition
-	pkgver = 20251214
+	pkgver = 20260715
 	pkgrel = 1
 	url = https://github.com/lwvmobile/dsd-fme.git
 	install = dsd-fme.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = cmake
 	depends = libpulse
 	depends = ncurses
@@ -40,7 +40,7 @@ pkgbase = dsd-fme
 	depends = zstd
 	depends = libgpg-error
 	optdepends = pulseaudio: use pulse as audio input device
-	source = dsd-fme-20251214.tar.gz::https://github.com/lwvmobile/dsd-fme/archive/refs/tags/20251214.tar.gz
-	sha256sums = 99392238734464728021c68507ec959013828eeec294c240ba39c4fd9d91a019
+	source = dsd-fme-20260715.tar.gz::https://github.com/lwvmobile/dsd-fme/archive/refs/tags/20260715.tar.gz
+	sha256sums = 26705d79c9e9e0376078fe0e610af7548b47abd37f320b099b10b84ea4b5d436
 
 pkgname = dsd-fme
