@@ -1,0 +1,18 @@
+pkgbase = beectl
+	pkgdesc = Native Messaging Host for the Bee Browser Extension <https://github.com/rosmanov/chrome-bee>
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/rosmanov/bee-host
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = ppc64le
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = libuv
+	depends = cjson
+
+pkgname = beectl
