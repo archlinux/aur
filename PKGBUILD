@@ -14,7 +14,8 @@ conflicts=('verlauf-leeren')
 # Wichtig: Die lokale .desktop-Datei wird hier als relative Quelle hinzugefügt
 source=("${pkgname}::git+https://github.com/wergosam/verlauf-leeren.git"
         "verlauf-leeren.desktop")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '4a956c1aaba7844d7ce4e814e17b66878bc1171c90b1e613e48029c2ba1785ca')
 
 package() {
     cd "${pkgname}"

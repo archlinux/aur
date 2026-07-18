@@ -13,6 +13,6 @@ pkgbase = verlauf-leeren
 	source = verlauf-leeren::git+https://github.com/wergosam/verlauf-leeren.git
 	source = verlauf-leeren.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 4a956c1aaba7844d7ce4e814e17b66878bc1171c90b1e613e48029c2ba1785ca
 
 pkgname = verlauf-leeren
