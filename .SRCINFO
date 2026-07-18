@@ -1,0 +1,23 @@
+pkgbase = dbx-mcp-server-bin
+	pkgdesc = MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents
+	pkgver = 0.4.34
+	pkgrel = 1
+	url = https://github.com/t8y2/dbx/tree/main/packages/mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	optdepends = dbx: desktop app to configure the database connections the MCP server reuses
+	provides = dbx-mcp-server
+	conflicts = dbx-mcp-server
+	options = !strip
+	options = !debug
+	source = dbx-mcp-server-bin-0.4.34-license.tgz::https://registry.npmjs.org/@dbx-app/mcp-server/-/mcp-server-0.4.34.tgz
+	sha256sums = a5aad993ae6fbc202e32b109890012b2fe865fb491941bac8ed416e20e269365
+	source_x86_64 = dbx-mcp-server-bin-0.4.34-x64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-x64-gnu/-/mcp-linux-x64-gnu-0.4.34.tgz
+	sha256sums_x86_64 = 5a6801ef7e16aeea542ff66147beb4ff8542d5b71e92470c05b6ab10ce408f55
+	source_aarch64 = dbx-mcp-server-bin-0.4.34-arm64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-arm64-gnu/-/mcp-linux-arm64-gnu-0.4.34.tgz
+	sha256sums_aarch64 = dba04fe727a18817a078ef1534e2dc40237803b2c0380a7b06c8bab32c087e24
+
+pkgname = dbx-mcp-server-bin
