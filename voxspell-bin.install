@@ -1,0 +1,8 @@
+post_install() {
+	echo '请打开 VoxSpell 桌面应用启动 daemon，并按需开启“开机启动”。'
+	echo '请重启 Fcitx 5 以加载 VoxSpell 扩展。'
+}
+
+post_upgrade() {
+	echo '请在 VoxSpell 桌面应用中重启 daemon，并重启 Fcitx 5 以应用升级。'
+}
