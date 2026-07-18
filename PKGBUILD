@@ -5,7 +5,7 @@
 # Contributor: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
-pkgver=0.1.306
+pkgver=0.1.308
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("tableplus_${pkgver}_${pkgrel}_amd64.deb::https://deb.tableplus.c
 source_aarch64=("tableplus_${pkgver}_${pkgrel}_arm64.deb::https://deb.tableplus.com/debian/24-arm/pool/main/t/tableplus/tableplus_${pkgver}_arm64.deb")
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
             '83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4')
-sha256sums_x86_64=('b16d42affe776bb1509dde91ae93f4e8bbeed7b93b75828c3c610f2075f596da')
-sha256sums_aarch64=('69fbe10f16acd8770509c23d1c0ecfbb782dccae1a8684d5ff6d898d4908a31c')
+sha256sums_x86_64=('9885c478a088341c304e4e40d9ffac3efeb0fc3085b3da36f63a9595b78a9e4e')
+sha256sums_aarch64=('1e61991a1f37d3c525f968dea0c525fa9958d40a7e3cf10ffac75c8498928bf8')
 
 prepare() {
     tar -xf "${srcdir}/data.tar.zst"
