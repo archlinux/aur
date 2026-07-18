@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenObsidian
+Comment=Local-first knowledge management app
+Exec=openobsidian %U
+Terminal=false
+Type=Application
+Icon=openobsidian
+StartupWMClass=OpenObsidian
+Categories=Office;Utility;
+MimeType=text/markdown;text/plain;
