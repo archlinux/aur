@@ -1,18 +1,18 @@
 # shellcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-calgebra-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
 pkgdesc='Python set() operations for calendar intervals (development version)'
-pkgver=0.10.8.r0.gbea36e1
-pkgrel=3
+pkgver=0.10.11.r0.g476c3e6
+pkgrel=1
 url="https://github.com/ashenfad/$_srcname"
 arch=('any')
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -46,6 +46,7 @@ pkgver() {
 build() {
   cd "$_srcdir"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
