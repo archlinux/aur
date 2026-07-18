@@ -1,9 +1,9 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 
 pkgname=romhex14-community
-pkgver=1.0.0.beta7
+pkgver=1.0.0.beta8
 pkgrel=1
-_github_tag="romhex14-community1.0.0-beta7"
+_github_tag="romhex14-community1.0.0-beta8"
 pkgdesc="Professional ECU Calibration Hex Editor — open-source cross-platform automotive tuning tool"
 arch=('x86_64')
 url="https://github.com/ctabuyo/romHEX14-community"

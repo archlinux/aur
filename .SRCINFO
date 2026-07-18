@@ -1,6 +1,6 @@
 pkgbase = romhex14-community
 	pkgdesc = Professional ECU Calibration Hex Editor — open-source cross-platform automotive tuning tool
-	pkgver = 1.0.0.beta7
+	pkgver = 1.0.0.beta8
 	pkgrel = 1
 	url = https://github.com/ctabuyo/romHEX14-community
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = romhex14-community
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = zlib
-	source = git+https://github.com/ctabuyo/romHEX14-community.git#tag=romhex14-community1.0.0-beta7
+	source = git+https://github.com/ctabuyo/romHEX14-community.git#tag=romhex14-community1.0.0-beta8
 	sha256sums = SKIP
 
 pkgname = romhex14-community
