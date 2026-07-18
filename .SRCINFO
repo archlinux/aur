@@ -1,6 +1,6 @@
 pkgbase = atlas-pm
 	pkgdesc = Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/Vatteck/Atlas
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = atlas-pm
 	optdepends = pacman-contrib: accurate repo update detection without root (checkupdates)
 	optdepends = timeshift: system snapshot before applying changes
 	conflicts = atlas-pm-git
-	source = atlas-pm-0.16.0.tar.gz::https://github.com/Vatteck/Atlas/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = 057158eb483d41be0422e974bc2ba5fd190699e3e242eb959aec921ecd86098d
+	source = atlas-pm-0.16.1.tar.gz::https://github.com/Vatteck/Atlas/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = 8a1971357e675db9cadcf1512c240ef6ccc5823f5c26553757c43663e03ed410
 
 pkgname = atlas-pm

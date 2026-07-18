@@ -7,7 +7,7 @@
 # (it tags the version, downloads the tarball, and pins its checksum). Edit deps / metadata /
 # the package() layout here — but leave those two lines for the script to fill.
 pkgname=atlas-pm
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)"
 arch=('any')
@@ -35,7 +35,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 conflicts=('atlas-pm-git')  # the two variants install the same files — pick one
 # GitHub names the tarball's top dir after the tag's source -> Atlas-$pkgver/
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Vatteck/Atlas/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('057158eb483d41be0422e974bc2ba5fd190699e3e242eb959aec921ecd86098d')
+sha256sums=('8a1971357e675db9cadcf1512c240ef6ccc5823f5c26553757c43663e03ed410')
 
 build() {
     cd "Atlas-$pkgver"
