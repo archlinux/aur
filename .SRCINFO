@@ -1,5 +1,5 @@
 pkgbase = timeit
-	pkgdesc = A precise command timing utility (x86_64 Linux only) — builds from source, always tracks latest
+	pkgdesc = timeit, a precise command timing utility, builds from source
 	pkgver = 106fde4
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/timeit

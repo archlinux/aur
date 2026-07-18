@@ -2,7 +2,7 @@
 pkgname=timeit
 pkgver=106fde4
 pkgrel=1
-pkgdesc="A precise command timing utility (x86_64 Linux only) — builds from source, always tracks latest"
+pkgdesc="timeit, a precise command timing utility, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/timeit"
 license=('GPL-3.0-or-later')
