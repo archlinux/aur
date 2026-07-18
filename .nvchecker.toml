@@ -1,0 +1,5 @@
+[quickbench]
+source = "github"
+github = "simonmichael/quickbench"
+use_max_tag = true
+prefix = "v"
