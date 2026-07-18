@@ -1,21 +1,21 @@
 # Maintainer: Calagopus <contact@calagopus.com>
 pkgname=calagopus-wings-bin
-pkgver=1.0.11
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Game server node daemon'
 arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
 url='https://calagopus.com'
 license=('MIT')
 
-source_x86_64=('wings-rs-x86_64::https://github.com/calagopus/wings/releases/download/release-1.0.11/wings-rs-x86_64-linux')
-source_aarch64=('wings-rs-aarch64::https://github.com/calagopus/wings/releases/download/release-1.0.11/wings-rs-aarch64-linux')
-source_powerpc64le=('wings-rs-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.0.11/wings-rs-ppc64le-linux')
-source_riscv64=('wings-rs-riscv64::https://github.com/calagopus/wings/releases/download/release-1.0.11/wings-rs-riscv64-linux')
+source_x86_64=('wings-rs-x86_64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-x86_64-linux')
+source_aarch64=('wings-rs-aarch64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-aarch64-linux')
+source_powerpc64le=('wings-rs-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-ppc64le-linux')
+source_riscv64=('wings-rs-riscv64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-riscv64-linux')
 
-sha256sums_x86_64=('4cf2462d448797325cc40d7d8ac6f843fc2a1bbbd40e9514d25f4412fdfb1579')
-sha256sums_aarch64=('73d105f159da74589424f8204be3a0bc2b554ba2567a11a1343557fd1ca16fab')
-sha256sums_powerpc64le=('7f2f508212b6fef0b2469504cf98d887d305c9d83a8d59dd5e470a39a2820710')
-sha256sums_riscv64=('6a4cc30f7b2ec515e7630c05e90ee614329ab53b17ccd317eed7ca7a6d038115')
+sha256sums_x86_64=('7f57db73cbb531b4cabdaec193f97cb2d74d2274446d20a8c6d12bff8178dfec')
+sha256sums_aarch64=('87477f2ce71c8ab03122520ba2a5a271707c3e08de8bbcb8c6b8a3b913ec8d1b')
+sha256sums_powerpc64le=('8c0fd92c4d1953d5e4f864902e05c25b92ab5eb6851b12a94400e3f4b7bcd6e0')
+sha256sums_riscv64=('a568005555249294690ee4121081985ca11fbcdf4b960f9eff05766ab33f5fd5')
 
 package() {
     case "$CARCH" in
