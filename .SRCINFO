@@ -1,15 +1,16 @@
 pkgbase = kova
 	pkgdesc = Markdown presentation authoring tool with live preview, multiple layouts, theming, and PPTX export
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kova.md/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = webkit2gtk-4.1
 	depends = libjxl
 	depends = libavif
-	depends = hicolor-icon-theme
 	optdepends = gst-plugins-bad: support for additional media formats
+	optdepends = hicolor-icon-theme: install icon themes for best integration
+	optdepends = libayatana-appindicator: tray/taskbar indicator support
 	source = https://github.com/KovaMD/Kova/releases/download/v0.7.1/Kova_0.7.1_x86_64.tar.gz
 	sha256sums = 8dd0e15939bc84ac7cf0d014ad63fe81ad53722afd89300b788fab46a1910da7
 
