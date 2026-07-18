@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="LLM assistant for Wayland desktops — overlay, voice, tools, any model"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('22d363478b8cf7ad8003511224e697d926afaec395563fbb794bc94d3f254e34')
+sha256sums=('1ede11700f9898c6aa8f34a389865938ebd8c7ae825ce39a0c672907dd6c032f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
