@@ -1,12 +1,12 @@
 pkgbase = ts_query_ls-bin
 	pkgdesc = LSP implementation for Tree-sitter's query files
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ribru17/ts_query_ls
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	provides = ts_query_ls
 	replaces = ts-query-ls-bin
