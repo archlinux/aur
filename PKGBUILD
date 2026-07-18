@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libuv' 'cjson')
 makedepends=('cmake' 'pkgconf')
 source=("https://github.com/rosmanov/bee-host/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('101a9726daad972610b017f788c3a3acd126fb9de551f467d390f464d2f2cb49')
 
 build() {
   cmake -B build -S "$srcdir/bee-host-${pkgver}" \
