@@ -1,4 +1,4 @@
-pkgname=wine-dwproton
+pkgname=wine-dwproton-bin
 pkgver=11.0
 pkgrel=7
 pkgdesc="dwproton的wine版"
