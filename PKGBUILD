@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A safe simple readonly TUI to show file changes including git changes"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ conflicts=("${_appname}")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('4a8e2dc536907c9d4f2652c63abaa55bc368277d52bb2f0465bfb467ec52afdf')
+sha256sums_x86_64=('0e7be57991d26df2d619d6ea20764acfd7fb4627955fad35be1b613afaec7b83')
 
 
 package() {
