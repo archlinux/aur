@@ -4,7 +4,7 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
 	"git+https://github.com/doitsujin/dxbc-spirv.git")
-sha256sums=('f1a361a8968b710f742dbb972f7606eab856a44f7cc7595749f34753e52a18f5'
+sha256sums=('abebd81145a4567d494bdeae2b1f89cad1dd66e9bb7731d175f8a026075054dd'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -28,8 +28,6 @@ sha256sums=('f1a361a8968b710f742dbb972f7606eab856a44f7cc7595749f34753e52a18f5'
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	[[ -d "$srcdir/build" ]] && rm -rf "$srcdir/build"
-	[[ -d "$srcdir/build32" ]] && rm -rf "$srcdir/build32"
 	git submodule init
 	git config submodule.include/native/directx.url "$srcdir/mingw-directx-headers"
 	git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
