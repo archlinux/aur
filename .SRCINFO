@@ -1,6 +1,6 @@
 pkgbase = oidcwarden-web
 	pkgdesc = Bitwarden web vault with the patches to make it work with oidcwarden
-	pkgver = 2026.6.3
+	pkgver = 2026.6.4
 	pkgrel = 1
 	url = https://github.com/Timshel/oidc_web_vault
 	install = oidcwarden-web.install
@@ -11,8 +11,8 @@ pkgbase = oidcwarden-web
 	makedepends = npm
 	depends = oidcwarden
 	conflicts = vaultwarden-web
-	source = oidcwarden-web-2026.6.3.tar.gz::https://github.com/Timshel/oidc_web_vault/archive/refs/tags/v2026.6.3-1.tar.gz
-	sha512sums = ab6732daf047b3827b313c7fff57d9ec2ab8da8d231f2eaf143d20cfe5c906824da8d1314f558e37fc648989d2d8126d0d3ed6306f11eb2efea60c8c2f6c39a6
-	b2sums = 3d62076fecd0c0fd672994673e43f03e3e40878d6b6328597b52687474621d012ff997a3ea1a9ca4b8a75b56f5ed38ecc881691337272358870a303cdec0a2b4
+	source = oidcwarden-web-2026.6.4.tar.gz::https://github.com/Timshel/oidc_web_vault/archive/refs/tags/v2026.6.4-1.tar.gz
+	sha512sums = 4a5e86809e3fad1271dc5b9b5d3c38f6bdc235289d0921fab4e443180148ab1ef31bd92370ad1b979287ada0d6d4b7d09a5c902444994b0aef3856fe773205bf
+	b2sums = 60faf59f4ad9f94b7b8ccebe71de3b1ee75f8c281a27f886fb7d9a71cd4675bea6b5c314fe89dff8f46bc9ce388253521c2b2a9816183ca87183124fa7f4993a
 
 pkgname = oidcwarden-web
