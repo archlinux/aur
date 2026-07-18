@@ -1,5 +1,5 @@
 pkgname=privli-bin
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Privacy-focused nearby file sharing'
 arch=('x86_64')
@@ -8,11 +8,11 @@ license=('custom')
 options=('!debug' '!strip')
 depends=('gtk3' 'glib2' 'curl' 'systemd-libs' 'sdbus-cpp')
 source=(
-  'Privli-3.0.0-linux-x86_64.tar.gz::https://github.com/Local1stDotApp/paste_share_open_source/releases/download/latest/Privli-3.0.0-linux-x86_64.tar.gz'
+  'Privli-3.0.1-linux-x86_64.tar.gz::https://github.com/Local1stDotApp/paste_share_open_source/releases/download/latest/Privli-3.0.1-linux-x86_64.tar.gz'
   'LICENSE.privli'
 )
 sha256sums=(
-  '9e481262ee86144335110fedae9f23d31e19cccc253d8373a37750dc364c937a'
+  '63f6528f136bf3c33f9b99b6ce18be38f13324229b11f2ccd3003841eda0690d'
   'SKIP'
 )
 
@@ -21,7 +21,7 @@ package() {
 
   rm -rf "${bundle_dir}"
   mkdir -p "${bundle_dir}"
-  bsdtar -xpf "${srcdir}/Privli-3.0.0-linux-x86_64.tar.gz" -C "${bundle_dir}"
+  bsdtar -xpf "${srcdir}/Privli-3.0.1-linux-x86_64.tar.gz" -C "${bundle_dir}"
 
   install -dm755 "${pkgdir}/opt/privli"
   cp -a "${bundle_dir}/." "${pkgdir}/opt/privli/"
