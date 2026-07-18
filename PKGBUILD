@@ -1,20 +1,20 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastcount
-pkgver=e06b228
+pkgver=0
 pkgrel=1
-pkgdesc="fastcount, an incredibly fast, incredibly useless counter, builds from source"
+pkgdesc="An incredibly fast, incredibly useless counter (x86_64 Linux only) — builds from source, always tracks latest"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcount"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'curl')
 provides=('fastcount')
 conflicts=('fastcount-bin')
 source=("fastcount-latest.tar.gz::https://github.com/CallMeAlphabet/fastcount/archive/refs/tags/latest.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
-    git ls-remote "https://github.com/CallMeAlphabet/fastcount.git" refs/tags/latest | cut -c1-7
+    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/fastcount/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
 }
 
 prepare() {
