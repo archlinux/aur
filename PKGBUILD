@@ -1,7 +1,7 @@
 # Maintainer: jmattheis <contact AT jmattheis DOT de>
 # Contributor: ml <ml@visu.li>
 pkgname=gotify-server
-pkgver=2.9.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ url='https://gotify.net/'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip' 'yarn')
-backup=('etc/gotify/config.yml')
+backup=('etc/gotify/server.env')
 install=gotify-server.install
 options=(emptydirs)
 source=(
@@ -18,10 +18,10 @@ source=(
   'gotify-server.service'
   'config.patch'
 )
-sha256sums=('fcf3abc76d841f1a248272c20251ee6f2dc8ef2d6c21fda9f459f5c919389d15'
+sha256sums=('b073a482b634b7f08f7e5f1f001bf3e5e9224842f8d282c8767efb4ac57d0bb2'
             '39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de'
-            '8c3832004ed6f46e01ab69c993773da19b50a45862354165ed065bf3d2147b92'
-            'b91a970b5b189d360ca52b0b536768a5dc0744be9c9761abf693e1d0c0e79c43')
+            'fd77369ddf3ec0097066517ade97fe06bb1336557adbac41a11f37df852c9814'
+            'aed307a8c5072d0f329a43a270ec4d32584fb0a2967e3be44c2a72d7ffaa4a0c')
 
 prepare() {
   patch -N -p1 -d "server-$pkgver" <config.patch
@@ -57,6 +57,6 @@ package() {
 
   cd "server-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 config.example.yml "$pkgdir/etc/gotify/config.yml"
+  install -Dm644 gotify-server.env.example "$pkgdir/etc/gotify/server.env"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
