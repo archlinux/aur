@@ -1,6 +1,6 @@
 pkgbase = hashcards
 	pkgdesc = Plain text-based spaced repetition system for flashcards
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/eudoxia0/hashcards
 	arch = x86_64
@@ -8,11 +8,14 @@ pkgbase = hashcards
 	makedepends = cargo
 	makedepends = git
 	makedepends = openssh
+	depends = libgcc
 	depends = libgcc_s.so
+	depends = sqlite
+	depends = libsqlite3.so
 	options = !lto
-	source = hashcards::git+https://github.com/eudoxia0/hashcards#commit=423519f
+	source = hashcards::git+https://github.com/eudoxia0/hashcards#commit=2699292
 	source = eudoxia0.keys
-	sha256sums = c97181770fc354dd553c20d87e3212125423bb74c1011c6e2c9f8b1d75711e79
+	sha256sums = f8651760ddc953c80c0235923ebb04fa48ed1cad70ea557e60ddc51531c4f850
 	sha256sums = 0304ac02afcca0315861846a780945e8ef329553b480297d529768de0d172cda
 
 pkgname = hashcards
