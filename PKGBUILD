@@ -1,7 +1,7 @@
 # Maintainer: azerty-xmpp <your.email@example.com>
 pkgname=dwl-git-azerty
 pkgver=0.8.dev.r87.a2d03cf
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (Custom build)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
@@ -29,7 +29,7 @@ prepare() {
     
     # 2. Force Tearing EVERYWHERE (The Catch-All Rule)
     # Using standard spaces instead of \t to prevent sed literal parsing errors
-    sed -i '/static const ForceTearingRule force_tearing\[\] = {/a \    {.title = NULL, .appid = NULL},' config.def.h
+    sed -i '/static const ForceTearingRule force_tearing\[\] = {/a \    {.title = "", .appid = ""},' config.def.h
     
     # 3. Aesthetics & Term
     sed -i 's/borderpx = .*/borderpx = 0;/g' config.def.h
