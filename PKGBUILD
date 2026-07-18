@@ -25,7 +25,7 @@ optdepends=(
 # makedepends=('git') <- Nicht mehr benötigt, da wir kein Git klonen
 
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz"
     "io.github.wergosam.pachul.desktop"
 )
 # Hinweis: Du musst die sha256sum für das v2.2.1.tar.gz noch generieren.
@@ -34,9 +34,8 @@ sha256sums=('42437ad25cdabe6f6b7d3bee42cf911a4ee61d3502230b2fd8494d6573792717'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2')
 
 prepare() {
-    # GitHub benennt den Ordner im Quellcode-Archiv bei Groß-/Kleinschreibung
-    # exakt wie das Repository, gefolgt von der Version OHNE das 'v'.
-    cd "$srcdir/Pachul-$pkgver"
+    # Der Ordner aus dem Main-Branch-Tarball heißt exakt Pachul-main
+    cd "$srcdir/Pachul-main"
 
     sed -i \
         's|^ICON_THEME_DIR = os.path.join(APP_DIR, "\.icon-theme")|ICON_THEME_DIR = os.path.join(os.path.expanduser("~/.cache/pachul"), "icon-theme")|' \
@@ -44,7 +43,7 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/Pachul-$pkgver"
+    cd "$srcdir/Pachul-main"
 
     # Python-Module
     install -d "$pkgdir/usr/share/$pkgname"
