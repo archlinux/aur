@@ -8,8 +8,10 @@ url="https://github.com/achyuki/cfproxy-rs"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c78579a20fa23c676565698c6e1d3fbf2816439c39726413bb1c92773ae1282e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+		"$pkgname.service")
+sha256sums=('c78579a20fa23c676565698c6e1d3fbf2816439c39726413bb1c92773ae1282e'
+            '3b247f94d7c66f3419c007c5083098e4714f98bbffe78c0336dcad120c61aa46')
 options=('!lto')
 
 prepare() {
