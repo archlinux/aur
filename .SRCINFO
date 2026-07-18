@@ -3,7 +3,6 @@ pkgbase = lumalarm
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/shinigami1231111/lumalarm
-	install = 
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
