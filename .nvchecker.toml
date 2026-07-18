@@ -1,0 +1,5 @@
+[bencher-cli-bin]
+source = "github"
+github = "bencherdev/bencher"
+use_latest_release = true
+prefix = "v"

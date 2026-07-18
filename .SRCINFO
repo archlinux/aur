@@ -1,0 +1,25 @@
+pkgbase = bencher-cli-bin
+	pkgdesc = Detect and prevent performance regressions before they make it to production with continuous benchmarking
+	pkgver = 0.6.9
+	pkgrel = 1
+	url = https://github.com/bencherdev/bencher
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = bencher
+	conflicts = bencher-cli
+	options = !strip
+	source = SECURITY-0.6.9.md::https://raw.githubusercontent.com/bencherdev/bencher/v0.6.9/SECURITY.md
+	source = README-0.6.9.md::https://raw.githubusercontent.com/bencherdev/bencher/v0.6.9/README.md
+	source = LICENSE-0.6.9::https://raw.githubusercontent.com/bencherdev/bencher/v0.6.9/LICENSE.md
+	sha256sums = 1efae98c80428e7aa00686872ca31101828a6d73e1f7f057b69fc94bbbfeb2a9
+	sha256sums = a91f3c627600f9816ba2156676ea23e350fe0117fe1f5ecf78d329e8d257ec05
+	sha256sums = 5cb75a9d3cb35e114a77844515b4a4760afbdff486a03593bdb7eb243a4d12d4
+	source_x86_64 = bencher-x86_64-0.6.9::https://github.com/bencherdev/bencher/releases/download/v0.6.9/bencher-v0.6.9-linux-x86-64
+	sha256sums_x86_64 = 73aa81c98b4d2c8fb3af98a8d6380b3c7483f6b496bfc30e15459caf8abff2f8
+	source_aarch64 = bencher-aarch64-0.6.9::https://github.com/bencherdev/bencher/releases/download/v0.6.9/bencher-v0.6.9-linux-arm-64
+	sha256sums_aarch64 = 50741775aed7a4703b874f1476c7dc0d53c23b51138bcc977264964784c19954
+
+pkgname = bencher-cli-bin
