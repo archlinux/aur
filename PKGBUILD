@@ -1,8 +1,8 @@
 # Maintainer: Zhang Hua <zhanghua.00 at qq dot com>
 
 pkgname=ariang-git
-pkgver=1.3.7.r2.g5c47d61
-pkgrel=1
+pkgver=1.3.14.r1.gd6a7653
+pkgrel=2
 pkgdesc="a modern web frontend making aria2 easier to use."
 arch=("any")
 url="https://github.com/mayswind/AriaNg"
@@ -16,9 +16,7 @@ optdepends=(
     "nginx: for web server")
 provides=("ariang")
 conflicts=("ariang")
-source=(
-    "git+${url}.git"
-    "ariang-post-install.hook")
+source=("git+${url}.git")
 sha256sums=('SKIP'
             '52424300b6227eb28641f77bbd6ff67f4a3114e515c66dac650382f842f5c07e')
 
@@ -28,6 +26,7 @@ pkgver(){
 }
 build(){
     cd "${srcdir}/AriaNg"
+    export npm_config_allow_git=all
     npm install
     npm run build
 }
@@ -35,6 +34,4 @@ package(){
     cd "${srcdir}/AriaNg"
     mkdir -p "${pkgdir}/usr/share/webapps"
     cp -av dist "${pkgdir}/usr/share/webapps/ariang"
-    install -Dm644 "${srcdir}/ariang-post-install.hook" \
-        "${pkgdir}/usr/share/libalpm/hooks/ariang.hook"
 }
