@@ -1,7 +1,7 @@
 # Maintainer: William Canin <hello.williamcanin@gmail.com>
 
 pkgname=tildr-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Manage HOME files and directories with symlinks and Git."
 arch=('x86_64')
@@ -26,45 +26,25 @@ conflicts=('tildr')
 
 validpgpkeys=('DE28149E82A46E5182C42E716FC4906130203368')
 
-# Variables in source
-_man_base_url="https://raw.githubusercontent.com/orbitbits/tildr/main/docs/man/dist"
-
 source=(
   "tildr-$pkgver-linux-x86_64::https://github.com/orbitbits/tildr/releases/download/v${pkgver}/tildr-${pkgver}-linux-x86_64"
-
-  # Binary SHA256SUMS
   "SHA256SUMS::https://github.com/orbitbits/tildr/releases/download/v${pkgver}/SHA256SUMS"
   "SHA256SUMS.sig::https://github.com/orbitbits/tildr/releases/download/v${pkgver}/SHA256SUMS.sig"
-
-  # Plugins
-  "tildr.py::https://raw.githubusercontent.com/orbitbits/tildr/main/tools/plugins/nautilus/tildr.py"
-  "tildr-dolphin.desktop::https://raw.githubusercontent.com/orbitbits/tildr/main/tools/plugins/dolphin/tildr.desktop"
-
-  # Man pages
-  "tildr.1::${_man_base_url}/tildr.1"
-  "tildr-config.1::${_man_base_url}/tildr-config.1"
-  "tildr-commands.1::${_man_base_url}/tildr-commands.1"
-  "tildr-security.1::${_man_base_url}/tildr-security.1"
-
-  # LICENSE
-  "LICENSE::https://raw.githubusercontent.com/orbitbits/tildr/main/LICENSE"
+  "tildr-src::https://github.com/orbitbits/tildr/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 sha256sums=(
   'SKIP'             # binary — verified via GPG
   'SKIP'             # SHA256SUMS — verified via GPG (SHA256SUMS.sig)
   'SKIP'             # GPG signature
-  'SKIP'             # Nautilus Plugin
-  'SKIP'             # Dolphin Plugin
-  'SKIP'             # tildr.1
-  'SKIP'             # tildr-config.1
-  'SKIP'             # tildr-commands.1
-  'SKIP'             # tildr-security.1
-  'eec8d62abce01e1c6a97593efa0d508479d7d14c3bbfe9d7f52fc8a4f5edb413' # LICENSE - manual: sha256sum LICENSE
+  'SKIP'             # source tarball
 )
 
 prepare() {
   cd "$srcdir"
+
+  echo "==> Extracting source tarball..."
+  tar -xzf tildr-src --strip-components=1
 
   echo "==> Verifying SHA256SUMS signature..."
   gpg --verify SHA256SUMS.sig SHA256SUMS
@@ -79,21 +59,21 @@ package() {
     "$pkgdir/usr/bin/tildr"
 
   # Plugin Nautilus install
-  install -Dm644 "$srcdir/tildr.py" \
+  install -Dm644 "$srcdir/tools/plugins/nautilus/tildr.py" \
     "$pkgdir/usr/share/nautilus-python/extensions/tildr.py"
 
   # Plugin Dolphin install
-  install -Dm644 "$srcdir/tildr-dolphin.desktop" \
+  install -Dm644 "$srcdir/tools/plugins/dolphin/tildr.desktop" \
     "$pkgdir/usr/share/kio/servicemenus/tildr.desktop"
 
   # Man pages install
-  install -Dm644 "$srcdir/tildr.1" \
+  install -Dm644 "$srcdir/docs/man/dist/tildr.1" \
     "$pkgdir/usr/share/man/man1/tildr.1"
-  install -Dm644 "$srcdir/tildr-config.1" \
+  install -Dm644 "$srcdir/docs/man/dist/tildr-config.1" \
     "$pkgdir/usr/share/man/man1/tildr-config.1"
-  install -Dm644 "$srcdir/tildr-commands.1" \
+  install -Dm644 "$srcdir/docs/man/dist/tildr-commands.1" \
     "$pkgdir/usr/share/man/man1/tildr-commands.1"
-  install -Dm644 "$srcdir/tildr-security.1" \
+  install -Dm644 "$srcdir/docs/man/dist/tildr-security.1" \
     "$pkgdir/usr/share/man/man1/tildr-security.1"
 
   # LICENSE install
