@@ -13,6 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 sha256sums=('c78579a20fa23c676565698c6e1d3fbf2816439c39726413bb1c92773ae1282e'
             '79bc16ea6923aa419114a92fb6ccb5e47804294ec7374c0e1026a705803145c1')
 options=('!lto')
+backup=('etc/cfproxy-rs/config.json')
 
 prepare() {
 	cd $pkgname-$pkgver
