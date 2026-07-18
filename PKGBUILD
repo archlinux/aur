@@ -18,8 +18,8 @@ source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64::$_url/unity-linux-x64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$_url/unity-linux-arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('8afcc077eb6de3363f654748b52316a0e93cd3b8fa54e6830a4aed0a63343628')
-sha256sums_aarch64=('6d7f38817708d42ea3c0b37ed51bac95303d2e89f80b60f63ea5d3b8c3209192')
+sha256sums_x86_64=('39d3f7b67e45a964207a20cd62f59b9f842bbacc8a5da6605771b7814bad359f')
+sha256sums_aarch64=('27eaacecde2b3e6de08e40eddc9b4e9058d302b21e36ad1ed62d215071d93003')
 noextract=("$pkgname-$pkgver-$CARCH")
 
 package() {
