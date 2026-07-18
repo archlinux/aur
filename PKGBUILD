@@ -2,8 +2,8 @@
 
 _pkgname="opencv4"
 pkgname="$_pkgname"
-pkgver=4.13.0
-pkgrel=3
+pkgver="4.14.0"
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (version 4.x)"
 url="https://github.com/opencv/opencv"
 license=('Apache-2.0')
@@ -78,16 +78,14 @@ source=(
   fix-std.patch
   fix-thrust-tuple.patch
 )
-sha256sums=(
-  '1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d'
-  '1e0077a4fd2960a7d2f4c9e49d6ba7bb891cac2d1be36d7e8e47aa97a9d1039b'
-  'f35a2d4ea0d6212c7798659e59eda2cb0b5bc858360f7ce9c696c77d3029668e'
-  '95472ecfc2693c606f0dd50be2f012b4d683b7b0a313f51484da4537ab8b2bfe'
-  'fbb10b75ca7849f85ea2f118aa017f00e34445d80ed76619f13ae1e4e9504ae4'
-  'b757be8df583cb3fa0059e47594eeb680638c572d3ae02bc1a5f7636e71ce5be'
-  'c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc'
-  '6379b0f23ba4068d2daa43ec158e515f58ef36242138eb10f752a93dc1cec375'
-)
+sha256sums=('ee8fb9b30eb60850431b4656447080e3737b56e45719c92b67f245950609f86e'
+            '4f17abd1bc7f88e19c3380c8de7cbf2d863aced5b5ee8d8934cc7902b67d42c9'
+            'f35a2d4ea0d6212c7798659e59eda2cb0b5bc858360f7ce9c696c77d3029668e'
+            '95472ecfc2693c606f0dd50be2f012b4d683b7b0a313f51484da4537ab8b2bfe'
+            'fbb10b75ca7849f85ea2f118aa017f00e34445d80ed76619f13ae1e4e9504ae4'
+            'b757be8df583cb3fa0059e47594eeb680638c572d3ae02bc1a5f7636e71ce5be'
+            'c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc'
+            '6379b0f23ba4068d2daa43ec158e515f58ef36242138eb10f752a93dc1cec375')
 
 # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
 options=('!lto')
