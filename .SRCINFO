@@ -1,0 +1,33 @@
+pkgbase = lcdiff
+	pkgdesc = Inspect, compare, and merge JAR/ZIP archives and folders
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/lyokha113/lcdiff
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = jdk17-openjdk
+	makedepends = maven
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libsoup3
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	options = !lto
+	options = !strip
+	source = git+https://github.com/lyokha113/lcdiff.git#tag=v0.3.6
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = d27aff4b5455cf67f9913035ba270c467041b6e28bfea1047662be0861ac980c
+
+pkgname = lcdiff
