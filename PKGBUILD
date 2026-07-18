@@ -1,8 +1,8 @@
 # Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 pkgname=raylib-wayland-git
 _pkgname=raylib
-pkgver=6.0.r236.g66bb527
-pkgrel=1
+pkgver=6.0.r239.g5b1445b
+pkgrel=5
 pkgdesc="Optimized Wayland build for simple and easy-to-use graphics library raylib"
 arch=('x86_64' 'aarch64')
 url="https://www.raylib.com/"
@@ -28,10 +28,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DPLATFORM=Desktop \
-    -DGLFW_BUILD_WAYLAND=ON \
-    -DGLFW_BUILD_X11=OFF \
-    -DUSE_EXTERNAL_GLFW=ON \
+    -DPLATFORM=SDL \
     -DBUILD_SHARED_LIBS=ON
   cmake --build build
 }
