@@ -1,0 +1,3 @@
+[difit-bin]
+source = "npm"
+npm = "difit"

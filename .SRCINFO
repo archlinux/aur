@@ -1,0 +1,17 @@
+pkgbase = difit-bin
+	pkgdesc = Lightweight CLI that serves Git commit diffs in a GitHub-like Files changed view
+	pkgver = 5.0.8
+	pkgrel = 1
+	url = https://github.com/yoshiko-pg/difit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=21.0.0
+	provides = difit=5.0.8
+	conflicts = difit
+	noextract = difit-5.0.8.tgz
+	source = difit-5.0.8.tgz::https://registry.npmjs.org/difit/-/difit-5.0.8.tgz
+	sha256sums = 4465c9960282a260d4e317316569180fce2430ce5f475a0cd57b07869c82bc0d
+
+pkgname = difit-bin
