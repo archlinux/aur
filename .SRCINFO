@@ -1,19 +1,18 @@
 pkgbase = battle-cats-rolls-git
 	pkgdesc = Local Battle Cats seed tracking server with high-performance C seeker
-	pkgver = r1783.7aef471
-	pkgrel = 1
-	url = https://gitlab.com/godfat/battle-cats-rolls-git
+	pkgver = r1815.42885cd
+	pkgrel = 2
+	url = https://gitlab.com/godfat/battle-cats-rolls
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	depends = ruby
-	depends = memcached
-	depends = clang
+	depends = ruby-stdlib
 	depends = zenity
 	depends = curl
 	provides = battle-cats-rolls-git
 	conflicts = battle-cats-rolls-git
-	source = git+https://gitlab.com/godfat/battle-cats-rolls-git.git
+	source = git+https://gitlab.com/godfat/battle-cats-rolls.git
 	md5sums = SKIP
 
 pkgname = battle-cats-rolls-git
