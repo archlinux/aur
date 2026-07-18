@@ -1,5 +1,5 @@
 pkgbase = fastwc-bin
-	pkgdesc = A fast wc rewrite (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgdesc = fastwc, a fast wc rewrite, prebuilt binary
 	pkgver = e85c885
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
