@@ -1,11 +1,12 @@
 pkgbase = fastcp-bin
-	pkgdesc = fastcp, a fast cp wrapper using --reflink=always, prebuilt binary
-	pkgver = cdb708a
+	pkgdesc = A fast cp wrapper using --reflink=always (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcp
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = curl
 	depends = gcc-libs
 	provides = fastcp
 	conflicts = fastcp
