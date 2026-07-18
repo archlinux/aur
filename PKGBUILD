@@ -1,19 +1,23 @@
 # Maintainer: isleap
 pkgname=akari-tool
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Gaming setup tool for vanilla Arch — dependencies, drivers, kernels & diagnosis"
 arch=('any')
 url="https://github.com/isleap9/Akari-Tool-Arch"
 license=('GPL-3.0-or-later')
-depends=('python' 'pyside6' 'bash' 'polkit' 'pciutils')
+depends=('python' 'pyside6' 'bash' 'polkit' 'pciutils' 'curl')
 optdepends=(
   'paru: AUR extras (Heroic, ProtonUp-Qt, GOverlay, linux-cachyos)'
   'yay: AUR extras (alternative helper)'
-  'game-devices-udev: controller permissions'
+  'flatpak: AUR-free app installs via Flathub'
+  'snapper: pre-change snapshots on btrfs'
+  'timeshift: pre-change snapshots (alternative)'
+  'reflector: mirror optimization'
+  'pacman-contrib: package cache cleanup'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a727229aff4d65272ac91d3d434a980f41698b9718e6813cdaebfe09ecddbb4')
+sha256sums=('b9c0faa92a83f10a4760c0425102a399d4938281ffc79501f133d02ce40f2979')
 
 package() {
   cd "Akari-Tool-Arch-$pkgver"

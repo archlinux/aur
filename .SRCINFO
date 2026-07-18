@@ -1,6 +1,6 @@
 pkgbase = akari-tool
 	pkgdesc = Gaming setup tool for vanilla Arch — dependencies, drivers, kernels & diagnosis
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/isleap9/Akari-Tool-Arch
 	arch = any
@@ -10,10 +10,15 @@ pkgbase = akari-tool
 	depends = bash
 	depends = polkit
 	depends = pciutils
+	depends = curl
 	optdepends = paru: AUR extras (Heroic, ProtonUp-Qt, GOverlay, linux-cachyos)
 	optdepends = yay: AUR extras (alternative helper)
-	optdepends = game-devices-udev: controller permissions
-	source = akari-tool-0.1.0.tar.gz::https://github.com/isleap9/Akari-Tool-Arch/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 9a727229aff4d65272ac91d3d434a980f41698b9718e6813cdaebfe09ecddbb4
+	optdepends = flatpak: AUR-free app installs via Flathub
+	optdepends = snapper: pre-change snapshots on btrfs
+	optdepends = timeshift: pre-change snapshots (alternative)
+	optdepends = reflector: mirror optimization
+	optdepends = pacman-contrib: package cache cleanup
+	source = akari-tool-0.2.0.tar.gz::https://github.com/isleap9/Akari-Tool-Arch/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b9c0faa92a83f10a4760c0425102a399d4938281ffc79501f133d02ce40f2979
 
 pkgname = akari-tool
