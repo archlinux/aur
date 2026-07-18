@@ -1,0 +1,22 @@
+pkgbase = dormant-bin
+	pkgdesc = OLED screen blanking daemon that responds to presence sensors
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/legion-works/dormant
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = dormant
+	conflicts = dormant
+	source = dormantd-0.3.1-x86_64-unknown-linux-gnu.tar.xz::https://github.com/legion-works/dormant/releases/download/v0.3.1/dormantd-x86_64-unknown-linux-gnu.tar.xz
+	source = dormantctl-0.3.1-x86_64-unknown-linux-gnu.tar.xz::https://github.com/legion-works/dormant/releases/download/v0.3.1/dormantctl-x86_64-unknown-linux-gnu.tar.xz
+	source = dormant-tray-0.3.1-x86_64-unknown-linux-gnu.tar.xz::https://github.com/legion-works/dormant/releases/download/v0.3.1/dormant-tray-x86_64-unknown-linux-gnu.tar.xz
+	source = dormant.service::https://raw.githubusercontent.com/legion-works/dormant/v0.3.1/crates/dormantd/systemd/dormant.service
+	source = dormant-tray.service::https://raw.githubusercontent.com/legion-works/dormant/v0.3.1/crates/dormant-tray/systemd/dormant-tray.service
+	sha256sums = 98acd4b536fb6df74eb46f988aea0551e06f4861bcfe3ec690307bafae301c73
+	sha256sums = bac30bec7246f387c980a4760ad4fe1526a1fb94e95d072da09129c116a30792
+	sha256sums = 91c717eea20eef9e689ee1564dada51531508357bad271fe0847b121ce8a40ad
+	sha256sums = b14a73e32f3a3337e27e9ad1690ee955e29cd0d9453410bd4c6e4e9064f2af74
+	sha256sums = deaf7ce6d00e1c3be46038c1c17b914f457dc7afb82c9282d1d8efa1305c9baa
+
+pkgname = dormant-bin
