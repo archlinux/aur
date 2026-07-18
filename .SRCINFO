@@ -1,7 +1,7 @@
 pkgbase = viper-py
 	pkgdesc = A fast Python interpreter written in Rust — beats CPython 3.12 on 9/10 benchmarks
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matthart1983/viper
 	arch = x86_64
 	arch = aarch64

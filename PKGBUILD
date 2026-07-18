@@ -13,7 +13,7 @@ pkgname=${_cratename}
 pkgdesc="A fast Python interpreter written in Rust — beats CPython 3.12 on 9/10 benchmarks"
 
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 _pkgvername=${pkgver}
 
 arch=('x86_64' 'aarch64')
