@@ -12,4 +12,4 @@ rm -rf ./README.md.{1,2,3}
 
 pkgctl version upgrade
 
-updpkgsums && makepkg --printsrcinfo > .SRCINFO && makepkg -o
+updpkgsums && makepkg -o && makepkg --printsrcinfo > .SRCINFO
