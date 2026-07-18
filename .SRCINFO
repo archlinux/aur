@@ -1,6 +1,6 @@
 pkgbase = rmlint-git
 	pkgver = 2.10.3.r10.g8588a71f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sahib/rmlint
 	arch = i686
 	arch = x86_64
