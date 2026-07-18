@@ -1,6 +1,6 @@
 pkgbase = stamp-git
 	pkgdesc = PIM Suite
-	pkgver = 0r237+4116482
+	pkgver = 0r262+3200d68
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jbrummer/stamp
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = stamp-git
 	depends = glibc
 	depends = gnome-control-center
 	depends = gnome-online-accounts
+	depends = gpgme
 	depends = graphene
 	depends = gstreamer
 	depends = gtk4

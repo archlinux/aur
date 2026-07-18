@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=stamp-git
-pkgver=0r237+4116482
+pkgver=0r262+3200d68
 pkgrel=1
 pkgdesc="PIM Suite"
 url="https://gitlab.gnome.org/jbrummer/stamp"
@@ -14,6 +14,7 @@ depends=(
   glibc
   gnome-control-center
   gnome-online-accounts
+  gpgme
   graphene
   gstreamer
   gtk4
