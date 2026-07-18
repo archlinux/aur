@@ -1,0 +1,17 @@
+pkgbase = git-chunks-bin
+	pkgdesc = Commit and push changes in chunks to avoid SCM push size limits
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jishnuteegala/git-chunks
+	license = MIT
+	depends = git
+	conflicts = git-chunks
+	provides = git-chunks
+	arch = aarch64
+	source_aarch64 = https://github.com/jishnuteegala/git-chunks/releases/download/v0.1.0/git-chunks_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bbd48fbf21a262654abecc19fa61d1a3703495b37ab099197711b9b564d14bbd
+	arch = x86_64
+	source_x86_64 = https://github.com/jishnuteegala/git-chunks/releases/download/v0.1.0/git-chunks_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2f2edfb4934cb9cec4444efc5187ea0b97dffb45ec1faf0c67a4bb68d17b72d8
+	
+pkgname = git-chunks-bin
