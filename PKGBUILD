@@ -1,6 +1,5 @@
-# Maintainer: dividebysandwich <josef.jahn@gmail.com>
 pkgname=torrentoxide
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Self-hostable web-driven BitTorrent client (Leptos SSR + librqbit engine)"
 arch=('x86_64')
@@ -24,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.env"
         "$pkgname.install")
-sha256sums=('206fdc332c4a758f086b7f98c8c8cb60103f1872ceb5576088c5245124b23086'
+sha256sums=('52bb7ce84ec6d1d592cb8215d7efb43cc87e71772daa8ad9139a7dea92fcc950'
             '63bd08cc8d1d254565a9ea871f55295fb5a1894c2627c4660c5f3e6a6980605d'
             '7b65f301fbd9a1a048b02f2a18aa1a3a8a424fd78f68ec3824654f2bd6aaf677'
             '097bdca8c393a5c30d3f6d6bb807756729c397947edf3834d6dc5b9ca215a90a'
