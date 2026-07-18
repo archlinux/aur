@@ -1,4 +1,8 @@
 # Maintainer: Lumina Nao <luminanao at duck.com>
+# AUR AGENT: publish this file WHOLESALE (plus regenerated .SRCINFO).
+# Do NOT bump pkgver in a stale AUR copy - that has shipped broken source
+# refs, missing deps, and missing options three times. Verify after publish:
+# llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 pkgname=llama-launcher
 pkgver=17
 pkgrel=1
