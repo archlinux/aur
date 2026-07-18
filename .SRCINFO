@@ -1,6 +1,6 @@
 pkgbase = radiotray-py-git
 	pkgdesc = An Internet radio player written in Python using mpv player
-	pkgver = r39
+	pkgver = r39a
 	pkgrel = 1
 	url = https://github.com/CHJ85/Radiotray-py.git
 	arch = i686

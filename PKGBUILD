@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" "${_pkgname}-bin")
 source=("${_pkgname}::git+https://github.com/CHJ85/Radiotray-py.git"
         'radiotray-py.desktop')
 sha256sums=('SKIP'
-            'aeaf951cf4e3fd16db5ac5df30ee201846183e48e70be1c0537d80dd9f3fd3eb')
+            '7816ac09c357a9c6623eeff71c0a954caded72f45caf94d2df747966893daf09')
 
 pkgver() {
   cd "$_pkgname"
