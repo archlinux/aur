@@ -1,6 +1,6 @@
 pkgbase = amplelinux
 	pkgdesc = This is a port of the macOS native Ample project to the Linux platform, based on the AmpleWin Windows Port.
-	pkgver = 0.287
+	pkgver = 0.288
 	pkgrel = 1
 	url = https://github.com/ksherlock/ample
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = amplelinux
 	depends = python-requests
 	options = !strip
 	options = !debug
-	source = amplelinux-0.287.tar.gz::https://github.com/ksherlock/ample/archive/refs/tags/r80.tar.gz
+	source = amplelinux-0.288.tar.gz::https://github.com/ksherlock/ample/archive/refs/tags/r80.tar.gz
 	md5sums = c03d15eacd9094772d40ffba7ae91485
 
 pkgname = amplelinux
