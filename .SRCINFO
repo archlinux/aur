@@ -1,6 +1,6 @@
 pkgbase = bedrock-on-linux-git
 	pkgdesc = Run Minecraft Bedrock (Windows GDK edition) on Linux, with native in-game Microsoft sign-in and multiplayer
-	pkgver = v1.3.0.r1.g32a2f77
+	pkgver = v2.0.0.r3.g760e474
 	pkgrel = 1
 	url = https://github.com/Wyze3306/BedrockOnLinux
 	arch = x86_64
@@ -22,9 +22,13 @@ pkgbase = bedrock-on-linux-git
 	source = customtkinter-5.2.2-py3-none-any.whl::https://files.pythonhosted.org/packages/3b/b1/b43b33001a77256b335511e75f257d001082350b8506c8807f30c98db052/customtkinter-5.2.2-py3-none-any.whl
 	source = darkdetect-0.8.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f2/f2/728f041460f1b9739b85ee23b45fa5a505962ea11fd85bdbe2a02b021373/darkdetect-0.8.0-py3-none-any.whl
 	source = packaging-26.2-py3-none-any.whl::https://files.pythonhosted.org/packages/df/b2/87e62e8c3e2f4b32e5fe99e0b86d576da1312593b39f47d8ceef365e95ed/packaging-26.2-py3-none-any.whl
+	source = python_xlib-0.33-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/fc/b8/ff33610932e0ee81ae7f1269c890f697d56ff74b9f5b2ee5d9b7fa2c5355/python_xlib-0.33-py2.py3-none-any.whl
+	source = six-1.17.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
 	sha256sums = SKIP
 	sha256sums = 14ad3e7cd3cb3b9eb642b9d4e8711ae80d3f79fb82545ad11258eeffb2e6b37c
 	sha256sums = a7509ccf517eaad92b31c214f593dbcf138ea8a43b2935406bbd565e15527a85
 	sha256sums = 5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e
+	sha256sums = c3534038d42e0df2f1392a1b30a15a4ff5fdc2b86cfa94f072bf11b10a164398
+	sha256sums = 4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
 
 pkgname = bedrock-on-linux-git
