@@ -1,5 +1,5 @@
 pkgbase = wall-it-git
-	pkgdesc = Professional modular wallpaper manager for Wayland desktops
+	pkgdesc = Professional modular wallpaper manager for Wayland and X11 desktops
 	pkgver = 2.1.0.r8.gee186b3
 	pkgrel = 1
 	url = https://github.com/DiscoCevapi/Wall-IT
@@ -15,6 +15,9 @@ pkgbase = wall-it-git
 	optdepends = awww: wallpaper daemon backend used by start-wall-it
 	optdepends = matugen: Material You color generation
 	optdepends = keyd: global keybind helper integration
+	optdepends = feh: X11/Openbox wallpaper setter (recommended for X11)
+	optdepends = xwallpaper: X11 wallpaper setter with per-monitor support
+	optdepends = nitrogen: X11 wallpaper setter (GUI-friendly alternative)
 	provides = wall-it
 	conflicts = wall-it
 	source = git+https://github.com/DiscoCevapi/Wall-IT.git

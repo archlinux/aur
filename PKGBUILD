@@ -1,7 +1,7 @@
 pkgname=wall-it-git
 pkgver=2.1.0.r8.gee186b3
 pkgrel=1
-pkgdesc="Professional modular wallpaper manager for Wayland desktops"
+pkgdesc="Professional modular wallpaper manager for Wayland and X11 desktops"
 arch=('any')
 url="https://github.com/DiscoCevapi/Wall-IT"
 license=('custom')
@@ -17,6 +17,9 @@ optdepends=(
   'awww: wallpaper daemon backend used by start-wall-it'
   'matugen: Material You color generation'
   'keyd: global keybind helper integration'
+  'feh: X11/Openbox wallpaper setter (recommended for X11)'
+  'xwallpaper: X11 wallpaper setter with per-monitor support'
+  'nitrogen: X11 wallpaper setter (GUI-friendly alternative)'
 )
 makedepends=('git')
 provides=('wall-it')
@@ -53,6 +56,7 @@ package() {
   install -m755 "${_src}/wall-it-keybind-config.py" "${pkgdir}/usr/lib/wall-it/wall-it-keybind-config.py"
   install -m755 "${_src}/wall-it-keyd-manager.py" "${pkgdir}/usr/lib/wall-it/wall-it-keyd-manager.py"
   install -m755 "${_src}/wall-it-labwc-backend.py" "${pkgdir}/usr/lib/wall-it/wall-it-labwc-backend.py"
+  install -m755 "${_src}/wall-it-x11-backend.py" "${pkgdir}/usr/lib/wall-it/wall-it-x11-backend.py"
   install -m755 "${_src}/wall-it-monitor-state.py" "${pkgdir}/usr/lib/wall-it/wall-it-monitor-state.py"
   install -m755 "${_src}/wall-it-tray.py" "${pkgdir}/usr/lib/wall-it/wall-it-tray.py"
   install -m755 "${_src}/wall-it-weather-overlay.py" "${pkgdir}/usr/lib/wall-it/wall-it-weather-overlay.py"
