@@ -2,7 +2,7 @@
 pkgname=ppq-whisper-bin
 _pkgname=ppq-whisper
 pkgver=0.1.53
-pkgrel=4
+pkgrel=5
 pkgdesc='PPQ Whisper (PPQ Voice) — cloud-powered desktop dictation app with instant clean-up'
 arch=('x86_64')
 url='https://github.com/PayPerQ/ppq-voice-releases'
@@ -33,7 +33,7 @@ options=(!strip !debug)
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
         'linux-clipboard.patch')
 sha256sums=('bb2c11963db59e168ce49bada9a80b2516d23de043b878b2a169d16eaa713af2'
-            '57ada7cc6f4c4dcb273e7dbfdff9610e5733659ca1eab8c5a3e9b8ec801c85f3')
+            '4e9d816924c688a4af07dd688ed0210c2ec3024aabf351e80d2d360d1ad706bc')
 
 package() {
     # electron-builder deb: app in "/opt/PPQ Whisper", desktop file + icon in /usr/share

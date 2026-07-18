@@ -1,6 +1,6 @@
 --- a/src/helpers/clipboard.js
 +++ b/src/helpers/clipboard.js
-@@ -147,6 +147,49 @@
+@@ -147,6 +147,55 @@
    }
  
    async pasteLinux(originalClipboard) {
@@ -44,13 +44,19 @@
 +    // pasteText() has just written the dictated text to Electron's clipboard;
 +    // read it back from there and the real (pre-dictation) clipboard via xclip.
 +    const text = clipboard.readText();
-+    const realOriginalClipboard = await xclipRead();
++    let realOriginalClipboard = await xclipRead();
++    if (realOriginalClipboard === text) {
++      // Electron's writeText did reach the real clipboard (X11 session, or the
++      // app window was focused), so xclip now sees the dictated text; the
++      // pre-dictation content is what pasteText captured before writing.
++      realOriginalClipboard = originalClipboard;
++    }
 +    await xclipWrite(text);
 +
      return new Promise((resolve, reject) => {
        const pasteProcess = spawn("xdotool", ["key", "ctrl+v"]);
  
-@@ -154,7 +197,8 @@
+@@ -154,7 +203,8 @@
          if (code === 0) {
            // Text pasted successfully
            setTimeout(() => {
