@@ -3,13 +3,14 @@
 
 pkgname=bedrock-on-linux-git
 pkgver=v2.0.0.r3.g760e474
-pkgrel=1
-pkgdesc="Run Minecraft Bedrock (Windows GDK edition) on Linux, with native in-game Microsoft sign-in and multiplayer"
+pkgrel=2
+pkgdesc="Run Minecraft Bedrock for Windows seamlessly on Linux."
 arch=('x86_64')
 url="https://github.com/Wyze3306/BedrockOnLinux"
 license=('MIT')
-depends=('python' 'tk' 'python-cryptography' 'tar' 'zstd' 'xdg-utils' 'xorg-xrandr' 'ca-certificates' 'curl')
+depends=('python' 'tk' 'python-cryptography' 'tar' 'zstd' 'xdg-utils' 'xorg-xrandr' 'ca-certificates' 'curl' 'vulkan-driver')
 makedepends=('git' 'python-pip')
+optdepends=('xorg-xwayland: launcher and game support in Wayland sessions')
 provides=('bedrock-on-linux')
 conflicts=('bedrock-on-linux')
 source=("$pkgname::git+$url.git"
