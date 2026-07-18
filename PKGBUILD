@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-smda
-pkgver=4.2.16
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Recursive diassembler optimized for CFG recovery from memory dumps"
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD-2-Clause)
 depends=(python python-capstone python-dncil python-dnfile lief)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-$pkgver.tar.gz")
-sha256sums=('b526610952740c8a785f947b8cc05f8e4f22768b22e1b5ccbca2050949bd1b10')
+sha256sums=('d272c48ee44a3e08c5e29699cce4c0733f0a8c748643d323f5578c66d40f0449')
 
 build() {
     cd "smda-$pkgver"
@@ -19,7 +19,7 @@ build() {
 
 ## check()
 # Upstream does not provide test data in their wheel packages. The only way
-# to get that data is to grab it from GitHub, but they don't provide releases
+# to get them is to grab it from GitHub, but they don't provide releases
 # there either.
 
 package() {
