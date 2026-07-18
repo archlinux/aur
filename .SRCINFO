@@ -1,6 +1,6 @@
 pkgbase = keyroost-bin
 	pkgdesc = CLI + GUI for programming Token2 Molto2 TOTP tokens and managing FIDO2/OATH/OpenPGP/PIV security keys (prebuilt)
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/framefilter/keyroost
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = keyroost-bin
 	provides = keyroost
 	provides = keyroostctl
 	conflicts = keyroost
-	source = keyroost-v0.7.5-linux-x86_64.tar.gz::https://github.com/framefilter/keyroost/releases/download/v0.7.5/keyroost-v0.7.5-linux-x86_64.tar.gz
-	source = 70-keyroost-fido-0.7.5.rules::https://raw.githubusercontent.com/framefilter/keyroost/v0.7.5/udev/70-keyroost-fido.rules
-	sha256sums = ddf0b7c4629afb559eec0c49f5ba0cf154c02e602fd49f714bcb248d91d83e82
+	source = keyroost-v0.7.6-linux-x86_64.tar.gz::https://github.com/framefilter/keyroost/releases/download/v0.7.6/keyroost-v0.7.6-linux-x86_64.tar.gz
+	source = 70-keyroost-fido-0.7.6.rules::https://raw.githubusercontent.com/framefilter/keyroost/v0.7.6/udev/70-keyroost-fido.rules
+	sha256sums = b72a86f7c28d2db97735e5bab08ede62ac34d5d18ab5093c8088b923af0f9154
 	sha256sums = 4e718383909598c88e140c86d56cbf7ebdc87ef0f3bb55aaaaa1ae238db91287
 
 pkgname = keyroost-bin
