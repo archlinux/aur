@@ -1,0 +1,14 @@
+pkgbase = cfproxy-rs
+	pkgdesc = 基于 Cloudflare Workers/Pages 的 Telegram Socks5 代理服务器
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/achyuki/cfproxy-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = cfproxy-rs-0.1.1.tar.gz::https://github.com/achyuki/cfproxy-rs/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = c78579a20fa23c676565698c6e1d3fbf2816439c39726413bb1c92773ae1282e
+
+pkgname = cfproxy-rs
