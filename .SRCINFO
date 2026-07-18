@@ -1,7 +1,7 @@
 pkgbase = mactahoe-gtk-theme
 	pkgdesc = MacOS Tahoe theme for gtk desktops
 	pkgver = 2026.07.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/MacTahoe-gtk-theme
 	arch = any
 	license = MIT
