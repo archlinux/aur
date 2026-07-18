@@ -1,6 +1,6 @@
 pkgbase = scout-bin
 	pkgdesc = A safe simple readonly TUI to show file changes including git changes
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/mirageglobe/scout
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = scout-bin
 	provides = scout
 	conflicts = scout
 	options = !strip
-	source_x86_64 = scout-x86_64-0.9.0.tgz::https://github.com/mirageglobe/scout/releases/download/v0.9.0/scout_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0e7be57991d26df2d619d6ea20764acfd7fb4627955fad35be1b613afaec7b83
+	source_x86_64 = scout-x86_64-0.9.1.tgz::https://github.com/mirageglobe/scout/releases/download/v0.9.1/scout_0.9.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 83fdbf4417c82eb87ccdb7dff4bfdeb13cf97cb7c7dbe9d1f45c682271fa542e
 
 pkgname = scout-bin
