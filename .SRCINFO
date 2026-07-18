@@ -1,6 +1,6 @@
 pkgbase = konfigkoll
 	pkgdesc = Personal system configuration manager for Arch Linux
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/paketkoll
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = konfigkoll
 	makedepends = cmake
 	makedepends = clang
 	options = !lto
-	source = konfigkoll-0.1.17.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/konfigkoll-v0.1.17.tar.gz
-	sha256sums = bdb1d801e72c915630bfc90bc94e5d9525e64f4b261462250946835479bab1a9
+	source = konfigkoll-0.1.18.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/konfigkoll-v0.1.18.tar.gz
+	sha256sums = d2b352fe89afa749e3d25c9cea4bef3d1ff6bd627e8b8e9bc35df56017f16326
 
 pkgname = konfigkoll
