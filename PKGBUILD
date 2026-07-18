@@ -6,7 +6,7 @@ _pkgname=tylax
 pkgname=${_pkgname}-bin
 pkgdesc="A bi-directional converter between Typst and LaTeX"
 
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
-sha256sums=('68505cdbf55251e44cceacbd42bfcf852c4a4a3851629e76b45e18773cdedd6e'
+sha256sums=('f3202eb73fdec96fca5a5519923a46eb58f92288d7b9568eeee71010c23b6250'
             '146af9a2ad4ef664ca3122983c21f9ae80090e51e1a65afac8e4a8e635084a8f')
-sha256sums_x86_64=('d98b96d90e31d3bfe5238bf2f14bc6f0ed3cdb36067f43c0075e8342cbf88d38')
+sha256sums_x86_64=('507308f22be4e5d4dc164d9b6a7939c125083673454e6e0841560d3f898984ed')
 
 
 package() {
