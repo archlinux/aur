@@ -1,6 +1,6 @@
 pkgbase = vem-bin
 	pkgdesc = A next-generation Vim editor powered by VectoJS, running natively via Tauri
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://vem.run
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = vem-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = librsvg
-	provides = vem=0.1.8
+	provides = vem=0.1.9
 	conflicts = vem
 	options = !strip
-	source_x86_64 = vem-0.1.8-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.8/Vem_0.1.8_amd64.deb
-	sha256sums_x86_64 = 1665f180e15ae88d9354032d8ceba2ffa4c1a0c96adc919cb02f6660717dd217
-	source_aarch64 = vem-0.1.8-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.8/Vem_0.1.8_arm64.deb
-	sha256sums_aarch64 = 323060f1be37d97c0dcd8380238418b3d69c459ff7f61842c0ed1a143e004b1e
+	source_x86_64 = vem-0.1.9-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.9/Vem_0.1.9_amd64.deb
+	sha256sums_x86_64 = 592235d2dbcec68d8a24446c10d59752996db9bb0cc9a0d5ca75107c241e099e
+	source_aarch64 = vem-0.1.9-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.9/Vem_0.1.9_arm64.deb
+	sha256sums_aarch64 = 3ba4c27d5177b8925680f03351b1cb08becbcbde831dcf5635cc19b1704fb941
 
 pkgname = vem-bin
