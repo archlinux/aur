@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=13.3.0
+pkgver=15.0.0
 _tag=
 pkgrel=1
 
@@ -21,7 +21,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('GPL3')
 
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'curl')
 
 provides=('cosmostrix')
 conflicts=('cosmostrix' 'cosmostrix-git')
@@ -53,11 +53,11 @@ sha512sums=()
 #
 # Detection strategy for x86_64:
 #   v4 requires AVX-512 (avx512f)
-#   v3 requires AVX2
-#   v2 requires SSE4.2
-#   v1 is baseline x86-64
+#   v3 requires AVX2 (minimum supported — v1/v2 are no longer built)
 #
-# Falls back to v1 when /proc/cpuinfo is unavailable (containers, chroots).
+# Falls back to v3 when /proc/cpuinfo is unavailable (containers, chroots).
+# CPUs without AVX2 (pre-2013) are not supported — user must build from
+# source with `cargo build --release` if v3 fails to run.
 # ---------------------------------------------------------------------------
 prepare() {
     local asset
@@ -74,14 +74,15 @@ prepare() {
             asset="cosmostrix-${tag}-linux-aarch64.tar.gz"
             ;;
         x86_64)
-            local level="v1"
+            local level="v3"
 
             if [[ -r /proc/cpuinfo ]] && grep -q avx512f /proc/cpuinfo; then
                 level="v4"
             elif [[ -r /proc/cpuinfo ]] && grep -q avx2 /proc/cpuinfo; then
                 level="v3"
-            elif [[ -r /proc/cpuinfo ]] && grep -q sse4_2 /proc/cpuinfo; then
-                level="v2"
+            else
+                warning "CPU does not support AVX2 — v3 binary may not run."
+                warning "Pre-2013 CPUs are not supported. Build from source if needed."
             fi
 
             asset="cosmostrix-${tag}-linux-amd64-${level}.tar.gz"
@@ -223,21 +224,5 @@ package() {
         install -Dm644 \
             "${srcdir}/README.md" \
             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    fi
-
-    # Shell completions (bash + zsh)
-    "${srcdir}/cosmostrix" --completions bash > "${srcdir}/cosmostrix.bash" 2>/dev/null || true
-    "${srcdir}/cosmostrix" --completions zsh > "${srcdir}/_cosmostrix" 2>/dev/null || true
-
-    if [[ -s "${srcdir}/cosmostrix.bash" ]]; then
-        install -Dm644 \
-            "${srcdir}/cosmostrix.bash" \
-            "${pkgdir}/usr/share/bash-completion/completions/cosmostrix"
-    fi
-
-    if [[ -s "${srcdir}/_cosmostrix" ]]; then
-        install -Dm644 \
-            "${srcdir}/_cosmostrix" \
-            "${pkgdir}/usr/share/zsh/site-functions/_cosmostrix"
     fi
 }
