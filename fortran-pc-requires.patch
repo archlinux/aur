@@ -1,0 +1,20 @@
+--- a/Makefile	2026-07-18 12:11:11.964864897 +0300
++++ b/Makefile	2026-07-18 12:11:11.967289185 +0300
+@@ -1282,7 +1282,7 @@
+ 	@echo "includedir=$(ALIAS_INCDIR)" >>$@
+ 	@echo "libdir=$(ALIAS_LIBDIR)" >>$@
+ 	@echo >>$@
+-	@echo "Requires: libxsmmext-static" >>$@
++	@echo "Requires: libxsmm-static" >>$@
+ 	@echo "Cflags: -I\$${includedir}" >>$@
+   ifneq (Windows_NT,$(UNAME))
+ 	@echo "Libs: -L\$${libdir} -l:libxsmmf.$(SLIBEXT)" >>$@
+@@ -1332,7 +1332,7 @@
+ 	@echo "includedir=$(ALIAS_INCDIR)" >>$@
+ 	@echo "libdir=$(ALIAS_LIBDIR)" >>$@
+ 	@echo >>$@
+-	@echo "Requires: libxsmmext" >>$@
++	@echo "Requires: libxsmm" >>$@
+ 	@echo "Cflags: -I\$${includedir}" >>$@
+ 	@echo "Libs: -L\$${libdir} -lxsmmf" >>$@
+   ifeq (,$(filter-out 1,$(BUILD)))
