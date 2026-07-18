@@ -1,12 +1,12 @@
 pkgbase = comty-desktop
 	pkgdesc = Official Comty Desktop application
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/ragestudio/comty
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
-	depends = electron39
+	depends = electron43
 	conflicts = comty-desktop-bin
 	source = comty.sh
 	source = comty-desktop.desktop
