@@ -1,6 +1,6 @@
 pkgbase = vercel-node
 	pkgdesc = Command-line interface for Vercel
-	pkgver = 56.3.1
+	pkgver = 56.3.2
 	pkgrel = 1
 	url = https://vercel.com
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = vercel-node
 	optdepends = python: local runtime emulation for @vercel/python and @vercel/fun
 	provides = vercel
 	conflicts = vercel
-	noextract = vercel-56.3.1.tgz
-	source = vercel-56.3.1.tgz::https://registry.npmjs.org/vercel/-/vercel-56.3.1.tgz
-	sha256sums = d50d9351f3ee87c8fcbc7a47f9a84f4dffb815f1a0fedb8d6b49829bdc20b15f
+	noextract = vercel-56.3.2.tgz
+	source = vercel-56.3.2.tgz::https://registry.npmjs.org/vercel/-/vercel-56.3.2.tgz
+	sha256sums = d25fc8c4f2f2a41b05221f3a0b45f6409d5f2b3b62837dd320d4d522296b070c
 
 pkgname = vercel-node
