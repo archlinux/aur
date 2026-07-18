@@ -1,0 +1,16 @@
+pkgbase = optionfiles
+	pkgdesc = Minimal black and white terminal file manager with image previews
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fireflylabss/optionFiles
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = imagemagick: previews for JPEG, GIF, WebP, BMP and TIFF
+	options = !lto
+	source = optionfiles-0.2.0.tar.gz::https://github.com/fireflylabss/optionFiles/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = f4b79960fb8c9adabe33f8f2fadaaf0f60a8cba272108a137ad48248a92cdccf
+
+pkgname = optionfiles
