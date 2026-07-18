@@ -1,12 +1,12 @@
 pkgbase = rhythia-bin
 	pkgdesc = Aim-based rhythm game client, built in Godot 4
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/Rhythia/Client
 	arch = x86_64
 	checkdepends = gmock
 	depends = unzip
-	source = https://github.com/Rhythia/Client/releases/download/0.1.1/Linux.zip
+	source = https://github.com/Rhythia/Client/releases/download/0.1.2/Linux.zip
 	source = rhythia.png
 	sha256sums = 439dd947814da027b658cfc1e2dd16767f471883fc445d0a06ac70c9ded1c162
 	sha256sums = 80bced3710e63542395556e92b5fdddfeb728b8f847d00d5c38bc688284fd1c9

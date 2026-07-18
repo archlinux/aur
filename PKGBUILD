@@ -1,8 +1,8 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=rhythia-bin
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Aim-based rhythm game client, built in Godot 4"
 arch=('x86_64')
 url="https://github.com/Rhythia/Client"
