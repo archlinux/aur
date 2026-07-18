@@ -22,7 +22,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Undead34/kio-rclone/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6fac951ae715e5eeaa91858bca80c9bfc2eb8d8d9a7eaa5c7f68abd45367d81')
+sha256sums=('713fb6acf8c49906d9d56e92e72bdcdcd929bc70d008e9f6025edcf4b5d9ff68')
 
 build() {
   cmake \
