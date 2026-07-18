@@ -1,6 +1,6 @@
 pkgbase = hpd-handheld-power-daemon
 	pkgdesc = Linux system daemon for handheld PCs: TDP, charge, profile, fan (ROG Ally family)
-	pkgver = 2.14.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/CiroDev-Git/hpd-handheld-power-daemon
 	install = hpd.install
@@ -16,7 +16,7 @@ pkgbase = hpd-handheld-power-daemon
 	conflicts = power-profiles-daemon
 	options = !debug
 	backup = etc/hpd/config.toml.example
-	source = hpd-handheld-power-daemon-2.14.1.tar.gz::https://github.com/CiroDev-Git/hpd-handheld-power-daemon/archive/v2.14.1.tar.gz
-	sha256sums = 91934433684fd1552d92d5667414be77adf793739b691bc33fb12a6d0535290d
+	source = hpd-handheld-power-daemon-3.0.0.tar.gz::https://github.com/CiroDev-Git/hpd-handheld-power-daemon/archive/v3.0.0.tar.gz
+	sha256sums = 7ec68aeea480c888809ec34a8d87e57b2363b09a221c279639c378ffd5e8a77a
 
 pkgname = hpd-handheld-power-daemon
