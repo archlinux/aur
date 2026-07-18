@@ -2,7 +2,7 @@
 
 pkgname=minimax-hub-bin
 _pkgname=minimax-hub
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=6
 pkgdesc='MiniMax Hub desktop app repackaged from the official macOS release'
 arch=('x86_64' 'aarch64')
@@ -38,39 +38,37 @@ source=(
   'LICENSE'
 )
 source_x86_64=(
-  "MiniMax-Hub-${pkgver}-mac-x64.dmg::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/MiniMax%20Hub-${pkgver}.dmg"
+  "MiniMax-Hub-${pkgver}-mac-x64.zip::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/builds/1.1.3/hilo-desktop-687/MiniMax%20Hub-1.1.3-mac.zip"
 )
 source_aarch64=(
-  "MiniMax-Hub-${pkgver}-mac-arm64.dmg::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/MiniMax%20Hub-${pkgver}-arm64.dmg"
+  "MiniMax-Hub-${pkgver}-mac-arm64.zip::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/builds/1.1.3/hilo-desktop-687/MiniMax%20Hub-1.1.3-arm64-mac.zip"
 )
 noextract=(
-  "MiniMax-Hub-${pkgver}-mac-x64.dmg"
-  "MiniMax-Hub-${pkgver}-mac-arm64.dmg"
+  "MiniMax-Hub-${pkgver}-mac-x64.zip"
+  "MiniMax-Hub-${pkgver}-mac-arm64.zip"
 )
 sha256sums=('4e8ac22b373c6290dbd80576df9d9bec4203d1aafc4fbbbdb33e556966de5e04'
             '4c9da9d8bab463dbd04b4320c1a2f2b4dfc885e2e4a1a53955fb328e1a271329'
             '9d78784df2f0854fdf08d436c22501adff17068de77ae584254045e51c041490'
             '20bcf5b029a2b88bd1027207f287e44d87586d2dac6e82ac66174141f9fb928b'
             'a95f4a1bb7d5ba464ca8503549fa98a6d6bdfc667af0a9265f6b01416f85de96')
-sha256sums_x86_64=('6945d01e92174e7f9e8c2d1c2306a357ba83dd2b6fd9311bceb51302dff1c864')
-sha256sums_aarch64=('c4588e2ea5f90b22d22c0a18fb36b1561e522228a12d4f6c89b0303906ec34d5')
+sha256sums_x86_64=('23ad1e430bd8472dc7b4164c4df86baaa5a5e8ae094ca075a5816f437a2b8e68')
+sha256sums_aarch64=('8a77f65c95466297eab310d2fc5a0bb99daf3fd91385625dbe8590f8dfa97eaf')
 
 _electron_major=39
 
 prepare() {
   cd "${srcdir}"
-  rm -rf dmg app-extracted app.asar resources native-build
-  mkdir dmg resources
+  rm -rf upstream-app app-extracted app.asar resources native-build
+  mkdir upstream-app resources
 
-  local dmg_file appdir
+  local archive_file appdir
   case "${CARCH}" in
     x86_64)
-      dmg_file="MiniMax-Hub-${pkgver}-mac-x64.dmg"
-      appdir="dmg/MiniMax Hub ${pkgver}/MiniMax Hub.app"
+      archive_file="MiniMax-Hub-${pkgver}-mac-x64.zip"
       ;;
     aarch64)
-      dmg_file="MiniMax-Hub-${pkgver}-mac-arm64.dmg"
-      appdir="dmg/MiniMax Hub ${pkgver}-arm64/MiniMax Hub.app"
+      archive_file="MiniMax-Hub-${pkgver}-mac-arm64.zip"
       ;;
     *)
       echo "Unsupported architecture: ${CARCH}" >&2
@@ -78,14 +76,12 @@ prepare() {
       ;;
   esac
 
-  7z x -bd -y "${dmg_file}" -odmg >/dev/null
+  7z x -bd -y "${archive_file}" -oupstream-app >/dev/null
 
-  [[ -d "${appdir}" ]] || {
-    appdir="$(find dmg -path '*/MiniMax Hub.app' -type d -print -quit)"
-  }
+  appdir="$(find upstream-app -path '*/MiniMax Hub.app' -type d -print -quit)"
 
   [[ -n "${appdir}" && -d "${appdir}" ]] || {
-    echo "Could not find MiniMax Hub.app in upstream dmg" >&2
+    echo "Could not find MiniMax Hub.app in upstream archive" >&2
     return 1
   }
 
