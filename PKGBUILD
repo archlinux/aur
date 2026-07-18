@@ -1,18 +1,36 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
-depends=('libinih' 'libevdev' 'pam' 'opencv>=5.0.0' 'curl' 'openssl' 'qt6-base' 'yyjson>=0.12.0')
-makedepends=('meson>=1.11.0' 'gettext')
-optdepends=('linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the box')
+depends=(
+	'acl'
+	'curl>=7.85.0'
+	'glibc>=2.34'
+	'libevdev'
+	'libinih>=59'
+	'openssl'
+	'opencv>=5.0.0'
+	'pam'
+	'qt6-base'
+	'yyjson>=0.12.0'
+)
+makedepends=(
+	'cmake>=3.31'
+	'gettext'
+)
+optdepends=(
+	'linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the-box'
+)
 provides=('howdy')
-conflicts=('howdy' 'howdy-next-git')
-replaces=('howdy-next-git')
+conflicts=(
+	'howdy'
+	'howdy-next-git'
+)
 backup=('etc/howdy/config.ini')
 install=howdy-next.install
 
@@ -21,33 +39,36 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz"
 	"polkit-agent-helper-howdy.conf"
 )
-b2sums=('396a21c434fccc4c3ac5de95308afee8beeeb90c220163e8ae242bd94b3b8108fc4119c54aa800bb8c219428960f4df57d04e9aac42906ca8c1c61e7568322e3'
-		'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
+b2sums=(
+	'4fcf11bd523b2050565141006e1bb36441955c4c537ed0b68f7e50d7ad9cc8981a2a7bef9f255c75502ca172f29499f1df17c068c06a490eaaee059dfa0f512c'
+	'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b'
+)
 
 build() {
-	arch-meson "$srcdir/howdy-next" "$srcdir/build" \
-		-Dconfig_dir=/etc/howdy \
-		-Duser_models_dir=/etc/howdy/models
+	cmake \
+		-S "$srcdir/howdy-next" \
+		-B "$srcdir/build" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib
 
-	meson compile -C "$srcdir/build"
+	cmake --build "$srcdir/build"
 }
 
 check() {
-	meson test -C "$srcdir/build" --print-errorlogs
+	ctest \
+		--test-dir "$srcdir/build" \
+		--output-on-failure
 }
 
 package() {
-	meson install -C "$srcdir/build" --destdir "$pkgdir"
-
-	chmod 4755 "$pkgdir/usr/lib/howdy/howdy-auth-helper"
-
-	install -d -m750 "$pkgdir/etc/howdy/models"
-	install -m640 "$srcdir/howdy-next/config/config.ini" "$pkgdir/etc/howdy/config.ini"
+	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 
 	install -Dm644 "$srcdir/howdy-next/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	# Workaround for polkit 127+ breaking howdy (boltgolt/howdy#1077)
+	# Workaround for polkit 127+ breaking Howdy (boltgolt/howdy#1077).
 	install -Dm644 "$srcdir/polkit-agent-helper-howdy.conf" \
 		"$pkgdir/usr/lib/systemd/system/polkit-agent-helper@.service.d/10-howdy.conf"
 }
