@@ -1,0 +1,50 @@
+[Unit]
+Description=TorrentOxide web-driven BitTorrent client
+Documentation=https://github.com/dividebysandwich/torrentoxide
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+User=torrentoxide
+Group=torrentoxide
+
+# Where the hydrated front-end (wasm/js/css) installed by the package lives,
+# plus the values leptos reads at startup.
+Environment=LEPTOS_OUTPUT_NAME=torrentoxide
+Environment=LEPTOS_SITE_ROOT=/usr/share/webapps/torrentoxide/site
+Environment=LEPTOS_SITE_PKG_DIR=pkg
+Environment=LEPTOS_SITE_ADDR=127.0.0.1:3000
+Environment=LEPTOS_ENV=PROD
+
+# App defaults. Data lives under /var/lib/torrentoxide (created via tmpfiles.d).
+Environment=DOWNLOAD_DIR=/var/lib/torrentoxide/downloads
+Environment=BROWSE_ROOT=/var/lib/torrentoxide/downloads
+Environment=PERSISTENCE_DIR=/var/lib/torrentoxide/.rqbit-session
+Environment=RUST_LOG=info,librqbit=warn
+
+# User overrides (auth credentials, session secret, bind address, paths...).
+# Read after the defaults above, so anything set here wins. '-' = optional.
+EnvironmentFile=-/etc/torrentoxide/torrentoxide.env
+
+WorkingDirectory=/var/lib/torrentoxide
+ExecStart=/usr/bin/torrentoxide
+Restart=on-failure
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ReadWritePaths=/var/lib/torrentoxide
+
+[Install]
+WantedBy=multi-user.target

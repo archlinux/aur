@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.service
+!*.sysusers
+!*.tmpfiles
+!*.env
+!*.install

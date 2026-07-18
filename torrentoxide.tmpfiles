@@ -1,0 +1,3 @@
+d /var/lib/torrentoxide                 0750 torrentoxide torrentoxide -
+d /var/lib/torrentoxide/downloads       0750 torrentoxide torrentoxide -
+d /var/lib/torrentoxide/.rqbit-session  0750 torrentoxide torrentoxide -

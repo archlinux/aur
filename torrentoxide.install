@@ -1,0 +1,16 @@
+post_install() {
+    cat <<'EOF'
+==> TorrentOxide installed.
+    1. (optional) Set auth + a session secret in:
+         /etc/torrentoxide/torrentoxide.env
+    2. Enable & start the service:
+         systemctl enable --now torrentoxide.service
+    3. Open http://127.0.0.1:3000
+    Torrents download to /var/lib/torrentoxide/downloads.
+    Change the bind address/port via LEPTOS_SITE_ADDR in the env file above.
+EOF
+}
+
+post_upgrade() {
+    :
+}
