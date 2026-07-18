@@ -2,7 +2,7 @@
 
 pkgbase=linux-cjktty
 pkgver=7.1.3.arch2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux (with cjktty-patches)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)

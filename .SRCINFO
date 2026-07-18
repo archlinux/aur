@@ -1,7 +1,7 @@
 pkgbase = linux-cjktty
 	pkgdesc = Linux (with cjktty-patches)
 	pkgver = 7.1.3.arch2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL-2.0-only
@@ -23,7 +23,7 @@ pkgbase = linux-cjktty
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.3.tar.sign
 	source = https://github.com/archlinux/linux/releases/download/v7.1.3-arch2/linux-v7.1.3-arch2.patch.zst
 	source = https://github.com/archlinux/linux/releases/download/v7.1.3-arch2/linux-v7.1.3-arch2.patch.zst.sig
-	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/7.1.3.arch2-1/config.x86_64
+	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/7.1.3.arch2-2/config.x86_64
 	source = https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.1.patch
 	source = https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
