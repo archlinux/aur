@@ -2,7 +2,7 @@
 
 pkgname=caffeine-ng
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
 url="https://codeberg.org/WhyNotHugo/caffeine-ng"
@@ -36,7 +36,7 @@ replaces=(caffeine-oneclick caffeine-systray)
 #source=("https://codeberg.org/WhyNotHugo/caffeine-ng/releases/download/v${pkgver}/caffeine-ng-v${pkgver}.tar.gz")
 # As per AUR comment from upstream author, tagged versions can be considered "releases"
 source=("https://codeberg.org/WhyNotHugo/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('5b74773b53a76df431145dcc01466b3648f727e1d35cf6dde216e07b6b5a1ec97a7325f9f8c02bd188f5aa17b89aa55ce68bfb6b63a1e8bf4676383314749158')
+sha512sums=('96e9c65d1e9094ddc8f4fe59880280b0a3860b829d473e15a05fba9a3406bb1a1aaac55914ac7703064e15fc57a0e149c0217352512e9162af69a66d9149e8db')
 
 build() {
   cd "$srcdir/caffeine-ng"
