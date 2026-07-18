@@ -1,9 +1,9 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=beautyline
-pkgver="3.0.4"
+pkgver="3.0.5"
 pkgrel=1
-_commit='61e6892fb522b9aaea6bc67f360fda6fbc519262'
+_commit='07e3736f8be38f9f48cf015d992f56f06e455002'
 epoch=2
 pkgdesc="Outlined icons designed to have unified look and comprehensive coverage with the Candy icon pack (best suited to use with Sweet theme)"
 arch=('any')
