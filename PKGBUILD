@@ -1,15 +1,16 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.22
+_pkgver=13.0.0-rc.24
 _branding=dr460nized
 
 __pkgname=$_pkgname
+_rdns=org.garudalinux.$__pkgname
 
 pkgname=$__pkgname-next-bin
 pkgver=${_pkgver//-/_}
 pkgrel=1
-pkgdesc="Upcoming FireDragon v13"
+pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
@@ -69,9 +70,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('7e0a3a2c7a21305d1d929b82a44b4266ac028857c17e08fb8077b530c51e366f')
-sha256sums_x86_64=('30e881c81e864119b9c2cb7d1e4e900b80a7b953d0731de711f00d8f8c45e59f')
-sha256sums_aarch64=('f8fd2c29a732f66dc7f06e0e7ca72b67579c19426750bbeddb3886d0c3ba5a5f')
+sha256sums=('f15d69b05bb8f33b6d940b3942ebe427866c3104d91704ab0571ddbdb7131be5')
+sha256sums_x86_64=('83b3e5c9af8491f4c23bcf9d56af5eb37c314cf4a1838760f6ffc74b21647d2f')
+sha256sums_aarch64=('3a621f56c779fe0532e037625ddc6422877cc2f839f1261a8287f13f918b2a51')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
@@ -120,11 +121,11 @@ END
   local i
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 "$_pkgname/branding/$_branding/default$i.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_rdns.png"
   done
 
-  install -Dvm644 $_pkgname/assets/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dvm644 $_pkgname/assets/org.garudalinux.$__pkgname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+  install -Dvm644 $_pkgname/assets/$_rdns.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 $_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
