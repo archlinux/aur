@@ -1,7 +1,7 @@
 # Maintainer: Abdur Rehman Imran <arehmanimran4@gmail.com>
 pkgname=pacx
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and visually appealing Pacman wrapper inspired by Powerpill and Nala."
 arch=('x86_64')
 url="https://github.com/abdurehmanimran/pacx"
