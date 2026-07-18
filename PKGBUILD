@@ -39,15 +39,12 @@ package() {
 	for file in ${srcdir}/scripts/*; do
 		install -Dm755 $file ${pkgdir}/usr/bin/"${file##*/}"
 	done
-	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar ${pkgdir}/usr/share/java/doomtools/doomtools-${pkgver}.jar
-	install -Dm755 ${srcdir}/doomtools.desktop ${pkgdir}/usr/share/applications/doomtools.desktop
-	install -Dm644 ${srcdir}/doomtools-logo.png ${pkgdir}/usr/share/icons/doomtools-logo.png
-	install -Dm644 ${srcdir}/docs/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
-	mkdir -p ${pkgdir}/usr/share/doomtools/docs
-	cp ${srcdir}/docs/*.md ${pkgdir}/usr/share/doomtools/docs
-	cp ${srcdir}/docs/*.txt ${pkgdir}/usr/share/doomtools/docs
-	cp ${srcdir}/docs/licenses/* ${pkgdir}/usr/share/licenses/${pkgname}/
-	chmod -R 644 ${pkgdir}/usr/share/doomtools 
-	chmod 755 ${pkgdir}/usr/share/doomtools
-	chmod 755 ${pkgdir}/usr/share/doomtools/docs
+	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar -t ${pkgdir}/usr/share/java/doomtools
+	install -Dm755 ${srcdir}/doomtools.desktop -t ${pkgdir}/usr/share/applications
+	install -Dm644 ${srcdir}/doomtools-logo.png -t ${pkgdir}/usr/share/icons
+	install -Dm644 ${srcdir}/docs/LICENSE.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
+	install -Dm644 ${srcdir}/docs/*.md -t ${pkgdir}/usr/share/doomtools/docs
+	install -Dm644 ${srcdir}/docs/*.txt -t ${pkgdir}/usr/share/doomtools/docs
+	install -Dm644 ${srcdir}/docs/licenses/* -t ${pkgdir}/usr/share/licenses/${pkgname}
+	rm ${pkgdir}/usr/share/doomtools/docs/LICENSE.txt
 }
