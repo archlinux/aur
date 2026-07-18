@@ -1,14 +1,14 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=pazi
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An autojump 'zap to directory' helper"
 url="https://github.com/euank/pazi"
 arch=("x86_64")
 license=("MIT")
 makedepends=("rust")
-source=("https://github.com/euank/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('87fc3d7af705809bf162ad80ea6472c7c48dddd6aee42092664b40a8026f5537c03b34b963f487bc5aba156dcb892785ee3c58f89453b768ae38b0bedea8a26e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/euank/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('ef6c3862b2b4961ead9956d36bc5eff455dd47e3ec69e7aa78dde997d4871d8394ecd0e30d380904828198efdb6ed5e114d7025c31be80ac659366526de1c4ce')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
