@@ -1,16 +1,12 @@
 pre_install() {
-	echo '[CAUTION] Before enabling PAM integration, keep a root shell open: sudo -i'
-	echo '[CAUTION] Use it to repair /etc/pam.d/* or /etc/howdy/config.ini if authentication breaks.'
+	echo '[CAUTION] Keep a root shell open while configuring PAM: sudo -i'
 }
 
 post_install() {
-	echo '[SETUP] 1. Download models: sudo howdy download-models'
-	echo '[SETUP] 2. Configure camera: sudo howdy config'
-	echo '[SETUP] 3. Test camera/auth: sudo howdy test'
-	echo '[SETUP] 4. Add a face model: sudo howdy add'
-	echo '[SETUP] 5. Add pam_howdy.so to the relevant service in /etc/pam.d/'
-}
-
-post_upgrade() {
-	echo '[POST-UPGRADE] If pacman created /etc/howdy/config.ini.pacnew, merge it into your current config.'
+	echo '[SETUP] Download models: sudo howdy download-models'
+	echo '[SETUP] Configure camera: sudo howdy config'
+	echo '[SETUP] Test authentication: sudo howdy test'
+	echo '[SETUP] Add a face model: sudo howdy add'
+	echo '[SETUP] Add pam_howdy.so to the relevant service in /etc/pam.d/'
+	echo '[SETUP] Example: auth sufficient pam_howdy.so workaround=native'
 }
