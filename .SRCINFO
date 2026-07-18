@@ -1,12 +1,12 @@
 pkgbase = oa-bin
 	pkgdesc = OA — High-performance C++ compute engine for ML, audio, and graphics (pre-built binaries)
-	pkgver = 0.7.4
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/realminc/oa
 	arch = x86_64
 	license = BUSL-1.1
 	depends = liburing
-	source = https://github.com/realminc/oa/releases/download/v0.7.4/oa-0.7.4-linux-x86_64.tar.gz
-	sha256sums = 779dda32cdd47aab06863816021323c3caa9285c0b0fd48a2a9b8bc8ce8922d0
+	source = https://github.com/realminc/oa/releases/download/v0.7.5/oa-0.7.5-linux-x86_64.tar.gz
+	sha256sums = 8be5600fd5c0ecc29d36cc190e95e56a76060d8c3465ac61ed4c912107331c3c
 
 pkgname = oa-bin
