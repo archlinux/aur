@@ -9,6 +9,6 @@ pkgbase = taskdog
 	depends = python
 	options = !strip
 	source = taskdog-0.26.0.tar.gz::https://github.com/Kohei-Wada/taskdog/archive/refs/tags/v0.26.0.tar.gz
-	sha256sums = 6858e8e4d320d5f9b268dea2bfeeee07c3fc6251367d83f2244c1959703a7a4b
+	sha256sums = af9641ccff4660ab69b6f2e7f19bbe5228725a34dc16c642d9fa94af47dbb943
 
 pkgname = taskdog
