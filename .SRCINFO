@@ -1,6 +1,6 @@
 pkgbase = hackfetch-bin
 	pkgdesc = Hack Club themed system fetch with live Hackatime stats
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/xerneas3318/hackfetch
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = hackfetch-bin
 	options = !strip
 	conflicts = hackfetch
 	provides = hackfetch
-	source_x86_64 = hackfetch-1.7.2-linux-amd64.tar.gz::https://github.com/xerneas3318/hackfetch/releases/download/v1.7.2/hackfetch-linux-amd64.tar.gz
-	sha256sums_x86_64 = 553fff16ac9ae1c685bf25ac6e947d5c0b1afcc75b3f7c0544e15866eefe79af
-	source_aarch64 = hackfetch-1.7.2-linux-arm64.tar.gz::https://github.com/xerneas3318/hackfetch/releases/download/v1.7.2/hackfetch-linux-arm64.tar.gz
-	sha256sums_aarch64 = 871d8871813d1b9ec809b4b1b55826e8842c34b96df7d4df242197e278456649
+	source_x86_64 = hackfetch-1.7.3-linux-amd64.tar.gz::https://github.com/xerneas3318/hackfetch/releases/download/v1.7.3/hackfetch-linux-amd64.tar.gz
+	sha256sums_x86_64 = fd6307cfb435aad7f7b68f463af9537f3e22aa8ea6367d24f5ba43ac0fdac712
+	source_aarch64 = hackfetch-1.7.3-linux-arm64.tar.gz::https://github.com/xerneas3318/hackfetch/releases/download/v1.7.3/hackfetch-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0396c1ad186fe155562e93a10439d88c733d1cf2872ece2328f4accc418b2e39
 
 pkgname = hackfetch-bin
