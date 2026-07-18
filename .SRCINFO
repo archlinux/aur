@@ -1,0 +1,19 @@
+pkgbase = llm-arch-bin
+	pkgdesc = TUI for exploring LLM architecture from safetensors and GGUF checkpoints
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chaiops/llm-arch
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = llm-arch
+	conflicts = llm-arch
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/chaiops/llm-arch/v0.1.0/README.md
+	sha256sums = c9d0afd9e7622ef997fa9e08e01353d58470588b6bd4578edb99ad0198f03879
+	source_x86_64 = llm-arch-x86_64-0.1.0.tgz::https://github.com/chaiops/llm-arch/releases/download/v0.1.0/llm-arch_linux_amd64.tar.gz
+	sha256sums_x86_64 = fea1cdebb7069c29220389a2c46b999e85ed160097c6ad6627cd9f4ec99927dd
+	source_aarch64 = llm-arch-aarch64-0.1.0.tgz::https://github.com/chaiops/llm-arch/releases/download/v0.1.0/llm-arch_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9909717cfb086b4c4e9c6aae0da61626dcf9c138067cd2a32164d2b79f476f68
+
+pkgname = llm-arch-bin

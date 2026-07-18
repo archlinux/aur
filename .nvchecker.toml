@@ -1,0 +1,5 @@
+[llm-arch-bin]
+source = "github"
+github = "chaiops/llm-arch"
+use_latest_release = true
+prefix = "v"
