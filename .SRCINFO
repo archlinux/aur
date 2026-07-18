@@ -1,7 +1,7 @@
 pkgbase = pickle-git
 	pkgdesc = TUI colorpicker
-	pkgver = r22.8106f74
-	pkgrel = 1
+	pkgver = r27.4cdd5ea
+	pkgrel = 2
 	url = https://codeberg.org/j_ole/pickle
 	arch = x86_64
 	license = GPL-3.0

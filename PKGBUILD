@@ -1,8 +1,8 @@
 # Maintainer: Joel Eapen <joelpeapen@gmail.com>
 pkgname='pickle-git'
 _pkgname='pickle'
-pkgver=r22.8106f74
-pkgrel=1
+pkgver=r27.4cdd5ea
+pkgrel=2
 pkgdesc="TUI colorpicker"
 arch=("x86_64")
 license=('GPL-3.0')
