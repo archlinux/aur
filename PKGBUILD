@@ -42,4 +42,5 @@ sha256sums=('SKIP' 'SKIP')
 package() {
     tar -xf "$(_tarball)"
     install -Dm755 "${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
+    install -Dm755 "${__pkgname}-gui" "${pkgdir}/usr/bin/${__pkgname}-gui"
 }
