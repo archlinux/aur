@@ -4,7 +4,7 @@ _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.31.3
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web@.service"
         "${pkgbase}-desktop.sh"
         "${pkgbase}.desktop")
-sha256sums=('7cd4557e21304d4283367c627dc84bb8d5f4c73b2f0abce98ffa5472464b060a'
+sha256sums=('818af8c9bd9579c922b8c20dae5f101e54ceee36daa2a17d8a972491460a3d1d'
             'fa7f906b1ee598b988b8003dfa9f9d554d7d45d6220f3f56dffde9ae34e2fe6d'
             'b006b2086c9da9baf8bd17f369ec09164a9c356663930fae595cf2b5cafae490'
             '2cdf8e8924b9290bfa563d809eedb8ed3fc1910cba17fad31ffb46ddd6de0a33'
@@ -46,9 +46,6 @@ build() {
     find . -type f -name "*.map" -delete
     sed -i 's|#!/usr/bin/env node|#!/usr/bin/node|' "bin/${pkgbase}.mjs"
     pnpm pack --pack-destination "${srcdir}"
-    rm -rf "${srcdir}/${pkgbase}-cli" &>/dev/null || true
-    npm install --prefix="${srcdir}/${pkgbase}-cli" "${srcdir}/${pkgbase}-cli-${pkgver}.tgz"
-    find "${srcdir}/${pkgbase}-cli" -type f -name "*.map" -delete
 
     # build desktop
     cd ../desktop
@@ -60,15 +57,11 @@ package_chatlab-cli() {
     pkgdesc+=" (cli & service)"
     depends=("nodejs")
 
-    local _tgtbin="../lib/${pkgbase}/cli/node_modules/.bin/${pkgbase}"
-
+    npm install -g --prefix "${pkgdir}"      "${pkgname}-${pkgver}.tgz"
     install -Dm644 "${pkgbase}-api.service"  "${pkgdir}/usr/lib/systemd/user/${pkgbase}-api.service"
     install -Dm644 "${pkgbase}-web.service"  "${pkgdir}/usr/lib/systemd/user/${pkgbase}-web.service"
     install -Dm644 "${pkgbase}-api@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-api@.service"
     install -Dm644 "${pkgbase}-web@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-web@.service"
-    install -dm755 "${pkgdir}/usr/bin"       "${pkgdir}/usr/lib/${pkgbase}"
-    cp -ar --preserve=mode "${pkgbase}-cli"  "${pkgdir}/usr/lib/${pkgbase}/cli"
-    ln -s "${_tgtbin}"                       "${pkgdir}/usr/bin/${pkgbase}"
 
     cd "${_reponame}-${pkgver}"
     install -Dm644 "README.md"               "${pkgdir}/usr/share/doc/${pkgname}/README.md"
