@@ -1,0 +1,24 @@
+pkgbase = adwifi-git
+	pkgdesc = A libadwaita Wi-Fi manager backed by iwd
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/rzesm/adwifi
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python-dbus-next
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	depends = iwd
+	depends = speedtest-cli
+	provides = adwifi
+	conflicts = adwifi
+	source = adwifi::git+https://github.com/rzesm/adwifi.git
+	sha256sums = SKIP
+
+pkgname = adwifi-git
