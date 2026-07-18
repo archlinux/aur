@@ -2,7 +2,7 @@
 
 pkgname=remote-pi-cockpit-bin
 _pkgname=remote-pi-cockpit
-pkgver=1.9.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Desktop client for Remote Pi, a multi-pane GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ source_x86_64=(
 source_aarch64=(
   "${_pkgname}-${pkgver}-aarch64.deb::https://github.com/jacobaraujo7/remote_pi/releases/download/cockpit-v${pkgver}/${_pkgname}_${pkgver}_arm64.deb"
 )
-sha256sums_x86_64=('6afe640b25d31e3e2db15608035acce3dfa5787920fe6bf2474be04e4509688f')
-sha256sums_aarch64=('87d6237c4343aea711e3a1a18e0d6eda0a756df92e385e925a6fe6440cf3877c')
+sha256sums_x86_64=('196effaa22050087cd9982a9bac17c6d096b76538895bfdab4a5f581b61bfb5a')
+sha256sums_aarch64=('2c789f47c94b868f1c1d14b9b7adcb39fc350e6d482b044fd01aa40a18d4ee87')
 noextract=(
   "${_pkgname}-${pkgver}-x86_64.deb"
   "${_pkgname}-${pkgver}-aarch64.deb"
