@@ -1,0 +1,8 @@
+post_install() {
+  echo "NOTE: If you are using an Nvidia GPU, set the following environment variable before launching:"
+  echo "  WEBKIT_DISABLE_DMABUF_RENDERER=1 creamlinux"
+}
+
+post_upgrade() {
+  post_install
+}

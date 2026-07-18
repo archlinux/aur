@@ -1,0 +1,18 @@
+pkgbase = creamlinux-installer-appimage
+	pkgdesc = GUI application for managing DLC IDs in Steam games (AppImage version)
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/Novattz/creamlinux-installer
+	install = creamlinux-installer-appimage.install
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = webkit2gtk-4.1
+	conflicts = creamlinux
+	conflicts = creamlinux-installer-bin
+	options = !strip
+	options = !debug
+	source = creamlinux-installer-appimage-1.7.1.AppImage::https://github.com/Novattz/creamlinux-installer/releases/download/v1.7.1/Creamlinux_1.7.1_amd64.AppImage
+	sha256sums = 5375bac0a6be7d07435a27f25360a0af6a9692cf94350c8b9e994610b7c4c815
+
+pkgname = creamlinux-installer-appimage
