@@ -1,5 +1,5 @@
 pkgname=autoremesher-git
-pkgver=r65412e4
+pkgver=re2d9b6f
 pkgrel=1
 pkgdesc="Cross-platform automatic quad remeshing tool"
 arch=(x86_64)
