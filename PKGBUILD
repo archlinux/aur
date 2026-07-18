@@ -2,7 +2,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
@@ -18,8 +18,6 @@ source=(
 
 package() {
   install -dm755 "$pkgdir/usr/bin/"
-  cd "${srcdir}"
-  ar x "${srcdir}"/${pkgname}-${pkgver}.deb
   tar -xvf "${srcdir}"/data.tar.zst -C "${pkgdir}"
   ln -s "${pkgdir}/usr/share/${pkgname%-bin}/yaabsa" "${pkgdir}/usr/bin/yaabsa"
 }
