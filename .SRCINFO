@@ -1,7 +1,7 @@
 pkgbase = bili-tools-bin
 	pkgdesc = B站直播开播工具 — 命令行一键开播/下播 (预编译二进制版)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QwerProg/bili-tools
 	arch = x86_64
 	arch = aarch64
