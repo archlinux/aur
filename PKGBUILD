@@ -32,7 +32,6 @@ build() {
         -G Ninja \
         -S $pkgname-b$pkgver \
         -B $pkgname-dist \
-        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DCMAKE_BUILD_TYPE=None \
         -DREDUMPER_VERSION_BUILD=$pkgver \
         -DREDUMPER_CLANG_LINK_OPTIONS=-lc++ \
