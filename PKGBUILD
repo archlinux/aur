@@ -3,7 +3,7 @@
 pkgname=gogcli-bin
 _internalname=gogcli
 _pkgbin=gog
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Google Suite CLI: Gmail, GCal, GDrive, GContacts."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('gog')
 options=('!strip' '!debug')
 
 source=("${_internalname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_internalname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('865347e22a034dee7638e00852bc498658b74488759ef5223e4517cd3950e72d')
+sha256sums=('7485f4fd8ce9f7ec62abfbeb4df19d7a11ad1d4e9ec6ff2e39aca973144c6fb8')
 
 package() {
     install -Dm755 "${_pkgbin}" -t "$pkgdir/usr/bin/"
