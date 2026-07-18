@@ -1,13 +1,13 @@
 pkgbase = cqops-bin
-pkgdesc = Fast, minimal Go TUI ham radio logger
-pkgver = 0.9.2
-pkgrel = 1
-url = https://github.com/szporwolik/cqops
-arch = x86_64
-license = Apache-2.0
-source = cqops-0.9.2-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v0.9.2/cqops-linux-amd64.tar.gz
-sha256sums = SKIP
-provides = cqops
-conflicts = cqops
+	pkgdesc = Fast, minimal Go TUI ham radio logger
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/szporwolik/cqops
+	arch = x86_64
+	license = Apache-2.0
+	source = cqops-0.9.2-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v0.9.2/cqops-linux-amd64.tar.gz
+	sha256sums = 99d5b001df989068873dc22bde5919cff878fcabbc170b7d44556173cf6e3556
+	provides = cqops
+	conflicts = cqops
 
 pkgname = cqops-bin

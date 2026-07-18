@@ -8,8 +8,8 @@ url="https://github.com/szporwolik/cqops"
 license=('Apache-2.0')
 provides=('cqops')
 conflicts=('cqops')
-source=("cqops-${pkgver}-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v${pkgver}/cqops-linux-amd64.tar.gz")
-sha256sums=('SKIP')
+source=("cqops-${pkgver}-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v0.9.2/cqops-linux-amd64.tar.gz")
+sha256sums=('99d5b001df989068873dc22bde5919cff878fcabbc170b7d44556173cf6e3556')
 package() {
     install -Dm755 cqops-linux-amd64 "${pkgdir}/usr/bin/cqops"
 }
