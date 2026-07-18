@@ -1,0 +1,23 @@
+pkgbase = dvbstreamer-t2
+	pkgdesc = Console-based application to stream DVB services over UDP (Stable DVB-T2 Release)
+	pkgver = 2.1.22
+	pkgrel = 1
+	url = https://github.com/ccdale/dvbstreamer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkg-config
+	depends = sqlite
+	depends = readline
+	depends = libev
+	depends = libtool
+	depends = libyaml
+	depends = zlib
+	provides = dvbstreamer
+	conflicts = dvbstreamer
+	source = dvbstreamer-t2-2.1.22.tar.gz::https://github.com/ccdale/dvbstreamer/archive/refs/tags/v2.1.22.tar.gz
+	sha256sums = b526d9ef5e50534a5007a7a38434863dfd70f065a518d626bab96bedf64350f1
+
+pkgname = dvbstreamer-t2
