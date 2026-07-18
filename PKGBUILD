@@ -1,11 +1,11 @@
 # Maintainer: Yeah <ethanaur@yaojiu.org>
 pkgname=creamlinux-installer-appimage
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for managing DLC IDs in Steam games (AppImage version)"
 arch=('x86_64')
 url="https://github.com/Novattz/creamlinux-installer"
-provide=('creamlinux')
+provides=('creamlinux')
 conflicts=('creamlinux' 'creamlinux-installer-bin')
 license=('MIT')
 depends=('fuse2' 'webkit2gtk-4.1')
