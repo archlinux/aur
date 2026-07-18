@@ -13,6 +13,7 @@ sha256sums=('3ce40f320f273a5038d818e071671c9c65c1c3c22662166c5dbfbee3b5795022')
 
 build() {
     cd "conductor-arch-$pkgver"
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     cargo build --release --locked --workspace
 }
 
@@ -20,6 +21,7 @@ package() {
     cd "conductor-arch-$pkgver"
     install -Dm755 target/release/archductor "$pkgdir/usr/bin/archductor"
     install -Dm755 target/release/archductor-gtk "$pkgdir/usr/bin/archductor-gtk"
+    install -Dm755 target/release/archcar "$pkgdir/usr/bin/archcar"
     install -Dm644 packaging/archductor-gtk.desktop \
         "$pkgdir/usr/share/applications/archductor-gtk.desktop"
     install -Dm644 packaging/archductor.svg \
