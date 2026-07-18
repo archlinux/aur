@@ -1,0 +1,16 @@
+pkgbase = wine-dwproton
+	pkgdesc = dwproton的wine版
+	pkgver = 11.0
+	pkgrel = 7
+	url = https://dawn.wine/dawn-winery/wine-dwproton
+	arch = x86_64
+	provides = wine=11.0
+	provides = wine-staging=11.0
+	provides = wine-wow64=11.0
+	conflicts = wine
+	source = git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/11.0-7
+	source = https://github.com/irtkll/wine-proton-patch/raw/main/恢复字体.patch
+	sha256sums = SKIP
+	sha256sums = e5bbe669e881d41ad0ac530903b4356ec3bbace37bed1dcaddd9c2f2a81a29df
+
+pkgname = wine-dwproton
