@@ -8,9 +8,10 @@ pkgbase = shader-desk-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = mesa
+	depends = libglvnd
 	depends = luajit
 	depends = nlohmann-json
 	depends = glm
@@ -22,6 +23,8 @@ pkgbase = shader-desk-git
 	provides = shader-desk
 	conflicts = shader-desk
 	source = shader-desk::git+https://github.com/KMartianov/shader-desk.git
+	source = sol2::git+https://github.com/ThePhD/sol2.git#branch=main
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = shader-desk-git

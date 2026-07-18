@@ -11,31 +11,36 @@ license=('MIT')
 # Runtime dependencies
 depends=(
   'wayland'         # Basic Wayland support
-  'mesa'            # OpenGL ESv2 and EGL drivers
-  'luajit'          # Scripting engine
+  'libglvnd'        # Vendor-neutral dispatch layer for EGL and GLESv2
+  'luajit'          # High-performance scripting engine
   'nlohmann-json'   # JSON configuration parsing
   'glm'             # Mathematics for OpenGL
-# 'sol2'            # C++/Lua integration library
-  'libpulse'        # PulseAudio/PipeWire for audio-daemon
-  'fftw'            # FFT sound processing for audio-daemon
+  'libpulse'        # PulseAudio/PipeWire support for audio-daemon
+  'fftw'            # Fast Fourier Transform for audio-daemon
   'libevdev'        # Input device reading for evdev-daemon
-  'mpv'             # Video playback in video-bg plugin
-  'python'          # Plugin generation script execution
+  'mpv'             # Video playback backend for video-bg plugin
+  'python'          # Required for the plugin generation script
 )
 
 # Build dependencies
 makedepends=(
   'git'
   'cmake'
-  'wayland-protocols' # XML protocol files
+  'ninja'           # Faster build system (highly recommended for modern AUR packages)
+  'wayland-protocols' # XML protocol files required during compilation
 )
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-# Source code repository
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP') # Skip checksums for VCS packages
+# Source code repositories
+# The 'sol2' library is fetched here to comply with Arch packaging guidelines 
+# requiring offline builds. CMake's FetchContent will be overridden to use this local copy.
+source=(
+  "${_pkgname}::git+${url}.git"
+  "sol2::git+https://github.com/ThePhD/sol2.git#branch=main"
+)
+sha256sums=('SKIP' 'SKIP') # Skip checksums for VCS packages
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -49,11 +54,13 @@ pkgver() {
 }
 
 build() {
-  # Configure project in isolated build directory
-  # Disable Tracy profiling for release build
-  cmake -B build -S "${_pkgname}" \
+  # Configure project in an isolated build directory.
+  # -DFETCHCONTENT_SOURCE_DIR_SOL2 forces CMake to use the locally cloned sol2
+  # preventing unauthorized network access during the build phase (Clean Chroot).
+  cmake -B build -S "${_pkgname}" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFETCHCONTENT_SOURCE_DIR_SOL2="${srcdir}/sol2" \
     -DBUILD_AUDIO_DAEMON=ON \
     -DBUILD_EVDEV_DAEMON=ON \
     -DENABLE_PROFILING=OFF
@@ -66,6 +73,6 @@ package() {
   # Install binaries, systemd services, and plugins to pkgdir
   DESTDIR="${pkgdir}" cmake --install build
 
-  # Install license (Arch Packaging Guidelines requirement)
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install license (Strict requirement for the Arch Packaging Guidelines)
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
