@@ -1,0 +1,24 @@
+pkgbase = iptv-checker-gui
+	pkgdesc = GUI for validating IPTV playlists and inspecting stream health
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/kristofferR/IPTVChecker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	conflicts = iptv-checker
+	options = !strip
+	options = !debug
+	source = LICENSE-1.6.0::https://raw.githubusercontent.com/kristofferR/IPTVChecker/v1.6.0/LICENSE
+	sha256sums = 508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1
+	source_x86_64 = iptv-checker-gui-1.6.0-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v1.6.0/IPTV.Checker_1.6.0_lin_x64.deb
+	sha256sums_x86_64 = 7f566f0b38dd7d67ff0129601010cd5e259f480e3bf990b71b5bb237dd028040
+	source_aarch64 = iptv-checker-gui-1.6.0-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v1.6.0/IPTV.Checker_1.6.0_lin_arm.deb
+	sha256sums_aarch64 = 56e03b380ea66bade898f5f024050b9ac19a3fe3b9d21118cbbfcdc934c1a711
+
+pkgname = iptv-checker-gui
