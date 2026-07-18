@@ -5,7 +5,7 @@
 
 pkgname=applecommander
 _pkgname=AppleCommander
-pkgver=13.1
+pkgver=13.2
 pkgrel=1
 pkgdesc="Tool that manipulates Apple ][ disk images"
 arch=(any)
@@ -18,7 +18,7 @@ source=(https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/${pkgver}.t
         applecommander-ac.sh
         applecommander-acx.sh
         applecommander-gui.sh)
-sha256sums=('bab5b887b7afa60c771caf931a2c208253891dbbca12f791995127cc62df6167'
+sha256sums=('c344c50ccd3613e96ccc2dfb69888ca3e43dd9b2535d2d888fe17fd9d8c30112'
             '15f72733b20fc738e556d15ca448b5f4db96134af38e50c6853f1884e591a9e2'
             '9bcdc1c58962b85638de83eeb68c3e603ef627210da10bc5ab04e3b83d6c541d'
             'd6ea6feb7790c7992c2753a65b42f4e7da79d70a4efb8a4af019c0f8b27353ba')
