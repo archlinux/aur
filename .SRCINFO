@@ -1,6 +1,6 @@
 pkgbase = eshot-bin
 	pkgdesc = Screenshot, annotation, OCR, GIF and video capture tool
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://github.com/Benoks/EShot
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = eshot-bin
 	provides = eshot
 	conflicts = eshot
 	options = !strip
-	source = EShot-v4.1.1-x86_64.AppImage::https://github.com/Benoks/EShot/releases/download/v4.1.1/EShot-v4.1.1-x86_64.AppImage
+	source = EShot-v4.1.2-x86_64.AppImage::https://github.com/Benoks/EShot/releases/download/v4.1.2/EShot-v4.1.2-x86_64.AppImage
 	source = eshot
-	sha256sums = d4985097dc1cafcf42af2aa271b249e896b9fc095078f3872dca11d2b9ca1594
+	sha256sums = d7e4ebe546aa03121e149d48b557fd573a2c41bcd654b20f22f900a420da152b
 	sha256sums = SKIP
 
 pkgname = eshot-bin
