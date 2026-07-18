@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepcode-cli
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('npm')
 provides=('deepcode')
 conflicts=('deepcode-cli-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bfeb3bfae7082f23db5a5b578f3cc642eb74dfd1e5b31b31a2a551caeb7518e6')
+sha256sums=('7fc08617e46443e5446bff22dd37e5841bec4a3fd3d23a95ff683cfc1516a521')
 
 build() {
     cd "${pkgname}-${pkgver}"
