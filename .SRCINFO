@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box-git
 	pkgdesc = A modern music player
-	pkgver = 10.0.1.r43.8a349863
+	pkgver = 11.0.0.r30.71efc76a
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = tauon-music-box-git
 	depends = python-requests
 	depends = python-dbus
 	depends = python-natsort
+	depends = python-opengl
 	depends = python-websocket-client
 	depends = kissfft
 	depends = libnotify

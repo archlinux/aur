@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=10.0.1.r43.8a349863
+pkgver=11.0.0.r30.71efc76a
 pkgrel=1
 pkgdesc="A modern music player"
 arch=("x86_64" "aarch64")
@@ -27,6 +27,7 @@ depends=(
 	"python-requests"
 	"python-dbus"
 	"python-natsort"
+	"python-opengl"
 	"python-websocket-client"
 	"kissfft"
 	"libnotify"
