@@ -13,11 +13,7 @@ conflicts=("${_pkgname}")
 
 depends=(
   'file'
-  'ncurses'
-  'openssl'
   'python'
-  'sqlite'
-  'zlib'
 )
 
 source_x86_64=("https://github.com/d99kris/nchat/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64-glibc.tar.gz")
