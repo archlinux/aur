@@ -3,7 +3,7 @@
 # Variables
 gui=true
 desktop="Open Video Downloader.desktop"
-icon="open-video-downloader.png"
+icon="Open Video Downloader.png"
 
 # Get version
 oldver=$(grep -E "^pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
