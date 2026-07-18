@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r3208.6dde81b1
+pkgver=r3289.909fac72
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
@@ -21,59 +21,28 @@ depends=(
     'protobuf'
     'sqlite3'
     'wxwidgets-gtk3'
+    'xz'
     'zlib'
 )
 makedepends=(
     'boost'
     'clang'
     'cli11'
-    'nlohmann-json'
     'git'
-    'ninja'
+    'ninja' # TODO: Doesn't seem to be used any more?
+    'nlohmann-json'
+    'python-pyhamcrest'
+    'python'
     'xxd'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/davidgiven/fluxengine.git'
-        "git+https://github.com/davidgiven/ImHex.git"
-        "git+https://github.com/WerWolv/libwolv.git"
-        "git+https://github.com/ocornut/imgui.git"
-        "git+https://github.com/WerWolv/PatternLanguage.git"
-        "git+https://github.com/btzy/nativefiledialog-extended.git"
-        "git+https://github.com/WerWolv/xdgpp.git"
-        "git+https://github.com/WerWolv/libromfs.git"
-        "git+https://github.com/rockdreamer/throwing_ptr.git"
-        "git+https://github.com/sammycage/lunasvg.git"
-)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=('git+https://github.com/davidgiven/fluxengine.git')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    git submodule init
-    git config submodule.dep/imgui.url "$srcdir/imgui"
-    git config submodule.dep/imhex.url "$srcdir/ImHex"
-    git config submodule.dep/libromfs.url "$srcdir/libromfs"
-    git config submodule.dep/libwolv.url "$srcdir/libwolv"
-    git config submodule.dep/lunasvg.url "$srcdir/lunasvg"
-    git config submodule.dep/native-file-dialog.url "$srcdir/nativefiledialog-extended"
-    git config submodule.dep/pattern-language.url "$srcdir/PatternLanguage"
-    git config submodule.dep/throwing_ptr.url "$srcdir/throwing_ptr"
-    git config submodule.dep/xdgpp.url "$srcdir/xdgpp"
-    git -c protocol.file.allow=always submodule update
 }
 
 build() {
