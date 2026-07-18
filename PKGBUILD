@@ -1,7 +1,7 @@
 # Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
 
 pkgname=anime-games-launcher-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A launcher for various anime games"
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -36,7 +36,7 @@ source=(
 )
 
 md5sums=(
-    'c1dedffd81283ecdf91c5679d1d8e3e0'
+    'edabedb0308dbc1bee1af4b9c92934fc'
     'b0ec5d3121b1b0766a9e53cdd0bc04ee'
     '8b61154766b80f75afa4936ca110dfd1'
 )
