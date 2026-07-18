@@ -1,6 +1,6 @@
 pkgbase = tsukimi-bin
 	pkgdesc = A simple third-party Jellyfin client for Linux
-	pkgver = 26.7.2
+	pkgver = 26.7.3
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = tsukimi-bin
 	depends = ffmpeg
 	depends = libadwaita
 	depends = gstreamer
+	depends = glycin
 	depends = gtk4
 	provides = tsukimi
 	conflicts = tsukimi-git
-	source = tsukimi-bin-26.7.2.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v26.7.2/tsukimi-amd64-linux.tar.gz
-	sha256sums = d41175e97f5b65f061d5aeb4e0c5aadf631f56bb123965a140b1c2c3e519fff5
+	source = tsukimi-bin-26.7.3.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v26.7.3/tsukimi-amd64-linux.tar.gz
+	sha256sums = ca4e6efc4a4205c17e92c75697355ed8e293e76138d05d83b0323b99116cd495
 
 pkgname = tsukimi-bin
