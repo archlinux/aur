@@ -1,6 +1,6 @@
 pkgbase = kappicon-git
 	pkgdesc = Change Linux app launcher icons without root (GUI + CLI) — git version
-	pkgver = 3.0.0.r2.g00041bc
+	pkgver = 3.0.1.r2.gc8b5e26
 	pkgrel = 1
 	url = https://github.com/rayman1972/kappicon
 	arch = any
