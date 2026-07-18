@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-cli-bin
 	pkgdesc = nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (prebuilt musl binary)
-	pkgver = 4.0.95
+	pkgver = 4.0.96
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = nostr-vpn-cli-bin
 	optdepends = iproute2: route and tunnel device management for nvpn
 	optdepends = systemd: persistent service via `nvpn service install`
 	optdepends = nftables: firewall integration on hosts using nftables
-	provides = nvpn=4.0.95
-	provides = nostr-vpn-cli=4.0.95
+	provides = nvpn=4.0.96
+	provides = nostr-vpn-cli=4.0.96
 	conflicts = nvpn
 	conflicts = nostr-vpn-cli
 	conflicts = nostr-vpn-cli-git
 	source = LICENSE
 	sha256sums = 0db560024163fbcc5ee5cff1971684ca448da90088f341db083a38548846c3d5
-	source_x86_64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.95/nvpn-v4.0.95-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = ac441e11ef3a1edb35531f5b05ffcbcceefcf91a502b69cd28e016bf94befc25
-	source_aarch64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.95/nvpn-v4.0.95-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 392cdefb50c05e823bd6bdf44f2b804642171b9182983943dd5b9cfbd2b28319
-	source_armv7h = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.95/nvpn-v4.0.95-arm-unknown-linux-musleabihf.tar.gz
-	sha256sums_armv7h = 59133c1bcb990ac2f190e9951578cf7717033ece585ec8020eee55e83d27800d
+	source_x86_64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.96/nvpn-v4.0.96-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 27c4eb5d844411d22155d0b49b92245ad5a72361b35e79cefab373045e5ee252
+	source_aarch64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.96/nvpn-v4.0.96-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 16fac34d110c3cd954f5ea10275ebade15f56feee728bd2e2dccff8dcc8ae3a5
+	source_armv7h = https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.96/nvpn-v4.0.96-arm-unknown-linux-musleabihf.tar.gz
+	sha256sums_armv7h = 8e4d3f1cf589ac3189a34d6bfc9d7eb9b0872b5aeff68010f122a7924f14e8b0
 
 pkgname = nostr-vpn-cli-bin
