@@ -1,7 +1,7 @@
 pkgbase = raylib-wayland-git
 	pkgdesc = Optimized Wayland build for simple and easy-to-use graphics library raylib
-	pkgver = 6.0.r239.g5b1445b
-	pkgrel = 5
+	pkgver = 6.0.r249.g9ef6850
+	pkgrel = 6
 	url = https://www.raylib.com/
 	arch = x86_64
 	arch = aarch64
