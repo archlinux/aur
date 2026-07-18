@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('uv')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Kohei-Wada/taskdog/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af9641ccff4660ab69b6f2e7f19bbe5228725a34dc16c642d9fa94af47dbb943')
+sha256sums=('b1d3b6b492350695d221d22a863d5f258ac997179162cf3697d68a97076c9668')
 options=('!strip')
 
 _prefix=/usr/lib/taskdog
