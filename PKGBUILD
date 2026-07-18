@@ -7,7 +7,7 @@ pkgname=(
     'openvino-llvm-intel-npu-plugin'
     'python-openvino-llvm')
 pkgver=2026.2.1
-pkgrel=3
+pkgrel=4
 _commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld'
 arch=('x86_64')
@@ -61,7 +61,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-ignore-system-onnx.patch'
-        '040-openvino-fix-opencv5-mat-size.patch')
+        '040-openvino-opencv5-fix.patch')
 sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'SKIP'
             'SKIP'
@@ -89,7 +89,7 @@ sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
             '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c'
             '30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904'
-            '893cab9b115273894ff7a067a56f0d0358a7d7514cd8077a7a6db97aca483d7b')
+            'e9ca24f135bf85606be18d0fb52f8a0702dc4ed82c10dd5de122e18be47df3c0')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -131,7 +131,7 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-ignore-system-onnx.patch"
-    patch -d openvino -Np1 -i "${srcdir}/040-openvino-fix-opencv5-mat-size.patch"
+    patch -d openvino -Np1 -i "${srcdir}/040-openvino-opencv5-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -197,7 +197,6 @@ build() {
     
     cd openvino/tools/benchmark_tool
     python -m build --wheel --no-isolation
-    rm -rf "${srcdir}/benchmark_app"
     python -m installer --destdir="${srcdir}/benchmark_app" dist/*.whl
 }
 
@@ -205,7 +204,6 @@ package_openvino-llvm() {
     depends=(
         'glibc'
         'libgcc'
-        'libstdc++'
         'onetbb'
         'pugixml'
         'snappy')
@@ -222,11 +220,6 @@ package_openvino-llvm() {
     
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-    
-    rm -rf intel-gpu-plugin intel-npu-plugin licenses "python${_pyver}"
-    install -d -m755 licenses
-    install -d -m755 intel-gpu-plugin/usr/lib/openvino
-    install -d -m755 intel-npu-plugin/usr/{bin,{lib,share/doc}/openvino}
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 openvino/bin/intel64/Release/libopenvino_template_extension.so -t "${pkgdir}/usr/lib"
@@ -251,7 +244,6 @@ package_openvino-llvm-intel-gpu-plugin() {
         'glibc'
         'intel-compute-runtime'
         'libgcc'
-        'libstdc++'
         'ocl-icd'
         'onetbb'
         "openvino-llvm=${pkgver}"
@@ -270,7 +262,6 @@ package_openvino-llvm-intel-npu-plugin() {
         'intel-npu-compiler'
         'intel-npu-driver'
         'libgcc'
-        'libstdc++'
         'onetbb'
         'opencv'
         "openvino-llvm=${pkgver}"
@@ -287,7 +278,6 @@ package_python-openvino-llvm() {
     depends=(
         'glibc'
         'libgcc'
-        'libstdc++'
         "openvino-llvm=${pkgver}"
         'python'
         'python-numpy'
