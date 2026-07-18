@@ -1,0 +1,21 @@
+pkgbase = ilicam
+    pkgdesc = Professional Camera Application for Linux with Qt6 and OpenCV
+    pkgver = 1.0.0
+    pkgrel = 1
+    url = https://github.com/iliarezaei/ilicam
+    arch = x86_64
+    license = GPL-3.0-or-later
+    makedepends = qt6-tools
+    makedepends = cmake
+    makedepends = gcc
+    makedepends = make
+    depends = qt6-base
+    depends = qt6-tools
+    depends = opencv
+    depends = cmake
+    depends = gcc
+    depends = make
+    source = ilicam-1.0.0.tar.gz::https://github.com/iliarezaei/ilicam/archive/v1.0.0.tar.gz
+    sha256sums = SKIP
+
+pkgname = ilicam
