@@ -26,7 +26,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/wergosam/Pachul/archive/refs/tags/v$pkgver.tar.gz"
     "io.github.wergosam.pachul.desktop"
 )
-sha256sums=('HIER_ECHTE_CHECKSUMME_EINTRAGEN'
+sha256sums=('42437ad25cdabe6f6b7d3bee42cf911a4ee61d3502230b2fd8494d6573792717'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2')
 
 prepare() {
