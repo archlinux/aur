@@ -1,13 +1,13 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
-pkgver=5.13.1.r2.g378f727
-pkgrel=1
+pkgver=5.14.2.r45.g60660e2
+pkgrel=2
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
 license=('Apache-2.0')
-depends=('ghidra' 'python' 'python-requests' 'python-mcp')
-makedepends=('maven' 'jdk21-openjdk' 'git')
+depends=('ghidra' 'python' 'python-mcp')
+makedepends=('maven' 'jdk-openjdk' 'git' 'python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname}")
 source=("git+${url}.git")
@@ -52,12 +52,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
 
-  # Ensure JDK 21 is used for the build (Ghidra 11+ requirement)
-  if [ -d "/usr/lib/jvm/java-21-openjdk" ]; then
-    export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
-  else
-    warning "/usr/lib/jvm/java-21-openjdk not found. Build may fail."
-  fi
+  # Use the default system JDK (Ghidra JARs may require Java >= version used to compile them)
 
   # Determine Ghidra installation directory for dependencies
   local _ghidra_home="/opt/ghidra"
@@ -117,10 +112,13 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  # 1. Install MCP Bridge Script
-  local _bridge_dir="$pkgdir/opt/${pkgname%-git}"
-  install -d "$_bridge_dir"
-  install -Dm755 bridge_mcp_ghidra.py "$_bridge_dir/bridge_mcp_ghidra.py"
+  # 1. Install MCP Bridge Python package (pyproject.toml at project root)
+  msg2 "Building and installing bridge Python package..."
+  python -m build --wheel --no-isolation
+  local _wheel
+  _wheel=$(find dist -name "*.whl" | head -n 1)
+  python -m installer --prefix=/usr --destdir="$pkgdir" "$_wheel"
+  msg2 "Bridge package installed"
 
   # 2. Install Ghidra Extension ZIP
   local _ext_zip
@@ -143,4 +141,7 @@ package() {
   if [ -f "CLAUDE.md" ]; then
     install -Dm644 CLAUDE.md "$pkgdir/usr/share/doc/${pkgname%-git}/CLAUDE.md"
   fi
+
+  # 4. Clean up __pycache__ from package
+  find "$pkgdir" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 }
