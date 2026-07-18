@@ -2,7 +2,7 @@
 pkgname=ppq-whisper-bin
 _pkgname=ppq-whisper
 pkgver=0.1.53
-pkgrel=2
+pkgrel=3
 pkgdesc='PPQ Whisper (PPQ Voice) — cloud-powered desktop dictation app with instant clean-up'
 arch=('x86_64')
 url='https://github.com/PayPerQ/ppq-voice-releases'
@@ -36,13 +36,20 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
     rm -r "$pkgdir/usr/share/icons/hicolor/0x0"
 
-    # Wrapper instead of the deb postinst's symlink: Electron 36 auto-selects
-    # GTK4, but the tray/appindicator path still loads GTK3 symbols and GTK
-    # aborts on the mix ("GTK 2/3 symbols detected") before any window appears
+    # Wrapper instead of the deb postinst's symlink:
+    # - --gtk-version=3: Electron 36 auto-selects GTK4, but the tray/appindicator
+    #   path still loads GTK3 symbols and GTK aborts on the mix ("GTK 2/3 symbols
+    #   detected") before any window appears
+    # - ozone auto + GlobalShortcutsPortal: on Wayland the app's push-to-talk
+    #   hotkey (Electron globalShortcut) is an X11 grab that only fires while the
+    #   app window is focused; native Wayland + the XDG GlobalShortcuts portal
+    #   makes it session-wide (one-time GNOME approval). On X11 sessions ozone
+    #   picks X11 and the portal flag is inert.
     install -d "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/$_pkgname" <<'WRAPPER'
 #!/bin/sh
-exec '/opt/PPQ Whisper/ppq-whisper' --gtk-version=3 "$@"
+exec '/opt/PPQ Whisper/ppq-whisper' --gtk-version=3 \
+    --ozone-platform-hint=auto --enable-features=GlobalShortcutsPortal "$@"
 WRAPPER
     chmod 755 "$pkgdir/usr/bin/$_pkgname"
 

@@ -1,7 +1,7 @@
 pkgbase = ppq-whisper-bin
 	pkgdesc = PPQ Whisper (PPQ Voice) — cloud-powered desktop dictation app with instant clean-up
 	pkgver = 0.1.53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PayPerQ/ppq-voice-releases
 	arch = x86_64
 	license = LicenseRef-proprietary
