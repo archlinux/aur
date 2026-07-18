@@ -1,6 +1,6 @@
 pkgbase = sugarrush-bin
 	pkgdesc = A terminal UI for viewing Nightscout CGM (blood glucose) data
-	pkgver = 2026.7.2
+	pkgver = 2026.7.3
 	pkgrel = 1
 	url = https://github.com/ronaldlokers/sugarrush
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sugarrush-bin
 	provides = sugarrush
 	conflicts = sugarrush
 	options = !strip
-	source = sugarrush-2026.7.2.tar.xz::https://github.com/ronaldlokers/sugarrush/releases/download/v2026.7.2/sugarrush-x86_64-unknown-linux-musl.tar.xz
-	sha256sums = 844f461dd220703ffe2c4e21af90b818503896d44d0448202334d497c420e133
+	source = sugarrush-2026.7.3.tar.xz::https://github.com/ronaldlokers/sugarrush/releases/download/v2026.7.3/sugarrush-x86_64-unknown-linux-musl.tar.xz
+	sha256sums = 48d3b3ba5fd46b9784570442cad834c65af681b69094c1f97bd09255966c7292
 
 pkgname = sugarrush-bin
