@@ -1,6 +1,6 @@
 # Maintainer: iliarezaei <iliarezaei69@gmail.com>
 pkgname=ilicam
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Professional Camera Application for Linux with Qt6 and OpenCV"
 arch=('x86_64')
