@@ -1,7 +1,7 @@
 pkgbase = colorshell
 	pkgdesc = A super "coolorful" shell for Hyprland!
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retrozinndev/colorshell
 	arch = any
 	license = BSD-3-Clause
@@ -43,7 +43,7 @@ pkgbase = colorshell
 	optdepends = grim: take screenshots with colorshell commands
 	optdepends = slurp: needed to select screenshot area
 	provides = colorshell
-	conflicts = colorshell
+	conflicts = colorshell-git
 	source = colorshell::git+https://github.com/retrozinndev/colorshell.git#tag=2.1.3
 	sha256sums = SKIP
 

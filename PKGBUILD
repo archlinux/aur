@@ -9,12 +9,12 @@ _pkgname=${pkgname}
 pkgdesc="A super \"coolorful\" shell for Hyprland!"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
-pkgrel=1
+pkgrel=2
 pkgver=2.1.3
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${_pkgname}-git")
 source=(
     "$_pkgname::git+https://github.com/retrozinndev/$_pkgname.git#tag=$pkgver"
 )
