@@ -1,13 +1,13 @@
 pkgbase = dsd-fme-git
 	pkgdesc = Digital Speech Decoder - Florida Man Edition
-	pkgver = 2024.r262.gf6fc91a
+	pkgver = 20260715.r0.g69d3115
 	pkgrel = 1
 	url = https://github.com/lwvmobile/dsd-fme.git
 	install = dsd-fme-git.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = cmake
 	makedepends = git
 	depends = libpulse
