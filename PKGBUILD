@@ -5,7 +5,7 @@
 # already ship). Only `bulwarkctl` is packaged — the Tauri GUI needs WebKitGTK and
 # is distributed as Flatpak/Snap/AppImage instead.
 pkgname=bulwarkctl
-pkgver=0.8.3
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Linux host security and misconfiguration scanner (CLI)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('!lto')
 # Bulwark prints a distro-aware install hint when it is absent.
 optdepends=('clamav: antivirus scanning support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('267d155a7fba39aa6195e13624398b551fcbdf68a6a61b089cfb1f195511efef')
+sha256sums=('6e4aacfd382dd370ea036db4951e2bf364f945016ca2fa7e283c93da11fd9923')
 
 prepare() {
   cd "bulwark-$pkgver"
