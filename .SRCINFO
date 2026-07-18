@@ -1,6 +1,6 @@
 pkgbase = modemu2k
 	pkgdesc = Hayes-style AT-command modem emulator bridging serial-style I/O to TCP/Telnet
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://theimpossibleastronaut.github.io/modemu2k/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = modemu2k
 	makedepends = groff
 	makedepends = meson
 	makedepends = ninja
-	source = https://github.com/theimpossibleastronaut/modemu2k/releases/download/v0.2.3/modemu2k-0.2.3.tar.xz
-	sha256sums = 7ea0fd0757a27a32144ed0b99afe4e0bf684e8d022e7a2d217bf19314f7641ba
+	source = https://github.com/theimpossibleastronaut/modemu2k/releases/download/v0.2.4/modemu2k-0.2.4.tar.xz
+	sha256sums = 7ad7994e3ffee235a62228f0cb99f37a8b473979b54ae089b5e249796f70650c
 
 pkgname = modemu2k
 
