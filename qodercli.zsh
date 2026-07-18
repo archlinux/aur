@@ -4,7 +4,7 @@
 
 _qodercli() {
     local -a qodercli_commands mcp_commands plugin_commands plugin_marketplace_commands
-    local -a skill_commands hook_commands agent_commands external_commands
+    local -a skill_commands hook_commands agent_commands
 
     qodercli_commands=(
         'mcp:Configure and manage MCP servers'
@@ -14,13 +14,12 @@ _qodercli() {
         'skill:Manage agent skills'
         'hooks:Manage hooks'
         'hook:Manage hooks'
-        'agents:Manage agents'
-        'agent:Manage agents'
+        'agents:Manage subagents'
+        'agent:Manage subagents'
         'login:Sign in to your account'
         'commit:Generate a commit message and commit changes'
         'rollback:Rollback to a previous version'
         'update:Update to the latest version'
-        'external:Manage external commands'
         'remote-control:Start the remote-control daemon'
         'status:Show session status'
         'feedback:Submit feedback'
@@ -71,16 +70,6 @@ _qodercli() {
     hook_commands=('migrate:Migrate hooks from Claude Code to Qoder CLI')
     agent_commands=('list:List discovered agents')
 
-    external_commands=(
-        'list:List available external commands'
-        'update:Install or update an external command'
-        'install:Install or update an external command'
-        'remove:Remove an installed external command'
-        'rollback:Roll back an external command'
-        'refresh:Refresh the cached external command registry'
-        'doctor:Diagnose an external command'
-    )
-
     _arguments -C \
         '(- *)'{-h,--help}'[Show help]' \
         '(- *)'{-v,--version}'[Show version]' \
@@ -117,6 +106,7 @@ _qodercli() {
         '--input-format[The format of the CLI input]:format:(text stream-json)' \
         '--max-output-tokens[Set maximum model output tokens]:size:(16k 32k)' \
         {-p,--print}'[Print response and exit]' \
+        '--no-session-persistence[Disable session persistence]' \
         '--agent[Agent for the current session]:name:' \
         '--agents[JSON object defining custom agents]:json:' \
         '--append-system-prompt[Append to the default system prompt]:text:' \
@@ -138,7 +128,7 @@ _qodercli() {
             local idx
             for ((idx = 1; idx <= $#words; idx++)); do
                 case ${words[idx]} in
-                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback)
+                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|remote-control|status|feedback)
                         cmd=${words[idx]}
                         cmd_index=$idx
                         break
@@ -304,25 +294,6 @@ _qodercli() {
                             _arguments -C '--setting-sources[Setting sources]:sources:(user project local)' '(- *)'{-h,--help}'[Show help]' '1:agent command:->agent_command' '*::agent arg:->agent_args' && return
                             case $state in
                                 agent_command) _describe -t agent_commands 'agent command' agent_commands ;;
-                            esac
-                            ;;
-                    esac
-                    ;;
-                external)
-                    case $next in
-                        list)
-                            _arguments {-v,--verbose}'[Show hidden local command conflicts]' '(- *)'{-h,--help}'[Show help]'
-                            ;;
-                        refresh)
-                            _arguments '--file[Load registry JSON from a local file]:file:_files' '--url[Fetch registry JSON from HTTPS URL]:url:' '(- *)'{-h,--help}'[Show help]'
-                            ;;
-                        update|install|remove|rollback|doctor)
-                            _arguments '(- *)'{-h,--help}'[Show help]'
-                            ;;
-                        *)
-                            _arguments -C '(- *)'{-h,--help}'[Show help]' '1:external command:->external_command' '*::external arg:->external_args' && return
-                            case $state in
-                                external_command) _describe -t external_commands 'external command' external_commands ;;
                             esac
                             ;;
                     esac

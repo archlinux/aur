@@ -6,7 +6,7 @@ complete -c qodercli -f
 function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback
             return 1
         end
     end
@@ -16,7 +16,7 @@ end
 function __qodercli_using_top_command
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback
             contains -- $word $argv
             return $status
         end
@@ -114,13 +114,12 @@ complete -c qodercli -n __qodercli_no_subcommand -a skills -d 'Manage agent skil
 complete -c qodercli -n __qodercli_no_subcommand -a skill -d 'Manage agent skills'
 complete -c qodercli -n __qodercli_no_subcommand -a hooks -d 'Manage hooks'
 complete -c qodercli -n __qodercli_no_subcommand -a hook -d 'Manage hooks'
-complete -c qodercli -n __qodercli_no_subcommand -a agents -d 'Manage agents'
-complete -c qodercli -n __qodercli_no_subcommand -a agent -d 'Manage agents'
+complete -c qodercli -n __qodercli_no_subcommand -a agents -d 'Manage subagents'
+complete -c qodercli -n __qodercli_no_subcommand -a agent -d 'Manage subagents'
 complete -c qodercli -n __qodercli_no_subcommand -a login -d 'Sign in to your account'
 complete -c qodercli -n __qodercli_no_subcommand -a commit -d 'Generate a commit message and commit changes'
 complete -c qodercli -n __qodercli_no_subcommand -a rollback -d 'Rollback to a previous version'
 complete -c qodercli -n __qodercli_no_subcommand -a update -d 'Update to the latest version'
-complete -c qodercli -n __qodercli_no_subcommand -a external -d 'Manage external commands'
 complete -c qodercli -n __qodercli_no_subcommand -a remote-control -d 'Start the remote-control daemon'
 complete -c qodercli -n __qodercli_no_subcommand -a status -d 'Show session status'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback'
@@ -161,6 +160,7 @@ complete -c qodercli -n __qodercli_no_subcommand -s o -l output-format -r -a 'te
 complete -c qodercli -n __qodercli_no_subcommand -l input-format -r -a 'text stream-json' -d 'The format of the CLI input'
 complete -c qodercli -n __qodercli_no_subcommand -l max-output-tokens -r -a '16k 32k' -d 'Set maximum model output tokens'
 complete -c qodercli -n __qodercli_no_subcommand -s p -l print -d 'Print response and exit'
+complete -c qodercli -n __qodercli_no_subcommand -l no-session-persistence -d 'Disable session persistence'
 complete -c qodercli -n __qodercli_no_subcommand -l agent -r -d 'Agent for the current session'
 complete -c qodercli -n __qodercli_no_subcommand -l agents -r -d 'JSON object defining custom agents'
 complete -c qodercli -n __qodercli_no_subcommand -l append-system-prompt -r -d 'Append to the default system prompt'
@@ -259,7 +259,7 @@ for cmd in list enable disable install link uninstall
     complete -c qodercli -n "__qodercli_using_group_child skills,skill $cmd" -s h -l help -d 'Show help'
 end
 
-# hooks, agents, external
+# hooks, agents
 complete -c qodercli -n '__qodercli_group_no_child hooks,hook migrate' -a migrate -d 'Migrate hooks from Claude Code to Qoder CLI'
 complete -c qodercli -n '__qodercli_using_group_child hooks,hook migrate' -l from-claude -d 'Migrate from Claude Code hooks'
 complete -c qodercli -n '__qodercli_using_top_command hooks hook' -s h -l help -d 'Show help'
@@ -269,21 +269,6 @@ complete -c qodercli -n '__qodercli_group_no_child agents,agent list' -a list -d
 complete -c qodercli -n '__qodercli_using_top_command agents agent' -l setting-sources -r -a 'user project local' -d 'Setting sources'
 complete -c qodercli -n '__qodercli_using_top_command agents agent' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_group_child agents,agent list' -s h -l help -d 'Show help'
-
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a list -d 'List available external commands'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a update -d 'Install or update an external command'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a install -d 'Install or update an external command'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a remove -d 'Remove an external command'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a rollback -d 'Roll back an external command'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a refresh -d 'Refresh command registry'
-complete -c qodercli -n '__qodercli_group_no_child external list,update,install,remove,rollback,refresh,doctor' -a doctor -d 'Diagnose an external command'
-complete -c qodercli -n '__qodercli_using_top_command external' -s h -l help -d 'Show help'
-complete -c qodercli -n '__qodercli_using_group_child external list' -s v -l verbose -d 'Show hidden local command conflicts'
-complete -c qodercli -n '__qodercli_using_group_child external refresh' -l file -r -F -d 'Load registry JSON from a local file'
-complete -c qodercli -n '__qodercli_using_group_child external refresh' -l url -r -d 'Fetch registry JSON from an HTTPS URL'
-for cmd in list update install remove rollback refresh doctor
-    complete -c qodercli -n "__qodercli_using_group_child external $cmd" -s h -l help -d 'Show help'
-end
 
 # Other top-level commands
 complete -c qodercli -n '__qodercli_using_top_command remote-control' -l name -r -d 'Environment display name'
