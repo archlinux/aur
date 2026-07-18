@@ -2,7 +2,7 @@
 pkgname=fastwc
 pkgver=e85c885
 pkgrel=1
-pkgdesc="A fast wc rewrite (x86_64 Linux only) — builds from source, always tracks latest"
+pkgdesc="fastwc, a fast wc rewrite, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
 license=('GPL-3.0-or-later')

@@ -1,5 +1,5 @@
 pkgbase = fastwc
-	pkgdesc = A fast wc rewrite (x86_64 Linux only) — builds from source, always tracks latest
+	pkgdesc = fastwc, a fast wc rewrite, builds from source
 	pkgver = e85c885
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
