@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Wireshark for MCP. A transparent proxy that shows every real tool call between your AI client and your MCP servers, live in your terminal."
 
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('5cb3e25e88adee8e4efe3fe1491120db8ff7f84435a75402aeef2eb0b99fe500')
-sha256sums_aarch64=('5cb3e25e88adee8e4efe3fe1491120db8ff7f84435a75402aeef2eb0b99fe500')
+sha256sums_x86_64=('1b7036e3f0a902546ea7cfb393dc7a1a6d6c06aaf8fe36ac50a9a197b2be9421')
+sha256sums_aarch64=('1b7036e3f0a902546ea7cfb393dc7a1a6d6c06aaf8fe36ac50a9a197b2be9421')
 
 
 package() {
