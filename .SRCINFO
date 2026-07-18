@@ -7,6 +7,8 @@ pkgbase = freeclaw
 	license = MIT
 	depends = nodejs
 	depends = npm
+	options = !strip
+	options = !debug
 	source = git+https://codeberg.org/LuminaNAO/freeclaw.git#tag=v8
 	sha256sums = SKIP
 
