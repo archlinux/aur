@@ -46,7 +46,17 @@ package_gocron-bin() {
 
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" "${pkgdir}/opt/${_appname}/${_appname}"
+
+	install -dm777 "${pkgdir}/var/lib/${_appname}"
+
+	ln -sf "/var/lib/${_appname}" "${pkgdir}/opt/${_appname}/.${_appname}"
+
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_appname}" << END
+#!/usr/bin/env sh
+
+exec /opt/${_appname}/${_appname} "\$@"
+END
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
@@ -59,7 +69,13 @@ package_gocron-node-bin() {
 
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-node" "${pkgdir}/usr/bin/${_appname}-node"
+	install -Dm755 "${_appname}-node" "${pkgdir}/opt/${_appname}/${_appname}-node"
+
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_appname}-node" << END
+#!/usr/bin/env sh
+
+exec /opt/${_appname}/${_appname}-node "\$@"
+END
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
