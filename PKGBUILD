@@ -1,15 +1,16 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.22
+_pkgver=13.0.0-rc.24
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
+_rdns=org.garudalinux.$__pkgname
 
 pkgname=$__pkgname-next
 pkgver=${_pkgver//-/_}
 pkgrel=1
-pkgdesc="Upcoming FireDragon v13"
+pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
@@ -88,7 +89,7 @@ source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
 )
-sha256sums=('caa6a26c2be254330d38a0bb8da127cbb4bc98e537903879cbbbc7f66f93cd66'
+sha256sums=('a5c37f435ae3a65a0fd3884604eb7c8a3c75a6f3a9ce6f98a5844d9eb1953b6d'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124')
 
 prepare() {
@@ -97,10 +98,8 @@ prepare() {
 
   patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
 
-  cd browser/$_pkgname
-  pnpm install --frozen-lockfile
-  pnpm lerna run --stream build
-  cd ../..
+  pnpm -C browser/$_pkgname install --frozen-lockfile
+  pnpm -C browser/$_pkgname all:build
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
 
@@ -227,11 +226,11 @@ END
   local i
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 "browser/$_pkgname/branding/$_branding/default$i.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_rdns.png"
   done
 
-  install -Dvm644 browser/$_pkgname/assets/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dvm644 browser/$_pkgname/assets/org.garudalinux.$__pkgname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+  install -Dvm644 browser/$_pkgname/assets/$_rdns.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 browser/$_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
