@@ -1,0 +1,11 @@
+post_install() {
+	echo ':: tlp-battery-tuner config installed to /etc/tlp.d/00-battery-tuner.conf'
+	echo ':: Enable TLP if you have not already:'
+	echo '     systemctl enable --now tlp'
+	echo ':: If power-profiles-daemon is running, disable it first (it conflicts with TLP):'
+	echo '     systemctl disable --now power-profiles-daemon'
+}
+
+post_upgrade() {
+	post_install
+}
