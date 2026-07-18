@@ -1,0 +1,18 @@
+pkgbase = bili-tools-bin
+	pkgdesc = B站直播开播工具 — 命令行一键开播/下播 (预编译二进制版)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/QwerProg/bili-tools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = bili-tools
+	conflicts = bili-tools
+	conflicts = bili-tools-git
+	source_x86_64 = https://github.com/QwerProg/bili-tools/releases/download/v0.1.4/bt-x86_64-linux.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/QwerProg/bili-tools/releases/download/v0.1.4/bt-arm64-linux.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = bili-tools-bin
