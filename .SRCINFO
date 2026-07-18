@@ -1,0 +1,33 @@
+pkgbase = mangowm-wlonly
+	pkgdesc = mangowm without scenefx
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/mangowm/mango/tree/wl-only
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols>=1.41
+	depends = glibc
+	depends = wayland>=1.23.1
+	depends = libinput>=1.27.1
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = pcre2
+	depends = pango
+	depends = cjson
+	depends = libxcb
+	depends = xorg-xwayland
+	depends = libwlroots-0.20.so
+	provides = mangowm
+	provides = wayland-compositor
+	conflicts = mangowm
+	conflicts = mangowm-git
+	options = !strip
+	options = !lto
+	source = mangowm-wlonly::git+https://github.com/mangowm/mango.git#commit=da5e6e1
+	md5sums = SKIP
+
+pkgname = mangowm-wlonly

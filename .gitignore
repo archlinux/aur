@@ -1,0 +1,11 @@
+/*.pkg.tar.*
+mangowm-wlonly
+/LICENSE
+/LICENSE-*
+/*.part
+/src/*
+/pkg/*
+/src/*
+.BUILDINFO
+.MTREE
+.PKGINFO
