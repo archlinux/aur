@@ -1,6 +1,6 @@
 pkgbase = rmlint-git
-	pkgver = 2.10.3.r0.g2fe7dc80
-	pkgrel = 2
+	pkgver = 2.10.3.r10.g8588a71f
+	pkgrel = 1
 	url = https://github.com/sahib/rmlint
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rmlint-git
 	optdepends = util-linux-libs
 	optdepends = json-glib
 	optdepends = gettext
-	source = rmlint::git+https://github.com/sahib/rmlint
+	source = rmlint::git+https://github.com/sahib/rmlint.git
 	sha256sums = SKIP
 
 pkgname = rmlint-git
