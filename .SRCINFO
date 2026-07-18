@@ -1,0 +1,23 @@
+pkgbase = maia3-git
+	pkgdesc = Accurate and efficient human chess move prediction engine. (Git version)
+	pkgver = r6.1e13597
+	pkgrel = 1
+	url = https://github.com/CSSLab/maia3
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=68
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-chess
+	depends = python-pytorch
+	provides = maia3
+	conflicts = maia3
+	source = git+https://github.com/CSSLab/maia3.git
+	sha256sums = SKIP
+
+pkgname = maia3-git
