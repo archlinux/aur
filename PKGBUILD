@@ -1,8 +1,8 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=5.1.1
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
 
 install=antimony.install
 license=("Unlicense")
