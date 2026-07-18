@@ -1,6 +1,6 @@
 pkgbase = cliprithm
 	pkgdesc = Smart desktop video silence remover and clip editor built with Tauri and FFmpeg
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/BOTOOM/Cliprithm
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = cliprithm
 	provides = cliprithm
 	conflicts = cliprithm-bin
 	options = !lto
-	source = cliprithm-1.4.4.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.4.4.tar.gz
+	source = cliprithm-1.4.5.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.4.5.tar.gz
 	source = cliprithm
 	source = cliprithm.desktop
-	sha256sums = 9686ce8a4981c7e6884be7db9c102dbe01c711509efd72584bf2566df9294cbe
+	sha256sums = 6ddc3f6249e54cc8dc3a71bfac8481c697463aa260b692718d53eed030e0f851
 	sha256sums = fb39cdb168e8c849348069eaf812712f206694268da8228b7d03972b77fadbd5
 	sha256sums = fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f
 

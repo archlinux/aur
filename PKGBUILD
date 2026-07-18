@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Smart desktop video silence remover and clip editor built with Tauri and FFmpeg"
 arch=('x86_64')
@@ -12,10 +12,10 @@ makedepends=('cargo' 'nodejs' 'patchelf' 'pnpm' 'rust')
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm-bin')
-source=("cliprithm-1.4.4.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.4.4.tar.gz"
+source=("cliprithm-1.4.5.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.4.5.tar.gz"
         "cliprithm"
         "cliprithm.desktop")
-sha256sums=('9686ce8a4981c7e6884be7db9c102dbe01c711509efd72584bf2566df9294cbe'
+sha256sums=('6ddc3f6249e54cc8dc3a71bfac8481c697463aa260b692718d53eed030e0f851'
             'fb39cdb168e8c849348069eaf812712f206694268da8228b7d03972b77fadbd5'
             'fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f')
 options=('!lto')
@@ -31,7 +31,7 @@ _setup_rust_toolchain() {
 }
 
 prepare() {
-  cd "Cliprithm-cliprithm-v1.4.4"
+  cd "Cliprithm-cliprithm-v1.4.5"
   _setup_rust_toolchain
   export PNPM_HOME="$srcdir/pnpm-home"
   export XDG_CACHE_HOME="$srcdir/pnpm-cache"
@@ -39,14 +39,14 @@ prepare() {
 }
 
 build() {
-  cd "Cliprithm-cliprithm-v1.4.4"
+  cd "Cliprithm-cliprithm-v1.4.5"
   _setup_rust_toolchain
   export CARGO_TARGET_DIR="$srcdir/target"
   pnpm run tauri build -- --no-bundle --ci --no-sign
 }
 
 package() {
-  cd "Cliprithm-cliprithm-v1.4.4"
+  cd "Cliprithm-cliprithm-v1.4.5"
 
   install -Dm755 "$srcdir/target/release/cliprithm" "$pkgdir/usr/lib/cliprithm/cliprithm"
   install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
