@@ -1,0 +1,19 @@
+pkgbase = orbt
+	pkgdesc = Universal terminal workspace — sessions, panes, and AI agents
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/linuszz/orbt
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gcc-libs
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = openssl
+	provides = orbt
+	conflicts = orbt-bin
+	source = orbt-0.1.8.tar.gz::https://github.com/linuszz/orbt/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = orbt
