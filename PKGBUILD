@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.4.0.r829.g81a4d3b
+pkgver=1.5.0.r128.g8fc38de
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -26,6 +26,7 @@ provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
 source=(
         "git+$url.git"
+        "git+https://github.com/AvengeMedia/dank-qml-common.git"
         "dms.service"
         "completions.bash"
         "completions.fish"
@@ -35,6 +36,7 @@ source=(
         "com.danklinux.dms.desktop"
         "com.danklinux.dms.notepad.desktop")
 sha256sums=('SKIP'
+            'SKIP'
             '036f9a61170ddc315479081b84eeba3b3fb610018b82edf31dacce65c290acba'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
@@ -46,6 +48,14 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "$_pkgname"
+	[ -f .gitmodules ] || return 0
+	git submodule init
+	git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -72,7 +82,7 @@ package_dms-shell-git() {
 	install="$pkgname.install"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
 	install -dm0755 "$pkgdir/usr/share/quickshell/dms"
-	cp -r "$_pkgname/quickshell"/* "$pkgdir/usr/share/quickshell/dms/"
+	cp -rL "$_pkgname/quickshell"/* "$pkgdir/usr/share/quickshell/dms/"
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
 	cp -r "$_pkgname/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
