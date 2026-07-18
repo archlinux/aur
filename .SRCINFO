@@ -1,7 +1,7 @@
 pkgbase = workout-tracker
 	pkgdesc = A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://github.com/jovandeginste/workout-tracker
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = workout-tracker
 	makedepends = make
 	makedepends = npm
 	backup = etc/workout-tracker/env
-	source = workout-tracker-2.6.0.tar.gz::https://github.com/jovandeginste/workout-tracker/archive/v2.6.0.tar.gz
+	source = workout-tracker-2.9.0.tar.gz::https://github.com/jovandeginste/workout-tracker/archive/v2.9.0.tar.gz
 	source = workout-tracker.service
 	source = workout-tracker.env.dist
-	sha256sums = 819cc7c987ad8d65c842f95c541da9e1e3932da0fa5b55f0f37bc5553e6231fd
+	sha256sums = 6355d1a4687e2c7313b4ea19121a281182d4dcf1bdaf4ccbaf68828b1094c526
 	sha256sums = 341941ad9a8ef27d09b3527058597709c9624d80d1319f36252aaa4e60073014
 	sha256sums = b06f581b4d7ec4991b89ddad9547da284de49f3ad349186e4a2787e9daeb7930
 
