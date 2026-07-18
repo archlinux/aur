@@ -35,7 +35,7 @@ sha256sums=('42437ad25cdabe6f6b7d3bee42cf911a4ee61d3502230b2fd8494d6573792717'
 
 prepare() {
     # GitHub entpackt das Archiv standardmäßig in einen Ordner namens "Projektname-Version"
-    cd "$srcdir/Pachul-2.2.1/"
+    cd "$srcdir/Pachul-2.2.1"
 
     # ─────────────────────────────────────────────────────────────────────
     # Wichtig für die Paketierung: app.py legt sein privates GTK-Icon-Theme
@@ -53,7 +53,7 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/Pachul-2.2.1/"
+    cd "$srcdir/Pachul-2.2.1"
 
     # Python-Module
     install -d "$pkgdir/usr/share/$pkgname"
