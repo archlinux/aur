@@ -1,0 +1,14 @@
+.jj
+python-libipld
+pkg
+src
+*~
+*.bin
+*.md
+*.old
+*.pkg.tar.zst
+*.sh
+*.template
+LICENSE-*
+checksums.txt
+namcap.txt
