@@ -1,0 +1,72 @@
+--- a/src/helpers/clipboard.js
++++ b/src/helpers/clipboard.js
+@@ -147,6 +147,49 @@
+   }
+ 
+   async pasteLinux(originalClipboard) {
++    // PATCHED (ppq-whisper-bin AUR package): on Wayland, Electron's
++    // clipboard.writeText/readText silently operate on a private buffer while
++    // the app window is unfocused (the compositor rejects selection writes
++    // without a focus serial), so the dictated text never reached the real
++    // clipboard and Ctrl+V pasted stale content. Move the clipboard through
++    // xclip on the XWayland side instead: X11 clients need no focus, and the
++    // compositor mirrors the X11 CLIPBOARD selection to the Wayland clipboard.
++    const xclipRead = () =>
++      new Promise((resolve) => {
++        const readProcess = spawn("xclip", ["-out", "-selection", "clipboard"], {
++          stdio: ["ignore", "pipe", "ignore"],
++        });
++        let out = "";
++        readProcess.stdout.on("data", (chunk) => (out += chunk));
++        readProcess.on("error", () => resolve(""));
++        readProcess.on("exit", () => resolve(out));
++      });
++    const xclipWrite = (value) =>
++      new Promise((resolve, reject) => {
++        const writeProcess = spawn("xclip", ["-in", "-selection", "clipboard"], {
++          stdio: ["pipe", "ignore", "ignore"],
++        });
++        writeProcess.on("error", (error) =>
++          reject(
++            new Error(
++              `xclip failed: ${error.message}. Text is copied to clipboard.`,
++            ),
++          ),
++        );
++        writeProcess.on("exit", (code) =>
++          code === 0
++            ? resolve()
++            : reject(new Error(`xclip exited with code ${code}.`)),
++        );
++        writeProcess.stdin.end(value);
++      });
++
++    // pasteText() has just written the dictated text to Electron's clipboard;
++    // read it back from there and the real (pre-dictation) clipboard via xclip.
++    const text = clipboard.readText();
++    const realOriginalClipboard = await xclipRead();
++    await xclipWrite(text);
++
+     return new Promise((resolve, reject) => {
+       const pasteProcess = spawn("xdotool", ["key", "ctrl+v"]);
+ 
+@@ -154,7 +197,8 @@
+         if (code === 0) {
+           // Text pasted successfully
+           setTimeout(() => {
+-            clipboard.writeText(originalClipboard);
++            xclipWrite(realOriginalClipboard).catch(() => {});
++            clipboard.writeText(realOriginalClipboard);
+           }, TIMING_CONFIG.CLIPBOARD_RESTORE_DELAY);
+           resolve();
+         } else {
+--- a/src/config/timing.js
++++ b/src/config/timing.js
+@@ -1,6 +1,6 @@
+ const TIMING_CONFIG = {
+   CLIPBOARD_PASTE_DELAY: 0,
+-  CLIPBOARD_RESTORE_DELAY: 100,
++  CLIPBOARD_RESTORE_DELAY: 1000,
+   // Increased timeout for Bluetooth devices (AirPods) which have higher latency
+   PASTE_TIMEOUT: 7000,
+   HOTKEY_LOAD_DELAY: 1000,
