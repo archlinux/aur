@@ -5,14 +5,14 @@
 pkgname='python-atproto-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.0.62.r3.g7ed3650
-pkgrel=1
 pkgdesc='The AT Protocol (Bluesky) SDK for Python (development version)'
-arch=('any')
+pkgver=0.0.69.r4.g15b9499
+pkgrel=1
 url='https://github.com/MarshalX/atproto'
+arch=('any')
 license=(
-  'MIT'        # SPDX-License-Identifier: MIT (main package)
-  'CC0-1.0'    # SPDX-License-Identifier: CC0-1.0 (examples)
+  'MIT'
+  'CC0-1.0'
 )
 makedepends=(
   'git'
@@ -22,7 +22,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python>=3.8'
+  'python'
   'python-click'
   'python-cryptography'
   'python-dnspython'
@@ -32,9 +32,10 @@ depends=(
   'python-typing_extensions'
   'python-websockets'
 )
-source=("git+$url.git")
 provides=("$_pkgname"{,_{cli,client,codegen,core,crypto,firehose,identity,lexicon,server}})
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -46,6 +47,7 @@ pkgver() {
 build() {
   cd "$_srcname"
 
+  export PYTHNOWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
@@ -54,10 +56,16 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGES,README,SECURITY}.md
-  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
+  cp -fa examples "$pkgdir/usr/share/doc/$pkgname/"
+
+  for _dir in doc licenses; do
+    pushd "$pkgdir/usr/share/$_dir"
+    ln -fsr "$pkgname" "$_pkgname"
+    popd
+  done > /dev/null
 }
 
 # eof

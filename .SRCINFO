@@ -1,6 +1,6 @@
 pkgbase = python-atproto-git
 	pkgdesc = The AT Protocol (Bluesky) SDK for Python (development version)
-	pkgver = 0.0.62.r3.g7ed3650
+	pkgver = 0.0.69.r4.g15b9499
 	pkgrel = 1
 	url = https://github.com/MarshalX/atproto
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-atproto-git
 	makedepends = python-installer
 	makedepends = python-poetry-dynamic-versioning
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	depends = python-click
 	depends = python-cryptography
 	depends = python-dnspython
@@ -40,6 +40,7 @@ pkgbase = python-atproto-git
 	conflicts = python-atproto_identity
 	conflicts = python-atproto_lexicon
 	conflicts = python-atproto_server
+	options = !strip
 	source = git+https://github.com/MarshalX/atproto.git
 	sha256sums = SKIP
 
