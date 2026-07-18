@@ -1,10 +1,10 @@
-# Maintainer: shinigami1231111
+# Maintainer: Glass Alarm Developer
 # Contributor: Arch Linux User
 
 pkgname=lumalarm
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A glassmorphism alarm clock for Linux with rtcwake suspend support"
+pkgrel=2
+pkgdesc="A professional glassmorphism alarm clock for Linux with rtcwake support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shinigami1231111/lumalarm"
 license=('GPL3')
@@ -12,6 +12,7 @@ depends=(
     'qt6-base'
     'qt6-multimedia'
     'qt6-declarative'
+    'qt6-quickcontrols2'
     'util-linux'
 )
 makedepends=(
@@ -20,13 +21,14 @@ makedepends=(
     'qt6-tools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shinigami1231111/lumalarm/archive/v${pkgver}.tar.gz")
-sha256sums=('0e33be0ae2f51962e11ff05ad4f465b4d2acf02cfee45135e78bbc16f2798df0')
+sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_CXX_FLAGS="-O2 -pipe -march=x86-64 -mtune=generic"
     cmake --build build -j$(nproc)
 }
 
@@ -35,6 +37,8 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/tones"
 
     install -Dm644 resources/lumalarm.desktop "${pkgdir}/usr/share/applications/lumalarm.desktop"
 
@@ -48,12 +52,18 @@ package() {
 post_install() {
     echo "=== Lumalarm - Post-Install Setup ==="
     echo ""
-    echo "1. Custom alarm tones go in:"
+    echo "1. Config directory (auto-created on first run):"
+    echo "   ~/.config/lumalarm/tones"
+    echo ""
+    echo "2. Place custom alarm tones (WAV/MP3) in:"
     echo "   ~/.config/lumalarm/tones/"
     echo ""
-    echo "2. For rtcwake passwordless suspend, add to sudoers:"
+    echo "3. For rtcwake (system wake from suspend):"
+    echo "   The PKGBUILD installs a sudoers rule allowing rtcwake without password."
+    echo "   If you need to set it manually:"
     echo "   echo 'YOUR_USERNAME ALL=(ALL) NOPASSWD: /usr/bin/rtcwake' | sudo tee /etc/sudoers.d/lumalarm"
     echo "   sudo chmod 440 /etc/sudoers.d/lumalarm"
     echo ""
-    echo "3. Run: lumalarm"
+    echo "4. Run the application:"
+    echo "   lumalarm"
 }
