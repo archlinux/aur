@@ -1,6 +1,6 @@
 # Maintainer: isleap
 pkgname=akari-tool
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Gaming setup tool for vanilla Arch — dependencies, drivers, kernels & diagnosis"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   'pacman-contrib: package cache cleanup'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf7d9e0dbddb344c3e69dc88076768e62965857f5c70327139a1996eb8bf5f16')
+sha256sums=('a9b21953834a429eb8e5208265814c0a4f57fcf5b96326f6ea963653b65458f1')
 
 package() {
   cd "Akari-Tool-Arch-$pkgver"
