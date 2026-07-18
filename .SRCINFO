@@ -1,6 +1,6 @@
 pkgbase = akari-tool
 	pkgdesc = Gaming setup tool for vanilla Arch — dependencies, drivers, kernels & diagnosis
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/isleap9/Akari-Tool-Arch
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = akari-tool
 	optdepends = timeshift: pre-change snapshots (alternative)
 	optdepends = reflector: mirror optimization
 	optdepends = pacman-contrib: package cache cleanup
-	source = akari-tool-0.2.1.tar.gz::https://github.com/isleap9/Akari-Tool-Arch/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = a7712dd541be6451b666fcd1262649c494ac519ab633a2a085c9da42ba6ee9e3
+	source = akari-tool-0.2.2.tar.gz::https://github.com/isleap9/Akari-Tool-Arch/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 536a9567c840108bb74d0f92f31a49f2b76f410dab4c7ae060c14daf43f70375
 
 pkgname = akari-tool
