@@ -1,7 +1,7 @@
 pkgbase = timetable-bin
 	pkgdesc = GTK4 + LibAdwaita client for WebUntis (prebuilt)
-	pkgver = 4.0
-	pkgrel = 2
+	pkgver = 4.1
+	pkgrel = 1
 	url = https://codeberg.org/ostfriese4/untis
 	arch = any
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = timetable-bin
 	provides = timetable
 	conflicts = untis
 	conflicts = timetable
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/timetable-bin-4.0/timetable-bin-4.0.tar.zst
-	sha256sums = 8a06f3fdfcce14b8d78a312225f731d81c1592ba6d856dc5f4992cc8bbad0e62
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/timetable-bin-4.1/timetable-bin-4.1.tar.zst
+	sha256sums = cfbebefbbdb7d7216f999a2171633a8684d008ee12a9fea047f581006bca9c4e
 
 pkgname = timetable-bin
