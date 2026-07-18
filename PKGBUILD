@@ -1,7 +1,7 @@
 # Maintainer: Boris Yumankulov <boriabloger[at]protonmail[dot]com>
 
 pkgname=('portprotonqt')
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Modern GUI for managing and launching games from PortProton and Steam"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=("portprotonqt-steam-compat")
 provides=('portprotonqt-steam-compat')
 replaces=('portprotonqt-steam-compat')
 source=("git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v$pkgver")
-sha256sums=('9450c7d4029d818d5da86abe8cc099fbfe839d72ea664d470f9204de4918e8c3')
+sha256sums=('49de1b11cdfd9525ee22199965221ed68d4499f95202398bc394e0aa43213fd0')
 
 build() {
     arch-meson PortProtonQt build
