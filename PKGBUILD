@@ -1,24 +1,52 @@
-# Maintainer: Patrick Stewart <patstew@gmail.com>
- 
-pkgname=bencher-cli
-pkgver=0.5.0
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contribute: Patrick Stewart <patstew@gmail.com>
+
+_pkgauthor=bencherdev
+_pkgname=bencher
+_execname=${_pkgname}
+
+pkgname=${_pkgname}-cli
+pkgver=0.6.9
 pkgrel=1
+_pkgver=v${pkgver}
 pkgdesc="Detect and prevent performance regressions before they make it to production with continuous benchmarking"
-url="https://bencher.dev"
-arch=('x86_64')
+
+url="https://github.com/${_pkgauthor}/${pkgname}"
+arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
-options=(!lto)
-makedepends=('git' 'rust')
-source=('git+https://github.com/bencherdev/bencher.git#commit=1f44a33e704dcd66db75aa2d1a555301e7af1724')
-md5sums=('SKIP')
+
+provides=("${_execname}")
+
+makedepends=('cargo')
+depends=('glibc' 'libgcc')
+
+options=('!lto' '!strip')
+
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${_pkgname}/archive/${_pkgver}.tar.gz")
+sha256sums=('fa22273496b2bdec757c5395c1f70929136c1fd9c1964e5c1371528c94245428')
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path ${srcdir}/bencher/services/cli/Cargo.toml
+	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu" --manifest-path "services/cli/Cargo.toml"
+}
+
+build() {
+	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
+
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+	CFLAGS+=" -ffat-lto-objects" RUSTFLAGS+=" --remap-path-prefix=$(pwd)=/build/" cargo build --locked --release --manifest-path "services/cli/Cargo.toml"
 }
 
 package() {
-    export RUSTUP_TOOLCHAIN=stable 
-    cargo install --no-track --locked --offline --all-features --root "$pkgdir/usr/" --path ${srcdir}/bencher/services/cli
-}
+	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
 
+	install -Dm755 "target/release/${_execname}" -t "${pkgdir}/usr/bin/"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
+
+	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
