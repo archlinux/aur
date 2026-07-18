@@ -1,7 +1,7 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
 url="https://github.com/tidynest/linux-system-hardener"
@@ -56,6 +56,11 @@ build() {
     # relative prefixes — prevents $srcdir and $HOME leaking into binaries.
     _remap="--remap-path-prefix=$srcdir=src: --remap-path-prefix=$HOME/.cargo/registry/src/=registry: --remap-path-prefix=$HOME/.rustup/toolchains/=toolchain:"
     export RUSTFLAGS="${RUSTFLAGS:-} ${_remap}"
+
+    # Pin the target dir inside the build root. A user-level cargo config
+    # (a global [build] target-dir) would otherwise relocate the artifacts
+    # that package() installs from relative target/ paths.
+    export CARGO_TARGET_DIR="$srcdir/$pkgname-$pkgver/target"
 
     cargo build --release --target x86_64-unknown-linux-musl -p hardener-cli
 
