@@ -1,5 +1,5 @@
 pkgbase = fastcp
-	pkgdesc = A fast cp wrapper using --reflink=always (x86_64 Linux only) — builds from source, always tracks latest
+	pkgdesc = fastcp, a fast cp wrapper using --reflink=always, builds from source
 	pkgver = cdb708a
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcp

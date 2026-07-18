@@ -2,7 +2,7 @@
 pkgname=fastcp
 pkgver=cdb708a
 pkgrel=1
-pkgdesc="A fast cp wrapper using --reflink=always (x86_64 Linux only) — builds from source, always tracks latest"
+pkgdesc="fastcp, a fast cp wrapper using --reflink=always, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcp"
 license=('GPL-3.0-or-later')
