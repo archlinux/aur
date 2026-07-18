@@ -1,0 +1,14 @@
+pkgbase = taskframe
+	pkgdesc = A fast, keyboard-driven task manager for the terminal, inspired by Taskwarrior but simpler.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/mustachius/taskframe
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = taskframe
+	source = taskframe-0.2.1.tgz::https://github.com/mustachius/taskframe/archive/v0.2.1.tar.gz
+	sha256sums = 5cb5bd50ae6ea4b13c73e78e0814397c2638f3c5c8e2154fc87b0a358d190806
+
+pkgname = taskframe

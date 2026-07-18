@@ -1,0 +1,5 @@
+[taskframe]
+source = "github"
+github = "mustachius/taskframe"
+use_max_tag = true
+prefix = "v"
