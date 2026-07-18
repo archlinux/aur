@@ -1,13 +1,13 @@
 # shellcheck shell=bash
 # -*- sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Alex Avance <aravance at gmail dot com>
 
 pkgname='sparklines'
 pkgdesc='Text-based sparklines for the command line mimicking those of Edward Tufte'
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 url="https://github.com/deeplook/$pkgname"
 changelog="$pkgname.changelog"
 arch=('any')
@@ -39,6 +39,7 @@ sha256sums=(
 build() {
   cd "$pkgname-$pkgver"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
