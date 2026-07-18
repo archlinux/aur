@@ -1,6 +1,6 @@
 pkgbase = pomerium-bin
 	pkgdesc = Identity-aware access proxy
-	pkgver = 0.32.9
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://github.com/pomerium/pomerium
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pomerium-bin
 	conflicts = pomerium
 	backup = etc/pomerium/config.yaml
 	source = pomerium.sysusers
-	source = pomerium-bin-0.32.9.deb::https://github.com/pomerium/pomerium/releases/download/v0.32.9/pomerium_0.32.9-1_amd64.deb
+	source = pomerium-bin-0.33.0.deb::https://github.com/pomerium/pomerium/releases/download/v0.33.0/pomerium_0.33.0-1_amd64.deb
 	sha512sums = 1e5e7656eb5db12e0c39759ca03c463291f25e90c385105381a0e69390e98ea262615b72db73115b3d99b06f94b657ae2302b56f100be2f93f90a438fdad6833
-	sha512sums = 7424c90d5504573fb14e6803ade0f401d604c3d4b2ade59f95caa8795dc5bc1a331d35e91304fa791782429dcf5d71e5458b70e39230f12c6e80a817b06b0038
+	sha512sums = 4aa5e60916f8b87d1df79ac1099da783e8c27a24103b00cfb49273939503aaf153ded72da85cedfa9fcdba2372d9593b4e3d3cfbfa2b8040f2d36fcf070aa0a9
 
 pkgname = pomerium-bin
