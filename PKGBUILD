@@ -1,6 +1,6 @@
 # Maintainer: paranoica <mitjumper@gmail.com>
 pkgname=rayshot
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Fast screenshot and annotation tool for Linux (GNOME/Wayland)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('rayshot')
 conflicts=('rayshot-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce1ca66fe706519ffaba5b9d4a961d2642b0c2d80754495e925acf9753eb8152')
+sha256sums=('2a5bfcc225ab625b419fe50fc9aa206223b42c06be15e4d69d7795139902ca4f')
 install=rayshot.install
 
 prepare() {
