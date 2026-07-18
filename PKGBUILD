@@ -1,7 +1,7 @@
 # Maintainer: Zaid Ejjo <zaid@example.com>
 # Contributor: Zaid Ejjo <zaid@example.com>
 
-pkgname=ax-cli
+pkgname=ax
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="ax — TUI API Client: a terminal-based HTTP client with xh/httpie-style syntax parsing"
