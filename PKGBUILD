@@ -25,6 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 sha256sums=('353aa843199832eb8dd90a8217f4205535025689c5df1be2d26135fffe90e774'
             '153ff393a47300a285f7f79c29cdd63039c9bbdce43f6651f3a92ec5625a03a5')
 
+
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
