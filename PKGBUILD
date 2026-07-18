@@ -2,7 +2,7 @@
 # Maintainer: Sergiu Ghitea <28300158+sergiught@users.noreply.github.com>
 
 pkgname='ofga-bin'
-pkgver=0.264.0
+pkgver=0.265.1
 pkgrel=1
 pkgdesc='A modern CLI & TUI for OpenFGA.'
 url='https://github.com/sergiught/openfga-cli'
@@ -12,10 +12,10 @@ provides=('ofga')
 conflicts=('ofga')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sergiught/openfga-cli/releases/download/v${pkgver}/ofga_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ad798d9ae7e3ce7f6c2f2a26cecf2aa94fc3c83ec58145c4737ab6f11c2415d1')
+sha256sums_aarch64=('0a0f62aa03202e950aa6ccc4d0633f64003b5ac9a78df15c847858ed78930bee')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sergiught/openfga-cli/releases/download/v${pkgver}/ofga_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c80addd525063d37099a825145e8981a9179bd5729ecd73c0d3d0ad08c98c48a')
+sha256sums_x86_64=('c112fd73c0419c46887cfb9d837c161d0d2d58465ee2ad3acf435529e9916a80')
 
 package() {
   install -Dm755 "./ofga" "${pkgdir}/usr/bin/ofga"
