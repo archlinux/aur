@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=nls-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A modern ls with useful tables'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('nls')
 conflicts=('nls')
 source_x86_64=("nls-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/nls_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("nls-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/nls_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('5d909dd720c5dd8c16ab7adc9c434ee125afba35f8d4b68c4a4d675536135728')
-sha256sums_aarch64=('1577a963c09d8aeaa98e597078ca519e80ec9afb3ebd3236f459cd119bb115f4')
+sha256sums_x86_64=('fb7c952b54109b1fccf29e5a702e979df0399904a8bf16c06e5d29ed7386dc4e')
+sha256sums_aarch64=('4908740ba17298745cb24bb6abdcfb4c109e366427c617f7bc1947d20435a0b5')
 
 package() {
   install -Dm755 nls "${pkgdir}/usr/bin/nls"
