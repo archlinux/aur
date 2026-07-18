@@ -1,6 +1,6 @@
 pkgbase = nls-bin
 	pkgdesc = A modern ls with useful tables
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/nolight132/nls
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = nls-bin
 	license = MIT
 	provides = nls
 	conflicts = nls
-	source_x86_64 = nls-0.10.0-linux-amd64.tar.gz::https://github.com/nolight132/nls/releases/download/v0.10.0/nls_v0.10.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = fb7c952b54109b1fccf29e5a702e979df0399904a8bf16c06e5d29ed7386dc4e
-	source_aarch64 = nls-0.10.0-linux-arm64.tar.gz::https://github.com/nolight132/nls/releases/download/v0.10.0/nls_v0.10.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4908740ba17298745cb24bb6abdcfb4c109e366427c617f7bc1947d20435a0b5
+	source_x86_64 = nls-0.11.0-linux-amd64.tar.gz::https://github.com/nolight132/nls/releases/download/v0.11.0/nls_v0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ddb6bde7c711a0cd6b950afa8a8636b2519c5b24439b9342bd38a19ead8fc4b7
+	source_aarch64 = nls-0.11.0-linux-arm64.tar.gz::https://github.com/nolight132/nls/releases/download/v0.11.0/nls_v0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 92b8aecb32871e2a878095c183222fc8294bc3aaf1c6903e0edb1c32b13d1e83
 
 pkgname = nls-bin
