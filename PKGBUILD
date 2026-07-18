@@ -2,7 +2,7 @@
 
 pkgname=python-qsnctf
 _name=${pkgname#python-}
-pkgver=0.0.9.2
+pkgver=0.0.9.3
 pkgrel=1
 epoch=
 pkgdesc="青少年 CTF 训练平台是一个公益、免费、供给全国青少年学习、训练的 CTF 在线平台。"
@@ -38,7 +38,7 @@ install=
 changelog=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cace2c005e340f1b826a4067d0185c28568521ceaeaf800bb4b46418813def38')
+sha256sums=('23141dc3628f1bb305f146d8ca0f0c7b9818eeaaffa7fc1b26761bec7d7f919f')
 #validpgpkeys=()
 
 build() {
