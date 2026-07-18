@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -347,6 +347,7 @@ External library support:
+@@ -345,6 +345,7 @@ External library support:
    --enable-whisper         enable whisper filter [no]
    --disable-xlib           disable xlib [autodetect]
    --disable-zlib           disable zlib [autodetect]
@@ -8,7 +8,7 @@
  
    The following libraries provide various hardware acceleration features:
    --disable-amf            disable AMF video encoding code [autodetect]
-@@ -2133,6 +2134,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -2129,6 +2130,7 @@ EXTERNAL_LIBRARY_LIST="
      libssh
      libsvtav1
      libsvtjpegxs
@@ -16,7 +16,7 @@
      libtensorflow
      libtesseract
      libtheora
-@@ -3907,6 +3909,7 @@ vapoursynth_demuxer_deps="vapoursynth"
+@@ -3924,6 +3926,7 @@ vapoursynth_demuxer_deps="vapoursynth"
  videotoolbox_suggest="coreservices"
  videotoolbox_deps="corefoundation coremedia corevideo VTDecompressionSessionDecodeFrame"
  videotoolbox_encoder_deps="videotoolbox VTCompressionSessionPrepareToEncodeFrames"
@@ -24,7 +24,7 @@
  
  # demuxers / muxers
  ac3_demuxer_select="ac3_parser"
-@@ -7470,6 +7473,7 @@ enabled libspeex          && require_pkg_config libspeex speex speex/speex.h spe
+@@ -7468,6 +7471,7 @@ enabled libspeex          && require_pkg_config libspeex speex speex/speex.h spe
  enabled libsrt            && require_pkg_config libsrt "srt >= 1.3.0" srt/srt.h srt_socket
  enabled libsvtav1         && require_pkg_config libsvtav1 "SvtAv1Enc >= 0.9.0" EbSvtAv1Enc.h svt_av1_enc_init_handle
  enabled libsvtjpegxs      && require_pkg_config libsvtjpegxs "SvtJpegxs >= 0.10.0" SvtJpegxsEnc.h svt_jpeg_xs_encoder_init
@@ -34,7 +34,7 @@
  enabled libtheora         && { check_pkg_config libtheora theoraenc theora/theoraenc.h th_info_init ||
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1224,6 +1224,7 @@ OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_anim
+@@ -1236,6 +1236,7 @@ OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_anim
  OBJS-$(CONFIG_LIBX262_ENCODER)            += libx264.o
  OBJS-$(CONFIG_LIBX264_ENCODER)            += libx264.o
  OBJS-$(CONFIG_LIBX265_ENCODER)            += libx265.o
@@ -44,7 +44,7 @@
  OBJS-$(CONFIG_LIBXEVD_DECODER)            += libxevd.o
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -830,6 +830,7 @@ extern const FFCodec ff_libxavs_encoder;
+@@ -831,6 +831,7 @@ extern const FFCodec ff_libxavs_encoder;
  extern const FFCodec ff_libxavs2_encoder;
  extern const FFCodec ff_libxvid_encoder;
  extern const FFCodec ff_libzvbi_teletext_decoder;

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r125498.g1d5550613b
+pkgver=8.2.r125668.g70a5df6d27
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
@@ -27,7 +27,6 @@ depends=(
     'fribidi'
     'glib2'
     'glibc'
-    'glslang'
     'gnutls'
     'gsm'
     'harfbuzz'
@@ -144,6 +143,7 @@ makedepends=(
     'decklink-sdk'
     'ffnvcodec-headers'
     'git'
+    'glslang'
     'gmp'
     'libgl'
     'lv2'
@@ -176,11 +176,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             'SKIP'
             '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
-            '370fc39fa1c9c5136c9d926247fd50019a67b48d4eb7292e45f7c2aeb54c4b8f'
+            'ae9cf2d3936a3288f468b254a83327c85dce2632cd3ab26347ddf50602328fbc'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '4b1274203e7d9ffb50b277e356d7704b8039fc85ef89aa5e7f72c449993a99d6'
-            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
-            '58df5ec4b4d4e3f7f1cc1ca0e44b0cee245ab51d3302530dcbaf86ec05949990'
+            '80dd151073299c033d232a21dc422aebb71ec76c5d7aa8faf716867ee04c2750'
+            '57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4'
+            '00b3e50ea9905c195bdc457ddc6028bba886291a67f6bf64c545578f9f92e51a'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -210,7 +210,7 @@ build() {
         '-DBUILD_SHARED_LIBS:BOOL=OFF'
         '-DCMAKE_BUILD_TYPE:STRING=None'
         "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
-        '-Wno-dev')
+        '-Wno-author')
     
     # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
     # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
@@ -288,7 +288,6 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libharfbuzz \
@@ -325,7 +324,6 @@ build() {
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
-        --disable-libshaderc \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
