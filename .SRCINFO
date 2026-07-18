@@ -1,6 +1,6 @@
 pkgbase = python-pyexcel-io
 	pkgdesc = One interface to read and write the data in various excel formats
-	pkgver = 0.6.7.1
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/pyexcel/pyexcel-io
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = python-pyexcel-io
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-lml
-	source = python-pyexcel-io-0.6.7.1.tar.gz::https://github.com/pyexcel/pyexcel-io/archive/v0.6.7.1.tar.gz
-	sha256sums = 2670c973250535e3e0467f0238d029f5e03a8480bf8b5e718b5ecdbba2b29e45
+	optdepends = python-chardet: encoding detection for zipped CSV (csvz/tsvz)
+	source = python-pyexcel-io-0.6.8.tar.gz::https://github.com/pyexcel/pyexcel-io/archive/v0.6.8.tar.gz
+	sha256sums = 19be62568521a31b24bb4d7d5fc456939d9b8b9a29297ec887d9e57df4c0b06e
 
 pkgname = python-pyexcel-io
