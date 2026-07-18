@@ -1,13 +1,12 @@
-# Maintainer: SahibBommelig <sahib@online.de>
-# Co-Maintainer: Fermin Olaiz <ferminolaiz@gmail.com>
-# Last packager: Vassili Tchersky <vt+arch@vbc.su>
-# rmlint PKBUILD for ArchLinux
+# Maintainer: Vassili Tchersky <vt+arch@vbcy.org>
+# Maintainer: Fermin Olaiz <ferminolaiz@gmail.com>
+# Contributor: SahibBommelig <sahib@online.de>
  
 _pkgname=rmlint
 pkgbase="${_pkgname}-git"
 pkgname=('rmlint-git' 'rmlint-shredder-git')
-pkgver=2.10.3.r0.g2fe7dc80
-pkgrel=2
+pkgver=2.10.3.r10.g8588a71f
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
@@ -23,12 +22,18 @@ optdepends=(
   'gettext'
 )
 
-source=("$_pkgname"::"git+$url")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git fetch origin
+  git checkout -B glib_hotfix origin/hotfix/glib_option_removal
+}
  
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe master --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe glib_hotfix --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
