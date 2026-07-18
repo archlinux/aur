@@ -8,12 +8,12 @@
 
 pkgname=bakawm-git
 _pkgname=bakawm
-pkgver=r10.a2f1343
+pkgver=r12.18edc16
 pkgrel=1
 pkgdesc="A Wayland window manager built with Rust and Smithay"
 arch=(aarch64 armv6h armv7h i686 x86_64)
 url="https://codeberg.org/FuncSonicYEAH/bakawm"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
   libdisplay-info
   libdrm
