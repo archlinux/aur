@@ -1,0 +1,5 @@
+[tuigram-bin]
+source = "github"
+github = "preiter93/tuigram"
+use_latest_release = true
+prefix = "v"

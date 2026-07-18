@@ -1,0 +1,21 @@
+pkgbase = tuigram-bin
+	pkgdesc = A TUI sequence diagram editor
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/preiter93/tuigram
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	depends = glibc
+	depends = libgcc
+	provides = tuigram
+	conflicts = tuigram
+	options = !strip
+	source = README-0.1.6.md::https://raw.githubusercontent.com/preiter93/tuigram/v0.1.6/README.md
+	sha256sums = 29b61d9fd7248d4b1cf0f55a940675bddd4550d6b40cac5679b47ab24853f6e5
+	source_x86_64 = tuigram-x86_64-0.1.6.tgz::https://github.com/preiter93/tuigram/releases/download/v0.1.6/tuigram-v0.1.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f64132e0ede623a642e044ec2b8052b87f7a86ed4bf181d7e22d4193d7e2aed9
+	source_aarch64 = tuigram-aarch64-0.1.6.tgz::https://github.com/preiter93/tuigram/releases/download/v0.1.6/tuigram-v0.1.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3574f5dec702af01d3441f8d4b71a3c1fac5a9de06c6e9ec458ce1a722d57911
+
+pkgname = tuigram-bin
