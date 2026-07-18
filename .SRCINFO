@@ -1,6 +1,6 @@
 pkgbase = sheets-bin
 	pkgdesc = Terminal based spreadsheet tool (binary release)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 3
 	url = https://github.com/maaslalani/sheets
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sheets-bin
 	conflicts = sheets
 	conflicts = sheets-git
 	options = !debug
-	source_x86_64 = https://github.com/maaslalani/sheets/releases/download/v0.2.0/sheets_Linux_x86_64.tar.gz
+	source_x86_64 = https://github.com/maaslalani/sheets/releases/download/v0.3.0/sheets_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = 5868d162a2df4771cd36122ae8e608ca7afca3d38774b2d17e9727db816e9c69
-	source_aarch64 = https://github.com/maaslalani/sheets/releases/download/v0.2.0/sheets_Linux_arm64.tar.gz
+	source_aarch64 = https://github.com/maaslalani/sheets/releases/download/v0.3.0/sheets_Linux_arm64.tar.gz
 	sha256sums_aarch64 = 25e1a047e368a1fb91f4e9e48418b844f06c176bd3ce0b65fb80fcf15b8c2718
 
 pkgname = sheets-bin

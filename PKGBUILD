@@ -16,7 +16,7 @@
 
 _pkgname=sheets
 pkgname=${_pkgname}-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=3
 pkgdesc="Terminal based spreadsheet tool (binary release)"
 arch=('x86_64' 'aarch64')
