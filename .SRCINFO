@@ -14,5 +14,7 @@ pkgbase = beectl
 	makedepends = pkgconf
 	depends = libuv
 	depends = cjson
+	source = https://github.com/rosmanov/bee-host/archive/refs/tags/1.5.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = beectl

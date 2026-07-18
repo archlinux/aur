@@ -9,11 +9,11 @@ url="https://github.com/rosmanov/bee-host"
 license=('MIT')
 depends=('libuv' 'cjson')
 makedepends=('cmake' 'pkgconf')
-source=()
-sha256sums=()
+source=("https://github.com/rosmanov/bee-host/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cmake -B build -S "$startdir/.." \
+  cmake -B build -S "$srcdir/bee-host-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_DEPS=ON \
