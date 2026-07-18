@@ -1,0 +1,21 @@
+pkgbase = expandrive
+	pkgdesc = Mount cloud storage as native drives on Linux
+	pkgver = 2026.6.11.862
+	pkgrel = 1
+	url = https://www.expandrive.com/
+	arch = x86_64
+	license = custom:proprietary
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = fuse2
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	source = expandrive.deb::https://www.expandrive.com/api/download/expandrive?platform=linux&ext=deb
+	sha256sums = SKIP
+
+pkgname = expandrive
