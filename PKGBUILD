@@ -4,12 +4,13 @@
 
 pkgname=timetable-bin
 pkgver=4.0
-pkgrel=1
-pkgdesc="GTK4 + LibAdwaita client for WebUntis (prebuilt, bundles python-webuntis)"
+pkgrel=2
+pkgdesc="GTK4 + LibAdwaita client for WebUntis (prebuilt)"
 arch=('any')
 url="https://codeberg.org/ostfriese4/untis"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'python-requests' 'glib2' 'hicolor-icon-theme')
+depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python' 'python-gobject'
+         'python-requests' 'python-pyotp' 'glib2' 'hicolor-icon-theme')
 provides=('untis' 'timetable')
 conflicts=('untis' 'timetable')
 source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
