@@ -1,6 +1,6 @@
 pkgbase = gos-bin
 	pkgdesc = A simple CLI tool that can be used to make project structures!
-	pkgver = 0.6.5
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/lxsh-S/gos
 	arch = x86_64
