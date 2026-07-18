@@ -18,6 +18,5 @@ pkgbase = ariang-git
 	conflicts = ariang
 	source = git+https://github.com/mayswind/AriaNg.git
 	sha256sums = SKIP
-	sha256sums = 52424300b6227eb28641f77bbd6ff67f4a3114e515c66dac650382f842f5c07e
 
 pkgname = ariang-git

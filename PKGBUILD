@@ -17,8 +17,7 @@ optdepends=(
 provides=("ariang")
 conflicts=("ariang")
 source=("git+${url}.git")
-sha256sums=('SKIP'
-            '52424300b6227eb28641f77bbd6ff67f4a3114e515c66dac650382f842f5c07e')
+sha256sums=('SKIP')
 
 pkgver(){
     cd "${srcdir}/AriaNg"
