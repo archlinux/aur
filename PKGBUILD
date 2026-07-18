@@ -9,7 +9,7 @@
 # upstream releases.
 
 pkgname=mtroamd
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Persistent terminal daemon over QUIC - like mosh+tmux in one daemon, with multi-client handoff"
 arch=('x86_64' 'aarch64' 'armv7h')

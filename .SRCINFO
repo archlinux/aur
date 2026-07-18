@@ -1,6 +1,6 @@
 pkgbase = mtroamd
 	pkgdesc = Persistent terminal daemon over QUIC - like mosh+tmux in one daemon, with multi-client handoff
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/AG-Studio-Apps/mtroamd
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = mtroamd
 	makedepends = go>=1.26
 	makedepends = git
 	makedepends = pandoc
-	provides = mtroamd=1.7.5
-	provides = mtroam=1.7.5
+	provides = mtroamd=1.7.6
+	provides = mtroam=1.7.6
 	conflicts = mtroamd-bin
-	source = git+https://github.com/AG-Studio-Apps/mtroamd.git#tag=v1.7.5
+	source = git+https://github.com/AG-Studio-Apps/mtroamd.git#tag=v1.7.6
 	sha256sums = SKIP
 
 pkgname = mtroamd
