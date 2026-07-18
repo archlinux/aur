@@ -1,14 +1,14 @@
 # Maintainer: Geoffrey D. Bennett <g@b4.vu>
 pkgname=scarlett4-firmware
 epoch=1
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc='Firmware for Focusrite Scarlett 4th Gen 16i16, 18i16, 18i20'
+pkgdesc='Firmware for Focusrite Scarlett 4th Gen 16i16, 18i16, 18i20 and ISA C8X'
 arch=('any')
 url="https://github.com/geoffreybennett/$pkgname"
 license=('custom:Focusrite')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cef79425c665bb90b5ba85f7f483e41c2fdc1d4390e4c11344df1d69034e9cd5')
+sha256sums=('24cde606b03350fd11b96079cc3a1b0db2cef315a3218affbd9e3f3a048a8077')
 
 package() {
   cd "$pkgname-$pkgver"

@@ -1,12 +1,12 @@
 pkgbase = scarlett4-firmware
-	pkgdesc = Firmware for Focusrite Scarlett 4th Gen 16i16, 18i16, 18i20
-	pkgver = 1.0
+	pkgdesc = Firmware for Focusrite Scarlett 4th Gen 16i16, 18i16, 18i20 and ISA C8X
+	pkgver = 1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/geoffreybennett/scarlett4-firmware
 	arch = any
 	license = custom:Focusrite
-	source = scarlett4-firmware-1.0.tar.gz::https://github.com/geoffreybennett/scarlett4-firmware/archive/refs/tags/1.0.tar.gz
-	sha256sums = cef79425c665bb90b5ba85f7f483e41c2fdc1d4390e4c11344df1d69034e9cd5
+	source = scarlett4-firmware-1.1.tar.gz::https://github.com/geoffreybennett/scarlett4-firmware/archive/refs/tags/1.1.tar.gz
+	sha256sums = 24cde606b03350fd11b96079cc3a1b0db2cef315a3218affbd9e3f3a048a8077
 
 pkgname = scarlett4-firmware
