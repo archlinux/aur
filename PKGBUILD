@@ -1,15 +1,15 @@
 # Maintainer: Myqfeng <viagrahuang@outlook.com>
 
 pkgname=qteasytier
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="基于 EasyTier, 一款美观实用的远程联机工具!"
 arch=('x86_64')
 options=('!debug')
 url="https://github.com/qteasytier/qt-easy-tier"
 license=('LGPL3')
-depends=('qt6-base' 'qt6-svg')
-makedepends=('cmake' 'git')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'polkit')
+makedepends=('base-devel' 'cmake' 'git' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'ninja')
 install=qteasytier.install
 source=("${pkgname}::git+https://github.com/qteasytier/qt-easy-tier.git#tag=${pkgver}")
 sha256sums=('SKIP')
@@ -41,11 +41,11 @@ package() {
         "${pkgdir}/opt/qteasytier/qtet.png"
 
     # systemd 服务
-    install -Dm644 "assets/linux_pkg/qtet-daemon.service" \
+    install -Dm644 "assets/package/linux/qtet-daemon.service" \
         "${pkgdir}/etc/systemd/system/qtet-daemon.service"
 
     # 桌面文件
-    install -Dm644 "assets/linux_pkg/qteasytier.desktop" \
+    install -Dm644 "assets/package/linux/qteasytier.desktop" \
         "${pkgdir}/usr/share/applications/qteasytier.desktop"
 
     # 创建 /usr/bin 软链接
