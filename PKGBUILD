@@ -1,20 +1,20 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex
-pkgver=42ebd65
+pkgver=0
 pkgrel=1
-pkgdesc="fasthex, a very fast hex dumper, builds from source"
+pkgdesc="A very fast hex dumper (x86_64 Linux only) — builds from source, always tracks latest"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'curl')
 provides=('fasthex')
 conflicts=('fasthex-bin')
 source=("fasthex-latest.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/latest.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
-    git ls-remote "https://github.com/CallMeAlphabet/fasthex.git" refs/tags/latest | cut -c1-7
+    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/fasthex/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
 }
 
 prepare() {

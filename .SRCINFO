@@ -1,12 +1,13 @@
 pkgbase = fasthex
-	pkgdesc = fasthex, a very fast hex dumper, builds from source
-	pkgver = 42ebd65
+	pkgdesc = A very fast hex dumper (x86_64 Linux only) — builds from source, always tracks latest
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fasthex
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = curl
 	depends = gcc-libs
 	provides = fasthex
 	conflicts = fasthex-bin
