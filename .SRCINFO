@@ -1,7 +1,7 @@
 pkgbase = greetd-dms-greeter-git
 	pkgdesc = DankMaterialShell greeter for greetd
-	pkgver = 1.4.0.888.ge94af2a7
-	pkgrel = 2
+	pkgver = 1.5.0.134.g069df80b
+	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	install = greetd-dms-greeter.install
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = greetd-dms-greeter-git
 	conflicts = greetd-dms-greeter-bin
 	backup = etc/greetd/config.toml
 	source = greetd-dms-greeter-git::git+https://github.com/AvengeMedia/DankMaterialShell.git
+	source = git+https://github.com/AvengeMedia/dank-qml-common.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = greetd-dms-greeter-git

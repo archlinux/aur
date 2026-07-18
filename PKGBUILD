@@ -1,7 +1,7 @@
 pkgname=greetd-dms-greeter-git
-pkgver=1.4.0.888.ge94af2a7
+pkgver=1.5.0.134.g069df80b
 #pkgver=r960.7516d44
-pkgrel=2
+pkgrel=1
 pkgdesc='DankMaterialShell greeter for greetd'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -20,8 +20,18 @@ provides=('greetd-dms-greeter')
 conflicts=('greetd-dms-greeter' 'greetd-dms-greeter-bin')
 backup=('etc/greetd/config.toml')
 install=greetd-dms-greeter.install
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git"
+        "git+https://github.com/AvengeMedia/dank-qml-common.git")
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  [ -f .gitmodules ] || return 0
+  git submodule init
+  git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
+  git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -36,7 +46,7 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     install -dm755 "$pkgdir/usr/share/quickshell/dms-greeter"
-    cp -r ./quickshell/* "$pkgdir/usr/share/quickshell/dms-greeter/"
+    cp -rL ./quickshell/* "$pkgdir/usr/share/quickshell/dms-greeter/"
 
     install -Dm755 "quickshell/Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
 
