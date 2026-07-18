@@ -1,0 +1,4 @@
+version = 1
+SPDX-PackageName = "colorshell-git"
+SPDX-PackageSupplier = "João Dias <joaovodias at gmail dot com>"
+SPDX-PackageDownloadLocation = "https://github.com/retrozinndev/colorshell"

@@ -1,0 +1,5 @@
+pkg
+src
+colorshell
+*.pkg.tar.zst
+pkg.sh
