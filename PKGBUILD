@@ -28,7 +28,7 @@ package() {
     install -d "${pkgdir}/usr/bin"
     cat <<EOF > "${pkgdir}/usr/bin/verlauf-leeren"
 #!/bin/sh
-exec python3 /usr/share/verlauf-leeren/main.py "\$@"
+exec python3 /usr/share/verlauf-leeren/verlauf-leeren.py "\$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/verlauf-leeren"
 
