@@ -1,6 +1,6 @@
 pkgbase = zapreq
 	pkgdesc = A fast, friendly HTTP client for the terminal
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/MFAIZAN20/zapreq
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = zapreq
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = zapreq-0.1.7.tar.gz::https://github.com/MFAIZAN20/zapreq/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 9600fda64c88cdd24fb3dcd34790d5586b34dc021e245c752b124a5569bd68ce
+	source = zapreq-0.1.8.tar.gz::https://github.com/MFAIZAN20/zapreq/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = 4784c8049876d0a248f4ddce01f5bb2334beaf66c5ad674f63d435a84d25a424
 
 pkgname = zapreq
