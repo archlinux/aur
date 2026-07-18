@@ -6,16 +6,17 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=apkeep
-pkgver=0.18.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='CLI tool from EFF for downloading APK files from various sources'
 url='https://github.com/EFForg/apkeep'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-arch=('i686' 'x86_64' 'arm' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('openssl' 'gcc-libs')
 makedepends=('cargo')
-sha256sums=('627f2382c3c849cbf872c512cf5f7293d31714b630afdf531ec8a9263bea207e')
+options=('!lto')
+sha256sums=('0c7a9c84b5dff12c356b22878e4f88ff3f1b44500ff80436c9e64cee17146388')
 
 prepare() {
   cd "$pkgname-$pkgver"
