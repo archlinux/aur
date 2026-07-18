@@ -2,7 +2,7 @@
 pkgname=ppq-whisper-bin
 _pkgname=ppq-whisper
 pkgver=0.1.53
-pkgrel=1
+pkgrel=2
 pkgdesc='PPQ Whisper (PPQ Voice) — cloud-powered desktop dictation app with instant clean-up'
 arch=('x86_64')
 url='https://github.com/PayPerQ/ppq-voice-releases'
@@ -36,9 +36,19 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
     rm -r "$pkgdir/usr/share/icons/hicolor/0x0"
 
-    # pacman does not run the deb postinst: create the /usr/bin symlink ourselves
+    # Wrapper instead of the deb postinst's symlink: Electron 36 auto-selects
+    # GTK4, but the tray/appindicator path still loads GTK3 symbols and GTK
+    # aborts on the mix ("GTK 2/3 symbols detected") before any window appears
     install -d "$pkgdir/usr/bin"
-    ln -s '/opt/PPQ Whisper/ppq-whisper' "$pkgdir/usr/bin/$_pkgname"
+    cat > "$pkgdir/usr/bin/$_pkgname" <<'WRAPPER'
+#!/bin/sh
+exec '/opt/PPQ Whisper/ppq-whisper' --gtk-version=3 "$@"
+WRAPPER
+    chmod 755 "$pkgdir/usr/bin/$_pkgname"
+
+    # Route desktop launches through the wrapper too
+    sed -i 's|^Exec=.*|Exec=ppq-whisper %U|' \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
     # SUID sandbox fallback for kernels without unprivileged user namespaces
     chmod 4755 "$pkgdir/opt/PPQ Whisper/chrome-sandbox"
