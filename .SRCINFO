@@ -1,6 +1,6 @@
 pkgbase = pkgbuild-manager
 	pkgdesc = Rust CLI + GTK4 settings panel and multi-file-manager context-menu integration for PKGBUILD management
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/johnpetersa19/PKGBUILD_Manager
 	install = pkgbuild-manager.install
@@ -25,7 +25,7 @@ pkgbase = pkgbuild-manager
 	optdepends = dolphin: for Dolphin (KDE) right-click menu support
 	provides = pkgbuild-manager
 	conflicts = pkgbuild-manager-git
-	source = PKGBUILD_Manager-2.3.0.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 932004c78dae9f80b9bfbfda0f2e6aba4e47386ae087010ddc3fff3e37fbdd39
+	source = PKGBUILD_Manager-2.4.0.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 07396c0630e542b578d1747e148593ed0a4feef05067b60ec66215eeaafdd87d
 
 pkgname = pkgbuild-manager
