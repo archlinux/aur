@@ -37,9 +37,9 @@ pkgbase = imageviewer
 	optdepends = kimageformats
 	optdepends = qt6-imageformats
 	optdepends = resvg
-	provides = imageviewer=1.9.0
+	provides = imageviewer=1.9.1
 	conflicts = imageviewer
-	source = ImageViewer-1.9.0.tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v1.9.0/ImageViewer-1.9.0.tar.xz
+	source = ImageViewer-1.9.1.tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v1.9.1/ImageViewer-1.9.1.tar.xz
 	source = com.github.aliencoweatcake.imageviewer.desktop
 	source = com.github.aliencoweatcake.imageviewer.appdata.xml
 	sha256sums = 7ca56ebc29a90e56897c53ac27414df7952a504f5508f54e02ab58e14a28371b
