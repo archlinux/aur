@@ -3,7 +3,7 @@
 _architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 
 pkgname="mingw-w64-libvips"
-pkgver="8.18.2"
+pkgver="8.18.4"
 pkgrel=1
 pkgdesc="A fast image processing library with low memory needs (mingw-w64)"
 arch=("any")
@@ -23,15 +23,17 @@ depends=(
     "mingw-w64-cairo"
     "mingw-w64-lcms2"
     "mingw-w64-openjpeg2"
-    "mingw-w64-libheif"
     "mingw-w64-poppler"
-    "mingw-w64-libjxl"
     "mingw-w64-libraw"
+)
+optdepends=(
+    "mingw-w64-libjxl"
+    "mingw-w64-libheif"
 )
 makedepends=("mingw-w64-meson")
 options=("!strip" "!buildflags" "staticlibs")
 source=("https://github.com/libvips/libvips/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("c6e9f3c384436c6ffc75848d1ad76347368b9639897f6d9f909178dc986d5200")
+sha512sums=("5bafec745ce96775ed462a4454cf084c5458936c8d64cccb711b56242a6afb30e8c68818753ea52b196943715d4afb2866243806754f9aabd5525e2b4be0231b")
 
 build() {
     cd "libvips-$pkgver"
