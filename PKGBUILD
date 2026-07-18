@@ -1,17 +1,17 @@
 # shellcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgdesc='Modern datetime library for Python (development version)'
-pkgver=0.10.0.r3.g5ccb50f
+pkgver=0.10.3.r0.ga107d67
 pkgrel=1
 url="https://github.com/ariebovenberg/$_srcname"
 arch=('aarch64' 'x86_64')
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -45,6 +45,7 @@ prepare() {
 build() {
   cd "$_srcname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
