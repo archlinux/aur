@@ -1,0 +1,17 @@
+pkgbase = axonhub-bin
+	pkgdesc = Open-source AI Gateway — Use any SDK to call 100+ LLMs. Built-in failover, load balancing, cost control and end-to-end tracing.
+	pkgver = 1.0.0-beta5
+	pkgrel = 1
+	url = https://github.com/looplj/axonhub
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = LGPL-3.0
+	provides = axonhub
+	conflicts = axonhub
+	source_x86_64 = axonhub-1.0.0-beta5-linux_amd64.zip::https://github.com/looplj/axonhub/releases/download/v1.0.0-beta5/axonhub_1.0.0-beta5_linux_amd64.zip
+	sha256sums_x86_64 = fa8f764c559965d84c92908a2fc973effce5c569a56843e4771c8fc9c6496bfb
+	source_aarch64 = axonhub-1.0.0-beta5-linux_arm64.zip::https://github.com/looplj/axonhub/releases/download/v1.0.0-beta5/axonhub_1.0.0-beta5_linux_arm64.zip
+	sha256sums_aarch64 = 789f1ed8500604c29faed9f2def06d1022b696da849d35644191a6d96d46c1c7
+
+pkgname = axonhub-bin
