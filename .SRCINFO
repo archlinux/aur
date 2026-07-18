@@ -1,11 +1,12 @@
 pkgbase = fastcount-bin
-	pkgdesc = fastcount, an incredibly fast, incredibly useless counter, prebuilt binary
-	pkgver = e06b228
+	pkgdesc = An incredibly fast, incredibly useless counter (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcount
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = curl
 	depends = gcc-libs
 	provides = fastcount
 	conflicts = fastcount
