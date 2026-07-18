@@ -1,6 +1,6 @@
 pkgname='gaypanel'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Panel for Wayland compositors'
 arch=(any)
 url='https://codeberg.org/pastthepixels/gaypanel'

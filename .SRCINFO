@@ -1,7 +1,7 @@
 pkgbase = gaypanel
 	pkgdesc = Panel for Wayland compositors
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/pastthepixels/gaypanel
 	arch = any
 	license = GPL-3.0-only
