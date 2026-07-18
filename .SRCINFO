@@ -1,17 +1,16 @@
 pkgbase = fastwc
-	pkgdesc = A fast wc rewrite (x86_64 Linux only) — builds from source, always tracks latest
-	pkgver = 0
+	pkgdesc = fastwc, a fast wc rewrite, builds from source
+	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
-	makedepends = curl
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc-bin
-	source = fastwc-latest.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/refs/tags/latest.tar.gz
+	source = fastwc::git+https://github.com/CallMeAlphabet/fastwc.git#tag=latest
 	sha256sums = SKIP
 
 pkgname = fastwc
