@@ -17,7 +17,7 @@ source=("https://download.starnetastro.com/starnet2_linux_2.5.3-0208_ORT_x64_cli
 sha256sums=('101c724a50328cbeb1b3aedb74e18a81894100b3cf668de6b5006d0a46c29d99')
 
 package() {
-  _srcdir="${srcdir}/starnet2_linux_${pkgver}-0207_ORT_x64_cli"
+  _srcdir="${srcdir}/starnet2_linux_${pkgver}-0208_ORT_x64_cli"
 
   # Install Licenses
   install -Dm644 "${_srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/STARNET2_LICENSE.txt"
