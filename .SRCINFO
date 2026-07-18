@@ -1,6 +1,6 @@
 pkgbase = hypruse-git
 	pkgdesc = Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/IlyasKhallouki/hypruse
 	arch = any
