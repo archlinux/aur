@@ -1,7 +1,7 @@
 pkgbase = omikuji-bin
 	pkgdesc = Qt/QML based wine apps launcher for Linux
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reakjra/omikuji
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,6 +11,6 @@ pkgbase = omikuji-bin
 	noextract = Omikuji-v0.8.0-anylinux-x86_64.AppImage
 	options = !strip
 	source = Omikuji-v0.8.0-anylinux-x86_64.AppImage::https://github.com/reakjra/omikuji/releases/download/v0.8.0/Omikuji-v0.8.0-anylinux-x86_64.AppImage
-	sha256sums = 405b8b79cbbd9d0213b8cadc4d9008696f899a0fc7ff391426694b39f75ad277
+	sha256sums = 9a431089ef1e12bac350e1c207c5bc214bd5f4dd50a35e9bdaeb6cc32d5aa477
 
 pkgname = omikuji-bin
