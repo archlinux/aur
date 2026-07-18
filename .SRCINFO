@@ -1,6 +1,6 @@
 pkgbase = tsukimi
 	pkgdesc = A simple third-party GTK4 Emby/Jellyfin client
-	pkgver = 26.7.1
+	pkgver = 26.7.3
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
@@ -8,21 +8,23 @@ pkgbase = tsukimi
 	makedepends = cargo
 	makedepends = git
 	makedepends = meson
+	makedepends = blueprint-compiler
 	depends = mpv
-	depends = ffmpeg
 	depends = libadwaita
 	depends = gstreamer
 	depends = gtk4
 	depends = dconf
 	depends = glib2
 	depends = pango
+	depends = libseccomp
 	depends = graphene
 	depends = glibc
 	depends = libgcc
 	depends = hicolor-icon-theme
-	depends = gdk-pixbuf2
+	depends = fontconfig
+	depends = lcms2
 	options = !lto
-	source = git+https://github.com/tsukinaha/tsukimi.git#tag=v26.7.1
-	sha256sums = 21865dc5b5f43bf5c2e2cffc19d0f084aed360d22a32a9946ad3afda6c622614
+	source = git+https://github.com/tsukinaha/tsukimi.git#tag=v26.7.3
+	sha256sums = 98fa575bc509c6bfab2ad2f788a35b632934838e7e8ca205d5c13244bf576e70
 
 pkgname = tsukimi
