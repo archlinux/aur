@@ -1,6 +1,6 @@
 pkgbase = linux-system-hardener
 	pkgdesc = Linux security automation: scanning, hardening, and rollback across 8 domains
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/tidynest/linux-system-hardener
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = linux-system-hardener
 	optdepends = polkit-gnome: polkit agent for GNOME, XFCE, Hyprland, Sway, i3
 	optdepends = polkit-kde-agent: polkit agent for KDE Plasma
 	optdepends = xfce-polkit: native polkit agent for XFCE
-	source = linux-system-hardener-1.3.1.tar.gz::https://github.com/tidynest/linux-system-hardener/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = a8dbe7891801c019095e73875dc7cf96fd5a6155c94963a44e8285f672ff30d8
+	source = linux-system-hardener-1.3.2.tar.gz::https://github.com/tidynest/linux-system-hardener/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = d90df72391d99119759f9b9a89bd9de64558535852aaad5dd020b26a951145d2
 
 pkgname = linux-system-hardener
