@@ -9,7 +9,6 @@ url='https://github.com/numbpill3d/cock-mail-app'
 license=('0BSD' 'LicenseRef-cock-mail')
 depends=('docker' 'docker-compose' 'xdg-utils' 'bash' 'coreutils' 'curl' 'gnupg'
          'hicolor-icon-theme')
-makedepends=('imagemagick')
 install='cock-mail-app.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('2d01fb950eff451bcf5ec85b9511b470dade0c72d17b77153b69a0f1caf714b7')

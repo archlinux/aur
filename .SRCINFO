@@ -7,7 +7,6 @@ pkgbase = cock-mail-app
 	arch = any
 	license = 0BSD
 	license = LicenseRef-cock-mail
-	makedepends = imagemagick
 	depends = docker
 	depends = docker-compose
 	depends = xdg-utils
