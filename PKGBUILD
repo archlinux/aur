@@ -1,47 +1,64 @@
-# --- Metadata ---
+# Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
+
 pkgname=shelly-cli
-_pkgname=shelly-cli
-pkgver=r0.g0000000
+pkgbase=shelly-cli
+pkgver=3.0.0.0.r3380.g2065d5c
 pkgrel=1
-pkgdesc="Command line helper for Shelly desktop"
-arch=('x86_64') # It's a compiled binary
-url="https://github.com/manpreet113/shelly-cli"
-license=('MIT') 
+pkgdesc='Native Shelly package-manager CLI beta'
+arch=('x86_64')
+url='https://github.com/Seafoam-Labs/Shelly-ALPM'
+license=('GPL-3.0-only')
+provides=('shelly-beta')
 depends=(
-    'shelly-shell'
-    'quickshell'
-    'hyprland'
-    'slurp'
-    'grim'
-    'wl-clipboard'
-    'libnotify' # This is what `notify-rust` uses
+  'diffutils'
+  'flatpak'
+  'git'
+  'glibc'
+  'glib2'
+  'libarchive'
+  'pacman'
+  'sudo'
 )
-makedepends=('git' 'cargo') # Needed to build
-source=("git+$url.git")
+makedepends=(
+  'git'
+  'pkgconf'
+  'zig>=0.16.0'
+)
+optdepends=(
+  'base-devel: build and install AUR packages'
+  'devtools: build AUR packages in a clean chroot'
+  'desktop-file-utils: update AppImage desktop entries'
+  'fuse2: run AppImages that require FUSE 2'
+  'gtk-update-icon-cache: update AppImage icons'
+  'opendoas: alternative privilege elevator to sudo'
+  'plocate: locate-based pacfile discovery'
+  'vim: default visual pacfile diff viewer'
+)
+source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 sha256sums=('SKIP')
 
-# --- Versioning ---
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+
+  printf '3.0.0.0.r%s.g%s' \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short=7 HEAD)"
 }
 
-# --- Build ---
-# This function compiles your Rust code
 build() {
-  cd "$_pkgname" # Go into the cloned Rust repo
-  
-  # This is the standard command to build a Rust binary
-  # --locked ensures it uses the Cargo.lock file
-  cargo build --release --locked
+  cd "${srcdir}/${pkgname}/Shelly.Cli.Zig"
+
+  zig build \
+    --prefix "${srcdir}/zig-out" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSmall
 }
 
-# --- Package ---
-# This function installs the compiled binary
 package() {
-  cd "$_pkgname"
-  
-  # Install the binary to /usr/bin/shelly
-  # -Dm755 = Create Directories, set permissions to 755 (executable)
-  install -Dm755 "target/release/shelly" "${pkgdir}/usr/bin/shelly"
+  cd "${srcdir}/${pkgname}"
+
+  install -Dm755 "${srcdir}/zig-out/bin/shelly" \
+    "${pkgdir}/usr/bin/shelly-beta"
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
