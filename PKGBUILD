@@ -8,6 +8,9 @@ url="https://github.com/velopack/velopack"
 license=('MIT')
 options=('!debug')
 
+provides=('python-velopack')
+conflicts=('python-velopack')
+
 depends=('python')
 makedepends=('python-installer')
 
