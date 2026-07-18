@@ -1,0 +1,16 @@
+pkgbase = mica-bin
+	pkgdesc = Use your Android phone as a microphone
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/acaimingus/Mica
+	arch = x86_64
+	license = MIT
+	provides = mica
+	provides = micalistener
+	noextract = mica-bin-1.0.0_1
+	source = mica-bin-1.0.0_1::https://github.com/acaimingus/Mica/releases/download/1.0.0/MicaListener-1.0.0-amd64
+	source = MicaListener.desktop
+	sha256sums = 53283c0e774af27681a88e23533226a2bed20d4932d31f06a8abdf01548c7c1a
+	sha256sums = 88a437c77ac85273c3a44ef5940dfe1c77c5cedddf86d45a567ab65a63ce9cd8
+
+pkgname = mica-bin

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MicaListener
+Comment=Use your Android phone as a microphone
+Exec=/opt/micalistener/micalistener
+Terminal=true
+Categories=Utility;Audio;
