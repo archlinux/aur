@@ -1,39 +1,37 @@
 # Maintainer: CallMeAlphabet
 pkgname=timeit
-pkgver=0
+pkgver=r1
 pkgrel=1
-pkgdesc="A precise command timing utility (x86_64 Linux only) — builds from source, always tracks latest"
+pkgdesc="timeit, a precise command timing utility, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/timeit"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('cargo' 'git' 'curl')
+makedepends=('cargo' 'git')
 provides=('timeit')
 conflicts=('timeit-bin')
-source=("timeit-latest.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/refs/tags/latest.tar.gz")
+source=("timeit::git+https://github.com/CallMeAlphabet/timeit.git#tag=latest")
 sha256sums=('SKIP')
 
 pkgver() {
-    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/timeit/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
+    cd "$srcdir/timeit"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    rm -rf "$srcdir/build"
-    mkdir -p "$srcdir/build"
-    tar -xzf "$srcdir/timeit-latest.tar.gz" --strip-components=1 -C "$srcdir/build"
-    cd "$srcdir/build"
+    cd "$srcdir/timeit"
     cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
-    cd "$srcdir/build"
+    cd "$srcdir/timeit"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 package() {
-    cd "$srcdir/build"
+    cd "$srcdir/timeit"
     install -Dm755 "target/release/timeit" "$pkgdir/usr/bin/timeit"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
