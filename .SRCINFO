@@ -1,17 +1,21 @@
 pkgbase = puny-manager
-	pkgdesc = Minimal, local CLI password manager with encrypted vault
-	pkgver = 2.2.1
+	pkgdesc = Minimal local CLI password manager with optional Howdy facial unlock
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Vaspyyy/puny-manager
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-cryptography
-	source = puny-manager-2.2.1.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = 7ce8b9099871d5a4dd96947ce7b9d605f9e1dbe551b913a1d8d97c6cf82bbf43
+	optdepends = howdy: facial recognition unlock
+	optdepends = python-pam: PAM bridge for facial recognition unlock
+	backup = etc/pam.d/puny-manager-howdy
+	source = puny-manager-2.3.0.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = e81452346f80c281363ee20938874027dbdc9c4172e3b1bef844535a9e924de7
 
 pkgname = puny-manager
