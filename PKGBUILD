@@ -1,8 +1,8 @@
 # Maintainer: cN3rd <cN3rd@users.noreply.github.com>
 
 pkgname=unity-cli-bin
-pkgver=1.0.0beta.1
-_pkgver=1.0.0-beta.1
+pkgver=1.0.0beta.2
+_pkgver=1.0.0-beta.2
 pkgrel=1
 pkgdesc='Standalone Unity CLI for installing editors, adding modules and managing projects'
 arch=('x86_64' 'aarch64')
