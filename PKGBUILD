@@ -34,7 +34,8 @@ build() {
         -B $pkgname-dist \
         -DCMAKE_BUILD_TYPE=None \
         -DREDUMPER_VERSION_BUILD=$pkgver \
-        -DREDUMPER_CLANG_LINK_OPTIONS=-lc++ \
+        -DREDUMPER_CLANG_USE_LIBCPP=ON \
+        -DREDUMPER_LINKER_FLAGS="" \
         ;
     ninja -C $pkgname-dist -v
 }
