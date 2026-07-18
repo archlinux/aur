@@ -1,7 +1,8 @@
 pkgbase = albert-git
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 33.0.1.r55.g2a309ce
+	pkgver = 34.0.10.r0.g461cb06
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = LicenseRef-Albert

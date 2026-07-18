@@ -4,8 +4,9 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=33.0.1.r55.g2a309ce
+pkgver=34.0.10.r0.g461cb06
 pkgrel=1
+epoch=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/${_pkgname}launcher"
