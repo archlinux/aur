@@ -1,6 +1,6 @@
 pkgbase = doubletap-git
-	pkgdesc = SOCD-cleaning keyboard input daemon for rhythm games (osu!)
-	pkgver = r4.19ecf4c
+	pkgdesc = snap tap-style rapid-fire SOCD key alternation with audio feedback for any keyboard
+	pkgver = r12.595b976
 	pkgrel = 1
 	url = https://github.com/zakack/doubletap
 	install = doubletap.install
