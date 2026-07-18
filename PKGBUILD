@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 makedepends=('gcc')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9226455c4024f7b40f11387fb707344fa1bfbf09c0f038f06660c8de781bff9')
+sha256sums=('b518f5f9a01bc6db238c362725e429d73ffb8b6c1eb59fd94303b484bcbbad56')
 
 build() {
   cd "$pkgbase-$pkgver"
