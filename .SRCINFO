@@ -1,6 +1,6 @@
 pkgbase = homebridge
 	pkgdesc = HomeKit support for the impatient
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/homebridge/homebridge
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = homebridge
 	makedepends = jq
 	depends = nodejs
 	optdepends = homebridge-config-ui-x: for web-based management tool
-	noextract = homebridge-2.1.0.tgz
+	noextract = homebridge-2.2.0.tgz
 	options = !emptydirs
 	options = !strip
-	source = https://registry.npmjs.org/homebridge/-/homebridge-2.1.0.tgz
-	sha512sums = ac27c835e5204d4363cf66f752d3ff2f010f325a8a244923a8cce8ba3a5cfe70f5be5439b9788c77ee959f0cd41a02d571c3b75a9dfc43f1068eb6b82ed4168d
-	b2sums = 5b6c6a4371ff8e4c2041a966511386557898da6fba2dbbab22016573b7b4f31c5431cdeea297f66c9a6d928426558fbe1217c012bc51490483f2f3a50bc81d8a
+	source = https://registry.npmjs.org/homebridge/-/homebridge-2.2.0.tgz
+	sha512sums = ed41b9b51ad302889b06728e51a370e8ee7d58aee1da3f8af160995277223e29c4e1056e837c189995e148f827f348d746b26ffa269122d776449107b90ce777
+	b2sums = c329655e7cd6f04e8c0af9fde22be8b66518bbcd42fd9ff02194a5afbe6d73489002c4aeaca20e34a2286c9980bb2cd0c92490c33457f598332b6742218d7220
 
 pkgname = homebridge
