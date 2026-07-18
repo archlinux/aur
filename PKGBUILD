@@ -1,6 +1,6 @@
 pkgname=mingw-w64-zlib
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP (mingw-w64)"
 arch=('any')
 license=(Zlib)
@@ -32,6 +32,8 @@ package () {
   cd zlib-${pkgver}
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" cmake --install build-${_arch}
+    # see zlib_static_suffix
+    cp "$pkgdir"/usr/${_arch}/lib/libzs.a "$pkgdir"/usr/${_arch}/lib/libz.a
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
