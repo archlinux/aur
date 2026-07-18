@@ -1,0 +1,14 @@
+post_install() {
+  echo 'Default login is admin:admin'
+  echo 'Change it in /etc/gotify/server.env or the web ui before exposing the service!'
+}
+
+post_upgrade() {
+  if [[ $(vercmp '3.0.0' "$2") -eq 1 ]]; then
+    echo 'gotify-server 3.x no longer supports /etc/gotify/config.yml.'
+    echo 'Configuration now lives in /etc/gotify/server.env (environment variable format).'
+    echo 'If you modified config.yml, it was saved as /etc/gotify/config.yml.pacsave. Convert it with:'
+    echo '  gotify-server migrate-config /etc/gotify/config.yml.pacsave > /etc/gotify/server.env'
+    echo 'Migration guide: https://gotify.net/docs/migrate-to-3'
+  fi
+}
