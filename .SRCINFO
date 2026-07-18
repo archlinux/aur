@@ -1,8 +1,9 @@
 pkgbase = ssprea-nvidia-control-git
 	pkgdesc = GUI NVidia GPU overclock, power limit and fan manager
-	pkgver = 1.1.10.r3.g8586425
+	pkgver = 1.1.10.r4.g147873b
 	pkgrel = 1
 	url = https://github.com/ssprea/ssprea-nvidia-control
+	install = snvctl.install
 	arch = x86_64
 	license = unknown
 	makedepends = git
