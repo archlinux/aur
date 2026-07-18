@@ -1,0 +1,20 @@
+pkgbase = vlt
+	pkgdesc = Non-interactive password store built as a wrapper around gisp
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/artich0ke/vlt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = gisp
+	source = https://codeberg.org/artich0ke/vlt/releases/download/v1.0/vlt-1.0.tar.gz
+	source = https://codeberg.org/artich0ke/vlt/releases/download/v1.0/vlt-1.0.tar.gz.asc
+	validpgpkeys = CAD6600A6D1987A35977DAC769C78665ADF4D655
+	sha256sums = bfcc5cde04ea53757c5da9d36741f9b0ce38460115009cfb842baf1d0ba45cba
+	sha256sums = SKIP
+
+pkgname = vlt
