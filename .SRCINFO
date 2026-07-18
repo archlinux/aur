@@ -1,0 +1,22 @@
+pkgbase = cbonsai-focus-git
+	pkgdesc = A terminal bonsai focus timer, forked from cbonsai (git version)
+	pkgver = r144.g6348111
+	pkgrel = 1
+	url = https://gitlab.com/ImJstNickDev/cbonsai-focus
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = scdoc
+	depends = ncurses
+	provides = cbonsai-focus
+	conflicts = cbonsai-focus
+	source = cbonsai-focus::git+https://gitlab.com/ImJstNickDev/cbonsai-focus.git
+	sha256sums = SKIP
+
+pkgname = cbonsai-focus-git
