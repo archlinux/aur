@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -40,9 +40,7 @@ optdepends=(
     'xfce-polkit: native polkit agent for XFCE'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-# sha256 of the v1.2.2 source tarball — regenerate once the tag is pushed:
-#   updpkgsums  &&  makepkg --printsrcinfo > .SRCINFO
-sha256sums=('e0fb4fbdd6cc522a7732899f4e263acfb461a7379ac1de2043f4a42d2bffe22e')
+sha256sums=('31bfa3a9963473d40f150f6ecd73af7aaff8a343edab5815e5301ab8451b39af')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -86,27 +84,27 @@ exec /usr/lib/linux-hardener/linux-hardener-desktop "$@"
 WRAPPER
 
     # Systemd units
-    install -Dm644 "systemd/linux-hardener.service" \
+    install -Dm644 "packaging/systemd/linux-hardener.service" \
         "$pkgdir/usr/lib/systemd/system/linux-hardener.service"
-    install -Dm644 "systemd/linux-hardener.timer" \
+    install -Dm644 "packaging/systemd/linux-hardener.timer" \
         "$pkgdir/usr/lib/systemd/system/linux-hardener.timer"
 
     # Desktop entry
-    install -Dm644 "data/linux-hardener.desktop" \
+    install -Dm644 "packaging/assets/linux-hardener.desktop" \
         "$pkgdir/usr/share/applications/linux-hardener.desktop"
 
     # Man page
-    install -Dm644 "data/hardener.1" \
+    install -Dm644 "packaging/assets/hardener.1" \
         "$pkgdir/usr/share/man/man1/hardener.1"
 
     # Polkit policy
-    install -Dm644 "data/com.tidynest.linux-hardener.policy" \
+    install -Dm644 "packaging/assets/com.tidynest.linux-hardener.policy" \
         "$pkgdir/usr/share/polkit-1/actions/com.tidynest.linux-hardener.policy"
 
     # Default config
-    install -Dm644 "data/config.toml.example" \
+    install -Dm644 "packaging/assets/config.toml.example" \
         "$pkgdir/usr/share/doc/$pkgname/config.toml.example"
-    install -Dm644 "data/config.toml.example" \
+    install -Dm644 "packaging/assets/config.toml.example" \
         "$pkgdir/etc/linux-hardener/config.toml"
 
     # Directories
