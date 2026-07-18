@@ -3,7 +3,7 @@
 _pkgname=hyprwhspr
 pkgname=hyprwhspr-git
 pkgver=0
-pkgrel=9
+pkgrel=10
 pkgdesc="Native Whisper speech-to-text for Arch/Omarchy with Waybar integration (git)"
 arch=('x86_64')
 url="https://github.com/goodroot/${_pkgname}"
@@ -13,27 +13,30 @@ makedepends=(
   'git'
 )
 depends=(
-  'cmake'
   'python'
-  'python-pip'
-  'python-setuptools'
   'python-sounddevice'
   'python-numpy'
-  'python-scipy'
+  'python-soxr'
   'python-evdev'
-  'python-pyperclip'
-  'python-requests'
-  'python-psutil'
   'python-pyudev'
   'python-rich'
-  'python-gobject'
   'python-pulsectl'
-  'python-dbus'
+  'wtype'
   'ydotool'
   'wl-clipboard'
   'pipewire' 'pipewire-alsa' 'pipewire-pulse'
 )
-optdepends=('gtk4-layer-shell: for themed Mic-OSD visualization')
+optdepends=(
+  'python-dbus: suspend/resume monitoring'
+  'python-gobject: suspend monitoring, AT-SPI detection, and Mic-OSD support'
+  'gtk4-layer-shell: themed Mic-OSD visualization'
+  'python-pyperclip: non-Wayland/X11 clipboard fallback'
+  'xclip: X11 clipboard provider for pyperclip'
+  'xdotool: X11 active-window detection and future X11 injection support'
+  'cmake: accelerated pywhispercpp source builds'
+  'git: accelerated pywhispercpp source builds'
+  'base-devel: accelerated pywhispercpp source builds'
+)
 
 install="${_pkgname}.install"
 
@@ -56,7 +59,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   install -d "$pkgdir/usr/lib/${_pkgname}"
-  cp -r lib bin config share README.md LICENSE requirements.txt \
+  cp -r lib bin config share README.md LICENSE requirements*.txt \
     "$pkgdir/usr/lib/${_pkgname}"
 
   if [ -f "$pkgdir/usr/lib/${_pkgname}/bin/${_pkgname}" ]; then
