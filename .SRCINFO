@@ -1,11 +1,12 @@
 pkgbase = fastwc-bin
-	pkgdesc = fastwc, a fast wc rewrite, prebuilt binary
-	pkgver = e85c885
+	pkgdesc = A fast wc rewrite (x86_64 Linux only) — prebuilt binary from latest tested CI build
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = curl
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc

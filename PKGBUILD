@@ -1,13 +1,13 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastwc-bin
-pkgver=e85c885
+pkgver=0
 pkgrel=1
-pkgdesc="fastwc, a fast wc rewrite, prebuilt binary"
+pkgdesc="A fast wc rewrite (x86_64 Linux only) — prebuilt binary from latest tested CI build"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('git')
+makedepends=('git' 'curl')
 provides=('fastwc')
 conflicts=('fastwc')
 source=("fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc"
@@ -15,7 +15,7 @@ source=("fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/late
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
-    git ls-remote "https://github.com/CallMeAlphabet/fastwc.git" refs/tags/latest | cut -c1-7
+    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/fastwc/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
 }
 
 check() {
