@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety-bin
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -17,18 +17,32 @@ source_armv7h=("$pkgname-$pkgver-armv7.tar.gz::$url/releases/download/$pkgver/tu
 source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/$pkgver/tuigreety-$pkgver-i686.tar.gz")
 source=('tuigreet.conf')
 sha256sums=('8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
-sha256sums_x86_64=('8d07c3cae55135187ce2d6ea6f5238c98f9fedf45c92b345e2045b4e3ae55171')
-sha256sums_aarch64=('291b369661b44d34819511618fb564297d880f93039936d211b992c71bce2f59')
-sha256sums_armv7h=('7a84ee48529e888bac2021933374f7a31e60b486436b831d471d98df03d1fc2b')
-sha256sums_i686=('ec7d9b56b85666e65320b8167f35e8fe05e4824579941849db775017afea9262')
+sha256sums_x86_64=('bc468a61104a7301427c7397ee162e1ee74f265521a1c7733700254cc55cff62')
+sha256sums_aarch64=('2ea4f85879953bd62f778694f12708a0e35265902e929aadb9be5d1c1e506611')
+sha256sums_armv7h=('9d40e24c84ef56e1e5540081babcfd68f32f3017230859b804380e7b71c66af4')
+sha256sums_i686=('35e2dacba5c80abbf2a13e598d1132697babfea6b33233ad0a5d6b9527f3f1a6')
 
 package() {
   local release_arch="$CARCH"
   [[ $CARCH == armv7h ]] && release_arch=armv7
   cd "tuigreety-$pkgver-$release_arch"
-  install -Dm755 bin/tuigreet "$pkgdir/usr/bin/tuigreet"
-  install -Dm644 share/man/man1/tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
+
+  # Releases through 0.10.2 used an ambiguous prefix-style layout. Keep the
+  # fallback while those archives remain useful for local rebuilds.
+  local release_prefix=''
+  [[ -f usr/bin/tuigreet ]] && release_prefix=usr/
+
+  install -Dm755 "${release_prefix}bin/tuigreet" "$pkgdir/usr/bin/tuigreet"
+  install -Dm644 "${release_prefix}share/man/man1/tuigreet.1" "$pkgdir/usr/share/man/man1/tuigreet.1"
   install -Dm644 etc/tuigreet/config.toml "$pkgdir/etc/tuigreet/config.toml"
-  install -Dm644 share/licenses/tuigreet/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [[ -f ${release_prefix}share/licenses/tuigreety/LICENSE ]]; then
+    install -Dm644 "${release_prefix}share/licenses/tuigreety/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  else
+    install -Dm644 share/licenses/tuigreet/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
+  if [[ -f ${release_prefix}share/licenses/tuigreety/COPYRIGHT ]]; then
+    install -Dm644 "${release_prefix}share/licenses/tuigreety/COPYRIGHT" \
+      "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  fi
   install -Dm644 "$srcdir/tuigreet.conf" "$pkgdir/usr/lib/tmpfiles.d/tuigreet.conf"
 }
