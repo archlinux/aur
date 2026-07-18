@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearcoleco"
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
@@ -13,7 +13,7 @@ source=(
     "gearcoleco.desktop"
 )
 sha256sums=(
-    "40617946da306d58caaff1b654b861f63279a5ac8431d8fb6a61ace90a1a1a15"
+    "994c9127f73d9995885d52c848f1752c1d9a4dccc3aaddd178800c842809fb57"
     "873e59dd6a517a36163f7dd6473e82e420fe49230195154aef16e570cf62b408"
 )
 
