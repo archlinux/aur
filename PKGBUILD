@@ -5,17 +5,16 @@ _reponame="MacTahoe-gtk-theme"
 pkgname="mactahoe-gtk-theme"
 pkgdesc="MacOS Tahoe theme for gtk desktops"
 license=("MIT")
-pkgver="2026.02.20"
-_realpkgver="2026-02-20"
+pkgver="2026.07.07"
 pkgrel=1
 arch=("any")
-source=("$pkgname-$_realpkgver.tar.gz::https://github.com/$_repoowner/$_reponame/archive/refs/tags/$_realpkgver.tar.gz")
-sha512sums=("bec451dd1a7b2d49766b375a25b49b581e02b06ec7911cba8085787f47b0a32f53a2f72695e89ce6b0487544a8693fb2a05b4058a6f0889a4ab21ef4f8b16c8c")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$_repoowner/$_reponame/archive/refs/tags/${pkgver//./-}.tar.gz")
+sha512sums=("3a09ba418e7a8782f0337ca5748d21fa951541bbd4889944b96a378e406c34c77b251814837bdb030928963cc70ae6183a375859e23e2e9ab1d49a3504f6fa2b")
 url="https://github.com/$_repoowner/$_reponame"
 options=("!debug")
 
 package() {
-    cd "$_reponame-$_realpkgver" || exit
+    cd "$_reponame-${pkgver//./-}"
 
     _destination="$pkgdir/usr/share/themes/"
     mkdir -p "$_destination"
