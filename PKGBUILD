@@ -7,6 +7,7 @@ _execname=${_pkgname}
 pkgname=${_pkgname}
 pkgver=0.17.0
 pkgrel=1
+_pkgver=v${pkgver}
 pkgdesc="A terminal UI for managing GitHub Gists"
 
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -17,7 +18,7 @@ depends=('glibc' 'libgcc')
 provides=("${_execname}")
 makedepends=('rust')
 
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${_pkgname}/archive/${_pkgver}.tar.gz")
 sha256sums=('d072783866b494a74edc03227f63191c04d4c6a4fdcc03f11917c46af9e86cc4')
 
 prepare() {

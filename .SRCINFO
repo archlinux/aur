@@ -10,7 +10,7 @@ pkgbase = gistui
 	depends = glibc
 	depends = libgcc
 	provides = gistui
-	source = gistui-0.17.0.tgz::https://github.com/akunzai/gistui/archive/refs/tags/v0.17.0.tar.gz
+	source = gistui-0.17.0.tgz::https://github.com/akunzai/gistui/archive/v0.17.0.tar.gz
 	sha256sums = d072783866b494a74edc03227f63191c04d4c6a4fdcc03f11917c46af9e86cc4
 
 pkgname = gistui
