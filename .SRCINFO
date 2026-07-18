@@ -1,18 +1,20 @@
 pkgbase = privli-bin
 	pkgdesc = Privacy-focused nearby file sharing
-	pkgver = 2.4.1
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/PasteShare/paste_share_open_source
+	url = https://github.com/Local1stDotApp/paste_share_open_source
 	arch = x86_64
 	license = custom
+	options = !debug
+	options = !strip
 	depends = gtk3
 	depends = glib2
 	depends = curl
 	depends = systemd-libs
 	depends = sdbus-cpp
-	source = Privli-linux.tar.gz::https://github.com/PasteShare/paste_share_open_source/releases/download/latest/Privli-linux.tar.gz
+	source = Privli-3.0.0-linux-x86_64.tar.gz::https://github.com/Local1stDotApp/paste_share_open_source/releases/download/latest/Privli-3.0.0-linux-x86_64.tar.gz
 	source = LICENSE.privli
-	sha256sums = SKIP
+	sha256sums = 9e481262ee86144335110fedae9f23d31e19cccc253d8373a37750dc364c937a
 	sha256sums = SKIP
 
 pkgname = privli-bin
