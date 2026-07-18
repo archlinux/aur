@@ -1,0 +1,22 @@
+pkgbase = cock-mail-app
+	pkgdesc = App-menu launcher and local Docker wrapper for Cock-mail webmail
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/numbpill3d/cock-mail-app
+	install = cock-mail-app.install
+	arch = any
+	license = 0BSD
+	license = LicenseRef-cock-mail
+	makedepends = imagemagick
+	depends = docker
+	depends = docker-compose
+	depends = xdg-utils
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = gnupg
+	depends = hicolor-icon-theme
+	source = cock-mail-app-0.5.1.tar.gz::https://github.com/numbpill3d/cock-mail-app/releases/download/v0.5.1-1/cock-mail-app-0.5.1.tar.gz
+	sha256sums = 2d01fb950eff451bcf5ec85b9511b470dade0c72d17b77153b69a0f1caf714b7
+
+pkgname = cock-mail-app
