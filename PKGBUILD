@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=26.1.1.3
+pkgver=26.1.1.5
 pkgrel=1
 pkgdesc="Kernel module for Sipwise rtpengine media proxy (DKMS)"
 url="https://github.com/sipwise/rtpengine"
@@ -11,7 +11,7 @@ depends=('dkms')
 provides=("rtpengine-kernel-module=${pkgver}")
 conflicts=('rtpengine-kernel-module')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('6126dd844033100a76b962d3c7bdefd8c3fa64eff5115b7ed7d204cdd6538fa8')
+sha256sums=('25240115fbbeb8b9465d474cc06db117be8fff610c0341dd965210da10013be3')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
