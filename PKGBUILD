@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libbiosig
-pkgver=3.9.6
+pkgver=3.9.7
 pkgrel=1
 pkgdesc="Reading and writing routines for different biosignal data formats"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('zlib' 'suitesparse')
 options=(staticlibs)
 source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-$pkgver.src.tar.xz)
-sha256sums=('916e1e7bfbb321ec11c6fb54d6d2582b35d07950a2c7ba15dad34ee722016e65')
+sha256sums=('b71fa7b8a7cc4c7d2a0ea16d47042a4a66ba43698c744a3b71a69d6fcf1ccfa4')
 
 build() {
   cd "$srcdir/biosig-$pkgver"
