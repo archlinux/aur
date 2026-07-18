@@ -1,6 +1,6 @@
 pkgbase = slang-snapshot
 	pkgdesc = S-Lang is a powerful interpreted language (development snapshot)
-	pkgver = 2.3.4.22
+	pkgver = 2.3.4.23
 	pkgrel = 1
 	url = https://jedsoft.org/snapshots/
 	changelog = slang-snapshot.changelog
@@ -22,8 +22,8 @@ pkgbase = slang-snapshot
 	conflicts = slang
 	conflicts = slsh
 	backup = etc/slsh.rc
-	source = https://jedsoft.org/snapshots/slang-pre2.3.4-22.tar.gz
+	source = https://jedsoft.org/snapshots/slang-pre2.3.4-23.tar.gz
 	validpgpkeys = AE962A02D29BFE4A4BB2805FDE401E0D5873000A
-	md5sums = e209777a45d9ef6d0afdf9e5acb3efea
+	md5sums = e44eb4d1f189d52d608f532c992a53b5
 
 pkgname = slang-snapshot

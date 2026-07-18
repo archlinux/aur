@@ -6,7 +6,7 @@
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-_pkgver=2.3.4-22
+_pkgver=2.3.4-23
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
@@ -28,7 +28,7 @@ backup=('etc/slsh.rc')
 source=("$url$_pkgname-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('e209777a45d9ef6d0afdf9e5acb3efea')
+md5sums=('e44eb4d1f189d52d608f532c992a53b5')
 
 build() {
   cd "$_pkgname-$_prever"

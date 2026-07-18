@@ -49,3 +49,6 @@ Changes since 2.3.3
     version 2 of the PCRE library
 22. src/slstrops.c: wchars_to_string function had a buffer-overflow
     due to a misassigned variable (bug reported by Morten Bo Johansen)
+23. src/slerr.c: print_queue was not designed to support reentrancy,
+    so a safety check was implemented to enforce this restriction.
+    (thanks go to Morten Bo Johansen for helping)
