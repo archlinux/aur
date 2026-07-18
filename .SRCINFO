@@ -9,8 +9,8 @@ pkgbase = agentty-bin
 	provides = agentty
 	conflicts = agentty
 	source_x86_64 = agentty-0.2.8-x86_64::https://github.com/1ay1/agentty/releases/download/v0.2.8/agentty-linux-x86_64
-	sha256sums_x86_64 = d746561a20e34fe25fe435b223c830023fab3891169e189b7a7485b1d3d4c2e4
+	sha256sums_x86_64 = 0a9f31d6beee755139714568c82836be8763dd313a2114f2e1111b172681106a
 	source_aarch64 = agentty-0.2.8-aarch64::https://github.com/1ay1/agentty/releases/download/v0.2.8/agentty-linux-aarch64
-	sha256sums_aarch64 = 3a439e5e77ca687459e7bce14acf392a63f47059a2c9128174bbaeb1e701a2e6
+	sha256sums_aarch64 = 0472c5fb2dc07dada354bb8e93c8a8140f8e20849e5840a1b66f85ecebb961a3
 
 pkgname = agentty-bin
