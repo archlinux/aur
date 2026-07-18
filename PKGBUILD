@@ -4,9 +4,9 @@
 # AUR: biosaka
 
 pkgname=biosaka
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="C. elegans neural simulation in your terminal — 307 neurons, ~2800 synapses, LIF spiking network, ratatui TUI"
+pkgdesc="C. elegans dual-sex neural simulation — herm 307n/2847e, male 379n/3159e, LIF spiking, ratatui TUI"
 arch=('x86_64')
 url="https://github.com/BerkeOruc/biosaka"
 license=('custom:BioSaka-Research-License')
@@ -40,7 +40,7 @@ package() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname" <<EOF
 _biosaka() {
     local cur=\${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( \$(compgen -W "worm" -- \$cur) )
+    COMPREPLY=( \$(compgen -W "worm --sex hermaphrodite --sex male" -- \$cur) )
 }
 complete -F _biosaka biosaka
 EOF
