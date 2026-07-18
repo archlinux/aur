@@ -1,11 +1,13 @@
 pkgbase = pazi
 	pkgdesc = An autojump 'zap to directory' helper
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/euank/pazi
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = rust
+	depends = glibc
+	depends = libgcc
 	source = pazi-0.5.0.tar.gz::https://github.com/euank/pazi/archive/v0.5.0.tar.gz
 	sha512sums = ef6c3862b2b4961ead9956d36bc5eff455dd47e3ec69e7aa78dde997d4871d8394ecd0e30d380904828198efdb6ed5e114d7025c31be80ac659366526de1c4ce
 
