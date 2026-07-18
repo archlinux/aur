@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 pre_install() {
@@ -11,16 +12,10 @@ pre_install() {
 »      to installing the present package, e.g.:
 »
 »        \$ cd /usr/share/jed/lib
-»        \$ sudo rm *.slc *.dfa
+»        \$ sudo rm ./*.dfa ./*.slc colors/*.slc
 »
 »      Alternatively, pacman can overwrite conflicting *.slc and
-»      *.dfa files with e.g.:
-»
-»        \$ sudo pacman \\
-»            --overwrite '*.slc' --overwrite '*.dfa' \\
-» 	     jed-git-${_pkgver}-*.pkg.tar.zst
-»
-»  Please see pacman(8) for details.
+»      *.dfa files. Please see pacman(8) for details.
 EOF
 }
 
