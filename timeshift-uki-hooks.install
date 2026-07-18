@@ -1,0 +1,24 @@
+post_install() {
+  echo ""
+  echo "==> timeshift-uki-hooks instalado correctamente."
+  echo ""
+  echo "  Los hooks se han instalado en:"
+  echo "    /etc/timeshift/backup-hooks.d/90-backup-uki"
+  echo "    /etc/timeshift/restore-hooks.d/90-restore-uki"
+  echo ""
+  echo "  Requisitos:"
+  echo "    - Timeshift configurado con Btrfs"
+  echo "    - systemd-boot como gestor de arranque"
+  echo "    - Opcional: Secure Boot habilitado"
+  echo ""
+  echo "  Los hooks se ejecutan automaticamente al crear/restaurar snapshots."
+  echo "  Documentacion: https://github.com/jairogaleano/timeshift-uki-hooks"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> timeshift-uki-hooks actualizado."
+  echo "  Verifica que los hooks sigan siendo compatibles con tu configuracion."
+  echo ""
+}
