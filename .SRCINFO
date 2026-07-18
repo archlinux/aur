@@ -1,0 +1,22 @@
+pkgbase = omega-server
+	pkgdesc = OmegaOS Server tooling — terminal dashboard and network initializer, standalone for any systemd Linux distro
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://omega-os.co.zw
+	arch = any
+	license = MIT
+	depends = bash
+	depends = procps-ng
+	depends = iproute2
+	depends = coreutils
+	depends = gawk
+	depends = inetutils
+	optdepends = nginx: web server monitoring
+	optdepends = openssh: ssh service monitoring
+	optdepends = fail2ban: intrusion prevention monitoring
+	optdepends = ufw: firewall monitoring
+	optdepends = cronie: scheduled task monitoring
+	source = git+https://github.com/Kolgrim33/omega-server.git
+	sha256sums = SKIP
+
+pkgname = omega-server
