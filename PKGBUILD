@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=2026.05.30
+pkgver=2026.07.15
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,8 +11,15 @@ depends=('gcc-libs' 'glibc' 'lua' 'freetype2' 'harfbuzz' 'plutovg')
 makedepends=('cmake>=3.24' 'lunasvg' 'stb')
 # backup=("etc/${pkgname}/settings.xml")
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('931995b142f6de8c33b8f2a58f13efccdab7141cb6025369031f1a8609b1dcc8aa9820e49b5b29a6d47da717b0bf28cf47c30995414e80f944959f92ac558ac3')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "fix-cmake-detection.patch")
+b2sums=('e046953a739a5ed50a9278386277ab7dd62e966d2a842f7c62778628638f5f0db12daa93108c1b706d30eb1ddfc6bd285e91302d241fcbf8602e8c3617ca688f'
+        'c53a7cdc29d27982c7e1f7ff25e49e46f8786defc16336bc17a4cacb7686c59315c924d0178269d86c234c65cad7e523e9c544806febca17f258beb59688b634')
+
+prepare() {
+  cd "${_pkgsrc}"
+  patch -Np1 -i "${srcdir}/fix-cmake-detection.patch"
+}
 
 build() {
   local cmake_options=(
