@@ -7,6 +7,7 @@ pkgbase = wine-dwproton
 	provides = wine=11.0
 	provides = wine-staging=11.0
 	provides = wine-wow64=11.0
+	provides = wine-dwproton=11.0
 	conflicts = wine
 	source = git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/11.0-7
 	source = https://github.com/irtkll/wine-proton-patch/raw/main/恢复字体.patch

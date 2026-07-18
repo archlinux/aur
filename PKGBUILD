@@ -8,6 +8,7 @@ provides=(
   "wine=$pkgver"
   "wine-staging=$pkgver"
   "wine-wow64=$pkgver"
+  "wine-dwproton=$pkgver"
 )
 conflicts=("wine")
 source=(
