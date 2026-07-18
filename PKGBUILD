@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/amd/aocl-utils"
 license=('BSD')
 options=(staticlibs !lto)
-depends=('aocc')
+depends=('aocc' 'libc++')
 provides=('aocl-utils')
 conflicts=('aocl-utils')
 makedepends=('cmake' 'ninja')
@@ -20,7 +20,7 @@ sha256sums=('0e29afbbda3b81528380d2dbf7dae1ed6825d8c69e0abfcce53cc6cf90430e69')
 build() {
     source /opt/aocc/setenv_AOCC.sh
     cd ${srcdir}/${pkgaltname}-${pkgver}
-    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -G Ninja
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_FLAGS="-stdlib=libc++" -G Ninja
     cmake --build build
 }
 

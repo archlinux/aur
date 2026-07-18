@@ -8,6 +8,7 @@ pkgbase = aocl-utils-aocc
 	makedepends = cmake
 	makedepends = ninja
 	depends = aocc
+	depends = libc++
 	provides = aocl-utils
 	conflicts = aocl-utils
 	options = staticlibs
