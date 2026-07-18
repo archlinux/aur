@@ -1,0 +1,6 @@
+# makepkg build artifacts
+*.pkg.tar*
+*.log
+pkg/
+src/
+bcont-git/

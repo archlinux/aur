@@ -1,0 +1,21 @@
+pkgbase = bcont-git
+	pkgdesc = Bubblewrap sandbox with Wayland security-context for Sway
+	pkgver = 2.0.0.r0.gbf1eae1
+	pkgrel = 1
+	url = https://github.com/bencejuhaasz/bcont
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	makedepends = git
+	makedepends = cargo
+	depends = bubblewrap
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sway: Wayland sandbox mode with wp_security_context_manager_v1
+	optdepends = xdg-dbus-proxy: D-Bus portal filtering (--dbus/--system-dbus flags)
+	provides = bcont
+	conflicts = bcont
+	source = bcont-git::git+https://github.com/bencejuhaasz/bcont.git
+	sha256sums = SKIP
+
+pkgname = bcont-git
