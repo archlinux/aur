@@ -10,6 +10,6 @@ pkgbase = vpngfetch
 	makedepends = gcc
 	depends = glibc
 	source = git+https://github.com/AndroidHyperOfficial/vpngfetch.git#tag=v1.5.0
-	sha256sums = SKIP
+	sha256sums = 0e9c1c38a4ed9a7b95b7477aaad06ec40f88e93e35af7b86000746f14cf68009
 
 pkgname = vpngfetch

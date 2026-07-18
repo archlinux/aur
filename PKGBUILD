@@ -9,7 +9,7 @@ license=('GPL') # Or your preferred open-source license model
 depends=('glibc')
 makedepends=('git' 'gcc')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP') # Using SKIP since it tracks the locked git tag directly
+sha256sums=('0e9c1c38a4ed9a7b95b7477aaad06ec40f88e93e35af7b86000746f14cf68009')
 
 build() {
     cd "${pkgname}"
