@@ -1,0 +1,4 @@
+[slang-verilog]
+source = "git"
+git = "https://github.com/MikePopoloski/slang.git"
+prefix = "v"
