@@ -1,6 +1,6 @@
 pkgbase = jumpapp-ng
 	pkgdesc = A run-or-raise application switcher for any X11 desktop
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/musqz/jumpapp
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jumpapp-ng
 	provides = jumpapp
 	conflicts = jumpapp
 	conflicts = jumpapp-git
-	source = jumpapp-ng-1.2.1.tar.gz::https://github.com/musqz/jumpapp/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = cc88c52f6ee267e33734762df830ea781d4b87a868ca769c09b8a751c6fe78df
+	source = jumpapp-ng-1.2.2.tar.gz::https://github.com/musqz/jumpapp/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = f2eb56a203f00f2536be533355797ec1cc4ff964888c3d4aad450e10ee983107
 
 pkgname = jumpapp-ng
