@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index a6094ce..0190f3f 100644
+index 60dce48..8dd4e65 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -690,7 +690,7 @@ static const struct {
+@@ -718,7 +718,7 @@ static const struct {
  } helpLeft[] = {
     { .key = "      #: ",  .roInactive = false, .info = "hide/show header meters" },
     { .key = "    Tab: ",  .roInactive = false, .info = "switch to next screen tab" },
@@ -11,7 +11,7 @@ index a6094ce..0190f3f 100644
     { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
     { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
     { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
-@@ -719,7 +719,7 @@ static const struct {
+@@ -747,7 +747,7 @@ static const struct {
     { .key = "  Space: ", .roInactive = false, .info = "tag process" },
     { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
     { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
@@ -20,7 +20,7 @@ index a6094ce..0190f3f 100644
     { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .roInactive = true,  .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_AFFINITY))
-@@ -730,15 +730,15 @@ static const struct {
+@@ -758,15 +758,15 @@ static const struct {
  #endif
     { .key = "      e: ", .roInactive = false, .info = "show process environment" },
     { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
@@ -39,7 +39,7 @@ index a6094ce..0190f3f 100644
     { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -962,6 +962,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -990,6 +990,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -47,7 +47,7 @@ index a6094ce..0190f3f 100644
     keys['M'] = actionSortByMemory;
     keys['N'] = actionSortByPID;
     keys['O'] = actionToggleRunningInContainer;
-@@ -969,6 +970,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -997,6 +998,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['T'] = actionSortByTime;
     keys['U'] = actionUntagAll;
@@ -55,7 +55,7 @@ index a6094ce..0190f3f 100644
  #ifdef SCHEDULER_SUPPORT
     keys['Y'] = actionSetSchedPolicy;
  #endif
-@@ -984,17 +986,15 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -1012,17 +1014,15 @@ void Action_setBindings(Htop_Action* keys) {
  #endif
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -93,7 +93,7 @@ index 530093c..2eefee1 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index 97c8bb3..6fcd130 100644
+index ede8542..90bf693 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
 @@ -56,7 +56,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
@@ -117,10 +117,10 @@ index 105b46d..c92cac3 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index 9d4dc10..4ec4bef 100644
+index 6f97e44..96f3d7a 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -374,6 +374,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -393,6 +393,7 @@ bool Panel_onKey(Panel* this, int key) {
  
     switch (key) {
        case KEY_DOWN:
@@ -128,7 +128,7 @@ index 9d4dc10..4ec4bef 100644
        case KEY_CTRL('N'):
        #ifdef KEY_C_DOWN
        case KEY_C_DOWN:
-@@ -382,6 +383,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -401,6 +402,7 @@ bool Panel_onKey(Panel* this, int key) {
           break;
  
        case KEY_UP:
@@ -136,7 +136,7 @@ index 9d4dc10..4ec4bef 100644
        case KEY_CTRL('P'):
        #ifdef KEY_C_UP
        case KEY_C_UP:
-@@ -390,7 +392,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -409,7 +411,7 @@ bool Panel_onKey(Panel* this, int key) {
           break;
  
        case KEY_LEFT:
@@ -145,7 +145,7 @@ index 9d4dc10..4ec4bef 100644
           if (this->scrollH > 0) {
              this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
              this->needsRedraw = true;
-@@ -398,16 +400,28 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -417,16 +419,28 @@ bool Panel_onKey(Panel* this, int key) {
           break;
  
        case KEY_RIGHT:
@@ -175,7 +175,7 @@ index 9d4dc10..4ec4bef 100644
           PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
           break;
  
-@@ -420,10 +434,12 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -459,10 +473,12 @@ bool Panel_onKey(Panel* this, int key) {
           break;
  
        case KEY_HOME:
@@ -189,7 +189,7 @@ index 9d4dc10..4ec4bef 100644
           break;
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index bc01b41..9c6481f 100644
+index f79596c..646252d 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -19,6 +19,7 @@ in the source distribution for its full text.
@@ -200,7 +200,7 @@ index bc01b41..9c6481f 100644
  #include "Object.h"
  #include "Platform.h"
  #include "Process.h"
-@@ -349,15 +350,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
+@@ -351,15 +352,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
           continue;
        }
  
@@ -224,7 +224,7 @@ index bc01b41..9c6481f 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -394,7 +396,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
+@@ -396,7 +398,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
        case KEY_FOCUS_OUT:
           break;
        case KEY_LEFT:
@@ -233,7 +233,7 @@ index bc01b41..9c6481f 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -419,7 +421,7 @@ tryLeft:
+@@ -421,7 +423,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
@@ -243,10 +243,10 @@ index bc01b41..9c6481f 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
 diff --git a/htop.1.in b/htop.1.in
-index 09aba1f..9988354 100644
+index 58a3cc3..42cc9c9 100644
 --- a/htop.1.in
 +++ b/htop.1.in
-@@ -108,27 +108,30 @@ The following commands are supported while in
+@@ -113,27 +113,30 @@ The following commands are supported while in
  Select the next / the previous screen tab to display.
  You can enable showing the screen tab names in the Setup screen (F2).
  .TP
@@ -284,7 +284,7 @@ index 09aba1f..9988354 100644
  Scroll to the bottom of the process list and select the last process.
  .TP
  .B Ctrl-A, ^
-@@ -155,7 +158,7 @@ Trace process system calls: if strace(1) is installed, pressing this key
+@@ -172,7 +175,7 @@ Trace process system calls: if strace(1) is installed, pressing this key
  will attach it to the currently selected process, presenting a live
  update of system calls issued by the process.
  .TP
@@ -293,7 +293,7 @@ index 09aba1f..9988354 100644
  Display open files for a process: if lsof(1) is installed, pressing this key
  will display the list of file descriptors opened by the process.
  .TP
-@@ -163,10 +166,10 @@ will display the list of file descriptors opened by the process.
+@@ -180,10 +183,10 @@ will display the list of file descriptors opened by the process.
  Display the command line of the selected process in a separate screen, wrapped
  onto multiple lines as needed.
  .TP
@@ -306,7 +306,7 @@ index 09aba1f..9988354 100644
  Go to the help screen
  .TP
  .B F2, S
-@@ -197,7 +200,7 @@ between them as a tree. Toggling the key will switch between tree and
+@@ -214,7 +217,7 @@ between them as a tree. Toggling the key will switch between tree and
  your previously selected sort view. Selecting a sort view will exit
  tree view.
  .TP
@@ -315,7 +315,7 @@ index 09aba1f..9988354 100644
  Selects a field for sorting, also accessible through < and >.
  The current sort field is indicated by a highlight in the header.
  .TP
-@@ -215,7 +218,7 @@ This can only be done by the superuser.
+@@ -232,7 +235,7 @@ This can only be done by the superuser.
  .B Shift-F8, {
  Decrease the selected process's autogroup priority (add to autogroup 'nice' value)
  .TP
@@ -324,7 +324,7 @@ index 09aba1f..9988354 100644
  "Kill" process: sends a signal which is selected in a menu, to one or a group
  of processes. If processes were tagged, sends the signal to all tagged processes.
  If none is tagged, sends to the currently selected process.
-@@ -227,7 +230,7 @@ Quit
+@@ -244,7 +247,7 @@ Quit
  Invert the sort order: if sort order is increasing, switch to decreasing, and
  vice-versa.
  .TP
