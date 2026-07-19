@@ -1,4 +1,4 @@
-﻿pkgbase = openmediabridge
+pkgbase = openmediabridge
 	pkgdesc = Bridge media playback and synchronized lyrics to WebSocket clients via MPRIS. For Resonite VR, OBS overlays, and Discord status.
 	pkgver = 2.0
 	pkgrel = 1
