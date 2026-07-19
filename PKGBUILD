@@ -1,6 +1,6 @@
 # Maintainer: Linus <jh@orbt.sh>
 pkgname=orbit
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Universal terminal workspace — sessions, panes, and AI agents (alias: orbt)"
 arch=('x86_64')
