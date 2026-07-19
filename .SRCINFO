@@ -1,0 +1,13 @@
+pkgbase = pixilang-doc
+	pkgdesc = Oficial Pixilang Programmin Language documentation in man-style
+	pkgver = 3.8.6f
+	pkgrel = 1
+	arch = any
+	license = unknown
+	makedepends = pandoc
+	makedepends = poppler
+	depends = man-db
+	source = pixilang.7.pdf::https://warmplace.ru/soft/pixilang/Pixilang%20User%20Manual.pdf
+	sha256sums = 8417cf883c01200adfba818365a78e084c7460e694553c136295d1e90ead7608
+
+pkgname = pixilang-doc
