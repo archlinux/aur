@@ -2,18 +2,24 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/Freed-Wu/tmux-language-server/blob/main/.github/workflows/main.yml
 pkgname=tmux-language-server
-pkgver=0.0.17
+_name=$pkgname
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="tmux's language server"
 arch=(any)
 url=https://github.com/Freed-Wu/tmux-language-server
 depends=(python-lsp-tree-sitter python-tree-sitter-tmux)
-makedepends=(python-installer)
+makedepends=(uv python-installer)
 license=(GPL3)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('99f9be7cd218617f7f882fe1cf1f5ef52dd4cc0cb1e7d7b8f753ac7363bf95b9')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('50f8177564a460a81d3304f2a6a86c53ed6beb84b6d4595e5315a9422d3bba28')
+
+build() {
+	cd "${_name//-/_}-$pkgver" || exit
+	uv build --wheel --no-build-isolation
+}
 
 package() {
-	python -m installer -d "$pkgdir" ./*.whl
+	cd "${_name//-/_}-$pkgver" || exit
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
