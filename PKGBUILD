@@ -3,7 +3,7 @@
 _pkgauthor=ruuda
 _pkgname=rcl
 pkgname=${_pkgname}-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A reasonable configuration language"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}-unknown-linux-gnu")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            '5c75808b98c2934070adf8c1522cf0951a5a78b6595d3b778402d513cf64ca32')
-sha256sums_x86_64=('2611b34acc98c1131dbcbf263142dd46571b618e64452b08fbc3acf080864308')
-sha256sums_aarch64=('b46c35e8cb850a5111e1fdd12e6c7274d8f2b50f3683f63a9ba3e698f9fdf103')
+            'ec9aa72a874a507cbf6af4f7ce92fa6d83d168a7facbc30624326722734262d3')
+sha256sums_x86_64=('e6cf5ae2d703e66727a94cff33d705a41f929107cc59d8e1d1a37b2f53a0c3ee')
+sha256sums_aarch64=('ac03dd69f746c3a6174b8a6e9d5e90fe8847cd4d378a345b245bf2dcb47519f9')
 
 
 package() {
