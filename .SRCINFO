@@ -9,7 +9,7 @@ pkgbase = dsk-ditto
 	makedepends = go
 	depends = glibc
 	provides = dskDitto
-	source = dsk-ditto-0.5.6.tgz::https://github.com/jdefrancesco/dskDitto/archive/refs/tags/v0.5.6.tar.gz
+	source = dsk-ditto-0.5.6.tgz::https://github.com/jdefrancesco/dskDitto/archive/v0.5.6.tar.gz
 	sha256sums = 32df44adf16990f7773a9f498e4bdfae16e414e8a8a6189c10d508dfa0f00026
 
 pkgname = dsk-ditto
