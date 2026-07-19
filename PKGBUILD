@@ -10,27 +10,13 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2026.1.2.8
-_subver='quail2-rc1'
+pkgver=2026.1.3.5
+_subver='quail3-rc1'
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('Apache-2.0')
-depends=(
-  'alsa-lib'
-  'fontconfig'
-  'freetype2'
-  'gcc-libs'
-  'bzip2'
-  'libedit'
-  'libxcrypt-compat'
-  'libxml2'
-  'libxrender'
-  'libxtst'
-  'python'
-  'which'
-)
 makedepends=('zip')
 optdepends=(
   'android-emulator'
@@ -58,7 +44,7 @@ source=(
   "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${_subver}-linux.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('b53303df08048345bb5ac25bfe159731dcea3430f4e2e27b8a60338161bd2667'
+sha256sums=('3fc6285271b862d08e3e46c72c50477ed79983c70925e5ee0e0b72fa49a06d2c'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f')
 
 if [ "${CARCH}" = "i686" ]; then
@@ -77,6 +63,21 @@ build() {
 }
 
 package() {
+  depends=(
+    'alsa-lib'
+    'fontconfig'
+    'freetype2'
+    'gcc-libs'
+    'bzip2'
+    'libedit'
+    'libxcrypt-compat'
+    'libxml2'
+    'libxrender'
+    'libxtst'
+    'python'
+    'which'
+  )
+
   cd "${_pkgname}"
 
   # Install the application
