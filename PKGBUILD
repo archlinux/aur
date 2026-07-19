@@ -1,25 +1,32 @@
 # Maintainer: Rotko Networks <hq@rotko.net>
+#
+# Canonical, in-repo source of truth for the AUR package. The release workflow
+# (.github/workflows/release.yaml) copies this into the AUR repo on each tag,
+# sets pkgver from the tag, and runs `updpkgsums` to fill sha256sums from the
+# actual GitHub tarball. Do not hand-edit pkgver/sha256sums here.
 pkgname=zish
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="fast shell interpreter written in zig with built-in AI agent and GGUF inference"
 arch=('x86_64')
 url="https://github.com/rotkonetworks/zish"
 license=('MIT')
 depends=('glibc')
-makedepends=('zig>=0.15.1')
+# zish requires the Zig 0.16 std/build API (std.Io, module link_libc, etc.).
+makedepends=('zig>=0.16.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotkonetworks/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a41e9a650f1ec01602d8757a99589ca48175a2778d0f1430e379e6b0c048c199')
+sha256sums=('32a788cae77e67138b7b87016a03c6aec8be13a20afad7fd80c411606e09c36e')
 
 build() {
     cd "$pkgname-$pkgver"
     zig build --release=fast
 }
 
-check() {
-    cd "$pkgname-$pkgver"
-    zig build test
-}
+# No check(): `zig build test` builds the test exe in Debug (all modules +
+# debug info), which is heavy on RAM/disk; on a constrained builder Zig 0.16.0
+# can abort ungracefully mid-write ("DWARF TODO: 'DiskQuota' ...") instead of
+# reporting cleanly. Tests are run in CI (.github/workflows) with adequate
+# resources; packaging shouldn't gate a user's install on it.
 
 package() {
     cd "$pkgname-$pkgver"
