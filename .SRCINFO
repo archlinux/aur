@@ -1,0 +1,17 @@
+pkgbase = netmuxd-git
+	pkgdesc = An alternative to usbmuxd just for networking (latest Git version)
+	pkgver = 0.4.3.r7.g68d5bc9
+	pkgrel = 1
+	url = https://github.com/jkcoxson/netmuxd
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cargo
+	makedepends = git
+	provides = netmuxd
+	conflicts = netmuxd
+	conflicts = netmuxd-bin
+	options = !lto
+	source = netmuxd::git+https://github.com/jkcoxson/netmuxd.git
+	sha256sums = SKIP
+
+pkgname = netmuxd-git
