@@ -1,0 +1,13 @@
+pkgbase = tuistore
+	pkgdesc = TUI app store — browse, search, and one-key-install terminal apps
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/Gheat1/tuistore
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = uv
+	depends = python
+	source = tuistore-0.4.3.tar.gz::https://github.com/Gheat1/tuistore/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = b2be71b0c34b8a3b3dd569a48c5b4f968c0d932aa0aaf01a33c8b3e37b75012b
+
+pkgname = tuistore
