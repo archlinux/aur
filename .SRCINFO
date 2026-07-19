@@ -1,0 +1,27 @@
+pkgbase = temporal-explorer
+	pkgdesc = Browse Git repository history as a time-navigable file tree
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/johnpetersa19/Temporal-Explorer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = blueprint-compiler
+	makedepends = gettext
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = openssl
+	depends = zlib
+	conflicts = temporal-explorer-git
+	options = !debug
+	options = !lto
+	source = temporal-explorer-0.2.0.tar.gz::https://github.com/johnpetersa19/Temporal-Explorer/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = f5e73d40fc2975b03ab6226e225c218a370e7683f129cd5d6dfb5e699c62a13d
+
+pkgname = temporal-explorer
+
