@@ -24,9 +24,11 @@ source=("${pkgname}-${pkgver}.deb::$_url"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 b2sums=('16db93e19459d17b8da85ca5de7d92869f3500fd9fb2e7f2d0432571119f886a248daec9162df9abc0c30dc376aa18ef5c7202777393ff4921b0ab82720ffe4c'
 '04759111dcb50b5811a96085fee9384c89a583431a9da510dd06f2675fe80cf7becd5d12bcbdc92c08f16ba6e2093947fc9eb9007827c2e76244cd4be8615946')
+noextract=(${pkgname}-${pkgver}.deb) # avoid double tarball
 
 prepare() {
-  bsdtar xf data.tar.xz --exclude 'usr/share/devin-desktop/[^r]*' --exclude 'usr/share/devin-desktop/*.pak'
+  bsdtar -xOf ${noextract[0]} data.tar.xz | tar -xJf - --exclude "usr/share/${pkgname}/[^r]*" --exclude "usr/share/${pkgname}/*.pak"
+  #bsdtar xf data.tar.xz --exclude 'usr/share/devin-desktop/[^r]*' --exclude 'usr/share/devin-desktop/*.pak'
   _app=/usr/share/devin-desktop/resources/app
   sed code.sh \
     -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \

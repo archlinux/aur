@@ -15,6 +15,7 @@ pkgbase = devin-desktop
 	depends = libsecret
 	depends = libxss
 	depends = libxkbfile
+	noextract = devin-desktop-3.4.27.deb
 	options = !strip
 	source = devin-desktop-3.4.27.deb::https://windsurf-stable.codeiumdata.com/linux-x64-deb/stable/0d4bf12ed4a7597cb8ae9016fe8474468aad98a2/Devin-linux-x64-3.4.27.deb
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
