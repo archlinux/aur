@@ -4,7 +4,7 @@ pkgname=qt6-dbusqml-git
 _projname=dbusqml
 _release_ver=0.1.0.r0
 pkgver=0.1.0.r0.g44a98db
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone D-Bus binding for QML (no KDE dependencies) — git master"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexindigo/dbusqml"
@@ -27,6 +27,7 @@ build() {
     cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TEST_MODE=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }

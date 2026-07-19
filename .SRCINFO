@@ -1,7 +1,7 @@
 pkgbase = qt6-dbusqml-git
 	pkgdesc = Standalone D-Bus binding for QML (no KDE dependencies) — git master
 	pkgver = 0.1.0.r0.g44a98db
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexindigo/dbusqml
 	arch = x86_64
 	arch = aarch64
