@@ -1,0 +1,18 @@
+pkgbase = charinfo
+	pkgdesc = A command line tool to view detailed information about a character
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wasi-master/charinfo
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-rich
+	provides = charinfo
+	source = https://files.pythonhosted.org/packages/source/c/charinfo/charinfo-0.2.0.tar.gz
+	sha256sums = 36fd977827267b89c0e0609a9f5ebbedf0434133bdc036864712b488da8b4988
+
+pkgname = charinfo
