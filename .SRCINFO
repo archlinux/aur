@@ -1,6 +1,6 @@
 pkgbase = markra-bin
 	pkgdesc = AI-native WYSIWYG Markdown editor — local first, with native AI
-	pkgver = 1.6.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/markrahq/markra
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = markra-bin
 	provides = markra
 	conflicts = markra
 	options = !debug
-	source = markra-bin-1.6.0.deb::https://github.com/markrahq/markra/releases/download/v1.6.0/Markra_1.6.0_linux_x64.deb
-	source = markra-bin-1.6.0-LICENSE::https://raw.githubusercontent.com/markrahq/markra/main/LICENSE
-	sha256sums = 85dfaf8d4e4569d0259b96912b0e27ab668cbaf5dbd590a237e4ea7886ce9691
+	source = markra-bin-1.7.3.deb::https://github.com/markrahq/markra/releases/download/v1.7.3/Markra_1.7.3_linux_x64.deb
+	source = markra-bin-1.7.3-LICENSE::https://raw.githubusercontent.com/markrahq/markra/main/LICENSE
+	sha256sums = e50efdf9b92a2e3cdd70b85a6d35871cfe70b7a43212b06d34c1fe57332f2ed1
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = markra-bin
