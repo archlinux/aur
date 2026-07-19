@@ -15,10 +15,12 @@ source=(
     "git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/$pkgver-$pkgrel"
     https://github.com/irtkll/wine-proton-patch/raw/main/恢复字体.patch
     https://github.com/irtkll/wine-proton-patch/raw/main/wine用户名.patch
+    https://github.com/irtkll/wine-proton-patch/raw/main/链接用户主目录到wine主目录.patch
 )
 sha256sums=('SKIP'
             'e5bbe669e881d41ad0ac530903b4356ec3bbace37bed1dcaddd9c2f2a81a29df'
-            '005ddb15938c05c53fdb0d652197b73c65ff4f3bf8f7f9e7c4ec851c7f2ba797')
+            '005ddb15938c05c53fdb0d652197b73c65ff4f3bf8f7f9e7c4ec851c7f2ba797'
+            'aca56ce67b20518bf3dbd4b5d54dbb5379e82f5cfeb1fd1e671064469f5836f4')
 prepare(){
     cd "$pkgname"
     for src in "${source[@]}"; do
