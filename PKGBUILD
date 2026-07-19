@@ -1,8 +1,14 @@
 # Maintainer: Barath <your@email.com>
 # Package name uses -bin suffix (AUR convention for pre-built binaries)
+#
+# CPU compatibility: The bundled JRE is built with jvmToolchain (JDK 21 from
+# Adoptium) which targets baseline x86-64 (x86-64-v1). This ensures ConnectLnx
+# runs on ALL x86-64 CPUs, including older models and AMD Zen CPUs without
+# AVX-512 (Zen 2/3). If you encounter "CPU ISA level is lower than required",
+# build from source with: ./gradlew :composeApp:run
 
 pkgname=connectlnx-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Cross-platform LAN file transfer app built with Kotlin Multiplatform"
 arch=('x86_64')
@@ -13,7 +19,7 @@ conflicts=('connectlnx')
 provides=('connectlnx')
 
 source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
-sha256sums=('f3457755199ec61f8467d771eb20d9b2ca355de6ad65db457e272522ddd83859')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
+sha256sums=('662a424357454566dfb03217e16ad74bed61789d7efb5d8ea123f3335cab517a')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
     cd "$srcdir"
