@@ -1,16 +1,17 @@
 # Maintainer: germanua
 
 pkgname=linux-soundboard
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
 url="https://github.com/germanua/Linux-SoundBoard"
-license=('custom:PolyForm-Noncommercial-1.0.0')
+license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
   'gtk4'
   'libadwaita'
   'libpulse'
+  'opus'
   'libx11'
   'libxi'
   'libxtst'
@@ -34,7 +35,7 @@ conflicts=('linux-soundboard-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('75795e58ca156bdf5147cf100c7bbc72608845baecac14b5c233354fb1580433')
+sha256sums=('f04b1c5027c841f0d5e0ab57fb9d02d9aac841a90f3922290f9192d0c4b2a70f')
 install="${pkgname}.install"
 
 build() {
@@ -42,6 +43,7 @@ build() {
     bash packaging/linux/generate-icons.sh assets/icons/icon.png
     export CARGO_TARGET_DIR="$srcdir/target"
     export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=."
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${HOME}=~"
     cargo build --frozen --locked --release --manifest-path src/Cargo.toml
 }
 
