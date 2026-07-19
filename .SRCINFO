@@ -1,6 +1,6 @@
 pkgbase = azaharplus-appimage
 	pkgdesc = A fork of the Azahar 3DS emulator that restores some features
-	pkgver = 2125_1_B
+	pkgver = 2126_0_A
 	pkgrel = 1
 	url = https://github.com/AzaharPlus/AzaharPlus
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = azaharplus-appimage
 	conflicts = azahar
 	conflicts = azaharplus
 	options = !strip
-	source = https://github.com/AzaharPlus/AzaharPlus/releases/download/AZAHAR_PLUS_2125_1_B/azaharplus-2125.1-B-linux.zip
+	source = https://github.com/AzaharPlus/AzaharPlus/releases/download/AZAHAR_PLUS_2126_0_A/azaharplus-2126.0-A-linux.AppImage
 	source = azaharplus.desktop
 	source = azahar.svg
-	sha256sums = b239195259f42602488f35383c9cc9e3c30dea8ca8e3fc6cf5029246f272a7ff
+	sha256sums = 2437ad33a8f1fd50e1733dd13452764a47b9eb551b9562376f068db8431460ad
 	sha256sums = ce8ab3a29aac5244a002793b41f7f45ce940894f42be71c0e47ec50d0e264634
 	sha256sums = b7941099d70483350c3f1af82bdf55cda68203f12f2e8a9b09b23749de3a5caf
 
