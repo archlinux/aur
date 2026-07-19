@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=mp
+GenericName=mp
+Comment=music player
+Exec=mp %F
+Icon=mp
+Terminal=false
+StartupWMClass=mp
+Categories=AudioVideo;Audio;Player;
+MimeType=audio/flac;audio/mpeg;audio/wav;audio/x-flac;audio/x-wav;
+Keywords=audio;music;player;
