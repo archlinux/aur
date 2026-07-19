@@ -1,0 +1,17 @@
+pkgbase = exex-bin
+	pkgdesc = Terminal UI for exploring ELF, Mach-O and PE binaries
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/shellcell/exex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = exex
+	conflicts = exex
+	options = !debug
+	source_x86_64 = exex-0.3.2-amd64.tar.gz::https://github.com/shellcell/exex/releases/download/v0.3.2/exex-v0.3.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 80c60feed69a24edc9eed34d7f1b0a56cd893789c85972686b3e21f2b56d058a
+	source_aarch64 = exex-0.3.2-arm64.tar.gz::https://github.com/shellcell/exex/releases/download/v0.3.2/exex-v0.3.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 897337eed7b20beac91dbb3f5eb404b7779b8873cab6406df585b16ec20b033f
+
+pkgname = exex-bin
