@@ -1,0 +1,14 @@
+pkgbase = deepskystacker-bin
+	pkgdesc = An tool for astrophotographers that simplifies all the pre-processing steps of deep sky pictures.
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = https://github.com/deepskystacker/DSS
+	arch = x86_64
+	license = BSD 3-Clause
+	depends = libicns
+	provides = deepskystacker
+	conflicts = deepskystacker
+	source = https://github.com/deepskystacker/DSS/releases/download/6.2.2/DeepSkyStacker-6.2.2-linux-x64-installer.run
+	sha256sums = 210fe41446dd3700c5b21c6a308a2a7353949299535af50c536550837359c524
+
+pkgname = deepskystacker-bin
