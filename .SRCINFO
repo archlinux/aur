@@ -1,5 +1,5 @@
 pkgbase = jellium-desktop-bin
-	pkgdesc = A desktop client for Jellium
+	pkgdesc = A desktop client for Jellyfin
 	pkgver = 0.r1074.5a2a702
 	pkgrel = 1
 	epoch = 1
