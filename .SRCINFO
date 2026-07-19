@@ -1,0 +1,15 @@
+pkgbase = exex
+	pkgdesc = Terminal UI for exploring ELF, Mach-O and PE binaries
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/shellcell/exex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = exex-0.3.2.tar.gz::https://github.com/shellcell/exex/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 839ac1dcd56b6ec07cf99110aab2fcfede19e190fa2e1bd6cf4a317282f71023
+
+pkgname = exex
