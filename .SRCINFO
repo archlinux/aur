@@ -1,6 +1,6 @@
 pkgbase = cmdcreate
 	pkgdesc = Easily create and manage your own custom commands
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/owen-debiasio/cmdcreate
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cmdcreate
 	depends = less
 	provides = cmdcreate
 	conflicts = cmdcreate-git
-	source = cmdcreate-v1.4.2::git+https://github.com/owen-debiasio/cmdcreate.git#tag=v1.4.2
+	source = cmdcreate-v1.4.3::git+https://github.com/owen-debiasio/cmdcreate.git#tag=v1.4.3
 	sha256sums = SKIP
 
 pkgname = cmdcreate
