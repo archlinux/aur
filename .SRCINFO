@@ -1,6 +1,6 @@
 pkgbase = rovr-nightly-bin
 	pkgdesc = A post-modern terminal file explorer
-	pkgver = 0.10.0.dev1.0.20260718.040dda2
+	pkgver = 0.10.0.dev1.0.20260719.aa6be91
 	pkgrel = 1
 	url = https://github.com/NSPC911/rovr
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = rovr-nightly-bin
 	conflicts = rovr
 	conflicts = rovr-bin
 	options = !strip
-	source = README-0.10.0.dev1.0.20260718.040dda2.md::https://raw.githubusercontent.com/NSPC911/rovr/nightly/README.md
-	source = LICENSE-0.10.0.dev1.0.20260718.040dda2::https://raw.githubusercontent.com/NSPC911/rovr/nightly/LICENSE
+	source = README-0.10.0.dev1.0.20260719.aa6be91.md::https://raw.githubusercontent.com/NSPC911/rovr/nightly/README.md
+	source = LICENSE-0.10.0.dev1.0.20260719.aa6be91::https://raw.githubusercontent.com/NSPC911/rovr/nightly/LICENSE
 	sha256sums = 7e331c8d7ad76b984c11c23de3b860e9f93cae4bad82c264475788a5fc6866ac
 	sha256sums = b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445
-	source_x86_64 = rovr-x86_64-0.10.0.dev1.0.20260718.040dda2.zip::https://github.com/NSPC911/rovr/releases/download/nightly/rovr-linux-x64-nuitka.zip
-	sha256sums_x86_64 = 09898308d2f600d36260fd15ad857234771c91aebbc7c13c476b2a7eec1e3d3a
-	source_aarch64 = rovr-aarch64-0.10.0.dev1.0.20260718.040dda2.zip::https://github.com/NSPC911/rovr/releases/download/nightly/rovr-linux-arm64-nuitka.zip
-	sha256sums_aarch64 = 191ea04a8ac9351886ee072e2dead31952f4c385934c30beec58f3c02ff9b684
+	source_x86_64 = rovr-x86_64-0.10.0.dev1.0.20260719.aa6be91.zip::https://github.com/NSPC911/rovr/releases/download/nightly/rovr-linux-x64-nuitka.zip
+	sha256sums_x86_64 = 7cc2c75b025b723784213c70cf94d90f5a1107d982a4852b4504d80ed78d8c82
+	source_aarch64 = rovr-aarch64-0.10.0.dev1.0.20260719.aa6be91.zip::https://github.com/NSPC911/rovr/releases/download/nightly/rovr-linux-arm64-nuitka.zip
+	sha256sums_aarch64 = d998e5ec78127dd618d5ed2b15b04b50394bc0bb73eaaf067ae84ae28d0f2f18
 
 pkgname = rovr-nightly-bin
