@@ -1,6 +1,6 @@
 pkgbase = byedpi-gtk
 	pkgdesc = GTK frontend for byedpi to bypass DPI restrictions
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/duckesteles/byedpi-gtk
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = byedpi-gtk
 	depends = gtk4
 	depends = libadwaita
 	options = !debug
-	source = byedpi-gtk-1.1.1.tar.gz::https://github.com/duckesteles/byedpi-gtk/archive/refs/tags/v1.1.1.tar.gz
+	source = byedpi-gtk-1.1.2.tar.gz::https://github.com/duckesteles/byedpi-gtk/archive/refs/tags/v1.1.2.tar.gz
 	source = https://github.com/hufrea/byedpi/releases/download/v0.17.3/byedpi-17.3-x86_64.tar.gz
 	source = https://github.com/hufrea/byedpi/releases/download/v0.17.3/byedpi-17.3-i686.tar.gz
 	source = https://github.com/hufrea/byedpi/releases/download/v0.17.3/byedpi-17.3-aarch64.tar.gz
