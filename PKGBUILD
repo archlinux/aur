@@ -1,4 +1,5 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+# Automation: https://github.com/its-me/aur.csstidy
 
 pkgname=csstidy
 pkgver=2.2.1
@@ -9,7 +10,7 @@ url="https://github.com/Cerdic/CSSTidy"
 license=('LGPL-2.1-or-later')
 depends=('php')
 conflicts=('csstidy-cpp-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Cerdic/CSSTidy/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cerdic/CSSTidy/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9ea2334948f114f067a9f9cce630e239c42696d1909c830cd6678b709754eeed')
 
 package() {
