@@ -22,14 +22,17 @@ sha256sums=('69370320c73e8366e31da4ebd5439ae287374e3c1d4d0324037851a4d138914f'
             '0b74ceedeb3f1ec5f8993f67e8008f2473025424b58541fd049e3fa21fcaec6f')
 
 build() {
-  # stable rust; crt-static rides the repo's cargo config
+  # makepkg's rust.conf may export its own RUSTFLAGS, which replaces the
+  # repo config's; pin ours or build.rs refuses the build
+  export RUSTFLAGS="-C target-feature=+crt-static"
   cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked
 
   # the libc family the gpu driver binds at runtime, built from the
   # taproot workspace. 
   cd "$srcdir/taproot-$_taproot"
-  cargo build --release --locked -p taproot -p taproot-stub
+  # no RUSTFLAGS here: shared libraries cannot take crt-static
+  env -u RUSTFLAGS cargo build --release --locked -p taproot -p taproot-stub
   local bin="$srcdir/$pkgname-$pkgver/target/x86_64-unknown-linux-gnu/release"
   cp target/release/libtaproot.so "$bin/libc.so.6"
   cp target/release/libtaproot.so "$bin/libm.so.6"
