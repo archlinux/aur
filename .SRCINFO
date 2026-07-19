@@ -1,0 +1,20 @@
+pkgbase = tree-sitter-janus
+	pkgdesc = Janus grammar for tree-sitter (Sober/Neovim language intelligence)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sovereign-society.org/janus/tree-sitter-janus
+	arch = x86_64
+	arch = aarch64
+	groups = tree-sitter-grammars
+	license = LSL-1.0
+	makedepends = tree-sitter-cli
+	depends = glibc
+	optdepends = tree-sitter: core library
+	optdepends = sober-bin: repository governance that loads this grammar
+	optdepends = neovim: editor highlighting via /usr/lib/tree_sitter/janus.so
+	provides = libtree-sitter-janus.so
+	options = staticlibs
+	source = tree-sitter-janus-0.1.0.tar.gz::https://git.sovereign-society.org/janus/tree-sitter-janus/archive/v0.1.0.tar.gz
+	sha256sums = e557c4749c53453b601ea6e265d2be17ee371e6db68bbe572b2ba1979d7e5f88
+
+pkgname = tree-sitter-janus
