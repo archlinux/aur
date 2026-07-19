@@ -1,0 +1,47 @@
+# rakemond is a system-level systemd service (installed to
+# /usr/lib/systemd/system/). Per Arch packaging guidelines, pacman hooks only
+# print guidance rather than silently starting a daemon during install.
+
+post_install() {
+    echo ""
+    echo "  ── rakemond post-install notes ──────────────────────────────────────────"
+    echo ""
+    echo "  Enable and start the system service:"
+    echo ""
+    echo "    sudo systemctl enable --now rakemond"
+    echo ""
+    echo "  rakemond listens for cargo-rake lifecycle events on UDP/9999 by default"
+    echo "  (0.0.0.0, i.e. every interface). If you expect events from other"
+    echo "  machines, make sure UDP/9999 is reachable through any firewall between"
+    echo "  them and this host."
+    echo ""
+    echo "  An annotated example config is at:"
+    echo "    /usr/share/doc/rakemond/examples/rakemond.toml.example"
+    echo "  Copy it to /etc/rakemond/rakemond.toml and pass"
+    echo "  --config-absolute-path /etc/rakemond/rakemond.toml in the unit's"
+    echo "  ExecStart (or override individual settings via RAKEMOND_* environment"
+    echo "  variables in a drop-in) to change the bind address/port or logging."
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  ── rakemond upgrade notes ───────────────────────────────────────────────"
+    echo ""
+    echo "  To pick up the new binary:"
+    echo ""
+    echo "    sudo systemctl daemon-reload"
+    echo "    sudo systemctl restart rakemond"
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "  Stopping and disabling the rakemond service..."
+    systemctl disable --now rakemond >/dev/null 2>&1 || true
+    echo ""
+}
