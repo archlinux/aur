@@ -5,7 +5,7 @@
 
 _pkgname=vieb
 pkgname=${_pkgname}-bin
-pkgver=12.9.0
+pkgver=12.10.0
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
 sha512sums=('d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
             'cf7d9da7cdf7e26515a78c09cd4c7a864b53ae3299b77e6f112052e3cc642a40a0c50e83198eb19df0866f6b79da9e0e26e3650985ce7056d8961d7059119225')
-sha512sums_x86_64=('03782c139fdb17a94a88528fbcf95410886109181501f35f2bda1306075c2fef124bc84103414f8deaf462035927884fcd6dde3ee17996c6e8c0ccf6a48a362b')
+sha512sums_x86_64=('8e2570ffaa10730149b58e4d6ae6b6b854844187926e36dde7a63cbb6f2197dd72d122e3cc031ae90f6253a76ee072c5fd0dee53f72d903f6c6a367e9557a1c0')
 
 package() {
   cd "$srcdir"
