@@ -6,7 +6,7 @@
 _pkgname=transcode
 pkgname="${_pkgname}"
 pkgver=1.1.7
-pkgrel=49
+pkgrel=50
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(
   'x86_64'
@@ -57,7 +57,7 @@ makedepends=(
   ffmpeg4.4  # Needed for 'libavcodec', 'libavformat', 'libpostproc' dependencies.
   freetype2
   lame
-  libjpeg    # Provided also by 'libjpeg-turbo'.
+  libjpeg-turbo
   libogg
   libvorbis
   libxml2
