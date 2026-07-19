@@ -23,7 +23,20 @@ package() {
   local extract_dir
   extract_dir="${srcdir}/squashfs-root"
   rm -rf "${extract_dir}"
-  unsquashfs -f -d "${extract_dir}" "${appimage_path}"
+
+  # Electron Builder emits Type-2 AppImage files where the SquashFS payload
+  # starts at a runtime-reported offset instead of byte 0.
+  chmod +x "${appimage_path}"
+
+  local appimage_offset
+  appimage_offset="$("${appimage_path}" --appimage-offset)"
+
+  if [[ -z "${appimage_offset}" ]]; then
+    echo "Unable to determine AppImage payload offset for extraction."
+    exit 1
+  fi
+
+  unsquashfs -f -o "${appimage_offset}" -d "${extract_dir}" "${appimage_path}"
 
   local icon_source
   for candidate in \
