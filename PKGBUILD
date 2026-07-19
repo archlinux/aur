@@ -1,27 +1,22 @@
-# Maintainer: JinguTech <xiuluo.android at gmail dot com>
+# Contributor: JinguTech <xiuluo.android at gmail dot com>
 # Contributor: Edison Ibañez <edison@opmbx.org>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=sqlectron-gui
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
-arch=('x86_64' 'i686')
-url="https://sqlectron.github.io/"
+arch=(x86_64)
+url='https://sqlectron.github.io'
 license=('MIT')
-depends=('electron')
-case "$CARCH" in
-	i686)    _arch=-i686;;
-	x86_64)  _arch=;;
-esac
+depends=(glib2 hicolor-icon-theme)
+source=("https://github.com/sqlectron/sqlectron-gui/releases/download/v${pkgver}/sqlectron-${pkgver}.pacman")
+b2sums=('6def15f3e2c1b7b23d6e27b15283bff16d40fc07425621f1edef8530b33284c0c596a110560bea8b6ab670893931a98ef2ae7b7386f602c1eb41a114129d57b4')
+noextract=("sqlectron-$pkgver.pacman")
 
-source=(
-	"${pkgname}-${pkgver}.pacman::https://github.com/sqlectron/sqlectron-gui/releases/download/v${pkgver}/sqlectron-${pkgver}${_arch}.pacman"
-)
-
-sha256sums=('17eb28d4f4e34f619471f71edc68de5768791549e3313295d98f4cd2a991b6ff')
 package() {
-	cd "${srcdir}"
-	tar -xvf ${pkgname}-${pkgver}.pacman -C ${pkgdir}
-	# Remove exsiting files
-    rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
+  cd "$pkgdir"
+  tar -xvf "$srcdir"/sqlectron-${pkgver}.pacman
+  # Remove exsiting files
+  rm -f .PKGINFO .MTREE .INSTALL
 }
