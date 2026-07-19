@@ -2,24 +2,16 @@
 
 pkgname=molsketch
 _PkgName=Molsketch
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A 2D molecular editing tool"
 url="http://molsketch.sourceforge.net"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL-2.0-only)
 depends=(qt5-svg openbabel hicolor-icon-theme desktop-file-utils)
 makedepends=(cmake ninja qt5-tools)
 source=("https://downloads.sourceforge.net/$pkgname/$_PkgName-$pkgver-src.tar.gz")
-sha256sums=('da565ebf54046dc30a93e59c5d197fb66f6e1cec0c6e343cd77ad0f7b1c05da9')
-
-prepare() {
-  cd "$srcdir/$_PkgName-$pkgver"
-  sed -i 's/CXX_STANDARD 14/CXX_STANDARD 17/' \
-    libmolsketch/CMakeLists.txt \
-    obabeliface/CMakeLists.txt \
-    molsketch/CMakeLists.txt
-}
+sha256sums=('a5ff8a4352a547da6b01add3cf46c3d926afac1b455aa8effc08beba7c2da2c1')
 
 build() {
   cd "$srcdir"
@@ -28,6 +20,7 @@ build() {
     -S $_PkgName-$pkgver \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D MSK_INSTALL_LIBS64=/lib \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir=." \
     -G Ninja \
     -W no-dev
   cmake --build build
