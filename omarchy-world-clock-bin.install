@@ -2,10 +2,11 @@ post_install() {
   cat <<'EOF'
 Omarchy World Clock was installed to /usr/bin/omarchy-world-clock.
 
-To add it to your current user's Waybar config, run:
+To add it to your current user's Omarchy bar, run:
 
-  omarchy-world-clock install-waybar
-  omarchy-world-clock restart-waybar
+  omarchy-world-clock install
+
+This detects the Omarchy 4 shell or the legacy Omarchy 3 Waybar automatically.
 
 This is an unofficial Omarchy integration.
 EOF
