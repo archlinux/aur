@@ -1,7 +1,7 @@
 pkgbase = pokerth-bin
 	pkgdesc = Poker game written in C++/Qt
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pokerth/pokerth
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = pokerth-bin
 	depends = glibc
 	provides = pokerth
 	conflicts = pokerth
-	source = pokerth-2.1.3.zip::https://github.com/pokerth/pokerth/releases/download/v2.1.3/Pokerth-2.1.3-linux-x86_64.zip
+	source = pokerth-2.1.3.zip::https://github.com/pokerth/pokerth/releases/download/v2.1.3/pokerth-2.1.3-linux-x86_64.zip
 	source = pokerth.png
 	source = pokerth.svg
 	sha256sums = 9c613d8b37b41c4ff658bbeb45bfeacf8d230f7e6cd1eba3ea4259721defc6af
