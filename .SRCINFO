@@ -1,0 +1,19 @@
+pkgbase = qt6-niriqml-git
+	pkgdesc = Typed QML bindings for niri IPC — git master
+	pkgver = 0.1.0.r0.gd165445
+	pkgrel = 1
+	url = https://github.com/alexindigo/niriqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = niri: the compositor niriqml is designed to talk to
+	provides = qt6-niriqml
+	conflicts = qt6-niriqml
+	source = qt6-niriqml-git::git+https://github.com/alexindigo/niriqml.git
+	sha256sums = SKIP
+
+pkgname = qt6-niriqml-git
