@@ -1,7 +1,7 @@
 # Maintainer: clmates <clmates at gmail dot com>
 
 pkgname=drivebeacon
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='KDE Plasma system tray interface for the abraunegg OneDrive client'
 arch=('x86_64')
@@ -28,7 +28,7 @@ checkdepends=(
     'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5db44367eb980f8480df57766c849061235f4c060a3cfcea322a7d2551d7dda')
+sha256sums=('eef84abb3596866b8bc5ac3c124bdae0923aa878b7dfbdb635bd9d2d0ebdf23c')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build -G Ninja \

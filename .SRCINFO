@@ -1,6 +1,6 @@
 pkgbase = drivebeacon
 	pkgdesc = KDE Plasma system tray interface for the abraunegg OneDrive client
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/clmates/drivebeacon
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = drivebeacon
 	depends = onedrive-abraunegg
 	depends = qt6-base
 	depends = qt6-declarative
-	source = drivebeacon-0.1.0.tar.gz::https://github.com/clmates/drivebeacon/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = d5db44367eb980f8480df57766c849061235f4c060a3cfcea322a7d2551d7dda
+	source = drivebeacon-0.1.1.tar.gz::https://github.com/clmates/drivebeacon/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = eef84abb3596866b8bc5ac3c124bdae0923aa878b7dfbdb635bd9d2d0ebdf23c
 
 pkgname = drivebeacon
