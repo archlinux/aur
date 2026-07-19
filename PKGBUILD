@@ -1,51 +1,31 @@
-# Maintainer : ammarsyamil057@gmail.com
+# Maintainer: ammarsyamil057@gmail.com
 
 pkgname=hyprlarp
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Hyprland terminal video viewer with dynamic layout, multi terminal video canvas for Kitty terminals"
+pkgdesc="Hyprland terminal video viewer with adaptive dynamic layout."
 arch=('x86_64')
-url="https://github.com/AmmarSyamil/HyprLarp"
-license=('MIT')
+url="https://github.com/ammarsyamil/HyprLarp"
+license=('GPL3')
 depends=(
     'qt5-base'
     'ffmpeg'
     'opencv'
     'simdjson'
     'nlohmann-json'
-    'hyprland'  
-    'kitty'     
+    'hyprland'
+    'kitty'
+    'gcc-libs'
+    'glibc'
 )
-makedepends=(
-    'cmake'
-    'git'
-    'base-devel'
-    'qt5-tools'   
-    'pkg-config'
-)
-optdepends=()
-provides=("${pkgname}")
-conflicts=()
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+# No makedepends needed – we are not compiling
 
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' || echo "0.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "${srcdir}/${pkgname}"
-    mkdir -p build
-    cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_CXX_FLAGS="-O2 -march=x86-64 -pipe"
-    make
-}
+source=("https://github.com/AmmarSyamil/HyprLarp/releases/download/hyprland/hyprlarp")
+sha512sums=('82f2092678016dfcb666f434fcff4ab10bfde30d18df51d1c6f0d519874d01063fcb48a9ec6e832c7fab010901cc7eee7329e6905be23e20bc58d6226e77956d')
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"
+    # tar -xf "hyprlarp.tar.gz"
+    # Assuming the tarball contains a single executable named "HyprLarp"
+    install -Dm755 hyprlarp "${pkgdir}/usr/bin/HyprLarp"
 }
