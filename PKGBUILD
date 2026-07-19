@@ -2,7 +2,7 @@
 pkgname=r3dvoice-bin
 _appname=R3DVoice
 pkgver=0.15.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord-style low-latency voice, video & screenshare for gamers (Electron + LiveKit)"
 arch=('x86_64')
 url="https://github.com/R3dWolfie/R3DVoice"
@@ -60,7 +60,11 @@ EOF
   local size src
   for size in 16 32 48 64 128 256 512 1024; do
     src="squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png"
-    [ -f "$src" ] && install -Dm644 "$src" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png"
+    # if/then (not `&&`): a missing final size must not make package() return
+    # non-zero — that's read as a build failure even though nothing broke.
+    if [ -f "$src" ]; then
+      install -Dm644 "$src" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png"
+    fi
   done
 }
