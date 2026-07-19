@@ -1,14 +1,15 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse-git
 _pkgname=hypruse
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)"
 arch=('any')
 url="https://github.com/IlyasKhallouki/hypruse"
 license=('MIT')
-depends=('python' 'python-mcp' 'grim' 'wtype')
-optdepends=('wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)')
+depends=('python' 'python-mcp' 'hyprland' 'grim' 'wtype')
+optdepends=('wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)'
+            'imagemagick: numbered Set-of-Marks captures (marks tool)')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 provides=('hypruse')
 conflicts=('hypruse')

@@ -1,6 +1,6 @@
 pkgbase = hypruse-git
 	pkgdesc = Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)
-	pkgver = 0.7.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/IlyasKhallouki/hypruse
 	arch = any
@@ -12,9 +12,11 @@ pkgbase = hypruse-git
 	makedepends = python-hatchling
 	depends = python
 	depends = python-mcp
+	depends = hyprland
 	depends = grim
 	depends = wtype
 	optdepends = wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)
+	optdepends = imagemagick: numbered Set-of-Marks captures (marks tool)
 	provides = hypruse
 	conflicts = hypruse
 	source = git+https://github.com/IlyasKhallouki/hypruse.git
