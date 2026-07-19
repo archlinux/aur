@@ -1,0 +1,23 @@
+pkgbase = sqlrite-bin
+	pkgdesc = SQLRite - Simple embedded database modeled off SQLite in Rust
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://sqlritedb.com
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = sqlrite
+	conflicts = sqlrite
+	source = https://github.com/joaoh82/rust_sqlite/releases/download/sqlrite-desktop-v0.14.0/SQLRite_0.14.0_amd64.deb
+	source = https://github.com/joaoh82/rust_sqlite/raw/v0.14.0/LICENSE
+	b2sums = 1388a56fbe06dfb52e600ba9ef913893dcfce29db81fc332f9199580dbf47ce24f4ec08b1258fb8b4bfc7d01c6acc7bfcf54425de82802b8b67010602377cfdc
+	b2sums = 6d5414bd5ecc7face392d9af8dc45f45e116dc4420ee17a1dbe71b5d9fbdfaea311390c4553aecf8ae49b141f770ca675597157e6ade6394804708239c643d27
+
+pkgname = sqlrite-bin
