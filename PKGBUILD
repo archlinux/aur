@@ -3,7 +3,7 @@
 
 pkgname=kikitan-translator-git
 _appname=kikitan-translator
-pkgver=1.2.5.r96.g198405b
+pkgver=1.2.5.r98.ge64a97a
 pkgrel=1
 pkgdesc="Kikitan Translator, a realtime VRChat Translator"
 arch=('x86_64')
@@ -42,12 +42,10 @@ conflicts=('kikitan-translator')
 options=('!strip')
 source=(
     "${_appname}::git+${url}.git#branch=dotnet"
-    "skippable-flatpak.patch"
     "kikitan-translator.desktop"
     "kikitan"
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -66,7 +64,7 @@ prepare() {
     export HOME="${srcdir}/home"
     mkdir -p "${HOME}"
 
-    patch -Np1 < ../skippable-flatpak.patch
+    # patch -Np1 < ../skippable-flatpak.patch
     cd KikitanTranslator.Photino/UserInterface
     npm i
 }
