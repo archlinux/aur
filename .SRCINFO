@@ -1,6 +1,6 @@
 pkgbase = saur-bin
 	pkgdesc = A safer AUR helper with Claude security review baked in
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://git.josf.dev/josefandersson/saur
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = saur-bin
 	provides = saur
 	conflicts = saur
 	options = !strip
-	source = LICENSE-1.1.2::https://git.josf.dev/josefandersson/saur/raw/tag/v1.1.2/LICENSE
-	source = README-1.1.2.md::https://git.josf.dev/josefandersson/saur/raw/tag/v1.1.2/README.md
+	source = LICENSE-1.2.0::https://git.josf.dev/josefandersson/saur/raw/tag/v1.2.0/LICENSE
+	source = README-1.2.0.md::https://git.josf.dev/josefandersson/saur/raw/tag/v1.2.0/README.md
 	sha256sums = 2c1933e87f06646fff53ead8554e5d3243a7e969fbeea777bcb8673e9a7904aa
 	sha256sums = 289aeed941d46fbb453ab16b51290fb5530e763e90e910db98627a81f1a1c82f
-	source_x86_64 = saur-1.1.2-x86_64::https://git.josf.dev/josefandersson/saur/releases/download/v1.1.2/saur-linux-x64
-	sha256sums_x86_64 = f77add0b2feeb87920d5b5c734a18ff96c5f50da69d87a40f822dac6a56574f8
-	source_aarch64 = saur-1.1.2-aarch64::https://git.josf.dev/josefandersson/saur/releases/download/v1.1.2/saur-linux-arm64
-	sha256sums_aarch64 = 51a4127326c45e5389f8fbb8c9307fb39d8648ef04fd215850be1777d7f3a660
+	source_x86_64 = saur-1.2.0-x86_64::https://git.josf.dev/josefandersson/saur/releases/download/v1.2.0/saur-linux-x64
+	sha256sums_x86_64 = 636c0670defb448d89dc0a913c101796e419a18d3c2d0ddf3b1fabc7385b7c7e
+	source_aarch64 = saur-1.2.0-aarch64::https://git.josf.dev/josefandersson/saur/releases/download/v1.2.0/saur-linux-arm64
+	sha256sums_aarch64 = ce998a77148b116d2498f320fb915bdeec2a66ced699c43fc76f58d84b69d485
 
 pkgname = saur-bin
