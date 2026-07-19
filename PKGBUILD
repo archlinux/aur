@@ -1,6 +1,6 @@
 # Maintainer: Martin Birnthaler <birnthalermartin at gmail dot com>
 pkgname=ztop
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Display ZFS datasets' I/O in real time"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-2-Clause')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo' 'git')
 source=("${pkgname}-${pkgver}::git+$url.git#tag=v${pkgver}")
-sha256sums=('a8cca6880e4cfaefd1fcda2ff4158bd0dab53599b2f56a0e5d014c5284bd7fe4')
+sha256sums=('f9e9aa04c31e4dea7f101fc29567f4b0f4a5e73c3fa181e6d34f0e06ab0e3e12')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
