@@ -1,6 +1,6 @@
 # Maintainer: Paolo Mezzano Barahona <pmezzano@gmail.com>
 pkgname=jisocreator-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('jisocreator')
 source=("https://github.com/Cavallinux/jisocreator/releases/download/v${pkgver}/jisocreator-${pkgver}-gtk.linux.x86_64.zip"
         "jisocreator.desktop"
         "jisocreator.sh"
-        "jisocreator.png")
-sha256sums=('7e7835ecf1d35487ee2fdaf197c70f1f83164d724fa00d03dc299933c4b3f672'
+        "jisocreator.svg")
+sha256sums=('e9f4c93d8b402535f289eaedbe9f6566c741e2626217ede701cd765d28ad1812'
             '5d2ab72c7d2c422ffadcb2e1f88f932a7943c89628781d653093d1efb4cc7a4e'
             '0879b9acff67b0f9113c8bb4b341678edcab8210e7155108708290c1163c1f20'
-            'b662235eed256debee97df87331dd91abc359f05016b14ba562a78f1becca2b7')
+            'b29a5cbf04c0bc03b27d3cb7ec8592610a991a4d091a82cbc674cb89d90dcc9a')
 validpgpkeys=('C66674F3E744D24235FD945F49E28787ECF14843')
 
 package() {
@@ -24,7 +24,7 @@ package() {
     install -d "${pkgdir}/usr/bin"
     cp -r "${srcdir}/lib" "${pkgdir}/opt/jisocreator/"
     install -m644 "${srcdir}/jisocreator.jar" "${pkgdir}/opt/jisocreator/"
-    install -Dm644 "${srcdir}/jisocreator.png" "${pkgdir}/usr/share/pixmaps/jisocreator.png"
+    install -Dm644 "${srcdir}/jisocreator.svg" "${pkgdir}/usr/share/pixmaps/jisocreator.svg"
     install -Dm644 "${srcdir}/jisocreator.desktop" "${pkgdir}/usr/share/applications/jisocreator.desktop"
     install -Dm755 "${srcdir}/jisocreator.sh" "${pkgdir}/usr/bin/jisocreator"
 }
