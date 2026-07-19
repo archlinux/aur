@@ -1,7 +1,7 @@
 pkgbase = cornelsen-offline-lernen-bin
 	pkgdesc = Cornelsen Offline Lernen Electron App
 	pkgver = 37.10.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.cornelsen.de
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = cornelsen-offline-lernen-bin
 	source = icon16.png
 	source = icon32.png
 	source = icon96.png
-	b2sums = 4888706d794bdbc5fd5544a920d02254f7d14e9a49f25e946cfae261aa66f171a9b0048e5bd39e72797ca73c64f83aee73d1186604fbd9ad97a65a545bfc7036
+	b2sums = 04373e18c885017ec1233334264ca38ea1025446055d62eba3d207e0013b0bd13020e8e76be8791678d7ed9f1bc7037cdb8d4d771285c8ae4b0c9470cb67d210
 	b2sums = 2f1c802ebb340472a192316bdd9a7834dcb9e205e6a5fb186684c6142efc1033ff76c7238e9753b0bfa3f2daccebce6c709332b38b4a84440ffb42f316373531
 	b2sums = 8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da
 	b2sums = 8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65
