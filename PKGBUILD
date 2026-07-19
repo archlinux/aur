@@ -2,16 +2,17 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.1.0.r37.g4ce7bce
+pkgver=2.1.2.r72.gfee1b7e
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
 url="https://github.com/germanua/Linux-SoundBoard"
-license=('custom:PolyForm-Noncommercial-1.0.0')
+license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
   'gtk4'
   'libadwaita'
   'libpulse'
+  'opus'
   'libx11'
   'libxi'
   'libxtst'
@@ -65,6 +66,7 @@ build() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR="${srcdir}/target"
   export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=."
+  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${HOME}=~"
   cargo build --frozen --locked --release --manifest-path src/Cargo.toml
 }
 
