@@ -8,7 +8,6 @@ pkgbase = dev-proxy-bin
 	makedepends = unzip
 	depends = gcc-libs
 	provides = dev-proxy
-	options = !strip
 	source = https://github.com/dotnet/dev-proxy/releases/download/v3.1.0/dev-proxy-linux-x64-v3.1.0.zip
 	sha256sums = a08507570ea012bbe145348eef3adf9a0eb2cf6a7b34583d53ad5ec32b6bf009
 

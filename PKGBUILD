@@ -11,7 +11,6 @@ url="https://github.com/dotnet/dev-proxy"
 license=('MIT')
 provides=(${_pkgname})
 depends=('gcc-libs')
-options=('!strip')
 makedepends=('unzip')
 source=(${url}/releases/download/v${_pkgver}/${_pkgname}-linux-x64-v${_pkgver}.zip)
 sha256sums=('a08507570ea012bbe145348eef3adf9a0eb2cf6a7b34583d53ad5ec32b6bf009')
