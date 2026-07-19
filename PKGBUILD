@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="highly accurate Nintendo Game Boy Advance emulator"
 arch=('x86_64')
 url="https://codeberg.org/nba-emu/NanoBoyAdvance"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('glew' 'libunarr' 'qt6-base' 'sdl2')
 makedepends=('cmake' 'git' 'glad')
 source=($pkgname::git+https://codeberg.org/nba-emu/NanoBoyAdvance.git#tag=v${pkgver})
