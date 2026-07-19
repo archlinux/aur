@@ -3,7 +3,7 @@
 _pkgname=sigma-file-manager
 pkgname=$_pkgname-bin
 pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app (binary release)"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/aleksey-hoffman/sigma-file-manager"
@@ -11,9 +11,8 @@ license=('GPL3')
 depends=(xz libgcc glib2 gtk3 hicolor-icon-theme glibc libsoup3 webkit2gtk-4.1 cairo gdk-pixbuf2)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-_appimage=Sigma-File-Manager-$pkgver-Linux-Debian.AppImage
 source=("$url/releases/download/v$pkgver/Sigma-File-Manager-$pkgver-linux.deb")
-sha256sums=('728137654d20dc9bb75e80fa865f0f61c902c88dfd56c50cb3f6f806a5510614')
+sha256sums=('31f7ab37f472d419a2c4bd95c49e7cc7e17994a48d4e3ef022cfa54bb3c2dff1')
 
 prepare() {
   # Extract the files
