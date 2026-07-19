@@ -1,7 +1,7 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter-git
 _pkgname=pulsemeeter
-pkgver=0
+pkgver=r754.g9004ad7
 pkgrel=1
 epoch=1
 pkgdesc="A pulseaudio and pipewire audio routing application"
