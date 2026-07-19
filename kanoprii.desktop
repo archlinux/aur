@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Office;Viewer;
+Comment=A high-performance PDF editor
+Exec=kanoprii %F
+Icon=kanoprii
+MimeType=application/pdf;text/markdown;text/html;
+Name=Kanoprii
+StartupWMClass=kanoprii
+Terminal=false
+Type=Application
