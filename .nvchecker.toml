@@ -1,0 +1,5 @@
+[shiori-bin]
+source = "github"
+github = "go-shiori/shiori"
+use_latest_release = true
+prefix = "v"
