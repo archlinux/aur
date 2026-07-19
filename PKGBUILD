@@ -1,45 +1,44 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=cadamsdev
-_pkgname=gitarbor-tui
-_appname=${_pkgname%%-tui}
+_pkgauthor=johniak
+_pkgname=GitArbor
+_appname=${_pkgname,,}
 pkgname=${_appname}-bin
-pkgdesc="A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React."
+pkgdesc="A modern graphical Git client for Linux, macOS, and Windows"
 
-pkgver=0.0.3
+pkgver=0.12.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
-arch=('x86_64' 'aarch64')
-_barch=('linux-x64' 'linux-arm64')
+arch=('x86_64')
+_barch=('amd64')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
 license=('MIT')
 
-depends=('glibc')
 provides=("${_appname}")
-conflicts=("${_pkgname}" "${_appname}")
+conflicts=("${pkgname%-bin}")
+depends=('glibc' 'libstdc++' 'libx11' 'dbus' 'libcups' 'systemd-libs' 'libxdamage' 'libxfixes' 'libxcb' 'pango' 'libgcc' 'nss' 'nspr' 'at-spi2-core' 'alsa-lib' 'expat' 'libxkbcommon' 'libxrandr' 'cairo' 'glib2' 'libxcomposite' 'gtk3' 'mesa' 'libxext' 'vulkan-icd-loader' 'hicolor-icon-theme')
 
 options=(!strip)
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('65f8ddfcff0065af378e3dbf1087377112160328004967c651ccd0ae363c13ec'
-            '56e244cc2182806d882f77fe41d36159d3d676fe120edf561e1b6ec6073d6bbe')
-sha256sums_x86_64=('2dae4ade1eabd60ba373658db69d887a6cfc6af2869fb263a3681f7f9e238baa')
-sha256sums_aarch64=('1a518a71ce6a03006f1dc34b8ad3da67b2649de3b9be8b6610887925e449f19e')
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[0]}.deb")
+sha256sums=('1ef0c94cfaadcdddfc416aa1a09c0bb799e758bb952fbf2deee9475242d50bf9'
+            '8ab973ce6c8a406350fed1f451e1300f0795b5332e98a86b4c11e881cca8dc1b')
+sha256sums_x86_64=('04a76281a4bb0b8e2e4c425b9c406c877b62ad8f3229d1e5036bf334aeee92d8')
 
 
 package() {
-	cd "${srcdir}/" || exit
+	cd "${pkgdir}"
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	# this extracts all into the pkgdir
+	tar -xf "${srcdir}/data.tar.zst"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

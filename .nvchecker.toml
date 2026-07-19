@@ -1,5 +1,5 @@
 [gitarbor-bin]
 source = "github"
-github = "cadamsdev/gitarbor-tui"
+github = "johniak/GitArbor"
 use_latest_release = true
 prefix = "v"
