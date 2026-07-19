@@ -1,5 +1,5 @@
 pkgbase = hifi-suite-git
-	pkgdesc = Zero-config audio suite for wireless headsets: volume control, surround, NC, EQ, battery monitor
+	pkgdesc = Zero-config audio suite for Linux: noise cancellation, surround, EQ, volume, AI agent support
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Pakrohk/linux-hifi-suite
@@ -9,6 +9,7 @@ pkgbase = hifi-suite-git
 	makedepends = git
 	depends = python
 	depends = python-typer
+	depends = python-evoid
 	depends = alsa-utils
 	depends = pipewire
 	depends = pipewire-alsa

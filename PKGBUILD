@@ -2,11 +2,11 @@
 pkgname=hifi-suite-git
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Zero-config audio suite for wireless headsets: volume control, surround, NC, EQ, battery monitor"
+pkgdesc="Zero-config audio suite for Linux: noise cancellation, surround, EQ, volume, AI agent support"
 arch=('any')
 url="https://github.com/Pakrohk/linux-hifi-suite"
 license=('MIT')
-depends=('python' 'python-typer' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse')
+depends=('python' 'python-typer' 'python-evoid' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse')
 makedepends=('git')
 optdepends=(
     'noise-suppression-for-voice: RNNoise LADSPA plugin (recommended for NC)'
@@ -53,8 +53,6 @@ package() {
     install -d "$pkgdir/usr/share/bash-completion/completions"
     install -d "$pkgdir/usr/share/zsh/site-functions"
     install -d "$pkgdir/usr/share/fish/vendor_completions.d"
-    # Completions are installed by running: hifi-suite --install-completion
-    # The .install file handles this automatically
 
     # KDE Plasma widget
     if [ -d plasma-widget ]; then
