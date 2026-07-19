@@ -6,7 +6,6 @@ pkgbase = openshift-developer-bin
 	arch = x86_64
 	license = Apache
 	provides = odo
-	options = !strip
 	source = odo-linux-amd64-v3.16.1::https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v3.16.1/odo-linux-amd64
 	sha256sums = c271940c4b9d88f753423aae78984b7ef7a99ac9133154714b679f8b8b3bec8e
 
