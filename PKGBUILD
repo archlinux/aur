@@ -1,7 +1,7 @@
 # Maintainer: Josesk Volpe <joseskvolpe at gmail dot com>
 # Co-Maintainer: Melroy van den Berg <melroy at melroy dot org>
 pkgname=winegui-bin
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A user-friendly WINE graphical interface"
 arch=('x86_64')
@@ -12,14 +12,16 @@ depends=(
 	'cabextract' # used by winetricks
 	'unzip'
 	'p7zip'
-	'wget' # to download winetricks latest release
+	'wget' # to download winetricks/Wine runner latest release
 	'wine'
 	'zenity' # used by winetricks
+	'tar' # used to untar Wine runenr downloads
+	'xz' # used to untar/xz/lzma Wine runner downloads
 )
 conflicts=('winegui')
 provides=('winegui')
 source=("$pkgname-$pkgver.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v$pkgver.tar.gz")
-md5sums=('6959a49dd1d191122c338d79cd346142')
+md5sums=('00c0c2b4fd7c1a9bc10c556aef87cc06')
 
 package() {
 	mkdir $pkgdir/usr
