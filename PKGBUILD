@@ -1,7 +1,7 @@
 # Maintainer: Bian Jiaping <ssbianjp [AT] gmail.com>
 
 pkgname=arthas
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Arthas is a Java Diagnostic tool open sourced by Alibaba"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "arthas.sh"
 )
 sha256sums=(
-    'fce150a0213b28881ee2a99cd242a95e8173017211f5f8310499583b344d32a5'
+    'f35902aebb01efa5d9777a42358c023f022a9d4c3058b0ad477fa8da5b61f0aa'
     'ce16fa1a08024a4b41c1a0017d3f0d8e155599c6d99f99bb56eac6f3ddc21069'
 )
 
