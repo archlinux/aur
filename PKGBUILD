@@ -1,43 +1,44 @@
 # Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
 _name=pyhanko
-pkgname=python-${_name}
-pkgver=0.35.1
+pkgname=python-$_name
+pkgver=0.35.2
 pkgrel=2
 pkgdesc="sign and stamp PDF files"
 arch=(any)
-url="https://github.com/MatthiasValvekens/${_name}"
+url="https://github.com/MatthiasValvekens/$_name"
 license=(MIT)
 depends=(python python-asn1crypto python-qrcode python-tzlocal python-pyhanko-certvalidator python-requests python-pyyaml python-cryptography python-uharfbuzz python-python-pkcs11 python-pillow python-barcode python-aiohttp python-oscrypto python-fonttools python-xsdata python-defusedxml python-dateutil python-lxml python-signxml)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-requests-mock certomancer python-freezegun python-pytest-asyncio python-defusedxml python-certomancer-csc-dummy python-pytest-aiohttp)
-source=(${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c1153f94cebc34053f159e441be72a5ca9052491adf607b6e5aa398da06c0e73bb4f62631cf85eda72d1e5a798eacd9587d13696e501327f3eba6d602d749fee')
+source=(git+$url.git#tag=v$pkgver)
+sha256sums=('a627e804d22a5287995fb69c338d94c5d4989964daf5ab0eca60443cc8c044ed')
 
 prepare() {
-  cd pyHanko-$pkgver
-  sed -i "s/^version = .*/version = \"$pkgver\"/" pkgs/${_name}/pyproject.toml
+  cd $_name
+  git cherry-pick -n 88850292e6f3f60d4b98ea325606822d94ec8d99 bd1dbf745751e8d64894d404468a1958a6d35a1a
+  sed -i "s/^version = .*/version = \"$pkgver\"/" pkgs/$_name/pyproject.toml
   sed -i \
     -e "s/^__version__ = .*/__version__ = '$pkgver'/" \
     -e "s/^__version_info__ = .*/__version_info__ = (${pkgver//./, })/" \
-    pkgs/${_name}/src/pyhanko/version/__init__.py
+    pkgs/$_name/src/pyhanko/version/__init__.py
 }
 
 build() {
-  cd pyHanko-$pkgver/pkgs/${_name}
+  cd $_name/pkgs/$_name
   python -m build --wheel --no-isolation
 }
 
 check(){
-  cd pyHanko-$pkgver/pkgs/${_name}
+  cd $_name/pkgs/$_name
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  PYTHONPATH="$srcdir/pyHanko-$pkgver/internal/common-test-utils/src" \
+  PYTHONPATH="$srcdir/$_name/internal/common-test-utils/src" \
     test-env/bin/python -m pytest -vv tests
 }
 
 package() {
-  cd pyHanko-$pkgver/pkgs/${_name}
+  cd $_name/pkgs/$_name
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
