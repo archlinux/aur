@@ -1,7 +1,7 @@
 # Maintainer: Daniel Oltmanns <arch@oltdaniel.eu>
 
 pkgname=rancher-desktop-bin
-pkgver=1.22.3
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('imagemagick')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 conflicts=('rancher-desktop')
 source=("rancher-desktop-linux-v${pkgver}.zip::https://github.com/rancher-sandbox/rancher-desktop/releases/download/v${pkgver}/rancher-desktop-linux-v${pkgver}.zip")
-sha512sums=('5c5574b6a843e52e7735ce09778290206f0a7b1e0834e324fb05137b80eb3d758926121a8348a51d8c2bdcdb1e2a310e44ef854600ae54e05e2e3b2207dca20d')
+sha512sums=('2b22f6c678e820d3a4d23c2c87fef3de08ed5507843ceb24927c4bd99c1dcef1c383365ca609bb1ce756edcf0e41b3fd40c4e5c2bbd32eddf4b1c3523bc6552c')
 
 prepare() {
     # Generate icons
