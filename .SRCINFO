@@ -1,17 +1,17 @@
 pkgbase = lib32-onetbb
 	pkgdesc = oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)
-	pkgver = 2023.0.0
+	pkgver = 2023.1.0
 	pkgrel = 1
 	url = https://uxlfoundation.github.io/oneTBB/
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cmake>=3.5
-	depends = onetbb>=2023.0.0
+	makedepends = cmake
+	depends = onetbb>=2023.1.0
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-hwloc
-	provides = lib32-intel-tbb=2023.0.0
-	provides = lib32-tbb=2023.0.0
+	provides = lib32-intel-tbb=2023.1.0
+	provides = lib32-tbb=2023.1.0
 	provides = libtbb.so
 	provides = libtbbbind_2_5.so
 	provides = libtbbmalloc.so
@@ -20,9 +20,9 @@ pkgbase = lib32-onetbb
 	conflicts = lib32-tbb
 	replaces = lib32-intel-tbb
 	replaces = lib32-tbb
-	source = https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2023.0.0/oneTBB-2023.0.0.tar.gz
+	source = https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2023.1.0/oneTBB-2023.1.0.tar.gz
 	source = 010-onetbb-fix-linkage-of-test-malloc-pure-c.patch
-	sha512sums = 7db4a41e3b0e34a559299451f7eef633190e7e4be1819f609f773ac6b7f3d31ff5e45f3cfabd3606e280adb930d47a77a31377e5ef72c85dcb37a354d8b87e55
-	sha512sums = 155dca8391571f8790e77de4f6b76491e07c982b87826fbca8ab084a3f8786e55bf1fb64331fa3e9704dbf8c9c6f94547533b47845bdb50bf7f33a0294a3cd2b
+	b2sums = 78d91cc0eb6bd6d1d06cde1902a1d6c335a30f0ddc0a4976bc4878a31d037c645238774f68ee40be86b55b6d2f17621cd79786e0e0acc58c0ac78c451a44b211
+	b2sums = 98e8087a3dff8487428a3f7761339f96a385725b09134c5fcaf3400c7386e5c62eb93bd40340f3a48cc5825b80f79dc954c61e4951f081d5bf6e26353b1f399b
 
 pkgname = lib32-onetbb
