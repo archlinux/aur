@@ -5,11 +5,12 @@ pkgbase = zathura-language-server
 	url = https://github.com/Freed-Wu/zathura-language-server
 	arch = any
 	license = GPL3
+	makedepends = uv
 	makedepends = python-installer
 	depends = python-lsp-tree-sitter
-	depends = python-tree-sitter-zathurarc>=0.0.4
+	depends = python-tree-sitter-zathurarc
 	depends = python-webcolors
-	source = https://files.pythonhosted.org/packages/py3/z/zathura_language_server/zathura_language_server-0.1.0-py3-none-any.whl
-	sha256sums = d5728a9a02efca2ad9f03fbb667f42f9db5e1098fa6b69126382131b79640d72
+	source = https://files.pythonhosted.org/packages/source/z/zathura_language_server/zathura_language_server-0.1.0.tar.gz
+	sha256sums = c398eaac700b244e95e768363981183cf5d45d0f90fd1a7633cf19c93200059f
 
 pkgname = zathura-language-server
