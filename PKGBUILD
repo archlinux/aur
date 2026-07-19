@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/Dum398/ts2date"
 license=('GPL')
 source=("ts2date.c")
-md5sums=('SKIpwdP')
+md5sums=('SKIP')
 
 build() {
   sudo pacman -S pacman-contrib && updpkgsums && gcc ts2date.c -o ts2date
