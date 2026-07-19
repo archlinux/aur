@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=mpvpaper
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="video wallpaper program for wlroots based wayland compositors"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libmpv.so' 'libwayland-client.so' 'libwayland-egl.so')
 makedepends=('meson' 'ninja' 'wayland-protocols')
 optdepends=('socat: control via sockets')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/GhostNaN/mpvpaper/archive/${pkgver}.tar.gz)
-b2sums=('4166cfa3f87686176d379c6240296a8bcf290f2c26a349ff0177d7585b36304af117e255d677b9d70a23327745abcabd2a07efb3bf760b16f34e65e81ca7a80c')
+b2sums=('6b3c148d812d068878ba3acdb48b1f6d376980de3bf7bf23204c906011fd0bb8c0ebbb10fd77de1fcb8b4e3c543a6b5a8f1db92e189b128ec44fdfefbfc4b9bf')
 
 
 build() {
