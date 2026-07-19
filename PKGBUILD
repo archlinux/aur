@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@pm.me>
 
 pkgname=rakemond-unstable-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="System daemon that listens for cargo-rake lifecycle events and stores them in redb, built with --features unstable (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -19,19 +19,28 @@ options=(!strip !debug)
 _base="https://git.jasonozias.com/dl/rakemond/v${pkgver}"
 
 source=("${_base}/dist-rakemond.tar.gz")
-source_x86_64=("rakemond-unstable-x86_64::${_base}/rakemond-unstable-x86_64-unknown-linux-musl")
-source_aarch64=("rakemond-unstable-aarch64::${_base}/rakemond-unstable-aarch64-unknown-linux-musl")
+source_x86_64=(
+    "rakemond-unstable-x86_64::${_base}/rakemond-unstable-x86_64-unknown-linux-musl"
+    "rmdq-x86_64::${_base}/rmdq-x86_64-unknown-linux-musl"
+)
+source_aarch64=(
+    "rakemond-unstable-aarch64::${_base}/rakemond-unstable-aarch64-unknown-linux-musl"
+    "rmdq-aarch64::${_base}/rmdq-aarch64-unknown-linux-musl"
+)
 # Checksums are filled in by scripts/release/update-pkgbuilds.fish before
-# publishing to the AUR.
-sha256sums=('58067b3eedbf4e68f6ed6adf0cfff0b38c289d631436cf9e5fa10da11ce57a4a')
-sha256sums_x86_64=('36de3b699b66f6291f6f76392751f6795a3664e7fe02b0233263d2871e17f23b')
-sha256sums_aarch64=('7cfbfdd4322abad136fe8a87235ad1c5a87acc57fb1492f2afa0621ea437db69')
+# publishing to the AUR. sha256sums_x86_64/sha256sums_aarch64 each have two
+# elements, matching source_x86_64/source_aarch64's order (rakemond, rmdq).
+sha256sums=('717b5acf137cbc7beabc16d674631b7c944402c6302815437101e454c8b95a3d')
+sha256sums_x86_64=('458d82c4653d0c55441993417c87bc79760895cd9eeb299a1770a559111be959' '265a9820eb3c54542105998d26e2965c54b3489114431628a47612994428a4c7')
+sha256sums_aarch64=('e53a114fdb5ed4222ef722649e3ac2f9b05fa67e27e8d482cfc8da2c400888b5' '18d0145b3b6eca33230acf2fb42d5167bfafb05279f99a00592f59495d08b8f2')
 
 package() {
     install -Dm755 "rakemond-unstable-${CARCH}" "$pkgdir/usr/bin/rakemond"
+    install -Dm755 "rmdq-${CARCH}" "$pkgdir/usr/bin/rmdq"
 
-    # Man page
+    # Man pages
     install -Dm644 rakemond/rakemond.1 "$pkgdir/usr/share/man/man1/rakemond.1"
+    install -Dm644 rmdq/rmdq.1 "$pkgdir/usr/share/man/man1/rmdq.1"
 
     # Shell completions
     install -Dm644 rakemond/rakemond.bash \
@@ -40,6 +49,12 @@ package() {
         "$pkgdir/usr/share/zsh/site-functions/_rakemond"
     install -Dm644 rakemond/rakemond.fish \
         "$pkgdir/usr/share/fish/vendor_completions.d/rakemond.fish"
+    install -Dm644 rmdq/rmdq.bash \
+        "$pkgdir/usr/share/bash-completion/completions/rmdq"
+    install -Dm644 rmdq/_rmdq \
+        "$pkgdir/usr/share/zsh/site-functions/_rmdq"
+    install -Dm644 rmdq/rmdq.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/rmdq.fish"
 
     # systemd system unit
     install -Dm644 rakemond/rakemond.service \
