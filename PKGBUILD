@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/zathura-language-server/blob/main/.github/workflows/main.yml
 pkgname=zathura-language-server
 _name=$pkgname
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="zathura's language server"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-lsp-tree-sitter python-tree-sitter-zathurarc python-webcolors)
 makedepends=(uv python-installer)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('6752ad777feb55faf3979ce18ff48cc6649fc593787979db7ef5424b51d45ef9')
+sha256sums=('c398eaac700b244e95e768363981183cf5d45d0f90fd1a7633cf19c93200059f')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
