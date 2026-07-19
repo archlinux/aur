@@ -12,7 +12,7 @@ depends=('nodejs>=16.0.0' 'npm')
 optdepends=()
 source=("https://github.com/tailwindlabs/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('608268447ff0c939da732245e0dbd77d24edfe22fa6b705b402626992361b741')
+sha256sums=('e702ce2493505287e8f6cab2dd1e0c14f154e57c296854d4ded38bde5da2be6e')
 
 package() {
   cd $srcdir
