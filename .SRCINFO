@@ -1,16 +1,15 @@
 pkgbase = timeit
 	pkgdesc = timeit, a precise command timing utility, builds from source
-	pkgver = r1
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/timeit
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	makedepends = git
 	depends = gcc-libs
 	provides = timeit
 	conflicts = timeit-bin
-	source = timeit::git+https://github.com/CallMeAlphabet/timeit.git#branch=main
+	source = timeit-1.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/refs/tags/latest.tar.gz
 	sha256sums = SKIP
 
 pkgname = timeit
