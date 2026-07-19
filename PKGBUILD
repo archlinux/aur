@@ -1,17 +1,17 @@
 # Maintainer: Calagopus <contact@calagopus.com>
 pkgname=calagopus-panel-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Web panel for managing game servers'
 arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
 url='https://calagopus.com'
 license=('MIT')
 conflicts=('calagopus-panel-aio-bin')
 
-source_x86_64=('panel-rs-x86_64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-x86_64-linux')
-source_aarch64=('panel-rs-aarch64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-aarch64-linux')
-source_powerpc64le=('panel-rs-ppc64le::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-ppc64le-linux')
-source_riscv64=('panel-rs-riscv64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-riscv64-linux')
+source_x86_64=('panel-rs-1.1.0-x86_64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-x86_64-linux')
+source_aarch64=('panel-rs-1.1.0-aarch64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-aarch64-linux')
+source_powerpc64le=('panel-rs-1.1.0-ppc64le::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-ppc64le-linux')
+source_riscv64=('panel-rs-1.1.0-riscv64::https://github.com/calagopus/panel/releases/download/release-1.1.0/panel-rs-riscv64-linux')
 
 sha256sums_x86_64=('399a153c311424203a00f2f960da38eb8436e808e81bb457ab910520da94dce1')
 sha256sums_aarch64=('57ffb699dde8c700a819727da12340599fe884d2f17f8492a9ef05490f94ec81')
@@ -25,5 +25,5 @@ package() {
         powerpc64le) _a=ppc64le ;;
         riscv64)     _a=riscv64 ;;
     esac
-    install -Dm755 "${srcdir}/panel-rs-${_a}" "${pkgdir}/usr/bin/calagopus-panel"
+    install -Dm755 "${srcdir}/panel-rs-1.1.0-${_a}" "${pkgdir}/usr/bin/calagopus-panel"
 }
