@@ -9,6 +9,7 @@ pkgbase = powerls
 	makedepends = ninja
 	provides = powerls
 	conflicts = powerls
+	options = !debug
 	source = https://github.com/themazyworlds/powerls/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 

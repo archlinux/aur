@@ -1,3 +1,4 @@
+# Maintainer: Your Name <you@example.com>
 pkgname=powerls
 pkgver=1.0.0
 pkgrel=1
@@ -9,6 +10,7 @@ makedepends=('cmake' 'ninja')
 depends=()
 provides=('powerls')
 conflicts=('powerls')
+options=('!debug')
 source=("https://github.com/themazyworlds/powerls/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
