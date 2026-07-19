@@ -28,14 +28,17 @@ pkgver() {
 }
 
 build() {
-  # stable rust; crt-static rides the repo's cargo config
+  # makepkg's rust.conf may export its own RUSTFLAGS, which replaces the
+  # repo config's; pin ours or build.rs refuses the build
+  export RUSTFLAGS="-C target-feature=+crt-static"
   cd "$srcdir/carrot"
   cargo build --release --locked
 
   # the libc family the gpu driver binds at runtime, built from the
-  # taproot workspace.
+  # taproot workspace. no RUSTFLAGS: shared libraries cannot take
+  # crt-static
   cd "$srcdir/taproot"
-  cargo build --release --locked -p taproot -p taproot-stub
+  env -u RUSTFLAGS cargo build --release --locked -p taproot -p taproot-stub
   local bin="$srcdir/carrot/target/x86_64-unknown-linux-gnu/release"
   cp target/release/libtaproot.so "$bin/libc.so.6"
   cp target/release/libtaproot.so "$bin/libm.so.6"
