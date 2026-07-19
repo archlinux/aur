@@ -1,9 +1,9 @@
-# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Maintainer: Agil Mammadov <mammadovagil@proton.me>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
@@ -34,7 +34,7 @@ optdepends=('apt: support for apt packages'
 license=('GPL-2.0-only')
 arch=('any')
 source=("git+https://github.com/kdeldycke/${pkgname}.git#tag=v$pkgver")
-sha512sums=('204c012483f91e10c388c411345d888beb3daa75402a63c226f5cf85d857ae79ff71377e52645deb46238ee8b3adcb823b4025e14bfded7d2875618c16bce51f')
+sha512sums=('db3ae7582459658094d5d6a6d2bea21ba20b71898589865c2b3153a20c4f88d15ee22cf5da9bb3247017d61f65027799c77aca961b94eb1dfe98c228d3ce3e8f')
 
 pkgver() {
   cd "$srcdir/$pkgname"
