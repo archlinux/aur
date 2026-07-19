@@ -1,6 +1,6 @@
 # Maintainer: Zachary Kessler <zacksynack@gmail.com>
 pkgname=doubletap-git
-pkgver=r12.595b976
+pkgver=r26.1ea0f71
 pkgrel=1
 pkgdesc="SOCD-cleaning keyboard input daemon for rhythm games (osu!)"
 arch=('x86_64' 'aarch64')
