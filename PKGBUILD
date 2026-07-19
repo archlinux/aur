@@ -1,4 +1,5 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+# Automation: https://github.com/its-me/aur.linkerd-edge-recommended-bin
 
 pkgname=linkerd-edge-recommended-bin
 pkgver=26.5.1
