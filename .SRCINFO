@@ -27,6 +27,6 @@ pkgbase = greetd-tuigreety-git
 	source = git+https://github.com/Tobiichi-Origuchi/tuigreety.git
 	source = tuigreet.conf
 	sha256sums = SKIP
-	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
+	sha256sums = fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651
 
 pkgname = greetd-tuigreety-git

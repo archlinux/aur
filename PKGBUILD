@@ -14,7 +14,7 @@ depends=('glibc' 'libgcc' 'greetd')
 backup=('etc/tuigreet/config.toml')
 source=('git+https://github.com/Tobiichi-Origuchi/tuigreety.git' 'tuigreet.conf')
 sha256sums=('SKIP'
-            '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
+            'fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651')
 
 pkgver() {
   cd tuigreety
