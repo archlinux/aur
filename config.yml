@@ -46,4 +46,3 @@ sess_metadata:
     ads: true # Enable ad filtering.
     nsfw: false # Enable NSFW content filtering.
 
-vpn: false

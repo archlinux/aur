@@ -1,6 +1,6 @@
 pkgbase = geph5-client
 	pkgdesc = The command-line Geph5 client
-	pkgver = 0.2.102
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/geph-official/geph5
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = geph5-client
 	provides = geph5-client
 	conflicts = geph5-client-git
 	backup = etc/geph5-client/config.yml
-	source = geph5-client-0.2.102.tar.gz::https://static.crates.io/crates/geph5-client/geph5-client-0.2.102.crate
+	source = geph5-client-0.3.0.tar.gz::https://static.crates.io/crates/geph5-client/geph5-client-0.3.0.crate
 	source = config.yml
 	source = geph5-client.user.service
 	source = geph5-client.service
