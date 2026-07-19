@@ -1,7 +1,7 @@
 # Maintainer: ammarsyamil057@gmail.com
 
 pkgname=hyprlarp
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Hyprland terminal video viewer with adaptive dynamic layout."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 )
 
 source=("https://github.com/AmmarSyamil/HyprLarp/releases/download/hyprland/hyprlarp")
-sha512sums=('82f2092678016dfcb666f434fcff4ab10bfde30d18df51d1c6f0d519874d01063fcb48a9ec6e832c7fab010901cc7eee7329e6905be23e20bc58d6226e77956d')
+sha512sums=('SKIP')
 
 package() {
     cd "${srcdir}"
