@@ -32,8 +32,6 @@ package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
-  chmod 4755 "${pkgdir}/opt/Vieb/chrome-sandbox"
-
   # Create a symlink to the binary in /opt
   install -dm755 "${pkgdir}/usr/bin/"
   ln -sf "/opt/Vieb/vieb" "${pkgdir}/usr/bin/${_pkgname}"
