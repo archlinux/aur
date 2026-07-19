@@ -1,5 +1,5 @@
 pkgname=torrentoxide
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A cyberpunk themed web-based all-in-one torrent client written in Rust and Leptos."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.env"
         "$pkgname.install")
-sha256sums=('e397ad07110f2d8daa08b417ba51fe5e909c0ae3c79803dd89b2f32f9a78c2d4'
+sha256sums=('b9d58148845d4c8799ee852fd1e9220cdcf4c7e7a53be82127b767653268dcfb'
             '63bd08cc8d1d254565a9ea871f55295fb5a1894c2627c4660c5f3e6a6980605d'
             '7b65f301fbd9a1a048b02f2a18aa1a3a8a424fd78f68ec3824654f2bd6aaf677'
             '097bdca8c393a5c30d3f6d6bb807756729c397947edf3834d6dc5b9ca215a90a'
