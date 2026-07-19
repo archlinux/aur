@@ -2,7 +2,7 @@
 
 pkgname="git-archaeologist"
 pkgdesc="Find the most dangerous files in any git repo — curse scores, bus factor, hidden coupling. Used to analyze 26 major OSS projects."
-pkgver=1.32.6
+pkgver=1.32.17
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/SushantVerma7969/git-archaeologist"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('092f15949c9a561d1ab0bf580d4b484aaf1d791074682ecd12491cf8a80ffea3027e58289f691503e3245eccc2977440ee10d673e70e4b527812e62cb9ec3d22')
+b2sums=('d1277338a00d2de0775bbe4d8ff4fbf3845c19b974b3965f6539faad51b0330648005f5d3ffdb8dbc3a82f84acc61d3bc33fdf74ba146067e2104bf7c74391ce')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
