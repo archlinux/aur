@@ -1,6 +1,6 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0')
 depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
 makedepends=('rust' 'cargo' 'python' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('84417cb490560afc08ad7548b3119a76d300ac5a7214ae5340dbebc0db4f2da3')
+sha256sums=('4a4d0933ae0b1a41c57d15e7bb04202d35f4f92bd9246ad7edc8b451eccce3e6')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
