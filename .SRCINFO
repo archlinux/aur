@@ -1,6 +1,6 @@
 pkgbase = glass-music-bin
 	pkgdesc = Futuristic liquid-glass music player for Linux
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://github.com/dvytvs/Glass-Music
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = glass-music-bin
 	depends = alsa-lib
 	provides = glass-music
 	conflicts = glass-music
-	source = glass-music-2.0.7.pacman::https://github.com/dvytvs/Glass-Music/releases/download/2.0.7/glass-music-2.0.7.pacman
+	source = glass-music-2.0.8.pacman::https://github.com/dvytvs/Glass-Music/releases/download/2.0.8/glass-music-2.0.8.pacman
 	sha256sums = SKIP
 
 pkgname = glass-music-bin

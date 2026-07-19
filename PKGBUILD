@@ -1,7 +1,7 @@
 # Maintainer: dvytvs
 
 pkgname=glass-music-bin
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Futuristic liquid-glass music player for Linux"
 arch=('x86_64')
