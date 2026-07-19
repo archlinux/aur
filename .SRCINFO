@@ -1,6 +1,6 @@
 pkgbase = ght-git
 	pkgdesc = CLI to fetch and print HTML page titles
-	pkgver = r35.7dfd830
+	pkgver = r44.9432d14
 	pkgrel = 1
 	url = https://github.com/haturatu/ght
 	arch = x86_64

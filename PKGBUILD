@@ -1,5 +1,5 @@
 pkgname=ght-git
-pkgver=r35.7dfd830
+pkgver=r44.9432d14
 pkgrel=1
 pkgdesc="CLI to fetch and print HTML page titles"
 arch=('x86_64')
