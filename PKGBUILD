@@ -3,7 +3,7 @@
 # Updated by https://github.com/neomutt/lsp-tree-sitter/blob/main/.github/workflows/main.yml
 _name=lsp-tree-sitter
 pkgname=python-$_name
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="a library to create language servers"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(uv python-installer)
 replaces=(python-tree-sitter-lsp)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('79c3a041314bbdcce033d42aa3db111818cb066319bc7be33a15394ccbd3edcf')
+sha256sums=('a50bd1070d65fe0b6a613480449c2bc7aa3a163a6716cf54792c7d74670f3d19')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
