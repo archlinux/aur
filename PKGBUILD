@@ -1,7 +1,7 @@
 # Maintainer: Mike Ravenblack <0xRavenBlack@github>
 pkgname=com.ravenblack.shadowdate
 _pkgname=shadowdate
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A gothic dark-pastel desktop calendar for Linux (Rust + GTK4) with iCalendar support"
 arch=('x86_64' 'aarch64')
