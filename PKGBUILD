@@ -1,6 +1,6 @@
 # Maintainer: Johnathan Corgan <jcorgan@corganlabs.com>
 pkgname=fips
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Distributed, decentralized network routing protocol for mesh nodes"
 url="https://github.com/jmcorgan/fips"
@@ -15,7 +15,7 @@ install=fips.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jmcorgan/fips/archive/v$pkgver.tar.gz"
         "fips.sysusers"
         "fips.tmpfiles")
-b2sums=('c5d4d16dfb19f91b6c8822f6cd6c2bb2dff2c310e7d7ec44eb320e78525c569defd991002d13f75834c7fb1905cda1d2cbad4f29afff51a9e1f69abf0a6e7cc7'
+b2sums=('2fa3870809321b0718317b6128cdc89657d6ad67db354621f854758e4acef415b556d2abe4a4986d5d1e599d724380cf6426052e049d0c5f1b6be5aa35054ee5'
         '25a0552f3d67d12f48dfd40fe4776ad7c46afeeab76bd2674b48e234db3c145810a24569a8c1a7f4c186eb546f0fae2ebe1550080c0e91d8eb72ba9934c752a6'
         '844257cb8e09cd935d0d6345922d0f3ec777411daca20e24175b346a7b3cb95ebce12631a9466c4d94f1588ed8d62d92514ff24025ccfd0efb358e542b454b00')
 options=('!lto' '!debug')
