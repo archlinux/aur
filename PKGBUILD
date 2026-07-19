@@ -28,4 +28,6 @@ sha256sums=("91e88fc6f69327b543ab62a393dbd9b9c2b72a1998f132db7a2ad495f86d0f97")
 
 package() {
   bsdtar -x -f "$srcdir/data.tar.xz" -C "$pkgdir"
+  mkdir "$pkgdir/usr/bin"
+  ln -s "/opt/Devsy/devsy-desktop" "$pkgdir/usr/bin/."
 }
