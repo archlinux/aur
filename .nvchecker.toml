@@ -1,5 +1,5 @@
 [restman-bin]
 source = "github"
-github = "cadamsdev/restman"
+github = "jackMort/Restman"
 use_latest_release = true
 prefix = "v"
