@@ -1,6 +1,6 @@
 pkgbase = floatlyrics
 	pkgdesc = Floating synchronized lyrics for Spotify on Linux Wayland
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/ChouChiu/FloatLyrics
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = floatlyrics
 	depends = pango
 	depends = sqlite
 	depends = webkitgtk-6.0
-	source = floatlyrics-1.1.0.tar.gz::https://github.com/ChouChiu/FloatLyrics/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 3aec86e01bc54d99a67c33cafa39c77e97c1b846db2d3c366896179ff760e53b
+	source = floatlyrics-1.1.1.tar.gz::https://github.com/ChouChiu/FloatLyrics/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = e36499b12d42f7a56e62506cabf5cb5667b9482417c980d77c53ccff4c82bcb4
 
 pkgname = floatlyrics
