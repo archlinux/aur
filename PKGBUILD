@@ -2,7 +2,7 @@
 # AUR package for kAppIcon — install system-wide under /usr
 
 pkgname=kappicon
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Change Linux app launcher icons without root (GUI + CLI)'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2950828ac86d6b88ab9b83c1e27488d889aea60c6af022e93b09194e864ee28a')  # filled after tagging v3.0.1
+sha256sums=('95c0b515735d0ea837f3a652541c36c11a79017dbf8c18c57eea321702469a57')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
