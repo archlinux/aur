@@ -1,5 +1,5 @@
 _system_wasm_bindgen=false
-_version=0.2.0
+_version=0.5.0
 _channel=nightly
 _date=2026-07-19
 
