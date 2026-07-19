@@ -1,0 +1,19 @@
+pkgbase = primage-bin
+	pkgdesc = A fast CLI for compressing and converting images (JPEG, PNG, WebP, AVIF, QOI)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/imfing/primage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = primage
+	conflicts = primage
+	options = !strip
+	source_x86_64 = primage-x86_64-0.2.0.tgz::https://github.com/imfing/primage/releases/download/v0.2.0/primage-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c65dc2bdd7c5fb5cac3cbb85c21c2c50ec992cb280881682f1ab9f80b6242179
+	source_aarch64 = primage-aarch64-0.2.0.tgz::https://github.com/imfing/primage/releases/download/v0.2.0/primage-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e57753746b044733dd5a7a8af1a32f082eb37c3571d0ebe7c8a3b7e8689f95f8
+
+pkgname = primage-bin

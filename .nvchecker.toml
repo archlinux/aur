@@ -1,0 +1,5 @@
+[primage-bin]
+source = "github"
+github = "imfing/primage"
+use_latest_release = true
+prefix = "v"
