@@ -2,7 +2,6 @@
 
 import json
 import os
-import re
 import shutil
 import subprocess
 import sys
@@ -22,9 +21,6 @@ PROJECT_VERSION = "v1.3.2"
 PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"
-
-GITHUB_API_LATEST = f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
-GITHUB_API_TAG = f"https://api.github.com/repos/{COMFYUI_REPO}/releases/tags/{{}}"
 
 XDG_CACHE_HOME = Path(os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache")))
 XDG_CONFIG_HOME = Path(os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config")))
@@ -253,39 +249,28 @@ def _resolve_version(config, version_cache_dir):
     update = config["update"]
     github_token = config["github_token"]
 
+    # TODO: Fetch the latest release version from both the comfy.org API
+    # (https://api.comfy.org/releases?project=comfyui&locale=zh) and the
+    # GitHub API, then race the two to decide the final version to use.
+    GITHUB_API_LATEST = f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
+    CODELOAD_URL_TEMPLATE = f"https://codeload.github.com/{COMFYUI_REPO}/tar.gz/{{}}"
+
     # "latest" -- always consult the GitHub releases API when updating,
     # otherwise rely on the cached ``latest`` symlink.
     if version == "latest":
         if update:
             data = _api_request(GITHUB_API_LATEST, github_token=github_token)
-            return data["tag_name"], data["tarball_url"]
+            latest_tag = data["tag_name"]
+            return latest_tag, CODELOAD_URL_TEMPLATE.format(latest_tag)
         latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
             log("ERROR", "No cached 'latest' version and update is disabled.")
-        return os.readlink(latest_link)[: -len(".tar.gz")], None
+        cached_version = os.readlink(latest_link)[: -len(".tar.gz")]
+        return cached_version, None
 
-    # 40-char SHA-1 commit hash -- fetched from the archive endpoint, not
-    # the releases API (releases are tag-based and don't cover arbitrary
-    # commits on a branch).
-    if re.match(r"^[0-9a-fA-F]{40}$", version):
-        version = version.lower()
-        if update:
-            return version, f"https://github.com/{COMFYUI_REPO}/archive/{version}.tar.gz"
-        return version, None
-
-    # Anything else is treated as a release tag first, and falls back to a
-    # branch archive URL when the API doesn't know about that release.
     if update:
-        try:
-            data = _api_request(GITHUB_API_TAG.format(version), github_token=github_token)
-            return data["tag_name"], data["tarball_url"]
-        except urllib.error.HTTPError as e:
-            if e.code != 404:
-                raise
-            return version, f"https://github.com/{COMFYUI_REPO}/archive/refs/heads/{version}.tar.gz"
+        return version, CODELOAD_URL_TEMPLATE.format(version)
 
-    # update=False: hand the string back unchanged as the cache key.
-    # ``_ensure_tarball`` will either find the cache or error out.
     return version, None
 
 
