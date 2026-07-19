@@ -2,7 +2,7 @@
 
 pkgname=shelly-cli
 pkgbase=shelly-cli
-pkgver=3.0.0.0.r3380.g2065d5c
+pkgver=3.0.0.0.r3393.g95cc892
 pkgrel=1
 pkgdesc='Native Shelly package-manager CLI beta'
 arch=('x86_64')
@@ -52,6 +52,21 @@ build() {
     --prefix "${srcdir}/zig-out" \
     -Dcpu=baseline \
     -Doptimize=ReleaseSmall
+
+  for shell in bash fish zsh; do
+    "${srcdir}/zig-out/bin/shelly" utility --completions "${shell}" \
+      > "${srcdir}/shelly-beta.${shell}"
+  done
+  sed -i \
+    -e 's/_shelly/_shelly_beta/g' \
+    -e 's/complete -F _shelly_beta shelly/complete -F _shelly_beta shelly-beta/' \
+    "${srcdir}/shelly-beta.bash"
+  sed -i 's/complete -c shelly/complete -c shelly-beta/g' \
+    "${srcdir}/shelly-beta.fish"
+  sed -i \
+    -e 's/^#compdef shelly$/#compdef shelly-beta/' \
+    -e 's/_shelly/_shelly-beta/g' \
+    "${srcdir}/shelly-beta.zsh"
 }
 
 package() {
@@ -59,6 +74,12 @@ package() {
 
   install -Dm755 "${srcdir}/zig-out/bin/shelly" \
     "${pkgdir}/usr/bin/shelly-beta"
+  install -Dm644 "${srcdir}/shelly-beta.bash" \
+    "${pkgdir}/usr/share/bash-completion/completions/shelly-beta"
+  install -Dm644 "${srcdir}/shelly-beta.fish" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d/shelly-beta.fish"
+  install -Dm644 "${srcdir}/shelly-beta.zsh" \
+    "${pkgdir}/usr/share/zsh/site-functions/_shelly-beta"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
