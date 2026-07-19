@@ -1,5 +1,4 @@
-[pkgbase]
-	pkgbase = wasi-whatsapp
+pkgbase = wasi-whatsapp
 	pkgdesc = Lightweight native WhatsApp Web wrapper for Arch Linux (Rust + Tauri + WebKitGTK)
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -23,5 +22,4 @@
 	source = wasi-whatsapp-0.1.0.tar.gz::https://github.com/AsithaKanchana1/W-ASI/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-[packages]
-	pkgname = wasi-whatsapp
+pkgname = wasi-whatsapp
