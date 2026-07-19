@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Lightweight virtual LAN tool that creates a private IPv4 subnet over UDP. Hub-and-spoke architecture, TUN interface, SipHash-2-4 auth and written in C."
 
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,11 +33,11 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"TROUBLESHOOTING-${pkgver}.md::${_ghurlraw}/docs/TROUBLESHOOTING.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_suffix}-${_barch[0]}")
 sha256sums=('c01a423b28a33749256456bc1a70597afc875614705f78dd5cc4face0f994933'
-            'e0266fbe3c4157c9e3fc3d05d051f6be48acd7e6c4ab37de0c01337ade52507d'
-            '5197f52f5399c01f54276e63135528d90e37b46cee9b4e82b34ad2847420f774'
+            '092d69fabd081700ba923d198179c9b0d03a706c7b06e7b95d8e0c4004cc9497'
+            '0ce5c6aa6c366ae57cf7009946ab66461700318c40c422f1619484f2ee73fb85'
             '2500e9ada332ac45496ee142cdf1eca36e694b25cd5cbd9216b365a2b6bb7106'
             'aff17247528f8cffa18cd138cfe8cfc08460284b56ed81bd054b960d940267ea')
-sha256sums_x86_64=('b2ea68e60f9c7f91c2839bf56c74d1bd9a8a4dab7c320d743aacc0da262d35c2')
+sha256sums_x86_64=('8ac25caac17d68cee3ea141bbf5e065a0e16e8afaf252f934689fe61c14fa95b')
 
 
 package() {
