@@ -1,6 +1,6 @@
 pkgbase = netron
 	pkgdesc = Visualizer for neural network, deep learning, and machine learning models
-	pkgver = 9.1.7
+	pkgver = 9.1.8
 	pkgrel = 1
 	url = https://netron.app/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = netron
 	depends = python
 	optdepends = python-onnx: serializing ONNX models
 	optdepends = python-pytorch: serializing PyTorch models
-	source = https://github.com/lutzroeder/netron/archive/v9.1.7/netron-9.1.7.tar.gz
-	sha256sums = b3ac59c587d4b73ea18c862baafe70fc2a013c3cba527bb64aef56451aec1e7e
+	source = https://github.com/lutzroeder/netron/archive/v9.1.8/netron-9.1.8.tar.gz
+	sha256sums = b8065111317cbe25b398c380d88ad82f4a0181a79209f4bbe8b2c78844ef852a
 
 pkgname = netron
 	depends = python
