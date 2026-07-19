@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=st-link firmware upgrade
+Encoding=UTF-8
+Exec=stlinkupgrade
+Icon=stsw-link007
+Keywords=stlink;st-link;firmware;upgrade;
+Name=stsw-link007
+Type=Application
