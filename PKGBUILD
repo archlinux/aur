@@ -5,7 +5,7 @@
 # NOT install the lz alias (upstream default elsewhere). Create your own
 # symlink if you do not use mtools; decision recorded in the README.
 pkgname=liszt
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GNU ls reimplementation: byte-identical output, radix sorts, parallel stat"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ url="https://github.com/tenseleyFlow/liszt"
 license=('GPL-3.0-or-later')
 makedepends=('gcc')
 source=("$url/releases/download/v$pkgver/liszt-$pkgver.tar.gz")
-sha256sums=('62be1698a0a8c767056be3e4fbc03812d97adc152643f2a559cad241ef825eb8')
+sha256sums=('c045e8827f1efdae466a7d83cc32cd96b911a3fa27394aa76a2fa028490b1e30')
 
 build() {
 	cd "$pkgname-$pkgver"
