@@ -1,0 +1,7 @@
+post_install() {
+    echo "You can read the documentation at https://uml.rs/docs"
+}
+
+post_upgrade() {
+    post_install
+}
