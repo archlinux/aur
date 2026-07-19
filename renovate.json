@@ -7,7 +7,7 @@
   "packageRules": [
     {
       "enabled": false,
-      "matchPackageNames": ["open-policy-agent/opa"],
+      "matchPackageNames": ["open-policy-agent/regal"],
       "matchNewValue": "^2"
     }
   ]
