@@ -17,7 +17,6 @@ optdepends=('python-pyelftools: for elf2x.py')
 source=("git+$url#commit=$_commit")
 
 sha256sums=('SKIP')
-options=('!strip' '!debug' '!lto')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -26,19 +25,31 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  export   CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
-  export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection -fno-char8_t"
-  export  LDFLAGS="-static-libstdc++ -static-libgcc -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-  export MAKEFLAGS=--jobs=$(nproc)
+
+  # GCC 15's libcody/libcpp trips over char8_t under C++20; disable it.
+  export CFLAGS="$CFLAGS -fno-char8_t"
+  export CXXFLAGS="$CXXFLAGS -fno-char8_t"
+
+  # libcpp's macro.cc/expr.cc passes non-literal formats with no args to
+  # fprintf-style functions; keep -Wformat but drop -Werror.
+  export CFLAGS="${CFLAGS//-Werror=format-security/}"
+  export CXXFLAGS="${CXXFLAGS//-Werror=format-security/}"
+
+  # Statically link host-side libstdc++/libgcc into the cross-compiler and
+  # host tools, so the resulting package doesn't depend on host ABI.
+  export LDFLAGS="$LDFLAGS -static-libstdc++ -static-libgcc"
+
+  # Set installation location.
   export MARS_INSTALL_DIR="${pkgdir}/opt/marsdev"
+
+  # Specify / select a specific SGDK version. Normally not needed.
   #export SGDK_VER="v2.11"
-  echo "CFLAGS: ${CFLAGS}"
-  echo "CXXFLAGS: ${CXXFLAGS}"
-  echo "LDFLAGS: ${LDFLAGS}"
-  echo "MAKEFLAGS: ${MAKEFLAGS}"
-  echo "MARS_INSTALL_DIR: ${MARS_INSTALL_DIR}"
-  #echo "SGDK_VER: ${SGDK_VER}"
+  
+  # Update git sub-modules.
   git submodule update --init
+
+  # Make wget a little bit more log-friendly.
+  sed -i 's/^\t@wget /\t@wget -nv /' m68k-gcc-toolchain/Makefile sh-gcc-toolchain/Makefile
 }
 
 build() {

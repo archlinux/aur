@@ -16,9 +16,6 @@ pkgbase = marsdev-git
 	provides = sik-tools
 	provides = flamewing-tools
 	provides = sgdk
-	options = !strip
-	options = !debug
-	options = !lto
 	source = git+https://github.com/andwn/marsdev#commit=HEAD
 	sha256sums = SKIP
 
