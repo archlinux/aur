@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Animated drifting clouds in your terminal!"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('072043afea4271c12d551e98afb1e06902c5eed71519fc142060613ecb0cc067'
+sha256sums=('3e612a374f37fbf18b36b4d14545a8521a62d3c61cdc4d774435c87113aacdea'
             '9122a60537a61d7e11b4f7c0e39424d7993a53f3aa292508b2fd25e71dbf48bf')
-sha256sums_x86_64=('a4ab306b98708c97aaf657562630d25cca682ac185eec155afba7d200c84cdc4')
+sha256sums_x86_64=('f10e82165ce7a5efc17e203db6a1303c8a25aeb13d76440a5ed4fa2860d2d124')
 
 
 package() {

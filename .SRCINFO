@@ -1,6 +1,6 @@
 pkgbase = ruclouds-bin
 	pkgdesc = Animated drifting clouds in your terminal!
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/AndyFerns/ruclouds
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ruclouds-bin
 	provides = ruclouds
 	conflicts = ruclouds
 	options = !strip
-	source = README-0.5.0.md::https://raw.githubusercontent.com/AndyFerns/ruclouds/v0.5.0/README.md
-	source = LICENSE-0.5.0::https://raw.githubusercontent.com/AndyFerns/ruclouds/v0.5.0/LICENSE
-	sha256sums = 072043afea4271c12d551e98afb1e06902c5eed71519fc142060613ecb0cc067
+	source = README-0.6.0.md::https://raw.githubusercontent.com/AndyFerns/ruclouds/v0.6.0/README.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/AndyFerns/ruclouds/v0.6.0/LICENSE
+	sha256sums = 3e612a374f37fbf18b36b4d14545a8521a62d3c61cdc4d774435c87113aacdea
 	sha256sums = 9122a60537a61d7e11b4f7c0e39424d7993a53f3aa292508b2fd25e71dbf48bf
-	source_x86_64 = ruclouds-x86_64-0.5.0.tgz::https://github.com/AndyFerns/ruclouds/releases/download/v0.5.0/ruclouds-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a4ab306b98708c97aaf657562630d25cca682ac185eec155afba7d200c84cdc4
+	source_x86_64 = ruclouds-x86_64-0.6.0.tgz::https://github.com/AndyFerns/ruclouds/releases/download/v0.6.0/ruclouds-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f10e82165ce7a5efc17e203db6a1303c8a25aeb13d76440a5ed4fa2860d2d124
 
 pkgname = ruclouds-bin
