@@ -1,4 +1,5 @@
 [trilium-next]
 source = "git"
 git = "https://github.com/TriliumNext/Trilium.git"
+include_regex = 'v[0-9.]+'
 prefix = "v"
