@@ -1,0 +1,18 @@
+pkgbase = python-utfbundle
+	pkgdesc = Pack a directory of text files into one self-extracting Python script, and unpack it back
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/griffijf/utfbundle
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pathspec
+	source = utfbundle-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/u/utfbundle/utfbundle-0.1.1.tar.gz
+	sha256sums = 661b989fa7c2cca3180022e5505aadd4a296187ab3c224b37593049bfb1faea3
+
+pkgname = python-utfbundle
