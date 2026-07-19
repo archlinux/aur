@@ -9,7 +9,6 @@ pkgrel=1
 pkgdesc="PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.passmark.com/products/pt_linux/"
-options=('!strip')
 license=('custom')
 depends=('ncurses5-compat-libs' 'curl')
 changelog=CHANGELOG
