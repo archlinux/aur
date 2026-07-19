@@ -1,5 +1,5 @@
 pkgbase = pixilang-doc
-	pkgdesc = Automaticaly creating Official Pixilang Programming Language documentation in man-style
+	pkgdesc = Automatically creating Official Pixilang Programming Language documentation in man-style
 	pkgver = 3.8.6f
 	pkgrel = 1
 	arch = any
