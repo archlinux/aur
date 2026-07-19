@@ -1,0 +1,19 @@
+pkgbase = onvif-ptz-viewer-git
+	pkgdesc = Перегляд ONVIF/RTSP-камери з автопошуком і PTZ-керуванням через mpv
+	pkgver = r20.44217e3
+	pkgrel = 1
+	url = https://github.com/shamrai-nazar/onvif-ptz-viewer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = python
+	depends = python-pyqt6
+	depends = libnotify
+	depends = xdg-user-dirs
+	provides = onvif-ptz-viewer
+	conflicts = onvif-ptz-viewer
+	source = onvif-ptz-viewer-git::git+https://github.com/shamrai-nazar/onvif-ptz-viewer.git
+	sha256sums = SKIP
+
+pkgname = onvif-ptz-viewer-git
