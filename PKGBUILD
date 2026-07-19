@@ -1,11 +1,12 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
 url="https://github.com/eklonofficial/Vice"
 license=('GPL-3.0-or-later')
+install=vice-clipper.install
 depends=(
     'python'
     'systemd'
@@ -62,4 +63,7 @@ package() {
 
     install -Dm644 packaging/vice.rules \
         "$pkgdir/usr/lib/udev/rules.d/70-vice-input.rules"
+
+    install -Dm644 packaging/vice.service \
+        "$pkgdir/usr/lib/systemd/user/vice.service"
 }

@@ -1,0 +1,11 @@
+post_install() {
+    echo ":: To start clipping at login, enable the Vice daemon for your user:"
+    echo "::   systemctl --user enable --now vice.service"
+}
+
+post_upgrade() {
+    # The user service is new in 1.3.5; show the hint once for older installs
+    if [ "$(vercmp "$2" 1.3.5)" -lt 0 ]; then
+        post_install
+    fi
+}
