@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('fasthex')
 conflicts=('fasthex-bin')
-source=("fasthex::git+https://github.com/CallMeAlphabet/fasthex.git#tag=latest")
+source=("fasthex::git+https://github.com/CallMeAlphabet/fasthex.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
