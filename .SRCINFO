@@ -1,6 +1,6 @@
 pkgbase = ggml-hip-backend
 	pkgdesc = HIP/ROCm backend for ggml
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ggml-hip-backend
 	makedepends = ninja
 	makedepends = patch
 	makedepends = rocm-hip-sdk
-	depends = ggml-core=0.16.0
+	depends = ggml-core=0.17.0
 	depends = glibc
 	depends = libgcc
 	depends = hip-runtime-amd
@@ -19,9 +19,9 @@ pkgbase = ggml-hip-backend
 	provides = ggml-acceleration
 	options = lto
 	options = !debug
-	source = ggml-0.16.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.16.0.tar.gz
+	source = ggml-0.17.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.17.0.tar.gz
 	source = ggml-use-system-base.patch
-	sha256sums = 8e1741cd44c036468ee2b8531343bbe1205bc26bc63b866030679cc5f28ec0bf
+	sha256sums = 49ed958226dd75ea13b3b493150181e3a3ca7dc28c20a3d1f00d23e94cbf7a47
 	sha256sums = b5b80ba3647d207a653dee190461b92e3792b0c5c610549d2ef4f48de0ad8565
 
 pkgname = ggml-hip-backend
