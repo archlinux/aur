@@ -9,7 +9,6 @@ pkgbase = lanview
 	makedepends = jq
 	depends = nodejs
 	provides = lanview
-	replaces = nodejs-lanview
 	noextract = lanview-1.0.0.tgz
 	options = !strip
 	options = emptydirs

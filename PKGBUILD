@@ -12,7 +12,6 @@ license=("MIT")
 _npmname=${pkgname}
 _npmver=${pkgver}
 
-replaces=("nodejs-${_npmname}")
 provides=("${_npmname}")
 makedepends=("npm" "jq")
 depends=("nodejs")
