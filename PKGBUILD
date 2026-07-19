@@ -1,14 +1,17 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+# Contributor: Narrat <autumn-wind@web.de>
+# Contributor: Wolfizen <wolfizen@wolfizen.net>
+# Automation: https://github.com/its-me/aur.randrctl
 
 pkgname=randrctl
 pkgdesc="Lightweight profile based screen manager for X"
 pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="http://github.com/koiuo/randrctl"
 license=('GPL3')
 makedepends=('git' 'python-build' 'python-installer' 'python-pbr' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
-depends=('python' 'python-argcomplete' 'python-yaml' 'xorg-xrandr')
+depends=('python' 'python-argcomplete' 'python-yaml' 'python-pkg_resources' 'xorg-xrandr')
 optdepends=('bash-completion: bash shell prompt auto-completions')
 install="randrctl.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koiuo/${pkgname}/archive/${pkgver}.tar.gz")
