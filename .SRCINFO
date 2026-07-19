@@ -1,0 +1,15 @@
+pkgbase = ttysvg
+	pkgdesc = Record terminal sessions as animated SVG
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/shellcell/ttysvg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = ttysvg-0.1.2.tar.gz::https://github.com/shellcell/ttysvg/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = e80610f961b30c94553821fd7b982000ccd8e5bb0420ad5e28ae8168eaffacb4
+
+pkgname = ttysvg
