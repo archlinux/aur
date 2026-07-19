@@ -1,0 +1,23 @@
+pkgbase = grovebox
+	pkgdesc = Standalone Roblox Studio launcher for Linux (Wine + DXVK + WebView2)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/zyvxi/grovebox
+	install = grovebox.install
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = wine
+	depends = cabextract
+	depends = vulkan-icd-loader
+	depends = xdg-utils
+	optdepends = python-cryptography: browser cookie auto-detection and v10 cookie encryption
+	optdepends = mangohud: FPS overlay
+	optdepends = nvidia-utils: NVIDIA GPU support
+	optdepends = lib32-nvidia-utils: NVIDIA GPU 32-bit support
+	optdepends = mesa: AMD/Intel GPU support
+	optdepends = lib32-mesa: AMD/Intel 32-bit GPU support
+	source = grovebox-1.0.0.tar.gz::https://github.com/zyvxi/grovebox/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = grovebox

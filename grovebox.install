@@ -1,0 +1,20 @@
+post_install() {
+    echo ""
+    echo "GroveBox has been installed!"
+    echo ""
+    echo "Run 'grovebox' from the terminal to start."
+    echo ""
+    echo "Authentication:"
+    echo "  First run will show the WebView2 login page (primary method)."
+    echo "  Use 'grovebox --auth' to paste a .ROBLOSECURITY cookie manually."
+    echo ""
+    echo "Dependencies not installed by pacman:"
+    echo "  - python-cryptography (for browser cookie detection)"
+    echo "  - mono (for DPAPI helper, usually bundled with Wine)"
+    echo ""
+    echo "Data will be stored in ~/.cache/grovebox/ and ~/.local/share/grovebox/."
+}
+
+post_upgrade() {
+    post_install
+}
