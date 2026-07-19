@@ -1,0 +1,13 @@
+pkgbase = rank
+	pkgdesc = GNU sort reimplementation: byte-identical output, MSD radix sorting
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/rank
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	source = https://github.com/tenseleyFlow/rank/releases/download/v0.1.1/rank-0.1.1.tar.gz
+	sha256sums = 6cffe28390ed82e5a188e524c81e6789ccf8bf0c4a9e9f9b464e2c680392aed0
+
+pkgname = rank
