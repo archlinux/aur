@@ -4,7 +4,7 @@
 
 _pkgname=krita
 pkgname=krita-appimage
-pkgver=6.0.1
+pkgver=6.0.2.1
 pkgrel=1
 pkgdesc="Edit and paint images (official AppImage release)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('krita')
 source=(
 	"https://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}-${arch}.AppImage"{,.sig}
 )
-sha256sums=('9732206aa6624e750e5b9152445fb544ea63dd1012582dfdd1a2d51520414d0a'
+sha256sums=('26f9e12901a35d967d0779597099394c57063dd1b785cdf37df49004d58ec183'
             'SKIP')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD'  # Boudewijn Rempt <foundation@krita.org>
 	      'E9FB29E74ADEACC5E3035B8AB69EB4CF7468332F'  # Dmitry Kazakov (main key) <dimula73@gmail.com>
