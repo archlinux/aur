@@ -1,7 +1,7 @@
 pkgbase = blaadpapers
 	pkgdesc = Fast & clean wallpaper manager
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/Blaadick/BlaadPapers
 	arch = any
 	license = GPL-3.0-only
@@ -10,14 +10,12 @@ pkgbase = blaadpapers
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
-	depends = qt6-shadertools
-	depends = ffmpeg
 	depends = libvips
+	depends = ffmpeg
 	depends = nlohmann-json
 	depends = mpvpaper
 	depends = bstyle-qml-theme
-	options = !debug
-	source = blaadpapers-0.4.0.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.4.0.tar.gz
-	sha512sums = SKIP
+	source = blaadpapers-0.4.2.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.4.2.tar.gz
+	sha512sums = 8f732df60421855d55d3e83aa2d7e580f8d79800bd06e06f6e0fa83f147ec68810596c5fb687aebccdeee9ebc7abf2add9d1c94b5becf9c25b39e46e2c6f7724
 
 pkgname = blaadpapers
