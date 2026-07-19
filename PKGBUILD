@@ -1,4 +1,5 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
 
 _name="hwloc"
