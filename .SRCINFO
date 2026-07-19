@@ -1,0 +1,24 @@
+pkgbase = rakemond-unstable-bin
+	pkgdesc = System daemon that listens for cargo-rake lifecycle events and stores them in redb, built with --features unstable (pre-compiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.jasonozias.com/rakemond.git
+	install = rakemond.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = rakemond
+	conflicts = rakemond
+	conflicts = rakemond-bin
+	options = !strip
+	options = !debug
+	backup = etc/rakemond/rakemond.toml
+	source = https://git.jasonozias.com/dl/rakemond/v0.1.0/dist-rakemond.tar.gz
+	sha256sums = 58067b3eedbf4e68f6ed6adf0cfff0b38c289d631436cf9e5fa10da11ce57a4a
+	source_x86_64 = rakemond-unstable-x86_64::https://git.jasonozias.com/dl/rakemond/v0.1.0/rakemond-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 36de3b699b66f6291f6f76392751f6795a3664e7fe02b0233263d2871e17f23b
+	source_aarch64 = rakemond-unstable-aarch64::https://git.jasonozias.com/dl/rakemond/v0.1.0/rakemond-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 7cfbfdd4322abad136fe8a87235ad1c5a87acc57fb1492f2afa0621ea437db69
+
+pkgname = rakemond-unstable-bin
