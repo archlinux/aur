@@ -11,7 +11,7 @@ depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/pokerth-$pkgver-linux-x86_64.zip"
+	"$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Pokerth-$pkgver-linux-x86_64.zip"
 	"pokerth.png"
 	"pokerth.svg"
 )
