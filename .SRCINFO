@@ -1,13 +1,13 @@
 pkgbase = github-backup
 	pkgdesc = Backup a github user or organization.
-	pkgver = 0.62.1
+	pkgver = 0.64.2
 	pkgrel = 1
 	url = https://github.com/josegonzalez/python-github-backup
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = github-backup-0.62.1.tar.gz::https://github.com/josegonzalez/python-github-backup/archive/refs/tags/0.62.1.tar.gz
-	sha512sums = f265deca8bdd9fcbf5d592a1ccee4dfd94ce8ce8529cb981f34e4a2da7d31e6d0f28de93bc2382d04b3391617a9ca5fb1943b258d57199947baea4ed8e2c3dea
+	source = github-backup-0.64.2.tar.gz::https://github.com/josegonzalez/python-github-backup/archive/refs/tags/0.64.2.tar.gz
+	sha512sums = e9d8e370d3a26c9d662ff3bf2a1f09ef5e9643b06531071baf0fc135bb4acc2b6305a2b67d37a8ec40ea47f4ecc79c618518ca85df6e957695c964b23d5b713d
 
 pkgname = github-backup
