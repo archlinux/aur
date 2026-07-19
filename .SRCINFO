@@ -1,0 +1,19 @@
+pkgbase = gjallarhorn-git
+	pkgdesc = From-scratch Odin web framework, ORM and template engine, with a nest-style scaffolding CLI
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/Lvcky-gg/Gjallarhorn
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = odin
+	depends = odin
+	optdepends = openssl: TLS support in generated apps (build with -define:GJ_TLS=true)
+	optdepends = docker-compose: local Postgres for the ORM
+	provides = gjallarhorn
+	conflicts = gjallarhorn
+	options = !debug
+	source = gjallarhorn::git+https://github.com/Lvcky-gg/Gjallarhorn.git
+	sha256sums = SKIP
+
+pkgname = gjallarhorn-git
