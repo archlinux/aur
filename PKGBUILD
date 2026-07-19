@@ -1,15 +1,15 @@
 # Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
 pkgname=dnspyex-wine-bin
-pkgver=6.5.1
-pkgrel=4
+pkgver=6.6.0
+pkgrel=1
 pkgdesc="Unofficial continuation of dnSpy: debugger and .NET assembly editor."
 arch=('x86_64')
 url="https://github.com/dnSpyEx/dnSpy"
 license=('GPL-3.0-or-later')
 depends=('wine' 'wine-mono' 'ttf-ms-fonts')
 makedepends=('unzip' 'icoutils')
-source=("https://github.com/dnSpyEx/dnSpy/releases/download/v6.5.1/dnSpy-net-win64.zip")
-sha256sums=('7b4e16ffdeded7e27785377f110388e4afb52250d4606246d52154e935be0ee8')
+source=("https://github.com/dnSpyEx/dnSpy/releases/download/v6.6.0/dnSpy-net-win64.zip")
+sha256sums=('8ed48f165dc355e869f3a0037ad4f9216147f995a5ae0258b296eeef1f73aab0')
 
 # Extract icon from dll with icoutils
 prepare() {
