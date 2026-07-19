@@ -1,0 +1,25 @@
+pkgbase = mp-player
+	pkgdesc = music player
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kurumihere/mp
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	conflicts = mp
+	conflicts = mp-player-bin
+	source = mp-player-0.1.1.tar.gz::https://github.com/kurumihere/mp/archive/refs/tags/v0.1.1.tar.gz
+	source = mp-player.desktop
+	sha256sums = 23871b4da0f4f7088a7d81dfb6f7ba4085d1a6214eb75e406e08c347482b2d9f
+	sha256sums = 3fc25e2c0284de96df98f979f5c1445cb8ae3024592db54002a5cc9d9c46a479
+
+pkgname = mp-player
