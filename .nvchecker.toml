@@ -1,0 +1,5 @@
+[ordr-bin]
+source = "github"
+github = "McMuellermilch/ordr"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = ordr-bin
+	pkgdesc = Rule-based file organizer CLI for macOS and Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/McMuellermilch/ordr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ordr
+	conflicts = ordr
+	options = !strip
+	source_x86_64 = ordr-x86_64-0.2.0.tgz::https://github.com/McMuellermilch/ordr/releases/download/v0.2.0/ordr_linux_amd64.tar.gz
+	sha256sums_x86_64 = fe7ce30facb1c770d954f679908d8b8a9384ccd2aee663d24a45af3c4b648729
+	source_aarch64 = ordr-aarch64-0.2.0.tgz::https://github.com/McMuellermilch/ordr/releases/download/v0.2.0/ordr_linux_arm64.tar.gz
+	sha256sums_aarch64 = 628245eba982ccccb149538592eb22dbb43b4eba7ea07093efc014346e26bc50
+
+pkgname = ordr-bin
