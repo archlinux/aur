@@ -1,9 +1,9 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio and pipewire audio routing application
-	pkgver = 2.0.1.r6.b8f4916
+	pkgver = 0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -22,6 +22,7 @@ pkgbase = pulsemeeter-git
 	depends = python-pulsectl-asyncio
 	optdepends = easyeffects
 	provides = pulsemeeter
+	conflicts = pulsemeeter
 	source = pulsemeeter::git+https://github.com/theRealCarneiro/pulsemeeter.git
 	md5sums = SKIP
 
