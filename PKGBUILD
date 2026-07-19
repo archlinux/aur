@@ -43,7 +43,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('376887f709195165d015ce0a7b1efad561fe26a6d3cdc5872d6d60566322b8c3')
+sha256sums=('ea45bcb35d62e7f9bbb38c31f54675883bcd34bb927e068d11a02e867b264d0f')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
