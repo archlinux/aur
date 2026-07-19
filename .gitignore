@@ -2,3 +2,4 @@ pkg/
 src/
 *.pkg.tar.zst
 qt6-dbusqml/
+*.tar.gz
