@@ -1,7 +1,7 @@
 pkgbase = dnspyex-wine-bin
 	pkgdesc = Unofficial continuation of dnSpy: debugger and .NET assembly editor.
 	pkgver = 6.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dnSpyEx/dnSpy
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = dnspyex-wine-bin
 	depends = wine
 	depends = wine-mono
 	depends = ttf-ms-fonts
-	source = https://github.com/dnSpyEx/dnSpy/releases/download/v6.6.0/dnSpy-net-win64.zip
+	source = dnspyex-wine-bin-6.6.0.zip::https://github.com/dnSpyEx/dnSpy/releases/download/v6.6.0/dnSpy-net-win64.zip
 	sha256sums = 8ed48f165dc355e869f3a0037ad4f9216147f995a5ae0258b296eeef1f73aab0
 
 pkgname = dnspyex-wine-bin
