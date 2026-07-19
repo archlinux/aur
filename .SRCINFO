@@ -1,0 +1,13 @@
+pkgbase = anisub-cli
+	pkgdesc = Türkçe anime alt yazı platformu anisub.co için cli aracı.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ewgsta/anisub-cli
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = anisub-cli-0.1.0.tar.gz::https://static.crates.io/crates/anisub-cli/anisub-cli-0.1.0.crate
+	sha256sums = f3e16abeb1e5c9ca360b5bb9a6c98c087782e78cc59a80455c3ebc8734100b4e
+
+pkgname = anisub-cli
