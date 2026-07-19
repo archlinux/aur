@@ -6,11 +6,11 @@
 # Arch package from the GitHub release and installs its payload. That makes
 # `makepkg`/`yay` work standalone for end users (see issue #5).
 #
-# 1.22209.0, pkgrel, and 4d189aacae11689b5ac07e942ee536b508bb8271417e907ffbaaeb0b0e98bfbf are substituted by the publish-aur
+# 1.22209.3, pkgrel, and 937d63ab40f80c7b6d569627f196c7710d87198d512c31f480589742092ad219 are substituted by the publish-aur
 # CI step before this is pushed to the AUR.
 pkgname=claude-desktop-hardened-bin
-pkgver=1.22209.0
-pkgrel=2
+pkgver=1.22209.3
+pkgrel=1
 pkgdesc="Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction"
 arch=('x86_64')
 url="https://github.com/techtoboggan/claude-desktop-hardened-linux"
@@ -38,17 +38,17 @@ options=('!strip' '!debug')
 # its payload (usr/) in package(); noextract stops makepkg from auto-unpacking
 # it (which would also dump .PKGINFO/.MTREE into srcdir).
 #
-# claude-desktop-hardened-bin-1.22209.0-1-x86_64.pkg.tar.zst (the exact asset filename) and v1.22209.0-2 (the release tag) are
+# claude-desktop-hardened-bin-1.22209.3-1-x86_64.pkg.tar.zst (the exact asset filename) and v1.22209.3-1 (the release tag) are
 # substituted by publish-aur from the actual release — NOT reconstructed
 # from pkgver/pkgrel. They diverge: the AUR pkgrel tracks the release build
 # number (e.g. 4), but the artifact's own filename carries the CI-internal
 # pkgrel which is always 1 (claude-desktop-hardened-bin-<ver>-1-x86_64...),
 # and the download path uses the release tag (v<ver>-4). Discovering both
 # avoids guessing.
-_pkgfile="claude-desktop-hardened-bin-1.22209.0-1-x86_64.pkg.tar.zst"
-source=("${_pkgfile}::${url}/releases/download/v1.22209.0-2/${_pkgfile}")
+_pkgfile="claude-desktop-hardened-bin-1.22209.3-1-x86_64.pkg.tar.zst"
+source=("${_pkgfile}::${url}/releases/download/v1.22209.3-1/${_pkgfile}")
 noextract=("${_pkgfile}")
-sha256sums=('4d189aacae11689b5ac07e942ee536b508bb8271417e907ffbaaeb0b0e98bfbf')
+sha256sums=('937d63ab40f80c7b6d569627f196c7710d87198d512c31f480589742092ad219')
 
 package() {
     # Extract just the filesystem payload from the prebuilt package.
