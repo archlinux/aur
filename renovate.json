@@ -6,9 +6,8 @@
   ],
   "packageRules": [
     {
-      "enabled": false,
-      "matchPackageNames": ["open-policy-agent/regal"],
-      "matchNewValue": "^2"
+      "allowedVersions": "<1.0.0",
+      "matchPackageNames": ["open-policy-agent/regal"]
     }
   ]
 }
