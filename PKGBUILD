@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('fastcp')
 conflicts=('fastcp-bin')
-source=("fastcp::git+https://github.com/CallMeAlphabet/fastcp.git#tag=latest")
+source=("fastcp::git+https://github.com/CallMeAlphabet/fastcp.git#branch=rust")
 sha256sums=('SKIP')
 
 pkgver() {
