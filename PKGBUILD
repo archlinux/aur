@@ -1,4 +1,5 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+# Automation: https://github.com/its-me/aur.qxkb
 
 pkgname=qxkb
 pkgver=0.4.6
