@@ -29,6 +29,7 @@ build() {
     cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TEST_MODE=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
