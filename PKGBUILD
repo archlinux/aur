@@ -18,13 +18,13 @@ _get_pkgver() {
     ;;
   esac
   printf '%s\n' "  >> Getting upstream software version for architecture '${CARCH}' ..." > /dev/stderr
-  _ver="$(curl -L "${_upstreamlistingurl}" 2>/dev/null| grep -E "SANE Driver \([0-9\.]+\)" | head -n1 | sed -E 's|^.*SANE Driver \(([0-9.]+)\).*$|\1|')"
+  _ver="$(curl -L "${_upstreamlistingurl}" 2>/dev/null| grep --binary-files=text -E "SANE Driver \([0-9\.]+\)" | head -n1 | sed -E 's|^.*SANE Driver \(([0-9.]+)\).*$|\1|')"
   printf '%s' "${_ver}"
 }
 
 pkgname=kyocera-sane
 pkgver="$(_get_pkgver)"
-pkgrel=1
+pkgrel=2
 pkgdesc='Kyocera sane scanner support package for many Kyocera printers.'
 arch=(
   'i386'
@@ -41,11 +41,11 @@ depends=(
   'glibc'
   'libtiff5'
   'libusb'
-  'libjpeg'
+  'libjpeg.so'
   'openssl-1.1'
   'sane'
 )
-makedepends=()
+makedepends=('libjpeg-turbo')
 source=(
   "${pkgname}-${pkgver}_SANE-Driver.zip::${_upstreamsourcedownloadpath}/${_upstreamsourcefilename}"
   'README.txt'
