@@ -4,7 +4,7 @@
 
 pkgname=mongreldb-viewer
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 _ortver=1.24.2
 pkgdesc='Desktop viewer for exploring MongrelDB databases'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
 )
 noextract=("onnxruntime-$_ortver-x86_64.tar.lzma2")
 sha256sums=(
-  'd85ef066dc4ce056919eca4badc1f71d07d5e88f7a92b444d9f63f7bf1765e30'
+  '4cde0f30ecf596027446b9488f8922066307721f1895d24cb7b33c305613a1c6'
   '10e74160895b60fa9efc6ee06d4ff1cec3852d940c4c0c87e60b1bd06a8bff26'
   'acc1cba79c337594ead1d88ca72516147aa60054c84217b53399a31caa5ba671'
   '2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c'
