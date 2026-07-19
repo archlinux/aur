@@ -10,6 +10,7 @@ pkgbase = scrawl-bin
 	provides = scrawl
 	conflicts = scrawl
 	options = !strip
+	backup = etc/scrawl/scrawl.env
 	source = README-1.3.0.md::https://raw.githubusercontent.com/dasunNimantha/scrawl/v1.3.0/README.md
 	source = LICENSE-1.3.0::https://raw.githubusercontent.com/dasunNimantha/scrawl/v1.3.0/LICENSE
 	source = scrawl.env

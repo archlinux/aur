@@ -25,6 +25,8 @@ conflicts=("${_appname}")
 
 options=(!strip)
 
+backup=("etc/${_appname}/${_appname}.env")
+
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_appname}.env"
