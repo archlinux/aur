@@ -1,6 +1,6 @@
 pkgbase = miasma
 	pkgdesc = Trap AI web scrapers in an endless poison pit.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 2
 	url = https://github.com/austin-weeks/miasma
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = miasma
 	options = !lto
 	backup = usr/lib/systemd/system/miasma.service
 	backup = etc/miasma.yaml
-	source = miasma-0.3.0.tar.gz::https://github.com/austin-weeks/miasma/archive/refs/tags/v0.3.0.tar.gz
+	source = miasma-0.4.0.tar.gz::https://github.com/austin-weeks/miasma/archive/refs/tags/v0.4.0.tar.gz
 	source = miasma.service
 	source = sysusers-file
 	source = tmpfiles-file
