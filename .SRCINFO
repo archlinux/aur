@@ -1,15 +1,15 @@
 pkgbase = asgardex-appimage
 	pkgdesc = Professional Multi-Chain Trading Platform
-	pkgver = 1.44.0
+	pkgver = 1.45.0
 	pkgrel = 1
 	url = https://github.com/asgardex/asgardex-desktop/releases
 	arch = x86_64
 	license = MIT
 	provides = asgardex
-	noextract = ASGARDEX-1.44.0-linux.AppImage
+	noextract = ASGARDEX-1.45.0-linux.AppImage
 	options = !strip
-	source = https://github.com/asgardex/asgardex-desktop/releases/download/v1.44.0/ASGARDEX-1.44.0-linux.AppImage
+	source = https://github.com/asgardex/asgardex-desktop/releases/download/v1.45.0/ASGARDEX-1.45.0-linux.AppImage
 	validpgpkeys = 9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709
-	sha256sums = 96e143bd41c6bdc038a0868d275bb4869f4ad1c1c3301806904c782d188dc135
+	sha256sums = 6a435fe6a1c12c7edf6804e73f748f5c2edf055a9ac0d4a60ea020723c1a5236
 
 pkgname = asgardex-appimage
