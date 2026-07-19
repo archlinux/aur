@@ -1,6 +1,6 @@
 pkgbase = pi-studio-bin
 	pkgdesc = Local Codex-style desktop GUI for the Pi coding agent
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/shixin-guo/pi-studio
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = pi-studio-bin
 	conflicts = pi-studio
 	options = !strip
 	options = !debug
-	source_x86_64 = pi-studio-bin-0.2.2-x86_64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.2.2/Picot_0.2.2_amd64.deb
-	sha256sums_x86_64 = 69a00989ef07a8b024bcd0cd57e7c78a21469af443ff94d68df135049f56e2c9
-	source_aarch64 = pi-studio-bin-0.2.2-aarch64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.2.2/Picot_0.2.2_arm64.deb
-	sha256sums_aarch64 = bb80e0f0f3471e624fcccb04d659dd8e79c58f43ef381401185c6562ebc3db74
+	source_x86_64 = pi-studio-bin-0.3.0-x86_64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.3.0/Picot_0.3.0_amd64.deb
+	sha256sums_x86_64 = 80ffc2658bcccb8f89d149c705cd8252865e77d25bdfa7a418e5b9bc29ac8126
+	source_aarch64 = pi-studio-bin-0.3.0-aarch64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.3.0/Picot_0.3.0_arm64.deb
+	sha256sums_aarch64 = 6b157758de3ff82a73c7c8eee91b4a80e50ad80cb1b23c2eb0335e54236d280e
 
 pkgname = pi-studio-bin
