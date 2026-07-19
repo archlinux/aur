@@ -1,6 +1,6 @@
 pkgbase = aside
 	pkgdesc = LLM assistant for Wayland desktops — overlay, voice, tools, any model
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/scottstav/aside
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = aside
 	depends = gobject-introspection
 	optdepends = portaudio: voice input (aside enable-stt)
 	optdepends = pipewire: voice input via pw-record
-	source = aside-0.7.0.tar.gz::https://github.com/scottstav/aside/archive/v0.7.0.tar.gz
-	sha256sums = 1ede11700f9898c6aa8f34a389865938ebd8c7ae825ce39a0c672907dd6c032f
+	source = aside-0.7.1.tar.gz::https://github.com/scottstav/aside/archive/v0.7.1.tar.gz
+	sha256sums = df2e71658641887ea1ca01fa2e29536b0dda36ea5596da830d2df4347645bc73
 
 pkgname = aside
