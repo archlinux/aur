@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.16.0
-_ggml_sha256sum=8e1741cd44c036468ee2b8531343bbe1205bc26bc63b866030679cc5f28ec0bf
+_ggml_version=0.17.0
+_ggml_sha256sum=49ed958226dd75ea13b3b493150181e3a3ca7dc28c20a3d1f00d23e94cbf7a47
 pkgname=ggml-vulkan-backend
 pkgver=${_ggml_version}
 pkgrel=1
