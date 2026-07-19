@@ -1,13 +1,13 @@
 pkgbase = pikapika-appimage
 	pkgdesc = A comic browser，support Android / iOS / MacOS / Windows / Linux.
-	pkgver = 1.8.19
+	pkgver = 1.8.20
 	pkgrel = 1
 	url = https://github.com/ComicSparks/pikapika
 	arch = x86_64
 	license = unknown
 	conflicts = pikapika-bin
 	options = !strip
-	source = https://github.com/ComicSparks/pikapika/releases/download/v1.8.19/pikapika-v1.8.19-linux-x86_64-flutter_2.10.3.AppImage
+	source = https://github.com/ComicSparks/pikapika/releases/download/v1.8.20/pikapika-v1.8.20-linux-x86_64-flutter_2.10.3.AppImage
 	sha256sums = SKIP
 
 pkgname = pikapika-appimage
