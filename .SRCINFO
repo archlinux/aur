@@ -1,6 +1,6 @@
 pkgbase = muzaiten-bin
 	pkgdesc = Native music player for local libraries, with ratings and scrobbling (prebuilt, bundled Last.fm credentials)
-	pkgver = 2026.07.12.4.g055e2aa
+	pkgver = 2026.07.19.1.g4f746ea
 	pkgrel = 1
 	url = https://codeberg.org/11xx/muzaiten
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = muzaiten-bin
 	conflicts = muzaiten
 	conflicts = muzaiten-git
 	options = !strip
-	source = muzaiten-2026.07.12.4.g055e2aa-x86_64.tar.zst::https://codeberg.org/11xx/muzaiten/releases/download/2026.07.12/muzaiten-2026.07.12.4.g055e2aa-x86_64.tar.zst
-	sha256sums = e61e79d93f61f9151cea4ed7c1bb9565f7497bfd8889620b186ffaddf33f3018
+	source = muzaiten-2026.07.19.1.g4f746ea-x86_64.tar.zst::https://codeberg.org/11xx/muzaiten/releases/download/2026.07.19/muzaiten-2026.07.19.1.g4f746ea-x86_64.tar.zst
+	sha256sums = 2d3ef5be165801726e06532505eaff36447cbc0da40c70659dc1c812eac75e86
 
 pkgname = muzaiten-bin
