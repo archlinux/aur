@@ -11,6 +11,11 @@ pkgbase = pkgpick
 	depends = pacman
 	optdepends = yay: AUR search/install/update support
 	optdepends = paru: alternative AUR helper (used if yay is absent)
+	optdepends = flatpak: manage Flatpak apps and runtimes
+	optdepends = npm: manage global npm packages
+	optdepends = python-pip: manage pip packages
+	optdepends = cargo: manage cargo-installed binaries
+	optdepends = go: manage go-installed binaries
 	source = pkgpick-2.0.0::git+https://github.com/ItzDast/pkgpick.git#tag=v2.0.0
 	sha256sums = SKIP
 

@@ -9,6 +9,11 @@ depends=('bash' 'fzf' 'pacman')
 optdepends=(
     'yay: AUR search/install/update support'
     'paru: alternative AUR helper (used if yay is absent)'
+    'flatpak: manage Flatpak apps and runtimes'
+    'npm: manage global npm packages'
+    'python-pip: manage pip packages'
+    'cargo: manage cargo-installed binaries'
+    'go: manage go-installed binaries'
 )
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/ItzDast/pkgpick.git#tag=v$pkgver")
