@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=float-app-bin
-pkgver=20260719.1
+pkgver=20260719.2
 pkgrel=1
 pkgdesc="Persistently float selected Hyprland windows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
