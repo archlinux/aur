@@ -1,71 +1,21 @@
---- lame/configure	2026-02-14 13:09:49.356989069 +0100
-+++ patched/configure	2026-02-14 14:04:38.464113706 +0100
-@@ -15983,58 +15983,15 @@
+--- lame/configure.ac	2026-07-10 20:25:38.000000000 +0200
++++ patched/configure.ac	2026-07-19 22:53:01.273048691 +0200
+@@ -424,6 +424,15 @@
+ 	fi
  fi
  
- if test $ac_cv_func_socket = no; then
--	# maybe it is in libsocket
--	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for socket in -lsocket" >&5
--printf %s "checking for socket in -lsocket... " >&6; }
--if test ${ac_cv_lib_socket_socket+y}
-+    ac_fn_c_check_header_compile "$LINENO" "winsock2.h" "ac_cv_header_winsock2_h" "$ac_includes_default"
-+if test "x$ac_cv_header_winsock2_h" = xyes
- then :
--  printf %s "(cached) " >&6
--else $as_nop
--  ac_check_lib_save_LIBS=$LIBS
--LIBS="-lsocket  $LIBS"
--cat confdefs.h - <<_ACEOF >conftest.$ac_ext
--/* end confdefs.h.  */
--
--/* Override any GCC internal prototype to avoid an error.
--   Use char because int might match the return type of a GCC
--   builtin and then its argument prototype would still apply.  */
--char socket ();
--int
--main (void)
--{
--return socket ();
--  ;
--  return 0;
--}
--_ACEOF
--if ac_fn_c_try_link "$LINENO"
--then :
--  ac_cv_lib_socket_socket=yes
--else $as_nop
--  ac_cv_lib_socket_socket=no
-+  printf "%s\n" "#define HAVE_WINSOCK2_H 1" >>confdefs.h
- fi
--rm -f core conftest.err conftest.$ac_objext conftest.beam \
--    conftest$ac_exeext conftest.$ac_ext
--LIBS=$ac_check_lib_save_LIBS
--fi
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_socket_socket" >&5
--printf "%s\n" "$ac_cv_lib_socket_socket" >&6; }
--if test "x$ac_cv_lib_socket_socket" = xyes
--then :
--  printf "%s\n" "#define HAVE_SOCKET 1" >>confdefs.h
--
--	LIBS="$LIBS -lsocket"
--fi
--
--	if test "X${ac_cv_lib_socket_socket}" != "Xyes"; then
--		SOCKETFUNCTION=NO
--	else
--		case ${host_os} in
--		*solaris*)
--			LIBS="$LIBS -lnsl"
--			;;
--		esac
--	fi
-+    LIBS="$LIBS -lws2_32"
-+    if test "${ac_cv_header_winsock2_h}" != "yes"; then
-+    	SOCKETFUNCTION=NO
++dnl Check if we are on a mingw-w64 system, which needs libws2_32
++if test $ac_cv_func_socket = no; then
++    AC_CHECK_HEADERS(winsock2.h)
++    if test "${ac_cv_header_winsock2_h}" = "yes"; then
++        LIBS="$LIBS -lws2_32"
++        SOCKETFUNCTION=YES
 +    fi
- fi
- 
++fi
++
+ dnl Initialize configuration variables for the Makefile
  CFLAGS=${CFLAGS}
+ CONFIG_DEFS=${CONFIG_DEFS}
 --- lame/frontend/rtp.c	2011-05-07 18:05:17.000000000 +0200
 +++ patched/frontend/rtp.c	2022-07-25 09:48:28.020000713 +0200
 @@ -159,7 +159,7 @@
