@@ -2,7 +2,7 @@
 # Contributor: navigaid <navigaid@gmail.com>
 
 pkgname=android-apktool
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 _jdkver=26
 pkgdesc="A tool for reengineering Android apk files"
@@ -12,7 +12,7 @@ license=("Apache-2.0")
 depends=("java-runtime")
 makedepends=("java-environment=${_jdkver}" "gradle")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/iBotPeaches/Apktool/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('058b9f8d2813484fdcec9fb556669861e23d1cfe2ed4dbaf78e7b877c1fc28d2')
+sha256sums=('22b577d080ca53381c61cbeade7d80ff7a5f365faeb469ec80b2bce6bdd1f763')
 
 build() {
   cd "Apktool-${pkgver}"
