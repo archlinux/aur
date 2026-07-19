@@ -1,0 +1,27 @@
+pkgbase = input-action-controller
+	pkgdesc = Map Linux input events to configurable actions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/IldarMinaev/input-action-controller
+	arch = any
+	license = MIT
+	checkdepends = python-pyudev
+	checkdepends = python-evdev
+	checkdepends = python-tomlkit
+	checkdepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyudev
+	depends = python-evdev
+	depends = python-tomlkit
+	depends = systemd
+	depends = sudo
+	depends = acl
+	depends = coreutils
+	source = input-action-controller-0.1.0.tar.gz::https://github.com/IldarMinaev/input-action-controller/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0dfa2ade23ea464e38ca8dac1bb05a1c34c153a2d807b5dc276f1b8a30148a48
+
+pkgname = input-action-controller
