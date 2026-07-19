@@ -35,7 +35,6 @@ provides=(
   "java-runtime-headless-openjdk=${_jdkver}"
 )
 conflicts=("jdk${_jdkver}-openj9")
-options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}.tar.gz")
 sha256sums=('1f844894d0b48dabbded9f93112752bd31ee0e76544c87742b641a389584fc81')
 

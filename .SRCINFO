@@ -24,7 +24,6 @@ pkgbase = jdk25-openj9-bin
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
 	conflicts = jdk25-openj9
-	options = !strip
 	source = https://github.com/ibmruntimes/semeru25-binaries/releases/download/jdk-25.0.3.0/ibm-semeru-open-jdk_x64_linux_25.0.3.0.tar.gz
 	sha256sums = 1f844894d0b48dabbded9f93112752bd31ee0e76544c87742b641a389584fc81
 
