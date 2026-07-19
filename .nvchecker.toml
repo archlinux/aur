@@ -1,0 +1,5 @@
+[pastevault-cli-bin]
+source = "github"
+github = "arc53/pastevault"
+use_latest_release = true
+prefix = "v"

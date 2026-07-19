@@ -1,0 +1,17 @@
+pkgbase = pastevault-cli-bin
+	pkgdesc = Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options. (CLI)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/arc53/pastevault
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pastevault
+	conflicts = pastevault-cli
+	options = !strip
+	source_x86_64 = pastevault-x86_64-1.1.0.tgz::https://github.com/arc53/pastevault/releases/download/v1.1.0/pastevault_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2c8cb7beaab8e17b275b4eafa1414560afc4b6b4b83a0c0d17c5a60be808f2e2
+	source_aarch64 = pastevault-aarch64-1.1.0.tgz::https://github.com/arc53/pastevault/releases/download/v1.1.0/pastevault_linux_arm64.tar.gz
+	sha256sums_aarch64 = 85119c897f208eca025a86b4b58a987c7fd82d20474249f4ad7dde452ac74660
+
+pkgname = pastevault-cli-bin
