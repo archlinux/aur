@@ -68,7 +68,7 @@ register_boot_entry() {
   command -v findmnt >/dev/null 2>&1 || die 'findmnt is required for --register'
   command -v lsblk >/dev/null 2>&1 || die 'lsblk is required for --register'
 
-  part_source=$(findmnt -nro SOURCE --target "$esp_path") || die "could not identify mount source for ${esp_path}"
+  part_source=$(findmnt --uniq -nro SOURCE --target "$esp_path") || die "could not identify mount source for ${esp_path}"
   parent=$(lsblk -nro PKNAME "$part_source" | head -n1)
   part_num=$(lsblk -nro PARTN "$part_source" | head -n1)
 
