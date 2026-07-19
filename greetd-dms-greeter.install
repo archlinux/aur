@@ -1,8 +1,4 @@
 post_install() {
-    echo "==> Setting permissions on cache directory..."
-    chown greeter:greeter /var/cache/dms-greeter
-    chmod 750 /var/cache/dms-greeter
-
     cat << EOF
 
 ==> Configuration required:
@@ -18,24 +14,13 @@ Edit /etc/greetd/config.toml and set:
 
 You can replace 'niri' with 'hyprland' or 'sway' if desired.
 
+==> Apply your DMS theme and settings to the greeter:
+
+    sudo dms-greeter sync
+
 ==> Enable the greeter:
 
     systemctl enable greetd
 
 EOF
-}
-
-post_upgrade() {
-    echo "==> DMS Greeter"
-    echo "    Installed to: /usr/share/quickshell/dms-greeter"
-    echo "    For customization, copy files to:"
-    echo "      - User:   ~/.config/quickshell/dms-greeter"
-    echo "      - System: /etc/xdg/quickshell/dms-greeter"
-    echo ""
-
-    echo "==> Ensuring permissions on cache directory..."
-    if [ -d /var/cache/dms-greeter ]; then
-        chown greeter:greeter /var/cache/dms-greeter
-        chmod 750 /var/cache/dms-greeter
-    fi
 }

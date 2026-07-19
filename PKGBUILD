@@ -1,58 +1,93 @@
 pkgname=greetd-dms-greeter-git
-pkgver=1.5.0.134.g069df80b
-#pkgver=r960.7516d44
+_binname=dms-greeter
+epoch=1
+pkgver=0.0.0.r5.g399ff66
 pkgrel=1
-pkgdesc='DankMaterialShell greeter for greetd'
+pkgdesc='Greetd login screen with the Dank Material aesthetic (git)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/AvengeMedia/DankMaterialShell'
+url='https://github.com/AvengeMedia/dank-greeter'
 license=('MIT')
 depends=(
     'greetd'
     'quickshell'
+    'qt6-declarative'
 )
 optdepends=(
     'niri: Niri compositor support'
     'hyprland: Hyprland compositor support'
     'sway: Sway compositor support'
 )
-makedepends=('git')
-provides=('greetd-dms-greeter')
-conflicts=('greetd-dms-greeter' 'greetd-dms-greeter-bin')
-backup=('etc/greetd/config.toml')
+makedepends=('git' 'go')
+provides=("greetd-dms-greeter" "$_binname=$pkgver")
+conflicts=('greetd-dms-greeter' 'greetd-dms-greeter-bin' 'dms-greeter')
 install=greetd-dms-greeter.install
-source=("$pkgname::git+$url.git"
-        "git+https://github.com/AvengeMedia/dank-qml-common.git")
+source=('dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git'
+        'dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git')
 sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  [ -f .gitmodules ] || return 0
-  git submodule init
-  git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
-  git -c protocol.file.allow=always submodule update
+	cd "$srcdir/dank-greeter"
+	git submodule init
+	git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  if git describe --tags --long >/dev/null 2>&1; then
-    git describe --tags --long | sed 's/^v//; s/-/./g'
-  else
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+	cd "$srcdir/dank-greeter"
+	if git describe --tags --long >/dev/null 2>&1; then
+		git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+	else
+		printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	fi
+}
+
+build() {
+	cd "$srcdir/dank-greeter/core"
+
+	local VERSION BUILD_TIME COMMIT
+	VERSION="$(git describe --tags --always 2>/dev/null | sed 's/^v//' || echo dev)"
+	BUILD_TIME="$(date -u '+%Y-%m-%d_%H:%M:%S')"
+	COMMIT="$(git rev-parse --short=8 HEAD 2>/dev/null || echo unknown)"
+
+	export CGO_ENABLED=0
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOMODCACHE="$srcdir/gomodcache"
+
+	# Bake the quickshell UI into the binary (populates internal/shellembed/dist)
+	make sync-shell
+
+	go build -tags withshell \
+		-ldflags "-s -w -X main.Version=${VERSION} -X main.BuildTime=${BUILD_TIME} -X main.Commit=${COMMIT}" \
+		-o bin/$_binname ./cmd/$_binname
+
+	mkdir -p bin/completions
+	bin/$_binname completion bash > "bin/completions/$_binname"
+	bin/$_binname completion zsh  > "bin/completions/_$_binname"
+	bin/$_binname completion fish > "bin/completions/$_binname.fish"
+}
+
+check() {
+	cd "$srcdir/dank-greeter/core"
+	export CGO_ENABLED=0 GOMODCACHE="$srcdir/gomodcache"
+	go test ./... || true
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+	cd "$srcdir/dank-greeter"
 
-    install -dm755 "$pkgdir/usr/share/quickshell/dms-greeter"
-    cp -rL ./quickshell/* "$pkgdir/usr/share/quickshell/dms-greeter/"
+	install -Dm755 "core/bin/$_binname" "$pkgdir/usr/bin/$_binname"
 
-    install -Dm755 "quickshell/Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
+	install -Dm644 "core/bin/completions/$_binname"      "$pkgdir/usr/share/bash-completion/completions/$_binname"
+	install -Dm644 "core/bin/completions/_$_binname"     "$pkgdir/usr/share/zsh/site-functions/_$_binname"
+	install -Dm644 "core/bin/completions/$_binname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_binname.fish"
 
-    install -Dm644 "quickshell/Modules/Greetd/README.md" "$pkgdir/usr/share/doc/dms-greeter/README.md"
+	install -Dm644 assets/systemd/sysusers-dms-greeter.conf "$pkgdir/usr/lib/sysusers.d/dms-greeter.conf"
+	install -Dm644 assets/systemd/tmpfiles-dms-greeter.conf "$pkgdir/usr/lib/tmpfiles.d/dms-greeter.conf"
 
-    rm -rf "$pkgdir/usr/share/quickshell/dms-greeter/.git"*
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname/examples"
+	install -m644 assets/examples/* "$pkgdir/usr/share/doc/$pkgname/examples/"
 
-    install -dm750 "$pkgdir/var/cache/dms-greeter"
+	install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

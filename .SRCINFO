@@ -1,24 +1,28 @@
 pkgbase = greetd-dms-greeter-git
-	pkgdesc = DankMaterialShell greeter for greetd
-	pkgver = 1.5.0.134.g069df80b
+	pkgdesc = Greetd login screen with the Dank Material aesthetic (git)
+	pkgver = 0.0.0.r5.g399ff66
 	pkgrel = 1
-	url = https://github.com/AvengeMedia/DankMaterialShell
+	epoch = 1
+	url = https://github.com/AvengeMedia/dank-greeter
 	install = greetd-dms-greeter.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = go
 	depends = greetd
 	depends = quickshell
+	depends = qt6-declarative
 	optdepends = niri: Niri compositor support
 	optdepends = hyprland: Hyprland compositor support
 	optdepends = sway: Sway compositor support
 	provides = greetd-dms-greeter
+	provides = dms-greeter=0.0.0.r5.g399ff66
 	conflicts = greetd-dms-greeter
 	conflicts = greetd-dms-greeter-bin
-	backup = etc/greetd/config.toml
-	source = greetd-dms-greeter-git::git+https://github.com/AvengeMedia/DankMaterialShell.git
-	source = git+https://github.com/AvengeMedia/dank-qml-common.git
+	conflicts = dms-greeter
+	source = dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git
+	source = dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
