@@ -2,7 +2,7 @@
 pkgname=r3dvoice-bin
 _appname=R3DVoice
 pkgver=0.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord-style low-latency voice, video & screenshare for gamers (Electron + LiveKit)"
 arch=('x86_64')
 url="https://github.com/R3dWolfie/R3DVoice"
@@ -55,10 +55,12 @@ EOF
          -e 's|^Icon=.*|Icon=r3dvoice|' \
          "${pkgdir}/usr/share/applications/r3dvoice.desktop"
 
-  # Icons (all sizes the AppImage ships).
-  local size
+  # Icons — install whatever sizes the AppImage actually ships (the set varies
+  # by electron-builder version; skip any missing size instead of aborting).
+  local size src
   for size in 16 32 48 64 128 256 512 1024; do
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png" \
+    src="squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png"
+    [ -f "$src" ] && install -Dm644 "$src" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/r3dvoice.png"
   done
 }

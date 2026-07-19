@@ -1,7 +1,7 @@
 pkgbase = r3dvoice-bin
 	pkgdesc = Discord-style low-latency voice, video & screenshare for gamers (Electron + LiveKit)
 	pkgver = 0.15.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/R3dWolfie/R3DVoice
 	arch = x86_64
 	license = AGPL-3.0-or-later
