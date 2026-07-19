@@ -13,7 +13,7 @@ url="http://gnucap.org/"
 license=('GPL')
 depends=('readline' 'termcap')
 source=("https://codeberg.org/gnucap/gnucap/archive/${pkgver}-dev.tar.gz")
-sha1sums=('6eeefa50bf56da18f15219d029b1d095c1b27be7')
+sha1sums=('d0a10ed0432b1dc84557c770150498931b8f5e75')
 
 build() {
   cd $pkgname
