@@ -1,0 +1,20 @@
+pkgbase = miru-zoom-git
+	pkgdesc = A Wayland-based zoom daemon and control utility (development branch)
+	pkgver = 0.1.0.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/Vaishnav-Sabari-Girish/miru
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	depends = wayland
+	provides = miru-zoom
+	conflicts = miru-zoom
+	source = miru::git+https://github.com/Vaishnav-Sabari-Girish/miru.git
+	sha256sums = SKIP
+
+pkgname = miru-zoom-git
