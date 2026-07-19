@@ -1,6 +1,6 @@
 pkgbase = simpmusic-bin
 	pkgdesc = A simple free music player app based on YouTube Music
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/maxrave-dev/SimpMusic
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = simpmusic-bin
 	provides = simpmusic
 	conflicts = simpmusic
 	options = !strip
-	source = SimpMusic-x86_64.AppImage::https://github.com/maxrave-dev/SimpMusic/releases/download/v1.5.1/SimpMusic-x86_64.AppImage
-	sha256sums = 54cd3272922d3d601a20f85e0aa4a725051f1383d39d6166d8154d7900ca575f
+	source = SimpMusic-x86_64.AppImage::https://github.com/maxrave-dev/SimpMusic/releases/download/v1.6.0/SimpMusic-x86_64.AppImage
+	sha256sums = 0dfbe7617c17de99e256358cba8bb554ccdf60730f88b726c6832c432fbc8c79
 
 pkgname = simpmusic-bin
