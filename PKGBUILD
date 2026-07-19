@@ -2,7 +2,7 @@
 
 pkgauthor="wasi-master"
 pkgname="pypi-command-line"
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A powerful, colorful, beautiful command-line-interface for pypi.org"
 
@@ -24,7 +24,7 @@ depends=('python' 'python-click' 'python-rich' 'python-rich-rst' 'python-rich-cl
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "fix_cache.patch")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz" "fix_cache.patch")
-sha256sums=('64edf390fc5bca06db7ed130028a1f687d880614593a9f3d25eecdcecc394fef'
+sha256sums=('ac59d061be7f1e439e2e65acf51908e9576f95ea86da6ebfc5fc9cd272f18bc9'
             'd6121850956d45c21ff3894be9818c3ca67306e92483b620d0533ba9aa76d769')
 
 prepare() {
