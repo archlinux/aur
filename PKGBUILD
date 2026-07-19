@@ -22,7 +22,7 @@ provides=("${_appname}")
 makedepends=('go')
 depends=('glibc' 'git')
 
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/${_gitversion}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
 sha256sums=('064e89c87b51c3ed0d00ca959fd52ecfcaad81b0db2127f4b1a91bd053d87408')
 
 
