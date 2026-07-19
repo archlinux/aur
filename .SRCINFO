@@ -1,0 +1,9 @@
+pkgbase = ampered
+	pkgdesc = Placeholder package (name reserved, not yet released)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/vlukyanets/ampered
+	arch = x86_64
+	license = Unlicense
+
+pkgname = ampered
