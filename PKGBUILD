@@ -1,6 +1,6 @@
 pkgname=cutrail-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop video clipping utility for batch range exports'
 arch=('x86_64')
 url='https://github.com/sabinmarcu/cutrail'
@@ -27,8 +27,9 @@ package() {
 
 	install -d "${pkgdir}/usr/lib/${pkgname}"
 	cp -r src/assets "${pkgdir}/usr/lib/${pkgname}/"
-	cp -r dist/electron "${pkgdir}/usr/lib/${pkgname}/"
-	cp -r dist/renderer "${pkgdir}/usr/lib/${pkgname}/"
+	install -d "${pkgdir}/usr/lib/${pkgname}/dist"
+	cp -r dist/electron "${pkgdir}/usr/lib/${pkgname}/dist/"
+	cp -r dist/renderer "${pkgdir}/usr/lib/${pkgname}/dist/"
 	cp -r node_modules "${pkgdir}/usr/lib/${pkgname}/"
 	install -Dm644 package.json "${pkgdir}/usr/lib/${pkgname}/package.json"
 	install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/lib/${pkgname}/THIRD_PARTY_NOTICES.md"
