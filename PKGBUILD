@@ -1,20 +1,8 @@
 # Maintainer: Asitha Kanchana <asithakanchana1@users.noreply.github.com>
-#
-# RELEASE PKGBUILD — builds from a published GitHub release tarball.
-# Requires a v*.*.* tag to be pushed to GitHub first.
-#
-# For local development testing (no tag needed), use PKGBUILD-git instead:
-#   makepkg -si -p PKGBUILD-git
-#
-# Before submitting to AUR:
-#   1. Push the release tag: git tag v0.1.0 && git push origin v0.1.0
-#   2. Compute sha256: curl -sL <tarball_url> | sha256sum
-#   3. Replace sha256sums=('SKIP') with the real hash
-#   4. Regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
 
 pkgname=wasi-whatsapp
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Lightweight native WhatsApp Web wrapper for Arch Linux (Rust + Tauri + WebKitGTK)"
 arch=('x86_64')
 url="https://github.com/AsithaKanchana1/W-ASI"
@@ -38,15 +26,15 @@ makedepends=(
 provides=('wasi-whatsapp')
 conflicts=('wasi-whatsapp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Update with: curl -sL <url> | sha256sum
+sha256sums=('922a6c1ec2a4b77f5293bdc4b83a0f464eab81830ac931b126abc62c91a52fbc')
 
 prepare() {
     # CARGO_HOME must be set inside functions — $srcdir is not defined at
-    # global PKGBUILD scope, so a top-level export resolves to /.cargo.
+    # global PKGBUILD scope, causing /.cargo (root-owned, unwritable).
     export CARGO_HOME="$srcdir/.cargo"
 
     cd "W-ASI-$pkgver/src-tauri"
-    # Pre-fetch Cargo dependencies (network is available during prepare).
+    # Pre-fetch Cargo dependencies while network is available.
     cargo fetch --locked 2>/dev/null || cargo fetch
 }
 
@@ -54,9 +42,11 @@ build() {
     export CARGO_HOME="$srcdir/.cargo"
 
     cd "W-ASI-$pkgver/src-tauri"
-    # NO_STRIP=1 prevents linuxdeploy from using its bundled strip binary
-    # which cannot handle modern Arch Linux ELF .relr.dyn sections.
-    NO_STRIP=1 cargo tauri build
+    # --no-bundle: build only the binary, skip AppImage/deb/rpm generation.
+    # Those bundles are irrelevant for an AUR package and waste ~10 minutes.
+    # NO_STRIP=1 prevents linuxdeploy's bundled strip from choking on modern
+    # Arch ELF .relr.dyn sections (still needed for the tauri build step).
+    NO_STRIP=1 cargo tauri build --no-bundle
 }
 
 check() {
