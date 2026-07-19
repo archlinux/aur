@@ -11,7 +11,7 @@ depends=('ibus>=1.5.34')
 conflicts=('librush')
 optdepends=('flatpak: install pmim from flathub')
 source=('librush-0.2.3.tar.gz::https://github.com/fm-elpac/librush/archive/refs/tags/v0.2.3.tar.gz'
-        'librush_release_x86_64-unknown-linux-gnu.tar.zst::https://github.com/fm-elpac/librush/releases/download/v0.2.2/librush_release_x86_64-unknown-linux-gnu.tar.zst')
+        'librush_release_x86_64-unknown-linux-gnu.tar.zst::https://github.com/fm-elpac/librush/releases/download/v0.2.3/librush_release_x86_64-unknown-linux-gnu.tar.zst')
 sha256sums=('7583f65abcae4b115b0482bce6a00f0e2b6521024de0231923516168bd538d14'
             '2b2c8bf20808647e87d88f40f11d66d829fdc3baa2e3ec1f3911d88281e68c54')
 
