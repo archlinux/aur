@@ -3,7 +3,7 @@
 _pkgname="wayshot"
 pkgname="${_pkgname}-git"
 pkgver=r543.687a52e
-pkgrel=2
+pkgrel=3
 pkgdesc="Screenshotting tool for wayland compositors"
 arch=("x86_64")
 url="https://github.com/waycrate/wayshot"
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  cargo build --release --no-default-features --features jpeg,jxl,logger
+  cargo build --release --no-default-features --features jpeg,jxl,selector,logger
   for f in docs/*.scd; do
     scdoc < "$f" > "${f%.scd}"
   done
