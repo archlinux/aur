@@ -12,7 +12,6 @@ pkgbase = infer-bin
 	depends = libffi
 	depends = zlib
 	depends = zstd
-	options = !strip
 	source = https://github.com/facebook/infer/releases/download/v1.3.0/infer-linux-x86_64-v1.3.0.tar.xz
 	source = FailingTest.c
 	source = PassingTest.c

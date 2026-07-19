@@ -6,7 +6,6 @@ pkgrel=2
 pkgdesc="Infer is a static analysis tool for Java, C++, Objective-C, and C. Infer is written in OCaml."
 arch=('x86_64')
 url="https://github.com/facebook/infer"
-options=("!strip")
 license=('MIT')
 depends=('gcc-libs'
          'java-environment'
