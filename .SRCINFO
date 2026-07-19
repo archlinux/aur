@@ -1,6 +1,6 @@
 pkgbase = openwhispr-vulkan
 	pkgdesc = Voice-to-text dictation app with local Whisper/Parakeet and cloud models (Vulkan GPU acceleration)
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/OpenWhispr/openwhispr
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = openwhispr-vulkan
 	conflicts = openwhispr-appimage
 	options = !strip
 	options = !debug
-	source = https://github.com/OpenWhispr/openwhispr/releases/download/v1.7.5/OpenWhispr-1.7.5-linux-x64.tar.gz
-	source = whisper.cpp-0.0.7.tar.gz::https://github.com/OpenWhispr/whisper.cpp/archive/refs/tags/0.0.7.tar.gz
-	sha256sums = 40f4bc5f0a1f37de9e8fe6d824a3f1d4bc9fdab07e5c613fc8a5136bd212b738
-	sha256sums = 17716b6807833a349f553f9fe56b4e2f46d742bb41906437daf0e1f27afee08e
+	source = https://github.com/OpenWhispr/openwhispr/releases/download/v1.7.6/OpenWhispr-1.7.6-linux-x64.tar.gz
+	source = whisper.cpp-0.0.8.tar.gz::https://github.com/OpenWhispr/whisper.cpp/archive/refs/tags/0.0.8.tar.gz
+	sha256sums = 97a226e5ae7912ad04cfe67ebe50a6a366c3652ee7f221577fd5ad01a6771a5b
+	sha256sums = b564c14540fa6abced25d2bf741399be07e257da09660a61b55591365903990f
 
 pkgname = openwhispr-vulkan
