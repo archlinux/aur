@@ -1,0 +1,25 @@
+pkgbase = carrot-git
+	pkgdesc = A pure Rust tiling Wayland compositor with zero linked C (latest commit)
+	pkgver = r268.351f2eb
+	pkgrel = 1
+	url = https://github.com/carrot-wm/carrot
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = git
+	depends = xkeyboard-config
+	depends = vulkan-driver
+	optdepends = xorg-xwayland: X11 client support
+	optdepends = pipewire: screencasting
+	optdepends = xdg-desktop-portal: screenshare portal frontend
+	provides = carrot
+	conflicts = carrot
+	options = !strip
+	options = !debug
+	options = !lto
+	source = carrot::git+https://github.com/carrot-wm/carrot.git
+	source = taproot::git+https://github.com/carrot-wm/taproot.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = carrot-git
