@@ -1,0 +1,21 @@
+pkgbase = lanview
+	pkgdesc = Zero-config CLI to instantly preview full-stack web apps on your mobile device over LAN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PrashantDhuri08/lanview-cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = lanview
+	replaces = nodejs-lanview
+	noextract = lanview-1.0.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = lanview-1.0.0.tgz::https://registry.npmjs.org/lanview/-/lanview-1.0.0.tgz
+	b2sums = 3992931f179446087bf2405f64db86cc23386eef88b18a019f37325dd015caa08cd38a8f99996492444605982474c522f8a18a399cb64746dd3bef3805cb7561
+
+pkgname = lanview
