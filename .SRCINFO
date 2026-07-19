@@ -1,5 +1,5 @@
 pkgbase = germ-git
-	pkgdesc = GEneral Resource Manager
+	pkgdesc = GEneral Resource Monitor
 	pkgver = r6.2139a9b
 	pkgrel = 1
 	url = https://github.com/oversea-suite/germ

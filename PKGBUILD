@@ -2,7 +2,7 @@
 pkgname=germ-git
 pkgver=r6.2139a9b
 pkgrel=1
-pkgdesc="GEneral Resource Manager"
+pkgdesc="GEneral Resource Monitor"
 arch=('any')
 url="https://github.com/oversea-suite/germ"
 license=('LGPLv2.1')
