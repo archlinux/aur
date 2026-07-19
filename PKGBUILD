@@ -1,9 +1,5 @@
-# Maintainer: Blaadick <null>
-
-_architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
-
 pkgname="mingw-w64-libde265"
-pkgver="1.0.18"
+pkgver="1.1.1"
 pkgrel=1
 pkgdesc="Open h.265 video codec implementation (mingw-w64)"
 arch=("any")
@@ -13,7 +9,9 @@ depends=("mingw-w64-crt")
 makedepends=("mingw-w64-cmake")
 options=("!buildflags" "staticlibs" "!strip")
 source=("https://github.com/strukturag/libde265/releases/download/v$pkgver/libde265-$pkgver.tar.gz")
-sha256sums=("800478f3bf35f0621b14928ceb317579f3e8b23de4bd2aac29b6cb8be962bbd8")
+sha512sums=("7ecc2fc2d20bc85f2a117c16562e1abd6ad9ec92785f65dfb15a5c7038687b64ae885ad31d31beaf2fa5471b4ce4dbfee98191db9457b2a6b14eabda8c483cad")
+
+_architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 
 build() {
     cd "libde265-$pkgver"
