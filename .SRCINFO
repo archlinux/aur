@@ -1,0 +1,19 @@
+pkgbase = pkgpick-git
+	pkgdesc = Interactive fzf-based package picker for pacman/yay/paru (AUR, official, installed), EN/RU UI
+	pkgver = r1.abcdef0
+	pkgrel = 1
+	url = https://github.com/ItzDast/pkgpick
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = fzf
+	depends = pacman
+	optdepends = yay: AUR search/install/update support
+	optdepends = paru: alternative AUR helper (used if yay is absent)
+	provides = pkgpick
+	conflicts = pkgpick
+	source = pkgpick-git::git+https://github.com/ItzDast/pkgpick.git
+	sha256sums = SKIP
+
+pkgname = pkgpick-git
