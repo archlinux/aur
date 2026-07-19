@@ -1,13 +1,19 @@
 pkgbase = bookokrat-bin
 	pkgdesc = Terminal-based EPUB and PDF reader with rich TUI
-	pkgver = 0.3.10
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/bugzmanov/bookokrat
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
 	provides = bookokrat
 	conflicts = bookokrat
-	source = https://github.com/bugzmanov/bookokrat/releases/download/v0.3.10/bookokrat-v0.3.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c6eb2e6b96c948f0c7a045771baaad709ecd16cacca7b3da765b8d3b49e3f668
+	source_x86_64 = https://github.com/bugzmanov/bookokrat/releases/download/v0.3.12/bookokrat-v0.3.12-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fa7091a3482c00e723a327146b5d256559282be783ac7e0b82f4b408563760f3
+	source_aarch64 = https://github.com/bugzmanov/bookokrat/releases/download/v0.3.12/bookokrat-v0.3.12-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 114739619aa85051566358fb2fc3c36840d2e77920a80b8d7310b15465089676
 
 pkgname = bookokrat-bin
