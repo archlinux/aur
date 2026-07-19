@@ -1,7 +1,7 @@
 # Maintainer: Yeah <ethanaur@yaojiu.org>
 pkgname=creamlinux-installer-appimage
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI application for managing DLC IDs in Steam games (AppImage version)"
 arch=('x86_64')
 url="https://github.com/Novattz/creamlinux-installer"
@@ -21,12 +21,17 @@ prepare() {
 }
 
 package() {
+  # Install appimage file
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
     "${pkgdir}/opt/${pkgname}/creamlinux.AppImage"
 
   # Symlink to /usr/bin
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/creamlinux.AppImage" "${pkgdir}/usr/bin/creamlinux"
+
+  # Install icon file
+  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/creamlinux.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/creamlinux.png"
 
   # Desktop entry
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/creamlinux.desktop" << 'EOF'
