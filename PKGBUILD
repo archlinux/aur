@@ -1,51 +1,36 @@
-# Maintainer: Francisco V. <fvasquez dot public at fvtronics dot com>
+# Maintainer: Nebu Pookins <nebupookins@gmail.com>
 pkgname=quire
-pkgver=0.3.2
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Simple GNOME utility for working with local PDF files"
+pkgdesc="Desktop document scanning application — scan, crop, export JPEG"
 arch=('x86_64')
-url="https://codeberg.org/FVtronics/Quire"
-license=('GPL-3.0-or-later')
-depends=(
-    'cairo'
-    'glib2'
-    'gtk4'
-    'libadwaita'
-    'poppler-glib'
-)
-makedepends=(
-    'appstream'
-    'blueprint-compiler'
-    'cargo'
-    'desktop-file-utils'
-    'gettext'
-    'meson'
-    'ninja'
-    'pkgconf'
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('96468342c71e4d7e2f6b5bc5601cddcbf25f7bcaca45f0f6fa62bf20fa6e3881')
+url="https://github.com/NebuPookins/quire"
+license=('MIT')
+depends=('libglvnd' 'libx11' 'sane')
+makedepends=('go' 'inkscape')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('804420389bf7b04722a44afbab9dbe2ecf3fa2cbec5e62758f270777b39e9b47')
 
 prepare() {
-    cd "$pkgname"
-
-    export CARGO_HOME="$srcdir/cargo-home"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export GOPATH="$srcdir/go"
+  export GOFLAGS="-modcacherw"
+  # Install the fyne bundling tool into the local GOPATH.
+  go install fyne.io/fyne/v2/cmd/fyne@v2.7.3
 }
 
 build() {
-    meson setup "$pkgname" build \
-        --prefix=/usr \
-        --buildtype=release \
-        -Dcargo-home="$srcdir/cargo-home"
-
-    CARGO_NET_OFFLINE=true meson compile -C build
-}
-
-check() {
-    meson test -C build --print-errorlogs
+  cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir/go"
+  export PATH="$PATH:$GOPATH/bin"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  make
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+  cd "$pkgname-$pkgver"
+  make install DESTDIR="$pkgdir"
 }
