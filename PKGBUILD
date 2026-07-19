@@ -1,7 +1,7 @@
 # Maintainer: Juraci de Lima Vieira Neto <juraci.vieira@gmail.com>
 pkgname=flowstate-bin
 _appname=flowstate
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Desktop focus and note-taking app (Electron + Vue)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$_appname-$pkgver.pacman::$url/releases/download/v$pkgver/$_appname-$pkgver.pacman")
 noextract=("$_appname-$pkgver.pacman")
-sha256sums=('d5eb103415505dfb0ded10d3f9772975862267450f616b79d62160879837fa30')
+sha256sums=('79bf14dd1d06153a3e4413fb9614048683ebab5a5f0c9cb7d68e47d5c4e8e4ba')
 
 package() {
     # The upstream release artifact is itself a pacman package; unpack its
