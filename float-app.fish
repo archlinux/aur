@@ -1,0 +1,7 @@
+complete -c float-app -n '__fish_use_subcommand' -a 'pick' -d 'Click a window and print its Hyprland metadata'
+complete -c float-app -n '__fish_use_subcommand' -a 'detect' -d 'Print the focused window\'s Hyprland metadata'
+complete -c float-app -n '__fish_use_subcommand' -a 'add' -d 'Make an application float by default'
+complete -c float-app -n '__fish_use_subcommand' -a 'remove' -d 'Remove an application\'s floating rule'
+complete -c float-app -n '__fish_use_subcommand' -a 'list' -d 'List configured floating applications'
+complete -c float-app -n '__fish_use_subcommand' -a 'completions' -d 'Generate shell completions'
+complete -c float-app -n '__fish_use_subcommand' -a 'help' -d 'Show float-app help'

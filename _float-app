@@ -1,0 +1,2 @@
+#compdef float-app
+_arguments '1:command:(pick detect add remove list completions help)'
