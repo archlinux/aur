@@ -1,0 +1,22 @@
+pkgbase = win12-desktop-bin
+	pkgdesc = Desktop version for Win12, the web desktop experience with app ecosystem and AI Copilot.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/win12-online/win12-desktop
+	arch = x86_64
+	license = EPL-2.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/win12-online/win12-desktop/releases/download/v0.1.8/Win12_0.1.8_amd64.deb
+	sha256sums_x86_64 = b6b1e382888b73421b4de5972d5adfa462148634fd933f11458774d4e940e3ba
+
+pkgname = win12-desktop-bin
