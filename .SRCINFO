@@ -1,6 +1,6 @@
 pkgbase = gslapper
 	pkgdesc = Modern mpvpaper replacement - Wayland wallpaper utility with video/image support and instant switching via RAM cache
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/gSlapper
 	install = gslapper.install
@@ -14,9 +14,10 @@ pkgbase = gslapper
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = wayland
+	depends = systemd-libs
 	optdepends = gst-plugins-ugly: additional codec support
 	optdepends = gst-libav: FFmpeg-based codec support
-	source = gslapper-1.5.0.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.5.0.tar.gz
-	sha256sums = e8829dfc69f737a064001059df6e00c2092a6ab250f43ed8fd8442012ddfb4e4
+	source = gslapper-1.5.1.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.5.1.tar.gz
+	sha256sums = 72b5052a19b18d73b015857d192786f72820764eb9659947461294c155fd6466
 
 pkgname = gslapper
