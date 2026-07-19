@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=folea
-Comment=Development build of the Typst note reader
+Comment=Keyboard-driven, minimalist note manager for Typst notes
 Exec=folea
 Icon=folea
 Terminal=false

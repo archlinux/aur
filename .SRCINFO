@@ -1,5 +1,5 @@
 pkgbase = folea-git
-	pkgdesc = Development build of the keyboard-driven Typst note reader
+	pkgdesc = Keyboard-driven, minimalist note manager for Typst notes
 	pkgver = r51.g41576c3
 	pkgrel = 1
 	url = https://github.com/ivanovanatoliy/folea

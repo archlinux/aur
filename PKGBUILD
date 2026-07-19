@@ -2,7 +2,7 @@
 pkgname=folea-git
 pkgver=r51.g41576c3
 pkgrel=1
-pkgdesc='Development build of the keyboard-driven Typst note reader'
+pkgdesc='Keyboard-driven, minimalist note manager for Typst notes'
 arch=('x86_64')
 url='https://github.com/ivanovanatoliy/folea'
 license=('Apache-2.0')
