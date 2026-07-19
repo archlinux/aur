@@ -14,9 +14,8 @@ depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
 optdepends=('python-pyelftools: for elf2x.py')
-source=("git+$url#commit=$_commit")
-
-sha256sums=('SKIP')
+source=("git+$url#commit=$_commit" "remove_strip_flag.patch")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -47,6 +46,9 @@ prepare() {
   
   # Update git sub-modules.
   git submodule update --init
+
+  # Remove -s (link-time strip) from sik's mdtools Makefiles so debug works.
+  patch -p1 -d mdtools-sik/mdtools -i "${srcdir}/remove_strip_flag.patch"
 
   # Make wget a little bit more log-friendly.
   sed -i 's/^\t@wget /\t@wget -nv /' m68k-gcc-toolchain/Makefile sh-gcc-toolchain/Makefile

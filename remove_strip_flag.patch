@@ -1,0 +1,120 @@
+diff --git a/echo2vgm/Makefile b/echo2vgm/Makefile
+index ab12092..a27906a 100644
+--- a/echo2vgm/Makefile
++++ b/echo2vgm/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s
++CFLAGS:=$(CFLAGS) -Wall -O3
+ OBJECTS=main.o instruments.o stream.o esf.o vgm.o gd3.o util.o
+ 
+ .PHONY: all
+diff --git a/eif2tfi/tool/Makefile b/eif2tfi/tool/Makefile
+index 4aec143..5d1196f 100644
+--- a/eif2tfi/tool/Makefile
++++ b/eif2tfi/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: eif2tfi
+diff --git a/headgen/tool/Makefile b/headgen/tool/Makefile
+index dcd1283..f5eebbd 100644
+--- a/headgen/tool/Makefile
++++ b/headgen/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: headgen
+diff --git a/mdtiler/tool/Makefile b/mdtiler/tool/Makefile
+index b633fde..a2a07ed 100644
+--- a/mdtiler/tool/Makefile
++++ b/mdtiler/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ LDFLAGS:=$(LDFLAGS) -lpng16 -lz
+ 
+ .PHONY: all
+diff --git a/midi2esf/Makefile b/midi2esf/Makefile
+index 45f08f5..d004fe3 100644
+--- a/midi2esf/Makefile
++++ b/midi2esf/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: midi2esf
+diff --git a/mml2esf/tool/Makefile b/mml2esf/tool/Makefile
+index b3fc14c..126bf51 100644
+--- a/mml2esf/tool/Makefile
++++ b/mml2esf/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: mml2esf
+diff --git a/pcm2ewf/tool/Makefile b/pcm2ewf/tool/Makefile
+index df12fea..d5fdb4c 100644
+--- a/pcm2ewf/tool/Makefile
++++ b/pcm2ewf/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: pcm2ewf
+diff --git a/romfix/Makefile b/romfix/Makefile
+index c85e4ca..efe97a8 100644
+--- a/romfix/Makefile
++++ b/romfix/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: romfix
+diff --git a/slz/tool/Makefile b/slz/tool/Makefile
+index 4d4dd26..7516026 100644
+--- a/slz/tool/Makefile
++++ b/slz/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s
++CFLAGS:=$(CFLAGS) -Wall -O3
+ 
+ .PHONY: all
+ all: slz
+diff --git a/tfi2eif/tool/Makefile b/tfi2eif/tool/Makefile
+index a9a3c54..f2ae0ca 100644
+--- a/tfi2eif/tool/Makefile
++++ b/tfi2eif/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: tfi2eif
+diff --git a/uftc/tool/Makefile b/uftc/tool/Makefile
+index 3200a42..5598c87 100644
+--- a/uftc/tool/Makefile
++++ b/uftc/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s
++CFLAGS:=$(CFLAGS) -Wall -O3
+ 
+ .PHONY: all
+ all: uftc
+diff --git a/vgi2eif/tool/Makefile b/vgi2eif/tool/Makefile
+index 96a2f1f..258b71a 100644
+--- a/vgi2eif/tool/Makefile
++++ b/vgi2eif/tool/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS:=$(CFLAGS) -Wall -O3 -s -std=c99
++CFLAGS:=$(CFLAGS) -Wall -O3 -std=c99
+ 
+ .PHONY: all
+ all: vgi2eif

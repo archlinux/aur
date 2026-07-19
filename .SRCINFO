@@ -17,6 +17,8 @@ pkgbase = marsdev-git
 	provides = flamewing-tools
 	provides = sgdk
 	source = git+https://github.com/andwn/marsdev#commit=HEAD
+	source = remove_strip_flag.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = marsdev-git
