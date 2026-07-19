@@ -12,7 +12,6 @@ url="https://github.com/artempyanykh/${_pkgname}"
 license=('GPL')
 makedepends=("dotnet-sdk-${_sdk}" "git")
 depends=("dotnet-runtime-${_sdk}")
-options=('!strip')
 source=("${pkgname}::git+${url}.git#branch=${_branch}" "use-net10.patch")
 sha256sums=('SKIP' 'SKIP')
 
