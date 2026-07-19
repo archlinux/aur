@@ -1,6 +1,6 @@
 pkgbase = paste-links
 	pkgdesc = Add Paste Symlink Here action to GNOME Files
-	pkgver = 0.1.51
+	pkgver = 0.1.52
 	pkgrel = 1
 	url = https://github.com/imz87/paste-links
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = paste-links
 	depends = python-gobject
 	depends = gtk4
 	depends = python-nautilus
-	source = https://github.com/imz87/paste-links/archive/refs/tags/v0.1.51.tar.gz
-	sha256sums = 0a1a507c25b2ac4e1296e3833d38d7ba98dbd3cc7c290ece64a456c307f246f8
+	source = https://github.com/imz87/paste-links/archive/refs/tags/v0.1.52.tar.gz
+	sha256sums = 7109fb3357d0f8e9fc1038f1c0944d7717ae0f8aece43a7e59e792a8cd5cfff5
 
 pkgname = paste-links
