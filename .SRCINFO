@@ -1,0 +1,17 @@
+pkgbase = imago
+	pkgdesc = Agent-native Instagram profile archive - every photo, video, and carousel slide
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/guitaripod/imago
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = curl
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	options = !debug
+	source = imago-0.1.2.tar.gz::https://github.com/guitaripod/imago/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 9a0bec79c1e2e68d18a9a4f2e8960d3b2c8ef0dd8835134aec968bf038628af2
+
+pkgname = imago
