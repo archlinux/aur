@@ -50,7 +50,7 @@ pkgbase = lcd4linux-full-git
 	source = lcd4linux.service
 	source = wiki.url
 	sha256sums = SKIP
-	sha256sums = fa8785a8e785a316ab82e6a7ef55708c8ffcd68cd0fc582febbf6561d5cc2439
+	sha256sums = 687f8ad4560733e0431d25f67c32fb7367def0a143dc8778ee669ca49948ede3
 	sha256sums = 4db8fcd0f63669cac8eb9acbc250d5e9604644a97edb35a8819778e2ade97b78
 	sha256sums = 52bf0933e8a3a00dcb0f39384196b25c9ed7ff4443c191ef3ccac2bc57cbc655
 

@@ -79,7 +79,7 @@ source=(
 sha256sums=(
   'SKIP'  # Main source
   #'f346f217dd6a178f5ba5e45cb2e798bb2fe212d3f931faac58de665580064d2f'  # add_USB2VFD.patch  # Already present in 'https://github.com/Hierosoft/lcd4linux'.
-  'fa8785a8e785a316ab82e6a7ef55708c8ffcd68cd0fc582febbf6561d5cc2439'  # plugin_python3.c_fix.patch  # Already present in 'https://github.com/Hierosoft/lcd4linux'.
+  '687f8ad4560733e0431d25f67c32fb7367def0a143dc8778ee669ca49948ede3'  # plugin_python3.c_fix.patch  # Already present in 'https://github.com/Hierosoft/lcd4linux'.
   #'5611c9fa8a51fc62a2108a93dffb39e1459b4c451fd38b778ff157ab6159784e'  # 'remove_chmod_check_for_cfg_file.patch'  # Already present in 'https://github.com/TangoCash/lcd4linux' and 'https://github.com/MaxWiesel/lcd4linux-max'.
   # '8a0e0a89a254889ac00a169c1fb719ed603a0462043b63ebc929bfd94b55fa2d'  # README.md_add_wiki.patch
   '4db8fcd0f63669cac8eb9acbc250d5e9604644a97edb35a8819778e2ade97b78'  # lcd4linux.service
