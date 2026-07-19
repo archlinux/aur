@@ -1,7 +1,7 @@
 # Maintainer: NodeRelay <joe@linuxdojo.org>
 pkgname=uplink-irc
-pkgver=2026.7.7
-pkgrel=2
+pkgver=2026.7.8
+pkgrel=1
 pkgdesc="Fast, secure, IRCv3-featured IRC client (Qt6)"
 arch=('x86_64')
 url="https://uplinkirc.chat"
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-svg' 'qt6-websockets' 'qtkeychain-qt6' 'tomlplusplus' 'hicolor-icon-theme')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noderelay/UplinkIRC/archive/v$pkgver.tar.gz")
-sha256sums=('718c05bf746495f6d350769114c8bfd52ba6f58117e27a9821b3c5707ab70f28')
+sha256sums=('8cc846d95dd2b3e7cfed7040d21c05b631eeab1a1dc36ccb797da5617f7f258f')
 
 build() {
     cmake -B build -S "UplinkIRC-$pkgver" \
