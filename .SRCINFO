@@ -1,0 +1,16 @@
+pkgbase = fad-bin
+	pkgdesc = Upload, download, and install APK/AAB releases on Firebase App Distribution
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ntsk/fad
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fad
+	conflicts = fad
+	source_x86_64 = fad-0.1.1-x86_64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.1/fad-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 04f80077ad27e77bbe75a3cbe4110af1fb9c110c4bc109d2b6fb08defdaabba7
+	source_aarch64 = fad-0.1.1-aarch64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.1/fad-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 705be4d4f7fd4182610c0cd4f3bbeec843dd7752b9b72de3b4a142ea081d736d
+
+pkgname = fad-bin
