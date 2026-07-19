@@ -1,7 +1,7 @@
 pkgbase = qlcplus4-bin
 	pkgdesc = Open-source lighting control for DMX, Art-Net, sACN and more.
 	pkgver = 4.14.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qlcplus.org
 	arch = x86_64
 	license = Apache-2.0

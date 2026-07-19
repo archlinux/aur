@@ -2,7 +2,7 @@
 
 pkgname=qlcplus4-bin
 pkgver=4.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source lighting control for DMX, Art-Net, sACN and more."
 arch=('x86_64')
 url="https://www.qlcplus.org"
@@ -28,6 +28,9 @@ source=("qlcplus-${pkgver}.deb::https://www.qlcplus.org/downloads/${pkgver}/qlcp
 
 package() {
 	tar -xvf ${srcdir}/data.tar.zst -C ${pkgdir}
+	mv -vn ${pkgdir}/usr/lib/x86_64-linux-gnu/* ${pkgdir}/usr/lib/ # move libraries into path
+	install -d -m755 ${pkgdir}/usr/lib/udev/rules.d/
+	mv -vn ${pkgdir}/etc/udev/rules.d/* ${pkgdir}/usr/lib/udev/rules.d/ # move udev rules into location for standard hook
 }
 
 sha256sums=('2a1145eb38a7393076c5e56fa8350e9c9f6109571f82810738567c199fd7c83d')
