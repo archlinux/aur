@@ -16,7 +16,6 @@ source=(
 
 sha256sums=('5cee292285474b2d0d404224a9787e7dcfa6ae92443517a1596fae8d5d2fefba')
 
-options=("!strip")
 
 package() {
     install -o root -g root -m 755 -d "${pkgdir}/usr/bin"
