@@ -114,9 +114,9 @@ prepare() {
   # gradle tasks to be known that they require internet connectivity (as of 2026-05-27):
   # config:compileKotlin shim:compileKotlin composeApp:checkRuntime matrix:buildSdk matrix:compileKotlin composeApp:compileKotlinJvm composeApp:createReleaseDistributable
 
-  printf '%s\n' " --> Running 'gradle matrix:generateFfiBindings' in non-offline mode ..."
-  gradle -g "${GRADLE_USER_HOME}" "${_gradle_default_options[@]}" matrix:generateFfiBindings
-  # Output will be at 'matrix-rust-sdk/target/'. But just saving this, deleting the whole schildichat-revenge directory, and after re-checkout restoring 'matrix-rust-sdk/target/' does not skip re-compilation of :matrix:buildSdk and :matrix:generateFfiBindings. Would be great if there would be a way to package the Matrix Rust SDK Kotlin bindings, shared library and what is needed to build schildichat-revenge against it separately so that we can _depend_ on it as a proper Arch Linux package and not build it here, since it takes a lot of time and ressources to build.
+  printf '%s\n' " --> Running 'gradle matrixRustBindings:buildDesktopSdk' in non-offline mode ..."
+  gradle -g "${GRADLE_USER_HOME}" "${_gradle_default_options[@]}" matrixRustBindings:buildDesktopSdk
+  # Output will be at 'matrix-rust-sdk/target/'. But just saving this, deleting the whole schildichat-revenge directory, and after re-checkout restoring 'matrix-rust-sdk/target/' does not skip re-compilation of :matrix:buildSdk and :matrixRustBindings:buildDesktopSdk. Would be great if there would be a way to package the Matrix Rust SDK Kotlin bindings, shared library and what is needed to build schildichat-revenge against it separately so that we can _depend_ on it as a proper Arch Linux package and not build it here, since it takes a lot of time and ressources to build.
 
   printf '%s\n' " --> Generating git log ..."
   git log > git.log
