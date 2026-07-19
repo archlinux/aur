@@ -1,7 +1,7 @@
 pkgname=ts2date
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple tool written in c"
+pkgdesc="A simple tool written in C that converts timestamps to dates"
 arch=('x86_64')
 url="https://github.com/Dum398/ts2date"
 license=('GPL')
