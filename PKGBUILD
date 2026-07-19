@@ -15,6 +15,7 @@ build() {
     cd "$srcdir/$pkgname"
     go build ./cmd/qwertywm
     go build -o qwertywmctl ./cmd/qwertywmctl
+    gcc -shared -fPIC -o libqwertywm-rename.so cmd/qwertywm-session/rename.c -ldl
 }
 
 package() {
@@ -22,6 +23,7 @@ package() {
 
     install -Dm755 qwertywm "$pkgdir/usr/bin/qwertywm"
     install -Dm755 qwertywmctl "$pkgdir/usr/bin/qwertywmctl"
+    install -Dm644 libqwertywm-rename.so "$pkgdir/usr/local/lib/libqwertywm-rename.so"
 
     install -Dm755 config/river/init "$pkgdir/etc/skel/.config/river/init"
     install -Dm644 config/qwertywm/config "$pkgdir/etc/skel/.config/qwertywm/config"
