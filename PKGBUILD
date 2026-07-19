@@ -3,7 +3,7 @@
 pkgauthor="moeen-mahmud"
 pkgname="termheat"
 pkgdesc="🔥 Animated terminal heatmap of your GitHub contributions, zero auth, zero config, npx and done."
-pkgver=1.1.0
+pkgver=2.0.1
 pkgrel=1
 
 arch=("x86_64")
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('72ca74f78f0b470be9c839c1d5dcc873a5f5d3ebb9a6351117c9145bd7e3b5636a23bd3159ed40b272c795ac38bafa29516d5e838621513978290591896ee647')
+b2sums=('917e0b1bf1f3f08cac15cdd176dff93be1e6658124423b45e9b0312f4389c5ac205bc88791845b002b844b0b000f2f79bf0838c60173f4e8fa4a2a6b50a86296')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
