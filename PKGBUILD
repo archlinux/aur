@@ -50,6 +50,11 @@ prepare() {
 
   # Make wget a little bit more log-friendly.
   sed -i 's/^\t@wget /\t@wget -nv /' m68k-gcc-toolchain/Makefile sh-gcc-toolchain/Makefile
+
+  # When debug is enabled, make sure we install instead of install-strip.
+  if check_option debug y; then
+    sed -i 's/ install-strip / install /g' m68k-gcc-toolchain/Makefile sh-gcc-toolchain/Makefile
+  fi
 }
 
 build() {
