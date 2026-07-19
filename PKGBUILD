@@ -11,29 +11,20 @@ depends=('libmpv.so' 'libwayland-client.so' 'libwayland-egl.so')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
 optdepends=('socat: control via sockets')
 provides=('mpvpaper')
-source=("https://github.com/GhostNaN/$_gitname")
+source=("${pkgname}::git+https://github.com/GhostNaN/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    # clean existing sources if any
-    rm -rf "${srcdir}"/$_gitname
-    # Clone manually to avoid downloading from the heavy "assets" branch
-    git clone --single-branch https://github.com/GhostNaN/$_gitname.git
+    cd "$pkgname"
+    printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$_gitname"
-    meson setup build --prefix=/usr
-    ninja -C build
+    arch-meson "$pkgname" build
+    meson compile -C build
 }
 
 package() {
-    cd "$srcdir/$_gitname"
-    DESTDIR="$pkgdir" ninja -C build install
-    install -D -m644 "mpvpaper.man" "$pkgdir/usr/share/man/man1/mpvpaper.1"
+    meson install -C build --destdir "$pkgdir"
+    install -D -m644 "$pkgname/mpvpaper.man" "$pkgdir/usr/share/man/man1/mpvpaper.1"
 }

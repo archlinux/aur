@@ -15,7 +15,7 @@ pkgbase = mpvpaper-git
 	depends = libwayland-egl.so
 	optdepends = socat: control via sockets
 	provides = mpvpaper
-	source = https://github.com/GhostNaN/mpvpaper
+	source = mpvpaper-git::git+https://github.com/GhostNaN/mpvpaper.git
 	md5sums = SKIP
 
 pkgname = mpvpaper-git
