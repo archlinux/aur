@@ -9,6 +9,8 @@ pkgdesc="Python timeit CLI for the 21st century"
 _pypi_package=${pkgname}
 _pypi_version=${pkgver}
 
+_execname=${pkgname}
+
 license=('MIT')
 arch=('any')
 
@@ -16,7 +18,7 @@ _url_pypi="https://pypi.org/project/${_pypi_package}/"
 _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url="${_url_github}"
 
-provides=("${_pypi_package}")
+provides=("${_execname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'ptpython' 'python-click' 'python-rich' 'python-rich-click' 'python-pillow' 'python-prompt_toolkit' 'python-pygments' 'python-numpy' 'python-yaml' 'python-matplotlib' 'python-selenium')
 
