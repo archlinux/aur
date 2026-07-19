@@ -1,6 +1,6 @@
 # Maintainer: Ruud van Asseldonk <aur@veniogames.com>
 pkgname=rcl
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 epoch=
 pkgdesc='A reasonable configuration language'
@@ -21,8 +21,8 @@ install=
 changelog=
 source=("git+https://github.com/ruuda/rcl.git?signed#tag=v${pkgver}")
 noextract=()
-sha256sums=('8d8e9198d545101658230d3af3accd1a1517ec2e65859f3f3b0a5232cdb46eef')
-validpgpkeys=(94F3C99316DFFDE10FBA6939284FE5A783926532) # Ruud van Asseldonk <dev@veniogames.com>
+sha256sums=('880aa83b448f15fa17b1dec0808d548344f99b621b0fde9c655d906794237e8e')
+validpgpkeys=(94F3C99316DFFDE10FBA6939284FE5A783926532) # Ruud van Asseldonk <dev@ruuda.nl>
 
 prepare() {
 	cd "${pkgname}"
