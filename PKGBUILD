@@ -2,7 +2,7 @@
 
 pkgname=lcfibe
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline-first desktop workbench for building, sending, and inspecting FIX traffic"
 arch=('x86_64')
 url="https://github.com/lyokha113/lcfibe"
@@ -14,16 +14,17 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
+  'git'
   'nodejs-lts-krypton'
   'patchelf'
   'pnpm'
   'rustup'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('13ced9209dd1725517a8f9f2e9d2151c80b1a1d9c4112cc4c274ca2e46f6756d')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export RUSTUP_HOME="${srcdir}/rustup-home"
@@ -34,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_NET_OFFLINE=true
@@ -45,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   local deb_path data_archive
   deb_path="$(find target/release/bundle/deb -type f -name '*.deb' -print -quit)"
