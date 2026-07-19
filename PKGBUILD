@@ -1,0 +1,41 @@
+# Maintainer: Siiire <siiire@pm.me>
+pkgname=jellium-desktop-bin
+pkgver=0.r1046.8d7ba66
+pkgrel=1
+epoch=1
+pkgdesc="A desktop client for Jellium"
+arch=('x86_64')
+url="https://github.com/andrewrabert/jellium-desktop"
+license=('GPL-2.0-only')
+depends=('desktop-file-utils' 'hicolor-icon-theme')
+provides=('jellyfin-desktop' 'jellyfin-desktop-git' 'jellium-desktop' 'jellyfin-desktop-git-bin')
+conflicts=('jellyfin-desktop' 'jellyfin-desktop-bin' 'jellyfin-desktop-git' 'jellyfin-desktop-cef-git' 'jellium-desktop' 'jellyfin-desktop-git-bin' 'jellium-desktop-git')
+options=('!strip')
+source=("linux-appimage-${CARCH}.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-${CARCH}.zip")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir"
+    chmod +x *.AppImage
+    ./*.AppImage --appimage-extract
+}
+
+package() {
+    install -d "${pkgdir}/opt/${pkgname}"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+
+    cp -a "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}/"
+
+    ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/jellium-desktop"
+    ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/jellyfin-desktop"
+
+    _desktop=$(find "${pkgdir}/opt/${pkgname}" -maxdepth 1 -name "*.desktop" -print -quit)
+    install -Dm644 "$_desktop" "${pkgdir}/usr/share/applications/jellium-desktop.desktop"
+    sed -i "s|^Exec=[^ ]*|Exec=/usr/bin/jellium-desktop|g" "${pkgdir}/usr/share/applications/jellium-desktop.desktop"
+
+    if [ -d "${pkgdir}/opt/${pkgname}/usr/share/icons" ]; then
+        install -d "${pkgdir}/usr/share/icons"
+        cp -a "${pkgdir}/opt/${pkgname}/usr/share/icons/"* "${pkgdir}/usr/share/icons/"
+    fi
+}
