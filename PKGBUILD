@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('fastcount')
 conflicts=('fastcount-bin')
-source=("fastcount::git+https://github.com/CallMeAlphabet/fastcount.git#tag=latest")
+source=("fastcount::git+https://github.com/CallMeAlphabet/fastcount.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
