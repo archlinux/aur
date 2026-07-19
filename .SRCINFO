@@ -1,0 +1,24 @@
+pkgbase = linsync
+	pkgdesc = Linux-native visual file and folder comparison built on Rust and Qt 6
+	pkgver = 1.16.3
+	pkgrel = 1
+	url = https://github.com/visorcraft/LinSync
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = hicolor-icon-theme
+	depends = bubblewrap
+	depends = unzip
+	depends = qt6-webengine
+	optdepends = dolphin: KDE service-menu integration
+	conflicts = linsync-bin
+	conflicts = linsync-git
+	options = !lto
+	source = linsync-1.16.3.tar.gz::https://github.com/visorcraft/LinSync/archive/refs/tags/v1.16.3.tar.gz
+	sha256sums = 84d6a45f552555b55ab0f4c00dc38ac21070731c8a627f47dd82c11304291fcc
+
+pkgname = linsync
