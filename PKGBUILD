@@ -1,13 +1,13 @@
 pkgname=gephgui-wry-bin
 pkgver=5.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
 download_url="https://github.com/geph-official/gephgui-pkg/releases/download"
 license=('MPL-2.0' 'BSD-3-Clause')
-provides=('gephgui-wry')
-conflicts=('gephgui-wry' 'geph5-client' 'geph5-client-git')
+provides=('gephgui-wry' 'geph5-client' 'geph5')
+conflicts=('gephgui-wry' 'geph5-client' 'geph5-client-git' 'geph5-app-git')
 depends=(
   'webkit2gtk-4.1'
   'polkit'
