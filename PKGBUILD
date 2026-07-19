@@ -1,6 +1,6 @@
 # Maintainer: Victor <victor.oliveira.egion@gmail.com>
 pkgname=moon-profile-runner-git
-pkgver=r70.fd689c2
+pkgver=r74.3c0af0a
 pkgrel=1
 pkgdesc="Local daemon that detects the end of Apollo/Moonlight streaming sessions and controls the host display (MoonProfile)"
 arch=('x86_64')
