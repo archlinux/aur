@@ -52,7 +52,7 @@ _fdver=10.2.0
 _7zver=2409
 pkgdesc="Native Linux file explorer with semantic search, image previews, and two-way sync"
 arch=('x86_64')
-url="https://cooksdns.com/Claude/pathfynder-atlas"
+url="https://cooksdns.com/pathfynder-atlas"
 license=('LicenseRef-PASL-1.0')
 depends=('gtk3' 'gdk-pixbuf2' 'systemd-libs' 'hicolor-icon-theme')
 # Everything Atlas uses is bundled (see the _rclone/_rg/_fd/_7z sources) — no
