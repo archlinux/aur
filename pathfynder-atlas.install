@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'MSG'
+
+  Pathfynder's Atlas is installed.
+
+  To turn on SEMANTIC SEARCH (find files by meaning), run — as your user:
+
+      pathfynder-atlas-setup
+
+  It asks yes/no, then sets up everything for you: a PRIVATE PostgreSQL +
+  pgvector instance (its own data dir + socket + systemd --user service — it
+  never touches any other database on your machine), the embedding model, and
+  an index of your home folder. Optional — name and content search work
+  without it.
+
+MSG
+}
+
+post_upgrade() {
+  # Only nudge users who haven't set semantic search up yet.
+  if [ -z "${SUDO_USER:-}" ]; then return 0; fi
+  local cfg="/home/${SUDO_USER}/.config/pathfynder/settings.json"
+  if [ ! -e "$cfg" ] || ! grep -q '"semanticEnabled": *true' "$cfg" 2>/dev/null; then
+    echo "  Tip: run 'pathfynder-atlas-setup' to enable semantic search."
+  fi
+}
