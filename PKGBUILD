@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('timeit')
 conflicts=('timeit-bin')
-source=("timeit::git+https://github.com/CallMeAlphabet/timeit.git#tag=latest")
+source=("timeit::git+https://github.com/CallMeAlphabet/timeit.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
