@@ -1,0 +1,27 @@
+pkgbase = plumefile
+	pkgdesc = A command-line file-sharing tool that scans a file before it flies: secrets, PII, a data profile and sentiment, then a self-destructing LAN or tunnel link
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://moulti.run/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-fastapi
+	depends = python-pandas
+	depends = python-qrcode
+	depends = python-httpx
+	depends = python-rich
+	depends = python-typer
+	depends = python-vadersentiment
+	depends = uvicorn
+	provides = plumefile
+	provides = plume
+	source = plumefile-0.1.1.tar.gz::https://github.com/1mystic/plumefile/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 9c2e6367c8c8cfb9c814346fe801eeb19f5f8eb5a5dde5eec2361bbc291a0e71
+
+pkgname = plumefile

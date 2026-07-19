@@ -1,0 +1,3 @@
+[plumefile]
+source = "pypi"
+pypi = "plumefile"
