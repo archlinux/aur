@@ -1,0 +1,18 @@
+pkgbase = tunnel-client
+	pkgdesc = Connect private MCP servers to OpenAI-hosted products through a secure tunnel
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/openai/tunnel-client
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = ca-certificates
+	optdepends = cloudflared: supervise a Cloudflare Tunnel when configured
+	optdepends = xdg-utils: open the embedded web UI in the default browser
+	source = tunnel-client-0.0.10.tar.gz::https://github.com/openai/tunnel-client/archive/refs/tags/v0.0.10.tar.gz
+	source = tunnel-client@.service
+	b2sums = cb7b64612e08dd958ed2e10db7ba8f2e31b4f238b14d8f8c9ba959b5e7fc9924521bc9fa41b03ac21b042ab633c15287e6dcbbcd4d1f858fb1341422b75ff009
+	b2sums = b74c5f3fe7b69ee0b861e98d42dca668529ca6e883fb51b16f0ac5954d6e2f4d2540174d87b885dbef1baa4880ecc6bd779abd4234720d538e2408a9a5e09632
+
+pkgname = tunnel-client

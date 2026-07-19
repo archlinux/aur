@@ -1,0 +1,25 @@
+[Unit]
+Description=OpenAI tunnel client (%i)
+Documentation=https://github.com/openai/tunnel-client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=-/etc/tunnel-client/%i.env
+ExecStart=/usr/bin/tunnel-client run --profile-file /etc/tunnel-client/%i.yaml
+Restart=on-failure
+RestartSec=5s
+KillMode=mixed
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+StateDirectory=tunnel-client
+WorkingDirectory=/var/lib/tunnel-client
+
+[Install]
+WantedBy=multi-user.target
