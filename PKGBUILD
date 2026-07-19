@@ -2,7 +2,7 @@
 
 pkgname=refindplus-bin
 pkgver=0.14.2.AE
-pkgrel=2
+pkgrel=3
 pkgdesc='A fork of rEFInd with additional Mac and UEFI-PC functionality (upstream x64 binary)'
 arch=('x86_64')
 url='https://github.com/RefindPlusRepo/RefindPlus'
