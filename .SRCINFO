@@ -1,0 +1,16 @@
+pkgbase = plasma-ptt-git
+	pkgdesc = A Wayland-compatible Push-to-Talk background daemon designed for KDE Plasma and PipeWire.
+	pkgver = r17.20dd5cb
+	pkgrel = 1
+	url = https://github.com/fativi/plasma-ptt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt6
+	depends = python-evdev
+	provides = plasma-ptt
+	conflicts = plasma-ptt
+	source = plasma-ptt-git::git+https://github.com/fativi/plasma-ptt.git
+	md5sums = SKIP
+
+pkgname = plasma-ptt-git
