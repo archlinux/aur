@@ -1,19 +1,21 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
+
 pkgname=voix
-_pkgname=Voix # The case-sensitive name of the repository from git
+_pkgname=Voix
 pkgver=4.9.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
-provides=('sudo' 'doas')
-conflicts=('sudo' 'doas')
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
-makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache' 'mold')
+makedepends=('cmake>=3.18' 'clang' 'llvm' 'lld' 'ninja' 'pkgconf' 'git' 'ccache')
+provides=('sudo' 'doas')
+conflicts=('sudo' 'doas')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
-source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5149dd8683e514701b3dfbd1048639d532e1552434497314b89dc72c008203da')
+install=voix.install
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('9331e6875eb90425b48f21319aaee3fbac8acf2a831c85376a9ec6087b43946c5a0b6d9214183dbcf822d47e07a4ad07406d24cd0117cd848f3ad8953a229b7e')
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -29,14 +31,11 @@ package() {
     cd "$_pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
 
-    # Apply permissions manually for AUR packaging
     chown root:root "$pkgdir/usr/bin/voix"
     chmod 4755 "$pkgdir/usr/bin/voix"
 
-    # Create sanctuary directory
     mkdir -p "$pkgdir/var/lib/voix"
 
-    # Create compatibility symlinks
     ln -sf /usr/bin/voix "$pkgdir/usr/bin/sudo"
     ln -sf /usr/bin/voix "$pkgdir/usr/bin/doas"
 }

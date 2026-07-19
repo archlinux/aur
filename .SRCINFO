@@ -3,16 +3,17 @@ pkgbase = voix
 	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/Voix
+	install = voix.install
 	arch = x86_64
 	license = OSL-3.0
 	makedepends = cmake>=3.18
 	makedepends = clang
 	makedepends = llvm
+	makedepends = lld
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = git
 	makedepends = ccache
-	makedepends = mold
 	depends = pam
 	depends = libcap
 	depends = libseccomp
@@ -24,6 +25,6 @@ pkgbase = voix
 	backup = etc/pam.d/voix
 	backup = etc/voix.conf
 	source = https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v4.9.0.tar.gz
-	sha256sums = 5149dd8683e514701b3dfbd1048639d532e1552434497314b89dc72c008203da
+	b2sums = 9331e6875eb90425b48f21319aaee3fbac8acf2a831c85376a9ec6087b43946c5a0b6d9214183dbcf822d47e07a4ad07406d24cd0117cd848f3ad8953a229b7e
 
 pkgname = voix
