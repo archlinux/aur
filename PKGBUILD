@@ -1,4 +1,6 @@
 # Maintainer: kemal <kmal@cock.li>
+# Maintainer: Asterisk <me [at] asterisk [dot] lol>
+
 
 #150.0.7871.128-446079
 pkgname=trivalent-bin
