@@ -35,7 +35,7 @@ package() {
 [Desktop Entry]
 Name=qwertywm
 Comment=River Wayland compositor with qwertywm window manager
-Exec=river
+Exec=env XDG_CURRENT_DESKTOP=qwertywm XDG_SESSION_DESKTOP=qwertywm river
 Type=Application
 EOF
 }
