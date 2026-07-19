@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hakubun+ (Qt)
+Exec=hakubun-plus-qt %u
+NotShowIn=GNOME;MATE;X-Cinnamon;XFCE;Unity;
+Type=Application
+Categories=Network;
+Icon=hakubun-plus
+Comment=Hakubun+ Updater (Qt-frontend)
+StartupWMClass=hakubun-plus-qt

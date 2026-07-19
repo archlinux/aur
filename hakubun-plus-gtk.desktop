@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hakubun+ (GTK)
+Exec=hakubun-plus-gtk %u
+NotShowIn=LXQt;Razor;
+Type=Application
+Categories=Network;
+Icon=hakubun-plus
+Comment=Hakubun+ Updater (Gtk-frontend)
+StartupWMClass=hakubun-plus-gtk
