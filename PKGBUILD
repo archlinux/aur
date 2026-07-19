@@ -1,7 +1,7 @@
 # Maintainer: R3dWolfie <arui939@gmail.com>
 pkgname=r3dvoice-bin
 _appname=R3DVoice
-pkgver=0.15.8
+pkgver=0.15.9
 pkgrel=1
 pkgdesc="Discord-style low-latency voice, video & screenshare for gamers (Electron + LiveKit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=("${_appname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/R3DVoice.AppImage")
 # Filled in by the release step (makepkg -g). AppImage is an ELF, not an archive.
 noextract=("${_appname}-${pkgver}.AppImage")
-sha256sums=('cec058f70b08df62c29b38e302fd86f1ba836844c57c451a542e89c2857622ae')
+sha256sums=('778c443714cdc574803894aab5898464d746fba536ff2628c8d8342539ca1806')
 
 prepare() {
   chmod +x "${_appname}-${pkgver}.AppImage"
