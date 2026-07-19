@@ -1,0 +1,5 @@
+[termicam-bin]
+source = "github"
+github = "Megge06/TermiCam"
+use_latest_release = true
+prefix = "v"
