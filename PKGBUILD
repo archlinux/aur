@@ -1,22 +1,27 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/neomutt/lsp-tree-sitter/blob/main/.github/workflows/main.yml
-_pkgname=lsp-tree-sitter
-pkgname=python-$_pkgname
+_name=lsp-tree-sitter
+pkgname=python-$_name
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="a library to create language servers"
 arch=(any)
-url=https://github.com/neomutt/$_pkgname
-depends=(python-colorama python-jinja python-jsonschema python-pygls python-tree-sitter)
-optdepends=(python-beautifulsoup4 python-pypandoc python-markdown-it-py python-pygments python-platformdirs python-yaml python-tomli-w)
-makedepends=(python-installer)
+url=https://github.com/neomutt/$_name
+depends=(python-jq python-jsonschema python-pygls python-tree-sitter)
+optdepends=(python-colorama python-beautifulsoup4 python-pypandoc python-markdown-it-py python-pygments python-platformdirs python-yaml python-tomli-w)
+makedepends=(uv python-installer)
 replaces=(python-tree-sitter-lsp)
 license=(GPL3)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('90457ca8d120d429c46457b0257679156b44a09375a5d6d2e7495bd7764df22d')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('fb3e6fc84b453a6b634121f7be582bc905fdce9465eec4ad15113fc3481db4df')
+
+build() {
+	cd "${_name//-/_}-$pkgver" || exit
+	uv build --wheel --no-build-isolation
+}
 
 package() {
-	python -minstaller -d"$pkgdir" ./*.whl
+	cd "${_name//-/_}-$pkgver" || exit
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
