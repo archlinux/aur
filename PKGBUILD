@@ -1,8 +1,8 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=pokerth-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="Poker game written in C++/Qt"
 arch=('x86_64')
 url="https://github.com/pokerth/pokerth"
@@ -11,11 +11,11 @@ depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Pokerth-$pkgver-linux-x86_64.zip"
+	"$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/pokerth-$pkgver-linux-x86_64.zip"
 	"pokerth.png"
 	"pokerth.svg"
 )
-sha256sums=('52fe3d24e37f72419dc432870f2ca80dcd3d64dffab33e17209170b21b90d398'
+sha256sums=('9c613d8b37b41c4ff658bbeb45bfeacf8d230f7e6cd1eba3ea4259721defc6af'
             'f35bacd011dce3258b8394b82e28ef605f491c6fac6c2dfc743d403b23fd5eb2'
             '72ff070b9626661a051cc0582a69cd95b41809b6f4f2d8738245d92f3c417bb4')
 _pkgsrc="pokerth-linux-binary"
