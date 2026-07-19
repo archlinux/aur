@@ -1,0 +1,15 @@
+pkgbase = python-evoid
+	pkgdesc = EVOID — Reference Runtime for Intent-Oriented Programming
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/EvolveBeyond/EVOID
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/evoid/evoid-0.4.1.tar.gz
+	sha256sums = 103bce9c7803792c393bbdf161c41165d7a0880858e57a641bf218591f662f2f
+
+pkgname = python-evoid
