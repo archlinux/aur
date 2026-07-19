@@ -13,7 +13,7 @@ conflicts=('theme-hook-plugin-manager')
 replaces=('theme-hook-plugin-manager')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f0e7322222200fc329946a4a0bf2553b482877b0fe5179e322e62ea03db8c912')
+sha256sums=('158bd7abed961b409979fa71224423f629df2c9db0e98922ee05faacecead3fd')
 
 build() {
     cd "$pkgname-$pkgver"
