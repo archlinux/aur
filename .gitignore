@@ -1,6 +1,5 @@
-src/
-pkg/
-*.jar
-*.zst
-LICENSE*
-README*.md
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
