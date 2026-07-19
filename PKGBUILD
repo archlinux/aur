@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_appname}-bin
 pkgdesc="Terminal-based personal finance tracker"
 
-pkgver=0.3.0
+pkgver=1.0.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source=("README-${_pkgvername}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${_pkgvername}::${url}/releases/download/${_pkgvername}/${_appname}")
-sha256sums=('b52e8d8211e48a214114fb7e15831d798fff2ece3d45777bc811af466dd7e4a3')
-sha256sums_x86_64=('a1a86eac0c4e4ff583d23a41434268ca27edba92c86a4242abdd7cdbe74dcd06')
+sha256sums=('a3544d85700b9c673413790c72aa3c456921cc9eb4b7c910c8b5929f8ff8ad47')
+sha256sums_x86_64=('a7f10d0dfea55423360b6a55ab0cf159c78f19b90a776cb7971b897ff6e7d71a')
 
 
 package() {
