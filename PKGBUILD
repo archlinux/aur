@@ -1,7 +1,7 @@
 pkgname=pixilang-doc
 pkgver=3.8.6f
 pkgrel=1
-pkgdesc="Oficial Pixilang Programmin Language documentation in man-style"
+pkgdesc="Official Pixilang Programming Language documentation in man-style"
 arch=('any')
 depends=('man-db')
 makedepends=('curl' 'pandoc' 'poppler')
