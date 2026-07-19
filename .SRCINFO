@@ -1,0 +1,20 @@
+pkgbase = qwertywm
+	pkgdesc = Dynamic tiling window manager for the River Wayland compositor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ldgnu/qwertywm
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = river
+	depends = kitty
+	depends = fuzzel
+	depends = foot
+	depends = waybar
+	depends = wlr-randr
+	depends = ttf-liberation
+	source = qwertywm::git+https://github.com/ldgnu/qwertywm.git
+	sha256sums = SKIP
+
+pkgname = qwertywm
