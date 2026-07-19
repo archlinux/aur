@@ -1,6 +1,6 @@
 # Maintainer: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
 pkgname=python-wailord
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Python library to interact with ORCA (rgpkgs batch/experiment shell)"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/w/wailord/wailord-${pkgver}.tar.gz")
-sha256sums=('9d78205ca97fcab1ede646a74083b2e4bb817dc8e37e9b02c686c1f25fb57b0d')
+sha256sums=('e730674e04b80c557ba1825fe392bfcb3ce144f3a40223e1ad2e3e9c47864010')
 
 build() {
   cd "wailord-${pkgver}"
