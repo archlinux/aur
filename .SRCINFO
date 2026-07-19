@@ -1,0 +1,11 @@
+pkgbase = ts2date
+	pkgdesc = A simple tool written in c
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dum398/ts2date
+	arch = x86_64
+	license = GPL
+	source = ts2date.c
+	md5sums = SKIpwdP
+
+pkgname = ts2date
