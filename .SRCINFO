@@ -1,0 +1,16 @@
+pkgbase = nimux
+	pkgdesc = Pure-Nim network enumeration, remote execution, and MCP toolkit
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/blue0x1/nimux
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = nim
+	depends = krb5
+	depends = mingw-w64-gcc
+	depends = nim
+	depends = openssl
+	source = nimux-1.0.2.tar.gz::https://github.com/blue0x1/nimux/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = e630014d2a18cee58abe81023c6fc47910b403f684515294569a359dd244ed09
+
+pkgname = nimux
