@@ -3,5 +3,12 @@
   "extends": [
     "local>volker.raschek/renovate-config:default#master",
     "local>volker.raschek/renovate-config:regexp#master"
+  ],
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchPackageNames": ["open-policy-agent/opa"],
+      "matchNewValue": "^2"
+    }
   ]
 }
