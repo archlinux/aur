@@ -1,0 +1,17 @@
+pkgbase = qt6-niriqml
+	pkgdesc = Typed QML bindings for niri IPC (windows, workspaces, events, actions)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/niriqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = niri: the compositor niriqml is designed to talk to
+	conflicts = qt6-niriqml-git
+	source = qt6-niriqml-0.1.0.tar.gz::https://github.com/alexindigo/niriqml/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9b9d3a3a27ea2ce3eec1f80d078baf22d99d953437b353317c47aa838e0c1ef3
+
+pkgname = qt6-niriqml
