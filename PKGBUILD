@@ -3,8 +3,8 @@
 _pkgname=hyprwhspr
 pkgname=hyprwhspr-git
 pkgver=0
-pkgrel=10
-pkgdesc="Native Whisper speech-to-text for Arch/Omarchy with Waybar integration (git)"
+pkgrel=11
+pkgdesc="System-wide speech-to-text for Linux desktops (git)"
 arch=('x86_64')
 url="https://github.com/goodroot/${_pkgname}"
 license=('MIT')
@@ -24,15 +24,16 @@ depends=(
   'wtype'
   'ydotool'
   'wl-clipboard'
+  'python-pyperclip'
+  'xclip'
+  'xdotool'
+  'xorg-xprop'
   'pipewire' 'pipewire-alsa' 'pipewire-pulse'
 )
 optdepends=(
   'python-dbus: suspend/resume monitoring'
   'python-gobject: suspend monitoring, AT-SPI detection, and Mic-OSD support'
   'gtk4-layer-shell: themed Mic-OSD visualization'
-  'python-pyperclip: non-Wayland/X11 clipboard fallback'
-  'xclip: X11 clipboard provider for pyperclip'
-  'xdotool: X11 active-window detection and future X11 injection support'
   'cmake: accelerated pywhispercpp source builds'
   'git: accelerated pywhispercpp source builds'
   'base-devel: accelerated pywhispercpp source builds'
