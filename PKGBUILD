@@ -1,18 +1,15 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 
 _name="openxr"
-pkgname="lib32-${_name}"
+pkgname="lib32-$_name"
 pkgver=1.1.60
 pkgrel=1
 pkgdesc="An open standard for virtual reality and augmented reality platforms and devices (32-bit)"
-arch=(
-  'x86_64'
-)
+arch=('x86_64')
 url="https://www.khronos.org/openxr/"
 _url="https://github.com/KhronosGroup/OpenXR-SDK-Source"
-license=(
-  'Apache-2.0'
-)
+license=('Apache-2.0')
 depends=(
   "${_name}>=${pkgver}"
   'lib32-gcc-libs'
@@ -40,9 +37,7 @@ sha512sums=('cfb661729c7b79a2b8ad12b441fab1327814de020df987b8855e6e53b0a76065181
             'SKIP')
 b2sums=('8c4ef26d800e559f8d87c3eaf077334090514684c03cccc9afe37af91567f9fe10719238317daaded23b55ab2c84ea488146c1a2cd8d3d860fa6817a21487481'
         'SKIP')
-validpgpkeys=(
-  '45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D' # Rylie Pavlik <rylie.pavlik@collabora.com>
-)
+validpgpkeys=('45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D') # Rylie Pavlik <rylie.pavlik@collabora.com>
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -56,8 +51,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
+    -B "$_pkgsrc/build"
+    -S "$_pkgsrc"
     -G 'Unix Makefiles'
     -W no-author
     -D CMAKE_BUILD_TYPE:STRING='Release' # None
@@ -68,7 +63,6 @@ build() {
     -D DYNAMIC_LOADER:BOOL=ON
   )
 
-  cd "${srcdir}"
   cmake "${cmake_options[@]}"
   cmake --build "${cmake_options[1]}"
 }
@@ -87,9 +81,8 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}"
-  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
+  DESTDIR="$pkgdir" cmake --install "$_pkgsrc/build"
 
-  cd "${pkgdir}/usr"
+  cd "$pkgdir/usr"
   rm -rf "bin" "include" "share"
 }
