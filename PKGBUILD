@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=lwgeom
-_pkgver=0.2-16
+_pkgver=0.2-17
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8d7e158637d6192c81f05fec0b8fabf9')
-b2sums=('84602ca9402f3a94f07a26a09083872cf1588fd832a7f211726d3f8fc3bf9db30a0cf3367b1ad183ec7088fa2ce611bb25713ae75739e657c555ad3d3cc32398')
+md5sums=('6a1425b7df4b8dda1301da13fdca56f4')
+b2sums=('95bbe4eeb472060909eb892e7101249ca82ae9146e1fcd28e8059318e085649143d69460abfef97f8cdfa00f986eb4060aef561eeb77f2162331aff343f2b084')
 
 build() {
   mkdir build
