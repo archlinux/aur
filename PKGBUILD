@@ -1,35 +1,46 @@
-#Maintainer : vheeze at yandex dot com
-#From OpenOffice dictionary. Converted to UTF-8
+# Maintainer: nathawat <nathawat at noreply dot codeberg dot org>
+# Contributor: vheeze <vheeze at yandex dot com>
 
 pkgname=hunspell-th
-pkgver=1.0.0
+pkgver=20260628
 pkgrel=1
-pkgdesc="Thai hunspell dictionary"
-arch=(any)
-url="https://github.com/tafasu/aegisub-thai-dict"
-license=('LGPL2')
-makedepends=('hunspell')
-optdepends=('hunspell:	the spell checking libraries and apps')
-source=("https://github.com/tafasu/aegisub-thai-dict/archive/master.zip")
-sha256sums=('0e1e7081354669e8ee7158778099400a75a52528e067503fba0976d49cf83dbc')
+pkgdesc='Thai Hunspell dictionary'
+arch=('any')
+url='https://github.com/SyafiqHadzir/Hunspell-TH'
+license=('GPL-3.0-only')
+provides=('hunspell-dictionary' 'hunspell-th_TH')
+checkdepends=('hunspell')
+optdepends=('hunspell: the spell checking libraries and apps')
 
-package(){
+_commit='a23b0521438f2735dc73efaee61391c6106ae196'
+source=(
+	"$pkgname-$pkgver.tar.gz::${url}/archive/${_commit}.tar.gz"
+)
+b2sums=('4b7d0dc263b06d9110a0fcf657feaf9823158b94cff22e58e3b163bc43edb3fc6a2da3a59f67c47842960dd426fc86a6f2ebfcb06711c20dd304c2852800c376')
 
-    #copy hunspell
-    cd "${srcdir}"
-    install -dm755 "${pkgdir}"/usr/share/hunspell
-    cp -p aegisub-thai-dict-master/th_TH.aff "${pkgdir}"/usr/share/hunspell/th_TH.aff
-    cp -p aegisub-thai-dict-master/th_TH.dic "${pkgdir}"/usr/share/hunspell/th_TH.dic
+check() {
+	cd "$srcdir/hunspell-th-$_commit"
 
+	test -s th_TH.aff
+	test -s th_TH.dic
 
+	test -z "$(
+		DICPATH="$PWD" hunspell -d th_TH -i UTF-8 -l <<<'สวัสดี'
+	)"
 
-    #myspell symlinks
-    install -dm755 "${pkgdir}"/usr/share/myspell/dicts
-    pushd "${pkgdir}"/usr/share/myspell/dicts
-        for file in "${pkgdir}"/usr/share/hunspell/*; do
-            ln -sv /usr/share/hunspell/"$(basename "${file}")" .
-        done
-    popd
+	test "$(
+		DICPATH="$PWD" hunspell -d th_TH -i UTF-8 -l <<<'สวัดดี'
+	)" = 'สวัดดี'
 
+	DICPATH="$PWD" hunspell -d th_TH -i UTF-8 <<<'สวัดดี' |
+		grep -Fq 'สวัสดี'
+}
 
+package() {
+	cd "$srcdir/hunspell-th-$_commit"
+
+	install -Dm644 th_TH.aff \
+		"$pkgdir/usr/share/hunspell/th_TH.aff"
+	install -Dm644 th_TH.dic \
+		"$pkgdir/usr/share/hunspell/th_TH.dic"
 }
