@@ -1,6 +1,6 @@
 pkgbase = meguri-bin
 	pkgdesc = Local video and image browser with thumbnails, search, and playback
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/zabuton-app/meguri
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = meguri-bin
 	depends = fuse2
 	provides = meguri
 	conflicts = meguri
-	noextract = Meguri-0.2.3-linux-x86_64.AppImage
+	noextract = Meguri-0.2.4-linux-x86_64.AppImage
 	options = !strip
-	source = Meguri-0.2.3-linux-x86_64.AppImage::https://github.com/zabuton-app/meguri/releases/download/v0.2.3/Meguri-0.2.3-linux-x86_64.AppImage
-	source = LICENSE-0.2.3::https://raw.githubusercontent.com/zabuton-app/meguri/v0.2.3/LICENSE
-	sha256sums = 0aa3e368b550169a5a91443733acb86629c79e4fb2367e1d28ae4bbac3d2f46f
+	source = Meguri-0.2.4-linux-x86_64.AppImage::https://github.com/zabuton-app/meguri/releases/download/v0.2.4/Meguri-0.2.4-linux-x86_64.AppImage
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/zabuton-app/meguri/v0.2.4/LICENSE
+	sha256sums = 8eddbed171883dfb99ee47b728cffb0b4acc2fa68f95f4227992bd59bfc82b98
 	sha256sums = 34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178
 
 pkgname = meguri-bin
