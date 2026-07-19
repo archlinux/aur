@@ -3,7 +3,7 @@
 _pkgauthor=nao1215
 _pkgname=sqly
 pkgname=${_pkgname}-bin
-pkgver=0.27.3
+pkgver=0.27.4
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Eaisly execute SQL against CSV/TSV/LTSV/JSON and Microsoft Excel™ with shell"
@@ -24,10 +24,10 @@ source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_pkgvername}/check
 		"${_pkgsrc}-checksums.txt.sigstore.json::${url}/releases/download/${_pkgvername}/checksums.txt.sigstore.json")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('f922c250dae9f8b40932ba40db9f414cb6175350675b4d405e0dc9a411cb893e'
-            '6eb25e86ac58212fc5cc1fc3cdedb14e829dc5d62801ef4568825d6b12b461f6')
-sha256sums_x86_64=('e72b1a6c6b3a50d06d5e9afd40eba3d6a708d4d8f5f936dd0ba9147029b5446d')
-sha256sums_aarch64=('17d1b43e8fc631076644b6bc8634043183460117176a9552f3240ef9dfafa315')
+sha256sums=('0a89a73c03df670953ff31c56290029e2ddde2f1556e20e3f6d6fa5bf8d5fe85'
+            '28f4d9c59af19f74f583d19dc4ab6a6587861ba7e46608ec1b03e918affe0f9a')
+sha256sums_x86_64=('d288ad9cb60c84b1891380265149cdb4ca2ddf57718de5aac55a763accc4a789')
+sha256sums_aarch64=('608c46bc2ae6eee4a35f1019e157fb13575c8df0ec0f24ccfbf3081a16549d4f')
 
 
 verify() {
