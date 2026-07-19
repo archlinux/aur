@@ -1,7 +1,7 @@
 pkgbase = camofox-browser-bin
 	pkgdesc = Anti-detection browser server for AI agents — REST API wrapping Camoufox stealth browser engine (Firefox fork with C++-level fingerprint spoofing)
-	pkgver = 1.11.2
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/jo-inc/camofox-browser
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = camofox-browser-bin
 	makedepends = nodejs>=22
 	depends = nodejs>=22
 	optdepends = yt-dlp: YouTube transcript extraction plugin
-	source = camofox-browser-bin-1.11.2.tgz::https://registry.npmjs.org/@askjo/camofox-browser/-/camofox-browser-1.11.2.tgz
+	source = camofox-browser-bin-1.12.0.tgz::https://registry.npmjs.org/@askjo/camofox-browser/-/camofox-browser-1.12.0.tgz
 	sha256sums = SKIP
 
 pkgname = camofox-browser-bin
