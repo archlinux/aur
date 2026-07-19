@@ -1,0 +1,2 @@
+d /var/lib/pastevault 0750 pastevault pastevault -
+d /etc/pastevault 0755 pastevault pastevault -

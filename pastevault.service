@@ -1,14 +1,17 @@
 [Unit]
 Description=PasteVault Service
+Documentation=https://github.com/arc53/pastevault
 After=network.target
 Wants=network.target
 
 [Service]
-User=root
-Group=root
+User=pastevault
+Group=pastevault
 Type=simple
-WorkingDirectory=/var/run/pastevault
-ExecStart=/usr/bin/pastevault up
+EnvironmentFile=-/etc/pastevault/pastevault.env
+WorkingDirectory=/var/lib/pastevault/
+ReadWritePaths=/var/lib/pastevault
+ExecStart=/usr/bin/pastevault-server up
 Restart=on-failure
 RestartSec=2s
 LockPersonality=true

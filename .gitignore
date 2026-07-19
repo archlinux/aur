@@ -5,6 +5,7 @@
 !PKGBUILD
 !.SRCINFO
 !*.install
+!*.env
 !*.service
 !*.sysusers
 !*.tmpfiles

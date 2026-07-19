@@ -1,28 +1,36 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=pastevault
-_npmver=0.1.6
-
-pkgname=${_npmname}
-pkgdesc="Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options."
-pkgver=${_npmver}
+_appname=pastevault
+pkgname=${_appname}-server
+pkgver=0.1.6
 pkgrel=1
+pkgdesc="Modern secure pastebin with a VS Code-like editor. Share code, text, and markdown securely with automatic expiry and burn-after-read options. (SERVER)"
+
+_npmname=${_appname}
+_npmver=${pkgver}
+
 arch=("x86_64")
-url="https://github.com/arc53/pastevault"
-_urlraw="https://raw.githubusercontent.com/arc53/pastevault/v${pkgver}"
 license=("GPL-3.0")
 
-depends=("glibc" "libgcc" "libstdc++" "zx" "nodejs" "bash")
+url="https://github.com/arc53/${_appname}"
+_urlraw="https://raw.githubusercontent.com/arc53/${_appname}/v${pkgver}"
+
+provides=("${_npmname}-server")
+
 makedepends=("npm" "jq")
-provides=("${_npmname}")
+depends=("glibc" "libgcc" "libstdc++" "zx" "nodejs" "bash")
 
 options=(!strip emptydirs staticlibs zipman)
+backup=("etc/${_appname}/${_appname}.env")
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
-		"pastevault.service")
+		"${_appname}.service" "${_appname}.env" "${_appname}.sysusers" "${_appname}.tmpfiles")
 b2sums=('8266dfcc4613a030fa26b18f6d204e4207cc837179da1e93b89640066b2e217bf05e8a7239b6ccf361b0efd1db8ebc73586b1fcf7ded01b5dd94d0e9ceb3de67'
-        '3eaaa551692edc7daef740c95fda8efe11f002d35aa260ef41bac7d335b4bfb1eed4b6962fd25c9772b734fe73f8614dac1edfc08c411dcdb4cf5e1466550561')
+        '266caf60954c157beecb65786beac41a31f2f887e434e7158a54c28d39c67251012e59d53e359ac5db24353c4edc373b2e87e865e87e6ac3e2507640cc393332'
+        'b1d5e38794d04a798d3a667307f4ca5e131c8c647494e980c5be69f15dc9cd69f4e47c3b4843976f081621e48720b8ce9eeb7ac00653ad5c5e3bb2b48234445b'
+        '14f96390c7a0f12ed66bf4fb016002cb60109a43886a65e327df68662da6764498ac1efe548eb864c50896a4f8a56fb14b9040c6588d0d9693ca4d62129e78a5'
+        '84823a23de928257a83699ca58f5a96c620935576e6404c89e370b00690268296f5306f16af70f682b4b8216c23941cf57b32b47d93d18017a7c4f357b962d05')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -52,8 +60,17 @@ package() {
 		chmod 644 "${pkgjson}"
 	done
 
+	msg2 "Fixing EXECUTABLE file"
+	mv "${pkgdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${_appname}-server"
+
 	msg2 "Install SYSTEMD files"
-	install -Dm644 "pastevault.service" -t "${pkgdir}/usr/lib/systemd/system/"
+	install -Dm644 "${_appname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+
+	install -Dm644 "${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
+	install -Dm644 "${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
+
+	msg2 "Install CONFIG files"
+	install -Dm644 "${_appname}.env" -t "${pkgdir}/etc/${_appname}/"
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
