@@ -1,7 +1,7 @@
 pkgbase = wasi-whatsapp
 	pkgdesc = Lightweight native WhatsApp Web wrapper for Arch Linux (Rust + Tauri + WebKitGTK)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AsithaKanchana1/W-ASI
 	arch = x86_64
 	license = MIT
