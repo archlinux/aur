@@ -1,0 +1,19 @@
+pkgbase = showfile
+	pkgdesc = A tool to view files with their proper syntax highlighting in the console
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/wasi-master/showfile
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pygments
+	depends = python-rich
+	provides = showfile
+	source = https://files.pythonhosted.org/packages/source/s/showfile/showfile-0.1.2.tar.gz
+	sha256sums = f1402ad4114420ede0a2b2a3cc8b751a7c7dca2ca94d3b7b180478c9c2f490dc
+
+pkgname = showfile
