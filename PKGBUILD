@@ -1,17 +1,15 @@
 # Maintainer: Mike Ravenblack <0xRavenBlack@github>
-pkgname=com.ravenblack.shadowdate
-_pkgname=shadowdate
+pkgname=shadowdate
+_appid=0xravenblack.shadowdata
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="A gothic dark-pastel desktop calendar for Linux (Rust + GTK4) with iCalendar support"
 arch=('x86_64' 'aarch64')
-url="https://github.com/0xRavenBlack/com.ravenblack.shadowdate"
+url="https://github.com/0xRavenBlack/ShadowDate"
 license=('MIT')
 depends=('gtk4' 'glib2')
 makedepends=('git' 'cargo' 'gtk4')
-provides=('shadowdate')
-conflicts=('shadowdate')
-source=("git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
@@ -23,24 +21,24 @@ prepare() {
 build() {
     cd "${pkgname}"
     export CARGO_HOME="${srcdir}/.cargo"
-    cargo build --frozen --release --bin shadowdate
+    cargo build --frozen --release --bin "${pkgname}"
 }
 
 check() {
     cd "${pkgname}"
     export CARGO_HOME="${srcdir}/.cargo"
-    cargo test --frozen
+    cargo test --frozen --release
 }
 
 package() {
     cd "${pkgname}"
 
     # Executable
-    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop entry
-    install -Dm644 "resources/${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "resources/${_appid}.desktop" \
+        "${pkgdir}/usr/share/applications/${_appid}.desktop"
 
     # License
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

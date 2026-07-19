@@ -1,8 +1,8 @@
-pkgbase = com.ravenblack.shadowdate
+pkgbase = shadowdate
 	pkgdesc = A gothic dark-pastel desktop calendar for Linux (Rust + GTK4) with iCalendar support
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/0xRavenBlack/com.ravenblack.shadowdate
+	url = https://github.com/0xRavenBlack/ShadowDate
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,9 +11,7 @@ pkgbase = com.ravenblack.shadowdate
 	makedepends = gtk4
 	depends = gtk4
 	depends = glib2
-	provides = shadowdate
-	conflicts = shadowdate
-	source = git+https://github.com/0xRavenBlack/com.ravenblack.shadowdate.git
+	source = shadowdate::git+https://github.com/0xRavenBlack/ShadowDate.git
 	sha256sums = SKIP
 
-pkgname = com.ravenblack.shadowdate
+pkgname = shadowdate
