@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
-pkgver=1.0.0.86.1
-pkgrel=2
+pkgver=1.0.0.87.1
+pkgrel=1
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -10,26 +10,26 @@ optdepends=('xdg-utils')
 options=(!strip)
 
 source=(
-  "Steam-1.0.0.86-1-anylinux-x86_64.AppImage::https://gh-proxy.org/https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.86-1%402026-06-27_1782572985/Steam-1.0.0.86-1-anylinux-x86_64.AppImage"
+  "Steam-1.0.0.87-1-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-1%402026-07-01_1782898538/Steam-1.0.0.87-1-anylinux-x86_64.AppImage"
   "LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt"
 )
 
 sha256sums=(
-  '178a11871b1f3f62fe3e52d5724c1f56038e7651433dc1d26216fa46773c4837'
+  'ee8d776f781a757ab1f8677c0bdc6cc74bbfb419f617d4b1f03cb2766d506d93'
   'SKIP'
 )
 
 package() {
   install -dm755 "$pkgdir/opt/Steam/appimage"
   chown -R $USER:$USER "$pkgdir/opt/Steam"
-  install -Dm755 "$srcdir/Steam-1.0.0.86-1-anylinux-x86_64.AppImage" \
-                 "$pkgdir/opt/Steam/appimage/Steam-1.0.0.86-1-anylinux-x86_64.AppImage"
+  install -Dm755 "$srcdir/Steam-1.0.0.87-1-anylinux-x86_64.AppImage" \
+                 "$pkgdir/opt/Steam/appimage/Steam-1.0.0.87-1-anylinux-x86_64.AppImage"
 
   install -dm755 "$pkgdir/usr/bin"
 cat > "$pkgdir/usr/bin/steam" << 'EOF'
 #!/bin/sh
 export HOME=/opt/Steam
-exec /opt/Steam/appimage/Steam-1.0.0.86-1-anylinux-x86_64.AppImage
+exec /opt/Steam/appimage/Steam-1.0.0.87-1-anylinux-x86_64.AppImage
 EOF
 
   chmod 755 "$pkgdir/usr/bin/steam"
