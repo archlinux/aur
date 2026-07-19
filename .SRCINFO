@@ -1,7 +1,7 @@
 pkgbase = lcd4linux-full-git
 	pkgdesc = Grabs information from the kernel and other systems and displays it on an LCD. Compiled with all possible drivers, also obscure ones.
 	pkgver = 0.11.0.r1245.20250802.63fffaf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.lcd4linux.tk/doku.php
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lcd4linux-full-git
 	makedepends = pkg-config
 	makedepends = dbus>=1.0.0
 	makedepends = libluise
-	makedepends = libjpeg
+	makedepends = libjpeg-turbo
 	makedepends = libmpdclient
 	makedepends = libst2205
 	makedepends = libusb
