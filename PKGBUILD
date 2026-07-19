@@ -3,7 +3,7 @@
 # Contributor: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=mingw-w64-libdovi
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (mingw-w64)'
 arch=('any')
@@ -20,8 +20,8 @@ makedepends=(
 )
 checkdepends=(mingw-w64-wine)
 _tag=4fd2b2235c9f93582dd4a00e65ee34a07800afd7
-source=(git+https://github.com/quietvoid/dovi_tool.git#tag=${_tag})
-b2sums=('40aefc4476b3fb674d2f2fe241de1e8e8b91658c8d5c9d7c729d371bbbb5b70955210d23b3cd088ae2001963f9aa15c29ceb4fa3abf15762f66d44efd6c3ae0e')
+source=(git+https://github.com/quietvoid/dovi_tool.git#tag=libdovi-${pkgver})
+b2sums=('5908fc46da4e900e37dd455b1006456f6ac7bd702ecdb13a377c47d476cd0006d058f974e5c26a719c90bfa179546ca2f64d37ced4a5a5a78539bcadb413b5ae')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -37,11 +37,6 @@ prepare() {
   cargo fetch \
     --manifest-path dovi_tool/dolby_vision/Cargo.toml
 }
-
-#pkgver() {
-#  cd dovi_tool
-#  git describe --tags | sed 's/^libdovi-//'
-#}
 
 build() {
   if [[ -d "${RUST_PATH}" ]] ; then
@@ -62,6 +57,8 @@ build() {
     fi
 
     export DLLTOOL="${_arch}-dlltool"
+    export CARGO_PROFILE_RELEASE_LTO=true
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 
     cargo cbuild \
       --verbose \
