@@ -9,7 +9,7 @@ source=("ts2date.c")
 md5sums=('SKIP')
 
 build() {
-  sudo pacman -S pacman-contrib && updpkgsums && gcc ts2date.c -o ts2date
+  gcc ts2date.c -o ts2date
 }
 
 package() {
