@@ -1,0 +1,5 @@
+[frei-bin]
+source = "github"
+github = "alexcoder04/frei"
+use_latest_release = true
+prefix = "v"
