@@ -1,0 +1,24 @@
+pkgbase = hyprlarp
+	pkgdesc = Hyprland terminal video viewer with dynamic layout, multi terminal video canvas for Kitty terminals
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AmmarSyamil/HyprLarp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = base-devel
+	makedepends = qt5-tools
+	makedepends = pkg-config
+	depends = qt5-base
+	depends = ffmpeg
+	depends = opencv
+	depends = simdjson
+	depends = nlohmann-json
+	depends = hyprland
+	depends = kitty
+	provides = hyprlarp
+	source = hyprlarp::git+https://github.com/AmmarSyamil/HyprLarp.git
+	sha512sums = SKIP
+
+pkgname = hyprlarp
