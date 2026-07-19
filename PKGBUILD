@@ -1,14 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=jpegli-git
-pkgver=r2874.gbc19ca2
-pkgrel=2
+pkgver=r2989.g031a007
+pkgrel=1
 pkgdesc='A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)'
 arch=('x86_64')
 url='https://github.com/google/jpegli/'
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++')
+makedepends=(
+    'cmake'
+    'git')
 provides=('jpegli' 'libjpeg6' 'libjpeg.so')
 conflicts=('jpegli' 'libjpeg6' 'libjxl')
 options=('!emptydirs')
@@ -16,7 +21,7 @@ source=('git+https://github.com/google/jpegli.git'
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
-        'git+https://skia.googlesource.com/skcms.git'
+        'git+https://github.com/google/skcms.git'
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/madler/zlib.git'
@@ -33,7 +38,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'aee5c6d67080c1cc84c24b2cccfa7ef1d3886835f2fc11620b0c0a79355fb1f8')
+            'b99d0e4ecb7134724a2690552b56da242d5e02a93eda4299145dab3be5d7ea82')
 
 prepare() {
     git -C jpegli submodule init
@@ -61,34 +66,27 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -DNDEBUG'
-    export CXXFLAGS+=' -DNDEBUG'
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S jpegli \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/jpegli' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib/jpegli' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DHWY_ENABLE_INSTALL:BOOL='OFF' \
-        -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
-        -DJPEGXL_ENABLE_JNI:BOOL='false' \
-        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
-        -DJPEGXL_ENABLE_MANPAGES:BOOL='false' \
-        -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
-        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='false' \
-        -DJPEGXL_INSTALL_JPEGLI_LIBJPEG:BOOL='true' \
-        -DJPEGXL_STATIC:BOOL='true' \
-        -Wno-dev
+        -DJPEGLI_ENABLE_BENCHMARK:BOOL='false' \
+        -DJPEGLI_ENABLE_JNI:BOOL='false' \
+        -DJPEGLI_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGLI_ENABLE_MANPAGES:BOOL='false' \
+        -DJPEGLI_ENABLE_OPENEXR:BOOL='false' \
+        -DJPEGLI_FORCE_SYSTEM_HWY:BOOL='false' \
+        -DJPEGLI_INSTALL_JPEGLI_LIBJPEG:BOOL='true' \
+        -Wno-author
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 jpegli/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${pkgdir}/usr/lib/jpegli"/libjpeg.so.* "${pkgdir}/usr/lib"
-    ln -sf "../$(find "${pkgdir}/usr/lib" -regex '.*libjpeg.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/jpegli/libjpeg.so"
-    rm -r "${pkgdir}/usr/include/jpegli/jxl"
-    rm "${pkgdir}/usr/lib/jpegli"/{,pkgconfig/}libjxl*
+    rm "${pkgdir}/usr/include"/*.h
 }

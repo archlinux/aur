@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -223,11 +223,11 @@ if(JPEGXL_STATIC)
+@@ -235,11 +235,11 @@ if(JPEGLI_STATIC)
    # ourselves; for real use case we don't care about stdlib, as it is "granted",
    # so just linking all other libraries is fine.
    if (NOT MSVC AND NOT APPLE)
@@ -12,5 +12,5 @@
 -    string(APPEND CMAKE_EXE_LINKER_FLAGS " -static-libgcc -static-libstdc++")
 +    #string(APPEND CMAKE_EXE_LINKER_FLAGS " -static-libgcc -static-libstdc++")
    endif()
- endif()  # JPEGXL_STATIC
+ endif()  # JPEGLI_STATIC
  
