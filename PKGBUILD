@@ -2,7 +2,7 @@
 _base=sympde
 pkgname=python-${_base,,}
 pkgdesc="Symbolic calculus for partial differential equations"
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 arch=(any)
 url="https://github.com/pyccel/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python-sympy python-h5py python-pytest python-yaml python-matplotlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('b6c12b76a6dbb52eaab32c5a7f472b5d2c03d66c26f8d54b04db5cbf0da45f7a2501fbcdcfb246b8817f79fc676ef6b97e365b2a1884401cdc6d6c9090b5df49')
+sha512sums=('c4260318b77431250e21b5eb4a71717f2d5f3c1cabd7ffb5076beb25802b241a753ab44c4e6ba1e04c3fc30c07ef02c9b129fc5a971c6b4b41d82e70966ad3c9')
 
 build() {
   cd ${_base}-${pkgver}
