@@ -2,21 +2,21 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gnome-shell-extension-rounded-window-corners-reborn
-pkgver=15.r378.f0c7472
+pkgver=20260719.4329c20
 pkgrel=1
 pkgdesc='A GNOME Shell extension that adds rounded corners for all windows'
 arch=(any)
-url=https://github.com/flexagoon/rounded-window-corners
+url=https://github.com/GrzegorzKozub/rounded-window-corners
 license=(GPL-3.0-or-later)
 depends=(gnome-shell)
-source=(https://github.com/GrzegorzKozub/aur/raw/master/gnome-shell-extension-rounded-window-corners-reborn/rounded-window-corners@fxgn.shell-extension-"$pkgver".zip)
-sha256sums=(74e3ff9a815f535963db5833a6365a090959a47907da60f9e5a08bd83e834688)
+source=("$pkgname-$pkgver.zip::https://github.com/GrzegorzKozub/rounded-window-corners/releases/download/v$pkgver/rounded-window-corners@fxgn.shell-extension.zip")
+sha256sums=('b73b8852ce250cedcd4cae6d621372f15a2433698a2a3090c67e72919e0e484d')
 
 package() {
   local uuid=rounded-window-corners@fxgn
   local extdir="$pkgdir"/usr/share/gnome-shell/extensions/"$uuid"
   install -d "$extdir"
-  bsdtar -xvf "$uuid".shell-extension-"$pkgver".zip -C "$extdir" --no-same-owner
+  bsdtar -xvf "$pkgname-$pkgver".zip -C "$extdir" --no-same-owner
   mv "$extdir"/locale "$pkgdir"/usr/share/
   install -Dm644 \
     "$extdir"/schemas/org.gnome.shell.extensions.rounded-window-corners-reborn.gschema.xml \
