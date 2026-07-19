@@ -1,7 +1,7 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.61.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
     "https://github.com/Voxelum/x-minecraft-launcher/raw/refs/heads/master/xmcl-electron-app/icons/dark.icns"
     "xmcl.desktop"
 )
-sha256sums=('445eb67df025810756bdb5e6824f3a5a09cdbf78b9507a8c8ad335790b92d8b6'
+sha256sums=('358c1876f5df420dc7446acf616d45bcb2e0c2974eb872d2ddd937e5370a14c7'
             'cf229073fb478254b751a8198b23be961533101065ca712e323cf60cd15f3383'
             '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010')
 
