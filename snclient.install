@@ -1,0 +1,71 @@
+_snclient_generate_tls() {
+  local _dir=/etc/snclient
+
+  if [[ -e "${_dir}/cacert.pem" && -e "${_dir}/server.crt" \
+    && -e "${_dir}/server.key" ]]; then
+    return 0
+  fi
+
+  if [[ -e "${_dir}/cacert.pem" || -e "${_dir}/server.crt" \
+    || -e "${_dir}/server.key" ]]; then
+    printf 'SNClient: incomplete TLS setup found; existing files were left untouched.\n'
+    return 0
+  fi
+
+  umask 077
+
+  if ! openssl genrsa -out "${_dir}/.ca.key" 4096 \
+    || ! openssl req -key "${_dir}/.ca.key" -new -x509 -days 20000 \
+      -sha256 -extensions v3_ca -out "${_dir}/cacert.pem" \
+      -subj '/C=DE/ST=Bavaria/L=Earth/O=snclient/OU=IT/CN=Root CA SNClient' \
+    || ! openssl req -newkey rsa:2048 -nodes \
+      -keyout "${_dir}/server.key" -out "${_dir}/.server.csr" \
+      -subj '/CN=snclient' -addext 'subjectAltName=DNS:snclient' \
+    || ! openssl x509 -req -copy_extensions copy -set_serial 1 \
+      -CA "${_dir}/cacert.pem" -CAkey "${_dir}/.ca.key" -days 20000 \
+      -in "${_dir}/.server.csr" -out "${_dir}/server.crt"; then
+    rm -f "${_dir}/.ca.key" "${_dir}/.server.csr" \
+      "${_dir}/cacert.pem" "${_dir}/server.crt" "${_dir}/server.key"
+    printf 'SNClient: failed to generate the initial TLS files.\n' >&2
+    return 1
+  fi
+
+  rm -f "${_dir}/.ca.key" "${_dir}/.server.csr"
+
+  printf 'SNClient: generated an installation-specific CA, certificate and private key.\n'
+}
+
+post_install() {
+  _snclient_generate_tls || return 1
+  printf '%s\n' \
+    '' \
+    'SNClient setup' \
+    '--------------' \
+    '' \
+    'The service was not enabled or started.' \
+    'Installation-specific TLS files were generated outside pacman ownership' \
+    'and will be preserved across package upgrades.' \
+    '' \
+    'Next steps:' \
+    '' \
+    '  1. Create /etc/snclient/snclient_local.ini for local settings.' \
+    '' \
+    '  2. Generate a password hash interactively:' \
+    '       snclient hash' \
+    '' \
+    '     The command only prints the hash; it does not modify the configuration.' \
+    '     Copy the SHA256:... value from its output into the local INI file:' \
+    '' \
+    '       [/settings/default]' \
+    '       password = SHA256:...' \
+    '' \
+    '  3. Review allowed hosts and enable only the required modules.' \
+    '' \
+    '  4. Enable and start the service:' \
+    '       systemctl enable --now snclient.service' \
+    ''
+}
+
+post_upgrade() {
+  _snclient_generate_tls
+}
