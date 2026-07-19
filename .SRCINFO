@@ -27,6 +27,7 @@ pkgbase = pypi-command-line
 	depends = python-typer
 	depends = python-rapidfuzz
 	depends = python-humanize
+	depends = python-thefuzz
 	provides = pypi
 	source = https://files.pythonhosted.org/packages/source/p/pypi_command_line/pypi_command_line-1.10.1.tar.gz
 	source = fix_cache.patch

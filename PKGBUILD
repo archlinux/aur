@@ -20,7 +20,7 @@ url="${_url_github}"
 
 provides=("${_execname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'python-click' 'python-rich' 'python-rich-rst' 'python-rich-click' 'python-pkg_resources' 'python-questionary' 'python-packaging' 'python-requests' 'python-requests-cache' 'python-ujson' 'python-tomli' 'python-toml' 'python-lxml' 'python-beautifulsoup4' 'python-typer' 'python-rapidfuzz' 'python-humanize')
+depends=('python' 'python-click' 'python-rich' 'python-rich-rst' 'python-rich-click' 'python-pkg_resources' 'python-questionary' 'python-packaging' 'python-requests' 'python-requests-cache' 'python-ujson' 'python-tomli' 'python-toml' 'python-lxml' 'python-beautifulsoup4' 'python-typer' 'python-rapidfuzz' 'python-humanize' 'python-thefuzz')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "fix_cache.patch")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz" "fix_cache.patch")
