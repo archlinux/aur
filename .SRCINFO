@@ -1,0 +1,17 @@
+pkgbase = guierm-git
+	pkgdesc = GUI frontend for GERM (GEneral Resource Monitor)
+	pkgver = r2.04819ac
+	pkgrel = 1
+	url = https://github.com/oversea-suite/guierm
+	arch = any
+	license = LGPLv2.1
+	depends = python
+	depends = python-pyqt6
+	depends = probed
+	optdepends = germ: for the CLI
+	provides = guierm
+	conflicts = guierm
+	source = guierm-source::git+https://github.com/oversea-suite/guierm.git
+	sha256sums = SKIP
+
+pkgname = guierm-git
