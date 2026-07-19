@@ -22,7 +22,7 @@ depends=(
 provides=("devsy-desktop")
 
 source=(
-  "$pkgname-$pkgver-$pkgrel-$arch.deb::https://github.com/devsy-org/devsy/releases/download/v$pkgver/Devsy_linux_amd64.deb"
+  "devsy-desktop-$pkgver-$arch.deb::https://github.com/devsy-org/devsy/releases/download/v$pkgver/Devsy_linux_amd64.deb"
 )
 sha256sums=("91e88fc6f69327b543ab62a393dbd9b9c2b72a1998f132db7a2ad495f86d0f97")
 
