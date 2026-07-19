@@ -1,8 +1,8 @@
-# Maintainer: BlackCherr <blackcherry at danwin1210 dot de>
+# Maintainer: BlackCherry <blackcherry at danwin1210 dot de>
 
 pkgname=mangowm-wlonly
-stablecommit=da5e6e1
-pkgver=0.15.2
+stablecommit=e13649e
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
