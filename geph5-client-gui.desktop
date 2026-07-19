@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Geph
-Exec=/usr/bin/geph5-client-gui
-Comment=Geph is a modular Internet censorship circumvention system designed specifically to deal with national filtering.
-Icon=geph5-client-gui
-Categories=Network;
-Terminal=false
