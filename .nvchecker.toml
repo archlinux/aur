@@ -1,0 +1,3 @@
+[python-jsrun]
+source = "pypi"
+pypi = "jsrun"
