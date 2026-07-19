@@ -13,7 +13,6 @@ pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('x86_64')
 license=('LGPL2')
-options=(!strip !zipman)
 install="cdesktopenv.install"
 depends=(
     libutempter
@@ -72,7 +71,7 @@ build() {
     cd "$srcdir/code/cde"
     ./autogen.sh
     ./configure --with-gnu-ld --prefix="/usr/dt"
-    make CFLAGS="-std=c99 -I /usr/include/tirpc" LDFLAGS="-lm" 
+    make CFLAGS="$CFLAGS -std=c99 -I /usr/include/tirpc" LDFLAGS="$LDFLAGS -lm"
 }
 
 package() {
