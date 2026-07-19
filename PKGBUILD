@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 #_jdkversion=21
 #_jdkversion=26
 pkgver=26.06.06+60.r2867.20260621.df44afb4
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -41,6 +41,7 @@ makedepends=(
   "git"
   "cargo"
   "gradle"
+  "libjpeg-turbo"
   #"java-environment=${_jdkversion}"
   "java-environment"
   #'zopfli'   # To size-optimise PNG files.
@@ -56,7 +57,7 @@ depends=(
   'giflib'
   'libglvnd'
   'harfbuzz'
-  'libjpeg'
+  'libjpeg.so'
   'lcms2'
   'libpng'
   'libstdc++'
