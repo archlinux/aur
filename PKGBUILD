@@ -1,6 +1,6 @@
 # Maintainer: fatuus
 pkgname=luau-lsp-bin
-pkgver=1.68.1
+pkgver=1.69.0
 pkgrel=1
 pkgdesc="Language Server Implementation for Luau"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ source_x86_64=("https://github.com/JohnnyMorganz/luau-lsp/releases/download/${pk
 source_aarch64=("https://github.com/JohnnyMorganz/luau-lsp/releases/download/$pkgver/luau-lsp-linux-arm64.zip")
 source=('https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/refs/heads/main/LICENSE.md')
 sha256sums=('5bf374ce7ab54c8d75f14e21f04932cae10708189afaec95321aed1a47701935')
-sha256sums_x86_64=('ddb5fe8fd503bbcb76ee439fbd6522efbfe9f0098be5a233401e493c579fc4a9')
-sha256sums_aarch64=('4ab4906dee6041ec23a8b0abdd81c1fdbd770c8c2dcb931e39a33f6790d779f3')
+sha256sums_x86_64=('4457aeb690d3c22e04567f38c6259ac259a1673ec022758b9cb81af2a0e66c41')
+sha256sums_aarch64=('b0c78fe40defe71b9fa6381390a590f2040897980a0cf31f0a23c165ad27ebbb')
 
 package() {
  # _output="${srcdir}/${pkgname/-bin/}_${CARCH}"

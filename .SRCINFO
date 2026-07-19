@@ -1,6 +1,6 @@
 pkgbase = luau-lsp-bin
 	pkgdesc = Language Server Implementation for Luau
-	pkgver = 1.68.1
+	pkgver = 1.69.0
 	pkgrel = 1
 	url = https://github.com/JohnnyMorganz/luau-lsp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = luau-lsp-bin
 	depends = glibc
 	source = https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/refs/heads/main/LICENSE.md
 	sha256sums = 5bf374ce7ab54c8d75f14e21f04932cae10708189afaec95321aed1a47701935
-	source_x86_64 = https://github.com/JohnnyMorganz/luau-lsp/releases/download/1.68.1/luau-lsp-linux-x86_64.zip
-	sha256sums_x86_64 = ddb5fe8fd503bbcb76ee439fbd6522efbfe9f0098be5a233401e493c579fc4a9
-	source_aarch64 = https://github.com/JohnnyMorganz/luau-lsp/releases/download/1.68.1/luau-lsp-linux-arm64.zip
-	sha256sums_aarch64 = 4ab4906dee6041ec23a8b0abdd81c1fdbd770c8c2dcb931e39a33f6790d779f3
+	source_x86_64 = https://github.com/JohnnyMorganz/luau-lsp/releases/download/1.69.0/luau-lsp-linux-x86_64.zip
+	sha256sums_x86_64 = 4457aeb690d3c22e04567f38c6259ac259a1673ec022758b9cb81af2a0e66c41
+	source_aarch64 = https://github.com/JohnnyMorganz/luau-lsp/releases/download/1.69.0/luau-lsp-linux-arm64.zip
+	sha256sums_aarch64 = b0c78fe40defe71b9fa6381390a590f2040897980a0cf31f0a23c165ad27ebbb
 
 pkgname = luau-lsp-bin
