@@ -1,6 +1,6 @@
 # Maintainer: guitaripod <guitaripod@icloud.com>
 pkgname=imago
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Agent-native Instagram profile archive - every photo, video, and carousel slide'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # The release profile already strips, so there are no debug symbols to split.
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guitaripod/imago/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a0bec79c1e2e68d18a9a4f2e8960d3b2c8ef0dd8835134aec968bf038628af2')
+sha256sums=('10e58b547e749661d2ed2177a3f33d40c0de9e9027b37755a7e58b56495a9f75')
 
 prepare() {
     cd "$pkgname-$pkgver"
