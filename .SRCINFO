@@ -1,0 +1,18 @@
+pkgbase = sdl3pp-git
+	pkgdesc = Header-only and modern C++ wrapper for SDL3
+	pkgver = 0.11.3.r18.g993f720
+	pkgrel = 1
+	url = https://github.com/talesm/SDL3pp
+	arch = any
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	depends = sdl3
+	depends = sdl3_image
+	provides = sdl3pp
+	conflicts = sdl3pp
+	options = !debug
+	source = git+https://github.com/talesm/SDL3pp.git
+	sha256sums = SKIP
+
+pkgname = sdl3pp-git
