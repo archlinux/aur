@@ -1,7 +1,7 @@
 # Maintainer: NodeRelay <joe@linuxdojo.org>
 pkgname=uplink-irc-git
-pkgver=2026.7.6.r1.g886d74f
-pkgrel=2
+pkgver=2026.7.8.r0.g24b6c6f
+pkgrel=1
 pkgdesc="Fast, secure, IRCv3-featured IRC client (Qt6, development build)"
 arch=('x86_64')
 url="https://uplinkirc.chat"
