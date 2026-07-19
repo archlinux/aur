@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WASI
+Comment=Lightweight WhatsApp Web wrapper for Linux
+Exec=wasi
+Icon=wasi
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+Keywords=whatsapp;chat;messaging;
+StartupNotify=true
+StartupWMClass=WASI
