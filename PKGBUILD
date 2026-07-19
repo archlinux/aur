@@ -1,7 +1,7 @@
 # Maintainer: Kurobac <rkurobac at gmail dot com>
 
 pkgname=edgemap
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="DualSense UHID proxy — remap, combo, macro, profile auto-switching"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications on profile switch'
     'python-pyqt6: GUI config editor (edgemap-gui)'
     'hicolor-icon-theme: desktop icon theme support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9213da948a5ef26807ed23bc416f2770e70725c7e4836ec5480fd2cce2f8a10')
+sha256sums=('9029f2f2f1cd47f365f1a217814ece50bb1cbbaba3a961e80040309eac3102f2')
 install=edgemap.install
 
 prepare() {
@@ -40,7 +40,11 @@ package() {
     install -Dm755 target/release/dseuhid "$pkgdir/usr/bin/dseuhid"
     install -Dm755 target/release/edgemap "$pkgdir/usr/bin/edgemap"
     install -Dm644 edgemap.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/edgemap.svg"
-    install -Dm755 edgemap-gui-v6.py "$pkgdir/usr/bin/edgemap-gui"
+    install -Dm755 gui/edgemap-gui "$pkgdir/usr/bin/edgemap-gui"
+    while IFS= read -r -d '' source; do
+        relative=${source#gui/}
+        install -Dm644 "$source" "$pkgdir/usr/lib/edgemap-gui/$relative"
+    done < <(find gui/edgemap_gui -type f -name '*.py' -print0)
     install -Dm644 edgemap.desktop "$pkgdir/usr/share/applications/edgemap.desktop"
     install -Dm644 dseuhid.service "$pkgdir/usr/lib/systemd/system/dseuhid.service"
     install -Dm644 edgemap.service "$pkgdir/usr/lib/systemd/user/edgemap.service"
