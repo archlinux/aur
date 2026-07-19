@@ -1,6 +1,6 @@
 pkgbase = hellfire-browser-bin
 	pkgdesc = Optimized Firefox for GNU/Linux
-	pkgver = 154.0a1
+	pkgver = 154.0a1_FP1
 	pkgrel = 1
 	url = https://github.com/CYFARE/HellFire
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = hellfire-browser-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/CYFARE/HellFire/releases/download/v154.0a1/hellfire-154.0a1.en-US.linux-x86_64.tar.xz
-	sha256sums_x86_64 = eda0a6c19cce8a2669e36d550e3385632784732ad21df4f3a68ad7b043818d9d
+	source_x86_64 = https://github.com/CYFARE/HellFire/releases/download/v154.0a1_FP1/hellfire-154.0a1.en-US.linux-x86_64.tar.xz
+	sha256sums_x86_64 = a6fd4e4e59447753d4a67b93f0dae52446b8c99336416199413354d1ad782efe
 
 pkgname = hellfire-browser-bin
