@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.2.0.r277.gd0b5aad
+pkgver=0.2.1.r285.g77f60cd
 pkgrel=1
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
