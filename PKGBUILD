@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="artemis-manual"
 pkgname="$_pkgname"
-pkgver=4.1.5
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Radio Signals Recognition Manual"
 url="https://github.com/AresValley/Artemis"
@@ -27,7 +27,7 @@ makedepends=(
 _pkgsrc="Artemis-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/AresValley/Artemis/archive/v$pkgver.$_pkgext")
-sha256sums=('ef85a2b7e40449b6be83165c54e1434ed81f4e03340f46c9688b52002968f328')
+sha256sums=('8bad04d4c6297a5890ad70915d2b92e557409acaf7908aacbb55ec5586eac6a9')
 
 build() {
   cd "$_pkgsrc"

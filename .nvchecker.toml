@@ -1,4 +1,5 @@
 [artemis-manual]
 source = "git"
 git = "https://github.com/AresValley/Artemis.git"
+include_regex = 'v[0-9.]+'
 prefix = "v"
