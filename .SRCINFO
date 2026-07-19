@@ -1,6 +1,6 @@
 pkgbase = beans-git
 	pkgdesc = CLI accounting
-	pkgver = r0.0.3
+	pkgver = r0.0.4
 	pkgrel = 1
 	url = https://git.betalupi.com/Mark/beans
 	arch = x86_64
