@@ -1,16 +1,16 @@
 # Maintainer: Calagopus <contact@calagopus.com>
 pkgname=calagopus-wings-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Game server node daemon'
 arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
 url='https://calagopus.com'
 license=('MIT')
 
-source_x86_64=('wings-rs-x86_64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-x86_64-linux')
-source_aarch64=('wings-rs-aarch64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-aarch64-linux')
-source_powerpc64le=('wings-rs-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-ppc64le-linux')
-source_riscv64=('wings-rs-riscv64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-riscv64-linux')
+source_x86_64=('wings-rs-1.1.0-x86_64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-x86_64-linux')
+source_aarch64=('wings-rs-1.1.0-aarch64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-aarch64-linux')
+source_powerpc64le=('wings-rs-1.1.0-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-ppc64le-linux')
+source_riscv64=('wings-rs-1.1.0-riscv64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-riscv64-linux')
 
 sha256sums_x86_64=('7f57db73cbb531b4cabdaec193f97cb2d74d2274446d20a8c6d12bff8178dfec')
 sha256sums_aarch64=('87477f2ce71c8ab03122520ba2a5a271707c3e08de8bbcb8c6b8a3b913ec8d1b')
@@ -24,5 +24,5 @@ package() {
         powerpc64le) _a=ppc64le ;;
         riscv64)     _a=riscv64 ;;
     esac
-    install -Dm755 "${srcdir}/wings-rs-${_a}" "${pkgdir}/usr/bin/calagopus-wings"
+    install -Dm755 "${srcdir}/wings-rs-1.1.0-${_a}" "${pkgdir}/usr/bin/calagopus-wings"
 }
