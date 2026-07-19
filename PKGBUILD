@@ -1,5 +1,5 @@
 pkgname=pkgpick
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Interactive fzf-based package picker for pacman/yay/paru (AUR, official, installed), EN/RU UI"
 arch=('any')
