@@ -1,0 +1,19 @@
+pkgbase = python-ricekit
+	pkgdesc = 🍚 A developer's TUI suite for Textual — themes, widgets, modals, icons, and the design system behind ltui
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Gheat1/ricekit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	source = ricekit-0.2.0.tar.gz::https://github.com/Gheat1/ricekit/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b22a2a40e7cde10282fec16a79267c467bb63d92dd228b40f373ce615306eb6f
+
+pkgname = python-ricekit
