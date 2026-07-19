@@ -1,12 +1,19 @@
 pkgbase = matio
-	pkgdesc = C library for reading and writing Matlab MAT files
-	pkgver = 1.5.28
+	pkgdesc = C library for reading and writing MATLAB MAT files
+	pkgver = 1.5.30
 	pkgrel = 1
 	url = https://sourceforge.net/projects/matio/
 	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause
-	source = http://downloads.sourceforge.net/project/matio/matio/1.5.28/matio-1.5.28.tar.gz
-	sha256sums = 9da698934a21569af058e6348564666f45029e6c2b0878ca0d8f9609bf77b8d8
+	makedepends = cmake>=3.7
+	depends = glibc
+	depends = hdf5>=1.8
+	depends = zlib>=1.2.3
+	provides = libmatio.so
+	source = https://downloads.sourceforge.net/project/matio/matio/1.5.30/matio-1.5.30.tar.gz
+	md5sums = 47c8a541f8555e68715c79c84871af5f
+	sha1sums = 2860cb49038587945d390fe968d8a5e076b38e63
+	sha256sums = 8bd3b9477042ecc00dd71c04762fa58468e14cccc32fd8c6826c2da1e8bc3107
 
 pkgname = matio

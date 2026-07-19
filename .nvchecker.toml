@@ -1,0 +1,4 @@
+[matio]
+source = "regex"
+url = "https://sourceforge.net/projects/matio/rss?path=/"
+regex = '<!\[CDATA\[/matio/([^/]+)/matio-\1\.tar\.gz\]\]>'

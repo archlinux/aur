@@ -1,2 +1,5 @@
-pkg
-src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
