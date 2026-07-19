@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.1415926
+pkgver=3.14159265
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -149,11 +149,12 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1415926:"
-    echo "  - Playlist wave view: see every track's waveform in the playlist"
-    echo "  - Crossfade prep: drag a track's wave to start it over the previous one"
-    echo "  - Volume lines: draw volume automation over each track (Sonar-style)"
-    echo "  - Transition preview, now-playing wave strip, all saved in playlists"
+    echo "New in v3.14159265:"
+    echo "  - Gapless playback: the next track is preloaded and handed off seamlessly"
+    echo "  - Auto-mix: one-click crossfade prep for a selection or the whole playlist"
+    echo "  - Themes (Light/Dark/Midnight/Studio + accent color) and a dockable layout"
+    echo "  - Track artwork in the playlist and a now-playing cover panel"
+    echo "  - Torrent privacy hardening: kill-switch, consent, DHT/PEX off, VPN warning"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
