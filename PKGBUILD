@@ -5,7 +5,7 @@ _pkgname=darya
 pkgname=${_pkgname}-bin
 pkgdesc="Disk usage explorer with a TUI and live treemap"
 
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('0bdcc97311cf0b632c53a0cac7f4c531bf6a6216cfa7990a0b39eea766715d4d')
-sha256sums_x86_64=('7c8edc0e189bbba7b055a87f09212a8ec705ddd998c96a10d7af0fbdf8294aab')
-sha256sums_aarch64=('72135c82ce6b92b65dd0ea1a2db14dc2d6299cef8205f481ac808d45b22ede62')
+sha256sums=('1ca28f48b6e95b48ce35863b72f71721e1a54cca58b28db0130f86700105d79e')
+sha256sums_x86_64=('133419de5c7b3eefa319fc6ea823b0cfa164bdf28bcb5948af3ab4144c808ce2')
+sha256sums_aarch64=('4a5a5e4d7936f24490889ba43223829c0cf5ed5274be73aad754109aa5dbfd27')
 
 
 package() {
