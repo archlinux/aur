@@ -1,0 +1,26 @@
+pkgbase = cutrail-bin
+	pkgdesc = Desktop video clipping utility for batch range exports
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sabinmarcu/cutrail
+	arch = x86_64
+	license = MIT
+	makedepends = squashfs-tools
+	depends = fuse2
+	depends = glibc
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = alsa-lib
+	optdepends = ffmpeg: fallback ffmpeg binary for diagnostics and overrides
+	provides = cutrail
+	conflicts = cutrail
+	conflicts = cutrail-git
+	source_x86_64 = cutrail-0.1.0.AppImage::https://github.com/sabinmarcu/cutrail/releases/download/v0.1.0/Cutrail-0.1.0.AppImage
+	sha256sums_x86_64 = SKIP
+
+pkgname = cutrail-bin
