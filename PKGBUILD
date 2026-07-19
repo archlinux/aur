@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 
 pkgname=tree-sitter-janus
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Janus grammar for tree-sitter (Sober/Neovim language intelligence)'
 arch=('x86_64' 'aarch64')
@@ -18,13 +18,14 @@ optdepends=(
 provides=("lib$pkgname.so")
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e557c4749c53453b601ea6e265d2be17ee371e6db68bbe572b2ba1979d7e5f88')
+sha256sums=('822067bb936e1fdd4e2184be4e2b2d16eda78ebd859c84475e9d47e0c034414f')
 
 prepare() {
   cd "$pkgname"
 
   # parser.c is not shipped in the tarball (gitignored upstream); regenerate
-  # from the committed grammar.json with the distro tree-sitter-cli.
+  # from the committed grammar.json with the distro tree-sitter-cli (ABI 15
+  # via tree-sitter.json).
   tree-sitter generate src/grammar.json
 }
 
