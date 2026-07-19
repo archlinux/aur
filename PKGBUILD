@@ -1,6 +1,6 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
-pkgver=0.r1046.8d7ba66
+pkgver=0.r1074.5a2a702
 pkgrel=1
 epoch=1
 pkgdesc="A desktop client for Jellium"
