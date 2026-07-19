@@ -2,8 +2,8 @@
 : ${aur_llamacpp_build_universal:=false}
 _pkgname="llama.cpp"
 pkgname=${_pkgname}-vulkan-git
-pkgver=b9967.r9.e3546c7948
-pkgrel=2
+pkgver=b10068
+pkgrel=1
 _build_number=0
 _commit_id=
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan optimizations)"
@@ -42,7 +42,6 @@ llama.cpp.service
 sha256sums=('SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             'ca92122d5a47dc3d58798a03f76466a4785c70af225fd77776918034ce98d837')
-options=('!strip')
 
 pkgver() {
   cd "${_pkgname}" || exit
@@ -57,8 +56,6 @@ prepare() {
 }
 
 build() {
-  unset CFLAGS CXXFLAGS LDFLAGS
-
   local _cmake_options=(
     -B build
     -S "${_pkgname}"
