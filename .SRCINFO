@@ -1,0 +1,18 @@
+pkgbase = libcoap-shared
+	pkgdesc = libcoap shared library with pkgconf metadata and example executables
+	pkgver = 4.3.5b
+	pkgrel = 1
+	url = https://github.com/obgm/libcoap
+	arch = x86_64
+	license = BSD-1-Clause
+	license = BSD-2-Clause
+	license = BSD-3-Clause
+	license = LicenseRef-Public-Domain
+	license = LicenseRef-Internet-Society
+	makedepends = openssl
+	conflicts = libcoap
+	source = libcoap-4.3.5b.tar.gz::https://github.com/obgm/libcoap/archive/refs/tags/v4.3.5b.tar.gz
+	sha512sums = b8fc435412cd1909bc9ba5683cfa138a3ea08a76fecab78739ceedc7bb903d15d50d4362f702f7380fd047e5b6df3c76dfb75dd30bb20670a62205e6bc85021d
+	b2sums = 055dd4ae443ca59149a0d8cb812bbb879c594c12dc708f62e7e757447c9cbcf1e3c83d55a64ba763fcbdbf75544f41e5da7a23a8fc6eaecd7fa774b562909081
+
+pkgname = libcoap-shared
