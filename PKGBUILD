@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('fastwc')
 conflicts=('fastwc-bin')
-source=("fastwc::git+https://github.com/CallMeAlphabet/fastwc.git#tag=latest")
+source=("fastwc::git+https://github.com/CallMeAlphabet/fastwc.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
