@@ -5,7 +5,7 @@ _pkgname=tennis
 pkgname=${_pkgname}-bin
 pkgdesc="Stylish CSV tables in your terminal"
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,7 +21,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('ffc18064ddf9c555cdce55e10b8423d1a4cf2c42afb4a7dc9a21a70d8d7d6924')
+sha256sums_x86_64=('e1da6df85b543d6e98b49bce760e86f0aee693570d8840fcbad5c716542675f2')
 
 
 case ${CARCH} in
