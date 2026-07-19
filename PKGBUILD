@@ -1,6 +1,6 @@
 pkgname=piper-tts
 _pkgname=piper1-gpl
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Fast and local neural text-to-speech engine"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=(git python-setuptools python-build python-installer python-wheel python-scikit-build cmake ninja)
 source=("git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v$pkgver")
-sha256sums=('3119126dd82130cf8bc218dd5b695d6acc6c02df7b784c5f1cc310827eac05ea')
+sha256sums=('76bd746a236f27c56a6885d9d763c2db6fe12e530c7dfd30d9b2e061e2c1f988')
 
 prepare() {
 	cd ${_pkgname}
