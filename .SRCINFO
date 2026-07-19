@@ -1,6 +1,6 @@
 pkgbase = ermis
-	pkgdesc = Image, Audio, Text, PDF, Distributed and Network Steganography Suite.
-	pkgver = 1.1.2
+	pkgdesc = Image, audio, text, PDF, distributed and network steganography suite.
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/alamahant/Ermis
 	arch = i686
@@ -12,7 +12,8 @@ pkgbase = ermis
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-multimedia
-	source = Ermis-1.1.2.tar.gz::https://github.com/alamahant/Ermis/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 04b05cbb6cd200590c24c620d78b32efdfaf3321080f3420dea066004b63732a
+	depends = miniupnpc
+	source = Ermis-1.1.3.tar.gz::https://github.com/alamahant/Ermis/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = 01d474508f67f35834ffc32415703b8ddb52d93459a615974041495810bef5ff
 
 pkgname = ermis

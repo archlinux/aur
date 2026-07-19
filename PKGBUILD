@@ -2,16 +2,16 @@
 
 pkgname=ermis
 _pkgname=Ermis
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
-pkgdesc='Image, Audio, Text, PDF, Distributed and Network Steganography Suite.'
+pkgdesc='Image, audio, text, PDF, distributed and network steganography suite.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-multimedia')
+depends=('qt6-base' 'qt6-multimedia' 'miniupnpc')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('04b05cbb6cd200590c24c620d78b32efdfaf3321080f3420dea066004b63732a')
+sha256sums=('01d474508f67f35834ffc32415703b8ddb52d93459a615974041495810bef5ff')
 
 build(){
   cd "$srcdir/${_pkgname}-${pkgver}"
