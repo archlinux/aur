@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MongrelDB Viewer
+Comment=Explore and interact with MongrelDB databases
+Exec=mongreldb-viewer
+Icon=com.visorcraft.mongreldb-viewer
+Terminal=false
+Type=Application
+Categories=Development;Database;
+StartupWMClass=com.visorcraft.mongreldb-viewer
