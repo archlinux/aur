@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.tar.zst
+qt6-mpvqml/
+*.tar.gz
