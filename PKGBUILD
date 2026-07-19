@@ -3,9 +3,9 @@
 pkgname=photocrea
 _pkgname=photocrea
 
-pkgver=2.3.8
+pkgver=2.4.1
 pkgrel=1
-arch=('any')
+arch=('any')   
 
 pkgdesc="Electron wrapper for Photopea"
 url="https://github.com/vikdevelop/photopea_app"
@@ -16,40 +16,35 @@ makedepends=("npm" "desktop-file-utils")
 provides=("$_pkgname" "photopea")
 conflicts=("$_pkgname")
 
-source=(
-	"${_pkgname}::git+${url}#tag=${pkgver}" # tag 2.3.8
-	"${_pkgname}.sh"
-	)
-sha256sums=(
-	"b4191b1769baab51bd91f5f8c2f6f72ad6c7c8c6fe30c7cd005447aeba5b6001"
-	"e99f64521f48c030b31e36f2216d018c6032500cc37a7598f153620072ad20c1"
-	)
+source=("${_pkgname}::git+${url}#tag=${pkgver}"
+        "${_pkgname}.sh")
+sha256sums=('94eb2cc32c4747ef3d77df136c8b3f77cd02f8c2c859f78802ef678a796e0ec8'
+            'e99f64521f48c030b31e36f2216d018c6032500cc37a7598f153620072ad20c1')
 
 build(){
-	cd ${_pkgname}
-	npm pkg set "name=${_pkgname}"
-	npm install --omit=dev
-	rmdir node_modules/* --ignore-fail-on-non-empty
-	rm src/preload.js
-	desktop-file-edit \
-	    --set-key=Exec \
-		--set-value="${_pkgname}" \
-		--set-icon="${_pkgname}" \
-		com.github.vikdevelop.photopea_app.desktop
+  cd ${_pkgname}
+  npm pkg set "name=${_pkgname}"
+  npm install --omit=dev
+  rmdir node_modules/* --ignore-fail-on-non-empty
+  desktop-file-edit \
+    --set-key=Exec \
+  	--set-value="${_pkgname}" \
+  	--set-icon="${_pkgname}" \
+    data/com.github.vikdevelop.photopea_app.desktop
 }
 
 package(){
-	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
-	cd ${_pkgname}
-	install -Dm644 data/icons/com.github.vikdevelop.photopea_app.png \
-		"$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-	install -Dm644 data/com.github.vikdevelop.photopea_app.metainfo.xml \
-		"$pkgdir/usr/share/metainfo/${_pkgname}.metainfo.xml"
-	install -Dm644 com.github.vikdevelop.photopea_app.desktop \
-		"$pkgdir/usr/share/applications/${_pkgname}.desktop"
-	install -d "$pkgdir/usr/lib/${_pkgname}/"
-	cp -r --preserve=mode node_modules/ "$pkgdir/usr/lib/${_pkgname}/"
-	cp -r --preserve=mode src/			"$pkgdir/usr/lib/${_pkgname}/"
-	install -Dm644 package.json		-t 	"$pkgdir/usr/lib/${_pkgname}/"
-	install -Dm644 LICENSE 			-t 	"$pkgdir/usr/share/licenses/${_pkgname}/"
+  install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
+  cd ${_pkgname}
+  install -Dm644 data/icons/com.github.vikdevelop.photopea_app.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 data/com.github.vikdevelop.photopea_app.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/${_pkgname}.metainfo.xml"
+  install -Dm644 data/com.github.vikdevelop.photopea_app.desktop \
+    "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -d "$pkgdir/usr/lib/${_pkgname}/"
+  cp -r --preserve=mode node_modules/ "$pkgdir/usr/lib/${_pkgname}/"
+  cp -r --preserve=mode src/          "$pkgdir/usr/lib/${_pkgname}/"
+  install -Dm644 package.json      -t "$pkgdir/usr/lib/${_pkgname}/"
+  install -Dm644 LICENSE           -t "$pkgdir/usr/share/licenses/${_pkgname}/"
 }

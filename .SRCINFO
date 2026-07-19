@@ -1,6 +1,6 @@
 pkgbase = photocrea
 	pkgdesc = Electron wrapper for Photopea
-	pkgver = 2.3.8
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/vikdevelop/photopea_app
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = photocrea
 	provides = photocrea
 	provides = photopea
 	conflicts = photocrea
-	source = photocrea::git+https://github.com/vikdevelop/photopea_app#tag=2.3.8
+	source = photocrea::git+https://github.com/vikdevelop/photopea_app#tag=2.4.1
 	source = photocrea.sh
-	sha256sums = b4191b1769baab51bd91f5f8c2f6f72ad6c7c8c6fe30c7cd005447aeba5b6001
+	sha256sums = 94eb2cc32c4747ef3d77df136c8b3f77cd02f8c2c859f78802ef678a796e0ec8
 	sha256sums = e99f64521f48c030b31e36f2216d018c6032500cc37a7598f153620072ad20c1
 
 pkgname = photocrea
