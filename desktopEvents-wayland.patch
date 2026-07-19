@@ -1,0 +1,24 @@
+--- a/services/plugins/desktopEvents/desktopEvents.c
++++ b/services/plugins/desktopEvents/desktopEvents.c
+@@ -85,10 +85,19 @@
+  */
+
+ TOOLS_MODULE_EXPORT ToolsPluginData *
+ ToolsOnLoad(ToolsAppCtx *ctx)
+ {
++   /*
++    * Under a Wayland session, this plugin's X11-dependent features
++    * (X11Lock) are not usable. Return early without touching
++    * ctx->errorCode so that other plugins (e.g. dndcp) can load.
++    */
++   if (g_getenv("WAYLAND_DISPLAY") != NULL &&
++       (g_getenv("DISPLAY") == NULL ||
++        g_strcmp0(g_getenv("XDG_SESSION_TYPE"), "wayland") == 0)) {
++      return NULL;
++   }
++
+    static ToolsPluginData regData = {
+       "desktopEvents",
+       NULL,
+       NULL,
+       NULL
