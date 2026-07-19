@@ -1,6 +1,6 @@
 pkgbase = d7vk-bin
 	pkgdesc = Vulkan-based D3D7/6/5/3 implementation for Wine (prebuilt ddraw.dll)
-	pkgver = 1.12
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/WinterSnowfall/d7vk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = d7vk-bin
 	conflicts = d7vk
 	conflicts = d7vk-git
 	options = !debug
-	source = d7vk-v1.12.zip::https://github.com/WinterSnowfall/d7vk/releases/download/v1.12/d7vk-v1.12.zip
-	sha256sums = f6b5d704de67fd070c169933e4dfb0c4abd5c6a7247bf6f69733978543c3fb8d
+	source = d7vk-v2.0.zip::https://github.com/WinterSnowfall/d7vk/releases/download/v2.0/d7vk-v2.0.zip
+	sha256sums = bc64c87a3839e4e1cda66a1bca13d7ed41e5ca7567dec691919646ff340198df
 
 pkgname = d7vk-bin
