@@ -1,8 +1,8 @@
 # Maintainer: MaoYaoTang <maoyaotang@163.com>
 
 pkgname=modern-weather-enhanced
-pkgver=v1.0.7.r68.g5bbfddf
-pkgrel=1
+pkgver=v1.0.7.r53.gc26ef7e
+pkgrel=2
 epoch=1
 pkgdesc="Weather widget for KDE Plasma with meteogram and extensive customization"
 arch=('any')
@@ -21,9 +21,14 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd $pkgname
+    sh translate/tools/build.sh
+}
+
 package() {
     cd $pkgname
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -m755 -d ${pkgdir}/usr/share/plasma/plasmoids/${_plasmoid}
-    cp -r contents translate metadata.desktop metadata.json -t "${pkgdir}/usr/share/plasma/plasmoids/${_plasmoid}/"
+    cp -r contents metadata.json -t "${pkgdir}/usr/share/plasma/plasmoids/${_plasmoid}/"
 }
