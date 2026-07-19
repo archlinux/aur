@@ -1,6 +1,6 @@
 # Maintainer: Menma736 <mantainer@unrealnetwork.net>
 pkgname=unreallauncher-git
-pkgver=0.6.11.r309.g8b5caa6
+pkgver=0.6.12.r309.g8b5caa6
 pkgrel=1
 pkgdesc="Unreal Launcher, launcher made for UnrealStudios needs"
 arch=('any')
