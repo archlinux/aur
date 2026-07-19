@@ -1,0 +1,21 @@
+pkgbase = rich-tree
+	pkgdesc = A better tree command with beautiful icons and colors made in Python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wasi-master/rich-tree
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-shellingham
+	depends = python-questionary
+	depends = python-rich
+	depends = python-rich-click
+	provides = rtree
+	source = https://files.pythonhosted.org/packages/source/r/rich_tree/rich_tree-1.0.1.tar.gz
+	sha256sums = 75d9c12574a851ab4e07e665fcb1f8c1fc2207ce7dd854e0f920968d016ecdac
+
+pkgname = rich-tree
