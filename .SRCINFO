@@ -1,0 +1,27 @@
+pkgbase = folea-git
+	pkgdesc = Development build of the keyboard-driven Typst note reader
+	pkgver = r51.g41576c3
+	pkgrel = 1
+	url = https://github.com/ivanovanatoliy/folea
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = nodejs-lts-jod
+	makedepends = npm
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libnotify
+	depends = libsecret
+	provides = folea
+	conflicts = folea
+	options = !strip
+	source = folea::git+https://github.com/ivanovanatoliy/folea.git#branch=develop
+	source = folea.desktop
+	source = folea.sh
+	sha256sums = SKIP
+	sha256sums = 8b71db57faab405bcf721d4e6185c5d82c056201896a14b1c9ca23c1bc8d8336
+	sha256sums = 14835d67b937df5874fdf05878bed07ed03bea2c1436b5837753966f2a2820d1
+
+pkgname = folea-git

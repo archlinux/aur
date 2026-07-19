@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=folea
+Comment=Development build of the Typst note reader
+Exec=folea
+Icon=folea
+Terminal=false
+Type=Application
+Categories=Utility;Office;
+StartupWMClass=folea
