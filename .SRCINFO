@@ -11,10 +11,11 @@ pkgbase = kaldi-openfst
 	makedepends = sox
 	makedepends = subversion
 	makedepends = unzip
-	makedepends = wget
 	depends = gcc-libs
 	options = !lto
 	source = https://github.com/kaldi-asr/kaldi/archive/e02e35f0254bb033fab73d1df99fc34123e31d56.tar.gz
+	source = https://www.openslr.org/resources/2/openfst-1.8.4.tar.gz
 	sha256sums = fd77fa31e8f21ccbc050bd0ee9ab80e3e0d83ad827b4e5a4d9a4cf7144ff62c1
+	sha256sums = 529353f0c11544d8f93de36da75cf1be11c0dc012b4a819b60ac673a689d47ab
 
 pkgname = kaldi-openfst
