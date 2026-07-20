@@ -1,6 +1,6 @@
 pkgbase = pkgpick-git
 	pkgdesc = Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI (git version)
-	pkgver = r9.8aacd19
+	pkgver = r10.d51bbd9
 	pkgrel = 1
 	url = https://github.com/ItzDast/pkgpick
 	arch = any
