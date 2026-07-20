@@ -1,7 +1,7 @@
 # Maintainer: TouchFish Community <johnchiao@outlook.com>
 pkgname=touchfish
-pkgver=4.8.0
-pkgrel=2
+pkgver=4.11.0
+pkgrel=1
 pkgdesc="FOSS multi-distribution LAN chatting tool"
 arch=('any')
 url="https://github.com/touchfish-devs/TouchFish-AUR"
