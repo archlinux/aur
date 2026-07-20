@@ -1,5 +1,5 @@
 pkgname=cutrail-git
-pkgver=0.12.0.3.g2f9ea58
+pkgver=0.12.0.4.g563a17a
 pkgrel=2
 pkgdesc='Desktop video clipping utility for batch range exports'
 arch=('x86_64')
