@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal dashboard for everything you've installed"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('21f0ad010163ee72cdbfefc3668ce12a81bc81cce67d84e989440ef34c83fd92')
-sha256sums_aarch64=('b2f7cc48f9f53e5994a3b8300f080c2b3a4342c3894b88e8816e09275068e8ed')
+sha256sums_x86_64=('8bf229d6a5a06629dece17108948176203b0e93466891904b75d4fd5cb013a1d')
+sha256sums_aarch64=('83aece036ae473aa684ce350d1c3ccdd73b623455e1518ef05177ce93332eeb4')
 
 
 package() {
