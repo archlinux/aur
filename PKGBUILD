@@ -1,6 +1,6 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A typing application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-2-Clause')
 depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://git.safallama.com.np/safalski/typeShi/archive/v$pkgver.tar.gz")
-sha256sums=('a82808132a4d4b260513451aa5df1e10cf1345e7b0141ae14d58f8796aec7fc3')
+sha256sums=('69f5f706a8714cc739ad992053d986e79e5dbbb290f3e54e88485a855b58925d')
 
 
 build() {

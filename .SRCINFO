@@ -1,6 +1,6 @@
 pkgbase = typeshi
 	pkgdesc = A typing application
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://git.safallama.com.np/safalski/typeShi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = typeshi
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-shadertools
-	source = typeshi-0.0.8.tar.gz::https://git.safallama.com.np/safalski/typeShi/archive/v0.0.8.tar.gz
-	sha256sums = a82808132a4d4b260513451aa5df1e10cf1345e7b0141ae14d58f8796aec7fc3
+	source = typeshi-0.0.9.tar.gz::https://git.safallama.com.np/safalski/typeShi/archive/v0.0.9.tar.gz
+	sha256sums = 69f5f706a8714cc739ad992053d986e79e5dbbb290f3e54e88485a855b58925d
 
 pkgname = typeshi
