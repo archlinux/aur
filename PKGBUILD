@@ -1,5 +1,5 @@
 pkgname=cutrail-git
-pkgver=0.11.0.8.g428ca97
+pkgver=0.11.0.11.g661e7ee
 pkgrel=2
 pkgdesc='Desktop video clipping utility for batch range exports'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 options=('!strip' '!debug')
 depends=('electron37' 'glibc' 'gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libdrm' 'alsa-lib')
 makedepends=('git' 'proto-bin')
-optdepends=('ffmpeg: fallback ffmpeg binary for diagnostics and overrides')
+optdepends=('ffmpeg: fallback ffmpeg/ffprobe binaries for diagnostics and probing')
 provides=('cutrail')
 conflicts=('cutrail' 'cutrail-bin')
 source=('cutrail::git+https://github.com/sabinmarcu/cutrail.git#branch=master')
