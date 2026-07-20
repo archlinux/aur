@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=optionmusic
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('optmusic')
 replaces=('optmusic')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3e63fd77e3959b53d101e6e5d3ad42ceeb7d5b0445d15c1a30528fbcb93a1342')
+sha256sums=('9c02940960397218878c52d4d05a4e48dd85e393c3977866d7b8bec794181bbb')
 
 prepare() {
   cd "optionMusic-$pkgver"
