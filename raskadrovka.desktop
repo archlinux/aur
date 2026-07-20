@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Раскадровка
+Name[en]=Raskadrovka
+Comment=Video storyboards and scan-to-video contact sheets
+Comment[ru]=Раскадровка видео и сборка ролика со сканов
+Exec=raskadrovka
+Icon=video-x-generic
+Terminal=false
+Categories=Graphics;Video;AudioVideo;
+StartupNotify=true
