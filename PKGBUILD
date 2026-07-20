@@ -15,7 +15,7 @@
 
 _upstream=tmux-mcp
 pkgname=tmux-mcp-rs
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Model Context Protocol (MCP) server for tmux, written in Rust"
 url="https://github.com/bnomei/tmux-mcp"
@@ -26,9 +26,9 @@ makedepends=('cargo')
 source=("${_upstream}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "LICENSE::${url}/raw/v${pkgver}/LICENSE"
         "schemars-1.2.1.crate::https://static.crates.io/crates/schemars/schemars-1.2.1.crate")
-sha256sums=('7813536217920a3dd24eb719f8d0e8455987d67c85ff1d023c0ed1c8c1e73db1'
-             '077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962'
-             'a2b42f36aa1cd011945615b92222f6bf73c599a102a300334cd7f8dbeec726cc')
+sha256sums=('26d6c3535eb190a3a0f8e262afa38e418c619efb9ab2baa5888e839e52af9a4d'
+            '077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962'
+            'a2b42f36aa1cd011945615b92222f6bf73c599a102a300334cd7f8dbeec726cc')
 
 prepare() {
     # .crate files are gzipped tarballs; bsdtar extracts them natively
