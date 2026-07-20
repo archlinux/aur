@@ -1,5 +1,5 @@
 pkgbase = uuyc
-	pkgdesc = NetEase UU Remote client configured for Wine
+	pkgdesc = NetEase UU Remote (网易UU远程) client configured for Wine
 	pkgver = 4.33.0.8907
 	pkgrel = 3
 	url = https://uuyc.163.com/

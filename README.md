@@ -1,6 +1,6 @@
-# uuyc
+# uuyc — NetEase UU Remote / 网易UU远程
 
-`uuyc` packages the NetEase UU Remote Windows client for Arch Linux and runs it in a dedicated Wine prefix. It installs the official upstream installer, prepares Microsoft Edge WebView2 Runtime, configures the required Wine compatibility settings, and starts the UU Remote server before the desktop client.
+`uuyc` packages the NetEase UU Remote (网易UU远程) Windows client for Arch Linux and runs it in a dedicated Wine prefix. It installs the official upstream installer, prepares Microsoft Edge WebView2 Runtime, configures the required Wine compatibility settings, and starts the UU Remote server before the desktop client.
 
 This is an unofficial compatibility package. NetEase does not support this Wine setup.
 

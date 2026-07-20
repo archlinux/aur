@@ -3,7 +3,7 @@
 pkgname=uuyc
 pkgver=4.33.0.8907
 pkgrel=3
-pkgdesc='NetEase UU Remote client configured for Wine'
+pkgdesc='NetEase UU Remote (网易UU远程) client configured for Wine'
 arch=('x86_64')
 url='https://uuyc.163.com/'
 license=('LicenseRef-UU-Remote-EULA')
