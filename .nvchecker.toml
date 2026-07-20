@@ -1,0 +1,3 @@
+[rare-go-bin]
+source = "git"
+git = "https://github.com/zix99/rare.git"
