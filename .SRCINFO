@@ -1,0 +1,19 @@
+pkgbase = axolotl-launcher-bin
+	pkgdesc = Axolotl Launcher - Minecraft mod launcher
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/Mystic-Stars/Axolotl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = axolotl-launcher
+	conflicts = axolotl-launcher
+	source_x86_64 = Axolotl.Launcher_1.3.3_amd64.AppImage.tar.gz::https://github.com/Mystic-Stars/Axolotl/releases/download/v1.3.3/Axolotl.Launcher_1.3.3_amd64.AppImage.tar.gz
+	sha256sums_x86_64 = c1ad41e8aafdb1b6b88e9ed7ad4636324e85fbd263a5e857481d99e89a78783d
+	source_aarch64 = Axolotl.Launcher_1.3.3_aarch64.AppImage.tar.gz::https://github.com/Mystic-Stars/Axolotl/releases/download/v1.3.3/Axolotl.Launcher_1.3.3_aarch64.AppImage.tar.gz
+	sha256sums_aarch64 = 1a6259bbe58600e4ec02fc06bc599bccda6fc0da43e478e0ddc7d319f7a878bb
+
+pkgname = axolotl-launcher-bin
