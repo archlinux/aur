@@ -1,4 +1,4 @@
-# Maintainer: hoaxisr <hoaxisr@users.noreply.github.com>
+# Maintainer: halvacoffee <halvalatte@proton.me>
 # Fork: https://github.com/hoaxisr/amnezia-box (AmneziaWG + xhttp + mieru support)
 #
 # To update: bump _pkgver to the new release tag, then run
