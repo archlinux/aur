@@ -1,21 +1,24 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# Updated by https://github.com/Freed-Wu/tree-sitter-bash/blob/main/.github/workflows/main.yml
-_pkgname=tree-sitter-bash
-pkgname=python-$_pkgname
-pkgver=0.21.0
+_name=tree-sitter-bash
+pkgname=python-$_name
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="bash grammar for tree-sitter"
 arch=(i686 x86_64 arm aarch64)
-url=https://github.com/Freed-Wu/$_pkgname
+url=https://github.com/tree-sitter/tree-sitter-bash
 depends=(python-tree-sitter)
 makedepends=(python-installer)
 license=(MIT)
-_py="cp38"
-_arch="$(uname -m)"
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-abi3-manylinux_2_17_$_arch.manylinux2014_$_arch.whl")
-sha256sums=('b3f9bb54ce704abf822e44bdf67b3e7b402ea92c74b82fda24f32d04483734f8')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('bfc0bdaa77bc1e86e3c6652e5a6e140c40c0a16b84185c2b63ad7cd809b88f14')
+
+build() {
+	cd "${_name//-/_}-$pkgver" || exit
+	uv build --wheel --no-build-isolation
+}
 
 package() {
-	python -minstaller -d"$pkgdir" ./*.whl
+	cd "${_name//-/_}-$pkgver" || exit
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

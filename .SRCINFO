@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-bash
 	pkgdesc = bash grammar for tree-sitter
-	pkgver = 0.21.0
+	pkgver = 0.25.1
 	pkgrel = 1
-	url = https://github.com/Freed-Wu/tree-sitter-bash
+	url = https://github.com/tree-sitter/tree-sitter-bash
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -10,7 +10,7 @@ pkgbase = python-tree-sitter-bash
 	license = MIT
 	makedepends = python-installer
 	depends = python-tree-sitter
-	source = https://files.pythonhosted.org/packages/cp38/t/tree_sitter_bash/tree_sitter_bash-0.21.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = b3f9bb54ce704abf822e44bdf67b3e7b402ea92c74b82fda24f32d04483734f8
+	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_bash/tree_sitter_bash-0.25.1.tar.gz
+	sha256sums = bfc0bdaa77bc1e86e3c6652e5a6e140c40c0a16b84185c2b63ad7cd809b88f14
 
 pkgname = python-tree-sitter-bash
