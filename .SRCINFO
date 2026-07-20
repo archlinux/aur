@@ -1,6 +1,6 @@
 pkgbase = svelte-language-server-git
 	pkgdesc = Svelte Language Server, git master build
-	pkgver = r1923.d6536401
+	pkgver = r1925.84d54a14
 	pkgrel = 1
 	url = https://github.com/sveltejs/language-tools
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = svelte-language-server-git
 	depends = nodejs
 	provides = svelte-language-server
 	conflicts = svelte-language-server
-	options = !emptydirs
-	options = !strip
 	source = svelte-language-server-git::git+https://github.com/sveltejs/language-tools.git#branch=master
 	sha256sums = SKIP
 

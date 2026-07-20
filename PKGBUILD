@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1923.d6536401
+pkgver=r1925.84d54a14
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -18,7 +18,6 @@ makedepends=(
   git
   pnpm
 )
-options=('!emptydirs' '!strip')
 source=("${pkgname}::git+${url}.git#branch=${_branch}")
 sha256sums=('SKIP')
 
