@@ -1,0 +1,14 @@
+pkgbase = archlarp
+	pkgdesc = A LARP award trophy for true Arch LARPers
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	source = archlarp
+	source = archlarp-opsec
+	source = archlarp-nonsystemd
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = archlarp
