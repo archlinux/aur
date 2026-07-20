@@ -1,7 +1,7 @@
 pkgbase = hyprwhspr-git
 	pkgdesc = System-wide speech-to-text for Linux desktops (git)
 	pkgver = 0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/goodroot/hyprwhspr
 	install = hyprwhspr.install
 	arch = x86_64
@@ -31,6 +31,8 @@ pkgbase = hyprwhspr-git
 	optdepends = cmake: accelerated pywhispercpp source builds
 	optdepends = git: accelerated pywhispercpp source builds
 	optdepends = base-devel: accelerated pywhispercpp source builds
+	provides = hyprwhspr
+	conflicts = hyprwhspr
 	source = git+https://github.com/goodroot/hyprwhspr.git
 	sha256sums = SKIP
 

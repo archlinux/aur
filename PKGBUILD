@@ -3,11 +3,13 @@
 _pkgname=hyprwhspr
 pkgname=hyprwhspr-git
 pkgver=0
-pkgrel=11
+pkgrel=12
 pkgdesc="System-wide speech-to-text for Linux desktops (git)"
 arch=('x86_64')
 url="https://github.com/goodroot/${_pkgname}"
 license=('MIT')
+provides=('hyprwhspr')
+conflicts=('hyprwhspr')
 
 makedepends=(
   'git'
@@ -62,6 +64,7 @@ package() {
   install -d "$pkgdir/usr/lib/${_pkgname}"
   cp -r lib bin config share README.md LICENSE requirements*.txt \
     "$pkgdir/usr/lib/${_pkgname}"
+  python scripts/validate-package-payload.py "$pkgdir/usr/lib/${_pkgname}"
 
   if [ -f "$pkgdir/usr/lib/${_pkgname}/bin/${_pkgname}" ]; then
     chmod 755 "$pkgdir/usr/lib/${_pkgname}/bin/${_pkgname}"
