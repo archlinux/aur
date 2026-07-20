@@ -3,7 +3,7 @@
 pkgname=wuyou-docs-bin
 _pkgname=wuyou-docs
 pkgver=0.6.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Local-first desktop document workspace (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/duanluan/wuyou-docs-releases'
