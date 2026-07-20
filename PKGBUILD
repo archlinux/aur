@@ -20,7 +20,7 @@
 # from a single PKGBUILD via per-arch source/checksum arrays.
 
 pkgname=lumina-terminal-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A modern, cross-platform terminal emulator built with Tauri, React, and Xterm.js"
 arch=('x86_64' 'aarch64')
@@ -47,8 +47,8 @@ optdepends=(
 #   aarch64 -> Lumina.Terminal_<ver>_arm64.deb
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_arm64.deb")
-sha256sums_x86_64=('0046dc0952f2f8f8c8a2568f8a706ff7f6c5bbfdd4241817227085dc073f647c')
-sha256sums_aarch64=('5daeb506c5f10c1c5af00a4a8b519106ff148decd813153ddac9b594ab2d9898')
+sha256sums_x86_64=('c4a3d18e4a02506285327ba80120ca19b73ee26222fc75c29cbf6dc74b15c992')
+sha256sums_aarch64=('892faeaaffcac515ba4cd3fb5b96ad654029d10a40db81355a0eb7afe7cd75ab')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
