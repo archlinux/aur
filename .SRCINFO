@@ -1,0 +1,26 @@
+pkgbase = ide-native
+	pkgdesc = struIDEl native UI (egui) for live-coding patterns
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Unknown
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = mesa
+	options = !lto
+	source = ide-native-0.1.0.tar.gz
+	source = ide-native.desktop
+	b2sums = 142e3338e5d7c4248f478c66946ae1833af2045748cd8d7e94cc4a94883737d11cea2fa104cabcce518e30f51b65873de665928e56394aa59d0e94f13247e13b
+	b2sums = 15c0fe42ee52b1576fda8a54f2301c0b72d6b7d57325f8fb0734c1b24667cfbf5eec0fbc51dc0794894c51a89dd4695510b89f6592efaf9bbefa2d4691e8c46d
+
+pkgname = ide-native
