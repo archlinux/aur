@@ -25,7 +25,6 @@ checkdepends=(
   ruby-rspec
   ruby-simplecov
 )
-options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "parlour-test-setup.patch")
 sha256sums=('2f69383bf52243ab502dcac7553582d5487eae877390b5716118e385cf82c09d'

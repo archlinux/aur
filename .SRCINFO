@@ -15,7 +15,6 @@ pkgbase = ruby-parlour
 	depends = ruby-parser
 	depends = ruby-rainbow
 	depends = ruby-sorbet-runtime
-	options = !emptydirs
 	source = ruby-parlour-9.1.2.tar.gz::https://github.com/AaronC81/parlour/archive/9.1.2.tar.gz
 	source = parlour-test-setup.patch
 	sha256sums = 2f69383bf52243ab502dcac7553582d5487eae877390b5716118e385cf82c09d
