@@ -3,8 +3,8 @@
 _appauthor=anistark
 _appname=wasmrun
 pkgname=${_appname}-bin
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Run WebAssembly instantly in your browser with a single command"
 
 _ghurl="https://github.com/${_appauthor}/${_appname}"
@@ -24,8 +24,8 @@ makedepends=('tar' 'git')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-v${pkgver}-${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-v${pkgver}-${_barch[1]}.deb")
-sha256sums_x86_64=('02cb964b218c25ca9602c675bdf5d471645e429be385054cbd636b8f3348112e')
-sha256sums_aarch64=('3d129b1a746309875b04cc23a0af6eb9d2429c472c3e07f6091bf511c76a3353')
+sha256sums_x86_64=('3ff9ece5d5e5adfbd6f0460a2b1325a2e3655269574907dc5a379b043786123a')
+sha256sums_aarch64=('af96750555cf596109694cb69532999198dd645cf114f896ea6ff4f8cbee1bfa')
 
 prepare() {
 	cd "${srcdir}/" || exit
