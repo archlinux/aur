@@ -1,0 +1,13 @@
+pkgbase = javanya
+	pkgdesc = Эзотерический язык программирования, транслирующийся в Java, с компилятором-кошкодевочкой
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kolonia333/JavaNya
+	arch = any
+	license = MIT
+	makedepends = java-environment>=17
+	depends = java-runtime>=17
+	source = javanya-1.0.0.tar.gz::https://github.com/Kolonia333/JavaNya/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 3b3582efa7c4ffc3d7c647308c5d251e615334415778810674cadfdd4e773e6f
+
+pkgname = javanya
