@@ -10,6 +10,7 @@ pkgbase = python-tree-sitter-tmux
 	license = MIT
 	makedepends = uv
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python-tree-sitter
 	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_tmux/tree_sitter_tmux-0.1.1.tar.gz
 	sha256sums = 37f041e870bd7d176d51b636676834c4e6221b46ee27317f95b11b0cfda1b3c2
