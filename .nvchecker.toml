@@ -1,0 +1,4 @@
+[moonstone]
+source = "git"
+git = "https://github.com/moonstone-sh/moonstone.git"
+prefix = "v"
