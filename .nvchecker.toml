@@ -1,0 +1,4 @@
+[servitor]
+source = "git"
+git = "https://github.com/BentonEdmondson/servitor.git"
+prefix = "v"
