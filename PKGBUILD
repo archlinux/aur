@@ -1,9 +1,9 @@
 # Maintainer: MaoYaoTang <maoyaotang@163.com>
 
 pkgname=modern-weather-enhanced
-pkgver=v1.0.7.r53.gc26ef7e
-pkgrel=2
-epoch=1
+pkgver=v1.0.7.r60.g7c6d8d3
+pkgrel=1
+epoch=2
 pkgdesc="Weather widget for KDE Plasma with meteogram and extensive customization"
 arch=('any')
 url='https://github.com/samy879/modern-weather-enhanced'
