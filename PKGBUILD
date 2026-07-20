@@ -44,8 +44,11 @@ package() {
     ln -s "/opt/${_pkgname}/UndertaleModTool" \
         "${pkgdir}/usr/bin/undertalemodtool"
 
-    install -Dm644 UndertaleModToolAvalonia/icon.ico \
-        "${pkgdir}/usr/share/pixmaps/undertalemodtool.ico"
+    # hicolor theme pngs (nearest-neighbour rescales of the 32px pixel-art mark)
+    for _size in 24 32 48 64 96 128 192 256; do
+        install -Dm644 "UndertaleModToolAvalonia/Assets/AppIcon/undertalemodtool-${_size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/undertalemodtool.png"
+    done
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/undertalemodtool.desktop" <<EOF
 [Desktop Entry]
@@ -53,7 +56,7 @@ Type=Application
 Name=UndertaleModTool
 Comment=${pkgdesc}
 Exec=undertalemodtool --gui %f
-Icon=undertalemodtool.ico
+Icon=undertalemodtool
 Terminal=false
 Categories=Development;Utility;
 EOF
