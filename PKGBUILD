@@ -4,7 +4,7 @@
 
 pkgname=mongreldb-viewer
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 _ortver=1.24.2
 pkgdesc='Desktop viewer for exploring MongrelDB databases'
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=('cargo' 'npm' 'pkgconf')
+options=('!lto')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'com.visorcraft.mongreldb-viewer.desktop'
@@ -58,6 +59,7 @@ build() {
   cd "MongrelDB-Viewer-$pkgver"
   export CARGO_HOME="$srcdir/cargo"
   export CARGO_NET_OFFLINE=true
+  export CARGO_PROFILE_RELEASE_LTO=false
   export npm_config_cache="$srcdir/npm-cache"
   export npm_config_offline=true
   export ORT_LIB_LOCATION="$srcdir/onnxruntime"

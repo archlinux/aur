@@ -1,7 +1,7 @@
 pkgbase = mongreldb-viewer
 	pkgdesc = Desktop viewer for exploring MongrelDB databases
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/visorcraft/MongrelDB-Viewer
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = mongreldb-viewer
 	depends = openssl
 	depends = webkit2gtk-4.1
 	noextract = onnxruntime-1.24.2-x86_64.tar.lzma2
+	options = !lto
 	source = mongreldb-viewer-1.0.3.tar.gz::https://github.com/visorcraft/MongrelDB-Viewer/archive/refs/tags/v1.0.3.tar.gz
 	source = com.visorcraft.mongreldb-viewer.desktop
 	source = onnxruntime-1.24.2-x86_64.tar.lzma2::https://cdn.pyke.io/0/pyke:ort-rs/ms@1.24.2/x86_64-unknown-linux-gnu.tar.lzma2
