@@ -1,11 +1,11 @@
-# Maintainer: MrQuantumOFF <demiryerli@gmail.com>
+# Maintainer: MrQuantumOFF <me@mrquantumoff.dev>
 
 # GitHub slug the release .deb is downloaded from. The release pipeline rewrites
 # this line to ${{ github.repository }} at publish time.
 _ghrepo="mrquantumoff/audioclock"
 
 pkgname=audioclock-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Inspect and manage PipeWire and WirePlumber audio clock and format settings (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ conflicts=('audioclock')
 _rel="https://github.com/${_ghrepo}/releases/download/v${pkgver}"
 source_x86_64=("${_rel}/audioclock_${pkgver}-1_amd64.deb")
 source_aarch64=("${_rel}/audioclock_${pkgver}-1_arm64.deb")
-sha256sums_x86_64=('c3f9b1912df220bf290cde515e1837b72ede42dfb0bd5c8e2f51f05b8c8c8c85')
-sha256sums_aarch64=('0a40a20ed29fbcac42a8742251b69eefda3ecb942c2c41fb30e19b8df464eb60')
+sha256sums_x86_64=('0e8a63075b404e811c0b4f7686c94e32e1d2d1683178908f70c08ec466daa691')
+sha256sums_aarch64=('c0dd619adc671a1e8c719c157f4f525c027e7238b182d35ce71012367038ca37')
 
 package() {
     cd "$srcdir"
