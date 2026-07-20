@@ -23,6 +23,7 @@ depends=(
 makedepends=('cargo' 'npm' 'pkgconf')
 conflicts=('onq-bin' 'onq-git')
 options=('!lto')
+
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'com.visorcraft.onq.desktop'
