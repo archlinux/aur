@@ -1,0 +1,30 @@
+pkgbase = chan-desktop
+	pkgdesc = Desktop edition of the chan AI-native IDE
+	pkgver = 0.73.0
+	pkgrel = 1
+	url = https://chan.app
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = desktop-file-utils
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = libsoup3
+	depends = systemd
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	provides = chan=0.73.0
+	conflicts = chan
+	options = !lto
+	source = chan-0.73.0.tar.gz::https://github.com/fiorix/chan/archive/v0.73.0.tar.gz
+	sha256sums = 6c8024c833573ab492bb3d8ec7d73d81fedce30ac2b2f809762911b2b4788b36
+
+pkgname = chan-desktop
