@@ -2,7 +2,7 @@
 
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-migx-runtime-git
-pkgver=786.83b0180
+pkgver=811.1f166ba
 pkgrel=2
 pkgdesc="Plugin for VapourSynth: ${_plug} (MIGraphX runtime)"
 arch=('x86_64')
