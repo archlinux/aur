@@ -1,42 +1,35 @@
-# Maintainer: Ben Woodward <ben@benwoodward.me.uk>
-# Contributors: slurpee, Felix Seidel, Claudia Pellegrino, Liu Yuxuan
+# Maintainer: copypasteonly <denzeldadang@protonmail.com>
+# Contributors: slurpee, Ben Woodward, Felix Seidel, Claudia Pellegrino, Liu Yuxuan
 
 pkgname=1password-cli-beta
-_pkgver=2.19.0
-_channel=beta
-_rel=01
-pkgver=${_pkgver}.${_channel}.${_rel}
+pkgver=2.38.0_beta.01
 pkgrel=1
-pkgdesc="1Password command line tool"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
+pkgdesc="1Password command line tool (beta)"
+arch=('x86_64')
 url="https://app-updates.agilebits.com/product_history/CLI2"
-license=('custom')
+license=('LicenseRef-1Password')
+provides=('1password-cli')
+conflicts=('1password-cli')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
+install=1password-cli-beta.install
+validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
-source_x86_64=("https://cache.agilebits.com/dist/1P/op2/pkg/v${_pkgver}-${_channel}.${_rel}/op_linux_amd64_v${_pkgver}-${_channel}.${_rel}.zip")
-source_i686=("https://cache.agilebits.com/dist/1P/op2/pkg/v${_pkgver}-${_channel}.${_rel}/op_linux_386_v${_pkgver}-${_channel}.${_rel}.zip")
-source_arm=("https://cache.agilebits.com/dist/1P/op2/pkg/v${_pkgver}-${_channel}.${_rel}/op_linux_arm_v${_pkgver}-${_channel}.${_rel}.zip")
-source_armv6h=("${source_arm}")
-source_aarch64=("https://cache.agilebits.com/dist/1P/op2/pkg/v${_pkgver}-${_channel}.${_rel}/op_linux_arm64_v${_pkgver}-${_channel}.${_rel}.zip")
+_upstream_ver="${pkgver//_/-}"
 
-sha256sums_x86_64=('0fa520dc979d8ebe32533cc8405cca92be2ef1f7316f8a92365b07b92bc6d7be')
-sha256sums_i686=('5bd48ca8aa4a1ae10eca53ec9100c802fab2a92236f962d69e2b81709b335c97')
-sha256sums_arm=('2097b3b0f0648af4424ba2ef30835b26c506f1b9e452d546eed43248f5dd5e0d')
-sha256sums_armv6h=("${sha256sums_arm}")
-sha256sums_aarch64=('1ef6e58aec60314e5a8e2450f87851280a39bae75563ba0cb06e1f7da7d61ce5')
+source_x86_64=(
+  "https://cache.agilebits.com/dist/1P/op2/pkg/v${_upstream_ver}/op_linux_amd64_v${_upstream_ver}.zip"
+)
+
+sha256sums_x86_64=(
+  'ab5617d23cf99f5df5fef983c0d1c1f9b3421c28d0c5764863350365d4315857'
+)
 
 check() {
   if (( ! SKIPPGPCHECK )); then
-    gpg --verify-files ${srcdir}/op.sig
+    gpg --verify "${srcdir}/op.sig" "${srcdir}/op"
   fi
 }
 
 package() {
-  install -Dm755 op "${pkgdir}"/usr/bin/op
-
-  install -dm755 "${pkgdir}"/usr/share/zsh/site-functions
-  "${pkgdir}"/usr/bin/op completion zsh > "${pkgdir}"/usr/share/zsh/site-functions/_op
+  install -Dm755 "${srcdir}/op" "${pkgdir}/usr/bin/op"
 }
-
-# vim:set ts=2 sw=2 et:
