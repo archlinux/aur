@@ -1,7 +1,7 @@
-pkgbase = libjxl
+pkgbase = libjxl-0.11
 	pkgdesc = JPEG XL image format reference implementation
 	pkgver = 0.11.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -34,7 +34,7 @@ pkgbase = libjxl
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = libjxl
+pkgname = libjxl-0.11
 	depends = brotli
 	depends = giflib
 	depends = glibc
@@ -44,10 +44,6 @@ pkgname = libjxl
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libstdc++
-	optdepends = java-runtime: for JNI bindings
-	provides = libjxl.so
-	provides = libjxl_cms.so
-	provides = libjxl_threads.so
 
-pkgname = libjxl-doc
+pkgname = libjxl-0.11-doc
 	pkgdesc = JPEG XL image format reference implementation (documentation)

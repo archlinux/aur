@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-pkgbase=libjxl
-pkgname=('libjxl' 'libjxl-doc')
+pkgbase=libjxl-0.11
+pkgname=('libjxl-0.11' 'libjxl-0.11-doc')
 pkgver=0.11.2
-pkgrel=2
-pkgdesc='JPEG XL image format reference implementation'
+pkgrel=1
+pkgdesc='JPEG XL image format reference implementation - 0.11 release'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
@@ -40,19 +40,19 @@ sha256sums=('0d1a459ef8390a8d991f8e6501c0292cc5f443a7663aeedf0922df855a61f9a2'
 
 prepare() {
     git -C libjxl submodule init
-    
+
     local _submodule
-    
+
     for _submodule in libjpeg-turbo sjpeg skcms
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
-    
+
     for _submodule in brotli googletest highway libpng zlib
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.update" none
     done
-    
+
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
     git -C libjxl -c protocol.file.allow='always' submodule update
@@ -87,7 +87,7 @@ check() {
     ctest --test-dir build --output-on-failure
 }
 
-package_libjxl() {
+package_libjxl-0.11() {
     depends=(
         'brotli'
         'giflib'
@@ -98,26 +98,25 @@ package_libjxl() {
         'libjpeg-turbo'
         'libpng'
         'libstdc++')
-    optdepends=(
-        'java-runtime: for JNI bindings')
-    provides=(
-        'libjxl.so'
-        'libjxl_cms.so'
-        'libjxl_threads.so')
-    
+
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
-    
-    # Clamp timestamps to SOURCE_DATE_EPOCH and strip other metadata, to make
-    # the package reproducible.
-    add-det "${pkgdir}/usr/share/java"/jpegxl.jar
+
+    # Remove development files, binaries, unversioned shared library symlinks, pkgconfig, and JNI/Java bindings to prevent conflicts with newer libjxl
+    rm -rf "${pkgdir}/usr/include"
+    rm -rf "${pkgdir}/usr/bin"
+    rm -rf "${pkgdir}/usr/lib/pkgconfig"
+    rm -rf "${pkgdir}/usr/share/java"
+    rm -rf "${pkgdir}/usr/share/man"
+    rm -f "${pkgdir}/usr/lib/libjxl_extras_codec.a"
+    rm -f "${pkgdir}/usr/lib/libjxl_jni.so"
+    rm -f "${pkgdir}/usr/lib"/{libjxl,libjxl_cms,libjxl_threads}.so
 }
 
-package_libjxl-doc() {
+package_libjxl-0.11-doc() {
     pkgdesc+=' (documentation)'
-    
+
     install -d -m755 "${pkgdir}/usr/share/doc"
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp -dr --no-preserve='ownership' build/html "${pkgdir}/usr/share/doc/libjxl"
+    cp -dr --no-preserve='ownership' build/html "${pkgdir}/usr/share/doc/libjxl-0.11"
 }
