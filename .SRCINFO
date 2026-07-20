@@ -1,0 +1,16 @@
+pkgbase = mdwatch
+	pkgdesc = A simple CLI tool to live-preview Markdown files in your browser
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/vimlinuz/mdwatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = libgcc
+	provides = mdwatch
+	conflicts = mdwatch
+	source = mdwatch-0.2.6.zip::https://github.com/vimlinuz/mdwatch/archive/refs/tags/v0.2.6.zip
+	sha256sums = 5bf7a6ba2f6a2c22ba4a649e591b450c7fc2eb3581b47c1be267c47030413a8a
+
+pkgname = mdwatch
