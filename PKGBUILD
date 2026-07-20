@@ -10,7 +10,7 @@ license=("BSL-1.0 or GPL-3+")
 DC=gdc
 DC_PKG=gcc-d
 
-pkgname=${PROJECT}
+pkgname=vitis
 pkgdesc="${DESCR}"
 arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"

@@ -19,7 +19,7 @@ pkgbase = vitis-fs
 	depends = amalthea-gdc
 	depends = oxfuse-gdc
 	depends = fuse3
-	source = vitis-fs-0.31.0.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.31.0/vitis-v0.31.0.tar.gz
+	source = vitis-0.31.0.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.31.0/vitis-v0.31.0.tar.gz
 	sha256sums = 112cd21f94721755368cc7f459f496fb9b98bf26fced4ac94fcb9760ed4b5052
 
 pkgname = vitis-fs
