@@ -1,19 +1,18 @@
 # Maintainer: Karasowl <https://github.com/Karasowl>
 #
 # System package for KodexBar Suite: Plasma widget, ai selector, quota engine
-# (native Claude quotas, other providers need steipete/codexbar installed
-# separately), panel adapter, and tray indicator. Optional desktop-specific
-# runtime deps are listed in optdepends so a pure Arch/CachyOS install stays
-# minimal.
+# (native Claude quotas, Codex/Grok/Antigravity via hard dep codexbar-cli-bin),
+# panel adapter, and tray indicator. Optional desktop-specific runtime deps are
+# listed in optdepends so a pure Arch/CachyOS install stays minimal.
 
 pkgname=kodexbar-suite
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
-pkgdesc='KodexBar Suite: Plasma widget, ai CLI, Claude quotas natively (Codex/Grok/Antigravity need steipete codexbar)'
+pkgdesc='KodexBar Suite: Plasma widget, ai CLI, Claude quotas natively (Codex/Grok/Antigravity via codexbar-cli-bin)'
 arch=('any')
 url='https://github.com/Karasowl/KodexBar-Suite'
 license=('MIT')
-depends=('python')
+depends=('python' 'codexbar-cli-bin')
 optdepends=(
   'plasma-workspace: Plasma 6 widget for ordered multi-provider quotas'
   'plasma5support: DataEngine/DataSource backend used by the Plasma widget'
@@ -24,8 +23,9 @@ optdepends=(
   'xclip: X11 clipboard support for ai recover --copy'
   'xsel: alternate X11 clipboard support for ai recover --copy'
 )
+install=kodexbar-suite.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1db69f8a69384866371652db6ccac6adc15cdc75edd20c83d0916bc2b0c904b4')
+sha256sums=('9c0c55d6827701ee89ddf30451091425d6ee6b09ca1af3c10eae9d04f8f2f91e')
 
 package() {
   cd "${srcdir}/KodexBar-Suite-${pkgver}"
