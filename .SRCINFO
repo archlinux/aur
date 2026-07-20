@@ -1,6 +1,6 @@
 pkgbase = freeshow-bin
 	pkgdesc = FreeShow is a free and open-source, user-friendly presenter software.
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/ChurchApps/FreeShow
 	install = freeshow-bin.install
@@ -19,7 +19,7 @@ pkgbase = freeshow-bin
 	provides = freeshow
 	conflicts = freeshow
 	conflicts = freeshow-git
-	source_x86_64 = freeshow-bin-1.6.3.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.6.3/freeshow-1.6.3-amd64.deb
-	sha256sums_x86_64 = 47f54b747c8a6f5851027657427f73621d1026c1fc86b286d473d6d2384a4689
+	source_x86_64 = freeshow-bin-1.6.4.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.6.4/freeshow-1.6.4-amd64.deb
+	sha256sums_x86_64 = 765d4fca9a123f645779b5f7e450fcdcfb08d70689a2b54e6be720f93461db6f
 
 pkgname = freeshow-bin
