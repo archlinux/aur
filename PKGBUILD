@@ -63,8 +63,6 @@ package() {
 	install -Dm644 "${_rootfs}/etc/systemd/system/${_appname}-sandbox.socket" "${pkgdir}/usr/lib/systemd/system/${_appname}-sandbox.socket"
 	install -Dm644 "${_rootfs}/etc/systemd/system/${_appname}-sandbox.service" "${pkgdir}/usr/lib/systemd/system/${_appname}-sandbox.service"
 
-	install -Dm644 "${_rootfs}/usr/share/doc/aish/skills-guide.md" "${pkgdir}/usr/share/doc/${pkgname}/SKILLS-GUIDE-guide.md"
-
 	install -Dm644 "../README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "../LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
