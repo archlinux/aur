@@ -4,7 +4,7 @@
 # refs, missing deps, and missing options three times. Verify after publish:
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 pkgname=freeclaw
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Community fork of OpenClaw with local inference improvements"
 arch=(x86_64)
