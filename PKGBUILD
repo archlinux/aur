@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-repair
-pkgver=26.06.1
-pkgrel=2
+pkgver=26.07
+pkgrel=1
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
@@ -10,8 +10,8 @@ depends=('efibootmgr' 'qt6-base' 'polkit')
 provides=('mx-boot-repair')
 conflicts=('mx-boot-repair')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.06.1.tar.gz")
-sha256sums=('aad6262189566d5890e2f095e6a6d512f2831c3dd87f6d9f2653a8b14e4303b7')
+source=("https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.07.tar.gz")
+sha256sums=('a7653fb7f0818faf8bb8fef029788b85f0f8b137e86379b657459add0a5f3e94')
 
 build() {
     cd "$srcdir/mx-bootrepair-$pkgver"
@@ -24,6 +24,7 @@ build() {
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHELPER_INSTALL_DIR=/usr/lib/mx-boot-repair \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
 
@@ -46,15 +47,18 @@ package() {
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # Install PolicyKit policy
-    install -Dm644 scripts/org.mxlinux.pkexec.mxbr-helper.policy \
+    install -Dm644 build/org.mxlinux.pkexec.mxbr-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mxbr-helper.policy"
 
     # Install desktop file
     install -Dm644 mx-boot-repair.desktop "${pkgdir}/usr/share/applications/mx-boot-repair.desktop"
 
     # Install icons
-    install -Dm644 icons/mx-boot-repair.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/mx-boot-repair.png"
+    install -Dm644 icons/mx-boot-repair.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-boot-repair.png"
     install -Dm644 icons/mx-boot-repair.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-boot-repair.svg"
+
+    # Install man page
+    install -Dm644 man/mx-boot-repair.1 "${pkgdir}/usr/share/man/man1/mx-boot-repair.1"
 
     # Install documentation
     install -dm755 "${pkgdir}/usr/share/doc/mx-bootrepair"

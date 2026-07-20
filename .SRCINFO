@@ -1,7 +1,7 @@
 pkgbase = mx-boot-repair
 	pkgdesc = GUI tool for repairing GRUB bootloader
-	pkgver = 26.06.1
-	pkgrel = 2
+	pkgver = 26.07
+	pkgrel = 1
 	url = https://mxlinux.org
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = mx-boot-repair
 	depends = polkit
 	provides = mx-boot-repair
 	conflicts = mx-boot-repair
-	source = https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.06.1.tar.gz
-	sha256sums = aad6262189566d5890e2f095e6a6d512f2831c3dd87f6d9f2653a8b14e4303b7
+	source = https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.07.tar.gz
+	sha256sums = a7653fb7f0818faf8bb8fef029788b85f0f8b137e86379b657459add0a5f3e94
 
 pkgname = mx-boot-repair
