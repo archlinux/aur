@@ -1,7 +1,7 @@
 pkgbase = wuyou-docs-bin
 	pkgdesc = Local-first desktop document workspace (prebuilt binary)
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duanluan/wuyou-docs-releases
 	arch = x86_64
 	license = unknown
