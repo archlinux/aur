@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -18,7 +18,7 @@ depends=(
     'pipewire'
     'dbus'
     'libpulse'
-    'systemd-libs'
+    'systemd'
     'brightnessctl'
     'upower'
     'bluez'
@@ -46,7 +46,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9634d8b884ef05ab926c7fc9af2382280e4c1af5a8bf4626b2348f146baa700c')
+sha256sums=('7fcd21b8d16d9e1330f0bebf8818e29fae50a91321beb5c6bfd8ade18a07d94f')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
