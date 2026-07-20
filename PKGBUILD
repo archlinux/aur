@@ -1,5 +1,5 @@
 pkgname=metabuddy
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Audio metadata tagger for MP3, FLAC, WAV, and AIFF files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/packetloss0/metabuddy/a
 sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}-main"  # Note: GitHub archives use -main not -1.0.0
+  cd "${pkgname}-main"
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
