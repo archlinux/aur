@@ -1,6 +1,6 @@
 pkgbase = cutrail
 	pkgdesc = Desktop video clipping utility for batch range exports
-	pkgver = 0.11.0
+	pkgver = 0.12.2
 	pkgrel = 2
 	url = https://github.com/sabinmarcu/cutrail
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = cutrail
 	depends = at-spi2-core
 	depends = libdrm
 	depends = alsa-lib
-	optdepends = ffmpeg: fallback ffmpeg binary for diagnostics and overrides
+	optdepends = ffmpeg: fallback ffmpeg/ffprobe binaries for diagnostics and probing
 	provides = cutrail
 	conflicts = cutrail-bin
 	conflicts = cutrail-git
 	options = !strip
 	options = !debug
-	source = cutrail-0.11.0.tar.gz::https://github.com/sabinmarcu/cutrail/archive/refs/tags/v0.11.0.tar.gz
+	source = cutrail-0.12.2.tar.gz::https://github.com/sabinmarcu/cutrail/archive/refs/tags/v0.12.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = cutrail
