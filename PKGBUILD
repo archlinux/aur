@@ -1,4 +1,3 @@
-# Maintainer: Andrey Antufyev <andrey.antufyev@yandex.ru>
 pkgname=ascon-kompas3d-v25-study-full
 pkgver=25.0.1.2738
 pkgrel=1
@@ -143,7 +142,7 @@ package() {
 	ln -s "/opt/ascon/kompas3d-v25/Bin/kStudy" "$pkgdir/usr/bin/kompas-study-v25"
 	mkdir -m0755 -p "$pkgdir/etc/profile.d"
 	echo "export KOMPAS_SDK=/opt/ascon/kompas3d-v25/SDK/" > "$pkgdir/etc/profile.d/ascon-kompas-sdk.sh"
-	ln -sn "/opt/ascon/PolynomLibrary" "$pkgdir/opt/ascon/kompas3d-v25/Libs/PolynomLib"
+	ln -sn "/opt/ascon/polynom-library" "$pkgdir/opt/ascon/kompas3d-v25/Libs/PolynomLib"
 	mkdir -m0755 -p "$pkgdir/etc/udev/rules.d"
 	mkdir -m0755 -p "$pkgdir/usr/lib/systemd/system"
 	ln -s "/opt/guardant/grdcontrol/license_wizard" "$pkgdir/usr/bin/license_wizard"
