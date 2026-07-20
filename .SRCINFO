@@ -9,7 +9,6 @@ pkgbase = meridian-git
 	makedepends = bun
 	makedepends = git
 	depends = nodejs
-	optdepends = meridian-plugin-opencode-scrub-git: scrub OpenCode-identifying prompt fingerprints before they reach Claude
 	provides = meridian
 	conflicts = meridian
 	source = meridian::git+https://github.com/rynfar/meridian.git

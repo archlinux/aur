@@ -1,4 +1,5 @@
-# Maintainer: Axel Navarro <navarroaxel gmail>
+# Maintainer: Nowaker <spam@nowaker.net>
+# Contributor: Axel Navarro <navarroaxel gmail>
 
 pkgname=meridian-git
 pkgver=1.54.0.r2.g84cbdc5
@@ -9,7 +10,6 @@ url="https://github.com/rynfar/meridian"
 license=(MIT)
 depends=(nodejs)
 makedepends=(bun git)
-optdepends=('meridian-plugin-opencode-scrub-git: scrub OpenCode-identifying prompt fingerprints before they reach Claude')
 provides=(meridian)
 conflicts=(meridian)
 install=meridian-git.install
