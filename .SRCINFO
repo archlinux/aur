@@ -1,0 +1,25 @@
+pkgbase = sweetbg-git
+	pkgdesc = Small, lightweight and static Wayland wallpaper daemon (latest git)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/sweetwm/sweetbg
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	makedepends = scdoc
+	depends = wayland
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = libwebp
+	provides = sweetbg
+	conflicts = sweetbg
+	conflicts = sweetbg-bin
+	options = !debug
+	source = git+https://github.com/sweetwm/sweetbg.git
+	sha256sums = SKIP
+
+pkgname = sweetbg-git
