@@ -7,7 +7,7 @@ pkgbase = autotools-language-server
 	license = GPL3
 	makedepends = uv
 	makedepends = python-installer
-	depends = python-lsp-tree-sitter
+	depends = python-pygls
 	source = https://files.pythonhosted.org/packages/source/a/autotools_language_server/autotools_language_server-0.1.1.tar.gz
 	sha256sums = f900d26e1bce034304905ec41b709415a38785e4a41ab0bbb170454ff3e0093a
 
