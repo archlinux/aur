@@ -1,0 +1,22 @@
+pkgbase = fast-resume-bin
+	pkgdesc = Fast fuzzy finder for coding agent session history
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/angristan/fast-resume
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	optdepends = libxcb: clipboard support on X11
+	optdepends = wl-clipboard: clipboard support on Wayland
+	provides = fast-resume
+	conflicts = fast-resume
+	source = LICENSE-2.5.0::https://raw.githubusercontent.com/angristan/fast-resume/v2.5.0/LICENSE
+	sha256sums = a76330d5de8374ae5aebe49c04c3e4b9fe2512623e7b60ab79b540fbd6988e4c
+	source_x86_64 = fast-resume-bin-2.5.0-x86_64.tar.gz::https://github.com/angristan/fast-resume/releases/download/v2.5.0/fast-resume-2.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 67cc719c60d43f3247dd4c13f73ecde33a2fa1bb9add4848220aba3c801a526e
+	source_aarch64 = fast-resume-bin-2.5.0-aarch64.tar.gz::https://github.com/angristan/fast-resume/releases/download/v2.5.0/fast-resume-2.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 181e46898cd598ba02c0c4625dea0079032f23fa51fecb7fa22629114a5391ee
+
+pkgname = fast-resume-bin
