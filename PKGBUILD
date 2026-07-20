@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.16.2
+pkgver=4.17.0
 _electronversion=39
 pkgrel=1
 pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)"
@@ -59,8 +59,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('5d383ed618462f4a8e5f1387261fb1a84e736badf233157472c250cfb1e4d7b3')
-sha256sums_x86_64=('d609defad36af451c113fd77047f6e1b2f977e2d46a5961e71e791d49b97c99a')
+sha256sums_aarch64=('0a9d4ddc6c36ebccdd9e935b0cee47f06b1123f948b7157c1f1c7d07dbe3a276')
+sha256sums_x86_64=('4a5f5a14017de99302c0c7725fc8a29f9bfa3310dc63e4eefeafb072bb068ca5')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
