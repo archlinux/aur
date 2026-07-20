@@ -2,7 +2,7 @@
 
 pkgname=arte-ogre
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GPU-native, non-destructive image editor'
 arch=('x86_64')
 url='https://github.com/visorcraft/Arte-Ogre'
@@ -21,6 +21,7 @@ depends=(
   'wayland'
 )
 makedepends=('cargo' 'pkgconf')
+options=('!lto')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'arte-ogre.desktop'
