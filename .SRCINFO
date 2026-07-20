@@ -1,5 +1,5 @@
 pkgbase = neoclock
-	pkgdesc = GTK4 desktop clock with timer, alarm, and system tray
+	pkgdesc = Lightweight and simple clock app with GTK4 support, timer, alarm, and system tray
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/neops-system/neoclock

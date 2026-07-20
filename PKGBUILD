@@ -2,7 +2,7 @@
 pkgname=neoclock
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="GTK4 desktop clock with timer, alarm, and system tray"
+pkgdesc="Lightweight and simple clock app with GTK4 support, timer, alarm, and system tray"
 arch=('x86_64')
 url="https://github.com/neops-system/neoclock"
 license=('MIT')
