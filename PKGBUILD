@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-sway
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Sway compositor)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.25')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-hyprland' 'sysc-greet' 'sysc-greet-cagebreak')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9ae9d12b0bde987250df96dd60ebdfcc0bba104b7352ec1ed1fad44b6975e24b')
+sha256sums=('5401b24c44b0c1164fa5b2f30c86f2777b6c9aa5887e377b37188b091d890898')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/sway-greeter-config' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=sysc-greet-sway.install
