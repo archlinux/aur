@@ -1,6 +1,6 @@
 pkgbase = shelly-cli
 	pkgdesc = Native Shelly package-manager CLI beta
-	pkgver = 3.0.0+3.r3403.g8fc6bff
+	pkgver = 3.0.0+4.r3410.g7707626
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
