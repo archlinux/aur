@@ -1,6 +1,6 @@
 pkgbase = cutrail-git
 	pkgdesc = Desktop video clipping utility for batch range exports
-	pkgver = 0.12.1.2.g3d67bb3
+	pkgver = 0.12.1.3.ga455368
 	pkgrel = 2
 	url = https://github.com/sabinmarcu/cutrail
 	arch = x86_64
