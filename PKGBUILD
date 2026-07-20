@@ -24,7 +24,6 @@ checkdepends=(
   ruby-rspec
   ruby-simplecov
 )
-options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('43ca5701a29ecaf9cc7c3b436da8cb31f6c3547806588979062fa394f501abf7')
 b2sums=('3561023e55bcdc9915523213e14654ccfc84375fcbba4aba5cff529c6a33a5be868787a48d5808ac4498def18104256aa26330a04a294a15e19ffe4c8e858bd9')
