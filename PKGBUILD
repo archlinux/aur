@@ -12,7 +12,7 @@
 #      chown -R b /pkg && sudo -u b makepkg -s --noconfirm"
 
 pkgname=devforge
-pkgver=0.1.51
+pkgver=0.1.52
 pkgrel=1
 pkgdesc="Tmux + kanban + git web cockpit (F.O.R.G.E.) — single-binary devforge"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
   'ripgrep: helper для television (channel content)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darkClaw921/F.O.R.G.E./archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81d679e6442a3061abf36ddf40b646c4080f8d187b46a0a3b0504424d826fc2d')
+sha256sums=('74a939876deb4e6f5e8cad7fb37048c3d6d9a0065f9bd6e3ae4ff4373a8a5535')
 options=('!lto')
 
 _srcdir="F.O.R.G.E.-$pkgver"
