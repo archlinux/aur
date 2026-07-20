@@ -1,0 +1,19 @@
+pkgbase = waybar-media-cava
+	pkgdesc = waybar CFFI plugin combining an MPRIS media widget with a live cava audio visualizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/asteroidzman/waybar-media-cava
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = git
+	depends = waybar
+	depends = gtk3
+	depends = glib2
+	depends = gtk-layer-shell
+	depends = cava
+	depends = playerctl
+	source = git+https://github.com/asteroidzman/waybar-media-cava.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = waybar-media-cava
