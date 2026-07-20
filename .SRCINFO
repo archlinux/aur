@@ -1,6 +1,6 @@
 pkgbase = let-go-bin
 	pkgdesc = Almost Clojure written in Go
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/nooga/let-go
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = let-go-bin
 	provides = lg
 	conflicts = let-go
 	options = !strip
-	source_x86_64 = lg-x86_64-1.12.1.tgz::https://github.com/nooga/let-go/releases/download/v1.12.1/let-go_1.12.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = f2811dc479b42fc38f6bf5f0ee2d089cb8095b9ae1ae097e6de962ac84a2bc1a
-	source_aarch64 = lg-aarch64-1.12.1.tgz::https://github.com/nooga/let-go/releases/download/v1.12.1/let-go_1.12.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = bad077097aa19397cdf90e57ecb4c3d3793fce4e34e9bb85a2dbaaf08e3a0c0d
+	source_x86_64 = lg-x86_64-1.12.2.tgz::https://github.com/nooga/let-go/releases/download/v1.12.2/let-go_1.12.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4a866916f005f044207ecebb6b95ef27d0240d4defc99ddfb8ae1fe8d2e3c077
+	source_aarch64 = lg-aarch64-1.12.2.tgz::https://github.com/nooga/let-go/releases/download/v1.12.2/let-go_1.12.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4fa187c41322991f9cf58f91ccc0638da3d6f87dd392aa3960271361588b581b
 
 pkgname = let-go-bin
