@@ -1,0 +1,5 @@
+[pnana-bin]
+source = "github"
+github = "Cyxuan0311/PNANA"
+use_max_tag = true
+prefix = "v"

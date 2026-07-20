@@ -1,0 +1,24 @@
+pkgbase = pnana-bin
+	pkgdesc = A modern terminal text editor built with FTXUI, inspired by Nano, Micro, and Sublime Text
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/Cyxuan0311/PNANA
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = pnana
+	conflicts = pnana
+	options = !strip
+	source = README-0.0.7.md::https://raw.githubusercontent.com/Cyxuan0311/PNANA/v0.0.7/README.md
+	source = LICENSE-0.0.7::https://raw.githubusercontent.com/Cyxuan0311/PNANA/v0.0.7/LICENSE
+	sha256sums = b058def908f9b2c1285944a4deb37e8f5546da982a08188e52d9e61ff67d2191
+	sha256sums = 15286e8fd582d982f4ba075e0fb971eb72d5526bebd91ba89f8f72d17ccfb7ae
+	source_x86_64 = pnana-x86_64-0.0.7.tgz::https://github.com/Cyxuan0311/PNANA/releases/download/v0.0.7/pnana-0.0.7-x86_64.tar.gz
+	sha256sums_x86_64 = d2eec2fef4c48eddf5506b9ef35a821ac63ff9abc4b3a95a4b667be2ef023859
+	source_aarch64 = pnana-aarch64-0.0.7.tgz::https://github.com/Cyxuan0311/PNANA/releases/download/v0.0.7/pnana-0.0.7-aarch64.tar.gz
+	sha256sums_aarch64 = e9525e0e11c3a18216c05106b0a7535c76c1a8bf16b3c9691ccb233cd6fa5866
+
+pkgname = pnana-bin
