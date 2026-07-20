@@ -1,0 +1,17 @@
+pkgbase = snailrace-bin
+	pkgdesc = Benchmark commands measuring time, CPU, memory and disk footprint
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/shellcell/snailrace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = snailrace
+	conflicts = snailrace
+	options = !debug
+	source_x86_64 = snailrace-0.0.5-amd64.tar.gz::https://github.com/shellcell/snailrace/releases/download/v0.0.5/snailrace-v0.0.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = 28ea67c1849b697b87e444a606ba9e1d1a061259c51803d76882b9af8c165d00
+	source_aarch64 = snailrace-0.0.5-arm64.tar.gz::https://github.com/shellcell/snailrace/releases/download/v0.0.5/snailrace-v0.0.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 320b53fef4087f1b6749604b98a8f16f36655312cefef1db05eef4da9d34d8b5
+
+pkgname = snailrace-bin
