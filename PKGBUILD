@@ -2,13 +2,13 @@
 pkgname=pacsea-bin
 pkgver=0.8.2
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
 options=('!strip')
-depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils')
+depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=(
     'paru: AUR package installation'
     'yay: alternative AUR helper'
@@ -17,20 +17,6 @@ optdepends=(
     'reflector: update Arch mirrors'
     'pacman-mirrors: Manjaro mirrorlist'
     'rate-mirrors: Artix mirror rating'
-    'alacritty: run external commands in a terminal'
-    'kitty: run external commands in a terminal'
-    'ghostty: run external commands in a terminal'
-    'xterm: run external commands in a terminal'
-    'gnome-terminal: run external commands in a terminal'
-    'konsole: run external commands in a terminal'
-    'xfce4-terminal: run external commands in a terminal'
-    'tilix: run external commands in a terminal'
-    'mate-terminal: run external commands in a terminal'
-    'neovim: external editor'
-    'vim: external editor'
-    'emacs: external editor'
-    'helix: external editor'
-    'nano: external editor'
     'klipper: clipboard manager on X11'
     'clamav: malware scanning of files'
     'trivy: vulnerability scanning'
