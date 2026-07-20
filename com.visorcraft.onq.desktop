@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=onQ
+Comment=Search-oriented encrypted prompt vault
+Exec=onq
+Icon=com.visorcraft.onq
+Categories=Utility;
+Terminal=false
