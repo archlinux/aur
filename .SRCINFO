@@ -1,0 +1,15 @@
+pkgbase = r-glassofast
+	pkgdesc = Fast Graphical LASSO
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=glassoFast
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-glasso
+	optdepends = r-rbenchmark
+	source = https://cran.r-project.org/src/contrib/glassoFast_1.0.1.tar.gz
+	sha256sums = ffc340420d7693af4e361811fb8cf593083c2c341b07376b902533c373addb5b
+
+pkgname = r-glassofast
