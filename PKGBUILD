@@ -1,14 +1,14 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux"
 arch=('x86_64')
 url="https://github.com/archledger/irlume"
 license=('GPL-3.0-or-later')
 # Arch ships onnxruntime 1.24+ but SPLIT into onnxruntime-cpu / -cuda / -rocm,
 # each Provides=onnxruntime. Depend on the virtual 'onnxruntime' so any variant
-# the user has satisfies it (no conflict); a fresh install prompts to pick one —
+# the user has satisfies it (no conflict); a fresh install prompts to pick one,
 # choose onnxruntime-cpu unless you want GPU execution providers.
 depends=('onnxruntime' 'tpm2-tss' 'pam')
 optdepends=('fprintd: fingerprint companion factor')
@@ -16,7 +16,7 @@ optdepends=('fprintd: fingerprint companion factor')
 # libclang at build time; without it makepkg fails on a clean system.
 makedepends=('rust' 'cargo' 'gcc' 'clang' 'git-lfs')
 # Models ride in the tag via Git LFS. GitHub's auto-generated tag tarballs do
-# NOT include LFS objects (they ship 131-byte pointer stubs) — that is exactly
+# NOT include LFS objects (they ship 131-byte pointer stubs); that is exactly
 # why this PKGBUILD clones the git tag and runs `git lfs pull` instead of using
 # the tarball. Do not "simplify" to the archive URL.
 source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}")
