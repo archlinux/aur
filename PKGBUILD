@@ -7,7 +7,7 @@
 ## options
 : ${_build_level:=1}
 
-: ${_cksum=be41c068e88f5242a19bccdbffbe077b18c47b45f627e2325504b4fab79dd1dc}
+: ${_cksum=1c63922a119675d38e3ae0f8f6ee07f15c41a786ab9ed66563749bb8c9a08e2e}
 
 _pkgtype="-vfio"
 [[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
@@ -17,7 +17,7 @@ _pkgtype="-vfio"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -48,33 +48,37 @@ makedepends=(
 
 options=('!debug' '!strip')
 
-# find _pkgver_tag for archlinux kernel config
-_dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux'
-_pkgver_tag=$(
-  curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
-    | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+" \
-    | sort -rV | head -1
-)
-: ${_pkgver_tag:=main}
+_get_tags() {
+  [ -n "$_srctag" ] && return
 
-[[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
+  # find _pkgver_tag for archlinux kernel config
+  _dl_url_arch_gitlab='https://gitlab.archlinux.org/archlinux/packaging/packages/linux'
+  _pkgver_tag=$(
+    curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch_gitlab/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
+      | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+" \
+      | sort -rV | head -1
+  )
+  : ${_pkgver_tag:=main}
 
-# find _srctag for archlinux kernel patches
-_dl_url_arch='https://github.com/archlinux/linux'
-_tags=$(
-  curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
-    | grep -Eo 'v[0-9.]\S*-arch[0-9]+' | sort -ruV
-)
+  [[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
 
-: ${_srctag:=$(grep -Eom1 "v${pkgver}-arch[0-9]+" <<< "$_tags")}
-: ${_srctag:=$(grep -Eom1 "v${_pkgver}\\S*-arch[0-9]+" <<< "$_tags")}
-: ${_srctag:=v${pkgver}-arch1}
+  # find _srctag for archlinux kernel patches
+  _dl_url_arch_github='https://github.com/archlinux/linux'
+  local _tags=$(
+    curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch_github/tags.atom" \
+      | grep -Eo 'v[0-9.]\S*-arch[0-9]+' | sort -ruV
+  )
+
+  : ${_srctag:=$(grep -Eom1 "v${pkgver}-arch[0-9]+" <<< "$_tags")}
+  : ${_srctag:=$(grep -Eom1 "v${_pkgver}\\S*-arch[0-9]+" <<< "$_tags")}
+  : ${_srctag:=v${pkgver}-arch1}
+} && _get_tags
 
 _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
-  "$_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
-  "config-$pkgver"::"$_dl_url_arch/-/raw/$_pkgver_tag/config.x86_64"
+  "$_dl_url_arch_github/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
+  "config-$pkgver"::"$_dl_url_arch_gitlab/-/raw/$_pkgver_tag/config.x86_64"
   1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(

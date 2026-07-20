@@ -1,6 +1,6 @@
 [linux-vfio]
-source = "git"
-git = "https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git"
-include_regex = '[0-9\.]+\.arch[0-9]-[0-9]'
-from_pattern = '\.arch[0-9]-[0-9]$'
+source = "archpkg"
+archpkg = "linux"
+strip_release = "true"
+from_pattern = '\.arch[0-9.-]+$'
 to_pattern = ''
