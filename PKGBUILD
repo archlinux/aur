@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=actionswf
-pkgver=1.173
-pkgrel=0
+pkgver=1.178
+pkgrel=1
 pkgdesc="Action Swf library"
 arch=('x86_64')
 url="https://github.com/colin-i/${pkgname}"
@@ -9,7 +9,7 @@ license=('0BSD')
 depends=('lib32-glibc' 'bc' 'ffdec-bin' 'python')
 makedepends=('lib32-glibc' 'bc' 'ocompiler' 'ffdec-bin' 'python' 'haxe')
 source=("${pkgname}-${pkgver}-0.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-0.tar.gz")
-sha256sums=('c1801068aa57ac77f9b50583092b6b1fb269e6d9db351db24c756b4f139bacf0')
+sha256sums=('271d49dbef134651230661e454f45cbf3c53003d49cf4a62ae0202a7102a7830')
 
 _ver_atsource_fn() {
 	cd "$pkgname-$pkgname-$pkgver-0"
