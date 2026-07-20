@@ -3,7 +3,7 @@
 
 pkgname=lumalarm
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A professional glassmorphism alarm clock for Linux with rtcwake support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shinigami1231111/lumalarm"
@@ -13,6 +13,7 @@ depends=(
     'qt6-multimedia'
     'qt6-multimedia-ffmpeg'
     'qt6-declarative'
+    'kwindowsystem'
     'util-linux'
 )
 makedepends=(
