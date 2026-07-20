@@ -1,25 +1,20 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintainer: CamelliaTse
+# Contributor: CamelliaTse
 
-options=('!strip')
+pkgname=shacklog
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="ShackLog - 无线电通联记录工具 / Radio QSO Logger (Ham Radio QSO Logger)"
+arch=('any')
+url="https://github.com/CamelliaTse/shacklog"
+license=('MIT')
+depends=('python-rich')
+makedepends=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/CamelliaTse/shacklog/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 shacklog "$pkgdir/usr/bin/shacklog"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/shacklog/README.md"
 }
