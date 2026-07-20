@@ -2,7 +2,7 @@
 
 pkgname=kanoprii
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 _pdfiumver=7947
 pkgdesc='High-performance PDF editor'
 arch=('x86_64')
@@ -57,6 +57,7 @@ build() {
   cd "Kanoprii-$pkgver"
   export CARGO_HOME="$srcdir/cargo"
   export CARGO_NET_OFFLINE=true
+  export CARGO_PROFILE_RELEASE_LTO=false
   export npm_config_cache="$srcdir/npm-cache"
   export npm_config_offline=true
 
