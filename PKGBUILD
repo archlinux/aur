@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.19.0
-pkgrel=16
+pkgrel=17
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -103,6 +103,7 @@ function build() {
     # default makepkg.conf set flags to "-O2"
     export CFLAGS=""
     export CXXFLAGS=""
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake .. \
           -DCMAKE_C_COMPILER=/usr/bin/gcc \
           -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
@@ -193,6 +194,16 @@ function package_open3d() {
     )
     cd "${srcdir}/${pkgbase}/build"
     make DESTDIR="${pkgdir}" install
+
+    # Open3D installs the viewer at /usr/bin/Open3D/Open3D, but its generated .desktop
+    # files set Exec=/usr/bin/Open3D — which is the app *directory*, not the binary — so
+    # launching from a menu fails. Point Exec at the actual executable.
+    local desktop
+    for desktop in "${pkgdir}/usr/share/applications/Open3D.desktop" \
+                   "${pkgdir}/usr/bin/Open3D/Open3D.desktop"; do
+        [ -f "${desktop}" ] && \
+            sed -i 's|^Exec=/usr/bin/Open3D |Exec=/usr/bin/Open3D/Open3D |' "${desktop}"
+    done
 }
 
 function package_python-open3d() {
