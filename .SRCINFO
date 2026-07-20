@@ -1,0 +1,26 @@
+pkgbase = asteroidz-scenefx
+	pkgdesc = scenefx fork for asteroidz — wlroots effects library with GLES2 and Vulkan (fx_vk) renderers
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/asteroidzman/asteroidz-scenefx
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = vulkan-headers
+	makedepends = glslang
+	makedepends = git
+	depends = wlroots0.20
+	depends = wayland
+	depends = libdrm
+	depends = libxkbcommon
+	depends = pixman
+	depends = vulkan-icd-loader
+	provides = asteroidz-scenefx
+	provides = libasteroidz-scenefx-0.5.so
+	conflicts = asteroidz-scenefx
+	source = git+https://github.com/asteroidzman/asteroidz-scenefx.git#tag=0.5.0
+	sha256sums = SKIP
+
+pkgname = asteroidz-scenefx
