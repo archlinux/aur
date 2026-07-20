@@ -1,7 +1,7 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous single-process Wayland compositor
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = aqueous
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	makedepends = libscenefx-0.5.so
-	makedepends = zig
+	makedepends = zig>=0.16
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon
@@ -36,13 +36,13 @@ pkgbase = aqueous
 	depends = libscenefx-0.5.so
 	optdepends = noctalia-greeter: recommended display manager / login greeter
 	optdepends = greetd: alternative minimal login manager for tuigreet
-	optdepends = tabby: recommended terminal emulator
+	optdepends = ghostty: recommended terminal emulator
 	optdepends = nemo: recommended file manager
 	optdepends = firefox: web browser
 	optdepends = wireplumber: volume/media key bindings (wpctl)
 	conflicts = aqueous-git
 	conflicts = aqueous-bin
-	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git#tag=v0.4.0
-	sha256sums = 20188055317b7160d7d145e9747bf310b240ed67fc5d07817751884ab8b3342a
+	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git#tag=v0.4.1
+	sha256sums = 2a14515d680ea136e3a3e99f6f7b687daa18b86148679a07bb9656c451942c48
 
 pkgname = aqueous

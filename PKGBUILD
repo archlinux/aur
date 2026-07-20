@@ -2,8 +2,8 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -18,10 +18,10 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'uwsm'
          'libscenefx-0.5.so')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so' 'zig')
+             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so' 'zig>=0.16')
 optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
-            'tabby: recommended terminal emulator'
+            'ghostty: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser'
             'wireplumber: volume/media key bindings (wpctl)')
@@ -30,7 +30,7 @@ install=aqueous.install
 source=(
     "aqueous::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('20188055317b7160d7d145e9747bf310b240ed67fc5d07817751884ab8b3342a')
+sha256sums=('2a14515d680ea136e3a3e99f6f7b687daa18b86148679a07bb9656c451942c48')
 
 build() {
     # Verify zig is new enough (the Aqueous compositor requires >= 0.16.0).
@@ -62,7 +62,7 @@ build() {
     # Keep the manuals deterministic in clean chroots. In-tree builds make
     # them optional when scdoc is absent, but packages must always document
     # both installed executables, including aqueousctl.
-    zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
+    zig build -Dcpu=baseline -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
         -Dman-pages=true \
         --prefix "$srcdir/aqueous-dist" install
 }
