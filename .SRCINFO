@@ -1,6 +1,6 @@
 pkgbase = celestial-gtk-theme
 	pkgdesc = A modern, customizable GTK theme with multiple color variants.
-	pkgver = 1.3.3
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/zquestz/celestial-gtk-theme
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = celestial-gtk-theme
 	optdepends = papirus-icon-theme: recommended icon theme
 	optdepends = kvantum: Qt theme support
 	conflicts = celestial-gtk-theme-git
-	source = celestial-gtk-theme-1.3.3.tar.gz::https://github.com/zquestz/celestial-gtk-theme/archive/refs/tags/1.3.3.tar.gz
-	b2sums = 62bc5f4eb1988627beeb18e79a2e03b2df412b15dc5f6a38fd11fbac05dc25041bb9f4feded55bb0fa248cbd14805297453cc8007056f3dcb7475add310fd9cc
+	source = celestial-gtk-theme-1.3.5.tar.gz::https://github.com/zquestz/celestial-gtk-theme/archive/refs/tags/1.3.5.tar.gz
+	b2sums = 4497f8c918770f07d4184a92234d60fccd1864b071bf9edef2ed9175602b89dcf751ab6ced45431cc19f7081d1629aedbaadbba41e7ec976129c4e1c8fbabc6a
 
 pkgname = celestial-gtk-theme
