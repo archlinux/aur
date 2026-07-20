@@ -1,0 +1,17 @@
+pkgbase = waybar-sysmon
+	pkgdesc = waybar CFFI plugin showing CPU and RAM usage with a per-core/swap popover
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/asteroidzman/waybar-sysmon
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = git
+	depends = waybar
+	depends = gtk3
+	depends = glib2
+	depends = gtk-layer-shell
+	source = git+https://github.com/asteroidzman/waybar-sysmon.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = waybar-sysmon
