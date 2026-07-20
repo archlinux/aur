@@ -3,8 +3,7 @@ pkgbase = virtualbox-ext-oracle
 	pkgver = 7.2.12
 	pkgrel = 1
 	url = https://www.virtualbox.org/
-	install = virtualbox-ext-oracle.install
-	arch = any
+	arch = x86_64
 	license = custom:PUEL
 	depends = virtualbox=7.2.12
 	optdepends = rdesktop: client to connect vm via RDP
