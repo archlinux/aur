@@ -1,6 +1,6 @@
 pkgbase = libspatialaudio
-	pkgdesc = Spatial audio encoding / decoding and binauralization library
-	pkgver = 0.4.0
+	pkgdesc = Spatial audio encoding/decoding and binauralization library
+	pkgver = 0.4.1
 	pkgrel = 1
 	arch = x86_64
 	license = LGPLv2
@@ -10,7 +10,7 @@ pkgbase = libspatialaudio
 	makedepends = gcc
 	makedepends = libmysofa
 	depends = libmysofa
-	source = git+https://github.com/videolan/libspatialaudio
-	sha256sums = SKIP
+	source = https://github.com/videolan/libspatialaudio/releases/download/0.4.1/libspatialaudio-0.4.1.tar.xz
+	sha256sums = 215980432e3980d7733caa7d5051887f0d604cb8a265adf1311087c0fe7d3892
 
 pkgname = libspatialaudio

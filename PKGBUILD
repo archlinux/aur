@@ -1,9 +1,9 @@
 # Maintainer: EliasofWaffle <eliascontato@protonmail.com>
 
 pkgname=libspatialaudio
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Spatial audio encoding / decoding and binauralization library"
+pkgdesc="Spatial audio encoding/decoding and binauralization library"
 license=('LGPLv2' 'Proprietary')
 arch=('x86_64')
 makedepends=(
@@ -13,25 +13,25 @@ makedepends=(
 	'libmysofa'
 	)
 depends=('libmysofa')
-source=('git+https://github.com/videolan/libspatialaudio')
-sha256sums=('SKIP')
+source=( https://github.com/videolan/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz )
+sha256sums=('215980432e3980d7733caa7d5051887f0d604cb8a265adf1311087c0fe7d3892')
 
 prepare(){
-	cd libspatialaudio
+	cd libspatialaudio-0.4.1
         
 	mkdir -p build
 }
 
 build(){
 
-	arch-meson libspatialaudio build 
+	arch-meson libspatialaudio-0.4.1 build 
 	
 	meson compile -C build
 
 }
 
 check() {
-  meson test -C build --print-errorlogs || true
+  	meson test -C build --print-errorlogs || true
 }
 
 
