@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-cpants-analyse'
-pkgver='1.02'
-pkgrel='2'
+pkgver='1.03'
+pkgrel=1
 pkgdesc="Generate Kwalitee ratings for a distribution"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-failwarnings>=0' 'perl-extutils-makemaker-cpanfile' 'perl-algorithm-diff' 'perl-class-xsaccessor' 'perl-parse-distname')
 url='https://metacpan.org/release/Module-CPANTS-Analyse'
 source=("http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Module-CPANTS-Analyse-${pkgver}.tar.gz")
-md5sums=('8e3d13918736c8d1a56f8f8d7786e669')
-sha512sums=('572633299084f531067b3ac02593017532a984f493386d839547f8e53052ab0adac250301688398198c2728404408e09b2e697291a1006c789c2774a6bcc8001')
+md5sums=('c87949a6d81bd5629cb83bd7ec8e0241')
+sha512sums=('7ccb421c8a25f22e3e6bc686b243604e8de54b292fd80e014ae631e498654e88d7ba012d34982f56b14f4cd6384579ce50bfd1a31cda06659d75caadb9ab6e2b')
 _distdir="Module-CPANTS-Analyse-${pkgver}"
 
 build() {
