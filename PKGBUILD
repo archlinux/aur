@@ -1,13 +1,13 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2258.ac7cf2b6
-pkgrel=1
+pkgver=r2401.7e60fcfd
+pkgrel=3
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
 license=('AGPL-3.0-or-later')
-depends=('glibc' 'libwebp' 'libjpeg-turbo' 'libpng' 'giflib' 'brotli' 'libraw')
+depends=('glibc' 'libwebp' 'libjpeg-turbo' 'libpng' 'giflib' 'brotli' 'libraw' 'ffmpeg')
 makedepends=('git' 'go')
 provides=('filestash')
 conflicts=('filestash')
@@ -31,6 +31,10 @@ pkgver() {
 prepare() {
     cd "${srcdir}/filestash"
 
+    # Use GOPROXY mirror to avoid IPv6 timeout to proxy.golang.org
+    # (needed for go mod tidy / go generate network fetches in prepare)
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
+
     # Fix static library linking - convert to dynamic linking for Arch
     # Arch provides only .so shared libraries, not .a static libraries
     # Pattern: -l:lib{name}.a → -l{name}
@@ -39,8 +43,8 @@ prepare() {
         {} +
 
     # Fix video cache paths - make them respect FILESTASH_CACHE_PATH env var for XDG compliance
-    # For plg_video_transcoder: remove VideoCachePath from const block and add as a var after
-    sed -i '/^\tVideoCachePath     = "data\/cache\/video\/"$/d' server/plugin/plg_video_transcoder/index.go
+    # For plg_video_transcoder: remove VIDEO_CACHE_PATH from const block and add as a var after
+    sed -i '/^\tVIDEO_CACHE_PATH  = "data\/cache\/video\/"$/d' server/plugin/plg_video_transcoder/index.go
 
     # Add path/filepath import
     sed -i '/^import (/,/^)/{
@@ -52,14 +56,14 @@ prepare() {
     sed -i '/^const ($/,/^)$/{
     /^)$/ a\
 \
-var VideoCachePath string\
+var VIDEO_CACHE_PATH string\
 \
 func init() {\
 \tcachePath := os.Getenv("FILESTASH_CACHE_PATH")\
 \tif cachePath == "" {\
 \t\tcachePath = "/var/cache/filestash"\
 \t}\
-\tVideoCachePath = filepath.Join(cachePath, "video") + "/"\
+\tVIDEO_CACHE_PATH = filepath.Join(cachePath, "video") + "/"\
 }
   }' server/plugin/plg_video_transcoder/index.go
 
@@ -108,11 +112,18 @@ func init() {\
 \t}
   }' server/common/constants.go
 
+    # Upstream added delta sync (github.com/balena-os/librsync-go import in
+    # server/pkg/files/handler_save.go) on 2026-07-14 without updating go.mod.
+    # Resolve missing modules so the build does not fail with:
+    # "no required module provides package github.com/balena-os/librsync-go"
+    go mod tidy
+
     # Generate Go code - must run from repository root where go.mod is
     go generate -x ./server/...
 }
 
 build() {
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
     cd "${srcdir}/filestash"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
