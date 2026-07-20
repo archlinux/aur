@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 pkgname=masscode-bin
 _pkgname=massCode
-pkgver=5.9.0
+pkgver=5.9.1
 _electronversion=34
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('28ad2392f3e9256a4e809365c156e2417822b6f89f120878b3e23d2623081980'
+sha256sums=('0268cc32fcf08333ee37f21469b05ed8e35b40ae8cc5e5020ed1c1c036b8522d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
