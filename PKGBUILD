@@ -1,7 +1,7 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.1.3
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
         "${pkgname}.install")
-sha256sums=('bb39fee450a0c55b011d972b82dcb8963ac19e59c37ebd22e2dd0e1829ac2fb3'
+sha256sums=('4fdedefe004771a3f2587a4d35045f72845ba08d4f2c238a63b14367089dbebb'
             '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763')
 
 package() {
@@ -40,20 +40,6 @@ exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"
 
-    # .desktop file
-    cat > "$pkgdir/usr/share/applications/anihot.desktop" << 'EOF'
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=AniHot App
-Comment=AniHot App
-Exec=anihot
-Icon=com.anihot.anihot
-Terminal=false
-Categories=Video;AudioVideo;Player;
-StartupNotify=true
-StartupWMClass=com.anihot.anihot
-EOF
 
     # Copy icon (exact path with fallback find)
     if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
