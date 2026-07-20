@@ -1,6 +1,6 @@
 pkgbase = oryxis-bin
 	pkgdesc = Modern SSH client built in Rust (encrypted vault, P2P sync, AI, Kubernetes)
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/wilsonglasser/oryxis
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = oryxis-bin
 	conflicts = oryxis
 	options = !strip
 	options = !debug
-	source_x86_64 = oryxis-bin-0.9.0-x86_64.tar.gz::https://github.com/wilsonglasser/oryxis/releases/download/v0.9.0/oryxis-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ae6c93d4a82d93508ee0116f246a424fdc3629d0eb465f693cf2b8d6dba618f3
-	source_aarch64 = oryxis-bin-0.9.0-aarch64.tar.gz::https://github.com/wilsonglasser/oryxis/releases/download/v0.9.0/oryxis-linux-aarch64.tar.gz
-	sha256sums_aarch64 = e3c828243cda058c0346c172388405567950597c04ebc91e16aea23ecbd7c838
+	source_x86_64 = oryxis-bin-0.10.0-x86_64.tar.gz::https://github.com/wilsonglasser/oryxis/releases/download/v0.10.0/oryxis-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d31c7ce203380c47162faab5fc271490b9aec0f64366316daae9aa08e414c5a7
+	source_aarch64 = oryxis-bin-0.10.0-aarch64.tar.gz::https://github.com/wilsonglasser/oryxis/releases/download/v0.10.0/oryxis-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 83f5d03220beee2d4f1bc74328a807263e261c447e0f75955788bd76949cc6fe
 
 pkgname = oryxis-bin
