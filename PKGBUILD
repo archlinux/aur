@@ -18,16 +18,9 @@ package() {
     cd "$srcdir"
     
     # Install AppImage
-    install -Dm755 "Axolotl.Launcher-${pkgver}.AppImage" "$pkgdir/usr/bin/axolotl-launcher"
-    
-    # Install desktop file
-    install -Dm644 "axolotl.desktop" "$pkgdir/usr/share/applications/axolotl.desktop"
-    
-    # Install icons
-    for size in 32 64 128 256 512; do
-        if [ -f "usr/share/icons/hicolor/${size}x${size}/apps/axolotl.png" ]; then
-            install -Dm644 "usr/share/icons/hicolor/${size}x${size}/apps/axolotl.png" \
-                "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/axolotl.png"
-        fi
-    done
+    if [ "$CARCH" = "x86_64" ]; then
+        install -Dm755 "Axolotl Launcher_${pkgver}_amd64.AppImage" "$pkgdir/usr/bin/axolotl-launcher"
+    elif [ "$CARCH" = "aarch64" ]; then
+        install -Dm755 "Axolotl Launcher_${pkgver}_aarch64.AppImage" "$pkgdir/usr/bin/axolotl-launcher"
+    fi
 }
