@@ -1,12 +1,12 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.8.2.r4.gb061930
-pkgrel=2
+pkgver=0.8.2.r47.g32c9bbe7
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
-depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils')
+depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=(
     'paru: AUR package installation'
     'yay: alternative AUR helper'
@@ -15,20 +15,6 @@ optdepends=(
     'reflector: update Arch mirrors'
     'pacman-mirrors: Manjaro mirrorlist'
     'rate-mirrors: Artix mirror rating'
-    'alacritty: run external commands in a terminal'
-    'kitty: run external commands in a terminal'
-    'ghostty: run external commands in a terminal'
-    'xterm: run external commands in a terminal'
-    'gnome-terminal: run external commands in a terminal'
-    'konsole: run external commands in a terminal'
-    'xfce4-terminal: run external commands in a terminal'
-    'tilix: run external commands in a terminal'
-    'mate-terminal: run external commands in a terminal'
-    'neovim: external editor'
-    'vim: external editor'
-    'emacs: external editor'
-    'helix: external editor'
-    'nano: external editor'
     'klipper: clipboard manager on X11'
     'clamav: malware scanning of files'
     'trivy: vulnerability scanning'
@@ -41,42 +27,17 @@ optdepends=(
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
 provides=('pacsea')
-# Empty source array - using custom source() function for sparse checkout
-source=()
-sha256sums=()
-
-# Custom source function to clone with sparse checkout (skip docs, CI, and dev-only paths).
-fetch_source() {
-  cd "$srcdir" || exit 1
-  if [ ! -d Pacsea ]; then
-    git clone --filter=blob:none --sparse https://github.com/Firstp1ck/Pacsea.git Pacsea
-  fi
-  cd Pacsea || exit 1
-  git pull --tags origin main 2>/dev/null || true
-  git sparse-checkout init --no-cone
-  git sparse-checkout set '/*' \
-    '!/Images' '!/Release-docs' '!/dev' '!/.github' '!/.cursor' \
-    '!/AGENTS.md' '!/CLAUDE.md' '!/CHANGELOG.md' '!/CODE_OF_CONDUCT.md' \
-    '!/CONTRIBUTING.md' '!/SECURITY.md' \
-    '!/deny.toml' '!/rustfmt.toml' '!/clippy.toml' '!/Makefile' '!/.gitleaks.toml' \
-    '!/PKGBUILD-bin' '!/PKGBUILD-git' '!/pacsea.code-workspace' \
-    '!/.gitattributes' '!/.gitignore'
-  git checkout 2>/dev/null || true
-}
+# Track the latest upstream main branch through makepkg's native VCS source handling.
+source=('Pacsea::git+https://github.com/Firstp1ck/Pacsea.git#branch=main')
+sha256sums=('SKIP')
 
 pkgver() {
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    fetch_source >/dev/null 2>&1
-  fi
   cd "$srcdir/Pacsea" || exit 1
-  git describe --tags --long --always \
+  git describe --tags --long --abbrev=8 --always \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    fetch_source
-  fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
