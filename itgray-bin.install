@@ -1,0 +1,60 @@
+# _configure_uid writes /etc/itgray/helper.env with the uid that should be
+# allowed to drive the helper. pacman runs as root, so the desktop user is
+# inferred from SUDO_UID (set by sudo/yay) and otherwise from the first regular
+# account. An existing file is never overwritten — it is the user's override.
+_configure_uid() {
+  [ -e /etc/itgray/helper.env ] && return 0
+  local uid="${SUDO_UID:-}"
+  if [ -z "$uid" ] || [ "$uid" = "0" ]; then
+    uid=$(awk -F: '$3 >= 1000 && $3 < 65000 { print $3; exit }' /etc/passwd)
+  fi
+  [ -n "$uid" ] || return 0
+  install -dm755 /etc/itgray
+  printf 'ITGRAY_ALLOW_UID=%s\n' "$uid" > /etc/itgray/helper.env
+  chmod 644 /etc/itgray/helper.env
+  echo "==> helper access configured for uid ${uid} (/etc/itgray/helper.env)"
+}
+
+post_install() {
+  _configure_uid
+  cat <<'MSG'
+==> ITG Ray installed to /usr/lib/itgray
+
+    The privileged TUN helper is a systemd unit. Enable and start it:
+
+        sudo systemctl enable --now itgray-helper.service
+
+    The allowed uid was detected and written to /etc/itgray/helper.env.
+    To change it later:
+
+        printf 'ITGRAY_ALLOW_UID=%s\n' "$(id -u)" | sudo install -Dm644 /dev/stdin /etc/itgray/helper.env
+        sudo systemctl restart itgray-helper.service
+
+    Note: if you previously used the in-app helper installer, remove the old
+    copy first — /etc/systemd/system/itgray-helper.service shadows this unit:
+
+        sudo systemctl disable --now itgray-helper.service
+        sudo rm -rf /etc/systemd/system/itgray-helper.service /usr/local/lib/itgray
+        sudo systemctl daemon-reload
+MSG
+}
+
+post_upgrade() {
+  _configure_uid
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  if systemctl is-active --quiet itgray-helper.service; then
+    echo "==> restarting itgray-helper.service"
+    systemctl restart itgray-helper.service >/dev/null 2>&1 || true
+  fi
+}
+
+pre_remove() {
+  systemctl disable --now itgray-helper.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  rm -f /run/itgray-helper.sock
+  rm -f /etc/itgray/helper.env
+  rmdir --ignore-fail-on-non-empty /etc/itgray 2>/dev/null || true
+}
