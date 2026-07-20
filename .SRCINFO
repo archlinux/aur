@@ -1,18 +1,18 @@
 pkgbase = agentmemory
 	pkgdesc = Persistent memory for AI coding agents based on real-world benchmarks
-	pkgver = 0.9.27
+	pkgver = 0.9.28
 	pkgrel = 1
 	url = https://github.com/rohitg00/agentmemory
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs>=20
-	noextract = agentmemory-0.9.27.tgz
+	noextract = agentmemory-0.9.28.tgz
 	options = !strip
 	options = !debug
-	source = agentmemory-0.9.27.tgz::https://registry.npmjs.org/@agentmemory/agentmemory/-/agentmemory-0.9.27.tgz
-	source = LICENSE::https://raw.githubusercontent.com/rohitg00/agentmemory/v0.9.27/LICENSE
-	sha1sums = 259550a2d4a4f6736404181e36b3ea8ddf86caf8
+	source = agentmemory-0.9.28.tgz::https://registry.npmjs.org/@agentmemory/agentmemory/-/agentmemory-0.9.28.tgz
+	source = LICENSE::https://raw.githubusercontent.com/rohitg00/agentmemory/v0.9.28/LICENSE
+	sha1sums = 31d0435983e7dcaa163c7c983843804bd2685f7c
 	sha1sums = 828dcdad822eadebbf9b29e4412b2e7e4b1f68b4
 
 pkgname = agentmemory
