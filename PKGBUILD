@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=headroom-ai
-pkgver=0.28.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90%"
 arch=('x86_64')
@@ -18,6 +18,9 @@ depends=(
   'litellm'
 )
 makedepends=('rust' 'maturin' 'python-installer')
+# The abi3 wheel's stripped _core.abi3.so leaves a dangling build-id debug
+# symlink (named after the cpython-314 .so that never gets installed).
+options=('!debug')
 optdepends=(
   'python-fastapi: proxy server support'
   'uvicorn: proxy server support'
@@ -27,9 +30,11 @@ optdepends=(
   'python-numpy: relevance scoring, evals, and memory adapters'
   'python-datasets: evaluation and voice training datasets'
   'python-huggingface-hub: Kompress model downloads'
+  'python-transformers: HuggingFace tokenizers and Kompress compression'
+  'python-hnswlib: HNSW vector memory adapter'
 )
 source=("https://files.pythonhosted.org/packages/source/h/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('6424176364ca0276e4d88539ef22806e410cfa48ce7637ad75a4a8eda1edf29f')
+sha256sums=('329dda3328f0fb45ec7128353f7fc9108f08e9676c9dc1873b4841c5c00c94bd')
 
 build() {
   cd "${pkgname//-/_}-$pkgver"
