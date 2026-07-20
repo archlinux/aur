@@ -1,14 +1,20 @@
 #!/bin/bash
+export CHROOT=${CHROOT:-$HOME/.local/share/chroot}
 
 updpkgsums
+namcap PKGBUILD --info --exclude carch || exit 1
 
-CHROOT=$HOME/.local/share/chroot
 if [[ ! -d "$CHROOT" ]]; then
-    mkdir -p ~/.local/share/chroot
-    sudo pacman -Syy
-    mkarchroot $HOME/.local/share/chroot/root base-devel
-    arch-nspawn $HOME/.local/share/chroot/root pacman -Syyu
+  mkdir -p "$CHROOT"
+# sudo pacman -Syy
+# mkarchroot $HOME/.local/share/chroot/root base-devel
+# arch-nspawn $HOME/.local/share/chroot/root pacman -Syyu
 fi
 
-makechrootpkg -c -r $CHROOT -- -Acsf .
+pkgctl build \
+  --arch x86_64 \
+  --inspect always \
+  --update-checksums
+
+# makechrootpkg -c -r $CHROOT -- -Acsf .
 makepkg --printsrcinfo >.SRCINFO

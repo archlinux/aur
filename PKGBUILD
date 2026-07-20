@@ -1,119 +1,215 @@
-# Maintainer: Levi Zim <rsworktech at outlook dot com>
+# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
+# Contributor: Levi Zim <rsworktech at outlook dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
+# shellcheck disable=SC2034,SC2154,SC2164
+
 pkgname=affine
-_pkgname=AFFiNE
-pkgver=0.26.3
-_electronversion=39
-pkgrel=1
-pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
+pkgver=0.27.2
+pkgrel=4
+pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.'
 arch=('x86_64')
-url="https://affine.pro/"
-_ghurl="https://github.com/toeverything/AFFiNE"
+url='https://affine.pro'
+_pkgname=AFFiNE
+_nodejs='nvm'
+_build_type=stable
+_electronversion=39
+_nodeversion=22
+_ghurl='https://github.com/toeverything/AFFiNE'
 license=(
-    'LicenseRef-custom'
-    'MIT'
+  "custom:${_pkgname}-LICENSE"
+  'MIT'
 )
-provides=("${pkgname}=${pkgver}")
+provides=(
+  "${pkgname}=${pkgver}"
+  "${pkgname}-${_build_type}=${pkgver}"
+)
+conflicts=('affine-bin')
 depends=(
-    "electron${_electronversion}"
+  bash
+  hicolor-icon-theme
+  "electron${_electronversion}"
 )
 makedepends=(
-    # https://github.com/toeverything/AFFiNE/blob/canary/docs/BUILDING.md#prerequisites
-    # Keep nodejs the first as we might replace it later.
-    nodejs yarn
-    # node gyp
-    python
-    # electron-packager
-    zip unzip
-    # Rust
-    cargo
-    # Misc
-    git jq
+  "electron$_electronver"
+  nvm yarn cargo cmake libgcc glibc git
+  git jq zip unzip
 )
 source=(
-    "${_pkgname}::git+https://github.com/toeverything/AFFiNE#tag=v${pkgver}"
-    "${pkgname}.sh"
-    "${pkgname}.desktop"
+  "${_pkgname}-${pkgver}::git+https://github.com/toeverything/AFFiNE#tag=v${pkgver}"
+  "${pkgname}.sh"
+  "${pkgname}.desktop"
 )
-sha256sums=('d2e42f1cd58f4e0656f506fcc47398dcb16c902d49c45e49552ffd3662dda708'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
+sha256sums=('8ce10ee143428e7c4fb5f524e9fcd4655f0ae689272dfd661837cf991a4dfab6'
+            '25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
-case "${CARCH}" in
-    x86_64)
-        _arch=x64
-        ;;
-    *)
-        _arch="${CARCH}"
-esac
+options=('strip' '!staticlibs' '!zipman' '!debug' 'buildflags' 'lto')
 
 # Allow using unsupported node.js versions
 if [[ -n "$NODEJS" ]]; then
-    makedepends[0]="$NODEJS"
+  makedepends[0]="$NODEJS"
 fi
 
 _ensure_nodejs() {
-    if [[ "$NODEJS" == "nvm" ]]; then
-        # let's be sure we are starting clean
-        which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-        export NVM_DIR="${srcdir}/.nvm"
-
-        # The init script returns 3 if version specified
-        # in ./.nvmrc is not (yet) installed in $NVM_DIR
-        # but nvm itself still gets loaded ok
-        source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-	if [[ "$1" == "install" ]]; then
-            nvm install 22
-        fi
-    fi
+  if [[ "$NODEJS" == "nvm" ]]; then
+    local NVM_DIR="$_srcdir/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    [[ "$1" == "install" ]] && nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+  fi
 }
 
 prepare() {
-    _ensure_nodejs install
-    cd "$_pkgname"
-    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 ELECTRON_SKIP_BINARY_DOWNLOAD=1 SENTRYCLI_SKIP_DOWNLOAD=1
-    _electron_pkg_ver="$(jq -r .devDependencies.electron package.json | tr -d '^' | cut -d. -f1)"
-    if [[ "$_electronversion" -ne "$_electron_pkg_ver" ]]; then
-        echo "Electron version ${_electronversion} does not match ${_electron_pkg_ver} in package.json"
-	exit 1
-    fi
-    yarn install
+  local _srcdir="${srcdir}/${_pkgname}-${pkgver}" \
+    NODEJS="${_nodejs:-nvm}"
+
+  cd "$_srcdir" || exit 1
+
+  _ensure_nodejs install
+
+  declare -rx HUSKY=0
+  declare -rx PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+  declare -rx ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  declare -rx YARN_NETWORK_CONCURRENCY=100
+  declare -rx SENTRYCLI_SKIP_DOWNLOAD=1
+  # declare -rx DEBUG='*'
+
+  # mkdir -v ./yarn-cache-nl
+  yarn config set nmMode classic
+  # yarn config set enableGlobalCache false
+  # yarn config set cacheFolder ./yarn-cache-nl
+  #yarn config set enableScripts true
+  yarn config set nmHoistingLimits none
+
+  #SYSTEM_ELECTRON_VERSION=$(</usr/lib/electron"${_electronversion}"/version)
+  # SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+  _electron_pkg_ver="$(jq -r .devDependencies.electron package.json | tr -d '^' | cut -d. -f1)"
+  if [[ "$_electronversion" -ne "$_electron_pkg_ver" ]]; then
+    echo "Electron version ${_electronversion} does not match ${_electron_pkg_ver} in package.json"
+    exit 1
+  fi
+
+  # export SYSTEM_ELECTRON_VERSION ELECTRONVERSION=$_electronversion
+  sed -i -e "
+      s/@electronversion@/$_electronversion/g
+      s/@appname@/$pkgname/g
+      s/@runname@/app.asar/g
+      s/@cfgdirname@/$_pkgname/g
+      s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+  " "$srcdir/$pkgname.sh"
+
+  yarn install
+
 }
 
 build() {
-    _ensure_nodejs
-    # https://github.com/toeverything/AFFiNE/blob/canary/docs/building-desktop-client-app.md
-    cd "$_pkgname"
-    # https://github.com/toeverything/AFFiNE/blob/v0.18.2/.github/actions/setup-version/action.yml
-    export APP_VERSION="${pkgver}"
-    ./scripts/set-version.sh $APP_VERSION
-    CFLAGS+=' -ffat-lto-objects' # https://github.com/launchbadge/sqlx/issues/3149
-    yarn affine @affine/native build
-    export BUILD_TYPE=stable
-    SKIP_NX_CACHE=1 yarn affine @affine/electron generate-assets
-    yarn config set nmMode classic
-    yarn config set nmHoistingLimits workspaces
-    find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
-    yarn install
-    SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 DEBUG='*' yarn affine @affine/electron make --platform=linux --arch="${_arch}"
-    unzip "packages/frontend/apps/electron/out/stable/make/zip/linux/${_arch}/${_pkgname}-linux-${_arch}-${pkgver}.zip"
+  local _srcdir="${srcdir}/${_pkgname}-${pkgver}"
+  local x86_64=x64
+  cd "$_srcdir" || exit 1
+
+  NODEJS=${_nodejs:-nvm}
+  ORIG_CFLAGS=$CFLAGS
+
+  _ensure_nodejs
+
+  # https://github.com/toeverything/AFFiNE/blob/canary/docs/building-desktop-client-app.md
+  # https://github.com/toeverything/AFFiNE/blob/canary/.github/actions/setup-version/action.yml
+  declare -rx APP_VERSION="$pkgver"
+  declare -rx RELEASE_VERSION="$pkgver"
+  #declare -rx DEBUG='*'
+  #declare -rx DEBUG='affine:*,napi:*'
+
+  ./scripts/set-version.sh $APP_VERSION
+
+  # 0. Build AFFiNE native
+  CFLAGS+=' -ffat-lto-objects'
+  yarn affine @affine/native build
+
+  # 1. Build the core
+  declare -rx BUILD_TYPE="${_build_type}"
+  #yarn affine @affine/electron build
+  SKIP_NX_CACHE=1 yarn affine @affine/electron generate-assets
+
+  # mkdir -v ./yarn-cache-lw
+  # yarn config set cacheFolder ./yarn-cache-lw
+  yarn config set nmHoistingLimits workspaces
+  # 2. Re-config yarn, clean up the node_modules and reinstall the dependencies
+  rm -vrf package-lock.json node_modules
+  # find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+  # rm -rf \
+  #   "$_srcdir/.cache/yarn" \
+  #   "$_srcdir/.npm"
+  # yarn add
+  # yarn add --dev
+  # yarn install --immutable-cache --inline-builds
+  yarn install
+
+  # 3. Build the desktop client app installer
+  SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 \
+    yarn affine @affine/electron make --platform=linux --arch="${!CARCH}"
+
+  ln -vrsL "./packages/frontend/apps/electron/out/$_build_type" -T ./build
+  ln -vrsL "./packages/frontend/apps/electron/resources/icons" -T ./build/icons
+
+  # mkdir ./build
+  # unzip -v "./packages/frontend/apps/electron/out/$_build_type/zip/linux/${!CARCH}"/*.zip \
+  #   -d ./build/
 }
 
+# check() {
+#   TODO
+# }
+
 package() {
-    sed -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    cd "$_pkgname/${_pkgname}-linux-${_arch}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r resources/* "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "../LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-    install -Dm644 "../packages/frontend/apps/electron/resources/icons/icon_stable_64x64.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  local _srcdir="${srcdir}/${_pkgname}-${pkgver}"
+  local x86_64=x64
+
+  install -vDm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  cd "$_srcdir" || exit 1
+
+  install -vDm755 -d \
+    "$pkgdir/usr/lib" \
+    "$pkgdir/usr/share/metainfo" \
+    "$pkgdir/opt/$pkgname/locales" \
+    "$pkgdir/opt/$pkgname/resources/app.asar.unpacked/dist"
+
+  (
+    cd "build/$_pkgname-linux-${!CARCH}"
+
+    install -vDm644 -t "$pkgdir/opt/$pkgname/locales" ./locales/*.pak
+    install -vDm644 -t "$pkgdir/opt/$pkgname/resources" \
+      \
+      resources/app.asar #resources/$pkgname.metainfo.xml \
+    #resources/app-update.yml
+    install -vDm644 -t "$pkgdir/opt/$pkgname/resources/app.asar.unpacked/dist" \
+      resources/app.asar.unpacked/dist/*
+
+    # find . -depth -maxdepth 1 -type f -exec \
+    #   install -vDm644 -t "$pkgdir/opt/$pkgname" {} \+
+
+    install -vDm644 -t "$pkgdir/usr/share/metainfo" \
+      resources/*.metainfo.xml
+
+    cd ../icons
+    install -vDm644 "./icon.png" \
+      "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -vDm644 -t "$pkgdir/opt/$pkgname/icons" ./*
+
+    for icon_size in 64 512; do
+      install -vDm644 "./icon_${_build_type}_${icon_size}x${icon_size}.png" \
+        "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/$pkgname.png"
+    done
+  )
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE-MIT"
+  install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
+
+  cd "$pkgdir/usr/lib"
+  ln -vrLs "$pkgdir/opt/$pkgname/resources" -T $pkgname
+  ln -vrLs "$pkgdir/opt/$pkgname/locales" -t $pkgname
+  # ln -vrLs "$pkgdir/opt/$pkgname/$_pkgname" -t $pkgname
+  # chmod 755 "$pkgdir/opt/$pkgname/$_pkgname"
+
 }

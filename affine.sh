@@ -15,15 +15,21 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export _FLAGS_FILE="${XDG_CONFIG_HOME}/${_CFGDIR}@appname@-flags.conf"
 declare -a _USER_FLAGS
 if [[ -f "${_FLAGS_FILE}" ]]; then
-    while read -r line; do
-        if [[ ! "${line}" =~ ^[[:space:]]*#.* ]]; then
-            _USER_FLAGS+=("${line}")
-        fi
-    done < "${_FLAGS_FILE}"
+  while read -r line; do
+    if [[ ! "${line}" =~ ^[[:space:]]*#.* ]]; then
+      _USER_FLAGS+=("${line}")
+    fi
+  done <"${_FLAGS_FILE}"
 fi
-cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
+cd "${_APPDIR}" || {
+  echo "Failed to change directory to ${_APPDIR}"
+  exit 1
+}
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} "${_USER_FLAGS[@]}" "$@"
+  exec /usr/lib/electron@electronversion@/electron "${_RUNNAME}" "${_OPTIONS}" "${_USER_FLAGS[@]}" "$@"
 else
-    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} --no-sandbox "${_USER_FLAGS[@]}" "$@"
+  echo "Are you doing something stupid?"
+  exit 1
+  # Comment line above and Uncomment line below if you are insane enough :)
+  #exec /usr/lib/electron@electronversion@/electron "${_RUNNAME}" ${_OPTIONS} --no-sandbox "${_USER_FLAGS[@]}" "$@"
 fi
