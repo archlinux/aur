@@ -1,0 +1,17 @@
+pkgbase = stalzone-server-blocker
+	pkgdesc = TUI для выборочной блокировки серверов Stalzone через nftables/iptables
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/clovexx/sz-server-blocker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	optdepends = nftables: бэкенд файрвола
+	optdepends = iptables: альтернативный бэкенд
+	source = sz-server-blocker-0.1.0.tar.gz::https://github.com/clovexx/sz-server-blocker/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 44c8ee50a64549b1f8dc2c5815a770809347d83c25bb598740eb3650cffdc5b8
+
+pkgname = stalzone-server-blocker
