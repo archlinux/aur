@@ -1,6 +1,6 @@
 pkgbase = poshbuddy-bin
 	pkgdesc = TUI manager for Oh My Posh
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/pitahayaDevSoft/poshbuddy
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = poshbuddy-bin
 	provides = poshbuddy
 	conflicts = poshbuddy
 	options = !strip
-	source = README-0.6.1.md::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.1/README.md
-	source = LICENSE-0.6.1::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.1/LICENSE
+	source = README-0.6.2.md::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.2/README.md
+	source = LICENSE-0.6.2::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.2/LICENSE
 	sha256sums = 9c6a0cda210503904530732d9b6b13816b3a442d3d0a0deaa6691b1e3e352647
 	sha256sums = 0e0fd16681a32bca32792053882fdc99d0132a40c5c4a27492557b1b87694bba
-	source_x86_64 = poshbuddy-x86_64-0.6.1.tgz::https://github.com/pitahayaDevSoft/poshbuddy/releases/download/v0.6.1/poshbuddy-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 16c04deed773de34789eb16e5ff738d82f7e03aadd4f67d84b303ac63f2ad4c1
+	source_x86_64 = poshbuddy-x86_64-0.6.2.tgz::https://github.com/pitahayaDevSoft/poshbuddy/releases/download/v0.6.2/poshbuddy-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e58af00db1552d3c1386d141d3db9aad545ef08931b48b41ed5d0c040a4051d7
 
 pkgname = poshbuddy-bin
