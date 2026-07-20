@@ -1,43 +1,23 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-
-pkgbase=python-parallax
-pkgname=('python-parallax' 'python2-parallax')
-pkgver=1.0.6
+pkgname=python-parallax
+_pkgname=parallax
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Execute commands and copy files over SSH to multiple machines at once"
 arch=('any')
 license=('BSD')
 url="https://github.com/krig/parallax"
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python-setuptools' 'python-build' 'python-installer')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('229175f4347d2bd13a10b6f871f9ea35e724ad7a730d2e613d08948bc18b1533')
+sha256sums=('071f4413a0d49838af19359f10dca161aabbbece81175ddae72a51618321f046')
 
-prepare() {
-  cd "$srcdir"
-  cp -a parallax-$pkgver python-parallax-$pkgver
-  cp -a parallax-$pkgver python2-parallax-$pkgver
-}
+
 
 build() {
-  cd "$srcdir"/python-parallax-$pkgver
-  python setup.py build
-
-  cd "$srcdir"/python2-parallax-$pkgver
-  python2 setup.py build
+  cd "$_pkgname"-"$pkgver"
+  python -m build --wheel --no-isolation
 }
-
-package_python-parallax() {
-  depends=('python')
-  cd "$srcdir"/$pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+package() {
+  cd "$srcdir/$_pkgname"-"$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-package_python2-parallax() {
-  depends=('python2')
-  cd "$srcdir"/$pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  mv "$pkgdir/usr/bin/parallax-askpass" "$pkgdir/usr/bin/parallax-askpass2"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-}
-
-# vim: set sw=2 et:
