@@ -1,6 +1,6 @@
 pkgbase = kasetto
 	pkgdesc = A declarative AI agent environment manager, written in Rust
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/pivoshenko/kasetto
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = kasetto
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
-	source = kasetto-3.5.0.tar.gz::https://github.com/pivoshenko/kasetto/archive/v3.5.0.tar.gz
-	sha256sums = 26a93e0c91940f828d8231a8ada820408d173462a82a9e4f82919e3b80d1d547
+	depends = gcc-libs
+	source = kasetto-3.6.0.tar.gz::https://github.com/pivoshenko/kasetto/archive/v3.6.0.tar.gz
+	sha256sums = 9d42d0b6b74d5f28734a41b982141152d9b0a79b8130e4404df0ef6ec236f7ca
 
 pkgname = kasetto
