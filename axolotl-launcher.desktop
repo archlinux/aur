@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Axolotl Launcher
+Comment=Cross-platform Minecraft launcher
+Exec=axolotl-launcher %U
+Icon=axolotl-launcher
+Categories=Game;
+MimeType=application/x-modrinth-modpack+zip;x-scheme-handler/axolotl;
+Terminal=false
+Keywords=minecraft;modrinth;launcher;modpack;
+StartupWMClass=Axolotl Launcher
