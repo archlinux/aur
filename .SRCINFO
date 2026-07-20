@@ -1,0 +1,15 @@
+pkgbase = otf-inter-frozen
+	pkgdesc = Inter OpenType fonts with cv05 and tnum frozen into the default mappings
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/KasumiNova/inter-frozen-repro
+	arch = any
+	license = OFL-1.1-RFN
+	makedepends = python-fonttools
+	noextract = Inter-4.1.zip
+	source = otf-inter-frozen-4.1.0-build.py::https://raw.githubusercontent.com/KasumiNova/inter-frozen-repro/v4.1.0/build.py
+	source = Inter-4.1.zip::https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
+	sha256sums = c1642a6092dcd299f22f6ba32422642f5fe1d93edd363b866c268e811c66c4b3
+	sha256sums = 9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e
+
+pkgname = otf-inter-frozen
