@@ -92,3 +92,6 @@ package_ahriman-web() {
 
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-web.ini" "$pkgdir/etc/ahriman.ini.d/00-web.ini"
 }
+sha256sums=('69754fef6a6851ecbcb9326ff733d223c6da447a4e8039eed2e3afbf5e69f253'
+            '0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8'
+            '720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013')
