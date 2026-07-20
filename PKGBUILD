@@ -150,12 +150,12 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.1
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=2
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
 _kernver="$pkgver-$pkgrel"
@@ -224,7 +224,9 @@ fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
-    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz")
+    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
+             "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0004-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 if [ "$_build_r8125" = "yes" ]; then
@@ -746,7 +748,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('68aa55635fa73ff7d8efd63e498a0d624806e9e2d24718c1fac497f2257ee9d511a16a1da12e061c9867e21a77c14afa0c30fcae6642f8ca2d19daa000d54e4d'
+b2sums=('928902b66f01408e338ebb004837c4451246db2e6329143acdb8d4a163980cf6d352274eff5a4ca27ae207535e031351292d2526fa05cc9a99b7f3e6738be3cf'
         'SKIP'
-        '6bea8dff89f6d03ee5e7c6b76934e4ffaa3511cebd9c8f9986bf6c11816dcbd88f55c9c686fca6f176c35746f3fa7fc3c286218144d38289ec6f2079f5ce8b42'
+        'a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2'
         '5a2311d5b672ad36a67d7f83b2ae1d5cbd6878386d502c6093f8e7ba37c5392152095ae737bf0c1dfdf4efb513c2bd0d6ebed2f29e212225a2494e6f18cb103f')
