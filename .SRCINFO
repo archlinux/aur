@@ -1,12 +1,13 @@
 pkgbase = liszt
 	pkgdesc = GNU ls reimplementation: byte-identical output, radix sorts, parallel stat
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenseleyFlow/liszt
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = gcc
+	optdepends = ttf-font-nerd: glyphs for --icons (any Nerd Font provider)
 	source = https://github.com/tenseleyFlow/liszt/releases/download/v0.3.0/liszt-0.3.0.tar.gz
 	sha256sums = fd3924a74174f8086ebb0141d6e3b039629cb0c8579dc304ce0d6206a219e8c4
 

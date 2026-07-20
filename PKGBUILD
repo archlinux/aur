@@ -6,12 +6,17 @@
 # symlink if you do not use mtools; decision recorded in the README.
 pkgname=liszt
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU ls reimplementation: byte-identical output, radix sorts, parallel stat"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tenseleyFlow/liszt"
 license=('GPL-3.0-or-later')
 makedepends=('gcc')
+# --icons emits private-use-area glyphs; without a Nerd Font installed
+# the terminal draws boxes. fontconfig falls back per glyph, so ANY
+# provider satisfies it whatever family the terminal is configured for -
+# hence the virtual, which every ttf-*-nerd package provides.
+optdepends=('ttf-font-nerd: glyphs for --icons (any Nerd Font provider)')
 source=("$url/releases/download/v$pkgver/liszt-$pkgver.tar.gz")
 sha256sums=('fd3924a74174f8086ebb0141d6e3b039629cb0c8579dc304ce0d6206a219e8c4')
 
