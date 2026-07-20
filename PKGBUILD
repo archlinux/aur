@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, container-friendly, optionally-distributed, fault-tolerant, highly available, leader-electing, highly configurable, precompiled, multi-architecture, portable, security-hardened, production-ready cron replacement"
 
-pkgver=1.2.24
+pkgver=1.2.25
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -35,10 +35,10 @@ source_x86_64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[2]}")
 sha256sums=('34331733e709d523f018dbdab00d54ce4243b48cd1eb59d3f0d7d65bf44ee67f'
             '9c6e5f3b6b87744d7216c3f44282fafc78409fd83c4a7a2186b2f6e97565957f'
-            '15ce735d172d6550c76de9357720de970e2f3d08671b38de18f8a48c73badbe2')
-sha256sums_i686=('fe6fccc013d6af76fed6c11c3f5c11b346b83cbcef2f3ff5e4330a050a30566f')
-sha256sums_x86_64=('434d40cc859779957fa102b9067a8c6cc714f79b52279c3029c8896f9c41ae5f')
-sha256sums_aarch64=('71aef349432586ed000b7634d8d906033126a10051cb853a80b6f94de5fa07da')
+            '1401970d437db55192d958a8922936315b7185a786357a40d5e19f6a0bf7fd59')
+sha256sums_i686=('f715a2f552f010cbef4d712d95b28cfe6cce629c100dfa3a6b8bf31b70ad1238')
+sha256sums_x86_64=('df06b2704026da88bed78d6c68deab88eb1645352ae4fced4997eb9330060497')
+sha256sums_aarch64=('cb5225a88c3949ab145ed366264526bfa3647987ed20c2ec3a425c34442535d5')
 
 
 prepare() {
