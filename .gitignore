@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
+!.pre-commit
+!.nvchecker.toml
