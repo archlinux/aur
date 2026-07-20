@@ -2,7 +2,7 @@
 
 pkgname=struidel
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='struIDEl — native Strudel IDE (egui) with JS runtime'
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later' 'LicenseRef-Unknown')
@@ -18,6 +18,7 @@ depends=(
   'libxkbcommon'
   'mesa'
   'nodejs'
+  'npm'
 )
 makedepends=(
   'cargo'
@@ -32,7 +33,7 @@ source=(
   "$_runtime-$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-b2sums=('234c74348a0e5d942dffbd309bafc157b597110bb996904d402715176c6889b62c6c0bb03bc17434caf8650cfa2042231706099d773dff2d400bfaf9947c6f90' '33969a405d981b71cced70d89a3fbdb2bb2429a0fb0b7da2429b814956a162e759305d52f9ee1b8e422a91d5bd41caa6edd78e2081bc137d47e68dbe5333fcef' '0bfc0aa9e113759634b0df22301f6250f7057a3be0259b3bc2e7353726472d676cfcde9803789004e3509a123c48f8910a93d215e0c8fb90d3b6a6118a52f031')
+b2sums=('67eb6828161479f900a343948b12e08b0bdc3533550721afb1e9a8e665a105acc03bb72398d8e1df288cf9d49329a176c5f8d3ffcdbad9a3ee9824b6af038a65' '33969a405d981b71cced70d89a3fbdb2bb2429a0fb0b7da2429b814956a162e759305d52f9ee1b8e422a91d5bd41caa6edd78e2081bc137d47e68dbe5333fcef' '0bfc0aa9e113759634b0df22301f6250f7057a3be0259b3bc2e7353726472d676cfcde9803789004e3509a123c48f8910a93d215e0c8fb90d3b6a6118a52f031')
 
 prepare() {
   cd "$_srcname"
@@ -63,7 +64,11 @@ package() {
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   install -d "$pkgdir/usr/share/struidel"
+  # Full runtime (with node_modules) used immediately after install.
   cp -a "$srcdir/$_runtime" "$pkgdir/usr/share/struidel/strudel"
+  # Source archive kept for first-run / repair bootstrap into ~/.local/share/struidel/strudel
+  install -Dm644 "$srcdir/$_runtime-$pkgver.tar.gz" \
+    "$pkgdir/usr/share/struidel/struidel-runtime.tar.gz"
 
   if [ -d visual-stage ]; then
     cp -a visual-stage "$pkgdir/usr/share/struidel/visual-stage"
