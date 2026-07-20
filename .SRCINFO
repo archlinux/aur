@@ -1,0 +1,23 @@
+pkgbase = r-metasem
+	pkgdesc = Meta-Analysis using Structural Equation Modeling
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metaSEM
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-ellipse
+	depends = r-lavaan
+	depends = r-mvtnorm
+	depends = r-numderiv
+	depends = r-openmx
+	optdepends = r-matrixcalc
+	optdepends = r-metafor
+	optdepends = r-r.rsp
+	optdepends = r-semplot
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/metaSEM_1.5.0.tar.gz
+	sha256sums = 356d9fe1cd1d83118d73a5ba6e7574e7894b7c50f50b8d5aacb2827a4cbc14b6
+
+pkgname = r-metasem
