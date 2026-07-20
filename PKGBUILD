@@ -24,11 +24,11 @@ optdepends=(
 conflicts=('oshot' 'oshot-git')
 source=(
 	"${url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}.zip"
-	"${url}/raw/refs/tags/v0.4.6/LICENSE"
-	"${url}/raw/refs/tags/v0.4.6/oshot.desktop"
+	"${url}/raw/refs/tags/${pkgver}/LICENSE"
+	"${url}/raw/refs/tags/${pkgver}/oshot.desktop"
 )
 sha256sums=(
-	"4aa5cff9151715984d4954be8663b9c550dfa9cc89f0fe57b98833842d7f7ebf"
+	"3d2b5167aca1b68b9868f42a609891a4595aa3597560218cd2dd87f5c56136e5"
 	"4a509aaabf33b5edb9cc7eea738c3d732b99a78f48c6ae81bd8eeb487edbb8e6"
 	"8857babab6f47f246abe66b025b84ce9224d777f7fa6e72b48a0b2eec4da275b"
 )
