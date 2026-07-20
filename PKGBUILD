@@ -20,7 +20,7 @@ _phpbase="84"
 _suffix=""
 pkgver="8.4.23"
 pkgbase_rc=""
-pkgrel="1"
+pkgrel="2"
 pkgbase="php84"
 pkgdesc="PHP 8.4.23 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -107,7 +107,6 @@ pkgname=(
     "php84-fileinfo"
     "php84-ctype"
     "php84-mbstring"
-    "php84-pspell"
     "php84-enchant"
     "php84-intl"
     "php84-calendar"
@@ -117,7 +116,6 @@ pkgname=(
     "php84-curl"
     "php84-snmp"
     "php84-ldap"
-    "php84-imap"
     "php84-sodium"
     "php84-ffi"
     "php84-opcache"
@@ -175,7 +173,6 @@ makedepends=(
     "gmp"
     "libzip"
     "oniguruma"
-    "aspell"
     "enchant"
     "libvoikko"
     "hspell"
@@ -187,8 +184,6 @@ makedepends=(
     "net-snmp"
     "libsasl"
     "libldap"
-    "c-client"
-    "pam"
     "libsodium"
     "libffi"
 )
@@ -220,12 +215,6 @@ _ext_depends_intl=(
     "icu"
 )
 _ext_depends_imap=(
-    "php84=8.4.23"
-    "pam"
-    "krb5"
-    "c-client"
-    "libxcrypt"
-    "openssl"
 )
 _ext_depends_gd=(
     "php84=8.4.23"
@@ -353,7 +342,6 @@ _phpextensions="\
     --enable-mbstring=shared \
     --with-onig=/usr \
     --enable-mbregex \
-    --with-pspell=shared,/usr \
     --with-enchant=shared \
     --enable-intl=shared \
     --enable-calendar=shared \
@@ -364,8 +352,6 @@ _phpextensions="\
     --with-snmp=shared,/usr \
     --with-ldap=shared,/usr \
     --with-ldap-sasl \
-    --with-imap=shared,/usr \
-    --with-imap-ssl=yes \
     --with-sodium=shared \
     --with-ffi=shared \
     --enable-opcache \
@@ -449,7 +435,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -477,7 +463,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1387,7 +1373,6 @@ package_php84-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php84-opcache() {
     pkgdesc="opcache zend module for php84"
