@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.9.27.r4.g7bed9c6
+pkgver=0.9.34.r87.g2ef0586
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -42,6 +42,33 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export YARN_NPM_REGISTRY_SERVER="https://registry.npmmirror.com"
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_HTTP_RETRY=3
+            export YARN_HTTP_TIMEOUT=10000
+        }
+    fi
+}
+_get_electron_version() {
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 3 -name "package.json" ! -name "node_modules" \
         -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
@@ -64,31 +91,7 @@ prepare() {
         --categories="Network" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export YARN_REGISTRY="https://registry.npmmirror.com"
-        export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-        export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        export NODIST_URL_BASE="https://npmmirror.com/mirrors/node/"
-        export npm_config_disturl="https://npmmirror.com/mirrors/node/"
-        export npm_config_devdir="${srcdir}/.node-gyp"
-        export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-        export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
-        export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-        export YARN_USE_HARDLINKS=true
-        # export YARN_BUILD_FROM_SOURCE=true
-        export YARN_LINK_WORKSPACE_PACKAGES=true
-        export YARN_FETCH_RETRIES=3
-        export YARN_FETCH_RETRY_TIMEOUT=10000
-        export YARN_NETWORK_CONCURRENCY=32
-        yarn config set registry "https://registry.npmmirror.com"
-        npm config set registry "https://registry.npmmirror.com"
-    fi
+    _set_build_env
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}/app/build"
     sh "${pkgname%-git}-brand.sh"
@@ -105,18 +108,19 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/desktop"
+    _set_build_env
     _ensure_local_nvm
-    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_OPTIONS="--max-old-space-size=4096" NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
-    find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources/app.asar.unpacked" -type d \
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
+    local _app_dir=$(_get_app_dir)
+    find "${_app_dir}/resources/app.asar.unpacked" -type d \
         \( -name "darwin-*" -o -name "win32-*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/desktop/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
