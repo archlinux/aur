@@ -7,7 +7,7 @@ _archrel=$(printf '%s\n' "${_kernelpkgver}" | sed -E "s/^${_kernver}\.(.*)$/\1/"
 _krel="${_kernver}-${_archrel}"
 
 pkgver="${_kernver}"
-pkgrel=5
+pkgrel=1
 pkgdesc="Patched Intel iwlwifi family modules with lar_disable support for Arch Linux kernels"
 arch=('x86_64')
 url="https://github.com/TenkyuChimata/iwlwifi-lar-patched"
@@ -40,7 +40,7 @@ source=(
 )
 
 sha256sums=(
-  'be41c068e88f5242a19bccdbffbe077b18c47b45f627e2325504b4fab79dd1dc'
+  '1c63922a119675d38e3ae0f8f6ee07f15c41a786ab9ed66563749bb8c9a08e2e'
   'da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc'
   'd0f468221c28f5f07a040f36df4dcf571d3931eef7ed273d4e57b631ef9540d3'
   '3758f059f40e24561f588829cb80384324d75b0745d5eba6f4b6313b5809e2d1'
