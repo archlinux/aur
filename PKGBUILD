@@ -2,8 +2,8 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=7.0.0.r0.gb21d415
-pkgdesc="The web version of tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
+pkgver=8.0.0.r0.gc1ac9c3
+pkgdesc="The web version of tidal.com running in electron with hifi support thanks to widevine"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
@@ -16,8 +16,8 @@ source=("git+https://github.com/Mastermindzh/tidal-hifi.git"
     "tidal-hifi.desktop"
     "tidal-hifi.xml")
 sha512sums=('SKIP'
-    'ab8fadd3eed29ad712324d2b1c91bf5a8a7e84af5ecc9b0ad9af3ecf5ffe31e048854e7346b0538c605fdb30059be1c051632fd314f0127390f3791edba6bdac'
-    "e06fce55c2d9fcaeff514b97e8b003dca4c1a0aa8c8e14c3e3b99febbc2e8af7402d2e2009147f3f57a9b6447fafd23dd69e7b4de63cf43c5d67825836ebecb5")
+            'b230c1916c71c9724a1b0a79e318dc58a4f6ee290e105186772461b1a07d0c595226081f0d885639ad613974f327a943b7f61ca71293bb7dd560472b8966848e'
+            'e06fce55c2d9fcaeff514b97e8b003dca4c1a0aa8c8e14c3e3b99febbc2e8af7402d2e2009147f3f57a9b6447fafd23dd69e7b4de63cf43c5d67825836ebecb5')
 
 getnvm() {
     if command -v nvm; then
@@ -80,14 +80,16 @@ package() {
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/${pkgname%-git}/tidal-hifi.png"
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
+    for iconPath in build/icons/[0-9]*x[0-9]*.png; do
+        iconSize="${iconPath##*/}"
+        iconSize="${iconSize%.png}"
+        install -Dm 644 "$iconPath" "${pkgdir}/usr/share/icons/hicolor/$iconSize/apps/tidal-hifi.png"
+    done
     install -Dm 644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
     install -Dm 644 "${srcdir}/tidal-hifi.xml" "${pkgdir}/usr/share/mime/packages/tidal-hifi.xml"
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
 
     ln -s "/opt/tidal-hifi/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     ln -s "/opt/tidal-hifi/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
