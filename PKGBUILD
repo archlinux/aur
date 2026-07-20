@@ -67,10 +67,12 @@ package() {
 	rm -rf "${scratch}"
 	mkdir "${scratch}"
 
-	# The downloaded .deb lands in $srcdir with the renamed source basename.
-	# `source_*[0]` is an array makepkg populates with exactly that filename
-	# for the current arch, so we use it to locate the file portably.
-	local deb="${source_x86_64[0]:-${source_aarch64[0]}}"
+	# The downloaded .deb lands in $srcdir under the filename on the LEFT of
+	# the `::` in each source_* entry. makepkg exposes the entry *as written*
+	# (i.e. "name::url"), so strip the "::url" suffix to get the local filename.
+	# ${...%%::*} strips the longest match of "::" + everything after it.
+	local entry="${source_x86_64[0]:-${source_aarch64[0]}}"
+	local deb="${entry%%::*}"
 
 	# A .deb is an `ar` archive whose `data.tar.*` member holds the actual
 	# filesystem tree. We stream that member out of the .deb and into the
