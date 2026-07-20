@@ -2,7 +2,7 @@
 
 pkgname=rura-git
 _pkgname=${pkgname%-*}
-pkgver=v1.7.0.r0.gc8b3fe8
+pkgver=v1.10.0.r0.g410fb59
 pkgrel=1
 pkgdesc="Interactive TUI pipeline editor built for rapid iteration."
 arch=('x86_64')
