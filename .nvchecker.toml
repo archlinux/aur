@@ -1,0 +1,3 @@
+[ghostty-config-cli]
+source = "npm"
+npm = "ghostty-config-cli"

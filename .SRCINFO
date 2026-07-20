@@ -1,0 +1,20 @@
+pkgbase = ghostty-config-cli
+	pkgdesc = Fullscreen terminal UI for editing your Ghostty config, with a live preview of themes, fonts, colors, and cursor.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ajr-khll/ghostty-config-cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = ghostty-config-cli
+	noextract = ghostty-config-cli-0.1.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = ghostty-config-cli-0.1.0.tgz::https://registry.npmjs.org/ghostty-config-cli/-/ghostty-config-cli-0.1.0.tgz
+	b2sums = f53177082c26011bd314652d31ee2d59f54ff49000dbf056d276c533b3372d3169f3282c554ab94a1c2c87573cf0226c3487a29aea0054154efb13a86b67b276
+
+pkgname = ghostty-config-cli
