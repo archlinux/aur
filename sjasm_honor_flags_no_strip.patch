@@ -1,0 +1,32 @@
+diff --git a/Sjasm/Makefile b/Sjasm/Makefile
+index e3e44b7..7237983 100644
+--- a/Sjasm/Makefile
++++ b/Sjasm/Makefile
+@@ -10,13 +10,13 @@ OBJECTS  = direct.o loose.o parser.o piz80.o reader.o sjasm.o sjio.o tables.o
+ 
+ BINDIR   = /usr/local/bin
+ 
+-CXXFLAGS = -Wall -O2
++CXXFLAGS ?= -Wall -O2
+ ifneq ($(ISMINGW),)
+-	CXXFLAGS += -DMINGW
++	override CXXFLAGS += -DMINGW
+ else
+-	CXXFLAGS += -DMAX_PATH=MAXPATHLEN
++	override CXXFLAGS += -DMAX_PATH=MAXPATHLEN
+ endif
+-LDFLAGS  = 
++LDFLAGS  ?=
+ 
+ DEPDIR = .deps
+ DEPFILE = $(DEPDIR)/$(*F)
+@@ -24,8 +24,7 @@ DEPFILE = $(DEPDIR)/$(*F)
+ all: $(TARGETS)
+ 
+ sjasm$(EXTENSION): $(DEPDIR) $(OBJECTS)
+-	g++ $(LDFLAGS) -o $@ $(OBJECTS) 
+-	strip $@
++	$(CXX) $(LDFLAGS) -o $@ $(OBJECTS)
+ 
+ clean:
+ 	$(RM) $(OBJECTS) $(TARGETS)

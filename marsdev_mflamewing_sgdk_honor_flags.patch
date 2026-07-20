@@ -1,0 +1,97 @@
+diff --git a/mdtools-flamewing/Makefile b/mdtools-flamewing/Makefile
+index 88cea25..4f2d7e0 100644
+--- a/mdtools-flamewing/Makefile
++++ b/mdtools-flamewing/Makefile
+@@ -54,48 +54,48 @@ tools: $(PLANEMAP) $(ENITOOL)
+ # COMPRESSION TOOLS
+ 
+ $(COMPCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/compcmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/compcmp.cc -o $@
+ $(COMPERX): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/comperx.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/comperx.cc -o $@
+ $(ENICMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/enicmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/enicmp.cc -o $@
+ $(KOSCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/koscmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/koscmp.cc -o $@
+ $(KOSPLUS): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/kosplus.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/kosplus.cc -o $@
+ $(LZKN1CMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/lzkn1cmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/lzkn1cmp.cc -o $@
+ $(NEMCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/nemcmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/nemcmp.cc -o $@
+ $(ROCKCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/rockcmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/rockcmp.cc -o $@
+ $(SAXCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/saxcmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/saxcmp.cc -o $@
+ $(SNKCMP): | mdcomp $(MARSBIN)
+-	c++ $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/snkcmp.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(COMP_INCS) $(COMP_DEPS) mdcomp/src/tools/snkcmp.cc -o $@
+ 
+ # MD TOOLS
+ 
+ $(VOICEDUMPER): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/voice_dumper.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/voice_dumper.cc -o $@
+ $(CHUNKCENSUS): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/chunk_census.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/chunk_census.cc -o $@
+ $(SPLITART): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/split_art.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/split_art.cc -o $@
+ $(CHUNKSPLIT): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/chunk_splitter.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/chunk_splitter.cc -o $@
+ $(SSEXPAND): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/ssexpand.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/ssexpand.cc -o $@
+ $(SMPS2ASM): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/smps2asm.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/smps2asm.cc -o $@
+ $(RECOLORART): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/recolor_art.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/recolor_art.cc -o $@
+ $(MAPPINGTOOL): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/mapping_tool.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/mapping_tool.cc -o $@
+ $(PLANEMAP): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/plane_map.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/plane_map.cc -o $@
+ $(ENITOOL): | fmt mdtools $(MARSBIN)
+-	c++ $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/enitool.cc -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TOOL_INCS) $(TOOL_DEPS) mdtools/src/tools/enitool.cc -o $@
+ 
+ # REPOSITORIES
+ 
+diff --git a/sgdk/Makefile b/sgdk/Makefile
+index 0717c67..34b0563 100644
+--- a/sgdk/Makefile
++++ b/sgdk/Makefile
+@@ -115,16 +115,17 @@ $(SJASM):
+ 	mkdir -p $(BIN)
+ 	rm -rf sjasm
+ 	git clone https://github.com/konamiman/sjasm --depth=1 --branch $(SJBRANCH)
++	cd sjasm && patch -p1 -i ../sjasm_honor_flags_no_strip.patch
+ 	cd sjasm/Sjasm && $(MAKE) && cp -f sjasm $(SJASM)
+ 
+ $(BINTOS): SGDK
+-	gcc SGDK/tools/bintos/src/bintos.c -o $@
++	$(CC) $(CFLAGS) SGDK/tools/bintos/src/bintos.c -o $@ $(LDFLAGS)
+ 
+ $(RESCOMP): SGDK
+ 	cp -f SGDK/bin/rescomp.jar $@
+ 
+ $(XGMTOOL): SGDK
+-	cd SGDK/tools/xgmtool/src && gcc *.c -I../inc -lm -o $@
++	cd SGDK/tools/xgmtool/src && $(CC) $(CFLAGS) *.c -I../inc -o $@ $(LDFLAGS) -lm
+ 
+ $(XGMROMBUILDER): SGDK
+ 	cp -f SGDK/bin/xgmRomBuilder.jar $@

@@ -18,6 +18,12 @@ pkgbase = marsdev-git
 	provides = sgdk
 	source = git+https://github.com/andwn/marsdev#commit=HEAD
 	source = remove_strip_flag.patch
+	source = marsdev_mflamewing_sgdk_honor_flags.patch
+	source = png2xsp_honor_flags.patch
+	source = sjasm_honor_flags_no_strip.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

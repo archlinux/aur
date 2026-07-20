@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index d2007dd..c0326ce 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@ CP := cp
+ MKDIR := mkdir
+ RM := rm
+ CC := gcc
+-CFLAGS := -O3 -Wall
++CFLAGS ?= -O3 -Wall
+ INSTALL_PREFIX := /usr/bin
+ ifdef SYSTEMROOT
+ 	APPEXT := .exe
+@@ -24,7 +24,7 @@ EXECNAME := $(APPNAME)$(APPEXT)
+ all: $(EXECNAME)
+ 
+ $(EXECNAME): $(OBJECTS_C)
+-	$(CC) $(CFLAGS) $(OBJECTS_C) -o $@
++	$(CC) $(CFLAGS) $(OBJECTS_C) -o $@ $(LDFLAGS)
+ 
+ $(OBJECTS_C_DIR)/%.o: %.c $(SOURCES_H)
+ 	$(MKDIR) -p $(OBJECTS_C_DIR)/$(<D)
