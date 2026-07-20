@@ -1,6 +1,6 @@
 pkgbase = python-sli-ui-toolkit
 	pkgdesc = Reusable PySide6 UI toolkit primitives for SLI desktop tools
-	pkgver = v3.1.9
+	pkgver = v3.1.11
 	pkgrel = 1
 	url = https://github.com/Loganavter/sli-ui-toolkit
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-sli-ui-toolkit
 	depends = python
 	depends = pyside6
 	depends = python-markdown
-	source = https://files.pythonhosted.org/packages/source/s/sli-ui-toolkit/sli_ui_toolkit-v3.1.9.tar.gz
-	sha256sums = e86670a9e8b50d42779b2430b43bd75cc17ccb474b4ac7f4c6cd0aa750e537fa
+	source = https://files.pythonhosted.org/packages/source/s/sli-ui-toolkit/sli_ui_toolkit-v3.1.11.tar.gz
+	sha256sums = 683a15f5abb5dca938085a8396ef30a7cb36e2c8eb9e5054acfc38da76525b89
 
 pkgname = python-sli-ui-toolkit
