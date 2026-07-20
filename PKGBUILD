@@ -58,10 +58,10 @@
 #   so -w/-h game resolution is honoured.
 pkgname=wine-gohryt-wayland-wow64
 pkgver=11.13
-pkgrel=1
+pkgrel=4
 _monover=11.2.0   # must match MONO_VERSION in dlls/appwiz.cpl/addons.c
 _geckover=2.47.4  # must match GECKO_VERSION in dlls/appwiz.cpl/addons.c
-pkgdesc="Compatibility layer for running Windows programs (pure WoW64, Wayland-only, NTSYNC, GStreamer)"
+pkgdesc="Compatibility layer for running Windows programs. This is my custom build with special fixes for wayland, vulkan and wow64.  No steam flickering, Unreal and Unity games are working properly without shaman dances."
 url="https://www.winehq.org"
 arch=(x86_64)
 options=(lto !debug)

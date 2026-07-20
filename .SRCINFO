@@ -1,7 +1,7 @@
 pkgbase = wine-gohryt-wayland-wow64
-	pkgdesc = Compatibility layer for running Windows programs (pure WoW64, Wayland-only, NTSYNC, GStreamer)
+	pkgdesc = Compatibility layer for running Windows programs. This is my custom build with special fixes for wayland, vulkan and wow64. No steam flickering, Unreal and Unity games are working properly without shaman dances.
 	pkgver = 11.13
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
