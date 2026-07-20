@@ -13,7 +13,7 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback"
+    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback wiki"
     local -r mcp_subcommands="add add-json remove get list enable disable reset-project-choices"
     local -r plugin_subcommands="list validate install i uninstall remove enable disable update marketplace mp"
     local -r plugin_marketplace_subcommands="add remove rm list update"
@@ -37,7 +37,7 @@ _qodercli() {
     local i j
     for ((i = 1; i < cword; i++)); do
         case "${words[i]}" in
-            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|remote-control|status|feedback)
+            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|remote-control|status|feedback|wiki)
                 subcmd="${words[i]}"
                 break
                 ;;

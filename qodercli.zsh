@@ -23,6 +23,7 @@ _qodercli() {
         'remote-control:Start the remote-control daemon'
         'status:Show session status'
         'feedback:Submit feedback'
+        'wiki:Generate wiki documentation for projects'
     )
 
     mcp_commands=(
@@ -128,7 +129,7 @@ _qodercli() {
             local idx
             for ((idx = 1; idx <= $#words; idx++)); do
                 case ${words[idx]} in
-                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|remote-control|status|feedback)
+                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|remote-control|status|feedback|wiki)
                         cmd=${words[idx]}
                         cmd_index=$idx
                         break
@@ -317,6 +318,9 @@ _qodercli() {
                     _arguments {-m,--message}'[Commit message]:message:' {-w,--workspace}'[Working directory]:directory:_directories' '--hook[Hook mode]' '(- *)'{-h,--help}'[Show help]'
                     ;;
                 login)
+                    _arguments '(- *)'{-h,--help}'[Show help]'
+                    ;;
+                wiki)
                     _arguments '(- *)'{-h,--help}'[Show help]'
                     ;;
             esac
