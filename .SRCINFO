@@ -1,0 +1,26 @@
+pkgbase = ardali-gaming-bin
+	pkgdesc = Linux game launcher and compatibility manager for Wine, Proton and Steam
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Muhammed-Dali/ArDali-Gaming
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fuse2
+	optdepends = gamemode: per-game performance optimization
+	optdepends = gamescope: game scaling and display isolation
+	optdepends = libsecret: secure SteamGridDB API key storage
+	optdepends = steam: Steam library integration and game launching
+	provides = ardali-gaming
+	conflicts = ardali-gaming
+	noextract = ArDali.Gaming_0.2.1_amd64.AppImage
+	options = !strip
+	source = com.ardali.gaming.desktop::https://raw.githubusercontent.com/Muhammed-Dali/ArDali-Gaming/v0.2.1/packaging/linux/ardali-gaming.desktop
+	source = ardali-gaming.png::https://raw.githubusercontent.com/Muhammed-Dali/ArDali-Gaming/v0.2.1/src-tauri/icons/icon.png
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/Muhammed-Dali/ArDali-Gaming/v0.2.1/LICENSE
+	sha256sums = e96d4e969c2dd217561c95a74b2c73ba4b1258d000021490989381260670bd53
+	sha256sums = a6e16932ab0367649a6e36088c26b99d65a0c611f80725e61afe77cdf0a4abb9
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = https://github.com/Muhammed-Dali/ArDali-Gaming/releases/download/v0.2.1/ArDali.Gaming_0.2.1_amd64.AppImage
+	sha256sums_x86_64 = 2873441d27680395c9f04d642971857bd04cacb8bb594686cab89378b188fe2d
+
+pkgname = ardali-gaming-bin
