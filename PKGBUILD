@@ -6,51 +6,61 @@
 # GPG keys: https://github.com/visorcraft.gpg
 
 pkgname=grexa
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/visorcraft/Grexa"
-license=('GPL-3.0-only')
+license=(GPL-3.0-only)
 depends=(
-    'qt6-base'
-    'qt6-declarative'
-    'kirigami'
-    'hicolor-icon-theme'
-    'poppler')
+    glibc
+    libgcc      libgcc_s.so
+    libstdc++   libstdc++.so
+    qt6-base
+    qt6-declarative
+    kirigami
+    hicolor-icon-theme
+    poppler)
 makedepends=(
-    'cargo'
-    'pkgconf'
-    'qt6-tools'
-    'clang'
-    'ninja'
-    'git')
+    cargo
+    pkgconf
+    qt6-tools
+    clang
+    ninja
+    git)
 optdepends=(
     'podman: container search via rootless Podman'
     'docker: container search via Docker'
     'kwalletmanager: API key storage (KDE)'
     'gnome-keyring: API key storage (non-KDE)')
-provides=('grexa-cli')
-options=('!lto')
+provides=(grexa-cli)
+options=(!lto)
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('7b7d6535c144f167db91d15136907c68ba2c9acb136d5a0b3d17562b04a74a37')
+sha256sums=('cc362e660fa83660fef52cbaa90bf6b197a13f6452a28b5a384597a394128933')
 validpgpkeys=('198BC500E85FE8B2C24227B90526453161165CE5')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
     cargo fetch --locked --target host-tuple
+    cargo tree --locked --all-features --prefix=none
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBGIT2_NO_VENDOR=1
     cd "$pkgname"
     cargo build --workspace --release --frozen --all-features
+    ./target/release/grexa-cli manpage > grexa-cli.1
+    ./target/release/grexa-cli completions bash > grexa-cli.bash
+    ./target/release/grexa-cli completions fish > grexa-cli.fish
+    ./target/release/grexa-cli completions zsh > grexa-cli.zsh
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
+    export LIBGIT2_NO_VENDOR=1
     cd "$pkgname"
     cargo test --workspace --frozen
 }
@@ -71,15 +81,11 @@ package() {
             "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
     done
 
-    "$pkgdir/usr/bin/grexa-cli" manpage \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man1/grexa-cli.1"
+    install -Dm644 grexa-cli.1 -t    "$pkgdir/usr/share/man/man1/"
 
-    "$pkgdir/usr/bin/grexa-cli" completions bash \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/grexa-cli"
-    "$pkgdir/usr/bin/grexa-cli" completions fish \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/grexa-cli.fish"
-    "$pkgdir/usr/bin/grexa-cli" completions zsh \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_grexa-cli"
+    install -Dm644 grexa-cli.bash    "$pkgdir/usr/share/bash-completion/completions/grexa-cli"
+    install -Dm644 grexa-cli.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+    install -Dm644 grexa-cli.zsh     "$pkgdir/usr/share/zsh/site-functions/_grexa-cli"
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
