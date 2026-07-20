@@ -2,7 +2,7 @@
 _name=soundshed-guitar
 pkgname=${_name,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A guitar/bass effects app and plugin."
 arch=(x86_64)
 url="https://guitar.soundshed.com"
@@ -15,5 +15,8 @@ sha256sums=('5359afc2c1201fc351c8a61c2eba549f661f4c4e3402a11f7365e4266c11af2d')
 
 package() {
   rm SoundshedGuitar-${pkgver}-Linux-x64.zip
-  cp -a "$srcdir" "$pkgdir"
+  cp -a $srcdir/. $pkgdir
+  cd $pkgdir
+  mkdir $pkgdir/usr/bin
+  ln -s /opt/Soundshed/soundshed-guitar/soundshed-guitar $pkgdir/usr/bin/soundshed-guitar
 }
