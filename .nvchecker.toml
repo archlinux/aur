@@ -1,0 +1,5 @@
+[python-okta-sdk]
+source = "github"
+github = "okta/okta-sdk-python"
+prefix = "v"
+use_latest_release = true
