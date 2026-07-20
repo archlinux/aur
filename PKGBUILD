@@ -15,7 +15,7 @@ license=('MIT')
 depends=('pipewire' 'wireplumber')
 makedepends=('rust' 'cargo' 'pipewire' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_ghrepo}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a9bea9bcac0acb809f8d185840bdaccc013ed492d7b2994d84a7378c236f35d')
+sha256sums=('ea76c737173d9ae8fd62f9ec497495890a7cb3f4a015df674250d38381bae259')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
