@@ -1,7 +1,11 @@
 # Maintainer: Lumina Nao <luminanao@duck.com>
+# AUR AGENT: publish this file WHOLESALE (plus regenerated .SRCINFO).
+# Do NOT bump pkgver in a stale AUR copy - that has shipped broken source
+# refs, missing deps, and missing options three times. Verify after publish:
+# llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 
 pkgname=llama-hdd
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -87,6 +91,36 @@ _select_backend() {
     echo "Building llama-hdd with backend: $_backend" >/dev/tty
 }
 
+# Backend build deps are not in makedepends because the backend is chosen at
+# build time; verify them up front so the build fails with a pacman hint
+# instead of deep inside CMake.
+_check_backend_deps() {
+    local missing=()
+    case "$_backend" in
+        vulkan)
+            [ -f /usr/include/vulkan/vulkan.h ] || missing+=(vulkan-headers)
+            command -v glslc >/dev/null 2>&1 || missing+=(shaderc)
+            command -v glslangValidator >/dev/null 2>&1 || missing+=(glslang)
+            command -v spirv-as >/dev/null 2>&1 || missing+=(spirv-tools)
+            [ -f /usr/lib/cmake/SPIRV-Headers/SPIRV-HeadersConfig.cmake ] || \
+            [ -f /usr/share/cmake/SPIRV-Headers/SPIRV-HeadersConfig.cmake ] || \
+            [ -f /usr/lib/cmake/SPIRV-Headers/spirv-headers-config.cmake ] || missing+=(spirv-headers)
+            ;;
+        cuda)
+            command -v nvcc >/dev/null 2>&1 || [ -x /opt/cuda/bin/nvcc ] || [ -x /usr/local/cuda/bin/nvcc ] || missing+=(cuda)
+            ;;
+        rocm)
+            command -v hipcc >/dev/null 2>&1 || [ -d /opt/rocm ] || missing+=(rocm-hip-sdk)
+            ;;
+    esac
+    if [ "${#missing[@]}" -gt 0 ]; then
+        echo "ERROR: the '$_backend' backend needs packages that are not installed:" >&2
+        echo "  sudo pacman -S --needed ${missing[*]}" >&2
+        echo "Install them and rebuild, or pick another backend (LLAMA_HDD_BACKEND=cpu)." >&2
+        return 1
+    fi
+}
+
 pkgver() {
     cd "$pkgname"
     git describe --tags --abbrev=0 | sed 's/^v//'
@@ -94,6 +128,7 @@ pkgver() {
 
 build() {
     _select_backend
+    _check_backend_deps
 
     cd "$pkgname"
 
@@ -106,6 +141,13 @@ build() {
         -DLLAMA_BUILD_TESTS=OFF
         -DLLAMA_BUILD_EXAMPLES=ON
         -DLLAMA_BUILD_SERVER=ON
+        # The embedded web UI provisions assets via npm (BUILD_UI) or an HF
+        # network download (USE_PREBUILT_UI) at build time - non-deterministic,
+        # AUR forbids network in build(), and the HF bucket can serve a bundle
+        # that fails this fork's asset validation (missing loading.html).
+        # Both OFF = clean no-UI fallback; the API is unaffected.
+        -DLLAMA_BUILD_UI=OFF
+        -DLLAMA_USE_PREBUILT_UI=OFF
     )
 
     case "$_backend" in
