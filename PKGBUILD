@@ -2,7 +2,7 @@
 pkgname=sinestesia
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Visualizzatore audio per Linux con effetti e theming di sistema (Rust + GTK4)"
+pkgdesc="Audio visualizer for Linux with effects and system theming (Rust + GTK4)"
 arch=('x86_64')
 url="https://github.com/AkusenArcade/Sinestesia"
 license=('MIT')
