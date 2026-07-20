@@ -1,0 +1,5 @@
+[uftrace]
+source = "github"
+github = "namhyung/uftrace"
+use_latest_release = true
+prefix = "v"
