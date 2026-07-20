@@ -3,7 +3,7 @@
 pkgname=python-sli-ui-toolkit
 _pyname=sli-ui-toolkit
 _distname=sli_ui_toolkit
-pkgver=3.1.8
+pkgver=v3.1.9
 pkgrel=1
 pkgdesc="Reusable PySide6 UI toolkit primitives for SLI desktop tools"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 checkdepends=('python-pytest' 'python-pytest-qt')
 source=("https://files.pythonhosted.org/packages/source/s/${_pyname}/${_distname}-${pkgver}.tar.gz")
 # Refresh after the PyPI sdist is published for this version.
-sha256sums=('c7a582d2192925561cc70cb4c5e1714192576043b6069c6ec07dd4b4fe2bcb28')
+sha256sums=('e86670a9e8b50d42779b2430b43bd75cc17ccb474b4ac7f4c6cd0aa750e537fa')
 
 build() {
   cd "${_distname}-${pkgver}"
