@@ -21,8 +21,11 @@ conflicts=('colony' 'colony-git')
 source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/colony-linux"
         "${_pkgname}-icon-${pkgver}.png::https://raw.githubusercontent.com/Project-Colony/Colony/v${pkgver}/assets/icons/icon.png")
 noextract=("${_pkgname}-${pkgver}")
-sha256sums=('0a01d766115222d5e7ef7de5af5746abd4baa0b46cfdbe0ddab2cb5f3225e990'
-            'b2a6ae79e9cea7718d0457f9e2623d3a62a2fc4978f4ff0ef5457c1b865b3af4')
+# Split sums so the release automation can update the binary's hash with a
+# simple line-anchored sed without touching the (stable) icon hash.
+_binsha='0a01d766115222d5e7ef7de5af5746abd4baa0b46cfdbe0ddab2cb5f3225e990'
+_iconsha='b2a6ae79e9cea7718d0457f9e2623d3a62a2fc4978f4ff0ef5457c1b865b3af4'
+sha256sums=("${_binsha}" "${_iconsha}")
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
