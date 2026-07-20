@@ -1,4 +1,4 @@
-# Maintainer: MrQuantumOFF <demiryerli@gmail.com>
+# Maintainer: MrQuantumOFF <me@mrquantumoff.dev>
 
 # GitHub slug the release tarball is fetched from. The release pipeline rewrites
 # this line to ${{ github.repository }} at publish time, so it is always correct
@@ -6,7 +6,7 @@
 _ghrepo="mrquantumoff/audioclock"
 
 pkgname=audioclock
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Inspect and manage PipeWire and WirePlumber audio clock and format settings"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('pipewire' 'wireplumber')
 makedepends=('rust' 'cargo' 'pipewire' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_ghrepo}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5042ee344981e1ce79d10da8e28456feba829c8ae801f659321d0c270b6db08')
+sha256sums=('1a9bea9bcac0acb809f8d185840bdaccc013ed492d7b2994d84a7378c236f35d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
