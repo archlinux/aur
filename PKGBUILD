@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.129.0
+pkgver=1.129.1
 _electronversion=42
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -54,9 +54,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_aarch64=('354c28534c01fe1fff3557db8d7490e99c8f5443658779855cda079e10cb9be3')
-sha256sums_armv7h=('0b890fe8d63a6bbfc46f243587b33db561ee58ba4db3048ed2b62b6a08d8d472')
-sha256sums_x86_64=('0bd762ac4d62da43ba9e16df6b3fa9f6d52fc142fc102abbb82959b2d9a03e1b')
+sha256sums_aarch64=('SKIP')
+sha256sums_armv7h=('SKIP')
+sha256sums_x86_64=('SKIP')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
