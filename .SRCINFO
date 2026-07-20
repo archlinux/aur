@@ -1,0 +1,19 @@
+pkgbase = waybar-weather-cffi
+	pkgdesc = waybar CFFI plugin for weather (condition icon + temperature, hourly/daily popover)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/asteroidzman/waybar-weather
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = git
+	depends = waybar
+	depends = gtk3
+	depends = glib2
+	depends = json-glib
+	depends = gtk-layer-shell
+	depends = curl
+	source = waybar-weather-cffi::git+https://github.com/asteroidzman/waybar-weather.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = waybar-weather-cffi
