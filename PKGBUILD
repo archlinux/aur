@@ -5,20 +5,22 @@ pkgdesc='Speech recognition research toolkit'
 pkgver=1.8.4
 pkgrel=1
 depends=(gcc-libs)
-makedepends=(gcc-fortran git python sox subversion unzip wget)
+makedepends=(gcc-fortran git python sox subversion unzip)
 arch=('x86_64')
 url='https://github.com/kaldi-asr/kaldi'
 license=('Apache-2.0')
 options=(!lto)
 _commit='e02e35f0254bb033fab73d1df99fc34123e31d56'
-source=("${url}/archive/${_commit}.tar.gz")
-sha256sums=('fd77fa31e8f21ccbc050bd0ee9ab80e3e0d83ad827b4e5a4d9a4cf7144ff62c1')
+source=("${url}/archive/${_commit}.tar.gz"
+        "https://www.openslr.org/resources/2/openfst-${pkgver}.tar.gz")
+sha256sums=('fd77fa31e8f21ccbc050bd0ee9ab80e3e0d83ad827b4e5a4d9a4cf7144ff62c1'
+            '529353f0c11544d8f93de36da75cf1be11c0dc012b4a819b60ac673a689d47ab')
 
 build () {
 	cd $srcdir/$_pkgname-$_commit/tools
 	mkdir -p python
 	touch python/.use_default_python
-	make openfst
+	make DOWNLOAD_DIR=$srcdir openfst
 }
 
 package () {
