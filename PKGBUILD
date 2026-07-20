@@ -1,5 +1,5 @@
 pkgname='volla-messages-bin'
-pkgver=0.12.7
+pkgver=0.12.8
 pkgrel=1
 pkgdesc='Private chat for Android and Desktop environments.'
 arch=('x86_64' 'aarch64')
