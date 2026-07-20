@@ -1,0 +1,5 @@
+[src-cli-bin]
+source = "github"
+github = "sourcegraph/src-cli"
+use_latest_release = true
+prefix = "v"
