@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=6.18.38
-_pkgrel=4
+_pkgver=6.18.39
+_pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 _KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
@@ -19,9 +19,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-lts-6.18.38-4-x86_64.pkg.tar.zst
-_headerspkg=linux-lts-headers-6.18.38-4-x86_64.pkg.tar.zst
-_docspkg=linux-lts-docs-6.18.38-4-x86_64.pkg.tar.zst
+_kernpkg=linux-lts-6.18.39-1-x86_64.pkg.tar.zst
+_headerspkg=linux-lts-headers-6.18.39-1-x86_64.pkg.tar.zst
+_docspkg=linux-lts-docs-6.18.39-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -29,9 +29,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('12e87be691c8e32d6a27497493a33a62911ea568366a5d7d9aca16f9fff64a53'
-            '8828d29a83ec26575b1ff507bed75c095eae2d3b054fd457c5cea7c28ebce0db'
-            'c58948986c7d6acd8b06d9c16b8c462f6bd9d1dabd57a4020ca3329f999ef01a')
+sha256sums=('d40c8e9d2df1239836bca731db5f3f89c843509d6a416af2ea7ab1e4768dd4f9'
+            '63bbfb8c43fc50867b49341fca9280045b40b096aa9a65f1254555b424a256f9'
+            'd31f36f6188a539a57e00e6032b08579e36fda20241d238313115eeb57db63ea')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -49,16 +49,18 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.18.38-4-lts-bin() {
+package_linux6.18.39-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
   optdepends=('linux-firmware: firmware images needed for some devices'
+              'linux-lts-headers: headers and scripts for building modules'
               'scx-scheds: to use sched-ext schedulers'
               'wireless-regdb: to set the correct wireless channels of your country')
   provides=(KSMBD-MODULE
+            NTSYNC-MODULE
             VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(wireguard-lts)
@@ -68,9 +70,17 @@ package_linux6.18.38-4-lts-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
-package_linux6.18.38-4-lts-headers-bin() {
+package_linux6.18.39-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${_KERNNAME}"
-  depends=(pahole)
+  depends=(binutils
+           glibc
+           libelf
+           libgcc
+           openssl
+           pahole
+           xxhash
+           zlib
+           zstd)
   conflicts=("${_pkgname}-headers")
   provides=(LINUX-HEADERS)
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -79,7 +89,7 @@ package_linux6.18.38-4-lts-headers-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}-headers","${_versioned_pkgname}-headers-bin"}
 }
 
-package_linux6.18.38-4-lts-docs-bin() {
+package_linux6.18.39-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
