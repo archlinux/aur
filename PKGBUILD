@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=2026.0.4
-pkgrel=2
+pkgver=2026.1.2
+pkgrel=1
 pkgdesc="Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             '08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851')
-sha256sums_aarch64=('f506ec35558035de23b3c2263884879286f6fb9990c4f9a52ac620915f712c37')
-sha256sums_x86_64=('4c6e19d409cb1bc79ea48944f4e3ba7f326aab82a15b472802455707a5e47777')
+sha256sums_aarch64=('321f57bd0127fbaf4491a594868cfe9b5820ac2d2b2521d5fbb4c8906134fd9c')
+sha256sums_x86_64=('01d78717be06b58ef7cfe59957dd40b2cd876ddc24712720c58bcb9ea21b8ff5')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -57,7 +57,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+    cp -a "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"

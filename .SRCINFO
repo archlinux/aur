@@ -1,7 +1,7 @@
 pkgbase = ulogviewer-bin
 	pkgdesc = Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)
-	pkgver = 2026.0.4
-	pkgrel = 2
+	pkgver = 2026.1.2
+	pkgrel = 1
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
 	arch = x86_64
@@ -13,17 +13,17 @@ pkgbase = ulogviewer-bin
 	optdepends = android-sdk-platform-tools
 	optdepends = git
 	optdepends = libimobiledevice
-	provides = ulogviewer=2026.0.4
+	provides = ulogviewer=2026.1.2
 	conflicts = ulogviewer
-	noextract = ulogviewer-2026.0.4-x86_64.zip
+	noextract = ulogviewer-2026.1.2-x86_64.zip
 	options = !strip
-	source = LICENSE-2026.0.4::https://raw.githubusercontent.com/carina-studio/ULogViewer/2026.0.4/LICENSE
+	source = LICENSE-2026.1.2::https://raw.githubusercontent.com/carina-studio/ULogViewer/2026.1.2/LICENSE
 	source = ulogviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
 	sha256sums = 08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851
-	source_aarch64 = ulogviewer-2026.0.4-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.0.4/ULogViewer-2026.0.4-linux-arm64.zip
-	sha256sums_aarch64 = f506ec35558035de23b3c2263884879286f6fb9990c4f9a52ac620915f712c37
-	source_x86_64 = ulogviewer-2026.0.4-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.0.4/ULogViewer-2026.0.4-linux-x64.zip
-	sha256sums_x86_64 = 4c6e19d409cb1bc79ea48944f4e3ba7f326aab82a15b472802455707a5e47777
+	source_aarch64 = ulogviewer-2026.1.2-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.1.2/ULogViewer-2026.1.2-linux-arm64.zip
+	sha256sums_aarch64 = 321f57bd0127fbaf4491a594868cfe9b5820ac2d2b2521d5fbb4c8906134fd9c
+	source_x86_64 = ulogviewer-2026.1.2-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.1.2/ULogViewer-2026.1.2-linux-x64.zip
+	sha256sums_x86_64 = 01d78717be06b58ef7cfe59957dd40b2cd876ddc24712720c58bcb9ea21b8ff5
 
 pkgname = ulogviewer-bin
