@@ -3,7 +3,7 @@
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git
     python-libuuu-git)
-pkgver=1.5.243.r9.gead8712
+pkgver=1.5.243.r10.g59c7638
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -13,14 +13,14 @@ license=('BSD-3-Clause')
 groups=()
 depends=(
     bzip2
-    glibc
     libgcc
     libstdc++
     libusb
     tinyxml2
     openssl
     zlib
-    zstd)
+    zstd
+)
 makedepends=(
     cmake
     git
@@ -100,7 +100,6 @@ package_mfgtools-git() {
     conflicts=('uuu' ${pkgname%-git})
     depends=(
         bzip2
-        glibc
         libgcc
         libstdc++
         libusb
@@ -145,7 +144,6 @@ package_python-libuuu-git() {
     depends=(
         python
         bzip2
-        glibc
         libgcc
         libstdc++
         libusb
