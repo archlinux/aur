@@ -1,0 +1,33 @@
+pkgbase = asteroidz
+	pkgdesc = wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)
+	pkgver = 0.16.7
+	pkgrel = 1
+	url = https://github.com/asteroidzman/asteroidz
+	arch = x86_64
+	license = custom
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = vulkan-headers
+	makedepends = glslang
+	makedepends = git
+	depends = wlroots0.20
+	depends = wayland
+	depends = libinput
+	depends = libxkbcommon
+	depends = pcre2
+	depends = pixman
+	depends = cjson
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libdrm
+	depends = systemd-libs
+	depends = vulkan-icd-loader
+	depends = xcb-util-wm
+	depends = libxcb
+	depends = asteroidz-scenefx
+	optdepends = xorg-xwayland: run X11 applications under XWayland
+	source = git+https://github.com/asteroidzman/asteroidz.git#tag=0.16.7
+	sha256sums = SKIP
+
+pkgname = asteroidz
