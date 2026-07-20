@@ -1,7 +1,7 @@
 # Maintainer: MotherSphere <mothersphere.colony@gmail.com>
 pkgname=colony-bin
 _pkgname=colony
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Application launcher for the Project-Colony ecosystem (prebuilt binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('colony')
 conflicts=('colony' 'colony-git')
 source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/colony-linux")
 noextract=("${_pkgname}-${pkgver}")
-sha256sums=('a5545dfbe49256e90114eec42cf9184f4a0fc0a48d2e997b9eee0e1fc9d8ce61')
+sha256sums=('17ac11427c704d5483b38e3ed1693aa0e5792bae44ecf760cb93b9bc89965d5c')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
