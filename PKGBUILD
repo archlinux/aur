@@ -2,7 +2,7 @@
 pkgname=stow-cm-bin
 conflicts=('stow-cm')
 provides=('stow-cm')
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Config manager (gnu-stow like)"
 arch=('x86_64' 'aarch64')
