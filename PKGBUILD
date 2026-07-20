@@ -1,25 +1,36 @@
+# Maintainer: Polyfrost <contact@atmofrost.org>
 pkgname=oneclient-bin
-pkgver=1.1.6
+_appname=OneClient
+pkgver=2.0.2
 pkgrel=1
-pkgdesc='Next-generation open source Minecraft launcher that downloads all the mods you would ever want'
-url='https://polyfrost.org/projects/oneclient'
+pkgdesc="Next-generation open source Minecraft launcher (prebuilt)"
 arch=('x86_64')
+url="https://github.com/Polyfrost/OneLauncher"
 license=('GPL-3.0-only')
-
 depends=(
-    'openssl' 'dbus' 'gtk3' 'libayatana-appindicator' 'librsvg' 'webkit2gtk-4.1'
-    'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
+  'fontconfig'
+  'freetype2'
+  'libglvnd'
+  'libxcursor'
+  'libxrandr'
+  'libxi'
+  'libxkbcommon'
+  'wayland'
+  'dbus'
+  'gtk3'
 )
 provides=('oneclient')
 conflicts=('oneclient')
-source=("https://github.com/Polyfrost/OneLauncher/releases/download/oneclient-${pkgver}/oneclient_${pkgver}_amd64.deb")
-sha256sums=('e19190d53acb3fb41026720343ffc9ec06f17643438ea5425cfbc0782d16a122')
-
-build() {
-    cd "$srcdir/"
-    tar xf data.tar.gz
-}
+options=('!strip')
+_debfile="${_appname}_${pkgver}_linux_x86_64.deb"
+source=("${_debfile}::${url}/releases/download/oneclient-${pkgver}/${_debfile}")
+sha256sums=('5378a9291e1afbc9a736254d5d28a948d1ccafa248dae2d79f8073f91e5706f5')
 
 package() {
-    cp -r "${srcdir}/usr/" "${pkgdir}"
+  cd "$pkgdir"
+  bsdtar -xf "$srcdir/$_debfile"
+  bsdtar -xf data.tar.*
+  rm -f debian-binary control.tar.* data.tar.*
+
+  ln -s oneclient_app "$pkgdir/usr/bin/oneclient"
 }
