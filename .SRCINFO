@@ -1,6 +1,6 @@
 pkgbase = sdme
 	pkgdesc = The systemd machine editor
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://sdme.io
 	install = sdme.install
@@ -13,7 +13,7 @@ pkgbase = sdme
 	optdepends = apparmor: security profile support
 	options = !lto
 	backup = etc/apparmor.d/sdme-default
-	source = sdme-0.17.1.tar.gz::https://github.com/fiorix/sdme/archive/v0.17.1.tar.gz
-	sha256sums = ba56c6abaf94f36443062858bb927fb8f5702f31346d5e1edc86da05e06b37cd
+	source = sdme-0.17.2.tar.gz::https://github.com/fiorix/sdme/archive/v0.17.2.tar.gz
+	sha256sums = 16df3b3a1d4bf45c37ffce0c61ce53639af4104eeb94ce26fed5a7dffa99ec33
 
 pkgname = sdme

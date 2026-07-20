@@ -6,7 +6,7 @@
 # pkgver is what left the previous checked-in PKGBUILD stranded at 0.4.0.
 
 pkgname=sdme
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='The systemd machine editor'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ install=sdme.install
 # ring_core_*). Cargo already applies its own LTO per the release profile.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fiorix/sdme/archive/v$pkgver.tar.gz")
-sha256sums=('ba56c6abaf94f36443062858bb927fb8f5702f31346d5e1edc86da05e06b37cd')
+sha256sums=('16df3b3a1d4bf45c37ffce0c61ce53639af4104eeb94ce26fed5a7dffa99ec33')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -55,20 +55,21 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen
+    # Keep probe-less test artifacts away from the release binary package().
+    CARGO_TARGET_DIR=target/package-tests SDME_SKIP_PROBE=1 cargo test --frozen
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # build.rs treats a failed probe build as a warning and embeds an empty
-    # placeholder, so a broken kube probe would otherwise ship silently. The
-    # embedded probe is most of the binary's ~12M.
-    local size
-    size=$(stat -c%s target/release/sdme)
-    if (( size < 8000000 )); then
-        echo "error: target/release/sdme is only $size bytes; the probe did not embed" >&2
+    # Backstop: require the validated probe artifact consumed by include_bytes!.
+    # Binary size is not a reliable proxy because the probe-less binary itself
+    # can exceed the old threshold.
+    local probe
+    probe=$(find target/release/build -path '*/out/sdme-kube-probe' \
+        -type f -size +0c -print -quit)
+    if [[ -z "$probe" ]]; then
+        echo "error: no embedded kube probe artifact found" >&2
         return 1
     fi
 
