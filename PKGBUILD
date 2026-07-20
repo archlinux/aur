@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.12.3.r50.528dfab
-pkgrel=3
+pkgver=1.13.0.r50.2bd8bf4
+pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps'
@@ -18,19 +18,15 @@ conflicts=(
 replaces=(linglong-git)
 _qt=qt6
 depends=(
-  sh
   curl
   erofs-utils
   erofsfuse
   fmt
   glib2
-  glibc
   hicolor-icon-theme
   libcap
   libelf
-  libgcc
   libseccomp
-  libstdc++
   linyaps-box
   ${_qt}-base
   systemd-libs
