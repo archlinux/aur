@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-cleanup
 pkgver=26.07.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
 url="https://github.com/mxlinux/mx-cleanup"
@@ -21,6 +21,7 @@ build() {
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHELPER_INSTALL_DIR=/usr/lib/mx-cleanup \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
 
@@ -39,7 +40,7 @@ package() {
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
     install -Dm755 scripts/helper-terminal-keep-open "${pkgdir}/usr/lib/mx-cleanup/helper-terminal-keep-open"
 
-    install -Dm644 scripts/org.mxlinux.pkexec.mx-cleanup-helper.policy \
+    install -Dm644 build/org.mxlinux.pkexec.mx-cleanup-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mx-cleanup-helper.policy"
 
     install -Dm644 mx-cleanup.desktop "${pkgdir}/usr/share/applications/mx-cleanup.desktop"
