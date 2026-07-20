@@ -30,7 +30,7 @@
 # please report it. "It bundles things" by itself is the intended design.
 # ─────────────────────────────────────────────────────────────────────────────
 pkgname=pathfynder-atlas
-pkgver=1.0.16
+pkgver=1.1.0
 pkgrel=1
 # Vendored, self-contained onnxruntime (protobuf + abseil statically inside).
 # Bundled so the semantic indexer never mismatches a distro's protobuf/abseil.
@@ -50,7 +50,22 @@ _rclonever=1.68.2
 _rgver=14.1.1
 _fdver=10.2.0
 _7zver=2409
-pkgdesc="Native Linux file explorer with semantic search, image previews, and two-way sync"
+# Bundled document tools for semantic search INSIDE documents: poppler
+# (pdftotext extracts text-layer PDFs; pdftoppm renders scanned pages) + tesseract
+# + leptonica (OCR of scanned/garbled PDFs). Built MINIMAL from source (no
+# curl/nss/gpgme/qt) + relocatable, so there's no crypto/network surface and
+# nothing to install — see packaging/build-doctools.sh.
+_popplerver=26.06.0
+_leptonicaver=1.87.0
+_tesseractver=5.5.2
+# freetype + fontconfig + tiff + openjpeg are built from source too (poppler 26
+# needs newer than some distros ship, e.g. EL9), so the SAME bundle builds on
+# every channel and is truly host-independent. See packaging/build-doctools.sh.
+_freetypever=2.13.3
+_fontconfigver=2.15.0
+_tiffver=4.7.0
+_openjpegver=2.5.2
+pkgdesc="Native Linux file explorer with semantic search inside documents (PDF + OCR), image previews, and two-way sync"
 arch=('x86_64')
 url="https://cooksdns.com/pathfynder-atlas"
 license=('LicenseRef-PASL-1.0')
@@ -61,11 +76,17 @@ depends=('gtk3' 'gdk-pixbuf2' 'systemd-libs' 'hicolor-icon-theme')
 optdepends=(
   'xdg-desktop-portal: use Atlas as the file picker for browser/app uploads'
 )
-makedepends=('rust' 'cargo' 'cmake' 'clang' 'flutter' 'git' 'pkgconf' 'patchelf' 'bison' 'flex')
+# ninja + autotools + gperf build the doctools. freetype/fontconfig/tiff/openjpeg
+# are built FROM SOURCE (poppler 26 wants newer than some distros ship); the
+# remaining image codecs are linked from these -dev packages and their runtime
+# .so bundled (jpeg, png, lcms2, zlib, webp, giflib, expat, brotli).
+makedepends=('rust' 'cargo' 'cmake' 'ninja' 'clang' 'flutter' 'git' 'pkgconf' 'patchelf'
+             'bison' 'flex' 'autoconf' 'automake' 'libtool' 'gperf' 'python'
+             'libjpeg-turbo' 'libpng' 'lcms2' 'zlib' 'libwebp' 'giflib' 'expat' 'brotli')
 install="$pkgname.install"
 # Pin the source to an immutable release tag (not a floating branch) so a rebuild
 # always produces the reviewed, released code. Bump _rel_tag + pkgver together.
-_rel_tag="v1.0.16"
+_rel_tag="v1.1.0"
 source=(
   # Public, unauthenticated mirror (Caddy dumb-HTTP; auto-synced from the Gitea
   # repo). Anyone can build this — the Gitea instance itself stays sign-in-walled.
@@ -78,6 +99,15 @@ source=(
   "ripgrep-$_rgver.tar.gz::https://github.com/BurntSushi/ripgrep/releases/download/$_rgver/ripgrep-$_rgver-${CARCH}-unknown-linux-musl.tar.gz"
   "fd-$_fdver.tar.gz::https://github.com/sharkdp/fd/releases/download/v$_fdver/fd-v$_fdver-${CARCH}-unknown-linux-musl.tar.gz"
   "7z-$_7zver.tar.xz::https://github.com/ip7z/7zip/releases/download/24.09/7z$_7zver-linux-x64.tar.xz"
+  # Document tools + their image stack (built minimal by packaging/build-doctools.sh).
+  "freetype-$_freetypever.tar.xz::https://download.savannah.gnu.org/releases/freetype/freetype-$_freetypever.tar.xz"
+  "fontconfig-$_fontconfigver.tar.xz::https://www.freedesktop.org/software/fontconfig/release/fontconfig-$_fontconfigver.tar.xz"
+  "tiff-$_tiffver.tar.gz::https://download.osgeo.org/libtiff/tiff-$_tiffver.tar.gz"
+  "openjpeg-$_openjpegver.tar.gz::https://github.com/uclouvain/openjpeg/archive/refs/tags/v$_openjpegver.tar.gz"
+  "poppler-$_popplerver.tar.xz::https://poppler.freedesktop.org/poppler-$_popplerver.tar.xz"
+  "leptonica-$_leptonicaver.tar.gz::https://github.com/DanBloomberg/leptonica/releases/download/$_leptonicaver/leptonica-$_leptonicaver.tar.gz"
+  "tesseract-$_tesseractver.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/refs/tags/$_tesseractver.tar.gz"
+  "eng.traineddata::https://github.com/tesseract-ocr/tessdata_fast/raw/main/eng.traineddata"
 )
 sha256sums=(
   'SKIP'
@@ -89,6 +119,14 @@ sha256sums=(
   '4cf9f2741e6c465ffdb7c26f38056a59e2a2544b51f7cc128ef28337eeae4d8e'
   'd9bfa25ec28624545c222992e1b00673b7c9ca5eb15393c40369f10b28f9c932'
   '914c7e20ad5ef8e4d3cf08620ff8894b28fe11b7eb99809d6930870fbe48a281'
+  '0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289'
+  '63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e'
+  '67160e3457365ab96c5b3286a0903aa6e78bdc44c4bc737d2e486bcecb6ba976'
+  '90e3896fed910c376aaf79cdd98bdfdaf98c6472efd8e1debf0a854938cbda6a'
+  '4cb4e5a3dc8cb5eec751c8a23c8ba19f61f96dedc0cd07d2aee6b0c8e2cf6ba4'
+  'c73363397f96eb1295602bf44d708a994ad42046c791bf03ea0505d829bdb6a7'
+  '6235ea0dae45ea137f59c09320406f5888383741924d98855bd2ce0d16b54f21'
+  '7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2'
 )
 
 build() {
@@ -134,6 +172,15 @@ build() {
   ( cd "$srcdir/pgvector-$_pgvectorver"
     make PG_CONFIG="$srcdir/pgstage$_pgprefix/bin/pg_config" OPTFLAGS=""
     make install PG_CONFIG="$srcdir/pgstage$_pgprefix/bin/pg_config" )
+
+  # 5) Bundled document tools (poppler + leptonica + tesseract), built MINIMAL
+  #    and self-contained ($ORIGIN) by the shared recipe. Lets the semantic
+  #    indexer read PDFs (pdftotext) and OCR scanned/garbled ones (pdftoppm +
+  #    tesseract) with nothing to install. Reads the poppler/leptonica/tesseract
+  #    tarballs + eng.traineddata makepkg fetched into $srcdir.
+  FT_VER="$_freetypever" FC_VER="$_fontconfigver" TIFF_VER="$_tiffver" OPENJP_VER="$_openjpegver" \
+  POPPLER_VER="$_popplerver" LEPT_VER="$_leptonicaver" TESS_VER="$_tesseractver" \
+    bash packaging/build-doctools.sh "$srcdir" "$srcdir/doctools-out"
 }
 
 package() {
@@ -225,6 +272,13 @@ package() {
   # that resolve a running window's icon by app_id find it.
   install -Dm644 packaging/pathfynder-atlas.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.zenith.pathfynder_atlas.svg"
+
+  # Bundled document tools (poppler + leptonica + tesseract + eng data), private
+  # to Atlas under a doctools/ SUBDIR with their own $ORIGIN — deliberately NOT
+  # in /usr/lib/pathfynder-atlas directly, so their image libs (libz, libpng, …)
+  # can never shadow the copies the indexer's onnxruntime/libpq resolve there.
+  # The indexer resolves them via ATLYS_DOCTOOLS_DIR / this path (indexer_main.cpp).
+  cp -a "$srcdir/doctools-out/doctools" "$pkgdir/usr/lib/$pkgname/doctools"
 
   # Semantic-search schema (provision as postgres; see README).
   install -Dm644 docs/schema.sql "$pkgdir/usr/share/$pkgname/schema.sql"
