@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airi-bin
 _pkgname=AIRI
-pkgver=0.11.0
+pkgver=0.11.3
 _electronversion=41
 pkgrel=1
 pkgdesc="💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude.(Prebuilt version.Use system-wide electron)"
@@ -16,6 +16,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'libxt'
 )
 options=(
     '!emptydirs'
@@ -27,10 +28,10 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
-sha256sums=('69eaba57652fb278cd558f91a03d15d628a768a163e70a7a8faf50b85d92f941'
+sha256sums=('f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('35ba0359abbcdfb49122925a785b8a7300ebd4bd372b6b98ab21c05bf51c5030')
-sha256sums_x86_64=('6a2bd29776f639ce3ac9d28f459febc08e381c9aa58d772eaebe718e40cb8418')
+sha256sums_aarch64=('7ff9949d221929e25f62cf4efd2635e0ad6e5b216fd7d423d83f3a70fc4a5a97')
+sha256sums_x86_64=('ed7c063a25d3ef35f0b912735d5b5546141b23fd198a49087ba666c7e95b92fe')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -70,7 +71,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
