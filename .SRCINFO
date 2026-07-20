@@ -1,6 +1,6 @@
 pkgbase = aur-cooldown
 	pkgdesc = Delay AUR upgrades until they have aged, so malicious pushes are caught before they land
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/adrinjalali/aur-cooldown
 	install = aur-cooldown.install
@@ -12,7 +12,7 @@ pkgbase = aur-cooldown
 	depends = base-devel
 	optdepends = yay: yay -Syu cooldown hook, wired by "aur-cooldown setup"
 	optdepends = zsh: staleness reminder snippet
-	source = aur-cooldown-0.6.1.tar.gz::https://github.com/adrinjalali/aur-cooldown/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = cbfc5937975eef6333af88dde99541efe61738a94f36decb46d68f4acdc413a4
+	source = aur-cooldown-0.7.0.tar.gz::https://github.com/adrinjalali/aur-cooldown/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 4977ca55f54ff3f1d7b3234a9a0c70afe90cbe5322393c6c49615c1bf2a49b08
 
 pkgname = aur-cooldown
