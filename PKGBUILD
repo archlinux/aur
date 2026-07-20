@@ -2,18 +2,11 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 ## options
-: ${_build_arch_patch:=true}
-
-: ${_build_vfio:=true}
-: ${_build_lts:=true}
-
 : ${_build_level:=1}
 
-: ${_cksum:=ac26e508abd56e9f8b89872b6e10c49fc823bcc70d8068a5d8504c1a7c4ff045}
+: ${_cksum:=a7a7e3d2ae9d95e74197223a8d4eb5f6be7aac21b6e6de27e9685d001c1f8cb0}
 
-unset _pkgtype
-[[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
-[[ ${_build_lts::1} == "t" ]] && _pkgtype+="-lts"
+_pkgtype="-vfio-lts"
 [[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
 [[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
@@ -21,7 +14,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.38
+pkgver=6.18.39
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -52,53 +45,43 @@ makedepends=(
 
 options=('!debug' '!strip')
 
-_dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts'
-_srctag=$(
-  curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
-    | grep -Eo "${pkgver//./\\.}-[0-9]+\$" \
-    | sort -rV | head -1
-)
-: ${_srctag:=main}
+_get_tags() {
+  [ -n "$_srctag" ] && return
+
+  _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts'
+  _srctag=$(
+    curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
+      | grep -Eo "${pkgver//./\\.}-[0-9]+\$" \
+      | sort -rV | head -1
+  )
+  : ${_srctag:=main}
+} && _get_tags
 
 _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
-  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config"
+  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config.x86_64"
+  "0001-$pkgver-allow-disabling-unprivileged-CLONE_NEW.patch"::"$_dl_url_arch/-/raw/$_srctag/0001-add-sysctl-to-allow-disabling-unprivileged-CLONE_NEW.patch"
+  "0002-$pkgver-drm-amdgpu-avoid-memory-allocation.patch"::"$_dl_url_arch/-/raw/$_srctag/0002-drm-amdgpu-avoid-memory-allocation-in-the-critical-c.patch"
+  "0003-$pkgver-drm-amdgpu-use-GFP_ATOMIC.patch"::"$_dl_url_arch/-/raw/$_srctag/0003-drm-amdgpu-use-GFP_ATOMIC-instead-of-NOWAIT-in-the-c.patch"
+  1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+  1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 sha256sums=(
   "${_cksum:?}"
   'SKIP'
   'SKIP'
+  '0bb3b4cda53db35c10e0a34defb5f52f3c91895d7b4a9f93b3f40f5401a71e02'
+  '70d54dfde13e52ea1109c4222a987a29ada68feec35dca9ce4afd6f7977e8740'
+  '44caa7c6a79055539f16ab118bece58934cdf93557643a50017634366c864b91'
+  '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
+  '323fc06392a6c10d7eb3d844cde527fa7709c82f776238cebc98d8c966b06549'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886 # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
-
-if [[ ${_build_vfio::1} == "t" ]]; then
-  source+=(
-    1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
-  )
-  sha256sums+=(
-    '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '323fc06392a6c10d7eb3d844cde527fa7709c82f776238cebc98d8c966b06549'
-  )
-fi
-
-if [[ ${_build_arch_patch::1} == "t" ]]; then
-  source+=(
-    "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/-/raw/$_srctag/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/-/raw/$_srctag/0002-drm-amdgpu-avoid-memory-allocation-in-the-critical-code-path-v3.patch"
-    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/-/raw/$_srctag/0003-drm-amdgpu-use-GFP_ATOMIC-instead-of-NOWAIT-in-the-critical-path.patch"
-  )
-  sha256sums+=(
-    'e5bda61fa4405571a0267cd8812329bb8a432a37efb50459461628d371849906'
-    'c31b8c0ace123f5c1a0012a1254272eea9ac9cdd0d3e5d538ca6b11830dd01b0'
-    '0f482368b62c3cece941e2d3ba497bf322db59315df5c2f72500fc1318e4768e'
-  )
-fi
 
 case "$CARCH" in
   x86_64_v2)
