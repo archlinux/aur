@@ -6,8 +6,8 @@ _appname=pixelterm
 pkgname=${_appname}-c-bin
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,6 @@ provides=("${_appname}")
 replaces=("${_appname}-bin")
 conflicts=("${_appname}"{,-c,-bin})
 
-makedepends=('patchelf')
 depends=('glibc' 'glib2' 'gdk-pixbuf2' 'chafa' 'ffmpeg' 'libmupdf')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -31,8 +30,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-linux.tar.gz")
 sha256sums=('a30b218bb0c27aa7264ea96b9bdbff18fb52702ad35d44212bcf019c391f83e5'
             '63ed0add7e04b68132eff09f36d5e8943aa8cd64c3e1090ff92849a110b8b213')
-sha256sums_x86_64=('ab86cf32b2c3e053e82e490d37077ad56d0ec61250a262a818210ff452743c75')
-sha256sums_aarch64=('67b2f5d54d64d1165582894d60434a09a91888040e55dfc87ccee3e970527cfa')
+sha256sums_x86_64=('5375a733ead5cc19bfc0f3b9424e8f38439a097b50ed4ae1d6b2d62d6464ed36')
+sha256sums_aarch64=('32bc2dc659f71d4fa9df4392e49b0332f6deac2dff6f9a0d395b14831c51efb1')
 
 
 case ${CARCH} in
@@ -44,12 +43,6 @@ case ${CARCH} in
     _CARCH=${_barch[1]}
     ;;
 esac
-
-prepare() {
-	cd "${srcdir}/" || exit
-
-	patchelf --replace-needed libmupdf.so.27.2 libmupdf.so.28.0 "${_appname}-${_CARCH}-linux"
-}
 
 package() {
 	cd "${srcdir}/" || exit
