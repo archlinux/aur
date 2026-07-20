@@ -1,6 +1,6 @@
 pkgbase = mutt-language-server
 	pkgdesc = mutt/neomutt's language server
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/neomutt/mutt-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mutt-language-server
 	makedepends = python-installer
 	depends = python-lsp-tree-sitter
 	depends = python-tree-sitter-muttrc
-	source = https://files.pythonhosted.org/packages/source/m/mutt_language_server/mutt_language_server-0.1.0.tar.gz
-	sha256sums = 1cc9bfb6181357764233baa02d0a314cced63f662db576defb5243e9ed98477a
+	source = https://files.pythonhosted.org/packages/source/m/mutt_language_server/mutt_language_server-0.1.1.tar.gz
+	sha256sums = 9e16e75eee36e748c7cf99c436c1f5444e861b24dd74763a4c7e551484fd8db2
 
 pkgname = mutt-language-server
