@@ -1,5 +1,5 @@
 pkgname=mongodbtui
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A terminal UI for MongoDB written in Rust"
 arch=('x86_64')
