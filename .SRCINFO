@@ -1,0 +1,23 @@
+pkgbase = r-mantar
+	pkgdesc = Missingness Alleviation for Network Analysis
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mantar
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-glassofast
+	depends = r-mathjaxr
+	depends = r-rdpack
+	optdepends = r-knitr
+	optdepends = r-lavaan
+	optdepends = r-mice
+	optdepends = r-numderiv
+	optdepends = r-qgraph
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mantar_0.3.1.tar.gz
+	sha256sums = 4610d367325d7839954f2be22016ef91ee7ce927e37bb84ad3a07595fcf7e57b
+
+pkgname = r-mantar
