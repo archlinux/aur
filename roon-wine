@@ -272,6 +272,56 @@ ensure_loopback_capture() {
   die 'PipeWire did not create roon-loopback-capture; inspect the PipeWire user logs'
 }
 
+managed_launcher_pids() {
+  local exe proc pid argument
+  exe=$(find_roon) || return 0
+  for proc in /proc/[0-9]*/cmdline; do
+    [[ -r $proc ]] || continue
+    pid=${proc#/proc/}
+    pid=${pid%/cmdline}
+    [[ $pid != $$ ]] || continue
+    while IFS= read -r -d '' argument; do
+      if [[ $argument == "$exe" ]]; then
+        printf '%s\n' "$pid"
+        break
+      fi
+    done < "$proc"
+  done
+}
+
+stop_managed_prefix() {
+  local wineserver='' attempt pid
+  local -a launchers=() remaining=()
+  mapfile -t launchers < <(managed_launcher_pids)
+  ((${#launchers[@]} == 0)) || kill -TERM "${launchers[@]}" 2>/dev/null || true
+  if [[ $runner == proton && -x $PROTON_PATH/files/bin/wineserver ]]; then
+    wineserver=$PROTON_PATH/files/bin/wineserver
+  elif [[ -d $PREFIX ]] && have wineserver; then
+    wineserver=$(command -v wineserver)
+  fi
+  if [[ -n $wineserver ]]; then
+    WINEPREFIX="$PREFIX" "$wineserver" -k || true
+    WINEPREFIX="$PREFIX" "$wineserver" -w || true
+  fi
+  for ((attempt = 0; attempt < 20; attempt++)); do
+    remaining=()
+    for pid in "${launchers[@]}"; do
+      kill -0 "$pid" 2>/dev/null && remaining+=("$pid")
+    done
+    ((${#remaining[@]} == 0)) && return 0
+    sleep 0.1
+  done
+  kill -KILL "${remaining[@]}" 2>/dev/null || true
+}
+
+prepare_native_endpoint() {
+  # Native Bridge and Roon's Windows local endpoint use the same RAATServer
+  # rendezvous. Stop both sides before starting Bridge so it deterministically
+  # owns the rendezvous when the controller is launched again.
+  systemctl --user stop roonbridge-native.service 2>/dev/null || true
+  stop_managed_prefix
+}
+
 endpoint_command() {
   require_systemd_user
   case ${1:-status} in
@@ -288,14 +338,17 @@ endpoint_command() {
           [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
           require_system_output
           ensure_loopback_capture
+          prepare_native_endpoint
           systemctl --user enable --now roon-system-output.service roonbridge-native.service
           note 'system-output mode active'
+          note 'relaunch Roon so its controller attaches to the native RAAT server'
           note 'in Roon, enable the first Loopback PCM and name it System Output (PipeWire)'
           note 'leave the second Loopback PCM disabled; PipeWire chooses the physical output'
           ;;
         direct)
           [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
           systemctl --user disable --now roon-system-output.service 2>/dev/null || true
+          prepare_native_endpoint
           systemctl --user enable --now roonbridge-native.service
           note 'exclusive/direct ALSA mode active; relaunch Roon before selecting the direct endpoint'
           ;;
@@ -590,15 +643,12 @@ main() {
     endpoint) endpoint_command "${2:-status}" "${3:-}" ;;
     doctor) doctor ;;
     set) shift; set_value "${1:-}" "${2:-}" ;;
-    kill)
-      if [[ $runner == proton && -x $PROTON_PATH/files/bin/wineserver ]]; then
-        WINEPREFIX="$PREFIX" "$PROTON_PATH/files/bin/wineserver" -k || true
-      elif [[ -d $PREFIX ]]; then wine_cmd wineserver -k || true
-      fi
-      ;;
+    kill) stop_managed_prefix ;;
     help|-h|--help) usage ;;
     *) usage >&2; exit 2 ;;
   esac
 }
 
-main "$@"
+if [[ ${ROON_PROTON_LIB_ONLY:-0} != 1 ]]; then
+  main "$@"
+fi
