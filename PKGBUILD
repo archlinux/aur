@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -7,11 +8,11 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
 pkgver=0.2.1.r17.g35372b0
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature-rich Python text case conversion library (built from latest git commit)'
 arch=('any')
 url="https://github.com/zobweyt/$_srcname"
-license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+license=('GPL-3.0-or-later')
 makedepends=(
   'git'
   'python-build'
