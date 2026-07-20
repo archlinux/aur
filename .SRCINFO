@@ -1,6 +1,6 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
-	pkgver = 10.12.0
+	pkgver = 10.12.1
 	pkgrel = 1
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
@@ -9,6 +9,7 @@ pkgbase = nessus
 	license = custom
 	makedepends = inetutils
 	depends = gnupg
+	optdepends = java-runtime-headless: PDF report generation
 	source = nessus.desktop
 	source = nessus.sh
 	source = LICENSE
@@ -16,9 +17,9 @@ pkgbase = nessus
 	b2sums = e9f6346d0c2b444c71f0673a9dd22f4298abf1ccc4500fa2db4439627844106e3d523cda976411aa243f56711b691a12ac228809cdae038371607db11a44dd61
 	b2sums = fbc6b44c6722e48b26011314d3cd2a44780ef94965db159ef1a35743e371927ec4927a9da2db9ebbb9714fc3a0a30fa4d785b23aa76e4a8a1e446a515fc1bcdd
 	b2sums = 2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1
-	source_x86_64 = nessus-10.12.0-el9.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28545/download?i_agree_to_tenable_license_agreement=true
-	b2sums_x86_64 = 32de6a86e192ba2874d8a77552a66dc49a7c8a81ed861c40ecfff0be63deb808ab4f99ba9453d4ba63a0858d0e9b680cbadb7ce2fc4bd5b8efe1c78c712a59cb
-	source_aarch64 = nessus-10.12.0-el9.aarch64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28546/download?i_agree_to_tenable_license_agreement=true
-	b2sums_aarch64 = 1de4edc7299918afac70ba3c63af8c3b04d0460baccc149b0fbf554dfa50a6e18851b47cf27e093de595bac2a87defff77164b6d879c668c74cf2a44d8c357b1
+	source_x86_64 = nessus-10.12.1-el9.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/29147/download?i_agree_to_tenable_license_agreement=true
+	b2sums_x86_64 = a6fafcad55fdf860bc91e9abb1d6e1e519986c5638e5c5529967cfc341ca80bb0c980274f347d7f074b0f5786f580a0b441f4cc24e57746a5fc31b7e8e33bc43
+	source_aarch64 = nessus-10.12.1-el9.aarch64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/29148/download?i_agree_to_tenable_license_agreement=true
+	b2sums_aarch64 = be588bce80ddc57068b225c99161bc870197f4f421e1ba416d71822db97e63c007ec1aeb11606409d9a15b7facfdcea3eb9990fbea9587f3350ae738b9891695
 
 pkgname = nessus
