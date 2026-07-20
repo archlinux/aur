@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreety-bin
 	pkgdesc = A minimal, configurable console greeter for greetd (prebuilt)
-	pkgver = 0.10.3
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/tuigreety
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = greetd-tuigreety-bin
 	depends = libgcc
 	depends = greetd
 	provides = greetd-greeter
-	provides = greetd-tuigreety=0.10.3
-	provides = tuigreety=0.10.3
+	provides = greetd-tuigreety=0.11.0
+	provides = tuigreety=0.11.0
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreety
 	conflicts = greetd-tuigreety-git
@@ -22,14 +22,14 @@ pkgbase = greetd-tuigreety-bin
 	conflicts = tuigreety-git
 	backup = etc/tuigreet/config.toml
 	source = tuigreet.conf
-	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
-	source_x86_64 = greetd-tuigreety-bin-0.10.3-x86_64.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.10.3/tuigreety-0.10.3-x86_64.tar.gz
-	sha256sums_x86_64 = bc468a61104a7301427c7397ee162e1ee74f265521a1c7733700254cc55cff62
-	source_aarch64 = greetd-tuigreety-bin-0.10.3-aarch64.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.10.3/tuigreety-0.10.3-aarch64.tar.gz
-	sha256sums_aarch64 = 2ea4f85879953bd62f778694f12708a0e35265902e929aadb9be5d1c1e506611
-	source_armv7h = greetd-tuigreety-bin-0.10.3-armv7.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.10.3/tuigreety-0.10.3-armv7.tar.gz
-	sha256sums_armv7h = 9d40e24c84ef56e1e5540081babcfd68f32f3017230859b804380e7b71c66af4
-	source_i686 = greetd-tuigreety-bin-0.10.3-i686.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.10.3/tuigreety-0.10.3-i686.tar.gz
-	sha256sums_i686 = 35e2dacba5c80abbf2a13e598d1132697babfea6b33233ad0a5d6b9527f3f1a6
+	sha256sums = fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651
+	source_x86_64 = greetd-tuigreety-bin-0.11.0-x86_64.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.11.0/tuigreety-0.11.0-x86_64.tar.gz
+	sha256sums_x86_64 = 0f15157dc4c2a5f049ea123aa4a55b1d2bd31665127817e44a1c614fcd2a4786
+	source_aarch64 = greetd-tuigreety-bin-0.11.0-aarch64.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.11.0/tuigreety-0.11.0-aarch64.tar.gz
+	sha256sums_aarch64 = 22a7ed31a12b71fb1050ca962047535a6127434a85d6e91040c65275b545d52c
+	source_armv7h = greetd-tuigreety-bin-0.11.0-armv7.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.11.0/tuigreety-0.11.0-armv7.tar.gz
+	sha256sums_armv7h = e3845749d39bb2e8e45151f34882f354611484c9518243e0e79df6a92b52a6be
+	source_i686 = greetd-tuigreety-bin-0.11.0-i686.tar.gz::https://github.com/Tobiichi-Origuchi/tuigreety/releases/download/0.11.0/tuigreety-0.11.0-i686.tar.gz
+	sha256sums_i686 = fd68063475d059c113b0dff5a0b538cb96919453c8b2daf268f701c9cd2f035e
 
 pkgname = greetd-tuigreety-bin
