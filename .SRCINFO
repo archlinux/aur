@@ -11,6 +11,7 @@ pkgbase = kaldi-openfst
 	makedepends = sox
 	makedepends = subversion
 	makedepends = unzip
+	makedepends = wget
 	depends = gcc-libs
 	options = !lto
 	source = https://github.com/kaldi-asr/kaldi/archive/e02e35f0254bb033fab73d1df99fc34123e31d56.tar.gz
