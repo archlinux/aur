@@ -1,0 +1,16 @@
+pkgbase = paradex-git
+	pkgdesc = Retro-mac terminal widget for cataloguing aesthetics/moods and rolling concept seeds
+	pkgver = r6.0a7c1e1
+	pkgrel = 1
+	url = https://github.com/numbpill3d/paradex
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = tk
+	provides = paradex
+	conflicts = paradex
+	source = paradex::git+https://github.com/numbpill3d/paradex.git
+	sha256sums = SKIP
+
+pkgname = paradex-git
