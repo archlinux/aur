@@ -1,7 +1,7 @@
 pkgname=pkgpick
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Interactive fzf-based package picker for pacman/yay/paru (AUR, official, installed), EN/RU UI"
+pkgdesc="Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI"
 arch=('any')
 url="https://github.com/ItzDast/pkgpick"
 license=('GPL-3.0-or-later')
@@ -14,6 +14,7 @@ optdepends=(
     'python-pip: manage pip packages'
     'cargo: manage cargo-installed binaries'
     'go: manage go-installed binaries'
+    'python-pipx: manage pipx-installed packages'
 )
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/ItzDast/pkgpick.git#tag=v$pkgver")
