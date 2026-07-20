@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.42.0.r145.gd885924
+pkgver=1.42.0.r180.g5834190
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
@@ -15,9 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/kst4contest"
-    git describe --long --tags 2>/dev/null \
-        | sed 's/^v//;s/\([^-]*-g[0-9a-f]*\)/r\1/;s/-/./g' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    BASE=$(grep -m1 '<version>' pom.xml \
+        | sed 's/.*<version>\(.*\)<\/version>.*/\1/' | sed 's/[-.]nightly//')
+    printf '%s.r%s.g%s' "${BASE}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
