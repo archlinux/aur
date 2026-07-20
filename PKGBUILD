@@ -6,7 +6,7 @@ _appname=fj
 pkgname=${_gitname}-bin
 pkgdesc="A blazing-fast directory jumper written in Rust"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('ba9d31bc09221790af9bfe5f7d1e93b755ba6285c90d953eab6df9b2fe9a0880'
+sha256sums=('1eb9abee35fe49c4bf52f8e3e11f279c533c24ff1b5e145f7688fea256d88d4a'
             '002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1')
-sha256sums_x86_64=('1b7f3af6377c32381b23b2452cac3fa82a98e0a7623f3acdc166d8f5a5520d90')
+sha256sums_x86_64=('0768bb8430b6547c16514c54a9bb3f8bb467d8f0a87ad2f777c043444fe15580')
 
 
 package() {
