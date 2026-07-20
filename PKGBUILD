@@ -4,11 +4,11 @@ pkgname=untree
 pkgver=0.9.13
 pkgrel=1
 pkgdesc='Inverts tree diagrams back to directory structures'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/codeinred/untree'
-license=('MIT')
-depends=('libgcc')
-makedepends=('cargo' 'git')
+license=(MIT)
+depends=(libgcc)
+makedepends=(cargo git)
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('21047a0af2921014b4d1647286e76e90763147983ca057016ccdf7ab9c94218c')
 validpgpkeys=('C5E8A4C01F5A0F9E7E65C0FB7F67C72ED1182321') ## Alecto Irene Perez
