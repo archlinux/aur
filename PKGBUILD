@@ -48,7 +48,6 @@ checkdepends=(
   ruby-rubocop-yard
   ruby-webmock
 )
-options=(!emptydirs)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/castwide/${_gemname}/archive/v${pkgver}.tar.gz"
   "no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch"

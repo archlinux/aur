@@ -39,7 +39,6 @@ pkgbase = ruby-solargraph
 	depends = ruby-yard
 	depends = ruby-yard-activesupport-concern
 	depends = ruby-yard-solargraph
-	options = !emptydirs
 	source = ruby-solargraph-0.60.2.tar.gz::https://github.com/castwide/solargraph/archive/v0.60.2.tar.gz
 	source = no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch
 	sha256sums = 00eec5f04a2c394c832780000c341674dd6db13279497274974d91466fdfeb51
