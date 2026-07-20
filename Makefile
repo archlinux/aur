@@ -18,7 +18,7 @@ update:
 
 # List the versions available on GitHub
 versions:
-	@curl -s https://api.github.com/repos/jbangdev/jbang/releases | jq -r ".[] | .tag_name | ltrimstr(\"v\")"
+	@curl -s https://api.github.com/repos/jbangdev/jbang/releases | jq -r ".[] | .tag_name | ltrimstr(\"v\")" | grep -v early-access
 
 # Remove the files downloaded and created in the build process
 clean:
