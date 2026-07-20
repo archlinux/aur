@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
 arch=('x86_64' 'aarch64')
@@ -44,5 +44,5 @@ package() {
   install -Dm644 "pwsp-gui/assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
   install -Dm644 "pwsp-gui/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
 
-  install -Dm644 "pwsp-gui/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
+  install -Dm644 "pwsp-daemon/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
 }
