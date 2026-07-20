@@ -1,6 +1,6 @@
 pkgbase = carrot-git
 	pkgdesc = A pure Rust tiling Wayland compositor with zero linked C (latest commit)
-	pkgver = r268.351f2eb
+	pkgver = r286.42afbfd
 	pkgrel = 1
 	url = https://github.com/carrot-wm/carrot
 	arch = x86_64
