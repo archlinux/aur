@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='6.4.6'
+pkgver='6.4.7'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity python python-gobject python-requests gtk3 vte3)
@@ -7,7 +7,7 @@ makedepends=()
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('422dfcc1f161c64e3e6e862db0d0046a1341f23ee6fafc04a680233d78538e32')
+sha256sums=('f2b33515231e05a41a6e78f2b9062de8c1f48fd8e4313bf3637ae029f28ee111')
 
 package() {
     mkdir -p ${pkgdir}/usr
