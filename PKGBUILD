@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=clyocloud
-pkgver=2.12.8
+pkgver=2.12.9
 pkgrel=1
 pkgdesc="A sleek personal cloud storage and media streaming server built with Nuxt (stable version)"
 arch=('any')
