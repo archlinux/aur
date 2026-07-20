@@ -6,8 +6,8 @@
   arch=('x86_64')
   url='https://github.com/Bitpainter75/FerrumPix'
   license=('GPL-3.0-only')
-  depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm')
-  optdepends=('mpv: video thumbnails and playback via libmpv')
+  depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm'
+           'mpv' 'libraw')
   provides=('ferrumpix')
   conflicts=('ferrumpix')
   options=('!strip')
