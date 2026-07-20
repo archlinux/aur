@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -17,10 +17,10 @@ source_armv7h=("$pkgname-$pkgver-armv7.tar.gz::$url/releases/download/$pkgver/tu
 source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/$pkgver/tuigreety-$pkgver-i686.tar.gz")
 source=('tuigreet.conf')
 sha256sums=('fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651')
-sha256sums_x86_64=('0f15157dc4c2a5f049ea123aa4a55b1d2bd31665127817e44a1c614fcd2a4786')
-sha256sums_aarch64=('22a7ed31a12b71fb1050ca962047535a6127434a85d6e91040c65275b545d52c')
-sha256sums_armv7h=('e3845749d39bb2e8e45151f34882f354611484c9518243e0e79df6a92b52a6be')
-sha256sums_i686=('fd68063475d059c113b0dff5a0b538cb96919453c8b2daf268f701c9cd2f035e')
+sha256sums_x86_64=('0f3e090e8bdbb7f7b3d8a1dfe3d5969a7d892208e585399c76070a00435b3084')
+sha256sums_aarch64=('73c65c57c9d195bc4bb8da35e165076b8f8584faecc0527bfc9b7bd23052b229')
+sha256sums_armv7h=('4c240304a250c07e88151593e40e0189698e6ff27a74b141e34bd2b38b31eb01')
+sha256sums_i686=('ba9c9627fcfa76365565cd5fe0d15da364be058485c7e747bc420d64967db064')
 
 package() {
   local release_arch="$CARCH"
