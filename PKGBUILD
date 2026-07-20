@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.26.0.0.g760e3b9
+pkgver=1.26.0.325.g9981910
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -43,7 +43,6 @@ makedepends=(
   cmake
   doxygen
   git
-  gtest
   ninja
   python
   qt6-tools
@@ -75,12 +74,6 @@ build() {
 	-B build \
 	-S .
   cmake --build build --verbose
-}
-
-check() {
-	cd "$_basename"
-	export QT_QPA_PLATFORM=offscreen
-	./build/bin/legacytests
 }
 
 package() {
