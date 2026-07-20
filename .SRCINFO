@@ -1,10 +1,12 @@
 pkgbase = asteroidz
 	pkgdesc = wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)
 	pkgver = 0.16.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asteroidzman/asteroidz
 	arch = x86_64
-	license = custom
+	license = GPL3
+	license = MIT
+	license = CC0
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
