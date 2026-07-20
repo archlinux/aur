@@ -13,7 +13,11 @@ post_upgrade() {
     a shim that loads the package-installed code, so the new code is
     already on disk; only in-memory state needs to refresh.
 
-    If you upgraded from < 1.8.5, also run 'omarchy-emacs-setup' once to
-    convert your ~/.config/emacs/omarchy.el into the shim.
+    Omarchy 4 note: 1.8.7 tracks the theme at its new location
+    (~/.local/state/omarchy/current/). If your Emacs shows "Omarchy colors
+    not available" after a theme change, your ~/.config/emacs/omarchy.el is
+    a stale pre-shim copy — run 'omarchy-emacs-setup' once to convert it to
+    the shim, then 'omarchy-restart-emacs'. This is also required for anyone
+    upgrading from < 1.8.5.
 EOF
 }
