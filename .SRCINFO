@@ -1,6 +1,6 @@
 pkgbase = fcitx5-schnelle-umlaute-git
 	pkgdesc = Quick Accent equivalent for Linux/Fcitx5, map any Unicode character
-	pkgver = 1.5.0.r594.g047a296
+	pkgver = 1.6.0.r596.g545870a
 	pkgrel = 1
 	url = https://github.com/Maik-0000FF/schnelle-umlaute
 	install = fcitx5-schnelle-umlaute-git.install
@@ -18,7 +18,7 @@ pkgbase = fcitx5-schnelle-umlaute-git
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool: GUI configuration via system settings
 	optdepends = rebuild-detector: detects SONAME breakage after fcitx5 updates
-	provides = fcitx5-schnelle-umlaute=1.5.0.r594.g047a296
+	provides = fcitx5-schnelle-umlaute=1.6.0.r596.g545870a
 	conflicts = fcitx5-schnelle-umlaute
 	source = fcitx5-schnelle-umlaute::git+https://github.com/Maik-0000FF/schnelle-umlaute.git#branch=main
 	sha256sums = SKIP
