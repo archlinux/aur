@@ -1,17 +1,15 @@
 # Maintainer: Diab Neiroukh <public at thezest dot dev>
 
 pkgname="ssacli-bin"
-pkgver="6.40_6.0"
+pkgver="6.60_8.0"
 pkgrel=1
 arch=("x86_64")
 pkgdesc="HPE Smart Storage Administrator CLI"
 license=("custom")
-depends=(
-	"bash"
-)
+depends=("bash")
 provides=("ssacli")
-source=("https://downloads.linux.hpe.com/SDR/repo/mcp/oracle/9/x86_64/current/${pkgname//-bin/}-${pkgver//_/-}.x86_64.rpm")
-b2sums=("935880806d07a461c47e82fa8cafee8acb6e19d7f0022da31ff327d0651918d6f39ef073f2e3418bdac8069ba81bd592708e515f4320a729038ab8254b2be715")
+source=("https://downloads.linux.hpe.com/SDR/repo/mcp/Alma/10/x86_64/current/${pkgname//-bin/}-${pkgver//_/-}.x86_64.rpm")
+sha256sums=('f0e5d18946adf2ececd2676205f8d3134bbe3b7a2bec731f9e751e893442a76c')
 
 package() {
 	mv "usr/man" "usr/share/man"
