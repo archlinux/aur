@@ -1,6 +1,6 @@
 # Maintainer: bunny <bunny@carrotwm.org>
 pkgname=carrot
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A pure Rust tiling Wayland compositor with zero linked C"
 arch=('x86_64')
@@ -15,11 +15,11 @@ makedepends=('rust')
 # staged .so files are that libc for the gpu driver. leave everything
 # exactly as the linker made it
 options=('!strip' '!debug' '!lto')
-_taproot=0.22.5
+_taproot=0.22.7
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "taproot-$_taproot.tar.gz::https://github.com/carrot-wm/taproot/archive/refs/tags/v$_taproot.tar.gz")
-sha256sums=('69370320c73e8366e31da4ebd5439ae287374e3c1d4d0324037851a4d138914f'
-            '0b74ceedeb3f1ec5f8993f67e8008f2473025424b58541fd049e3fa21fcaec6f')
+sha256sums=('b5c9b4f3bdf6054885021f70849388cf9f492c63f67a0e35eb7a85d4721aaed2'
+            '4eb167da029673cd52e00d7cb6fcfd52111302ca461d427d8ee3365cb730fbda')
 
 build() {
   # makepkg's rust.conf may export its own RUSTFLAGS, which replaces the
@@ -29,10 +29,14 @@ build() {
   cargo build --release --locked
 
   # the libc family the gpu driver binds at runtime, built from the
-  # taproot workspace. 
+  # taproot workspace.
   cd "$srcdir/taproot-$_taproot"
-  # no RUSTFLAGS here: shared libraries cannot take crt-static
-  env -u RUSTFLAGS cargo build --release --locked -p taproot -p taproot-stub
+  # no RUSTFLAGS here: shared libraries cannot take crt-static.
+  # RUSTUP_TOOLCHAIN pins the same compiler as the carrot build when
+  # rustup provides rust (taproot's rust-toolchain.toml would otherwise
+  # switch this half to its nightly pin; the exe and the cdylib must
+  # agree on thread layout). plain rust ignores the variable
+  env -u RUSTFLAGS RUSTUP_TOOLCHAIN=stable cargo build --release --locked -p taproot -p taproot-stub
   local bin="$srcdir/$pkgname-$pkgver/target/x86_64-unknown-linux-gnu/release"
   cp target/release/libtaproot.so "$bin/libc.so.6"
   cp target/release/libtaproot.so "$bin/libm.so.6"
