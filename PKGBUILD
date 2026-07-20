@@ -5,7 +5,7 @@
 _appauthor=zquestz
 _appname=s
 pkgname=${_appname}-bin
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('glibc')
 makedepends=()
 
 source=("${pkgname}_${pkgver}.zip::${url}/releases/download/v${pkgver}/${_appname}-linux_amd64.zip")
-sha256sums=('538b0324ddf317dce92c1e605189b93f46af961820ee101775f3d13d28831112')
+sha256sums=('e351c4a9b3528fbe6c481cf0dd81e3e4a2b222b20cd6f3107540c0209177f1b9')
 
 package() {
 	cd "${srcdir}/s-linux_amd64"
