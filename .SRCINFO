@@ -1,13 +1,13 @@
 pkgbase = claude-history
 	pkgdesc = Fuzzy-search Claude Code conversation history from the terminal
-	pkgver = 0.1.68
+	pkgver = 0.1.70
 	pkgrel = 1
 	url = https://github.com/raine/claude-history
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = claude-history-0.1.68.tar.gz::https://github.com/raine/claude-history/archive/v0.1.68.tar.gz
-	sha256sums = c7ad4c68337df872f12bad177a1b1d1c81599ae5ffd7569a8e0d17dec7eb6ed0
+	source = claude-history-0.1.70.tar.gz::https://github.com/raine/claude-history/archive/v0.1.70.tar.gz
+	sha256sums = a54a09e79cd2ba31debf0084d786aa088f17119cc4065f454c8018db88480f29
 
 pkgname = claude-history
