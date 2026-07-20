@@ -1,0 +1,17 @@
+pkgbase = code-review-graph-bin
+	pkgdesc = Local-first code intelligence graph for MCP and CLI — builds a persistent map of your codebase so AI coding tools read only what matters
+	pkgver = 2.3.7
+	pkgrel = 4
+	url = https://code-review-graph.com
+	arch = any
+	license = MIT
+	makedepends = python-uv
+	depends = python>=3.10
+	optdepends = igraph: community detection
+	optdepends = numpy: embedding vectors
+	provides = code-review-graph
+	conflicts = code-review-graph
+	source = code_review_graph-2.3.7-py3-none-any.whl::https://files.pythonhosted.org/packages/f3/8f/2df3fcca285b489d195706b09cefda3e57e7158185cb83905200d7b27199/code_review_graph-2.3.7-py3-none-any.whl
+	sha256sums = 12196dce3e673bdec7fba97ae5c4dff7589adee73a721374f62efae76e0fdd88
+
+pkgname = code-review-graph-bin
