@@ -1,6 +1,6 @@
 pkgbase = tmux-mcp-rs-bin
-	pkgdesc = A Model Context Protocol (MCP) server for tmux, written in Rust
-	pkgver = 0.5.0
+	pkgdesc = A Model Context Protocol (MCP) server for tmux, written in Rust (binary release)
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bnomei/tmux-mcp
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = tmux-mcp-rs-bin
 	depends = tmux
 	provides = tmux-mcp-rs
 	conflicts = tmux-mcp-rs
-	source = LICENSE::https://github.com/bnomei/tmux-mcp/raw/v0.5.0/LICENSE
+	source = LICENSE::https://github.com/bnomei/tmux-mcp/raw/v0.6.0/LICENSE
 	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
-	source_x86_64 = tmux-mcp-rs-0.5.0-x86_64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.5.0/tmux-mcp-rs-v0.5.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = f1f88bafbbcb4fffce84539dd7cc8c4d2a6adc5a46d9892fe9dd3961db746b0f
-	source_aarch64 = tmux-mcp-rs-0.5.0-aarch64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.5.0/tmux-mcp-rs-v0.5.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 7aecc33bbb7c4a37c0a3896d0a248a64a27e59fc142ecd3393a2ec9397c9a2dd
+	source_x86_64 = tmux-mcp-rs-0.6.0-x86_64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.6.0/tmux-mcp-rs-v0.6.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6d2042b74bb1f35ef6e274a15d72a99a621fcd178c26367ed076dfd92dba786d
+	source_aarch64 = tmux-mcp-rs-0.6.0-aarch64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.6.0/tmux-mcp-rs-v0.6.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 7afd734bbec5dc825031c94181ae944bd5511c574967bae5e8f0a694db0607d9
 
 pkgname = tmux-mcp-rs-bin
