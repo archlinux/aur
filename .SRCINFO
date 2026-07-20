@@ -1,7 +1,7 @@
 pkgbase = atmosphera
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/alexindigo/atmosphera
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = atmosphera
 	optdepends = power-profiles-daemon: For power profile management
 	optdepends = ddcutil: For external display brightness control
 	conflicts = atmosphera-git
-	source = atmosphera-0.1.0.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 25cbb9b3f80eba7242ebc668f697ecf75596904e34b494398a652e88b1ce41ce
+	source = atmosphera-0.2.0.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = f48bdb071852f3391c9de8412aa350646dc854c725f99bd4e544c252a9768252
 
 pkgname = atmosphera
