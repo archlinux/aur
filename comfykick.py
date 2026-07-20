@@ -16,7 +16,7 @@ import yaml
 
 PROJECT_NAME = "comfykick"
 
-PROJECT_VERSION = "v1.3.2"
+PROJECT_VERSION = "v1.4"
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
