@@ -1,14 +1,14 @@
 pkgbase = rs-top
 	pkgdesc = A lightweight, agentless, and read-only remote system monitor with a TUI dashboard
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/ruiiiijiiiiang/rs-top
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssh
-	source = rs-top-0.1.2.tar.gz::https://github.com/ruiiiijiiiiang/rs-top/archive/v0.1.2.tar.gz
-	sha256sums = 20e45f2cad11c530e3c5ffd6285f0aa8af27b3a182ae819304ce644bfd9eb31e
+	source = rs-top-0.1.3.tar.gz::https://github.com/ruiiiijiiiiang/rs-top/archive/v0.1.3.tar.gz
+	sha256sums = 023a4331acd5ca33d6045756c9054166c9441d7cd95c287317b1817b0b2bd00b
 
 pkgname = rs-top
