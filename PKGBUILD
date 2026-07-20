@@ -2,17 +2,19 @@
 
 pkgname=moonstone
 pkgver=0.3.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, deterministic Lua project environments and package manager written in Zig'
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/moonstone-sh/$pkgname"
 license=(Apache-2.0)
-depends=(glibc
+depends=(glibc # libc.so ld-linux-x86-64.so
          sqlite3
          zstd)
 makedepends=(cmake
              zig)
-conflicts=(moonscript)
+conflicts=(moon
+           moonbit
+           moonscript)
 _archive="$pkgname-$pkgver"
 # _zigdeps=(https://github.com/sam701/zig-toml/archive/master.tar.gz)
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
