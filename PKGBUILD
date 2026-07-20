@@ -4,7 +4,7 @@
 pkgname=python-pytlv
 _pyname=${pkgname#python-}
 pkgver=0.71
-pkgrel=1
+pkgrel=2
 pkgdesc='TLV(tag length value) data parser, especially useful for EMV tags parsing'
 arch=('any')
 url='https://github.com/timgabets/pytlv'
