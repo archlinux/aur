@@ -1,6 +1,6 @@
 pkgbase = stashee
 	pkgdesc = Glass-styled tiling terminal workspace over tmux
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/eeegoloauq/stashee-terminal
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = stashee
 	depends = tmux
 	optdepends = wl-clipboard: mouse-selection copy on Wayland
 	optdepends = xclip: mouse-selection copy on X11
-	source = stashee-0.1.13.tar.gz::https://github.com/eeegoloauq/stashee-terminal/archive/v0.1.13.tar.gz
-	sha256sums = b0625e996eaebb00de83096319942bb81f979afc6dc6bd2a19ddeee774c15d81
+	source = stashee-0.1.14.tar.gz::https://github.com/eeegoloauq/stashee-terminal/archive/v0.1.14.tar.gz
+	sha256sums = ef395734acd5ba730958510132db4cc02ad5a14617bc3ccf2a12fe0379190621
 
 pkgname = stashee
