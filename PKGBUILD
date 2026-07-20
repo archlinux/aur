@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.5.5
-_subver=1433
+pkgver=4.5.6
+_subver=1434
 pkgrel=1
 arch=(
     'aarch64'
@@ -29,8 +29,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb")
-sha256sums_aarch64=('b7d5b485b00af363020bb7175a1961d0ddbabeb9f63e399e0e7341876031cb82')
-sha256sums_x86_64=('5c384b608b07d794c26f6e5c4591d20490428629a7e92dad9ee8d62cbc6c6c67')
+sha256sums_aarch64=('59eb0f7b3c31c0b4c0e27093e5a8e1161a7845c546d636def309968705dfb9d6')
+sha256sums_x86_64=('76991c08ad5f5e4312566f397cb6196482e932bcfefe08f7a909fb9e57864d4c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
