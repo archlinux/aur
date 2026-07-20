@@ -10,7 +10,6 @@ pkgbase = sbom-tool-bin
 	provides = sbom-tool
 	conflicts = sbom-tool
 	conflicts = sbom-tool-git
-	options = !strip
 	source = sbom-tool-4.1.5::https://github.com/microsoft/sbom-tool/releases/download/v4.1.5/sbom-tool-linux-x64
 	sha256sums = bf5d4f99bc98c119d549d08fc02ae92598a7a42772f17317c01031a92632e05b
 
