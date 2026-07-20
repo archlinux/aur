@@ -2,7 +2,7 @@
 
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
-pkgver=0.28.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('headroom-ai')
 options=('!strip' '!debug')
 
 # Upstream switched from pure-Python (hatchling) to Rust+maturin in 0.21.x.
-# 0.28.0 ships a stable-ABI cp310-abi3 wheel for x86_64 Linux. We install it into
+# 0.32.1 ships a stable-ABI cp310-abi3 wheel for x86_64 Linux. We install it into
 # a python3.12 venv: abi3 wheels run on any Python >=3.10, and pinning python3.12
 # (a fixed-version package) keeps the vendored venv stable across Arch's rolling
 # /usr/bin/python bumps.
@@ -31,9 +31,9 @@ options=('!strip' '!debug')
 # so the [proxy] set is effectively required just for `headroom --help` to load.
 _pytag=cp310-abi3-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
-source=("$_wheel::https://files.pythonhosted.org/packages/04/20/f6891ab873a097211ac194ad7934f126e2ed08f971d4125968eafce11b8a/$_wheel")
+source=("$_wheel::https://files.pythonhosted.org/packages/58/20/95bd0854e1081cda23679cedaf6c4f093cff9ea0d79b762d2f74bb6e0cb7/$_wheel")
 noextract=("$_wheel")
-sha256sums=('f793545d2955c6d651d5267e0bf52dd0f14c7362deb43384e7958986c5b5e9e9')
+sha256sums=('00190bb57ae063199bd1460ec8cf50845d9293a8724c21fcef4dfb5cca27df2e')
 
 build() {
   rm -rf venv
