@@ -9,6 +9,7 @@ pkgbase = termux-language-server
 	depends = python-tree-sitter-bash
 	depends = python-platformdirs
 	depends = python-lsp-tree-sitter
+	depends = python-jinja
 	depends = python-fqdn
 	depends = python-rfc3987
 	depends = namcap
@@ -20,7 +21,7 @@ pkgbase = termux-language-server
 	conflicts = portage-language-server
 	replaces = pkgbuild-language-server
 	replaces = portage-language-server
-	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.1.0-py3-none-any.whl
-	sha256sums = bdf3704d24c723469af8f9e07f2c147d36e42de9aa8d637cf47496f94ffbff63
+	source = https://files.pythonhosted.org/packages/source/t/termux_language_server/termux_language_server-0.1.0.tar.gz
+	sha256sums = ee8e4fece98b5d40f68fa95409de4db56d89890fb71440ebf2fa4e65d6156e37
 
 pkgname = termux-language-server
