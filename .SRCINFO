@@ -1,0 +1,22 @@
+pkgbase = audioclock-bin
+	pkgdesc = Inspect and manage PipeWire and WirePlumber audio clock and format settings (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/audioclock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = pipewire
+	depends = wireplumber
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = libglvnd
+	provides = audioclock
+	conflicts = audioclock
+	source_x86_64 = https://github.com/mrquantumoff/audioclock/releases/download/v0.1.0/audioclock_0.1.0-1_amd64.deb
+	sha256sums_x86_64 = c3f9b1912df220bf290cde515e1837b72ede42dfb0bd5c8e2f51f05b8c8c8c85
+	source_aarch64 = https://github.com/mrquantumoff/audioclock/releases/download/v0.1.0/audioclock_0.1.0-1_arm64.deb
+	sha256sums_aarch64 = 0a40a20ed29fbcac42a8742251b69eefda3ecb942c2c41fb30e19b8df464eb60
+
+pkgname = audioclock-bin
