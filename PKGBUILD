@@ -1,9 +1,9 @@
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
-# Rendered by .github/workflows/release.yml: 0.4.0 is replaced with the
+# Rendered by .github/workflows/release.yml: 0.5.0 is replaced with the
 # release tag and sha256sums is filled by updpkgsums during the test build,
 # so the published PKGBUILD is exactly what was built and verified.
 pkgname=secrets-dispatcher
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Per-operation approval and audit logging for secret access and git commit signing on Linux'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go' 'deno' 'git' 'make')
 install=secrets-dispatcher.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('961d95bbebd3541e097edb7e80feb4001480dfe917638d3991ec4506f16c9298')
+sha256sums=('cb9f86f0dbb6699a84a873790463fc2e60f980643f0fe3cf97c61b25cae5c23f')
 
 build() {
   cd "$pkgname-$pkgver"

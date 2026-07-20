@@ -1,6 +1,6 @@
 pkgbase = secrets-dispatcher
 	pkgdesc = Per-operation approval and audit logging for secret access and git commit signing on Linux
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/nikicat/secrets-dispatcher
 	install = secrets-dispatcher.install
@@ -12,7 +12,7 @@ pkgbase = secrets-dispatcher
 	makedepends = git
 	makedepends = make
 	depends = glibc
-	source = secrets-dispatcher-0.4.0.tar.gz::https://github.com/nikicat/secrets-dispatcher/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 961d95bbebd3541e097edb7e80feb4001480dfe917638d3991ec4506f16c9298
+	source = secrets-dispatcher-0.5.0.tar.gz::https://github.com/nikicat/secrets-dispatcher/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = cb9f86f0dbb6699a84a873790463fc2e60f980643f0fe3cf97c61b25cae5c23f
 
 pkgname = secrets-dispatcher
