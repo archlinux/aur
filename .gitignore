@@ -4,6 +4,5 @@
 *.pkg.tar.zst
 src/
 pkg/
-*.tar.gz
-*.tar.xz
-*.tar.zst
+# makepkg -L logs
+*.log
