@@ -2,7 +2,7 @@
 pkgname=colony-git
 _pkgname=colony
 pkgver=r0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Application launcher for the Project-Colony ecosystem (git HEAD)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
@@ -57,6 +57,12 @@ package() {
 
     # Ship the upstream LICENSE in /usr/share/licenses per Arch convention.
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # The hicolor icon the desktop entry references (in-tree since v0.8.0).
+    if [ -f assets/icons/icon.png ]; then
+        install -Dm644 assets/icons/icon.png \
+            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+    fi
 
     # Desktop entry so GNOME/KDE/rofi/wofi launchers pick up Colony.
     install -dm755 "${pkgdir}/usr/share/applications"

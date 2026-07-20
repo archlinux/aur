@@ -1,7 +1,7 @@
 pkgbase = colony-git
 	pkgdesc = Application launcher for the Project-Colony ecosystem (git HEAD)
 	pkgver = r0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Project-Colony/Colony
 	arch = x86_64
 	license = MIT
