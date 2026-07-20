@@ -154,8 +154,8 @@ _minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
-pkgrel=1
+_tagrel=2
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux BMQ + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
 _kernver="$pkgver-$pkgrel"
@@ -748,7 +748,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('928902b66f01408e338ebb004837c4451246db2e6329143acdb8d4a163980cf6d352274eff5a4ca27ae207535e031351292d2526fa05cc9a99b7f3e6738be3cf'
+b2sums=('9ae56887d6b95bcb39dee4ab057efb76c3d203af5178215fd60723b009282a5fd9c2ff6c61e6eef0dfb7fdebc15dc602318752064e8dfbb28e2b76a625a20a5a'
         'SKIP'
         'a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2'
         'c4784cbbedf9ede11533d9e1675ab42831e4e8b006dce1eec81fdd3de0eb04e2aeed13d93273f5c3c15f7e8e0fe538831d0c38e05196af1a7fb92d4ce99010fe')
