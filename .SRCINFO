@@ -1,7 +1,7 @@
 pkgbase = python-desktop-entry-lib
 	pkgdesc = A library for working with .desktop files
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JakobDev/desktop-entry-lib
 	arch = any
 	license = BSD
@@ -18,6 +18,6 @@ pkgbase = python-desktop-entry-lib
 	depends = desktop-file-utils
 	optdepends = python-jeepney: Install desktop entries using xdg-desktop-portal
 	source = python-desktop-entry-lib-5.0.tar.gz::https://codeberg.org/JakobDev/desktop-entry-lib/archive/5.0.tar.gz
-	sha256sums = 726f4a654f4e4c4c17242245bc5f17595990d3b4928c16fa6b9140ccea31f7db
+	sha256sums = 2189a34f209782bd7c0d392c13093f764e00aacc3b9c49c74a69194cfb9e439b
 
 pkgname = python-desktop-entry-lib
