@@ -9,6 +9,6 @@ pkgbase = soundkeeper-linux
 	source = soundkeeper-linux-1.0.0.tar.gz::https://github.com/arnav4o4/soundkeeper-linux/archive/refs/tags/v1.0.0.tar.gz
 	source = soundkeeper.service
 	sha256sums = 2146ea5c27f7ba0e44a15aaffdd109056a06708aaa6617bc7293d883d193fa45
-	sha256sums = a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524
+	sha256sums = a4689869158a4f760d3e07de34ebf042154d83b5675179ac3ae54abe0eded7fa
 
 pkgname = soundkeeper-linux

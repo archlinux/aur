@@ -12,7 +12,7 @@ depends=('sox')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "soundkeeper.service")
 sha256sums=('2146ea5c27f7ba0e44a15aaffdd109056a06708aaa6617bc7293d883d193fa45'
-            'a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524')
+            'a4689869158a4f760d3e07de34ebf042154d83b5675179ac3ae54abe0eded7fa')
 
 package() {
   # 2. Install the service file directly from the main build source directory ($srcdir)
