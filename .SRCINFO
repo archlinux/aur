@@ -9,6 +9,6 @@ pkgbase = substitcher-bin
 	provides = substitcher
 	conflicts = substitcher
 	source = https://github.com/mrfragger/substitcher/releases/download/v26.07.20/substitcher-x64.AppImage
-	sha256sums = abf7e08c4d7a998f501f964b68ac79640a9982422be4c7ea0f92c3bfbf8f4ca5
+	sha256sums = 3d68b822e042a77aefd9897ae3f504327db1053a8d5c15afd8a0d053e4d9d545
 
 pkgname = substitcher-bin
