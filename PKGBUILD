@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godot-launcher-bin
 _pkgname='Godot Launcher'
-pkgver=1.10.0
+pkgver=1.10.1
 _electronversion=41
 pkgrel=1
 pkgdesc="A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-linux_x86_64.rpm")
 sha256sums=('982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('65ad6c0853b643f0d595ddded5a2347235402b84472b3defed7ebc7ce8272ef1')
-sha256sums_x86_64=('7f354e1fe5f6e4260346f9b856c143527bc0c8faf26814cd6659604c519f4633')
+sha256sums_aarch64=('fa3e1e8d29d7d195fe080dfb539ed1500a2d531e3ad38def72199adcf800803d')
+sha256sums_x86_64=('40e3f45c6dda5cc3956a3d31cfa5830895fc2fd7317f85233f919d0c4a6a3f0f')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -62,7 +62,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
