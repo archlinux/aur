@@ -2,7 +2,7 @@
 
 pkgname=panache
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server, formatter, and linter for Pandoc, Quarto, and R Markdown'
 arch=(x86_64 aarch64)
 url="https://github.com/jolars/$pkgname"
@@ -11,18 +11,25 @@ depends=(gcc-libs libgcc_s.so
          glibc) # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('6b61d93bd55f571b4f75db617987960703a5215d2c12898d78661cec3f7508f5')
-
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target host-tuple
-}
 
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -ffat-lto-objects'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
