@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spool-bin
 _pkgname=Spool
-pkgver=0.6.2
+pkgver=0.6.3
 _electronversion=43
 pkgrel=1
 pkgdesc="Your local AI session library. Collects sessions from Claude Code, Codex CLI, Gemini CLI (and more) — browsable and ⌘K-searchable. (Prebuilt version.Use system-wide electron)."
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/spool-lab/spool/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b91a54a3e065f4d2fbd220fcf128dd510a5469844b259a87b508f2f0393c8d6b'
+sha256sums=('4a4008946517afcb8b5dc96e36ae02a9f5786f0f6c3419fea88ce992f456a34d'
             '44b3703d31c25ba6ad08086976448a58b55426a3c206efba0dc08ff2162a4efa'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
