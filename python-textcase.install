@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+# -*- sh -*-
+
+post_install() {
+  cat <<EOF
+»  See https://zobweyt.github.io/textcase/ for full documentation.
+EOF
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
