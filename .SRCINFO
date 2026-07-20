@@ -1,0 +1,23 @@
+pkgbase = r-mirai
+	pkgdesc = Minimalist Async Evaluation Framework for R
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mirai
+	arch = x86_64
+	license = MIT
+	license = +
+	license = file
+	license = LICENSE
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-nanonext
+	optdepends = r-cli
+	optdepends = r-litedown
+	optdepends = r-mori
+	optdepends = r-otel
+	optdepends = r-otelsdk
+	optdepends = r-secretbase
+	source = https://cran.r-project.org/src/contrib/mirai_2.7.2.tar.gz
+	sha256sums = 78a32dac63fbc4da00aaa8c4c15d6c2d8b41bb1addf88a0bdaf96add58fb5939
+
+pkgname = r-mirai
