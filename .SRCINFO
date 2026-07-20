@@ -1,0 +1,14 @@
+pkgbase = xray-dinit
+	pkgdesc = Dinit service definition for Xray-core
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XTLS/Xray-core
+	arch = any
+	license = unknown
+	depends = xray
+	depends = dinit
+	backup = etc/dinit.d/xray
+	source = xray.dinit-service
+	sha256sums = SKIP
+
+pkgname = xray-dinit

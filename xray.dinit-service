@@ -1,0 +1,10 @@
+# xray core service
+type	= process
+command = /usr/bin/xray -confdir /etc/xray/
+after: network.target
+restart	= false
+run-as = xray
+logfile = /var/log/xray/core.log
+logfile-uid = xray
+capabilities = ^CAP_NET_ADMIN,^CAP_NET_RAW
+options: no-new-privs
