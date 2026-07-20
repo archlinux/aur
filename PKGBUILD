@@ -6,7 +6,7 @@ pkgdesc="Unofficial TAB Australia desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/tab/"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron>=2026.2' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('7bf5033530a8b5ed478ef025cbfd1a493a71a624c93d74e440ee1ff5f3841182')

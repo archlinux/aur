@@ -8,7 +8,7 @@ pkgbase = tabracing
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
-	depends = libelectron>=2025.1
+	depends = libelectron>=2026.2
 	depends = nss
 	depends = gtk3
 	depends = libxss
