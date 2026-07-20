@@ -2,7 +2,7 @@
 # Contributor: Shane Stone <shanewstone at gmail>
 
 pkgname=ttf-font-logos
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An icon font providing popular Linux distro logos."
 arch=(any)
@@ -12,7 +12,7 @@ license=('Unlicense')
 makedepends=('yarn' 'jq' 'fontforge')
 depends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('617e16a05940f2e32f72eb9d3dedc8d6077c8f86bd75d2ed24f7d6333fb5eeed')
+sha256sums=('39fc8211398d1705a52b4563abc0a83842a05a8b66e922264cf2d51cc3461169')
 
 build() {
   cd font-logos-$pkgver/
