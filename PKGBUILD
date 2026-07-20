@@ -6,7 +6,7 @@ _appname=lg
 pkgname=${_gitname}
 pkgdesc="Almost Clojure written in Go"
 
-pkgver=1.11.1
+pkgver=1.12.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ options=(!strip)
 
 source=("git+${url}.git#tag=${_gitversion}")
 # source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('5dffbf0166fefd98bf06e6ca21b9ecc5215d6dfeacee676ae54706e3ae401f89')
+sha256sums=('4baeed4d6c74b28293df30a5919185599a6b25afd0d3cf33444ea4864a8c185b')
 
 
 prepare() {
