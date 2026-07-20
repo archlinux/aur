@@ -1,4 +1,5 @@
-# Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
 
 pkgname=python-pytlv
 _pyname=${pkgname#python-}
