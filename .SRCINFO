@@ -1,6 +1,6 @@
 pkgbase = pwsp-bin
 	pkgdesc = Lets you play audio files through your microphone (Pre-built binaries)
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = https://github.com/arabianq/pipewire-soundpad
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = pwsp-bin
 	depends = alsa-lib
 	provides = pwsp
 	conflicts = pwsp
-	source = pipewire-soundpad-1.12.4.tar.gz :: https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.12.4.tar.gz
+	source = pipewire-soundpad-1.12.5.tar.gz :: https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.12.5.tar.gz
 	sha256sums = SKIP
-	source_x86_64 = pwsp-1.12.4-x86_64.zip :: https://github.com/arabianq/pipewire-soundpad/releases/download/v1.12.4/pwsp-v1.12.4-linux-x64.zip
+	source_x86_64 = pwsp-1.12.5-x86_64.zip :: https://github.com/arabianq/pipewire-soundpad/releases/download/v1.12.5/pwsp-v1.12.5-linux-x64.zip
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = pwsp-1.12.4-aarch64.zip :: https://github.com/arabianq/pipewire-soundpad/releases/download/v1.12.4/pwsp-v1.12.4-linux-arm64.zip
+	source_aarch64 = pwsp-1.12.5-aarch64.zip :: https://github.com/arabianq/pipewire-soundpad/releases/download/v1.12.5/pwsp-v1.12.5-linux-arm64.zip
 	sha256sums_aarch64 = SKIP
 
 pkgname = pwsp-bin
