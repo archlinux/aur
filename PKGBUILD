@@ -1,7 +1,7 @@
 # Maintainer: Geequlim <geequlim at gmail dot com>
 
 pkgname=voxspell-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='言出法随——面向 Fcitx 5 的 AI 语音输入工具（二进制版）'
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('voxspell')
 conflicts=('voxspell')
 install='voxspell-bin.install'
 source=("https://github.com/Geequlim/VoxSpell/releases/download/v${pkgver}/voxspell-${pkgver}-linux-${CARCH}.tar.zst")
-sha256sums=('1d46360fc45e37018d1eb9e66a51c7ea0c89f765b58aad8db971deff0eac63c5')
+sha256sums=('eafb1ed39d2bfddc9303bdadb227c14204a822668ce3385536046beec325e48d')
 
 package() {
 	cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"

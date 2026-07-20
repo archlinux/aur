@@ -1,6 +1,6 @@
 pkgbase = voxspell-bin
 	pkgdesc = 言出法随——面向 Fcitx 5 的 AI 语音输入工具（二进制版）
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Geequlim/VoxSpell
 	install = voxspell-bin.install
@@ -15,7 +15,7 @@ pkgbase = voxspell-bin
 	depends = pipewire-audio
 	provides = voxspell
 	conflicts = voxspell
-	source = https://github.com/Geequlim/VoxSpell/releases/download/v0.1.4/voxspell-0.1.4-linux-x86_64.tar.zst
-	sha256sums = 1d46360fc45e37018d1eb9e66a51c7ea0c89f765b58aad8db971deff0eac63c5
+	source = https://github.com/Geequlim/VoxSpell/releases/download/v0.1.5/voxspell-0.1.5-linux-x86_64.tar.zst
+	sha256sums = eafb1ed39d2bfddc9303bdadb227c14204a822668ce3385536046beec325e48d
 
 pkgname = voxspell-bin
