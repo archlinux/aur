@@ -1,0 +1,27 @@
+pkgbase = amnezia-box-git
+	pkgdesc = The universal proxy platform, forked with AmneziaWG (awg) outbound, xhttp and mieru support. Development build from latest commit.
+	pkgver = 1.14.0alpha.48awg3xhttpmieru.r2546.930d9b79
+	pkgrel = 1
+	url = https://github.com/hoaxisr/amnezia-box
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = riscv64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = clang
+	makedepends = lld
+	depends = glibc
+	optdepends = sing-geosite-rule-set: GeoSite rule sets
+	optdepends = sing-geoip-rule-set: GeoIP rule sets
+	conflicts = sing-box
+	conflicts = sing-box-git
+	conflicts = sing-box-beta
+	conflicts = amnezia-box
+	backup = etc/sing-box/config.json
+	source = amnezia-box-git::git+https://github.com/hoaxisr/amnezia-box.git#branch=awg-1.14
+	sha256sums = SKIP
+
+pkgname = amnezia-box-git
