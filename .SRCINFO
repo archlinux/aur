@@ -9,10 +9,10 @@ pkgbase = pageguard
 	makedepends = chrpath
 	makedepends = findutils
 	makedepends = glib2
-	makedepends = amalthea-ldc2
+	makedepends = amalthea-gdc
 	makedepends = gcc-d
 	depends = glib2
-	depends = amalthea-ldc2
+	depends = amalthea-gdc
 	source = pageguard-0.1.5.tar.gz::https://gitlab.com/os-18/pageguard/-/archive/v0.1.5/pageguard-v0.1.5.tar.gz
 	sha256sums = 51b7cfa83eb33a07b2cb42b180f20df0fd66de0128ba2937dd132fa35fb44899
 

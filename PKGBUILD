@@ -2,8 +2,8 @@
 PROJECT=pageguard
 BASE_NAME=pageguard
 DESCR="A tool for saving HTML-pages with all resources embedded"
-makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "gcc-d")
-depends=("glib2" "amalthea-ldc2")
+makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-gdc" "gcc-d")
+depends=("glib2" "amalthea-gdc")
 pkgver=0.1.5
 pkgrel=0
 license=("BSL-1.0")
