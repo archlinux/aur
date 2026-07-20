@@ -1,0 +1,14 @@
+pkgbase = rabbitmq-client-git
+	pkgdesc = CLI RabbitMQ client
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.comroid.org/comroid/rabbitmq-client
+	arch = any
+	license = GPL-3.0
+	makedepends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	options = !strip
+	source = git+https://git.comroid.org/comroid/rabbitmq-client.git
+	md5sums = SKIP
+
+pkgname = rabbitmq-client-git
