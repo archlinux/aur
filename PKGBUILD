@@ -1,8 +1,10 @@
 # Maintainer: leoneii comdir@infonix.info
 
-#для установки необходимо скачать официальный Appimage с сайта, запустить, проигрнорировать неизвестный дистрибутив и попытаться установить, получив в итоге ошибку
-#после этого в папке /home/имя пользователя/.tmp/Tensor/Saby/ останутся необходимые файлы установка
-#если кто-то знает прямые пути - буду рад исправить
+# Пакет собирается напрямую из официального APT-репозитория Saby
+# (тот же репозиторий, который добавляет их установочный скрипт saby-setup под капотом):
+#   https://update.saby.ru/<Продукт>/master/linux/deb_repo/
+# "master" - алиас, всегда указывающий на последнюю сборку, поэтому
+# версия пакета вычисляется автоматически через pkgver() из содержимого .deb.
 
 name=SabyDesktop
 pkgname=sabydesktop
@@ -12,18 +14,24 @@ pkgrel=1
 pkgdesc="SabyDesktop- приложения от Сбис, включая сбис-плагин, предоставляет доступ к дополнительным инструментам и сервисам saby, например использованию электронной подписи"
 arch=('x86_64')
 license=('Custom')
-_debsdir="${HOME}/.tmp/Tensor/Saby"
-source=("saby.deb::file://${_debsdir}/saby.deb"
-         "nmh-transport.deb::file://${_debsdir}/nmh-transport.deb"
-         "sabycenter.deb::file://${_debsdir}/sabycenter.deb")
+
+source=("saby.deb::https://update.saby.ru/SabyDesktop/master/linux/deb_repo/saby.deb"
+         "nmh-transport.deb::https://update.saby.ru/NmhTransport/master/linux/deb_repo/nmh-transport.deb"
+         "sabycenter.deb::https://update.saby.ru/SabyCenter/master/linux/deb_repo/sabycenter.deb")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
 makedepends=(
+  'dpkg'
 )
 depends=(
 )
+
+pkgver() {
+  # Версию берём из метаданных самого свежего скачанного .deb (dpkg-deb)
+  dpkg-deb -f "${srcdir}/saby.deb" Version | tr '-' '_'
+}
 
 build() {
   echo "Skiping build....."
