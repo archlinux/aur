@@ -2,27 +2,39 @@
 
 _pkgname=cursor-clip
 pkgname=${_pkgname}-git
-pkgver=r103.d078343
+pkgver=1.0.0
 pkgrel=1
 epoch=1
 pkgdesc="GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/Sirulex/cursor-clip"
-license=("GPL-3.0-or-later")
+license=("GPL-3.0-only")
 depends=("gtk4" "libadwaita" "gtk4-layer-shell")
 makedepends=("git" "cargo" "rust" "pkgconf")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  local rev
-  local hash
-  rev="$(git rev-list --count HEAD)"
-  hash="$(git rev-parse --short HEAD)"
-  printf "r%s.%s" "${rev}" "${hash}"
+
+  local description
+  if description="$(git describe --long --tags --match "v[0-9]*.[0-9]*.[0-9]*" --abbrev=7 2>/dev/null)"; then
+    local tag commits hash
+    IFS=- read -r tag commits hash <<< "${description}"
+    tag="${tag#v}"
+
+    if (( commits == 0 )); then
+      printf "%s" "${tag}"
+    else
+      printf "%s.r%s.%s" "${tag}" "${commits}" "${hash}"
+    fi
+  else
+    printf "0.r%s.g%s" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  fi
 }
 
 build() {
