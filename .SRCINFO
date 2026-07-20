@@ -1,0 +1,22 @@
+pkgbase = o2-rs-bin
+	pkgdesc = Rust port of the ORCΛ esoteric programming language and terminal livecoding environment
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/coignard/o2
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	provides = o2
+	conflicts = o2-rs-git
+	conflicts = o2-rs
+	options = !strip
+	options = !debug
+	source = LICENSE-0.3.4::https://raw.githubusercontent.com/coignard/o2/refs/tags/0.3.4/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = o2-0.3.4-bin.tar.gz::https://github.com/coignard/o2/releases/download/0.3.4/o2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1566ff99d8dcd00335fb536a877800932c77a1c8ecbd8eb4ea912697c9284568
+	source_aarch64 = o2-0.3.4-bin.tar.gz::https://github.com/coignard/o2/releases/download/0.3.4/o2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3ef84e1935257ec672a3a16cdefe9e3b1588e3feed687798e050e3e6f2078ab9
+
+pkgname = o2-rs-bin
