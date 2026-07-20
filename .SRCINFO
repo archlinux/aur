@@ -1,5 +1,5 @@
 pkgbase = python-okta-git
-	pkgdesc = A Python library for the Okta Management APIs
+	pkgdesc = A Python SDK library for the Okta Management APIs
 	pkgver = 3.4.4.r0.gf6850979
 	pkgrel = 1
 	url = https://github.com/okta/okta-sdk-python
