@@ -1,7 +1,7 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.16.7
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)'
 arch=('x86_64')
 url='https://github.com/asteroidzman/asteroidz'
