@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous-git
-pkgver=0.4.0.r1.g7f3ab16 # Will be updated by pkgver()
+pkgver=0.4.1.r0.gf1b6c64 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -10,18 +10,17 @@ url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev'
-         'noctalia-git' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
+         'noctalia' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
          'libscenefx-0.5.so')
-makedepends=('clang' 'lld' 'llvm'
-             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so')
-optdepends=('ly: recommended display manager / login greeter'
+makedepends=('clang' 'lld' 'llvm' 'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so' 'zig>=0.16')
+optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
-            'tabby: recommended terminal emulator'
+            'ghostty: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser'
             'wireplumber: volume/media key bindings (wpctl)')
@@ -38,7 +37,7 @@ pkgver() {
     local ver
     ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
     if [[ -z "$ver" ]]; then
-        ver="0.2.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+        ver="0.4.1.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
     fi
     echo "$ver"
 }
