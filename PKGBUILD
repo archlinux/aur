@@ -1,8 +1,8 @@
 # Maintainer: neop <lacorteernest@gmail.com>
 pkgname=neoclock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Lightweight and simple clock app with GTK4 support, timer, alarm, and system tray"
+pkgdesc="Simple clock app with GTK4 support, timer, alarm, and system tray"
 arch=('x86_64')
 url="https://github.com/neops-system/neoclock"
 license=('MIT')

@@ -1,6 +1,6 @@
 pkgbase = neoclock
-	pkgdesc = Lightweight and simple clock app with GTK4 support, timer, alarm, and system tray
-	pkgver = 0.1.0
+	pkgdesc = Simple clock app with GTK4 support, timer, alarm, and system tray
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/neops-system/neoclock
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = neoclock
 	makedepends = rust
 	depends = gtk4
 	depends = libadwaita
-	source = neoclock-0.1.0.tar.gz::https://github.com/neops-system/neoclock/archive/refs/tags/v0.1.0.tar.gz
+	source = neoclock-0.1.1.tar.gz::https://github.com/neops-system/neoclock/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = neoclock
