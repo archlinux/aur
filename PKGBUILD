@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="$_pkgname-git"
-pkgver=0.55.2.r79.g515b883
+pkgver=0.56.0.r1.g5b260fa
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=('x86_64' 'aarch64')
@@ -46,6 +46,7 @@ depends=(
   pixman
   polkit
   re2
+  sdbus-cpp
   seatd
   systemd-libs
   tomlplusplus
@@ -79,7 +80,7 @@ optdepends=(
   'glaze: to build and install plugins using hyprpm'
   'hyprqt6engine-git: the recommended way to manage qt styles'
   'meson: to build and install plugins using hyprpm'
-  'uwsm: the recommended way to start Hyprland'
+  'rtkit: real-time scheduling support'
 )
 
 conflicts=("$_pkgname")
