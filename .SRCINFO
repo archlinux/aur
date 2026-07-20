@@ -21,7 +21,7 @@ pkgbase = oshot-bin
 	source = https://github.com/Toni500github/oshot/releases/download/v0.4.6/oshot-linux-v0.4.6.zip
 	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.4.6/LICENSE
 	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.4.6/oshot.desktop
-	sha256sums = 4aa5cff9151715984d4954be8663b9c550dfa9cc89f0fe57b98833842d7f7ebf
+	sha256sums = 3d2b5167aca1b68b9868f42a609891a4595aa3597560218cd2dd87f5c56136e5
 	sha256sums = 4a509aaabf33b5edb9cc7eea738c3d732b99a78f48c6ae81bd8eeb487edbb8e6
 	sha256sums = 8857babab6f47f246abe66b025b84ce9224d777f7fa6e72b48a0b2eec4da275b
 
