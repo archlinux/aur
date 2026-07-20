@@ -1,0 +1,26 @@
+pkgbase = uuyc
+	pkgdesc = NetEase UU Remote client configured for Wine
+	pkgver = 4.33.0.8907
+	pkgrel = 3
+	url = https://uuyc.163.com/
+	arch = x86_64
+	license = LicenseRef-UU-Remote-EULA
+	makedepends = 7zip
+	depends = wine>=11.1
+	depends = hicolor-icon-theme
+	depends = procps-ng
+	depends = util-linux
+	optdepends = libnotify: desktop notifications during first-run setup
+	noextract = uuyc-4.33.0.8907.exe
+	options = !strip
+	options = !debug
+	source = uuyc-4.33.0.8907.exe::https://a56.gdl.netease.com/UURemote_Setup_4.33.0.8907_0715193023_gwqd.exe
+	source = uuyc
+	source = uuyc.desktop
+	source = UU-Remote-EULA.html::https://uuyc.163.com/contact/20240402/40294_1146065.html
+	sha256sums = 5e3cfe8cfdc6552c1fc26f1ad2c94df133ca20dc3c45c23155358c32ac9bf53e
+	sha256sums = 6bc2df340099809a8b5bd4e187252509ef94cb575f3865d805c98c4684aaa8d3
+	sha256sums = 03c7d6d57d291dc2d5cf6d7af46ce606b1d5f488f819363af0158c2783376397
+	sha256sums = 3a2b28509a7c54bb701ae877af8312f2c366388c198427f483cf791c6eae0b65
+
+pkgname = uuyc

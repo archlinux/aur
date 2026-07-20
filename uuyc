@@ -1,0 +1,303 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+readonly app_name="UU Remote"
+readonly share_dir="${UUYC_SHARE_DIR:-/usr/share/uuyc}"
+readonly upstream_version_file="${share_dir}/upstream-version"
+readonly package_release_file="${share_dir}/package-release"
+readonly installer="${share_dir}/uuyc-installer.exe"
+readonly wine="/usr/bin/wine"
+readonly wineboot="/usr/bin/wineboot"
+readonly winecfg="/usr/bin/winecfg"
+
+notify_status() {
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send --app-name="$app_name" "$app_name" "$1" || true
+    fi
+}
+
+die() {
+    local message=$1
+    notify_status "$message"
+    printf '%s\n' "$message" >&2
+    exit 1
+}
+
+usage() {
+    cat <<'EOF'
+Usage: uuyc [OPTION] [CLIENT_ARGUMENT...]
+
+Options:
+  --repair       Recheck and repair the Wine prefix before launching
+  --setup-only   Prepare the Wine prefix without launching UU Remote
+  --uri URI      Open a uuremote: URI through Wine's registered handler
+  --version      Print the AUR package release
+  -h, --help     Show this help
+EOF
+}
+
+[[ -r "$upstream_version_file" ]] || die "Missing package data: $upstream_version_file"
+[[ -r "$package_release_file" ]] || die "Missing package data: $package_release_file"
+[[ -r "$installer" ]] || die "Missing package data: $installer"
+
+upstream_version="$(<"$upstream_version_file")"
+package_release="$(<"$package_release_file")"
+readonly upstream_version package_release
+
+repair=false
+setup_only=false
+uri=""
+client_args=()
+
+while (($# > 0)); do
+    case $1 in
+        --repair)
+            repair=true
+            ;;
+        --setup-only)
+            setup_only=true
+            ;;
+        --uri)
+            shift
+            (($# > 0)) || die "--uri requires an argument."
+            uri=$1
+            ;;
+        --version)
+            printf '%s\n' "$package_release"
+            exit 0
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        --)
+            shift
+            client_args+=("$@")
+            break
+            ;;
+        uuremote:*)
+            uri=$1
+            ;;
+        *)
+            client_args+=("$1")
+            ;;
+    esac
+    shift
+done
+
+readonly legacy_prefix="$HOME/Games/uu-remote"
+readonly xdg_prefix="${XDG_DATA_HOME:-$HOME/.local/share}/uuyc/wineprefix"
+if [[ -n ${UUYC_WINEPREFIX:-} ]]; then
+    prefix=$UUYC_WINEPREFIX
+elif [[ -f "$legacy_prefix/drive_c/Program Files/Netease/GameViewer/GameViewer.exe" ]]; then
+    prefix=$legacy_prefix
+else
+    prefix=$xdg_prefix
+fi
+readonly prefix
+
+readonly install_dir="$prefix/drive_c/Program Files/Netease/GameViewer"
+wine_user=$(id -un)
+readonly wine_user
+readonly wine_desktop="$prefix/drive_c/users/$wine_user/Desktop"
+readonly client="$install_dir/GameViewer.exe"
+readonly server="$install_dir/bin/GameViewerServer.exe"
+readonly webview_setup="$install_dir/bin/MicrosoftEdgeWebview2Setup.exe"
+readonly webview_root="$prefix/drive_c/Program Files (x86)/Microsoft/EdgeWebView/Application"
+readonly webview_key='HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
+readonly service_key='HKLM\System\CurrentControlSet\Services\GameViewerService'
+readonly installed_version_key='HKCU\Software\Netease\GameViewer'
+readonly stamp="$prefix/.uuyc-package-release"
+readonly state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/uuyc"
+readonly setup_log="$state_dir/setup.log"
+
+mkdir -p "$state_dir"
+
+export WINEPREFIX="$prefix"
+export WINEDEBUG="${WINEDEBUG:--all}"
+unset WINEARCH
+export WINEDLLOVERRIDES="${WINEDLLOVERRIDES:+${WINEDLLOVERRIDES};}winemenubuilder.exe=d"
+unset WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS
+unset WEBVIEW2_BROWSER_EXECUTABLE_FOLDER
+unset WEBVIEW2_CHANNEL_SEARCH_KIND
+unset WEBVIEW2_RELEASE_CHANNELS
+unset WEBVIEW2_USER_DATA_FOLDER
+
+run_logged() {
+    {
+        printf '\n[%(%FT%T%z)T] ' -1
+        printf '%q ' "$@"
+        printf '\n'
+        "$@"
+    } >>"$setup_log" 2>&1
+}
+
+registry_value() {
+    local key=$1
+    local value=$2
+    local output line
+
+    output=$("$wine" reg query "$key" /v "$value" 2>/dev/null) || return 1
+    while IFS= read -r line; do
+        if [[ $line =~ ^[[:space:]]*${value}[[:space:]]+REG_[[:alnum:]_]+[[:space:]]+(.+)$ ]]; then
+            printf '%s\n' "${BASH_REMATCH[1]%$'\r'}"
+            return 0
+        fi
+    done <<<"$output"
+    return 1
+}
+
+app_files_present() {
+    [[ -f "$client" && -f "$server" ]]
+}
+
+webview_files_present() {
+    compgen -G "$webview_root/*/msedgewebview2.exe" >/dev/null
+}
+
+webview_ready() {
+    local version
+    version=$(registry_value "$webview_key" pv) || return 1
+    [[ -n $version && $version != 0.0.0.0 && -f "$webview_root/$version/msedgewebview2.exe" ]]
+}
+
+prefix_current() {
+    app_files_present || return 1
+    webview_files_present || return 1
+    [[ -r "$stamp" && $(<"$stamp") == "$package_release" ]]
+}
+
+
+# shellcheck disable=SC2218
+configure_prefix() {
+    local installed_version=""
+    local install_required=false
+    local webview_version=""
+    local attempt
+
+    printf '\n=== UU Remote package setup %s ===\nPrefix: %s\n' \
+        "$package_release" "$prefix" >>"$setup_log"
+
+    if [[ ! -f "$prefix/system.reg" ]]; then
+        mkdir -p "$prefix"
+        notify_status "Creating the Wine prefix. The first launch may take several minutes."
+        if ! WINEPREFIX="$prefix" WINEARCH=win64 \
+            WINEDLLOVERRIDES='mscoree,mshtml=;winemenubuilder.exe=d' WINEDEBUG=-all \
+            "$wineboot" --init >>"$setup_log" 2>&1; then
+            die "Failed to create the Wine prefix. See $setup_log"
+        fi
+    fi
+    if [[ -L "$wine_desktop" ]]; then
+        rm -f -- "$wine_desktop"
+    fi
+    mkdir -p "$wine_desktop"
+
+    if ! run_logged "$winecfg" -v win10; then
+        die "Failed to set the Wine prefix to Windows 10. See $setup_log"
+    fi
+
+    if app_files_present; then
+        installed_version=$(registry_value "$installed_version_key" Version || true)
+    fi
+
+    if ! app_files_present || [[ -z $installed_version ]]; then
+        install_required=true
+    elif (( $(/usr/bin/vercmp "$installed_version" "$upstream_version") < 0 )); then
+        install_required=true
+    fi
+
+    if $install_required; then
+        notify_status "Installing UU Remote $upstream_version in the Wine prefix."
+        # Wine may propagate a non-zero vendor installer status after the
+        # payload is committed, so the installed files are authoritative.
+        if ! run_logged "$wine" "$installer" /S /launchapp=0 /autorun=0; then
+            printf 'Installer returned non-zero; validating installed files.\n' >>"$setup_log"
+        fi
+
+        for ((attempt = 0; attempt < 120; attempt++)); do
+            app_files_present && break
+            sleep 0.25
+        done
+        app_files_present || die "UU Remote did not install its client and server files. See $setup_log"
+        rm -f -- "$wine_desktop/UU远程.lnk"
+    fi
+
+    if ! run_logged "$wine" reg query "$service_key"; then
+        die "UU Remote did not register GameViewerService. See $setup_log"
+    fi
+    if ! run_logged "$wine" reg add "$service_key" /v Start /t REG_DWORD /d 2 /f; then
+        die "Failed to enable GameViewerService. See $setup_log"
+    fi
+
+    if ! webview_ready; then
+        [[ -f "$webview_setup" ]] || die "The bundled WebView2 installer is missing. See $setup_log"
+        notify_status "Installing Microsoft Edge WebView2 Runtime for UU Remote."
+        if ! run_logged "$wine" "$webview_setup" /silent /install; then
+            printf 'WebView2 installer returned non-zero; validating the runtime.\n' >>"$setup_log"
+        fi
+
+        for ((attempt = 0; attempt < 120; attempt++)); do
+            if webview_ready; then
+                break
+            fi
+            sleep 0.5
+        done
+        webview_ready || die "WebView2 Runtime installation did not complete. See $setup_log"
+    fi
+
+    if ! run_logged "$wine" reg add \
+        'HKCU\Software\Wine\AppDefaults\msedgewebview2.exe' \
+        /v Version /t REG_SZ /d win8 /f; then
+        die "Failed to configure WebView2 compatibility. See $setup_log"
+    fi
+    if ! run_logged "$wine" reg add 'HKCU\Software\Wine\X11 Driver' \
+        /v UseTakeFocus /t REG_SZ /d N /f; then
+        die "Failed to configure Wine focus handling. See $setup_log"
+    fi
+
+    webview_version=$(registry_value "$webview_key" pv || true)
+    app_files_present || die "UU Remote files disappeared during setup. See $setup_log"
+    [[ -n $webview_version && -f "$webview_root/$webview_version/msedgewebview2.exe" ]] || \
+        die "WebView2 verification failed. See $setup_log"
+
+
+    printf '%s\n' "$package_release" >"${stamp}.tmp"
+    mv -f "${stamp}.tmp" "$stamp"
+    notify_status "UU Remote setup completed."
+}
+
+if $repair || ! prefix_current; then
+    exec 9>"$state_dir/setup.lock"
+    /usr/bin/flock 9
+    if $repair || ! prefix_current; then
+        configure_prefix
+    fi
+    /usr/bin/flock -u 9
+fi
+
+$setup_only && exit 0
+app_files_present || die "UU Remote is not installed correctly. Run: uuyc --repair"
+
+server_running() {
+    /usr/bin/pgrep -u "$(id -u)" -f -x -- "$server" >/dev/null 2>&1
+}
+
+if ! server_running; then
+    (
+        cd "$install_dir/bin"
+        nohup "$wine" "$server" >/dev/null 2>&1 &
+    )
+fi
+
+for ((attempt = 0; attempt < 50; attempt++)); do
+    server_running && break
+    sleep 0.2
+done
+server_running || die "GameViewerServer.exe did not start under Wine."
+
+sleep 1
+cd "$install_dir"
+if [[ -n $uri ]]; then
+    exec "$wine" start "$uri"
+fi
+exec "$wine" "$client" "${client_args[@]}"

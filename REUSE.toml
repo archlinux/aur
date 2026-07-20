@@ -1,0 +1,17 @@
+version = 1
+
+[[annotations]]
+path = [
+  ".github/workflows/aur-publish.yml",
+  ".gitignore",
+  ".SRCINFO",
+  "LICENSE",
+  "PKGBUILD",
+  "README.md",
+  "REUSE.toml",
+  "uuyc",
+  "uuyc.desktop",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 AUR package contributors"
+SPDX-License-Identifier = "0BSD"

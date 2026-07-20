@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.*
+*.exe
+UU-Remote-EULA.html
+*.log
+.cache/

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Name=UU Remote
+Name[zh_CN]=网易UU远程
+GenericName=Remote Desktop
+GenericName[zh_CN]=远程桌面
+Comment=Access remote computers and cloud PCs with NetEase UU Remote
+Comment[zh_CN]=使用网易UU远程访问远程电脑和云电脑
+Exec=uuyc %u
+TryExec=uuyc
+Icon=uuyc
+Terminal=false
+Categories=Network;RemoteAccess;
+Keywords=remote;desktop;streaming;game;cloud;
+MimeType=x-scheme-handler/uuremote;
+StartupNotify=true
+StartupWMClass=gameviewer.exe
