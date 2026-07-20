@@ -1,6 +1,6 @@
 pkgbase = fluree-bin
 	pkgdesc = Fluree — semantic graph database (CLI and embedded server)
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://flur.ee
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = fluree-bin
 	conflicts = fluree
 	options = !strip
 	options = !debug
-	source_x86_64 = fluree-db-cli-x86_64-unknown-linux-gnu-4.1.2.tar.xz::https://github.com/fluree/db/releases/download/v4.1.2/fluree-db-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 13fbe555d5ee27f133dc4d5e7fc935b1dfd63332283dd591dad0b91efb755436
-	source_aarch64 = fluree-db-cli-aarch64-unknown-linux-gnu-4.1.2.tar.xz::https://github.com/fluree/db/releases/download/v4.1.2/fluree-db-cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 0cff0d0e34f8c173b89968e0301a769db85eb972773e40aec59ad7f72470034f
+	source_x86_64 = fluree-db-cli-x86_64-unknown-linux-gnu-4.1.3.tar.xz::https://github.com/fluree/db/releases/download/v4.1.3/fluree-db-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 837ee2805a93fc262eb2ce8eb733ce0313c18aeff487444e08fa8a3566de2729
+	source_aarch64 = fluree-db-cli-aarch64-unknown-linux-gnu-4.1.3.tar.xz::https://github.com/fluree/db/releases/download/v4.1.3/fluree-db-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 5fdc20e66e1e9bc300882627b6eb47f7cabfafdff55027c23ce1660f3e1b75c3
 
 pkgname = fluree-bin
