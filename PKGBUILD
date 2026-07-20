@@ -22,7 +22,6 @@ sha256sums=('07015310e38adc7a8b0d1e13c4eb5eab2d6bf212d97d4110ec5e22d52da93f42'
             '2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5'
             '4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b')
 
-options=("!strip")
 makedepends=('unzip')
 
 package() {
