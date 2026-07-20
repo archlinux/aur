@@ -1,6 +1,6 @@
 pkgbase = claudectl-bin
 	pkgdesc = Auto-pilot for Claude Code — local LLM watches sessions and decides what to approve
-	pkgver = 0.62.0
+	pkgver = 0.64.0
 	pkgrel = 1
 	url = https://github.com/mercurialsolo/claudectl
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = claudectl-bin
 	conflicts = claudectl
 	conflicts = claudectl-git
 	options = !strip
-	source = LICENSE-0.62.0::https://raw.githubusercontent.com/mercurialsolo/claudectl/v0.62.0/LICENSE
+	source = LICENSE-0.64.0::https://raw.githubusercontent.com/mercurialsolo/claudectl/v0.64.0/LICENSE
 	sha256sums = c7335fce47998935bbe76ef2fe9dfeb0ba7b7fb8f0edec16127a0a370f6c8b80
-	source_x86_64 = claudectl-0.62.0-x86_64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.62.0/claudectl-v0.62.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 44d312a8c7e892d83c50a75a5be64dc88fe158408579bbc8d3bda5213aa2ea64
-	source_aarch64 = claudectl-0.62.0-aarch64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.62.0/claudectl-v0.62.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 193a148f929be1889f90a03e0ff8b3858f652a58eefe365259b12bca0cdb9729
+	source_x86_64 = claudectl-0.64.0-x86_64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.64.0/claudectl-v0.64.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 94097e646a92dc3bde028c271d47981c1afe28386914b14d1b48d77a98af0815
+	source_aarch64 = claudectl-0.64.0-aarch64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.64.0/claudectl-v0.64.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = cb4fda6fa52074200b9213669af83351cffcee9c0c238da8c8367be28a33c400
 
 pkgname = claudectl-bin
