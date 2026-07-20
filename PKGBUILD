@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastcp
-pkgver=1
+pkgver=0
 pkgrel=1
 pkgdesc="fastcp, a fast cp wrapper using --reflink=always, builds from source"
 arch=('x86_64')
