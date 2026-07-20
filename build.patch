@@ -1,0 +1,74 @@
+From 31bcec9dcbc4387fe8f1dbc13f410e785597e69b Mon Sep 17 00:00:00 2001
+From: Frames <3078295834@qq.com>
+Date: Mon, 20 Jul 2026 17:28:09 +0800
+Subject: [PATCH] fix(build): add missing BUILD_IMAGE_PROTOCOL to build.sh
+
+- Add BUILD_IMAGE_PROTOCOL variable initialization
+- Add BUILD_IMAGE_PROTOCOL_SET initialization
+- Add argument parsing for BUILD_IMAGE_PROTOCOL=
+- Add BUILD_IMAGE_PROTOCOL to --all section
+- Add BUILD_IMAGE_PROTOCOL_SET=true to interactive mode
+---
+ build.sh | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/build.sh b/build.sh
+index 4a69339..90ab239 100644
+--- a/build.sh
++++ b/build.sh
+@@ -300,16 +300,19 @@ interactive_feature_selection() {
+         case "$choice" in
+             [Yy]*)
+                 BUILD_IMAGE_PROTOCOL="ON"
++                BUILD_IMAGE_PROTOCOL_SET=true
+                 print_info "  -> Terminal image protocol: ENABLED"
+                 break
+                 ;;
+             [Nn]*)
+                 BUILD_IMAGE_PROTOCOL="OFF"
++                BUILD_IMAGE_PROTOCOL_SET=true
+                 print_info "  -> Terminal image protocol: DISABLED"
+                 break
+                 ;;
+             "")
+                 BUILD_IMAGE_PROTOCOL="OFF"
++                BUILD_IMAGE_PROTOCOL_SET=true
+                 print_info "  -> Terminal image protocol: DISABLED"
+                 break
+                 ;;
+@@ -548,6 +551,7 @@ main() {
+     # 初始化 CMake 选项变量（空表示未由用户显式设置）
+     BUILD_ICON_SUPPORT=""
+     BUILD_IMAGE_PREVIEW=""
++    BUILD_IMAGE_PROTOCOL=""
+     BUILD_TREE_SITTER=""
+     BUILD_LUA=""
+     BUILD_SSH_MODE=""
+@@ -557,6 +561,7 @@ main() {
+     # 标记每个选项是否由用户显式设置（用于 --all 后允许显式覆盖）
+     BUILD_ICON_SUPPORT_SET=false
+     BUILD_IMAGE_PREVIEW_SET=false
++    BUILD_IMAGE_PROTOCOL_SET=false
+     BUILD_TREE_SITTER_SET=false
+     BUILD_LUA_SET=false
+     BUILD_SSH_MODE_SET=false
+@@ -597,6 +602,11 @@ main() {
+                 BUILD_IMAGE_PREVIEW_SET=true
+                 shift
+                 ;;
++             BUILD_IMAGE_PROTOCOL=*)
++                BUILD_IMAGE_PROTOCOL="${1#*=}"
++                BUILD_IMAGE_PROTOCOL_SET=true
++                shift
++                ;;
+              BUILD_TREE_SITTER=*)
+                 BUILD_TREE_SITTER="${1#*=}"
+                 BUILD_TREE_SITTER_SET=true
+@@ -645,6 +655,7 @@ main() {
+         print_info "--all: enabling all optional CMake features (unless explicitly set)."
+         if [ "$BUILD_ICON_SUPPORT_SET" = false ]; then BUILD_ICON_SUPPORT="ON"; fi
+         if [ "$BUILD_IMAGE_PREVIEW_SET" = false ]; then BUILD_IMAGE_PREVIEW="ON"; fi
++        if [ "$BUILD_IMAGE_PROTOCOL_SET" = false ]; then BUILD_IMAGE_PROTOCOL="ON"; fi
+         if [ "$BUILD_TREE_SITTER_SET" = false ]; then BUILD_TREE_SITTER="ON"; fi
+         if [ "$BUILD_LUA_SET" = false ]; then BUILD_LUA="ON"; fi
+         if [ "$BUILD_AI_CLIENT_SET" = false ]; then BUILD_AI_CLIENT="ON"; fi
