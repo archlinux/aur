@@ -2,8 +2,8 @@
 # Contributor: nirnakinho <aur at dominikbodi dot de>
 
 pkgname=dnscontrol
-pkgver=4.42.0
-pkgrel=2
+pkgver=4.43.2
+pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://dnscontrol.org/"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git'  'go')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DNSControl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('03a93946dee2ac671d8bd833d1204822a327b71ae8965934ac006bcc78979fa78f0717f95b7d8228bccb8f61be72246eb68e4b103ec6459b483fe47fbad429c5')
+b2sums=('a5d13be55afad001324e466a41e093e6b0f6df35a2718a168856a135886e3701869344c3c8e4f4084baf502984b3a128d85c763dad607c47b619fcd169b7ad0f')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
