@@ -7,7 +7,6 @@ pkgbase = rcu-bin
 	license = AGPL3
 	depends = gcc-libs
 	depends = zlib
-	options = !strip
 	source = local://rcu-4.0.34-archlinux.tar.gz
 	source = rcu.desktop
 	sha256sums = 2f9ae6456966cb56acfdc014ec1bfa736e28ed3485dba91a3c2e46aa0d6256e9

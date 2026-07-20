@@ -18,7 +18,6 @@ source=(
 )
 sha256sums=('2f9ae6456966cb56acfdc014ec1bfa736e28ed3485dba91a3c2e46aa0d6256e9'
             'b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c')
-options=("!strip")
 
 package() {
     install -o root -g root -m 755 -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/rcu" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
