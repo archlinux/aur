@@ -16,9 +16,20 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #source=("https://files.pythonhosted.org/packages/bf/fb/05cb227d725bae7fce250c5b4706442d74e94e3f5faa655efd4621ed559c/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('6edc59d284339f5669c178a11e583a09db8b87c9e47ab2d5ed2a05c97cc98d56')
 
+prepare() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  mv pytlv/tests.py ./tests.py
+  sed -i 's/from TLV import/from pytlv.TLV import/' tests.py
+}
+
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python -m unittest
 }
 
 package() {
