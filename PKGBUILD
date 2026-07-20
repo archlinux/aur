@@ -1,6 +1,6 @@
 # Maintainer: mp0rta <3p0rta26@gmail.com>
 pkgname=mqvpn
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Multipath VPN using MASQUE CONNECT-IP (RFC 9484) and Multipath QUIC"
 arch=(x86_64 aarch64)
