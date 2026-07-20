@@ -1,6 +1,6 @@
 pkgbase = trufflehog-git
 	pkgdesc = Secrets scanner for repositories
-	pkgver = 3.95.8.r1.gf2cd191b9
+	pkgver = 3.95.9.r10.g870880131
 	pkgrel = 1
 	url = https://trufflesecurity.com/trufflehog
 	arch = x86_64
