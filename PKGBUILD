@@ -4,7 +4,7 @@
 
 pkgname=realistic-mouse-jiggler
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop mouse jiggler with realistic motion, tray controls, and global bindings"
 arch=('x86_64')
 url="https://github.com/visorcraft/realistic-mouse-jiggler"
@@ -15,7 +15,7 @@ optdepends=(
   'ydotool: preferred cursor movement backend on Wayland'
   'systemd: run the ydotool user service on Wayland'
 )
-options=('!debug')
+options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ef9f4bf88904df00c0d1cf9701ebd6d3d251a75185e3ba72fce514fa1a9b8a3e')
 
