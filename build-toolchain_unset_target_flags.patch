@@ -1,0 +1,15 @@
+diff --git a/build-toolchain.bash b/build-toolchain.bash
+--- a/build-toolchain.bash
++++ b/build-toolchain.bash
+@@ -355,6 +355,11 @@
+ setUpInterfacesAndLibraries
+ linkInterfacesAndLibraries ${INTERFACES_KIND}
+ 
++# Don't leak host CFLAGS/CXXFLAGS (e.g. makepkg's "-march=x86-64 ...") into
++# the cross-target cmake builds below; the m68k/ppc cross-gcc doesn't
++# understand them.
++unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
++
+ ##################### Build target libraries and samples
+ 
+ if [ $BUILD_68K != false ]; then

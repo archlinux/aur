@@ -27,12 +27,13 @@ depends=(
 # You can get the MPW archive from https://macintoshgarden.org/apps/macintosh-programmers-workshop
 source=("git+$url#commit=$_commit"
         "local://MPW_fully_updated.sit"
-        "retro68.sh")
+        "retro68.sh"
+        "build-toolchain_unset_target_flags.patch")
 
 md5sums=('SKIP'
          '3f32f16d1e3b972e4a8b91ff6fd1406f'
-         '1b2aa328b29c63cb7376c5fb136b7153')
-options=('!strip' '!debug' '!lto')
+         '1b2aa328b29c63cb7376c5fb136b7153'
+         'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -42,15 +43,25 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init
+  patch -p1 -i "${srcdir}/build-toolchain_unset_target_flags.patch"
   unar -k hidden "${srcdir}/MPW_fully_updated.sit" 'MPW-GM+PR+Final Updates/Interfaces&Libraries/*'
   mv MPW_fully_updated/MPW-GM+PR+Final\ Updates/Interfaces\&Libraries/* InterfacesAndLibraries/
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  # GCC 15's libcody/libcpp trips over char8_t under C++20; disable it.
+  export CFLAGS="$CFLAGS -fno-char8_t"
+  export CXXFLAGS="$CXXFLAGS -fno-char8_t"
+
+  # libcpp's macro.cc/expr.cc passes non-literal formats with no args to
+  # fprintf-style functions; keep -Wformat but drop -Werror.
+  export CFLAGS="${CFLAGS//-Werror=format-security/}"
+  export CXXFLAGS="${CXXFLAGS//-Werror=format-security/}"
+
   mkdir -p ../${_pkgname}-build
   cd ../${_pkgname}-build
-  unset CFLAGS CXXFLAGS
   export MAKEFLAGS="--jobs=$(nproc)"
   "../${_pkgname}/build-toolchain.bash" --universal
 }
