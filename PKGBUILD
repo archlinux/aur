@@ -44,5 +44,5 @@ package() {
     install -Dm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm 640 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/${pkgname}/koffan.env"
+    install -Dm 640 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/${pkgname}/${pkgname}.env"
 }
