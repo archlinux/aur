@@ -12,11 +12,12 @@ pkgbase = pvsneslib-git
 	makedepends = make
 	makedepends = zip
 	provides = pvsneslib
-	options = !strip
-	options = !debug
-	options = !lto
 	source = git+https://github.com/alekmaul/pvsneslib
 	source = pvsneslib.sh
+	source = flag_specification_improvement.patch
+	source = tcc_cflags_separation.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

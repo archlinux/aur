@@ -1,0 +1,79 @@
+diff --git a/devkitsnes/snes_rules b/devkitsnes/snes_rules
+index db35e05..1b34950 100644
+--- a/devkitsnes/snes_rules
++++ b/devkitsnes/snes_rules
+@@ -78,7 +78,7 @@ export CTF		:=	$(PVSNESLIB_HOME)/devkitsnes/tools/constify
+ #---------------------------------------------------------------------------------
+ # Add default flag for compiling
+ #---------------------------------------------------------------------------------
+-CFLAGS += -I$(PVSNESLIB_HOME)/pvsneslib/include -I$(PVSNESLIB_HOME)/devkitsnes/include -I$(CURDIR)
++TCC_CFLAGS += -I$(PVSNESLIB_HOME)/pvsneslib/include -I$(PVSNESLIB_HOME)/devkitsnes/include -I$(CURDIR)
+ 
+ 
+ SFILES=
+@@ -117,15 +117,15 @@ export OFILES	:=	$(BINFILES:.bin=.obj) $(CFILES:.c=.obj) $(SFILES:.asm=.obj)
+ 	@echo Compiling to .ps ... $(notdir $<)
+ ifeq ($(HIROM),1)
+ ifeq ($(FASTROM),1)
+-	$(CC) $(CFLAGS) -Wall -c $< -H -F -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -H -F -o $@
+ else
+-	$(CC) $(CFLAGS) -Wall -c $< -H -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -H -o $@
+ endif
+ else
+ ifeq ($(FASTROM),1)
+-	$(CC) $(CFLAGS) -Wall -c $< -F -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -F -o $@
+ else
+-	$(CC) $(CFLAGS) -Wall -c $< -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -o $@
+ endif
+ endif
+ 
+diff --git a/pvsneslib/source/Makefile b/pvsneslib/source/Makefile
+index fac1c8d..a171a87 100644
+--- a/pvsneslib/source/Makefile
++++ b/pvsneslib/source/Makefile
+@@ -13,7 +13,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
+ #---------------------------------------------------------------------------------
+ C_SRC	:=
+ 
+-CFLAGS	+=	-I${PVSNESLIB_HOME}/devkitsnes/include \
++TCC_CFLAGS	+=	-I${PVSNESLIB_HOME}/devkitsnes/include \
+ 		-I${PVSNESLIB_HOME}/pvsneslib/include \
+ 		-I${PVSNESLIB_HOME}/pvsneslib/source
+ 
+@@ -26,15 +26,15 @@ export SNESOBJS = crt0_snes.obj libm.obj libtcc.obj libc.obj
+ 
+ ifeq ($(HIROM),1)
+ ifeq ($(FASTROM),1)
+-	$(CC) $(CFLAGS) -Wall -c $< -H -F -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -H -F -o $@
+ else
+-	$(CC) $(CFLAGS) -Wall -c $< -H -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -H -o $@
+ endif
+ else
+ ifeq ($(FASTROM),1)
+-	$(CC) $(CFLAGS) -Wall -c $< -F -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -F -o $@
+ else
+-	$(CC) $(CFLAGS) -Wall -c $< -o $@
++	$(CC) $(TCC_CFLAGS) -Wall -c $< -o $@
+ endif
+ endif
+ 	sed -i 's/.include "hdr.asm"//' $@
+diff --git a/snes-examples/maps/mapbuffer/Makefile b/snes-examples/maps/mapbuffer/Makefile
+index b6d29f0..2c5e1ce 100644
+--- a/snes-examples/maps/mapbuffer/Makefile
++++ b/snes-examples/maps/mapbuffer/Makefile
+@@ -9,7 +9,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
+ MAPDIR := ./maps/$(MAPDIR)
+ GFXDIR := ./gfx/$(GFXDIR)
+ 
+-CFLAGS += -I$(CURDIR)/maps $\
++TCC_CFLAGS += -I$(CURDIR)/maps $\
+ 		  -I$(CURDIR)/src/gameobjects $\
+ 		  -I$(CURDIR)/src/addons $\
+ 

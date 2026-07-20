@@ -10,9 +10,8 @@ url="https://github.com/alekmaul/${_pkgname}"
 makedepends=('cmake' 'doxygen' 'gcc' 'git' 'make' 'zip')
 provides=('pvsneslib')
 license=('MIT')
-source=("git+$url" "pvsneslib.sh")
-sha256sums=('SKIP' 'SKIP')
-options=('!strip' '!debug' '!lto')
+source=("git+$url" "pvsneslib.sh" "flag_specification_improvement.patch" "tcc_cflags_separation.patch")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -22,6 +21,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init --recursive
+  patch -p1 -i "${srcdir}/flag_specification_improvement.patch"
+  patch -p1 -i "${srcdir}/tcc_cflags_separation.patch"
   export MAKEFLAGS=--jobs=1
   export PVSNESLIB_HOME=$(pwd)
   export CMAKE_POLICY_VERSION_MINIMUM=3.5

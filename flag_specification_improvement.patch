@@ -1,0 +1,254 @@
+diff --git a/tools/816-opt/Makefile b/tools/816-opt/Makefile
+index fad634a..f7bf4b7 100644
+--- a/tools/816-opt/Makefile
++++ b/tools/816-opt/Makefile
+@@ -4,19 +4,20 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Compiler and compiler flags
+ CC      := gcc
+-CFLAGS  += -Wall -O2 -pedantic -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+-LDFLAGS := -lpthread
++CFLAGS  += -Wall -O2 -pedantic
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++LDFLAGS ?= -lpthread
+ 
+ # Define the libraries and compilation flags to be used depending on the OS.
+ ifeq ($(shell uname),Darwin)
+-    LDFLAGS := -pthread
++    LDFLAGS ?= -pthread
+ 	EXT     :=
+ else ifeq ($(OS),Windows_NT)
+-	CFLAGS  += -DPCRE2_STATIC
+-	LDFLAGS += -lpthread -static -lpcre2-posix -lpcre2-8 -liconv
++	override CFLAGS += -DPCRE2_STATIC
++	override LDFLAGS += -lpthread -static -lpcre2-posix -lpcre2-8 -liconv
+ 	EXT     :=.exe
+ else
+-	LDFLAGS += -lpthread -static
++	override LDFLAGS += -lpthread -static
+ 	EXT     :=
+ endif
+ 
+diff --git a/tools/bin2txt/Makefile b/tools/bin2txt/Makefile
+index f351d4d..8f980fc 100644
+--- a/tools/bin2txt/Makefile
++++ b/tools/bin2txt/Makefile
+@@ -4,7 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Compiler and compiler flags
+ CC     := gcc
+-CFLAGS := -g -O2 -Wall -Wno-implicit-function-declaration -Wno-unused-result -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CFLAGS ?= -g -O2 -Wall -Wno-unused-result
++override CFLAGS += -Wno-implicit-function-declaration
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Source and object file locations
+ SOURCES := $(wildcard *.c)
+@@ -14,7 +16,7 @@ OBJS    := $(SOURCES:%.c=%.o)
+ EXE     := bin2txt
+ ifeq ($(OS),Windows_NT)
+ 	EXT := .exe
+-	CFLAGS += -D__HAS_STRUPR
++	override CFLAGS += -D__HAS_STRUPR
+ else
+ 	EXT :=
+ endif
+@@ -25,7 +27,7 @@ all: $(EXE)$(EXT)
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static
++	override CFLAGS += -static
+ endif
+ 
+ # Define the recipe for linking the executable
+diff --git a/tools/constify/Makefile b/tools/constify/Makefile
+index cf15164..47bcd9e 100644
+--- a/tools/constify/Makefile
++++ b/tools/constify/Makefile
+@@ -4,13 +4,13 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Define the C++ compiler and flags to be used
+ CC      := g++
+-CFLAGS  := -g -O2 -Wall -Wno-literal-suffix -Wno-overflow
++CFLAGS  ?= -g -O2 -Wall -Wno-literal-suffix -Wno-overflow
+ DEFINES := -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static -lm
++	override CFLAGS += -static -lm
+ endif
+ 
+ # Define the source files, object files, and executable name
+diff --git a/tools/gfx2snes/Makefile b/tools/gfx2snes/Makefile
+index acec44a..ca66d23 100644
+--- a/tools/gfx2snes/Makefile
++++ b/tools/gfx2snes/Makefile
+@@ -4,7 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Compiler and flags
+ CC     := gcc
+-CFLAGS := -g -O2 -Wall -Wno-unused-result -Wno-incompatible-pointer-types -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CFLAGS ?= -g -O2 -Wall -Wno-unused-result
++override CFLAGS += -Wno-incompatible-pointer-types
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Source files and object files
+ SOURCES := $(wildcard *.c)
+@@ -24,7 +26,7 @@ all: $(EXE)$(EXT)
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static
++	override CFLAGS += -static
+ endif
+ 
+ # Link the object files to create the executable
+diff --git a/tools/gfx4snes/Makefile b/tools/gfx4snes/Makefile
+index dc8f3cd..a9767fd 100644
+--- a/tools/gfx4snes/Makefile
++++ b/tools/gfx4snes/Makefile
+@@ -4,16 +4,17 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Compiler and compiler flags
+ CC     := gcc
+-CFLAGS  = -g -Wall -O2 -pedantic -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CFLAGS ?= -g -Wall -O2 -pedantic
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Define the libraries and compilation flags to be used depending on the OS.
+ ifeq ($(shell uname),Darwin)
+ 	EXT     :=
+ else ifeq ($(OS),Windows_NT)
+-    CFLAGS  += -static
++    override CFLAGS += -static
+ 	EXT     :=.exe
+ else
+-	CFLAGS 	+= -static
++	override CFLAGS += -static
+ 	EXT     :=
+ endif
+ 
+diff --git a/tools/smconv/Makefile b/tools/smconv/Makefile
+index 610e09a..be70f52 100644
+--- a/tools/smconv/Makefile
++++ b/tools/smconv/Makefile
+@@ -4,9 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Define compilers and flags
+ CP       := g++
+-CFLAGS   := -O2 -Wall -Wno-unused-result -fpermissive -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+-# Flags for both C and C++ files
+-CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions  # Flags only for C++ files
++CFLAGS   ?= -O2 -Wall -Wno-unused-result -fpermissive
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions
+ 
+ # Define sources, objects and executable name
+ SOURCES := $(wildcard *.cpp)
+@@ -26,7 +26,7 @@ all: $(EXE)$(EXT)
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static
++	override CFLAGS += -static
+ endif
+ 
+ # Link the object files to create the executable
+diff --git a/tools/snesbrr/brr/Makefile b/tools/snesbrr/brr/Makefile
+index 165ab09..1544714 100644
+--- a/tools/snesbrr/brr/Makefile
++++ b/tools/snesbrr/brr/Makefile
+@@ -7,9 +7,11 @@ DATESTRING := $(shell date +%Y%m%d)
+ # options for code generation
+ #---------------------------------------------------------------------------------
+ LIBS     := -lbase
+-CPPFLAGS += -I"../"
+-LDFLAGS  += -L"../"
+-CFLAGS   += -O3 -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++override CPPFLAGS += -I"../"
++override LDFLAGS  += -L"../"
++CFLAGS   += -O3
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++override CXXFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ BIN    := snesbrr
+ BINDIR := ../$(BIN)
+diff --git a/tools/snesbrr/makeinclude b/tools/snesbrr/makeinclude
+index c832f8f..cd13059 100644
+--- a/tools/snesbrr/makeinclude
++++ b/tools/snesbrr/makeinclude
+@@ -4,10 +4,10 @@ CXX = g++
+ WINDRES = windres
+ RM = rm -f
+ 
+-CFLAGS = -Os -fomit-frame-pointer -fforce-addr -falign-jumps -falign-functions -Wall -Wextra -Winline -Wno-shift-negative-value --param inline-unit-growth=350 -finline-limit=3500 -Wno-unused -pedantic -ffunction-sections -fdata-sections -fpermissive 
+-CXXFLAGS = $(CFLAGS)
+-CPPFLAGS = -DNDEBUG
+-LDFLAGS = -s
++CFLAGS ?= -Os -fomit-frame-pointer -fforce-addr -falign-jumps -falign-functions -Wall -Wextra -Winline -Wno-shift-negative-value --param inline-unit-growth=350 -finline-limit=3500 -Wno-unused -pedantic -ffunction-sections -fdata-sections -fpermissive
++CXXFLAGS ?= $(CFLAGS)
++CPPFLAGS ?= -DNDEBUG
++LDFLAGS ?= -s
+ ARFLAGS = -rcu
+ LIB := ../libbase.a
+ 
+@@ -16,7 +16,7 @@ LIB := ../libbase.a
+ # Since neither a static version of libSystem.dylib nor crt0.o are provided, this option is not useful to most people."
+ #-Wl,--gc-sections allow to remove the dead code, but it is not supported on Mac OS
+ ifneq ($(shell uname -s),Darwin)
+-LDFLAGS += -static -static-libgcc -static-libstdc++ -Wl,--gc-sections 
++override LDFLAGS += -static -static-libgcc -static-libstdc++ -Wl,--gc-sections
+ endif
+ 
+ 
+diff --git a/tools/snestools/Makefile b/tools/snestools/Makefile
+index 4f0cffa..d125f16 100644
+--- a/tools/snestools/Makefile
++++ b/tools/snestools/Makefile
+@@ -4,8 +4,8 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Set the C compiler to use and the compiler flags
+ CC     := gcc
+-CFLAGS := -g -O2
+-CFLAGS += -Wall -Wno-unused-but-set-variable -Wno-format -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CFLAGS ?= -g -O2 -Wall -Wno-unused-but-set-variable -Wno-format
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Identify the source files and object files to be used in the build
+ SOURCES := $(wildcard *.c)
+@@ -26,7 +26,7 @@ all: $(EXE)$(EXT)
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static
++	override CFLAGS += -static
+ endif
+ 
+ # Define the rule to link the executable from the object files
+diff --git a/tools/tmx2snes/Makefile b/tools/tmx2snes/Makefile
+index f5ab6d5..cdaa3dd 100644
+--- a/tools/tmx2snes/Makefile
++++ b/tools/tmx2snes/Makefile
+@@ -4,7 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+ 
+ # Set the C compiler to use and the compiler flags
+ CC     := gcc
+-CFLAGS := -g -O2 -Wall -Wno-implicit-function-declaration -Wno-unused-result -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
++CFLAGS ?= -g -O2 -Wall -Wno-unused-result
++override CFLAGS += -Wno-implicit-function-declaration
++override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
+ 
+ # Identify the source files and object files to be used in the build
+ SOURCES := $(wildcard *.c)
+@@ -25,7 +27,7 @@ all: $(EXE)$(EXT)
+ # Define the libraries to be used depending on the OS
+ UNAME := $(shell uname -s)
+ ifneq ($(UNAME), Darwin)
+-	CFLAGS += -static
++	override CFLAGS += -static
+ endif
+ 
+ # Define the rule to compile object files from source files
