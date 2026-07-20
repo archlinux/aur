@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 163.ca385ee
+	pkgver = 151.f261ea5
 	pkgrel = 1
 	url = https://gitlab.com/shssoichiro/soifunc
 	arch = any
