@@ -7,8 +7,6 @@ pkgbase = code-review-graph-bin
 	license = MIT
 	makedepends = python-uv
 	depends = python>=3.10
-	optdepends = igraph: community detection
-	optdepends = numpy: embedding vectors
 	provides = code-review-graph
 	conflicts = code-review-graph
 	source = code_review_graph-2.3.7-py3-none-any.whl::https://files.pythonhosted.org/packages/f3/8f/2df3fcca285b489d195706b09cefda3e57e7158185cb83905200d7b27199/code_review_graph-2.3.7-py3-none-any.whl

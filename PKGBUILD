@@ -13,7 +13,6 @@ depends=(
   'python>=3.10'
 )
 makedepends=('python-uv')
-optdepends=('igraph: community detection' 'numpy: embedding vectors')
 provides=('code-review-graph')
 conflicts=('code-review-graph')
 source=("code_review_graph-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/f3/8f/2df3fcca285b489d195706b09cefda3e57e7158185cb83905200d7b27199/code_review_graph-${pkgver}-py3-none-any.whl")
