@@ -1,5 +1,5 @@
 pkgname=cly
-pkgver=7.5.0
+pkgver=7.5.1
 pkgrel=1
 pkgdesc="A semantic AUR helper wrapper for Arch Linux written in bash"
 arch=('any')
