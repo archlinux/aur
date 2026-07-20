@@ -1,8 +1,8 @@
 # Maintainer: ponies <ponies@ponies.top>
 
 pkgname=fex-emu-wine-git
-_tag=FEX-2603
-pkgver=2603.r0.g9eb639e89
+_tag=FEX-2607
+pkgver=2607.r0.g1cc4b93e7
 pkgrel=1
 pkgdesc="FEX DLLs for enabling Wine's ARM64EC support (Version 2603)"
 arch=('aarch64')
@@ -34,57 +34,51 @@ prepare() {
 
 build() {
 
-  local mingw_bin="${srcdir}/llvm-mingw-20250920-ucrt-ubuntu-22.04-aarch64/bin"
+  local mingw_bin="$srcdir/llvm-mingw-20250920-ucrt-ubuntu-22.04-aarch64/bin"
   export PATH="${mingw_bin}:$PATH"
 
   export CFLAGS="-O3 -g -pipe -Wall -Wextra"
   export CXXFLAGS="$CFLAGS"
   export LDFLAGS="-Wl,--gc-sections -static"
 
-  echo "Building ARM64EC variant..."
+  mkdir -p "$srcdir/build-arm64ec"
+  cd "$srcdir/build-arm64ec"
 
-  mkdir -p "${srcdir}/build-arm64ec"
-  cd "${srcdir}/build-arm64ec"
-
-  cmake -GNinja "${srcdir}/FEX" \
+  cmake -GNinja "$srcdir/FEX" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib/wine/aarch64-windows \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_TOOLCHAIN_FILE="${srcdir}/FEX/Data/CMake/toolchain_mingw.cmake" \
+    -DCMAKE_TOOLCHAIN_FILE="$srcdir/FEX/Data/CMake/toolchain_mingw.cmake" \
     -DMINGW_TRIPLE=arm64ec-w64-mingw32 \
     -DENABLE_LTO=OFF \
     -DBUILD_TESTING=OFF \
     -DENABLE_ASSERTIONS=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 
-  sed -i 's/arm64ec-w64-mingw32-dlltool/llvm-dlltool -m arm64ec/g' build.ninja
   ninja
 
-  echo "Building WOW64 variant..."
+  mkdir -p "$srcdir/build-wow64"
+  cd "$srcdir/build-wow64"
 
-  mkdir -p "${srcdir}/build-wow64"
-  cd "${srcdir}/build-wow64"
-
-  cmake -GNinja "${srcdir}/FEX" \
+  cmake -GNinja "$srcdir/FEX" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib/wine/aarch64-windows \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_TOOLCHAIN_FILE="${srcdir}/FEX/Data/CMake/toolchain_mingw.cmake" \
+    -DCMAKE_TOOLCHAIN_FILE="$srcdir/FEX/Data/CMake/toolchain_mingw.cmake" \
     -DMINGW_TRIPLE=aarch64-w64-mingw32 \
     -DENABLE_LTO=OFF \
     -DBUILD_TESTING=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 
-  sed -i 's/aarch64-w64-mingw32-dlltool/llvm-dlltool -m arm64/g' build.ninja
   ninja
 }
 
 package() {
 
-  cd "${srcdir}/build-arm64ec"
+  cd "$srcdir/build-arm64ec"
   DESTDIR="$pkgdir" ninja install
 
-  cd "${srcdir}/build-wow64"
+  cd "$srcdir/build-wow64"
   DESTDIR="$pkgdir" ninja install
 
   # We only want the DLLs for the Wine bridge, not the headers or extra data

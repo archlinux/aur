@@ -1,6 +1,6 @@
 pkgbase = fex-emu-wine-git
 	pkgdesc = FEX DLLs for enabling Wine's ARM64EC support (Version 2603)
-	pkgver = 2603.r0.g9eb639e89
+	pkgver = 2607.r0.g1cc4b93e7
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = fex-emu-wine-git
 	makedepends = python
 	provides = fex-emu-wine
 	conflicts = fex-emu-wine
-	source = FEX::git+https://github.com/FEX-Emu/FEX.git#tag=FEX-2603
+	source = FEX::git+https://github.com/FEX-Emu/FEX.git#tag=FEX-2607
 	source = https://github.com/bylaws/llvm-mingw/releases/download/20250920/llvm-mingw-20250920-ucrt-ubuntu-22.04-aarch64.tar.xz
 	sha256sums = SKIP
 	sha256sums = bce5cc755c613515fd44e1ee9523123d854103abae147571adb645450036274d
