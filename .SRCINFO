@@ -1,6 +1,6 @@
 pkgbase = yaml-language-server-git
 	pkgdesc = YAML Language Server, git main build
-	pkgver = r1502.c1a439e3
+	pkgver = r1504.aee4e211
 	pkgrel = 1
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = yaml-language-server-git
 	depends = nodejs
 	provides = yaml-language-server
 	conflicts = yaml-language-server
-	options = !emptydirs
-	options = !strip
 	source = yaml-language-server-git::git+https://github.com/redhat-developer/yaml-language-server.git#branch=main
 	sha256sums = SKIP
 

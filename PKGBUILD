@@ -5,7 +5,7 @@
 _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
-pkgver=r1502.c1a439e3
+pkgver=r1504.aee4e211
 pkgrel=1
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
@@ -15,7 +15,6 @@ conflicts=(yaml-language-server)
 provides=(yaml-language-server)
 depends=(nodejs)
 makedepends=(jq yarn)
-options=('!emptydirs' '!strip')
 source=("${pkgname}::git+${url}.git#branch=${_branch}")
 sha256sums=('SKIP')
 
