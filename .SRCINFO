@@ -1,6 +1,6 @@
 pkgbase = ethercat
 	pkgdesc = IgH EtherCAT Master for Linux
-	pkgver = 1.6.9
+	pkgver = 1.6.10
 	pkgrel = 1
 	url = https://gitlab.com/etherlab.org/ethercat
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ethercat
 	depends = glibc
 	provides = ethercat
 	conflicts = ethercat
-	source = ethercat::git+https://gitlab.com/etherlab.org/ethercat.git#tag=1.6.9
-	sha256sums = 678f46b26426e69cea9de5e5af75ce4d822de274be0af183ecd914fdccaead85
+	source = ethercat::git+https://gitlab.com/etherlab.org/ethercat.git#tag=1.6.10
+	sha256sums = 59d78277458112d8328654f5c061265d869bbcf996b30447e7e27329a2f27de6
 
 pkgname = ethercat
