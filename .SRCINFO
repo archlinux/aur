@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-mlrt-ext-models-rife
 	pkgdesc = Plugin for VapourSynth: mlrt (external models for RIFE v4.11 and newer)
 	pkgver = 4.26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AmusementClub/vs-mlrt
 	arch = any
 	license = MIT
