@@ -1,6 +1,6 @@
 pkgbase = volla-messages-bin
 	pkgdesc = Private chat for Android and Desktop environments.
-	pkgver = 0.12.7
+	pkgver = 0.12.8
 	pkgrel = 1
 	url = https://github.com/HelloVolla/volla-messages
 	install = volla-messages-bin.install
@@ -19,9 +19,9 @@ pkgbase = volla-messages-bin
 	provides = volla_messages
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.7/Volla.Messages_0.12.7_amd64.deb
+	source_x86_64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.8/Volla.Messages_0.12.8_amd64.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.7/Volla.Messages_0.12.7_arm64.deb
+	source_aarch64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.8/Volla.Messages_0.12.8_arm64.deb
 	sha256sums_aarch64 = SKIP
 
 pkgname = volla-messages-bin
