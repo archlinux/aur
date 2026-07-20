@@ -1,12 +1,13 @@
 pkgbase = multios-usb-bin
 	pkgdesc = Simple tool for creating GRUB multiboot USB with Secure Boot support.
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mexit/MultiOS-USB
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = tar
 	depends = bzip2
+	depends = libarchive
 	depends = xz
 	depends = gptfdisk
 	depends = util-linux

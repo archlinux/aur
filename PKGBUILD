@@ -2,12 +2,12 @@
 _pkgname=multios-usb
 pkgname=multios-usb-bin
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple tool for creating GRUB multiboot USB with Secure Boot support.'
 arch=('x86_64')
 url='https://github.com/Mexit/MultiOS-USB'
 license=('GPL-3.0-or-later')
-depends=('tar' 'bzip2' 'xz' 'gptfdisk' 'util-linux' 'exfatprogs')
+depends=('tar' 'bzip2' 'libarchive' 'xz' 'gptfdisk' 'util-linux' 'exfatprogs')
 optdepends=(
 	'dosfstools: FAT16/32 support'
 	'e2fsprogs: ext2/3/4 support'
