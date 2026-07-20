@@ -1,0 +1,88 @@
+# Composed Lumina Terminal AUR PKGBUILD.
+#
+# This file is a TEMPLATE rendered by .github/workflows/aur.yml before being
+# pushed to AUR. The ${...} placeholders are substituted at release-publish
+# time (see the render step in the workflow). Do NOT edit the rendered values
+# by hand on AUR — regenerate via the workflow instead.
+#
+# The Maintainer line below is injected verbatim into the rendered PKGBUILD.
+# Edit it once here; it propagates to AUR on every publish. namcap/aurweb
+# both expect this tag on every AUR package.
+# Maintainer: Iewnfod <iewnfoddd@outlook.com>
+#
+# Local sanity check (does NOT download the .deb — checksums are placeholders
+# until rendered):
+#   namcap .aur/PKGBUILD
+#
+# This is a -bin package: it downloads the upstream .deb produced by the
+# Release workflow and repackages it for pacman, mirroring what install.sh
+# does for Arch users on the fly. Both supported architectures are published
+# from a single PKGBUILD via per-arch source/checksum arrays.
+
+pkgname=lumina-terminal-bin
+pkgver=0.1.5
+pkgrel=1
+pkgdesc="A modern, cross-platform terminal emulator built with Tauri, React, and Xterm.js"
+arch=('x86_64' 'aarch64')
+url="https://github.com/iewnfod/lumina-terminal"
+license=('MPL-2.0')
+
+# Translated from the .deb's own Depends (libwebkit2gtk-4.1-0, libgtk-3-0, …)
+# to their Arch equivalents. libayatana-appindicator covers the AppIndicator
+# binding Tauri's GTK shell uses.
+depends=(
+	'webkit2gtk-4.1'
+	'gtk3'
+	'libayatana-appindicator'
+	'hicolor-icon-theme'
+)
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+optdepends=(
+	'xdg-utils: open files/URLs from the terminal'
+)
+
+# Asset names differ per ecosystem — .deb uses dpkg arches (amd64/arm64):
+#   x86_64  -> Lumina.Terminal_<ver>_amd64.deb
+#   aarch64 -> Lumina.Terminal_<ver>_arm64.deb
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_arm64.deb")
+sha256sums_x86_64=('0046dc0952f2f8f8c8a2568f8a706ff7f6c5bbfdd4241817227085dc073f647c')
+sha256sums_aarch64=('5daeb506c5f10c1c5af00a4a8b519106ff148decd813153ddac9b594ab2d9898')
+
+# No arch-independent sources — empty arrays keep makepkg's parser happy.
+source=()
+sha256sums=()
+
+# A .deb is an ar(1) archive, not a tarball — stop makepkg from auto-extracting.
+noextract=("${pkgname}-${pkgver}-"*.deb)
+
+package() {
+	# The .deb is an `ar` archive containing data.tar.<comp>; extract that
+	# payload into a scratch dir, then relocate its usr/ tree into $pkgdir.
+	# bsdtar (libarchive) reads .deb natively, so no extra depends on `ar`.
+	cd "${srcdir}"
+
+	local scratch="${srcdir}/_unpacked"
+	rm -rf "${scratch}"
+	mkdir "${scratch}"
+
+	# The downloaded .deb lands in $srcdir with the renamed source basename.
+	# `source_*[0]` is an array makepkg populates with exactly that filename
+	# for the current arch, so we use it to locate the file portably.
+	local deb="${source_x86_64[0]:-${source_aarch64[0]}}"
+
+	# A .deb is an `ar` archive whose `data.tar.*` member holds the actual
+	# filesystem tree. We stream that member out of the .deb and into the
+	# scratch dir in one pipe. The `data.tar.*` is quoted so the shell does
+	# NOT glob-expand it locally — bsdtar matches it against members inside
+	# the .deb (verified against the v0.1.5 release payload).
+	#
+	# The payload already lays out usr/{bin,share/applications,share/icons/...}
+	# exactly as pacman expects it, so we have nothing to reassemble here.
+	bsdtar -xOf "${deb}" 'data.tar.*' | bsdtar -xf - -C "${scratch}"
+
+	# Relocate the extracted tree into $pkgdir verbatim, preserving mode,
+	# symlinks and mtimes. -a copies recursively with attributes retained.
+	cp -a "${scratch}/." "${pkgdir}/"
+}

@@ -1,0 +1,22 @@
+pkgbase = lumina-terminal-bin
+	pkgdesc = A modern, cross-platform terminal emulator built with Tauri, React, and Xterm.js
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/iewnfod/lumina-terminal
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open files/URLs from the terminal
+	provides = lumina-terminal=0.1.5
+	conflicts = lumina-terminal
+	noextract = lumina-terminal-bin-0.1.5-*.deb
+	source_x86_64 = lumina-terminal-bin-0.1.5-amd64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.1.5/Lumina.Terminal_0.1.5_amd64.deb
+	sha256sums_x86_64 = 0046dc0952f2f8f8c8a2568f8a706ff7f6c5bbfdd4241817227085dc073f647c
+	source_aarch64 = lumina-terminal-bin-0.1.5-arm64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.1.5/Lumina.Terminal_0.1.5_arm64.deb
+	sha256sums_aarch64 = 5daeb506c5f10c1c5af00a4a8b519106ff148decd813153ddac9b594ab2d9898
+
+pkgname = lumina-terminal-bin
