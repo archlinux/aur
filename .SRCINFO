@@ -1,0 +1,20 @@
+pkgbase = o2-rs-git
+	pkgdesc = Rust port of the ORCΛ esoteric programming language and terminal livecoding environment
+	pkgver = 0.3.4.r2.gbb3aa59
+	pkgrel = 1
+	url = https://github.com/coignard/o2
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = o2
+	conflicts = o2-rs
+	conflicts = o2-rs-bin
+	options = !strip
+	options = !debug
+	source = o2-main::git+https://github.com/coignard/o2.git#branch=main
+	sha256sums = SKIP
+
+pkgname = o2-rs-git
