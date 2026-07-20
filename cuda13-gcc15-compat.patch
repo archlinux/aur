@@ -1,0 +1,120 @@
+diff --git a/cuda/common/include/pcl/cuda/time_gpu.h b/cuda/common/include/pcl/cuda/time_gpu.h
+index 4457029c6..ae3793d14 100644
+--- a/cuda/common/include/pcl/cuda/time_gpu.h
++++ b/cuda/common/include/pcl/cuda/time_gpu.h
+@@ -37,6 +37,7 @@
+ 
+ #pragma once
+ 
++#include <iostream>
+ #include <cuda.h>
+ #include <pcl/cuda/cutil_inline.h>
+ 
+diff --git a/cuda/filters/include/pcl/cuda/filters/passthrough.h b/cuda/filters/include/pcl/cuda/filters/passthrough.h
+index 51d1a6d40..416cbb2e8 100644
+--- a/cuda/filters/include/pcl/cuda/filters/passthrough.h
++++ b/cuda/filters/include/pcl/cuda/filters/passthrough.h
+@@ -35,6 +35,7 @@
+ 
+ #pragma once
+ 
++#include <iostream>
+ #include <pcl_cuda/filters/filter.h>
+ #include <thrust/count.h>
+ #include <thrust/remove.h>
+diff --git a/cuda/filters/include/pcl/cuda/filters/voxel_grid.h b/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
+index f54b3a195..6146870b0 100644
+--- a/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
++++ b/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
+@@ -37,6 +37,7 @@
+ 
+ PCL_DEPRECATED_HEADER(1, 16, "The CUDA VoxelGrid filter does not work. Use the CPU VoxelGrid filter instead.")
+ 
++#include <iostream>
+ #include <pcl_cuda/filters/filter.h>
+ #include <pcl_cuda/filters/passthrough.h>
+ #include <thrust/count.h>
+diff --git a/cuda/sample_consensus/src/msac.cpp b/cuda/sample_consensus/src/msac.cpp
+index 397403c5d..4462f2616 100644
+--- a/cuda/sample_consensus/src/msac.cpp
++++ b/cuda/sample_consensus/src/msac.cpp
+@@ -35,6 +35,7 @@
+  *
+  */
+ 
++#include <iostream>
+ #include <pcl_cuda/sample_consensus/multi_ransac.h>
+ #include <pcl_cuda/time_gpu.h>
+ #include <stdio.h>
+diff --git a/cuda/sample_consensus/src/multi_ransac.cu b/cuda/sample_consensus/src/multi_ransac.cu
+index 86d0a3fca..29b4d00db 100644
+--- a/cuda/sample_consensus/src/multi_ransac.cu
++++ b/cuda/sample_consensus/src/multi_ransac.cu
+@@ -35,6 +35,8 @@
+  *
+  */
+ 
++#include <iostream>
++
+ #ifdef _WIN32
+ # define NOMINMAX
+ # define WIN32_LEAN_AND_MEAN
+diff --git a/cuda/sample_consensus/src/ransac.cu b/cuda/sample_consensus/src/ransac.cu
+index dd89f0411..50e1e8983 100644
+--- a/cuda/sample_consensus/src/ransac.cu
++++ b/cuda/sample_consensus/src/ransac.cu
+@@ -35,6 +35,8 @@
+  *
+  */
+ 
++#include <iostream>
++
+ #ifdef _WIN32
+ # define NOMINMAX
+ # define WIN32_LEAN_AND_MEAN
+diff --git a/cuda/sample_consensus/src/sac_model.cu b/cuda/sample_consensus/src/sac_model.cu
+index 461e66f59..c8264d46f 100644
+--- a/cuda/sample_consensus/src/sac_model.cu
++++ b/cuda/sample_consensus/src/sac_model.cu
+@@ -39,6 +39,7 @@
+ # define WIN32_LEAN_AND_MEAN
+ #endif
+ 
++#include <iostream>
+ #include <pcl/pcl_exports.h>
+ 
+ #include "pcl/cuda/sample_consensus/sac_model.h"
+diff --git a/cuda/sample_consensus/src/sac_model_1point_plane.cu b/cuda/sample_consensus/src/sac_model_1point_plane.cu
+index 033de426a..8c2fb06eb 100644
+--- a/cuda/sample_consensus/src/sac_model_1point_plane.cu
++++ b/cuda/sample_consensus/src/sac_model_1point_plane.cu
+@@ -35,6 +35,7 @@
+  *
+  */
+ 
++#include <iostream>
+ #include <pcl/pcl_exports.h>
+ 
+ #include <pcl/cuda/sample_consensus/sac_model_1point_plane.h>
+diff --git a/gpu/examples/segmentation/src/seg.cpp b/gpu/examples/segmentation/src/seg.cpp
+index d49257f32..0cbcc864a 100644
+--- a/gpu/examples/segmentation/src/seg.cpp
++++ b/gpu/examples/segmentation/src/seg.cpp
+@@ -1,3 +1,4 @@
++#include <iostream>
+ #include <pcl/ModelCoefficients.h>
+ #include <pcl/point_types.h>
+ #include <pcl/io/pcd_io.h>
+diff --git a/gpu/surface/src/cuda/convex_hull.cu b/gpu/surface/src/cuda/convex_hull.cu
+index 00b49dc08..d8f91044a 100644
+--- a/gpu/surface/src/cuda/convex_hull.cu
++++ b/gpu/surface/src/cuda/convex_hull.cu
+@@ -136,7 +136,7 @@ namespace pcl
+       int transform_reduce_index(It beg, It end, Unary unop, Init init, Binary binary)
+ 	  {
+ 	    thrust::counting_iterator<int> cbeg(0);
+-		thrust::counting_iterator<int> cend = cbeg + thrust::distance(beg, end);
++		thrust::counting_iterator<int> cend = cbeg + (end - beg);
+ 
+ 	    thrust::tuple<float, int> t = thrust::transform_reduce(
+ 		  thrust::make_zip_iterator(thrust::make_tuple(beg, cbeg)),

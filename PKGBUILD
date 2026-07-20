@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14455.af7b2d5f7
+pkgver=r14685.a35cfbc53
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -22,9 +22,10 @@ depends=(
 	libxcursor
 	openmpi
 	qhull
-	qt5-base
-	qt5-webengine
+	qt6-base
+	qt6-webengine
 	vtk
+	fast_float
 	pugixml
 	fmt
 	python-mpi4py
@@ -43,14 +44,16 @@ depends=(
 	nlohmann-json
     openni2
     postgresql
-    gcc13
+    gcc15
 )
 makedepends=(cmake git)
 source=(
     git+https://github.com/PointCloudLibrary/pcl
+    cuda13-gcc15-compat.patch
 )
 sha256sums=(
     SKIP
+    '0ec7e9ebaf6c6abf5a7e7ec9fb4203d85a69d6a76ff65a179956c17c55e8d374'
 )
 conflicts=(pcl)
 provides=(pcl)
@@ -62,10 +65,15 @@ pkgver() {
 }
 
 prepare() {
+	# CUDA 13 / gcc 15 compatibility: thrust::distance removal + missing <iostream>
+	# includes that newer toolchains no longer pull in transitively.
+	cd "$srcdir/pcl"
+	patch -Np1 -i "$srcdir/cuda13-gcc15-compat.patch"
+
 	mkdir  -p "$srcdir/build"
 	cd     "$srcdir/build"
 	cmake "${srcdir}/pcl" \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-15 \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC" \
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
@@ -91,9 +99,9 @@ prepare() {
         -DBUILD_gpu_people=OFF \
 		-DBUILD_simulation=ON \
 		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
-        -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-13 \
+        -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-15 \
 		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-		-DWITH_QT=QT5 \
+		-DWITH_QT=QT6 \
         -DWITH_ENSENSO=OFF
 }
 
