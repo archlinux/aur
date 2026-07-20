@@ -1,45 +1,86 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
 
 pkgname=osp-tracker
-pkgver=6.2.0
+_pkgname=${pkgname}
+pkgver=6.3.5
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
 url='http://physlets.org/tracker/'
 license=('GPL3')
-depends=('gtk2'
-         'gconf'
-         'java-runtime')
-makedepends=('xdg-user-dirs' 'xdg-utils')
-_runname="Tracker-${pkgver}-linux-x64-installer.run"
+provides=('osp-tracker')
+conflicts=('osp-tracker')
+depends=(
+  'gtk2'
+  'gconf'
+  'java-runtime'
+)
+makedepends=(
+  'java-environment=8'
+  'rsync'
+)
 source=(
-  "${url}/installers/${_runname}"
-  "tracker.sh"
+  tracker::git+https://github.com/OpenSourcePhysics/tracker.git#tag=version_${pkgver}
+  osp::git+https://github.com/OpenSourcePhysics/osp.git#tag=version_${pkgver}
   "tracker.desktop"
 )
 sha256sums=(
-  'f2774f0829620b862b8a5d539e042b978664416f99282827aff56eb0bbe16778'
-  '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
+  'SKIP'
+  'SKIP'
   '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b'
 )
 
+build() {
+
+  cd "${srcdir}"
+  rm -Rf build # clear build if pre-existent
+  mkdir build
+  
+  rsync -av "${srcdir}/osp/src/" "${srcdir}/build/"
+  rsync -av "${srcdir}/tracker/src/" "${srcdir}/build/"
+
+  cd "${srcdir}/build"
+  local classpath="."
+  # Aggregate all foundational libraries and video engine jars bundled upstream
+  for jar in "${srcdir}/tracker/jars"/*.jar "${srcdir}/tracker/libraries"/*.jar; do
+    if [ -f "$jar" ]; then
+      classpath="${classpath}:${jar}"
+    fi
+  done
+  msg2 'Starting Tracker compile'
+  find . -name "*.java" > sources.txt
+  /usr/lib/jvm/java-8-openjdk/bin/javac -cp "${classpath}" -d . @sources.txt
+  /usr/lib/jvm/java-8-openjdk/bin/jar cfe tracker.jar org.opensourcephysics.cabrillo.tracker.Tracker .
+
+}
+
 package() {
 
-  echo ${pkgdir}
-  export XDG_UTILS_INSTALL_MODE=user
-  msg2 'Starting Tracker installer'
-  chmod +x ./${_runname}
-  [ -f ~/.config/user-dirs.dirs ] || xdg-user-dirs-update
-  ./${_runname} \
-	  --mode unattended \
-	  --tracker-home ${pkgdir}/opt/tracker \
-	  --experiments-home ${pkgdir}/opt/tracker/share \
-	  --enable-components Experiments \
-	  --unattendedmodeui none || true #ignore errors due to attempts to copy files to /usr/share/applications
+  msg2 'Creating package'
+  install -Dm644 "${srcdir}/build/tracker.jar" "${pkgdir}/opt/tracker/tracker.jar"
+
+  # Extract and link all native xuggle / formatting jar libraries
+  mkdir -p "${pkgdir}/opt/tracker/lib"
+  cp "${srcdir}/tracker/jars"/*.jar "${pkgdir}/opt/tracker/lib/"
+  cp "${srcdir}/tracker/libraries"/*.jar "${pkgdir}/opt/tracker/lib/"
+
+  # Create execution binary referencing full classpath
+  local runtime_cp="/opt/tracker/tracker.jar"
+  for jar in "${pkgdir}/opt/tracker/lib"/*.jar; do
+    if [ -f "$jar" ]; then
+      runtime_cp="${runtime_cp}:/opt/tracker/lib/$(basename "$jar")"
+    fi
+  done
+
+  cat <<EOF > "${pkgdir}/opt/tracker/tracker.sh"
+#!/bin/sh
+exec /usr/lib/jvm/java-8-openjdk/jre/bin/java -cp "${runtime_cp}" org.opensourcephysics.cabrillo.tracker.Tracker "\$@"
+EOF
+  chmod +x "${pkgdir}/opt/tracker/tracker.sh"
 
   msg2 'Creating desktop file and symlinks'
-  install -D -m755 tracker.sh ${pkgdir}/usr/bin/${pkgname}
+  install -D -m755 "${pkgdir}/opt/tracker/tracker.sh" ${pkgdir}/usr/bin/${_pkgname}
   install -D -m755 tracker.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -D -m644 ${pkgdir}/opt/tracker/tracker_icon48.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -D -m644 ${srcdir}/build/./org/opensourcephysics/cabrillo/tracker/resources/images/tracker_icon_32.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
 }
