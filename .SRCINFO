@@ -1,6 +1,6 @@
 pkgbase = fad-bin
 	pkgdesc = Upload, download, and install APK/AAB releases on Firebase App Distribution
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ntsk/fad
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fad-bin
 	license = MIT
 	provides = fad
 	conflicts = fad
-	source_x86_64 = fad-0.1.1-x86_64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.1/fad-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 04f80077ad27e77bbe75a3cbe4110af1fb9c110c4bc109d2b6fb08defdaabba7
-	source_aarch64 = fad-0.1.1-aarch64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.1/fad-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 705be4d4f7fd4182610c0cd4f3bbeec843dd7752b9b72de3b4a142ea081d736d
+	source_x86_64 = fad-0.1.2-x86_64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.2/fad-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ab9c14d7048dfaa55af830ae008c7de310e5f5f481881aa149c90dd02fb96adc
+	source_aarch64 = fad-0.1.2-aarch64.tar.gz::https://github.com/ntsk/fad/releases/download/v0.1.2/fad-v0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 75d47477ff777a3ff369f01daea0211083b0c551f6d45beb3b10ef749d665092
 
 pkgname = fad-bin

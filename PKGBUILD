@@ -1,6 +1,6 @@
 # Maintainer: ntsk <ntsk@ntsk.jp>
 pkgname=fad-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Upload, download, and install APK/AAB releases on Firebase App Distribution"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('fad')
 conflicts=('fad')
 source_x86_64=("fad-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/fad-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("fad-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/fad-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('04f80077ad27e77bbe75a3cbe4110af1fb9c110c4bc109d2b6fb08defdaabba7')
-sha256sums_aarch64=('705be4d4f7fd4182610c0cd4f3bbeec843dd7752b9b72de3b4a142ea081d736d')
+sha256sums_x86_64=('ab9c14d7048dfaa55af830ae008c7de310e5f5f481881aa149c90dd02fb96adc')
+sha256sums_aarch64=('75d47477ff777a3ff369f01daea0211083b0c551f6d45beb3b10ef749d665092')
 
 package() {
   local triple
