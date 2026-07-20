@@ -1,8 +1,8 @@
 # Maintainer: fgonzalezurriola <fgonzalezurriola@gmail.com>
 pkgname=shaula
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
-pkgdesc='Capture, preview, save, and copy screenshots on Wayland'
+pkgdesc='Capture, annotate, save, and copy screenshots on Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/fgonzalezurriola/shaula'
 license=('MIT')
@@ -36,7 +36,9 @@ provides=('shaula')
 conflicts=('shaula-bin')
 install='shaula.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b13aeab25a47ace94d7900070aaab2f3b2bbf220fe8e4454aaf3289736727422')
+# Release automation replaces the checked-in marker with the immutable tag
+# archive SHA-256 only inside the temporary AUR clone.
+sha256sums=('890c290385ff41eaa3cabcf6b18cc5143b8500592bb17663afc850576cb2ef74')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
