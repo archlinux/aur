@@ -8,7 +8,6 @@ pkgbase = ruby-yard-activesupport-concern
 	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-yard
-	options = !emptydirs
 	source = ruby-yard-activesupport-concern::git+https://github.com/digitalcuisine/yard-activesupport-concern.git#tag=v0.0.1
 	sha256sums = SKIP
 

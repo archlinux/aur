@@ -12,7 +12,6 @@ license=("MIT")
 depends=("ruby" "ruby-yard")
 makedepends=("ruby-rake")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-options=(!emptydirs)
 sha256sums=("SKIP")
 
 prepare() {
