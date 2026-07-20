@@ -13,17 +13,17 @@ DC_PKG=gcc-d
 pkgname=vitis-fs
 pkgdesc="${DESCR}"
 arch=("x86_64")
-url="https://gitlab.com/os-18/vitis"
-TARBALL=$PROJECT-$pkgver.tar.gz
-source=("$TARBALL::$url/-/archive/v$pkgver/$TARBALL")
+url="https://gitlab.com/os-18/${PROJECT}"
+TARBALL=${PROJECT}-${pkgver}.tar.gz
+source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
 sha256sums=("112cd21f94721755368cc7f459f496fb9b98bf26fced4ac94fcb9760ed4b5052")
 
 build() {
-    cd "${PROJECT}-v$pkgver"
+    cd "${PROJECT}-v${pkgver}"
     make DC=${DC} || return 1
 }
 
 package() {
-    cd "${PROJECT}-v$pkgver"
+    cd "${PROJECT}-v${pkgver}"
     make DESTDIR=$pkgdir PREFIX=usr install DC=${DC} || return 1
 }
