@@ -28,9 +28,10 @@ prepare() {
 
 build() {
     cd "${pkgname}"
+    # PackageBuild=true strips debug symbols so shipped dlls don't embed $srcdir build paths
     dotnet publish UndertaleModToolAvalonia/UndertaleModToolAvalonia.csproj \
         -c Release -r linux-x64 --self-contained true \
-        -p:PublishSingleFile=false \
+        -p:PublishSingleFile=false -p:PackageBuild=true \
         -o publish
 }
 
