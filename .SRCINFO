@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-muttrc
 	pkgdesc = muttrc grammar for tree-sitter
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/neomutt/tree-sitter-muttrc
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = python-tree-sitter-muttrc
 	license = MIT
 	makedepends = uv
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python-tree-sitter
-	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_muttrc/tree_sitter_muttrc-0.1.0.tar.gz
-	sha256sums = 6f90bc70a0f7b0a661c50805e97742a784002cb17ab8a3b3896fb486d54f591e
+	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_muttrc/tree_sitter_muttrc-0.1.1.tar.gz
+	sha256sums = 81bee42299c7569b85dad1e36cf2c3b6a7985255d1860936f9b3a7859f45ea38
 
 pkgname = python-tree-sitter-muttrc

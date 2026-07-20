@@ -3,16 +3,16 @@
 # Updated by https://github.com/neomutt/tree-sitter-muttrc/blob/main/.github/workflows/main.yml
 _name=tree-sitter-muttrc
 pkgname=python-$_name
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="muttrc grammar for tree-sitter"
 arch=(i686 x86_64 arm aarch64)
 url=https://github.com/neomutt/$_name
 depends=(python-tree-sitter)
-makedepends=(uv python-installer)
+makedepends=(uv python-installer python-setuptools)
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('6f90bc70a0f7b0a661c50805e97742a784002cb17ab8a3b3896fb486d54f591e')
+sha256sums=('81bee42299c7569b85dad1e36cf2c3b6a7985255d1860936f9b3a7859f45ea38')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
