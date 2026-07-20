@@ -5,14 +5,13 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.19.0
-pkgrel=14
+pkgrel=16
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
 url="http://www.open3d.org"
 license=('MIT')
 depends=(
-    gcc14
     libc++abi
     libc++
     curl
@@ -71,6 +70,7 @@ source=(
     "librealsense.cmake.patch"
     "civetweb.cmake.patch"
     "minizip.patch"
+    "cstdint.patch"
 )
 sha256sums=(
     'SKIP'
@@ -78,7 +78,8 @@ sha256sums=(
     'b29065f9930ce58f09066bd8943be322c07454bfec7084c030ff8b7dd6185ac4'
     '601ecb81fe6b1b6b459bc9340e9c060e2fc991a004318d18803dffa23ffb078a'
     '18a4dc14fc7d027b864575a856422c2a1b520cbbba47fb7e22300054e796d09b'
-    'fab155297ebfffdd8a05af13006004e0a39daacc83c0ee6a43e5b9ace61d55e9')
+    'fab155297ebfffdd8a05af13006004e0a39daacc83c0ee6a43e5b9ace61d55e9'
+    'c04a5540112dffe8dce5fdcf2799b7de9214003743b26a6724a23aab7503b2a7')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
@@ -87,6 +88,7 @@ function prepare() {
     patch -Np1 -i "${srcdir}/librealsense.cmake.patch"
     patch -Np1 -i "${srcdir}/civetweb.cmake.patch"
     patch -Np1 -i "${srcdir}/minizip.patch"
+    patch -Np1 -i "${srcdir}/cstdint.patch"
     # find . -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     # grep --files-with-matches -r "_FORTIFY_SOURCE" | xargs -I {} sed -i 's/_FORTIFY_SOURCE=[0-9]/""/g' {}
     mkdir -p build
@@ -102,10 +104,11 @@ function build() {
     export CFLAGS=""
     export CXXFLAGS=""
     cmake .. \
-          -DCMAKE_C_COMPILER=/usr/bin/gcc-14 \
-          -DCMAKE_CXX_COMPILER=/usr/bin/g++-14 \
+          -DCMAKE_C_COMPILER=/usr/bin/gcc \
+          -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
           -G "Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DDESKTOP_INSTALL_DIR=/usr/share \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_VERBOSE_MAKEFILE=ON \
           -DCMAKE_BUILD_TYPE=Release \
@@ -140,7 +143,6 @@ function build() {
 
 function package_open3d() {
     depends=(
-        gcc14
         libc++abi
         libc++
         curl
@@ -195,7 +197,6 @@ function package_open3d() {
 
 function package_python-open3d() {
     depends=(
-        gcc14
         libc++abi
         libc++
         curl
@@ -257,7 +258,6 @@ function package_python-open3d() {
 
 function package_python-py3d() {
     depends=(
-        gcc14
         libc++abi
         libc++
         curl
