@@ -15,16 +15,20 @@ optdepends=(
 _github=sz-server-blocker
 source=("$_github-$pkgver.tar.gz::https://github.com/clovexx/$_github/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('44c8ee50a64549b1f8dc2c5815a770809347d83c25bb598740eb3650cffdc5b8')
+options=('!lto')
 
 prepare() {
   cd "$_github-$pkgver"
+  export CARGO_TARGET_DIR="$PWD/target"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$_github-$pkgver"
+  export CARGO_TARGET_DIR="$PWD/target"
   export RUSTUP_TOOLCHAIN=stable
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
   cargo build --release --locked
 }
 

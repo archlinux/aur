@@ -11,6 +11,7 @@ pkgbase = stalzone-server-blocker
 	depends = gcc-libs
 	optdepends = nftables: бэкенд файрвола
 	optdepends = iptables: альтернативный бэкенд
+	options = !lto
 	source = sz-server-blocker-0.1.0.tar.gz::https://github.com/clovexx/sz-server-blocker/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 44c8ee50a64549b1f8dc2c5815a770809347d83c25bb598740eb3650cffdc5b8
 
