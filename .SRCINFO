@@ -1,0 +1,17 @@
+pkgbase = orchis-theme-all-git
+	pkgdesc = Orchis is a [Material Design](https://material.io) theme for GNOME/GTK based desktop environments.
+	pkgver = 2026.07.07.r0.29975e38
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Orchis-theme
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = sassc
+	depends = gtk3>=3.20
+	depends = gnome-themes-extra
+	depends = gtk-engine-murrine
+	provides = orchis-theme
+	conflicts = orchis-theme
+	source = orchis-theme-all-git::git+https://github.com/vinceliuice/Orchis-theme.git
+	sha256sums = SKIP
+
+pkgname = orchis-theme-all-git
