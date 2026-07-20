@@ -1,7 +1,7 @@
 pkgbase = luggage-desktop
 	pkgdesc = Modern Discworld MUD client with live map, item search, and plugin support
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.callmecarlos.com/luggage-desktop.html
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -14,7 +14,7 @@ pkgbase = luggage-desktop
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gcc-libs
-	depends = glibc
+	depends = glibc>=2.39
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
