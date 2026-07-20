@@ -1,6 +1,6 @@
 pkgbase = friendiqa
 	pkgdesc = Client for social network Friendica
-	pkgver = 0.7
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://codeberg.org/lubuwest/Friendiqa
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = friendiqa
 	depends = qt6-multimedia
 	depends = qt6-networkauth
 	depends = qt6-imageformats
-	source = friendiqa-0.7.tar.gz::https://codeberg.org/lubuwest/Friendiqa/archive/v0.7.tar.gz
-	md5sums = f124144f084612797ea501f6b027f96c
+	source = friendiqa-0.7.1.tar.gz::https://codeberg.org/lubuwest/Friendiqa/archive/v0.7.1.tar.gz
+	md5sums = 44e6ffdf9a8fc9590a0f09c3aa080bb4
 pkgname = friendiqa
