@@ -1,0 +1,18 @@
+pkgbase = msi-mpg341c
+	pkgdesc = Linux userspace control for the MSI MPG 341C QD-OLED monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/joshrzemien/msi-mpg341c
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ddcutil
+	depends = python
+	source = msi-mpg341c-0.1.0.tar.gz::https://github.com/joshrzemien/msi-mpg341c/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = dad2094ae8db92969733b8ac8c4052e5e08b7de856aa34cb3e0b739bde86f97d
+
+pkgname = msi-mpg341c
