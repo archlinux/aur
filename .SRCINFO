@@ -1,7 +1,7 @@
 pkgbase = docmancer-git
 	pkgdesc = Fetch docs, embed locally, expose to AI agents via skills
-	pkgver = r156.e9c30b2
-	pkgrel = 2
+	pkgver = r177.acf32ab
+	pkgrel = 1
 	url = https://github.com/docmancer/docmancer
 	arch = any
 	license = MIT

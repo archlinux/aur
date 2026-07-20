@@ -2,8 +2,8 @@
 
 _pkgname=docmancer
 pkgname=$_pkgname-git
-pkgver=r156.e9c30b2
-pkgrel=2
+pkgver=r177.acf32ab
+pkgrel=1
 pkgdesc="Fetch docs, embed locally, expose to AI agents via skills"
 arch=('any')
 url="https://github.com/docmancer/docmancer"
