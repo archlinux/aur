@@ -1,0 +1,14 @@
+pkgbase = u-ar-so-loud
+	pkgdesc = u ar so loud! — mic/cam to Strudel + Hydra (phone via adb reverse)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shafrnv/u-ar-so-loud
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = android-tools: phone mic/cam over USB (adb reverse)
+	optdepends = xdg-utils: open browser from start command
+	source = git+https://github.com/shafrnv/u-ar-so-loud.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = u-ar-so-loud
