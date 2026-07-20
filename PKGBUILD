@@ -1,7 +1,7 @@
 # Maintainer: ChHsich <hsichingchang@gmail.com>
 pkgname=note-gen
 _pkgname=note-gen
-pkgver=0.31.2
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A cross-platform Markdown note-taking application with AI integration (X11/Wayland compatible)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('note-gen')
 conflicts=('note-gen-bin')
 options=('!strip' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/note-gen-v$pkgver.tar.gz")
-sha256sums=('f99f5e7f682a9afa880339ae064460e3f303d25d00385161b70775aa2c411dc2')
+sha256sums=('e16e4b2041ef18ccb25544a71d788f9aea5b042ef20ba045703d127a2f9248e4')
 
 install=$pkgname.install
 
