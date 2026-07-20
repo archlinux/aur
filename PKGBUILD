@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="https://github.com/zquestz/s"
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4cadfdaab0e5ec42ba7dab06216e56fc040eddda152128b1c63d3e2a85677392')
+sha256sums=('827cfec9a1f733354effe532130d4f241272bed4272e71ba91fec046960012c0')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/zquestz"
