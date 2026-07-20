@@ -1,7 +1,7 @@
 # Maintainer: kurumihere <kurumihere@disroot.org>
 
 pkgname=mp-player
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='music player'
 arch=('x86_64')
@@ -10,6 +10,8 @@ license=('MIT')
 depends=(
   'alsa-lib'
   'desktop-file-utils'
+  'freetype2'
+  'glib2'
   'glibc'
   'libglvnd'
   'libx11'
@@ -19,13 +21,18 @@ depends=(
   'libxinerama'
   'libxrandr'
 )
-conflicts=('mp' 'mp-player-bin')
+optdepends=(
+  'kdialog: file and folder dialogs on KDE Plasma'
+  'yad: alternative GTK file and folder dialogs'
+  'zenity: file and folder dialogs on GTK desktops'
+)
+conflicts=('mp' 'mp-player-bin' 'mp-player-git')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'mp-player.desktop'
 )
 sha256sums=(
-  '23871b4da0f4f7088a7d81dfb6f7ba4085d1a6214eb75e406e08c347482b2d9f'
+  'c755184f2b8d14bf46befe3bf11061b5d6439bf514f8282ee10dd5b5d907c170'
   '3fc25e2c0284de96df98f979f5c1445cb8ae3024592db54002a5cc9d9c46a479'
 )
 
@@ -41,8 +48,8 @@ package() {
 
   install -Dm755 build/mp "$pkgdir/usr/bin/mp"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 assets/OFL.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+  install -Dm644 assets/fonts/OFL-*.txt \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/mp-player.desktop" \
     "$pkgdir/usr/share/applications/mp-player.desktop"
