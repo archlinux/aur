@@ -1,6 +1,6 @@
 # Maintainer: mrkirill046 <contact@qwy-games.ru>
 pkgname=dynamic-drpc-wayland-git
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland / Niri windows"
 arch=('x86_64')

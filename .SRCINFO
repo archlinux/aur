@@ -1,6 +1,6 @@
 pkgbase = dynamic-drpc-wayland-git
 	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland / Niri windows
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/mrkirill046/discord-dynamic-status-wayland
 	arch = x86_64
