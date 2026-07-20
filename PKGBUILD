@@ -13,13 +13,13 @@ DC_PKG=gcc-d
 pkgname=vitis
 pkgdesc="${DESCR}"
 arch=("x86_64")
-url="https://gitlab.com/os-18/${PROJECT}"
+url="https://gitlab.com/os-18/vitis"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/$TARBALL")
 sha256sums=("112cd21f94721755368cc7f459f496fb9b98bf26fced4ac94fcb9760ed4b5052")
 
 build() {
-    cd "${PROJECT}-v$pkgver"
+    cd "${pkgname}-v$pkgver"
     make DC=${DC} || return 1
 }
 
