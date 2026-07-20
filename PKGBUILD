@@ -10,16 +10,20 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
 license=('MIT')
 depends=('glibc')
+optdepends=('smartmontools: for S.M.A.R.T. Input Plugin'
+            'nvme-cli: for S.M.A.R.T. Input Plugin (NVMe devices)')
 makedepends=('go' 'git')
 options=('!lto')
 backup=('etc/telegraf/telegraf.conf')
 install="${pkgname}.install"
 source=("https://github.com/influxdata/${pkgname}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "${pkgname}.install"
-        "${pkgname}.service")
+        "${pkgname}.service"
+        "${pkgname}-nvme.rules")
 b2sums=('5ba8ffe0c20446add63dc51636568297d56079c900bd9b37095d6a16bc086f5d418f94537e91fe1588f6e99a2d786be1770d932370f12dd5eeb2a1c5efee2c08'
         'a6b2fd7a688ef5a23539c1256380a6389e6fa474312ad9dee5cc77bcfabe92910a8913ffcf599c940a93bb3a5c89e01f3bedad4176f4d57dd33a68e0499c30bd'
-        'd5a6845cb1ddb07f0cac20215c15d059f0c18aa43a7b549e7e738e58b8686b4db26b71426aafc8e682d6fd6f676fc0f468f53ea61968c4184feaaa22a23f5bc5')
+        '5e38b02b765eef0895b83999a743562f84e4d19ebdb0788f1fb2a2df1015fb45fc7192dd0452480f5e8ac6f1f5c4184d19a081635daa4b9d10815ba66b6a9a29'
+        '00bd347eafd81eda1739c5e52e770d9800464d8bb0e85c1b6b2ad9f774ec93e90cd080f96c4ac65b6787a603939be6fa94f6315f202a34a04106e456b5bf4bb2')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -53,6 +57,11 @@ package() {
   # license
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # udev rules
+  install -dD -m755 "${pkgdir}/usr/lib/udev/rules.d"
+  install -m644 "${srcdir}/${pkgname}-nvme.rules" \
+    "${pkgdir}/usr/lib/udev/rules.d/20-${pkgname}-nvme.rules"
 
   # service
   install -D -m644 "${srcdir}/${pkgname}.service" \

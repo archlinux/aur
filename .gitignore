@@ -3,4 +3,5 @@
 !PKGBUILD
 !.SRCINFO
 !telegraf.install
+!telegraf-nvme.rules
 !telegraf.service

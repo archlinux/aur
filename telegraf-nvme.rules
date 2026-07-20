@@ -1,0 +1,1 @@
+SUBSYSTEM=="nvme", KERNEL=="nvme[0-9]*", GROUP:="disk", MODE:="0660"
