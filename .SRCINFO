@@ -6,6 +6,7 @@ pkgbase = atmosphera
 	arch = any
 	license = GPL-3.0-or-later
 	depends = noctalia-qs
+	depends = qt6-dbusqml
 	depends = imagemagick
 	depends = brightnessctl
 	depends = ffmpeg

@@ -10,6 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=()
 depends=(
   'noctalia-qs'
+  'qt6-dbusqml'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
