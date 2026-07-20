@@ -1,7 +1,7 @@
 pkgbase = sabydesktop
 	pkgdesc = SabyDesktop- приложения от Сбис, включая сбис-плагин, предоставляет доступ к дополнительным инструментам и сервисам saby, например использованию электронной подписи
-	pkgver = 26.2232.38
-	pkgrel = 3
+	pkgver = 26.3239.22
+	pkgrel = 1
 	url = https://saby.ru/
 	arch = x86_64
 	license = Custom

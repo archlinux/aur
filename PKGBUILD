@@ -7,8 +7,8 @@
 name=SabyDesktop
 pkgname=sabydesktop
 url="https://saby.ru/"
-pkgver=26.2232.38
-pkgrel=3
+pkgver=26.3239.22
+pkgrel=1
 pkgdesc="SabyDesktop- приложения от Сбис, включая сбис-плагин, предоставляет доступ к дополнительным инструментам и сервисам saby, например использованию электронной подписи"
 arch=('x86_64')
 license=('Custom')
@@ -78,6 +78,46 @@ package() {
             warning "Директория ${src_rel} не найдена в этой сессии сборки. Пропускаем."
         fi
     done
+
+    # 4. Копируем иконку в фиксированное место — путь к ней "плавает" вместе с версией
+    _icon_verdir=$(find "${pkgdir}/opt/Tensor/Saby" -maxdepth 1 -type d -regextype posix-extended \
+        -regex '.*/[0-9]+\.[0-9]+\.[0-9]+' 2>/dev/null | sort -V | tail -n1)
+
+    if [ -n "${_icon_verdir}" ] && [ -f "${_icon_verdir}/service/icons/default_light.ico" ]; then
+        install -Dm644 "${_icon_verdir}/service/icons/default_light.ico" \
+            "${pkgdir}/opt/Tensor/Saby/sabydesktop.ico"
+    else
+        warning "Иконка default_light.ico не найдена — .desktop будет без своей иконки."
+    fi
+
+    # 5. Создаём wrapper-скрипт: находит последнюю версию в /opt/Tensor/Saby
+    #    и запускает saby с LD_LIBRARY_PATH, указывающим на .../service/
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/sabydesktop" <<'EOF'
+#!/usr/bin/env bash
+BASEDIR="/opt/Tensor/Saby"
+
+# Ищем директории вида "26.3239.22" (версионные подпапки) и берём самую свежую
+VERDIR=$(find "${BASEDIR}" -maxdepth 1 -type d -regextype posix-extended \
+    -regex '.*/[0-9]+\.[0-9]+\.[0-9]+' 2>/dev/null | sort -V | tail -n1)
+
+if [ -n "${VERDIR}" ] && [ -d "${VERDIR}/service" ]; then
+    export LD_LIBRARY_PATH="${VERDIR}/service:${LD_LIBRARY_PATH}"
+fi
+
+exec "${BASEDIR}/saby" "$@"
+EOF
+
+    # 6. Создаём .desktop-файл (ярлык в меню приложений), указывающий на wrapper
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
+[Desktop Entry]
+Name=SabyDesktop
+Comment=${pkgdesc}
+Exec=/usr/bin/sabydesktop
+Icon=/opt/Tensor/Saby/sabydesktop.ico
+Terminal=false
+Type=Application
+Categories=Office;Network;
+EOF
   #bsdtar -xf data.tar.xz -C "$pkgdir/"
 }
 
