@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gnutls
 _pkgname=${pkgname#mingw-w64-}
-pkgver=3.8.12
+pkgver=3.8.13
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
@@ -15,11 +15,12 @@ options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz{,.sig}
         gnutls-fix-external-libtasn1-detection.patch)
-sha256sums=('a7b341421bfd459acf7a374ca4af3b9e06608dcd7bd792b2bf470bea012b8e51'
+sha256sums=('ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
-#validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
-validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
+# validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+# validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
+validpgpkeys=('E987AB7F7E89667776D05B3BB0E9DD20B29F1432') # Alexander Sosedkin <monk@unboiled.info>
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
