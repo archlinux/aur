@@ -1,6 +1,6 @@
 # Maintainer: rez <rez@ifwerez.ru>
 pkgname=cider-studio
-pkgver=1.8.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="run & control roblox studio advancedly on linux"
 arch=('x86_64')
