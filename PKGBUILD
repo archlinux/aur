@@ -1,7 +1,8 @@
 pkgname=iwlwifi-lar-patched
 _pkgbase=linux
 
-_kernelpkgver=$(pacman -Q "${_pkgbase}" | awk '{print $2}')
+_kernelpkgver=7.1.4.arch1-1
+
 _kernver=$(printf '%s\n' "${_kernelpkgver}" | sed 's/\.arch[0-9].*//')
 _archrel=$(printf '%s\n' "${_kernelpkgver}" | sed -E "s/^${_kernver}\.(.*)$/\1/" | tr '.' '-')
 _krel="${_kernver}-${_archrel}"
