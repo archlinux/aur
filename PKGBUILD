@@ -8,7 +8,10 @@ pkgdesc="A syntax-highlighting pager for git"
 arch=(x86_64 aarch64 i686 armv7h)
 url="https://github.com/dandavison/delta"
 license=(MIT)
-depends=(libgcc_s.so libgit2.so)
+depends=(
+    glibc
+    libgcc  libgcc_s.so
+    libgit2 libgit2.so)
 makedepends=(cargo git)
 provides=(git-delta)
 conflicts=(git-delta)
@@ -29,12 +32,14 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBGIT2_NO_VENDOR=1
     cd "$pkgname"
     cargo build --frozen --release --all-features
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
+    export LIBGIT2_NO_VENDOR=1
     cd "$pkgname"
     cargo test --frozen --all-features
 }
