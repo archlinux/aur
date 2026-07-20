@@ -1,0 +1,16 @@
+pkgbase = meander-bin
+	pkgdesc = Interactive quest editor and player (Closed Source)
+	pkgver = 2.8.3
+	pkgrel = 1
+	url = https://github.com/IILLUMINATION/meanderPUBLIC
+	arch = x86_64
+	license = custom:proprietary
+	depends = gtk3
+	depends = glib2
+	provides = meander
+	conflicts = meander
+	options = !strip
+	source = meander-2.8.3-x86_64.AppImage::https://github.com/IILLUMINATION/meanderPUBLIC/releases/download/v1.0.0/Meander-linux-x64.AppImage
+	sha256sums = da75c1012f381d9eca5658ca483ddeffefc507b5f3d736ff7118892edf8a35b3
+
+pkgname = meander-bin
