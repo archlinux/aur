@@ -1,0 +1,9 @@
+# AUR build artifacts — never commit these
+*.pkg.tar
+*.pkg.tar.*
+*.pkg.tar.zst
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tar.zst
