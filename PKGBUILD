@@ -10,12 +10,20 @@ arch=('any')
 url='https://github.com/timgabets/pytlv'
 license=('LGPL-2.0-only')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build'
+             'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/bf/fb/05cb227d725bae7fce250c5b4706442d74e94e3f5faa655efd4621ed559c/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('6edc59d284339f5669c178a11e583a09db8b87c9e47ab2d5ed2a05c97cc98d56')
 
+build() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+# vim:set ts=2 sw=2 et:
