@@ -9,6 +9,6 @@ pkgbase = dynamic-drpc-wayland-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/mrkirill046/discord-dynamic-status-wayland/releases/download/v2.0.1/discord-dynamic-status-wayland
-	sha256sums_x86_64 = 98ee5435cadee4d559c84451a6defbb531e5cdab72c434fd60e484228c2231ed
+	sha256sums_x86_64 = 349db627f7716b50b1efb49441451e449147cec3bdc432696fbb1029311bc97e
 
 pkgname = dynamic-drpc-wayland-bin
