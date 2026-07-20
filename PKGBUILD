@@ -3,12 +3,12 @@
 _pkgname=moonstone
 pkgname=moonstone-bin
 pkgver=0.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, deterministic Lua project environments and package manager written in Zig"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moonstone-sh/moonstone"
 license=('Apache-2.0')
-provides=('moonstone=$pkgver')
+provides=("moonstone=$pkgver")
 conflicts=('moon' 'moonbit' 'moonstone')
 source=("LICENSE::https://raw.githubusercontent.com/moonstone-sh/$_pkgname/main/LICENSE")
 source_x86_64=("$_pkgname-$pkgver-x86_64-linux.tar.gz::https://github.com/moonstone-sh/$_pkgname/releases/download/v$pkgver/moon-x86_64-linux.tar.gz")

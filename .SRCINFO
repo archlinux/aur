@@ -1,12 +1,12 @@
 pkgbase = moonstone-bin
 	pkgdesc = Modern, deterministic Lua project environments and package manager written in Zig
 	pkgver = 0.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonstone-sh/moonstone
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = moonstone=$pkgver
+	provides = moonstone=0.3.23
 	conflicts = moon
 	conflicts = moonbit
 	conflicts = moonstone
