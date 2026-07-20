@@ -1,6 +1,6 @@
 pkgbase = phosphor-logging-git
 	pkgdesc = Libraries for common event and logging creation.
-	pkgver = r1162.a36e4df
+	pkgver = r1190.c82be43
 	pkgrel = 1
 	url = https://github.com/openbmc/phosphor-logging
 	arch = x86_64
@@ -14,9 +14,6 @@ pkgbase = phosphor-logging-git
 	makedepends = nlohmann-json
 	makedepends = python-jsonschema
 	makedepends = meson
-	depends = glibc
-	depends = libgcc
-	depends = libstdc++
 	depends = systemd-libs
 	depends = sdbusplus-git
 	depends = sdeventplus-git
