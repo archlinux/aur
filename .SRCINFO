@@ -1,0 +1,18 @@
+pkgbase = r-nanonext
+	pkgdesc = Lightweight Toolkit for Messaging, Concurrency and the Web
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nanonext
+	arch = x86_64
+	license = MIT
+	license = +
+	license = file
+	license = LICENSE
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-later
+	optdepends = r-litedown
+	source = https://cran.r-project.org/src/contrib/nanonext_1.10.1.tar.gz
+	sha256sums = ea575a20d6aaac3191e16d4931d08b8d5aabeca02bebc927d027d1e5cef9ed9f
+
+pkgname = r-nanonext
