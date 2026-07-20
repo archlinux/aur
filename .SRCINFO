@@ -1,0 +1,21 @@
+pkgbase = r-qs2
+	pkgdesc = Efficient Serialization of R Objects
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=qs2
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppparallel
+	depends = r-stringfish
+	optdepends = r-data.table
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-stringi
+	source = https://cran.r-project.org/src/contrib/qs2_0.2.2.tar.gz
+	sha256sums = c59ff879e858aef0afb13de25127239624e65b20179c8631fa1f62edea25f48f
+
+pkgname = r-qs2
