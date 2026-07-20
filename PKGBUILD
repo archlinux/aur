@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -24,12 +24,12 @@ depends=(
     'gstreamer'
     'gst-plugins-base'
     'gst-plugins-good'
+    'wl-clipboard'
+    'xclip'
+    'cloudflared'
 )
 optdepends=(
     'wf-recorder: Wayland fallback recording backend'
-    'cloudflared: public share links that work outside your LAN'
-    'wl-clipboard: copy share links on Wayland'
-    'xclip: copy share links on X11'
 )
 makedepends=(
     'python-build'
