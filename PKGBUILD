@@ -17,19 +17,23 @@ license=('BSD')
 #  * lib32-libjxl
 #  * lib32-libspectre
 #  * lib32-openjpeg2
-makedepends=('lib32-libid3tag' 'lib32-librsvg' 'lib32-libwebp')
+makedepends=('git' 'lib32-libid3tag' 'lib32-librsvg' 'lib32-libwebp')
 depends=("${_pkgname}" 'lib32-bzip2' 'lib32-freetype2' 'lib32-giflib' 'lib32-libjpeg-turbo'
          'lib32-libpng' 'lib32-libtiff' 'lib32-libxext' 'lib32-xz')
 optdepends=('lib32-libid3tag: ID3 loader'
             'lib32-librsvg: SVG loader'
             'lib32-libwebp: WEBP loader')
 provides=('libImlib2.so')
-source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('250f9752f69dc522e529a81aaa9395705f7fc312ff2453e5de59ac2ba1f2858f')
-sha512sums=('e62b7e89f6d75fb6a649a589f06fea34d08bba696c68d9ece59ee9500558af874c1073ffecae2d1cadd6d603f1acf4d071a415dbf2ba73b505ccf11fe45eea62')
+source=("${_pkgname}::git+https://git.enlightenment.org/old/legacy-imlib2.git#tag=v${pkgver}")
+sha512sums=('084933f76c30038c2ec96be6bda7cd029ffd17b07dd6804832abe2803a3276eb30b8186dca74bf77f18068f6dc8b93393097b15fc1a00ba83dbce48a3dae2457')
+
+prepare() {
+  cd "${_pkgname}"
+  autoreconf -fiv
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
@@ -51,15 +55,15 @@ build() {
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
   make check
 }
 
 package() {
-  cd "${_pkgname}-$pkgver"
+  cd "${_pkgname}"
   make DESTDIR="$pkgdir" install
   cd "$pkgdir/usr"
   rm -rf {bin,include,share/imlib2}/
 
-  install -Dm644 "$srcdir/${_pkgname}-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "$srcdir/${_pkgname}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
