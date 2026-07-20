@@ -6,7 +6,7 @@
 
 pkgname=libfprint-2-tod1-broadcom
 _pkgdirname=libfprint-2-tod1-broadcom
-pkgver=5.15.010.0
+pkgver=5.15.021.0
 pkgrel=1
 pkgdesc="Proprietary driver for the fingerprint reader on the Dell Latitude 7300 - direct from Dell's Ubuntu repo"
 arch=(x86_64)
