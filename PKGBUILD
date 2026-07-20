@@ -1,7 +1,7 @@
 # Maintainer: kurumihere <kurumihere@disroot.org>
 
 pkgname=mp-player-git
-pkgver=0.1.1.r1.gd7f5eab
+pkgver=0.2.0.r0.g936b86c
 pkgrel=1
 pkgdesc='music player'
 arch=('x86_64')
@@ -10,6 +10,8 @@ license=('MIT')
 depends=(
   'alsa-lib'
   'desktop-file-utils'
+  'freetype2'
+  'glib2'
   'glibc'
   'libglvnd'
   'libx11'
@@ -18,6 +20,11 @@ depends=(
   'libxi'
   'libxinerama'
   'libxrandr'
+)
+optdepends=(
+  'kdialog: file and folder dialogs on KDE Plasma'
+  'yad: alternative GTK file and folder dialogs'
+  'zenity: file and folder dialogs on GTK desktops'
 )
 makedepends=('git')
 provides=("mp-player=$pkgver")
@@ -50,11 +57,10 @@ package() {
 
   install -Dm755 build/mp "$pkgdir/usr/bin/mp"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 assets/OFL.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+  install -Dm644 assets/fonts/OFL-*.txt \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/mp-player.desktop" \
     "$pkgdir/usr/share/applications/mp-player.desktop"
   install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/mp.png"
 }
-
