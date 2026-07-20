@@ -1,46 +1,68 @@
+# Maintainer: Polyfrost <contact@atmofrost.org>
 pkgname=oneclient
-pkgver=1.1.6
+pkgver=2.0.2
 pkgrel=1
-pkgdesc='Next-generation open source Minecraft launcher that downloads all the mods you would ever want'
-url='https://polyfrost.org/projects/oneclient'
+pkgdesc="Next-generation open source Minecraft launcher (built from source)"
 arch=('x86_64')
+url="https://github.com/Polyfrost/OneLauncher"
 license=('GPL-3.0-only')
-
-makedepends=('rust' 'pnpm' 'nodejs' 'clang' 'nasm' 'perl')
 depends=(
-    'openssl' 'dbus' 'gtk3' 'libayatana-appindicator' 'librsvg' 'webkit2gtk-4.1'
-    'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
+  'fontconfig'
+  'freetype2'
+  'libglvnd'
+  'libxcursor'
+  'libxrandr'
+  'libxi'
+  'libxkbcommon'
+  'wayland'
+  'dbus'
+  'gtk3'
 )
+makedepends=(
+  'rust'
+  'cargo'
+  'cmake'
+  'clang'
+  'pkgconf'
+  'python'
+)
+provides=('oneclient')
 conflicts=('oneclient-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Polyfrost/OneLauncher/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('a8d552591ed355ca6056c4b8d2586a23daa94b024e28dc9c1de288eb92a9e9d3')
 options=('!lto')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/oneclient-${pkgver}.tar.gz")
+sha256sums=('bff447cc861fcec123edc115035320051ca908bfe4912d45346e34c92ced83fb')
+
+_srcdir="OneLauncher-oneclient-${pkgver}"
 
 prepare() {
-    cd "OneLauncher-oneclient-${pkgver}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-    pnpm install --frozen-lockfile
-    pnpm prep
+  cd "$srcdir/$_srcdir"
+  export CARGO_HOME="$srcdir/cargo-home"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "OneLauncher-oneclient-${pkgver}"
-    export RUSTUP_TOOLCHAIN=stable
-    pnpm --filter @oneclient/frontend build
-    cargo build --frozen --release -p oneclient_gui
-}
-
-check() {
-    cd "OneLauncher-oneclient-${pkgver}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen -p oneclient_gui
+  cd "$srcdir/$_srcdir"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen --bin oneclient_app
 }
 
 package() {
-    cd "OneLauncher-oneclient-${pkgver}"
-    install -Dm755 "target/release/oneclient_gui" "$pkgdir/usr/bin/oneclient"
-    install -Dm644 "apps/oneclient/distribution/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.polyfrost.oneclient.png"
-    install -Dm644 "apps/oneclient/distribution/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/org.polyfrost.oneclient.png"
-    install -Dm644 "apps/oneclient/distribution/flatpak/org.polyfrost.oneclient" "$pkgdir/usr/share/applications/org.polyfrost.oneclient.desktop"
+  cd "$srcdir/$_srcdir"
+  local appdir="packages/oneclient_app"
+
+  install -Dm755 "target/release/oneclient_app" "$pkgdir/usr/bin/oneclient_app"
+  ln -s oneclient_app "$pkgdir/usr/bin/oneclient"
+
+  install -dm755 "$pkgdir/usr/share/applications"
+  sed -e 's|{{exec}}|oneclient_app|g' \
+      -e 's|{{icon}}|org.polyfrost.OneClient|g' \
+      "$appdir/distribution/linux/org.polyfrost.oneclient.template" \
+      > "$pkgdir/usr/share/applications/org.polyfrost.OneClient.desktop"
+
+  install -Dm644 "$appdir/icons/32x32.png"    "$pkgdir/usr/share/icons/hicolor/32x32/apps/org.polyfrost.OneClient.png"
+  install -Dm644 "$appdir/icons/128x128.png"  "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.polyfrost.OneClient.png"
+  install -Dm644 "$appdir/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.polyfrost.OneClient.png"
+  install -Dm644 "$appdir/icons/512x512.png"  "$pkgdir/usr/share/icons/hicolor/512x512/apps/org.polyfrost.OneClient.png"
 }
