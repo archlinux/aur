@@ -3,7 +3,7 @@
 pkgname=wuyou-docs-bin
 _pkgname=wuyou-docs
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first desktop document workspace (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/duanluan/wuyou-docs-releases'
@@ -44,6 +44,6 @@ package() {
     mv "${_desktop_source}" "${_desktop_file}"
   fi
 
-  sed -i     -e 's/^Name=.*/Name=Wuyou Docs/'     -e 's/^Comment=.*/Comment=Local-first desktop document workspace/'     -e 's/^Categories=.*/Categories=Office;Utility;/'     "${_desktop_file}"
-  grep -q '^Name\[zh_CN\]=' "${_desktop_file}" || sed -i '/^Name=/a Name[zh_CN]=无尤文档\nName[zh_HK]=無尤文檔\nName[zh_MO]=無尤文檔\nName[zh_TW]=無尤文檔' "${_desktop_file}"
+  sed -i     -e 's/^Name=.*/Name=无尤文档/'     -e '/^Name\[en\]=/d'     -e '/^Name\[en_US\]=/d'     -e '/^Name\[zh_CN\]=/d'     -e '/^Name\[zh_HK\]=/d'     -e '/^Name\[zh_MO\]=/d'     -e '/^Name\[zh_TW\]=/d'     -e 's/^Comment=.*/Comment=Local-first desktop document workspace/'     -e 's/^Categories=.*/Categories=Office;WordProcessor;/'     "${_desktop_file}"
+  sed -i '/^Name=/a Name[en]=Wuyou Docs\nName[en_US]=Wuyou Docs\nName[zh_CN]=无尤文档\nName[zh_HK]=無尤文檔\nName[zh_MO]=無尤文檔\nName[zh_TW]=無尤文檔' "${_desktop_file}"
 }
