@@ -43,6 +43,7 @@ build() {
 }
 
 package() {
+	site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 	PLUGINDIR=$(python -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
 
 	# The cmake script puts the library inside a `lib` dir, which we don't want, so we have to install it manually
@@ -54,7 +55,7 @@ package() {
 	mkdir -p "${pkgdir}${PLUGINDIR}/vsmlrt-cuda"
 	ln -s /usr/bin/trtexec "${pkgdir}${PLUGINDIR}/vsmlrt-cuda/trtexec"
 
-	install -Dm644 "${_plug}/scripts/vsmlrt.py" "${pkgdir}${PLUGINDIR}/vsmlrt.py"
+	install -Dm644 "${_plug}/scripts/vsmlrt.py" "${pkgdir}${site_packages}/vsmlrt.py"
 
 	install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
 	install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
