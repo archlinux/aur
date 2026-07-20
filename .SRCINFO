@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vinput
 	pkgdesc = Offline voice input addon for Fcitx5 with optional OpenAI-compatible postprocess
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/xifan2333/fcitx5-vinput
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = fcitx5-vinput
 	depends = sherpa-onnx
 	provides = fcitx5-vinput
 	options = !debug
-	source = https://github.com/xifan2333/fcitx5-vinput/archive/v2.3.3.tar.gz
-	sha256sums = 238658057630f8314411f98b6a775ac3acdf44f0dddca016fb4f43b64afd7914
+	source = https://github.com/xifan2333/fcitx5-vinput/archive/v2.3.4.tar.gz
+	sha256sums = a8eb2fb42649cac995470314ce86d16f3fb1ca062cc78cd916cf484b6bf90bb7
 
 pkgname = fcitx5-vinput
