@@ -1,5 +1,5 @@
 pkgname=pkgpick
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI"
 arch=('any')

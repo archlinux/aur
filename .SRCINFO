@@ -1,6 +1,6 @@
 pkgbase = pkgpick
 	pkgdesc = Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/ItzDast/pkgpick
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = pkgpick
 	optdepends = cargo: manage cargo-installed binaries
 	optdepends = go: manage go-installed binaries
 	optdepends = python-pipx: manage pipx-installed packages
-	source = pkgpick-3.0.0::git+https://github.com/ItzDast/pkgpick.git#tag=v3.0.0
+	source = pkgpick-3.0.1::git+https://github.com/ItzDast/pkgpick.git#tag=v3.0.1
 	sha256sums = SKIP
 
 pkgname = pkgpick
