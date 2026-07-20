@@ -7,6 +7,13 @@ After=network.target
 Type=simple
 Environment=COGPIT_HOST=127.0.0.1
 Environment=COGPIT_PORT=19384
+# To register this box as a device in a remote Cogpit hub, expose it on the LAN
+# with a network password. cogpit-server refuses to bind a non-loopback address
+# without one. Uncomment and provide the password via a systemd credential:
+#   Environment=COGPIT_HOST=0.0.0.0
+#   Environment=COGPIT_DEVICE_NAME=%H
+#   LoadCredential=cogpit-pw:/etc/cogpit/network-password
+#   Environment=COGPIT_NETWORK_PASSWORD_FILE=%d/cogpit-pw
 ExecStart=/usr/bin/bun /opt/cogpit-server/server/standalone.ts
 Restart=on-failure
 RestartSec=5
