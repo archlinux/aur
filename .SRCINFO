@@ -1,6 +1,6 @@
 pkgbase = ferminal
 	pkgdesc = Custom Wrapper CLI to make your work faster
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/RangS-1/ferminal
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ferminal
 	depends = python
 	depends = python-requests
 	depends = python-colorama
-	source = ferminal-1.3.3.tar.gz::https://github.com/RangS-1/Ferminal/archive/refs/tags/v1.3.3.tar.gz
-	sha256sums = 14a0a1315ff969871d0cd47be5bdcd779a52427ad33ab2e9fbbee408132784ba
+	source = ferminal-1.3.4.tar.gz::https://github.com/RangS-1/Ferminal/archive/refs/tags/v1.3.4.tar.gz
+	sha256sums = d56819477a13f0c40858c59d9fb2d3ef492439a1c14c04aff56d91479d1f835a
 
 pkgname = ferminal
