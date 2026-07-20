@@ -1,0 +1,27 @@
+pkgbase = bdinfo-rs-gui-bin
+	pkgdesc = Native desktop GUI for bdinfo-rs, the memory-safe Blu-ray disc analyzer
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/agentjp/bdinfo-rs
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = vulkan-icd-loader: GPU rendering via wgpu; without it the app falls back to its built-in tiny-skia software renderer
+	optdepends = vulkan-driver: a Vulkan implementation for the GPU in use
+	optdepends = xdg-desktop-portal: native file-open dialogs (with a desktop portal backend, e.g. xdg-desktop-portal-gtk)
+	provides = bdinfo-rs-gui
+	conflicts = bdinfo-rs-gui
+	options = !strip
+	options = !debug
+	source_x86_64 = bdinfo-rs-gui-2.0.0-x86_64.deb::https://github.com/agentjp/bdinfo-rs/releases/download/gui-v2.0.0/bdinfo-rs-gui-x86_64-unknown-linux-gnu.deb
+	sha256sums_x86_64 = dbfe110c908388e4cb8f2e8acfe4d106edb269a348955afde9edcbe502db84b5
+	source_aarch64 = bdinfo-rs-gui-2.0.0-aarch64.deb::https://github.com/agentjp/bdinfo-rs/releases/download/gui-v2.0.0/bdinfo-rs-gui-aarch64-unknown-linux-gnu.deb
+	sha256sums_aarch64 = 28b64ab4e089fa2fbc4d5264af0f337ae1ad64bf1e60a145d6d1b35711b1549c
+
+pkgname = bdinfo-rs-gui-bin
