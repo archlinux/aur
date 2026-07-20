@@ -2,7 +2,7 @@
 
 pkgname=python-lxmf
 _name='lxmf'
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight Extensible Message Format for Reticulum"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/markqvist/lxmf"
 license=('MIT')
 source=($pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('d53c02bd9aaae8505f39febdd8087ebeceb76bb397f45230aad6b2a7b24a4948')
+sha256sums=('fd50aba5cba4802033bb79505b0eb7e5c8caa2a7f23d6f77f17da6e45f79de3d')
 
 build() {
   cd "$srcdir/LXMF-$pkgver"
