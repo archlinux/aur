@@ -1,7 +1,7 @@
 pkgbase = linsight
 	pkgdesc = Fast Linux system-monitoring dashboard with multi-GPU support
 	pkgver = 1.20.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/visorcraft/LinSight
 	arch = x86_64
 	license = GPL-3.0-only

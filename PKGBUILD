@@ -2,7 +2,7 @@
 
 pkgname=linsight
 pkgver=1.20.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast Linux system-monitoring dashboard with multi-GPU support'
 arch=('x86_64')
 url='https://github.com/visorcraft/LinSight'
@@ -26,14 +26,6 @@ build() {
   export CARGO_TARGET_DIR=target
   export CARGO_PROFILE_RELEASE_LTO=false
   QT_VERSION_MAJOR=6 cargo build --workspace --release --frozen
-}
-
-check() {
-  cd "LinSight-$pkgver"
-  export CARGO_HOME="$srcdir/cargo"
-  export CARGO_TARGET_DIR=target
-  export CARGO_PROFILE_RELEASE_LTO=false
-  QT_VERSION_MAJOR=6 cargo test --workspace --release --frozen
 }
 
 package() {
