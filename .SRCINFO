@@ -1,0 +1,24 @@
+pkgbase = r-webshot2
+	pkgdesc = Take Screenshots of Web Pages
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=webshot2
+	arch = x86_64
+	license = MIT
+	license = +
+	license = file
+	license = LICENSE
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-callr
+	depends = r-chromote
+	depends = r-later
+	depends = r-magrittr
+	depends = r-promises
+	optdepends = r-httpuv
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/webshot2_0.1.2.tar.gz
+	sha256sums = 27aa449ef9174c0563c5905800bc85eb1106c3470a3075e3d8040e4eda782e94
+
+pkgname = r-webshot2
