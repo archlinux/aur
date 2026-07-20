@@ -1,0 +1,18 @@
+--- build.zig~	2026-07-20 04:04:15.000000000 +0300
++++ build.zig	2026-07-20 13:26:54.148762349 +0300
+@@ -7,15 +7,8 @@
+     // =========================================================================
+ 
+     const target_triples = [_][]const u8{
+-        "aarch64-freebsd", // For your VM
+-        "x86_64-freebsd", // Standard Intel/AMD FreeBSD
+-        "aarch64-macos", // Native M3 Mac
+-        "x86_64-macos", // Intel Mac
+         "aarch64-linux-gnu", // ARM Linux (Standard glibc)
+         "x86_64-linux-gnu", // Intel Linux (Standard glibc)
+-        "x86_64-linux-musl", // Intel Linux (Static musl binary)
+-        "aarch64-linux-musl", // ARM Linux (Static musl binary)
+-        "arm-linux-gnueabihf", // 32-bit ARM Linux
+         "riscv64-linux-gnu", // RISC-V Linux
+     };
+ 
