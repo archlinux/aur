@@ -1,0 +1,16 @@
+pkgbase = r-audio
+	pkgdesc = Audio Interface for R
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://cran.r-project.org/package=audio
+	arch = x86_64
+	license = MIT
+	license = +
+	license = file
+	license = LICENSE
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/audio_0.1-12.tar.gz
+	sha256sums = bb358725f8758544202ca0da897f773848c9d2440ce2dbcfc76c69e03cae508e
+
+pkgname = r-audio
