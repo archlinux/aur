@@ -15,7 +15,7 @@ pkgdesc="${DESCR}"
 arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
-source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
+source=("$TARBALL::$url/-/archive/v$pkgver/$TARBALL")
 sha256sums=("112cd21f94721755368cc7f459f496fb9b98bf26fced4ac94fcb9760ed4b5052")
 
 build() {
