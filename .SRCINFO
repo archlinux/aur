@@ -1,0 +1,27 @@
+pkgbase = volla-messages-bin
+	pkgdesc = Private chat for Android and Desktop environments.
+	pkgver = 0.12.7
+	pkgrel = 1
+	url = https://github.com/HelloVolla/volla-messages
+	install = volla-messages-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = LICENSE.txt
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = volla_messages
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.7/Volla.Messages_0.12.7_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/HelloVolla/volla-messages/releases/download/v0.12.7/Volla.Messages_0.12.7_arm64.deb
+	sha256sums_aarch64 = SKIP
+
+pkgname = volla-messages-bin
