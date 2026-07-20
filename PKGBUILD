@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r544.a1d67c4
+pkgver=r564.61530ff
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -9,14 +9,12 @@ url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
 makedepends=(clang cmake libc++ rust)
 depends=(
-	avahi
 	gcc-libs
 	glibc
 	libevdev
 	libxkbcommon
 	mesa
 	opus
-	shaderc
 	wayland
 )
 provides=(moonshine)
