@@ -1,0 +1,15 @@
+pkgbase = snailrace
+	pkgdesc = Benchmark commands measuring time, CPU, memory and disk footprint
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/shellcell/snailrace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = snailrace-0.0.5.tar.gz::https://github.com/shellcell/snailrace/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = 9bf908a6998e5bf27b17357c427a83d6dfd7c6dfb4352156fd9480228a509a5e
+
+pkgname = snailrace
