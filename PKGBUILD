@@ -1,8 +1,8 @@
-# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Maintainer: Martin Rys <https://rys.rs/contact>
+# Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=sc-controller-git
-pkgver=0.4.9.4.r8.ae6593c
+pkgver=0.6.2.r7.f32fa35e
 pkgrel=1
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=(
 	'python-cairo'
 	'python-evdev'
 	'python-gobject'
-	'python-ioctl-opt'
+	'python-hidraw-pure'
 	'python-libusb1'
 	'python-pylibacl'
 	'python-setuptools'
