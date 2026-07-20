@@ -443,9 +443,13 @@ def main():
 
     config = _load_config()
 
+    _SENSITIVE_KEYS = {"github_token"}
     log("INFO", "Loaded configuration:")
     for key in sorted(config):
-        print(f"  > {key} = {config[key]!r}", file=sys.stderr)
+        if key in _SENSITIVE_KEYS:
+            print(f"  > {key} = **redacted**", file=sys.stderr)
+        else:
+            print(f"  > {key} = {config[key]!r}", file=sys.stderr)
 
     if not config["github_token"]:
         log("INFO", "Running without GitHub token.")
