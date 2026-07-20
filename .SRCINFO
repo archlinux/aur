@@ -1,0 +1,25 @@
+pkgbase = vi-tg-git
+	pkgdesc = Terminal Telegram client (Go backend + Rust TUI)
+	pkgver = 0.1.0.r1.g57f6b7b
+	pkgrel = 1
+	url = https://github.com/shafrnv/vi-tg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = ffmpeg
+	depends = mpv
+	optdepends = curl: faster backend readiness check in launcher
+	optdepends = xdotool: optional X11 helper used by TUI
+	provides = vi-tg
+	conflicts = vi-tg
+	options = !lto
+	source = git+https://github.com/shafrnv/vi-tg.git
+	sha256sums = SKIP
+
+pkgname = vi-tg-git
