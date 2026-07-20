@@ -23,6 +23,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/usr/lib/phpggc/phpggc" "$pkgdir/usr/bin/phpggc"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/phpggc" README.md
   install -d "$pkgdir/usr/lib/phpggc"
   for _item in phpggc lib gadgetchains; do
     cp -ar $_item "$pkgdir/usr/lib/phpggc"
