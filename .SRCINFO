@@ -1,6 +1,6 @@
 pkgbase = f00
 	pkgdesc = Modern, friendly directory lister (ls rewrite in Rust)
-	pkgver = 0.10.5
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://f00.sh
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = f00
 	depends = glibc
 	depends = gcc-libs
 	provides = f00
-	source_x86_64 = https://github.com/theesfeld/f00/releases/download/v0.10.5/f00-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 444a44569e2bd79e843b62ed08769d7aa8c0da572d1b5e8716d5e5ec1beaa7ac
-	source_aarch64 = https://github.com/theesfeld/f00/releases/download/v0.10.5/f00-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2e868d2b1d0b23c6c1fefbb782fe356c0dd1f8924bb48f44040b05a0cbadfe38
+	source_x86_64 = https://github.com/theesfeld/f00/releases/download/v0.11.0/f00-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7645b256021778840b0ed1e10da180f6ce46ddd46032e384055a56a05191d7b0
+	source_aarch64 = https://github.com/theesfeld/f00/releases/download/v0.11.0/f00-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a3a8630236196a61d409e259910d96a50eff9e01e11b4eacee8053b7de892cfb
 
 pkgname = f00
