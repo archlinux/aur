@@ -4,17 +4,17 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=rawbit
-pkgver=0.1.17
-pkgrel=2
+pkgver=0.1.18
+pkgrel=1
 pkgdesc='A camera RAW photo preprocessor and importer'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/cartercanedy/rawbit"
-license=('MIT')
-depends=('libgcc')
-makedepends=('cargo')
+license=(MIT)
+depends=(glibc libgcc libgcc_s.so)
+makedepends=(cargo)
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1178ec50bf4cc5c4a3cb4c3788615adc2c70380d5d1715168880315b90846f81')
+sha256sums=('f2b2fa0becea9ad2d73f7494b5227c8f35857a5ef1f4de376d9f796cdb39a162')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable

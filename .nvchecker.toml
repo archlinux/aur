@@ -1,0 +1,4 @@
+[rawbit]
+source = "git"
+git = "https://github.com/cartercanedy/rawbit.git"
+prefix = "v"

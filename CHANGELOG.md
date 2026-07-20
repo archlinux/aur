@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [0.1.18](https://github.com/cartercanedy/rawbit/compare/v0.1.17...v0.1.18) - 2026-06-03
+
+### Fixed
+- use original format string for error reports ([#121](https://github.com/cartercanedy/rawbit/pull/121)) (by @cartercanedy)
+
+### Other
+- update README (by @cartercanedy)
+
+### Contributors
+
+* @cartercanedy
+
 ## [0.1.16](https://github.com/cartercanedy/rawbit/compare/v0.1.15...v0.1.16) - 2025-12-08
 
 ### Fixed
