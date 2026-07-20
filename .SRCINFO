@@ -1,6 +1,6 @@
 pkgbase = ramses-git
 	pkgdesc = A distributed system for rendering 3D content with focus on bandwidth and resource efficiency
-	pkgver = d28b8c3
+	pkgver = r166.068163a64
 	pkgrel = 1
 	url = https://github.com/GENIVI/ramses
 	arch = x86_64
@@ -14,11 +14,10 @@ pkgbase = ramses-git
 	depends = harfbuzz
 	depends = libx11
 	depends = mesa
-	depends = python2
+	depends = python
 	depends = wayland
 	provides = ramses
 	source = git+https://github.com/GENIVI/ramses.git
 	sha512sums = SKIP
 
 pkgname = ramses-git
-

@@ -2,13 +2,13 @@
 
 _name=ramses
 pkgname=$_name-git
-pkgver=d28b8c3
+pkgver=r166.068163a64
 pkgrel=1
 pkgdesc='A distributed system for rendering 3D content with focus on bandwidth and resource efficiency'
 arch=('x86_64')
 url='https://github.com/GENIVI/ramses'
 license=('MPL2')
-depends=('lz4' 'harfbuzz' 'libx11' 'mesa' 'python2' 'wayland')
+depends=('lz4' 'harfbuzz' 'libx11' 'mesa' 'python' 'wayland')
 
 makedepends=('bash' 'cmake' 'git' 'ninja' 'ragel') 
 provides=('ramses')
@@ -17,8 +17,8 @@ source=('git+https://github.com/GENIVI/ramses.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/$_name
-  git describe --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_name"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
