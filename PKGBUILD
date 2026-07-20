@@ -2,7 +2,7 @@
 
 pkgname=mp-player-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='music player'
 arch=('x86_64')
 url='https://github.com/kurumihere/mp'
@@ -40,7 +40,7 @@ sha256sums=(
   '99095c6acf4643928a7acb1417629b56925822c5a56a74e5184bc8660655a220'
 )
 sha256sums_x86_64=(
-  'dc7bd695bfa80b866c5aa12d94157864a76b965022073ed7058644791a163c3e'
+  '62ed2a990f2869d553bdc405e2ae74702f1a4c2a28f1a17921f1fc6d4250670b'
 )
 
 package() {
