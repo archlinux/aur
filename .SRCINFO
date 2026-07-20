@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-cli-git
 	pkgdesc = nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (git master)
-	pkgver = 4.0.98.r28.g458c914
+	pkgver = 4.0.98.r86.gebbb731
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
