@@ -2,7 +2,7 @@
 
 _npmname=agent-skill-manager
 pkgname=asm
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Universal CLI/TUI for managing AI coding agent skills across 17+ platforms"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         "LICENSE::https://raw.githubusercontent.com/luongnv89/asm/v$pkgver/LICENSE")
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('a149d6473f5cacf8a877cfd6177d791ff5bbc0ba'
+sha1sums=('8ad05ef9a231ebf977e67e56a85cb797c07d2bc7'
           '90e650c62d02d417e91302bfc5ab0ca50f165043')
 
 package() {
