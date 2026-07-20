@@ -20,7 +20,7 @@ _phpbase="85"
 _suffix=""
 pkgver="8.5.8"
 pkgbase_rc=""
-pkgrel="1"
+pkgrel="2"
 pkgbase="php85"
 pkgdesc="PHP 8.5.8 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -107,7 +107,6 @@ pkgname=(
     "php85-fileinfo"
     "php85-ctype"
     "php85-mbstring"
-    "php85-pspell"
     "php85-enchant"
     "php85-intl"
     "php85-calendar"
@@ -117,10 +116,8 @@ pkgname=(
     "php85-curl"
     "php85-snmp"
     "php85-ldap"
-    "php85-imap"
     "php85-sodium"
     "php85-ffi"
-    "php85-opcache"
 )
 source=(
     "make-tests.patch"
@@ -175,7 +172,6 @@ makedepends=(
     "gmp"
     "libzip"
     "oniguruma"
-    "aspell"
     "enchant"
     "libvoikko"
     "hspell"
@@ -187,8 +183,6 @@ makedepends=(
     "net-snmp"
     "libsasl"
     "libldap"
-    "c-client"
-    "pam"
     "libsodium"
     "libffi"
 )
@@ -220,12 +214,6 @@ _ext_depends_intl=(
     "icu"
 )
 _ext_depends_imap=(
-    "php85=8.5.8"
-    "pam"
-    "krb5"
-    "c-client"
-    "libxcrypt"
-    "openssl"
 )
 _ext_depends_gd=(
     "php85=8.5.8"
@@ -353,7 +341,6 @@ _phpextensions="\
     --enable-mbstring=shared \
     --with-onig=/usr \
     --enable-mbregex \
-    --with-pspell=shared,/usr \
     --with-enchant=shared \
     --enable-intl=shared \
     --enable-calendar=shared \
@@ -364,12 +351,8 @@ _phpextensions="\
     --with-snmp=shared,/usr \
     --with-ldap=shared,/usr \
     --with-ldap-sasl \
-    --with-imap=shared,/usr \
-    --with-imap-ssl=yes \
     --with-sodium=shared \
-    --with-ffi=shared \
-    --enable-opcache \
-    --enable-huge-code-pages"
+    --with-ffi=shared"
 _phpextensions_fpm="\
     --with-fpm-user=http \
     --with-fpm-group=http \
@@ -449,7 +432,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -477,7 +460,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1387,7 +1370,6 @@ package_php85-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php85-opcache() {
     pkgdesc="opcache zend module for php85"
