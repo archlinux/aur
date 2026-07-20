@@ -1,7 +1,7 @@
 pkgbase = fex-emu-wine-git
-	pkgdesc = FEX DLLs for enabling Wine's ARM64EC support (Version 2603)
+	pkgdesc = FEX DLLs for enabling Wine's ARM64EC support
 	pkgver = 2607.r0.g1cc4b93e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fex-emu.com
 	arch = aarch64
 	license = MIT

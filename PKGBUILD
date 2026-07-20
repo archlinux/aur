@@ -3,8 +3,8 @@
 pkgname=fex-emu-wine-git
 _tag=FEX-2607
 pkgver=2607.r0.g1cc4b93e7
-pkgrel=1
-pkgdesc="FEX DLLs for enabling Wine's ARM64EC support (Version 2603)"
+pkgrel=2
+pkgdesc="FEX DLLs for enabling Wine's ARM64EC support"
 arch=('aarch64')
 url="https://fex-emu.com"
 license=('MIT')
