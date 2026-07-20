@@ -3,8 +3,8 @@
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
-_electron='electron40'
-pkgver=4.6.0.r0.g96e8dbb
+_electron='electron42'
+pkgver=4.11.0.r0.g6c7af69
 pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
