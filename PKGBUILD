@@ -1,5 +1,5 @@
 pkgname=librelp
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="The Reliable Event Logging Protocol"
 url="https://www.rsyslog.com/librelp/"
@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('GPL3')
 depends=('gnutls')
 source=("http://download.rsyslog.com/librelp/librelp-${pkgver}.tar.gz")
-sha256sums=('148db4e4d1a23e8136e9ec08810929a55faf5d45e24c2e3186d5ab34355dab31')
+sha256sums=('e2e53a9812d06f95d0a311bbfafba78704835de6d7f0ea0fd9c0d94e8eae496a')
 
 build() {
   cd "${pkgname}-${pkgver}"
