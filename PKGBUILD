@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=262.8665.80
+pkgver=262.8665.179
 _pkgname=RubyMine
 _pkgver=2026.2
 pkgrel=1
@@ -16,12 +16,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
   rubymine-eap.desktop
   rubymine.install)
-sha512sums=('16c3f749ec433d3d8b7398fe02f26cdb348c694eb6561b237ad03de617d72721fcfcff544b69ff057ec7180366c680d249de62f69b472edf9a9a773e09e530c6'
+sha512sums=('944daa25fc7c6624a1f3dbecda6c724e1aac84ad7443e7965e5c5cc97cdc9b92fa58352799193cff37757b009caa601408acacde5cf00ce59c366cdecbd8a513'
   'e568e1aeb7541dc23fa7506f175df57ee1963de59bd64d0016de73ac1e2bb77c2a80542638d09ac972db7e034388c88cf850b3bfb09c759fce4844761f939c64'
   '38fb6b24a7d0e44deb8ae473bbbb4fa4a6c18544f12063dd6ff186be68a500ad50a6ce89c3765bc7d82da3f9735c17648b17c233911df696bc71a34b5ef40f8f')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 
   rm Install-Linux-tar.txt
   rm help/ReferenceCardForMac.pdf
@@ -37,7 +37,7 @@ package_rubymine-eap() {
   install -d ${pkgdir}/{opt,usr/share}
 
   # Pre-packaged program files
-  cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+  cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   # Desktop file
@@ -48,7 +48,7 @@ package_rubymine-eap() {
 
   # License
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
+  find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
     install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
   # Java config
@@ -61,5 +61,5 @@ package_rubymine-eap-jre() {
   url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
+  cp -a "${srcdir}/${_pkgname}-${_pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
