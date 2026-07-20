@@ -10,7 +10,6 @@ pkgbase = ruby-yard-solargraph
 	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-yard
-	options = !emptydirs
 	source = ruby-yard-solargraph::git+https://github.com/castwide/yard-solargraph.git#tag=v0.1.0
 	sha256sums = SKIP
 
