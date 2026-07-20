@@ -1,7 +1,7 @@
 # Contributor: David Barri <japgolly@gmail.com>
 # Maintainer: Bink
 pkgname=atomicwallet
-pkgver=2.101.16
+pkgver=2.102.2
 pkgrel=1
 pkgdesc="Crypto wallet for buying, staking and swapping over 1000+ coins and tokens."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://atomicwallet.io"
 license=('Custon:atomicwallet')
 options=('!debug')
 source=("https://releases.atomicwallet.io/AtomicWallet-$pkgver.rpm")
-b2sums=('327e30368a2def0360143d07f67e35625b829b002c3be249ccf1b785f64f9f8b57989ee674e1786bb47a6e934bd01fbab69ac67da696c5c7ebba44a335e754cb')
+b2sums=('f45526baae1bf07a3a03a2602cfc0cd1224f1b23954f75ea540f1bc7c389773d355309a86efb2881aac67d8383fd44ff708182e57de398f4ab5a4699c7eed913')
 
 package() {
   set -e
