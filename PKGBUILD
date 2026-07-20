@@ -1,8 +1,8 @@
 # Maintainer: erffy <https://codeberg.org/erffy>
 
 pkgname=animecix-desktop
-pkgver=0.1.23
-pkgrel=2
+pkgver=0.1.26
+pkgrel=1
 pkgdesc="Animecix Desktop Application"
 arch=('x86_64')
 url="https://github.com/CaptainSP/animecix-desktop-2"
@@ -11,7 +11,7 @@ provides=("animecix-desktop=$pkgver")
 license=('MIT')
 depends=('gtk3' 'desktop-file-utils' 'openssl' 'at-spi2-atk' 'libcurl-gnutls' 'libsm' 'nss' 'libxss' 'libnotify')
 source=("animecix-${pkgver}.deb::${url}/releases/download/v${pkgver}/animecix_${pkgver}_amd64.deb")
-sha256sums=('3b0d2287d89e65efe96a270a27034c27e4b27d7faadcdb671de4eeae7444be92')
+sha256sums=('7c89fa6087f3abc3c3ef719110941a63bb814b7ba790fe7550632cf92a31a14d')
 
 prepare() {
   bsdtar -xf "animecix-${pkgver}.deb" data.tar.zst

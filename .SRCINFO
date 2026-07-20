@@ -1,7 +1,7 @@
 pkgbase = animecix-desktop
 	pkgdesc = Animecix Desktop Application
-	pkgver = 0.1.23
-	pkgrel = 2
+	pkgver = 0.1.26
+	pkgrel = 1
 	url = https://github.com/CaptainSP/animecix-desktop-2
 	arch = x86_64
 	license = MIT
@@ -14,9 +14,9 @@ pkgbase = animecix-desktop
 	depends = nss
 	depends = libxss
 	depends = libnotify
-	provides = animecix-desktop=0.1.23
+	provides = animecix-desktop=0.1.26
 	conflicts = animecix-desktop
-	source = animecix-0.1.23.deb::https://github.com/CaptainSP/animecix-desktop-2/releases/download/v0.1.23/animecix_0.1.23_amd64.deb
-	sha256sums = 3b0d2287d89e65efe96a270a27034c27e4b27d7faadcdb671de4eeae7444be92
+	source = animecix-0.1.26.deb::https://github.com/CaptainSP/animecix-desktop-2/releases/download/v0.1.26/animecix_0.1.26_amd64.deb
+	sha256sums = 7c89fa6087f3abc3c3ef719110941a63bb814b7ba790fe7550632cf92a31a14d
 
 pkgname = animecix-desktop
