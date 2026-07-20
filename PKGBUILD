@@ -2,12 +2,12 @@
 
 pkgname=atmosphera
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
 license=('GPL-3.0-or-later')
-makedepends=('git')
+makedepends=()
 depends=(
   'noctalia-qs'
   'imagemagick'
@@ -24,11 +24,11 @@ optdepends=(
   'ddcutil: For external display brightness control'
 )
 conflicts=('atmosphera-git')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('1b7fb6d2fe324a2b7282277e2c3625a32993356526ea23b209143f87334df7ba')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('25cbb9b3f80eba7242ebc668f697ecf75596904e34b494398a652e88b1ce41ce')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
