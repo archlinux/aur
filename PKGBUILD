@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="oshot-git"
 _pkgname="oshot"
-pkgver=0.4.4.r3.c1c32ca
+pkgver=0.4.6.r10.b7a7592
 pkgrel=1
 pkgdesc="A fast and lightweight screenshot tool for extracting text on the fly (git)"
 arch=('x86_64' 'aarch64')
