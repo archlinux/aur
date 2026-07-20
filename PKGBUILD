@@ -5,13 +5,18 @@
 # (Qt6 / Exiv2 / OpenCV / mpv) already built and uploaded to the GitHub
 # release by .github/workflows/arch-package.yml. No local compilation.
 #
-# pkgver and sha256sums are bumped by CI on every tag push (see
-# .github/workflows/arch-package.yml) before pushing to the AUR repo; the
-# values below are simply the last release published at edit time.
+# pkgver, _srcrel and sha256sums are updated by scripts/publish-aur.sh, run
+# on demand (not on every tag push - see that script's header for why) via
+# `./run.sh` -> "AUR publish". The values below are simply the last version
+# published at edit time.
 
 pkgname=thumbgrid-bin
-pkgver=2026.7.12
+pkgver=2026.7.13
 pkgrel=1
+# pkgrel of the upstream thumbgrid release asset being repackaged (the '-1-'
+# in the source filename below) - independent of this package's own pkgrel,
+# and can be >1 after an ABI-only rebuild republishes the same pkgver.
+_srcrel=1
 pkgdesc="Qt image viewer (fork of easymodo/qimgv), prebuilt binary release (exiv2/opencv/mpv)"
 arch=('x86_64')
 url="https://github.com/do-i/thumbgrid"
@@ -27,12 +32,12 @@ depends=(
 provides=('thumbgrid')
 conflicts=('thumbgrid')
 options=('!strip' '!debug')
-source=("thumbgrid-$pkgver-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v$pkgver/thumbgrid-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('972d187abea7df9109d4c98916896ad73e2718759216d622dadd455f4dafc977')
+source=("thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v$pkgver/thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst")
+sha256sums=('28e1e48c0ce055c01657bb0c49bf699cf0e84d9384cbcc7ffb8c583e7b855787')
 
 package() {
   # The download is itself a complete pacman package; unpack it as-is and
   # drop the upstream package's own metadata so makepkg can generate ours.
-  bsdtar -xf "$srcdir/thumbgrid-$pkgver-x86_64.pkg.tar.zst" -C "$pkgdir" \
+  bsdtar -xf "$srcdir/thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst" -C "$pkgdir" \
     --exclude .PKGINFO --exclude .BUILDINFO --exclude .MTREE
 }
