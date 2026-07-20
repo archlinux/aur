@@ -22,7 +22,6 @@ checkdepends=(
   ruby-rspec
   ruby-rubocop-rspec
 )
-options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('3ec9c1cc713c4866fd0a3cc5d9fda853fdf22ba3ebc6da431ee6e5c94ae7fc5e')
 b2sums=('0847822d8f218d302bfcce4f7767db5379c81a608e7a35a0a0d4f0ff1c43d8eb8e9ca663f31e5b477b464274f579a3c5f8c75b8223298a157940a9dfd786fd7e')
