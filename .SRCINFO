@@ -1,6 +1,6 @@
 pkgbase = panache
 	pkgdesc = A language server, formatter, and linter for Pandoc, Quarto, and R Markdown
-	pkgver = 2.61.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/jolars/panache
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = panache
 	depends = gcc-libs
 	depends = libgcc_s.so
 	depends = glibc
-	source = https://github.com/jolars/panache/archive/v2.61.0/panache-2.61.0.tar.gz
-	sha256sums = fd491db3506b4112f80a572b50e8bbd22ccb7b976f9ea4c19973499af8074726
+	source = https://github.com/jolars/panache/archive/v3.0.0/panache-3.0.0.tar.gz
+	sha256sums = 6b61d93bd55f571b4f75db617987960703a5215d2c12898d78661cec3f7508f5
 
 pkgname = panache
