@@ -114,10 +114,101 @@ index 315a631..520c16f 100644
 -uninstall-hook:
 -	cd $(DESTDIR)$(pkglibdir) && rm -f $(PLUGINS_INSTALLED) || true
 diff --git a/plugins/gtk/edit.c b/plugins/gtk/edit.c
-index 1bce084..46721dd 100644
+index 1bce084..7ca13f8 100644
 --- a/plugins/gtk/edit.c
 +++ b/plugins/gtk/edit.c
-@@ -104,12 +104,16 @@ static void fill_edit_frame(PluginData *data, const LXHotkeyAttr *opt,
+@@ -90,6 +90,90 @@ static const GList *get_parent_template_list(GtkTreeModel *model, GtkTreeIter *i
+     return get_options_from_template(parent, data);
+ }
+ 
++/* case-insensitive substring match for the action-name completion; GtkEntry
++   completion passes 'key' already normalized + case-folded, so only fold col 0 */
++static gboolean action_completion_match(GtkEntryCompletion *completion,
++                                        const gchar *key, GtkTreeIter *iter,
++                                        gpointer user_data)
++{
++    GtkTreeModel *model = gtk_entry_completion_get_model(completion);
++    gchar *name = NULL, *folded;
++    gboolean match = FALSE;
++
++    (void)user_data;
++    if (model == NULL)
++        return FALSE;
++    gtk_tree_model_get(model, iter, 0, &name, -1);
++    if (name != NULL)
++    {
++        folded = g_utf8_casefold(name, -1);
++        match = (key[0] == '\0' || strstr(folded, key) != NULL);
++        g_free(folded);
++        g_free(name);
++    }
++    return match;
++}
++
++/* when the user picks a completion, mirror it onto the combo's active row so
++   the "changed" signal fires and the hint/parameter widgets refresh */
++static gboolean on_action_completion_match_selected(GtkEntryCompletion *completion,
++                                                    GtkTreeModel *model,
++                                                    GtkTreeIter *iter,
++                                                    gpointer user_data)
++{
++    PluginData *data = user_data;
++
++    (void)completion;
++    (void)model;
++    gtk_combo_box_set_active_iter(data->edit_actions, iter);
++    return FALSE; /* let the default handler also set the entry text */
++}
++
++/* resolve a typed (not dropdown-picked) action name to its model row via an
++   exact case-insensitive match on the shown name (col 0) or raw name (col 1) */
++static gboolean find_action_row_by_name(GtkTreeModel *model, const char *typed,
++                                        GtkTreeIter *iter)
++{
++    gchar *key;
++    gboolean found = FALSE;
++
++    if (typed == NULL || typed[0] == '\0')
++        return FALSE;
++    if (!gtk_tree_model_get_iter_first(model, iter))
++        return FALSE;
++    key = g_utf8_casefold(typed, -1);
++    do {
++        gchar *n0 = NULL, *n1 = NULL, *c0, *c1;
++
++        gtk_tree_model_get(model, iter, 0, &n0, 1, &n1, -1);
++        c0 = n0 ? g_utf8_casefold(n0, -1) : NULL;
++        c1 = n1 ? g_utf8_casefold(n1, -1) : NULL;
++        if ((c0 && g_strcmp0(c0, key) == 0) || (c1 && g_strcmp0(c1, key) == 0))
++            found = TRUE;
++        g_free(n0);
++        g_free(n1);
++        g_free(c0);
++        g_free(c1);
++        if (found)
++            break;
++     } while (gtk_tree_model_iter_next(model, iter));
++    g_free(key);
++    return found;
++}
++
++/* pressing Enter in the typed action name confirms it as a selection, so the
++   hint + parameter widgets refresh (they only track the combo's active row) */
++static void on_action_entry_activate(GtkEntry *entry, gpointer user_data)
++{
++    PluginData *data = user_data;
++    GtkTreeModel *model = gtk_combo_box_get_model(data->edit_actions);
++    GtkTreeIter iter;
++
++    if (model != NULL &&
++        find_action_row_by_name(model, gtk_entry_get_text(entry), &iter))
++        gtk_combo_box_set_active_iter(data->edit_actions, &iter);
++}
++
+ static void fill_edit_frame(PluginData *data, const LXHotkeyAttr *opt,
+                             const GList *subopts, const GList *exempt)
+ {
+@@ -104,17 +188,28 @@ static void fill_edit_frame(PluginData *data, const LXHotkeyAttr *opt,
      while (subopts)
      {
          sub = subopts->data;
@@ -135,7 +226,19 @@ index 1bce084..46721dd 100644
                                                                        1, sub->name,
                                                                        2, sub, -1);
          subopts = subopts->next;
-@@ -185,8 +189,8 @@ static void on_save(GtkAction *action, PluginData *data)
+     }
+     gtk_combo_box_set_model(data->edit_actions, GTK_TREE_MODEL(names_store));
++    {
++        GtkEntry *centry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(data->edit_actions)));
++        GtkEntryCompletion *completion = gtk_entry_get_completion(centry);
++
++        if (completion != NULL)
++            gtk_entry_completion_set_model(completion, GTK_TREE_MODEL(names_store));
++    }
+     g_object_unref(names_store);
+     gtk_combo_box_set_active(data->edit_actions, 0);
+     /* values box will be set by changing active callback */
+@@ -185,8 +280,8 @@ static void on_save(GtkAction *action, PluginData *data)
      LXHotkeyApp *app = NULL;
      GtkTreeModel *model;
      GtkTreeIter iter;
@@ -146,7 +249,7 @@ index 1bce084..46721dd 100644
      gboolean ok = FALSE;
  
      if (data->current_page == data->acts)
-@@ -206,17 +210,9 @@ static void on_save(GtkAction *action, PluginData *data)
+@@ -206,17 +301,9 @@ static void on_save(GtkAction *action, PluginData *data)
          if (act)
          {
              /* global edited */
@@ -167,7 +270,7 @@ index 1bce084..46721dd 100644
                  /* nothing was changed */
                  goto _exit;
          }
-@@ -241,10 +237,10 @@ static void on_save(GtkAction *action, PluginData *data)
+@@ -241,10 +328,10 @@ static void on_save(GtkAction *action, PluginData *data)
          if (app)
          {
              /* app edited */
@@ -181,7 +284,7 @@ index 1bce084..46721dd 100644
                  LXHotkeyApp rem_app = *app;
  
                  rem_app.accel1 = rem_app.accel2 = NULL;
-@@ -252,7 +248,8 @@ static void on_save(GtkAction *action, PluginData *data)
+@@ -252,7 +339,8 @@ static void on_save(GtkAction *action, PluginData *data)
                      goto _exit;
              }
              else if (g_strcmp0(app->accel1, new_app.accel1) == 0 &&
@@ -191,7 +294,16 @@ index 1bce084..46721dd 100644
                  /* nothing was changed */
                  goto _exit;
          }
-@@ -610,24 +607,26 @@ static GList *copy_options(GList *orig)
+@@ -280,8 +368,6 @@ static void on_add_action(GtkAction *action, PluginData *data)
+     data->edit_mode = EDIT_MODE_ADD;
+     gtk_frame_set_label(GTK_FRAME(data->edit_frame), _("Add action"));
+     fill_edit_frame(data, NULL, data->edit_template, NULL);
+-    gtk_widget_hide(GTK_WIDGET(data->edit_values));
+-    gtk_widget_hide(GTK_WIDGET(data->edit_value));
+     gtk_widget_show(data->edit_frame);
+     gtk_widget_grab_focus(data->edit_frame);
+ }
+@@ -610,24 +696,26 @@ static GList *copy_options(GList *orig)
  }
  
  static void add_options_to_tree(GtkTreeStore *store, GtkTreeIter *parent_iter,
@@ -221,7 +333,7 @@ index 1bce084..46721dd 100644
          list = list->next;
      }
  }
-@@ -640,7 +639,8 @@ static void update_options_tree(PluginData *data)
+@@ -640,7 +728,8 @@ static void update_options_tree(PluginData *data)
                                                  G_TYPE_STRING, /* shown name */
                                                  G_TYPE_STRING); /* shown value */
  
@@ -231,7 +343,231 @@ index 1bce084..46721dd 100644
      gtk_tree_view_set_model(data->edit_tree, GTK_TREE_MODEL(store));
      gtk_tree_view_expand_all(data->edit_tree);
      g_object_unref(store);
-@@ -1143,12 +1143,10 @@ void _edit_action(PluginData *data, GError **error)
+@@ -691,6 +780,7 @@ static void on_selection_changed(GtkTreeSelection *selection, PluginData *data)
+ static void on_option_changed(GtkComboBox *box, PluginData *data)
+ {
+     const LXHotkeyAttr *opt, *tmpl;
++    const LXHotkeyAttr *parameter;
+     const GList *values;
+     GtkTreeModel *model;
+     GtkListStore *values_store;
+@@ -723,7 +813,97 @@ static void on_option_changed(GtkComboBox *box, PluginData *data)
+         /* no item selected */
+         return;
+     gtk_tree_model_get(gtk_combo_box_get_model(box), &iter, 2, &tmpl, -1);
+-    if (tmpl->has_actions || is_action ||
++    if (data->edit_hint != NULL)
++    {
++        GString *hint = g_string_new(_(tmpl->name));
++        const GList *s;
++
++        for (s = tmpl->subopts; s; s = s->next)
++        {
++            LXHotkeyAttr *p = s->data;
++            const GList *v;
++
++            g_string_append(hint, (s == tmpl->subopts) ? ": " : ", ");
++            g_string_append(hint, _(p->name));
++            if (p->values)
++            {
++                g_string_append(hint, " (");
++                for (v = p->values; v; v = v->next)
++                {
++                    const char *val = v->data;
++
++                    if (v != p->values)
++                        g_string_append(hint, " / ");
++                    if (g_strcmp0(val, "#") == 0)
++                        g_string_append(hint, _("number"));
++                    else
++                        g_string_append(hint, val);
++                }
++                g_string_append_c(hint, ')');
++            }
++        }
++        {
++            char *markup = g_markup_printf_escaped("<small>%s</small>", hint->str);
++
++            gtk_label_set_markup(GTK_LABEL(data->edit_hint), markup);
++            g_free(markup);
++        }
++        g_string_free(hint, TRUE);
++        gtk_widget_show(data->edit_hint);
++    }
++    if (is_action && tmpl->subopts != NULL)
++    {
++        parameter = tmpl->subopts->data;
++        if (parameter->values != NULL)
++        {
++            const char *cur = (opt && opt->subopts &&
++                               ((LXHotkeyAttr *)opt->subopts->data)->values)
++                              ? ((LXHotkeyAttr *)opt->subopts->data)->values->data : NULL;
++
++            values_store = GTK_LIST_STORE(gtk_list_store_new(2, G_TYPE_STRING,
++                                                                G_TYPE_STRING));
++            for (sel = 0, i = 0, values = parameter->values; values;
++                 values = values->next, i++)
++            {
++                gtk_list_store_insert_with_values(values_store, NULL, i,
++                                                  0, _(values->data),
++                                                  1, values->data, -1);
++                if (cur)
++                {
++                    if (((char *)values->data)[0] == '#')
++                    {
++                        size_t len = strspn(cur, "0123456789");
++
++                        if (len == strlen(cur))
++                            sel = i;
++                    }
++                    else if (g_strcmp0(cur, values->data) == 0)
++                        sel = i;
++                }
++            }
++            gtk_combo_box_set_model(data->edit_values, GTK_TREE_MODEL(values_store));
++            g_object_unref(values_store);
++            gtk_combo_box_set_active(data->edit_values, sel);
++            gtk_widget_show(data->edit_value_label);
++            gtk_widget_show(GTK_WIDGET(data->edit_values));
++            gtk_widget_hide(GTK_WIDGET(data->edit_value));
++        }
++        else
++        {
++            gtk_widget_show(data->edit_value_label);
++            gtk_widget_show(GTK_WIDGET(data->edit_value));
++            gtk_widget_hide(GTK_WIDGET(data->edit_values));
++            gtk_widget_hide(data->edit_value_num);
++            gtk_widget_hide(data->edit_value_num_label);
++            if (opt && opt->subopts && ((LXHotkeyAttr *)opt->subopts->data)->values)
++                gtk_entry_set_text(data->edit_value,
++                                   ((LXHotkeyAttr *)opt->subopts->data)->values->data);
++            else
++                gtk_entry_set_text(data->edit_value, "");
++            gtk_entry_set_placeholder_text(data->edit_value, parameter->name);
++        }
++    }
++    else if (tmpl->has_actions || is_action ||
+         (tmpl->subopts != NULL && !tmpl->has_value))
+     {
+         /* either it's action, or option has suboptions instead of values */
+@@ -856,26 +1036,81 @@ _general:
+ 
+ static void apply_options(PluginData *data, LXHotkeyAttr *opt)
+ {
++    LXHotkeyAttr *parameter;
++    const LXHotkeyAttr *tmpl;
+     GtkTreeModel *model;
+     GtkTreeIter iter;
+     char *name, *_value = NULL;
+     const char *value = NULL;
+     gboolean changed = FALSE;
++    gboolean is_action = FALSE;
+ 
+     /* process name */
+-    if (gtk_widget_get_visible(GTK_WIDGET(data->edit_actions)) &&
+-        gtk_combo_box_get_active_iter(data->edit_actions, &iter))
++    if (gtk_widget_get_visible(GTK_WIDGET(data->edit_actions)))
+     {
++        gboolean got = gtk_combo_box_get_active_iter(data->edit_actions, &iter);
++
+         model = gtk_combo_box_get_model(data->edit_actions);
+-        gtk_tree_model_get(model, &iter, 1, &name, -1);
+-        if (g_strcmp0(opt->name, name) == 0)
+-            g_free(name);
+-        else
++        if (!got && model != NULL)
+         {
+-            g_free(opt->name);
+-            opt->name = name;
++            GtkEntry *centry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(data->edit_actions)));
++
++            got = find_action_row_by_name(model, gtk_entry_get_text(centry), &iter);
++        }
++        if (got)
++        {
++            gtk_tree_model_get(model, &iter, 1, &name, -1);
++            if (g_strcmp0(opt->name, name) == 0)
++                g_free(name);
++            else
++            {
++                g_free(opt->name);
++                opt->name = name;
++                changed = TRUE;
++            }
++            gtk_tree_model_get(model, &iter, 2, &tmpl, -1);
++            is_action = (data->current_page == data->acts &&
++                         data->edit_mode == EDIT_MODE_ADD);
++        }
++    }
++    if (is_action && tmpl->subopts != NULL)
++    {
++        char *pval = NULL;
++        const char *pv = NULL;
++
++        if (gtk_widget_get_visible(data->edit_value_num))
++        {
++            gdouble num_val = gtk_spin_button_get_value(GTK_SPIN_BUTTON(data->edit_value_num));
++
++            if (gtk_widget_get_visible(data->edit_value_num_label))
++                pval = g_strdup_printf("%d%s", (int)num_val,
++                                       gtk_label_get_text(GTK_LABEL(data->edit_value_num_label)));
++            else
++                pval = g_strdup_printf("%d", (int)num_val);
++            pv = pval;
++        }
++        else if (gtk_widget_get_visible(GTK_WIDGET(data->edit_values)) &&
++                 gtk_combo_box_get_active_iter(data->edit_values, &iter))
++        {
++            model = gtk_combo_box_get_model(data->edit_values);
++            gtk_tree_model_get(model, &iter, 1, &pval, -1);
++            pv = pval;
++        }
++        else if (gtk_widget_get_visible(GTK_WIDGET(data->edit_value)))
++            pv = gtk_entry_get_text(data->edit_value);
++
++        if (pv && pv[0] != '\0')
++        {
++            const LXHotkeyAttr *parameter_tmpl = tmpl->subopts->data;
++
++            parameter = g_slice_new0(LXHotkeyAttr);
++            parameter->name = g_strdup(parameter_tmpl->name);
++            parameter->values = g_list_prepend(NULL, g_strdup(pv));
++            opt->subopts = g_list_append(opt->subopts, parameter);
+             changed = TRUE;
+         }
++        g_free(pval);
++        goto _changed;
+     }
+     /* process value */
+     if (gtk_widget_get_visible(data->edit_value_num))
+@@ -913,6 +1148,7 @@ static void apply_options(PluginData *data, LXHotkeyAttr *opt)
+         }
+         changed = TRUE;
+     }
++_changed:
+     /* process changed state */
+     if (((value = gtk_button_get_label(GTK_BUTTON(data->edit_key1))) == NULL || value[0] == 0) &&
+         ((value = gtk_button_get_label(GTK_BUTTON(data->edit_key2))) == NULL || value[0] == 0))
+@@ -938,12 +1174,17 @@ static void on_apply_button(GtkButton *btn, PluginData *data)
+         model = gtk_tree_view_get_model(data->edit_tree);
+         /* update the tree */
+         val = opt->values ? opt->values->data : NULL;
+-        gtk_tree_store_insert_with_values(GTK_TREE_STORE(model), NULL, NULL, -1,
++        gtk_tree_store_insert_with_values(GTK_TREE_STORE(model), &iter, NULL, -1,
+                                           0, opt->name,
+                                           1, val,
+                                           2, opt,
+                                           3, _(opt->name),
+                                           4, (val && val[0]) ? _(val) : NULL, -1);
++        if (opt->subopts) {
++            add_options_to_tree(GTK_TREE_STORE(model), &iter, opt->subopts,
++                                data->current_page == data->acts);
++            gtk_tree_view_expand_all(data->edit_tree);
++        }
+         /* update toolbar */
+         update_edit_toolbar(data);
+         break;
+@@ -1143,12 +1384,10 @@ void _edit_action(PluginData *data, GError **error)
          gtk_alignment_set_padding(GTK_ALIGNMENT(align), 0, 0, 4, 0);
          gtk_container_add(GTK_CONTAINER(align), GTK_WIDGET(data->edit_exec));
          gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
@@ -246,7 +582,7 @@ index 1bce084..46721dd 100644
      gtk_container_add(GTK_CONTAINER(widget), GTK_WIDGET(xbox));
      gtk_box_pack_start(vbox, widget, FALSE, TRUE, 0);
      gtk_tree_view_insert_column_with_attributes(data->edit_tree, 0, NULL,
-@@ -1169,15 +1167,18 @@ void _edit_action(PluginData *data, GError **error)
+@@ -1169,33 +1408,56 @@ void _edit_action(PluginData *data, GError **error)
      gtk_label_set_markup(GTK_LABEL(widget), _("<b>Name:</b>"));
      gtk_container_add(GTK_CONTAINER(align), widget);
      gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
@@ -256,18 +592,48 @@ index 1bce084..46721dd 100644
      widget = gtk_hbox_new(FALSE, 0);
      data->edit_option_name = gtk_label_new(NULL);
      gtk_box_pack_start(GTK_BOX(widget), data->edit_option_name, FALSE, TRUE, 0);
-     data->edit_actions = (GtkComboBox *)gtk_combo_box_new();
+-    data->edit_actions = (GtkComboBox *)gtk_combo_box_new();
++    data->edit_actions = (GtkComboBox *)gtk_combo_box_new_with_entry();
++    gtk_combo_box_set_entry_text_column(data->edit_actions, 0);
 +    gtk_widget_set_size_request(GTK_WIDGET(data->edit_actions), -1, 28);
      g_signal_connect(data->edit_actions, "changed",
                       G_CALLBACK(on_option_changed), data);
-     column = gtk_cell_renderer_text_new();
-+    g_object_set(column, "ypad", 0, NULL);
-+    gtk_cell_renderer_text_set_fixed_height_from_font(GTK_CELL_RENDERER_TEXT(column), 1);
-     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(data->edit_actions), column, TRUE);
-     gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(data->edit_actions), column,
-                                    "text", 0, NULL);
-@@ -1190,13 +1191,16 @@ void _edit_action(PluginData *data, GError **error)
-     gtk_label_set_markup(GTK_LABEL(widget), _("<b>Value:</b>"));
+-    column = gtk_cell_renderer_text_new();
+-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(data->edit_actions), column, TRUE);
+-    gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(data->edit_actions), column,
+-                                   "text", 0, NULL);
++    {
++        GtkEntry *centry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(data->edit_actions)));
++        GtkEntryCompletion *completion = gtk_entry_completion_new();
++
++        gtk_entry_completion_set_text_column(completion, 0);
++        gtk_entry_completion_set_popup_completion(completion, TRUE);
++        gtk_entry_completion_set_match_func(completion, action_completion_match,
++                                            data, NULL);
++        g_signal_connect(completion, "match-selected",
++                         G_CALLBACK(on_action_completion_match_selected), data);
++        g_signal_connect(centry, "activate",
++                         G_CALLBACK(on_action_entry_activate), data);
++        gtk_entry_set_completion(centry, completion);
++        g_object_unref(completion);
++    }
+     gtk_box_pack_start(GTK_BOX(widget), GTK_WIDGET(data->edit_actions), TRUE, TRUE, 0);
+     gtk_container_add(GTK_CONTAINER(align), widget);
+     gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
++    /* auto-generated help: selected action and its parameters */
++    align = gtk_alignment_new(0.0, 0.0, 1.0, 0.0);
++    gtk_alignment_set_padding(GTK_ALIGNMENT(align), 0, 2, 4, 0);
++    data->edit_hint = gtk_label_new(NULL);
++    gtk_label_set_line_wrap(GTK_LABEL(data->edit_hint), TRUE);
++    gtk_label_set_max_width_chars(GTK_LABEL(data->edit_hint), 36);
++    gtk_widget_set_size_request(data->edit_hint, 240, -1);
++    gtk_container_add(GTK_CONTAINER(align), data->edit_hint);
++    gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
+     /* entry or combobox for option value */
+     data->edit_value_label = gtk_alignment_new(0.0, 0.0, 0.0, 0.0);
+     widget = gtk_label_new(NULL);
+-    gtk_label_set_markup(GTK_LABEL(widget), _("<b>Value:</b>"));
++    gtk_label_set_markup(GTK_LABEL(widget), _("<b>Parameter:</b>"));
      gtk_container_add(GTK_CONTAINER(data->edit_value_label), widget);
      gtk_box_pack_start(xbox, data->edit_value_label, FALSE, TRUE, 0);
 -    align = gtk_alignment_new(0.0, 0.0, 1.0, 1.0);
@@ -279,12 +645,9 @@ index 1bce084..46721dd 100644
      data->edit_values = (GtkComboBox *)gtk_combo_box_new();
 +    gtk_widget_set_size_request(GTK_WIDGET(data->edit_values), -1, 28);
      column = gtk_cell_renderer_text_new();
-+    g_object_set(column, "ypad", 0, NULL);
-+    gtk_cell_renderer_text_set_fixed_height_from_font(GTK_CELL_RENDERER_TEXT(column), 1);
      gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(data->edit_values), column, TRUE);
      gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(data->edit_values), column,
-                                    "text", 0, NULL);
-@@ -1221,7 +1225,7 @@ void _edit_action(PluginData *data, GError **error)
+@@ -1221,7 +1483,7 @@ void _edit_action(PluginData *data, GError **error)
      g_signal_connect(align, "clicked", G_CALLBACK(on_cancel_button), data);
      gtk_box_pack_end(GTK_BOX(widget), align, FALSE, TRUE, 0);
      gtk_container_add(GTK_CONTAINER(data->edit_frame), GTK_WIDGET(xbox));
@@ -293,7 +656,7 @@ index 1bce084..46721dd 100644
  
      gtk_widget_show_all(GTK_WIDGET(vbox));
      gtk_widget_hide(data->edit_frame);
-@@ -1235,7 +1239,12 @@ void _edit_action(PluginData *data, GError **error)
+@@ -1235,7 +1497,12 @@ void _edit_action(PluginData *data, GError **error)
      {
          /* AddAction is visible for action only */
          GtkAction *act = gtk_ui_manager_get_action(ui, "/toolbar/AddAction");
@@ -306,21 +669,32 @@ index 1bce084..46721dd 100644
      }
      gtk_container_add(GTK_CONTAINER(data->edit_window), GTK_WIDGET(vbox));
      g_signal_connect(gtk_tree_view_get_selection(data->edit_tree), "changed",
-@@ -1243,5 +1252,8 @@ void _edit_action(PluginData *data, GError **error)
+@@ -1243,5 +1510,11 @@ void _edit_action(PluginData *data, GError **error)
      update_options_tree(data);
      update_edit_toolbar(data);
      gtk_window_present(data->edit_window);
 -    gtk_widget_grab_focus(GTK_WIDGET(data->edit_tree));
-+    if (data->edit_exec)
++    if (is_action && data->edit_options_copy == NULL)
++        /* new action binding: open the action chooser right away */
++        on_add_action(NULL, data);
++    else if (data->edit_exec)
 +        gtk_widget_grab_focus(GTK_WIDGET(data->edit_exec));
 +    else
 +        gtk_widget_grab_focus(GTK_WIDGET(data->edit_tree));
  }
 diff --git a/plugins/gtk/edit.h b/plugins/gtk/edit.h
-index 9130891..fbdf7c1 100644
+index 9130891..0eb092d 100644
 --- a/plugins/gtk/edit.h
 +++ b/plugins/gtk/edit.h
-@@ -62,7 +62,7 @@ typedef struct {
+@@ -52,6 +52,7 @@ typedef struct {
+     /* edit frame elements */
+     GtkWidget *edit_frame;
+     GtkComboBox *edit_actions;
++    GtkWidget *edit_hint; //GtkLabel: auto action/param help
+     GtkWidget *edit_option_name; //GtkLabel
+     GtkWidget *edit_value_label;
+     GtkEntry *edit_value;
+@@ -62,7 +63,7 @@ typedef struct {
      gboolean use_primary;
  } PluginData;
  
@@ -330,7 +704,7 @@ index 9130891..fbdf7c1 100644
  void _main_refresh(PluginData *data);
  
 diff --git a/plugins/gtk/gtk.c b/plugins/gtk/gtk.c
-index c7c7ed3..dc5665f 100644
+index c7c7ed3..4a74ec8 100644
 --- a/plugins/gtk/gtk.c
 +++ b/plugins/gtk/gtk.c
 @@ -141,7 +141,7 @@ static void on_del(GtkAction *act, PluginData *data)
@@ -391,33 +765,7 @@ index c7c7ed3..dc5665f 100644
                                                              1, val,
                                                              2, act->accel1,
                                                              3, act->accel2,
-@@ -348,25 +353,6 @@ static void module_gtk_run(const gchar *wm, const LXHotkeyPluginInit *cb,
-         gtk_init(&inited, NULL);
-     inited = 1;
- 
--    /* force style for GtkComboBox, it's ugly when list reaches screen bottom */
--#if GTK_CHECK_VERSION(3, 0, 0)
--    GtkCssProvider *provider = gtk_css_provider_new();
--    if (gtk_css_provider_load_from_data(provider,
--                                        "#gtk-widget {\n"
--                                        "-GtkComboBox-appears-as-list : 1;\n"
--                                        "}\n", -1, NULL))
--        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
--                                                  GTK_STYLE_PROVIDER(provider),
--                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
--    g_object_unref(provider);
--#else
--    gtk_rc_parse_string("style 'default-style'\n"
--                        "{\n"
--                        "  GtkComboBox::appears-as-list = 1\n"
--                        "}\n"
--                        "class 'GtkWidget' style 'default-style'");
--#endif
--
-     memset(&data, 0, sizeof(data));
-     data.wm = wm;
-     data.cb = cb;
-@@ -383,6 +369,7 @@ static void module_gtk_run(const gchar *wm, const LXHotkeyPluginInit *cb,
+@@ -383,6 +388,7 @@ static void module_gtk_run(const gchar *wm, const LXHotkeyPluginInit *cb,
      win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
      gtk_window_set_default_size(GTK_WINDOW(win), 800, 480);
      gtk_window_set_icon_name(GTK_WINDOW(win), LXHOTKEY_ICON);
@@ -425,7 +773,7 @@ index c7c7ed3..dc5665f 100644
      g_signal_connect(win, "unmap", G_CALLBACK(gtk_main_quit), NULL);
  
      vbox = (GtkBox *)gtk_vbox_new(FALSE, 0);
-@@ -508,13 +495,14 @@ static void module_gtk_alert(GError *error)
+@@ -508,13 +514,14 @@ static void module_gtk_alert(GError *error)
  
  static void module_gtk_init(int argc, char **argv)
  {
@@ -444,7 +792,7 @@ index c7c7ed3..dc5665f 100644
      .run = module_gtk_run,
      .alert = module_gtk_alert,
 diff --git a/plugins/openbox/openbox.c b/plugins/openbox/openbox.c
-index 74ee21a..3d5e803 100644
+index 74ee21a..2670b0e 100644
 --- a/plugins/openbox/openbox.c
 +++ b/plugins/openbox/openbox.c
 @@ -30,7 +30,8 @@
@@ -518,7 +866,7 @@ index 74ee21a..3d5e803 100644
      ce.xclient.type = ClientMessage;
      ce.xclient.message_type = XInternAtom(dpy, "_OB_CONTROL", True);
      ce.xclient.display = dpy;
-@@ -203,18 +251,8 @@ static gboolean restart_openbox(GError **error)
+@@ -203,228 +251,242 @@ static gboolean restart_openbox(GError **error)
  
  static char * values_enabled[] = { N_("yes"), N_("no"), NULL };
  
@@ -529,23 +877,396 @@ index 74ee21a..3d5e803 100644
 -    { N_("icon"), NULL, NULL, NULL, FALSE },
 -    { NULL }
 -};
--
++/* allowed values (labwc) */
++
++/* GoToDesktop / SendToDesktop: to */
++static char * values_to[] = { "#", N_("current"), N_("last"), N_("left"), N_("right"),
++                              N_("left-occupied"), N_("right-occupied"), NULL };
++
++/* MoveToEdge / GrowToEdge / ShrinkToEdge: direction */
++static char * values_edge[] = { N_("left"), N_("up"), N_("right"), N_("down"), NULL };
++
++/* Resize: direction (edge or corner) */
++static char * values_resize[] = { N_("up"), N_("down"), N_("left"), N_("right"),
++                                  N_("up-left"), N_("up-right"),
++                                  N_("down-left"), N_("down-right"), NULL };
++
++/* SnapToEdge / ToggleSnapToEdge: direction */
++static char * values_snap[] = { N_("up"), N_("down"), N_("left"), N_("right"),
++                                N_("up-left"), N_("up-right"),
++                                N_("down-left"), N_("down-right"), N_("center"), NULL };
++
++/* FocusOutput / MoveToOutput: direction */
++static char * values_output[] = { N_("left"), N_("right"), N_("up"), N_("down"), NULL };
++
++/* ToggleMaximize / Maximize / UnMaximize: direction */
++static char * values_maximize[] = { N_("both"), N_("horizontal"), N_("vertical"), NULL };
++
++/* SetDecorations: decorations */
++static char * values_decorations[] = { N_("full"), N_("border"), N_("none"), NULL };
++
++/* AutoPlace: policy */
++static char * values_policy[] = { N_("automatic"), N_("cursor"), N_("center"), N_("cascade"), NULL };
++
++/* window cycling: workspace / output / identifier */
++static char * values_workspace[] = { N_("all"), N_("current"), NULL };
++static char * values_cycle_output[] = { N_("all"), N_("focused"), N_("cursor"), NULL };
++static char * values_identifier[] = { N_("all"), N_("current"), NULL };
++
++/* WarpCursor: to / position */
++static char * values_warp_to[] = { N_("output"), N_("window"), NULL };
++static char * values_warp_pos[] = { N_("center"), "#", NULL };
++
++/* plain integer value */
++static char * values_number[] = { "#", NULL };
++
++
++/* action parameters (labwc) */
+ 
  static LXHotkeyAttr options_Execute[] = {
      { N_("command"), NULL, NULL, NULL, FALSE },
 -    { N_("prompt"), NULL, NULL, NULL, FALSE },
 -    { N_("startupnotify"), NULL, TO_BE_CONVERTED(options_startupnotify), NULL, FALSE },
+-    { NULL }
+-};
+-
+-static char * values_x[] = { "#", "%", N_("center"), NULL };
+-static char * values_monitor[] = { N_("default"), N_("primary"), N_("mouse"),
+-                                   N_("active"), N_("all"), "#", NULL };
+-
+-static LXHotkeyAttr options_position[] = {
+-    { "x", TO_BE_CONVERTED(values_x), NULL, NULL, FALSE },
+-    { "y", TO_BE_PREVIOUS, NULL, NULL, FALSE },
+-    { N_("monitor"), TO_BE_CONVERTED(values_monitor), NULL, NULL, FALSE },
      { NULL }
  };
  
-@@ -296,7 +334,6 @@ static LXHotkeyAttr options_Restart[] = {
+ static LXHotkeyAttr options_ShowMenu[] = {
+     { N_("menu"), NULL, NULL, NULL, FALSE },
+-    { N_("position"), NULL, TO_BE_CONVERTED(options_position), NULL, FALSE },
++    { N_("atCursor"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+     { NULL }
  };
  
- static LXHotkeyAttr options_Exit[] = {
+-static char * values_dialog[] = { N_("list"), N_("icons"), N_("none"), NULL };
+-
+-static LXHotkeyAttr options_NextWindow[] = {
+-    { N_("dialog"), TO_BE_CONVERTED(values_dialog), NULL, NULL, FALSE },
+-    { N_("bar"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("raise"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("allDesktops"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("panels"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("desktop"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("linear"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("interactive"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    /* TRANSLATORS: finalactions means actions when done */
+-    { N_("finalactions"), NULL, NULL, NULL, TRUE },
+-    { NULL }
+-};
+-
+-static char * values_direction[] = { N_("north"), N_("northeast"), N_("east"),
+-                                     N_("southeast"), N_("south"), N_("southwest"),
+-                                     N_("west"), N_("northwest"), NULL };
+-
+-static LXHotkeyAttr options_DirectionalCycleWindows[] = {
+-    { N_("direction"), TO_BE_CONVERTED(values_direction), NULL, NULL, FALSE },
+-    { N_("dialog"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("bar"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("raise"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("panels"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("desktops"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("finalactions"), NULL, NULL, NULL, TRUE },
+-    { NULL }
+-};
+-
+-/* TRANSLATORS: these values are in regard to desktop */
+-static char * values_to[] = { "#",  N_("current"), N_("next"), N_("previous"),
+-                              N_("last"), N_("north"), N_("up"), N_("south"),
+-                              N_("down"), N_("west"), N_("left"), N_("east"),
+-                              N_("right"), NULL };
+-
+ static LXHotkeyAttr options_GoToDesktop[] = {
+     { N_("to"), TO_BE_CONVERTED(values_to), NULL, NULL, FALSE },
+     { N_("wrap"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { N_("toggle"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-static char * values_where[] = { N_("current"), N_("last"), NULL };
+-
+-static LXHotkeyAttr options_AddDesktop[] = {
+-    { N_("where"), TO_BE_CONVERTED(values_where), NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+-static LXHotkeyAttr options_ToggleShowDesktop[] = {
+-    { N_("strict"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+-static LXHotkeyAttr options_Restart[] = {
+-    { N_("command"), NULL, NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+-static LXHotkeyAttr options_Exit[] = {
 -    { N_("prompt"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+-static char * values_directionM[] = { N_("both"), N_("horizontal"), N_("vertical"), NULL };
+-
+-static LXHotkeyAttr options_ToggleMaximize[] = {
+-    { N_("direction"), TO_BE_CONVERTED(values_directionM), NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+-static char * values_toS[] = { "#", N_("current"), N_("next"), N_("previous"),
+-                               N_("last"), N_("north"), N_("up"), N_("south"),
+-                               N_("down"), N_("west"), N_("left"), N_("east"),
+-                               N_("right"), NULL };
+-
+ static LXHotkeyAttr options_SendToDesktop[] = {
+-    { N_("to"), TO_BE_CONVERTED(values_toS), NULL, NULL, FALSE },
+-    { N_("wrap"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { N_("to"), TO_BE_CONVERTED(values_to), NULL, NULL, FALSE },
+     { N_("follow"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { N_("wrap"), BOOLEAN_VALUES, NULL, NULL, FALSE },
      { NULL }
  };
  
-@@ -480,6 +517,7 @@ typedef struct {
+-static char * values_edge[] = { N_("top"), N_("left"), N_("right"), N_("bottom"),
+-                                N_("topleft"), N_("topright"), N_("bottomleft"),
+-                                N_("bottomright"), NULL };
++static LXHotkeyAttr options_NextWindow[] = {
++    { N_("workspace"), TO_BE_CONVERTED(values_workspace), NULL, NULL, FALSE },
++    { N_("output"), TO_BE_CONVERTED(values_cycle_output), NULL, NULL, FALSE },
++    { N_("identifier"), TO_BE_CONVERTED(values_identifier), NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_MoveToEdge[] = {
++    { N_("direction"), TO_BE_CONVERTED(values_edge), NULL, NULL, FALSE },
++    { N_("snapWindows"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { NULL }
++};
+ 
+ static LXHotkeyAttr options_Resize[] = {
+-    { N_("edge"), TO_BE_CONVERTED(values_edge), NULL, NULL, FALSE },
++    { N_("direction"), TO_BE_CONVERTED(values_resize), NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-static char * values_xM[] = { N_("#"), N_("current"), N_("center"), NULL };
+-/* TRANSLATORS: % in config means some fraction value, usually measured in percents */
+-static char * values_width[] = { "#", N_("%"), "current", NULL };
+-static char * values_monitorM[] = { "#", N_("current"), N_("all"), N_("next"), N_("prev"), NULL };
++static LXHotkeyAttr options_GrowToEdge[] = {
++    { N_("direction"), TO_BE_CONVERTED(values_edge), NULL, NULL, FALSE },
++    { NULL }
++};
+ 
+-static LXHotkeyAttr options_MoveResizeTo[] = {
+-    { "x", TO_BE_CONVERTED(values_xM), NULL, NULL, FALSE },
++static LXHotkeyAttr options_SnapToEdge[] = {
++    { N_("direction"), TO_BE_CONVERTED(values_snap), NULL, NULL, FALSE },
++    { N_("combine"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_SnapToRegion[] = {
++    { N_("region"), NULL, NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_ToggleMaximize[] = {
++    { N_("direction"), TO_BE_CONVERTED(values_maximize), NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_SetDecorations[] = {
++    { N_("decorations"), TO_BE_CONVERTED(values_decorations), NULL, NULL, FALSE },
++    { N_("forceSSD"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_FocusOutput[] = {
++    { N_("output"), NULL, NULL, NULL, FALSE },
++    { N_("direction"), TO_BE_CONVERTED(values_output), NULL, NULL, FALSE },
++    { N_("wrap"), BOOLEAN_VALUES, NULL, NULL, FALSE },
++    { NULL }
++};
++
++static LXHotkeyAttr options_MoveTo[] = {
++    { "x", TO_BE_CONVERTED(values_number), NULL, NULL, FALSE },
+     { "y", TO_BE_PREVIOUS, NULL, NULL, FALSE },
+-    { N_("width"), TO_BE_CONVERTED(values_width), NULL, NULL, FALSE },
+-    { N_("height"), TO_BE_PREVIOUS, NULL, NULL, FALSE },
+-    { N_("monitor"), TO_BE_CONVERTED(values_monitorM), NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-/* TRANSLATORS: # in config means either pixels, or monitor number */
+-static char * values_xR[] = { N_("#"), NULL };
++static LXHotkeyAttr options_ResizeTo[] = {
++    { N_("width"), TO_BE_CONVERTED(values_number), NULL, NULL, FALSE },
++    { N_("height"), TO_BE_PREVIOUS, NULL, NULL, FALSE },
++    { NULL }
++};
+ 
+ static LXHotkeyAttr options_MoveRelative[] = {
+-    { "x", TO_BE_CONVERTED(values_xR), NULL, NULL, FALSE },
++    { "x", TO_BE_CONVERTED(values_number), NULL, NULL, FALSE },
+     { "y", TO_BE_PREVIOUS, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-static char * values_xRR[] = { "#", NULL };
+-
+ static LXHotkeyAttr options_ResizeRelative[] = {
+-    { N_("left"), TO_BE_CONVERTED(values_xRR), NULL, NULL, FALSE },
++    { N_("left"), TO_BE_CONVERTED(values_number), NULL, NULL, FALSE },
+     { N_("right"), TO_BE_PREVIOUS, NULL, NULL, FALSE },
+     { N_("top"), TO_BE_PREVIOUS, NULL, NULL, FALSE },
+     { N_("bottom"), TO_BE_PREVIOUS, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-static char * values_directionE[] = { N_("north"), N_("south"), N_("west"), N_("east"), NULL };
+-
+-static LXHotkeyAttr options_MoveToEdge[] = {
+-    { N_("direction"), TO_BE_CONVERTED(values_directionE), NULL, NULL, FALSE },
++static LXHotkeyAttr options_AutoPlace[] = {
++    { N_("policy"), TO_BE_CONVERTED(values_policy), NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+-static char * values_layer[] = { N_("top"), N_("normal"), N_("bottom"), NULL };
+-
+-static LXHotkeyAttr options_SendToLayer[] = {
+-    { N_("layer"), TO_BE_CONVERTED(values_layer), NULL, NULL, FALSE },
++static LXHotkeyAttr options_WarpCursor[] = {
++    { N_("to"), TO_BE_CONVERTED(values_warp_to), NULL, NULL, FALSE },
++    { "x", TO_BE_CONVERTED(values_warp_pos), NULL, NULL, FALSE },
++    { "y", TO_BE_PREVIOUS, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
++static LXHotkeyAttr options_VirtualOutput[] = {
++    { N_("output_name"), NULL, NULL, NULL, FALSE },
++    { NULL }
++};
++
++
+ static LXHotkeyAttr list_actions[] = {
+-    /* global actions */
++    /* run and menu */
+     { N_("Execute"), NULL, TO_BE_CONVERTED(options_Execute), NULL, FALSE },
+     { N_("ShowMenu"), NULL, TO_BE_CONVERTED(options_ShowMenu), NULL, FALSE },
++    /* workspaces */
++    { N_("GoToDesktop"), NULL, TO_BE_CONVERTED(options_GoToDesktop), NULL, FALSE },
++    { N_("SendToDesktop"), NULL, TO_BE_CONVERTED(options_SendToDesktop), NULL, FALSE },
++    { N_("ToggleOmnipresent"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleShowDesktop"), NULL, NULL, NULL, FALSE },
++    /* window focus and cycling */
+     { N_("NextWindow"), NULL, TO_BE_CONVERTED(options_NextWindow), NULL, FALSE },
+     { N_("PreviousWindow"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("DirectionalCycleWindows"), NULL, TO_BE_CONVERTED(options_DirectionalCycleWindows), NULL, FALSE },
+-    { N_("DirectionalTargetWindow"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("GoToDesktop"), NULL, TO_BE_CONVERTED(options_GoToDesktop), NULL, FALSE },
+-    { N_("AddDesktop"), NULL, TO_BE_CONVERTED(options_AddDesktop), NULL, FALSE },
+-    { N_("RemoveDesktop"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("ToggleShowDesktop"), NULL, TO_BE_CONVERTED(options_ToggleShowDesktop), NULL, FALSE },
+-    { N_("ToggleDockAutohide"), NULL, NULL, NULL, FALSE },
+-    { N_("Reconfigure"), NULL, NULL, NULL, FALSE },
+-    { N_("Restart"), NULL, TO_BE_CONVERTED(options_Restart), NULL, FALSE },
+-    { N_("Exit"), NULL, TO_BE_CONVERTED(options_Exit), NULL, FALSE },
+-    /* windows actions */
++    { N_("NextWindowImmediate"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("PreviousWindowImmediate"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+     { N_("Focus"), NULL, NULL, NULL, FALSE },
++    { N_("Unfocus"), NULL, NULL, NULL, FALSE },
+     { N_("Raise"), NULL, NULL, NULL, FALSE },
+     { N_("Lower"), NULL, NULL, NULL, FALSE },
+-    { N_("RaiseLower"), NULL, NULL, NULL, FALSE },
+-    { N_("Unfocus"), NULL, NULL, NULL, FALSE },
+-    { N_("FocusToBottom"), NULL, NULL, NULL, FALSE },
+-    { N_("Iconify"), NULL, NULL, NULL, FALSE },
++    /* window state */
+     { N_("Close"), NULL, NULL, NULL, FALSE },
++    { N_("Kill"), NULL, NULL, NULL, FALSE },
++    { N_("Iconify"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleMaximize"), NULL, TO_BE_CONVERTED(options_ToggleMaximize), NULL, FALSE },
++    { N_("Maximize"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("UnMaximize"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("ToggleFullscreen"), NULL, NULL, NULL, FALSE },
+     { N_("ToggleShade"), NULL, NULL, NULL, FALSE },
+     { N_("Shade"), NULL, NULL, NULL, FALSE },
+     { N_("Unshade"), NULL, NULL, NULL, FALSE },
+-    { N_("ToggleOmnipresent"), NULL, NULL, NULL, FALSE },
+-    { N_("ToggleMaximize"), NULL, TO_BE_CONVERTED(options_ToggleMaximize), NULL, FALSE },
+-    { N_("Maximize"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("Unmaximize"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("ToggleFullscreen"), NULL, NULL, NULL, FALSE },
+-    { N_("ToggleDecorations"), NULL, NULL, NULL, FALSE },
+-    { N_("Decorate"), NULL, NULL, NULL, FALSE },
+-    { N_("Undecorate"), NULL, NULL, NULL, FALSE },
+-    { N_("SendToDesktop"), NULL, TO_BE_CONVERTED(options_SendToDesktop), NULL, FALSE },
+-    { N_("Move"), NULL, NULL, NULL, FALSE },
+-    { N_("Resize"), NULL, TO_BE_CONVERTED(options_Resize), NULL, FALSE },
+-    { N_("MoveResizeTo"), NULL, TO_BE_CONVERTED(options_MoveResizeTo), NULL, FALSE },
+-    { N_("MoveRelative"), NULL, TO_BE_CONVERTED(options_MoveRelative), NULL, FALSE },
+-    { N_("ResizeRelative"), NULL, TO_BE_CONVERTED(options_ResizeRelative), NULL, FALSE },
+-    { N_("MoveToEdge"), NULL, TO_BE_CONVERTED(options_MoveToEdge), NULL, FALSE },
+-    { N_("GrowToEdge"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("ShrinkToEdge"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
+-    { N_("GrowToFill"), NULL, NULL, NULL, FALSE },
+     { N_("ToggleAlwaysOnTop"), NULL, NULL, NULL, FALSE },
+     { N_("ToggleAlwaysOnBottom"), NULL, NULL, NULL, FALSE },
+-    { N_("SendToLayer"), NULL, TO_BE_CONVERTED(options_SendToLayer), NULL, FALSE },
+-    // FIXME: support for If/ForEach/Stop ?
++    { N_("ToggleDecorations"), NULL, NULL, NULL, FALSE },
++    { N_("SetDecorations"), NULL, TO_BE_CONVERTED(options_SetDecorations), NULL, FALSE },
++    /* move, resize, tiling */
++    { N_("Move"), NULL, NULL, NULL, FALSE },
++    { N_("Resize"), NULL, TO_BE_CONVERTED(options_Resize), NULL, FALSE },
++    { N_("MoveTo"), NULL, TO_BE_CONVERTED(options_MoveTo), NULL, FALSE },
++    { N_("MoveRelative"), NULL, TO_BE_CONVERTED(options_MoveRelative), NULL, FALSE },
++    { N_("MoveToEdge"), NULL, TO_BE_CONVERTED(options_MoveToEdge), NULL, FALSE },
++    { N_("ResizeTo"), NULL, TO_BE_CONVERTED(options_ResizeTo), NULL, FALSE },
++    { N_("ResizeRelative"), NULL, TO_BE_CONVERTED(options_ResizeRelative), NULL, FALSE },
++    { N_("GrowToEdge"), NULL, TO_BE_CONVERTED(options_GrowToEdge), NULL, FALSE },
++    { N_("ShrinkToEdge"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("SnapToEdge"), NULL, TO_BE_CONVERTED(options_SnapToEdge), NULL, FALSE },
++    { N_("ToggleSnapToEdge"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("SnapToRegion"), NULL, TO_BE_CONVERTED(options_SnapToRegion), NULL, FALSE },
++    { N_("ToggleSnapToRegion"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("UnSnap"), NULL, NULL, NULL, FALSE },
++    { N_("FitToOutput"), NULL, NULL, NULL, FALSE },
++    { N_("AutoPlace"), NULL, TO_BE_CONVERTED(options_AutoPlace), NULL, FALSE },
++    /* outputs */
++    { N_("FocusOutput"), NULL, TO_BE_CONVERTED(options_FocusOutput), NULL, FALSE },
++    { N_("MoveToOutput"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    { N_("VirtualOutputAdd"), NULL, TO_BE_CONVERTED(options_VirtualOutput), NULL, FALSE },
++    { N_("VirtualOutputRemove"), NULL, TO_BE_PREVIOUS, NULL, FALSE },
++    /* cursor and magnifier */
++    { N_("WarpCursor"), NULL, TO_BE_CONVERTED(options_WarpCursor), NULL, FALSE },
++    { N_("HideCursor"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleMagnify"), NULL, NULL, NULL, FALSE },
++    { N_("ZoomIn"), NULL, NULL, NULL, FALSE },
++    { N_("ZoomOut"), NULL, NULL, NULL, FALSE },
++    /* misc toggles */
++    { N_("ToggleKeybinds"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleTearing"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleScrollWheelEmulation"), NULL, NULL, NULL, FALSE },
++    { N_("ToggleTabletMouseEmulation"), NULL, NULL, NULL, FALSE },
++    /* session */
++    { N_("Reconfigure"), NULL, NULL, NULL, FALSE },
++    { N_("Exit"), NULL, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+@@ -480,6 +542,7 @@ typedef struct {
  
  typedef struct {
      char *path;
@@ -553,7 +1274,71 @@ index 74ee21a..3d5e803 100644
      FmXmlFile *xml;
      FmXmlFileItem *keyboard; /* the <keyboard> section */
      GList *actions; /* no-exec actions, in reverse order */
-@@ -819,7 +857,7 @@ static void obcfg_free(gpointer config)
+@@ -521,6 +584,14 @@ static gboolean tag_handler_keyboard(FmXmlFileItem *item, GList *children,
+     return TRUE;
+ }
+ 
++static gboolean ob_attr_is_true(const char *v)
++{
++    return v != NULL && (g_ascii_strcasecmp(v, "yes") == 0 ||
++                         g_ascii_strcasecmp(v, "true") == 0 ||
++                         g_ascii_strcasecmp(v, "on") == 0 ||
++                         g_ascii_strcasecmp(v, "1") == 0);
++}
++
+ static gboolean tag_handler_keybind(FmXmlFileItem *item, GList *children,
+                                     char * const *attribute_names,
+                                     char * const *attribute_values,
+@@ -535,6 +606,8 @@ static gboolean tag_handler_keybind(FmXmlFileItem *item, GList *children,
+     LXHotkeyAttr *action;
+     LXHotkeyApp *app = NULL;
+     LXHotkeyGlobal *act;
++    gboolean on_release = FALSE, layout_dependent = FALSE;
++    gboolean allow_when_locked = FALSE, override_inhibition = FALSE;
+     guint i;
+ 
+     if (!cfg->stack) { /* empty keybind tag, just ignore it and remove */
+@@ -594,6 +667,17 @@ static gboolean tag_handler_keybind(FmXmlFileItem *item, GList *children,
+         return FALSE;
+     } else
+         key = obkey_to_key(attribute_values[i]);
++    /* labwc <keybind> attributes carried through so an edit/save preserves them */
++    for (i = 0; i < n_attributes; i++) {
++        if (g_strcmp0(attribute_names[i], "onRelease") == 0)
++            on_release = ob_attr_is_true(attribute_values[i]);
++        else if (g_strcmp0(attribute_names[i], "layoutDependent") == 0)
++            layout_dependent = ob_attr_is_true(attribute_values[i]);
++        else if (g_strcmp0(attribute_names[i], "allowWhenLocked") == 0)
++            allow_when_locked = ob_attr_is_true(attribute_values[i]);
++        else if (g_strcmp0(attribute_names[i], "overrideInhibition") == 0)
++            override_inhibition = ob_attr_is_true(attribute_values[i]);
++    }
+     /* if that exec already exists then reuse it and set as accel2 */
+     if (app) {
+         app->accel2 = key;
+@@ -604,6 +688,10 @@ static gboolean tag_handler_keybind(FmXmlFileItem *item, GList *children,
+         app->accel1 = key;
+         app->exec = g_strdup(exec_line);
+         app->data1 = item;
++        app->on_release = on_release;
++        app->layout_dependent = layout_dependent;
++        app->allow_when_locked = allow_when_locked;
++        app->override_inhibition = override_inhibition;
+         app->options = action->subopts;
+         /* remove exec line from options, it should be in XML but not in LXHotkeyApp */
+         for (l = app->options; l; ) {
+@@ -627,6 +715,10 @@ static gboolean tag_handler_keybind(FmXmlFileItem *item, GList *children,
+             act = g_new0(LXHotkeyGlobal, 1);
+             act->accel1 = key;
+             act->data1 = item;
++            act->on_release = on_release;
++            act->layout_dependent = layout_dependent;
++            act->allow_when_locked = allow_when_locked;
++            act->override_inhibition = override_inhibition;
+             act->actions = actions;
+             actions = NULL;
+             cfg->actions = g_list_prepend(cfg->actions, act);
+@@ -819,7 +911,7 @@ static void obcfg_free(gpointer config)
      ObXmlFile *cfg = (ObXmlFile *)config;
  
      g_free(cfg->path);
@@ -562,7 +1347,7 @@ index 74ee21a..3d5e803 100644
      g_list_free_full(cfg->actions, (GDestroyNotify)lkxeys_action_free);
      g_list_free_full(cfg->execs, (GDestroyNotify)lkxeys_app_free);
      clear_stack(cfg);
-@@ -839,7 +877,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+@@ -839,7 +931,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
          FmXmlFile *old_xml = cfg->xml;
  
          cfg->xml = fm_xml_file_new(old_xml);
@@ -571,7 +1356,7 @@ index 74ee21a..3d5e803 100644
          g_list_free_full(cfg->actions, (GDestroyNotify)lkxeys_action_free);
          g_list_free_full(cfg->execs, (GDestroyNotify)lkxeys_app_free);
          cfg->actions = NULL;
-@@ -847,6 +885,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+@@ -847,6 +939,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
          cfg->keyboard = NULL;
      } else {
          const char *session;
@@ -579,7 +1364,7 @@ index 74ee21a..3d5e803 100644
  
          /* prepare data */
          cfg = g_new0(ObXmlFile, 1);
-@@ -869,6 +908,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+@@ -869,6 +962,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
              session = g_getenv("GDMSESSION");
          if (session == NULL)
              session = g_getenv("XDG_CURRENT_DESKTOP");
@@ -587,7 +1372,7 @@ index 74ee21a..3d5e803 100644
          if (g_strcmp0(session, "Lubuntu") == 0)
              cfg->path = g_build_filename(g_get_user_config_dir(), "openbox",
                                           "lubuntu-rc.xml", NULL);
-@@ -878,19 +918,26 @@ static gpointer obcfg_load(gpointer config, GError **error)
+@@ -878,19 +972,26 @@ static gpointer obcfg_load(gpointer config, GError **error)
          else if (g_strcmp0(session, "LXDE-pi") == 0)
              cfg->path = g_build_filename(g_get_user_config_dir(), "openbox",
                                           "lxde-pi-rc.xml", NULL);
@@ -617,7 +1402,7 @@ index 74ee21a..3d5e803 100644
              if (g_file_get_contents(path, &contents, &len, NULL))
                  break;
              g_free(path);
-@@ -923,7 +970,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
+@@ -923,7 +1024,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
      gsize len;
      gboolean ret = FALSE;
  
@@ -626,7 +1411,7 @@ index 74ee21a..3d5e803 100644
      contents = fm_xml_file_to_data(cfg->xml, &len, error);
      if (contents) {
          /* workaround on libfm-extra bug on save data without DTD */
-@@ -934,7 +981,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
+@@ -934,7 +1035,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
          g_free(contents);
      }
      if (ret)
@@ -635,7 +1420,7 @@ index 74ee21a..3d5e803 100644
      return ret;
  }
  
-@@ -974,7 +1021,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
+@@ -974,7 +1075,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
      LXHotkeyAttr *act = NULL;
  
      if (is_action) {
@@ -644,7 +1429,7 @@ index 74ee21a..3d5e803 100644
          fm_xml_file_item_set_attribute(item, "name", opt->name);
      } else {
          FmXmlFileTag tag = FM_XML_FILE_TAG_NOT_HANDLED;
-@@ -990,7 +1037,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
+@@ -990,7 +1091,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
              cfg->added_tags = g_list_prepend(cfg->added_tags, GUINT_TO_POINTER(tag));
          } else
              tag = GPOINTER_TO_UINT(l->data);
@@ -653,7 +1438,7 @@ index 74ee21a..3d5e803 100644
          if (opt->values)
              fm_xml_file_item_append_text(item, opt->values->data, -1, FALSE);
      }
-@@ -1016,7 +1063,7 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
+@@ -1016,7 +1117,7 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
                                             const gchar *accel, GList **opts,
                                             const gchar *exec)
  {
@@ -662,7 +1447,7 @@ index 74ee21a..3d5e803 100644
      FmXmlFileItem *item, *opt;
      char *obkey = key_to_obkey(accel);
  
-@@ -1026,10 +1073,10 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
+@@ -1026,10 +1127,10 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
      if (exec) {
          /* make <action name='Execute'><command>exec</command>..opts..</action>
             instead of ..<acts>.. */
@@ -675,7 +1460,30 @@ index 74ee21a..3d5e803 100644
          fm_xml_file_item_append_text(opt, exec, -1, FALSE);
          fm_xml_file_item_append_child(item, opt);
      }
-@@ -1052,6 +1099,80 @@ static inline void replace_key(FmXmlFileItem *item, const char *key, char **kptr
+@@ -1042,6 +1143,22 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
+     return binding;
+ }
+ 
++static void set_keybind_attrs(FmXmlFileItem *binding, gboolean on_release,
++                              gboolean layout_dependent, gboolean allow_when_locked,
++                              gboolean override_inhibition)
++{
++    if (binding == NULL)
++        return;
++    if (on_release)
++        fm_xml_file_item_set_attribute(binding, "onRelease", "yes");
++    if (layout_dependent)
++        fm_xml_file_item_set_attribute(binding, "layoutDependent", "yes");
++    if (allow_when_locked)
++        fm_xml_file_item_set_attribute(binding, "allowWhenLocked", "yes");
++    if (override_inhibition)
++        fm_xml_file_item_set_attribute(binding, "overrideInhibition", "yes");
++}
++
+ static inline void replace_key(FmXmlFileItem *item, const char *key, char **kptr)
+ {
+     char *obkey = key_to_obkey(key);
+@@ -1052,6 +1169,84 @@ static inline void replace_key(FmXmlFileItem *item, const char *key, char **kptr
      *kptr = g_strdup(key);
  }
  
@@ -744,9 +1552,13 @@ index 74ee21a..3d5e803 100644
 +    if (act == NULL || data == NULL || act->data1 == NULL || data->accel1 == NULL)
 +        return;
 +    binding = make_new_xml_binding(cfg, data->actions, data->accel1, &actions, NULL);
++    set_keybind_attrs(binding, act->on_release, act->layout_dependent,
++                      act->allow_when_locked, act->override_inhibition);
 +    fm_xml_file_item_replace_with(act->data1, binding);
 +    if (act->data2 != NULL && act->accel2 != NULL) {
 +        binding = make_new_xml_binding(cfg, data->actions, act->accel2, NULL, NULL);
++        set_keybind_attrs(binding, act->on_release, act->layout_dependent,
++                          act->allow_when_locked, act->override_inhibition);
 +        fm_xml_file_item_replace_with(act->data2, binding);
 +    }
 +    free_options(act->actions);
@@ -756,17 +1568,17 @@ index 74ee21a..3d5e803 100644
  static gboolean obcfg_set_wm_key(gpointer config, LXHotkeyGlobal *data, GError **error)
  {
      ObXmlFile *cfg = (ObXmlFile *)config;
-@@ -1071,26 +1192,38 @@ static gboolean obcfg_set_wm_key(gpointer config, LXHotkeyGlobal *data, GError *
+@@ -1071,26 +1266,38 @@ static gboolean obcfg_set_wm_key(gpointer config, LXHotkeyGlobal *data, GError *
      for (ll = cfg->actions; ll; ll = ll->next)
          if (options_equal((act = ll->data)->actions, data->actions))
              break;
 +    if (ll == NULL && !key_is_empty(data->accel1)) {
 +        for (ll = cfg->actions; ll; ll = ll->next) {
 +            act = ll->data;
-+            if (key_equal(act->accel1, data->accel1) ||
-+                key_equal(act->accel2, data->accel1) ||
-+                key_equal(act->accel1, data->accel2) ||
-+                key_equal(act->accel2, data->accel2))
++            if (key_matches(act->accel1, data->accel1) ||
++                key_matches(act->accel2, data->accel1) ||
++                key_matches(act->accel1, data->accel2) ||
++                key_matches(act->accel2, data->accel2))
 +                break;
 +        }
 +        if (ll == NULL)
@@ -801,7 +1613,7 @@ index 74ee21a..3d5e803 100644
  _accel1_bound:
                  g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
                              _("Hotkey '%s' is already bound to an action."),
-@@ -1099,8 +1232,8 @@ _accel1_bound:
+@@ -1099,8 +1306,8 @@ _accel1_bound:
              }
          }
          if (data->accel2) {
@@ -812,7 +1624,7 @@ index 74ee21a..3d5e803 100644
  _accel2_bound:
                  g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
                              _("Hotkey '%s' is already bound to an action."),
-@@ -1122,16 +1255,18 @@ _accel2_bound:
+@@ -1122,16 +1329,18 @@ _accel2_bound:
          } else {
              if (data->accel2 == NULL) {
                  /* new data contains only one binding */
@@ -833,7 +1645,7 @@ index 74ee21a..3d5e803 100644
                      g_free(act->accel1);
                      act->accel1 = act->accel2;
                      act->accel2 = NULL;
-@@ -1145,11 +1280,11 @@ _accel2_bound:
+@@ -1145,11 +1354,11 @@ _accel2_bound:
                  }
              } else if (act->accel2 == NULL) {
                  /* new data has two bindings and old data has 1 */
@@ -847,8 +1659,12 @@ index 74ee21a..3d5e803 100644
                      /* add data->accel1 */
                      act->data2 = make_new_xml_binding(cfg, data->actions, data->accel1, NULL, NULL);
                      act->accel2 = g_strdup(data->accel1);
-@@ -1161,20 +1296,20 @@ _accel2_bound:
+@@ -1159,22 +1368,24 @@ _accel2_bound:
+                     act->data2 = make_new_xml_binding(cfg, data->actions, data->accel2, NULL, NULL);
+                     act->accel2 = g_strdup(data->accel2);
                  }
++                set_keybind_attrs(act->data2, act->on_release, act->layout_dependent,
++                                  act->allow_when_locked, act->override_inhibition);
              } else {
                  /* both keys are present in old and new data */
 -                if (g_strcmp0(act->accel1, data->accel1) == 0) {
@@ -874,7 +1690,7 @@ index 74ee21a..3d5e803 100644
                      /* replace accel1 with data->accel2 */
                      replace_key(act->data1, data->accel2, &act->accel1);
                  } else {
-@@ -1183,6 +1318,8 @@ _accel2_bound:
+@@ -1183,15 +1394,25 @@ _accel2_bound:
                      replace_key(act->data2, data->accel2, &act->accel2);
                  }
              }
@@ -883,7 +1699,24 @@ index 74ee21a..3d5e803 100644
          }
      /* if not found then add a new keybinding */
      } else if (data->accel1) {
-@@ -1222,6 +1359,7 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
+         act = g_new0(LXHotkeyGlobal, 1);
++        act->on_release = data->on_release;
++        act->layout_dependent = data->layout_dependent;
++        act->allow_when_locked = data->allow_when_locked;
++        act->override_inhibition = data->override_inhibition;
+         act->data1 = make_new_xml_binding(cfg, data->actions, data->accel1, &act->actions, NULL);
++        set_keybind_attrs(act->data1, act->on_release, act->layout_dependent,
++                          act->allow_when_locked, act->override_inhibition);
+         act->accel1 = g_strdup(data->accel1);
+         /* do the same for accel2 if requested */
+         if (data->accel2) {
+             act->data2 = make_new_xml_binding(cfg, data->actions, data->accel2, NULL, NULL);
++            set_keybind_attrs(act->data2, act->on_release, act->layout_dependent,
++                              act->allow_when_locked, act->override_inhibition);
+             act->accel2 = g_strdup(data->accel2);
+         }
+         cfg->actions = g_list_prepend(cfg->actions, act);
+@@ -1222,6 +1443,7 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
      ObXmlFile *cfg = (ObXmlFile *)config;
      GList *l, *ll;
      LXHotkeyApp *app = NULL;
@@ -891,7 +1724,7 @@ index 74ee21a..3d5e803 100644
  
      if (cfg == NULL) {
          g_set_error_literal(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
-@@ -1232,31 +1370,56 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
+@@ -1232,31 +1454,56 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
                              _("The exec line cannot be empty."));
          return FALSE;
      }
@@ -917,10 +1750,10 @@ index 74ee21a..3d5e803 100644
 +    if (ll == NULL && !key_is_empty(data->accel1)) {
 +        for (ll = cfg->execs; ll; ll = ll->next) {
 +            app = ll->data;
-+            if (key_equal(app->accel1, data->accel1) ||
-+                key_equal(app->accel2, data->accel1) ||
-+                key_equal(app->accel1, data->accel2) ||
-+                key_equal(app->accel2, data->accel2))
++            if (key_matches(app->accel1, data->accel1) ||
++                key_matches(app->accel2, data->accel1) ||
++                key_matches(app->accel1, data->accel2) ||
++                key_matches(app->accel2, data->accel2))
 +                break;
 +        }
 +        if (ll == NULL)
@@ -960,7 +1793,7 @@ index 74ee21a..3d5e803 100644
  _accel1_bound:
                  g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
                              _("Hotkey '%s' is already bound to an action."),
-@@ -1265,8 +1428,8 @@ _accel1_bound:
+@@ -1265,8 +1512,8 @@ _accel1_bound:
              }
          }
          if (data->accel2) {
@@ -971,7 +1804,7 @@ index 74ee21a..3d5e803 100644
  _accel2_bound:
                  g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
                              _("Hotkey '%s' is already bound to an action."),
-@@ -1288,16 +1451,18 @@ _accel2_bound:
+@@ -1288,16 +1535,18 @@ _accel2_bound:
          } else {
              if (data->accel2 == NULL) {
                  /* new data contains only one binding */
@@ -992,7 +1825,7 @@ index 74ee21a..3d5e803 100644
                      g_free(app->accel1);
                      app->accel1 = app->accel2;
                      app->accel2 = NULL;
-@@ -1311,11 +1476,11 @@ _accel2_bound:
+@@ -1311,11 +1560,11 @@ _accel2_bound:
                  }
              } else if (app->accel2 == NULL) {
                  /* new data has two bindings and old data has 1 */
@@ -1006,7 +1839,7 @@ index 74ee21a..3d5e803 100644
                      /* add data->accel1 */
                      app->data2 = make_new_xml_binding(cfg, data->options, data->accel1, NULL, data->exec);
                      app->accel2 = g_strdup(data->accel1);
-@@ -1327,20 +1492,20 @@ _accel2_bound:
+@@ -1327,20 +1576,20 @@ _accel2_bound:
                  }
              } else {
                  /* both keys are present in old and new data */
@@ -1033,7 +1866,7 @@ index 74ee21a..3d5e803 100644
                      /* replace accel1 with data->accel2 */
                      replace_key(app->data1, data->accel2, &app->accel1);
                  } else {
-@@ -1350,6 +1515,8 @@ _accel2_bound:
+@@ -1350,6 +1599,8 @@ _accel2_bound:
                  }
              }
          }
@@ -1042,7 +1875,7 @@ index 74ee21a..3d5e803 100644
      /* if not found then add a new keybinding */
      } else if (data->accel1) {
          app = g_new0(LXHotkeyApp, 1);
-@@ -1395,8 +1562,6 @@ static GList *obcfg_get_app_options(gpointer config, GError **error)
+@@ -1395,8 +1646,6 @@ static GList *obcfg_get_app_options(gpointer config, GError **error)
  }
  
  
@@ -1053,10 +1886,10 @@ index 74ee21a..3d5e803 100644
      .save = obcfg_save,
 diff --git a/plugins/openbox/xml_compat.c b/plugins/openbox/xml_compat.c
 new file mode 100644
-index 0000000..ac64018
+index 0000000..02825fe
 --- /dev/null
 +++ b/plugins/openbox/xml_compat.c
-@@ -0,0 +1,901 @@
+@@ -0,0 +1,908 @@
 +#include "xml_compat.h"
 +
 +#include <libxml/parser.h>
@@ -1167,6 +2000,8 @@ index 0000000..ac64018
 +
 +static void free_doc(FmXmlFile *file)
 +{
++    if (file->text_replacements != NULL)
++        g_ptr_array_set_size(file->text_replacements, 0);
 +    if (file->doc != NULL) {
 +        free_wrappers(xmlDocGetRootElement(file->doc));
 +        xmlFreeDoc(file->doc);
@@ -1177,8 +2012,6 @@ index 0000000..ac64018
 +    g_free(file->original);
 +    file->original = NULL;
 +    file->original_len = 0;
-+    if (file->text_replacements != NULL)
-+        g_ptr_array_set_size(file->text_replacements, 0);
 +}
 +
 +static char *copy_xml_decl(const char *contents, gsize len)
@@ -1916,6 +2749,8 @@ index 0000000..ac64018
 +void fm_xml_file_item_replace_with(FmXmlFileItem *item, FmXmlFileItem *replacement)
 +{
 +    char *text;
++    xmlNodePtr old_node;
++    xmlNodePtr new_node;
 +
 +    if (item == NULL || item->node == NULL || replacement == NULL ||
 +        replacement->node == NULL)
@@ -1923,9 +2758,14 @@ index 0000000..ac64018
 +    text = node_to_data(replacement);
 +    record_node_replacement(item, text);
 +    g_free(text);
-+    xmlReplaceNode(item->node, replacement->node);
-+    free_wrappers(item->node);
-+    item->node = replacement->node;
++    old_node = item->node;
++    new_node = replacement->node;
++    xmlReplaceNode(old_node, new_node);
++    old_node->_private = NULL;
++    free_wrappers(old_node);
++    new_node->_private = item;
++    item->node = new_node;
++    g_free(replacement);
 +}
 +
 +void fm_xml_file_item_append_text(FmXmlFileItem *item, const char *text, gssize len,
@@ -2012,6 +2852,97 @@ index 0000000..81e07b6
 +void fm_xml_file_item_destroy(FmXmlFileItem *item);
 +
 +#endif
+diff --git a/po/ru.po b/po/ru.po
+index ebb0e08..7ab2ea6 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -846,8 +846,84 @@ msgid "<b>Name:</b>"
+ msgstr "<b>Название:</b>"
+ 
+ #: ../plugins/gtk/edit.c:1190
+-msgid "<b>Value:</b>"
+-msgstr "<b>Значение:</b>"
++msgid "<b>Parameter:</b>"
++msgstr "<b>Параметр:</b>"
++
++#: ../plugins/gtk/edit.c:725
++msgid "number"
++msgstr "число"
++
++msgid "NextWindowImmediate"
++msgstr "следующее окно (без OSD)"
++
++msgid "PreviousWindowImmediate"
++msgstr "предыдущее окно (без OSD)"
++
++msgid "SnapToEdge"
++msgstr "прилепить к краю"
++
++msgid "ToggleSnapToEdge"
++msgstr "прилепить к краю (переключить)"
++
++msgid "SnapToRegion"
++msgstr "прилепить к региону"
++
++msgid "MoveToOutput"
++msgstr "переместить на монитор"
++
++msgid "FocusOutput"
++msgstr "фокус на монитор"
++
++msgid "UnMaximize"
++msgstr "восстановить"
++
++msgid "Kill"
++msgstr "принудительно закрыть"
++
++msgid "SetDecorations"
++msgstr "задать оформление"
++
++msgid "AutoPlace"
++msgstr "разместить автоматически"
++
++msgid "WarpCursor"
++msgstr "переместить курсор"
++
++msgid "toggle"
++msgstr "переключать"
++
++msgid "combine"
++msgstr "комбинировать"
++
++msgid "snapWindows"
++msgstr "к окнам"
++
++msgid "workspace"
++msgstr "стол"
++
++msgid "output"
++msgstr "монитор"
++
++msgid "identifier"
++msgstr "приложение"
++
++msgid "region"
++msgstr "регион"
++
++msgid "atCursor"
++msgstr "у курсора"
++
++msgid "decorations"
++msgstr "оформление"
++
++msgid "forceSSD"
++msgstr "принудительно SSD"
++
++msgid "policy"
++msgstr "политика"
++
++msgid "output_name"
++msgstr "имя монитора"
+ 
+ #, c-format
+ #~ msgid "       %s show <key>             - show the action bound to a key\n"
 diff --git a/src/Makefile.am b/src/Makefile.am
 index 6900326..9f8c4bd 100644
 --- a/src/Makefile.am
@@ -2055,7 +2986,7 @@ index 6900326..9f8c4bd 100644
 +uninstall-hook:
 +	rm -f "$(DESTDIR)$(bindir)/labhotkey"
 diff --git a/src/lxhotkey.c b/src/lxhotkey.c
-index a7512a7..3a9e20c 100644
+index a7512a7..da57735 100644
 --- a/src/lxhotkey.c
 +++ b/src/lxhotkey.c
 @@ -30,6 +30,8 @@
@@ -2193,7 +3124,7 @@ index a7512a7..3a9e20c 100644
 -        fm_module_register_lxhotkey_gui();
 +    register_builtin_plugins(do_gui);
 +    if (g_getenv("LXHOTKEY_LABWC_MARKER") != NULL) {
-+        puts("labsetup-lxhotkey labwc-patch pkgrel=28 builtin-plugins xml-preserve key-normalize scoped-text-save labwc-icon action-save delete-save raw-action-ui combo-popup-fix app-edit-save app-self-conflict app-edit-identity compact-edit-field combo-height-fix");
++        puts("labsetup-lxhotkey labwc-patch pkgrel=33 builtin-plugins xml-preserve key-normalize scoped-text-save labwc-icon action-save delete-save raw-action-ui combo-popup-fix app-edit-save app-self-conflict app-edit-identity compact-edit-field combo-height-fix action-parameter reload-crash-fix action-hint labwc-actions-only param-value-combo action-search keybind-attrs");
 +        goto _exit;
 +    }
  
@@ -2214,6 +3145,24 @@ index a7512a7..3a9e20c 100644
      if (!plugin) {
          g_set_error(&error, LXKEYS_ERROR, LXKEYS_NOT_SUPPORTED,
                      _("Could not find a plugin for window manager %s."), wm_name);
+@@ -536,7 +565,7 @@ int main(int argc, char *argv[])
+     /* doing commandline: call module function depending on args */
+     if (strcmp(argv[1], "global") == 0) { /* lxhotkey global ... */
+         if (argc > 3) { /* set */
+-            LXHotkeyGlobal data;
++            LXHotkeyGlobal data = { 0 };
+ 
+             if (plugin->t->set_wm_key == NULL)
+                 goto _not_supported;
+@@ -594,7 +623,7 @@ int main(int argc, char *argv[])
+     } else if (strcmp(argv[1], "app") == 0) { /* lxhotkey app ... */
+         if (argc > 3) { /* set */
+             GList *keys = NULL;
+-            LXHotkeyApp data;
++            LXHotkeyApp data = { 0 };
+ 
+             if (plugin->t->set_app_key == NULL)
+                 goto _not_supported;
 @@ -687,9 +716,6 @@ _exit:
              fprintf(stderr, "LXHotkey: %s\n", error->message);
          g_error_free(error);
@@ -2225,7 +3174,7 @@ index a7512a7..3a9e20c 100644
          plugin = plugins;
          plugins = plugin->next;
 diff --git a/src/lxhotkey.h b/src/lxhotkey.h
-index b123c74..fbeced6 100644
+index b123c74..6bf2f0e 100644
 --- a/src/lxhotkey.h
 +++ b/src/lxhotkey.h
 @@ -21,7 +21,7 @@
@@ -2236,4 +3185,26 @@ index b123c74..fbeced6 100644
 +#include <glib.h>
  
  G_BEGIN_DECLS
+ 
+@@ -116,6 +116,10 @@ typedef struct {
+     gchar *accel2;
+     gpointer data1;
+     gpointer data2;
++    gboolean on_release;
++    gboolean layout_dependent;
++    gboolean allow_when_locked;
++    gboolean override_inhibition;
+ } LXHotkeyGlobal;
+ 
+ /**
+@@ -137,6 +141,10 @@ typedef struct {
+     gchar *accel2;
+     gpointer data1;
+     gpointer data2;
++    gboolean on_release;
++    gboolean layout_dependent;
++    gboolean allow_when_locked;
++    gboolean override_inhibition;
+ } LXHotkeyApp;
+ 
  
