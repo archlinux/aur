@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 
 pkgname=meridian-git
-pkgver=1.44.0.r0.ga4d603a
+pkgver=1.54.0.r2.g84cbdc5
 pkgrel=1
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
