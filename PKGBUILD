@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="oshot-bin"
 _pkgname="oshot"
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A fast and lightweight screenshot tool for extracting text on the fly (binary files)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ optdepends=(
 conflicts=('oshot' 'oshot-git')
 source=(
 	"${url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}.zip"
-	"${url}/raw/refs/tags/v0.4.4/LICENSE"
-	"${url}/raw/refs/tags/v0.4.4/oshot.desktop"
+	"${url}/raw/refs/tags/v0.4.6/LICENSE"
+	"${url}/raw/refs/tags/v0.4.6/oshot.desktop"
 )
 sha256sums=(
 	"4aa5cff9151715984d4954be8663b9c550dfa9cc89f0fe57b98833842d7f7ebf"
