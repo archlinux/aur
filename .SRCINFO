@@ -21,6 +21,9 @@ pkgbase = ahriman
 	source = https://github.com/arcan1s/ahriman/releases/download/2.21.0/ahriman-2.21.0.tar.gz
 	source = ahriman.sysusers
 	source = ahriman.tmpfiles
+	sha256sums = 69754fef6a6851ecbcb9326ff733d223c6da447a4e8039eed2e3afbf5e69f253
+	sha256sums = 0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8
+	sha256sums = 720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013
 
 pkgname = ahriman
 	pkgdesc = ArcH linux ReposItory MANager (meta package)
