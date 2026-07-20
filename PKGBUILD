@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.81
-pkgrel=1
+pkgrel=2
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
@@ -286,6 +286,12 @@ PORTAL="$(find_portal xdg-desktop-portal)"
 POWERDEVIL="$(find_bin org_kde_powerdevil)"
 UPOWERD="$(find_bin upowerd)"
 
+# The payload below is written with a quoted heredoc ('PAYLOADEOF'), so these
+# variables are expanded when the payload runs, not when it is written. They
+# must be exported, otherwise the payload sees them as empty and the portals
+# and power management daemons are never launched.
+export PORTAL_KDE PORTAL POWERDEVIL UPOWERD
+
 STARTUP_PAYLOAD_DIR="${XDG_RUNTIME_DIR:-/tmp}/kineticwe-$USER"
 mkdir -p "$STARTUP_PAYLOAD_DIR"
 STARTUP_PAYLOAD="$STARTUP_PAYLOAD_DIR/startup.sh"
@@ -333,16 +339,24 @@ if command -v kded6 >/dev/null 2>&1; then
 fi
 
 # 3. Start power management
+# org_kde_powerdevil aborts at startup if WAYLAND_DISPLAY is unset (which
+# happens when it is spawned via D-Bus activation instead of this payload).
+# KWin exports WAYLAND_DISPLAY before launching this payload; the fallback
+# keeps PowerDevil alive if the payload is started any other way.
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+
 # upowerd provides battery and power device monitoring via D-Bus
-if [[ -x "$UPOWERD" ]]; then
+if [[ -n "$UPOWERD" ]]; then
     nohup "$UPOWERD" >"$HOME/.local/share/upowerd.log" 2>&1 &
     # Give upowerd time to register on D-Bus before starting powerdevil
     sleep 2
 fi
 
 # org_kde_powerdevil provides idle timeouts, DPMS, suspend, brightness, and power profile management
-if [[ -x "$POWERDEVIL" ]]; then
+if [[ -n "$POWERDEVIL" ]]; then
     nohup "$POWERDEVIL" >"$HOME/.local/share/powerdevil.log" 2>&1 &
+else
+    echo "Warning: org_kde_powerdevil not found; power management unavailable" >&2
 fi
 
 # 4. Start user applications
