@@ -8,6 +8,6 @@ pkgbase = python-pytlv
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pytlv/pytlv-0.71.tar.gz
-	md5sums = a5524ed1c8e7ca26f4408a15d6570b7f
+	sha256sums = 6edc59d284339f5669c178a11e583a09db8b87c9e47ab2d5ed2a05c97cc98d56
 
 pkgname = python-pytlv

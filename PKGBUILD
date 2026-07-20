@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/bf/fb/05cb227d725bae7fce250c5b4706442d74e94e3f5faa655efd4621ed559c/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a5524ed1c8e7ca26f4408a15d6570b7f')
+sha256sums=('6edc59d284339f5669c178a11e583a09db8b87c9e47ab2d5ed2a05c97cc98d56')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
