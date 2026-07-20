@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=struIDEl
+Comment=Native Strudel IDE (egui)
+Exec=struidel
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Music;Development;IDE;
+Keywords=strudel;livecoding;music;pattern;
+StartupNotify=true
