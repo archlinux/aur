@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 _project=tuigreety
 pkgdesc='A minimal, configurable console greeter for greetd'
@@ -17,7 +17,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   'tuigreet.conf'
 )
-sha256sums=('5413c23d00695ad0f5994ffad65c998678e8dd0d2b39c364855e3eb193b7604d'
+sha256sums=('fcb1d4d541ed53a33c8161337a9090093580da384ad8a91ac0bd8d0825d7f48a'
             'fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651')
 
 prepare() {
