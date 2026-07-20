@@ -1,7 +1,7 @@
 pkgname=googlemessages
 _pkgname=GoogleMessages
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Google messages desktop app"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/googlemessages"
@@ -15,6 +15,11 @@ package() {
     cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
+    #Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    rm -rf \
+  "$srcdir/application-$pkgver/libsplash"
+    #link libelectron deps
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
