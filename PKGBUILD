@@ -5,7 +5,7 @@
 # packaging/PKGBUILD is a separate binary-only variant used by CI
 # to build the release .pkg.tar.zst.
 pkgname=stashee
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Glass-styled tiling terminal workspace over tmux"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,10 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'vte4' 'tmux')
 makedepends=('cargo')
 optdepends=('wl-clipboard: mouse-selection copy on Wayland'
-            'xclip: mouse-selection copy on X11')
+            'xclip: mouse-selection copy on X11'
+            'pipewire: microphone capture for voice input')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('51f3f2af8cf96acedae0f0c7f2295820c0897e4921ce2bf6d6b619702ced0419')
+sha256sums=('e7b0de6b5e81b7f25546bd606673514234fa7f113cb866c0e1e2e2c03713e0e3')
 
 prepare() {
   cd "stashee-terminal-$pkgver"
