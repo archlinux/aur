@@ -1,13 +1,13 @@
 pkgbase = kodexbar-suite
-	pkgdesc = KodexBar Suite: Plasma widget, ai CLI, Claude quotas natively (Codex/Grok/Antigravity via codexbar-cli-bin)
-	pkgver = 0.8.0
+	pkgdesc = KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok quotas (optional codexbar for Antigravity)
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Karasowl/KodexBar-Suite
 	install = kodexbar-suite.install
 	arch = any
 	license = MIT
 	depends = python
-	depends = codexbar-cli-bin
+	optdepends = codexbar-cli-bin: Antigravity quotas and Codex/Grok fallback when the native path fails
 	optdepends = plasma-workspace: Plasma 6 widget for ordered multi-provider quotas
 	optdepends = plasma5support: DataEngine/DataSource backend used by the Plasma widget
 	optdepends = konsole: open the ai selector in a terminal from the Plasma widget
@@ -16,7 +16,7 @@ pkgbase = kodexbar-suite
 	optdepends = wl-clipboard: Wayland clipboard support for ai recover --copy
 	optdepends = xclip: X11 clipboard support for ai recover --copy
 	optdepends = xsel: alternate X11 clipboard support for ai recover --copy
-	source = kodexbar-suite-0.8.0.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 9c0c55d6827701ee89ddf30451091425d6ee6b09ca1af3c10eae9d04f8f2f91e
+	source = kodexbar-suite-0.9.0.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 307c171b4ac987cee48a56d0286a9ab6d8b2e6ff8693cd20d4891e331a6f2e63
 
 pkgname = kodexbar-suite
