@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boxplayer-bin
 _pkgname=BoxPlayer
-pkgver=5.0.4
+pkgver=5.0.5
 _electronversion=40
 pkgrel=1
 pkgdesc="Unified cloud drive management, smart media library, media servers, and high-speed downloads.(Prebuilt version.Use system-wide electron)小白羊网盘 BoxPlayer - 多网盘统一管理 + 智能媒体库 + 媒体服务器 + 高速下载."
@@ -29,8 +29,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('0a356feb954736c7a8ec12f039a969616b8839527deb0cb7164389991504fb48')
-sha256sums_x86_64=('5f83b7980e75cd4ee8312c4f950b6dbb573f2edceb2e855998ccbdc59932c9d8')
+sha256sums_aarch64=('9358d3985f2483ae8acd63452ce3b10a266dc85c8cee955c6bdd7a36d8e18098')
+sha256sums_x86_64=('a4222f11de72ec8987c924f023cd4153f55734d3b9d4637d38ade345f809fa72')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
