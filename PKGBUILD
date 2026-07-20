@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@pm.me>
 
 pkgname=rakemond-bin
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="System daemon that listens for cargo-rake lifecycle events and stores them in redb (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ source_aarch64=(
 # Checksums are filled in by scripts/release/update-pkgbuilds.fish before
 # publishing to the AUR. sha256sums_x86_64/sha256sums_aarch64 each have two
 # elements, matching source_x86_64/source_aarch64's order (rakemond, rmdq).
-sha256sums=('31233d0b920aed16292421aabfaf3108840c10565d4f221ada69ef465c20a119')
-sha256sums_x86_64=('0ced747a4131a856c8701692bbc8a341f4e704af3716bc34a5281a65789e7f5c' '263717cf52aa2b6d4817433c96021b14a89830dd78f92da1a397a1481a66d83d')
-sha256sums_aarch64=('87759f95e6baf9e59dae451ff0898c5eef29fcd2c99b58b0b049c9facf100ca5' '3b3b69d9f381a26adc30829263295c327dcf0499b42db17e7275f6139757092c')
+sha256sums=('9ec62ac877bc01a4450fac7a90d84b84ad1ca94de59d90ee32ff72267b132af4')
+sha256sums_x86_64=('1bc4f6b1f1b17cdb3f8d3fd69922d0819bf3606e5c59123641a42e4e71e80260' '16d68dbcd590b317b521d35f58322c5be35982eabd80dddfe43e0c78bea19478')
+sha256sums_aarch64=('529afe42bd29f0a59f2811502b0fc9ff7b9938efcb57fd1e66808aebdacd95ef' '7eb2aeddc9078ed8e24d3341bd2b6f3502989dd316d3aae948f50b33870247ef')
 
 package() {
     install -Dm755 "rakemond-${CARCH}" "$pkgdir/usr/bin/rakemond"
