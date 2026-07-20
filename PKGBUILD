@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-dd' 'logi-dd-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.15.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('dfe36e6d8b160b7d622ef378e5b2dcc7fdb3cff03367d96c21c43e6161dfdc0f')
+sha256sums=('38ea97b17f2ada17248dacf7f53d9e3424229e7429bb589b60f87e8fbd34a013')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
