@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.91.29
+pkgver=0.92.0
 _electronversion=43
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -31,9 +31,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('88bda1f86f773fc9e62a02165458ad7c13b9607268224afb4555197aa3cfda97')
-sha256sums_armv7h=('efa743ae5c45f09d8c03d5976acd6495456edf4c121b627136acbd9cf181ef53')
-sha256sums_x86_64=('bf8fbb3e13e0f6102bb02ac2556da9984340265122d278323893ceba58f59c1a')
+sha256sums_aarch64=('d3626f1185e649d063dfe41adf6447ab729075fe387bcd51b92cd19c6ef5103e')
+sha256sums_armv7h=('751c8be1ca975ad5756db7b771d24de7a7cf55852999da336f4c77d115a25ce9')
+sha256sums_x86_64=('ac6ccfa8b4d00d804cab2d2cdddfd8b9fd282944bbdabe92d309ed4207433da5')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -87,7 +87,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
