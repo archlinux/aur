@@ -1,6 +1,6 @@
 pkgbase = mp-player-git
 	pkgdesc = music player
-	pkgver = 0.2.0.r0.g936b86c
+	pkgver = 0.2.0.r5.g73aee3c
 	pkgrel = 1
 	url = https://github.com/kurumihere/mp
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = mp-player-git
 	optdepends = kdialog: file and folder dialogs on KDE Plasma
 	optdepends = yad: alternative GTK file and folder dialogs
 	optdepends = zenity: file and folder dialogs on GTK desktops
-	provides = mp-player=0.2.0.r0.g936b86c
+	provides = mp-player=0.2.0.r5.g73aee3c
 	conflicts = mp
 	conflicts = mp-player
 	conflicts = mp-player-bin
