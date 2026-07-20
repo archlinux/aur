@@ -15,14 +15,14 @@
 : ${_sccache:=}
 
 pkgname=niri-spicy-git
-pkgver=26.04.r67.g808ca59
+pkgver=26.04.r87.g56b2df0
 pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor, with some out of tree spice"
 arch=(x86_64 aarch64)
 url="https://github.com/niri-wm/${pkgname%-spicy-git}"
 license=(GPL-3.0-or-later)
-depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
-makedepends=(clang rust git)
+depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd shaderc)
+makedepends=(clang cmake rust git)
 [[ -n "${_sccache}" ]] && makedepends+=(sccache)
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'waybar: highly customizable Wayland bar'
