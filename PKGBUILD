@@ -1,7 +1,7 @@
 # Maintainer: shafrnv <shafrnv@localhost>
 pkgname=raskadrovka
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native UI for video storyboards and scan-to-video contact sheets"
 arch=('any')
 url="https://aur.archlinux.org/packages/raskadrovka"
@@ -17,6 +17,8 @@ depends=(
   'python-pymupdf'
   'qt6-multimedia'
   'ffmpeg'
+  # Pin tessdata provider so pacman/yay doesn't ask which of 128 langs to install.
+  'tesseract-data-eng'
 )
 source=(
   'app.py'

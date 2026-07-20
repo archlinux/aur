@@ -1,7 +1,7 @@
 pkgbase = raskadrovka
 	pkgdesc = Native UI for video storyboards and scan-to-video contact sheets
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/raskadrovka
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = raskadrovka
 	depends = python-pymupdf
 	depends = qt6-multimedia
 	depends = ffmpeg
+	depends = tesseract-data-eng
 	source = app.py
 	source = pipeline.py
 	source = raskadrovka.py
