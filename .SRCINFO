@@ -1,0 +1,15 @@
+pkgbase = frame-x-server-git
+	pkgdesc = X11 display server for the CHasm desktop written in x86_64 assembly (git version)
+	pkgver = 0.0.56.r90.g236e86b
+	pkgrel = 1
+	url = https://github.com/isene/frame/
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = nasm
+	provides = frame-x-server
+	conflicts = frame-x-server
+	source = frame-x-server::git+https://github.com/isene/frame.git
+	sha256sums = SKIP
+
+pkgname = frame-x-server-git
