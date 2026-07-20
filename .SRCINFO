@@ -1,6 +1,6 @@
 pkgbase = plainva
 	pkgdesc = Obsidian-compatible, local-first editor for plain Markdown vaults
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://plainva.com
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = plainva
 	depends = libjavascriptcoregtk-4.1.so
 	depends = libwebkit2gtk-4.1.so
 	options = !lto
-	source = https://github.com/plainva/plainva/archive/refs/tags/v0.3.1/plainva-0.3.1.tar.gz
-	sha256sums = 3afc629d90b08f9d675fdd65371a169802b96a1133f283073c81a524742fa280
+	source = https://github.com/plainva/plainva/archive/refs/tags/v0.4.0/plainva-0.4.0.tar.gz
+	sha256sums = 2cc6e6d251944e823147dd46567e273f474709033be948bfa2f3d6e9c05d7dcb
 
 pkgname = plainva
