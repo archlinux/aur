@@ -1,7 +1,22 @@
+shaula_red_warning() {
+  printf '\033[1;31mIMPORTANT: %s\033[0m\n' "$1"
+}
+
+shaula_runtime_check() {
+  if ! command -v wl-copy >/dev/null 2>&1; then
+    shaula_red_warning 'wl-copy is missing; clipboard publication will not work.'
+  fi
+  if ! command -v grim >/dev/null 2>&1 &&
+      ! compgen -G '/usr/share/xdg-desktop-portal/portals/*.portal' >/dev/null; then
+    shaula_red_warning 'No screenshot route was detected. Install grim for wlroots/Niri or an XDG desktop portal backend for your desktop.'
+  fi
+}
+
 post_install() {
   echo 'Shaula installed.'
+  shaula_runtime_check
   if command -v shaula >/dev/null 2>&1 && shaula setup --help >/dev/null 2>&1; then
-    echo 'Run `shaula setup` as your regular user to configure Niri and Noctalia.'
+    echo 'Run `shaula setup` as your regular user to detect and install supported integrations.'
   fi
   echo 'Run `shaula settings` for graphical settings.'
 }

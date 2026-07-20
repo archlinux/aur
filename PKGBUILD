@@ -1,8 +1,8 @@
 # Maintainer: fgonzalezurriola <fgonzalezurriola@gmail.com>
 pkgname=shaula-bin
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
-pkgdesc='Capture, preview, save, and copy screenshots on Wayland (prebuilt)'
+pkgdesc='Capture, annotate, save, and copy screenshots on Wayland (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/fgonzalezurriola/shaula'
 license=('MIT')
@@ -33,9 +33,12 @@ install='shaula.install'
 source=("LICENSE::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/shaula-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/shaula-linux-aarch64.tar.gz")
+# Release automation replaces the checked-in markers with the matching
+# immutable LICENSE and release-archive hashes only inside the temporary AUR
+# clone.
 sha256sums=('51100d4e517c591b0c6fa0bf94f10b86d7309736a46a23d53b0c85bf4c86966a')
-sha256sums_x86_64=('61f11f893d9d06774711bba16d3cbfe612f7e25c53c1a49ad202b467a3319e99')
-sha256sums_aarch64=('e964a120282d2b12afab8161861b9e0a1dfc914fae8758232377d69229226460')
+sha256sums_x86_64=('8e2f01be2205b03098a140b8c42ee1032d35853c691bbedc42158b87ac2ca40d')
+sha256sums_aarch64=('0e2d66c02f8369bb4673e875d45c7ceee4bc3bea09cd6874b75f633a79659209')
 
 package() {
   install -d "${pkgdir}/usr"
