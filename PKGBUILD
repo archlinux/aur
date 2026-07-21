@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2148,2154
 
 pkgname=comfykick
-pkgver=v1.4
+pkgver=v1.4.1
 pkgrel=1
 pkgdesc="The official ways to launch ComfyUI SUCKs, this is better."
 arch=(any)
@@ -25,7 +25,7 @@ source=(LICENSE
         comfykick.toml)
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '6a25db267e4de1a29af46503b61e6a79288ed93934db8ee3ce48c9fb2497f248'
+            '0c98b11803c6ad19ebb3a1aa32a76061a846d2a45ff18eb05e142beb25b89d48'
             'f9df3e39609e8384afef2674f4ea9aca58373ade185e2c2fd601beb9d2bed295'
             '5429ca77ca0ef874b520823c7a795d5700e9b7dbdb77aa09c2d93629c9e94f98')
 
