@@ -1,91 +1,60 @@
 post_install() {
-    local BLUE='\033[0;34m'
-    local GREEN='\033[0;32m'
-    local YELLOW='\033[1;33m'
-    local RED='\033[0;31m'
-    local BOLD='\033[1m'
-    local NC='\033[0m'
+    cat <<'EOF'
 
-    echo ""
-    echo -e "${BLUE}+============================================================================+${NC}"
-    echo -e "${BLUE}|            ${BOLD}FORGE-CODE-BIN — Installation Complete${NC}${BLUE}                            |${NC}"
-    echo -e "${BLUE}+============================================================================+${NC}"
-    echo -e ""
-    echo -e "  ${BOLD}Available commands:${NC}"
-    echo -e "    ${GREEN}forge-code${NC}          — main CLI entry point"
-    echo -e "    ${GREEN}forge${NC}               — alias for forge-code"
-    echo -e "    ${GREEN}: <prompt>${NC}           — ZSH: ask Forge from any shell prompt"
-    echo -e "    ${GREEN}:commit${NC}              — ZSH: AI writes a git commit message"
-    echo -e "    ${GREEN}:new${NC}                — ZSH: start a fresh conversation"
-    echo -e ""
-    echo -e "${BOLD}  First time setup:${NC}"
-    echo -e "    1. ${BOLD}forge-code provider login${NC} — configure your AI provider (Claude/GPT/Gemini/...)"
-    echo -e "    2. ${BOLD}forge-code${NC}              — start an interactive session"
-    echo -e "    3. In ZSH: type ${GREEN}: help${NC} to see all commands"
-    echo -e ""
+forge-code-bin installed
 
-    # ZSH plugin setup
-    local zsh_plugin_dir="/usr/share/zsh/plugins/forge-code"
-    local zsh_site_func="/usr/share/zsh/site-functions/_forge-code"
+Binaries
+  forge              canonical CLI
+  forge-code         symlink to forge
+  forge-code-launcher  non-TTY / desktop entry helper
 
-    if command -v zsh >/dev/null 2>&1; then
-        echo -e "${GREEN}  ZSH plugin installed to:${NC}"
-        echo -e "    ${BOLD}${zsh_plugin_dir}/${NC}"
-        echo -e "    ${BOLD}${zsh_site_func}${NC}"
-        echo -e ""
-        echo -e "  ${YELLOW}To enable in your ZSH:${NC}"
-        echo -e "    # Add to ~/.zshrc (oh-my-zsh):"
-        echo -e "    plugins+=(forge-code)"
-        echo -e ""
-        echo -e "    # Or with zinit:"
-        echo -e "    zinit load z-shell/zinit  # or your plugin manager"
-        echo -e "    zplugin ice wait\"\" lucid; zplugin light ${zsh_plugin_dir}"
-        echo -e ""
-        echo -e "    # Or standalone (add to end of ~/.zshrc):"
-        echo -e "    source ${zsh_plugin_dir}/forge-code.zsh"
-        echo -e ""
-    else
-        echo -e "${YELLOW}  ZSH not detected — ZSH plugin not installed${NC}"
-        echo -e "    Install zsh to enable : prefix command integration"
-    fi
+This package (vs bare forgecode / forgecode-bin)
+  zsh plugin         /usr/share/zsh/plugins/forge-code/forge-code.zsh
+  bash completion    /usr/share/bash-completion/completions/forge-code
+  desktop entry      forge-code.desktop
+  AppArmor profile   /usr/share/apparmor/profiles/forge-code.apparmor
+  version check      /usr/share/forge-code-bin/check-version.sh
+  fzf / bat / fd     optional (optdepends), not hard dependencies
 
-    # AppArmor
-    if command -v apparmor_parser >/dev/null 2>&1; then
-        echo -e "${GREEN}  AppArmor detected — consider hardening:${NC}"
-        echo -e "    sudo cp /usr/share/apparmor/forge-code.apparmor /etc/apparmor.d/forge-code"
-        echo -e "    sudo aa-enforce /etc/apparmor.d/forge-code"
-    else
-        echo -e "${YELLOW}  AppArmor not installed — skipping MAC profile${NC}"
-        echo -e "    Install apparmor for mandatory access control: ${BOLD}sudo pacman -S apparmor${NC}"
-    fi
+First run
+  forge provider login
+  forge
 
-    echo -e ""
-    echo -e "${BOLD}  Documentation:${NC}"
-    echo -e "    ${BLUE}forge-code --help${NC}    — CLI help"
-    echo -e "    ${BLUE}forge-code config${NC}    — show effective configuration"
-    echo -e "    ${BLUE}https://forgecode.dev/${NC} — full documentation"
-    echo -e ""
-    echo -e "${BLUE}----------------------------------------------------------------------------${NC}"
-    echo -e ""
+ZSH (: prefix commands)
+  source /usr/share/zsh/plugins/forge-code/forge-code.zsh
+  # or with oh-my-zsh: plugins+=(forge-code) after linking/copying the plugin dir
+
+AppArmor (optional)
+  sudo cp /usr/share/apparmor/profiles/forge-code.apparmor /etc/apparmor.d/forge-code
+  sudo aa-enforce /etc/apparmor.d/forge-code
+
+Docs
+  forge --help
+  https://forgecode.dev/
+
+EOF
 }
 
 post_upgrade() {
     post_install
-    echo -e "${YELLOW}  Note:${NC} Upgrading preserves your conversations and configuration."
-    echo -e "  If Forge behaves unexpectedly, clear the cache:"
-    echo -e "  ${BOLD}rm -rf ~/.forge/cache ~/.forge/Code\\ Cache${NC}"
-    echo ""
+    cat <<'EOF'
+Upgrade note: config and conversations under ~/.forge are left alone.
+If the CLI misbehaves after upgrade:
+  rm -rf ~/.forge/cache
+
+EOF
 }
 
 post_remove() {
-    echo ""
-    echo -e "${BLUE}  FORGE-CODE REMOVAL${NC}"
-    echo -e ""
-    echo -e "  ${YELLOW}Remove ZSH plugin:${NC}"
-    echo -e "    Remove ${BOLD}forge-code${NC} from your plugin list in ~/.zshrc"
-    echo -e "    Or remove the source line: ${BOLD}source /usr/share/zsh/plugins/forge-code/forge-code.zsh${NC}"
-    echo -e ""
-    echo -e "  ${YELLOW}Remove user data (optional):${NC}"
-    echo -e "    ${BOLD}rm -rf ~/.forge ~/.config/forge-code${NC}"
-    echo ""
+    cat <<'EOF'
+
+forge-code-bin removed
+
+ZSH: drop forge-code from plugins=() or remove any source line for
+  /usr/share/zsh/plugins/forge-code/forge-code.zsh
+
+User data (optional wipe):
+  rm -rf ~/.forge ~/.config/forge-code
+
+EOF
 }

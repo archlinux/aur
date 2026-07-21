@@ -2,8 +2,8 @@
 pkgname=forge-code-bin
 _name="forge-code"
 pkgver=2.13.18
-pkgrel=1
-pkgdesc="AI-enabled pair programmer — Claude, GPT, O Series, Grok, Deepseek, Gemini. #1 on tbench.ai terminal benchmark."
+pkgrel=2
+pkgdesc="Forge Code CLI (prebuilt) with zsh :plugin, desktop launcher, and AppArmor profile"
 arch=('x86_64')
 url="https://forgecode.dev/"
 license=('Apache-2.0')
