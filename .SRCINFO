@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-sycl-bin
 	pkgdesc = llama.cpp on Intel Arc GPU via SYCL — official precompiled binary (no compilation)
-	pkgver = b10069
+	pkgver = b10075
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = llama.cpp-sycl-bin
 	depends = curl
 	optdepends = intel-oneapi-basekit: SYCL runtime (MKL/DNN) — required for the GPU backend
 	provides = llama.cpp-sycl
-	noextract = llama-b10069-sycl-fp16.tar.gz
-	source = llama-b10069-sycl-fp16.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b10069/llama-b10069-bin-ubuntu-sycl-fp16-x64.tar.gz
+	noextract = llama-b10075-sycl-fp16.tar.gz
+	source = llama-b10075-sycl-fp16.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b10075/llama-b10075-bin-ubuntu-sycl-fp16-x64.tar.gz
 	source = llama-sycl
-	sha256sums = 78079407819a15209de85e433dcc64789c5ad261b65dbd9fb7bf3b1effc082fe
+	sha256sums = 16f18c442d5dcb251803fe180683d6038fda73997979d7a0291ce608559af3a5
 	sha256sums = SKIP
 
 pkgname = llama.cpp-sycl-bin
