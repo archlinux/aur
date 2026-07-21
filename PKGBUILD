@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sparseinv
-_pkgver=0.1.3
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
-pkgver=0.1.3
-pkgrel=4
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Computation of the Sparse Inverse Subset'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4aba659a3d50d5c40585211d607e24b9b9f304f5dbd393d879659d9a7afc361a')
+sha256sums=('67b8d832b2ead2d1eac3cf3f834cac99073810e81bf24b162dc799293695f1a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

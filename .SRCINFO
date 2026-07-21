@@ -1,7 +1,7 @@
 pkgbase = r-sparseinv
 	pkgdesc = Computation of the Sparse Inverse Subset
-	pkgver = 0.1.3
-	pkgrel = 4
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sparseinv
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-sparseinv
 	depends = r-spam
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/sparseinv_0.1.3.tar.gz
-	sha256sums = 4aba659a3d50d5c40585211d607e24b9b9f304f5dbd393d879659d9a7afc361a
+	source = https://cran.r-project.org/src/contrib/sparseinv_0.1.4.tar.gz
+	sha256sums = 67b8d832b2ead2d1eac3cf3f834cac99073810e81bf24b162dc799293695f1a3
 
 pkgname = r-sparseinv
