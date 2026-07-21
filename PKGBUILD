@@ -1,14 +1,14 @@
-# Maintainer: peachoff <peachoff at aur>
+# Maintainer: peachoff <peshoff@proton.me>
 pkgname=zapret-hub
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.3b
+pkgrel=1
 pkgdesc="Desktop hub for managing network bypass utilities (zapret, tg-ws-proxy, vpn)"
 arch=('x86_64')
 url="https://github.com/peachoff/Zapret-Hub-Linux"
 license=('MIT')
 options=('!strip')
 depends=('glib2' 'libglvnd' 'fuse2')
-source=("$url/releases/download/v2.1.3a/zapret-hub-${pkgver}-linux-x64.tar.gz")
+source=("$url/releases/download/v2.1.3b/zapret-hub-${pkgver}-linux-x64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
