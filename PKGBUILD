@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: Jonathan Bangert <jonathan@bangert.dk>
 pkgname=music-assistant-desktop
-pkgver=0.5.0
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
     'libgcc'
     'libpulse'
     'libsoup3'
+    'openssl'
     'libayatana-appindicator'
     'webkit2gtk-4.1'
 )
@@ -28,17 +29,19 @@ makedepends=(
     'cargo-tauri'
     'curl'
     'file'
-    'libayatana-appindicator'
     'librsvg'
-    'nodejs'
     'rust'
     'wget'
-    'yarn'
 )
 conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d107031fc47401fe19d63ee0173611f8871dba0487d6c99bd3a071e6378618db')
-# ring + lto is failing: https://github.com/briansmith/ring/issues/2746
+sha256sums=('a3e127449911f52d2849a07c8173fa01d0e88f811e7fae2c6e09c4505de9997c')
+# Never let makepkg put -flto in CFLAGS/CXXFLAGS/LDFLAGS here. The C sources
+# pulled in through build.rs ('cc' crate) are compiled by gcc and emit GNU IR,
+# which rust-lld cannot consume, so the final link fails on unresolved symbols.
+# It surfaces as an opaque ring build failure, but the cause is the mixed
+# GCC/LLVM IR, not ring: https://github.com/briansmith/ring/issues/2746
+# Rust-side LTO is a separate setting and is unaffected by this.
 options=('!lto')
 
 prepare() {
@@ -46,10 +49,15 @@ prepare() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
-    yarn install --frozen-lockfile
 
     # Fix desktop file to match actual icon name
     sed -i 's/Icon=music-assistant$/Icon=music-assistant-companion/' music-assistant.desktop
+
+    # The in-repo .desktop also omits StartupWMClass, so the running window does
+    # not associate with the launcher entry. Tauri's own generated entry (see
+    # the upstream .deb) sets it. Drop this once upstream ships it.
+    grep -q '^StartupWMClass=' music-assistant.desktop ||
+        echo 'StartupWMClass=music-assistant-companion' >> music-assistant.desktop
 }
 
 build() {
@@ -70,6 +78,12 @@ package() {
     # Install binary
     install -Dm755 "$srcdir/target/release/music-assistant-companion" \
         "$pkgdir/usr/bin/music-assistant-companion"
+
+    # Install the tauri.conf.json "resources" (translations). Tauri resolves
+    # resource_dir() to /usr/lib/<productName> on Linux, which is where the
+    # upstream deb puts them too. Only en.json is compiled into the binary.
+    install -Dm644 -t "$pkgdir/usr/lib/Music Assistant/resources/translations" \
+        src-tauri/resources/translations/*.json
 
     # Install desktop file
     install -Dm644 music-assistant.desktop \
