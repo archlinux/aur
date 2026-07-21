@@ -4,7 +4,7 @@
 # refs, missing deps, and missing options three times. Verify after publish:
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 pkgname=llama-launcher
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
@@ -33,6 +33,7 @@ package() {
     install -Dm755 "${pkgname}/utils/soak-test-v3b.sh" "${pkgdir}/usr/bin/llama-soak-test"
     install -Dm755 "${pkgname}/utils/vram-stress-test.sh" "${pkgdir}/usr/bin/llama-vram-stress-test"
     install -Dm755 "${pkgname}/llama-deep-proxy.mjs" "${pkgdir}/usr/lib/llama-launcher/llama-deep-proxy.mjs"
+    install -Dm755 "${pkgname}/llama-waterfall.mjs" "${pkgdir}/usr/lib/llama-launcher/llama-waterfall.mjs"
     # Bundled tunes + chat templates, read from BUNDLED_MODEL_CONFIG_DIR
     install -Dm644 "${pkgname}"/model-configs/* -t "${pkgdir}/usr/share/llama-launcher/model-configs"
     install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
