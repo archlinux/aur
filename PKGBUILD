@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=filen-desktop-bin
 _pkgname=Filen
-pkgver=3.0.50
+pkgver=3.0.52
 _electronversion=43
 pkgrel=1
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('0eb732b20973e7826c2b0a7abf8e3820c7ddb883ed2d0231022292e9d14d8723')
-sha256sums_x86_64=('db9e8f6a8cf1b5a5decfd386af7c7975e0bc76057e6de52f7806ce9b8f47cc7a')
+sha256sums_aarch64=('1838ed3aa8f62fae4f30a3bb52b7460b9694ad2fea0f2d98308f3a519ba6e00c')
+sha256sums_x86_64=('f8abddf0f40fdd88d5398617e3e4f3499a713f967353bcbc05939be65b6b708a')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
