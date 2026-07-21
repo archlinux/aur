@@ -1,8 +1,8 @@
 # Maintainer: pantarune
 
 pkgname=niri-screenshare
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Portal backend for niri implementing ScreenCast"
 arch=('x86_64')
 url="https://github.com/pantarune/niri-screenshare"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export CARGO_TARGET_DIR="$srcdir/target"
-  cargo build --release --frozen
+  cargo build --release 
 }
 
 package() {
