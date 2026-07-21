@@ -1,10 +1,11 @@
 pkgbase = zapret-hub
 	pkgdesc = Desktop hub for managing network bypass utilities (zapret, tg-ws-proxy, vpn)
-	pkgver = 2.1.3-1
-	pkgrel = 1
+	pkgver = 2.1.3-2
+	pkgrel = 2
 	url = https://github.com/peachoff/Zapret-Hub-Linux
 	arch = x86_64
 	license = MIT
+	options = !strip
 	depends = fuse2
 	depends = glib2
 	depends = libglvnd
