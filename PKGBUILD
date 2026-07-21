@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Handy tool set for developers.(Prebuilt version)开发者常备小工具"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('18272cd38c6fb9c6b3ef9928a1fd0ab1ff5e7a5bbf1a3acf9daa5de27f643225'
+sha256sums=('273ce79e140c2fbb6f704b920d89a490652d820f86e6f67c255dc8acee2863cf'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
             '74b5601e17710cdf781ec411f54075c2c477370fdc317ff75c18bdae0662b498')
 prepare() {
