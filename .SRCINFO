@@ -1,0 +1,23 @@
+pkgbase = agent-console-bin
+	pkgdesc = Minimalist AI-native console for directing coding agents inside a repository
+	pkgver = 0.59.0
+	pkgrel = 1
+	url = https://github.com/cyl-castillo/agent-console
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = alsa-lib
+	depends = nodejs
+	depends = git
+	optdepends = npm: to install the Claude Code CLI (npm i -g @anthropic-ai/claude-code)
+	provides = agent-console
+	conflicts = agent-console
+	options = !strip
+	source = https://github.com/cyl-castillo/agent-console/releases/download/v0.59.0/Agent.Console_0.59.0_amd64.deb
+	source = LICENSE-0.59.0::https://raw.githubusercontent.com/cyl-castillo/agent-console/v0.59.0/LICENSE
+	sha256sums = 83407cf1b6b75abcbc070e99ecf980ead776c4779803cb0260a1aa465757dc7c
+	sha256sums = bdf1d8fe99335432f1cf4e9bf20da2795f3bdb11f72f84e2a2edb5037664ad8e
+
+pkgname = agent-console-bin
