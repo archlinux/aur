@@ -5,12 +5,15 @@ pkgbase = python-requirements-language-server
 	url = https://github.com/Freed-Wu/requirements-language-server
 	arch = any
 	license = GPL3
+	makedepends = uv
 	makedepends = python-installer
 	depends = python-lsp-tree-sitter
 	depends = python-tree-sitter-requirements
 	depends = python-aiohttp
 	depends = python-pip
-	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.1.0-py3-none-any.whl
-	sha256sums = 95526734f154ba7e913861dc31b825dd2869e6a6d6b4111571b918f113c90e62
+	depends = python-jinja
+	depends = python-marisa-trie
+	source = https://files.pythonhosted.org/packages/source/r/requirements_language_server/requirements_language_server-0.1.0.tar.gz
+	sha256sums = 3013d1e5c41f16e7df29941ae31b97dfa2646d0520d6c33e24631c2b3e6793e4
 
 pkgname = python-requirements-language-server
