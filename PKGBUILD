@@ -2,7 +2,7 @@
 # Template — replace zaidejjo and sha256sums before publishing.
 
 pkgname=omniapi-cli-bin
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="OmniAPI CLI — blazing-fast API client for CI/CD (standalone binary)"
 arch=('x86_64')

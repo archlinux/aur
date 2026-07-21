@@ -1,13 +1,13 @@
 pkgbase = omniapi-cli-bin
 	pkgdesc = OmniAPI CLI — blazing-fast API client for CI/CD (standalone binary)
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/zaidejjo/omniapi
 	arch = x86_64
 	license = MIT
-	source = https://github.com/zaidejjo/omniapi/releases/download/v1.0.9/oma-linux-x64
-	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.9/README.md
-	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.9/LICENSE
+	source = https://github.com/zaidejjo/omniapi/releases/download/v1.0.10/oma-linux-x64
+	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.10/README.md
+	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.10/LICENSE
 	sha256sums = 285e4efc4f3d267e2d55bef0ca3017959e951ad10c3d4fb6caebae4c8806e738
 
 pkgname = omniapi-cli-bin
