@@ -1,0 +1,5 @@
+[apparmor-language-server]
+source = "gitlab"
+gitlab = "apparmor/apparmor-language-server"
+use_max_tag = true
+prefix = "v"
