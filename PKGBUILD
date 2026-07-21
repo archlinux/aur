@@ -1,7 +1,6 @@
-
 #Mantainer: Matias Araoz <araozmatias2010@gmail.com>
 pkgname=iwdtui
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="TUI tool for the IWD backend"
 arch=(x86_64)
@@ -10,7 +9,7 @@ license=('MIT')
 depends=('iwd' 'coreutils')
 makedepends=('cargo' 'git') # 'bzr', 'git', 'mercurial' or 'subversion'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MatiasGabrielAraoz/IwdTUI/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46a16ba99fcb3ce461d7d2221824a41a7fc455cc6261d16e067a6bed62a3365d')
+sha256sums=('fefbfc18f1ea030e431598ee363a2580be09f7ffe94525d88f1ef04fc516a6e5')
 
 build() {
 	cd "IwdTUI-${pkgver}"
