@@ -1,28 +1,23 @@
 # Maintainer: hi@devan.gg
 pkgname=timr-cli
 _binname=timr
-pkgver=0.1.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A simple cli timer"
 arch=('x86_64' 'aarch64')
 url="https://devan.gg/timr"
 license=('MIT')
 depends=()
-makedepends=('go')
-source=("${_binname}-${pkgver}.tar.gz::https://github.com/imdevan/timr-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('REPLACE_WITH_ACTUAL_SHA256')
 
-build() {
-  cd "${_binname}-${pkgver}"
-  export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags="-s -w" -o ${_binname} ./cmd/${_binname}
-}
+source_x86_64=("${_binname}-linux-amd64-${pkgver}.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v${pkgver}/${_binname}-linux-amd64.tar.gz")
+source_aarch64=("${_binname}-linux-arm64-${pkgver}.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v${pkgver}/${_binname}-linux-arm64.tar.gz")
+sha256sums_x86_64=('db096c33b7b01be50a8ae465d82640ac166ee9885e95869b388be78add5c6fdf')
+sha256sums_aarch64=('0eabe77826ce1297425d64e25ad59750ac46a8f7287facaa745e91f87d126d18')
 
 package() {
-  cd "${_binname}-${pkgver}"
-  install -Dm755 ${_binname} "${pkgdir}/usr/bin/${_binname}"
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [ "${CARCH}" = "x86_64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-amd64" "${pkgdir}/usr/bin/${_binname}"
+  elif [ "${CARCH}" = "aarch64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-arm64" "${pkgdir}/usr/bin/${_binname}"
   fi
 }
