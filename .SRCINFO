@@ -11,8 +11,6 @@ pkgbase = badapple-py
 	depends = figlet
 	depends = lolcat
 	source = badapple-py-1.0.0.tar.gz::https://github.com/Raj-1727/badapple-py/archive/refs/tags/v1.0.0.tar.gz
-	source = badapple.mp4
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = badapple-py
