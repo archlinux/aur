@@ -1,0 +1,64 @@
+# Voisu ships its dictation daemon and Overlay as systemd *user* services.
+# pacman scriptlets run as root and must never enable a per-user service on the
+# user's behalf, so these functions only PRINT the enable/disable instructions.
+# This mirrors the Fedora RPM %systemd_user_post scriptlet, which likewise never
+# auto-enables the user units (Arch convention: NEVER silently enable a service).
+
+post_install() {
+    cat <<'EOF'
+
+Voisu is installed. Its dictation daemon and Overlay run as systemd *user*
+services and are NOT enabled automatically.
+
+1. Store your provider keys (guided, re-runnable):
+
+    voisu setup
+
+2. Start the dictation daemon for your user:
+
+    systemctl --user daemon-reload
+    systemctl --user enable --now voisu.service
+
+3. Optionally start the Overlay -- the on-screen status surface that reflects
+   daemon state:
+
+    systemctl --user enable --now voisu-overlay.service
+
+Before uninstalling, disable these user services FIRST (see below).
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+
+Voisu has been upgraded. If its user services are already enabled, reload and
+restart them for your user:
+
+    systemctl --user daemon-reload
+    systemctl --user try-restart voisu.service voisu-overlay.service
+EOF
+}
+
+post_remove() {
+    cat <<'EOF'
+
+Voisu has been removed.
+
+NOTE: the user services should be disabled BEFORE removing the package -- pacman
+has already deleted the unit files, so `systemctl --user disable` can no longer
+resolve them. The correct order next time is:
+
+    systemctl --user disable --now voisu.service voisu-overlay.service
+    sudo pacman -R voisu
+
+If the services were still enabled at removal, clear the now-dangling
+enablement symlinks by hand:
+
+    rm -f ~/.config/systemd/user/graphical-session.target.wants/voisu.service
+    rm -f ~/.config/systemd/user/graphical-session.target.wants/voisu-overlay.service
+    systemctl --user daemon-reload
+
+Your Voisu configuration and state under ~/.config/voisu and
+~/.local/state/voisu are left untouched.
+EOF
+}
