@@ -1,0 +1,4 @@
+[invidious]
+source = "git"
+git = "https://github.com/iv-org/invidious.git"
+prefix = "v"
