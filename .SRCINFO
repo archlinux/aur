@@ -1,5 +1,5 @@
 pkgbase = muzaiten-bin
-	pkgdesc = Native music player for local libraries, with ratings and scrobbling (prebuilt, bundled Last.fm credentials)
+	pkgdesc = Native music player for local libraries, with ratings and scrobbling
 	pkgver = 2026.07.19.1.g4f746ea
 	pkgrel = 1
 	url = https://codeberg.org/11xx/muzaiten
