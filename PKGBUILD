@@ -38,29 +38,4 @@ package() {
     install -D -m 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     sed -i 's/Categories=/Categories=Utility;/g' "${pkgdir}/usr/share/applications/Handy.desktop"
-
-    # Fix non symlinked libs
-    libs_to_symlink=(
-        libtranscribe.so
-        libggml.so
-        libggml-base.so
-    )
-
-    for lib in "${libs_to_symlink[@]}"; do
-        if ! [ -h "$pkgdir/usr/lib/$lib" ]; then
-            rm -f "$pkgdir/usr/lib/$lib"
-        fi
-        if ! [ -h "$pkgdir/usr/lib/$lib.0" ]; then
-            rm -f "$pkgdir/usr/lib/$lib.0"
-        fi
-
-        versioned_lib=$(find "$pkgdir/usr/lib" -name "$lib.*")
-
-        ln --symbolic --relative "$versioned_lib" "$pkgdir/usr/lib/$lib.0"
-        ln --symbolic --relative "$pkgdir/usr/lib/$lib.0" "$pkgdir/usr/lib/$lib"
-    done
-
-    # upstream .deb ships duplicate copies instead of proper symlinks
-    ln -sf "libonnxruntime.so.1.24.2" "${pkgdir}/usr/lib/libonnxruntime.so.1"
-    ln -sf "libonnxruntime.so.1.24.2" "${pkgdir}/usr/lib/libonnxruntime.so"
 }
