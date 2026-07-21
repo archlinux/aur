@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=timetable-bin
-pkgver=4.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="GTK4 + LibAdwaita client for WebUntis (prebuilt)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python' 'python-gobjec
 provides=('untis' 'timetable')
 conflicts=('untis' 'timetable')
 source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha256sums=('cfbebefbbdb7d7216f999a2171633a8684d008ee12a9fea047f581006bca9c4e')
+sha256sums=('c68179716fdb5eb6268203168207a1ea7d03a75456c00de38d152dc6098bd0dc')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
