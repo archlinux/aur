@@ -1,0 +1,27 @@
+pkgbase = sdroxide
+	pkgdesc = PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and FT8/FT4 (CAT + USB-audio backend, no SoapySDR)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dividebysandwich/sdroxide
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = rust-wasm
+	makedepends = trunk
+	makedepends = wasm-bindgen
+	makedepends = binaryen
+	depends = alsa-lib
+	depends = opus
+	depends = libxkbcommon
+	depends = wayland
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = vulkan-icd-loader
+	conflicts = sdroxide-soapysdr
+	options = !lto
+	source = sdroxide-0.1.0.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7b357a622a74b309b2a5105ed43a03d820b5763f2bc658ad806cbc60bbcb84af
+
+pkgname = sdroxide
