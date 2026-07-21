@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 pkgname=streamworks-bin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='Streaming Hub local-first para desktop, web e operações'
 arch=('x86_64')
@@ -23,14 +23,17 @@ conflicts=('streamworks' 'streamworks-hub')
 options=('!strip' '!debug')
 
 _release_base='https://gitlab.com/bernardopg/streamworks-releases/-/releases'
+validpgpkeys=('BAA02ADB0110F341143B612200142FAC7F3B52D9') # StreamWorks Release
 source=(
   "streamworks-${pkgver}.AppImage::${_release_base}/v${pkgver}/downloads/StreamWorks-Hub-${pkgver}-${CARCH}.AppImage"
+  "streamworks-${pkgver}.AppImage.asc::${_release_base}/v${pkgver}/downloads/StreamWorks-Hub-${pkgver}-${CARCH}.AppImage.asc"
   'streamworks.desktop'
   'streamworks.png'
   'LICENSE'
 )
 sha256sums=(
-  '2f4667e3ba6be209af8c3f0c26dfa710fc680c69105b11e9d8a1bf3f2abbbcb0'
+  '744e28dc95d8d9040b056e7419253e4682e8719817bb4c30dd7cd60bc0e529bd'
+  'SKIP'
   'b16cbd1509cf60176598d0629780a2688b9972d985eb6805b2984008018580d0'
   '31651ccdc061ac7116db2c04f06326b0a66235b54e81402cb0601cba6c632d28'
   'adb5560313a4503a634ac61dc73d397be6b3fa39603bc51ed0151dc36fdad943'
@@ -48,4 +51,6 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/lib/streamworks/StreamWorks-Hub.AppImage \
     "${pkgdir}/usr/bin/streamworks-hub"
+  ln -s /usr/lib/streamworks/StreamWorks-Hub.AppImage \
+    "${pkgdir}/usr/bin/streamworks"
 }
