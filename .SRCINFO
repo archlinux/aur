@@ -1,0 +1,13 @@
+pkgbase = timr-cli
+	pkgdesc = A simple cli timer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://devan.gg/timr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = timr-0.1.0.tar.gz::https://github.com/imdevan/timr-cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = REPLACE_WITH_ACTUAL_SHA256
+
+pkgname = timr-cli
