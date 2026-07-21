@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: TheCyberArcher <TheCyberArcher@protonmail.ch>
 pkgname=music-assistant-desktop-bin
-pkgver=0.5.0
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -20,12 +20,19 @@ depends=(
     'libgcc'
     'libpulse'
     'libsoup3'
+    'openssl'
     'libayatana-appindicator'
     'webkit2gtk-4.1'
 )
+provides=('music-assistant-desktop')
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-git' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
-source=("$pkgname-$pkgver.deb::$url/releases/download/$pkgver/Music.Assistant_${pkgver}_amd64.deb")
-sha256sums=('938a577cbee983d2d00be8a6157fa955436c02952eb69853ad8be343059faf08')
+source=("$pkgname-$pkgver.deb::$url/releases/download/$pkgver/Music.Assistant_${pkgver}_amd64.deb"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/music-assistant/desktop-app/$pkgver/LICENSE")
+sha256sums=('789c7974daebc7a35c9f806d85128b3fcca18f4ae00de5a6750218869215969f'
+            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
+# Prebuilt upstream binary: leave it exactly as shipped, and do not try to
+# split a -debug package out of it.
+options=('!strip' '!debug')
 
 package() {
     cd "$srcdir"
@@ -33,7 +40,6 @@ package() {
     # Extract the deb package
     bsdtar -xf data.tar.gz -C "$pkgdir"
 
-    # Install license
-    install -Dm644 "$pkgdir/usr/share/doc/music-assistant-companion/copyright" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE" || true
+    # The deb carries no copyright file, so take the license from the tag
+    install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
