@@ -11,9 +11,9 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-: ${_ffsrcvername:=140.12.0esr}
+: ${_ffsrcvername:=140.13.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=104}
+: ${_lwrelver:=100}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -152,8 +152,8 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('e364e67c1c4167018ff03e3a1f56e4ffca14a26444daa6160dba7022e1e0a13f'
-            '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
+sha256sums=('abe5dce7b32c9ef5757b93626bfc5e942e109ba9df994ff3384b375b6812c393'
+            'f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
