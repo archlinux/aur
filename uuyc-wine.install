@@ -1,0 +1,7 @@
+post_remove() {
+  # Keep the cleanup command literal so it expands in the invoking user's shell.
+  # shellcheck disable=SC2016
+  printf '%s\n' \
+    'UU Remote user data was preserved. After stopping UU Remote and its Wine server, remove it with:' \
+    'rm -rf -- "${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine" "${XDG_STATE_HOME:-$HOME/.local/state}/uuyc-wine"'
+}

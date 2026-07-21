@@ -11,6 +11,7 @@ path = [
   "REUSE.toml",
   "uuyc-wine",
   "uuyc-wine.desktop",
+  "uuyc-wine.install",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 AUR package contributors"

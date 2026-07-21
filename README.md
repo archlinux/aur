@@ -142,13 +142,11 @@ Remove the system package with pacman or an AUR helper:
 paru -Rns uuyc-wine
 ```
 
-Pacman intentionally does not delete per-user Wine data. To remove the default prefix after closing UU Remote, first stop its Wine server and then delete the package-owned user directories:
+Pacman intentionally does not delete per-user Wine data. The package's post-remove script prints a one-line cleanup command. Before running it, close UU Remote and stop the default prefix's Wine server:
 
 ```bash
 WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine/wineprefix" wineserver -k
-rm -rf -- \
-  "${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine" \
-  "${XDG_STATE_HOME:-$HOME/.local/state}/uuyc-wine"
+rm -rf -- "${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine" "${XDG_STATE_HOME:-$HOME/.local/state}/uuyc-wine"
 ```
 
 Verify the paths before running the removal command. A custom `UUYC_WINE_PREFIX` is not removed by those commands.

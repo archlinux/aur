@@ -1,8 +1,9 @@
 pkgbase = uuyc-wine
 	pkgdesc = Wine compatibility package for NetEase UU Remote (网易UU远程)
 	pkgver = 4.33.0.8907
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uuyc.163.com/
+	install = uuyc-wine.install
 	arch = x86_64
 	license = LicenseRef-UU-Remote-EULA
 	makedepends = 7zip
