@@ -1,5 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=pipdeptree
 pkgver=4.1.0
