@@ -1,6 +1,6 @@
 pkgbase = hyprland-plugin-hy3
 	pkgdesc = A Hyprland plugin for i3 like tiling
-	pkgver = 0.55.4
+	pkgver = 0.56.0
 	pkgrel = 1
 	url = https://github.com/outfoxxed/hy3
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = hyprland-plugin-hy3
 	makedepends = git
 	makedepends = cmake
 	makedepends = hyprland
-	depends = hyprland>=0.55.0
-	depends = hyprland<0.56.0
-	source = hyprland-plugin-hy3::git+https://github.com/outfoxxed/hy3.git#commit=a7282db2d7ca336d3c9faa5d10d75fc43eed37aa
+	depends = hyprland>=0.56.0
+	depends = hyprland<0.57.0
+	source = hyprland-plugin-hy3::git+https://github.com/outfoxxed/hy3.git#commit=8666c43f6ed3a86687fd585e110c48592ad4deb8
 	sha256sums = SKIP
 
 pkgname = hyprland-plugin-hy3
