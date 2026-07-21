@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 # Contributor: Virgil, Primus of Libertaria
 pkgname=progit-bin
-pkgver=0.8.4_beta
+pkgver=0.9.0_beta
 pkgrel=1
 pkgdesc="Git-First Project Management — blazing-fast terminal issue tracker with Kanban, Forgejo/GitLab sync, and plugin marketplace"
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=("https://git.sovereign-society.org/ProGit/progit/releases/download/v${pk
         "https://git.sovereign-society.org/ProGit/progit/releases/download/v${pkgver/_/-}/prog-${pkgver/_/-}-x86_64-unknown-linux-gnu.tar.gz.minisig"
         "https://git.sovereign-society.org/ProGit/progit/releases/download/v${pkgver/_/-}/SHA256SUMS"
         "https://git.sovereign-society.org/ProGit/progit/releases/download/v${pkgver/_/-}/SHA256SUMS.minisig")
-sha256sums=('89c87bbfde7997b8afc1fbd682bac7071f7f6d52b64eff34fa0bd4a8f952568d'
+sha256sums=('98a7e0ef9a359a308a66f3d126f67d737e500bf4e10c3c029797674cdc2ef52e'
             'SKIP'
-            '0f7a550ab9aafaa1cb10ff7f6a24d9e00dd92b286ef5d91cca7696597258f0f1'
+            'cf45a8e18263c65dfd9409bca0c5b19305d84616b316538ed264a94582c9ac87'
             'SKIP')
 
 # Minisign public key for signature verification:
