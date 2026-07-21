@@ -1,6 +1,6 @@
 pkgbase = python-p123client
 	pkgdesc = Python 123 webdisk client.
-	pkgver = 0.0.9.3.1
+	pkgver = 0.0.9.4
 	pkgrel = 1
 	url = https://pypi.org/project/p123client
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = python-p123client
 	depends = python-orjson
 	depends = python-undefined
 	depends = python-yarl
-	depends = python-aiofile
 	depends = python-asynctools
 	depends = python-encode-uri
 	depends = python-dicttools
@@ -32,7 +31,7 @@ pkgbase = python-p123client
 	conflicts = python-p123client
 	options = !strip
 	options = !debug
-	source = p123client-0.0.9.3.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p123client/p123client-0.0.9.3.1.tar.gz
-	sha256sums = 705df917c4585c70fb2175f48be43ac268c430a8f33f1290378d3263b8b936a6
+	source = p123client-0.0.9.4.tar.gz::https://files.pythonhosted.org/packages/source/p/p123client/p123client-0.0.9.4.tar.gz
+	sha256sums = a0e71fce706e3ee5643839469860153d6d140b5b8412595793fa69957c148f48
 
 pkgname = python-p123client
