@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=webutils
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('62d216cf2d9dc8fe6fa341955d4d8b60')
-b2sums=('44d51d98f13d6715f16a1ae4eae39ee6ed3bb4c188762890bd5818335fa886d89f12363babf4c9e522319843b3e5ef0c6c572a0d08868f0d67db806896205b2a')
+md5sums=('7848a8692a38fd6ee3d6b74b6a430b14')
+b2sums=('e6f92967c3fdcc14656a60da8c03b2e6c106b7163f31b94d629231f743f8fc2986e94378995dbdaf7a53c0c33d197a681474a3857cbc5b058184edb18791a315')
 
 build() {
   mkdir build
