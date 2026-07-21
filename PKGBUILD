@@ -2,7 +2,7 @@
 pkgname=ironclaw-bin
 _tagver=1.0.0-rc.1
 pkgver=1.0.0_rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="IronClaw is an Agent OS focused on privacy, security and extensibility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nearai/ironclaw"
@@ -24,7 +24,7 @@ sha256sums_aarch64=(
 )
 
 package() {
-    local archive="ironclaw-${CARCH}-unknown-linux-gnu.tar.gz"
-    tar -xzf "$srcdir/$archive"
-    install -Dm755 ironclaw "$pkgdir/usr/bin/ironclaw"
+    local target="ironclaw-${CARCH}-unknown-linux-gnu"
+    tar -xzf "$srcdir/${target}.tar.gz"
+    install -Dm755 "$srcdir/$target/ironclaw" "$pkgdir/usr/bin/ironclaw"
 }

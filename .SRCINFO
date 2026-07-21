@@ -1,7 +1,7 @@
 pkgbase = ironclaw-bin
 	pkgdesc = IronClaw is an Agent OS focused on privacy, security and extensibility
 	pkgver = 1.0.0_rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nearai/ironclaw
 	arch = x86_64
 	arch = aarch64
