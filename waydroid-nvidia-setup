@@ -8,8 +8,11 @@
 #   1. copies the guest driver stack from /usr/lib/waydroid-nvidia/guest into
 #      /var/lib/waydroid/nv + the vendor overlay (the patched waydroid config
 #      generator bind-mounts them into the container),
-#   2. writes the stack's properties into waydroid.cfg [properties] and sets
-#      suspend_action=none (values merge into base.prop on upgrade),
+#   2. writes the stack's properties into waydroid.cfg [properties], sets
+#      suspend_action=none (values merge into base.prop on upgrade), and points
+#      drm_device at the NVIDIA render node (upstream gpu.py blacklists nvidia
+#      during auto-detection, so NVIDIA-only hosts would otherwise get no
+#      /dev/dri node in the container and SurfaceFlinger crash-loops),
 #   3. regenerates the container config via `waydroid upgrade -o`.
 #
 # --refresh <hz>: match your monitor's refresh rate (e.g. 144/240/500). Above
@@ -50,8 +53,19 @@ if [ -f "$GUEST/surfaceflinger" ]; then
     install -m 0755 "$GUEST/surfaceflinger" "$NV/surfaceflinger"
 fi
 
+NVNODE=""
+for uevent in /sys/class/drm/renderD*/device/uevent; do
+    [ -e "$uevent" ] || continue
+    if grep -qx "DRIVER=nvidia" "$uevent"; then
+        NVNODE="/dev/dri/$(basename "${uevent%/device/uevent}")"
+        break
+    fi
+done
+[ -n "$NVNODE" ] || die "no NVIDIA render node found under /dev/dri (is the NVIDIA driver loaded?)"
+echo "== NVIDIA render node: $NVNODE"
+
 echo "== writing waydroid.cfg properties"
-REFRESH="$REFRESH" python3 - "$CFG" <<'EOF'
+REFRESH="$REFRESH" NVNODE="$NVNODE" python3 - "$CFG" <<'EOF'
 import configparser, os, sys
 cfg_path = sys.argv[1]
 cp = configparser.ConfigParser()
@@ -82,6 +96,9 @@ if refresh:
 for k, v in props.items():
     cp.set("properties", k, v)
 cp.set("waydroid", "suspend_action", "none")
+# Explicit drm_device bypasses upstream gpu.py's nvidia blacklist (our waydroid
+# patch trusts it), so the render node gets bind-mounted on NVIDIA-only hosts.
+cp.set("waydroid", "drm_device", os.environ["NVNODE"])
 with open(cfg_path, "w") as f:
     cp.write(f)
 print("   properties written")

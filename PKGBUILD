@@ -16,11 +16,11 @@
 #   gh attestation verify <file> --repo Shiro836/waydroid-nvidia
 
 pkgname=waydroid-nvidia-bin
-pkgver=0.1.0rc1
+pkgver=0.1.0rc2
 pkgrel=1
-_tag=v0.1.0-rc1
+_tag=v0.1.0-rc2
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
-pkgdesc="Waydroid with NVIDIA GPU acceleration (Mesa Venus over vtest socket to the proprietary driver)"
+pkgdesc="Waydroid with NVIDIA GPU acceleration (Mesa Venus over vtest socket; needs the nvidia-open kernel modules)"
 arch=('x86_64')
 url="https://github.com/Shiro836/waydroid-nvidia"
 license=('GPL-3.0-or-later')
@@ -57,14 +57,14 @@ noextract=(
   "waydroid-nvidia-guest-android-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-prebuilts-$_tag.tar.zst"
 )
-sha256sums=('9cb881da32b1f04b0ddf17131598ae6dc8896ae99d1803238036a64c21a3f2b1'
+sha256sums=('4c5f07da29567a295058bc344d6c03d6d43f7694fafcfe527210b3dc26c3958c'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
-            '7f9bf436bc2d923832c7bb1bbdbf8f94f48b26cbd858f9c2e48ea9226266cfaa'
-            'cdaab0d27bedf3f68d78a99753a63139f6e40058c86d7f306a085dbf4b5d42e9'
+            '88d741816b3a4565aebe02afc242eb83c53748b72dbe5dc6a530f9468260672e'
+            'fbb81d10f86a64332f957ccb25d198689664a38e5220a6b3dfeda4edc6be18c8'
             'd83dc2fdc2b6892bbc6537b88a38d0e98b824bd29fa72ae87fbc12f2d53188ae'
             '4bc083ac6fc8d0d0fd31546f5abd9912ca1304571d5a6c9ee42351b1e745193f'
             '501db3b266f8a49f643d4054ba948ba40fcefe0fee1f3647bff955184acf533e'
-            '363a3a61d643c6acee6a4a3edc01b1a4880e9924ceb8c38d8113d92d5a8a71f3')
+            'dd9e51f09eec6de3b8687a49d013ddbcdff6d26ded8b6b4169f6c2ad43924d01')
 
 prepare() {
   cd "waydroid-$_waydroid_sha"
