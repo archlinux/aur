@@ -1,0 +1,4 @@
+[python-dnsrecon]
+source = "git"
+git = "https://github.com/darkoperator/dnsrecon.git"
+prefix = "v"
