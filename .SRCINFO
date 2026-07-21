@@ -1,0 +1,19 @@
+pkgbase = betasharp-git
+	pkgdesc = Enhanced recreation of Minecraft Beta 1.7.3 (launcher, client, server)
+	pkgver = snapshot.pre1.0.6.r53.g288c93f8
+	pkgrel = 1
+	url = https://git.gay/betasharp-official/betasharp
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = betasharp
+	conflicts = betasharp
+	source = betasharp-git::git+https://git.gay/betasharp-official/betasharp.git#branch=main
+	source = betasharp.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = betasharp-git
