@@ -1,6 +1,6 @@
 # Maintainer: Piyush Raj <piyushxcoder@gamil.com>
 pkgname=folklore-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Viewer for superlore docs — desktop and web app, one codebase"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('folklore')
 conflicts=('folklore')
 source=("folklore_${pkgver}_amd64.deb::https://github.com/PiyushXCoder/folklore/releases/download/v${pkgver}/folklore_${pkgver}_amd64.deb")
-sha256sums=('c4f85e7396f5c624517fde6b163f4a7f734af05e9a915833ff4676b1259ed0b4')
+sha256sums=('0ae39ec8ea464e6f02ee6a921130216caf60842e5b942ae02d7bd90c74e8f2f6')
 
 package() {
   cd "$srcdir"
