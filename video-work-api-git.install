@@ -1,0 +1,114 @@
+#!/bin/bash
+# shellcheck shell=bash
+# Install hooks for video-work-api-git
+# Does NOT enable or start the service. Does NOT download models.
+
+set -e
+
+_SERVICE_USER=video-work-api
+_DATA_DIR=/var/lib/video-work-api
+_CONF_DIR=/etc/video-work-api
+_APP_DIR=/usr/lib/video-work-api
+
+_ensure_root() {
+  if [ "$(id -u)" -ne 0 ]; then
+    echo "Error: install hooks must run as root." >&2
+    exit 1
+  fi
+}
+
+_ensure_user_and_dirs() {
+  if ! getent group "$_SERVICE_USER" >/dev/null 2>&1; then
+    groupadd --system "$_SERVICE_USER"
+  fi
+  if ! getent passwd "$_SERVICE_USER" >/dev/null 2>&1; then
+    useradd --system --gid "$_SERVICE_USER" \
+      --home-dir "$_DATA_DIR" \
+      --create-home \
+      --shell /usr/bin/nologin \
+      --comment "Video Work API" \
+      "$_SERVICE_USER"
+  fi
+
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR"
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR/videos"
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR/references"
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR/profiles"
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR/generations"
+  install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR/models"
+  install -dm755 -o root -g root "$_CONF_DIR"
+
+  # Keep ownership if directories already exist
+  chown -R "$_SERVICE_USER:$_SERVICE_USER" "$_DATA_DIR" || true
+
+  if [ -f "$_CONF_DIR/config.env" ]; then
+    chmod 640 "$_CONF_DIR/config.env" || true
+  fi
+}
+
+_print_banner() {
+  local mode="$1"
+  echo "-------------------------------------------------------------------"
+  case "$mode" in
+  install)
+    echo "video-work-api-git installed (service not enabled)."
+    echo ""
+    echo "First-time setup (as root — reexecs as $_SERVICE_USER):"
+    echo "  sudo vwactl setup          # Python venv + CosyVoice/FunClip deps"
+    echo "  sudo vwactl init           # DB + one-time setup token"
+    echo "  sudo vwactl model download # via hf CLI + Hub cache (opt-in, multi-GB)"
+    echo ""
+    echo "Optional MCP token in $_CONF_DIR/config.env:"
+    echo "  VWA_MCP_TOKEN=\$(openssl rand -hex 32)"
+    echo ""
+    echo "Start (manual only; package never enables the unit):"
+    echo "  sudo systemctl start video-work-api.service"
+    echo "  journalctl -u video-work-api.service -f"
+    echo ""
+    echo "Paths:"
+    echo "  App     $_APP_DIR"
+    echo "  Config  $_CONF_DIR/config.env"
+    echo "  Data    $_DATA_DIR"
+    echo "  Port    7860 (default)"
+    ;;
+  upgrade)
+    echo "video-work-api-git upgraded."
+    echo ""
+    echo "If Python deps changed, rebuild the service venv:"
+    echo "  sudo vwactl setup"
+    echo ""
+    echo "Restart only if you already run the unit:"
+    echo "  sudo systemctl restart video-work-api.service"
+    ;;
+  esac
+  echo "-------------------------------------------------------------------"
+  echo "Voice cloning requires explicit speaker consent. See SECURITY.md."
+  echo "-------------------------------------------------------------------"
+}
+
+post_install() {
+  _ensure_root
+  _ensure_user_and_dirs
+  systemctl daemon-reload || true
+  _print_banner install
+}
+
+post_upgrade() {
+  _ensure_root
+  _ensure_user_and_dirs
+  systemctl daemon-reload || true
+  _print_banner upgrade
+}
+
+post_remove() {
+  _ensure_root
+  systemctl daemon-reload || true
+  echo "-------------------------------------------------------------------"
+  echo "Package removed. Service user and data were kept on purpose."
+  echo "To wipe completely:"
+  echo "  sudo systemctl stop video-work-api.service 2>/dev/null || true"
+  echo "  sudo rm -rf $_DATA_DIR $_CONF_DIR"
+  echo "  sudo userdel $_SERVICE_USER 2>/dev/null || true"
+  echo "  sudo groupdel $_SERVICE_USER 2>/dev/null || true"
+  echo "-------------------------------------------------------------------"
+}
