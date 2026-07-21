@@ -46,10 +46,13 @@ sha256sum /tmp/LICENSE.new
 - Update `sha256sums=('<new_license_sha256>'` (first entry)
 - If version didn't change: increment `pkgrel`
 
-**Regenerate .SRCINFO:**
+**Regenerate .SRCINFO** (only when `makepkg` is available):
 ```bash
 makepkg --printsrcinfo > .SRCINFO
 ```
+
+If `makepkg` is unavailable, do not overwrite `.SRCINFO` with an empty file.
+Report that regeneration could not be performed and leave the existing file intact.
 
 ### 3. Check completions (only if version changed)
 
@@ -62,10 +65,16 @@ Compare with completion scripts. Update if CLI changed.
 ### 4. Validate
 
 ```bash
-bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
-namcap PKGBUILD
+bash -n qodercli.bash
+zsh -n qodercli.zsh   # only when zsh is installed
+fish -n qodercli.fish # only when fish is installed
+namcap PKGBUILD       # only when namcap is installed
 makepkg -si  # optional: local test build
 ```
+
+Missing optional tools (`makepkg`, `zsh`, `fish`, `namcap`) must be reported as
+skipped checks, not treated as update failures. Continue to the final status
+report after recording them.
 
 ### 5. Commit
 
@@ -113,6 +122,12 @@ qodercli <command> [flags]
 ```
 
 Discover actual commands/subcommands/flags via `qodercli --help`, `qodercli <command> --help`, etc. Exclude the `completion` command from completion scripts (it doesn't work correctly).
+
+When programmatically checking that root commands have completions, parse only
+the contiguous `Commands:` section of the root `qodercli --help` output: stop
+at its first blank line and accept only the command-name field. Do not scan all
+help output or subcommand help, since prose such as `directory.` can otherwise
+be mistaken for a command and cause a false failure.
 
 ### Flag Type Mapping
 
