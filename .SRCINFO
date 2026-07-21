@@ -1,0 +1,18 @@
+pkgbase = dualsensey-v2
+	pkgdesc = A program for DualSense controllers that combines power and simplicity
+	pkgver = 58
+	pkgrel = 1
+	url = https://github.com/WujekFoliarz/DualSenseY-v2
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = libappindicator-gtk3
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	source = DualSenseY-v2-58.tar.gz::https://github.com/WujekFoliarz/DualSenseY-v2/archive/refs/tags/58.tar.gz
+	sha256sums = f15ae591f71b421910b0cb6dbe60bb64ef45169cbd707ac4a37088e288995a37
+
+pkgname = dualsensey-v2
