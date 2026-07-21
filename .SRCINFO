@@ -1,0 +1,12 @@
+pkgbase = agenttool
+	pkgdesc = Terminal-based agentic coding assistant powered by local LLMs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/aditya-an1l/AgentTool
+	arch = any
+	license = Apache-2.0
+	depends = python>=3.10
+	source = https://github.com/aditya-an1l/AgentTool/archive/v0.2.0/agenttool-0.2.0.tar.gz
+	sha256sums = SKIP
+
+	pkgname = agenttool
