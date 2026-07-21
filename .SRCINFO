@@ -1,0 +1,19 @@
+pkgbase = quickjs-c-bridge-git
+	pkgdesc = Desktop bridges for quickjs
+	pkgver = r5.7204d9b
+	pkgrel = 1
+	url = https://github.com/abner/quickjs-c-bridge
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = quickjs-c-bridge
+	provides = libquickjs_c_bridge_plugin.so
+	conflicts = quickjs-c-bridge
+	source = git+https://github.com/abner/quickjs-c-bridge.git
+	sha256sums = SKIP
+
+pkgname = quickjs-c-bridge-git
