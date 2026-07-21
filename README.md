@@ -6,6 +6,14 @@ recreation of Minecraft Beta 1.7.3 written in C# on .NET.
 This repo holds only the AUR packaging (`PKGBUILD`, `.desktop` file). Source lives in the
 upstream repo, cloned at build time.
 
+Live on AUR: **https://aur.archlinux.org/packages/betasharp-git**
+
+```sh
+yay -S betasharp-git
+# or
+paru -S betasharp-git
+```
+
 ## What it does
 
 - Clones `betasharp-official/betasharp` (`main` branch) and runs
@@ -50,12 +58,12 @@ makepkg -o   # fetch + extract only
 makepkg -e   # build only, skip re-download
 ```
 
-## Publishing to AUR
-
-Not yet published. Once ready:
+## Publishing updates to AUR
 
 ```sh
 makepkg --printsrcinfo > .SRCINFO
-git remote add aur ssh://aur@aur.archlinux.org/betasharp-git.git
-git push aur main
+git add PKGBUILD .SRCINFO
+git commit -m "..."
+git push origin main   # GitHub mirror
+git push aur main:master   # AUR (branch must be master)
 ```
