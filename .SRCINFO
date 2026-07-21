@@ -8,9 +8,9 @@ pkgbase = sinq-bin
 	provides = sinq
 	arch = aarch64
 	source_aarch64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.11/sinq-1.0.0-rc.11-linux-arm64.tar.gz
-	sha256sums_aarch64 = ed9e851a540918dfcdcc60fac4c76614da1bd9f61946a87a505c8249f0d5dd1e
+	sha256sums_aarch64 = a51669a70f62046c991403d07932f84cb0327fbd404ab0e2fb7cadcd43bf41a0
 	arch = x86_64
 	source_x86_64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.11/sinq-1.0.0-rc.11-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e59e2d7d0c6022e4b5c60be173f08cda94f14f86e4724ebb6acdc1d6df7734f0
+	sha256sums_x86_64 = 7b3328e49c3133fc7ab7034a97b6655ba378158298807e7ffb4b7140018ab4ea
 	
 pkgname = sinq-bin
