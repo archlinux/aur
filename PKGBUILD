@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,12 @@ makedepends=('git' 'python' 'nodejs')
 conflicts=()
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+# !strip: the bundled Claude CLI (node_modules/@anthropic-ai/claude-agent-sdk-*/claude)
+# is a Bun-compiled executable whose embedded JS bundle lives in the ELF trailer.
+# makepkg's default strip truncates it, silently degrading the CLI into a bare
+# `bun` runtime (every SDK spawn then fails with: Script not found "stream-json").
+# !debug: without strip there are no symbols to split into a -debug package.
+options=('!strip' '!debug')
 
 build() {
   cd cogpit
