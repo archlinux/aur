@@ -42,7 +42,13 @@ Set `UUYC_WINE_PREFIX` to select a different Wine prefix explicitly.
 
 ## Migration from `uuyc`
 
-Close UU Remote before starting `uuyc-wine` for the first time. When the new destination does not already exist, the launcher atomically migrates a valid previous Wine installation and setup state:
+Close UU Remote before starting `uuyc-wine` for the first time. The launcher checks the exact previous `WINEPREFIX` and aborts before moving any data if the client, background service, or another Wine process is still running. Stop the default previous prefix with:
+
+```bash
+WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/uuyc/wineprefix" wineserver -k
+```
+
+When the previous prefix is inactive and the new destination does not already exist, the launcher atomically migrates the valid Wine installation and setup state:
 
 ```text
 ${XDG_DATA_HOME:-$HOME/.local/share}/uuyc

@@ -110,6 +110,29 @@ migrate_directory() {
     mv -- "$source" "$destination" || die "Failed to migrate $label."
 }
 
+prefix_has_processes() {
+    local prefix_path=$1
+    local environment
+
+    for environment in /proc/[0-9]*/environ; do
+        [[ $environment != "/proc/$$/environ" && -r $environment ]] || continue
+        if /usr/bin/grep -Fzqx -- "WINEPREFIX=$prefix_path" "$environment" 2>/dev/null; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+ensure_prefix_inactive() {
+    local prefix_path=$1
+    local quoted_prefix
+
+    if prefix_has_processes "$prefix_path"; then
+        printf -v quoted_prefix '%q' "$prefix_path"
+        die "The previous UU Remote Wine prefix is still running. Stop it first: WINEPREFIX=$quoted_prefix wineserver -k"
+    fi
+}
+
 mkdir -p "${migration_lock%/*}"
 exec 8>"$migration_lock"
 /usr/bin/flock 8
@@ -119,8 +142,10 @@ if [[ -n ${UUYC_WINE_PREFIX:-} ]]; then
 else
     if [[ ! -f "$xdg_prefix/$client_relpath" ]]; then
         if [[ -f "$previous_xdg_prefix/$client_relpath" ]]; then
+            ensure_prefix_inactive "$previous_xdg_prefix"
             migrate_directory "$previous_data_dir" "$data_dir" "the previous uuyc Wine prefix"
         elif [[ -f "$legacy_prefix/$client_relpath" ]]; then
+            ensure_prefix_inactive "$legacy_prefix"
             [[ ! -e "$xdg_prefix" ]] || \
                 die "Cannot migrate the legacy Wine prefix because the destination already exists: $xdg_prefix"
             mkdir -p "$data_dir"
