@@ -3,7 +3,6 @@ pkgbase = sbsp
 	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/Keinsleif/sbsp
-	install = sbsp.install
 	arch = x86_64
 	license = Elastic-2.0
 	depends = glibc
