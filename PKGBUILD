@@ -1,7 +1,7 @@
 # Maintainer: Joidy App <https://github.com/Axel-DaMage/joidy>
 pkgname=joidy
-pkgver=main
-_tag=main
+pkgver=1.0.0_rc.2
+_tag=1.0.0-rc.2
 pkgrel=1
 pkgdesc="Personal knowledge management with gamification"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://joidy-web.vercel.app"
 license=('GPL3')
 depends=('docker' 'docker-compose')
 source=("https://github.com/Axel-DaMage/joidy/archive/v${_tag}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('d38bbe19ad57530a994dca282c41777168fd74f54332388b668ee217aec1ef81')
 
 package() {
   cd "${srcdir}/joidy-${_tag}"
