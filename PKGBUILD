@@ -102,11 +102,14 @@ prepare() {
   pnpm -C browser/$_pkgname all:build
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
+  export FIREDRAGON_EDITION=$_branding
 
   if [ $CARCH = x86_64 ]; then
     echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-x64.mozconfig\"" >> ../mozconfig
+    export FIREDRAGON_TARGET=linux-x64
   elif [ $CARCH = aarch64 ]; then
     echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-arm64.mozconfig\"" >> ../mozconfig
+    export FIREDRAGON_TARGET=linux-arm64
   fi
 
   cat >> ../mozconfig <<END
