@@ -1,56 +1,45 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
-pkgver=7270.0.0.1
-pkgrel=4
+pkgver=7271.0.0.4
+pkgrel=1
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
-mirror=supportvpn.brown.edu
-source=('LICENSE'
-        'no-desktop-file-dbus.aarch64.patch'
-        'no-desktop-file-dbus.x86_64.patch')
+mirror=vpn-mgmt.it.mtu.edu
+source=('no-desktop-file-dbus.patch'
+  'license.html::https://cdn.f5.com/product/apm/apps/eula.html')
 source_aarch64=("linux_${pkgname}-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_${pkgname}.aarch64.deb")
 source_x86_64=("linux_${pkgname}-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_${pkgname}.x86_64.deb")
-b2sums_aarch64=('ed3e2cdd046e93bccbf72b79d1f092a08f81f86fb9c0d74bafbb7f9140d6e5766b8cf43022dd41c5e392e286ae145031c0b28ac96627243b42d23098d05ec029')
-b2sums_x86_64=('faebae14b28631e1199eecf345953212f62fe46928c0745013855dd3d7f113959693fe3a743aac8390aec22feadfaff9c23a22790a706d4fe80885bebbc82daf')
-b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c'
-'d64f0d1a4d413701dd31464c086b84049fbf5919774f2440a8d9f139deedf8b9e83a229ad59cf5434c5ccd33a0151bb9621d941096b4cc1d641c86681f81eafa'
-'5be3f5ebd0358e022c85081b45bc23b1e847542ae9035bece95c40fa5113a1fd9159ced013950d237206c2e6be94caa38b9d6414ea29ab65cd80043a2dfbfe5a')
-sha256sums_aarch64=('5ad185127ee6dbc70dcc8228fbb914d6f8a6416efc19f5cb29a478ed22acfa49')
-sha256sums_x86_64=('08934a2e9fa1eaddeb4a7934432f8f235d701e9e2b4da93369337202f7b805d9')
-sha256sums=('85f06be8b8e438c4cefdad9e8975d1c48fd53446fe35e95d4260ba14ac7f98fd'
-'fadc7ae9c2297a93101a98c24ed63087a05a6e24bb33ba4b795bfd4339dba7cf'
-'3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
-depends=(openssl)
+sha256sums=('4f4e0f6362ece63d5370e8059c182e869198fb203455bc0fa50ee3ed95a9cdd0'
+            '4507e09374f3e6044952f375e4a1af31505b267c4e0bb066ff159e85694a3d6e')
+sha256sums_aarch64=('4ad1008f04119975b169963960511174660403f63897be34f91abc4333418915')
+sha256sums_x86_64=('04f8c670fabfe4d125849832973c3441d741ec31b1a325d799b3e702964988c0')
+b2sums=('a7c4fe1a43f71fc39f42883dd80a234852bdadc0f4d595b63308cb511749a2f84ee475c4f3dd8eb74bfb854c2cfe56528d05b0a07ab637e78297e61ba7d9baf2'
+        '234729d2ff102638d649e46aa7da193f3a46af396cf063876cbabb71b946ef2df4731519acc48f87e2a2d51f52e45ce494e04320a3fa006fbe5fb734820f51d8')
+b2sums_aarch64=('48036a2df2c810bdbbbc3ab686da4f0ba1e4bb2c675fa6b0a15c848b8a59353d46ee8a6ea53fff2573961c31207efc732f5fab44b1e23106137b9708d89d9a24')
+b2sums_x86_64=('f8dac5cd7c42aeee508483041400392904e6a695bb8aca267c507c399240b0ea36764de05e591de7ad39024d01be80032fc8ae33c6d5416bd07fc2cab097b911')
+depends=(openssl icu webkit2gtk-4.1)
 optdepends=(
   'xorg-xwayland: wayland support'
 )
 provides=("${pkgname}")
-url='https://support.f5.com/csp/article/K32311645#link_04_05'
+url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-1.html'
 license=('commercial')
 
 pkgver() {
   tar -xf data.tar.xz
-  grep -oEm1 --text '[0-9]+(\.[0-9]+){3}' opt/f5/vpn/svpn
+  grep -oEm1 --text '[0-9]+(\.[0-9]+){3}' usr/share/f5vpn-ng/svpn
 }
 
 package() {
+  # f5vpn-ng should not be run as root, but it calls svpn which must be run as root
+  chmod u+s "${srcdir}/usr/share/f5vpn-ng/svpn"
+
   (
-  cd "${srcdir}/opt/f5/vpn"
-
-  patch -i "${srcdir}/no-desktop-file-dbus.${CARCH}.patch" # Desktop file does not work with Dbus enabled
-
-  chmod u+s svpn # f5vpn should not be run as root, but it calls svpn which must be run as root
-  install -Dm644 "com.f5.${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.f5.${pkgname}.desktop"
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
-  ln -s '/opt/f5/vpn/f5vpn_launch_helper.sh' "${pkgdir}/usr/bin/${pkgname}"
-  ln -s '/opt/f5/vpn/tunnelserver' "${pkgdir}/usr/bin/tunnelserver"
-
-  for resolution in 16 24 32 48 64 96 128 256 512 1024; do
-      install -Dm644 "logos/${resolution}x${resolution}.png" \
-                      "${pkgdir}/usr/share/icons/hicolor/${resolution}x${resolution}/apps/${pkgname}.png"
-  done
+    cd "${srcdir}/usr/share/applications"
+    patch -i "${srcdir}/no-desktop-file-dbus.patch" # Desktop file does not work with Dbus enabled
   )
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -a opt "${pkgdir}"
+  install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
+  install -Dm644 'license.html' "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+
+  cp -a usr "${pkgdir}"
 }
