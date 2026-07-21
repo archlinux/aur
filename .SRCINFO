@@ -1,6 +1,6 @@
 pkgbase = elephc
 	pkgdesc = A PHP-to-native compiler. Takes a subset of PHP and compiles it directly to native assembly, producing standalone binaries.
-	pkgver = 0.26.0
+	pkgver = 0.26.2
 	pkgrel = 1
 	url = https://elephc.dev/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephc
 	depends = libgcc
 	depends = glibc
 	options = !debug
-	source = elephc-0.26.0.tar.gz::https://github.com/illegalstudio/elephc/archive/refs/tags/v0.26.0.tar.gz
-	b2sums = 72b66e9f08f38418d98f3b574fc344e0512c432fb9a6ea7aaa82ea91e4ef9a08e4abcf3697b38700372499a9bcc2824e4d4d6acc233869f66456cbd0a6a455b7
+	source = elephc-0.26.2.tar.gz::https://github.com/illegalstudio/elephc/archive/refs/tags/v0.26.2.tar.gz
+	b2sums = c0b4d47e297fb3a5c1923843e416eed60d2d5d0b3972cbd5b91236f59b4fc5a4a2f385d8c88d6c9f0d273c25438686b57550ce219a19f6e9942bda3c03d9558e
 
 pkgname = elephc
