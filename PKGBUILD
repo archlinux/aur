@@ -1,7 +1,7 @@
 # Maintainer: psychosomat <hello@ddark.dev>
 
 pkgname=openscreen-git
-pkgver=1.6.0.r40.gb67811f
+pkgver=1.7.0.r21.gf508a21
 pkgrel=1
 pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
