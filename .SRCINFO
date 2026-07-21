@@ -1,6 +1,6 @@
 pkgbase = xwpe
 	pkgdesc = Borland Turbo C/Pascal-style programming editor and IDE for console and X11, with LSP and DAP clients
-	pkgver = 1.6.5
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://codeberg.org/mendezr/xwpe
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = xwpe
 	conflicts = wpe-common
 	replaces = wpe
 	replaces = wpe-common
-	source = xwpe-1.6.5.tar.gz::https://codeberg.org/mendezr/xwpe/releases/download/v1.6.5/xwpe-1.6.5.tar.gz
-	sha256sums = 9e214192fa45c5bb5f2894343e0f4c879af69ea52ce95af08ec9a5d5aea35e6e
+	source = xwpe-1.6.9.tar.gz::https://codeberg.org/mendezr/xwpe/releases/download/v1.6.9/xwpe-1.6.9.tar.gz
+	sha256sums = 14499a7a4f5193bf23f539285adf7156054c5bfe6b20b991e705e3c3a5f6b392
 
 pkgname = xwpe

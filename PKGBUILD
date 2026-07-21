@@ -7,7 +7,7 @@
 # vim: ts=2 sw=2
 
 pkgname=xwpe
-pkgver=1.6.5
+pkgver=1.6.9
 pkgrel=1
 pkgdesc='Borland Turbo C/Pascal-style programming editor and IDE for console and X11, with LSP and DAP clients'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ provides=('wpe' 'wpe-common')
 conflicts=('wpe' 'wpe-common')
 replaces=('wpe' 'wpe-common')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9e214192fa45c5bb5f2894343e0f4c879af69ea52ce95af08ec9a5d5aea35e6e')
+sha256sums=('14499a7a4f5193bf23f539285adf7156054c5bfe6b20b991e705e3c3a5f6b392')
 
 build() {
   cd "${pkgname}-${pkgver}"
