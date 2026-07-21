@@ -6,10 +6,8 @@ pkgdesc='Terminal anime browser and player'
 arch=('any')
 url='https://github.com/tuanlyphong/anime_tui'
 license=('custom:project')
-depends=('nodejs' 'fzf' 'mpv' 'java-runtime' 'chromium')
+depends=('nodejs' 'fzf' 'mpv' 'java-runtime')
 makedepends=('git' 'npm')
-provides=('anime-tui')
-conflicts=('anime-tui')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

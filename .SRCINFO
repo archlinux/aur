@@ -11,9 +11,6 @@ pkgbase = anime_tui
 	depends = fzf
 	depends = mpv
 	depends = java-runtime
-	depends = chromium
-	provides = anime-tui
-	conflicts = anime-tui
 	source = git+https://github.com/tuanlyphong/anime_tui.git
 	sha256sums = SKIP
 
