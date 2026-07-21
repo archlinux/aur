@@ -29,8 +29,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('120219799f21408243d3852835b0b97dac3510298c243e9b2579b9d664f46e08')
-sha256sums_x86_64=('7ec107d88f966940051a817cca7ca972da9fc04fd722db74433fb0ac483ab58a')
+sha256sums_aarch64=('08148663cc639ea19853eea5ea328bc41c2b5e2da6f3a28a305a42cc820be7eb')
+sha256sums_x86_64=('0cf233359e8808d232517f9855ddd0a353ff64f4427a8b93537b42199e0c3902')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
