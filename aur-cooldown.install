@@ -11,7 +11,3 @@ post_install() {
            aur-cooldown upgrade   (installs versions that have aged past 7 days)
 MSG
 }
-
-post_upgrade() {
-	post_install
-}
