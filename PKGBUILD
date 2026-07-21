@@ -1,7 +1,7 @@
 # Maintainer: Maxsspeaker <voidfox@maxsspeaker.space>
 
 pkgname=msmp-foxwave
-pkgver=6.0.1pre
+pkgver=6.0.2pre
 pkgrel=4
 pkgdesc="MSMP FoxWave - streaming audio player for PC"
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'qt6-base' 
     'qt6-declarative' 
     'python-dbus-next'
+    'python-numpy'
 )
 makedepends=(
     'git'
@@ -27,27 +28,13 @@ makedepends=(
 )
 
 source=(
-    "git+https://github.com/maxsspeaker/MSMP-6.git#commit=e2de6ece3ad095b48594"
+    "git+https://github.com/maxsspeaker/MSMP-6.git#commit=b0dd7685d04559de0924"
+
 )
 sha256sums=(
     'SKIP'
 )
 
-prepare() {
-    cd "$srcdir/MSMP-6"
-
-    python3.14 -m venv .venv --system-site-packages
-
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install discord-rpc
-}
-
-build() {
-    cd "$srcdir/MSMP-6"
-
-    source .venv/bin/activate
-}
 
 package() {
     cd "$srcdir/MSMP-6"
@@ -56,11 +43,10 @@ package() {
     install -d "$pkgdir/usr/share/applications/"
 
     cp -r $srcdir/MSMP-6/* "$pkgdir/opt/$pkgname/"
-    cp -r $srcdir/MSMP-6/.venv* "$pkgdir/opt/$pkgname/"
 
     echo """#!/usr/bin/sh
         cd /opt/$pkgname
-        QT_AUDIO_BACKEND="PulseAudio" /opt/$pkgname/.venv/bin/python main.py""" > $pkgdir/opt/$pkgname/msmp-foxwave
+        QT_AUDIO_BACKEND="PulseAudio" /usr/bin/python main.py""" > $pkgdir/opt/$pkgname/msmp-foxwave
 
     echo """[Desktop Entry]
 Categories=AudioVideo;Audio;Player;
