@@ -1,7 +1,7 @@
 pkgbase = vsview-nativeres
 	pkgdesc = A vsview plugin for analyzing and determining the native resolution of video content
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://pypi.org/project/vsview-nativeres/
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = vsview-nativeres
 	makedepends = python-hatch-sbom
 	depends = vsview
 	depends = python-nativeres
-	source = https://files.pythonhosted.org/packages/source/v/vsview_nativeres/vsview_nativeres-0.3.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/v/vsview_nativeres/vsview_nativeres-0.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = vsview-nativeres

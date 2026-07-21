@@ -2,8 +2,8 @@
 
 pkgname=vsview-nativeres
 _origpkgname=vsview_nativeres
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A vsview plugin for analyzing and determining the native resolution of video content"
 arch=("x86_64")
 url='https://pypi.org/project/vsview-nativeres/'
