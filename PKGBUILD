@@ -1,4 +1,4 @@
-# Maintainer: pantarune <keremmarla44@gmail.com>
+# Maintainer: pantarune 
 
 pkgname=niri-screenshare
 pkgver=0.1.0
