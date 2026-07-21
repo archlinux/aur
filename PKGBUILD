@@ -102,6 +102,7 @@ prepare() {
         --exec="${pkgname%-git} %U"
     _set_build_env
     _ensure_local_nvm
+    cp -f .env.example .env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "/productName: 'YesPlayMusic'/a\\
         electronDist: \"/usr/lib/electron${_electronversion}\"," vue.config.js
