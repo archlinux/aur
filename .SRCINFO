@@ -1,0 +1,27 @@
+pkgbase = posprint
+	pkgdesc = Designer for POS-print documents with live preview and USB ESC/POS printing
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/Timfa/posprint
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = rsync
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = libxcb
+	depends = openssl
+	depends = dbus
+	depends = wayland
+	depends = libx11
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	options = !lto
+	source = https://gitlab.com/Timfa/posprint/-/archive/0.4.0/posprint-0.4.0.tar.gz
+	sha256sums = b54a73c38deb9c57388039b00fd451038264b6fa3694348456108fb3c117f923
+
+pkgname = posprint
