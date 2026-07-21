@@ -2,23 +2,34 @@
 _name=sentencepiece
 pkgbase="${_name}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
 license=('Apache-2.0')
-makedepends=('git' 'cmake'
-             'abseil-cpp' 'gperftools' 'protobuf'
-             'python' 'python-build' 'python-setuptools' 'python-wheel' 'python-installer')
+makedepends=(
+  'git'
+  'cmake'
+  # For sentencepiece
+  'abseil-cpp'
+  'gperftools'
+  'protobuf'
+  # For python-sentencepiece
+  'python'
+  'python-build'
+  'python-setuptools'
+  'python-wheel'
+  'python-installer'
+)
 checkdepends=('python-pytest')
 source=(
   "${_name}::git+${url}.git#tag=v${pkgver}"
   'dont-include-data-files-in-python-pkg.patch'
 )
 sha512sums=(
-  'f9bfaf0183da4f1aa27f169b28fb0db95cdc1ff7e3e12f04cc64eae563c0ab5ed6a30e820659736509ca420363473ece1af27657975095080e772d841e5f3475'
-  '86443111c23d1d0f7db27673d8bb34e1a5d7e49e301b0e0978bb32b29cde51a924ff95bd079923f993c8e1180400b4268c39fa500102c99925daaaffeefe90ff'
+  '8a1b21e382b7e4649e406ed6d9cc2121df12c4c8b3e35524eaedc794539d1031afbd06e826aa25463ceb71ed556b2a4cd804253c4eb012b6ceca9ba79e644f42'
+  '6fd675cf0187c2ddc0919e7c1aeb47768d4e3a0d7d8613215896678d489fb815de8473f6e6d6b611b4c269f135f7feca5c70b69c9e331123026caa3cd1afd871'
 )
 
 prepare() {
@@ -26,8 +37,8 @@ prepare() {
 
   git clean -dfx
 
-  # https://github.com/google/sentencepiece/issues/1137
-  git cherry-pick --no-commit 6dadda597b9e19ad3efb8890585f0b92266c7c0e
+  # Make sure we use system packages
+  rm -rf src/builtin_pb third_party/{abseil-cpp,protobuf-lite}
 
   # The base pkg includes data already
   git apply --verbose ../dont-include-data-files-in-python-pkg.patch
@@ -42,6 +53,7 @@ build() {
 
   cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -DSPM_BUILD_TEST=ON \
     -DSPM_ENABLE_TCMALLOC=ON \
     -DSPM_ENABLE_SHARED=ON \
@@ -81,7 +93,10 @@ package_sentencepiece() {
 package_python-sentencepiece() {
   pkgdesc="Python wrapper for SentencePiece"
   depends=("${pkgbase}=${pkgver}-${pkgrel}" 'libgcc' 'libstdc++' 'glibc' 'python')
-  optdepends=('python-protobuf')
+  optdepends=(
+    'python-numpy'
+    'python-protobuf'
+  )
 
   cd "${_name}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
