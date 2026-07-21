@@ -1,0 +1,28 @@
+pkgbase = legacy-launcher-bootstrap
+	pkgdesc = Legacy Launcher for Minecraft (Unofficial Installer)
+	pkgver = 1.40.3
+	pkgrel = 1
+	url = https://llaun.ch/
+	arch = any
+	license = LicenseRef-LegacyLauncher
+	depends = java-runtime>=17
+	depends = hicolor-icon-theme
+	noextract = LegacyLauncher.jar
+	source = LegacyLauncher.jar::https://llaun.ch/jar
+	source = LICENSE
+	source = legacy-launcher.svg
+	source = legacy-launcher_256.png
+	source = legacy-launcher_512.png
+	source = minecraft.svg
+	source = minecraft_256.png
+	source = minecraft_512.png
+	sha256sums = 09ba7517c8a9b30780ff9a6de230b8905247835ae0da914d66991e2b3b4b6c4e
+	sha256sums = 476a68d242896eb7a51ec8bb3d3fadfa93474f3b89b5a0ba40599e66b27955a8
+	sha256sums = bfe4f259f20bc4626c7619e7d72ec1940e631ff0872258064a1d55e6413f73d2
+	sha256sums = 4d960d32736f6173fc8254b922ebf673e8a2dd2c6dfc963864a3d70b24db8a6b
+	sha256sums = fd602599d1910358866bcc501118adfd13bcd89bd1a63e23953e68d153160370
+	sha256sums = ece5c3bb77bfadd043591c01b3504fb9c04daa951d93322a321e15036095d6a3
+	sha256sums = 94aa904c39037d5cd0852a108fd9995ca422bba745903d9b1f490fb4e2ad4fc8
+	sha256sums = d234769b937fa3725a51ccbf0b1a6c8405b571fe2b88f77f086daaa2bedef466
+
+pkgname = legacy-launcher-bootstrap
