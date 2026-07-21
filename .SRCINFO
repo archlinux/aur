@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.16.23.sk1
+	pkgver = 3.16.23.5.sk1
 	pkgrel = 1
 	url = https://github.com/3003n/gamescope
 	install = gamescope.install
@@ -48,7 +48,7 @@ pkgbase = gamescope-sk
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#tag=3.16.23.sk1
+	source = git+https://github.com/3003n/gamescope.git#tag=3.16.23.5.sk1
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://github.com/ValveSoftware/openvr.git
@@ -56,7 +56,7 @@ pkgbase = gamescope-sk
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/Joshua-Ashton/vkroots.git
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
-	b2sums = SKIP
+	b2sums = 0d3eb1571b38c11647c760486fd7e67f7edd3c723dcc72cc140ed9cdc05c4c25ea84189c87c0ba79e846987d1b6692c41454e39a7a2edf550b24d493337cfee4
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
