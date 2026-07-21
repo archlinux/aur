@@ -1,0 +1,21 @@
+pkgbase = r-qrm
+	pkgdesc = Provides R-Language Functions to Examine Quantitative Risk Management Concepts
+	pkgver = 0.4.35
+	pkgrel = 1
+	url = https://cran.r-project.org/package=QRM
+	arch = x86_64
+	license = GPL-2
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-gsl
+	depends = r-mvtnorm
+	depends = r-numderiv
+	depends = r-rcpp
+	depends = r-timedate
+	depends = r-timeseries
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/QRM_0.4-35.tar.gz
+	sha256sums = 327ff1acb478c0a47554c930ffd5c44ab9150e1617aea00b99f8b450c8956415
+
+pkgname = r-qrm
