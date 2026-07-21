@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Vyčas Nery <vycasnicolas@gmail.com>
 pkgname=betasharp-git
 pkgver=snapshot.pre1.0.6.r53.g288c93f8
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced recreation of Minecraft Beta 1.7.3 (launcher, client, server)"
 arch=('x86_64')
 url="https://git.gay/betasharp-official/betasharp"
