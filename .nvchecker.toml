@@ -1,0 +1,5 @@
+[ccmux-bin]
+source = "github"
+github = "epilande/ccmux"
+use_latest_release = true
+prefix = "v"

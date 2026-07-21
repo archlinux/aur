@@ -1,0 +1,20 @@
+pkgbase = ccmux-bin
+	pkgdesc = 🔮 Track all your AI coding agents (Claude Code, Codex, Cursor, ...) in tmux and jump to the one that needs you
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/epilande/ccmux
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = tmux
+	provides = ccmux
+	conflicts = ccmux
+	options = !strip
+	source = README-1.2.0.md::https://raw.githubusercontent.com/epilande/ccmux/v1.2.0/README.md
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/epilande/ccmux/v1.2.0/LICENSE
+	sha256sums = 19f6640d72bd7c9f639bff9d1bdd97031182bed87536299ce7b14253f6294fbe
+	sha256sums = 1ab02a35c31af7c45c695a5f0d24581f0c6a21102ab311d9f037e84ad3566569
+	source_x86_64 = ccmux-x86_64-1.2.0::https://github.com/epilande/ccmux/releases/download/v1.2.0/ccmux-linux-x64
+	sha256sums_x86_64 = 731406d4355fb522cdbd1600a745f140126c7bfc001632045a130defee17a6f7
+
+pkgname = ccmux-bin
