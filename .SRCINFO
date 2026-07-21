@@ -1,6 +1,6 @@
 pkgbase = agildocheats
 	pkgdesc = Trainer de memória Linux: scanner, .CT, congelar valores e teleport (PyQt6)
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/juglesbass/AgildoCheats
 	install = agildocheats.install
@@ -10,9 +10,9 @@ pkgbase = agildocheats
 	depends = python-psutil
 	depends = python-pyqt6
 	optdepends = nvidia-utils: leitura de GPU NVIDIA via nvidia-smi
-	source = AgildoCheats-1.0.9.tar.gz::https://github.com/juglesbass/AgildoCheats/archive/refs/tags/v1.0.9.tar.gz
+	source = AgildoCheats-1.0.10.tar.gz::https://github.com/juglesbass/AgildoCheats/archive/refs/tags/v1.0.10.tar.gz
 	source = agildocheats.desktop
-	sha256sums = 153f44cc7ffac0eedb309243172648dff54718c3951895a9946badcc8f7075dc
+	sha256sums = 05faa214d5b1f0d3df5c85139bc8010a2593066afc53c7bc050d9b48b4419d4b
 	sha256sums = 778f0be0ac03ed41991bde29030b88d69f455d252ce1c1c37ad4c1fe478bddda
 
 pkgname = agildocheats

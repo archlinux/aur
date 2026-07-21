@@ -6,7 +6,7 @@ pkgname=agildocheats
 _githubuser=juglesbass
 _repo=AgildoCheats
 
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 
 pkgdesc="Trainer de memória Linux: scanner, .CT, congelar valores e teleport (PyQt6)"
@@ -32,7 +32,7 @@ source=(
   "${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
   "agildocheats.desktop"
 )
-sha256sums=('153f44cc7ffac0eedb309243172648dff54718c3951895a9946badcc8f7075dc'
+sha256sums=('05faa214d5b1f0d3df5c85139bc8010a2593066afc53c7bc050d9b48b4419d4b'
             '778f0be0ac03ed41991bde29030b88d69f455d252ce1c1c37ad4c1fe478bddda')
 
 package() {
