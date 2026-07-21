@@ -1,6 +1,6 @@
 pkgbase = python-pyjnius
 	pkgdesc = Python module to access Java class as Python class, using JNI.
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/kivy/pyjnius
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = python-pyjnius
 	depends = python
 	depends = java-environment
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/p/pyjnius/pyjnius-1.6.1.tar.gz
-	sha256sums = d2a7ece6ed79bf1d7f97a4f6d61302d9f1d7652182a3e4c8a69dbaef31396e60
+	source = https://files.pythonhosted.org/packages/source/p/pyjnius/pyjnius-1.7.0.tar.gz
+	source = cython-version.patch
+	sha256sums = 9f81708484b0a84ead3eb0ba84e53ac579e4c43ca10c746f9898a9f3dd50f54d
+	sha256sums = 70a518662c51acc3fda703a0909bb6e0f7af7c4610888a0d09e1e6968cbdd49a
 
 pkgname = python-pyjnius
