@@ -1,6 +1,6 @@
 pkgbase = voisu-bin
 	pkgdesc = Cloud-first Linux dictation for Wayland (prebuilt binaries)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Anuraj-Dev/voisu
 	install = voisu-bin.install
@@ -22,9 +22,9 @@ pkgbase = voisu-bin
 	optdepends = libei: direct Delivery of the Transcript into the focused window
 	optdepends = xdg-desktop-portal-kde: portal backend for KDE Plasma
 	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland
-	provides = voisu=0.1.0
+	provides = voisu=0.1.1
 	conflicts = voisu
-	source = voisu-bin-0.1.0.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v0.1.0/voisu-0.1.0-x86_64.tar.gz
-	sha256sums = ae4a64ae3f2dd2587f2e9a1696007aeabca74921ac94b232d955098c17d956cc
+	source = voisu-bin-0.1.1.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v0.1.1/voisu-0.1.1-x86_64.tar.gz
+	sha256sums = 892fd7b9029fd2dc273eb33a3b49345860d3780eec0aa346bcb1fcc6d44929a6
 
 pkgname = voisu-bin
