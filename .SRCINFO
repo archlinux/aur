@@ -1,0 +1,15 @@
+pkgbase = cosmic-sound-theme-git
+	pkgdesc = System76 COSMIC Sound Theme
+	pkgver = r8.7aabe44
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-sound-theme
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = meson
+	provides = cosmic-sound-theme
+	conflicts = cosmic-sound-theme
+	source = git+https://github.com/pop-os/cosmic-sound-theme.git
+	sha256sums = SKIP
+
+pkgname = cosmic-sound-theme-git
