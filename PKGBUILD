@@ -2,8 +2,8 @@
 pkgname=sober-bin
 _upstream_version=0.7.1
 pkgver="${_upstream_version//-/_}"
-pkgrel=2
-pkgdesc='Local-first repository governance assistant with deterministic review readiness'
+pkgrel=3
+pkgdesc='Prevent AI-Slop: Local-first repository governance assistant and code reviewer with deterministic review readiness'
 arch=('x86_64')
 # Marketing / product site (read about Sober). Source + releases: git.sovereign-society.org/Sober/sober
 url='https://sober-dev.pages.dev'
