@@ -1,0 +1,19 @@
+pkgbase = lich-bin
+	pkgdesc = A personal harness for AI-assisted development
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/omartelo/lich
+	arch = x86_64
+	license = AGPL-3.0-only
+	optdepends = chromium: app window (any Chromium-family browser works: chromium, google-chrome, brave)
+	optdepends = zenity: native folder picker
+	provides = lich
+	conflicts = lich
+	source = lich-v0.12.0-linux-amd64::https://github.com/omartelo/lich/releases/download/v0.12.0/lich-v0.12.0-linux-amd64
+	source = lich-0.12.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.12.0/build/linux/lich.desktop
+	source = lich-0.12.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.12.0/build/appicon.png
+	sha256sums = e309718afa964f259483395e41910924648641a01614cffe5a986a64c3e07a0f
+	sha256sums = b5f6635d59ef2b178cdf5788798fa4bac6b66505830c3b1b1f93bf8fe90dca8e
+	sha256sums = d61ff3a75bfa9845b330a6d2ddeddb2450a2795d9e64338b2f05261e5eedc2c3
+
+pkgname = lich-bin
