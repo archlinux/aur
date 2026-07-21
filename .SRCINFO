@@ -1,0 +1,22 @@
+pkgbase = r-bergm
+	pkgdesc = Bayesian Exponential Random Graph Models
+	pkgver = 5.0.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Bergm
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-coda
+	depends = r-ergm
+	depends = r-matrixcalc
+	depends = r-mcmcpack
+	depends = r-mvtnorm
+	depends = r-network
+	depends = r-rglpk
+	depends = r-statnet.common
+	optdepends = r-spelling
+	source = https://cran.r-project.org/src/contrib/Bergm_5.0.7.tar.gz
+	sha256sums = 391aea0d052126ac3dff4d7eddde41329d4fdca46ba3791d9a6d486ce59a8d8f
+
+pkgname = r-bergm
