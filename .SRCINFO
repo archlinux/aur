@@ -1,7 +1,7 @@
 pkgbase = fortitude
 	pkgdesc = A Fortran linter, inspired by (and built upon) Ruff.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PlasmaFAIR/fortitude
 	arch = x86_64
 	license = MIT

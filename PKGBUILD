@@ -1,8 +1,10 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# shellcheck disable=SC2034,SC2154
+# shellcheck shell=bash
 
 pkgname=fortitude
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Fortran linter, inspired by (and built upon) Ruff.'
 arch=(x86_64)
 url='https://github.com/PlasmaFAIR/fortitude'
@@ -16,33 +18,33 @@ b2sums=('8209fab764d736509728d92d9ba580fb161d5fc3ea2082a9a2126109654d9b831651769
 options=('!lto')
 
 prepare() {
-    cd "$pkgname"
+  cd "$pkgname" || exit
 
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-    cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    export LIBGIT2_NO_VENDOR=1
-    cargo build --frozen --release --all-features
+  cd "$pkgname" || exit
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export LIBGIT2_NO_VENDOR=1
+  cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$pkgname"
+  cd "$pkgname" || exit
 
-    export RUSTUP_TOOLCHAIN=stable
-    # Upstream specifically recommends using nextest in CONTRIBUTING.md
-    cargo nextest
+  export RUSTUP_TOOLCHAIN=stable
+  # Upstream specifically recommends using nextest in CONTRIBUTING.md
+  cargo nextest run
 }
 
 package() {
-    cd "$pkgname"
+  cd "$pkgname" || exit
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
