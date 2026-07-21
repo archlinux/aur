@@ -1,12 +1,12 @@
 post_install() {
   printf '%s\n' \
     'Configure ~/.config/sayall/config.json, then run:' \
-    '  systemctl --user enable --now sayall.service sayall-hud.service' \
+    '  sayall setup' \
     'Add your compositor key binding for: sayall toggle'
 }
 
 post_upgrade() {
   printf '%s\n' \
-    'Restart SayAll to load the upgraded binaries:' \
-    '  systemctl --user restart sayall.service sayall-hud.service'
+    "If upgrading outside 'sayall update', restart SayAll with:" \
+    '  sayall setup'
 }
