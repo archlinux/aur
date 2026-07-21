@@ -1,6 +1,6 @@
 pkgbase = phosphor-logging-git
 	pkgdesc = Libraries for common event and logging creation.
-	pkgver = r1190.c82be43
+	pkgver = r1191.f88d6ff
 	pkgrel = 1
 	url = https://github.com/openbmc/phosphor-logging
 	arch = x86_64
