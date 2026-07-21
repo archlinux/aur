@@ -1,15 +1,15 @@
 pkgname=pastebox-cli
-pkgver=26.07.20.3
+pkgver=26.07.21
 pkgrel=1
 pkgdesc="Lightweight command-line client for self-hosted Pastebox servers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kmw0410/pastebox-cli"
 license=('MIT')
 makedepends=('go>=1.26.4')
-_tag=v26.07.20-3
-_commit=7653427
+_tag=v26.07.21
+_commit=2dd5162
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('ddf9b25566525979f964b5a158f490dbc693f9a5b08c919b230c924eafcc4aa3')
+sha256sums=('8aa0133d575a676e7c20a304f8380588a58b84042c01ea501e72194e948993d8')
 
 build() {
   cd "${pkgname}-${_tag#v}"
