@@ -1,6 +1,6 @@
 pkgbase = rustnet-bin
 	pkgdesc = Real-time network monitoring TUI with process identification via eBPF and deep packet inspection
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/domcyrus/rustnet
 	install = rustnet-bin.install
@@ -10,12 +10,12 @@ pkgbase = rustnet-bin
 	depends = libpcap
 	depends = libelf
 	depends = zlib
-	provides = rustnet=1.4.0
+	provides = rustnet=1.5.0
 	conflicts = rustnet
 	conflicts = rustnet-git
-	source_x86_64 = rustnet-1.4.0-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v1.4.0/rustnet-v1.4.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 352fdf1bef54169415ea68fc6307b9268a68b7c5e00d657e5ae04bd29b6a8e6a
-	source_aarch64 = rustnet-1.4.0-aarch64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v1.4.0/rustnet-v1.4.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = db01abc25b5bfd861ceb09f8bdd2545fde72aa2630435c0f8277137436766ca8
+	source_x86_64 = rustnet-1.5.0-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v1.5.0/rustnet-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 12abdc27f73263fb725739a12afbbe85139c0bd1d313c7ce07d8e6960fa4b17d
+	source_aarch64 = rustnet-1.5.0-aarch64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v1.5.0/rustnet-v1.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b5bc69c42b04fabdf49fc73eb0b1d8520e962569ca65d2031648732c8e79dea8
 
 pkgname = rustnet-bin
