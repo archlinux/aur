@@ -1,6 +1,6 @@
 pkgbase = postybirb-plus
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly. Postybirb plus version (Client/Server).(Use system-wide electron)
-	pkgver = 3.1.72
+	pkgver = 3.1.73
 	pkgrel = 1
 	url = https://www.postybirb.com
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = postybirb-plus
 	makedepends = yarn
 	makedepends = jq
 	depends = electron19
-	source = postybirb-plus-3.1.72::git+https://github.com/mvdicarlo/postybirb-plus#tag=v3.1.72
+	source = postybirb-plus-3.1.73::git+https://github.com/mvdicarlo/postybirb-plus#tag=v3.1.73
 	source = postybirb-plus.sh
-	sha256sums = bece85dba307cf262cf6b5f87c3c85fd7d51a39d2d4f131266a81993e05bbcf5
+	sha256sums = 8ee95830597a7d2e6f5016d29491a290222e64c93eb524d8707313d62f705b88
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = postybirb-plus

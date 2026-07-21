@@ -2,7 +2,7 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.72
+pkgver=3.1.73
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('bece85dba307cf262cf6b5f87c3c85fd7d51a39d2d4f131266a81993e05bbcf5'
+sha256sums=('8ee95830597a7d2e6f5016d29491a290222e64c93eb524d8707313d62f705b88'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,23 +39,21 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	HOME="${srcdir}/.electron-gyp"
-    electronDist="/usr/lib/electron${_electronversion}"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -94,13 +92,13 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}/electron-app"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/ui/public/assets/icons/minnowicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
