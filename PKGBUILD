@@ -1,5 +1,5 @@
 pkgname=cutrail
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=2
 pkgdesc='Desktop video clipping utility for batch range exports'
 arch=('x86_64')
@@ -52,5 +52,6 @@ Exec=cutrail %U
 Icon=cutrail
 Terminal=false
 Categories=AudioVideo;Video;
+MimeType=video/mp4;video/x-matroska;video/webm;video/quicktime;video/x-msvideo;
 EOF
 }
