@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Wayland voice dictation daemon and recording HUD'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   'websocket.zig-b70e733.tar.gz::https://github.com/karlseguin/websocket.zig/archive/b70e733bc0d0ba0a98ff5fe5ef64d3017c85f369.tar.gz'
 )
 sha256sums=(
-  'e7aa6de8bc8fd93aa1199ed8258cd7ff5bc2a945d6f2cde3302bf43585930ed6'
+  'e17a9a87cf3725aa270fca5ff153f86465c6b2946c14023ba01b5bc7a7e84e83'
   '55e6b7d11c61a81bcf7482578e460da78719459dd4c8370f52033229ae529fe9'
 )
 
