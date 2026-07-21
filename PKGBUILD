@@ -10,8 +10,6 @@ makedepends=(
   'git'
   'meson'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-sound-theme.git')
