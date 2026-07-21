@@ -11,8 +11,10 @@ pkgbase = itchio-bin
 	depends = libxtst
 	depends = nss
 	depends = xdg-utils
+	provides = itchio
+	conflicts = itchio
 	options = !strip
 	source = itch-26.15.0.tar.gz::https://broth.itch.zone/itch/linux-amd64/26.15.0/archive/default
-	sha256sums = SKIP
+	sha256sums = c5bc21f9584bb7802d5875ca5244483dae5360efbc6e39677b0bf497d2df8b10
 
 pkgname = itchio-bin
