@@ -1,0 +1,17 @@
+pkgbase = aether-proxy-bin
+	pkgdesc = User-space proxy client for tunneling traffic through filtered networks via a local SOCKS5 proxy
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/CluvexStudio/Aether
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = AGPL-3.0-only
+	source = aether-linux-x86_64.tar.gz::https://github.com/CluvexStudio/Aether/releases/download/v1.3.0/aether-linux-x86_64.tar.gz
+	source = aether-wrapper
+	source = LICENSE::https://raw.githubusercontent.com/CluvexStudio/Aether/v1.3.0/LICENSE
+	sha256sums = 45a239526267690c4c3345d50a0eef9ba7ded99cc40a3c05cea713ec9ae18c57
+	sha256sums = SKIP
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+
+pkgname = aether-proxy-bin

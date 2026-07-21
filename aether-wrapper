@@ -1,0 +1,15 @@
+#!/bin/sh
+
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/aether"
+
+mkdir -p "$CONFIG_DIR" || {
+    echo "error: cannot create config directory: $CONFIG_DIR" >&2
+    exit 1
+}
+
+cd "$CONFIG_DIR" || {
+    echo "error: cannot change directory to: $CONFIG_DIR" >&2
+    exit 1
+}
+
+exec /usr/lib/aether/aether "$@"
