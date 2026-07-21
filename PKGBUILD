@@ -1,48 +1,43 @@
-# Maintainer: wobbol <no@spam.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: wobbol <no@spam.com>
 # Contributor: Jakob Riepler <aur@chaosfield.at>
 # Contributor: Trevor Bergeron <aur@sec.gd>
 
 pkgname=nginx-mod-rtmp-git
-pkgver=1196.a5ac72c
+_pkgname=nginx-rtmp-module
+pkgver=1263.b59d6c8
 pkgrel=1
+pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support'
+arch=(i686 x86_64)
+url="https://github.com/sergey-dryabzhinsky/$_pkgname"
+license=(BSD)
+depends=(nginx openssl)
+makedepends=(git
+             nginx-src)
+provides=("$_pkgname"
+          "${pkgname%-git}")
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
 
-_modname="nginx-rtmp-module"
-_nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
-
-pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support.'
-arch=('i686' 'x86_64')
-depends=('nginx' 'openssl')
-provides=("$_modname")
-url='https://github.com/sergey-dryabzhinsky/nginx-rtmp-module'
-license=('BSD')
-
-source=(
-	"http://nginx.org/download/nginx-$_nginxver.tar.gz"
-	"http://nginx.org/download/nginx-$_nginxver.tar.gz.asc"
-	"$_modname::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git"
-)
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
-# Maxim Dounin <mdounin@mdounin.ru>
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
+prepare() {
+	rm -f nginx
+	cp -a /usr/src/nginx .
+}
 
 pkgver() {
-	cd "$_modname"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	printf "%s.%s" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "nginx-$_nginxver"
-	./configure --with-compat "--add-dynamic-module=../$_modname"
+	cd nginx
+	./configure --with-compat --add-dynamic-module="../$_pkgname"
 	make modules
 }
 
 package() {
-	cd "$_modname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	cd "../nginx-$_nginxver/objs"
-	install -Dm755 ngx_rtmp_module.so "$pkgdir/usr/lib/nginx/modules/ngx_rtmp_module.so"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$_pkgname/LICENSE"
+	install -Dm0755 -t "$pkgdir/usr/lib/nginx/modules/" nginx/objs/ngx_rtmp_module.so
 }
