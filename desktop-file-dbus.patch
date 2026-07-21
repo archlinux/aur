@@ -1,12 +1,11 @@
 diff --git a/usr/share/applications/f5vpn-ng.desktop b/usr/share/applications/f5vpn-ng.desktop
-index a0700a5..bc84d55 100644
+index a0700a5..a8dd5fd 100644
 --- a/usr/share/applications/f5vpn-ng.desktop
 +++ b/usr/share/applications/f5vpn-ng.desktop
-@@ -10,6 +10,6 @@ Categories=Network;
- MimeType=x-scheme-handler/f5-vpn;x-scheme-handler/f5-epi;
- StartupNotify=false
+@@ -12,4 +12,6 @@ StartupNotify=false
  StartupWMClass=f5vpn-ng
--DBusActivatable=true
-+DBusActivatable=false
+ DBusActivatable=true
  X-GNOME-DBusActivationService=com.f5.f5vpn
++X-DBUS-ServiceName=com.f5.f5vpn
++X-DBUS-StartupType=Unique
  NoDisplay=false

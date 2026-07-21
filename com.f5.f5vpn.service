@@ -1,0 +1,10 @@
+[Unit]
+Description=F5 VPN
+After=dbus.service
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+Type=dbus
+BusName=com.f5.f5vpn
+ExecStart=/usr/bin/f5vpn-launcher
