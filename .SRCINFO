@@ -1,6 +1,6 @@
 pkgbase = xilinx-language-server
 	pkgdesc = xilinx language server
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/xilinx-language-server
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xilinx-language-server
 	makedepends = python-installer
 	depends = python-pygls
 	depends = python-platformdirs
-	source = https://files.pythonhosted.org/packages/py3/x/xilinx_language_server/xilinx_language_server-0.0.5-py3-none-any.whl
-	sha256sums = c43cf65ed689e08fbb1fa08e4cf211d5e5f7bb3cf222a52de658572da8067740
+	source = https://files.pythonhosted.org/packages/py3/x/xilinx_language_server/xilinx_language_server-0.0.6-py3-none-any.whl
+	sha256sums = 5ebda45aa383c04b68062b48830486ac60c45eb4816e5001f53979856585b865
 
 pkgname = xilinx-language-server
