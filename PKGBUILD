@@ -1,4 +1,4 @@
-# Contributor: a821 <a821 (at nospam) mail de>
+# Maintainer: a821 <a821 (at nospam) mail de>
 # Contributor: dobedobedo <dobe0331 at gmail dot com>
 
 # pin 'sample-data' commit needed for `check()`
@@ -6,7 +6,7 @@ _data=b2c0458d18a26b84c4262a09a106bd7cdeb1203d
 
 pkgname=python-spectral
 pkgver=0.24
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python module for hyperspectral image processing."
 arch=('any')
 depends=('python' 'python-numpy')
@@ -33,6 +33,14 @@ source=("$pkgname::git+https://github.com/spectralpython/spectral.git#tag=$pkgve
 sha256sums=('11f3aafc70fb29f41e0b2cbe23200f3483fb25ae3abc06e8c4214c89eddac2f4'
             '19f3128d452bcb40a605620b7c9a7410d7c9553a707aa342f15a118ee8e62e3d')
 
+prepare() {
+    cd "$pkgname"
+    # cherry pick bug fixes, in particular bb2bf223 fixes numpy >= 2.4 issues
+    git cherry-pick -n aa249bba9b88e060feab5c813439304ffb394fec
+    git cherry-pick -n 1f9fe693587c5d7b36ce04a10163b84a14ca4fed
+    git cherry-pick -n bb2bf2237595cfdc3ff874a83bb2717f532456e5
+}
+
 build() {
     cd "$pkgname"
     python -m build --wheel --no-isolation
@@ -44,8 +52,7 @@ check(){
     local _site=$(python -c 'import site;print(site.getsitepackages()[0])')
     cd ..
     export PYTHONPATH="$srcdir/temp/$_site"
-    SPECTRAL_DATA=$pkgname-sample-data python -m spectral.tests.run ||
-        echo -e '\n\nTests FAILED!\n'
+    SPECTRAL_DATA=$pkgname-sample-data python -m spectral.tests.run
 }
 
 package() {
