@@ -1,6 +1,6 @@
 pkgbase = cosmo-tui-git
 	pkgdesc = terminal client for the cosmo app
-	pkgver = r130.2c590e7
+	pkgver = r141.76fb488
 	pkgrel = 1
 	url = https://codeberg.org/djvu/cosmo-tui
 	arch = x86_64

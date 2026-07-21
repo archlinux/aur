@@ -1,6 +1,6 @@
 # Maintainer: djvu <djvu@noreply.codeberg.org>
 pkgname=cosmo-tui-git
-pkgver=r130.2c590e7
+pkgver=r141.76fb488
 pkgrel=1
 pkgdesc="terminal client for the cosmo app"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-linkmode external" -o cosmo-tui ./cmd/cosmo-tui
+  go build -ldflags "-linkmode external -X main.version=${pkgver}-${pkgrel}" -o cosmo-tui ./cmd/cosmo-tui
 }
 
 check() {
