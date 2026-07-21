@@ -1,0 +1,15 @@
+pkgbase = niri-screenshare
+	pkgdesc = Portal backend for niri implementing ScreenCast
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/pantarune/niri-screenshare
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = niri
+	source = niri-screenshare-0.1.0.tar.gz::https://github.com/pantarune/niri-screenshare/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = niri-screenshare
