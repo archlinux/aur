@@ -55,7 +55,7 @@ package_python-nab-index() {
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_python-nab-python() {
@@ -74,7 +74,7 @@ package_python-nab-python() {
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_python-nab-resolver() {
@@ -89,5 +89,5 @@ package_python-nab-resolver() {
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
