@@ -6,7 +6,6 @@ pkgbase = jellium-desktop-bin
 	url = https://github.com/andrewrabert/jellium-desktop
 	arch = x86_64
 	license = GPL-2.0-only
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	provides = jellyfin-desktop
 	provides = jellyfin-desktop-git
