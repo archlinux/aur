@@ -1,0 +1,32 @@
+pkgbase = r-bfpack
+	pkgdesc = Flexible Bayes Factor Testing of Scientific Expectations
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BFpack
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-bain
+	depends = r-bergm
+	depends = r-berryfunctions
+	depends = r-coda
+	depends = r-ergm
+	depends = r-lme4
+	depends = r-metabma
+	depends = r-mvtnorm
+	depends = r-pracma
+	depends = r-qrm
+	depends = r-sandwich
+	optdepends = r-knitr
+	optdepends = r-lmtest
+	optdepends = r-metafor
+	optdepends = r-polycor
+	optdepends = r-pscl
+	optdepends = r-remstimate
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BFpack_1.6.1.tar.gz
+	sha256sums = a273fbdd91ec8381dbeec63d880b1ce8d85371f2c3cfd24700104ed34c8ca1e3
+
+pkgname = r-bfpack
