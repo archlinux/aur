@@ -1,6 +1,6 @@
 pkgbase = hardcover-tui-bin
 	pkgdesc = An unofficial TUI client for Hardcover - the social book tracking platform
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/NotMugil/hardcover-tui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = hardcover-tui-bin
 	optdepends = kwallet: KDE Wallet keyring backend
 	provides = hardcover-tui
 	conflicts = hardcover-tui
-	source_x86_64 = https://github.com/NotMugil/hardcover-tui/releases/download/v1.0.3/hardcover-tui_1.0.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b21d5544f4d47cb40636706b08df155a6a65ea0c9127b998895de315ed779fd
-	source_aarch64 = https://github.com/NotMugil/hardcover-tui/releases/download/v1.0.3/hardcover-tui_1.0.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = f90cd47f40ef7e69d4721f5ba6f0b923c2884e10736a1587d9cf27a672daef47
+	source_x86_64 = https://github.com/NotMugil/hardcover-tui/releases/download/v1.1.0/hardcover-tui_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b76bf7d9494b9380fb5ae2e36ebc3d7126eaae39aeb6b90a319f4dfd835aa71
+	source_aarch64 = https://github.com/NotMugil/hardcover-tui/releases/download/v1.1.0/hardcover-tui_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6831558374f1d22352ab3709367f754287a39dcfe06319e204bc78695710c02a
 
 pkgname = hardcover-tui-bin
