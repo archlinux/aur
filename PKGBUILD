@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}
 pkgdesc="Git Worktree Manager"
 
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'zlib' 'git')
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('72f6f960ba1a2e30eb2be6e406a8cae5672134d3267d0237bfad232a6fcf8709')
+sha256sums=('e766f80e5d9331e29bc5deb20429bfcd2f84bd0ac057532914ba182336d51c6e')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
