@@ -4,9 +4,9 @@ _atualizar_caches() {
 }
 
 _msg_autostart() {
-  echo "Agildo Thermo: arranque automatico em /etc/xdg/autostart/"
-  echo "  Desactivar: Configuracoes do Sistema > Arranque > Programas automaticamente"
-  echo "  ou: rm /etc/xdg/autostart/agildothermo.desktop"
+  echo "Agildo Thermo C++: arranque automatico em /etc/xdg/autostart/"
+  echo "  Desactivar: Configuracoes do Sistema > Arranque"
+  echo "  ou: sudo rm /etc/xdg/autostart/agildothermo.desktop"
 }
 
 post_install() { _atualizar_caches; _msg_autostart; }

@@ -1,22 +1,27 @@
 # Maintainer: Agildo Gomes da Silva <agomesdasilva99@gmail.com>
-# Upstream: https://github.com/juglesbass/AgildoThermo
+# Thermo C++/Qt6 — substitui a versao Python no mesmo pacote agildothermo.
 
 pkgname=agildothermo
 _githubuser=juglesbass
 _repo=AgildoThermo
 
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 
-pkgdesc="Monitor na bandeja: CPU, GPU, RAM, HUD flutuante e alertas (PyQt6)"
-arch=("any")
+pkgdesc="Monitor na bandeja: CPU, GPU, RAM, disco e rede (C++/Qt6, nativo Wayland)"
+arch=("x86_64")
 url="https://github.com/${_githubuser}/${_repo}"
 license=("GPL-3.0-or-later")
 
 depends=(
-  "python"
-  "python-psutil"
-  "python-pyqt6"
+  "gcc-libs"
+  "glibc"
+  "qt6-base"
+)
+makedepends=(
+  "cmake"
+  "ninja"
+  "librsvg"
 )
 optdepends=(
   "nvidia-utils: sensores NVIDIA via nvidia-smi"
@@ -28,43 +33,35 @@ install="${pkgname}.install"
 _source_file="${_repo}-${pkgver}.tar.gz"
 source=(
   "${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
-  "agildothermo.desktop"
   "agildothermo-autostart.desktop"
 )
-sha256sums=('e29f2c5d4dfb08eecd0580c91c0e1bc86c484a9787681d54580b4d863b181cb6'
-            '1b74ca1072141670c4352b2142893e3cbaa8e8b296bebc6d05895a62d65d9cae'
-            '43d81b46fd58acf6604cac1dd31cc517d0bae9cf2868a777a1606beb74a03221')
+sha256sums=('SKIP' '43d81b46fd58acf6604cac1dd31cc517d0bae9cf2868a777a1606beb74a03221')
+
+prepare() {
+  cd "${srcdir}/${_repo}-${pkgver}"
+  bash packaging/gerar-icones.sh
+}
+
+build() {
+  cd "${srcdir}/${_repo}-${pkgver}"
+  cmake -S . -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build --parallel
+}
 
 package() {
   cd "${srcdir}/${_repo}-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  install -m644 agildo_thermo.py "${pkgdir}/usr/lib/${pkgname}/"
-
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
-#!/bin/sh
-# Wayland nativo no KDE; xcb só se AGILDO_THERMO_FORCE_XCB=1
-export AGILDO_THERMO_FORCE_XCB="${AGILDO_THERMO_FORCE_XCB:-}"
-exec python -u /usr/lib/agildothermo/agildo_thermo.py "$@"
-EOF
-
-  install -Dm644 "${srcdir}/agildothermo.desktop" \
-    "${pkgdir}/usr/share/applications/agildothermo.desktop"
   install -Dm644 "${srcdir}/agildothermo-autostart.desktop" \
     "${pkgdir}/etc/xdg/autostart/agildothermo.desktop"
 
-  local icone="${pkgdir}/usr/share/icons/hicolor"
-  for tam in 16 22 24 32 48 64 128 256; do
-    if [[ -f "data/icons/hicolor/${tam}x${tam}/apps/agildothermo.png" ]]; then
-      install -Dm644 "data/icons/hicolor/${tam}x${tam}/apps/agildothermo.png" \
-        "${icone}/${tam}x${tam}/apps/agildothermo.png"
-    fi
-  done
-  if [[ -f data/icons/hicolor/scalable/apps/agildothermo.svg ]]; then
-    install -Dm644 data/icons/hicolor/scalable/apps/agildothermo.svg \
-      "${icone}/scalable/apps/agildothermo.svg"
-  fi
-  if [[ -f icone_thermo.png ]]; then
-    install -Dm644 icone_thermo.png "${pkgdir}/usr/share/pixmaps/agildothermo.png"
-  fi
+  # Nome legado no menu (versao Python usava agildothermo.desktop)
+  install -Dm644 data/org.agildosoft.agildothermo.desktop \
+    "${pkgdir}/usr/share/applications/agildothermo.desktop"
+
+  ln -sf org.agildosoft.agildothermo.svg \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/agildothermo.svg"
 }
