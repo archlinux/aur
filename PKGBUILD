@@ -2,7 +2,7 @@
 
 pkgname=qteasytier-bin
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="基于 EasyTier, 一款美观实用的远程联机工具!"
 arch=('x86_64')
 options=('!debug')
@@ -14,7 +14,7 @@ provides=('qteasytier')
 conflicts=('qteasytier')
 install=qteasytier.install
 source=("https://gitee.com/qteasytier/qt-easy-tier/releases/download/${pkgver}/qteasytier_v${pkgver}_linux_amd64.deb")
-sha256sums=('9cd157870cc44efcd356717abb453fef62df3dcaaed5b45751118cba8d2521aa')
+sha256sums=('1be6dfe5cfda9c40b8df576e4b80ffb27731f1cb95cf8ce99afbd5cfda782aad')
 
 package() {
     cd "${srcdir}"
