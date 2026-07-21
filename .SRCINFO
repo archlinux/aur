@@ -1,0 +1,13 @@
+pkgbase = plasma6-applet-caldavtasks
+	pkgdesc = Plasma 6 widget to view and manage VTODO tasks from any CalDAV-compatible server
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Sinkmanu/Plasma-Widgets
+	arch = any
+	license = GPL-3.0-only
+	depends = plasma-workspace
+	depends = qt6-declarative
+	source = plasma6-applet-caldavtasks-1.2.2.tar.gz::https://github.com/Sinkmanu/Plasma-Widgets/archive/23bf550990f971e2ba25dba9fd9847f7f31e6b34.tar.gz
+	sha256sums = 1c7f159ac68afe35a467efb84aee6661c1d82c723da107c2aa19fccdd90c7f88
+
+pkgname = plasma6-applet-caldavtasks
