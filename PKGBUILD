@@ -1,5 +1,5 @@
 pkgname=synchrogit
-pkgver=26.7.4
+pkgver=26.7.5
 pkgrel=1
 pkgdesc='Daemon that keeps git repositories synced with their remotes'
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url='https://github.com/partanskiy/synchrogit'
 license=('GPL-3.0-or-later')
 depends=('git')
 makedepends=('cargo' 'lowdown')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.7.4.tar.gz")
-sha256sums=('019653e776d08a9a06b1ebc8610783f34bc9855c05b1c600c4de73ca7bb2b154')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.7.5.tar.gz")
+sha256sums=('178ad0276c8cdab1d13deeae067026e83e3a3ef29b007f295401e20b6e941875')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
