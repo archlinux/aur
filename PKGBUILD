@@ -1,6 +1,6 @@
 pkgname=synchrogit-bin
 _pkgname=synchrogit
-pkgver=26.7.2
+pkgver=26.7.3
 pkgrel=1
 pkgdesc='Daemon that keeps git repositories synced with their remotes (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('GPL-3.0-or-later')
 depends=('git')
 provides=("synchrogit=$pkgver")
 conflicts=('synchrogit')
-source_x86_64=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.2/synchrogit-v26.7.2-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.2/synchrogit-v26.7.2-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('5af578f24156f73743974aa87c1bc35838da9a55fb38d80d3eb832934dd9e781')
-sha256sums_aarch64=('f61041922e59808dba042fa011ea7c418aa2eee14f98ce0451edcb568ac9ffa9')
+source_x86_64=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.3/synchrogit-v26.7.3-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.3/synchrogit-v26.7.3-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('ea36d835a2d31212c4c410b51060b9ef30a974be657384a54a65fbcb1830d8d0')
+sha256sums_aarch64=('0d9b75fd1008a90c83e100eabd8078d06fd8f91cdb1439d473f400148e8d1b58')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
