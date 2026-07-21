@@ -1,23 +1,25 @@
 pkgbase = runelite
 	pkgdesc = Open source Old School RuneScape client.
-	pkgver = 2.7.5
+	pkgver = 2.8.0
 	pkgrel = 1
 	epoch = 1
 	url = https://runelite.net/
 	arch = any
 	license = BSD
-	depends = java-runtime>=11
+	depends = java-runtime>=17
 	depends = ttf-font
 	optdepends = gvfs: enable links
 	optdepends = libnotify: native tray notifications
 	noextract = RuneLite.jar
-	source = 2.7.5_RuneLite.jar::https://github.com/runelite/launcher/releases/download/2.7.5/RuneLite.jar
-	source = 2.7.5_RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/2.7.5/LICENSE
-	source = 2.7.5_runelite.png::https://raw.githubusercontent.com/runelite/launcher/2.7.5/appimage/runelite.png
+	source = 2.8.0_RuneLite.jar::https://github.com/runelite/launcher/releases/download/2.8.0/RuneLite.jar
+	source = 2.8.0_RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/2.8.0/LICENSE
+	source = 2.8.0_runelite.png::https://raw.githubusercontent.com/runelite/launcher/2.8.0/appimage/runelite.png
 	source = runelite.desktop
-	sha256sums = d22398f15a512f08f596abc3f7b47fb8c58d7a198bf6158eab91e166584024af
+	source = runelite
+	sha256sums = 6ac03129ee7df2034883f368ba10f4b91fed364d0aa699a4a7f4b5e9511524e0
 	sha256sums = 1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad
 	sha256sums = 81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = runelite

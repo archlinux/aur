@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MIN_JAVA=11
+MIN_JAVA=17
 
 extract_number() {
 	awk 'match($0, /[0-9]+/) { print substr($0, RSTART, RLENGTH); exit }'
