@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Vyčas Nery <vycasnicolas@gmail.com>
 pkgname=betasharp-git
-pkgver=snapshot.pre1.0.6.r53.g288c93f8
+pkgver=r1160.g6033c372
 pkgrel=2
 pkgdesc="Enhanced recreation of Minecraft Beta 1.7.3 (launcher, client, server)"
 arch=('x86_64')
@@ -17,8 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-g/.g/' \
-        || printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
