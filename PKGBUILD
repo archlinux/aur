@@ -5,7 +5,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Portal backend for the niri compositor implementing the ScreenCast interface"
 arch=('x86_64')
-url="https://github.com/pantarune/xdg-desktop-portal-niri"
+url="https://github.com/pantarune/niri-screenshare"
 license=('GPL3')
 depends=(
   'xdg-desktop-portal'
@@ -18,7 +18,7 @@ optdepends=(
   'gnome-keyring: secret portal'
 )
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pantarune/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pantarune/niri-screenshare/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
