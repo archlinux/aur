@@ -1,0 +1,27 @@
+pkgbase = sbsp
+	pkgdesc = Audio playback software for event usage with precice control and remote control.
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/Keinsleif/sbsp
+	install = sbsp.install
+	arch = x86_64
+	license = Elastic-2.0
+	depends = glibc
+	depends = libgcc
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = dbus
+	depends = webkit2gtk-4.1
+	depends = alsa-lib
+	options = !strip
+	options = !debug
+	source = https://raw.githubusercontent.com/Keinsleif/sbsp/refs/tags/app-2.5.4/LICENSE.md
+	sha256sums = 48255018b41fc0e965b1115af7e6779bc218bb8a6747d561da800d5022622aa2
+	source_x86_64 = https://github.com/Keinsleif/sbsp/releases/download/app-2.5.4/SBS.Player_2.5.4_amd64.deb
+	sha256sums_x86_64 = dfeef77ceb829c171c7dde30da6c5d951e44b7694aff952c41bf29d313901928
+
+pkgname = sbsp
