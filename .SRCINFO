@@ -1,0 +1,20 @@
+pkgbase = python-exejs
+	pkgdesc = Run JavaScript code from Python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/exejs
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = exejs
+	provides = python-exejs
+	conflicts = exejs
+	conflicts = python-exejs
+	source = exejs-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/e/exejs/exejs-1.0.0.tar.gz
+	sha256sums = d01f5e791d26d27630b61b68ed006193fae9629d3cccba0de24fc05cd24f95bc
+
+pkgname = python-exejs
