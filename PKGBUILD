@@ -2,7 +2,7 @@
 
 pkgname=openscreen-appimage
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
 url="https://github.com/getopenscreen/openscreen"
@@ -16,7 +16,7 @@ source=(
   "openscreen.desktop"
   "openscreen"
 )
-sha256sums=('832500819b6e6f781dd1863426bb45a18ac53d827cabaf20d01492e8c818719a' 'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82' 'SKIP' 'SKIP')
+sha256sums=('9c16c3dc5f8a3691d01dcb23f6b1db473454efcdf0142561f249ba0fa5bdab0c' 'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82' 'SKIP' 'SKIP')
 
 prepare() {
   chmod +x "$srcdir/Openscreen-Linux-$pkgver.AppImage"
