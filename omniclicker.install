@@ -1,0 +1,11 @@
+post_install() {
+    # Load the uinput module immediately
+    modprobe uinput || true
+    # Reload udev rules to apply the permissions instantly
+    udevadm control --reload-rules
+    udevadm trigger --name-match=uinput
+}
+
+post_upgrade() {
+    post_install
+}
