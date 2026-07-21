@@ -1,7 +1,7 @@
 pkgbase = joidy
 pkgdesc = Personal knowledge management with gamification
 pkgver = 1.0.0_rc.2
-pkgrel = 1
+pkgrel = 2
 url = https://joidy-web.vercel.app
 arch = any
 license = GPL3

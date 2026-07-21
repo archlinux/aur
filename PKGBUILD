@@ -2,7 +2,7 @@
 pkgname=joidy
 pkgver=1.0.0_rc.2
 _tag=1.0.0-rc.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal knowledge management with gamification"
 arch=('any')
 url="https://joidy-web.vercel.app"
