@@ -1,35 +1,44 @@
-# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
-pkgname=python-tyro
-_pkgname=${pkgname#python-}
-pkgver=0.9.24
+_appauthor="brentyi"
+_appname="tyro"
+
+pkgname="python-${_appname}"
+pkgver=1.0.15
 pkgrel=1
-pkgdesc='Strongly typed, zero-effort CLI interfaces'
-arch=('any')
-url='https://github.com/brentyi/tyro'
+pkgdesc="Strongly typed, zero-effort CLI interfaces"
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 license=('MIT')
-groups=()
-depends=(
-    'python-colorama'
-    'python-docstring-parser'
-    'python-rich'
-    'python-shtab'
-    'python-typeguard'
-    'python-typing_extensions'
-)
-makedepends=('python-build' 'python-installer' 'python-hatchling'
-             'python-wheel')
-optdepends=()
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b60bc8a8c3780909c4ad670fb73e562de9c5112310b7bfba6a7d87394176356')
+arch=('any')
+
+_url_pypi="https://pypi.org/project/${_pypi_package}/"
+_url_github="https://github.com/${_appauthor}/${_appname}"
+url="${_url_github}"
+
+makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
+depends=('python' 'python-msgspec' 'python-docstring-parser' 'python-pydantic' 'python-pytorch' 'python-typeguard' 'python-typing_extensions' 'python-attrs' 'python-yaml' 'python-universal_pathlib' 'python-shtab')
+
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
+sha256sums=('3ab17214d762f8f3476a30f6c7d114a5c9830e7e1731ecd2c2538e837970e5b1')
+
 
 build() {
-    python -m build -nw $srcdir/$_pkgname-$pkgver
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $srcdir/$_pkgname-$pkgver
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        dist/$_pkgname-$pkgver-*-*.whl
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
