@@ -1,6 +1,6 @@
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=yd-go
-pkgver=cfa24b6
+pkgver=8bb23ddd
 pkgrel=1
 epoch=
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
@@ -23,7 +23,7 @@ source=("https://github.com/slytomcat/yd-go/releases/download/master-${pkgver}/y
 yd-go.png)
 
 #noextract=()
-b2sums=('02de3216ecd1d52e340ebe4abfe838399183993419c68c19be81a39340497d7a7884059d6cfa62daa5723705d26612669371fa4836204f9afe6d4bcfc35b196a'
+b2sums=('2f0f531479cf7c6d169e10adbfa8b5314125db0ccc1ae341315df57e09ba8ec3bde2cde6092854f2185879e81f405645d3ac73b983b5d762418e1c416e28f944'
         '647865327ba584fdc36ddc37e85b6457af6ca888d1b25479a7b8a94a81d0629a71c954a21c8604ef5e96c529178fcf9c4b6fd82df41a1ab6a9ab2d5c281c2c41')
 
 
