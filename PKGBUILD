@@ -1,7 +1,7 @@
 # Maintainer: WindustH <windusth2006@gmail.com>
 
 pkgname=calibre-tui
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A TUI application to search and open books in your Calibre library."
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,11 @@ makedepends=('git' 'rust')
 conflicts=("$pkgname-git")
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname"
+  git submodule update --init --recursive
+}
 
 build() {
   cd "$pkgname"
