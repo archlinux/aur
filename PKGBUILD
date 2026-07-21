@@ -1,6 +1,6 @@
 # Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 pkgname=panobble-git
-pkgver=r14.0000000
+pkgver=r14.0c24a4a
 pkgrel=1
 pkgdesc="Minimal MPRIS to Last.fm scrobbler daemon"
 arch=('x86_64' 'aarch64')

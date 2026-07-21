@@ -1,6 +1,6 @@
 pkgbase = panobble-git
 	pkgdesc = Minimal MPRIS to Last.fm scrobbler daemon
-	pkgver = r14.0000000
+	pkgver = r14.0c24a4a
 	pkgrel = 1
 	url = https://github.com/arrufat/panobble
 	arch = x86_64
