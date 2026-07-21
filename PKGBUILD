@@ -19,7 +19,7 @@ url=${_url_github}
 
 provides=("${_pypi_package}")
 
-makedepends=('cargo' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs' 'meson-python' 'python-ninja' 'ninja')
+makedepends=('cargo' 'python-wheel' 'python-build' 'python-installer' 'meson-python' 'python-ninja' 'ninja')
 depends=('glibc' 'libgcc' 'python' 'python-typing_extensions' 'python-graphviz' 'python-rich')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
