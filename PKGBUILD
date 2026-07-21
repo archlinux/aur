@@ -5,8 +5,8 @@ provides=(zalo)
 conflicts=(zalo)
 pkgver=26.7.10
 _zadarkver=26.2.1
-_commithash=26b3559
-pkgrel=1
+_commithash=769e907
+pkgrel=2
 pkgdesc="Zalo for Linux"
 arch=('x86_64')
 url="https://github.com/doandat943/zalo-for-linux"
@@ -34,7 +34,7 @@ source=(
 )
 options=(!strip !debug)
 sha256sums=(
-    'd26e8397f4f808683a1f0373ef8cb4558fbed7fdc167c1ebe1154aa3eb01f6c4'
+    '1f7b3ce007c783b71259e8e79b766733658fffb52e970f9a2b17f43fbcd07371'
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
