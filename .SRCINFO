@@ -1,6 +1,6 @@
 pkgbase = kappastream-bin
 	pkgdesc = A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kappy7777/kappastream
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = kappastream-bin
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = hicolor-icon-theme
-	provides = kappastream=0.2.0
+	provides = kappastream=0.2.1
 	conflicts = kappastream
 	conflicts = kappastream-git
-	source = https://github.com/kappy7777/kappastream/releases/download/v0.2.0/kappastream-0.2.0-x86_64.tar.gz
-	sha256sums = 0b8080b28b3cbecdb848938307e0d15f4c4facb31f938af22d00781bec396a1b
+	source = https://github.com/kappy7777/kappastream/releases/download/v0.2.1/kappastream-0.2.1-x86_64.tar.gz
+	sha256sums = 4809e3035919a219aa4b4cf0841d722a1bcfdab3467d7510cd7115d25dc77153
 
 pkgname = kappastream-bin
