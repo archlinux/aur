@@ -1,6 +1,6 @@
 # Maintainer: Ildar Minaev <minaev.ildar@gmail.com>
 pkgname=input-action-controller
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Map Linux input events to configurable actions"
 url="https://github.com/IldarMinaev/input-action-controller"
@@ -10,7 +10,7 @@ depends=('python' 'python-pyudev' 'python-evdev' 'python-tomlkit' 'systemd' 'sud
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pyudev' 'python-evdev' 'python-tomlkit' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0dfa2ade23ea464e38ca8dac1bb05a1c34c153a2d807b5dc276f1b8a30148a48')
+sha256sums=('e01f261ef679cd5afc9ed165379d6934a81e7429b7c5936b8e828b5dd84cb96a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
