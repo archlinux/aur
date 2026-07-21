@@ -5,7 +5,7 @@ _pkgname=hermes-agent
 pkgname=python-${_pkgname}
 tag=2026.7.20
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
 url="https://github.com/NousResearch/${_pkgname}"
@@ -44,9 +44,11 @@ makedepends=('python-installer' 'python-wheel' 'python-build' 'python-setuptools
 options=('!strip' '!debug')
 source=(
     "${url}/archive/refs/tags/v${tag}.tar.gz"
+    "0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 )
 sha256sums=(
     '285f3fc134ff466a90065e1517801a68993733b807158ee8f32aa01613786990'
+    '6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71'
 )
 
 prepare() {
@@ -54,6 +56,8 @@ prepare() {
   # Arch Linux currently ships newer setuptools than upstream's build cap.
   # The package builds with the distro setuptools, so relax the upper bound.
   sed -i 's/setuptools>=77.0,<83/setuptools>=77.0/' pyproject.toml
+  # Python 3.14: ThreadPoolExecutor no longer has _initializer/_initargs
+  patch -p1 < "${srcdir}/0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 }
 
 package() {
