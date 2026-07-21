@@ -1,7 +1,7 @@
 # Maintainer: Crosery <luoxi2024@gmail.com>
 
 pkgname=pencil-dev-appimage
-pkgver=1.1.70
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Design on canvas. Land in code. Increases engineering speed by bringing designing directly into your IDE. (AppImage)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("Pencil-linux-x86_64-${pkgver}.AppImage::https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage"
         "LICENSE"
         "${pkgname}.install")
-sha256sums=('1b32cb8f28256dfe47e45f889e0c6a76ad3a7c3dc91423cb8eb797dc927d005b'
+sha256sums=('f1220a87d52da551fa729e2c53014388a3774ed4634428559aa0eb10dcc30510'
             'SKIP'
             'SKIP')
 noextract=("Pencil-linux-x86_64-${pkgver}.AppImage")
