@@ -1,6 +1,6 @@
 pkgbase = gjallarhorn-git
 	pkgdesc = From-scratch Odin web framework, ORM and template engine, with a nest-style scaffolding CLI
-	pkgver = r52.be11e61
+	pkgver = r53.1fd039d
 	pkgrel = 1
 	url = https://github.com/Lvcky-gg/Gjallarhorn
 	arch = x86_64
