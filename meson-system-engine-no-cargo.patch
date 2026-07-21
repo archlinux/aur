@@ -1,0 +1,38 @@
+--- a/meson.build
++++ b/meson.build
+@@ -10,17 +10,6 @@
+   ],
+ )
+ 
+-cargo = find_program('cargo')
+-cargo_profile = get_option('cargo_profile')
+-
+-if cargo_profile == 'release'
+-  cargo_args = ['--release']
+-  target_dir = meson.project_source_root() / 'target' / 'release'
+-else
+-  cargo_args = []
+-  target_dir = meson.project_source_root() / 'target' / 'debug'
+-endif
+-
+ kime_engine_inc = include_directories('src/engine/capi')
+ 
+ if get_option('system_engine')
+@@ -31,6 +20,17 @@
+     link_args: ['-lkime_engine'],
+   )
+ else
++  cargo = find_program('cargo')
++  cargo_profile = get_option('cargo_profile')
++
++  if cargo_profile == 'release'
++    cargo_args = ['--release']
++    target_dir = meson.project_source_root() / 'target' / 'release'
++  else
++    cargo_args = []
++    target_dir = meson.project_source_root() / 'target' / 'debug'
++  endif
++
+   # Build engine and binaries from source via cargo
+   cargo_packages = ['-p', 'kime-engine-capi']
+ 
