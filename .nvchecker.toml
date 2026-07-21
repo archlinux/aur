@@ -1,0 +1,4 @@
+[python-pyetrade]
+source = "git"
+git = "https://github.com/jessecooper/pyetrade.git"
+prefix = "v"
