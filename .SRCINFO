@@ -1,6 +1,6 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
-	pkgver = 13.4.1130.80
+	pkgver = 13.4.1131.0
 	pkgrel = 1
 	url = https://browser.360.net/gc/index.html
 	install = browser360.install
@@ -10,14 +10,16 @@ pkgbase = browser360-bin
 	depends = qt5-base
 	depends = alsa-lib
 	depends = gtk3
+	depends = gtk2
 	depends = nss
 	depends = dmidecode
 	depends = libxcrypt-compat
-	provides = browser360=13.4.1130.80
+	depends = libcanberra
+	provides = browser360=13.4.1131.0
 	conflicts = browser360
-	source_aarch64 = browser360-13.4.1130.80-aarch64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.4.1130.80-1_arm64.deb
-	sha256sums_aarch64 = f285c19c282e5125f1705b6046daf5926580e1b55e32facf2dbd479e9dc1bb2c
-	source_x86_64 = browser360-13.4.1130.80-x86_64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.4.1130.80-1_amd64.deb
-	sha256sums_x86_64 = 979b36d0f62442e2260bed621de37a81aba95d709b9800c5a9e623ab765f84db
+	source_aarch64 = browser360-13.4.1131.0-aarch64.deb::https://gedown.360safe.com/gc/browser360-cn-stable_13.4.1131.0-1_arm64.deb
+	sha256sums_aarch64 = ec5b3320df10699527371a5fef7abd6ef212a54bec79b717807c6e4949fec837
+	source_x86_64 = browser360-13.4.1131.0-x86_64.deb::https://gedown.360safe.com/gc/signed_com.360.browser-stable_13.4.1131.0-1_amd64.deb
+	sha256sums_x86_64 = ca4f62f82dc08a57b9db97c584b8dcce2aa87582b1a46cb7feef6f0f9b7c8b18
 
 pkgname = browser360-bin
