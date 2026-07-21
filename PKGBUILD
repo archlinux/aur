@@ -3,17 +3,17 @@
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 
 pkgname=clocker
-pkgver=1.25.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Tracks project hours"
-arch=('any')
+arch=(any)
 url="https://github.com/substack/${pkgname}"
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm' 'python')
+license=(MIT)
+depends=(nodejs)
+makedepends=(npm python)
 source=(${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('bac766fb314c352492e4923ae9d46ed964c6c91a8c4ee80140c1bcc9b6c227f40eb1f0f6e6e0741f835f8285aea25637049198299922ce7cabccc6e28875b51c')
+sha512sums=('0ba2eb226d39ca4b81d6ff417ffee8b52ca2c3c970fdf289a310afa25e93f3708a9c2ab49ac6b4d3762b7c3578d1a75419e91070fea7d583106c74f1ec87bebd')
 
 package() {
   export NODE_ENV=production

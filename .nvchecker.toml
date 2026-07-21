@@ -1,0 +1,3 @@
+[clocker]
+source = "npm"
+npm = "clocker"
