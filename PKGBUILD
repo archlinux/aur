@@ -2,8 +2,8 @@
 # Contributor: Ain Ruiz Dorado <maxain201 at gmail dot com>
 
 pkgname=tidal-hifi-tidaluna
-pkgver=7.0.1
-_tidalunaver=1.14.0-beta
+pkgver=8.0.0
+_tidalunaver=1.16.2-beta
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod)."
 conflicts=("tidal-hifi")
@@ -16,14 +16,14 @@ source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi
         "luna-${_tidalunaver}.zip::https://github.com/Inrixia/TidaLuna/releases/download/${_tidalunaver}/luna.zip"
         "tidal-hifi-tidaluna.desktop")
 noextract=("luna-${_tidalunaver}.zip")
-sha256sums=('17022a7a5d222ee869147b1dec97efb6d06527a635c0b005a0ec339fe131985e'
-            '25062b3d19c42aeed589bc9cf9ecd8dfae674739c720165965fc182718343ed6'
+sha256sums=('c4372905477db3d87fd2be6dfbc5e8bfbc634d25e4554c8637b311c645a53416'
+            '6e66f0789f5b0b982b3192abacb815aae32d0a248c45a70aa2553ed1797f0019'
             '8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b')
 
 build() {
     cd "tidal-hifi-${pkgver}"
 
-    npm install
+    npm install --allow-git=all
     npm run build-unpacked
 
     mv "dist/linux-unpacked/resources/app.asar" "dist/linux-unpacked/resources/original.asar"
