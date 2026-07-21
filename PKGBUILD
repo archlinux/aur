@@ -1,7 +1,7 @@
 # Maintainer: dfdc1123 <ch3fmt1g@outlook.com>
 pkgname=kneadnet-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert electronic schematics into breadboard layouts and routing suggestions'
 arch=('x86_64')
 url='https://github.com/dfdc1123/knead-net-gui'
@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1')
 provides=('kneadnet')
 conflicts=('kneadnet' 'knead-net-gui')
+replaces=('knead-net-gui')
 options=('!strip')
 _deb="kneadnet_${pkgver}_amd64.deb"
 _examples="KneadNet-examples-${pkgver}.zip"

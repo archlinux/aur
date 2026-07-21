@@ -1,7 +1,7 @@
 pkgbase = kneadnet-bin
 	pkgdesc = Convert electronic schematics into breadboard layouts and routing suggestions
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dfdc1123/knead-net-gui
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,7 @@ pkgbase = kneadnet-bin
 	provides = kneadnet
 	conflicts = kneadnet
 	conflicts = knead-net-gui
+	replaces = knead-net-gui
 	noextract = kneadnet_0.2.0_amd64.deb
 	noextract = KneadNet-examples-0.2.0.zip
 	options = !strip
