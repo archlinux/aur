@@ -1,6 +1,6 @@
 pkgbase = reaparr-bin
 	pkgdesc = Desktop app for browsing and downloading media from Plex
-	pkgver = 0.38.2
+	pkgver = 0.38.3
 	pkgrel = 1
 	url = https://github.com/Reaparr/Reaparr
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = reaparr-bin
 	conflicts = reaparr
 	conflicts = reaparr-dev-bin
 	options = !strip
-	source = Reaparr-0.38.2-stable.AppImage::https://github.com/Reaparr/Reaparr/releases/download/v0.38.2/Reaparr-linux-x64-stable.AppImage
-	source = LICENSE-0.38.2::https://raw.githubusercontent.com/Reaparr/Reaparr/v0.38.2/LICENSE
-	sha256sums = 044078bd7881dcaa54fd1f612a293ee4c40edc1587da55b9f7d842b94fa43591
+	source = Reaparr-0.38.3-stable.AppImage::https://github.com/Reaparr/Reaparr/releases/download/v0.38.3/Reaparr-linux-x64-stable.AppImage
+	source = LICENSE-0.38.3::https://raw.githubusercontent.com/Reaparr/Reaparr/v0.38.3/LICENSE
+	sha256sums = cc92ecab7efa4bac32503ec3bad7afa61df014e1b2565bc221b34c5c1f90d02d
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = reaparr-bin
