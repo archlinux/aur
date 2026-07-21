@@ -3,16 +3,16 @@
 
 pkgname=dustrac
 _pkgname=DustRacing2D
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Dust Racing 2D is a traditional top-down car racing game including a level editor"
 arch=('i686' 'x86_64')
 url="http://juzzlin.github.io/DustRacing2D/"
 license=('GPL3')
-depends=('openal' 'libvorbis' 'qt5-tools' 'glu')
+depends=('openal' 'libvorbis' 'qt6-tools' 'glu')
 makedepends=('cmake')
 source=("https://github.com/juzzlin/DustRacing2D/archive/${pkgver}.tar.gz")
-sha256sums=('e028a49ad427fb0527b2bf05dad72404cc2d20883da1d330cb1319246bdc423a')
+sha256sums=('9a393675106d90b7c4fcf8e3280a1b80c0c35e90f03ce75742276b40d5495182')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
