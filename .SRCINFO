@@ -1,0 +1,23 @@
+pkgbase = drwrap
+	pkgdesc = Drag any video into DaVinci Resolve on Linux and it just works (codec fix + drop shim + auto-import)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fedsfarm/drwrap
+	install = drwrap.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-xlib
+	depends = ffmpeg
+	optdepends = davinci-resolve: the editor this wraps
+	optdepends = davinci-resolve-studio: unlocks automatic import + in-place healing
+	optdepends = libnotify: desktop notifications
+	optdepends = inotify-tools: lower-latency watch folder
+	source = drwrap-0.1.0.tar.gz::https://github.com/fedsfarm/drwrap/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8b27e6817454feaeb1a865c7ed56bf27549bcb4c7a2095a9ce537f08672b3177
+
+pkgname = drwrap

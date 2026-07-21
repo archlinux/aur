@@ -1,0 +1,5 @@
+post_install() {
+  echo "==> Run 'drwrap setup' (as your user) to enable the always-on converter."
+  echo "==> It also offers to route Resolve's own menu entry through drwrap."
+  echo "==> Then open DaVinci Resolve like you always do — dropped clips just work."
+}
