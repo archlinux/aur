@@ -14,7 +14,7 @@ pkgname=('systemd-liberated-git'
          'systemd-liberated-tests-git'
          'systemd-liberated-ukify-git')
 pkgdesc='systemd fork with surveillance enablement removed (git version)'
-pkgver=261.r87873
+pkgver=262.r90699
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -228,7 +228,8 @@ package_systemd-liberated-git() {
   meson install -C build --no-rebuild --destdir "${pkgdir}"
 
   # we'll create this on installation
-  rmdir "$pkgdir"/var/log/journal/remote
+  # Remove only if it exists; upstream may or may not create it depending on meson flags
+  [[ -d "$pkgdir"/var/log/journal/remote ]] && rmdir "$pkgdir"/var/log/journal/remote
 
   # runtime libraries shipped with systemd-liberated-libs-git
   install -d -m0755 systemd-libs/lib/
