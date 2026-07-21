@@ -1,0 +1,17 @@
+pkgbase = maki
+	pkgdesc = An efficient AI coding agent
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/tontinton/maki
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	conflicts = maki-bin
+	source = https://github.com/tontinton/maki/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 84ece23bd235d3e5cc9e8e56d0450febc19d2c75c0a44adbf6aa22345904188a
+
+pkgname = maki
