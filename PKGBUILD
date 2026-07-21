@@ -4,7 +4,7 @@ _gitname=atmosphera
 
 pkgname=atmosphera-git
 pkgver=0.1.0.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
