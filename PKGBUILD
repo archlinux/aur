@@ -1,12 +1,12 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=bmk
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="successor to make(1) with support for subdirectories"
 arch=(x86_64 aarch64)
 url="https://github.com/realchonk/bmk"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('91286d0caf8a8e304603e126783b3cf59ace130f74380423ffca082bdd5f7578')
+sha256sums=('63fb5179edc749067dc2771fe8049b5abcdf28217d71f947d382cb32e4ba3f4e')
 license=('ISC')
 
 build() {
