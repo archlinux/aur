@@ -2,7 +2,7 @@
 # Maintainer: Yasen Pavlov <yasen.pavlov@bitnet.me>
 
 pkgname='nexus-cli-bin'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Command-line client and MCP server for self-hosted Nexus personal search'
 url='https://github.com/yasen-pavlov/nexus'
@@ -12,10 +12,10 @@ provides=('nexus-cli')
 conflicts=('nexus-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v${pkgver}/nexus-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7f9ad78c92b910840433f773e588b77d42cbbb72d4671f2304ada2501035ac59')
+sha256sums_aarch64=('d48158bfe7e6834d4691f075603add3c132828427bfc2e0ffdc3722d32621f6b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v${pkgver}/nexus-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('9c757a309859b9b70f6657bff7764f0e210594e032449abbbdc87735bc63efc6')
+sha256sums_x86_64=('b8e175c277d79f2023b5c0329db3eede07cf875c3db41b2e4a123ae4b6815068')
 
 package() {
   install -Dm755 "./nexus-cli" "${pkgdir}/usr/bin/nexus-cli"
