@@ -1,0 +1,34 @@
+pkgbase = r-bggm
+	pkgdesc = Bayesian Gaussian Graphical Models
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BGGM
+	arch = x86_64
+	license = GPL-2
+	makedepends = gcc-fortran
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppdist
+	makedepends = r-rcppprogress
+	depends = r
+	depends = r-bfpack
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-ggridges
+	depends = r-mvnfast
+	depends = r-network
+	depends = r-rcpp
+	depends = r-rdpack
+	depends = r-reshape
+	depends = r-sna
+	optdepends = r-abind
+	optdepends = r-assortnet
+	optdepends = r-knitr
+	optdepends = r-mice
+	optdepends = r-networktools
+	optdepends = r-psych
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BGGM_2.1.6.tar.gz
+	sha256sums = 83575cc71d23d0f310378a75c3e6f4307c34facbfb463921260c66f69796753f
+
+pkgname = r-bggm
