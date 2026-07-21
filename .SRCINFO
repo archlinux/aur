@@ -1,0 +1,17 @@
+pkgbase = soto-player-community-bin
+	pkgdesc = Soto Player-Community - 现代化桌面音乐播放器
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://github.com/Krits03/Soto-Player-Community
+	arch = x86_64
+	license = AGPL-3.0
+	depends = fuse2
+	depends = libappindicator-gtk3
+	optdepends = pipewire: audio playback
+	optdepends = pulseaudio: audio playback
+	source = soto-player-community-2.3.8-x86_64.AppImage::https://github.com/Krits03/Soto-Player-Community/releases/download/v2.3.8/soto-player-community-2.3.8-x86_64.AppImage
+	source = soto-player-community.png::https://raw.githubusercontent.com/Krits03/Soto-Player-Community/master/public/icons/favicon.png
+	sha256sums = 6a43fb22dc3f79e9f98dc39963e1fbc27dcc2009c47f444fd73a5b1e44d89581
+	sha256sums = f3f4f3f17b9ced4d6258f5ece1f76693f33ee7d5d2629efb56e4a6e071b1cd83
+
+pkgname = soto-player-community-bin
