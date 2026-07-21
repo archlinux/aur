@@ -3,7 +3,7 @@
 pkgname=python-qsnctf
 _name=${pkgname#python-}
 pkgver=0.0.9.3
-pkgrel=3
+pkgrel=5
 epoch=
 pkgdesc="青少年 CTF 训练平台提供的 Python 软件包"
 arch=('any')
@@ -13,7 +13,6 @@ groups=()
 depends=(
     python
     python-pyexecjs
-    python-pybase62
     python-base58
     python-requests
     python-beautifulsoup4
