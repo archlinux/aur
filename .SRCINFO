@@ -1,17 +1,17 @@
 pkgbase = synchrogit-bin
 	pkgdesc = Daemon that keeps git repositories synced with their remotes (prebuilt binary)
-	pkgver = 26.7.6
+	pkgver = 26.7.7
 	pkgrel = 1
 	url = https://github.com/partanskiy/synchrogit
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = MIT
 	depends = git
-	provides = synchrogit=26.7.6
+	provides = synchrogit=26.7.7
 	conflicts = synchrogit
-	source_x86_64 = synchrogit-26.7.6-x86_64-unknown-linux-musl.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.6/synchrogit-v26.7.6-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 722449ffb2fd3b0511520a3ad88686a0e8c87ac651f5f84aae8be29fac4da73e
-	source_aarch64 = synchrogit-26.7.6-aarch64-unknown-linux-musl.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.6/synchrogit-v26.7.6-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 69ad6de338f7c7fe8958393df92bef4ffa55a2ab4dbb3b3e58fdb1b1a2e77c59
+	source_x86_64 = synchrogit-26.7.7-x86_64-unknown-linux-musl.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.7/synchrogit-v26.7.7-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = fd2008a68e4ecdd87bd6cb4fdb1b13ab0df8fd039f9e91fedc3e9a94327d4f54
+	source_aarch64 = synchrogit-26.7.7-aarch64-unknown-linux-musl.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.7/synchrogit-v26.7.7-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 65166d9d5d7605e1e41db3aa88a98963e782866cc56de987eed83c84a03fbdbe
 
 pkgname = synchrogit-bin
