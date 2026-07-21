@@ -12,10 +12,15 @@ depends=('glibc' 'gcc-libs' 'glib2' 'webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo
          'libayatana-appindicator' 'librsvg' 'libsoup3' 'hicolor-icon-theme' 'yt-dlp' 'ffmpeg')
 provides=('sunder')
 conflicts=('sunder')
+# NOTE: GitHub release assets use the upstream productName (capital S
+# `Sunder`) from tauri.conf.json, NOT pkgname-stripped lowercase. The
+# previous version had `${pkgname%-bin}` here, which expanded to
+# `sunder_…_amd64.deb`, returning 404 and producing a sha256 of the
+# GitHub 404 HTML page. AUR users then failed validity check on install.
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/LICENSE"
         "README-$pkgver.md::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/README.md"
-        "${pkgname%-bin}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '6f7d2915d59f3641ab8ba97d2efad348ef04fed2d6b605650d3a59e491ac931b' 'acd1df0d087f4ad9750ecbbb883b8a637dfb206c74fbf5fb8002800d8720f13c')
+        "${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '6f7d2915d59f3641ab8ba97d2efad348ef04fed2d6b605650d3a59e491ac931b' '678af799d5bf9ffe1dad5d0d2c52d41411956b2f0ce5a7b51f76fc2f481bcab3')
 
 package() {
     cd "$srcdir"
