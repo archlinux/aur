@@ -1,0 +1,23 @@
+pkgbase = fenriz-bin
+	pkgdesc = A minimal tiling Wayland compositor built on wlroots and SceneFX (Binary Release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zackb/fenriz
+	arch = x86_64
+	license = MIT
+	depends = wlroots0.20
+	depends = scenefx0.5
+	depends = wayland
+	depends = libxkbcommon
+	depends = pixman
+	depends = libinput
+	depends = libxcb
+	depends = xcb-util-wm
+	optdepends = xorg-xwayland: X11 application support
+	provides = fenriz
+	conflicts = fenriz
+	conflicts = fenriz-git
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.0/fenriz-0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fenriz-bin
