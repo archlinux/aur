@@ -1,6 +1,6 @@
 pkgbase = cutrail-bin
 	pkgdesc = Desktop video clipping utility for batch range exports
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/sabinmarcu/cutrail
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = cutrail-bin
 	conflicts = cutrail
 	conflicts = cutrail-git
 	options = !strip
-	source_x86_64 = cutrail-0.12.2.AppImage::https://github.com/sabinmarcu/cutrail/releases/download/v0.12.2/Cutrail-0.12.2.AppImage
+	source_x86_64 = cutrail-0.13.0.AppImage::https://github.com/sabinmarcu/cutrail/releases/download/v0.13.0/Cutrail-0.13.0.AppImage
 	sha256sums_x86_64 = SKIP
 
 pkgname = cutrail-bin
