@@ -1,0 +1,12 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.desktop
+!*.sh
+!*.zsh
+!*.bash
+!*.apparmor
+!LICENSE
+!PKGBUILD.asc
+!.gitignore

@@ -1,30 +1,27 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=forge-code-bin
 _name="forge-code"
-pkgver=2.11.5
+pkgver=2.13.18
 pkgrel=1
 pkgdesc="AI-enabled pair programmer — Claude, GPT, O Series, Grok, Deepseek, Gemini. #1 on tbench.ai terminal benchmark."
 arch=('x86_64')
 url="https://forgecode.dev/"
-license=('Apache')
+license=('Apache-2.0')
 install=$pkgname.install
 depends=(
     'gcc-libs'
     'glibc'
-    'gmp'
-    'libssh2'
-    'nss'
-    'openssl'
-    'zlib'
 )
 optdepends=(
     'zsh: ZSH plugin for : prefix command integration'
-    'fzf: Interactive conversation picker (:conversation)'
+    'fzf: Interactive conversation picker (:conversation); also recommended by upstream installer'
+    'bat: Recommended by upstream installer for previews'
+    'fd: Recommended by upstream installer for file finding'
     'bash: Required for interactive setup'
     'apparmor: Mandatory Access Control hardening profile'
 )
 provides=("$_name" "forge")
-conflicts=("$_name" "forge-code-git" "forge")
+conflicts=("$_name" "forge-code-git" "forge" "forgecode" "forgecode-bin")
 options=('!debug' '!strip')
 _baseurl=https://github.com/tailcallhq/forgecode/releases/download/v${pkgver}
 source=(
@@ -37,7 +34,7 @@ source=(
     "LICENSE"
     "forge.apparmor"
 )
-sha256sums=('ee4f86ebe77d52bb9d60b0a22d3dcc3d8e119af8345012741c90254819ce1364'
+sha256sums=('6a2bf11262bcbd8334e1807d802db8fe75aa6a9f1f75ef2dd2418866ab1b7e9b'
             'd780a4cf24b5dc6ae1741ecca42c32804fcde0472ebeed15aec0bce459f75e60'
             '0277ad00659d54ef81056a964dee9f330b27e609e3aa0add116d2ed080062a3d'
             '5c7f103a6458872aed46de82dff6781879a6cec475effad322066032cb415bcb'
