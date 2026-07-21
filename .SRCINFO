@@ -1,0 +1,15 @@
+pkgbase = r-berryfunctions
+	pkgdesc = Function Collection Related to Plotting and Hydrology
+	pkgver = 1.22.13
+	pkgrel = 1
+	url = https://cran.r-project.org/package=berryFunctions
+	arch = any
+	license = GPLv3
+	depends = r
+	depends = r-abind
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/berryFunctions_1.22.13.tar.gz
+	sha256sums = a0f1d191622cc14c68e65100ed0e276975eb9960c8cdd4db18f18d167235df51
+
+pkgname = r-berryfunctions
