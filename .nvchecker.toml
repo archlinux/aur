@@ -1,0 +1,4 @@
+[nab]
+source = "git"
+git = "https://github.com/notatallshaw/nab.git"
+prefix = "v"
