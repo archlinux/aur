@@ -1,6 +1,6 @@
 pkgbase = elecap-git
 	pkgdesc = Playback video in a frameless electron app for screen-sharing and window capture.(Use system-wide electron)
-	pkgver = 2.23.1.r2.g58ad138
+	pkgver = 2.23.3.r4.g14141c0
 	pkgrel = 1
 	url = http://electroncapture.app/
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = elecap-git
 	source = elecap.git::git+https://github.com/steveseguin/electroncapture.git
 	source = elecap.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = elecap-git
