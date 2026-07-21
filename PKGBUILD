@@ -10,12 +10,12 @@ depends=('aura')
 optdepends=('asp: for --abs support (build from ABS source)'
   'gnupg: for PGP verification when building from ABS')
 makedepends=('rust' 'cargo' 'git')
-conflicts=('portage')
+conflicts=('portage' 'portage-git')
 install=aura-emerge.install
 backup=('etc/emerge/world.set')
 #git tag -a v1.27.0 -m "..." && git push origin v1.27.0
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('3f4ad923c99e548ba21fd67c93dd2ef53700668f5d9d95644fc4cd10d1eddf4a')
 build() {
   cd "$pkgname"
   cargo build --release
@@ -25,8 +25,9 @@ package() {
   local bin="target/release/aura-emerge"
 
   _gen_or_die() {
-    local out="$1"; shift
-    if ! "$bin" "$@" > "$out" || [ ! -s "$out" ]; then
+    local out="$1"
+    shift
+    if ! "$bin" "$@" >"$out" || [ ! -s "$out" ]; then
       error "\"$bin $*\" produced no output — refusing to package an empty file"
       return 1
     fi
