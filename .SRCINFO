@@ -1,0 +1,30 @@
+pkgbase = sayall-git
+	pkgdesc = Wayland voice dictation daemon and recording HUD (development version)
+	pkgver = 0.1.0.r1.g0397cd6
+	pkgrel = 1
+	url = https://github.com/saiemsaeed/sayall
+	install = sayall-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = zig
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libnotify
+	depends = pipewire-audio
+	depends = wl-clipboard
+	depends = wtype
+	provides = sayall=0.1.0.r1.g0397cd6
+	conflicts = sayall
+	conflicts = sayall-bin
+	options = !debug
+	source = sayall::git+https://github.com/saiemsaeed/sayall.git
+	sha256sums = SKIP
+
+pkgname = sayall-git
