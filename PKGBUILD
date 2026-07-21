@@ -5,8 +5,8 @@
 
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=litemanager
-pkgver=5.200
-pkgrel=2
+pkgver=5237
+pkgrel=1
 epoch=
 pkgdesc="remote access software for remote administration of computers over the Internet or remote control in a local network, for distant learning, providing remote support to users and supervising work activity of employees."
 arch=('x86_64')
@@ -24,11 +24,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://litemanager.com/soft/LiteManager_linux.zip"
+source=("LiteManager_linux-${pkgver}.zip::https://litemanager.com/soft/LiteManager_linux.zip"
 litemanager.png)
 
 noextract=()
-md5sums=('SKIP'
+md5sums=('547643ca271903f153bb51345810b916'
          'ce19ee278e856d0e17610979ede081b4')
 
 validpgpkeys=()
@@ -47,9 +47,24 @@ prepare() {
 
 
 package() {
- # mv "litemanager.png" "${srcdir}/litemanager.png"
   install -d "${pkgdir}/" "$pkgdir/opt/${pkgname}"
-  install -Dm755 "${srcdir}/LiteManager_linux/LiteManager" "$pkgdir/opt/litemanager/litemanager"
+
+  # Внутри общего архива лежат два билда: старый (в папке
+  # LiteManager_linux/LiteManager, с readme) и отдельный zip
+  # "LiteManager_linux_<версия>.zip" с голым бинарником более новой сборки.
+  # Начиная с 5237 используем именно второй - он новее старого.
+  local _new_build="${srcdir}/LiteManager_linux_${pkgver}.zip"
+
+  if [ -f "${_new_build}" ]; then
+    msg2 "Используется отдельный билд LiteManager_linux_${pkgver}.zip"
+    mkdir -p "${srcdir}/new_build_extract"
+    bsdtar -xf "${_new_build}" -C "${srcdir}/new_build_extract"
+    install -Dm755 "${srcdir}/new_build_extract/LiteManager" "$pkgdir/opt/litemanager/litemanager"
+  else
+    warning "LiteManager_linux_${pkgver}.zip не найден - используем старую упаковку (LiteManager_linux/LiteManager)."
+    install -Dm755 "${srcdir}/LiteManager_linux/LiteManager" "$pkgdir/opt/litemanager/litemanager"
+  fi
+
   mkdir -p $pkgdir/usr/bin
   ln -s "/opt/litemanager/litemanager" "$pkgdir/usr/bin/litemanager"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
