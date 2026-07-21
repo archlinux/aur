@@ -1,6 +1,6 @@
 pkgname=badapple-py
 pkgver=1.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="ASCII Bad Apple player for Linux terminals written in Python"
 arch=('any')
 url="https://github.com/Raj-1727/badapple-py"
