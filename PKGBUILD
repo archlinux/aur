@@ -20,14 +20,18 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
         "${pkgname}.conf"
         "${pkgname}.install"
         "${pkgname}.sysusers"
-        "${pkgname}.tmpfiles")
+        "${pkgname}.tmpfiles"
+        "${pkgname}-backup.service"
+        "${pkgname}-backup.timer")
 sha256sums=(
             'e0a5d63decf885fa79a1af9667376f5280a14358298d3ed9293c52dedc572b66'
             '1f5dede1712658ac3e276d83ac4cad541a636c54f084b07d8c7778b8c69bce95'
             '885b68e552440009d1fa8802650ad9af283f3eec641e9c22bd6a505832b0a177'
-            '6bd54a63c90a531fe937c5ecb04881b3ca08b24175669ec70c198e5dca6aea48'
+            '9ea3f6da87f5a204c792c94707423ab657ee1ba0df729a05204f004b3576b75e'
             '355b30e8ae273a87d14bd7afcac367cee0d44f01d57d41eac6747c67d17afb40'
             '6f52d5800aa5cd0c8e5eb5a463fb09711c7460bcf9f6c95a477c3303f37f067c'
+            '325e934978093ffd944e0959d7dbda0a2b435ecbc357d5e882cf005ff973e247'
+            '2d93e88ae563499ec9c5d51601584e1839681b71c3c30a495e50c851034c3ccb'
 )
 
 backup=("etc/${pkgname}/env")
@@ -99,6 +103,8 @@ package() {
 
   # Install systemd service and config
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}-backup.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}-backup.service"
+  install -Dm644 "${srcdir}/${pkgname}-backup.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}-backup.timer"
   install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/env"
 
   # Install sysusers and tmpfiles for automatic user/directory creation

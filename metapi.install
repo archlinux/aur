@@ -23,10 +23,17 @@ post_install() {
 pre_remove() {
   echo ":: Removing metapi package. Note: /var/lib/metapi/ (database)"
   echo "   and /etc/metapi/env (config) will NOT be removed automatically."
+  systemctl stop metapi-backup.timer 2>/dev/null || true
+  systemctl disable metapi-backup.timer 2>/dev/null || true
 }
 
 post_upgrade() {
   # Re-apply data directory ownership on upgrade
   mkdir -p /var/lib/metapi
   chown metapi:metapi /var/lib/metapi 2>/dev/null || true
+  # Ensure daily backup timer is enabled
+  if [ -f /usr/lib/systemd/system/metapi-backup.timer ]; then
+    systemctl enable metapi-backup.timer 2>/dev/null || true
+    systemctl start metapi-backup.timer 2>/dev/null || true
+  fi
 }
