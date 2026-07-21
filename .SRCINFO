@@ -1,6 +1,6 @@
 pkgbase = pdf-tui-bin
 	pkgdesc = Terminal PDF reader built with ratatui and terminal graphics protocols.
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/WindustH/pdf-tui
 	arch = x86_64
@@ -11,11 +11,14 @@ pkgbase = pdf-tui-bin
 	depends = pdftk
 	depends = poppler
 	optdepends = perl-image-exiftool: edit PDF metadata
+	optdepends = wl-clipboard: copy selected text and PNGs on Wayland
+	optdepends = xclip: copy selected text and PNGs on X11
+	optdepends = xsel: copy selected text on X11
 	provides = pdf-tui
 	conflicts = pdf-tui
 	conflicts = pdf-tui-git
 	options = !strip
-	source = pdf-tui-0.1.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.1.9/pdf-tui-0.1.9-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 463d248861b3864aac8f8dea76454e2d180af8195e2750c6a8c79c35cbf49c28
+	source = pdf-tui-0.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.2.0/pdf-tui-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 2fc8278118f4cb6beff4183d2eae0292104290ed53f691d7f40e5e227a0aefc7
 
 pkgname = pdf-tui-bin

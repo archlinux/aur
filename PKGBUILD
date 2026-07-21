@@ -2,19 +2,24 @@
 
 pkgname=pdf-tui-bin
 _pkgname=pdf-tui
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64')
 url="https://github.com/WindustH/pdf-tui"
 license=('MIT')
 depends=('chafa' 'mupdf-tools' 'pdfium-binaries-bin' 'pdftk' 'poppler')
-optdepends=('perl-image-exiftool: edit PDF metadata')
+optdepends=(
+  'perl-image-exiftool: edit PDF metadata'
+  'wl-clipboard: copy selected text and PNGs on Wayland'
+  'xclip: copy selected text and PNGs on X11'
+  'xsel: copy selected text on X11'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('463d248861b3864aac8f8dea76454e2d180af8195e2750c6a8c79c35cbf49c28')
+sha256sums=('2fc8278118f4cb6beff4183d2eae0292104290ed53f691d7f40e5e227a0aefc7')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
