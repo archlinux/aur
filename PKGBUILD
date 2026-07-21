@@ -1,6 +1,6 @@
-# Maintainer: Twilight0 <twilight@freemail.gr>
+# Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=xconnect
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C with GTK3/XApp GUI"
 arch=('x86_64')
@@ -26,11 +26,11 @@ makedepends=(
     'pkg-config'
 )
 provides=('xconnectctl' 'xconnect-app')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Twilight0/xconnect/archive/v${pkgver}.tar.gz")
-sha256sums=('c24e9b335816291998b1fc299b298c743bc34086dc4aa760d7761f756ea326e6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('eccddc1c543d81c00a5e9a0ad7277a0111c1fc1d39f04994f84621cafe7cb956')
 
 build() {
-    cd "xconnect-${pkgver}"
+    cd "$pkgname-$pkgver"
     if [ -d build ]; then
         rm -rf build
     fi
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "xconnect-${pkgver}"
+    cd "$pkgname-$pkgver"
 
     DESTDIR="$pkgdir" ninja -C build install
 
@@ -53,6 +53,9 @@ package() {
     # Desktop file
     install -Dm644 gui/xconnect.desktop \
         "$pkgdir/usr/share/applications/xconnect.desktop"
+
+    # D-Bus service - NOT installed, daemon starts via systemd user service
+    # to avoid D-Bus session mismatch
 
     # systemd user service
     install -Dm644 extra/xconnect.service \
