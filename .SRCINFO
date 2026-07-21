@@ -1,6 +1,6 @@
 pkgbase = stoat-desktop-bin
 	pkgdesc = Stoat for Desktop. (Prebuilt version. Use system-wide electron)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://stoat.chat/
 	arch = aarch64
@@ -9,16 +9,16 @@ pkgbase = stoat-desktop-bin
 	makedepends = gendesk
 	makedepends = git
 	depends = electron40
-	provides = stoat-desktop=1.4.1
+	provides = stoat-desktop=1.4.2
 	conflicts = stoat-desktop
 	options = !emptydirs
 	source = stoat-desktop-assets::git+https://github.com/stoatchat/assets
 	source = stoat-desktop.sh
 	sha256sums = SKIP
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = stoat-desktop-1.4.1-aarch64.zip::https://github.com/stoatchat/for-desktop/releases/download/v1.4.1/Stoat-linux-arm64-1.4.1.zip
-	sha256sums_aarch64 = b1173cb9af7132f42a09d3c86d59d4254844c50f077f723c6701d8a73a03a0d5
-	source_x86_64 = stoat-desktop-1.4.1-x86_64.zip::https://github.com/stoatchat/for-desktop/releases/download/v1.4.1/Stoat-linux-x64-1.4.1.zip
-	sha256sums_x86_64 = f98b40ddfb1be1d1804de66274154390b7b61b97c81dbac388b0176730a7b8d8
+	source_aarch64 = stoat-desktop-1.4.2-aarch64.zip::https://github.com/stoatchat/for-desktop/releases/download/v1.4.2/Stoat-linux-arm64-1.4.2.zip
+	sha256sums_aarch64 = 96978237da20eb26f211a66ed81992337e4d49cb449457cde5134c87c2cbb0d7
+	source_x86_64 = stoat-desktop-1.4.2-x86_64.zip::https://github.com/stoatchat/for-desktop/releases/download/v1.4.2/Stoat-linux-x64-1.4.2.zip
+	sha256sums_x86_64 = a380dd137607ff0eae3a9eab6e75b4b4fc0b04cd39ef02bc51ff8c304e99e7a9
 
 pkgname = stoat-desktop-bin

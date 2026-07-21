@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stoat-desktop-bin
 _pkgname=Stoat
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=40
 pkgrel=1
 pkgdesc="Stoat for Desktop. (Prebuilt version. Use system-wide electron)"
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip")
 sha256sums=('SKIP'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('b1173cb9af7132f42a09d3c86d59d4254844c50f077f723c6701d8a73a03a0d5')
-sha256sums_x86_64=('f98b40ddfb1be1d1804de66274154390b7b61b97c81dbac388b0176730a7b8d8')
+sha256sums_aarch64=('96978237da20eb26f211a66ed81992337e4d49cb449457cde5134c87c2cbb0d7')
+sha256sums_x86_64=('a380dd137607ff0eae3a9eab6e75b4b4fc0b04cd39ef02bc51ff8c304e99e7a9')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
