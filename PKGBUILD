@@ -1,6 +1,6 @@
 # Maintainer: xotkot
 pkgname=batorrent-git
-pkgver=4.0.0.r1.g4234a3b
+pkgver=4.7.0.rc6.r7.g47f808d
 pkgrel=1
 pkgdesc='A lightweight BitTorrent client built with C++, Qt 6, and libtorrent-rasterbar.'
 arch=(x86_64)
@@ -11,6 +11,7 @@ provides=(batorrent)
 depends=(	libtorrent-rasterbar
 			qt6-svg
 			qt6-declarative
+			qt6-multimedia
 			qtkeychain-qt6
 			qt6-base
 			openssl
