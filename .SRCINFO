@@ -1,0 +1,27 @@
+pkgbase = r-bgms
+	pkgdesc = Bayesian Analysis of Networks of Binary and/or Ordinal Variables
+	pkgver = 0.1.6.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bgms
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	makedepends = r-bh
+	makedepends = r-rcpparmadillo
+	depends = r
+	depends = r-coda
+	depends = r-dqrng
+	depends = r-lifecycle
+	depends = r-rcpp
+	depends = r-rcppparallel
+	depends = r-rdpack
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-qgraph
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bgms_0.1.6.3.tar.gz
+	sha256sums = b3f2efc135d223c228012b9c4fb0cf910bad09786876723e5662c0090a9db4f2
+
+pkgname = r-bgms
