@@ -2,7 +2,7 @@
 # Template — replace zaidejjo and sha256sums before publishing.
 
 pkgname=omniapi-desktop-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Blazing-fast API client — desktop GUI (prebuilt AppImage)"
 arch=('x86_64')
