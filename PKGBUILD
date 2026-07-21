@@ -10,7 +10,10 @@ url="https://github.com/Krits03/Soto-Player-Community"
 license=('AGPL-3.0')
 
 # === 依赖 ===
-depends=('libappindicator-gtk3')
+depends=('libappindicator-gtk3'
+         'libxss'
+         'libxtst'
+         'libnotify')
 optdepends=('pipewire: 音频后端'
             'pulseaudio: 音频后端')
 
@@ -38,6 +41,11 @@ package() {
   # 安装资源文件
   cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/" 2>/dev/null || true
   cp -r "${srcdir}/squashfs-root/etc/"* "${pkgdir}/etc/" 2>/dev/null || true
+
+  # 移除与系统包冲突的捆绑库文件
+  rm -f "${pkgdir}/usr/lib/libXss.so"* \
+        "${pkgdir}/usr/lib/libXtst.so"* \
+        "${pkgdir}/usr/lib/libnotify.so"*
 
   # 桌面文件（修正本地化语法）
   install -dm755 "${pkgdir}/usr/share/applications"
