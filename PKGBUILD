@@ -2,7 +2,7 @@
 
 _pkgname=calibre-tui
 pkgname=$_pkgname-git
-pkgver=0.5.1.r0.g936420c
+pkgver=0.6.0.r0.ga06c908
 pkgrel=1
 pkgdesc="A TUI application to search and open books in your Calibre library."
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
