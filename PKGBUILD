@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=2.25.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums runs at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('bdfd4f2b79e58ae728d64e8da90c2577caddfb1d2583496e635e9c8310837c79')
+sha256sums=('34f9e96eb9a53bac558ba3a6ae31c0f34f5b3442d9d1c9fb326e353162430c70')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -34,6 +34,11 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
+    # Byte-compilation only (2026-07-21 audit PKG-4): the full pytest suite
+    # (2600+ tests) runs in ci.yml with QT_QPA_PLATFORM=offscreen. The
+    # makepkg build container installs only base-devel + build tooling, not
+    # PySide6/pytest/httpx/pyqtgraph/numpy, so a headless test run is not
+    # available here — compileall is the buildable smoke check.
     python -m compileall -q src/
 }
 
