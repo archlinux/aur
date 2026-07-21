@@ -1,6 +1,6 @@
 pkgbase = python-requirements-language-server
 	pkgdesc = pip's requirements.txt language server
-	pkgver = 0.0.22
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/requirements-language-server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-requirements-language-server
 	depends = python-tree-sitter-requirements
 	depends = python-aiohttp
 	depends = python-pip
-	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.0.22-py3-none-any.whl
-	sha256sums = 7eaf0d557ae4660c65ef9a7b69293911bc0dbb54ee0c66ec0dc868bbfa93828e
+	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.1.0-py3-none-any.whl
+	sha256sums = 95526734f154ba7e913861dc31b825dd2869e6a6d6b4111571b918f113c90e62
 
 pkgname = python-requirements-language-server
