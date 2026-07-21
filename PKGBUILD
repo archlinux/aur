@@ -1,6 +1,6 @@
 # Maintainer: clovexx <clovexx.github@gmail.com>
 pkgname=stalzone-server-blocker
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="TUI для выборочной блокировки серверов Stalzone через nftables/iptables"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 _github=sz-server-blocker
 source=("$_github-$pkgver.tar.gz::https://github.com/clovexx/$_github/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('44c8ee50a64549b1f8dc2c5815a770809347d83c25bb598740eb3650cffdc5b8')
+sha256sums=('c59f5984e8717310213829007e792a7a9040a3888ce052950c22450ce80910c6')
 options=('!lto')
 
 prepare() {
