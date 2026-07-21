@@ -9,9 +9,9 @@ pkgbase = deref-nightly-bin
 	provides = deref
 	conflicts = deref
 	conflicts = deref-bin
-	source_x86_64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-x86_64-linux-gnu
+	source_x86_64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-aarch64-linux-gnu
+	source_aarch64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-aarch64-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = deref-nightly-bin
