@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-next
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.0.0_rc.24
+	pkgver = 13.0.0_rc.25
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	arch = x86_64
@@ -69,9 +69,9 @@ pkgbase = firedragon-catppuccin-next
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = firedragon-v13.0.0-rc.24.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.24/downloads/firedragon.source.tar.xz
+	source = firedragon-v13.0.0-rc.25.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25/downloads/firedragon.source.tar.xz
 	source = fix-wasm32-wasi-target.patch
-	sha256sums = a5c37f435ae3a65a0fd3884604eb7c8a3c75a6f3a9ce6f98a5844d9eb1953b6d
+	sha256sums = 3c1b0f216469a70850f1a12a39126c8b9053ebca7710e5b2ce02456d4d9e516b
 	sha256sums = f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124
 
 pkgname = firedragon-catppuccin-next
