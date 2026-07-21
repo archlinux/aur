@@ -1,4 +1,4 @@
-# Maintainer: Kevin <github@kev314.dev>
+# Maintainer: Kevin <developer@kev314.dev>
 
 # This PKGBUILD repackages Anthropic's official Debian package for Arch.
 # Only the .deb's file payload (data.tar.xz) is used: its embedded install
@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=1.22209.0
+pkgver=1.22209.3
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -86,8 +86,8 @@ options=('!strip' '!debug')
 _baseurl="https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop"
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('6d18ae792c2bddad01edc97c2c3f4cf489004cefe8fed6760a696ed25c49bf61')
-sha256sums_aarch64=('7323fe6c3ab6b7078e81a9bf0200806e3486e73bc5873420ee9d26f10b66e1e9')
+sha256sums_x86_64=('d427f46ac9233dbc4d8a441a602f09f750b8a5f05d1fc7a00285d7a6ce07655c')
+sha256sums_aarch64=('55ccb478b22d71b46e669582e7ae4d6f44fc6dff0b3d515a9163049dab4034b2')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
