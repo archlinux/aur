@@ -1,0 +1,18 @@
+pkgbase = itchio-bin
+	pkgdesc = The official desktop app for itch.io
+	pkgver = 26.15.0
+	pkgrel = 1
+	url = https://itch.io/app
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	source = itch-26.15.0.tar.gz::https://broth.itch.zone/itch/linux-amd64/26.15.0/archive/default
+	sha256sums = SKIP
+
+pkgname = itchio-bin
