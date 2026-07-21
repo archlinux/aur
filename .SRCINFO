@@ -5,7 +5,6 @@ pkgbase = soto-player-community-bin
 	url = https://github.com/Krits03/Soto-Player-Community
 	arch = x86_64
 	license = AGPL-3.0
-	depends = fuse2
 	depends = libappindicator-gtk3
 	optdepends = pipewire: 音频后端
 	optdepends = pulseaudio: 音频后端
