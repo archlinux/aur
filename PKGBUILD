@@ -1,7 +1,7 @@
 # Maintainer: Othavio <obsidianlab3d@gmail.com>
 pkgname=agent-bar-bin
-pkgver=8.4.0
-pkgrel=2
+pkgver=8.4.1
+pkgrel=1
 pkgdesc="LLM quota monitor for Waybar and Omarchy 4 omarchy-shell (Claude, Codex, Amp, Grok) — standalone binary"
 arch=('x86_64')
 url="https://github.com/othavi0/agent-bar"
@@ -15,7 +15,7 @@ optdepends=('waybar: status bar integration'
 install="${pkgname}.install"
 source=("agent-bar-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/agent-bar-${pkgver}-x86_64.tar.gz")
 # Preenchido por release a partir do .sha256 produzido pelo CI. Nunca 'SKIP'.
-sha256sums=('895228f5865c5f95a6757b55a05d491fcd53426539d6c9f24668e478316a6fb9')
+sha256sums=('e790ffd433cceed526c1862e78701299a21c45881311cb74720e4064f4a867ed')
 
 package() {
   install -Dm755 "${srcdir}/agent-bar" "${pkgdir}/usr/bin/agent-bar"
