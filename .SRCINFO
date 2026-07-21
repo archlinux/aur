@@ -1,0 +1,17 @@
+pkgbase = deref-nightly-bin
+	pkgdesc = Replace symbolic links with real files / directories — nightly build
+	pkgver = 20260721
+	pkgrel = 1
+	url = https://github.com/someoneonsmile/deref
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = deref
+	conflicts = deref
+	conflicts = deref-bin
+	source_x86_64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-x86_64-linux-gnu
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/someoneonsmile/deref/releases/download/nightly/deref-aarch64-linux-gnu
+	sha256sums_aarch64 = SKIP
+
+pkgname = deref-nightly-bin
