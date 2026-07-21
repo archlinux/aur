@@ -51,6 +51,8 @@ DEFAULTS = {
     "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
 }
 
+SENSITIVE_KEYS = {"github_token"}
+
 # Lower entries have higher priority.
 CONFIG_FILES = [
     Path(f"/etc/{PROJECT_NAME}.toml"),
@@ -463,13 +465,13 @@ def main():
 
     config = _load_config(CONFIG_FILES)
 
-    _SENSITIVE_KEYS = {"github_token"}
     log("INFO", "Loaded configuration:")
     for key in sorted(config):
-        if key in _SENSITIVE_KEYS:
-            print(f"  > {key} = **redacted**", file=sys.stderr)
+        value = config[key]
+        if key in SENSITIVE_KEYS and value:
+            print(f"  > {key} = **REDACTED**", file=sys.stderr)
         else:
-            print(f"  > {key} = {config[key]!r}", file=sys.stderr)
+            print(f"  > {key} = {value!r}", file=sys.stderr)
 
     if not config["github_token"]:
         log("INFO", "Running without GitHub token.")
