@@ -1,7 +1,7 @@
 pkgbase = video-work-api-git
 	pkgdesc = Local Video Work API toolkit: CosyVoice3 cloning and FunClip subtitles (git)
 	pkgver = 0.1.0.r0.g0000000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LIghtJUNction/video-work-api
 	install = video-work-api-git.install
 	arch = x86_64
