@@ -3,7 +3,7 @@
 _pkgname=carton
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.5.1 # renovate: datasource=github-tags depName=821869798/carton
+pkgver=0.5.2 # renovate: datasource=github-tags depName=821869798/carton
 pkgrel=1
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("${_appimage_x86_64}::https://github.com/821869798/carton/release
 source_aarch64=("${_appimage_aarch64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 noextract=("${_appimage_x86_64}" "${_appimage_aarch64}")
 sha256sums=('d0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd')
-sha256sums_x86_64=('e4175b6de48e5ac214432941ff2b47efcc52b4b22100b8db91c644c929459803')
-sha256sums_aarch64=('88497cf74d69c6e2a5f3d79e658bf034fcc01d8b668d40981fce48d940f76769')
+sha256sums_x86_64=('e55f6f9793f884c807b51edecc610518207850215169855b3131f309baecd941')
+sha256sums_aarch64=('3b11d94590ff401e42d4c1e023536fafe3e9b07c5a5989b3664d10b15e047cac')
 
 prepare() {
     case "${CARCH}" in
