@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=moonstone
-pkgver=0.3.24
-pkgrel=2
+pkgver=0.3.25
+pkgrel=1
 pkgdesc='Modern, deterministic Lua project environments and package manager written in Zig'
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/moonstone-sh/$pkgname"
@@ -19,13 +19,13 @@ _archive="$pkgname-$pkgver"
 # _zigdeps=(https://github.com/sam701/zig-toml/archive/master.tar.gz)
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "$pkgname-triples.patch")
-sha256sums=('87a96863e4e78fef97117068c0a2cf530fce8882000a1c653f6983ed3d988bf2'
+sha256sums=('43ce44f4568dd983ec58711107a0c9be587aca5776a8e0369ce0fb1e966ce9d2'
             '2345e3fce271e813f901b63fb52700ebaedde0b176c98dd12cf1ccfd5e60c2cc')
 
 prepare() {
 	cd "$_archive"
 	# patch -p1 -i "../$pkgname-triples.patch"
-	sed -i -e "/const target_triples =/,/};/c\    const target_triples = [_][]const u8{ \"$CARCH-linux-gnu\", };" build.zig
+	# sed -i -e "/const target_triples =/,/};/c\    const target_triples = [_][]const u8{ \"$CARCH-linux-gnu\", };" build.zig
 	# zig fetch --debug-hash --global-cache-dir "$_global_cache"
 }
 
@@ -33,8 +33,10 @@ build() {
 	cd "$_archive"
 	local zig_options=(
 		-Doptimize=ReleaseFast
+		-Dtarget=$CARCH-linux-gnu
 		-Dcpu=baseline
 		# -Dpie=true
+		-Dinstallation-ownership=external
 		--build-id=sha1
 		--prefix /usr
 		--search-prefix /usr
