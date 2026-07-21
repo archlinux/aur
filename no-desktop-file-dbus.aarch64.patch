@@ -1,0 +1,11 @@
+--- a/com.f5.f5vpn.desktop
++++ b/com.f5.f5vpn.desktop
+@@ -6,7 +6,7 @@ Comment=F5 Networks Inc. network access application
+ Name=F5 VPN
+ Icon=f5vpn
+ Exec=/opt/f5/vpn/f5vpn_launch_helper.sh %u
+-DBusActivatable=true
++DBusActivatable=false
+ Categories=Network;
+ MimeType=x-scheme-handler/f5-vpn;
+ NoDisplay=false

@@ -1,8 +1,6 @@
-/*.pkg.tar.gz
 /*.pkg.tar.xz
 /*.pkg.tar.zst
 /*.deb
 /*.rpm
-/license.html
 /pkg/
 /src/
