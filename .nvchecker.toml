@@ -1,3 +1,4 @@
 [art-rawconverter-bin]
 source = "git"
 git = "https://github.com/artraweditor/ART.git"
+include_regex = '[0-9.]+'

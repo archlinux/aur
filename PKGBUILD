@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 : ${_install_path:=usr/lib}
 
