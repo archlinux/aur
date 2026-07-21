@@ -1,0 +1,3 @@
+[python-some-flask-helpers]
+source = "pypi"
+pypi = "some_flask_helpers"
