@@ -1,4 +1,4 @@
-# Maintainer: pantarune 
+# Maintainer: pantarune
 
 pkgname=niri-screenshare
 pkgver=0.1.0
@@ -26,10 +26,10 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   export CARGO_TARGET_DIR="$srcdir/target"
 
-  install -Dm755 "$CARGO_TARGET_DIR/release/xdg-desktop-portal-niri" "$pkgdir/usr/lib/xdg-desktop-portal-niri"
+  install -Dm755 "$CARGO_TARGET_DIR/release/niri-screenshare" "$pkgdir/usr/lib/niri-screenshare"
   install -Dm644 data/niri.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/niri.portal"
   install -Dm644 data/org.freedesktop.impl.portal.desktop.niri.service \
     "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.niri.service"
-  install -Dm644 data/xdg-desktop-portal-niri.service \
-    "$pkgdir/usr/lib/systemd/user/xdg-desktop-portal-niri.service"
+  install -Dm644 data/niri-screenshare.service \
+    "$pkgdir/usr/lib/systemd/user/niri-screenshare.service"
 }
