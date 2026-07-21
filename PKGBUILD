@@ -1,0 +1,30 @@
+# Maintainer: @aardbol
+pkgname=ironclaw-bin
+_tagver=1.0.0-rc.1
+pkgver=1.0.0_rc1
+pkgrel=1
+pkgdesc="IronClaw is an Agent OS focused on privacy, security and extensibility"
+arch=('x86_64' 'aarch64')
+url="https://github.com/nearai/ironclaw"
+license=('Apache-2.0')
+options=('!strip' '!debug')
+
+source_x86_64=(
+    "${url}/releases/download/ironclaw-v${_tagver}/ironclaw-x86_64-unknown-linux-gnu.tar.gz"
+)
+source_aarch64=(
+    "${url}/releases/download/ironclaw-v${_tagver}/ironclaw-aarch64-unknown-linux-gnu.tar.gz"
+)
+
+sha256sums_x86_64=(
+    'd2f341d27a30eb3b4c01351e7d95f1f67c96ee6f91ad2c69125b448a1aff3112'
+)
+sha256sums_aarch64=(
+    'c517e2ed5f86771a9c75c7844ae0b54d1172ff38b2f581606791d20ff3dff000'
+)
+
+package() {
+    local archive="ironclaw-${CARCH}-unknown-linux-gnu.tar.gz"
+    tar -xzf "$srcdir/$archive"
+    install -Dm755 ironclaw "$pkgdir/usr/bin/ironclaw"
+}
