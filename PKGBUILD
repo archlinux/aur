@@ -10,7 +10,7 @@ url="https://github.com/zaidejjo/omniapi"
 license=('MIT')
 depends=(
   'fuse2'
-  'libfuse2'
+  'fuse2'
   'gtk3'
   'webkit2gtk-4.1'
 )
