@@ -2,7 +2,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
 _pkgname=DbGate
-pkgver=7.2.1
+pkgver=7.2.3
 _electronversion=38
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('a0e0b83ec6eb5cea479e283bddbf1a37f1b3b1a37c16ed271c4afb711bf0ef6d'
+sha256sums=('7ca2ce586b45234c513639c24bf34ac81506a35a1e7ee4ee13d20cfb1b14c0e5'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -28,23 +28,13 @@ _get_app_dir() {
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(_get_app_dir)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -66,7 +56,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
