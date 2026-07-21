@@ -12,6 +12,8 @@ pkgbase = pi
 	optdepends = fd: system-provided backend for the find tool
 	optdepends = ripgrep: system-provided backend for the grep tool
 	source = pi-0.81.0.tar.gz::https://github.com/earendil-works/pi/archive/refs/tags/v0.81.0.tar.gz
+	source = pi-ai-0.81.0.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-0.81.0.tgz
 	sha256sums = f62a706210b98ab368db5d6ef8442aa6bb9ad5b3b73fe71cad02b29cb64e8321
+	sha256sums = 62e0abc1cffac431d091cbc8e88eeefcb4c428bc78d2702ec52bcf5defe1ff5a
 
 pkgname = pi

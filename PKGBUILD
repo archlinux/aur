@@ -14,20 +14,24 @@ optdepends=(
   'fd: system-provided backend for the find tool'
   'ripgrep: system-provided backend for the grep tool'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f62a706210b98ab368db5d6ef8442aa6bb9ad5b3b73fe71cad02b29cb64e8321')
+
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "pi-ai-${pkgver}.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-${pkgver}.tgz")
+sha256sums=('f62a706210b98ab368db5d6ef8442aa6bb9ad5b3b73fe71cad02b29cb64e8321'
+            '62e0abc1cffac431d091cbc8e88eeefcb4c428bc78d2702ec52bcf5defe1ff5a')
+
+prepare() {
+  rm -rf "${srcdir}/${pkgname}-${pkgver}/packages/ai/src/providers/data"
+  cp -a "${srcdir}/package/dist/providers/data" \
+    "${srcdir}/${pkgname}-${pkgver}/packages/ai/src/providers/"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
 
   npm ci --cache "${srcdir}/npm-cache" --ignore-scripts --no-audit --no-fund
 
-  # Running run build specifically for each package is necessary to prevent ai package issue
-  npm --prefix packages/tui run build
-  # This is necessary to prevent ai module fetching models on network in building
-  ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
-  npm --prefix packages/agent run build
-  npm --prefix packages/coding-agent run build
+  npm run build:offline
 
   # Remove packages which are only necessary in development / building
   npm prune --omit=dev --cache "${srcdir}/npm-cache"
