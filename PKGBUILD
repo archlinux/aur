@@ -3,8 +3,7 @@
 # Contributor: urain39 <hexiedeshijie@gmail.com>
 
 pkgname=myget
-_commit=796185db5557f48e729e33d9a803fd5b38d0bfc0 # last commit
-pkgver=1.1.2.r13.g796185d
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Multi-thread downloader accelerator for GNU/Linux (fork)"
 arch=('x86_64')
@@ -12,13 +11,8 @@ url="https://myget.sourceforge.net"
 license=('GPL-2.0-only')
 depends=('openssl' 'gcc-libs')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/lytsing/mytget.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd mytget
-    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
-}
+source=("git+https://github.com/lytsing/mytget.git#tag=v$pkgver")
+sha256sums=('b07bd0f4113ef108312826d806fee615e16b33934ec168eb8430b6d0b6cad43c')
 
 build() {
     cmake -B build -S mytget -DCMAKE_INSTALL_PREFIX=/usr

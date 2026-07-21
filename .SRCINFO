@@ -1,6 +1,6 @@
 pkgbase = myget
 	pkgdesc = Multi-thread downloader accelerator for GNU/Linux (fork)
-	pkgver = 1.1.2.r13.g796185d
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://myget.sourceforge.net
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = myget
 	makedepends = git
 	depends = openssl
 	depends = gcc-libs
-	source = git+https://github.com/lytsing/mytget.git#commit=796185db5557f48e729e33d9a803fd5b38d0bfc0
-	sha256sums = SKIP
+	source = git+https://github.com/lytsing/mytget.git#tag=v1.1.3
+	sha256sums = b07bd0f4113ef108312826d806fee615e16b33934ec168eb8430b6d0b6cad43c
 
 pkgname = myget
