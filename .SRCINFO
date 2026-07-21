@@ -1,6 +1,6 @@
 pkgbase = vesta-bin
 	pkgdesc = Video Extraction, Sync & Translation for Anki
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/pierspad/vesta
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = vesta-bin
 	conflicts = Vesta
 	conflicts = vesta
 	options = !debug
-	source = vesta-0.16.1.deb::https://github.com/pierspad/vesta/releases/download/v0.16.1/vesta_0.16.1_amd64.deb
-	source = LICENSE-0.16.1::https://github.com/pierspad/vesta/raw/v0.16.1/LICENSE
-	sha256sums = 462ef4518fa4b9d2913af04bd6cbbe1423e2a654dba41a069f020563159993d9
+	source = vesta-0.17.0.deb::https://github.com/pierspad/vesta/releases/download/v0.17.0/vesta_0.17.0_amd64.deb
+	source = LICENSE-0.17.0::https://github.com/pierspad/vesta/raw/v0.17.0/LICENSE
+	sha256sums = 16bebd18cf15ede6588e72fb925c77c26463ee870b936d3a0b29aab0b5d31247
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = vesta-bin
