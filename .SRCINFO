@@ -1,11 +1,13 @@
 pkgbase = pdf-tui-bin
 	pkgdesc = Terminal PDF reader built with ratatui and terminal graphics protocols.
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/WindustH/pdf-tui
 	arch = x86_64
 	license = MIT
 	depends = chafa
+	depends = mupdf-tools
+	depends = pdfium-binaries-bin
 	depends = pdftk
 	depends = poppler
 	optdepends = perl-image-exiftool: edit PDF metadata
@@ -13,7 +15,7 @@ pkgbase = pdf-tui-bin
 	conflicts = pdf-tui
 	conflicts = pdf-tui-git
 	options = !strip
-	source = pdf-tui-0.1.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.1.8/pdf-tui-0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c01c1e2da09869b38c936e6c7d1aa6cd5bf0a1fd72e4781f358e31576b58af63
+	source = pdf-tui-0.1.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.1.9/pdf-tui-0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 463d248861b3864aac8f8dea76454e2d180af8195e2750c6a8c79c35cbf49c28
 
 pkgname = pdf-tui-bin
