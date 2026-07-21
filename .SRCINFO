@@ -1,6 +1,6 @@
 pkgbase = blaadpapers
 	pkgdesc = Fast & clean wallpaper manager
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Blaadick/BlaadPapers
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = blaadpapers
 	depends = nlohmann-json
 	depends = mpvpaper
 	depends = bstyle-qml-theme
-	source = blaadpapers-0.4.2.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.4.2.tar.gz
-	sha512sums = 8f732df60421855d55d3e83aa2d7e580f8d79800bd06e06f6e0fa83f147ec68810596c5fb687aebccdeee9ebc7abf2add9d1c94b5becf9c25b39e46e2c6f7724
+	source = blaadpapers-0.4.3.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.4.3.tar.gz
+	sha512sums = b032c722281e2259c90cdfa59cb1a819aaf845b4651b7b0d87b513fdc68c147869b913ca6ecccfa31e8fd7e6d317afd1e0ee3de8406c08f3811d3922add72dcb
 
 pkgname = blaadpapers
