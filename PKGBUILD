@@ -3,8 +3,8 @@
 # === 包基本信息 ===
 pkgname=soto-player-community-bin
 pkgver=2.3.8
-pkgrel=1
-pkgdesc="Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示"
+pkgrel=23800
+pkgdesc="非官方 - Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示"
 arch=('x86_64')
 url="https://github.com/Krits03/Soto-Player-Community"
 license=('AGPL-3.0')
@@ -40,7 +40,7 @@ package() {
   cat > "${pkgdir}/usr/share/applications/soto-player-community.desktop" << 'DESKEOF'
 [Desktop Entry]
 Name=Soto Player-Community
-Name=zh_CN=Soto Player-社区版
+Name=zh_CN=Soto Player-社区非官方版
 Comment=Cross-platform desktop music player with rich lyric support
 Comment=zh_CN=跨平台桌面音乐播放器，支持丰富的歌词显示
 Exec=soto-player-community

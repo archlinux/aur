@@ -1,7 +1,7 @@
 pkgbase = soto-player-community-bin
-	pkgdesc = Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示
+	pkgdesc = 非官方 - Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 23800
 	url = https://github.com/Krits03/Soto-Player-Community
 	arch = x86_64
 	license = AGPL-3.0
