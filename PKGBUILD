@@ -2,7 +2,7 @@
 
 pkgname=leafyrino-git
 _pkgname=leafyrino
-pkgver=7.5.4.r879.gcb39f07
+pkgver=7.5.4.r1026.g00caf19
 pkgrel=1
 pkgdesc='Fork of Chatterino 7 with Leafyzito custom features (git version)'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ depends=(
   'libnotify'
   'openssl'
   'qt6-base'
+  'qt6-charts'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-tools'
