@@ -1,13 +1,15 @@
-# # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=appimage-thumbnailer
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Generates AppImage thumbnails for Linux desktops"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kem-a/appimage-thumbnailer"
 license=('MIT')
 depends=(
   'cairo'
+  'gdk-pixbuf2'
+  'glib2'
   'glibc'
   'dwarfs'
   'librsvg'
@@ -15,7 +17,7 @@ depends=(
 )
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73e73e1f0c098ccafc90ab46c54d7ef5c2d6fa6f92653bcdaacf6bb1faea0f69')
+sha256sums=('c099e1c33539422c675b04b80a3d4fc5eb11ebb88eaaf5c6c9c92e9dc784b9fe')
 
 build() {
   arch-meson "$pkgname-$pkgver" build \
