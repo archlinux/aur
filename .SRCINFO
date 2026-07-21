@@ -1,6 +1,6 @@
 pkgbase = aurox
 	pkgdesc = AUR helper backed by the github.com/archlinux/aur mirror
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nikicat/aurox
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aurox
 	depends = glibc
 	depends = git
 	options = !lto
-	source = aurox-0.3.0.tar.gz::https://github.com/nikicat/aurox/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 638d42f7e94c58a93924b23026e260eab0fab5d676193e9287b270cce6ad4bc2
+	source = aurox-0.4.0.tar.gz::https://github.com/nikicat/aurox/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = ac77fc96d07c27daa32b9035952c94adcbb50bdee5fff8ea5001caf58ebf428a
 
 pkgname = aurox
