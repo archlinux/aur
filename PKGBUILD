@@ -1,6 +1,6 @@
 # Contributor: tee < teeaur at duck dot com >
 pkgname=qbittorrent-enhanced-nox-bin
-pkgver=5.2.1.10
+pkgver=5.2.3.10
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "qbittorrent-nox.sysusers"
   "qbittorrent-nox.tmpfiles"
 )
-sha256sums=('0460ccaa358ad28019a79424f17863093b770a8987df52fed153f35bb9aa7223'
+sha256sums=('8f1398f42fae585d2642c45368efe09310541a262bd0c430a3fcce240ccfeb17'
             'e675cd856f9817474455200ba7e6f5b7cc42d6598a5eecbbbdaa0e6fd304d6b7'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '1b74d8390303c6018adce711f6c9df2cc5b53be0bd3d4cf9aac5aafeac80c9b5'
