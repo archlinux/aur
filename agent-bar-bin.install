@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> Run 'agent-bar setup' to integrate the modules into Waybar."
+  echo "==> Provider CLIs (claude/codex/amp/grok) are detected at runtime if installed."
+}
+
+post_upgrade() {
+  echo "==> Updated. Restart Waybar if modules look stale."
+}
