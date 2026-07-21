@@ -1,7 +1,7 @@
 # Maintainer: Hannaeko <tech+aur@hannaeko.eu>
 
 pkgname=reaction-bin
-pkgver=2.4.0
+pkgver=2.5.1
 _pkgver="v${pkgver/rc/-rc}"
 pkgrel=1
 pkgdesc="A daemon that scans program outputs for repeated patterns, and takes action. A lightweight alternative to fail2ban."
@@ -17,7 +17,7 @@ source=(
     "https://framagit.org/ppom/reaction/-/raw/${_pkgver}/config/example.jsonnet"
     "https://framagit.org/ppom/reaction/-/raw/${_pkgver}/packaging/reaction.service"
 )
-sha256sums=('91ba7c8089f2fdb79f594eaf726e7fd99a8e588cf69fecbc03ba33f65f154a33'
+sha256sums=('4a0bbb552786cc551a97ac8a5e9112567308dbaf6b79eb2633aa40b0048549ee'
             'e32fb135261493d960df8276acb5c466d4f8c15768042df790863680c17fc400'
             '1d0cd534deafa19d8ac68ce90e9a4eb30302673b5a27e5d790bb3ffb11b2c788')
 
