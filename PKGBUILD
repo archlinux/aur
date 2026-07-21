@@ -2,7 +2,7 @@
 pkgname=muzaiten-git
 pkgver=0.0.0
 pkgrel=3
-pkgdesc="Native music player for local libraries, with ratings and scrobbling (VCS build)"
+pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
 url="https://codeberg.org/11xx/muzaiten"
 license=('Unlicense')
