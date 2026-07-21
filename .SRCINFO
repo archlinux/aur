@@ -1,13 +1,14 @@
 pkgbase = aliases
 	pkgdesc = An alias manager for your favorite shell
-	pkgver = 0.1.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://devan.gg/aliases
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
-	source = aliases-0.1.0.tar.gz::https://github.com/imdevan/aliases/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = REPLACE_WITH_ACTUAL_SHA256
+	source_x86_64 = aliases-linux-amd64-1.4.0.tar.gz::https://github.com/imdevan/aliases/releases/download/v1.4.0/aliases-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5f5b3fe70f272548196c2e70b9d81a7254aa4b93619697b29e8245c9c9bb2fd8
+	source_aarch64 = aliases-linux-arm64-1.4.0.tar.gz::https://github.com/imdevan/aliases/releases/download/v1.4.0/aliases-linux-arm64.tar.gz
+	sha256sums_aarch64 = ac03077aa254953dc0256585a2953135dea7281813b360c61ca9e08d8ecf166f
 
 pkgname = aliases

@@ -1,28 +1,23 @@
 # Maintainer: hi@devan.gg
 pkgname=aliases
 _binname=aliases
-pkgver=0.1.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An alias manager for your favorite shell"
 arch=('x86_64' 'aarch64')
 url="https://devan.gg/aliases"
 license=('MIT')
 depends=()
-makedepends=('go')
-source=("${_binname}-${pkgver}.tar.gz::https://github.com/imdevan/aliases/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('REPLACE_WITH_ACTUAL_SHA256')
 
-build() {
-  cd "${_binname}-${pkgver}"
-  export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags="-s -w" -o ${_binname} ./cmd/${_binname}
-}
+source_x86_64=("${_binname}-linux-amd64-${pkgver}.tar.gz::https://github.com/imdevan/aliases/releases/download/v${pkgver}/${_binname}-linux-amd64.tar.gz")
+source_aarch64=("${_binname}-linux-arm64-${pkgver}.tar.gz::https://github.com/imdevan/aliases/releases/download/v${pkgver}/${_binname}-linux-arm64.tar.gz")
+sha256sums_x86_64=('5f5b3fe70f272548196c2e70b9d81a7254aa4b93619697b29e8245c9c9bb2fd8')
+sha256sums_aarch64=('ac03077aa254953dc0256585a2953135dea7281813b360c61ca9e08d8ecf166f')
 
 package() {
-  cd "${_binname}-${pkgver}"
-  install -Dm755 ${_binname} "${pkgdir}/usr/bin/${_binname}"
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [ "${CARCH}" = "x86_64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-amd64" "${pkgdir}/usr/bin/${_binname}"
+  elif [ "${CARCH}" = "aarch64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-arm64" "${pkgdir}/usr/bin/${_binname}"
   fi
 }
