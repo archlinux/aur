@@ -3,7 +3,7 @@ _name=sentencepiece
 pkgbase="${_name}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
@@ -20,9 +20,13 @@ makedepends=(
   'python-build'
   'python-setuptools'
   'python-wheel'
+  'pybind11'
   'python-installer'
 )
-checkdepends=('python-pytest')
+checkdepends=(
+  'python-pytest'
+  'python-protobuf'
+)
 source=(
   "${_name}::git+${url}.git#tag=v${pkgver}"
   'dont-include-data-files-in-python-pkg.patch'
