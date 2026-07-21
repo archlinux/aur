@@ -1,7 +1,7 @@
 # Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
 pkgname=axolotl-launcher-bin
-pkgver=1.3.3
-pkgrel=3
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="A free, cross-platform Minecraft launcher built on the Modrinth ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mystic-Stars/Axolotl"
@@ -11,8 +11,8 @@ conflicts=('axolotl-launcher')
 provides=("axolotl-launcher=${pkgver}")
 source_x86_64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_arm64.deb")
-sha256sums_x86_64=('a9adcbcef58ca98e0f6cc8d1e72f45c20805ed0659d4064cbf946c536bb3cc69')
-sha256sums_aarch64=('5bdb9d763dcc731bf54f847259b02d536afb9fb1bc863a75da406c8386fc9d3d')
+sha256sums_x86_64=('8c7bcdec3f14c6de59720cbb949e76d1e11b026c741f8b6c6e155b2ebbcf9a47')
+sha256sums_aarch64=('447e55437a201c2fe157f32e7fbf9d008333b0387660cb2009f61d8e139dc869')
 
 package() {
   cd "${srcdir}"
@@ -33,5 +33,6 @@ package() {
   # 重命名 desktop 文件
   if [ -f "${pkgdir}/usr/share/applications/Axolotl Launcher.desktop" ]; then
     mv "${pkgdir}/usr/share/applications/Axolotl Launcher.desktop" "${pkgdir}/usr/share/applications/axolotl-launcher.desktop"
+    sed -i 's/^Exec=.*/Exec=WEBKIT_DISABLE_DMABUF_RENDERER=1 Axolotl Launcher/' "${pkgdir}/usr/share/applications/axolotl-launcher.desktop"
   fi
 }
