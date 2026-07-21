@@ -1,6 +1,6 @@
 pkgbase = badapple-py
 	pkgdesc = ASCII Bad Apple player for Linux terminals written in Python
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/Raj-1727/badapple-py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = badapple-py
 	depends = ffmpeg
 	depends = figlet
 	depends = lolcat
-	source = badapple-py-1.0.0.tar.gz::https://github.com/Raj-1727/badapple-py/archive/refs/tags/v1.0.0.tar.gz
+	source = badapple-py-1.0.1.tar.gz::https://github.com/Raj-1727/badapple-py/archive/refs/tags/v1.0.1.tar.gz
 	source = badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-py/main/badapple.mp4
 	sha256sums = SKIP
 	sha256sums = SKIP
