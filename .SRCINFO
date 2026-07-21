@@ -1,7 +1,7 @@
 pkgbase = sbsp
 	pkgdesc = Audio playback software for event usage with precice control and remote control.
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Keinsleif/sbsp
 	arch = x86_64
 	license = Elastic-2.0
