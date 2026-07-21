@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=pipdeptree
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line utility to show dependency tree of Python packages"
 arch=('x86_64')
 url="https://github.com/tox-dev/pipdeptree"
@@ -11,9 +11,8 @@ depends=(
   'glibc'
   'libgcc'
   'python'
-  'python-graphviz'
-  'python-rich'
-  'python-typing_extensions'
+  'python-nab-index'
+  'python-nab-python'
 )
 makedepends=(
   'cargo'
