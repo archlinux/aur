@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=dory
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc="A standalone Nemo fork named Dory for file picking and portal integration"
 arch=('x86_64')
