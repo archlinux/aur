@@ -1,3 +1,15 @@
+Mullvad Browser 15.0.19 - July 21 2026
+ * All Platforms
+   * Updated Firefox to 140.13.0esr
+   * Updated NoScript to 13.6.31.1984
+   * Bug 558: Rebase Mullvad Browser stable onto 140.13.0esr [mullvad-browser]
+   * Bug 45124: Backport Security Fixes from Firefox 153 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41838: Update personal_access_tokens URL in tools/fetch_changelogs.py [tor-browser-build]
+   * Windows
+     * Bug 41819: Fix windows-rs URL in projects/firefox/config [tor-browser-build]
+
 Mullvad Browser 15.0.18 - July 14 2026
  * All Platforms
    * Updated NoScript to 13.6.30.1984
