@@ -1,0 +1,15 @@
+pkgbase = r-rglpk
+	pkgdesc = R/GNU Linear Programming Kit Interface
+	pkgver = 0.6.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Rglpk
+	arch = x86_64
+	license = GPL-2
+	license = GPL-3
+	depends = r
+	depends = r-slam
+	depends = glpk
+	source = https://cran.r-project.org/src/contrib/Rglpk_0.6-5.1.tar.gz
+	sha256sums = e528b8c487e9dfef16ade3b834a17fc93cc898869978a5dd79bee2c5bf9cb6c9
+
+pkgname = r-rglpk
