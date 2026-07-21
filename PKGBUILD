@@ -3,7 +3,7 @@
 
 pkgauthor="tox-dev"
 pkgname="pipdeptree"
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 
@@ -11,7 +11,7 @@ _pypi_package=${pkgname}
 _pypi_version=${pkgver}
 
 license=('MIT')
-arch=('any')
+arch=('x86_64')
 
 _url_pypi="https://pypi.org/project/${pkgname}/"
 _url_github="https://github.com/${pkgauthor}/${pkgname}"
@@ -19,12 +19,12 @@ url=${_url_github}
 
 provides=("${_pypi_package}")
 
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs' 'ninja' 'cargo')
+makedepends=('cargo' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs' 'meson-python' 'python-ninja' 'ninja')
 depends=('glibc' 'libgcc' 'python' 'python-typing_extensions' 'python-graphviz' 'python-rich')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2012876c6853ad6cccf4537dd5c07d19ac144c7fceb7ab1ef9e234fa6671c3b9')
+sha256sums=('6eb7e671ffa06ef597d683680d483a4882a86a2a00494971733bd88a3404c44f')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
