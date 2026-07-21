@@ -1,0 +1,15 @@
+pkgbase = folklore-bin
+	pkgdesc = Viewer for superlore docs — desktop and web app, one codebase
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/PiyushXCoder/folklore
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = folklore
+	conflicts = folklore
+	source = folklore_0.1.0_amd64.deb::https://github.com/PiyushXCoder/folklore/releases/download/v0.1.0/folklore_0.1.0_amd64.deb
+	sha256sums = 4013493c727d9402b1d34dfe9cf20c9a083c8b80682cc178974b5eba052b484b
+
+pkgname = folklore-bin
