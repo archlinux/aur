@@ -1,8 +1,8 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=codex-plus-plus
-pkgver=1.2.32
-pkgrel=2
+pkgver=1.2.41
+pkgrel=1
 epoch=1
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
   '90-codex-plus-plus-reapply.hook'
 )
 sha256sums=(
-  '43eaba8081b4a58e6f4580e1a5134b7a2ff493cd202fb933c23bff7d43610de2'
+  '831326ed17dbfd9f97c0f04a0a5494f4b7b619d09b97483fca41b3754f938141'
   '9dcff92c5e8344fc62b024c390c5e5c5e0c0f8ff158c2515dd8e7e8aa2211d89'
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
