@@ -1,8 +1,5 @@
-pkg/
-src/
-pipdeptree-*.tar.gz
-pipdeptree-*.pkg.tar.xz
-pipdeptree-*.pkg.tar.zst
-pipdeptree-*.src.tar.gz
-.AURINFO
-
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

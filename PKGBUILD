@@ -1,38 +1,43 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-pkgname=pipdeptree
-pkgver=3.1.1
+pkgauthor="tox-dev"
+pkgname="pipdeptree"
+pkgver=4.0.0
 pkgrel=1
-arch=(any)
-pkgdesc='Command line utility to show dependency tree of Python packages'
-url='https://github.com/naiquevin/pipdeptree'
-depends=('python-packaging>=26')
-makedepends=(python-build python-hatchling python-hatch-vcs python-installer python-wheel)
-optdepends=(
-  'python-graphviz: for generating graphical output'
-  'python-rich: for terminal color output'
-)
-license=(MIT)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a986376399e52c9ec7515ef69df7a2dbda0bae0be1cec90dcae23a4ba6262c89')
+pkgdesc="Command line utility to show dependency tree of Python packages"
 
-#prepare() {
-#  cd $pkgname-$pkgver
-#  sed -E -i -e 's|hatchling>=[^"]+|hatchling|' pyproject.toml
-#}
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
+
+license=('MIT')
+arch=('any')
+
+_url_pypi="https://pypi.org/project/${pkgname}/"
+_url_github="https://github.com/${pkgauthor}/${pkgname}"
+url=${_url_github}
+
+provides=("${_pypi_package}")
+
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
+depends=('glibc' 'libgcc' 'python' 'python-typing_extensions' 'python-graphviz' 'python-rich')
+
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2012876c6853ad6cccf4537dd5c07d19ac144c7fceb7ab1ef9e234fa6671c3b9')
 
 build() {
-  cd $pkgname-$pkgver
-  python -m build --wheel --no-isolation
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  # install documentation
-  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-  # install license
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
-}
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
 
-# vim:set ts=2 sw=2 et:
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

@@ -1,19 +1,23 @@
 pkgbase = pipdeptree
 	pkgdesc = Command line utility to show dependency tree of Python packages
-	pkgver = 3.1.1
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://github.com/naiquevin/pipdeptree
+	url = https://github.com/tox-dev/pipdeptree
 	arch = any
 	license = MIT
-	makedepends = python-build
-	makedepends = python-hatchling
-	makedepends = python-hatch-vcs
-	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-packaging>=26
-	optdepends = python-graphviz: for generating graphical output
-	optdepends = python-rich: for terminal color output
-	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-3.1.1.tar.gz
-	sha256sums = a986376399e52c9ec7515ef69df7a2dbda0bae0be1cec90dcae23a4ba6262c89
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = glibc
+	depends = libgcc
+	depends = python
+	depends = python-typing_extensions
+	depends = python-graphviz
+	depends = python-rich
+	provides = pipdeptree
+	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-4.0.0.tar.gz
+	sha256sums = 2012876c6853ad6cccf4537dd5c07d19ac144c7fceb7ab1ef9e234fa6671c3b9
 
 pkgname = pipdeptree
