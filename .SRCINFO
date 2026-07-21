@@ -1,0 +1,26 @@
+pkgbase = neru-git
+	pkgdesc = OS-wide keyboard navigation tool
+	pkgver = nightly.r0.g3dfe895c
+	pkgrel = 1
+	url = https://github.com/y3owk1n/neru
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = just
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = glibc
+	depends = libei
+	depends = libx11
+	depends = libxfixes
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libxtst
+	depends = wayland
+	source = neru::git+https://github.com/y3owk1n/neru
+	b2sums = SKIP
+
+pkgname = neru-git
