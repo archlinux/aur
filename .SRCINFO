@@ -1,0 +1,17 @@
+pkgbase = synchrogit-bin
+	pkgdesc = Daemon that keeps git repositories synced with their remotes (prebuilt binary)
+	pkgver = 26.7.1
+	pkgrel = 1
+	url = https://github.com/partanskiy/synchrogit
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = git
+	provides = synchrogit=26.7.1
+	conflicts = synchrogit
+	source_x86_64 = synchrogit-26.7.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.1/synchrogit-v26.7.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2e5b869eb4b922789a2e6b1fd3c3b0cd329b975ed5412c59328a4ad0566de99c
+	source_aarch64 = synchrogit-26.7.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/partanskiy/synchrogit/releases/download/v26.7.1/synchrogit-v26.7.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ae929b4a3c8d0329e6cb184a9b66dbe67c88406c6d90f69189d937fb2503709f
+
+pkgname = synchrogit-bin
