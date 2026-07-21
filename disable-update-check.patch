@@ -1,0 +1,71 @@
+--- a/src/BedrockBoot/Models/CheckUpdate.cs
++++ b/src/BedrockBoot/Models/CheckUpdate.cs
+@@ -11,8 +11,15 @@
+
+ public class CheckUpdate
+ {
++    /// <summary>
++    ///     Arch Linux 包管理器处理更新，禁用内置更新检查
++    /// </summary>
++    private const bool DisableUpdateCheck = true;
++
+     public static async Task<Release> Update()
+     {
++        if (DisableUpdateCheck)
++            return null;
+         // 创建客户端
+         var github = new GitHubClient(new ProductHeaderValue("BedrockBoot"));
+
+--- a/src/BedrockBoot/Views/Pages/MainPage.axaml.cs
++++ b/src/BedrockBoot/Views/Pages/MainPage.axaml.cs
+@@ -172,7 +172,7 @@
+             {
+                 DialogHost.Show(new DialogInfo
+                 {
+-                    Content = i18n["MainPage.Update.Action.Latest"],
++                    Content = i18n["MainPage.Update.Action.UsePacman"],
+                     Title = i18n["MainPage.Update.Title"],
+                     CloseButtonText = i18n["Shared.Action.Confirm"]
+                 });
+
+--- a/src/BedrockBoot/Views/Pages/NeoMainPage.axaml.cs
++++ b/src/BedrockBoot/Views/Pages/NeoMainPage.axaml.cs
+@@ -174,7 +174,7 @@
+             {
+                 DialogHost.Show(new DialogInfo
+                 {
+-                    Content = i18n["MainPage.Update.Action.Latest"],
++                    Content = i18n["MainPage.Update.Action.UsePacman"],
+                     Title = i18n["MainPage.Update.Title"],
+                     CloseButtonText = i18n["Shared.Action.Confirm"]
+                 });
+
+--- a/src/BedrockBoot/I18n/zh_CN.axaml
++++ b/src/BedrockBoot/I18n/zh_CN.axaml
+@@ -732,6 +732,7 @@
+     <x:String x:Key="MainPage.Update.Content">我们有新的更新：\n\n{0}</x:String>
+     <x:String x:Key="MainPage.Update.Action.Now">现在更新</x:String>
+     <x:String x:Key="MainPage.Update.Action.Latest">当前已是最新版本</x:String>
++    <x:String x:Key="MainPage.Update.Action.UsePacman">通过 pacman 管理更新</x:String>
+
+     <x:String x:Key="Tools.Title">工具箱</x:String>
+
+--- a/src/BedrockBoot/I18n/en_US.axaml
++++ b/src/BedrockBoot/I18n/en_US.axaml
+@@ -716,6 +716,7 @@
+     <x:String x:Key="MainPage.Update.Content">A new update is available:&#x0a;&#x0a;{0}</x:String>
+     <x:String x:Key="MainPage.Update.Action.Now">Update Now</x:String>
+     <x:String x:Key="MainPage.Update.Action.Latest">Already on the latest version</x:String>
++    <x:String x:Key="MainPage.Update.Action.UsePacman">Updates are managed via pacman</x:String>
+
+     <x:String x:Key="Tools.Title">Toolbox</x:String>
+
+--- a/src/BedrockBoot/I18n/ja_JP.axaml
++++ b/src/BedrockBoot/I18n/ja_JP.axaml
+@@ -721,6 +721,7 @@
+     <x:String x:Key="MainPage.Update.Content">新しいアップデートがあります：\n\n{0}</x:String>
+     <x:String x:Key="MainPage.Update.Action.Now">今すぐアップデート</x:String>
+     <x:String x:Key="MainPage.Update.Action.Latest">現在最新バージョンです</x:String>
++    <x:String x:Key="MainPage.Update.Action.UsePacman">アップデートは pacman で管理されます</x:String>
+
+     <x:String x:Key="Tools.Title">ツールボックス</x:String>
