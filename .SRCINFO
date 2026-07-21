@@ -1,7 +1,7 @@
 pkgbase = legacy-launcher-bootstrap
-	pkgdesc = Legacy Launcher for Minecraft (Unofficial Installer)
+	pkgdesc = Unofficial Legacy Launcher for Minecraft, fetching the official jar at build time
 	pkgver = 1.40.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llaun.ch/
 	arch = any
 	license = LicenseRef-LegacyLauncher
