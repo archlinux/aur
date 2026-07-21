@@ -2,7 +2,7 @@
 
 pkgname=xsz-git
 _pkgname=xsz
-pkgver=v0.5.1.r0.g4829630
+pkgver=v0.5.2.r1.g38a1d5a
 pkgrel=1
 pkgdesc="a compsize rewrite with multithread support (git version)"
 url="https://github.com/SaltyKitkat/xsz"
