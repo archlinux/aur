@@ -1,0 +1,16 @@
+pkgbase = owl-client
+	pkgdesc = Owl Client - Gaming client launcher
+	pkgver = 3.5.21
+	pkgrel = 1
+	url = https://owlgaming.net
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = owl-client-3.5.21.AppImage
+	options = !strip
+	source = owl-client-3.5.21.AppImage::https://cdn.owlclient.com.br/launcher/3.5.21/OwlClient-3.5.21.AppImage
+	sha256sums = SKIP
+
+pkgname = owl-client
