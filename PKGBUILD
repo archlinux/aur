@@ -1,5 +1,5 @@
 pkgname=synchrogit
-pkgver=26.7.5
+pkgver=26.7.6
 pkgrel=1
 pkgdesc='Daemon that keeps git repositories synced with their remotes'
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url='https://github.com/partanskiy/synchrogit'
 license=('GPL-3.0-or-later')
 depends=('git')
 makedepends=('cargo' 'lowdown')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.7.5.tar.gz")
-sha256sums=('178ad0276c8cdab1d13deeae067026e83e3a3ef29b007f295401e20b6e941875')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.7.6.tar.gz")
+sha256sums=('7a2214540620d7daf4fa38abc61a1ad1fd1c52dd84eeef93071b7e9179624249')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,5 +24,6 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 packaging/systemd/synchrogit.service "$pkgdir/usr/lib/systemd/user/synchrogit.service"
+  install -Dm644 packaging/systemd/synchrogit@.service "$pkgdir/usr/lib/systemd/system/synchrogit@.service"
   install -Dm644 packaging/config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
 }
