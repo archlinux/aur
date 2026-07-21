@@ -8,9 +8,9 @@ pkgbase = deref-bin
 	license = MIT
 	provides = deref
 	conflicts = deref
-	source_x86_64 = https://github.com/someoneonsmile/deref/releases/download/v0.1.0/deref-x86_64-linux-gnu
+	source_x86_64 = https://github.com/someoneonsmile/deref/releases/download/v0.1.0/deref-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/someoneonsmile/deref/releases/download/v0.1.0/deref-aarch64-linux-gnu
+	source_aarch64 = https://github.com/someoneonsmile/deref/releases/download/v0.1.0/deref-aarch64-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = deref-bin
