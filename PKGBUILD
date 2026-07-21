@@ -2,20 +2,20 @@
 # Contributor: jthvai
 
 pkgname=naps2
-pkgver=8.2.1
-pkgrel=2
+pkgver=8.3.1
+pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
 url="https://www.naps2.com"
 license=("GPL-2.0-or-later")
 depends=("sane" "gtk3")
-makedepends=("dotnet-sdk-9.0" "dpkg" "ttf-liberation" "noto-fonts" "noto-fonts-cjk")
+makedepends=("dotnet-sdk" "dpkg" "ttf-liberation" "noto-fonts" "noto-fonts-cjk")
 optdepends=(
     "sane-airscan: airscan support"
 )
 options=("!strip" "!debug")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cyanfish/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("e57be639ba5b3e423cb07479f02250b64c35b5ee762d1c2c3cda52404e6104a9510f3edc75a169859e3cc8726faed2bec52f0f91ca0984d5d0da8d398177aa85")
+b2sums=("3822a66dc96e77f9d02df04c4ab33f3a91b0b4dc1a354b2dee405aea82fd90ee32e340985bcfa05a9c81c389819495d6959eb23d773177d4b2f4162566777d6d")
 
 build() {
     cd "$pkgname-$pkgver"
