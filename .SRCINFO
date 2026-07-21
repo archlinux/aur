@@ -1,0 +1,13 @@
+pkgbase = archipelagolauncher-bin
+	pkgdesc = Archipelago Multiworld Randomizer Launcher
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = https://archipelago.gg/
+	arch = x86_64
+	license = MIT
+	depends = xclip
+	options = !debug
+	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.6.7/Archipelago_0.6.7_linux-x86_64.tar.gz
+	sha256sums = b0d0ce90b5a9a0f1213991d37e1eb58f093e3c4eba2dfcd565bfbb79ac2a49fc
+
+pkgname = archipelagolauncher-bin
