@@ -5,7 +5,7 @@ _pkgname=oyo
 _execname=oy
 
 pkgname=${_pkgname}
-pkgver=0.1.51
+pkgver=0.1.54
 pkgrel=1
 pkgdesc="A diff viewer that works two ways: step through changes or review a classic scrollable diff"
 
@@ -18,7 +18,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9b8e061b3b39a7ed0fabf44c748d15496c4e099b8794849fc68c5d91bf784be7')
+sha256sums=('7873cbf11ee776785d4cd038fb25f34f7f2e59fd00e48f6c607ee27a7e9bb112')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
