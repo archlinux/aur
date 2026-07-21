@@ -51,6 +51,13 @@ DEFAULTS = {
     "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
 }
 
+# Lower entries have higher priority.
+CONFIG_FILES = [
+    Path(f"/etc/{PROJECT_NAME}.toml"),
+    XDG_CONFIG_HOME / PROJECT_NAME / f"{PROJECT_NAME}.toml",
+    PROJECT_DIR / "dev" / f"{PROJECT_NAME}.toml",
+]
+
 
 def log(level, msg, *args, _order=("DEBUG", "INFO", "WARNING", "ERROR")):
     level = level.upper()
@@ -83,6 +90,23 @@ _PATH_KEYS = (
 )
 
 
+def check_user_config(config_path):
+    try:
+        st = config_path.stat()
+        if st.st_mode & 0o077:
+            log(
+                "WARNING",
+                "Permission of [%s] is too open! (current: %o, want: 600)",
+                config_path, st.st_mode & 0o777,
+            )
+    except FileNotFoundError:
+        log(
+            "WARNING",
+            "User-level config [%s] does not exist.",
+            config_path,
+        )
+
+
 def _read_toml(path):
     try:
         with open(path, "rb") as f:
@@ -106,13 +130,7 @@ def _read_toml(path):
     return cleaned
 
 
-def _load_config():
-    config_files = [
-        Path(f"/etc/{PROJECT_NAME}.toml"),
-        XDG_CONFIG_HOME / PROJECT_NAME / f"{PROJECT_NAME}.toml",
-        PROJECT_DIR / "dev" / f"{PROJECT_NAME}.toml",
-    ]
-
+def _load_config(config_files):
     config = dict(DEFAULTS)
     for path in config_files:
         if path.is_file():
@@ -441,7 +459,9 @@ def launch_comfyui(config, extracted_dir):
 def main():
     log("INFO", "Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
 
-    config = _load_config()
+    check_user_config(CONFIG_FILES[-2])
+
+    config = _load_config(CONFIG_FILES)
 
     _SENSITIVE_KEYS = {"github_token"}
     log("INFO", "Loaded configuration:")
