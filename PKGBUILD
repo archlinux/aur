@@ -12,7 +12,7 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 
 pkgdesc="Dock de aplicativos para KDE Plasma com Layer Shell, Kirigami e efeito de onda"
