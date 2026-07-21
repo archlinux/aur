@@ -1,0 +1,24 @@
+pkgbase = r-easybgm
+	pkgdesc = Extracting and Visualizing Bayesian Graphical Models
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=easybgm
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-bdgraph
+	depends = r-bggm
+	depends = r-bgms
+	depends = r-coda
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-hdinterval
+	depends = r-igraph
+	depends = r-qgraph
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/easybgm_0.4.0.tar.gz
+	sha256sums = 39e194057dd9ddf6a897148212e5c8bf28d77b5fbaff0bea1a4fc8422b1c2c06
+
+pkgname = r-easybgm
