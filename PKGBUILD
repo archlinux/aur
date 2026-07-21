@@ -23,10 +23,11 @@
 pkgname=bastionguard
 pkgver=2.0
 pkgrel=2
-pkgdesc="BastionGuard - transparent security control plane for Linux desktops "
+pkgdesc="BastionGuard - transparent security control plane for Linux desktops"
 arch=('x86_64')
 url="https://bastionguard.eu/"
-license=('GPL3')
+license=('GPL-3.0-only')
+# Documentation: https://bastionguard.eu/documentation/bastionguard-documentation/technical-documentation-application-install/installation-package/
 
 depends=(
   'glibc' 'gcc-libs'
@@ -55,11 +56,26 @@ makedepends=(
 )
 
 options=('strip')
-# Sorgente locale (creata dalla CI come BastionGuard-ci.tar.gz)
-source=("BastionGuard-ci.tar.gz")
+
+source=(
+  "BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v${pkgver}"
+)
+
 sha256sums=('SKIP')
 
-_srcname="BastionGuard-ci"
+_srcname="BastionGuard"
+
+prepare() {
+  cd "$srcdir/$_srcname"
+
+  # Sostituisce il CMake generico con quello specifico per Arch Linux
+  cp -f \
+    pkgbuild/cmake_archlinux/CMakeLists.txt \
+    CMakeLists.txt
+
+  # Evita di riutilizzare una configurazione CMake precedente
+  rm -rf build
+}
 
 build() {
   cd "$srcdir/$_srcname"

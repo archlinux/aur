@@ -4,7 +4,7 @@ pkgbase = bastionguard
 	pkgrel = 2
 	url = https://bastionguard.eu/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = gettext
@@ -82,7 +82,7 @@ pkgbase = bastionguard
 	depends = bubblewrap
 	depends = rsync
 	options = strip
-	source = BastionGuard-ci.tar.gz
+	source = BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v2.0
 	sha256sums = SKIP
 
 pkgname = bastionguard
