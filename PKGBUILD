@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro-bin
-_tagname=0.8.65
+_tagname=0.8.66
 pkgver=${_tagname//-/_}
 pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
@@ -16,7 +16,6 @@ depends=(
     dbus
     expat
     glib2
-    glibc
     libgcc
     libstdc++
     hicolor-icon-theme
@@ -32,18 +31,13 @@ depends=(
 makedepends=(
     libarchive
 )
-optdepends=(
-    # "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
-    # "python-odxtools: Utilities to work with the ODX standard for automotive diagnostics"
-    # "python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
-    # "python-canmatrix: Canmatrix is a python package to read and write several CAN (Controller Area Network) database formats"
-)
+optdepends=()
 backup=()
 options=(!debug !strip)
 install=
 _pkgname=EcuBus-Pro
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('c26853a1e037b8e580366ba317a622cd95e7a3bfdce8e38e2ff9d42a6c325cd5')
+sha256sums=('6885d2b7653aeab1a3d759757f702de73030c7a53fadd214433b6e64140a64ec')
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 
 package() {
