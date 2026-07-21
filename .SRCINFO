@@ -1,0 +1,22 @@
+pkgbase = kawaiifi-git
+	pkgdesc = Wi-Fi scanner and analyzer for Linux
+	pkgver = 0.1.0.r392.gc6f81ac
+	pkgrel = 1
+	url = https://github.com/zleytus/kawaiifi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = rust
+	depends = gtk4
+	depends = libadwaita
+	depends = networkmanager
+	provides = kawaiifi
+	conflicts = kawaiifi
+	source = git+https://github.com/zleytus/kawaiifi.git
+	sha256sums = SKIP
+
+pkgname = kawaiifi-git
