@@ -4,7 +4,7 @@ BASE_NAME=pageguard
 DESCR="A tool for saving HTML-pages with all resources embedded"
 makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-gdc" "gcc-d")
 depends=("glib2" "amalthea-gdc")
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=0
 license=("BSL-1.0")
 
@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("51b7cfa83eb33a07b2cb42b180f20df0fd66de0128ba2937dd132fa35fb44899")
+sha256sums=("6f5b676a01a5e8c4a188c9736b7e78cb848427a5886db321fb8f86c46457f304")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
