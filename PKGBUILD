@@ -1,8 +1,8 @@
 # Maintainer: Mike Ravenblack <0xRavenBlack@github>
 pkgname=shadowdate
 _appid=0xravenblack.shadowdata
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A gothic dark-pastel desktop calendar for Linux (Rust + GTK4) with iCalendar support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xRavenBlack/ShadowDate"
@@ -41,9 +41,9 @@ package() {
     install -Dm644 "resources/${_appid}.desktop" \
         "${pkgdir}/usr/share/applications/${_appid}.desktop"
 
-    # Icon
+    # Icon (Logo.png is a 128x128 raster PNG)
     install -Dm644 "resources/img/Logo.png" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appid}.png"
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_appid}.png"
 
     # License
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = shadowdate
 	pkgdesc = A gothic dark-pastel desktop calendar for Linux (Rust + GTK4) with iCalendar support
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/0xRavenBlack/ShadowDate
 	arch = x86_64
 	arch = aarch64
