@@ -2,7 +2,7 @@
 # AUR package for kAppIcon — install system-wide under /usr
 
 pkgname=kappicon
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Change Linux app launcher icons without root (GUI + CLI)'
 arch=('any')
@@ -21,14 +21,18 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4ab5b64d50a8ed244b4343f169815d441afb0a3cb40d531a20aea5838fdc6fa8')
+sha256sums=('96d687b61c7672f7c4624c78dcba50b91565a7252aa997fb34e709664ff3dd34')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Binaries (GUI + CLI)
+  # Binaries (GUI thin launcher + CLI)
   install -Dm755 gui/kappicon "${pkgdir}/usr/bin/kappicon"
   install -Dm755 cli/kappicon-cli "${pkgdir}/usr/bin/kappicon-cli"
+
+  # Shared Python package (mutation + GUI); launcher resolves /usr/lib/kappicon/python
+  install -d "${pkgdir}/usr/lib/kappicon/python"
+  cp -a python/kappicon "${pkgdir}/usr/lib/kappicon/python/kappicon"
 
   # Desktop launcher (GUI only)
   install -Dm644 gui/kappicon.desktop \
