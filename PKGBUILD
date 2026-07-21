@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall-git
-pkgver=0.1.0.r1.g0397cd6
+pkgver=0.1.2.r1.g6d0f472
 pkgrel=1
 pkgdesc='Wayland voice dictation daemon and recording HUD (development version)'
 arch=('x86_64')
