@@ -2,6 +2,7 @@
 
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -453,7 +454,7 @@ def launch_comfyui(config, extracted_dir):
     if config["enable_manager"]:
         args.append("--enable-manager")
     for opt in config["comfyui_extra_options"]:
-        args.extend(opt.split())
+        args.extend(shlex.split(opt))
 
     os.execvpe("uv", args, env)
 
