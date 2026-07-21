@@ -1,0 +1,38 @@
+diff --git a/desktop/main.ts b/desktop/main.ts
+index c3140f1..94921d7 100644
+--- a/desktop/main.ts
++++ b/desktop/main.ts
+@@ -1,15 +1,15 @@
++// Arch Electron compat: app.isPackaged is always true on Arch's electron43
++// (ELECTRON_FORCE_IS_PACKAGED=true). Always use import.meta.url for path resolution.
+ import './chdir-first.ts';
+ import { dirname, isAbsolute, join } from 'node:path';
+ import { fileURLToPath } from 'node:url';
+ import { app, BrowserWindow, dialog, ipcMain, type OpenDialogOptions } from 'electron';
+ import { startEmbeddedServer } from './embedded-server.ts';
+-import { preparePackagedRuntime } from './packaged-runtime.ts';
++// import { preparePackagedRuntime } from './packaged-runtime.ts';
+ 
+ // Electron 主进程入口。dev 形态:esbuild 打到 desktop-dist/main.mjs,dist/ 在仓库根;
+ // 打包形态:dist/、remotion-bundle、chrome-headless-shell 走 extraResources。
+-const DIST_DIR = app.isPackaged
+-  ? join(process.resourcesPath, 'dist')
+-  : join(fileURLToPath(new URL('..', import.meta.url)), 'dist');
++const DIST_DIR = join(fileURLToPath(new URL('..', import.meta.url)), 'dist');
+ const PRELOAD_PATH = join(dirname(fileURLToPath(import.meta.url)), 'preload.cjs');
+ 
+ // CC_SMOKE=1:无窗冒烟——起内嵌 server、加载页面、探 /api/keys,按结果退码 0/1。
+@@ -67,11 +67,8 @@ async function boot(): Promise<void> {
+   await app.whenReady();
+   registerDesktopHandlers();
+   if (app.isPackaged) {
+-    await preparePackagedRuntime({
+-      resourcesPath: process.resourcesPath,
+-      userDataPath: app.getPath('userData'),
+-      version: app.getVersion(),
+-    });
++    // Arch compat: skipped — resourcesPath is electron's own dir
++    process.stderr.write('[desktop] note: skipping preparePackagedRuntime (Arch Electron compat)\n');
+   }
+   const { origin } = await startEmbeddedServer(DIST_DIR);
+   console.log(`[desktop] embedded server at ${origin}`);
