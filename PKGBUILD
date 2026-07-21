@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=4.2.4
+pkgver=4.3.0
 _electronversion=36
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('65dff9c234613d5ca892f8a52b54de23fcf3b9f996d51651bc611aca239ef606'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('32f1f522315e82ef4b527aa143210d6367eb292ef749900d1c425ba4d8c50d03')
-sha256sums_x86_64=('be686eeafe29abeeb4df7fe645e70834090c14e20743652bf1b7ada6524804a6')
+sha256sums_aarch64=('3fe03295f56bf163cc4502e2ff0c3344e278d4839944d04ff7e92e26a67a5c8c')
+sha256sums_x86_64=('47d992465be8d350b9263d2db080a578039a7503d7dbd2929481178689ed8ef1')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -62,7 +62,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${_app_dir}/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
