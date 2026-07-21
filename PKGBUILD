@@ -1,6 +1,6 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 pkgname=letta-code-desktop-bin
-pkgver=0.28.11
+pkgver=0.28.12
 pkgrel=1
 pkgdesc="Letta lets you build agents that learn"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 _todesktop_id=260305dtu2nh5
 source=("latest-linux.yml::https://download.todesktop.com/${_todesktop_id}/latest-linux.yml"
         'patch-safestorage.sh')
-sha256sums=('5158a38f5e293590b622e964873e1338e81c49af1e4e5e2c41a77d8bf6cc1cca'
+sha256sums=('e9d99980cb724ee81162f607a678c0685aa6dd3acaad32570956be404ca8ff20'
             'e1327529ac049a94d70c39ef5c1a2de21c5bb91e031b293cff73588ead7a8753')
 
 pkgver() {
