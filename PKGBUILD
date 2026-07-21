@@ -2,10 +2,11 @@
 pkgname=sober-bin
 _upstream_version=0.7.1
 pkgver="${_upstream_version//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first repository governance assistant with deterministic review readiness'
 arch=('x86_64')
-url='https://git.sovereign-society.org/Sober/sober'
+# Marketing / product site (read about Sober). Source + releases: git.sovereign-society.org/Sober/sober
+url='https://sober-dev.pages.dev'
 license=('LSL-1.0')
 depends=('tree-sitter')
 provides=('sober')

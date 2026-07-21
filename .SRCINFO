@@ -1,8 +1,8 @@
 pkgbase = sober-bin
 	pkgdesc = Local-first repository governance assistant with deterministic review readiness
 	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://git.sovereign-society.org/Sober/sober
+	pkgrel = 2
+	url = https://sober-dev.pages.dev
 	arch = x86_64
 	license = LSL-1.0
 	depends = tree-sitter
