@@ -1,14 +1,14 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=gopdf-git
-pkgver=0.1.20.r1.g1a4574b
-pkgrel=3
+pkgver=0.2.5.r0.g5f08452
+pkgrel=2
 pkgdesc="MuPDF-backend PDF viewer written in Go with Lua configuration"
 arch=('x86_64')
 url="https://github.com/Aethar01/gopdf.git"
 license=('AGPL')
 depends=('sdl3' 'libmupdf' 'gtk3')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'pkgconf')
 provides=('gopdf')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
@@ -20,7 +20,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	go build -ldflags "-X main.version=${pkgver}" -o gopdf .
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	go build -a -trimpath -ldflags "-linkmode=external -X main.version=${pkgver}" -o gopdf .
 }
 
 package() {
