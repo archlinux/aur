@@ -22,7 +22,7 @@ makedepends=(
   'librsvg'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theguy000/QuillScribe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0939c9f80416622d4ce4b341d15b1f3604af9a7f2833ebddd79129cf8aa476ff')
+sha256sums=('2308997ae8af9c23c8bf6ff448ffa083758cc80f7c694d37a81cb0474f8bfe89')
 
 prepare() {
   cd "QuillScribe-$pkgver"
