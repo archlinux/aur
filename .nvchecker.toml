@@ -1,0 +1,5 @@
+[payk-bin]
+source = "github"
+github = "yusupkhemraev/payk"
+use_latest_release = true
+prefix = "v"

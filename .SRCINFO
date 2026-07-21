@@ -1,0 +1,19 @@
+pkgbase = payk-bin
+	pkgdesc = Keyboard-first TUI HTTP client
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yusupkhemraev/payk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = payk
+	conflicts = payk
+	options = !strip
+	source = USAGE-0.2.0.md::https://raw.githubusercontent.com/yusupkhemraev/payk/v0.2.0/docs/usage.md
+	sha256sums = 479c3f7296f5a230a4b8f813f36b806a702eaa6bdcde9d9f61e85c753913149c
+	source_x86_64 = payk-x86_64-0.2.0.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.2.0/payk_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 850ebbc959fcbf0a0239ddfd9cfed4384ba864585dfa3dfc524aaa15b8456f00
+	source_aarch64 = payk-aarch64-0.2.0.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.2.0/payk_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8d452a3ba01467e46465d801f8aab1157211c785c174d011e62a1e0b10ae2df3
+
+pkgname = payk-bin
