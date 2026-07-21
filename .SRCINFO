@@ -1,0 +1,15 @@
+pkgbase = bdh-linux-ide
+	pkgdesc = A simple, lightweight terminal-based IDE using Tmux, Ranger, and Nano.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BackendDeveloperHub/bdh-linux-ide
+	arch = any
+	license = GNU General Public License
+	depends = tmux
+	depends = ranger
+	depends = nano
+	depends = bash
+	source = git+https://github.com/BackendDeveloperHub/bdh-linux-ide.git
+	sha256sums = SKIP
+
+pkgname = bdh-linux-ide
