@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A feature-rich TUI client for Discord"
 
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('1fd650aacb6d9562258941fa585854aed142dcd80a8d6de1f8dfd7e6592ac084')
-sha256sums_aarch64=('95715cc3b4af8b882f90ac1c4893ea3826acfb90428a84afed9b85c085bf8ecf')
+sha256sums_x86_64=('30676eff22ee054a35bc3ad0ef6a80a9de1b87a8b99642b8b0cdfaf707bd1fa7')
+sha256sums_aarch64=('be62a2bd6b57264e739764c4bf24626e437ce5a20c8ea697b2b3c2c32926e042')
 
 
 case ${CARCH} in
