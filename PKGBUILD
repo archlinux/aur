@@ -5,7 +5,7 @@ pkgname=video-work-api-git
 _pkgname=video-work-api
 _pkgsrc=video-work-api
 pkgver=0.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Local Video Work API toolkit: CosyVoice3 cloning and FunClip subtitles (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/video-work-api"
@@ -111,6 +111,16 @@ package() {
       -name .pytest_cache \
     \) -type d -prune -exec rm -rf {} + 2>/dev/null || true
   find "$dest" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete 2>/dev/null || true
+  # Do not redistribute upstream demo/reference audio.
+  find "$dest/vendor" -type f \( \
+      -iname '*.wav' -o \
+      -iname '*.mp3' -o \
+      -iname '*.m4a' -o \
+      -iname '*.flac' -o \
+      -iname '*.ogg' -o \
+      -iname '*.opus' -o \
+      -iname '*.aac' \
+    \) -delete 2>/dev/null || true
   # Never ship local data / tokens if present in a dirty checkout
   rm -rf "$dest"/models "$dest"/voices "$dest"/profiles \
          "$dest"/generations "$dest"/output "$dest"/setup-token \
