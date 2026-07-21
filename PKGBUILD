@@ -8,7 +8,7 @@
 readonly _pkgname="technical"
 
 pkgname="python-technical"
-pkgver="1.6.0"
+pkgver="1.7.0"
 pkgrel="1"
 pkgdesc="Various indicators developed or collected for the Freqtrade."
 arch=("any")
@@ -18,7 +18,7 @@ depends=("python" "python-matplotlib" "python-numpy" "python-pandas" "python-sci
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 checkdepends=("python-mock" "python-pip-audit" "python-pytest" "python-syrupy")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("102cee7815b7278111918aab9e9f1a2ef91c68a3f2e0f083f16d0f2f79009cbd5b79b753bfdbce732826c521b155ea875e59a9863afdb96d4dbe85594f86309d")
+sha512sums=("ed42f0d1fbe7bae968f6bc210b945fd42d063d2da546457866a09e644a3d382273aa7c03ea710ef8e5c54732227dab078e2b5cfbc4c2786b2ca844d942ba6f12")
 
 build()
 {
