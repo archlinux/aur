@@ -5,6 +5,7 @@ pkgbase = termux-language-server
 	url = https://github.com/termux/termux-language-server
 	arch = any
 	license = GPL3
+	makedepends = uv
 	makedepends = python-installer
 	depends = python-tree-sitter-bash
 	depends = python-platformdirs
