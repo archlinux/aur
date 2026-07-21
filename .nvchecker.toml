@@ -1,0 +1,5 @@
+[flclash]
+source = "github"
+github = "chen08209/FlClash"
+use_max_tag = true
+prefix = "v"

@@ -1,0 +1,36 @@
+pkgbase = flclash
+	pkgdesc = A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free
+	pkgver = 0.8.94
+	pkgrel = 1
+	url = https://github.com/chen08209/FlClash
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = cmake
+	makedepends = fvm
+	makedepends = gendesk
+	makedepends = git
+	makedepends = go
+	makedepends = java-environment
+	makedepends = ninja
+	makedepends = patchelf
+	makedepends = rustup
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libepoxy
+	depends = libgcc
+	depends = libkeybinder3
+	depends = libstdc++
+	depends = quickjs-c-bridge
+	depends = pango
+	source = git+https://github.com/chen08209/FlClash.git#tag=v0.8.94
+	source = git+https://github.com/chen08209/Clash.Meta.git
+	sha256sums = 48127d31332b1bfff9389d2c06a7f9b7f5ee2ee71955a0e892420edcb084f86e
+	sha256sums = SKIP
+
+pkgname = flclash
