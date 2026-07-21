@@ -1,6 +1,6 @@
 pkgbase = ecode
 	pkgdesc = Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/SpartanJ/ecode
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = ecode
 	depends = hicolor-icon-theme
 	depends = libelf
 	depends = libglvnd
-	depends = sdl2
+	depends = sdl3
 	provides = libeepp.so
-	source = git+https://github.com/SpartanJ/eepp.git#tag=ecode-0.8.0
+	source = git+https://github.com/SpartanJ/eepp.git#tag=ecode-0.8.1
 	source = git+https://github.com/SpartanJ/efsw.git
 	source = git+https://github.com/SpartanJ/soil2.git
 	source = git+https://github.com/jimon/premake-ninja.git
 	source = git+https://github.com/Jarod42/premake-cmake.git
-	sha256sums = 027ef3d63b89433cf7979fb4e3e561ab44226d42b7672b5ba7ec7590ce4c6fad
+	sha256sums = f667765450b84c9dbd11e8d76f9c311432246431f418619bfe832a03b814f5e7
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

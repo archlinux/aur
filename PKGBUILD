@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=(
   'hicolor-icon-theme'
   'libelf'
   'libglvnd'
-  'sdl2'
+  'sdl3'
 )
 makedepends=(
   'git'
@@ -23,7 +23,7 @@ source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
         'git+https://github.com/SpartanJ/soil2.git'
         'git+https://github.com/jimon/premake-ninja.git'
         'git+https://github.com/Jarod42/premake-cmake.git')
-sha256sums=('027ef3d63b89433cf7979fb4e3e561ab44226d42b7672b5ba7ec7590ce4c6fad'
+sha256sums=('f667765450b84c9dbd11e8d76f9c311432246431f418619bfe832a03b814f5e7'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd eepp
-  premake5 gmake
+  premake5 --with-backend=SDL3 gmake
   make config=release_${CARCH} "$pkgname" -C make/linux
 }
 
