@@ -1,10 +1,11 @@
 pkgbase = python-qsnctf
-	pkgdesc = 青少年 CTF 训练平台是一个公益、免费、供给全国青少年学习、训练的 CTF 在线平台。
+	pkgdesc = 青少年 CTF 训练平台提供的 Python 软件包
 	pkgver = 0.0.9.3
-	pkgrel = 1
-	url = https://pypi.org/project/qsnctf
+	pkgrel = 3
+	url = https://github.com/Moxin1044/qsnctf-python
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -23,8 +24,7 @@ pkgbase = python-qsnctf
 	conflicts = python-qsnctf
 	conflicts = qsnctf
 	conflicts = qsnctf-python
-	options = !strip
-	source = qsnctf-0.0.9.3.tar.gz::https://files.pythonhosted.org/packages/source/q/qsnctf/qsnctf-0.0.9.3.tar.gz
-	sha256sums = 23141dc3628f1bb305f146d8ca0f0c7b9818eeaaffa7fc1b26761bec7d7f919f
+	source = qsnctf::git+https://github.com/Moxin1044/qsnctf-python.git#tag=v0.0.9.3
+	sha256sums = f6ef992736b90feebf2b1d6880cfe48cc315fbcea3e7fb4a16ad2e93a5f38483
 
 pkgname = python-qsnctf
