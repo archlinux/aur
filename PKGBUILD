@@ -7,6 +7,8 @@ pkgdesc="The official desktop app for itch.io"
 arch=('x86_64')
 url="https://itch.io/app"
 license=('MIT')
+provides=('itchio')
+conflicts=('itchio')
 depends=(
     'alsa-lib'
     'gtk3'
@@ -22,15 +24,13 @@ source=(
 )
 
 sha256sums=(
-    'SKIP'
+    'c5bc21f9584bb7802d5875ca5244483dae5360efbc6e39677b0bf497d2df8b10'
 )
 
 package() {
     install -dm755 "${pkgdir}/opt/itch"
 
-    tar -xf "${srcdir}/itch-${pkgver}.tar.gz" \
-        --strip-components=1 \
-        -C "${pkgdir}/opt/itch"
+    cp -a "${srcdir}"/* "${pkgdir}/opt/itch/"
 
     install -dm755 "${pkgdir}/usr/bin"
 
@@ -38,8 +38,12 @@ package() {
         "${pkgdir}/usr/bin/itch"
 
     install -Dm644 \
-        "${pkgdir}/opt/itch/icon.png" \
+        "${srcdir}/resources/app/src/static/images/window/itch/icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/itch.png"
+
+    install -Dm644 \
+        "${srcdir}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/itch.desktop" <<EOF
@@ -52,6 +56,5 @@ Terminal=false
 Type=Application
 Categories=Game;
 StartupWMClass=itch
-MimeType=x-scheme-handler/itchio;x-scheme-handler/itch;
 EOF
 }
