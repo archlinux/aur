@@ -4,9 +4,9 @@
 
 _pkgname=sshpilot
 pkgname=sshpilot-bin
-pkgver=5.6.0
+pkgver=5.6.5
 pkgrel=1
-_pkgrel_deb=0ubuntu1
+_pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=(any)
 url="https://github.com/mfat/sshpilot"
@@ -18,7 +18,7 @@ options=(!strip)
 source=(
     "$pkgname-$pkgver-$_pkgrel_deb.deb::$url/releases/download/v$pkgver/sshpilot_${pkgver}-${_pkgrel_deb}_all.deb"
 )
-sha512sums=('71ea5af2f027128fa7fc6402108de31d1ff8688bacada21a20ef1f919bee43a4cc53c40084a60244422bd9b927e8d30e158e86e39b1a6652aa461be15f84ab32')
+sha512sums=('441a6b98bb198792a066bad2ebf8eb3375985b6fab8c14615e3d165c24421b9c50bf9c24992906ff183cf13a1bdbe947702d13860e6835f644cfd7b612d5da62')
 
 package() {
     depends=(
