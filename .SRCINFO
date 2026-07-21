@@ -8,10 +8,7 @@ pkgbase = xdg-desktop-portal-niri
 	makedepends = cargo
 	depends = xdg-desktop-portal
 	depends = pipewire
-	depends = zenity
 	depends = niri
-	optdepends = xdg-desktop-portal-gtk: file chooser dialogs
-	optdepends = gnome-keyring: secret portal
 	source = xdg-desktop-portal-niri-0.1.0.tar.gz::https://github.com/pantarune/niri-screenshare/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
