@@ -19,11 +19,13 @@ makedepends=()
 source=("${pkgver}_RuneLite.jar::https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
     "${pkgver}_RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
     "${pkgver}_runelite.png::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
-    runelite.desktop)
+    runelite.desktop
+    runelite)
 noextract=('RuneLite.jar')
 sha256sums=('d22398f15a512f08f596abc3f7b47fb8c58d7a198bf6158eab91e166584024af'
     '1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad'
     '81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11'
+    'SKIP'
     'SKIP')
 
 package() {
@@ -44,9 +46,6 @@ package() {
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D -m755 \
-        "/dev/null" \
+        "${srcdir}/runelite" \
         "${pkgdir}/usr/bin/runelite"
-
-    echo '#!/bin/sh' > "${pkgdir}/usr/bin/runelite"
-    echo 'exec java -jar /usr/share/java/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
 }
