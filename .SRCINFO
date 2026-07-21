@@ -1,6 +1,6 @@
 pkgbase = aura-emerge
 	pkgdesc = Portage-like wrapper for Arch Linux using Aura
-	pkgver = 1.27.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/Undercat037/aura-emerge
 	install = aura-emerge.install
@@ -10,13 +10,13 @@ pkgbase = aura-emerge
 	makedepends = cargo
 	makedepends = git
 	depends = aura
-	optdepends = asp: for --abs support (build from ABS source)
+	optdepends = devtools: for --abs support (build from ABS source via pkgctl)
 	optdepends = gnupg: for PGP verification when building from ABS
 	provides = portageq
 	conflicts = portage
 	conflicts = portage-git
 	backup = etc/emerge/world.set
-	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v1.27.0
-	sha256sums = 3f4ad923c99e548ba21fd67c93dd2ef53700668f5d9d95644fc4cd10d1eddf4a
+	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v1.28.0
+	sha256sums = 993450cd67878182bbde4a023107635c6c5a747e2ccb5926f17c517825fd7029
 
 pkgname = aura-emerge
