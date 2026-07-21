@@ -1,2 +1,27 @@
 #!/bin/sh
-exec java -jar /usr/share/java/runelite/RuneLite.jar "$@"
+
+MIN_JAVA=11
+
+extract_number() {
+	awk 'match($0, /[0-9]+/) { print substr($0, RSTART, RLENGTH); exit }'
+}
+
+if [ -z "$RUNELITE_JAVA" ]; then
+	RUNELITE_JAVA='/usr/bin/java'
+
+	if [ "$("$RUNELITE_JAVA" -version 2>&1 | extract_number)" -lt "$MIN_JAVA" ]; then
+		BEST_MAJOR=999
+		for DIR in /usr/lib/jvm/java-*/; do
+			MAJOR="$(echo "$DIR" | extract_number)"
+			if [ "${MAJOR:-0}" -ge "$MIN_JAVA" ] && [ "$MAJOR" -lt "$BEST_MAJOR" ]; then
+				JAVA="${DIR}bin/java"
+				if [ -x "$JAVA" ]; then
+					BEST_MAJOR="$MAJOR"
+					RUNELITE_JAVA="$JAVA"
+				fi
+			fi
+		done
+	fi
+fi
+
+exec "$RUNELITE_JAVA" -jar /usr/share/java/runelite/RuneLite.jar "$@"
