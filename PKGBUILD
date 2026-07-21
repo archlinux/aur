@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediachips-bin
 _pkgname=MediaChips
-pkgver=1.3.3
+pkgver=1.3.4
 _electronversion=42
 pkgrel=1
 pkgdesc="Manage your videos, add any metadata to them and play them.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.Linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1aaf823e7d0fe30d4b0e7754e2fa902154e6b48b982e41f695b2253962a7e81f'
+sha256sums=('b5d8044c9de290d39323c338b0273dab5272cfbb8fd42fcebcce37d658a084ca'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
