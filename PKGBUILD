@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-native
-_srctag=11.0-20260702
+_srctag=11.0-20260703
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
@@ -228,6 +228,7 @@ prepare() {
         extras/d7vk
         extras/discord-rpc-bridge
         extras/dxvk-low-latency
+        extras/vkd3d-low-latency
         extras/dxvk-sarek
         ffmpeg
         fonts/liberation-fonts
@@ -346,7 +347,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('5e6e2ec6fe00ed200f23fd1ec04cc84e8a55445ab2647a323cbff2ed55db309a2fa3aeab636fd28f0370fa3b4059355854780e600c5f81dcb4d826c7c95aadfe'
+b2sums=('6a2eb145f5d3ec468a61bcc3a31a04c166bc6e9b0d493a038f4aeb7f70b8e599ae5f2cf7230c515142594a4c7ec3e0fbbe11d2a14940a9ead1c626aea39e9f00'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '74555b5f02cb8053ccfb272c30f88e00bb647291ebf57ebd1bce067275ea9184fc0a983d26f4014fa1d6fae53ada9258ddaf11938f0b821fab1bde58257399b1'
