@@ -9,7 +9,7 @@ url="https://joidy-web.vercel.app"
 license=('GPL3')
 depends=('docker' 'docker-compose')
 source=("https://github.com/Axel-DaMage/joidy/archive/v${_tag}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('01fda3701ea125e5b628fc8ee1b3d11652073303ced73b3354e0dedf8ae8d92e')
 
 package() {
   cd "${srcdir}/joidy-${_tag}"

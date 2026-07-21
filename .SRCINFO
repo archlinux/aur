@@ -8,5 +8,5 @@ license = GPL3
 depends = docker
 depends = docker-compose
 source = https://github.com/Axel-DaMage/joidy/archive/vv1.0.0-rc.2.tar.gz
-sha256sums = SKIP
+sha256sums = 01fda3701ea125e5b628fc8ee1b3d11652073303ced73b3354e0dedf8ae8d92e
 pkgname = joidy
