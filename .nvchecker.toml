@@ -1,0 +1,4 @@
+[python-lagom]
+source = "git"
+git = "https://github.com/meadsteve/lagom.git"
+prefix = "v"
