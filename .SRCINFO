@@ -1,17 +1,16 @@
 pkgbase = omniapi-desktop-bin
-	pkgdesc = Blazing-fast API client — desktop GUI (prebuilt AppImage)
-	pkgver = 1.0.9
+	pkgdesc = Blazing-fast API client — desktop GUI
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/zaidejjo/omniapi
 	arch = x86_64
 	license = MIT
-	depends = fuse2
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	optdepends = libappindicator-gtk3: tray icon
-	source = https://github.com/zaidejjo/omniapi/releases/download/v1.0.9/omniapi_1.0.9_amd64.AppImage
-	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.9/README.md
-	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.9/LICENSE
-	sha256sums = bbe50ba110b8e14323b2766ce13cbd2aee7e6ebcc43f96c9dcc373baba3a5b27
+	source = https://github.com/zaidejjo/omniapi/releases/download/v1.0.10/omniapi_1.0.10_amd64.deb
+	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.10/README.md
+	source = https://raw.githubusercontent.com/zaidejjo/omniapi/v1.0.10/LICENSE
+	sha256sums = 71622bfc9c0b3386c775bdc9a44bed1696abcc238e6c3526bd2b0c033818c2d4
 
 pkgname = omniapi-desktop-bin

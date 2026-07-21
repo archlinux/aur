@@ -1,56 +1,34 @@
-# Maintainer: Zaid Ajo <zaidejjodev@gmail.com>
-# Template — replace zaidejjo and sha256sums before publishing.
+# Maintainer: Zaid Ajo <zaidejjodev@gmail.com> [cite: 1]
 
-pkgname=omniapi-desktop-bin
-pkgver=1.0.9
+pkgname=omniapi-desktop-bin 
+pkgver=1.0.10
 pkgrel=1
-pkgdesc="Blazing-fast API client — desktop GUI (prebuilt AppImage)"
-arch=('x86_64')
-url="https://github.com/zaidejjo/omniapi"
-license=('MIT')
+pkgdesc="Blazing-fast API client — desktop GUI"
+arch=('x86_64') 
+url="https://github.com/zaidejjo/omniapi" 
+license=('MIT') 
 depends=(
-  'fuse2'
-  'gtk3'
-  'webkit2gtk-4.1'
+  'gtk3' 
+  'webkit2gtk-4.1' 
 )
-optdepends=('libappindicator-gtk3: tray icon')
+optdepends=('libappindicator-gtk3: tray icon') 
 
-# Tauri Linux AppImage — name is `{productName}_{version}_amd64.AppImage`
-# e.g. omniapi_0.1.0_amd64.AppImage
+# Tauri Linux Package — .deb
 source=(
-  "${url}/releases/download/v${pkgver}/omniapi_${pkgver}_amd64.AppImage"
-  "https://raw.githubusercontent.com/zaidejjo/omniapi/v${pkgver}/README.md"
-  "https://raw.githubusercontent.com/zaidejjo/omniapi/v${pkgver}/LICENSE"
+  "${url}/releases/download/v${pkgver}/omniapi_${pkgver}_amd64.deb"
+  "https://raw.githubusercontent.com/zaidejjo/omniapi/v${pkgver}/README.md" 
+  "https://raw.githubusercontent.com/zaidejjo/omniapi/v${pkgver}/LICENSE" 
 )
-sha256sums=('bbe50ba110b8e14323b2766ce13cbd2aee7e6ebcc43f96c9dcc373baba3a5b27')
+sha256sums=('71622bfc9c0b3386c775bdc9a44bed1696abcc238e6c3526bd2b0c033818c2d4')
 
 package() {
-  install -d "${pkgdir}/usr/bin"
+  # 1. فك ضغط ملف الـ deb في مجلد البناء
+  ar x "${srcdir}/omniapi_${pkgver}_amd64.deb"
 
-  # AppImage is a self-contained executable
-  install -Dm755 "${srcdir}/omniapi_${pkgver}_amd64.AppImage" \
-    "${pkgdir}/usr/bin/omniapi-desktop"
+  # 2. استخراج المجلدات الجاهزة للنظام (/usr/bin, /usr/share ...)
+  tar -xf data.tar.* -C "${pkgdir}"
 
-  # Desktop entry
-  install -d "${pkgdir}/usr/share/applications"
-  cat >"${pkgdir}/usr/share/applications/omniapi-desktop.desktop" <<EOF
-[Desktop Entry]
-Name=OmniAPI
-Comment=Blazing-fast API client
-Exec=/usr/bin/omniapi-desktop
-Icon=omniapi-desktop
-Terminal=false
-Type=Application
-Categories=Development;Utility;
-StartupWMClass=omniapi-desktop
-EOF
-
-  # Install docs
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # Extract icon from AppImage (it's an ISO mount or you can embed one)
-  # For now, provide a minimal placeholder. Replace with a real icon later.
-  install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-  # If the AppImage was extracted already, you can grab its icon from there.
+  # 3. تثبيت ملفات التوثيق والترخيص
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" [cite: 5]
+  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md" [cite: 5]
 }
