@@ -2,7 +2,7 @@
 
 pkgname=python-exejs
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Run JavaScript code from Python."
@@ -14,7 +14,6 @@ provides=(${_name} ${pkgname})
 conflicts=(${_name} ${pkgname})
 depends=(
     python
-    #AUR
 )
 makedepends=(
     python-build
@@ -25,7 +24,7 @@ makedepends=(
 options=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('d01f5e791d26d27630b61b68ed006193fae9629d3cccba0de24fc05cd24f95bc')
+sha256sums=('4fb81c58bbdeea01d210cae68bafadf4d620bbcfabe11a6aa6c47158c18cfd15')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
