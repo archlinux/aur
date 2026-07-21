@@ -1,7 +1,7 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.5.0.r2.gf82d26c
+pkgver=0.5.9.r0.g65c7601
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -29,16 +29,25 @@ makedepends=(
     'curl'
     'file'
     'git'
-    'libayatana-appindicator'
     'librsvg'
-    'nodejs'
     'rust'
     'wget'
-    'yarn'
 )
+provides=('music-assistant-desktop')
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+# Never let makepkg put -flto in CFLAGS/CXXFLAGS/LDFLAGS here. The C sources
+# pulled in through build.rs ('cc' crate) are compiled by gcc and emit GNU IR,
+# which rust-lld cannot consume, so the final link fails on unresolved symbols.
+# It surfaces as an opaque ring build failure, but the cause is the mixed
+# GCC/LLVM IR, not ring: https://github.com/briansmith/ring/issues/2746
+#
+# Using a clang toolchain throughout would also work, but a host clang far
+# ahead of rust-lld's LLVM brings its own bytecode/attribute mismatches. We
+# would rather not link partially-LTO'd objects at all: build the C bits
+# normally and let the Rust-side LTO below do the cross-crate work.
+options=('!lto')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -49,11 +58,16 @@ prepare() {
     cd "$srcdir/$pkgname"
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
-    yarn install --frozen-lockfile
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
 
     # Fix desktop file to match actual icon name
     sed -i 's/Icon=music-assistant$/Icon=music-assistant-companion/' music-assistant.desktop
+
+    # The in-repo .desktop also omits StartupWMClass, so the running window does
+    # not associate with the launcher entry. Tauri's own generated entry (see
+    # the upstream .deb) sets it. Drop this once upstream ships it.
+    grep -q '^StartupWMClass=' music-assistant.desktop ||
+        echo 'StartupWMClass=music-assistant-companion' >> music-assistant.desktop
 }
 
 build() {
@@ -61,32 +75,15 @@ build() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR="$srcdir/target"
-   
-    # Disable flto in CFLAGS to prevent the ring build.rs steps from producing
-    # GNU specific IR that rust-lld does not know how to link. If we don't do
-    # this then we'll get unresolved symbols for ring core symbols.
-    # 
-    # We could instead using a clang toolchain to build, but if the host clang
-    # toolchain happens to be too far ahead of the rust-lld LLVM version, we
-    # might run into bytecode/attribute definition errors.
-    # 
-    # Fundamentally we don't want to be linking against partially LTO'd objects
-    # given the build.rs 'cc' crate usage, instead build them regularly and let
-    # the final link stage do the extra work, for portability.
-    # 
-    # Rust's final link performs LTO via the LTO configuration further down.
-    export CFLAGS="${CFLAGS//-flto*/}"
-    export CXXFLAGS="${CXXFLAGS//-flto*/}"
 
     # Enable debug info so makepkg can split it into the -debug package
     export CARGO_PROFILE_RELEASE_DEBUG=2
-    
-    # Enable the release optimizations that are commented out in the source "for
-    # build speed".
+
+    # Rust-side LTO only; the C objects are kept out of it by options=('!lto')
+    # above. This is a deliberate divergence from upstream, whose release
+    # profile is the cargo default.
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
     export CARGO_PROFILE_RELEASE_LTO=true
-    export CARGO_PROFILE_RELEASE_OPT_LEVEL=s
-    export CARGO_PROFILE_RELEASE_PANIC=abort
 
     cargo tauri build --no-bundle
 }
@@ -97,6 +94,12 @@ package() {
     # Install binary
     install -Dm755 "$srcdir/target/release/music-assistant-companion" \
         "$pkgdir/usr/bin/music-assistant-companion"
+
+    # Install the tauri.conf.json "resources" (translations). Tauri resolves
+    # resource_dir() to /usr/lib/<productName> on Linux, which is where the
+    # upstream deb puts them too. Only en.json is compiled into the binary.
+    install -Dm644 -t "$pkgdir/usr/lib/Music Assistant/resources/translations" \
+        src-tauri/resources/translations/*.json
 
     # Install desktop file
     install -Dm644 music-assistant.desktop \
