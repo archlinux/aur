@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputers."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=(
         environment.py.patch
       )
 sha256sums=(
-        '17c833b6935fceab87423f00b5548d38788656ebd5ef3ead8a628ced67f2c019'
+        'ed39d08bc295571cdec23a4566cbd8aa7ef4ebd582013d43874471a2b1257bf5'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
         '8f4ae16577e17ea497daca03228ab532886b8e89482f03ca770e809909a17867'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
