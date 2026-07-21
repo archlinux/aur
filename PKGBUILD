@@ -6,48 +6,29 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 pkg____=bluez
 pkgname=('bluez-ps3')
-pkgver=5.86
-pkgrel=6
+pkgver=5.87
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL-2.0-only')
-makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docutils' 'python-pygments'      )
-source=(https://www.kernel.org/pub/linux/bluetooth/${pkg____}-${pkgver}.tar.xz fake-ps3.patch
-        bluetooth.modprobe
-        fix-broken-stdin-handling.patch::https://github.com/bluez/bluez/commit/21e13976f2e375d701b8b7032ba5c1b2e56c305f.patch?full_index=1
-        revert_e73bf58.patch::https://github.com/bluez/bluez/commit/b33e923b55e4d0e9d78a83cfcb541fd1f687ef54.patch?full_index=1
-        a2dp-connect-source-profile-after-sink.patch::https://github.com/bluez/bluez/commit/066a164a524e4983b850f5659b921cb42f84a0e0.patch?full_index=1)
-# see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('99f144540c6070591e4c53bcb977eb42664c62b7b36cb35a29cf72ded339621d'
-            '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
-            '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4'
-            'e042d131206c2080f32b7f0d954092e8be34ecd8892fe9f2b7d26d90313bf2af'
-            'd4256f1a29abc50e4116e3ab6d31a75f2f69f3704e662e59656c10ee2276c92e'
-            '50ceb91113c4f99eede3ca9fac34760c46aad127018ff1837ca6b3517dd60da9')
-
+makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docutils' 'python-pygments'        'git')
+source=(#https://www.kernel.org/pub/linux/bluetooth/${pkg____}-${pkgver}.tar.{xz,sign}
+        # "git+https://github.com/bluez/bluez.git?signed#tag=$pkgver"
+        "git+https://github.com/bluez/bluez.git#tag=$pkgver"
+  fake-ps3.patch      
+	bluetooth.modprobe)
+b2sums=('9abcc5de17102c1307396627c87cffb5585e1c9b099cfd33d2a682d93f10e48a178fe8651c16ab9bb788d80f603f91db75e9fcadf7b627017202402d4ec396e5'
+        'ced1c61b82027362d65e1f0f4917669ce935b4dcc8f4e88b2b3172194e215170f609804bc9eb8533290cdd7749e3f632b6375224180a1a603ac120c030acc90a'
+        '0ce33d13b796d4ae2fd688b17742b3a3055663b68a352b02720dac82bcfdaa47bf2ee2a034dfb8ef4ddf3f827bc58fe80548730939c2915f64864cea39c10170')
+# validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 prepare() {
-  # Remove the vendored ell to avoid conflicts in header search paths
-  rm -r "${pkg____}-${pkgver}"/ell
-
-  cd "${pkg____}-${pkgver}"
-
-  # Fix bt_shell_printf in non-interactive mode
-  # See https://github.com/bluez/bluez/issues/1896
-  # and https://gitlab.archlinux.org/archlinux/packaging/packages/bluez/-/issues/17#note_423645
-  patch -Np1 -i "${srcdir}/fix-broken-stdin-handling.patch"
-  patch -Np1 -i "${srcdir}/revert_e73bf58.patch"
-
-  # Fix a2dp issues introduced by 5.86
-  # Personal issue: stuttering of audio on BLE headphones
-  # See: https://github.com/bluez/bluez/issues/1898
-  # See: https://github.com/bluez/bluez/issues/1922
-  # See: https://src.fedoraproject.org/rpms/bluez/c/e94cc90f7a5f1a10dafe2984d5d538c273676605?branch=rawhide
-  patch -Np1 -i "${srcdir}/a2dp-connect-source-profile-after-sink.patch"
+  cd "${pkg____}"
+  autoreconf -vfi
 }
 
 build() {
-  cd "${pkg____}"-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
+  cd "${pkg____}" ; patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
   ICAL_LIBS="-lical -licalvcal" \
   ./configure \
           --prefix=/usr \
@@ -73,15 +54,21 @@ build() {
   # add missing tools FS#41132, FS#41687, FS#42716
   for files in `find tools/ -type f -perm -755`; do
     filename=$(basename $files)
-    install -Dm755 "${srcdir}"/"${pkg____}"-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
+    install -Dm755 "${srcdir}"/"${pkg____}"/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
   done
+
+    for files in `find client/btpclient/ -type f -perm -755`; do
+    filename=$(basename $files)
+    install -Dm755 "${srcdir}"/"${pkg____}"/client/btpclient/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
+  done
+
 
   # add man pages for the above tools
   # https://github.com/bluez/bluez/commit/44e3dd321e4be052bcde40939552b93b734538d3
   for manfile in `find doc/ -type f -regex '.*\.[1-8]'`; do
     section=$(echo $manfile | sed -E 's/.*\.([1-8])$/\1/')
     filename=$(basename $manfile)
-    install -Dm644 "${srcdir}"/"${pkg____}"-${pkgver}/doc/$filename "${srcdir}/fakeinstall"/usr/share/man/man${section}/$filename
+    install -Dm644 "${srcdir}"/"${pkg____}"/doc/$filename "${srcdir}/fakeinstall"/usr/share/man/man${section}/$filename
   done
 }
 
@@ -98,9 +85,8 @@ _install() {
 }
 
 check() {
-  cd "$pkg____"-$pkgver
-  # Temporarily disable checks as the mesh-crypto one is failing (possible due to the system ell version)
-  make check || true
+  cd "$pkg____"
+  make check
 }
 
 
@@ -124,7 +110,7 @@ package_bluez-ps3() {
 
   # add basic documention
   install -dm755 "${pkgdir}"/usr/share/doc/"${pkg____}"/dbus-apis
-  cp -a "${pkg____}"-${pkgver}/doc/*.txt "${pkgdir}"/usr/share/doc/"${pkg____}"/dbus-apis/
+  cp -a "${pkg____}"/doc/*.txt "${pkgdir}"/usr/share/doc/"${pkg____}"/dbus-apis/
   # fix module loading errors
   install -dm755 "${pkgdir}"/usr/lib/modprobe.d
   install -Dm644 "${srcdir}"/bluetooth.modprobe "${pkgdir}"/usr/lib/modprobe.d/bluetooth-usb.conf

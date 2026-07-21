@@ -1,6 +1,6 @@
 pkgbase = bluez-ps3
-	pkgver = 5.86
-	pkgrel = 6
+	pkgver = 5.87
+	pkgrel = 2
 	url = http://www.bluez.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -12,18 +12,13 @@ pkgbase = bluez-ps3
 	makedepends = ell
 	makedepends = python-docutils
 	makedepends = python-pygments
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.86.tar.xz
+	makedepends = git
+	source = git+https://github.com/bluez/bluez.git#tag=5.87
 	source = fake-ps3.patch
 	source = bluetooth.modprobe
-	source = fix-broken-stdin-handling.patch::https://github.com/bluez/bluez/commit/21e13976f2e375d701b8b7032ba5c1b2e56c305f.patch?full_index=1
-	source = revert_e73bf58.patch::https://github.com/bluez/bluez/commit/b33e923b55e4d0e9d78a83cfcb541fd1f687ef54.patch?full_index=1
-	source = a2dp-connect-source-profile-after-sink.patch::https://github.com/bluez/bluez/commit/066a164a524e4983b850f5659b921cb42f84a0e0.patch?full_index=1
-	sha256sums = 99f144540c6070591e4c53bcb977eb42664c62b7b36cb35a29cf72ded339621d
-	sha256sums = 2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb
-	sha256sums = 46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4
-	sha256sums = e042d131206c2080f32b7f0d954092e8be34ecd8892fe9f2b7d26d90313bf2af
-	sha256sums = d4256f1a29abc50e4116e3ab6d31a75f2f69f3704e662e59656c10ee2276c92e
-	sha256sums = 50ceb91113c4f99eede3ca9fac34760c46aad127018ff1837ca6b3517dd60da9
+	b2sums = 9abcc5de17102c1307396627c87cffb5585e1c9b099cfd33d2a682d93f10e48a178fe8651c16ab9bb788d80f603f91db75e9fcadf7b627017202402d4ec396e5
+	b2sums = ced1c61b82027362d65e1f0f4917669ce935b4dcc8f4e88b2b3172194e215170f609804bc9eb8533290cdd7749e3f632b6375224180a1a603ac120c030acc90a
+	b2sums = 0ce33d13b796d4ae2fd688b17742b3a3055663b68a352b02720dac82bcfdaa47bf2ee2a034dfb8ef4ddf3f827bc58fe80548730939c2915f64864cea39c10170
 
 pkgname = bluez-ps3
 	pkgdesc = Daemons for the bluetooth protocol stack
