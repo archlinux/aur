@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=rmux
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64' 'aarch64')
 options=(!lto)
@@ -16,8 +16,8 @@ source=(
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
   libexec.patch
 )
-sha256sums=('abd5eb6b3895d3268c8f8fda4fd889cce0c71da5869aa7abd35420ca1d0f792b'
-            '1207b3b18c2711a10b63ca5cde4981e52e5b09d06cbbcd5970a388b762fe502f')
+sha256sums=('4047be9f3dd53105ee91faaf066a58b423862d0ffd621047e76d7aa1cc793db5'
+            '3f44699f6d2e7d1c71b218615ba778a9957f6434e0933f3c9b3ec9a23afaf93a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -42,13 +42,13 @@ package() {
   cd $pkgname-$pkgver
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname-daemon"
-  install -Dm0755 "$pkgdir/usr/lib/rmux/libexec/rmux" "target/release/$pkgname-bin"
+  install -Dm0755 "target/release/$pkgname-bin" "$pkgdir/usr/lib/$pkgname/libexec/$pkgname"
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 docs/man/"$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 "target/release/completions/rmux.bash" -t "$pkgdir/usr/share/bash-completion/completions/"
-  install -Dm644 "target/release/completions/rmux.elv" -t "$pkgdir/usr/share/elvish/lib/"
-  install -Dm644 "target/release/completions/rmux.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "target/release/completions/_rmux" -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 "target/release/completions/$pkgname.bash" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm644 "target/release/completions/$pkgname.elv" -t "$pkgdir/usr/share/elvish/lib/"
+  install -Dm644 "target/release/completions/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "target/release/completions/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
