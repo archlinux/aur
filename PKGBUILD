@@ -2,7 +2,7 @@
 
 _pkgname=calibre-tui
 pkgname=$_pkgname-git
-pkgver=0.6.0.r0.ga06c908
+pkgver=0.6.1.r0.gc9a4402
 pkgrel=1
 pkgdesc="A TUI application to search and open books in your Calibre library."
 arch=('x86_64' 'aarch64')
