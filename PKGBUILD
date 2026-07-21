@@ -2,7 +2,7 @@
 pkgname=sigma-file-manager-git
 _pkgname=Sigma-File-Manager
 _flatpakname=com.sigmafilemanager.app
-pkgver=2.1.0.r0.g0ba8b60
+pkgver=2.2.0.r5.gc6916c2
 _nodeversion=24
 pkgrel=1
 pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / browser) app."
@@ -35,6 +35,21 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
+_set_build_env() {
+    export HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+            export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+}
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -43,26 +58,14 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-	local HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-	        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+	_set_build_env
+    _ensure_local_nvm
     sed -i "s/${_flatpakname}/${pkgname%-git}/g" "flatpak/com.${pkgname%-git}.app.metainfo.xml"
     sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
     rustup default stable
@@ -70,6 +73,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _set_build_env
+    _ensure_local_nvm
     NODE_ENV=production     npm run sync-version
     NODE_ENV=production     npm run tauri:build:linux
 }
