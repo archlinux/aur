@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-portable
 pkgver=1.117.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (portable build for old CPUs)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -12,6 +12,7 @@ license=('AGPL-3.0-only')
 depends=(
     "python"
     "vulkan-icd-loader"
+    python-requests
 )
 optdepends=(
     'python-customtkinter: for GUI launcher'
@@ -56,9 +57,9 @@ package() {
     install -Dm644 ./embd_res/* "$pkgdir/usr/share/koboldcpp/embd_res"
 
     install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
-    install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
+    install -m644 kcpp_adapters/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
 
-    install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
+    install -Dm644 ./koboldcpp.py "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
     install -d "$pkgdir/usr/bin"
     echo '#!/bin/sh' > "$pkgdir/usr/bin/koboldcpp"
@@ -70,4 +71,8 @@ package() {
 
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm644 MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY.md "${pkgdir}/usr/share/licenses/${pkgname}/MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY.md"
+
+    # Compile Python scripts
+    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/json_to_gbnf.py"
+    python -m compileall -o 0 -o 1 -d '/usr/share/koboldcpp' "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 }
