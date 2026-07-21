@@ -3,7 +3,6 @@ pkgbase = xdg-desktop-portal-niri
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/pantarune/xdg-desktop-portal-niri
-	install = 
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
