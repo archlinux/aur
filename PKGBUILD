@@ -1,6 +1,6 @@
 # Maintainer: Aditya An1l <aditya.anil.productions@gmail.com>
 pkgname=lidhandler
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Toggle laptop lid switch suspend behavior via systemd-logind"
 arch=('any')
