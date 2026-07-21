@@ -1,7 +1,7 @@
 pkgbase = virtualbox-ext-oracle
 	pkgdesc = Oracle VM VirtualBox Extension Pack
 	pkgver = 7.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
 	arch = x86_64
 	license = custom:PUEL
