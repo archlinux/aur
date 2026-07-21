@@ -2,8 +2,8 @@
 # Maintainer: Merrkry <merrkry@tsubasa.moe>
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=26.6.1.r1405.ge77192
-pkgrel=2
+pkgver=26.7.3.r1584.g6f0650
+pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
 url="https://github.com/tsukinaha/tsukimi"
@@ -21,6 +21,7 @@ makedepends=(
 	'cargo'
 	'git'
 	'meson'
+	'blueprint-compiler'
 )
 source=(
 	git+https://github.com/tsukinaha/tsukimi.git
