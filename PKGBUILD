@@ -1,7 +1,7 @@
 # Maintainer: psychosomat <hello@ddark.dev>
 
 pkgname=openscreen-appimage
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "openscreen.desktop"
   "openscreen"
 )
-sha256sums=('cb27dfdd2d6e36e4dfe9b2c5d9430855ac8cab61acca19f8e54f1a0a39a0d83e' 'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82' 'SKIP' 'SKIP')
+sha256sums=('832500819b6e6f781dd1863426bb45a18ac53d827cabaf20d01492e8c818719a' 'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82' 'SKIP' 'SKIP')
 
 prepare() {
   chmod +x "$srcdir/Openscreen-Linux-$pkgver.AppImage"
