@@ -1,12 +1,12 @@
 # Maintainer: Henrik Bernhardt <57109108+Henriklmao@users.noreply.github.com>
 pkgname=display-tui-git
-pkgver=0.9.3.r44
+pkgver=r1.g
 pkgrel=1
 pkgdesc="Minimalistic hyprland monitor configuration TUI."
 arch=('x86_64')
 url="https://github.com/Henriklmao/display-tui"
 license=('GPL-3.0')
-depends=('hyprland' 'xdg-terminal-exec')
+depends=('hyprland')
 makedepends=('cargo' 'rust' 'git')
 install=display-tui.install
 source=('display-tui::git+https://github.com/Henriklmao/display-tui.git'

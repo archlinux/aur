@@ -2,8 +2,8 @@
 Version=1.0
 Name=Display TUI
 Comment=Minimalistic hyprland monitor configuration TUI
-Exec=xdg-terminal-exec --app-id=TUI.float -e display-tui
-Terminal=false
+Exec=display-tui
+Terminal=true
 Type=Application
 Icon=display-tui
 StartupNotify=true
