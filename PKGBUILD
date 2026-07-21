@@ -2,7 +2,7 @@
 
 pkgname=shelly-cli
 pkgbase=shelly-cli
-pkgver=3.0.0+4.r3410.g7707626
+pkgver=3.0.0+5r3433.gfd79689
 pkgrel=1
 pkgdesc='Native Shelly package-manager CLI beta'
 arch=('x86_64')
@@ -40,7 +40,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.0+4.r%s.g%s' \
+  printf '3.0.0+5r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
