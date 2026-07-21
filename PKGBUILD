@@ -3,8 +3,8 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=cd3c1bdc841c7a49ccb424e6b9920abdb633da75
-pkgver=7.2.pf1
+_rev=e9705a97e2f4a4c595dc7da6e111874d9726ede5
+pkgver=7.2.pf2
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'7e68a183a4974de797cf43f03f0f621363aa69a5a6c6030980d7153777170892e0f5a054f900274d88be56412790eb4ec7c8fdec4cf9d5da066971442ec01555')
+		'eb41395e84a7c75d07039d11dbfc99759328ba05e48941dc3013db0e2dceb51038a71c29d84f260c15ab1d7aea7ed027ec81235938c2073f8f1890b08f51d66e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -125,8 +125,8 @@ _package-headers() {
 	echo "Installing Kconfig files..."
 	find . -name 'Kconfig*' -exec install -Dm644 {} "${builddir}/{}" \;
 
-	echo "Installing Rust files..."
 	if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+		echo "Installing Rust files..."
 		install -Dt "${builddir}"/rust -m644 rust/*.rmeta
 		install -Dt "${builddir}"/rust rust/*.so
 	fi
