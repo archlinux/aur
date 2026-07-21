@@ -98,9 +98,6 @@ prepare() {
 
   patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
 
-  pnpm -C browser/$_pkgname install --frozen-lockfile
-  pnpm -C browser/$_pkgname all:build
-
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
 
@@ -111,6 +108,9 @@ prepare() {
     echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-arm64.mozconfig\"" >> ../mozconfig
     export FIREDRAGON_TARGET=linux-arm64
   fi
+
+  pnpm -C browser/$_pkgname install --frozen-lockfile
+  pnpm -C browser/$_pkgname all:build
 
   cat >> ../mozconfig <<END
 ac_add_options --enable-linker=lld
