@@ -1,5 +1,5 @@
 pkgbase = maki
-	pkgdesc = An efficient AI coding agent
+	pkgdesc = An efficient AI coding agent extendable by neovim like Lua plugins
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/tontinton/maki

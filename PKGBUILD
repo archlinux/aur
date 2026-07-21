@@ -2,7 +2,7 @@
 pkgname=maki
 pkgver=0.4.1
 pkgrel=1
-pkgdesc='An efficient AI coding agent'
+pkgdesc='An efficient AI coding agent extendable by neovim like Lua plugins'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tontinton/maki'
 license=('MIT')
