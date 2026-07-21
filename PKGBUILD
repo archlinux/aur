@@ -10,12 +10,7 @@ license=('GPL3')
 depends=(
   'xdg-desktop-portal'
   'pipewire'
-  'zenity'
   'niri'
-)
-optdepends=(
-  'xdg-desktop-portal-gtk: file chooser dialogs'
-  'gnome-keyring: secret portal'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pantarune/niri-screenshare/archive/v$pkgver.tar.gz")
