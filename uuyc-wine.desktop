@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Name=NetEase UU Remote (Wine)
+Name[zh_CN]=网易UU远程（Wine）
+GenericName=Remote Desktop
+GenericName[zh_CN]=远程桌面
+Comment=Run NetEase UU Remote through a managed Wine prefix
+Comment[zh_CN]=通过独立 Wine 前缀运行网易UU远程
+Exec=uuyc-wine %u
+TryExec=uuyc-wine
+Icon=uuyc-wine
+Terminal=false
+Categories=Network;RemoteAccess;
+Keywords=remote;desktop;streaming;game;cloud;wine;UU Remote;UU远程;网易;
+MimeType=x-scheme-handler/uuremote;
+StartupNotify=true
+StartupWMClass=gameviewer.exe

@@ -1,0 +1,26 @@
+pkgbase = uuyc-wine
+	pkgdesc = Wine compatibility package for NetEase UU Remote (网易UU远程)
+	pkgver = 4.33.0.8907
+	pkgrel = 1
+	url = https://uuyc.163.com/
+	arch = x86_64
+	license = LicenseRef-UU-Remote-EULA
+	makedepends = 7zip
+	depends = wine>=11.1
+	depends = hicolor-icon-theme
+	depends = procps-ng
+	depends = util-linux
+	optdepends = libnotify: desktop notifications during first-run setup
+	noextract = uuyc-wine-4.33.0.8907.exe
+	options = !strip
+	options = !debug
+	source = uuyc-wine-4.33.0.8907.exe::https://a56.gdl.netease.com/UURemote_Setup_4.33.0.8907_0715193023_gwqd.exe
+	source = uuyc-wine
+	source = uuyc-wine.desktop
+	source = UU-Remote-EULA.html::https://uuyc.163.com/contact/20240402/40294_1146065.html
+	sha256sums = 5e3cfe8cfdc6552c1fc26f1ad2c94df133ca20dc3c45c23155358c32ac9bf53e
+	sha256sums = 6ca419edac009d5811adc3f33ed3bfeb502cf65876a4598c3d5a36b63bef54a2
+	sha256sums = a55bf7d10211616967119ff57f4fe82bebf0b0ad12b93f6eafd3f2f2928fa840
+	sha256sums = 3a2b28509a7c54bb701ae877af8312f2c366388c198427f483cf791c6eae0b65
+
+pkgname = uuyc-wine
