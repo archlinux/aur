@@ -1,0 +1,3 @@
+[python-slowapi]
+source = "pypi"
+pypi = "slowapi"

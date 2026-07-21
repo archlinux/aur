@@ -1,16 +1,19 @@
 pkgbase = python-slowapi
 	pkgdesc = A rate limiting extension for Starlette and Fastapi
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://github.com/laurents/slowapi
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/a0/99/adfc7f94ca024736f061257d39118e1542bade7a52e86415a4c4ae92d8ff/slowapi-0.1.9.tar.gz
-	sha256sums = 639192d0f1ca01b1c6d95bf6c71d794c3a9ee189855337b4821f7f457dddad77
+	depends = python-limits
+	source = python-slowapi::git+https://github.com/laurents/slowapi#tag=v0.1.10?signed
+	validpgpkeys = 3F2FEB2945E72B8A60EA15D81E7737FF61F9B5AC
+	sha256sums = da8062c2d16f653e1c9ed422333bfe2a1603a52f8923ec4083b6722b07776a49
 
 pkgname = python-slowapi
