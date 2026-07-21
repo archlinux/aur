@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux"
 arch=('x86_64')
