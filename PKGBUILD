@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=sweetbg-git
 _repo=sweetbg
-pkgver=0.1.0.r0.ge198032
+pkgver=0.2.0.r0.ge198032
 pkgrel=1
 pkgdesc="Small, lightweight and static Wayland wallpaper daemon (latest git)"
 arch=('x86_64')

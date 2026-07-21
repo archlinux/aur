@@ -1,6 +1,6 @@
 pkgbase = sweetbg-git
 	pkgdesc = Small, lightweight and static Wayland wallpaper daemon (latest git)
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.2.0.r0.ge198032
 	pkgrel = 1
 	url = https://github.com/sweetwm/sweetbg
 	arch = x86_64
