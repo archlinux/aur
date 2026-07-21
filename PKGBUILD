@@ -25,15 +25,15 @@
 : ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.12.0-1"
-_commit="7cf09cb6107e888c93d85a7e575b4e7c8a2dc917"
-_ffsum="85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62"
+_icver="140.13.0-1"
+_commit="715ab58c4226572511cad0496908b64124f6729d"
+_ffsum="f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -43,18 +43,10 @@ depends=(
   dbus
   ffmpeg
   gtk3
-  libevent
-  libjpeg.so # libjpeg-turbo
-  libpulse
-  libvpx.so  # libvpx
-  libwebp.so # libwebp
   libxss
   libxt
   mime-types
-  nspr
-  nss
   ttf-font
-  zlib
 )
 makedepends=(
   cargo
@@ -96,6 +88,20 @@ optdepends=(
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
+
+if [[ "${_build_system_libs::1}" == "t" ]]; then
+  depends+=(
+    libffi.so       # libffi
+    libjpeg.so      # libjpeg-turbo
+    libpixman-1.so  # pixman
+    libvpx.so       # libvpx
+    libwebp.so      # libwebp
+    libwebpdemux.so # libwebp
+    libz.so         # zlib
+    nspr
+    nss
+  )
+fi
 
 if [[ "${_build_pgo::1}" == "t" ]]; then
   if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
@@ -149,9 +155,6 @@ source=(
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
-
-  # Fix for cbindgen 0.29.4
-  0006-cbindgen-0_29_4.patch
 )
 sha256sums=(
   'SKIP'
@@ -167,12 +170,11 @@ sha256sums=(
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
-  '198a797558d58d8cb68870fc1ff30dead271f5f1a3be0bce9a627d728a37da9f'
 )
 
 _make_icecat() (
   # restore icecat tarball, if exists
-  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
+  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_archive_icecat" ]; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
     bsdtar -xf "$SRCDEST/$_archive_icecat"
@@ -336,11 +338,19 @@ END
 
   if [[ "${_build_system_libs::1}" == "t" ]]; then
     cat >> ../mozconfig << END
+# ac_add_options --with-system-av1
+# ac_add_options --with-system-icu
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-pipewire
+# ac_add_options --with-system-png
+ac_add_options --with-system-ffi
+ac_add_options --with-system-gbm
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
+ac_add_options --with-system-libdrm
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-pixman
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 END
@@ -352,21 +362,30 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
+  # build paralleism
+  local _mem _nproc _cores
+  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
+  _nproc=$(nproc)
+
   if [[ "${_build_limit_cores::1}" == "t" ]]; then
-    # calculate core availability
-    local _mem _nproc _cores
-    _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
-    _nproc=$(nproc)
+    # calculate core availability based on free RAM and CPU count
     _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
     _cores=$((_cores < 1 ? 1 : _cores))
-
-    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
-
-    cat >> ../mozconfig << END
-mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
-END
+  elif ((${_build_limit_cores:-0} > 0)); then
+    # user-specified, capped by CPU count
+    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
   fi
 
+  if [ -n "${_cores:-}" ]; then
+    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+    cat >> ../mozconfig << END
+mk_add_options MOZ_PARALLEL_BUILD=${_cores}
+END
+  else
+    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
+  fi
+
+  # apply patches
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -382,8 +401,6 @@ END
 
 build() (
   _prepare_icecat
-
-  cd "$_pkgsrc"
 
   export RUSTUP_TOOLCHAIN=stable
 
@@ -405,6 +422,8 @@ build() (
 
   # LTO/PGO needs more open files
   ulimit -n 4096
+
+  cd "$_pkgsrc"
 
   # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]]; then
