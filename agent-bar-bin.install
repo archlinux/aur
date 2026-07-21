@@ -1,8 +1,9 @@
 post_install() {
-  echo "==> Run 'agent-bar setup' to integrate the modules into Waybar."
+  echo "==> Run 'agent-bar setup' to integrate with your bar (Waybar and/or Omarchy 4 omarchy-shell — auto-detected)."
   echo "==> Provider CLIs (claude/codex/amp/grok) are detected at runtime if installed."
 }
 
 post_upgrade() {
   echo "==> Updated. Restart Waybar if modules look stale."
+  echo "==> Omarchy 4: re-run 'agent-bar setup' to refresh the omarchy-shell plugin."
 }

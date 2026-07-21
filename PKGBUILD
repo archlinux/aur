@@ -1,8 +1,8 @@
 # Maintainer: Othavio <obsidianlab3d@gmail.com>
 pkgname=agent-bar-bin
 pkgver=8.4.0
-pkgrel=1
-pkgdesc="LLM quota monitor for Waybar (Claude, Codex, Amp, Grok) — standalone binary"
+pkgrel=2
+pkgdesc="LLM quota monitor for Waybar and Omarchy 4 omarchy-shell (Claude, Codex, Amp, Grok) — standalone binary"
 arch=('x86_64')
 url="https://github.com/othavi0/agent-bar"
 license=('MIT')

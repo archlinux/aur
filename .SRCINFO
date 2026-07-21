@@ -1,7 +1,7 @@
 pkgbase = agent-bar-bin
-	pkgdesc = LLM quota monitor for Waybar (Claude, Codex, Amp, Grok) — standalone binary
+	pkgdesc = LLM quota monitor for Waybar and Omarchy 4 omarchy-shell (Claude, Codex, Amp, Grok) — standalone binary
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/othavi0/agent-bar
 	install = agent-bar-bin.install
 	arch = x86_64
