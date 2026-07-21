@@ -4,8 +4,8 @@
 
 _appname=oxfmt
 pkgname=${_appname}-bin
-pkgver=0.59.0
-oxlint_pkgver=1.74.0
+pkgver=0.60.0
+oxlint_pkgver=1.75.0
 pkgrel=1
 pkgdesc="Oxfmt is a high-performance formatter for the JavaScript ecosystem"
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_github_url_raw}/README.md"
 source_x86_64=("${_binary_x86_64}-$pkgver.tar.gz::${_github_url}/${_binary_x86_64}.tar.gz")
 source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aarch64}.tar.gz")
 
-sha256sums=('be81179a34098b624f4b538da1e5b9a34a03ea6725d4002106b7d95a157985aa'
+sha256sums=('324ce0bf668dd2add5bed0ab6b46cf582c46292e1b88fccb9f82a0d42edd1a56'
             '95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3')
-sha256sums_x86_64=('52c14a294c4327899fea6f3b4d798c79d29d5d0ff3264af685df711b0717a748')
-sha256sums_aarch64=('451220b87b5c7798749c5411be3001bcbe54a0d060c61af9c0bff6a72b42d47a')
+sha256sums_x86_64=('84eb42f4cdfd2da96414c75bec2f2cd20aca1cda31c24613acf5abd4ba2b0c60')
+sha256sums_aarch64=('b4cfc53e237d3312b97a2ca6d896af7b13f98e5c93d1d54b227caddd01c04ef9')
 
 package() {
     local _binary_var="_binary_${CARCH}"
