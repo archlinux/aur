@@ -1,14 +1,15 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
-pkgname=f5vpn
+_pkgname=f5vpn
+pkgname=${_pkgname}-ng
 pkgver=7271.0.0.4
-pkgrel=2
+pkgrel=1
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
 mirror=vpn-mgmt.it.mtu.edu
 source=('no-desktop-file-dbus.patch'
   'license.html::https://cdn.f5.com/product/apm/apps/eula.html')
-source_aarch64=("linux_${pkgname}-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_${pkgname}.aarch64.deb")
-source_x86_64=("linux_${pkgname}-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_${pkgname}.x86_64.deb")
+source_aarch64=("linux_${_pkgname}-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_${_pkgname}.aarch64.deb")
+source_x86_64=("linux_${_pkgname}-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_${_pkgname}.x86_64.deb")
 sha256sums=('4f4e0f6362ece63d5370e8059c182e869198fb203455bc0fa50ee3ed95a9cdd0'
             '4507e09374f3e6044952f375e4a1af31505b267c4e0bb066ff159e85694a3d6e')
 sha256sums_aarch64=('4ad1008f04119975b169963960511174660403f63897be34f91abc4333418915')
@@ -22,24 +23,25 @@ optdepends=(
   'xorg-xwayland: wayland support'
 )
 provides=("${pkgname}")
+conflicts=("${_pkgname}")
 url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-1.html'
 license=('commercial')
 
 pkgver() {
   tar -xf data.tar.xz
-  grep -oEm1 --text '[0-9]+(\.[0-9]+){3}' usr/share/f5vpn-ng/svpn
+  grep -oEm1 --text '[0-9]+(\.[0-9]+){3}' "usr/share/${pkgname}/svpn"
 }
 
 package() {
   # f5vpn-ng should not be run as root, but it calls svpn which must be run as root
-  chmod u+s "${srcdir}/usr/share/f5vpn-ng/svpn"
+  chmod u+s "${srcdir}/usr/share/${pkgname}/svpn"
 
   (
     cd "${srcdir}/usr/share/applications"
     patch -i "${srcdir}/no-desktop-file-dbus.patch" # Desktop file does not work with Dbus enabled
   )
   install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
-  install -Dm644 'license.html' "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+  install -Dm644 'license.html' "${pkgdir}/usr/share/licenses/${_pkgname}/license.html"
 
   cp -a usr "${pkgdir}"
 }

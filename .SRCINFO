@@ -1,7 +1,7 @@
-pkgbase = f5vpn
+pkgbase = f5vpn-ng
 	pkgdesc = VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM
 	pkgver = 7271.0.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-1.html
 	arch = aarch64
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = f5vpn
 	depends = icu
 	depends = webkit2gtk-4.1
 	optdepends = xorg-xwayland: wayland support
-	provides = f5vpn
+	provides = f5vpn-ng
+	conflicts = f5vpn
 	source = no-desktop-file-dbus.patch
 	source = license.html::https://cdn.f5.com/product/apm/apps/eula.html
 	sha256sums = 4f4e0f6362ece63d5370e8059c182e869198fb203455bc0fa50ee3ed95a9cdd0
@@ -26,4 +27,4 @@ pkgbase = f5vpn
 	sha256sums_x86_64 = 04f8c670fabfe4d125849832973c3441d741ec31b1a325d799b3e702964988c0
 	b2sums_x86_64 = f8dac5cd7c42aeee508483041400392904e6a695bb8aca267c507c399240b0ea36764de05e591de7ad39024d01be80032fc8ae33c6d5416bd07fc2cab097b911
 
-pkgname = f5vpn
+pkgname = f5vpn-ng
