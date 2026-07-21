@@ -1,7 +1,7 @@
 # Maintainer: hedgeg0d <werstak192@gmail.com>
 pkgname=zlang-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZLang programming language compiler (pre-built AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zlangdevs/zlang"
@@ -11,8 +11,8 @@ conflicts=('zlang' 'zlang-git')
 options=('!strip')
 source_x86_64=("zlang-x86_64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v$pkgver/zlang-x86_64.AppImage")
 source_aarch64=("zlang-aarch64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v$pkgver/zlang-aarch64.AppImage")
-sha256sums_x86_64=('a8c9909344ea4e145a7ccc09c8b046716d53a305089c934ef0d8f2a2b6288a49')
-sha256sums_aarch64=('824e5845ce604861f4f4104cb2acf314e3dbdd1ac546e041f7e9bcb0e3551a0c')
+sha256sums_x86_64=('87afb1932a4ad6c261fa23a570be59fd544a138560a095840c1593f9c389868d')
+sha256sums_aarch64=('5341516124918f03e91bb4528c8cd6c672dc3d5b92e3e81685cd4fc5f57c0ec8')
 
 package() {
     install -Dm755 "zlang-$CARCH.AppImage" "$pkgdir/usr/lib/zlang-bin/zlang.AppImage"
