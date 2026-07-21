@@ -1,8 +1,8 @@
 pkgname=slskr
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='Rust Soulseek daemon with bundled Web UI'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/snapetech/slskr'
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc')
