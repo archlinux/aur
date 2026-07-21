@@ -1,6 +1,6 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 pkgname=dbpro-appimage
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Database management tool - MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source_x86_64=(
   "https://releases.dbpro.app/linux-x64/DB%20Pro-${pkgver}-x86_64.AppImage"
 )
 sha256sums_x86_64=(
-  'b5a3e341aafd60845cbfe57e31e03ea7aaf42778a5132bee1023e9ce12099213'
+  '4f5733834e569cd3398608dd5e4034c6170bafd485d72cf977aa389d235e9856'
 )
 noextract=("${source_x86_64[0]##*/}")
 
