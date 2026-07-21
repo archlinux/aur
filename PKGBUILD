@@ -3,12 +3,12 @@ pkgname=ham-libhel-bin
 _pkgname='ham-libhel'
 pkgbase=ham-libhel
 pkgver=v2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Extension library for HAMlib'
 url='http://console-dev.de/project/hel-library-for-gba/'
 arch=(x86_64 i686)
 depends=(ham-v2.71-linux-bin)
-source=(http://www.console-dev.de/libhel/libhel-v25.zip)
+source=(https://web.archive.org/web/20211029054427/http://www.console-dev.de/libhel/libhel-v25.zip)
 md5sums=('e30e47063cd39ffabbacb4de99431e72')
 options=(!strip)
 
