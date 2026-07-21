@@ -1,6 +1,6 @@
 pkgbase = sayall-bin
 	pkgdesc = Wayland voice dictation daemon and recording HUD (prebuilt)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/saiemsaeed/sayall
 	install = sayall-bin.install
@@ -15,11 +15,11 @@ pkgbase = sayall-bin
 	depends = pipewire-audio
 	depends = wl-clipboard
 	depends = wtype
-	provides = sayall=0.1.0
+	provides = sayall=0.1.1
 	conflicts = sayall
 	conflicts = sayall-git
 	options = !debug
-	source = sayall-bin-0.1.0.tar.gz::https://github.com/saiemsaeed/sayall/releases/download/v0.1.0/sayall-0.1.0-linux-x86_64.tar.gz
-	sha256sums = 6286e280a6f2d076ab45660bdc994b7888cd2e9e84554d606dffdd9be900d007
+	source = sayall-bin-0.1.1.tar.gz::https://github.com/saiemsaeed/sayall/releases/download/v0.1.1/sayall-0.1.1-linux-x86_64.tar.gz
+	sha256sums = bbd41ffd6c925b7a5d62391ba8f9f6d6c2fbc9058e38a2ed05af09c6c0bb24e2
 
 pkgname = sayall-bin
