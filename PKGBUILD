@@ -6,7 +6,7 @@ pkgdesc="Enhanced recreation of Minecraft Beta 1.7.3 (launcher, client, server)"
 arch=('x86_64')
 url="https://git.gay/betasharp-official/betasharp"
 license=('MIT')
-depends=('dotnet-runtime' 'gtk3')
+depends=('gtk3' 'webkit2gtk-4.1')
 makedepends=('dotnet-sdk' 'git')
 provides=('betasharp')
 conflicts=('betasharp')
@@ -39,12 +39,27 @@ package() {
     cp -r publish/. "$pkgdir/usr/lib/betasharp/"
     find "$pkgdir/usr/lib/betasharp" -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir/usr/lib/betasharp/BetaSharp.Launcher"
+    chmod 755 "$pkgdir/usr/lib/betasharp/Client/BetaSharp.Client"
+    chmod 755 "$pkgdir/usr/lib/betasharp/Server/BetaSharp.Server"
 
+    # Launcher writes the downloaded game jar next to its own binary
+    # (AppContext.BaseDirectory/Client|Server), which is read-only under
+    # /usr/lib. Stage a per-user writable copy in XDG_DATA_HOME and run
+    # from there instead; re-stage whenever the installed version changes.
     install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/betasharp" <<'EOF'
+    cat > "$pkgdir/usr/bin/betasharp" <<EOF
 #!/bin/sh
-cd /usr/lib/betasharp || exit 1
-exec /usr/lib/betasharp/BetaSharp.Launcher "$@"
+set -e
+PKGVER="$pkgver-$pkgrel"
+DEST="\${XDG_DATA_HOME:-\$HOME/.local/share}/betasharp"
+STAMP="\$DEST/.installed-version"
+if [ ! -f "\$STAMP" ] || [ "\$(cat "\$STAMP")" != "\$PKGVER" ]; then
+    mkdir -p "\$DEST"
+    cp -rf /usr/lib/betasharp/. "\$DEST/"
+    echo "\$PKGVER" > "\$STAMP"
+fi
+cd "\$DEST"
+exec "\$DEST/BetaSharp.Launcher" "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/betasharp"
 
