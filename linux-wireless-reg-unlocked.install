@@ -1,0 +1,118 @@
+# linux-wireless-reg-unlocked.install
+
+_pkgname="linux-wireless-reg-unlocked"
+_user_config="/etc/linux-wireless-reg-unlocked.conf"
+
+_load_config() {
+  # 默认安全值：不执行任何敏感操作
+  WIRELESS_FORCE=0
+  WIRELESS_RELOAD=0
+  WIRELESS_RESTART_NETWORK=0
+
+  if [[ -r "${_user_config}" ]]; then
+    echo "==> Loading user config from ${_user_config}..."
+    # shellcheck disable=SC1090
+    . "${_user_config}"
+  else
+    echo "==> No user config found, using safe defaults."
+    echo "==> Create ${_user_config} to enable wireless reload/restart actions."
+  fi
+
+  if [[ "${WIRELESS_FORCE}" == "1" ]]; then
+    echo "==> [FORCE MODE] Enabling all wireless operations..."
+    WIRELESS_RELOAD=1
+    WIRELESS_RESTART_NETWORK=1
+  fi
+}
+
+_reload_wireless() {
+  if [[ "${WIRELESS_RELOAD}" == "1" ]]; then
+    echo "==> Reloading iwlwifi stack..."
+
+    modprobe -r iwlmld iwlmvm iwldvm iwlwifi mac80211 cfg80211 2>/dev/null || \
+      echo "==> Warning: failed to unload some modules (they may be in use)"
+
+    modprobe iwlwifi 2>/dev/null || \
+      echo "==> Warning: failed to reload iwlwifi (reboot may be required)"
+  else
+    echo "==> Skipping wireless module reload (WIRELESS_RELOAD=0)"
+  fi
+}
+
+_restart_network() {
+  if [[ "${WIRELESS_RESTART_NETWORK}" == "1" ]]; then
+    echo "==> Restarting network services..."
+
+    if systemctl is-active --quiet NetworkManager; then
+      systemctl restart NetworkManager || \
+        echo "==> Warning: failed to restart NetworkManager"
+    fi
+
+    if systemctl is-active --quiet wpa_supplicant.service; then
+      systemctl restart wpa_supplicant.service || \
+        echo "==> Warning: failed to restart wpa_supplicant.service"
+    fi
+  else
+    echo "==> Skipping NetworkManager/wpa_supplicant restart (WIRELESS_RESTART_NETWORK=0)"
+  fi
+}
+
+_rebuild_boot_artifacts() {
+  local kver
+  local vmlinuz
+
+  _load_config
+
+  kver="$(cat "/usr/share/${_pkgname}/kernel-version" 2>/dev/null || uname -r)"
+  vmlinuz="/usr/lib/modules/${kver}/vmlinuz"
+
+  echo "==> Running depmod for ${kver}..."
+  depmod -a "${kver}" || depmod -a || \
+    echo "==> Warning: depmod failed."
+
+  if [[ -x /usr/bin/kernel-install && -f "${vmlinuz}" ]]; then
+    echo "==> Refreshing kernel-install managed entries for ${kver}..."
+    kernel-install add "${kver}" "${vmlinuz}" || \
+      echo "==> Warning: kernel-install failed, please refresh boot artifacts manually."
+  elif [[ -x /usr/bin/dracut ]]; then
+    echo "==> Rebuilding initramfs with dracut for ${kver}..."
+    dracut --force --kver "${kver}" || \
+      echo "==> Warning: dracut failed, please rebuild manually."
+  elif [[ -x /usr/bin/mkinitcpio ]]; then
+    echo "==> Rebuilding initramfs with mkinitcpio..."
+    mkinitcpio -P || \
+      echo "==> Warning: mkinitcpio failed, please rebuild manually."
+  fi
+
+  _reload_wireless
+  _restart_network
+}
+
+_print_post_hint() {
+  echo "==> ${_pkgname}: optional runtime behavior is controlled by:"
+  echo "==>   ${_user_config}"
+  echo "==> Example:"
+  echo "==>   WIRELESS_FORCE=0"
+  echo "==>   WIRELESS_RELOAD=1"
+  echo "==>   WIRELESS_RESTART_NETWORK=0"
+}
+
+post_install() {
+  _rebuild_boot_artifacts
+  echo "==> ${_pkgname} installed."
+  echo "==> Reboot is recommended to refresh boot-time driver state."
+  _print_post_hint
+}
+
+post_upgrade() {
+  _rebuild_boot_artifacts
+  echo "==> ${_pkgname} upgraded."
+  echo "==> Reboot is recommended to refresh boot-time driver state."
+  _print_post_hint
+}
+
+post_remove() {
+  _rebuild_boot_artifacts
+  echo "==> ${_pkgname} removed."
+  echo "==> Reboot is recommended to restore boot-time driver state."
+}

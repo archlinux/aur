@@ -1,0 +1,23 @@
+diff -urN orig/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c mod/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c
+--- orig/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c	2026-03-28 15:53:07.741613116 +0800
++++ mod/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c	2026-03-28 15:53:07.742620217 +0800
+@@ -370,6 +370,19 @@
+ 			ch_flags =
+ 				__le16_to_cpup((const __le16 *)nvm_ch_flags + ch_idx);
+ 
++		ch_flags |= (
++					NVM_CHANNEL_VALID | NVM_CHANNEL_IBSS | NVM_CHANNEL_ACTIVE | 
++					NVM_CHANNEL_GO_CONCURRENT | NVM_CHANNEL_20MHZ | NVM_CHANNEL_40MHZ);
++		ch_flags &= ~(NVM_CHANNEL_RADAR | NVM_CHANNEL_INDOOR_ONLY);
++
++		if (band == NL80211_BAND_5GHZ) {
++			ch_flags |= (NVM_CHANNEL_160MHZ);
++		}
++
++		if (band == NL80211_BAND_6GHZ) {
++			ch_flags |= (NVM_CHANNEL_160MHZ | NVM_CHANNEL_VLP | NVM_CHANNEL_AFC);
++		}
++
+ 		if (band == NL80211_BAND_5GHZ &&
+ 		    !data->sku_cap_band_52ghz_enable)
+ 			continue;
