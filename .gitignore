@@ -2,4 +2,4 @@ src/
 pkg/
 *.msi
 *.pkg.tar.zst
-
+update-pkgbuild
