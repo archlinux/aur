@@ -1,7 +1,7 @@
 # Maintainer: Dragonir <dragonir44@gmail.com>
 pkgname=wpe-manager
 _pyname=wpe_manager
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Native GUI over linux-wallpaperengine: per-screen assignment & playlist rotation"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'pyside6' 'linux-wallpaperengine-git')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('e7c33fd7db0958131b337e4fc30e5f6e7c31a2e03e06e96cdafc4b3d6c02c01f')
+sha256sums=('08dfaa221564cd1949179176938866f4a06bb1f9c7744f63c65804125fe1a5b3')
 
 build() {
   cd "$srcdir/${_pyname}-${pkgver}"
