@@ -2,7 +2,7 @@
 
 pkgname=calibre-tui-bin
 _pkgname=calibre-tui
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A TUI application to search and open books in your Calibre library."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('880cb6f6593d5da020bc0affac1b25fc968c496914799d0e90097439b8bb74ce')
+sha256sums=('c875274daae1e1be16a93e4a33d08a8b98835ab04e96fd9984437cb21906b699')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
