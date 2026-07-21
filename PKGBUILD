@@ -21,12 +21,16 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
     cd "${pkgname}-${pkgver}"
     cargo build --frozen --release --all-features
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
     cd "${pkgname}-${pkgver}"
     cargo test --frozen --all-features
 }
