@@ -3,7 +3,7 @@
 # compile). Bump pkgver + sha256sums on each release, regenerate .SRCINFO
 # (`makepkg --printsrcinfo > .SRCINFO`), and push to the AUR git remote.
 pkgname=cortex-bin
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 pkgdesc="Local-first, open-source NotebookLM alternative — a desktop study OS"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
 provides=('cortex')
 conflicts=('cortex')
 source=("https://github.com/PndaMan/cortex/releases/download/v${pkgver}/Cortex_${pkgver}_amd64.deb")
-sha256sums=('c15450d68976bbf206a21f2eda2dd5fc6c17d2f5ebf9c5b84d19e16f4c6b8076')
+sha256sums=('da9b176f0b6595288ff964c95bbb408b7e04c951b5defa2e3de3abfd88d739eb')
 
 package() {
   # A .deb is an `ar` archive containing data.tar.* with the install tree.
