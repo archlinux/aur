@@ -1,22 +1,17 @@
 pkgbase = amus
 	pkgdesc = A fast, privacy-focused local music player built for users who own their music library
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Naitik4516/AMUS
 	arch = x86_64
 	license = MPL-2.0
-	depends = cairo
-	depends = desktop-file-utils
-	depends = gdk-pixbuf2
-	depends = glib2
 	depends = gtk3
-	depends = hicolor-icon-theme
-	depends = libsoup
-	depends = pango
 	depends = webkit2gtk-4.1
+	depends = alsa-lib
+	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Naitik4516/AMUS/releases/download/v0.6.0/amus_0.6.0_amd64.deb
-	sha256sums_x86_64 = 06930a6275f05165287542ba33d2d598ba0cac6048da9fe7cde1a8183aa8a666
+	source_x86_64 = https://github.com/Naitik4516/AMUS/releases/download/v0.6.1/amus_0.6.1_amd64.deb
+	sha256sums_x86_64 = 4f7ff71e53c38cb2223a792e195acee1008c30a878a26c9823c9644fdc896e0d
 
 pkgname = amus
