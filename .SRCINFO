@@ -1,0 +1,25 @@
+pkgbase = openwave-mixer
+	pkgdesc = Dual-mix virtual audio mixer for PipeWire
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/ghostzero/openwave
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = libpulse
+	depends = alsa-lib
+	depends = pipewire-pulse
+	depends = hicolor-icon-theme
+	optdepends = lilv: LV2 effect plugin browser
+	optdepends = carla: VST2/VST3 effect support
+	optdepends = python: required by the Carla VST host helper
+	provides = openwave
+	conflicts = openwave
+	source = openwave-0.7.0.tar.gz::https://github.com/ghostzero/openwave/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 39a9bebf53b7fc76e191720b61b531e36aa50d1310c356d09b0366d611bbcc8a
+
+pkgname = openwave-mixer
