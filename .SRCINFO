@@ -1,6 +1,6 @@
 pkgbase = agent-bar-bin
 	pkgdesc = LLM quota monitor for Waybar and Omarchy 4 omarchy-shell (Claude, Codex, Amp, Grok) — standalone binary
-	pkgver = 8.4.1
+	pkgver = 8.5.0
 	pkgrel = 1
 	url = https://github.com/othavi0/agent-bar
 	install = agent-bar-bin.install
@@ -10,7 +10,7 @@ pkgbase = agent-bar-bin
 	optdepends = libnotify: desktop low/critical quota notifications
 	provides = agent-bar
 	conflicts = agent-bar
-	source = agent-bar-8.4.1-x86_64.tar.gz::https://github.com/othavi0/agent-bar/releases/download/v8.4.1/agent-bar-8.4.1-x86_64.tar.gz
-	sha256sums = e790ffd433cceed526c1862e78701299a21c45881311cb74720e4064f4a867ed
+	source = agent-bar-8.5.0-x86_64.tar.gz::https://github.com/othavi0/agent-bar/releases/download/v8.5.0/agent-bar-8.5.0-x86_64.tar.gz
+	sha256sums = 77e8dbaf896c63e7612894ed8b9929727dfc72b312325a8047a58798c1a615ae
 
 pkgname = agent-bar-bin
