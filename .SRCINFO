@@ -1,6 +1,6 @@
 pkgbase = pdf-tui-git
 	pkgdesc = Terminal PDF reader built with ratatui and terminal graphics protocols.
-	pkgver = 0.1.8.r0.ge45d82e
+	pkgver = 0.1.9.r0.g4d7eb6a
 	pkgrel = 1
 	url = https://github.com/WindustH/pdf-tui
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = pdf-tui-git
 	makedepends = git
 	makedepends = rust
 	depends = chafa
+	depends = mupdf-tools
+	depends = pdfium-binaries-bin
 	depends = pdftk
 	depends = poppler
 	optdepends = perl-image-exiftool: edit PDF metadata

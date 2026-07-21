@@ -2,13 +2,13 @@
 
 _pkgname=pdf-tui
 pkgname=$_pkgname-git
-pkgver=0.1.8.r0.ge45d82e
+pkgver=0.1.9.r0.g4d7eb6a
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64' 'aarch64')
 url="https://github.com/WindustH/pdf-tui"
 license=('MIT')
-depends=('chafa' 'pdftk' 'poppler')
+depends=('chafa' 'mupdf-tools' 'pdfium-binaries-bin' 'pdftk' 'poppler')
 makedepends=('git' 'rust')
 optdepends=('perl-image-exiftool: edit PDF metadata')
 provides=("$_pkgname")
