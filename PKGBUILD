@@ -60,3 +60,4 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chan/LICENSE"
     install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/chan/"
 }
+# red-proof scratch line, never lands
