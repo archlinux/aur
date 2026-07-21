@@ -1,7 +1,7 @@
 pkgbase = axisforge-bin
 	pkgdesc = Linux HOTAS / joystick remapper with action graphs, trim, and an AI setup assistant
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://axisforge.app
 	install = axisforge.install
 	arch = x86_64

@@ -1,4 +1,4 @@
-# Maintainer: AxisForge <support@axisforge.app>
+# Maintainer: AxisForge <hello@axisforge.app>
 #
 # axisforge-bin — Linux HOTAS / joystick remapper with action graphs,
 # response curves, trim, voice-pack folder import, and an AI setup assistant.
@@ -13,7 +13,7 @@
 pkgname=axisforge-bin
 _pkgname=axisforge
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux HOTAS / joystick remapper with action graphs, trim, and an AI setup assistant"
 arch=('x86_64')
 url="https://axisforge.app"
@@ -62,13 +62,17 @@ package() {
     install -Dm755 usr/bin/axisforge-gui "${pkgdir}/usr/bin/axisforge-gui"
     install -Dm755 usr/bin/axisforge     "${pkgdir}/usr/bin/axisforge"
 
-    # Shared resources Tauri staged in the AppDir.
-    if [ -d usr/lib ]; then
-        cp -a usr/lib "${pkgdir}/usr/"
-    fi
-    if [ -d usr/share ]; then
-        cp -a usr/share "${pkgdir}/usr/"
-    fi
+    # App-private payloads only. The AppDir's usr/lib and usr/share also
+    # carry the AppImage's whole bundled dependency closure (GTK, glib,
+    # gstreamer, …) staged for portable execution — installing those
+    # wholesale claims files owned by system packages and pacman aborts
+    # with "conflicting files". System libraries come from depends=();
+    # ship nothing but AxisForge's own files.
+    for d in usr/lib/"${_pkgname}"* usr/share/"${_pkgname}"*; do
+        [ -e "${d}" ] || continue
+        mkdir -p "${pkgdir}/${d%/*}"
+        cp -a "${d}" "${pkgdir}/${d%/*}/"
+    done
 
     # XDG metadata — replace whatever Tauri produced with our curated entries
     # so the menu listing, icon ref, and StartupWMClass are canonical.
