@@ -1,7 +1,6 @@
 pkgname=muote
 pkgver=0.3.0
-_wikiquotefetcherver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical settings UI for Muote"
 arch=('x86_64')
 url="https://github.com/efebaykaraa/muote"
@@ -14,7 +13,7 @@ depends=(
   'cairo'
   'glib2'
   'hicolor-icon-theme'
-  'wikiquote-fetcher>=1.0.1-3'
+  'wikiquote-fetcher>=1.0.1-4'
 )
 makedepends=('cargo')
 optdepends=('desktop-file-utils: update desktop entry cache during install hooks')
@@ -22,13 +21,11 @@ install=muote.install
 options=('!lto')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "wikiquote-fetcher-${_wikiquotefetcherver}.tar.gz::https://github.com/efebaykaraa/wikiquote-fetcher/archive/refs/tags/v${_wikiquotefetcherver}.tar.gz"
 )
-sha256sums=('2bc15a5a55db623917d489bed6b3876067a28bf452087499144ab790a8429317'
-            '7c8453d95595ebe7264386457992d6931090fd3e8c5938bfbe6f1ffdda869400')
+sha256sums=('2bc15a5a55db623917d489bed6b3876067a28bf452087499144ab790a8429317')
 
 prepare() {
-  ln -sfn "$srcdir/wikiquote-fetcher-$_wikiquotefetcherver" "$srcdir/wikiquote-fetcher"
+  ln -sfn /usr/share/wikiquote-fetcher "$srcdir/wikiquote-fetcher"
   cd "$srcdir/muote-$pkgver"
 
   export CARGO_HOME="$srcdir/cargo-home"
