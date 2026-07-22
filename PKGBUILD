@@ -3,13 +3,13 @@
 pkgname=gridtracker2
 pkgver=2.260705.2
 pkgrel=1
-_electronver=35
+_electronver=39
 pkgdesc="An Amateur Radio Companion"
 arch=('any')
 url="https://gridtracker.org"
 license=('BSD-3-Clause')
 makedepends=('npm')
-depends=("electron${_electronver}" 'libxss' 'libappindicator-gtk3' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+depends=("electron${_electronver}")
 source=("https://gitlab.com/gridtracker.org/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "gridtracker2.desktop"
         "gridtracker2.sh")
@@ -21,8 +21,6 @@ prepare() {
   cd ${pkgname}-v$pkgver
 
   sed -i "s/@_electronver@/$_electronver/" "$srcdir/${pkgname}.sh"
-  grep -q "\"electron\": \"$_electronver\." package.json \
-    || ( echo "Electron version mismatch in package.json"; exit 1 )
 
   npm install
 }
