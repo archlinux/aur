@@ -1,6 +1,6 @@
 pkgbase = aish-bin
 	pkgdesc = Empower the Shell to think. Evolve Operations.
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/AI-Shell-Team/aish
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = aish-bin
 	conflicts = aish
 	options = !strip
 	backup = etc/aish/security_policy.yaml
-	source = README-0.3.7.md::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.7/README.md
-	source = LICENSE-0.3.7::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.7/LICENSE
+	source = README-0.3.8.md::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.8/README.md
+	source = LICENSE-0.3.8::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.8/LICENSE
 	sha256sums = 182b432e0e2ba88c28049e5e2386f0d640b0bc28dfd397f578428e46774edb56
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = aish-x86_64-0.3.7.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.7/aish-0.3.7-linux-amd64.tar.gz
-	sha256sums_x86_64 = 98797691de603fd3491bfc619563089088717b5ea0ab11f26aef3ef912611357
-	source_aarch64 = aish-aarch64-0.3.7.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.7/aish-0.3.7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 70f5c31b54ca7312f518d8053877ee06a9119d1a9740fcaea612a3087c47908a
+	source_x86_64 = aish-x86_64-0.3.8.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.8/aish-0.3.8-linux-amd64.tar.gz
+	sha256sums_x86_64 = c645534ed492e893ef8da04cc42750430e9cac89252344ae38f16408d3629773
+	source_aarch64 = aish-aarch64-0.3.8.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.8/aish-0.3.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = 23b7ff882b51a3289e72980de59626a01af49f5923a0291c7083fdabe4d9b835
 
 pkgname = aish-bin
