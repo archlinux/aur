@@ -1,6 +1,6 @@
 # Maintainer: xotkot
 pkgname=batorrent-git
-pkgver=4.7.0.rc6.r7.g47f808d
+pkgver=4.8.0.beta2.r0.g66a60ff
 pkgrel=1
 pkgdesc='A lightweight BitTorrent client built with C++, Qt 6, and libtorrent-rasterbar.'
 arch=(x86_64)
@@ -37,6 +37,8 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm0755 "$srcdir/$pkgname/build/BATorrent" 	"$pkgdir/usr/bin/BATorrent"
-  install -Dm0644 "$srcdir/$pkgname/LICENSE" 			"$pkgdir/usr/share/licenses/BATorrent/LICENSE"
+  install -Dm0755 "$srcdir/$pkgname/build/BATorrent"		"$pkgdir/usr/bin/BATorrent"
+  install -Dm0644 "$srcdir/$pkgname/LICENSE"				"$pkgdir/usr/share/licenses/BATorrent/LICENSE"
+  install -Dm0644 "$srcdir/$pkgname/src/images/logo.svg"	"$pkgdir/usr/share/pixmaps/batorrent.svg"
+  install -Dm0644 "$srcdir/$pkgname/dist/batorrent.desktop"	"$pkgdir/usr/share/applications/batorrent.desktop"
 }

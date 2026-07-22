@@ -1,6 +1,6 @@
 pkgbase = batorrent-git
 	pkgdesc = A lightweight BitTorrent client built with C++, Qt 6, and libtorrent-rasterbar.
-	pkgver = 4.7.0.rc6.r7.g47f808d
+	pkgver = 4.8.0.beta2.r0.g66a60ff
 	pkgrel = 1
 	url = https://github.com/Mateuscruz19/BATorrent
 	arch = x86_64
