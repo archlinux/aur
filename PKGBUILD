@@ -40,5 +40,6 @@ package() {
   install -Dm0755 "$srcdir/$pkgname/build/BATorrent"		"$pkgdir/usr/bin/BATorrent"
   install -Dm0644 "$srcdir/$pkgname/LICENSE"				"$pkgdir/usr/share/licenses/BATorrent/LICENSE"
   install -Dm0644 "$srcdir/$pkgname/src/images/logo.svg"	"$pkgdir/usr/share/pixmaps/batorrent.svg"
+  install -Dm0644 "$srcdir/$pkgname/src/images/logo1.png"   "$pkgdir/usr/share/pixmaps/batorrent.png"
   install -Dm0644 "$srcdir/$pkgname/dist/batorrent.desktop"	"$pkgdir/usr/share/applications/batorrent.desktop"
 }
