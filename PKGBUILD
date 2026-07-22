@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft LLC <packages@visorcraft.com>
 
 pkgname=onq
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 _ortver=1.24.2
 pkgdesc='Search-oriented encrypted prompt vault'
@@ -31,7 +31,7 @@ source=(
   "onnxruntime-$_ortver-ThirdPartyNotices.txt::https://raw.githubusercontent.com/microsoft/onnxruntime/v$_ortver/ThirdPartyNotices.txt"
 )
 noextract=("onnxruntime-$_ortver-x86_64.tar.lzma2")
-sha256sums=('9c2165afc2c53b0cebb13069f5df436a733bcb85680d1930eab6e7b4619569fb'
+sha256sums=('a10f8e1149f8135ef19ed75943462f25d4054c852c966ae6672dccee50169ae0'
             '5ac2f4c83de25d9c254e7ff8cba2e016935f174a0a2110e9be229168813978d3'
             'acc1cba79c337594ead1d88ca72516147aa60054c84217b53399a31caa5ba671'
             '2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c'
