@@ -1,0 +1,22 @@
+pkgbase = lyrics-tool
+	pkgdesc = Cross-platform terminal lyrics visualizer and LRC/WLRC toolkit
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hamza-abdelmoumene/lyrics-tool
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mutagen
+	depends = python-yaml
+	depends = python-pillow
+	depends = python-syncedlyrics
+	optdepends = playerctl: live player sync for the visualizer (lyricsooo)
+	optdepends = ffmpeg: read audio durations when processing (lyricsooo-cook)
+	source = lyrics-tool-0.2.0.tar.gz::https://github.com/hamza-abdelmoumene/lyrics-tool/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 340a2788c136a0429403bc760b15058b4708a683eedc1c2d946af37c1a6eb436
+
+pkgname = lyrics-tool
