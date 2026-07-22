@@ -1,7 +1,7 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
 
 pkgname=axolotl-launcher
-pkgver=1.3.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64')
@@ -13,13 +13,13 @@ depends=(
 	'webkit2gtk-4.1'
 	'xdg-utils'
 )
-makedepends=('jdk17-openjdk' 'pnpm' 'cargo' 'librsvg' 'patchelf')
+makedepends=('jdk17-openjdk' 'pnpm' 'cargo' 'librsvg' 'patchelf' 'clang')
 source=(
 	"$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'axolotl-launcher.desktop'
 	'red.ghs.axolotl.xml'
 )
-sha256sums=('10dc6c8713259ccec951db7f9ec0808d515efbcd3bfd62b1f682120c25fc5cc7'
+sha256sums=('63fe2de025303d4c4e9cdc88ae72fd47531b3a5247fc68f0ec2d3e7fe31a6943'
             '0e5e26336cadd2957745befaa5bfb982e85fa39a49aa3c9ae00608afc326011a'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
 options=('!strip')
