@@ -2,7 +2,7 @@
 
 pkgname=acheron-git
 _pkgname=acheron
-pkgver=r157.f4d362f
+pkgver=r191.243fa72
 pkgrel=1
 pkgdesc='Alternative Discord client made in C++ with Qt 6'
 arch=('x86_64')
@@ -10,18 +10,24 @@ url='https://github.com/ouwou/acheron'
 license=('GPL-3.0-or-later')
 depends=(
   qt6-base
+  qt6-svg
+  qtkeychain-qt6
   libstdc++
   libgcc
   glibc
-  glib2
   zlib
   curl
+  openssl
+  libsodium
+  opus
+  rnnoise
 )
 makedepends=(
   git
   cmake
   ninja
   qt6-tools
+  nlohmann-json
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -37,7 +43,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  git submodule update --init --filter=tree:0 vendor/{qtkeychain,emoji-segmenter,libdave,miniaudio,vcpkg,rnnoise}
+  git submodule update --init --filter=tree:0 vendor/{emoji-segmenter,libdave,miniaudio,mlspp,qrcodegen}
 }
 
 build() {
@@ -45,7 +51,8 @@ build() {
 
   cmake -B build -S . -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTS=OFF \
+    -DUSE_VCPKG=OFF
   cmake --build build
 }
 
