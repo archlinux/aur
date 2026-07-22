@@ -5,7 +5,7 @@
 # Contributor: XavRan <leandro.espinozar@protonmail.com>
 
 pkgname=ranger-git
-pkgver=1.9.3.944.g4831012d
+pkgver=1.9.3.946.g00650d33
 pkgrel=1
 pkgdesc="A simple, vim-like file manager"
 arch=('any')
