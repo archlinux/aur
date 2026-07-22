@@ -5,7 +5,7 @@
 
 _pkgname="giada"
 pkgname="$_pkgname-git"
-pkgver=1.3.1.r104.g03a63cd
+pkgver=1.5.0.r20.g32bfe7c
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 url="https://github.com/monocasual/giada"
@@ -24,22 +24,22 @@ depends=(
   'libxft'
   'libxinerama'
   'rtmidi'
+  'rubberband'
 )
 makedepends=(
-  'catch2'
   'cmake'
   'git'
-  'imagemagick'
+  'ninja'
+
+  'catch2'
   'libgl'
   'libxpm'
   'libxrandr'
-  'ninja'
   'nlohmann-json'
-  'vst3sdk'
 )
 
-provides=('vst3-host')
-conflicts=('giada' 'giada-vst')
+provides=("$_pkgname" 'vst3-host')
+conflicts=("$_pkgname")
 
 options=('!emptydirs' '!staticlibs')
 
@@ -59,16 +59,20 @@ pkgver() {
 }
 
 build() (
+  # monocasual/giada/issues/806
+  CXXFLAGS+=' -DFMT_DEPRECATED_HEAVY_CORE'
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-author
+
+    -DWITH_TESTS=ON
     -DWITH_VST2=OFF
     -DWITH_VST3=ON
-    -DWITH_TESTS=ON
-    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
@@ -94,6 +98,8 @@ package() {
       'libjack.so'
       'libpulse-simple.so'
       'libpulse.so'
+      'librtmidi.so'
+      'librubberband.so'
       'libsamplerate.so'
       'libsndfile.so'
       'libz.so'
