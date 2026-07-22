@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=1.22209.3
+pkgver=1.24012.0
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -86,8 +86,8 @@ options=('!strip' '!debug')
 _baseurl="https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop"
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('d427f46ac9233dbc4d8a441a602f09f750b8a5f05d1fc7a00285d7a6ce07655c')
-sha256sums_aarch64=('55ccb478b22d71b46e669582e7ae4d6f44fc6dff0b3d515a9163049dab4034b2')
+sha256sums_x86_64=('1096a8063956f8430fdbe504bb1c5e02985f31d0f45d082e4966e5d30ea7e3ac')
+sha256sums_aarch64=('37dd5dc1b0bfcb3192561acbd33cb59037806fe9b95221a3ddf38244203196f1')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
