@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Freerouting
+GenericName=PCB Autorouter
+Comment=Advanced PCB autorouter
+Exec=freerouting %f
+Icon=freerouting
+Terminal=false
+Categories=Development;Electronics;
+MimeType=application/x-kicad-pcb;

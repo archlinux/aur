@@ -1,0 +1,23 @@
+pkgbase = freerouting-bin
+	pkgdesc = Advanced PCB autorouter (pre-built binary release)
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = https://github.com/freerouting/freerouting
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = sh
+	depends = hicolor-icon-theme
+	optdepends = kicad: for use with PCB editor
+	provides = freerouting=2.2.4
+	conflicts = freerouting
+	conflicts = freerouting-git
+	conflicts = freerouting-zh-cn
+	conflicts = freerouting-zh-cn-git
+	options = !strip
+	source = freerouting-2.2.4-linux-x64.zip::https://github.com/freerouting/freerouting/releases/download/v2.2.4/freerouting-2.2.4-linux-x64.zip
+	source = freerouting.desktop
+	sha512sums = f0161d37010611881251db2de6abd716eba9247fcb1554b7a6569915333fe326cd875e46ef72786480168d88373fb1b63901d448cdefb656e09a3f935d85054c
+	sha512sums = 04b749854ddb921bc3e6dc6a0fe56a85af7020cc57dd7c32fcab4d66c2186513fdd3949816f936cefe27a3e6372e3d9ce49d9e88f3be3775ff21d054b4ea0f30
+
+pkgname = freerouting-bin
