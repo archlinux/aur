@@ -1,10 +1,11 @@
 pkgbase = python-htmltools
 	pkgdesc = Tools for creating, manipulating, and writing HTML from Python
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/posit-dev/py-htmltools
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest>=6.2.4
 	checkdepends = python-syrupy>=4.6.0
 	makedepends = python-build
