@@ -7,8 +7,8 @@ use std::fs;
 use std::os::raw::{c_char, c_int, c_ulong};
 use std::path::PathBuf;
 use std::ptr;
-use std::sync::atomic::{AtomicBool, AtomicPtr, AtomicU64, AtomicUsize, Ordering};
-use std::sync::{LazyLock, Mutex};
+use std::sync::atomic::{AtomicBool, AtomicPtr, AtomicU64, Ordering};
+use std::sync::{Condvar, LazyLock, Mutex};
 use std::thread::{self, JoinHandle};
 use x11::{keysym, xlib, xrecord};
 
@@ -35,10 +35,11 @@ struct Lifecycle {
 static RUNNING: AtomicBool = AtomicBool::new(false);
 static WATCHER_INTERVAL_BITS: AtomicU64 = AtomicU64::new(5.0f64.to_bits());
 static RECORD_CONTROL_DISPLAY: AtomicPtr<xlib::Display> = AtomicPtr::new(ptr::null_mut());
-static RECORD_CONTEXT: AtomicUsize = AtomicUsize::new(0);
 static KEYBOARD: LazyLock<Mutex<KeyboardState>> =
     LazyLock::new(|| Mutex::new(KeyboardState::default()));
 static LIFECYCLE: LazyLock<Mutex<Lifecycle>> = LazyLock::new(|| Mutex::new(Lifecycle::default()));
+static CAPTURE_WAKE: LazyLock<(Mutex<()>, Condvar)> =
+    LazyLock::new(|| (Mutex::new(()), Condvar::new()));
 
 fn lock_keyboard() -> std::sync::MutexGuard<'static, KeyboardState> {
     KEYBOARD
@@ -56,6 +57,20 @@ fn watcher_interval_ms() -> i32 {
     f64::from_bits(WATCHER_INTERVAL_BITS.load(Ordering::Relaxed))
         .max(1.0)
         .min(i32::MAX as f64) as i32
+}
+
+fn wait_for_capture() {
+    let (lock, wake) = &*CAPTURE_WAKE;
+    let guard = lock.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+    if RUNNING.load(Ordering::Acquire) {
+        drop(
+            wake.wait_timeout(
+                guard,
+                std::time::Duration::from_millis(watcher_interval_ms() as u64),
+            )
+            .unwrap_or_else(|poisoned| poisoned.into_inner()),
+        );
+    }
 }
 
 fn pressed_json(state: &KeyboardState) -> String {
@@ -132,9 +147,7 @@ fn run_evdev(mut devices: Vec<Device>) {
             }
         }
         if !received_event {
-            thread::sleep(std::time::Duration::from_millis(
-                watcher_interval_ms() as u64
-            ));
+            wait_for_capture();
         }
     }
 }
@@ -219,12 +232,26 @@ fn run_xrecord() {
         let context = xrecord::XRecordCreateContext(control, 0, &mut clients, 1, &mut range_ptr, 1);
         xlib::XFree(range.cast());
         RECORD_CONTROL_DISPLAY.store(control, Ordering::Release);
-        RECORD_CONTEXT.store(context as usize, Ordering::Release);
+        if context != 0
+            && RUNNING.load(Ordering::Acquire)
+            && xrecord::XRecordEnableContextAsync(
+                data,
+                context,
+                Some(record_callback),
+                ptr::null_mut(),
+            ) != 0
+        {
+            while RUNNING.load(Ordering::Acquire) {
+                xrecord::XRecordProcessReplies(data);
+                wait_for_capture();
+            }
+            xrecord::XRecordDisableContext(control, context);
+            xlib::XSync(control, 0);
+            xrecord::XRecordProcessReplies(data);
+        }
         if context != 0 {
-            xrecord::XRecordEnableContext(data, context, Some(record_callback), ptr::null_mut());
             xrecord::XRecordFreeContext(control, context);
         }
-        RECORD_CONTEXT.store(0, Ordering::Release);
         RECORD_CONTROL_DISPLAY.store(ptr::null_mut(), Ordering::Release);
         xlib::XCloseDisplay(data);
         xlib::XCloseDisplay(control);
@@ -443,16 +470,12 @@ pub extern "C" fn processEvents() {
 
 pub fn stop_monitor() {
     let mut lifecycle = lock_lifecycle();
-    let was_running = RUNNING.swap(false, Ordering::AcqRel);
-    let control = RECORD_CONTROL_DISPLAY.load(Ordering::Acquire);
-    let context = RECORD_CONTEXT.load(Ordering::Acquire) as xrecord::XRecordContext;
-    if was_running && !control.is_null() && context != 0 {
-        // SAFETY: the capture thread keeps control and context alive until the
-        // blocking XRecord call has been disabled.
-        unsafe {
-            xrecord::XRecordDisableContext(control, context);
-            xlib::XFlush(control);
-        }
+    {
+        let (lock, wake) = &*CAPTURE_WAKE;
+        let guard = lock.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+        RUNNING.store(false, Ordering::Release);
+        wake.notify_all();
+        drop(guard);
     }
     if let Some(thread) = lifecycle.thread.take()
         && thread.thread().id() != thread::current().id()
@@ -472,6 +495,7 @@ pub extern "C" fn stopMonitor() {
 pub extern "C" fn setWatcherInterval(seconds: f64) {
     let milliseconds = (seconds * 1000.0).max(1.0);
     WATCHER_INTERVAL_BITS.store(milliseconds.to_bits(), Ordering::Relaxed);
+    CAPTURE_WAKE.1.notify_all();
 }
 
 #[unsafe(no_mangle)]
