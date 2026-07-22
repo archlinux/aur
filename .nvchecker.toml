@@ -1,0 +1,5 @@
+[nub-bin]
+source = "github"
+github = "nubjs/nub"
+use_latest_release = true
+prefix = "v"
