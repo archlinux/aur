@@ -1,13 +1,21 @@
 pkgbase = redwax-tool
 	pkgdesc = Universal certificate conversion tool
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redwax.eu/rt/
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = pkg-config
 	depends = apr
 	depends = apr-util
 	depends = glibc
+	depends = ldns
+	depends = libical
+	depends = libp11-kit
+	depends = nspr
+	depends = nss
+	depends = openssl
+	depends = unbound
 	source = https://redwax.eu/dist/rt/redwax-tool-1.0.0.tar.gz
 	sha256sums = 28856bd059c299952ec5e9d70af0252f1415409e579dd0227556a219ebc43683
 
