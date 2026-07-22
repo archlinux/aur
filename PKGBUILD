@@ -6,7 +6,7 @@
  
 pkgname=thunderbird-esr-bin
 _pkgname=thunderbird
-pkgver=140.12.1
+pkgver=140.13.0
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
 arch=('x86_64' 'pentium4' 'i686')
@@ -38,13 +38,13 @@ source_i686=(
   thunderbird-${pkgver}esr-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz.asc
 )
 
-sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
+sha512sums=('510ac3042dffcaf40938047906f3beaf6d51f4d64e65ab302abe11e6a6018289a62586ee7b162ca6b587bd7390efe453f17919fcdbb940590334bc72c9d292b6'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('44e05f4ecd2064b31ede3cb6cb85f89ca50d13bf157790d234b9cc666f87c0b725ebe7afc4b94c248b508f7da873414dec3626252116e406558845bf916d69d5'
+sha512sums_x86_64=('16b2cb7b840abf94251085594830bc09f6da20cfba6df1bbc41349f795d845f3716b418a04b5169baccb4b5241dd2c1736c73ac9385fe906fb1adb9fc9a7ee3a'
                    'SKIP')
-sha512sums_pentium4=('b155e521724c63cbddecd58b69c51c80b0081b5c5afd7e181fa1246f1d8e3707a7ad6b91eb711ec52e64158bea69b080e457e3b4fb236807ec55330eea657f3c'
+sha512sums_pentium4=('2b32a5b582a6d183a675e64027af7d0d404baea51fc5914f55f0436a25ada1a378c07469a5a14d1a09a39b3bc5ede8cd5426d57b621d437ab4edfa26e79625b8'
                      'SKIP')
-sha512sums_i686=('b155e521724c63cbddecd58b69c51c80b0081b5c5afd7e181fa1246f1d8e3707a7ad6b91eb711ec52e64158bea69b080e457e3b4fb236807ec55330eea657f3c'
+sha512sums_i686=('2b32a5b582a6d183a675e64027af7d0d404baea51fc5914f55f0436a25ada1a378c07469a5a14d1a09a39b3bc5ede8cd5426d57b621d437ab4edfa26e79625b8'
                  'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>

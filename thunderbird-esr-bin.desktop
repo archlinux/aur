@@ -62,6 +62,7 @@ Icon=thunderbird
 Categories=Network;Email;
 MimeType=message/rfc822;x-scheme-handler/mailto;application/x-xpinstall;
 StartupNotify=true
+StartupWMClass=thunderbird-esr
 Actions=ComposeMessage;OpenAddressBook;
 
 [Desktop Action ComposeMessage]
