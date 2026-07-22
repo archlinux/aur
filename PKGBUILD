@@ -2,7 +2,7 @@
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
-pkgver=1.1.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Debian package upload tool"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
   pyxdg-compatibility.patch
 )
-sha256sums=('ef92187cc843b9703b4fb94b5c06a31399ff714ba7ebbcc637358757613fede2'
+sha256sums=('d562979c27bb879fe98caa513d103ae54d2975020bd2abb1e91d6513b9f1b3ae'
             'a6d350af5eba4cf5b5d3cd9e784a77f0a7b3b5fcdacd304245713c1a85540abf')
 
 prepare() {
