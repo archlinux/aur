@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=0.12.0
+pkgver=0.13.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ad4efd3cfb667986b932f759289ecfcbb4d3ef4c4d4c989bd963a33903258b0c'
+sha256sums=('2c906f629a55672d0495a777419d90b142343bf9ea7e85d9fdc4f3f0b24b0198'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -56,7 +56,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
