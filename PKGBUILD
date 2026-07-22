@@ -3,7 +3,7 @@
 pkgname=herdr-workspace-manager
 _srcname=herdr-plugin-workspace-manager
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for the herdr Workspace Manager plugin - declarative worktree layouts and gone-worktree cleanup"
 arch=('x86_64')
 url="https://github.com/razajamil/herdr-plugin-workspace-manager"
@@ -31,7 +31,10 @@ check() {
   cd "$_srcname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen
+  # Unit tests only: the integration test talks to a live herdr server when
+  # one is running (applies a layout to a real worktree) — unacceptable from
+  # a build, and it needs `herdr wait`, which not every herdr version has.
+  cargo test --frozen --bins
 }
 
 package() {
