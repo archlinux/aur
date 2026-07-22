@@ -1,18 +1,21 @@
 pkgbase = erg-git
 	pkgdesc = Statically typed language that builds upon the Python ecosystem
-	pkgver = 0.6.7.r0.g86eaba39
+	pkgver = 0.6.53.r2.gb8bc4e33
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
-	license = MIT
-	license = Apache
+	license = MIT OR Apache-2.0
 	makedepends = cargo
 	makedepends = git
-	depends = python
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	optdepends = python39
+	optdepends = python310
+	optdepends = python311
 	provides = erg
 	conflicts = erg
-	conflicts = erg-bin
-	source = erg::git+https://github.com/erg-lang/erg.git#tag=v0.6.7
+	source = erg::git+https://github.com/erg-lang/erg.git
 	sha256sums = SKIP
 
 pkgname = erg-git
