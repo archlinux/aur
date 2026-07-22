@@ -1,6 +1,6 @@
 pkgbase = lcdiff
 	pkgdesc = Inspect, compare, and merge JAR/ZIP archives and folders
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/lyokha113/lcdiff
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = lcdiff
 	depends = xdotool
 	options = !lto
 	options = !strip
-	source = git+https://github.com/lyokha113/lcdiff.git#tag=v0.3.6
+	source = git+https://github.com/lyokha113/lcdiff.git#tag=v0.3.7
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = d27aff4b5455cf67f9913035ba270c467041b6e28bfea1047662be0861ac980c
