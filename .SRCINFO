@@ -1,6 +1,6 @@
 pkgbase = flowstate-bin
 	pkgdesc = Desktop focus and note-taking app (Electron + Vue)
-	pkgver = 0.8.6
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Juraci/flowstate-releases
 	install = flowstate-bin.install
@@ -20,12 +20,12 @@ pkgbase = flowstate-bin
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
-	provides = flowstate=0.8.6
+	provides = flowstate=0.9.0
 	conflicts = flowstate
-	noextract = flowstate-0.8.6.pacman
+	noextract = flowstate-0.9.0.pacman
 	options = !strip
 	options = !debug
-	source = flowstate-0.8.6.pacman::https://github.com/Juraci/flowstate-releases/releases/download/v0.8.6/flowstate-0.8.6.pacman
-	sha256sums = 39b5028b727f3add06dc0fae93e04f6e9f336dd6f3e5048d0b994c95ec6835c7
+	source = flowstate-0.9.0.pacman::https://github.com/Juraci/flowstate-releases/releases/download/v0.9.0/flowstate-0.9.0.pacman
+	sha256sums = c5be735472539a675b181ec7260f88570eaff53462cb46bbcbdd89d09d9b5096
 
 pkgname = flowstate-bin
