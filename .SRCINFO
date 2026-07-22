@@ -1,8 +1,8 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = lexiphanic.r14257
+	pkgver = magniloquent.r12526.e27e06a
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,8 @@ pkgbase = ohrrpgce
 	depends = libxinerama
 	provides = ohrrpgce
 	conflicts = ohrrpgce-svn
-	source = ohrrpgce::svn+https://rpg.hamsterrepublic.com/source/rel/lexiphanic/
+	conflicts = ohrrpgce-git
+	source = ohrrpgce::git+https://github.com/ohrrpgce/ohrrpgce.git#branch=magniloquent
 	md5sums = SKIP
 
 pkgname = ohrrpgce

@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lamers <aussieevil@hotmail.com>
 # Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 pkgname=ohrrpgce
-pkgver=lexiphanic.r14257
+pkgver=magniloquent.r12526.e27e06a
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A role playing game creation engine"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,14 +11,13 @@ url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
 depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm' 'libxinerama')
 makedepends=('subversion' 'freebasic' 'scons')
 provides=('ohrrpgce')
-conflicts=('ohrrpgce-svn')
-source=('ohrrpgce::svn+https://rpg.hamsterrepublic.com/source/rel/lexiphanic/')
+conflicts=('ohrrpgce-svn' 'ohrrpgce-git')
+source=('ohrrpgce::git+https://github.com/ohrrpgce/ohrrpgce.git#branch=magniloquent')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/ohrrpgce"
-  local ver="$(svn info --show-item revision)"
-  printf "lexiphanic.r%s" "$ver"
+  printf "magniloquent.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
