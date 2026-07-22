@@ -1,0 +1,20 @@
+pkgbase = lungo-git
+	pkgdesc = A simple systray applet to prevent your system from going idle or sleeping on demand (git version)
+	pkgver = 1.0.0.r12.c4b8ae8
+	pkgrel = 1
+	url = https://github.com/Antiz96/lungo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	depends = systemd
+	depends = hicolor-icon-theme
+	provides = lungo
+	conflicts = lungo
+	source = git+https://github.com/Antiz96/lungo.git
+	sha256sums = SKIP
+
+pkgname = lungo-git
