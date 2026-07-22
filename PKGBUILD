@@ -2,8 +2,8 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=qrcp-bin
-pkgver=0.10.1
-pkgrel=4
+pkgver=0.11.6
+pkgrel=1
 provides=('qrcp')
 conflicts=('qrcp' 'qrcp-git')
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
@@ -12,15 +12,15 @@ url="https://github.com/claudiodangelis/qrcp"
 license=('MIT')
 options=('!debug')
 
-source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_arm64.tar.gz")
-source_armv7h=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_armv7.tar.gz")
-source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_386.tar.gz")
-source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_arm64.tar.gz")
+source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_armv7.tar.gz")
+source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_386.tar.gz")
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/qrcp_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums_aarch64=('27b1f2b9004ecf967a4abe95bd324b99b4f077f0c627ad96ea16e18644dce26e')
-sha256sums_armv7h=('0442a9dff291e1188d64fe6e080fd7e5ce4eaf31405410ac37699ac0c4c7149e')
-sha256sums_i686=('ce95248a65548ab15f12acba7cd642c83efeb261bb28a92d6d913fa6ed48bb3a')
-sha256sums_x86_64=('d9f1bdf1c9ae80dd7e731556be75341cf76e3462b6ae8405ca4f608c5370fd16')
+sha256sums_x86_64=('1bcd1e23460cb2c98eeb1a9df6e4f4f7cb1e889acdb53094a7c6805808790d13')
+sha256sums_i686=('ce6c111cc3632e13e044046a56a5dc0874ddf51c2fd996607902d768c135b3f9')
+sha256sums_armv7h=('46e760833165d211131ec04a6bbd754c9e558904dae32aedb99eb124518e8990')
+sha256sums_aarch64=('970e34ac2ae17d39f4ceab0b35801becbd3727265463490f83638e4e2896e1fd')
 
 latestver() {
     gh api repos/claudiodangelis/qrcp/releases/latest --jq '.tag_name' | sed 's/^v//'
@@ -35,6 +35,6 @@ build() {
 package() {
  install -Dm755 qrcp "$pkgdir/usr/bin/qrcp"
  cp -r share/ "$pkgdir/usr"
- install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}"
+ install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
  install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname/-bin/}"
 }
