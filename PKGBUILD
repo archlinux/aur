@@ -1,7 +1,4 @@
-# Maintainer: Mario Rubio <mario at mrrb dot eu>
-# Maintainer: Misaka13514 <misaka13514 at gmail dot com>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: Daniel Plank <tyrolyean@semi-professional.net>
+# Maintainer: Jason Wang <wangborong0@gmail.com>
 
 pkgname=freerouting-bin
 pkgver=2.2.4
@@ -24,19 +21,17 @@ sha512sums=('f0161d37010611881251db2de6abd716eba9247fcb1554b7a6569915333fe326cd8
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"
 
-  # 安装解压后的独立发布包到 /opt/freerouting
+  # install to /opt
   install -dm755 "${pkgdir}/opt/${_pkgname}"
   cp -r . "${pkgdir}/opt/${_pkgname}/"
 
-  # 创建 /usr/bin/freerouting 软链接指向 /opt/freerouting/bin/freerouting
+  # create /usr/bin/freerouting symlink to /opt/freerouting/bin/freerouting
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  # 安装桌面快捷方式与图标
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${pkgdir}/opt/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
   install -Dm644 "${pkgdir}/opt/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-  # 安装许可证文件
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
