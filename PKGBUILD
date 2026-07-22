@@ -27,7 +27,7 @@ makedepends=('nodejs>=22'
 # === 源文件 ===
 _github="https://github.com/wkk-dev/SPlayer-Next-linux"
 _srctarball="splayer-next-${pkgver}.tar.gz"
-_dirname="SPlayer-Next-linux-v${pkgver}"
+_dirname="SPlayer-Next-linux-${pkgver}"
 _icon="splayer-next.png"
 
 source=("${_srctarball}::${_github}/archive/refs/tags/v${pkgver}.tar.gz"
