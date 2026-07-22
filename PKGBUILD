@@ -1,5 +1,5 @@
 pkgname=polaris-gamestream-bin
-pkgver=null
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Linux-first game streaming host"
 arch=('x86_64')
