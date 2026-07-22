@@ -1,8 +1,8 @@
 # Maintainer: AegisCanary
 
 pkgname=sbmusic-bin
-pkgver=0.0.0
-pkgrel=1
+pkgver=0.1.0
+pkgrel=2
 pkgdesc="A free alternative to Spotify"
 arch=('x86_64')
 url="https://sb-music.com"
@@ -30,7 +30,7 @@ provides=('sbmusic')
 conflicts=('sbmusic')
 
 source=("https://github.com/aegiscanary/sbmusic-bin/releases/download/v${pkgver}/sb-music-desktop-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('bbb4b4ad479feab58cde56e91f62332c7746b73602d5e0a46ca2f89e0458adce')
+sha256sums=('850cc2e898afe31da604392a9b538f07ddc04a1e3043e6a4883d23fcee18b7ed')
 
 package() {
     cp -rp "$srcdir"/* "$pkgdir/"

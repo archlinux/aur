@@ -1,7 +1,7 @@
 pkgbase = sbmusic-bin
 	pkgdesc = A free alternative to Spotify
-	pkgver = 0.0.0
-	pkgrel = 1
+	pkgver = 0.1.0
+	pkgrel = 2
 	url = https://sb-music.com
 	arch = x86_64
 	license = custom
@@ -22,7 +22,7 @@ pkgbase = sbmusic-bin
 	depends = zlib-ng-compat
 	provides = sbmusic
 	conflicts = sbmusic
-	source = https://github.com/aegiscanary/sbmusic-bin/releases/download/v0.0.0/sb-music-desktop-0.0.0-1-x86_64.pkg.tar.zst
-	sha256sums = bbb4b4ad479feab58cde56e91f62332c7746b73602d5e0a46ca2f89e0458adce
+	source = https://github.com/aegiscanary/sbmusic-bin/releases/download/v0.1.0/sb-music-desktop-0.1.0-2-x86_64.pkg.tar.zst
+	sha256sums = 850cc2e898afe31da604392a9b538f07ddc04a1e3043e6a4883d23fcee18b7ed
 
 pkgname = sbmusic-bin
