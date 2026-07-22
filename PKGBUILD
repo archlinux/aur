@@ -1,6 +1,6 @@
 # Maintainer: Akusen <akudesyn@gmail.com>
 pkgname=sinestesia
-pkgver=0.1.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Audio visualizer for Linux with effects and system theming (Rust + GTK4)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # che rust-lld non risolve (simboli spa_format_*_libspa_rs) -> LTO off.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5d78fd5ba693e88cd496139137a7d9ec98435a74c7276cf9d15205913e3fd50')
+sha256sums=('c918516bd7bdeaa5fc565aadc1cee733d7a71086e1e03c2b7c1605834ddf4b6a')
 
 prepare() {
   cd "Sinestesia-$pkgver"
