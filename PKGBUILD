@@ -2,11 +2,11 @@
 
 pkgname=manora-git
 _pkgname="${pkgname%-git}"
-pkgver=2.2.4.r212.ce35f7d
+pkgver=2.2.4.r218.a8c7db9
 pkgrel=1
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files (git version)"
 url="https://github.com/Antiz96/manora"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'man' 'groff' 'xdg-utils' 'util-linux')
 makedepends=('cargo' 'git' 'scdoc')
