@@ -1,0 +1,27 @@
+pkgbase = cmdbox
+	pkgdesc = A cross-platform command manager for terminal workflows
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/PhantomLambSoft/CmdBox
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = bash
+	depends = python
+	depends = python-argcomplete
+	depends = python-pyperclip
+	depends = python-rich
+	depends = python-textual
+	depends = python-typing_extensions
+	depends = python-unidiff
+	depends = ansible-core
+	depends = python-ensurepath
+	provides = cmdbox
+	source = https://files.pythonhosted.org/packages/source/c/cmdbox_cli/cmdbox_cli-1.2.0.tar.gz
+	sha256sums = 64ee5a26e2caf57e8accf8bffb06432f336a309cb0ddbe193cb96fe9a0ce2a83
+
+pkgname = cmdbox

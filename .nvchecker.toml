@@ -1,0 +1,3 @@
+[cmdbox]
+source = "pypi"
+pypi = "cmdbox-cli"
