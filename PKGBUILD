@@ -2,10 +2,10 @@
 
 pkgname=oniri
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that automatically maximizes the only window of a niri workspace"
 url="https://github.com/Antiz96/oniri"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'niri')
 makedepends=('cargo' 'scdoc')
