@@ -1,0 +1,18 @@
+# Printed by pacman after install/upgrade — the package only puts the wrapper on
+# PATH; the privileged, interactive provisioning lives in `glovebox setup`,
+# which pacman's scriptlets cannot run themselves (no network, no prompts).
+# shellcheck shell=bash
+post_install() {
+  cat <<'EOF'
+==> Finish setup by running:  glovebox setup
+    Provisions the container runtime and sandbox tooling when missing, merges
+    managed security settings, and links shell completions.
+
+    Then sign in to Claude Code:  claude setup-token
+    Verify the install:           glovebox doctor
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
