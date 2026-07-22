@@ -1,9 +1,9 @@
 pkgname='dim-caelestia-cli-git'
-pkgver=1.1.0.r0.gb00daba
+pkgver=r660.b5d6f8d
 pkgrel=1
 pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
-url='https://github.com/deeadly137/caelestia-cli'
+url='https://github.com/dim-ghub/caelestia-cli'
 license=('GPL-3.0-only')
 depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
          'wl-clipboard' 'slurp' 'gpu-screen-recorder' 'dconf' 'cliphist' 'fuzzel')
@@ -20,7 +20,7 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

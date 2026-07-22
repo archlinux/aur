@@ -1,10 +1,11 @@
 pkgbase = dim-caelestia-cli-git
 	pkgdesc = DiM's fork of Caelestia-CLI
-	pkgver = 1.1.1
+	pkgver = r660.b5d6f8d
 	pkgrel = 1
-	url = https://github.com/deeadly137/caelestia-cli
+	url = https://github.com/dim-ghub/caelestia-cli
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatch
@@ -25,6 +26,7 @@ pkgbase = dim-caelestia-cli-git
 	optdepends = caelestia-shell: shell control and screenshot function
 	provides = caelestia-cli
 	conflicts = caelestia-cli
+	conflicts = caelestia-cli-git
 	source = dim-caelestia-cli-git::git+https://github.com/deeadly137/caelestia-cli.git
 	sha256sums = SKIP
 
