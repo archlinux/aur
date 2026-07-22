@@ -6,7 +6,7 @@ pkgname=animalinux
 # presente desde v0.2.0, nunca se había probado con una build de verdad).
 _gitname=AnimalinuxApp
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sergi122/AnimalinuxApp"
@@ -47,5 +47,11 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 animalinux.desktop "$pkgdir/usr/share/applications/animalinux.desktop"
+    # el tarball del tag v0.4.0 trae el .desktop viejo (Exec=animalinux sin
+    # --show); con mascotas ya configuradas eso arranca la app en silencio
+    # (solo bandeja) y el icono del menú "no abre nada" a ojos del usuario.
+    # Se parchea aquí para no tener que taggear una v0.4.1 solo por esto.
+    sed -i 's/^Exec=animalinux$/Exec=animalinux --show/' \
+        "$pkgdir/usr/share/applications/animalinux.desktop"
     install -Dm644 animalinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/animalinux.png"
 }

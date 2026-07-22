@@ -1,7 +1,7 @@
 pkgbase = animalinux
 	pkgdesc = Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sergi122/AnimalinuxApp
 	arch = x86_64
 	arch = aarch64
