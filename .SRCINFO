@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-libdvdnav
 	pkgdesc = Library to navigate DVD video disks (mingw-w64)
-	pkgver = 6.1.1
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://www.videolan.org/developers/libdvdnav.html
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-meson
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-crt
 	depends = mingw-w64-libdvdread
@@ -14,10 +14,9 @@ pkgbase = mingw-w64-libdvdnav
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = git+https://code.videolan.org/videolan/libdvdnav.git#tag=6.1.1
-	source = autotools.patch
+	options = !debug
+	source = git+https://code.videolan.org/videolan/libdvdnav.git#tag=7.0.0
 	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
-	b2sums = 923e3171a7b5d488e77bbe8411827568c89cc85b2bb4d5434fc044b27274ef6c7e5987c4f2900f3a26371531603dcc66a7d40a7b4a9574fd8a4e677a482f7004
-	b2sums = 687b6da6b4dfafd46e9792c7d78ab385e09b15cbcd6e96b110790f7418ba92069b8793473ce35264613c4a4df3bb0887765305135bb79b144ce5201e739dc18c
+	b2sums = 64a37fb6c68aed46b2cbf2bd98e499bf9ed8694d9f358d07a2e630bba385bb48b909eea04097da86d0bc4f8958c987895fd98a7ba4d82119d8a8a4a9e6743583
 
 pkgname = mingw-w64-libdvdnav

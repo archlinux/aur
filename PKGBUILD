@@ -6,41 +6,42 @@
 
 pkgname=mingw-w64-libdvdnav
 _pkgname=libdvdnav
-pkgver=6.1.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Library to navigate DVD video disks (mingw-w64)'
 arch=('any')
 url='https://www.videolan.org/developers/libdvdnav.html'
 license=('GPL-2.0-or-later')
-depends=('mingw-w64-crt' 'mingw-w64-libdvdread')
-options=(!strip !buildflags !libtool staticlibs)
-makedepends=('git' 'mingw-w64-configure' 'mingw-w64-gcc')
-source=("git+https://code.videolan.org/videolan/libdvdnav.git#tag=$pkgver"
-        "autotools.patch")
-b2sums=('923e3171a7b5d488e77bbe8411827568c89cc85b2bb4d5434fc044b27274ef6c7e5987c4f2900f3a26371531603dcc66a7d40a7b4a9574fd8a4e677a482f7004'
-        '687b6da6b4dfafd46e9792c7d78ab385e09b15cbcd6e96b110790f7418ba92069b8793473ce35264613c4a4df3bb0887765305135bb79b144ce5201e739dc18c')
+depends=(
+  'mingw-w64-crt'
+  'mingw-w64-libdvdread'
+)
+options=(!strip !buildflags !libtool staticlibs !debug)
+makedepends=(
+  'git'
+  'mingw-w64-meson'
+  'mingw-w64-gcc'
+)
+source=("git+https://code.videolan.org/videolan/libdvdnav.git#tag=$pkgver")
+b2sums=('64a37fb6c68aed46b2cbf2bd98e499bf9ed8694d9f358d07a2e630bba385bb48b909eea04097da86d0bc4f8958c987895fd98a7ba4d82119d8a8a4a9e6743583')
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd $_pkgname
-  autoreconf -fi
-
-  patch -Np1 -i "$srcdir/autotools.patch"
-}
-
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/$_pkgname/build-${_arch} && cd ${srcdir}/$_pkgname/build-${_arch}
-    LIBS="-ldl" ${_arch}-configure
-    make
+    ${_arch}-meson $_pkgname build-${_arch}
+    meson compile -C build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/$_pkgname/build-${_arch}
-    make DESTDIR="$pkgdir" install
+    meson install -C build-${_arch} --destdir "$pkgdir"
+
+    rm -f "$pkgdir/usr/${_arch}/share/doc/libdvdnav/"*
+    rmdir "$pkgdir/usr/${_arch}/share/doc/libdvdnav/"
+    rmdir "$pkgdir/usr/${_arch}/share/doc/"
+    rmdir "$pkgdir/usr/${_arch}/share/"
   done
 }
