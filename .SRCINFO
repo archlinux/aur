@@ -1,6 +1,6 @@
 pkgbase = rutile-bin
 	pkgdesc = GNOME-native terminal emulator with split tiling and synchronized input (pre-built binary)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/yatoub/Rutile
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rutile-bin
 	depends = vte4
 	provides = rutile
 	conflicts = rutile
-	source = https://github.com/yatoub/Rutile/archive/refs/tags/v0.2.1.tar.gz
-	b2sums = e7bd8aff091f069c945cdb496fa96f8fc0c7446f01f2f272fbe9ed85a510c8b129898350af6b93c6616b9bb37d3fd23d1cf37a4029c5936a6ea9497b2e36484a
-	source_x86_64 = rutile-0.2.1-linux-x86_64::https://github.com/yatoub/Rutile/releases/download/v0.2.1/rutile-linux-x86_64
-	b2sums_x86_64 = 3d0988fc738ef3b0a4c22bcb36b1896f459ef0491c8ba4ab8f001dd886a4bbf607ce162e12a7abd07b6c46931e99337b0534eb78e3c04a9a296f3da14dd361fc
+	source = https://github.com/yatoub/Rutile/archive/refs/tags/v0.2.2.tar.gz
+	b2sums = 6d7c9a92ff7a847f4653941e92dd18151a91bf4339130f670476b14a9168e2a88816ec53555e3d84f19501d54d64e83130430003328e606aa805f57fba82ec65
+	source_x86_64 = rutile-0.2.2-linux-x86_64::https://github.com/yatoub/Rutile/releases/download/v0.2.2/rutile-linux-x86_64
+	b2sums_x86_64 = 5ab939ac8eb559fd9f207058b9b1b0b95aee2e35e4cd9ee4b915931b39b2797506c5ee604cdd39e532f8a07261086901a9c6d1b0685794bdbc54eb77b85f6b7a
 
 pkgname = rutile-bin
