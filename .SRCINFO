@@ -1,0 +1,18 @@
+pkgbase = ghostty-rpc-bin
+	pkgdesc = Discord Rich Presence integration for Ghostty terminal (pre-compiled binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/vinayydv3695/ghostty-rpc
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = ghostty-rpc
+	conflicts = ghostty-rpc
+	source_x86_64 = ghostty-rpc-bin-1.1.0-x86_64.tar.gz::https://github.com/vinayydv3695/ghostty-rpc/releases/download/v1.1.0/ghostty-rpc-v1.1.0-x86_64.tar.gz
+	source_x86_64 = service::https://github.com/vinayydv3695/ghostty-rpc/raw/v1.1.0/assets/ghostty-rpc.service
+	source_x86_64 = config.example::https://github.com/vinayydv3695/ghostty-rpc/raw/v1.1.0/assets/config.toml.example
+	sha256sums_x86_64 = 1cfd66c8e90950577ef00ce42972882cfc29afe5a97564fe4f28c0cad6f9555b
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = ghostty-rpc-bin
