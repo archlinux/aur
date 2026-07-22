@@ -1,0 +1,18 @@
+pkgbase = kde-service-menu-pdf
+	pkgdesc = A powerful and comprehensive KDE Plasma 6 Service Menu for advanced PDF operations directly from Dolphin or Konqueror.
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/biglinux/kde-service-menu-pdf
+	arch = x86_64
+	license = GPL
+	depends = dolphin
+	depends = kdialog
+	depends = poppler
+	depends = poppler-qt6
+	depends = ghostscript
+	depends = texlive-binextra
+	conflicts = kde-service-menu-pdf-git
+	source = https://github.com/giuseppebenigno/kde-service-menu-pdf/archive/refs/tags/v2.5.1-kde6.tar.gz
+	sha256sums = SKIP
+
+pkgname = kde-service-menu-pdf
