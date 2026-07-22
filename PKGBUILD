@@ -1,7 +1,7 @@
 # Maintainer: Monapp <monapp@posteo.com>
 
 pkgname=forkme
-pkgver=0.2.0
+pkgver=0.2.0.1
 pkgrel=1
 pkgdesc='A tool for managing forks using a patch-based approach'
 arch=('x86_64')
