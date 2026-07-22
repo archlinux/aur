@@ -1,0 +1,4 @@
+[python-click-completion]
+source = "git"
+git = "https://github.com/click-contrib/click-completion.git"
+prefix = "v"
