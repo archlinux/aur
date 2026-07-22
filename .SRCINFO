@@ -1,5 +1,5 @@
 pkgbase = lungo
-	pkgdesc = A simple systray applet to prevent your system from going idle or sleeping on demand
+	pkgdesc = A simple systray applet to prevent your system from going idle or suspending on demand
 	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/Antiz96/lungo
