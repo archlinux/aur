@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron45
 pkgname=electron-nightly-bin
-_pkgver=45.0.0-nightly.20260706
+_pkgver=45.0.0-nightly.20260721
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,7 +48,7 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_x86_64=('90e54c591b1417e39c9b2e4277f31563072e055df4c000540e237a364ae67111'
+sha256sums_x86_64=('9f4d3d2e5cee129f9aa403eed3f56b9ed595b51564714d7f9caf91624fb9bd06'
                    '7e41ddf9ba106a1d6811d044c5edf87293a218f9fb8890278185d9ffb10780b1')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
@@ -58,7 +58,7 @@ prepare() {
 package() {
     install -Dm755 electron "${pkgdir}/usr/bin/electron"
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/electron" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm645 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm -rf "${pkgdir}/usr/bin/${_pkgname}/LICENSE"*
