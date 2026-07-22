@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Undo mv, rm, cp and more from your shell. Journaled to SQLite, deletions go to the trash, nothing gets lost."
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('de6ea3766496ac412efcd3a93269641ac7c0f61a2db9fa2418edec82c97c3123')
+sha256sums_x86_64=('c191ae632a8bd47f22ec03168388925c41578ddfb7f8f96881db8b2ed6c453ae')
 
 
 case ${CARCH} in
