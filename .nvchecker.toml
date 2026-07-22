@@ -1,0 +1,4 @@
+[lungo]
+source = "git"
+git = "https://github.com/Antiz96/lungo.git"
+prefix = "v"
