@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=3.0.9
+pkgver=3.0.10
 pkgrel=1
 pkgdesc="Simple Bilibili Danmaku Tool.Bilibili 弹幕机."
 arch=('any')
@@ -23,19 +23,23 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}")
-sha256sums=('414026b83e13fb004fb0f184133d838c840e9d8f6d988b6f4637f838da1b93b8')
+sha256sums=('d83c0ad3daca71698a7d78d64252a9ed2d58c0b4459397ed1c56a56ebc3172bf')
+_set_build_env() {
+	export CARGO_HOME="${srcdir}/.cargo"
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+		export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+	fi
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export CARGO_HOME="${srcdir}/.cargo"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-    fi
+    _set_build_env
     rustup default stable
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _set_build_env
     cargo build --release -p "${pkgname}"
 }
 package() {
