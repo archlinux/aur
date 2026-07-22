@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'EOF'
+==> tas2781-force-fwload: to activate, run
+      systemctl enable --now tas2781-force-fwload.service
+    then reboot once (applies the udev rule and modprobe option cleanly).
+
+    Verify after reboot (expect values=on; adjust -c 0 to your card):
+      amixer -c 0 cget iface=CARD,name='Speaker Force Firmware Load'
+
+    Optional extras (latency mitigation, pre-7.1 hda_model quirk):
+      /usr/share/doc/tas2781-force-fwload/extras/
+EOF
+}
+
+post_remove() {
+  echo '==> tas2781-force-fwload removed. The force-firmware-load control resets'
+  echo '    at next boot; expect the missing-bass bug to return until the kernel'
+  echo '    fix lands.'
+  if [ -d /var/lib/tas2781-force-fwload ]; then
+    echo '==> NOTE: a tas2781-win-fw firmware override is still active and will'
+    echo '    keep re-applying itself (its hook is self-contained under'
+    echo '    /var/lib/tas2781-force-fwload). To undo it without the tool:'
+    echo '      install -m644 /var/lib/tas2781-force-fwload/*.stock <firmware file>'
+    echo '      rm -rf /etc/pacman.d/hooks/90-tas2781-win-fw.hook /var/lib/tas2781-force-fwload'
+  fi
+}

@@ -1,0 +1,18 @@
+pkgbase = tas2781-force-fwload
+	pkgdesc = Restore woofer output on laptops with TI TAS2781 smart amps (e.g. Lenovo Yoga Pro 9) by forcing DSP re-staging on every stream
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/baldvin-kovacs/tas2781-force-fwload
+	install = tas2781-force-fwload.install
+	arch = any
+	license = MIT
+	depends = alsa-utils
+	depends = systemd
+	depends = zstd
+	source = https://github.com/baldvin-kovacs/tas2781-force-fwload/releases/download/v0.2.2/tas2781-force-fwload-0.2.2.tar.gz
+	source = https://github.com/baldvin-kovacs/tas2781-force-fwload/releases/download/v0.2.2/tas2781-force-fwload-0.2.2.tar.gz.asc
+	validpgpkeys = 1C711551878F8E1EC2F47E37F57A7B17F6FFB8C8
+	sha256sums = 01c2260cf87c04a4a0c771c3d84dac5ba6bfccd1a73b1791476e90b86399de64
+	sha256sums = SKIP
+
+pkgname = tas2781-force-fwload
