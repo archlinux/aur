@@ -6,7 +6,7 @@
 # runtime deps are listed in optdepends so a pure Arch/CachyOS install stays minimal.
 
 pkgname=kodexbar-suite
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok quotas (optional codexbar for Antigravity)'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 install=kodexbar-suite.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36a09039be92875fa63dc812573970e8e6a10f8ff9bf62bdedd302875f191a1f')
+sha256sums=('9ca1efaafbe21da4eb0c883e051307b2067f417882c7890b9c53ff77a6c751ae')
 
 package() {
   cd "${srcdir}/KodexBar-Suite-${pkgver}"
