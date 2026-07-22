@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cargo' 'git' 'pkgconf' 'python' 'zig')
 provides=("sayall=$pkgver")
-conflicts=('sayall' 'sayall-bin')
+conflicts=('sayall' 'sayall-bin' 'sayall-src')
 options=('!debug')
 install='sayall-git.install'
 source=("sayall::git+$url.git")

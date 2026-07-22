@@ -23,6 +23,7 @@ pkgbase = sayall-git
 	provides = sayall=0.1.2.r1.g6d0f472
 	conflicts = sayall
 	conflicts = sayall-bin
+	conflicts = sayall-src
 	options = !debug
 	source = sayall::git+https://github.com/saiemsaeed/sayall.git
 	sha256sums = SKIP
