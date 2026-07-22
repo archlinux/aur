@@ -1,0 +1,34 @@
+pkgbase = floating-sandbox
+	pkgdesc = Mass-spring network in C++, simulating physical bodies floating in water and sinking
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/GabrieleGiuseppini/Floating-Sandbox
+	arch = x86_64
+	license = CC-BY-4.0
+	makedepends = cmake
+	makedepends = sfml
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = gtk3
+	depends = libx11
+	depends = mesa
+	depends = glu
+	depends = openal
+	depends = libvorbis
+	depends = flac
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = zlib
+	source = floating-sandbox-1.20.0.tar.gz::https://github.com/GabrieleGiuseppini/Floating-Sandbox/archive/refs/tags/v1.20.0.tar.gz
+	source = git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.4
+	source = git+https://github.com/google/googletest.git#tag=v1.12.0
+	source = git+https://github.com/kazuho/picojson.git#tag=v1.3.0
+	source = git+https://github.com/SFML/SFML.git#tag=2.6.2
+	sha256sums = 5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = floating-sandbox
