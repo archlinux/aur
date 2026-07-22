@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@pm.me>
 
 pkgname=rakemond-unstable-bin
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="System daemon that listens for cargo-rake lifecycle events and stores them in redb, built with --features unstable (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ source_aarch64=(
 # Checksums are filled in by scripts/release/update-pkgbuilds.fish before
 # publishing to the AUR. sha256sums_x86_64/sha256sums_aarch64 each have two
 # elements, matching source_x86_64/source_aarch64's order (rakemond, rmdq).
-sha256sums=('bf34fcc4823d41185f988215fae84d7873627904b7a4f8675aecd4158f739ab3')
-sha256sums_x86_64=('581f9d0d24e9b19a79c9147f0e9a08e33332205463c303115f74150b41c53fe8' '71c21725981a30ceafcc9b4cbd8582880d8da4ba9bec003b7d46e0567946ab16')
-sha256sums_aarch64=('f5f4fe60becccfd5050adcf1361bb05f2b57c6d7729f0073593a3c6412d9a4e0' 'f148538c5f9f9d7a323a418ee6c72eac06bffeb85a97cadd69f79d08799260a4')
+sha256sums=('89f3665902fcd9d14573b2dde92f793c44b93e62b21ecbfd3c5a390329c76c0c')
+sha256sums_x86_64=('9865fa606442a559b76034bb6fe6ff0792a58f01e5acd50c1a8da85cbb19a858' 'ce9132909abb00d4ec843062ad0814c91ec43bddd4573072954c0cb155991ff2')
+sha256sums_aarch64=('91e8f8e87e169616de5e7dc692dcd076f0f5a805e66153b0914e7f35c6f5f6f8' '9c834f69e4ee977c6a2fbc389b796bf55b575c6c01faf1db03e467ef491a9329')
 
 package() {
     install -Dm755 "rakemond-unstable-${CARCH}" "$pkgdir/usr/bin/rakemond"
