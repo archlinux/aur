@@ -1,16 +1,16 @@
 pkgbase = deemix-remastered
 	pkgdesc = Deemix Remastered is exactly what it sounds like: the classic downloader, remastered. Download music from deezer.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DRAZY/deemix-remastered
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = npm
 	makedepends = nodejs
-	makedepends = nodejs
 	makedepends = libxcrypt-compat
 	depends = electron
+	depends = highcolor-icon-theme
 	provides = deemix
 	options = !debug
 	source = git+https://github.com/DRAZY/deemix-remastered#tag=v2.2.0
