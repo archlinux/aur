@@ -2,15 +2,16 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=r6877.e84cc055
+pkgver=r6880.2979d4bc
 pkgrel=1
 epoch=1
 pkgdesc='Clipboard manager with searchable and editable history.'
 url='https://github.com/hluk/CopyQ'
 arch=('i686' 'x86_64')
 license=('GPL-3.0')
-depends=('qt6-svg' 'miniaudio')
+depends=('qt6-svg' 'qt6-declarative' 'miniaudio')
 makedepends=('git' 'extra-cmake-modules' 'qt6-tools')
+optdepends=('kguiaddons: for better Wayland clipboard integration')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
@@ -29,8 +30,7 @@ build() {
 	      -DWITH_QCA_ENCRYPTION=OFF \
 	      -DWITH_KEYCHAIN=OFF \
 	      -DWITH_NATIVE_NOTIFICATIONS=OFF \
-	      -DMINIAUDIO_INCLUDE_DIR='/usr/include/miniaudio' \
-	      -DWITH_QT6=TRUE $srcdir/$pkgname
+	      -DMINIAUDIO_INCLUDE_DIR='/usr/include/miniaudio' $srcdir/$pkgname
 	make
 }
 

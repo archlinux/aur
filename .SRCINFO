@@ -1,6 +1,6 @@
 pkgbase = copyq-git
 	pkgdesc = Clipboard manager with searchable and editable history.
-	pkgver = r6877.e84cc055
+	pkgver = r6880.2979d4bc
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/hluk/CopyQ
@@ -11,7 +11,9 @@ pkgbase = copyq-git
 	makedepends = extra-cmake-modules
 	makedepends = qt6-tools
 	depends = qt6-svg
+	depends = qt6-declarative
 	depends = miniaudio
+	optdepends = kguiaddons: for better Wayland clipboard integration
 	provides = copyq
 	conflicts = copyq
 	source = copyq-git::git+https://github.com/hluk/CopyQ
