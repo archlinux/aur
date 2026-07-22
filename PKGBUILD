@@ -1,4 +1,5 @@
-# Maintainer: jakob <grandchild@gmx.net>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: jakob <grandchild@gmx.net>
 
 pkgname=nvitop
 pkgver=1.5.0
@@ -6,27 +7,22 @@ pkgrel=1
 pkgdesc="Interactive NVIDIA-GPU process viewer and GPU process management"
 arch=(any)
 url="https://github.com/XuehaiPan/nvitop"
-license=('Apache-2.0')
-depends=(
-    python
-    # There are several packages that provide the "pynvml" module:
-    # python-pynvml and python-nvidia-ml-py
-    # Recently (v0.10.0) the author of nvitop started to use private functions of
-    # python-nvidia-ml-py that python-pynvml doesn't provide. This was partly fixed in
-    # https://github.com/XuehaiPan/nvitop/issues/44 but still shows a warning.
-    # The problem is that python-nvidia-ml-py pulls in CUDA, a 5GiB dependency.
-    # Until this is resolved I'd rather go with the warning than waste that much disk
-    # space, because nvitop seems to work just the same (for me) with python-pynvml.
-    # Feedback welcome!
-    python-pynvml
-    python-psutil
-    ncurses
-)
-makedepends=('python-setuptools')
-source=("https://github.com/XuehaiPan/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+license=('Apache-2.0' 'GPL-3.0-only')
+depends=('python' 'python-pynvml' 'python-psutil' 'ncurses')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/n/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('981bea0ed3f395bc02d106e02e607aa9e1b9d2d4182c84871682eb118a16dfa3')
 
+latestver() {
+    gh api repos/XuehaiPan/nvitop/releases/latest --jq '.tag_name' | sed 's/^v//'
+}
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
