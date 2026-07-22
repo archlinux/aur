@@ -58,7 +58,7 @@ build() {
     export CC=clang
     export CXX=clang++
 
-    local TAGS=$(cat release/DEFAULT_BUILD_TAGS)
+    local TAGS="$(cat release/DEFAULT_BUILD_TAGS),with_awg"
     local LDFLAGS_SHARED=$(cat release/LDFLAGS)
     local GITVER
     GITVER=$(git describe --tags --always 2>/dev/null)
