@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A prose-as-syntax language designed from the human end"
 
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
-sha256sums=('a5d8c323dea8654773780ac773f839c7b6ed1d1aa6a07222ff3e1a32d0abbddc'
+sha256sums=('531f1280c7e6064170e49c4ae1ef0ea32b55e046bcdf7f0434cb701d31c79e8b'
             'c3f9257c3c8dbbcdf6945799136c5f806d72bc890bb4bde61fd7ce5d88c38c77')
-sha256sums_x86_64=('b83eea853a23a16d6595e4658145e71a8b2d23d00b3e84bc25cfe662861a0830')
+sha256sums_x86_64=('1506e108276f09aae8dd17883396414067fabbf639fe6b73b9bdabc4b35453d8')
 
 
 prepare() {
