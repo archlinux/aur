@@ -5,11 +5,11 @@ _pkgname=steam-game-idler
 # pkgver is a placeholder — the real version is computed by pkgver() at build
 # time from the upstream tauri.conf.json + the steam-game-idler submodule's
 # commit history. The AUR publish workflow updates this line before pushing.
-pkgver=5.0.20.r1743.gcc2c86ed
+pkgver=5.0.21.r1744.g37537647
 pkgrel=1
 # Release automation pins this to the GitHub release version. Normal AUR builds
 # leave it empty and build the version declared by the checked-out source.
-_release_version='5.0.20'
+_release_version='5.0.21'
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
 url='https://github.com/bernardopg/SGI'
@@ -38,7 +38,7 @@ makedepends=(
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
 options=('!lto' '!strip' '!debug')
-source=('git+https://github.com/bernardopg/SGI.git#commit=c681b8e02024ee64c0bed39d61a9229fe67f8367')
+source=('git+https://github.com/bernardopg/SGI.git#commit=5dd65121aa34a8ce97a11f5c6aecdc924465c162')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -46,7 +46,7 @@ pkgver() {
     git submodule update --init --recursive
 
     local appver rev hash
-    appver='5.0.20'
+    appver='5.0.21'
     rev=$(git -C steam-game-idler rev-list --count HEAD)
     hash=$(git -C steam-game-idler rev-parse --short HEAD)
 
@@ -197,11 +197,12 @@ package() {
 
     # Rewrite the .desktop: rename the file, fix Icon, fix Exec to point at the new
     # binary path, and strip the literal double-quotes that tauri-bundler places
-    # around StartupWMClass and Exec values — those quotes break WM_CLASS matching
-    # on most desktops and prevent the launcher from grouping windows correctly.
+    # around StartupWMClass — those quotes break WM_CLASS matching on most
+    # desktops and prevent the launcher from grouping windows correctly.
     # The runtime WM_CLASS is the productName, so we keep "Steam Game Idler" as
     # the StartupWMClass value (without quotes).
-    # Add MimeType for steam:// protocol and Steam app cache files.
+    # MimeType is now emitted natively by the Tauri desktopTemplate + fileAssociations
+    # in tauri.conf.json, so no sed is needed for it here.
     local desktop_old="$pkgdir/usr/share/applications/$branded.desktop"
     local desktop_new="$pkgdir/usr/share/applications/$lower.desktop"
     if [[ -f "$desktop_old" ]]; then
@@ -210,8 +211,6 @@ package() {
         -e "s|^Icon=.*|Icon=$lower|" \
         -e "s|^Exec=.*|Exec=/usr/bin/$lower|" \
         -e "s|^StartupWMClass=.*|StartupWMClass=$branded|" \
-        -e "/^MimeType=/d" \
-        -e "/^Categories=/a MimeType=application/x-steam-app-cache-file;" \
         "$desktop_new"
     fi
 
