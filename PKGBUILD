@@ -1,6 +1,6 @@
 # Maintainer: VELA <https://github.com/lucannez64/VELA>
 pkgname=vela-desktop-bin
-pkgver=0.1.199
+pkgver=0.1.200
 pkgrel=1
 pkgdesc="Passwordless, zero-knowledge vault desktop app (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('gnome-keyring: system secret-storage backend'
 provides=('vela-desktop')
 conflicts=('vela-desktop')
 source_x86_64=("VELA_${pkgver}_amd64.deb::${url}/releases/download/desktop-v${pkgver}/VELA_${pkgver}_amd64.deb")
-sha256sums_x86_64=('8e7260b0c3f02da9d71f519ac3de34816d3c18e51f62b7e8c434af113bffb5a9')
+sha256sums_x86_64=('597dd8e59d8833971cfa1c22caebea93b48af810e5b1039162d54aea417cddd8')
 
 package() {
   ar x "VELA_${pkgver}_amd64.deb"
