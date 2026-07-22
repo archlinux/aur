@@ -2,7 +2,7 @@
 pkgname=hwatu
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Daemon-based WebKitGTK browser for tiling WMs: real rendering, ~13ms window spawn"
+pkgdesc="Visual verification browser for AI coding agents: daemon-based WebKitGTK, real rendering, ~13ms window spawn"
 arch=('x86_64')
 url="https://github.com/hongnoul/hwatu"
 license=('MIT')
