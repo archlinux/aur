@@ -3,7 +3,7 @@ pkgver=r668.e865067
 pkgrel=1
 pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
-url='https://github.com/deeadly137/caelestia-cli'
+url='https://github.com/dim-ghub/caelestia-cli'
 license=('GPL-3.0-only')
 depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
          'wl-clipboard' 'slurp' 'gpu-screen-recorder' 'dconf' 'cliphist' 'fuzzel')
