@@ -1,10 +1,10 @@
 # Maintainer: soymadip_1
 pkgname=nsticky-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A sticky windows manager CLI tool for Niri "
 arch=('x86_64')
-_repo="soymadip/nsticky"
+_repo="lonerOrz/nsticky"
 url="https://github.com/${_repo}"
 license=('BSD-3-Clause')
 provides=('nsticky')
@@ -12,7 +12,7 @@ conflicts=('nsticky')
 depends=('niri')
 
 source=("$url/releases/download/v$pkgver/nsticky-v$pkgver-$arch"
-        "https://raw.githubusercontent.com/$_repo/refs/heads/main/LICENSE"
+  "https://raw.githubusercontent.com/$_repo/refs/heads/main/LICENSE"
 )
 
 sha256sums=('SKIP' 'SKIP')
