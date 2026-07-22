@@ -1,0 +1,18 @@
+pkgbase = pixelmatch
+	pkgdesc = The smallest and fastest pixel-level image comparison library
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/mapbox/pixelmatch
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = pixelmatch-7.2.0.tgz
+	options = !strip
+	options = !debug
+	source = pixelmatch-7.2.0.tgz::https://registry.npmjs.org/pixelmatch/-/pixelmatch-7.2.0.tgz
+	source = LICENSE::https://raw.githubusercontent.com/mapbox/pixelmatch/v7.2.0/LICENSE
+	sha1sums = 59f4e6faca733f763756d175e2579ed71369fd72
+	sha1sums = d2a857dabbb49f6c578788cbe6f44940eb2f540b
+
+pkgname = pixelmatch
