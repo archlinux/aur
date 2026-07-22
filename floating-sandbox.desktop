@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Categories=Game;
+Name=Floating Sandbox
+Comment=Interactive 2D water physics simulator.
+Icon=floating-sandbox
+Exec=/usr/bin/floating-sandbox
+Path=/opt/floating-sandbox/
+NoDisplay=false
+Terminal=false
