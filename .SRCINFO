@@ -5,6 +5,7 @@ pkgbase = noctalia-greeter
 	url = https://github.com/noctalia-dev/noctalia-greeter
 	install = noctalia-greeter.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
