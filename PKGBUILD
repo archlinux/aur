@@ -15,6 +15,8 @@ sha256sums=(SKIP)
 
 prepare() {
 	cd "$pkgname"
+	echo 'export PATH=$PATH:/opt/forkme' > "$pkgname.sh"
+	echo 'setenv PATH ${PATH}:/opt/forkme' > "$pkgname.csh"
 	cargo fetch --locked --target host-tuple
 }
 
@@ -28,4 +30,6 @@ build() {
 package() {
 	forkmepath=$pkgname/target/release
 	install -Dm0755 -t "$pkgdir/opt/forkme/" "$forkmepath/forkme"
+	cd "$pkgname"
+	install -Dm0755 -t "$pkgdir/etc/profile.d/" "$pkgname".{csh,sh}
 }
