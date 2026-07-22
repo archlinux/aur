@@ -28,7 +28,12 @@ prepare() {
 }
 
 package() {
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.pacman" -C "${pkgdir}"
+    bsdtar \
+        --exclude='.PKGINFO' \
+        --exclude='.MTREE' \
+        --exclude='.INSTALL' \
+        -xf "${srcdir}/${pkgname}-${pkgver}.pacman" \
+        -C "${pkgdir}"
 
     install -Dm644 "${srcdir}/icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/msvisio.png"
