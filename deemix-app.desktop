@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Deemix Remastered
+Exec="/opt/deemix-remastered/deemix-app" %U
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/1024x1024/apps/deemix-app.png
+StartupWMClass=/usr/share/icons/hicolor/1024x1024/apps/deemix-app.png
+Comment=Modern Deezer music downloader
+Categories=Audio;
