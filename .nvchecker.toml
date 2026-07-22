@@ -1,4 +1,5 @@
 [mathematica]
 source = "htmlparser"
-url = "https://www.wolfram.com/download-center/"
-xpath = "//*[@class='wolfram-wrapper']//*[@class='latest-release']//*[@class='version']"
+url = "https://www.wolfram.com/language/quick-revision-history/"
+xpath = "//*[@class='title']/text()"
+prefix = "Wolfram Language "

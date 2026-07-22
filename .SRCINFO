@@ -1,5 +1,5 @@
 pkgbase = mathematica
-	pkgdesc = Computational software for mathematics, science, and engineering, with offline documentation bundled.
+	pkgdesc = Computational software for mathematics, with offline documentation bundled
 	pkgver = 15
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/

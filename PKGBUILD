@@ -9,13 +9,13 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
+pkgdesc='Computational software for mathematics, with offline documentation bundled'
 pkgver=15
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
 _pkgver=${_major}.${_minor:-0}
 pkgrel=1
-pkgdesc='Computational software for mathematics, science, and engineering, with offline documentation bundled.'
-arch=('x86_64')
 url='http://www.wolfram.com/mathematica/'
+arch=(x86_64)
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'rsync' 'inetutils')
 depends=(
@@ -45,7 +45,7 @@ optdepends=(
 # E.g.: <a href="https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false&signature=09d7f5...">
 _source_url="$(
   # shellcheck disable=SC2312
-  curl -s 'https://www.wolfram.com/download-center/' \
+  curl -s https://www.wolfram.com/download-center/ \
     | grep 'account.wolfram.com/dl/WolframApp' \
     | grep -E "version=${_pkgver}\b" \
     | grep 'platform=Linux' \
@@ -94,20 +94,16 @@ prepare() {
   warning "Mathematica takes around 29 GiB of space with 'makepkg'."
   warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
-  if [[ $(echo "${srcdir}" | wc -w || true) -ne 1 ]]; then
+  if [[ ${PWD} =~ [[:space:]] ]]; then
     error "ERROR: The Mathematica installer doesn't support directory names with spaces."
-    warning "Current build directory: ${srcdir}"
+    warning "Current build directory: ${PWD}"
     exit 1
   fi
 
   msg2 'Extracting Mathematica installer...'
-  bash "${srcdir}/Wolfram_${pkgver}_LIN_Bndl.sh" \
-    --keep \
-    --target "${srcdir}/bundle" \
-    -- \
-    -noexec
+  bash "Wolfram_${pkgver}_LIN_Bndl.sh" --keep --target bundle -- -noexec
 
-  patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/wolfram-remove-xdg-scripts.patch
+  patch -t -d bundle/ -Np1 < wolfram-remove-xdg-scripts.patch
 }
 
 package() {
@@ -116,39 +112,39 @@ package() {
 
   msg2 'Running Mathematica installer'
   # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
-  bash "${srcdir}/bundle/Unix/Installer/WolframInstaller" \
+  bash bundle/Unix/Installer/WolframInstaller \
     -execdir="${pkgdir}/usr/bin" \
     -targetdir="${installdir}" \
     -auto
 
   # Install documentation
-  bash "${srcdir}"/bundle/Unix/.bundle/Unix/Installer/MathInstaller \
+  bash bundle/Unix/.bundle/Unix/Installer/MathInstaller \
     -targetdir="${pkgdir}/tmp" \
     -auto
-  rsync -a --remove-source-files "${pkgdir}"/tmp/Documentation/English "${installdir}"/Documentation/
-  rm -rf "${pkgdir}"/tmp
+  rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" "${installdir}/Documentation/"
+  rm -rf "${pkgdir}/tmp"
 
-  if [[ -s "${installdir}"/InstallErrors ]]; then
+  if [[ -s "${installdir}/InstallErrors" ]]; then
     warning 'Review installation errors:'
-    cat "${installdir}"/InstallErrors
+    cat "${installdir}/InstallErrors"
   fi
-  rm -f "${installdir}"/InstallErrors
+  rm -f "${installdir}/InstallErrors"
 
   msg2 'Setting up WolframScript'
   # shellcheck disable=SC2312
-  ar -p "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
+  ar -p "${installdir}/SystemFiles/Installation/"wolframscript_*_amd64.deb \
     -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
   msg2 'Copying menu and MIME type information'
 
   desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-  install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
-  install -D -m644 "${installdir}"/SystemFiles/Installation/wolfram-wolfram.directory -t "${pkgdir}"/usr/share/desktop-directories
-  install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
-  rm -r "${installdir}"/SystemFiles/Installation
+  install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}/usr/share/applications/"
+  install -D -m644 "${installdir}/SystemFiles/Installation/wolfram-wolfram.directory" -t "${pkgdir}/usr/share/desktop-directories"
+  install -D -m644 "${installdir}/SystemFiles/Installation/"*.xml -t "${pkgdir}/usr/share/mime/packages"
+  rm -r "${installdir}/SystemFiles/Installation"
 
   _fix_desktop_file "${pkgdir}/usr/share/applications/${desktop_file}"
-  _fix_desktop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
+  _fix_desktop_file "${pkgdir}/usr/share/desktop-directories/wolfram-wolfram.directory"
 
   msg2 'Copying icons'
   for i in 32 64 128; do
@@ -164,10 +160,10 @@ package() {
   done
 
   msg2 'Copying man pages'
-  install -D -m644 "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 -t "${pkgdir}"/usr/share/man/man1
+  install -D -m644 "${installdir}/SystemFiles/SystemDocumentation/Unix/"*.1 -t "${pkgdir}/usr/share/man/man1"
 
   msg2 'Copying license'
-  install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 "${installdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   _fix_binary_symlinks # namcap rule: symlink
   _fix_permissions # namcap rule: permissions
@@ -175,12 +171,12 @@ package() {
 
 _fix_desktop_file() {
   # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
-  sed -E -i '/^\s*Version\s*=.*$/d' "$1"
+  sed -i -E '/^\s*Version\s*=.*$/d' "$1"
   # encoding is outdated
-  sed -E -i '/^\s*Encoding\s*=.*$/d' "$1"
+  sed -i -E '/^\s*Encoding\s*=.*$/d' "$1"
   # executable path contains BUILDDIR
-  sed -E -i 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
-  sed -E -i "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
+  sed -i -E 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
+  sed -i -E "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
   # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
   if [[ "$1" = *".desktop" ]]; then
     cat >> "$1" << EOF
@@ -198,15 +194,15 @@ _fix_binary_symlinks() {
   relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
 
   ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"
-  ln -sf "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
-  ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
+  ln -sf "${relative_installdir}/Executables/math" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/MathKernel" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/mcc" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/wolfram" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/wolframnb" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/WolframKernel" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/Executables/WolframNB" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver" "${pkgdir}/usr/bin/"
+  ln -sf "${relative_installdir}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" "${pkgdir}/usr/bin/"
 }
 
 _fix_permissions() {
