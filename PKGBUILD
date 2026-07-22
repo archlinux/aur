@@ -1,6 +1,6 @@
 # Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
 pkgname=axolotl-launcher-bin
-pkgver=1.3.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A free, cross-platform Minecraft launcher built on the Modrinth ecosystem"
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,6 @@ package() {
   # 重命名 desktop 文件
   if [ -f "${pkgdir}/usr/share/applications/Axolotl Launcher.desktop" ]; then
     mv "${pkgdir}/usr/share/applications/Axolotl Launcher.desktop" "${pkgdir}/usr/share/applications/axolotl-launcher.desktop"
-    sed -i 's/^Exec=.*/Exec=WEBKIT_DISABLE_DMABUF_RENDERER=1 Axolotl Launcher/' "${pkgdir}/usr/share/applications/axolotl-launcher.desktop"
+    sed -i 's/^Exec=.*/Exec=WEBKIT_DISABLE_DMABUF_RENDERER=1 "Axolotl Launcher"/' "${pkgdir}/usr/share/applications/axolotl-launcher.desktop"
   fi
 }
