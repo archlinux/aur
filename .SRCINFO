@@ -1,7 +1,7 @@
 pkgbase = electerm
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)
 	pkgver = 3.15.159
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electerm.html5beta.com/
 	arch = aarch64
 	arch = armv7h
@@ -16,6 +16,7 @@ pkgbase = electerm
 	makedepends = jq
 	depends = electron41
 	depends = python
+	depends = nodejs
 	conflicts = electerm
 	source = electerm-3.15.159::git+https://github.com/electerm/electerm#tag=v3.15.159
 	source = electerm.sh

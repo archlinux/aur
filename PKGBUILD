@@ -4,7 +4,7 @@ pkgname=electerm
 pkgver=3.15.159
 _electronversion=41
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -18,6 +18,7 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'python'
+    'nodejs'
 )
 makedepends=(
     'npm'
@@ -44,7 +45,7 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
@@ -96,18 +97,19 @@ build() {
     NODE_ENV=production     npm run clean
     NODE_ENV=production     npm run compile
     NODE_ENV=production     npm run prepare-file
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config build/electron-builder.json"
-    rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{android-*,darwin-*,win32-*}
-    rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/font-list/libs/{darwin,win32}
+    WORKFLOW_NAME=linux-pkgbuild \
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir --publish never -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*}
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
     case "${CARCH}" in
         aarch64)
-            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{linux-arm,linux-x64}
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm,linux-x64}
             ;;
         armv7h)
-            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{linux-arm64,linux-x64}
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm64,linux-x64}
             ;;
         x86_64)
-            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/linux-arm*
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"linux-arm*
             ;;
     esac
 }
