@@ -1,13 +1,13 @@
 pkgbase = expresslrs-configurator-bin
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
 	license = GPL
 	depends = platformio-core-udev
 	conflicts = expresslrs-configurator
-	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v1.8.2/expresslrs-configurator-1.8.2.pacman
-	sha512sums = 095aa8fbb64be4f00ab31f32993cc28c2cf269111a199fe0630be576a6c39ed000d87634e0025fb966c1489550a967075cb94b89a2e083ffbe9e5ffde1f2cec4
+	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v1.8.3/expresslrs-configurator-1.8.3.pacman
+	sha512sums = 9126ee0c209a3081671cf2b49c2bcbda42117980a037f26184d873501e62ed17d78317fe15d9a2590d03dab8f1682a051b73aee442ed132a0ba4e83c16601bf3
 
 pkgname = expresslrs-configurator-bin
