@@ -5,22 +5,15 @@ pkgbase = splayer-next-unofficial-bin
 	url = https://github.com/wkk-dev/SPlayer-Next-linux
 	arch = x86_64
 	license = AGPL-3.0
-	makedepends = nodejs>=22
-	makedepends = pnpm>=10
-	makedepends = rust
-	makedepends = clang
-	makedepends = pkg-config
-	makedepends = alsa-lib
-	makedepends = dbus
 	depends = libappindicator-gtk3
 	depends = libxss
 	depends = libxtst
 	depends = libnotify
 	optdepends = pipewire: 音频后端
 	optdepends = pulseaudio: 音频后端
-	source = splayer-next-1.0.0.tar.gz::https://github.com/wkk-dev/SPlayer-Next-linux/archive/refs/tags/v1.0.0.tar.gz
+	source = splayer-next-1.0.0-x64.tar.gz::https://github.com/wkk-dev/SPlayer-Next-linux/releases/download/v1.0.0/splayer-next-1.0.0-x64.tar.gz
 	source = splayer-next.png::https://github.com/wkk-dev/SPlayer-Next-linux/raw/v1.0.0/public/icons/favicon.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2894a9eadd397198d6b98661d9d884bc4d2deaf0913c85886ee7608a79853ca7
+	sha256sums = 6f18e6af0430496e2c7aab4ed559e6b6efe87bc7880b8fe6e52451674296b248
 
 pkgname = splayer-next-unofficial-bin

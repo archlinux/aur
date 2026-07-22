@@ -16,78 +16,25 @@ depends=('libappindicator-gtk3'
          'libnotify')
 optdepends=('pipewire: 音频后端'
             'pulseaudio: 音频后端')
-makedepends=('nodejs>=22'
-             'pnpm>=10'
-             'rust'
-             'clang'
-             'pkg-config'
-             'alsa-lib'
-             'dbus')
 
 # === 源文件 ===
 _github="https://github.com/wkk-dev/SPlayer-Next-linux"
-_srctarball="splayer-next-${pkgver}.tar.gz"
-_dirname="SPlayer-Next-linux-${pkgver}"
+_tarball="splayer-next-${pkgver}-x64.tar.gz"
+_dirname="splayer-next-${pkgver}-x64"
 _icon="splayer-next.png"
 
-source=("${_srctarball}::${_github}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${_tarball}::${_github}/releases/download/v${pkgver}/${_tarball}"
         "${_icon}::${_github}/raw/v${pkgver}/public/icons/favicon.png")
-sha256sums=('SKIP'
-            'SKIP')
-
-# === 准备 ===
-prepare() {
-  cd "${srcdir}/${_dirname}"
-
-  # 移除可能导致镜像限制的 .npmrc
-  rm -f .npmrc
-}
-
-# === 编译 ===
-build() {
-  cd "${srcdir}/${_dirname}"
-
-  # 安装依赖
-  pnpm install
-
-  # 构建原生 Rust 模块
-  pnpm build:native
-
-  # 构建前端和主进程代码（跳过 typecheck 加速构建）
-  pnpm exec electron-vite build
-
-  # electron-builder 打包（Linux x64）
-  pnpm exec electron-builder --config electron-builder.config.ts \
-    --linux --x64
-}
+sha256sums=('2894a9eadd397198d6b98661d9d884bc4d2deaf0913c85886ee7608a79853ca7'
+            '6f18e6af0430496e2c7aab4ed559e6b6efe87bc7880b8fe6e52451674296b248')
 
 # === 打包 ===
 package() {
   cd "${srcdir}/${_dirname}"
 
-  # 找到构建出的 tar.gz（electron-builder 输出目录）
-  local tarball=$(find dist -name "splayer-next-*-x64.tar.gz" -type f | head -1)
-  if [ -z "$tarball" ]; then
-    echo "错误：未找到构建产物 splayer-next-*-x64.tar.gz"
-    ls -la dist/ 2>/dev/null || echo "dist/ 目录为空或不存在"
-    exit 1
-  fi
-
-  # 解压到临时目录
-  local tmpdir="$srcdir/_pkg"
-  mkdir -p "$tmpdir"
-  tar xzf "$tarball" -C "$tmpdir"
-
-  # 找到解压后的应用目录
-  local appdir=$(find "$tmpdir" -maxdepth 1 -type d ! -name "_pkg" | head -1)
-  if [ -z "$appdir" ]; then
-    echo "错误：未找到解压后的应用目录"
-    exit 1
-  fi
-
   # 安装主程序到 /opt
   install -dm755 "${pkgdir}/opt/splayer-next"
-  cp -r "$appdir"/* "${pkgdir}/opt/splayer-next/"
+  cp -r . "${pkgdir}/opt/splayer-next/"
 
   # 查找实际的可执行文件名（electron-builder 配置的 executableName）
   local exec_name="SPlayer-Next"
