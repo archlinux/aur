@@ -30,14 +30,15 @@ package() {
   # Remove bundled ffmpeg binary to use system's ffmpeg package instead of conflicting
   rm -f "$pkgdir/usr/bin/ffmpeg"
 
-  # Rename desktop file to standard lowercase format to fix launcher association and icon issues
+  # Rename desktop file to match Wayland app_id (com.sluic.memory-card)
   if [ -f "$pkgdir/usr/share/applications/Memory Card.desktop" ]; then
-    mv "$pkgdir/usr/share/applications/Memory Card.desktop" "$pkgdir/usr/share/applications/memory-card.desktop"
+    mv "$pkgdir/usr/share/applications/Memory Card.desktop" "$pkgdir/usr/share/applications/com.sluic.memory-card.desktop"
   fi
 
-  # Fix empty Categories in the desktop file so it appears in Audio/Video menus
-  if [ -f "$pkgdir/usr/share/applications/memory-card.desktop" ]; then
-    sed -i 's/^Categories=$/Categories=AudioVideo;Audio;Player;/' "$pkgdir/usr/share/applications/memory-card.desktop"
+  # Fix empty Categories and set absolute Icon path in the desktop file
+  if [ -f "$pkgdir/usr/share/applications/com.sluic.memory-card.desktop" ]; then
+    sed -i 's/^Categories=$/Categories=AudioVideo;Audio;Player;/' "$pkgdir/usr/share/applications/com.sluic.memory-card.desktop"
+    sed -i 's|^Icon=.*|Icon=/usr/share/pixmaps/memory-card.png|' "$pkgdir/usr/share/applications/com.sluic.memory-card.desktop"
   fi
 
   # Copy icon to pixmaps as a bulletproof fallback for custom icon themes
