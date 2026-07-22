@@ -2,7 +2,7 @@
 
 pkgname=shelly-cli
 pkgbase=shelly-cli
-pkgver=3.0.0+5r3433.gfd79689
+pkgver=3.0.0+5r3470.gc2ff0a7
 pkgrel=1
 pkgdesc='Native Shelly package-manager CLI beta'
 arch=('x86_64')
