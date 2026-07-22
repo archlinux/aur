@@ -2,8 +2,8 @@
 
 # shellcheck disable=SC2164
 
-pkgver=2.2.0.r0.g196179a
-pkgrel=3
+pkgver=2.2.4.r2.gec4a4b0
+pkgrel=1
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -16,7 +16,7 @@ license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 depends=(
 	'hicolor-icon-theme'
 	'python>=3.11'
-	'python-more-itertools>=11.0.0' 'python-more-itertools<12.0.0'
+	'python-more-itertools>=11.1.0' 'python-more-itertools<12.0.0'
 	'python-packaging>=26' 'python-packaging<27'
 	'python-platformdirs>=4.5' 'python-platformdirs<5'
 	'python-pygithub>=2.9.0' 'python-pygithub<3'
