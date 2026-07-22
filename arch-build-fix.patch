@@ -1,0 +1,54 @@
+Description: Fix Ayatana API macro + use Breeze icons for tray
+ .
+ Combined fix for two issues that prevent the upstream source from
+ building and running cleanly on modern distros shipping
+ libayatana-appindicator (Arch/CachyOS/Manjaro, Ubuntu 22.04+,
+ Debian 12, Fedora, openSUSE, etc.):
+ .
+   1) IS_APP_INDICATOR -> APP_IS_INDICATOR
+      The source used the legacy libappindicator macro name. The
+      Ayatana rename swapped the words; without this the build
+      fails with "implicit declaration of function 'IS_APP_INDICATOR'".
+ .
+   2) brasero / brasero-disc-NN -> Breeze temperature icons
+      The dynamic icon uses brasero-disc-{25,50,75,100} which only
+      resolve when the brasero icon theme is installed (rare outside
+      older Ubuntu). Switched to temperature-warm/normal/cold which
+      ship with Breeze (KDE Plasma default) and resolve everywhere.
+ .
+ Tested on CachyOS Linux (Arch-based) with KDE Plasma 6.
+ .
+ Apply with:  patch -p1 < patches/arch-build-fix.patch
+diff --git a/src/clevo-indicator-dual.c b/src/clevo-indicator-dual.c
+index f2b31a6..3a77527 100644
+--- a/src/clevo-indicator-dual.c
++++ b/src/clevo-indicator-dual.c
+@@ -372,9 +372,9 @@ static void main_ui_worker(int argc, char** argv) {
+     }
+     gtk_widget_show_all(indicator_menu);
+     //
+-    indicator = app_indicator_new(NAME, "brasero",
++    indicator = app_indicator_new(NAME, "temperature-normal",
+             APP_INDICATOR_CATEGORY_HARDWARE);
+-    g_assert(IS_APP_INDICATOR(indicator));
++    g_assert(APP_IS_INDICATOR(indicator));
+     app_indicator_set_label(indicator, "Init..", "XX");
+     app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ATTENTION);
+     app_indicator_set_ordering_index(indicator, -2);
+@@ -443,7 +443,15 @@ static gboolean ui_update(gpointer user_data) {
+     double load_r = round(load / 5.0) * 5.0;
+     if (load_r > 100.0)
+         load_r = 100.0;
+-    sprintf(icon_name, "brasero-disc-%02d", (int) load_r);
++    /* Breeze icons guarantee these names resolve on KDE Plasma. */
++    const char *load_icon;
++    if (load_r >= 67.0)
++        load_icon = "temperature-cold";
++    else if (load_r >= 34.0)
++        load_icon = "temperature-normal";
++    else
++        load_icon = "temperature-warm";
++    strcpy(icon_name, load_icon);
+     app_indicator_set_icon(indicator, icon_name);
+     return G_SOURCE_CONTINUE;
+ }

@@ -1,0 +1,35 @@
+post_install() {
+    cat <<'EOF'
+==> clevo-indicator-dual installed.
+
+To start it once:
+    clevo-indicator-dual
+
+To enable autostart on every KDE Plasma / X11 / Wayland login:
+    systemctl --user enable --now clevo-indicator-dual.service
+
+A sample unit file is provided in the README. Adjust
+DISPLAY / WAYLAND_DISPLAY values to match your session
+(check with: echo $DISPLAY $WAYLAND_DISPLAY).
+
+If the tray icon does not appear, right-click the system-tray
+widget in your panel and enable "Application Icons" / "Status
+Notifier Items".
+
+Setuid root is required because the binary accesses EC I/O ports
+(0x62/0x66) directly. To run as a regular desktop user, you must
+be in the `wheel` group (Arch default).
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Best-effort: stop and disable the user service if it was set up
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl --user disable clevo-indicator-dual.service 2>/dev/null || true
+        systemctl --user stop    clevo-indicator-dual.service 2>/dev/null || true
+    fi
+}

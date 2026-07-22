@@ -1,0 +1,21 @@
+pkgbase = clevo-indicator-dual
+	pkgdesc = Linux dual-fan control (CPU + GPU) for Clevo-based laptops and Axioo rebrands. Fork of clevo-indicator that drives BOTH fans instead of only the CPU fan.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hajilok/clevo-axioo-dual-fan-linux
+	install = clevo-indicator-dual.install
+	arch = x86_64
+	license = GPL2
+	makedepends = base-devel
+	makedepends = git
+	makedepends = pkgconf
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
+	optdepends = breeze-icons: provides the tray icons (temperature-warm/normal/cold)
+	source = clevo-indicator-dual::git+https://github.com/hajilok/clevo-axioo-dual-fan-linux.git#tag=v1.0.0
+	source = https://raw.githubusercontent.com/hajilok/clevo-axioo-dual-fan-linux/v1.0.0/arch-build-fix.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clevo-indicator-dual
