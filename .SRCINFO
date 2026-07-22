@@ -1,0 +1,21 @@
+pkgbase = vespera-git
+	pkgdesc = Standalone music player companion: MPRIS control, synced lyrics, visualizer and equalizer (git)
+	pkgver = 0.1.0.r4.g740c2da
+	pkgrel = 1
+	url = https://github.com/hamza-abdelmoumene/vespera
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = cava: audio visualizer
+	optdepends = easyeffects: 10-band equalizer
+	provides = vespera
+	conflicts = vespera
+	source = git+https://github.com/hamza-abdelmoumene/vespera.git
+	sha256sums = SKIP
+
+pkgname = vespera-git
