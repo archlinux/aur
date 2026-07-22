@@ -3,14 +3,14 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.84.0.alpha.168.ge8f07bfef
+pkgver=0.84.0.alpha.264.g3bd8de2c2
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=("GPL-2.0-or-later")
 depends=('sdl3' 'sdl3_image' 'opusfile' 'libslirp' 'alsa-lib' 'iir1' 'speexdsp' 'fluidsynth' 'munt' 'libpng' 'zlib-ng' 'libglvnd')
-makedepends=('cmake' 'ninja' 'vcpkg')
+makedepends=('cmake' 'ninja' 'asio' 'vcpkg')
 provides=("dosbox" "dosbox-staging")
 conflicts=("${provides[@]}")
 source=(
