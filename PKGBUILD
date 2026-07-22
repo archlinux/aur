@@ -1,7 +1,7 @@
 # Maintainer: kurumihere <kurumihere@disroot.org>
 
 pkgname=mp-player-git
-pkgver=0.2.0.r5.g73aee3c
+pkgver=0.2.1.r0.gbc3ff51
 pkgrel=1
 pkgdesc='music player'
 arch=('x86_64')
