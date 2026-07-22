@@ -2,11 +2,11 @@
 pkgname=ez4-client
 _pkgname='ez4-client'
 pkgver=20140306
-pkgrel=1
-pkgdesc='SuperCard SD Patching Software'
+pkgrel=2
+pkgdesc='Legacy EZ-Flash IV patching client'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
-source=(https://www.ezflash.cn/zip/EZ4_20140306.zip
+source=(https://web.archive.org/web/20210831130456/https://www.ezflash.cn/zip/EZ4_20140306.zip
         ez4-client
         ez4-client.desktop
         ez4-client.png)
