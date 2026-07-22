@@ -1,0 +1,21 @@
+pkgbase = protonaut-git
+	pkgdesc = A desktop companion dashboard for your Steam/Proton library on Linux, built with Wails (Go + React)
+	pkgver = r4.4db1c4c
+	pkgrel = 1
+	url = https://github.com/Eloreden/protonaut
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = git
+	makedepends = imagemagick
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	optdepends = steam: to actually own and run the games Protonaut manages
+	optdepends = protontricks: required for auto-launched companion tools
+	provides = protonaut
+	conflicts = protonaut
+	source = protonaut-git::git+https://github.com/Eloreden/protonaut.git
+	sha256sums = SKIP
+
+pkgname = protonaut-git
