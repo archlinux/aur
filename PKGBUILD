@@ -2,7 +2,7 @@
 # Maintainer: Michael Placzek <heymaikol@proton.me>
 
 pkgname='network-doctor'
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Terminal UI that diagnoses network connectivity and explains where the connection breaks'
 url='https://github.com/heymaikol/network-doctor'
@@ -12,7 +12,7 @@ provides=('network-doctor')
 conflicts=('network-doctor')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/heymaikol/network-doctor/releases/download/v${pkgver}/network-doctor-${pkgver}.tar.gz")
-sha256sums=('798eac1b20869d7605a5bf6c0bd3e7bb660cb5da1d38649d7d93b532c24e9771')
+sha256sums=('997fe680180f24fb8a4bf9b38f13ed9b0f17340befad3df14653d6d4cc6a21eb')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
