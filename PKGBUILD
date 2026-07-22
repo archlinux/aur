@@ -1,6 +1,7 @@
 pkgname=fetch-git
 _pkgname=fetch
 pkgrel=1
+pkgver=2.2.0.r8.g596b548
 pkgdesc="An animated 3D fetch tool for your terminal"
 arch=(x86_64 aarch64)
 url="https://github.com/areofyl/fetch"

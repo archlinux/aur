@@ -6,11 +6,11 @@ pkgbase = fetch-git
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	depends = glibc
 	makedepends = git
+	depends = glibc
 	provides = fetch
 	conflicts = fetch
 	source = git+https://github.com/areofyl/fetch.git
 	sha256sums = SKIP
 
-	pkgname = fetch-git
+pkgname = fetch-git
