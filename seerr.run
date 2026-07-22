@@ -2,4 +2,8 @@
 [ -r /etc/conf.d/seerr ] . /etc/conf.d/seerr
 
 cd /usr/lib/seerr
-PORT="$PORT" HOST="$HOST" JELLYFIN_TYPE="$JELLYFIN_TYPE" exec chpst -u seerr:seerr yarn start
+
+set -eu
+export NODE_ENV="${NODE_ENV:-production}"
+export CONFIG_DIRECTORY="${CONFIG_DIRECTORY:-$(pwd)/config}"
+PORT="$PORT" HOST="$HOST" JELLYFIN_TYPE="$JELLYFIN_TYPE" exec chpst -u seerr:seerr node dist/index.js
