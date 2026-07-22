@@ -1,6 +1,6 @@
 pkgbase = lyrics-tool-git
 	pkgdesc = Cross-platform terminal lyrics visualizer and LRC/WLRC toolkit (git)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/hamza-abdelmoumene/lyrics-tool
 	arch = any
