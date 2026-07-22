@@ -1,6 +1,6 @@
 pkgname=dpdk-lts
-pkgver=26.03
-pkgrel=3
+pkgver=26.07
+pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=($CARCH)
 url='http://dpdk.org'
@@ -16,6 +16,7 @@ depends=(
   glibc
   jansson
   libarchive
+  libatomic
   libbsd
   libbpf
   libelf
@@ -45,7 +46,7 @@ checkdepends=()
 source=(
   "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
-sha256sums=('84989202bbe0fbaeeb62f8fdc63f691880ac0b66cd0dc64c167843c59db29d2c')
+sha256sums=('7141a8b5bad9d7d965483ac0d75317ac0c21dcee1d13d373693c655f9e3fabe6')
 
 prepare() {
   meson subprojects download --sourcedir="${srcdir}/dpdk-$pkgver"
