@@ -1,17 +1,19 @@
 # Maintainer: knightinfected <hmzmahmood5@gmail.com>
 pkgname=pipewire-controller
-pkgver=0.1.2
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="GTK4/libadwaita control center for PipeWire — filter chains, HRIR virtual surround, drop-in config management"
+pkgdesc="GTK4/libadwaita control center for PipeWire — patchbay, monitoring, virtual devices, effect inserts, filter chains, HRIR virtual surround, drop-in config management"
 arch=('any')
 url="https://github.com/knightinfected/PipeWireController"
 license=('GPL-3.0-or-later')
 depends=('pipewire' 'wireplumber' 'pipewire-pulse' 'gtk4' 'libadwaita'
          'python' 'python-gobject' 'python-numpy' 'python-soundfile')
 optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
-            'lsp-plugins-ladspa: extra LADSPA plugins for imported chains')
+            'lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks'
+            'lsp-plugins-lv2: extra LV2 plugins for effect racks'
+            'carla: bridge VST3/CLAP plugins into the graph via the patchbay')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa9bdeec6bba508968c8917921f1224cf8175a135cb6b0bec6f8cc85cf29f454')
+sha256sums=('622e158866079b2dacd9e11b2ad9c3d220bd6783095fdb696b56ad91894f8c62')
 
 package() {
   cd "PipeWireController-$pkgver"
