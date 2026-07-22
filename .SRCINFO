@@ -1,0 +1,18 @@
+pkgbase = layout-switcher
+	pkgdesc = Wayland layout switcher daemon with cyclic double-press (Rust rewrite)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gimgiwer/layout-switcher
+	install = layout-switcher.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = wl-clipboard
+	depends = wtype
+	provides = layout-switcher
+	conflicts = layout-switcher-git
+	source = https://github.com/gimgiwer/layout-switcher/archive/v1.0.0.tar.gz
+	sha256sums = b0239902e494a4edfb402e5cf9824b8dce0c38f4ff0edb8051a9806966bd2427
+
+pkgname = layout-switcher
