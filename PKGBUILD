@@ -2,7 +2,8 @@
 
 pkgname=layout-switcher
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
+
 pkgdesc="Wayland layout switcher daemon with cyclic double-press (Rust rewrite)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gimgiwer/layout-switcher"
