@@ -44,10 +44,14 @@ Comment=Nintendo Switch Emulator - Nightly build
 EOF
 
         # Icon
-    if [ -f squashfs-root/org.citron_emu.citron.svg ]; then
-        install -Dm644 squashfs-root/org.citron_emu.citron.svg \
-            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/citron-neo.svg"
-    fi
+if [ -f AppDir/org.citron_emu.citron.png ]; then
+    install -Dm644 AppDir/org.citron_emu.citron.png \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/citron-neo.png"
+    install -Dm644 AppDir/org.citron_emu.citron.png \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/citron-neo.png"
+    install -Dm644 AppDir/org.citron_emu.citron.png \
+        "${pkgdir}/usr/share/icons/hicolor/48x48/apps/citron-neo.png"
+fi
 }
 
 post_install() { update-mime-database /usr/share/mime &>/dev/null || true; update-desktop-database -q || true; }
