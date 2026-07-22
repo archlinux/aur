@@ -5,10 +5,10 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=152.0.6
+pkgver=153.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches for Nvidia hardware acceleration)"
-url="https://www.mozilla.org/firefox/"
+url="https://www.firefox.com/"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
@@ -87,6 +87,8 @@ source=(
   $_pkgname.desktop
   org.mozilla.$_pkgname.metainfo.xml
   0000-remove-nvidia-blocklist.patch
+
+  # Make different channels installable in parallel
   0001-Install-under-remoting-name.patch
 )
 validpgpkeys=(
@@ -94,18 +96,18 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('ea220c4f8d19d4edaa20e6dadfd3c4aeb07dbed017ade2828fd814d660660f0e'
+sha256sums=('bc510f74c8c4c692d31e559aeb5850849d13bc98214ac81e004f66f819a55522'
             'SKIP'
-            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
-            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
+            '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
             '547426473bba5ac36b2dc532cffd8485a1edae45e4a070a5a1cf0a9adf8abdc6')
-b2sums=('d0a55f6f30a78516d244037d593ccb08f6803498b582508af35d5b2811097f00584c5b1760c488ae6e7073837b88087ff94ab36eee9af8d7a110350515fc94eb'
+b2sums=('418cc4576a8a98bb957e93712c146629720d5de960d29196395436f05c2eff95adde1dded34805e3b5e664b4a9486af3fe58acdb945d068bb882321e30a4e1a4'
         'SKIP'
-        '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
-        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
+        '607d592b164a88a11a1041002d67339a9a0001469cd979d24d0fda547cec472f602f6299c198f626f2c854df3ff05bd0b1fd84ae47ee52b97a7906575f5a5f36'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778'
         '4f2bfeb5f48b9d88567933b8202504f7699ab81d349a02a13355bdfabea5be12f0028e31a0ce186c86aedc03bff43a9c43100cdaec980e2a8aff13ea604d4fd7')
 
@@ -222,7 +224,9 @@ END
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
+
   local appdir="$pkgdir/usr/lib/$_pkgname"
+  touch "$appdir/is-packaged-app"
 
   install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
@@ -290,7 +294,7 @@ END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$appdir/firefox-bin"
 
   # Use system certificates
   if [[ -e $appdir/libnss3.so ]]; then
