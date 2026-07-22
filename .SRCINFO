@@ -1,0 +1,16 @@
+pkgbase = nvibrant-gui
+	pkgdesc = Native Qt6 frontend for NVIDIA Digital Vibrance on Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JoshuaEve/nvibrant-gui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = qt6-base
+	depends = nvibrant
+	source = nvibrant-gui-1.0.0.tar.gz::https://github.com/JoshuaEve/nvibrant-gui/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 50c51c2f459cfda768e4c227a3f8e425ed9b67a6eed9c80f55c7117fd97ab621
+
+pkgname = nvibrant-gui
