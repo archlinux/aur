@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=('layout-switcher')
 conflicts=('layout-switcher-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b0239902e494a4edfb402e5cf9824b8dce0c38f4ff0edb8051a9806966bd2427')
+sha256sums=('b5bcbce085b4db02b2849935378ab3cab20d055a831e06c65998d6eb98990d24')
 install=layout-switcher.install
 
 prepare() {
