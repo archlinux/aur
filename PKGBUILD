@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="pebbles"
 pkgname="$_pkgname"
