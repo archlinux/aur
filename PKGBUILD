@@ -3,7 +3,7 @@
 pkgname=stm32cubemx2
 _pkgname=stm32cubemx2
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
@@ -37,6 +37,8 @@ prepare() {
     --icon "${pkgname}" \
     --categories "Development;IDE"
 
+  # The ELF embeds a gzip archive, use binwalk to locate where the gzip data starts,
+  # binwalk counts from 0, while tail -c +N counts from 1, so tail needs offset + 1
   tail -c +12853518 "${_installer}" >data.tar.gz
   mkdir -p build
   bsdtar -C build -zxf data.tar.gz
