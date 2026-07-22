@@ -1,6 +1,6 @@
 # Maintainer: Pranav Kannepalli <pranav.kannepalli@gmail.com>
 pkgname=archductor
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Archductor parallel coding-agent workflow tool built around Git worktrees"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('git' 'github-cli' 'sqlite' 'openssh' 'gtk4' 'libadwaita')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5151ffc4e895648effeb6f0675eb916c8baeb9f536dc0481ad3a39fa59dd5627')
+sha256sums=('a9b4221b9a8052c27b15e701238923c9a5f6e6890214db6403b2ee8eb1ed481f')
 
 build() {
     cd "conductor-arch-$pkgver"
@@ -24,8 +24,11 @@ package() {
     install -Dm755 target/release/archcar "$pkgdir/usr/bin/archcar"
     install -Dm644 packaging/archductor-gtk.desktop \
         "$pkgdir/usr/share/applications/archductor-gtk.desktop"
-    install -Dm644 packaging/archductor.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/archductor.svg"
+    install -Dm644 packaging/assets/archductor.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/archductor.png"
+    install -d "$pkgdir/usr/share/fonts/archductor"
+    install -m644 packaging/assets/fonts/*.{ttf,otf,txt} \
+        "$pkgdir/usr/share/fonts/archductor/"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
