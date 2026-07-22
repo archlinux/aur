@@ -1,7 +1,7 @@
 # Maintainer: voidbornfr <discordrishab@gmail.com>
 pkgname=void-files
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI"
 arch=('x86_64')
 url="https://github.com/voidbornfr/void-files"
@@ -17,6 +17,7 @@ prepare() {
   # Isolated Go module cache to prevent downloading during build()
   export GOPATH="${srcdir}/gopath"
   export GOMODCACHE="${srcdir}/gopath/pkg/mod"
+  export GOFLAGS="-modcacherw"
 
   go mod download
 }
@@ -64,4 +65,7 @@ package() {
   if [ -f "LICENSE" ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
+
+  # Fix permissions on Go module cache so makepkg/yay cleanup succeeds
+  chmod -R u+w "${srcdir}/gopath" 2>/dev/null || true
 }
