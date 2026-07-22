@@ -1,6 +1,6 @@
 # Maintainer: Andrew <itspixelatd@proton.me>
 pkgname=arch-scripts
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Multipurpose CLI tool, to install, update, and configure arch easily."
 arch=('any')
@@ -17,7 +17,6 @@ package() {
     install -Dm644 config.py "$pkgdir/usr/lib/arch-scripts/config.py"
     install -Dm644 update.py "$pkgdir/usr/lib/arch-scripts/update.py"
     install -Dm644 install.py "$pkgdir/usr/lib/arch-scripts/install.py"
-    install -Dm644 "man/arch-scripts.1" "$pkgdir/usr/share/man/man1/arch-scripts.1"
 
     # Create a launcher script
     mkdir -p "$pkgdir/usr/bin"
