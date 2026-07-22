@@ -1,6 +1,6 @@
 # Maintainer: Musagy <diegomusagy@gmail.com>
 pkgname=hypremoji
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A modern emoji picker for Hyprland, written in Rust + GTK4"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   'hyprland'      # needed for hyprctl
 )
 makedepends=('git' 'rust' 'cargo')
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -39,6 +39,7 @@ package() {
   cp -r assets/* "$pkgdir/usr/share/hypremoji/assets/"
 
   install -Dm644 "config/hypremoji.conf" "$pkgdir/usr/share/hypremoji/hypremoji.conf"
+  install -Dm644 "config/hypremoji.lua" "$pkgdir/usr/share/hypremoji/hypremoji.lua"
   install -Dm644 "config/config.json" "$pkgdir/usr/share/hypremoji/config.json"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

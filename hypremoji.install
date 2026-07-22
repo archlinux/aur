@@ -1,288 +1,136 @@
 #!/bin/bash
 
-post_install() {
-    echo "==> Setting up hypremoji..."
-
-    get_user_home() {
-        if [[ -n "$SUDO_USER" ]]; then
-            echo "/home/$SUDO_USER"
-        else
-            echo "$HOME"
-        fi
-    }
-
-    USER_HOME=$(get_user_home)
-    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
-    HYPREMOJI_CONFIG_DIR="$USER_HOME/.config/hypremoji"
-    HYPREMOJI_CONF="$HYPREMOJI_CONFIG_DIR/hypremoji.conf"
-    # PASTE_CONFIG="$HYPREMOJI_CONFIG_DIR/paste_config.json" // DEPRECATED, NOW INCLUDED IN CONFIG.JSON
-    CONFIG_JSON="$HYPREMOJI_CONFIG_DIR/config.json"
-
-    mkdir -p "$HYPREMOJI_CONFIG_DIR"
+_get_user_home() {
+    # Best-effort: works for the common `sudo pacman -S` case.
+    # Falls back to $HOME. Document the limitation in the README
+    # instead of trying to handle every invocation (doas, su -, etc).
     if [[ -n "$SUDO_USER" ]]; then
-        chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_CONFIG_DIR"
+        getent passwd "$SUDO_USER" | cut -d: -f6
+    else
+        echo "$HOME"
     fi
+}
 
-    if [[ ! -f "$HYPREMOJI_CONF" ]]; then
-        cp /usr/share/hypremoji/hypremoji.conf "$HYPREMOJI_CONF"
-        if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_CONF"
+_ensure_default_files() {
+    local hypremoji_dir="$1"
+    mkdir -p "$hypremoji_dir"
+
+    local pairs=(
+        "/usr/share/hypremoji/hypremoji.conf:$hypremoji_dir/hypremoji.conf"
+        "/usr/share/hypremoji/hypremoji.lua:$hypremoji_dir/hypremoji.lua"
+        "/usr/share/hypremoji/config.json:$hypremoji_dir/config.json"
+    )
+    for pair in "${pairs[@]}"; do
+        local src="${pair%%:*}"
+        local dst="${pair##*:}"
+        if [[ ! -f "$dst" ]]; then
+            cp "$src" "$dst"
+            echo "    -> Created $dst"
         fi
-        echo "    -> Created hyprland config at $HYPREMOJI_CONF"
-    fi
+    done
 
-    if [[ ! -f "$CONFIG_JSON" ]]; then
-        cp /usr/share/hypremoji/config.json "$CONFIG_JSON"
-        if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$CONFIG_JSON"
+    if [[ -n "$SUDO_USER" ]]; then
+        chown -R "$SUDO_USER:$SUDO_USER" "$hypremoji_dir"
+    fi
+}
+
+_print_integration_hint() {
+    local hypr_dir="$1"
+
+    if [[ -f "$hypr_dir/hyprland.lua" ]]; then
+        if grep -q 'require("hypremoji")' "$hypr_dir/hyprland.lua"; then
+            echo "    -> HyprEmoji already wired into hyprland.lua"
+            return
         fi
-        echo "    -> Created config at $CONFIG_JSON"
-    fi
-
-    if [[ ! -f "$HYPRLAND_CONF" ]]; then
-        echo "    -> Hyprland config not found"
-        echo "    -> Configure manually when you set up Hyprland"
         echo ""
-        echo "==> Installation complete"
-        return 0
-    fi
-
-    if grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
-        echo "    -> HyprEmoji already configured in Hyprland"
+        echo "    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "    !!  WARNING: hypremoji will NOT work until you add        !!"
+        echo "    !!  these two lines to the END of $hypr_dir/hyprland.lua"
+        echo "    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         echo ""
-        echo "==> Installation complete"
-        return 0
+        echo '        package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hypremoji/?.lua"'
+        echo '        require("hypremoji")'
+        echo ""
+        echo "    Without this, the picker gets installed but Hyprland never"
+        echo "    loads it (no keybind, no window rules)."
+        echo ""
+        return
     fi
 
+    if [[ -f "$hypr_dir/hyprland.conf" ]]; then
+        if grep -q "source.*hypremoji/hypremoji.conf" "$hypr_dir/hyprland.conf"; then
+            echo "    -> HyprEmoji already wired into hyprland.conf"
+            return
+        fi
+        echo ""
+        echo "    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "    !!  WARNING: hypremoji will NOT work until you add        !!"
+        echo "    !!  this line to $hypr_dir/hyprland.conf"
+        echo "    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo ""
+        echo "        source = ~/.config/hypremoji/hypremoji.conf"
+        echo ""
+        echo "    Without this, the picker gets installed but Hyprland never"
+        echo "    loads it (no keybind, no window rules)."
+        echo ""
+        return
+    fi
+
+    echo "    -> No Hyprland config found yet; wire HyprEmoji in once you set one up."
+}
+
+_append_style_v1_2() {
+    local css="$1"
+    [[ -f "$css" ]] || { echo "    -> style.css not found, skipping style update"; return; }
+    grep -q "New styles for v1.2 components" "$css" && { echo "    -> styles already present"; return; }
+
+    cat >> "$css" << 'EOF'
+
+/* New styles for v1.2 components */
+:root { --error: #c41313; }
+.generic-btn { color: var(--primary-col); -gtk-icon-size: 24px; }
+.toast-container {
+  background-color: var(--btn-list-col);
+  border-radius: 10px; padding: 5px 15px; margin: 0 20px 20px;
+  border: 1px solid var(--primary-col);
+  transition: all 0.3s ease-in-out; transform: scale(0.0000000001);
+}
+.toast-container.error { border: 1px solid var(--error); }
+.toast-label { color: white; font-weight: 700; }
+.show-toast { transform: scale(1); animation: boingCombo 5s both; }
+@keyframes boingCombo {
+  0% { opacity: 0; transform: scale3d(.3,.3,.3); }
+  3%, 90% { opacity: 1; transform: scale3d(1,1,1); }
+  100% { opacity: 0; transform: scale3d(.3,.3,.3); }
+}
+EOF
+    [[ -n "$SUDO_USER" ]] && chown "$SUDO_USER:$SUDO_USER" "$css"
+    echo "    -> Styles appended"
+}
+
+post_install() {
+    local user_home hypr_dir hypremoji_dir
+    user_home=$(_get_user_home)
+    hypr_dir="$user_home/.config/hypr"
+    hypremoji_dir="$user_home/.config/hypremoji"
+
+    echo "==> Setting up hypremoji..."
+    _ensure_default_files "$hypremoji_dir"
+    _print_integration_hint "$hypr_dir"
     echo ""
-    echo "==> HyprEmoji needs to be configured in Hyprland"
-    echo ""
-    echo "    This will add the following line to:"
-    echo "    $HYPRLAND_CONF"
-    echo ""
-    echo "    source = ~/.config/hypremoji/hypremoji.conf"
-    echo ""
-    echo "    Which includes:"
-    echo "    • Keybind: SUPER + PERIOD to open hypremoji"
-    echo "    • Window rules for floating behavior"
-    echo ""
-    
-    read -p "    Configure automatically? [Y/n]: " response
-    response=${response:-Y}
-    
-    case "$response" in
-        [Yy]* )
-            BACKUP_FILE="${USER_HOME}/.config/hypr/hyprland-backup-$(date +%Y%m%d-%H%M%S).conf"
-            if ! cp "$HYPRLAND_CONF" "$BACKUP_FILE"; then
-                echo "    -> ERROR: Could not create backup"
-                echo "    -> Configuration aborted for safety"
-                return 1
-            fi
-            
-            if [[ -n "$SUDO_USER" ]]; then
-                chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
-            fi
-            echo "    -> Backup created: $BACKUP_FILE"
-            
-            {
-                cat "$HYPRLAND_CONF"
-                echo ""
-                echo "# HyprEmoji config"
-                echo "source = ~/.config/hypremoji/hypremoji.conf"
-            } > "${HYPRLAND_CONF}.tmp"
-            
-            if mv "${HYPRLAND_CONF}.tmp" "$HYPRLAND_CONF"; then
-                if [[ -n "$SUDO_USER" ]]; then
-                    chown "$SUDO_USER:$SUDO_USER" "$HYPRLAND_CONF"
-                fi
-                echo "    -> Configuration added successfully"
-                echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
-            else
-                echo "    -> ERROR: Could not write configuration"
-                echo "    -> Your backup is safe at: $BACKUP_FILE"
-                rm -f "${HYPRLAND_CONF}.tmp"
-                return 1
-            fi
-            ;;
-        * )
-            echo "    -> Skipped automatic configuration"
-            echo "    -> Add these lines manually at the END of your Hyprland config:"
-            echo ""
-            echo "       # HyprEmoji config"
-            echo "       source = ~/.config/hypremoji/hypremoji.conf"
-            ;;
-    esac
-    
-    echo ""
-    echo "==> Installation complete"
-    echo "    Run 'hypremoji' to open the emoji picker"
+    echo "==> Installation complete. Run 'hypremoji' to open the picker."
 }
 
 post_upgrade() {
-    echo "==> Upgrading hypremoji to v1.2..."
+    local new_ver="$1" old_ver="$2"
+    local user_home hypr_dir hypremoji_dir
+    user_home=$(_get_user_home)
+    hypr_dir="$user_home/.config/hypr"
+    hypremoji_dir="$user_home/.config/hypremoji"
 
-    get_user_home() {
-        if [[ -n "$SUDO_USER" ]]; then
-            echo "/home/$SUDO_USER"
-        else
-            echo "$HOME"
-        fi
-    }
-
-    USER_HOME=$(get_user_home)
-    HYPREMOJI_DIR="$USER_HOME/.config/hypremoji"
-    HYPREMOJI_CONF="$HYPREMOJI_DIR/hypremoji.conf"
-    OLD_PASTE_CONFIG="$HYPREMOJI_DIR/paste_config.json"
-    NEW_CONFIG="$HYPREMOJI_DIR/config.json"
-    STYLE_CSS="$HYPREMOJI_DIR/style.css"
-
-    # Migrar paste_config.json → config.json
-    if [[ -f "$OLD_PASTE_CONFIG" ]] && [[ ! -f "$NEW_CONFIG" ]]; then
-        echo "    -> Migrating paste_config.json to config.json"
-        
-        # Verificar si ya tiene current_pin_mode
-        if grep -q '"current_pin_mode"' "$OLD_PASTE_CONFIG"; then
-            # Ya lo tiene, solo renombrar
-            mv "$OLD_PASTE_CONFIG" "$NEW_CONFIG"
-        else
-            # Agregar el campo usando sed
-            sed '$ s/}$/,\n  "current_pin_mode": "cursor_down"\n}/' \
-                "$OLD_PASTE_CONFIG" > "$NEW_CONFIG"
-            rm "$OLD_PASTE_CONFIG"
-            echo "       -> Added current_pin_mode: cursor_down"
-        fi
-        
-        if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$NEW_CONFIG"
-        fi
-    fi
-
-    # Si no existe ninguno, crear desde cero
-    if [[ ! -f "$NEW_CONFIG" ]]; then
-        cp /usr/share/hypremoji/config.json "$NEW_CONFIG"
-        if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$NEW_CONFIG"
-        fi
-        echo "    -> Created config.json"
-    fi
-
-    if [[ -f "$STYLE_CSS" ]]; then
-        # Verificar si ya tiene los estilos v1.2
-        if ! grep -q "New styles for v1.2 components" "$STYLE_CSS"; then
-            echo "    -> Adding v1.2 styles to style.css"
-            
-            cat >> "$STYLE_CSS" << 'EOF'
-
-
-/* New styles for v1.2 components */
-/* You can integrate these styles into your custom theme */
-
-:root{
-  --error: #c41313;
-}
-
-.generic-btn{
-  color: var(--primary-col);
-  -gtk-icon-size: 24px; 
-}
-
-.toast-container {
-  background-color: var(--btn-list-col);
-  border-radius: 10px;
-  padding: 5px 15px;
-  margin: 0 20px;
-  margin-bottom: 20px;
-  border: 1px solid var(--primary-col);
-  
-  transition: all 0.3s ease-in-out;
-  transform: scale(0.0000000001);
-}
-
-.toast-container.error {
-  border: 1px solid var(--error);
-}
-
-.toast-label {
-  color: white;
-  font-weight: 700;
-}
-
-.show-toast {
-  transform: scale(1);
-
-  animation-name: boingCombo;
-  animation-duration: 5s;
-  animation-fill-mode: both;
-}
-
-@keyframes boingCombo {
-  0% {
-    opacity: 0;
-    transform: scale3d(.3,.3,.3);
-  }
-
-  0.6% {
-    transform: scale3d(1.1,1.1,1.1);
-  }
-
-  1.2% {
-    transform: scale3d(.9,.9,.9);
-  }
-
-  1.8% {
-    opacity: 1;
-    transform: scale3d(1.03,1.03,1.03);
-  }
-
-  2.4% {
-    transform: scale3d(.97,.97,.97);
-  }
-
-  3% {
-    opacity: 1;
-    transform: scale3d(1,1,1);
-  }
-
-  90% {
-    opacity: 1;
-    transform: scale3d(1,1,1);
-  }
-
-  92% {
-    transform: scale3d(.9,.9,.9);
-  }
-
-  95%, 95.5% {
-    opacity: 1;
-    transform: scale3d(1.1,1.1,1.1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale3d(.3,.3,.3);
-  }
-}
-EOF
-            
-            if [[ -n "$SUDO_USER" ]]; then
-                chown "$SUDO_USER:$SUDO_USER" "$STYLE_CSS"
-            fi
-            echo "       -> Styles added successfully"
-        else
-            echo "    -> v1.2 styles already present, skipping"
-        fi
-    else
-        echo "    -> Warning: style.css not found at $STYLE_CSS"
-        echo "       Run hypremoji once to generate default styles"
-    fi
-    
-    echo ""
-    echo "==> Upgrade complete to v1.2"
-    echo "    • New: Toast notifications"
-    echo "    • New: Pin mode toggle with refresh button"
-    echo "    • Updated: config.json (renamed from paste_config.json)"
-    echo "    • Updated: 4 new/updated SVG icons"
-    echo ""
-    echo "    Note: New styles added to the end of your style.css"
-    echo "    Your custom theme remains intact!"
+    echo "==> Upgrading hypremoji: $old_ver -> $new_ver"
+    _ensure_default_files "$hypremoji_dir"
+    _print_integration_hint "$hypr_dir"
+    _append_style_v1_2 "$hypremoji_dir/style.css"
+    echo "==> Upgrade complete."
 }
