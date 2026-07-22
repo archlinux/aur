@@ -1,0 +1,21 @@
+pkgbase = genera-fonts
+	pkgdesc = Unicode-encoded Symbolics Genera 8.5 bitmap fonts
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/htayj/genera-fonts
+	arch = any
+	license = BSD-3-Clause
+	license = LicenseRef-Typeface-as-Typeface
+	checkdepends = python-fonttools
+	makedepends = git
+	makedepends = python
+	makedepends = xorg-fonttosfnt
+	options = !strip
+	source = genera-fonts::git+https://github.com/htayj/genera-fonts.git#commit=30625ea84506a18ab63028f4ce50a7248ccadf97
+	sha256sums = c28e93765e77b4605ed8324b0c3fdcaaed1015e4c748a8c509531d2d4937ce34
+
+pkgname = genera-fonts-latin
+	pkgdesc = Unicode Symbolics Genera bitmap fonts containing Latin letters
+
+pkgname = genera-fonts-symbols
+	pkgdesc = Unicode Symbolics Genera specialty bitmap fonts

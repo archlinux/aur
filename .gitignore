@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/genera-fonts/
+/*.pkg.tar.*
+/*.src.tar.*
