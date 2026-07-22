@@ -1,0 +1,14 @@
+pkgbase = hunspell-su
+	pkgdesc = Sundanese spell-checking dictionary for Hunspell
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/almamang/hunspell-su
+	arch = any
+	license = MPL2
+	license = GPL2
+	license = LGPL2.1
+	depends = hunspell
+	source = hunspell-su-1.0.0.tar.gz::https://github.com/almamang/hunspell-su/archive/v1.0.0.tar.gz
+	sha256sums = 28bf1bb527fec65fdd68283d071dd62f01a8b8f083726d38875cdf5f0a3d0cad
+
+pkgname = hunspell-su
