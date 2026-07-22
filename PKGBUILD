@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=modbustools-git
-pkgver=0.5.0.r1.g4d0a740
-pkgrel=5
+pkgver=0.5.0.r3.gfe10734
+pkgrel=1
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
 url="https://github.com/serhmarch/ModbusTools"
@@ -11,7 +11,6 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
     libgcc
     libstdc++
     hicolor-icon-theme
@@ -63,7 +62,6 @@ build() {
     cmake -S . \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=OFF \
-        -Wdeprecated-declarations \
         -Wno-dev \
         -Bbuild \
         -GNinja
