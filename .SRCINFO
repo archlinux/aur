@@ -1,0 +1,19 @@
+pkgbase = marker-cli-git
+	pkgdesc = Convert PDFs to Markdown from the terminal using MistralAI OCR (git)
+	pkgver = 0.2.0.r1.gb2ea1fe
+	pkgrel = 1
+	url = https://github.com/L3-N0X/marker-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = gnome-keyring: Secret Service backend for storing the API key
+	optdepends = kwallet: Secret Service backend for storing the API key
+	provides = marker-cli
+	conflicts = marker-cli
+	source = marker-cli::git+https://github.com/L3-N0X/marker-cli.git
+	sha256sums = SKIP
+
+pkgname = marker-cli-git
