@@ -1,7 +1,7 @@
 pkgname=muote
 pkgver=0.3.0
 _wikiquotefetcherver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical settings UI for Muote"
 arch=('x86_64')
 url="https://github.com/efebaykaraa/muote"
@@ -14,6 +14,7 @@ depends=(
   'cairo'
   'glib2'
   'hicolor-icon-theme'
+  'wikiquote-fetcher>=1.0.1-3'
 )
 makedepends=('cargo')
 optdepends=('desktop-file-utils: update desktop entry cache during install hooks')

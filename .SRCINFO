@@ -1,7 +1,7 @@
 pkgbase = muote
 	pkgdesc = Graphical settings UI for Muote
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/efebaykaraa/muote
 	install = muote.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = muote
 	depends = cairo
 	depends = glib2
 	depends = hicolor-icon-theme
+	depends = wikiquote-fetcher>=1.0.1-3
 	optdepends = desktop-file-utils: update desktop entry cache during install hooks
 	options = !lto
 	source = muote-0.3.0.tar.gz::https://github.com/efebaykaraa/muote/archive/refs/tags/v0.3.0.tar.gz
