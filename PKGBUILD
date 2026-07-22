@@ -3,7 +3,7 @@
 # other channel. Version + checksums are bumped automatically by the
 # publish-aur job in the repo's release workflow (updpkgsums).
 pkgname=agent-console-bin
-pkgver=0.62.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="Minimalist AI-native console for directing coding agents inside a repository"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('agent-console')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/Agent.Console_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/cyl-castillo/agent-console/v$pkgver/LICENSE")
-sha256sums=('b676deac810e6ce7a4c969fa295778f8d7e5f5aef765de8f777b5dbc5336e04a'
+sha256sums=('655c62318010792837fcf8429edaffbbe6296e4386df8b59395c076848b06813'
             'bdf1d8fe99335432f1cf4e9bf20da2795f3bdb11f72f84e2a2edb5037664ad8e')
 
 package() {
