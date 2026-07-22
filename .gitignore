@@ -1,0 +1,5 @@
+# makepkg
+dupriman/
+pkg/
+src/
+*.tar.zst

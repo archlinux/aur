@@ -1,0 +1,21 @@
+post_install() {
+  # Register CUPS virtual printer, create state dirs, enable prompt daemon
+  dupriman install --activate-only
+  cat <<'EOF'
+==> The prompt daemon has been enabled globally. It will start on next login,
+    or start it now for the current session:
+      systemctl --user start dupriman-prompt
+==> When printing, select "DupriMan-Duplex" and set the duplex option.
+==> By default jobs are saved as PDF (test mode). For real printing, edit
+    /etc/dupriman/config.toml and set printer.real to your CUPS queue name.
+==> Self-check: dupriman test
+EOF
+}
+
+post_upgrade() {
+  dupriman install --activate-only
+}
+
+pre_remove() {
+  dupriman uninstall --purge 2>/dev/null || true
+}
