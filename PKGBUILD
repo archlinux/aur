@@ -1,24 +1,29 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=greetd-tuigreety-git
-pkgver=0.11.1.r0.g0000000
+pkgver=0.11.1.r1.g42b3aae
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (development version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://github.com/Tobiichi-Origuchi/tuigreety'
 license=('GPL-3.0-or-later')
-provides=('greetd-greeter' 'greetd-tuigreety' 'tuigreety')
+provides=('greetd-greeter' "greetd-tuigreety=$pkgver" "tuigreety=$pkgver")
 conflicts=('greetd-tuigreet' 'greetd-tuigreety' 'greetd-tuigreety-bin' 'tuigreety' 'tuigreety-bin' 'tuigreety-git')
 makedepends=('git' 'rust' 'scdoc')
 depends=('glibc' 'libgcc' 'greetd')
 backup=('etc/tuigreet/config.toml')
-source=('git+https://github.com/Tobiichi-Origuchi/tuigreety.git' 'tuigreet.conf')
+source=('tuigreety::git+https://github.com/Tobiichi-Origuchi/tuigreety.git#branch=master' 'tuigreet.conf')
 sha256sums=('SKIP'
             'fdfdff4cac513d00bf5babb3842934e1dc7887e5ef97e31cb2e1c91b45945651')
 
 pkgver() {
   cd tuigreety
-  git describe --long --tags --match '[0-9]*.[0-9]*.[0-9]*' --always | sed 's/^v//;s/-/.r/;s/-/./'
+  (
+    set -o pipefail
+    git describe --long --tags --abbrev=7 --match '[0-9]*' --match 'v[0-9]*' 2>/dev/null \
+      | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+      || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {
