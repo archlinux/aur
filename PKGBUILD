@@ -2,10 +2,9 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Syboxez Blank <@Syboxez:matrix.org>
 
-_gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname-git"
-pkgver=4.23.2.r30.g9cf50da
+pkgver=4.23.2.r198.g769140f
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -76,7 +75,7 @@ makedepends=(
 
 options=('!lto')
 
-_pkgsrc="$_gitname"
+_pkgsrc="gtk"
 source=(
   "$_pkgsrc"::"git+https://gitlab.gnome.org/GNOME/gtk.git"
   gtk-update-icon-cache.{hook,script}
@@ -155,10 +154,10 @@ END
 
   cd "$pkgdir"
 
-  _pick demo usr/bin/gtk4-{demo,demo-application,node-editor,print-editor,widget-factory,icon-editor}
-  _pick demo usr/share/applications/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor,Shaper}.desktop
+  _pick demo usr/bin/gtk4-{demo,demo-application,node-editor,print-editor,widget-factory}
+  _pick demo usr/share/applications/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.desktop
   _pick demo usr/share/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
-  _pick demo usr/share/icons/hicolor/*/apps/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor,Shaper}[-.]*
+  _pick demo usr/share/icons/hicolor/*/apps/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}[-.]*
   _pick demo usr/share/man/man1/gtk4-{demo,demo-application,node-editor,widget-factory}.1
   _pick demo usr/share/metainfo/org.gtk.{Demo4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.appdata.xml
 

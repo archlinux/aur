@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit
-	pkgver = 4.23.2.r30.g9cf50da
+	pkgver = 4.23.2.r198.g769140f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gtk
 	arch = x86_64
