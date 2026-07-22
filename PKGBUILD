@@ -1,6 +1,6 @@
 # Maintainer: Retrovibed <engineering@retrovibe.space>
 pkgname=retrovibed
-pkgver=0.0.1784745066000
+pkgver=0.0.1784749430000
 pkgrel=1
 pkgdesc='Personal digital archiving and distribution platform with a built-in torrent client, media player, and at-cost cloud storage'
 url='https://retrovibe.space'
@@ -29,7 +29,8 @@ build() {
   # build neurals
   CARGO_TARGET_DIR="native" cargo build --manifest-path "${srcdir}/${pkgname}/neurals/Cargo.toml" --release
   cp native/release/libpredicttext.{a,so} "${srcdir}/.dist/usr/lib/retrovibed/"
-  
+
+  CGO_LDFLAGS="-L${srcdir}/.dist/usr/lib/retrovibed -Wl,-rpath,/usr/lib/retrovibed" \
   GOBIN="${srcdir}/.dist/usr/bin" go build -C "${srcdir}/${pkgname}/shallows" \
     -buildmode=pie -trimpath -tags "duckdb_use_lib,retrovibed,neural" -buildvcs=false \
     -o "${srcdir}/.dist/usr/bin" ./cmd/retrovibe/...
