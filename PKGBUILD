@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=moonstone
-pkgver=0.3.30
+pkgver=0.3.31
 pkgrel=1
 pkgdesc='Modern, deterministic Lua project environments and package manager written in Zig'
 arch=(x86_64 aarch64 riscv64)
@@ -17,15 +17,11 @@ conflicts=(moon
            moonscript)
 _archive="$pkgname-$pkgver"
 # _zigdeps=(https://github.com/sam701/zig-toml/archive/master.tar.gz)
-source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
-        "$pkgname-triples.patch")
-sha256sums=('d3fb6f71d9575086d311bce84fa0169ce167a03b13566e5ab01ae95ac144a3b6'
-            '2345e3fce271e813f901b63fb52700ebaedde0b176c98dd12cf1ccfd5e60c2cc')
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('506ccf20dec41215cefbab5fff6300134c949fe899cb7203fd23ea02cc3b845f')
 
 prepare() {
 	cd "$_archive"
-	# patch -p1 -i "../$pkgname-triples.patch"
-	# sed -i -e "/const target_triples =/,/};/c\    const target_triples = [_][]const u8{ \"$CARCH-linux-gnu\", };" build.zig
 	# zig fetch --debug-hash --global-cache-dir "$_global_cache"
 }
 
