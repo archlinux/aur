@@ -39,4 +39,10 @@ package() {
   if [ -f "$pkgdir/usr/share/applications/memory-card.desktop" ]; then
     sed -i 's/^Categories=$/Categories=AudioVideo;Audio;Player;/' "$pkgdir/usr/share/applications/memory-card.desktop"
   fi
+
+  # Copy icon to pixmaps as a bulletproof fallback for custom icon themes
+  if [ -f "$pkgdir/usr/share/icons/hicolor/512x512/apps/memory-card.png" ]; then
+    mkdir -p "$pkgdir/usr/share/pixmaps"
+    cp "$pkgdir/usr/share/icons/hicolor/512x512/apps/memory-card.png" "$pkgdir/usr/share/pixmaps/memory-card.png"
+  fi
 }
