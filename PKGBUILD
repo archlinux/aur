@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/autotools-language-server/blob/main/.github/workflows/main.yml
 pkgname=autotools-language-server
 _name=$pkgname
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="autotools language server"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-lsp-tree-sitter python-tree-sitter-autoconf)
 makedepends=(uv python-installer)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('f900d26e1bce034304905ec41b709415a38785e4a41ab0bbb170454ff3e0093a')
+sha256sums=('c1ab9d792561912a4f1d10ff7308f494237f960523fff8eafc2bbf78da958a3b')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
