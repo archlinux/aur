@@ -1,7 +1,7 @@
 # Maintainer: William Canin <hello.williamcanin@gmail.com>
 
 pkgname=tildr-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Manage HOME files and directories with symlinks and Git."
 arch=('x86_64')
