@@ -1,6 +1,6 @@
 pkgbase = cosmic-sound-theme-git
 	pkgdesc = System76 COSMIC Sound Theme
-	pkgver = r8.7aabe44
+	pkgver = 1.4.0.r0.g7aabe44
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-sound-theme
 	arch = any
