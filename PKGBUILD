@@ -1,7 +1,7 @@
 # Maintainer: goodroot <hyprwhspr@goodroot.ca>
 
 pkgname=hyprwhspr
-pkgver=1.38.2
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="System-wide speech-to-text for Linux desktops"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/goodroot/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2d61d7b2be73512eb984c621157c323da5dd0b549363a7299eea06e02160042')
+sha256sums=('e49adfad193cde79d0b597ba20996e56f961404398bac1323bb5e8326e915e69')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
