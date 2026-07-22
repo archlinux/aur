@@ -2,7 +2,7 @@
 
 pkgname=ddsh-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland windows"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland"
