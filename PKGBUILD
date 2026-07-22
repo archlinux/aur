@@ -44,7 +44,7 @@ package() {
   "./${_pkgreal}-${pkgver}-x86_64.AppImage" --appimage-extract
 
   # Install main app bundle to /opt/bilibili
-  install -dm755 "${pkgdir}/opt/bilibili"
+  install -dm755 "${pkgdir}/opt/bilibili" "${pkgdir}/usr/bin"
   cp -r squashfs-root/* "${pkgdir}/opt/bilibili/"
 
   # Install icons to XDG standard paths
