@@ -4,11 +4,11 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-git"
-pkgver=stackablectl.1.3.0.r0.g944fa47
+pkgver=stackablectl.1.5.0.r0.ge457d67
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
-url="https://github.com/stackabletech/stackable-cockpit/"
+url="https://github.com/stackabletech/stackablectl/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('go' 'cargo' 'git')
@@ -16,7 +16,7 @@ makedepends=('go' 'cargo' 'git')
 # Needed due to https://github.com/briansmith/ring/issues/1444 & https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 
-source=("$pkgname::git+https://github.com/stackabletech/stackable-cockpit.git")
+source=("$pkgname::git+https://github.com/stackabletech/stackablectl.git")
 b2sums=('SKIP')
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-bin)
