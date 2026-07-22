@@ -2,7 +2,7 @@
 
 pkgname=3dmmex
 _pkgname=3DMMEx
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A classic 3D Movie Maker experience for modern systems'
 arch=(x86_64)
@@ -36,9 +36,9 @@ source=(
     fluidsynth.patch
     3dmmex.desktop
 )
-sha512sums=('d70faa308c009ace350e25fe57b05d9eea42eec92629f9fb09248b57faf5efea25dd0ed93de07fc41e114d0533cb040855dbaa7bd67d9f9516b2e395ec19108c'
-            'b10af6d99e5083f9bf6986e3b65f502372b1ccfc68d87f931eeda4c3b623f1a039434a2de5bad92b8f7cf6295729bc836a75f4712ef1ebd8e8cfe80ea40625b8'
-            '28cb710e08cf92ba5991c83c29c4feea412060cabee51de4a1d59b9a6480711014a12a7877578da9bedd729a5d953aa230f0869ded2962a45e07d984988dd5b8'
+sha512sums=('79de627d771a96e42b1c9e3326ac123b15486faeb8b34fd1635c9f93ea437dc8c07e76de86242078055d405e9248e33132c1314a9982d3578055d7b8249e5dfa'
+            '95f0d388bc3bf23f96de3c3b7c8c229750f41d271e11d169742b5c199f0a2e3749389f6e1ca7d0148827d19db066575dd9c366d31d0fee3253fab487fddbe382'
+            'e5d29a416f37212eefc9e4b64a8bcac044d557c283356467db6201363c28c5c8aa5f0bfd7161b8dee9fcc4086c87b01a003edce4406e7a2df93bb5cf1814ad3d'
             'a4082115e6bdc98771c3e5611442561a38194e216c95338f50069999289d4d805812ed5c97889bde8975385637c14021982719a2c4763973ceccc07e3acf9660')
 
 prepare() {
@@ -53,7 +53,7 @@ build() {
         -W no-dev
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr/share/3dmmex
-        --preset "sdl-${arch}-gcc-linux-release"
+        --preset "sdl-relwithdebinfo"
     )
     cmake "${cmake_options[@]}"
     cmake --build build

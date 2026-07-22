@@ -1,82 +1,8 @@
 diff --git a/kauai/src/midistreamfluidsynth.cpp b/kauai/src/midistreamfluidsynth.cpp
-index a66df9f..df74d93 100644
+index 2cebd9c..7c27d41 100644
 --- a/kauai/src/midistreamfluidsynth.cpp
 +++ b/kauai/src/midistreamfluidsynth.cpp
-@@ -31,6 +31,19 @@ FMS::FMS(PFNMIDI pfn, uintptr_t luUser)
- {
-     _pfnCall = pfn;
-     _luUser = luUser;
-+    _fOpen = fFalse;
-+    _flset = pvNil;
-+    _flsynth = pvNil;
-+    _flframecount = 0;
-+    _pastream = pvNil;
-+    _fChanged = fFalse;
-+    _fStop = fFalse;
-+    _fDone = fFalse;
-+    _imsbCur = 0;
-+    _pglmsb = pvNil;
-+    _pmev = pvNil;
-+    _pmevLim = pvNil;
-+    _tsCur = 0;
-     _vlmBase = kvlmFull;
- }
- 
-@@ -39,8 +52,6 @@ FMS::FMS(PFNMIDI pfn, uintptr_t luUser)
- ***************************************************************************/
- FMS::~FMS(void)
- {
--    int is;
--
-     if (_hth.joinable())
-     {
-         _fDone = fTrue;
-@@ -48,24 +59,38 @@ FMS::~FMS(void)
-         _hth.join();
-     }
- 
--    _mutx.Enter();
--
-     if (_hthr.joinable())
-     {
-         _hthr.join();
-     }
- 
-+    _mutx.Enter();
-+
-     Assert(_fOpen == fFalse, "Still open");
--    Assert(_pglmsb->IvMac() == 0, "Still have some buffers");
--    _pastream->FStop();
--    ReleasePpo(&_pastream);
--    ReleasePpo(&_pglmsb);
-+
-+    if (_pastream != pvNil)
-+    {
-+        _pastream->FStop();
-+        ReleasePpo(&_pastream);
-+    }
-+
-+    if (_pglmsb != pvNil)
-+    {
-+        Assert(_pglmsb->IvMac() == 0, "Still have some buffers");
-+        ReleasePpo(&_pglmsb);
-+    }
- 
-     if (_flsynth != pvNil)
-+    {
-         delete_fluid_synth(_flsynth);
-+        _flsynth = pvNil;
-+    }
- 
-     if (_flset != pvNil)
-+    {
-         delete_fluid_settings(_flset);
-+        _flset = pvNil;
-+    }
- 
-     _fOpen = fFalse;
- 
-@@ -147,8 +172,12 @@ bool FMS::_FInit(void)
+@@ -169,8 +169,12 @@ bool FMS::_FInit(void)
          ret = fluid_synth_sfload(_flsynth, stnSoundFontPath.Psz(), true);
          if (ret == FLUID_FAILED)
          {
@@ -89,22 +15,5 @@ index a66df9f..df74d93 100644
 +                goto LFail;
 +            }
          }
-     }
- 
-@@ -185,10 +214,16 @@ bool FMS::_FInit(void)
- 
- LFail:
-     if (_flsynth != pvNil)
-+    {
-         delete_fluid_synth(_flsynth);
-+        _flsynth = pvNil;
-+    }
- 
-     if (_flset != pvNil)
-+    {
-         delete_fluid_settings(_flset);
-+        _flset = pvNil;
-+    }
- 
-     _mutx.Leave();
- 
+    }
+
