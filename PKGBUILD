@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=notepad---git
-pkgver=3.7.3.r1.g7d491cc
+pkgver=3.8.2.r2.g91105f6
 pkgrel=1
 pkgdesc="Notepad-- 是使用C++编写的轻量级文本编辑器, 简称ndd, 可以支持Window/Mac/Linux操作系统平台。"
 arch=($CARCH)
@@ -11,16 +11,19 @@ provides=(${pkgname%-git} notepadplugin)
 conflicts=(${pkgname%-git})
 _qt=qt5
 depends=(
-    glibc
-    gcc-libs
     hicolor-icon-theme
-    $_qt-base)
-makedepends=(cmake
+    libgcc
+    libstdc++
+    $_qt-base
+)
+makedepends=(
+    cmake
     ninja
     git
     $_qt-tools
     $_qt-xmlpatterns
-    qscintilla-$_qt)
+    qscintilla-$_qt
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
