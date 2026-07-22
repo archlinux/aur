@@ -1,6 +1,6 @@
 pkgbase = enneagram
 	pkgdesc = An exploration into the enneagram.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/sigurd4/enneagram
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = enneagram
 	makedepends = base-devel
 	provides = enneagram
 	conflicts = enneagram-git
-	source = enneagram-1.2.1.tar.gz::https://static.crates.io/crates/enneagram/enneagram-1.2.1.crate
-	sha256sums = 8cb81533b99405ad82683c1f5e870901e38c4b2ff67eb3dc78f9e878209661bc
+	source = enneagram-1.2.2.tar.gz::https://static.crates.io/crates/enneagram/enneagram-1.2.2.crate
+	sha256sums = 4231678a63fef21a3adef5aeae9360c830b81fb95b9b1c5e868e9c4b46dd2164
 
 pkgname = enneagram
