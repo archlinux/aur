@@ -1,16 +1,16 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=6.1.4.r1.gf5e40a0
+pkgver=6.1.9.r0.gdd90c24
 pkgrel=1
 pkgdesc="A tool for creating and managing a virtual network implemented in C++"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
-source=("$pkgname::git+https://github.com/lanthora/candy.git" )
+source=("$pkgname::git+https://github.com/lanthora/candy.git#branch=master" )
 sha256sums=('SKIP')
-makedepends=('cmake' 'ninja' 'pkgconf' 'gcc' 'git' 'nlohmann-json')
-depends=('fmt' 'glibc' 'gcc-libs' 'openssl' 'spdlog' 'poco')
+makedepends=('cmake' 'ninja' 'pkgconf' 'gcc' 'git')
+depends=('glibc' 'gcc-libs' 'openssl' 'poco')
 conflicts=('candy')
 backup=('etc/candy.cfg')
 
