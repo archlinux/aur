@@ -27,7 +27,7 @@ sha256sums=('4794d11f18a96101d1e50eb55ccb7518435a9d0d9afa32a1ce250e5ef6aef488')
 package() {
   tar xzf "$srcdir/qssh-x86_64-linux.tar.gz" -C "$srcdir"
   install -dm755 "$pkgdir/usr/bin"
-  install -m755 "$srcdir/qssh/qssh" "$pkgdir/usr/bin/qssh"
-  install -m755 "$srcdir/qssh/qssh-uploader" "$pkgdir/usr/bin/qssh-uploader"
+  install -m755 "$srcdir/qssh-x86_64-linux/qssh" "$pkgdir/usr/bin/qssh"
+  install -m755 "$srcdir/qssh-x86_64-linux/qssh-uploader" "$pkgdir/usr/bin/qssh-uploader"
 }
 
