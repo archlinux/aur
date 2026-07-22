@@ -1,0 +1,17 @@
+pkgbase = winetop-bin
+	pkgdesc = htop for Wine prefixes — monitor and kill Wine/Proton sessions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/akovari/winetop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = winetop
+	conflicts = winetop
+	options = !strip
+	source_x86_64 = winetop-bin-0.1.2-x86_64.tar.xz::https://github.com/akovari/winetop/releases/download/v0.1.2/winetop-v0.1.2-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 254ec262e94e9456768a7f098ecd1a3168136e3c9dcb05b63b7384c20a279154
+	source_aarch64 = winetop-bin-0.1.2-aarch64.tar.xz::https://github.com/akovari/winetop/releases/download/v0.1.2/winetop-v0.1.2-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 54e064f14a7d6ca0583e669f7a70734ffbb6421713ba5f7ab41352d486489a17
+
+pkgname = winetop-bin
