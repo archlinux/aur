@@ -1,0 +1,30 @@
+# Maintainer: Dae Euhwa <daedaevibin@ik.me>
+
+pkgname=ddsc-bin
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows"
+arch=('x86_64')
+url="https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland"
+license=('MIT')
+depends=('glibc')
+provides=('ddsc')
+conflicts=('ddsc' 'ddsc-git')
+source=("$url/releases/download/v$pkgver/ddsc"
+        "$url/raw/v$pkgver/scripts/discord-monitor.sh"
+        "$url/raw/v$pkgver/scripts/discord-monitor-cosmic.service"
+        "$url/raw/v$pkgver/cosmic/autostart/ddsc.desktop"
+        "$url/raw/v$pkgver/LICENSE")
+b2sums=('1ea206fa3cd79b2e2d5d8988a89e0ce51a213b89796ac2cd042604abae571bba550486468cc0d8e76b52366f5600cdde2d07c3b7bee98ea44f54c46f3284e409'
+        '889e967a5c1385090528898d2eb0d7288ede982ca9a0a81b1e752673521e6811639add6d7e1d2b6bb782bf89d4043beec0f193ef2694d201c6e1a7e503ade045'
+        '259ada6a1cc30822563da55dc69abee6a5e4d6d13f794e1fea4cdfec3df886645b2de6806a6faaf27384f2b780a4f313f5ff56d23d9db5637150410f4e113175'
+        'cea3a4b42cb07c90e34e7d542a391af776c67c442cd5c39d6c800e8b39aca360e2e8a1ddcdf153574692703d66c09cba911b86c568bdfab79b1962af5241f81c'
+        '11c850dfc0f33a4050e87a982ffacaa90f175c442a77fff59ea7c7859807676552cc8d981c9c97537377782b6538a9fa6c0ca7ddffce77dfd2d98824e62f483b')
+
+package() {
+    install -Dm755 "$srcdir/ddsc" -t "$pkgdir/usr/bin/"
+    install -Dm755 "$srcdir/discord-monitor.sh" "$pkgdir/usr/bin/discord-monitor-ddsc.sh"
+    install -Dm644 "$srcdir/discord-monitor-cosmic.service" -t "$pkgdir/usr/lib/systemd/user/"
+    install -Dm644 "$srcdir/ddsc.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}

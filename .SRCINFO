@@ -1,0 +1,23 @@
+pkgbase = ddsc-bin
+	pkgdesc = Dynamic Discord Rich Presence based on active COSMIC windows
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ddsc
+	conflicts = ddsc
+	conflicts = ddsc-git
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/releases/download/v1.3.0/ddsc
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/raw/v1.3.0/scripts/discord-monitor.sh
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/raw/v1.3.0/scripts/discord-monitor-cosmic.service
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/raw/v1.3.0/cosmic/autostart/ddsc.desktop
+	source = https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland/raw/v1.3.0/LICENSE
+	b2sums = 1ea206fa3cd79b2e2d5d8988a89e0ce51a213b89796ac2cd042604abae571bba550486468cc0d8e76b52366f5600cdde2d07c3b7bee98ea44f54c46f3284e409
+	b2sums = 889e967a5c1385090528898d2eb0d7288ede982ca9a0a81b1e752673521e6811639add6d7e1d2b6bb782bf89d4043beec0f193ef2694d201c6e1a7e503ade045
+	b2sums = 259ada6a1cc30822563da55dc69abee6a5e4d6d13f794e1fea4cdfec3df886645b2de6806a6faaf27384f2b780a4f313f5ff56d23d9db5637150410f4e113175
+	b2sums = cea3a4b42cb07c90e34e7d542a391af776c67c442cd5c39d6c800e8b39aca360e2e8a1ddcdf153574692703d66c09cba911b86c568bdfab79b1962af5241f81c
+	b2sums = 11c850dfc0f33a4050e87a982ffacaa90f175c442a77fff59ea7c7859807676552cc8d981c9c97537377782b6538a9fa6c0ca7ddffce77dfd2d98824e62f483b
+
+pkgname = ddsc-bin
