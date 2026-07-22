@@ -8,6 +8,7 @@ url='https://github.com/tontinton/maki'
 license=('MIT')
 makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'zlib')
+optdepends=('rtk: for reduced token consumption')
 conflicts=('maki-bin')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('84ece23bd235d3e5cc9e8e56d0450febc19d2c75c0a44adbf6aa22345904188a')
