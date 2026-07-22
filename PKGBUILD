@@ -2,7 +2,7 @@
 # Contributor: hoverth
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
-pkgver=2026.06.05_11
+pkgver=2026.07.16_10
 _tag="v${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
@@ -46,7 +46,7 @@ _source_url="https://codeberg.org/${pkgname}/${pkgname}.git"
 source=("${pkgname}.desktop"
 	relax-protobuf-version.patch)
 sha256sums=('5f561d2c17862076b75d6258b408e6c9ddf23c50cbe6d72007a52fe467efa5a4'
-            'cc620aac73157f0f16f480c6956e40edcafa3884d9fb96e17d08d2d02da39a47')
+            'bd485ce43009369633d4ecf99e6b3a8a68eff00110144d5497d8c65c4609bd65')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
 	avail=$(df -P -B 1048576 ${srcdir} | awk 'NR>1 {print $4}')
@@ -64,6 +64,7 @@ prepare() {
 			;;
 		esac
 	fi
+	# echo -e "git clone --depth=1 --single-branch -b \"$_tag\" --filter=blob:limit=128k $src_url $pkgname"
 	if [ ! -d ${pkgname} ]; then
 		git clone --depth=1 --single-branch -b "$_tag" --filter=blob:limit=128k \
 			$src_url $pkgname

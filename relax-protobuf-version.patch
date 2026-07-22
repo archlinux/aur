@@ -1,19 +1,16 @@
-diff -ura src.orig/CMakeLists.txt src.new/CMakeLists.txt
---- src.orig/CMakeLists.txt	2026-04-16 19:37:06.833665110 +0800
-+++ src.new/CMakeLists.txt	2026-04-16 19:45:37.327516043 +0800
-@@ -215,13 +215,9 @@
- )
+diff -ura src/comaps/CMakeLists.txt src.new/comaps/CMakeLists.txt
+--- a/CMakeLists.txt	2026-07-22 10:34:40.126913827 +0800
++++ b/CMakeLists.txt	2026-07-22 11:51:37.980965182 +0800
+@@ -227,13 +227,9 @@
  
  if(PROTOBUF_CHECK EQUAL 0)
 -    if(PROTOBUF_VERSION VERSION_LESS "3.20.0" OR PROTOBUF_VERSION VERSION_GREATER_EQUAL "4.0.0")
--        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version (>=3.20, <4.0) is required")
+-        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version (>=3.20, <4.0) is required. Run ./configure.sh to provision a local .venv with the correct version, or set SKIP_PYTHON_VENV=1 to manage protobuf via your system Python.")
 -    else()
 -        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (>=3.20, <4.0)")
 -    endif()
-+	message(STATUS "Python protobuf ${PROTOBUF_VERSION} found")
++  message(STATUS "Python protobuf ${PROTOBUF_VERSION} found")
  else()
--    message(FATAL_ERROR "Python protobuf not found. Install version (>=3.20, <4.0)")
-+	message(FATAL_ERROR "Python protobuf not found")
+-    message(FATAL_ERROR "Python protobuf not found. Run ./configure.sh to provision a local .venv with the correct version (>=3.20, <4.0), or set SKIP_PYTHON_VENV=1 to manage protobuf via your system Python.")
++  message(FATAL_ERROR "Python protobuf not found")
  endif()
- 
- 

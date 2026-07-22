@@ -1,6 +1,6 @@
 pkgbase = comaps
 	pkgdesc = CoMaps: Offline Hike, Bike, Trails and Navigation
-	pkgver = 2026.06.05_11
+	pkgver = 2026.07.16_10
 	pkgrel = 1
 	url = https://comaps.app
 	arch = x86_64
@@ -40,6 +40,6 @@ pkgbase = comaps
 	source = comaps.desktop
 	source = relax-protobuf-version.patch
 	sha256sums = 5f561d2c17862076b75d6258b408e6c9ddf23c50cbe6d72007a52fe467efa5a4
-	sha256sums = cc620aac73157f0f16f480c6956e40edcafa3884d9fb96e17d08d2d02da39a47
+	sha256sums = bd485ce43009369633d4ecf99e6b3a8a68eff00110144d5497d8c65c4609bd65
 
 pkgname = comaps
