@@ -1,0 +1,5 @@
+[tracy-chroma-bin]
+source = "git"
+git = "https://github.com/gear-genomics/tracy.git"
+include_regex = 'v[0-9.]+'
+prefix = "v"
