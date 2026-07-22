@@ -44,5 +44,6 @@ package() {
     install -Dm755 "target/release/ddsh" -t "$pkgdir/usr/bin/"
     install -Dm755 scripts/discord-monitor.sh "$pkgdir/usr/bin/discord-monitor-ddsh.sh"
     install -Dm644 scripts/discord-monitor-hyprland.service -t "$pkgdir/usr/lib/systemd/user/"
+    install -Dm644 common/src/config/default-config.json "$pkgdir/usr/share/ddsh/config.json"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
