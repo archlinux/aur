@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'zlib')
 optdepends=('rtk: for reduced token consumption')
 conflicts=('maki-bin')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2ecfd922bad235335f1483a56243f70abc868f2261f4a934c6a753a6a06f10fb')
 
 prepare() {
