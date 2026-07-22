@@ -1,0 +1,5 @@
+[gitnibble-bin]
+source = "github"
+github = "programmersd21/gitnibble"
+use_latest_release = true
+prefix = "v"
