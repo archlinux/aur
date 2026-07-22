@@ -1,0 +1,5 @@
+[keyward-bin]
+source = "github"
+github = "gateway-of-last-resort/keyward"
+use_latest_release = true
+prefix = "v"
