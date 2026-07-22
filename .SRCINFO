@@ -2,7 +2,7 @@ pkgbase = dim-caelestia-cli-git
 	pkgdesc = DiM's fork of Caelestia-CLI
 	pkgver = r672.da2b6ba
 	pkgrel = 1
-	url = https://github.com/deeadly137/caelestia-cli
+	url = https://github.com/dim-ghub/caelestia-cli
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
@@ -27,7 +27,7 @@ pkgbase = dim-caelestia-cli-git
 	provides = caelestia-cli
 	conflicts = caelestia-cli
 	conflicts = caelestia-cli-git
-	source = dim-caelestia-cli-git::git+https://github.com/deeadly137/caelestia-cli.git
+	source = dim-caelestia-cli-git::git+https://github.com/dim-ghub/caelestia-cli.git
 	sha256sums = SKIP
 
 pkgname = dim-caelestia-cli-git
