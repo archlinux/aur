@@ -1,7 +1,7 @@
 pkgbase = codex-plus-plus
 	pkgdesc = Codex++ auto-injector bridge for openai-codex-desktop
 	pkgver = 1.2.41
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/BigPizzaV3/CodexPlusPlus
 	install = codex-plus-plus.install

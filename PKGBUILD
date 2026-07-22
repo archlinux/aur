@@ -2,7 +2,7 @@
 
 pkgname=codex-plus-plus
 pkgver=1.2.41
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
