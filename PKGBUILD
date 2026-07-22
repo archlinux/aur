@@ -1,7 +1,7 @@
 # Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
 pkgname=axolotl-launcher-bin
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, cross-platform Minecraft launcher built on the Modrinth ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mystic-Stars/Axolotl"
@@ -11,8 +11,8 @@ conflicts=('axolotl-launcher')
 provides=("axolotl-launcher=${pkgver}")
 source_x86_64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_arm64.deb")
-sha256sums_x86_64=('8c7bcdec3f14c6de59720cbb949e76d1e11b026c741f8b6c6e155b2ebbcf9a47')
-sha256sums_aarch64=('447e55437a201c2fe157f32e7fbf9d008333b0387660cb2009f61d8e139dc869')
+sha256sums_x86_64=('3ba5850ef8a52fa03f1d82d8e215212fde43e8192ee39b23fee2a9599656bfc6')
+sha256sums_aarch64=('0b6ddf14f546cf8d1c02d10a46cf8f28f15043d3309600399c4ac069e13c031b9')
 
 package() {
   cd "${srcdir}"
