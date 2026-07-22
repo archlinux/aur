@@ -7,7 +7,7 @@ pkgbase = omniroute
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=22
-	optdepends = better-sqlite3: SQLite storage for local data
+	optdepends = nodejs-better-sqlite3: SQLite storage for local data
 	options = !strip
 	options = !emptydirs
 	source = https://registry.npmjs.org/omniroute/-/omniroute-3.8.48.tgz
