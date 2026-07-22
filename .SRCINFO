@@ -1,11 +1,12 @@
 pkgbase = retrovibed
 	pkgdesc = Personal digital archiving and distribution platform with a built-in torrent client, media player, and at-cost cloud storage
-	pkgver = 0.0.1784648805000
+	pkgver = 0.0.1784745066000
 	pkgrel = 1
 	url = https://retrovibe.space
 	arch = x86_64
 	license = custom
 	makedepends = go
+	makedepends = rust
 	depends = duckdb
 	depends = ffmpeg
 	backup = etc/retrovibed/config.env
