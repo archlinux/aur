@@ -1,0 +1,16 @@
+pkgbase = python-rfc8785
+	pkgdesc = Pure-Python implementation of RFC 8785 (JSON Canonicalization Scheme)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/trailofbits/rfc8785.py
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rfc8785/rfc8785-0.1.4.tar.gz
+	sha256sums = e545841329fe0eee4f6a3b44e7034343100c12b4ec566dc06ca9735681deb4da
+
+pkgname = python-rfc8785
