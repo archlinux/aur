@@ -5,10 +5,12 @@
 ## options
 : ${_build_sodeps:=false}
 
+: ${_commit:=ff7ff00fb3c4f771fd8caf98bb568837f58f0c0a} # 0.9.14.2.r25
+
 _pkgname='compiz'
 pkgname="$_pkgname"
 pkgver=0.9.14.2
-pkgrel=11
+pkgrel=12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -21,6 +23,7 @@ license=(
 depends=(
   'glibmm'
   'glu'
+  'gtk3'
   'libice'
   'libnotify'
   'libsm'
@@ -37,6 +40,7 @@ makedepends=(
   'boost'
   'cmake'
   'cython'
+  'git'
   'intltool'
   'ninja'
   'python-setuptools'
@@ -73,10 +77,10 @@ conflicts=(
   'simple-ccsm'
 )
 
-_pkgsrc="$_pkgname-${pkgver%%.r*}"
+_pkgsrc="$_pkgname"
 _pkgext="tar.xz"
 source=(
-  "$_pkgsrc.$_pkgext"::"https://launchpad.net/$_pkgname/${pkgver:0:6}/${pkgver%%.r*}/+download/$_pkgsrc.$_pkgext"
+  "$_pkgsrc"::"git+https://git.launchpad.net/compiz#commit=$_commit"
 
   # Reverse Unity specific configuration patches
   "0001-reverse-unity-config.patch"
@@ -92,35 +96,17 @@ source=(
 
   # Don't try to compile gschemas during make install
   "0005-no-compile-gschemas.patch"
-
-  # New upstream patches
-  "0006-Drop-toggle-shaded-since-it-s-no-longer-included-in-.patch"
-  "0007-64-bit-time-t-compat.patch"
-
-  # https://bugs.launchpad.net/compiz/+bug/2060620
-  "1001-fix-crash-in-vertexbuffer.patch"
-
-  # https://bugs.launchpad.net/compiz/+bug/2103951
-  "1002-fix-wrapmode.patch"
 )
 sha256sums=(
-  'cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
-
+  '4acc9a911c9a1e9b30ca1a1af8426d71bab194824bc37b0edb37dd81a45470e0'
   '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
   'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
   '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
   '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
   '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
-  '9b9e92a7174f2255f408d340dcb7b765211777cd92fe9ed17b5888ff13578291'
-  '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
-
-  '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
-  '9d107c0f15462e281d341e8b2e94830ba8f39b87c3cf4b853791537a10b20253'
 )
 
 prepare() {
-  cd "$_pkgsrc"
-
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -128,26 +114,23 @@ prepare() {
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
+      patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
 
-  # adjust declarations
-  sed -E \
-    -e 's&^(destroy_(bare|normal|switcher)_frame)\s?.*;$&\1 (decor_frame_t *frame);&' \
-    -i "gtk/window-decorator/gtk-window-decorator.h"
+  # fix cmake path
+  sed -E -e 's&(/share/cmake)-\S+/&\1/Modules/&' -i "$_pkgsrc/cmake/base.cmake"
 }
 
 build() {
-  export CXXFLAGS+=" -Wno-error=incompatible-pointer-types"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_CXX_STANDARD=17
+    -Wno-author
+
     -DBUILD_GTK=ON
     -DBUILD_METACITY=ON
     -DCOMPIZ_BUILD_TESTING=OFF
@@ -156,7 +139,6 @@ build() {
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
     -DCOMPIZ_PACKAGING_ENABLED=ON
     -DCOMPIZ_WERROR=OFF
-    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
