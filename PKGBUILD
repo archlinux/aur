@@ -22,7 +22,7 @@ source=("${_pkgname}-${pkgver}.bash::${_raw_url}/v${pkgver}/res/completions/${_p
         "${_pkgname}-${pkgver}.zsh::${_raw_url}/v${pkgver}/res/completions/${_pkgname}.zsh"
         "${_pkgname}-${pkgver}.fish::${_raw_url}/v${pkgver}/res/completions/${_pkgname}.fish"
         "${_pkgname}-${pkgver}.1.scd::${_raw_url}/v${pkgver}/doc/man/${_pkgname}.1.scd"
-	"README-${pkgver}.md::${_raw_url}/v${pkgver}/README.md")
+        "README-${pkgver}.md::${_raw_url}/v${pkgver}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64")
 sha256sums=('513e952b835fbfa53afb6d38e3fd13632cd497d930510586dd903eb39927d6f8'
             '4d69bf24b06648b4f22232ecaa64f43a688dc3c3baa9036b076edb50eb7ba881'
@@ -32,7 +32,7 @@ sha256sums=('513e952b835fbfa53afb6d38e3fd13632cd497d930510586dd903eb39927d6f8'
 sha256sums_x86_64=('faf11ab5b1283795b11b493fb864e51d8d97b239f4727a1a6c3388bc7687dd3c')
 
 build() {
-       scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
+	scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
 }
 
 package() {
