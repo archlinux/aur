@@ -1,0 +1,16 @@
+pkgbase = plm-bin
+	pkgdesc = PSDK Login Manager — a minimal Flutter/PAM login manager (prebuilt)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/psdkjoon/plm
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = pam
+	depends = cage
+	provides = plm
+	conflicts = plm
+	source = plm-1.0.5-linux-x86_64.tar.gz::https://github.com/psdkjoon/plm/releases/download/v1.0.5/plm-1.0.5-linux-x86_64.tar.gz
+	sha256sums = c07841948b865cc6d0d4ade399f673e3db9503ae2e673a713ddb812218f21809
+
+pkgname = plm-bin
