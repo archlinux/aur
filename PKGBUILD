@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=dichromat
-_pkgver=2.0-0.1
+_pkgver=2.0-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Color Schemes for Dichromats"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ce89c0b9bec34cd2d0a4ba4ec64024fb')
-b2sums=('09dd81d2556dd6311cda1a01a6be182dd5d840fc96c75914b849e8379a1268348b90c43c646982c88b05001ee83785cb8d86f84b8dbb0d68c95a2e4fd214b4cf')
+md5sums=('28b1d9b03dced374129c053f06a6bf5a')
+b2sums=('8b2c4e6748c03e75cb8ce052701038bf16274ff3e824dc4784ce649761d698a3c029cd8f8b78d2c4861b8b8b5b70c1b0f65906f06e23e46345c3a9b0857720c4')
 
 build() {
   mkdir build
