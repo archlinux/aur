@@ -1,8 +1,8 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=soundshed-guitar
-pkgname=${_name,,}
+pkgname=${_name,,}-bin
 pkgver=1.4.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A guitar/bass effects app and plugin."
 arch=(x86_64)
 url="https://guitar.soundshed.com"
