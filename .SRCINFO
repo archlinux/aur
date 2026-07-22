@@ -1,0 +1,20 @@
+pkgbase = purrr-client-git
+	pkgdesc = Native desktop client for purrr, a cozy self-hosted Discord alternative (latest dev, built from source)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://purrr.chat
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = purrr-client
+	conflicts = purrr-client
+	conflicts = purrr-client-bin
+	source = purrr-client-git::git+https://git.purrr.chat/ashley/purrr-client.git
+	sha256sums = SKIP
+
+pkgname = purrr-client-git
