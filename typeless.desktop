@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Typeless
+Comment=AI voice dictation for any application
+Exec=typeless %U
+Terminal=false
+Type=Application
+Icon=typeless
+Categories=Utility;AudioVideo;
+StartupNotify=true
+StartupWMClass=Typeless
+MimeType=x-scheme-handler/typeless;
