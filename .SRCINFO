@@ -1,0 +1,24 @@
+pkgbase = muote
+	pkgdesc = Graphical settings UI for Muote
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/efebaykaraa/muote
+	install = muote.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk3
+	depends = gtk4
+	depends = libadwaita
+	depends = pango
+	depends = cairo
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = desktop-file-utils: update desktop entry cache during install hooks
+	options = !lto
+	source = muote-0.3.0.tar.gz::https://github.com/efebaykaraa/muote/archive/refs/tags/v0.3.0.tar.gz
+	source = wikiquote-fetcher-1.0.1.tar.gz::https://github.com/efebaykaraa/wikiquote-fetcher/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 2bc15a5a55db623917d489bed6b3876067a28bf452087499144ab790a8429317
+	sha256sums = 7c8453d95595ebe7264386457992d6931090fd3e8c5938bfbe6f1ffdda869400
+
+pkgname = muote

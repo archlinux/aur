@@ -1,0 +1,29 @@
+post_install() {
+  _muote_update_desktop_caches
+  _muote_print_service_help
+}
+
+post_upgrade() {
+  _muote_update_desktop_caches
+  _muote_print_service_help
+}
+
+post_remove() {
+  _muote_update_desktop_caches
+}
+
+_muote_update_desktop_caches() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
+  update-desktop-database -q /usr/share/applications >/dev/null 2>&1 || true
+}
+
+_muote_print_service_help() {
+  cat <<'EOF'
+
+To enable the desktop quote overlay and daily quote fetcher for your user:
+
+  systemctl --user daemon-reload
+  systemctl --user enable --now desktop-quote.service muote-fetch.timer
+
+EOF
+}
