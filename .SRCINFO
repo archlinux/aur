@@ -34,6 +34,6 @@ pkgbase = junie-eap
 	source = junie-eap::git+https://github.com/jetbrains/junie.git
 	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = cb1277b44d0cf8fe650685013b5d4fa4ac01f4f7c42cc90c94990c9dfde71b7ff19210d0f9c766990d56058c0516ddd5b4ba9710da30ceed27cd11dbb1288c52
 
 pkgname = junie-eap
