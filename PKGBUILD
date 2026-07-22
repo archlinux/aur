@@ -3,7 +3,7 @@
 
 pkgname=exoscale-cli-bin
 pkgver=1.97.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
 url="https://github.com/exoscale/cli"
@@ -33,6 +33,10 @@ package() {
   install -Dm755 "${srcdir}/exo" "${pkgdir}/usr/bin/exo"
   install -d 755 "${pkgdir}/usr/share/bash-completion/completions"
   install -Dm 644 "${srcdir}/contrib/completion/bash/exo" "${pkgdir}/usr/share/bash-completion/completions/exo"
+  install -d 755 "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 "${srcdir}/contrib/completion/zsh/_exo" "${pkgdir}/usr/share/zsh/site-functions/_exo"
+  install -d 755 "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm 644 "${srcdir}/contrib/completion/fish/exo" "${pkgdir}/usr/share/fish/vendor_completions.d/exo.fish"
   install -d 755 "${pkgdir}/usr/share/man/man1"
   install -Dm 644 "${srcdir}/manpage/"* -t "${pkgdir}/usr/share/man/man1"
 }
