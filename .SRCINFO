@@ -1,0 +1,19 @@
+pkgbase = ffmpeg-converter-gtk
+	pkgdesc = Modern GTK4 + libadwaita frontend for FFmpeg (SVT-AV1, x265, x264, VP9)
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://github.com/orlfman/FFmpeg-Converter-GTK
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = json-glib
+	depends = glib2
+	depends = ffmpeg
+	options = !debug
+	source = ffmpeg-converter-gtk-1.5.7.tar.gz::https://github.com/orlfman/FFmpeg-Converter-GTK/archive/refs/tags/v1.5.7.tar.gz
+	sha256sums = 3d355d9d502093f277820850c40695dcbde14c551790cbeed6f5a645119d967f
+
+pkgname = ffmpeg-converter-gtk
