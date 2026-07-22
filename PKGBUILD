@@ -13,7 +13,7 @@
 # `podman` (build.sh auto-detects which one is available). The build also needs
 # network access to pull the ubuntu:25.10 image and its dependencies.
 pkgname=fluorine-manager-git
-pkgver=0.3.0.r54.g3cf734d
+pkgver=0.3.0.r83.g3ddc7b7
 pkgrel=1
 pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
@@ -24,10 +24,8 @@ makedepends=('git')
 provides=('fluorine-manager')
 conflicts=('fluorine-manager' 'fluorine-manager-bin')
 options=(!strip)
-source=("git+https://github.com/SulfurNitride/Fluorine-Manager.git"
-        "fluorine-manager-use-openmw-config-chaining-for-profile-settings.patch")
-sha256sums=('SKIP'
-            '97b8502c0af4d76743b66996bd4b10134344f0621b601fce56e7d0460121733c')
+source=("git+https://github.com/SulfurNitride/Fluorine-Manager.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Fluorine-Manager"
@@ -36,12 +34,6 @@ pkgver() {
     git describe --long --abbrev=7 2>/dev/null \
         | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/Fluorine-Manager"
-    git apply --3way --whitespace=nowarn \
-        "$srcdir/fluorine-manager-use-openmw-config-chaining-for-profile-settings.patch"
 }
 
 build() {
