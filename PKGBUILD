@@ -1,7 +1,7 @@
 # Maintainer: kazormia296 <kazormia296@users.noreply.github.com>
 
 pkgname=mozkey-ibg-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Mozkey IbG Japanese input method for Fcitx 5 (prebuilt)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!debug' '!strip')
 source_x86_64=(
   "${pkgname}-${pkgver}-${CARCH}.tar.xz::${url}/releases/download/v${pkgver}/mozkey-ibg-v${pkgver}-archlinux-${CARCH}.tar.xz"
 )
-sha256sums_x86_64=('807c7e65bf2e304ae5e662d9f0fa6049e68d2eaeed8609413c1b4ab7e7b1abab')
+sha256sums_x86_64=('31e6133c6c8cf833a989061b22ca0571a27a35e034cfb3236723848b001dd6d0')
 
 package() {
   cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
