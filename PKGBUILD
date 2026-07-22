@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boxplayer-bin
 _pkgname=BoxPlayer
-pkgver=5.0.6
+pkgver=5.0.7
 _electronversion=40
 pkgrel=1
 pkgdesc="Unified cloud drive management, smart media library, media servers, and high-speed downloads.(Prebuilt version.Use system-wide electron)小白羊网盘 BoxPlayer - 多网盘统一管理 + 智能媒体库 + 媒体服务器 + 高速下载."
@@ -16,11 +16,12 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'aria2'
+#    'aria2'
     'nodejs'
 )
 makedepends=(
     'asar'
+    'npm'
 )
 options=(
     '!emptydirs'
@@ -29,8 +30,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('08148663cc639ea19853eea5ea328bc41c2b5e2da6f3a28a305a42cc820be7eb')
-sha256sums_x86_64=('0cf233359e8808d232517f9855ddd0a353ff64f4427a8b93537b42199e0c3902')
+sha256sums_aarch64=('45c5d4570809363405834175b0d73470ece6b0ead4e4e4f7a4edf2ac0a0d9f23')
+sha256sums_x86_64=('a8e90cdadb96db60984842724c6a729a0d72a96dc02672c704d30ebc12b35c1a')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -61,17 +62,26 @@ prepare() {
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-    case "${CARCH}" in
-        aarch64)
-            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/arm64/aria2c"
-            ;;
-        x86_64)
-            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/x64/aria2c"
-            ;;
-    esac
+#    case "${CARCH}" in
+#        aarch64)
+#            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/arm64/aria2c"
+#            ;;
+#        x86_64)
+#            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/x64/aria2c"
+#            ;;
+#    esac
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
-    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    cd "${srcdir}/app.asar.unpacked"
+    sed -i '/"packageManager"/d' package.json
+    npm config set allow-remote all
+    npm install aria2-lib @motrix/nat-api --save
+    cd - > /dev/null
+    find "${srcdir}/app.asar.unpacked/dist" -type f \
+        -exec sed -i -e "
+            s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
+            s/process.execPath/\'\/usr\/lib\/${pkgname%-bin}\'/g\
+            " {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     find "${_app_dir}/resources" -type d -perm 700 -exec chmod 755 {} +
 }
