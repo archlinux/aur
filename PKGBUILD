@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Maintainer: leoneii comdir@infonix.info
 
 # copy of "de" lang pack, thenks:
@@ -18,7 +16,7 @@ _install_name='openoffice4'
 _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
-pkgver=4.1.15
+pkgver=4.1.16
 pkgrel=1
 pkgdesc="Russian language pack for OpenOffice.org"
 arch=('i686' 'x86_64')
@@ -34,8 +32,7 @@ options=(!strip docs)
 install=openoffice-i18n-bin.install
 # AUR is tricky
 source=( http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/ )
-md5sums='SKIP'
-#sha256sums=('SKIP')
+md5sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
