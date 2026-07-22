@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r11596.gad7519d72
+pkgver=0.1.r11607.g42bf523e8
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -79,8 +79,8 @@ sha256sums=('SKIP'
             '580a5fffc1a8469361efecccf4d67a809426f4a739e70dc6780a25317bf91b4a'
             '8c9b05b675ca7301a458df2c2e46f26e1d41ff36b8863f8c33530bc58c2e6225'
             '6eb79c8b12b1c9961c9f05a11b66a5fd020d66d5f540f27c11f91b542a97a7ca'
-            'e51eec33f93fbdebc6b40bfe479752cd5bf31c11104781a459646a54cf78d551'
-            '1492eb48739963ac7aa74bccf64188004cb760d70bdd1bc238f18b81932a5dbb'
+            'e14a1cbb0a0ece736b9df2da138f6e33653562a37a41a625ff4ade37a6056910'
+            'c1d2b3565a42adaab60a9f56fc722aa98781ddb2b79793d5679568966d643f27'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '3541462e5988551f1a618fb167c50054184871cd0c7a583a7f2388d195e1cd7e'
             'c8eb4a1d692b93a6ab283f8e03e842f1d02a191b5589c1812221a28c1250a6e3')
