@@ -1,6 +1,6 @@
 pkgbase = sunsync
 	pkgdesc = Import games from Lutris, Steam, Heroic and other launchers into Sunshine (KDE Plasma Wayland)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/OscarTienda/SunSync
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = sunsync
 	optdepends = krfb: virtual monitor support (krfb-virtualmonitor)
 	optdepends = libkscreen: virtual display mode switching (kscreen-doctor)
 	optdepends = qt6-tools: virtual display helpers (qdbus6)
-	source = sunsync-0.2.2.tar.gz::https://github.com/OscarTienda/SunSync/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 289596c9f2afb79081e0cd1de3b515acd723ee05c7a81a3790bf938c9ea7e9a8
+	source = sunsync-0.2.3.tar.gz::https://github.com/OscarTienda/SunSync/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 17253621743dcfbe9822e14cf1ddee9d9e9d251292e7a816a1c721a7491a03dc
 
 pkgname = sunsync
