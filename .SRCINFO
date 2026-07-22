@@ -1,0 +1,25 @@
+pkgbase = ohrrpgce-git
+	pkgdesc = A role playing game creation engine (git wip)
+	pkgver = wip.r12541.da6955f
+	pkgrel = 1
+	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = freebasic
+	makedepends = scons
+	depends = sdl2_mixer
+	depends = openeuphoria
+	depends = libxpm
+	depends = libxrandr
+	depends = ncurses
+	depends = xterm
+	depends = libxinerama
+	provides = ohrrpgce
+	conflicts = ohrrpgce
+	replaces = ohrrpgce-svn
+	source = ohrrpgce-wip::git+https://github.com/ohrrpgce/ohrrpgce.git
+	md5sums = SKIP
+
+pkgname = ohrrpgce-git
