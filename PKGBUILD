@@ -1,7 +1,7 @@
 # Maintainer: yummiergravy <https://github.com/YummierGravy>
 
 pkgname=plasma-lichess-tv-wallpaper-git
-pkgver=0.1.0.r1.gbc08c45
+pkgver=0.1.0.r0.gbc08c45
 pkgrel=1
 pkgdesc="Unofficial Plasma 6 live wallpaper for Lichess TV (git)"
 arch=('x86_64')
@@ -28,8 +28,8 @@ makedepends=(
   'ninja'
   'git'
 )
-provides=('plasma-lichess-tv-wallpaper' 'plasma6-lichess-tv-wallpaper')
-conflicts=('plasma-lichess-tv-wallpaper' 'plasma6-lichess-tv-wallpaper' 'plasma6-lichess-tv-wallpaper-git')
+provides=('plasma-lichess-tv-wallpaper')
+conflicts=('plasma-lichess-tv-wallpaper')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 install=plasma-lichess-tv-wallpaper-git.install
@@ -41,7 +41,7 @@ pkgver() {
   if [[ -n "$desc" ]]; then
     printf '%s' "$desc"
   else
-    printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf '0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
