@@ -2,9 +2,9 @@
 
 _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.1.2
+_pkgver=32.2.0
 pkgver="${_pkgver//-/_}"
-pkgrel=5
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -115,7 +115,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "fba1355b2e451007cc6ec14d0f662b4a289874dde6eb3f4001a90c414bbf0c13"
+  "785b95a8b51864ece25b307246a29ddf80e7e7d4d77fe7d557df73f68329f16d"
   "6739b632ca2275e189f0214c4843b8accc1c9d2bdff81d0f169ec1de4c02096c"
 )
 sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
