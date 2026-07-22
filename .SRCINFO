@@ -1,0 +1,22 @@
+pkgbase = fcitx5-voice-input
+	pkgdesc = Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/devcxl/fcitx5-voice-input
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = gettext
+	depends = fcitx5
+	depends = pipewire
+	depends = libpulse
+	depends = jsoncpp
+	depends = curl
+	depends = onnxruntime-cpu
+	depends = zlib
+	options = !debug
+	source = fcitx5-voice-input-0.3.0.tar.gz::https://github.com/devcxl/fcitx5-voice-input/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 27f6ffd2432cab662fb9ec3209a9cb1f912f7d6d4a58db2c0fd8c84b5b3ec799
+
+pkgname = fcitx5-voice-input
