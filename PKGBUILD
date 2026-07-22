@@ -2,10 +2,10 @@
 
 pkgname=manora
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files"
 url="https://github.com/Antiz96/manora"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'man' 'groff' 'xdg-utils' 'util-linux')
 makedepends=('cargo' 'scdoc')
