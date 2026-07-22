@@ -19,9 +19,9 @@ options=(!debug)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _bin_base_source="${url}/releases/download/v${pkgver}/gomuks"
-source_x86_64=("gomuks.bin-x86_64::$_bin_base_source-amd64")
-source_aarch64=("gomuks.bin-aarch64::$_bin_base_source-arm64")
-source_armv7h=("gomuks.bin-armv7h::$_bin_base_source-arm")
+source_x86_64=("gomuks-${pkgver}.bin-x86_64::$_bin_base_source-amd64")
+source_aarch64=("gomuks-${pkgver}.bin-aarch64::$_bin_base_source-arm64")
+source_armv7h=("gomuks-${pkgver}.bin-armv7h::$_bin_base_source-arm")
 
 sha256sums=('d0e0f7844e50f1c00c54583b4fc3cbce9b353d7a7029013882a9aef0e44bf23a')
 sha256sums_x86_64=('0af5630adee18fc6d7b4adf918e76118606cc32a34b5d7fc39fd0a0146727ca6')
@@ -32,7 +32,7 @@ sha256sums_armv7h=('281030f8db76f7e5e0b43bd7187d0286df7ff8c8d392c97d0ac50fa55cae
 package() {
 	cd "$srcdir"
 
-	install -Dm755 "gomuks.bin-$CARCH" "$pkgdir/usr/bin/${_pkgname}"
+	install -Dm755 "gomuks-${pkgver}.bin-$CARCH" "$pkgdir/usr/bin/${_pkgname}"
 
 	cd "$srcdir/gomuks-$pkgver"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}" LICENSE
