@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=distributions3
-_pkgver=0.2.3
+_pkgver=0.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-vctrs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b90013dccbf24a8b118dd4410368cc8')
-b2sums=('f1ca8b01d3d97d387870042105c14d4e6c4d4871a7c1b3150f626be6590e368eab7e4339dd0dbbfe870f793885f69ea901513d5bf69508ef83878e218310b4a3')
+md5sums=('52a2c2b14c14c5e2c5c93c0c997cdc30')
+b2sums=('7845bdb7ebe75241333402adf07509b1a757ad4c0683090bea872c6c6838e69b3a7163da72cf39248dcc17f7907c4ca638df5b1c46154340257422c3777751e1')
 
 build() {
   mkdir build
