@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
 url="https://github.com/Round-Studio/BedrockBoot"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('dotnet-runtime-10.0'
          'fontconfig'
          'freetype2'
