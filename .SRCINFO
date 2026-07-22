@@ -13,8 +13,8 @@ pkgbase = linux-galaxyaudio-bin
 	source = linux-galaxyaudio-7.1.4-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.1.4/linux-galaxyaudio-7.1.4-1-x86_64.pkg.tar.zst
 	source = linux-galaxyaudio-headers-7.1.4-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v7.1.4/linux-galaxyaudio-headers-7.1.4-1-x86_64.pkg.tar.zst
 	source = linux-galaxyaudio.preset
-	sha256sums = b01a29461a09ef33b1b353339aa0605471c6222a03c39a34f4ebbbee245261fb
-	sha256sums = 516f9578f4f227122b066f9bce044be0440eaa503b224d759253721e439fa0c6
+	sha256sums = 718a321c6df49a9804f289566830c002e67e36886ea7830b98971cc0305cb2ed
+	sha256sums = c233d09f1303e43ad185afa04ab49df6539a5c254a68ccfaf9d0cf283aba188e
 	sha256sums = ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963
 
 pkgname = linux-galaxyaudio-bin
