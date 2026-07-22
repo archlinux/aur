@@ -1,7 +1,7 @@
 # Maintainer: David Lishchyshen <microdaika1@gmail.com>
 pkgname=wofi-power-menu-bin
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.3.4
+pkgrel=4
 pkgdesc="Highly configurable power menu using the wofi launcher power-menu (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/szaffarano/wofi-power-menu"
@@ -14,8 +14,8 @@ source=(
     "${pkgname}-${pkgver}.asc::$url/releases/download/v$pkgver/wofi-power-menu-linux-x64.asc"
 )
 sha256sums=(
-    '86fc1b4d5be77c39a21f26eab49206d808367b67b3831f6ed130cbb1f9813ffb'
-    '6e25c56d9145b637012d02c86e2a0f89ab43578f0e956c69f11f564912e0180b'
+    '75963158f911b97b4aa19a697ef98a44b2da10b6500c9f9f99ff787bcdad8caa'
+    '67a2e5c13de27b9ca8d1a132d7b5e32b782a32f33d4ee7059187af67d66ecc6f'
 )
 validpgpkeys=('42BE68F43D528467FC281E2E310FFE86A2E427BA')
 
