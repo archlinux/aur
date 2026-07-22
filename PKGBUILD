@@ -44,6 +44,7 @@ package() {
     install -Dm755 "target/release/ddsc" -t "$pkgdir/usr/bin/"
     install -Dm755 scripts/discord-monitor.sh "$pkgdir/usr/bin/discord-monitor-ddsc.sh"
     install -Dm644 scripts/discord-monitor-cosmic.service -t "$pkgdir/usr/lib/systemd/user/"
+    install -Dm644 common/src/config/default-config-cosmic.json "$pkgdir/usr/share/ddsc/config.json"
     install -Dm644 cosmic/autostart/ddsc.desktop -t "$pkgdir/usr/share/applications/"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
