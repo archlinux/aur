@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-git
-pkgver=0.2.0.r30.ge039923
+pkgver=0.2.0.r52.g0ac201f
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (git version)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ keywords=('mcp' 'cli' 'context' 'git' 'agent')
 makedepends=('git' 'bun')
 depends=('glibc')
 provides=('context')
-conflicts=('context')
+conflicts=('context' 'context-bin')
 options=('!strip')
 source=("$pkgname::git+https://github.com/timmo001/context.git")
 md5sums=('SKIP')
