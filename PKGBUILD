@@ -3,10 +3,10 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=154.0a1+20260718.1+h1daac5fa8f14
+pkgver=155.0a1+20260722.1+h396bd39825d0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
-url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
+url="https://www.firefox.com/channel/desktop/#nightly"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
@@ -98,12 +98,12 @@ validpgpkeys=(
 sha256sums=('SKIP'
             'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
-            '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
+            '3e8161b00492e2b2a1e86c54497ba87e38af1a48ae13b97e471f9d7c2089a5d2'
             '844423079aa1ffc5f6ee66df2f43d27879d2a761073939747945da5409bec191')
 b2sums=('SKIP'
         'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
-        '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
+        '75669773bcbdd27bad02f7e32e9c42fa9ffad89d7d614ad3ea35bb57a21d659dabe0cf6ae3e3007fc37954c7eec3d3f5a11be1a24b9fe3655e8547e29f31f2cd'
         '70e8bfd40bf23afa3f6de2d975aa69043cb88ae14b625702b754cd3de56215be159cf69ba4ed522ca7122b8bbdb50cfe763694e7c7595f2fdcec40bab5e2739f')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
