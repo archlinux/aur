@@ -1,5 +1,6 @@
 pkgname=linux-iprojection
-pkgver=0.1.0
+pkgver=1.0.2
+_srcver=0.1.0
 pkgrel=1
 pkgdesc="Native Linux control & casting app for Epson projectors"
 arch=('any')
@@ -7,16 +8,16 @@ url="https://github.com/John-Varghese-EH/Linux-iProjection"
 license=('AGPL3')
 depends=('python' 'python-gobject' 'python-zeroconf' 'gtk4' 'libadwaita')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$_srcver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_srcver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_srcver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install desktop file and icon

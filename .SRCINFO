@@ -1,6 +1,6 @@
 pkgbase = linux-iprojection
 	pkgdesc = Native Linux control & casting app for Epson projectors
-	pkgver = 0.1.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/John-Varghese-EH/Linux-iProjection
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = linux-iprojection
 	depends = python-zeroconf
 	depends = gtk4
 	depends = libadwaita
-	source = https://github.com/John-Varghese-EH/Linux-iProjection/releases/download/v0.1.0/linux-iprojection-0.1.0.tar.gz
+	source = linux-iprojection-1.0.2.tar.gz::https://github.com/John-Varghese-EH/Linux-iProjection/releases/download/v1.0.2/linux-iprojection-0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = linux-iprojection
