@@ -1,13 +1,13 @@
 # Maintainer: MaPu <manpuk@protonmail.com>
 pkgname=mapu_calculator
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A customizable calculator for Linux, built with Iced."
 arch=('x86_64')
 url="https://codeberg.org/MaPu/mapu_calculator"
 license=('GPL-3.0-only')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 source=("https://codeberg.org/MaPu/mapu_calculator/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
