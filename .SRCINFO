@@ -1,0 +1,14 @@
+pkgbase = hydrafetch
+	pkgdesc = A simple system information fetch tool written in Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lfotkrc/hydrafetch
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-psutil
+	depends = python-colorama
+	source = git+https://github.com/lfotkrc/hydrafetch.git
+	sha256sums = SKIP
+
+pkgname = hydrafetch
