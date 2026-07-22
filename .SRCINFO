@@ -1,0 +1,14 @@
+pkgbase = cpcat
+	pkgdesc = A lightweight utility that copies file contents directly to the clipboard
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/danielandastro/cpcat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	source = cpcat-0.1.1.tar.gz::https://codeload.github.com/danielandastro/cpcat/tar.gz/refs/tags/0.1.1
+	sha256sums = 6cb846ef203a6943b7a1c7f0d6b28419c5f1a1d01545042d993d34cd3818901d
+
+pkgname = cpcat
