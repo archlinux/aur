@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-vulkan-git
 	pkgdesc = Stable Diffusion and Flux in pure C/C++ (Vulkan version)
-	pkgver = r726.9956436
+	pkgver = r786.cfd4cff
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = stable-diffusion.cpp-vulkan-git
 	makedepends = shaderc
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
 	depends = libwebp
 	depends = vulkan-icd-loader

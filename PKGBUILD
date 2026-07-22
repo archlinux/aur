@@ -3,12 +3,13 @@
 
 pkgname=stable-diffusion.cpp-vulkan-git
 _pkgname=stable-diffusion.cpp
-pkgver=r726.9956436
+pkgver=r786.cfd4cff
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=('MIT')
 depends=(
-    'gcc-libs'
+    'libgcc'
+    'libstdc++'
     'glibc'
     'libwebp'
     'vulkan-icd-loader'
