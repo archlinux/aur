@@ -2,7 +2,7 @@
 
 pkgname=deemix-remastered
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Deemix Remastered is exactly what it sounds like: the classic downloader, remastered. Download music from deezer.'
 url=https://github.com/DRAZY/deemix-remastered
 license=(GPL-3.0-or-later)
@@ -28,7 +28,7 @@ package(){
 	install -dm755 $pkgdir/usr/bin
 	mv $srcdir/deemix-remastered/release/linux-unpacked/* $pkgdir/opt/deemix-remastered
 # Install Shortcut to /usr/bin
-	ln -s /opt/deemix/deemix-app $pkgdir/usr/bin/deemix-app
+	ln -s /opt/deemix-remastered/deemix-app $pkgdir/usr/bin/deemix-app
 # Install desktop file and patch to correct program filename
 	install -Dm755 $srcdir/deemix-app.desktop $pkgdir/usr/share/applications/deemix-app.desktop
 # Install icon file
