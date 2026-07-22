@@ -6,7 +6,7 @@ pkgname=animalinux
 # presente desde v0.2.0, nunca se había probado con una build de verdad).
 _gitname=AnimalinuxApp
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sergi122/AnimalinuxApp"
@@ -37,15 +37,6 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('e245af6f50553a713f5788436355cf942ec6be9f18617260151cf4bc4c3c6daa')
 
-prepare() {
-    cd "$_gitname-$pkgver"
-    # el tarball del tag v0.4.0 trae el icono de la bandeja como "face-smile"
-    # genérico; se cambia aquí a "animalinux" (mascota, ya instalada en
-    # hicolor/*/apps) sin taggear una v0.4.1 solo por esto.
-    sed -i 's/"face-smile",  # icono del tema.*/"animalinux",  # icono propio (mascota), instalado en hicolor\/*\/apps/' \
-        animalinux/tray.py
-}
-
 build() {
     cd "$_gitname-$pkgver"
     python -m build --wheel --no-isolation
@@ -63,9 +54,9 @@ package() {
     sed -i 's/^Exec=animalinux$/Exec=animalinux --show/' \
         "$pkgdir/usr/share/applications/animalinux.desktop"
     # el tarball del tag v0.4.0 trae Icon=animalinux (mascota) en el .desktop;
-    # se cambia a face-smile para el lanzador de apps (la bandeja sí usa la
-    # mascota, ver tray.py). Igual que el sed de arriba, se parchea aquí para
-    # no taggear una v0.4.1 solo por esto.
+    # se cambia a face-smile para que coincida con el icono de la bandeja
+    # (tray.py, sin parchear: ya trae face-smile de fábrica). Igual que el
+    # sed de arriba, se parchea aquí para no taggear una v0.4.1 solo por esto.
     sed -i 's/^Icon=animalinux$/Icon=face-smile/' \
         "$pkgdir/usr/share/applications/animalinux.desktop"
     install -Dm644 animalinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/animalinux.png"
