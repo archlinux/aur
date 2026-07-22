@@ -2,7 +2,7 @@
 
 pkgname=typeless
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AI voice dictation for any application (unofficial Linux compatibility build)'
 arch=('x86_64')
 url='https://www.typeless.com/'
@@ -11,12 +11,12 @@ provides=('typeless')
 conflicts=('typeless')
 depends=(
   'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc'
-  'gtk3' 'libcups' 'libdrm' 'libogg' 'libpulse' 'libx11' 'libxcb'
+  'gtk3' 'libcups' 'libdrm' 'libpulse' 'libx11' 'libxcb'
   'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon'
   'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'opus' 'pango' 'xdg-utils'
   'xdotool' 'ydotool'
 )
-makedepends=('asar' 'cmake' 'ninja' 'p7zip' 'pkgconf')
+makedepends=('asar' 'cargo' 'p7zip' 'pkgconf' 'rust')
 optdepends=(
   'wtype: text insertion in Wayland sessions'
   'pipewire: screen and audio capture under Wayland'
@@ -31,9 +31,14 @@ source=(
   "Typeless-${pkgver}-x64-Setup.exe::https://typeless-static.com/desktop-release/Typeless-${pkgver}-x64-Setup.exe"
   "electron-v${_electron_version}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip"
   "better-sqlite3-v${_better_sqlite_version}-electron-v${_electron_abi}-linux-x64.tar.gz::https://github.com/WiseLibs/better-sqlite3/releases/download/v${_better_sqlite_version}/better-sqlite3-v${_better_sqlite_version}-electron-v${_electron_abi}-linux-x64.tar.gz"
-  'CMakeLists.txt'
-  'typeless_helper.cpp'
-  'opus_helper.cpp'
+  'Cargo.toml'
+  'Cargo.lock'
+  'rust-lib.rs'
+  'atspi_support.rs'
+  'audio.rs'
+  'desktop.rs'
+  'keyboard.rs'
+  'support.rs'
   'patch-main.mjs'
   'keyboard-helper-child-process-linux.mjs'
   'typeless.sh'
@@ -47,9 +52,14 @@ noextract=(
 sha256sums=('254e7bf963786df4e79c277a310f6c66b83f2b954f6c51b43b4f2c624c452320'
             '212d431c7c916292311c797cd91f84467c5abd6e6983cf24b162efff64cee8a9'
             '54c970ef78326dc203455383e7097a86c4cc5f2c92733984cbcb118ac88bdcec'
-            'afedbdcbcf754da75c6d428e8adfff337d857049009c96a272125533a16e71a2'
-            '87ade74f138c711b10ea0a43f1650ea0b26a2bb8421ffac4d2f5b00994d7a3a1'
-            '43b9c517611e3329f91352b3165f590a4c862a501ba163915e8d96c70bfc5956'
+            '6f002ada503740fe4471daf16b63f138b20314a89916af11dde8cfd45d0cb8dd'
+            '3d0fea167367e4b37bf31fe9d9343f50fbfbfc9b27cf6ed5e1804162613dec32'
+            'fa19c99fe8fd6d290319798395a17ba2dc9d147b99252becf1dcfc59d3e84c74'
+            '2c47c9fec39e294cb6757fc7258a4588047ce9ee7f981e1c71ce161df99c91ab'
+            '712da7747e389b99e96de378a537c80e6cf4b70ca2dd7967004aa7442f7cf9b0'
+            'cb098fec03952d8eaf3060ce16c36b547b94a2e3bbade1515a76acab847222ab'
+            '47941eebaa49f18c09169777724df12a330b3b7aabebf5ea7b123a989be76d69'
+            '712897ddc034a63ea9545b4ce381170b99b926a677e50145ed8d1a3f92466ecc'
             '3a7a0e561e63a0d32e068e6d27d9616be9f88c47b2228284ce034a53e8ae2623'
             'c434d7b071394e3d8efab5f6d065fa0c9dfb566b9f20b00d5da5abd1fa2c7c65'
             '2ea1079651e2c85587f1c3272234d06b5aa906259201d8b379e71a3285e20b5c'
@@ -86,12 +96,13 @@ prepare() {
   bsdtar -xf "$srcdir/electron-v${_electron_version}-linux-x64.zip" \
     -C "$srcdir/electron-runtime"
   chmod 4755 "$srcdir/electron-runtime/chrome-sandbox"
+
+  cargo fetch --manifest-path "$srcdir/Cargo.toml" --locked
 }
 
 build() {
-  cmake -S "$srcdir" -B "$srcdir/native-build" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release
-  cmake --build "$srcdir/native-build"
+  CARGO_TARGET_DIR="$srcdir/cargo-target" \
+    cargo build --manifest-path "$srcdir/Cargo.toml" --release --frozen
 }
 
 package() {
@@ -108,15 +119,16 @@ package() {
   cp -a --no-preserve=ownership "$srcdir/upstream/resources/lib" "$appdir/resources/lib"
 
   rm -rf -- "$appdir/resources/lib/"*/build/windows
-  install -Dm755 "$srcdir/native-build/libtypeless_helper.so" \
+  local helper="$srcdir/cargo-target/release/libtypeless_linux_helpers.so"
+  install -Dm755 "$helper" \
     "$appdir/resources/lib/keyboard-helper/build/linux/x64/libKeyboardHelper.so"
-  install -Dm755 "$srcdir/native-build/libtypeless_helper.so" \
+  install -Dm755 "$helper" \
     "$appdir/resources/lib/context-helper/build/linux/x64/libContextHelper.so"
-  install -Dm755 "$srcdir/native-build/libtypeless_helper.so" \
+  install -Dm755 "$helper" \
     "$appdir/resources/lib/input-helper/build/linux/x64/libInputHelper.so"
-  install -Dm755 "$srcdir/native-build/libtypeless_helper.so" \
+  install -Dm755 "$helper" \
     "$appdir/resources/lib/util-helper/build/libUtilHelper.so"
-  install -Dm755 "$srcdir/native-build/libopusenc.so" \
+  install -Dm755 "$helper" \
     "$appdir/resources/lib/libopusenc/build/linux/x64/libopusenc.so"
 
   chmod 4755 "$appdir/chrome-sandbox"

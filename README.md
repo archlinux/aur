@@ -7,8 +7,9 @@ makepkg -si
 ```
 
 The PKGBUILD downloads only upstream release artifacts, extracts the Windows
-Electron application, applies the Linux platform patch, compiles the Linux
-helpers, and bundles the matching Electron 33 runtime.
+Electron application, applies the Linux platform patch, compiles one Rust
+library implementing every native helper ABI, and bundles the matching
+Electron 33 runtime.
 
 The package is unofficial. X11 is the most complete desktop-session target.
 On native Wayland, Typeless prefers `ydotool` for text and key injection. Enable

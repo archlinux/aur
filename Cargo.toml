@@ -1,0 +1,28 @@
+[package]
+name = "typeless-linux-helpers"
+version = "2.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[lib]
+name = "typeless_linux_helpers"
+path = "rust-lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+async-io = "2"
+atspi = { version = "0.30", default-features = false, features = ["proxies", "zbus"] }
+audiopus = { version = "0.2", default-features = false, features = ["encoder"] }
+evdev = "0.13"
+futures-lite = "2"
+hound = "3"
+ogg = "0.9"
+serde_json = "1"
+x11 = { version = "2", features = ["xlib", "xrecord"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "debuginfo"
