@@ -3,7 +3,7 @@
 pkgname=noctalia-greeter-git
 _pkgname=noctalia-greeter
 pkgver=1.0.0.r32.g34599488c
-pkgrel=3
+pkgrel=4
 pkgdesc="Greetd greeter for Noctalia"
 arch=('x86_64')
 url="https://github.com/noctalia-dev/noctalia-greeter"
@@ -23,6 +23,7 @@ depends=(
   'libwebp'
   'libxkbcommon'
   'pango'
+  'tomlplusplus'
   'wayland'
   'wlroots0.20'
 )
@@ -30,7 +31,9 @@ makedepends=(
   'git'
   'meson'
   'ninja'
+  'nlohmann-json'
   'pkgconf'
+  'stb'
   'wayland-protocols'
 )
 optdepends=(
