@@ -1,7 +1,7 @@
 pkgbase = librechat
 	pkgdesc = Open-source ChatGPT clone fully customizable and compatible with any AI provider
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danny-avila/LibreChat
 	install = librechat.install
 	arch = x86_64

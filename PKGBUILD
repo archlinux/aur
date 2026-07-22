@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/danny-avila/LibreChat"
@@ -34,6 +34,8 @@ build() {
   cd "LibreChat-$pkgver"
   # Install dependencies
   npm config set cache "$srcdir/.npm-cache"
+  # ponytail: xlsx is pinned to a CDN tarball in package-lock.json, EALLOWREMOTE blocks it
+  npm config set allow-remote true
   npm ci
 
   # tsdown requires unrun module which isn't resolved by npm ci
