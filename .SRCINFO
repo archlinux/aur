@@ -1,15 +1,15 @@
 pkgbase = nsticky-bin
 	pkgdesc = A sticky windows manager CLI tool for Niri
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://github.com/soymadip/nsticky
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lonerOrz/nsticky
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = niri
 	provides = nsticky
 	conflicts = nsticky
-	source = https://github.com/soymadip/nsticky/releases/download/v0.1.0/nsticky-v0.1.0-x86_64
-	source = https://raw.githubusercontent.com/soymadip/nsticky/refs/heads/main/LICENSE
+	source = https://github.com/lonerOrz/nsticky/releases/download/v0.4.0/nsticky-v0.4.0-x86_64
+	source = https://raw.githubusercontent.com/lonerOrz/nsticky/refs/heads/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
