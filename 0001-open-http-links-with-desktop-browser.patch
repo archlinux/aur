@@ -1,0 +1,14 @@
+--- a/core/document.cpp
++++ b/core/document.cpp
+@@ -4243,6 +4243,11 @@ void Document::processAction(const Action *action)
+                 realUrl = url;
+             }
+             if (realUrl.isValid()) {
++                // TODO
++                if (url.scheme() == QLatin1String("http") || url.scheme() == QLatin1String("https")) {
++                    QDesktopServices::openUrl(url);
++                    return;
++                }
+                 auto *job = new KIO::OpenUrlJob(realUrl);
+                 job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, d->m_widget.data()));
+                 job->start();

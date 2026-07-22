@@ -1,0 +1,84 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Alcubierre Drive <alcubierre-drive@github>
+
+pkgname=okular-browser-url-open
+replaces=(okular)
+provides=(okular)
+pkgver=26.04.3
+pkgrel=1
+pkgdesc='Document Viewer'
+arch=(x86_64)
+url='https://apps.kde.org/okular/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(discount
+         djvulibre
+         freetype2
+         glibc
+         karchive
+         kbookmarks
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kiconthemes
+         kio
+         kparts
+         ktextwidgets
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libkexiv2
+         libspectre
+         libstdc++
+         libtiff
+         phonon-qt6
+         poppler-qt6
+         purpose
+         qt6-base
+         qt6-declarative
+         qt6-speech
+         qt6-svg
+         threadweaver
+         zlib)
+makedepends=(ebook-tools
+             extra-cmake-modules
+             kdegraphics-mobipocket
+             kdoctools)
+optdepends=('ebook-tools: mobi and epub support'
+            'kdegraphics-mobipocket: mobi support'
+            'unarchiver: Comic Book Archive support (alternative)'
+            'unrar: Comic Book Archive support')
+groups=(kde-applications
+        kde-graphics)
+source=(
+    https://download.kde.org/stable/release-service/$pkgver/src/okular-$pkgver.tar.xz{,.sig}
+    0001-open-http-links-with-desktop-browser.patch
+)
+sha256sums=('a6e4a571acd3b70bb67eec476834b009f710540b793091f51f707b53b6facbca'
+            'SKIP'
+            'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+options=(!zipman)
+
+prepare() {
+  cd "$srcdir/okular-$pkgver"
+  patch -Np1 -i "$srcdir/0001-open-http-links-with-desktop-browser.patch"
+}
+
+build() {
+  cmake -B build -S okular-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
