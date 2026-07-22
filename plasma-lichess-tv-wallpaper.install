@@ -14,8 +14,10 @@ This package is unofficial and unaffiliated with Lichess or KDE.
 MSG
 }
 
-# Clear leftovers from a prior `sudo cmake --install` (or similar) that pacman
-# does not own. Otherwise upgrades fail with "exists in filesystem".
+# Best-effort cleanup of leftovers from a prior `sudo cmake --install`.
+# Note: pacman checks file conflicts *before* scriptlets run, so a one-time
+# manual remove or `--overwrite` may still be needed for the first upgrade
+# after a developer /usr install. This cleans orphans when the script does run.
 _lichesstv_remove_unowned() {
   local path
   for path in "$@"; do
