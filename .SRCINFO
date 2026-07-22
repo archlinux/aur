@@ -1,0 +1,27 @@
+pkgbase = bilibili-gpu-bin
+	pkgdesc = Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)
+	pkgver = 1.17.9
+	pkgrel = 1
+	url = https://github.com/wings1848/bilibili-linux
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libva
+	depends = libva-nvidia-driver
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = cups
+	depends = libxkbcommon
+	depends = mesa
+	depends = alsa-lib
+	optdepends = python-faster-whisper: AI subtitle transcription
+	provides = bilibili=1.17.9
+	conflicts = bilibili
+	conflicts = bilibili-bin
+	source_x86_64 = bilibili-1.17.9-x86_64.AppImage::https://github.com/wings1848/bilibili-linux/releases/download/v1.17.9-1/bilibili-1.17.9-x86_64.AppImage
+	sha256sums_x86_64 = SKIP
+
+pkgname = bilibili-gpu-bin
