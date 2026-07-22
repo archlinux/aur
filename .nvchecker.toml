@@ -1,0 +1,5 @@
+[pebbles]
+source = "git"
+git = "https://github.com/SubhadeepJasu/pebbles.git"
+include_regex = 'v[0-9.]+'
+prefix = "v"

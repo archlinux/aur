@@ -1,0 +1,26 @@
+pkgbase = pebbles
+	pkgdesc = An easy to use yet powerful calculator app
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/SubhadeepJasu/pebbles
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = sassc
+	makedepends = vala
+	depends = granite7
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-dateutil
+	depends = python-gobject
+	depends = python-matplotlib
+	depends = python-numpy
+	provides = pebbles
+	conflicts = pebbles
+	source = pebbles-3.1.0.tar.gz::https://github.com/SubhadeepJasu/pebbles/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = 9abd936192b227e20ddf343c77336179aa5a143b4e9fc0acd6b113d46e9f6d21
+
+pkgname = pebbles
