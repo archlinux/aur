@@ -1,15 +1,18 @@
 pkgbase = zapret-hub
 	pkgdesc = Desktop hub for managing network bypass utilities (zapret, tg-ws-proxy, vpn)
-	pkgver = 2.1.3b
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/peachoff/Zapret-Hub-Linux
+	url = https://github.com/larpmaster228/Zapret-Hub-Linux
 	arch = x86_64
 	license = MIT
 	depends = glib2
 	depends = libglvnd
-	depends = fuse2
+	depends = nftables
+	depends = iproute2
+	optdepends = qt6-base: Qt GUI
+	optdepends = qt6-wayland: Wayland support
 	options = !strip
-	source = https://github.com/peachoff/Zapret-Hub-Linux/releases/download/v2.1.3b/zapret-hub-2.1.3b-linux-x64.tar.gz
+	source = https://github.com/larpmaster228/Zapret-Hub-Linux/releases/download/v3.0.0-linux/zapret_hub_3.0.0_linux_x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = zapret-hub
