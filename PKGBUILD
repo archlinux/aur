@@ -2,7 +2,7 @@
 
 _pkgname=enneagram
 pkgname="$_pkgname-git"
-pkgver=1.2.1.4955bc7
+pkgver=1.2.2.91a64cd
 pkgrel=1
 pkgdesc="An exploration into the enneagram. (git version)"
 url="https://github.com/sigurd4/$_pkgname"
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  mkdir -p "$srcdir/.config"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --offline --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -35,6 +36,7 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname"
+  export XDG_CONFIG_HOME="$srcdir/.config"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo test --release --frozen -- --skip "config"
