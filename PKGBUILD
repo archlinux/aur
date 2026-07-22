@@ -2,7 +2,7 @@
 
 pkgname=floating-sandbox
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mass-spring network in C++, simulating physical bodies floating in water and sinking"
 arch=('x86_64')
 url="https://github.com/GabrieleGiuseppini/Floating-Sandbox"
@@ -30,6 +30,8 @@ makedepends=(
 )
 
 source=(
+    "floating-sandbox.sh"
+    "floating-sandbox.desktop"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.4"
     "git+https://github.com/google/googletest.git#tag=v1.12.0"
@@ -37,7 +39,15 @@ source=(
     "git+https://github.com/SFML/SFML.git#tag=2.6.2"
 )
 
-sha256sums=('5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+    'aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597'
+    '5d18a3b46e74951e588f89d9e1fb1160003e0c328893a6e92408d15f0bcf4951'
+    '5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 prepare() {
     mkdir -p "${srcdir}/libs"
@@ -136,6 +146,12 @@ build() {
 }
 
 package() {
+    # Directories
+    install -dm755 "${pkgdir}/opt"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/pixmaps"
+
     # Install the game
     cd "${srcdir}/Floating-Sandbox-${pkgver}"
     cmake --install build
@@ -150,14 +166,14 @@ package() {
         done
     fi
 
-    # Create wrapper
-    mkdir -p "${pkgdir}/usr/bin"
-    cat <<'EOF' >"${pkgdir}/usr/bin/floating-sandbox"
-#!/bin/sh
-# Force X11 backend and use Light theme for best UI
-export GDK_BACKEND=x11
-export GTK_THEME=Adwaita:light
-exec /opt/floating-sandbox/FloatingSandbox "$@"
-EOF
-    chmod +x "${pkgdir}/usr/bin/floating-sandbox"
+    # Launcher script
+    install -m755 "$srcdir/floating-sandbox.sh" \
+        "$pkgdir/usr/bin/floating-sandbox"
+
+    # Desktop integration
+    install -m644 "${srcdir}/floating-sandbox.desktop" \
+        "${pkgdir}/usr/share/applications/floating-sandbox.desktop"
+
+    install -m644 "${pkgdir}/opt/floating-sandbox/Data/Built-in Ships/fs_logo_texture.png.dat" \
+        "${pkgdir}/usr/share/pixmaps/floating-sandbox.png"
 }
