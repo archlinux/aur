@@ -1,4 +1,0 @@
-[fanficfare-git]
-source = "git"
-git = "https://github.com/JimmXinu/FanFicFare.git"
-prefix = "v"
