@@ -1,3 +1,32 @@
+--- a/crates/codex-plus-core/src/app_paths.rs
++++ b/crates/codex-plus-core/src/app_paths.rs
+@@ -15,2 +15,16 @@ struct AppPackageSpec {
+-const CODEX_PACKAGE_EXECUTABLES: &[&str] = &["ChatGPT.exe", "Codex.exe", "codex.exe"];
+-const STANDALONE_CODEX_EXECUTABLES: &[&str] = &["ChatGPT.exe", "Codex.exe", "codex.exe"];
++const CODEX_PACKAGE_EXECUTABLES: &[&str] = &[
++    "ChatGPT.exe",
++    "Codex.exe",
++    "codex.exe",
++    "ChatGPT",
++    "Codex",
++    "codex",
++];
++const STANDALONE_CODEX_EXECUTABLES: &[&str] = &[
++    "ChatGPT.exe",
++    "Codex.exe",
++    "codex.exe",
++    "ChatGPT",
++    "Codex",
++    "codex",
++];
+@@ -394 +407,0 @@ fn is_codex_plus_plus_path(path: &Path) -> bool {
+-            || lower == "codex-plus-plus"
+@@ -593 +605,4 @@ pub(crate) fn is_supported_app_executable_name(name: &str) -> bool {
+-    name.eq_ignore_ascii_case("Codex.exe") || name.eq_ignore_ascii_case("ChatGPT.exe")
++    name.eq_ignore_ascii_case("Codex.exe")
++        || name.eq_ignore_ascii_case("ChatGPT.exe")
++        || name.eq_ignore_ascii_case("Codex")
++        || name.eq_ignore_ascii_case("ChatGPT")
 --- a/crates/codex-plus-core/src/ports.rs
 +++ b/crates/codex-plus-core/src/ports.rs
 @@ -6,7 +6,7 @@
@@ -30,21 +59,29 @@
  
 --- a/crates/codex-plus-core/tests/launcher.rs
 +++ b/crates/codex-plus-core/tests/launcher.rs
-@@ -352,7 +352,7 @@
- }
- 
- #[test]
+@@ -344,0 +345,19 @@ fn app_paths_normalizes_executable_and_package_paths() {
++#[test]
++fn app_paths_normalizes_linux_wrapper_executable() {
++    let temp = tempfile::tempdir().unwrap();
++    let portable = temp.path().join("codex-plus-plus");
++    let app = portable.join("app");
++    std::fs::create_dir_all(&app).unwrap();
++    std::fs::write(app.join("codex"), "").unwrap();
++
++    assert_eq!(
++        normalize_codex_app_path(&app.join("codex")).as_deref(),
++        Some(app.as_path())
++    );
++    assert_eq!(
++        normalize_codex_app_path(&portable).as_deref(),
++        Some(app.as_path())
++    );
++    assert_eq!(build_codex_executable(&app), app.join("codex"));
++}
++
+@@ -764 +783 @@ fn ports_windows_falls_back_to_ephemeral_when_requested_is_busy() {
 -fn ports_windows_falls_back_to_ephemeral_when_requested_is_busy() {
 +fn ports_falls_back_to_ephemeral_when_requested_is_busy() {
-     let selected = select_platform_loopback_port_with(9229, true, |_| false, || 43001);
- 
-     assert_eq!(selected, 43001);
-@@ -366,7 +366,7 @@
- }
- 
- #[test]
+@@ -778 +797 @@ fn ports_non_windows_keeps_requested_even_when_busy() {
 -fn ports_non_windows_keeps_requested_even_when_busy() {
 +fn ports_keeps_requested_when_fallback_disabled() {
-     let selected = select_platform_loopback_port_with(9229, false, |_| false, || 43001);
- 
-     assert_eq!(selected, 9229);
