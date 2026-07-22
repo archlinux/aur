@@ -1,7 +1,7 @@
 # Maintainer: ks1686 <ks1686@users.noreply.github.com>
 pkgbase=genv
 pkgname=genv
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Track, sync, and reproduce your software environment across Linux, macOS, and WSL2.'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('genv-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ks1686/genv/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2857829298bf66467c1622b70e9d1772786dee3fe075dbc8e9f02394f05f195')
+sha256sums=('d734c65a356ac08bf8c93928cf66518b6ed2eb3655de35fc0f898a801b09e7d6')
 
 build() {
 	cd "genv-${pkgver}"
