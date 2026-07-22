@@ -1,0 +1,8 @@
+pkgbase = scurl-download
+	pkgdesc = Simply adds --curl-options=--tlsv1.3 to all wcurl instances to enforce strong encryption
+	pkgver = 1.0
+	pkgrel = 0
+	arch = any
+	depends = curl
+
+pkgname = scurl-download
