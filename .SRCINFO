@@ -1,0 +1,20 @@
+pkgbase = dtr
+	pkgdesc = Human-friendly package-management wrapper for pacman, yay, and the AUR
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Dexanir/dtr
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = pacman
+	depends = sudo
+	optdepends = yay: AUR package installation and upgrades
+	optdepends = python: AUR RPC queries when yay is unavailable
+	optdepends = git: direct AUR package fallback
+	optdepends = base-devel: direct AUR package builds
+	optdepends = pacman-contrib: precise package cache cleanup with paccache
+	source = dtr-1.1.0::https://raw.githubusercontent.com/Dexanir/dtr/703e9929d5af9e66c088c0f6a80bfda8fe433264/dtr
+	sha256sums = 4f1c93892a067b2fc6e46a219ce5b71b8cb463633aa14e5ca62acc468d8de4f1
+
+pkgname = dtr
+
