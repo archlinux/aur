@@ -14,6 +14,28 @@ This package is unofficial and unaffiliated with Lichess or KDE.
 MSG
 }
 
+# Clear leftovers from a prior `sudo cmake --install` (or similar) that pacman
+# does not own. Otherwise upgrades fail with "exists in filesystem".
+_lichesstv_remove_unowned() {
+  local path
+  for path in "$@"; do
+    if [[ -e "$path" ]] && ! pacman -Qo "$path" &>/dev/null; then
+      rm -f "$path"
+    fi
+  done
+}
+
+pre_install() {
+  _lichesstv_remove_unowned \
+    /usr/share/plasma/wallpapers/io.github.yummiergravy.LichessTvWallpaper/contents/ui/GameMetaPanel.qml \
+    /usr/share/plasma/wallpapers/io.github.yummiergravy.LichessTvWallpaper/contents/ui/PlayersBar.qml \
+    /usr/share/plasma/wallpapers/io.github.yummiergravy.LichessTvWallpaper/contents/ui/PlayerCard.qml
+}
+
+pre_upgrade() {
+  pre_install
+}
+
 post_upgrade() {
   post_install
 }
