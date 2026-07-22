@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Playback
+GenericName=Retro Cartridge Software
+Comment=Dump, play and manage GB/GBA/SN Operator cartridges
+Exec=flatpak run co.epilogue.Playback
+Icon=co.epilogue.Playback
+Terminal=false
+Categories=Game;Emulator;
+Keywords=Epilogue;GB Operator;SN Operator;Game Boy;emulator;cartridge;
+StartupNotify=true

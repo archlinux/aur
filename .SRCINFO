@@ -1,0 +1,26 @@
+pkgbase = playback-flatpak
+	pkgdesc = Retro cartridge software for the Epilogue GB/GBA/SN Operator (official Flatpak bundle)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://www.epilogue.co/software/playback
+	install = playback-flatpak.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	makedepends = imagemagick
+	depends = flatpak
+	conflicts = playback-appimage
+	noextract = playback-flatpak-1.9.0-x86_64.flatpak
+	noextract = playback-flatpak-1.9.0-aarch64.flatpak
+	options = !strip
+	options = !debug
+	source = playback-flatpak.desktop
+	source = co.epilogue.Playback.png
+	sha256sums = b2ecf29507a7972111caf9959fc12fdb8f56510cb4db4461a46829bfb44d318d
+	sha256sums = 06d4ef6af6e87aaa0e363a4ab9ffd53c8dc211adf884adf120628860ab99f427
+	source_x86_64 = playback-flatpak-1.9.0-x86_64.flatpak::https://releases.epilogue.co/desktop/playback/1.9.0/release/linux/co.epilogue.Playback.amd64.flatpak
+	sha256sums_x86_64 = 4e62c01fb2098cc71484b4819d27bc0cb99ce418dfe9aa7f4ddd24ae279ae82c
+	source_aarch64 = playback-flatpak-1.9.0-aarch64.flatpak::https://releases.epilogue.co/desktop/playback/1.9.0/release/linux/co.epilogue.Playback.arm64.flatpak
+	sha256sums_aarch64 = 190c4a77f42494c6ff4c98420effd3252d4a6a010aa9b1c427a7dbf167e2892f
+
+pkgname = playback-flatpak

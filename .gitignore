@@ -1,0 +1,8 @@
+# AUR repo tracks only the packaging sources
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!playback-flatpak.install
+!playback-flatpak.desktop
+!co.epilogue.Playback.png

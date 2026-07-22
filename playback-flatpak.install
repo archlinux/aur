@@ -1,0 +1,45 @@
+# Registers/removes the bundled Playback Flatpak with the system installation.
+# (Desktop entry and icon are plain packaged files, handled by pacman.)
+
+_appid=co.epilogue.Playback
+_bundle="/usr/lib/playback-flatpak/$_appid.flatpak"
+_flathub='https://dl.flathub.org/repo/flathub.flatpakrepo'
+
+# Install (or reinstall, when already present) the staged single-file bundle.
+# Flathub must be a known remote so the org.kde.Platform//6.8 runtime the bundle
+# depends on can be resolved; --bundle reads the runtime-repo embedded in the
+# file and pulls the runtime from there in non-interactive mode.
+_register() {
+  flatpak remote-add --system --if-not-exists flathub "$_flathub" 2>/dev/null || true
+  if flatpak info --system "$_appid" >/dev/null 2>&1; then
+    flatpak install --system --noninteractive --reinstall --bundle "$_bundle"
+  else
+    flatpak install --system --noninteractive --bundle "$_bundle"
+  fi
+}
+
+post_install() {
+  cat <<'MSG'
+==> Installing Playback as a system-wide Flatpak (needs network access for the
+    org.kde.Platform runtime from Flathub).
+==> Launch with `playback`, the desktop entry, or `flatpak run co.epilogue.Playback`.
+==> The GB/SN Operator needs USB access; if the device is not detected, grant it:
+      flatpak override --system --device=all co.epilogue.Playback
+MSG
+  _register
+}
+
+post_upgrade() {
+  _register
+}
+
+pre_remove() {
+  flatpak uninstall --system --noninteractive "$_appid" 2>/dev/null || true
+}
+
+post_remove() {
+  cat <<'MSG'
+==> Playback removed. The org.kde.Platform runtime was kept; reclaim it with:
+      flatpak uninstall --unused
+MSG
+}
