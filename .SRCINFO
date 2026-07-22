@@ -1,6 +1,6 @@
 pkgbase = latte-dock-ng
 	pkgdesc = Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids
-	pkgver = 1.2.28
+	pkgver = 1.2.30
 	pkgrel = 1
 	url = https://github.com/ruizhi-lab/latte-dock-ng
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = latte-dock-ng
 	depends = wayland
 	provides = latte-dock
 	conflicts = latte-dock
-	source = https://github.com/ruizhi-lab/latte-dock-ng/archive/v1.2.28.tar.gz
-	sha256sums = 105fdcf641ea1f2a3c302c92983728e1f418c44a8fba4235b2224f22266c34cc
+	source = https://github.com/ruizhi-lab/latte-dock-ng/archive/v1.2.30.tar.gz
+	sha256sums = 8802916766883a04d4bc824198337dc7c48af9d0abf695e2a320bc806af83597
 
 pkgname = latte-dock-ng
