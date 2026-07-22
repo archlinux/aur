@@ -1,6 +1,6 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
@@ -9,15 +9,15 @@ license=('MIT')
 depends=('bash' 'python' 'hyprland')
 conflicts=('hyprspaces<2.0.0')
 optdepends=(
-  'waybar-hyprspaces-fork-bin: automated hyprspaces Waybar fork'
-  'waybar: stock Waybar restore and restart helpers'
-  'socat: stock Waybar custom module helper'
+  'hyprspaces-waybar-bin: managed hyprspaces-waybar provider'
+  'waybar: default provider restoration and restart helpers'
+  'socat: Waybar custom module helper'
   'sunshine: optional Sunshine headless helper'
 )
 install=hyprspaces-tools.install
-_commit='8b7c25bb24caecacbb71324186d019e00dd69f20'
+_commit='b75697be588fe16444a6d932a11a65dc1ee92964'
 source=("hyprspaces-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('34be64bcf6601f7275d6af69bc91b631f89c4fc9027d26a968e3f2e9fb301a4b')
+sha256sums=('6da587a7666243df7bc604e147e3611b672b8035a6278c3d3eb3ebdc5bf773fc')
 
 package() {
   cd "${srcdir}/hyprspaces-${_commit}"
@@ -31,10 +31,9 @@ package() {
     hyprspaces-doctor \
     hyprspaces-sunshine-headless \
     hyprspaces-waybar-refresh \
-    hyprspaces-waybar-shim \
     hyprspaces-waybar-restart \
-    hyprspaces-waybar-use-fork \
-    hyprspaces-waybar-use-stock \
+    hyprspaces-waybar-enable \
+    hyprspaces-waybar-disable \
     hyprspaces_doctor.py \
     hyprspaces_sunshine_headless.py \
     waybar_jsonc.py; do
