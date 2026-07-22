@@ -4,30 +4,23 @@ pkgname=python-bflb-flash-command-uart
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=1.4.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Bouffalolab Flash Command Tool"
 arch=('any')
 url="https://pypi.org/project/${_name}"
 license=('MIT')
 groups=()
 _pydeps=(
-    toml
     configobj
     cryptography 
     pylink-square
     pyserial
 )
 depends=(
-    # gcc-libs
-    # glibc
-    # libusb
-    # pyside6
     python
     "${_pydeps[@]/#/python-}"
     #AUR   
     python-pycklink
-    # python-portalocker
-    python-telnetlib-313-and-up
 )
 _pymakedeps=(
     build
