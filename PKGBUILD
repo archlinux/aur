@@ -2,7 +2,7 @@
 
 pkgname=sbmusic-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free alternative to Spotify"
 arch=('x86_64')
 url="https://sb-music.com"
@@ -35,7 +35,7 @@ source=(
 )
 
 sha256sums=('850cc2e898afe31da604392a9b538f07ddc04a1e3043e6a4883d23fcee18b7ed'
-            'c569bfb4bada45dcffbc6634034389cef306505b2cb8cdcae7148037134c934b')
+            'df4c5107c62da0710e0b07fc03905b86ce4c2056c834c332a7c0df0f86b03912')
 
 package() {
     cp -rp "$srcdir"/* "$pkgdir/"
