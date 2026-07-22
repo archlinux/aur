@@ -20,13 +20,13 @@
 #     There is intentionally no .SRCINFO.template — a hand-maintained one
 #     drifted from this PKGBUILD in the past (tebako-era tarball refs).
 pkgname=hive-bin
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Folder-as-agent pipeline for autonomous software tasks'
 arch=('any')
 url='https://github.com/ivankuznetsov/hive'
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'cosign')
 makedepends=('ruby-rubygems')
 # `provides=('hive')` + `conflicts=('hive')` is INTENTIONAL and not a
 # self-conflict. We provide the virtual `hive` capability so consumers
@@ -37,7 +37,7 @@ provides=('hive')
 conflicts=('hive' 'apache-hive')
 install=hive.install
 source=("https://github.com/ivankuznetsov/hive/releases/download/v${pkgver}/hive-cli-${pkgver}.gem")
-sha256sums=('e155891285abad817e36ec31fca5234efb33d1dd6369686c9a5a18e52120e6dd')
+sha256sums=('ecda964cc7443af125dc3cd783c5d18d114ceb9982a8b905df243f1076d445d1')
 noextract=("hive-cli-${pkgver}.gem")
 
 package() {

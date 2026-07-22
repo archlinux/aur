@@ -1,7 +1,7 @@
 post_install() {
   cat <<'MSG'
 hive-bin installed.
-Run `hive daemon install` once to install and enable the user daemon, then run `hive init` in a project to scaffold .hive-state and choose project enrollment.
+Run `hive setup` in a project to install and start the native Hive web and daemon services, bootstrap the managed web bundle, and enroll the project. Use `hive setup --no-service` to keep Hive web foreground-only.
 MSG
 }
 
