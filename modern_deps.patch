@@ -1,0 +1,1725 @@
+diff --git a/configure.ac b/configure.ac
+index 761e555..6f882ca 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -141,10 +141,10 @@ AC_ARG_ENABLE(gtk,
+ dnl 
+ dnl GTK: We want this for swfdec-gtk
+ dnl
+-GTK_VER=2.8.0
++GTK_VER=3.0.0
+ AC_SUBST(GTK_VER)
+ if test "$enable_gtk" = "yes"; then
+-	PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_VER libsoup-2.4, HAVE_GTK=yes)
++	PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_VER libsoup-3.0, HAVE_GTK=yes)
+ 	AC_DEFINE(HAVE_GTK, 1, [Define if Gtk is enabled])
+ else
+ 	AC_MSG_NOTICE([Gtk support was not enabled.])
+@@ -206,13 +206,10 @@ AC_SUBST(AUDIO_LIBS)
+ AC_SUBST(AUDIO_CFLAGS)
+ AC_SUBST(AUDIO_TYPE)
+ 
+-LIBOIL_VER=0.3.1
+-PKG_CHECK_MODULES(LIBOIL, liboil-0.3 >= $LIBOIL_VER, HAVE_LIBOIL=yes, HAVE_LIBOIL=no)
++LIBOIL_LIBS=
++LIBOIL_CFLAGS=
+ AC_SUBST(LIBOIL_LIBS)
+ AC_SUBST(LIBOIL_CFLAGS)
+-if test "$HAVE_LIBOIL" = "no"; then
+-  AC_MSG_ERROR([liboil-0.3 >= $LIBOIL_VER is required to build swfdec])
+-fi
+ 
+ CAIRO_VER=1.6.0
+ PKG_CHECK_MODULES(CAIRO, cairo >= $CAIRO_VER cairo-png >= $CAIRO_VER, HAVE_CAIRO=yes, HAVE_CAIRO=no)
+@@ -229,9 +226,9 @@ AC_ARG_ENABLE(gstreamer,
+ 	enable_gstreamer="yes")
+ 
+ if test "$enable_gstreamer" = "yes"; then
+-	GST_REQUIRED=0.10.11
+-	GST_PB_REQUIRED=0.10.15
+-	PKG_CHECK_MODULES(GST, gstreamer-0.10 >= $GST_REQUIRED gstreamer-pbutils-0.10 >= $GST_PB_REQUIRED, HAVE_GST=yes, HAVE_GST=no)
++	GST_REQUIRED=1.28.0
++	GST_PB_REQUIRED=1.28.0
++	PKG_CHECK_MODULES(GST, gstreamer-1.0 >= $GST_REQUIRED gstreamer-pbutils-1.0 >= $GST_PB_REQUIRED, HAVE_GST=yes, HAVE_GST=no)
+ 	if test "x$HAVE_GST" = xyes; then
+ 	  AC_DEFINE(HAVE_GST, 1, [Define if GStreamer is enabled])
+ 	else
+@@ -251,9 +248,9 @@ AC_ARG_ENABLE(vivified,
+ if test "$enable_vivi" = "yes"; then
+ 	AM_PROG_LEX
+ 	MING_REQUIRED=0.4.0.beta5
+-	VIVI_GTK_REQUIRED=2.11.6
++	VIVI_GTK_REQUIRED=3.0.0
+ 	VIVI_GLIB_REQUIRED=2.14
+-	PKG_CHECK_MODULES(VIVI, libming >= $MING_REQUIRED gmodule-export-2.0 gtk+-2.0 >= $VIVI_GTK_REQUIRED glib-2.0 >= $VIVI_GLIB_REQUIRED, HAVE_VIVI=yes, HAVE_VIVI=no)
++	PKG_CHECK_MODULES(VIVI, libming >= $MING_REQUIRED gmodule-export-2.0 gtk+-3.0 >= $VIVI_GTK_REQUIRED glib-2.0 >= $VIVI_GLIB_REQUIRED, HAVE_VIVI=yes, HAVE_VIVI=no)
+ 	if test "x$HAVE_VIVI" = xyes; then
+ 	  AC_DEFINE(HAVE_VIVI, 1, [Define if Vivified is enabled])
+ 	else
+@@ -326,4 +323,3 @@ vivified/code/test/decompiler/Makefile
+ )
+ 
+ AC_OUTPUT
+-
+diff --git a/data/swfdec-gtk.pc.in b/data/swfdec-gtk.pc.in
+index 39eb02e..53f79ff 100644
+--- a/data/swfdec-gtk.pc.in
++++ b/data/swfdec-gtk.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@/swfdec-@SWFDEC_MAJORMINOR@
+ Name: swfdec-gtk
+ Description: Support for playing Flash files in Gtk using Swfdec
+ Version: @VERSION@
+-Requires: swfdec-@SWFDEC_MAJORMINOR@ = @PACKAGE_VERSION@ gtk+-2.0 >= @GTK_VER@
++Requires: swfdec-@SWFDEC_MAJORMINOR@ = @PACKAGE_VERSION@ gtk+-3.0 >= @GTK_VER@
+ Libs: -L${libdir} -lswfdec-gtk-@SWFDEC_MAJORMINOR@
+ Cflags: -I${includedir}
+diff --git a/data/swfdec.pc.in b/data/swfdec.pc.in
+index 2e0e0d4..90ac5ff 100644
+--- a/data/swfdec.pc.in
++++ b/data/swfdec.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@/swfdec-@SWFDEC_MAJORMINOR@
+ Name: swfdec
+ Description: Decodes and Plays Flash files
+ Version: @VERSION@
+-Requires: glib-2.0 >= @GLIB_VER@ gobject-2.0 >= @GLIB_VER@ liboil-0.3 cairo pangocairo
++Requires: glib-2.0 >= @GLIB_VER@ gobject-2.0 >= @GLIB_VER@ cairo pangocairo
+ Libs: -L${libdir} -lswfdec-@SWFDEC_MAJORMINOR@
+ Cflags: -I${includedir}
+diff --git a/player/swfplay.c b/player/swfplay.c
+index 63c4731..1080cea 100644
+--- a/player/swfplay.c
++++ b/player/swfplay.c
+@@ -154,7 +154,7 @@ main (int argc, char *argv[])
+   swfdec_player_set_url (player, url);
+   set_title (GTK_WINDOW (window), url);
+   swfdec_gtk_player_set_missing_plugins_window (SWFDEC_GTK_PLAYER (player),
+-      window->window);
++      gtk_widget_get_window (window));
+   swfdec_url_free (url);
+ 
+   if (g_main_loop_is_running (loop))
+@@ -166,4 +166,3 @@ main (int argc, char *argv[])
+   player = NULL;
+   return 0;
+ }
+-
+diff --git a/swfdec/Makefile.am b/swfdec/Makefile.am
+index f384cdd..ccd2c15 100644
+--- a/swfdec/Makefile.am
++++ b/swfdec/Makefile.am
+@@ -315,6 +315,7 @@ noinst_HEADERS = \
+ 	swfdec_movie_clip_loader.h \
+ 	swfdec_net_connection.h \
+ 	swfdec_net_stream.h \
++	swfdec_oil_compat.h \
+ 	swfdec_path.h \
+ 	swfdec_pattern.h \
+ 	swfdec_player_internal.h \
+diff --git a/swfdec/jpeg/jpeg.c b/swfdec/jpeg/jpeg.c
+index 7d967db..9989aec 100644
+--- a/swfdec/jpeg/jpeg.c
++++ b/swfdec/jpeg/jpeg.c
+@@ -3,8 +3,7 @@
+ #include "config.h"
+ #endif
+ 
+-#include <liboil/liboil.h>
+-#include <liboil/liboil-stdint.h>
++#include "swfdec/swfdec_oil_compat.h"
+ #include <cogcompat.h>
+ 
+ #include <stdlib.h>
+@@ -1137,4 +1136,3 @@ jpeg_load_standard_huffman_tables (JpegDecoder * dec)
+ }
+ 
+ 
+-
+diff --git a/swfdec/jpeg/jpeg_huffman.c b/swfdec/jpeg/jpeg_huffman.c
+index d5b7f61..89747c3 100644
+--- a/swfdec/jpeg/jpeg_huffman.c
++++ b/swfdec/jpeg/jpeg_huffman.c
+@@ -4,7 +4,7 @@
+ #endif
+ 
+ #include <cogcompat.h>
+-#include <liboil/liboil.h>
++#include "swfdec/swfdec_oil_compat.h"
+ 
+ #include <string.h>
+ 
+diff --git a/swfdec/jpeg/jpeg_huffman.h b/swfdec/jpeg/jpeg_huffman.h
+index 9763e09..ddef744 100644
+--- a/swfdec/jpeg/jpeg_huffman.h
++++ b/swfdec/jpeg/jpeg_huffman.h
+@@ -2,7 +2,7 @@
+ #ifndef _HUFFMAN_H_
+ #define _HUFFMAN_H_
+ 
+-#include <liboil/liboil-stdint.h>
++#include <stdint.h>
+ 
+ #include "jpeg_bits.h"
+ 
+@@ -34,4 +34,3 @@ int huffman_table_decode(HuffmanTable *dc_tab, HuffmanTable *ac_tab, JpegBits *b
+ 
+ 
+ #endif
+-
+diff --git a/swfdec/jpeg/jpeg_rgb_decoder.c b/swfdec/jpeg/jpeg_rgb_decoder.c
+index 4206cdc..d170a4d 100644
+--- a/swfdec/jpeg/jpeg_rgb_decoder.c
++++ b/swfdec/jpeg/jpeg_rgb_decoder.c
+@@ -1,6 +1,5 @@
+ 
+-#include <liboil/liboil.h>
+-#include <liboil/liboildebug.h>
++#include "swfdec/swfdec_oil_compat.h"
+ #include <cogcompat.h>
+ 
+ #include "jpeg.h"
+@@ -349,4 +348,3 @@ jpeg_rgb_decoder_get_image (JpegRGBDecoder * rgbdec,
+ }
+ #endif
+ 
+-
+diff --git a/swfdec/swfdec_audio_decoder_gst.c b/swfdec/swfdec_audio_decoder_gst.c
+index e22c05b..d884c50 100644
+--- a/swfdec/swfdec_audio_decoder_gst.c
++++ b/swfdec/swfdec_audio_decoder_gst.c
+@@ -121,7 +121,7 @@ swfdec_audio_decoder_gst_create (guint type, SwfdecAudioFormat format, SwfdecBuf
+   player = g_object_new (SWFDEC_TYPE_AUDIO_DECODER_GST, NULL);
+ 
+   /* create decoder */
+-  sinkcaps = gst_caps_from_string ("audio/x-raw-int, endianness=byte_order, signed=(boolean)true, width=16, depth=16, rate=44100, channels=2");
++  sinkcaps = gst_caps_from_string ("audio/x-raw, format=(string)S16LE, layout=(string)interleaved, rate=44100, channels=2");
+   g_assert (sinkcaps);
+   resample = swfdec_audio_decoder_get_resampler ();
+   if (resample == NULL)
+@@ -197,4 +197,3 @@ static void
+ swfdec_audio_decoder_gst_init (SwfdecAudioDecoderGst *audio_decoder_gst)
+ {
+ }
+-
+diff --git a/swfdec/swfdec_buffer.c b/swfdec/swfdec_buffer.c
+index 3112f47..c29e4d4 100644
+--- a/swfdec/swfdec_buffer.c
++++ b/swfdec/swfdec_buffer.c
+@@ -24,7 +24,7 @@
+ #endif
+ 
+ #include <swfdec_buffer.h>
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ #include <glib.h>
+ #include <string.h>
+ #include <swfdec_debug.h>
+@@ -687,4 +687,3 @@ swfdec_buffer_queue_pull_text (SwfdecBufferQueue *queue, guint version)
+ 
+   return text;
+ }
+-
+diff --git a/swfdec/swfdec_codec_gst.c b/swfdec/swfdec_codec_gst.c
+index 638e8a6..bcf5081 100644
+--- a/swfdec/swfdec_codec_gst.c
++++ b/swfdec/swfdec_codec_gst.c
+@@ -38,12 +38,29 @@ swfdec_gst_buffer_new (SwfdecBuffer *buffer)
+   g_return_val_if_fail (buffer != NULL , NULL);
+   
+   ret = gst_buffer_new_and_alloc (buffer->length);
+-  memcpy (GST_BUFFER_DATA (ret), buffer->data, buffer->length);
++  gst_buffer_fill (ret, 0, buffer->data, buffer->length);
+   swfdec_buffer_unref (buffer);
+ 
+   return ret;
+ }
+ 
++SwfdecBuffer *
++swfdec_buffer_new_from_gst (GstBuffer *buffer)
++{
++  GstMapInfo map;
++  SwfdecBuffer *ret;
++
++  if (!gst_buffer_map (buffer, &map, GST_MAP_READ)) {
++    gst_buffer_unref (buffer);
++    return NULL;
++  }
++  ret = swfdec_buffer_new (map.size);
++  memcpy (ret->data, map.data, map.size);
++  gst_buffer_unmap (buffer, &map);
++  gst_buffer_unref (buffer);
++  return ret;
++}
++
+ /*** TYPEFINDING ***/
+ 
+ /* NB: try to mirror decodebin behavior */
+@@ -110,7 +127,7 @@ swfdec_gst_get_element_factory (GstCaps *caps)
+   GstElementFactory *ret;
+   GList *list;
+ 
+-  list = gst_registry_feature_filter (gst_registry_get_default (), 
++  list = gst_registry_feature_filter (gst_registry_get (), 
+       swfdec_gst_feature_filter, FALSE, caps);
+   if (list == NULL)
+     return NULL;
+@@ -130,7 +147,7 @@ swfdec_gst_connect_srcpad (GstElement *element, GstCaps *caps)
+   GstPadTemplate *tmpl;
+   GstPad *srcpad, *sinkpad;
+ 
+-  sinkpad = gst_element_get_pad (element, "sink");
++  sinkpad = gst_element_get_static_pad (element, "sink");
+   if (sinkpad == NULL)
+     return NULL;
+   gst_caps_ref (caps);
+@@ -157,7 +174,7 @@ swfdec_gst_connect_sinkpad (GstElement *element, GstCaps *caps)
+   GstPadTemplate *tmpl;
+   GstPad *srcpad, *sinkpad;
+ 
+-  srcpad = gst_element_get_pad (element, "src");
++  srcpad = gst_element_get_static_pad (element, "src");
+   if (srcpad == NULL)
+     return NULL;
+   gst_caps_ref (caps);
+@@ -181,7 +198,7 @@ error:
+ /*** DECODER ***/
+ 
+ static GstFlowReturn
+-swfdec_gst_chain_func (GstPad *pad, GstBuffer *buffer)
++swfdec_gst_chain_func (GstPad *pad, GstObject *parent, GstBuffer *buffer)
+ {
+   GQueue *queue = g_object_get_data (G_OBJECT (pad), "swfdec-queue");
+ 
+@@ -201,6 +218,8 @@ swfdec_gst_decoder_init (SwfdecGstDecoder *dec, GstCaps *srccaps, GstCaps *sinkc
+   /* create decoder */
+   factory = swfdec_gst_get_element_factory (srccaps);
+   dec->bin = gst_bin_new ("bin");
++  dec->srccaps = gst_caps_ref (srccaps);
++  dec->caps_sent = FALSE;
+   if (factory) {
+     decoder = gst_element_factory_create (factory, "decoder");
+     gst_object_unref (factory);
+@@ -235,10 +254,10 @@ swfdec_gst_decoder_init (SwfdecGstDecoder *dec, GstCaps *srccaps, GstCaps *sinkc
+   dec->sink = swfdec_gst_connect_sinkpad (decoder, sinkcaps);
+   if (dec->sink == NULL)
+     return FALSE;
+-  gst_pad_set_chain_function (dec->sink, swfdec_gst_chain_func);
++  gst_pad_set_chain_function (dec->sink, GST_DEBUG_FUNCPTR (swfdec_gst_chain_func));
+   dec->queue = g_queue_new ();
+   g_object_set_data (G_OBJECT (dec->sink), "swfdec-queue", dec->queue);
+-  if (!gst_element_set_state (dec->bin, GST_STATE_PLAYING) == GST_STATE_CHANGE_SUCCESS) {
++  if (gst_element_set_state (dec->bin, GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE) {
+     SWFDEC_ERROR ("could not change element state");
+     return FALSE;
+   }
+@@ -261,6 +280,10 @@ swfdec_gst_decoder_finish (SwfdecGstDecoder *dec)
+     g_object_unref (dec->sink);
+     dec->sink = NULL;
+   }
++  if (dec->srccaps) {
++    gst_caps_unref (dec->srccaps);
++    dec->srccaps = NULL;
++  }
+   if (dec->queue) {
+     GstBuffer *buffer;
+     while ((buffer = g_queue_pop_head (dec->queue)) != NULL) {
+@@ -275,24 +298,19 @@ gboolean
+ swfdec_gst_decoder_push (SwfdecGstDecoder *dec, GstBuffer *buffer)
+ {
+   GstFlowReturn ret;
+-  GstCaps *caps;
+ 
+-  /* set caps if none set yet */
+-  caps = gst_buffer_get_caps (buffer);
+-  if (caps) {
+-    gst_caps_unref (caps);
+-  } else {
+-    caps = GST_PAD_CAPS (dec->src);
+-    if (caps == NULL) {
+-      caps = (GstCaps *) gst_pad_get_pad_template_caps (dec->src);
+-      g_assert (gst_caps_is_fixed (caps));
+-      gst_pad_set_caps (dec->src, caps);
+-    }
+-    gst_buffer_set_caps (buffer, GST_PAD_CAPS (dec->src));
++  if (!dec->caps_sent) {
++    GstSegment segment;
++
++    gst_pad_push_event (dec->src, gst_event_new_stream_start ("swfdec"));
++    gst_pad_push_event (dec->src, gst_event_new_caps (dec->srccaps));
++    gst_segment_init (&segment, GST_FORMAT_BYTES);
++    gst_pad_push_event (dec->src, gst_event_new_segment (&segment));
++    dec->caps_sent = TRUE;
+   }
+ 
+   ret = gst_pad_push (dec->src, buffer);
+-  if (GST_FLOW_IS_SUCCESS (ret))
++  if (ret >= GST_FLOW_OK)
+     return TRUE;
+   SWFDEC_ERROR ("error %d pushing data", (int) ret);
+   return FALSE;
+@@ -309,4 +327,3 @@ swfdec_gst_decoder_pull (SwfdecGstDecoder *dec)
+ {
+   return g_queue_pop_head (dec->queue);
+ }
+-
+diff --git a/swfdec/swfdec_codec_gst.h b/swfdec/swfdec_codec_gst.h
+index 049422d..dd9a95d 100644
+--- a/swfdec/swfdec_codec_gst.h
++++ b/swfdec/swfdec_codec_gst.h
+@@ -31,6 +31,8 @@ typedef struct {
+   GstElement *		bin;
+   GstPad *		src;
+   GstPad *		sink;
++  GstCaps *		srccaps;	/* caps sent on the source pad */
++  gboolean		caps_sent;	/* TRUE if caps/segment were sent */
+   GQueue *		queue;		/* all the stored output GstBuffers */
+ } SwfdecGstDecoder;
+ 
+@@ -45,10 +47,7 @@ gboolean	swfdec_gst_decoder_push		(SwfdecGstDecoder *	dec,
+ void		swfdec_gst_decoder_finish	(SwfdecGstDecoder *	dec);
+ 
+ 
+-/* NB: references argument more than once */
+-#define swfdec_buffer_new_from_gst(buffer) \
+-  swfdec_buffer_new_full (GST_BUFFER_DATA (buffer), GST_BUFFER_SIZE (buffer), \
+-      (SwfdecBufferFreeFunc) gst_mini_object_unref, (buffer))
++SwfdecBuffer *	swfdec_buffer_new_from_gst	(GstBuffer *		buffer);
+ GstBuffer *	swfdec_gst_buffer_new		(SwfdecBuffer *		buffer);
+ 
+ 
+@@ -58,4 +57,3 @@ GstElementFactory *
+ 
+ G_END_DECLS
+ #endif
+-
+diff --git a/swfdec/swfdec_init.c b/swfdec/swfdec_init.c
+index 91e14e8..ccd2025 100644
+--- a/swfdec/swfdec_init.c
++++ b/swfdec/swfdec_init.c
+@@ -29,7 +29,7 @@
+ #include "swfdec_audio_decoder_gst.h"
+ #include "swfdec_video_decoder_gst.h"
+ #endif
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ 
+ #include "swfdec_audio_decoder_adpcm.h"
+ #include "swfdec_audio_decoder_uncompressed.h"
+@@ -86,4 +86,3 @@ swfdec_init (void)
+   swfdec_video_decoder_register (SWFDEC_TYPE_VIDEO_DECODER_GST);
+ #endif
+ }
+-
+diff --git a/swfdec/swfdec_oil_compat.h b/swfdec/swfdec_oil_compat.h
+new file mode 100644
+index 0000000..9e97213
+--- /dev/null
++++ b/swfdec/swfdec_oil_compat.h
+@@ -0,0 +1,154 @@
++/* Scalar replacements for the small subset of liboil used by Swfdec. */
++
++#ifndef __SWFDEC_OIL_COMPAT_H__
++#define __SWFDEC_OIL_COMPAT_H__
++
++#include <math.h>
++#include <stdint.h>
++#include <string.h>
++
++static inline void
++oil_init (void)
++{
++}
++
++static inline int
++oil_clamp_255 (int x)
++{
++  return x < 0 ? 0 : (x > 255 ? 255 : x);
++}
++
++static inline void
++oil_copy_u8 (uint8_t *dest, const uint8_t *src, int n)
++{
++  memmove (dest, src, n);
++}
++
++static inline void
++oil_merge_linear_u8 (uint8_t *dest, const uint8_t *src1, const uint8_t *src2,
++    const uint32_t *weight, int n)
++{
++  int i;
++  uint32_t w = *weight;
++
++  for (i = 0; i < n; i++)
++    dest[i] = (uint8_t) (((256 - w) * src1[i] + w * src2[i] + 128) >> 8);
++}
++
++static inline void
++oil_colorspace_argb (uint32_t *dest, const uint32_t *src,
++    const int16_t *matrix, int n)
++{
++  int i;
++
++  (void) matrix;
++  for (i = 0; i < n; i++) {
++    int y = (src[i] >> 16) & 0xff;
++    int u = (src[i] >> 8) & 0xff;
++    int v = src[i] & 0xff;
++    int c = y - 16;
++    int d = u - 128;
++    int e = v - 128;
++    int r = (298 * c + 409 * e + 128) >> 8;
++    int g = (298 * c - 100 * d - 208 * e + 128) >> 8;
++    int b = (298 * c + 516 * d + 128) >> 8;
++
++    dest[i] = (0xffU << 24) |
++      (oil_clamp_255 (r) << 16) |
++      (oil_clamp_255 (g) << 8) |
++      oil_clamp_255 (b);
++  }
++}
++
++static inline void
++oil_mult8x8_s16 (int16_t *dest, const int16_t *src1, const int16_t *src2,
++    int dstr, int sstr1, int sstr2)
++{
++  int x, y;
++
++  for (y = 0; y < 8; y++) {
++    int16_t *d = (int16_t *) ((uint8_t *) dest + y * dstr);
++    const int16_t *s1 = (const int16_t *) ((const uint8_t *) src1 + y * sstr1);
++    const int16_t *s2 = (const int16_t *) ((const uint8_t *) src2 + y * sstr2);
++    for (x = 0; x < 8; x++)
++      d[x] = s1[x] * s2[x];
++  }
++}
++
++static inline void
++oil_unzigzag8x8_s16 (int16_t *dest, int dstr, const int16_t *src, int sstr)
++{
++  static const uint8_t zigzag[64] = {
++    0, 1, 8, 16, 9, 2, 3, 10,
++    17, 24, 32, 25, 18, 11, 4, 5,
++    12, 19, 26, 33, 40, 48, 41, 34,
++    27, 20, 13, 6, 7, 14, 21, 28,
++    35, 42, 49, 56, 57, 50, 43, 36,
++    29, 22, 15, 23, 30, 37, 44, 51,
++    58, 59, 52, 45, 38, 31, 39, 46,
++    53, 60, 61, 54, 47, 55, 62, 63
++  };
++  int i;
++
++  memset (dest, 0, dstr * 8);
++  for (i = 0; i < 64; i++) {
++    int pos = zigzag[i];
++    int16_t *d = (int16_t *) ((uint8_t *) dest + (pos / 8) * dstr);
++    const int16_t *s = (const int16_t *) ((const uint8_t *) src + (i / 8) * sstr);
++    d[pos % 8] = s[i % 8];
++  }
++}
++
++static inline void
++oil_idct8x8_s16 (int16_t *dest, int dstr, const int16_t *src, int sstr)
++{
++  int x, y, u, v;
++  const double inv_sqrt2 = 0.70710678118654752440;
++
++  for (y = 0; y < 8; y++) {
++    int16_t *d = (int16_t *) ((uint8_t *) dest + y * dstr);
++    for (x = 0; x < 8; x++) {
++      double sum = 0.0;
++      for (v = 0; v < 8; v++) {
++	const int16_t *s = (const int16_t *) ((const uint8_t *) src + v * sstr);
++	for (u = 0; u < 8; u++) {
++	  double cu = u == 0 ? inv_sqrt2 : 1.0;
++	  double cv = v == 0 ? inv_sqrt2 : 1.0;
++	  sum += cu * cv * s[u] *
++	    cos (((2 * x + 1) * u * M_PI) / 16.0) *
++	    cos (((2 * y + 1) * v * M_PI) / 16.0);
++	}
++      }
++      d[x] = (int16_t) nearbyint (sum / 4.0);
++    }
++  }
++}
++
++static inline void
++oil_trans8x8_s16 (int16_t *dest, int dstr, const int16_t *src, int sstr)
++{
++  int x, y;
++
++  for (y = 0; y < 8; y++) {
++    int16_t *d = (int16_t *) ((uint8_t *) dest + y * dstr);
++    for (x = 0; x < 8; x++) {
++      const int16_t *s = (const int16_t *) ((const uint8_t *) src + x * sstr);
++      d[x] = s[y];
++    }
++  }
++}
++
++static inline void
++oil_clipconv8x8_u8_s16 (uint8_t *dest, int dstr, const int16_t *src, int sstr)
++{
++  int x, y;
++
++  for (y = 0; y < 8; y++) {
++    uint8_t *d = dest + y * dstr;
++    const int16_t *s = (const int16_t *) ((const uint8_t *) src + y * sstr);
++    for (x = 0; x < 8; x++)
++      d[x] = oil_clamp_255 (s[x]);
++  }
++}
++
++#endif
+diff --git a/swfdec/swfdec_sound_matrix.c b/swfdec/swfdec_sound_matrix.c
+index 5531a43..7b4a3f7 100644
+--- a/swfdec/swfdec_sound_matrix.c
++++ b/swfdec/swfdec_sound_matrix.c
+@@ -22,7 +22,7 @@
+ #endif
+ 
+ #include <swfdec_sound_matrix.h>
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ #include <swfdec_debug.h>
+ 
+ void
+@@ -120,4 +120,3 @@ swfdec_sound_matrix_multiply (SwfdecSoundMatrix *dest,
+   dest->lr = lr;
+   dest->rr = rr;
+ }
+-
+diff --git a/swfdec/swfdec_sound_object.c b/swfdec/swfdec_sound_object.c
+index 5b8793b..3dfc7cb 100644
+--- a/swfdec/swfdec_sound_object.c
++++ b/swfdec/swfdec_sound_object.c
+@@ -381,7 +381,7 @@ swfdec_sound_object_attachSound (SwfdecAsContext *cx, SwfdecAsObject *object, gu
+   if (new) {
+     if (sound->provider)
+       g_object_unref (sound->provider);
+-    sound->provider = g_object_ref (new);
++    sound->provider = g_object_ref (SWFDEC_SOUND_PROVIDER (new));
+   }
+ }
+ 
+@@ -459,4 +459,3 @@ swfdec_sound_object_construct (SwfdecAsContext *cx, SwfdecAsObject *object, guin
+ 
+   SWFDEC_AS_VALUE_SET_OBJECT (ret, object);
+ }
+-
+diff --git a/swfdec/swfdec_swf_decoder.c b/swfdec/swfdec_swf_decoder.c
+index 46e9960..6099c38 100644
+--- a/swfdec/swfdec_swf_decoder.c
++++ b/swfdec/swfdec_swf_decoder.c
+@@ -27,7 +27,7 @@
+ #include <math.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ 
+ #include "swfdec_swf_decoder.h"
+ #include "swfdec.h"
+@@ -485,4 +485,3 @@ swfdec_swf_decoder_get_script (SwfdecSwfDecoder *s, guint8 *data)
+ 
+   return g_hash_table_lookup (s->scripts, data);
+ }
+-
+diff --git a/swfdec/swfdec_video_decoder.c b/swfdec/swfdec_video_decoder.c
+index 43ddb98..52a519f 100644
+--- a/swfdec/swfdec_video_decoder.c
++++ b/swfdec/swfdec_video_decoder.c
+@@ -21,7 +21,7 @@
+ #include "config.h"
+ #endif
+ 
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ #include "swfdec_video_decoder.h"
+ #include "swfdec_color.h"
+ #include "swfdec_debug.h"
+@@ -379,4 +379,3 @@ swfdec_video_decoder_errorv (SwfdecVideoDecoder *decoder, const char *error, va_
+   g_free (real);
+   decoder->error = TRUE;
+ }
+-
+diff --git a/swfdec/swfdec_video_decoder_gst.c b/swfdec/swfdec_video_decoder_gst.c
+index 38f393d..5f8f6c8 100644
+--- a/swfdec/swfdec_video_decoder_gst.c
++++ b/swfdec/swfdec_video_decoder_gst.c
+@@ -64,14 +64,12 @@ swfdec_video_decoder_get_sink_caps (guint codec)
+   switch (swfdec_video_codec_get_format (codec)) {
+     case SWFDEC_VIDEO_FORMAT_RGBA:
+ #if G_BYTE_ORDER == G_BIG_ENDIAN
+-      return gst_caps_from_string ("video/x-raw-rgb, bpp=32, endianness=4321, depth=24, "
+-	  "red_mask=16711680, green_mask=65280, blue_mask=255");
++      return gst_caps_from_string ("video/x-raw, format=(string)RGBx");
+ #else
+-      return gst_caps_from_string ("video/x-raw-rgb, bpp=32, endianness=4321, depth=24, "
+-	  "red_mask=65280, green_mask=16711680, blue_mask=-16777216");
++      return gst_caps_from_string ("video/x-raw, format=(string)xRGB");
+ #endif
+     case SWFDEC_VIDEO_FORMAT_I420:
+-      return gst_caps_from_string ("video/x-raw-yuv, format=(fourcc)I420");
++      return gst_caps_from_string ("video/x-raw, format=(string)I420");
+     default:
+       g_return_val_if_reached (NULL);
+   }
+@@ -149,6 +147,10 @@ swfdec_video_decoder_gst_decode (SwfdecVideoDecoder *dec, SwfdecBuffer *buffer)
+     SWFDEC_ERROR ("failed to pull decoded buffer. Broken stream?");
+     return;
+   } else {
++    if (player->last_mapped) {
++      gst_buffer_unmap (player->last, &player->last_map);
++      player->last_mapped = FALSE;
++    }
+     if (player->last)
+       gst_buffer_unref (player->last);
+     player->last = buf;
+@@ -158,7 +160,7 @@ swfdec_video_decoder_gst_decode (SwfdecVideoDecoder *dec, SwfdecBuffer *buffer)
+     SWFDEC_ERROR ("too many output buffers!");
+     gst_buffer_unref (buf);
+   }
+-  caps = gst_buffer_get_caps (player->last);
++  caps = gst_pad_get_current_caps (player->dec.sink);
+   if (caps == NULL) {
+     swfdec_video_decoder_error (dec, "no caps on decoded buffer");
+     return;
+@@ -170,23 +172,30 @@ swfdec_video_decoder_gst_decode (SwfdecVideoDecoder *dec, SwfdecBuffer *buffer)
+     return;
+   }
+   buf = player->last;
++  if (!gst_buffer_map (buf, &player->last_map, GST_MAP_READ)) {
++    swfdec_video_decoder_error (dec, "could not map decoded buffer");
++    gst_caps_unref (caps);
++    return;
++  }
++  player->last_mapped = TRUE;
+   switch (swfdec_video_codec_get_format (dec->codec)) {
+     case SWFDEC_VIDEO_FORMAT_RGBA:
+-      dec->plane[0] = buf->data;
++      dec->plane[0] = player->last_map.data;
+       dec->rowstride[0] = dec->width * 4;
+       break;
+     case SWFDEC_VIDEO_FORMAT_I420:
+-      dec->plane[0] = buf->data;
++      dec->plane[0] = player->last_map.data;
+       dec->rowstride[0] = SWFDEC_ALIGN (dec->width, 4);
+       dec->plane[1] = dec->plane[0] + dec->rowstride[0] * SWFDEC_ALIGN (dec->height, 2);
+       dec->rowstride[1] = SWFDEC_ALIGN (dec->width, 8) / 2;
+       dec->plane[2] = dec->plane[1] + dec->rowstride[1] * SWFDEC_ALIGN (dec->height, 2) / 2;
+       dec->rowstride[2] = dec->rowstride[1];
+-      g_assert (dec->plane[2] + dec->rowstride[2] * SWFDEC_ALIGN (dec->height, 2) / 2 == dec->plane[0] + buf->size);
++      g_assert (dec->plane[2] + dec->rowstride[2] * SWFDEC_ALIGN (dec->height, 2) / 2 == dec->plane[0] + player->last_map.size);
+       break;
+     default:
+       g_return_if_reached ();
+   }
++  gst_caps_unref (caps);
+ #undef SWFDEC_ALIGN
+ }
+ 
+@@ -196,6 +205,10 @@ swfdec_video_decoder_gst_dispose (GObject *object)
+   SwfdecVideoDecoderGst *player = SWFDEC_VIDEO_DECODER_GST (object);
+ 
+   swfdec_gst_decoder_finish (&player->dec);
++  if (player->last_mapped) {
++    gst_buffer_unmap (player->last, &player->last_map);
++    player->last_mapped = FALSE;
++  }
+   if (player->last)
+     gst_buffer_unref (player->last);
+ 
+@@ -219,4 +232,3 @@ static void
+ swfdec_video_decoder_gst_init (SwfdecVideoDecoderGst *dec)
+ {
+ }
+-
+diff --git a/swfdec/swfdec_video_decoder_gst.h b/swfdec/swfdec_video_decoder_gst.h
+index 4fcc151..adb32e8 100644
+--- a/swfdec/swfdec_video_decoder_gst.h
++++ b/swfdec/swfdec_video_decoder_gst.h
+@@ -42,6 +42,8 @@ struct _SwfdecVideoDecoderGst
+ 
+   SwfdecGstDecoder		dec;		/* the decoder element */
+   GstBuffer *			last;		/* last decoded buffer */
++  GstMapInfo			last_map;	/* mapped last buffer */
++  gboolean			last_mapped;	/* TRUE if last_map is valid */
+ };
+ 
+ struct _SwfdecVideoDecoderGstClass
+diff --git a/swfdec/swfdec_video_decoder_vp6_alpha.c b/swfdec/swfdec_video_decoder_vp6_alpha.c
+index e7fba2c..8677c3c 100644
+--- a/swfdec/swfdec_video_decoder_vp6_alpha.c
++++ b/swfdec/swfdec_video_decoder_vp6_alpha.c
+@@ -21,7 +21,7 @@
+ #include "config.h"
+ #endif
+ 
+-#include <liboil/liboil.h>
++#include "swfdec_oil_compat.h"
+ #include "swfdec_video_decoder_vp6_alpha.h"
+ #include "swfdec_bits.h"
+ #include "swfdec_debug.h"
+@@ -137,4 +137,3 @@ swfdec_video_decoder_vp6_alpha_init (SwfdecVideoDecoderVp6Alpha *vp6)
+ 	"error initializing children VP6 decoders");
+   }
+ }
+-
+diff --git a/swfdec-gtk/swfdec_gtk_keys.c b/swfdec-gtk/swfdec_gtk_keys.c
+index b6b982f..dafd016 100644
+--- a/swfdec-gtk/swfdec_gtk_keys.c
++++ b/swfdec-gtk/swfdec_gtk_keys.c
+@@ -98,9 +98,9 @@ compute_keycodes (void)
+   /* sanity check */
+   g_assert (G_N_ELEMENTS (flash_keycodes_old) == G_N_ELEMENTS (flash_keycodes_evdev));
+ 
+-  if (keyval == GDK_Page_Down) {
++  if (keyval == GDK_KEY_Page_Down) {
+     return flash_keycodes_old;
+-  } else if (keyval != GDK_Control_R) {
++  } else if (keyval != GDK_KEY_Control_R) {
+     g_printerr ("FIXME: Failed to detect proper keyboard layout, assuming evdev.\n");
+   }
+ 
+diff --git a/swfdec-gtk/swfdec_gtk_loader.c b/swfdec-gtk/swfdec_gtk_loader.c
+index ef95008..bbf8c09 100644
+--- a/swfdec-gtk/swfdec_gtk_loader.c
++++ b/swfdec-gtk/swfdec_gtk_loader.c
+@@ -54,6 +54,7 @@ struct _SwfdecGtkLoader
+   SwfdecLoader		loader;
+ 
+   SoupMessage *		message;	/* the message we're sending */
++  GCancellable *	cancellable;	/* cancellable for the message */
+   gboolean		opened;		/* set after first bytes of data have arrived */
+ };
+ 
+@@ -67,6 +68,12 @@ struct _SwfdecGtkLoaderClass {
+ 
+ G_DEFINE_TYPE (SwfdecGtkLoader, swfdec_gtk_loader, SWFDEC_TYPE_FILE_LOADER)
+ 
++static void
++swfdec_gtk_loader_free_bytes (gpointer *priv, unsigned char *data)
++{
++  g_bytes_unref ((GBytes *) priv);
++}
++
+ static void
+ swfdec_gtk_loader_ensure_open (SwfdecGtkLoader *gtk)
+ {
+@@ -75,45 +82,58 @@ swfdec_gtk_loader_ensure_open (SwfdecGtkLoader *gtk)
+   if (gtk->opened)
+     return;
+ 
+-  real_uri = soup_uri_to_string (soup_message_get_uri (gtk->message), FALSE);
++  real_uri = g_uri_to_string (soup_message_get_uri (gtk->message));
+   swfdec_loader_set_url (SWFDEC_LOADER (gtk), real_uri);
+   g_free (real_uri);
+-  if (soup_message_headers_get_encoding (gtk->message->response_headers) == SOUP_ENCODING_CONTENT_LENGTH) {
++  if (soup_message_headers_get_content_length (
++	soup_message_get_response_headers (gtk->message)) >= 0) {
+     swfdec_loader_set_size (SWFDEC_LOADER (gtk), 
+-	soup_message_headers_get_content_length (gtk->message->response_headers));
++	soup_message_headers_get_content_length (
++	  soup_message_get_response_headers (gtk->message)));
+   }
+   swfdec_stream_open (SWFDEC_STREAM (gtk));
+   gtk->opened = TRUE;
+ }
+ 
+ static void
+-swfdec_gtk_loader_push (SoupMessage *msg, SoupBuffer *chunk, gpointer loader)
++swfdec_gtk_loader_read_cb (GObject *source, GAsyncResult *result, gpointer loader)
+ {
+   SwfdecGtkLoader *gtk = SWFDEC_GTK_LOADER (loader);
+   SwfdecBuffer *buffer;
++  GBytes *bytes;
++  GError *error = NULL;
++  gconstpointer data;
++  gsize length;
++  guint status;
++
++  bytes = soup_session_send_and_read_finish (SOUP_SESSION (source), result, &error);
++  if (bytes == NULL) {
++    if (error->domain != G_IO_ERROR || error->code != G_IO_ERROR_CANCELLED)
++      swfdec_stream_error (loader, "%s", error->message);
++    g_error_free (error);
++    return;
++  }
+ 
+-  chunk = soup_buffer_copy (chunk);
+-
+-  swfdec_gtk_loader_ensure_open (gtk);
+-  buffer = swfdec_buffer_new_full ((unsigned char *) chunk->data, chunk->length,
+-      (SwfdecBufferFreeFunc) soup_buffer_free, chunk);
+-  swfdec_stream_push (loader, buffer);
+-}
+-  
+-static void
+-swfdec_gtk_loader_finished (SoupMessage *msg, gpointer loader)
+-{
+-  if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {
++  status = soup_message_get_status (gtk->message);
++  if (SOUP_STATUS_IS_SUCCESSFUL (status)) {
+     swfdec_gtk_loader_ensure_open (loader);
++    data = g_bytes_get_data (bytes, &length);
++    if (length > 0) {
++      buffer = swfdec_buffer_new_full ((unsigned char *) data, length,
++	  swfdec_gtk_loader_free_bytes, g_bytes_ref (bytes));
++      swfdec_stream_push (loader, buffer);
++    }
+     swfdec_stream_close (loader);
+   } else {
+     if (!SWFDEC_GTK_LOADER (loader)->opened) {
+-      char *real_uri = soup_uri_to_string (soup_message_get_uri (msg), FALSE);
++      char *real_uri = g_uri_to_string (soup_message_get_uri (gtk->message));
+       swfdec_loader_set_url (loader, real_uri);
+       g_free (real_uri);
+     }
+-    swfdec_stream_error (loader, "%u %s", msg->status_code, msg->reason_phrase);
++    swfdec_stream_error (loader, "%u %s", status,
++	soup_message_get_reason_phrase (gtk->message));
+   }
++  g_bytes_unref (bytes);
+ }
+ 
+ static void
+@@ -122,11 +142,14 @@ swfdec_gtk_loader_dispose (GObject *object)
+   SwfdecGtkLoader *gtk = SWFDEC_GTK_LOADER (object);
+ 
+   if (gtk->message) {
+-    g_signal_handlers_disconnect_by_func (gtk->message, swfdec_gtk_loader_push, gtk);
+-    g_signal_handlers_disconnect_by_func (gtk->message, swfdec_gtk_loader_finished, gtk);
+     g_object_unref (gtk->message);
+     gtk->message = NULL;
+   }
++  if (gtk->cancellable) {
++    g_cancellable_cancel (gtk->cancellable);
++    g_object_unref (gtk->cancellable);
++    gtk->cancellable = NULL;
++  }
+ 
+   G_OBJECT_CLASS (swfdec_gtk_loader_parent_class)->dispose (object);
+ }
+@@ -159,20 +182,21 @@ swfdec_gtk_loader_load (SwfdecLoader *loader, SwfdecPlayer *player,
+ 
+     gtk->message = soup_message_new (buffer != NULL ? "POST" : "GET",
+ 	swfdec_url_get_url (url));
+-    soup_message_set_flags (gtk->message, SOUP_MESSAGE_OVERWRITE_CHUNKS);
+ 
+     for (i = 0; i < n_headers; i++) {
+-      soup_message_headers_append (gtk->message->request_headers,
++      soup_message_headers_append (soup_message_get_request_headers (gtk->message),
+ 	  header_names[i], header_values[i]);
+     }
+ 
+-    g_signal_connect (gtk->message, "got-chunk", G_CALLBACK (swfdec_gtk_loader_push), gtk);
+-    g_signal_connect (gtk->message, "finished", G_CALLBACK (swfdec_gtk_loader_finished), gtk);
+-    if (buffer)
+-      soup_message_set_request (gtk->message, "appliation/x-www-form-urlencoded",
+-	  SOUP_MEMORY_COPY, (char *) buffer->data, buffer->length);
+-    g_object_ref (gtk->message);
+-    soup_session_queue_message (klass->session, gtk->message, NULL, NULL);
++    gtk->cancellable = g_cancellable_new ();
++    if (buffer) {
++      GBytes *bytes = g_bytes_new (buffer->data, buffer->length);
++      soup_message_set_request_body_from_bytes (gtk->message,
++	  "application/x-www-form-urlencoded", bytes);
++      g_bytes_unref (bytes);
++    }
++    soup_session_send_and_read_async (klass->session, gtk->message,
++	G_PRIORITY_DEFAULT, gtk->cancellable, swfdec_gtk_loader_read_cb, gtk);
+   }
+   swfdec_url_free (url);
+ }
+@@ -183,9 +207,11 @@ swfdec_gtk_loader_close (SwfdecStream *stream)
+   SwfdecGtkLoader *gtk = SWFDEC_GTK_LOADER (stream);
+ 
+   if (gtk->message && !swfdec_stream_is_complete (stream)) {
+-    SwfdecGtkLoaderClass *klass = SWFDEC_GTK_LOADER_GET_CLASS (gtk);
+-
+-    soup_session_cancel_message (klass->session, gtk->message, SOUP_STATUS_CANCELLED);
++    if (gtk->cancellable) {
++      g_cancellable_cancel (gtk->cancellable);
++      g_object_unref (gtk->cancellable);
++      gtk->cancellable = NULL;
++    }
+     g_object_unref (gtk->message);
+     gtk->message = NULL;
+   }
+@@ -204,11 +230,10 @@ swfdec_gtk_loader_class_init (SwfdecGtkLoaderClass *klass)
+ 
+   loader_class->load = swfdec_gtk_loader_load;
+   
+-  klass->session = soup_session_async_new ();
++  klass->session = soup_session_new ();
+ }
+ 
+ static void
+ swfdec_gtk_loader_init (SwfdecGtkLoader *gtk_loader)
+ {
+ }
+-
+diff --git a/swfdec-gtk/swfdec_gtk_player.c b/swfdec-gtk/swfdec_gtk_player.c
+index 16dae78..8c3e804 100644
+--- a/swfdec-gtk/swfdec_gtk_player.c
++++ b/swfdec-gtk/swfdec_gtk_player.c
+@@ -129,9 +129,9 @@ swfdec_gtk_player_missing_plugins (SwfdecPlayer *player, const char **details)
+     priv->missing_plugins_context = gst_install_plugins_context_new ();
+ #ifdef GDK_WINDOWING_X11
+     gst_install_plugins_context_set_xid (priv->missing_plugins_context,
+-	GDK_DRAWABLE_XID (priv->missing_plugins_window));
++	GDK_WINDOW_XID (priv->missing_plugins_window));
+ #endif
+-    result = gst_install_plugins_async ((char **) details, priv->missing_plugins_context,
++    result = gst_install_plugins_async (details, priv->missing_plugins_context,
+ 	swfdec_gtk_player_missing_plugins_done, player);
+     if (result == GST_INSTALL_PLUGINS_STARTED_OK) {
+       if (swfdec_gtk_player_get_playing (SWFDEC_GTK_PLAYER (player))) {
+@@ -480,4 +480,3 @@ swfdec_gtk_player_get_missing_plugins_window (SwfdecGtkPlayer *player)
+ 
+   return player->priv->missing_plugins_window;
+ }
+-
+diff --git a/swfdec-gtk/swfdec_gtk_socket.c b/swfdec-gtk/swfdec_gtk_socket.c
+index 13b2272..b07077e 100644
+--- a/swfdec-gtk/swfdec_gtk_socket.c
++++ b/swfdec-gtk/swfdec_gtk_socket.c
+@@ -22,8 +22,7 @@
+ #endif
+ 
+ #include "swfdec_gtk_socket.h"
+-#include <libsoup/soup.h>
+-#include <libsoup/soup-address.h>
++#include <gio/gio.h>
+ 
+ /*** GTK-DOC ***/
+ 
+@@ -48,8 +47,9 @@ struct _SwfdecGtkSocket
+ {
+   SwfdecSocket		socket;
+ 
+-  SoupSocket *		sock;		/* libsoup socket we're using */
+-  gboolean		sock_writable;	/* FALSE if writing would block */
++  GSocketConnection *	connection;	/* connection we're using */
++  GCancellable *	cancellable;	/* cancellable for async I/O */
++  gboolean		sock_writable;	/* FALSE if writing is in progress */
+   SwfdecBufferQueue *	queue;		/* buffers we still need to push */
+ };
+ 
+@@ -57,102 +57,147 @@ struct _SwfdecGtkSocketClass {
+   SwfdecSocketClass	socket_class;
+ };
+ 
++typedef struct {
++  SwfdecGtkSocket *	gtk;
++  SwfdecBuffer *	buffer;
++} SwfdecGtkSocketRead;
++
+ /*** SwfdecGtkSocket ***/
+ 
+ G_DEFINE_TYPE (SwfdecGtkSocket, swfdec_gtk_socket, SWFDEC_TYPE_SOCKET)
+ 
++static void	swfdec_gtk_socket_read_cb	(GObject *	source,
++						 GAsyncResult *	result,
++						 gpointer	data);
++
+ static void
+-swfdec_gtk_socket_close (SwfdecStream *stream)
++swfdec_gtk_socket_read_free (SwfdecGtkSocketRead *read)
+ {
+-  SwfdecGtkSocket *gtk = SWFDEC_GTK_SOCKET (stream);
++  g_object_unref (read->gtk);
++  if (read->buffer)
++    swfdec_buffer_unref (read->buffer);
++  g_free (read);
++}
+ 
+-  soup_socket_disconnect (gtk->sock);
++static void
++swfdec_gtk_socket_start_read (SwfdecGtkSocket *gtk)
++{
++  SwfdecGtkSocketRead *read;
++  GInputStream *stream;
++
++  if (gtk->connection == NULL)
++    return;
++
++  read = g_new (SwfdecGtkSocketRead, 1);
++  read->gtk = g_object_ref (gtk);
++  read->buffer = swfdec_buffer_new (1024);
++  stream = g_io_stream_get_input_stream (G_IO_STREAM (gtk->connection));
++  g_input_stream_read_async (stream, read->buffer->data, read->buffer->length,
++      G_PRIORITY_DEFAULT, gtk->cancellable, swfdec_gtk_socket_read_cb, read);
+ }
+ 
+ static void
+-swfdec_gtk_socket_do_disconnect (SoupSocket *sock, SwfdecGtkSocket *gtk)
++swfdec_gtk_socket_close (SwfdecStream *stream)
+ {
+-  swfdec_stream_close (SWFDEC_STREAM (gtk));
++  SwfdecGtkSocket *gtk = SWFDEC_GTK_SOCKET (stream);
++
++  if (gtk->cancellable)
++    g_cancellable_cancel (gtk->cancellable);
++  if (gtk->connection)
++    g_io_stream_close (G_IO_STREAM (gtk->connection), NULL, NULL);
+ }
+ 
+ static void
+-swfdec_gtk_socket_do_read (SoupSocket *sock, SwfdecGtkSocket *gtk)
++swfdec_gtk_socket_read_cb (GObject *source, GAsyncResult *result, gpointer data)
+ {
+-#define SWFDEC_GTK_SOCKET_BLOCK_SIZE 1024
+-  SwfdecBuffer *buffer;
+-  SoupSocketIOStatus status;
+-  gsize len;
++  SwfdecGtkSocketRead *read = data;
++  SwfdecGtkSocket *gtk = read->gtk;
++  GInputStream *stream = G_INPUT_STREAM (source);
+   GError *error = NULL;
++  gsize len;
+ 
+-  do {
+-    buffer = swfdec_buffer_new (SWFDEC_GTK_SOCKET_BLOCK_SIZE);
+-    status = soup_socket_read (sock, buffer->data,
+-	SWFDEC_GTK_SOCKET_BLOCK_SIZE, &len, NULL, &error);
+-    buffer->length = len;
+-    switch (status) {
+-      case SOUP_SOCKET_OK:
+-	swfdec_stream_push (SWFDEC_STREAM (gtk), buffer);
+-	break;
+-      case SOUP_SOCKET_WOULD_BLOCK:
+-      case SOUP_SOCKET_EOF:
+-	swfdec_buffer_unref (buffer);
+-	break;
+-      case SOUP_SOCKET_ERROR:
+-	swfdec_buffer_unref (buffer);
+-	swfdec_stream_error (SWFDEC_STREAM (gtk), "%s", error->message);
+-	g_error_free (error);
+-	break;
+-      default:
+-	g_warning ("unhandled status code %u from soup_socket_read()", (guint) status);
+-	break;
+-    }
+-  } while (status == SOUP_SOCKET_OK);
++  len = g_input_stream_read_finish (stream, result, &error);
++  if (error) {
++    if (error->domain != G_IO_ERROR || error->code != G_IO_ERROR_CANCELLED)
++      swfdec_stream_error (SWFDEC_STREAM (gtk), "%s", error->message);
++    g_error_free (error);
++    swfdec_gtk_socket_read_free (read);
++    return;
++  }
++  if (len == 0) {
++    swfdec_stream_close (SWFDEC_STREAM (gtk));
++    swfdec_gtk_socket_read_free (read);
++    return;
++  }
++  read->buffer->length = len;
++  swfdec_stream_push (SWFDEC_STREAM (gtk), read->buffer);
++  read->buffer = NULL;
++  swfdec_gtk_socket_read_free (read);
++
++  swfdec_gtk_socket_start_read (gtk);
+ }
+ 
+ static void
+-swfdec_gtk_socket_do_write (SoupSocket *sock, SwfdecGtkSocket *gtk)
++swfdec_gtk_socket_do_write (SwfdecGtkSocket *gtk);
++
++static void
++swfdec_gtk_socket_write_cb (GObject *source, GAsyncResult *result, gpointer data)
+ {
+-  SwfdecBuffer *buffer;
+-  SoupSocketIOStatus status;
++  SwfdecGtkSocket *gtk = SWFDEC_GTK_SOCKET (data);
+   GError *error = NULL;
+   gsize len;
+ 
++  len = g_output_stream_write_finish (G_OUTPUT_STREAM (source), result, &error);
++  if (error) {
++    if (error->domain != G_IO_ERROR || error->code != G_IO_ERROR_CANCELLED)
++      swfdec_stream_error (SWFDEC_STREAM (gtk), "%s", error->message);
++    g_error_free (error);
++    return;
++  }
++
++  swfdec_buffer_unref (swfdec_buffer_queue_pull (gtk->queue, len));
+   gtk->sock_writable = TRUE;
+-  while ((buffer = swfdec_buffer_queue_peek_buffer (gtk->queue))) {
+-    status = soup_socket_write (sock, buffer->data, buffer->length, 
+-	&len, NULL, &error);
+-    swfdec_buffer_unref (buffer);
+-    switch (status) {
+-      case SOUP_SOCKET_OK:
+-	buffer = swfdec_buffer_queue_pull (gtk->queue, len);
+-	swfdec_buffer_unref (buffer);
+-	break;
+-      case SOUP_SOCKET_WOULD_BLOCK:
+-      case SOUP_SOCKET_EOF:
+-	gtk->sock_writable = FALSE;
+-	break;
+-      case SOUP_SOCKET_ERROR:
+-	swfdec_stream_error (SWFDEC_STREAM (gtk), "%s", error->message);
+-	g_error_free (error);
+-	return;
+-      default:
+-	g_warning ("unhandled status code %u from soup_socket_read()", (guint) status);
+-	break;
+-    }
+-  };
++  swfdec_gtk_socket_do_write (gtk);
++}
++
++static void
++swfdec_gtk_socket_do_write (SwfdecGtkSocket *gtk)
++{
++  SwfdecBuffer *buffer;
++
++  if (!gtk->sock_writable || gtk->connection == NULL)
++    return;
++
++  buffer = swfdec_buffer_queue_peek_buffer (gtk->queue);
++  if (buffer == NULL)
++    return;
++
++  gtk->sock_writable = FALSE;
++  g_output_stream_write_async (g_io_stream_get_output_stream (G_IO_STREAM (gtk->connection)),
++      buffer->data, buffer->length, G_PRIORITY_DEFAULT, gtk->cancellable,
++      swfdec_gtk_socket_write_cb, gtk);
++  swfdec_buffer_unref (buffer);
+ }
+ 
+ static void
+-swfdec_gtk_socket_do_connect (SoupSocket *sock, guint status, gpointer gtk)
++swfdec_gtk_socket_do_connect (GObject *source, GAsyncResult *result, gpointer data)
+ {
+-  if (SOUP_STATUS_IS_SUCCESSFUL (status)) {
+-    swfdec_stream_open (gtk);
+-    // need to read here, since readable signal will only be launched once the
+-    // socket has been read until it's empty once
+-    swfdec_gtk_socket_do_read (sock, gtk);
+-  } else {
+-    swfdec_stream_error (gtk, "error connecting");
++  SwfdecGtkSocket *gtk = SWFDEC_GTK_SOCKET (data);
++  GSocketClient *client = G_SOCKET_CLIENT (source);
++  GError *error = NULL;
++
++  gtk->connection = g_socket_client_connect_to_host_finish (client, result, &error);
++  g_object_unref (client);
++  if (gtk->connection == NULL) {
++    if (error->domain != G_IO_ERROR || error->code != G_IO_ERROR_CANCELLED)
++      swfdec_stream_error (data, "%s", error->message);
++    g_error_free (error);
++    return;
+   }
++
++  swfdec_stream_open (data);
++  swfdec_gtk_socket_start_read (gtk);
++  swfdec_gtk_socket_do_write (gtk);
+ }
+ 
+ static void
+@@ -160,19 +205,11 @@ swfdec_gtk_socket_connect (SwfdecSocket *sock_, SwfdecPlayer *player,
+     const char *hostname, guint port)
+ {
+   SwfdecGtkSocket *sock = SWFDEC_GTK_SOCKET (sock_);
+-  SoupAddress *addr;
+-
+-  addr = soup_address_new (hostname, port);
+-  sock->sock = soup_socket_new (
+-      SOUP_SOCKET_FLAG_NONBLOCKING, TRUE,
+-      SOUP_SOCKET_REMOTE_ADDRESS, addr, NULL);
+-  g_signal_connect (sock->sock, "disconnected", 
+-      G_CALLBACK (swfdec_gtk_socket_do_disconnect), sock);
+-  g_signal_connect (sock->sock, "readable", 
+-      G_CALLBACK (swfdec_gtk_socket_do_read), sock);
+-  g_signal_connect (sock->sock, "writable", 
+-      G_CALLBACK (swfdec_gtk_socket_do_write), sock);
+-  soup_socket_connect_async (sock->sock, NULL, swfdec_gtk_socket_do_connect, sock);
++  GSocketClient *client;
++
++  client = g_socket_client_new ();
++  g_socket_client_connect_to_host_async (client, hostname, port,
++      sock->cancellable, swfdec_gtk_socket_do_connect, sock);
+ }
+ 
+ static void
+@@ -182,7 +219,7 @@ swfdec_gtk_socket_send (SwfdecSocket *sock, SwfdecBuffer *buffer)
+ 
+   swfdec_buffer_queue_push (gtk->queue, buffer);
+   if (gtk->sock_writable)
+-    swfdec_gtk_socket_do_write (gtk->sock, gtk);
++    swfdec_gtk_socket_do_write (gtk);
+ }
+ 
+ static void
+@@ -190,11 +227,14 @@ swfdec_gtk_socket_dispose (GObject *object)
+ {
+   SwfdecGtkSocket *gtk = SWFDEC_GTK_SOCKET (object);
+ 
+-  if (gtk->sock) {
+-    g_signal_handlers_disconnect_matched (gtk->sock, G_SIGNAL_MATCH_DATA,
+-      0, 0, NULL, NULL, gtk);
+-    g_object_unref (gtk->sock);
+-    gtk->sock = NULL;
++  if (gtk->cancellable) {
++    g_cancellable_cancel (gtk->cancellable);
++    g_object_unref (gtk->cancellable);
++    gtk->cancellable = NULL;
++  }
++  if (gtk->connection) {
++    g_object_unref (gtk->connection);
++    gtk->connection = NULL;
+   }
+   if (gtk->queue) {
+     swfdec_buffer_queue_unref (gtk->queue);
+@@ -222,6 +262,6 @@ static void
+ swfdec_gtk_socket_init (SwfdecGtkSocket *gtk)
+ {
+   gtk->sock_writable = TRUE;
++  gtk->cancellable = g_cancellable_new ();
+   gtk->queue = swfdec_buffer_queue_new ();
+ }
+-
+diff --git a/swfdec-gtk/swfdec_gtk_widget.c b/swfdec-gtk/swfdec_gtk_widget.c
+index cde877f..de1bc9f 100644
+--- a/swfdec-gtk/swfdec_gtk_widget.c
++++ b/swfdec-gtk/swfdec_gtk_widget.c
+@@ -35,7 +35,7 @@ struct _SwfdecGtkWidgetPrivate
+   cairo_surface_type_t	renderer_type;	/* the renderer that was set */
+   SwfdecRenderer *	renderer;	/* renderer in use */
+   gboolean		interactive;	/* TRUE if this widget propagates keyboard and mouse events */
+-  GdkRegion *		invalid;	/* invalid regions we didn't yet repaint */
++  cairo_region_t *	invalid;	/* invalid regions we didn't yet repaint */
+   guint			invalidator;	/* GSource used for invalidating window contents */
+   GtkWidget *		fullscreen_window;/* the window we use for displaying fullscreen */
+   gboolean		fullscreen_mode;/* TRUE if we're a fullscreen widget */
+@@ -83,7 +83,8 @@ swfdec_gtk_widget_motion_notify (GtkWidget *gtkwidget, GdkEventMotion *event)
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+   int x, y;
+ 
+-  gdk_window_get_pointer (gtkwidget->window, &x, &y, NULL);
++  gdk_window_get_device_position (gtk_widget_get_window (gtkwidget),
++      event->device, &x, &y, NULL);
+ 
+   if (priv->interactive && priv->player)
+     swfdec_player_mouse_move (priv->player, x, y);
+@@ -147,10 +148,10 @@ swfdec_gtk_event_to_keycode (GdkEventKey *event)
+    */
+ 
+   /* try to match latin keys directly */
+-  if (event->keyval >= GDK_A && event->keyval <= GDK_Z)
+-    return event->keyval - GDK_A + SWFDEC_KEY_A;
+-  if (event->keyval >= GDK_a && event->keyval <= GDK_z)
+-    return event->keyval - GDK_a + SWFDEC_KEY_A;
++  if (event->keyval >= GDK_KEY_A && event->keyval <= GDK_KEY_Z)
++    return event->keyval - GDK_KEY_A + SWFDEC_KEY_A;
++  if (event->keyval >= GDK_KEY_a && event->keyval <= GDK_KEY_z)
++    return event->keyval - GDK_KEY_a + SWFDEC_KEY_A;
+ 
+   /* last resort: try to translate the hardware keycode directly */
+   ret = swfdec_gtk_keycode_from_hardware_keycode (event->hardware_keycode);
+@@ -234,10 +235,10 @@ swfdec_gtk_widget_clear_invalidations (SwfdecGtkWidget *widget)
+   if (priv->invalidator) {
+     g_source_remove (priv->invalidator);
+     priv->invalidator = 0;
+-    gdk_region_destroy (priv->invalid);
+-    priv->invalid = gdk_region_new ();
++    cairo_region_destroy (priv->invalid);
++    priv->invalid = cairo_region_create ();
+   } else {
+-    g_assert (gdk_region_empty (priv->invalid));
++    g_assert (cairo_region_is_empty (priv->invalid));
+   }
+ }
+ 
+@@ -252,41 +253,38 @@ swfdec_gtk_widget_create_renderer (cairo_surface_type_t type, int width, int hei
+ }
+ 
+ static gboolean
+-swfdec_gtk_widget_expose (GtkWidget *gtkwidget, GdkEventExpose *event)
++swfdec_gtk_widget_draw (GtkWidget *gtkwidget, cairo_t *cr)
+ {
+   SwfdecGtkWidget *widget = SWFDEC_GTK_WIDGET (gtkwidget);
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+-  cairo_t *cr;
++  GtkAllocation allocation;
+   cairo_surface_t *surface = NULL;
+ 
+-  if (event->window != gtkwidget->window ||
+-      priv->fullscreen_window != NULL)
++  if (priv->fullscreen_window != NULL)
+     return FALSE;
+ 
+-  /* FIXME: This might be ugly */
+-  gdk_region_union (event->region, priv->invalid);
+-  gdk_window_begin_paint_region (event->window, event->region);
+-
++  gtk_widget_get_allocation (gtkwidget, &allocation);
+   if (!priv->renderer_set ||
+       (surface = swfdec_gtk_widget_create_renderer (priv->renderer_type, 
+-	      event->area.width, event->area.height)) == NULL) {
+-    cr = gdk_cairo_create (gtkwidget->window);
++	      allocation.width, allocation.height)) == NULL) {
++    cairo_save (cr);
+   } else {
+-    cairo_surface_set_device_offset (surface, -event->area.x, -event->area.y);
++    cairo_surface_set_device_offset (surface, 0, 0);
+     cr = cairo_create (surface);
+   }
+-  gdk_cairo_region (cr, event->region);
+-  cairo_clip (cr);
+   if (priv->player == NULL) {
+     cairo_set_source_rgb (cr, 1, 1, 1);
+     cairo_paint (cr);
+   } else {
+     swfdec_player_render (priv->player, cr);
+   }
+-  cairo_destroy (cr);
++  if (surface)
++    cairo_destroy (cr);
++  else
++    cairo_restore (cr);
+ 
+   if (surface) {
+-    cairo_t *crw = gdk_cairo_create (gtkwidget->window);
++    cairo_t *crw = gdk_cairo_create (gtk_widget_get_window (gtkwidget));
+     cairo_set_source_surface (crw, surface, 0, 0);
+     cairo_paint (crw);
+     cairo_destroy (crw);
+@@ -294,7 +292,6 @@ swfdec_gtk_widget_expose (GtkWidget *gtkwidget, GdkEventExpose *event)
+   }
+ 
+   swfdec_gtk_widget_clear_invalidations (widget);
+-  gdk_window_end_paint (event->window);
+   return FALSE;
+ }
+ 
+@@ -366,7 +363,7 @@ swfdec_gtk_widget_dispose (GObject *object)
+ 
+   g_assert (priv->renderer == NULL);
+   if (priv->invalid) {
+-    gdk_region_destroy (priv->invalid);
++    cairo_region_destroy (priv->invalid);
+     priv->invalid = NULL;
+   }
+   g_assert (priv->invalidator == 0);
+@@ -380,18 +377,18 @@ swfdec_gtk_widget_size_allocate (GtkWidget *gtkwidget, GtkAllocation *allocation
+   SwfdecGtkWidget *widget = SWFDEC_GTK_WIDGET (gtkwidget);
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+ 
+-  gtkwidget->allocation = *allocation;
++  gtk_widget_set_allocation (gtkwidget, allocation);
+ 
+   if (priv->player && swfdec_player_is_initialized (priv->player))
+     swfdec_player_set_size (priv->player, allocation->width, allocation->height);
+-  if (GTK_WIDGET_REALIZED (gtkwidget)) {
+-    gdk_window_move_resize (gtkwidget->window, 
++  if (gtk_widget_get_realized (gtkwidget)) {
++    gdk_window_move_resize (gtk_widget_get_window (gtkwidget), 
+ 	allocation->x, allocation->y, allocation->width, allocation->height);
+   }
+ }
+ 
+ static void
+-swfdec_gtk_widget_size_request (GtkWidget *gtkwidget, GtkRequisition *req)
++swfdec_gtk_widget_get_preferred_size (GtkWidget *gtkwidget, GtkRequisition *req)
+ {
+   SwfdecGtkWidget * widget = SWFDEC_GTK_WIDGET (gtkwidget);
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+@@ -412,10 +409,30 @@ swfdec_gtk_widget_size_request (GtkWidget *gtkwidget, GtkRequisition *req)
+   } 
+ }
+ 
++static void
++swfdec_gtk_widget_get_preferred_width (GtkWidget *gtkwidget,
++    gint *minimum, gint *natural)
++{
++  GtkRequisition req;
++
++  swfdec_gtk_widget_get_preferred_size (gtkwidget, &req);
++  *minimum = *natural = req.width;
++}
++
++static void
++swfdec_gtk_widget_get_preferred_height (GtkWidget *gtkwidget,
++    gint *minimum, gint *natural)
++{
++  GtkRequisition req;
++
++  swfdec_gtk_widget_get_preferred_size (gtkwidget, &req);
++  *minimum = *natural = req.height;
++}
++
+ static void
+ swfdec_gtk_widget_update_cursor (SwfdecGtkWidget *widget)
+ {
+-  GdkWindow *window = GTK_WIDGET (widget)->window;
++  GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (widget));
+   GdkDisplay *display = gtk_widget_get_display (GTK_WIDGET (widget));
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+   SwfdecMouseCursor swfcursor;
+@@ -431,33 +448,34 @@ swfdec_gtk_widget_update_cursor (SwfdecGtkWidget *widget)
+   switch (swfcursor) {
+     case SWFDEC_MOUSE_CURSOR_NONE:
+       {
+-	GdkBitmap *bitmap;
+-	GdkColor color = { 0, 0, 0, 0 };
+-	char data = 0;
+-
+-	bitmap = gdk_bitmap_create_from_data (window, &data, 1, 1);
+-	if (bitmap == NULL)
+-	  return;
+-	cursor = gdk_cursor_new_from_pixmap (bitmap, bitmap, &color, &color, 0, 0);
++	cairo_surface_t *surface;
++	cairo_t *cr;
++
++	surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 1, 1);
++	cr = cairo_create (surface);
++	cairo_set_source_rgba (cr, 0, 0, 0, 0);
++	cairo_paint (cr);
++	cairo_destroy (cr);
++	cursor = gdk_cursor_new_from_surface (display, surface, 0, 0);
++	cairo_surface_destroy (surface);
+ 	gdk_window_set_cursor (window, cursor);
+-	gdk_cursor_unref (cursor);
+-	g_object_unref (bitmap);
++	g_object_unref (cursor);
+ 	break;
+       }
+     case SWFDEC_MOUSE_CURSOR_TEXT:
+       cursor = gdk_cursor_new_for_display (display, GDK_XTERM);
+       gdk_window_set_cursor (window, cursor);
+-      gdk_cursor_unref (cursor);
++      g_object_unref (cursor);
+       break;
+     case SWFDEC_MOUSE_CURSOR_CLICK:
+       cursor = gdk_cursor_new_for_display (display, GDK_HAND2);
+       gdk_window_set_cursor (window, cursor);
+-      gdk_cursor_unref (cursor);
++      g_object_unref (cursor);
+       break;
+     case SWFDEC_MOUSE_CURSOR_NORMAL:
+       cursor = gdk_cursor_new_for_display (display, GDK_LEFT_PTR);
+       gdk_window_set_cursor (window, cursor);
+-      gdk_cursor_unref (cursor);
++      g_object_unref (cursor);
+       break;
+     default:
+       g_warning ("invalid cursor %d", (int) swfcursor);
+@@ -472,7 +490,7 @@ swfdec_gtk_widget_update_renderer (SwfdecGtkWidget *widget)
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+   gboolean needs_renderer;
+ 
+-  needs_renderer = GTK_WIDGET_REALIZED (widget) &&
++  needs_renderer = gtk_widget_get_realized (GTK_WIDGET (widget)) &&
+     priv->player != NULL;
+ 
+   if (priv->renderer != NULL) {
+@@ -496,7 +514,7 @@ swfdec_gtk_widget_update_renderer (SwfdecGtkWidget *widget)
+ 	cairo_surface_destroy (surface);
+       }
+     } else {
+-      cairo_t *cr = gdk_cairo_create (GTK_WIDGET (widget)->window);
++      cairo_t *cr = gdk_cairo_create (gtk_widget_get_window (GTK_WIDGET (widget)));
+ 
+       priv->renderer = swfdec_renderer_new_for_player (
+ 	  cairo_get_target (cr), priv->player);
+@@ -509,39 +527,24 @@ swfdec_gtk_widget_update_renderer (SwfdecGtkWidget *widget)
+ static void
+ swfdec_gtk_widget_update_background (SwfdecGtkWidget *widget)
+ {
+-  GdkWindow *window = GTK_WIDGET (widget)->window;
+-  GdkColor bgcolor;
+-
+-  if (window == NULL)
+-    return;
+-
+-  if (widget->priv->player) {
+-    guint bg = swfdec_player_get_background_color (widget->priv->player);
+-    bgcolor.red = 0x101 * ((bg >> 16) & 0xFF);
+-    bgcolor.green = 0x101 * ((bg >> 8) & 0xFF);
+-    bgcolor.blue = 0x101 * (bg & 0xFF);
+-  } else {
+-    /* white */
+-    bgcolor.red = bgcolor.green = bgcolor.blue = 0xFFFF;
+-  }
+-  gdk_rgb_find_color (gdk_drawable_get_colormap (window), &bgcolor);
+-  gdk_window_set_background (window, &bgcolor);
+-
++  gtk_widget_queue_draw (GTK_WIDGET (widget));
+ }
+ 
+ static void
+ swfdec_gtk_widget_realize (GtkWidget *widget)
+ {
+   GdkWindowAttr attributes;
++  GtkAllocation allocation;
+   gint attributes_mask;
+ 
+-  GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
++  gtk_widget_set_realized (widget, TRUE);
++  gtk_widget_get_allocation (widget, &allocation);
+ 
+   attributes.window_type = GDK_WINDOW_CHILD;
+-  attributes.x = widget->allocation.x;
+-  attributes.y = widget->allocation.y;
+-  attributes.width = widget->allocation.width;
+-  attributes.height = widget->allocation.height;
++  attributes.x = allocation.x;
++  attributes.y = allocation.y;
++  attributes.width = allocation.width;
++  attributes.height = allocation.height;
+   attributes.wclass = GDK_INPUT_OUTPUT;
+   attributes.event_mask = gtk_widget_get_events (widget);
+   attributes.event_mask |= GDK_EXPOSURE_MASK | 
+@@ -556,12 +559,11 @@ swfdec_gtk_widget_realize (GtkWidget *widget)
+ 
+   attributes_mask = GDK_WA_X | GDK_WA_Y;
+ 
+-  widget->window = gdk_window_new (gtk_widget_get_parent_window (widget),
+-      &attributes, attributes_mask);
+-  gdk_window_set_user_data (widget->window, widget);
++  gtk_widget_set_window (widget, gdk_window_new (gtk_widget_get_parent_window (widget),
++      &attributes, attributes_mask));
++  gtk_widget_register_window (widget, gtk_widget_get_window (widget));
+ 
+   swfdec_gtk_widget_update_background (SWFDEC_GTK_WIDGET (widget));
+-  widget->style = gtk_style_attach (widget->style, widget->window);
+ 
+   if (SWFDEC_GTK_WIDGET (widget)->priv->player) {
+     swfdec_gtk_widget_update_cursor (SWFDEC_GTK_WIDGET (widget));
+@@ -580,7 +582,7 @@ swfdec_gtk_widget_unrealize (GtkWidget *widget)
+ static void
+ swfdec_gtk_widget_map (GtkWidget *gtkwidget)
+ {
+-  g_assert (gdk_region_empty (SWFDEC_GTK_WIDGET (gtkwidget)->priv->invalid));
++  g_assert (cairo_region_is_empty (SWFDEC_GTK_WIDGET (gtkwidget)->priv->invalid));
+ 
+   GTK_WIDGET_CLASS (swfdec_gtk_widget_parent_class)->map (gtkwidget);
+ }
+@@ -595,12 +597,6 @@ swfdec_gtk_widget_unmap (GtkWidget *gtkwidget)
+   swfdec_gtk_widget_clear_invalidations (widget);
+ }
+ 
+-static void
+-swfdec_gtk_widget_style_set (GtkWidget *gtkwidget, GtkStyle *previous)
+-{
+-  /* do not set the window's background here */
+-}
+-
+ static void
+ swfdec_gtk_widget_class_init (SwfdecGtkWidgetClass * g_class)
+ {
+@@ -632,10 +628,10 @@ swfdec_gtk_widget_class_init (SwfdecGtkWidgetClass * g_class)
+   widget_class->unrealize = swfdec_gtk_widget_unrealize;
+   widget_class->map = swfdec_gtk_widget_map;
+   widget_class->unmap = swfdec_gtk_widget_unmap;
+-  widget_class->style_set = swfdec_gtk_widget_style_set;
+-  widget_class->size_request = swfdec_gtk_widget_size_request;
++  widget_class->get_preferred_width = swfdec_gtk_widget_get_preferred_width;
++  widget_class->get_preferred_height = swfdec_gtk_widget_get_preferred_height;
+   widget_class->size_allocate = swfdec_gtk_widget_size_allocate;
+-  widget_class->expose_event = swfdec_gtk_widget_expose;
++  widget_class->draw = swfdec_gtk_widget_draw;
+   widget_class->button_press_event = swfdec_gtk_widget_button_press;
+   widget_class->button_release_event = swfdec_gtk_widget_button_release;
+   widget_class->motion_notify_event = swfdec_gtk_widget_motion_notify;
+@@ -658,11 +654,11 @@ swfdec_gtk_widget_init (SwfdecGtkWidget *widget)
+ 
+   priv->interactive = TRUE;
+   priv->renderer_type = CAIRO_SURFACE_TYPE_IMAGE;
+-  priv->invalid = gdk_region_new ();
++  priv->invalid = cairo_region_create ();
+ 
+   gtk_widget_set_double_buffered (GTK_WIDGET (widget), FALSE);
+ 
+-  GTK_WIDGET_SET_FLAGS (widget, GTK_CAN_FOCUS);
++  gtk_widget_set_can_focus (GTK_WIDGET (widget), TRUE);
+ }
+ 
+ static gboolean
+@@ -671,9 +667,9 @@ swfdec_gtk_widget_do_invalidate (gpointer widgetp)
+   SwfdecGtkWidget *widget = widgetp;
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+ 
+-  g_assert (GTK_WIDGET_REALIZED (widget));
++  g_assert (gtk_widget_get_realized (GTK_WIDGET (widget)));
+ 
+-  gdk_window_invalidate_region (GTK_WIDGET (widget)->window, priv->invalid, FALSE);
++  gdk_window_invalidate_region (gtk_widget_get_window (GTK_WIDGET (widget)), priv->invalid, FALSE);
+   swfdec_gtk_widget_clear_invalidations (widget);
+   return FALSE;
+ }
+@@ -685,12 +681,12 @@ swfdec_gtk_widget_invalidate_cb (SwfdecPlayer *player,
+   SwfdecGtkWidgetPrivate *priv = widget->priv;
+   guint i;
+ 
+-  if (!GTK_WIDGET_MAPPED (widget) ||
++  if (!gtk_widget_get_mapped (GTK_WIDGET (widget)) ||
+       priv->fullscreen_window != NULL)
+     return;
+ 
+   for (i = 0; i < n_rects; i++) {
+-    gdk_region_union_with_rect (priv->invalid, (GdkRectangle *) &rect[i]);
++    cairo_region_union_rectangle (priv->invalid, (cairo_rectangle_int_t *) &rect[i]);
+   }
+   if (priv->invalidator == 0) {
+     priv->invalidator = g_idle_add_full (SWFDEC_GTK_PRIORITY_REDRAW,
+@@ -738,7 +734,7 @@ swfdec_gtk_widget_notify_cb (SwfdecPlayer *player, GParamSpec *pspec, SwfdecGtkW
+     swfdec_gtk_widget_update_background (widget);
+   } else if (g_str_equal (pspec->name, "selection")) {
+     const char *text = swfdec_player_get_selection (player);
+-    if (GTK_WIDGET_HAS_FOCUS (widget) && text) {
++    if (gtk_widget_has_focus (GTK_WIDGET (widget)) && text) {
+       GtkClipboard *clipboard = gtk_widget_get_clipboard (GTK_WIDGET (widget),
+ 	  GDK_SELECTION_PRIMARY);
+       gtk_clipboard_set_text (clipboard, text, -1);
+@@ -757,22 +753,24 @@ swfdec_gtk_widget_query_size_cb (SwfdecPlayer *player, gboolean fullscreen,
+     return FALSE;
+ 
+   if (fullscreen) {
+-    GdkWindow *window = GTK_WIDGET (widget)->window;
++    GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (widget));
+     GdkScreen *screen;
+     GdkRectangle rect;
+     int monitor;
+ 
+     if (window == NULL)
+       return FALSE;
+-    screen = gdk_drawable_get_screen (GDK_DRAWABLE (window));
++    screen = gdk_window_get_screen (window);
+     monitor = gdk_screen_get_monitor_at_window (screen, window);
+     gdk_screen_get_monitor_geometry (screen, monitor, &rect);
+     *width = rect.width;
+     *height = rect.height;
+   } else {
+     GtkWidget *gtkwidget = GTK_WIDGET (widget);
+-    *width = gtkwidget->allocation.width;
+-    *height = gtkwidget->allocation.height;
++    GtkAllocation allocation;
++    gtk_widget_get_allocation (gtkwidget, &allocation);
++    *width = allocation.width;
++    *height = allocation.height;
+   }
+   return TRUE;
+ }
+@@ -805,10 +803,10 @@ swfdec_gtk_widget_set_player (SwfdecGtkWidget *widget, SwfdecPlayer *player)
+     g_signal_connect (player, "query-size", G_CALLBACK (swfdec_gtk_widget_query_size_cb), widget);
+     g_object_ref (player);
+     swfdec_gtk_widget_update_cursor (widget);
+-    swfdec_player_set_focus (player, GTK_WIDGET_HAS_FOCUS (GTK_WIDGET (widget)));
++    swfdec_player_set_focus (player, gtk_widget_has_focus (GTK_WIDGET (widget)));
+   } else {
+-    if (GTK_WIDGET (widget)->window)
+-      gdk_window_set_cursor (GTK_WIDGET (widget)->window, NULL); 
++    if (gtk_widget_get_window (GTK_WIDGET (widget)))
++      gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (widget)), NULL); 
+   }
+   if (priv->player) {
+     g_signal_handlers_disconnect_by_func (priv->player, swfdec_gtk_widget_invalidate_cb, widget);
+@@ -995,4 +993,3 @@ swfdec_gtk_widget_uses_renderer (SwfdecGtkWidget *widget)
+ 
+   return widget->priv->renderer_set;
+ }
+-
