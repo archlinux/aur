@@ -1,7 +1,7 @@
 # Maintainer: voidbornfr <discordrishab@gmail.com>
 pkgname=void-files
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI"
 arch=('x86_64')
 url="https://github.com/voidbornfr/void-files"
@@ -61,7 +61,21 @@ package() {
     install -Dm755 "void-files-gui.py" "$pkgdir/usr/bin/void-files-gui"
   fi
 
-  # 3. Install License
+  # 3. Install Desktop Entries (App Launcher support)
+  if [ -f "void-files-gui.desktop" ]; then
+    install -Dm644 "void-files-gui.desktop" "$pkgdir/usr/share/applications/void-files-gui.desktop"
+  fi
+  if [ -f "void-files-tui.desktop" ]; then
+    install -Dm644 "void-files-tui.desktop" "$pkgdir/usr/share/applications/void-files-tui.desktop"
+  fi
+
+  # 4. Install Application Icon
+  if [ -f "assests/icon.png" ]; then
+    install -Dm644 "assests/icon.png" "$pkgdir/usr/share/pixmaps/void-files.png"
+    install -Dm644 "assests/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/void-files.png"
+  fi
+
+  # 5. Install License
   if [ -f "LICENSE" ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
