@@ -3,18 +3,19 @@
 
 _target=aarch64-none-linux-gnu
 pkgname=${_target}-gcc-bin
-pkgver=15.2.rel1
+pkgver=15.3.rel1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 Linux target"
 arch=('x86_64' 'aarch64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
 license=('GPL' 'LGPL')
 
-# https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
-source_x86_64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_x86_64=('9a685b335bd709d683a8c782253c37e8c36c10e6924e59e39d4769b02132eb43')
-source_aarch64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_aarch64=('97e3f600c00413088bb21109475443f9a1c57b4f75336a6e820acd43b065f875')
+# https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/${pkgver}/arm-gnu-toolchain-${pkgver}-x86_64-aarch64-none-linux-gnu.tar.xz
+# https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/${pkgver}/arm-gnu-toolchain-${pkgver}-aarch64-aarch64-none-linux-gnu.tar.xz
+source_x86_64=(https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/${pkgver}/arm-gnu-toolchain-${pkgver}-x86_64-${_target}.tar.xz)
+sha256sums_x86_64=('ea12d99f87848009270277afe5d03fac873cb869784a39387183835f743014d9')
+source_aarch64=(https://gitlab.arm.com/api/v4/projects/tooling%2Fgnu-toolchains-for-arm/packages/generic/gnu-toolchain/${pkgver}/arm-gnu-toolchain-${pkgver}-aarch64-${_target}.tar.xz)
+sha256sums_aarch64=('8020be7aa1013704756158400cb5ba438d6f09b2909795d13617b9e7bac53286')
 
 options=('!strip' '!debug' '!emptydirs' 'staticlibs')
 provides=(aarch64-none-linux-gnu-gcc aarch64-none-linux-gnu-gcc-binutils aarch64-none-linux-gnu-gdb)
