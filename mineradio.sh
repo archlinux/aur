@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/mineradio/mineradio "$@"
+exec electron /opt/mineradio/resources/app "$@"

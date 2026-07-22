@@ -16,12 +16,13 @@
 
 pkgname=mineradio
 pkgver=1.1.1
-pkgrel=9
+pkgrel=10
 pkgdesc='沉浸式音乐播放器，融合天气电台、歌词舞台、粒子视觉和 3D 歌单架 (Linux port, 原作者 XxHuberrr)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
 license=('GPL-3.0-only')
 depends=(
+  'electron'
   'gtk3'
   'libxss'
   'nss'
@@ -63,9 +64,10 @@ build() {
 package() {
   cd "$srcdir/Mineradio-$pkgver"
 
-  # Install the unpacked electron app to /opt/mineradio
+  # Install only the app resources (not the bundled Electron binary)
+  # System Electron will be used at runtime via the wrapper script
   install -dm755 "$pkgdir/opt/mineradio"
-  cp -r dist/linux-unpacked/* "$pkgdir/opt/mineradio/"
+  cp -r dist/linux-unpacked/resources "$pkgdir/opt/mineradio/"
 
   # Make the wrapper script executable and install it
   install -Dm755 "$srcdir/mineradio.sh" "$pkgdir/usr/bin/mineradio"

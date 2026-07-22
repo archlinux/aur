@@ -1,5 +1,5 @@
 post_install() {
-  echo "Mineradio installed to /opt/mineradio/"
+  echo "Mineradio installed to /opt/mineradio/ (uses system Electron)"
   echo "Run with: mineradio"
 }
 
