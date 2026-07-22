@@ -1,0 +1,7 @@
+post_install() {
+  echo ">>> To enable and start the layout-switcher daemon, run:"
+  echo ">>>   systemctl --user enable --now layout-switcher.service"
+  echo ">>>"
+  echo ">>> To bind layout-switcher to a hotkey, configure your compositor"
+  echo ">>> to execute: pkill -USR1 layout-switcher"
+}

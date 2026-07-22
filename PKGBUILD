@@ -1,7 +1,7 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 
 pkgname=layout-switcher-git
-pkgver=r1.2a3b3dd
+pkgver=r1.494cab0
 pkgrel=1
 pkgdesc="Wayland layout switcher daemon with cyclic double-press (Rust rewrite)"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,8 @@ provides=('layout-switcher')
 conflicts=('layout-switcher')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+install=layout-switcher.install
+
 
 pkgver() {
   cd layout-switcher
