@@ -2,7 +2,7 @@
 
 pkgname=yurigram-bin
 _pkgname=yurigram
-pkgver=7.0.1
+pkgver=7.0.4
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('geoclue: geoinformation support'
 
 source=("$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz::${url}/releases/download/$pkgver-$pkgrel/$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz")
 
-sha256sums=('3e0dfdce8e316a403200d868f1119f916f58781de7087c0b1d8829b738cd5092')
+sha256sums=('40afdc4d3b5a7a826cab73a99962ef531e47cf0ebc66bc59f064a3526e39a467')
 
 package() {
 

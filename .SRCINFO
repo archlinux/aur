@@ -1,8 +1,8 @@
 pkgbase = yurigram-bin
-	pkgdesc = Yet another unofficial tdesktop client, but forked from yukigram
-	pkgver = 7.0.1
+	pkgdesc = Yet another unofficial tdesktop client
+	pkgver = 7.0.4
 	pkgrel = 1
-	url = https://github.com/Revincx/Yukigram
+	url = https://github.com/Revincx/Yurigram
 	arch = x86_64
 	license = GPL3
 	depends = glibc
@@ -21,7 +21,7 @@ pkgbase = yurigram-bin
 	conflicts = yukigram-rua-bin
 	replaces = yukigram-rua
 	replaces = yukigram-rua-bin
-	source = yurigram-7.0.1-1-x86_64.tar.gz::https://github.com/Revincx/Yukigram/releases/download/7.0.1-1/yurigram-7.0.1-1-x86_64.tar.gz
-	sha256sums = 3e0dfdce8e316a403200d868f1119f916f58781de7087c0b1d8829b738cd5092
+	source = yurigram-7.0.4-1-x86_64.tar.gz::https://github.com/Revincx/Yurigram/releases/download/7.0.4-1/yurigram-7.0.4-1-x86_64.tar.gz
+	sha256sums = 40afdc4d3b5a7a826cab73a99962ef531e47cf0ebc66bc59f064a3526e39a467
 
 pkgname = yurigram-bin
