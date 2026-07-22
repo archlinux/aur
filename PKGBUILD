@@ -1,9 +1,9 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=server-manager-portal
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
-_pkgref=780c5a21a6f48153e43d66b23fe3ae28ec537a6e
+_pkgref=2c8dd320325059445f73a7397cad42c56b5dc87e
 pkgdesc='Management and analytics portal for Plex and Jellyfin media servers'
 arch=(x86_64 aarch64)
 url='https://github.com/jl94x4/Server-Manager-Portal'
@@ -19,7 +19,7 @@ source=(
   server-manager-portal.service
   server-manager-portal.conf.d
 )
-sha256sums=('d0be990d8b7fdf8b67f9d82361652bafeb7606ae6988ecce346b495c648fbcd1'
+sha256sums=('13e098029611adfea35b3120836bbc92ececcecd9fdb00f060404658c5a3fb5b'
             'ad78f6134d647c0dcdac6fa20aa338c0e6c358fea3e583fe4ad5abc0ddcb664d'
             'f193ab020242b857eff43b6897cf01403769f1ff9cc2b490a106209bbb83d41b'
             '7c5d668a53d9e1625c3e7158a32b3edbd196f0239f4d77270c27c5577b715f90'
