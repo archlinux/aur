@@ -21,7 +21,7 @@ license=('MIT')
 
 provides=("${_appname}")
 
-makedepends=('go')
+makedepends=('make' 'go')
 optdepends=('git: Source Control Features' 'ripgrep: Workspace Search')
 
 options=(!strip)
