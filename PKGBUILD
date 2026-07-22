@@ -1,7 +1,7 @@
 # Maintainer: xotkot
 pkgname=batorrent-git
 pkgver=4.8.0.beta2.r0.g66a60ff
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, open-source BitTorrent client focused on privacy, performance, and clarity. No ads, no telemetry.'
 arch=(x86_64)
 url='https://github.com/Mateuscruz19/BATorrent'
