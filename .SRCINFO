@@ -1,15 +1,17 @@
 pkgbase = penguinguide-bin
-	pkgdesc = Friendly Linux helper tool for new users
-	pkgver = 0.1.0
+	pkgdesc = Helpful Linux guide and diagnostics tool for new users
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/scottc943/penguinguide
-	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = glibc
-	provides = penguinguide
 	conflicts = penguinguide
-	source = https://github.com/scottc943/penguinguide/releases/download/v0.1.0/penguinguide_0.1.0_linux_amd64.tar.gz
-	sha256sums = SKIP
-
+	provides = penguinguide
+	arch = aarch64
+	source_aarch64 = https://github.com/scottc943/penguinguide/releases/download/v0.1.4/penguinguide_0.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = f784c8043b50406b262c46a55b5e47ac393a6fba529d73adae85ed246af5d246
+	arch = x86_64
+	source_x86_64 = https://github.com/scottc943/penguinguide/releases/download/v0.1.4/penguinguide_0.1.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 61ac1c73487f74cea7cf7da9c686835ccc874d704ea6a7d64d87a5f79c08fb48
+	
 pkgname = penguinguide-bin
