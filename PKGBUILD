@@ -8,7 +8,7 @@
 # carry the "-awgN-..." suffix, so stripping hyphens keeps ordering monotonic.
 
 pkgname=amnezia-box
-_pkgver=1.14.0-alpha.48-awg3-xhttp-mieru
+_pkgver=1.14.0-alpha.48-awg3-xhttp-mieru-4
 pkgver=${_pkgver//-/}
 pkgrel=1
 
@@ -20,7 +20,7 @@ license=('GPL3')
 # Binary / unit files are still named "sing-box" (kept as upstream for compatibility).
 makedepends=('go' 'clang' 'lld')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/hoaxisr/amnezia-box/archive/$_pkgver.tar.gz")
-sha256sums=('6048b6d8dacff28308b9e9286591a8dd2f22e057c1a8333af56477b9001ae389')
+sha256sums=('5ea164a1e45e85ba9c767c1a0acb665948e88317f8f29c7684a4ec721eca61bd')
 conflicts=('sing-box' 'sing-box-git' 'sing-box-beta')
 depends=('glibc')
 optdepends=('sing-geosite-rule-set: GeoSite rule sets'

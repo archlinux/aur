@@ -1,6 +1,6 @@
 pkgbase = amnezia-box
 	pkgdesc = The universal proxy platform, forked with AmneziaWG (awg) outbound, xhttp and mieru support.
-	pkgver = 1.14.0alpha.48awg3xhttpmieru
+	pkgver = 1.14.0alpha.48awg3xhttpmieru4
 	pkgrel = 1
 	url = https://github.com/hoaxisr/amnezia-box
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = amnezia-box
 	conflicts = sing-box-git
 	conflicts = sing-box-beta
 	backup = etc/sing-box/config.json
-	source = amnezia-box-1.14.0-alpha.48-awg3-xhttp-mieru.tar.gz::https://github.com/hoaxisr/amnezia-box/archive/1.14.0-alpha.48-awg3-xhttp-mieru.tar.gz
-	sha256sums = 6048b6d8dacff28308b9e9286591a8dd2f22e057c1a8333af56477b9001ae389
+	source = amnezia-box-1.14.0-alpha.48-awg3-xhttp-mieru-4.tar.gz::https://github.com/hoaxisr/amnezia-box/archive/1.14.0-alpha.48-awg3-xhttp-mieru-4.tar.gz
+	sha256sums = 5ea164a1e45e85ba9c767c1a0acb665948e88317f8f29c7684a4ec721eca61bd
 
 pkgname = amnezia-box
