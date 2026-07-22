@@ -2,7 +2,7 @@
 pkgname=batorrent-git
 pkgver=4.8.0.beta2.r0.g66a60ff
 pkgrel=1
-pkgdesc='A lightweight BitTorrent client built with C++, Qt 6, and libtorrent-rasterbar.'
+pkgdesc='A modern, open-source BitTorrent client focused on privacy, performance, and clarity. No ads, no telemetry.'
 arch=(x86_64)
 url='https://github.com/Mateuscruz19/BATorrent'
 license=(MIT)
