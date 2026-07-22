@@ -1,10 +1,10 @@
 post_install() {
 	cat <<'EOF'
-
+=================================================
 plm installed. To use it as your login manager:
   sudo systemctl disable getty@tty1.service
   sudo systemctl enable plm.service
-
+=================================================
 Each user picks (and can change) their session on the login screen.
 EOF
 }

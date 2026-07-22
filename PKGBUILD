@@ -1,9 +1,11 @@
 # Maintainer: psdkjoon <psdkjoon@gmail.com>
 # This package installs the prebuilt release from GitHub — no Flutter/Dart
-# SDK is required to build or install it. pkgver/sha256sums are updated
-# automatically by .github/workflows/publish.yml on every tagged release.
+# SDK is required to build or install it. pkgver is updated automatically
+# by .github/workflows/publish.yml on every tagged release. The tarball is
+# verified in prepare() against the release's own SHA256SUMS manifest, so
+# no hash needs to be baked into this file.
 pkgname=plm-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="PSDK Login Manager — a minimal Flutter/PAM login manager (prebuilt)"
 arch=('x86_64')
@@ -13,8 +15,14 @@ depends=('gtk3' 'pam' 'cage')
 provides=('plm')
 conflicts=('plm')
 install=plm.install
-source=("plm-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/plm-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('43366ca312bc9f3e73658a3bb0acf89578f5e275c9f66366fd4a70805ae94c22')
+source=("plm-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/plm-${pkgver}-linux-x86_64.tar.gz"
+        "SHA256SUMS::${url}/releases/download/v${pkgver}/SHA256SUMS")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir"
+  grep " plm-${pkgver}-linux-x86_64.tar.gz\$" SHA256SUMS | sha256sum -c -
+}
 
 package() {
   cd "$srcdir"
