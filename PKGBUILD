@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Quickly locate flat \"blackhole\" directories with pathological entry counts"
 
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('378df0d383549d053dc6dced2860731cd2b2e34dc8b7119de6dc8cd24fdf0929')
-sha256sums_aarch64=('6910080bece4977471e18648270c73f8e83611157217b85a9764082e3070bfc0')
+sha256sums_x86_64=('32c104cbe1da8112d788befeb0e5baaaa34a6a8d723fd675043d1a1c582344b6')
+sha256sums_aarch64=('3b0c3c8e70c9e5e3072b85d51c685ad1883dbe458ee9359ee9c8d447468b6245')
 
 
 case ${CARCH} in
