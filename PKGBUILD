@@ -2,7 +2,7 @@
 pkgname=tpdf-git
 _reponame=TermPDF
 _executable=termpdf
-pkgver=0.1.1.r0.g29e63cd
+pkgver=0.4.2.r0.gc070137
 pkgrel=1
 pkgdesc="A terminal PDF viewer written in Rust, with vim key-bindings and watch mode."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ url="https://www.github.com/NiJingzhe/${_reponame}"
 license=('MIT')
 depends=('libpdfium')
 makedepends=('git' 'cargo')
-checkdepends=('cargo')
 provides=('tpdf')
 conflicts=('tpdf' 'tpdf-bin')
 source=("git+${url}.git")
@@ -20,6 +19,12 @@ pkgver() {
     cd "${srcdir}/${_reponame}"
     # cutting off 'v' prefix that presents in the git tag
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_reponame}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/.*host: //p')"
 }
 
 build() {
