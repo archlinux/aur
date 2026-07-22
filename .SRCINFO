@@ -1,6 +1,6 @@
 pkgbase = binvec
 	pkgdesc = A simple application to convert raster graphics to vector graphics
-	pkgver = 1.20.26
+	pkgver = 1.20.27
 	pkgrel = 1
 	url = https://github.com/RouHim/binvec
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = binvec
 	arch = armv6h
 	license = MIT
 	makedepends = cargo
-	source = binvec-1.20.26.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/1.20.26.tar.gz
-	sha256sums = 98897523fc1705ecb777cb6ef5b20c7ba86be14ef012c6ec2826cb85290db661
+	source = binvec-1.20.27.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/1.20.27.tar.gz
+	sha256sums = 372954ebf546eb8196e1c0d8a241847dd1c7a036d3198955f6e1380448656bb5
 
 pkgname = binvec
