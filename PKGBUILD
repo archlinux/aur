@@ -1,6 +1,6 @@
 # Maintainer: hongnoul <namyang@mit.edu>
 pkgname=hwatu
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Visual verification browser for AI coding agents: daemon-based WebKitGTK, real rendering, ~13ms window spawn"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('webkitgtk-6.0' 'gtk4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hongnoul/hwatu/archive/v$pkgver.tar.gz")
-sha256sums=('ca1a78e4837381be013c2ec83198dd1335ef307c38c76c5f9a653b13630d8b50')
+sha256sums=('1397ab5e9969a6c7d865bc343ba90fd10f629b3633e037b980e16cafa97ae78a')
 
 build() {
   cd "$pkgname-$pkgver"
