@@ -1,6 +1,6 @@
 pkgbase = quick-ssh
 	pkgdesc = 🚀 Quick-SSH - Docker-style SSH connection manager with TUI (Rust native binary)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/CCE-Li/Quick-SSH
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = quick-ssh
 	depends = openssh
 	provides = quick-ssh
 	conflicts = quick-ssh
-	source = https://github.com/CCE-Li/Quick-SSH/releases/download/v2.0.2/qssh-x86_64-linux.tar.gz
-	sha256sums = 4794d11f18a96101d1e50eb55ccb7518435a9d0d9afa32a1ce250e5ef6aef488
+	source = https://github.com/CCE-Li/Quick-SSH/releases/download/v2.0.3/qssh-x86_64-linux.tar.gz
+	sha256sums = SKIP
 
 pkgname = quick-ssh
