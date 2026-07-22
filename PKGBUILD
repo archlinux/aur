@@ -7,13 +7,14 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.1.r23.ga61f6f7
+pkgver=3.2.r0.g58a1d4f
 pkgrel=1
 epoch=7
 url='https://git.sr.ht/~lioploum/offpunk'
-install="$pkgname.install"
+install="$_pkgname.install"
+changelog="$_pkgname.changelog"
 arch=('any')
-license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
+license=('AGPL-3.0-or-later')
 makedepends=(
   'coreutils'
   'git'
