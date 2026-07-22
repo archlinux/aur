@@ -24,7 +24,7 @@ license=('MIT')
 depends=('nodejs>=22')
 options=('!strip' '!emptydirs')
 optdepends=(
-  'better-sqlite3: SQLite storage for local data'
+  'nodejs-better-sqlite3: SQLite storage for local data'
 )
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
