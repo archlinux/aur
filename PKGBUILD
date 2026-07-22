@@ -27,16 +27,19 @@ sha256sums_aarch64=('b99a96854f8fcba405d46b8a749b07edf584e6119f8bf9b131dfcaaa9b4
 install=amber-package-manager.install
 build() {
     if [[ "$CARCH" == "aarch64" ]]; then
-        cp -f "$srcdir/ace-env-arm64.tar.xz" "$srcdir/amber-pm-${pkgver}/src/var/lib/apm/apm/files/ace-env.tar.xz"
+        # cp -f "$srcdir/ace-env-arm64.tar.xz" "$srcdir/amber-pm-${pkgver}/src/var/lib/apm/apm/files/ace-env.tar.xz"
+        cp -f "$srcdir/ace-env-arm64.tar.xz" "$srcdir/amber-pm/src/var/lib/apm/apm/files/ace-env.tar.xz"
     fi
 
-    cd "$srcdir/amber-pm-${pkgver}"
-    
-    bash build.sh "$srcdir/amber-pm-${pkgver}/src"
+    # cd "$srcdir/amber-pm-${pkgver}"
+    # bash build.sh "$srcdir/amber-pm-${pkgver}/src"
+    cd "$srcdir/amber-pm"
+    bash build.sh "$srcdir/amber-pm/src"
 }
 package() {
 
-    cd "$srcdir/amber-pm-${pkgver}/src"
+    # cd "$srcdir/amber-pm-${pkgver}/src"
+    cd "$srcdir/amber-pm/src"
     
     install -d "$pkgdir/var/lib/apm"
     cp -a etc "$pkgdir/"
