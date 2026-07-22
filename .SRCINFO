@@ -1,6 +1,6 @@
 pkgbase = deref-nightly-bin
 	pkgdesc = Replace symbolic links with real files / directories — nightly build
-	pkgver = 20260721
+	pkgver = 20260722
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/deref
 	arch = x86_64
