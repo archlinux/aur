@@ -1,0 +1,7 @@
+# Only these files belong in the AUR repo; everything else (downloaded
+# sources, src/, pkg/, built packages) stays local.
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
