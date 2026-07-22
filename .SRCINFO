@@ -1,7 +1,7 @@
 pkgbase = sober-bin
-	pkgdesc = Prevent AI-Slop: Local-first repository governance assistant and code reviewer with deterministic review readiness
+	pkgdesc = Prevent AI-Slop: The Sober Raccoon is your local CodeRabbit: A Local-first repository governance assistant and code reviewer with deterministic review readiness
 	pkgver = 0.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sober-dev.pages.dev
 	arch = x86_64
 	license = LSL-1.0
