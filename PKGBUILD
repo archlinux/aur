@@ -10,11 +10,10 @@
 # Javascript dependent, Netflix doesn't have a separate way to test outside of
 # this web page.
 #
-
 pkgname=nodejs-fast-cli
 _npmname=${pkgname/nodejs-/}
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Test your download and upload speed using fast.com from Netflix"
 arch=(any)
 url="https://github.com/sindresorhus/fast-cli#readme"
@@ -38,7 +37,6 @@ depends=(
          'libcups'
          'libffi'
          'libgcrypt'
-         'libjpeg'
          'libjpeg-turbo'
          'libpng'
          'libpulse'
