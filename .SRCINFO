@@ -1,0 +1,15 @@
+pkgbase = qmldiff-git
+	pkgdesc = A program for mass-editing QML trees
+	pkgver = r94.25681c3
+	pkgrel = 1
+	url = https://github.com/asivery/qmldiff
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	source = git+https://github.com/asivery/qmldiff.git
+	sha256sums = SKIP
+
+pkgname = qmldiff-git
