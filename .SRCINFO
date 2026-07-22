@@ -1,0 +1,18 @@
+pkgbase = python-tree-sitter-autoconf
+	pkgdesc = autoconf grammar for tree-sitter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/tree-sitter-autoconf
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = uv
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-tree-sitter
+	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_autoconf/tree_sitter_autoconf-0.0.1.tar.gz
+	sha256sums = bb4e112d94f2096b24d51b21cadca50eefd3943a2f879e96b20c616f258e6fa0
+
+pkgname = python-tree-sitter-autoconf
