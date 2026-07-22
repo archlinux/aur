@@ -1,7 +1,7 @@
 pkgbase = arch-smart-update
-	pkgdesc = This script helps you decide when to update Arch Linux or its derivatives.
+	pkgdesc = Intelligent update advisor and wrapper for Arch Linux and derivatives
 	pkgver = 3.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motorrin/arch-smart-update
 	arch = any
 	license = MIT
@@ -29,9 +29,10 @@ pkgbase = arch-smart-update
 	optdepends = fakeroot: for running the background update checker without sudo
 	optdepends = libnotify: for desktop notifications in daemon mode
 	optdepends = psmisc: for lock detection using fuser
+	optdepends = util-linux: for terminal log capture using script
 	optdepends = gamemode: to postpone background checks when gaming
 	optdepends = snap-pac: for automatic Btrfs snapshots on update (if using snapper)
-	source = https://github.com/motorrin/arch-smart-update/archive/refs/tags/v3.22.2.tar.gz
+	source = arch-smart-update-3.22.2.tar.gz::https://github.com/motorrin/arch-smart-update/archive/refs/tags/v3.22.2.tar.gz
 	sha256sums = dfca3535f5ff69c63cf5292e8a583f62288a389b715fefa9d0f6adcebbd7dd4b
 
 pkgname = arch-smart-update

@@ -1,8 +1,8 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
 pkgver=3.22.2
-pkgrel=1
-pkgdesc="This script helps you decide when to update Arch Linux or its derivatives."
+pkgrel=2
+pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/motorrin/arch-smart-update"
 license=('MIT')
@@ -22,18 +22,17 @@ optdepends=(
     'fakeroot: for running the background update checker without sudo'
     'libnotify: for desktop notifications in daemon mode'
     'psmisc: for lock detection using fuser'
+    'util-linux: for terminal log capture using script'
     'gamemode: to postpone background checks when gaming'
     'snap-pac: for automatic Btrfs snapshots on update (if using snapper)'
 )
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('dfca3535f5ff69c63cf5292e8a583f62288a389b715fefa9d0f6adcebbd7dd4b')
 
 package() {
-    cd "arch-smart-update-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
     install -Dm755 "arch-smart-update.sh" "${pkgdir}/usr/bin/${pkgname}"
-
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
