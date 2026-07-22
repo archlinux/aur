@@ -1,8 +1,8 @@
 pkgbase = higan-git
 	pkgdesc = Multi-system emulator focused on accuracy, preservation, and configurability
-	pkgver = 115.r232.g9bf1b3314
-	pkgrel = 2
-	url = https://higan-emu.com/
+	pkgver = 115.r241.ga03b2e94c
+	pkgrel = 1
+	url = https://github.com/higan-emu/higan
 	arch = x86_64
 	license = GPL3
 	makedepends = git

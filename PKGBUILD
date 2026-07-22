@@ -2,11 +2,11 @@
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
 pkgname=higan-git
-pkgver=115.r232.g9bf1b3314
-pkgrel=2
+pkgver=115.r241.ga03b2e94c
+pkgrel=1
 pkgdesc="Multi-system emulator focused on accuracy, preservation, and configurability"
 arch=(x86_64)
-url="https://higan-emu.com/"
+url="https://github.com/higan-emu/higan"
 license=(GPL3)
 depends=(libpulse qt5-base sdl2 libxv libao libgl openal libxrandr)
 makedepends=(git mesa)
@@ -27,7 +27,6 @@ prepare() {
 
 build() {
   cd higan
-
   make -C higan-ui hiro=qt5
   make -C icarus   hiro=qt5
 }
