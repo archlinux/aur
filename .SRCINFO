@@ -1,7 +1,7 @@
 pkgbase = python-nab
 	pkgdesc = PubGrub-based dependency resolver for Python packages.
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notatallshaw/nab
 	arch = any
 	license = MIT
@@ -20,7 +20,10 @@ pkgname = python-nab
 
 pkgname = python-nab-index
 	pkgdesc = PyPI Simple-API client and on-disk cache for nab
-	depends = python
+	depends = python-packaging
+	depends = python-truststore
+	depends = python-typing_extensions
+	depends = python-urllib3
 	optdepends = python-httpx
 
 pkgname = python-nab-python
@@ -36,7 +39,4 @@ pkgname = python-nab-python
 
 pkgname = python-nab-resolver
 	pkgdesc = Generic PubGrub dependency-resolver core
-	depends = python-packaging
-	depends = python-truststore
 	depends = python-typing_extensions
-	depends = python-urllib3

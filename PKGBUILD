@@ -8,7 +8,7 @@ pkgname=(
 pkgbase=python-nab
 _name=${pkgbase#python-}
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="PubGrub-based dependency resolver for Python packages."
 arch=('any')
 url="https://github.com/notatallshaw/nab"
@@ -49,7 +49,12 @@ package_python-nab() {
 
 package_python-nab-index() {
   pkgdesc="PyPI Simple-API client and on-disk cache for nab"
-  depends=('python')
+  depends=(
+    'python-packaging'
+    'python-truststore'
+    'python-typing_extensions'
+    'python-urllib3'
+  )
   optdepends=('python-httpx')
 
   cd "${_name}-$pkgver/${pkgname#python-}"
@@ -79,12 +84,7 @@ package_python-nab-python() {
 
 package_python-nab-resolver() {
   pkgdesc="Generic PubGrub dependency-resolver core"
-  depends=(
-    'python-packaging'
-    'python-truststore'
-    'python-typing_extensions'
-    'python-urllib3'
-  )
+  depends=('python-typing_extensions')
 
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
