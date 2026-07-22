@@ -1,7 +1,7 @@
 # Maintainer: a77ila
 pkgname=pactience
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="Enforce a minimum package age before upgrading Arch Linux packages (pacman/AUR)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/a77ila/pactience"
@@ -12,8 +12,12 @@ optdepends=(
   'paru: AUR package support'
   'yay: AUR package support'
 )
+# makepkg's default `lto` option injects -flto=auto into CFLAGS; the C code
+# built by ring/zstd-sys then becomes GCC LTO bytecode that rust-lld cannot
+# link (undefined ring_core_*/ZSTD_* symbols).
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/a77ila/pactience/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70161ea667460eb7d606c8b6e7551a6bf35df122c3ff67a7e56c04affe2d43dd')
+sha256sums=('2023be08af4ce8dadb9bf43052f1b74d18c8f6bdc31668af8741a497d0a24716')
 
 build() {
   cd "$pkgname-$pkgver/src"
