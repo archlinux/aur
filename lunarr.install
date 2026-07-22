@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+==> Lunarr installed
+    Start the server:
+      systemctl start lunarr
+    Enable on boot:
+      systemctl enable lunarr
+    Open in browser:
+      http://127.0.0.1:3000
+    Data directory:
+      /var/lib/lunarr
+EOF
+}
+
+post_upgrade() {
+  echo "Lunarr updated to $1"
+}

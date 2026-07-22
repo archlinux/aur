@@ -1,0 +1,15 @@
+[Unit]
+Description=Lunarr media streaming server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/lib/lunarr
+ExecStart=/usr/bin/node scripts/start.mjs
+Environment=NODE_ENV=production
+Environment=LUNARR_DATA_DIR=/var/lib/lunarr
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
