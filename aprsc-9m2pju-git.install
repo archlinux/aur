@@ -1,23 +1,49 @@
 post_install() {
   echo "==> aprsc has been installed in /opt/aprsc"
   echo
-  echo "==> IMPORTANT: Please review and edit the configuration file:"
-  echo "   /opt/aprsc/etc/aprsc.conf"
+  echo "==> Creating system user 'aprsc' (if not present)..."
+  if ! getent passwd aprsc >/dev/null; then
+    useradd --system --no-create-home --home /var/run/aprsc --shell /sbin/nologin -g aprsc aprsc 2>/dev/null || \
+    useradd --system --no-create-home --home /var/run/aprsc --shell /usr/sbin/nologin -g aprsc aprsc
+  fi
+
+  echo "==> Setting up chroot environment..."
+  /opt/aprsc/sbin/aprsc-prepare-chroot.sh
+
+  echo "==> Fixing permissions..."
+  chown aprsc:aprsc /opt/aprsc/logs /opt/aprsc/data 2>/dev/null || true
+  setcap cap_net_bind_service=+eip /opt/aprsc/sbin/aprsc 2>/dev/null || true
+
   echo
-  echo "==> To run aprsc as your current user:"
-  echo "   sudo chown -R \$(whoami):\$(whoami) /opt/aprsc"
+  echo "==> IMPORTANT: Review and edit the configuration file:"
+  echo "    /opt/aprsc/etc/aprsc.conf"
   echo
-  echo "==> To run aprsc manually:"
-  echo "   aprsc -f /opt/aprsc/etc/aprsc.conf"
+  echo "==> Enable and start the service (runs as root, drops to 'aprsc' user):"
+  echo "    sudo systemctl enable --now aprsc-chroot.service aprsc.service"
   echo
-  echo "==> To run aprsc as a user systemd service:"
-  echo "   systemctl --user daemon-reexec"
-  echo "   systemctl --user daemon-reload"
-  echo "   systemctl --user enable --now aprsc.service"
+  echo "==> For multiple instances, copy the config and use the template unit:"
+  echo "    sudo cp /opt/aprsc/etc/aprsc.conf /opt/aprsc/etc/aprsc-2.conf"
+  echo "    sudo systemctl enable --now aprsc@2.service"
   echo
   echo "==> Web UI: http://localhost:14501/"
+  echo "==> Man page: man aprsc"
   echo
-  echo "==> Full README: https://github.com/9M2PJU/aprsc-9m2pju-git"
+  echo "==> Source: https://github.com/9M2PJU/aprsc"
   echo
-  echo "📦 Thanks to hessu (https://github.com/hessu/aprsc) and the Arch Linux AUR community!"
+}
+
+post_upgrade() {
+  # Refresh chroot bind mounts after upgrade (libraries may have changed)
+  /opt/aprsc/sbin/aprsc-prepare-chroot.sh 2>/dev/null || true
+  setcap cap_net_bind_service=+eip /opt/aprsc/sbin/aprsc 2>/dev/null || true
+  echo "==> aprsc upgraded. Restart the service:"
+  echo "    sudo systemctl restart aprsc.service"
+}
+
+post_remove() {
+  echo "==> aprsc has been removed."
+  echo "==> Configuration and data remain in /opt/aprsc — remove manually if desired:"
+  echo "    sudo rm -rf /opt/aprsc"
+  echo "==> To remove the 'aprsc' user and group:"
+  echo "    sudo userdel aprsc && sudo groupdel aprsc"
 }
