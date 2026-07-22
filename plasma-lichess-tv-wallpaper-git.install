@@ -1,0 +1,19 @@
+post_install() {
+  cat <<EOF
+
+plasma-lichess-tv-wallpaper-git is installed.
+
+Next steps:
+  1. Desktop settings → Wallpaper → choose "Lichess TV"
+  2. Optionally add the "Lichess TV Controller" panel widget
+  3. Optionally enable smart pause (does not run as root):
+       lichess-tv-wallpaperctl enable-smart-pause
+
+This package is unofficial and unaffiliated with Lichess or KDE.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
