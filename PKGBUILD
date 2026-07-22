@@ -121,49 +121,56 @@ package() {
   bash bundle/Unix/.bundle/Unix/Installer/MathInstaller \
     -targetdir="${pkgdir}/tmp" \
     -auto
-  rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" "${installdir}/Documentation/"
-  rm -rf "${pkgdir}/tmp"
 
-  if [[ -s "${installdir}/InstallErrors" ]]; then
+  cd "${installdir}"
+  rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" Documentation/
+  rm -rf "${pkgdir}/tmp/"
+
+  if [[ -s InstallErrors ]]; then
     warning 'Review installation errors:'
-    cat "${installdir}/InstallErrors"
+    cat InstallErrors
   fi
-  rm -f "${installdir}/InstallErrors"
+  rm -f InstallErrors
 
   msg2 'Setting up WolframScript'
   # shellcheck disable=SC2312
-  ar -p "${installdir}/SystemFiles/Installation/"wolframscript_*_amd64.deb \
+  ar -p SystemFiles/Installation/wolframscript_*_amd64.deb \
     -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
   msg2 'Copying menu and MIME type information'
 
   desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-  install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}/usr/share/applications/"
-  install -D -m644 "${installdir}/SystemFiles/Installation/wolfram-wolfram.directory" -t "${pkgdir}/usr/share/desktop-directories"
-  install -D -m644 "${installdir}/SystemFiles/Installation/"*.xml -t "${pkgdir}/usr/share/mime/packages"
-  rm -r "${installdir}/SystemFiles/Installation"
+  install -vD -t "${pkgdir}/usr/share/applications/" \
+    -m644 "SystemFiles/Installation/${desktop_file}"
+  install -vD -t "${pkgdir}/usr/share/desktop-directories/" \
+    -m644 SystemFiles/Installation/wolfram-wolfram.directory
+  install -vD -t "${pkgdir}/usr/share/mime/packages/" \
+    -m644 SystemFiles/Installation/*.xml
+  rm -r SystemFiles/Installation/
 
   _fix_desktop_file "${pkgdir}/usr/share/applications/${desktop_file}"
   _fix_desktop_file "${pkgdir}/usr/share/desktop-directories/wolfram-wolfram.directory"
 
   msg2 'Copying icons'
   for i in 32 64 128; do
-    install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
+    install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
+      -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
     # shellcheck disable=SC2312
     for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
       mimetype="$(basename "${mimetype}")"
-      install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
+      install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
+        -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
     done
   done
 
   msg2 'Copying man pages'
-  install -D -m644 "${installdir}/SystemFiles/SystemDocumentation/Unix/"*.1 -t "${pkgdir}/usr/share/man/man1"
+  install -vD -t "${pkgdir}/usr/share/man/man1/" \
+    -m644 SystemFiles/SystemDocumentation/Unix/*.1
 
   msg2 'Copying license'
-  install -D -m644 "${installdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+    -m644 LICENSE.txt
 
   _fix_binary_symlinks # namcap rule: symlink
   _fix_permissions # namcap rule: permissions
@@ -190,22 +197,21 @@ EOF
 
 _fix_binary_symlinks() {
   msg2 'Fixing symbolic links'
-  local relative_installdir
-  relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
 
-  ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"
-  ln -sf "${relative_installdir}/Executables/math" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/MathKernel" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/mcc" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/wolfram" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/wolframnb" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/WolframKernel" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/Executables/WolframNB" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver" "${pkgdir}/usr/bin/"
-  ln -sf "${relative_installdir}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" "${pkgdir}/usr/bin/"
+  ln -v -ft Executables/ -sr SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
+  ln -v -ft "${pkgdir}/usr/bin/" -sr \
+    Executables/math \
+    Executables/MathKernel \
+    Executables/mcc \
+    Executables/wolfram \
+    Executables/wolframnb \
+    Executables/WolframKernel \
+    Executables/WolframNB \
+    SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver \
+    SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
 }
 
 _fix_permissions() {
   msg2 'Fixing file permissions'
-  chmod go-w -R "${pkgdir}"/*
+  chmod -c go-w -R "${pkgdir}"
 }
