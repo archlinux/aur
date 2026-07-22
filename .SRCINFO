@@ -1,0 +1,27 @@
+pkgbase = bettertricks
+	pkgdesc = Recovery-first Wine prefix manager and Winetricks-compatible recipe engine
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/RamazanBerk20/Bettertricks
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = libayatana-appindicator
+	makedepends = librsvg
+	depends = webkit2gtk-4.1
+	depends = wine
+	depends = cabextract
+	depends = 7zip
+	depends = unzip
+	depends = gzip
+	depends = tar
+	depends = xz
+	depends = zstd
+	optdepends = zenity: graphical prompts for compatibility-host recipes
+	options = !lto
+	source = bettertricks-1.0.tar.gz::https://github.com/RamazanBerk20/Bettertricks/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 8740ae54f06b2d83ad275abcf41e884b364c222210c9970ce897f02cc6c74156
+
+pkgname = bettertricks
