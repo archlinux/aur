@@ -1,14 +1,14 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
 	pkgver = 2.2.0.r0.g196179a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = CC-BY-NC-ND-4.0
-	makedepends = git
 	makedepends = gendesk
+	makedepends = git
 	makedepends = sed
 	depends = python>=3.11
 	depends = python-more-itertools>=11.0.0

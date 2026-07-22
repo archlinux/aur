@@ -2,10 +2,11 @@
 
 # shellcheck disable=SC2164
 
+pkgver=2.2.0.r0.g196179a
+pkgrel=2
+
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
-pkgver=2.2.0.r0.g196179a
-pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -22,7 +23,11 @@ depends=(
 	'python-requests>=2.33' 'python-requests<3'
 	'python-valve-parsers>=1.2.2'
 )
-makedepends=('git' 'gendesk' 'sed')
+makedepends=(
+	'gendesk'
+	'git'
+	'sed'
+)
 optdepends=(
 	'python-rich: pretty printing logs'
 	'wine: running studiomdl'
@@ -33,8 +38,14 @@ conflicts=("${_pkgname}")
 
 install="${_pkgname}.install"
 
-source=("git+${url}" 'git+https://github.com/cueki/studiomdl')
-sha256sums=('SKIP' 'SKIP')
+source=(
+	"git+${url}"
+	'git+https://github.com/cueki/studiomdl'
+)
+sha256sums=(
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
 	git -C "${_pkgname}" describe --tags --long --abbrev=7 --first-parent --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -54,12 +65,13 @@ prepare() {
 	git submodule update --init --recursive
 
 	# must be sequential to avoid race condition
-	git submodule foreach --recursive 'printf "%s\0" "${sm_path}" >&2' 3>&2 2>&1 1>&3 | xargs -0I{} find '{}' \( \
-	-name .git \
-	-o -name .gitignore \
-	-o -name .gitattributes \
-	-o -name .gitmodules \
-	\) -print0 >.submodules
+	git submodule foreach --recursive 'printf "%s\0" "${sm_path}" >&2' 3>&2 2>&1 1>&3 |
+		xargs -0I{} find '{}' \( \
+			-name .git \
+			-o -name .gitignore \
+			-o -name .gitattributes \
+			-o -name .gitmodules \
+			\) -print0 >.submodules
 	xargs -0 rm -vr <.submodules
 }
 
