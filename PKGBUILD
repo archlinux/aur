@@ -6,7 +6,7 @@
 
 pkgbase=mattermost-plugin-focalboard
 pkgname=mattermost-plugin-boards
-pkgver=9.3.0
+pkgver=9.3.1
 pkgrel=1
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
@@ -18,7 +18,7 @@ options=(!strip)
 _plugin="${pkgname##*-}"
 _archive="$pkgname-v$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
-sha256sums=('5d2354d19822163d3886f4648f8b826399d69025ed1093a48190e5b81af4ac0a'
+sha256sums=('52ddfd7528bfbfa3f959d07049ea9e9c05fa22d70ceb1c6bb5b50ef111aa2f86'
             'SKIP')
 validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
