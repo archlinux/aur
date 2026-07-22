@@ -1,0 +1,5 @@
+[landrun-bin]
+source = "github"
+github = "Zouuup/landrun"
+use_latest_release = true
+prefix = "v"
