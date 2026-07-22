@@ -1,5 +1,8 @@
 pkgbase = tracy-bin
-	pkgver = 0
-	pkgrel = 0
+	pkgdesc = metapackage - migrate to tracy-chroma-bin
+	pkgver = 0.8
+	pkgrel = 1
+	arch = any
 
 pkgname = tracy-bin
+	depends = tracy-chroma-bin
