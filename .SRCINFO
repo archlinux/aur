@@ -1,0 +1,16 @@
+pkgbase = anihub-cli
+	pkgdesc = Unofficial terminal client for browsing and watching anime from AniHub
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/NEO-LAX/anihub-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = mpv
+	options = !lto
+	source = anihub-cli-0.7.2.tar.gz::https://github.com/NEO-LAX/anihub-cli/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = a9ff15ff22cba95accbcf4da7a6d533faff1065a4c8493464b03bfa9bc9dcbef
+
+pkgname = anihub-cli
