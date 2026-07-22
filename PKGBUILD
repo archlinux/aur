@@ -1,10 +1,9 @@
-# Maintainer: Noctalia Team <team@noctalia.dev>
 
 _pkgname=noctalia-greeter
 _tagver=1.0.0
 pkgname=noctalia-greeter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal greetd login greeter with a bundled wlroots compositor'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia-greeter'
@@ -24,13 +23,16 @@ depends=(
   'libwebp'
   'libxkbcommon'
   'pango'
+  'tomlplusplus'
   'wayland'
   'wlroots0.20'
 )
 makedepends=(
   'meson'
   'ninja'
+  'nlohmann-json'
   'pkgconf'
+  'stb'
   'wayland-protocols'
 )
 optdepends=(
