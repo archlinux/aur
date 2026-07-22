@@ -3,7 +3,7 @@
 pkgname=lungo
 pkgver=1.0.1
 pkgrel=2
-pkgdesc="A simple systray applet to prevent your system from going idle or suspending on demand"
+pkgdesc="A simple systray applet to prevent the system from going idle or suspending on demand"
 url="https://github.com/Antiz96/lungo"
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
