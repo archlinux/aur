@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/requirements-language-server/blob/main/.github/workflows/main.yml
 _name=requirements-language-server
 pkgname="python-$_name"
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="pip's requirements.txt language server"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-lsp-tree-sitter python-tree-sitter-requirements python-aiohttp p
 makedepends=(uv python-installer)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('3013d1e5c41f16e7df29941ae31b97dfa2646d0520d6c33e24631c2b3e6793e4')
+sha256sums=('70544f5eaabbfa1991f84260536b94676a4eeacd991c74c79abd41e1392ebaca')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
