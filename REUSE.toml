@@ -1,0 +1,10 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+]
+SPDX-FileCopyrightText = "CADR Fonts contributors"
+SPDX-License-Identifier = "0BSD"

@@ -1,0 +1,21 @@
+pkgbase = cadr-fonts
+	pkgdesc = Unicode-encoded MIT CADR bitmap fonts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/htayj/CADR-fonts
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python
+	makedepends = xorg-fonttosfnt
+	options = !strip
+	source = CADR-fonts::git+https://github.com/htayj/CADR-fonts.git#commit=abc875fc903eccc47c359f814b102d9a7af10c7d
+	source = mit-cadr-system-software::git+https://github.com/mietek/mit-cadr-system-software.git#commit=8e978d7d1704096a63edd4386a3b8326a2e584af
+	sha256sums = 2aa6d35a7aabdacc9576b4a8f201e939f53341676926ec31d0fb9056e936eed5
+	sha256sums = db5d3b8af94777573e0a1a0fd7aa24fb6cab142ef24f0eaa5ef10fa3596fe9a7
+
+pkgname = cadr-fonts-latin
+	pkgdesc = Unicode MIT CADR proportional and monospaced bitmap fonts
+
+pkgname = cadr-fonts-symbols
+	pkgdesc = Unicode MIT CADR bitmap symbol and drawing fonts

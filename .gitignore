@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/CADR-fonts/
+/mit-cadr-system-software/
+/*.pkg.tar.*
+/*.src.tar.*
