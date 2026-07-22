@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geigen
-_pkgver=2.3
+_pkgver=2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="Calculate Generalized Eigenvalues, the Generalized Schur Decomposition and the Generalized Singular Value Decomposition of a Matrix Pair with Lapack"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('08951fde411893278e127769a9cfa394')
-b2sums=('7d5b1df9c1ed49b61cb93be5470e22b5c73b1ff54db1abc82892d5397a1fda3e6c02b8430d79a7106b8ea421dfd9f5b102e225dfb0847a6bb87e1528a3774028')
+md5sums=('70741830d96bb70df1748d341c52295e')
+b2sums=('ee994b90628b7d5c7febdf5f6ede6113679259ad07bfa2b4d11ef5fa11c03ad3e755988c7c590265b49b1b8141c390d2aa88d2f96ea3db15e46882407296b161')
 
 build() {
   mkdir build
