@@ -1,15 +1,15 @@
 pkgbase = sonarlint-ls-bin
 	pkgdesc = SonarLint language server (used by SonarLint VSCode)
-	pkgver = 5.5.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = https://github.com/SonarSource/sonarlint-language-server
 	arch = x86_64
 	license = LGPL-3.0-only
 	depends = java-runtime>=17
 	conflicts = sonarlint-ls
-	source = https://github.com/SonarSource/sonarlint-vscode/releases/download/5.5.0%2B80442/sonarlint-vscode-5.5.0.vsix
+	source = https://github.com/SonarSource/sonarlint-vscode/releases/download/5.6.0%2B80502/sonarlint-vscode-5.6.0.vsix
 	source = sonarlint-ls
-	sha256sums = d755728fcd9d87b122717b34868fc5a88908b571432e387f9f601f229307fdcf
+	sha256sums = 47c80264896f8f6d378c52a7b31d5e34eabe3a286efa93917ae190c92a617b2c
 	sha256sums = b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4
 
 pkgname = sonarlint-ls-bin
