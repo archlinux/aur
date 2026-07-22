@@ -1,6 +1,6 @@
 pkgbase = ytglean-bin
 	pkgdesc = YouTube transcript aggregation and digest system with MCP server (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Crymfox/YTGlean
 	install = ytglean-bin.install
@@ -11,9 +11,9 @@ pkgbase = ytglean-bin
 	optdepends = yt-dlp: fallback transcript provider
 	provides = ytglean
 	conflicts = ytglean
-	source_x86_64 = ytglean-bin-0.2.0-x86_64.tar.gz::https://github.com/Crymfox/YTGlean/releases/download/v0.2.0/ytglean_0.2.0_linux_amd64.tar.gz
+	source_x86_64 = ytglean-bin-0.3.0-x86_64.tar.gz::https://github.com/Crymfox/YTGlean/releases/download/v0.3.0/ytglean_0.3.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = ytglean-bin-0.2.0-aarch64.tar.gz::https://github.com/Crymfox/YTGlean/releases/download/v0.2.0/ytglean_0.2.0_linux_arm64.tar.gz
+	source_aarch64 = ytglean-bin-0.3.0-aarch64.tar.gz::https://github.com/Crymfox/YTGlean/releases/download/v0.3.0/ytglean_0.3.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = ytglean-bin
