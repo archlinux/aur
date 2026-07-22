@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MetaCubeXD
+Exec=/usr/bin/metacubexd-desktop %U
+Terminal=false
+Type=Application
+Icon=metacubexd-desktop
+StartupWMClass=metacubexd
+Comment=MetaCubeXD — the official Mihomo dashboard, desktop app
+MimeType=x-scheme-handler/clash;x-scheme-handler/clashmeta;
+Categories=Network;
