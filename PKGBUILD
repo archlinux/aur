@@ -1,8 +1,8 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-bin
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland"
