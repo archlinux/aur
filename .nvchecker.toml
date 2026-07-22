@@ -1,0 +1,4 @@
+[python-gpiozero]
+source = "git"
+git = "https://github.com/gpiozero/gpiozero.git"
+prefix = "v"
