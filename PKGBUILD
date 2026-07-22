@@ -13,7 +13,7 @@ options=('!debug')
 provides=('memory-card')
 conflicts=('memory-card')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Memory.Card_${pkgver}_amd64.deb")
-sha256sums=('490dd15b85776abfa851f6edd9e27c4aeca287071e1d5c8f135f0e73e386fc46')
+sha256sums=('b6035375fc3a1b5450ba125a8ecdcc3545909964bcc6112e279ecde9d60b21e1')
 package() {
   # Extract the payload data archive to the package directory
   if [ -f "$srcdir/data.tar.gz" ]; then
