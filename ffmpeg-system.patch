@@ -1,0 +1,12 @@
+diff --git a/build.rs b/build.rs
+index 8974ac0..f4d30df 100644
+--- a/build.rs
++++ b/build.rs
+@@ -436,7 +436,6 @@ mod system {
+         if include_paths.is_empty() {
+             for lib in &REQUIRED_LIBS {
+                 let library = pkg_config::Config::new()
+-                    .atleast_version("61.0")
+                     .probe(lib)
+                     .unwrap_or_else(|e| panic!("Failed to find {lib}: {e} "));
+                 include_paths.extend(library.include_paths);

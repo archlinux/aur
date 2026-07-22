@@ -1,0 +1,41 @@
+pkgbase = splayer-next-git
+	pkgdesc = Electron music player with rich lyric and audio format support (development version)
+	pkgver = 1.0.0.r621.g4f9a95d
+	pkgrel = 1
+	url = https://github.com/SPlayer-Dev/SPlayer-Next
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = clang
+	makedepends = git
+	makedepends = node-gyp
+	makedepends = nodejs>=22.19.0
+	makedepends = pnpm>=10
+	makedepends = python
+	makedepends = rust
+	depends = alsa-lib
+	depends = electron41>=41.6.1
+	depends = ffmpeg
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: opening external links
+	provides = splayer-next=1.0.0.r621.g4f9a95d
+	conflicts = splayer-next
+	conflicts = splayer-next-bin
+	options = !debug
+	options = !lto
+	source = SPlayer-Next-git::git+https://github.com/SPlayer-Dev/SPlayer-Next.git#branch=dev
+	source = electron-v41.6.1-headers.tar.gz::https://electronjs.org/headers/v41.6.1/node-v41.6.1-headers.tar.gz
+	source = ffmpeg_audio_sys-0.1.2.crate::https://static.crates.io/crates/ffmpeg_audio_sys/ffmpeg_audio_sys-0.1.2.crate
+	source = splayer-next.sh
+	source = top.imsyy.splayer_next.desktop
+	source = system-electron.patch
+	source = ffmpeg-system.patch
+	sha256sums = SKIP
+	sha256sums = 562ea6ffdae060941d4660e2101e5e086c3bacd26a0c211eb18b3d280b0f62a7
+	sha256sums = e20a89429144d2a75ce83bfb8883d19d1f5fe339b2cddd0d5f291cd030487b4f
+	sha256sums = 713118402f5168736eb9647138ba8bb14a9deea67ad2c236a21b6cd371b3304a
+	sha256sums = affb35df91f7cb0c2d32a855d097047bd9109402a3cdb203e063cbfe88db5e3e
+	sha256sums = 0728d01dfc7e9272330740295b62296f069768edb9727c24c447ee2314f11ef8
+	sha256sums = 5599df118fc4658b1865e20cfd8ee2358950428597e6117dc0e410d2d5cc6032
+
+pkgname = splayer-next-git

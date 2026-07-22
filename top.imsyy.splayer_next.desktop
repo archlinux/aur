@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SPlayer Next
+Comment=Play music with synchronized lyrics
+Exec=splayer-next %U
+TryExec=splayer-next
+Icon=splayer-next
+Terminal=false
+Type=Application
+Categories=Audio;Music;AudioVideo;
+MimeType=x-scheme-handler/orpheus;
+StartupNotify=true
+StartupWMClass=SPlayer-Next
