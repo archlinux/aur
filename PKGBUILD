@@ -2,7 +2,7 @@
 
 pkgname=python-njulogin
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
 url='https://github.com/Do1e/NJUlogin'
@@ -10,11 +10,10 @@ license=('MIT')
 depends=(
   'python>=3.10'
   'python-requests>=2.32.0'
-  'python-pillow>=11.0.0'
   'python-numpy>=2.0.0'
+  'python-opencv>=4.10.0'
   'python-lxml>=5.3.0'
   'python-pycryptodome>=3.21.0'
-  'python-onnxruntime>=1.20.0'
   'python-cryptography>=43.0.0'
   'python-qrcode>=8.2'
 )
