@@ -1,13 +1,13 @@
 pkgbase = seerr-runit
 	pkgdesc = Runit service script for seerr.
 	pkgver = 20260722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seerr-team/seerr
 	arch = any
 	license = MIT
 	depends = seerr
 	depends = runit
 	source = seerr.run
-	sha256sums = 935477c9dc3928022f47d53fb5ce55390d3bc71d7cc365800b3a96ac690994ba
+	sha256sums = 73adc79dbcf96b8b891122542867ce3009d0b00308662cde38b2eb38cc5ae623
 
 pkgname = seerr-runit

@@ -3,7 +3,6 @@
 
 cd /usr/lib/seerr
 
-set -eu
 export NODE_ENV="${NODE_ENV:-production}"
 export CONFIG_DIRECTORY="${CONFIG_DIRECTORY:-$(pwd)/config}"
 PORT="$PORT" HOST="$HOST" JELLYFIN_TYPE="$JELLYFIN_TYPE" exec chpst -u seerr:seerr node dist/index.js
