@@ -1,0 +1,4 @@
+[gotlsaflare]
+source = "git"
+git = "https://github.com/Stenstromen/gotlsaflare.git"
+prefix = "v"
