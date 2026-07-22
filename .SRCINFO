@@ -1,0 +1,23 @@
+pkgbase = altersend-bin
+	pkgdesc = Private peer-to-peer file transfer application (prebuilt binary)
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://altersend.com/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = nss
+	provides = altersend
+	conflicts = altersend
+	conflicts = altersend-git
+	options = !strip
+	source_x86_64 = AlterSend-x86_64.AppImage::https://github.com/denislupookov/altersend/releases/download/v1.7.0/AlterSend-x86_64.AppImage
+	sha256sums_x86_64 = 52d7245103f8a8f2e05ed6b62a39d19303c68bf45d6aadb07bc7abb2b77c23e4
+	source_aarch64 = AlterSend-arm64.AppImage::https://github.com/denislupookov/altersend/releases/download/v1.7.0/AlterSend-arm64.AppImage
+	sha256sums_aarch64 = 526d17c8fd58fac6dbb7da12524ca544aba5419ec1b3b5f73fcc0b2342c0aa26
+
+pkgname = altersend-bin
