@@ -1,7 +1,7 @@
 # Maintainer: Monapp <monapp@posteo.com>
 
 pkgname=forkme
-pkgver=0.2.0.1
+pkgver=0.2.0.2
 pkgrel=1
 pkgdesc='A tool for managing forks using a patch-based approach'
 arch=('x86_64')
@@ -15,8 +15,6 @@ sha256sums=(SKIP)
 
 prepare() {
 	cd "$pkgname"
-	echo 'export PATH=$PATH:/opt/forkme' > "$pkgname.sh"
-	echo 'setenv PATH ${PATH}:/opt/forkme' > "$pkgname.csh"
 	cargo fetch --locked --target host-tuple
 }
 
@@ -29,7 +27,7 @@ build() {
 
 package() {
 	forkmepath=$pkgname/target/release
-	install -Dm0755 -t "$pkgdir/opt/forkme/" "$forkmepath/forkme"
-	cd "$pkgname"
-	install -Dm0755 -t "$pkgdir/etc/profile.d/" "$pkgname".{csh,sh}
+	install -Dm755 "$forkmepath/forkme" -t "${pkgdir}/usr/lib/${pkgname}/"
+	install -d "${pkgdir}/usr/bin/"
+	ln -s "/usr/lib/${pkgname}/forkme" "${pkgdir}/usr/bin/forkme"
 }
