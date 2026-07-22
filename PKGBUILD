@@ -3,10 +3,10 @@
 pkgname=lungo-git
 _pkgname="${pkgname%-git}"
 pkgver=1.0.1.r14.e0f6813
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple systray applet to prevent your system from going idle or sleeping on demand (git version)"
 url="https://github.com/Antiz96/lungo"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'systemd' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'scdoc')
