@@ -1,6 +1,6 @@
 pkgbase = es40
 	pkgdesc = AlphaServer ES40 emulator
-	pkgver = 0.75.4
+	pkgver = 0.76
 	pkgrel = 1
 	url = https://github.com/ES40-Emu/es40
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = es40
 	depends = libstdc++
 	provides = es40
 	conflicts = es40
-	source = es40-0.75.4.tar.gz::https://github.com/ES40-Emu/es40/archive/refs/tags/v0.75.4.tar.gz
-	sha512sums = 2b0716d2508b1aae1e60c9585639be14aff8af97aedf8167a3ead06289ebacdc463130eb6d3b873a62a2f2c7d30741a7585efc1a98342bbd315b9227c206449e
+	source = es40-0.76.tar.gz::https://github.com/ES40-Emu/es40/archive/refs/tags/v0.76.tar.gz
+	sha512sums = 378ff036cf53fc0eff8f05c098da86a16e2bca7b354babaa1d97b0f101fa7f34a0e995409e11c71b766c05c22a754c6a1df5dc2d99e7d9c37e1725a1aaeb9e7c
 
 pkgname = es40
