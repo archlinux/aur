@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/DEC-Fonts/
+/*.pkg.tar.*
+/*.src.tar.*

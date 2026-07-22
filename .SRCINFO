@@ -1,0 +1,21 @@
+pkgbase = dec-fonts
+	pkgdesc = DEC VT220 ROM-derived monospaced bitmap fonts
+	pkgver = 0.1.0alpha2
+	pkgrel = 1
+	url = https://github.com/htayj/DEC-Fonts
+	arch = any
+	license = MIT
+	checkdepends = fontconfig
+	makedepends = bdf2psf
+	makedepends = git
+	makedepends = mkbold-mkitalic
+	makedepends = python
+	makedepends = xorg-fonttosfnt
+	makedepends = xorg-mkfontscale
+	optdepends = kbd: load the included PSF fonts on Linux virtual consoles
+	options = !strip
+	options = !debug
+	source = DEC-Fonts::git+https://github.com/htayj/DEC-Fonts.git#commit=fb4435c01bf664841c546a1d28696a54cd35cfe3
+	sha256sums = 4c234c9add148eb1df6bba66aabc7c2728001c71aa57cf3efd75c0a4d11c4332
+
+pkgname = dec-fonts
