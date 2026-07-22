@@ -1,21 +1,28 @@
 pkgname=fetch-git
 _pkgname=fetch
-pkgver=2.1.0
 pkgrel=1
 pkgdesc="An animated 3D fetch tool for your terminal"
 arch=(x86_64 aarch64)
 url="https://github.com/areofyl/fetch"
 license=('ISC')
 depends=('glibc')
-source=("https://github.com/areofyl/fetch/archive/refs/tags/v${pkgver}.tar.gz")
+makedepends=('git')
+provides=('fetch')
+conflicts=('fetch')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags --long --always | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+}
+
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make CC=cc CFLAGS="${CFLAGS}"
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make PREFIX="${pkgdir}/usr" install
 }
