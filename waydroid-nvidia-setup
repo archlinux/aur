@@ -72,6 +72,21 @@ MODESET=$(cat /sys/module/nvidia_drm/parameters/modeset 2>/dev/null || echo miss
 Add nvidia_drm.modeset=1 to your kernel parameters or modprobe.d and reboot."
 echo "== nvidia-drm.modeset: Y"
 
+# The stack hooks the AIDL minigbm gralloc; pre-minigbm vendor images give
+# SurfaceFlinger buffers our driver never sees -> crash loop (issue #1:
+# system and vendor images version independently, and 'upgrade -o' never
+# refreshes them — migrated installs can carry an ancient vendor).
+VIMG=/var/lib/waydroid/images/vendor.img
+[ -f "$VIMG" ] || die "$VIMG missing — run 'waydroid init' first"
+VMNT=$(mktemp -d)
+mount -o loop,ro "$VIMG" "$VMNT" || { rmdir "$VMNT"; die "cannot inspect $VIMG (mount failed)"; }
+HAVE_MINIGBM=0
+[ -f "$VMNT/lib64/hw/gralloc.minigbm_gbm_mesa.so" ] && HAVE_MINIGBM=1
+umount "$VMNT"; rmdir "$VMNT"
+[ "$HAVE_MINIGBM" = 1 ] || die "vendor image is too old (no minigbm_gbm_mesa gralloc).
+Run 'waydroid init -f' to fetch current images (apps/data are kept), then re-run this setup."
+echo "== vendor image: minigbm AIDL gralloc present"
+
 echo "== writing waydroid.cfg properties"
 REFRESH="$REFRESH" NVNODE="$NVNODE" python3 - "$CFG" <<'EOF'
 import configparser, os, sys
@@ -81,6 +96,16 @@ cp.optionxform = str  # waydroid props are case-sensitive
 cp.read(cfg_path)
 if not cp.has_section("properties"):
     cp.add_section("properties")
+
+# Installing the NVIDIA stack obsoletes any old gralloc overrides — the
+# classic software-rendering workaround (ro.hardware.gralloc=default) or
+# gralloc.gbm.legacy from a migrated install blocks the guest's minigbm
+# selection and crash-loops SurfaceFlinger (issue #1). Remove them, loudly.
+for k in list(cp["properties"].keys()):
+    if k == "ro.hardware.gralloc" or k.startswith("gralloc."):
+        print("   removing stale gralloc override: {} = {}".format(
+            k, cp["properties"][k]))
+        cp.remove_option("properties", k)
 props = {
     "ro.hardware.egl": "angle",
     "ro.hardware.vulkan": "virtio",
