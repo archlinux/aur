@@ -2,7 +2,7 @@
 
 pkgname=plasma-lichess-tv-wallpaper-git
 pkgver=0.2.0.r0.gade187d
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Plasma 6 live wallpaper for Lichess TV (git)"
 arch=('x86_64')
 url="https://github.com/YummierGravy/plasma-lichess-tv-wallpaper"
