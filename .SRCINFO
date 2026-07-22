@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libjpeg-turbo
 	pkgdesc = JPEG image codec with accelerated baseline compression and decompression (mingw-w64)
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://libjpeg-turbo.org/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mingw-w64-libjpeg-turbo
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.0/libjpeg-turbo-3.1.0.tar.gz
+	source = https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.2.0/libjpeg-turbo-3.2.0.tar.gz
 	validpgpkeys = 0338C8D8D9FDA62CF9C421BD7EC2DBB6F4DBF434
-	sha512sums = 63231854529f59a95814cf2414fe384360a4ed96c572764fabc535c3770c559d26943e129c905a63d5949088fa79138b1ffdb175b817f2f4d36329a3cbb23ea7
+	sha512sums = 13536db56c16e5364690ae2d31343a203e3b653c853c1f5314d36c8eb06700e92342737f1381f0171b3eb0223384c5fbcde91b55a46576952c4e75dc049cd045
 
 pkgname = mingw-w64-libjpeg-turbo
