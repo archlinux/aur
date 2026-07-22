@@ -1,4 +1,4 @@
-# Maintainer: Vinycius <vinycius@users.noreply.github.com>
+# Maintainer: Vinycius <vinycius.florencio@gmail.com>
 
 pkgname=pagbank-cli-bin
 pkgver=0.1.3
