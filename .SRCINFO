@@ -1,0 +1,26 @@
+pkgbase = splayer-next-unofficial
+	pkgdesc = 非官方 - SPlayer-Next - 🎵 跨平台桌面音乐播放器，支持丰富的歌词展现形式与广泛的音频格式「SPlayer」的继任版本
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wkk-dev/SPlayer-Next-linux
+	arch = x86_64
+	license = AGPL-3.0
+	depends = libappindicator-gtk3
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	optdepends = pipewire: 音频后端
+	optdepends = pulseaudio: 音频后端
+	makedepends = nodejs>=22
+	makedepends = pnpm>=10
+	makedepends = rust
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = alsa-lib
+	makedepends = dbus
+	source = splayer-next-1.0.0.tar.gz::https://github.com/wkk-dev/SPlayer-Next-linux/archive/refs/tags/v1.0.0.tar.gz
+	source = splayer-next.png::https://github.com/wkk-dev/SPlayer-Next-linux/raw/v1.0.0/public/icons/favicon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = splayer-next-unofficial
