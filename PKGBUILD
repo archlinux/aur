@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=mongreldb-viewer
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 _ortver=1.24.2
 pkgdesc='Desktop viewer for exploring MongrelDB databases'
