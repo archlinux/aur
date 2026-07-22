@@ -8,6 +8,7 @@ pkgbase = ghostty-config-cli
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
+	depends = ghostty
 	provides = ghostty-config-cli
 	noextract = ghostty-config-cli-0.1.0.tgz
 	options = !strip

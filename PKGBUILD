@@ -15,7 +15,7 @@ _npmver=${pkgver}
 provides=("${_npmname}")
 
 makedepends=("npm" "jq")
-depends=("nodejs")
+depends=("nodejs" "ghostty")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
