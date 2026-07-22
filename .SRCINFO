@@ -1,0 +1,17 @@
+pkgbase = noti-notes
+	pkgdesc = Minimal, keyboard-first Markdown note editor for Linux/Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/L3-N0X/noti
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = gtksourceview5
+	conflicts = noti
+	source = noti-notes-0.1.0.tar.gz::https://github.com/L3-N0X/noti/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 95f0620042bd1424bb90b042042918a6d61de72cd6bce4afa28a52103640fc46
+
+pkgname = noti-notes
