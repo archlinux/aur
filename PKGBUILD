@@ -10,10 +10,11 @@ license=('Apache-2.0')
 depends=('nodejs>=24' 'ffmpeg')
 makedepends=('npm')
 install=lunarr.install
-source=("$url/archive/refs/tags/v$pkgver.tar.gz" "lunarr.service" "lunarr.install")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz" "lunarr.service" "lunarr.install" "lunarr.sh")
 b2sums=('SKIP'
         'a34363e9a8fae4137c5627a89808b4c4e19272a8bfcad82530cbae1e6977e4e8efd48f42dd8a69f8afcad660cdb820fc244d712fdd1b520451d662f6f18feb51'
-        '6e2c538d4abf8601079d2c2d186a677ee72badaee45fa08275f39b0150f00604e43505e2f0660122085222ed69c8e5e505f91ac019b4d826c97b4630fbaecd5d')
+        '6e2c538d4abf8601079d2c2d186a677ee72badaee45fa08275f39b0150f00604e43505e2f0660122085222ed69c8e5e505f91ac019b4d826c97b4630fbaecd5d'
+        '4aa0dab3f4cb2422dae9213a2ffed5a6ddfb80c973bbcbe76313fa492aca933a6b57478a98601e1cfa1c897986ea0513b564cd7fc19012287a04c0027decb23d')
 
 prepare() {
   cd "$srcdir/$_pkgrepo-$pkgver"
@@ -43,4 +44,6 @@ package() {
   cp -r build package.json node_modules scripts "$pkgdir/usr/lib/lunarr/"
 
   install -Dm644 "$srcdir/lunarr.service" "$pkgdir/usr/lib/systemd/system/lunarr.service"
+
+  install -Dm755 "$srcdir/lunarr.sh" "$pkgdir/usr/bin/lunarr"
 }
