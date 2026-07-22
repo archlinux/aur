@@ -1,0 +1,12 @@
+pkgbase = sendemail-safe
+	pkgdesc = SMTP command-line tools that keep credentials out of process command lines
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/marcorighi/sendEmail-safe
+	arch = any
+	license = MIT
+	depends = python
+	source = sendemail-safe-1.0.0.tar.gz::https://github.com/marcorighi/sendEmail-safe/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f48f038e865c83da325b06bbe16041901342ec2c1c4411856971cf7a429da631
+
+pkgname = sendemail-safe
