@@ -1,7 +1,7 @@
 pkgbase = quartodoc
 	pkgdesc = Generate Python package API reference documentation using Markdown and Quarto
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://machow.github.io/quartodoc
 	arch = any
 	license = MIT
@@ -28,6 +28,8 @@ pkgbase = quartodoc
 	depends = python-watchdog>=3.0.0
 	depends = python>=3.10
 	source = quartodoc-0.11.1::git+https://github.com/machow/quartodoc.git#tag=v0.11.1
+	source = griffe2-compat.patch
 	b2sums = be1ef2414171e5762072efe3beb5faad6c45f498e7a91e79be18597b5ee7140cd6d42451b7e14c6e5506a16085097430698fb73ea55a96f36d5716d7cde295a6
+	b2sums = 56deefbcfd2d3715a584fcc8b75cf1d98d09ea651e655c215a073bf5ce60b6ffd478a77b760635f3c7094aaed2e535eb5170a0848e0df11f1f5981d5e5bdc809
 
 pkgname = quartodoc

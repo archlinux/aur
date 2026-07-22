@@ -1,0 +1,26 @@
+diff --git a/quartodoc/parsers.py b/quartodoc/parsers.py
+index cd13763..de43412 100644
+--- a/quartodoc/parsers.py
++++ b/quartodoc/parsers.py
+@@ -1,7 +1,18 @@
++from importlib.metadata import version as _pkg_version
++
++
++def _griffe_major():
++    try:
++        return int(_pkg_version("griffe").split(".")[0])
++    except Exception:
++        return 0
++
++
++# griffe >= 2.0 dropped the `allow_section_blank_line` numpy-parser option
++# (blank lines between sections are now always allowed), so only pass it
++# for older griffe releases that still expect it.
+ DEFAULT_OPTIONS = {
+-    "numpy": {
+-        "allow_section_blank_line": True,
+-    }
++    "numpy": {"allow_section_blank_line": True} if _griffe_major() < 2 else {},
+ }
+ 
+ 

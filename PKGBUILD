@@ -2,7 +2,7 @@
 
 pkgname=quartodoc
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
 url='https://machow.github.io/quartodoc'
@@ -35,8 +35,16 @@ checkdepends=(
     'python-pytest-cov'
     'python-syrupy'
 )
-source=("${pkgname}-${pkgver}::git+https://github.com/machow/quartodoc.git#tag=v${pkgver}")
-b2sums=('be1ef2414171e5762072efe3beb5faad6c45f498e7a91e79be18597b5ee7140cd6d42451b7e14c6e5506a16085097430698fb73ea55a96f36d5716d7cde295a6')
+source=("${pkgname}-${pkgver}::git+https://github.com/machow/quartodoc.git#tag=v${pkgver}"
+        "griffe2-compat.patch")
+b2sums=('be1ef2414171e5762072efe3beb5faad6c45f498e7a91e79be18597b5ee7140cd6d42451b7e14c6e5506a16085097430698fb73ea55a96f36d5716d7cde295a6'
+        '56deefbcfd2d3715a584fcc8b75cf1d98d09ea651e655c215a073bf5ce60b6ffd478a77b760635f3c7094aaed2e535eb5170a0848e0df11f1f5981d5e5bdc809')
+
+prepare() {
+    cd $pkgname-$pkgver
+    # https://github.com/machow/quartodoc/issues/423
+    patch -Np1 -i "$srcdir/griffe2-compat.patch"
+}
 
 check() {
     cd $pkgname-$pkgver
