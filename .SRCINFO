@@ -1,0 +1,14 @@
+pkgbase = hwatu
+	pkgdesc = Daemon-based WebKitGTK browser for tiling WMs: real rendering, ~13ms window spawn
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/hongnoul/hwatu
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = webkitgtk-6.0
+	depends = gtk4
+	source = hwatu-0.4.0.tar.gz::https://github.com/hongnoul/hwatu/archive/v0.4.0.tar.gz
+	sha256sums = 4d5e290577e4b7d3e389e7ce76f8f20bbfbc0556e3e6262bb9631d6625a4220a
+
+pkgname = hwatu
