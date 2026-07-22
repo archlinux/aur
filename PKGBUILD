@@ -40,6 +40,7 @@ package() {
   install -dm755 "${pkgdir}/opt/bilibili"
   install -dm755 "${pkgdir}/usr/bin"
   # Extract and install from AppImage
+  chmod +x "${srcdir}/bilibili-${pkgver}-x86_64.AppImage"
   "${srcdir}/bilibili-${pkgver}-x86_64.AppImage" --appimage-extract
   cp -r squashfs-root/* "${pkgdir}/opt/bilibili/"
   ln -sf "/opt/bilibili/AppRun" "${pkgdir}/usr/bin/bilibili"
