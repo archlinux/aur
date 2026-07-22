@@ -1,6 +1,6 @@
 pkgname=bin-cpuflags-x86
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='A small CLI tool to detect CPU flags (instruction sets) of X86 binaries'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/HanabishiRecca/${pkgname}"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('6364fef62e407c359329376d9e340cd363bedeeec8b85360689f166330110cc5')
+sha256sums=('3399370f67afc6afc971a6b541aa569dc8d72397beea7524c0c678028aee32a6')
 
 prepare() {
     cd "${_snapshot}"
