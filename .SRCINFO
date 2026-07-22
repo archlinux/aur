@@ -1,15 +1,20 @@
 pkgbase = drmcru-bin
 	pkgdesc = Linux DRM/KMS custom resolution and EDID override utility
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ssupt/drmcru
 	arch = x86_64
 	license = GPL-3.0-or-later
-	provides = drmcru
+	optdepends = hyprland: live mode discovery, switching, and verification
+	optdepends = polkit: pkexec authentication for automatic Apply/Uninstall
+	optdepends = mkinitcpio: initramfs integration for automatic Apply/Uninstall
+	optdepends = limine: supported bootloader for automatic Apply/Uninstall
+	optdepends = limine-mkinitcpio: Limine entry regeneration on Omarchy-style systems
+	provides = drmcru=0.1.3
 	conflicts = drmcru
 	options = !strip
 	options = !debug
-	source_x86_64 = drmcru-0.1.2::https://github.com/ssupt/drmcru/releases/download/v0.1.2/drmcru-0.1.2-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 9fc58f5a319ef71a4d3abd963974e87c455af396b58d00212efd69025a872dee
+	source_x86_64 = drmcru-0.1.3::https://github.com/ssupt/drmcru/releases/download/v0.1.3/drmcru-0.1.3-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 8507a68e93ab9846e31a7d90644b4307e3bf7198737f999db337163cc44fa29b
 
 pkgname = drmcru-bin
