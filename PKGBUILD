@@ -2,7 +2,7 @@
 
 pkgname=greenboost
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool"
 arch=('x86_64')
 url="https://gitlab.com/IsolatedOctopi/greenboost"
