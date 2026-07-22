@@ -1,4 +1,5 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# First maintainer: Sean Anderson <seanga2@gmail.com>
+# Actual maintainer: Raphaël Gallais-Pou <rgallaispou@gmail.com>
 pkgname=python-dt-schema
 _name=${pkgname#python-}
 pkgver=2026.06
