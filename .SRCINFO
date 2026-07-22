@@ -1,6 +1,6 @@
 pkgbase = mp-player
 	pkgdesc = music player
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kurumihere/mp
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = mp-player
 	conflicts = mp
 	conflicts = mp-player-bin
 	conflicts = mp-player-git
-	source = mp-player-0.2.0.tar.gz::https://github.com/kurumihere/mp/archive/refs/tags/v0.2.0.tar.gz
+	source = mp-player-0.2.1.tar.gz::https://github.com/kurumihere/mp/archive/refs/tags/v0.2.1.tar.gz
 	source = mp-player.desktop
-	sha256sums = c755184f2b8d14bf46befe3bf11061b5d6439bf514f8282ee10dd5b5d907c170
+	sha256sums = 8ad4fcd096fbf916b6e6298f7af0b8ea932584c064acbdb02e3285f1b205b46c
 	sha256sums = 3fc25e2c0284de96df98f979f5c1445cb8ae3024592db54002a5cc9d9c46a479
 
 pkgname = mp-player

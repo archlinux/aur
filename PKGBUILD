@@ -1,7 +1,7 @@
 # Maintainer: kurumihere <kurumihere@disroot.org>
 
 pkgname=mp-player
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='music player'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   'mp-player.desktop'
 )
 sha256sums=(
-  'c755184f2b8d14bf46befe3bf11061b5d6439bf514f8282ee10dd5b5d907c170'
+  '8ad4fcd096fbf916b6e6298f7af0b8ea932584c064acbdb02e3285f1b205b46c'
   '3fc25e2c0284de96df98f979f5c1445cb8ae3024592db54002a5cc9d9c46a479'
 )
 
