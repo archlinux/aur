@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsh-git
-pkgver=1.3.0.0.g5797148
+pkgver=1.4.0.0.gHEAD
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland windows (git)"
 arch=('x86_64')
