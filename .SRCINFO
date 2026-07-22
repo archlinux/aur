@@ -1,7 +1,7 @@
 pkgbase = hyprqt6engine
 	pkgdesc = QT6 Theme Provider for Hyprland
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hyprwm/hyprqt6engine
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname="hyprqt6engine"
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="QT6 Theme Provider for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hyprwm/hyprqt6engine"
