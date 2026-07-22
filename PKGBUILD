@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=interfaces
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='List all network interfaces'
 arch=(x86_64)
 url='https://github.com/xyproto/interfaces'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=e04cb1454295543b18734ea36f50dd54eb16ff34") # tag: v1.3.0
-b2sums=('SKIP')
+source=("git+$url#tag=v$pkgver")
+b2sums=('c419b2b7ff307b54e8b0f65117baf10874c60d9864e80ffce36a09648427e9d65497c63f44e6371f917e62ef6ae0da141966074f0b69db73447bfa115275aa73')
 
 build() {
   cd $pkgname

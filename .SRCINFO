@@ -1,13 +1,13 @@
 pkgbase = interfaces
 	pkgdesc = List all network interfaces
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/xyproto/interfaces
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/interfaces#commit=e04cb1454295543b18734ea36f50dd54eb16ff34
-	b2sums = SKIP
+	source = git+https://github.com/xyproto/interfaces#tag=v1.3.1
+	b2sums = c419b2b7ff307b54e8b0f65117baf10874c60d9864e80ffce36a09648427e9d65497c63f44e6371f917e62ef6ae0da141966074f0b69db73447bfa115275aa73
 
 pkgname = interfaces
