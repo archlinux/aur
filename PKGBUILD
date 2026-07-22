@@ -1,7 +1,7 @@
 # Maintainer: SummerBreeze630 <xzwf2003@163.com>
 
 pkgname=bili23-downloader
-pkgver=2.10.4
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Bili23 Downloader"
 arch=('x86_64')
