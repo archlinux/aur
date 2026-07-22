@@ -1,0 +1,6 @@
+[machfile-cli]
+source = "git"
+git = "https://github.com/machfile/machfile.git"
+include_regex="^machfile-cli-v(\\d+\\.\\d+\\.\\d+.*)$"
+from_pattern = "^machfile-cli-v"
+to_pattern = ""
