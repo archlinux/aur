@@ -2,10 +2,10 @@
 _pkgname=f5vpn
 pkgname=${_pkgname}-ng
 pkgver=7271.0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
-mirror=vpn-mgmt.it.mtu.edu
+mirror=vpn.f5networks.net
 source=('com.f5.f5vpn.service' 'desktop-file-dbus.patch'
   'license.html::https://cdn.f5.com/product/apm/apps/eula.html')
 source_aarch64=("linux_${_pkgname}-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_${_pkgname}.aarch64.deb")
