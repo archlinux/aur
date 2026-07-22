@@ -1,0 +1,9 @@
+# waydroid-nvidia: the Venus render server (wd-venus, runs as the desktop
+# user) allocates CPU-mappable gralloc buffers through /dev/udmabuf, which is
+# root-only by default. uaccess grants the active seat user access via ACL —
+# the same mechanism used for e.g. /dev/dri render nodes.
+#
+# NOTE: uaccess only applies to SEATED (local desktop) sessions — exactly
+# where wd-venus runs. On a headless box (SSH only) grant access explicitly
+# instead, e.g.:  setfacl -m u:USER:rw /dev/udmabuf   (or a GROUP= rule).
+SUBSYSTEM=="misc", KERNEL=="udmabuf", TAG+="uaccess"

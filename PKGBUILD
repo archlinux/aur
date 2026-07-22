@@ -16,9 +16,9 @@
 #   gh attestation verify <file> --repo Shiro836/waydroid-nvidia
 
 pkgname=waydroid-nvidia-bin
-pkgver=0.1.0rc2
+pkgver=0.1.0rc3
 pkgrel=1
-_tag=v0.1.0-rc2
+_tag=v0.1.0-rc3
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
 pkgdesc="Waydroid with NVIDIA GPU acceleration (Mesa Venus over vtest socket; needs the nvidia-open kernel modules)"
 arch=('x86_64')
@@ -50,6 +50,7 @@ source=(
   'wd-venus.service'
   'waydroid-venus.tmpfiles'
   'waydroid-nvidia-setup'
+  'waydroid-nvidia.rules'
 )
 # The release tarballs are flat — extract them into named dirs in prepare().
 noextract=(
@@ -57,14 +58,15 @@ noextract=(
   "waydroid-nvidia-guest-android-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-prebuilts-$_tag.tar.zst"
 )
-sha256sums=('4c5f07da29567a295058bc344d6c03d6d43f7694fafcfe527210b3dc26c3958c'
+sha256sums=('45dc24cc1d364eee045e2114786ef228fc31f294b7032b00059a37a03c5d5c27'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
-            '88d741816b3a4565aebe02afc242eb83c53748b72dbe5dc6a530f9468260672e'
-            'fbb81d10f86a64332f957ccb25d198689664a38e5220a6b3dfeda4edc6be18c8'
+            'e7ed1f7953eb0f8f6e76037302f9abf91c4aa95dcbb97491722195d767d8aea1'
+            '9cf58e470a12667bfbf56d2ace2913813182398094ec1caaebd2fed015f951ef'
             'd83dc2fdc2b6892bbc6537b88a38d0e98b824bd29fa72ae87fbc12f2d53188ae'
             '4bc083ac6fc8d0d0fd31546f5abd9912ca1304571d5a6c9ee42351b1e745193f'
             '501db3b266f8a49f643d4054ba948ba40fcefe0fee1f3647bff955184acf533e'
-            'dd9e51f09eec6de3b8687a49d013ddbcdff6d26ded8b6b4169f6c2ad43924d01')
+            'e3f66e4e37b7a47ad503aea7f5dfa2f496966ef02cd9e772ad4d6b9242fb8e26'
+            'cdceadba519c3e6dada147c1a628ca64bf7f49993f84f50cc9a52da57963c9fe')
 
 prepare() {
   cd "waydroid-$_waydroid_sha"
@@ -94,4 +96,6 @@ package() {
   install -Dm644 wd-venus.service "$pkgdir/usr/lib/systemd/user/wd-venus.service"
   install -Dm644 waydroid-venus.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/waydroid-venus.conf"
   install -Dm755 waydroid-nvidia-setup "$pkgdir/usr/bin/waydroid-nvidia-setup"
+  # udmabuf access for the seated user (wd-venus CPU-mappable gralloc buffers)
+  install -Dm644 waydroid-nvidia.rules "$pkgdir/usr/lib/udev/rules.d/70-waydroid-nvidia.rules"
 }

@@ -47,11 +47,10 @@ for lib in libgbm_mesa_wrapper.so hwcomposer.waydroid.so \
 done
 # guest Venus vulkan HAL goes through the vendor overlay path
 install -m 0644 "$GUEST/libvulkan_virtio.so" "$OVERLAY_HW/vulkan.virtio.so"
-# patched surfaceflinger (needed only >240 Hz; bind-mount is 'optional' —
-# absent file means the stock image binary is used)
-if [ -f "$GUEST/surfaceflinger" ]; then
-    install -m 0755 "$GUEST/surfaceflinger" "$NV/surfaceflinger"
-fi
+# patched surfaceflinger (500 Hz vsync snap window; bind-mounted
+# unconditionally — the stack is validated as a whole, no partial modes)
+[ -f "$GUEST/surfaceflinger" ] || die "$GUEST/surfaceflinger missing (broken package?)"
+install -m 0755 "$GUEST/surfaceflinger" "$NV/surfaceflinger"
 
 NVNODE=""
 for uevent in /sys/class/drm/renderD*/device/uevent; do
@@ -63,6 +62,15 @@ for uevent in /sys/class/drm/renderD*/device/uevent; do
 done
 [ -n "$NVNODE" ] || die "no NVIDIA render node found under /dev/dri (is the NVIDIA driver loaded?)"
 echo "== NVIDIA render node: $NVNODE"
+
+# nvidia-drm.modeset=1 is REQUIRED: without it the driver exposes no dma_buf
+# support at all (no VK_EXT_external_memory_dma_buf, zero exportable
+# modifiers — probe-verified on live hosts 2026-07-22) and the guest can
+# only crash-loop wrapping its first buffer.
+MODESET=$(cat /sys/module/nvidia_drm/parameters/modeset 2>/dev/null || echo missing)
+[ "$MODESET" = "Y" ] || die "nvidia-drm.modeset is not enabled (got: $MODESET).
+Add nvidia_drm.modeset=1 to your kernel parameters or modprobe.d and reboot."
+echo "== nvidia-drm.modeset: Y"
 
 echo "== writing waydroid.cfg properties"
 REFRESH="$REFRESH" NVNODE="$NVNODE" python3 - "$CFG" <<'EOF'
@@ -99,6 +107,9 @@ cp.set("waydroid", "suspend_action", "none")
 # Explicit drm_device bypasses upstream gpu.py's nvidia blacklist (our waydroid
 # patch trusts it), so the render node gets bind-mounted on NVIDIA-only hosts.
 cp.set("waydroid", "drm_device", os.environ["NVNODE"])
+# Enables NVIDIA Venus mode in our waydroid patch: strict (non-optional)
+# bind-mounts at container start + a socket preflight at session start.
+cp.set("waydroid", "nvidia_venus_socket", "/run/waydroid-venus/venus.sock")
 with open(cfg_path, "w") as f:
     cp.write(f)
 print("   properties written")

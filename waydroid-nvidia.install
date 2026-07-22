@@ -6,7 +6,8 @@ waydroid-nvidia: next steps
                                          your monitor, e.g. --refresh 144)
   3. systemctl enable --now waydroid-container.service
   4. systemctl --user enable --now wd-venus.service   (as your desktop user)
-  5. waydroid session start / launch Waydroid from the app menu
+  5. re-login once (udev uaccess rule for /dev/udmabuf), then
+     waydroid session start / launch Waydroid from the app menu
 
 Requires the NVIDIA open kernel modules (nvidia-open / nvidia-open-dkms)
 with nvidia-drm.modeset=1. The closed kernel module (nvidia / nvidia-dkms)
@@ -19,4 +20,5 @@ EOF
 
 post_upgrade() {
     echo "waydroid-nvidia: re-run 'waydroid-nvidia-setup' to refresh the guest stack in /var/lib/waydroid"
+    echo "waydroid-nvidia: re-login (or: udevadm trigger /dev/udmabuf) so the new udmabuf udev rule takes effect"
 }
