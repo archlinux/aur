@@ -1,4 +1,4 @@
-pkgbase = splayer-next-unofficial
+pkgbase = splayer-next-unofficial-bin
 	pkgdesc = 非官方 - SPlayer-Next - 🎵 跨平台桌面音乐播放器，支持丰富的歌词展现形式与广泛的音频格式「SPlayer」的继任版本
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = splayer-next-unofficial
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = splayer-next-unofficial
+pkgname = splayer-next-unofficial-bin

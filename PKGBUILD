@@ -1,7 +1,7 @@
 # Maintainer: wkk-dev <wkk-dev@qq.com>
 
 # === 包基本信息 ===
-pkgname=splayer-next-unofficial
+pkgname=splayer-next-unofficial-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="非官方 - SPlayer-Next - 🎵 跨平台桌面音乐播放器，支持丰富的歌词展现形式与广泛的音频格式「SPlayer」的继任版本"
