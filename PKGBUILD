@@ -1,7 +1,7 @@
 # Maintainer: voidbornfr <discordrishab@gmail.com>
 pkgname=void-files
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI"
 arch=('x86_64')
 url="https://github.com/voidbornfr/void-files"
@@ -61,18 +61,17 @@ package() {
     install -Dm755 "void-files-gui.py" "$pkgdir/usr/bin/void-files-gui"
   fi
 
-  # 3. Install Desktop Entries (App Launcher support)
-  if [ -f "void-files-gui.desktop" ]; then
-    install -Dm644 "void-files-gui.desktop" "$pkgdir/usr/share/applications/void-files-gui.desktop"
-  fi
-  if [ -f "void-files-tui.desktop" ]; then
-    install -Dm644 "void-files-tui.desktop" "$pkgdir/usr/share/applications/void-files-tui.desktop"
+  # 3. Install Single Desktop Entry for App Launcher
+  if [ -f "void-files.desktop" ]; then
+    install -Dm644 "void-files.desktop" "$pkgdir/usr/share/applications/void-files.desktop"
   fi
 
-  # 4. Install Application Icon
+  # 4. Install Application Icon across standard icon themes
   if [ -f "assests/icon.png" ]; then
     install -Dm644 "assests/icon.png" "$pkgdir/usr/share/pixmaps/void-files.png"
-    install -Dm644 "assests/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/void-files.png"
+    for sz in 512x512 256x256 128x128 64x64 48x48; do
+      install -Dm644 "assests/icon.png" "$pkgdir/usr/share/icons/hicolor/$sz/apps/void-files.png"
+    done
   fi
 
   # 5. Install License
