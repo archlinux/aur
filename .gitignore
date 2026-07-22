@@ -1,17 +1,6 @@
-# based on https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
-*.tar
-*.tar.*
-*.rpm
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-
-*/
-*.orig
-*.bak
-*.backup
-*.kate-swp
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
