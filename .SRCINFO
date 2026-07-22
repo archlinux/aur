@@ -1,0 +1,19 @@
+pkgbase = pactience
+	pkgdesc = Enforce a minimum package age before upgrading Arch Linux packages (pacman/AUR)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/a77ila/pactience
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = pacman
+	depends = gcc-libs
+	depends = zlib
+	optdepends = paru: AUR package support
+	optdepends = yay: AUR package support
+	source = pactience-0.1.0.tar.gz::https://github.com/a77ila/pactience/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 70161ea667460eb7d606c8b6e7551a6bf35df122c3ff67a7e56c04affe2d43dd
+
+pkgname = pactience
