@@ -1,0 +1,25 @@
+pkgbase = aprsc-9m2pju-bin
+	pkgdesc = APRS-IS core server in C with chroot sandboxing, SCTP support, and web UI. Pre-built binary from GitHub releases.
+	pkgver = 2.1.21
+	pkgrel = 1
+	url = https://github.com/9M2PJU/aprsc
+	install = aprsc-9m2pju-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = binutils
+	depends = libevent
+	depends = openssl
+	depends = lksctp-tools
+	depends = libcap
+	depends = zlib
+	provides = aprsc
+	conflicts = aprsc
+	conflicts = aprsc-9m2pju-git
+	backup = opt/aprsc/etc/aprsc.conf
+	source_x86_64 = aprsc_2.1.21.+bookworm1_amd64.deb::https://github.com/9M2PJU/aprsc/releases/download/v2.1.21/aprsc_2.1.21.%2Bbookworm1_amd64.deb
+	sha256sums_x86_64 = e3a3914c31e5e30af0a303be719e6a3ef3a7ff21148c1f560182580b267888aa
+	source_aarch64 = aprsc_2.1.21.+bookworm1_arm64.deb::https://github.com/9M2PJU/aprsc/releases/download/v2.1.21/aprsc_2.1.21.%2Bbookworm1_arm64.deb
+	sha256sums_aarch64 = cc8735c4f4e4e193bb38951bc9aa2bf0f79c1c03d206c833ea95cb78ea95bb9b
+
+pkgname = aprsc-9m2pju-bin
