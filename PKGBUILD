@@ -50,7 +50,7 @@ _source_url="$(
     | grep -E "version=${_pkgver}\b" \
     | grep 'platform=Linux' \
     | grep -v 'includesDocumentation=false' \
-    | sed -E 's/.*href="([^"]+)".*/\1/' \
+    | sed -E 's/.*\bhref="([^"]+)".*/\1/' \
     | uniq
 )"
 source=("Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
@@ -91,8 +91,14 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
-  warning "Mathematica takes around 29 GiB of space with 'makepkg'."
-  warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
+  local available_space
+  available_space="$(df --output=avail -BG .)"
+  available_space="$(tail -n 1 <<< "${available_space}")"
+
+  if [[ ${available_space/%G/} -lt 32 ]]; then
+    warning "Mathematica takes around 29 GiB of space with 'makepkg'."
+    warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
+  fi
 
   if [[ ${PWD} =~ [[:space:]] ]]; then
     error "ERROR: The Mathematica installer doesn't support directory names with spaces."
@@ -107,7 +113,7 @@ prepare() {
 }
 
 package() {
-  local installdir desktop_file i mimetype
+  local installdir
   installdir="$(realpath -m "${pkgdir}/${_installdir}")"
 
   msg2 'Running Mathematica installer'
@@ -130,37 +136,49 @@ package() {
     warning 'Review installation errors:'
     cat InstallErrors
   fi
-  rm -f InstallErrors
+  rm -vf InstallErrors
 
   msg2 'Setting up WolframScript'
   # shellcheck disable=SC2312
   ar -p SystemFiles/Installation/wolframscript_*_amd64.deb \
-    -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
+    -O data.tar.xz | tar -xvJ -C "${pkgdir}" ./usr/share/
 
   msg2 'Copying menu and MIME type information'
 
-  desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
   install -vD -t "${pkgdir}/usr/share/applications/" \
-    -m644 "SystemFiles/Installation/${desktop_file}"
+    -m644 "SystemFiles/Installation/com.wolfram.Wolfram.${_pkgver}.desktop"
   install -vD -t "${pkgdir}/usr/share/desktop-directories/" \
     -m644 SystemFiles/Installation/wolfram-wolfram.directory
   install -vD -t "${pkgdir}/usr/share/mime/packages/" \
     -m644 SystemFiles/Installation/*.xml
-  rm -r SystemFiles/Installation/
+  rm -vr SystemFiles/Installation/
 
-  _fix_desktop_file "${pkgdir}/usr/share/applications/${desktop_file}"
+  _fix_desktop_file "${pkgdir}/usr/share/applications/com.wolfram.Wolfram.${_pkgver}.desktop"
   _fix_desktop_file "${pkgdir}/usr/share/desktop-directories/wolfram-wolfram.directory"
 
   msg2 'Copying icons'
+
+  # Read MIME types from XML declarations: <mime-type ... type="...">
+  local -a mimetypes
+  mapfile -t mimetypes < <(
+    # shellcheck disable=SC2312
+    sed -nE '/<mime-type\b/,/>/ s/.*\btype="([^"]+)".*/\1/ p' \
+      "${pkgdir}/usr/share/mime/packages/"*.xml
+  )
+
+  local i mimetype icon
   for i in 32 64 128; do
     install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
       -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
-    # shellcheck disable=SC2312
-    for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
-      mimetype="$(basename "${mimetype}")"
-      install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
-        -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
+    for mimetype in "${mimetypes[@]}"; do
+      icon="SystemFiles/FrontEnd/SystemResources/X/$(basename "${mimetype}")-${i}.png"
+      if [[ -f ${icon} ]]; then
+        install -vD -m644 "${icon}" \
+          -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/${mimetype//\//-}.png"
+      else
+        printf 'Missing icon: %s\n' "${icon}"
+      fi
     done
   done
 
@@ -177,22 +195,22 @@ package() {
 }
 
 _fix_desktop_file() {
-  # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
-  sed -i -E '/^\s*Version\s*=.*$/d' "$1"
-  # encoding is outdated
-  sed -i -E '/^\s*Encoding\s*=.*$/d' "$1"
-  # executable path contains BUILDDIR
-  sed -i -E 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
-  sed -i -E "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
-  # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
-  if [[ "$1" = *".desktop" ]]; then
-    cat >> "$1" << EOF
-GenericName=Mathematical Software
-Keywords=Wolfram;Mathematica;Symbolic;Computation;Programming;Simulation;Data Analysis;Visualization;Algebra;Calculus;Graphing;
-Categories=Science;Math;ComputerScience;DataVisualization;NumericalAnalysis;ArtificialIntelligence;Physics;ParallelComputing;
-EOF
-  fi
-  # checked with desktop-file-validate
+  sed -i -E "
+    # Wolfram declares an invalid 'Version=2.0'. Most DEs just ignore it, but best to remove it.
+    /^Version=/ d
+    # encoding is outdated
+    /^Encoding=/ d
+    # executable path contains BUILDDIR
+    /^TryExec=/ s|=.*|=/usr/bin/WolframNB|
+    /^Exec=/ s|=.*|=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|
+    # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
+    /^Type=Application\$/,\$ {
+      /^Comment=/ a GenericName=Mathematical Software
+      \$ a Keywords=Wolfram;Mathematica;Symbolic;Computation;Programming;Simulation;Data Analysis;Visualization;Algebra;Calculus;Graphing;
+      \$ a Categories=Science;Math;ComputerScience;DataVisualization;NumericalAnalysis;ArtificialIntelligence;Physics;ParallelComputing;
+    }
+    # checked with desktop-file-validate
+  " "$1"
 }
 
 _fix_binary_symlinks() {
@@ -202,7 +220,6 @@ _fix_binary_symlinks() {
   ln -v -ft "${pkgdir}/usr/bin/" -sr \
     Executables/math \
     Executables/MathKernel \
-    Executables/mcc \
     Executables/wolfram \
     Executables/wolframnb \
     Executables/WolframKernel \
