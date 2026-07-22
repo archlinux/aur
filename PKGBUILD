@@ -1,13 +1,13 @@
 # Maintainer: voidbornfr <discordrishab@gmail.com>
 pkgname=void-files
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI"
 arch=('x86_64')
 url="https://github.com/voidbornfr/void-files"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'qt6-svg' 'glibc')
-makedepends=('go' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
+makedepends=('go' 'git')
 source=("$pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
@@ -40,12 +40,6 @@ build() {
   go build \
     -ldflags "-compressdwarf=false -linkmode=external" \
     -o void-files-tui .
-
-  # 2. Build Python wheel (if pyproject.toml is present)
-  cd "$srcdir/$pkgname"
-  if [ -f "pyproject.toml" ] || [ -f "setup.py" ]; then
-    python -m build --wheel --no-isolation
-  fi
 }
 
 package() {
@@ -54,12 +48,8 @@ package() {
   # 1. Install compiled Go binary to /usr/bin/
   install -Dm755 "go-tui/void-files-tui" "$pkgdir/usr/bin/void-files-tui"
 
-  # 2. Install Python Component
-  if [ -d "dist" ] && [ -n "$(ls -A dist/*.whl 2>/dev/null)" ]; then
-    python -m installer --destdir="$pkgdir" dist/*.whl
-  else
-    install -Dm755 "void-files-gui.py" "$pkgdir/usr/bin/void-files-gui"
-  fi
+  # 2. Install Python GUI script directly to /usr/bin/void-files-gui
+  install -Dm755 "void-files-gui.py" "$pkgdir/usr/bin/void-files-gui"
 
   # 3. Install Single Desktop Entry for App Launcher
   if [ -f "void-files.desktop" ]; then

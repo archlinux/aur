@@ -1,15 +1,11 @@
 pkgbase = void-files
 	pkgdesc = A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/voidbornfr/void-files
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools
 	makedepends = git
 	depends = python
 	depends = python-pyqt6
