@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=docspec
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 pkgdesc='Rust implementation of DocSpec, a streaming document conversion library'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo
              git)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('4778338b6ee01f0df88b5734ddd7e847208ba1d46def07ef0655f5b554bf69f4')
+sha256sums=('8683664194e5ddb2d623d744312f34797911a1371c6a674e23296d0dbf3788a3')
 
 _srcenv() {
 	cd "$pkgname"
