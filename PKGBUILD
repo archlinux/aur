@@ -51,7 +51,7 @@ build() {
     export CC=clang
     export CXX=clang++
 
-    local TAGS=$(cat release/DEFAULT_BUILD_TAGS)
+    local TAGS="$(cat release/DEFAULT_BUILD_TAGS),with_awg"
     local LDFLAGS_SHARED=$(cat release/LDFLAGS)
 
     go build -v \
