@@ -7,9 +7,9 @@ pkgbase = python-hbctool
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
+	depends = python-docopt
 	source = python-hbctool-0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/h/hbctool/hbctool-0.1.5.tar.gz
 	sha256sums = 30aeb050095ba507da2ed26ea8e64a75cd63d459d0db2eeb99e189fb8421c8a3
 
