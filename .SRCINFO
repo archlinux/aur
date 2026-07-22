@@ -1,7 +1,7 @@
 pkgbase = okular-browser-url-open
 	pkgdesc = Document Viewer
 	pkgver = 26.04.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/okular/
 	arch = x86_64
 	groups = kde-applications
