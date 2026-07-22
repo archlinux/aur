@@ -1,0 +1,5 @@
+[sx-bin]
+source = "github"
+github = "byteowlz/sx"
+use_latest_release = true
+prefix = "v"

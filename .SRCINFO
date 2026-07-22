@@ -1,13 +1,21 @@
 pkgbase = sx-bin
 	pkgdesc = Multi-engine web search from the command line
-	pkgver = 2.1.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/sx
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	provides = sx
 	conflicts = sx
-	source = sx-2.1.0.tar.gz::https://github.com/byteowlz/sx/releases/download/v2.1.0/sx_Linux_x86_64.tar.gz
-	sha256sums = 848a7072f6825bf137b292079e21ceba6b27e1680e8a55a2420d0b7ddd6e2c42
+	options = !strip
+	source = README-2.5.0.md::https://raw.githubusercontent.com/byteowlz/sx/v2.5.0/README.md
+	source = LICENSE-2.5.0::https://raw.githubusercontent.com/byteowlz/sx/v2.5.0/LICENSE
+	sha256sums = 5a11846b841819f3d45df2d7fc3915c6648d0f13665d7f4db7dbc7924f4d04a0
+	sha256sums = 647221b987aeb9a07979d10ff7ca51dea253d3baca226aee75838f7f72b72bf1
+	source_x86_64 = sx-x86_64-2.5.0.tgz::https://github.com/byteowlz/sx/releases/download/v2.5.0/sx-v2.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 668c920d27f32d27d4226b3ac1816820bc22da1c8356714af1820c392c7c66af
+	source_aarch64 = sx-aarch64-2.5.0.tgz::https://github.com/byteowlz/sx/releases/download/v2.5.0/sx-v2.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2a69bc7af43511f7c3b822e682a79db0b40c1080da60929754401b8faa33775c
 
 pkgname = sx-bin
