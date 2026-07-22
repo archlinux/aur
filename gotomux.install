@@ -1,0 +1,18 @@
+post_install() {
+    echo ""
+    echo ":: gotomuxd — daemon for fast cold start + background telemetry"
+    echo "   Enable: systemctl --user enable --now gotomuxd"
+    echo "   Status: systemctl --user status gotomuxd"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo ":: gotomuxd removed. Disable manually if no longer needed:"
+    echo "   systemctl --user disable --now gotomuxd"
+    echo ""
+}
