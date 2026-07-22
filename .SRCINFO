@@ -1,6 +1,6 @@
 pkgbase = drmcru-bin
 	pkgdesc = Linux DRM/KMS custom resolution and EDID override utility
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ssupt/drmcru
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = drmcru-bin
 	conflicts = drmcru
 	options = !strip
 	options = !debug
-	source_x86_64 = drmcru-0.1.1::https://github.com/ssupt/drmcru/releases/download/v0.1.1/drmcru-0.1.1-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 2a1a3c2d4c27e0844cb26193047fcafce43b834461e4a7601cf3a80980117fd9
+	source_x86_64 = drmcru-0.1.2::https://github.com/ssupt/drmcru/releases/download/v0.1.2/drmcru-0.1.2-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 9fc58f5a319ef71a4d3abd963974e87c455af396b58d00212efd69025a872dee
 
 pkgname = drmcru-bin
