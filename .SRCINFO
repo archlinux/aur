@@ -1,0 +1,32 @@
+pkgbase = quickdash-git
+	pkgdesc = Configurable Hyprland dashboard and launcher built with Quickshell
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/vcoscrato/quickdash
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = bluez-utils
+	depends = coreutils
+	depends = hyprland
+	depends = libnotify
+	depends = networkmanager
+	depends = pipewire
+	depends = procps-ng
+	depends = quickshell>=0.3.0
+	depends = systemd
+	depends = which
+	depends = wireplumber
+	optdepends = curl: weather lookup
+	optdepends = brightnessctl: brightness controls
+	optdepends = cliphist: clipboard history
+	optdepends = hyprsunset: night-light controls
+	optdepends = wl-clipboard: restoring clipboard history entries
+	optdepends = xdg-utils: opening the config when VISUAL and EDITOR are unset
+	provides = quickdash
+	conflicts = quickdash
+	source = quickdash::git+https://github.com/vcoscrato/quickdash.git
+	sha256sums = SKIP
+
+pkgname = quickdash-git
