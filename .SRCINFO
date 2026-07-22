@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-luajit
 	pkgdesc = Just-in-time compiler and drop-in replacement for Lua 5.1
-	pkgver = 2.1.1784535789+5f627e4
+	pkgver = 2.1.1784580905+2460b3f
 	pkgrel = 1
 	url = https://luajit.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-luajit
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = LuaJIT-5f627e4.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/5f627e4.tar.gz
-	sha256sums = ba36a0340abebb0d8127d52280fbf4086379879fe59fa1dca2c684d3247106a1
+	source = LuaJIT-2460b3f.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/2460b3f.tar.gz
+	sha256sums = 5c52d06876d86aa199f9b8cdc65f6f9ac086fdfa8a4489ebf8dc4516e194550b
 
 pkgname = mingw-w64-luajit
