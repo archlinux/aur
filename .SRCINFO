@@ -1,6 +1,6 @@
 pkgbase = braincup-bin
 	pkgdesc = Train your math skills, memory and focus
-	pkgver = 2.30.0
+	pkgver = 2.31.0
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/Braincup
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = braincup-bin
 	provides = braincup
 	conflicts = braincup
 	options = !strip
-	source = Braincup-2.30.0-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v2.30.0/Braincup-2.30.0-linux-x86_64.tar.gz
-	sha256sums = a5de8a7a24fde9c0366caafe2c429753b7a6b3ea496a37f11b07646a73d90cda
+	source = Braincup-2.31.0-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v2.31.0/Braincup-2.31.0-linux-x86_64.tar.gz
+	sha256sums = 3be26cd8fc888555ff571415e4c531228472269f010f8bd92880b4b006c0479d
 
 pkgname = braincup-bin
