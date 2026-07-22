@@ -1,5 +1,5 @@
 pkgbase = noctalia
-	pkgdesc = Lightweight Wayland shell built directly on Wayland and OpenGL ES
+	pkgdesc = A sleek, customizable desktop shell crafted for Wayland
 	pkgver = 5.0.0_beta.3
 	pkgrel = 2
 	url = https://github.com/noctalia-dev/noctalia
