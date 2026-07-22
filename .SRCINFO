@@ -1,6 +1,6 @@
 pkgbase = anime_tui
 	pkgdesc = Terminal anime browser and player
-	pkgver = 0.1
+	pkgver = r13.g3853307
 	pkgrel = 1
 	url = https://github.com/tuanlyphong/anime_tui
 	arch = any
