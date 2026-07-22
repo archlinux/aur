@@ -103,6 +103,13 @@ post_remove() {
         rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
 
+        # The user-level desktop entry asm-setup writes (it shadows the
+        # packaged one by design), otherwise a ghost launcher entry pointing at
+        # a removed asm-gui survives the uninstall.
+        rm -f \"\$HOME/.local/share/applications/ArctisManager.desktop\"
+        rm -f \"\$HOME/.local/share/applications/ArctisManagerSystray.desktop\"
+        update-desktop-database \"\$HOME/.local/share/applications\" >/dev/null 2>&1 || true
+
         # Disable dinit services if on a dinit system
         if command -v dinitctl >/dev/null 2>&1; then
             for svc in arctis-manager arctis-video-router arctis-gui pipewire-filter-chain; do
