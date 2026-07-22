@@ -1,0 +1,20 @@
+pkgbase = python-solc-select
+	pkgdesc = Manage multiple Solidity compiler versions
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/crytic/solc-select
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-packaging
+	depends = python-pycryptodome
+	depends = python-requests
+	conflicts = solidity
+	source = solc_select-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/s/solc-select/solc_select-1.2.0.tar.gz
+	sha256sums = ad0a7afcae05061ce5e7632950b1fa0193ba9eaf05e4956f86effee024c6fb07
+
+pkgname = python-solc-select
