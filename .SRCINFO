@@ -11,9 +11,9 @@ pkgbase = greetdeez-bin
 	provides = greetdeez
 	arch = aarch64
 	source_aarch64 = https://github.com/nickheyer/GreetDeez/releases/download/v1.0.55/greetdeez_1.0.55_linux_arm64.tar.gz
-	sha256sums_aarch64 = 01a797615835f3555189584f89f7430675df1c62971d1e481006712bcdb859c7
+	sha256sums_aarch64 = ebac774918fdaa5eb3109c8f5925b716a2621796a5914ddf341b42160c295a70
 	arch = x86_64
 	source_x86_64 = https://github.com/nickheyer/GreetDeez/releases/download/v1.0.55/greetdeez_1.0.55_linux_amd64.tar.gz
-	sha256sums_x86_64 = d096d06b8bba28bb23c8b4d817de2c80b2711a4985d355f3c0a5517e62277e7d
+	sha256sums_x86_64 = 3d0933760edbd28227e5ab6382c10e8016fa809d2aee3308d810357a321ba4e1
 	
 pkgname = greetdeez-bin
