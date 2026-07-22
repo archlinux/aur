@@ -1,7 +1,7 @@
 pkgbase = wfview
 	pkgdesc = Interface for Icom transceivers
-	pkgver = 2.11
-	pkgrel = 3
+	pkgver = 2.23
+	pkgrel = 1
 	url = https://wfview.org/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = wfview
 	depends = qt5-base
 	depends = systemd-libs
 	depends = gcc-libs
-	source = https://gitlab.com/eliggett/wfview/-/archive/v2.11/wfview-v2.11.tar.gz
-	md5sums = cbd4c4fec0a6bf922ccdc71e4a2ebe88
+	source = https://gitlab.com/eliggett/wfview/-/archive/v2.23/wfview-v2.23.tar.gz
+	md5sums = 5e552a5e24d65e2cb75bf62c835d3492
 
 pkgname = wfview
