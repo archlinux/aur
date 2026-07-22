@@ -1,6 +1,6 @@
 pkgbase = codex-native-git
 	pkgdesc = Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI
-	pkgver = r1.13105d7
+	pkgver = r1.e7178d0
 	pkgrel = 1
 	url = https://github.com/Redminote11tech/Codex-Native
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = codex-native-git
 	provides = codex-native
 	conflicts = codex-native
 	source = codex-native::git+https://github.com/Redminote11tech/Codex-Native.git
-	source = Codex-darwin-arm64-26.715.70719.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-26.715.70719.zip
+	source = Codex-darwin-arm64-26.715.71837.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-26.715.71837.zip
 	sha256sums = SKIP
-	sha256sums = ef4a5cc09e546ca1f89c5c3e88f50b9d46847e7da21369944980806078c27ee2
+	sha256sums = ba5064f2ef3fe1c285e9f189cea0c0eec4f53adcc5604b2d9a825d0989513318
 
 pkgname = codex-native-git
