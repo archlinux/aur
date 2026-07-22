@@ -1,0 +1,22 @@
+pkgbase = pipewire-controller
+	pkgdesc = GTK4/libadwaita control center for PipeWire — filter chains, HRIR virtual surround, drop-in config management
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/knightinfected/PipeWireController
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pipewire
+	depends = wireplumber
+	depends = pipewire-pulse
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-numpy
+	depends = python-soundfile
+	optdepends = noise-suppression-for-voice: RNNoise noise-cancelling mic template
+	optdepends = lsp-plugins-ladspa: extra LADSPA plugins for imported chains
+	source = pipewire-controller-0.1.1.tar.gz::https://github.com/knightinfected/PipeWireController/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = b187807fb5f9591f65af3a24493a4628288fa4e70987977cda0b4a5bd203b4b5
+
+pkgname = pipewire-controller
