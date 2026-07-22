@@ -1,6 +1,6 @@
 # Maintainer: trbn1 <aur@trbn.me>
 pkgname=maki
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='An efficient AI coding agent extendable by neovim like Lua plugins'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'zlib')
 optdepends=('rtk: for reduced token consumption')
 conflicts=('maki-bin')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('84ece23bd235d3e5cc9e8e56d0450febc19d2c75c0a44adbf6aa22345904188a')
+sha256sums=('2ecfd922bad235335f1483a56243f70abc868f2261f4a934c6a753a6a06f10fb')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
