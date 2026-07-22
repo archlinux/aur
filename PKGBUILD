@@ -29,10 +29,28 @@ depends=(
 provides=('sbmusic')
 conflicts=('sbmusic')
 
-source=("https://github.com/aegiscanary/sbmusic-bin/releases/download/v${pkgver}/sb-music-desktop-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('850cc2e898afe31da604392a9b538f07ddc04a1e3043e6a4883d23fcee18b7ed')
+source=(
+    "https://github.com/aegiscanary/sbmusic-bin/releases/download/v${pkgver}/sb-music-desktop-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
+    "https://github.com/aegiscanary/sbmusic-bin/releases/download/v${pkgver}/sbmusic.svg"
+)
+
+sha256sums=('850cc2e898afe31da604392a9b538f07ddc04a1e3043e6a4883d23fcee18b7ed'
+            'c569bfb4bada45dcffbc6634034389cef306505b2cb8cdcae7148037134c934b')
 
 package() {
     cp -rp "$srcdir"/* "$pkgdir/"
     rm -f "$pkgdir"/.PKGINFO "$pkgdir"/.BUILDINFO "$pkgdir"/.MTREE
+
+    install -Dm644 "$srcdir/sbmusic.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/sbmusic.svg"
+    install -Dm644 "$srcdir/sbmusic.svg" "$pkgdir/usr/share/pixmaps/sbmusic.svg"
+
+    if [ -f "$pkgdir/usr/bin/sb_music" ]; then
+        ln -sf /usr/bin/sb_music "$pkgdir/usr/bin/sbmusic"
+    fi
+
+    DESKTOP_FILE=$(find "$pkgdir/usr/share/applications/" -name "*.desktop" | head -n 1)
+    if [ -n "$DESKTOP_FILE" ]; then
+        sed -i 's/^Icon=.*/Icon=sbmusic/' "$DESKTOP_FILE"
+        sed -i 's/^Exec=.*/Exec=sbmusic/' "$DESKTOP_FILE"
+    fi
 }
