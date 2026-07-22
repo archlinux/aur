@@ -2,7 +2,7 @@
 
 pkgname=lungo-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r12.c4b8ae8
+pkgver=1.0.1.r14.e0f6813
 pkgrel=1
 pkgdesc="A simple systray applet to prevent your system from going idle or sleeping on demand (git version)"
 url="https://github.com/Antiz96/lungo"
