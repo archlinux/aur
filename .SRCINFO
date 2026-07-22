@@ -1,6 +1,6 @@
 pkgbase = navop-bin
 	pkgdesc = Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)
-	pkgver = 0.8.14
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/feigeCode/navop
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = navop-bin
 	depends = systemd-libs
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = navop=0.8.14
+	provides = navop=0.9.0
 	conflicts = navop
-	source = navop-0.8.14.deb::https://github.com/feigeCode/navop/releases/download/v0.8.14/navop_0.8.14_amd64.deb
-	sha256sums = df93246d4160462531e8dcf7e24c15bef7f6c3b8c9fe594807a6543552a0b918
+	source = navop-0.9.0.deb::https://github.com/feigeCode/navop/releases/download/v0.9.0/navop_0.9.0_amd64.deb
+	sha256sums = de5536286938bc567e1ffad0f770b29159d5870f0613407ec0da85fe14473622
 
 pkgname = navop-bin
