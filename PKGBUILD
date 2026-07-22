@@ -2,7 +2,7 @@
 # Contributor: Kristofers Solo <dev at kristofers dot xyz>
 
 pkgname=scalpel-poe-bin
-pkgver=0.9.16
+pkgver=0.9.17
 pkgrel=1
 pkgdesc="Path of Exile's First Fourth-Party Tool"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
     "scalpel-poe.desktop"
 )
 noextract=("Scalpel.AppImage")
-sha256sums=('85867a324870919d09476f623f21ef3251ba97000112fd10d1371f0d3efb9fb8'
+sha256sums=('20689d3139c0ef11808d7fae0fa2795192a7ff7254ac028d562848836dedd3c0'
             '31db68f35fdeb9f2d8ad1fdf87784c4e590a8d715a18972a58e5870b160fd92e'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'aec6807cc11a1f0f172577d5d24744d457c2d52fd51c4b92d1e6b8bfbb943b1f'
