@@ -3,7 +3,7 @@
 # SDK is required to build or install it. pkgver/sha256sums are updated
 # automatically by .github/workflows/publish.yml on every tagged release.
 pkgname=plm-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="PSDK Login Manager — a minimal Flutter/PAM login manager (prebuilt)"
 arch=('x86_64')
@@ -12,8 +12,9 @@ license=('MIT')
 depends=('gtk3' 'pam' 'cage')
 provides=('plm')
 conflicts=('plm')
+install=plm.install
 source=("plm-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/plm-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('c07841948b865cc6d0d4ade399f673e3db9503ae2e673a713ddb812218f21809')
+sha256sums=('43366ca312bc9f3e73658a3bb0acf89578f5e275c9f66366fd4a70805ae94c22')
 
 package() {
   cd "$srcdir"
