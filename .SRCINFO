@@ -1,0 +1,25 @@
+pkgbase = mklang
+	pkgdesc = A declarative language for LLM-driven state machines (reference interpreter)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/gianlucamazza/mklang
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-yaml
+	depends = python-jsonschema
+	depends = python-dotenv
+	depends = python-openai
+	depends = python-rich
+	optdepends = python-textual: mklang console TUI
+	optdepends = python-mcp: mklang-mcp MCP server
+	optdepends = python-argcomplete: shell completions
+	backup = etc/mklang/runtime.yaml
+	source = https://files.pythonhosted.org/packages/source/m/mklang/mklang-0.12.0.tar.gz
+	sha256sums = ac0f52d4f2b85910b0399c4f60955d8e52c5403f38c4437378d877fd3053401d
+
+pkgname = mklang
