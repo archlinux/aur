@@ -6,7 +6,6 @@ pkgbase = mathematica
 	arch = x86_64
 	license = LicenseRef-Wolfram-Mathematica-License-Agreement
 	makedepends = curl
-	makedepends = rsync
 	makedepends = inetutils
 	depends = alsa-lib
 	depends = bash

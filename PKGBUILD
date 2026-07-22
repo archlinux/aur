@@ -17,7 +17,7 @@ pkgrel=1
 url='http://www.wolfram.com/mathematica/'
 arch=(x86_64)
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
-makedepends=('curl' 'rsync' 'inetutils')
+makedepends=('curl' 'inetutils')
 depends=(
   'alsa-lib'
   'bash'
@@ -125,13 +125,14 @@ package() {
 
   # Install documentation
   bash bundle/Unix/.bundle/Unix/Installer/MathInstaller \
-    -targetdir="${pkgdir}/tmp" \
+    -targetdir=tmp \
     -auto
 
-  cd "${installdir}"
-  rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" Documentation/
-  rm -rf "${pkgdir}/tmp/"
+  cd tmp
+  find Documentation/English -type d -exec mkdir -p -m755 "${installdir}/{}" \;
+  find Documentation/English -type f -exec mv -f --no-copy {} -T "${installdir}/{}" \;
 
+  cd "${installdir}"
   if [[ -s InstallErrors ]]; then
     warning 'Review installation errors:'
     cat InstallErrors
