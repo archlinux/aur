@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A cute cat(1)"
 
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-cat-${_barch[0]}.tar.xz")
 sha256sums=('90dba77b43283023948b071c0dbf7f1abfea89f969a856074198cf73087e1176'
             '7ba414491c618779f37230964c48422c38ce4101b5e42fcfb5102515251021ed')
-sha256sums_x86_64=('2f471572c196d0f0711396bfd58a8181c514bad7ef9fdc496c32c0807822da9e')
+sha256sums_x86_64=('ea9fbcd3538089cdd3d2e01fd92f523deb44a8860003959efe844fec9d759674')
 
 
 case ${CARCH} in
