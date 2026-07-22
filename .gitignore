@@ -1,0 +1,4 @@
+pkg/
+src/
+rpi-imager/
+*.pkg.tar.zst
