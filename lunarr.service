@@ -8,6 +8,7 @@ WorkingDirectory=/usr/lib/lunarr
 ExecStart=/usr/bin/node scripts/start.mjs
 Environment=NODE_ENV=production
 Environment=LUNARR_DATA_DIR=/var/lib/lunarr
+StateDirectory=lunarr
 Restart=on-failure
 RestartSec=5
 

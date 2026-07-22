@@ -12,7 +12,7 @@ makedepends=('npm')
 install=lunarr.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "lunarr.service" "lunarr.install")
 b2sums=('SKIP'
-        '1979431418ee7e291bb3b8a493928d9aa1cee5a113e82dd14985ca92ce882c2b5d167487bb60ee6a7e40af1ac54f91e244a55ead0f91ab91577135ecc08267f8'
+        'a34363e9a8fae4137c5627a89808b4c4e19272a8bfcad82530cbae1e6977e4e8efd48f42dd8a69f8afcad660cdb820fc244d712fdd1b520451d662f6f18feb51'
         '6e2c538d4abf8601079d2c2d186a677ee72badaee45fa08275f39b0150f00604e43505e2f0660122085222ed69c8e5e505f91ac019b4d826c97b4630fbaecd5d')
 
 prepare() {
