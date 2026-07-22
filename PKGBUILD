@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2164
 
-pkgver=2.2.4.r3.g64618e6
+pkgver=2.2.4.r4.g55158dd
 pkgrel=1
 
 _pkgname=casual-pre-loader
@@ -17,7 +17,7 @@ depends=(
 	'hicolor-icon-theme'
 	'python>=3.11'
 	'python-more-itertools>=11.1.0' 'python-more-itertools<12.0.0'
-	'python-packaging>=26' 'python-packaging<27'
+	'python-packaging>=26.2' 'python-packaging<27'
 	'python-platformdirs>=4.5' 'python-platformdirs<5'
 	'python-pygithub>=2.9.0' 'python-pygithub<3'
 	'python-pyqt6>=6.11' 'python-pyqt6<7'
