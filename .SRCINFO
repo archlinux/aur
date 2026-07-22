@@ -1,6 +1,6 @@
 pkgbase = display-modes-git
 	pkgdesc = Quick GTK display mode switcher for Hyprland and X11
-	pkgver = r0.g0000000
+	pkgver = r8.g5f149b5
 	pkgrel = 1
 	url = https://github.com/olalbns/display-modes
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = display-modes-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = gettext
 	depends = python
 	depends = python-gobject
 	depends = gtk4
