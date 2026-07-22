@@ -1,6 +1,6 @@
 # Maintainer: zhangyiyi <zhangyiyiemail@gmail.com>
 pkgname=cbm-tool
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Unofficial community CLI wrapper for codebase-memory-mcp'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 )
 conflicts=('cbm') # Color Bandwidth Meter also ships /usr/bin/cbm
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fxjs/cbm-tool/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('167dea2dbab8fa8ad79792600b0b76f2d923d4869602ade63fe658b782ae0c87')
+sha256sums=('f29d6e73a39b6e03d28267dc4a600072c3811207531abd6c8abf6f39a08a1506')
 
 package() {
   cd "$srcdir/cbm-tool-$pkgver"
