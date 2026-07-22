@@ -1,0 +1,4 @@
+[python-coord]
+source = "git"
+git = "https://github.com/LSSTDESC/Coord.git"
+prefix = "v"
