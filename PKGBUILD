@@ -11,7 +11,7 @@
 #   4. git commit && git push
 
 pkgname=quick-ssh
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="🚀 Quick-SSH - Docker-style SSH connection manager with TUI (Rust native binary)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('glibc' 'openssh')
 provides=('quick-ssh')
 conflicts=('quick-ssh')
 source=("$url/releases/download/v$pkgver/qssh-x86_64-linux.tar.gz")
-sha256sums=('94a6dc260d24065eb72020b2e8074b98706e5b1b6e0e510a2ff01527bf235ddc')
+sha256sums=('4794d11f18a96101d1e50eb55ccb7518435a9d0d9afa32a1ce250e5ef6aef488')
 # 注: 发布前请从 Release 的 SHA256SUMS 中获取真实哈希值替换 SKIP
 
 package() {
