@@ -8,19 +8,23 @@ url='https://github.com/Mateuscruz19/BATorrent'
 license=(MIT)
 conflicts=(batorrent)
 provides=(batorrent)
-depends=(	libtorrent-rasterbar
-			qt6-svg
-			qt6-declarative
-			qt6-multimedia
-			qtkeychain-qt6
-			qt6-base
-			openssl
-			libstdc++
-			glibc
-			libgcc)
-makedepends=(git
-			cmake
-			boost)
+depends=(
+  libtorrent-rasterbar
+  qt6-svg
+  qt6-base
+  qt6-multimedia
+  qt6-declarative
+  qtkeychain-qt6
+  openssl
+  libstdc++
+  glibc
+  libgcc
+)
+makedepends=(
+  git
+  cmake
+  boost
+)
 source=("$pkgname::git+$url")
 b2sums=(SKIP)
 
@@ -37,9 +41,10 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm0755 "$srcdir/$pkgname/build/BATorrent"		"$pkgdir/usr/bin/BATorrent"
-  install -Dm0644 "$srcdir/$pkgname/LICENSE"				"$pkgdir/usr/share/licenses/BATorrent/LICENSE"
-  install -Dm0644 "$srcdir/$pkgname/src/images/logo.svg"	"$pkgdir/usr/share/pixmaps/batorrent.svg"
+  
+  install -Dm0755 "$srcdir/$pkgname/build/BATorrent"        "$pkgdir/usr/bin/BATorrent"
+  install -Dm0644 "$srcdir/$pkgname/LICENSE"                "$pkgdir/usr/share/licenses/BATorrent/LICENSE"
+  install -Dm0644 "$srcdir/$pkgname/src/images/logo.svg"    "$pkgdir/usr/share/pixmaps/batorrent.svg"
   install -Dm0644 "$srcdir/$pkgname/src/images/logo1.png"   "$pkgdir/usr/share/pixmaps/batorrent.png"
-  install -Dm0644 "$srcdir/$pkgname/dist/batorrent.desktop"	"$pkgdir/usr/share/applications/batorrent.desktop"
+  install -Dm0644 "$srcdir/$pkgname/dist/batorrent.desktop" "$pkgdir/usr/share/applications/batorrent.desktop"
 }
