@@ -1,0 +1,15 @@
+pkgbase = msvisio
+	pkgdesc = MsVisio
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/IndyrGGTM/MsVisio
+	arch = x86_64
+	license = unknown
+	source = msvisio-0.1.0.pacman::https://github.com/IndyrGGTM/MsVisio/releases/download/v0.1.0/msvisio-0.1.0.pacman
+	source = b3sums::https://github.com/IndyrGGTM/MsVisio/releases/download/v0.1.0/b3sums
+	source = icon.png::https://raw.githubusercontent.com/IndyrGGTM/MsVisio/master/icon.png
+	sha256sums = 9524de83f4fa73f3fd8c93b0ff72a537b2061fb95e1dd0f1b6f6c497543de128
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = msvisio
