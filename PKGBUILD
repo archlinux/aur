@@ -1,4 +1,5 @@
-# Maintainer: willker <wz.willker@gmail.com>
+# Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
+# Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
 
 pkgname=axolotl-launcher
 pkgver=1.3.9
