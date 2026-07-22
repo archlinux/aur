@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.21.0.r2.g691a3d4
+pkgver=1.23.0.r0.g5b37181
 _electronversion=41
 _nodeversion=22
 pkgrel=1
@@ -15,7 +15,6 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'db5.3'
-    'openssl-1.0'
 )
 makedepends=(
     'npm'
@@ -43,6 +42,26 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
@@ -59,44 +78,31 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/g
     " "${srcdir}/${pkgname%-git}.sh"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+    _set_build_env
     _ensure_local_nvm
     sed -i "/await createRpmInstaller/d" app/build/build.js
     sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/tmpdir,/tmpdir,\n    electronDist: process.env.ELECTRON_DIST,/" app/build/build.js
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     npm run build
-    sed "s/${_pkgname}.desktop/${pkgname%-git}.desktop/g" -i app/dist/"${pkgname%-git}".appdata.xml
+    sed "s/${_pkgname}.desktop/${pkgname%-git}.desktop/g" -i app/dist/"${pkgname%-git}".metainfo.xml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16 32 64 128 256 512)
     for _icon_size in "${_icon_size[@]}"; do
         install -Dm644 "${srcdir}/${pkgname//-/.}/app/build/resources/linux/icons/${_icon_size}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icon_size}x${_icon_size}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/dist/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/app/dist/${pkgname%-git}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/app/dist/${pkgname%-git}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 }
