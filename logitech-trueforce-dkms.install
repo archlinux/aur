@@ -29,7 +29,7 @@ post_install() {
       3. Per SDK sim in Steam: set launch option PROTON_ENABLE_HIDRAW=1
          and disable Steam Input for the wheel.
 
-    Full guide: /usr/share/doc/logitech-trueforce-dkms/GETTING_STARTED.md
+    Full guide: https://github.com/mescon/logitech-trueforce-linux-driver/wiki/Installation
 MSG
 }
 

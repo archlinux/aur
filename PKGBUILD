@@ -5,7 +5,7 @@ pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-dd' 'logi-dd-gui')
 _dkmsname=logitech-trueforce
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
 url="https://github.com/mescon/logitech-trueforce-linux-driver"
@@ -79,8 +79,6 @@ package_logitech-trueforce-dkms() {
 	# Docs + license.
 	install -Dm644 "$_src/README.md" \
 		"$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 "$_src/docs/GETTING_STARTED.md" \
-		"$pkgdir/usr/share/doc/$pkgname/GETTING_STARTED.md"
 	install -Dm644 "$_src/COPYING" \
 		"$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

@@ -1,7 +1,7 @@
 pkgbase = logitech-trueforce-dkms
 	pkgdesc = DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mescon/logitech-trueforce-linux-driver
 	arch = x86_64
 	license = GPL-2.0-only
