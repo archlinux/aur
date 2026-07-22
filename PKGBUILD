@@ -2,8 +2,8 @@
 
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
 arch=($CARCH)
@@ -33,7 +33,7 @@ _name=KH-UCANFD_Linux_SDK
 source=(
     "${_name}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_name}.zip"
 )
-sha256sums=('32fad80959e86b39a42c9c650b81ef3e9ea28e8cdc3d5b4d1ca89ab1209a595d')
+sha256sums=('0859afc67dc63f232d64a8815a4c2a7bcf7129298c48748a70174647a4a6508c')
 noextract=()
 
 build() {
