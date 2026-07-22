@@ -15,6 +15,7 @@ depends=("python"
         "python-dbus"
         "slop"
         "slurp"
+        "wl-clipboard"
         )
 makedepends=("fakeroot"
         "gettext"
@@ -25,8 +26,7 @@ checkdepends=()
 optdepends=('xclip: command line clipboard support'
             'xdg-utils: for opening screenshot files from gscreenshot'
             'pandoc: for generating the manpage at build (or use go-md2man)'
-            'go-md2man: for generating the manpage at build (or use pandoc)'
-            'wl-clipboard: Wayland clipboard support')
+            'go-md2man: for generating the manpage at build (or use pandoc)')
 provides=('gscreenshot')
 conflicts=('gscreenshot')
 source=("git+https://github.com/thenaterhood/gscreenshot.git")
@@ -45,6 +45,7 @@ pkgver() {
 
 build() {
         cd "$srcdir/gscreenshot"
+        export PYTHONOPTIMIZE=2
         python -m build --wheel --no-isolation
 }
 
