@@ -2,12 +2,13 @@
 _appname=ArduDeck
 pkgname=ardudeck-appimage
 pkgver=0.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern cross-platform ground control station for ArduPilot, Betaflight, and iNav (AppImage)"
 arch=('x86_64')
 url="https://github.com/rubenCodeforges/ardudeck"
 license=('GPL-3.0-only')
 depends=('fuse2')
+makedepends=('imagemagick')
 provides=('ardudeck')
 conflicts=('ardudeck')
 options=('!strip')
@@ -29,12 +30,14 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 
-	# Icons shipped inside the AppImage -> hicolor theme, renamed to $pkgname.
-	local icon size
-	for icon in "${srcdir}"/squashfs-root/usr/share/icons/hicolor/*/apps/*.png; do
-		[ -e "$icon" ] || continue
-		size=$(basename "$(dirname "$(dirname "$icon")")")
-		install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+	# Upstream ships a single 1024x1024 icon, a size hicolor's index.theme does
+	# not declare, so themed lookups (the app launcher) miss it. Downscale the
+	# AppImage's .DirIcon master into standard hicolor sizes.
+	local size
+	for size in 512 256 128 64 48; do
+		install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+		magick "${srcdir}/squashfs-root/.DirIcon" -resize "${size}x${size}" \
+			"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
 	done
 
 	# .desktop shipped inside the AppImage: repoint the Exec binary and Icon at
