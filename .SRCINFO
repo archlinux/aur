@@ -1,6 +1,6 @@
 pkgbase = docmancer-git
 	pkgdesc = Fetch docs, embed locally, expose to AI agents via skills
-	pkgver = r177.acf32ab
+	pkgver = r194.455bfb6
 	pkgrel = 1
 	url = https://github.com/docmancer/docmancer
 	arch = any
@@ -26,6 +26,9 @@ pkgbase = docmancer-git
 	depends = python-model2vec
 	depends = python-charset-normalizer
 	depends = python-pypdf
+	depends = python-rfc8785
+	depends = python-keyring
+	depends = python-pynacl
 	optdepends = python-pdfplumber: PDF table/layout extraction fallback
 	optdepends = python-docx: DOCX ingestion
 	optdepends = python-mcp: MCP server (docmancer mcp; pulls starlette + sse-starlette)

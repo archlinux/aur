@@ -2,7 +2,7 @@
 
 _pkgname=docmancer
 pkgname=$_pkgname-git
-pkgver=r177.acf32ab
+pkgver=r194.455bfb6
 pkgrel=1
 pkgdesc="Fetch docs, embed locally, expose to AI agents via skills"
 arch=('any')
@@ -26,6 +26,11 @@ depends=(
   'python-model2vec'
   'python-charset-normalizer'
   'python-pypdf'
+  # cli/__main__.py transitively imports docmancer.cloud at startup, which
+  # needs these three even when cloud sync is never used
+  'python-rfc8785'
+  'python-keyring'
+  'python-pynacl'
 )
 # striprtf (RTF loader) is unpackaged on Arch; the loader degrades gracefully without it.
 optdepends=(
