@@ -1,6 +1,6 @@
 pkgbase = sdroxide
 	pkgdesc = PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and FT8/FT4 (CAT + USB-audio backend, no SoapySDR)
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/sdroxide
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = sdroxide
 	depends = vulkan-icd-loader
 	conflicts = sdroxide-soapysdr
 	options = !lto
-	source = sdroxide-0.1.0.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7b357a622a74b309b2a5105ed43a03d820b5763f2bc658ad806cbc60bbcb84af
+	source = sdroxide-0.3.0.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f2d8158072ae45485beda9ae6fcd19508b6f66d4b55864bbb72dfcaa0cb30fb5
 
 pkgname = sdroxide

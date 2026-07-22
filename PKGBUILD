@@ -1,7 +1,5 @@
-# Maintainer: Josef Jahn <josef.jahn@gmail.com>
-
 pkgname=sdroxide
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and FT8/FT4 (CAT + USB-audio backend, no SoapySDR)"
 arch=('x86_64')
@@ -19,7 +17,7 @@ makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen')
 conflicts=('sdroxide-soapysdr')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b357a622a74b309b2a5105ed43a03d820b5763f2bc658ad806cbc60bbcb84af')
+sha256sums=('f2d8158072ae45485beda9ae6fcd19508b6f66d4b55864bbb72dfcaa0cb30fb5')
 
 prepare() {
   cd "sdroxide-$pkgver"
