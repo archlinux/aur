@@ -1,19 +1,24 @@
 pkgbase = chemtool-proper
-	pkgdesc = Chemtool without the stupid right justified help menu
+	pkgdesc = Chemtool ported to Gtk3 with assistance from Codex
 	pkgver = 1.6.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ruby.chemie.uni-freiburg.de/~martin/chemtool/chemtool.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = gtk2
+	depends = gtk3
 	provides = chemtool
 	replaces = chemtool
 	options = !libtool
 	source = http://ruby.chemie.uni-freiburg.de/~martin/chemtool/chemtool-1.6.14.tar.gz
+	source = 0001-Add-GTK3-compatibility-drawing-layer.patch
+	source = 0002-Port-chemtool-sources-to-GTK3.patch
+	source = gtk3_build_system.patch
 	source = chemtool.desktop
-	md5sums = 3a97680f0abe1327af1f0072551a68e2
-	md5sums = 8cbb6f7021bd5aaa6f6a31fc4d95a06e
+	sha256sums = 86161a0461386b334a5ffb17cdf094a491941884678272f45749813514ddafcb
+	sha256sums = b7278a7256ef5c2cfc6ede8e9d577cae662d9e107a3d29b152122f499ffa68b9
+	sha256sums = a81ffc0a44b4c856a2633eefcb9d0aced2695c5de0f7bbcb99ba952665a9a8ff
+	sha256sums = 5cfb774056a88c6e7dcd52233c740a27e592208292e9471e565b86832ec99e16
+	sha256sums = 9c35347faa7aa664c012f0d66fffbd469c4f2f3f8f24e5dd0cd42d554e9c5ac7
 
 pkgname = chemtool-proper
-

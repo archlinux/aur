@@ -1,0 +1,647 @@
+From c0f2ca8bc18cafba3d1d52e111d1a111feb639ea Mon Sep 17 00:00:00 2001
+From: Codex <codex@localhost>
+Date: Tue, 21 Jul 2026 19:19:13 -0400
+Subject: [PATCH 1/2] Add GTK3 compatibility drawing layer
+
+---
+ chemtool-1.6.14/Makefile.am  |   3 +-
+ chemtool-1.6.14/ct.h         |   1 +
+ chemtool-1.6.14/ct1.h        |   1 +
+ chemtool-1.6.14/gtk3compat.c | 440 +++++++++++++++++++++++++++++++++++
+ chemtool-1.6.14/gtk3compat.h | 135 +++++++++++
+ 5 files changed, 581 insertions(+), 4 deletions(-)
+ create mode 100644 chemtool-1.6.14/gtk3compat.c
+ create mode 100644 chemtool-1.6.14/gtk3compat.h
+
+diff --git a/chemtool-1.6.14/Makefile.am b/chemtool-1.6.14/Makefile.am
+index 99dbf8c..84ab9ed 100644
+--- a/chemtool-1.6.14/Makefile.am
++++ b/chemtool-1.6.14/Makefile.am
+@@ -15,7 +15,7 @@ SUBDIRS = m4 po src-cht
+ bin_PROGRAMS = chemtool src-cht/cht
+ 
+ # The source files of the 'chemtool' program.
+-chemtool_SOURCES = main.c draw.c graph.c chemproc.c undo.c inout.c templates.h gettext.h
++chemtool_SOURCES = main.c draw.c graph.c chemproc.c undo.c inout.c gtk3compat.c gtk3compat.h templates.h gettext.h
+ 
+ # Define a C macro LOCALEDIR indicating where catalogs will be installed.
+ localedir = $(datadir)/locale
+@@ -37,4 +37,3 @@ dist_man_MANS = chemtool.1 cht.1
+ install-exec-hook:
+ 	cd $(DESTDIR)$(bindir) && \
+ 	$(LN_S) chemtool chemtoolbg
+-
+diff --git a/chemtool-1.6.14/ct.h b/chemtool-1.6.14/ct.h
+index 98761f9..e29899c 100644
+--- a/chemtool-1.6.14/ct.h
++++ b/chemtool-1.6.14/ct.h
+@@ -7,6 +7,7 @@
+ #include <math.h>
+ #include <sys/stat.h>
+ #include <gtk/gtk.h>
++#include "gtk3compat.h"
+ 
+ #ifndef MAXPATHLEN
+ #  ifdef PATH_MAX
+diff --git a/chemtool-1.6.14/ct1.h b/chemtool-1.6.14/ct1.h
+index 159ae8d..e319e03 100644
+--- a/chemtool-1.6.14/ct1.h
++++ b/chemtool-1.6.14/ct1.h
+@@ -7,6 +7,7 @@
+ #include <math.h>
+ #include <sys/stat.h>
+ #include <gtk/gtk.h>
++#include "gtk3compat.h"
+ 
+ #ifndef MAXPATHLEN
+ #  ifdef PATH_MAX
+diff --git a/chemtool-1.6.14/gtk3compat.c b/chemtool-1.6.14/gtk3compat.c
+new file mode 100644
+index 0000000..caf107c
+--- /dev/null
++++ b/chemtool-1.6.14/gtk3compat.c
+@@ -0,0 +1,440 @@
++#include "gtk3compat.h"
++#include <string.h>
++
++#ifdef GTK3
++
++static GdkGC black_gc = { { 0, 0, 0, 1 }, { 1, 1, 1, 1 }, 1, 0, 0, 0 };
++static GdkGC white_gc = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, 1, 0, 0, 0 };
++static GdkGC insensitive_gc = { { .72, .72, .72, 1 }, { 1, 1, 1, 1 }, 1, 0, 0, 0 };
++
++static void
++color_to_rgba (const GdkColor *color, GdkRGBA *rgba)
++{
++  rgba->red = color->red / 65535.0;
++  rgba->green = color->green / 65535.0;
++  rgba->blue = color->blue / 65535.0;
++  rgba->alpha = 1.0;
++}
++
++static cairo_t *
++begin_draw (gpointer drawable)
++{
++  if (GDK_IS_WINDOW (drawable))
++    return gdk_cairo_create (GDK_WINDOW (drawable));
++
++  return cairo_create (((GdkPixmap *) drawable)->surface);
++}
++
++static void
++apply_gc (cairo_t *cr, GdkGC *gc)
++{
++  if (!gc)
++    gc = &black_gc;
++
++  gdk_cairo_set_source_rgba (cr, &gc->fg);
++  cairo_set_line_width (cr, gc->line_width > 0 ? gc->line_width : 1);
++  cairo_set_line_cap (cr, CAIRO_LINE_CAP_BUTT);
++  cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER);
++  if (gc->line_style == GDK_LINE_ON_OFF_DASH) {
++    double dash[] = { 4.0, 4.0 };
++    cairo_set_dash (cr, dash, 2, 0);
++  }
++}
++
++GdkPixmap *
++gdk_pixmap_new (gpointer drawable, gint width, gint height, gint depth)
++{
++  GdkPixmap *pixmap = g_new0 (GdkPixmap, 1);
++  cairo_format_t format = depth == 1 ? CAIRO_FORMAT_A1 : CAIRO_FORMAT_ARGB32;
++
++  pixmap->width = MAX (1, width);
++  pixmap->height = MAX (1, height);
++  pixmap->surface = cairo_image_surface_create (format, pixmap->width, pixmap->height);
++  return pixmap;
++}
++
++GdkPixmap *
++gdk_pixmap_ref (GdkPixmap *pixmap)
++{
++  if (pixmap && pixmap->surface)
++    cairo_surface_reference (pixmap->surface);
++  if (pixmap && pixmap->pixbuf)
++    g_object_ref (pixmap->pixbuf);
++  return pixmap;
++}
++
++void
++ct_pixmap_unref (GdkPixmap *pixmap)
++{
++  if (!pixmap)
++    return;
++  if (pixmap->surface)
++    cairo_surface_destroy (pixmap->surface);
++  if (pixmap->pixbuf)
++    g_object_unref (pixmap->pixbuf);
++  g_free (pixmap);
++}
++
++GdkGC *
++gdk_gc_new (gpointer drawable)
++{
++  GdkGC *gc = g_new0 (GdkGC, 1);
++  gc->fg.red = gc->fg.green = gc->fg.blue = 0.0;
++  gc->fg.alpha = 1.0;
++  gc->bg.red = gc->bg.green = gc->bg.blue = gc->bg.alpha = 1.0;
++  gc->line_width = 1;
++  return gc;
++}
++
++void
++ct_gc_unref (GdkGC *gc)
++{
++  g_free (gc);
++}
++
++void
++gdk_gc_set_foreground (GdkGC *gc, const GdkColor *color)
++{
++  if (gc && color)
++    color_to_rgba (color, &gc->fg);
++}
++
++void
++gdk_gc_set_background (GdkGC *gc, const GdkColor *color)
++{
++  if (gc && color)
++    color_to_rgba (color, &gc->bg);
++}
++
++void
++gdk_gc_set_line_attributes (GdkGC *gc, gint line_width, gint line_style,
++                            gint cap_style, gint join_style)
++{
++  if (!gc)
++    return;
++  gc->line_width = MAX (1, line_width);
++  gc->line_style = line_style;
++  gc->cap_style = cap_style;
++  gc->join_style = join_style;
++}
++
++void
++gdk_draw_rectangle (gpointer drawable, GdkGC *gc, gint filled,
++                    gint x, gint y, gint width, gint height)
++{
++  cairo_t *cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  cairo_rectangle (cr, x, y, width, height);
++  if (filled)
++    cairo_fill (cr);
++  else
++    cairo_stroke (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_line (gpointer drawable, GdkGC *gc, gint x1, gint y1, gint x2, gint y2)
++{
++  cairo_t *cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  cairo_move_to (cr, x1, y1);
++  cairo_line_to (cr, x2, y2);
++  cairo_stroke (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_polygon (gpointer drawable, GdkGC *gc, gint filled,
++                  GdkPoint *points, gint npoints)
++{
++  cairo_t *cr;
++  int i;
++
++  if (npoints <= 0)
++    return;
++
++  cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  cairo_move_to (cr, points[0].x, points[0].y);
++  for (i = 1; i < npoints; i++)
++    cairo_line_to (cr, points[i].x, points[i].y);
++  cairo_close_path (cr);
++  if (filled)
++    cairo_fill (cr);
++  else
++    cairo_stroke (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_segments (gpointer drawable, GdkGC *gc, GdkSegment *segs, gint nsegs)
++{
++  int i;
++  for (i = 0; i < nsegs; i++)
++    gdk_draw_line (drawable, gc, segs[i].x1, segs[i].y1, segs[i].x2, segs[i].y2);
++}
++
++void
++gdk_draw_points (gpointer drawable, GdkGC *gc, GdkPoint *points, gint npoints)
++{
++  int i;
++  for (i = 0; i < npoints; i++)
++    gdk_draw_rectangle (drawable, gc, TRUE, points[i].x, points[i].y, 1, 1);
++}
++
++void
++gdk_draw_lines (gpointer drawable, GdkGC *gc, GdkPoint *points, gint npoints)
++{
++  cairo_t *cr;
++  int i;
++
++  if (npoints <= 0)
++    return;
++
++  cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  cairo_move_to (cr, points[0].x, points[0].y);
++  for (i = 1; i < npoints; i++)
++    cairo_line_to (cr, points[i].x, points[i].y);
++  cairo_stroke (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_arc (gpointer drawable, GdkGC *gc, gint filled, gint x, gint y,
++              gint width, gint height, gint angle1, gint angle2)
++{
++  cairo_t *cr = begin_draw (drawable);
++  double xc = x + width / 2.0;
++  double yc = y + height / 2.0;
++  double a1 = angle1 * G_PI / (180.0 * 64.0);
++  double a2 = (angle1 + angle2) * G_PI / (180.0 * 64.0);
++
++  apply_gc (cr, gc);
++  cairo_save (cr);
++  cairo_translate (cr, xc, yc);
++  cairo_scale (cr, width / 2.0, height / 2.0);
++  cairo_arc (cr, 0, 0, 1, a1, a2);
++  cairo_restore (cr);
++  if (filled)
++    cairo_fill (cr);
++  else
++    cairo_stroke (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_pixmap (gpointer drawable, GdkGC *gc, GdkPixmap *src,
++                 gint xsrc, gint ysrc, gint xdest, gint ydest,
++                 gint width, gint height)
++{
++  cairo_t *cr;
++
++  if (!src)
++    return;
++
++  cr = begin_draw (drawable);
++  cairo_set_source_surface (cr, src->surface, xdest - xsrc, ydest - ysrc);
++  cairo_rectangle (cr, xdest, ydest, width, height);
++  cairo_fill (cr);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_layout (gpointer drawable, GdkGC *gc, gint x, gint y, PangoLayout *layout)
++{
++  cairo_t *cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  cairo_move_to (cr, x, y);
++  pango_cairo_show_layout (cr, layout);
++  cairo_destroy (cr);
++}
++
++void
++gdk_draw_text (gpointer drawable, GdkFont *font, GdkGC *gc, gint x,
++               gint y, const gchar *text, gint text_length)
++{
++  PangoLayout *layout;
++  cairo_t *cr = begin_draw (drawable);
++  apply_gc (cr, gc);
++  layout = pango_cairo_create_layout (cr);
++  pango_layout_set_font_description (layout, font);
++  pango_layout_set_text (layout, text, text_length);
++  cairo_move_to (cr, x, y - gdk_char_height (font, 'X'));
++  pango_cairo_show_layout (cr, layout);
++  g_object_unref (layout);
++  cairo_destroy (cr);
++}
++
++GdkPixmap *
++gdk_pixmap_create_from_xpm_d (GdkWindow *window, GdkBitmap **mask,
++                              const GdkColor *transparent_color, gchar **data)
++{
++  GdkPixmap *pixmap = g_new0 (GdkPixmap, 1);
++  cairo_t *cr;
++
++  pixmap->pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) data);
++  pixmap->width = gdk_pixbuf_get_width (pixmap->pixbuf);
++  pixmap->height = gdk_pixbuf_get_height (pixmap->pixbuf);
++  pixmap->surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
++                                                pixmap->width, pixmap->height);
++  cr = cairo_create (pixmap->surface);
++  gdk_cairo_set_source_pixbuf (cr, pixmap->pixbuf, 0, 0);
++  cairo_paint (cr);
++  cairo_destroy (cr);
++  if (mask)
++    *mask = NULL;
++  return pixmap;
++}
++
++GdkBitmap *
++gdk_bitmap_create_from_data (GdkWindow *window, const gchar *data,
++                             gint width, gint height)
++{
++  return gdk_pixmap_new (window, width, height, 1);
++}
++
++GtkWidget *
++gtk_pixmap_new (GdkPixmap *pixmap, GdkBitmap *mask)
++{
++  if (pixmap && pixmap->pixbuf)
++    return gtk_image_new_from_pixbuf (pixmap->pixbuf);
++  return gtk_image_new ();
++}
++
++GdkCursor *
++gdk_cursor_new_from_pixmap (GdkPixmap *source, GdkPixmap *mask,
++                            const GdkColor *fg, const GdkColor *bg,
++                            gint x, gint y)
++{
++  return gdk_cursor_new (GDK_PENCIL);
++}
++
++GdkFont *
++gdk_font_load (const gchar *font_name)
++{
++  return pango_font_description_from_string ("Sans 12");
++}
++
++void
++ct_font_unref (GdkFont *font)
++{
++  if (font)
++    pango_font_description_free (font);
++}
++
++gint
++gdk_char_width (GdkFont *font, gchar character)
++{
++  return 8;
++}
++
++gint
++gdk_char_height (GdkFont *font, gchar character)
++{
++  return 14;
++}
++
++gint
++gdk_string_width (GdkFont *font, const gchar *string)
++{
++  return string ? strlen (string) * 8 : 0;
++}
++
++GdkGC *
++ct_black_gc (void)
++{
++  return &black_gc;
++}
++
++GdkGC *
++ct_white_gc (void)
++{
++  return &white_gc;
++}
++
++GdkGC *
++ct_insensitive_gc (void)
++{
++  return &insensitive_gc;
++}
++
++void
++ct_queue_draw_area (GtkWidget *widget, GdkRectangle *rect)
++{
++  if (rect)
++    gtk_widget_queue_draw_area (widget, rect->x, rect->y, rect->width, rect->height);
++  else
++    gtk_widget_queue_draw (widget);
++}
++
++static void
++ct_file_selection_response (GtkDialog *dialog, gint response, gpointer data)
++{
++  if (response == GTK_RESPONSE_ACCEPT)
++    g_signal_emit_by_name (data, "clicked");
++  else
++    gtk_widget_hide (GTK_WIDGET (dialog));
++}
++
++GtkWidget *
++gtk_file_selection_new (const gchar *title)
++{
++  GtkWidget *dialog;
++  CtFileSelection *fs;
++
++  dialog = gtk_file_chooser_dialog_new (title, NULL, GTK_FILE_CHOOSER_ACTION_OPEN,
++                                        "_Cancel", GTK_RESPONSE_CANCEL,
++                                        "_OK", GTK_RESPONSE_ACCEPT, NULL);
++  fs = g_new0 (CtFileSelection, 1);
++  fs->dialog = dialog;
++  fs->main_vbox = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
++  fs->action_area = gtk_dialog_get_action_area (GTK_DIALOG (dialog));
++  fs->ok_button = gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog),
++                                                      GTK_RESPONSE_ACCEPT);
++  fs->cancel_button = gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog),
++                                                          GTK_RESPONSE_CANCEL);
++  fs->file_list = dialog;
++  g_object_set_data_full (G_OBJECT (dialog), "ct-file-selection", fs, g_free);
++  g_signal_connect (dialog, "response", G_CALLBACK (ct_file_selection_response),
++                    fs->ok_button);
++  return dialog;
++}
++
++GtkFileSelection *
++ct_file_selection_from_widget (GtkWidget *widget)
++{
++  return g_object_get_data (G_OBJECT (widget), "ct-file-selection");
++}
++
++void
++gtk_file_selection_set_filename (GtkFileSelection *filesel, const gchar *filename)
++{
++  if (filesel && filename)
++    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel->dialog), filename);
++}
++
++gchar *
++gtk_file_selection_get_filename (GtkFileSelection *filesel)
++{
++  if (!filesel)
++    return NULL;
++  return gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (filesel->dialog));
++}
++
++void
++gtk_file_selection_complete (GtkFileSelection *filesel, const gchar *pattern)
++{
++  if (filesel && pattern)
++    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel->dialog), pattern);
++}
++
++GtkWidget *
++ct_entry_new_with_max_length (gint max)
++{
++  GtkWidget *entry = gtk_entry_new ();
++  gtk_entry_set_max_length (GTK_ENTRY (entry), max);
++  return entry;
++}
++
++#endif
+diff --git a/chemtool-1.6.14/gtk3compat.h b/chemtool-1.6.14/gtk3compat.h
+new file mode 100644
+index 0000000..15dc654
+--- /dev/null
++++ b/chemtool-1.6.14/gtk3compat.h
+@@ -0,0 +1,135 @@
++#ifndef CHEMTOOL_GTK3_COMPAT_H
++#define CHEMTOOL_GTK3_COMPAT_H
++
++#include <gtk/gtk.h>
++
++#ifdef GTK3
++
++typedef struct _CtPixmap GdkPixmap;
++typedef struct _CtPixmap GdkBitmap;
++typedef struct _CtGC GdkGC;
++typedef PangoFontDescription GdkFont;
++
++struct _CtPixmap {
++  cairo_surface_t *surface;
++  GdkPixbuf *pixbuf;
++  int width;
++  int height;
++};
++
++struct _CtGC {
++  GdkRGBA fg;
++  GdkRGBA bg;
++  int line_width;
++  GdkLineStyle line_style;
++  GdkCapStyle cap_style;
++  GdkJoinStyle join_style;
++};
++
++typedef struct _CtFileSelection CtFileSelection;
++typedef CtFileSelection GtkFileSelection;
++
++struct _CtFileSelection {
++  GtkWidget *dialog;
++  GtkWidget *main_vbox;
++  GtkWidget *action_area;
++  GtkWidget *ok_button;
++  GtkWidget *cancel_button;
++  GtkWidget *file_list;
++};
++
++#define GTK_OBJECT(obj) G_OBJECT (obj)
++#define GtkObject GObject
++#define GtkSignalFunc GCallback
++#define GTK_SIGNAL_FUNC(func) G_CALLBACK (func)
++#define gtk_signal_connect g_signal_connect
++#define gtk_signal_connect_object(instance, detailed_signal, c_handler, gobject) \
++  g_signal_connect_swapped ((instance), (detailed_signal), (c_handler), (gobject))
++#define gtk_signal_emit_stop_by_name g_signal_stop_emission_by_name
++#define gtk_object_unref g_object_unref
++#define gtk_object_ref g_object_ref
++#define gtk_container_border_width gtk_container_set_border_width
++#define gtk_widget_set_usize gtk_widget_set_size_request
++#define gtk_drawing_area_size(widget, width, height) \
++  gtk_widget_set_size_request (GTK_WIDGET (widget), (width), (height))
++#define gtk_menu_append(menu, child) gtk_menu_shell_append (GTK_MENU_SHELL (menu), (child))
++#define gtk_menu_prepend(menu, child) gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), (child))
++#define gtk_menu_insert(menu, child, pos) gtk_menu_shell_insert (GTK_MENU_SHELL (menu), (child), (pos))
++#define gdk_pixmap_unref ct_pixmap_unref
++#define gdk_pixmap_ref ct_pixmap_ref
++#define gdk_gc_unref ct_gc_unref
++#define gdk_font_unref ct_font_unref
++#define gdk_colormap_get_system() NULL
++#define gdk_color_alloc(colormap, color) (TRUE)
++#define GDK_LINE_SOLID 0
++#define GDK_LINE_ON_OFF_DASH 1
++#define GDK_LINE_DOUBLE_DASH 2
++#define GDK_CAP_BUTT 0
++#define GDK_JOIN_MITER 0
++#define GTK_WIDGET_STATE(widget) GTK_STATE_NORMAL
++#define GTK_FILE_SELECTION(widget) ct_file_selection_from_widget (GTK_WIDGET (widget))
++
++GdkPixmap *gdk_pixmap_new (gpointer drawable, gint width, gint height, gint depth);
++GdkPixmap *gdk_pixmap_ref (GdkPixmap *pixmap);
++void ct_pixmap_unref (GdkPixmap *pixmap);
++GdkGC *gdk_gc_new (gpointer drawable);
++void ct_gc_unref (GdkGC *gc);
++void gdk_gc_set_foreground (GdkGC *gc, const GdkColor *color);
++void gdk_gc_set_background (GdkGC *gc, const GdkColor *color);
++void gdk_gc_set_line_attributes (GdkGC *gc, gint line_width, gint line_style,
++                                 gint cap_style, gint join_style);
++void gdk_draw_rectangle (gpointer drawable, GdkGC *gc, gint filled,
++                         gint x, gint y, gint width, gint height);
++void gdk_draw_line (gpointer drawable, GdkGC *gc, gint x1, gint y1,
++                    gint x2, gint y2);
++void gdk_draw_polygon (gpointer drawable, GdkGC *gc, gint filled,
++                       GdkPoint *points, gint npoints);
++void gdk_draw_segments (gpointer drawable, GdkGC *gc, GdkSegment *segs,
++                        gint nsegs);
++void gdk_draw_points (gpointer drawable, GdkGC *gc, GdkPoint *points,
++                      gint npoints);
++void gdk_draw_lines (gpointer drawable, GdkGC *gc, GdkPoint *points,
++                     gint npoints);
++void gdk_draw_arc (gpointer drawable, GdkGC *gc, gint filled, gint x, gint y,
++                   gint width, gint height, gint angle1, gint angle2);
++void gdk_draw_pixmap (gpointer drawable, GdkGC *gc, GdkPixmap *src,
++                      gint xsrc, gint ysrc, gint xdest, gint ydest,
++                      gint width, gint height);
++void gdk_draw_layout (gpointer drawable, GdkGC *gc, gint x, gint y,
++                      PangoLayout *layout);
++void gdk_draw_text (gpointer drawable, GdkFont *font, GdkGC *gc, gint x,
++                    gint y, const gchar *text, gint text_length);
++GdkPixmap *gdk_pixmap_create_from_xpm_d (GdkWindow *window, GdkBitmap **mask,
++                                         const GdkColor *transparent_color,
++                                         gchar **data);
++GdkBitmap *gdk_bitmap_create_from_data (GdkWindow *window, const gchar *data,
++                                        gint width, gint height);
++GtkWidget *gtk_pixmap_new (GdkPixmap *pixmap, GdkBitmap *mask);
++GdkCursor *gdk_cursor_new_from_pixmap (GdkPixmap *source, GdkPixmap *mask,
++                                       const GdkColor *fg, const GdkColor *bg,
++                                       gint x, gint y);
++GdkFont *gdk_font_load (const gchar *font_name);
++void ct_font_unref (GdkFont *font);
++gint gdk_char_width (GdkFont *font, gchar character);
++gint gdk_char_height (GdkFont *font, gchar character);
++gint gdk_string_width (GdkFont *font, const gchar *string);
++
++GdkGC *ct_black_gc (void);
++GdkGC *ct_white_gc (void);
++GdkGC *ct_insensitive_gc (void);
++void ct_queue_draw_area (GtkWidget *widget, GdkRectangle *rect);
++
++GtkWidget *gtk_file_selection_new (const gchar *title);
++void gtk_file_selection_set_filename (GtkFileSelection *filesel,
++                                      const gchar *filename);
++gchar *gtk_file_selection_get_filename (GtkFileSelection *filesel);
++void gtk_file_selection_complete (GtkFileSelection *filesel,
++                                  const gchar *pattern);
++GtkFileSelection *ct_file_selection_from_widget (GtkWidget *widget);
++
++GtkWidget *ct_entry_new_with_max_length (gint max);
++#define gtk_entry_new_with_max_length ct_entry_new_with_max_length
++
++#endif
++
++#endif
+-- 
+2.54.0
+

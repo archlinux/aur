@@ -1,0 +1,1401 @@
+From ea1e69ff1d2aa615d87c710cd4c2f2676972b94a Mon Sep 17 00:00:00 2001
+From: Codex <codex@localhost>
+Date: Tue, 21 Jul 2026 19:24:50 -0400
+Subject: [PATCH 2/2] Port chemtool sources to GTK3
+
+---
+ chemtool-1.6.14/ct1.h        |  12 +-
+ chemtool-1.6.14/draw.c       |  12 +-
+ chemtool-1.6.14/graph.c      |  76 ++++++-----
+ chemtool-1.6.14/gtk3compat.c |   6 +
+ chemtool-1.6.14/gtk3compat.h |  41 +++++-
+ chemtool-1.6.14/inout.c      |  31 ++---
+ chemtool-1.6.14/main.c       | 239 ++++++++++++++++++++---------------
+ 7 files changed, 244 insertions(+), 173 deletions(-)
+
+diff --git a/chemtool-1.6.14/ct1.h b/chemtool-1.6.14/ct1.h
+index e319e03..5b41e2d 100644
+--- a/chemtool-1.6.14/ct1.h
++++ b/chemtool-1.6.14/ct1.h
+@@ -274,12 +274,12 @@ extern int nbonds;
+ extern float importfactor;
+ extern int importoffset;
+ 
+-char **intype;
+-char **inmode;
+-int babelin;
+-char **outtype;
+-char **outmode;
+-int babelout;
++extern char **intype;
++extern char **inmode;
++extern int babelin;
++extern char **outtype;
++extern char **outmode;
++extern int babelout;
+ extern char *babel;
+ extern GdkGC *mygc[8],*background_gc,*hlgc;
+ extern int curpen;
+diff --git a/chemtool-1.6.14/draw.c b/chemtool-1.6.14/draw.c
+index a12f2a1..fc99004 100644
+--- a/chemtool-1.6.14/draw.c
++++ b/chemtool-1.6.14/draw.c
+@@ -92,15 +92,15 @@ Set_vector (int event_x, int event_y, int curbond)
+   for (d = 0; d < dmax; d++)
+     {
+       coord = calc_angle (hp->x, hp->y, draw_angle, d, 1);
+-      gdk_draw_rectangle (picture, drawing_area->style->black_gc,
++      gdk_draw_rectangle (picture, ct_black_gc (),
+ 			  TRUE, coord->x * size_factor - 2,
+ 			  coord->y * size_factor - 2, 4, 4);
+ #if 0
+ /* draw a second ring of markers farther out */
+-      gdk_draw_rectangle (picture, drawing_area->style->black_gc,
++      gdk_draw_rectangle (picture, ct_black_gc (),
+ 			  TRUE, (2*coord->x-hp->x)* size_factor - 2,
+ 			  (2*coord->y-hp->y)*size_factor - 2, 4, 4);
+-      gdk_draw_rectangle (picture, drawing_area->style->black_gc,
++      gdk_draw_rectangle (picture, ct_black_gc (),
+ 			  TRUE, (3*coord->x-2*hp->x)* size_factor - 2,
+ 			  (3*coord->y-2*hp->y)*size_factor - 2, 4, 4);
+ #endif
+@@ -316,7 +316,7 @@ Put_vector (int event_x, int event_y)
+       hp->tx = x;
+       hp->ty = y;
+       if (hp->x > 0)
+-	gdk_draw_line (picture, drawing_area->style->black_gc,
++	gdk_draw_line (picture, ct_black_gc (),
+ 		       hp->x * size_factor, hp->y * size_factor,
+ 		       hp->tx * size_factor, hp->ty * size_factor);
+ 
+@@ -537,7 +537,7 @@ Put_rec (int event_x, int event_y)
+       hp->ty = hp->starty;
+     }
+      }
+-  gdk_draw_rectangle (picture, drawing_area->style->black_gc,
++  gdk_draw_rectangle (picture, ct_black_gc (),
+               FALSE, hp->x, hp->y, hp->tx - hp->x, hp->ty - hp->y);
+ 
+   CopyPlane ();
+@@ -582,7 +582,7 @@ Mark_rec (int control_pressed)
+     hp->tx = hp->x;
+   if (hp->ty < hp->y)
+     hp->ty = hp->y;
+-  gdk_draw_rectangle (picture, drawing_area->style->black_gc,
++  gdk_draw_rectangle (picture, ct_black_gc (),
+ 		      FALSE, hp->x, hp->y, hp->tx - hp->x, hp->ty - hp->y);
+ #ifdef LIBUNDO
+   undo_snapshot ();
+diff --git a/chemtool-1.6.14/graph.c b/chemtool-1.6.14/graph.c
+index 5036fe3..008ad37 100644
+--- a/chemtool-1.6.14/graph.c
++++ b/chemtool-1.6.14/graph.c
+@@ -49,26 +49,26 @@ FreePix ()
+   gdk_draw_rectangle (picture,
+ 		      background_gc,
+ 		      TRUE, 0, 0,
+-		      (gint)drawing_area->allocation.width,
+-		      (gint)drawing_area->allocation.height);
++		      (gint)gtk_widget_get_allocated_width (drawing_area),
++		      (gint)gtk_widget_get_allocated_height (drawing_area));
+   if (gridtype==1) {
+-  	for (i=0+gridx;i<=(int)drawing_area->allocation.width;i=i+50)
+-  	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++  	for (i=0+gridx;i<=(int)gtk_widget_get_allocated_width (drawing_area);i=i+50)
++  	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (i * size_factor), (gint) (0),
+-		   (gint) (i * size_factor), (gint) (drawing_area->allocation.height));
+-	for (i=0+gridy;i<=(int)drawing_area->allocation.height;i=i+50)
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++		   (gint) (i * size_factor), (gint) (gtk_widget_get_allocated_height (drawing_area)));
++	for (i=0+gridy;i<=(int)gtk_widget_get_allocated_height (drawing_area);i=i+50)
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0), (gint) (i*size_factor),
+-		   (gint) (drawing_area->allocation.width), (gint) (i * size_factor));
++		   (gint) (gtk_widget_get_allocated_width (drawing_area)), (gint) (i * size_factor));
+ 		}
+    if (gridtype==2){
+ 
+ 	for (i=-2560+gridx;i<=5280;i=i+64){
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0+gridx), (gint) ((gridy+i)*size_factor),
+ 		   (gint) (5500+gridx)*size_factor, 
+ 		   (gint) (3200+gridy+i) * size_factor);
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0+gridx), (gint) ((i+gridy)*size_factor),
+ 		   (gint) (5500+gridx)*size_factor, 
+ 		   (gint) (-3200+gridy+i) * size_factor);
+@@ -77,9 +77,9 @@ FreePix ()
+ 
+   update_rect.x = 0;
+   update_rect.y = 0;
+-  update_rect.width = drawing_area->allocation.width;
+-  update_rect.height = drawing_area->allocation.height;
+-  gtk_widget_draw ((GtkWidget *) drawing_area, &update_rect);
++  update_rect.width = gtk_widget_get_allocated_width (drawing_area);
++  update_rect.height = gtk_widget_get_allocated_height (drawing_area);
++  ct_queue_draw_area (drawing_area, &update_rect);
+ 
+ }
+ 
+@@ -90,9 +90,8 @@ CopyPlane ()
+ /* updates the display with the contents of the background pixmap */
+ {
+   GdkRectangle update_rect;
+-  gdk_draw_pixmap (drawing_area->window,
+-		   drawing_area->style->
+-		   fg_gc[GTK_WIDGET_STATE (drawing_area)], picture, 0, 0, 0,
++  gdk_draw_pixmap (gtk_widget_get_window (drawing_area),
++		   ct_black_gc (), picture, 0, 0, 0,
+ 		   0, head.pix_width, head.pix_height);
+   update_rect.x = 0;
+   update_rect.y = 0;
+@@ -122,11 +121,11 @@ Display_Mol ()
+ 
+   if (gridtype==1) {
+   	for (i=0+gridx;i<=head.pix_width;i=i+64)
+-  	    gdk_draw_line (picture,drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++  	    gdk_draw_line (picture,ct_insensitive_gc (),
+ 	   (gint) (i * size_factor), (gint) (0),
+ 		   (gint) (i * size_factor), (gint) (head.pix_height));
+ 	for (i=0+gridy;i<=head.pix_height;i=i+64)
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0), (gint) (i*size_factor),
+ 		   (gint) (head.pix_width), (gint) (i * size_factor));
+    }
+@@ -134,11 +133,11 @@ Display_Mol ()
+    if (gridtype==2){
+ 
+ 	for (i=-2560+gridx;i<=6400;i=i+64){
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0+gridx), (gint) ((gridy+i)*size_factor),
+ 		   (gint) (5500+gridx)*size_factor, 
+ 		   (gint) (3200+gridy+i) * size_factor);
+-	    gdk_draw_line (picture, drawing_area->style->bg_gc[GTK_STATE_INSENSITIVE],
++	    gdk_draw_line (picture, ct_insensitive_gc (),
+ 		   (gint) (0+gridx), (gint) ((i+gridy)*size_factor),
+ 		   (gint) (5500+gridx)*size_factor, 
+ 		   (gint) (-3200+gridy+i) * size_factor);
+@@ -474,15 +473,14 @@ Display_Mol ()
+       gdk_draw_rectangle (picture, mygc[2], TRUE, refx * size_factor - 1,
+ 			  refy * size_factor - 1, 3, 3);
+     }
+-  gdk_draw_pixmap (drawing_area->window,
+-		   drawing_area->style->
+-		   fg_gc[GTK_WIDGET_STATE (drawing_area)], picture, 0, 0, 0,
++  gdk_draw_pixmap (gtk_widget_get_window (drawing_area),
++		   ct_black_gc (), picture, 0, 0, 0,
+ 		   0, head.pix_width, head.pix_height);
+   update_rect.x = 0;
+   update_rect.y = 0;
+   update_rect.width = (guint16)head.pix_width;
+   update_rect.height = (guint16)head.pix_height;
+-  gtk_widget_draw ((GtkWidget *) drawing_area, &update_rect);
++  ct_queue_draw_area (drawing_area, &update_rect);
+ }
+ 
+ void
+@@ -581,7 +579,7 @@ Drawline (int x, int y, int tx, int ty, int active, int color)
+ /* draws a single bond */
+ {
+   if ( xbmflag)
+-    gdk_draw_line (picture, drawing_area->style->black_gc,
++    gdk_draw_line (picture, ct_black_gc (),
+ 		   (gint) (x * size_factor), (gint) (y * size_factor),
+ 		   (gint) (tx * size_factor), (gint) (ty * size_factor));
+   else if (active)
+@@ -620,7 +618,7 @@ DrawAcross (int x, int y, int tx, int ty, int active,int color)
+ 		    (gint) npoints);
+ 
+   if (xbmflag)
+-  thegc=drawing_area->style->black_gc;
++  thegc=ct_black_gc ();
+   else if (active)
+   thegc=hlgc;
+   else 
+@@ -650,7 +648,7 @@ DrawDashed (int x, int y, int tx, int ty, int active,int color)
+       mypoints[i].y2 = (gint16) ((y + (2 * i + 1) * 0.09 * ylen) * size_factor);
+     }
+   if (xbmflag)
+-  thegc= drawing_area->style->black_gc;
++  thegc= ct_black_gc ();
+   else if (active)
+   thegc=hlgc;
+   else
+@@ -686,7 +684,7 @@ if (npoints>99)npoints=99;
+       mypoints[i].y = (gint16) ((y + i * step * ylen) * size_factor);
+     }
+   if (xbmflag)
+-  thegc= drawing_area->style->black_gc;
++  thegc= ct_black_gc ();
+   else if (active)
+   thegc=hlgc;
+   else
+@@ -706,7 +704,7 @@ DrawWide (int x, int y, int tx, int ty, int active,int color)
+   GdkGC *thegc;
+ 
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else
+@@ -736,7 +734,7 @@ DrawStripe (int x, int y, int tx, int ty, int active, int color)
+   GdkGC *thegc;
+ 
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else
+@@ -772,7 +770,7 @@ DrawCircle (int x, int y, int tx, int ty, int active,int color)
+   int radius;
+ 
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active )
+     thegc = hlgc;
+   else
+@@ -806,7 +804,7 @@ DrawWiggly (int x, int y, int tx, int ty, int active, int color)
+   GdkGC *thegc;
+   
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+   thegc = hlgc;
+   else
+@@ -854,7 +852,7 @@ DrawArrow (int x, int y, int tx, int ty, int head, int active, int color)
+   GdkGC *thegc;
+ 
+   if (xbmflag)
+-    thegc = drawing_area->style->black_gc;
++    thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else
+@@ -919,7 +917,7 @@ DrawDashedWedge (int x, int y, int tx, int ty, int active,int color)
+   float step,factor;
+   
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else 
+@@ -958,7 +956,7 @@ DrawWedge (int x, int y, int tx, int ty, int active, int color)
+   float area;
+ 
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc; 
+   else
+@@ -1039,7 +1037,7 @@ Drawspline (int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3,
+   GdkGC *thegc;
+   
+   if (xbmflag)
+-    thegc = drawing_area->style->black_gc;
++    thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else
+@@ -1204,7 +1202,7 @@ Drawstring (int x, int y, char *cc, int direct, int active, int thecolor, int se
+   if (preview) fontsize=0;
+   
+   if (xbmflag)
+-  thegc = drawing_area->style->black_gc;
++  thegc = ct_black_gc ();
+   else if (active)
+     thegc = hlgc;
+   else
+@@ -1601,7 +1599,7 @@ memset(l,0,8*sizeof(gchar));
+    if (text[d] != 183) {
+ if (use_whiteout) fprintf(stderr,"whitespace\n");
+     if (preview)
+-      gdk_draw_arc (picture, drawing_area->style->white_gc, 1,
++      gdk_draw_arc (picture, ct_white_gc (), 1,
+ 		    x - 5 * size_factor,
+ 		    y - a + ha - 5 * size_factor + variance[d],
+ 		    tw + 8 * size_factor, a + 10 * size_factor, 0, 360 * 64);
+@@ -2140,6 +2138,6 @@ Set_Line (int lsty)
+ 
+   gdk_gc_set_line_attributes (background_gc, lsty, 0,
+ 			      GDK_CAP_BUTT, GDK_JOIN_MITER);
+-  gdk_gc_set_line_attributes (drawing_area->style->black_gc, lsty, 0,
++  gdk_gc_set_line_attributes (ct_black_gc (), lsty, 0,
+ 			      GDK_CAP_BUTT, GDK_JOIN_MITER);
+ }
+diff --git a/chemtool-1.6.14/gtk3compat.c b/chemtool-1.6.14/gtk3compat.c
+index caf107c..b1dc8bf 100644
+--- a/chemtool-1.6.14/gtk3compat.c
++++ b/chemtool-1.6.14/gtk3compat.c
+@@ -310,6 +310,12 @@ gdk_cursor_new_from_pixmap (GdkPixmap *source, GdkPixmap *mask,
+   return gdk_cursor_new (GDK_PENCIL);
+ }
+ 
++void
++gdk_window_set_icon (GdkWindow *window, GdkWindow *icon_window,
++                     GdkPixmap *pixmap, GdkBitmap *mask)
++{
++}
++
+ GdkFont *
+ gdk_font_load (const gchar *font_name)
+ {
+diff --git a/chemtool-1.6.14/gtk3compat.h b/chemtool-1.6.14/gtk3compat.h
+index 15dc654..3a87dfc 100644
+--- a/chemtool-1.6.14/gtk3compat.h
++++ b/chemtool-1.6.14/gtk3compat.h
+@@ -2,6 +2,9 @@
+ #define CHEMTOOL_GTK3_COMPAT_H
+ 
+ #include <gtk/gtk.h>
++#include <gdk/gdkx.h>
++#include <gdk/gdkkeysyms-compat.h>
++#include <locale.h>
+ 
+ #ifdef GTK3
+ 
+@@ -21,11 +24,18 @@ struct _CtGC {
+   GdkRGBA fg;
+   GdkRGBA bg;
+   int line_width;
+-  GdkLineStyle line_style;
+-  GdkCapStyle cap_style;
+-  GdkJoinStyle join_style;
++  int line_style;
++  int cap_style;
++  int join_style;
+ };
+ 
++typedef struct {
++  gint x1;
++  gint y1;
++  gint x2;
++  gint y2;
++} GdkSegment;
++
+ typedef struct _CtFileSelection CtFileSelection;
+ typedef CtFileSelection GtkFileSelection;
+ 
+@@ -55,6 +65,29 @@ struct _CtFileSelection {
+ #define gtk_menu_append(menu, child) gtk_menu_shell_append (GTK_MENU_SHELL (menu), (child))
+ #define gtk_menu_prepend(menu, child) gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), (child))
+ #define gtk_menu_insert(menu, child, pos) gtk_menu_shell_insert (GTK_MENU_SHELL (menu), (child), (pos))
++#define gtk_menu_bar_append(menu, child) gtk_menu_shell_append (GTK_MENU_SHELL (menu), (child))
++#define gtk_menu_item_right_justify(item) ((void) 0)
++#define GtkTooltips gpointer
++#define gtk_tooltips_new() NULL
++#define gtk_tooltips_set_tip(tooltips, widget, tip, private_tip) gtk_widget_set_tooltip_text ((widget), (tip))
++#define gtk_option_menu_new gtk_combo_box_text_new
++#define gtk_option_menu_set_menu(option_menu, menu) ((void) 0)
++#define gtk_option_menu_set_history(option_menu, index) gtk_combo_box_set_active (GTK_COMBO_BOX (option_menu), (index))
++#define GTK_OPTION_MENU(widget) (widget)
++#define gtk_combo_box_new_text gtk_combo_box_text_new
++#define gtk_combo_box_append_text(combo, text) gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), (text))
++#define gtk_spin_button_get_value_as_float(spin) ((gfloat) gtk_spin_button_get_value (spin))
++#define gdk_colormap_alloc_color(colormap, color, writeable, best_match) (TRUE)
++#define GTK_WIDGET_MAPPED(widget) gtk_widget_get_mapped (widget)
++#define gtk_set_locale() setlocale (LC_ALL, "")
++#define gtk_radio_button_group(button) gtk_radio_button_get_group (GTK_RADIO_BUTTON (button))
++#undef GDK_DISPLAY
++#define GDK_DISPLAY() gdk_x11_display_get_xdisplay (gdk_display_get_default ())
++#undef GDK_WINDOW_XDISPLAY
++#define GDK_WINDOW_XDISPLAY(window) GDK_DISPLAY ()
++#undef GDK_WINDOW_XWINDOW
++#define GDK_WINDOW_XWINDOW(window) gdk_x11_window_get_xid (gtk_widget_get_window (drawing_area))
++#define GDK_GC_XGC(gc) DefaultGC (GDK_DISPLAY (), DefaultScreen (GDK_DISPLAY ()))
+ #define gdk_pixmap_unref ct_pixmap_unref
+ #define gdk_pixmap_ref ct_pixmap_ref
+ #define gdk_gc_unref ct_gc_unref
+@@ -108,6 +141,8 @@ GtkWidget *gtk_pixmap_new (GdkPixmap *pixmap, GdkBitmap *mask);
+ GdkCursor *gdk_cursor_new_from_pixmap (GdkPixmap *source, GdkPixmap *mask,
+                                        const GdkColor *fg, const GdkColor *bg,
+                                        gint x, gint y);
++void gdk_window_set_icon (GdkWindow *window, GdkWindow *icon_window,
++                          GdkPixmap *pixmap, GdkBitmap *mask);
+ GdkFont *gdk_font_load (const gchar *font_name);
+ void ct_font_unref (GdkFont *font);
+ gint gdk_char_width (GdkFont *font, gchar character);
+diff --git a/chemtool-1.6.14/inout.c b/chemtool-1.6.14/inout.c
+index 6709e36..ca505f0 100644
+--- a/chemtool-1.6.14/inout.c
++++ b/chemtool-1.6.14/inout.c
+@@ -444,15 +444,14 @@ load_preview (char *filename)
+ 		draw_preview_bonds(xref-4,yref-4,xref+4,yref+4,0);
+ 		draw_preview_bonds(xref-4,yref+4,xref+4,yref-4,0);
+ 	}
+-  gdk_draw_pixmap (preview_area->window,
+-		   drawing_area->style->
+-		   fg_gc[GTK_WIDGET_STATE (drawing_area)], picture, 0, 0, 0,
++  gdk_draw_pixmap (gtk_widget_get_window (preview_area),
++		   ct_black_gc (), picture, 0, 0, 0,
+ 		   0, 200, 100);
+   update_rect.x = 0;
+   update_rect.y = 0;
+   update_rect.width = 200;
+   update_rect.height = 100;
+-  gtk_widget_draw ((GtkWidget *) preview_area, &update_rect);
++  ct_queue_draw_area (preview_area, &update_rect);
+   size_factor = savedfactor;
+   fclose (fp);
+   return (0);
+@@ -867,16 +866,15 @@ pdbrotate (int nx, int ny, int nz)
+ 	      (int) (pdby[bondfrom[ii]] * importfactor + importoffset),
+ 	      (int) (pdbx[bondto[ii]] * importfactor + importoffset),
+ 	      (int) (pdby[bondto[ii]] * importfactor + importoffset), 1, 0);
+-  gdk_draw_pixmap (drawing_area->window,
+-		   drawing_area->style->
+-		   fg_gc[GTK_WIDGET_STATE (drawing_area)], picture, 0, 0, 0,
+-		   0, (gint)drawing_area->allocation.width,
+-		   (gint)drawing_area->allocation.height);
++  gdk_draw_pixmap (gtk_widget_get_window (drawing_area),
++		   ct_black_gc (), picture, 0, 0, 0,
++		   0, (gint)gtk_widget_get_allocated_width (drawing_area),
++		   (gint)gtk_widget_get_allocated_height (drawing_area));
+   update_rect.x = 0;
+   update_rect.y = 0;
+-  update_rect.width = drawing_area->allocation.width;
+-  update_rect.height = drawing_area->allocation.height;
+-  gtk_widget_draw ((GtkWidget *) drawing_area, &update_rect);
++  update_rect.width = gtk_widget_get_allocated_width (drawing_area);
++  update_rect.height = gtk_widget_get_allocated_height (drawing_area);
++  ct_queue_draw_area (drawing_area, &update_rect);
+ }
+ 
+ void
+@@ -1663,15 +1661,14 @@ fprintf(stderr,"endless molfile???: %s\n",line);
+      if (strcmp(atcode[i],"C") && strcmp(atcode[i],"H"))
+        Drawstring ((int)pdbx[i], (int)pdby[i], atcode[i], atjust[i], 0,0,0,1, 1);
+                          
+-  gdk_draw_pixmap (preview_area->window,
+-		   drawing_area->style->
+-		   fg_gc[GTK_WIDGET_STATE (drawing_area)], picture, 0, 0, 0,
++  gdk_draw_pixmap (gtk_widget_get_window (preview_area),
++		   ct_black_gc (), picture, 0, 0, 0,
+ 		   0, 200, 100);
+   update_rect.x = 0;
+   update_rect.y = 0;
+   update_rect.width = 200;
+   update_rect.height = 100;
+-  gtk_widget_draw ((GtkWidget *) preview_area, &update_rect);
++  ct_queue_draw_area (preview_area, &update_rect);
+   return (0);
+ }
+ 
+@@ -3837,7 +3834,7 @@ fprintf (stderr, "marked x %d y %d w %d h %d\n",mark.x,mark.y,mark.w,mark.h);
+       if (y < 0)
+ 	y = 0;
+     }
+-  bitmap = gdk_pixmap_new (drawing_area->window, 1, 1, 1);
++  bitmap = gdk_pixmap_new (gtk_widget_get_window (drawing_area), 1, 1, 1);
+   bitmapgc = gdk_gc_new (bitmap);
+   buffer = XCreatePixmap (GDK_WINDOW_XDISPLAY(picture), GDK_WINDOW_XWINDOW(picture),
+ 			  (unsigned int)w, (unsigned int)h, 1);
+diff --git a/chemtool-1.6.14/main.c b/chemtool-1.6.14/main.c
+index c5ed78d..28e7c0c 100644
+--- a/chemtool-1.6.14/main.c
++++ b/chemtool-1.6.14/main.c
+@@ -121,6 +121,12 @@ GtkAdjustment *msgadjustment;
+ #endif
+ char filename[512];
+ char expname[512];
++char **intype;
++char **inmode;
++int babelin;
++char **outtype;
++char **outmode;
++int babelout;
+ static int loadsave = 1;
+ static int expmode = 0;
+ static int curbond = 0;
+@@ -152,15 +158,15 @@ configure_event (GtkWidget * mainw, GdkEventConfigure * event)
+   if (picture)
+     gdk_pixmap_unref (picture);
+ 
+-  picture = gdk_pixmap_new (mainw->window,
+-			    mainw->allocation.width + 100,
+-			    mainw->allocation.height + 100, -1);
++  picture = gdk_pixmap_new (gtk_widget_get_window (mainw),
++			    gtk_widget_get_allocated_width (mainw) + 100,
++			    gtk_widget_get_allocated_height (mainw) + 100, -1);
+ 
+   gdk_draw_rectangle (picture,
+-		      mainw->style->white_gc,
++		      ct_white_gc (),
+ 		      (gint) TRUE, 0, 0,
+-		      (gint) mainw->allocation.width,
+-		      (gint) mainw->allocation.height);
++		      (gint) gtk_widget_get_allocated_width (mainw),
++		      (gint) gtk_widget_get_allocated_height (mainw));
+   Display_Mol ();
+   return (gint) TRUE;
+ }
+@@ -173,10 +179,10 @@ configure_preview (GtkWidget * mainw, GdkEventConfigure * event)
+       gdk_pixmap_unref (preview);
+ 	preview=NULL;
+ 	}
+-  preview = gdk_pixmap_new (mainw->window, 200, 100, -1);
++  preview = gdk_pixmap_new (gtk_widget_get_window (mainw), 200, 100, -1);
+ 
+   gdk_draw_rectangle (preview,
+-		      mainw->style->white_gc,
++		      ct_white_gc (),
+ 		      (gint) TRUE, 0, 0, (gint) 200, (gint) 100);
+   return (gint) TRUE;
+ }
+@@ -186,8 +192,8 @@ expose_event (GtkWidget * mainw, GdkEventExpose * event)
+ /* callback function to redraw parts of the drawing area */
+ {
+ 
+-  gdk_draw_pixmap (mainw->window,
+-		   mainw->style->fg_gc[GTK_WIDGET_STATE (mainw)],
++  gdk_draw_pixmap (gtk_widget_get_window (mainw),
++		   ct_black_gc (),
+ 		   picture,
+ 		   event->area.x, event->area.y,
+ 		   event->area.x, event->area.y,
+@@ -195,6 +201,20 @@ expose_event (GtkWidget * mainw, GdkEventExpose * event)
+   return (gint) FALSE;
+ }
+ 
++#ifdef GTK3
++static gboolean
++draw_event (GtkWidget *mainw, cairo_t *cr, gpointer data)
++/* GTK3 draw callback to copy the offscreen drawing surface to the widget. */
++{
++  if (picture == NULL)
++    return FALSE;
++
++  cairo_set_source_surface (cr, picture->surface, 0, 0);
++  cairo_paint (cr);
++  return FALSE;
++}
++#endif
++
+ 
+ void
+ yesnodialog (void (*YesFunc) (void))
+@@ -219,7 +239,7 @@ yesnodialog (void (*YesFunc) (void))
+ 
+   gtk_misc_set_padding (GTK_MISC (label), 10, 10);
+ 
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->vbox), label, TRUE,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (yesno_window))), label, TRUE,
+ 		      (gboolean) TRUE, 0);
+   gtk_widget_show (label);
+ 
+@@ -234,7 +254,7 @@ yesnodialog (void (*YesFunc) (void))
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_destroy),
+ 			     GTK_OBJECT (yesno_window));
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->action_area),
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (yesno_window))),
+ 		      button, (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (button);
+ 
+@@ -246,7 +266,7 @@ yesnodialog (void (*YesFunc) (void))
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_destroy),
+ 			     GTK_OBJECT (yesno_window));
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->action_area),
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (yesno_window))),
+ 		      button, (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (button);
+ 
+@@ -287,7 +307,7 @@ yesnodialog2 (void (*YesFunc) (void), char *somefile)
+ 
+   gtk_misc_set_padding (GTK_MISC (label), 10, 10);
+ 
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->vbox), label, TRUE,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (yesno_window))), label, TRUE,
+ 		      (gboolean) TRUE, 0);
+   gtk_widget_show (label);
+ 
+@@ -302,7 +322,7 @@ yesnodialog2 (void (*YesFunc) (void), char *somefile)
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_destroy),
+ 			     GTK_OBJECT (yesno_window));
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->action_area),
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (yesno_window))),
+ 		      button, (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (button);
+ 
+@@ -314,7 +334,7 @@ yesnodialog2 (void (*YesFunc) (void), char *somefile)
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_destroy),
+ 			     GTK_OBJECT (yesno_window));
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (yesno_window)->action_area),
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (yesno_window))),
+ 		      button, (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (button);
+ 
+@@ -380,7 +400,7 @@ button_press_event (GtkWidget * mainw, GdkEventButton * event)
+ 	  break;
+ 	case 4:
+ 	  /* Mark mode : Set corner of rectangle */
+-	  gdk_window_set_cursor (drawing_area->window, cursor_markBRC);
++	  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_markBRC);
+ 	  Set_start_rec (event_x, event_y);
+ 	  break;
+ 	case 8:
+@@ -550,7 +570,7 @@ button_release_event (GtkWidget * mainw, GdkEventButton * event)
+ 		{
+ 		  Mark_rec (0);
+ 		}
+-	      gdk_window_set_cursor (drawing_area->window, cursor_markTLC);
++	      gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_markTLC);
+ 	      FreePix ();
+ 	      CreatePix ();
+ 	      Display_Mol ();
+@@ -900,7 +920,7 @@ int x,y;
+ 	 pendown=1;
+ 	 draw_ok=1;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,-1,0); 
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_vector(x,y);
+ 	 }else{
+ 	 	 pendown=0;
+@@ -915,7 +935,7 @@ int x,y;
+ 	 pendown=1;
+ 	 draw_ok=1;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,1,0); 
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_vector(x,y);
+ 	}else{
+ 		 pendown=0;
+@@ -930,7 +950,7 @@ int x,y;
+ 	 pendown=1;
+ 	 draw_ok=1;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,0,-1); 
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_vector(x,y);
+ 	}else{
+ 		 pendown=0;
+@@ -944,7 +964,7 @@ int x,y;
+ 		  if (event->state & GDK_SHIFT_MASK){
+ 	 pendown=1;
+ 	 draw_ok=1;
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_vector(x,y);
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,0,1);
+ 	 }
+@@ -958,7 +978,7 @@ int x,y;
+ 	                                             "key_press_event");
+ 	 break; 
+ 	case GDK_Return:
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		if (pendown==0){
+ 		Set_vector(x,y,curbond);
+ 		}else{
+@@ -988,7 +1008,7 @@ int x,y;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,-1,0); 
+ 	 gtk_signal_emit_stop_by_name (GTK_OBJECT(mainw), 
+ 	                                             "key_press_event");
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_pmove(x,y,0);
+ 	 break; 
+ 	case GDK_Right:
+@@ -998,7 +1018,7 @@ int x,y;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,1,0); 
+ 	 gtk_signal_emit_stop_by_name (GTK_OBJECT(mainw), 
+ 	                                             "key_press_event");
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_pmove(x,y,0);
+ 	 break; 
+ 	case GDK_Up:
+@@ -1008,7 +1028,7 @@ int x,y;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,0,-1); 
+ 	 gtk_signal_emit_stop_by_name (GTK_OBJECT(mainw), 
+ 	                                             "key_press_event");
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_pmove(x,y,0);
+ 	 break; 
+ 	case GDK_Down:
+@@ -1018,7 +1038,7 @@ int x,y;
+ 	 XWarpPointer(GDK_DISPLAY(),None,None,0,0,0,0,0,1); 
+ 	 gtk_signal_emit_stop_by_name (GTK_OBJECT(mainw), 
+ 	                                             "key_press_event");
+-		(void)gdk_window_get_pointer(drawing_area->window,&x,&y,NULL);
++		(void)gdk_window_get_pointer(gtk_widget_get_window (drawing_area),&x,&y,NULL);
+ 		Put_pmove(x,y,0);
+ 	 break; 
+ 	case GDK_Return:
+@@ -1289,7 +1309,7 @@ change_color (GtkWidget * mainw, gpointer data)
+   GtkStyle *style=gtk_widget_get_style (mainw);;
+ 
+   curpen=atoi(data);
+-  pixmap = gdk_pixmap_create_from_xpm_d (mainw->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (mainw), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_color[curpen]);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -1744,12 +1764,16 @@ Change_Font (GtkWidget * mainw)
+ 
+ if (serif_flag == 0) {
+ 		serif_flag=1;
++#ifndef GTK3
+   gtk_widget_set_style(GTK_WIDGET(textlabel),seriffontstyle);
++#endif
+ 	}
+ 	else
+ 	{ 
+ 		serif_flag=0;
++#ifndef GTK3
+   gtk_widget_set_style(GTK_WIDGET(textlabel),normalfontstyle);
++#endif
+ 	}
+ }
+ 
+@@ -1842,7 +1866,7 @@ Change_Text (GtkWidget * mainw, gpointer textdir)
+   drawmode = 1;
+   text_direct = atoi (textdir);
+ 
+-  gdk_window_set_cursor (drawing_area->window, cursor_text);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_text);
+ }
+ 
+ void
+@@ -1929,7 +1953,7 @@ Bondmode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 2;
+-  gdk_window_set_cursor (drawing_area->window, cursor_bonds);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_bonds);
+ }
+ 
+ void
+@@ -2006,7 +2030,7 @@ Movemode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 3;
+-  gdk_window_set_cursor (drawing_area->window, cursor_move);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_move);
+   Display_Mol ();
+ }
+ 
+@@ -2085,7 +2109,7 @@ Markmode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 4;
+-  gdk_window_set_cursor (drawing_area->window, cursor_markTLC);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_markTLC);
+ }
+ 
+ void
+@@ -2161,7 +2185,7 @@ Rotatemode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 6;
+-  gdk_window_set_cursor (drawing_area->window, cursor_rotate);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_rotate);
+ }
+ 
+ void
+@@ -2241,7 +2265,7 @@ Rescalemode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 7;
+-  gdk_window_set_cursor (drawing_area->window, cursor_rescale);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_rescale);
+ }
+ 
+ void
+@@ -2314,7 +2338,7 @@ Splinemode (GtkWidget * mainw)
+ 	}
+     }
+   drawmode = 8;
+-  gdk_window_set_cursor (drawing_area->window, cursor_pencil);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_pencil);
+ }
+ 
+ void
+@@ -2366,7 +2390,7 @@ Change_Angle (GtkWidget * mainw, gpointer newangle)
+     }
+ 
+   drawmode = 0;
+-  gdk_window_set_cursor (drawing_area->window, cursor_pencil);
++  gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_pencil);
+ 
+   switch (draw_angle)
+     {
+@@ -2415,10 +2439,10 @@ Load ()
+     gdk_pixmap_unref (preview);
+ 	      preview=NULL;
+ 	      }
+-  preview = gdk_pixmap_new (filew->window, 200, 100, -1);
++  preview = gdk_pixmap_new (gtk_widget_get_window (filew), 200, 100, -1);
+ 
+   gdk_draw_rectangle (preview,
+-		      filew->style->white_gc,
++		      ct_white_gc (),
+ 		      (gint) TRUE, 0, 0, (gint) 200, (gint) 100);
+ 
+   picture = gdk_pixmap_ref(preview);
+@@ -2455,8 +2479,8 @@ GtkFileFilter *mdlfilter;
+     gdk_pixmap_unref (preview);
+     preview=NULL;
+     }
+-  preview = gdk_pixmap_new (filew->window, 200, 100, -1);
+-  gdk_draw_rectangle (preview, filew->style->white_gc,
++  preview = gdk_pixmap_new (gtk_widget_get_window (filew), 200, 100, -1);
++  gdk_draw_rectangle (preview, ct_white_gc (),
+                       (gint)TRUE, 0, 0, (gint)200, (gint)100);
+   picture = gdk_pixmap_ref(preview);
+   gtk_widget_show (preview_area);                    
+@@ -2567,10 +2591,10 @@ Add ()
+     gdk_pixmap_unref (picture);
+ 	picture=NULL;
+ 	}
+-  picture = gdk_pixmap_new (filew->window, 200, 100, -1);
++  picture = gdk_pixmap_new (gtk_widget_get_window (filew), 200, 100, -1);
+ 
+   gdk_draw_rectangle (picture,
+-		      filew->style->white_gc,
++		      ct_white_gc (),
+ 		      (gint) TRUE, 0, 0, (gint) 200, (gint) 100);
+   gtk_widget_show (preview_area);
+   gtk_widget_hide (pdbhbox);
+@@ -2597,7 +2621,7 @@ show_or_raise (GtkWidget * thewidget)
+   if (!GTK_WIDGET_MAPPED (thewidget))
+     gtk_widget_show (thewidget);
+   else
+-    gdk_window_raise (thewidget->window);
++    gdk_window_raise (gtk_widget_get_window (thewidget));
+ }
+ 
+ 
+@@ -2833,7 +2857,7 @@ really_export ()
+       break;
+     case 3:
+       /* xbm output is slow - set 'busy' watch-shaped cursor */
+-/*      gdk_window_set_cursor (drawing_area->window, cursor_busy);*/
++/*      gdk_window_set_cursor (gtk_widget_get_window (drawing_area), cursor_busy);*/
+ /*      while (g_main_iteration (FALSE));*/
+       /* allow gtk to redraw after the popup, 
+          which may have obscured parts of our molecule */
+@@ -2852,7 +2876,7 @@ really_export ()
+ 	  CreatePix ();
+ 	  Display_Mol ();
+ 	}
+-/*      gdk_window_set_cursor (drawing_area->window, previous_cursor);*/
++/*      gdk_window_set_cursor (gtk_widget_get_window (drawing_area), previous_cursor);*/
+       break;
+     case 4:
+       error = export_svg (expname);
+@@ -2968,8 +2992,8 @@ char labeltext[40];
+       gdk_pixmap_unref (picture);
+       picture = NULL;
+    }
+-   picture = gdk_pixmap_new (filew->window, 200, 100, -1);
+-   gdk_draw_rectangle (picture, filew->style->white_gc,
++   picture = gdk_pixmap_new (gtk_widget_get_window (filew), 200, 100, -1);
++   gdk_draw_rectangle (picture, ct_white_gc (),
+    		       (gint)TRUE, 0, 0, (gint)200, (gint)100);
+    strcpy (myfile,
+            gtk_file_selection_get_filename (GTK_FILE_SELECTION(filew)));   		            		
+@@ -3537,11 +3561,11 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ #ifdef GTK2
+   gtk_label_set_justify(GTK_LABEL(label),GTK_JUSTIFY_CENTER);
+ #endif  
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (aboutw)->vbox), label,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (aboutw))), label,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (label);
+   button = gtk_button_new_with_label ("Ok");
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (aboutw)->action_area), button,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (aboutw))), button,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_hide),
+@@ -3557,7 +3581,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   textscroll=gtk_scrolled_window_new(NULL,NULL);
+   gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(textscroll),
+   			GTK_POLICY_NEVER,GTK_POLICY_ALWAYS);
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (helpw)->vbox), textscroll,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (helpw))), textscroll,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+ #ifdef GTK2
+   helptext = gtk_text_view_new();
+@@ -3582,7 +3606,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show(textscroll);
+   gtk_container_add(GTK_CONTAINER(textscroll),helptext);
+   button = gtk_button_new_with_label ("Ok");
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (helpw)->action_area), button,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (helpw))), button,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     GTK_SIGNAL_FUNC (gtk_widget_hide),
+@@ -3916,7 +3940,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 
+   message = gtk_label_new (_("Unknown error"));
+   gtk_misc_set_padding (GTK_MISC (message), 10, 10);
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (messagew)->vbox), message,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (messagew))), message,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+ 
+   gtk_widget_show (message);
+@@ -3929,7 +3953,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   (void)gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
+ 			     (GtkSignalFunc) gtk_widget_hide,
+ 			     GTK_OBJECT (messagew));
+-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (messagew)->action_area), button,
++  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (messagew))), button,
+ 		      (gboolean) TRUE, (gboolean) TRUE, 0);
+   gtk_widget_show (button);
+ /********************************************************************/
+@@ -4568,7 +4592,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 	{
+ 	  tbutton[5 * i + j] = gtk_button_new ();
+ 	  style = gtk_widget_get_style (templates);
+-	  pixmap = gdk_pixmap_create_from_xpm_d (templates->window, &mask,
++	  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (templates), &mask,
+ 						 &style->bg[GTK_STATE_NORMAL],
+ 						 (gchar **)
+ 						 template_xpm[i][j]);
+@@ -4608,7 +4632,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 	{
+ 	  tbutton[25 + 5 * i + j] = gtk_button_new ();
+ 	  style = gtk_widget_get_style (templates);
+-	  pixmap = gdk_pixmap_create_from_xpm_d (templates->window, &mask,
++	  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (templates), &mask,
+ 						 &style->bg[GTK_STATE_NORMAL],
+ 						 (gchar **) template_xpm[i +
+ 									 5]
+@@ -4652,7 +4676,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 	{
+ 	  tbutton[50 + 5 * i + j] = gtk_button_new ();
+ 	  style = gtk_widget_get_style (templates);
+-	  pixmap = gdk_pixmap_create_from_xpm_d (templates->window, &mask,
++	  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (templates), &mask,
+ 						 &style->bg[GTK_STATE_NORMAL],
+ 						 (gchar **) template_xpm[i +
+ 									 10]
+@@ -4696,7 +4720,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 	{
+ 	  tbutton[75 + 5 * i + j] = gtk_button_new ();
+ 	  style = gtk_widget_get_style (templates);
+-	  pixmap = gdk_pixmap_create_from_xpm_d (templates->window, &mask,
++	  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (templates), &mask,
+ 						 &style->bg[GTK_STATE_NORMAL],
+ 						 (gchar **) template_xpm[i +
+ 									 15]
+@@ -4741,7 +4765,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 	{
+ 	  tbutton[100 + 5 * i + j] = gtk_button_new ();
+ 	  style = gtk_widget_get_style (templates);
+-	  pixmap = gdk_pixmap_create_from_xpm_d (templates->window, &mask,
++	  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (templates), &mask,
+ 						 &style->bg[GTK_STATE_NORMAL],
+ 						 (gchar **) template_xpm[i +
+ 									 20]
+@@ -5289,7 +5313,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 
+   style = gtk_widget_get_style (window);
+ 
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_hex);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5307,7 +5331,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (hexbutton);
+ 
+   pent1button = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_pent1);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5328,7 +5352,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (pent1button);
+ 
+   pent2button = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_pent2);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5345,7 +5369,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (pent2button);
+ 
+   octbutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_octa);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5362,7 +5386,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (octbutton);
+ 
+   splinebutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_spline);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5379,7 +5403,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (splinebutton);
+ 
+   ltextbutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_ltext);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5396,7 +5420,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (ltextbutton);
+ 
+   ctextbutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_mtext);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5413,7 +5437,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+ 
+ 
+   rtextbutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_rtext);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5430,7 +5454,7 @@ fprintf(stderr,"chemtoolbg %s...\n",expname);
+   gtk_widget_show (rtextbutton);
+ 
+   fontbutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_font);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5465,7 +5489,7 @@ gtk_widget_realize(fontselw);
+       int ii = i;
+ 
+ 	menuitem = gtk_menu_item_new();
+-      pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++      pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					     &style->bg[GTK_STATE_NORMAL],
+ 					     (gchar **) xpm_bond[i]);
+       pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5494,7 +5518,7 @@ gtk_widget_realize(fontselw);
+       int ii = i;
+ 
+       menuitem = gtk_menu_item_new();
+-      pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++      pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					     &style->bg[GTK_STATE_NORMAL],
+ 					     (gchar **) xpm_color[i]);
+       pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5510,7 +5534,7 @@ gtk_widget_realize(fontselw);
+ 			  GTK_SIGNAL_FUNC (change_color), bondcolors[i]);
+     }
+   colorbutton= gtk_button_new();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_color);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5536,7 +5560,7 @@ gtk_widget_realize(fontselw);
+   gtk_widget_show (bondbutton);
+ 
+   markbutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_mark);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5554,7 +5578,7 @@ gtk_widget_realize(fontselw);
+ 
+ 
+   movebutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_mov);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5571,7 +5595,7 @@ gtk_widget_realize(fontselw);
+ 
+ 
+   rotatebutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_rot);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5589,7 +5613,7 @@ gtk_widget_realize(fontselw);
+ 
+ 
+   hflipbutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_horiz);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5607,7 +5631,7 @@ gtk_widget_realize(fontselw);
+ 
+ 
+   vflipbutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_vert);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5626,7 +5650,7 @@ gtk_widget_realize(fontselw);
+ 
+ 
+   copybutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_copy);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5649,7 +5673,7 @@ gtk_widget_realize(fontselw);
+   gtk_widget_show (copybutton);
+ 
+   rescalebutton = gtk_toggle_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_scale);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5666,7 +5690,7 @@ gtk_widget_realize(fontselw);
+ 
+   boxmenu = gtk_menu_new ();
+   bracketbutton = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_bracket);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5682,7 +5706,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw brackets around object"), NULL);
+   gtk_widget_show (bracketbutton);
+   rbracketbutton = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_r_bracket);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5697,7 +5721,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw rounded brackets around object"), NULL);
+   gtk_widget_show (rbracketbutton);
+   r2bracketbutton = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_r2_bracket);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5712,7 +5736,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw round brackets around object"), NULL);
+   gtk_widget_show (r2bracketbutton);
+   bracebutton = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_brace);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5728,7 +5752,7 @@ gtk_widget_realize(fontselw);
+ 			NULL);
+   gtk_widget_show (bracebutton);
+   box1button = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_box1);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5742,7 +5766,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw simple box around object"), NULL);
+   gtk_widget_show (box1button);
+   box2button = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_box2);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5756,7 +5780,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw shaded box around object"), NULL);
+   gtk_widget_show (box2button);
+   box3button = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_box3);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5770,7 +5794,7 @@ gtk_widget_realize(fontselw);
+ 			_("Draw fancy box around object"), NULL);
+   gtk_widget_show (box3button);
+   box4button = gtk_menu_item_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_box4);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5786,7 +5810,7 @@ gtk_widget_realize(fontselw);
+   gtk_widget_realize (boxmenu);
+ 
+   boxbutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_bracket);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5802,7 +5826,7 @@ gtk_widget_realize(fontselw);
+   gtk_widget_show (boxbutton);
+ 
+   cleanbutton = gtk_button_new ();
+-  pixmap = gdk_pixmap_create_from_xpm_d (window->window, &mask,
++  pixmap = gdk_pixmap_create_from_xpm_d (gtk_widget_get_window (window), &mask,
+ 					 &style->bg[GTK_STATE_NORMAL],
+ 					 (gchar **) xpm_clean);
+   pixmapwid = gtk_pixmap_new (pixmap, mask);
+@@ -5826,6 +5850,10 @@ gtk_widget_realize(fontselw);
+ 
+ /*end second row */
+   hbox=gtk_hbox_new(FALSE,0);
++#ifdef GTK3
++  normalfontstyle = NULL;
++  seriffontstyle = NULL;
++#else
+   normalfontstyle=gtk_style_copy(gtk_widget_get_default_style());
+   seriffontstyle=gtk_style_copy(gtk_widget_get_default_style());
+ #ifdef GTK2
+@@ -5842,9 +5870,12 @@ gtk_widget_realize(fontselw);
+   	normalfontstyle=gtk_style_copy(gtk_widget_get_default_style());
+   if (!seriffontstyle->font)
+   	seriffontstyle=gtk_style_copy(gtk_widget_get_default_style());
++#endif
+ #endif
+   textlabel = gtk_label_new(_("Text :"));
++#ifndef GTK3
+   gtk_widget_set_style(GTK_WIDGET(textlabel),normalfontstyle);
++#endif
+   gtk_widget_show(textlabel);
+   gtk_box_pack_start (GTK_BOX (hbox), textlabel, (gboolean) FALSE,
+ 		      (gboolean) TRUE, 0);
+@@ -5900,7 +5931,7 @@ gtk_widget_realize(fontselw);
+   gtk_widget_set_usize (window, 800, canvash-20);
+ 
+   if (!picture)
+-    picture = gdk_pixmap_new (window->window, 800, canvash, -1);
++    picture = gdk_pixmap_new (gtk_widget_get_window (window), 800, canvash, -1);
+ 
+   drawing_area = gtk_drawing_area_new ();
+   gtk_drawing_area_size (GTK_DRAWING_AREA (drawing_area), 1600, 1600);
+@@ -5910,48 +5941,53 @@ gtk_widget_realize(fontselw);
+ 
+   gtk_widget_show (drawing_area);
+ 
+-  mygc[0]=gdk_gc_new(window->window);
++  mygc[0]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&black);
+   gdk_gc_set_foreground(mygc[0],&black);
+ 
+-  mygc[1]=gdk_gc_new(window->window);
++  mygc[1]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&blue);
+   gdk_gc_set_foreground(mygc[1],&blue);
+ 
+-  mygc[2]=gdk_gc_new(window->window);
++  mygc[2]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&green);
+   gdk_gc_set_foreground(mygc[2],&green);
+ 
+-  mygc[3]=gdk_gc_new(window->window);
++  mygc[3]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&cyan);
+   gdk_gc_set_foreground(mygc[3],&cyan);
+ 
+-  mygc[4]=gdk_gc_new(window->window);
++  mygc[4]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&red);
+   gdk_gc_set_foreground(mygc[4],&red);
+ 
+-  mygc[5]=gdk_gc_new(window->window);
++  mygc[5]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&magenta);
+   gdk_gc_set_foreground(mygc[5],&magenta);
+ 
+-  mygc[6]=gdk_gc_new(window->window);
++  mygc[6]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&yellow);
+   gdk_gc_set_foreground(mygc[6],&yellow);
+   
+-  mygc[7]=gdk_gc_new(window->window);
++  mygc[7]=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&white);
+   gdk_gc_set_foreground(mygc[7],&white);
+ 
+ /* highlighting for mark/move/copy */
+-  hlgc=gdk_gc_new(window->window);
++  hlgc=gdk_gc_new(gtk_widget_get_window (window));
+   gdk_gc_set_foreground(hlgc,&blue);
+   gdk_gc_set_line_attributes(hlgc,
+                              3,GDK_LINE_SOLID,GDK_CAP_BUTT,GDK_JOIN_MITER);
+ 
+   /* Signals used to handle backing pixmap */
+ 
++#ifdef GTK3
++  (void)gtk_signal_connect (GTK_OBJECT (drawing_area), "draw",
++		      (GtkSignalFunc) draw_event, NULL);
++#else
+   (void)gtk_signal_connect (GTK_OBJECT (drawing_area), "expose_event",
+ 		      (GtkSignalFunc) expose_event, NULL);
++#endif
+   (void)gtk_signal_connect (GTK_OBJECT (drawing_area), "configure_event",
+ 		      (GtkSignalFunc) configure_event, NULL);
+ 
+@@ -6111,7 +6147,7 @@ gtk_widget_realize(fontselw);
+   background.red=(gushort)bgred;
+   background.green=(gushort)bggreen;
+   background.blue=(gushort)bgblue;
+-  background_gc=gdk_gc_new(window->window);
++  background_gc=gdk_gc_new(gtk_widget_get_window (window));
+   (void)gdk_color_alloc(gdk_colormap_get_system(),&background);
+   gdk_gc_set_foreground(background_gc,&background);
+   gdk_gc_set_background(background_gc,&background);
+@@ -6305,10 +6341,10 @@ getpreview (GtkWidget * w, gint row, gint column, GdkEventButton * bevent,
+     gdk_pixmap_unref (picture);
+ 	picture=NULL;
+ 	}
+-  picture = gdk_pixmap_new (filew->window, 200, 100, -1);
++  picture = gdk_pixmap_new (gtk_widget_get_window (filew), 200, 100, -1);
+ 
+   gdk_draw_rectangle (picture,
+-		      filew->style->white_gc,
++		      ct_white_gc (),
+ 		      (gint) TRUE, 0, 0, (gint) 200, (gint) 100);
+ 
+   if (loadsave == 4) {
+@@ -6326,10 +6362,9 @@ void
+    GdkBitmap *iconmask;
+  
+    gtk_widget_realize(w);
+-   win = w->window;
++   win = gtk_widget_get_window (w);
+    if (!win) return;
+  
+    icon = gdk_pixmap_create_from_xpm_d(win, &iconmask, NULL, chemtool_xpm);
+    gdk_window_set_icon(win, NULL, icon, iconmask);
+  }
+-
+-- 
+2.54.0
+

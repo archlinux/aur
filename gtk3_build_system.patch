@@ -1,0 +1,177 @@
+diff -ru chemtool-1.6.14.orig/config.h.in chemtool-1.6.14/config.h.in
+--- chemtool-1.6.14.orig/config.h.in	2026-07-21 23:40:21.795152874 -0400
++++ chemtool-1.6.14/config.h.in	2026-07-21 23:41:37.768854422 -0400
+@@ -7,30 +7,33 @@
+    language is requested. */
+ #undef ENABLE_NLS
+ 
+-/* the GTK2 library */
++/* GTK 2-compatible code paths */
+ #undef GTK2
+ 
++/* the GTK3 library */
++#undef GTK3
++
+ /* Define if the GNU dcgettext() function is already present or preinstalled.
+    */
+ #undef HAVE_DCGETTEXT
+ 
+-/* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
++/* Define to 1 if you have the <dirent.h> header file, and it defines 'DIR'.
+    */
+ #undef HAVE_DIRENT_H
+ 
+-/* Define to 1 if your system has a working POSIX `fnmatch' function. */
++/* Define to 1 if your system has a working POSIX 'fnmatch' function. */
+ #undef HAVE_FNMATCH
+ 
+-/* Define to 1 if you have the `getcwd' function. */
++/* Define to 1 if you have the 'getcwd' function. */
+ #undef HAVE_GETCWD
+ 
+-/* Define to 1 if you have the `getpagesize' function. */
++/* Define to 1 if you have the 'getpagesize' function. */
+ #undef HAVE_GETPAGESIZE
+ 
+ /* Define if the GNU gettext() function is already present or preinstalled. */
+ #undef HAVE_GETTEXT
+ 
+-/* Define to 1 if you have the `getwd' function. */
++/* Define to 1 if you have the 'getwd' function. */
+ #undef HAVE_GETWD
+ 
+ /* Define if you have the iconv() function. */
+@@ -39,33 +42,33 @@
+ /* Define to 1 if you have the <inttypes.h> header file. */
+ #undef HAVE_INTTYPES_H
+ 
+-/* Define to 1 if you have the `ibs' library (-libs). */
++/* Define to 1 if you have the 'ibs' library (-libs). */
+ #undef HAVE_LIBIBS
+ 
+ /* Define to 1 if you have the <libintl.h> header file. */
+ #undef HAVE_LIBINTL_H
+ 
+-/* Define to 1 if you have the `m' library (-lm). */
++/* Define to 1 if you have the 'm' library (-lm). */
+ #undef HAVE_LIBM
+ 
+-/* Define to 1 if you have the `X11' library (-lX11). */
++/* Define to 1 if you have the 'X11' library (-lX11). */
+ #undef HAVE_LIBX11
+ 
+-/* Define to 1 if you have the <memory.h> header file. */
+-#undef HAVE_MEMORY_H
+-
+-/* Define to 1 if you have the `mkdir' function. */
++/* Define to 1 if you have the 'mkdir' function. */
+ #undef HAVE_MKDIR
+ 
+-/* Define to 1 if you have a working `mmap' system call. */
++/* Define to 1 if you have a working 'mmap' system call. */
+ #undef HAVE_MMAP
+ 
+-/* Define to 1 if you have the <ndir.h> header file, and it defines `DIR'. */
++/* Define to 1 if you have the <ndir.h> header file, and it defines 'DIR'. */
+ #undef HAVE_NDIR_H
+ 
+ /* Define to 1 if you have the <stdint.h> header file. */
+ #undef HAVE_STDINT_H
+ 
++/* Define to 1 if you have the <stdio.h> header file. */
++#undef HAVE_STDIO_H
++
+ /* Define to 1 if you have the <stdlib.h> header file. */
+ #undef HAVE_STDLIB_H
+ 
+@@ -75,17 +78,17 @@
+ /* Define to 1 if you have the <string.h> header file. */
+ #undef HAVE_STRING_H
+ 
+-/* Define to 1 if you have the `strtod' function. */
++/* Define to 1 if you have the 'strtod' function. */
+ #undef HAVE_STRTOD
+ 
+-/* Define to 1 if you have the `strtol' function. */
++/* Define to 1 if you have the 'strtol' function. */
+ #undef HAVE_STRTOL
+ 
+-/* Define to 1 if you have the <sys/dir.h> header file, and it defines `DIR'.
++/* Define to 1 if you have the <sys/dir.h> header file, and it defines 'DIR'.
+    */
+ #undef HAVE_SYS_DIR_H
+ 
+-/* Define to 1 if you have the <sys/ndir.h> header file, and it defines `DIR'.
++/* Define to 1 if you have the <sys/ndir.h> header file, and it defines 'DIR'.
+    */
+ #undef HAVE_SYS_NDIR_H
+ 
+@@ -128,10 +131,12 @@
+ /* Define to the version of this package. */
+ #undef PACKAGE_VERSION
+ 
+-/* Define to 1 if you have the ANSI C header files. */
++/* Define to 1 if all of the C89 standard headers exist (not just the ones
++   required in a freestanding environment). This macro is provided for
++   backward compatibility; new code need not use it. */
+ #undef STDC_HEADERS
+ 
+-/* Define to 1 if your <sys/time.h> declares `struct tm'. */
++/* Define to 1 if your <sys/time.h> declares 'struct tm'. */
+ #undef TM_IN_SYS_TIME
+ 
+ /* Version number of package */
+@@ -140,8 +145,8 @@
+ /* Define to 1 if the X Window System is missing or not being used. */
+ #undef X_DISPLAY_MISSING
+ 
+-/* Define to empty if `const' does not conform to ANSI C. */
++/* Define to empty if 'const' does not conform to ANSI C. */
+ #undef const
+ 
+-/* Define to `unsigned int' if <sys/types.h> does not define. */
++/* Define as 'unsigned int' if <stddef.h> doesn't define. */
+ #undef size_t
+diff -ru chemtool-1.6.14.orig/configure.ac chemtool-1.6.14/configure.ac
+--- chemtool-1.6.14.orig/configure.ac	2026-07-21 23:40:21.794972566 -0400
++++ chemtool-1.6.14/configure.ac	2026-07-21 23:41:40.565310659 -0400
+@@ -25,29 +25,22 @@
+ 
+ AC_DEFINE([MENU],1,[Define if you want to use pull-down menus instead of button bars])
+ 
+-AC_ARG_ENABLE(enable_gtk1,
+-[  --enable-gtk1           Use GTK+-1.x even if GTK+-2.x is available [no]],enable_gtk1=no)
+-
+ AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+ 
+ AC_MSG_CHECKING([for GTK version and compile options ])
+ 
+-if test x$PKG_CONFIG = xno -o x$enable_gtk1 = xyes ; then
+-AM_PATH_GTK(1.0.2, , exit 1)
+-else
+-if $PKG_CONFIG gtk+-2.0 --cflags ; then
+-       GTK_CFLAGS="-DGTK2 `$PKG_CONFIG gtk+-2.0 --cflags` "
+-       GTK_LIBS=`$PKG_CONFIG gtk+-2.0 --libs`
+-dnl    use_gtk2=yes
+-       AC_DEFINE([GTK2], [1], [the GTK2 library])
++if test x$PKG_CONFIG = xno ; then
++  AC_MSG_ERROR([pkg-config is required to build with GTK+ 3])
++fi
++
++if $PKG_CONFIG gtk+-3.0 --cflags >/dev/null 2>&1 ; then
++       GTK_CFLAGS="-DGTK2 -DGTK3 `$PKG_CONFIG gtk+-3.0 --cflags` "
++       GTK_LIBS=`$PKG_CONFIG gtk+-3.0 --libs`
++       AC_DEFINE([GTK2], [1], [GTK 2-compatible code paths])
++       AC_DEFINE([GTK3], [1], [the GTK3 library])
+        enable_stockgtk=yes
+ else
+-if $PKG_CONFIG --cflags gtk+ ; then
+-	GTK_CFLAGS=`$PKG_CONFIG gtk+ --cflags`       
+-	GTK_LIBS=`$PKG_CONFIG gtk+ --libs`
+-dnl    use_gtk2=no
+-fi
+-fi
++       AC_MSG_ERROR([GTK+ 3 development files were not found])
+ fi
+ 
+ dnl AC_MSG_RESULT using GTK2 : $use_gtk2
