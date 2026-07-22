@@ -4,8 +4,8 @@
 # Contributor: Alcubierre Drive <alcubierre-drive@github>
 
 pkgname=okular-browser-url-open
-replaces=(okular)
 provides=(okular)
+conflicts=(okular)
 pkgver=26.04.3
 pkgrel=1
 pkgdesc='Document Viewer'
