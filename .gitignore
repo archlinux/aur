@@ -1,0 +1,5 @@
+# Ignore build output and downloaded sources.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
