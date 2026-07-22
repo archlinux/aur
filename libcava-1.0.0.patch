@@ -1,0 +1,60 @@
+diff -ura package.orig/meson.build package.new/meson.build
+--- package.orig/meson.build	2026-07-22 08:57:50.363157945 +0200
++++ package.new/meson.build	2026-07-22 09:18:57.774291054 +0200
+@@ -498,7 +498,7 @@
+ endif
+ 
+ cava = dependency('libcava',
+-                  version : '>=0.10.7',
++                  version : '>=1.0.0',
+                   required: get_option('cava'),
+                   fallback : ['libcava', 'cava_dep'],
+                   not_found_message: 'cava is not found. Building waybar without cava')
+diff -ura package.orig/nix/default.nix package.new/nix/default.nix
+--- package.orig/nix/default.nix	2026-07-22 08:57:50.364571200 +0200
++++ package.new/nix/default.nix	2026-07-22 09:34:19.608835152 +0200
+@@ -6,13 +6,13 @@
+ }:
+ let
+   libcava = rec {
+-    version = "0.10.7-beta";
++    version = "1.0.0";
+     src = pkgs.fetchFromGitHub {
+       owner = "LukashonakV";
+       repo = "cava";
+       # NOTE: Needs to match the cava.wrap
+       tag = "v${version}";
+-      hash = "sha256-IX1B375gTwVDRjpRfwKGuzTAZOV2pgDWzUd4bW2cTDU=";
++      hash = "sha256-0r5aAmTs+FcmS501tNYKxG9H+Pq6i32BDRBEjWW6M74=";
+     };
+   };
+ in
+diff -ura package.orig/src/modules/cava/cava_backend.cpp package.new/src/modules/cava/cava_backend.cpp
+--- package.orig/src/modules/cava/cava_backend.cpp	2026-07-22 08:57:50.365677215 +0200
++++ package.new/src/modules/cava/cava_backend.cpp	2026-07-22 09:35:38.801483540 +0200
+@@ -200,8 +200,6 @@
+   prm_.xaxis = ::cava::xaxis_scale::NONE;
+   prm_.mono_opt = ::cava::AVERAGE;
+   prm_.autobars = 0;
+-  if (config_["gravity"].isInt()) prm_.gravity = config_["gravity"].asInt();
+-  if (config_["integral"].isInt()) prm_.integral = config_["integral"].asInt();
+ 
+   if (config_["framerate"].isInt()) prm_.framerate = config_["framerate"].asInt();
+   // Calculate delay for Update() thread
+diff -ura package.orig/subprojects/libcava.wrap package.new/subprojects/libcava.wrap
+--- package.orig/subprojects/libcava.wrap	2026-07-22 08:57:50.368183937 +0200
++++ package.new/subprojects/libcava.wrap	2026-07-22 09:05:09.822054917 +0200
+@@ -4,9 +4,9 @@
+ #depth = 1
+ 
+ [wrap-file]
+-directory = cava-0.10.7-beta
+-source_url = https://github.com/LukashonakV/cava/archive/v0.10.7-beta.tar.gz
+-source_filename = cava-0.10.7.tar.gz
+-source_hash = 8915d7214f2046554c158fe6f2ae518881dfb573e421ea848727be11a5dfa8c4
++directory = cava-1.0.0
++source_url = https://github.com/LukashonakV/cava/archive/1.0.0.tar.gz
++source_filename = cava-1.0.0.tar.gz
++source_hash = 437df0a29e52e555357a06238f4c5cbe6d51b5dd4225700cb7adbb19d8bb9474
+ [provide]
+ libcava = cava_dep

@@ -2,7 +2,7 @@
 
 pkgname=waybar-cava
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -51,8 +51,18 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
+    "libcava-1.0.0.patch"
 )
-sha256sums=('21c2bbef88c40473c355003582f9331d2f9b8a01efdcce0935edfc5f6b023a3e')
+sha256sums=(
+    '21c2bbef88c40473c355003582f9331d2f9b8a01efdcce0935edfc5f6b023a3e'
+    '72538623b6b88106f0cdca9cb167b1f3d6f0fc792c820eca99f608b2d2c7ead5'
+)
+
+prepare() {
+    cd "Waybar-$pkgver"
+
+    patch -Np1 -i ../libcava-1.0.0.patch
+}
 
 build() {
     cd "Waybar-${pkgver}"
