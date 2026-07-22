@@ -1,0 +1,3 @@
+[python-fakeldap]
+source = "pypi"
+pypi = "fakeldap"

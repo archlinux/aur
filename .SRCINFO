@@ -1,6 +1,6 @@
 pkgbase = python-fakeldap
 	pkgdesc = LDAPObject implementation for mocking LDAP servers
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/zulip/fakeldap
 	arch = any
@@ -11,10 +11,13 @@ pkgbase = python-fakeldap
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	depends = python-ldap
-	source = python-fakeldap-0.6.5.tar.gz::https://files.pythonhosted.org/packages/source/f/fakeldap/fakeldap-0.6.5.tar.gz
-	source = LICENSE
-	sha256sums = 6d57c8355ffa3664b4c362b2ab321065dbdad165188b89af880228967cd268c6
+	source = python-fakeldap-0.6.5.tar.gz::https://github.com/zulip/fakeldap/archive/0.6.5.tar.gz
+	source = python-fakeldap-0.6.6.diff::https://github.com/zulip/fakeldap/compare/0.6.5..eeaf589b0a342665a50f83b9fca40e8a6bd358de.diff
+	source = LICENSE-BSD3
+	sha256sums = c64212ef797c2c2bc444e59b2a2dd8524a9703fbb1f8cfb9e5dd53671dea552c
+	sha256sums = 0115452c2044885b49c1280b7261caca4a6935b8e27e3ba9e04f6dc23ad47282
 	sha256sums = 53f2d4dbeedeccd2cba3179e9f38740aeee5490750de976412ee6a2ad6bd5374
 
 pkgname = python-fakeldap
