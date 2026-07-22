@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+Environment="PATH=%h/.local/bin:/home/linuxbrew/.linuxbrew/bin:/usr/bin"
 ExecStart=/usr/bin/lanclaw
 
 [Install]
