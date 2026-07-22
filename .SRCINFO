@@ -1,6 +1,6 @@
 pkgbase = plasma-lichess-tv-wallpaper-git
 	pkgdesc = Unofficial Plasma 6 live wallpaper for Lichess TV (git)
-	pkgver = 0.1.0.r1.g7989f6d
+	pkgver = 0.1.0.r1.gbc08c45
 	pkgrel = 1
 	url = https://github.com/YummierGravy/plasma-lichess-tv-wallpaper
 	install = plasma-lichess-tv-wallpaper-git.install
