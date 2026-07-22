@@ -1,6 +1,11 @@
 # Maintainer: Sergi122 <sergiopoma42@gmail.com>
 pkgname=animalinux
-pkgver=0.3.0
+# el repo de GitHub se llama distinto al paquete: el tarball de un tag se
+# extrae como "AnimalinuxApp-$pkgver", no "$pkgname-$pkgver" — sin esto
+# build()/package() fallan con "No such file or directory" (bug real,
+# presente desde v0.2.0, nunca se había probado con una build de verdad).
+_gitname=AnimalinuxApp
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura"
 arch=('x86_64' 'aarch64')
@@ -11,6 +16,7 @@ depends=(
     'python-gobject'
     'gtk4'
     'python-pillow'
+    'python-xlib'
     'gtk4-layer-shell'
     'libayatana-appindicator'
 )
@@ -20,6 +26,7 @@ optdepends=(
     'ffmpeg: exportar animaciones como MP4'
     'python-rembg: recorte de fondo con IA (requiere onnxruntime)'
     'python-onnxruntime: motor IA para rembg'
+    'libwnck3: andar por bordes de ventana y pausa en pantalla completa (backend X11: GNOME/KDE/Xfce/MATE/Cinnamon)'
 )
 makedepends=(
     'python-build'
@@ -28,15 +35,15 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('51bfc2783253784addcd5477aa52f7221e94b7255262699f8cc37f48ed6981a4')
+sha256sums=('e245af6f50553a713f5788436355cf942ec6be9f18617260151cf4bc4c3c6daa')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_gitname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_gitname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 animalinux.desktop "$pkgdir/usr/share/applications/animalinux.desktop"
