@@ -3,12 +3,12 @@
 _name=azure-cognitiveservices-speech
 pkgname=python-$_name
 pkgver=1.51.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Microsoft Cognitive Services Speech SDK for Python.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/azure-cognitiveservices-speech'
 license=('LicenseRef-Microsoft')
-depends=('python' 'python-azure-core')
+depends=('python' 'python-azure-core' 'glibc' 'libgcc' 'libstdc++' 'util-linux-libs' 'alsa-lib' 'gstreamer' 'glib2' 'libunwind' 'libelf' 'libffi' 'pcre2' 'xz' 'zlib' 'zstd' 'bzip2')
 makedepends=('python-installer')
 source_x86_64=("https://files.pythonhosted.org/packages/py3/${_name:0:1}/$_name/${_name//-/_}-$pkgver-py3-none-manylinux1_x86_64.whl")
 source_aarch64=("https://files.pythonhosted.org/packages/py3/${_name:0:1}/$_name/${_name//-/_}-$pkgver-py3-none-manylinux2014_aarch64.whl")
