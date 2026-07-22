@@ -1,6 +1,6 @@
 # Maintainer: Anuraj Jit Saikia <rajasaikia1644@gmail.com>
 pkgname=voisu
-pkgver=0.1.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cloud-first Linux dictation for Wayland (daemon, CLI, and optional Overlay)"
 arch=('x86_64')
@@ -58,7 +58,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/archive/re
         'LICENSE.ring-once_cell-APACHE'
         'LICENSE.ring-once_cell-MIT'
         'LICENSE.ring-fiat')
-sha256sums=('8a7243fa319c7de8c164176f3288739ac37f73a48a43d80a83d79011ae6af49e'
+sha256sums=('6cc66d96bd35122748f4e18331462f6cc8ee322d6a8d17e3333965c59a5db800'
             'b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a'
             '005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d'
             'f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f'
