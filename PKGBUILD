@@ -3,7 +3,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.2.0.r0.g196179a
-pkgrel=2
+pkgrel=3
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -14,6 +14,7 @@ url="https://github.com/cueki/casual-pre-loader"
 license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 
 depends=(
+	'hicolor-icon-theme'
 	'python>=3.11'
 	'python-more-itertools>=11.0.0' 'python-more-itertools<12.0.0'
 	'python-packaging>=26' 'python-packaging<27'
@@ -84,7 +85,7 @@ package() {
 	mkdir -p \
 		"${pkgdir}/usr/lib/${_pkgname}/" \
 		"${pkgdir}/usr/bin/" \
-		"${pkgdir}/usr/share/pixmaps/"
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
 	# all other files and directories needed to run
 	cp -a \
@@ -95,8 +96,8 @@ package() {
 		gui/ \
 		"${pkgdir}/usr/lib/${_pkgname}/"
 
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                                # symlink the main.py file into the PATH as "${_pkgname}"
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg" # symlink the icon file into the correct location
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                                                    # symlink the main.py file into the PATH as "${_pkgname}"
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" # symlink the icon file into the correct location
 
 	install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" # license
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"    # docs
