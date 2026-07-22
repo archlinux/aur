@@ -1,7 +1,7 @@
 pkgbase = exoscale-cli
 	pkgdesc = Command-line tool for everything at Exoscale: compute, storage, dns
 	pkgver = 1.97.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/exoscale/cli
 	arch = x86_64
 	license = Apache
