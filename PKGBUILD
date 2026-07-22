@@ -2,7 +2,7 @@
 
 pkgname=lungo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple systray applet to prevent your system from going idle or sleeping on demand (bin version)"
 url="https://github.com/Antiz96/lungo"
@@ -25,13 +25,13 @@ source=("${_pkgname}-${pkgver}-off.svg::${_raw_url}/v${pkgver}/res/icons/${_pkgn
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64")
 sha256sums=('9db933d7991c233f434f4f51a09b5fbbb92b1b6a7f880dbabfa30415e8898808'
             '1f6491c754fa2f374d70890771a6ae14e2922659e157595c4c951c89b96c02db'
-            'b9cf8c252331f4a44ef483e0ef75838fb5b9095be14fe668f2a46604b2dafcf6'
+            '245e859440aa76f8201e31f377ef24c72d3ad493f7ae681c7307e2db09029d14'
             '629c04d6caee11a6783e9fd93c9b183edb1461164332abfd1bd16b5386ef53ca'
             '6cf4589aca0ffa81287f388202903c3005185ce41d660d68ec799f4c91cf8044'
             '3b313c2bf3138664a62c35453e2b11d4c06dae756ffb0d33a1efbb45feece39e'
-            'fc821e710f850232d20b63d007527525849fbaf4c8bcb720606d39da5a6497dd'
+            '4fa53d8d9d0098511b6fc8f255c92c9e5b817e657e47409c2874d5c0940bb79b'
             '786721af956c0a9dd5792006a720e1a46f89b88521b28562118cd01f1586ef83')
-sha256sums_x86_64=('e00f36698a33e3fdec5ea4970db2d7a8cc185b1f4d0b973642257f94fba26a83')
+sha256sums_x86_64=('54d873f6287b69697f4f5b1deec1a5323d1b55bfab988a6c89051b6b57eb241a')
 
 build() {
 	scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
