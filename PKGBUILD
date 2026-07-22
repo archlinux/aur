@@ -1,14 +1,15 @@
 # Maintainer: John O'Donnell <mail@johnodonnell.xyz>
 pkgname=gjallarhorn-git
 _pkgname=gjallarhorn
-pkgver=r55.6410a98
+pkgver=r56.580156f
 pkgrel=1
 pkgdesc="From-scratch Odin web framework, ORM and template engine, with a nest-style scaffolding CLI"
 arch=('x86_64')
 url="https://github.com/Lvcky-gg/Gjallarhorn"
 license=('MIT')
-# The `gjallarhorn` command scaffolds Odin projects; using them needs the Odin
-# compiler, which lives in [extra].
+# The `gjallarhorn` command needs the Odin compiler at runtime: `gjallarhorn run`
+# and `gjallarhorn build` exec `odin` directly, and `new` / `generate` scaffold
+# projects you compile with it. Odin lives in [extra].
 depends=('odin')
 makedepends=('git' 'odin')
 optdepends=('openssl: TLS support in generated apps (build with -define:GJ_TLS=true)'
