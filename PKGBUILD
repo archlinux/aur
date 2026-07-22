@@ -57,8 +57,8 @@ build() {
   # Install npm dependencies (including devDependencies for electron-builder)
   npm install --prefer-offline
 
-  # Build Linux directory (unpacked, no AppImage/FUSE)
-  npx electron-builder --linux dir
+  # Build Linux directory using system Electron (no download needed)
+  npx electron-builder --linux dir --config.electronDist=/usr/lib/electron43
 }
 
 package() {
