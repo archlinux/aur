@@ -34,7 +34,7 @@ depends=(
     'libxinerama'
     'libxss'
     'libxkbcommon'
-    'libwayland-client'
+    'wayland'
     'xdg-utils'
 )
 optdepends=(
