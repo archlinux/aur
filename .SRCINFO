@@ -6,7 +6,7 @@ pkgbase = oopz
 	arch = x86_64
 	license = LicenseRef-proprietary
 	depends = electron39
-	source = oopz::git+https://git.pysio.online/pysio/linux_oopz.git#commit=8da2a5a18d0db26db220e36234442c9d4f1a4249
-	sha256sums = ca8092bd281dca48cd5387fab2c887cbce11b3dd7d8dd82c56fc93c99882ee3b
+	source = oopz::git+https://git.pysio.online/pysio/linux_oopz.git#commit=415970ea116c94eddde56f269fa3ea86b0534d75
+	sha256sums = 44c29660e4cdd48d8251e63bd07bd106b2589620a90a92f817cd662451e3f037
 
 pkgname = oopz
