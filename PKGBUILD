@@ -1,5 +1,5 @@
 pkgname='dim-caelestia-cli-git'
-pkgver=r672.da2b6ba
+pkgver=r671.57eb4df
 pkgrel=1
 pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
