@@ -1,6 +1,6 @@
 pkgbase = posprint
 	pkgdesc = Designer for POS-print documents with live preview and USB ESC/POS printing
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://gitlab.com/Timfa/posprint
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = posprint
 	depends = freetype2
 	depends = libglvnd
 	options = !lto
-	source = https://gitlab.com/Timfa/posprint/-/archive/0.5.3/posprint-0.5.3.tar.gz
-	sha256sums = b98207c07da562a7aaedcb2f5a852ad3652bfcaf1ae62886b5c762e1115c3bca
+	source = https://gitlab.com/Timfa/posprint/-/archive/0.5.4/posprint-0.5.4.tar.gz
+	sha256sums = 33b42ac7aa0b8721b0abd1f2b7b5c84475b76779a0628576b42c2857c44ad90e
 
 pkgname = posprint

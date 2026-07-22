@@ -1,6 +1,6 @@
 # Maintainer: posprint contributors
 pkgname=posprint
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Designer for POS-print documents with live preview and USB ESC/POS printing"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('rust' 'cargo' 'pkgconf' 'git' 'rsync')
 options=('!lto')
 source=("https://gitlab.com/Timfa/posprint/-/archive/${pkgver}/posprint-${pkgver}.tar.gz")
-sha256sums=('b98207c07da562a7aaedcb2f5a852ad3652bfcaf1ae62886b5c762e1115c3bca')
+sha256sums=('33b42ac7aa0b8721b0abd1f2b7b5c84475b76779a0628576b42c2857c44ad90e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
