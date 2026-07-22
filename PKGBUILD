@@ -45,10 +45,23 @@ case ${CARCH} in
     ;;
 esac
 
+build() {
+	cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
+
+    mkdir -p completions
+    ./"bin/${_appname}" completion zsh > "completions/${_appname}.zsh"
+    ./"bin/${_appname}" completion bash > "completions/${_appname}.bash"
+    ./"bin/${_appname}" completion fish > "completions/${_appname}.fish"
+}
+
 package() {
 	cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
 
 	install -Dm755 "bin/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+    install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+    install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+    install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
