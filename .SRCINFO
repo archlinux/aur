@@ -1,0 +1,27 @@
+pkgbase = memory-card-bin
+	pkgdesc = A desktop music player with a retro PS2/CRT aesthetic
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/Sluicee/memory-card
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libsoup3
+	depends = alsa-lib
+	depends = openssl
+	depends = ffmpeg
+	depends = gst-plugins-good
+	depends = gst-plugins-base
+	optdepends = ttf-dejavu: fallback symbols/icons support
+	optdepends = noto-fonts: fallback symbols/icons support
+	provides = memory-card
+	conflicts = memory-card
+	options = !debug
+	source = memory-card-bin-1.3.5.deb::https://github.com/Sluicee/memory-card/releases/download/v1.3.5/Memory.Card_1.3.5_amd64.deb
+	sha256sums = 490dd15b85776abfa851f6edd9e27c4aeca287071e1d5c8f135f0e73e386fc46
+
+pkgname = memory-card-bin
