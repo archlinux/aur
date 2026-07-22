@@ -8,7 +8,6 @@ Type=notify
 NotifyAccess=main
 User=root
 Group=root
-WorkingDirectory=/usr
 EnvironmentFile=-/etc/default/rustfs
 ExecStart=/usr/bin/rustfs
 LimitNOFILE=1048576
