@@ -1,7 +1,7 @@
 pkgbase = redasm-beta
 	pkgdesc = The Open Source Disassembler (beta version)
 	pkgver = 4.0.0.beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redasm.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,13 +21,13 @@ pkgbase = redasm-beta
 	source = loaders.tar.gz::https://github.com/redasm-dev/loaders/archive/refs/tags/v4.0.0-beta1.tar.gz
 	source = processors.tar.gz::https://github.com/redasm-dev/processors/archive/refs/tags/v4.0.0-beta1.tar.gz
 	source = commands.tar.gz::https://github.com/redasm-dev/commands/archive/refs/tags/v4.0.0-beta1.tar.gz
-	source = git+https://github.com/redasm-dev/kb.git
+	source = kb.tar.gz::https://github.com/redasm-dev/kb/archive/refs/tags/v4.0.0-beta1.tar.gz
 	sha256sums = ee6774ab11321cab8da631e1c2fa9a401532c7b4cf2f77d71f1ac818c054e156
 	sha256sums = f16298fbe8993ead5a3edf0037e943f8758e8efd6dd75cc6eb804b919a8addf4
 	sha256sums = ab34dbf5cad7e6a77f637121b059b74cdcc82c6f607fc71ecf009c2ca2a218f5
 	sha256sums = 53b638a7b96728496aac1ca0bc69733a43f468daab312c2891bcd6852f8aa37e
 	sha256sums = 496f5168ee2364770380a890573448339a074f0cae16a2bc10bb128fc1478e11
 	sha256sums = ab2e60b8e1e7ae001c816c7c345e1b13019e5e82ca72cd5c8d075b0e7dd021dd
-	sha256sums = SKIP
+	sha256sums = 80bb92d21ec2fff5ed047b9902bb3f324b216e157e6bd00f1607b572a42660d0
 
 pkgname = redasm-beta

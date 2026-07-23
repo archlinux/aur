@@ -1,13 +1,13 @@
 #
 # Maintainer: Antonio Davide Trogu <contact at redasm dot dev>
-# Prev. Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 #
 
 pkgname=redasm-beta
 _pkgver=4.0.0-beta1
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 url="https://redasm.dev"
 arch=("x86_64")
 pkgdesc="The Open Source Disassembler (beta version)"
@@ -25,7 +25,8 @@ source=(
     "loaders.tar.gz::https://github.com/redasm-dev/loaders/archive/refs/tags/v${_pkgver}.tar.gz"
     "processors.tar.gz::https://github.com/redasm-dev/processors/archive/refs/tags/v${_pkgver}.tar.gz"
     "commands.tar.gz::https://github.com/redasm-dev/commands/archive/refs/tags/v${_pkgver}.tar.gz"
-    "git+https://github.com/redasm-dev/kb.git"
+    "kb.tar.gz::https://github.com/redasm-dev/kb/archive/refs/tags/v${_pkgver}.tar.gz"
+    # "git+https://github.com/redasm-dev/kb.git"
 )
 
 sha256sums=(
@@ -35,7 +36,7 @@ sha256sums=(
     "53b638a7b96728496aac1ca0bc69733a43f468daab312c2891bcd6852f8aa37e"
     "496f5168ee2364770380a890573448339a074f0cae16a2bc10bb128fc1478e11"
     "ab2e60b8e1e7ae001c816c7c345e1b13019e5e82ca72cd5c8d075b0e7dd021dd"
-    "SKIP"
+    "80bb92d21ec2fff5ed047b9902bb3f324b216e157e6bd00f1607b572a42660d0"
 )
 
 prepare() {
@@ -44,7 +45,8 @@ prepare() {
     done
 
     mkdir -p "${srcdir}/workspace-${_pkgver}/kb"
-    cp -r "${srcdir}/kb/." "${srcdir}/workspace-${_pkgver}/kb"
+    cp -r "${srcdir}/kb-${_pkgver}/." "${srcdir}/workspace-${_pkgver}/kb"
+    # cp -r "${srcdir}/kb/." "${srcdir}/workspace-${_pkgver}/kb"
 }
 
 build() {
