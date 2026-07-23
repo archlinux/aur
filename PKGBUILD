@@ -4,7 +4,7 @@
 _pkgname="starnet2"
 pkgname="${_pkgname}-bin"
 pkgdesc="StarNet2 is the 2nd iteration of a neural network to remove stars from (nonlinear) astronomical images."
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 
 arch=("x86_64")
@@ -13,11 +13,11 @@ license=('custom')
 provides=('starnet2')
 conflicts=('starnet2')
 
-source=("https://download.starnetastro.com/starnet2_linux_2.5.3-0208_ORT_x64_cli.zip")
-sha256sums=('101c724a50328cbeb1b3aedb74e18a81894100b3cf668de6b5006d0a46c29d99')
+source=("https://download.starnetastro.com/starnet2_linux_${pkgver}-0214_ORT_x64_cli.zip")
+sha256sums=('b7a95ae3e1a9745b09536c3686eed338690b8693d5f446092524e7be75d29052')
 
 package() {
-  _srcdir="${srcdir}/starnet2_linux_${pkgver}-0208_ORT_x64_cli"
+  _srcdir="${srcdir}/starnet2_linux_${pkgver}-0214_ORT_x64_cli"
 
   # Install Licenses
   install -Dm644 "${_srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/STARNET2_LICENSE.txt"
