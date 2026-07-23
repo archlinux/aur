@@ -1,0 +1,5 @@
+[grv-bin]
+source = "github"
+github = "rgburke/grv"
+use_latest_release = true
+prefix = "v"
