@@ -1,20 +1,20 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Copyright (C) 2026 <developer@mplx.eu>
+# Copyright (C) 2026 mplx <jennifer@mplx.dev>
 #
 # AUR PKGBUILD for `jennifer-git`: clones the upstream repository
 # and builds both binaries (`jennifer` standard Go + `jennifer-tiny`
 # TinyGo) from source. Tracks the `main` branch; rebuild to
 # follow upstream.
 #
-# Maintainer: developer@mplx.eu <developer@mplx.eu>
+# Maintainer: mplx <jennifer@mplx.dev>
 
 pkgname=jennifer-git
 _realname=jennifer
-pkgver=0.17.0.r84.gf288d4f
+pkgver=0.21.0.r0.g80c0846
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (built from source)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/mplx/jennifer-lang'
+url='https://github.com/jennifer-language/jennifer'
 license=('LGPL3')
 provides=('jennifer')
 conflicts=('jennifer' 'jennifer-bin')

@@ -1,8 +1,8 @@
 pkgbase = jennifer-git
 	pkgdesc = Jennifer programming language interpreter (built from source)
-	pkgver = 0.17.0.r84.gf288d4f
+	pkgver = 0.21.0.r0.g80c0846
 	pkgrel = 1
-	url = https://github.com/mplx/jennifer-lang
+	url = https://github.com/jennifer-language/jennifer
 	install = jennifer.install
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = jennifer-git
 	provides = jennifer
 	conflicts = jennifer
 	conflicts = jennifer-bin
-	source = jennifer::git+https://github.com/mplx/jennifer-lang.git
+	source = jennifer::git+https://github.com/jennifer-language/jennifer.git
 	sha256sums = SKIP
 
 pkgname = jennifer-git
