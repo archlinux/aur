@@ -1,7 +1,7 @@
 pkgbase = opencode-bwrap
 	pkgdesc = Run opencode inside a bubblewrap sandbox for filesystem isolation
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/didvc/opencode-bwrap
 	arch = x86_64
 	arch = aarch64
