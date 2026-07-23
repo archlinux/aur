@@ -1,6 +1,6 @@
 # Maintainer: Sam Zuk <sam11120a@gmail.com>
 pkgname=vmpc2000xl-standalone-bin
-pkgver=0.9.3
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='MPC2000XL sampler emulator (standalone)'
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
 	'libpipewire'  # unknown version requirement
 	'libxau'  # unknown version requirement
 	'libxdmcp'  # unknown version requirement
+    'systemd-libs'  # unknown version requirement
 )
 source=(
 	"https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-Standalone.zip"
@@ -31,7 +32,7 @@ source=(
 	"https://vmpcdocs.izmar.nl/_static/vmpc-logo.png"
 )
 sha256sums=(
-	'9a4184361ed679dd89f9b35ba015fbd9fca127d4f9766eeaf27356740a747857'
+	'7388f7dc4cde83aea1256438a544aac259c4cf0413b6d4a6c40dd698345889a1'
 	'8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a'
 	'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 	'28bf1de1984104bcc08ad34a52b27bde4e5989c17cf5d6b67d67160b838e5173'
