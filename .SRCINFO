@@ -1,7 +1,7 @@
 pkgbase = pter
 	pkgdesc = Console UI to manage your todo.txt file(s)
-	pkgver = 3.23.0
-	pkgrel = 2
+	pkgver = 3.23.1
+	pkgrel = 1
 	url = https://codeberg.org/pter/pter/
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = pter
 	depends = python
 	depends = python-pytodotxt>=3.1.0
 	depends = python-cursedspace
-	source = https://files.pythonhosted.org/packages/source/p/pter/pter-3.23.0.tar.gz
-	sha256sums = 91cdb7adef96243eda830185151323fa729f497dae2b3c2d9641e694f761e46c
+	source = https://files.pythonhosted.org/packages/source/p/pter/pter-3.23.1.tar.gz
+	sha256sums = c5afba3fdea2872f2a9664bd7e72e86f3a15029b6a1e3e23640a1f357beb1f95
 
 pkgname = pter
