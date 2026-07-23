@@ -1,6 +1,6 @@
 pkgbase = voicefox-git
 	pkgdesc = A TUI music player that supports both streaming and local tracks
-	pkgver = 0.7.r1.gf814e54
+	pkgver = 0.8.r0.g28e82c1
 	pkgrel = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
