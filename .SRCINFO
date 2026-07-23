@@ -1,0 +1,17 @@
+pkgbase = cachymonitor
+	pkgdesc = Moniteur systeme oriente jeu : FPS, 1% low, frametime, CPU/GPU/RAM/VRAM, base sur MangoHud
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YOUNES-2-wq/cachymonitor
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyside6
+	optdepends = mangohud: statistiques en jeu (FPS, 1% low, frametime)
+	optdepends = nvidia-utils: lecture GPU NVIDIA via nvidia-smi
+	optdepends = pciutils: nom commercial du GPU via lspci
+	optdepends = dmidecode: type et vitesse de la RAM (necessite les droits root)
+	source = cachymonitor-1.0.0.tar.gz::https://github.com/YOUNES-2-wq/cachymonitor/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a770b415b30770ea873eb4b9c9f68125bb0d418cbf12f1953c2d036913f1011d
+
+pkgname = cachymonitor
