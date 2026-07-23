@@ -1,6 +1,6 @@
 pkgbase = python-fastkml-git
 	pkgdesc = A Python library for reading, writing and manipulating KML files.
-	pkgver = 1.4.0+49.r1659.20260119.052ae67
+	pkgver = 1.4.0+118.r1728.20260722.7228bed
 	pkgrel = 1
 	url = https://fastkml.readthedocs.io/
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = python-fastkml-git
 	depends = python-lxml
 	depends = python-pygeoif>=1.5
 	depends = python-typing_extensions>=4
-	provides = python-fastkml=1.4.0+49.r1659.20260119.052ae67
-	provides = python-fastkml-docs=1.4.0+49.r1659.20260119.052ae67
+	provides = python-fastkml=1.4.0+118.r1728.20260722.7228bed
+	provides = python-fastkml-docs=1.4.0+118.r1728.20260722.7228bed
 	conflicts = python-fastkml
 	conflicts = python-fastkml-docs
 	source = python-fastkml::git+https://github.com/cleder/fastkml.git

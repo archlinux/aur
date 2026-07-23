@@ -4,7 +4,7 @@ _pyname="fastkml"
 _gitname="${_pyname}"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.4.0+49.r1659.20260119.052ae67
+pkgver=1.4.0+118.r1728.20260722.7228bed
 pkgrel=1
 pkgdesc="A Python library for reading, writing and manipulating KML files."
 groups=()
@@ -99,7 +99,7 @@ build() {
 check() {
   cd "${srcdir}/${_pkgname}"
   printf '%s\n' " --> testing ..."
-  pytest
+  pytest --hypothesis-profile=ci # See https://github.com/cleder/fastkml/issues/491#issuecomment-3879849104: Fewer iterations to make the overall run taking less time to not fail with an error just due to timeout.
 
   printf '%s\n' " --> testing documentation ..."
   make -C docs doctest
