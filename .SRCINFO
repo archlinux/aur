@@ -1,6 +1,6 @@
 pkgbase = tactica-bin
 	pkgdesc = Desktop chess trainer built with Rust and Iced (prebuilt binary)
-	pkgver = 0.4.0.r1.52a653e
+	pkgver = r6.a73e682
 	pkgrel = 1
 	url = https://github.com/vcoscrato/Tactica
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tactica-bin
 	depends = glibc
 	provides = tactica
 	conflicts = tactica
-	source = tactica-bin-0.4.0.r1.52a653e.tar.gz::https://github.com/vcoscrato/Tactica/releases/download/0.4.0.r1.52a653e/tactica-0.4.0.r1.52a653e-x86_64.tar.gz
+	source = tactica-bin-r6.a73e682.tar.gz::https://github.com/vcoscrato/Tactica/releases/download/r6.a73e682/tactica-r6.a73e682-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = tactica-bin
