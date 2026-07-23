@@ -1,7 +1,7 @@
 pkgbase = sunder-bin
 	pkgdesc = A desktop YouTube music client that doesn't spy on you (prebuilt binary)
 	pkgver = 1.4.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FrogSnot/Sunder
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -25,6 +25,6 @@ pkgbase = sunder-bin
 	source = Sunder_1.4.7_amd64.deb::https://github.com/FrogSnot/Sunder/releases/download/v1.4.7/Sunder_1.4.7_amd64.deb
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = 6f7d2915d59f3641ab8ba97d2efad348ef04fed2d6b605650d3a59e491ac931b
-	sha256sums = 4b1173251d701180961efb6024a27c408b7ec5bd4f41c2fce6ee17f9c5e04dd1
+	sha256sums = 85b532eca2f0da282becbd0c3f7c42e3b7d8ee70b8012991a1acaf2621783203
 
 pkgname = sunder-bin
