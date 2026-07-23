@@ -1,0 +1,21 @@
+pkgbase = animaru
+	pkgdesc = A GTK4 GUI for watching and downloading anime
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/murdialthaf/animaru
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = mpv
+	source = animaru-0.1.0.tar.gz::https://github.com/murdialthaf/animaru/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = animaru
