@@ -1,6 +1,6 @@
 pkgbase = branch
 	pkgdesc = File tree and code preview desktop application built with Tauri
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/butterman28/Dev-Section
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = branch
 	depends = zlib
 	provides = branch
 	conflicts = branch
-	source_x86_64 = branch-1.2.0::https://github.com/butterman28/Dev-Section/releases/download/v1.2.0/branch-linux-x86_64
+	source_x86_64 = branch-1.3.0::https://github.com/butterman28/Dev-Section/releases/download/v1.3.0/branch-linux-x86_64
 	sha256sums_x86_64 = fe8de15d48ef379b99d5a35e29950f3e3892827f2a985650e84410a560263e6c
 
 pkgname = branch
