@@ -33,22 +33,17 @@ To update this package to a new version:
    curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest
    ```
 
-2. Extract the download URL and SHA256 hash from the JSON response:
-   ```bash
-   curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url, .sha256hash'
-   ```
-
-3. Update the PKGBUILD:
+2. Update the PKGBUILD:
    - Update `pkgver` with the new version (from `windsurfVersion` field)
-   - Update `_url` with the new download URL
-   - Update `sha256sums` with the new SHA256 hash
+   - Update `_url` with the new download URL (from `url` field)
+   - Update `sha256sums` with the new SHA256 hash (from `sha256hash` field)
 
-4. Generate the new .SRCINFO:
+3. Generate the new .SRCINFO:
    ```bash
    makepkg --printsrcinfo > .SRCINFO
    ```
 
-5. Commit and push the changes:
+4. Commit and push the changes:
    ```bash
    git add PKGBUILD .SRCINFO
    git commit -m "Update to version X.X.X"
