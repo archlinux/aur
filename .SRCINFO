@@ -1,0 +1,22 @@
+pkgbase = ziggity-bin
+	pkgdesc = ⚡️ Ziggity an ultra fast, keyboard driven terminal UI for Git, written in Zig.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/simoarpe/ziggity
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = ziggity
+	conflicts = ziggity
+	options = !strip
+	source = README-0.8.0.md::https://raw.githubusercontent.com/simoarpe/ziggity/v0.8.0/README.md
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/simoarpe/ziggity/v0.8.0/LICENSE
+	sha256sums = 1e17db02d12958e597ae8dcd291d00964f461bf56f4e04e0e324b355eb9cc239
+	sha256sums = 233ff8831d0647d24e8adbe4a5c32a8148f570220dd8ccacf52920a41ebab8b3
+	source_x86_64 = ziggity-x86_64-0.8.0.tgz::https://github.com/simoarpe/ziggity/releases/download/v0.8.0/ziggity-v0.8.0-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = b60d8473cfaf70fe70295ceda0b4c475498a922344c81cd10987ae52d2efa148
+	source_aarch64 = ziggity-aarch64-0.8.0.tgz::https://github.com/simoarpe/ziggity/releases/download/v0.8.0/ziggity-v0.8.0-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 579a3fffe2c4e2c59c87b9f2082fcd9b5837c6c230cdec0a5404bc57d82a0ab0
+
+pkgname = ziggity-bin
