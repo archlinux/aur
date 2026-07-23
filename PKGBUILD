@@ -1,7 +1,7 @@
 
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
-pkgver=26.7.16
+pkgver=26.7.23
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -17,7 +17,7 @@ groups=('lockbook')
 options=(!lto)
 
 pkgver() {
-  echo "26.7.16"
+  echo "26.7.23"
 }
 
 build() {
