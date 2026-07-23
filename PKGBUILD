@@ -1,6 +1,6 @@
 
 
-pkgname=linux-guardian-git
+pkgname=linux-guardian
 pkgver=0.r3.g8c4d7f2
 pkgrel=1
 pkgdesc="A cross-distribution Linux system optimization and maintenance tool built with Python and PyQt6"
