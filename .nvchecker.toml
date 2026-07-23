@@ -1,0 +1,4 @@
+[meguri]
+source = "git"
+git = "https://github.com/zabuton-app/meguri.git"
+prefix = "v"
