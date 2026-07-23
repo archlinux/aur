@@ -2,7 +2,7 @@
 pkgbase=gotatun
 pkgname=(gotatun libgotatun)
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64')
 url="https://github.com/mullvad/gotatun"
@@ -32,7 +32,7 @@ package_gotatun() {
 	cd "$pkgbase-$pkgver"
 	install -Dm755 target/release/${pkgname} "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MPL-2.0"
-	install -Dm644 LICENSE-CLOUDFLARE "$pkgdir/usr/share/licneses/$pkgname/LICENSE-BSD-3-Clause"
+	install -Dm644 LICENSE-CLOUDFLARE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-BSD-3-Clause"
 }
 
 package_libgotatun() {
