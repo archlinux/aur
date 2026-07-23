@@ -1,0 +1,5 @@
+[obelisk-bin]
+source = "github"
+github = "go-shiori/obelisk"
+use_latest_release = true
+prefix = "v"
