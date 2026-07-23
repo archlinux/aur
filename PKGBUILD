@@ -3,7 +3,7 @@
 pkgname=mindwtr
 pkgver=1.1.0
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
 url="https://github.com/dongdongbh/Mindwtr"
@@ -47,22 +47,22 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
+  export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
+  bun install
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
     --locked --target host-tuple
 }
 
 build() {
-  cd "$srcdir/Mindwtr-$pkgver"
+  cd "$srcdir/Mindwtr-$pkgver/apps/desktop"
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   _ensure_local_nvm
-  bun install
-
-  cd apps/desktop
   cargo tauri build --no-bundle -- --frozen
 }
 
