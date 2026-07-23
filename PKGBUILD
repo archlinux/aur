@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cupola-git
 _app_id=org.codeberg.bhh32.Cupola
-pkgver=r53.fca1866
+pkgver=r53.fd492c6
 pkgrel=1
 pkgdesc="An image viewer for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
