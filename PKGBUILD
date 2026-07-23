@@ -1,8 +1,8 @@
 # Maintainer: yummiergravy <https://github.com/YummierGravy>
 
 pkgname=plasma-lichess-tv-wallpaper-git
-pkgver=0.2.0.r0.gade187d
-pkgrel=2
+pkgver=0.3.0.r0.gd4ab3b4
+pkgrel=1
 pkgdesc="Unofficial Plasma 6 live wallpaper for Lichess TV (git)"
 arch=('x86_64')
 url="https://github.com/YummierGravy/plasma-lichess-tv-wallpaper"
