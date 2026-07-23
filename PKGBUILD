@@ -1,7 +1,7 @@
 # Maintainer: FrogSnot
 pkgname=sunder
 pkgver=1.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop YouTube music client that doesn't spy on you"
 arch=('x86_64')
 url="https://github.com/FrogSnot/Sunder"
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite' 'yt-dlp' 'ffmpeg')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6b3f1777b4b560548babd60c6ac145cc88876410bca7d20f961f9110dc004fbe')
+sha256sums=('378b59a3c1eae27af2abbcb77b4fe15f61687cab5a858756766a5beb1c850307')
 
 build() {
     cd "$srcdir/Sunder-$pkgver"
