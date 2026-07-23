@@ -1,7 +1,7 @@
 # Maintainer: lhl <lhl@randomfoo.net>
 
 pkgname=amdtop
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='A btop/nvitop-style system monitor for AMD GPUs, CPUs, and XDNA NPUs'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 source=(
   "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
 )
-b2sums=('6d1560d38c439b80719e3f78451e2bdc92758f66bae39365b5942d95579c52ef15fe7a5b45f740b5d5e7889f7ba52bd6f20381a740f3099e530bd724d7de522a')
+b2sums=('7f90eda512442d2c1f5848fd72045fc702dda3fa96c8e89f3d2dd4af87370e474c61f0f32eca3d33f67ad622526713806de4147061592f01ea338fb3c4b5219c')
 
 prepare() {
   cd "$pkgname-$pkgver"
