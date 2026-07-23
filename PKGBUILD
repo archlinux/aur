@@ -1,6 +1,6 @@
 # Maintainer: Matias Peñaloza <mpenaloza@usm.cl>
 pkgname=ramolibre
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Organizador académico Local-First"
 arch=('x86_64')
@@ -16,7 +16,14 @@ sha256sums=('SKIP')
 build() {
   cd "${srcdir}/${pkgname}"
   bun install --frozen-lockfile
-  NO_STRIP=true bun run tauri:build
+  PUBLIC_SHOW_DEV_TOOLS="false" \
+  PUBLIC_SUPABASE_URL="https://ihgteikkevsfjwgbenxu.supabase.co" \
+  PUBLIC_SUPABASE_PUBLISHABLE_KEY="sb_publishable_yBASTBrLn4YJ7de1jxI4kQ_tjhny6fD" \
+  PUBLIC_CLOUD_SYNC_POLL_INTERVAL=10000 \
+  PUBLIC_ROLLUP_VISUALIZER=false \
+  PUBLIC_RAMOLIBRE_LAB_URL=https://lab.ramolibre.app \
+  NO_STRIP=true \
+  bun run tauri:build
 }
 
 package() {
