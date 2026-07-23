@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-tmux
 	pkgdesc = tmux grammar for tree-sitter
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tree-sitter-tmux
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-tmux
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-tree-sitter
-	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_tmux/tree_sitter_tmux-0.1.1.tar.gz
-	sha256sums = 37f041e870bd7d176d51b636676834c4e6221b46ee27317f95b11b0cfda1b3c2
+	source = https://files.pythonhosted.org/packages/source/t/tree_sitter_tmux/tree_sitter_tmux-0.1.2.tar.gz
+	sha256sums = 90723dc74ba99cae34622791d2bf509d133a79ff228dc20a8e8c7d0ce1a00709
 
 pkgname = python-tree-sitter-tmux

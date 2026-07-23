@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/tree-sitter-tmux/blob/main/.github/workflows/main.yml
 _name=tree-sitter-tmux
 pkgname=python-$_name
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="tmux grammar for tree-sitter"
 arch=(i686 x86_64 arm aarch64)
@@ -12,7 +12,7 @@ depends=(python-tree-sitter)
 makedepends=(uv python-installer python-setuptools)
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('37f041e870bd7d176d51b636676834c4e6221b46ee27317f95b11b0cfda1b3c2')
+sha256sums=('90723dc74ba99cae34622791d2bf509d133a79ff228dc20a8e8c7d0ce1a00709')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
