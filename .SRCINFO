@@ -1,0 +1,16 @@
+pkgbase = zind
+	pkgdesc = Dynamic structural API indexer for Zig
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/tsukumoakito/zind
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = zig
+	makedepends = scdoc
+	depends = zig
+	source = zind-1.0.0.tar.gz::https://github.com/tsukumoakito/zind/archive/refs/tags/v1.0.0.tar.gz
+	validpgpkeys = 66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857
+	sha256sums = d159111b39050aea0b07a93e824ef4cfb6d8d34be5680a80e6423c7803775a01
+
+pkgname = zind
