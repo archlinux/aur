@@ -1,7 +1,7 @@
 # Maintainer: Bryan Jacobs <>
 
 pkgname=libfido2-full
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Library functionality for FIDO 2.0, with support for USB, NFC, and PCSC devices'
 url='https://developers.yubico.com/libfido2/'
@@ -12,9 +12,9 @@ makedepends=('cmake' 'systemd')
 provides=('libfido2.so' 'libfido2')
 conflicts=('libfido2')
 source=("https://developers.yubico.com/libfido2/Releases/libfido2-${pkgver}.tar.gz"{,.sig})
-sha512sums=('487424a993ff3c9cb48f96a8e15bdd1b0105b7ad840c6d44cdd683a53bc4fe500a42f51d1d0ab75f8e000c081af57ba95cb4c04c641ea4322c23a407d291f470'
+sha512sums=('42da7eac4baa6e0c193a2fc2b42d86cbab45c4c7a79220b523c0b4ddc547bbd12b86b3fbbadd7a961e930417ca3026873fb7f0e72903976ca5dc70b445910b79'
             'SKIP')
-b2sums=('857b24c5cf38db9620fc567f42b7af2a7fd4ca24433af1113ca41a040c2f8242abaa99fe2a3826640d42348221895b88064d447a4b064de6e04ae48add42de34'
+b2sums=('436e52b9e298738aa9786c6430c4d45d7304793030d6d816ca5181b8ea50673e0c8c372c5bb8cae2ca6b36da2db4a659e07c49b33d55984830c07d0fccd6f22c'
         'SKIP')
 validpgpkeys=(
   'EE90AE0D19774C8386628FAAB428949EF7914718' # pedro martelletto <pedro@yubico.com>
