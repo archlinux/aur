@@ -1,31 +1,31 @@
 image: archlinux:latest
 
 update_aur:
-  script:
-    - pacman -Sy --noconfirm git base-devel openssh curl grep
-    - useradd -m builduser
-    - echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-    - eval $(ssh-agent -s)
-    - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p /home/builduser/.ssh
-    - chmod 700 /home/builduser/.ssh
-    - ssh-keyscan aur.archlinux.org >> /home/builduser/.ssh/known_hosts
-    - chown -R builduser:builduser /home/builduser/.ssh
-    - chown -R builduser:builduser .
-    - sudo -u builduser git config --global user.name "GitLab CI Bot"
-    - sudo -u builduser git config --global user.email "bot@gitlab.com"
-    - sudo -u builduser git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
-    - cp PKGBUILD aur_repo_temp/
-    - cd aur_repo_temp
-    - chown -R builduser:builduser .
-    - source ./PKGBUILD
-    - NEW_VER=$(pkgver)
-    - if [ -z "$NEW_VER" ]; then exit 1; fi
-    - sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
-    - sudo -u builduser makepkg --printsrcinfo > .SRCINFO
-    - sudo -u builduser git add PKGBUILD .SRCINFO
-    - sudo -u builduser git commit -m "Update to ${NEW_VER}" || true
-    - sudo -u builduser git push origin master
+  script: |
+    pacman -Sy --noconfirm git base-devel openssh curl grep
+    useradd -m builduser
+    echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+    eval $(ssh-agent -s)
+    echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    mkdir -p /home/builduser/.ssh
+    chmod 700 /home/builduser/.ssh
+    ssh-keyscan aur.archlinux.org >> /home/builduser/.ssh/known_hosts
+    chown -R builduser:builduser /home/builduser/.ssh
+    chown -R builduser:builduser .
+    sudo -u builduser git config --global user.name "GitLab CI Bot"
+    sudo -u builduser git config --global user.email "bot@gitlab.com"
+    sudo -u builduser git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
+    cp PKGBUILD aur_repo_temp/
+    cd aur_repo_temp
+    chown -R builduser:builduser .
+    source ./PKGBUILD
+    NEW_VER=$(pkgver)
+    if [ -z "$NEW_VER" ]; then exit 1; fi
+    sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
+    sudo -u builduser makepkg --printsrcinfo > .SRCINFO
+    sudo -u builduser git add PKGBUILD .SRCINFO
+    sudo -u builduser git commit -m "Update to ${NEW_VER}" || true
+    sudo -u builduser git push origin master
   only:
     - schedules
     - web
