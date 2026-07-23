@@ -9,7 +9,7 @@
 pkgname=bilibili-gpu-bin
 _pkgreal=bilibili
 pkgver=1.17.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)"
 arch=('x86_64')
 url="https://github.com/wings1848/bilibili-linux"
@@ -35,30 +35,35 @@ conflicts=('bilibili' 'bilibili-bin')
 provides=("${_pkgreal}=${pkgver}")
 source_x86_64=("${_pkgreal}-v${pkgver}-1-x64.tar.gz::${url}/releases/download/v${pkgver}-1/bilibili-v${pkgver}-1-x64.tar.gz")
 sha256sums_x86_64=('SKIP')
+source=("bilibili.svg::https://raw.githubusercontent.com/wings1848/bilibili-linux/v${pkgver}-1/res/icons/bilibili.svg")
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"
 
   # Extract the pre-built release tarball
   # Structure: bin/bilibili (launcher), app/ (app.asar), electron/ (Electron 43 runtime)
+  # NOTE: tar.gz has no top-level directory, extracts directly into srcdir
   install -dm755 "${pkgdir}/opt/bilibili" "${pkgdir}/usr/bin"
-  cp -r "${_pkgreal}-v${pkgver}-1-x64/"* "${pkgdir}/opt/bilibili/"
+  cp -r bin app electron "${pkgdir}/opt/bilibili/"
 
-  # Install icons from the app bundle
-  # (they come from the AppImage's embedded hierarchy via the tarball)
-  find "${pkgdir}/opt/bilibili" -path "*/icons/*" -name "*.png" | while read -r icon; do
-    target="${pkgdir}/usr/share/icons/${icon#${pkgdir}/opt/bilibili/}"
-    install -Dm644 "${icon}" "${target}"
-  done
+  # Install .desktop file (tar.gz doesn't ship one — electron-builder
+  # only embeds it in the AppImage, not in the tarball)
+  install -dm755 "${pkgdir}/usr/share/applications"
+  cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << DESKTOP
+[Desktop Entry]
+Name=bilibili
+Exec=/usr/bin/bilibili %U
+Terminal=false
+Type=Application
+Icon=bilibili
+StartupWMClass=bilibili
+Comment=BiliBili client for Linux (GPU accelerated, Electron 43).
+Categories=AudioVideo;
+DESKTOP
 
-  # Install .desktop file
-  install -Dm644 "${pkgdir}/opt/bilibili/bilibili.desktop" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  sed -i \
-    -e 's|^Exec=.*|Exec=/usr/bin/bilibili %U|' \
-    -e '/^X-AppImage/d' \
-    -e "s|^Icon=.*|Icon=${_pkgreal}|" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Install icon
+  install -Dm644 "${srcdir}/bilibili.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bilibili.svg"
 
   # Create wrapper script for /usr/bin/bilibili
   # Loads user flags, sets Wayland/DE environment, then launches Electron

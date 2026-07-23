@@ -1,7 +1,7 @@
 pkgbase = bilibili-gpu-bin
 	pkgdesc = Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)
 	pkgver = 1.17.9
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/wings1848/bilibili-linux
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,8 @@ pkgbase = bilibili-gpu-bin
 	provides = bilibili=1.17.9
 	conflicts = bilibili
 	conflicts = bilibili-bin
+	source = bilibili.svg::https://raw.githubusercontent.com/wings1848/bilibili-linux/v1.17.9-1/res/icons/bilibili.svg
+	sha256sums = SKIP
 	source_x86_64 = bilibili-v1.17.9-1-x64.tar.gz::https://github.com/wings1848/bilibili-linux/releases/download/v1.17.9-1/bilibili-v1.17.9-1-x64.tar.gz
 	sha256sums_x86_64 = SKIP
 
