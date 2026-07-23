@@ -27,7 +27,7 @@ _installdir=/opt/intel
 
 prepare() {
   cp "sgx_linux_x64_sdk_${_pkgver}.bin" sgx_linux_x64_sdk.bin
-  patch --binary --force -p1 -i intel-sgx-sdk-skip-tmp.patch
+  patch --binary --force -t -Ni intel-sgx-sdk-skip-tmp.patch
   chmod +x sgx_linux_x64_sdk.bin
 }
 
@@ -38,19 +38,22 @@ package() (
   # The installer runs a Makefile which fails when run in parallel.
   export MAKEFLAGS='-j1'
   ./sgx_linux_x64_sdk.bin --prefix "${installdir}"
+  cd "${installdir}"
 
   # fix ${srcdir} references
-  sed -i -E "s|\b(SGX_SDK=).*|\1${_installdir}/sgxsdk|g" "${installdir}/sgxsdk/environment"
-  sed -i -E "s|\b(SGX_LIBRARY_PATH=).*|\1${_installdir}/sgxsdk/lib64|g" "${installdir}/sgxsdk/bin/sgx-gdb"
-  sed -i -E "s|^(prefix=).*|\1${_installdir}/sgxsdk|g" "${installdir}/sgxsdk/pkgconfig"/*.pc
+  sed -i -E "s|\b(SGX_SDK=).*|\1${_installdir}/sgxsdk|g" sgxsdk/environment
+  sed -i -E "s|\b(SGX_LIBRARY_PATH=).*|\1${_installdir}/sgxsdk/lib64|g" sgxsdk/bin/sgx-gdb
+  sed -i -E "s|^(prefix=).*|\1${_installdir}/sgxsdk|g" sgxsdk/pkgconfig/*.pc
 
-  ln -sf libsgx_urts.so "${installdir}/sgxsdk/lib64/libsgx_urts.so.2"
-  find "${installdir}/sgxsdk/sdk_libs/" -name '*.so' \
-    -exec bash -ec 'ln -sf "../lib64/$(basename "$0")" "$0"' '{}' \;
+  # fix generated symlinks
+  ln -v -s libsgx_urts.so -fT sgxsdk/lib64/libsgx_urts.so.2
+  find sgxsdk/sdk_libs/ -name '*.so' -print -exec \
+    sh -euc 'ln -sr "sgxsdk/lib64/$(basename "$1")" -fT "$1"' -- '{}' \;
 
   # The uninstall script shouldn't be used with this package.
   rm "${pkgdir}/opt/intel/sgxsdk/uninstall.sh"
 
   # composed license
-  install -D -m644 "${pkgdir}/opt/intel/sgxsdk/licenses/License.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+    -m644 "${pkgdir}/opt/intel/sgxsdk/licenses/License.txt"
 )
