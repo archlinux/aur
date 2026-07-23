@@ -3,7 +3,7 @@
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A TUI music player that supports both streaming and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
