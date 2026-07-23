@@ -1,4 +1,4 @@
-# Maintainer: Gurov <gurov@disroot.org>
+# Maintainer: Gurov <thuggerthugger1@duck.com>
 pkgname=zeptofetch
 pkgver=2.1
 pkgrel=1
