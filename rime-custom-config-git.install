@@ -1,0 +1,6 @@
+post_remove() {
+  echo ":: 提示：用户数据未被删除"
+  echo ":: 备份目录: ~/.cache/rime-custom-config/"
+  echo ":: 词库文件: ~/.local/share/fcitx5/rime/custom_words.dict.yaml"
+  echo ":: 如需清理请手动删除上述文件/目录"
+}

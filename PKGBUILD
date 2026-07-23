@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Manage custom Chinese dictionary for fcitx5 rime"
 arch=('x86_64')
 url="https://github.com/cublueer/rime-custom-config"
+install="${pkgname}.install"
 license=('MIT')
 depends=('gcc-libs' 'fcitx5' 'fcitx5-rime')
 makedepends=('cargo')

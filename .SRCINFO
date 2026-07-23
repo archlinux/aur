@@ -3,6 +3,7 @@ pkgbase = rime-custom-config-git
 	pkgver = 0.2.0.r0.g442037d
 	pkgrel = 1
 	url = https://github.com/cublueer/rime-custom-config
+	install = rime-custom-config-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
