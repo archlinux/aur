@@ -4,7 +4,7 @@
 
 pkgname=liboglappth
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library containing computational chemistry facility of ghemical'
 license=('GPL')
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ url='https://bioinformatics.org/ghemical/libghemical/'
 depends=('gcc-libs')
 makedepends=('mesa')
 options=('!libtool')
-source=("https://bioinformatics.org/ghemical/download/release20111012/$pkgname-$pkgver.tar.gz")
+source=("https://smallperturbation.com/sites/default/files/$pkgname-$pkgver.tar.gz")
 sha256sums=('b461a31065d6912d190f78ad0041218009f44a5acdb5757545bd4a8bd6b509aa')
 
 build() {
