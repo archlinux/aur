@@ -1,4 +1,4 @@
-# Maintainer: Gurov <gurov@disroot.org>
+# Maintainer: Gurov <thuggerthugger1@duck.com>
 pkgname=zeptofetch-git
 pkgver=r160.3e692c3
 pkgrel=1
