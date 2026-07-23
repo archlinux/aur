@@ -48,7 +48,6 @@ package() {
   cp -r squashfs-root/* "${pkgdir}/opt/bilibili/"
 
   # Install icons to XDG standard paths
-  # These come from the AppImage's embedded usr/share/icons/ hierarchy
   find squashfs-root/usr/share/icons/ -type f | while read -r icon; do
     install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/${icon#squashfs-root/usr/share/icons/}"
   done
@@ -88,7 +87,6 @@ case "${XDG_CURRENT_DESKTOP}" in
 esac
 
 # Load user-defined GPU/flags configuration
-# Priority: ~/.config/bilibili/bilibili-flags.conf > ~/.config/bilibili-flags.conf
 declare -a flags
 for f in "${XDG_CONFIG_HOME}/bilibili/bilibili-flags.conf" \
          "${XDG_CONFIG_HOME}/bilibili-flags.conf"; do
@@ -117,7 +115,6 @@ WRAPPER
   ln -sf "/opt/bilibili/${pkgname}.wrapper" "${pkgdir}/usr/bin/bilibili"
 
   # Install default flags config for NVIDIA GPU acceleration
-  # (copied to /etc/skel so new users get it automatically)
   install -dm755 "${pkgdir}/etc/skel/.config/bilibili"
   cat > "${pkgdir}/etc/skel/.config/bilibili/bilibili-flags.conf" << 'FLAGS'
 --ignore-gpu-blocklist
