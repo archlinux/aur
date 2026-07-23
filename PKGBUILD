@@ -14,11 +14,11 @@ conflicts=('citron' 'citron-git' 'citron-neo' 'citron-neo-git' 'citron-neo-bin')
 options=(!strip)
 depends=('hicolor-icon-theme' 'fuse2' 'qt6-base' 'qt6-webengine')
 
-_commit="4642bb3e3"
-_appimage="citron_nightly-4642bb3e3-linux-x86_64-use-nopgo.AppImage"
+_commit="d7072013a"
+_appimage="citron_nightly-d7072013a-linux-x86_64-use-nopgo.AppImage"
 
 source=("${_appimage}::https://github.com/citron-neo/CI/releases/download/nightly-linux/${_appimage}")
-sha256sums=('6ab7e1635e6ee8a2618f648f1d832f257924e0d95c3f71e63fc36df72639ae01')
+sha256sums=('34aad64b4a2bd7f9e5b776cf0af7d3135a8e99112d18f7a3e76fd1af387e6afa')
 
 prepare() {
     chmod +x "${_appimage}"
