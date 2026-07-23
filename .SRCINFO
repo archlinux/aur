@@ -1,6 +1,6 @@
 pkgbase = comicrd-bin
 	pkgdesc = ComicRD desktop comic reader built with Flutter and Rust
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/andrizan/comicRD
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = comicrd-bin
 	depends = libepoxy
 	provides = comicrd
 	conflicts = comicrd
-	source = comicrd-2.1.1-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v2.1.1/comicrd-2.1.1-linux-x86_64.tar.gz
-	sha256sums = 1a4275712f7933a5e887fbb4a5d79cd66489878deaed59f470090d1f3f9e6aea
+	source = comicrd-2.1.2-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v2.1.2/comicrd-2.1.2-linux-x86_64.tar.gz
+	sha256sums = e5d2de315ae777ac6d10606aa326348e95f3abbe6e376ee3fe86c3eb785cd554
 
 pkgname = comicrd-bin
