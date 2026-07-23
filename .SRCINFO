@@ -1,6 +1,6 @@
 pkgbase = vmpc2000xl-lv2-bin
 	pkgdesc = MPC2000XL sampler emulator (LV2)
-	pkgver = 0.9.3
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://www.izmar.nl/
 	arch = x86_64
@@ -21,10 +21,11 @@ pkgbase = vmpc2000xl-lv2-bin
 	depends = libpipewire
 	depends = libxau
 	depends = libxdmcp
-	source = https://github.com/izzyreal/vmpc-juce/releases/download/v0.9.3/VMPC2000XL-Ubuntu20-x86_64-LV2.zip
-	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/README.md
-	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/LICENSE.txt
-	sha256sums = cbd1615011273c3730739cd3a2af1a72ca71dc13be587b4faf5b1f0d503f858e
+	depends = systemd-libs
+	source = https://github.com/izzyreal/vmpc-juce/releases/download/v0.9.13/VMPC2000XL-Ubuntu20-x86_64-LV2.zip
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.13/README.md
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.13/LICENSE.txt
+	sha256sums = 4122752b3fdf4645fec81586e29bd01176ebf4368e5feae1fcb7176837de4506
 	sha256sums = 8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
