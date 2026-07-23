@@ -1,0 +1,5 @@
+[intentrace-bin]
+source = "github"
+github = "sectordistrict/intentrace"
+use_latest_release = true
+prefix = "v"
