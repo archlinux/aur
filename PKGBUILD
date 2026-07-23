@@ -15,10 +15,16 @@ pkgname=intellij-idea-open-eap
 _versionyyyy=2026
 _versionr=2
 _versionn=0
-_versionm=0
+_versionm=1
 # Historically, not all tags begin with "idea/" such as "2025.3-rc-2".
 _tagprefix=idea/
-_tagsuffix=
+_tagsuffix=preview
+# This particular 2026.2.1 tag actually corresponds to 2026.2.0.1:
+# https://youtrack.jetbrains.com/articles/IDEA-A-2100662711/IntelliJ-IDEA-2026.2.0.1-262.8665.337-build-Release-Notes .
+# I've confirmed this is an inconsistency in their tagging, because "idea/2026.1.2-rc" corresponds to 2026.1.2 RC:
+# https://youtrack.jetbrains.com/articles/IDEA-A-2100662672/IntelliJ-IDEA-2026.1.2-RC-261.24374.66-build-Release-Notes .
+_tagoverride=idea/2026.2.1-preview
+
 # Get build number from the following, in order of preference (as it's not always available
 # on GitHub):
 #
@@ -31,14 +37,18 @@ _tagsuffix=
 #   EAP version ("snap install intellij-idea --classic --edge"). This will match that in
 #   "build.txt" in the source at GitHub, although that file only contains the first two
 #   parts, followed by ".SNAPSHOT".
-_build=262.8665.258
+_build=262.8665.337
 
 pkgver="$_versionyyyy.$_versionr.$_versionn.$_versionm.$_build$([ -n "$_tagsuffix" ] && echo -n ".$_tagsuffix" | tr - _)"
 pkgrel=1
 
-_tag="$_tagprefix$_versionyyyy.$_versionr$([ "$_versionn" -ne 0 ] && echo -n ".$_versionn")\
+if [ -n "$_tagoverride" ]; then
+  _tag=$_tagoverride
+else
+  _tag="$_tagprefix$_versionyyyy.$_versionr$([ "$_versionn" -ne 0 ] || [ "$_versionm" -ne 0 ] && echo -n ".$_versionn")\
 $([ "$_versionm" -ne 0 ] && echo -n ".$_versionm")\
 $([ -n "$_tagsuffix" ] && echo -n "-$_tagsuffix")"
+fi
 
 pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version'
 url='https://www.jetbrains.com/idea/'
@@ -57,7 +67,7 @@ optdepends=(
 source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop)
-sha256sums=('dee77eea17ce500f3050cdb4675e0eb9450a7636c9db75fb932f7966a3267191'
+sha256sums=('ae822fb40ecae3588fa6bf3082436da854e2b5c2e25b41b9fea5e3b69a2d2676'
   '81479bee3fc045a54e72a8dae36d8ff1ba54958a324d976f869b4414566c2c91'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
