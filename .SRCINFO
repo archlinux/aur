@@ -1,6 +1,6 @@
 pkgbase = godot-export-templates-bin
 	pkgdesc = Godot export templates
-	pkgver = 4.7
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/godotengine/godot
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = godot-export-templates-bin
 	provides = godot-export-templates
 	options = !strip
 	options = !debug
-	source = https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_export_templates.tpz
-	source = godot-4.7-LICENSE.MIT::https://github.com/godotengine/godot/raw/refs/tags/4.7-stable/LICENSE.txt
-	sha256sums = 9714459dc071907c0f3d5f17d608faf69e7cda21331fc5d39c4503ffa4e99eec
+	source = https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_export_templates.tpz
+	source = godot-4.7.1-LICENSE.MIT::https://github.com/godotengine/godot/raw/refs/tags/4.7.1-stable/LICENSE.txt
+	sha256sums = 86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72
 	sha256sums = b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80
 
 pkgname = godot-export-templates-android-bin

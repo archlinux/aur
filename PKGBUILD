@@ -4,7 +4,7 @@
 
 _pkgname="godot-export-templates"
 pkgbase="$_pkgname-bin"
-pkgver=4.7
+pkgver="4.7.1"
 pkgrel=1
 pkgdesc='Godot export templates'
 url="https://github.com/godotengine/godot"
@@ -24,10 +24,8 @@ source=(
   "$url/releases/download/$_godot_version/Godot_v${_godot_version}_export_templates.tpz"
   "godot-${_godot_version%-*}-LICENSE.MIT"::"$url/raw/refs/tags/$_godot_version/LICENSE.txt"
 )
-sha256sums=(
-  '9714459dc071907c0f3d5f17d608faf69e7cda21331fc5d39c4503ffa4e99eec'
-  'b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80'
-)
+sha256sums=('86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72'
+            'b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80')
 
 _package() {
   provides+=("${pkgname%-bin}")
