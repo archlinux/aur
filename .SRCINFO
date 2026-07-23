@@ -1,0 +1,22 @@
+pkgbase = uutils-coreutils-nosystemd-git
+	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (without systemd integration)
+	pkgver = 0.9.0.r499.g49a56e2
+	pkgrel = 1
+	url = https://github.com/uutils/coreutils
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = rust
+	depends = acl
+	depends = glibc
+	depends = libgcc
+	depends = oniguruma
+	depends = openssl
+	provides = coreutils
+	conflicts = uutils-coreutils
+	conflicts = coreutils
+	source = coreutils::git+https://github.com/uutils/coreutils.git
+	b2sums = SKIP
+
+pkgname = uutils-coreutils-nosystemd-git
