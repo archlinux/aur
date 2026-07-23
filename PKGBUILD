@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=hrdr-bin
 _pkgname=hrdr
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="herder — fast, agentic coding harness for OpenAI-compatible models (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("hrdr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v${pkgver}/hrdr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("hrdr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v${pkgver}/hrdr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('606a99e04a6d61c0a37c6061e694301f81cbce124611fa3f7f7e22a32789f2ca')
-sha256sums_aarch64=('95cf105b4a67a1721e2e2590018049f8893f2c4f861d0b2dca795498464f133d')
+sha256sums_x86_64=('4ba69490faabdfd7b20193285db25d5085ffeff89b80b70d695d66e98b3abb32')
+sha256sums_aarch64=('8fd3b46cb3f01093fd5ad7f93a0090bd1c1415ac52819102d5f3a80787deb68a')
 
 package() {
     install -Dm755 "$srcdir/hrdr" "$pkgdir/usr/bin/hrdr"
