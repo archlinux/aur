@@ -2,7 +2,7 @@
 
 pkgname=animaru
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK4 GUI for watching and downloading anime"
 arch=('any')
 url="https://github.com/murdialthaf/animaru"
@@ -10,44 +10,28 @@ license=('GPL3')
 depends=(
   'python'
   'python-gobject'
+  'python-pipx'
   'gtk4'
   'libadwaita'
   'mpv'
-  'python-beautifulsoup4'
-  'python-dataclasses-json'
-  'python-levenshtein'
-  'python-pycountry'
-  'python-pycryptodomex'
-  'python-rapidfuzz'
-  'python-requests'
-  'python-urllib3'
-  'python-mpv'
-  'python-pyee'
-  'python-typing_extensions'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-setuptools'
-  'python-pip'
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/murdialthaf/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
-}
-
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  # Bundle anipy-api and its dependencies not available in Arch repos
-  pip install --root="${pkgdir}" --prefix=/usr --no-deps anipy-api m3u8 python-ffmpeg simpleeval
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/animaru" << 'WRAPPER'
+#!/bin/bash
+APP=animaru
+PIPX_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pipx"
+export PIPX_HOME
+if ! "$PIPX_HOME/venvs/$APP/bin/$APP" --version &>/dev/null; then
+  pipx install "git+https://github.com/murdialthaf/animaru.git"
+fi
+exec "$PIPX_HOME/venvs/$APP/bin/$APP" "$@"
+WRAPPER
 
   install -Dm644 data/animaru.desktop -t "${pkgdir}/usr/share/applications"
   install -Dm644 data/icons/animaru.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
