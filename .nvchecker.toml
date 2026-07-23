@@ -1,0 +1,5 @@
+[syspass-cli]
+source = "github"
+github = "ggnosh/syspass-cli"
+prefix = "v"
+use_latest_release = true
