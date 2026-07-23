@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=quickdash-git
-pkgver=r4.g0cbe7d2
+pkgver=0
 pkgrel=1
 pkgdesc="Configurable Hyprland dashboard and launcher built with Quickshell"
 arch=('any')
