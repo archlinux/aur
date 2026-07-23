@@ -1,0 +1,13 @@
+pkgbase = unegg
+	pkgdesc = EGG archive extractor
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/alkegi/unegg
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = unegg-0.1.2.tar.gz::https://github.com/alkegi/unegg/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 96aadc42e10e7f97e36d07c6bfc75fd26ccac286d7d4e2766e7375dc4f42a60c
+
+pkgname = unegg
