@@ -3,7 +3,7 @@
 # AUR -git package for lyrics-tool. Builds the tip of the main branch.
 pkgname=lyrics-tool-git
 _pkgname=lyrics-tool
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Cross-platform terminal lyrics visualizer and LRC/WLRC toolkit (git)"
 arch=('any')
