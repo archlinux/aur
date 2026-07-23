@@ -1,4 +1,6 @@
-# Maintainer: Locez <locez@locez.com>
+# Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
+# Contributor: Locez <locez@locez.com>
+
 pkgname=bilihud
 pkgver=0.5.1
 pkgrel=1

@@ -26,7 +26,7 @@ pkgbase = bilihud
 	depends = layer-shell-qt
 	source = git+https://github.com/locez/bilihud.git#tag=v0.5.1
 	source = git+https://github.com/xfgryujk/blivedm.git
-	sha256sums = SKIP
+	sha256sums = 9ed09913fb9b61de9f91d79622a04eed7894c6aa386aaf7552111115bbf44d39
 	sha256sums = SKIP
 
 pkgname = bilihud
