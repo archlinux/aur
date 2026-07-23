@@ -1,7 +1,7 @@
 # Maintainer: lightjunction
 
 pkgname=douyin-cli
-pkgver=2026.7.22
+pkgver=2026.7.23
 pkgrel=1
 pkgdesc='Rust CLI for Douyin OpenAPI and web workflows'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'clang' 'cmake')
 checkdepends=('nodejs')
 optdepends=('nodejs: webpage crawling and comment collection')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('e92bd33bad514d264aed943d4e74b4c36cd87dcaa59137a4dbd5dd7222abc322')
+sha256sums=('46ea6feb9a148176df536e458301e16310a7415bdaf85a1a46a0376e631c490f')
 
 prepare() {
   cd "$pkgname-$pkgver"
