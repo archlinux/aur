@@ -9,7 +9,7 @@ pkgver=0.6.0
 pkgrel=1
 pkgdesc="Cross-platform MUD client built on Tauri 2"
 arch=('x86_64')
-url="https://github.com/SeanStoves/KilnMUD"
+url="https://github.com/SeanStoves/KilnMUD-Releases"
 license=('LicenseRef-proprietary')
 depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'dbus' 'libsoup3'
          'gcc-libs' 'glibc' 'hicolor-icon-theme')
