@@ -1,6 +1,6 @@
 pkgbase = zapret-hub
 	pkgdesc = Desktop hub for managing network bypass utilities (zapret, tg-ws-proxy, vpn)
-	pkgver = 3.0.1
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://github.com/larpmaster228/Zapret-Hub-Linux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zapret-hub
 	optdepends = qt6-base: Qt GUI
 	optdepends = qt6-wayland: Wayland support
 	options = !strip
-	source = https://github.com/larpmaster228/Zapret-Hub-Linux/releases/download/v3.0.1/zapret_hub_3.0.1_linux_x64.tar.gz
+	source = https://github.com/larpmaster228/Zapret-Hub-Linux/releases/download/v3.0.6/zapret_hub_3.0.6_linux_x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = zapret-hub
