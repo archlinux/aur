@@ -1,0 +1,76 @@
+#!/bin/bash
+# opencode-bwrap - run opencode inside a bubblewrap sandbox
+# referred https://github.com/didvc/opencode-bwrap
+set -euo pipefail
+
+# --- paths ---
+OP_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/opencode"
+OP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/opencode"
+OP_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/opencode"
+OP_STATE="${XDG_STATE_HOME:-$HOME/.local/state}/opencode"
+
+mkdir -p "$OP_DATA" "$OP_CONFIG" "$OP_CACHE" "$OP_STATE"
+
+# --- workspace bind ---
+WORKSPACE_BINDS=()
+if [[ "$(pwd)" != "$HOME" ]]; then
+    WORKSPACE_BINDS+=(--bind "$(pwd)" "$(pwd)")
+fi
+
+# --- user-run (D-Bus, Wayland, etc.) ---
+USER_RUN="/run/user/$(id -u)"
+RUN_BIND=(--bind-try "$USER_RUN" "$USER_RUN")
+
+# --- X11 ---
+X11_BINDS=()
+if [[ -n "${DISPLAY:-}" ]]; then
+    X11_BINDS+=(
+        --ro-bind-try /tmp/.X11-unix /tmp/.X11-unix
+        --ro-bind-try "${XAUTHORITY:-$HOME/.Xauthority}" "${XAUTHORITY:-$HOME/.Xauthority}"
+    )
+fi
+
+# --- extra user args (hook for local customization) ---
+EXTRA=()
+if [[ -n "${OPENCODE_BWRAP_EXTRA:-}" ]]; then
+    read -ra EXTRA <<< "$OPENCODE_BWRAP_EXTRA"
+fi
+if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/opencode-bwrap/extra-args" ]]; then
+    mapfile -t EXTRA_FILE < "${XDG_CONFIG_HOME:-$HOME/.config}/opencode-bwrap/extra-args"
+    EXTRA+=("${EXTRA_FILE[@]}")
+fi
+
+# --- go ---
+exec bwrap \
+    --unshare-all \
+    --share-net \
+    --die-with-parent \
+    --proc /proc \
+    --dev-bind /dev /dev \
+    --tmpfs /run \
+    --ro-bind /usr /usr \
+    --symlink usr/lib /lib \
+    --symlink usr/lib64 /lib64 \
+    --symlink usr/bin /bin \
+    --symlink usr/sbin /sbin \
+    --ro-bind /etc /etc \
+    --dir "$HOME" \
+    --setenv HOME "$HOME" \
+    --setenv PATH /usr/local/bin:/usr/bin:/bin \
+    --setenv TMPDIR /tmp \
+    --setenv DISPLAY "${DISPLAY:-}" \
+    --setenv XDG_SESSION_TYPE "${XDG_SESSION_TYPE:-}" \
+    --setenv XDG_RUNTIME_DIR "${XDG_RUNTIME_DIR:-}" \
+    --setenv OPENCODE_CLIPBOARD native \
+    --chdir "$(pwd)" \
+    --bind "$OP_CONFIG" "$HOME/.config/opencode" \
+    --bind "$OP_DATA" "$HOME/.local/share/opencode" \
+    --bind "$OP_STATE" "$HOME/.local/state/opencode" \
+    --bind "$OP_CACHE" "$HOME/.cache/opencode" \
+    "${RUN_BIND[@]}" \
+    --bind /tmp /tmp \
+    --ro-bind-try "$HOME/.gitconfig" "$HOME/.gitconfig" \
+    "${X11_BINDS[@]}" \
+    "${WORKSPACE_BINDS[@]}" \
+    "${EXTRA[@]}" \
+    -- opencode "$@"
