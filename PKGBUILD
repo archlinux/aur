@@ -6,7 +6,7 @@ _appname=${_gitname%-finance-tracker}
 pkgname=${_appname}-bin
 pkgdesc="Local-first personal finance tracker for with a Rust CLI/TUI, SQLite ledger, budgets, recurring bills, reconciliation, and cashflow forecasting"
 
-pkgver=0.1.4
+pkgver=1.4.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('81e6423b6574f35511d986666a6de6b797f99faa9ff15a1cb2a44004fde2838f')
+sha256sums_x86_64=('a8448595a38f93c473ffd1bc1209cda33e61665344a7f914870598f85ac9f98c')
 
 
 package() {
