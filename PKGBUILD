@@ -1,7 +1,7 @@
 # Maintainer: Fangjian Jin <askme@163.com>
 
 pkgname=stochos
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Keyboard-driven mouse control overlay for Wayland and X11'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'libx11' 'libxtst' 'wayland')
 makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e0f527de68e276b069a01942ca4814426439c00d98f5e622d1a477d77fd23e3')
+sha256sums=('42c2b48c775e8c41063eb8289023d782573071e7cacadb3c40449ddd06c8c56b')
 
 prepare() {
   cd "$pkgname-$pkgver"
