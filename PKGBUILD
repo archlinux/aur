@@ -2,7 +2,7 @@
 
 pkgname=res-downloader
 pkgver=3.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc="This is a high-value and high-performance and diverse resource downloader called res-downloader"
 arch=($CARCH)
 url="https://github.com/putyy/res-downloader"
@@ -14,10 +14,10 @@ depends=(
     ca-certificates-utils
     gdk-pixbuf2
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
-    webkit2gtk
+    libsoup3
+    webkit2gtk-4.1
 )
 makedepends=(
     pnpm
@@ -27,6 +27,7 @@ makedepends=(
 )
 optdepends=(
     'motrix: A full-featured download manager (release version)'
+    'motrix-next: A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust'
     'gopeed-bin: High speed downloader that supports all platforms.(Prebuilt version)'
 )
 backup=()
@@ -51,8 +52,10 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
+    # npm 12 默认 allow-remote=none，会拒绝 lockfile 中 resolved 为完整 URL 的“远程”tarball（如 npmmirror 镜像），需显式放开
+    export npm_config_allow_remote=all
 
-    wails build
+    wails build -tags webkit2_41
 }
 
 package() {
@@ -61,15 +64,4 @@ package() {
     install -Dvm755 build/bin/${pkgname} -t ${pkgdir}/usr/bin
     install -Dvm644 build/appicon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
     install -Dvm644 build/linux/Arch/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-    #     install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
-    # [Desktop Entry]
-    # Type=Application
-    # Name=res-downloader
-    # Comment=This is a high-value and high-performance and diverse resource downloader called res-downloader
-    # Exec=res-downloader
-    # Icon=res-downloader.png
-    # Terminal=false
-    # Categories=Utility
-    #
-    # EOF
 }
