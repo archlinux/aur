@@ -1,6 +1,6 @@
 pkgbase = naps2-bin
 	pkgdesc = NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible.
-	pkgver = 8.3.1
+	pkgver = 8.3.2
 	pkgrel = 1
 	url = https://www.naps2.com
 	arch = aarch64
@@ -14,9 +14,9 @@ pkgbase = naps2-bin
 	conflicts = naps2
 	options = !strip
 	options = !debug
-	source_aarch64 = https://github.com/cyanfish/naps2/releases/download/v8.3.1/naps2-8.3.1-linux-arm64.rpm
-	sha256sums_aarch64 = 5002ed8131982402c7556fd9024bc6e475dd7f0a12c74130cba04bbb2fa542a4
-	source_x86_64 = https://github.com/cyanfish/naps2/releases/download/v8.3.1/naps2-8.3.1-linux-x64.rpm
-	sha256sums_x86_64 = 42babf4128ef216e4b5cfcf3dfcc715da9bbf95a13bc4ab3686185764e5dae6e
+	source_aarch64 = https://github.com/cyanfish/naps2/releases/download/v8.3.2/naps2-8.3.2-linux-arm64.rpm
+	sha256sums_aarch64 = 18d61e8aa1bc3808ce8c19a237e3ce16908bffdefe78695db8b60cfea7c3156b
+	source_x86_64 = https://github.com/cyanfish/naps2/releases/download/v8.3.2/naps2-8.3.2-linux-x64.rpm
+	sha256sums_x86_64 = 5d1e725d363e9102155f8bffae9cb135624855baf22ba76792c1f24f4bff2faa
 
 pkgname = naps2-bin
