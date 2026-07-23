@@ -4,7 +4,7 @@ _pkgname=noctalia
 _tagver=5.0.0-beta.3
 pkgname=noctalia
 pkgver=5.0.0_beta.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -24,6 +24,8 @@ depends=(
   'libpipewire'
   'libqalculate'
   'librsvg'
+  'libsecret'
+  'libsodium'
   'libwebp'
   'libwireplumber'
   'libxkbcommon'
