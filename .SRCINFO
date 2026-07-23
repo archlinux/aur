@@ -1,0 +1,22 @@
+pkgbase = syspass-cli-bin
+	pkgdesc = CLI client for sysPass - bin version
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/ggnosh/syspass-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = syspass-cli
+	conflicts = syspass-cli
+	options = !lto
+	source = syspass-cli-bin-0.9.1-x86_64.tar.gz::https://github.com/ggnosh/syspass-cli/releases/download/v0.9.1/syspass-cli-v0.9.1-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE_0.9.1::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.9.1/LICENSE
+	source = README_0.9.1.md::https://raw.githubusercontent.com/ggnosh/syspass-cli/refs/tags/v0.9.1/README.md
+	sha256sums = 583a21fd4c037ab25f52b547b86f5f17219d010c5edec6e1c83c7a0df40de0a4
+	sha256sums = dbc14ece4c050f0ab5f59477f06cff8e2a80b00fe32697d0d35cb1fb6b7ff01c
+	sha256sums = 8509a7d7b7eefd0a2aebf5732b1012fca23861fd61af91824c39c50bd935a4ee
+
+pkgname = syspass-cli-bin

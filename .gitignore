@@ -1,0 +1,9 @@
+src
+pkg
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
+*tar.gz.sha256
+LICENSE_*
+README_*
