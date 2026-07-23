@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 _nodeversion=24
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
@@ -25,7 +25,7 @@ makedepends=(
 optdepends=('libayatana-appindicator: tray icon')
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('0e0ca639e73c558d93294d73ca3d2ad2d5b0725fca157bc948dc1036075105f7'
+sha256sums=('20560e22ace21d7439147b6f6984a5a16b5790da731caa702995cf4b26af0bc6'
             '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
 
 _ensure_local_nvm() {
