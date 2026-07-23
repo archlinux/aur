@@ -1,7 +1,7 @@
 pkgbase = geekbench6
 	pkgdesc = A cross-platform benchmark that measures processor and memory performance
 	pkgver = 6.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.geekbench.com/
 	arch = x86_64
 	license = custom
