@@ -1,6 +1,6 @@
 pkgbase = vortex-v2
 	pkgdesc = System updater and tuner suite for CachyOS (updates, sched-ext, snapshots, cleaner)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Doodcom/vortex-v2
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = vortex-v2
 	optdepends = power-profiles-daemon: power profile switching
 	optdepends = docker: container view
 	optdepends = flatpak: flatpak management in Packages
-	source = vortex-v2-1.0.3.tar.gz::https://github.com/Doodcom/vortex-v2/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = febd14a543f7611d2910b3da501529a193a5cca34757c42b3812d38b945fd7a2
+	source = vortex-v2-1.0.4.tar.gz::https://github.com/Doodcom/vortex-v2/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = e17c930c84c9776bd7976c456c326f805ac70548a13bb087f4b0344a3ab1b7f0
 
 pkgname = vortex-v2

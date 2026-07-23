@@ -4,7 +4,7 @@
 # For AUR publishing the source line points at the GitHub release tag.
 
 pkgname=vortex-v2
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="System updater and tuner suite for CachyOS (updates, sched-ext, snapshots, cleaner)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   'flatpak: flatpak management in Packages'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Doodcom/vortex-v2/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('febd14a543f7611d2910b3da501529a193a5cca34757c42b3812d38b945fd7a2')
+sha256sums=('e17c930c84c9776bd7976c456c326f805ac70548a13bb087f4b0344a3ab1b7f0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
