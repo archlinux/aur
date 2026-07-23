@@ -1,6 +1,6 @@
 # Maintainer: Sam Zuk <sam11120a@gmail.com>
 pkgname=vmpc2000xl-vst3-bin
-pkgver=0.9.3
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='MPC2000XL sampler emulator (VST3)'
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
     'libpipewire'  # unknown version requirement
     'libxau'  # unknown version requirement
     'libxdmcp'  # unknown version requirement
+    'systemd-libs'  # unknown version requirement
 )
 source=(
     "https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-VST3.zip"
@@ -30,7 +31,7 @@ source=(
     "https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v${pkgver}/LICENSE.txt"
 )
 sha256sums=(
-    '74c65b8d78b394a46933997cc07af3c6492110c48b387ddac9584ea70e180a90'
+    '43656630758f48c5bcf0413a23fb13776063a1e7515f3c3d7c2ede4170fb5dfa'
     '8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a'
     '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
