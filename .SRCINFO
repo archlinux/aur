@@ -1,0 +1,21 @@
+pkgbase = dalfox-bin
+	pkgdesc = Powerful open-source XSS scanner and utility focused on automation (binary release)
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/hahwul/dalfox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = dalfox
+	conflicts = dalfox
+	options = !strip
+	source = LICENSE.txt::https://github.com/hahwul/dalfox/raw/v3.1.2/LICENSE.txt
+	sha256sums = ffb8b51dc4186526fa4cc8226e458f8655dcfa2feed8e90a8543d77441b8e572
+	source_x86_64 = dalfox-v3.1.2-x86_64.tar.gz::https://github.com/hahwul/dalfox/releases/download/v3.1.2/dalfox-v3.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ef48d30c183cead88eb89da10bdc1a7fa58a484d175319096075b470f3652fd4
+	source_aarch64 = dalfox-v3.1.2-aarch64.tar.gz::https://github.com/hahwul/dalfox/releases/download/v3.1.2/dalfox-v3.1.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b61dc832582e738dc5b838197d28b6d0d4d33de2d849fc73741635fc380f0348
+
+pkgname = dalfox-bin
