@@ -1,6 +1,6 @@
 pkgbase = nextflow
 	pkgdesc = A DSL for data-driven computational pipelines
-	pkgver = 26.04.4
+	pkgver = 26.04.6
 	pkgrel = 1
 	url = https://www.nextflow.io
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextflow
 	depends = java-runtime>=17
 	depends = java-runtime<=26
 	depends = bash
-	source = nextflow-26.04.4::https://github.com/nextflow-io/nextflow/releases/download/v26.04.4/nextflow
-	sha256sums = 416fc4561ef7c6eca8c3f5ee87ff358bed0095503056a7e97ed899d85a1817ed
+	source = nextflow-26.04.6::https://github.com/nextflow-io/nextflow/releases/download/v26.04.6/nextflow
+	sha256sums = 61a755edbed743cfbb568f3a6c67af68481a2f6a4d6dffcc4295e51318968281
 
 pkgname = nextflow
