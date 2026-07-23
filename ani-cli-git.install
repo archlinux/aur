@@ -1,0 +1,18 @@
+msg_yellow() {
+  printf "${YELLOW}==>${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+YELLOW="${BOLD}$(tput setaf 3)"
+
+post_install() {
+  echo
+  msg_yellow "Disclaimer: This project is to be used at the user's own risk, based on their government and laws."
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
+
