@@ -1,0 +1,16 @@
+pkgbase = xelector
+	pkgdesc = A TUI for managing desktop environments
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://codeberg.org/univ/Xelector
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = ncurses
+	depends = gcc-libs
+	source = xelector-v1.2.1.tar.gz::https://codeberg.org/univ/Xelector/archive/1.2.1.tar.gz
+	sha256sums = 038cdd123f6b24f6339b1b593278deeae0fe70e62b6ed9763cb6f924db2e86de
+
+pkgname = xelector
