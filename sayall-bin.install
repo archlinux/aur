@@ -2,11 +2,17 @@ post_install() {
   printf '%s\n' \
     'Configure ~/.config/sayall/config.json, then run:' \
     '  sayall setup' \
-    'Add your compositor key binding for: sayall toggle'
+    'This enables the services and configures Ctrl+Slash in Omarchy/Hyprland.'
 }
 
 post_upgrade() {
   printf '%s\n' \
-    "If upgrading outside 'sayall update', restart SayAll with:" \
+    "If upgrading outside 'sayall update', reapply saved setup with:" \
     '  sayall setup'
+}
+
+post_remove() {
+  printf '%s\n' \
+    'Per-user SayAll configuration was preserved.' \
+    'See the README uninstall section to remove the saved shortcut files.'
 }
