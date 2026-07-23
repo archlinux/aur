@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.5.2.r91.g681a3b7e6
+pkgver=3.9.1.r12.gd5778aa84
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -13,13 +13,13 @@ depends=(
     cld2
     #     cpprestsdk
     boost-libs
-    gcc-libs
     glib2
-    glibc
     gtk3
     gtkspell3
     hicolor-icon-theme
     icu
+    libgcc
+    libstdc++
     lucene++
     pugixml
     wxwidgets-common
