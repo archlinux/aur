@@ -1,0 +1,5 @@
+[razify]
+source = "github"
+github = "Hossiy21/razify"
+use_latest_release = true
+prefix = "v"

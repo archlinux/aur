@@ -1,0 +1,14 @@
+pkgbase = razify
+	pkgdesc = A developer CLI tool that manages .env files, detects secret leaks, syncs env drift across teammates, and validates environment parity between local/staging/prod all from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hossiy21/razify
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = razify
+	source = razify-1.0.0.tgz::https://github.com/Hossiy21/razify/archive/v1.0.0.tar.gz
+	sha256sums = e5f39dda52c0c2dcd7cccea0fbd5a913372f8d7bd7d9e7b1f793e51367412e50
+
+pkgname = razify
