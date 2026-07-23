@@ -2,13 +2,13 @@
 pkgname=lunarr
 _pkgrepo=lunarr-go
 pkgver=0.8.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Self-hosted media streaming server and Plex alternative for movies and TV'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lunarr-app/lunarr-go'
 license=('Apache-2.0')
 depends=('nodejs>=24' 'ffmpeg')
-makedepends=('bun')
+makedepends=('npm')
 install=lunarr.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "lunarr.service" "lunarr.install" "lunarr.sh")
 b2sums=('SKIP'
@@ -18,13 +18,13 @@ b2sums=('SKIP'
 
 prepare() {
   cd "$srcdir/$_pkgrepo-$pkgver"
-  bun install
+  npm install
 }
 
 build() {
   cd "$srcdir/$_pkgrepo-$pkgver"
-  bun run build
-  bun install --production
+  npm run build
+  npm prune --omit=dev
 
   arch_native=$(uname -m)
   [ "$arch_native" = "x86_64" ] && native_suffix="linux-x64-gnu" || native_suffix="linux-arm64-gnu"
