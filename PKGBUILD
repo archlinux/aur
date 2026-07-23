@@ -5,7 +5,7 @@
 pkgname=comfykick
 pkgver=v1.4.2
 pkgrel=1
-pkgdesc="The official ways to launch ComfyUI SUCKs, this is better."
+pkgdesc="The Official ComfyUI Launch Process SUCKs🤮, this is better."
 arch=(any)
 url="https://github.com/KFERMercer/ComfyKick"
 license=(GPL-3.0-only)
