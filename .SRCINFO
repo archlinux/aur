@@ -1,6 +1,6 @@
 pkgbase = obs-livesplit-one-bin
 	pkgdesc = A plugin for OBS Studio that allows adding LiveSplit One as a source.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/LiveSplit/obs-livesplit-one
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-livesplit-one-bin
 	depends = obs-studio
 	provides = obs-livesplit-one
 	conflicts = obs-livesplit-one
-	source = https://github.com/LiveSplit/obs-livesplit-one/releases/download/v0.4.2/obs-livesplit-one-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = f50b46495635c1838efa8ade8d2d20aed16cc8f9e8003f4adbbae6b148db62ee
+	source = https://github.com/LiveSplit/obs-livesplit-one/releases/download/v0.5.0/obs-livesplit-one-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 0af28f4cf4b25e32f53e70c10c85ab560dd4494b1705cf5ed071777e71b70b25
 
 pkgname = obs-livesplit-one-bin
