@@ -1,0 +1,22 @@
+pkgbase = orangchat-bin
+	pkgdesc = OrangChat desktop - a Discord-like real-time messaging client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Orang-Studio/OrangChat
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	optdepends = libnotify: desktop notifications
+	optdepends = libappindicator-gtk3: system tray icon
+	optdepends = pipewire: screen sharing on wayland
+	provides = orangchat
+	conflicts = orangchat
+	options = !strip
+	source = orangchat-0.1.0.tar.gz::https://github.com/Orang-Studio/OrangChat/releases/download/0.1.0/OrangChat-0.1.0-x64.tar.gz
+	source = orangchat.png
+	sha256sums = c03f25c295e1df11882ddb66a3306dc2e68e488eb280c6d6218ea54719585a3a
+	sha256sums = 3018de2f89a912f38ae31a1c42284df05f90ce726cb1f64211774a7bc9fac71a
+
+pkgname = orangchat-bin
