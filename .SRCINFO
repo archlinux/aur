@@ -1,0 +1,14 @@
+pkgbase = chess-library-git
+	pkgdesc = Disservin C++ chess rules library (header-only, git)
+	pkgver = 0.r545.g5715961
+	pkgrel = 1
+	url = https://github.com/Disservin/chess-library
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = chess-library
+	conflicts = chess-library
+	source = git+https://github.com/Disservin/chess-library.git
+	sha256sums = SKIP
+
+pkgname = chess-library-git
