@@ -19,8 +19,6 @@ update:
     paths:
       - "PKGBUILD"
       - ".SRCINFO"
-  needs:
-    - get_latest
 
 deploy-git:
   stage: deploy
