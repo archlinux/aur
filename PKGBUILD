@@ -2,24 +2,31 @@
 # AUR package for mklang (ADR 0021 phase 3). Build from the PyPI sdist so the
 # released artifact is what ships; bump pkgver on every release (see README.md).
 pkgname=mklang
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A declarative language for LLM-driven state machines (reference interpreter)"
 arch=(any)
 url="https://github.com/gianlucamazza/mklang"
 license=(Apache-2.0)
-depends=(python python-yaml python-jsonschema python-dotenv python-openai python-rich)
+depends=(python python-yaml python-jsonschema python-dotenv python-openai python-rich python-textual)
 makedepends=(python-build python-installer python-wheel python-hatchling)
-optdepends=('python-textual: mklang console TUI'
-            'python-mcp: mklang-mcp MCP server'
+checkdepends=(python-pytest python-mcp)
+optdepends=('python-mcp: mklang-mcp MCP server'
             'python-argcomplete: shell completions')
 backup=(etc/mklang/runtime.yaml)
 source=("https://files.pythonhosted.org/packages/source/m/mklang/mklang-$pkgver.tar.gz")
-sha256sums=('d334f74e19eb4780ea325fd1de1597d7edf9af56dfdc95b8a589fab7d35c63e8')
+sha256sums=('f929a46d74252bfc5d3a87a37b769efb7adb48b1afe1b1634441d76f23ef97ce')
 
 build() {
   cd "mklang-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "mklang-$pkgver"
+  # Offline suite (MockLLM/scripted — no network, no keys); the sdist ships
+  # tests/ and conformance/ exactly for this.
+  PYTHONPATH=src python -m pytest tests -q
 }
 
 package() {
