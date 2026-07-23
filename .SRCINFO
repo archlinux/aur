@@ -1,0 +1,13 @@
+pkgbase = stoml
+	pkgdesc = Simple TOML parser for Bash
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/freshautomations/stoml
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = stoml-0.7.1.tar.gz::https://github.com/freshautomations/stoml/archive/refs/tags/v0.7.1.tar.gz
+	b2sums = f7be982307e83fce09d50aa5cd3f841c6b7d7d9863dc196dbee4fa22c13f7e5d07d659c62362ac8541e19be3b3b6c575be52911e11ffc0988833a857a6081e1e
+
+pkgname = stoml
