@@ -73,41 +73,26 @@ source=(
   "$_pkgsrc_contrib.$_pkgext"::"${url}_contrib/archive/refs/tags/$pkgver.$_pkgext"
   vtk9.patch
   fix-cuda-flags.patch
-  fix-cudacodec-dependencies.patch
-  fix-cccl-namespace.patch
   fix-std.patch
-  fix-thrust-tuple.patch
 )
 sha256sums=('ee8fb9b30eb60850431b4656447080e3737b56e45719c92b67f245950609f86e'
             '4f17abd1bc7f88e19c3380c8de7cbf2d863aced5b5ee8d8934cc7902b67d42c9'
             'f35a2d4ea0d6212c7798659e59eda2cb0b5bc858360f7ce9c696c77d3029668e'
             '95472ecfc2693c606f0dd50be2f012b4d683b7b0a313f51484da4537ab8b2bfe'
-            'fbb10b75ca7849f85ea2f118aa017f00e34445d80ed76619f13ae1e4e9504ae4'
-            'b757be8df583cb3fa0059e47594eeb680638c572d3ae02bc1a5f7636e71ce5be'
-            'c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc'
-            '6379b0f23ba4068d2daa43ec158e515f58ef36242138eb10f752a93dc1cec375')
+            'c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc')
 
 # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
 options=('!lto')
 
 prepare() {
-  pushd "$_pkgsrc"
-  patch -p1 < ../vtk9.patch # Don't require all vtk optdepends
-  # https://github.com/opencv/opencv/issues/27223
-  # https://bugreports.qt.io/browse/QTBUG-134774
-  sed -i 's/add_definitions(${Qt${QT_VERSION_MAJOR}${dt_dep}_DEFINITIONS})/link_libraries(${Qt${QT_VERSION_MAJOR}${dt_dep}})/' modules/highgui/CMakeLists.txt
+  # Don't require all vtk optdepends
+  patch -d "$_pkgsrc" -Np1 -F100 -i ../vtk9.patch
+
   # OpenCV passes all CXXFLAGS to nvcc through -Xcompiler, which does not work for '-Wp,something' flags
   # We remove the -Xcompiler and pass our CXXFLAGS through cmake's CUDAFLAGS
-  patch -p1 < ../fix-cuda-flags.patch
-  popd
+  patch -d "$_pkgsrc" -Np1 -F100 -i ../fix-cuda-flags.patch
 
-  pushd "$_pkgsrc_contrib"
-  patch -p1 -i ../fix-cudacodec-dependencies.patch # https://github.com/opencv/opencv_contrib/issues/4045
-  patch -p1 -i ../fix-cccl-namespace.patch         # https://github.com/opencv/opencv_contrib/pull/4097
-  patch -p1 -i ../fix-std.patch
-
-  # Fix build failure regarding tuple
-  patch -p1 -i ../fix-thrust-tuple.patch
+  patch -d "$_pkgsrc_contrib" -Np1 -F100 -i ../fix-std.patch
 }
 
 build() {

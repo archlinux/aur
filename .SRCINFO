@@ -59,17 +59,11 @@ pkgbase = opencv4
 	source = opencv_contrib-4.14.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/4.14.0.tar.gz
 	source = vtk9.patch
 	source = fix-cuda-flags.patch
-	source = fix-cudacodec-dependencies.patch
-	source = fix-cccl-namespace.patch
 	source = fix-std.patch
-	source = fix-thrust-tuple.patch
 	sha256sums = ee8fb9b30eb60850431b4656447080e3737b56e45719c92b67f245950609f86e
 	sha256sums = 4f17abd1bc7f88e19c3380c8de7cbf2d863aced5b5ee8d8934cc7902b67d42c9
 	sha256sums = f35a2d4ea0d6212c7798659e59eda2cb0b5bc858360f7ce9c696c77d3029668e
 	sha256sums = 95472ecfc2693c606f0dd50be2f012b4d683b7b0a313f51484da4537ab8b2bfe
-	sha256sums = fbb10b75ca7849f85ea2f118aa017f00e34445d80ed76619f13ae1e4e9504ae4
-	sha256sums = b757be8df583cb3fa0059e47594eeb680638c572d3ae02bc1a5f7636e71ce5be
 	sha256sums = c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc
-	sha256sums = 6379b0f23ba4068d2daa43ec158e515f58ef36242138eb10f752a93dc1cec375
 
 pkgname = opencv4
