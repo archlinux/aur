@@ -19,7 +19,7 @@ source=(
 	'axolotl-launcher.desktop'
 	'red.ghs.axolotl.xml'
 )
-sha256sums=('021452452d493d7e67e71dc4314ed2d31abf55851b1cc5b85234d6b5f3e93237'
+sha256sums=('25861ba6ff7a52acfbf06bb21c25cc510a73feff26c9ddd7a02d3eaaf89c481a'
             '0e5e26336cadd2957745befaa5bfb982e85fa39a49aa3c9ae00608afc326011a'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
 options=('!strip')
