@@ -1,0 +1,12 @@
+pkgbase = aka
+	pkgdesc = No-config command / global script alias creator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Rojit-Timilsena/aka
+	arch = any
+	license = MIT
+	depends = python
+	source = aka-1.0.0.tar.gz::https://github.com/Rojit-Timilsena/aka/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 75976caebd1e96e7f7b5684fcfe10292fe0852e8c529e4bd12c2205323768e1d
+
+pkgname = aka
