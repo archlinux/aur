@@ -1,10 +1,10 @@
 # Maintainer: Robert Labudda <contact+aur-pytodotxt@vonshednob.cc>
 _pbasename='pytodotxt'
 pkgname="python-${_pbasename}"
-pkgver='2.0.0.post1'
+pkgver='3.1.0'
 pkgrel='1'
 pkgdesc="Python library for todo.txt task list files"
-url="https://codeberg.org/vonshednob/${_pbasename}/"
+url="https://codeberg.org/pter/${_pbasename}/"
 license=('MIT')
 arch=('any')
 depends=('python')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pbasename::1}/${_pbasename}/${_pbasename}-${pkgver}.tar.gz")
-sha256sums=('bdbdfc17840b18903d37784d1c58c49fdd8127323d9b6234e3992a74eea80310')
+sha256sums=('00ed7e6ca22a8d7dc0f8f0c3424765209d20808a76c06963a1c43d917506e5fe')
 
 build() {
     cd "${_pbasename}-${pkgver}"

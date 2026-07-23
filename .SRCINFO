@@ -1,8 +1,8 @@
 pkgbase = python-pytodotxt
 	pkgdesc = Python library for todo.txt task list files
-	pkgver = 2.0.0.post1
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://codeberg.org/vonshednob/pytodotxt/
+	url = https://codeberg.org/pter/pytodotxt/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -10,7 +10,7 @@ pkgbase = python-pytodotxt
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pytodotxt/pytodotxt-2.0.0.post1.tar.gz
-	sha256sums = bdbdfc17840b18903d37784d1c58c49fdd8127323d9b6234e3992a74eea80310
+	source = https://files.pythonhosted.org/packages/source/p/pytodotxt/pytodotxt-3.1.0.tar.gz
+	sha256sums = 00ed7e6ca22a8d7dc0f8f0c3424765209d20808a76c06963a1c43d917506e5fe
 
 pkgname = python-pytodotxt
