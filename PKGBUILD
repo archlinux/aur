@@ -2,7 +2,7 @@
 
 pkgname=plasma-lichess-tv-wallpaper
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Plasma 6 live wallpaper for Lichess TV"
 arch=('x86_64')
 url="https://github.com/YummierGravy/plasma-lichess-tv-wallpaper"
@@ -26,6 +26,7 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'ninja'
+  'chess-library-git'
 )
 provides=('plasma-lichess-tv-wallpaper')
 conflicts=('plasma-lichess-tv-wallpaper-git')
