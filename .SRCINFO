@@ -21,7 +21,7 @@ pkgbase = bilibili-gpu-bin
 	provides = bilibili=1.17.9
 	conflicts = bilibili
 	conflicts = bilibili-bin
-	source_x86_64 = bilibili-1.17.9-x86_64.AppImage::https://github.com/wings1848/bilibili-linux/releases/download/v1.17.9-1/bilibili-1.17.9-x86_64.AppImage
+	source_x86_64 = bilibili-v1.17.9-1-x64.tar.gz::https://github.com/wings1848/bilibili-linux/releases/download/v1.17.9-1/bilibili-v1.17.9-1-x64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = bilibili-gpu-bin

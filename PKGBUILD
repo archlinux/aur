@@ -33,56 +33,54 @@ optdepends=(
 )
 conflicts=('bilibili' 'bilibili-bin')
 provides=("${_pkgreal}=${pkgver}")
-source_x86_64=("${_pkgreal}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}-1/bilibili-${pkgver}-x86_64.AppImage")
+source_x86_64=("${_pkgreal}-v${pkgver}-1-x64.tar.gz::${url}/releases/download/v${pkgver}-1/bilibili-v${pkgver}-1-x64.tar.gz")
 sha256sums_x86_64=('SKIP')
 
 package() {
   cd "${srcdir}"
 
-  # Extract AppImage
-  chmod +x "${_pkgreal}-${pkgver}-x86_64.AppImage"
-  "./${_pkgreal}-${pkgver}-x86_64.AppImage" --appimage-extract
-
-  # Install main app bundle to /opt/bilibili
+  # Extract the pre-built release tarball
+  # Structure: bin/bilibili (launcher), app/ (app.asar), electron/ (Electron 43 runtime)
   install -dm755 "${pkgdir}/opt/bilibili" "${pkgdir}/usr/bin"
-  cp -r squashfs-root/* "${pkgdir}/opt/bilibili/"
-  # AppImage extraction preserves 0700 on some dirs (resources/, locales/, usr/)
-  # which prevents the user's Electron process from reading app.asar etc.
-  chmod -R a+rX "${pkgdir}/opt/bilibili/"
+  cp -r "${_pkgreal}-v${pkgver}-1-x64/"* "${pkgdir}/opt/bilibili/"
 
-  # Install icons to XDG standard paths
-  find squashfs-root/usr/share/icons/ -type f | while read -r icon; do
-    install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/${icon#squashfs-root/usr/share/icons/}"
+  # Install icons from the app bundle
+  # (they come from the AppImage's embedded hierarchy via the tarball)
+  find "${pkgdir}/opt/bilibili" -path "*/icons/*" -name "*.png" | while read -r icon; do
+    target="${pkgdir}/usr/share/icons/${icon#${pkgdir}/opt/bilibili/}"
+    install -Dm644 "${icon}" "${target}"
   done
 
-  # Install .desktop file so the app appears in system menu
-  install -Dm644 squashfs-root/bilibili.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Install .desktop file
+  install -Dm644 "${pkgdir}/opt/bilibili/bilibili.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   sed -i \
     -e 's|^Exec=.*|Exec=/usr/bin/bilibili %U|' \
     -e '/^X-AppImage/d' \
     -e "s|^Icon=.*|Icon=${_pkgreal}|" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  # Create wrapper script (handles flags loading, Wayland env, etc.)
-  install -dm755 "${pkgdir}/opt/bilibili"
+  # Create wrapper script for /usr/bin/bilibili
+  # Loads user flags, sets Wayland/DE environment, then launches Electron
   cat > "${pkgdir}/opt/bilibili/${pkgname}.wrapper" << 'WRAPPER'
 #!/bin/bash
 set -e
-export APPDIR="/opt/bilibili"
+root_dir="/opt/bilibili"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 export ELECTRON_IS_DEV=0
 export ELECTRON_FORCE_IS_PACKAGED=true
 export ELECTRON_DISABLE_SECURITY_WARNINGS=true
 export NODE_ENV=production
+export APPIMAGE=1  # enable update check
 
-# Wayland support (auto-detect between X11/Wayland)
+# Wayland auto-detect
 export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
 
 # Correct taskbar icon grouping
-export CHROME_DESKTOP="bilibili-gpu-bin.desktop"
+export CHROME_DESKTOP="${pkgname}.desktop"
 
-# Desktop Environment trash integration
+# Trash integration
 case "${XDG_CURRENT_DESKTOP}" in
     KDE) export ELECTRON_TRASH="kioclient5" ;;
     GNOME) export ELECTRON_TRASH="gio" ;;
@@ -109,8 +107,8 @@ if [[ $EUID -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
   _SANDBOX_ARG=("--no-sandbox")
 fi
 
-cd "${APPDIR}" || exit 1
-exec ./AppRun "${flags[@]}" "${_SANDBOX_ARG[@]}" "$@"
+exec "${root_dir}/electron/electron" "${root_dir}/app/app.asar" \
+  "${flags[@]}" "${_SANDBOX_ARG[@]}" "$@"
 WRAPPER
   chmod 755 "${pkgdir}/opt/bilibili/${pkgname}.wrapper"
 
