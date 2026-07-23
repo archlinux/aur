@@ -1,6 +1,6 @@
 # Maintainer: Victor Coscrato <vcoscrato@gmail.com>
 pkgname=tactica-bin
-pkgver=r5.bcf2f60
+pkgver=0.4.0.r1.52a653e
 pkgrel=1
 pkgdesc="Desktop chess trainer built with Rust and Iced (prebuilt binary)"
 arch=('x86_64')
