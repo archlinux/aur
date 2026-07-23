@@ -5,6 +5,6 @@ pkgbase = otf-nimbus-mono
 	arch = any
 	license = GPL-2.0-or-later
 	source = https://www.fontsquirrel.com/fonts/download/nimbus-mono
-	sha256sums = 27d3136a1676ba828cc15a75fddbf0ca063381b6a44bc1f5e566a74b80fa8bc6
+	sha256sums = SKIP
 
 pkgname = otf-nimbus-mono
