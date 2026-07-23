@@ -113,6 +113,7 @@ _qodercli() {
         '--append-system-prompt[Append to the default system prompt]:text:' \
         '--system-prompt[System prompt for the session]:text:' \
         '--output-style[Output style for this session]:style:' \
+        '--max-model-request-retries[Maximum retries for Qoder and External Provider model requests]:count:' \
         '--mcp-config[Load MCP servers from JSON file(s) or inline JSON]:config:_files' \
         '--strict-mcp-config[Only use MCP servers from --mcp-config]' \
         '--setting-sources[Setting sources to load]:sources:(user project local)' \

@@ -181,6 +181,7 @@ _qodercli() {
         -r|--resume|-n|--name|--session-id|--remote|--remote-session|\
         --teleport|--remote-control|--delete-session|--agent|--agents|\
         --append-system-prompt|--system-prompt|--output-style|--env|-e|\
+        --max-model-request-retries|\
         --header|-H|--client-id|--callback-port|--capacity|--content|\
         --email|--caller-version|--ide-type|--url|--sparse|--path|--to)
             return
@@ -198,6 +199,7 @@ _qodercli() {
         -o --output-format --input-format --max-output-tokens -p --print
         --no-session-persistence
         --agent --agents --append-system-prompt --system-prompt --output-style
+        --max-model-request-retries
         --mcp-config --strict-mcp-config --setting-sources --settings
         -v --version -h --help
     "

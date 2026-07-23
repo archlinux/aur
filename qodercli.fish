@@ -167,6 +167,7 @@ complete -c qodercli -n __qodercli_no_subcommand -l agents -r -d 'JSON object de
 complete -c qodercli -n __qodercli_no_subcommand -l append-system-prompt -r -d 'Append to the default system prompt'
 complete -c qodercli -n __qodercli_no_subcommand -l system-prompt -r -d 'System prompt for the session'
 complete -c qodercli -n __qodercli_no_subcommand -l output-style -r -d 'Output style for this session'
+complete -c qodercli -n __qodercli_no_subcommand -l max-model-request-retries -r -d 'Maximum retries for Qoder and External Provider model requests'
 complete -c qodercli -n __qodercli_no_subcommand -l mcp-config -r -F -d 'Load MCP servers from JSON file(s) or inline JSON'
 complete -c qodercli -n __qodercli_no_subcommand -l strict-mcp-config -d 'Only use MCP servers from --mcp-config'
 complete -c qodercli -n __qodercli_no_subcommand -l setting-sources -r -a 'user project local' -d 'Setting sources to load'
