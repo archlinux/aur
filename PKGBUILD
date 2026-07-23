@@ -9,7 +9,7 @@
 pkgname=bilibili-gpu-bin
 _pkgreal=bilibili
 pkgver=1.17.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)"
 arch=('x86_64')
 url="https://github.com/wings1848/bilibili-linux"
@@ -66,7 +66,7 @@ package() {
   cat > "${pkgdir}/opt/bilibili/${pkgname}.wrapper" << 'WRAPPER'
 #!/bin/bash
 set -e
-APPDIR="/opt/bilibili"
+export APPDIR="/opt/bilibili"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 export ELECTRON_IS_DEV=0
