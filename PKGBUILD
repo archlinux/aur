@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -41,11 +41,11 @@ optdepends=(
 
 # Use commit of what tag should be
 # until upstream fixes CI pipeline
-_commit=6d2d9967650272ba61c32a34edb738b427d9fe00
+_commit=fb65a4ca27323a79c3bfae0d3e2a465901104c64
 
 source=("git+https://github.com/Recol/DLSS-Updater.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('f549b2e4d9191ca96ad7380148e0ae5ca217bfdb7d9428cafb7a02dd26e77c51'
+sha256sums=('7c2c9d0b967a1d634b069f1bedce133dc6e4f6efbc9e0423acb03aee0c15788a'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
