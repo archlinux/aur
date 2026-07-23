@@ -5,7 +5,7 @@
 
 # Maintainer: Tobin Little <tobinlittle72@gmail.com>
 pkgname=iio-niri
-pkgver=2.0.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Listen to iio-sensor-proxy and updates Niri output orientation depending on the accelerometer orientation."
 arch=("x86_64")
