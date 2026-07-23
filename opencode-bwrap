@@ -8,8 +8,9 @@ OP_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/opencode"
 OP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/opencode"
 OP_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/opencode"
 OP_STATE="${XDG_STATE_HOME:-$HOME/.local/state}/opencode"
+OP_AGENTS="${HOME}/.agents"
 
-mkdir -p "$OP_DATA" "$OP_CONFIG" "$OP_CACHE" "$OP_STATE"
+mkdir -p "$OP_DATA" "$OP_CONFIG" "$OP_CACHE" "$OP_STATE" "$OP_AGENTS"
 
 # --- workspace bind ---
 WORKSPACE_BINDS=()
@@ -67,6 +68,7 @@ exec bwrap \
     --bind "$OP_DATA" "$HOME/.local/share/opencode" \
     --bind "$OP_STATE" "$HOME/.local/state/opencode" \
     --bind "$OP_CACHE" "$HOME/.cache/opencode" \
+    --bind "$OP_AGENTS" "$OP_AGENTS" \
     "${RUN_BIND[@]}" \
     --bind /tmp /tmp \
     --ro-bind-try "$HOME/.gitconfig" "$HOME/.gitconfig" \
