@@ -4,11 +4,12 @@
 _pkgname=simple-http-server
 pkgname=simple-http-server-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple http server in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/TheWaWaR/simple-http-server'
 license=('MIT')
+options=('!debug')
 conflicts=('simple-http-server-git' 'simple-http-server')
 provides=('simple-http-server-git' 'simple-http-server')
 source_x86_64=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/x86_64-unknown-linux-musl-simple-http-server"
