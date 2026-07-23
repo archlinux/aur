@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.25
+_pkgver=13.0.0-rc.27
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
@@ -89,7 +89,7 @@ source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
 )
-sha256sums=('3c1b0f216469a70850f1a12a39126c8b9053ebca7710e5b2ce02456d4d9e516b'
+sha256sums=('5520b0d0dbc80e96a81f4b4a859a4feccddea210c349d49dda3b7f5e264d5270'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124')
 
 prepare() {
