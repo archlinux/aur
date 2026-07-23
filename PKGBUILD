@@ -11,8 +11,8 @@ provides=('vpn')
 conflicts=('vpn')
 source_x86_64=("https://github.com/protibimbok/vpn-tui/releases/download/v${pkgver}/vpn_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/protibimbok/vpn-tui/releases/download/v${pkgver}/vpn_linux_arm64.tar.gz")
-sha256sums_x86_64=('7929eeccf32292cde7e1103b98131fa526d57335dc76e41f8cf54e6a2d9951d1')
-sha256sums_aarch64=('ad50e975219d99191aba34a37f59e3da8639928b4f566e861b9a4163597dcd33')
+sha256sums_x86_64=('0f1a2b390f2945b06312db0cd69b2e2323032bfd6650d96ebb40359e4eeadacc')
+sha256sums_aarch64=('da6ec46e962b3949fb52595ba93c12eca4c9040102e4bfb6e6fb9012377fc10d')
 
 package() {
   install -Dm4755 "${srcdir}/vpn" "${pkgdir}/usr/bin/vpn"
