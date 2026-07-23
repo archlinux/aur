@@ -1,0 +1,25 @@
+pkgbase = slay
+	pkgdesc = Compile C++ code by detecting flags and includes automatically
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/xyproto/slay
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = scons
+	optdepends = ccache: For faster builds
+	optdepends = clang: For clang-format and for clang++
+	optdepends = gprof2dot: For visualizing profiling information
+	optdepends = graphviz: For visualizing profiling information
+	optdepends = kcachegrind: For visualizing profiling information
+	optdepends = lldb: For debugging
+	optdepends = mingw-w64-gcc: For compiling 64-bit Windows executables
+	optdepends = valgrind: For tracing calls and profiling
+	optdepends = wine: For running 64-bit Windows exectuables
+	provides = cxx
+	replaces = cxx
+	source = git+https://github.com/xyproto/slay#tag=v1.3.2
+	b2sums = ca4c35ce4c13474cd98551da5c9323951a6e5a57cc0373da080824415a700313a8984d3ea135ed42e6ee071163dfa0c351700fb60ef1e865796efd1b13468baa
+
+pkgname = slay
