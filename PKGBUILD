@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous-git
-pkgver=0.4.1.r0.gf1b6c64 # Will be updated by pkgver()
+pkgver=0.4.2.r0.g6538bed # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ pkgver() {
     local ver
     ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
     if [[ -z "$ver" ]]; then
-        ver="0.4.1.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+        ver="0.4.2.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
     fi
     echo "$ver"
 }

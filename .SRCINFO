@@ -1,6 +1,6 @@
 pkgbase = aqueous-git
 	pkgdesc = Aqueous single-process Wayland compositor
-	pkgver = 0.4.1.r0.gf1b6c64
+	pkgver = 0.4.2.r0.g6538bed
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
