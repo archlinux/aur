@@ -1,6 +1,6 @@
 pkgbase = remote-pi-cockpit-bin
 	pkgdesc = Desktop client for Remote Pi, a multi-pane GUI for the Pi coding agent
-	pkgver = 1.14.10
+	pkgver = 1.14.11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jacobaraujo7/remote_pi
@@ -21,15 +21,15 @@ pkgbase = remote-pi-cockpit-bin
 	depends = mpv
 	depends = pango
 	depends = zlib
-	provides = remote-pi-cockpit=1.14.10
+	provides = remote-pi-cockpit=1.14.11
 	conflicts = remote-pi-cockpit
-	noextract = remote-pi-cockpit-1.14.10-x86_64.deb
-	noextract = remote-pi-cockpit-1.14.10-aarch64.deb
+	noextract = remote-pi-cockpit-1.14.11-x86_64.deb
+	noextract = remote-pi-cockpit-1.14.11-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = remote-pi-cockpit-1.14.10-x86_64.deb::https://github.com/jacobaraujo7/remote_pi/releases/download/cockpit-v1.14.10/remote-pi-cockpit_1.14.10_amd64.deb
-	sha256sums_x86_64 = 5377615487a1e08adeb1c84169e7cd8269468b28ed1991081b2e99e41b33fb67
-	source_aarch64 = remote-pi-cockpit-1.14.10-aarch64.deb::https://github.com/jacobaraujo7/remote_pi/releases/download/cockpit-v1.14.10/remote-pi-cockpit_1.14.10_arm64.deb
-	sha256sums_aarch64 = 69763237948c06584140b39ed1c05d18098a3d0944b41538653ea41cd3d24a7e
+	source_x86_64 = remote-pi-cockpit-1.14.11-x86_64.deb::https://github.com/jacobaraujo7/remote_pi/releases/download/cockpit-v1.14.11/remote-pi-cockpit_1.14.11_amd64.deb
+	sha256sums_x86_64 = d11fcb522cf4a027ebb3ac139fa6600b3cb407b004f80f2d0a8eabd5204a3d82
+	source_aarch64 = remote-pi-cockpit-1.14.11-aarch64.deb::https://github.com/jacobaraujo7/remote_pi/releases/download/cockpit-v1.14.11/remote-pi-cockpit_1.14.11_arm64.deb
+	sha256sums_aarch64 = 0f58ada9c53e00760a0409173143f9f9aeb98158b4b3bc0f07b142d9324eb92d
 
 pkgname = remote-pi-cockpit-bin
