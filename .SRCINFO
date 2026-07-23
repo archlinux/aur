@@ -1,0 +1,23 @@
+pkgbase = kilnmud
+	pkgdesc = Cross-platform MUD client built on Tauri 2
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/SeanStoves/KilnMUD
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = glib2
+	depends = dbus
+	depends = libsoup3
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = https://github.com/SeanStoves/KilnMUD-Releases/releases/download/v0.6.0/KilnMUD_0.6.0_amd64.deb
+	sha256sums = f2a8f7146ed822cce8ec03550c867bcb4bd59f39c5ccdd4e0a44d9cd106744a0
+
+pkgname = kilnmud
