@@ -1,0 +1,21 @@
+pkgbase = ssh-alertd-git
+	pkgdesc = SSH Alert Daemon: sends an alert (Telegram, ...) on every successful SSH login (latest git)
+	pkgver = 0.2.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Amekiri-Studio/ssh-alertd
+	install = ssh-alertd.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = systemd
+	optdepends = openssh: the sshd service whose logins are watched
+	provides = ssh-alertd
+	conflicts = ssh-alertd
+	backup = etc/ssh-alertd/config.json
+	source = ssh-alertd-git::git+https://github.com/Amekiri-Studio/ssh-alertd.git
+	sha256sums = SKIP
+
+pkgname = ssh-alertd-git
