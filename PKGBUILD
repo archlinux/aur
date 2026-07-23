@@ -1,4 +1,5 @@
-# Maintainer: marmis
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: envolution
 
 pkgname=python-funk
@@ -18,7 +19,7 @@ b2sums=('5ac9925b53eb6f0701359f1c057eff7bd0dbd5f668062bed7545028734414568a247179
 prepare() {
   cd "funk-${_commit}"
 
-  # disable deprecated and not required bdist_wheel.universal
+  # disable bdist_wheel.universal: deprecated and not required
   rm setup.cfg
 }
 

@@ -1,3 +1,14 @@
 [python-funk]
-source = "pypi"
-pypi = "funk"
+source = "combiner"
+from = ["python-funk:release", "python-funk:commit"]
+format = "$1.$2"
+
+["python-funk:release"]
+source = "github"
+github = "mwilliamson/funk"
+use_max_tag = true
+
+["python-funk:commit"]
+source = "jq"
+url = "https://api.github.com/repos/mwilliamson/funk/compare/0.5.0...master"
+filter = '"r\(.ahead_by).g\(.commits | last | .sha[:7])"'
