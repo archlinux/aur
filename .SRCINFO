@@ -1,0 +1,16 @@
+pkgbase = http-nu
+	pkgdesc = Nushell-scriptable, cross.stream-powered, Datastar-ready HTTP server
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/cablehead/http-nu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	source = http-nu-v0.17.2.tar.gz::https://github.com/cablehead/http-nu/archive/refs/tags/v0.17.2.tar.gz
+	sha256sums = 8c34e9e31ba5ca438e51ee222796e3a5c633aa8994990bbf77e5efe8317f2211
+
+pkgname = http-nu
