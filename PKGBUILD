@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=hledger-lsp
-pkgver=0.2.51
+pkgver=0.2.52
 pkgrel=1
 pkgdesc='Language Server Protocol (LSP) implementation for hledger journal files'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4e7de143bcc473856fbcf9b13d8777384cd2f338d353053126d13ec5306a63bd')
+sha256sums=('24397b8d8245b7e3d0bca5dc4dcdddc851eb928bd59aca85823ad9fc3b7b3e5a')
 
 build() {
 	cd "$_archive"
