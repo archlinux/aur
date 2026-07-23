@@ -2,7 +2,7 @@
 # Current maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=zotero-extension-ocr
 _pkgname=zotero-ocr
-pkgver=0.9.5
+pkgver=0.9.5.1
 pkgrel=1
 pkgdesc="Zotero Plugin for OCR."
 arch=(any)
@@ -20,7 +20,7 @@ groups=("zotero-addons")
 source=(
     "${_pkgname}-${pkgver}.xpi::https://github.com/UB-Mannheim/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.xpi"
 )
-sha256sums=('57a861a74945d38dfe4b19467efc50b780c63b596c40d3bd62117bdd1cc4c68e')
+sha256sums=('f100b3e60cb4f3bb69166576eb57e76f7002b24ff52648c2a6827d68b535af8e')
 
 prepare() {
   # Make sure zotero is not running
