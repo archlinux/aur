@@ -1,0 +1,4 @@
+[vim-wheel]
+source = "git"
+git = "https://github.com/chimay/wheel.git"
+prefix = "v"
