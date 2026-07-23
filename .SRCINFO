@@ -1,6 +1,6 @@
 pkgbase = gottet
 	pkgdesc = Falling blocks game
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://gottcode.org/gottet/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gottet
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = https://gottcode.org/gottet/gottet-1.2.7.tar.bz2
-	sha256sums = 7ea0bb25f6b6b1ff84b1e3129fd6a3508ed0842b82844c1b3cfdacc41c40c807
+	source = https://gottcode.org/gottet/gottet-1.2.8.tar.bz2
+	sha256sums = 7d7a4cbdf6c1fb5671d6312cb4ede874575faf87ba9d3983d1ef4d83f01e14f8
 
 pkgname = gottet
