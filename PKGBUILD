@@ -1,6 +1,6 @@
 # Maintainer: Marcelo Marfil <https://github.com/mmarfil>
 pkgname=magic-trackpad-battery-git
-pkgver=r8.4a78665
+pkgver=r12.044a903
 pkgrel=1
 pkgdesc="Battery monitor and auto-connect for Apple Magic Trackpad over Bluetooth"
 arch=('any')
@@ -24,7 +24,7 @@ package() {
     install -Dm755 magic-trackpad-battery "$pkgdir/usr/bin/magic-trackpad-battery"
     install -Dm755 magic-trackpad-battery-waybar "$pkgdir/usr/bin/magic-trackpad-battery-waybar"
     install -Dm755 magic-trackpad-connect "$pkgdir/usr/bin/magic-trackpad-connect"
-    install -Dm644 99-magic-trackpad.rules "$pkgdir/usr/lib/udev/rules.d/99-magic-trackpad.rules"
+    install -Dm644 72-magic-trackpad.rules "$pkgdir/usr/lib/udev/rules.d/72-magic-trackpad.rules"
 
     # Patch service ExecStart paths for packaged install
     for unit in magic-trackpad-battery.service magic-trackpad-autoconnect.service; do
