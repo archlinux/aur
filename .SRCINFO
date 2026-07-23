@@ -1,6 +1,6 @@
 pkgbase = geekbench
 	pkgdesc = A cross-platform benchmark that measures processor and memory performance
-	pkgver = 6.7.1
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://www.geekbench.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = geekbench
 	depends = gcc-libs
 	conflicts = geekbench227
 	options = !strip
-	source = http://cdn.geekbench.com/Geekbench-6.7.1-Linux.tar.gz
-	sha256sums = 0ddca977deb6d9db4bd866485f9408e72e2869d0dea0737b18d4bfe472858ace
+	source = http://cdn.geekbench.com/Geekbench-7.0.0-Linux.tar.gz
+	sha256sums = 961a00ac0ac432ffa6874764e86c59d2e098fff65b5b398bb9381bf7fc46c81b
 
 pkgname = geekbench
