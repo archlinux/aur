@@ -1,26 +1,30 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# $Id$
+# Maintainer:  Radu Potop <radu at wooptoo dot com>
+# Contributor: Jake <aur@ja-ke.tech>
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 # Contributor: Roman Ajsin <aysin (dot) roman [at] gmail (dot) com>
+# Contributor: Hurricane Pootis <hurricanepootis@protonmail.com>
 
+_binname=geekbench
 pkgname=geekbench6
-pkgver=6.0.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance"
 arch=('x86_64')
 url="https://www.geekbench.com/"
 depends=('zlib' 'gcc-libs')
 license=("custom")
-conflicts=("geekbench227")
-source=("https://cdn.geekbench.com/k9ea2vqm/Geekbench-${pkgver}-Linux.tar.gz")
-sha512sums=('e3e724c7dad7879a5be3d885dc1a163b3d84d78bf60b501279c289aad55c610c9634ecfa46352b0ea9ad7946129e1cc97d8ef4f5970888f8ee03fcd7a2bf9475')
+source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
 options=('!strip')
+sha256sums=('0ddca977deb6d9db4bd866485f9408e72e2869d0dea0737b18d4bfe472858ace')
 
 package() {
-    install -D -m755 $srcdir/Geekbench-${pkgver}-Linux/${pkgname}_x86_64 $pkgdir/opt/${pkgname}/${pkgname}_x86_64
-    install -D -m644 $srcdir/Geekbench-${pkgver}-Linux/geekbench.plar $pkgdir/opt/${pkgname}/geekbench.plar
-    install -D -m644 $srcdir/Geekbench-${pkgver}-Linux/geekbench-workload.plar $pkgdir/opt/${pkgname}/geekbench-workload.plar
-    install -D -m755 $srcdir/Geekbench-${pkgver}-Linux/${pkgname}6 $pkgdir/opt/${pkgname}/
-    install -D -m755 $srcdir/Geekbench-${pkgver}-Linux/${pkgname}_avx2 $pkgdir/opt/${pkgname}/
-    install -d $pkgdir/usr/bin
-    ln -s /opt/${pkgname}/${pkgname}6 $pkgdir/usr/bin/${pkgname}
+    local dest="$pkgdir/opt/${pkgname}"
+    install -D -m755 "$srcdir/Geekbench-${pkgver}-Linux/${pkgname}" "$dest/${pkgname}"
+    install -D -m755 "$srcdir/Geekbench-${pkgver}-Linux/${_binname}_avx2" "$dest/${pkgname}_avx2"
+    install -D -m755 "$srcdir/Geekbench-${pkgver}-Linux/${_binname}_x86_64" "$dest/${pkgname}_x86_64"
+    install -D -m644 "$srcdir/Geekbench-${pkgver}-Linux/geekbench.plar" "$dest/geekbench.plar"
+    install -D -m644 "$srcdir/Geekbench-${pkgver}-Linux/geekbench-workload.plar" "$dest/geekbench-workload.plar"
+    install -d "$pkgdir/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
 }
