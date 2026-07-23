@@ -1,5 +1,4 @@
 default:
-  image: node:alpine
   retry: 2
 
 workflow:
@@ -8,21 +7,6 @@ workflow:
     - changes:
       - ${CI_CONFIG_PATH}
 
-get_latest:
-  stage: .pre
-  script:
-    - apk add bash
-    - "[ -x ./update_pkgbuild.sh ] || chmod a+x ./update_pkgbuild.sh"
-    - ./update_pkgbuild.sh
-    - diff PKGBUILD.old PKGBUILD || sed -i -e "s|^pkgrel=.*$|pkgrel=1|g" PKGBUILD
-  artifacts:
-    paths:
-      - "PKGBUILD"
-  cache:
-    key: node_modules-cache
-    paths:
-      - node_modules/
-
 update:
   stage: build
   image: archlinux:base-devel
@@ -30,8 +14,7 @@ update:
     - '[ -f "$mirrorlist" ] && cat "$mirrorlist" > /etc/pacman.d/mirrorlist'
     - pacman -Sy pacman-contrib jq curl --quiet --needed --noconfirm --noprogressbar
     - useradd deploy
-    - sudo -u deploy ./updpkgsums.sh
-    - sudo -u deploy makepkg --printsrcinfo > .SRCINFO
+    - sudo -u deploy ./update.sh
   artifacts:
     paths:
       - "PKGBUILD"

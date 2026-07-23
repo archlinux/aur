@@ -1,63 +1,29 @@
-#!/bin/node
+#!/bin/bash
 
-require('console');
-
-const args = process.argv.slice(2)
-const archs = args.length < 1 ? [`x86_64`] : args;
-
-const fs = require('fs');
-const path = require('path');
-const syncRequest = require('sync-request');
-const os = require('os');
-
-require('seajs');
-
-const file = "linuxConfig"
-const indexUrl = "https://im.qq.com/linuxqq/index.shtml";
-var url;
-try {
-  url = syncRequest('GET', indexUrl).body.toString().match(new RegExp(`https?://[\\w\\.\\/\\-\\_]+/${file}\\.js\\?t=[0-9]+`))[0];
-} catch (err) {
-  url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxConfig.js`;
+error() {
+    echo $@ >&2
+    exit 1
 }
-const res = syncRequest('GET', url);
 
-fs.mkdtemp(path.join(os.tmpdir(), "/"), (err, directory) => {
-  if (err) throw err;
+json=$(curl -sS https://qq-web.cdn-go.cn/im.qq.com_new/latest/rainbow/pcConfig.json)
 
-  seajs.config({
-    base: directory,
-  });
+echo version=$(echo  "$json" | jq -r ".Linux.version")
+echo updateDate=$(echo  "$json" | jq -r ".Linux.updateDate")
 
-  fs.writeFileSync(path.join(directory, `${file}.js`), res.body);
+[ -n "$*" ] || set x86_64
 
-  seajs.use(`${file}`, function (config) {
-    console.log(`version=${config.version}`);
-    console.log(`updateDate=${config.updateDate}`);
+for arch do
+    case $arch in
+        x86_64)
+            config_index=x64DownloadUrl
+            ;;
+        aarch64)
+            config_index=armDownloadUrl
+            ;;
+        *)
+            error "This arch is currently not supported"
+            ;;
+    esac
 
-    for (const key in archs) {
-      const arch = archs[key];
-
-      let config_index;
-      switch (arch) {
-        case `x86_64`:
-          config_index = `x64DownloadUrl`;
-          break;
-        case `aarch64`:
-          config_index = `armDownloadUrl`;
-          break;
-        case `loong64`:
-          config_index = `loongarchDownloadUrl`;
-          break;
-        default:
-          throw new Error(`This arch is currently not supported`);
-      }
-
-      console.log(`url_${arch}=${config[config_index].appimage}`);
-    }
-  });
-
-  fs.rm(directory, { recursive: true }, (err) => {
-    if (err) throw err;
-  });
-});
+    echo url_${arch}=$(echo  "$json" | jq -r ".Linux.${config_index}.appimage")
+done

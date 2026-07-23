@@ -1,10 +1,10 @@
 #!/bin/bash
 
-[ -d ./node_modules ] || npm install
+# [ -d ./node_modules ] || npm install
 
 eval $(grep -E '^arch=' PKGBUILD)
 archs="${arch[@]}"
-eval $(node get_latest $archs)
+eval $(./get_latest $archs)
 
 sed -i.old \
     -e "s|_version=.*|_version=${version}|" \
@@ -13,3 +13,5 @@ sed -i.old \
         echo -n " -e s|_image_url_${arch}=.*|_image_url_${arch}=$(eval "echo -n \$url_${arch}")|"
     done) \
     PKGBUILD
+
+diff PKGBUILD.old PKGBUILD || sed -i -e "s|^pkgrel=.*$|pkgrel=1|g" PKGBUILD
