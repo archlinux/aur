@@ -1,7 +1,7 @@
 pkgbase = harbor-stremio-beta-bin
 	pkgdesc = A Stremio client built for adventure (beta binary release)
 	pkgver = 0.9.112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harborstremio/harbor
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = harbor-stremio-beta-bin
 	conflicts = harbor-stremio
 	conflicts = harbor
 	conflicts = harbor-stremio-git
-	source = Harbor_0.9.112-1_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/beta-v0.9.112-72044f42b939/Harbor_0.9.112_amd64.deb
-	sha256sums = 2298c227b9b6f5ff91f73a0d15a8bb5e0287df726593514c9d25b60f74eab371
+	source = Harbor_0.9.112-2_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/beta-v0.9.112-d4ebb895973f/Harbor_0.9.112_amd64.deb
+	sha256sums = 8673bec617315456636085a731bd93ce8e895e869134ef4beab4f32c5ad102e9
 
 pkgname = harbor-stremio-beta-bin
