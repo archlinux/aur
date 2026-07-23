@@ -49,20 +49,31 @@ package() {
   # NOTE: tar.gz has no top-level directory, extracts directly into srcdir
   install -dm755 "${pkgdir}/opt/bilibili" "${pkgdir}/usr/bin"
   cp -r bin app electron "${pkgdir}/opt/bilibili/"
+  # Remove the tarball's launcher script — wrapper replaces it entirely
+  rm -f "${pkgdir}/opt/bilibili/bin/bilibili"
 
   # Install .desktop file (tar.gz doesn't ship one — electron-builder
   # only embeds it in the AppImage, not in the tarball)
   install -dm755 "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << DESKTOP
 [Desktop Entry]
-Name=bilibili
+Name=Bilibili
+Name[zh_CN]=哔哩哔哩
+Name[zh_TW]=嗶哩嗶哩
 Exec=/usr/bin/bilibili %U
 Terminal=false
 Type=Application
 Icon=bilibili
 StartupWMClass=bilibili
-Comment=BiliBili client for Linux (GPU accelerated, Electron 43).
-Categories=AudioVideo;
+Comment=BiliBili client for Linux (GPU accelerated, Electron 43)
+Comment[zh_CN]=哔哩哔哩桌面版
+Comment[zh_TW]=嗶哩嗶哩桌面版
+Categories=AudioVideo;Video;TV;
+Keywords=animation;anime;drama;live;movie;player;tv;video;bilibili;
+Keywords[zh_CN]=B站;播放器;动画;动漫;电影;番剧;视频;直播;
+Keywords[zh_TW]=B站;播放器;動畫;動漫;电影;番劇;視頻;直播;
+StartupNotify=true
+SingleMainWindow=true
 DESKTOP
 
   # Install icon
@@ -82,8 +93,6 @@ export ELECTRON_IS_DEV=0
 export ELECTRON_FORCE_IS_PACKAGED=true
 export ELECTRON_DISABLE_SECURITY_WARNINGS=true
 export NODE_ENV=production
-export APPIMAGE=1  # enable update check
-
 # Wayland auto-detect — prefers Wayland when available
 export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
 
@@ -92,9 +101,9 @@ export CHROME_DESKTOP="bilibili-gpu-bin.desktop"
 
 # Trash integration
 case "${XDG_CURRENT_DESKTOP}" in
-    KDE) export ELECTRON_TRASH="kioclient5" ;;
-    GNOME) export ELECTRON_TRASH="gio" ;;
-    XFCE) export ELECTRON_TRASH="gvfs-trash" ;;
+    *KDE*) export ELECTRON_TRASH="kioclient5" ;;
+    *GNOME*) export ELECTRON_TRASH="gio" ;;
+    *XFCE*) export ELECTRON_TRASH="gvfs-trash" ;;
 esac
 
 # === GPU acceleration flags ===
@@ -129,8 +138,11 @@ fi
 # Appended AFTER defaults — Chromium's last-wins semantics let users
 # override individual flags. --enable-features is cumulative across
 # multiple occurrences, so user features add to (not replace) defaults.
+# Search order: app's userData path (matches electron-tool.ts) →
+# legacy path → flat fallback.
 declare -a flags
-for f in "${XDG_CONFIG_HOME}/bilibili/bilibili-flags.conf" \
+for f in "${XDG_CONFIG_HOME}/bilibili-linux/bilibili-flags.conf" \
+         "${XDG_CONFIG_HOME}/bilibili/bilibili-flags.conf" \
          "${XDG_CONFIG_HOME}/bilibili-flags.conf"; do
   if [[ -f "$f" ]]; then
     while IFS= read -r line; do
@@ -141,6 +153,17 @@ for f in "${XDG_CONFIG_HOME}/bilibili/bilibili-flags.conf" \
     done < "$f"
   fi
 done
+
+# Strip known-harmful flags that linger in old configs (pkgrel ≤7).
+# --use-gl=angle / --use-angle=gl break VA-API on Intel/AMD Wayland
+# and are no longer needed on any platform with Electron 43+.
+for i in "${!flags[@]}"; do
+  case "${flags[$i]}" in
+    --use-gl=angle|--use-angle=gl|--use-gl|--use-angle)
+      unset 'flags[$i]' ;;
+  esac
+done
+flags=("${flags[@]}")
 
 # --no-sandbox when running as root
 _SANDBOX_ARG=()
@@ -156,12 +179,13 @@ WRAPPER
   # Symlink /usr/bin/bilibili → wrapper
   ln -sf "/opt/bilibili/${pkgname}.wrapper" "${pkgdir}/usr/bin/bilibili"
 
-  # Install default flags config template.
+  # Install default flags config template to the app's userData directory
+  # (matches package.json "name": "bilibili-linux" → ~/.config/bilibili-linux/)
   # GPU-specific video decode flags are auto-detected by the wrapper at runtime;
   # this file provides only the safe common baseline. Users may add custom flags
   # here — they are appended after defaults and override via last-wins semantics.
-  install -dm755 "${pkgdir}/etc/skel/.config/bilibili"
-  cat > "${pkgdir}/etc/skel/.config/bilibili/bilibili-flags.conf" << 'FLAGS'
+  install -dm755 "${pkgdir}/etc/skel/.config/bilibili-linux"
+  cat > "${pkgdir}/etc/skel/.config/bilibili-linux/bilibili-flags.conf" << 'FLAGS'
 --ignore-gpu-blocklist
 --enable-gpu-rasterization
 --enable-zero-copy

@@ -7,7 +7,8 @@ post_install() {
     Intel / AMD GPU  → VA-API path (VaapiVideoDecoder, Mesa Gallium)
     No GPU-specific configuration needed — the wrapper adapts automatically.
 
-    Custom flags:  ~/.config/bilibili/bilibili-flags.conf
+    Custom flags:  ~/.config/bilibili-linux/bilibili-flags.conf
+    (also checked: ~/.config/bilibili/bilibili-flags.conf)
     Appended after defaults; Chromium last-wins semantics for overrides.
     Verify:        play a video, then check GPU decode with:
                      cat /proc/$(pgrep -f "type=gpu-process.*bilibili")/fdinfo/* | grep drm-engine-video
@@ -19,15 +20,15 @@ MSG
 
 post_upgrade() {
     cat << 'MSG'
-==> bilibili-gpu-bin: GPU acceleration flags updated (pkgrel 8)
+==> bilibili-gpu-bin: GPU acceleration auto-detection updated
     GPU video decode flags are now auto-detected at runtime:
       - /proc/driver/nvidia present → NVIDIA NVDEC path
-      - otherwise                       → Intel/AMD VA-API path
+      - otherwise                     → Intel/AMD VA-API path
 
-    If you previously customized ~/.config/bilibili/bilibili-flags.conf,
-    your custom flags are still loaded and appended after the defaults.
-    You may want to remove old NVIDIA-only flags (--use-gl=angle,
-    --use-angle=gl, VaapiOnNvidiaGPUs) if you are on Intel/AMD hardware.
+    Old flags (--use-gl=angle, --use-angle=gl) are automatically
+    filtered from your config at runtime — no manual cleanup needed.
+    Config location: ~/.config/bilibili-linux/bilibili-flags.conf
+    Custom flags are appended after defaults and can override them.
 MSG
 }
 
