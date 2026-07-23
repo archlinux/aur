@@ -3,7 +3,7 @@
 
 pkgname=ozone
 pkgver=3.50a
-pkgrel=0
+pkgrel=1
 epoch=32
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('x86_64')
@@ -52,6 +52,7 @@ package(){
     # Create links where needed
     ln -s /opt/SEGGER/Ozone/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s /opt/SEGGER/Ozone/Ozone "${pkgdir}/usr/bin"
+    ln -s /opt/SEGGER/Ozone/ozone-sim "${pkgdir}/usr/bin"
 
     for f in Doc/*; do
         ln -s /opt/SEGGER/Ozone/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
