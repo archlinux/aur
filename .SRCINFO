@@ -1,6 +1,6 @@
 pkgbase = revera
 	pkgdesc = The credit score for npm packages
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/aaravmaloo/revera
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = revera
 	makedepends = jq
 	depends = nodejs
 	provides = revera
-	noextract = revera-0.1.0.tgz
+	noextract = revera-1.0.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = revera-0.1.0.tgz::https://registry.npmjs.org/@aaravmaloo/revera/-/revera-0.1.0.tgz
-	b2sums = 72493dbe8e24130986f1a579d5f443911bc9cc4b4a485b97dfcbbbfe347dbe691dbf9c8e41e73ff127bdf379d25b46855e33af0bcbb146027b7544129dbe571a
+	source = revera-1.0.0.tgz::https://registry.npmjs.org/@aaravmaloo/revera/-/revera-1.0.0.tgz
+	b2sums = 73d75d2facfd241f52153d00114b40994055840ca87c2e6ad435dbdbd014e09da3dba640314c1b4d19c0b802ba399c4f369806036de6f7fe37e054b817b584d4
 
 pkgname = revera

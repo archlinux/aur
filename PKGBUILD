@@ -2,7 +2,7 @@
 
 pkgname=revera
 pkgauthor=aaravmaloo
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -25,7 +25,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('72493dbe8e24130986f1a579d5f443911bc9cc4b4a485b97dfcbbbfe347dbe691dbf9c8e41e73ff127bdf379d25b46855e33af0bcbb146027b7544129dbe571a')
+b2sums=('73d75d2facfd241f52153d00114b40994055840ca87c2e6ad435dbdbd014e09da3dba640314c1b4d19c0b802ba399c4f369806036de6f7fe37e054b817b584d4')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
