@@ -2,23 +2,23 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 _app_id="com.bktus.$pkgname"
-pkgver=2.1.12
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
+pkgdesc="A modern OpenPGP tool with a unique dual-engine core"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
 license=('GPL-3.0-or-later')
 depends=(
-  'argon2'
   'gpgme'
   'gtest'
   'hicolor-icon-theme'
   'icu'
   'libarchive'
-  'openssl'
+  'libsodium'
   'qt6-base'
 )
 makedepends=(
+  'cargo'
   'cmake'
   'desktop-file-utils'
   'git'
@@ -29,12 +29,14 @@ makedepends=(
 checkdepends=('appstream')
 source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/qt/qttranslations.git'
-        'git+https://git.bktus.com/gpgfrontend/modules.git'
-        'git+https://git.bktus.com/gpgfrontend/gpgme.git'
-        'git+https://git.bktus.com/gpgfrontend/libassuan.git'
-        'git+https://git.bktus.com/gpgfrontend/libgpg-error.git'
-        'git+https://git.bktus.com/gpgfrontend/vmime.git')
-sha256sums=('21852208c66aa993b05cbe303f29b7797cd6447e4f8ec999a26f392a2bff11ee'
+        'git+https://github.com/saturneric/GpgFrontend-Modules.git'
+        'git+https://github.com/gpg/gpgme.git'
+        'git+https://github.com/gpg/libassuan.git'
+        'git+https://github.com/gpg/libgpg-error.git'
+        'git+https://github.com/corrosion-rs/corrosion.git'
+        'git+https://git.bktus.com/GpgFrontend/vmime.git')
+sha256sums=('ea33871fb7adf546402299e698e128ca807477a1f24207052d43ca6c2d0cf7f6'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,10 +48,11 @@ prepare() {
   cd GpgFrontend
   git submodule init
   git config submodule.third_party/qttranslations.url "$srcdir/qttranslations"
-  git config submodule.modules.url "$srcdir/modules"
+  git config submodule.modules.url "$srcdir/GpgFrontend-Modules"
   git config submodule.third_party/gpgme.url "$srcdir/gpgme"
   git config submodule.third_party/libassuan.url "$srcdir/libassuan"
   git config submodule.third_party/libgpg-error.url "$srcdir/libgpg-error"
+  git config submodule.third_party/corrosion.url "$srcdir/corrosion"
   git -c protocol.file.allow=always submodule update
 
   pushd modules
@@ -58,17 +61,23 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   popd
 
+  pushd rust
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target host-tuple
+  popd
+
   # Correct StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
     "resource/appstream/${_app_id}.desktop"
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
   local cmake_options=(
     -B build
     -S GpgFrontend
     -G Ninja
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
     -D CMAKE_INSTALL_PREFIX='/usr'
     -D GPGFRONTEND_BUILD_APP_FOR_PACKAGE='ON'
@@ -87,6 +96,7 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  # Remove duplicate license
-  rm -r "$pkgdir/usr/share/licenses/"
+  # Remove duplicate license & stray icons
+  rm -rv "$pkgdir/usr/share/licenses/"
+  rm -v "$pkgdir"/usr/{"${_app_id}.png",.DirIcon}
 }
