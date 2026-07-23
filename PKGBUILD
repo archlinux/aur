@@ -1,13 +1,13 @@
 # Maintainer:
 
-: ${_date:=260418}
+: ${_date:=260522}
 : ${_pkgs=AL:widescreen}
 
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL-3.0-or-later')
@@ -49,9 +49,9 @@ noextract=("$_file")
 source=("$_file"::"$_dl_url_base/wsjtx-${pkgver}_improved_PLUS_${_date}_qt6.tgz")
 
 sha256sums=(
-  'c73448bfee030f77dc7617d0d67447aa57e72a816a085ee05a0774d876edb725'
-  '7370a46a47ca664faf5d32dd3e5005820a305f7ce848a501269508cb23b7a3a8'
-  '5c1ec232d173afe6d1db54aa2f3a777eed68c4bdabd39b93ad81f914ede758fa'
+  '4c4262d8a4ff0189a64a97a55aa352509720db32b512c2a0cec0b6a096367324'
+  '0fc92469a6b45b6448dd5fa536407d64a61304b3381ef198b7ee1b140dac0ab5'
+  'c7fe58d9901e1de6b587fb5ccae8eea0694f387b2662c872e3081d9fa6218512'
 )
 
 for i in ${_pkgs//:/ }; do
