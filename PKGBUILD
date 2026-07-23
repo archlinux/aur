@@ -9,7 +9,7 @@
 pkgname=bilibili-gpu-bin
 _pkgreal=bilibili
 pkgver=1.17.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)"
 arch=('x86_64')
 url="https://github.com/wings1848/bilibili-linux"
