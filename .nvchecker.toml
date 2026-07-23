@@ -1,0 +1,5 @@
+[oolong-bin]
+source = "github"
+github = "dicedatalore/oolong"
+use_latest_release = true
+prefix = "v"
