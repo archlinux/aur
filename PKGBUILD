@@ -1,7 +1,7 @@
 # Maintainer: Ariel Baron <arielbar80@gmail.com>
 
 pkgname=dotidx
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A declarative, multi-profile dotfile manager focused on physical isolation and manifest-based tracking."
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/ArielBaron/dotidx"
 license=('MIT')
 depends=('python' 'python-rich' 'python-textual' 'rsync' 'git' 'jq')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('29b5ed9d351ddd1c5dd7459557e363ddeb9aa6730f8fcf376210ac2fdd289405')
+source=("https://github.com/ArielBaron/dotidx/archive/refs/tags/v3.3.3.tar.gz")
+sha256sums=('40fd54635f2057f5b05afef75456ef64d37746a251420a5c4219d93011fa9cf8')
 
 package() {
   cd "$srcdir/$pkgname"
