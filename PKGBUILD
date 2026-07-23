@@ -2,7 +2,7 @@
 
 _pkgname=vite-plus
 pkgname=${_pkgname}
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="The Unified Toolchain for the Web"
 arch=("x86_64" "aarch64")
@@ -18,7 +18,7 @@ options=("!debug" "!lto")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('120f0fa6383eabd63a9d6f8dd578d393259d2efb81a4318c8222b1ed0ee03c87')
+sha256sums=('a4d9708adf1356bd1aca433969cb80a14d4bb0ddbaaad604dee1819ac8cb2169')
 
 _get_toolchain() {
   grep -E '^[[:space:]]*channel[[:space:]]*=' rust-toolchain.toml |
