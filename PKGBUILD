@@ -4,9 +4,9 @@
 # the version and the release tarball's SHA-256, so the checksum can
 # never disagree with the artifact it is published next to.
 #
-# 0.1.0 and be01a50881ae379ec9c8b8055a3f52bd4471a78cfc3a29f6c9c948b7686aaf80 are the only placeholders.
+# 0.2.0 and 2a62877f1300ba27e2b1f2c65018e4da133c2b1460e4a793932ea0933e4cddcf are the only placeholders.
 pkgname=alloyctl-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="SteelSeries device configuration TUI for Linux (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('ncurses')
 provides=('alloyctl')
 conflicts=('alloyctl')
 source=("https://github.com/szymonwilczek/alloyctl/releases/download/v${pkgver}/alloyctl-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('be01a50881ae379ec9c8b8055a3f52bd4471a78cfc3a29f6c9c948b7686aaf80')
+sha256sums=('2a62877f1300ba27e2b1f2c65018e4da133c2b1460e4a793932ea0933e4cddcf')
 
 package() {
 	cd "alloyctl-${pkgver}-linux-x86_64"
