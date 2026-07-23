@@ -2,8 +2,8 @@
 # Contributor: jthvai
 
 pkgname=naps2
-pkgver=8.3.1
-pkgrel=2
+pkgver=8.3.2
+pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
 url="https://www.naps2.com"
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=("!strip" "!debug")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cyanfish/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("3822a66dc96e77f9d02df04c4ab33f3a91b0b4dc1a354b2dee405aea82fd90ee32e340985bcfa05a9c81c389819495d6959eb23d773177d4b2f4162566777d6d")
+b2sums=("119c0ef18ddee09188cf2f043f050c784170fc4ae493e48d444e7ab8bae84ab0e39ae80d8ae1ebbe0c593d85fae5dd9037202394011024161a18103a09b23bde")
 
 build() {
     cd "$pkgname-$pkgver"
@@ -24,4 +24,6 @@ build() {
 
 package() {
     cp -r $pkgname-$pkgver/**/**/deb/usr $pkgdir/usr
+    # Dirty fix, missing debugging library: .NET DAC core library
+    cp /usr/share/dotnet/shared/**/10.*/libmscordaccore.so $pkgdir/usr/lib/$pkgname
 }
