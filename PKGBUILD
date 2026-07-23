@@ -4,7 +4,7 @@ _pkgname=noctalia
 _tagver=5.0.0-beta.4
 pkgname=noctalia
 pkgver=5.0.0_beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -55,6 +55,7 @@ build() {
   CXXFLAGS+=" -Wno-unused-result"
   arch-meson "${_pkgname}-${_tagver}" build-release \
     -Db_ndebug=true \
+    -Dnative_optimizations=true \
     -Dtests=disabled
   meson compile -C build-release
 }
