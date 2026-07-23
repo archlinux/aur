@@ -10,6 +10,7 @@ post_remove() {
   echo
   echo -e "  ${CYAN}备份目录:${RESET} ~/.cache/rime-custom-config/"
   echo -e "  ${CYAN}词库文件:${RESET} ~/.local/share/fcitx5/rime/custom_words.dict.yaml"
+  echo -e "  ${CYAN}Patch配置:${RESET} ~/.local/share/fcitx5/rime/rime_ice.custom.yaml"
   echo
   echo -e "  ${RED}如需清理请手动删除上述文件/目录${RESET}"
   echo "==========================================================="
