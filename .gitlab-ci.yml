@@ -20,20 +20,13 @@ update_aur:
     - cp PKGBUILD aur_repo_temp/
     - cd aur_repo_temp
     - chown -R builduser:builduser .
-    - |
-      sudo -u builduser bash -c '
-        source ./PKGBUILD
-        NEW_VER=$(pkgver)
-        if [ -z "$NEW_VER" ]; then
-          echo "No se pudo obtener version"
-          exit 1
-        fi
-        sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
-        makepkg --printsrcinfo > .SRCINFO
-        git add PKGBUILD .SRCINFO
-        git commit -m "Automated update to ${NEW_VER}" || true
-        git push origin master
-      '
+    - NEW_VER=$(sudo -u builduser bash -c 'source ./PKGBUILD; pkgver')
+    - if [ -z "$NEW_VER" ]; then exit 1; fi
+    - sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
+    - sudo -u builduser makepkg --printsrcinfo > .SRCINFO
+    - sudo -u builduser git add PKGBUILD .SRCINFO
+    - sudo -u builduser git commit -m "Update to ${NEW_VER}" || true
+    - sudo -u builduser git push origin master
   only:
     - schedules
     - web
