@@ -6,7 +6,7 @@
 pkgname=pnpm-shell-completion
 pkgdesc='Complete your pnpm command fastly'
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 url='https://github.com/g-plane/pnpm-shell-completion'
 arch=(x86_64)
 license=('MIT')
