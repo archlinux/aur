@@ -1,6 +1,6 @@
 # Maintainer: dillacorn (AUR: dillacorn, Reddit: u/dillacorn)
 pkgname=smtty
-pkgver=13.5
+pkgver=13.6
 pkgrel=1
 pkgdesc='TTY "Steam Machine" launcher that runs Steam Gamepad UI inside gamescope'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dillacorn/smtty/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fc9fa82c20f5f2caa84b041eaaedd29a90e8a65da2a28a7cbf5a29af08e32987')
+sha256sums=('72f4ef919a60b2f3c9c8d764dcee50412c3b9845624be34b48445a808786d2da')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
