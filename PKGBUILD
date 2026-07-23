@@ -2,14 +2,14 @@
 # Contributor: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.12.02
+pkgver=1.9.12.03
 pkgrel=1
 epoch=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="https://www.gowinsemi.com.cn/software/index"
 license=('unknown')
-source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
+source=("https://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "gw_ide.sh"
         "gw_sh.sh"
         "programmer.sh"
@@ -18,7 +18,7 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('1b6472eb2974eaed05b86f8209c2f746149b0349a8693bdfc4c927fa5ea5889c'
+sha256sums=('4cf60a8ffd0337da23191a911c69b1e0ca3457a6070c15c9dc245005212ecb51'
             '2d0366a0f172cf1cf8a076d21085237919277c815920dc0ebf16f607eb439ffc'
             '21abbbb6f609eb8f5878386a61636de7ba35a42b03a56180e0bb4cc8ea424790'
             '9a87376bf3b204e7c83cfd7e4f242ee66b7f08d0662a897937ded74884c9348d'
@@ -70,6 +70,7 @@ _package-ide() {
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/qt.conf
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/programmer.json
   chmod 666 ${pkgdir}/opt/${pkgname}/bin/gwlicense.ini
+  chmod 644 ${pkgdir}/opt/${pkgname}/bin/hardcore.xml
 
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
