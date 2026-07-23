@@ -1,3 +1,4 @@
+# Maintainer: creations <creations@creations.works>
 pkgname=grabit-bin
 pkgver=0.5.1
 pkgrel=1
