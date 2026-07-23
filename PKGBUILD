@@ -5,7 +5,7 @@ pkgdesc="Official successor to conduwuit"
 url="https://github.com/matrix-construct/tuwunel"
 license=("Apache-2.0")
 arch=("x86_64" "aarch64")
-pkgver=1.7.0
+pkgver=1.8.2
 pkgrel=1
 provides=("conduwuit" "tuwunel")
 conflicts=("conduwuit")
@@ -21,8 +21,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.zst::https://github.com/matrix-constru
 b2sums=('05c474bd372cbb4f52a93982812b2ff8d6a38df6168ad673c8c2a7662ae5a23932b666c0997efec85c13b8a622f2ea4817bc7dc1560f9ed48ff914403595cba7'
         '5ba4ca1fd13e674ee511b9f8e6cc99ae7a6d886d055cdef8f8e7692c6901d12ccac2eb873f50de07870d45ade7c566dd5d44975101a2f3f40c0533a21a453e32'
         'ebcd34c6120059c42d45db5caba667f0e4826817a135d8e672bf9f7b6f11481b3bf5d414ce8dd90bc310e9a8f85a9ef0054289bdbd8a904c15a3c90c8937a8c6')
-b2sums_x86_64=('2f4266e7cb77087feb7e90308f24db81e8d8d8d49e5621d9bd0af32473614b05133556a48391688f754473fa2cdc40633338e7b165a407f562bba746ea3f0876')
-b2sums_aarch64=('61ff11601f8d2a3592e820f3e7b90e51cf753e154e002ab4a2c83aee6f1f3e0cf88cb05ad402d4a6ce0a5ab052927d001bb57ef81c40b8d02381211e738020fa')
+b2sums_x86_64=('e333965574a4f6f11e04c0f8cd90089d455b1c4fadabf6f40f5afe1b25e8b6a02fc0f9b07d2f6105474170bfffcfb4610ca816772fe949eafc8211ded52777e3')
+b2sums_aarch64=('655b25929cfc63790b5a662bef2700159e39bef8753a7a3df9584cbfdf658d221d5df6571bc5f6ddd0d0b45eb85a73d567e13763f911b79fdd8cd05a87e8079a')
 
 prepare() {
     zstd -df "${srcdir}/$pkgname-$pkgver-$CARCH.zst" -o "${srcdir}/tuwunel"
