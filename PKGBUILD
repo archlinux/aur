@@ -1,7 +1,7 @@
 # Maintainer: LegionWorks <aur@legionworks.dev>
 
 pkgname=dormant-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="OLED screen blanking daemon that responds to presence sensors"
 arch=('x86_64')
@@ -18,9 +18,9 @@ source=(
   "dormant-tray.service::https://raw.githubusercontent.com/legion-works/dormant/v${pkgver}/crates/dormant-tray/systemd/dormant-tray.service"
 )
 
-sha256sums=('8c114d349293df07b5c5185bb2736e67e5a06cc349254dd0af11fe51ae6f3518'
-            '6413c7abe7f881bdbc6400301bdfab08a5102f794e06635d78757b7d0bbbde3e'
-            '19b37cdf39f906a4258130fa9994f7a5c07299b2f2e3da554d1fb3290a52534a'
+sha256sums=('129d40edf1b1835cf336f03fc3031f0c2c6bc904a03b7a4e5e1872f20a5fbedc'
+            '57e10557e324d0e56e3e74075de2bcbe2f853433544a9e2a2a839cb31a12e177'
+            '2e1f8875d126a4203c269af8a1de64306162536d3edab8e314958ca99c09cc62'
             'b14a73e32f3a3337e27e9ad1690ee955e29cd0d9453410bd4c6e4e9064f2af74'
             'deaf7ce6d00e1c3be46038c1c17b914f457dc7afb82c9282d1d8efa1305c9baa')
 
