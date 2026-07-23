@@ -1,6 +1,6 @@
 pkgbase = firedragon-next-bin
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.0.0_rc.25
+	pkgver = 13.0.0_rc.27
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	arch = x86_64
@@ -44,14 +44,14 @@ pkgbase = firedragon-next-bin
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = firedragon
 	conflicts = firedragon
-	noextract = firedragon-v13.0.0-rc.25.linux-x64.tar.xz
-	noextract = firedragon-v13.0.0-rc.25.linux-arm64.tar.xz
+	noextract = firedragon-v13.0.0-rc.27.linux-x64.tar.xz
+	noextract = firedragon-v13.0.0-rc.27.linux-arm64.tar.xz
 	options = !emptydirs
-	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.0.0-rc.25
-	sha256sums = 9fc7d58485123223ff55ff67612685da41c571dcd457b82ef9f35c5b46dccc98
-	source_x86_64 = firedragon-v13.0.0-rc.25.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25/downloads/firedragon.linux-x64.tar.xz
-	sha256sums_x86_64 = 700f5852a33405ec555ef604988d24380d022446a0695eb2c89704f41fbe3c72
-	source_aarch64 = firedragon-v13.0.0-rc.25.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25/downloads/firedragon.linux-arm64.tar.xz
-	sha256sums_aarch64 = 34aee4ae56b3ecc3d81acde86dfd02f85808f4f209746790d898027934a07571
+	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.0.0-rc.27
+	sha256sums = 396b5c0efa08d7db207e4c9827d4e591ca3d854c13fb9aeb2916ed33b9f50747
+	source_x86_64 = firedragon-v13.0.0-rc.27.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27/downloads/firedragon.linux-x64.tar.xz
+	sha256sums_x86_64 = e26f26750ab3ab1c2242518717c11642a5f7ae85afb5c8f95ed6329085641369
+	source_aarch64 = firedragon-v13.0.0-rc.27.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27/downloads/firedragon.linux-arm64.tar.xz
+	sha256sums_aarch64 = 0996252027b9b07a909c11840b13b84d0f708d678730268108ed2c430a2edb45
 
 pkgname = firedragon-next-bin
