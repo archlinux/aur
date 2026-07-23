@@ -3,22 +3,21 @@
 
 _pkgname=simple-http-server
 pkgname=simple-http-server-bin
-pkgver=0.6.13
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Simple http server in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/TheWaWaR/simple-http-server'
 license=('MIT')
-depends=()
 conflicts=('simple-http-server-git' 'simple-http-server')
 provides=('simple-http-server-git' 'simple-http-server')
 source_x86_64=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/x86_64-unknown-linux-musl-simple-http-server"
                "LICENSE::$url/raw/refs/heads/master/LICENSE")
 source_aarch64=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/aarch64-unknown-linux-musl-simple-http-server"
                 "LICENSE::$url/raw/refs/heads/master/LICENSE")
-sha256sums_x86_64=('08951d8e998d97dc4a35cb9376c888b98fa5dfb3dbf03d2fc96299403fd00422'
+sha256sums_x86_64=('a16d73db4b33edc6aada0bb54088773dba8cb4d02eaa13364559552072d628cd'
                    'cb553bbae0f2d76fb84aef02a9fc572eceea052be4354a11bb53cf482f091845')
-sha256sums_aarch64=('faa93db5c108bccf043d1f04f6497a94966042836d4e57996af049706a3d00af'
+sha256sums_aarch64=('88a523d339fa412575e497ee1741ffa4a7b6bdcfa23681a82eac7b8cd2bdf815'
                     'cb553bbae0f2d76fb84aef02a9fc572eceea052be4354a11bb53cf482f091845')
 
 package() {

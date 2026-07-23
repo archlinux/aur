@@ -1,7 +1,7 @@
 pkgbase = simple-http-server-bin
 	pkgdesc = Simple http server in Rust
-	pkgver = 0.6.13
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/TheWaWaR/simple-http-server
 	arch = x86_64
 	arch = aarch64
@@ -10,13 +10,13 @@ pkgbase = simple-http-server-bin
 	provides = simple-http-server
 	conflicts = simple-http-server-git
 	conflicts = simple-http-server
-	source_x86_64 = simple-http-server-0.6.13::https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.13/x86_64-unknown-linux-musl-simple-http-server
+	source_x86_64 = simple-http-server-0.8.0::https://github.com/TheWaWaR/simple-http-server/releases/download/v0.8.0/x86_64-unknown-linux-musl-simple-http-server
 	source_x86_64 = LICENSE::https://github.com/TheWaWaR/simple-http-server/raw/refs/heads/master/LICENSE
-	sha256sums_x86_64 = 08951d8e998d97dc4a35cb9376c888b98fa5dfb3dbf03d2fc96299403fd00422
+	sha256sums_x86_64 = a16d73db4b33edc6aada0bb54088773dba8cb4d02eaa13364559552072d628cd
 	sha256sums_x86_64 = cb553bbae0f2d76fb84aef02a9fc572eceea052be4354a11bb53cf482f091845
-	source_aarch64 = simple-http-server-0.6.13::https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.13/aarch64-unknown-linux-musl-simple-http-server
+	source_aarch64 = simple-http-server-0.8.0::https://github.com/TheWaWaR/simple-http-server/releases/download/v0.8.0/aarch64-unknown-linux-musl-simple-http-server
 	source_aarch64 = LICENSE::https://github.com/TheWaWaR/simple-http-server/raw/refs/heads/master/LICENSE
-	sha256sums_aarch64 = faa93db5c108bccf043d1f04f6497a94966042836d4e57996af049706a3d00af
+	sha256sums_aarch64 = 88a523d339fa412575e497ee1741ffa4a7b6bdcfa23681a82eac7b8cd2bdf815
 	sha256sums_aarch64 = cb553bbae0f2d76fb84aef02a9fc572eceea052be4354a11bb53cf482f091845
 
 pkgname = simple-http-server-bin
