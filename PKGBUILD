@@ -1,27 +1,32 @@
 # Maintainer: Alois Nespor <info@aloisnespor.info>
-# Contributor: aleksonik imsnet@yandex.ru
+# Contributor: Nisel Alexander II (hzs)
+# Contributor: aleksonik <imsnet@yandex.ru>
 
 pkgname=hzs_reminder
-pkgver=2016.06.11
+pkgver=2026.07.23
 pkgrel=1
-pkgdesc="Birthday Reminder"
-arch=('i686' 'x86_64')
-url="https://sourceforge.net/p/hzsreminder/wiki/Home/"
-license=('GPL')
-depends=('qt5-base')
-source=("https://bitbucket.org/alium/hzs_reminder/downloads/hzs_reminder_source.tar.gz")
-
+pkgdesc="Lightweight birthday and event reminder using Qt6"
+arch=('x86_64')
+url="https://github.com/alium/hzs-reminder-qt6"
+license=('GPL3')
+depends=('qt6-base')
+makedepends=('qt6-base')
+source=("${url}/archive/refs/tags/qt6-1.0.tar.gz")
+sha256sums=('0cbdaa8aefa43ed4b1a1cf05146e3049f27cd869881cef9871230a4e20c9fb13')
 
 build() {
-msg "Starting build..."
-cd "$srcdir"/hzs_reminder_source
-qmake-qt5  QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
-make
-}
+    cd "${srcdir}/hzs-reminder-qt6-qt6-1.0"
 
+    qmake6 \
+        QMAKE_CFLAGS_RELEASE="${CPPFLAGS} ${CFLAGS}" \
+        QMAKE_CXXFLAGS_RELEASE="${CPPFLAGS} ${CXXFLAGS}" \
+        QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
+
+    make -j"$(nproc)"
+}
 
 package() {
-install -D -m755 $srcdir/hzs_reminder_source/reminder $pkgdir/usr/bin/reminder
-}
+    cd "${srcdir}/hzs-reminder-qt6-qt6-1.0"
 
-sha256sums=('c6b5ed38f62b0287b774040251c397f2e46586a28710ede80f2a91b736332481')
+    install -Dm755 reminder "${pkgdir}/usr/bin/reminder"
+}
