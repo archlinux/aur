@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brill <aur@christophbrill.de>
 
 pkgname=gitea-mcp
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Model Context Protocol (MCP) server for interacting with Gitea instances"
 arch=('x86_64' 'aarch64' 'i686')
