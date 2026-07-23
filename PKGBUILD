@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.8.1
-pkgrel=2.314
+pkgver=2.8.2
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'jbig2enc: Advanced compression of bitonal images'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('e3a2842e6d05b1aa2b1b32f13c791a68d0ca6b439d88c2ee3fb061191985363f')
+sha256sums=('0cb5afed79462f420362f54e1d3c7be59c943ec88268288df4374be9874cf11f')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
@@ -35,5 +35,9 @@ build() {
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    mkdir --parents "$pkgdir/usr/share/licenses"
+    ln --symbolic \
+        "/$(realpath --relative-to "$pkgdir" "$pkgdir"/usr/lib/python*/site-packages/$pkgname-*.dist-info/licenses/LICENSES)" \
+        "$pkgdir/usr/share/licenses/$pkgname"
 }
