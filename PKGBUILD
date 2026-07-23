@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=oavif
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Target quality AVIF encoding'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
@@ -24,6 +24,9 @@ prepare() {
     sed -i 's/\.preferred_link_mode = \.static/.preferred_link_mode = .dynamic/g' build.zig
     # Enable PIE
     sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
+
+    export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
+    zig build --fetch
 }
 
 build() {
