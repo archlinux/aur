@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://www.jetbrains.com/idea/"
 license=('Apache')
 depends=('java-runtime')
-optdepends=('git: version control integration')
+optdepends=('git: version control integration' 'svgo: svg optimization' 'oxipng: png optimization')
 provides=('intellij-idea-community')
 conflicts=('intellij-idea-community')
 
@@ -15,7 +15,15 @@ sha256sums=('1a95024d3e6fa9cb015dab168500fe57a891d1bc20854c8b3ed58ed53d2827a6')
 
 package() {
     local srcdir_idea
-    srcdir_idea="$(fd -t d '^idea-' "$srcdir" | head -n1)"
+    srcdir_idea="$(fd -t d '^idea-' "$srcdir" 2>/dev/null | head -n1 || find "$srcdir" -maxdepth 1 -type d -name 'idea-*' | head -n1)"
+
+    if command -v svgo >/dev/null 2>&1; then
+        svgo . -r --multipass
+    fi
+
+    if command -v oxipng >/dev/null 2>&1; then
+        oxipng -o max -r -p -s -v -t "$(nproc)" -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 .
+    fi
 
     if [[ -z "$srcdir_idea" ]]; then
         printf "ERROR: IntelliJ directory not found in srcdir\n"
