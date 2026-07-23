@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A beautiful terminal clock with ASCII art fonts"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('a1c8edd4875a9f127b7123cd916c6d5657d4c900c5c9b95e95771c9217deee3b'
+sha256sums=('c550a45ed83e5ec9b3d3cf576a59b8ff3aaffb8b5576086e9b40f3bcde0bc7ad'
             '679f179395bbc24603397c0676553b4ffc57aa64eea701d565a3b8421fc13a1b')
-sha256sums_x86_64=('c7f0944825352a5c8606a43f62fcf9b6bc13114da20330e6bcbb452997cb3700')
-sha256sums_aarch64=('f369a70d57c7e50221d4e335cf68b79845a93199a9a4ad5b182743cf7fd08afa')
+sha256sums_x86_64=('0a971b0637ddd5f7bd200b458ce43e8accad6630f53917ce077df44095d8d5bf')
+sha256sums_aarch64=('8857d403f214a988bc4074b34d15e0fccd4b89a3eb580f70d1263b0b75e7548c')
 
 
 package() {
