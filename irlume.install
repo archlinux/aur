@@ -1,6 +1,9 @@
 post_install() {
     systemctl daemon-reload
     systemctl enable --now irlumed.service 2>/dev/null || true
+    # Watches greeter PAM files and re-applies irlume wiring after a distro
+    # update strips it; idle until `irlume login enable` runs.
+    systemctl enable --now irlume-reconcile.path 2>/dev/null || true
     cat <<'EOF'
 irlume installed. Next steps:
   irlume tui                      # enroll your face + configure
@@ -29,4 +32,5 @@ EOF
 
 pre_remove() {
     systemctl disable --now irlumed.service 2>/dev/null || true
+    systemctl disable --now irlume-reconcile.path 2>/dev/null || true
 }

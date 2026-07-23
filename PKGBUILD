@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux"
 arch=('x86_64')
@@ -44,6 +44,10 @@ package() {
         install -Dm0644 "models/$m.onnx" "$pkgdir/usr/share/irlume/models/$m.onnx"
     done
     install -Dm0644 packaging/systemd/irlumed.service "$pkgdir/usr/lib/systemd/system/irlumed.service"
+    # Self-heal: re-applies irlume's greeter PAM lines if a distro update strips
+    # them. No-op until `irlume login enable` writes its marker.
+    install -Dm0644 packaging/systemd/irlume-reconcile.path "$pkgdir/usr/lib/systemd/system/irlume-reconcile.path"
+    install -Dm0644 packaging/systemd/irlume-reconcile.service "$pkgdir/usr/lib/systemd/system/irlume-reconcile.service"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
