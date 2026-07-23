@@ -5,25 +5,15 @@ pkgbase=netbird
 pkgname=(
   $pkgbase
   $pkgbase-server
-  $pkgbase-ui
 )
-pkgver=0.74.7
+pkgver=0.75.0
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
-_ui_depends=(
-  libglvnd
-  libx11
-  libxcursor
-  libxi
-  libxinerama
-  libxrandr
-  libxxf86vm
-)
-makedepends=('go' "${_ui_depends[@]}")
+makedepends=('go')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
         "netbird-server.service")
-sha256sums=('22df87176e6c9f3551506039cd2e6ea63c6f957fb14206436d467786b9a573dc'
+sha256sums=('1126cfab08010279c6b7b5b52f620fcfcfe659e91715b8abcd48ff2a43f29997'
             '6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9')
 
 prepare() {
@@ -41,11 +31,10 @@ build() {
 
   cd "$srcdir/$pkgbase-$pkgver"
 
-  # TODO: pass '-tags wayland' to glfw?
   go build \
     -o build \
     -ldflags "-s -w -linkmode=external -X github.com/netbirdio/netbird/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
-    ./client ./client/ui ./combined
+    ./client ./combined
 
   local shell
   for shell in bash fish zsh; do
@@ -98,22 +87,4 @@ package_netbird-server() {
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm755 build/combined "$pkgdir/usr/bin/$pkgname"
   install -Dm640 combined/config.yaml.example "$pkgdir/etc/$pkgname/config.yaml"
-}
-
-package_netbird-ui() {
-  license=('BSD-3-Clause')
-  pkgdesc='GUI for the Netbird client'
-  depends=(
-    glibc
-    netbird
-    "${_ui_depends[@]}"
-  )
-
-  cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm755 build/ui "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd client/ui
-  install -Dm644 assets/netbird.png "$pkgdir/usr/share/pixmaps/netbird.png"
-  install -Dm644 build/netbird.desktop "$pkgdir/usr/share/applications/netbird.desktop"
 }
