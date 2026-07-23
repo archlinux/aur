@@ -2,7 +2,7 @@
 
 pkgname="qcsuper"
 _pkgname="QCSuper"
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="QCSuper is a tool communicating with Qualcomm-based phones and modems, allowing to capture raw 2G/3G/4G radio frames, among other things"
 arch=(
@@ -40,7 +40,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('ca23ecf2943baf61a1b1ce43a3818f80a507effc47e7c74d6380d419e6871022')
+sha256sums=('73fdb3cf67daad26ffcd98338236c3cc4057504eb512ecfb4084aab4d1c3bc1a')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
