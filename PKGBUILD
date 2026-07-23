@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=oavif-git
-pkgver=0.1.3.r18.gd1fc680
-pkgrel=7
+pkgver=0.2.1.r0.g4247db0
+pkgrel=1
 pkgdesc='Target quality AVIF encoding (git)'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
@@ -9,14 +9,9 @@ license=('Apache-2.0')
 depends=(
     'glibc'
     'libavif'
-    'libwebp'
-    'libjpeg-turbo'
-    'libspng'
-    'libheif'
 )
 makedepends=(
     'git'
-    'zig0.15'
 )
 provides=('oavif')
 conflicts=('oavif')
@@ -35,13 +30,13 @@ prepare() {
     sed -i 's/\.preferred_link_mode = \.static/.preferred_link_mode = .dynamic/g' build.zig
     sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
     export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-    zig-0.15 build --fetch
+    zig build --fetch
 }
 
 build() {
     cd "${pkgname%-git}"
     export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-    zig-0.15 build --release=fast --prefix "${srcdir}/dist"
+    zig build --release=fast --prefix "${srcdir}/dist"
 }
 
 package() {
