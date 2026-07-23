@@ -1,6 +1,6 @@
 pkgbase = quickdash-git
 	pkgdesc = Configurable Hyprland dashboard and launcher built with Quickshell
-	pkgver = r13.ge64d957
+	pkgver = r14.g046e7dc
 	pkgrel = 1
 	url = https://github.com/vcoscrato/quickdash
 	arch = any
