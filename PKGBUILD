@@ -1,7 +1,7 @@
 pkgname=rustmius
 _srcname=Rustmius
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Full local Termius alternative for Linux (GTK4) - built from stable source"
 arch=('x86_64')
 url="https://github.com/Cleboost/Rustmius"
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('gtk4' 'vte4')
 makedepends=('cargo')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d093f90f0c107e3b036c8483893d3c93c4fcfd4fedb5367d28dbeb93c25fa5f6')
+sha256sums=('15c4cd66db4d6d3752866b35a9499d209b99daa4151d239464d866dc77381468')
 
 build() {
     cd "$_srcname-$pkgver"
