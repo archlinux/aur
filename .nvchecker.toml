@@ -1,0 +1,5 @@
+[diskwatch-bin]
+source = "github"
+github = "matthart1983/diskwatch"
+use_max_tag = true
+prefix = "v"

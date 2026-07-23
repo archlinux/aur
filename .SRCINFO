@@ -1,0 +1,24 @@
+pkgbase = diskwatch-bin
+	pkgdesc = Single-host, read-only disk diagnostics TUI (prebuilt binary)
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/matthart1983/diskwatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = smartmontools
+	provides = diskwatch=0.1.3
+	conflicts = diskwatch
+	options = !strip
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/matthart1983/diskwatch/v0.1.3/LICENSE
+	source = README-0.1.3.md::https://raw.githubusercontent.com/matthart1983/diskwatch/v0.1.3/README.md
+	sha256sums = e78d969849862ac5abf431de8929c62759311a0cc58fd404eaf30996ab3f9162
+	sha256sums = d245e0c31719cd2fdf3125b0464e4db0ffd7b4a368821ddf057a2e064b39cc95
+	source_x86_64 = diskwatch-0.1.3-x86_64.tar.gz::https://github.com/matthart1983/diskwatch/releases/download/v0.1.3/diskwatch-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 533a3d02e09c94cee92750dab066e49fa4599f280e5e1f00c6067f8d31dfe6c8
+	source_aarch64 = diskwatch-0.1.3-aarch64.tar.gz::https://github.com/matthart1983/diskwatch/releases/download/v0.1.3/diskwatch-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 7dc9d472a4c544b1cf2bee748b0128cf5266bfc79312456a5f5954ed12f1e105
+
+pkgname = diskwatch-bin
