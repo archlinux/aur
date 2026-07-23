@@ -3,7 +3,7 @@ image: archlinux:latest
 before_script:
   - pacman -Sy --noconfirm git base-devel openssh curl grep
   - useradd -m builduser
-  - echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+  - echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
   - eval $(ssh-agent -s)
   - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p /home/builduser/.ssh
