@@ -27,7 +27,7 @@ provides=('arbit' 'donutstudio')
 conflicts=('donutstudio-bin')
 install="${pkgname}.install"
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('5104c8f68ad13ae238168cfc39ad088433ae680760d5a27ec99150ae9ca0c2f0')
+sha256sums=('a93fba9b6f87b1fdabbe6cf97c0b5f15dcadd4bf5fbdf76ac8f600b07cbecf39')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
