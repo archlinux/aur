@@ -1,0 +1,64 @@
+#!/bin/sh
+# i3blocks-timer — countdown timer / stopwatch blocklet for i3blocks.
+#
+# Scroll sets the duration while idle. Starting at 0s gives a stopwatch
+# (counts up, no limit); anything above counts down and alarms at zero.
+# Left click: start. Right click: stop/reset. Scroll: +/-1 minute (idle only).
+#
+# i3blocks config:
+#   [timer]
+#   command=/usr/lib/i3blocks/timer
+#   interval=1
+#   markup=pango
+
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
+STATE="$STATE_DIR/i3blocks-timer"
+mkdir -p "$STATE_DIR"
+if [ -f "$STATE" ]; then
+    read -r DUR START < "$STATE"
+else
+    DUR=300 START=0
+fi
+NOW=$(date +%s)
+
+case "$BLOCK_BUTTON" in
+    1) [ "$START" -eq 0 ] && START=$NOW;;
+    3) START=0;;
+    4) [ "$START" -eq 0 ] && DUR=$((DUR + 60));;
+    5) [ "$START" -eq 0 ] && { DUR=$((DUR - 60)); [ "$DUR" -lt 0 ] && DUR=0; };;
+esac
+
+fmt() {
+    if [ "$1" -ge 60 ]; then
+        printf '%dm%02ds' $(($1 / 60)) $(($1 % 60))
+    else
+        printf '%ds' "$1"
+    fi
+}
+
+show() {
+    echo "$DUR $START" > "$STATE"
+    if [ "$DUR" -eq 0 ]; then
+        LABEL="Elapsed:"
+    else
+        LABEL="Timer:"
+    fi
+    if [ "$START" -eq 0 ]; then
+        echo "$LABEL $(fmt "$1")"
+    else
+        echo "<span color='#00ff00'>$LABEL $(fmt "$1")</span>"
+    fi
+}
+
+if [ "$START" -eq 0 ]; then
+    show "$DUR"
+elif [ "$DUR" -eq 0 ]; then
+    show $((NOW - START))
+elif [ $((DUR + START - NOW)) -le 0 ]; then
+    (notify-send 'timer' 'Time is up!'
+     paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga) >/dev/null 2>&1 &
+    START=0
+    show "$DUR"
+else
+    show $((DUR + START - NOW))
+fi

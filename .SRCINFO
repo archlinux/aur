@@ -1,0 +1,17 @@
+pkgbase = i3blocks-timer
+	pkgdesc = Countdown timer and stopwatch blocklet for i3blocks
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/i3blocks-timer
+	arch = any
+	license = MIT
+	depends = i3blocks
+	depends = libnotify
+	depends = libpulse
+	depends = sound-theme-freedesktop
+	source = timer
+	source = LICENSE
+	sha256sums = a59c933ffadd053e6b416a830d3cc9956836b9000c978462545afcae5d7e0528
+	sha256sums = c6a073c489f9d81998a1a20d514efd9e8579302eafffb5bc69a86bfa0e6c363f
+
+pkgname = i3blocks-timer
