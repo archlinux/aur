@@ -28,7 +28,6 @@ package() {
     find usr -type d -exec install -d -m755 "${pkgdir}/{}" \;
 
     install -m755 usr/bin/yurigram "${pkgdir}/usr/bin/yurigram"
-    install -m755 usr/bin/yurigram-launcher "${pkgdir}/usr/bin/yurigram-launcher"
 
     find usr/share -type f -exec install -m644 {} "${pkgdir}/{}" \;
 }
