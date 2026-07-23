@@ -12,6 +12,6 @@ pkgbase = keevault-bin
 	provides = keevault
 	conflicts = keevault
 	source = https://github.com/lyj404/keevault/releases/download/v0.7.7/KeeVault-v0.7.7-linux-x64.tar.gz
-	sha256sums = 707309c1ffdd287404eb8a40eb97f9e8e5e31bc78cd6f5ab1429818f45ffa109
+	sha256sums = cb7062ec89dc426e60694d1eeed525c989222c39e3de425b4f7fa22e1c366fcc
 
 pkgname = keevault-bin
