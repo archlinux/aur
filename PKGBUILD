@@ -37,6 +37,7 @@ validpgpkeys=(
     '2B5F3B2028801E15F57AAA309906C97AA15D984F' # Fernando Fernandez Mancera <ffmancera@riseup.net>
     'AB7CCD3127483231C544DA66A63D99D7755A67054' # Wen Liang <liangwen12year@gmail.com>
     '07F9AEC86144386D9576210B66A44781B4EBC2D0' # Íñigo Huguet <ihuguet@redhat.com>
+    'C698DE9589AD876D618B03B4157D02EF4DD5D752' # Ján Václav <jvaclav@redhat.com>
 )
 
 _pick() {
