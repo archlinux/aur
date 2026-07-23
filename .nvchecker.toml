@@ -1,0 +1,5 @@
+[jqsh-bin]
+source = "github"
+github = "bmatsuo/jqsh"
+use_latest_release = true
+prefix = "v"
