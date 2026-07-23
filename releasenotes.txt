@@ -1,29 +1,76 @@
-# Gaia Sky 3.7.4
+# Gaia Sky 3.8.0
 
-Gaia Sky 3.7.4 brings a major overhaul of the atmospheric scattering model with ozone absorption, Bruneton's density scale, a unified ground/sky integrator, and a physically-grounded parametrization. It also includes important bugfixes for the keyframe system, and build system updates.
+This release brings a major update of the procedural planet generation system, new high-resolution icons, and many more new features and bug fixes.
 
 ## Features
 
-- Rendering
-  - Overhaul the atmospheric scattering model. The previous O'Neil-based implementation used separate, divergent code paths for the ground and sky (atmosphere dome) shaders, leading to unstable behavior when parameters changed and visible banding artifacts at low sample counts. The new implementation consolidates both into a single unified `integrateAtmosphere()` function shared by the ground and sky shaders. It adopts Bruneton's 4th-order polynomial approximation of the Chapman function for the density scale, which eliminates artifacts at grazing angles. The scattering color is correctly blended using glow and transmittance, and the tone mapping exposure is unified across both paths.
-  - Consider elevation displacement in scattering calculations. The vertex shader now correctly accounts for the terrain height offset when computing the vertex position for atmospheric scattering.
-  - Add ozone (O₃) absorption to atmospheric scattering. Ozone is modeled as a Gaussian density profile centered in the stratosphere (default peak at 25 km altitude, \~20 km width). The absorption coefficients match the Chappuis band shape (peaking at \~600 nm in the red, with significant absorption in green and minimal in blue). Parametrization adopts O₃ optical depth, the vertical optical depth of ozone at red (\~600 nm, Chappuis peak). The Earth reference value us \~0.025.
-  - Expose ozone optical depth in the procedural planet dialog. Adds new slider to the procedural planet generation window.
+### Procedural planet generation
+- Add blocky (city) noise and simplify grid noise. Add normal based on dFdx/y. Add crater noise.
+- Expose warp parameters to UI, connect them via effect, filter, and uniforms in shaders. Improve internal noise parametrization with domain warping and unified FBM code.
+- Add default values to most procedural generation sliders.
+- Add plains code in the shader.
+- Add controls to generate colored atmospheres.
+- Add latitude influence slider and parametrization.
+- Implement 3D texture lookup for the biome. Biomes can now be looked up in X (moisture), Y (elevation), and Z (temperature).
+- Improve generation overall. Add new presets (lava, tropical, desert, etc.).
+- Merge old biome + surfacegen passes into a single off-screen render pass, `proceduralsurface`. This halves GPU bandwidth per generation, avoids 8-bit noise quantization through the biome texture, and consolidates procedural surface generation into a single pass.
+- Add remap parameter to planet procedural generation to remap result after base level clamp.
+- Remove power and amplitude from noise parametrization, add smoothness.
+- Separate biome shader for terrain and clouds. Improve parametrization.
+- Add tessellation capability detection.
+- Tone down cloud limb darkening by masking with smoothstep that depends on the distance to vertex versus planet radius ratio.
+- Set maximum number of samples in atmospheric scattering to 6.
+
+### UI & icons
+- Update marker icons, component type icons, and most UI icons to higher resolution for better HiDPI support.
+- Fine-tune emission and more, rearrange UI.
+- Improve layout of procedural planet generation window by separating presets from generation parameters.
+- Bind 'N' to expand and collapse the camera info pane.
+- Start with camera info interface collapsed by default. Update expand/collapse icons to more visible and standard ones. Use 'solar' icon for debug window.
+- Close active pane (if any) on Escape.
+
+### View modes
+- Implement custom panes for Stereo, Panorama, Planetarium, and Orthosphere view modes, with settings and an exit button. Disable Stereo GUI. Fix mode switches. Part of [#918](https://codeberg.org/gaiasky/gaiasky/issues/918) and [#920](https://codeberg.org/gaiasky/gaiasky/issues/920).
+
+### Particles & catalogs
+- Add `renderTarget` attribute to particle sets so they can be rendered to the second (layer) buffer, like lines and labels.
+- Add optional on-focus load for proximity descriptors. Part of [#905](https://codeberg.org/gaiasky/gaiasky/issues/905).
+- Add new component type 'Pulsars', for pulsar catalogs and objects.
+
+### Other
+- Update splash image.
 
 ## Bug Fixes
 
-- Fix regression in which the keyframe visual representation was not visible ([#916](https://codeberg.org/gaiasky/gaiasky/issues/916)).
-- Fix locale initialization sequence by passing the settings object. At startup, the `GaiaSky` instance has not been initialized, so i18n always defaulted to the system locale regardless of the settings ([#915](https://codeberg.org/gaiasky/gaiasky/issues/915)).
-- Check for SSBO extension additionally to the compute shader one in `isComputeShaderSupported()`. Avoids a crash when the driver supports compute shaders but not OpenGL 4.3 nor SSBO ([#914](https://codeberg.org/gaiasky/gaiasky/issues/914)).
-- Fix dependency on Java >=26 in AUR package. Required for compact object headers support without `UnlockExperimentalVMOptions`.
-- Fix directory selection in file picker. The file picker dialog now correctly selects directories instead of files when a directory path is provided.
+### Vritual Reality
+- Fix regression in which VR UI would not be added correctly to the scene graph and would never appear. This affected 3.7.3 and 3.7.4.
+- Remove diffuse color from VRUI and VR models to avoid them looking washed out.
 
-## Localization
+### Rendering
+- Correctly dispose old textures on procedural generation.
+- Cube-spheres and octahedron-spheres are now properly UV-mapped, and their tangents/bitangents are properly set. Both work with procedural generation and regular texturing.
+- Honor `colorIfTexture` attribute in material, which defaults to `false`. This prevents the regular `base.color` from being set to the material and used in the shader (`mix()`) if a diffuse texture is already present.
+- Polylines added from script do not have the camera correction. Use CPU lines by default.
+- Adjusting point size of one star dataset no longer affects all star datasets. Fixes [#921](https://codeberg.org/gaiasky/gaiasky/issues/921).
+- Component type visibility now affects post-processing effects in ray-marching objects. Additional `u_opacity` uniform is passed in, needs in-shader blending. Part of [#905](https://codeberg.org/gaiasky/gaiasky/issues/905).
+- Do not try to compile compute shader a second time in `reload()` method when compute is not supported.
+- Use true global orientation for labels in cubemap modes to prevent visible seams.
+- Disable light glow in cubemap mode. Set billboard scale correctly with respect to light glow. Fixes [#917](https://codeberg.org/gaiasky/gaiasky/issues/917).
+- Do not compute camera visibility for labels in cubemap modes.
 
-- Update translation files with missing keys, bringing all locale files to 100% completion.
-- Update screenshot URLs in metainfo file to point to the current hosting locations.
+### Other
+- Use action IDs instead of names for matching in key bindings.
+- Reset defaults in visual settings component to use true program defaults instead of user configuration values.
+- Make base billboard star size consistent with star glow when glow effect is off. Guard settings from being null with assertion.
+- Fix missing break in name lookup for proximity activators.
+- Fix occlusion clouds not working correctly when external clouds URL is defined but `pullCloudData` setting is off.
+- Fix regression in maximum vertex shader storage block detection during compute shader capability determination.
+- Wrap new version popup in a post-runnable so that GL context is valid.
 
-## Build System
+## Code refactoring
+- Move gdx overwrites to render package, rename Noise effect and filter to Biome.
 
-- Update to libGDX 1.14.2. This major version bump brings improvements to the underlying graphics framework.
-- Update Gradle wrapper to 9.5.1.
+## Build system
+- Update LWJGL3 to version 3.3.4.
+- Upgrade to Gradle 9.6.1.
+- Upgrade JRE bundle to JDK-26.0.1+8 in install4j build file.
