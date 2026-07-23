@@ -3,7 +3,7 @@
 
 _commit="d1e885a271de3477bea212508be88aecff171a26"
 pkgname="readpe"
-pkgver="0.85"
+pkgver="0.85.1"
 pkgrel="1"
 pkgdesc="PE file analysis toolkit"
 arch=("x86_64")

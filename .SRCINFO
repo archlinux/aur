@@ -1,6 +1,6 @@
 pkgbase = readpe
 	pkgdesc = PE file analysis toolkit
-	pkgver = 0.85
+	pkgver = 0.85.1
 	pkgrel = 1
 	url = https://github.com/mentebinaria/readpe
 	arch = x86_64
