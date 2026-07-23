@@ -12,7 +12,7 @@ pkgname=mathematica
 pkgdesc='Computational software for mathematics, with offline documentation bundled'
 pkgver=15
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
-_pkgver=${_major}.${_minor:-0}
+_minor=${_minor:-0}
 pkgrel=1
 url='http://www.wolfram.com/mathematica/'
 arch=(x86_64)
@@ -41,19 +41,19 @@ optdepends=(
   'ttf-dejavu: correct fonts for Greek characters and inline TeX'
   'libcups: printer support'
 )
-# Source URL has an unstable signature parameter when not logged in, like with curl or wget.
-# E.g.: <a href="https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false&signature=09d7f5...">
-_source_url="$(
-  # shellcheck disable=SC2312
-  curl -s https://www.wolfram.com/download-center/ \
-    | grep 'account.wolfram.com/dl/WolframApp' \
-    | grep -E "version=${_pkgver}\b" \
-    | grep 'platform=Linux' \
-    | grep -v 'includesDocumentation=false' \
-    | sed -E 's/.*\bhref="([^"]+)".*/\1/' \
-    | uniq
-)"
-source=("Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
+_source_url='https://account.wolfram.com/dl/WolframApp'
+# Source URL has a dynamic signature parameter that allows downloads without logging in. You can
+# skip fetching this value if you already have the installer by setting SKIP_DYNAMIC_SIGNATURE=1.
+# Signatures are updated hourly, so we hide them by default in .SCRINFO and the AUR page.
+if [[ ${SKIP_DYNAMIC_SIGNATURE:-${PRINTSRCINFO}} != 1 ]]; then
+  _dynamic_signature=$(
+    set -o pipefail
+    curl -fsSL https://www.wolfram.com/download-center/ \
+      | grep -oP "\bhref=\"${_source_url/./\.}\?[^\"]+\K&signature=[a-zA-Z0-9]+(?=\"|&)" \
+      | uniq
+  )
+fi
+source=("Wolfram_${pkgver}.sh::${_source_url}?version=${_major}.${_minor}${_patch/#?/.&}&platform=Linux&downloadManager=false${_dynamic_signature}"
         'wolfram-remove-xdg-scripts.patch')
 sha256sums=('e46ba53f714cee9fd104a26c915cf2c0f189312f7418d013a5ccdc71e2a650aa'
             '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
@@ -107,7 +107,7 @@ prepare() {
   fi
 
   msg2 'Extracting Mathematica installer...'
-  bash "Wolfram_${pkgver}_LIN_Bndl.sh" --keep --target bundle -- -noexec
+  bash "Wolfram_${pkgver}.sh" --keep --target bundle -- -noexec
 
   patch -t -d bundle/ -Np1 < wolfram-remove-xdg-scripts.patch
 }
@@ -122,11 +122,13 @@ package() {
     -execdir="${pkgdir}/usr/bin" \
     -targetdir="${installdir}" \
     -auto
+  rm bundle/Unix/Installer/WolframInstaller
 
   # Install documentation
   bash bundle/Unix/.bundle/Unix/Installer/MathInstaller \
     -targetdir=tmp \
     -auto
+  rm -rf bundle
 
   cd tmp
   find Documentation/English -type d -exec mkdir -p -m755 "${installdir}/{}" \;
@@ -147,14 +149,14 @@ package() {
   msg2 'Copying menu and MIME type information'
 
   install -vD -t "${pkgdir}/usr/share/applications/" \
-    -m644 "SystemFiles/Installation/com.wolfram.Wolfram.${_pkgver}.desktop"
+    -m644 "SystemFiles/Installation/com.wolfram.Wolfram.${_major}.${_minor}.desktop"
   install -vD -t "${pkgdir}/usr/share/desktop-directories/" \
     -m644 SystemFiles/Installation/wolfram-wolfram.directory
   install -vD -t "${pkgdir}/usr/share/mime/packages/" \
     -m644 SystemFiles/Installation/*.xml
   rm -vr SystemFiles/Installation/
 
-  _fix_desktop_file "${pkgdir}/usr/share/applications/com.wolfram.Wolfram.${_pkgver}.desktop"
+  _fix_desktop_file "${pkgdir}/usr/share/applications/com.wolfram.Wolfram.${_major}.${_minor}.desktop"
   _fix_desktop_file "${pkgdir}/usr/share/desktop-directories/wolfram-wolfram.directory"
 
   msg2 'Copying icons'
@@ -170,7 +172,7 @@ package() {
   local i mimetype icon
   for i in 32 64 128; do
     install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
-      -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
+      -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_major}.${_minor}.png"
 
     for mimetype in "${mimetypes[@]}"; do
       icon="SystemFiles/FrontEnd/SystemResources/X/$(basename "${mimetype}")-${i}.png"
@@ -203,7 +205,7 @@ _fix_desktop_file() {
     /^Encoding=/ d
     # executable path contains BUILDDIR
     /^TryExec=/ s|=.*|=/usr/bin/WolframNB|
-    /^Exec=/ s|=.*|=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|
+    /^Exec=/ s|=.*|=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_major}.${_minor} %F|
     # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
     /^Type=Application\$/,\$ {
       /^Comment=/ a GenericName=Mathematical Software
