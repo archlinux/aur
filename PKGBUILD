@@ -3,9 +3,9 @@
 pkgname=dankcalendar-git
 _pkgname=dankcalendar
 _binname=dcal
-_iconname=dankcalendar
+_iconname=com.danklinux.dankcalendar
 _desktopid=com.danklinux.dankcalendar
-pkgver=0.2.3.r4.g0147dba
+pkgver=0.2.5.r1.gac48e5f
 pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
