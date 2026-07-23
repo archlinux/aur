@@ -1,0 +1,19 @@
+pkgbase = eugene-bin
+	pkgdesc = Lint Postgres schema migrations for locks and downtime risks
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/kaaveland/eugene
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = eugene
+	conflicts = eugene
+	options = !debug
+	source = LICENSE-0.8.3::https://raw.githubusercontent.com/kaaveland/eugene/0.8.3/LICENSE.md
+	sha256sums = 64fc54cd75c6d040f46718cc676982e16280fd65792208e92c13ef08a69eec2d
+	source_x86_64 = eugene::https://github.com/kaaveland/eugene/releases/download/0.8.3/eugene-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 444c4bb101a86e917b73779dbc9be8f50039c53c54dce4be3544d1b3d186d845
+	source_aarch64 = eugene::https://github.com/kaaveland/eugene/releases/download/0.8.3/eugene-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 97ce9c9838f636bed50b79385e1c5c8f22788d1fde31e25c9cddba959003c9bf
+
+pkgname = eugene-bin
