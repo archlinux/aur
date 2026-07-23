@@ -1,0 +1,16 @@
+pkgbase = opencode-bwrap
+	pkgdesc = Run opencode inside a bubblewrap sandbox for filesystem isolation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/didvc/opencode-bwrap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = opencode
+	depends = bubblewrap
+	source = opencode-bwrap
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = opencode-bwrap
