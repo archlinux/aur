@@ -1,0 +1,5 @@
+[gitqlient-bin]
+source = "github"
+github = "francescmaestre/GitQlient"
+use_latest_release = true
+prefix = "v"
