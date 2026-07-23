@@ -5,8 +5,8 @@ _pkgname=zmx
 pkgname=${_pkgname}-bin
 pkgdesc="Session persistence for terminal processes"
 
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${_urlbin}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${_urlbin}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('20e2a73f5a5afc48447843706d1747504f395b402770d5dbd2d15fd761b556d5'
+sha256sums=('d7124de50b0966db9b40d3bbef0f37bd831e0294368c5f66af358836ea459399'
             '56bab989df218f62a6deb746b43903340291dafbc7a811e3fa0c8ea889f8f5ea')
-sha256sums_x86_64=('7ee4b12150dd0d736d271ba1cb06942244c10b857841a663517297ac65c720dd')
-sha256sums_aarch64=('dbbb3df7428bbe645cc26f34dd67b61b07953a8ce3daa6f3e501c49d392724f8')
+sha256sums_x86_64=('8b8783d7b120c9ffd0acf4aee37969054dc0dfef3c4f3a4728d2efd35f2e97a0')
+sha256sums_aarch64=('77599f66124694fae80bbb1d2fa0eafdb8c648b427a048cad90513ecf6136fc9')
 
 
 build() {
