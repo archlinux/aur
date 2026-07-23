@@ -1,6 +1,6 @@
 pkgbase = riff-client
 	pkgdesc = Native Spotify client for the GNOME desktop
-	pkgver = 25.11
+	pkgver = 26.03
 	pkgrel = 1
 	url = https://github.com/Diegovsky/riff
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = riff-client
 	depends = alsa-lib
 	depends = libpulse
 	options = !lto
-	source = riff-client::git+https://github.com/Diegovsky/riff.git#commit=610e42b187ad5619e33ff058c2e4c344512fcf92
+	source = riff-client::git+https://github.com/Diegovsky/riff.git#commit=ccfc77454ecd522bf110cedd08c683fc9fd7f3cb
 	sha256sums = SKIP
 
 pkgname = riff-client
