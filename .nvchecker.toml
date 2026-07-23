@@ -1,0 +1,5 @@
+[mult-bin]
+source = "github"
+github = "dhth/mult"
+use_latest_release = true
+prefix = "v"
