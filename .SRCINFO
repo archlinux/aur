@@ -1,0 +1,25 @@
+pkgbase = herdr-corral-bin
+	pkgdesc = VS Code-style terminal workbench plugin for Herdr (Explorer / SCM / GitHub)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xifan2333/herdr-corral
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glib2
+	optdepends = herdr: launch as a left-docked sidebar plugin
+	optdepends = github-cli: GitHub sidebar and detail client
+	optdepends = nvim: owner-scoped editor / preview pane
+	optdepends = imv: open GitHub attachment images from the detail client
+	provides = corral
+	provides = herdr-corral
+	conflicts = corral
+	conflicts = herdr-corral
+	conflicts = herdr-corral-git
+	options = !strip
+	source_x86_64 = herdr-corral-0.1.0-x86_64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.0/herdr-corral-0.1.0-x86_64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = herdr-corral-0.1.0-aarch64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.0/herdr-corral-0.1.0-aarch64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = herdr-corral-bin
