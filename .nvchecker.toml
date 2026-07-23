@@ -1,0 +1,5 @@
+[got-bin]
+source = "github"
+github = "melbahja/got"
+use_latest_release = true
+prefix = "v"
