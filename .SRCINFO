@@ -1,0 +1,26 @@
+pkgbase = matchlock
+	pkgdesc = Lightweight Firecracker micro-VM sandbox for running AI agents securely
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://github.com/jingkaihe/matchlock
+	install = matchlock.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = go
+	depends = e2fsprogs
+	depends = erofs-utils
+	depends = libcap
+	depends = nftables
+	depends = kmod
+	depends = procps-ng
+	options = !debug
+	source = matchlock-0.2.16.tar.gz::https://github.com/jingkaihe/matchlock/archive/v0.2.16.tar.gz
+	sha256sums = a73fd65180f45fc741a9192645d1b585125d8cea6e4d66769725dda3b3a8de48
+	source_x86_64 = https://github.com/firecracker-microvm/firecracker/releases/download/v1.10.1/firecracker-v1.10.1-x86_64.tgz
+	sha256sums_x86_64 = 36112969952b0e34fadcfca769d48a55dc22cbba99af17e02bd0e24fc35adc77
+	source_aarch64 = https://github.com/firecracker-microvm/firecracker/releases/download/v1.10.1/firecracker-v1.10.1-aarch64.tgz
+	sha256sums_aarch64 = 9e3641071de140979afaac0c52fdc107baeba398bdb5709c12f77ee469207fcd
+
+pkgname = matchlock

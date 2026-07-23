@@ -1,0 +1,20 @@
+_setcap() {
+  setcap cap_net_admin,cap_net_raw+ep usr/lib/matchlock/matchlock 2>/dev/null || :
+}
+
+post_install() {
+  _setcap
+  cat <<'EOF'
+Matchlock installed.
+
+  * IP forwarding is enabled at boot via /usr/lib/sysctl.d/99-matchlock.conf.
+    Apply it now with: sysctl --system
+  * Load nftables support if needed: modprobe nf_tables
+  * Enroll users: sudo matchlock setup user <name> (re-login afterwards)
+  * Verify the host with: matchlock diagnose
+EOF
+}
+
+post_upgrade() {
+  _setcap
+}
