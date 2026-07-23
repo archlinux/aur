@@ -14,7 +14,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd rime-custom-config
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local desc=$(git describe --long --tags 2>/dev/null)
+  if [[ -n $desc ]]; then
+    printf '%s' "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
