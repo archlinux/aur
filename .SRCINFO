@@ -1,6 +1,6 @@
 pkgbase = github-copilot-cli
 	pkgdesc = GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal.
-	pkgver = 1.0.73
+	pkgver = 1.0.74
 	pkgrel = 1
 	url = https://github.com/github/copilot-cli
 	arch = x86_64
@@ -16,14 +16,14 @@ pkgbase = github-copilot-cli
 	conflicts = github-copilot
 	conflicts = github-copilot-cli-legacy
 	replaces = github-copilot
-	noextract = copilot-1.0.73.tgz
+	noextract = copilot-1.0.74.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = https://registry.npmjs.org/@github/copilot/-/copilot-1.0.73.tgz
-	source = CHANGELOG-1.0.73.md::https://raw.githubusercontent.com/github/copilot-cli/v1.0.73/changelog.md
-	b2sums = e443d4ba4860d322f3043f1c1da436016c47269e40cdefeb4a37e01de08d6a0feb1127560b74f47b19e26a09da75a4c4cff6e5a0df2361e9f6466ccf1dd92eda
-	b2sums = 20a03e920dd3b20e9c82fdfeef5f96db62736990f458b356e53b5dfce65298576d5513c20349ef476e6950d4c45aae85038fbafd0be6c54bc8b5bdf1a6e47371
+	source = https://registry.npmjs.org/@github/copilot/-/copilot-1.0.74.tgz
+	source = CHANGELOG-1.0.74.md::https://raw.githubusercontent.com/github/copilot-cli/v1.0.74/changelog.md
+	b2sums = 751a35fd205ee81c320b3ef8c56f2367f7a1b52b7f101b2e2e82a9657bc1a3a6d673986aced874a12dacc7aeab59a1419dcfa304a9a3ffc7009236a3fbc47c40
+	b2sums = 1620d8f766e01ebf6b89e9419f69e1acfcadd522f435755254a549fceebe9675b2c7a579371316811f8f058e7b552da2b31ded94db2ffe05417b4c4412efdbcd
 
 pkgname = github-copilot-cli
