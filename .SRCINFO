@@ -1,0 +1,19 @@
+pkgbase = myx
+	pkgdesc = A lean, beautiful terminal Spotify player
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/HaseebKhalid1507/Myx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = alsa-lib
+	makedepends = openssl
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = openssl
+	options = !lto
+	source = https://github.com/HaseebKhalid1507/Myx/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = cc81c9027fb4609da9cb62ab94c676546674ad2eefed5d6d6d0a594ba47df8cd
+
+pkgname = myx
