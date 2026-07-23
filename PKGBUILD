@@ -1,7 +1,7 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=quarkus-agent-mcp-bin
-pkgver=1.2.3 # datasource=github-releases depName=quarkusio/quarkus-agent-mcp
+pkgver=1.2.4 # datasource=github-releases depName=quarkusio/quarkus-agent-mcp
 pkgrel=1
 pkgdesc="A standalone MCP server that enables AI coding agents to create, manage, and interact with Quarkus applications."
 arch=(any)
@@ -14,7 +14,7 @@ source=(
 	"LICENSE-${pkgver}::${url}/raw/refs/tags/${pkgver}/LICENSE"
 )
 
-sha256sums=('03dbe37500629959775949e888e38457b50cb40594bec68625c19f06bc1570bb'
+sha256sums=('d2028885d24b7448508d73ce41968beb84cfaab1dc1c66a4889ad32105a08997'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 noextract=("quarkus-agent-mcp-${pkgver}-runner.jar")
