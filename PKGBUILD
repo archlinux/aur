@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-pkgver=0.8.65
+pkgver=0.8.66
 pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
@@ -13,7 +13,6 @@ replaces=()
 depends=(
     sh
     electron
-    glibc
     libgcc
     libstdc++
     java-runtime
@@ -33,24 +32,21 @@ makedepends=(
     poppler
     ghostscript
     node-gyp
-    nodejs
+    nodejs-lts-jod 
 )
-optdepends=(
-    # "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
-    # "python-odxtools: Utilities to work with the ODX standard for automotive diagnostics"
-    # "python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
-    # "python-canmatrix: Canmatrix is a python package to read and write several CAN (Controller Area Network) database formats"
-)
+optdepends=()
 backup=()
 options=(!debug !strip)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('0453b77c65de8a3e05e1b196afcb5ad384382016b1dddabcc3be48aa1b2e1905')
+sha256sums=('f9477eca1ce2ae62c79117ebfe78bdb2266628d5716ccc51c16c7552442eb048')
 # noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _pkgname=EcuBus-Pro
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    # npm 12 默认 allow-remote=none，会拒绝 lockfile 中 resolved 为完整 URL 的“远程”tarball（如 npmmirror 镜像），需显式放开
+    export npm_config_allow_remote=all
     cd ${srcdir}/${pkgname}/
     HOME="${srcdir}/.electron-gyp"
     {
@@ -62,6 +58,8 @@ prepare() {
 }
 
 build() {
+    # npm 12 默认 allow-remote=none，会拒绝 lockfile 中 resolved 为完整 URL 的“远程”tarball（如 npmmirror 镜像），需显式放开
+    export npm_config_allow_remote=all
     cd ${srcdir}/${pkgname}/
     npm run native
     npm run worker
