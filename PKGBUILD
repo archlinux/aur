@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=autofilm-git
-pkgver=1.5.1.r141.gef93942
-pkgrel=3
+pkgver=2.0.0.r0.gdad36d5
+pkgrel=1
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
 arch=($CARCH)
 url="https://github.com/Akimio521/AutoFilm"
@@ -40,7 +40,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --exclude=push --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }

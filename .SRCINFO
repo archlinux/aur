@@ -1,7 +1,7 @@
 pkgbase = autofilm-git
 	pkgdesc = A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp.
-	pkgver = 1.5.1.r141.gef93942
-	pkgrel = 3
+	pkgver = 2.0.0.r0.gdad36d5
+	pkgrel = 1
 	url = https://github.com/Akimio521/AutoFilm
 	arch = x86_64
 	license = AGPL-3.0-only
