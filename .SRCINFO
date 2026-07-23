@@ -1,6 +1,6 @@
 pkgbase = axolotl-launcher
 	pkgdesc = A cross-platform Minecraft launcher
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Mystic-Stars/Axolotl
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = axolotl-launcher
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
 	options = !strip
-	source = axolotl-launcher-1.4.0.tar.gz::https://github.com/Mystic-Stars/Axolotl/archive/refs/tags/v1.4.0.tar.gz
+	source = axolotl-launcher-1.5.0.tar.gz::https://github.com/Mystic-Stars/Axolotl/archive/refs/tags/v1.5.0.tar.gz
 	source = axolotl-launcher.desktop
 	source = red.ghs.axolotl.xml
 	sha256sums = 021452452d493d7e67e71dc4314ed2d31abf55851b1cc5b85234d6b5f3e93237

@@ -1,7 +1,7 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
 
 pkgname=axolotl-launcher
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
