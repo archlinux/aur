@@ -6,7 +6,7 @@
 # the download URL since the GitHub artifact doesn't have -bin.
 _pkgname=bananadashboard
 pkgname=${_pkgname}-bin
-pkgver=0.1.7
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Desktop system dashboard by BananaBrother77"
 arch=('x86_64')
