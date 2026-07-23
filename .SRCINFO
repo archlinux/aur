@@ -1,17 +1,13 @@
 pkgbase = hyprpilot-bin
-	pkgdesc = Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)
-	pkgver = 2.8.0
+	pkgdesc = Config-driven CLI launcher that execs the vendor's native agent CLI (prebuilt binary)
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/hyprpilot/hyprpilot
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk-4.1
-	depends = gtk3
-	depends = gtk-layer-shell
-	depends = libappindicator-gtk3
 	provides = hyprpilot
 	conflicts = hyprpilot-git
-	source = hyprpilot-bin-2.8.0.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v2.8.0/hyprpilot-v2.8.0-x86_64-unknown-linux-gnu.tar.zst
-	b2sums = d9c4e946f784114c9b1649096d5b5b0eca0d2d82425e325b8261ddaf01a13e5c919bcbaae22e33e9934167c61779ab6b886f804c421ca2a863b53022bd8b44b7
+	source = hyprpilot-bin-3.0.0.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v3.0.0/hyprpilot-v3.0.0-x86_64-unknown-linux-gnu.tar.zst
+	b2sums = 4c92a98f5a84f18e98a883be7cdff6ffb9bcdde92afd75cb997265ee0f38f229ef49c899b5e6bd52acb4fd85836146420efd9c1f787e01811845500e0e2bd554
 
 pkgname = hyprpilot-bin

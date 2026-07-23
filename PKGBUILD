@@ -1,32 +1,11 @@
 # Maintainer: Cenk Kılıç <cenk1cenk2cenk3@gmail.com>
 pkgname=hyprpilot-bin
-pkgver=2.8.0 # x-release-please-version
+pkgver=3.0.0 # x-release-please-version
 pkgrel=1
-pkgdesc="Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)"
+pkgdesc="Config-driven CLI launcher that execs the vendor's native agent CLI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/hyprpilot/hyprpilot"
 license=('MIT')
-# Runtime deps — verified via `ldd target/release/hyprpilot` + a read of
-# the `tray-icon` crate's Linux backend. `webkit2gtk-4.1` covers webkit
-# + javascriptcoregtk; `gtk3` covers gdk + glib + cairo + pango +
-# harfbuzz transitively; `gtk-layer-shell` is the C wrapper the
-# `gtk-layer-shell` crate binds against — Wayland layer-shell anchored
-# overlay needs it.
-#
-# `libappindicator-gtk3` is required at RUNTIME via `dlopen` (the
-# `libappindicator-sys` crate uses `libloading`, which is why `ldd`
-# shows no static reference). tauri 2's `tray-icon = "0.23"` feature
-# initialises a `TrayIconBuilder` at daemon startup; on GNOME with the
-# AppIndicator extension that path opens `libappindicator-gtk3.so.1`
-# to publish the icon. On Hyprland there's no tray host so the dlopen
-# silently no-ops, but the dep stays declared so KDE / GNOME users
-# don't lose the tray with a confusing silent failure.
-depends=(
-  'webkit2gtk-4.1'
-  'gtk3'
-  'gtk-layer-shell'
-  'libappindicator-gtk3'
-)
 provides=('hyprpilot')
 conflicts=('hyprpilot-git')
 source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v$pkgver/hyprpilot-v$pkgver-x86_64-unknown-linux-gnu.tar.zst")
@@ -35,14 +14,13 @@ source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releas
 # always carries real checksums against the freshly-uploaded
 # tarball). Local-build path: run `updpkgsums` manually after a
 # pkgver edit.
-b2sums=('d9c4e946f784114c9b1649096d5b5b0eca0d2d82425e325b8261ddaf01a13e5c919bcbaae22e33e9934167c61779ab6b886f804c421ca2a863b53022bd8b44b7')
+b2sums=('4c92a98f5a84f18e98a883be7cdff6ffb9bcdde92afd75cb997265ee0f38f229ef49c899b5e6bd52acb4fd85836146420efd9c1f787e01811845500e0e2bd554')
 
 package() {
   cd "$srcdir/hyprpilot"
   install -Dm755 hyprpilot "$pkgdir/usr/bin/hyprpilot"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 hyprpilot.desktop "$pkgdir/usr/share/applications/hyprpilot.desktop"
-  install -Dm644 hyprpilot.service "$pkgdir/usr/lib/systemd/user/hyprpilot.service"
   for size in 16 32 48 64 128 256 512; do
     install -Dm644 "icons/${size}x${size}.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/hyprpilot.png"
