@@ -5,7 +5,7 @@
 
 _appname='jmusicbot-arif'
 pkgname="$_appname"
-_pkgverUpstream="0.6.2"
+_pkgverUpstream="0.7.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="A cross-platform Discord music bot with a clean interface (Arif's fork)"
@@ -20,7 +20,7 @@ replaces=('jmusicbot')
 source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/arif-banai/MusicBot/archive/refs/tags/v${_pkgverUpstream}.tar.gz"
         "jmusicbot@.service"
         "jmusicbot.service")
-sha384sums=('b614587c503a0f88acfb0dfae64a0c093e6757191cf37896ea8f78c7c76b812b14d2a571995f0bcf4048df6e40ec2c43'
+sha384sums=('43bba54f161ed648c055860db760651058f08eb390d41686073f6287be641a8166acb4d14396be5cfbed5bfdfc3317bc'
             '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
             'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
 
@@ -76,14 +76,14 @@ package() {
     echo -n \
 "#!/bin/bash
 /usr/bin/java -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
-"                   > "${pkgdir}/usr/bin/jmusicbot"
+"       > "${pkgdir}/usr/bin/jmusicbot"
     chmod -- u=rwx,go=rx "${pkgdir}/usr/bin/jmusicbot"
 
     # Create bash launcher: Command line only
     echo -n \
 "#!/bin/bash
 /usr/bin/java -Dnogui=true -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
-"                   > "${pkgdir}/usr/bin/jmusicbot-nogui"
+"       > "${pkgdir}/usr/bin/jmusicbot-nogui"
     chmod -- u=rwx,go=rx "${pkgdir}/usr/bin/jmusicbot-nogui"
 
     # Place the reference configuration file and create a non-versioned

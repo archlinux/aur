@@ -1,23 +1,22 @@
 pkgbase = jmusicbot-arif
 	pkgdesc = A cross-platform Discord music bot with a clean interface (Arif's fork)
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/arif-banai/MusicBot
 	arch = any
 	license = Apache
 	makedepends = java-environment>=25
 	makedepends = maven
-	makedepends = libxslt
 	depends = java-runtime-headless>=25
 	provides = jmusicbot
 	conflicts = jmusicbot-arif-git
 	conflicts = jmusicbot
 	conflicts = jmusicbot-git
 	replaces = jmusicbot
-	source = JMusicBot-0.6.2.tar.gz::https://github.com/arif-banai/MusicBot/archive/refs/tags/v0.6.2.tar.gz
+	source = JMusicBot-0.7.0.tar.gz::https://github.com/arif-banai/MusicBot/archive/refs/tags/v0.7.0.tar.gz
 	source = jmusicbot@.service
 	source = jmusicbot.service
-	sha384sums = b614587c503a0f88acfb0dfae64a0c093e6757191cf37896ea8f78c7c76b812b14d2a571995f0bcf4048df6e40ec2c43
+	sha384sums = 43bba54f161ed648c055860db760651058f08eb390d41686073f6287be641a8166acb4d14396be5cfbed5bfdfc3317bc
 	sha384sums = 0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88
 	sha384sums = b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75
 
