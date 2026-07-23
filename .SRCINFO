@@ -1,0 +1,12 @@
+pkgbase = cisco7crack
+	pkgdesc = Crypt and decrypt the cisco type 7 passwords
+	pkgver = 0.0_git20121221.f1c21dd
+	pkgrel = 4
+	url = https://github.com/madrisan/cisco7crack
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	source = cisco7crack-0.0_git20121221.f1c21dd-4.tar.gz::https://salsa.debian.org/pkg-security-team/cisco7crack/-/archive/debian/0.0_git20121221.f1c21dd-4/cisco7crack-debian-0.0_git20121221.f1c21dd-4.tar.gz
+	sha256sums = c20801a7e98cf7d686e5e1aeb13c15be39100b0c75b5c3caac6b6a1a09c8e69a
+
+pkgname = cisco7crack
