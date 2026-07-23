@@ -1,6 +1,6 @@
 pkgbase = animalinux
 	pkgdesc = Mascotas animadas en el escritorio para Hyprland/Wayland, con editor de píxeles y pintura
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Sergi122/AnimalinuxApp
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = animalinux
 	optdepends = python-rembg: recorte de fondo con IA (requiere onnxruntime)
 	optdepends = python-onnxruntime: motor IA para rembg
 	optdepends = libwnck3: andar por bordes de ventana y pausa en pantalla completa (backend X11: GNOME/KDE/Xfce/MATE/Cinnamon)
-	source = animalinux-0.4.1.tar.gz::https://github.com/Sergi122/AnimalinuxApp/archive/v0.4.1.tar.gz
-	sha256sums = ae65a9f0bd848b43c93bec19dac0cc6b98da1ac4c87e6528cb64250ed0a13bd4
+	source = animalinux-0.4.2.tar.gz::https://github.com/Sergi122/AnimalinuxApp/archive/v0.4.2.tar.gz
+	sha256sums = fe93bf55ee7ff109665786e315f159d75cbbcdc83e2f0f3c3e9d2e2e7966587f
 
 pkgname = animalinux
