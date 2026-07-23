@@ -1,7 +1,7 @@
 # Maintainer: WindustH <windusth2006@gmail.com>
 
 pkgname=gallery-tui
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A terminal image gallery powered by ratatui and chafa."
 arch=('x86_64' 'aarch64')
