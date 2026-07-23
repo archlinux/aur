@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=herdr-corral-bin
 _pkgname=herdr-corral
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="VS Code-style terminal workbench plugin for Herdr (Explorer / SCM / GitHub)"
 arch=('x86_64' 'aarch64')
