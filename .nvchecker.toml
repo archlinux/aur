@@ -1,0 +1,5 @@
+[pnpm-shell-completion]
+source = "github"
+github = "g-plane/pnpm-shell-completion"
+use_max_release = true
+prefix = "v"
