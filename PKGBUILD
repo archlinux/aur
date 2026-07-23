@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-mobile-git
-pkgver=6.6.90.r82.g6e43a6d
+pkgver=6.6.90.r84.ge9e9ebb
 pkgrel=1
 pkgdesc="Plasma Mobile shell components"
 arch=('any')
