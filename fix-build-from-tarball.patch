@@ -1,26 +1,37 @@
+diff --git a/cecli/models.py b/cecli/models.py
+index 6fa6bed..7b660a7 100644
+--- a/cecli/models.py
++++ b/cecli/models.py
+@@ -1654,7 +1654,7 @@ async def check_for_dependencies(io, model_name):
+         await check_aur_package(io, "google.cloud.aiplatform", "python-aiplatform")
+ 
+ 
+-def get_chat_model_names():
++def get_chat_model_names(query: str = "") -> list:
+     chat_models = set()
+     model_metadata = list(litellm.model_cost.items())
+     model_metadata += list(model_info_manager.local_model_metadata.items())
 diff --git a/pyproject.toml b/pyproject.toml
-index 12833c7..e81844c 100644
+index 74808f9..b15ecdb 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -36,11 +36,13 @@ help = { file = "requirements/requirements-help.in" }
+@@ -34,12 +34,14 @@ dependencies = { file = "requirements/requirements.in" }
+ dev = { file = "requirements/requirements-dev.in" }
+ help = { file = "requirements/requirements-help.in" }
  playwright = { file = "requirements/requirements-playwright.in" }
- tui = { file = "requirements/requirements-tui.in" }
++tui = { file = "requirements/requirements-tui.in" }
  
--[tool.setuptools]
--include-package-data = true
--
+ [tool.setuptools]
+ include-package-data = true
+ 
  [tool.setuptools.packages.find]
 -include = ["cecli*"]
 +where = ["."]
 +include = ["cecli", "cecli.*"]
-+
-+[tool.setuptools.package-data]
-+"*" = ["*.scm"]
-+"aider.resources" = ["*"]
  
- [build-system]
- requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
-@@ -52,4 +54,4 @@ local_scheme = "no-local-version"
+ [tool.uv]
+ exclude-newer = "2 days"
+@@ -55,4 +57,4 @@ local_scheme = "no-local-version"
  
  [tool.codespell]
  skip = "*.svg,*.scss,Gemfile.lock,tests/fixtures/*,cecli/website/assets/*"

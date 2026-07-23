@@ -34,7 +34,7 @@ index 22ae6b0..5a93c2b 100755
      return res
  
 diff --git a/cecli/models.py b/cecli/models.py
-index e2b8bd5..5d02089 100644
+index 3ded65e..6fa6bed 100644
 --- a/cecli/models.py
 +++ b/cecli/models.py
 @@ -26,7 +26,7 @@ from cecli.helpers.nested import deep_merge
@@ -46,7 +46,7 @@ index e2b8bd5..5d02089 100644
  
  RETRY_TIMEOUT = 60
  COPY_PASTE_PREFIX = "cp:"
-@@ -1298,16 +1298,9 @@ async def check_for_dependencies(io, model_name):
+@@ -1649,19 +1649,12 @@ async def check_for_dependencies(io, model_name):
          model_name: The name of the model to check dependencies for
      """
      if model_name.startswith("bedrock/"):
@@ -64,9 +64,13 @@ index e2b8bd5..5d02089 100644
 +        await check_aur_package(io, "google.cloud.aiplatform", "python-aiplatform")
  
  
- def get_chat_model_names():
+-def get_chat_model_names(query: str = "") -> list:
++def get_chat_model_names():
+     chat_models = set()
+     model_metadata = list(litellm.model_cost.items())
+     model_metadata += list(model_info_manager.local_model_metadata.items())
 diff --git a/cecli/scrape.py b/cecli/scrape.py
-index 0722e11..adb4790 100755
+index 390e3e9..ac9b37f 100755
 --- a/cecli/scrape.py
 +++ b/cecli/scrape.py
 @@ -34,7 +34,7 @@ async def check_chromium():
@@ -139,10 +143,10 @@ index 0722e11..adb4790 100755
                  self.playwright_available = False
                  self.print_error(str(e))
 diff --git a/cecli/utils.py b/cecli/utils.py
-index aac9b20..b4f2c50 100644
+index b8a009c..8c7f573 100644
 --- a/cecli/utils.py
 +++ b/cecli/utils.py
-@@ -286,31 +286,10 @@ def split_chat_history_markdown(text, include_tool=False):
+@@ -285,31 +285,10 @@ def split_chat_history_markdown(text, include_tool=False):
      return messages
  
  
@@ -174,7 +178,7 @@ index aac9b20..b4f2c50 100644
      try:
          output = []
          process = subprocess.Popen(
-@@ -385,7 +364,7 @@ def touch_file(fname):
+@@ -384,7 +363,7 @@ def touch_file(fname):
          return False
  
  
@@ -183,7 +187,7 @@ index aac9b20..b4f2c50 100644
      if module:
          try:
              __import__(module)
-@@ -393,20 +372,24 @@ async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_upda
+@@ -392,20 +371,24 @@ async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_upda
          except (ImportError, ModuleNotFoundError, RuntimeError):
              pass
  
@@ -220,7 +224,7 @@ index aac9b20..b4f2c50 100644
  
      success, output = run_install(cmd)
 diff --git a/cecli/versioncheck.py b/cecli/versioncheck.py
-index 05d13fe..372b33b 100644
+index 95ff02b..372b33b 100644
 --- a/cecli/versioncheck.py
 +++ b/cecli/versioncheck.py
 @@ -17,12 +17,10 @@ async def install_from_main_branch(io):
@@ -232,7 +236,7 @@ index 05d13fe..372b33b 100644
          io,
          None,
 -        "Install the development version of cecli from the main branch?",
--        ["git+https://github.com/dwash96/cecli.git"],
+-        ["git+https://github.com/cecli-dev/cecli.git"],
 -        self_update=True,
 +        "cecli-git",
      )

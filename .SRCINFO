@@ -1,6 +1,6 @@
 pkgbase = cecli
 	pkgdesc = AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support
-	pkgver = 0.100.9
+	pkgver = 0.100.14
 	pkgrel = 1
 	url = https://github.com/dwash96/cecli
 	arch = any
@@ -68,12 +68,12 @@ pkgbase = cecli
 	makedepends = python-textual
 	makedepends = python-tomlkit
 	makedepends = python-xxhash
-	source = cecli-0.100.9.tar.gz::https://github.com/dwash96/cecli/archive/refs/tags/v0.100.9.tar.gz
+	source = cecli-0.100.14.tar.gz::https://github.com/dwash96/cecli/archive/refs/tags/v0.100.14.tar.gz
 	source = archlinux_use_system_aur_notice.patch
 	source = fix-build-from-tarball.patch
-	sha512sums = ee3a1e22aea89e8a7cfd1474a6b687c20a84ee17716204941802f2504007c047c5173d2a89d85c1be8fc7844e8be18b8cc4d9ef829fb74508ebd3efd54e579f5
-	sha512sums = 81a4593740fe643bea577d011d427ad962b0f46a9b2121e0f757606af73a097343d31e356ab7d2ad4a9c83e8e713f5bafadba7284fd1a81b30aa75b231e86029
-	sha512sums = 523aed2029146d079de44db15152833a385ff331ca6bb19230cbc92d5abed1a33e4a132a34150ead213a19c7eb715c564b480c8943fd03216400aa6954770d8c
+	sha512sums = d6a1e76b37f5d4e4a42f427b9dcec08b858c3f3077985916d4b24b24e9d3bf9b276a89bb57f35552ca693cd636b1922abb3315bff7a8677c3755f6338216f7f4
+	sha512sums = 5dee1bc48239fd1ba742eb6679fb25b388bae720f97421e587e0c0c13dda8a3f8f538645ba8a39e313f6a5e4a4ffc0cf23c1e98a42ed2146bf97b089d65987e5
+	sha512sums = 3bf2d225fbe8eecbb5312fbfa104e79284ebfb4da4a52d111537c7293e51b4cd87b5f34311f07528beda7015446a613abbd060f083bbdc563e184156877a20ba
 
 pkgname = cecli
 	depends = litellm
