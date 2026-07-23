@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
-pkgver=2026.6.1
+pkgver=2026.7.0
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("https://github.com/bitwarden/clients/releases/download/desktop-v
 source_aarch64=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/${pkgname%-bin}_${pkgver}_arm64.tar.gz")
 noextract=("${pkgname%-bin}_${pkgver}_arm64.tar.gz")
 sha256sums=('685a3279ba62b5ea90ec279b57644da747c4a83dcb67fd41bac3c25420dbb642')
-sha256sums_x86_64=('421bfc6d787d842406909d393c2a9044791e957aa234718ae5670e87ae4deba7')
-sha256sums_aarch64=('c35c70d215736947ff043c00d99b7ee3de6212d1684356e8d680af618b7bf6c6')
+sha256sums_x86_64=('17523257c367f299a76d3670c7e329941fdaf14a4f9321cf38b347e35453ae64')
+sha256sums_aarch64=('ba666bd2b9fad671ae5dd82b8231ab75a2f6a7a3c40e738e795069212e7b2e86')
 
 package() {
   if [ "${CARCH}" == "aarch64" ]; then
@@ -49,8 +49,6 @@ package() {
     desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin} %U" \
     "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
   fi
-
-  chmod 04755 "$pkgdir/opt/Bitwarden/chrome-sandbox"
 
   install -d "$pkgdir/etc/apparmor.d"
   ln -s /opt/Bitwarden/resources/apparmor-profile "$pkgdir/etc/apparmor.d/bitwarden"
