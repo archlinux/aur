@@ -1,6 +1,6 @@
 pkgbase = secureeye
 	pkgdesc = Face authentication for Linux
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/vhrabar/SecureEye
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = secureeye
 	makedepends = libinih
 	makedepends = python
 	makedepends = systemd
-	source = secureeye-0.1.2.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.1.2.tar.gz
+	source = secureeye-0.1.3.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.1.3.tar.gz
 	source = secureeye-authd.install
 	sha256sums = c848207d44068849a13150a8b47a3d45806a9a43b9c868d1f5915ed8c2cf2d18
 	sha256sums = e68c31756e7196406ec24bd55cdab1af473a35c2abdd4c44a2ca9ace525beb73

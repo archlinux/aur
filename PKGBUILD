@@ -2,7 +2,7 @@
 
 pkgbase=secureeye
 pkgname=('libpam-secureeye' 'secureeye-authd')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Face authentication for Linux"
 arch=('x86_64' 'aarch64')
