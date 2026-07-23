@@ -1,13 +1,13 @@
 # Maintainer: Robert Labudda <contact+aur-pter@vonshednob.cc>
 pkgname="pter"
 pkgver='3.23.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Console UI to manage your todo.txt file(s)"
 url="https://codeberg.org/pter/${pkgname}/"
 license=('MIT')
 arch=('any')
 depends=('python'
-         'python-pytodotxt'
+         'python-pytodotxt>=3.1.0'
          'python-cursedspace')
 makedepends=('python-setuptools'
              'python-build'
