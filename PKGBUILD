@@ -5,10 +5,10 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=152.0.6
+pkgver=153.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
-url="https://www.mozilla.org/firefox/"
+url="https://www.firefox.com"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
@@ -40,6 +40,7 @@ depends=(
   zlib
 )
 makedepends=(
+  cage
   cbindgen
   clang
   diffutils
@@ -51,13 +52,12 @@ makedepends=(
   nodejs
   python
   rust
-  cage
-  xorg-xwayland
   unzip
   wasi-compiler-rt
   wasi-libc
   wasi-libc++
   wasi-libc++abi
+  xorg-xwayland
   yasm
   zip
 )
@@ -80,15 +80,15 @@ source=(
   "firefox.desktop"
   "org.mozilla.firefox.metainfo.xml"
   "0001-Install-under-remoting-name.patch"
-  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-152-patches-03.tar.xz"
+  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-153-patches-01.tar.xz"
 )
 sha256sums=(
-  'ea220c4f8d19d4edaa20e6dadfd3c4aeb07dbed017ade2828fd814d660660f0e'
-  'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+  'bc510f74c8c4c692d31e559aeb5850849d13bc98214ac81e004f66f819a55522'
+  'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
-  '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
+  '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
-  'dea4da8519403f9538f8c5095adb7c1a098397bbe4efefb8277e36b44d35f148'
+  '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e'
 )
 
 prepare() {
@@ -224,7 +224,7 @@ build() {
   mkdir -pm 0700 "$XDG_RUNTIME_DIR"
   export XDG_RUNTIME_DIR
 
-  # Run tinywl compositor for PGO profiling
+  # Run cage compositor for PGO profiling
   coproc VIRTWL {
     WLR_RENDERER=pixman WLR_BACKENDS=headless \
       exec dbus-run-session -- cage -- sh -c 'echo $WAYLAND_DISPLAY; read _; kill $PPID'
