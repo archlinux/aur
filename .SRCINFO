@@ -1,0 +1,20 @@
+pkgbase = astro-editor-bin
+	pkgdesc = A schema-aware markdown editor for Astro content collections
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/dannysmith/astro-editor
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libsoup3
+	depends = pango
+	provides = astro-editor
+	conflicts = astro-editor
+	source = astro-editor-bin-1.0.17.deb::https://github.com/dannysmith/astro-editor/releases/download/v1.0.17/Astro.Editor_1.0.17_amd64.deb
+	sha256sums = 1a24f1e477f45bcee856e04a0721cbff48200413cdbfdb5165866d3c207a2bd6
+
+pkgname = astro-editor-bin
