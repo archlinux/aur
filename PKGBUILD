@@ -2,7 +2,7 @@
 # Auto-updated by GitHub Actions (see .github/workflows/devin-desktop-next.yml)
 
 pkgname=devin-desktop-next
-pkgver=3.5.1015_next.ee593c178a
+pkgver=3.6.1000_next.05e2e51d52
 pkgrel=2
 pkgdesc="Devin Desktop (next channel) - AI-powered editor (formerly Windsurf Editor)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=(
     'alsa-lib'
     'ripgrep'
     'xdg-utils'
-    'electron39'
+    'electron42'
 )
 makedepends=()
 optdepends=(
@@ -46,7 +46,7 @@ source=(
 )
 
 sha256sums=(
-    'fa91619b421519683ec85cda2393729671b96966ac633163d0b63948d50f48dc'
+    '40caf9fd08ad3e6d4f48664e31cac3b4d94a391cc5da22b039c41764a4bd40be'
     'bc9e2c12080d88a97c30da3bc675fea68bb9a202ce58b48cccfede63c9e6b467'
     '115606abbe310c96631241b6ede64379cbeed11f45dfe24da5bee8b90136507c'
     '4613d61e7d991d9a71298750f89f606597b399f134d5265d1044c69e0a38fd66'
@@ -172,7 +172,7 @@ package() {
     done
 
     # Drift assertion: if upstream bumps the Electron major, fail loudly
-    # instead of shipping a broken package.  Bump the electron39 entry in
+    # instead of shipping a broken package.  Bump the electron entry in
     # depends above when this fires.
     local _electron_dep
     _electron_dep=$(cat "$srcdir/.electron-dep" 2>/dev/null)
