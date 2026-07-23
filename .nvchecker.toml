@@ -1,0 +1,5 @@
+[pbgopy-bin]
+source = "github"
+github = "nakabonne/pbgopy"
+use_latest_release = true
+prefix = "v"
