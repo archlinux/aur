@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+*.tar.xz
+src/
+pkg/
+DAMX-*/

@@ -1,0 +1,71 @@
+post_install() {
+  echo "==> Registering linuwu_sense DKMS module..."
+  dkms add linuwu_sense/${1%%-*} 2>/dev/null || true
+  dkms build linuwu_sense/${1%%-*} 2>/dev/null || true
+  dkms install linuwu_sense/${1%%-*} 2>/dev/null || true
+
+  echo "==> Creating linuwu_sense group..."
+  groupadd -f linuwu_sense
+
+  echo "==> Enabling services..."
+  systemctl daemon-reload
+  systemctl enable linuwu_sense.service 2>/dev/null || true
+  systemctl enable damx-daemon.service 2>/dev/null || true
+
+  echo ""
+  echo "  ╔═══════════════════════════════════════════════════╗"
+  echo "  ║  DAMX - Div Acer Manager Max installed!          ║"
+  echo "  ╠═══════════════════════════════════════════════════╣"
+  echo "  ║                                                   ║"
+  echo "  ║  1. Add your user to linuwu_sense group:          ║"
+  echo "  ║     sudo usermod -aG linuwu_sense \$USER           ║"
+  echo "  ║                                                   ║"
+  echo "  ║  2. Reboot to load the driver                     ║"
+  echo "  ║                                                   ║"
+  echo "  ║  3. Launch with: damx                             ║"
+  echo "  ║                                                   ║"
+  echo "  ║  Optional: enable Nitro key detection:            ║"
+  echo "  ║     systemctl enable --now nitro-key-detection    ║"
+  echo "  ║                                                   ║"
+  echo "  ╚═══════════════════════════════════════════════════╝"
+  echo ""
+}
+
+pre_upgrade() {
+  local _oldver="${1%%-*}"
+  echo "==> Removing old DKMS module..."
+  dkms remove linuwu_sense/"${_oldver}" --all 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+pre_remove() {
+  echo "==> Stopping services..."
+  systemctl stop damx-daemon.service 2>/dev/null || true
+  systemctl stop nitro-key-detection.service 2>/dev/null || true
+  systemctl stop linuwu_sense.service 2>/dev/null || true
+  systemctl disable damx-daemon.service 2>/dev/null || true
+  systemctl disable nitro-key-detection.service 2>/dev/null || true
+  systemctl disable linuwu_sense.service 2>/dev/null || true
+
+  echo "==> Removing DKMS module..."
+  dkms remove linuwu_sense/${1%%-*} --all 2>/dev/null || true
+
+  echo "==> Removing blacklist and loading acer_wmi..."
+  rmmod linuwu_sense 2>/dev/null || true
+  modprobe acer_wmi 2>/dev/null || true
+}
+
+post_remove() {
+  echo "==> Cleaning up..."
+  systemctl daemon-reload
+
+  if getent group linuwu_sense >/dev/null; then
+    groupdel linuwu_sense 2>/dev/null || true
+  fi
+
+  rm -rf /etc/damx 2>/dev/null || true
+  echo "==> DAMX removed. You may want to reboot."
+}

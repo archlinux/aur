@@ -1,0 +1,26 @@
+pkgbase = div-acer-manager-max
+	pkgdesc = Feature-rich Linux GUI utility for Acer laptops (NitroSense/PredatorSense) with fan control, thermal profiles, and RGB
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/PXDiv/Div-Acer-Manager-Max
+	install = div-acer-manager-max.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dkms
+	depends = systemd
+	depends = hicolor-icon-theme
+	optdepends = evtest: for Nitro/PredatorSense button detection
+	optdepends = linux-headers: kernel headers for driver compilation
+	optdepends = linux-cachyos-headers: CachyOS kernel headers
+	optdepends = linux-zen-headers: Zen kernel headers
+	optdepends = linux-lts-headers: LTS kernel headers
+	optdepends = clang: required for LLVM-compiled kernels (CachyOS, etc.)
+	optdepends = llvm: required for LLVM-compiled kernels
+	optdepends = lld: required for LLVM-compiled kernels
+	provides = linuwu-sense-dkms
+	provides = damx
+	conflicts = linuwu-sense-dkms
+	source = div-acer-manager-max-1.0.2.tar.xz::https://github.com/PXDiv/Div-Acer-Manager-Max/releases/download/1.0.2-h1/DAMX-1.0.2.tar.xz
+	sha256sums = 9706f741281c041e17f221d78d2c8627366538dc281e6c90d4859d1393d7db1e
+
+pkgname = div-acer-manager-max
