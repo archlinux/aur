@@ -7,7 +7,7 @@ pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
-makedepends=(clang cmake libc++ rust)
+makedepends=(clang cmake git libc++ rust)
 depends=(
 	gcc-libs
 	glibc

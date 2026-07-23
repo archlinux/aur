@@ -7,6 +7,7 @@ pkgbase = moonshine-git
 	license = BSD-2-Clause
 	makedepends = clang
 	makedepends = cmake
+	makedepends = git
 	makedepends = libc++
 	makedepends = rust
 	depends = gcc-libs
