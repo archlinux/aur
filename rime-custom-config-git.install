@@ -10,8 +10,11 @@ post_remove() {
   echo
   echo -e "  ${CYAN}备份目录:${RESET} ~/.cache/rime-custom-config/"
   echo -e "  ${CYAN}词库文件:${RESET} ~/.local/share/fcitx5/rime/custom_words.dict.yaml"
-  echo -e "  ${CYAN}Patch配置:${RESET} ~/.local/share/fcitx5/rime/rime_ice.custom.yaml"
   echo
-  echo -e "  ${RED}如需清理请手动删除上述文件/目录${RESET}"
+  echo -e "  ${YELLOW}以下文件已被修改，需手动还原：${RESET}"
+  echo -e "  ${CYAN}Patch配置:${RESET} ~/.local/share/fcitx5/rime/rime_ice.custom.yaml"
+  echo -e "           (移除 translator/dictionary: custom_words)"
+  echo
+  echo -e "  ${RED}如需清理请手动删除/修改上述文件${RESET}"
   echo "==========================================================="
 }
