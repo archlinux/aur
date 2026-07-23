@@ -1,7 +1,7 @@
-# Maintainer: Fermín Olaiz <ferminolaiz@gmail.com>
+# Maintainer: Fermín Olaiz <fermin@olaiz.net>
 
 pkgname=nushell-plugin-hcl
-pkgver=0.113.1
+pkgver=0.114.1
 pkgrel=1
 pkgdesc="A nushell plugin for parsing Hashicorp Configuration Language file format"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 install=nushell-plugin-hcl.install
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/nu_plugin_hcl/nu_plugin_hcl-$pkgver.crate"
         "https://raw.githubusercontent.com/Yethal/nu_plugin_hcl/refs/heads/main/LICENSE")
-sha256sums=('6e7f75c50968de9dccb76262c9c8a96e6cae3baf9aaae3242256cdd50c2fee8d'
+sha256sums=('23ab6bb6a9f8301f5d53337c3794c801a072cecb6282fd08ee71e8eaef36d802'
             '3f9622d715adf3762d9448c869727ac3d3ed50cad29bbe6e411b7864205d8581')
 
 prepare() {
