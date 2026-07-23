@@ -1,5 +1,5 @@
 pkgname=pkgpick
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI"
 arch=('any')
@@ -15,6 +15,7 @@ optdepends=(
     'cargo: manage cargo-installed binaries'
     'go: manage go-installed binaries'
     'python-pipx: manage pipx-installed packages'
+    'libnotify: desktop notifications for install/remove/update/cleanup'
 )
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/ItzDast/pkgpick.git#tag=v$pkgver")
@@ -22,4 +23,7 @@ sha256sums=('SKIP')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/pkgpick.sh" "$pkgdir/usr/bin/pkgpick"
+    if [[ -f "$srcdir/$pkgname-$pkgver/pkgnc.svg" ]]; then
+        install -Dm644 "$srcdir/$pkgname-$pkgver/pkgnc.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pkgpick.svg"
+    fi
 }
