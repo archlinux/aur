@@ -1,4 +1,4 @@
-# Maintainer: Gur0v <gurov@disroot.org>
+# Maintainer: Gur0v <thuggerthugger1@duck.com>
 pkgname=spout-git
 pkgver=r12.7cf4409
 pkgrel=1
