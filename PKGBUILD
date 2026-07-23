@@ -1,8 +1,8 @@
 # Maintainer: KlapkiSzatana
 pkgname=budget-app-bin
 _pkgname=budget-app
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/budget-app"
@@ -13,7 +13,7 @@ replaces=("${_pkgname}")
 options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/budget-app/releases/download/v${pkgver}/BudgetApp_linux.tar.gz")
-sha256sums=('3b8131acee949065977512ea0a2d089008fd819cc29161ab06faea436d6971af')
+sha256sums=('a9dd61727a69f15c23e9555aee661d4c24c1a6fecc0dded8b8e1a4dbc4c9b9ec')
 
 package() {
     cd "$srcdir/linux-package"
