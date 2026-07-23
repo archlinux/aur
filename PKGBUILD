@@ -1,7 +1,7 @@
 # Maintainer: RadicalMuffinMan <support@moonfin.app>
 pkgname=moonfin-bin
 _pkgname=moonfin
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1' 'mpv' 'harfbuzz-icu')
 provides=('moonfin')
 conflicts=('moonfin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
-sha256sums=('f58b3101a0c0afc4ef3e4cf24237af23c8d8d3d1b1059ae9881cad1d4b26f094')
+sha256sums=('d94d35d3b559fd786cd378519f845601884baab11ee886fac9d2406e90f4f6b3')
 
 package() {
   local src_dir="${srcdir}/${_pkgname}-${pkgver}"
