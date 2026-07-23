@@ -1,6 +1,6 @@
 # Maintainer: gegnep <96670443+gegnep@users.noreply.github.com>
 pkgname=regionlock
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Linux CLI server picker for Steam Datagram Relay games (Deadlock, CS2, Dota 2)'
 arch=('x86_64')

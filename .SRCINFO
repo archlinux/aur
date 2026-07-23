@@ -1,6 +1,6 @@
 pkgbase = regionlock
 	pkgdesc = Linux CLI server picker for Steam Datagram Relay games (Deadlock, CS2, Dota 2)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/gegnep/regionlock
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = regionlock
 	depends = systemd
 	depends = iputils
 	depends = polkit
-	source = regionlock-1.0.0.tar.gz::https://github.com/gegnep/regionlock/archive/refs/tags/v1.0.0.tar.gz
+	source = regionlock-1.0.1.tar.gz::https://github.com/gegnep/regionlock/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = regionlock
