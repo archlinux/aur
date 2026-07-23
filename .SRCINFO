@@ -1,7 +1,7 @@
 pkgbase = animaru
 	pkgdesc = A GTK4 GUI for watching and downloading anime
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murdialthaf/animaru
 	arch = any
 	license = GPL3
