@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.2.r11464.6ae5efc
+pkgver=7.7.0.preview.3.r11481.7c21596
 _major=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -106,7 +106,7 @@ build() {
   ## Build native component
   pushd "$srcdir/$_name-native/src/libpsl-native"
   sed -i 's/-D_FORTIFY_SOURCE=2/-fPIC/' CMakeLists.txt # -Werror...
-  cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_POLICY_VERSION_MINIMUM=3.5 -W no-dev .
+  cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_POLICY_VERSION_MINIMUM=3.5 -W no-author .
   make
   popd
 
