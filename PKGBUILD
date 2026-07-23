@@ -2,7 +2,7 @@
 
 pkgname=seanime-denshi
 _pkgname=seanime-denshi
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=0
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
     "https://github.com/5rahim/seanime/releases/download/v${pkgver}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage"
 )
 
-sha256sums=('c4df7b31f0b2d17fed7041c3c79e4d229f9487afb9dce3d3358bbc7d24f13b6a')
+sha256sums=('029a6dda0878998cb3d58318e2ebcd9a95c690a56ac438a600134a3214db64c0')
 
 package() {
     local appimage="${_pkgname}-${pkgver}_Linux_x86_64.AppImage"
