@@ -1,24 +1,17 @@
 pkgbase = thonny-bin
-	pkgdesc = Python IDE for beginners
-	pkgver = 3.2.7
+	pkgdesc = Python IDE for beginners (prebuilt, with bundled Python runtime)
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = http://thonny.org
-	arch = any
+	url = https://github.com/thonny/thonny
+	arch = x86_64
 	license = MIT
-	depends = openssl
-	depends = python
-	depends = python-beautifulsoup4
-	depends = python-docutils
-	depends = mypy
-	depends = python-asttokens
-	depends = python-astroid
-	depends = python-pylint
-	depends = python-pyserial
-	depends = python-jedi
-	depends = tcl
-	depends = tk
-	source = https://github.com/thonny/thonny/releases/download/v3.2.7/thonny-3.2.7-x86_64.tar.gz
-	sha512sums = 9a0bac7d12dd96ed5f24f78caf051ed0e0715a50bce3811846c556c5fdb587ef65c5ec7c8d3354d0df96ec2581243f4dac458300507836aa67a98ef3b75b4ce8
+	depends = glibc
+	depends = gcc-libs
+	optdepends = libnotify: desktop notifications (dlopened by Tk)
+	provides = thonny
+	conflicts = thonny
+	options = !strip
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/thonny-bin-5.0.0/thonny-bin-5.0.0.tar.zst
+	sha256sums = 7baea7ff70d7aa6e86fa1153ba8f156d8f5a402ddb5279d8e15ceceb4aaa53e5
 
 pkgname = thonny-bin
-
