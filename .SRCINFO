@@ -1,0 +1,11 @@
+pkgbase = aam-cli-bin
+	pkgdesc = CLI for AAM (Abstract Alias Mapping) files with TUI editor and LSP
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ininids/aam-cli
+	arch = x86_64
+	license = GPL3
+	source = aam-linux-amd64::https://github.com/ininids/aam-cli/releases/download/v0.4.1/aam-linux-amd64
+	sha256sums = SKIP
+
+pkgname = aam-cli-bin
