@@ -1,7 +1,7 @@
 # Maintainer: WindustH <windusth2006@gmail.com>
 
 pkgname=pdf-tui
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Terminal PDF reader built with ratatui and terminal graphics protocols."
 arch=('x86_64' 'aarch64')
