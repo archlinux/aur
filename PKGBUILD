@@ -1,8 +1,8 @@
 # Maintainer: Murdi <murdialthaf848@gmail.com>
 
 pkgname=animaru
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A GTK4 GUI for watching and downloading anime"
 arch=('any')
 url="https://github.com/murdialthaf/animaru"
