@@ -1,6 +1,6 @@
 pkgbase = rime-custom-config-git
 	pkgdesc = Manage custom Chinese dictionary for fcitx5 rime
-	pkgver = 0.1.0.r2.ga1c41f2
+	pkgver = 1.0.1.r3.g485ab91
 	pkgrel = 1
 	url = https://github.com/cublueer/rime-custom-config
 	arch = x86_64
