@@ -16,32 +16,24 @@ depends=("openssl")
 makedepends=("git")
 source=(
   "readpe::git+https://github.com/mentebinaria/readpe.git#commit=${_commit}"
-  "fix-install-prefix.diff"
 )
 sha256sums=(
-  "SKIP"
   "SKIP"
 )
 
 prepare() {
   cd "${srcdir}/readpe"
-  git apply < "${srcdir}/fix-install-prefix.diff"
 }
 
 build() {
   cd "${srcdir}/readpe"
-  make all
+  make prefix="/usr"
 }
 
 package() {
-  (
-    cd "${srcdir}/readpe/src"
-    make DESTDIR="${pkgdir}/" install
-  )
-  (
-    cd "${srcdir}/readpe/lib/libpe"
-    make DESTDIR="${pkgdir}/" install
-  )
+  cd "${srcdir}/readpe"
+  make prefix="/usr" DESTDIR="${pkgdir}" install
+
   install -Dm644 \
     -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
     "${srcdir}/readpe/LICENSE.OpenSSL"
