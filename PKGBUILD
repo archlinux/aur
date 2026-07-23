@@ -1,4 +1,4 @@
-# Maintainer: Gurov <gurov@disroot.org>
+# Maintainer: Gurov <thuggerthugger1@duck.com>
 pkgname=spout
 pkgver=0.1.13
 pkgrel=1
