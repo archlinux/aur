@@ -1,20 +1,20 @@
 # Maintainer: aur.chaotic.cx
 
 ## options
-: ${_build_pgo:=true}
-: ${_build_pgo_reuse:=try}
-: ${_build_pgo_xvfb:=true}
+: ${_build_pgo:=true}      # profile-guided optimization; ~20% better benchmarks, 3x build time
+: ${_build_pgo_reuse:=try} # reuse previously generated profile
+: ${_build_pgo_xvfb:=true} # use xfvb for profiling, otherwise xwayland-run
 
-: ${_build_lto:=false}
-: ${_build_system_libs:=true}
+: ${_build_lto:=false}        # link-time optimization; may cause spurious errors
+: ${_build_system_libs:=true} # use system libraries, reduces build time
+
+: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 : ${_llvm_ver=21}
 
-: ${_pkgrel:=1}
-
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver="6.6.16.1"
+pkgver=6.6.17
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -25,18 +25,10 @@ depends=(
   dbus
   ffmpeg
   gtk3
-  libevent
-  libjpeg.so # libjpeg-turbo
-  libpulse
-  libvpx.so  # libvpx
-  libwebp.so # libwebp
   libxss
   libxt
   mime-types
-  nspr
-  nss
   ttf-font
-  zlib
 )
 makedepends=(
   "clang${_llvm_ver:-}"
@@ -71,6 +63,20 @@ optdepends=(
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
+
+if [[ "${_build_system_libs::1}" == "t" ]]; then
+  depends+=(
+    libffi.so          # libffi
+    libjpeg.so         # libjpeg-turbo
+    libpixman-1.so     # pixman
+    libvpx.so          # libvpx
+    libwebp.so         # libwebp
+    libwebpdemux.so    # libwebp
+    libz.so            # zlib
+    nspr
+    nss
+  )
+fi
 
 if [[ "${_build_pgo::1}" == "t" ]]; then
   if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
@@ -108,7 +114,7 @@ source=(
   '0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0002-Fix-sandbox-to-build-with-glibc-2.43.patch'
 )
-sha256sums=('b0b4086cbff68cc1dc0e28321a99055482f19a243f14fa674adc8800b5b83d84'
+sha256sums=('fe352003695f9ffb18c0b476165d55b3d483e2964b1589902e2cb44695c17588'
             'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
             '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
@@ -197,11 +203,19 @@ END
 
   if [[ "${_build_system_libs::1}" == "t" ]]; then
     cat >> ../mozconfig << END
+# ac_add_options --with-system-av1
+# ac_add_options --with-system-icu
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-pipewire
+# ac_add_options --with-system-png
+ac_add_options --with-system-ffi
+ac_add_options --with-system-gbm
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
+ac_add_options --with-system-libdrm
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-pixman
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 END
@@ -213,6 +227,30 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
+  # build paralleism
+  local _mem _nproc _cores
+  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
+  _nproc=$(nproc)
+
+  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+    # calculate core availability based on free RAM and CPU count
+    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
+    _cores=$((_cores < 1 ? 1 : _cores))
+  elif ((${_build_limit_cores:-0} > 0)); then
+    # user-specified, capped by CPU count
+    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
+  fi
+
+  if [ -n "${_cores:-}" ]; then
+    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+    cat >> ../mozconfig << END
+mk_add_options MOZ_PARALLEL_BUILD=${_cores}
+END
+  else
+    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
+  fi
+
+  # apply patches
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -233,7 +271,7 @@ build() (
   export RUSTUP_TOOLCHAIN=stable
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
-  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
