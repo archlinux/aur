@@ -1,13 +1,11 @@
-# former Maintainer: netcrusher < tobias AT miglix DOT eu >
-# Contributor: tze <tze@datalove.me>
-
 pkgname=ttf-unifraktur
 pkgver=20170319
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of open-source Fraktur fonts'
 arch=('any')
 url='http://unifraktur.sourceforge.net'
-license=('custom')
+license=('OFL-1.1')
+depends=('fontconfig')
 source=('http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturMaguntia.2017-03-19.zip'
         'http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturCook.2013-08-25.zip')
 md5sums=('f6a04d627263379c698e5781e9860d6d'
@@ -20,4 +18,5 @@ package() {
 	install -m644 "$srcdir"/*Maguntia*/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-UnifrakturMaguntia"
 	install -m644 "$srcdir"/*Cook*/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-UnifrakturCook"
 	install -m644 "$srcdir"/*Cook*/OFL-FAQ.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-FAQ"
+    install -m644 "$srcdir"/UnifrakturMaguntia*/switched-on_features/*.ttf "$pkgdir/usr/share/fonts/TTF"
 }

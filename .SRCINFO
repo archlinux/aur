@@ -1,14 +1,14 @@
 pkgbase = ttf-unifraktur
 	pkgdesc = A set of open-source Fraktur fonts
 	pkgver = 20170319
-	pkgrel = 1
+	pkgrel = 2
 	url = http://unifraktur.sourceforge.net
 	arch = any
-	license = custom
+	license = OFL-1.1
+	depends = fontconfig
 	source = http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturMaguntia.2017-03-19.zip
 	source = http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturCook.2013-08-25.zip
 	md5sums = f6a04d627263379c698e5781e9860d6d
 	md5sums = e93c4f39f7ce6642fdf7ebc3d8ab19fe
 
 pkgname = ttf-unifraktur
-
