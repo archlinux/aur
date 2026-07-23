@@ -1,6 +1,16 @@
 post_remove() {
-  echo ":: 提示：用户数据未被删除"
-  echo ":: 备份目录: ~/.cache/rime-custom-config/"
-  echo ":: 词库文件: ~/.local/share/fcitx5/rime/custom_words.dict.yaml"
-  echo ":: 如需清理请手动删除上述文件/目录"
+  local RED='\033[1;31m'
+  local YELLOW='\033[33m'
+  local CYAN='\033[36m'
+  local RESET='\033[0m'
+
+  echo "==========================================================="
+  echo -e "${YELLOW}:: 注意：用户数据未被自动删除${RESET}"
+  echo "==========================================================="
+  echo
+  echo -e "  ${CYAN}备份目录:${RESET} ~/.cache/rime-custom-config/"
+  echo -e "  ${CYAN}词库文件:${RESET} ~/.local/share/fcitx5/rime/custom_words.dict.yaml"
+  echo
+  echo -e "  ${RED}如需清理请手动删除上述文件/目录${RESET}"
+  echo "==========================================================="
 }
