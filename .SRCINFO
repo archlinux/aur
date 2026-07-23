@@ -1,0 +1,12 @@
+pkgbase = 67
+	pkgdesc = A curses terminal animation of 67 lol
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CDatarET/67
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/CDatarET/67.git
+	sha256sums = SKIP
+
+pkgname = 67
