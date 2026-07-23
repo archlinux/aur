@@ -1,5 +1,5 @@
 pkgname=half-beat-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='实现 b 站电脑端听视频的桌面音乐播放器'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glibc' 'gtk3' 'webkit2gtk-4.1')
 provides=('half-beat')
 conflicts=('half-beat')
 source=("${url}/releases/download/v${pkgver}/half-beat_${pkgver}_amd64.deb")
-sha256sums=('a07bb5cbb4d4d555b76ac0f5664bb5aa115aa9c2519df895882c728dee7c1df3')
+sha256sums=('7c60687ab41aa9ede93bb6e80b8b7d444ddf60fe1031471200effea7c39aec94')
 
 package() {
   local deb_file="${srcdir}/half-beat_${pkgver}_amd64.deb"
