@@ -1,18 +1,18 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/netlify-desktop//application
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
-	depends = libelectron>=2025.1
+	depends = libelectron>=2026.3
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/netlify-desktop//application/-/archive/1.1.5/application-1.1.5.tar.bz2
-	sha256sums = a39fddf8d55b0ae7dbc756d273600d1a2630a303eac6ba8a59bb7d4bb59afd34
+	source = https://gitlab.com/linuxbombay/netlify-desktop//application/-/archive/1.1.6/application-1.1.6.tar.bz2
+	sha256sums = 60fc7babfad84c60af69735fb8636c535b30400135c486ad2fa1b32ebd8d6467
 
 pkgname = netlify-application
