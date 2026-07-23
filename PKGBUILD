@@ -1,6 +1,6 @@
 # Maintainer: Pranav Kannepalli <pranav.kannepalli@gmail.com>
 pkgname=archductor
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Archductor parallel coding-agent workflow tool built around Git worktrees"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('git' 'github-cli' 'sqlite' 'openssh' 'gtk4' 'libadwaita')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22c59bc5691fceb64236283331967d53400507f965700b9079f76b3298051a44')
+sha256sums=('2de9df0df90fe7a3c17d37a8e71fc8377d5d02d35cba26028b388453ca230d72')
 
 build() {
     cd "conductor-arch-$pkgver"
