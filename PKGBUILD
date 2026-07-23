@@ -5,7 +5,7 @@
 # it and substitutes pkgver and checksums before publishing to AUR.
 
 pkgname=vop-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="AWS credential management via 1Password"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('vop')
 source_x86_64=("vop-linux-amd64-${pkgver}::${url}/releases/download/v${pkgver}/vop-linux-amd64")
 source_aarch64=("vop-linux-arm64-${pkgver}::${url}/releases/download/v${pkgver}/vop-linux-arm64")
 
-sha256sums_x86_64=('3623886cbbb3764967eb23a491c83247e678ec9ed8128618784f7a21b6054bf8')
-sha256sums_aarch64=('5adc6ac0469c76b02ce21c49ce110c4f479d3cfd1a49c4b5722a1f19a521be4f')
+sha256sums_x86_64=('0beb6e0a24bbd8aac439895a7277db0ec56e289bd1d13e7f15b2c85d6ce9c29b')
+sha256sums_aarch64=('2f9fb63afabd1f956917c3087a649547c7708fcbd885670ae1b4f4eca39b3ca5')
 
 source+=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums+=('6a393bdfa6c20c218bf73d378cf2e5b0fbf0e95c2a9644baf5714dd9d330dc64')
