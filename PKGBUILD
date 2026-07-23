@@ -2,7 +2,7 @@
 _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
-pkgver=6.8.1
+pkgver=6.8.2
 pkgrel=1
 _dotnet_version=10.0
 pkgdesc='From git log to SemVer in no time'
@@ -27,7 +27,7 @@ makedepends=(
   'moreutils'
   'jq'
 )
-sha512sums=('c83345f985aeee6087747e067545df6fea64bc63b18c0d5671215a81146c7e6422f0e278de06c79fea12abe39dc1e1b318fc00d030ed1d9ce768fd0d2fdbcc80')
+sha512sums=('b51dc4a58a6c838b5ea466cea17dc3fce17e16ef2b4bdada535f62fe8306a121066e6dddc36460eab52f9364cdfe1bb687d8da253e2ae61230ae428d3dc09648')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
