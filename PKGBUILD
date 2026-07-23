@@ -6,7 +6,7 @@
 pkgname=swfdec-devel
 _pkgname=swfdec
 pkgver=0.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Free Flash player ported to modern systems with assistance from Codex"
 arch=('i686' 'x86_64')
 url="http://swfdec.freedesktop.org"
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "$srcdir"/${_pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
-  install -Dm755 player/swfplay "$pkgdir"/usr/bin/swfplay
+  install -Dm755 player/.libs/swfplay "$pkgdir"/usr/bin/swfplay
 }
 
 sha256sums=('7d56a3044c19e7ca4b492f3739d9aa6f6bdb6e51ecf4daa5d29c035ae430f1ef'
