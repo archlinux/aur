@@ -2,7 +2,7 @@
 
 pkgname=undr
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/caskstrength/undr"
