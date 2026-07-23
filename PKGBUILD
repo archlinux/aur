@@ -1,7 +1,7 @@
 # Maintainer: John O'Donnell <mail@johnodonnell.xyz>
 pkgname=gjallarhorn-git
 _pkgname=gjallarhorn
-pkgver=r57.a81848a
+pkgver=r58.b4416d1
 pkgrel=1
 pkgdesc="From-scratch Odin web framework, ORM and template engine, with a nest-style scaffolding CLI"
 arch=('x86_64')
