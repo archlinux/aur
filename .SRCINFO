@@ -1,6 +1,6 @@
 pkgbase = proton-drive-cli
 	pkgdesc = Official Proton Drive command-line client
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/protondriveapps/sdk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = proton-drive-cli
 	license = MIT
 	depends = bun>=1.3.14
 	depends = libsecret
-	source = proton-drive-cli-0.5.0.tar.gz::https://github.com/protondriveapps/sdk/archive/refs/tags/cli/v0.5.0.tar.gz
-	sha256sums = 6df69c8e21fc61a73d5e185eb863dac7b66926ec8031cdcff0ccfef8500d1480
+	source = proton-drive-cli-0.6.0.tar.gz::https://github.com/protondriveapps/sdk/archive/refs/tags/cli/v0.6.0.tar.gz
+	sha256sums = 52d0633dc2bbdee2c52fc3fef4a6b3680295972ad9bf06f5c004e511c7da06e7
 
 pkgname = proton-drive-cli

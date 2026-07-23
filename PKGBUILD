@@ -2,7 +2,7 @@
 
 _pkgname=proton-drive
 pkgname=$_pkgname-cli
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Official Proton Drive command-line client'
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ _tag=cli/v$_cliver
 # _tag=js/v$_jsver
 depends=('bun>=1.3.14' libsecret)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz)
-sha256sums=(6df69c8e21fc61a73d5e185eb863dac7b66926ec8031cdcff0ccfef8500d1480)
+sha256sums=(52d0633dc2bbdee2c52fc3fef4a6b3680295972ad9bf06f5c004e511c7da06e7)
 
 prepare() {
     mv "$srcdir"/sdk-* "$srcdir"/sdk
