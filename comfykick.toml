@@ -110,14 +110,20 @@
 # # Extra setup
 # # ---------------------------------------------------------------------------
 
-# # Extra index URL for uv installing Python packages.
-# # Useful for select specific the PyTorch variant or mirror.
-# # e.g. `https://download.pytorch.org/whl/cu130`   (CUDA)
-# #      `https://download.pytorch.org/whl/rocm7.2` (ROCm)
-# #      `https://download.pytorch.org/whl/xpu`     (XPU)
+# # List of Python Package Index (PyPI) URLs for installing Python packages.
+# # Useful for selecting specific PyTorch variant or PyPI mirrors.
+# # e.g. `["https://download.pytorch.org/whl/cu130"]`   (CUDA)
+# #      `["https://download.pytorch.org/whl/rocm7.2"]` (ROCm)
+# #      `["https://download.pytorch.org/whl/xpu"]`     (XPU)
+# #      ```
+# #       [
+# #           "https://mirror.nju.edu.cn/pytorch/whl/cu130",
+# #           "https://pypi.tuna.tsinghua.edu.cn/simple"
+# #       ]
+# #      ```                                            (PyPI Mirrors)
 # # Leave empty to use environment's default.
-# # Default: ""
-# uv_extra_index_url     = ""
+# # Default: []
+# pypi_list                   = []
 
 # # Extra Python packages install.
 # # Can use this to bake in custom-node dependencies that are not yet

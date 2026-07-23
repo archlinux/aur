@@ -44,9 +44,9 @@ DEFAULTS = {
     "output_dir": XDG_DATA_HOME / PROJECT_NAME / "output",
     "port": 8188,
     "prekick_exec": [],
+    "pypi_list": [],
     "runtime_dir": XDG_CACHE_HOME / PROJECT_NAME,
     "update": True,
-    "uv_extra_index_url": "",
     "venv_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "venv_cache",
     "version": "latest",
     "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
@@ -366,8 +366,8 @@ def install_dependencies(extracted_dir, config, version_head):
     # ``venv_cache_dir`` either.
     env = os.environ.copy()
 
-    if config["uv_extra_index_url"]:
-        env["UV_EXTRA_INDEX_URL"] = config["uv_extra_index_url"]
+    if config["pypi_list"]:
+        env["UV_INDEX"] = " ".join(config["pypi_list"])
 
     venv_cache_dir = Path(config["venv_cache_dir"])
     venv_link = extracted_dir / ".venv"
