@@ -1,0 +1,17 @@
+pkgbase = traytimer
+	pkgdesc = Tiny system tray utility with countdowns and stopwatches, with desktop notifications
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/intekhabrizvi/traytimer
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libnotify
+	optdepends = kdialog: notification popups under KDE
+	options = !lto
+	source = traytimer-1.0.0.tar.gz::https://github.com/intekhabrizvi/traytimer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7414a352712885fbb30aa957396eaad4d9d3b66faa5c46504c62b10fc1ec8759
+
+pkgname = traytimer
