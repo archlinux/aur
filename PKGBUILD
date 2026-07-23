@@ -27,7 +27,7 @@ optdepends=(
     'sox: play (alternative sound player)'
 )
 provides=("grabit=${pkgver}")
-conflicts=('grabit')
+conflicts=('grabit' 'grabit-git')
 source=("LICENSE-${pkgver}::https://heliopolis.live/creations/grabit/raw/tag/${pkgver}/LICENSE")
 source_x86_64=("grabit-${pkgver}-x86_64::https://heliopolis.live/creations/grabit/releases/download/${pkgver}/grabit-x86_64-linux")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
