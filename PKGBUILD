@@ -1,6 +1,6 @@
 # Maintainer: 1000Hz <1000Hz radiowave + aur at gmail>
 pkgname=btrfs-file-restorer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A GUI tool to recover files from damaged and unmountable btrfs filesystem"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'btrfs-progs')
 makedepends=('binutils')
 
 source=("https://github.com/dsvi/Btrfs-File-Restorer/releases/download/v${pkgver}/btrfs-file-restorer_${pkgver}-1_amd64.deb")
-sha256sums=('b20dae6a11694fa564534441b9e5daf19b03873360439debfd93a316bad8d70f')
+sha256sums=('6f5f3278550a2b47a88cd870dd6635489aee4783fce575e2ad40c13b76ecebdb')
 
 package() {
     # 1. Extract the .deb archive
