@@ -2,9 +2,9 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=ozone
-pkgver=3.50
+pkgver=3.50a
 pkgrel=0
-epoch=31
+epoch=32
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('x86_64')
 license=('custom')
@@ -15,18 +15,14 @@ provides=('jlink-debugger')
 depends=('jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source=("Ozone.desktop" "Ozone.svg")
-md5sums_x86_64=('9fb94362dad013bad53212b0ac3daf83')
+md5sums_x86_64=('25194f1555a757a091ff6187e024d2f3')
 md5sums=('d1d2aa1b868487207ad256ebc8235982' 'f7c46fe903305c37f38f846b18318b38')
 
 url="https://www.segger.com/jlink-software.html"
 options=(!strip)
 
 package(){
-    if [ ${CARCH} = "i686" ]; then
-        mv Ozone_Linux_V${pkgver/./}_i386 Ozone
-    else
-        mv Ozone_Linux_V${pkgver/./}_x86_64 Ozone
-    fi
+    mv Ozone_Linux_V${pkgver/./}_x86_64 Ozone
 
     # Match package placement from their .deb, in /opt
     install -dm755 "${pkgdir}/opt/SEGGER/Ozone" \
@@ -44,14 +40,14 @@ package(){
     cd ${srcdir}/Ozone
 
     # Make permissions right
-    find . -type d | xargs chmod a+rx
-    find . -type f | xargs chmod a+r
+    find . -type d | xargs -i'{}' chmod a+rx '{}'
+    find . -type f | xargs -i'{}' chmod a+r '{}'
 
     # Remove un-needed files
     find . -name ".svn" | xargs rm -rf
 
     # Bulk copy everything
-    cp --preserve=mode -r Ozone Plugins Doc Config Lib Ozone.png "${pkgdir}/opt/SEGGER/Ozone"
+    cp -ax Ozone Plugins Doc Config Lib Ozone.png Examples "${pkgdir}/opt/SEGGER/Ozone"
 
     # Create links where needed
     ln -s /opt/SEGGER/Ozone/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
