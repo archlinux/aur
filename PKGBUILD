@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=cc0c8e744c9c4697722c7455888e29f1138dcd4f} # daily-982
+: ${_runtime_commit:=29dbe17e4d11e1d7fc01b9f965d06334b284c2cf} # daily-990
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.16.2
+pkgver=12.16.3
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -44,10 +44,8 @@ makedepends=(
   cargo
   cbindgen
   clang
-  deno
   diffutils
   dump_syms
-  git
   imake
   inetutils
   jack
@@ -59,7 +57,6 @@ makedepends=(
   nodejs
   python
   python-setuptools
-  rsync
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -67,6 +64,11 @@ makedepends=(
   wasi-libc++abi
   yasm
   zip
+
+  ## floorp
+  deno
+  git
+  rsync
 )
 optdepends=(
   'hunspell-dictionary: Spell checking'
@@ -122,7 +124,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'c0314e6ccd8a2e9c8e6e9fc863f723a23efa67ca8174bd4d377b6defe5ed239b'
+  '22cf8ed818e1b9f6b8be6f778c678e5b5373e4a724b5c2a78b3b68f7e756376e'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
