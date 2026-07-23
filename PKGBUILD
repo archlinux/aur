@@ -1,13 +1,13 @@
 # Maintainer: William Canin <hello.williamcanin@gmail.com>
 
 pkgname=tildr-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Manage HOME files and directories with symlinks and Git."
 arch=('x86_64')
 url="https://orbitbits.com/tildr"
 # source GitHub: https://github.com/orbitbits/tildr
-license=('custom')
+license=('AGPL3')
 depends=('glibc' 'gcc-libs' 'git' 'less')
 optdepends=(
   'python-nautilus: Nautilus file manager plugin'
