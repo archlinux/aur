@@ -2,7 +2,7 @@
 
 pkgname=sapmachine17-jdk
 _majorver=17
-pkgver=17.0.19
+pkgver=17.0.20
 pkgrel=1
 pkgdesc="SAP's patched build of OpenJDK 17"
 arch=('x86_64')
@@ -15,7 +15,7 @@ backup=()
 options=(!strip)
 install=sapmachine-jdk.install
 source=("https://github.com/SAP/SapMachine/releases/download/sapmachine-${pkgver}/sapmachine-jdk-${pkgver}_linux-x64_bin.tar.gz")
-sha256sums=('6fe7413b5fb62d8307249987fc2863dfa817b54755a4b865e1b4215fbaa7d242')
+sha256sums=('0219434d3528a6092add15926d2df7d10c55a8032a318ef3f7875fcb407ff4bc')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-sapmachine
 
