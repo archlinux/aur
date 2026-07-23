@@ -1,0 +1,13 @@
+pkgbase = unalz
+	pkgdesc = ALZ archive extractor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/alkegi/unalz
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = unalz-0.1.1.tar.gz::https://github.com/alkegi/unalz/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 284faec9efa666aac5debe843cda28af704559eb05be4d0e4e8cc1e864f81cb5
+
+pkgname = unalz
