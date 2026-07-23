@@ -1,0 +1,22 @@
+pkgbase = pilinara-bin
+	pkgdesc = PiliPlus 的第三方Fork版本，做了一些自用改动
+	pkgver = 2.1.0.2
+	pkgrel = 1
+	url = https://github.com/Starfallan/PiliNara
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = mpv
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	provides = pilinara
+	conflicts = pilinara
+	conflicts = pilinara-git
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/Starfallan/PiliNara/releases/download/2.1.0.2-beta1/PiliNara_linux_2.1.0+5534_amd64.tar.gz
+	source_x86_64 = com.example.pilinara.desktop::https://raw.githubusercontent.com/Starfallan/PiliNara/main/assets/linux/com.example.pilinara.desktop
+	sha256sums_x86_64 = 5f63c58e3bfa6b7d76e00650c525359cc9a5f53e2ef9ab81a8606096737efdd7
+	sha256sums_x86_64 = SKIP
+
+pkgname = pilinara-bin
