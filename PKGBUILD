@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=onorca-bin
-pkgver=1.4.149
+pkgver=1.4.152
 pkgrel=1
 pkgdesc="Orca - next-gen IDE for working with a fleet of parallel coding agents"
 arch=('x86_64' 'aarch64')
@@ -55,8 +55,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/orca-ide_${pkgver}_a
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/orca-ide_${pkgver}_arm64.deb")
 
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3')
-sha256sums_x86_64=('ecec2fe903e29afd8dea52db68f5a4db28eef077e9aa478061df5a2fdaead521')
-sha256sums_aarch64=('fbd792c155064a64d3fe3b015b908e4fa367c7374f9a194f8eaddfe8fe82521d')
+sha256sums_x86_64=('36f83ae1de5a3d524cea0154ef494f42953d632cf9f4e89cbb15b1f8c6b7052c')
+sha256sums_aarch64=('34b588383cca9d70085ec2c90c6f19654b0e0a374cdf80ce5cdbd13473ca5b6c')
 
 package() {
     cd "$srcdir"
