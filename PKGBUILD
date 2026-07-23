@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.3.0.r4.ge6ca135
+pkgver=1.4.0.r1.g21a9692
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -9,12 +9,12 @@ license=('GPL-3.0-only')
 depends=(
   'acpid'
   'adw-gtk-theme'
+  'cosmic-sound-theme-git'
   'geoclue'
   'libinput'
   'libpulse'
   'openssl'
   'playerctl'
-  'pop-sound-theme-git'
   'systemd'
   'wireplumber'
   'xdg-utils'
