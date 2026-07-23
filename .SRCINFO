@@ -1,6 +1,6 @@
 pkgbase = python-libeconf
 	pkgdesc = Python bindings for libeconf
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/openSUSE/libeconf
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-libeconf
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = libeconf-0.8.3.tar.gz::https://github.com/openSUSE/libeconf/archive/refs/tags/v0.8.3.tar.gz
-	b2sums = d7827fc84d08487faefb939b1dfc68f83c68938440136aad41724ae286f096819c8ec442237fcc2a91918799d8822ab8e8d08f614c58f67482b9318bbb1f3375
+	source = libeconf-0.8.4.tar.gz::https://github.com/openSUSE/libeconf/archive/refs/tags/v0.8.4.tar.gz
+	b2sums = 1733e348d865f82bb75cb5289417dc6734bd61006656681b5000f16589cb0c34f90afadaa5e93d9356a64262786326f3e5aefd71fb56edaa3a6500fb33ecbb2c
 
 pkgname = python-libeconf
 	depends = python
