@@ -1,7 +1,7 @@
 pkgbase = lungo
 	pkgdesc = A simple systray applet to prevent the system from going idle or suspending on demand
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Antiz96/lungo
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = lungo
 	depends = libgcc
 	depends = systemd
 	depends = hicolor-icon-theme
-	source = lungo-1.0.1.tar.gz::https://github.com/Antiz96/lungo/archive/v1.0.1.tar.gz
-	sha256sums = c1e9aeed0a0adf4b4781707b6d40814921daacb5b5e9a80d0b0a847b99f3ea4a
+	source = lungo-1.0.2.tar.gz::https://github.com/Antiz96/lungo/archive/v1.0.2.tar.gz
+	sha256sums = b4ca7c3616010f0a33c572ddf286025bb8f37248c18527dec8ce5d1ee2881740
 
 pkgname = lungo
