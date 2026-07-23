@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cores
+Comment=Modern hardware monitor with remote monitoring support
+Exec=cores
+Icon=cores
+Terminal=false
+Type=Application
+Categories=Utility;System;Monitor;
+StartupWMClass=Cores

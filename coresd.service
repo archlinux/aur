@@ -1,0 +1,12 @@
+[Unit]
+Description=Cores hardware monitor daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/coresd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
