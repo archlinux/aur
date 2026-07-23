@@ -1,6 +1,6 @@
 pkgname=rustmius-bin
 _pkgname=rustmius
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Full local Termius alternative for Linux (GTK4) - binary release"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 sha256sums=('1498673b59f13bdd2a5beb43d72fc8e9330599324f9a4d70bd52e1d303ad9959'
             'c8c9adc6e26cc54f2b8d8ce41a093b71b5e9e4338d6e278803d87d2a6e94422d'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            '6841347c0498ff3571654e832d59670bfd06d62b0dd1fd9e1660d74a57a31075')
+            '018b79bb6afaf78281792ea2144896b2bd1c842454b40ba8b76a0209f6d591c9')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver-x86_64" "$pkgdir/usr/bin/$_pkgname"
