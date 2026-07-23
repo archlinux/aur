@@ -9,7 +9,7 @@
 pkgname=bilibili-gpu-bin
 _pkgreal=bilibili
 pkgver=1.17.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Bilibili client for Linux (Electron 43, NVIDIA GPU acceleration fork)"
 arch=('x86_64')
 url="https://github.com/wings1848/bilibili-linux"
@@ -46,6 +46,9 @@ package() {
   # Install main app bundle to /opt/bilibili
   install -dm755 "${pkgdir}/opt/bilibili" "${pkgdir}/usr/bin"
   cp -r squashfs-root/* "${pkgdir}/opt/bilibili/"
+  # AppImage extraction preserves 0700 on some dirs (resources/, locales/, usr/)
+  # which prevents the user's Electron process from reading app.asar etc.
+  chmod -R a+rX "${pkgdir}/opt/bilibili/"
 
   # Install icons to XDG standard paths
   find squashfs-root/usr/share/icons/ -type f | while read -r icon; do
