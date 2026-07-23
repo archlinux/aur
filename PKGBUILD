@@ -5,8 +5,8 @@
 
 _pkgname="siril"
 pkgname="$_pkgname-git"
-pkgver=1.4.4.r643.g506e9c0
-pkgrel=1
+pkgver=1.4.4.r721.g09af626
+pkgrel=2
 pkgdesc="Astronomical image processing software for Linux (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
 arch=('i686' 'x86_64')
@@ -16,17 +16,23 @@ depends=(
   'cfitsio'
   'curl'
   'exiv2'
+  'ffmpeg'
   'ffms2'
   'fftw'
   'gsl'
   'gtk4'
   'gtksourceview5'
-  'kplotting'
   'libgit2'
   'libheif'
   'libraw'
   'libxisf'
-  'opencv4'
+  'opencv'
+  'python'
+  'python-numpy'
+  'python-onnxruntime'
+  'python-packaging'
+  'python-platformdirs'
+  'python-requests'
   'wcslib'
 )
 makedepends=(
