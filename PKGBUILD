@@ -10,8 +10,8 @@ optdepends=('git: version control integration')
 provides=('intellij-idea-community')
 conflicts=('intellij-idea-community')
 
-source=("idea-$pkgver.tar.gz::https://github.com/JetBrains/intellij-community/releases/download/idea%2F${pkgver}-preview/idea-${pkgver}-preview.tar.gz")
-sha256sums=('54d7938d7d892fc738890986b74115cf4ed11d7e74bac6888e912ecd783db837')
+source=("idea-$pkgver.tar.gz::https://github.com/JetBrains/intellij-community/releases/download/idea%2F${pkgver}-preview/idea-2026.2.0.1.tar.gz")
+sha256sums=('1a95024d3e6fa9cb015dab168500fe57a891d1bc20854c8b3ed58ed53d2827a6')
 
 package() {
     local srcdir_idea
