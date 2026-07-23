@@ -8,6 +8,7 @@ pkgbase = branch
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
+<<<<<<< HEAD
 	depends = openssl
 	depends = icu
 	depends = zlib
@@ -15,5 +16,11 @@ pkgbase = branch
 	conflicts = branch
 	source_x86_64 = branch-1.2.0::https://github.com/butterman28/Dev-Section/releases/download/v1.2.0/branch-linux-x86_64
 	sha256sums_x86_64 = 136300dcc00724e8c5d62b5c5b29cd1b2f2f3e16b26520c6ef0447f428c534d9
+=======
+	depends = libxdo
+	depends = libappindicator
+	source = branch::https://github.com/butterman28/Dev-Section/releases/download/v1.2.0/branch-linux-x86_64
+	sha256sums = fe8de15d48ef379b99d5a35e29950f3e3892827f2a985650e84410a560263e6c
+>>>>>>> 9a85ad8 (Update to v1.2.0)
 
 pkgname = branch
