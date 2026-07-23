@@ -1,30 +1,47 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=gtimelog
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
-license=('GPL')
-depends=('gtk3' 'hicolor-icon-theme' 'python' 'python-gobject' 'python-setuptools')
-makedepends=('python-docutils')
+license=('GPL-2.0-only')
+depends=(
+  glib2
+  gtk3
+  gtk4
+  hicolor-icon-theme
+  libsecret
+  libsoup3
+  pango
+  python
+  python-freezegun
+  python-gobject
+)
+makedepends=(
+  python-build
+  python-docutils
+  python-installer
+  python-setuptools
+)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('8eccde32fb11f2dd3a7e28d14693dea5052b9922aacef14235232e109be236ab')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
-
+  python -m build --wheel --no-isolation
+  
   # Generate man page
   rst2man gtimelog.rst > gtimelog.1
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install .desktop file and icon(s)
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
