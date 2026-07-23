@@ -1,22 +1,22 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-fern
-pkgver=1.58.0
+pkgver=1.59.0
 pkgrel=1
 pkgdesc="General purpose asynchronous tree viewer"
-arch=('any')
+arch=(any)
 url="https://github.com/lambdalisue/fern.vim"
-license=('MIT')
-groups=('vim-plugins')
+license=(MIT)
+groups=(vim-plugins)
 optdepends=(
     'gomi: trash-bin functionality'
     'trash-cli: trash-bin functionality'
 )
-checkdepends=('vim-themis')
-provides=('neovim-fern')
-replaces=('neovim-fern')
+checkdepends=(vim-themis)
+provides=(neovim-fern)
+replaces=(neovim-fern)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('21013f1779f6e19d5f8b66623b0b79ecfa5b3e0b472e1740ad71e560bd6eb320')
+sha256sums=('6d3a191767f8a7469a17cde4e7bee6157cfc9b0e8d00fa6de1eda01c29c9de4b')
 
 check() {
     cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ check() {
 }
 
 package() {
-    depends=('vim-plugin-runtime')
+    depends=(vim-plugin-runtime)
     cd "$pkgname-$pkgver"
     find autoload doc ftplugin plugin syntax \
         -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
