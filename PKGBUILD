@@ -1,4 +1,4 @@
-# Maintainer: Gurov <gurov@disroot.org>
+# Maintainer: Gurov <thuggerthugger1@duck.com>
 pkgname=archie
 pkgver=4.1.0
 pkgrel=1
