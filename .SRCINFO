@@ -1,0 +1,21 @@
+pkgbase = sudo-rs-system-names-git
+	pkgdesc = Memory-safe implementation of sudo (installed under system names)
+	pkgver = 0.2.14.r0.g65557a3
+	pkgrel = 1
+	url = https://github.com/trifectatechfoundation/sudo-rs
+	arch = x86_64
+	license = Apache-2.0 AND MIT
+	checkdepends = procps-ng
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = pam
+	optdepends = apparmor: apparmor support
+	provides = sudo
+	conflicts = sudo
+	backup = etc/sudoers
+	source = git+https://github.com/trifectatechfoundation/sudo-rs.git
+	b2sums = SKIP
+
+pkgname = sudo-rs-system-names-git
