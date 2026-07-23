@@ -5,9 +5,9 @@ _pkgname=loopi
 pkgname=${_pkgname}-bin
 pkgdesc="A visual automation builder that lets you create, schedule, and run automations with secure credential management"
 
-pkgver=1.10.1
+pkgver=1.10.4
 pkgrel=1
-_pkgstr=1.10.0
+_pkgstr=${pkgver}
 
 arch=('x86_64')
 _barch=('amd64')
@@ -22,7 +22,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs' 'glib2' 'libxfixes' 'libxdamage' 'nspr' 'dbus' 'expat' 'gtk3' 'libxrandr' 'libxext' 'libxcomposite' 'libxkbcommon' 'nss' 'libcups' 'mesa' 'systemd-libs' 'cairo' 'alsa-lib' 'pango' 'at-spi2-core' 'libx11' 'libxcb')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${_pkgstr}_${_barch[0]}.deb")
-sha256sums_x86_64=('6fe418da1600e0aa14a9b284dd29a2d105712015ca1eb6fa8170088804953279')
+sha256sums_x86_64=('0568038f6219a57d9cceb6376a58d293fb9a251143728013ec418dbdf21947c6')
 
 
 package() {
