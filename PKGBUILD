@@ -3,7 +3,7 @@
 
 pkgname=opencode-bwrap
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run opencode inside a bubblewrap sandbox for filesystem isolation'
 arch=('x86_64' 'aarch64')
 url='https://github.com/didvc/opencode-bwrap'
