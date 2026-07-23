@@ -1,0 +1,40 @@
+# bilibili-gpu-bin install hooks
+
+post_install() {
+    cat << 'MSG'
+==> bilibili-gpu-bin: GPU acceleration auto-detected at runtime
+    NVIDIA GPU detected → NVDEC path (VaapiOnNvidiaGPUs, libva-nvidia-driver)
+    Intel / AMD GPU  → VA-API path (VaapiVideoDecoder, Mesa Gallium)
+    No GPU-specific configuration needed — the wrapper adapts automatically.
+
+    Custom flags:  ~/.config/bilibili/bilibili-flags.conf
+    Appended after defaults; Chromium last-wins semantics for overrides.
+    Verify:        play a video, then check GPU decode with:
+                     cat /proc/$(pgrep -f "type=gpu-process.*bilibili")/fdinfo/* | grep drm-engine-video
+
+    For NVIDIA GPU: libva-nvidia-driver (extra repo) is required for NVDEC path.
+    Install it manually if you skipped the optional dependency.
+MSG
+}
+
+post_upgrade() {
+    cat << 'MSG'
+==> bilibili-gpu-bin: GPU acceleration flags updated (pkgrel 8)
+    GPU video decode flags are now auto-detected at runtime:
+      - /proc/driver/nvidia present → NVIDIA NVDEC path
+      - otherwise                       → Intel/AMD VA-API path
+
+    If you previously customized ~/.config/bilibili/bilibili-flags.conf,
+    your custom flags are still loaded and appended after the defaults.
+    You may want to remove old NVIDIA-only flags (--use-gl=angle,
+    --use-angle=gl, VaapiOnNvidiaGPUs) if you are on Intel/AMD hardware.
+MSG
+}
+
+pre_remove() {
+    :
+}
+
+post_remove() {
+    :
+}
