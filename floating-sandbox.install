@@ -1,0 +1,7 @@
+post_install() {
+    printf "\e[1;33m==> NOTE:\e[0m Set and export \e[1mFLOATING_SANDBOX_SHIPS_DIR\e[0m before launch to use a custom ships directory.\e[0m\n"
+}
+
+post_upgrade() {
+    post_install
+}
