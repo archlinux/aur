@@ -8,7 +8,7 @@ get() {
 
 eval $(grep -E '^arch=' ${dir}/PKGBUILD)
 archs="${arch[@]}"
-eval $(./get_latest $archs)
+eval $(${dir}/get_latest $archs)
 
 _Pkgname=$(get _Pkgname)
 pkgver="${version}_${updateDate//-/}"
