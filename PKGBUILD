@@ -10,8 +10,7 @@ _pkgbase=liberica-jdk-full
 _java_ver=17
 _jdkname="liberica-jdk-${_java_ver}-full"
 pkgname="${_jdkname}-bin"
-pkgver=${_java_ver}.0.19.u11
-_pkgver=${_java_ver}.0.19+11
+pkgver=17.0.20+10
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -56,18 +55,18 @@ source=(
   freedesktop-jshell.desktop.in
 )
 
-source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
-source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
+source_aarch64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-aarch64-full.tar.gz)
+source_armv7h=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-arm32-vfp-hflt-full.tar.gz)
 source_armv8h=(${source_armv7h[@]})
-source_x86_64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-amd64-full.tar.gz)
+source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
 
 sha1sums=('7d79a8c26a125f55f52493df7dca2189c8521b3c'
           '80a166acf99b351aa466452782a8faac3eca2d26'
           '4b5684dc98370ecbff274195b42c3ce559226596')
-sha1sums_aarch64=('3f855b7c47848e3c26b1577116c0809f34266667')
-sha1sums_armv7h=('692c3b8de4756e39d13b4dd26b8a1f576ffd6efd')
-sha1sums_armv8h=('692c3b8de4756e39d13b4dd26b8a1f576ffd6efd')
-sha1sums_x86_64=('9e7ffdc9f849265d5b1bb1d1238f64d7cf3478c5')
+sha1sums_aarch64=('15ba548c7130df102f6caff528a3e16e2a6a6679')
+sha1sums_armv7h=('8caec866ecc287ca7fd69e6a53dc0f67f78a7a36')
+sha1sums_armv8h=('8caec866ecc287ca7fd69e6a53dc0f67f78a7a36')
+sha1sums_x86_64=('8b26bb1d042664b8e1fc801189ef91b38d842ddb')
 
 # Upstream-provided
 
@@ -80,7 +79,7 @@ prepare() {
 }
 
 package() {
-  cd jdk-${_pkgver/+*}-full
+  cd jdk-${pkgver/+*}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"
