@@ -1,7 +1,7 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=advancely
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(git cmake python-jsonschema python-jinja)
 provides=('advancely')
 conflicts=('advancely-bin' 'advancely-git')
 source=("git+$url#tag=v${pkgver}")
-sha256sums=('43bdcdca365abbd876834af7c334165435971ac23eceefbc5f9d04a33fdff21e')
+sha256sums=('d43debe5301e8068d8d97f13a61a6e207d5c6de35a3dd13f0c591973119d7be7')
 
 build() {
   cd "$srcdir/Advancely"
