@@ -1,6 +1,6 @@
 pkgbase = offpunk
 	pkgdesc = Command-line and offline-centric browser for the web and various smolnet protocols
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://git.sr.ht/~lioploum/offpunk
 	install = offpunk.install
@@ -17,7 +17,7 @@ pkgbase = offpunk
 	depends = python
 	optdepends = xdg-utils: xdg-open opens a URL in the preferred application (Highly recommended)
 	optdepends = python-cryptography: better support of TOFU client certificates
-	optdepends = python-requests: for web browsing - HTTP(s) requests
+	optdepends = curl: for web browsing - HTTP(s) requests
 	optdepends = python-feedparser: for web browsing - atom/RSS feeds
 	optdepends = python-beautifulsoup4: for web browsing - HTML parsing
 	optdepends = python-readability-lxml: for web browsing - HTML parsing
@@ -26,7 +26,7 @@ pkgbase = offpunk
 	optdepends = xclip: copies text to/from the X11 clipboard
 	optdepends = xsel: copies text to/from the X11 clipboard (alternative)
 	optdepends = wl-clipboard: copies text to/from the Wayland clipboard
-	optdepends = python-chardet: for gopher browsing - detect text encoding
+	optdepends = python-charset-normalizer: detect text encoding in some cases
 	optdepends = ftr-site-config: Full-Text-RSS site-specific text extraction rules
 	provides = ansicat
 	provides = netcache
@@ -42,7 +42,7 @@ pkgbase = offpunk
 	conflicts = xkcdpunk
 	noextract = offpunk
 	options = !strip
-	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v3.1
+	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v3.2
 	sha256sums = SKIP
 
 pkgname = offpunk

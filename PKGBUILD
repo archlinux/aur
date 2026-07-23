@@ -1,15 +1,15 @@
 # shellcheck shell=bash
 
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Maintainer: Brumaire <brumaire@entalpi.net>
+# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # Contributor: Anna Vyalkova <cyber AT sysrq DOT in>
 # Contributor: Douglas Creager <dcreager@dcreager.net>
-# Contributor: Brumaire <brumaire@entalpi.net>
 # -*- sh -*-
 
 pkgname='offpunk'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-centric browser for the web and various smolnet protocols'
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -32,9 +32,9 @@ optdepends=(
   # Highly recommended
   'xdg-utils: xdg-open opens a URL in the preferred application (Highly recommended)'
   'python-cryptography: better support of TOFU client certificates'
+  'curl: for web browsing - HTTP(s) requests'
   
   #Web browsing 
-  'python-requests: for web browsing - HTTP(s) requests'
   'python-feedparser: for web browsing - atom/RSS feeds'
   'python-beautifulsoup4: for web browsing - HTML parsing'
   'python-readability-lxml: for web browsing - HTML parsing'
@@ -45,9 +45,7 @@ optdepends=(
   'xclip: copies text to/from the X11 clipboard'
   'xsel: copies text to/from the X11 clipboard (alternative)'
   'wl-clipboard: copies text to/from the Wayland clipboard'
-
-  # Gopher
-  'python-chardet: for gopher browsing - detect text encoding'
+  'python-charset-normalizer: detect text encoding in some cases'
 
   # Others (« Features »)
   'ftr-site-config: Full-Text-RSS site-specific text extraction rules'
@@ -88,7 +86,7 @@ package() {
 
   cd "$pkgdir/usr/bin/"            && ln -srf openk   opnk
   cd "$pkgdir/usr/share/man/man1/" && ln -srf openk.1 opnk.1
-  cd "$pkgdir/usr/share/doc/"      && ln -srf "$pkgname" "$_pkgname"           
+  #cd "$pkgdir/usr/share/doc/"      && ln -srf "$pkgname" "$_pkgname" uneeded as pkgname = _pkgname
 }
 
 # eof

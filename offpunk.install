@@ -14,8 +14,21 @@ post_install() {
 __EOT__
 }
 
-post_upgrade() {
-  post_install "$@"
+pre_upgrade () {
+    new_version=$(echo "$1" | cut -d "." -f 1-2 )
+    old_version=$(echo "$2" | cut -d "." -f 1-2 )
+
+    if [[ "$old_version" < "0.3.0" ]] ; then
+        post_install "$@"
+    fi
+
+    if [[ "$old_version" < "0.3.2" ]] ; then
+        echo '========================================================================='
+        echo '||                           /!\ WARNING /!\                           ||'
+        echo '========================================================================='
+        echo "Offpunk : Dependency 'python-requests' has been remplaced by 'curl' and is now recommended instead of suggested"
+        echo "Offpunk : Dependency 'python-chardet' has been remplaced by 'python-charset-normalizer' and is now suggested"
+    fi
 }
 
 # eof
