@@ -1,0 +1,4 @@
+[vim-lexima]
+source = "git"
+git = "https://github.com/cohama/lexima.vim.git"
+prefix = "v"
