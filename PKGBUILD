@@ -38,7 +38,7 @@ source=(
   # Panic is inconsistent about the package filename, sometimes it's Mirror sometimes it's mirror
   # With 1.3.0 they changed it after release from mirror to Mirror
   # if in doubt check the file listing here: https://download-cdn.panic.com/mirror/Linux/
-  "https://download-cdn.panic.com/mirror/Linux/mirror-${pkgver}.x86_64.deb"
+  "https://download-cdn.panic.com/mirror/Linux/Mirror-${pkgver}.x86_64.deb"
   "50-playdate-mirror.rules"
 )
 
