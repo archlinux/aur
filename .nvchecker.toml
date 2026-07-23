@@ -1,0 +1,5 @@
+[map2-bin]
+source = "github"
+github = "shiro/map2-legacy"
+use_latest_release = true
+prefix = "v"
