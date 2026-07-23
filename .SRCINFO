@@ -12,6 +12,6 @@ pkgbase = calibre-tui-bin
 	conflicts = calibre-tui-git
 	options = !strip
 	source = calibre-tui-0.6.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/calibre-tui/releases/download/v0.6.1/calibre-tui-0.6.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 3ec8c1f1571258eb03afc90cbd1316c4d12b1340565781cf5f0b63bcc3996adf
+	sha256sums = 0389535769c68a78e7e4678c91e95f8d5f6bc59fc4e69c173b95dc065e7ee1cb
 
 pkgname = calibre-tui-bin
