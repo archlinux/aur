@@ -1,6 +1,6 @@
 # Maintainer: Matias Peñaloza <mpenaloza@usm.cl>
 pkgname=ramolibre
-pkgver=0.1.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Organizador académico Local-First"
 arch=('x86_64')
