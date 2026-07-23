@@ -2,7 +2,7 @@
 
 pkgname=voicefox
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player that supports both streaming and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
@@ -20,10 +20,10 @@ makedepends=(
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
-	"LICENSE::https://raw.githubusercontent.com/emoeem/"${pkgname}"/refs/heads/main/LICENSE"
+	"LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/f814e545f327d28db8d71832648330b9f97d3020/LICENSE"
 )
 sha512sums=('8da4eae39d93214ab1cebd7d9a83e2f082e4752301f7eeabb526caebb3779cbe02821559be671028dd616b4f9c80cbd707d017dd44d87be10a38c2a025d68cbf'
-            'e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814')
+            'b083d9572511a96dbb86ffcf02e8ff843a5268062fffb65ca17b277a859b9648aaa6c3eadc72941a5f83e23e6fb6829c932a9f25c91260b673817af663ba830b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
