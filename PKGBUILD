@@ -1,15 +1,16 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=nbb
-_npmver=1.4.206
-
-pkgname=${_npmname}
+pkgauthor=babashka
+pkgname=nbb
 pkgdesc="Scripting in Clojure on Node.js using SCI"
-pkgver=${_npmver}
+pkgver=1.5.211
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/babashka/nbb"
+url="https://github.com/${pkgauthor}/${pkgname}"
 license=("EPL-1.0")
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 provides=("${_npmname}"{,um})
 
@@ -20,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('b92992f56c4a9397adaa695d7eaae87e9133f1bd16f04bdf9ed1c283ad56f80833efb458f38d62131d404922a061904c28ae04502730013309fac8b39bba6d56')
+b2sums=('45e6879a38db582aecee64ad4b7cb8a6a504fb3e29aa2ce0c8d964630789142fa570e0f6370370c770dd02626b4bc8037e49c09cc90fe621b6fd10d907f1bb8f')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
