@@ -1,20 +1,20 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Copyright (C) 2026 <developer@mplx.eu>
+# Copyright (C) 2026 mplx <jennifer@mplx.dev>
 #
 # AUR PKGBUILD for `jennifer-bin`: downloads the prebuilt release
 # tarball and installs both binaries (`jennifer` standard Go +
 # `jennifer-tiny` TinyGo) side by side. Pair to `jennifer-git`
 # which builds from source.
 #
-# Maintainer: developer@mplx.eu <developer@mplx.eu>
+# Maintainer: mplx <jennifer@mplx.dev>
 
 pkgname=jennifer-bin
 _realname=jennifer
-pkgver=0.17.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (prebuilt binary)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/mplx/jennifer-lang'
+url='https://github.com/jennifer-language/jennifer'
 license=('LGPL3')
 provides=('jennifer')
 conflicts=('jennifer' 'jennifer-git')
@@ -31,8 +31,8 @@ source_aarch64=("$_realname-$pkgver-linux-arm64.tar.gz::$url/releases/download/$
 # update these on each release. AUR maintainer note: replace SKIP
 # with the real sums when you bump pkgver. CI publishes a
 # pre-filled PKGBUILD-bin as a release asset; copy from there.
-sha256sums_x86_64=('34edfb0bcc879195bdca565d9e4130278b329840b2102e00b51b568fde3b3bb6')
-sha256sums_aarch64=('4621cbcb5cef1cf2d3cc88b56916c440ba0b095f528fb0666d7dc26c3998200f')
+sha256sums_x86_64=('3a77c609188c6e9ff1f5620846af094a2b57d28850a8af7f9f146f2914d265cb')
+sha256sums_aarch64=('d045d938587f95c454fb8df6a9f85a5df4430e0da11c6b4a7cc2335008644f40')
 
 # The release tarball lays out as `jennifer-X.Y.Z-linux-ARCH/` with
 # both binaries at the top of that directory.
@@ -90,6 +90,12 @@ package() {
     # `$(bat --config-dir)/syntaxes/` and runs `bat cache --build`.
     install -Dm644 share/jennifer/syntaxes/jennifer.sublime-syntax \
         "$pkgdir/usr/share/jennifer/syntaxes/jennifer.sublime-syntax"
+
+    # Jennifer-coded library modules: bare `import "name.j";` resolves under the
+    # system module directory. The release tarball already excludes the
+    # *_test.j overlays, so a plain glob is safe.
+    install -dm755 "$pkgdir/usr/share/jennifer/modules"
+    install -m644 share/jennifer/modules/*.j "$pkgdir/usr/share/jennifer/modules/"
 
     # Language reference for coding assistants (also a human quick-reference).
     install -Dm644 JENNIFER.md "$pkgdir/usr/share/doc/jennifer/JENNIFER.md"
