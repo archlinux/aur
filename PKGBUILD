@@ -1,17 +1,14 @@
 # Maintainer: sonnewalth <thesecret1 at tutanota dot dee ee (as in 'deutsch')>
 # Contributer: Jackson Baker Ryan <jackson.baker.ryan at gmail dot com>
 
-# SPDX-License-Identifier: 0BSD
-# SPDX-FileCopyrightText: Arch Linux contributors
-
 pkgname=otf-nimbus-mono
 pkgdesc="Nimbus Mono typeface - A serif, typewriter typeface"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL-2.0-or-later')
 source=("https://www.fontsquirrel.com/fonts/download/nimbus-mono")
-sha256sums=('c4c1080cf390b05897febd3a17beb99763084e876645330a3b079877380e27b7')
+sha256sums=('27d3136a1676ba828cc15a75fddbf0ca063381b6a44bc1f5e566a74b80fa8bc6')
 
 package() {
 	cd $srcdir
