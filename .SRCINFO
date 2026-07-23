@@ -1,15 +1,14 @@
 pkgbase = rsstail
 	pkgdesc = Monitor and print rss feeds (tail for rss...)
-	pkgver = 2.1
-	pkgrel = 3
-	url = https://github.com/oldlaptop/rsstail
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/folkertvanheusden/rsstail
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = libmrss
-	source = rsstail::git+https://github.com/oldlaptop/rsstail#commit=208a40f14005f26315050d2d9b9444bde6698db0
-	md5sums = SKIP
+	source = https://github.com/folkertvanheusden/rsstail/archive/refs/tags/v2.2.tar.gz
+	b2sums = 55310b92fd09a33d0d453b025e7fe66a1b7884bf1a2c9f3ea31823bfb15f623df53a0095d8e25b0415e299a2142f65fc9e783b3b78e39dcac03f61cb9c304a1e
 
 pkgname = rsstail
-
