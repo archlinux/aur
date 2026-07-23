@@ -2,7 +2,7 @@
 
 pkgname=python-pyg-lib
 _pkgname=pyg-lib
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Low-Level Graph Neural Network Operators for PyG'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "gklib.tar.gz::https://github.com/KarypisLab/GKlib/archive/$_gklib_commit.tar.gz"
         "cccl.tar.gz::https://github.com/NVIDIA/cccl/archive/$_cccl_commit.tar.gz"
         "cuCollections.tar.gz::https://github.com/NVIDIA/cuCollections/archive/$_cucollections_commit.tar.gz")
-sha256sums=('60bcc10ef197a4445a43af92c9700fc1e5b6570d3ecc4dfd44fa7888826c1214'
+sha256sums=('608db341224839c3acec5cafffcb924ec526e7af61f266c9320bf8da2e299d03'
             '11f42dd45abe08ad0c93d5509bfb24bc3877efdd11ce678e07b71b7d7fd74921'
             '437fc187540bd468cbbbebb034875b601c1160294bae58e0f01730da8f2ee071'
             '36429479df2ab1cd1c7981c2d34e786106326ccfefc8846f902f76151a65e112'
@@ -50,6 +50,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    export TORCH_CUDA_ARCH_LIST="8.9"
     python -m build --wheel --no-isolation
 }
 
