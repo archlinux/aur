@@ -1,6 +1,6 @@
 pkgbase = niri-companion
 	pkgdesc = Niri companion scripts: config generation, IPC extensions, workspace management
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/dybdeskarphet/niri-companion
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = niri-companion
 	depends = python-typer
 	depends = python-watchdog
 	depends = niri
-	source = niri-companion-4.0.0.tar.gz::https://github.com/dybdeskarphet/niri-companion/archive/refs/tags/v4.0.0.tar.gz
-	sha256sums = 834de3ca1595d63c6a1b1c9da8df37abe63ae6bcd965e37829ed046a56d01626
+	source = niri-companion-5.0.0.tar.gz::https://github.com/dybdeskarphet/niri-companion/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = c54e5f9ff460763a0a3e3cb04654e18b4576abfa8aec40d9451c0f24e10c11fc
 
 pkgname = niri-companion
