@@ -1,0 +1,5 @@
+[performa]
+source = "github"
+github = "jhuckaby/performa"
+use_latest_release = true
+prefix = "v"
