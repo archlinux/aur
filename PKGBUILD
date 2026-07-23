@@ -2,7 +2,7 @@
 
 pkgname=kicad-hq
 _name=${pkgname%-hq}
-pkgver=10.0.4
+pkgver=10.0.5
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=($CARCH)
@@ -15,7 +15,6 @@ depends=(
   freetype2
   fontconfig
   glib2
-  glibc
   glm
   glu
   gtk3
@@ -60,7 +59,7 @@ optdepends=('kicad-library: KiCad symbol, footprint and template libraries'
 conflicts=(${pkgname} 'kicad' 'kicad-bzr')
 provides=(${pkgname} 'kicad' 'kicad-bzr')
 source=("${pkgname}::git+https://gitlab.com/kicad-hq/kicad.git#tag=${pkgver}")
-sha256sums=('a5fed4af094d398ef8977df7faa8979241e98d46eedcf8411b33b021a76391b3')
+sha256sums=('686252c893c5564ee8493cd27fb461b13503d7b055f2cc348ff16dde9942839a')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
