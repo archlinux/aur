@@ -1,6 +1,6 @@
 pkgbase = java21-openjfx-bin
-	pkgdesc = Java OpenJFX 21.0.11 client application platform (Gluon build).
-	pkgver = 21.0.11
+	pkgdesc = Java OpenJFX 21.0.12 client application platform (Gluon build).
+	pkgver = 21.0.12
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = java21-openjfx-bin
 	provides = java-openjfx=21
 	conflicts = java21-openjfx
 	options = !strip
-	source = https://download2.gluonhq.com/openjfx/21.0.11/openjfx-21.0.11_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/21.0.11/openjfx-21.0.11_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/21.0.11/openjfx-21.0.11-javadoc.zip
-	sha256sums = 9a69b4074f22bdb051ca0ae8e9794750621ef815c7657ccc51f89ba81ef2b624
-	sha256sums = 1c899cc64bf94248fd22b9fd1339c9f0fcfe97e6b2b6e6521e8c3589e47dfaf5
-	sha256sums = 2eca535a3686517dee6c8743dc195a7d8633f05e2ee72c0184b391a75335a1a3
+	source = https://download2.gluonhq.com/openjfx/21.0.12/openjfx-21.0.12_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/21.0.12/openjfx-21.0.12_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/21.0.12/openjfx-21.0.12-javadoc.zip
+	sha256sums = 9d4e3daa5f2ec07a8cacec2f8a8f56d487b99aadf757c18f5f1f1c2fb594740b
+	sha256sums = 87dbf03d39d2df3d232bd8d98cb6ad4920940d5251287f0cba61222b4e46a173
+	sha256sums = 253d3117bea1eb160d479a62671220b2b34ba8c89193682b78c0856bbe7c41b5
 
 pkgname = java21-openjfx-bin
