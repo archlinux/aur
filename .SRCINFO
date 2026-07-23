@@ -1,6 +1,6 @@
 pkgbase = obs-cmd-bin
 	pkgdesc = A minimal OBS CLI for obs-websocket v5
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/grigio/obs-cmd
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = obs-cmd-bin
 	provides = obs-cmd
 	conflicts = obs-cmd
 	options = !strip
-	source = README-1.0.0.md::https://raw.githubusercontent.com/grigio/obs-cmd/v1.0.0/README.md
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/grigio/obs-cmd/v1.0.0/LICENSE
+	source = README-1.0.1.md::https://raw.githubusercontent.com/grigio/obs-cmd/v1.0.1/README.md
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/grigio/obs-cmd/v1.0.1/LICENSE
 	sha256sums = 81c36d24bdc202963eb7b641f318641a5ddd8a26fec3549afc0c8febffd324db
 	sha256sums = ba4889412c2cfdd1c0b7d0453202de9264a90a7665a0cd799e6c1ec2f3c062c3
-	source_x86_64 = obs-cmd-x86_64-1.0.0.tgz::https://github.com/grigio/obs-cmd/releases/download/v1.0.0/obs-cmd-x64-linux.tar.gz
-	sha256sums_x86_64 = 6676b3dc57d1cc04f53d9d3d50548673f3d0307ed9ed64ee04e9162b02a7e931
+	source_x86_64 = obs-cmd-x86_64-1.0.1.tgz::https://github.com/grigio/obs-cmd/releases/download/v1.0.1/obs-cmd-x64-linux.tar.gz
+	sha256sums_x86_64 = b089f5d7362f40a6aacfee2e73a4bb66d67e40b461694d7251665b80f8c683d9
 
 pkgname = obs-cmd-bin
