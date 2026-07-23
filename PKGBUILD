@@ -3,7 +3,7 @@
 
 pkgname=ozone
 pkgver=3.50a
-pkgrel=1
+pkgrel=2
 epoch=32
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('x86_64')
@@ -47,7 +47,7 @@ package(){
     find . -name ".svn" | xargs rm -rf
 
     # Bulk copy everything
-    cp -ax Ozone Plugins Doc Config Lib Ozone.png Examples "${pkgdir}/opt/SEGGER/Ozone"
+    cp -ax Ozone ozone ozone-sim Plugins Doc Config Lib Ozone.png Examples "${pkgdir}/opt/SEGGER/Ozone"
 
     # Create links where needed
     ln -s /opt/SEGGER/Ozone/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
