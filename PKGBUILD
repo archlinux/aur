@@ -6,7 +6,7 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=3.0.3
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -21,7 +21,7 @@ makedepends=('git' 'pnpm' 'ts-node' 'mise')
 # dependencies generated from base-images repository
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
-depends=('valkey' 'postgresql>=14' 'nodejs>=20'
+depends=('redis' 'postgresql>=14' 'nodejs>=20'
 	'vectorchord>=0.3' 'vectorchord<2'  # server/src/constants.ts
 	'zlib'
 	'glib2'
@@ -79,7 +79,7 @@ b2sums=('a1e56405fa1c0e6baeec166a716c4b90af07c78e51f1961ece988e877e469ffe1e3c7da
         '37d887f04462975ee280134604242b859bc8f921f82785e6b69f6a100150217b6aa22ba3446c34d7a83e5d88fcbf8cb5182e1e97c2b918bb63bc6583cfb17839'
         '5a92b4730cf9c93e1722e492ecf7dad343f0ac9330327a2351e37d996db326a926bed9808e43d99d3b46796be9cfc48dc01e0b8339c0e886aa182c2da136eb9b'
         'e69ee70889da5b4eebafe7ed98cbeda735f5f280152e238e695b4e028edb496293435a2ff1ab021e5d263cc2133bfeadb23afd2d4936e40027a2ce28e09d12ef'
-        '2d0a00126bde2b6ad2bfe2174e33b693c1a07419e333709584c4ebf052d2f3a1ac901efc6cb221701f82aa60ba1f9513355c635ff22eef7697c8d8ac55fee9af'
+        'c6071ce12cc719a6bf33d9486f54648edb62c710b216181524fef9a9fec26cf9ced6d65a3433b2af941e75b03fc4b261d5e901a7f736de29b0b98192df59fdd2'
         '8a66c540b5cea1e303602cf78ca173da226c6693ec455a060c3d8a6e9616c5bfbab590e8e8a3c8e395bce8e026107b03abfa862ff436d22db271c359a977219d'
         'e7a40359104cfd13c3563a5b988dcd9d2c132179a5e7e3eb5fe333a3667843e3c04e9eea8157b5f76a7dae18ac5736a487a2b97e2f8b30d6bdc7b2298f8b9e02'
         'c530746be9ec2e64ee4f6a7f7d52d0c204d05eff7f5c793aafce10431fc92edf8e1ba1e037ed3e498077f79e37f6fbc41d01b0b94287c0dba61fc2f24e1d1823'
