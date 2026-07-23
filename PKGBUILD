@@ -1,5 +1,6 @@
+# Maintainer: creations <creations@creations.works>
 pkgname=grabit
-pkgver=0.5.1.r168.g0b8a1f6
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors"
 arch=('x86_64' 'aarch64')
@@ -30,25 +31,17 @@ optdepends=(
     'alsa-utils: aplay (alternative sound player)'
     'sox: play (alternative sound player)'
 )
-conflicts=('grabit-bin')
-source=("git+https://heliopolis.live/creations/grabit.git#branch=main")
+conflicts=('grabit-bin' 'grabit-git')
+source=("grabit-${pkgver}::git+https://heliopolis.live/creations/grabit.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/grabit"
-    printf "%s.r%s.g%s" \
-        "$(awk '/^VERSION/ {print $3; exit}' Makefile)" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
-}
-
 build() {
-    cd "${srcdir}/grabit"
-    make all VERSION="${pkgver%.r*}"
+    cd "${srcdir}/grabit-${pkgver}"
+    make all VERSION="${pkgver}"
 }
 
 package() {
-    cd "${srcdir}/grabit"
+    cd "${srcdir}/grabit-${pkgver}"
     make install DESTDIR="${pkgdir}" PREFIX="/usr"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
