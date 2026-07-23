@@ -1,6 +1,6 @@
 pkgname=cly
-pkgver=7.5.3
-pkgrel=2
+pkgver=7.5.4
+pkgrel=1
 pkgdesc="A semantic AUR helper wrapper for Arch Linux written in bash"
 arch=('any')
 url="https://github.com/xmlzitos154/cly"
@@ -31,4 +31,5 @@ package() {
     install -Dm644 modules/mod_05.sh "$pkgdir/usr/share/cly/mod_05.sh"
     install -Dm644 languages/lang_mod_pt.sh "$pkgdir/usr/share/cly/languages/lang_mod_pt.sh"
     install -Dm644 languages/lang_mod_en.sh "$pkgdir/usr/share/cly/languages/lang_mod_en.sh"
+    install -Dm644 "extra_files/infected_packages.txt" "$pkgdir/usr/share/cly/infected_packages.txt"
 }
