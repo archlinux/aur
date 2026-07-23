@@ -1,7 +1,7 @@
 # Maintainer: Lemmy <studio@quadbyte.net>
 
 pkgname=swash
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fast screenshot annotator and lightweight image editor'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 optdepends=('tesseract: OCR text recognition')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fae38eb499116c4579c115d9e9c003d4e0901947b12a046e3583eb8e887d15f5')
+sha256sums=('43e79fd54c6c9dc6045cfe337ba44986902ce69788c794252c46b4297aad5c61')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
