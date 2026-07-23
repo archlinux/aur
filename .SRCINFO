@@ -1,6 +1,6 @@
 pkgbase = pkgpick-git
 	pkgdesc = Interactive fzf-based TUI package manager for pacman/AUR/Flatpak/npm/pip/cargo/go/pipx, with a Settings and Cleanup menu, EN/RU UI (git version)
-	pkgver = r10.d51bbd9
+	pkgver = r11.3682c59
 	pkgrel = 1
 	url = https://github.com/ItzDast/pkgpick
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = pkgpick-git
 	optdepends = cargo: manage cargo-installed binaries
 	optdepends = go: manage go-installed binaries
 	optdepends = python-pipx: manage pipx-installed packages
+	optdepends = libnotify: desktop notifications for install/remove/update/cleanup
 	provides = pkgpick
 	conflicts = pkgpick
 	source = pkgpick-git::git+https://github.com/ItzDast/pkgpick.git

@@ -15,6 +15,7 @@ optdepends=(
     'cargo: manage cargo-installed binaries'
     'go: manage go-installed binaries'
     'python-pipx: manage pipx-installed packages'
+    'libnotify: desktop notifications for install/remove/update/cleanup'
 )
 makedepends=('git')
 provides=('pkgpick')
@@ -29,4 +30,7 @@ pkgver() {
 
 package() {
     install -Dm755 "$srcdir/$pkgname/pkgpick.sh" "$pkgdir/usr/bin/pkgpick"
+    if [[ -f "$srcdir/$pkgname/pkgnc.svg" ]]; then
+        install -Dm644 "$srcdir/$pkgname/pkgnc.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pkgpick.svg"
+    fi
 }
