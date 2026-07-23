@@ -1,7 +1,7 @@
 pkgbase = plasma-lichess-tv-wallpaper
 	pkgdesc = Unofficial Plasma 6 live wallpaper for Lichess TV
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/YummierGravy/plasma-lichess-tv-wallpaper
 	install = plasma-lichess-tv-wallpaper.install
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = plasma-lichess-tv-wallpaper
 	depends = qt6-svg
 	provides = plasma-lichess-tv-wallpaper
 	conflicts = plasma-lichess-tv-wallpaper-git
-	source = plasma-lichess-tv-wallpaper-0.3.0.tar.gz::https://github.com/YummierGravy/plasma-lichess-tv-wallpaper/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = bf2601cd359d54faa98042deb9397b4a5ac78d6021d6451f28d4d7dc8cf22840
+	source = plasma-lichess-tv-wallpaper-1.0.0.tar.gz::https://github.com/YummierGravy/plasma-lichess-tv-wallpaper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 041116606c8ee025b5e6761ea7b07b1c5ae0e0be5e4e6140aed3a7c0e8381ae3
 
 pkgname = plasma-lichess-tv-wallpaper
