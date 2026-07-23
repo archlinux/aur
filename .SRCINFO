@@ -1,6 +1,6 @@
 pkgbase = centium
 	pkgdesc = A minimal, preview-first pacman UX wrapper with AUR support
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Kolgrim33/centium
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = centium
 	depends = python-rich
 	depends = git
 	depends = base-devel
-	source = centium-0.2.0.tar.gz::https://github.com/Kolgrim33/centium/archive/refs/heads/master.tar.gz
+	source = centium-0.4.0.tar.gz::https://github.com/Kolgrim33/centium/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
 pkgname = centium
