@@ -1,4 +1,4 @@
-# Maintainer: Your Name <1000Hz radiowave + aur at gmail>
+# Maintainer: 1000Hz <1000Hz radiowave + aur at gmail>
 pkgname=btrfs-file-restorer
 pkgver=1.0.0
 pkgrel=1
