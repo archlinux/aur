@@ -1,0 +1,4 @@
+[vim-prosession]
+source = "git"
+git = "https://github.com/dhruvasagar/vim-prosession.git"
+prefix = "v"

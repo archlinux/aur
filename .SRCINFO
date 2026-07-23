@@ -1,13 +1,13 @@
 pkgbase = vim-prosession
-	pkgdesc = Handle vim sessions like a pro
+	pkgdesc = Handle Vim sessions like a pro
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhruvasagar/vim-prosession
 	arch = any
 	groups = vim-plugins
 	license = Vim
 	source = vim-prosession-0.7.5.tar.gz::https://github.com/dhruvasagar/vim-prosession/archive/v0.7.5.tar.gz
-	source = LICENSE
+	source = LICENSE-VIM
 	sha256sums = c928480341b152cfcde58f3a4848bba373b5bb7df7bb87e1f75ea3e8fefc5a68
 	sha256sums = 9f0c174a1ebb45f10904046523392104aee46841a90f1508578da86011a6a1ba
 
