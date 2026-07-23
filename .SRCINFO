@@ -1,14 +1,14 @@
 pkgbase = pince-bin
 	pkgdesc = Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = polkit
-	provides = pince
+	provides = PINCE
 	conflicts = pince
 	conflicts = pince-git
 	noextract = PINCE-x86_64-0.9.3.AppImage
