@@ -1,7 +1,7 @@
 pkgbase = bananadashboard-bin
 	pkgdesc = Desktop system dashboard by BananaBrother77
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BananaBrother77/BananaDashboard
 	arch = x86_64
 	license = MIT

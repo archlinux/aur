@@ -3,7 +3,7 @@
 _pkgname=bananadashboard
 pkgname=${_pkgname}-bin
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop system dashboard by BananaBrother77"
 arch=('x86_64')
 url="https://github.com/BananaBrother77/BananaDashboard"
