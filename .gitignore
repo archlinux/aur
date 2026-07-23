@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !libloot-compat.patch
+!gcc16.patch

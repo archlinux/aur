@@ -1,0 +1,115 @@
+From a188372bf28069896b4cfe5506accbd5e8008a4a Mon Sep 17 00:00:00 2001
+From: curbol <curtis.bollinger@gmail.com>
+Date: Sat, 20 Jun 2026 23:01:01 -0700
+Subject: [PATCH] add missing <cstdint> and <iomanip> includes for GCC 16
+
+GCC 16 dropped some transitive standard-library includes, breaking
+files that relied on them implicitly.
+
+The compiler diagnostics already pointed at the fix; this just
+applies it.
+
+- <cstdint> for uint*_t in:
+    src/core/installer.cpp
+    src/core/progressnode.{h,cpp}
+    src/ui/applicationmanager.cpp
+- <iomanip> for std::put_time in:
+    src/core/versionchangelog.cpp
+    src/ui/modlistmodel.cpp
+    src/ui/nexusmoddialog.cpp
+
+Verified by building cleanly to completion with GCC 16.1.1.
+
+Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
+---
+ src/core/installer.cpp        | 1 +
+ src/core/progressnode.cpp     | 1 +
+ src/core/progressnode.h       | 1 +
+ src/core/versionchangelog.cpp | 1 +
+ src/ui/applicationmanager.cpp | 1 +
+ src/ui/modlistmodel.cpp       | 1 +
+ src/ui/nexusmoddialog.cpp     | 1 +
+ 7 files changed, 7 insertions(+)
+
+diff --git a/src/core/installer.cpp b/src/core/installer.cpp
+index 5662845..94e796d 100644
+--- a/src/core/installer.cpp
++++ b/src/core/installer.cpp
+@@ -3,6 +3,7 @@
+ #include "pathutils.h"
+ #include <archive.h>
+ #include <archive_entry.h>
++#include <cstdint>
+ #include <filesystem>
+ #include <ranges>
+ #include <regex>
+diff --git a/src/core/progressnode.cpp b/src/core/progressnode.cpp
+index 7701aed..0b70ab3 100644
+--- a/src/core/progressnode.cpp
++++ b/src/core/progressnode.cpp
+@@ -1,4 +1,5 @@
+ #include "progressnode.h"
++#include <cstdint>
+ #include <limits>
+ #include <numeric>
+ 
+diff --git a/src/core/progressnode.h b/src/core/progressnode.h
+index c09b3e3..ffb756b 100644
+--- a/src/core/progressnode.h
++++ b/src/core/progressnode.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+ #include <optional>
+diff --git a/src/core/versionchangelog.cpp b/src/core/versionchangelog.cpp
+index 470c53d..74358d6 100644
+--- a/src/core/versionchangelog.cpp
++++ b/src/core/versionchangelog.cpp
+@@ -1,6 +1,7 @@
+ #include "versionchangelog.h"
+ #include <algorithm>
+ #include <chrono>
++#include <iomanip>
+ 
+ 
+ VersionChangelog::VersionChangelog(const Json::Value& json)
+diff --git a/src/ui/applicationmanager.cpp b/src/ui/applicationmanager.cpp
+index 4c53f5d..1365e5e 100644
+--- a/src/ui/applicationmanager.cpp
++++ b/src/ui/applicationmanager.cpp
+@@ -7,6 +7,7 @@
+ #include <QMessageBox>
+ #include <QSettings>
+ #include <QUrl>
++#include <cstdint>
+ #include <regex>
+ 
+ namespace sfs = std::filesystem;
+diff --git a/src/ui/modlistmodel.cpp b/src/ui/modlistmodel.cpp
+index 1a56ae9..c7cee30 100644
+--- a/src/ui/modlistmodel.cpp
++++ b/src/ui/modlistmodel.cpp
+@@ -5,6 +5,7 @@
+ #include <QIcon>
+ #include <QPainter>
+ #include <QTableView>
++#include <iomanip>
+ 
+ 
+ ModListModel::ModListModel(ModListProxyModel* proxy, QObject* parent) :
+diff --git a/src/ui/nexusmoddialog.cpp b/src/ui/nexusmoddialog.cpp
+index 41968c3..85161f7 100644
+--- a/src/ui/nexusmoddialog.cpp
++++ b/src/ui/nexusmoddialog.cpp
+@@ -8,6 +8,7 @@
+ #include <QSettings>
+ #include <QSpacerItem>
+ #include <algorithm>
++#include <iomanip>
+ #include <ranges>
+ #include <sstream>
+ 

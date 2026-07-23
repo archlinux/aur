@@ -1,11 +1,12 @@
 pkgbase = limo
 	pkgdesc = A simple Qt based mod manager
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/limo-app/limo
 	arch = x86_64
 	license = GPL-3.0-or-later
-	checkdepends = catch2
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
@@ -27,8 +28,10 @@ pkgbase = limo
 	depends = zstd
 	source = git+https://github.com/limo-app/limo.git#tag=v1.2.2
 	source = libloot-compat.patch
+	source = gcc16.patch
 	sha256sums = d9d9870d56ffef64400c40e19a358ed422ded57dd4d09cfec2b2b4dfb3a2f60b
 	sha256sums = 4b3b21fa40c64c23c6e5ffd6a0408dcd073e5d1c13a750926bbb249423c579b1
+	sha256sums = ab37df7d1cff5358252c7b8fd59514bbfb88e93f9e40345f71403e806ae47e36
 
 pkgname = limo
 
