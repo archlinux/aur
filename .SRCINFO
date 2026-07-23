@@ -1,6 +1,6 @@
 pkgbase = arf-helper
 	pkgdesc = An fzf Pacman wrapper and AUR helper
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Samq64/arf
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = arf-helper
 	depends = python-srcinfo
 	optdepends = sudo: default privilege elevation
 	conflicts = arf
-	source = arf-helper-0.2.0.tar.gz::https://github.com/Samq64/arf/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = b15b367ac632bd5c8bc3c35e9c6f9dda29de2013bad68aa20de82f6ff99f93e9
+	source = arf-helper-0.2.1.tar.gz::https://github.com/Samq64/arf/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = 79eb57ae2a770b8cc55dcaacb665a863fe1842b0755d113a2686f29acaf3d33e
 
 pkgname = arf-helper
