@@ -14,7 +14,7 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=25.11.r108.g549148d
+pkgver=26.04.r43.g7f26c3e
 pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
@@ -56,7 +56,6 @@ build() {
   cd "${pkgname%-git}"
 
   # Tuning rust compiler
-  export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
   [[ -n "${_sccache}" ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
 
   # Tuning cargo
