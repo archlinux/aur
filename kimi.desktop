@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kimi
+Comment=AI assistant by Moonshot AI
+Exec=kimi %U
+Icon=kimi
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+MimeType=x-scheme-handler/kimi;x-scheme-handler/kimi-work;
+StartupWMClass=Kimi
+X-GNOME-UsesNotifications=true

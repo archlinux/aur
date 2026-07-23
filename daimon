@@ -1,0 +1,108 @@
+#!/bin/sh
+
+set -eu
+
+bundle_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+cli="${bundle_root}/app/daimon/dist/src/runner/cli.js"
+manifest="${bundle_root}/release/manifest.json"
+
+# The desktop main process passes the bundled Node path.  On Arch, run the
+# Daimon CLI through electron41's Node mode so its ABI always matches the
+# packaged better-sqlite3 prebuild.
+case "${1:-}" in
+  --node|--node-bin)
+    [ "$#" -ge 2 ] || exit 64
+    shift 2
+    ;;
+  --node=*|--node-bin=*)
+    shift
+    ;;
+esac
+
+if [ "${1:-}" = "--background-python-sync" ]; then
+  export DAIMON_PYTHON_RUNTIME_BACKGROUND_SYNC=1
+  shift
+fi
+if [ "${1:-}" = "--" ]; then
+  shift
+fi
+
+: "${KIMI_SHARE_DIR:=${HOME}/.kimi}"
+: "${DAIMON_CONFIG_PATH:=${KIMI_SHARE_DIR}/daimon/config.json}"
+: "${OPENCLAW_CONFIG_PATH:=${KIMI_SHARE_DIR}/daimon/runtime/openclaw-empty.json}"
+
+export KIMI_SHARE_DIR DAIMON_CONFIG_PATH OPENCLAW_CONFIG_PATH
+export ELECTRON_RUN_AS_NODE=1
+export DAIMON_BUNDLE_NODE_BIN=/usr/bin/electron41
+export DAIMON_NODE_BIN=/usr/bin/electron41
+export DAIMON_UV_PATH=/usr/bin/uv
+export DAIMON_PYTHON_BASE_PATH=/usr/bin/python
+export DAIMON_RUNTIME_BINARY_PATH="${bundle_root}/bin/daimon"
+export DAIMON_ADAPTER_PACKAGE_ROOT="${bundle_root}/app/daimon"
+export KIMI_BUILTIN_SKILLS_DIR="${bundle_root}/app/daimon/assets/builtin-skills"
+
+run_cli() {
+  /usr/bin/electron41 "${cli}" "$@"
+}
+
+prepare_runtime() {
+  run_cli \
+    --config "${OPENCLAW_CONFIG_PATH}" \
+    setup \
+    --release "file://${manifest}" \
+    --no-daemon \
+    --skip-openclaw \
+    --skip-webbridge \
+    --skip-system-tools \
+    "$@"
+}
+
+has_kimi_code_key() {
+  /usr/bin/electron41 -e '
+    const fs = require("node:fs");
+    let c;
+    try { c = JSON.parse(fs.readFileSync(process.argv[1], "utf8")); }
+    catch { process.exit(1); }
+    const p = c?.model?.providers?.["daimon-kimi-code"];
+    const key = c?.credentials?.kimiCode?.apiKey ?? p?.apiKey;
+    process.exit(typeof key === "string" && key.trim() ? 0 : 1);
+  ' "${DAIMON_CONFIG_PATH}"
+}
+
+command=${1:-start}
+[ "$#" -eq 0 ] || shift
+
+case "${command}" in
+  prepare)
+    exec /usr/bin/electron41 "${cli}" \
+      --config "${OPENCLAW_CONFIG_PATH}" \
+      setup \
+      --release "file://${manifest}" \
+      --no-daemon \
+      --skip-openclaw \
+      --skip-webbridge \
+      --skip-system-tools \
+      "$@"
+    ;;
+  runtime|start|serve)
+    if [ ! -f "${DAIMON_CONFIG_PATH}" ]; then
+      prepare_runtime --skip-python-runtime
+    fi
+    if has_kimi_code_key; then
+      exec /usr/bin/electron41 "${cli}" \
+        start --config "${OPENCLAW_CONFIG_PATH}" --control "$@"
+    fi
+    exec /usr/bin/electron41 "${cli}" \
+      --config "${OPENCLAW_CONFIG_PATH}" control serve "$@"
+    ;;
+  control)
+    exec /usr/bin/electron41 "${cli}" \
+      --config "${OPENCLAW_CONFIG_PATH}" control serve "$@"
+    ;;
+  cli)
+    exec /usr/bin/electron41 "${cli}" "$@"
+    ;;
+  *)
+    exec /usr/bin/electron41 "${cli}" "${command}" "$@"
+    ;;
+esac
