@@ -1,0 +1,10 @@
+# shellcheck shell=sh
+
+post_install() {
+    printf '%s\n' 'PlayerVox OverCrow was installed inertly.'
+    printf '%s\n' 'Open the desktop control center to select games and opt in.'
+}
+
+post_upgrade() {
+    post_install
+}
