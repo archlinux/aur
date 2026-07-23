@@ -2,7 +2,7 @@
 
 pkgname=tildr-bin
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage HOME files and directories with symlinks and Git."
 arch=('x86_64')
 url="https://orbitbits.com/tildr"
@@ -46,11 +46,14 @@ prepare() {
   echo "==> Extracting source tarball..."
   tar -xzf tildr-src --strip-components=1
 
+  echo "==> Downloading fresh SHA256SUMS..."
+  curl -sL "https://github.com/orbitbits/tildr/releases/download/v${pkgver}/SHA256SUMS" -o SHA256SUMS.new
+
   echo "==> Verifying SHA256SUMS signature..."
-  gpg --verify SHA256SUMS.sig SHA256SUMS
+  gpg --verify SHA256SUMS.sig SHA256SUMS.new
 
   echo "==> Verifying binary via SHA256SUMS..."
-  grep "tildr-$pkgver-linux-x86_64" SHA256SUMS | sha256sum -c -
+  grep "tildr-$pkgver-linux-x86_64" SHA256SUMS.new | sha256sum -c -
 }
 
 package() {

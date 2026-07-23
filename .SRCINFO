@@ -1,7 +1,7 @@
 pkgbase = tildr-bin
 	pkgdesc = Manage HOME files and directories with symlinks and Git.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orbitbits.com/tildr
 	install = tildr.install
 	arch = x86_64
