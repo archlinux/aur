@@ -22,6 +22,13 @@ Environment variables (override config file):
 
 Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
   transforms.{clusters,contexts,users}   jq expressions applied to workload kubeconfig sections
+  custom_fields.friendly_name             jq expression (against the Cluster resource) used to
+                                           rename the workload kubeconfig cluster (CAPI already
+                                           names it after the cluster, so this only takes effect
+                                           if the expression resolves non-empty); the kubeconfig
+                                           user is renamed to the identity reported by
+                                           "kubectl auth whoami", if available; if either rename
+                                           happened, the context is renamed to "<user>|<cluster>"
   sshuttle_host                          global SSH proxy host
   management_clusters[].sshuttle_host    per-cluster SSH proxy host (matched by KUBECONFIG path)
 EOF
@@ -35,7 +42,9 @@ shift
 envs=()
 
 _capo_config="${XDG_CONFIG_HOME:-$HOME/.config}/capo-shell/config.yaml"
+_friendly_name_expr=""
 if [[ -f "$_capo_config" ]]; then
+  _friendly_name_expr="$(yq -r '.custom_fields.friendly_name // empty' "$_capo_config")"
   if [[ ! -v CAPO_SHELL_SSHUTTLE_HOST ]]; then
     _sshuttle=""
     if [[ -v KUBECONFIG ]]; then
@@ -82,7 +91,34 @@ if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.
   hasKubeconfig=true
   envs+=(KUBECONFIG="$NEW_KUBECONFIG")
   if [[ -v CAPO_SHELL_KUBECONFIG_FILTER ]]; then
-    yq -Y "$CAPO_SHELL_KUBECONFIG_FILTER" "$NEW_KUBECONFIG" | sponge "$NEW_KUBECONFIG"
+    yq -i -Y "$CAPO_SHELL_KUBECONFIG_FILTER" "$NEW_KUBECONFIG"
+  fi
+  _renamed=false
+  if [[ -n "$_friendly_name_expr" ]]; then
+    if _friendly="$(kubectl -n "$namespace" get cluster "$name" -o yaml 2>/dev/null | yq -er "(${_friendly_name_expr}) // empty" 2>/dev/null)"; then
+      yq -i -Y --arg name "$_friendly" '
+        (.contexts[0].context.cluster) as $oldCluster |
+        (.clusters[] | select(.name == $oldCluster) | .name) = $name |
+        (.contexts[0].context.cluster) = $name
+      ' "$NEW_KUBECONFIG"
+      _renamed=true
+    fi
+  fi
+  if _whoami="$(command kubectl --kubeconfig "$NEW_KUBECONFIG" auth whoami -o jsonpath='{.status.userInfo.username}' 2>/dev/null)" && [[ -n "$_whoami" ]]; then
+    yq -i -Y --arg user "$_whoami" '
+      (.contexts[0].context.user) as $oldUser |
+      (.users[] | select(.name == $oldUser) | .name) = $user |
+      (.contexts[0].context.user) = $user
+    ' "$NEW_KUBECONFIG"
+    _renamed=true
+  fi
+  if [[ "$_renamed" == true ]]; then
+    yq -i -Y '
+      (.contexts[0].context.user) as $user |
+      (.contexts[0].context.cluster) as $cluster |
+      (.contexts[0].name) = "\($user)|\($cluster)" |
+      (."current-context") = "\($user)|\($cluster)"
+    ' "$NEW_KUBECONFIG"
   fi
 else
   hasKubeconfig=false
