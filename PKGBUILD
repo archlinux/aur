@@ -1,7 +1,7 @@
 # Maintainer: alvin <alvin@example.com>
 
 pkgname=rime-custom-config-git
-pkgver=1.0.2.r0.g9ffe014
+pkgver=0.2.0.r0.g442037d
 pkgrel=1
 pkgdesc="Manage custom Chinese dictionary for fcitx5 rime"
 arch=('x86_64')
