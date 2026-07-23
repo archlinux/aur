@@ -1,8 +1,6 @@
 # Maintainer: Victor Coscrato <vcoscrato@gmail.com>
 pkgname=tactica-bin
-# Do not remove: the rolling version previously reset from r6 to r1.
-epoch=1
-pkgver=r6.9c9922e
+pkgver=r7.389e1cb
 pkgrel=1
 pkgdesc="Desktop chess trainer built with Rust and Iced (prebuilt binary)"
 arch=('x86_64')
@@ -15,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/tactica-${pkgver}-x86_64.tar.gz"
 )
 sha256sums=(
-  'bda7bf17b9d963c9728561e2d066c935b9af0d0c3fe2fbe4dbd4171cdff4f1f2'
+  '97ddb7ce2a6a2cbc216ee01cb103b567d607fffc33813997855c27e8601d090c'
 )
 
 package() {
