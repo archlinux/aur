@@ -11,12 +11,12 @@ pkgver=1.14.0
 pkgrel=3
 pkgdesc="Modern Discworld MUD client with live map, item search, and plugin support"
 arch=('x86_64')
-url="https://www.callmecarlos.com/luggage-desktop.html"
+url="https://luggage.gg/luggage-desktop.html"
 license=('LicenseRef-proprietary')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libsoup3' 'openssl'
          'cairo' 'gdk-pixbuf2' 'glib2' 'gcc-libs' 'glibc>=2.39' 'hicolor-icon-theme')
 options=('!strip' '!debug')
-source=("https://callmecarlos.com/development/LuggageDesktop/Luggage_${pkgver}_amd64.deb")
+source=("https://luggage.gg/development/LuggageDesktop/Luggage_${pkgver}_amd64.deb")
 sha256sums=('2e7bd6a36bf9a9572dae32dc50d39a6409ea152a39eec75eccec6f461fb710e3')
 
 package() {
@@ -32,6 +32,6 @@ Luggage Desktop is proprietary software.
 Copyright (c) CallMeCarlos.com - All rights reserved.
 
 Repackaged unmodified from the official binary release:
-https://www.callmecarlos.com/luggage-desktop.html
+https://luggage.gg/luggage-desktop.html
 EOF
 }
