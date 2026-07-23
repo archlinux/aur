@@ -1,0 +1,5 @@
+[ziggity]
+source = "github"
+github = "simoarpe/ziggity"
+use_latest_release = true
+prefix = "v"
