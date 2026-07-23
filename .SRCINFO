@@ -1,6 +1,6 @@
 pkgbase = firedragon-next
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.0.0_rc.25
+	pkgver = 13.0.0_rc.27
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	arch = x86_64
@@ -69,9 +69,9 @@ pkgbase = firedragon-next
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = firedragon-v13.0.0-rc.25.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25/downloads/firedragon.source.tar.xz
+	source = firedragon-v13.0.0-rc.27.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27/downloads/firedragon.source.tar.xz
 	source = fix-wasm32-wasi-target.patch
-	sha256sums = 3c1b0f216469a70850f1a12a39126c8b9053ebca7710e5b2ce02456d4d9e516b
+	sha256sums = 5520b0d0dbc80e96a81f4b4a859a4feccddea210c349d49dda3b7f5e264d5270
 	sha256sums = f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124
 
 pkgname = firedragon-next
