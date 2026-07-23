@@ -1,0 +1,23 @@
+pkgbase = gowitness-bin
+	pkgdesc = Web screenshot utility using Chrome Headless (binary release)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/sensepost/gowitness
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = chromium
+	provides = gowitness
+	conflicts = gowitness
+	options = !strip
+	source = LICENSE::https://github.com/sensepost/gowitness/raw/3.1.1/LICENSE
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	source_x86_64 = gowitness-3.1.1-x86_64::https://github.com/sensepost/gowitness/releases/download/3.1.1/gowitness-3.1.1-linux-amd64
+	sha256sums_x86_64 = 57b3188e24782c27fdf72493ce599537efd3187d03b80f8afe733c72d68c5517
+	source_armv7h = gowitness-3.1.1-armv7h::https://github.com/sensepost/gowitness/releases/download/3.1.1/gowitness-3.1.1-linux-arm
+	sha256sums_armv7h = d755b2fc0da943a73b6c68971d362d70e4ec89772c42b7830b94d651aec34d86
+	source_aarch64 = gowitness-3.1.1-aarch64::https://github.com/sensepost/gowitness/releases/download/3.1.1/gowitness-3.1.1-linux-arm64
+	sha256sums_aarch64 = a24284b4df4ea94a34edc55232b5d102555dcd01c73b1eb950ac4e304f753784
+
+pkgname = gowitness-bin
