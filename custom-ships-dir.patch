@@ -1,0 +1,30 @@
+--- a/Sources/UILib/StandardSystemPaths.cpp
++++ b/Sources/UILib/StandardSystemPaths.cpp
+@@ -11,6 +11,8 @@
+ 
+ #include <wx/stdpaths.h>
+ 
++#include <cstdlib>
++
+ StandardSystemPaths * StandardSystemPaths::mSingleInstance = nullptr;
+ 
+ StandardSystemPaths::StandardSystemPaths()
+@@ -32,6 +34,11 @@
+ 
+ std::filesystem::path StandardSystemPaths::GetUserShipFolderPath() const
+ {
++	if (const char* envPath = std::getenv("FLOATING_SANDBOX_SHIPS_DIR"); envPath != nullptr && *envPath != '\0')
++    {
++        return std::filesystem::path(envPath);
++    }
++
+     auto documentsFolder = wxStandardPaths::Get().GetUserDir(wxStandardPaths::Dir::Dir_Documents);
+ 
+     return std::filesystem::path(documentsFolder.ToStdString())
+@@ -71,4 +78,4 @@
+         std::filesystem::create_directories(folderPath);
+ 
+     return folderPath;
+-}
+\ No newline at end of file
++}

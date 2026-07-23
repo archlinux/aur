@@ -1,8 +1,9 @@
 pkgbase = floating-sandbox
 	pkgdesc = Mass-spring network in C++, simulating physical bodies floating in water and sinking
 	pkgver = 1.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GabrieleGiuseppini/Floating-Sandbox
+	install = floating-sandbox.install
 	arch = x86_64
 	license = CC-BY-4.0
 	makedepends = cmake
@@ -12,7 +13,6 @@ pkgbase = floating-sandbox
 	makedepends = gcc
 	depends = gtk3
 	depends = libx11
-	depends = mesa
 	depends = glu
 	depends = openal
 	depends = libvorbis
@@ -22,13 +22,15 @@ pkgbase = floating-sandbox
 	depends = zlib
 	source = floating-sandbox.sh
 	source = floating-sandbox.desktop
+	source = custom-ships-dir.patch
 	source = floating-sandbox-1.20.0.tar.gz::https://github.com/GabrieleGiuseppini/Floating-Sandbox/archive/refs/tags/v1.20.0.tar.gz
 	source = git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.4
 	source = git+https://github.com/google/googletest.git#tag=v1.12.0
 	source = git+https://github.com/kazuho/picojson.git#tag=v1.3.0
 	source = git+https://github.com/SFML/SFML.git#tag=2.6.2
 	sha256sums = aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597
-	sha256sums = 5d18a3b46e74951e588f89d9e1fb1160003e0c328893a6e92408d15f0bcf4951
+	sha256sums = 15cc756fd0abb38d62058744422e60fce08d02377f34394d814ec72f08c8fbcb
+	sha256sums = 7f2d22ac951fd72fd6dbfd5ffad94abf32db82e4e4d907dbd1af7380ac06a657
 	sha256sums = 5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889
 	sha256sums = SKIP
 	sha256sums = SKIP

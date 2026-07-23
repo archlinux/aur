@@ -2,16 +2,17 @@
 
 pkgname=floating-sandbox
 pkgver=1.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mass-spring network in C++, simulating physical bodies floating in water and sinking"
 arch=('x86_64')
 url="https://github.com/GabrieleGiuseppini/Floating-Sandbox"
 license=('CC-BY-4.0')
 
+install=$pkgname.install
+
 depends=(
     'gtk3'
     'libx11'
-    'mesa'
     'glu'
     'openal'
     'libvorbis'
@@ -32,6 +33,7 @@ makedepends=(
 source=(
     "floating-sandbox.sh"
     "floating-sandbox.desktop"
+    "custom-ships-dir.patch"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.4"
     "git+https://github.com/google/googletest.git#tag=v1.12.0"
@@ -41,7 +43,8 @@ source=(
 
 sha256sums=(
     'aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597'
-    '5d18a3b46e74951e588f89d9e1fb1160003e0c328893a6e92408d15f0bcf4951'
+    '15cc756fd0abb38d62058744422e60fce08d02377f34394d814ec72f08c8fbcb'
+    '7f2d22ac951fd72fd6dbfd5ffad94abf32db82e4e4d907dbd1af7380ac06a657'
     '5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889'
     'SKIP'
     'SKIP'
@@ -56,6 +59,8 @@ prepare() {
     git submodule update --init --recursive
 
     cd "${srcdir}/Floating-Sandbox-${pkgver}"
+    # Patches support for custom
+    patch -Np1 -i "${srcdir}/custom-ships-dir.patch"
 
     # Create custom UserSettings.cmake to setup correct build environment
     cat <<EOF >UserSettings.cmake
@@ -156,7 +161,11 @@ package() {
     cd "${srcdir}/Floating-Sandbox-${pkgver}"
     cmake --install build
 
-    # Symlink regional English variants to 'en' only if they don't already exist
+    # Prevents a crash when loading ships from these directories
+    chmod 1777 "${pkgdir}/opt/floating-sandbox/Ships"
+    chmod 1777 "${pkgdir}/opt/floating-sandbox/Data/Built-in Ships"
+
+    # Symlink regional English variants to 'en' only if they don't already exist, prevents language default to be broken
     local lang_dir="${pkgdir}/opt/floating-sandbox/Data/Languages"
     if [ -d "${lang_dir}/en" ]; then
         for lang in en_GB en_US en_AU en_CA; do
