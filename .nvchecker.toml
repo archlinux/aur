@@ -1,0 +1,5 @@
+[modenv-bin]
+source = "github"
+github = "kurtbuilds/modenv"
+use_latest_release = true
+prefix = "v"
