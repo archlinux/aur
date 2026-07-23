@@ -1,0 +1,26 @@
+pkgbase = winmiddle-git
+	pkgdesc = Windows-faithful middle-click autoscroll for Linux (Plasma/Wayland) — git
+	pkgver = 0.1.0.r0.ga06fe9d
+	pkgrel = 1
+	url = https://github.com/eslachance/winscroll
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-evdev
+	depends = python-pyqt6
+	depends = layer-shell-qt
+	optdepends = kwin: focus/cursor helper script (recommended on Plasma)
+	optdepends = python-gobject: AT-SPI scrollable-under-cursor probing
+	optdepends = at-spi2-core: accessibility bus for scroll probing
+	provides = winmiddle
+	conflicts = winmiddle
+	install = winmiddle.install
+	source = git+https://github.com/eslachance/winscroll.git
+	sha256sums = SKIP
+
+pkgname = winmiddle-git

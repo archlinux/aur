@@ -1,0 +1,23 @@
+post_install() {
+  cat <<EOF
+
+winmiddle-git installed.
+
+  1. First-time session setup (paste-kill, KWin script, mouse udev, enable service):
+       winmiddle --setup
+  2. Log out and back in once (KWin reapplies primary-selection on session start).
+  3. Status / logs:
+       systemctl --user status winmiddle
+       journalctl --user -u winmiddle -f
+
+Config: ~/.config/winmiddle/config.toml
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl --user disable --now winmiddle.service 2>/dev/null || true
+}
