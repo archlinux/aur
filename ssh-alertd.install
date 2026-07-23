@@ -1,0 +1,21 @@
+_setup() {
+	# Create the system user and apply config ownership explicitly (don't rely
+	# solely on the alpm sysusers/tmpfiles hook ordering).
+	systemd-sysusers /usr/lib/sysusers.d/ssh-alertd.conf >/dev/null 2>&1 || true
+	systemd-tmpfiles --create /usr/lib/tmpfiles.d/ssh-alertd.conf >/dev/null 2>&1 || true
+	# Belt-and-suspenders: ensure the daemon user can read its config/token.
+	if getent passwd ssh-alertd >/dev/null 2>&1; then
+		chown ssh-alertd:ssh-alertd /etc/ssh-alertd/config.json 2>/dev/null || true
+		chmod 0640 /etc/ssh-alertd/config.json 2>/dev/null || true
+	fi
+}
+
+post_install() {
+	_setup
+	echo ":: Edit /etc/ssh-alertd/config.json (set your Telegram bot_token & chat_id),"
+	echo "   then: systemctl enable --now ssh-alertd"
+}
+
+post_upgrade() {
+	_setup
+}
