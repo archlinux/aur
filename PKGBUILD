@@ -1,7 +1,7 @@
 # Maintainer: Sean Stoves <sean@seanstoves.com>
 
 # Upstream is closed source and only ships .deb/.rpm, so this repacks the .deb.
-# New releases land at https://www.callmecarlos.com/luggage-desktop.html
+# New releases land at https://luggage.gg/luggage-desktop.html
 
 pkgname=luggage-desktop
 pkgver=1.14.0
