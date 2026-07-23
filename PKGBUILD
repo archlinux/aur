@@ -11,7 +11,6 @@ pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
-_barch=('x86_64-linux')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
