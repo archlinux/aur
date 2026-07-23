@@ -3,7 +3,7 @@
 _pkgauthor=nakabonne
 _pkgname=pbgopy
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Copy and paste between devices'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('10e4912497415d3f87812d8d967337210ea8d1d1a2824f7178ccfade576a3cc5')
-sha256sums_aarch64=('5204a1e79ef30c46bcf5f7a02274141b3cc6f3395aef9c8957ab4d90c97fe4c0')
+sha256sums_x86_64=('a8c7b463f615424144a41bc57c3206206dd820c81dbd32768629d5b412712d3d')
+sha256sums_aarch64=('c1b203699a8a0815077d105ba0264eff600339c9fe65c35742e5b14b0126577b')
 
 package() {
   cd "${srcdir}/" || exit
