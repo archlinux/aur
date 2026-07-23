@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=nub
-pkgver=0.4.13
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nubjs/nub/archive/v${pkgver}.tar.gz")
-sha256sums=('f94717b76b53deb5e99bf3280af1801e6a2c29e562384f5238a84433151d2b48')
+sha256sums=('ce58d2df8338c1c2c5200cba20540ccb9c7bb2d9490bf6d6a14944d559af1211')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

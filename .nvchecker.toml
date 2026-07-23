@@ -1,4 +1,4 @@
-[nub-bin]
+[nub]
 source = "github"
 github = "nubjs/nub"
 use_latest_release = true
