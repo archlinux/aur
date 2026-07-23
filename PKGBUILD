@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ install=aqueous.install
 source=(
     "aqueous::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('2a14515d680ea136e3a3e99f6f7b687daa18b86148679a07bb9656c451942c48')
+sha256sums=('375eeb36feb1215ae25f8d098c9f6a7187f5d636dd9b9d26ac1524ce08cb683d')
 
 build() {
     # Verify zig is new enough (the Aqueous compositor requires >= 0.16.0).
