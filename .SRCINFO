@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2026.07.0.139
+	pkgver = 2026.07.1.147
 	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
@@ -41,14 +41,12 @@ pkgbase = rstudio-desktop
 	optdepends = postgresql-libs: for postgresql
 	optdepends = quarto: for Quarto projects support
 	optdepends = subversion: for subversion support
-	provides = rstudio-desktop
-	conflicts = rstudio-desktop
 	noextract = gwt-2.12.2.tar.gz
 	noextract = copilot-language-server-js-1.520.0.zip
 	options = !emptydirs
 	options = !debug
 	options = !strip
-	source = rstudio-2026.07.0.139-5c876ce.tar.gz::https://github.com/rstudio/rstudio/archive/5c876cede63cf1ab4cfb57228c0f29ffb5059d9a.tar.gz
+	source = rstudio-2026.07.1.147-4929932.tar.gz::https://github.com/rstudio/rstudio/archive/49299327da3b03a79e7aa615c2388bcd05a1261a.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
 	source = https://rstudio-buildtools.s3.us-east-1.amazonaws.com/gwt/gwt-2.12.2.tar.gz
 	source = soci-4.0.3.tar.gz::https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
