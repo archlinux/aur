@@ -1,0 +1,5 @@
+[golored-bin]
+source = "github"
+github = "alexcoder04/golored"
+use_latest_release = true
+prefix = "v"
