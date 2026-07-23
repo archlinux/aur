@@ -4,23 +4,23 @@ Binary pre-built version of [Devin Desktop](https://devin.ai/desktop), a team of
 
 ## About this package
 
-This package provides the binary version of Devin Desktop, downloaded directly from the official releases. It replaces the previous `windsurf-bin` package.
+This package provides the binary version of Devin Desktop, downloaded directly from the official releases.
 
 ## Installation
 
 ### From AUR (once published)
 
 ```bash
-paru -S devin-desktop
+paru -S devin-desktop-bin
 # or
-yay -S devin-desktop
+yay -S devin-desktop-bin
 ```
 
 ### Manual installation
 
 ```bash
-git clone https://aur.archlinux.org/devin-desktop.git
-cd devin-desktop
+git clone https://aur.archlinux.org/devin-desktop-bin.git
+cd devin-desktop-bin
 makepkg -si
 ```
 
