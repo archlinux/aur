@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="927b79a5ba895dd3fbd3f158b49ebf2094d4805d"
+_commit="d1e885a271de3477bea212508be88aecff171a26"
 pkgname="readpe"
 pkgver="0.85"
 pkgrel="1"
@@ -17,10 +17,8 @@ makedepends=("git")
 source=(
   "readpe::git+https://github.com/mentebinaria/readpe.git#commit=${_commit}"
   "fix-install-prefix.diff"
-  "fix-version-string.diff"
 )
 sha256sums=(
-  "SKIP"
   "SKIP"
   "SKIP"
 )
@@ -28,7 +26,6 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/readpe"
   git apply < "${srcdir}/fix-install-prefix.diff"
-  git apply < "${srcdir}/fix-version-string.diff"
 }
 
 build() {
