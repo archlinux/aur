@@ -1,20 +1,26 @@
 pkgname=twitch
 _pkgname=Twitch
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/twitch-application"
 license=('GPL')
-depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('ec3907f641d2ae18c2bb73d8555e5245cb580f53075d4e81b21fddb8068b2050')
+sha256sums=('86397d937152b1076e0d73725807692245284382f1424402f6eaec7cd32d7809')
 
 package() {
     cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
+    #Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    rm -rf \
+  "$srcdir/application-$pkgver/libsplash"
+    #link libelectron deps
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
@@ -22,8 +28,8 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
-    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+    ln -sf "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
