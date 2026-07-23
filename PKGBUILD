@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'btrfs-progs')
 makedepends=('binutils')
 
 source=("https://github.com/dsvi/Btrfs-File-Restorer/releases/download/v${pkgver}/btrfs-file-restorer_${pkgver}-1_amd64.deb")
-sha256sums=('6f5f3278550a2b47a88cd870dd6635489aee4783fce575e2ad40c13b76ecebdb')
+sha256sums=('3edb1b85bc5986d86d317ee3f64b9a5f0a6f550004a62b4e297e3fc9621f1cf8')
 
 package() {
     # 1. Extract the .deb archive
