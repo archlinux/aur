@@ -1,0 +1,4 @@
+[vim-fern]
+source = "git"
+git = "https://github.com/lambdalisue/fern.vim.git"
+prefix = "v"
