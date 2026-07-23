@@ -38,14 +38,9 @@ install=devin-desktop-bin.install
 # Download URL from Devin/Windsurf API
 # To update: curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url'
 # Then update pkgver and the URL below
-_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/2c489dfc762456657db8662309c0d5e76e886397/Devin-linux-x64-3.5.17.tar.gz"
-source=("devin-desktop-${pkgver}.tar.gz::$_url")
+_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/2c489dfc762456657db8662309c0d5e76e886397/Devin-linux-x64-${pkgver}.tar.gz"
+source=("devin-desktop-${pkgver}.tar.gz::${_url}")
 sha256sums=('e7ce36c4baacc617a4d89b0e2fb4403f83b328fefd897aec1be5e31038be4e91')
-
-build() {
-    # Extract the tarball
-    tar -xzf "$srcdir/devin-desktop-${pkgver}.tar.gz" -C "$srcdir"
-}
 
 package() {
     # The tarball extracts to a directory named "Devin"
