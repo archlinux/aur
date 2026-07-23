@@ -1,6 +1,6 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 2.2.4.r4.g55158dd
+	pkgver = 2.2.4.r5.g1682cdb
 	pkgrel = 1
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
@@ -16,7 +16,7 @@ pkgbase = casual-pre-loader-git
 	depends = python-more-itertools<12.0.0
 	depends = python-packaging>=26.2
 	depends = python-packaging<27
-	depends = python-platformdirs>=4.5
+	depends = python-platformdirs>=4.11
 	depends = python-platformdirs<5
 	depends = python-pygithub>=2.9.0
 	depends = python-pygithub<3
@@ -27,7 +27,7 @@ pkgbase = casual-pre-loader-git
 	depends = python-valve-parsers>=1.2.2
 	optdepends = python-rich: pretty printing logs
 	optdepends = wine: running studiomdl
-	provides = casual-pre-loader=2.2.4.r4.g55158dd
+	provides = casual-pre-loader=2.2.4.r5.g1682cdb
 	conflicts = casual-pre-loader
 	source = git+https://github.com/cueki/casual-pre-loader
 	source = git+https://github.com/cueki/studiomdl
