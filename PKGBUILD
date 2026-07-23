@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lcarlier@archlinux.org>
 
 pkgname=amspirit-lite-sdl
-pkgver=1.12.7
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="An accurate Amstrad emulator - SDL version (AppImage)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ depends=(hicolor-icon-theme)
 url="https://amspirit.fr/"
 license=('CC-BY-NC-ND-4.0')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-${pkgver}/Amspirit-Lite-SDL-${pkgver}-x86_64.AppImage")
-sha256sums=('d27b1f3724021b7db28f21924ae5d07a13a96d6ec3fb373d0762b52f7c6bd2dd')
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.13/Amspirit-Lite-SDL-${pkgver}-x86_64.AppImage")
+sha256sums=('5663064f678a09a7e39b88d9743fcd6c94f0520a413a22bdb9526ae11cbd7f76')
 
 prepare() {
    chmod +x "${pkgname}-${pkgver}.AppImage"
