@@ -1,6 +1,6 @@
 pkgbase = censor
 	pkgdesc = PDF document redaction for the GNOME desktop
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://codeberg.org/censor/Censor
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = censor
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-pymupdf>=1.27.2.3
-	source = censor-0.8.0.tar.gz::https://codeberg.org/censor/Censor/archive/v0.8.0.tar.gz
-	sha256sums = e32d0daf5e1c7c2e7989531aadbc4772aa91d5af185d7fc98542efcbccc1ff20
+	source = censor-0.9.0.tar.gz::https://codeberg.org/censor/Censor/archive/v0.9.0.tar.gz
+	sha256sums = 4e3464005b18abeea1434e71691b50651fd85eef1184dbf21dbef3b9efb4d355
 
 pkgname = censor

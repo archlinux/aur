@@ -1,6 +1,6 @@
 # Maintainer: Robert Wolff <mahlzahn@posteo.de>
 pkgname=censor
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='PDF document redaction for the GNOME desktop'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(meson
              ninja)
 checkdepends=(appstream-glib)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=(e32d0daf5e1c7c2e7989531aadbc4772aa91d5af185d7fc98542efcbccc1ff20)
+sha256sums=(4e3464005b18abeea1434e71691b50651fd85eef1184dbf21dbef3b9efb4d355)
 validpgpkeys=()
 
 blddir="$(pwd)/$pkgname-$pkgver-$pkgrel-build"
