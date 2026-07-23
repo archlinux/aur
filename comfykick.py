@@ -258,9 +258,18 @@ def _api_request(url, github_token=None):
     except TimeoutError:
         log("ERROR", "Timed out after %s seconds while requesting %s", timeout, url)
     except urllib.error.HTTPError as e:
-        if e.code == 404:
-            raise
-        log("ERROR", "HTTP error %s while requesting %s: %s", e.code, url, e)
+        body = e.read().decode("utf-8", errors="replace")
+        log(
+            "ERROR",
+            "HTTP error while requesting %s: %s %s (response: %s)",
+            url, e.code, e.reason, body
+        )
+    except urllib.error.URLError as e:
+        log("ERROR", "Connection error while requesting %s: %s", url, e)
+    except json.JSONDecodeError as e:
+        log("ERROR", "Failed to parse JSON response from %s: %s", url, e)
+    except OSError as e:
+        log("ERROR", "Error while requesting %s: %s", url, e)
 
 
 def _resolve_version(config, version_cache_dir):
