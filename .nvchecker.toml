@@ -1,0 +1,5 @@
+[nsv-bin]
+source = "github"
+github = "purpleclay/nsv"
+use_latest_release = true
+prefix = "v"
