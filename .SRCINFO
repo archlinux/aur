@@ -1,0 +1,12 @@
+pkgbase = carryctx
+pkgname = carryctx
+pkgdesc = Persistent project context for coding agents
+pkgver = 0.0.3
+pkgrel = 1
+url = https://carryctx.dev
+arch = x86_64
+license = MIT
+depends = glibc
+depends = gcc-libs
+source_x86_64 = https://github.com/Xuepoo/carryctx/releases/download/v0.0.3/carryctx-x86_64-unknown-linux-gnu
+sha256sums_x86_64 = 1289921d755585fa38c9a90d92d0e9104582b9ccfbc679fd371f1ed884d7e937
