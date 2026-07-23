@@ -1,0 +1,20 @@
+pkgbase = qt6-m3shapes-git
+	pkgdesc = A Qt6 library for Material 3 Expressive shapes
+	pkgver = r36.bdc327b
+	pkgrel = 1
+	url = https://github.com/soramanew/m3shapes
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-shadertools
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = qt6-m3shapes
+	conflicts = qt6-m3shapes
+	source = qt6-m3shapes-git::git+https://github.com/soramanew/m3shapes.git
+	sha256sums = SKIP
+
+pkgname = qt6-m3shapes-git
