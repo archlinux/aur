@@ -10,9 +10,12 @@ post_install() {
     update-desktop-database > /dev/null 2>&1 || true
 
     for process_name in TrueConf trueconf; do
-        while IFS= read -r process; do
-            kill -s 50 "${process}"
-        done < <(pgrep -x "${process_name}" || true)
+        binpid=$(ps axco pid,command | awk -v name="${process_name}" '$2 == name {print $1}')
+        if [[ -n "${binpid}" ]]; then
+            for process in ${binpid}; do
+                kill -s 50 "${process}"
+            done
+        fi
     done
 }
 
@@ -22,8 +25,11 @@ post_upgrade() {
 
 pre_remove() {
     for process_name in TrueConf trueconf; do
-        while IFS= read -r process; do
-            kill "${process}"
-        done < <(pgrep -x "${process_name}" || true)
+        binpid=$(ps axco pid,command | awk -v name="${process_name}" '$2 == name {print $1}')
+        if [[ -n "${binpid}" ]]; then
+            for process in ${binpid}; do
+                kill "${process}"
+            done
+        fi
     done
 }

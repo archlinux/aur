@@ -2,7 +2,7 @@
 
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver=8.6.0.1547
+pkgver=8.6.0.1574
 pkgrel='1'
 pkgdesc='TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('freetype2' 'lame' 'libidn' 'speex' 'v4l-utils' 'libxext' 'libx11' 'lib
 install="${pkgname}.install"
 _channel=stable
 source=("$mirror/$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst")
-sha512sums=('dadd0f2eadc2d9f3daffb598ba7b139236627247fff95da3665187701f08aabae31878737a1b15888c12d2250820deff0275e6de648aeaea0b64af176f475c35')
+sha512sums=('c7e91b5c162545c4448329850d6fa98f58c1653a6df86e9b40d9ba755f79043e77a33bae0c114fe7847cf11a8b0935b583d3e1c4b951a11e7e93319f93453978')
 
 package() {
   cd "${srcdir}"
