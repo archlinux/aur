@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=quickdash-git
-pkgver=0
+pkgver=r13.ge64d957
 pkgrel=1
 pkgdesc="Configurable Hyprland dashboard and launcher built with Quickshell"
 arch=('any')
@@ -36,7 +36,9 @@ source=("quickdash::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd quickdash
+  if [ -d quickdash ]; then
+    cd quickdash
+  fi
   printf 'r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
