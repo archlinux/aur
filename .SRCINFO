@@ -1,6 +1,6 @@
 pkgbase = python-cohere
 	pkgdesc = Python Library for Accessing the Cohere API
-	pkgver = 7.0.5
+	pkgver = 7.0.7
 	pkgrel = 1
 	url = https://github.com/cohere-ai/cohere-python
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-cohere
 	optdepends = python-oci: Oracle Cloud Infrastructure client
 	optdepends = python-boto3: AWS client
 	optdepends = python-botocore: AWS client
-	source = python-cohere-7.0.5.tar.gz::https://github.com/cohere-ai/cohere-python/archive/7.0.5.tar.gz
-	b2sums = fbb5489bc4db0958ced33e54d973d16db80a3b49940a0a78d9191301e5db104fd88d2a08a603eb2bd832867347784bb9c6f63ad932d3e9facd4991d01b9303dd
+	source = python-cohere-7.0.7.tar.gz::https://github.com/cohere-ai/cohere-python/archive/7.07.tar.gz
+	b2sums = cd7be5ac34b34e16708663541a903c1230498b816bca38bbf9fcffe493c15593a9e512bb859bd253a42a5bf42d8fd3be6b863d5834731302c0827da60b70ed32
 
 pkgname = python-cohere
