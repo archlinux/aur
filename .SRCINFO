@@ -1,0 +1,18 @@
+pkgbase = secure-vault-linuxfs-bin
+	pkgdesc = secure-vault encrypted-vault FUSE daemon (rclone-crypt compatible, Google Drive backend) — prebuilt binary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/GreyWizardPublic/secure-vault
+	install = secure-vault-linuxfs-bin.install
+	arch = x86_64
+	license = custom
+	depends = fuse3
+	depends = openssl
+	provides = secure-vault-linuxfs
+	conflicts = secure-vault-linuxfs
+	options = !strip
+	options = !debug
+	source = https://github.com/GreyWizardPublic/secure-vault-linuxfs-releases/releases/download/linuxfs-v0.1.0/secure-vault-linuxfs-0.1.0-x86_64.tar.gz
+	sha256sums = 36c4d6c8759cc2c06adb9fa4d23b7d031268fb338b2c97357ebfcef009b9ef1f
+
+pkgname = secure-vault-linuxfs-bin

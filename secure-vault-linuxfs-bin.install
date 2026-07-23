@@ -1,0 +1,35 @@
+# pacman install scriptlet for secure-vault-linuxfs-bin.
+# Applies the shipped sysusers/tmpfiles entries so the daemon's system user and
+# runtime dirs exist without a reboot, and points the operator at first-time setup.
+
+_apply_system() {
+    # Create the `securevault` system user (sysusers.d) and the /etc, /srv,
+    # /var/{cache,lib} dirs (tmpfiles.d) that the daemon and unit expect.
+    systemd-sysusers   secure-vault.conf >/dev/null 2>&1 || true
+    systemd-tmpfiles --create secure-vault.conf >/dev/null 2>&1 || true
+}
+
+post_install() {
+    _apply_system
+    cat <<'EOF'
+secure-vault-linuxfs installed.
+
+Next steps (see /usr/share/doc/secure-vault-linuxfs-bin/README.md):
+  1. Create a per-vault config at /etc/secure-vault/<name>.toml
+     (a LocalFs vault needs no network; Drive vaults need OAuth — see below).
+  2. Google Drive uses a BRING-YOUR-OWN OAuth client (Desktop-app type); no
+     client secret is shipped. Bootstrap once:
+       SECURE_VAULT_GOOGLE_CLIENT_SECRET=... \
+         secure-vault-linuxfs auth --config /etc/secure-vault/<name>.toml
+  3. Seal the vault password + Drive secrets as systemd encrypted credentials,
+     then:  systemctl enable --now secure-vault@<name>
+
+This is freeware licensed under the EULA at
+/usr/share/licenses/secure-vault-linuxfs-bin/LICENSE.
+EOF
+}
+
+post_upgrade() {
+    # Re-apply in case the shipped sysusers/tmpfiles definitions changed.
+    _apply_system
+}
