@@ -4,7 +4,7 @@
 
 pkgname=mdformat-asterisk
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CommonMark-compliant Markdown formatter patched to swap primary and secondary marker symbols'
 arch=(any)
 url=https://github.com/senotrusov/mdformat-asterisk
@@ -18,9 +18,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
+provides=("mdformat=$pkgver")
 conflicts=(mdformat)
 source=("git+$url.git#tag=$pkgver")
-b2sums=('8d23ce0ef4b9f73c0b16f141d1bbd09d545ed23b9756298a8324f6915276cbd587aa69c0020291fcc1c48306ef9fcba3ef2ad06bbf177f9d1d868fb69f0dc370')
+b2sums=('6a4874f2f319903da228e4a2cfb8ceeffc520287c2ff9b23a13dda00719d120668da1dc5d253f9b61c2875db43e6b3d6ed4404000d977ccdaa6a53b00271fd81')
 
 build() {
   cd $pkgname
@@ -33,11 +34,9 @@ check() {
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/$pkgname-$pkgver.dist-info/licenses/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname
+  cd "$pkgname"
 
-  cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

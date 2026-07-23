@@ -1,7 +1,7 @@
 pkgbase = mdformat-asterisk
 	pkgdesc = CommonMark-compliant Markdown formatter patched to swap primary and secondary marker symbols
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/senotrusov/mdformat-asterisk
 	arch = any
 	license = MIT
@@ -12,8 +12,9 @@ pkgbase = mdformat-asterisk
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-markdown-it-py
+	provides = mdformat=1.0.0
 	conflicts = mdformat
 	source = git+https://github.com/senotrusov/mdformat-asterisk.git#tag=1.0.0
-	b2sums = 8d23ce0ef4b9f73c0b16f141d1bbd09d545ed23b9756298a8324f6915276cbd587aa69c0020291fcc1c48306ef9fcba3ef2ad06bbf177f9d1d868fb69f0dc370
+	b2sums = 6a4874f2f319903da228e4a2cfb8ceeffc520287c2ff9b23a13dda00719d120668da1dc5d253f9b61c2875db43e6b3d6ed4404000d977ccdaa6a53b00271fd81
 
 pkgname = mdformat-asterisk
