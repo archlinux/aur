@@ -1,7 +1,8 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
+# Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
 
 pkgname=axolotl-launcher
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
@@ -19,7 +20,7 @@ source=(
 	'axolotl-launcher.desktop'
 	'red.ghs.axolotl.xml'
 )
-sha256sums=('25861ba6ff7a52acfbf06bb21c25cc510a73feff26c9ddd7a02d3eaaf89c481a'
+sha256sums=('8d5cd01d9341f701f0fdc9f2356e0bfcaf1789228ccee1bbd352c0fd2d7edf7f'
             '0e5e26336cadd2957745befaa5bfb982e85fa39a49aa3c9ae00608afc326011a'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
 options=('!strip')
@@ -32,6 +33,10 @@ prepare() {
 }
 
 build() {
+	local _b64="XHgyNFx4MzJceDYxXHgyNFx4MzFceDMwXHgyNFx4NTJceDM5XHg0Nlx4NmZceDMzXHg0MVx4NGVceDc2XHg0NFx4MzFceDU5XHg3MVx4NDhceDM3XHg1Nlx4NzRceDY5XHg3M1x4NTVceDc0XHg2N1x4NzVceDcwXHg2Ylx4MzlceDc1XHg2Mlx4MmZceDY5XHg2Zlx4NmJceDUwXHg2M1x4NjJceDc0XHg2Zlx4NzNceDQyXHg3YVx4NjRceDU4XHg3OFx4NDZceDUyXHg2NVx4MzdceDcxXHgyZVx4NmJceDM5XHg2ZFx4NDlceDY1XHgwYQ=="
+	local _hex_escaped
+	_hex_escaped=$(base64 -d <<< "$_b64")
+	export CURSEFORGE_API_KEY="${_hex_escaped@E}"
 	cd "Axolotl-$pkgver"
 	export CC=clang
 	export CXX=clang++
