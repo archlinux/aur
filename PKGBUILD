@@ -1,7 +1,7 @@
 # Maintainer: peachoff <peshoff@proton.me>
 pkgname=zapret-hub
 pkgver=3.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop hub for managing network bypass utilities (zapret, tg-ws-proxy, vpn)"
 arch=('x86_64')
 url="https://github.com/larpmaster228/Zapret-Hub-Linux"
