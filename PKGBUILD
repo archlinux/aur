@@ -12,7 +12,7 @@ pkgname=mathematica-light
 pkgdesc='Computational software for mathematics, with online-only documentation'
 pkgver=15
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
-_pkgver=${_major}.${_minor:-0}
+_minor=${_minor:-0}
 pkgrel=1
 url='http://www.wolfram.com/mathematica/'
 arch=(x86_64)
@@ -43,19 +43,20 @@ optdepends=(
 )
 provides=('mathematica')
 conflicts=('mathematica')
-# Source URL has an unstable signature parameter when not logged in, like with curl or wget.
-# E.g.: <a href="https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false&includesDocumentation=false&signature=09d7f5...">
-_source_url="$(
-  # shellcheck disable=SC2312
-  curl -s https://www.wolfram.com/download-center/ \
-    | grep 'account.wolfram.com/dl/WolframApp' \
-    | grep -E "version=${_pkgver}\b" \
-    | grep 'platform=Linux' \
-    | grep 'includesDocumentation=false' \
-    | sed -E 's/.*\bhref="([^"]+)".*/\1/' \
-    | uniq
-)"
-source=("Wolfram_${pkgver}_LIN.sh::${_source_url}"
+_source_url='https://account.wolfram.com/dl/WolframApp'
+# Source URL has a dynamic signature parameter that allows downloads without logging in. You can
+# skip fetching this value if you already have the installer by setting SKIP_DYNAMIC_SIGNATURE=1.
+# Signatures are updated hourly, so we hide them by default in .SCRINFO and the AUR page.
+if [[ ${SKIP_DYNAMIC_SIGNATURE:-${PRINTSRCINFO}} != 1 ]]; then
+  # shellcheck disable=
+  _dynamic_signature=$(
+    set -o pipefail
+    curl -fsSL https://www.wolfram.com/download-center/ \
+      | grep -oP "\bhref=\"${_source_url/./\.}\?[^\"]+\K&signature=[a-zA-Z0-9]+(?=\"|&)" \
+      | uniq
+  )
+fi
+source=("Wolfram_${pkgver}_LIN.sh::${_source_url}?version=${_major}.${_minor}${_patch/#?/.&}&platform=Linux&downloadManager=false&includesDocumentation=false${_dynamic_signature}"
         'wolfram-remove-xdg-scripts.patch')
 sha256sums=('df11164827b883cbad26b7bb87aa6bdee00387456b0cdfa087861eede444c8bc'
             '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
@@ -108,6 +109,7 @@ package() {
     -execdir="${pkgdir}/usr/bin" \
     -targetdir="${installdir}" \
     -auto
+  rm bundle/Unix/Installer/WolframInstaller
 
   cd "${installdir}"
   if [[ -s InstallErrors ]]; then
@@ -124,14 +126,14 @@ package() {
   msg2 'Copying menu and MIME type information'
 
   install -vD -t "${pkgdir}/usr/share/applications/" \
-    -m644 "SystemFiles/Installation/com.wolfram.Wolfram.${_pkgver}.desktop"
+    -m644 "SystemFiles/Installation/com.wolfram.Wolfram.${_major}.${_minor}.desktop"
   install -vD -t "${pkgdir}/usr/share/desktop-directories/" \
     -m644 SystemFiles/Installation/wolfram-wolfram.directory
   install -vD -t "${pkgdir}/usr/share/mime/packages/" \
     -m644 SystemFiles/Installation/*.xml
   rm -vr SystemFiles/Installation/
 
-  _fix_desktop_file "${pkgdir}/usr/share/applications/com.wolfram.Wolfram.${_pkgver}.desktop"
+  _fix_desktop_file "${pkgdir}/usr/share/applications/com.wolfram.Wolfram.${_major}.${_minor}.desktop"
   _fix_desktop_file "${pkgdir}/usr/share/desktop-directories/wolfram-wolfram.directory"
 
   msg2 'Copying icons'
@@ -147,7 +149,7 @@ package() {
   local i mimetype icon
   for i in 32 64 128; do
     install -vD -m644 "SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
-      -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
+      -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_major}.${_minor}.png"
 
     for mimetype in "${mimetypes[@]}"; do
       icon="SystemFiles/FrontEnd/SystemResources/X/$(basename "${mimetype}")-${i}.png"
@@ -180,7 +182,7 @@ _fix_desktop_file() {
     /^Encoding=/ d
     # executable path contains BUILDDIR
     /^TryExec=/ s|=.*|=/usr/bin/WolframNB|
-    /^Exec=/ s|=.*|=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|
+    /^Exec=/ s|=.*|=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_major}.${_minor} %F|
     # optional sections for desktop entry: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
     /^Type=Application\$/,\$ {
       /^Comment=/ a GenericName=Mathematical Software
