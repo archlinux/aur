@@ -1,0 +1,5 @@
+[localsend-go-bin]
+source = "github"
+github = "meowrain/localsend-go"
+use_latest_release = true
+prefix = "v"
