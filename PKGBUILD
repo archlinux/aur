@@ -2,7 +2,7 @@
 # Maintainer: parhelia
 
 pkgname=throne
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'gendesk' 'git' 'go' 'lld' 'protobuf' 'qt6-tools' 'vulkan-h
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('7c4a8fe1b2fc11b3197ecf70a63ff1a583b2ad9858ceedff7fddbbb2f9189efc'
+sha256sums=('3e6ca5a6284f8b42fd4d4a8357a1b8a9157266c58cb249e7619f7b32a9f8a2f3'
             '3bb765a93afa8c4f3b4fbf4440507c79ba32e4e4600e94706ccd7705209e0c34'
             'SKIP')
 
@@ -29,6 +29,13 @@ prepare() {
         --categories 'Network'
 
     cd "${pkgname^}-${pkgver}/core/server"
+
+    # Fix stale replace directives for cronet-go (commit removed from parhelia512/cronet-go)
+    # and stale checksums in go.sum
+    sed -i '/parhelia512\/cronet-go/d' go.mod
+    : > go.sum
+    GONOSUMDB=* GONOSUMCHECK=* GOFLAGS=-mod=mod go mod tidy
+
     export GOBIN="${srcdir}/bin"
     export PATH="${PATH}:${GOBIN}"
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
