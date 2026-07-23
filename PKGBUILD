@@ -2,8 +2,8 @@
 
 pkgname=lungo-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.1.r14.e0f6813
-pkgrel=2
+pkgver=1.0.2.r16.7e7dd53
+pkgrel=1
 pkgdesc="A simple systray applet to prevent the system from going idle or suspending on demand (git version)"
 url="https://github.com/Antiz96/lungo"
 arch=('x86_64' 'aarch64')
@@ -51,4 +51,5 @@ package() {
 	install -Dm 644 "res/completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 	install -Dm 644 "doc/man/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+	install -Dm 644 THIRD-PARTY-NOTICES.md "${pkgdir}/usr/share/licenses/${_pkgname}/THIRD-PARTY-NOTICES.md"
 }
