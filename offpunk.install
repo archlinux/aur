@@ -18,11 +18,11 @@ pre_upgrade () {
     new_version=$(echo "$1" | cut -d "." -f 1-2 )
     old_version=$(echo "$2" | cut -d "." -f 1-2 )
 
-    if [[ "$old_version" < "0.3.0" ]] ; then
+    if [[ "$old_version" < "3.0" ]] ; then
         post_install "$@"
     fi
 
-    if [[ "$old_version" < "0.3.2" ]] ; then
+    if [[ "$old_version" < "3.2" ]] ; then
         echo '========================================================================='
         echo '||                           /!\ WARNING /!\                           ||'
         echo '========================================================================='
