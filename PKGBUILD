@@ -1,6 +1,6 @@
 # Maintainer: Linus Grolmes <linus@grolmes.de>
 pkgname=dssh
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The only SSH connection manager you'll ever need. CLI & TUI."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 depends=('openssh')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/madLinux7/dssh/archive/v$pkgver.tar.gz")
-sha256sums=('6c93ebf1d3fc2fb9194689b9c99977b37e3086fb03f72f3f997f6b281d06dff7')
+sha256sums=('4f1975bdb226ddc05f8434503adcdb70ee1735a22e304712a717f2230146eba7')
 
 build() {
     cd "$pkgname-$pkgver"
