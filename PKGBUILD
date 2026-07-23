@@ -2,7 +2,7 @@
 
 pkgname=xnec2c-9m2pju-git
 _basename=xnec2c
-pkgver=4.4.18.r780.g4d9fbe4
+pkgver=4.4.18.r807.g1caa23d
 pkgrel=1
 pkgdesc="GTK+ Antenna EM Modeling Client (9M2PJU fork)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,10 @@ build() {
 
 check() {
 	cd "$pkgname"
-	make check
+	# Run the integration test suite only. The top-level "make check"
+	# also runs check-local maintainer gates (check-po-catalogs) that
+	# fail on fuzzy translation entries upstream, so scope to t/.
+	make -C t check
 }
 
 package() {

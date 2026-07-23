@@ -1,6 +1,6 @@
 pkgbase = xnec2c-9m2pju-git
 	pkgdesc = GTK+ Antenna EM Modeling Client (9M2PJU fork)
-	pkgver = 4.4.18.r780.g4d9fbe4
+	pkgver = 4.4.18.r807.g1caa23d
 	pkgrel = 1
 	url = https://github.com/9M2PJU/xnec2c
 	arch = i686
