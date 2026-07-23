@@ -2,41 +2,56 @@
 
 pkgname=wowup-cf-bin
 _pkgname=wowup-cf
-pkgver=2.22.0
+_desktopname=WowUpCf
+pkgver=2.23.0
 pkgrel=1
 epoch=1
 pkgdesc="WowUp the World of Warcraft addon updater (with CurseForge support)"
 arch=(x86_64)
 url="https://github.com/WowUp/WowUp.CF"
 license=("GPL3")
-depends=(zlib fuse2)
+depends=(alsa-lib gtk3 hicolor-icon-theme mesa nss systemd-libs xdg-utils)
+optdepends=(
+  'libnotify: desktop notifications'
+  'libsecret: keyring support'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!strip !debug)
 source=(
   "WowUp-CF-${pkgver}.AppImage::https://github.com/WowUp/WowUp.CF/releases/download/v${pkgver//beta/-beta.}/WowUp-CF-${pkgver//beta/-beta.}.AppImage"
-  "https://raw.githubusercontent.com/WowUp/WowUp.CF/main/wowup-electron/assets/wowup_logo_cf.png"
   "https://raw.githubusercontent.com/WowUp/WowUp.CF/main/LICENSE"
-  "${_pkgname}.desktop"
+  "${_desktopname}.desktop"
   "${_pkgname}"
 )
 noextract=("WowUp-CF-${pkgver}.AppImage")
-sha256sums=('5f98039e3e18059441c0911e6fcb1530da06996508f6255d58e9ac036d1b5a28'
-            'fa00185ae0733121ca059bb0775486d7029446f9325d1bb666fc041a7ad965be'
+sha256sums=('e7dea3fa2d934dbce919f756c33ce840aa41e800f6aea4f486f1789ef6c3df60'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '1764fe4ebadc664a01d71d0678bb7f2e454fa4dd5a4f788695e6272106151294'
-            '058b56582411b4ca5873fbbe7f402037df803e8ead9810ca8e0dda3422346dc5')
+            '55f16d4a88caa1ba3cce8c5732b6767556257d7ca9d07605b1cae502b4493247'
+            '8baa237bd7dbd69a1a6533faba6b46bf64b4a67448464181d14655fcb65b5952')
+
+prepare() {
+  cd "$srcdir"
+
+  chmod +x "WowUp-CF-${pkgver}.AppImage"
+  "./WowUp-CF-${pkgver}.AppImage" --appimage-extract > /dev/null
+}
 
 package() {
   cd "$srcdir"
 
-  # Install binary and launch script
-  install -Dm755 "WowUp-CF-${pkgver}.AppImage" "$pkgdir/opt/$_pkgname/$_pkgname.AppImage"
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp -a squashfs-root/. "$pkgdir/opt/$_pkgname/"
+  rm -rf "$pkgdir/opt/$_pkgname"/{AppRun,.DirIcon,usr,$_pkgname.desktop,$_pkgname.png}
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/opt/$_pkgname"
+
   install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
 
-  # Install pixmap, desktop and license file
-  install -Dm644 wowup_logo_cf.png "$pkgdir/usr/share/pixmaps/wowup_logo_cf.png"
-  install -Dm644 -t "$pkgdir/usr/share/applications" $_pkgname.desktop
+  for _size in 16 32 512; do
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png" \
+      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
+  done
+  install -Dm644 -t "$pkgdir/usr/share/applications" $_desktopname.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
 

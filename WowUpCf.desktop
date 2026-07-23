@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WowUp CF
+Terminal=false
+Icon=wowup-cf
+Comment=World of Warcraft addon updater
+Exec=/usr/bin/wowup-cf %U
+Categories=Game;
+MimeType=x-scheme-handler/wowup;x-scheme-handler/curseforge;
+StartupWMClass=WowUpCf

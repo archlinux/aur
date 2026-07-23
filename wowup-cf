@@ -1,2 +1,2 @@
 #!/bin/sh
-env /opt/wowup-cf/wowup-cf.AppImage "$@"
+exec /opt/wowup-cf/wowup-cf "$@"
