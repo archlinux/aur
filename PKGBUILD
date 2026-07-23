@@ -1,6 +1,6 @@
 # Maintainer: Magrid0 <magrid0 at proton dot me>
 pkgname=fast-git
-pkgver=v0.1.0_6_ga8f49bf
+pkgver=r0.0000000
 pkgrel=1
 pkgdesc='Internet speed test in your terminal'
 arch=('x86_64')
