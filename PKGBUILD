@@ -1,7 +1,7 @@
 # Maintainer: Simon Barth <sb at b1t dot at>
 
 pkgname=machfile-cli
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Modern task runner written in rust'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,9 @@ depends=(
 )
 makedepends=(cargo)
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-b2sums=(6e261df6acef6d8ed1a7c05eff293585f68477211e06ca4ee4d56d40f5a5045d1d25f1b7f50f3a5ea9c6ad133540cfff6ab2bdcd67293d219666383defb303fb)
+b2sums=(
+  6b0ee2896f929d1611cbbfb0220a19d48616788d60a852cc6af11b63b89af02db4b018cb043d853ef444f52424646e1a24dbb37da631dfda2258e1967ea9ad1c
+)
 
 prepare() {
     cd "machfile-$pkgname-v$pkgver"
