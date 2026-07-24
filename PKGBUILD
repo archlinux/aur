@@ -21,7 +21,7 @@ pkgname=(
 )
 _java_build_ver=25
 _java_run_ver=25
-_tag='28+0'
+_tag='28+1'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -67,7 +67,7 @@ source=(
   "${pkgbase}-profile"{.sh,.csh}
   "${pkgbase}-env.sh"
 )
-b2sums=('985b984aa854394c0d7b4bd1eaa24684c580c37396e4e57a3ede7a08db21b30f87f2230627950beb3f0a0cb8439ab665d27ca38f182ceb23413906e70b51ef1d'
+b2sums=('f5ba9c75daee119e9355583984c76a602c6e8de2537cdf4a31dbb30ca0ad4f7c1ce530361cdcd4e7088cfe278ab40644088750d617058b491a45b40751df4813'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3'
         '73cc0da90136a8a564599fb23c321bae64c35c4381e74d00f24604ed9a46dc2c7aa988077846160e8cb6a61e0eaa80d1e153d89a93fb4818d2589b067eff2522'
@@ -101,8 +101,6 @@ build() {
 
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
-
-  export CFLAGS+=" -Wno-error=implicit-function-declaration"
 
   "${_gradle[@]}" --no-daemon zips
 }
