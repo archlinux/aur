@@ -2,7 +2,7 @@
 
 pkgname=python-ttkbootstrap
 _name=${pkgname#python-}
-pkgver=1.20.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Theme extension for tkinter inspired by Bootstrap'
 url='https://github.com/israel-dryer/ttkbootstrap'
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3350b80f79b0454c12558a7174c4bc4bd47905758843c3e8b0fbb19a0286fb69')
+sha256sums=('23d273aefe57164a7e4007c9d9beae970ccf15b8bf157fab5a7e1bda747829dd')
 
 build() {
     cd "${_name}-${pkgver}"
