@@ -1,6 +1,6 @@
 pkgbase = google-chrome-canary-bin
 	pkgdesc = The web browser from Google (Canary channel via Chrome for Testing)
-	pkgver = 152.0.9690
+	pkgver = 152.0.7969.0
 	pkgrel = 1
 	url = https://googlechromelabs.github.io/chrome-for-testing/
 	arch = x86_64

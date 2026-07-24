@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=google-chrome-canary-bin
-pkgver=152.0.9690
+pkgver=152.0.7969.0
 pkgrel=1
 pkgdesc="The web browser from Google (Canary channel via Chrome for Testing)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ pkgver() {
         _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1 || true)
     fi
     
-    # Si ambas fallan, usar la versión hardcodeada en el PKGBUILD para no romper la compilación
+    # Si ambas fallan, usar la versión real hardcodeada en el PKGBUILD
     if [[ -z "$_ver" ]]; then
         _ver="$pkgver"
     fi
