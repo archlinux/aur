@@ -2,7 +2,7 @@
 
 pkgname=livesplit-one-gtk-git
 _pkgname=livesplit-one-gtk
-pkgver=0.7.2.r163.g42a7aa7
+pkgver=0.7.2.r165.g2507db2
 pkgrel=1
 pkgdesc="Linux desktop version of LiveSplit One using GTK4 and libadwaita"
 arch=('x86_64')
