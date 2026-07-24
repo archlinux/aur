@@ -1,7 +1,7 @@
 # Maintainer: theesfeld
 # f00tils — pure assembly coreutils replacement (binary package)
 pkgname=f00
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="f00tils — pure assembly coreutils replacement (multicall, freestanding)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=()
 provides=('f00')
 conflicts=('f00')
 options=('!strip')
-source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.1-linux-x86_64.tar.gz")
-sha256sums=('94f38b9467a83d925127e071fe618125c00e590a8df181dfc805425ae47f698e')
+source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.2-linux-x86_64.tar.gz")
+sha256sums=('7172853bd95d5498db609f0383c515fb157a7183793a7a9d04bb489e5eae4252')
 
 package() {
   local root
