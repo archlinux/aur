@@ -3,11 +3,13 @@ image: archlinux:latest
 update_aur:
   script: |
     pacman -Sy --noconfirm git base-devel openssh curl grep
-    eval $(ssh-agent -s)
-    echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     mkdir -p ~/.ssh
     chmod 700 ~/.ssh
     ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+    echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+    chmod 600 ~/.ssh/id_ed25519
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_ed25519
     git config --global user.name "GitLab CI Bot"
     git config --global user.email "bot@gitlab.com"
     git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
