@@ -1,0 +1,16 @@
+pkgbase = leds-valve-dkms-git
+	pkgdesc = Valve Steam Machine LED strip kernel driver from SteamOS kernel.
+	pkgver = 0.1.r0.gc34a035
+	pkgrel = 1
+	url = https://gitlab.com/CalcProgrammer1/leds-valve-dkms
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = leds-valve-dkms
+	conflicts = leds-valve-dkms
+	source = git+https://gitlab.com/CalcProgrammer1/leds-valve-dkms
+	sha256sums = SKIP
+
+pkgname = leds-valve-dkms-git
