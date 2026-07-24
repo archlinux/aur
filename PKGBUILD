@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=google-chrome-canary-bin
-pkgver=152.0.7969.0
+pkgver=152.0.9690
 pkgrel=1
 pkgdesc="The web browser from Google (Canary channel via Chrome for Testing)"
 arch=('x86_64')
@@ -31,11 +31,16 @@ sha256sums=()
 
 pkgver() {
     # MÉTODO 1: API JSON de Chrome for Testing (con grep)
-    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+')
+    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' || true)
     
     # MÉTODO 2 (FALLBACK): Si la API JSON falla, leer la API de Chromium Dash
     if [[ -z "$_ver" ]]; then
-        _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
+        _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1 || true)
+    fi
+    
+    # Si ambas fallan, usar la versión hardcodeada en el PKGBUILD para no romper la compilación
+    if [[ -z "$_ver" ]]; then
+        _ver="$pkgver"
     fi
     
     echo "$_ver"
@@ -43,8 +48,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"
-    _url="https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
-    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "$_url"
+    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
     bsdtar -xf chrome-linux64.zip
 }
 
