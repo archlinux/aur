@@ -1,30 +1,29 @@
 # Maintainer: Reto Brunner <brunnre8@gmail.com>
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname=thelounge
-pkgver=4.5.0
-pkgsuffix="" #-rc.1
-pkgrel=0
+pkgver=4.5.2
+pkgrel=1
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs>=22' 'nodejs<25')
+depends=('nodejs>=22')
 options=('!lto')
 makedepends=('yarn')
 backup=('etc/thelounge/config.js')
 source=(
-    "https://registry.npmjs.org/$pkgname/-/$pkgname-${pkgver}${pkgsuffix}.tgz"
-    "https://raw.githubusercontent.com/thelounge/thelounge/v${pkgver}${pkgsuffix}/yarn.lock"
-    "https://raw.githubusercontent.com/thelounge/thelounge/v${pkgver}${pkgsuffix}/package.json"
+    "https://registry.npmjs.org/$pkgname/-/$pkgname-${pkgver}.tgz"
+    "https://raw.githubusercontent.com/thelounge/thelounge/v${pkgver}/yarn.lock"
+    "https://raw.githubusercontent.com/thelounge/thelounge/v${pkgver}/package.json"
     'system.service'
     'user.service'
     'sysusers.d'
     'tmpfiles.d'
 )
-noextract=("$pkgname-${pkgver}${pkgsuffix}.tgz")
-sha256sums=('11a2a5b8e49d722a1c1240e0e5ee68317017d4c9f984ea557e82b31bc769ff71'
-            'ed84ecb09ed8aa357dceb5062b0c7751d809652bf7fdfe48354852f172b496cb'
-            '3e3319e694cd3e55d895f04d81f42cc708f2c41caf1961cc9733150ccb80c61e'
+noextract=("$pkgname-${pkgver}.tgz")
+sha256sums=('482fc732e71135211da876f1f5e819e6d24f8ea09286e939a847ca51b9d5e983'
+            '857025276e62b8965516bd214e2b09e51f31a5ae04b4f1846a3d8d81d98d6d3d'
+            '36a527fa00f7c2d3e1010895e9dbae797ff8e343b5ca09f811787d6f7815a380'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
@@ -45,7 +44,7 @@ build() {
     yarn add --no-default-rc --frozen-lockfile \
     --prod --non-interactive --ignore-scripts \
     --cache-folder "$srcdir/yarn-cache" --offline \
-    file:"$srcdir/$pkgname-${pkgver}${pkgsuffix}.tgz"
+    file:"$srcdir/$pkgname-${pkgver}.tgz"
 }
 
 package() {
@@ -73,4 +72,6 @@ package() {
     # setting up system user
     install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
     install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/thelounge.conf"
+
+    install -Dm644 "${srcdir}/_build/node_modules/thelounge/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
