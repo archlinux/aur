@@ -1,6 +1,6 @@
 pkgbase = mistserver-git
 	pkgdesc = The MistServer media server toolkit, unstable development branch
-	pkgver = 3.7
+	pkgver = 3.11.2
 	pkgrel = 1
 	url = https://mistserver.org
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = mistserver-git
 	license = Unlicense
 	makedepends = meson
 	makedepends = git
-	depends = srt
 	depends = libsrtp
 	depends = librist
 	source = mistserver-git::git+http://github.com/DDVTECH/mistserver.git#branch=development
