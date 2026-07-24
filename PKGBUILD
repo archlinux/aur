@@ -2,12 +2,12 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
 url="https://github.com/Graphify-Labs/graphify"
-license=('MIT')
+license=('Apache-2.0')
 
 depends=(
     'python'
@@ -81,7 +81,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('62e5dcd907d42652da2dc0f2123ae1cc0ca368310fedff7bd6e8dca8ce6e5c31')
+sha256sums=('fec8a7f06da42945dc20ea5f4c0e4bc03dbc6b31e7fda88789c657e4ae26952d')
 
 build() {
     cd "${_name}-${pkgver}"
@@ -90,6 +90,9 @@ build() {
 
 package() {
     cd "${_name}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    python -m installer --destdir="${pkgdir}" --prefix=/usr dist/*.whl
+    sed -i '1c#!/usr/bin/python' \
+        "${pkgdir}/usr/bin/graphify" \
+        "${pkgdir}/usr/bin/graphify-mcp"
+    install -Dm644 LICENSE LICENSE-MIT NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
