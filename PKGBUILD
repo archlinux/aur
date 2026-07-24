@@ -1,7 +1,6 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="d1e885a271de3477bea212508be88aecff171a26"
 pkgname="readpe"
 pkgver="0.85.1"
 pkgrel="1"
@@ -15,10 +14,10 @@ conflicts=("pev")
 depends=("openssl")
 makedepends=("git")
 source=(
-  "readpe::git+https://github.com/mentebinaria/readpe.git#commit=${_commit}"
+  "readpe::git+https://github.com/mentebinaria/readpe.git#tag=v${pkgver}"
 )
 sha256sums=(
-  "SKIP"
+  "bf4e004284fb511dd1f50a7cba7a2949c2cc431f566ace7d80d1cd2f455648e4"
 )
 
 build() {
