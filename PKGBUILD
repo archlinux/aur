@@ -1,6 +1,6 @@
 # Maintainer: Den <den@nada64.com>
 pkgname=nada64
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Self-hosted system monitor dashboard for a secondary display"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('playerctl: now-playing info and playback controls'
             'lm_sensors: chassis fan sensors')
 source=("$pkgname-$pkgver.tar.gz::https://slop.tools/den-fi/nada64-dashboard/archive/v$pkgver.tar.gz"
         "nada64.service")
-sha256sums=('4037c899738a109e5512f861855703d70176b60bb831a2cf20cf949ce8cc276a'
+sha256sums=('77c00471f7ef9f95a65ab62ad30328800ca31fb945fe41fb8f1d7e1db84c1aa0'
             '0d8a5061fe01c0a6086beb21616a0481ad7036ba75e08a92417abb10d518af01')
 
 package() {

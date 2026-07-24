@@ -1,6 +1,6 @@
 pkgbase = nada64
 	pkgdesc = Self-hosted system monitor dashboard for a secondary display
-	pkgver = 1.5.8
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://nada64.com
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = nada64
 	optdepends = playerctl: now-playing info and playback controls
 	optdepends = pciutils: GPU names via lspci
 	optdepends = lm_sensors: chassis fan sensors
-	source = nada64-1.5.8.tar.gz::https://slop.tools/den-fi/nada64-dashboard/archive/v1.5.8.tar.gz
+	source = nada64-1.5.9.tar.gz::https://slop.tools/den-fi/nada64-dashboard/archive/v1.5.9.tar.gz
 	source = nada64.service
-	sha256sums = 4037c899738a109e5512f861855703d70176b60bb831a2cf20cf949ce8cc276a
+	sha256sums = 77c00471f7ef9f95a65ab62ad30328800ca31fb945fe41fb8f1d7e1db84c1aa0
 	sha256sums = 0d8a5061fe01c0a6086beb21616a0481ad7036ba75e08a92417abb10d518af01
 
 pkgname = nada64
