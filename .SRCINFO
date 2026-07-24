@@ -1,20 +1,20 @@
 pkgbase = python-liboqs
 	pkgdesc = Python 3 bindings for liboqs
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/open-quantum-safe/liboqs-python
 	arch = any
 	license = MIT
 	checkdepends = python-nose2
+	checkdepends = python-pyasn1
+	checkdepends = python-pyasn1-alt-modules
+	makedepends = git
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = liboqs
 	depends = python
-	source = liboqs-python-0.12.0.tar.gz::https://github.com/open-quantum-safe/liboqs-python/archive/refs/tags/0.12.0.tar.gz
-	source = fix-attributes.patch
-	b2sums = efeaf5454eef143a746af308fe2649cba5ddf32e2d5535beffacc0783bc03956f046a2c2f51e08f4af8122d063b3946c2c6746ff4d938cb5708a3bd90674f26c
-	b2sums = c840e1c4174c9afc5976a9016d54074e05a7c0ed6a0999facba32edcf18e3748467b8c933f7bc1e32aabf5678d369e56580af82e0a62440fe19b76aaff8d7500
+	source = liboqs-python::git+https://github.com/open-quantum-safe/liboqs-python.git#commit=35eceb69d2b363cb0421085cf1ae1c682dee1acc
+	b2sums = 2bb2ae70ffbba0c916e19fa166ddc3c6a2946ef5e94802a48ad6fab2f90efce2f0c7a0ff30f1cdf6627efbd9560a280e792028d2a971de01a2de710a8c1626f9
 
 pkgname = python-liboqs
