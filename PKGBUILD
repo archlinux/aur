@@ -1,7 +1,7 @@
 # Maintainer: atp atp@disroot.org
 
 pkgname=harvcode
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A fast Rust tool for harvesting source files as Markdown and copying them to the clipboard"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   'fzf: interactive file selection using fzf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8edf4d018158522583c5dc841a73fb69b3a9ed70578dcaecbb1a8c053bf67c5f')
+sha256sums=('1ecc8f6756f92e9b28c36110afef66e7f47365fc8c37114906687c1f1c332faa')
 
 prepare() {
   cd "$pkgname-$pkgver"

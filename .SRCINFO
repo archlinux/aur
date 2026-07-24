@@ -1,6 +1,6 @@
 pkgbase = harvcode
 	pkgdesc = A fast Rust tool for harvesting source files as Markdown and copying them to the clipboard
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/atp-gh/harvcode
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = harvcode
 	optdepends = xclip: clipboard support under X11
 	optdepends = skim: interactive file selection using sk
 	optdepends = fzf: interactive file selection using fzf
-	source = harvcode-0.5.2.tar.gz::https://github.com/atp-gh/harvcode/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = 8edf4d018158522583c5dc841a73fb69b3a9ed70578dcaecbb1a8c053bf67c5f
+	source = harvcode-0.5.3.tar.gz::https://github.com/atp-gh/harvcode/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = 1ecc8f6756f92e9b28c36110afef66e7f47365fc8c37114906687c1f1c332faa
 
 pkgname = harvcode
