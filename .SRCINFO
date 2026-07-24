@@ -1,0 +1,16 @@
+pkgbase = rumoca
+	pkgdesc = A rust-native Modelica compiler for fast, composable, scientific computing
+	pkgver = 0.9.20
+	pkgrel = 1
+	url = https://github.com/CogniPilot/rumoca
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = xz
+	depends = bzip2
+	source = rumoca-0.9.20.tar.gz::https://github.com/CogniPilot/rumoca/archive/refs/tags/v0.9.20.tar.gz
+	sha256sums = c83f304aaf121d589286d0a7276b82b81318e0e0e4d64d5e9a688488b0137496
+
+pkgname = rumoca
