@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=抖音开发者工具
+Name[en]=Douyin DevTools
+Comment=抖音小游戏和小程序开发者工具
+Comment[en]=Douyin mini game and mini app development tools
+Exec=douyin-devtools %U
+Icon=douyin-devtools
+Categories=Development;IDE;
+Terminal=false
+Version=1.0
+X-AppImage-Version=4.5.3
