@@ -24,17 +24,17 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'ttf-liberation: fix fonts for some PDFs'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
-provides=('google-chrome-canary' 'google-chrome')
-conflicts=('google-chrome-canary' 'google-chrome')
+provides=('google-chrome-canary')
+conflicts=('google-chrome-canary')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
 
 pkgver() {
-    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' | head -1)
+    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' | head -1)
     
     if [[ -z "$_ver" ]]; then
-        _ver=$(curl -fsSL "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
+        _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
     fi
     
     echo "$_ver"
