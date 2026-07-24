@@ -1,3 +1,9 @@
+* Fri Jul 24 2026 Andrew Sachen <webmaster@RealityRipple.com> 1.2.6
+- Added QT6 support
+- Patched display of number panel
+- Fixed minor ZIP file bugs
+- Fixed GridView typo
+
 * Fri Jun 28 2024 Andrew Sachen <webmaster@RealityRipple.com> 1.2.5
 - Fixed more potential no-profile bugs
 
