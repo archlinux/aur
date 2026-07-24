@@ -1,0 +1,4 @@
+[mailspring]
+source = "git"
+git = "https://github.com/Foundry376/Mailspring.git"
+include_regex = '[0-9.]+'

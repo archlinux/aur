@@ -1,3 +1,4 @@
-pkg/
-src/
-mailspring-*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
