@@ -1,6 +1,6 @@
 # Maintainer: Răzvan <aurstuff@razv.xyz>
 pkgname=naji-cli
-pkgver=1.8.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="CLI client for judge.nitro-ai.org"
 arch=('any')
