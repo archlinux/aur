@@ -1,6 +1,6 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-zh-cn")
-pkgver=17.3.9
+pkgver=17.3.10
 pkgrel=1
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64')
@@ -11,8 +11,8 @@ source_x86_64=(
 	"${pkgbase}-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage"
 	"${pkgbase}-cs-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage"
 )
-sha256sums_x86_64=('c1181518e53099f20784c9ca060f53676e5ceaa07918a759af1e74c0cfb838aa'
-                   '7c1d0ce5ab7f9508efe8df1a493207cc6cd703a06bd08deacaaf2fb26cb1b1c6')
+sha256sums_x86_64=('37116265c9ce389e1d804cbf9a35deb4c76221ebf134fcf015aa63f141e9f399'
+                   '97519ae417f4431756c28d46611fc191321874783b536395758c57b31062060d')
 
 _package() {
 	_lang=$1
