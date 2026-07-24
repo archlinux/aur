@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous-git
-pkgver=0.4.2.r0.g6538bed # Will be updated by pkgver()
+pkgver=0.4.3.r0.ga558bdc # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,16 @@ license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev'
          'noctalia' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
-         'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
+         'xdg-desktop-portal-wlr' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
-         'libscenefx-0.5.so')
-makedepends=('clang' 'lld' 'llvm' 'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so' 'zig>=0.16')
+         'mesa' 'systemd-libs' 'seatd' 'libdisplay-info' 'libliftoff'
+         'lcms2' 'vulkan-icd-loader' 'libxcb' 'xcb-util-errors' 'xcb-util-wm')
+makedepends=('clang' 'lld' 'llvm' 'git' 'curl' 'patch' 'scdoc'
+             'wayland-protocols' 'pkgconf' 'meson' 'ninja' 'glslang'
+             'vulkan-headers' 'hwdata' 'zig>=0.16')
 optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'ghostty: recommended terminal emulator'
@@ -29,15 +32,17 @@ conflicts=('aqueous')
 install=aqueous.install
 source=(
     "aqueous::git+${url}.git"
+    "wlroots-0.20.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.20.2/wlroots-0.20.2.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '972c7ac44b17828f4702bfae7cd8347346a3fb5b2c1076cfa2c3fcedac5ec343')
 
 pkgver() {
     cd "$srcdir/aqueous"
     local ver
     ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
     if [[ -z "$ver" ]]; then
-        ver="0.4.2.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+        ver="0.4.3.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
     fi
     echo "$ver"
 }
@@ -72,7 +77,10 @@ build() {
     # Keep the manuals deterministic in clean chroots. In-tree builds make
     # them optional when scdoc is absent, but packages must always document
     # both installed executables, including aqueousctl.
-    zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
+    AQUEOUS_WLROOTS_CACHE_DIR="$srcdir" \
+        scripts/build-wlroots-render-hook.sh
+    PKG_CONFIG_PATH="$PWD/.deps/wlroots-render-hook/lib/pkgconfig" \
+    zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm \
         -Dman-pages=true \
         --prefix "$srcdir/aqueous-dist" install
 }
@@ -83,6 +91,7 @@ check() {
     local required=(
         bin/aqueous
         bin/aqueousctl
+        lib/aqueous/libwlroots-0.20.so
         share/man/man1/aqueousctl.1
         share/aqueous-protocols/stable/aqueous-window-info-v1.xml
     )
@@ -93,12 +102,23 @@ check() {
             return 1
         fi
     done
+    cmp "$srcdir/aqueous-dist/lib/aqueous/libwlroots-0.20.so" \
+        "$srcdir/aqueous/compositor/.deps/wlroots-render-hook/lib/libwlroots-0.20.so"
+    readelf -d "$srcdir/aqueous-dist/bin/aqueous" |
+        grep -F '$ORIGIN/../lib/aqueous' >/dev/null
+    if readelf -d "$srcdir/aqueous-dist/bin/aqueous" |
+        grep -i 'scenefx' >/dev/null; then
+        error "compositor still links SceneFX"
+        return 1
+    fi
 }
 
 package() {
     # Install the compositor/window-manager and read-only inspection client.
     install -Dm755 "$srcdir/aqueous-dist/bin/aqueous" "$pkgdir/usr/bin/aqueous"
     install -Dm755 "$srcdir/aqueous-dist/bin/aqueousctl" "$pkgdir/usr/bin/aqueousctl"
+    install -Dm755 "$srcdir/aqueous-dist/lib/aqueous/libwlroots-0.20.so" \
+        "$pkgdir/usr/lib/aqueous/libwlroots-0.20.so"
 
     # Install compositor share data (man pages and protocol ABI metadata).
     if [ -d "$srcdir/aqueous-dist/share" ]; then
