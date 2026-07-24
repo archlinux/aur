@@ -1,6 +1,6 @@
 pkgbase = uplink-irc
 	pkgdesc = Fast, secure, IRCv3-featured IRC client (Qt6)
-	pkgver = 2026.7.8
+	pkgver = 2026.8.0
 	pkgrel = 1
 	url = https://uplinkirc.chat
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = uplink-irc
 	depends = qtkeychain-qt6
 	depends = tomlplusplus
 	depends = hicolor-icon-theme
-	source = uplink-irc-2026.7.8.tar.gz::https://github.com/noderelay/UplinkIRC/archive/v2026.7.8.tar.gz
-	sha256sums = 8cc846d95dd2b3e7cfed7040d21c05b631eeab1a1dc36ccb797da5617f7f258f
+	source = uplink-irc-2026.8.0.tar.gz::https://github.com/noderelay/UplinkIRC/archive/v2026.8.0.tar.gz
+	sha256sums = 3d359b6d66364a1c1e4f3b13f982b027a8944b746fac81a1ce760b4191211df8
 
 pkgname = uplink-irc
