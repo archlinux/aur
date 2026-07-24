@@ -19,8 +19,8 @@
 
 _srcname=cosmic-comp
 pkgname=cosmic-comp-inhibit-export
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 epoch=1
 pkgdesc='cosmic-comp with additive patches: Wayland idle-inhibitor D-Bus export + libinput custom accel-curve support (PR#2397)'
 arch=(x86_64)
@@ -50,9 +50,9 @@ makedepends=(
 source=(git+https://github.com/pop-os/cosmic-comp.git#tag=epoch-${pkgver}
         pr2397-custom-accel.patch
         idle-inhibit-export.patch)
-b2sums=('3ceb9e187ce87a5b9e7ea576f26bae2c386d1af2eb18e207bb7b62e728d05be99537149cb7f750574feb12fe87d4c8ceea921fcb48bdc29f38f35979dacf84b2'
-        '875442d125d263031ef9b5ed21963fa0d34b0300592ca2d53e4f8952c4cb6d5633c7959799732686ac0b9f46548fb87251bc82b160b7dd683e8f4d265e71e644'
-        '95cbf2955323c3e47b7b65d8162c6c12655d31a9bd49ccd2a21d30b2febfbbf4197e0d8323fbac0c8ecc71baa64f75bc8c00013b5fb1376402c0214ec08f976b')
+b2sums=('410c4d437150473daf8e2beabe73431d0705d5417c94f29705c471d0912bd3b60b38be562f863d83e7beaf4a6cce683068b2a2158395f86fea0643844fcf8c7f'
+        'f08c77cdece50d7e0e461d8094d873994cec43e06fb6c58770d61a3b2e74e083c18235ac2ba6300bf6a2ac4ce224612b1abde2d2d5e436d3af413411283a0859'
+        'dc885fe24c61e494ffdab3a50648494877314657b74a3cda9219178d207fc552f8306e18d1eb5737330df73881e8839bf253a3f4d9a2b18c5c56a6c6b9fb18dc')
 
 prepare() {
   cd $_srcname

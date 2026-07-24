@@ -1,5 +1,5 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index b5ebbb06..bb9e2347 100644
+index 3f8a9e73..197f214a 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -117,6 +117,7 @@ features = ["svg"]

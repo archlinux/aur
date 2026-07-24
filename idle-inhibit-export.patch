@@ -85,10 +85,10 @@ index 5b9754c3..83ef3c86 100644
  #[derive(Clone, Debug)]
  pub struct DBusState(Rc<DBusStateInner>);
 diff --git a/src/state.rs b/src/state.rs
-index cf66aeaa..155c14f9 100644
+index 21cbb400..b574b9f2 100644
 --- a/src/state.rs
 +++ b/src/state.rs
-@@ -272,6 +272,7 @@ pub struct Common {
+@@ -273,6 +273,7 @@ pub struct Common {
      pub idle_notifier_state: IdleNotifierState<State>,
      pub idle_inhibit_manager_state: IdleInhibitManagerState,
      pub idle_inhibiting_surfaces: HashSet<WlSurface>,
@@ -96,7 +96,7 @@ index cf66aeaa..155c14f9 100644
      pub shm_state: ShmState,
      pub cursor_shape_manager_state: CursorShapeManagerState,
      pub wl_drm_state: WlDrmState<Option<DrmNode>>,
-@@ -693,6 +694,10 @@ impl State {
+@@ -695,6 +696,10 @@ impl State {
          let idle_notifier_state = IdleNotifierState::<Self>::new(dh, handle.clone());
          let idle_inhibit_manager_state = IdleInhibitManagerState::new::<State>(dh);
          let idle_inhibiting_surfaces = HashSet::new();
@@ -107,7 +107,7 @@ index cf66aeaa..155c14f9 100644
  
          let ext_data_control_state = ExtDataControlState::new::<Self, _>(
              dh,
-@@ -765,6 +770,7 @@ impl State {
+@@ -767,6 +772,7 @@ impl State {
                  idle_notifier_state,
                  idle_inhibit_manager_state,
                  idle_inhibiting_surfaces,
