@@ -1,6 +1,6 @@
 pkgbase = astrodmx-capture
 	pkgdesc = AstroDMx Capture Astronomical Imaging
-	pkgver = 2.16.4
+	pkgver = 2.18.2
 	pkgrel = 1
 	url = https://www.astrodmx-capture.org.uk/
 	install = astrodmx-capture.install
@@ -35,11 +35,11 @@ pkgbase = astrodmx-capture
 	depends = cairo
 	depends = libwebcam-git
 	options = !strip
-	source_x86_64 = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-x86_64/astrodmx-capture_2.16.4_x86-64-manual.tar.gz
-	sha256sums_x86_64 = a08fc998ffb22a1321ded473738e4d3ba04b03010e8bace355b0f51a4053fd83
-	source_aarch64 = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm/astrodmx-glibc-2.28_2.16.4_manual-aarch64.tar.gz
-	sha256sums_aarch64 = 0eb1914409fa99e744075e4c773fe84738c876f3bafa8a3a5da64cae6e7351a8
-	source_armv7h = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm//astrodmx-glibc-2.28_2.16.4_manual-armhf.tar.gz
-	sha256sums_armv7h = ddcf7b1b9650fda3f24e2f159098969927fbf4a47e81c1d554391219573ffd7d
+	source_x86_64 = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-x86_64/astrodmx-capture_2.18.2_x86-64-manual.tar.gz
+	sha256sums_x86_64 = 28425cdb425dc4be025d63fc7e24ee0ecbce8c26c79b055ddfbbd86b40b95cfc
+	source_aarch64 = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm/astrodmx-glibc-2.28_2.18.2_manual-aarch64.tar.gz
+	sha256sums_aarch64 = 107142e3a55a3558d773e28f55438f6d0ec680e5fdc891fb0685b0d694d02ee6
+	source_armv7h = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm//astrodmx-glibc-2.28_2.18.2_manual-armhf.tar.gz
+	sha256sums_armv7h = be9e55b3788fbf773fea6c5a9a74384f115979271f89386d34c777e4d0d49ffb
 
 pkgname = astrodmx-capture
