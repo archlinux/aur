@@ -1,13 +1,15 @@
 # Maintainer: pantarune
 
 pkgname=niri-screenshare
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Portal backend for niri implementing ScreenCast"
 arch=('x86_64')
 url="https://github.com/pantarune/niri-screenshare"
 license=('GPL3')
 depends=(
+  'gtk4'
+  'libadwaita'
   'xdg-desktop-portal'
   'pipewire'
   'niri'
