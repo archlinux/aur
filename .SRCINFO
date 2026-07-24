@@ -11,7 +11,7 @@ pkgbase = thonny-bin
 	provides = thonny
 	conflicts = thonny
 	options = !strip
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/thonny-bin-5.0.0/thonny-bin-5.0.0.tar.zst
+	source = thonny-bin-5.0.0-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/thonny-bin-5.0.0/thonny-bin-5.0.0.tar.zst
 	sha256sums = 7baea7ff70d7aa6e86fa1153ba8f156d8f5a402ddb5279d8e15ceceb4aaa53e5
 
 pkgname = thonny-bin

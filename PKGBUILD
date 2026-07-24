@@ -16,7 +16,7 @@ optdepends=('libnotify: desktop notifications (dlopened by Tk)')
 provides=('thonny')
 conflicts=('thonny')
 options=('!strip')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('7baea7ff70d7aa6e86fa1153ba8f156d8f5a402ddb5279d8e15ceceb4aaa53e5')
 
 package() {
