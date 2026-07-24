@@ -1,5 +1,5 @@
  pkgname=anitrack
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
   pkgdesc="CLI/TUI companion for ani-cli with watch-progress tracking"
   arch=("x86_64")
@@ -8,8 +8,8 @@ pkgrel=1
   depends=("ani-cli" "sqlite")
   makedepends=("rust>=1.85" "pkgconf")
   options=("!lto")
-  source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-  sha256sums=("SKIP")
+  source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+  sha256sums=("d9f5f09041a873ef3de79bcd5731820242cb27ae49cccbf3ea21156d81add4ef")
 
   prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -22,6 +22,7 @@ pkgrel=1
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
     cargo build --frozen --release --locked
   }
 
