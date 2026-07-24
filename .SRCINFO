@@ -1,6 +1,6 @@
 pkgbase = wiiudownloader-bin
 	pkgdesc = Download encrypted Wii U files from Nintendo's official servers (prebuilt)
-	pkgver = 2.98
+	pkgver = 2.99
 	pkgrel = 1
 	url = https://github.com/Xpl0itU/WiiUDownloader
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wiiudownloader-bin
 	depends = fontconfig
 	provides = wiiudownloader
 	conflicts = wiiudownloader
-	source = wiiudownloader-bin-2.98-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/wiiudownloader-bin-2.98/wiiudownloader-bin-2.98.tar.zst
-	sha256sums = 5b2bd57e6531aee1774ca3b9acc70bc402eab585a2532a666f4484584412622e
+	source = wiiudownloader-bin-2.99-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/wiiudownloader-bin-2.99/wiiudownloader-bin-2.99.tar.zst
+	sha256sums = 1a43185b07869b8c25b71c3d43ddd829fd79af9d4cf6bfcfddb201f12cf8ff2e
 
 pkgname = wiiudownloader-bin
