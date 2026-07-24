@@ -1,6 +1,6 @@
 pkgbase = scarb-bin
 	pkgdesc = The Cairo package manager
-	pkgver = 2.19.4
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://docs.swmansion.com/scarb
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = scarb-bin
 	license = MIT
 	provides = scarb
 	conflicts = scarb
-	source_x86_64 = https://github.com/software-mansion/scarb/releases/download/v2.19.4/scarb-v2.19.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3832b9d79640e5385372025be53b5a7dbdbee5ca1b2c7ab5d5c21e090dc9e108
-	source_aarch64 = https://github.com/software-mansion/scarb/releases/download/v2.19.4/scarb-v2.19.4-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d5267b6c5addbc7ad22765a1341cb3fbee8d59db2232d8fc63468f14e1ec79f5
+	source_x86_64 = https://github.com/software-mansion/scarb/releases/download/v2.20.0/scarb-v2.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7ec4f7afb34f41c1e16f4e2288aa23261b67e285bb9e2f9d436462b998eba44d
+	source_aarch64 = https://github.com/software-mansion/scarb/releases/download/v2.20.0/scarb-v2.20.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f4cab77ac8b337e9b9931b8c1c0ab7eb35b32a022c48a91e657b382ae700d294
 
 pkgname = scarb-bin
