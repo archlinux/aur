@@ -1,24 +1,24 @@
 pkgbase = recipe-git
-	pkgdesc = WIP DO NOT INSTALL - ML/DL/AI training+inference for AMD/NVIDIA GPUs (fp64)
-	pkgver = 0.0.r243.d61b7a1
+	pkgdesc = Capability-driven AOT scheduling and execution for AMD/NVIDIA GPUs
+	pkgver = 0.1.1.r444.dabe2a3
 	pkgrel = 1
 	url = https://github.com/nm-z/nates-recipe-rs
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = git
-	makedepends = perl
-	depends = rust
-	depends = hip-runtime-amd
-	depends = hipblas
-	depends = hipsolver
 	depends = gcc-libs
-	depends = xz
-	depends = bzip2
-	provides = recipe
+	depends = glibc
+	depends = llvm
+	optdepends = cuda: NVIDIA PTX assembler
+	optdepends = hsa-rocr: AMD ROCr/HSA runtime
+	optdepends = lld: AMD HSACO linker
+	optdepends = nvidia-utils: NVIDIA CUDA Driver library
+	provides = recipe=0.1.1.r444.dabe2a3
 	conflicts = recipe
 	options = !debug
 	options = !lto
-	source = nates-recipe-rs::git+https://github.com/nm-z/nates-recipe-rs.git
+	source = nates-recipe-rs::git+https://github.com/nm-z/nates-recipe-rs.git#branch=main
 	sha256sums = SKIP
 
 pkgname = recipe-git
