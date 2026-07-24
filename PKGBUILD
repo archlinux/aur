@@ -1,4 +1,4 @@
-# Maintainer: Răzvan Matei Dedu <dedu.razvan.matei@gmail.com>
+# Maintainer: Răzvan <aurstuff@razv.xyz>
 pkgname=naji-cli
 pkgver=1.7.1
 pkgrel=1
