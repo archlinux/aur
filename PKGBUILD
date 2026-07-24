@@ -3,7 +3,7 @@ pkgname=comty-desktop
 
 _electronversion=43
 
-pkgver="0.11.0"
+pkgver="0.12.0"
 pkgrel=1
 pkgdesc="Official Comty Desktop application"
 arch=("x86_64")
