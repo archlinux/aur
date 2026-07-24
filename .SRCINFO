@@ -1,0 +1,25 @@
+pkgbase = rustcast-git
+	pkgdesc = A Raycast-class launcher for Linux (GTK4 + layer-shell) with clipboard history, file search and a tldr search
+	pkgver = r16.be7205a
+	pkgrel = 1
+	url = https://github.com/zer0bav/rustcast
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = wl-clipboard: clipboard history and {clipboard} snippets on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = curl: download tldr pages
+	optdepends = libarchive: extract tldr pages (bsdtar)
+	optdepends = tesseract: OCR text out of clipboard images
+	optdepends = libqalculate: richer calculator (a built-in evaluator works without it)
+	optdepends = iproute2: port inspector (ss)
+	provides = rustcast
+	conflicts = rustcast
+	options = !lto
+	source = git+https://github.com/zer0bav/rustcast.git
+	sha256sums = SKIP
+
+pkgname = rustcast-git
