@@ -19,18 +19,6 @@ cd pulse-remote-git
 
 ## Standard Workflow
 
-### Quick Update (Makefile)
-
-```bash
-make install  # Builds, installs, and regenerates .SRCINFO
-
-git add PKGBUILD .SRCINFO
-git commit -m "Update to version $(makepkg --printsrcinfo | grep pkgver | cut -d = -f 2)"
-git push
-```
-
-### Manual Update (the same steps, by hand)
-
 1. Pull the latest AUR state:
 
    ```bash
@@ -97,13 +85,13 @@ makepkg -g  # Generates sha256sums
 ### Clean build artifacts
 
 ```bash
-make clean  # Removes pkg/, src/, *.pkg.tar.zst
+rm -rf pkg/ src/ *.pkg.tar.zst *-debug-*.pkg.tar.zst
 ```
 
 ### Nuclear clean (restore to git state)
 
 ```bash
-make nuke   # Runs git clean -xdf
+git clean -xdf
 ```
 
 ### Check package metadata
@@ -136,5 +124,5 @@ git push
 
 - **PKGBUILD** - Package build script (the actual build instructions)
 - **.SRCINFO** - Auto-generated metadata for AUR web interface
-- **Makefile** - Convenience shortcuts for common tasks
+- **pulse-remote-git.install** - Install/upgrade hooks (post-install messages)
 - **README-build.md** - This file
