@@ -1,0 +1,18 @@
+pkgbase = python-resilient-runner
+	pkgdesc = An async task runner with concurrency control, retries, and dynamic timeouts
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/resilient-runner/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/resilient_runner/resilient_runner-0.1.1.tar.gz
+	sha256sums = 048af364a75574324065ae290013ef0124d5e77105a4de0058dc38092c0c4a72
+
+pkgname = python-resilient-runner
