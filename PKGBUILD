@@ -20,7 +20,7 @@ _srcfilename="$_pkgname-${_release}-R-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/R/$_srcfilename&r=1"
         "eclipse.desktop::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse.desktop")
 sha512sums=('df0c35a056f4f151f0ee5ed36869aff023a2b9418ac1ef8b77938f4978de1a9c71b760e927b354175002a9e1385c981ad1d93a78561c30230945e589a6b97ecc'
-            '824875ab1454349a58eb2bb6fd70edd5e7a8e14a9b999372024374a1e04722398095db9bdba91b17bfb424c1e1271446f0370c79596f35fb516dbada31aebec5')
+            'bb5c1bbf07c52a68b123f40d35ffa1b09a0743003c734e53c0a0b23c4bb81a28c25b1be0c74b1507da8237db96b06f5e53baf6b6234bbc102e54602c30207291')
 
 options=(!strip)
 backup=('usr/lib/eclipse/eclipse.ini')
