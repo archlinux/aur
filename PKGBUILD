@@ -3,7 +3,7 @@
 # because AUR's "meanwhile" is the old Lotus Sametime library.
 pkgname=meanwhile-rain
 _project=meanwhile
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Horizontal matrix rain of things happening right now — news, local intel and true poetic facts decode out of the code"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/tomdavenport/meanwhile"
 license=('MIT')
 depends=('python')
 source=("$_project-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6448ae65884c78836e35b97dd277ab6dc66882e6dc8d79bb9e81b1b1db5d2577')
+sha256sums=('5a78304d4e80bfabdd049dc585db5c6b3e7897292aaa439308b2ba26589756b1')
 
 package() {
   cd "$_project-$pkgver"

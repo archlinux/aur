@@ -1,12 +1,12 @@
 pkgbase = meanwhile-rain
 	pkgdesc = Horizontal matrix rain of things happening right now — news, local intel and true poetic facts decode out of the code
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tomdavenport/meanwhile
 	arch = any
 	license = MIT
 	depends = python
-	source = meanwhile-0.4.0.tar.gz::https://github.com/tomdavenport/meanwhile/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 6448ae65884c78836e35b97dd277ab6dc66882e6dc8d79bb9e81b1b1db5d2577
+	source = meanwhile-0.5.0.tar.gz::https://github.com/tomdavenport/meanwhile/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 5a78304d4e80bfabdd049dc585db5c6b3e7897292aaa439308b2ba26589756b1
 
 pkgname = meanwhile-rain
