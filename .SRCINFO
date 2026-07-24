@@ -1,0 +1,22 @@
+pkgbase = armasync-bin
+	pkgdesc = Native Linux Arma 3 launcher and addon manager (Arma3Sync-compatible)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Pekururu/Armasync-Linux
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = steam: install and launch Arma 3 with Proton
+	optdepends = protontricks: TeamSpeak/ACRE voice setup
+	optdepends = wireplumber: audio device detection
+	optdepends = pipewire-pulse: TeamSpeak audio under Proton
+	optdepends = zstd: restore points and support bundles
+	provides = armasync
+	conflicts = armasync
+	options = !debug
+	options = !strip
+	source = armasync-0.3.0.deb::https://github.com/Pekururu/Armasync-Linux/releases/download/v0.3.0/Armasync_0.3.0_amd64.deb
+	sha256sums = bf4cde2451c6482bc51218eab5db9e28387464f5ca1093a2bf0c86609fe58cf5
+
+pkgname = armasync-bin
