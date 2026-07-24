@@ -15,7 +15,6 @@ pkgbase = fluyer
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	depends = mpv
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/luneflu/Fluyer/releases/download/v1.3.0/Fluyer_1.3.0_amd64.deb
