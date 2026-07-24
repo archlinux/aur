@@ -1,11 +1,12 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.27
-_branding=dr460nized
-
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
+_pkgver=13.0.0-rc.27
+_branding=dr460nized
+_gentoo=firefox-153-patches-01.tar.xz
+_gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
 
 pkgname=$__pkgname-next
 pkgver=${_pkgver//-/_}
@@ -87,16 +88,17 @@ options=(
 )
 source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
-  fix-wasm32-wasi-target.patch
+  https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo
 )
 sha256sums=('5520b0d0dbc80e96a81f4b4a859a4feccddea210c349d49dda3b7f5e264d5270'
-            'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124')
+            '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e')
+noextract=($_gentoo)
 
 prepare() {
   mkdir -p mozbuild
   cd $_pkgname-v$_pkgver
 
-  patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
+  tar -Oxf "$srcdir/$_gentoo" $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}") | patch -Nsp1
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
