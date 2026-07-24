@@ -1,7 +1,7 @@
 # Maintainer: Ryannnkl <ryannnkl@gmail.com>
 
 pkgname=lumalock
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Secure and customizable Wayland session locker"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxkbcommon' 'pam')
 makedepends=('cargo' 'pkgconf')
 backup=('etc/pam.d/luma')
 source=("luma-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bbd6cf09499f02081abcb71678ce68e02c644cf862b6e1aacf80bf0c1f988865')
+sha256sums=('f3eba7b20a06f533a0df8f8665c3c88521d579d77005ffabbb12a8d04367800d')
 
 prepare() {
     cd "luma-${pkgver}"
