@@ -13,7 +13,7 @@ source=()
 sha256sums=()
 
 pkgver() {
-    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
+    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
     echo "$_ver"
 }
 
