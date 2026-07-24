@@ -2,12 +2,12 @@
 
 pkgname=miru-zoom-git
 _pkgname=miru
-pkgver=0.1.0.r0.g1234567 # Dynamically updated by pkgver() below
-pkgrel=1
+pkgver=r22.a1b2c3 # Dynamically updated by pkgver() below
+pkgrel=2
 pkgdesc="A Wayland-based zoom daemon and control utility (development branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/miru"
-license=('unknown')
+license=('MIT')
 depends=('wayland')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'wayland-protocols')
 provides=('miru-zoom')
@@ -17,12 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  # Generates a clean version string based on your git tags and commit count
-  (
-    set -o pipefail
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -35,6 +30,5 @@ build() {
 }
 
 package() {
-  install -Dm755 build/miru-daemon "${pkgdir}/usr/bin/miru-daemon"
-  install -Dm755 build/miructl "${pkgdir}/usr/bin/miructl"
+  DESTDIR="${pkgdir}" cmake --install build
 }
