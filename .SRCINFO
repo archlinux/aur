@@ -1,6 +1,6 @@
 pkgbase = unity-cli-bin
 	pkgdesc = Standalone Unity CLI for installing editors, adding modules and managing projects
-	pkgver = 1.0.0beta.2
+	pkgver = 1.0.0beta.3
 	pkgrel = 1
 	url = https://docs.unity.com/en-us/hub/use-unity-cli
 	install = unity-cli-bin.install
@@ -9,15 +9,15 @@ pkgbase = unity-cli-bin
 	license = LicenseRef-Unity
 	depends = glibc
 	depends = gcc-libs
-	provides = unity-cli=1.0.0beta.2
+	provides = unity-cli=1.0.0beta.3
 	conflicts = unity-cli
-	noextract = unity-cli-bin-1.0.0beta.2-x86_64
+	noextract = unity-cli-bin-1.0.0beta.3-x86_64
 	options = !strip
 	source = LICENSE
-	sha256sums = SKIP
-	source_x86_64 = unity-cli-bin-1.0.0beta.2-x86_64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.2/unity-linux-x64
-	sha256sums_x86_64 = 39d3f7b67e45a964207a20cd62f59b9f842bbacc8a5da6605771b7814bad359f
-	source_aarch64 = unity-cli-bin-1.0.0beta.2-aarch64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.2/unity-linux-arm64
-	sha256sums_aarch64 = 27eaacecde2b3e6de08e40eddc9b4e9058d302b21e36ad1ed62d215071d93003
+	sha256sums = a1cd22f2ed49a674f6d2c324e1a3f1abbf9c0607b83939c56ceddf32bbe9bac1
+	source_x86_64 = unity-cli-bin-1.0.0beta.3-x86_64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.3/unity-linux-x64
+	sha256sums_x86_64 = 9b89aaa5a676e8e5bd6a3844a9398defb963bd3495186445a464a47057e54ea3
+	source_aarch64 = unity-cli-bin-1.0.0beta.3-aarch64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.3/unity-linux-arm64
+	sha256sums_aarch64 = 21da2bf98d16dbad55dd3bb187a01008acfe08396075e491880d97d818a9ef11
 
 pkgname = unity-cli-bin
