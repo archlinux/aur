@@ -1,6 +1,6 @@
 pkgbase = imagecompare-bin
 	pkgdesc = Image Compare lets you inspect two or more images side by side, in a stacked view, or with a heatmap of perceptual differences. With various other helpful features.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/gimletlove/imagecompare
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = imagecompare-bin
 	optdepends = libheif: HEIF and HEIC image support
 	provides = imagecompare
 	conflicts = imagecompare
-	noextract = imagecompare-bin-1.2.0-x86_64.zip
-	source = imagecompare-bin-1.2.0-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/v1.2.0/imagecompare-1.2.0-linux-x86_64.zip
-	sha256sums = 809cb53ba7b6c3042d0a34410de5073548521bb46e910ca47e70b660f20cf7fd
+	noextract = imagecompare-bin-1.2.1-x86_64.zip
+	source = imagecompare-bin-1.2.1-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/v1.2.1/imagecompare-1.2.1-linux-x86_64.zip
+	sha256sums = e4ba0932b93f02c881a3681094caea67bf169b6e1ef2e741bfc6194b6a2d2681
 
 pkgname = imagecompare-bin
