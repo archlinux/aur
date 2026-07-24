@@ -1,6 +1,6 @@
 pkgname=cly
 pkgver=7.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A semantic AUR helper wrapper for Arch Linux written in bash"
 arch=('any')
 url="https://github.com/xmlzitos154/cly"
