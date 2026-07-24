@@ -2,7 +2,7 @@
 # Automation: https://github.com/its-me/aur.appflowy
 
 pkgname=appflowy
-pkgver=0.12.5
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     "appflowy.desktop"
 )
 sha256sums=(
-    'c51e995d2c84ac71b5d6c1cb15583280567ffac9a52b2fc57823e766bbc71353'
+    'f0e84458b9d5fb9f478ada38c69c1d4da4c9e400a138dfb6c857a1036f7ef2b8'
     'SKIP'
     '55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821'
 )
