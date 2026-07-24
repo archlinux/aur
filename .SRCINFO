@@ -1,6 +1,6 @@
 pkgbase = vita3k-bin
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r4036.40ce476b2
+	pkgver = r4066.5ded8c78f
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = vita3k-bin
 	provides = vita3k
 	conflicts = vita3k
 	source = vita3k.zip::https://github.com/Vita3K/Vita3K/releases/download/continuous/ubuntu-latest.zip
-	source = vita3k.desktop
+	source = org.vita3k.vita3k.desktop
 	b2sums = SKIP
-	b2sums = 6331bd061fe93fea5fb9ae57667cdb7ff081efa27681e25b94c54da748809e52d933afa96465b7d14ca0d286b0c47e66328a5080acef6760a88a39c65bf2321c
+	b2sums = 466b1957f8eab6b2df51c6580fe3bbc7a9932b3f76b6948cfdacfe51e87caae4a45bf5b6635393350bd1cd4ef3b22e70897dffbe75f3d8a452bdf807f56a7230
 
 pkgname = vita3k-bin

@@ -5,6 +5,6 @@ Name=Vita3K
 GenericName=PlayStation Vita Emulator
 Comment=Experimental PlayStation Vita emulator
 Categories=Game;Emulator;
-Icon=vita3k
+Icon=org.vita3k.vita3k
 Exec=vita3k
 Terminal=false

@@ -2,7 +2,7 @@
 # Contributor: Pedro Montes Alcalde <pedro.montes.alcalde@gmail.com>
 _pkgname="vita3k"
 pkgname="${_pkgname}-bin"
-pkgver=r4036.40ce476b2
+pkgver=r4066.5ded8c78f
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -30,11 +30,11 @@ provides=('vita3k')
 conflicts=('vita3k')
 source=(
 	"${_pkgname}.zip::https://github.com/Vita3K/Vita3K/releases/download/continuous/ubuntu-latest.zip"
-	"vita3k.desktop"
+	"org.vita3k.vita3k.desktop"
 )
 b2sums=(
 	'SKIP'
-	'6331bd061fe93fea5fb9ae57667cdb7ff081efa27681e25b94c54da748809e52d933afa96465b7d14ca0d286b0c47e66328a5080acef6760a88a39c65bf2321c'
+	'466b1957f8eab6b2df51c6580fe3bbc7a9932b3f76b6948cfdacfe51e87caae4a45bf5b6635393350bd1cd4ef3b22e70897dffbe75f3d8a452bdf807f56a7230'
 )
 
 pkgver() {
@@ -51,19 +51,22 @@ pkgver() {
 package() {
 	unzip -o vita3k.zip -d bin
 
-    install -Dm644 "bin/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm644 "bin/COPYING.txt" "$pkgdir/usr/share/licenses/$_pkgname/COPYING.txt"
+    install -Dm644 "bin/org.vita3k.vita3k.metainfo.xml" "$pkgdir/usr/share/metadata/org.vita3k.vita3k.metainfo.xml"
+    install -Dm644 "bin/org.vita3k.vita3k.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vita3k.vita3k.svg"
+	install -Dm644 "bin/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm755 "bin/Vita3K" "$pkgdir/usr/bin/vita3k"
-    rm -f "bin/README.md"
     rm -f "bin/COPYING.txt"
+    rm -f "bin/org.vita3k.vita3k.metainfo.xml"
+    rm -f "bin/org.vita3k.vita3k.svg"
+    rm -f "bin/README.md"
     rm -f "bin/Vita3K"
 
     # Once everything is taken care of, we can copy everything to /usr/share/
     mkdir -p "$pkgdir/usr/share/$_pkgname/"
     cp -r "bin/"* "$pkgdir/usr/share/$_pkgname/"
 
-	install -Dm644 "${srcdir}/vita3k.desktop" "${pkgdir}/usr/share/applications/vita3k.desktop"
-	install -Dm644 "bin/data/image/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/org.vita3k.vita3k.desktop" "${pkgdir}/usr/share/applications/org.vita3k.vita3k.desktop"
 
 	rm vita3k.zip
 }
