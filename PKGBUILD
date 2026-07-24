@@ -8,7 +8,7 @@ pkgname=(
   webkit2gtk-docs
 )
 pkgver=2.50.6
-pkgrel=7
+pkgrel=8
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -112,11 +112,14 @@ makedepends=(
 )
 source=(
   $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
+  cmake4-linked-into-quoting.patch
 )
 sha256sums=('2b281abf8894ffc6172152e5660b75eeeedbe1cc43d6783d09dc79f7c865bb42'
-            'SKIP')
+            'SKIP'
+            '40345dfd2c5173ef19b01303e27602ccf499735101cbf204de3c9c882b9d6953')
 b2sums=('cebdf02e52e0a80ec9b48517e4856768ed530ed4d4d4f15145058e96dc42f990c8712897303ec176609f9a0af749ec49fc3785eecd829ce7d82a397bc822b89c'
-        'SKIP')
+        'SKIP'
+        '6c09ae8097b0bf517b851082d1fd3fcea43e0b830014851ec42a9b8196384b919662cfdcfa3bb7013e2c008772577e2d6af25b853ed7adc4995302b4eb3734ed')
 validpgpkeys=(
   # https://www.webkitgtk.org/verifying.html
   5AA3BC334FD7E3369E7C77B291C559DBE4C9123B # Adrián Pérez de Castro <aperez@igalia.com>
@@ -126,6 +129,8 @@ options=(!lto)
 
 prepare() {
   cd webkitgtk-$pkgver
+
+  # fix unqoted cmake variable _linked_into
 }
 
 build() {
