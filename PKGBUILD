@@ -21,10 +21,6 @@ sha256sums=(
   "SKIP"
 )
 
-prepare() {
-  cd "${srcdir}/readpe"
-}
-
 build() {
   cd "${srcdir}/readpe"
   make prefix="/usr"
