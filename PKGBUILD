@@ -4,7 +4,7 @@
 
 pkgname=amber-package-manager
 pkgver=1.3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64' 'aarch64')
 url="https://gitee.com/amber-ce/amber-pm/"
@@ -15,7 +15,7 @@ conflicts=('ace-host-integration')
 # provides=('amber-package-manager')
 
 # source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::https://cdn09022024.gitlink.org.cn/api/v1/repos/shenmo7192/amber-pm/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver-1.tar.gz::https://cdn09022024.gitlink.org.cn/api/v1/repos/shenmo7192/amber-pm/archive/${pkgver}.tar.gz")
 # https://www.gitlink.org.cn/shenmo7192/amber-pm/releases/download/1.3.4.0/apm_1.3.4.0_amd64.deb
 
 # source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
