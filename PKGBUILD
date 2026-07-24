@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=rmux
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64' 'aarch64')
@@ -14,14 +14,11 @@ conflicts=("$pkgname-bin")
 
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
-  libexec.patch
 )
-sha256sums=('4047be9f3dd53105ee91faaf066a58b423862d0ffd621047e76d7aa1cc793db5'
-            '3f44699f6d2e7d1c71b218615ba778a9957f6434e0933f3c9b3ec9a23afaf93a')
+sha256sums=('5ec94f174a9d6b129d6bf4c4dd1e5204f8b81cd2bae590761566f27fc6ce55ca')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -p1 < ../libexec.patch
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target $(rustc --print host-tuple)
 }
