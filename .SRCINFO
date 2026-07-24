@@ -1,6 +1,6 @@
 pkgbase = vectomancy
 	pkgdesc = Image-to-Equation Converter CLI
-	pkgver = 6.1.1
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/Xuepoo/vectomancy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vectomancy
 	makedepends = pkgconf
 	depends = gcc-libs
 	depends = vulkan-icd-loader
-	source = vectomancy-6.1.1.tar.gz::https://github.com/Xuepoo/vectomancy/archive/refs/tags/v6.1.1.tar.gz
-	sha256sums = eec4ca9801e45152c9c9a81f537aae881ef1f67d87d080092dc5f7825d66593c
+	source = vectomancy-6.3.0.tar.gz::https://github.com/Xuepoo/vectomancy/archive/refs/tags/v6.3.0.tar.gz
+	sha256sums = dfaf41d7ffcc821a1305aef8377b6bb94bcd6be7bdd19b40f5f2a2cd3b76c476
 
 pkgname = vectomancy
