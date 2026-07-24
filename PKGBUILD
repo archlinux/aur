@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=152.0.1
+pkgver=153.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -26,8 +26,8 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/152.0.1/linux-x86_64/en-US/thunderbird-152.0.1.tar.xz
-thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/152.0.1/linux-x86_64/en-US/thunderbird-152.0.1.tar.xz.asc
+thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/153.0/linux-x86_64/en-US/thunderbird-153.0.tar.xz
+thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/153.0/linux-x86_64/en-US/thunderbird-153.0.tar.xz.asc
 )
 
 
@@ -35,7 +35,7 @@ validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Relea
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('31f652c5fe6d4102a269e9c159f1a0269c928a071df4e88e15ad183d5205e98ed5e8182e42e7a522f223e0d5ebe9f985f421c6a006eec2f982e3f8bb23f7e15b'
+sha512sums_x86_64=('9326b7f06ebe294d4cac6191a0bd199b81f4861aed7692ef59bc260a60df816bf531c259f8ce0ffce34ca3538f111298356bebbb305f1d21af0732f4bee9376c'
                    'SKIP')
 
 
