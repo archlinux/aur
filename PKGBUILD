@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Eric S. Londres <ericlondres@protonmail.com>
 # Contributor: Mandeep Sangwan <mandeep@sangwan.me>
