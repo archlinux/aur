@@ -1,0 +1,23 @@
+pkgbase = fnqvisual
+	pkgdesc = FnQVisual Rust daemon and UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OmurEKiraz/FnQVisual-rs
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = libxkbcommon
+	depends = wayland
+	provides = fnqvisual
+	conflicts = fnqvisual
+	source = fnqvisual-0.1.0.tar.gz::https://github.com/OmurEKiraz/FnQVisual-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fnqvisual
