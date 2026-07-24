@@ -2,8 +2,9 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.93.1.194.r0.ffb5c5aae
+pkgver=1.93.1.r7961.93d62158
 pkgrel=1
+epoch=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -11,19 +12,23 @@ license=('GPL-2.0-or-later')
 groups=('game')
 depends=(bash libglvnd glibc zlib gnustep-base hicolor-icon-theme libstdc++ libobjc libgcc 
           espeak-ng glu nspr openal sdl3 libvorbis libpng)
-makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make procps-ng)
+makedepends=(gcc-objc git mozillajs-linux-bin meson ninja gnustep-make procps-ng gitversion)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         oolite-git.sh
 )
 provides=(oolite)
 conflicts=(oolite)
 sha512sums=('SKIP'
-            '350d9f4e95b1f74385bce62729a197d5ce2b565783cebf187e4b0cc75d8bf0f89996e824a85df15c1609983136919e21dca05bad05a809b5cfc95fee509fab08'
-)
+            '350d9f4e95b1f74385bce62729a197d5ce2b565783cebf187e4b0cc75d8bf0f89996e824a85df15c1609983136919e21dca05bad05a809b5cfc95fee509fab08')
 options=(!strip !debug)
 
 pkgver() {
-  git -C oolite-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  local _ver _count _hash
+  cd $pkgname
+  _ver=$(git describe --tags | cut -d'-' -f1)
+  _count=$(git rev-list --count HEAD)
+  _hash=$(git rev-parse --short=8 HEAD)
+  printf "%s.r%s.%s" $_ver $_count $_hash
 }
 
 build() {

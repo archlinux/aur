@@ -1,7 +1,8 @@
 pkgbase = oolite-git
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.93.1.194.r0.ffb5c5aae
+	pkgver = 1.93.1.r7961.93d62158
 	pkgrel = 1
+	epoch = 1
 	url = https://oolite.space/
 	arch = x86_64
 	groups = game
@@ -13,6 +14,7 @@ pkgbase = oolite-git
 	makedepends = ninja
 	makedepends = gnustep-make
 	makedepends = procps-ng
+	makedepends = gitversion
 	depends = bash
 	depends = libglvnd
 	depends = glibc
