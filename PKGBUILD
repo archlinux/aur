@@ -6,7 +6,7 @@ pkgname=(
   subtitles-contact-sheet-qt-gui
 )
 _pkgname=subtitles_contact_sheet_qt
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Create subtitles/video contact sheets, previews, small animations, screenshots and thumbnails"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('pandoc-cli')
 optdepends=('ttf-dejavu: default font for scs')
 conflicts=('subtitles-contact-sheet-qt-cli-git' 'subtitles-contact-sheet-qt-gui-git')
 source=("${_pkgname}-${pkgver}.tar.gz::https://gitlab.com/vongooB9/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('142968109b340478cadadb2b8ff14d8d0ccf867afa59ef2d7ed3335883bd8715fe1612ab4e5078ba753c6c216f50e2fc0964fbb971c7637d104687f1df9f0c65')
+b2sums=('00b342597937971703208713a33cc70c9873dc558869189887d76ec64201ec1ad47d5a08deb665ef986bf3baf2f51001d9e596b77ac95e812c5631785806292b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
