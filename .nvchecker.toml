@@ -1,0 +1,6 @@
+[autopkgtest]
+source = "gitlab"
+gitlab = "ci-team/autopkgtest"
+host = "salsa.debian.org"
+prefix = "debian/"
+use_max_tag = true
