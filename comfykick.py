@@ -86,9 +86,10 @@ def check_user_config(config_path):
         )
 
 
-# Path-style options: an explicit "" is a sentinel meaning
-# "use the built-in default" rather than "inherit from a lower-priority
-# layer". Other keys drop "" so that omitting them still inherits.
+# Path-style options: a falsy value (empty string, None, etc.) is
+# treated as "use the built-in default" rather than "inherit from a
+# lower-priority layer". Other keys drop falsy values so that
+# omitting them still inherits.
 _PATH_KEYS = (
     "base_dir",
     "output_dir",
@@ -114,10 +115,10 @@ def _read_toml(path):
     cleaned = {}
     for key, value in data.items():
         if key in _PATH_KEYS:
-            # Keep "" as a sentinel meaning "use the built-in default"
-            # instead of dropping it.
+            # Keep falsy values (empty string, None, etc.) as a sentinel
+            # meaning "use the built-in default" instead of dropping them.
             cleaned[key] = value
-        elif isinstance(value, str) and value.strip() == "":
+        elif isinstance(value, str) and not value.strip():
             continue
         else:
             cleaned[key] = value
@@ -130,16 +131,17 @@ def _load_config(config_files):
         if path.is_file():
             config = {**config, **_read_toml(path)}
 
-    # Path-style keys explicitly set to "" should fall back to the
-    # built-in default rather than inherit from a lower-priority file.
+    # Path-style keys that are falsy (empty string, None, etc.) should
+    # fall back to the built-in default rather than inherit from a
+    # lower-priority file.
     for key in _PATH_KEYS:
-        if config.get(key) == "":
+        if not config.get(key):
             config[key] = DEFAULTS[key]
 
     # `github_token` falls back to the GITHUB_TOKEN environment variable
     # only when it is not explicitly set in the config files.
     if not config.get("github_token"):
-        config["github_token"] = os.environ.get("GITHUB_TOKEN", "")
+        config["github_token"] = os.environ.get("GITHUB_TOKEN")
 
     return config
 
