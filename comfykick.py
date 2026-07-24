@@ -138,6 +138,10 @@ def _load_config(config_files):
         if not config.get(key):
             config[key] = DEFAULTS[key]
 
+    # Ensure all path keys are Path objects (TOML values may be strings).
+    for key in _PATH_KEYS:
+        config[key] = Path(config[key])
+
     # `github_token` falls back to the GITHUB_TOKEN environment variable
     # only when it is not explicitly set in the config files.
     if not config.get("github_token"):
