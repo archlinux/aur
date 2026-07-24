@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=drand
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="A Distributed Randomness Beacon Daemon"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(
     go
 )
 source=($pkgname::git+https://github.com/$pkgname/$pkgname.git#tag=v$pkgver)
-b2sums=('4ed9550e1dee9f084b8426f60bfadfbbe3df8b284e84ad7ce3ac2df4a84f1ce2a0707ff5818ce4238a253275634e65cd80045c83e563fa21b482b5f4546d86d2')
+b2sums=('0ec908ecfdd6947211d73cdb68dbfdd62f9f6bf4ae5133a963a6c197c45f7043c1c4838deb7bfcba1b068a675d83affbe00d8ee6f00deb296130275abf5ce94f')
 
 build() {
     cd $pkgname
