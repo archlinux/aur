@@ -3,7 +3,7 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
@@ -15,7 +15,7 @@ provides=("fresh-editor")
 conflicts=("fresh-editor-bin")
 options=('!debug')
 source=("fresh-editor-${pkgver}-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-${pkgver}-source.tar.gz")
-sha256sums=("7c0a9bc9630de7b11e79d00a69f10502e853290a133e0dc48d6e8fde14ff8e41")
+sha256sums=("496b739623992b638be994921beb9fe1a42eb4088c75b0839ee6e69e50935b54")
 
 prepare() {
     cd "fresh-$pkgver"
@@ -26,6 +26,8 @@ build() {
     cd "fresh-$pkgver"
     export CARGO_TARGET_DIR=target
     export CC=clang
+    # Bake the install channel into the binary (compile-time provenance).
+    export FRESH_BUILD_CHANNEL=aur
     cargo build --locked --release
 }
 
@@ -42,6 +44,19 @@ package() {
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Provenance receipt (belt-and-suspenders alongside the embedded channel).
+    cat > "$pkgdir/usr/share/$pkgname/install-receipt.toml" <<EOF
+schema = 1
+channel = "aur"
+version = "$pkgver"
+package_name = "fresh-editor"
+managed = true
+self_update = false
+
+[hints]
+aur_pkg = "fresh-editor"
+EOF
 
     # Plugins
     cp -r crates/fresh-editor/plugins "$pkgdir/usr/share/$pkgname/"
