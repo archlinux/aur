@@ -1,7 +1,7 @@
 # Maintainer: Bartek Laskowski <bartek at undg dot dev>
 
 pkgname=pulse-remote-git
-pkgver=0.11.0.r0.g5e18d5b
+pkgver=0.11.1.r0.gd361e33
 pkgrel=1
 pkgdesc="Audio mixer for PulseAudio and PipeWire — local desktop app and web UI accessible from any device on your network"
 arch=('x86_64')
