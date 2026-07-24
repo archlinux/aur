@@ -1,6 +1,6 @@
 pkgbase = uplink-irc-bin
 	pkgdesc = Fast, secure, IRCv3-featured IRC client (Qt6, prebuilt binary)
-	pkgver = 2026.7.8
+	pkgver = 2026.8.0
 	pkgrel = 1
 	url = https://uplinkirc.chat
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = uplink-irc-bin
 	depends = hicolor-icon-theme
 	provides = uplink-irc
 	conflicts = uplink-irc
-	source = https://github.com/noderelay/UplinkIRC/releases/download/v2026.7.8/Uplink-v2026.7.8-linux-x86_64.tar.gz
-	source = uplink-irc-bin-2026.7.8.desktop::https://github.com/noderelay/UplinkIRC/raw/v2026.7.8/packaging/io.github.noderelay.UplinkIRC.desktop
-	source = uplink-irc-bin-2026.7.8.metainfo.xml::https://github.com/noderelay/UplinkIRC/raw/v2026.7.8/packaging/io.github.noderelay.UplinkIRC.metainfo.xml
-	source = uplink-irc-bin-2026.7.8.png::https://github.com/noderelay/UplinkIRC/raw/v2026.7.8/packaging/io.github.noderelay.UplinkIRC.png
-	sha256sums = 4bb45c0129e20cc77900848321687e2320f4d42a988bb31372961963baf39733
+	source = https://github.com/noderelay/UplinkIRC/releases/download/v2026.8.0/Uplink-v2026.8.0-linux-x86_64.tar.gz
+	source = uplink-irc-bin-2026.8.0.desktop::https://github.com/noderelay/UplinkIRC/raw/v2026.8.0/packaging/io.github.noderelay.UplinkIRC.desktop
+	source = uplink-irc-bin-2026.8.0.metainfo.xml::https://github.com/noderelay/UplinkIRC/raw/v2026.8.0/packaging/io.github.noderelay.UplinkIRC.metainfo.xml
+	source = uplink-irc-bin-2026.8.0.png::https://github.com/noderelay/UplinkIRC/raw/v2026.8.0/packaging/io.github.noderelay.UplinkIRC.png
+	sha256sums = b21e32ac4e6434aa629c206d71e013b86a2743c589d0d3768ccaf4d282739aad
 	sha256sums = e23d7bc0e13cc05703e84f0cd1acfb84cef3717e601f56ac6a141757dc73b620
-	sha256sums = 479b0237c2911318648aa3d63cc47fb7dff867b99d6b58a48c7b03c0512d4315
+	sha256sums = fd60d9d560c8c2991532eafa85bc044e6bf7ae19e4fca45d4ba44c2b97bd2599
 	sha256sums = 6513f9608ef456d246791cff08116e84c2c1f591fc6c8de7ea0d43e53a6a8d12
 
 pkgname = uplink-irc-bin
