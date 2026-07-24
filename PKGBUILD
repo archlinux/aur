@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}-bin
 pkgdesc="Git Worktree Manager"
 
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('333135b3cd8c2ef6a5307fe4cacd909f251335bbeff6216af97cab596f4a8cf3')
-sha256sums_aarch64=('929686accc25471ac20334b123b4617272f6a44442953ebb01504855104aba24')
+sha256sums_x86_64=('3c036be07d5cb80af298a57c95c253d0593bf9dacfbbff6887b68a5636f62e82')
+sha256sums_aarch64=('279248fc79264137545f7ffe4f79fb85ac2c1413870efb1eedaad7877c3471c4')
 
 
 case ${CARCH} in
