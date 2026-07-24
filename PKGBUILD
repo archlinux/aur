@@ -1,7 +1,7 @@
 # Maintainer: Tom Davenport <tom at tomdavenport dot co dot uk>
 
 pkgname=create-egregore
-pkgver=0.19.8
+pkgver=0.19.11
 pkgrel=1
 pkgdesc='Set up Egregore shared cognition workspaces for Claude Code or Codex'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  'df77c89f400d8e010b6406bd926275255502da9d0f96ca50c118829e92a8cf1c'
+  'd19bf97426f876011234728df17be3e91789ae0552510579a4984c26545682b9'
   '209c1cd2733a2bc403232f439e185db49ff94b516190cd7b17c5a3d2c256dd80'
 )
 
