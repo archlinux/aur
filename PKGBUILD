@@ -13,7 +13,7 @@ depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'python' 'python-gobjec
          'python-requests' 'python-pyotp' 'glib2' 'hicolor-icon-theme')
 provides=('untis' 'timetable')
 conflicts=('untis' 'timetable')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('c68179716fdb5eb6268203168207a1ea7d03a75456c00de38d152dc6098bd0dc')
 
 package() {

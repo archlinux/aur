@@ -19,7 +19,7 @@ pkgbase = timetable-bin
 	provides = timetable
 	conflicts = untis
 	conflicts = timetable
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/timetable-bin-4.2.1/timetable-bin-4.2.1.tar.zst
+	source = timetable-bin-4.2.1-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/timetable-bin-4.2.1/timetable-bin-4.2.1.tar.zst
 	sha256sums = c68179716fdb5eb6268203168207a1ea7d03a75456c00de38d152dc6098bd0dc
 
 pkgname = timetable-bin
