@@ -6,7 +6,7 @@ pkgver=6.1
 pkgrel=1
 pkgdesc="Pacote de instalacao do Complemento Banrisul Internet Banking destinado ao sistema operacional Linux."
 arch=('x86_64')
-url="https://www.banrisul.com.br/bob/link/bobw00hn_conteudo_detalhe2.aspx?secao_id=3002"
+url="https://www.banrisul.com.br/bob/site/link/complemento-internet-banking.html"
 license=('custom')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
