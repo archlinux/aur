@@ -1,0 +1,18 @@
+pkgbase = snapx-bin
+	pkgdesc = Screenshot tool that handles images, text, and video - ShareX fork, Avalonia UI (upstream binary)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SnapXL/SnapX
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = snapx-ui
+	conflicts = snapx-ui
+	options = !strip
+	options = !debug
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/snapx-bin-0.4.0/snapx-bin-0.4.0.tar.zst
+	sha256sums = d2098cac542bca82e68be0a4fa98db22f2d84d35c683d18582382dc9206eb5ee
+
+pkgname = snapx-bin
