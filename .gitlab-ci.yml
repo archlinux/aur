@@ -15,14 +15,13 @@ update_aur:
     git config --global user.email "bot@gitlab.com"
     git config --global --add safe.directory '*'
     
-    git clone ssh://aur@aur.archlinux.org/google-chrome-beta-bin.git aur_repo_temp
+    git clone ssh://aur@aur.archlinux.org/$(basename $(pwd)).git aur_repo_temp
     cp PKGBUILD aur_repo_temp/
     cd aur_repo_temp
     useradd -m builduser
     echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
     chown -R builduser:builduser .
     
-    # Ejecutar la funcion pkgver() del PKGBUILD para obtener la version nueva
     NEW_VER=$(sudo -u builduser bash -c 'source ./PKGBUILD; pkgver')
     
     echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
@@ -31,7 +30,14 @@ update_aur:
     sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
     sudo -u builduser makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
-    git commit -m "Update to ${NEW_VER}" || true
+    
+    # Intentar hacer commit, si no hay cambios, salir exitosamente
+    git commit -m "Update to ${NEW_VER}" || exit 0
+    
+    # Si el push falla porque alguien más subió cambios, descargarlos, fusionarlos y reintentar
+    git pull --rebase origin master || git pull origin master --no-edit -X ours
+    
+    # Empujar al AUR
     git push origin master
   only:
     - schedules
