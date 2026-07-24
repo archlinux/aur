@@ -1,7 +1,7 @@
 pkgbase = zalo-for-linux-bin
 	pkgdesc = Zalo for Linux
 	pkgver = 26.7.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doandat943/zalo-for-linux
 	arch = x86_64
 	license = MIT
@@ -21,10 +21,10 @@ pkgbase = zalo-for-linux-bin
 	conflicts = zalo
 	options = !strip
 	options = !debug
-	source = zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/26.7.10/Zalo-26.7.10+ZaDark-26.2.1-769e907.AppImage
+	source = zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/26.7.10/Zalo-26.7.10+ZaDark-26.2.1-dc79392.AppImage
 	source = zalo.desktop
 	source = Zalo.png
-	sha256sums = 1f7b3ce007c783b71259e8e79b766733658fffb52e970f9a2b17f43fbcd07371
+	sha256sums = 548cde2d3cdbbc40b48eee533a69729b31d3817ccd7c0b8f4b169ae334fa84a1
 	sha256sums = b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9
 	sha256sums = 54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445
 
