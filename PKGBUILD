@@ -3,7 +3,7 @@
 
 _name=mistralai
 pkgname=python-$_name
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Python Client SDK for the Mistral AI API."
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('python-google-auth: gcp' 'python-requests: gcp'
             'python-cryptography: workflow_payload_encryption'
             'python-msgpack: workflow_payload_compression' 'python-zstandard: workflow_payload_compression')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bb73968b3b68f8e4f9aab82bbc96de9e33d085e030c8451962d91bd887f37dbf')
+sha256sums=('3f2aa1bb0ad97e610f56bf57874a52cec4d63cafd86d1c553fe8b83a71f4ad50')
 
 build() {
   cd "$srcdir"/client-python-$pkgver
