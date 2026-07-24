@@ -1,7 +1,7 @@
 # Maintainer: theesfeld
 # f00tils — pure assembly coreutils replacement (binary package)
 pkgname=f00
-pkgver=0.15.10
+pkgver=0.15.11
 pkgrel=1
 pkgdesc="f00tils — pure assembly coreutils replacement (multicall, freestanding)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=()
 provides=('f00')
 conflicts=('f00')
 options=('!strip')
-source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.10-linux-x86_64.tar.gz")
-sha256sums=('3f2e1803fa27a6bba9a0580d5aad532ade5f4479953c78cae572e477c247699a')
+source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.11-linux-x86_64.tar.gz")
+sha256sums=('480725aea231c03e366b09c87200e0bfb051c6d5d556eacb1a9bf87542e8fa99')
 
 package() {
   local root
@@ -25,6 +25,34 @@ package() {
     root="$(dirname "$(find "${srcdir}" -type f -name f00 | head -n1)")"
   fi
   install -Dm755 "${root}/f00" "${pkgdir}/usr/bin/f00"
+  # shell integration: bare names in /usr/lib/f00/bin, PATH via profile.d (default ON)
+  mkdir -p "${pkgdir}/usr/lib/f00/bin"
+  # profile snippets ship from release packaging tree when present; embed fallbacks
+  if [[ -f "${root}/share/f00/f00.sh" ]]; then
+    install -Dm644 "${root}/share/f00/f00.sh" "${pkgdir}/etc/profile.d/f00.sh"
+  else
+    install -Dm644 /dev/stdin "${pkgdir}/etc/profile.d/f00.sh" <<'EOS'
+# f00tils — default coreutils replacement via PATH (see f00-config replace)
+_f00_libbin="/usr/lib/f00/bin"
+_f00_replace_enabled() {
+  local cfg="${XDG_CONFIG_HOME:-${HOME}/.config}/f00/config"
+  [ -n "${HOME:-}" ] || return 0
+  [ -f "$cfg" ] || return 0
+  if grep -Eiq '^[[:space:]]*replace[[:space:]]*=[[:space:]]*(false|no|0|none)([[:space:]]|#|$)' "$cfg" 2>/dev/null; then
+    return 1
+  fi
+  return 0
+}
+if [ -d "$_f00_libbin" ] && _f00_replace_enabled; then
+  case ":${PATH:-}:" in
+    *":${_f00_libbin}:"*) ;;
+    *) PATH="${_f00_libbin}${PATH:+:}${PATH:-}"; export PATH ;;
+  esac
+fi
+unset _f00_libbin
+unset -f _f00_replace_enabled 2>/dev/null || true
+EOS
+  fi
   local u
   for u in ls cat true false yes nproc tty whoami basename dirname \
            head tail wc tee seq echo pwd sleep \
@@ -38,7 +66,9 @@ package() {
            md5sum sha1sum sha256sum sha224sum sha384sum sha512sum b2sum cksum sum \
            base64 basenc base32 dircolors chroot stty stdbuf runcon chcon; do
     ln -s f00 "${pkgdir}/usr/bin/f00-${u}"
+    ln -s ../../../bin/f00 "${pkgdir}/usr/lib/f00/bin/${u}"
   done
+  ln -s ../../../bin/f00 "${pkgdir}/usr/lib/f00/bin/["
   if [[ -f "${root}/LICENSE" ]]; then
     install -Dm644 "${root}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
