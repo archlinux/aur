@@ -8,8 +8,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'git')
 
-source=("rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v${pkgver}")
-sha256sums=('4b1bde4c7550e04376dac8b38f378f01806b4324adcac55ecc20e82a02f8d18a')
+source=("rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v${pkgver}-fix")
+sha256sums=('6ba1e816ae7191668df8086b3ad4e518366aa15ef424255763eb0c3df938bb58')
 
 prepare() {
   cd "$(dirname "$(find "$srcdir" -name Cargo.toml -print -quit)")"
