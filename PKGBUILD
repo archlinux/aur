@@ -23,7 +23,7 @@ backup=('etc/helium/native-messaging-hosts/org.chromium.widevine.json'
         'etc/opera/native-messaging-hosts/org.chromium.widevine.json'
         'etc/thorium/native-messaging-hosts/org.chromium.widevine.json'
         'etc/iridium/native-messaging-hosts/org.chromium.widevine.json')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('efb70f082652176710b403a2629333220c1b8b96e3f27f398ba7efb496982829')
 
 package() {

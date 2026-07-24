@@ -21,7 +21,7 @@ pkgbase = chromium-widevine-helper-bin
 	backup = etc/opera/native-messaging-hosts/org.chromium.widevine.json
 	backup = etc/thorium/native-messaging-hosts/org.chromium.widevine.json
 	backup = etc/iridium/native-messaging-hosts/org.chromium.widevine.json
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/chromium-widevine-helper-bin-1.0.8/chromium-widevine-helper-bin-1.0.8.tar.zst
+	source = chromium-widevine-helper-bin-1.0.8-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/chromium-widevine-helper-bin-1.0.8/chromium-widevine-helper-bin-1.0.8.tar.zst
 	sha256sums = efb70f082652176710b403a2629333220c1b8b96e3f27f398ba7efb496982829
 
 pkgname = chromium-widevine-helper-bin
