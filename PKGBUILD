@@ -26,8 +26,6 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
 options=('!emptydirs' '!strip' '!zipman')
-# URL is dynamic and depends on the version returned by pkgver(), 
-# so it must be downloaded in prepare().
 source=()
 sha256sums=()
 
@@ -45,7 +43,7 @@ pkgver() {
         _ver="$pkgver"
     fi
     
-    echo "${_ver:-$pkgver}"
+    echo "$_ver"
 }
 
 prepare() {
