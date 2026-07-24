@@ -304,10 +304,13 @@ def _resolve_version(config, version_cache_dir):
     return version, None
 
 
-def _ensure_tarball(version_head, version_cache_dir, tarball_url=None, is_latest=False, refresh=False):
+def _ensure_tarball(config, version_head, version_cache_dir, tarball_url=None, refresh=False):
     # Make sure the tarball for ``version_head`` is present in the cache directory.
+
     tarball_name = f"{version_head}.tar.gz"
     tarball_path = version_cache_dir / tarball_name
+    github_token = config["github_token"]
+    is_latest = (config["version"] == "latest")
 
     if refresh:
         log("INFO", "Refreshing cached tarball for %s ...", version_head)
@@ -324,16 +327,20 @@ def _ensure_tarball(version_head, version_cache_dir, tarball_url=None, is_latest
                 version_head,
             )
         log("INFO", "Downloading ComfyUI %s ...", version_head)
-        tmp_fd, tmp_name = tempfile.mkstemp(
-            prefix=f"comfykick_{version_head}.tar.gz_",
-            dir="/tmp",
-        )
-        os.close(tmp_fd)
-        tmp_path = Path(tmp_name)
         try:
-            urllib.request.urlretrieve(tarball_url, tmp_path)
+            with tempfile.NamedTemporaryFile(
+                prefix=f"comfykick_{version_head}.tar.gz_",
+                dir="/tmp",
+                delete=False,
+            ) as tmp:
+                tmp_path = Path(tmp.name)
+                req = urllib.request.Request(tarball_url)
+                if github_token:
+                    req.add_header("Authorization", f"Bearer {github_token}")
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    shutil.copyfileobj(resp, tmp, length=1024 * 64)
             shutil.move(tmp_path, tarball_path)
-        except Exception:
+        except (urllib.error.URLError, OSError):
             tmp_path.unlink(missing_ok=True)
             raise
 
@@ -493,10 +500,10 @@ def main():
     version_cache_dir = Path(config["version_cache_dir"])
     version_head, tarball_url = _resolve_version(config, version_cache_dir)
     tarball_path = _ensure_tarball(
+        config,
         version_head,
         version_cache_dir,
         tarball_url=tarball_url,
-        is_latest=(config["version"] == "latest"),
     )
 
     log("INFO", "Extracting ComfyUI %s ...", version_head)
@@ -511,10 +518,10 @@ def main():
     if extracted_dir is None:
         log("INFO", "Re-preparing tarball for %s ...", version_head)
         tarball_path = _ensure_tarball(
+            config,
             version_head,
             version_cache_dir,
             tarball_url=tarball_url,
-            is_latest=(config["version"] == "latest"),
             refresh=True,
         )
         extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
