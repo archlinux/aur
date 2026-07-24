@@ -1,7 +1,7 @@
 pkgbase = voicefox-git
 	pkgdesc = A TUI music player that supports both streaming and local tracks
 	pkgver = 0.8.r0.g28e82c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
 	license = MIT
@@ -12,11 +12,11 @@ pkgbase = voicefox-git
 	depends = openssl
 	depends = mpv
 	depends = nodejs
-	provides = voicefox
+	provides = voicefox=0.8.r0.g28e82c1
 	conflicts = voicefox
 	conflicts = voicefox-bin
 	options = !lto
-	source = git+https://github.com/emoeem/voicefox.git
+	source = voicefox::git+https://github.com/emoeem/voicefox.git
 	sha512sums = SKIP
 
 pkgname = voicefox-git

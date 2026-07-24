@@ -3,12 +3,12 @@
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
 pkgver=0.8.r0.g28e82c1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player that supports both streaming and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
-options=(!lto)
+options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
 	"libgcc"
@@ -20,29 +20,37 @@ makedepends=(
 	"git"
 	"rust"
 )
-provides=("voicefox")
+provides=("voicefox=${pkgver}")
 conflicts=("voicefox" "voicefox-bin")
 source=(
-	"git+${url}.git"
+	"${_pkgname}::git+${url}.git"
 )
 sha512sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+	local _describe
+	if _describe=$(git describe --long --tags 2>/dev/null); then
+		printf "%s" "${_describe}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	else
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	fi
 }
 
 prepare() {
 	cd "${_pkgname}"
 
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
 	cd "${_pkgname}"
 
-	cargo build --release --frozen
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --package voicefox-app
 }
 
 package() {
