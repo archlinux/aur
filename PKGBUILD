@@ -1,15 +1,15 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=3.20.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks"
 url="https://github.com/Antiz96/arch-update"
-arch=('any')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 depends=('bash' 'systemd' 'pacman' 'pacman-contrib' 'archlinux-contrib' 'curl' 'fakeroot' 'util-linux'
-         'htmlq' 'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2' 'xdg-utils')
-makedepends=('scdoc')
+         'htmlq' 'diffutils' 'hicolor-icon-theme' 'glibc' 'libgcc' 'glib2' 'xdg-utils')
+makedepends=('cargo' 'scdoc')
 checkdepends=('bats')
 optdepends=('paru: AUR Packages support'
             'yay: AUR Packages support'
@@ -23,7 +23,7 @@ optdepends=('paru: AUR Packages support'
             'sudo-rs: Privilege elevation'
             'opendoas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e46b33a8adca1f4fe7d944c0238653f091cf2f456274a54dcb38032d49359c8d')
+sha256sums=('5419ef4e07bd14ca34b68ff26c9dba758e3b21e110e5a51acd3bc706dfd5a1d1')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
