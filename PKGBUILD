@@ -1,8 +1,8 @@
 # Maintainer: Michael Rydén
 
 pkgname=libvips-notiff
-pkgver=8.17.1
-pkgrel=2
+pkgver=8.18.4
+pkgrel=1
 pkgdesc="A fast image processing library with low memory needs"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -22,7 +22,7 @@ provides=("libvips=$pkgver")
 options=('!debug')
 
 source=("https://github.com/libvips/libvips/releases/download/v$pkgver/vips-$pkgver.tar.xz")
-sha512sums=('04962e7d3fb8956c986f3aed7a10c4927195bc555a22c805a5b190c257e9e8b0fe97eddd0eb44e0e7d9047ba5671e96ac88f50a2597caa4f78c84ce1091541ff')
+sha512sums=('19eeafcb8bef187b056242c0852038a432672481476d16aabab97f2fd44e97852c96d28c730e32e60cf89d0afa3f4698a14c66f0bac5c04eceef082af6a69be8')
 
 build() {
   meson setup build vips-$pkgver \
