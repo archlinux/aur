@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=microsoft-edge-canary
-pkgver=152.0.4173.0
+pkgver=152.0.4175.0
 pkgrel=1
 pkgdesc="The web browser from Microsoft (Canary channel)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ pkgver() {
     _url="https://packages.microsoft.com/repos/edge-canary/pool/main/m/microsoft-edge-canary/"
     _deb=$(curl -fsSL -A "Mozilla/5.0" "$_url" | grep -oP 'href="microsoft-edge-canary_[0-9][^"]*_amd64.deb"' | sed 's/href="//;s/"$//' | sort -V | tail -1)
     _ver=$(echo "$_deb" | grep -oP '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-    echo "${_ver:-$pkgver}"
+    echo "$_ver"
 }
 
 prepare() {

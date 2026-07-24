@@ -1,6 +1,6 @@
 pkgbase = microsoft-edge-canary
 	pkgdesc = The web browser from Microsoft (Canary channel)
-	pkgver = 152.0.4173.0
+	pkgver = 152.0.4175.0
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/edge
 	arch = x86_64
