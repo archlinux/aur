@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 at gmail dot com> 
 
 pkgname=deemix-remastered
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Deemix Remastered is exactly what it sounds like: the classic downloader, remastered. Download music from deezer.'
 url=https://github.com/DRAZY/deemix-remastered
@@ -12,7 +12,7 @@ depends=('electron' 'hicolor-icon-theme')
 makedepends=('git' 'npm' 'nodejs' 'libxcrypt-compat')
 source=("git+$url#tag=v${pkgver}"
 		"deemix-app.desktop")
-b2sums=('df82af8e228200eac5bfe8359fafdaa4157e07b627521ea075dcfaf08cf5d6f7c39b34d0382ae27cdd26f3d7b4f0f346150b7144cedcce0a8509d1ba326297ca'
+b2sums=('2bafde54059d745275e26c0f38a276fc77998ca9b3680c8b7797eec99348f7dd1e13e89b72c0c0d45cfd260f998d12e5a749509bfee290e0c0421b4d495797e2'
         '8d1feabd59cb960c6cea4cd4f88010ba8eed7f452a8c7900d14c45039e70b28fa04808d053eb7e941d7529194815bdaca5509ba7cc92ed1cad32b9341ff0358a')
 options=(!debug)
 build() {
