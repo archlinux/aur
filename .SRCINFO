@@ -1,9 +1,9 @@
 pkgbase = pipewire-bluez5-lhdc-git
-	pkgdesc = Out-of-tree PipeWire bluez5 SPA plugin build with LHDC v5 codec support using liblhdcv5
-	pkgver = 1.7.0.r15616.g4ced2a0ea46e
+	pkgdesc = PipeWire bluez5 SPA plugin overlay with upstream LHDC v5 codec support
+	pkgver = 1.7.0.r15692.g6972f21d6a96
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/DBeidachazi/pipewire
+	url = https://gitlab.freedesktop.org/pipewire/pipewire
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -19,7 +19,7 @@ pkgbase = pipewire-bluez5-lhdc-git
 	depends = glib2
 	depends = libusb
 	provides = pipewire-bluez5-lhdc
-	source = git+https://github.com/DBeidachazi/pipewire.git
+	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
 pkgname = pipewire-bluez5-lhdc-git
