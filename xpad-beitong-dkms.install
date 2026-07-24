@@ -6,8 +6,9 @@ post_install() {
   dkms add "xpad-beitong/${ver}" 2>/dev/null || true
   dkms build "xpad-beitong/${ver}" 2>/dev/null || true
   dkms install "xpad-beitong/${ver}" 2>/dev/null || true
-  echo ":: Done. The patched xpad module replaces the stock one."
-  echo "   Reboot or run: sudo modprobe xpad"
+  echo ":: Loading patched xpad module..."
+  modprobe xpad 2>/dev/null || true
+  echo ":: Done. Patched xpad module loaded."
 }
 
 ## arg 1: new package version
@@ -22,6 +23,9 @@ post_upgrade() {
   dkms add "xpad-beitong/${new_ver}" 2>/dev/null || true
   dkms build "xpad-beitong/${new_ver}" 2>/dev/null || true
   dkms install "xpad-beitong/${new_ver}" 2>/dev/null || true
+  echo ":: Reloading patched xpad module..."
+  rmmod xpad 2>/dev/null || true
+  modprobe xpad 2>/dev/null || true
 }
 
 ## arg 1: old package version
@@ -29,7 +33,7 @@ post_upgrade() {
 pre_remove() {
   local ver="${1%%-*}"
   dkms remove "xpad-beitong/${ver}" --all 2>/dev/null || true
+  rmmod xpad 2>/dev/null || true
   echo ":: xpad-beitong DKMS module removed."
-  echo "   The stock xpad blacklist (/etc/modprobe.d/xpad-beitong.conf) remains."
-  echo "   Remove it manually: sudo rm /etc/modprobe.d/xpad-beitong.conf"
+  echo "   The stock xpad module can now be loaded via hotplug."
 }

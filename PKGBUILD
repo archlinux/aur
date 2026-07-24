@@ -83,8 +83,4 @@ package() {
   if [[ -f xpad.ko ]]; then
     install -Dm644 xpad.ko "${pkgdir}/usr/lib/modules/${running_kernel}/updates/dkms/xpad.ko"
   fi
-
-  install -Dm644 /dev/stdin "${pkgdir}/etc/modprobe.d/xpad-beitong.conf" <<< 'blacklist xpad'
-
-  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/xpad-beitong.conf" <<< 'xpad'
 }
