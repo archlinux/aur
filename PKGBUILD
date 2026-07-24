@@ -12,6 +12,8 @@ depends=(
   'gcc-libs'
   'glibc'
   'fontconfig'
+  'gtk4'                  
+  'gtk4-layer-shell'      
   'libx11'
   'libxcursor'
   'libxi'
