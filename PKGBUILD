@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
 
 pkgname=cherryctl-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Cherry Servers CLI for managing cloud infrastructure (binary release)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('cherryctl')
 provides=('cherryctl')
 source_x86_64=("cherryctl-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/cherryctl-linux-amd64")
 source_aarch64=("cherryctl-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/cherryctl-linux-arm64")
-sha256sums_x86_64=('aef25fb2d3a7825521292d7e664a753e8ce617ebbf19d2aee5cd82f0321ce0fd')
-sha256sums_aarch64=('155cdff6330be2d55d2035ccb27f75ec0aec7e2b3fda2e7fc6a6265a10abe06f')
+sha256sums_x86_64=('f19f5e63594757f8be159dcb7992622c8363d5727888a1aafa939fed223f913a')
+sha256sums_aarch64=('fde7c9d63b51bdd3dd2fad1bee436659e068565ac05c776d84432008191e25b7')
 
 package() {
   # Install binary
