@@ -1,6 +1,6 @@
 pkgbase = telegram-tdlib
 	pkgdesc = Cross-platform library for building Telegram clients
-	pkgver = 1.8.65
+	pkgver = 1.8.66
 	pkgrel = 1
 	url = https://core.telegram.org/tdlib
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = telegram-tdlib
 	conflicts = telegram-tdlib
 	options = !lto
 	options = !debug
-	source = telegram-tdlib-1.8.65::git+https://github.com/tdlib/td.git#commit=a8f21f5230172634becc1739050ef23ecd6ea291
-	sha256sums = a17dd21ccfe36bbf9c6145320dc0ffce97388737d018762fcb57e03298cdd0ac
+	source = telegram-tdlib-1.8.66::git+https://github.com/tdlib/td.git#commit=a9966eb3704a3351568c28013fed67d797c17828
+	sha256sums = ac46157be12fb3d4f233c452660e92503951ad4b1b546b732ab0326da8b45cb2
 
 pkgname = telegram-tdlib
