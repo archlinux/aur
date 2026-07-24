@@ -1,6 +1,6 @@
 pkgbase = yroz-bin
 	pkgdesc = Universal software manager for Linux (precompiled binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Yrozxm/Yroz-cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = yroz-bin
 	depends = curl
 	provides = yroz
 	conflicts = yroz
-	source_x86_64 = https://github.com/Yrozxm/Yroz-cli/releases/download/v0.1.0/yroz-x86_64
+	source_x86_64 = https://github.com/Yrozxm/Yroz-cli/releases/download/v0.1.1/yroz-x86_64
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Yrozxm/Yroz-cli/releases/download/v0.1.0/yroz-aarch64
+	source_aarch64 = https://github.com/Yrozxm/Yroz-cli/releases/download/v0.1.1/yroz-aarch64
 	sha256sums_aarch64 = SKIP
 
 pkgname = yroz-bin
