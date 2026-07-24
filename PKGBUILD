@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r4042.94d2a330e
+pkgver=r4066.5ded8c78f
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -35,7 +35,7 @@ provides=('vita3k')
 conflicts=('vita3k')
 source=(
 	"$_pkgname"::"git+$url.git"
-	"vita3k.desktop"
+	"org.vita3k.vita3k.desktop"
 
 	# submodules for vita3k
 	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
@@ -89,7 +89,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'18009fe1d5e6b44854ab360d0ec01955858d5ddf03f0a807a97cf1c3491d77f7'
+	'889982c3350282912181d0408a5dc60b045d6bd677f275f7c5e9fe7ea84c9acb'
 
 	'SKIP' # SPIRV-Cross
 	'SKIP' # VulkabnMemoryAllocator-Hpp
@@ -240,10 +240,19 @@ build() {
 	# Needed to have correct title version
 	git remote set-url origin ${url}
 
+    local cmake_options=(
+        --preset ${BUILDPRESET}
+        -B build
+        # -S $pkgname-$pkgver
+        -W no-author
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D XXH_X86DISPATCH_ALLOW_AVX=ON
+    )
+
 	# Configure
-	cmake --preset ${BUILDPRESET} -DUSE_VITA3K_UPDATE=OFF -DXXH_X86DISPATCH_ALLOW_AVX=ON
+	cmake "${cmake_options[@]}"
 	# Build
-	cmake --build build/${BUILDPRESET} --config Release
+	cmake --build build --config Release
 }
 
 package() {
@@ -254,17 +263,20 @@ package() {
 
 	cd "$srcdir/$_pkgname"
 
-	install -Dm644 "build/${BUILDPRESET}/bin/Release/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	install -Dm644 "build/${BUILDPRESET}/bin/Release/COPYING.txt" "$pkgdir/usr/share/licenses/$_pkgname/COPYING.txt"
-    install -Dm755 "build/${BUILDPRESET}/bin/Release/Vita3K" "$pkgdir/usr/bin/vita3k"
-    rm -f "build/${BUILDPRESET}/bin/Release/README.md"
-    rm -f "build/${BUILDPRESET}/bin/Release/COPYING.txt"
-    rm -f "build/${BUILDPRESET}/bin/Release/Vita3K"
+	install -Dm644 "build/bin/Release/COPYING.txt" "$pkgdir/usr/share/licenses/$_pkgname/COPYING.txt"
+    install -Dm644 "build/bin/Release/org.vita3k.vita3k.metainfo.xml" "$pkgdir/usr/share/metadata/org.vita3k.vita3k.metainfo.xml"
+    install -Dm644 "build/bin/Release/org.vita3k.vita3k.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vita3k.vita3k.svg"
+	install -Dm644 "build/bin/Release/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm755 "build/bin/Release/Vita3K" "$pkgdir/usr/bin/vita3k"
+    rm -f "build/bin/Release/COPYING.txt"
+    rm -f "build/bin/Release/org.vita3k.vita3k.metainfo.xml"
+    rm -f "build/bin/Release/org.vita3k.vita3k.svg"
+    rm -f "build/bin/Release/README.md"
+    rm -f "build/bin/Release/Vita3K"
 
     # Once everything is taken care of, we can copy everything to /usr/share/
     mkdir -p "$pkgdir/usr/share/$_pkgname/"
-    cp -r "build/${BUILDPRESET}/bin/Release/"* "$pkgdir/usr/share/$_pkgname/"
+    cp -r "build/bin/Release/"* "$pkgdir/usr/share/$_pkgname/"
 
-	install -Dm644 "$srcdir/vita3k.desktop" "$pkgdir/usr/share/applications/vita3k.desktop"
-	install -Dm644 "data/image/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
+	install -Dm644 "$srcdir/org.vita3k.vita3k.desktop" "$pkgdir/usr/share/applications/org.vita3k.vita3k.desktop"
 }
