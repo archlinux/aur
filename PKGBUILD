@@ -23,6 +23,5 @@ build() {
 }
 
 package() {
-  install -Dm755 build/miru-daemon "${pkgdir}/usr/bin/miru-daemon"
-  install -Dm755 build/miructl "${pkgdir}/usr/bin/miructl"
+  DESTDIR="${pkgdir}" cmake --install build
 }
