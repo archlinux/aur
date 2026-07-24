@@ -2,7 +2,7 @@
 pkgname=qp-ng-git
 _pkgname=qp-ng
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc='LFS package manager - fork of paru'
 url='https://github.com/Qaaxaap/qp-ng'
 source=("git+https://github.com/Qaaxaap/qp-ng.git")
