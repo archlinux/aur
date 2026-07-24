@@ -2,8 +2,8 @@
 
 pkgname=wshowkeys-mao-git
 _pkgname=wshowkeys
-pkgver=131c3db0
-pkgrel=1.3
+pkgver=6d28cbe4
+pkgrel=1.4
 pkgdesc='Displays keys being pressed on a Wayland session for DreamMaoMao fork'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/DreamMaoMao/wshowkeys'
