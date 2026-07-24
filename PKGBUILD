@@ -1,13 +1,13 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r1041.e4db39d
+pkgver=r1131.7f32724
 pkgrel=1
 pkgdesc='Your anime games, one launcher'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
 url=https://github.com/TwintailTeam/TwintailLauncher
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator' 'mangohud')
-optdepends=('gamemode: Feral Interactive gamemode utility')
+optdepends=('gamemode: Feral Interactive gamemode utility' 'gamescope: ValveSoftware gamescope session utility')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "twintaillauncher-bin")

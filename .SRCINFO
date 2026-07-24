@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-git
 	pkgdesc = Your anime games, one launcher
-	pkgver = r1041.e4db39d
+	pkgver = r1131.7f32724
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = twintaillauncher-git
 	depends = libayatana-appindicator
 	depends = mangohud
 	optdepends = gamemode: Feral Interactive gamemode utility
+	optdepends = gamescope: ValveSoftware gamescope session utility
 	provides = twintaillauncher
 	conflicts = twintaillauncher
 	conflicts = twintaillauncher-bin
