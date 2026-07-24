@@ -1,11 +1,11 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-git
-pkgver=1.4.0.0.gHEAD
+pkgver=1.4.1.0.gHEAD
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows (git)"
 arch=('x86_64')
-url="https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland"
+url="https://github.com/Veridian-Zenith/DDS"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo' 'git' 'clang' 'lld')
@@ -15,18 +15,18 @@ source=("git+$url.git#branch=main")
 b2sums=('SKIP')
 
 pkgver() {
-    cd discord-dynamic-status-hyprland
+    cd DDS
     git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
-    cd discord-dynamic-status-hyprland
+    cd DDS
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | grep host | awk '{print $2}')"
 }
 
 build() {
-    cd discord-dynamic-status-hyprland
+    cd DDS
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld"
@@ -34,13 +34,13 @@ build() {
 }
 
 check() {
-    cd discord-dynamic-status-hyprland
+    cd DDS
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen -p ddsc
 }
 
 package() {
-    cd discord-dynamic-status-hyprland
+    cd DDS
     install -Dm755 "target/release/ddsc" -t "$pkgdir/usr/bin/"
     install -Dm755 scripts/discord-monitor.sh "$pkgdir/usr/bin/discord-monitor-ddsc.sh"
     install -Dm644 scripts/discord-monitor-cosmic.service -t "$pkgdir/usr/lib/systemd/user/"
