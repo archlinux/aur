@@ -7,19 +7,43 @@ arch=('x86_64')
 url="https://googlechromelabs.github.io/chrome-for-testing/"
 license=('custom')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcursor' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxshmfence' 'libxtst' 'mesa' 'nss' 'nspr' 'pango' 'systemd-libs' 'util-linux-libs' 'xdg-utils' 'hicolor-icon-theme' 'ca-certificates' 'wget' 'libcurl-gnutls')
-optdepends=('pipewire: WebRTC desktop sharing under Wayland' 'wayland: for native Wayland support' 'vulkan-icd-loader: for Vulkan GPU acceleration' 'libglvnd: for OpenGL dispatch' 'libpulse: for PulseAudio audio backend' 'libsecret: for storing passwords' 'krb5: for Kerberos network authentication' 'libspeechd: for text-to-speech support' 'libva: for hardware video decoding (VA-API)' 'onnxruntime: for local AI model execution' 'apparmor: for additional process sandboxing' 'qt5-base: for using Qt5 file dialogs' 'qt6-base: for using Qt6 file dialogs' 'kdialog: for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs' 'gnome-keyring: for storing passwords in GNOME keyring' 'gnome-control-center: for default browser settings in GNOME')
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'wayland: for native Wayland support'
+            'vulkan-icd-loader: for Vulkan GPU acceleration'
+            'libglvnd: for OpenGL dispatch'
+            'libpulse: for PulseAudio audio backend'
+            'libsecret: for storing passwords'
+            'krb5: for Kerberos network authentication'
+            'libspeechd: for text-to-speech support'
+            'libva: for hardware video decoding (VA-API)'
+            'onnxruntime: for local AI model execution'
+            'apparmor: for additional process sandboxing'
+            'qt5-base: for using Qt5 file dialogs'
+            'qt6-base: for using Qt6 file dialogs'
+            'kdialog: for file dialogs in KDE'
+            'ttf-liberation: fix fonts for some PDFs'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'gnome-control-center: for default browser settings in GNOME')
+provides=('google-chrome-canary' 'google-chrome')
+conflicts=('google-chrome-canary' 'google-chrome')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
 
 pkgver() {
-    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
+    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' | head -1)
+    
+    if [[ -z "$_ver" ]]; then
+        _ver=$(curl -fsSL "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
+    fi
+    
     echo "$_ver"
 }
 
 prepare() {
     cd "$srcdir"
-    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
+    _url="https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
+    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "$_url"
     bsdtar -xf chrome-linux64.zip
 }
 
