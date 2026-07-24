@@ -23,9 +23,9 @@ PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"
 
-XDG_CACHE_HOME = Path(os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache")))
-XDG_CONFIG_HOME = Path(os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config")))
-XDG_DATA_HOME = Path(os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share")))
+XDG_CACHE_HOME = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache"))
+XDG_CONFIG_HOME = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config"))
+XDG_DATA_HOME = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"))
 
 DEFAULTS = {
     "base_dir": XDG_DATA_HOME / PROJECT_NAME / "base",
@@ -229,21 +229,17 @@ def _resolve_extra_model_paths(config):
 
 
 def create_directories(config, extra_dirs):
-    base_dir = Path(config["base_dir"])
-    output_dir = Path(config["output_dir"])
-    runtime_dir = Path(config["runtime_dir"])
-    venv_cache_dir = Path(config["venv_cache_dir"])
-    version_cache_dir = Path(config["version_cache_dir"])
-
-    base_dir.mkdir(parents=True, exist_ok=True)
-    (base_dir / "custom_nodes").mkdir(parents=True, exist_ok=True)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    runtime_dir.mkdir(parents=True, exist_ok=True)
-    venv_cache_dir.mkdir(parents=True, exist_ok=True)
-    version_cache_dir.mkdir(parents=True, exist_ok=True)
-
-    for d in extra_dirs:
-        d.mkdir(parents=True, exist_ok=True)
+    dirs = [
+        config["base_dir"],
+        config["base_dir"] / "custom_nodes",
+        config["output_dir"],
+        config["runtime_dir"],
+        config["venv_cache_dir"],
+        config["version_cache_dir"],
+        *extra_dirs,
+    ]
+    for d in dirs:
+        Path(d).mkdir(parents=True, exist_ok=True)
 
 
 def _api_request(url, github_token=None):
@@ -295,7 +291,7 @@ def _resolve_version(config, version_cache_dir):
         latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
             log("ERROR", "No cached 'latest' version and update is disabled.")
-        cached_version = os.readlink(latest_link)[: -len(".tar.gz")]
+        cached_version = latest_link.readlink().name[: -len(".tar.gz")]
         return cached_version, None
 
     if update:
@@ -533,8 +529,7 @@ def main():
             )
 
     # hack. See <https://github.com/Comfy-Org/ComfyUI/issues/8764>
-    user_dir = extracted_dir / "user"
-    user_dir.mkdir(exist_ok=True)
+    (extracted_dir / "user").mkdir(exist_ok=True)
 
     install_dependencies(extracted_dir, config, version_head)
 
