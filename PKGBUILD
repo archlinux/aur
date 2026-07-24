@@ -2,7 +2,7 @@
 
 pkgname=docker-agent-bin
 pkgdesc="AI Agent Builder and Runtime by Docker Engineering (prebuilt binary)"
-pkgver=1.115.0 # renovate: datasource=github-tags depName=docker/docker-agent
+pkgver=1.116.0 # renovate: datasource=github-tags depName=docker/docker-agent
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker/docker-agent"
@@ -13,8 +13,8 @@ source_x86_64=("docker-agent::https://github.com/docker/docker-agent/releases/do
 source_aarch64=("docker-agent::https://github.com/docker/docker-agent/releases/download/v${pkgver}/docker-agent-linux-arm64")
 source=("LICENSE::https://raw.githubusercontent.com/docker/docker-agent/v${pkgver}/LICENSE")
 sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('5f76bb1394254c21f2a92fe3797cd49ca476e1ee5e99f66255800c8ad92847b2')
-sha256sums_aarch64=('5f76bb1394254c21f2a92fe3797cd49ca476e1ee5e99f66255800c8ad92847b2')
+sha256sums_x86_64=('403d120ab9987079ab0fc5ddd514d3c5554b2834464f56be9e5d4cdfd220b812')
+sha256sums_aarch64=('403d120ab9987079ab0fc5ddd514d3c5554b2834464f56be9e5d4cdfd220b812')
 noextract=('docker-agent')
 
 package() {
