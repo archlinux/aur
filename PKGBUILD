@@ -4,19 +4,19 @@
 
 pkgname=bottles-bin
 pkgver=64.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily manage wine and proton prefixes (prebuilt)"
 arch=('any')
 url="https://usebottles.com"
 license=('GPL-3.0-only')
-depends=('fvs2' 'gtk4' 'gtksourceview5' 'hicolor-icon-theme' 'icoextract'
-         'libadwaita' 'libportal-gtk4' 'patool' 'python' 'python-cairo'
+depends=('gtk4' 'gtksourceview5' 'hicolor-icon-theme' 'icoextract'
+         'libadwaita' 'libportal-gtk4' 'python' 'python-cairo'
          'python-certifi' 'python-chardet' 'python-charset-normalizer'
          'python-gobject' 'python-idna' 'python-markdown' 'python-orjson'
-         'python-pathvalidate' 'python-pefile' 'python-pycurl'
-         'python-requests' 'python-urllib3' 'python-yaml' 'python-yara'
-         'vkbasalt-cli')
-optdepends=('vulkan-tools: vkcube test / Vulkan info'
+         'python-pefile' 'python-pycurl'
+         'python-requests' 'python-urllib3' 'python-yaml' 'python-yara')
+optdepends=('vkbasalt: post-processing layer that applies the configured effects'
+            'vulkan-tools: vkcube test / Vulkan info'
             'xorg-xdpyinfo: display info detection'
             'imagemagick: icon/image conversion'
             'vmtouch: preload bottle files into memory'
@@ -27,7 +27,7 @@ optdepends=('vulkan-tools: vkcube test / Vulkan info'
 provides=('bottles')
 conflicts=('bottles')
 source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha256sums=('0543000eb0d689b43a367d211c8b9abbda7a7e0b7ad037307432590fe62656a3')
+sha256sums=('94dd4c5138ef491fed0502e87be2bebde6e7fe9d2881fc66285d12a0451ef0a3')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
