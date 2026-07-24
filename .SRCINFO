@@ -1,6 +1,6 @@
 pkgbase = animaru
 	pkgdesc = A GTK4 GUI for watching and downloading anime
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/murdialthaf/animaru
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = animaru
 	depends = gtk4
 	depends = libadwaita
 	depends = mpv
-	source = animaru-0.2.0.tar.gz::https://github.com/murdialthaf/animaru/archive/v0.2.0.tar.gz
+	source = animaru-0.2.2.tar.gz::https://github.com/murdialthaf/animaru/archive/v0.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = animaru
