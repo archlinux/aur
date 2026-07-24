@@ -1,0 +1,14 @@
+pkgbase = getlyricsmcp
+	pkgdesc = MCP server that finds and fetches song lyrics. No API keys — it guesses each site's URL from artist+title.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ZmoleCristian/getlyricsmcp
+	install = getlyricsmcp.install
+	arch = x86_64
+	license = 0BSD
+	makedepends = cargo
+	depends = gcc-libs
+	source = getlyricsmcp-0.1.0.tar.gz::https://github.com/ZmoleCristian/getlyricsmcp/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9c3c6d25fd07a57410199afe79bd96a65b486524ab533af3c4dba71249ff46d8
+
+pkgname = getlyricsmcp
