@@ -2,8 +2,8 @@
 
 pkgname=miru-zoom-git
 _pkgname=miru
-pkgver=r22.a1b2c3 # Dynamically updated by pkgver() below
-pkgrel=2
+pkgver=r62.f6dfd68 # Dynamically updated by pkgver() below
+pkgrel=1
 pkgdesc="A Wayland-based zoom daemon and control utility (development branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/miru"
@@ -30,5 +30,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  cmake --install build --prefix "${pkgdir}/usr"
 }
