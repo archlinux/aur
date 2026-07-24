@@ -2,12 +2,13 @@
 # Contributor: Mitch Bigelow <mitch.bigelow at gmail.com>
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
-: ${_commit=}
+## options
+: ${_use_sodeps:=false}
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.9.r180.g16fd140
-pkgrel=1
+pkgver=3.0.r26.g5ff88a0
+pkgrel=2
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
 license=('GPL-2.0-or-later')
@@ -51,7 +52,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git${_commit:+#commit=$_commit}")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -61,13 +62,6 @@ pkgver() {
   _revision=$(git rev-list --count --cherry-pick $_version...HEAD)
   _hash=$(git rev-parse --short=7 HEAD)
   printf '%s.r%s.g%s' "${_version#v}" "${_revision:?}" "${_hash:?}"
-}
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # fix tests
-  echo "WarningsAsErrors: ''" > .clang-tidy
 }
 
 build() {
@@ -84,5 +78,30 @@ check() {
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libarchive.so'
+      'libcairo.so'
+      'libexiv2.so'
+      'libgdk_pixbuf-2.0.so'
+      'libgio-2.0.so'
+      'libglib-2.0.so'
+      'libgobject-2.0.so'
+      'libgraphene-1.0.so'
+      'libgtk-4.so'
+      'libgtksourceview-5.so'
+      'libheif.so'
+      'libjpeg.so'
+      'libjxl.so'
+      'liblcms2.so'
+      'libpango-1.0.so'
+      'libpangocairo-1.0.so'
+      'libpoppler-glib.so'
+      'libspelling-1.so'
+      'libtiff.so'
+      'libwebp.so'
+    )"
+  fi
+
   DESTDIR="$pkgdir" meson install -C build
 }

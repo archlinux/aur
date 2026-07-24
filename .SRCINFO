@@ -1,7 +1,7 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.9.r180.g16fd140
-	pkgrel = 1
+	pkgver = 3.0.r26.g5ff88a0
+	pkgrel = 2
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
 	license = GPL-2.0-or-later
