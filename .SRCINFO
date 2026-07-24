@@ -62,5 +62,6 @@ pkgbase = google-chrome-beta-bin
 	options = !emptydirs
 	options = !strip
 	options = !zipman
+	source = https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 
 pkgname = google-chrome-beta-bin
