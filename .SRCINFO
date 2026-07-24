@@ -1,6 +1,6 @@
 pkgbase = hqplayer-network-audio-daemon
 	pkgdesc = Signalyst Network Audio Daemon
-	pkgver = 6.1.2
+	pkgver = 6.1.4
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = hqplayer-network-audio-daemon
 	depends = glibc
 	source = networkaudio.service
 	sha256sums = 75d45b226dcbb78dfb61e941ee5ef2a8f0d88efbf414d2618b42520fe3cb129e
-	source_x86_64 = https://www.signalyst.com/bins/naa/linux/trixie/networkaudiod_6.1.2-70_amd64.deb
-	sha256sums_x86_64 = 2a6c1686e3ed525c95ab22963b28e20e866ac6229152b7c54d45f63d0cb20fd8
-	source_aarch64 = https://www.signalyst.com/bins/naa/linux/trixie/networkaudiod_6.1.2-70_arm64.deb
-	sha256sums_aarch64 = ec5cd4614006b0f80e5198dc970a02ce322bb9c32ab5aac04142818327769667
+	source_x86_64 = https://www.signalyst.com/bins/naa/linux/trixie/networkaudiod_6.1.4-71_amd64.deb
+	sha256sums_x86_64 = 96bf8525cd61efdcc734213a1e5e1a03afa8807b3c39172bed5fdf19368d5139
+	source_aarch64 = https://www.signalyst.com/bins/naa/linux/trixie/networkaudiod_6.1.4-71_arm64.deb
+	sha256sums_aarch64 = 461f00ba3b5613961fa9e189a5b1df702f35b59cfcdd97cc66554ae7da21628c
 
 pkgname = hqplayer-network-audio-daemon
