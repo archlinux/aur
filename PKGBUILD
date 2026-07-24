@@ -3,51 +3,32 @@
 pkgname=intellij-idea-open-eap
 
 # IDEA uses a version scheme of yyyy.r.n.m, as described in
-# https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/ .
-# Sometimes it's only yyyy.r or yyyy.r.n .
-# In pre-release tags, these are suffixed with text such as
-# "-eap-8", "-beta", "-rc-2", or "-preview".
-#
-# Therefore, in order to ensure Arch vercmp sorting, while
-# still including textual tag information, expand upstream
-# version to full yyyy.r.n.m format and include build number
-# after version and before tag suffix.
-_versionyyyy=2026
-_versionr=2
-_versionn=0
-_versionm=1
-# Historically, not all tags begin with "idea/" such as "2025.3-rc-2".
-_tagprefix=idea/
-_tagsuffix=preview
-# This particular 2026.2.1 tag actually corresponds to 2026.2.0.1:
-# https://youtrack.jetbrains.com/articles/IDEA-A-2100662711/IntelliJ-IDEA-2026.2.0.1-262.8665.337-build-Release-Notes .
-# I've confirmed this is an inconsistency in their tagging, because "idea/2026.1.2-rc" corresponds to 2026.1.2 RC:
-# https://youtrack.jetbrains.com/articles/IDEA-A-2100662672/IntelliJ-IDEA-2026.1.2-RC-261.24374.66-build-Release-Notes .
-_tagoverride=idea/2026.2.1-preview
-
-# Get build number from the following, in order of preference (as it's not always available
-# on GitHub):
-#
-# - build number tag having same commit hash as this tag, at
-#   https://github.com/JetBrains/intellij-community/tags
-#
-# - https://youtrack.jetbrains.com/articles/IDEA-A-21/IDEA-Latest-Builds-And-Release-Notes
-#
-# - Help --> About in IDEA from the Snap package for the closed-source
-#   EAP version ("snap install intellij-idea --classic --edge"). This will match that in
-#   "build.txt" in the source at GitHub, although that file only contains the first two
-#   parts, followed by ".SNAPSHOT".
-_build=262.8665.337
-
-pkgver="$_versionyyyy.$_versionr.$_versionn.$_versionm.$_build$([ -n "$_tagsuffix" ] && echo -n ".$_tagsuffix" | tr - _)"
+# https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/ . Sometimes it's only
+# yyyy.r or yyyy.r.n . In pre-release tags, these are suffixed with text such as "-eap-8", "-beta", "-rc-2", or
+# "-preview". Therefore, in order to ensure Arch vercmp sorting, while still including all version information, expand
+# upstream version to full yyyy.r.n.m format and include build number after version and before tag suffix.
+_version_yyyy_r_n_m=2026.2.1.0
+# Sources of build number, in preference order (as they're not consistently available):
+#   1. matching-hash build number tag at https://github.com/JetBrains/intellij-community/tags
+#   2. https://youtrack.jetbrains.com/articles/IDEA-A-21/IDEA-Latest-Builds-And-Release-Notes
+#   3. installing closed-source build via "snap install intellij-idea --classic --edge" and checking Help --> About
+_build_number=262.9437.22
+_pre_release_identifier_snake_case=preview
+pkgver="$_version_yyyy_r_n_m.$_build_number${_pre_release_identifier_snake_case:+.$_pre_release_identifier_snake_case}"
 pkgrel=1
 
-if [ -n "$_tagoverride" ]; then
-  _tag=$_tagoverride
+_tag=
+# On 2026-07-23, the "idea/2026.2.1" tag pointed to hash "15645ead6f20019cc2537dbbd43df4eb344423a8". Then it was changed
+# to point to "febef8303a0fc547de1c50ac82782933dcfae5ae", with a different version and different build number.
+_git_hash_override_idea=febef8303a0fc547de1c50ac82782933dcfae5ae
+_git_hash_override_android=132bc7c3cf52598117590637d00e81b929444bde
+
+if [ -n "$_git_hash_override_idea" ]; then
+  _github_source_fragment_idea="commit=$_git_hash_override_idea"
+  _github_source_fragment_android="commit=$_git_hash_override_android"
 else
-  _tag="$_tagprefix$_versionyyyy.$_versionr$([ "$_versionn" -ne 0 ] || [ "$_versionm" -ne 0 ] && echo -n ".$_versionn")\
-$([ "$_versionm" -ne 0 ] && echo -n ".$_versionm")\
-$([ -n "$_tagsuffix" ] && echo -n "-$_tagsuffix")"
+  _github_source_fragment_idea="tag=$_tag"
+  _github_source_fragment_android="tag=$_tag"
 fi
 
 pkgdesc='IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version'
@@ -64,11 +45,11 @@ depends=('giflib' 'python' 'sh' 'ttf-font' 'libdbusmenu-glib' 'fontconfig' 'hico
 optdepends=(
   'lldb: lldb frontend integration'
 )
-source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
-  idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
+source=("git+https://github.com/JetBrains/intellij-community.git#$_github_source_fragment_idea"
+  idea-android::"git+https://github.com/JetBrains/android.git#$_github_source_fragment_android"
   idea.desktop)
-sha256sums=('ae822fb40ecae3588fa6bf3082436da854e2b5c2e25b41b9fea5e3b69a2d2676'
-  '81479bee3fc045a54e72a8dae36d8ff1ba54958a324d976f869b4414566c2c91'
+sha256sums=('2a70afa449da786023bc8c7416d28f493d76dc4389081ede1cad3a619c2fa9b0'
+  'b5f2a1111283baf0a46658f92ddd468ef6e792455db294efdd0343b3db75ad48'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
 prepare() {
@@ -92,11 +73,14 @@ build() {
   export HOME=${srcdir}
   export BAZELISK_HOME=${srcdir}/.bazelisk
 
-  # Note: The Maven cache path, ".m2/repository", is not overridden here, as with
-  # Bazel, the build does not actually use it.
+  # Note: The Maven cache path, ".m2/repository", is not overridden here, as
+  # with Bazel, the build does not actually use it.
 
-  ./installers.cmd -Dintellij.build.use.compiled.classes=false -Dintellij.build.target.os=linux -Dbuild.number="${_build}"
-  tar -xf out/idea-ce/artifacts/ideaIC-${_build}.tar.gz -C "${srcdir}"
+  ./installers.cmd \
+    -Dintellij.build.use.compiled.classes=false \
+    -Dintellij.build.target.os=linux \
+    -Dbuild.number="${_build_number}"
+  tar -xf out/idea-ce/artifacts/ideaIC-${_build_number}.tar.gz -C "${srcdir}"
 }
 
 package() {
