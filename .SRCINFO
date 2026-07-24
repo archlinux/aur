@@ -1,0 +1,17 @@
+pkgbase = python-css-inline
+	pkgdesc = High-performance library for inlining CSS into HTML 'style' attributes
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/Stranger6667/css-inline
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = python
+	options = !lto
+	source = https://files.pythonhosted.org/packages/source/c/css-inline/css_inline-0.20.2.tar.gz
+	sha256sums = f495c24b96386dcc8fd6621507deeb81c5bc33ad4da26ec4fe625bda644eb937
+
+pkgname = python-css-inline
