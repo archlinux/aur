@@ -4,30 +4,35 @@
 # from: git
 
 pkgname=trackma-git
-pkgver=0.8.6.r52.g514d37e
+pkgver=0.10.3.r34.gea654c5
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="https://z411.github.io/trackma/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python'
-         'python-pyinotify')
+         'python-pyinotify'
+         'python-anitopy')
 
 makedepends=(
   desktop-file-utils
   git
-  python-poetry-core
+  python-uv-build
   python-build
   python-installer
   python-wheel
+  yq
 )
-optdepends=('python-cairo:   GTK frontend'
-    'python-gobject: GTK frontend/MPRIS tracker'
+optdepends=(
+    'python-cairo:   GTK frontend'
+    'python-gobject: GTK frontend'
+    'gtk3:           GTK frontend'
     'python-pillow:  thumbnail images for GUI frontends'
-    'python-jeepney:  MPRIS tracker'
-    'python-pyqt5:   Qt frontend'
+    'python-jeepney: MPRIS tracker'
+    'python-pyqt6:   Qt frontend'
     'python-urwid:   ncurses frontend'
-    'lsof:           polling tracker/pyinotify alternative')
+    'lsof:           polling tracker/pyinotify alternative'
+)
 
 source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
     "anime-relations::git+https://github.com/erengy/anime-relations.git"
@@ -46,7 +51,7 @@ conflicts=('wmal-git' 'trackma')
 provides=('trackma')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}"
   (
     set -o pipefail
     git describe --tags --long 2>/dev/null | sed \
@@ -56,10 +61,11 @@ pkgver() {
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${pkgname}"
   git submodule init
   git config submodule."trackma/data/anime-relations".url $srcdir/anime-relations
   git -c protocol.file.allow=always submodule update
+  tomlq -Ti ".project.version = \"${pkgver/\.g/+g}\"" pyproject.toml
 }
 
 build() {
@@ -69,9 +75,10 @@ build() {
 package() {
   _py=$(python --version)
   _py=${_py%%.*}
+  _pkgver=${pkgver/\.r/.post}
 
   python -m installer --destdir="$pkgdir" \
-    "$srcdir/$pkgname/dist/${pkgname%-git}-${pkgver%.r*}-py${_py##* }-none-any.whl"
+    "$srcdir/$pkgname/dist/${pkgname%-git}-${_pkgver/\.g/+g}-py${_py##* }-none-any.whl"
 
   install -Dvm644 "$srcdir/$pkgname/trackma/data/icon.png" \
   "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
