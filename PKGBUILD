@@ -131,6 +131,7 @@ prepare() {
   cd webkitgtk-$pkgver
 
   # fix unqoted cmake variable _linked_into
+  patch -Np1 -i "$srcdir/cmake4-linked-into-quoting.patch"
 }
 
 build() {
