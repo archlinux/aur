@@ -271,7 +271,6 @@ def _api_request(url, github_token=None):
         die("Failed to parse JSON response from %s: %s", url, e)
     except OSError as e:
         die("Error while requesting %s: %s", url, e)
-    return None
 
 
 def _resolve_version(config, version_cache_dir):
@@ -292,12 +291,6 @@ def _resolve_version(config, version_cache_dir):
     if version == "latest":
         if update:
             data = _api_request(GITHUB_API_LATEST, github_token=github_token)
-            if data is None:
-                die(
-                    "Failed to fetch latest version from GitHub API. "
-                    "This is unexpected, Please report a bug to %s repo.",
-                    PROJECT_NAME,
-                )
             latest_tag = data["tag_name"]
             return latest_tag, CODELOAD_URL_TEMPLATE.format(latest_tag)
         latest_link = version_cache_dir / "latest"
