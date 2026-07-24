@@ -1,6 +1,6 @@
 pkgbase = ndcurves
 	pkgdesc = Library for creating smooth cubic splines
-	pkgver = 2.1.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/loco-3d/ndcurves
 	arch = i686
@@ -16,11 +16,8 @@ pkgbase = ndcurves
 	depends = glibc
 	depends = gcc-libs
 	optdepends = doxygen
-	source = https://github.com/loco-3d/ndcurves/releases/download/v2.1.1/ndcurves-2.1.1.tar.gz
-	source = https://github.com/loco-3d/ndcurves/releases/download/v2.1.1/ndcurves-2.1.1.tar.gz.sig
-	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
-	sha256sums = 43682331a49ed26772269a847181c7fc92bd9a12ed8de2edf2ba3c7080ccbaa0
-	sha256sums = SKIP
+	source = ndcurves-2.3.0.tar.gz::https://github.com/loco-3d/ndcurves/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 9550a556d5cdf0de70b8a0fe48878f987bfcfc385efaf0305f71647133bf00d8
 
 pkgname = ndcurves
 
