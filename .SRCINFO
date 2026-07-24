@@ -1,0 +1,23 @@
+pkgbase = snipland
+	pkgdesc = The Windows 11 Snipping Tool, rebuilt for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AnrokX/snipland
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = grim
+	depends = wl-clipboard
+	depends = gpu-screen-recorder
+	depends = ffmpeg
+	depends = libnotify
+	optdepends = python-evdev: click ripple / keystroke visualizer during recording
+	source = snipland-0.1.0.tar.gz::https://github.com/AnrokX/snipland/archive/v0.1.0.tar.gz
+	sha256sums = 6b8cfddcf77928d7105811b6114c5aa659943a6b46e301710186b082fb46d1f1
+
+pkgname = snipland
