@@ -2,7 +2,7 @@
 
 pkgname=python-bitsandbytes
 _name=${pkgname#python-}
-pkgver=0.49.2
+pkgver=0.50.0
 pkgrel=1
 epoch=
 pkgdesc="k-bit optimizers and matrix multiplication routines."
@@ -43,7 +43,7 @@ optdepends=()
 options=('!strip')
 source=("${_name}::git+${url}.git#tag=$pkgver")
 noextract=()
-sha256sums=('702bddb7a5f6c6fbe7ac214453e2f8ab78117fc1c44ff95e7de86c37f4e8e528')
+sha256sums=('d1c0ee840dd4b08f76273ad258ec53bad84c1064917c7f2de900360a285822c9')
 
 build() {
     cd "${srcdir}/${_name}"

@@ -1,6 +1,6 @@
 pkgbase = python-bitsandbytes
 	pkgdesc = k-bit optimizers and matrix multiplication routines.
-	pkgver = 0.49.2
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://github.com/bitsandbytes-foundation/bitsandbytes
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = python-bitsandbytes
 	provides = python-bitsandbytes
 	conflicts = python-bitsandbytes
 	options = !strip
-	source = bitsandbytes::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.49.2
-	sha256sums = 702bddb7a5f6c6fbe7ac214453e2f8ab78117fc1c44ff95e7de86c37f4e8e528
+	source = bitsandbytes::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.50.0
+	sha256sums = d1c0ee840dd4b08f76273ad258ec53bad84c1064917c7f2de900360a285822c9
 
 pkgname = python-bitsandbytes
