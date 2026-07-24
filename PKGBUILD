@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://googlechromelabs.github.io/chrome-for-testing/"
 license=('custom')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcursor' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxshmfence' 'libxtst' 'mesa' 'nss' 'nspr' 'pango' 'systemd-libs' 'util-linux-libs' 'xdg-utils' 'hicolor-icon-theme' 'ca-certificates' 'wget' 'libcurl-gnutls')
+makedepends=('curl' 'grep')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'wayland: for native Wayland support'
             'vulkan-icd-loader: for Vulkan GPU acceleration'
@@ -24,17 +25,22 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'ttf-liberation: fix fonts for some PDFs'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
-provides=('google-chrome-canary' 'google-chrome')
-conflicts=('google-chrome-canary' 'google-chrome')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
 
 pkgver() {
-    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' | head -1)
+    # MÉTODO 1: API JSON de Chrome for Testing (con grep)
+    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' || true)
     
+    # MÉTODO 2 (FALLBACK): Si la API JSON falla, leer la API de Chromium Dash
     if [[ -z "$_ver" ]]; then
-        _ver=$(curl -fsSL "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
+        _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1 || true)
+    fi
+    
+    # Si ambas fallan, usar la versión real hardcodeada en el PKGBUILD
+    if [[ -z "$_ver" ]]; then
+        _ver="$pkgver"
     fi
     
     echo "$_ver"
@@ -42,8 +48,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"
-    _url="https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
-    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "$_url"
+    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
     bsdtar -xf chrome-linux64.zip
 }
 
