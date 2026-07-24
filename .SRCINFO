@@ -1,6 +1,6 @@
 pkgbase = awesomenes
 	pkgdesc = A NES emulator with ROM debugging and hacking toolchain written in C
-	pkgver = 0.7.3
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://gitlab.com/ParaSait/awesomenes
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = awesomenes
 	makedepends = flex
 	makedepends = bison
 	depends = sdl2-compat
+	depends = sdl2_ttf
 	depends = libinih
 	depends = libpng
-	source = https://gitlab.com/ParaSait/awesomenes/-/archive/0.7.3/awesomenes-0.7.3.tar.gz
-	sha256sums = 44edd70d629a6cfcabc7e52a1dee4bab48efa18daa0e82dda79e3f7777fda0b7
+	source = https://gitlab.com/ParaSait/awesomenes/-/archive/0.8/awesomenes-0.8.tar.gz
+	sha256sums = 9fcec8447c5557439a862ab9f1144baa8c0d21e83b5fb3549145954e57fb1afe
 
 pkgname = awesomenes
