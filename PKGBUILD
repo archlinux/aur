@@ -3,7 +3,7 @@
 pkgname=paseo-cli
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.1.110
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=('paseo' 'paseo-bin' 'paseo-cli-bun')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmscope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/getpaseo/paseo/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('a24fbb856c628e93310b755ef0b9810cc694396188eeae676119b6fa1b23ca24'
+sha256sums=('5f4e37907e651c0f24d44bb994c63ef1f820f7a6da966c259093c60dd2dabc69'
             '2d29a730f15470509f7a36e63a024c2f121958471474dfcd6b272c99586fc337')
 options=('!strip')
 
@@ -51,6 +51,7 @@ WRAPPER
     find "${pkgdir}/usr/lib/${pkgname}/node_modules/node-pty/prebuilds" \
         -mindepth 1 -maxdepth 1 -type d \
         ! -name "${_node_pty_prebuild}" -exec rm -rf {} +
+
 
     chmod -R go-w "${pkgdir}/usr"
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
