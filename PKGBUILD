@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.50.4
+pkgver=0.50.6
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   'python-textual: TUI support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('6b4665680dae0842289f775da8adb5bc6e0461cbc542622af36fbd34698821be')
+sha256sums=('9739babd8e0c2ff7e66895031511b24bef42d4240ede8e1018ddd3315e2fb720')
 install=${pkgname}.install
 
 build() {
@@ -46,16 +46,25 @@ build() {
 
 package() {
   cd "${_name//-/_}-${pkgver}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" --prefix=/usr dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  sed -i '1c#!/usr/bin/python' \
+    "$pkgdir/usr/bin/ooo" \
+    "$pkgdir/usr/bin/ouroboros" \
+    "$pkgdir/usr/bin/ozo"
 
   # Shell completions
-  export PYTHONPATH="$pkgdir/$(python -c 'import site; print(site.getsitepackages()[0])')"
+  local _site_packages
+  _site_packages=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib", vars={"base": "/usr", "platbase": "/usr"}))')
+  export PYTHONPATH="$pkgdir$_site_packages"
   local _ouroboros="$pkgdir/usr/bin/ouroboros"
-  $_ouroboros --show-completion bash | install -Dm644 /dev/stdin \
+  python "$_ouroboros" --show-completion bash > ouroboros.bash
+  python "$_ouroboros" --show-completion zsh > _ouroboros
+  python "$_ouroboros" --show-completion fish > ouroboros.fish
+  install -Dm644 ouroboros.bash \
     "$pkgdir/usr/share/bash-completion/completions/ouroboros"
-  $_ouroboros --show-completion zsh | install -Dm644 /dev/stdin \
+  install -Dm644 _ouroboros \
     "$pkgdir/usr/share/zsh/site-functions/_ouroboros"
-  $_ouroboros --show-completion fish | install -Dm644 /dev/stdin \
+  install -Dm644 ouroboros.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/ouroboros.fish"
 }
