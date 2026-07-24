@@ -1,0 +1,18 @@
+--- a/gui/CMakeLists.txt	2025-10-11 20:52:37.048868767 +0100
++++ b/gui/CMakeLists.txt	2025-10-11 20:52:42.506427662 +0100
+@@ -7,7 +7,7 @@
+ 	enable_language(OBJCXX)
+ endif()
+ 
+-find_package(Qt6 REQUIRED COMPONENTS Core Gui Concurrent Svg Qml Quick Widgets)
++find_package(Qt6 REQUIRED COMPONENTS Core Gui Concurrent Svg Qml Quick Widgets GuiPrivate)
+ find_package(Qt6 COMPONENTS WebEngineQuick)
+ find_package(Qt6 COMPONENTS DBus)
+ 
+@@ -154,4 +154,4 @@
+ 		BUNDLE DESTINATION bin)
+ install(FILES chiaking.desktop DESTINATION share/applications)
+ install(FILES chiaking.png DESTINATION share/icons/hicolor/512x512/apps)
+-install(FILES io.github.streetpea.Chiaki4deck.appdata.xml DESTINATION share/metainfo)
+\ No newline at end of file
++install(FILES io.github.streetpea.Chiaki4deck.appdata.xml DESTINATION share/metainfo)
