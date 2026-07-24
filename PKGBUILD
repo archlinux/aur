@@ -1,6 +1,6 @@
 # Maintainer: Katestheimeno <katestheimeno@gmail.com>
 pkgname=wj
-pkgver=0.12.29
+pkgver=0.12.30
 pkgrel=1
 pkgdesc="Cross-project daily task & time tracker via an append-only TSV event log"
 # The CLI is pure bash (arch-independent), but the package also ships the
@@ -14,7 +14,7 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Placeholder: after the v$pkgver tag is pushed, run `updpkgsums` to pin the
 # real checksum (needs pacman-contrib). SKIP lets you build/test before then.
-sha256sums=('2f1bfb8f2ea0b9d81ad3c3cee420cd669c56e6bbe5b343db2a75079493254c41')
+sha256sums=('4b547c10f9fec21f86ee2ba0296c4a05c574857858092ff9af0185baa3dd93b7')
 
 prepare() {
     # Fetch Go modules here so build() can run without network (clean chroots).
