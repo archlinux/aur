@@ -5,7 +5,7 @@ pkgname=(
     libnmstate
     python-libnmstate
 )
-pkgver=2.2.60
+pkgver=2.2.61
 pkgrel=2
 pkgdesc='Declarative network manager API for Linux hosts'
 arch=('x86_64')
@@ -27,9 +27,9 @@ source=(
 )
 # vendor tarball is unsigned upstream; sha256 only
 sha256sums=(
-    '93c157c27b922968dfc6e8f649bacb00287303e0fd83b13cf1ff15a98fb3599c'
-    'SKIP'
-    'f0dc405f798f677cf7bbabd4fdd740a2d5e680b7cb091c2e91ce89dc5cf184a6'
+            '25cb1b4055c3f1c9d6e98c7efd3084f09d38f105b34ce6d80132d4427a98ed16'
+            '4306b81631898d628ad3376577a4aff08e3eb78b4f60b8e88bfdc0868de5792b'
+            '13412239f623451a86a8ee2e3a8a0d00da5dd5e754be1006e063cfe2f07ed0d3'
 )
 # nmstate release signers (from upstream nmstate.gpg keyring)
 validpgpkeys=(
