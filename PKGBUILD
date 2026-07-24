@@ -1,6 +1,6 @@
 pkgname=wine-dwproton
 pkgver=11.0
-pkgrel=7
+pkgrel=9
 pkgdesc="dwproton的wine版"
 url="https://dawn.wine/dawn-winery/wine-dwproton"
 arch=("x86_64")
