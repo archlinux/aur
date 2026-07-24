@@ -7,7 +7,7 @@ pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs>=22' 'nodejs<25')
+depends=('nodejs>=22')
 makedepends=('yarn' 'git' 'npm')
 options=('!lto' '!strip')
 conflicts=('thelounge')
@@ -80,4 +80,6 @@ package() {
 	# setting up system user
 	install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
 	install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/thelounge.conf"
+
+    install -Dm644 "${srcdir}/_build/node_modules/thelounge/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

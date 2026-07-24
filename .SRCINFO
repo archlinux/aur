@@ -8,7 +8,7 @@ pkgbase = thelounge-git
 	makedepends = yarn
 	makedepends = git
 	makedepends = npm
-	depends = nodejs<25
+	depends = nodejs>=22
 	conflicts = thelounge
 	options = !lto
 	options = !strip
