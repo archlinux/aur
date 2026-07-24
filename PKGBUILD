@@ -3,7 +3,7 @@
 pkgname=rudder-agent
 pkgver="9.1.3"
 # pkgver="9.1.3~git202607090118"
-pkgrel=1
+pkgrel=3
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -72,6 +72,9 @@ package() {
   make DESTDIR="${pkgdir}/" install
   chmod 700 "${pkgdir}/var/rudder/reports/ready/"
   chmod 700 "${pkgdir}/var/rudder/tmp/"
+  chmod 700 "${pkgdir}/var/rudder/ncf/"
+  chmod 700 "${pkgdir}/var/rudder/ncf/common/"
+  chmod 700 "${pkgdir}/var/rudder/ncf/local/"
   cp -aR "${pkgdir}/lib" "${pkgdir}/usr/"
   rm -rf "${pkgdir}/lib"
   rm -rf "${pkgdir}/opt/rudder/share/man"
@@ -84,5 +87,6 @@ package() {
   	fi
   done
   install -d -m 0755 -o root -g root "${pkgdir}/opt/rudder/share/doc/server-patches"
-  install -m 0644 -o root -g root ${srcdir}/../9900_rudder-server_postinstall_cfengine_paths.patch "${pkgdir}/opt/rudder/share/doc/server-patches/"
+  # Example of installing proposed server patches in the doc directory
+  # install -m 0644 -o root -g root ${srcdir}/../9900_rudder-server_postinstall_cfengine_paths.patch "${pkgdir}/opt/rudder/share/doc/server-patches/"
 }
