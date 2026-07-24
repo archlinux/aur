@@ -33,7 +33,7 @@ pkgver() {
     _url="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/"
     _deb=$(curl -fsSL -A "Mozilla/5.0" "$_url" | grep -oP 'href="microsoft-edge-stable_[0-9][^"]*_amd64.deb"' | sed 's/href="//;s/"$//' | sort -V | tail -1)
     _ver=$(echo "$_deb" | grep -oP '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-    echo "${_ver:-$pkgver}"
+    echo "$_ver"
 }
 
 prepare() {
