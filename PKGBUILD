@@ -1,5 +1,5 @@
 pkgname=python-meteostat
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Access and analyze historical weather and climate data with Python"
 url="https://github.com/meteostat/meteostat"
@@ -9,7 +9,7 @@ depends=("python" "python-numpy" "python-pandas" "python-pytz" "python-requests"
 optdepends=("python-metar: access METAR and SPECI weather reports from NOAA"
     "python-matplotlib: enable plotting")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/meteostat/meteostat/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('22dbab0bb1fba11abb0281f8ee94a84ee3568596f0a0e5b1ece6134cf54be0a8')
+sha256sums=('43d714f842a0a4031bd6718b46c70615f34a3b4d7163bd8d8fbaf7448bc839a6')
 
 build() {
     cd "$srcdir/meteostat-$pkgver"
