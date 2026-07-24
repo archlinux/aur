@@ -1,6 +1,6 @@
 # Maintainer: Răzvan <aurstuff@razv.xyz>
 pkgname=naji-cli
-pkgver=1.7.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="CLI client for judge.nitro-ai.org"
 arch=('any')
@@ -28,8 +28,9 @@ check() {
 package() {
   cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  if [[ -x "$pkgdir/usr/bin/$pkgname" && ! -e "$pkgdir/usr/bin/naji" ]]; then
-    mv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/naji"
+  local scripts=("$pkgdir"/usr/bin/*)
+  if [[ ! -e "$pkgdir/usr/bin/naji" && ${#scripts[@]} -eq 1 && -x "${scripts[0]}" ]]; then
+    mv "${scripts[0]}" "$pkgdir/usr/bin/naji"
   fi
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
