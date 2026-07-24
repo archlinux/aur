@@ -175,9 +175,9 @@ def log_config(config):
     for key in sorted(config):
         value = config[key]
         if key in SENSITIVE_KEYS and value:
-            lines.append(f"      - {key} = **REDACTED**")
+            lines.append(f"       {key} = **REDACTED**")
         else:
-            lines.append(f"      - {key} = {value!r}")
+            lines.append(f"       {key} = {value!r}")
 
     log.info("Loaded configuration:\n%s", "\n".join(lines))
 
@@ -599,7 +599,7 @@ def launch_comfyui(config, extracted_dir):
 def main():
     logging.basicConfig(
         level=logging.INFO,
-        format="%(levelname)s: %(message)s",
+        format="[%(levelname)s] %(message)s",
     )
 
     if sys.version_info < (3, 12):
