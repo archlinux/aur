@@ -1,6 +1,6 @@
 pkgname=rfetch
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple fetch tool written in Rust"
 arch=('x86_64')
 url="https://github.com/skerrixx/rfetch"
@@ -15,7 +15,7 @@ prepare() {
   cd "$(dirname "$(find "$srcdir" -name Cargo.toml -print -quit)")"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
