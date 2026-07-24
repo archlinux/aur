@@ -1,6 +1,6 @@
 pkgbase = intel-xpumanager-bin
 	pkgdesc = Intel XPU Manager - System management tool for Intel Discrete GPUs (Binary, Daemon-based)
-	pkgver = 1.3.5
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/intel/xpumanager
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = intel-xpumanager-bin
 	conflicts = intel-xpumanager
 	conflicts = intel-xpu-smi
 	conflicts = intel-xpu-smi-bin
-	source = https://github.com/intel/xpumanager/releases/download/v1.3.5/xpumanager_1.3.5_20251216.170635.605ff78d.u24.04_amd64.deb
-	sha256sums = 4a0e710e96bd33fef4912109ff1b3f8d0550838d92e7d5eb88b3e280ed903b66
+	source = https://github.com/intel/xpumanager/releases/download/v1.3.7/xpumanager_1.3.7_20260530.031049.9fc2535d.u24.04_amd64.deb
+	sha256sums = d049fae4ec401fe24f2465dff1698c2a30710a7cc9f077669f6351053e1bd276
 
 pkgname = intel-xpumanager-bin
