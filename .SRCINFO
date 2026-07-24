@@ -1,11 +1,12 @@
 pkgbase = imageinfo
 	pkgdesc = Cross platform super fast single header c++ library to get image size and format without loading/decoding
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaozhuai/imageinfo
 	arch = any
 	license = MIT
 	makedepends = cmake
+	provides = imageinfo
 	source = imageinfo-2.0.0.tar.gz::https://github.com/xiaozhuai/imageinfo/archive/refs/tags/v2.0.0.tar.gz
 	sha512sums = ab19e5d9e2add87f435a9cf73601cb90d5dac1ebdaca60f631a6bdb41dd5568d3aa057106273bbd1c5eda2fc5643548e275def7165498bcb69652eb0ee3db978
 
