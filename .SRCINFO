@@ -1,0 +1,12 @@
+pkgbase = ttf-iridesce-scratch
+	pkgdesc = A sci-fi mechanical font from the fictional universe of 'Iridesce Independent'
+	pkgver = 20260702
+	pkgrel = 1
+	url = https://github.com/IridesceIFC/Iridesce-Scratch
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = iridesce-scratch::git+https://github.com/IridesceIFC/Iridesce-Scratch.git#commit=326a9ea5e5d285587258be405d47a1191b9169a1
+	sha256sums = SKIP
+
+pkgname = ttf-iridesce-scratch
