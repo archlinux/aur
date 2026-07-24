@@ -1,6 +1,6 @@
 pkgbase = filen-cli-bin
 	pkgdesc = The Filen CLI provides a set of useful tools for interacting with the cloud.
-	pkgver = 0.0.39
+	pkgver = 0.0.36
 	pkgrel = 1
 	url = https://github.com/FilenCloudDienste/filen-cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = filen-cli-bin
 	conflicts = filen-cli
 	conflicts = filen-cli-git
 	options = !strip
-	source_x86_64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.39/filen-cli-v0.0.39-linux-x64
-	sha256sums_x86_64 = 2a6aec0c2167862b4d61bf98699e78949a52ef52697573db517a908bc2aa88c8
-	source_aarch64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.39/filen-cli-v0.0.39-linux-arm64
-	sha256sums_aarch64 = 9a031a6d79235b6d58d74a1c9c7a416cac4d7795596a01d764ee436bfd5387dc
+	source_x86_64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.36/filen-cli-v0.0.36-linux-x64
+	sha256sums_x86_64 = be690d94d3310187dc7b4fe46b3e49becfb327c29ac64d49cfe73252c7c3c04a
+	source_aarch64 = https://github.com/FilenCloudDienste/filen-cli/releases/download/v0.0.36/filen-cli-v0.0.36-linux-arm64
+	sha256sums_aarch64 = fda28526b5d11f9e860eb1bce8a8069da30fe03ccb5b58d6558e0c24845cbca4
 
 pkgname = filen-cli-bin
