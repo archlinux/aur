@@ -1,6 +1,6 @@
 pkgbase = gaze-bin
 	pkgdesc = Daemon, CLI, and PAM integration for Gaze
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gaze-bin
 	depends = tpm2-tss
 	backup = etc/dbus-1/system.d/com.gundulabs.Gaze.conf
 	backup = etc/gaze/config.toml
-	source = gaze-0.2.6-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.6-1-x86_64.pkg.tar.zst
-	sha256sums = 6c3e472c3258981cff90c34a18a165db89e8fa908e85e51d5047ed3e98744000
+	source = gaze-0.2.7-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.7-1-x86_64.pkg.tar.zst
+	sha256sums = 874db29a5fc1a55e6beec0db93d5dbda9250e2c72369278aed1383778838c580
 
 pkgname = gaze-bin
