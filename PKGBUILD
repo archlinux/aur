@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=google-chrome-canary-bin
-pkgver=152.0.7968.2
+pkgver=152.0.7969.0
 pkgrel=1
 pkgdesc="The web browser from Google (Canary channel via Chrome for Testing)"
 arch=('x86_64')
