@@ -11,7 +11,7 @@
 #
 
 pkgname=retroarch-git
-pkgver=1.22.2.r2002.4c2c1776cf
+pkgver=1.22.2.r3538.ce5544fdb0
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
 arch=('i686' 'x86_64')
@@ -87,7 +87,6 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-builtinmbedtls \
-    --disable-builtinzlib \
     --disable-cg \
     --disable-jack \
     --disable-oss \
