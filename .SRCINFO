@@ -11,7 +11,7 @@ pkgbase = helixnotes-appimage-bin
 	options = !strip
 	source = HelixNotes_1.3.3_amd64.AppImage::https://download.helixnotes.com/releases/v1.3.3/HelixNotes_1.3.3_amd64.AppImage
 	source = helixnotes.desktop
-	sha256sums = 2b056c46d21221ef6b8426b0860838fe5e002f02ce9ef576983961fc9ad9eded
+	sha256sums = b4634e172f7a3b6f61bc57264381dd75697b90cb099ecd60f2db26cea1f8bbff
 	sha256sums = 48f71a140951aa15b99defae687ee8e9462de44847fdf961dfafa1c2ef519856
 
 pkgname = helixnotes-appimage-bin
