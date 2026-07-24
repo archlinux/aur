@@ -1,7 +1,7 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic-bin
 _srcname=hushmic
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire) — prebuilt binary"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('hushmic')
 # bundled ONNX Runtime, and debug extraction has no sources to point at.
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/hushmic-$pkgver-x86_64.tar.gz")
-sha256sums=('05c55191bca4f5e214be16ee7f4e3eb7eb3e9bc27f829452c7c40357a53f286d')
+sha256sums=('33fc13cd2d73cd726ea3579996914bf48798d87c4eaaae6c59c04ad107a56a84')
 
 package() {
   cd "$srcdir/hushmic-$pkgver-x86_64"
