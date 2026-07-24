@@ -7,33 +7,24 @@ pkgname=(
   processing
   processing-examples
 )
-pkgver=4.5.5
-_build=1433
-pkgrel=2
+pkgver=4.5.6
+_build=1434
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
-depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
+depends=(jdk17-temurin ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 makedepends=(gradle)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
         'disable_update_check.patch'
-        'fix_desktop_template.patch'
-        'fix_gradle9_compatibility.patch'
         'no_jdk_download.patch')
-sha256sums=('c196c47f86f18da23276688ce41750d9e1005aac65e7aa2b161ab7d12252f41f'
+sha256sums=('4d7fc0d95fd5c2b51bf7560beaf0cad144a4ee70b18de8a16932767f1e7afeb9'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '3cc6439f82c07cc5f446c08a2d65e34a69a2f661272b672385dfff58a1472bc7'
-            '3ea1b137b198047fa09febe37e86a5cc98978bcc6ee4b85bfcb2512dec708846'
             '7849f17eb7979952309f443abc95f2efe8018324b6a87f1dfb6ab35a0138b835')
 
 prepare() {
-  # Check if OpenJDK 17 executable is actually installed
-  if ! [ -f "/usr/lib/jvm/java-17-openjdk/bin/java" ]; then
-    echo "Error: OpenJDK 17 executable '/usr/lib/jvm/java-17-openjdk/bin/java' is missing."
-    sh -c "exit 1"
-  fi
   # Check if FFmpeg executable is actually installed
   if ! [ -f "/usr/bin/ffmpeg" ]; then
     echo "Error: FFmpeg executable '/usr/bin/ffmpeg' is missing."
@@ -42,12 +33,6 @@ prepare() {
 
   # Symbolic link for not having to repeat the revision number
   ln -sf "${pkgbase}4-processing-$_build-$pkgver" "$pkgbase"
-
-  # Update window class name
-  patch "$pkgbase/build/linux/desktop.template" < fix_desktop_template.patch
-
-  # Upgrade instructions to Gradle 9
-  patch "$pkgbase/app/build.gradle.kts" < fix_gradle9_compatibility.patch
 
   # Don't download JDK and JFX files during build process
   patch "$pkgbase/app/build.gradle.kts" < no_jdk_download.patch
@@ -67,7 +52,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-temurin" gradle createDistributable
 }
 
 package_processing() {
