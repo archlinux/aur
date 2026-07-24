@@ -1,0 +1,7 @@
+[snclient]
+source = "github"
+github = "ConSol-Monitoring/snclient"
+use_max_release = true
+include_prereleases = false
+include_regex = '^v[0-9]+(?:\.[0-9]+)+$'
+prefix = "v"

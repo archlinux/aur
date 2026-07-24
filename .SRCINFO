@@ -1,6 +1,6 @@
 pkgbase = snclient
 	pkgdesc = General-purpose monitoring agent supporting REST, NRPE and Prometheus
-	pkgver = 0.44
+	pkgver = 0.45
 	pkgrel = 1
 	url = https://github.com/ConSol-Monitoring/snclient
 	install = snclient.install
@@ -18,7 +18,7 @@ pkgbase = snclient
 	optdepends = prometheus-node-exporter: node_exporter support
 	backup = etc/logrotate.d/snclient
 	backup = etc/snclient/snclient.ini
-	source = snclient::git+https://github.com/ConSol-Monitoring/snclient.git#tag=v0.44
-	sha256sums = d166f999a3ef0611cfceedea8d9710f5f7e4dac951e65068cadfb546730da87f
+	source = snclient::git+https://github.com/ConSol-Monitoring/snclient.git#tag=v0.45
+	sha256sums = 86308882702c5aab8a3262a6c80a60bb447c6ff04807ef8038c288561ac90db1
 
 pkgname = snclient
