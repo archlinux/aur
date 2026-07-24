@@ -1,7 +1,7 @@
 pkgbase = affine
 	pkgdesc = A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.
-	pkgver = 0.27.2
-	pkgrel = 4
+	pkgver = 0.27.3
+	pkgrel = 1
 	url = https://affine.pro
 	arch = x86_64
 	license = custom:AFFiNE-LICENSE
@@ -21,8 +21,8 @@ pkgbase = affine
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron39
-	provides = affine=0.27.2
-	provides = affine-stable=0.27.2
+	provides = affine=0.27.3
+	provides = affine-stable=0.27.3
 	conflicts = affine-bin
 	options = strip
 	options = !staticlibs
@@ -30,10 +30,10 @@ pkgbase = affine
 	options = !debug
 	options = buildflags
 	options = lto
-	source = AFFiNE-0.27.2::git+https://github.com/toeverything/AFFiNE#tag=v0.27.2
+	source = AFFiNE-0.27.3::git+https://github.com/toeverything/AFFiNE#tag=v0.27.3
 	source = affine.sh
 	source = affine.desktop
-	sha256sums = 8ce10ee143428e7c4fb5f524e9fcd4655f0ae689272dfd661837cf991a4dfab6
+	sha256sums = cc6ee4cd1ddd9475b18042c1d4a6ffa72435e3c76307852e388fb77ce5536da4
 	sha256sums = 25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34
 	sha256sums = 18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b
 

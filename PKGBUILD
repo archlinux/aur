@@ -4,8 +4,8 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=affine
-pkgver=0.27.2
-pkgrel=4
+pkgver=0.27.3
+pkgrel=1
 pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.'
 arch=('x86_64')
 url='https://affine.pro'
@@ -39,7 +39,7 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.desktop"
 )
-sha256sums=('8ce10ee143428e7c4fb5f524e9fcd4655f0ae689272dfd661837cf991a4dfab6'
+sha256sums=('cc6ee4cd1ddd9475b18042c1d4a6ffa72435e3c76307852e388fb77ce5536da4'
             '25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
