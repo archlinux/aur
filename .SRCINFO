@@ -1,0 +1,20 @@
+pkgbase = protonplus-bin
+	pkgdesc = Modern compatibility tools manager (prebuilt)
+	pkgver = 0.5.21
+	pkgrel = 1
+	url = https://github.com/Vysp3r/ProtonPlus
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = json-glib
+	depends = libadwaita
+	depends = libarchive
+	depends = libgee
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	provides = protonplus
+	conflicts = protonplus
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/protonplus-bin-0.5.21/protonplus-bin-0.5.21.tar.zst
+	sha256sums = 144992c7ad6a614cb05742ba2106cdc6a03329631fd64905932e11dd3636d7f2
+
+pkgname = protonplus-bin
