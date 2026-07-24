@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.14159265
+pkgver=3.141592653
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -34,6 +34,7 @@ optdepends=(
     'brltty: Braille display support'
     'espeak-ng: Text-to-speech synthesis'
     'audacity: Advanced audio editing'
+    'mediainfo: Track metadata lookups'
     'mplayer: Media player'
     'soundconverter: Audio converter'
     'yt-dlp: Download media from online sources'
@@ -112,9 +113,10 @@ package() {
         fi
     fi
     
-    # Install scripts
+    # Install the server-sync script templates (executable: legacy call
+    # sites exec the extensionless ones directly)
     if [ -d "scripts" ]; then
-        install -m644 scripts/* "$pkgdir/usr/share/xfb/scripts/" 2>/dev/null || true
+        install -m755 scripts/serverFtpCmds* "$pkgdir/usr/share/xfb/scripts/" 2>/dev/null || true
     fi
     
     # Install additional directories
@@ -149,12 +151,14 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.14159265:"
-    echo "  - Gapless playback: the next track is preloaded and handed off seamlessly"
-    echo "  - Auto-mix: one-click crossfade prep for a selection or the whole playlist"
-    echo "  - Themes (Light/Dark/Midnight/Studio + accent color) and a dockable layout"
-    echo "  - Track artwork in the playlist and a now-playing cover panel"
-    echo "  - Torrent privacy hardening: kill-switch, consent, DHT/PEX off, VPN warning"
+    echo "New in v3.141592653:"
+    echo "  - Accessibility: the screen reader and audio feedback services now"
+    echo "    actually run; announcements carry their text to the reader"
+    echo "  - Keyboard: play/pause/stop/next and add-to-playlist shortcuts, plus a"
+    echo "    Playback menu; Enter adds the selected track to the playlist"
+    echo "  - Help > Tutorial for Blind Users, and Accessibility Preferences"
+    echo "  - Track durations are detected reliably (exiftool or ffmpeg) and"
+    echo "    missing ones are backfilled; readable music list column headers"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
