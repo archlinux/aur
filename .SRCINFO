@@ -1,6 +1,6 @@
 pkgbase = python-migate
 	pkgdesc = migate is a simplified Xiaomi authentication gateway for Python projects
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/offici5l/migate
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-migate
 	depends = python-rich
 	provides = python-migate
 	conflicts = python-migate
-	source = migate::git+https://github.com/offici5l/migate.git#tag=v1.1.8
-	sha256sums = 5d06fd312d3869e638943b56b8779de846c6103d683ad12dd599173281a8b896
+	source = migate::git+https://github.com/offici5l/migate.git#tag=v1.1.9
+	sha256sums = 2d321fa8508326edcdbefb7c6da85c4607d9455524591a963d09de7ba024b40d
 
 pkgname = python-migate
