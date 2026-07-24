@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Windows Hello-style face login for Linux
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -15,7 +15,7 @@ pkgbase = irlume
 	depends = tpm2-tss
 	depends = pam
 	optdepends = fprintd: fingerprint companion factor
-	source = git+https://github.com/archledger/irlume.git#tag=v0.6.0
+	source = git+https://github.com/archledger/irlume.git#tag=v0.6.1
 	sha256sums = SKIP
 
 pkgname = irlume
