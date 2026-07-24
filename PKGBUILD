@@ -1,15 +1,14 @@
 # Maintainer: DBeidachazi
 pkgname=liblhdcv5
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AOSP LHDC v5 Bluetooth encoder library for Linux"
 arch=('x86_64')
 url="https://github.com/DBeidachazi/liblhdcv5"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'gcc' 'make' 'git')
-options=('!strip')
-source=("git+https://github.com/DBeidachazi/liblhdcv5.git")
+source=("git+https://github.com/DBeidachazi/liblhdcv5.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
