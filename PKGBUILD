@@ -1,7 +1,7 @@
 # Maintainer: skerrix <eskeredzoker371@gmail.com>
 pkgname=rfetch
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple fetch tool written in Rust"
 arch=('x86_64')
 url="https://github.com/skerrixx/rfetch"
