@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CAD Viewer
+GenericName=DWG/DXF Viewer
+Comment=View AutoCAD DWG/DXF drawings
+Exec=cad-viewer %U
+Icon=cad-viewer
+Terminal=false
+Categories=Graphics;Engineering;Viewer;
+MimeType=image/vnd.dwg;image/vnd.dxf;
+StartupWMClass=cad-viewer

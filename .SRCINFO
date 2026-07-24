@@ -1,0 +1,22 @@
+pkgbase = cad-viewer
+	pkgdesc = Browser-based DWG/DXF CAD viewer, packaged as a desktop app on system Electron
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://github.com/mlightcad/cad-viewer
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = electron
+	depends = bash
+	depends = hicolor-icon-theme
+	source = cad-viewer-1.5.8.tar.gz::https://github.com/mlightcad/cad-viewer/archive/refs/tags/v1.5.8.tar.gz
+	source = cad-viewer-main.js
+	source = cad-viewer.desktop
+	source = cad-viewer.sh
+	sha256sums = 47ab9ddae7d009ae1ae59c65f22cc6d93aa9d7953886e5cdbe517a84b4dc767c
+	sha256sums = 69172019cdfb40c8777d336ecd083ddc7892a938a4e3161d8f3095b69fa06fef
+	sha256sums = f5c19db2b6aa8357b3a1f34e5ff2bdddf19d4a8fcf43ccac4f12e651b68a70eb
+	sha256sums = a92dffbe01ca171a6a7e26a92d3254f0be24da0d81b942531047ffdd18e5bb72
+
+pkgname = cad-viewer
