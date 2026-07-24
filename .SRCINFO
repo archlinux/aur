@@ -9,7 +9,7 @@ pkgbase = plasma-visual
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = plasma-visual-1.0.0.tar.gz::https://github.com/wraithtcc/plasma/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/wraithtcc/plasma/archive/refs/tags/1.0.0.zip
 	sha256sums = SKIP
 
 pkgname = plasma-visual

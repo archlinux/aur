@@ -9,7 +9,7 @@ url="https://github.com/wraithtcc/plasma"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/wraithtcc/plasma/archive/refs/tags/1.0.0.zip")
 sha256sums=('SKIP')
 
 build() {
