@@ -1,6 +1,6 @@
 pkgbase = pypy3-matplotlib
 	pkgdesc = A fast implementation of the Cassowary constraint solver
-	pkgver = 3.11.0
+	pkgver = 3.11.1
 	pkgrel = 1
 	url = https://matplotlib.org
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = pypy3-matplotlib
 	depends = pypy3-pyparsing
 	depends = pypy3-dateutil
 	depends = qhull
-	source = matplotlib-3.11.0::git+https://github.com/matplotlib/matplotlib.git?signed#tag=v3.11.0
+	source = matplotlib-3.11.1::git+https://github.com/matplotlib/matplotlib.git?signed#tag=v3.11.1
 	validpgpkeys = EB8322187FD451192E430A7279B3FEC456F12599
-	sha512sums = ea5fca833cfbc6dd1611be7a1deeb5888481be8ad3ce5feff62728ab0778b3193ba9c890dcc113429a0b36ed27395de32bf1c2596aa2e287b2cf19568b2edca9
+	sha512sums = cea4cd789daaea1cc45e500bc2422b6ae1edf7590137e286a994871ac782f288978e1f87b8d6ce7c936d8cff10f1054f32c38891dcf1a09fd878c4322f5b9c37
 
 pkgname = pypy3-matplotlib
