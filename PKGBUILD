@@ -5,8 +5,7 @@
 
 pkgname=python-cohere
 pkgdesc='Python Library for Accessing the Cohere API'
-pkgver=7.0.7
-_pkgver=7.07 # git tag doesn't match pyproject.toml
+pkgver=7.0.8
 pkgrel=1
 url='https://github.com/cohere-ai/cohere-python'
 arch=(any)
@@ -37,17 +36,17 @@ optdepends=(
   'python-boto3: AWS client'
   'python-botocore: AWS client'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz")
-b2sums=('cd7be5ac34b34e16708663541a903c1230498b816bca38bbf9fcffe493c15593a9e512bb859bd253a42a5bf42d8fd3be6b863d5834731302c0827da60b70ed32')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+b2sums=('f49732ba68c53463b4d8c72b86777d50fa15526f94b27cbfc3ad1f984eefa06ed200632a7083abbe53138abe95af2522227b2b97e9015e72f92b60cca349aa7b')
 
 build() {
-  cd "cohere-python-${_pkgver}"
+  cd "cohere-python-${pkgver}"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "cohere-python-${_pkgver}"
+  cd "cohere-python-${pkgver}"
 
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
@@ -72,7 +71,7 @@ check() {
 }
 
 package() {
-  cd "cohere-python-${_pkgver}"
+  cd "cohere-python-${pkgver}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
