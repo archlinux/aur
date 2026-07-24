@@ -1,6 +1,6 @@
 # Maintainer: Haseeb Khalid <haseebkhalid1507@gmail.com>
 pkgname=myx
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A lean, beautiful terminal Spotify player"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'alsa-lib' 'openssl')
 makedepends=('cargo' 'alsa-lib' 'openssl')
 options=(!lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bc3ae7273568172c83feaafadc2ccc4b9d72f5dd46ffea0aa8b07f2e573f5b6')
+sha256sums=('2c7ee4b2775bcb04105afd029f86b8f34662630b21d6349d85b1c7e4e42149d7')
 
 prepare() {
   cd "Myx-$pkgver"
