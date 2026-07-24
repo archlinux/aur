@@ -13,7 +13,7 @@ depends=('gtk4' 'libadwaita' 'hicolor-icon-theme')
 optdepends=('tailscale: provides the daemon that manages the connection')
 provides=('trayscale')
 conflicts=('trayscale')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('1b24f332a64a682e972e94fecfc11a7d719a1c74c5fd897c45c08cbd17d0ae93')
 
 package() {
