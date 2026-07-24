@@ -1,0 +1,18 @@
+pkgbase = leggio
+	pkgdesc = Sheet music viewer built for use at arm's length
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MrGilfy/leggio
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4
+	depends = libadwaita
+	depends = poppler-glib
+	depends = hicolor-icon-theme
+	source = https://github.com/MrGilfy/leggio/releases/download/v0.1.0/leggio-0.1.0.tar.gz
+	sha256sums = bae898b91aafa3e57290da13d52e854e94bf104c8c1452954c1776f08b4485ee
+
+pkgname = leggio
