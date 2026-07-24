@@ -1,6 +1,6 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0')
 depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
 makedepends=('rust' 'cargo' 'python' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a4d0933ae0b1a41c57d15e7bb04202d35f4f92bd9246ad7edc8b451eccce3e6')
+sha256sums=('9ad5f3ed50d9897a28f065f2690699de52ef2c572596c27b207d9a7a51ed4395')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
@@ -56,7 +56,7 @@ package() {
   # Tray status-icon ladder (three SNI names x eight sizes); explicit installs
   # so a missing size or state fails packaging instead of shipping incomplete.
   for _size in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
-    for _icon in hushmic-tray hushmic-tray-off hushmic-tray-error; do
+    for _icon in hushmic-tray hushmic-tray-off hushmic-tray-bypass hushmic-tray-mute hushmic-tray-error; do
       install -Dm644 "packaging/tray/hicolor/$_size/status/$_icon.png" \
         "$pkgdir/usr/share/icons/hicolor/$_size/status/$_icon.png"
     done
