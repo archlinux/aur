@@ -1,7 +1,7 @@
 
   pkgname=ferrumpix-bin
   pkgver=0.9.11
-  pkgrel=5
+  pkgrel=6
   pkgdesc='Desktop photo manager and image editor built with Avalonia UI'
   arch=('x86_64')
   url='https://github.com/Bitpainter75/FerrumPix'
@@ -16,7 +16,7 @@
           "io.github.Bitpainter75.FerrumPix.desktop"
           "io.github.Bitpainter75.FerrumPix.png")
   noextract=("FerrumPix-${pkgver}-${pkgrel}-linux-x64-aur.zip")
-sha256sums=('aa84bc7d76586e0d4bc9eaa28e34af9a41db484f00d9e33908a5e11d4383e928'
+sha256sums=('cc4152dd5aae08665cbbdcf2ce2bb5e1b87f70250af55a0e5618f0008f6aacb6'
             '02a23d27b0ea478bc951de3baebc4b30ec303f679fb137322fdf56b957104321'
             'c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067')
 
