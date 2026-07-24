@@ -15,7 +15,15 @@ update_aur:
     git config --global user.email "bot@gitlab.com"
     git config --global --add safe.directory '*'
     
-    git clone ssh://aur@aur.archlinux.org/$(basename $(pwd)).git aur_repo_temp
+    # 1. Clonar con reintentos (Si la red falla, intenta 5 veces)
+    for i in {1..5}; do
+      git clone ssh://aur@aur.archlinux.org/$(basename $(pwd)).git aur_repo_temp && break
+      echo "Clone failed, retrying in 15 seconds..."
+      rm -rf aur_repo_temp
+      sleep 15
+    done
+    [ -d aur_repo_temp ] || { echo "Failed to clone after 5 retries"; exit 1; }
+    
     cp PKGBUILD aur_repo_temp/
     cd aur_repo_temp
     useradd -m builduser
@@ -31,14 +39,17 @@ update_aur:
     sudo -u builduser makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
     
-    # Intentar hacer commit, si no hay cambios, salir exitosamente
     git commit -m "Update to ${NEW_VER}" || exit 0
     
-    # Si el push falla porque alguien más subió cambios, descargarlos, fusionarlos y reintentar
-    git pull --rebase origin master || git pull origin master --no-edit -X ours
-    
-    # Empujar al AUR
-    git push origin master
+    # 2. Hacer Push con reintentos (Si el AUR bloquea, intenta 5 veces)
+    for i in {1..5}; do
+      git push origin master && exit 0
+      echo "Push failed, pulling and retrying in 15 seconds..."
+      git pull --rebase origin master || git pull origin master --no-edit -X ours
+      sleep 15
+    done
+    echo "Push failed after 5 retries"
+    exit 1
   only:
     - schedules
     - web
