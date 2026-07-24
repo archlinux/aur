@@ -1,5 +1,5 @@
---- /tmp/wshowkeys/main.c	2026-07-25 01:05:07.265401021 +0800
-+++ /home/ash/PKGBUILD/wshowkeys-mao-rounded/src/wshowkeys-src/main.c	2026-07-24 23:08:43.000000000 +0800
+--- a/main.c
++++ b/main.c
 @@ -208,6 +208,7 @@
  
  	// 超时后不立刻清屏，先打标记，等下一次按键才真正清除
