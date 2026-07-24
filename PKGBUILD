@@ -4,7 +4,7 @@ _release_url='https://github.com/ThisSeanZhang/landscape/releases/download'
 
 pkgname=landscape-bin
 pkgver=0.21.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The goal is to easily configure your favorite Linux distribution as a router using the web UI"
 arch=('aarch64' 'loongarch64' 'riscv64' 's390x' 'x86_64')
 url="https://github.com/ThisSeanZhang/landscape"
