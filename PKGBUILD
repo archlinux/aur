@@ -1,6 +1,6 @@
 pkgname=rfetch
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple fetch tool written in Rust"
 arch=('x86_64')
 url="https://github.com/skerrixx/rfetch"
