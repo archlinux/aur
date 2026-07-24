@@ -1,17 +1,20 @@
 pkgbase = linear-cli-schpet-bin
 	pkgdesc = Linear without leaving the command line: list, start, and create PRs for linear issues. Agent friendly.
-	pkgver = 2.1.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/schpet/linear-cli
 	arch = x86_64
 	arch = aarch64
-	license = ISC
+	license = MIT
 	depends = glibc
 	depends = gcc-libs
+	provides = linear-cli
+	conflicts = linear-cli
+	conflicts = linear-cli-schpet
 	options = !strip
-	source_x86_64 = linear-cli-schpet-bin-2.1.1-x86_64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.1.1/linear-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 68caea4b494f639effa6612662bb628ba7f3f8cd76ddbce7b2a9c962bb014a64
-	source_aarch64 = linear-cli-schpet-bin-2.1.1-aarch64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.1.1/linear-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = b8a75e22662460e870ae2575a2b7510a0d0c4529ed642dad3d0bd175323c7e52
+	source_x86_64 = linear-cli-schpet-bin-2.3.0-x86_64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.3.0/linear-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = b30ce3d01920d74911c92e02a7241cd5faaf30d2a8bce343b9a1e4e422dbc4f2
+	source_aarch64 = linear-cli-schpet-bin-2.3.0-aarch64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.3.0/linear-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a9bc2d733d15e57e9bcc62930f0a7bf79d7035f00771a1b16624fa2a9f7336c2
 
 pkgname = linear-cli-schpet-bin
