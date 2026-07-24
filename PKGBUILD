@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=grub-customizer
-pkgver=5.2.5
+pkgver=5.2.8
 pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
@@ -36,9 +36,9 @@ source=(
   https://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/${pkgname}_$pkgver.tar.gz
   grub.cfg
 )
-sha512sums=('d4b68ff5ce690d8a03e1c0355f05eed023a08ce42668d822ef88042e4322ff63825a67dbdb64792e028ae0ea0614387b8d5f05a7f26275c19fb19a6ddcb17a27'
+sha512sums=('25d0816d7a8b20a792cf174bf5fd6c546bc69a270ebaedb9f7010a8c9e6fd10627da960c56e191b0f4bf53598dc9784599fc3f53798fcf1cbd8a3c9d6011f6e2'
             '40156b6546a4d7e8abbef2ab3dece0481a4a2ca276b9a15c5a7bf7e3b11004335b6a747be391b5c1accb35c9e9e3bc628e571cd245e5f2980e5ecd6a3ceb24f5')
-b2sums=('3ea75258a24f93eb3048274c7db25bcce44a44d41a00880953e8e3d6ca082163b1f0398388ce28b878832545b322480b0150687b647ef7cd33e73a22c5938dd0'
+b2sums=('1c23cebe961149907fdd9caf51c2583b204c22a6774f455b1fad8a412e4541328d140b92caaaa852b1308e56a43fb19a016adf8fe83da6dd52e29a8d6e4bbe40'
         '549df423c3e3bb4f59632a1122bb247ab0e3fb93de16053f66e44507e84c0638200634df18a92b1161e5c2c6e39ee8c0829b9fdbc422e1531ddba02fc5fc0731')
 
 build(){
