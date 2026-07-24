@@ -16,7 +16,7 @@ pkgbase = wiiudownloader-bin
 	depends = fontconfig
 	provides = wiiudownloader
 	conflicts = wiiudownloader
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/wiiudownloader-bin-2.98/wiiudownloader-bin-2.98.tar.zst
+	source = wiiudownloader-bin-2.98-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/wiiudownloader-bin-2.98/wiiudownloader-bin-2.98.tar.zst
 	sha256sums = 5b2bd57e6531aee1774ca3b9acc70bc402eab585a2532a666f4484584412622e
 
 pkgname = wiiudownloader-bin
