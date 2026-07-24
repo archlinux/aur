@@ -1,7 +1,7 @@
 # Maintainer: Rippa The Hutt <iacoporippagmail@duck.com>
 
 pkgname=mcomix3
-pkgver=3.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A user-friendly, customizable comic book image viewer (Python 3 / GTK3 port)"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
     'shared-mime-info'
 )
 source=("MComix3_v${pkgver}.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v${pkgver}/MComix3_v${pkgver}.tar.gz")
-sha256sums=('159dc9c336052ca1821e1ef9b61a932ca1789615fdd4ddbb72b86b1314ba258e')
+sha256sums=('47ac4aa244506956fc82a7620a95060ed0b3ec3953ffbb9b2480f8245ed1e442')
 
 package() {
     cd "${srcdir}/MComix3_v${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = mcomix3
 	pkgdesc = A user-friendly, customizable comic book image viewer (Python 3 / GTK3 port)
-	pkgver = 3.6
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/rippa-the-hutt/mcomix3
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mcomix3
 	optdepends = p7zip: for 7Zip archive support
 	optdepends = lha: for LHA/LZA archive support
 	optdepends = mupdf-tools: for PDF support
-	source = MComix3_v3.6.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v3.6/MComix3_v3.6.tar.gz
-	sha256sums = 159dc9c336052ca1821e1ef9b61a932ca1789615fdd4ddbb72b86b1314ba258e
+	source = MComix3_v3.6.1.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v3.6.1/MComix3_v3.6.1.tar.gz
+	sha256sums = 47ac4aa244506956fc82a7620a95060ed0b3ec3953ffbb9b2480f8245ed1e442
 
 pkgname = mcomix3
