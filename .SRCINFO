@@ -23,7 +23,7 @@ pkgbase = planify-bin
 	provides = planify
 	conflicts = planify
 	conflicts = elementary-planner
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/planify-bin-4.19.5/planify-bin-4.19.5.tar.zst
+	source = planify-bin-4.19.5-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/planify-bin-4.19.5/planify-bin-4.19.5.tar.zst
 	sha256sums = 563a80c7660b207f6c139e0f78bcb49631e8369be29369a7a984b022816b8c0f
 
 pkgname = planify-bin

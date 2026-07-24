@@ -14,7 +14,7 @@ depends=('evolution-data-server' 'gtk4' 'gtksourceview5' 'icu' 'json-glib'
          'libsecret' 'libsoup3' 'libspelling' 'sqlite' 'hicolor-icon-theme')
 provides=('planify')
 conflicts=('planify' 'elementary-planner')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('563a80c7660b207f6c139e0f78bcb49631e8369be29369a7a984b022816b8c0f')
 
 package() {
