@@ -1,6 +1,6 @@
 pkgbase = coderabbit
 	pkgdesc = AI-powered code review CLI tool
-	pkgver = 0.6.5
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://www.coderabbit.ai/cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = coderabbit
 	depends = git
 	depends = libsecret
 	options = !strip
-	source_x86_64 = coderabbit-0.6.5-x86_64.zip::https://cli.coderabbit.ai/releases/0.6.5/coderabbit-linux-x64.zip
-	sha256sums_x86_64 = 8280dcf8228d087b78fbe8955b8c5ef3f83f73fd46d9a009453948547d304a99
-	source_aarch64 = coderabbit-0.6.5-aarch64.zip::https://cli.coderabbit.ai/releases/0.6.5/coderabbit-linux-arm64.zip
-	sha256sums_aarch64 = f056120ef8a1eb641cfb9b40bbd36dad2835f341a1dca09ea7767a94c1e8309b
+	source_x86_64 = coderabbit-0.7.0-x86_64.zip::https://cli.coderabbit.ai/releases/0.7.0/coderabbit-linux-x64.zip
+	sha256sums_x86_64 = a37038e6efa5cc5913af6aced550a582d9c9cdb91b4a0486f9d350ef04faaaac
+	source_aarch64 = coderabbit-0.7.0-aarch64.zip::https://cli.coderabbit.ai/releases/0.7.0/coderabbit-linux-arm64.zip
+	sha256sums_aarch64 = 3e3def15da7f17d601ff90e3d1d81ed93b4989c6ae7509e05926d606698158d4
 
 pkgname = coderabbit
