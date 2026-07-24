@@ -2,7 +2,7 @@
 
 _appname=groupfolders
 pkgname=nextcloud-app-groupfolders
-pkgver=22.0.3
+pkgver=22.0.4
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
@@ -13,7 +13,7 @@ source=(
     "${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "npm-v12-unknown-deps-flag-fix.patch"
 )
-sha512sums=('5e7abfe7b9380901b38b819fe81f9a688a93bf713a665321c1febcd79b0b15d5acce9b9b227e521ab316e39e28efb0a961a8e0884cad215af09cabd6db3390f1'
+sha512sums=('ff2b90b29a96378cbd708fe750ed7e0a7e8a42848f7a0c9615f4255f7edef28d6ad6386ab5420ef176d6d9209888623ab7dedc5181f042256c7b97f5f26d0f22'
             '882a51e0593e62d3e39fb72ad56fe5b576550125eba49eda41bf4b9ef1c3f494f4006630e800804b3a9828f075388decda32f7639d074ad24120d3eefab25b62')
 
 # Boilerplate nextcloud version calculation adopted from other packages
