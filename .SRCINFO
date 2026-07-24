@@ -1,6 +1,6 @@
 pkgbase = bbsi
 	pkgdesc = Several scripts to facilitate some everyday tasks
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/bbsi
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = bbsi
 	depends = net-tools
 	depends = python-virtualenv
 	depends = python-pip
-	source = bbsi-0.4.1.tar.gz::https://gitlab.com/os-18/bbsi/-/archive/v0.4.1/bbsi-v0.4.1.tar.gz
-	sha256sums = 04cca484f23cfbbe2ebe91a4a3ae32ed1f1408e17126c03519b73ac6229995ad
+	source = bbsi-0.5.0.tar.gz::https://gitlab.com/os-18/bbsi/-/archive/v0.5.0/bbsi-v0.5.0.tar.gz
+	sha256sums = 5d138465fe3fb198f737775120d6caf824415b67d454882a5716115ed02e4236
 
 pkgname = bbsi
