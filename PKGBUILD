@@ -10,7 +10,7 @@ depends=('gcc-libs' 'alsa-lib' 'openssl')
 makedepends=('cargo' 'alsa-lib' 'openssl')
 options=(!lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('974d9f33f74d63ccae90cfbbf60501ad69a86bb6be40f651d6fac7a6fd5dcaec')
+sha256sums=('a2d73d3fad8abe543025e55cac96b585ae2f52d5f3bf42740d55c0e5228a7d4a')
 
 prepare() {
   cd "Myx-$pkgver"

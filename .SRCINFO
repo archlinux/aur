@@ -14,6 +14,6 @@ pkgbase = myx
 	depends = openssl
 	options = !lto
 	source = https://github.com/HaseebKhalid1507/Myx/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 974d9f33f74d63ccae90cfbbf60501ad69a86bb6be40f651d6fac7a6fd5dcaec
+	sha256sums = a2d73d3fad8abe543025e55cac96b585ae2f52d5f3bf42740d55c0e5228a7d4a
 
 pkgname = myx
