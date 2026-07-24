@@ -1,4 +1,4 @@
-# Maintainer: Guillaume Horel <ghorel@lmcg.com>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=python-perspective
 _pkgname=perspective
