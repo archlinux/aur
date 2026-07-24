@@ -1,6 +1,6 @@
 pkgbase = wshowkeys-mao-rounded
 	pkgdesc = Displays keys being pressed on a Wayland session (DreamMaoMao fork + rounded corners)
-	pkgver = r43.521a0c8
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/DreamMaoMao/wshowkeys
 	arch = x86_64

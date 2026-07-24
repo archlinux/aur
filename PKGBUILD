@@ -1,7 +1,7 @@
 # Maintainer: ash <ash@archlinux>
 pkgname=wshowkeys-mao-rounded
 _pkgname=wshowkeys
-pkgver=r43.521a0c8
+pkgver=0.1
 pkgrel=1
 pkgdesc='Displays keys being pressed on a Wayland session (DreamMaoMao fork + rounded corners)'
 arch=('x86_64' 'armv7h' 'aarch64')
