@@ -12,7 +12,7 @@ depends=(
     'python'
     'python-pip'
     'python-fastapi'
-    'python-uvicorn'
+    'uvicorn'
     'python-pydantic'
     'python-dotenv'
     'python-requests'
