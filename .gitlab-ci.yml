@@ -3,7 +3,7 @@ image: archlinux:latest
 update_aur:
   script: |
     set -x
-    pacman -Sy --noconfirm git base-devel openssh curl grep
+    pacman -Sy --noconfirm git base-devel openssh curl grep jq
     mkdir -p ~/.ssh
     chmod 700 ~/.ssh
     ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
@@ -19,10 +19,13 @@ update_aur:
     useradd -m builduser
     echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
     chown -R builduser:builduser .
-    source ./PKGBUILD
-    NEW_VER=$(pkgver)
+    
+    # Obtener la versión usando jq (100% infalible)
+    NEW_VER=$(curl -sL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
+    
     echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
-    if [ -z "$NEW_VER" ]; then echo "ERROR: No se obtuvo version"; exit 1; fi
+    if [ -z "$NEW_VER" ] || [ "$NEW_VER" = "null" ]; then echo "ERROR: No se obtuvo version"; exit 1; fi
+    
     sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
     sudo -u builduser makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
