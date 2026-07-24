@@ -37,6 +37,7 @@ package() {
     ln -s /opt/google/chrome-canary/chrome "$pkgdir/usr/bin/google-chrome-canary"
     
     cat > "$pkgdir/usr/share/applications/google-chrome-canary.desktop" <<EOF
+chmod 755 "$pkgdir/usr/share/applications/google-chrome-canary.desktop"
 [Desktop Entry]
 Version=1.0
 Name=Google Chrome Canary
