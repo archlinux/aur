@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-bin
 	pkgdesc = Your anime games, one launcher
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -18,13 +18,14 @@ pkgbase = twintaillauncher-bin
 	depends = libayatana-appindicator
 	depends = mangohud
 	optdepends = gamemode: Feral Interactive gamemode utility
+	optdepends = gamescope: ValveSoftware gamescope session utility
 	provides = twintaillauncher
 	conflicts = twintaillauncher-git
 	conflicts = twintaillauncher
 	options = !debug
-	source_x86_64 = twintaillauncher-2.3.0-amd64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.3.0/twintaillauncher_2.3.0_amd64.deb
-	sha256sums_x86_64 = 82c10ed5d06c481b6c2f444e7795f088afb8a71469032a380f18593cca428858
-	source_aarch64 = twintaillauncher-2.3.0-arm64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.3.0/twintaillauncher_2.3.0_arm64.deb
-	sha256sums_aarch64 = 08f550a7aa766021372cb5db8cbc2f32bb6f05c2fd395d991c18e8a45ade94fc
+	source_x86_64 = twintaillauncher-2.4.0-amd64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.4.0/twintaillauncher_2.4.0_amd64.deb
+	sha256sums_x86_64 = 2f17ca20659e482f07ba933f62f343900ddfa228c5791fead74d7369f0cf8cd9
+	source_aarch64 = twintaillauncher-2.4.0-arm64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.4.0/twintaillauncher_2.4.0_arm64.deb
+	sha256sums_aarch64 = 1a46708380683149fc9df064e8a564ea9465283f74ab09432f1fd1ec5473f4d5
 
 pkgname = twintaillauncher-bin
