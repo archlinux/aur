@@ -1,0 +1,18 @@
+pkgbase = python-divine-type-enforcer
+	pkgdesc = A runtime type validation utility with detailed error reporting
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://pypi.org/project/divine-type-enforcer/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/divine_type_enforcer/divine_type_enforcer-0.1.13.tar.gz
+	sha256sums = 59a26f47b919a76c3930b94eec28a13441cc09303241b4c58b4f406b2e877605
+
+pkgname = python-divine-type-enforcer

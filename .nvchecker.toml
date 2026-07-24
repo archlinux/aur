@@ -1,0 +1,3 @@
+[python-divine-type-enforcer]
+source = "pypi"
+pypi = "divine-type-enforcer"
