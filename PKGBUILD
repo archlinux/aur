@@ -24,8 +24,6 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'ttf-liberation: fix fonts for some PDFs'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
-provides=('google-chrome-dev')
-conflicts=('google-chrome-dev')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
