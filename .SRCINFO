@@ -1,6 +1,6 @@
 pkgbase = comty-desktop-bin
 	pkgdesc = Official Comty Desktop application bin
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/ragestudio/comty
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = comty-desktop-bin
 	depends = electron43
 	source = comty.sh
 	source = comty-desktop.desktop
-	source = https://b2-cdn.ragestudio.net/file/rs-static/comty-desktop/releases/linux/comty-desktop_0.12.0_amd64.deb
+	source = https://b2-cdn.ragestudio.net/file/rs-static/comty-desktop/releases/linux/comty-desktop_0.12.1_amd64.deb
 	sha256sums = 02f24b7cd9558d0d308c3eb5fadb892faffc838162b536a0a713e02cf0c5f363
 	sha256sums = a47c8763f0a4a354ac724ab9c067508f07495ed543568f99f8a36ba33bd35a5d
-	sha256sums = c389d543f06365b3c9dc1c31a01aaa201c085843e317f26e5cd2ff0be5d38154
+	sha256sums = 4d9ed3fa11b656fa8977e2500d4e82e384696072700557302afa47dadd14db27
 
 pkgname = comty-desktop-bin

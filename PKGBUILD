@@ -3,7 +3,7 @@ pkgname=comty-desktop-bin
 
 _electronversion=43
 
-pkgver="0.12.0"
+pkgver="0.12.1"
 pkgrel=1
 pkgdesc="Official Comty Desktop application bin"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     "02f24b7cd9558d0d308c3eb5fadb892faffc838162b536a0a713e02cf0c5f363"
     "a47c8763f0a4a354ac724ab9c067508f07495ed543568f99f8a36ba33bd35a5d"
-    "c389d543f06365b3c9dc1c31a01aaa201c085843e317f26e5cd2ff0be5d38154"
+    "4d9ed3fa11b656fa8977e2500d4e82e384696072700557302afa47dadd14db27"
 )
 
 prepare() {
