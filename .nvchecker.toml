@@ -1,0 +1,3 @@
+[dh-autoreconf]
+source = "debianpkg"
+debianpkg = "dh-autoreconf"
