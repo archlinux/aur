@@ -62,18 +62,21 @@ CONFIG_FILES = [
 ]
 
 
-def log(level, msg, *args, _order=("DEBUG", "INFO", "WARNING", "ERROR")):
+_LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
+
+
+def log(level, msg, *args):
     level = level.upper()
-    if level not in _order:
+    if level not in _LOG_LEVELS:
         raise ValueError(f"unknown log level: {level!r}")
     threshold = (
         os.environ.get("COMFYKICK_LOG")
         or os.environ.get("LOG_LEVEL")
         or "INFO"
     ).upper()
-    if threshold not in _order:
+    if threshold not in _LOG_LEVELS:
         threshold = "INFO"
-    if _order.index(level) < _order.index(threshold):
+    if _LOG_LEVELS.index(level) < _LOG_LEVELS.index(threshold):
         return
     text = msg % args if args else msg
     print(f"{level}: {text}", file=sys.stderr)
