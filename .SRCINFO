@@ -1,6 +1,6 @@
 pkgbase = trae-cn-desktop-bin
 	pkgdesc = 字节跳动推出的AI编程IDE（Trae CN）
-	pkgver = 2.3.56916
+	pkgver = 2.3.59356
 	pkgrel = 1
 	url = https://www.trae.cn/
 	install = trae-cn-desktop-bin.install
@@ -24,23 +24,23 @@ pkgbase = trae-cn-desktop-bin
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	optdepends = org.freedesktop.secrets: Needed for settings sync
 	optdepends = icu69: Needed for live share
-	provides = trae-cn=2.3.56916
+	provides = trae-cn=2.3.59356
 	conflicts = trae-cn
 	conflicts = trae-cn-bin
 	options = !strip
-	source_x86_64 = trae-cn-2.3.56916-x86_64.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.56916/linux/Trae_CN-linux-x64.tar.gz
+	source_x86_64 = trae-cn-2.3.59356-x86_64.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.59356/linux/Trae_CN-linux-x64.tar.gz
 	source_x86_64 = trae-cn.desktop
 	source_x86_64 = trae-cn-url-handler.desktop
 	source_x86_64 = trae-cn-startup.sh
-	sha256sums_x86_64 = 5cc025421213a013af4f5fb831d89de2c21fa4608793a5f62b42f576c70e56b1
+	sha256sums_x86_64 = af696186d199a975c616c3682e58ae7846cead55c01d348c14c3994c8f36a6ce
 	sha256sums_x86_64 = 30c7bcb0c9d3afcdd751f114b154ad09f2fea481abb2c431469368c6d6069b1c
 	sha256sums_x86_64 = e95823c65fb48674878ebb8c99719fbcf3eb9ccb89e61e4d37bd0b5be300b168
 	sha256sums_x86_64 = cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395
-	source_aarch64 = trae-cn-2.3.56916-x86_64.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.56916/linux/Trae_CN-linux-arm64.tar.gz
+	source_aarch64 = trae-cn-2.3.59356-x86_64.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.59356/linux/Trae_CN-linux-arm64.tar.gz
 	source_aarch64 = trae-cn.desktop
 	source_aarch64 = trae-cn-url-handler.desktop
 	source_aarch64 = trae-cn-startup.sh
-	sha256sums_aarch64 = 5cc025421213a013af4f5fb831d89de2c21fa4608793a5f62b42f576c70e56b1
+	sha256sums_aarch64 = af696186d199a975c616c3682e58ae7846cead55c01d348c14c3994c8f36a6ce
 	sha256sums_aarch64 = 30c7bcb0c9d3afcdd751f114b154ad09f2fea481abb2c431469368c6d6069b1c
 	sha256sums_aarch64 = e95823c65fb48674878ebb8c99719fbcf3eb9ccb89e61e4d37bd0b5be300b168
 	sha256sums_aarch64 = cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395
