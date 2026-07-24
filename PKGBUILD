@@ -2,7 +2,7 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=chatgpt-desktop-bin
-pkgver=26.715.21425
+pkgver=26.721.31836
 pkgrel=1
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
@@ -50,7 +50,7 @@ noextract=(
   'electron-v42.3.0-headers.tar.gz'
 )
 
-sha256sums=('e3af7a3b1f14eeaf9b17a410a7b229d1f293f4eafede5f5d396b43c1fc250e50'
+sha256sums=('6c3b9593e1afa1ed574ca609ce228f95f49cdd4ef1cc4e6e87915a3f9e8ef659'
             'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
             '821009f9c1830050d894aef9e61906cb0a537b2000b2d9bbed9985fff1d5e0d0'
@@ -58,10 +58,10 @@ sha256sums=('e3af7a3b1f14eeaf9b17a410a7b229d1f293f4eafede5f5d396b43c1fc250e50'
             '5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d'
             '6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56'
             'edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c'
-            '248654f95bedd3c117af7398955312d7d07ab1bd395f7ce178c1d3ab90327cfb'
+            '5808061449ca8026cc387e8efc2c79f26ffba746c9f326c92162bb573c1f6e43'
             '49ca13daf940980a03179d7d12d45f950df4f033da2089a39d8e3fc4aadc99c7'
             '2ca5f140a91e340266ea663b31cbd197d094a55973b413cb56dcdb88115a07c5'
-            '848c1b012274d9d42c210ea36c73d4e57d280163cd10aa652dd49950bcec4ced')
+            'c39bd410e74539164ec157b38b2d2e8225033b6f630d27d5a97c1638a43b742d')
 
 prepare() {
   cd "${srcdir}"

@@ -34,21 +34,22 @@ const requiredMarkers = [
 ];
 
 const codeArgsPattern =
-  /(?:var |,)([A-Za-z_$][\w$]*)=\(([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*)\)=>\4!=null&&(?:[A-Za-z_$][\w$]*\.)?[A-Za-z_$][\w$]*\(\4\)&&\(\5!=null\|\|\6!=null\)\?[A-Za-z_$][\w$]*\(\{hostConfig:\4,location:\3,remotePath:\6,remoteWorkspaceRoot:\5\}\):[A-Za-z_$][\w$]*\(\2,\3\)[,;]/;
+  /(?:var |,)([A-Za-z_$][\w$]*)=\(([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*)\)=>.{0,400}?\{hostConfig:\4,location:\3,remotePath:\6,remoteWorkspaceRoot:\5\}/;
 
 const openPathPatterns = [
   /async function ([A-Za-z_$][\w$]*)\(e\)\{let t=await [A-Za-z_$][\w$]*\.shell\.openPath\(e\);if\(t\)throw Error\(t\)\}/,
   /async function ([A-Za-z_$][\w$]*)\(e\)\{let\{shell:[A-Za-z_$][\w$]*\}=await import\(`electron`\),[A-Za-z_$][\w$]*=await [A-Za-z_$][\w$]*\.openPath\(e\);if\([A-Za-z_$][\w$]*\)throw Error\([A-Za-z_$][\w$]*\)\}/,
+  /async function ([A-Za-z_$][\w$]*)\(e\)\{let\{shell:[A-Za-z_$][\w$]*\}=await import\(`electron`\),.{0,500}?\.openPath\(/,
 ];
 
 const legacyRegistryPattern =
-  /var ([A-Za-z_$][\w$]*)=\[((?:[A-Za-z_$][\w$]*,?)+)\],([A-Za-z_$][\w$]*)=([A-Za-z_$][\w$]*)\.([A-Za-z_$][\w$]*)\(`open-in-targets`\);/;
+  /var ([A-Za-z_$][\w$]*)=\[([A-Za-z_$][\w$]*(?:,[A-Za-z_$][\w$]*)*)\],([A-Za-z_$][\w$]*)=([A-Za-z_$][\w$]*)\.([A-Za-z_$][\w$]*)\(`open-in-targets`\);/;
 
 const viteRegistryArrayPattern =
-  /var ([A-Za-z_$][\w$]*)=\[((?:[A-Za-z_$][\w$]*,?)+)\];([A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*\(`open-in-targets`\);)/;
+  /var ([A-Za-z_$][\w$]*)=\[([A-Za-z_$][\w$]*(?:,[A-Za-z_$][\w$]*)*)\];([A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*\(`open-in-targets`\);)/;
 
 const viteRegistryMapPattern =
-  /var ([A-Za-z_$][\w$]*)=new Map\(\[((?:[A-Za-z_$][\w$]*,?)+)\]\.flatMap\(/;
+  /var ([A-Za-z_$][\w$]*)=new Map\(\[([A-Za-z_$][\w$]*(?:,[A-Za-z_$][\w$]*)*)\]\.flatMap\(/;
 
 const targetFiles = readJsFiles(buildRoot).filter((file) => {
   const source = readFileSync(file, "utf8");
