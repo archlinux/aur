@@ -7,8 +7,8 @@
 _pkgname=supertux
 pkgname=supertux-git
 
-pkgver=0.6.3.r1780.ga6d3088f2
-pkgrel=3
+pkgver=0.7.0.rev.1.r59.gc9939efa1
+pkgrel=1
 
 pkgdesc="A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game"
 url='https://www.supertux.org'
@@ -16,7 +16,7 @@ url='https://www.supertux.org'
 license=(GPL-3.0-only)
 arch=('x86_64' 'riscv64' 'aarch64' 'i686' 'riscv32' 'armv7h')
 
-depends=('sdl2_image' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'physfs' 'hicolor-icon-theme' 'libraqm')
+depends=('sdl3_image' 'sdl3_ttf' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'physfs' 'hicolor-icon-theme' 'libraqm')
 makedepends=('git' 'cmake' 'boost' 'glm')
 optdepends=(
 	'discord: Discord Rich Presence integration'
