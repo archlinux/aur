@@ -16,9 +16,9 @@
 #   gh attestation verify <file> --repo Shiro836/waydroid-nvidia
 
 pkgname=waydroid-nvidia-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-_tag=v0.1.1
+_tag=v0.1.2
 _waydroid_sha=a33a5c0b31d89d6ce687381104b30aff4dd2d330
 pkgdesc="Waydroid with NVIDIA GPU acceleration (Mesa Venus over vtest socket; needs the nvidia-open kernel modules)"
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
   # waydroid runtime (matches extra/waydroid)
   'lxc' 'python' 'python-gbinder>=1.3.0' 'python-gobject' 'nftables' 'dnsmasq'
   'gtk3' 'python-dbus' 'pulse-native-provider'
+  'binutils' # readelf validates guest ABI and SONAME before setup installs it
   # host Venus renderer
   'libepoxy' 'libdrm' 'mesa' 'libx11' 'expat' 'vulkan-icd-loader'
 )
@@ -52,20 +53,21 @@ source=(
   'waydroid-nvidia-setup'
   'waydroid-nvidia.rules'
 )
-# The release tarballs are flat — extract them into named dirs in prepare().
+# Release guest tarballs preserve Android-relative paths. Both extract into the
+# same guest tree, but own disjoint paths (Mesa/gralloc vs ANGLE/HWC/SF).
 noextract=(
   "waydroid-nvidia-host-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-android-x86_64-$_tag.tar.zst"
   "waydroid-nvidia-guest-prebuilts-$_tag.tar.zst"
 )
-sha256sums=('3c18debb347d58f2dab1c4f361d740fd42db4f29af74b0098da9721cd3165afe'
+sha256sums=('6fa52429ba2dc9c569fea7c339fe8b096c9127e725d40696ccf96f9924d41f3d'
             'e7817beac7e26f7d54b2d9f49c847dab8e137c92e403825829e7abbd0b63c411'
-            'dde71b144a301819d9075614d32422cc22cba11b69ef742b5af6b2f653ced3f7'
-            '7d3fc9b57f24ad23c63eed74b4519c1a849d7e7cc8c51f637810658893a0fc8d'
-            'bdad8c940b8d41f9a56d3ead1c18e9043d6e47c343d8f5ddb56fd108b313dcea'
+            '6372d4f78ff4e9442e32a60d9b1ead11f238124f5acd57a92bbb4fd74c9d61e8'
+            'c0a6ee7a69c6bc6075f7197d6c3cc2e213bf1b061b032f20da6f7441f8704574'
+            '61899f56c203b750d41f7c141a1ee264cb68241748cc9cda512ed45f2997cbd1'
             '4bc083ac6fc8d0d0fd31546f5abd9912ca1304571d5a6c9ee42351b1e745193f'
             '501db3b266f8a49f643d4054ba948ba40fcefe0fee1f3647bff955184acf533e'
-            '44f8934b3ff110f8b69909aed5caf18b4833fd3daa9ab1c69aff745e501d326b'
+            'd56c2b9a8cb9ac2f4afd1afaebfa877171e78ad25fc666d5a46da5cc67db2083'
             'cdceadba519c3e6dada147c1a628ca64bf7f49993f84f50cc9a52da57963c9fe')
 
 prepare() {
@@ -87,10 +89,35 @@ package() {
     -t "$pkgdir/usr/lib/waydroid-nvidia"
   install -Dm755 host/libvirglrenderer.so.1 -t "$pkgdir/usr/lib/waydroid-nvidia"
 
-  # 3. guest stack (waydroid-nvidia-setup copies these into /var/lib/waydroid)
-  install -Dm644 guest/*.so -t "$pkgdir/usr/lib/waydroid-nvidia/guest"
-  [ -f guest/surfaceflinger ] && \
-    install -Dm755 guest/surfaceflinger -t "$pkgdir/usr/lib/waydroid-nvidia/guest"
+  # 3. guest stack, preserving the Android-relative lib/lib64 split. Keep this
+  # allowlist explicit so a malformed release cannot silently flatten or mix
+  # ELF32 and ELF64 libraries with identical names.
+  local rel
+  local guest_libs=(
+    vendor/lib/hw/vulkan.virtio.so
+    vendor/lib/egl/libEGL_angle.so
+    vendor/lib/egl/libGLESv1_CM_angle.so
+    vendor/lib/egl/libGLESv2_angle.so
+    vendor/lib64/hw/vulkan.virtio.so
+    vendor/lib64/egl/libEGL_angle.so
+    vendor/lib64/egl/libGLESv1_CM_angle.so
+    vendor/lib64/egl/libGLESv2_angle.so
+    vendor/lib64/libgbm_mesa_wrapper.so
+    vendor/lib64/hw/hwcomposer.waydroid.so
+  )
+  for rel in "${guest_libs[@]}"; do
+    if [[ ! -f "guest/$rel" ]]; then
+      printf 'waydroid-nvidia-bin: required guest payload missing: %s\n' "$rel" >&2
+      return 1
+    fi
+    install -Dm644 "guest/$rel" "$pkgdir/usr/lib/waydroid-nvidia/guest/$rel"
+  done
+  [[ -f guest/system/bin/surfaceflinger ]] || {
+    printf 'waydroid-nvidia-bin: required guest payload missing: system/bin/surfaceflinger\n' >&2
+    return 1
+  }
+  install -Dm755 guest/system/bin/surfaceflinger \
+    "$pkgdir/usr/lib/waydroid-nvidia/guest/system/bin/surfaceflinger"
 
   # 4. host integration
   install -Dm644 wd-venus.service "$pkgdir/usr/lib/systemd/user/wd-venus.service"
