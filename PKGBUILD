@@ -2,7 +2,7 @@
 
 pkgname=floating-sandbox
 pkgver=1.20.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mass-spring network in C++, simulating physical bodies floating in water and sinking"
 arch=('x86_64')
 url="https://github.com/GabrieleGiuseppini/Floating-Sandbox"
@@ -13,18 +13,17 @@ install=$pkgname.install
 depends=(
     'gtk3'
     'libx11'
-    'glu'
     'openal'
     'libvorbis'
+    'libsm'
     'flac'
     'libpng'
+    'libnotify'
     'libjpeg-turbo'
-    'zlib'
 )
 
 makedepends=(
     'cmake'
-    'sfml'
     'git'
     'make'
     'gcc'
@@ -59,7 +58,7 @@ prepare() {
     git submodule update --init --recursive
 
     cd "${srcdir}/Floating-Sandbox-${pkgver}"
-    # Patches support for custom
+    # Patches support for custom ships directory using env var
     patch -Np1 -i "${srcdir}/custom-ships-dir.patch"
 
     # Create custom UserSettings.cmake to setup correct build environment
