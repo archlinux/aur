@@ -1,12 +1,12 @@
 # Maintainer: anon
 
 pkgname=t3code-nightly-bin
-pkgver=0.0.29_nightly.20260723.887
+pkgver=0.0.29_nightly.20260724.889
 pkgrel=1
 pkgdesc='T3 Code nightly desktop app packaged from the upstream AppImage'
 arch=('x86_64')
-_upstream_tag='v0.0.29-nightly.20260723.887'
-_upstream_version='0.0.29-nightly.20260723.887'
+_upstream_tag='v0.0.29-nightly.20260724.889'
+_upstream_version='0.0.29-nightly.20260724.889'
 _appimage_name="T3-Code-${_upstream_version}-x86_64.AppImage"
 url='https://t3.codes'
 license=('MIT')
@@ -51,7 +51,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  'dc25902fd79192303b99365cbcdc97e955f2323d99ea192e86e671da51c7ef28'
+  '5151247c4dce2f209cc9f0da8ab09d425243fe5de09a1b075085c9ad51ffb425'
   '52c86008b11f90f36b8a8f4cc43b1352d5fda9084c6e5691b806f5bca1a968b6'
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
 )
