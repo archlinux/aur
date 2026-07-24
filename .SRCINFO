@@ -1,6 +1,6 @@
 pkgbase = rust-socksd
 	pkgdesc = A high-performance SOCKS5 and HTTP proxy server written in Rust
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/quintusl/rust-socksd
 	install = rust-socksd.install
@@ -14,7 +14,7 @@ pkgbase = rust-socksd
 	depends = gcc-libs
 	backup = etc/rust-socksd/config.yml
 	backup = etc/rust-socksd/users.yml
-	source = rust-socksd-0.3.0.tar.gz::https://github.com/quintusl/rust-socksd/archive/v0.3.0.tar.gz
+	source = rust-socksd-0.3.1.tar.gz::https://github.com/quintusl/rust-socksd/archive/v0.3.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = rust-socksd

@@ -1,6 +1,6 @@
 # Maintainer: Quintus Leung <quintusl@gmail.com>
 pkgname=rust-socksd
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A high-performance SOCKS5 and HTTP proxy server written in Rust"
 arch=('x86_64' 'i686' 'aarch64')
