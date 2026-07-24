@@ -486,6 +486,15 @@ def launch_comfyui(config, extracted_dir):
 
 
 def main():
+    if sys.version_info < (3, 12):
+        log(
+            "ERROR",
+            "Python 3.12+ is required (detected %d.%d).",
+            sys.version_info.major, sys.version_info.minor,
+        )
+    if shutil.which("uv") is None:
+        log("ERROR", "'uv' is not installed or not in PATH.")
+
     log("INFO", "Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
 
     check_user_config(CONFIG_FILES[-2])
