@@ -1,0 +1,15 @@
+pkgbase = cproj
+	pkgdesc = A lightweight project manager for C and C++
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/BradBenJoya/CProj
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = cmake
+	depends = ninja
+	depends = git
+	source = https://github.com/BradBenJoya/CProj/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = cproj
