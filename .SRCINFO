@@ -37,7 +37,7 @@ pkgbase = bottles-bin
 	optdepends = xterm: fallback terminal for "Run executable in terminal"
 	provides = bottles
 	conflicts = bottles
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/bottles-bin-64.1/bottles-bin-64.1.tar.zst
+	source = bottles-bin-64.1-2.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/bottles-bin-64.1/bottles-bin-64.1.tar.zst
 	sha256sums = 94dd4c5138ef491fed0502e87be2bebde6e7fe9d2881fc66285d12a0451ef0a3
 
 pkgname = bottles-bin

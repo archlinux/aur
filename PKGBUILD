@@ -26,7 +26,7 @@ optdepends=('vkbasalt: post-processing layer that applies the configured effects
             'xterm: fallback terminal for "Run executable in terminal"')
 provides=('bottles')
 conflicts=('bottles')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('94dd4c5138ef491fed0502e87be2bebde6e7fe9d2881fc66285d12a0451ef0a3')
 
 package() {
