@@ -23,7 +23,7 @@ pkgbase = gearlever-bin
 	optdepends = libxml2-legacy: required by the LibreOffice AppImage
 	provides = gearlever
 	conflicts = gearlever
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/gearlever-bin-4.6.2/gearlever-bin-4.6.2.tar.zst
+	source = gearlever-bin-4.6.2-2.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/gearlever-bin-4.6.2/gearlever-bin-4.6.2.tar.zst
 	sha256sums = 225dd08d1fbdf33bb5979660737cee180f60b8cfa6477f1553025a6c2f5236a5
 
 pkgname = gearlever-bin

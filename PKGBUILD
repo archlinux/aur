@@ -16,7 +16,7 @@ optdepends=('dwarfs: extract AppImages that use a DwarFS filesystem'
             'libxml2-legacy: required by the LibreOffice AppImage')
 provides=('gearlever')
 conflicts=('gearlever')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('225dd08d1fbdf33bb5979660737cee180f60b8cfa6477f1553025a6c2f5236a5')
 
 package() {
