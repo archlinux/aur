@@ -150,6 +150,17 @@ def _load_config(config_files):
     return config
 
 
+def log_config(config):
+    lines = []
+    for key in sorted(config):
+        value = config[key]
+        if key in SENSITIVE_KEYS and value:
+            lines.append(f"      - {key} = **REDACTED**")
+        else:
+            lines.append(f"      - {key} = {value!r}")
+    log.info("Loaded configuration:\n%s", "\n".join(lines))
+
+
 def _resolve_extra_model_paths(config):
     """Parse ``config['extra_model_paths_yaml']`` and return the list of
     model sub-directories declared under sections with
@@ -489,13 +500,7 @@ def main():
 
     config = _load_config(CONFIG_FILES)
 
-    log.info("Loaded configuration:")
-    for key in sorted(config):
-        value = config[key]
-        if key in SENSITIVE_KEYS and value:
-            log.info("  > %s = **REDACTED**", key)
-        else:
-            log.info("  > %s = %r", key, value)
+    log_config(config)
 
     if not config["github_token"]:
         log.info("Running without GitHub token.")
