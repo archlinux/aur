@@ -84,18 +84,6 @@ def log(level, msg, *args):
         sys.exit(1)
 
 
-# Path-style options: an explicit "" is a sentinel meaning
-# "use the built-in default" rather than "inherit from a lower-priority
-# layer". Other keys drop "" so that omitting them still inherits.
-_PATH_KEYS = (
-    "base_dir",
-    "output_dir",
-    "runtime_dir",
-    "venv_cache_dir",
-    "version_cache_dir",
-)
-
-
 def check_user_config(config_path):
     try:
         st = config_path.stat()
@@ -111,6 +99,18 @@ def check_user_config(config_path):
             "User-level config [%s] does not exist.",
             config_path,
         )
+
+
+# Path-style options: an explicit "" is a sentinel meaning
+# "use the built-in default" rather than "inherit from a lower-priority
+# layer". Other keys drop "" so that omitting them still inherits.
+_PATH_KEYS = (
+    "base_dir",
+    "output_dir",
+    "runtime_dir",
+    "venv_cache_dir",
+    "version_cache_dir",
+)
 
 
 def _read_toml(path):
