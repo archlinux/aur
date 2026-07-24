@@ -1,0 +1,12 @@
+post_install() {
+  printf '%s\n' \
+    'Seekey needs permission to read /dev/input/event*.' \
+    'Add your desktop user to the input group, then log out and back in:' \
+    '  sudo usermod -aG input <username>' \
+    '' \
+    'Warning: input-group members can read all keyboard and mouse events.'
+}
+
+post_upgrade() {
+  post_install
+}
