@@ -1,0 +1,21 @@
+pkgbase = quantframe
+	pkgdesc = Algorithmic trading program for Warframe
+	pkgver = 1.6.25
+	pkgrel = 1
+	url = https://github.com/Kenya-DK/quantframe-react
+	arch = x86_64
+	license = custom:MIT-modified
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = jq
+	depends = webkit2gtk-4.1
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	options = !lto
+	source = quantframe-1.6.25.tar.gz::https://github.com/Kenya-DK/quantframe-react/archive/refs/tags/v1.6.25.tar.gz
+	sha512sums = ce672e6271dffeeda97a122956a24b8908c2bc5532e3165651f0e98c8ca6f9ea58d2d30a89c3a913b1e7e6944a48cff7b31ce266d856b39b01151f80fe80b244
+
+pkgname = quantframe
