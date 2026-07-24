@@ -1,9 +1,7 @@
-# Maintainer: Josef Jahn <josef.jahn@gmail.com>
-
 pkgname=sdroxide-soapysdr
-pkgver=0.1.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and FT8/FT4 (SoapySDR + CAT/USB-audio backends)"
+pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
 license=('GPL-3.0-or-later')
@@ -28,7 +26,7 @@ provides=('sdroxide')
 conflicts=('sdroxide')
 options=('!lto')
 source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b357a622a74b309b2a5105ed43a03d820b5763f2bc658ad806cbc60bbcb84af')
+sha256sums=('e2cdb22d07ed4674846b6ea75d9e5c5ac80e0d32abe87dece0c6b1fe21dcba8e')
 
 prepare() {
   cd "sdroxide-$pkgver"
