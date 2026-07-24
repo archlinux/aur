@@ -1,13 +1,13 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=3.28.102.r0.g6583016d
+pkgver=3.28.104.r2.gdc41a411
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
 url='https://github.com/SnosMe/awakened-poe-trade'
 license=('MIT')
 depends=()
-makedepends=('git' 'yarn' 'node-gyp' 'nvm' 'libxtst' 'libpng')
+makedepends=('git' 'node-gyp' 'nvm' 'libxtst' 'libpng')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
@@ -43,14 +43,14 @@ build() {
   _ensure_local_nvm
 
   cd "${srcdir}/awakened-poe-trade/renderer"
-  yarn --frozen-lockfile
-  yarn make-index-files
-  yarn build
+  npm ci
+  npm run make-index-files
+  npm run build
 
   cd "${srcdir}/awakened-poe-trade/main"
-  yarn --frozen-lockfile
-  yarn build
-  yarn package
+  npm ci
+  npm run build
+  npm run package
 }
 
 package() {
