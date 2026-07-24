@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=3.0.0+7r3521.g43140be
+pkgver=3.0.0+5r3537.g915503f
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.0+7r%s.g%s' \
+  printf '3.0.0+5r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -168,14 +168,12 @@ EOF
 EOF
 
   # Install icon
-  install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
-  install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/shelly-updates-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/shelly-shell-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
+  install -Dm644 assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
+  install -Dm644 assets/shelly-updates-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
+  install -Dm644 assets/shelly-shell-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
 
-  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
-  install -Dm644 Shelly.Gtk/Assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
+  install -Dm644 assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
+  install -Dm644 assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
 
   install -Dm644 shelly.bash "$pkgdir/usr/share/bash-completion/completions/shelly"
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
