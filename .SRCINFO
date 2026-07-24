@@ -1,0 +1,47 @@
+pkgbase = zed-bin
+	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://zed.dev
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = curl
+	depends = fontconfig
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = nodejs>=18
+	depends = openbsd-netcat
+	depends = npm
+	depends = openssl
+	depends = sqlite
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = zlib
+	depends = zstd
+	optdepends = clang: improved C/C++ language support
+	optdepends = cmake: building C/C++ projects
+	optdepends = gopls: improved Go language support
+	optdepends = pyright: improved Python language support
+	optdepends = rust-analyzer: improved Rust language support
+	optdepends = typescript-language-server: improved TypeScript/JavaScript support
+	optdepends = org.freedesktop.secrets: to keep you logged into your Zed account
+	provides = zed=1.12.0
+	conflicts = zed
+	conflicts = zed-git
+	conflicts = zed-preview-bin
+	source_x86_64 = zed-bin-1.12.0.tar.gz::https://zed.dev/api/releases/stable/1.12.0/zed-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fedaec1e617fc78fe56ff82e63ee51562902d9904b1120330c1802fec2b84315
+	source_aarch64 = zed-bin-1.12.0.tar.gz::https://zed.dev/api/releases/stable/1.12.0/zed-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d0df027ab6b496cda3eb370b7e4f6db2b635f6776ba4ba079dda91b199464daa
+
+pkgname = zed-bin

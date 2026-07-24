@@ -1,0 +1,6 @@
+.claude/
+pkg/
+src/
+*.sh
+*.tar.gz
+*.tar.zst
