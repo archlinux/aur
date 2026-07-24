@@ -3,3 +3,4 @@
 u!    landscape -                "landscape user" /var/lib/landscape
 g     landscape -                -
 m     landscape landscape
+m     landscape docker

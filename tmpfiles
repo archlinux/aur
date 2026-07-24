@@ -1,6 +1,5 @@
 # see man tmpfiles.d(5)
 #Type Path                             Mode User      Group     Age   Argument
-#d    /var/lib/landscape/              0750 landscape landscape
-#d    /var/lib/landscape/logs          0750 landscape landscape
-d     /var/lib/landscape/              0750 root      landscape
-d     /var/lib/landscape/logs          0750 root      landscape
+d     /var/lib/landscape/              0750 landscape landscape
+d     /var/lib/landscape/logs          0750 landscape landscape
+d     /sys/fs/bpf/landscape            0700 landscape landscape

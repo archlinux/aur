@@ -4,10 +4,15 @@ Documentation=https://landscape.whileaway.dev
 
 [Service]
 User=root
-Group=landscape
-PermissionsStartOnly=true
-#ExecStartPre=-/usr/bin/mkdir -p /sys/fs/bpf/landscape
+Group=root
+#User=landscape
+#Group=landscape
+#PermissionsStartOnly=true
+#ExecStartPre=/usr/bin/mkdir -p /sys/fs/bpf/landscape
 #ExecStartPre=/usr/bin/chown landscape:landscape /sys/fs/bpf/landscape
+## see `https://github.com/ThisSeanZhang/landscape/blob/41d58de63fa1264e77e58fbf5aa57aeefaf5c50e/landscape-webserver/src/auth/mod.rs#L55`.
+## they always open it as writable at startup.
+#ExecStopPost=/usr/bin/chmod u+w /var/lib/landscape/landscape_api_token
 
 Environment=LANDSCAPE_CONF_PATH=/var/lib/landscape
 Environment=LANDSCAPE_LOG_PATH=/var/lib/landscape/logs
@@ -15,8 +20,10 @@ Environment=LANDSCAPE_WEB_ROOT=/usr/lib/landscape/static
 Environment=DATABASE_URL=sqlite:///var/lib/landscape/landscape_db.sqlite
 ExecStart=/usr/bin/landscape-webserver
 WorkingDirectory=/var/lib/landscape
-AmbientCapabilities=CAP_BPF CAP_PERFMON CAP_NET_ADMIN
-CapabilityBoundingSet=CAP_BPF CAP_PERFMON CAP_NET_ADMIN
+#ReadWritePaths=/var/lib/landscape /etc/resolv.conf /sys/fs/bpf/landscape /run/docker.sock
+## CAP_DAC_READ_SEARCH can use to shrink the permission, but it will block landscape normal functional.
+#AmbientCapabilities=CAP_BPF CAP_PERFMON CAP_NET_ADMIN CAP_DAC_OVERRIDE
+#CapabilityBoundingSet=CAP_BPF CAP_PERFMON CAP_NET_ADMIN CAP_DAC_OVERRIDE
 LimitMEMLOCK=infinity
 Restart=always
 
