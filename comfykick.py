@@ -135,7 +135,7 @@ def _load_config(config_files):
     # fall back to the built-in default rather than inherit from a
     # lower-priority file.
     for key in _PATH_KEYS:
-        if not config.get(key):
+        if not config[key]:
             config[key] = DEFAULTS[key]
 
     # Ensure all path keys are Path objects (TOML values may be strings).
@@ -144,7 +144,7 @@ def _load_config(config_files):
 
     # `github_token` falls back to the GITHUB_TOKEN environment variable
     # only when it is not explicitly set in the config files.
-    if not config.get("github_token"):
+    if not config["github_token"]:
         config["github_token"] = os.environ.get("GITHUB_TOKEN")
 
     return config
@@ -419,7 +419,7 @@ def install_dependencies(extracted_dir, config, version_head):
         log.info("Installing manager dependencies ...")
         run(["uv", "add", "--requirements", "manager_requirements.txt"])
 
-    extra_pkgs = config.get("extra_python_package", [])
+    extra_pkgs = config["extra_python_package"]
     if extra_pkgs:
         log.info("Installing extra packages ...")
         for pkg in extra_pkgs:
@@ -448,7 +448,7 @@ def run_prekick_commands(config, extracted_dir):
     #
     # This is therefore *not* a command-injection vulnerability: the field's
     # type IS "executable shell command", and the writer IS the executor.
-    prekick_cmds = config.get("prekick_exec", [])
+    prekick_cmds = config["prekick_exec"]
     if not prekick_cmds:
         return
     env = os.environ.copy()
