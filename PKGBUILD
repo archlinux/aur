@@ -1,6 +1,6 @@
 # Maintainer: NotiLo-A <ninedefix@proton.me>
 pkgname=fan
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="ThinkPad fan control via /proc/acpi/ibm/fan"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/NotiLo-A/fan"
 license=('GPL-3.0-only')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('11f5e20f9885f487a500546f0200170a7656ef380523903ccbb36732b51da5b0')
+sha256sums=('0d52544951e0b8fa8bef3c0753327df86498f5f28f3ab2e5daac1d529678ad7e')
 
 prepare() {
     cd "$pkgname-$pkgver"
