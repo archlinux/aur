@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-bin
 	pkgdesc = Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)
-	pkgver = 1.24012.0
+	pkgver = 1.24012.9
 	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-desktop-bin
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = claude-desktop-bin
 	depends = systemd-libs
 	depends = xdg-desktop-portal
 	depends = xdg-utils
-	source_x86_64 = claude-desktop-1.24012.0-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.24012.0/claude-desktop-1.24012.0-linux.tar.gz
-	sha256sums_x86_64 = a1216f35401e4214d870ec77d85a65f0d2ad2d11e1515190c6beaef6256d1882
-	source_aarch64 = claude-desktop-1.24012.0-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.24012.0/claude-desktop-1.24012.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = dfe28c0899b8c35a4020f77f8a03d57f5c8d3fff00ae687a4c19bce455f54346
+	source_x86_64 = claude-desktop-1.24012.9-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.24012.9/claude-desktop-1.24012.9-linux.tar.gz
+	sha256sums_x86_64 = 3c8d585f0716b3183d1b5e253d59cc6719aa433c5ade4096b479a34d68ed553c
+	source_aarch64 = claude-desktop-1.24012.9-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.24012.9/claude-desktop-1.24012.9-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f781830e312542f5c1e1852719f1e7aec99f0545314b617c7fee74824be9010a
 
 pkgname = claude-desktop-bin
