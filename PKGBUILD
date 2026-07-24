@@ -3,7 +3,7 @@
 pkgname=miru-zoom
 _pkgname=miru
 pkgver=0.1.0
-pkgrel=3
+pkgrel=5
 pkgdesc="A Wayland-based zoom daemon and control utility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/miru"
@@ -23,5 +23,7 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  # Installs binaries directly from the build directory
+  install -Dm755 build/miru-daemon "${pkgdir}/usr/bin/miru-daemon"
+  install -Dm755 build/miructl "${pkgdir}/usr/bin/miructl"
 }
