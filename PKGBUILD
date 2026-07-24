@@ -17,7 +17,7 @@ optdepends=('krunner-bazaar: krunner integration'
             'malcontent: parental controls')
 provides=('bazaar')
 conflicts=('bazaar')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('236a8b672a9a67de9a240450f527b119bb4cbdfa0533e49578589fe83638e3dc')
 
 package() {
