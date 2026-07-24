@@ -1,0 +1,24 @@
+pkgbase = qemu-cli-git
+	pkgdesc = Docker-style CLI for managing QEMU VM command lines
+	pkgver = 0.1.0.r5.g61f0d2b
+	pkgrel = 1
+	url = https://github.com/arthurafarias/qemu-cli
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	optdepends = qemu-base: run QEMU virtual machines
+	optdepends = qemu-full: full QEMU emulator suite with GUI
+	provides = qemu-cli
+	conflicts = qemu-cli
+	source = qemu-cli::git+https://github.com/arthurafarias/qemu-cli.git
+	sha256sums = SKIP
+
+pkgname = qemu-cli-git
