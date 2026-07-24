@@ -3,7 +3,7 @@
 _org='gepetto'
 _pkgname='example-robot-data'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=4.4.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples."
 arch=('any')
@@ -11,13 +11,8 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('pinocchio')
 makedepends=('cmake')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('024404b719c1d45fa669ed109da1d0fdb0a9a5793cdc7c14d05a874bdf7a80a0'
-            'SKIP')
-validpgpkeys=(
-        '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
-        'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
-        )
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('961db1b713173aad39335d5ad99804da0e394d23eac2a8e101d6295152b1088c')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
