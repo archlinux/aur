@@ -3,7 +3,7 @@
 # Copy this file as PKGBUILD to your AUR repo
 
 pkgname=k-launcher
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Wayland command palette launcher with fuzzy search, frecency, and plugin support'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
     'xdg-utils: open files and URLs'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b5a1f84a7944fd93cc55755345d53c2772eb28edbbf33354121f98f569dd6a2d')
+sha256sums=('1ed5396ce9232d61fe63322d1284e38cb72418b08add85be11ae07e2c7527ad7')
 
 prepare() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = k-launcher
 	pkgdesc = Wayland command palette launcher with fuzzy search, frecency, and plugin support
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/GKaszewski/k-launcher
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = k-launcher
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = xclip: clipboard support on X11
 	optdepends = xdg-utils: open files and URLs
-	source = k-launcher-0.2.0.tar.gz::https://github.com/GKaszewski/k-launcher/archive/v0.2.0.tar.gz
-	sha256sums = b5a1f84a7944fd93cc55755345d53c2772eb28edbbf33354121f98f569dd6a2d
+	source = k-launcher-0.2.1.tar.gz::https://github.com/GKaszewski/k-launcher/archive/v0.2.1.tar.gz
+	sha256sums = 1ed5396ce9232d61fe63322d1284e38cb72418b08add85be11ae07e2c7527ad7
 
 pkgname = k-launcher
