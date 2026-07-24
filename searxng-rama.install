@@ -3,7 +3,22 @@ post_install() {
     if ! id searxng &>/dev/null; then
         useradd -M -r -s /usr/bin/nologin searxng
     fi
-    
+
+    # Generate a unique secret key on THIS machine. Never generated at package
+    # build time (that would ship one shared key inside the package). Only runs
+    # while the shipped placeholder is still present.
+    local settings="/opt/searxng-rama/searx/settings.yml"
+    if grep -q 'secret_key: "ultrasecretkey"' "$settings" 2>/dev/null; then
+        echo "==> Generating unique secret key..."
+        local key
+        if command -v openssl >/dev/null 2>&1; then
+            key="$(openssl rand -hex 32)"
+        else
+            key="$(od -An -tx1 -N32 /dev/urandom | tr -d ' \n')"
+        fi
+        sed -i "s/secret_key: \"ultrasecretkey\"/secret_key: \"${key}\"/" "$settings"
+    fi
+
     echo "==> Setting permissions..."
     chown -R searxng:searxng /opt/searxng-rama
     
@@ -36,12 +51,30 @@ EOF
     echo ""
     echo "Access RAMA Search at http://localhost:8855"
     echo ""
+    echo "To switch theme variant (rama / google-light / google-dark):"
+    echo "  sudo searxng-rama-theme <variant>"
+    echo ""
 }
 
 post_upgrade() {
+    # The venv pins to the build machine's python3.X path; a Python upgrade can
+    # break it. Detect a broken venv and rebuild it (best-effort recovery).
+    local venv="/opt/searxng-rama/venv"
+    if [ -d "$venv" ] && ! "$venv/bin/python" -c 'import sys' >/dev/null 2>&1; then
+        echo "==> System Python changed — rebuilding venv..."
+        rm -rf "$venv"
+        if python -m venv "$venv" \
+            && "$venv/bin/pip" install --quiet --upgrade pip wheel \
+            && "$venv/bin/pip" install --quiet -r /opt/searxng-rama/requirements.txt; then
+            echo "==> venv rebuilt."
+        else
+            echo "==> WARNING: venv rebuild failed (network?). Reinstall the package to fix." >&2
+        fi
+    fi
+
     echo "==> Setting permissions..."
     chown -R searxng:searxng /opt/searxng-rama 2>/dev/null || true
-    
+
     echo "==> Reloading systemd daemon..."
     systemctl daemon-reload
     
@@ -51,6 +84,10 @@ post_upgrade() {
     echo "Your configuration at /opt/searxng-rama/searx/settings.yml is preserved."
     echo "To apply changes:"
     echo "  sudo systemctl restart searxng-rama.service"
+    echo ""
+    echo "NOTE: upgrades reset the active theme to 'rama' (the served CSS is a"
+    echo "package file). If you had switched variants, re-apply with:"
+    echo "  sudo searxng-rama-theme <variant>"
     echo ""
 }
 
