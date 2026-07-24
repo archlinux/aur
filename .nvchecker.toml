@@ -1,0 +1,19 @@
+[quilt-server]
+source = "combiner"
+from = ["quilt-server:minecraft", "quilt-server:loader", "quilt-server:installer", "quilt-server:manager"]
+format="$1+$3+$2+$4"
+["quilt-server:minecraft"]
+source = "jq"
+url = "https://launchermeta.mojang.com/mc/game/version_manifest_v2.json"
+filter = ".latest.release"
+["quilt-server:loader"]
+source = "git"
+git = "https://github.com/QuiltMC/quilt-loader"
+exclude_regex = "\\d+\\.\\d+\\.\\d+-(\\w+).\\d+"
+["quilt-server:installer"]
+source = "git"
+git = "https://github.com/QuiltMC/quilt-installer"
+["quilt-server:manager"]
+source = "git"
+git = "https://github.com/Edenhofer/minecraft-server"
+prefix = "v"
