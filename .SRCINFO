@@ -1,6 +1,6 @@
 pkgbase = iris-colors
 	pkgdesc = semantic color scheme generator for linux ricing
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Harman1307/iris
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = iris-colors
 	depends = python
 	depends = python-pillow
 	depends = python-numpy
-	source = iris-colors-0.1.0.tar.gz::https://github.com/Harman1307/iris/archive/v0.1.0.tar.gz
-	sha256sums = 4fbe90883effe2e6017ca52bb363e02bbbf20368a2053186c1d87c3da551f78c
+	source = iris-colors-0.1.1.tar.gz::https://github.com/Harman1307/iris/archive/v0.1.1.tar.gz
+	sha256sums = 4aa00afdae88111bf176b7f7375945daea57f33f3a5cf65725f03eeb31d8f901
 
 pkgname = iris-colors

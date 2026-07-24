@@ -1,6 +1,6 @@
 # Maintainer: Shiny_Pachirisu <harman-bin@proton.me>
 pkgname=iris-colors
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="semantic color scheme generator for linux ricing"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pillow' 'python-numpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4fbe90883effe2e6017ca52bb363e02bbbf20368a2053186c1d87c3da551f78c')
+sha256sums=('4aa00afdae88111bf176b7f7375945daea57f33f3a5cf65725f03eeb31d8f901')
 
 build() {
     cd "$srcdir/iris-$pkgver"
