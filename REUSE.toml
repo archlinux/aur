@@ -12,6 +12,8 @@ path = [
   "uuyc-wine",
   "uuyc-wine.desktop",
   "uuyc-wine.install",
+  "uuyc-wevtapi.S",
+  "uuyc-wevtapi.def",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 AUR package contributors"

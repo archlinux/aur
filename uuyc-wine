@@ -6,6 +6,7 @@ readonly share_dir="${UUYC_WINE_SHARE_DIR:-/usr/share/uuyc-wine}"
 readonly upstream_version_file="${share_dir}/upstream-version"
 readonly package_release_file="${share_dir}/package-release"
 readonly installer="${share_dir}/uuyc-wine-installer.exe"
+readonly wevtapi_shim="${share_dir}/wevtapi.dll"
 readonly wine="/usr/bin/wine"
 readonly wineboot="/usr/bin/wineboot"
 readonly winecfg="/usr/bin/winecfg"
@@ -39,6 +40,7 @@ EOF
 [[ -r "$upstream_version_file" ]] || die "Missing package data: $upstream_version_file"
 [[ -r "$package_release_file" ]] || die "Missing package data: $package_release_file"
 [[ -r "$installer" ]] || die "Missing package data: $installer"
+[[ -r "$wevtapi_shim" ]] || die "Missing package data: $wevtapi_shim"
 
 upstream_version="$(<"$upstream_version_file")"
 package_release="$(<"$package_release_file")"
@@ -167,6 +169,8 @@ readonly wine_user
 readonly wine_desktop="$prefix/drive_c/users/$wine_user/Desktop"
 readonly client="$install_dir/GameViewer.exe"
 readonly server="$install_dir/bin/GameViewerServer.exe"
+readonly healthd="$install_dir/bin/GameViewerHealthd.exe"
+readonly native_wevtapi="$install_dir/bin/wevtapi.dll"
 readonly webview_setup="$install_dir/bin/MicrosoftEdgeWebview2Setup.exe"
 readonly webview_root="$prefix/drive_c/Program Files (x86)/Microsoft/EdgeWebView/Application"
 readonly webview_key='HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
@@ -182,7 +186,7 @@ mkdir -p "$state_dir"
 export WINEPREFIX="$prefix"
 export WINEDEBUG="${WINEDEBUG:--all}"
 unset WINEARCH
-export WINEDLLOVERRIDES="${WINEDLLOVERRIDES:+${WINEDLLOVERRIDES};}winemenubuilder.exe=d"
+export WINEDLLOVERRIDES="${WINEDLLOVERRIDES:+${WINEDLLOVERRIDES};}wevtapi=n,b;winemenubuilder.exe=d"
 unset WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS
 unset WEBVIEW2_BROWSER_EXECUTABLE_FOLDER
 unset WEBVIEW2_CHANNEL_SEARCH_KIND
@@ -214,7 +218,7 @@ registry_value() {
 }
 
 app_files_present() {
-    [[ -f "$client" && -f "$server" ]]
+    [[ -f "$client" && -f "$server" && -f "$healthd" ]]
 }
 
 webview_files_present() {
@@ -230,6 +234,7 @@ webview_ready() {
 prefix_current() {
     app_files_present || return 1
     webview_files_present || return 1
+    /usr/bin/cmp -s "$wevtapi_shim" "$native_wevtapi" || return 1
     [[ -r "$stamp" && $(<"$stamp") == "$package_release" ]]
 }
 
@@ -287,6 +292,9 @@ configure_prefix() {
         app_files_present || die "UU Remote did not install its client and server files. See $setup_log"
         rm -f -- "$wine_desktop/UU远程.lnk"
     fi
+    if ! /usr/bin/install -m644 "$wevtapi_shim" "$native_wevtapi"; then
+        die "Failed to install the Wine Event Log compatibility DLL. See $setup_log"
+    fi
 
     if ! run_logged "$wine" reg query "$service_key"; then
         die "UU Remote did not register GameViewerService. See $setup_log"
@@ -323,6 +331,8 @@ configure_prefix() {
 
     webview_version=$(registry_value "$webview_key" pv || true)
     app_files_present || die "UU Remote files disappeared during setup. See $setup_log"
+    /usr/bin/cmp -s "$wevtapi_shim" "$native_wevtapi" || \
+        die "Wine Event Log compatibility verification failed. See $setup_log"
     [[ -n $webview_version && -f "$webview_root/$webview_version/msedgewebview2.exe" ]] || \
         die "WebView2 verification failed. See $setup_log"
 
@@ -376,25 +386,39 @@ ensure_service_running() {
     return 1
 }
 
-server_running() {
-    /usr/bin/pgrep -u "$(id -u)" -f -x -- "$server" >/dev/null 2>&1
+wine_process_running() {
+    local executable=$1
+
+    /usr/bin/pgrep -u "$(id -u)" -f -x -- "$executable" >/dev/null 2>&1
+}
+
+ensure_wine_process_running() {
+    local executable=$1
+    local attempt
+
+    if ! wine_process_running "$executable"; then
+        (
+            cd "$install_dir/bin"
+            nohup "$wine" "$executable" >/dev/null 2>&1 &
+        )
+    fi
+
+    for ((attempt = 0; attempt < 50; attempt++)); do
+        wine_process_running "$executable" && return 0
+        sleep 0.2
+    done
+    return 1
 }
 
 ensure_service_running || \
     die "GameViewerService did not reach RUNNING state under Wine. See $setup_log"
 
-if ! server_running; then
-    (
-        cd "$install_dir/bin"
-        nohup "$wine" "$server" >/dev/null 2>&1 &
-    )
-fi
-
-for ((attempt = 0; attempt < 50; attempt++)); do
-    server_running && break
-    sleep 0.2
-done
-server_running || die "GameViewerServer.exe did not start under Wine."
+# Wine's service process cannot launch interactive child processes, so start
+# the upstream supervisor and server explicitly in this user session.
+ensure_wine_process_running "$healthd" || \
+    die "GameViewerHealthd.exe did not start under Wine."
+ensure_wine_process_running "$server" || \
+    die "GameViewerServer.exe did not start under Wine."
 
 sleep 1
 cd "$install_dir"

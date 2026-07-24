@@ -1,6 +1,6 @@
 # uuyc-wine — NetEase UU Remote / 网易UU远程 for Wine
 
-`uuyc-wine` packages the NetEase UU Remote (网易UU远程) Windows client for Arch Linux and runs it in a dedicated Wine prefix. It installs the official upstream installer, prepares Microsoft Edge WebView2 Runtime, configures the required Wine compatibility settings, and starts the UU Remote server before the desktop client.
+`uuyc-wine` packages the NetEase UU Remote (网易UU远程) Windows client for Arch Linux and runs it in a dedicated Wine prefix. It installs the official upstream installer, prepares Microsoft Edge WebView2 Runtime, configures the required Wine compatibility settings, and starts the required service, supervisor, and server before the desktop client.
 
 The `-wine` suffix distinguishes this compatibility package from a future native Linux package that may use the canonical `uuyc` name. This is an unofficial package; NetEase does not support this Wine setup.
 
@@ -97,9 +97,11 @@ The launcher applies and verifies the compatibility settings required by UU Remo
 - a 64-bit Wine prefix configured as Windows 10;
 - Microsoft Edge WebView2 Runtime from the bundled upstream installer;
 - a Windows 8 application override limited to `msedgewebview2.exe`;
+- a package-built native `wevtapi.dll` compatibility layer that makes unsupported Windows Event Log queries fail cleanly instead of entering Wine's unimplemented `EvtOpenPublisherMetadata` stub;
 - `UseTakeFocus=N` for Wine's X11 driver;
 - `GameViewerService` explicitly started and verified as `RUNNING`;
-- `GameViewerServer.exe` started only after the service and before `GameViewer.exe`;
+- `GameViewerHealthd.exe` started in the interactive Wine session to supervise the server;
+- `GameViewerServer.exe` started after the supervisor and before `GameViewer.exe`;
 - Wine menu generation disabled so the upstream installer cannot replace the packaged desktop and URI entries;
 - a prefix-local Windows Desktop directory so the installer cannot write shortcuts into the host desktop.
 
