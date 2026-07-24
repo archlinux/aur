@@ -1,0 +1,13 @@
+pkgbase = rfetch
+	pkgdesc = Simple fetch tool written in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/skerrixx/rfetch
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	source = rfetch-0.3.0.tar.gz::https://github.com/skerrixx/rfetch/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = df0a354eec1b904a44cd2251b05707aa99a380d7ca8e32178b55844fc0ef5d54
+
+pkgname = rfetch
