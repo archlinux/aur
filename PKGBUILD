@@ -4,7 +4,7 @@ _pkgver=1.0.0
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Stateless, modern multi-display screen color temperature CLI for X11 and Wayland"
-arch=('x86_64' 'i686' 'aarch64' 'armv7l' 'powerpc64le')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'ppc64le')
 url="https://github.com/raphaelquintao/QRedshift"
 license=('Apache-2.0')
 
