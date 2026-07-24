@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bausch <db@edv-bausch.de>
 pkgbase=uglycraft
 pkgname=('uglycraft' 'ugli')
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/dbausch/uglycraft'
@@ -16,7 +16,7 @@ source=("$pkgbase-$pkgver.tar.gz::$url/archive/$_tag.tar.gz"
         "uos_flat.pas::https://raw.githubusercontent.com/fredvs/uos/$_uos_commit/src/uos_flat.pas"
         "uos_portaudio.pas::https://raw.githubusercontent.com/fredvs/uos/$_uos_commit/src/uos_portaudio.pas"
         "ANSI-87.conf::https://raw.githubusercontent.com/kovidgoyal/kitty-themes/$_themes_commit/themes/ANSI-87.conf")
-sha256sums=('4839be4a5be511a3dc3b41f1f215c122184daf891c2d9f5a825aaf87229acd5b'
+sha256sums=('807e89d147e1e505e85972a581199d240591d6e5b022c1f334cb988357f66e58'
             '22f3e9215611d9877d21f7c835085baf9a393eac1a9e9047f195559ca1e949e4'
             '2ceb6afccad36f520fb57123dd7b38b59f36dedcc0bd3e099657086d7bd352b7'
             'bea6c3c79b42fdf67f8b5d3ba7895dae341a9ed72d53d0f0526a736dda3f8489'
