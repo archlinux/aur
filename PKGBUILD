@@ -11,6 +11,7 @@ depends=(
 	'appmenu-gtk-module'
 	'libappindicator-gtk3'
 )
+conflicts=('quantframe-git')
 makedepends=('git' 'nodejs' 'pnpm' 'rust' 'cargo' 'jq')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
