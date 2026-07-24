@@ -12,7 +12,7 @@ pkgbase = snapx-bin
 	conflicts = snapx-ui
 	options = !strip
 	options = !debug
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/snapx-bin-0.4.0/snapx-bin-0.4.0.tar.zst
+	source = snapx-bin-0.4.0-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/snapx-bin-0.4.0/snapx-bin-0.4.0.tar.zst
 	sha256sums = d2098cac542bca82e68be0a4fa98db22f2d84d35c683d18582382dc9206eb5ee
 
 pkgname = snapx-bin

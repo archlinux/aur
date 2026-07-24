@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
 provides=('snapx-ui')
 conflicts=('snapx-ui')
 options=('!strip' '!debug')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('d2098cac542bca82e68be0a4fa98db22f2d84d35c683d18582382dc9206eb5ee')
 
 package() {
