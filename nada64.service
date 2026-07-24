@@ -1,0 +1,11 @@
+[Unit]
+Description=NADA64 Dashboard
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/nada64
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
