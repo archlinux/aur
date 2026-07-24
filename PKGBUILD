@@ -1,6 +1,6 @@
 pkgname=multica-desktop-bin
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills - Desktop GUI"
 arch=(x86_64 aarch64)
 url="https://github.com/multica-ai/multica"
