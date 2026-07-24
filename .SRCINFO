@@ -1,6 +1,6 @@
 pkgbase = libkrun-git
 	pkgdesc = A dynamic library providing Virtualization-based process isolation capabilities
-	pkgver = v1.18.0.r2.ge12b9b37
+	pkgver = v1.18.0.r206.g574cc39b
 	pkgrel = 1
 	url = https://github.com/containers/libkrun
 	arch = x86_64
