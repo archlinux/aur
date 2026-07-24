@@ -1,6 +1,6 @@
 # Maintainer: Yrozxm <aiiiilobinbutter@gmail.com>
 pkgname=yroz-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Universal software manager for Linux (precompiled binary)"
 arch=('x86_64' 'aarch64')
