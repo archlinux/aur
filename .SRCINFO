@@ -1,7 +1,7 @@
 pkgbase = rfetch
 	pkgdesc = Simple fetch tool written in Rust
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/skerrixx/rfetch
 	arch = x86_64
 	license = MIT
