@@ -3,11 +3,11 @@
 pkgname=pulse-remote-git
 pkgver=0.10.0.r1.g8ef1875
 pkgrel=1
-pkgdesc="Server and web interface to control your Linux PC audio from any device"
+pkgdesc="Audio mixer for PulseAudio and PipeWire — local desktop app and web UI accessible from any device on your network"
 arch=('x86_64')
 url="https://github.com/undg/pulse-remote"
 license=('MIT')
-depends=('libpulse')
+depends=('libpulse' 'electron')
 makedepends=('go' 'git')
 install=pulse-remote-git.install
 
@@ -32,10 +32,7 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -Dm755 "build/bin/pulse-remote-server" "$pkgdir/usr/bin/pulse-remote-server"
-	install -Dm644 "os/pulse-remote.service" "$pkgdir/usr/lib/systemd/user/pulse-remote.service"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "os/pulse-remote.1" "$pkgdir/usr/share/man/man1/pulse-remote.1"
+	make install DESTDIR="$pkgdir" PREFIX=/usr
 }
 
 pkgver() {

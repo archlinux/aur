@@ -1,11 +1,23 @@
 post_install() {
-	echo "==> pulse-remote runs as a user service (not system-wide)"
-	echo "==> Enable and start: systemctl --user enable --now pulse-remote.service"
 	echo "==> Web UI: http://localhost:8448"
+
+	# Try to enable and start the user service.
+	# May fail when pacman runs as root (no user session bus).
+	# Graceful fallback: print instructions.
+	if systemctl --user enable --now pulse-remote.service 2>/dev/null; then
+		echo "==> pulse-remote service enabled and started"
+	else
+		echo "==> pulse-remote runs as a user service (not system-wide)"
+		echo "==> Enable and start: systemctl --user enable --now pulse-remote.service"
+	fi
 }
 
 post_upgrade() {
-	echo "==> pulse-remote has been updated"
-	echo "==> If the service is running, restart it to use the new version:"
-	echo "==> systemctl --user restart pulse-remote.service"
+	if systemctl --user --quiet is-active pulse-remote.service 2>/dev/null; then
+		systemctl --user restart pulse-remote.service
+		echo "==> pulse-remote service restarted"
+	else
+		echo "==> pulse-remote updated. If you use the service, restart it:"
+		echo "==> systemctl --user restart pulse-remote.service"
+	fi
 }
