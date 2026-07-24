@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=specify-cli
-pkgver=0.13.3
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,7 @@ conflicts=(
 )
 options=(!debug)
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('e7d4c4e4e70861fcb930676def1976492738b2186c32f3b2564ee5b2a4005bc07e63a93fd3c0bae0695b49da6e120886573fc9f1529a1c0b909a834622cfc98b')
+b2sums=('a8d989bce8b690e5988b3fcdb226acb19de63b7e18f90cdc34329ca4e74fe72f67c7221e89ca6d9347a309ec9fda7945cd4f1ea3c6039f8ea5ecffbd8ac64086')
 
 build() {
   cd spec-kit
