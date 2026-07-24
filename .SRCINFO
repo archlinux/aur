@@ -1,7 +1,7 @@
 pkgbase = miru-zoom
 	pkgdesc = A Wayland-based zoom daemon and control utility
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vaishnav-Sabari-Girish/miru
 	arch = x86_64
 	arch = aarch64

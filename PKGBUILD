@@ -3,7 +3,7 @@
 pkgname=miru-zoom
 _pkgname=miru
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wayland-based zoom daemon and control utility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/miru"
