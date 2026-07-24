@@ -2,7 +2,7 @@
 
 pkgname=fronius-bridge
 pkgver=1.5.10
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
 url="https://github.com/ahpohl/fronius-bridge"
