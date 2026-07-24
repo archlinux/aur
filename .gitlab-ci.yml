@@ -1,32 +1,37 @@
 image: archlinux:latest
 
-before_script:
-  - pacman -Sy --noconfirm git base-devel openssh curl grep
-  - useradd -m builduser
-  - echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-  - eval $(ssh-agent -s)
-  - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-  - mkdir -p /home/builduser/.ssh
-  - chmod 700 /home/builduser/.ssh
-  - ssh-keyscan aur.archlinux.org >> /home/builduser/.ssh/known_hosts
-  - chown -R builduser:builduser /home/builduser/.ssh
-
 update_aur:
-  script:
-    - chown -R builduser:builduser .
-    - sudo -u builduser git config --global user.name "GitLab CI Bot"
-    - sudo -u builduser git config --global user.email "bot@gitlab.com"
-    - sudo -u builduser git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
-    - cp PKGBUILD aur_repo_temp/
-    - cd aur_repo_temp
-    - chown -R builduser:builduser .
-    - NEW_VER=$(sudo -u builduser bash -c 'source ./PKGBUILD; pkgver')
-    - if [ -z "$NEW_VER" ]; then exit 1; fi
-    - sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
-    - sudo -u builduser makepkg --printsrcinfo > .SRCINFO
-    - sudo -u builduser git add PKGBUILD .SRCINFO
-    - sudo -u builduser git commit -m "Update to ${NEW_VER}" || true
-    - sudo -u builduser git push origin master
+  script: |
+    set -x
+    pacman -Sy --noconfirm git base-devel openssh curl grep jq
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+    ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+    echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+    chmod 600 ~/.ssh/id_ed25519
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_ed25519
+    git config --global user.name "GitLab CI Bot"
+    git config --global user.email "bot@gitlab.com"
+    git config --global --add safe.directory '*'
+    
+    git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
+    cp PKGBUILD aur_repo_temp/
+    cd aur_repo_temp
+    useradd -m builduser
+    echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+    chown -R builduser:builduser .
+    
+    NEW_VER=$(curl -sL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
+    
+    echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
+    if [ -z "$NEW_VER" ] || [ "$NEW_VER" = "null" ]; then echo "ERROR: No se obtuvo version"; exit 1; fi
+    
+    sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
+    sudo -u builduser makepkg --printsrcinfo > .SRCINFO
+    git add PKGBUILD .SRCINFO
+    git commit -m "Update to ${NEW_VER}" || true
+    git push origin master
   only:
     - schedules
     - web
