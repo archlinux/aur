@@ -49,7 +49,7 @@ DEFAULTS = {
         "--fast",
         "--preview-method auto",
         "--use-pytorch-cross-attention",
-        "--verbose WARNING",
+        "--verbose INFO",
     ],
     "enable_manager": True,
     "extra_model_paths_yaml": "",

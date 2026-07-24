@@ -96,14 +96,14 @@
 # #     "--fast",
 # #     "--preview-method auto",
 # #     "--use-pytorch-cross-attention",
-# #     "--verbose WARNING"
+# #     "--verbose INFO"
 # # ]
 # comfyui_extra_options  = [
 #     "--disable-xformers",
 #     "--fast",
 #     "--preview-method auto",
 #     "--use-pytorch-cross-attention",
-#     "--verbose WARNING"
+#     "--verbose INFO"
 # ]
 
 # # ---------------------------------------------------------------------------
