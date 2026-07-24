@@ -6,8 +6,9 @@
 #
 # What it does:
 #   1. copies the guest driver stack from /usr/lib/waydroid-nvidia/guest into
-#      /var/lib/waydroid/nv + the vendor overlay (the patched waydroid config
-#      generator bind-mounts them into the container),
+#      /var/lib/waydroid/nv/guest while preserving Android's lib/lib64 paths
+#      (the patched waydroid config generator bind-mounts them into the
+#      container),
 #   2. writes the stack's properties into waydroid.cfg [properties], sets
 #      suspend_action=none (values merge into base.prop on upgrade), and points
 #      drm_device at the NVIDIA render node (upstream gpu.py blacklists nvidia
@@ -34,23 +35,75 @@ done
 CFG=/var/lib/waydroid/waydroid.cfg
 GUEST=/usr/lib/waydroid-nvidia/guest
 NV=/var/lib/waydroid/nv
-OVERLAY_HW=/var/lib/waydroid/overlay/vendor/lib64/hw
+NV_GUEST=$NV/guest
 [ -f "$CFG" ] || die "waydroid is not initialized — run 'waydroid init' first"
 [ -d "$GUEST" ] || die "$GUEST missing (broken package?)"
 
-echo "== installing guest driver stack into $NV"
-install -d "$NV" "$OVERLAY_HW"
-for lib in libgbm_mesa_wrapper.so hwcomposer.waydroid.so \
-           libEGL_angle.so libGLESv1_CM_angle.so libGLESv2_angle.so; do
-    [ -f "$GUEST/$lib" ] || die "$GUEST/$lib missing"
-    install -m 0644 "$GUEST/$lib" "$NV/$lib"
+GUEST_LIBS=(
+    vendor/lib/hw/vulkan.virtio.so
+    vendor/lib/egl/libEGL_angle.so
+    vendor/lib/egl/libGLESv1_CM_angle.so
+    vendor/lib/egl/libGLESv2_angle.so
+    vendor/lib64/hw/vulkan.virtio.so
+    vendor/lib64/egl/libEGL_angle.so
+    vendor/lib64/egl/libGLESv1_CM_angle.so
+    vendor/lib64/egl/libGLESv2_angle.so
+    vendor/lib64/libgbm_mesa_wrapper.so
+    vendor/lib64/hw/hwcomposer.waydroid.so
+)
+GUEST_BINS=(system/bin/surfaceflinger)
+
+verify_android_elf() {
+    local file="$1" abi="$2" expected_soname="${3:-}"
+    local expected_class expected_machine header dynamic actual_soname
+    case "$abi" in
+        x86)
+            expected_class=ELF32
+            expected_machine="Intel 80386"
+            ;;
+        x86_64)
+            expected_class=ELF64
+            expected_machine="Advanced Micro Devices X86-64"
+            ;;
+        *) die "internal error: unsupported Android ABI '$abi'" ;;
+    esac
+
+    [ -f "$file" ] || die "required guest payload missing: $file"
+    header=$(LC_ALL=C readelf -hW -- "$file" 2>/dev/null) || \
+        die "$file is not a complete ELF file"
+    if ! grep -Eq "^[[:space:]]*Class:[[:space:]]+${expected_class}[[:space:]]*$" <<<"$header" ||
+       ! grep -Eq "^[[:space:]]*Machine:[[:space:]]+${expected_machine}[[:space:]]*$" <<<"$header" ||
+       ! grep -Eq '^[[:space:]]*Type:[[:space:]]+DYN([[:space:]]|$)' <<<"$header"; then
+        die "$file is not an $expected_class/$expected_machine shared object"
+    fi
+
+    if [ -n "$expected_soname" ]; then
+        dynamic=$(LC_ALL=C readelf -dW -- "$file" 2>/dev/null) ||
+            die "cannot read the dynamic section from $file"
+        actual_soname=$(sed -n 's/.*(SONAME).*Library soname: \[\([^]]*\)\].*/\1/p' <<<"$dynamic")
+        [ "$actual_soname" = "$expected_soname" ] ||
+            die "$file has SONAME '${actual_soname:-<missing>}' (expected '$expected_soname')"
+    fi
+}
+
+echo "== validating dual-ABI guest payload"
+command -v readelf >/dev/null 2>&1 || die "readelf is required (install binutils)"
+for rel in "${GUEST_LIBS[@]}"; do
+    case "$rel" in
+        vendor/lib/*) abi=x86 ;;
+        vendor/lib64/*) abi=x86_64 ;;
+        *) die "internal error: guest library has no ABI path: $rel" ;;
+    esac
+    case "$rel" in
+        */hw/vulkan.virtio.so) soname=libvulkan_virtio.so ;;
+        *) soname=$(basename -- "$rel") ;;
+    esac
+    verify_android_elf "$GUEST/$rel" "$abi" "$soname"
 done
-# guest Venus vulkan HAL goes through the vendor overlay path
-install -m 0644 "$GUEST/libvulkan_virtio.so" "$OVERLAY_HW/vulkan.virtio.so"
-# patched surfaceflinger (500 Hz vsync snap window; bind-mounted
-# unconditionally — the stack is validated as a whole, no partial modes)
-[ -f "$GUEST/surfaceflinger" ] || die "$GUEST/surfaceflinger missing (broken package?)"
-install -m 0755 "$GUEST/surfaceflinger" "$NV/surfaceflinger"
+for rel in "${GUEST_BINS[@]}"; do
+    verify_android_elf "$GUEST/$rel" x86_64
+done
+echo "   complete ELF headers, ABI types and library SONAMEs verified"
 
 NVNODE=""
 for uevent in /sys/class/drm/renderD*/device/uevent; do
@@ -86,6 +139,16 @@ umount "$VMNT"; rmdir "$VMNT"
 [ "$HAVE_MINIGBM" = 1 ] || die "vendor image is too old (no minigbm_gbm_mesa gralloc).
 Run 'waydroid init -f' to fetch current images (apps/data are kept), then re-run this setup."
 echo "== vendor image: minigbm AIDL gralloc present"
+
+echo "== installing guest driver stack into $NV_GUEST"
+install -d -m 0755 "$NV_GUEST"
+for rel in "${GUEST_LIBS[@]}"; do
+    install -Dm 0644 "$GUEST/$rel" "$NV_GUEST/$rel"
+done
+# Patched SurfaceFlinger is a 64-bit system executable, not an app-ABI library.
+for rel in "${GUEST_BINS[@]}"; do
+    install -Dm 0755 "$GUEST/$rel" "$NV_GUEST/$rel"
+done
 
 echo "== writing waydroid.cfg properties"
 REFRESH="$REFRESH" NVNODE="$NVNODE" python3 - "$CFG" <<'EOF'
@@ -135,6 +198,8 @@ cp.set("waydroid", "drm_device", os.environ["NVNODE"])
 # Enables NVIDIA Venus mode in our waydroid patch: strict (non-optional)
 # bind-mounts at container start + a socket preflight at session start.
 cp.set("waydroid", "nvidia_venus_socket", "/run/waydroid-venus/venus.sock")
+# Select the path-preserving dual-ABI mount layout under nv/guest.
+cp.set("waydroid", "nvidia_guest_layout", "2")
 with open(cfg_path, "w") as f:
     cp.write(f)
 print("   properties written")
