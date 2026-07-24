@@ -2,7 +2,7 @@
 
 pkgname=m3u8-downloader-colzry-bin
 _pkgname=m3u8-downloader
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="A concise m3u8 video downloader / 一款简洁的 m3u8 视频下载器"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 
 source=("${_pkgname}-${pkgver}.deb::https://github.com/Colzry/m3u8-downloader/releases/download/v${pkgver}/m3u8-downloader_${pkgver}_amd64.deb")
 
-sha256sums=('1e55cdf1d57b2e3b506823c47fed2667efb9d785bcb8016ddf0cf93ed2a6245d')
+sha256sums=('15bf77f8ce4de131d062f1bdbf849dfbf1a8e38b4474482c994d112f9b397500')
 
 package() {
     msg2 "Extracting deb package..."
