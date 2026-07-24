@@ -1,0 +1,22 @@
+pkgbase = writ-bin
+	pkgdesc = Lightweight, always-ready text editor for developers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ibrahemid/writ
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = fuse2
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	optdepends = appimagelauncher: desktop integration for AppImages
+	provides = writ
+	conflicts = writ
+	options = !strip
+	source = writ-0.2.0.AppImage::https://github.com/ibrahemid/writ/releases/download/v0.2.0/Writ_0.2.0_amd64.AppImage
+	source = LICENSE-0.2.0::https://github.com/ibrahemid/writ/raw/v0.2.0/LICENSE
+	noextract = writ-0.2.0.AppImage
+	sha256sums = cbc02a0929aa5bb2c934b82b1aa633b3b7c2ae83968453d46772605155608911
+	sha256sums = SKIP
+
+pkgname = writ-bin
