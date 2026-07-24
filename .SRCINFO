@@ -1,7 +1,7 @@
 pkgbase = cosmosdb-server
 	pkgdesc = A Cosmos DB server implementation for testing your applications locally.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vercel/cosmosdb-server
 	arch = any
 	license = MIT

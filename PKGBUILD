@@ -2,7 +2,7 @@
 _npmname=@vercel/cosmosdb-server
 pkgname=cosmosdb-server
 pkgver=1.0.1 # renovate: datasource=npm depName=@vercel/cosmosdb-server
-pkgrel=2
+pkgrel=3
 pkgdesc="A Cosmos DB server implementation for testing your applications locally."
 arch=(any)
 url="https://github.com/vercel/cosmosdb-server"
@@ -19,7 +19,7 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
