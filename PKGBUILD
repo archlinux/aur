@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-_pkgver=0.8.6-alpha2604302255
+_pkgver=0.8.6-alpha2607231304
 pkgver=${_pkgver//-/_}
 _vername=bonsai
 pkgrel=1
@@ -66,27 +66,21 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/svgpp/svgpp.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "001-skip-install-python-wrapper.patch::${_patch_url_prefix}/95bf1194db09a89a6106954bc05b2b62e00e06cd.patch"
-  "002-add-shared-libs.patch::${_patch_url_prefix}/a592a0c2acb5692e988129f26b6d48a0bd180dd6.patch"
-  "003-fix-rpath.patch::${_patch_url_prefix}/5b646d000e6eb7d101f15404aa4f7742aa02c21f.patch"
-  "004-fix-boost189.patch::${_patch_url_prefix}/21d3dcdab23199aab66c86b35be9e145b98f8450.patch"
-  "005-fix-ifcsverchok-setup.patch::${_patch_url_prefix}/e9618346cb477108ca4850c342729c82124e74eb.patch"
-  "006-use-spdx-license.patch::${_patch_url_prefix}/dec0d6bc2ab3da60a1d6bb1b3359db94695c0af2.patch"
-  "007-fix-ld-eror.patch::${_patch_url_prefix}/ea018ae720a7d575422ed28ffb10f630e7e6420f.patch"
-  "008-fix-for-boost-1.89-explicit-optional.patch::${_patch_url_prefix}/89b3f95c7ffaa90c2c583038fe8c75d0be2e0317.patch"
+  "001-skip-install-python-wrapper.patch::${_patch_url_prefix}/0f9398eca788c3c14b148a5ef3d6cb63b6d9cd90.patch"
+  "002-add-shared-libs.patch::${_patch_url_prefix}/2758cd04359e3dee8cdc9abea7263587a1ac720c.patch"
+  "003-fix-boost-export-config.patch::${_patch_url_prefix}/ba313e55ea96ce280a02c99a8e249c5d475311d2.patch"
+  "004-use-spdx-license.patch::${_patch_url_prefix}/67cad605bbea4af0d086fddc2adf7b1bc143ebdb.patch"
+  "005-fix-boost-explicit-optional.patch::${_patch_url_prefix}/f68094688ce7106597a656f8bc31295bc074decd.patch"
 
 )
-sha256sums=('8b1a60a3d8dd218aa78db7b942453aefb5b9801b2d498e8b373a122c36d8b99b'
+sha256sums=('07d1babebde5c8b53092ad54f7091de3bce0208b4af85ce514280a181c820441'
   'SKIP'
   'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-  '790373b719561733d5ba3fbd44c6419828fc0bbe66313ecdb78693e585c0fbcb'
-  'c40dc88578ba8f01b1f07fe084b606df9cc997caac511ab4aedee8b639c8adad'
-  '816f4ec952e02f3ed1c244650db1eabfaf9d70f5675261c6537bb25c8805a580'
-  'f78fea790d3b6686a8473c6fc6a07f138352ec84a5e0fca4225bef8ab9959483'
-  '4e705b7cd4711f6a9c6ef61ca6134c952d0a8a8f8ed7550a33ad753f039b96b5'
-  'adc1de9d21a9f1aae06cf88ac00b5093a8e171fd3e69132f98b8a61be60e0cc2'
-  '9b25ef16cb438f50f08dbe6e60201b6ecf157b77326410d5cc10c2d3254d050d'
-  '88e75be92925e4aa11458694aa3d0f86b2c20dd7b0bd0026fcbd5e71e5fc9998')
+  '0fd9a6ae4ded60e438172699c8399fbe10e5ca2b00c69371a25d113bbda6406b'
+  'e3396fedc745d1fdc8428a9171376fc66bcbb0e834f5757f68ba715f020e7d22'
+  'afbec2fb625774c407c77151a17c9c47d328b5e6febd984f6d7a73e201bdd095'
+  'bade9878f7d916ff4669d29ed488d932a88218372854216754f90339a5491415'
+  'a1d3fc8e9e3e5c84f8736567fd90e50b4ff95c5e190ee908a388106b8e0910be')
 options=("!lto")
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
@@ -112,7 +106,7 @@ _build_pymodules() {
   pushd "${srcdir}/${_iosdir}"
   find src -name '*.py' -o -name '*.toml' | xargs sed -i "/version =/s/0.0.0/${_pkgver}/g"
   for _dir in src/*; do
-    if [ ! -d ${_dir} ]; then
+    if [ ! -d ${_dir} ] || [[ ${_dir} == src/ifcsverchok ]]; then
       continue
     fi
     pushd ${_dir}
