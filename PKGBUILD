@@ -3,7 +3,7 @@
 
 pkgname="readpe"
 pkgver="0.85.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="PE file analysis toolkit"
 arch=("x86_64")
 url="https://github.com/mentebinaria/readpe"
