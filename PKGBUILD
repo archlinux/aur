@@ -1,5 +1,5 @@
 pkgname=vectomancy
-pkgver=6.3.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Image-to-Equation Converter CLI"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'vulkan-icd-loader')
 makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/vectomancy/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3a5e207373c6218796a9e5a06dff80bcf47af66619b600f23f742ddfc30c2d7')
+sha256sums=('fe602d5e6efc61a93fbfa8f59dec3adc2285d3f166ae263984e979cea893c91d')
 
 build() {
   cd "$pkgname-$pkgver"
