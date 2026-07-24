@@ -66,12 +66,13 @@ pkgbase = firedragon-catppuccin-next
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = firedragon
 	conflicts = firedragon
+	noextract = firefox-153-patches-01.tar.xz
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	source = firedragon-v13.0.0-rc.27.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27/downloads/firedragon.source.tar.xz
-	source = fix-wasm32-wasi-target.patch
+	source = https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-153-patches-01.tar.xz
 	sha256sums = 5520b0d0dbc80e96a81f4b4a859a4feccddea210c349d49dda3b7f5e264d5270
-	sha256sums = f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124
+	sha256sums = 9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e
 
 pkgname = firedragon-catppuccin-next
