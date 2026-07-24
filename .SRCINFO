@@ -1,0 +1,25 @@
+pkgbase = qredshift
+	pkgdesc = Stateless, modern multi-display screen color temperature CLI for X11 and Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/raphaelquintao/QRedshift
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7l
+	arch = powerpc64le
+	license = Apache-2.0
+	depends = glibc
+	depends = libx11
+	depends = libxrandr
+	depends = libxcb
+	depends = xcb-util
+	optdepends = libwayland-client: Required for Wayland backend support
+	source_x86_64 = https://github.com/raphaelquintao/QRedshift/releases/download/v1.0.0/qredshift_1.0.0_x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_i686 = https://github.com/raphaelquintao/QRedshift/releases/download/v1.0.0/qredshift_1.0.0_i686.tar.gz
+	sha256sums_i686 = SKIP
+	source_aarch64 = https://github.com/raphaelquintao/QRedshift/releases/download/v1.0.0/qredshift_1.0.0_aarch64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = qredshift
