@@ -1,0 +1,12 @@
+build/
+dist/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.deb
+*.rpm
+*.exe
+*.msi
+*.dmg
+src/
+pkg/
+.SRCINFO.bak
