@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'libpulse' 'openssl'
          'qt6-base' 'qt6-connectivity' 'qt6-declarative')
 provides=('librepods')
 conflicts=('librepods')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('69ce19414a0205d1d19fb851f6adea6c231013df6ec8a32bc8122d5fd6e9dd52')
 
 package() {
