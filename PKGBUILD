@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=rchan
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A bot that checks for PKGBUILD updates in custom Arch Linux package repositories"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ReSpringClipsNeko/rchan/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a741ef2ea40df009b09451b496ee8663e2897e3f0b7a43b6380cc11c82e586a8')
+sha256sums=('3c82d2614af9593f9f468558e8c5f3a9c786d1161f1e3cdcb05e08492316cc3b')
 
 build() {
     cd "$pkgname-$pkgver"
