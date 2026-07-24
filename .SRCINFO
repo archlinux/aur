@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-bin
 	pkgdesc = Minecraft mod manager and launcher from Modrinth (upstream binary)
-	pkgver = 0.15.20
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://modrinth.com/app
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = modrinth-app-bin
 	depends = hicolor-icon-theme
 	provides = modrinth-app
 	conflicts = modrinth-app
-	noextract = modrinth-app-bin-0.15.20.deb
+	noextract = modrinth-app-bin-0.16.1.deb
 	options = !strip
 	options = !debug
-	source = modrinth-app-bin-0.15.20.deb::https://github.com/modrinth/code/releases/download/v0.15.20/Modrinth.App_0.15.20_amd64.deb
-	sha256sums = b88f8f4b5b2017ad99fb3e89cbfe1dc1a6693aa67c2edf7e94ee959a42fb533a
+	source = modrinth-app-bin-0.16.1.deb::https://github.com/modrinth/code/releases/download/v0.16.1/Modrinth.App_0.16.1_amd64.deb
+	sha256sums = 484c721e90f8628550d5920ea0a128fe77cc23f281ef4fdaa82bd9f044345c7e
 
 pkgname = modrinth-app-bin
