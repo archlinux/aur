@@ -17,7 +17,7 @@ depends=('avahi' 'dnsmasq' 'gst-plugin-pipewire' 'gst-plugins-bad'
 optdepends=('gstreamer-vaapi: hardware accelerated encoding')
 provides=('gnome-network-displays')
 conflicts=('gnome-network-displays')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('6e7f93f491226bab6ae54139dcaf009d9cedd8e983b04b5128701c3250936ac1')
 
 package() {
