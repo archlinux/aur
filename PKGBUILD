@@ -3,7 +3,7 @@
 
 pkgname=devin-desktop-next
 pkgver=3.6.1000_next.05e2e51d52
-pkgrel=2
+pkgrel=3
 pkgdesc="Devin Desktop (next channel) - AI-powered editor (formerly Windsurf Editor)"
 arch=('x86_64')
 url="https://docs.devin.ai"
@@ -139,8 +139,22 @@ package() {
     find . -mindepth 1 -maxdepth 1 -not -name resources -exec rm -rf {} +
     cd "$srcdir/deb-extract/data"
 
-    # Replace bundled ripgrep with the system binary.
-    ln -sf /usr/bin/rg "$pkgdir/opt/$pkgname/resources/app/node_modules/@vscode/ripgrep/bin/rg"
+    # Replace the bundled ripgrep with the system binary. VS Code moved it to
+    # ripgrep-universal in 3.6; retain the prior layout for older releases.
+    local _ripgrep_binary _candidate
+    for _candidate in \
+        "node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" \
+        "node_modules/@vscode/ripgrep/bin/rg"; do
+        if [[ -f "$pkgdir/opt/$pkgname/resources/app/$_candidate" ]]; then
+            _ripgrep_binary="$_candidate"
+            break
+        fi
+    done
+    if [[ -z "$_ripgrep_binary" ]]; then
+        error "bundled ripgrep binary not found in a supported upstream layout"
+        return 1
+    fi
+    ln -sf /usr/bin/rg "$pkgdir/opt/$pkgname/resources/app/$_ripgrep_binary"
 
     # Install the launcher script as the main executable.
     install -Dm755 "$srcdir/launcher" "$pkgdir/opt/$pkgname/$pkgname"
