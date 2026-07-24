@@ -1,0 +1,37 @@
+image: archlinux:latest
+
+update_aur:
+  script: |
+    set -x
+    pacman -Sy --noconfirm git base-devel openssh curl grep jq
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+    ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+    echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+    chmod 600 ~/.ssh/id_ed25519
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_ed25519
+    git config --global user.name "GitLab CI Bot"
+    git config --global user.email "bot@gitlab.com"
+    git config --global --add safe.directory '*'
+    
+    git clone ssh://aur@aur.archlinux.org/microsoft-edge-stable.git aur_repo_temp
+    cp PKGBUILD aur_repo_temp/
+    cd aur_repo_temp
+    useradd -m builduser
+    echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+    chown -R builduser:builduser .
+    
+    NEW_VER=$(sudo -u builduser bash -c 'source ./PKGBUILD; pkgver')
+    
+    echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
+    if [ -z "$NEW_VER" ]; then echo "ERROR: No se obtuvo version"; exit 1; fi
+    
+    sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
+    sudo -u builduser makepkg --printsrcinfo > .SRCINFO
+    git add PKGBUILD .SRCINFO
+    git commit -m "Update to ${NEW_VER}" || true
+    git push origin master
+  only:
+    - schedules
+    - web
