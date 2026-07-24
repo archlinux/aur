@@ -1,20 +1,17 @@
 pkgbase = douyin-cli
 	pkgdesc = Rust CLI for Douyin OpenAPI and web workflows
-	pkgver = 2026.7.24
+	pkgver = 2026.7.25
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/douyin
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	checkdepends = nodejs
 	makedepends = rust
-	makedepends = clang
-	makedepends = cmake
 	depends = glibc
 	depends = libgcc
-	depends = libstdc++
 	optdepends = nodejs: webpage crawling and comment collection
 	options = !lto
-	source = douyin-cli-2026.7.24.tar.gz::https://static.crates.io/crates/douyin-cli/douyin-cli-2026.7.24.crate
-	sha256sums = c6258711dbc327df00296546441863e263f9a0d61fe03cd6ace7c6d5f037d7fa
+	source = douyin-cli-2026.7.25.tar.gz::https://static.crates.io/crates/douyin-cli/douyin-cli-2026.7.25.crate
+	sha256sums = 4eb9d915b555a85140af1eda43d7cbb40dfb43494f99809c82a4a465b3a7403f
 
 pkgname = douyin-cli
