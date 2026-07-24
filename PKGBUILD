@@ -23,6 +23,8 @@ optdepends=('libunity: for download progress badges'
             'ttf-liberation: fix fonts for some PDFs'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
+provides=('microsoft-edge-dev' 'microsoft-edge')
+conflicts=('microsoft-edge-dev' 'microsoft-edge')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
