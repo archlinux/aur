@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=google-chrome-canary-bin
-pkgver=152.0.7968.2
+pkgver=152.0.7969.0
 pkgrel=1
 pkgdesc="The web browser from Google (Canary channel via Chrome for Testing)"
 arch=('x86_64')
@@ -43,7 +43,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"
-    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
+    _url="https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
+    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "$_url"
     bsdtar -xf chrome-linux64.zip
 }
 
