@@ -1,6 +1,6 @@
 pkgname=muote
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Graphical settings UI for Muote"
 arch=('x86_64')
 url="https://github.com/efebaykaraa/muote"
@@ -22,7 +22,7 @@ options=('!lto')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('2bc15a5a55db623917d489bed6b3876067a28bf452087499144ab790a8429317')
+sha256sums=('2946012337bc06f1cd8acff6157d2a31295fd301daa82e945f32aaf5368ea305')
 
 prepare() {
   ln -sfn /usr/share/wikiquote-fetcher "$srcdir/wikiquote-fetcher"
