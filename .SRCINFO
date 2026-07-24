@@ -1,0 +1,20 @@
+pkgbase = python-multimark
+	pkgdesc = Python bindings to cmark: CommonMark parsing and rendering (HTML, LaTeX, man, XML)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/posit-dev/multimark
+	arch = x86_64
+	license = MIT
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-cffi
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/m/multimark/multimark-0.2.0.tar.gz
+	sha256sums = 15a53111c52e0a65c200b57a5068a618734af52fc5d6512e8b9884fadbb2b8b8
+
+pkgname = python-multimark
