@@ -21,7 +21,7 @@ pkgbase = faugus-launcher-bin
 	optdepends = gamemode: feral gamemode integration
 	provides = faugus-launcher
 	conflicts = faugus-launcher
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/faugus-launcher-bin-2.0.2/faugus-launcher-bin-2.0.2.tar.zst
+	source = faugus-launcher-bin-2.0.2-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/faugus-launcher-bin-2.0.2/faugus-launcher-bin-2.0.2.tar.zst
 	sha256sums = 5fcf441cccb1ccc0ac554760e93744d557fd05a3fc4335132a59e55aefe902af
 
 pkgname = faugus-launcher-bin

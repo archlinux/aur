@@ -16,7 +16,7 @@ optdepends=('mangohud: performance overlay'
             'gamemode: feral gamemode integration')
 provides=('faugus-launcher')
 conflicts=('faugus-launcher')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('5fcf441cccb1ccc0ac554760e93744d557fd05a3fc4335132a59e55aefe902af')
 
 package() {
