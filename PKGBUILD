@@ -14,7 +14,7 @@ conflicts=('wshowkeys' 'wshowkeys-git' 'wshowkeys-mao-git')
 source=("$_pkgname::git+https://github.com/DreamMaoMao/wshowkeys.git"
         "rounded-corners.patch")
 sha512sums=('SKIP'
-            '77f3cfb4e3f273f983cb44962a8999af7e6688b351fa429339509b288c4f764760172de8eae35f0a906114796934ffd150a71b0acb9f27e67a489d333db2f050')
+            '453f053e0c90a7413122343739e85e22ea00685d91150fc955cf5135dfa4c044e4da75148ee844675f6ae7363093f895c694248946ac97b94811cc5b0c583bc3')
 
 prepare() {
     cd "$srcdir/$_pkgname"
