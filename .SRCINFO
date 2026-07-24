@@ -1,6 +1,6 @@
 pkgbase = wshowkeys-mao-git
 	pkgdesc = Displays keys being pressed on a Wayland session for DreamMaoMao fork
-	pkgver = r32.24364e5
+	pkgver = 131c3db0
 	pkgrel = 1
 	url = https://github.com/DreamMaoMao/wshowkeys
 	arch = x86_64

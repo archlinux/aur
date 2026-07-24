@@ -2,7 +2,7 @@
 
 pkgname=wshowkeys-mao-git
 _pkgname=wshowkeys
-pkgver=r32.24364e5
+pkgver=131c3db0
 pkgrel=1
 pkgdesc='Displays keys being pressed on a Wayland session for DreamMaoMao fork'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -32,5 +32,4 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" ninja -C build install
-    chmod a+s $pkgdir/usr/bin/wshowkeys
 }
