@@ -1,0 +1,22 @@
+pkgbase = xwayland-satellite-hidpi-git
+	pkgdesc = Xwayland satellite with HiDPI cursor scaling fixes
+	pkgver = e7cc44e
+	pkgrel = 1
+	url = https://github.com/ByDefolt/xwayland-satellite
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	depends = xcb-util-cursor
+	depends = xorg-xwayland
+	provides = xwayland-satellite
+	conflicts = xwayland-satellite
+	conflicts = xwayland-satellite-git
+	source = xwayland-satellite::git+https://github.com/ByDefolt/xwayland-satellite.git#branch=x-cursor-changes
+	sha256sums = SKIP
+
+pkgname = xwayland-satellite-hidpi-git
