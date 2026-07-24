@@ -1,6 +1,6 @@
 # Maintainer: MaPu <manpuk@protonmail.com>
 pkgname=mapu_calculator
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A customizable calculator for Linux, built with Iced."
 arch=('x86_64')

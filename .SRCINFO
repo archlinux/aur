@@ -1,13 +1,13 @@
 pkgbase = mapu_calculator
 	pkgdesc = A customizable calculator for Linux, built with Iced.
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/MaPu/mapu_calculator
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
-	source = https://codeberg.org/MaPu/mapu_calculator/archive/v0.1.2.tar.gz
+	source = https://codeberg.org/MaPu/mapu_calculator/archive/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = mapu_calculator
