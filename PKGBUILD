@@ -12,8 +12,10 @@ depends=(
 )
 makedepends=('npm')
 optdepends=(
-  'mysql2: MySQL database support'
-  'postgresql: PostgreSQL database support'
+  # Client drivers (mysql2 / pg) ship inside the package via npm node_modules.
+  # These are only the optional local DB *servers* if you self-host them.
+  'mariadb: local MySQL-compatible server (set DB_TYPE=mysql + DB_URL)'
+  'postgresql: local PostgreSQL server (set DB_TYPE=postgres + DB_URL)'
 )
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
