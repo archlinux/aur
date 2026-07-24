@@ -1,0 +1,3 @@
+[python-divine-async-runner]
+source = "pypi"
+pypi = "divine-async-runner"

@@ -1,0 +1,19 @@
+pkgbase = python-divine-async-runner
+	pkgdesc = A unified async process runner with configurable output handling and robust error management
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pypi.org/project/divine-async-runner/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-anyio
+	source = https://files.pythonhosted.org/packages/source/d/divine_async_runner/divine_async_runner-0.1.7.tar.gz
+	sha256sums = 405d4c406f2dd51fb8f188d9aea3f2bbc0bf45dc38c839b23cf0ada9ae82acdd
+
+pkgname = python-divine-async-runner
