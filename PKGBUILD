@@ -3,7 +3,7 @@
 pkgname=paseo-cli-bun
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents, using Bun runtime'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=('paseo' 'paseo-bin' 'paseo-cli')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmscope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/getpaseo/paseo/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('5f4e37907e651c0f24d44bb994c63ef1f820f7a6da966c259093c60dd2dabc69'
+sha256sums=('271193c4f5a6a355e82a83a661d9d597b668963276d118711caf5c551727bd1c'
             '2d29a730f15470509f7a36e63a024c2f121958471474dfcd6b272c99586fc337')
 options=('!strip')
 
