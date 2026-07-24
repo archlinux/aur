@@ -2,7 +2,7 @@
 
 pkgname=seekey-git
 pkgver=0.2.0.r20.g8c5f250
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland keyboard visualizer with floating key bubbles (git version)'
 arch=('x86_64')
 url='https://github.com/Nakanomk/Seekey'
@@ -25,14 +25,10 @@ makedepends=(
 provides=('seekey')
 conflicts=('seekey')
 install=seekey.install
-source=(
-  'seekey::git+https://github.com/Nakanomk/Seekey.git'
-  '70-seekey.rules'
-)
-sha256sums=(
-  'SKIP'
-  '22cc98416e9fda899adc6787fcafd2d795ad646f8cc6dd884f5beb5fdb0cb609'
-)
+source=('seekey::git+https://github.com/Nakanomk/Seekey.git')
+# VCS sources are intentionally checksummed as SKIP: their contents are
+# selected by Git and pkgver(), not by a fixed archive hash.
+sha256sums=('SKIP')
 
 pkgver() {
   cd seekey
@@ -59,6 +55,4 @@ package() {
 
   install -Dm644 seekey/LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 70-seekey.rules \
-    "$pkgdir/usr/lib/udev/rules.d/70-seekey.rules"
 }
