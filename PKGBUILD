@@ -6,21 +6,27 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=6
+pkgsfx=preview-23
+pkgbld=094b94dc
+pkgrel=7
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
 license=('custom')
 depends=('ut2004-data' 'sdl3' 'openal' 'openmp' 'gcc-libs' 'alsa-lib' 'libgl')
+optdepends=(
+    'pipewire-alsa: route ALSA audio through PipeWire (required for sound on default Arch installs)'
+    'pulseaudio-alsa: route ALSA audio through PulseAudio (alternative to pipewire-alsa)'
+)
 makedepends=()
 provides=('ut2004')
 conflicts=('ut2004-gog' 'ut2004-steam')
 options=('!strip')
-source=("https://github.com/OldUnreal/UT2004Patches/releases/download/${pkgver}-preview-17/OldUnreal-UT2004Patch${pkgver}-Linux-6369f34c.tar.bz2"
+source=("https://github.com/OldUnreal/UT2004Patches/releases/download/${pkgver}-${pkgsfx}/OldUnreal-UT2004Patch${pkgver}-Linux-${pkgbld}.tar.bz2"
         "ut2004.desktop"
         "ut2004.png"
         "ut2004.sh")
-sha256sums=('fcf195e7c8157bf47797360b85e5df3164b8638297a7fa08cdf200a2b1b1433a'
+sha256sums=('179ea43c8831bff147005850cd373c0ec2b70dcf6f841c2109c1525ef11ad4d3'
             '23aaf1232a36a479fd3ab5ee0045ec00d6e52b5c6e27bcf33a2c7386d3251882'
             '9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd'
             '348caa8129c581df2e8eeeda2c53b4aa376ba7b4007bb18695e98dc574a32b8d')
