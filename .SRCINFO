@@ -1,12 +1,12 @@
 pkgbase = fan
 	pkgdesc = ThinkPad fan control via /proc/acpi/ibm/fan
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/NotiLo-A/fan
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
-	source = fan-1.0.5.tar.gz::https://github.com/NotiLo-A/fan/archive/refs/tags/1.0.5.tar.gz
-	sha256sums = 5792b22fb3913b169db79a48c96640e5071188ba7f00ed45ad7e19ca888d9370
+	source = fan-1.0.6.tar.gz::https://github.com/NotiLo-A/fan/archive/refs/tags/1.0.6.tar.gz
+	sha256sums = 11f5e20f9885f487a500546f0200170a7656ef380523903ccbb36732b51da5b0
 
 pkgname = fan
