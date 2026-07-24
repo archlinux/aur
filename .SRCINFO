@@ -1,7 +1,7 @@
 pkgbase = gearlever-bin
 	pkgdesc = Manage AppImages with ease (prebuilt)
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gearlever.mijorus.it
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,8 +15,6 @@ pkgbase = gearlever-bin
 	depends = python-dbus
 	depends = python-requests
 	depends = python-pyxdg
-	depends = python-ftputil
-	depends = python-desktop-entry-lib
 	depends = 7zip
 	depends = binutils
 	depends = squashfs-tools
@@ -26,6 +24,6 @@ pkgbase = gearlever-bin
 	provides = gearlever
 	conflicts = gearlever
 	source = https://github.com/Felitendo/PKGBUILDS/releases/download/gearlever-bin-4.6.2/gearlever-bin-4.6.2.tar.zst
-	sha256sums = 319841a5dffd942b6f3b86822ac4d9d52a5b4ee559ea03ee5c2a6318a5161546
+	sha256sums = 225dd08d1fbdf33bb5979660737cee180f60b8cfa6477f1553025a6c2f5236a5
 
 pkgname = gearlever-bin
