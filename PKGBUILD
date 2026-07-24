@@ -1,52 +1,24 @@
-# Maintainer: Antti <antti@antti.codes>
+# Maintainer: Felitendo
+# This PKGBUILD is updated automatically:
+# https://github.com/Felitendo/PKGBUILDS
 
 pkgname=modrinth-app-bin
-pkgver=0.13.21
+pkgver=0.15.20
 pkgrel=1
-pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
-url='https://modrinth.com/app'
+pkgdesc="Minecraft mod manager and launcher from Modrinth (upstream binary)"
 arch=('x86_64')
+url="https://modrinth.com/app"
 license=('GPL-3.0-only')
-depends=(
-    # tauri deps
-    'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1' 'gst-plugins-good'
-    # minecraft deps
-    'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
-)
-optdepends=(
-    'xorg-xrandr: for older minecraft versions'
-)
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme')
 provides=('modrinth-app')
 conflicts=('modrinth-app')
-source=(
-    "https://launcher-files.modrinth.com/versions/${pkgver}/linux/Modrinth%20App_${pkgver}_amd64.deb"
-    "modrinth-app"
-    "modrinth-file-extensions.xml"
-)
-sha256sums=('a04316bae35342a3e11bdf416b5cad25956b1152b9b20842839978a5b5277494'
-            'da70f89aae82e69625bfe920fa52961550c8f9d4825a0d11e620ac55db84e091'
-            'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
+options=('!strip' '!debug')
+source=("${pkgname}-${pkgver}.deb::https://github.com/modrinth/code/releases/download/v${pkgver}/Modrinth.App_${pkgver}_amd64.deb")
+noextract=("${pkgname}-${pkgver}.deb")
+sha256sums=('b88f8f4b5b2017ad99fb3e89cbfe1dc1a6693aa67c2edf7e94ee959a42fb533a')
 
-build() {
-    cd "$srcdir/"
-    tar xf data.tar.gz
-}
-
-_binname="ModrinthApp"
 package() {
-    cd "$srcdir"
-    find "./usr/share" -type f -print0 | while read -d $'\0' f; do
-        filename=$(basename -- "$f")
-        target="modrinth-app.${filename##*.}"
-        dir=$(dirname -- "$f")
-        install -Dm644 "$f" "$pkgdir/$dir/$target"
-    done
-    sed -i \
-      -e "s/Exec=${_binname}/Exec=modrinth-app %u/" \
-      -e "s/Icon=${_binname}/Icon=modrinth-app/" \
-      -e "s/mrpack/x-modrinth-mrpack/" \
-      "${pkgdir}/usr/share/applications/modrinth-app.desktop"
-    install -Dm755 "${srcdir}/usr/bin/${_binname}" "${pkgdir}/opt/modrinth-app/modrinth-app"
-    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/modrinth-app"
-    install -Dm644 "${srcdir}/modrinth-file-extensions.xml" "${pkgdir}/usr/share/mime/packages/modrinth-file-extensios.xml"
+  bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
+    | bsdtar -xpf - -C "$pkgdir" usr
+  ln -s ModrinthApp "$pkgdir/usr/bin/modrinth-app"
 }
