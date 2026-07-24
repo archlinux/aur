@@ -1,4 +1,6 @@
 [wsjtx-improved-qt6]
 source = "regex"
 url = "https://sourceforge.net/projects/wsjt-x-improved/files/"
-regex = '>WSJT-X_v([\.0-9]+)<'
+regex = 'wsjtx-([0-9.]+_improved_PLUS_[0-9]+)'
+from_pattern = '([0-9.]+)_\S+_([0-9]+)'
+to_pattern = '\1+\2'

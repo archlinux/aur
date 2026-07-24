@@ -1,13 +1,12 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
-: ${_date:=260522}
 : ${_pkgs=AL:widescreen}
 
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
-pkgver=3.1.0
-pkgrel=4
+pkgver=3.1.0+260522
+pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL-3.0-or-later')
@@ -42,11 +41,11 @@ conflicts=("$_pkgname")
 
 options=('!lto')
 
-_dl_url_base="https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/Qt6"
+_dl_url_base="https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v${pkgver%+*}/Source%20code/Qt6"
 
-_file="$_pkgname-improved-qt6-$pkgver-$_date.tar.gz"
+_file="$_pkgname-improved-qt6-$pkgver.tar.gz"
 noextract=("$_file")
-source=("$_file"::"$_dl_url_base/wsjtx-${pkgver}_improved_PLUS_${_date}_qt6.tgz")
+source=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_PLUS_${pkgver#*+}_qt6.tgz")
 
 sha256sums=(
   '4c4262d8a4ff0189a64a97a55aa352509720db32b512c2a0cec0b6a096367324'
@@ -55,10 +54,10 @@ sha256sums=(
 )
 
 for i in ${_pkgs//:/ }; do
-  _file="$_pkgname-improved-${i,,}-qt6-$pkgver-$_date.tar.gz"
+  _file="$_pkgname-improved-${i,,}-qt6-$pkgver.tar.gz"
   pkgname+=("$_pkgname-improved-${i,,}-qt6")
   noextract+=("$_file")
-  source+=("$_file"::"$_dl_url_base/wsjtx-${pkgver}_improved_${i}_PLUS_${_date}_qt6.tgz")
+  source+=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_${i}_PLUS_${pkgver#*+}_qt6.tgz")
 done
 
 if [[ ! "$_pkgs" =~ AL ]]; then
@@ -101,7 +100,7 @@ build() {
 
 _package() {
   printf "\nPackaging %s...\n" "$pkgname"
-  DESTDIR="$pkgdir" cmake --install "$pkgname-$pkgver-$_date"/build
+  DESTDIR="$pkgdir" cmake --install "$pkgname-$pkgver"/build
 
   mkdir -pm755 "$pkgdir/usr/bin"
   ln -sf "/usr/lib/$_pkgname/wsjtx" "$pkgdir/usr/bin/wsjtx"
