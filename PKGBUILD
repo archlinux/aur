@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2164
 
-pkgver=2.2.4.r5.g1682cdb
+pkgver=2.2.4.r6.g8445d99
 pkgrel=1
 
 _pkgname=casual-pre-loader
@@ -21,7 +21,7 @@ depends=(
 	'python-platformdirs>=4.11' 'python-platformdirs<5'
 	'python-pygithub>=2.9.0' 'python-pygithub<3'
 	'python-pyqt6>=6.11' 'python-pyqt6<7'
-	'python-requests>=2.33' 'python-requests<3'
+	'python-requests>=2.34' 'python-requests<3'
 	'python-valve-parsers>=1.2.2'
 )
 makedepends=(
