@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=pyqcc
 pkgname=python-${_pkgname}
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Python package to communicate with Crypta Labs QRNG devices"
 arch=(any)
@@ -17,7 +17,7 @@ source=(
     https://cryptalabs.com/support/releases/pyqcc/$_pkgname-$pkgver-py3-none-$arch.whl
     license-unknown.txt
 )
-b2sums=('ca7be7578738abcc97929c44cf0f5fc90b80593db7bc978d0c00a9ef277f9ec599d2ec4d2fbd7e02e7576d3ab6dcdbfd6d0ca9e7831a455424b1c21b7da05e60'
+b2sums=('2496e17ebcd4f5ed1b30411e6b1aaeeef851366c9179c60a03c4268bed20c40ec49914f6528bc4a61cfb274a6a071f552904f64aef9b443b2b56263aec1c634c'
         '900dfce730c0f29b0cd5fafdf5ed6bc08a3ca245c3bbee12878c7e183951e0a55e33205da747d1666baded6133473fa8506dea252a2bc23f6f7555ebfa500d54')
 
 package() {
