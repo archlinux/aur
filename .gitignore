@@ -1,0 +1,7 @@
+# Allowlist — an AUR repo holds only the recipe. Everything makepkg produces
+# (src/, pkg/, downloaded sources, built packages) must never be pushed.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.desktop

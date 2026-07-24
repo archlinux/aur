@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=TennoWorth
+GenericName=Warframe Market Dashboard
+Comment=See what's worth selling in Warframe right now
+Exec=tennoworth-desktop
+Icon=tennoworth
+Terminal=false
+Categories=Game;Utility;
+Keywords=warframe;market;trading;inventory;
+StartupWMClass=TennoWorth
