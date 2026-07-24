@@ -1,9 +1,9 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
-_opam_switch_stamp=arch-ocaml-system-cmdliner-2
+_opam_switch_stamp=3
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
@@ -81,7 +81,7 @@ _submodules=(
   'OSS/languages/terraform/tree-sitter/semgrep-hcl|languages/terraform/tree-sitter/semgrep-hcl|semgrep-hcl|https://github.com/opengrep/semgrep-hcl|e42e9d924de848c784e4ab46c571bff5145d245e'
   'OSS/languages/typescript/tree-sitter/semgrep-tsx|languages/typescript/tree-sitter/semgrep-tsx|semgrep-tsx|https://github.com/opengrep/semgrep-tsx|a5799ce5d762168fe17c94b86ad5f77ee13d2138'
   'OSS/languages/typescript/tree-sitter/semgrep-typescript|languages/typescript/tree-sitter/semgrep-typescript|semgrep-typescript|https://github.com/opengrep/semgrep-typescript|6c288cd9c2fecf05556be02d540814aa5456ad2b'
-  'OSS/libs/ocaml-tree-sitter-core|libs/ocaml-tree-sitter-core|ocaml-tree-sitter-core|https://github.com/opengrep/ocaml-tree-sitter-core.git|fb72747f328c156b6c8f3b8bea74454190576e04'
+  'OSS/libs/ocaml-tree-sitter-core|libs/ocaml-tree-sitter-core|ocaml-tree-sitter-core|https://github.com/opengrep/ocaml-tree-sitter-core.git|1392efc21e60d5acde72d0d1c6586f5692fedace'
   'OSS/libs/pcre2|libs/pcre2|pcre2-ocaml|https://github.com/semgrep/pcre2-ocaml|4e0a44486bb518b7a24ca11286c4b03a8d51e17e'
   'OSS/libs/testo|libs/testo|testo|https://github.com/semgrep/testo.git|99a0d4f08d9cbabc87d10da94a534ce8a1220cd9'
   'OSS/tests/semgrep-rules|tests/semgrep-rules|semgrep-rules|https://github.com/semgrep/semgrep-rules.git|f0a382de1184139c5a356eb64ccd9bdfcc8ce526'
@@ -90,13 +90,11 @@ _submodules=(
 source=(
   "${pkgname}::git+https://github.com/opengrep/opengrep.git#tag=v${pkgver}"
   "memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=${_memprof_limits_commit}"
-  'cmdliner-2.patch'
 )
 
 sha256sums=(
     'SKIP'
     'SKIP'
-    '32b473e58ab10521378985d36c7024a93c34f6b65da4b97be493bb812ec577c1'
 )
 
 for _submodule in "${_submodules[@]}"; do
@@ -120,26 +118,6 @@ prepare() {
   done
 
   git -c protocol.file.allow=always submodule update --init --force "${_submodule_paths[@]}"
-
-  patch -Np1 -i "${srcdir}/cmdliner-2.patch"
-
-  sed -i \
-    -e 's/"cmdliner" {< "2.0.0"}/"cmdliner"/' \
-    -e 's/"ppxlib" {= "0.35.0"}/"ppxlib" {>= "0.37.0" \& < "0.38.0"}/' \
-    -e 's/"visitors" {= "20250212"}/"visitors" {= "20251114"}/' \
-    -e 's/(ppxlib (= "0.35.0"))/(ppxlib (and (>= "0.37.0") (< "0.38.0")))/' \
-    -e 's/(ppxlib (= 0.35.0))/(ppxlib (and (>= 0.37.0) (< 0.38.0)))/' \
-    -e 's/(visitors (= 20250212))/(visitors (= 20251114))/' \
-    dune-project \
-    opam/semgrep.opam \
-    opam/commons.opam \
-    opam/spacegrep.opam \
-    libs/testo/testo.opam \
-    libs/testo/testo-lwt.opam \
-    libs/ocaml-tree-sitter-core/tree-sitter.opam
-
-  perl -0pi -e 's~let rec parameters body =\n  match body with\n  \| \{ pexp_desc = Pexp_fun \(Nolabel, _, _, body\); _ \} ->\n      Nolabel :: parameters body\n  \| \{ pexp_desc = Pexp_fun \(Labelled name, _, _, body\); _ \} ->\n      Labelled name :: parameters body\n  \| \{ pexp_desc = Pexp_fun \(Optional name, _, _, body\); _ \} ->\n      Optional name :: parameters body\n  \| _else_ -> \[\]~let rec parameters body =\n  match body with\n  | {\n   pexp_desc = Pexp_function (params, _, Pfunction_body body);\n   _;\n  } ->\n      params\n      |> List_.filter_map (fun param ->\n             match param.pparam_desc with\n             | Pparam_val (label, _, _) -> Some label\n             | Pparam_newtype _ -> None)\n      |> (fun labels -> labels @ parameters body)\n  | _else_ -> []~' \
-    libs/profiling/ppx/ppx_profiling.ml
 
   sed -i \
     '/^# Remove all symbols with GNU strip/,/^\tstrip bin\/opengrep-core$(EXE)$/d' \

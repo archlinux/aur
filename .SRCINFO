@@ -1,6 +1,6 @@
 pkgbase = opengrep
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep
-	pkgver = 1.25.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -36,9 +36,8 @@ pkgbase = opengrep
 	depends = python-urllib3
 	depends = python-wcmatch
 	depends = tree-sitter
-	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.25.0
+	source = opengrep::git+https://github.com/opengrep/opengrep.git#tag=v1.26.0
 	source = memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=c2cced325a93d2271379f0712db85867b29dbee1
-	source = cmdliner-2.patch
 	source = semgrep-interfaces::git+https://github.com/opengrep/semgrep-interfaces.git#commit=977c2a9b30e472c303930104414184c76bbadda8
 	source = semgrep-apex::git+https://github.com/opengrep/semgrep-apex.git#commit=f2a235f997379033a8c64f0962d5ef1252629a0a
 	source = semgrep-bash::git+https://github.com/opengrep/semgrep-bash#commit=e6f3944f59b684b212a37bdec6b113621a1ad9ea
@@ -75,13 +74,12 @@ pkgbase = opengrep
 	source = semgrep-hcl::git+https://github.com/opengrep/semgrep-hcl#commit=e42e9d924de848c784e4ab46c571bff5145d245e
 	source = semgrep-tsx::git+https://github.com/opengrep/semgrep-tsx#commit=a5799ce5d762168fe17c94b86ad5f77ee13d2138
 	source = semgrep-typescript::git+https://github.com/opengrep/semgrep-typescript#commit=6c288cd9c2fecf05556be02d540814aa5456ad2b
-	source = ocaml-tree-sitter-core::git+https://github.com/opengrep/ocaml-tree-sitter-core.git#commit=fb72747f328c156b6c8f3b8bea74454190576e04
+	source = ocaml-tree-sitter-core::git+https://github.com/opengrep/ocaml-tree-sitter-core.git#commit=1392efc21e60d5acde72d0d1c6586f5692fedace
 	source = pcre2-ocaml::git+https://github.com/semgrep/pcre2-ocaml#commit=4e0a44486bb518b7a24ca11286c4b03a8d51e17e
 	source = testo::git+https://github.com/semgrep/testo.git#commit=99a0d4f08d9cbabc87d10da94a534ce8a1220cd9
 	source = semgrep-rules::git+https://github.com/semgrep/semgrep-rules.git#commit=f0a382de1184139c5a356eb64ccd9bdfcc8ce526
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 32b473e58ab10521378985d36c7024a93c34f6b65da4b97be493bb812ec577c1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
