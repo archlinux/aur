@@ -1,6 +1,6 @@
 pkgbase = cproj
 	pkgdesc = A lightweight project manager for C and C++
-	pkgver = 0.1.2
+	pkgver = 0.1.2.1
 	pkgrel = 1
 	url = https://github.com/BradBenJoya/CProj
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cproj
 	depends = cmake
 	depends = ninja
 	depends = git
-	source = https://github.com/BradBenJoya/CProj/archive/refs/tags/0.1.2.tar.gz
+	source = https://github.com/BradBenJoya/CProj/archive/refs/tags/0.1.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = cproj

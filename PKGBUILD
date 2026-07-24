@@ -1,5 +1,5 @@
 pkgname=cproj
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 pkgdesc="A lightweight project manager for C and C++"
 arch=('x86_64')
