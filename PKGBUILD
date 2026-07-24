@@ -9,7 +9,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'git')
 
 source=("rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v${pkgver}-fix")
-sha256sums=('6ba1e816ae7191668df8086b3ad4e518366aa15ef424255763eb0c3df938bb58')
+sha256sums=('0d5373e7727d067fe34e690d818b94d4068ef85837bd7a940a588eb6d9b0b2b1')
 
 prepare() {
   cd "$(dirname "$(find "$srcdir" -name Cargo.toml -print -quit)")"
