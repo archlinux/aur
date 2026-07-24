@@ -5,7 +5,7 @@ _channel=canary
 _pkgname=microsoft-edge-canary
 pkgname=microsoft-edge-canary-bin
 _pkgshortname=msedge-canary
-pkgver=150.0.4060.0
+pkgver=152.0.4173.0
 pkgrel=1
 _uprel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
@@ -28,7 +28,7 @@ options=(!strip !zipman)
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/$_pkgname/${_pkgname}_$pkgver-${_uprel}_amd64.deb"
         "$_pkgname.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
-sha256sums=('1c400904b7839d972ee088e5aea6ceee74b97bd68ba9ca04e127f02506116ce7'
+sha256sums=('11fa47483faaec7508401975aaafcbb7dc139ab2aacc061be8f56d662a151e3e'
             '94d18bb414adb7693c4234ce5d0eac1e04caf98dc197ff8247ac5e84ea42f2d1'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
