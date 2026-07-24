@@ -23,7 +23,7 @@ pkgbase = linux-wallpaperengine-bin
 	conflicts = linux-wallpaperengine-git
 	options = !strip
 	options = !debug
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/linux-wallpaperengine-bin-r627.b016d7d/linux-wallpaperengine-bin-r627.b016d7d.tar.zst
+	source = linux-wallpaperengine-bin-r627.b016d7d-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/linux-wallpaperengine-bin-r627.b016d7d/linux-wallpaperengine-bin-r627.b016d7d.tar.zst
 	sha256sums = ed71a7ca046003c368b6af7aa9766dee36cd5da84921a4a34991248d62d7bc6b
 
 pkgname = linux-wallpaperengine-bin
