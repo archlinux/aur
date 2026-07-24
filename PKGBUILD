@@ -1,7 +1,7 @@
 # Maintainer: theesfeld
 # f00tils — pure assembly coreutils replacement (binary package)
 pkgname=f00
-pkgver=0.15.11
+pkgver=0.15.12
 pkgrel=1
 pkgdesc="f00tils — pure assembly coreutils replacement (multicall, freestanding)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=()
 provides=('f00')
 conflicts=('f00')
 options=('!strip')
-source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.11-linux-x86_64.tar.gz")
-sha256sums=('480725aea231c03e366b09c87200e0bfb051c6d5d556eacb1a9bf87542e8fa99')
+source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.15.12-linux-x86_64.tar.gz")
+sha256sums=('0c6b43000985d03c19482ae116382b31b825d49d6ee5671f39dd468781f1a66f')
 
 package() {
   local root
@@ -64,7 +64,7 @@ EOS
            id groups uname arch date users who pinky uptime hostname \
            nice nohup timeout kill test printf \
            md5sum sha1sum sha256sum sha224sum sha384sum sha512sum b2sum cksum sum \
-           base64 basenc base32 dircolors chroot stty stdbuf runcon chcon; do
+           base64 basenc base32 dircolors chroot stty stdbuf runcon chcon config; do
     ln -s f00 "${pkgdir}/usr/bin/f00-${u}"
     ln -s ../../../bin/f00 "${pkgdir}/usr/lib/f00/bin/${u}"
   done

@@ -1,13 +1,13 @@
 pkgbase = f00
 	pkgdesc = f00tils — pure assembly coreutils replacement (multicall, freestanding)
-	pkgver = 0.15.11
+	pkgver = 0.15.12
 	pkgrel = 1
 	url = https://f00.sh
 	arch = x86_64
 	license = MIT
 	provides = f00
 	conflicts = f00
-	source = https://github.com/theesfeld/f00/releases/download/v0.15.11/f00-0.15.11-linux-x86_64.tar.gz
-	sha256sums = 480725aea231c03e366b09c87200e0bfb051c6d5d556eacb1a9bf87542e8fa99
+	source = https://github.com/theesfeld/f00/releases/download/v0.15.12/f00-0.15.12-linux-x86_64.tar.gz
+	sha256sums = 0c6b43000985d03c19482ae116382b31b825d49d6ee5671f39dd468781f1a66f
 
 pkgname = f00
