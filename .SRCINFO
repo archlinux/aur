@@ -1,6 +1,6 @@
 pkgbase = termark-appimage
 	pkgdesc = Termark 是一款专为现代开发者设计的 SSH 客户端，面向资产管理、终端操作和安全访问等日常工作流
-	pkgver = 1.1.1
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://www.termark.app
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = termark-appimage
 	license = custom:EULA
 	depends = zlib
 	depends = fuse2
-	noextract = termark-appimage-1.1.1.AppImage
+	noextract = termark-appimage-1.1.4.AppImage
 	options = !strip
-	source_x86_64 = termark-appimage-1.1.1.AppImage::https://f.typesafe.cn/termark/Termark-1.1.1.AppImage
-	sha256sums_x86_64 = 44144f86c91e0f604650018a14df36fee5de3977293b42c0dc16fe69abe1816d
-	source_aarch64 = termark-appimage-1.1.1.AppImage::https://f.typesafe.cn/termark/Termark-1.1.1-arm64.AppImage
-	sha256sums_aarch64 = e5ca66b3cb796ef186e8c23395c4b044c8c5d6ac6c9a891f8c295699481ca6ed
+	source_x86_64 = termark-appimage-1.1.4.AppImage::https://f.typesafe.cn/termark/Termark-1.1.4.AppImage
+	sha256sums_x86_64 = 4414a11be9007ffe8e707d79c4ce87c5873afa202050f2bb6956ab1aeded2f22
+	source_aarch64 = termark-appimage-1.1.4.AppImage::https://f.typesafe.cn/termark/Termark-1.1.4-arm64.AppImage
+	sha256sums_aarch64 = 0e0d8b4350d102e99f42e16c85b60c0126d7dbc8b808151b0f03f391a948b56d
 
 pkgname = termark-appimage
