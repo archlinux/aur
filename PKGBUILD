@@ -14,20 +14,31 @@ depends=('onnxruntime' 'tpm2-tss' 'pam')
 optdepends=('fprintd: fingerprint companion factor')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
-makedepends=('rust' 'cargo' 'gcc' 'clang' 'git-lfs')
-# Models ride in the tag via Git LFS. GitHub's auto-generated tag tarballs do
-# NOT include LFS objects (they ship 131-byte pointer stubs); that is exactly
-# why this PKGBUILD clones the git tag and runs `git lfs pull` instead of using
-# the tarball. Do not "simplify" to the archive URL.
-source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+makedepends=('rust' 'cargo' 'gcc' 'clang')
+# The code comes from the signed git tag. The ONNX model weights are NOT in the
+# tag; they are hosted as release assets on the version-independent `models-v1`
+# release (kept out of Git LFS so builds do not consume the account's LFS
+# bandwidth quota). makepkg downloads and checksum-verifies them as extra
+# sources here, and prepare() stages them into the build tree.
+source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}"
+        "glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx"
+        "face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx"
+        "face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx"
+        "blaze_face_short_range.onnx::https://github.com/archledger/irlume/releases/download/models-v1/blaze_face_short_range.onnx")
+sha256sums=('SKIP'
+            'a7933ea5330113b01c9b60351d8f4c33003f145d8470ac5f0e52ee2effe25c60'
+            '8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4'
+            '821683be088447839638f79d64268bd501bdb72e5d9e262ec981c7e252956caf'
+            'c5453678015f6289c1d77bda88a8ba9c87574f01de1a05ba1909b9a7e08b237b')
 install=irlume.install
 
 prepare() {
     cd "$srcdir/$pkgname"
-    git lfs install --local
-    git config lfs.url https://github.com/archledger/irlume.git/info/lfs
-    git lfs pull
+    # Stage the release-hosted weights (makepkg already downloaded and verified
+    # them from the sources above) into the tree the build expects.
+    mkdir -p models
+    cp "$srcdir"/glintr100.onnx "$srcdir"/face_detection_yunet_2023mar.onnx \
+       "$srcdir"/face_landmark.onnx "$srcdir"/blaze_face_short_range.onnx models/
 }
 
 build() {

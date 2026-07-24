@@ -10,12 +10,19 @@ pkgbase = irlume
 	makedepends = cargo
 	makedepends = gcc
 	makedepends = clang
-	makedepends = git-lfs
 	depends = onnxruntime
 	depends = tpm2-tss
 	depends = pam
 	optdepends = fprintd: fingerprint companion factor
 	source = git+https://github.com/archledger/irlume.git#tag=v0.6.1
+	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
+	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
+	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx
+	source = blaze_face_short_range.onnx::https://github.com/archledger/irlume/releases/download/models-v1/blaze_face_short_range.onnx
 	sha256sums = SKIP
+	sha256sums = a7933ea5330113b01c9b60351d8f4c33003f145d8470ac5f0e52ee2effe25c60
+	sha256sums = 8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4
+	sha256sums = 821683be088447839638f79d64268bd501bdb72e5d9e262ec981c7e252956caf
+	sha256sums = c5453678015f6289c1d77bda88a8ba9c87574f01de1a05ba1909b9a7e08b237b
 
 pkgname = irlume
