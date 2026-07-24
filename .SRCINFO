@@ -1,6 +1,6 @@
 pkgbase = pulse-remote-git
 	pkgdesc = Audio mixer for PulseAudio and PipeWire — local desktop app and web UI accessible from any device on your network
-	pkgver = 0.10.0.r1.g8ef1875
+	pkgver = 0.11.0.r0.g5e18d5b
 	pkgrel = 1
 	url = https://github.com/undg/pulse-remote
 	install = pulse-remote-git.install
