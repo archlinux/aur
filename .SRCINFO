@@ -1,0 +1,26 @@
+pkgbase = wshowkeys-mao-rounded
+	pkgdesc = Displays keys being pressed on a Wayland session (DreamMaoMao fork + rounded corners)
+	pkgver = r43.521a0c8
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/wshowkeys
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = pango
+	depends = libinput
+	depends = libxkbcommon
+	depends = wayland
+	provides = wshowkeys
+	conflicts = wshowkeys
+	conflicts = wshowkeys-git
+	conflicts = wshowkeys-mao-git
+	source = wshowkeys::git+https://github.com/DreamMaoMao/wshowkeys.git
+	source = rounded-corners.patch
+	sha512sums = SKIP
+	sha512sums = 77f3cfb4e3f273f983cb44962a8999af7e6688b351fa429339509b288c4f764760172de8eae35f0a906114796934ffd150a71b0acb9f27e67a489d333db2f050
+
+pkgname = wshowkeys-mao-rounded

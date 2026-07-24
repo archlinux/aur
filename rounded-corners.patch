@@ -1,0 +1,95 @@
+--- /tmp/wshowkeys/main.c	2026-07-25 01:05:07.265401021 +0800
++++ /home/ash/PKGBUILD/wshowkeys-mao-rounded/src/wshowkeys-src/main.c	2026-07-24 23:08:43.000000000 +0800
+@@ -208,6 +208,7 @@
+ 
+ 	// 超时后不立刻清屏，先打标记，等下一次按键才真正清除
+ 	bool pending_clear;
++	double corner_radius;
+ };
+ 
+ // 提前声明，后面实现
+@@ -217,6 +218,20 @@
+ static struct pool_buffer buffer_mods;
+ static struct pool_buffer buffer_keys;
+ 
++static void rounded_rect(cairo_t *cr, double x, double y, double w, double h, double r) {
++    double pi = 3.14159265358979323846;
++    double pi_2 = 1.57079632679489661923;
++    if (r > w / 2) r = w / 2;
++    if (r > h / 2) r = h / 2;
++    if (r < 0) r = 0;
++    cairo_new_sub_path(cr);
++    cairo_arc(cr, x + w - r, y + r, r, -pi_2, 0);
++    cairo_arc(cr, x + w - r, y + h - r, r, 0, pi_2);
++    cairo_arc(cr, x + r, y + h - r, r, pi_2, pi);
++    cairo_arc(cr, x + r, y + r, r, pi, 3 * pi_2);
++    cairo_close_path(cr);
++}
++
+ /* ---------- 工具函数 ---------- */
+ static void cairo_set_source_u32(cairo_t *cairo, uint32_t color) {
+ 	cairo_set_source_rgba(
+@@ -713,6 +728,13 @@
+ 		cairo_set_operator(shm, CAIRO_OPERATOR_CLEAR);
+ 		cairo_paint(shm);
+ 		cairo_restore(shm);
++
++		if (state->corner_radius > 0) {
++			double r = state->corner_radius * scale;
++			rounded_rect(shm, 0, 0, state->mods_width * scale, state->mods_height * scale, r);
++			cairo_clip(shm);
++		}
++
+ 		cairo_set_source_surface(shm, recorder, 0.0, 0.0);
+ 		cairo_paint(shm);
+ 
+@@ -779,6 +801,13 @@
+ 		cairo_set_operator(shm, CAIRO_OPERATOR_CLEAR);
+ 		cairo_paint(shm);
+ 		cairo_restore(shm);
++
++		if (state->corner_radius > 0) {
++			double r = state->corner_radius * scale;
++			rounded_rect(shm, 0, 0, state->keys_width * scale, state->keys_height * scale, r);
++			cairo_clip(shm);
++		}
++
+ 		cairo_set_source_surface(shm, recorder, 0.0, 0.0);
+ 		cairo_paint(shm);
+ 
+@@ -1402,6 +1431,7 @@
+ 	state.length_limit = 100;
+ 	state.combination_keye_repetition = 1;
+ 	state.pending_clear = false;
++	state.corner_radius = 0.0;
+ 	state.show_mods = false;
+ 	state.show_mouse_buttons = false;
+ 	state.show_scroll = false;
+@@ -1409,7 +1439,7 @@
+ 	state.scroll_down_active = 0;
+ 
+ 	int c;
+-	while ((c = getopt(argc, argv, "hb:f:s:F:t:a:m:o:l:MUS")) != -1) {
++	while ((c = getopt(argc, argv, "hb:f:s:F:t:a:m:o:l:r:MUS")) != -1) {
+ 		switch (c) {
+ 		case 'l':
+ 			state.length_limit = atoi(optarg);
+@@ -1451,6 +1481,9 @@
+ 		case 'S':
+ 			state.show_scroll = true;
+ 			break;
++		case 'r':
++			state.corner_radius = atof(optarg);
++			break;
+ 		case 'o':
+ 			fprintf(stderr, "-o is unimplemented\n");
+ 			return 0;
+@@ -1458,7 +1491,7 @@
+ 			fprintf(stderr,
+ 					"usage: wshowkeys [-b|-f|-s #RRGGBB[AA]] [-F font] "
+ 					"[-t timeout]\n\t[-a top|left|right|bottom] [-m margin] "
+-					"[-M] [-U] [-S] [-o output] [-l numOfLengthLimit]\n");
++					"[-M] [-U] [-S] [-o output] [-l numOfLengthLimit] [-r radius]\n");
+ 			return 1;
+ 		}
+ 	}
