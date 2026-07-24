@@ -2,12 +2,12 @@
 
 pkgname=voicefox
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player that supports both streaming and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
-options=(!lto)
+options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
 	"libgcc"
@@ -26,13 +26,16 @@ sha512sums=('50e4fa76215ac9391a6001afc9425fc9d4ec9ed1fb7102fe1e6b5c153a5c030c3fe
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	cargo build --release --frozen
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --package voicefox-app
 }
 
 package() {
