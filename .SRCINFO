@@ -14,7 +14,6 @@ pkgbase = theia-bin
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
-	depends = ripgrep
 	depends = alsa-lib
 	optdepends = libappindicator-gtk3: Systray indicator
 	provides = theia
