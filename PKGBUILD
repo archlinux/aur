@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsh-bin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland windows"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("$url/releases/download/v$pkgver/ddsh"
         "$url/raw/v$pkgver/scripts/discord-monitor-hyprland.service"
         "$url/raw/v$pkgver/common/src/config/default-config.json"
         "$url/raw/v$pkgver/LICENSE")
-b2sums=('1c87e7afc845be5524227c1e34403a1616bd549a7fa47e992e0829f0dd7bc9f254336e0fad9f4ca37dbb7d47448a8cf196f59b89c5debdff54754d50408df901'
-        '889e967a5c1385090528898d2eb0d7288ede982ca9a0a81b1e752673521e6811639add6d7e1d2b6bb782bf89d4043beec0f193ef2694d201c6e1a7e503ade045'
+b2sums=('e0c69f3e495e4c71dab2fdcc066538ca3875526dd1ba0bdde90c3046bd739bdf5c71a73b96f42024011e34f76fec705393f736b604a939d97ceba60caedbc14c'
+        'df9740ba0092e81bfbaffaff3c97228e3f68b1a723edf14ca5461b434d414e54e0ff26fff6eed2c8710a6d10212f4fe92ba6b20cec4c8771a95d6426bff29cfc'
         '8a28faa7d4c908730cfc4a50d4e6d05eb93757de2814cb1c5d943fd7f99f6180d229957ca6bdf64b82be7c99287734611a93329c1b135b8a472fcae1476c93c6'
         '9edda0c6033376d93b29db3b4d1093263660527503e590bc4028fdb430f3fbf2d6b15e18a2e9598be709d42215ad7b01ab71bc96a42c1cd824b62f1d36994aa6'
         '50c0cb9c952805d1c3873f6150a5c411ac00cbf180d80437761aa55058aa84cb7dad973b8d5b3005f33287474cc9dbd9691502c8944e76ce99b20399ef74df87')
