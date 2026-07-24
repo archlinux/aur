@@ -1,6 +1,6 @@
 pkgbase = sentry-relay
 	pkgdesc = Sentry relay
-	pkgver = 26.7.0
+	pkgver = 26.7.1
 	pkgrel = 1
 	url = https://github.com/getsentry/relay
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sentry-relay
 	makedepends = cmake
 	depends = zlib
 	depends = gcc-libs
-	source = git+https://github.com/getsentry/relay/#tag=26.7.0
+	source = git+https://github.com/getsentry/relay/#tag=26.7.1
 	source = sentry-relay.service
-	sha512sums = 5f2fc394a6f1498b0ef3ff19e4957946d1c8a2580f1ef3ddaa34ca17553545de1ca0e3e0401063647bc7667de1c59dab434c9c0ea864cb55c71a3da5f17c07d2
+	sha512sums = c25dda671ff7a885046b9b4bc3428c5ad1400b2c3c604eef0606627ad1477e965a7324379594e4688dbc6fa62315f48f411cf06f1138930196ba61b79fdceddf
 	sha512sums = 849b2fd41dad7f89b47fdba2729e83d92a6bfa63e9bd5507607d7c4cf498e051a14f07597f2cc6f415297ecb94a8619d21f370d2f38d04c5fa993e5c5d691cb6
 
 pkgname = sentry-relay
