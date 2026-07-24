@@ -1,7 +1,7 @@
 # Maintainer: Arunachalam <arunachalam@example.com>
 pkgname=luna-ai
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux"
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/Luna-ai"
