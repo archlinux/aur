@@ -2,13 +2,12 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8
-pkgrel=2
-pkgdesc="A TUI music player that supports both streaming and local tracks"
+pkgver=0.9
+pkgrel=1
+pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
-options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
 	"libgcc"
@@ -22,7 +21,7 @@ source=(
 	"${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.zip"
 	"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/LICENSE"
 )
-sha512sums=('fbec2d87c93a8040a663e5b1d174e1fda471b6bd21511ee570b9787d96890e039f97f149b0c9c21c45ffea8dbe84da82defdedea3c72322f8c8c785632e26b5f'
+sha512sums=('3336d6c1995d7d3099746dd78e541bdbc863bca6d8e3d1ded5c5a6f1cf08ee84abc3e883e61c851eb772c081a2119d0a5e3d0207d7c08ea731e5c39563202aa2'
             'e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814')
 
 package() {
