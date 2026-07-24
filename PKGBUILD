@@ -32,7 +32,7 @@ sha256sums=()
 
 pkgver() {
     _ver=$(curl -fsSL "https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages" | awk '/^Package: google-chrome-stable$/{flag=1} flag{print} /^$/{flag=0}' | grep -oP '^Version: \K.*' | head -1 | sed 's/^[0-9]*://' | cut -d- -f1)
-    echo "${_ver:-$pkgver}"
+    echo "$_ver"
 }
 
 prepare() {
