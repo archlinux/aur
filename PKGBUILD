@@ -1,9 +1,9 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.8
-pkgrel=2
-pkgdesc="A TUI music player that supports both streaming and local tracks"
+pkgver=0.9
+pkgrel=1
+pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
@@ -21,7 +21,7 @@ makedepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('50e4fa76215ac9391a6001afc9425fc9d4ec9ed1fb7102fe1e6b5c153a5c030c3febb13539481df32cb134e125c1a52b8cf9c5f9509d6ea39047fe57a1cf572e')
+sha512sums=('92d430c4a1b21104f190a77fe015ee9063a6fcc9b0e0335a24534d735903018f7709458380fcc7b9f5a270543e798fc2a7c7f4555aca7d2a41a002c2f87634be')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
