@@ -3,10 +3,10 @@
 _pkgbase=luagobject
 pkgbase=lua-luagobject-git
 pkgname=(lua-luagobject-git lua51-luagobject-git lua53-luagobject-git lua54-luagobject-git)
-pkgver=0.10.5.r0.g63c8099
-pkgrel=3
+pkgver=0.10.5.r1.gbe099a0
+pkgrel=1
 pkgdesc='Use GObject-based libraries from Lua'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/vtrlx/LuaGObject'
 license=('MIT')
 
