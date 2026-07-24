@@ -7,10 +7,9 @@ pkgbase = museeq-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = qt5-tools
 	depends = qt5-script
-	depends = qt5-tools
 	source = museeq-git::git+https://github.com/eLvErDe/museek-plus
 	md5sums = SKIP
 
 pkgname = museeq-git
-

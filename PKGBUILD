@@ -7,8 +7,8 @@ pkgdesc="A Qt5 interface to the museekd daemon."
 arch=('x86_64')
 url="http://www.museek-plus.org/"
 license=('GPL2')
-depends=('qt5-script' 'qt5-tools')
-makedepends=('git' 'cmake')
+depends=('qt5-script')
+makedepends=('git' 'cmake' 'qt5-tools')
 source=("$pkgname::git+https://github.com/eLvErDe/museek-plus")
 md5sums=('SKIP')
 
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   mkdir -p "$pkgname"/build
   cd "$pkgname"/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVERYTHING=0 -DMURMUR=0 -DMUCOUS=0 -DMUSEEKD=0 -DMUSETUP=0 -DMUSCAN=0 -DMUSEEQ=1 -DPYTHON_BINDINGS=0 "$srcdir"/"$pkgname"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVERYTHING=0 -DMURMUR=0 -DMUCOUS=0 -DMUSEEKD=0 -DMUSETUP=0 -DMUSCAN=0 -DMUSEEQ=1 -DPYTHON_BINDINGS=0 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 "$srcdir"/"$pkgname"
   make
 }
 
