@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r369.39c5ab1
+pkgver=0.10.0.r46.g00fde33
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
 provides=(oqsprovider.so)
 conflicts=(oqsprovider)
 source=(
-    $pkgname::git+https://github.com/open-quantum-safe/$_pkgname
+    $pkgname::git+https://github.com/open-quantum-safe/$_pkgname.git
     liboqs::git+https://github.com/open-quantum-safe/liboqs.git
 )
 install=$pkgname.install
@@ -31,7 +31,7 @@ b2sums=('SKIP'
 
 pkgver() {
     cd $pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -53,8 +53,8 @@ build() {
 check() {
     cd build
     # Running the built-in tests can take a long time (+30 mins)
-    # Uncomment the following line if you want to run them
-    #ctest --verbose
+    # Comment the following line if you want to skip running them or use --nocheck
+    ctest --verbose
 }
 
 package() {
