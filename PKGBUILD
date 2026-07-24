@@ -1,11 +1,11 @@
 # Maintainer: LazySeldi <197385604+LazySeldi@users.noreply.github.com>
 pkgname=lib-lazybios
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight SMBIOS/DMI parsing library"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/LazySeldi/lazybios"
-license=('GPL3')
+license=('LGPL2.1')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybios$pkgver.tar.gz")
