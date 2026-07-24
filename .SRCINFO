@@ -1,8 +1,8 @@
 pkgbase = fluyer
 	pkgdesc = Music Player
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://github.com/alvindimas05/Fluyer
+	url = https://github.com/luneflu/Fluyer
 	install = fluyer.install
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = fluyer
 	depends = mpv
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/alvindimas05/Fluyer/releases/download/v1.1.0/Fluyer_1.1.0_amd64.deb
-	sha256sums_x86_64 = f6af9881eb4bb3816c3f49958a42e0b0236767b4d5d39238f88c58686835a9f1
-
+	source_x86_64 = https://github.com/luneflu/Fluyer/releases/download/v1.3.0/Fluyer_1.3.0_amd64.deb
+	sha256sums_x86_64 = 9355dc6b9ad83f028e15c7cf4470794e4d266334ccdbd3d87c97e3e6bea1e05a
 pkgname = fluyer
