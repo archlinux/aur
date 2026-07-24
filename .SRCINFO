@@ -1,6 +1,6 @@
 pkgbase = meridian-git
 	pkgdesc = Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline.
-	pkgver = 1.54.0.r2.g84cbdc5
+	pkgver = 1.56.1.r3.gf0c885c
 	pkgrel = 1
 	url = https://github.com/rynfar/meridian
 	install = meridian-git.install
