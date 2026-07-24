@@ -3,11 +3,11 @@
 _name=great-tables
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-docs)
-pkgver=0.14.0
+pkgver=0.22.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
-_tag=5913c570b9bc6fc882498755409d32472e8b9994 # git rev-parse "v${pkgver}"
-pkgrel=2
+_tag=93fc0a08be34a233fb98333569f6d0b95d4db73c # git rev-parse "v${pkgver}"
+pkgrel=1
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
 url="https://posit-dev.github.io/great-tables/"
@@ -28,31 +28,35 @@ makedepends=(
     'quartodoc>=0.8.1'
 )
 depends=(
-    'ipython'
     'python-babel>=2.13.1'
-    'python-commonmark>=0.9.1'
+    'python-faicons>=0.2.2'
     'python-htmltools>=0.4.1'
     'python-importlib-metadata'
     'python-importlib_resources'
+    'python-multimark>=0.1.3'
+    'python-nokap>=0.1.0'
+    'python-typing_extensions>=3.10.0.0'
+    'python>=3.10'
+
+    # optional [extra] feature deps (image export, css inlining)
+    'python-css-inline>=0.20.2'
     'python-numpy>=1.22.4'
     'python-pandas'
-    'python-pillow'
+    'python-pillow>=10.2.0'
     'python-polars'
-    'python-selenium'
-    'python-typing_extensions>=3.10.0.0'
-    'python>=3.9'
+    'python-selenium>=4.18.1'
 )
 checkdepends=(
     'chromium'
     'python-ipykernel'
     'python-pytest'
     'python-pytest-cov'
-    'python-pytest-textual-snapshot'
     'python-requests'
+    'python-syrupy'
     'selenium-manager'
 )
 source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag=$_tag")
-b2sums=('192af743b1e9bff3a8131e552fdc12cd6ada485b6a4dd32390a0de2db94e10e27dd18c5257868449ef9f6f8bd4ac9a12f601679ad35c237b94991b408e48d94b')
+b2sums=('44d6b824d95c38b83b3aa9a4efc5a05466a6833abcc8a7babb98e676cc0d49e62026c11a934eecafd0bda8aa1a6294b247918c7426a8c91e30d53b3a5bcb934d')
 
 prepare() {
     git -C $pkgbase-$pkgver clean -dfx
@@ -60,6 +64,13 @@ prepare() {
     # Remove incomplete (work in progress?) documentation that prevents documentation from building
     # https://github.com/posit-dev/great-tables/issues/507
     rm -rf $srcdir/$pkgbase-$pkgver/docs/a-latex_examples
+
+    # The gt-extras-gini example imports gt_extras, which depends on great-tables
+    # itself (circular dependency). Drop the example and the "Ecosystem" section
+    # of the examples page that embeds it, so the docs build without gt-extras.
+    cd $srcdir/$pkgbase-$pkgver
+    rm -rf docs/examples/gt-extras-gini
+    sed -i '/^## Ecosystem/,$d' docs/examples/index.qmd
 }
 
 check() {
