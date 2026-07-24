@@ -1,0 +1,19 @@
+pkgbase = zapzap-bin
+	pkgdesc = WhatsApp desktop client written in PyQt6 + PyQt6-WebEngine (prebuilt)
+	pkgver = 7.0.3
+	pkgrel = 1
+	url = https://github.com/rafatosta/zapzap
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-dbus
+	depends = qt6-wayland
+	optdepends = hunspell: spell check
+	provides = zapzap
+	conflicts = zapzap
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/zapzap-bin-7.0.3/zapzap-bin-7.0.3.tar.zst
+	sha256sums = 73e5415a7de9b6e3d7d3f8760c23ad3fec901a48e714d964f54293845804e3c8
+
+pkgname = zapzap-bin
