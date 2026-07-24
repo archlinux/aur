@@ -2,7 +2,7 @@
 
 pkgname=krunvm-git
 pkgver=v0.2.6.r0.g59f3673
-pkgrel=1
+pkgrel=2
 pkgdesc="Create microVMs from OCI images"
 arch=("x86_64")
 url="https://github.com/containers/krunvm"
