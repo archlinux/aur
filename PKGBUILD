@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <ta180m@proton.me>
 
 pkgname=libretro-meta
-pkgver=2025.08.18
+pkgver=2026.07.24
 pkgrel=1
 pkgdesc='Meta package for the libretro group.'
 arch=('any')
@@ -22,7 +22,6 @@ package() {
 		'libretro-beetle-supergrafx'
 		'libretro-blastem'
 		'libretro-bsnes'
-		'libretro-bsnes2014'
 		'libretro-bsnes-hd'
 		'libretro-core-info'
 		'libretro-desmume'
@@ -32,7 +31,6 @@ package() {
 		'libretro-genesis-plus-gx'
 		'libretro-kronos'
 		'libretro-mame'
-		'libretro-mame2016'
 		'libretro-melonds'
 		'libretro-mesen'
 		'libretro-mesen-s'
