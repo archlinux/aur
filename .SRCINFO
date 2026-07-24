@@ -1,0 +1,21 @@
+pkgbase = librepods-bin
+	pkgdesc = AirPods liberated from Apple's ecosystem (prebuilt)
+	pkgver = 1.0.0rc1
+	pkgrel = 1
+	url = https://github.com/librepods-org/librepods
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libpulse
+	depends = openssl
+	depends = qt6-base
+	depends = qt6-connectivity
+	depends = qt6-declarative
+	provides = librepods
+	conflicts = librepods
+	source = https://github.com/Felitendo/PKGBUILDS/releases/download/librepods-bin-1.0.0rc1/librepods-bin-1.0.0rc1.tar.zst
+	sha256sums = 69ce19414a0205d1d19fb851f6adea6c231013df6ec8a32bc8122d5fd6e9dd52
+
+pkgname = librepods-bin
