@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=herdr
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Terminal workspace manager for AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git' 'zig0.15')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogulcancelik/herdr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('86f4ade98e4fa048b99ad59d1453da00b691dcdf559bbd18441f495b448c02fc')
+sha256sums=('5ea0f1003af1801a6a85d201b6fa7e1de46686fccb7df1d3fa3a03c4ec2be68c')
 _zig=/opt/zig0.15/zig
 
 prepare() {
