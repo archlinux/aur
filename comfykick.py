@@ -337,7 +337,7 @@ def _ensure_tarball(config, version_head, version_cache_dir, tarball_url=None, r
         try:
             with tempfile.NamedTemporaryFile(
                 prefix=f"comfykick_{version_head}.tar.gz_",
-                dir="/tmp",
+                dir=tempfile.gettempdir(),
                 delete=False,
             ) as tmp:
                 tmp_path = Path(tmp.name)
