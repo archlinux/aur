@@ -2,7 +2,7 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
