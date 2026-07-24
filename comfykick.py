@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import logging
 import os
 import shlex
 import shutil
@@ -62,40 +63,24 @@ CONFIG_FILES = [
 ]
 
 
-_LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
+log = logging.getLogger(PROJECT_NAME)
 
 
-def log(level, msg, *args):
-    level = level.upper()
-    if level not in _LOG_LEVELS:
-        raise ValueError(f"unknown log level: {level!r}")
-    threshold = (
-        os.environ.get("COMFYKICK_LOG")
-        or os.environ.get("LOG_LEVEL")
-        or "INFO"
-    ).upper()
-    if threshold not in _LOG_LEVELS:
-        threshold = "INFO"
-    if _LOG_LEVELS.index(level) < _LOG_LEVELS.index(threshold):
-        return
-    text = msg % args if args else msg
-    print(f"{level}: {text}", file=sys.stderr)
-    if level == "ERROR":
-        sys.exit(1)
+def die(msg, *args):
+    log.error(msg, *args)
+    sys.exit(1)
 
 
 def check_user_config(config_path):
     try:
         st = config_path.stat()
         if st.st_mode & 0o077:
-            log(
-                "WARNING",
+            log.warning(
                 "Permission of [%s] is too open! (current: %o, want: 600)",
                 config_path, st.st_mode & 0o777,
             )
     except FileNotFoundError:
-        log(
-            "WARNING",
+        log.warning(
             "User-level config [%s] does not exist.",
             config_path,
         )
@@ -118,13 +103,13 @@ def _read_toml(path):
         with open(path, "rb") as f:
             data = tomllib.load(f)
     except PermissionError:
-        log("WARNING", "Permission denied when reading [%s]; skipping.", path)
+        log.warning("Permission denied when reading [%s]; skipping.", path)
         return {}
     except tomllib.TOMLDecodeError as e:
-        log("ERROR", "Failed to parse TOML in [%s]: %s", path, e)
+        die("Failed to parse TOML in [%s]: %s", path, e)
 
     if not isinstance(data, dict):
-        log("ERROR", "Top-level of [%s] is not a TOML table.", path)
+        die("Top-level of [%s] is not a TOML table.", path)
 
     cleaned = {}
     for key, value in data.items():
@@ -179,21 +164,21 @@ def _resolve_extra_model_paths(config):
         return []
     path = Path(raw)
     if not path.is_file():
-        log("WARNING", "extra_model_paths_yaml not found: %s", raw)
+        log.warning("extra_model_paths_yaml not found: %s", raw)
         return []
 
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
     except yaml.YAMLError as e:
-        log("ERROR", "failed to parse %s: %s", raw, e)
+        die("failed to parse %s: %s", raw, e)
 
     # An empty file or a file that contains only comments yields ``None``
     # from ``yaml.safe_load``; treat that as "no sections defined".
     if data is None:
         return []
     if not isinstance(data, dict):
-        log("ERROR", "%s must be a mapping at the top level.", raw)
+        die("%s must be a mapping at the top level.", raw)
 
     extra_dirs = []
     for section_name, section in data.items():
@@ -203,14 +188,12 @@ def _resolve_extra_model_paths(config):
             continue
         base_path = section.get("base_path")
         if not (isinstance(base_path, str) and base_path):
-            log(
-                "ERROR",
+            die(
                 "section '%s' in %s is marked is_default but has no base_path.",
                 section_name, raw,
             )
         if not Path(base_path).is_absolute():
-            log(
-                "ERROR",
+            die(
                 "section '%s' in %s has a relative base_path '%s'. "
                 "Please use an absolute path.",
                 section_name, raw, base_path,
@@ -258,20 +241,19 @@ def _api_request(url, github_token=None):
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.load(resp)
     except TimeoutError:
-        log("ERROR", "Timed out after %s seconds while requesting %s", timeout, url)
+        die("Timed out after %s seconds while requesting %s", timeout, url)
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")
-        log(
-            "ERROR",
+        die(
             "HTTP error while requesting %s: %s %s (response: %s)",
             url, e.code, e.reason, body
         )
     except urllib.error.URLError as e:
-        log("ERROR", "Connection error while requesting %s: %s", url, e)
+        die("Connection error while requesting %s: %s", url, e)
     except json.JSONDecodeError as e:
-        log("ERROR", "Failed to parse JSON response from %s: %s", url, e)
+        die("Failed to parse JSON response from %s: %s", url, e)
     except OSError as e:
-        log("ERROR", "Error while requesting %s: %s", url, e)
+        die("Error while requesting %s: %s", url, e)
     return None
 
 
@@ -294,8 +276,7 @@ def _resolve_version(config, version_cache_dir):
         if update:
             data = _api_request(GITHUB_API_LATEST, github_token=github_token)
             if data is None:
-                log(
-                    "ERROR",
+                die(
                     "Failed to fetch latest version from GitHub API. "
                     "This is unexpected, Please report a bug to %s repo.",
                     PROJECT_NAME,
@@ -304,7 +285,7 @@ def _resolve_version(config, version_cache_dir):
             return latest_tag, CODELOAD_URL_TEMPLATE.format(latest_tag)
         latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
-            log("ERROR", "No cached 'latest' version and update is disabled.")
+            die("No cached 'latest' version and update is disabled.")
         cached_version = latest_link.readlink().name[: -len(".tar.gz")]
         return cached_version, None
 
@@ -323,20 +304,19 @@ def _ensure_tarball(config, version_head, version_cache_dir, tarball_url=None, r
     is_latest = (config["version"] == "latest")
 
     if refresh:
-        log("INFO", "Refreshing cached tarball for %s ...", version_head)
+        log.info("Refreshing cached tarball for %s ...", version_head)
         tarball_path.unlink(missing_ok=True)
         if is_latest:
             (version_cache_dir / "latest").unlink(missing_ok=True)
 
     if not tarball_path.exists():
         if tarball_url is None:
-            log(
-                "ERROR",
+            die(
                 "Cached tarball for %s is missing or corrupted, "
                 "and update is disabled.",
                 version_head,
             )
-        log("INFO", "Downloading ComfyUI %s ...", version_head)
+        log.info("Downloading ComfyUI %s ...", version_head)
         try:
             with tempfile.NamedTemporaryFile(
                 prefix=f"comfykick_{version_head}.tar.gz_",
@@ -368,8 +348,7 @@ def _extract_tarball(tarball_path, dest_dir):
         with tarfile.open(tarball_path, "r:gz") as tar:
             tar.extractall(dest_dir, filter="data")
     except (tarfile.TarError, OSError, EOFError) as e:
-        log(
-            "WARNING",
+        log.warning(
             "Failed to extract %s: %s; treating as corrupted.",
             tarball_path, e,
         )
@@ -409,28 +388,27 @@ def install_dependencies(extracted_dir, config, version_head):
     run(["uv", "--quiet", "venv", "--allow-existing"])
     run(["uv", "--quiet", "sync", "--inexact"])
 
-    log("INFO", "Installing basic dependencies ...")
+    log.info("Installing basic dependencies ...")
     run(["uv", "add", "--requirements", "requirements.txt"])
 
     if config["enable_manager"]:
         manager_req = extracted_dir / "manager_requirements.txt"
         if not manager_req.exists():
-            log(
-                "ERROR",
+            die(
                 "manager_requirements.txt is missing from ComfyUI <%s>. "
                 "This is unexpected; Please report a bug to %s repo",
                 version_head, PROJECT_NAME,
             )
-        log("INFO", "Installing manager dependencies ...")
+        log.info("Installing manager dependencies ...")
         run(["uv", "add", "--requirements", "manager_requirements.txt"])
 
     extra_pkgs = config.get("extra_python_package", [])
     if extra_pkgs:
-        log("INFO", "Installing extra packages ...")
+        log.info("Installing extra packages ...")
         for pkg in extra_pkgs:
             run(["uv", "add", "--no-build-isolation", pkg])
 
-    log("INFO", "Syncing venv packages ...")
+    log.info("Syncing venv packages ...")
     run(["uv", "sync"])
 
 
@@ -460,7 +438,7 @@ def run_prekick_commands(config, extracted_dir):
     for cmd in prekick_cmds:
         if not isinstance(cmd, str) or not cmd.strip():
             continue
-        log("INFO", "Running command: [%s]", cmd)
+        log.info("Running command: [%s]", cmd)
         subprocess.run(cmd, shell=True, cwd=str(extracted_dir), env=env, check=True)
 
 
@@ -486,31 +464,35 @@ def launch_comfyui(config, extracted_dir):
 
 
 def main():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(levelname)s: %(message)s",
+    )
+
     if sys.version_info < (3, 12):
-        log(
-            "ERROR",
+        die(
             "Python 3.12+ is required (detected %d.%d).",
             sys.version_info.major, sys.version_info.minor,
         )
     if shutil.which("uv") is None:
-        log("ERROR", "'uv' is not installed or not in PATH.")
+        die("'uv' is not installed or not in PATH.")
 
-    log("INFO", "Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
+    log.info("Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
 
     check_user_config(CONFIG_FILES[-2])
 
     config = _load_config(CONFIG_FILES)
 
-    log("INFO", "Loaded configuration:")
+    log.info("Loaded configuration:")
     for key in sorted(config):
         value = config[key]
         if key in SENSITIVE_KEYS and value:
-            print(f"  > {key} = **REDACTED**", file=sys.stderr)
+            log.info("  > %s = **REDACTED**", key)
         else:
-            print(f"  > {key} = {value!r}", file=sys.stderr)
+            log.info("  > %s = %r", key, value)
 
     if not config["github_token"]:
-        log("INFO", "Running without GitHub token.")
+        log.info("Running without GitHub token.")
 
     extra_dirs = _resolve_extra_model_paths(config)
 
@@ -525,7 +507,7 @@ def main():
         tarball_url=tarball_url,
     )
 
-    log("INFO", "Extracting ComfyUI %s ...", version_head)
+    log.info("Extracting ComfyUI %s ...", version_head)
     prefix = f"_run-{version_head}-"
     runtime_dir = Path(config["runtime_dir"])
     for old in runtime_dir.iterdir():
@@ -535,7 +517,7 @@ def main():
 
     extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
     if extracted_dir is None:
-        log("INFO", "Re-preparing tarball for %s ...", version_head)
+        log.info("Re-preparing tarball for %s ...", version_head)
         tarball_path = _ensure_tarball(
             config,
             version_head,
@@ -545,8 +527,7 @@ def main():
         )
         extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
         if extracted_dir is None:
-            log(
-                "ERROR",
+            die(
                 "Re-preparing tarball for %s is still corrupted; giving up.",
                 version_head,
             )
@@ -558,8 +539,7 @@ def main():
 
     run_prekick_commands(config, extracted_dir)
 
-    log(
-        "INFO",
+    log.info(
         "Kicking ComfyUI %s on http://%s:%s ...", version_head, config["listen"], config["port"],
     )
     launch_comfyui(config, extracted_dir)
