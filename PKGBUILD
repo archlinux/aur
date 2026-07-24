@@ -1,7 +1,7 @@
 # Maintainer: devcxl <64475363+devcxl@users.noreply.github.com>
 
 pkgname=fcitx5-voice-input
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 optdepends=()
 makedepends=('cmake' 'pkg-config' 'gettext')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/devcxl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('27f6ffd2432cab662fb9ec3209a9cb1f912f7d6d4a58db2c0fd8c84b5b3ec799')
+sha256sums=('159cc541069fca9ca75c936aecfd06d2612184358ffcaceaf432914acaba5e17')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
