@@ -2,17 +2,17 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.91'
-pkgrel='2'
+pkgver='2.0.92'
+pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
-url="https://bzrplayer.blazer.nu"
+url="https://github.com/aargirakis/BZRPlayer"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
 source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
-sha256sums=('fe2e7392f34fef32c6db77de8f82b86094ebcac4c88ae10b2c091d817a584c3f')
+sha256sums=('ad658714a830f2012bec8798130597e05423b51bb856b64060b965c06e5a0657')
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
