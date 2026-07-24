@@ -30,6 +30,8 @@ uuyc-wine
 
 The first launch can take several minutes. The launcher creates a 64-bit Wine prefix, installs UU Remote and WebView2 Runtime, verifies the installation, and then starts the application.
 
+After a package upgrade, close the visible UU Remote client before launching the new release. The launcher refuses to replace compatibility files while `GameViewer.exe` is active. Once the client has closed, it stops any remaining background processes in that Wine prefix before applying the update and starting a fresh service, supervisor, and server.
+
 The default per-user paths are:
 
 ```text
@@ -182,4 +184,4 @@ For packaging-only behavioral changes, keep `pkgver` and increment `pkgrel`.
 
 UU Remote is proprietary software distributed under the upstream UU Remote EULA. The EULA is downloaded from the official website during the package build and installed under `/usr/share/licenses/uuyc-wine/`.
 
-The AUR packaging files in this repository are licensed under the [0BSD license](LICENSE), as declared by `REUSE.toml`.
+The AUR packaging files and the package-built `wevtapi.dll` compatibility layer are licensed under the [0BSD license](LICENSE), as declared by `REUSE.toml`. The package installs both the upstream EULA and the 0BSD license under `/usr/share/licenses/uuyc-wine/`.

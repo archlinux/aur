@@ -9,6 +9,7 @@ readonly installer="${share_dir}/uuyc-wine-installer.exe"
 readonly wevtapi_shim="${share_dir}/wevtapi.dll"
 readonly wine="/usr/bin/wine"
 readonly wineboot="/usr/bin/wineboot"
+readonly wineserver="/usr/bin/wineserver"
 readonly winecfg="/usr/bin/winecfg"
 
 notify_status() {
@@ -112,13 +113,30 @@ migrate_directory() {
     mv -- "$source" "$destination" || die "Failed to migrate $label."
 }
 
+process_uses_prefix() {
+    local environment=$1
+    local expected_prefix=$2
+    local entry process_prefix
+
+    while IFS= read -r -d '' entry; do
+        [[ $entry == WINEPREFIX=* ]] || continue
+        process_prefix=${entry#WINEPREFIX=}
+        process_prefix=$(/usr/bin/readlink -f -- "$process_prefix" 2>/dev/null) || return 1
+        [[ $process_prefix == "$expected_prefix" ]]
+        return
+    done 2>/dev/null <"$environment"
+    return 1
+}
+
 prefix_has_processes() {
     local prefix_path=$1
-    local environment
+    local canonical_prefix environment
+
+    canonical_prefix=$(/usr/bin/readlink -f -- "$prefix_path" 2>/dev/null) || return 1
 
     for environment in /proc/[0-9]*/environ; do
         [[ $environment != "/proc/$$/environ" && -r $environment ]] || continue
-        if /usr/bin/grep -Fzqx -- "WINEPREFIX=$prefix_path" "$environment" 2>/dev/null; then
+        if process_uses_prefix "$environment" "$canonical_prefix"; then
             return 0
         fi
     done
@@ -168,6 +186,7 @@ wine_user=$(id -un)
 readonly wine_user
 readonly wine_desktop="$prefix/drive_c/users/$wine_user/Desktop"
 readonly client="$install_dir/GameViewer.exe"
+readonly client_image="$install_dir/bin/GameViewer.exe"
 readonly server="$install_dir/bin/GameViewerServer.exe"
 readonly healthd="$install_dir/bin/GameViewerHealthd.exe"
 readonly native_wevtapi="$install_dir/bin/wevtapi.dll"
@@ -202,6 +221,51 @@ run_logged() {
     } >>"$setup_log" 2>&1
 }
 
+wine_process_running() {
+    local executable=$1
+
+    /usr/bin/pgrep -u "$(id -u)" -f -x -- "$executable" >/dev/null 2>&1
+}
+
+wine_image_running() {
+    local canonical_prefix image
+    local environment maps
+
+    image=$(/usr/bin/readlink -f -- "$1") || return 1
+    canonical_prefix=$(/usr/bin/readlink -f -- "$prefix" 2>/dev/null) || return 1
+
+    for environment in /proc/[0-9]*/environ; do
+        [[ $environment != "/proc/$$/environ" && -r $environment ]] || continue
+        process_uses_prefix "$environment" "$canonical_prefix" || continue
+        maps=${environment%/environ}/maps
+        [[ -r $maps ]] || continue
+        if /usr/bin/grep -Fq -- "$image" "$maps" 2>/dev/null; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+prepare_prefix_for_configuration() {
+    prefix_has_processes "$prefix" || return 0
+
+    if wine_image_running "$client" || wine_image_running "$client_image"; then
+        die "UU Remote is still running. Close it before applying package $package_release, then launch UU Remote again."
+    fi
+
+    notify_status "Restarting UU Remote background processes for package $package_release."
+    if ! run_logged "$wineserver" -k; then
+        die "Failed to stop the existing UU Remote Wine processes. See $setup_log"
+    fi
+    if ! run_logged "$wineserver" -w; then
+        die "Failed while waiting for the existing UU Remote Wine processes to exit. See $setup_log"
+    fi
+    if prefix_has_processes "$prefix"; then
+        die "UU Remote Wine processes are still running after the restart request. See $setup_log"
+    fi
+    return 0
+}
+
 registry_value() {
     local key=$1
     local value=$2
@@ -218,7 +282,7 @@ registry_value() {
 }
 
 app_files_present() {
-    [[ -f "$client" && -f "$server" && -f "$healthd" ]]
+    [[ -f "$client" && -f "$client_image" && -f "$server" && -f "$healthd" ]]
 }
 
 webview_files_present() {
@@ -347,6 +411,7 @@ if $repair || ! prefix_current; then
     exec 9>"$state_dir/setup.lock"
     /usr/bin/flock 9
     if $repair || ! prefix_current; then
+        prepare_prefix_for_configuration
         configure_prefix
     fi
     /usr/bin/flock -u 9
@@ -386,11 +451,6 @@ ensure_service_running() {
     return 1
 }
 
-wine_process_running() {
-    local executable=$1
-
-    /usr/bin/pgrep -u "$(id -u)" -f -x -- "$executable" >/dev/null 2>&1
-}
 
 ensure_wine_process_running() {
     local executable=$1
