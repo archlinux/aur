@@ -1,6 +1,6 @@
 pkgbase = sqlnow-bin
 	pkgdesc = Local SQL viewer for files and databases, with pre-defined queries for LLM-agent workflows
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/kindly/sqlnow
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sqlnow-bin
 	license = MIT
 	provides = sqlnow
 	conflicts = sqlnow
-	source_x86_64 = sqlnow-bin-0.3.0-x86_64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.3.0/sqlnow-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c6e88c0ac38da0945ad0233b6737a09357fd691be4acab8c323994f5de7847d6
-	source_aarch64 = sqlnow-bin-0.3.0-aarch64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.3.0/sqlnow-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9d34bc77e0a3c484b76c18404c4c1381d6b2185dbffe1a3a83376920c6b10eee
+	source_x86_64 = sqlnow-bin-0.3.1-x86_64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.3.1/sqlnow-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5e8b69c56ed488d0c389ed7cf66ed5619b2cda70f65b77c2277d56aee9986675
+	source_aarch64 = sqlnow-bin-0.3.1-aarch64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.3.1/sqlnow-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6af9cb23d5ef48f8d0b1851e5c969ef155403059b2dce5b5d02ba79f4f81738a
 
 pkgname = sqlnow-bin
