@@ -1,11 +1,11 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-bin
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows"
 arch=('x86_64')
-url="https://github.com/Veridian-Zenith/discord-dynamic-status-hyprland"
+url="https://github.com/Veridian-Zenith/DDS"
 license=('MIT')
 depends=('glibc')
 provides=('ddsc')
@@ -16,7 +16,7 @@ source=("$url/releases/download/v$pkgver/ddsc"
         "$url/raw/v$pkgver/common/src/config/default-config-cosmic.json"
         "$url/raw/v$pkgver/cosmic/autostart/ddsc.desktop"
         "$url/raw/v$pkgver/LICENSE")
-b2sums=('3557104d483592f58f34bec3a774504e83a3bb6eb940e7469de0359a2f3c8035682b470d5a8ba168759df87f0c6302b9ac49c327b1734c45c1a1a0f19013db8b'
+b2sums=('757b74414c76705dfbc8cf9def0d6dcc78a074781d861afd0dc51972e3f67a3913b9fed06ce0f9f850629f1af28c4785a0770ff07612c73901a1069168a5bfe4'
         '889e967a5c1385090528898d2eb0d7288ede982ca9a0a81b1e752673521e6811639add6d7e1d2b6bb782bf89d4043beec0f193ef2694d201c6e1a7e503ade045'
         '259ada6a1cc30822563da55dc69abee6a5e4d6d13f794e1fea4cdfec3df886645b2de6806a6faaf27384f2b780a4f313f5ff56d23d9db5637150410f4e113175'
         'ba78e4bb31ba897cf525cfe6af479938df8e1da647dace2d58f73204db34433a0e0c500743d016f75022d2ed0f58bc2896a831964742966ab21728bd1b757beb'
