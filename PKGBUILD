@@ -4,6 +4,7 @@ pkgver=2.1.0
 pkgrel=2
 pkgdesc="Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux"
 arch=('any')
+options=('!debug')
 url="https://github.com/Arunachalam-gojosaturo/Luna-ai"
 license=('MIT')
 depends=(

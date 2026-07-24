@@ -4,6 +4,7 @@ pkgbase = luna-ai
 	pkgrel = 2
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	arch = any
+	options = !debug
 	license = MIT
 	depends = nodejs
 	depends = npm
