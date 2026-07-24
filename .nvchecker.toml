@@ -1,0 +1,4 @@
+[crowdsec-nginx-bouncer]
+source = "git"
+git = "https://github.com/crowdsecurity/cs-nginx-bouncer.git"
+prefix = "v"
