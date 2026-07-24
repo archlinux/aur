@@ -1,0 +1,20 @@
+pkgbase = python-divine-typed-requests
+	pkgdesc = A type-safe HTTP client library with validation and detailed error reporting
+	pkgver = 0.1.32
+	pkgrel = 1
+	url = https://pypi.org/project/divine-typed-requests/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-divine-type-enforcer
+	source = https://files.pythonhosted.org/packages/source/d/divine_typed_requests/divine_typed_requests-0.1.32.tar.gz
+	sha256sums = c088306584ce41d290f4dcf393dd2e228f5d9bd5f25c8a97a232f4d517bb271c
+
+pkgname = python-divine-typed-requests
