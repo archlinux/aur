@@ -24,42 +24,31 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'ttf-liberation: fix fonts for some PDFs'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'gnome-control-center: for default browser settings in GNOME')
-provides=('google-chrome-canary')
-conflicts=('google-chrome-canary')
 options=('!emptydirs' '!strip' '!zipman')
 source=()
 sha256sums=()
 
 pkgver() {
-    _ver=$(curl -fsSL -A "Mozilla/5.0" "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | grep -oP '"Canary": \{[^}]*"version": "\K[^"]+' | head -1)
-    
-    if [[ -z "$_ver" ]]; then
-        _ver=$(curl -fsSL -A "Mozilla/5.0" "https://chromiumdash.appspot.com/fetch_releases?channel=Canary&platform=Linux" | grep -oP '"version": "\K[^"]+' | head -1)
-    fi
-    
+    _ver=$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
     echo "$_ver"
 }
 
 prepare() {
     cd "$srcdir"
-    _url="https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
-    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "$_url"
+    curl -fsSL -A "Mozilla/5.0" -o chrome-linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
     bsdtar -xf chrome-linux64.zip
 }
 
 package() {
     mkdir -p "$pkgdir/opt/google/chrome-canary" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications" "$pkgdir/usr/share/icons/hicolor"
     cp -a "$srcdir/chrome-linux64/." "$pkgdir/opt/google/chrome-canary/"
-    
     find "$pkgdir/opt/google/chrome-canary/" -name "product_logo_*.png" | while read -r img; do
         size=$(basename "$img" | grep -oP '\d+')
         if [[ -n "$size" ]]; then
             install -Dm644 "$img" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/google-chrome-canary.png"
         fi
     done
-    
     ln -s /opt/google/chrome-canary/chrome "$pkgdir/usr/bin/google-chrome-canary"
-    
     cat > "$pkgdir/usr/share/applications/google-chrome-canary.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
@@ -79,5 +68,3 @@ Exec=/usr/bin/google-chrome-canary
 [Desktop Action new-private-window]
 Name=New Incognito Window
 Exec=/usr/bin/google-chrome-canary --incognito
-EOF
-}
