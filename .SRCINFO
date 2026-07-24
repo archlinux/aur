@@ -1,0 +1,15 @@
+pkgbase = open-code-review
+	pkgdesc = AI-powered code review CLI (Alibaba)
+	pkgver = 1.7.15
+	pkgrel = 1
+	url = https://github.com/alibaba/open-code-review
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.25
+	makedepends = git
+	depends = glibc
+	source = open-code-review-1.7.15.tar.gz::https://github.com/alibaba/open-code-review/archive/refs/tags/v1.7.15.tar.gz
+	sha256sums = 58cb9cb1001228fde8f3dc36e544d2203462a21da3677a46fdcdfd1bbdca452c
+
+pkgname = open-code-review
