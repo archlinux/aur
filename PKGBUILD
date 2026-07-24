@@ -18,7 +18,7 @@ optdepends=('intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'
             'libva-mesa-driver: vaapi backend for AMD GPUs')
 provides=('chiaki-ng' 'chiaki')
 conflicts=('chiaki-ng' 'chiaki')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('76c55be0342c651a65ffe5df5ed14930d43b844590cac9f4ea67d23e80557599')
 
 package() {
