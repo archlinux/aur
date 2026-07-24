@@ -1,19 +1,19 @@
 pkgbase = bettbox-compatible-bin
 	pkgdesc = A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)
-	pkgver = 1.18.6
+	pkgver = 1.18.7
 	pkgrel = 1
 	url = https://github.com/appshubcc/Bettbox
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = libayatana-appindicator
 	depends = libkeybinder3
-	provides = bettbox=1.18.6
+	provides = bettbox=1.18.7
 	conflicts = bettbox
 	conflicts = bettbox-bin
 	options = !debug
 	source = restart-bettbox.hook
 	sha256sums = 916a8fc03c89efbde16d8b0462df32c16b50d6bfbce2be3645183f6ce1cb55f7
-	source_x86_64 = bettbox-1.18.6-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.18.6/Bettbox-1.18.6-linux-amd64-compatible.deb
-	sha256sums_x86_64 = 78f87e70003093c2b0e331c99c2f02e4f67510fef5496600472a8c37b9f10ebb
+	source_x86_64 = bettbox-1.18.7-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.18.7/Bettbox-1.18.7-linux-amd64-compatible.deb
+	sha256sums_x86_64 = 1e2de5bccbe5d286f830f8f8acb154d7436d0d93fa6a2afef53e92b7f5437567
 pkgname = bettbox-compatible-bin
 
