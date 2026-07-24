@@ -27,17 +27,19 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=('google-chrome-dev' 'google-chrome')
 conflicts=('google-chrome-dev' 'google-chrome')
 options=('!emptydirs' '!strip' '!zipman')
-source=("https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb")
+source=()
 sha256sums=()
 
 pkgver() {
     # Leer la versión desde el repositorio APT oficial de Google
+    _ver=$(curl -fsSL "https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages" | awk '/^Package: google-chrome-unstable$/{flag=1} flag{print} /^$/{flag=0}' | grep -oP '^Version: \K.*' | head -1 | sed 's/^[0-9]*://' | cut -d- -f1)
     echo "${_ver:-$pkgver}"
 }
 
 prepare() {
     cd "$srcdir"
-    bsdtar -xf *.deb
+    curl -fsSL -A "Mozilla/5.0" -o chrome-dev.deb "https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb"
+    bsdtar -xf chrome-dev.deb
     bsdtar -xf data.tar.*
 }
 
