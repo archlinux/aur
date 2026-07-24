@@ -10,7 +10,7 @@
 
 pkgname='sunshine'
 pkgver=2026.516.143833
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted game stream host for Moonlight"
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev/Sunshine
@@ -175,9 +175,13 @@ build() {
       _cmake_options+=(-DBUILD_TESTS=OFF)
     fi
 
+    if [[ -z "${GITHUB_ACTIONS}" ]]; then
+      _appstreamcli_arguments=(--no-net)
+    fi
+
     cmake "${_cmake_options[@]}"
 
-    appstreamcli validate "build/dev.lizardbyte.app.Sunshine.metainfo.xml"
+    appstreamcli validate "${_appstreamcli_arguments[@]}" "build/dev.lizardbyte.app.Sunshine.metainfo.xml"
     appstream-util validate "build/dev.lizardbyte.app.Sunshine.metainfo.xml"
     desktop-file-validate "build/dev.lizardbyte.app.Sunshine.desktop"
     desktop-file-validate "build/dev.lizardbyte.app.Sunshine.terminal.desktop"
