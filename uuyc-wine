@@ -170,6 +170,7 @@ readonly server="$install_dir/bin/GameViewerServer.exe"
 readonly webview_setup="$install_dir/bin/MicrosoftEdgeWebview2Setup.exe"
 readonly webview_root="$prefix/drive_c/Program Files (x86)/Microsoft/EdgeWebView/Application"
 readonly webview_key='HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
+readonly service_name='GameViewerService'
 readonly service_key='HKLM\System\CurrentControlSet\Services\GameViewerService'
 readonly installed_version_key='HKCU\Software\Netease\GameViewer'
 readonly stamp="$prefix/.uuyc-wine-package-release"
@@ -344,9 +345,43 @@ fi
 $setup_only && exit 0
 app_files_present || die "UU Remote is not installed correctly. Run: uuyc-wine --repair"
 
+service_running() {
+    local output line
+
+    output=$("$wine" sc query "$service_name" 2>/dev/null) || return 1
+    while IFS= read -r line; do
+        line=${line%$'\r'}
+        if [[ $line =~ ^[[:space:]]*STATE[[:space:]]*:[[:space:]]*4[[:space:]]+RUNNING[[:space:]]*$ ]]; then
+            return 0
+        fi
+    done <<<"$output"
+    return 1
+}
+
+ensure_service_running() {
+    local attempt
+
+    # Wine may report a transient start error while the service still reaches
+    # RUNNING asynchronously, so the queried state is authoritative.
+    run_logged "$wine" sc start "$service_name" || true
+    for ((attempt = 0; attempt < 150; attempt++)); do
+        if service_running; then
+            printf 'GameViewerService reached RUNNING state.\n' >>"$setup_log"
+            return 0
+        fi
+        sleep 0.2
+    done
+
+    run_logged "$wine" sc query "$service_name" || true
+    return 1
+}
+
 server_running() {
     /usr/bin/pgrep -u "$(id -u)" -f -x -- "$server" >/dev/null 2>&1
 }
+
+ensure_service_running || \
+    die "GameViewerService did not reach RUNNING state under Wine. See $setup_log"
 
 if ! server_running; then
     (

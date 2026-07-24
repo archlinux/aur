@@ -98,8 +98,8 @@ The launcher applies and verifies the compatibility settings required by UU Remo
 - Microsoft Edge WebView2 Runtime from the bundled upstream installer;
 - a Windows 8 application override limited to `msedgewebview2.exe`;
 - `UseTakeFocus=N` for Wine's X11 driver;
-- an enabled `GameViewerService` service;
-- `GameViewerServer.exe` started before `GameViewer.exe`;
+- `GameViewerService` explicitly started and verified as `RUNNING`;
+- `GameViewerServer.exe` started only after the service and before `GameViewer.exe`;
 - Wine menu generation disabled so the upstream installer cannot replace the packaged desktop and URI entries;
 - a prefix-local Windows Desktop directory so the installer cannot write shortcuts into the host desktop.
 
