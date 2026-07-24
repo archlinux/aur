@@ -1,20 +1,34 @@
 pkgbase = luna-ai
-	pkgdesc = Luna OS: Autonomous Voice & Multimodal AI Operating System on Arch Linux by Arunachalam.
+	pkgdesc = Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
-	install = luna-ai.install
 	arch = any
 	license = MIT
-	makedepends = git
-	depends = python
-	depends = python-pip
 	depends = nodejs
 	depends = npm
-	depends = playerctl
+	depends = python
+	depends = python-pip
+	depends = python-fastapi
+	depends = python-uvicorn
+	depends = python-pydantic
+	depends = python-dotenv
+	depends = python-requests
+	depends = python-psutil
+	depends = python-httpx
+	depends = python-websockets
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = mpv
 	depends = xdg-utils
-	depends = android-tools
-	source = luna-ai::git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0
+	depends = polkit
+	depends = qt6-webengine
+	optdepends = scrcpy: Wireless Android screen mirroring
+	optdepends = android-tools: ADB device control
+	optdepends = playerctl: Media playback automation
+	optdepends = zenity: Native GTK folder chooser dialog
+	optdepends = kdialog: Native KDE folder chooser dialog
+	source = git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0
 	sha256sums = SKIP
 
 pkgname = luna-ai

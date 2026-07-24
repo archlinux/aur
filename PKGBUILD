@@ -1,65 +1,89 @@
-# Maintainer: Arunachalam-gojosaturo <aur@luna-ai>
+# Maintainer: Arunachalam <arunachalam@example.com>
 pkgname=luna-ai
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="Luna OS: Autonomous Voice & Multimodal AI Operating System on Arch Linux by Arunachalam."
+pkgdesc="Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux"
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/Luna-ai"
 license=('MIT')
-depends=('python' 'python-pip' 'nodejs' 'npm' 'playerctl' 'xdg-utils' 'android-tools')
-makedepends=('git')
-install=luna-ai.install
-source=("luna-ai::git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v${pkgver}")
+depends=(
+    'nodejs'
+    'npm'
+    'python'
+    'python-pip'
+    'python-fastapi'
+    'python-uvicorn'
+    'python-pydantic'
+    'python-dotenv'
+    'python-requests'
+    'python-psutil'
+    'python-httpx'
+    'python-websockets'
+    'python-pyqt6'
+    'python-pyqt6-webengine'
+    'mpv'
+    'xdg-utils'
+    'polkit'
+    'qt6-webengine'
+)
+optdepends=(
+    'scrcpy: Wireless Android screen mirroring'
+    'android-tools: ADB device control'
+    'playerctl: Media playback automation'
+    'zenity: Native GTK folder chooser dialog'
+    'kdialog: Native KDE folder chooser dialog'
+)
+source=("git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/luna-ai"
+    cd "$srcdir/Luna-ai"
     npm install
     npm run build
 }
 
 package() {
-    cd "${srcdir}/luna-ai"
+    cd "$srcdir/Luna-ai"
 
-    # Install application bundle to /opt/luna-ai
-    install -dm755 "${pkgdir}/opt/luna-ai"
-    cp -r backend src dist package.json luna_desktop.py requirements.txt "${pkgdir}/opt/luna-ai/"
+    # Installation directories
+    install -d "$pkgdir/opt/luna-ai"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/applications"
 
-    # Install system executable wrappers
-    install -dm755 "${pkgdir}/usr/bin"
-    
-    cat > "${pkgdir}/usr/bin/luna-ai" << 'EOF'
+    # Copy core codebase
+    cp -r backend assets cli.py cli_config.py cli_examples.py cli_utils.py \
+          generate_reports.py luna_cli_enhanced.py luna_desktop.py server.py \
+          package.json pyproject.toml requirements.txt public src dist node_modules "$pkgdir/opt/luna-ai/"
+
+    # Install launcher script for GUI
+    cat << 'EOF' > "$pkgdir/usr/bin/luna-ai"
 #!/usr/bin/env bash
-PROJECT_DIR="/opt/luna-ai"
-cd "$PROJECT_DIR"
-
-if [ ! -d "$PROJECT_DIR/venv" ]; then
-    python -m venv "$PROJECT_DIR/venv"
-    "$PROJECT_DIR/venv/bin/pip" install -r "$PROJECT_DIR/requirements.txt" pywebview PyQt6 PyQt6-WebEngine qtpy
-fi
-
-exec "$PROJECT_DIR/venv/bin/python" "$PROJECT_DIR/luna_desktop.py" "$@"
+cd /opt/luna-ai
+exec python3 luna_desktop.py "$@"
 EOF
-    chmod +x "${pkgdir}/usr/bin/luna-ai"
-    ln -s /usr/bin/luna-ai "${pkgdir}/usr/bin/luna" 2>/dev/null || true
+    chmod 755 "$pkgdir/usr/bin/luna-ai"
 
-    # Desktop Icon
-    install -dm755 "${pkgdir}/usr/share/pixmaps"
-    if [ -f "dist/vite.svg" ]; then
-        install -Dm644 dist/vite.svg "${pkgdir}/usr/share/pixmaps/luna-ai.svg"
-    fi
+    # Install short command symlink
+    ln -s /usr/bin/luna-ai "$pkgdir/usr/bin/luna"
 
-    # Desktop Entry
-    install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/Luna-AI.desktop" << 'DESKTOP'
+    # Install CLI launcher script
+    cat << 'EOF' > "$pkgdir/usr/bin/luna-cli"
+#!/usr/bin/env bash
+cd /opt/luna-ai
+exec python3 luna_cli_enhanced.py "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/luna-cli"
+
+    # Install Desktop Entry
+    cat << 'EOF' > "$pkgdir/usr/share/applications/Luna-AI.desktop"
 [Desktop Entry]
 Name=Luna AI
 Comment=Autonomous Personal AI Operating System & Daily Companion
 Exec=/usr/bin/luna-ai
-Icon=/usr/share/pixmaps/luna-ai.svg
+Icon=/opt/luna-ai/public/deskopticon.png
 Terminal=false
 Type=Application
 Categories=Utility;Development;System;
 Keywords=AI;Assistant;OperatingSystem;Hyprland;Luna;
-DESKTOP
+EOF
 }
