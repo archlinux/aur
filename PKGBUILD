@@ -2,7 +2,7 @@
 
 _pkgname=gocatcli
 pkgname="${_pkgname}-git"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='The command line catalog tool for your offline data'
 arch=('x86_64')
