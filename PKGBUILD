@@ -10,7 +10,7 @@ pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web 
 arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd ffmpeg4.4)
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd ffmpeg)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
