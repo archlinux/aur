@@ -1,0 +1,21 @@
+pkgbase = leggio-git
+	pkgdesc = Sheet music viewer built for use at arm's length (git)
+	pkgver = 0.1.0.r1.g23e1048
+	pkgrel = 1
+	url = https://github.com/MrGilfy/leggio
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4
+	depends = libadwaita
+	depends = poppler-glib
+	depends = hicolor-icon-theme
+	provides = leggio=0.1.0.r1.g23e1048
+	conflicts = leggio
+	source = leggio::git+https://github.com/MrGilfy/leggio.git
+	sha256sums = SKIP
+
+pkgname = leggio-git
