@@ -1,0 +1,2 @@
+# Seekey reads Linux input events directly. Restrict access to input members.
+KERNEL=="event*", SUBSYSTEM=="input", GROUP="input", MODE="0640"
