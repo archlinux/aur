@@ -14,7 +14,7 @@ depends=(
 )
 optdepends=(
   'vulkan-driver: Vulkan support for Vortex under Wine'
-  'lib32-vulkan-driver: 32-bit Vulkan drivers (many Vortex games are 32-bit)'
+  'lib32-vulkan-driver: 32-bit Vulkan drivers (may be needed for 32-bit Wine games)'
   'mangohud: optional in-game overlay (built-in plugin)'
 )
 provides=("${_pkgname}")
