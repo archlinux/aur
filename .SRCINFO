@@ -1,6 +1,6 @@
 pkgbase = coal
 	pkgdesc = Detection Library, previously known as hpp-fcl
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/coal-library/coal
 	arch = i686
@@ -21,14 +21,8 @@ pkgbase = coal
 	optdepends = doxygen
 	conflicts = hpp-fcl
 	replaces = hpp-fcl
-	source = https://github.com/coal-library/coal/releases/download/v3.0.3/coal-3.0.3.tar.gz
-	source = https://github.com/coal-library/coal/releases/download/v3.0.3/coal-3.0.3.tar.gz.sig
-	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
-	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
-	validpgpkeys = F534E75540B2E7D24F99746987CFFF3D0D73CC93
-	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
-	sha256sums = d1afcc0c22477a61e93e070a01cc8ed1d256a96ec65d308844d24b9caf771d36
-	sha256sums = SKIP
+	source = coal-3.0.4.tar.gz::https://github.com/coal-library/coal/archive/refs/tags/v3.0.4.tar.gz
+	sha256sums = 0a4f58e55b88a3d9f873ce79979aecc08491d212ea0b9311df013df3b22bffac
 
 pkgname = coal
 

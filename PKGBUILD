@@ -3,7 +3,7 @@
 _org='coal-library'
 _pkgname='coal'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Detection Library, previously known as hpp-fcl"
 arch=('i686' 'x86_64')
@@ -14,15 +14,8 @@ optdepends=('doxygen')
 makedepends=('cmake' 'boost')
 conflicts=('hpp-fcl')
 replaces=('hpp-fcl')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('d1afcc0c22477a61e93e070a01cc8ed1d256a96ec65d308844d24b9caf771d36'
-            'SKIP')
-validpgpkeys=(
-        '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
-        'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
-        'F534E75540B2E7D24F99746987CFFF3D0D73CC93'  # https://github.com/jcarpent.gpg
-        '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
-        )
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0a4f58e55b88a3d9f873ce79979aecc08491d212ea0b9311df013df3b22bffac')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
