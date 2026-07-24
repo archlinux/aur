@@ -1,6 +1,6 @@
 pkgbase = omnyssh-bin
 	pkgdesc = TUI SSH dashboard & server manager — manage all your servers from a single terminal window
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/timhartmann7/omnyssh
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = omnyssh-bin
 	provides = omny
 	conflicts = omnyssh
 	options = !strip
-	source = README-1.0.4.md::https://raw.githubusercontent.com/timhartmann7/omnyssh/v1.0.4/README.md
-	source = LICENSE-1.0.4::https://raw.githubusercontent.com/timhartmann7/omnyssh/v1.0.4/LICENSE
-	sha256sums = 8e2e6057c320c8ea73c51590efa08db79c7b0580d85f97fafc23075f42b96cdd
+	source = README-1.1.0.md::https://raw.githubusercontent.com/timhartmann7/omnyssh/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/timhartmann7/omnyssh/v1.1.0/LICENSE
+	sha256sums = c7a795847b769b34352a3c5bd083cde5b0bc576ec42de30d0a272a2aa8a7aece
 	sha256sums = c0004499a5a1e5b50c2953271bd448da1f707e34502e2f3298f5b9ff70d548ca
-	source_x86_64 = omny-x86_64-1.0.4.tgz::https://github.com/timhartmann7/omnyssh/releases/download/v1.0.4/omny-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = be8ad90f521b4d9ac95063ae84539e651b5fc58cb6694a7645f43f5253db2a2a
+	source_x86_64 = omny-x86_64-1.1.0.tgz::https://github.com/timhartmann7/omnyssh/releases/download/v1.1.0/omny-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 443fe8f1bdd8492487eb790738510467bf7bfb89002f3f30d5d2369379d3e80b
 
 pkgname = omnyssh-bin
