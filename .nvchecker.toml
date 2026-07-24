@@ -1,0 +1,5 @@
+[zerobrew-bin]
+source = "github"
+github = "lucasgelfond/zerobrew"
+use_latest_release = true
+prefix = "v"
