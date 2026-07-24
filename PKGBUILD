@@ -14,7 +14,7 @@ depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-dbus'
 optdepends=('hunspell: spell check')
 provides=('zapzap')
 conflicts=('zapzap')
-source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
 sha256sums=('73e5415a7de9b6e3d7d3f8760c23ad3fec901a48e714d964f54293845804e3c8')
 
 package() {

@@ -13,7 +13,7 @@ pkgbase = zapzap-bin
 	optdepends = hunspell: spell check
 	provides = zapzap
 	conflicts = zapzap
-	source = https://github.com/Felitendo/PKGBUILDS/releases/download/zapzap-bin-7.0.3/zapzap-bin-7.0.3.tar.zst
+	source = zapzap-bin-7.0.3-1.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/zapzap-bin-7.0.3/zapzap-bin-7.0.3.tar.zst
 	sha256sums = 73e5415a7de9b6e3d7d3f8760c23ad3fec901a48e714d964f54293845804e3c8
 
 pkgname = zapzap-bin
