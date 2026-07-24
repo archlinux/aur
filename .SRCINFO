@@ -1,0 +1,17 @@
+pkgbase = python-pyasn1-alt-modules
+	pkgdesc = Alternative ASN.1 modules for pyasn1
+	pkgver = 0.4.10
+	pkgrel = 1
+	url = https://github.com/russhousley/pyasn1-alt-modules
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyasn1
+	source = pyasn1-alt-modules::git+https://github.com/russhousley/pyasn1-alt-modules.git#tag=0.4.10
+	b2sums = bd7d4ad4d7b9d669d5bf373c78edf2ba33310fdd50a419e98e994a721541788c72642a101430a3fb77be75cfaf21f38a2f0c58063c84dd3bfa46ee17161d79ad
+
+pkgname = python-pyasn1-alt-modules
