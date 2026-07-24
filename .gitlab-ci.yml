@@ -2,6 +2,7 @@ image: archlinux:latest
 
 update_aur:
   script: |
+    set -x
     pacman -Sy --noconfirm git base-devel openssh curl grep
     mkdir -p ~/.ssh
     chmod 700 ~/.ssh
@@ -20,7 +21,8 @@ update_aur:
     chown -R builduser:builduser .
     source ./PKGBUILD
     NEW_VER=$(pkgver)
-    if [ -z "$NEW_VER" ]; then exit 1; fi
+    echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
+    if [ -z "$NEW_VER" ]; then echo "ERROR: No se obtuvo version"; exit 1; fi
     sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
     sudo -u builduser makepkg --printsrcinfo > .SRCINFO
     git add PKGBUILD .SRCINFO
