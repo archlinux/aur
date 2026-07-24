@@ -1,7 +1,7 @@
 # Maintainer: pantarune
 
 pkgname=niri-screenshare
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Portal backend for niri implementing ScreenCast"
 arch=('x86_64')
