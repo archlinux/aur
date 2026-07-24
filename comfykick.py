@@ -197,7 +197,7 @@ def _resolve_extra_model_paths(config):
     if not isinstance(data, dict):
         die("%s must be a mapping at the top level.", raw)
 
-    extra_dirs = []
+    extra_dirs = set()
     for section_name, section in data.items():
         if not isinstance(section, dict):
             continue
@@ -230,8 +230,8 @@ def _resolve_extra_model_paths(config):
                 item = item.strip()
                 if not item:
                     continue
-                extra_dirs.append(Path(base_path) / item)
-    return extra_dirs
+                extra_dirs.add((Path(base_path) / item).resolve())
+    return list(extra_dirs)
 
 
 def create_directories(config, extra_dirs):
