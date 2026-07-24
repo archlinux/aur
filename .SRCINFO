@@ -1,6 +1,6 @@
 pkgbase = gitstore-git
 	pkgdesc = Thin git-backed transactional store manager, inspired by pass.
-	pkgver = 0.0.0.11
+	pkgver = 1.0r0.ga301b2b
 	pkgrel = 1
 	url = https://codeberg.org/ValOm/gitstore
 	arch = any

@@ -2,7 +2,7 @@
 
 _pkgname="gitstore"
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.12
+pkgver=1.0r0.ga301b2b
 pkgrel=1
 pkgdesc="Thin git-backed transactional store manager, inspired by pass."
 url="https://codeberg.org/ValOm/gitstore"
@@ -17,7 +17,7 @@ md5sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname" || exit 1
-	echo "0.0.0.$(git rev-list --count HEAD)"
+	git describe --tags --long | sed '{ s/^v//; s/-/r/; s/-/./}'
 }
 
 build() {
