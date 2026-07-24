@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-inhibit-status
 	pkgdesc = COSMIC panel applet showing which programs currently inhibit system sleep
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxp-git/cosmic-ext-applet-inhibit-status
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = cosmic-ext-applet-inhibit-status
 	depends = cosmic-panel
 	optdepends = cosmic-comp-inhibit-export: also list Wayland idle-inhibitors (e.g. a browser playing video)
 	optdepends = cosmic-idle-inhibit-export: also list org.freedesktop.ScreenSaver inhibitors
-	source = cosmic-ext-applet-inhibit-status::git+https://github.com/lxp-git/cosmic-ext-applet-inhibit-status.git#commit=f4c4688dadd56cf2aef53941b3c24c9c94d459dc
+	source = cosmic-ext-applet-inhibit-status::git+https://github.com/lxp-git/cosmic-ext-applet-inhibit-status.git#commit=a660037fc60389c49b5a168b1fb9cd6f67f51790
 	sha256sums = SKIP
 
 pkgname = cosmic-ext-applet-inhibit-status

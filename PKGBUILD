@@ -1,8 +1,8 @@
 # Maintainer: xuanping <a845326948 at gmail dot com>
 pkgname=cosmic-ext-applet-inhibit-status
 pkgver=0.1.0
-pkgrel=1
-_commit=f4c4688dadd56cf2aef53941b3c24c9c94d459dc
+pkgrel=2
+_commit=a660037fc60389c49b5a168b1fb9cd6f67f51790
 _appid=dev.lxp.CosmicInhibitStatus
 pkgdesc="COSMIC panel applet showing which programs currently inhibit system sleep"
 arch=('x86_64' 'aarch64')
