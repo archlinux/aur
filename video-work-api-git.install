@@ -6,6 +6,8 @@
 set -e
 
 _SERVICE_USER=video-work-api
+_RENDER_GROUP=xry-render
+_RECEIPT_KEY=/etc/xry/render-receipt.hmac.key
 _DATA_DIR=/var/lib/video-work-api
 _CONF_DIR=/etc/video-work-api
 _APP_DIR=/usr/lib/video-work-api
@@ -18,6 +20,9 @@ _ensure_root() {
 }
 
 _ensure_user_and_dirs() {
+  if ! getent group "$_RENDER_GROUP" >/dev/null 2>&1; then
+    groupadd --system "$_RENDER_GROUP"
+  fi
   if ! getent group "$_SERVICE_USER" >/dev/null 2>&1; then
     groupadd --system "$_SERVICE_USER"
   fi
@@ -28,6 +33,14 @@ _ensure_user_and_dirs() {
       --shell /usr/bin/nologin \
       --comment "Video Work API" \
       "$_SERVICE_USER"
+  fi
+  usermod --append --groups "$_RENDER_GROUP" "$_SERVICE_USER"
+  if getent passwd xry >/dev/null 2>&1; then
+    usermod --append --groups "$_RENDER_GROUP" xry
+  fi
+  if [ -f "$_RECEIPT_KEY" ]; then
+    chown "root:$_RENDER_GROUP" "$_RECEIPT_KEY"
+    chmod 0640 "$_RECEIPT_KEY"
   fi
 
   install -dm750 -o "$_SERVICE_USER" -g "$_SERVICE_USER" "$_DATA_DIR"
@@ -46,6 +59,11 @@ _ensure_user_and_dirs() {
   fi
 }
 
+_ensure_mcp_token() {
+  # The wrapper loads the packaged config and re-executes as the service user.
+  /usr/bin/vwactl mcp-token ensure
+}
+
 _print_banner() {
   local mode="$1"
   echo "-------------------------------------------------------------------"
@@ -58,8 +76,8 @@ _print_banner() {
     echo "  sudo vwactl init           # DB + one-time setup token"
     echo "  sudo vwactl model download # via hf CLI + Hub cache (opt-in, multi-GB)"
     echo ""
-    echo "Optional MCP token in $_CONF_DIR/config.env:"
-    echo "  VWA_MCP_TOKEN=\$(openssl rand -hex 32)"
+    echo "MCP authentication: a persistent private token was created automatically."
+    echo "After admin login, use 'Copy agent prompt' to configure Codex."
     echo ""
     echo "Start (manual only; package never enables the unit):"
     echo "  sudo systemctl start video-work-api.service"
@@ -73,6 +91,7 @@ _print_banner() {
     ;;
   upgrade)
     echo "video-work-api-git upgraded."
+    echo "Persistent MCP authentication token ensured (value not printed)."
     echo ""
     echo "If Python deps changed, rebuild the service venv:"
     echo "  sudo vwactl setup"
@@ -89,6 +108,7 @@ _print_banner() {
 post_install() {
   _ensure_root
   _ensure_user_and_dirs
+  _ensure_mcp_token
   systemctl daemon-reload || true
   _print_banner install
 }
@@ -96,6 +116,7 @@ post_install() {
 post_upgrade() {
   _ensure_root
   _ensure_user_and_dirs
+  _ensure_mcp_token
   systemctl daemon-reload || true
   _print_banner upgrade
 }
