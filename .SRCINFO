@@ -1,8 +1,9 @@
 pkgbase = cellar
 	pkgdesc = Enforce an aging period on AUR package upgrades
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/le0kar0ub1/Cellar
+	install = cellar.install
 	arch = any
 	license = MIT
 	makedepends = python-build

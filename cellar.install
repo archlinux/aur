@@ -1,0 +1,12 @@
+post_remove() {
+    cat <<'EOF'
+==> cellar's runtime files are not owned by the package and were left behind:
+      ~/.config/cellar/           (per-user config, if you created one)
+      ~/.local/state/cellar/      (per-user stale-hold bookkeeping)
+    If you ever ran `cellar sync-holds`, also remove the Include line from
+    /etc/pacman.conf FIRST, then delete the holds file:
+      /etc/pacman.d/cellar-holds.conf
+    (a dangling Include makes pacman error; a forgotten holds file keeps
+    pinning packages forever.)
+EOF
+}
