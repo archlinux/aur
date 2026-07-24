@@ -1,0 +1,12 @@
+pkgbase = pwsp-git
+	pkgdesc = Lets you play audio files through your microphone
+	pkgver = 1.12.5
+	pkgrel = 1
+	url = https://github.com/arabianq/pipewire-soundpad
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	source = git+https://github.com/arabianq/pipewire-soundpad.git
+	sha256sums = SKIP
+
+pkgname = pwsp-git
