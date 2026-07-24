@@ -1,4 +1,4 @@
-# Maintainer: tonoco <me@tnc.lol>
+# Maintainer: Namise Noriyuki <nene@anche.no>
 pkgname=pwsp-git
 _srcname=pipewire-soundpad
 pkgver=v1.13.0.r0.g6d7abdb
