@@ -1,6 +1,7 @@
 /mapnik
 /mapnik-vector-tile
 /pkg
+/polylabel
 /src
 /test-data
 *.zst

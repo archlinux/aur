@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.2.2.r27.gcaaf44a
+pkgver=4.3.0.r0.g45c64a7
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -32,7 +32,6 @@ makedepends=('boost'
              'cmake'
              'git'
              'mapbox-geometry.hpp'
-             'mapbox-polylabel'
              'mapbox-variant'
              'protozero'
              'sparsehash')
@@ -41,9 +40,11 @@ options=(staticlibs)
 provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'git+https://github.com/mapnik/mapnik-vector-tile.git'
+        'git+https://github.com/mapnik/polylabel.git'
         'mapnik-use-system-sparsehash.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
             'SKIP')
@@ -62,6 +63,10 @@ prepare() {
   git -C mapnik submodule init deps/mapbox/mapnik-vector-tile
   git -C mapnik config submodule.deps/mapbox/mapnik-vector-tile.url "${srcdir}"/mapnik-vector-tile
   git -C mapnik -c protocol.file.allow=always submodule update deps/mapbox/mapnik-vector-tile
+
+  git -C mapnik submodule init deps/mapbox/polylabel
+  git -C mapnik config submodule.deps/mapbox/polylabel.url "${srcdir}"/polylabel
+  git -C mapnik -c protocol.file.allow=always submodule update deps/mapbox/polylabel
 
   # Remove bundled sparsehash directory in favor of 'sparsehash' package
   rm -rf deps/mapnik/sparsehash
