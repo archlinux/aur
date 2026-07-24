@@ -1,10 +1,10 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.0.4
+pkgver=7.0.5
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Revincx/Yurigram"
 license=('GPL3')
 provides=('yurigram')
@@ -13,38 +13,47 @@ conflicts=('yukigram-rua' 'yukigram-rua-bin')
 depends=(
     'abseil-cpp'
     'ada'
+    'cmark-gfm'
     'ffmpeg'
     'glib2'
+    'glibc'
     'hicolor-icon-theme'
     'hunspell'
     'kcoreaddons'
     'libavif'
+    'libgcc'
     'libheif'
+    'libjpeg-turbo'
     'libjxl'
+    'libpipewire'
     'libstdc++'
+    'libxcb'
     'libxcomposite'
     'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
     'libxrandr'
     'libxtst'
     'lz4'
     'minizip'
-    'zlib'
-    'glibc'
-    'libgcc'
     'openal'
     'openh264'
     'openssl'
     'pipewire'
     'protobuf'
+    'qt6-base'
     'qt6-imageformats'
     'qt6-svg'
     'qt6-wayland'
     'rnnoise'
     'xxhash'
+    'zlib'
 )
 makedepends=('cmake' 'boost' 'boost-libs' 'git' 'ninja' 'python' 'range-v3' 'microsoft-gsl' 'ccache'
              'libtg_owt' 'gobject-introspection' 'fmt' 'glib2-devel' 'gperf')
-optdepends=('geoclue: geoinformation support'
+optdepends=('crow-translate: translation provider'
+            'geoclue: geoinformation support'
             'geocode-glib-2: geocoding support'
             'webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
