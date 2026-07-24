@@ -1,10 +1,10 @@
-pkgver=3.15.0.346
-sha256sums=("1d63b28c1e9fddd586cac9afe5d26e4174bce2a952ef59b4e29b588e28a1dce7"
+pkgver=3.17.0.351
+sha256sums=("162e4ef025ac93ba99cbf879ac4bd8b04159d4448cdd65901d5e617eee74f5a3"
             "1d49bb780e3ff4eb1e156465798e7ddc8c6cccd747b683f77ba8c1c4fbb8febb"
             "f5ca7e97dde27aa77a09b46dd191edace0c928e521b6342081b127c564f978ce")
 _pkgname=hmcl-dev
 pkgname=hmcl-dev-bin
-pkgrel=2
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular"
 url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
