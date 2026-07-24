@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 24 Jul 2026 17:40:20 +0200
+Subject: [PATCH] Bug 2057594: Restore dummy call to gdk_display_get_default
+ r?emilio
+
+---
+ toolkit/xre/gfxtest/gfxtest.cpp | 10 ++++++++++
+ toolkit/xre/gfxtest/glxtest.cpp |  1 -
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/toolkit/xre/gfxtest/gfxtest.cpp b/toolkit/xre/gfxtest/gfxtest.cpp
+index d0d519eec538..12866f126329 100644
+--- a/toolkit/xre/gfxtest/gfxtest.cpp
++++ b/toolkit/xre/gfxtest/gfxtest.cpp
+@@ -11,6 +11,10 @@
+ #  include <signal.h>
+ #endif
+ 
++#ifdef MOZ_WAYLAND
++#  include <gdk/gdk.h>
++#endif
++
+ int glxtest(bool aWayland, int aOutputFd);
+ 
+ #ifdef MOZ_ENABLE_VAAPI
+@@ -64,6 +68,12 @@ static int RunGlx(int argc, char** argv) {
+         outputFd = atoi(optarg);
+         break;
+       case 'h':
++#ifdef MOZ_WAYLAND
++        // Dummy call to mozgtk to prevent the linker from removing
++        // the dependency with --as-needed.
++        // see toolkit/library/moz.build for details.
++        gdk_display_get_default();
++#endif
+         PrintUsage();
+         return 0;
+       default:
+diff --git a/toolkit/xre/gfxtest/glxtest.cpp b/toolkit/xre/gfxtest/glxtest.cpp
+index 78263769774c..17709c0e9a3a 100644
+--- a/toolkit/xre/gfxtest/glxtest.cpp
++++ b/toolkit/xre/gfxtest/glxtest.cpp
+@@ -24,7 +24,6 @@
+ #include <stdint.h>
+ #include <inttypes.h>
+ #include <string.h>
+-#include <gdk/gdk.h>
+ 
+ #ifdef MOZ_X11
+ #  include "X11/Xlib.h"

@@ -12,7 +12,7 @@ causes conflicts between the channels.
  3 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/config/baseconfig.mk b/config/baseconfig.mk
-index 428beef48e14..13a609c1cfe9 100644
+index 7e5d947de6ee..204e13cb7c83 100644
 --- a/config/baseconfig.mk
 +++ b/config/baseconfig.mk
 @@ -2,7 +2,7 @@

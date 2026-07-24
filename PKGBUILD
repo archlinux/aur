@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=155.0a1+20260722.1+h396bd39825d0
+pkgver=155.0a1+20260724.2+hdc7f12a8cbce
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.firefox.com/channel/desktop/#nightly"
@@ -89,6 +89,10 @@ source=(
 
   # Make different channels installable in parallel
   0001-Install-under-remoting-name.patch
+
+  # Fix hardware rendering on Wayland
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2057594
+  0002-Bug-2057594-Restore-dummy-call-to-gdk_display_get_de.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -99,12 +103,14 @@ sha256sums=('SKIP'
             'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '3e8161b00492e2b2a1e86c54497ba87e38af1a48ae13b97e471f9d7c2089a5d2'
-            '844423079aa1ffc5f6ee66df2f43d27879d2a761073939747945da5409bec191')
+            '582fa099e402827bbe8aa98fac5d0cdc0e26baef9af22852cf6b2a6bcc96a1d0'
+            '2cca2f6b9b1299bc27edbfdfb1dcae28e95f92e86a52ebb4a72bbf1addc3aa3d')
 b2sums=('SKIP'
         'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '75669773bcbdd27bad02f7e32e9c42fa9ffad89d7d614ad3ea35bb57a21d659dabe0cf6ae3e3007fc37954c7eec3d3f5a11be1a24b9fe3655e8547e29f31f2cd'
-        '70e8bfd40bf23afa3f6de2d975aa69043cb88ae14b625702b754cd3de56215be159cf69ba4ed522ca7122b8bbdb50cfe763694e7c7595f2fdcec40bab5e2739f')
+        'ac75481b855e521f94a2539bf617bab037428ba176b492ba9e81a2ee75bed9f0db59109ea06b8510ca214acfdddac420f520e940053e61cbe977c67fd7f801ce'
+        '7e07d1bc98bfe83593166495cc10ec0c222e0fffcf163eb743ea98fe07dede870e2cfe181a158f7a8e15b45eecc3b571e3f1336b4a40f2e2937b268b57ef45d1')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
