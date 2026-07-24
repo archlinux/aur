@@ -13,6 +13,8 @@ update_aur:
     ssh-add ~/.ssh/id_ed25519
     git config --global user.name "GitLab CI Bot"
     git config --global user.email "bot@gitlab.com"
+    git config --global --add safe.directory '*'
+    
     git clone ssh://aur@aur.archlinux.org/google-chrome-canary-bin.git aur_repo_temp
     cp PKGBUILD aur_repo_temp/
     cd aur_repo_temp
@@ -20,7 +22,6 @@ update_aur:
     echo 'builduser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
     chown -R builduser:builduser .
     
-    # Obtener la versión usando jq (100% infalible)
     NEW_VER=$(curl -sL "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json" | jq -r '.channels.Canary.version')
     
     echo "LA VERSION ENCONTRADA ES: ${NEW_VER}"
