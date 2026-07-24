@@ -1,6 +1,6 @@
 # Maintainer: jhonforbes_2009 <hermanojhonforbes@hotmail.com>
 pkgname=google-chrome-dev-bin
-pkgver=152.0.7953.3
+pkgver=152.0.7967.2
 pkgrel=1
 pkgdesc="The web browser from Google (Dev channel)"
 arch=('x86_64')
