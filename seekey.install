@@ -1,6 +1,7 @@
 post_install() {
   printf '%s\n' \
     'Seekey needs permission to read /dev/input/event*.' \
+    'Arch already assigns these devices to group input with mode 0660.' \
     'Add your desktop user to the input group, then log out and back in:' \
     '  sudo usermod -aG input <username>' \
     '' \
