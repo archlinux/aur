@@ -1,0 +1,18 @@
+pkgbase = python-async-task-runner
+	pkgdesc = An asyncio-based asynchronous task runner, ready to use out of the box
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/async-task-runner/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/async_task_runner/async_task_runner-1.0.3.tar.gz
+	sha256sums = ab995709daa71da027e2fadd6887aace65448d667bc9debed219461bb61ed889
+
+pkgname = python-async-task-runner
