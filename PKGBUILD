@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='openasar'
 pkgname="${_pkgname}-git"
-pkgver=r863.5a05f49
+pkgver=r864.5a44615
 pkgrel=1
 pkgdesc="Open-source alternative of Discord desktop's app.asar"
 arch=('i686' 'x86_64')
