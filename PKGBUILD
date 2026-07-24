@@ -1,81 +1,34 @@
-# Maintainer: atomickaiser <reubenpercival@tutanota.de>
+# Maintainer: Felitendo
+# This PKGBUILD is updated automatically:
+# https://github.com/Felitendo/PKGBUILDS
+
 pkgname=bottles-bin
-_pkgname=Bottles
-pkgver=63.2
+pkgver=64.1
 pkgrel=1
-pkgdesc="Easily manage wine and proton prefix"
-arch=(any)
-url="https://github.com/bottlesdevs/Bottles"
-license=(GPL-3.0-only)
-depends=(
-  cabextract
-  dconf
-  fvs2
-  gamemode
-  gtk4
-  gtksourceview5
-  hicolor-icon-theme
-  icoextract
-  imagemagick
-  libadwaita
-  libportal-gtk4
-  p7zip
-  patool
-  python
-  python-chardet
-  python-fvs
-  python-gobject
-  python-markdown
-  python-orjson
-  python-pathvalidate
-  python-pycurl
-  python-requests
-  python-steamgriddb
-  python-yaml
-  python-yara
-  webkit2gtk-4.1
-  xorg-xdpyinfo
-  vkbasalt-cli
-)
-optdepends=(
-  gvfs
-  lib32-gamemode
-  lib32-gnutls
-  lib32-vkd3d
-  lib32-vulkan-icd-loader
-  vkd3d
-  vulkan-icd-loader
-  wine
-)
-makedepends=(
-  blueprint-compiler
-  meson
-  ninja
-)
-conflicts=('bottles')
+pkgdesc="Easily manage wine and proton prefixes (prebuilt)"
+arch=('any')
+url="https://usebottles.com"
+license=('GPL-3.0-only')
+depends=('fvs2' 'gtk4' 'gtksourceview5' 'hicolor-icon-theme' 'icoextract'
+         'libadwaita' 'libportal-gtk4' 'patool' 'python' 'python-cairo'
+         'python-certifi' 'python-chardet' 'python-charset-normalizer'
+         'python-gobject' 'python-idna' 'python-markdown' 'python-orjson'
+         'python-pathvalidate' 'python-pefile' 'python-pycurl'
+         'python-requests' 'python-urllib3' 'python-yaml' 'python-yara'
+         'vkbasalt-cli')
+optdepends=('vulkan-tools: vkcube test / Vulkan info'
+            'xorg-xdpyinfo: display info detection'
+            'imagemagick: icon/image conversion'
+            'vmtouch: preload bottle files into memory'
+            'mangohud: performance overlay'
+            'gamemode: feral gamemode integration'
+            'gamescope: gamescope session integration'
+            'xterm: fallback terminal for "Run executable in terminal"')
 provides=('bottles')
-source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz"
-  remove-flatpak-checks.patch
-)
-sha256sums=(
-  820a505a84003c766582de69d7008dcc0a3f4bb808a2074d7d8fa37931ca4f77
-  1d2e1417803e93a5d487d46c76ec256c301459f28854e0c8d049a8be11e50fc0
-)
-
-prepare() {
-  patch --forward --directory="${srcdir}/${_pkgname}-${pkgver}" --strip=1 --input="${srcdir}/remove-flatpak-checks.patch"
-}
-
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  meson setup --prefix='/usr' build
-  ninja -C build
-}
+conflicts=('bottles')
+source=("https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
+sha256sums=('0543000eb0d689b43a367d211c8b9abbda7a7e0b7ad037307432590fe62656a3')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C build install
+  cp -a "$srcdir/usr" "$pkgdir/"
 }
-
-# vim: set ft=sh ts=2 sw=2 et:
