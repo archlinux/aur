@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🦀 An interactive Unix file permissions and ownership TUI manager built in Rust with Ratatui and crossterm"
 
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('22d9ae2861eb3b9bbd4b838bebf5376b4e3ce315c7091afcd206d864c7becabe')
-sha256sums_aarch64=('762e9b4c89919d69f5acfbd30395d64cff88fe51ee4358802d015e2d855e746f')
+sha256sums_x86_64=('8b576b81d51621e3bb36ccecc6fa346b4fb6028744aa9654b20bc8fa03dfbd11')
+sha256sums_aarch64=('3339b7d39f4be4589d03af9cddf8517b54e483c6f6a2abcba57fe8fa6964c072')
 
 
 case ${CARCH} in
