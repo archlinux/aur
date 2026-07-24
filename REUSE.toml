@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "ucs-git"
+SPDX-PackageSupplier = "GG2R10"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/ucs-git"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 GG2R10"
+SPDX-License-Identifier = "0BSD"

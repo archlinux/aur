@@ -1,0 +1,26 @@
+pkgbase = ucs-git
+	pkgdesc = Remap colors across your dotfiles from a manual or wallpaper-generated palette
+	pkgver = r2.d929acb
+	pkgrel = 1
+	url = https://github.com/GG2R10/ultimate-color-switcher
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	makedepends = blueprint-compiler
+	makedepends = imagemagick
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-numpy
+	depends = python-pillow
+	provides = ucs=r2.d929acb
+	conflicts = ucs
+	source = ucs-git::git+https://github.com/GG2R10/ultimate-color-switcher.git
+	sha256sums = SKIP
+
+pkgname = ucs-git
