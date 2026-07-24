@@ -117,11 +117,14 @@ def _read_toml(path):
     try:
         with open(path, "rb") as f:
             data = tomllib.load(f)
-    except (FileNotFoundError, tomllib.TOMLDecodeError, IsADirectoryError, PermissionError):
+    except PermissionError:
+        log("WARNING", "Permission denied when reading [%s]; skipping.", path)
         return {}
+    except tomllib.TOMLDecodeError as e:
+        log("ERROR", "Failed to parse TOML in [%s]: %s", path, e)
 
     if not isinstance(data, dict):
-        return {}
+        log("ERROR", "Top-level of [%s] is not a TOML table.", path)
 
     cleaned = {}
     for key, value in data.items():
