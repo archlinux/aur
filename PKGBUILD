@@ -7,7 +7,7 @@
 # ```
 
 pkgname=snowflake-client
-pkgver=1.5.0
+pkgver=1.5.1
 _bootstrap=1.5
 pkgrel=1
 epoch=1
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('3124e9b642fab946e701e64e72417fa90797a5708156d3d974eeaf9bea4402c3'
+sha256sums=('91f252b87db49fdda57db67ae4dbc8fb96f0bda2a81d92e954f0d262820abe7f'
             'SKIP')
 validpgpkeys=('6C983AB7AFE2E5951C6C47B13C98F63C9292CE02')
 
