@@ -1,0 +1,11 @@
+pkgbase = sudo-apt-install-opsec
+	pkgdesc = Prove how much opsec you are
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thebiggestlarp/opsec
+	arch = any
+	license = MIT
+	source = https://raw.githubusercontent.com/thebiggestlarp/opsec/main/opsec
+	sha256sums = SKIP
+
+pkgname = sudo-apt-install-opsec
