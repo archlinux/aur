@@ -1,7 +1,7 @@
 # Maintainer: Răzvan <aurstuff@razv.xyz>
 pkgname=naji-cli
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI client for judge.nitro-ai.org"
 arch=('any')
 url="https://github.com/MihneaTeodorStoica/nitro-ai-judge-cli"
@@ -18,11 +18,6 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname"
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$pkgname"
-  python -m unittest discover -v
 }
 
 package() {

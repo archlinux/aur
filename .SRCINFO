@@ -1,7 +1,7 @@
 pkgbase = naji-cli
 	pkgdesc = CLI client for judge.nitro-ai.org
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MihneaTeodorStoica/nitro-ai-judge-cli
 	arch = any
 	license = custom:unknown
