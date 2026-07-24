@@ -2,7 +2,7 @@
 
 pkgname=ecosia-browser-bin
 pkgver=150.1.7871.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Ecosia Browser (prebuilt binary)'
 arch=('x86_64')
 url='https://www.ecosia.org/browser'
@@ -18,7 +18,6 @@ depends=(
   'gtk3'
   'hicolor-icon-theme'
   'libcups'
-  'libdrm'
   'libgcc'
   'libx11'
   'libxcb'
@@ -28,7 +27,6 @@ depends=(
   'libxfixes'
   'libxkbcommon'
   'libxrandr'
-  'libxss'
   'mesa'
   'nspr'
   'nss'
@@ -57,9 +55,10 @@ _snap_revision=3
 source_x86_64=(
   "${pkgname}-${pkgver}-${_snap_revision}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap_id}_${_snap_revision}.snap"
 )
-source=('ecosiabrowser.sh')
+source=('ecosiabrowser.sh' 'LICENSE')
 noextract=("${pkgname}-${pkgver}-${_snap_revision}.snap")
-sha256sums=('43dd05c17af7504ed0267b8909e44e3aa1a03b1819415ab1559c143fc8a36efb')
+sha256sums=('43dd05c17af7504ed0267b8909e44e3aa1a03b1819415ab1559c143fc8a36efb'
+            'b744f25f86ee55eb6d3ec5ff5d6c5a88ad55392a49ecf69cee9c669124fbf1f2')
 sha256sums_x86_64=('81385d48b89fb869e9ebb0ad8d46a76c6860395a73e60804611cd20b748c4b75')
 
 prepare() {
@@ -81,6 +80,7 @@ package() {
   cp -a snap-root/opt/ecosia "${pkgdir}/opt/ecosia"
 
   install -Dm755 ecosiabrowser.sh "${pkgdir}/usr/bin/ecosiabrowser"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 snap-root/usr/share/applications/org.ecosia.Browser.desktop \
     "${pkgdir}/usr/share/applications/org.ecosia.Browser.desktop"
   install -Dm644 snap-root/app/share/icons/hicolor/scalable/apps/org.ecosia.Browser.svg \
