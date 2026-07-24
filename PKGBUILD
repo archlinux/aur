@@ -7,8 +7,8 @@
 # Lever never intercept execution.
 
 pkgname=synara
-pkgver=0.5.5
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Minimal desktop GUI for coding agents (Codex, Claude, Cursor, and more)"
 arch=('x86_64')
 url="https://trysynara.com"
@@ -23,7 +23,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/Emanuele-web04/synara/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '597a6e2af3fa770a0670532dd5e626bb6e205c5e4a5f3f296a69b5eb7fbd25e8'
+  'b2dec293adc1513178e829e5ac8a094ba568bdb1573d8df3c6832ac579ce7d7b'
   'a6a5dbdcd15b78fa36370059b1c95d3e534811c324e4a7774d64da968ba03f9b'
   '3914e01ffa931a12adef6531e90adbdeb1a267cf3721dbfe8291fe81a77b05b3'
   '6c263925edf74f9255c979b585b2b012b16c730f4c455a0aad4db8ddd5c91c5f'
