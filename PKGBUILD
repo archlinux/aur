@@ -27,7 +27,7 @@ depends=(
   miniaudio
   magic_enum
   sqlitecpp
-  qt6-interfaceframework
+  libremidi
   zlib-ng
   openimageio
 )
