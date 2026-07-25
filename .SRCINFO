@@ -1,13 +1,13 @@
 pkgbase = jellyfin2samsung-bin
 	pkgdesc = One-click app installer for Samsung TVs, projectors and smart monitors (Tizen) — Jellyfin, Moonlight, and the whole community catalog.
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://apps2samsung.madebypatrick.nl/
 	arch = x86_64
 	license = MIT
 	options = !strip
 	options = !debug
-	source = jellyfin2samsung-bin_2.6.0.deb::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.6.0/Apps2Samsung-v2.6.0-linux-x64.deb
-	sha256sums = 424f0d5b6fa2defa286f00b4c1eb40d7ad9a34285cb68b120c73e5e50979b3ff
+	source = jellyfin2samsung-bin_2.7.0.deb::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.7.0/Apps2Samsung-v2.7.0-linux-x64.deb
+	sha256sums = 344fce86cbd1a9a10b75df47f6b7ea9a8ffdca9a4dae0fe5df6e82f16908e4d1
 
 pkgname = jellyfin2samsung-bin
