@@ -1,0 +1,15 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger
+
+    cat << EOF
+
+==> If brightness control fails, ensure your user belongs to the 'video' group.
+==> Log out and back in after changing group membership.
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,15 @@
+pkgbase = brightge
+	pkgdesc = Command-line tool for controlling backlight brightness
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/Javillo10/brightge
+	install = brightge.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = brightge-1.2.3.tar.gz::https://github.com/Javillo10/brightge/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 35d43c922479a8cb1c6d1fd9cb1496b2b00b0dbe86aa1076e2bfc79bf222f2c6
+
+pkgname = brightge
