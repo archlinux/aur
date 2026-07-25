@@ -1,6 +1,6 @@
 pkgbase = brlcad
 	pkgdesc = Extensive 3D solid modeling system
-	pkgver = 7.42.2
+	pkgver = 7.44.0
 	pkgrel = 1
 	url = https://brlcad.org
 	install = brlcad.install
@@ -35,11 +35,11 @@ pkgbase = brlcad
 	depends = libgl
 	depends = libxft
 	depends = libxi
-	source = brlcad-rel-7-42-2.tar.gz::https://github.com/BRL-CAD/brlcad/archive/refs/tags/rel-7-42-2.tar.gz
+	source = brlcad-rel-7-44-0.tar.gz::https://github.com/BRL-CAD/brlcad/archive/refs/tags/rel-7-44-0.tar.gz
 	source = bext::git+https://github.com/BRL-CAD/bext.git
 	source = fix-utahrle-gcc15.patch
-	sha512sums = 6f6d139e60c6adb4cf31894b8892e5ea5ab13e494e8a55843914bc7e1c5063c97f584f50a7edac9acf7493ec1493952dc6f5780cb5d839c8e0453fb400367bd4
+	sha512sums = c2c4c6be526f99179d3577b32c070438a4d60a1fb73c2ad96e0176d3529c5d21b2944d98d2dcc5e1172c23cbf97f0898b83e16c4125fba953d46587b6745386b
 	sha512sums = SKIP
-	sha512sums = 9a33f543bdccd6ce3e1cd111c15a5be4cae4bd62cf414b4e8671c91582687777
+	sha512sums = f19a38ed643af14f761bdd535b75456266bccfdc5fbc2454b7be75a90e38e3884e72eb012b528acf7e6a2266c525b1e817acfacbc523f6124e4c94d92ae4fa2b
 
 pkgname = brlcad
