@@ -1,6 +1,6 @@
 pkgbase = lakefs-bin
 	pkgdesc = Data version control for your data lake | Git for data
-	pkgver = 1.83.0
+	pkgver = 1.84.1
 	pkgrel = 1
 	url = https://lakefs.io
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lakefs-bin
 	license = Apache-2.0
 	provides = lakefs
 	conflicts = lakefs
-	source_x86_64 = https://github.com/treeverse/lakeFS/releases/download/v1.83.0/lakeFS_1.83.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cc37080275f62609778d85bd9a59960ac8b6472759a00fb85f3f7d95e06730ec
-	source_aarch64 = https://github.com/treeverse/lakeFS/releases/download/v1.83.0/lakeFS_1.83.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = dfd17d1df5447bfdd8e7b514dc240a10bb55c334562338cb5b20bdbb594e9de2
+	source_x86_64 = https://github.com/treeverse/lakeFS/releases/download/v1.84.1/lakeFS_1.84.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5b02ad86d5689a1778d076582768c43609ae803ea9dee9642b4681f5d3f9e9f0
+	source_aarch64 = https://github.com/treeverse/lakeFS/releases/download/v1.84.1/lakeFS_1.84.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1235225654c7640f980c29cea5b8b5a4f64b2bb77551f0274737438fcd63625f
 
 pkgname = lakefs-bin
