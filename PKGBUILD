@@ -2,43 +2,26 @@
 
 _pkgname=youtube-dl-gui
 pkgname=$_pkgname-bin
-pkgver=2.5.6
+pkgver=3.2.1
 pkgrel=1
-pkgdesc="A cross-platform GUI for youtube-dl made in Electron and node.js (binary release, system Electron)"
-url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
-license=('AGPL3')
+pkgdesc="Open Video Downloader - A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
+url="https://github.com/jely2002/youtube-dl-gui"
+license=('AGPL-3.0-or-later')
 arch=('x86_64')
-depends=('electron' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+depends=("gtk3" "libayatana-appindicator" "webkit2gtk-4.1")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-_appimage=Open-Video-Downloader-$pkgver.AppImage
-source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('758b9f6f3ec456ba70e95208933bdcd952e60167ca9b7d751a3c9f6f80c4d735')
-
-prepare() {
-# Create an exec file
-  echo -e "#!/bin/sh\n\
-export ELECTRON_IS_DEV=0\n\
-cd /usr/lib/$_pkgname\n\
-exec electron /usr/lib/$_pkgname/app.asar \$@" > $_pkgname
-# Extract the AppImage
-  chmod +x "./$_appimage"
-  "./$_appimage" --appimage-extract
-# Edit the shortcut
-  mv squashfs-root/open-video-downloader.desktop "$_pkgname.desktop"
-  sed -i -E "s|Name=Open-Video-Downloader|Name=Open Video Downloader|g" $_pkgname.desktop
-  sed -i -E "s|Exec=AppRun --no-sandbox %U|Exec=$_pkgname %U|g" $_pkgname.desktop
-  sed -i '/X-AppImage-Version/d' $_pkgname.desktop
-  echo "Keywords=$_pkgname;youtubedlgui;yt-dl-gui;ytdlgui;" >> $_pkgname.desktop
-}
+source=("$url/releases/download/app-v$pkgver/Open.Video.Downloader_${pkgver}_amd64.deb")
+sha256sums=('6a17c371653038e5b7ab88d25fdec407ff9532a933c8f2d755a53833761f4568')
 
 package() {
-# Create a folder
-  mkdir -p "$pkgdir/usr/lib/$_pkgname"
-# Install
-  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
-  cd squashfs-root
-  install -Dm644 usr/share/icons/hicolor/0x0/apps/open-video-downloader.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
-  install -Dm755 resources/app.asar -t "$pkgdir/usr/lib/$_pkgname"
+  tar -xf data.tar.gz
+  cd usr
+  install -Dm755 bin/open-video-downloader -t "$pkgdir/usr/bin"
+  ln -s open-video-downloader "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 share/applications/"Open Video Downloader.desktop" -t "$pkgdir/usr/share/applications"
+  cd share/icons/hicolor
+  install -Dm644 32x32/apps/open-video-downloader.png -t "$pkgdir/usr/share/icons/hicolor/32x32/apps"
+  install -Dm644 128x128/apps/open-video-downloader.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+  install -Dm644 256x256@2/apps/open-video-downloader.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 }
