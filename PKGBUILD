@@ -17,7 +17,7 @@ url="http://www.doc.ic.ac.uk/ltsa/"
 # PS: I haven't got the source at this moment or checked everything thorough yet.
 #     If it's of any interest, I found the source of some unnamed version online at:
 #     https://github.com/gabrielsr/ltsa/tree/master/ltsa/src/main/java/ic/doc/ltsa
-license=('unknown')
+license=('LicenseRef-unknown')
 depends=('java-runtime' 'bash' 'libcups')
 install=ltsa.install
 makedepends=('imagemagick' 'gendesk')
