@@ -1,7 +1,7 @@
 pkgbase = incy-bin
 	pkgdesc = Cross-platform proxy client built on Xray-core
 	pkgver = 3.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://incy.cc/
 	arch = x86_64
 	license = LicenseRef-proprietary

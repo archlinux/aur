@@ -2,7 +2,7 @@
 pkgname=incy-bin
 _pkgname=incy
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
 url="https://incy.cc/"
@@ -48,11 +48,13 @@ package() {
     # Install X11 clipboard atom-0 workaround
     # Prevents JDK NullPointerException in XAtom.getName() when atom=0
     install -Dm755 "$srcdir/fix-xatom.so" "$pkgdir/opt/incy/lib/fix-xatom.so"
-    mv "$pkgdir/opt/incy/bin/incy" "$pkgdir/opt/incy/bin/incy.orig"
-    cat > "$pkgdir/opt/incy/bin/incy" << WRAPPER
+    # Create wrapper that injects LD_PRELOAD (don't rename original binary — it uses argv[0] for config)
+    cat > "$pkgdir/opt/incy/bin/incy.wrapper" << WRAPPER
 #!/usr/bin/env bash
 export LD_PRELOAD="/opt/incy/lib/fix-xatom.so\${LD_PRELOAD:+:\$LD_PRELOAD}"
-exec /opt/incy/bin/incy.orig "\$@"
+exec /opt/incy/bin/incy "\$@"
 WRAPPER
-    chmod +x "$pkgdir/opt/incy/bin/incy"
+    chmod +x "$pkgdir/opt/incy/bin/incy.wrapper"
+    # Point desktop file at wrapper
+    sed -i 's|Exec=/opt/incy/bin/incy\(.*\)|Exec=/opt/incy/bin/incy.wrapper\1|' "$pkgdir/usr/share/applications/incy.desktop"
 }
