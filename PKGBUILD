@@ -1,17 +1,17 @@
 # Contributor: Nathan Isom <nathanisom27[at]gmail[dot]com>
 
 pkgname=bevelbar-git
-pkgver=24.07.r0.gf9d3380
+pkgver=25.08.r0.g88cd727
 pkgrel=1
 pkgdesc='X11 status bar with beveled borders'
 arch=('x86_64')
-url="https://www.uninformativ.de/git/bevelbar/file/README.html"
+url="https://movq.de/git/bevelbar"
 license=('MIT')
 depends=('libx11' 'libxft' 'libxrandr')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://www.uninformativ.de/git/bevelbar.git")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

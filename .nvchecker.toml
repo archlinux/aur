@@ -1,0 +1,4 @@
+[bevelbar-git]
+source = "git"
+git = "https://movq.de/git/bevelbar.git"
+use_commit = true

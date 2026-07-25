@@ -1,8 +1,8 @@
 pkgbase = bevelbar-git
 	pkgdesc = X11 status bar with beveled borders
-	pkgver = 24.07.r0.gf9d3380
+	pkgver = 25.08.r0.g88cd727
 	pkgrel = 1
-	url = https://www.uninformativ.de/git/bevelbar/file/README.html
+	url = https://movq.de/git/bevelbar
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = bevelbar-git
 	depends = libxrandr
 	provides = bevelbar
 	conflicts = bevelbar
-	source = bevelbar-git::git+https://www.uninformativ.de/git/bevelbar.git
+	source = bevelbar-git::git+https://movq.de/git/bevelbar.git
 	sha256sums = SKIP
 
 pkgname = bevelbar-git
