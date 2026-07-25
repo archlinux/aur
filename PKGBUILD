@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r542.a90a57d
+pkgver=r544.df6e970
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -28,9 +28,6 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
-
-	git fetch "git@ssh.gitlab.freedesktop.org:hare_ware/basalt.git" 'opencv5-support'
-	git cherry-pick --no-commit 8d81a9ba5c3ad0d50bc00bb796e5b2c1ab102c73
 }
 
 build() {
