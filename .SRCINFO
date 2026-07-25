@@ -1,6 +1,6 @@
 pkgbase = tmux-claude-monitor-bin
 	pkgdesc = tmux status bar daemon displaying Claude Pro quota usage in real time (pre-built binary)
-	pkgver = 0.0.3
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/tedwardd/tmux-claude-monitor
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = tmux-claude-monitor-bin
 	license = MIT
 	provides = claude-monitor
 	conflicts = tmux-claude-monitor
-	install = claude-monitor.install
-	source_x86_64 = claude-monitor-0.0.3-x86_64.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/releases/download/v0.0.3/claude-monitor_0.0.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = f003178d61dc8fbb57c44a64110f75351aad98f444c16b6ee675acdbc2bfd521
-	source_aarch64 = claude-monitor-0.0.3-aarch64.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/releases/download/v0.0.3/claude-monitor_0.0.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 52646b3fda193840305aafe9f8f24331bb6d9f950a8b774dac6935eff059b796
+	source_x86_64 = claude-monitor-0.1.10-x86_64.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/releases/download/v0.1.10/claude-monitor_0.1.10_linux_amd64.tar.gz
+	sha256sums_x86_64 = 27cbbb0b0dde2cffe29e6158d495f55d99a56a400adf7470509b78c1943d1d32
+	source_aarch64 = claude-monitor-0.1.10-aarch64.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/releases/download/v0.1.10/claude-monitor_0.1.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e0745f94654e5931c671b5d74aa395ef11ab7105d7c6d8296e0e06ae6faafc5
 
 pkgname = tmux-claude-monitor-bin
