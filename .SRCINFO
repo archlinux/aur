@@ -1,6 +1,6 @@
 pkgbase = klit-bin
 	pkgdesc = E926 API client
-	pkgver = 10.1.2
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = klit-bin
 	provides = kilt
 	conflicts = kilt
 	options = !strip
-	source = klit-bin-10.1.2.zip::https://github.com/openlyst/builds/releases/download/build-110/kilt-10.1.2-2026-06-11-linux-x64.zip
+	source = klit-bin-10.2.0.zip::https://github.com/openlyst/builds/releases/download/build-152/kilt-10.2.0-2026-07-24-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = klit-bin
