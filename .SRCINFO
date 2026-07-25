@@ -1,6 +1,6 @@
 pkgbase = decibell-bin
 	pkgdesc = Decentralized text, voice chat, and streaming app
-	pkgver = 0.6.8
+	pkgver = 0.6.9
 	pkgrel = 1
 	url = https://github.com/sunkhan/decibell
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = decibell-bin
 	conflicts = decibell
 	conflicts = decibell-git
 	options = !strip
-	source = decibell-0.6.8.pacman::https://github.com/sunkhan/decibell/releases/download/ev0.6.8/Decibell-0.6.8-x64.pacman
+	source = decibell-0.6.9.pacman::https://github.com/sunkhan/decibell/releases/download/ev0.6.9/Decibell-0.6.9-x64.pacman
 	sha256sums = SKIP
 
 pkgname = decibell-bin
