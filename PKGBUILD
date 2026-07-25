@@ -1,4 +1,5 @@
 # Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 
 _name=pyhanko
 pkgname=python-$_name
