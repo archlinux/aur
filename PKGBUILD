@@ -1,8 +1,8 @@
 # Maintainer: Glax <its@glax.dev>
 _pkgname=beyond-cubed
 pkgname="${_pkgname}-git"
-pkgver=r37.9cb67a6
-pkgrel=2
+pkgver=r38.c39a425
+pkgrel=1
 pkgdesc="An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility."
 arch=('x86_64')
 url="https://gitlab.com/coolGi/beyond-cubed"
