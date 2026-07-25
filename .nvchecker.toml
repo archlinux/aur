@@ -1,0 +1,5 @@
+[python-acachecontrol]
+source = "github"
+github = "MasterSergius/acachecontrol"
+prefix = "v"
+use_latest_release = true

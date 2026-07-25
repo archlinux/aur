@@ -1,0 +1,26 @@
+pkgbase = python-acachecontrol
+	pkgdesc = Async CacheControl for aiohttp
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/MasterSergius/acachecontrol
+	arch = any
+	license = Apache-2.0
+	checkdepends = mypy
+	checkdepends = pre-commit
+	checkdepends = python-black
+	checkdepends = python-isort
+	checkdepends = python-flake8
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-vcr
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	source = acachecontrol-0.3.7.tar.gz::https://github.com/MasterSergius/acachecontrol/archive/v0.3.7.tar.gz
+	b2sums = b76c3e56e4166a06faa7a509fd4a49d8bd3e1760a212e5133315e6446a0cb0119a20888fbd11efa12f5ed4519bdbc49a399b67aa98a05bb273b1d5f8ca76d3d7
+
+pkgname = python-acachecontrol
