@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-quota-glance
 	pkgdesc = View AI service quotas and balances from a GNOME panel
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Geequlim/quota-glance
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gnome-shell-extension-quota-glance
 	depends = gnome-shell
 	depends = glib2
 	optdepends = github-cli: GitHub Copilot quota provider
-	noextract = gnome-shell-extension-quota-glance-1.0.1.zip
-	source = gnome-shell-extension-quota-glance-1.0.1.zip::https://github.com/Geequlim/quota-glance/releases/download/v1.0.1/quota-glance@geequlim.shell-extension.zip
-	sha256sums = 331f1684d7dec2a9b839fa3e0fc7d1d5f8ba005d7f5e2bd86455903cb6737e37
+	noextract = gnome-shell-extension-quota-glance-1.0.2.zip
+	source = gnome-shell-extension-quota-glance-1.0.2.zip::https://github.com/Geequlim/quota-glance/releases/download/v1.0.2/quota-glance@geequlim.shell-extension.zip
+	sha256sums = 7c9a9a6c83a6358729814a56fa18abc03465187108cab0840f35de19cd13af05
 
 pkgname = gnome-shell-extension-quota-glance
