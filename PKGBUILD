@@ -3,7 +3,7 @@
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
@@ -27,7 +27,7 @@ checkdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('eac1be655743ccf64a233b704b088005d12d8ba0d4653c49ca0aa94020392a41')
+sha256sums=('b096fa2cea881f994c9e385fa68e6a64e505fa328661a8c05d68b91d9233c686')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
