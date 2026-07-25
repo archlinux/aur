@@ -2,7 +2,7 @@
 
 pkgname=paseo
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -58,6 +58,10 @@ prepare() {
     # onnxruntime binary downloads — mirrors upstream nix/desktop-package.nix).
     export npm_config_cache="${srcdir}/npm-cache"
     export npm_config_update_notifier=false
+    # Survive transient registry ECONNRESETs (npm defaults to only 2 retries).
+    export npm_config_fetch_retries=5
+    export npm_config_fetch_retry_mintimeout=20000
+    export npm_config_fetch_retry_maxtimeout=120000
     npm ci --ignore-scripts --no-audit --no-fund
 
     # Root postinstall applies patches/ via patch-package.
@@ -69,6 +73,10 @@ build() {
 
     export npm_config_cache="${srcdir}/npm-cache"
     export npm_config_update_notifier=false
+    # build() still hits the network (node-gyp headers, expo); same retry bump.
+    export npm_config_fetch_retries=5
+    export npm_config_fetch_retry_mintimeout=20000
+    export npm_config_fetch_retry_maxtimeout=120000
     export EXPO_NO_TELEMETRY=1
     export CI=1
 
