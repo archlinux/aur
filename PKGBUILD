@@ -1,6 +1,6 @@
 # Maintainer: Polyfrost <contact@atmofrost.org>
 pkgname=oneclient
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Next-generation open source Minecraft launcher (built from source)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ provides=('oneclient')
 conflicts=('oneclient-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('bff447cc861fcec123edc115035320051ca908bfe4912d45346e34c92ced83fb')
+sha256sums=('8a57bf41d97daee0b7649642ff0c901450a9a00bf718a77c5270b622cee45271')
 
 _srcdir="OneLauncher-oneclient-${pkgver}"
 
