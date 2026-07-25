@@ -1,0 +1,18 @@
+pkgbase = pyrofling-git
+	pkgdesc = Simple solution for capturing and broadcasting Vulkan applications via FFmpeg, PyroEnc or PyroWave including latency measurement capabilities
+	pkgver = 0.r310.dcd68d3
+	pkgrel = 1
+	url = https://github.com/Themaister/pyrofling
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = ffmpeg
+	provides = pyrofling
+	conflicts = pyrofling
+	source = git+https://github.com/Themaister/pyrofling
+	sha256sums = SKIP
+
+pkgname = pyrofling-git
