@@ -2,7 +2,7 @@
 
 pkgname='pycroscope'
 pkgdesc='A Python type checker'
-pkgver='0.4.0'
+pkgver=0.5.0
 pkgrel=1
 url='https://pycroscope.readthedocs.io/'
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=(
   'python-qcore: [asynq]'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JelleZijlstra/pycroscope/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=(13a9906a8b8d1ef8e47c6098f47a0ffb6efd697c8999806387e3e9daccf2e69adec5533eac258cadd5c7439ecbcf8f301ca0f718dc6370b66f7d61d99388f2c9)
+sha256sums=('13d1f4cda49b1ba60ec4a6156d35e91b026f9dbeb02c630b441110366a0da0b9')
 
 build() {
   cd "${pkgname}-${pkgver}"
