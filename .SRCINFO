@@ -1,0 +1,13 @@
+pkgbase = ecapp-git
+	pkgdesc = Terminal Translation Tool (git version)
+	pkgver = 0.1.0.r0.gABCDEFG
+	pkgrel = 1
+	url = https://github.com/missercatos/ecapp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	source = ecapp-git::git+https://github.com/missercatos/ecapp.git
+	sha256sums = SKIP
+
+pkgname = ecapp-git
