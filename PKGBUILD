@@ -1,5 +1,5 @@
 pkgname=niri-pimg
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Lightweight screenshot pin and annotation tool for niri"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/CokeAsh/niri-pimg"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk4' 'python-cairo' 'wl-clipboard' 'niri')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23ed492d65db1a32a2ed2a174f6862375bc4fa559eb002abda0690cfaaa83a11')
+sha256sums=('92c2b72e78353c3d0fbbfecb4466038520777882a54ac5c620639cf67b21675e')
 
 package() {
     cd "$pkgname-$pkgver"
