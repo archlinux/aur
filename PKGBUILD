@@ -3,7 +3,7 @@
 
 pkgname=python-textparser
 _name=${pkgname#python-}
-pkgver=0.26
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="A text parser library for python"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=$pkgver")
-sha256sums=('50e0f4052eb54c77601acc7b66f93624f001633891b29a5bc4390cf6f2b987d9')
+sha256sums=('d6763012587e7c41698990bbc44ca39444b6826226e6110a5c889ccf12ca679f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

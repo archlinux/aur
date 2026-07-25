@@ -1,6 +1,6 @@
 pkgbase = python-textparser
 	pkgdesc = A text parser library for python
-	pkgver = 0.26
+	pkgver = 0.26.2
 	pkgrel = 1
 	url = https://github.com/cantools/textparser
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-textparser
 	optdepends = python-cantools: Python CAN bus tools in Python 3
 	provides = python-textparser
 	conflicts = python-textparser
-	source = textparser::git+https://github.com/cantools/textparser.git#tag=0.26
-	sha256sums = 50e0f4052eb54c77601acc7b66f93624f001633891b29a5bc4390cf6f2b987d9
+	source = textparser::git+https://github.com/cantools/textparser.git#tag=0.26.2
+	sha256sums = d6763012587e7c41698990bbc44ca39444b6826226e6110a5c889ccf12ca679f
 
 pkgname = python-textparser
