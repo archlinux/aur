@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggcorrplot
-_pkgver=0.2.0
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Visualization of a Correlation Matrix using 'ggplot2'"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d6f84a8d2fab9865976bde55fd0034832110e7927973d933a73430b864e346d')
+sha256sums=('8c349e369112da4b79e1dd8c1eacbfdc78ae859bb7117a29e937f1d7e818afde')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

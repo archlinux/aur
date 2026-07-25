@@ -1,6 +1,6 @@
 pkgbase = r-ggcorrplot
 	pkgdesc = Visualization of a Correlation Matrix using 'ggplot2'
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggcorrplot
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-ggcorrplot
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggcorrplot_0.2.0.tar.gz
-	sha256sums = 2d6f84a8d2fab9865976bde55fd0034832110e7927973d933a73430b864e346d
+	source = https://cran.r-project.org/src/contrib/ggcorrplot_0.3.0.tar.gz
+	sha256sums = 8c349e369112da4b79e1dd8c1eacbfdc78ae859bb7117a29e937f1d7e818afde
 
 pkgname = r-ggcorrplot
