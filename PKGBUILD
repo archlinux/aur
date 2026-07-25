@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.155
-pkgrel=3
+pkgrel=4
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -231,8 +231,9 @@ package() {
     return 1
   }
 
-  # The upstream sherpa-onnx binary contains a CI-only absolute RPATH after
-  # $ORIGIN. Remove the dead path without changing the ELF string-table size.
+  # Upstream sherpa-onnx binaries may contain architecture-specific absolute
+  # CI paths in RPATH/RUNPATH. Keep only $ORIGIN-relative components without
+  # changing the ELF string-table size; an already-clean path is a no-op.
   local sherpa
   local sherpa_bins=()
   mapfile -d '' sherpa_bins < <(
@@ -245,15 +246,49 @@ package() {
   for sherpa in "${sherpa_bins[@]}"; do
     python - "$sherpa" <<'PY'
 from pathlib import Path
+import os
+import re
+import subprocess
 import sys
 
 path = Path(sys.argv[1])
-data = path.read_bytes()
-old = b"$ORIGIN:/shared/build/install/lib"
-new = b"$ORIGIN" + b"\0" * (len(old) - len(b"$ORIGIN"))
-if old not in data:
-    raise SystemExit(f"expected sherpa-onnx RPATH not found: {path}")
-path.write_bytes(data.replace(old, new, 1))
+result = subprocess.run(
+    ["readelf", "-d", path],
+    check=True,
+    capture_output=True,
+    text=True,
+    env={**os.environ, "LC_ALL": "C"},
+)
+matches = re.findall(
+    r"Library (?:rpath|runpath): \[(.*?)\]",
+    result.stdout,
+    flags=re.IGNORECASE,
+)
+if len(matches) != 1:
+    raise SystemExit(
+        f"expected one sherpa-onnx RPATH/RUNPATH, found {len(matches)}: {path}"
+    )
+
+current = matches[0]
+components = current.split(":")
+kept = [
+    component
+    for component in components
+    if component == "$ORIGIN" or component.startswith("$ORIGIN/")
+]
+if not kept:
+    raise SystemExit(f"sherpa-onnx path has no $ORIGIN component: {path}: {current}")
+
+cleaned = ":".join(kept)
+if current != cleaned:
+    data = path.read_bytes()
+    needle = current.encode() + b"\0"
+    if data.count(needle) != 1:
+        raise SystemExit(
+            f"expected one sherpa-onnx path string, found {data.count(needle)}: {path}"
+        )
+    replacement = cleaned.encode() + b"\0" * (len(needle) - len(cleaned))
+    path.write_bytes(data.replace(needle, replacement, 1))
 PY
   done
 

@@ -1,7 +1,7 @@
 pkgbase = stably-orca
 	pkgdesc = Stably AI Orca agentic coding IDE and headless runtime (built from source)
 	pkgver = 1.4.155
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stablyai/orca
 	install = stably-orca.install
 	arch = x86_64
