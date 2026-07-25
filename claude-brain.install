@@ -1,0 +1,13 @@
+# systemd does not restart user services on package upgrade, so the previous
+# version keeps running while the new dashboard is served off disk. The two then
+# disagree about which routes exist and the UI fails with a bare 404.
+post_upgrade() {
+	cat <<'MSG'
+  claude-brain was upgraded. Restart the server so it matches the new dashboard:
+
+      systemctl --user restart claude-brain
+
+  (Skipping this leaves the previous version running and parts of the dashboard
+   will fail with "request failed (404)".)
+MSG
+}
