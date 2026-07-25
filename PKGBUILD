@@ -2,7 +2,7 @@
 
 pkgauthor="AtlasMindAI"
 pkgname="bigi"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="BiGI shows what breaks before you change the code in any codebase."
 
@@ -21,7 +21,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python')
 
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3cb3eb7f9f48945972bc00d8d370f0890d20d4e6325e00d8e1fcd549891091f8')
+sha256sums=('436b0bf320ddc8af4cfd7a0592f412f7bed9609a2f329dfbcbc3e29a295175c0')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
