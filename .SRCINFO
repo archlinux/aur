@@ -1,6 +1,6 @@
 pkgbase = octra-wallet
 	pkgdesc = Octra network web client (webcli): send txs, encrypt/decrypt balances, stealth txs
-	pkgver = 20260609.d1e4589
+	pkgver = 20260724.6c090cc
 	pkgrel = 1
 	url = https://github.com/octra-labs/webcli
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = octra-wallet
 	provides = octra-wallet
 	conflicts = octra-wallet-bin
 	conflicts = octra-wallet-git
-	source = octra-wallet-d1e4589717de07507c82574b133217127a230687.tar.gz::https://github.com/octra-labs/webcli/archive/d1e4589717de07507c82574b133217127a230687.tar.gz
+	source = octra-wallet-6c090ccce71c91451d3f5698ad499b45f61dd9c3.tar.gz::https://github.com/octra-labs/webcli/archive/6c090ccce71c91451d3f5698ad499b45f61dd9c3.tar.gz
 	source = octra-wallet.sh
-	sha256sums = 5563d312c8483e353512586dc6930c62770db2f5e5c8937d1afd309b2e6862d0
+	sha256sums = 8c50a8ab8e2a3ef3057d8ab7c605681bcaa929408eba3cff2c23b7dd4668a8fc
 	sha256sums = f8f64d1d92d47ac5cf88c687f3a591b98db99ca6a09c4821dbb6ff70cda929e0
 
 pkgname = octra-wallet
