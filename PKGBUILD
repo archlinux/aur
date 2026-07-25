@@ -1,6 +1,6 @@
 # Maintainer: Lasse Vestergaard <hello@lassejlv.dk>
 pkgname=termy-bin
-pkgver=0.2.29
+pkgver=0.2.30
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ b2sums=('310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e6
         '0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb'
         '846adc793544028ef1bb111802a2e61013f6a0623f86d8546e27210ded24b1ef367e73ea4cda56a15f40c85a893d2f5c8288bbde035c9d77aa53d2fd223ead90')
 source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-${CARCH}.tar.gz")
-b2sums_x86_64=('0264447cecc9cebc563e8018b7ed6a7d90379232cc7634a854d2852e97606018b083ece8e2a3c0cdc4cbfbf9b519904ace59edfca9d2dda99821a75efa4a0866')
+b2sums_x86_64=('fd14f7a2867828527d758b6d0b1c481ef14a4dd19e90094a2b05c90c3a14ad756e22dc3e62a94b56ffe7c9a48d9447c9eb5d94fbfc8459073500117d95fe71a8')
 
 package() {
   cd "$srcdir/termy"
