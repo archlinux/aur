@@ -3,19 +3,23 @@
 _pkgname=GnuMICR
 pkgname=${_pkgname,,}
 pkgver=0.30
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source licensed Type 1 MICR E13-B font'
-arch=('any')
-url="https://sandeen.net/$_pkgname/"
+arch=(any)
+# url="https://sandeen.net/$_pkgname/"
+url="https://github.com/alerque/$pkgname"
 license=('GPL2')
-source=("https://sandeen.net/$_pkgname/download/$_pkgname-$pkgver.tar.gz")
-sha256sums=('4c485361e07e1eb0e09524726bf3d08a0e268dc41c6810dba49a5b45cbe432db')
+# _archive="$_pkgname-$pkgver"
+_archive="$pkgname-$pkgver"
+# source=("$url/download/$_archive.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('e087b0a85d1e5aa1ed4b11ae8f5716ec74e48ab4ca1b10b7fbba0dff6784b39b')
 
 package() {
-    cd "$_pkgname-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" $_pkgname.ttf
-    install -Dm644 -t "$pkgdir/usr/share/fonts/Type1/" $_pkgname.pfb $_pkgname.pfm $_pkgname.afm
-    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" $_pkgname.otf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING AUTHORS
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGELOG README NEWS
+    cd "$_archive"
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" $_pkgname.ttf
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/Type1/" $_pkgname.pfb $_pkgname.pfm $_pkgname.afm
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/OTF/" $_pkgname.otf
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING AUTHORS
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGELOG README NEWS
 }

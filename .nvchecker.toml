@@ -1,0 +1,4 @@
+[gnumicr]
+source = "git"
+git = "https://github.com/alerque/gnumicr.git"
+prefix = "v"
