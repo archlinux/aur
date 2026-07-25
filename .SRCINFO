@@ -1,0 +1,19 @@
+pkgbase = antiphon-git
+	pkgdesc = A modern mail client for the terminal (git version)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://git.sr.ht/~donquinleone/antiphon
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = notmuch
+	optdepends = gnupg: OpenPGP signing and decryption via gpg-agent
+	provides = antiphon
+	conflicts = antiphon
+	source = antiphon-git::git+https://git.sr.ht/~donquinleone/antiphon
+	sha256sums = SKIP
+
+pkgname = antiphon-git
