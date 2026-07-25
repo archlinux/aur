@@ -1,0 +1,19 @@
+pkgbase = cmdpeek-bin
+	pkgdesc = Searchable interactive command palette for discovering, previewing and running reusable terminal workflows from YAML
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/pierinho13/cmdpeek
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cmdpeek
+	conflicts = cmdpeek
+	options = !strip
+	source = CONFIG-0.0.10.yaml::https://raw.githubusercontent.com/pierinho13/cmdpeek/v0.0.10/examples/basic.yaml
+	sha256sums = 6166d5cee112b3960477dd186e448a1802288322045e005576aa96e29056a468
+	source_x86_64 = cmdpeek-x86_64-0.0.10.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.10/cmdpeek_0.0.10_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 709f1a22c7e2af9302232c2b556dd038161a8e6de9abcd872285f00e9c370d15
+	source_aarch64 = cmdpeek-aarch64-0.0.10.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.10/cmdpeek_0.0.10_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e18e3f5a4e6bef32f730c2dafcde70a5c1969a22db7edf59d3eb5a89dcdb8538
+
+pkgname = cmdpeek-bin

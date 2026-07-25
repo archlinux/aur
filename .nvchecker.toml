@@ -1,0 +1,5 @@
+[cmdpeek-bin]
+source = "github"
+github = "pierinho13/cmdpeek"
+use_latest_release = true
+prefix = "v"
