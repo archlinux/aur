@@ -1,0 +1,27 @@
+_notice() {
+  cat <<'EOF'
+
+kbrgb: the udev rule is installed. If the keyboard still needs sudo,
+replug it or reboot once so the rule is applied.
+
+The five reactive effects (typewriter, keyflash, wpmheat, zen, flow) read
+key events from /dev/input, which needs your user in the input group:
+
+    sudo usermod -aG input $USER      # then log out and back in
+
+Every other effect works without it. Keycodes are used in memory only,
+never stored, logged or sent anywhere.
+
+EOF
+}
+
+post_install() {
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  udevadm trigger >/dev/null 2>&1 || true
+  _notice
+}
+
+post_upgrade() {
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  udevadm trigger >/dev/null 2>&1 || true
+}

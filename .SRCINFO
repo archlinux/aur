@@ -1,0 +1,14 @@
+pkgbase = kbrgb
+	pkgdesc = RGB keyboard control for Acer Predator/Nitro laptops with the ENE KB5130 (ENEK5130) i2c-HID controller
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/shwetankg07/kbrgb
+	install = kbrgb.install
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = walker: preset picker used by the bundled kbrgb-menu example
+	source = kbrgb-0.2.0.tar.gz::https://github.com/shwetankg07/kbrgb/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 821a71955f5a8b4e4f62c8b1ed1bfb5802d232a9dbe71992d5843a960551f168
+
+pkgname = kbrgb
