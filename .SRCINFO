@@ -1,6 +1,6 @@
 pkgbase = fss
 	pkgdesc = Scrapes all scenes and metadata from a studio URL
-	pkgver = 1.28.0
+	pkgver = 1.28.1
 	pkgrel = 1
 	url = https://github.com/Wasylq/FSS
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fss
 	license = GPL-3.0-only
 	makedepends = go>=1.26
 	depends = glibc
-	source = fss-1.28.0.tar.gz::https://github.com/Wasylq/FSS/archive/v1.28.0.tar.gz
-	sha256sums = b60fea3a441b32c0acf54787ba2be86e5f3992991ce40e7be7025437eca79156
+	source = fss-1.28.1.tar.gz::https://github.com/Wasylq/FSS/archive/v1.28.1.tar.gz
+	sha256sums = a8678f52f8da55cae8e90ec4bcf4219b93a0f0ad353d5f5bff08121a9756f03e
 
 pkgname = fss
