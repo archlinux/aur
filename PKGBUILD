@@ -29,7 +29,7 @@ build() {
         python3 ./bin/bootstrap.py . ${srcdir}/build
 
     # Build compiled just-mr
-    ../build/out/bin/just install 'installed just-mr' -c ../build/build-conf.json -C ../build/repo-conf.json --output-dir ../build/out
+    ../build/out/bin/just install 'installed just-mr' -c ../build/build-conf.json -C ../build/repo-conf.json --local-build-root ../build/.just --output-dir ../build/out
 
     # convert man pages from Markdown to man
     find "${srcdir}/justbuild-${pkgver}/share/man" -name "*.md" -exec sh -c 'pandoc --standalone --to man -o "${0%.md}.man" "${0}"' {} \;
