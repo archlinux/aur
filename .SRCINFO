@@ -1,0 +1,22 @@
+pkgbase = fileminal-git
+	pkgdesc = A brutally fast, visually stunning TUI file explorer for Linux
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/berkeoruc/fileminal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = oniguruma
+	optdepends = xdg-utils: open files with default applications
+	optdepends = sixel-support: image preview with sixel terminals
+	provides = fileminal
+	conflicts = fileminal
+	source = fileminal-git::git+https://github.com/berkeoruc/fileminal.git
+	sha256sums = SKIP
+
+pkgname = fileminal-git
