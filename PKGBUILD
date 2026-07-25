@@ -37,12 +37,18 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/FelfelDM"
 
-    git describe --long --tags 2>/dev/null \
-        | sed 's/^v//' \
-        | sed 's/\(.*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/' \
-        || printf "0.r%s.g%s" \
-            "$(git rev-list --count HEAD)" \
-            "$(git rev-parse --short HEAD)"
+    local _ver="$(git describe --long --tags 2>/dev/null | sed 's/^v//' | sed 's/\(.*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/')"
+    if [ -z "$_ver" ]; then
+        _ver="0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    fi
+
+    local _date="$(git log -1 --format=%cd --date=format:%Y%m%d%H%M 2>/dev/null)"
+
+    if [ -n "$_date" ]; then
+        echo "${_ver}.${_date}"
+    else
+        echo "$_ver"
+    fi
 }
 
 package() {
