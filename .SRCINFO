@@ -1,6 +1,6 @@
 pkgbase = python-trame-vtk
 	pkgdesc = VTK widgets for trame
-	pkgver = 2.11.13
+	pkgver = 2.11.14
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-vtk
 	arch = any
@@ -37,10 +37,10 @@ pkgbase = python-trame-vtk
 	depends = verdict
 	depends = qt5-tools
 	depends = opencascade
-	source = trame-vtk-2.11.13.tar.gz::https://github.com/Kitware/trame-vtk/archive/v2.11.13.tar.gz
+	source = trame-vtk-2.11.14.tar.gz::https://github.com/Kitware/trame-vtk/archive/v2.11.14.tar.gz
 	source = https://registry.npmjs.org/vue-vtk-js/-/vue-vtk-js-3.3.1.tgz
 	source = https://raw.githubusercontent.com/Kitware/vtk-js/2d8de2853a1e63c12f9682acb3531083b77c4e3d/examples/OfflineLocalView/OfflineLocalView.html
-	sha512sums = ae84b6b9284509c858d008bdd37d591f6b0f6067802689b09aaf5fe7a128c4148b098e8e4230fe678d3b9d02e108a7b6ddd1c3d1a041c05435db7633777c2d77
+	sha512sums = 4627c3668fb43686bc449a250b51e1048fd84947d9228c00fc1ff8472ebbe08045bcc81243979095afbcc6ec53732c6db711a150971358f5e9f99d85de68c239
 	sha512sums = fd3a504753b66f9fc0ec0997dc33210c307f15157729e4a8837bf782c5f6af620c625597ac227c31b6635f9573c30e1c64e2f87bed8e6fcedfe5cca62e775afb
 	sha512sums = 6f09789d876b431370dc55b04ba327092af218d1abea52dd4ec4c9de5b4340cbac2218f438bb231e0cab108f7edcc54d2e15d0c0b262067afb7a515a451414f5
 
