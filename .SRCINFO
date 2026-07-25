@@ -13,6 +13,8 @@ pkgbase = bigi
 	depends = python
 	provides = bigi
 	source = bigi-1.0.1.tar.gz::https://github.com/AtlasMindAI/bigi/archive/refs/tags/v1.0.1.tar.gz
+	source = template.html
 	sha256sums = 436b0bf320ddc8af4cfd7a0592f412f7bed9609a2f329dfbcbc3e29a295175c0
+	sha256sums = 2cd9161e7dd7734841517b153048a59135f7b76c98b26f7418c28464e0d4c6fd
 
 pkgname = bigi
