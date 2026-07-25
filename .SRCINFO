@@ -1,6 +1,6 @@
 pkgbase = ymir-emu-git
 	pkgdesc = Sega Saturn emulator
-	pkgver = 0.3.0.r58.gff08641
+	pkgver = 0.3.3.r179.g2f135da
 	pkgrel = 1
 	url = https://github.com/StrikerX3/Ymir
 	arch = x86_64
@@ -15,15 +15,16 @@ pkgbase = ymir-emu-git
 	makedepends = nlohmann-json
 	makedepends = stb
 	makedepends = tomlplusplus
-	depends = libfmt.so
 	depends = librtmidi.so
 	depends = miniz
 	depends = sdl3
 	provides = ymir-emu
 	conflicts = ymir-emu
 	source = ymir-emu::git+https://github.com/StrikerX3/Ymir.git
-	source = semver::git+https://github.com/Neargye/semver.git
+	source = neargye-semver::git+https://github.com/Neargye/semver.git#tag=v1.0.0
+	source = 0001_fix_for_semver_1.0.0.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 83de76116a904754b906fff4628e81a724a8dcde6ee10a84b990a0798f82e911
+	sha256sums = 08b47f2a3f149b144908febe4ffda18f24419494011b1a72ee584a9396993f0d
 
 pkgname = ymir-emu-git

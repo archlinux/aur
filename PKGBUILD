@@ -2,7 +2,7 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.3.0.r58.gff08641
+pkgver=0.3.3.r179.g2f135da
 pkgrel=1
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
@@ -10,7 +10,6 @@ license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
-  'libfmt.so'    # fmt
   'librtmidi.so' # rtmidi
   'miniz'
   'sdl3'
@@ -34,11 +33,13 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  "semver"::"git+https://github.com/Neargye/semver.git"
+  "neargye-semver"::"git+https://github.com/Neargye/semver.git#tag=v1.0.0"
+  '0001_fix_for_semver_1.0.0.patch'
 )
 sha256sums=(
   'SKIP'
-  'SKIP'
+  '83de76116a904754b906fff4628e81a724a8dcde6ee10a84b990a0798f82e911'
+  '08b47f2a3f149b144908febe4ffda18f24419494011b1a72ee584a9396993f0d'
 )
 
 prepare() {
@@ -74,7 +75,7 @@ END
   sed -e '1i list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")' -i apps/CMakeLists.txt
 
   # add missing include
-  sed -e '1a include_directories(${CMAKE_SOURCE_DIR}/../semver/include)' -i apps/CMakeLists.txt
+  sed -e '1a include_directories(${CMAKE_SOURCE_DIR}/../neargye-semver/include)' -i apps/CMakeLists.txt
 
   # stb is header only
   sed -E -e '/find_package\(Stb/d' \
@@ -136,6 +137,17 @@ if(RTMIDI_FOUND)
   )
 endif()
 END
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 pkgver() {
