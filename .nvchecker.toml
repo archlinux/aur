@@ -1,0 +1,5 @@
+[blindfold]
+source = "github"
+github = "Eoin-McMahon/blindfold"
+use_latest_release = true
+prefix = "v"

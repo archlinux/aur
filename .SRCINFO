@@ -1,0 +1,17 @@
+pkgbase = blindfold
+	pkgdesc = Gitignore file generator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Eoin-McMahon/blindfold
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = blindfold
+	options = !lto
+	source = blindfold-1.1.0.tgz::https://github.com/Eoin-McMahon/blindfold/archive/v1.1.0.tar.gz
+	sha256sums = b3d515cf57e1925bd027be4431d856708c808a2288023b9019008b1afb0d8730
+
+pkgname = blindfold
