@@ -24,7 +24,7 @@ makedepends=('imagemagick' 'gendesk')
 source=("http://www.doc.ic.ac.uk/~jnm/book/$pkgname/${pkgname}tool.zip"
         "$pkgname.sh")
 sha256sums=('9ed894c4f2ae22e119a4f48e6e3f36b38b08f8fe85a6ac85564f4c5045fe9046'
-            '34f53ef6b330e49d3eaeb8754703a09ac98d95052bf6c08abb9f0161bb66ff84')
+            '95c77c3e4896d56474b892adbb7c47908a4de16a1a819c262d28d3e0f42cfb13')
 
 build() {
   cd "$srcdir"
