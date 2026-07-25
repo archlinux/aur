@@ -1,6 +1,6 @@
 # Maintainer: Kamil Krzysztof Kulach <kamilk1512@gmail.com>
 pkgname=meme-lord-picker
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Quick image/gif picker for MemeLord"
 arch=('x86_64')

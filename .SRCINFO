@@ -1,17 +1,16 @@
 pkgbase = meme-lord-picker
 	pkgdesc = Quick image/gif picker for MemeLord
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Kam1ni/meme-lord-picker
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = wl-clipboard
-	source = git+https://github.com/Kam1ni/meme-lord-picker.git#tag=v0.1.0
+	source = git+https://github.com/Kam1ni/meme-lord-picker.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = meme-lord-picker
