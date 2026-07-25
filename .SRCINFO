@@ -1,19 +1,20 @@
 pkgbase = ptouch-rs
 	pkgdesc = Brother P-Touch label printer driver and tools for Linux
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/vowstar/ptouch-rs
 	arch = x86_64
-	license = MIT AND Apache-2.0 AND OFL-1.0
+	license = GPL-3.0-only AND MIT
 	makedepends = git
 	makedepends = rust
-	depends = glibc
-	depends = libgcc
 	depends = libusb
+	optdepends = noto-fonts-emoji: Google Noto Color Emoji font
+	optdepends = ttf-dejavu: Font family based on the Bitstream Vera Fonts with a wider range of characters
+	optdepends = ttf-droid: General-purpose fonts released by Google as part of Android
 	provides = ptouch-rs
 	conflicts = ptouch-rs
 	options = !lto
-	source = ptouch-rs::git+https://github.com/vowstar/ptouch-rs.git#tag=v0.3.0
-	sha256sums = 8f22ea6637cbd915b288641b4fcfbcce21d61b49e03ba26353c227eac0b85205
+	source = ptouch-rs::git+https://github.com/vowstar/ptouch-rs.git#tag=v0.5.0
+	sha256sums = cc5b641cdc783c6a9bf2bae1702afc870872c5555d25e3e6dcf008be9c6cb0f7
 
 pkgname = ptouch-rs

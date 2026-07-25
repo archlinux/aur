@@ -1,29 +1,32 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ptouch-rs
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Brother P-Touch label printer driver and tools for Linux"
 arch=($CARCH)
 url="https://github.com/vowstar/ptouch-rs"
-license=('MIT AND Apache-2.0 AND OFL-1.0')
+license=('GPL-3.0-only AND MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    glibc
-    libgcc
     libusb
 )
 makedepends=(
     git
     rust
 )
+optdepends=(
+    "noto-fonts-emoji:  Google Noto Color Emoji font"
+    "ttf-dejavu: Font family based on the Bitstream Vera Fonts with a wider range of characters"
+    "ttf-droid: General-purpose fonts released by Google as part of Android"
+)
 backup=()
 options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('8f22ea6637cbd915b288641b4fcfbcce21d61b49e03ba26353c227eac0b85205')
+sha256sums=('cc5b641cdc783c6a9bf2bae1702afc870872c5555d25e3e6dcf008be9c6cb0f7')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -53,19 +56,9 @@ package() {
         -type f \
         -exec install -vDm0755 -t "$pkgdir/usr/bin/" {} +
 
-    install -vDm644 udev/20-usb-ptouch-permissions.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
-    install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -vDm644 crates/ptouch-gui/assets/fonts/DroidSansFallback-Apache2.0.txt -t "$pkgdir/usr/share/licenses/$pkgname/" 
-    install -vDm644 crates/ptouch-gui/assets/fonts/NotoEmoji-OFL.txt -t "$pkgdir/usr/share/licenses/$pkgname/" 
-    install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
-[Desktop Entry]
-Categories=
-Comment=${pkgdesc}
-Exec=ptouch-gui
-Icon=${pkgname}.png
-Name=${pkgname}
-Terminal=false
-Type=Application
-
-EOF
+    install -vDm644 data/udev/20-usb-ptouch-permissions.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
+    install -vDm644 data/io.github.vowstar.ptouch-gui.desktop -t "${pkgdir}/usr/share/applications/"
+    install -vDm644 data/io.github.vowstar.ptouch-gui.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+    install -vDm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
