@@ -4,7 +4,7 @@ pkgname=qt6-dbusqml-git
 _projname=dbusqml
 _release_ver=0.1.0.r0
 pkgver=0.1.0.r0.g44a98db
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone D-Bus binding for QML (no KDE dependencies) — git master"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexindigo/dbusqml"
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'git')
 provides=('qt6-dbusqml')
-conflicts=('qt6-dbusqml')
+conflicts=('qt6-dbusqml' 'qt6-dbusqml-reactive')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 

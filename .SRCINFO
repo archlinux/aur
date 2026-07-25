@@ -1,7 +1,7 @@
 pkgbase = qt6-dbusqml-git
 	pkgdesc = Standalone D-Bus binding for QML (no KDE dependencies) — git master
 	pkgver = 0.1.0.r0.g44a98db
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexindigo/dbusqml
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = qt6-dbusqml-git
 	depends = qt6-declarative
 	provides = qt6-dbusqml
 	conflicts = qt6-dbusqml
+	conflicts = qt6-dbusqml-reactive
 	source = qt6-dbusqml-git::git+https://github.com/alexindigo/dbusqml.git
 	sha256sums = SKIP
 
