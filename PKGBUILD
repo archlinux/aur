@@ -4,9 +4,9 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=feluda
-pkgver=1.14.0
-pkgrel=2
-_commit=c0f13c9
+pkgver=1.15.0
+pkgrel=1
+_commit=97ee07b
 pkgdesc='Detect license usage restrictions in your project'
 arch=(x86_64 aarch64)
 url="https://github.com/anistark/$pkgname"
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(cargo git)
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('bebe4dc1dbedd1b9248f94c74856e0d53aae7a49dbfa54dcb5697fb2ec6f9810')
+sha256sums=('87bdd1609ce842b894d92a9d290f8228d3ad61b91a4eb626c9a6d438e428bbac')
 validpgpkeys=(40B91E0A4E89F8434EA16C9E9864F6B815BC2B00) # Kumar Aniruhda
 options=(!lto)
 
@@ -47,6 +47,8 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export OPENSSL_NO_VENDOR=1
+    export LIBGIT2_NO_VENDOR=1
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cd "$pkgname"
     cargo test --frozen --all-features
 }
