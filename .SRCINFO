@@ -1,6 +1,6 @@
 pkgbase = python-testcontainers
 	pkgdesc = Python library for throwaway instances of anything that can run in a Docker container.
-	pkgver = 4.14.2
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = https://github.com/testcontainers/testcontainers-python
 	arch = any
@@ -67,7 +67,7 @@ pkgbase = python-testcontainers
 	optdepends = python-weaviate-client: weaviate
 	optdepends = python-chromadb-client: chroma
 	optdepends = python-trino: trino
-	source = https://github.com/testcontainers/testcontainers-python/archive/refs/tags/testcontainers-v4.14.2.tar.gz
-	sha256sums = cfbe6729edc7ddd2fd72d8cd82758035e1c4b4847c595609a5bc63fc2fd82658
+	source = https://github.com/testcontainers/testcontainers-python/archive/refs/tags/testcontainers-v4.15.0.tar.gz
+	sha256sums = d693d296181b9fdd759107cd4eb500bac127bbdefd5b4b51b002ff11acf0383d
 
 pkgname = python-testcontainers

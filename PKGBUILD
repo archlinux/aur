@@ -2,14 +2,14 @@
 
 _name=testcontainers
 pkgname=python-${_name}
-pkgver=4.14.2
+pkgver=4.15.0
 pkgrel=1
 pkgdesc='Python library for throwaway instances of anything that can run in a Docker container.'
 arch=('any')
 url='https://github.com/testcontainers/testcontainers-python'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name//-/_}-v${pkgver}.tar.gz")
-sha256sums=('cfbe6729edc7ddd2fd72d8cd82758035e1c4b4847c595609a5bc63fc2fd82658')
+sha256sums=('d693d296181b9fdd759107cd4eb500bac127bbdefd5b4b51b002ff11acf0383d')
 depends=('python>=3.9' 'python-docker' 'python-urllib3' 'python-wrapt' 'python-typing_extensions' 'python-dotenv')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-anyio' 'python-psycopg2' 'python-pg8000' 'python-sqlalchemy' 'python-psycopg' 'python-cassandra-driver' 'python-pytest-asyncio' 'python-kafka-ng' 'python-hvac' 'python-pymilvus' 'python-httpx' 'python-paho-mqtt' 'python-sqlalchemy-cockroachdb' 'python-paramiko' 'python-types-paramiko' 'python-pytest-mock' )
