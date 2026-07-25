@@ -1,13 +1,22 @@
 pkgbase = marker-md
-	pkgdesc = A Desktop App for Easily Viewing and Editing Markdown Files.
-	pkgver = 1.4.0
+	pkgdesc = A Desktop App for Easily Viewing and Editing Markdown Files
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://marker.pages.dev
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	source = https://github.com/tk04/Marker/releases/download/master/marker_1.4.0_amd64.deb
-	sha512sums = 1095d2b047cb6279bb9b7e6788fa43581c82b064975fb8d866f953cb83a44935450637565df7aacb4746629592ef1440e4ff269f0e595c95177f3ca359a8b57f
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	conflicts = marker
+	source = https://github.com/tk04/Marker/releases/download/master/marker_1.4.1_amd64.deb
+	b2sums = 6d1c676722f5eb4a656df0e21815165ccd29ee0601e5b52d4ab16ea58c862d3daddf1937fe5cf705e76beb727a91df9d278c374a2eb5578134fe7f22837bf5dc
 
 pkgname = marker-md
