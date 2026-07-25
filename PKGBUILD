@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=1.24012.0
+pkgver=1.24012.9
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -86,10 +86,14 @@ options=('!strip' '!debug')
 _baseurl="https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop"
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('1096a8063956f8430fdbe504bb1c5e02985f31d0f45d082e4966e5d30ea7e3ac')
-sha256sums_aarch64=('37dd5dc1b0bfcb3192561acbd33cb59037806fe9b95221a3ddf38244203196f1')
+sha256sums_x86_64=('302e6d208dd8c8e9e52067daa28ef3b1171a1613586fd0e10bedc642225b6ee1')
+sha256sums_aarch64=('1a9be177b063365b92e522fedd19c87daf6ebc92a9f71121bdff729e27de408c')
 
 package() {
+  # A .deb is an ar archive, which makepkg unpacks like any other source:
+  # $srcdir holds debian-binary, control.tar.xz (package metadata and the
+  # maintainer scripts, both unused here) and data.tar.xz — the file
+  # payload, which is the entire package.
   tar -xf data.tar.xz -C "$pkgdir"
 
   # chrome-sandbox is Chromium's setuid sandbox helper: mode 4755
@@ -112,18 +116,20 @@ package() {
   # virtiofsd: Debian ships it in /usr/bin, Arch in /usr/lib.
   ln -s ../lib/virtiofsd "$pkgdir/usr/bin/virtiofsd"
 
-  # UEFI firmware: the app opens /usr/share/OVMF/OVMF_CODE_4M.fd (Debian
-  # naming). On Arch, /usr/share/OVMF is a compat symlink to
+  # UEFI firmware: on x86_64 the app opens /usr/share/OVMF/OVMF_CODE_4M.fd
+  # (Debian naming). On Arch, /usr/share/OVMF is a compat symlink to
   # /usr/share/edk2 (owned by our edk2-ovmf dependency), so links with
   # the Debian names are placed in /usr/share/edk2, pointing at the real
   # firmware in its x64/ subdirectory. Verified against edk2-ovmf 202605.
+  #
+  # aarch64 needs no such shim: there the app opens
+  # /usr/share/AAVMF/AAVMF_CODE.fd, and edk2-aarch64 installs the firmware
+  # under exactly that Debian-compatible path.
   if [[ $CARCH == x86_64 ]]; then
     install -d "$pkgdir/usr/share/edk2"
     ln -s x64/OVMF_CODE.4m.fd "$pkgdir/usr/share/edk2/OVMF_CODE_4M.fd"
     ln -s x64/OVMF_VARS.4m.fd "$pkgdir/usr/share/edk2/OVMF_VARS_4M.fd"
   fi
-  # TODO(aarch64): the AAVMF firmware paths the app expects on arm64 are
-  # unverified — no hardware to test on. Chat and Code are unaffected.
   #
   # Cowork's host<->VM channel also needs the vhost_vsock kernel module,
   # but no configuration is shipped for it: the module declares a
