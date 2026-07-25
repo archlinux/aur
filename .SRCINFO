@@ -1,6 +1,6 @@
 pkgbase = sinq
 	pkgdesc = A concurrent HTTP functional and integration testing tool.
-	pkgver = 1.0.0_rc12
+	pkgver = 1.0.0_rc.13
 	pkgrel = 1
 	url = https://github.com/Veitangie/sinq
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sinq
 	conflicts = sinq-bin
 	conflicts = sinq-git
 	options = !debug
-	source = sinq-1.0.0_rc12.tar.gz::https://github.com/Veitangie/sinq/archive/refs/tags/v1.0.0-rc.12.tar.gz
-	sha256sums = 2e3f8d4387ff61827a7ba3fe3ee67fa4f45e87f53fa732a9b45a3975951d75f4
+	source = sinq-1.0.0_rc.13.tar.gz::https://github.com/Veitangie/sinq/archive/refs/tags/v1.0.0-rc.13.tar.gz
+	sha256sums = b6c03ed3e44d5e162a38ef403928087b47ad4f0ad8be2e091c0e25a297d2979e
 
 pkgname = sinq
