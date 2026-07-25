@@ -1,12 +1,11 @@
 pkgbase = artalk-bin
 	pkgdesc = A self-hosted comment system
-	pkgver = 2.9.1
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/ArtalkJS/Artalk
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = glibc
 	provides = artalk
 	options = !debug
 	source = artalk.service
@@ -15,9 +14,9 @@ pkgbase = artalk-bin
 	sha256sums = 089beb9843b735b597b93c727595fbded272261c2f54e193f73e3db36da5f00e
 	sha256sums = 12b14875a5e62d6a2a160a793285001621dac16539f8e2f1cee800644a62349e
 	sha256sums = 401cc7b81993810bb39285b244c6be7bae669f11c133bc676b3405581eb3e96d
-	source_aarch64 = artalk-2.9.1-aarch64.tar.gz::https://github.com/ArtalkJS/Artalk/releases/download/v2.9.1/artalk_v2.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 87198bdd8dc7c19958c0ebdd0591c1d5c97e184616347a75ec11bebf52939582
-	source_x86_64 = artalk-2.9.1-x86_64.tar.gz::https://github.com/ArtalkJS/Artalk/releases/download/v2.9.1/artalk_v2.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7e05d66a1250abcb70f93581206c1e832c7a77e39d758913330885005e880b56
+	source_aarch64 = artalk-2.10.0-aarch64.tar.gz::https://github.com/ArtalkJS/Artalk/releases/download/v2.10.0/artalk_v2.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 98a97778798864dd7fd036cd7ace3c0524cc409213024673fb11924498bc0b92
+	source_x86_64 = artalk-2.10.0-x86_64.tar.gz::https://github.com/ArtalkJS/Artalk/releases/download/v2.10.0/artalk_v2.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8ef3dcb322207ea76038a32d8e137604eba9313259c3423683d80efbcf18aed1
 
 pkgname = artalk-bin
