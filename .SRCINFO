@@ -1,6 +1,6 @@
 pkgbase = swissknife-graph-bin
 	pkgdesc = SwissKnife for MS Graph — Microsoft Graph desktop client for IT admins (binary release)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Nemu-x/SwissKnife-for-MS-Graph
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = swissknife-graph-bin
 	provides = swissknife-graph
 	conflicts = swissknife-graph
 	options = !strip
-	source = swissknife-graph.desktop-v0.8.0::https://raw.githubusercontent.com/Nemu-x/SwissKnife-for-MS-Graph/v0.8.0/packaging/linux/swissknife-graph.desktop
+	source = swissknife-graph.desktop-v0.9.0::https://raw.githubusercontent.com/Nemu-x/SwissKnife-for-MS-Graph/v0.9.0/packaging/linux/swissknife-graph.desktop
 	sha256sums = SKIP
-	source_x86_64 = swissknife-graph-v0.8.0-x86_64.tar.gz::https://github.com/Nemu-x/SwissKnife-for-MS-Graph/releases/download/v0.8.0/SwissKnifeGraph-linux-amd64.tar.gz
-	sha256sums_x86_64 = 7f38d7b4a31111623b0d7eb558bb842c4928245a268861a157c636e3aa6b28a2
+	source_x86_64 = swissknife-graph-v0.9.0-x86_64.tar.gz::https://github.com/Nemu-x/SwissKnife-for-MS-Graph/releases/download/v0.9.0/SwissKnifeGraph-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5e1b5b9d6c1f5071ade45cb1f0a547a310af1cafdf288db092f3ed2575bf99a3
 
 pkgname = swissknife-graph-bin
