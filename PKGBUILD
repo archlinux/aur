@@ -15,12 +15,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('336e417dc63a1d8b3c1db65692b3c644b73273be5977c947869527ee1059bc7ff51d2e08483b78af0d6998812a090a2463d7e653f55258d67add915488cc0378')
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release # --locked is omitted since the build fails with it.
+    cd "$pkgname-$pkgver"
+    cargo build --release # --locked is omitted since the build fails with it.
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 "target/release/ndstrim" -t "$pkgdir/usr/bin"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/ndstrim" -t "$pkgdir/usr/bin"
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
