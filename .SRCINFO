@@ -1,0 +1,18 @@
+pkgbase = qt6-dbusqml-reactive
+	pkgdesc = Standalone D-Bus binding for QML (no KDE dependencies) — reactive bindings enabled
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/dbusqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = qt6-dbusqml=0.2.0
+	conflicts = qt6-dbusqml
+	conflicts = qt6-dbusqml-git
+	source = qt6-dbusqml-reactive-0.2.0.tar.gz::https://github.com/alexindigo/dbusqml/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 290025370d3cfed204a843dd682ccfa7f90b77c15c0f2f80908efa8f2fbb0917
+
+pkgname = qt6-dbusqml-reactive
