@@ -1,5 +1,103 @@
-- Fix VNC rendering issues when server did not support resize
-- Fix git sync error about missing HEAD on first commit
-- Fix Windows updater breaking when XPipe is run as admin
-- Fix RealVNC v8 app on macOS not being detected
-- Fix various NullPointers
+## Important migration notice (Does not apply to PTB)
+
+Up until now, XPipe updates have automatically migrated data and supported legacy vaults since XPipe v1.0. Since then, quite a few issues have accumulated, so it is best action to fix those all at once. This will result in some incompatibilities and migration limitations when upgrading an existing install to v24+:
+
+- Upgrading directly to v24 is only possible from v23.9. If you are running an earlier version of XPipe, please update first to v23.9 and launch it once to initiate a vault migration. After that is done, you can upgrade to v24. If you skip this step, XPipe v24 will show a warning and exit.
+
+- Team vaults with more than 1 user assigned will be removed and reset to the original state where all connections are available to all users. The team vault system has been changed to role-based access control, which means that the old user system is no longer supported. You can create a new team vault with roles, which is a much better option now in v24.
+
+- The webtop has been completely overhauled and improved. It has been moved away from KasmVNC to Selkies, and upgraded to Ubuntu 26.04 with KDE6, which means that any old webtop envrionments can't be upgraded in place. Please create a new container with a new bind mounted volume for user data. The Kasm Workspace setup is also no longer supported as this required a KasmVNC-based container. With this inconvenience out of the way, Selkies is a much better option for the webtop, which you can see for yourself.
+
+- Custom desktop shortcuts and URLs for actions will no longer work as the format and executable shortcuts have changed. You will have to recreate any custom action desktop shortcuts
+
+## Improved connection display
+
+The status display for connections has been improved to show all the information in a segmented display:
+
+![Connection Info](https://xpipe.io/assets/images/BlogPage/connection-info.png)
+
+This allows for a more straightforward handling of the connection state. For example, various displays are clickable and can perform actions that were previously hidden in submenus in the context menu:
+
+![Connection Info Buttons](https://xpipe.io/assets/images/BlogPage/connection-info-button.png)
+
+The overflow of these components has also been improved. If there is not enough space available, they will automatically compress:
+
+![Connection Info Compress](https://xpipe.io/assets/images/BlogPage/connection-info-compress.png)
+
+This comes in handy for the webtop mobile version.
+
+## Drag and drop organization
+
+There is now the ability the reorder connections and categories by dragging. You can drag any kind of connection tree and insert them anywhere you like:
+
+![Drag](https://xpipe.io/assets/images/BlogPage/sort-drag.png)
+
+This works for just reordering an entry or moving it somewhere else entirely, also across categories. Just drag the connection with your mouse, and an indicator will show up for where it would be inserted if dropped. This functionality replaces the old context menus where you had to manually move and reorder entries.
+
+You can do the same for categories:
+
+![Drag Categories](https://xpipe.io/assets/images/BlogPage/sort-categories.png)
+
+This ordering is persistent while the new manual sorting mode is active:
+
+![Sort Mode](https://xpipe.io/assets/images/BlogPage/sort-status.png)
+
+You can still switch to the existing sort modes of last used and alphabetical at any time.
+
+## Wake-on-LAN
+
+This release introduces support for Wake-on-LAN:
+
+![WOL](https://xpipe.io/assets/images/BlogPage/wol.png)
+
+You can create a Wake-on-LAN entry for any network interface and broadcast address. For convenience, there is an automatic finder for available network interfaces and broadcast addresses on a system, so you won't have to fill in anything manually:
+
+![WOL config](https://xpipe.io/assets/images/BlogPage/wol-config.png)
+
+The Wake-on-LAN support works through shell sessions, meaning that it also supports remote networks and is not limited to your local one.
+
+## Remote desktop gateways
+
+You can now create and use remote desktop gateway servers for RDP:
+
+![RDG](https://xpipe.io/assets/images/BlogPage/rdg.png)
+
+Simply create an RD gateway entry and set it as a gateway for your RDP connection. SSH gateways via tunneling are also still supported for RDP, you can now choose between both of these gateway types.
+
+## Connection templates
+
+You can now create connection templates to allow for a more dynamic connection usage without having to create new entries every time. Any connection can be designated as a template:
+
+![Template](https://xpipe.io/assets/images/BlogPage/template.png)
+
+You can then use this template to connect to an individual system directly without having to store this connection configuration. You can still do so if you want to however.
+
+## macOS container machines
+
+The latest release of the [apple container runtime](https://github.com/apple/container) introduces support for container machines, which is essentially just WSL for macOS. This releases adds support for those environments as well:
+
+![Container Machines](https://xpipe.io/assets/images/BlogPage/container-machines.png)
+
+## Other
+
+- There are now multiple new UI themes available for you to choose from
+- The API endpoints for /connection/... have been renamed to /store/...
+- Add option to reinstall XPipe on Windows if an incremental update fails
+- The network scan dialog now supports choosing the broadcast address
+- File transfers in SFTP sessions now show the progress and speed
+- The custom agent setting now resolves environment variables in the socket path
+- The terminal prompts like starship will now check whether /tmp execution is disabled with noexec
+- The Windows Credentials password manager integration now also supports retrieving Windows credentials in addition to generic ones
+- RDP file entries have been replaced by a new RDP file import to create regular RDP connections from a file
+- Add support for the wayland versions of freerdp
+- You can now configure additional custom launch arguments/options for Remmina and FreeRDP in the settings menu
+- Improve key mapping settings for Hashicorp Vault and OpenBao
+- The search filter now also checks for any associated connection notes
+- Add proper StartupWMClass to linux desktop files
+- Make icons git repository clone not include entire history to reduce size
+- KeePassXC will now automatically prompt for an unlock and wait instead of failing when the database is locked
+- Improve shell init failure handling when system interaction was disabled for limited devices
+
+## Fixes
+
+- Fix various rendering performance issues
