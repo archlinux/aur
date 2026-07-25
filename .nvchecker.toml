@@ -1,0 +1,5 @@
+[comhad]
+source = "github"
+github = "Eoin-McMahon/comhad"
+use_latest_release = true
+prefix = "v"
