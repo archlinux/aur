@@ -1,0 +1,29 @@
+From 679106e8b027b74f8dc1d57c38bafc7c0794c3c7 Mon Sep 17 00:00:00 2001
+From: Recursive G <g.recursive@gmail.com>
+Date: Tue, 5 Oct 2021 22:30:52 -0500
+Subject: [PATCH] Properly discard filtered events by XFilterEvent()
+
+According to https://www.x.org/releases/current/doc/man/man3/XFilterEvent.3.xhtml,
+an event should be discarded if XFilterEvent returns `True`. Fix #1794.
+---
+ src/x11_window.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/x11_window.c b/src/x11_window.c
+index 297b975d..bfaa21e8 100644
+--- a/src/x11_window.c
++++ b/src/x11_window.c
+@@ -1163,6 +1163,10 @@ static void processEvent(XEvent *event)
+         keycode = event->xkey.keycode;
+ 
+     filtered = XFilterEvent(event, None);
++    if (filtered)
++    {
++        return;
++    }
+ 
+     if (_glfw.x11.randr.available)
+     {
+-- 
+2.55.0
+
