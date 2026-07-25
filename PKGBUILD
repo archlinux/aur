@@ -2,7 +2,7 @@
 
 pkgname=jpegli-git
 pkgver=r2989.g031a007
-pkgrel=1
+pkgrel=2
 pkgdesc='A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)'
 arch=('x86_64')
 url='https://github.com/google/jpegli/'
@@ -14,8 +14,8 @@ depends=(
 makedepends=(
     'cmake'
     'git')
-provides=('jpegli' 'libjpeg6' 'libjpeg.so')
-conflicts=('jpegli' 'libjpeg6' 'libjxl')
+provides=('jpegli' 'libjpeg6' 'libjpeg6-turbo')
+conflicts=('jpegli' 'libjpeg6' 'libjpeg6-turbo')
 options=('!emptydirs')
 source=('git+https://github.com/google/jpegli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -87,6 +87,9 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    install -d -m755 "${pkgdir}/usr/lib/jpegli"
     install -D -m644 jpegli/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm "${pkgdir}/usr/include"/*.h
+    rm "${pkgdir}/usr/lib/libjpeg.so"
+    ln -s ../libjpeg.so.62 "${pkgdir}/usr/lib/jpegli/libjpeg.so"
 }
