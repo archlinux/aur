@@ -6,18 +6,18 @@
 # renovate: aur-sync depName=mozc ba72b401ebf729ff7d377ed6c2ad55a5c94d0b8b
 
 _uimmozcrev="7beac7ba000e0459a4dc933f3873b521664d2665"
-_mozcrev="3052f08b2bc0d60c84f640eecb74fcf77d05addc"
+_mozcrev="76887c679e1e4f156102e4bc62ea9cf9174678a3"
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=3.33.6079.102
+pkgver=3.34.6239
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
 url="https://github.com/e-kato/macuim"
 license=('BSD')
 groups=('mozc-im')
-depends=('mozc>=3.33.6079.102' 'uim')
+depends=('mozc>=3.34.6239' 'uim')
 install=${pkgname}.install
 makedepends=('bazel' 'git' 'python')
 source=(
@@ -27,16 +27,15 @@ source=(
   'mozc.patch'
   'BUILD.bazel'
 )
-sha1sums=('SKIP'
-          'SKIP'
+sha1sums=('0af3717e55fddb91261482525b6909dc4a7a90ad'
+          '5e31fe1c6a6c075bfd5d9eee19d9db42ab3b216e'
           '526283e85d29763fef6fe8e7851e5ae91311982d'
           '573f03428b0e6aa9c35702a411bae4e2721abd59'
-          'eb8bcf1e55280ad85960aad3bce7631a487bb5f6')
+          '0544ea55c47778d20f690216b2573d28efed27de')
 
 prepare() {
   cd "${srcdir}/${_pkgname}/"
 
-  git submodule update --init --recursive
   patch -p1 -i "${srcdir}/bazel.patch"
 
   cd "${srcdir}/${_pkgname}/src"
@@ -60,7 +59,9 @@ build() {
   unset ANDROID_HOME
   export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
 
-  bazel build unix/uim:uim-mozc unix/icons --config oss_linux --compilation_mode opt --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized --experimental_cc_shared_library
+bazel clean --expunge
+
+  bazel build unix/uim:uim-mozc unix/icons --config oss_linux --config stable_channel --compilation_mode opt --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized --experimental_cc_shared_library
 }
 
 package() {
