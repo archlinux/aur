@@ -1,6 +1,6 @@
 pkgbase = ai-usagebar-bin
 	pkgdesc = Waybar widget + TUI for AI plan usage (prebuilt binary)
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-usagebar
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = ai-usagebar-bin
 	depends = gcc-libs
 	optdepends = waybar: status bar that hosts the widget
 	optdepends = libnotify: desktop notifications on hard auth failures
-	provides = ai-usagebar=0.17.1
+	provides = ai-usagebar=0.17.2
 	conflicts = ai-usagebar
 	conflicts = ai-usagebar-debug
 	options = !strip
 	options = !debug
-	source_x86_64 = ai-usagebar-0.17.1-x86_64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v0.17.1/ai-usagebar-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 59a50f4173d2f1b361e152c325df2e16ceac6c1d8f1c841c307e9fa52903edb0
-	source_aarch64 = ai-usagebar-0.17.1-aarch64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v0.17.1/ai-usagebar-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 6385dc87d9825dc73a86dcf15686a9d15649ec6369d6abc1f044b7318a320710
+	source_x86_64 = ai-usagebar-0.17.2-x86_64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v0.17.2/ai-usagebar-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5e636ec3fa42036799f859feabbe3b90e25ba3344e7711644e4e327921717103
+	source_aarch64 = ai-usagebar-0.17.2-aarch64.tar.gz::https://github.com/akitaonrails/ai-usagebar/releases/download/v0.17.2/ai-usagebar-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9e08656cf9abc0dcf8814158c4d756b3953b5b3003356dd0fed65a84df67f05c
 
 pkgname = ai-usagebar-bin
