@@ -1,16 +1,16 @@
 pkgbase = kv-bin
 	pkgdesc = A lightweight, feature-rich command-line key-value store with encryption, TTL, and version control
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/AmrSaber/kv
 	license = MIT
 	conflicts = kv
 	provides = kv
 	arch = aarch64
-	source_aarch64 = https://github.com/AmrSaber/kv/releases/download/v0.7.1/kv_0.7.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = fce1bd824c612694d50ec67415407c7136105f77fe68e6e0c79ec708dae5ed36
+	source_aarch64 = https://github.com/AmrSaber/kv/releases/download/v0.7.2/kv_0.7.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0512554765e871bd573a7c3f636ffb3da4dd562995d04b3d0bbf76533475a1d3
 	arch = x86_64
-	source_x86_64 = https://github.com/AmrSaber/kv/releases/download/v0.7.1/kv_0.7.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7fcb573ceae069a7029cebc44ffa3d07cfc622a52cfc022b75507ed002cb0374
+	source_x86_64 = https://github.com/AmrSaber/kv/releases/download/v0.7.2/kv_0.7.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ffd0e70eb21721b79544ecc249989234309e6b601eadf55b1ff44e18f0a2c45e
 	
 pkgname = kv-bin
