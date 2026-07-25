@@ -1,0 +1,18 @@
+pkgbase = freecut-git
+	pkgdesc = Professional-grade video editor that runs entirely in your browser
+	pkgver = r2222.a3ecfcef
+	pkgrel = 1
+	url = http://freecut.net
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	optdepends = caddy: for serving freecut HTML files
+	optdepends = nginx: for serving freecut HTML files
+	optdepends = traefik: for serving freecut HTML files
+	provides = freecut
+	conflicts = freecut
+	source = freecut::git+https://github.com/walterlow/freecut
+	sha256sums = SKIP
+
+pkgname = freecut-git
