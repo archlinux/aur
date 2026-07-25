@@ -8,6 +8,12 @@ post_install() {
         echo ":: WARNING: tun2socks binary not found."
         echo "   Install 'tun2socks' or 'tun2socks-bin' for TUN mode VPN support."
     fi
+
+    if ! command -v hysteria &>/dev/null; then
+        echo ":: WARNING: hysteria binary not found."
+        echo "   hysteria2:// / hy2:// profiles will not work without it."
+        echo "   Install via 'go install github.com/apernet/hysteria2/v2@latest' or use install.sh."
+    fi
 }
 
 post_upgrade() {
