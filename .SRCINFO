@@ -1,6 +1,6 @@
 pkgbase = cosmo-tui-git
 	pkgdesc = terminal client for the cosmo app
-	pkgver = r141.76fb488
+	pkgver = r183.0f6385a
 	pkgrel = 1
 	url = https://codeberg.org/djvu/cosmo-tui
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = cosmo-tui-git
 	depends = glibc
 	optdepends = mpv: for viewing replays
 	optdepends = ffmpeg: for downloading replays
+	optdepends = xdg-utils: for opening URLs and files
 	provides = cosmo-tui
 	conflicts = cosmo-tui
 	source = cosmo-tui-git::git+https://codeberg.org/djvu/cosmo-tui.git

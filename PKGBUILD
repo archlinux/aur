@@ -1,6 +1,6 @@
 # Maintainer: djvu <djvu@noreply.codeberg.org>
 pkgname=cosmo-tui-git
-pkgver=r141.76fb488
+pkgver=r183.0f6385a
 pkgrel=1
 pkgdesc="terminal client for the cosmo app"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,8 @@ url="https://codeberg.org/djvu/cosmo-tui"
 license=('GPL-3.0-only')
 depends=('glibc')
 optdepends=('mpv: for viewing replays'
-            'ffmpeg: for downloading replays')
+            'ffmpeg: for downloading replays'
+            'xdg-utils: for opening URLs and files')
 makedepends=('git' 'go')
 provides=('cosmo-tui')
 conflicts=('cosmo-tui')
