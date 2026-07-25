@@ -3,7 +3,7 @@
 pkgname=kickoutchi
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A clean TUI and CLI port janitor"
+pkgdesc="TUI and CLI to see which process owns a local port and kill it safely"
 arch=("x86_64" "aarch64")
 url="https://github.com/nuggocto/kickoutchi"
 license=("MIT")
