@@ -1,7 +1,7 @@
 pkgbase = pachul
 	pkgdesc = A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/wergosam/Pachul
 	arch = any
 	license = GPL-2.0-only
