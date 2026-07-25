@@ -13,7 +13,7 @@ pkgbase = voicefox-bin
 	provides = voicefox=0.9
 	conflicts = voicefox
 	conflicts = voicefox-git
-	source = https://github.com/emoeem/voicefox/releases/download/0.9/voicefox-linux-x86_64.zip
+	source = voicefox-0.9.zip::https://github.com/emoeem/voicefox/releases/download/0.9/voicefox-linux-x86_64.zip
 	source = voicefox-0.9-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.9/LICENSE
 	sha512sums = 3336d6c1995d7d3099746dd78e541bdbc863bca6d8e3d1ded5c5a6f1cf08ee84abc3e883e61c851eb772c081a2119d0a5e3d0207d7c08ea731e5c39563202aa2
 	sha512sums = e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814

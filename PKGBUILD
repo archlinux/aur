@@ -18,7 +18,7 @@ depends=(
 provides=("voicefox=${pkgver}")
 conflicts=("voicefox" "voicefox-git")
 source=(
-	"${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.zip"
+	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.zip"
 	"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/LICENSE"
 )
 sha512sums=('3336d6c1995d7d3099746dd78e541bdbc863bca6d8e3d1ded5c5a6f1cf08ee84abc3e883e61c851eb772c081a2119d0a5e3d0207d7c08ea731e5c39563202aa2'
