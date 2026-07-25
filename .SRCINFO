@@ -1,0 +1,15 @@
+pkgbase = autosync
+	pkgdesc = A robust, multi-directional sync orchestrator using rclone bisync with auto-healing.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/alukhia/autosync
+	install = autosync.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = rclone
+	source = autosync-1.0.2.tar.gz::https://gitlab.com/alukhia/autosync/-/archive/v1.0.2/autosync-v1.0.2.tar.gz
+	sha256sums = 42e31e2e4e46f03b9c5d16bb6bdecb33a451f9ffe2a1526e365dfa51875c1114
+
+pkgname = autosync
