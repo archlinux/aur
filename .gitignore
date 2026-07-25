@@ -3,3 +3,4 @@ src/
 pachul/
 *.pkg.tar.zst
 *.pkg.tar.xz
+*.tar.gz
