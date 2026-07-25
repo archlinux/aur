@@ -1,8 +1,8 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 
 pkgname=smb1r-bin
-pkgver=1.1.26w21c
-_pkgver=1.1-26w21c
+_pkgver=1.1-rc2
+pkgver="${_pkgver//[.-]/_}"
 pkgrel=1
 pkgdesc='Super Mario Bros. Remastered'
 url='https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public'
@@ -14,7 +14,7 @@ source=(
     "smb1r.desktop"
 )
 sha256sums=(
-    '5499da09674e1ff163461d01cedff52318af4b64d76cbcb87d824d1a4ec4c817'
+    'dc268538514b4d3a25442816cc2956c348ba1d9fac488cadb6fb9d0866b8f8df'
     'c63c4b0cf5e2775f75bfd0d4c2526cc4666eece80380da8c134be2a570aa51af'
 )
 
