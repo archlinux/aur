@@ -41,7 +41,7 @@ package() {
   cd "$srcdir/steamfetch-$pkgver"
 
   install -Dm755 "target/release/steamfetch" "$pkgdir/usr/bin/steamfetch"
-  install -Dm755 target/release/build/steamworks-sys-*/out/libsteam_api.so "$pkgdir/usr/lib/libsteam_api.so"
+  install -Dm755 target/release/build/steamworks-sys-*/out/libsteam_api.so "$pkgdir/usr/lib/steamfetch/libsteam_api.so"
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
