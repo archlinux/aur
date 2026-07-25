@@ -1,0 +1,21 @@
+pkgbase = animinal-git
+	pkgdesc = Netflix-style TUI anime client for Linux — powered by AniList and mpv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/berkeoruc/animinal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = mpv
+	optdepends = noto-fonts-cjk: CJK subtitle rendering
+	optdepends = yt-dlp: additional streaming sources
+	provides = animinal
+	conflicts = animinal
+	source = animinal-git::git+https://github.com/berkeoruc/animinal.git
+	sha256sums = SKIP
+
+pkgname = animinal-git
