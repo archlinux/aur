@@ -1,7 +1,7 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
 pkgver=2.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
 url="https://github.com/Plan-B-Development/control-ofc-gui"
@@ -22,7 +22,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums runs at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('40a1db5200bb26d534eb928f3b9dec3474c042e08227d4d147001809f027cce3')
+sha256sums=('43c2635dafb6b1581fcbeafcdb5e6987274b42a91ea739222dce88fe32e0c9eb')
 
 build() {
     cd "$pkgname-$pkgver"
