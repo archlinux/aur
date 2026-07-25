@@ -6,11 +6,7 @@
 <     // clientId: "your Google client id",
 ---
 >     clientId: "Z_%%12NTkxNTk1NjcyNjAyLWNsYXNwaHB1b3Jqc3I1c2gyNHU2YWF0NGk1dnZydGU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29t",
-16,18c16,18
+16c16
 <     //  googleDriveEnabled: true,
-<     //  apiKey: "your Google api key",
-<     //  appId: "your Google app ID",    // The Google project number
 ---
 >     googleDriveEnabled: true,
->     apiKey: "AIzaSyAQ6aQY3rDBh2XEth2PRC0YJn4Q8czc2N8",
->     appId: "591595672602",    // The Google project number
