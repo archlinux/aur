@@ -1,14 +1,14 @@
 pkgbase = gearsystem
 	pkgdesc = Sega Master System / Game Gear / SG-1000 Emulator
-	pkgver = 3.9.13
+	pkgver = 3.9.14
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearsystem
 	arch = x86_64
 	license = GPL3
 	depends = sdl3
-	source = https://github.com/drhelius/Gearsystem/archive/refs/tags/3.9.13.tar.gz
+	source = https://github.com/drhelius/Gearsystem/archive/refs/tags/3.9.14.tar.gz
 	source = gearsystem.desktop
-	sha256sums = f44f3f773e96653f377e904d3c63f1e7d7350c3f937abb838d5c17087f4500fb
+	sha256sums = 6e862e63031def35533123ff203d4daaf425e80424fdd64eedefbc590ab88c22
 	sha256sums = 214a0ff5b5d932ccde5c4cd2df1e048441981bbab928412da740b5a3ad9ed74e
 
 pkgname = gearsystem
