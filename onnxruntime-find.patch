@@ -1,0 +1,20 @@
+diff --git a/meson.build b/meson.build
+index 5eaacc0c..7d634d21 100644
+--- a/meson.build
++++ b/meson.build
+@@ -602,6 +602,7 @@ int main(void) { return ORT_API_VERSION > 0 ? 0 : 1; }
+   if onnxruntime_dir != ''
+     onnxruntime_include_dirs += [
+       onnxruntime_dir / 'include',
++      onnxruntime_dir / 'include' / 'onnxruntime',
+       onnxruntime_dir / 'include' / 'onnxruntime' / 'core' / 'session',
+     ]
+   endif
+@@ -609,6 +610,7 @@ int main(void) { return ORT_API_VERSION > 0 ? 0 : 1; }
+     '/usr/local/include',
+     '/usr/local/include/onnxruntime/core/session',
+     '/usr/include',
++    '/usr/include/onnxruntime',
+     '/usr/include/onnxruntime/core/session',
+   ]
+   foreach inc_dir : onnxruntime_include_dirs
