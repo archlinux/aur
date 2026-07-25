@@ -1,7 +1,7 @@
 pkgbase = opennow
 	pkgdesc = custom GeForce Now client
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opennow.zortos.me/
 	arch = x86_64
 	license = MIT
@@ -36,6 +36,6 @@ pkgbase = opennow
 	source = opennow
 	sha256sums = 5c05ed4122150eb5f1326bcdd3b457db1390c8c30dd670516c35e1130c5ea128
 	sha256sums = 2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513
-	sha256sums = eaa15b0e4d73629f9d51f6bb2604f7c1a3e835dbc807a8b93ab669bd41b9a280
+	sha256sums = 69483db477be806334fc7fc03933d7f5ed866be15e7157b7a18895e370c946e8
 
 pkgname = opennow

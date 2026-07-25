@@ -2,7 +2,9 @@
 pkgname=opennow
 _pkgname=OpenNOW
 pkgver=0.5.2
-pkgrel=1
+#_pkgver=0.5.3-nightly.47.1
+_pkgver=$pkgver
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
@@ -15,15 +17,15 @@ provides=('opennow')
 conflicts=('opennow-appimage')
 arch=('x86_64')
 options=(!strip)
-source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${pkgver}.tar.gz
+source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
 	opennow.desktop opennow)
 
 sha256sums=('5c05ed4122150eb5f1326bcdd3b457db1390c8c30dd670516c35e1130c5ea128'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
-            'eaa15b0e4d73629f9d51f6bb2604f7c1a3e835dbc807a8b93ab669bd41b9a280')
+            '69483db477be806334fc7fc03933d7f5ed866be15e7157b7a18895e370c946e8')
 
 prepare() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname-$_pkgver"
 	cd opennow-stable
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	# fix: remove call to ensure-electron-installed.mjs
@@ -32,7 +34,7 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname-$_pkgver"
 	npm run build
 	npm run native:build
 	mkdir hicolor || :
@@ -45,16 +47,17 @@ build() {
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	mkdir -p "${pkgdir}/usr/lib/opennow/native"
-	cp -a opennow-stable/dist-electron ${pkgdir}/usr/lib/opennow
+	cd "$_pkgname-$_pkgver"
+	mkdir -p "${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin"
+	mkdir -p "${pkgdir}/usr/lib/opennow/opennow-stable"
+	cp -a opennow-stable/dist-electron ${pkgdir}/usr/lib/opennow/opennow-stable
 	# force/set the app name to keep the previously created config dir
-	sed -i ${pkgdir}/usr/lib/opennow/dist-electron/main/index.js -e '/import.*app/a app.setVersion("'$pkgver'")\napp.setName("opennow-stable")'
-	cp -a opennow-stable/dist ${pkgdir}/usr/lib/opennow
-	cp -a opennow-stable/package.json ${pkgdir}/usr/lib/opennow
+	sed -i ${pkgdir}/usr/lib/opennow/opennow-stable/dist-electron/main/index.js -e '/import.*app/a app.setVersion("'$_pkgver'")\napp.setName("opennow-stable")'
+	cp -a opennow-stable/dist ${pkgdir}/usr/lib/opennow/opennow-stable
+	cp -a opennow-stable/package.json ${pkgdir}/usr/lib/opennow/opennow-stable
 	# only install the required npm module
-	npm install --cache "${srcdir}/npm/cache" --omit=dev --prefix "${pkgdir}/usr/lib/opennow"
-	cp -a native/opennow-streamer/bin/opennow-streamer ${pkgdir}/usr/lib/opennow/native
+	npm install --cache "${srcdir}/npm/cache" --omit=dev --prefix "${pkgdir}/usr/lib/opennow/opennow-stable"
+	cp -a native/opennow-streamer/bin/opennow-streamer ${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin/
 	# misc (licence, dekstop)
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -m 644 -D -t "${pkgdir}/usr/share/applications/" "${srcdir}/opennow.desktop"

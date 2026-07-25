@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/electron41 /usr/lib/opennow/dist-electron/main/index.js "$@"
+exec /usr/bin/electron42 /usr/lib/opennow/opennow-stable/dist-electron/main/index.js "$@"
