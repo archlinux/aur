@@ -1,7 +1,7 @@
 # Maintainer: darksworm <https://github.com/darksworm>
 pkgname=argonaut-git
 _pkgname=argonaut
-pkgver=2.17.1.r14.g4c2667e
+pkgver=2.17.1.r16.gad8a3cc
 pkgrel=1
 pkgdesc="A GitOps CLI tool for managing ArgoCD applications (git version)"
 arch=('x86_64' 'aarch64')
