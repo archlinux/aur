@@ -49,7 +49,7 @@ makedepends=(
 )
 conflicts=('noctalia-git' 'noctalia-bin')
 source=("${_pkgname}-${_tagver}.tar.gz::${url}/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('074e598ac6e3667174f9a759bab1c88a10d034465655eaa7d7e4234045a1c900')
+sha256sums=('1460781135969e9a8985c2c7343131df69f5b8595e8428cfdc416f85585b9447')
 
 build() {
   CXXFLAGS+=" -Wno-unused-result"
