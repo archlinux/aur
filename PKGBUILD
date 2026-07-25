@@ -2,7 +2,7 @@
 # Contributor: janosmiko <janosmiko@users.noreply.github.com>
 
 pkgname=lfk
-pkgver=0.15.13
+pkgver=0.15.14
 pkgrel=1
 pkgdesc='Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters'
 url='https://github.com/janosmiko/lfk'
@@ -15,7 +15,7 @@ optdepends=(
     'helm: Helm release management'
     'trivy: Container image vulnerability scanning')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('75a52b37e80eda856d29bfe87185e24a2334bd16d24d437dbdd3bcdc1722beed')
+sha256sums=('44ef64100c61f20ac0e2f93613f8cff7ecdecc3cfe17d3066ccc2db9171ed4b3')
 
 prepare() {
     cd "$pkgname-$pkgver"
