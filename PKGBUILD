@@ -2,7 +2,7 @@
 
 _pkgbase=vk-gl-cts
 pkgname='opengl-cts'
-pkgver=4.6.8.0
+pkgver=4.6.8.1
 pkgrel=1
 arch=('any')
 pkgdesc='Khronos OpenGL and OpenGL ES Conformance Tests.'
@@ -21,6 +21,7 @@ makedepends=(
 	gcc
 )
 optdepends=(
+	mesa
 	"wayland-protocols: DEQP_TARGET=default"
 )
 
@@ -28,7 +29,7 @@ source=(
 	"${url}/archive/refs/tags/opengl-cts-${pkgver}.tar.gz"
 )
 sha256sums=(
-    'f680f9f6400d45612dbb129a313f07edb1af9b235fe9632eae59d2a8d25cbb82'
+    '30127b2783058941b4ce89326e96a1a75e9107461c1d3bfcec129e6cf57a2638'
 )
 
 prepare() {
@@ -39,7 +40,7 @@ prepare() {
 
 build() {
 	cd ${_pkgbase^^}-${pkgname}-${pkgver}/build
-	cmake --build external/openglcts --parallel
+	cmake --build external/openglcts -j
 }
 
 package() {

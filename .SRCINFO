@@ -1,6 +1,6 @@
 pkgbase = opengl-cts
 	pkgdesc = Khronos OpenGL and OpenGL ES Conformance Tests.
-	pkgver = 4.6.8.0
+	pkgver = 4.6.8.1
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/VK-GL-CTS
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = opengl-cts
 	depends = opengl-driver
 	depends = zlib
 	depends = libpng
+	optdepends = mesa
 	optdepends = wayland-protocols: DEQP_TARGET=default
-	source = https://github.com/KhronosGroup/VK-GL-CTS/archive/refs/tags/opengl-cts-4.6.8.0.tar.gz
-	sha256sums = f680f9f6400d45612dbb129a313f07edb1af9b235fe9632eae59d2a8d25cbb82
+	source = https://github.com/KhronosGroup/VK-GL-CTS/archive/refs/tags/opengl-cts-4.6.8.1.tar.gz
+	sha256sums = 30127b2783058941b4ce89326e96a1a75e9107461c1d3bfcec129e6cf57a2638
 
 pkgname = opengl-cts
