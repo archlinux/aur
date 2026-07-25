@@ -1,6 +1,6 @@
 # Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Syncing votes with the currently installed AUR packages"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
   'org.freedesktop.secrets: password saving'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba5406b2d2422e35432385057d8325fbff857aa767cdaf5a4bbfe8a0b73fa00e')
+sha256sums=('424b868796d8c995312208669331a4246df21761b7e603a7c6e04b1f6a953cdb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

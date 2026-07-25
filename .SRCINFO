@@ -1,6 +1,6 @@
 pkgbase = aur-sync-vote
 	pkgdesc = Syncing votes with the currently installed AUR packages
-	pkgver = 0.2.4
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/acaibowlz/aur-sync-vote
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = aur-sync-vote
 	depends = python-requests
 	depends = python-keyring
 	optdepends = org.freedesktop.secrets: password saving
-	source = aur-sync-vote-0.2.4.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = ba5406b2d2422e35432385057d8325fbff857aa767cdaf5a4bbfe8a0b73fa00e
+	source = aur-sync-vote-0.3.0.tar.gz::https://github.com/acaibowlz/aur-sync-vote/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 424b868796d8c995312208669331a4246df21761b7e603a7c6e04b1f6a953cdb
 
 pkgname = aur-sync-vote
