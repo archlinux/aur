@@ -1,8 +1,7 @@
-# Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
-# Maintainer: Fgaoxing <fgaoxing0206@outlook.com>
+# Maintainer: willker <wz[dot]willker[at]gmail[dot]com> Fgaoxing <Fgaoxing0206@163.com>
 
 pkgname=axolotl-launcher
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
@@ -20,7 +19,7 @@ source=(
 	'axolotl-launcher.desktop'
 	'red.ghs.axolotl.xml'
 )
-sha256sums=('8d5cd01d9341f701f0fdc9f2356e0bfcaf1789228ccee1bbd352c0fd2d7edf7f'
+sha256sums=('3fbeca1e4688349e78caa6dddc95f755bdb54b2256e79ec527b0f1ef37afbe1e'
             '0e5e26336cadd2957745befaa5bfb982e85fa39a49aa3c9ae00608afc326011a'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
 options=('!strip')
