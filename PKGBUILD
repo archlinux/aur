@@ -24,9 +24,7 @@ build() {
 package() {
   cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  local scripts=("$pkgdir"/usr/bin/*)
-  if [[ ! -e "$pkgdir/usr/bin/naji" && ${#scripts[@]} -eq 1 && -x "${scripts[0]}" ]]; then
-    mv "${scripts[0]}" "$pkgdir/usr/bin/naji"
-  fi
+  mv "$pkgdir/usr/bin/naij" "$pkgdir/usr/bin/naji"
+  rm -f "$pkgdir/usr/bin/nitro-cli"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
