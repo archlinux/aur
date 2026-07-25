@@ -1,6 +1,6 @@
 pkgbase = agildodock
 	pkgdesc = Dock de aplicativos para KDE Plasma com Layer Shell, Kirigami e efeito de onda
-	pkgver = 1.3.16
+	pkgver = 1.3.17
 	pkgrel = 1
 	url = https://github.com/juglesbass/AgildoDockCpp_Wayland
 	install = agildodock.install
@@ -20,7 +20,7 @@ pkgbase = agildodock
 	depends = qt6-shadertools
 	depends = qt6-wayland
 	optdepends = kdotool: focar, minimizar e fechar janelas em sessão Plasma Wayland
-	source = AgildoDockCpp_Wayland-1.3.16.tar.gz::https://github.com/juglesbass/AgildoDockCpp_Wayland/archive/refs/tags/v1.3.16.tar.gz
-	sha256sums = e344f9a33efa63d5a15a30c450b1ea72539098d90036370c360986bda7abc02b
+	source = AgildoDockCpp_Wayland-1.3.17.tar.gz::https://github.com/juglesbass/AgildoDockCpp_Wayland/archive/refs/tags/v1.3.17.tar.gz
+	sha256sums = 87fbed88331827d9fd5ac9768296126af021585a6fabe9da1fda01dba7d61243
 
 pkgname = agildodock
