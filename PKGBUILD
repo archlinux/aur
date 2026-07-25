@@ -1,7 +1,7 @@
 # Maintainer: GianniPapetti <gianapapeta@gmail.com>
 pkgname=epyrus-bin
 _pkgname=epyrus
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Open source email client based on Thundermail"
 arch=('x86_64')
@@ -13,9 +13,9 @@ provides=(epyrus=$pkgver)
 conflicts=(epyrus)
 options=(!strip)
 source=(epyrus.desktop)
-source_x86_64=("https://www.addons.epyrus.org/download/epyrus-${pkgver}.linux-x86_64-gtk3.tar.xz")
+source_x86_64=("http://www.epyrus.org/epyrus-${pkgver}.linux-x86_64-gtk3.tar.xz")
 sha256sums=('5dccd55e7d032be0b9929a44b92bc7aa98ccaf6c68ee40c0580ed5010c4d00e9')
-sha256sums_x86_64=('fd0d08f9d2e49a1d2a71dfdac72958eab226fe1f5489cf722709399b535584d8')
+sha256sums_x86_64=('5beb4f511fb9babc6d99fc60ff3990db4d629936d5eba7671a359480483d1994')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
