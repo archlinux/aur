@@ -1,0 +1,19 @@
+pkgbase = allp-manager-git
+	pkgdesc = A transparent package-manager orchestrator for Linux
+	pkgver = 0.3.5.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/allp-manager/allp-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = allp
+	provides = allp-manager
+	conflicts = allp
+	conflicts = allp-manager
+	source = git+https://github.com/allp-manager/allp-manager.git
+	sha256sums = SKIP
+
+pkgname = allp-manager-git
