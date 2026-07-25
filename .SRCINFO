@@ -1,0 +1,20 @@
+pkgbase = umm
+	pkgdesc = Ask questions in your terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/hexxt-git/umm
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = umm
+	noextract = umm-0.2.1.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = umm-0.2.1.tgz::https://registry.npmjs.org/@hexxt/umm/-/umm-0.2.1.tgz
+	b2sums = f9e25c1aa232383a7abcc70e5cd898dedbc9226ea6d7f5b5362b4b15c71d726b548486409e95c3321b429163d063d1e21b26f2a72a37941405672a315c4414df
+
+pkgname = umm

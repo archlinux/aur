@@ -1,0 +1,3 @@
+[umm]
+source = "npm"
+npm = "@hexxt/umm"
