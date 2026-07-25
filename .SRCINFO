@@ -1,6 +1,6 @@
 pkgbase = v2rs
 	pkgdesc = A small CLI for managing xray proxy
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://git.igorek.dev/igorechek06/v2rs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = v2rs
 	depends = xray
 	depends = iproute2
 	options = !lto
-	source = v2rs-0.5.0.tar.gz::https://git.igorek.dev/igorechek06/v2rs/archive/v0.5.0.tar.gz
-	sha256sums = 7882797baf2de2711bca670857e2c0e8bf3d71242cc1636d8e43e4c0225a7a3d
+	source = v2rs-0.5.2.tar.gz::https://git.igorek.dev/igorechek06/v2rs/archive/v0.5.2.tar.gz
+	sha256sums = ab591781d9e7128f293555eafadababf2330deb4b78257f8ef48e34b875122dc
 
 pkgname = v2rs
