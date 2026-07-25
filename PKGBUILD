@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs' 'dotnet-runtime-10.0')
 options=(!strip)
 source=("setup_ksa_v${pkgver}.tar.gz::$url/builds/${buildnum}/setup_ksa_v${pkgver}.tar.gz"
         "kittenspaceagency.png")
-sha256sums=('8111c8d436b7276bf4bae9fbac36d090c190b293b0fc3b08283e32c5cca56c15'
+sha256sums=('f4e2f4e56622d35643e1a096d86f41e14e0bf3c36e6e7396a68dad67e360c561'
             '4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486')
 
 package() {
