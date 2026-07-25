@@ -1,6 +1,6 @@
 pkgbase = nokkvi-bin
 	pkgdesc = A native Rust/Iced desktop client for Navidrome music servers
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://github.com/f-o-o-g-s/nokkvi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nokkvi-bin
 	provides = nokkvi
 	conflicts = nokkvi
 	options = !debug
-	source = nokkvi-bin-0.18.2.tar.gz::https://github.com/f-o-o-g-s/nokkvi/releases/download/v0.18.2/nokkvi-v0.18.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 628fe19b30078634a6646e0f4b0bb12f558aa590926e6128aea0d6ed28985074
+	source = nokkvi-bin-0.18.3.tar.gz::https://github.com/f-o-o-g-s/nokkvi/releases/download/v0.18.3/nokkvi-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ba2cd23c28472393ed5e78f97614475e5db150ea778732616b215b3eb2c7ceef
 
 pkgname = nokkvi-bin
