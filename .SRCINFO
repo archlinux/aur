@@ -1,0 +1,23 @@
+pkgbase = buzz-bin
+	pkgdesc = A workspace where humans and agents build together, on a relay you own
+	pkgver = 0.4.25
+	pkgrel = 1
+	url = https://buzz.xyz
+	arch = x86_64
+	license = Apache
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = zlib
+	provides = buzz
+	conflicts = buzz
+	source = https://github.com/block/buzz/releases/download/v0.4.25/Buzz_0.4.25_amd64.deb
+	sha256sums = 5b2eb26e75dc1be20154e044a268f71c0ceed7a560a032a73f976ed43d6cfe87
+
+pkgname = buzz-bin
