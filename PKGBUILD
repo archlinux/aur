@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r32.94c0059
+pkgver=r33.64311a9
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
@@ -23,6 +23,7 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 target/release/ioexplorer "$pkgdir/usr/bin/ioexplorer"
   install -Dm755 target/release/ioexplorer-start "$pkgdir/usr/bin/ioexplorer-start"
+  install -Dm755 target/release/ioexplorer-spotlight "$pkgdir/usr/bin/ioexplorer-spotlight"
   install -Dm755 target/release/ioexplorer-file-manager "$pkgdir/usr/bin/ioexplorer-file-manager"
   install -Dm755 target/release/ioexplorer-portal "$pkgdir/usr/bin/ioexplorer-portal"
   install -Dm644 data/io.github.ionix.IoExplorer.desktop "$pkgdir/usr/share/applications/io.github.ionix.IoExplorer.desktop"
