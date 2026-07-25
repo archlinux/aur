@@ -1,12 +1,12 @@
 pkgbase = nvidia-sync
-	pkgver = 0.97.6
+	pkgver = 0.100.18
 	pkgrel = 1
 	url = https://build.nvidia.com/spark/connect-to-your-spark/sync
 	arch = x86_64
 	license = custom:NVIDIA
-	source = https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_0.97.6_amd64.deb
+	source = https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_0.100.18_amd64.deb
 	source = nvidia-sync-terminal-launcher.sh
-	sha256sums = c706b6a58a9dddaa3759197a7e8f46d44e322a0d27e6dda8831af90cd69b0c8b
+	sha256sums = 2eeee871e2db29a33ac8f75c3234b59b5804f5edea4923393224acc4b6c776ee
 	sha256sums = 1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e
 
 pkgname = nvidia-sync
