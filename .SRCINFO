@@ -1,6 +1,6 @@
 pkgbase = clang-static-git
-	pkgdesc = LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)
-	pkgver = 23.0.0_r588194.00bf3d6cf36d
+	pkgdesc = Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)
+	pkgver = 24.0.0_r589852.d610744c92b1
 	pkgrel = 1
 	url = https://clang.llvm.org/
 	arch = x86_64
@@ -11,22 +11,26 @@ pkgbase = clang-static-git
 	makedepends = python
 	depends = gcc-libs
 	depends = glibc
+	depends = libedit
 	depends = libxml2
 	depends = ncurses
+	depends = perl
+	depends = python
+	depends = python-yaml
 	depends = zlib
-	depends = libgcc
-	depends = libstdc++
+	depends = zstd
 	optdepends = openmp: OpenMP support in clang with -fopenmp
-	optdepends = python: for scan-view and git-clang-format
-	provides = clang
-	provides = clang-format
-	provides = clang-tools-extra
-	provides = clang-analyzer
-	provides = clangd
-	provides = compiler-rt
-	provides = libc++
-	provides = libc++abi
-	provides = llvm-libunwind
+	optdepends = lib32-glibc: 32-bit compiler-rt sanitizer runtimes
+	optdepends = lib32-gcc-libs: 32-bit compiler-rt sanitizer runtimes
+	provides = clang=24.0.0_r589852.d610744c92b1
+	provides = clang-format=24.0.0_r589852.d610744c92b1
+	provides = clang-tools-extra=24.0.0_r589852.d610744c92b1
+	provides = clang-analyzer=24.0.0_r589852.d610744c92b1
+	provides = clangd=24.0.0_r589852.d610744c92b1
+	provides = compiler-rt=24.0.0_r589852.d610744c92b1
+	provides = libc++=24.0.0_r589852.d610744c92b1
+	provides = libc++abi=24.0.0_r589852.d610744c92b1
+	provides = llvm-libunwind=24.0.0_r589852.d610744c92b1
 	conflicts = clang
 	conflicts = clang-format
 	conflicts = clang-tools-extra

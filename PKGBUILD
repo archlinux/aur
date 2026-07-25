@@ -3,20 +3,23 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=23.0.0_r588194.00bf3d6cf36d
+pkgver=24.0.0_r589852.d610744c92b1
 pkgrel=1
-pkgdesc='LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)'
+pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
 url=https://clang.llvm.org/
 license=('Apache-2.0 WITH LLVM-exception')
 depends=(
   gcc-libs
   glibc
+  libedit
   libxml2
   ncurses
+  perl
+  python
+  python-yaml
   zlib
-  libgcc
-  libstdc++
+  zstd
 )
 makedepends=(
   git
@@ -26,18 +29,19 @@ makedepends=(
 )
 optdepends=(
   'openmp: OpenMP support in clang with -fopenmp'
-  'python: for scan-view and git-clang-format'
+  'lib32-glibc: 32-bit compiler-rt sanitizer runtimes'
+  'lib32-gcc-libs: 32-bit compiler-rt sanitizer runtimes'
 )
 provides=(
-  clang
-  clang-format
-  clang-tools-extra
-  clang-analyzer
-  clangd
-  compiler-rt
-  libc++
-  libc++abi
-  llvm-libunwind
+  clang=$pkgver
+  clang-format=$pkgver
+  clang-tools-extra=$pkgver
+  clang-analyzer=$pkgver
+  clangd=$pkgver
+  compiler-rt=$pkgver
+  libc++=$pkgver
+  libc++abi=$pkgver
+  llvm-libunwind=$pkgver
 )
 conflicts=(
   clang
@@ -60,13 +64,15 @@ sha256sums=(SKIP)
 pkgver() {
   cd llvm-project/cmake/Modules
 
-  # Matches the output of `llvm-config --version` with dashes replaced by underscores
-  local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+  # Matches output of `llvm-config --version` with dashes replaced by _
+  local _count=$(git rev-list --count HEAD)
+  local _hash=$(git rev-parse --short HEAD)
+  local _ver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
     'BEGIN { ORS="." ; i=0 } \
            /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
            END { print "\n" }' \
-    LLVMVersion.cmake)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  echo "$_pkgver"
+    LLVMVersion.cmake)
+  echo "${_ver}_r${_count}.${_hash}"
 }
 
 _get_distribution_components() {
@@ -75,7 +81,10 @@ _get_distribution_components() {
     while read -r target; do
       case $target in
       clang-libraries | distribution) continue ;;
-      clang | clangd | clang-* | compiler-rt | compiler-rt-* | clang_rt* | builtins | runtimes | scan-build | scan-view) ;;
+      clang | clangd | clang-* | \
+        compiler-rt | compiler-rt-* | clang_rt* | \
+        builtins | runtimes | scan-build | scan-view | \
+        cxx | cxx-* | cxxabi | cxxabi-*) ;;
       *) continue ;;
       esac
       echo $target
@@ -135,10 +144,21 @@ package() {
   rm -f "$pkgdir"/usr/include/libunwind.h
   rm -f "$pkgdir"/usr/include/unwind.h
 
-  install -Dm644 llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 llvm-project/llvm/LICENSE.TXT \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Symlink libc++, libc++abi, and LLVM libunwind.so.1 to /usr/lib
+  local _arch_dir="$pkgdir"/usr/lib/x86_64-unknown-linux-gnu
+  if [[ -d "$_arch_dir" ]]; then
+    for _f in "$_arch_dir"/libc++* "$_arch_dir"/libunwind.so.1*; do
+      [[ -e "$_f" ]] && ln -s --relative "$_f" "$pkgdir"/usr/lib/
+    done
+  fi
 
   # Move scanbuild-py into site-packages and install Python bindings
-  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local _site_packages=$(
+    python -c "import site; print(site.getsitepackages()[0])"
+  )
 
   if [[ -d "$pkgdir"/usr/lib/libear ]] ||
     [[ -d "$pkgdir"/usr/lib/libscanbuild ]]; then
@@ -169,6 +189,7 @@ package() {
   local bash_completion_destdir="$pkgdir"/usr/share/bash-completion/completions
   if [[ -f "$pkgdir"/usr/share/clang/bash-autocomplete.sh ]]; then
     install -d $bash_completion_destdir
-    mv "$pkgdir"/usr/share/clang/bash-autocomplete.sh $bash_completion_destdir/clang
+    mv "$pkgdir"/usr/share/clang/bash-autocomplete.sh \
+      $bash_completion_destdir/clang
   fi
 }
