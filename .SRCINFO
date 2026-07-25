@@ -1,0 +1,15 @@
+pkgbase = openskydimo
+	pkgdesc = OpenSkydimo ambient lighting daemon and CLI
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/chanuka-williams/OpenSkydimo
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	source = openskydimo-1.0.2.tar.gz::https://github.com/chanuka-williams/OpenSkydimo/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = aa001ba734d210f7a651c6a1cdcbbb2a1dba5cb65f18021afd5d65da611ae312
+
+pkgname = openskydimo
