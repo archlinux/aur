@@ -1,13 +1,31 @@
-# systemd does not restart user services on package upgrade, so the previous
-# version keeps running while the new dashboard is served off disk. The two then
-# disagree about which routes exist and the UI fails with a bare 404.
+# systemd does not restart user services on package upgrade, so without this the
+# previous version keeps running while the new dashboard is served off disk. The
+# two then disagree about which routes exist and the UI fails with a bare 404.
+#
+# Root can reach a logged-in user's service manager through --machine=<user>@.host.
+# Every step is best-effort: a machine with no logged-in user, no systemd-machined,
+# or the unit simply not enabled must never fail the pacman transaction.
+_restart_for_users() {
+	local u
+	for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+		systemctl --machine="${u}@.host" --user is-active --quiet claude-brain.service 2>/dev/null || continue
+		if systemctl --machine="${u}@.host" --user restart claude-brain.service 2>/dev/null; then
+			printf '  claude-brain restarted for %s — the dashboard and server now match.\n' "$u"
+		else
+			printf '  Could not restart claude-brain for %s. Run: systemctl --user restart claude-brain\n' "$u"
+		fi
+	done
+}
+
 post_upgrade() {
+	_restart_for_users || true
+}
+
+post_install() {
 	cat <<'MSG'
-  claude-brain was upgraded. Restart the server so it matches the new dashboard:
+  Enable the brain with:
 
-      systemctl --user restart claude-brain
+      systemctl --user enable --now claude-brain
 
-  (Skipping this leaves the previous version running and parts of the dashboard
-   will fail with "request failed (404)".)
 MSG
 }
