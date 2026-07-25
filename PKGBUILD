@@ -27,7 +27,7 @@ check() {
   fi
 
   # The tests require NIX_USER_CHROOT_TEST_BUSYBOX to be set
-  NIX_USER_CHROOT_TEST_BUSYBOX=$(which busybox) cargo test --release --locked
+  NIX_USER_CHROOT_TEST_BUSYBOX=$(command -v busybox) cargo test --release --locked
 }
 
 package() {
