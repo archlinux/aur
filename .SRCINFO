@@ -1,6 +1,6 @@
 pkgbase = steamfetch-bin
 	pkgdesc = neofetch for Steam - Display your Steam stats in terminal
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/unhappychoice/steamfetch
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = steamfetch-bin
 	depends = openssl
 	provides = steamfetch
 	conflicts = steamfetch
-	source = LICENSE-0.5.5::https://raw.githubusercontent.com/unhappychoice/steamfetch/v0.5.5/LICENSE
-	source = README-0.5.5.md::https://raw.githubusercontent.com/unhappychoice/steamfetch/v0.5.5/README.md
+	source = LICENSE-0.5.6::https://raw.githubusercontent.com/unhappychoice/steamfetch/v0.5.6/LICENSE
+	source = README-0.5.6.md::https://raw.githubusercontent.com/unhappychoice/steamfetch/v0.5.6/README.md
 	sha256sums = 6cb601bf02e765d2ebed2dd123913c684ebb257244193dfa2084a6f2835a5aa5
-	sha256sums = da4495b9fa229c3e13a4f1b6af4e6c707c527564d016c3f4d618b6ddca61d12d
-	source_x86_64 = steamfetch-x86_64-0.5.5.tgz::https://github.com/unhappychoice/steamfetch/releases/download/v0.5.5/steamfetch-v0.5.5-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 73f960f42b00ba0ddf292b4e49936218d905834daf625b7e919d4dde0db6d048
+	sha256sums = d79de4d903e4f449e4d3ced2c7b406cd024c971740ea1e95d7b8535a114083d9
+	source_x86_64 = steamfetch-x86_64-0.5.6.tgz::https://github.com/unhappychoice/steamfetch/releases/download/v0.5.6/steamfetch-v0.5.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 380522aee663fa559cf8bd5b612115bd38d99f140268af884a41dfb2fce1b2ab
 
 pkgname = steamfetch-bin
