@@ -13,7 +13,7 @@ url="http://gmplib.org/"
 depends=('lib32-gcc-libs' 'sh' 'lib32-gmp')
 makedepends=('gcc-multilib')
 license=('LGPL3')
-options=('!libtool')
+options=('!libtool' '!lto')
 source=(
   "https://gmplib.org/download/gmp/archive/gmp-${pkgver}.tar.bz2"
   'fix_get-d_and_t-scan.patch'
