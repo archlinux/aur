@@ -1,15 +1,16 @@
 pkgbase = cbm-tool
 	pkgdesc = Unofficial community CLI wrapper for codebase-memory-mcp
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/fxjs/cbm-tool
 	arch = any
 	license = MIT
 	depends = bash
+	depends = jq
 	optdepends = curl: used by cbm update / remote install helpers
 	optdepends = git: repository indexing workflows
 	conflicts = cbm
-	source = cbm-tool-1.0.5.tar.gz::https://github.com/fxjs/cbm-tool/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = f29d6e73a39b6e03d28267dc4a600072c3811207531abd6c8abf6f39a08a1506
+	source = cbm-tool-1.0.6.tar.gz::https://github.com/fxjs/cbm-tool/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = 5805db552de9d07dce841d8be7471ea039fc2b4a848f0ac73f64c984cddf5021
 
 pkgname = cbm-tool
