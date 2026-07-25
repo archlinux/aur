@@ -1,3 +1,4 @@
+# Maintainer: Kamil Krzysztof Kulach <kamilk1512@gmail.com>
 pkgname=meme-lord-picker
 pkgver=0.1.0
 pkgrel=1
