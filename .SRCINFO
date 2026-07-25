@@ -1,6 +1,6 @@
 pkgbase = saur-git
 	pkgdesc = A safer AUR helper with Claude security review baked in
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://git.josf.dev/josefandersson/saur
 	arch = x86_64

@@ -5,7 +5,7 @@
 
 pkgname=saur-git
 _binname=saur
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A safer AUR helper with Claude security review baked in"
 arch=('x86_64' 'aarch64')
