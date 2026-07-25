@@ -1,7 +1,7 @@
 pkgbase = mcxx
 	pkgdesc = Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.
 	pkgver = 2.3.0.20190627
-	pkgrel = 9
+	pkgrel = 10
 	url = https://pm.bsc.es/ompss
 	arch = x86_64
 	license = LGPL-3.0-or-later

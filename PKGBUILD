@@ -4,7 +4,7 @@ _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
 pkgver='2.3.0.20190627'
 _bundlepkgver='19.06'
-pkgrel='9'
+pkgrel='10'
 arch=('x86_64')
 url='https://pm.bsc.es/ompss'
 license=('LGPL-3.0-or-later')
@@ -21,10 +21,6 @@ sha512sums=(159efc17ba446f3f2205a8c0580ed10fab263f8bdb7306d5444d1fc6a592f80d749c
             3646fb1fcd20932caaf4653df52fdb0c6ad490643d026d4752692b775bfb571d835f2f46f60604ffe38ac57abcc6975218517d5b822f4acb2855363965939dd3
             fb59290edcf58b5c70390b462dea4df02f2eae028bed39aea0bb5c17caca6ec4a89e4545b1d4edf9a460c9de868e4b91f42fd7bd54d5fa5ffd98624daeb5003a)
 
-# WORKAROUND: The sources are outdated compared to Arch's environment,
-#             so we have to downgrade/disable some things...
-export LDFLAGS="${LDFLAGS:-} -Wl,--no-as-needed"
-
 prepare() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
 
@@ -38,6 +34,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
+
+	# WORKAROUND: The sources are outdated compared to Arch's environment,
+	#             so we have to downgrade/disable some things...
+	export LDFLAGS="${LDFLAGS:-} -Wl,--no-as-needed"
 
 	# WORKAROUND: Force gperf files to be regenerated, to avoid build errors
 	#             (declaration mismatches due to unsigned int / gperf_length_t)
