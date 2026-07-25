@@ -1,7 +1,7 @@
 pkgbase = openmodsim-git
 	pkgdesc = Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols.
 	pkgver = r2138.25d1a817
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanny32/openmodsim
 	arch = x86_64
 	arch = i686
