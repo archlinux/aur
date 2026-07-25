@@ -1,7 +1,8 @@
-# Maintainer: gambarim <gambarim@pm.me>
+# Maintainer: Your Name <your@email.com>
+# Contributor: 
 
 pkgname=buzz-bin
-pkgver=0.4.25
+pkgver=0.4.26
 pkgrel=1
 pkgdesc='A workspace where humans and agents build together, on a relay you own'
 arch=('x86_64')
@@ -22,7 +23,7 @@ depends=(
 provides=('buzz')
 conflicts=('buzz')
 source=("https://github.com/block/buzz/releases/download/v${pkgver}/Buzz_${pkgver}_amd64.deb")
-sha256sums=('5b2eb26e75dc1be20154e044a268f71c0ceed7a560a032a73f976ed43d6cfe87')
+sha256sums=('1b520756ecfc28ad81981a2cd5cc6688f785f447b3f5d8d553544906f59bf521')
 
 pkgver() {
   curl -sL "https://api.github.com/repos/block/buzz/releases/latest" |
