@@ -4,7 +4,7 @@ pkgname=kwin-polonium-git
 pkgver=1.2.1.r0.g3638b16
 pkgrel=1
 pkgdesc='A tiling window manager for KWin 5.27 and up (Git version)'
-arch=('any')
+arch=(x86_64 i686 aarch64 armv7h)
 url='https://zeroxoneafour.github.io/polonium/'
 license=('MIT')
 
