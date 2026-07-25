@@ -2,16 +2,19 @@
 
 pkgname=filen-menubar-bin
 _pkgname=filen-menubar
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="Lightweight system tray app for Filen cloud sync"
 arch=('x86_64')
 url="https://github.com/philippgerard/filen-menubar"
 license=('MIT')
-# Arch equivalents of the .deb's Depends: nodejs, libgtk-3-0,
-# libwebkit2gtk-4.1-0, libayatana-appindicator3-1
-depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'nodejs')
-optdepends=('npm: to install the @filen/cli sync backend the tray drives')
+# Arch equivalents of the .deb's Depends: libgtk-3-0, libwebkit2gtk-4.1-0,
+# libayatana-appindicator3-1. The .deb also pulls nodejs, but only because
+# its sync backend is assumed to come from npm; filen-cli-bin ships a
+# standalone binary that needs no node, so nodejs is optional here.
+depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
+optdepends=('filen-cli-bin: sync backend, standalone binary (recommended)'
+            'nodejs: only needed if you install @filen/cli through npm instead')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 # Prebuilt upstream binary: leave it exactly as shipped.
@@ -21,7 +24,7 @@ source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Filen.Men
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 # .deb is an ar archive; unpack it explicitly in package().
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('7b5aba29bcf1374a6ba130d6150d0485c8865597025ff4f90810620835e0b137'
+sha256sums=('1d78f8785c241d08193b45e9c97fe6aea39b8659831cdbad77a773d9b78eb11c'
             '63d3d5dbe2ed4b855613bc1d0cdaa541583985329fd66b4179f937eb55ded130')
 
 package() {

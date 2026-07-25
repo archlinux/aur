@@ -1,6 +1,6 @@
 pkgbase = filen-menubar-bin
 	pkgdesc = Lightweight system tray app for Filen cloud sync
-	pkgver = 0.1.26
+	pkgver = 0.1.27
 	pkgrel = 1
 	url = https://github.com/philippgerard/filen-menubar
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = filen-menubar-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
-	depends = nodejs
-	optdepends = npm: to install the @filen/cli sync backend the tray drives
-	provides = filen-menubar=0.1.26
+	optdepends = filen-cli-bin: sync backend, standalone binary (recommended)
+	optdepends = nodejs: only needed if you install @filen/cli through npm instead
+	provides = filen-menubar=0.1.27
 	conflicts = filen-menubar
-	noextract = filen-menubar-bin-0.1.26.deb
+	noextract = filen-menubar-bin-0.1.27.deb
 	options = !strip
 	options = !debug
 	options = !lto
-	source = filen-menubar-bin-0.1.26.deb::https://github.com/philippgerard/filen-menubar/releases/download/v0.1.26/Filen.Menubar_0.1.26_amd64.deb
-	source = LICENSE-0.1.26::https://github.com/philippgerard/filen-menubar/raw/v0.1.26/LICENSE
-	sha256sums = 7b5aba29bcf1374a6ba130d6150d0485c8865597025ff4f90810620835e0b137
+	source = filen-menubar-bin-0.1.27.deb::https://github.com/philippgerard/filen-menubar/releases/download/v0.1.27/Filen.Menubar_0.1.27_amd64.deb
+	source = LICENSE-0.1.27::https://github.com/philippgerard/filen-menubar/raw/v0.1.27/LICENSE
+	sha256sums = 1d78f8785c241d08193b45e9c97fe6aea39b8659831cdbad77a773d9b78eb11c
 	sha256sums = 63d3d5dbe2ed4b855613bc1d0cdaa541583985329fd66b4179f937eb55ded130
 
 pkgname = filen-menubar-bin
