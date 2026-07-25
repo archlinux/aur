@@ -1,0 +1,35 @@
+pkgbase = libfprint-fpc1022
+	pkgdesc = libfprint with experimental FPC1022/Disum 10a5:9200 support
+	pkgver = 1.94.10.r2.gba10c93
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/570
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	checkdepends = cairo
+	checkdepends = umockdev
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libgudev
+	depends = libgusb
+	depends = libstdc++
+	depends = opencv
+	depends = openssl
+	depends = pixman
+	optdepends = fprintd: D-Bus daemon and PAM module for fingerprint readers
+	provides = libfprint=1.94.10
+	provides = libfprint-2.so
+	conflicts = libfprint
+	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=ba10c9398fe4542ff6403549884d0c8687182845
+	sha256sums = SKIP
+
+pkgname = libfprint-fpc1022
