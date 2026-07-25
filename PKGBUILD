@@ -1,7 +1,7 @@
 # Maintainer: TJ Smith <tj@jarvispro.io>
 
 pkgname='anodizer'
-pkgver='0.22.2'
+pkgver='0.23.0'
 pkgrel=1
 pkgdesc="A Rust-native release automation tool"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('rust' 'cargo')
 conflicts=('anodizer')
 provides=('anodizer')
-source=("https://github.com/tj-smith47/anodizer/archive/refs/tags/v0.22.2.tar.gz")
+source=("https://github.com/tj-smith47/anodizer/archive/refs/tags/v0.23.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
