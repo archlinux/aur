@@ -1,6 +1,6 @@
 pkgbase = livesplit-one-gtk-git
 	pkgdesc = Linux desktop version of LiveSplit One using GTK4 and libadwaita
-	pkgver = 0.7.2.r165.g2507db2
+	pkgver = 0.7.2.r167.g7bac1a2
 	pkgrel = 1
 	url = https://github.com/hoXyy/livesplit-one-gtk
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = livesplit-one-gtk-git
 	depends = cairo
 	depends = glib2
 	depends = glibc
-	depends = gtk4>=4.16
+	depends = gtk4>=4.14
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1.5
 	depends = libgcc
 	depends = pango
-	provides = livesplit-one-gtk=0.7.2.r165.g2507db2
+	provides = livesplit-one-gtk=0.7.2.r167.g7bac1a2
 	conflicts = livesplit-one-gtk
 	options = !lto
 	source = livesplit-one-gtk::git+https://github.com/hoXyy/livesplit-one-gtk.git#branch=dev
