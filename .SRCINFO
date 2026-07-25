@@ -1,0 +1,17 @@
+pkgbase = channel
+	pkgdesc = Input for river
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://codeberg.org/sivecano/channel
+	arch = x86_64
+	license = GPL3
+	makedepends = zig
+	makedepends = git
+	depends = libwayland-client.so
+	depends = libxkbcommon
+	depends = river
+	depends = glibc
+	source = channel::git+https://codeberg.org/sivecano/channel.git#tag=0.4.1
+	sha256sums = 90987fc145894e4353f3a8549818f4518e2d4cd86b8d361f5548cebb2d876b46
+
+pkgname = channel
