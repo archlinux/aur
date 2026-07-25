@@ -1,6 +1,6 @@
 # Maintainer: Ted W. <ted.l.wood@gmail.com>
 pkgname=tmux-claude-monitor
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="tmux status bar daemon displaying Claude Pro quota usage in real time"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('claude-monitor')
 conflicts=('tmux-claude-monitor-bin')
 install=claude-monitor.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('180effd5b3858dd0cbd15ae7792ca44ccc039e1dfe079ac53e76c3c89e851c8e')
+sha256sums=('60eaa0b58ffd1e2270be4f17ab7751e03e4ee3b29165f6d92d37fa9cae411951')
 
 build() {
     cd "${pkgname}-${pkgver}"
