@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 
 pkgname="deezer"
-pkgver=7.1.280
+pkgver=7.1.290
 pkgrel=1
 
 # Keep this in sync with the formatter version used by aunetx/deezer-linux.
@@ -65,7 +65,7 @@ noextract=(
     "mpris-service-${_mpris_ver}.tgz"
 )
 
-sha256sums=('f3e8a4ca8a7f25652d1142dabd4992641223a44270d32e667b0b6a0faaa5c44f'
+sha256sums=('33c1205aaa9f6622c10cda3a5271bd951a85cf040e8dda8e6621abdbf8995c22'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
