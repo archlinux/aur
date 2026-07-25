@@ -1,17 +1,17 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=custom-toolbox
-pkgver=26.07
+pkgver=26.07.1
 pkgrel=1
 pkgdesc="A customizable toolbox application built with Qt"
 arch=('x86_64')
 url="https://github.com/MX-Linux/custom-toolbox"
 license=('GPL3')
-depends=('qt6-base')
-provides=('custom-toolbox')
-conflicts=('custom-toolbox')
+depends=('qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.07.tar.gz")
-sha256sums=('6a2b17bd49d53f2030396675156035adb2011fbdd8b53ff32c6bfecd0b4958b4')
+source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/${pkgver}.tar.gz"
+        'custom-toolbox.1')
+sha256sums=('05d89ae8abb3a5147cebb9183b23dd6f0dac8872eba1a88f55b9ff3fdd5ce577'
+            '54c35f8972270cdd666c0d90b95a203c717e7cd488a0edce3105bcfb2092e316')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -55,8 +55,12 @@ package() {
 
     # Install documentation
     install -dm755 "${pkgdir}/usr/share/doc/custom-toolbox"
+
+    install -Dm644 "${srcdir}/custom-toolbox.1" "${pkgdir}/usr/share/man/man1/custom-toolbox.1"
     if [ -d help ]; then
-        cp -r help/ "${pkgdir}/usr/share/doc/custom-toolbox/" 2>/dev/null || true
+        for help_file in help/*.html help/*.jpg help/*.png help/*.css; do
+            [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/custom-toolbox/$(basename "$help_file")"
+        done
     fi
 
     # Install changelog

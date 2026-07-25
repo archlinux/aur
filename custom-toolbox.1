@@ -1,0 +1,59 @@
+.TH CUSTOM-TOOLBOX 1 "2026-07-20" "MX Linux" "User Commands"
+.SH NAME
+custom-toolbox \- create and launch custom application toolboxes
+.SH SYNOPSIS
+.B custom-toolbox
+.RI [ options ]
+.RI [ file.list ]
+.SH DESCRIPTION
+.B custom-toolbox
+creates a graphical launcher from a text file with the
+.B .list
+extension. Files are normally stored in
+.IR /etc/custom-toolbox ,
+but a file in another location may be opened by giving its path on the command line.
+The application supports a key-value format and an INI format. Only entries with a matching desktop file are shown.
+.PP
+The key-value format uses fields such as
+.B Name
+,
+.B Comment
+,
+.B Category
+and application entries. Application entries may use the
+.B root
+,
+.B user
+,
+.B terminal
+and
+.B alias="..."
+flags. The INI format uses
+.B [General]
+,
+.B [Categories]
+, and category sections with comma-separated
+.B items
+entries; flags are separated by colons.
+.SH OPTIONS
+.TP
+.BR -r , " " --remove-checkbox
+Do not show the startup checkbox asking whether the dialog should be shown again.
+.TP
+.BR -h , " " --help
+Show help for the command.
+.TP
+.BR -v , " " --version
+Show the application version.
+.SH OPERANDS
+.TP
+.I file.list
+The full path of a custom toolbox file to load. If omitted, the application opens a file chooser.
+.SH FILES
+.TP
+.I /etc/custom-toolbox
+Default directory for toolbox files and examples.
+.SH SEE ALSO
+.BR desktop-file-edit (1)
+.SH AUTHOR
+MX Linux contributors.
