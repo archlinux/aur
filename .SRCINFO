@@ -1,6 +1,6 @@
 pkgbase = ditto
 	pkgdesc = A system-wide ASCII keyboard visualizer in the terminal
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/arvingarciabtw/ditto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ditto
 	depends = glibc
 	provides = ditto
 	options = !strip
-	source = ditto-1.2.0.tgz::https://github.com/arvingarciabtw/ditto/archive/v1.2.0.tar.gz
-	sha256sums = c148b93d0832d76952394e415648491684ff6ca4727027b139cd16c63f468e46
+	source = ditto-1.3.0.tgz::https://github.com/arvingarciabtw/ditto/archive/v1.3.0.tar.gz
+	sha256sums = d3aff8a4c6389fd89b52e79afcf4fd0a621f476dcc6b780407889aece31011c0
 
 pkgname = ditto
