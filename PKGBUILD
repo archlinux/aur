@@ -1,4 +1,5 @@
 # Maintainer: jacopotediosi <jacopotediosi at gmail dot com>
+# Maintainer: Yakov Till <yakov.till at gmail dot com>
 
 _pkgname=frida
 pkgname=python-$_pkgname-bin
