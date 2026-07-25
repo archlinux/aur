@@ -1,8 +1,8 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=undr
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/caskstrength/undr"
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('98568e2ebfe74479085dbb2e6ccbef31081f13c13b9b77abece8c5ba3de06d322b676488651545129252252550ddec257e00009accdcbd1ce22ab7b070c0dde7')
+sha512sums=('a361ca876f05999e5f1cb9ba32c8c3f8c964fda255737bb0399c8b25b7e7fa1651830d3b2536b24442b0bd25e16c65eebc643600d7cc666b2ee3c7439880a8c6')
 
 build() {
   cd "${pkgname}"
