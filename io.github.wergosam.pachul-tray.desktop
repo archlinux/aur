@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Pachul Update Tray
+Name[de]=Pachul Update-Tray
+Name[fr]=Indicateur de mises à jour Pachul
+Name[it]=Indicatore aggiornamenti Pachul
+Comment=Persistent tray icon showing pending Pacman/AUR updates
+Comment[de]=Dauerhaftes Tray-Icon für ausstehende Pacman/AUR-Updates
+Comment[fr]=Icône persistante indiquant les mises à jour Pacman/AUR en attente
+Comment[it]=Icona persistente per gli aggiornamenti Pacman/AUR in sospeso
+Exec=pachul-tray
+Icon=/usr/share/icons/hicolor/scalable/apps/io.github.wergosam.pachul.svg
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
