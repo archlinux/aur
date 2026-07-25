@@ -1,6 +1,6 @@
 pkgbase = thpm
 	pkgdesc = Omarchy 4-native manager for external theme integrations
-	pkgver = 1.0.0rc10
+	pkgver = 1.0.0rc11
 	pkgrel = 1
 	url = https://github.com/oldjobobo/thpm
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = thpm
 	provides = theme-hook-plugin-manager
 	conflicts = theme-hook-plugin-manager
 	replaces = theme-hook-plugin-manager
-	source = thpm-1.0.0rc10.tar.gz::https://github.com/oldjobobo/thpm/releases/download/v1.0.0rc10/thpm-1.0.0rc10.tar.gz
-	sha256sums = 7ce203d2667f7418db62df64ab58425801f34b6af6fa6647662f7b458d4db03e
+	source = thpm-1.0.0rc11.tar.gz::https://github.com/oldjobobo/thpm/releases/download/v1.0.0rc11/thpm-1.0.0rc11.tar.gz
+	sha256sums = 1e880de18ddb6a4d71fb4171428e106204643613e5349815e54cc460e5fb3674
 
 pkgname = thpm
