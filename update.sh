@@ -78,18 +78,28 @@ for arch in x86_64 i686 i486 pentium4; do
   echo "--- diff for $cfgfile ---"
   diff -u "$cfgfile" "${cfgfile}.new"
   mv "${cfgfile}.new" "$cfgfile"
+
+  # The x86_64 'config' file is also present, unmodified, in every 32-bit
+  # arch's source list (source_i686/i486/pentium4 only *add* config.$arch,
+  # they don't replace the shared 'config' entry -- see PKGBUILD). So the
+  # moment 'config' is overwritten above, its checksum in PKGBUILD must be
+  # updated immediately, before the next arch's makepkg re-verifies
+  # sources -- otherwise i686/i486/pentium4 fail with a checksum mismatch
+  # on 'config' (content changed, PKGBUILD's sha256sums entry stale).
+  if [ "$arch" = "x86_64" ]; then
+    echo "=== Updating main config checksum in PKGBUILD ==="
+    OLDCFGSUM=$(grep -F 'sha256sums[${i}]' PKGBUILD | grep -oE '[0-9a-f]{64}')
+    NEWCFGSUM=$(sha256sum config | cut -d' ' -f1)
+    echo "config: $OLDCFGSUM -> $NEWCFGSUM"
+    sed -i "s/${OLDCFGSUM}/${NEWCFGSUM}/g" PKGBUILD   # replaces both occurrences (main array + literal check)
+  fi
 done
 
 # clean up leftover build/log artifacts from the --nobuild runs
 rm -f ./*-prepare.log PKGBUILD-namcap.log "linux-${NEWVER}.tar.xz" "linux-${NEWVER}.tar.sign"
 rm -rf ./src
 
-echo "=== Updating config checksums in PKGBUILD ==="
-OLDCFGSUM=$(grep -F 'sha256sums[${i}]' PKGBUILD | grep -oE '[0-9a-f]{64}')
-NEWCFGSUM=$(sha256sum config | cut -d' ' -f1)
-echo "config: $OLDCFGSUM -> $NEWCFGSUM"
-sed -i "s/${OLDCFGSUM}/${NEWCFGSUM}/g" PKGBUILD   # replaces both occurrences (main array + literal check)
-
+echo "=== Updating remaining per-arch config checksums in PKGBUILD ==="
 NEWSUM_I686=$(sha256sum config.i686 | cut -d' ' -f1)
 NEWSUM_I486=$(sha256sum config.i486 | cut -d' ' -f1)
 NEWSUM_P4=$(sha256sum config.pentium4 | cut -d' ' -f1)
