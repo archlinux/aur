@@ -1,6 +1,6 @@
 pkgbase = python-requirements-language-server
 	pkgdesc = pip's requirements.txt language server
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/requirements-language-server
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-requirements-language-server
 	depends = python-pip
 	depends = python-jinja
 	depends = python-marisa-trie
-	source = https://files.pythonhosted.org/packages/source/r/requirements_language_server/requirements_language_server-0.1.2.tar.gz
-	sha256sums = 70544f5eaabbfa1991f84260536b94676a4eeacd991c74c79abd41e1392ebaca
+	source = https://files.pythonhosted.org/packages/source/r/requirements_language_server/requirements_language_server-0.1.3.tar.gz
+	sha256sums = e983df1ad46597fa53540dbe02f1891d711760f7ca9d786ec44e2226dde16724
 
 pkgname = python-requirements-language-server
