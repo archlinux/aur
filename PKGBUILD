@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=home-assistant-tui-git
-pkgver=20260724.0.r5.ge232fa2
+pkgver=20260725.0.r1.g126bcf9
 pkgrel=1
 pkgdesc="Terminal UI for Home Assistant (git version)"
 arch=('x86_64' 'aarch64')
