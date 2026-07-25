@@ -3,21 +3,19 @@
 # Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
 pkgname=mesen-ce-git
-pkgver=r3710.20ba206
+pkgver=r3765.4b99a0f
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)"
 arch=('x86_64')
 url="https://github.com/nesdev-org/MesenCE"
 license=('GPL-3.0-only')
 depends=(libevdev sdl2)
-makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
+makedepends=(dotnet-sdk-10.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
-source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git'
-  mesen-disable-shortcut-creation.patch)
-sha256sums=('SKIP'
-  'a2feb9ae42788dcc2113e606b37ac1ccff37546ee844f798ee06d507d63f2a98')
+source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -29,7 +27,6 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	sed -i -e 's/Exec=Mesen/Exec=mesen-ce/' -e 's/Icon=Mesen/Icon=mesen-ce/' 'Linux/appimage/Mesen.desktop'
-	patch -Np1 -i ../mesen-disable-shortcut-creation.patch
 }
 
 build() {
