@@ -1,6 +1,6 @@
 pkgbase = synaps
 	pkgdesc = Terminal-native AI agent runtime built in Rust
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/HaseebKhalid1507/SynapsCLI
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = synaps
 	depends = gcc-libs
 	depends = oniguruma
 	options = !lto
-	source = https://github.com/HaseebKhalid1507/SynapsCLI/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 43264e22a731803c965fea90a1b8ff2f601c6c2926d3b5f15af719823cff1851
+	source = https://github.com/HaseebKhalid1507/SynapsCLI/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = c356318bede4c52c468f116a6444de3a6d095a9e097231bd5090a389e80a00bb
 
 pkgname = synaps
