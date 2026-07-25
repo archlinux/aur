@@ -14,14 +14,14 @@
 pkgname=stepmania
 _pkgver=d55acb1ba26f1c5b5e3048d6d6c0bd116625216f
 pkgver=5.1.0.b2.r627.d55acb1ba2
-pkgrel=7
+pkgrel=8
 pkgdesc="Advanced rhythm game. Designed for both home and arcade use."
 arch=(x86_64)
 url="http://www.stepmania.com/"
 license=('MIT AND CC-BY-NC-4.0')
 depends=('mesa' 'glew' 'glu' 'udev' 'libx11' 'libxext' 'libxtst' 'libxinerama' 'libxrandr'
-  'alsa-lib' 'libpulse' 'ffmpeg' 'libmad' 'libogg' 'libvorbis' 'libjpeg' 'libpng'
-  'gtk3' 'libtommath' 'libtomcrypt' 'jsoncpp' 'pcre' 'zlib')
+  'alsa-lib' 'libpulse' 'ffmpeg' 'libmad' 'libogg' 'libvorbis' 'libjpeg-turbo' 'libpng'
+  'libtommath' 'libtomcrypt' 'jsoncpp' 'pcre' 'zlib')
 makedepends=('cmake')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/stepmania/stepmania/archive/$_pkgver.tar.gz"
   "$pkgname-3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch"
