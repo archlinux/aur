@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/tree-sitter-zathurarc/blob/main/.github/workflows/main.yml
 _name=tree-sitter-zathurarc
 pkgname=python-$_name
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="zathurarc grammar for tree-sitter"
 arch=(i686 x86_64 arm aarch64)
@@ -12,7 +12,7 @@ depends=(python-tree-sitter)
 makedepends=(uv python-installer python-setuptools)
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('5f30cba84c7dafc2f8f7443fe1cdec96bc29bc3e10be3937a5f66936293026e7')
+sha256sums=('6e82f5bd2ef784e50992ebadd50b1d9f63583e71cb7866342b703207c3b2196f')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
