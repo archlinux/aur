@@ -1,14 +1,14 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.1.0
+pkgver=17.1.2
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'zlib')
-makedepends=('bun' 'git' 'rustup')
+makedepends=('bun' 'clang' 'cmake' 'git' 'rustup')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
