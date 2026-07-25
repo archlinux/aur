@@ -34,4 +34,5 @@ package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir/usr/bin" target/release/nix-user-chroot
   install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 README.md
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
