@@ -1,7 +1,7 @@
 # Maintainer: twxt <aur@twxt.cc>
 
 pkgname=openmodsim-git
-pkgver=r2078.4793d50
+pkgver=r2138.25d1a817
 pkgrel=1
 pkgdesc="Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols."
 arch=('x86_64' 'i686' 'aarch64')
@@ -28,7 +28,7 @@ prepare() {
     -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR:STRING=lib \
-    -DCMAKE_BUILD_TYPE="RelWithDebInfo"\
+    -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
     src/
 }
 
