@@ -1,13 +1,17 @@
+#Author: Manojavya
+#Maintainer: Manojavya
+
 pkgname=optomizer
 pkgver=3.4.0
 pkgrel=1
-pkgdesc="Optomizer Java application"
+# Haha lol this kinda cringe tbh.
+pkgdesc="Optomizer the optimization tool for power users"
 arch=('any')
-url="https://github.com/AlphaWolf6940/Optomizer"
+url="https://github.com/manojavya/Optomizer"
 license=('MIT')
 depends=('jdk21-openjdk')
 makedepends=('git')
-source=("git+https://github.com/AlphaWolf6940/Optomizer.git")
+source=("git+https://github.com/manojavya/Optomizer.git")
 sha256sums=('SKIP')
 # This is how we comment in PKGBUILD... The more you know 🥀.
 package() {

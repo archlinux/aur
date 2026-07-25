@@ -1,13 +1,13 @@
 pkgbase = optomizer
-	pkgdesc = Optomizer Java application
+	pkgdesc = Optomizer the optimization tool for power users
 	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://github.com/AlphaWolf6940/Optomizer
+	url = https://github.com/manojavya/Optomizer
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = jdk21-openjdk
-	source = git+https://github.com/AlphaWolf6940/Optomizer.git
+	source = git+https://github.com/manojavya/Optomizer.git
 	sha256sums = SKIP
 
 pkgname = optomizer
