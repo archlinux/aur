@@ -1,7 +1,7 @@
 # Maintainer: coffee <coffee@coffeecat.top>
 
 pkgname=specify-cli-bin
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Specify CLI, part of GitHub Spec Kit — bootstrap projects for Spec-Driven Development (SDD)"
 arch=('any')
@@ -22,8 +22,8 @@ depends=(
 makedepends=('python-installer')
 provides=('specify-cli')
 conflicts=('specify-cli')
-source=("specify_cli-0.14.1-py3-none-any.whl::https://files.pythonhosted.org/packages/aa/b6/3b17a358c000fab877c760d29a00f59c806931853388d8215f1235594f02/specify_cli-0.14.1-py3-none-any.whl")
-sha256sums=('a6226d66e9db2b1dd1f70d0dce6b03fde44b67ae2a8167d58604611595c2cf55')
+source=("specify_cli-0.14.2-py3-none-any.whl::https://files.pythonhosted.org/packages/b5/e1/95ab753ebd61b48353e7189a3c0ab3aa3cb7cbd65cf0c50bd2327f312656/specify_cli-0.14.2-py3-none-any.whl")
+sha256sums=('19fb29e15ddf10d1551bbf62883e30b1b897e55a3216019f983b3ab904feefae')
 
 package() {
   cd "$srcdir"
