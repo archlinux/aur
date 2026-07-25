@@ -1,6 +1,6 @@
 # Maintainer: lxsh-S <kumarlakshya973@gmail.com>
 pkgname='gos-bin'
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A simple CLI tool that can be used to make project structures!"
 arch=('x86_64')
