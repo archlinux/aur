@@ -1,0 +1,10 @@
+--- a/src/util/random.hpp
++++ b/src/util/random.hpp
+@@ -3,6 +3,7 @@
+ #include <random>
+ #include <string>
+ #include <algorithm>
++#include <functional>
+ 
+ namespace util {
+     template <

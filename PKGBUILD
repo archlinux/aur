@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="voxelcore"
-pkgver=0.31.1
+pkgver=0.31.4
 pkgrel=1
 pkgdesc="Minecraft-like game engine in C++ with OpenGL"
 url="https://github.com/MihailRis/$pkgname"
@@ -13,12 +13,18 @@ makedepends=("cmake" "sed" "entt")
 source=(
     "$url/archive/refs/tags/v$pkgver.zip"
     "voxelcore.sh"
+    "patch-01.patch"
 )
-sha256sums=("7629dc21001084864d164c6a23a4e30a20572af70161ba8b1ed12e4c3f6ef1db"
-            "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e")
+sha256sums=("9327075d3c0195b292cd108a1e1c8b312a1b7c865d6bd6255d443b8033c1af9c"
+            "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e"
+            "ac8709370b77c1a1f3aed19c387600394d60d3eab41858772195d5e0c259ec94")
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # Patch for 0.31.4
+    patch -p1 -i "$srcdir/patch-01.patch"
+
     # Desktop file patching to run custom launch script that installed in system (check voxelcore.sh for more details)
     sed -i 's|Exec=VoxelEngine|Exec=voxelcore|' "$srcdir/$pkgname-$pkgver/dev/VoxelCore.desktop"
 }
