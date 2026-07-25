@@ -14,14 +14,12 @@ conflicts=("wine")
 source=(
     "git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/$pkgver-$pkgrel"
     https://github.com/irtkll/wine-proton-patch/raw/main/恢复字体.patch
-    https://github.com/irtkll/wine-proton-patch/raw/main/wine用户名.patch
-    https://github.com/irtkll/wine-proton-patch/raw/main/链接用户主目录到wine主目录.patch
+    https://github.com/irtkll/wine-proton-patch/raw/main/还原部分wine功能.patch
     https://github.com/NelloKudo/spritz-wine/raw/master/patches/0001-spritz/0003-programs-Add-Steam.exe-stub-from-Proton.patch
 )
 sha256sums=('SKIP'
-            'e5bbe669e881d41ad0ac530903b4356ec3bbace37bed1dcaddd9c2f2a81a29df'
-            '005ddb15938c05c53fdb0d652197b73c65ff4f3bf8f7f9e7c4ec851c7f2ba797'
-            'aca56ce67b20518bf3dbd4b5d54dbb5379e82f5cfeb1fd1e671064469f5836f4'
+            '1650786c3c108841371b39edcc2868ea56b4cf4f8c57320f4a49c79ed49a687e'
+            '5fc91749290610be0f313ab8c1b110ead12715e68447484198a38990cda661ae'
             '1e0ef2d38a64608773a80eae333abcaabe8be4bb9763524e15bea592d82c3556')
 prepare(){
     cd "$pkgname"
@@ -31,7 +29,7 @@ prepare(){
         src="${src%.zst}"
         [[ $src = *.patch ]] || continue
         msg2 "应用补丁 $src..."
-        patch -p1 -F3 < "../$src" || msg2 "应用补丁 $src 失败，但继续进行..."
+        git apply -p1 -C1 < "../$src" || msg2 "应用补丁 $src 失败，但继续进行..."
     done
     ./autogen.sh
     ./configure --enable-archs=i386,x86_64 --disable-tests --prefix=/usr
