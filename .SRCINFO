@@ -1,0 +1,27 @@
+pkgbase = python-tracepatch
+	pkgdesc = Focused, opt-in runtime call tracing for a single execution context
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/tracepatch/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = ipython
+	depends = python-django
+	depends = python-flask
+	depends = python-tomli
+	depends = python-tomli-w
+	depends = python-starlette
+	depends = python-pytest
+	provides = tracepatch
+	provides = tph
+	source = https://files.pythonhosted.org/packages/source/t/tracepatch/tracepatch-1.0.0.tar.gz
+	sha256sums = 898751086c4244d348a01506baa30032526803844a3f6c09cf1c68b02c92e5e2
+
+pkgname = python-tracepatch
