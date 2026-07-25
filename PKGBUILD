@@ -6,7 +6,7 @@
 # GPG keys: https://github.com/visorcraft.gpg
 
 pkgname=grexa
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
 arch=(x86_64)
@@ -36,14 +36,13 @@ optdepends=(
 provides=(grexa-cli)
 options=(!lto)
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('cc362e660fa83660fef52cbaa90bf6b197a13f6452a28b5a384597a394128933')
+sha256sums=('aea2f49aecc37fbeb04d435cd2a91911845d5fc7225d8be15ed1d85169f2d8b7')
 validpgpkeys=('198BC500E85FE8B2C24227B90526453161165CE5')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
     cargo fetch --locked --target host-tuple
-    cargo tree --locked --all-features --prefix=none
 }
 
 build() {
