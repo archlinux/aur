@@ -6,7 +6,7 @@
 
 set -u
 pkgname='justniffer'
-pkgver=0.6.13
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
@@ -31,11 +31,11 @@ source+=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz
 if [ "$(vercmp "${pkgver}" "0.6.0")" -ge 0 ]; then
   _srcdir+='/main'
 fi
-md5sums=('55af9038453818bf66d786f07a046135'
-         'f8b30563fd692697902b335f7d617527'
+md5sums=('7b88b20cc6a50ec4a3637701dd8cc271'
+         'd3a59cf7865c7b91226acf7e8ab3cc84'
          '53c7d7dd2f38aaf727fedc9236de8bff')
-sha256sums=('c887ce8db4485df2d6838da4338a61e708dd1583064c6ffdc99c836f766c5ac8'
-            'cc472c25a2931abec83a94ad0b4e40802be338136166e2f07a4a217bed5f73a6'
+sha256sums=('ba2b6ac64f8c23198b216db032838e85acb7c594daeb525f2be9d871923afcaf'
+            '00e5e7b5d73610d6edbc0a0d677834ce5d2ea50e353e7139961304629c87eb83'
             '1c819bdb553f022fed906aece6d114de8c0bbdec8c4f6b7aa1a16c964fdb816e')
 
 prepare() {
