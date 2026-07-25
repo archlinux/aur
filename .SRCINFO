@@ -1,13 +1,13 @@
 pkgbase = prql-bin
 	pkgdesc = PRQL is a modern language for transforming data — a simple, powerful, pipelined SQL replacement
-	pkgver = 0.13.13
+	pkgver = 0.13.14
 	pkgrel = 1
 	url = https://prql-lang.org
 	arch = x86_64
 	license = Apache-2.0
 	provides = prql
 	conflicts = prql
-	source_x86_64 = https://github.com/PRQL/prql/releases/download/0.13.13/prqlc-0.13.13-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = d74473c8870d7076ccdbe0f25162de4af84062c8d08220f5a66f1aca4affa1ca
+	source_x86_64 = https://github.com/PRQL/prql/releases/download/0.13.14/prqlc-0.13.14-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3eef70514df6e13cf157225bb549c651ed32de05e5379b43d5d1c4c02248d53b
 
 pkgname = prql-bin
