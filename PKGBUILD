@@ -1,7 +1,7 @@
 # Maintainer: 32faf5189bf14d60 <github.refusal864@passinbox.com>
 pkgname=octarine-bin
 pkgdesc="Private, markdown-based note-taking app with a focus on speed, simplicity and data ownership. Write faster, think clearer."
-pkgver=0.47.4	
+pkgver=0.48.0	
 pkgrel=1
 arch=("x86_64")
 url="https://octarine.app"
