@@ -1,0 +1,17 @@
+pkgbase = niri-pimg
+	pkgdesc = Lightweight screenshot pin and annotation tool for niri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CokeAsh/niri-pimg
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-cairo
+	depends = wl-clipboard
+	depends = niri
+	source = niri-pimg-0.1.0.tar.gz::https://github.com/CokeAsh/niri-pimg/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 23ed492d65db1a32a2ed2a174f6862375bc4fa559eb002abda0690cfaaa83a11
+
+pkgname = niri-pimg
