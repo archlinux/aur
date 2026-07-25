@@ -1,4 +1,5 @@
-# Maintainer: AhooraZen
+# Maintainer: Ali <Im_wrench@proton.me>
+# Contributor: AhooraZen
 
 pkgname=allp-manager-git
 _pkgname=allp-manager
