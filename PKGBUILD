@@ -2,7 +2,7 @@
 _pkgname=beyond-cubed
 pkgname="${_pkgname}-git"
 pkgver=r37.9cb67a6
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility."
 arch=('x86_64')
 url="https://gitlab.com/coolGi/beyond-cubed"
@@ -31,11 +31,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cargo build --release --bin ${_pkgname} --locked
+	cargo build --release --bins --locked
 }
 
 package() {
 	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}-cli" "${pkgdir}/opt/${_pkgname}/${_pkgname}-cli"
 	# Add .desktop entry
 	install -D "${srcdir}/beyond-cubed.desktop" "${pkgdir}/usr/share/applications/beyond-cubed.desktop"
 }
