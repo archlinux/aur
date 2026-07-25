@@ -1,0 +1,19 @@
+post_install() {
+    cat <<'EOF'
+==> nzxt-ctl setup:
+    1. Add yourself to the nzxt-ctl group (needed for the GUI to reach
+       the daemon socket and save curves), then log out and back in:
+         sudo usermod -aG nzxt-ctl "$USER"
+    2. Enable and start the daemon:
+         sudo systemctl enable --now nzxt-ctl.service
+    Config lives in /etc/nzxt-ctl/config.toml; launch nzxt-ctl-gui to
+    edit curves graphically.
+EOF
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet nzxt-ctl.service; then
+        echo '==> Restart the daemon to run the updated binary:'
+        echo '      sudo systemctl restart nzxt-ctl.service'
+    fi
+}

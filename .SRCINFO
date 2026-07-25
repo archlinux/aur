@@ -1,0 +1,24 @@
+pkgbase = nzxt-ctl-git
+	pkgdesc = Pump/fan curve control daemon and Kirigami GUI for the NZXT Kraken 2023 (CAM replacement)
+	pkgver = r6.181bb5e
+	pkgrel = 1
+	url = https://github.com/VLDG2712/nzxt-ctl
+	install = nzxt-ctl.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = clang
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	optdepends = nvidia-utils: GPU temperature source via nvidia-smi
+	provides = nzxt-ctl
+	conflicts = nzxt-ctl
+	backup = etc/nzxt-ctl/config.toml
+	source = nzxt-ctl-git::git+https://github.com/VLDG2712/nzxt-ctl.git
+	sha256sums = SKIP
+
+pkgname = nzxt-ctl-git
