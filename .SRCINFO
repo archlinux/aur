@@ -1,7 +1,7 @@
 pkgbase = yurigram
 	pkgdesc = Yet another unofficial tdesktop client
 	pkgver = 7.0.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Revincx/Yurigram
 	arch = x86_64
 	arch = aarch64
@@ -68,7 +68,7 @@ pkgbase = yurigram
 	conflicts = yukigram-rua-bin
 	replaces = yukigram-rua
 	replaces = yukigram-rua-bin
-	source = yurigram::git+https://github.com/Revincx/Yurigram.git#tag=7.0.5-1
+	source = yurigram::git+https://github.com/Revincx/Yurigram.git#tag=7.0.5-3
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	sha256sums = SKIP
 	sha256sums = SKIP

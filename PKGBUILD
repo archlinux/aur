@@ -2,7 +2,7 @@
 
 pkgname=yurigram
 pkgver=7.0.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Revincx/Yurigram"
