@@ -1,0 +1,14 @@
+pkgbase = crabterm
+	pkgdesc = A bit like picocom/minicom but also with server capabilities
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/allannielsen/crabterm
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/allannielsen/crabterm/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = 8ed4807f8d8daa16daa7c8e5570bcdf77376e4c3b34aff97aa2dd1d55132e031acbcea1d3329d6d169d41d80059c49385dd4f05f7b431ce7317d1abec8019b9c
+
+pkgname = crabterm
