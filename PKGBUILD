@@ -1,8 +1,8 @@
 # Maintainer: William Canin <hello.williamcanin@gmail.com>
 
 pkgname=tildr-bin
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Manage HOME files and directories with symlinks and Git."
 arch=('x86_64')
 url="https://orbitbits.com/tildr"
