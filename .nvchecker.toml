@@ -2,4 +2,5 @@
 source = "github"
 github = "nextcloud/groupfolders"
 prefix = "v"
-use_latest_release = true
+sort_version_key = "vercmp"
+use_max_release = true
