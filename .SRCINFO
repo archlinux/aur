@@ -1,7 +1,7 @@
 pkgbase = superset-bin
 	pkgdesc = Code Editor for the AI Agents Era - Run an army of Claude Code, Codex, etc. on your machine
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://superset.sh
 	arch = x86_64
 	license = custom
