@@ -1,6 +1,6 @@
 pkgbase = sysforge-git
 	pkgdesc = Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds (git)
-	pkgver = 2.6.0.r0.g0000000
+	pkgver = 2.6.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/KeithRaghubar/sysforge
 	install = sysforge.install
