@@ -2,7 +2,7 @@
 
 pkgname=appmenu-gtk-module-wayland
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3 global menu on plasma wayland."
 arch=('x86_64' 'aarch64')
 url=https://github.com/guiodic/appmenu-gtk-module-wayland
@@ -16,7 +16,7 @@ optdepends=(
 source=(
   "${url}/archive/refs/heads/master.tar.gz"
 )
-sha256sums=('f24cacb717bc8e1db72e801fccaede1934f87b6199d9a659b3fb8353c797b65c')
+sha256sums=('f6b9d0c5943d01642bbffad37fe8248f0408c77630bc453db0f136ffa23206ec')
 
 build() {
     cd "$pkgname-master"
