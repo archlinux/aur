@@ -1,0 +1,15 @@
+pkgbase = cosmic-ext-niri-windows
+	pkgdesc = Window list applet for COSMIC panel with Niri window manager integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wellzenon/cosmic-ext-niri-windows
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = cosmic-panel
+	depends = niri
+	source = cosmic-ext-niri-windows-0.1.0.tar.gz::https://github.com/wellzenon/cosmic-ext-niri-windows/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-niri-windows
