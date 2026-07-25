@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=sdroxide
+GenericName=SDR Transceiver
+Comment=Software-defined-radio transceiver with FT8/FT4, SSTV and a web UI
+Exec=sdroxide
+Icon=sdroxide
+Terminal=false
+Categories=AudioVideo;Audio;HamRadio;
+Keywords=SDR;radio;transceiver;FT8;FT4;SSTV;CW;ham;amateur;shortwave;SoapySDR;
+# winit/eframe sets WM_CLASS (X11) and app_id (Wayland) from the name passed to
+# run_native, so the running window matches this entry in the taskbar/dock.
+StartupWMClass=sdroxide
+StartupNotify=true
