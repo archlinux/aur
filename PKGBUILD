@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Fortran Shell - A modern shell implementation with AST-based parsing'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('gcc-fortran' 'make')
 source=("https://github.com/FortranGoingOnForty/fortsh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10857717b62dfeab3e214452ec9cb3123588d79b4d853f71c44bf94d0baa072f')
+sha256sums=('e8ebdf06b7ec53c6fc37e38676e6afed8215f4336217315de44b9525ceffc00f')
 
 build() {
     cd "$pkgname-$pkgver"
