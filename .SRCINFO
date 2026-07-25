@@ -1,0 +1,21 @@
+pkgbase = bounce-bin
+	pkgdesc = A metadata-protecting distributed group chat application
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bounce-chat/bounce
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = wayland
+	provides = bounce-bin
+	conflicts = bounce
+	conflicts = bounce-bin
+	options = !debug
+	source = https://github.com/bounce-chat/bounce/releases/download/v0.1.0/bounce-0.1.0.deb
+	source = LICENSE
+	sha256sums = c2eae492c08af5460f4a53f7f0f6e0abb92aed624589e930e50040d610dbb519
+	sha256sums = e52465d21d1b91e02357470ae262725b8f73d7ecc271a8d1ed7ff2e49f3bc6dc
+
+pkgname = bounce-bin
