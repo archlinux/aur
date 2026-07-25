@@ -1,6 +1,6 @@
 pkgbase = llavon-ime-fcitx5-git
 	pkgdesc = Fcitx5 frontend and local inference service for Llavon IME
-	pkgver = 0.2.2.r2.g57dd055
+	pkgver = 0.2.2.r3.g5c9aa9d
 	pkgrel = 1
 	url = https://github.com/llavon-ime/ime-fcitx5
 	arch = x86_64
@@ -10,12 +10,17 @@ pkgbase = llavon-ime-fcitx5-git
 	makedepends = curl
 	makedepends = git
 	makedepends = ninja
-	makedepends = pkgconf
+	makedepends = python
 	makedepends = tar
 	makedepends = unzip
 	makedepends = zip
 	depends = fcitx5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = vulkan-icd-loader
 	optdepends = fcitx5-configtool: graphical configuration for fcitx5
+	optdepends = vulkan-driver: Vulkan GPU acceleration
 	provides = llavon-ime-fcitx5
 	conflicts = llavon-ime-fcitx5
 	source = ime-fcitx5::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=main

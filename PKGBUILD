@@ -4,15 +4,18 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r2.g57dd055
+pkgver=0.2.2.r3.g5c9aa9d
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llavon-ime/ime-fcitx5'
 license=('BSD-2-Clause')
-depends=('fcitx5')
-makedepends=('cmake' 'curl' 'git' 'ninja' 'pkgconf' 'tar' 'unzip' 'zip')
-optdepends=('fcitx5-configtool: graphical configuration for fcitx5')
+depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader')
+makedepends=('cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
+optdepends=(
+    'fcitx5-configtool: graphical configuration for fcitx5'
+    'vulkan-driver: Vulkan GPU acceleration'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
