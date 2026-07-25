@@ -5,7 +5,7 @@
 
 pkgname=ltsa
 pkgver=3.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Labelled Transition System Analyser, a verification tool for concurrent systems"
 arch=('any')
 url="http://www.doc.ic.ac.uk/ltsa/"
