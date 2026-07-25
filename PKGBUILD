@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=('allp' 'allp-manager')
 conflicts=('allp-manager-bin' 'allp-manager-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/allp-manager/allp-manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a73e15f51ecb952904c0071d272bd448151c454b1802a4db682e7a8e77f14419')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
