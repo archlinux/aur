@@ -1,13 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=slay
-pkgver=1.3.3
-pkgrel=3
+pkgver=1.3.4
+pkgrel=1
 pkgdesc='Compile C++ code by detecting flags and includes automatically'
 arch=(x86_64)
 url='https://github.com/xyproto/slay'
 license=(BSD-3-Clause)
 makedepends=(git go)
+provides=(cxx)
+replaces=(cxx)
 optdepends=('ccache: For faster builds'
             'clang: For clang-format and for clang++'
             'gprof2dot: For visualizing profiling information'
@@ -18,7 +20,7 @@ optdepends=('ccache: For faster builds'
             'valgrind: For tracing calls and profiling'
             'wine: For running 64-bit Windows exectuables')
 source=("git+$url#tag=v$pkgver")
-b2sums=('1f7ac7dd64f5a69ec3dd2d44e0cfefad6d21f2668cdf7497cf92465d5fc9f5e348471f69238a65da7dc95d5fb1a38799dad24404f59f1fd2964e5d2d9f4fee16')
+b2sums=('16c15bc1d37804bfd0d956ef1ffe6abac89f22b4a031eb6d9d9a6ee492a3bc150d070ae021dbc7069a24a42fb8ced46abbe35ebc65c7e0c24a8d2c5d6161ac40')
 
 build() {
   make -C $pkgname
