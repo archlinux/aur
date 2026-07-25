@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SAMBA Util
+Comment=A simple and modern GUI for managing Samba.
+Exec=samba-util
+Icon=samba-util
+Terminal=false
+Type=Application
+Categories=Utility;
+
