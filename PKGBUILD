@@ -2,21 +2,30 @@
 
 pkgname=openmodsim
 _pkgname_caps=OpenModSim
-pkgver=2.0.0.rc1
+pkgver=2.0.0.rc2
 _pkgver_fmt=${pkgver/.rc/-rc}
 pkgrel=1
 pkgdesc="Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols."
 arch=('x86_64' 'i686')
 url="https://github.com/sanny32/openmodsim"
 license=('MIT')
-depends=('gcc' 'qt6-base' 'qt6-declarative' 'qt6-5compat' 'qt6-tools' 'qt6-serialport' 'qt6-serialbus' 'qt6-svg')
+depends=('gcc' 'qt6-base>=6.8' 'qt6-declarative' 'qt6-5compat' 'qt6-tools' 'qt6-serialport' 'qt6-serialbus' 'qt6-svg')
 makedepends=('cmake')
 optdepends=('openmodscan: for a Modbus master (client)')
 provides=('openmodsim')
 conflicts=('openmodsim')
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sanny32/OpenModSim/archive/refs/tags/${_pkgver_fmt}.tar.gz")
-sha256sums=('38c8077837cc54b09e9c43a9839eeb051bd45665b955b62c76fd34d40b1b1481')
+sha256sums=('b572019f4ef7c03465631d344e04b9acfc4edf0b34e87c57e4b2857df495448e')
+
+_automok_build_error_help() {
+  echo "Message from the AUR maintainer:"
+  echo "If the build has failed due to an AutoMok error regarding a file in"
+  echo "'src/styles/' and mentions something like 'no class found', you may"
+  echo "need to restart your terminal so that display-realted environment"
+  echo "variables function correctly."
+  return $1
+}
 
 prepare() {
   cd "${srcdir}/${_pkgname_caps}-${_pkgver_fmt}"
@@ -31,7 +40,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname_caps}-${_pkgver_fmt}"
-  make
+  make || _automok_build_error_help $?
 }
 
 package() {
