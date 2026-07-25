@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> claude-monitor installed."
+    echo "==> Enable the daemon for your user:"
+    echo "      systemctl --user enable --now claude-monitor"
+    echo ""
+    echo "==> Then add to your tmux config (~/.config/tmux/tmux.conf):"
+    echo "      set -g status-right-length 200"
+    echo "      set -g status-right '#(claude-monitor status) | %H:%M'"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
