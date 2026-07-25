@@ -21,7 +21,7 @@ build() {
   
   export CGO_ENABLED=0
   
-  go build -trimpath -ldflags='-s -w' -o $pkgname ./cmd/$pkgname
+  go build -trimpath -ldflags="-s -w -X 'main.versionConstPart=sinq $_tag - '" -o $pkgname ./cmd/$pkgname
   
   go-md2man -in docs/man.md -out sinq.1
 }
