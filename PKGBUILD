@@ -4,7 +4,7 @@
 pkgname=channel
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="Input for river"
+pkgdesc="An input manager for the river compositor"
 arch=('x86_64')
 url="https://codeberg.org/sivecano/channel"
 license=('GPL3')

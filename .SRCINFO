@@ -1,5 +1,5 @@
 pkgbase = channel
-	pkgdesc = Input for river
+	pkgdesc = An input manager for the river compositor
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://codeberg.org/sivecano/channel
