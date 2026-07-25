@@ -1,5 +1,5 @@
 pkgbase = kickoutchi-bin
-	pkgdesc = A clean TUI and CLI port janitor
+	pkgdesc = TUI and CLI to see which process owns a local port and kill it safely (prebuilt)
 	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/nuggocto/kickoutchi
