@@ -1,6 +1,6 @@
 pkgbase = throne-sysqt-bin
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box) not pack the Qt libraries
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/throneproj/Throne
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = throne-sysqt-bin
 	source = Throne.sh
 	sha256sums = 1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d
 	sha256sums = ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb
-	source_x86_64 = throne-1.1.4-debian-system-qt-x64.deb::https://github.com/throneproj/Throne/releases/download/1.1.4/Throne-1.1.4-debian-amd64-system-qt.deb
-	sha256sums_x86_64 = 54d007be949b6059237142366e59e0e9b3b21e3ab2279fa55e7ad1da9bb3e60f
+	source_x86_64 = throne-1.2.0-debian-system-qt-x64.deb::https://github.com/throneproj/Throne/releases/download/1.2.0/Throne-1.2.0-debian-amd64-system-qt.deb
+	sha256sums_x86_64 = sha256:c9fdf7cff49322653fba318c05231b8a5815a40716e49cac46cd9348923946c5
 
 pkgname = throne-sysqt-bin
