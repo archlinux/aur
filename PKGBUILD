@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Palencsar <moin@nerdbear.de>
 pkgname=bearwave-git
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="KDE-focused desktop internet radio app"
 arch=('x86_64')
 url="https://github.com/spalencsar/bearwave"
@@ -15,9 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  # Holt das letzte Tag (z.B. 1.0.1), die Anzahl der Commits danach und den Hash
+  # Holt das letzte Tag (z.B. 1.2.0), die Anzahl der Commits danach und den Hash
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' || \
-  printf "1.1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

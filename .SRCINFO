@@ -1,7 +1,7 @@
 pkgbase = bearwave-git
 	pkgdesc = KDE-focused desktop internet radio app
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/spalencsar/bearwave
 	arch = x86_64
 	license = GPL-3.0-or-later
