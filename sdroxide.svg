@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sdroxide application icon: panadapter trace over a waterfall, with the
+     orange tuning cursor — the same motif as the main window. Master copy;
+     the PNG/ICO/ICNS files next to it are rendered from this by
+     packaging/icons/render.sh. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#18202b"/>
+      <stop offset="1" stop-color="#080b10"/>
+    </linearGradient>
+    <linearGradient id="under" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5fd8f7" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#5fd8f7" stop-opacity="0.03"/>
+    </linearGradient>
+    <!-- Waterfall colour ramp: the classic blue -> cyan -> green -> yellow ->
+         red scale, laid out horizontally so each row reads as a spectrum. -->
+    <linearGradient id="wf1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0.00" stop-color="#0a1e6e"/>
+      <stop offset="0.18" stop-color="#1450d8"/>
+      <stop offset="0.34" stop-color="#12b7c8"/>
+      <stop offset="0.50" stop-color="#1fd07a"/>
+      <stop offset="0.66" stop-color="#d8e02a"/>
+      <stop offset="0.80" stop-color="#f04a1e"/>
+      <stop offset="1.00" stop-color="#12308f"/>
+    </linearGradient>
+    <linearGradient id="wf2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0.00" stop-color="#123ba8"/>
+      <stop offset="0.16" stop-color="#0d8fd6"/>
+      <stop offset="0.30" stop-color="#1fd07a"/>
+      <stop offset="0.46" stop-color="#0a2a86"/>
+      <stop offset="0.62" stop-color="#26c6f0"/>
+      <stop offset="0.78" stop-color="#e8d422"/>
+      <stop offset="1.00" stop-color="#0a1e6e"/>
+    </linearGradient>
+    <linearGradient id="wf3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0.00" stop-color="#0a1e6e"/>
+      <stop offset="0.22" stop-color="#1450d8"/>
+      <stop offset="0.40" stop-color="#0f9fbe"/>
+      <stop offset="0.54" stop-color="#0a2a86"/>
+      <stop offset="0.70" stop-color="#2fd36a"/>
+      <stop offset="0.86" stop-color="#1450d8"/>
+      <stop offset="1.00" stop-color="#0a1e6e"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect x="16" y="16" width="480" height="480" rx="96" ry="96"/>
+    </clipPath>
+  </defs>
+
+  <rect x="16" y="16" width="480" height="480" rx="96" ry="96" fill="url(#bg)"/>
+
+  <g clip-path="url(#round)">
+    <!-- Panadapter: filled skirt under the trace, then the trace itself. -->
+    <path fill="url(#under)"
+          d="M52 268 L52 240 L74 246 L92 214 L110 244 L128 232 L146 250 L164 176
+             L182 250 L200 238 L218 248 L236 226 L256 118 L276 226 L294 244
+             L312 210 L330 246 L348 234 L366 250 L384 196 L402 248 L420 238
+             L438 246 L460 240 L460 268 Z"/>
+    <path fill="none" stroke="#5fd8f7" stroke-width="15"
+          stroke-linejoin="round" stroke-linecap="round"
+          d="M52 240 L74 246 L92 214 L110 244 L128 232 L146 250 L164 176
+             L182 250 L200 238 L218 248 L236 226 L256 118 L276 226 L294 244
+             L312 210 L330 246 L348 234 L366 250 L384 196 L402 248 L420 238
+             L438 246 L460 240"/>
+
+    <!-- Waterfall rows. -->
+    <rect x="52" y="300" width="408" height="48" rx="8" fill="url(#wf1)"/>
+    <rect x="52" y="358" width="408" height="48" rx="8" fill="url(#wf2)"/>
+    <rect x="52" y="416" width="408" height="48" rx="8" fill="url(#wf3)"/>
+
+    <!-- Tuning cursor, spanning spectrum and waterfall like the real UI. -->
+    <rect x="249" y="88" width="14" height="384" rx="7" fill="#ff8c1a"/>
+  </g>
+
+  <rect x="16" y="16" width="480" height="480" rx="96" ry="96"
+        fill="none" stroke="#3a4757" stroke-width="8"/>
+</svg>
