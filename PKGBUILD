@@ -2,7 +2,7 @@
 # Contributor: TBK <aur at jjtc dot eu>
 
 pkgname=termius
-pkgver=9.40.1
+pkgver=9.41.1
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -17,11 +17,11 @@ options=('!strip' '!debug')
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.version' -r
 source=(
-    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_264.snap"
+    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_265.snap"
     "termius.desktop"
     "tos.html"
 )
-sha512sums=('090f995c33fc449ad97e9f9fd46744cbaae878ba248fa3b098370755118d6c3e5d72ed78cf38cae499985f1b2bf81d8d47d91f3e4c50c5c706d0bd024b3f4e8a'
+sha512sums=('7ea3f2b6512d8488536dd08ec8ca04ecab0972987c6ae52b47c5aaeaf8647d0beb6a18937767a31a2e8cc6df7ca19e190db430539c6fdc1946d3be4c7b4b766c'
             'f1ce576d42a624842c9d08807c11580421b708b4bd7fac3aa9874769735df87566012e8fc0f993b08618f31d2f38588cd83d8572a2700f35d42e2761984ca5d0'
             '6ac7c082d1adba92dd911f46f9926f702be0f92a9843e6252364477d81364569eeeee9b37170a6d9000fde644588734cb6a11d165fc0aff3dbfbcd6ad353ca96')
 
