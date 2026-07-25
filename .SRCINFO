@@ -1,6 +1,6 @@
 pkgbase = aq-bin
 	pkgdesc = Like jq, but for JSON, TOML & YAML
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/rossmacarthur/aq
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = aq-bin
 	provides = aq
 	conflicts = aq
 	conflicts = aq-git
-	source = aq-0.5.0.tar.gz::https://github.com/rossmacarthur/aq/releases/download/0.5.0/aq-0.5.0-x86_64-unknown-linux-gnu.tar.gz
-	b2sums = 18e0bbf3eefae27d0bbec1f9392a8aa7d3c50217c77946ce7ff2b1fcd1f7f4e5faa69b8a9e968b751ea0c6408c6549494568168a18944d3b162e9769bf985365
+	source = aq-0.5.1.tar.gz::https://github.com/rossmacarthur/aq/releases/download/0.5.1/aq-0.5.1-x86_64-unknown-linux-gnu.tar.gz
+	b2sums = e27b6ac6a0df0bb014889de379f5fbccdd07768c6719708cb637f0a65ca91044705a47ac3382915ef6cbf6bb1761e93077bd86926855e5789e43522ae467941c
 
 pkgname = aq-bin
