@@ -1,0 +1,14 @@
+pkgbase = genote-bin
+	pkgdesc = Generate IT study notes using local LLMs via Ollama (pre-compiled binary)
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/xmb03/Genote
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = genote
+	conflicts = genote
+	source = https://github.com/xmb03/Genote/releases/download/v0.3.4/genote-linux-x86_64.tar.gz
+	sha256sums = 794727c120fd8206957ca8f8d59e44e891879687ff3e40681b58600cbca446f0
+
+pkgname = genote-bin
