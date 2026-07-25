@@ -1,0 +1,16 @@
+pkgbase = m3u-viewer
+	pkgdesc = Fast terminal viewer for large M3U and M3U8 playlists
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/jvonscheidt/m3u-viewer
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = vlc: play selected channels
+	options = !lto
+	source = m3u-viewer-0.7.1.tar.gz::https://github.com/jvonscheidt/m3u-viewer/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = db0ae032722fc93a39bc984bdb496a52e4090242c4a67e1feaa79c5096eecc39
+
+pkgname = m3u-viewer
