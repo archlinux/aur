@@ -5,7 +5,7 @@
 # Modified for a proper AUR release
 
 pkgname=grexa-bin
-pkgver=1.5.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL-3.0-only')
 provides=('grexa-cli' 'grexa')
 conflicts=('grexa')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/grexa-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('b3e9a3e45cb7b9c5820354f3b16b3b0f9732379ea6500a18122dca20c598fd0b')
+sha256sums=('5c2e3203a8260dfe5b2a14e8dde738b06388aba16967eb915d1eb7105f7fd7f5')
 
 package() {
     depends=(

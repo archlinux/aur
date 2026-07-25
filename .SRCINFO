@@ -1,6 +1,6 @@
 pkgbase = grexa-bin
 	pkgdesc = Fast Linux file content search with tabs, replace, and AI assistance
-	pkgver = 1.5.3
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/visorcraft/Grexa
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = grexa-bin
 	provides = grexa-cli
 	provides = grexa
 	conflicts = grexa
-	source = grexa-bin-1.5.3.tar.gz::https://github.com/visorcraft/Grexa/releases/download/v1.5.3/grexa-1.5.3-linux-x86_64.tar.gz
-	sha256sums = b3e9a3e45cb7b9c5820354f3b16b3b0f9732379ea6500a18122dca20c598fd0b
+	source = grexa-bin-1.11.0.tar.gz::https://github.com/visorcraft/Grexa/releases/download/v1.11.0/grexa-1.11.0-linux-x86_64.tar.gz
+	sha256sums = 5c2e3203a8260dfe5b2a14e8dde738b06388aba16967eb915d1eb7105f7fd7f5
 
 pkgname = grexa-bin
 	depends = qt6-base
