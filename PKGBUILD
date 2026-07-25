@@ -28,7 +28,7 @@ fi
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver='5.4.0'
+pkgver='5.5.1'
 pkgrel='1'
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
@@ -41,8 +41,8 @@ options=('!strip')
 install="${_pkgname}.install"
 #source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
 source=("https://www.adminer.org/static/download/${pkgver}/editor-${pkgver}.php")
-md5sums=('8132f132f0ac24f7aea421291ed56743')
-sha256sums=('bb67e0eca977205f0fd5e217b47c1028e4539d493ba5e363274e1ec01db3b513')
+md5sums=('1efd2e4145b81ab82d57e372cda01649')
+sha256sums=('def27f2b4d0782f4ae246ed0f09958b21ff1da10f087e6982871d50f6741902e')
 
 package() {
   set -u
