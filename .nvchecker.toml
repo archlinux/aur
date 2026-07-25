@@ -1,0 +1,5 @@
+[otui-bin]
+source = "github"
+github = "hkdb/otui"
+use_latest_release = true
+prefix = "v"
