@@ -49,6 +49,7 @@ package() {
     cd polonium
     install -D -o root -m 755 -d "$pkgdir/usr/share/kwin/scripts"
     cp -r pkg "$pkgdir/usr/share/kwin/scripts/polonium"
+    install -D -o root -m 644 -t "$pkgdir/usr/share/applications" res/polonium-settings.desktop
 
     install -D -o root -m 755 -t "$pkgdir/usr/bin" dbus-saver/target/release/polonium-saver
     install -D -o root -m 644 -t "$pkgdir/usr/lib/systemd/user" dbus-saver/polonium-saver.service
