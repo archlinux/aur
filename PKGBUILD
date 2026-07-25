@@ -2,7 +2,7 @@
 
 pkgname=openmodsim-git
 pkgver=r2138.25d1a817
-pkgrel=2
+pkgrel=3
 pkgdesc="Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/sanny32/openmodsim"
@@ -22,7 +22,7 @@ _automok_build_error_help() {
   echo "'src/styles/' and mentions something like 'no class found', you may"
   echo "need to restart your terminal so that display-realted environment"
   echo "variables function correctly."
-  return 1
+  return $1
 }
 
 pkgver() {
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  make || _automok_build_error_help
+  make || _automok_build_error_help $?
 }
 
 package() {
