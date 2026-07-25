@@ -10,11 +10,11 @@ license=('MIT')
 depends=('pacman' 'libalpm.so' 'display3d')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c15d36db6a181ed5cc12ca6db582f9e67722d165f6670be4774dd9640a507d03')
+sha256sums=('bdbb6ca038998eb60c26d21fc1103cf1ea4987d2c1802e4a081e29ad1eece143')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release 
 }
 
 package() {
