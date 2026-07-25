@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge-git
-pkgver=2.5.1.r0.g0000000  # updated dynamically by pkgver()
+pkgver=2.6.0.r0.g0000000  # updated dynamically by pkgver()
 pkgrel=1
 pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds (git)"
 arch=('any')
