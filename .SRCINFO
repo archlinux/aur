@@ -1,6 +1,6 @@
 pkgbase = ai-usagebar
 	pkgdesc = Waybar widget + TUI for AI plan usage across Anthropic, OpenAI, Z.AI, OpenRouter, DeepSeek, Kimi, and Antigravity
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-usagebar
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ai-usagebar
 	conflicts = ai-usagebar-bin
 	options = !lto
 	options = !debug
-	source = ai-usagebar-0.17.1.tar.gz::https://github.com/akitaonrails/ai-usagebar/archive/refs/tags/v0.17.1.tar.gz
-	sha256sums = c26c909d32808401a0e636b59d4f727a050b353a0d2d1e552bed7f2322aa99c6
+	source = ai-usagebar-0.17.2.tar.gz::https://github.com/akitaonrails/ai-usagebar/archive/refs/tags/v0.17.2.tar.gz
+	sha256sums = 6271b596a14f4fe250ebe8d471508da8dd7153f0f8553a747e0140608422668c
 
 pkgname = ai-usagebar
