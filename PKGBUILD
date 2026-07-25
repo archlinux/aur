@@ -6,7 +6,7 @@
 
 pkgname=dma
 pkgver=0.14
-pkgrel=3
+pkgrel=4
 pkgdesc='DragonFly BSD mail transport agent'
 url='https://github.com/corecode/dma'
 arch=('x86_64')
