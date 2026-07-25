@@ -11,7 +11,7 @@ makedepends=('go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d8778f5d2aa6b3ad98a0340fed8fbcd2119cad7447245f4ed5b501e869a3d608')
+sha256sums=('7ef4624499be625d4a31fa4b814439636e2ec4711fccb008fe59e827783d7483')
 
 build() {
     cd "DeepSeek-Reasonix-$pkgver"
