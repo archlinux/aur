@@ -1,7 +1,7 @@
 pkgbase = python-migate
 	pkgdesc = migate is a simplified Xiaomi authentication gateway for Python projects
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/offici5l/migate
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-migate
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-qrcode
 	depends = python-requests
 	depends = python-rich
 	provides = python-migate

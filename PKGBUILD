@@ -3,13 +3,14 @@
 pkgname=python-migate
 _name=${pkgname#python-}
 pkgver=1.1.9
-pkgrel=1
+pkgrel=3
 pkgdesc="migate is a simplified Xiaomi authentication gateway for Python projects"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
 url="https://github.com/offici5l/migate"
 _pydeps=(
+    qrcode
     requests
     rich
 )
