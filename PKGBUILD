@@ -2,7 +2,7 @@
 
 pkgauthor=hexxt-git
 pkgname=umm
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Ask questions in your terminal"
 
@@ -22,7 +22,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('b3cdad6d449948100b4579ffe9660c8f22c8079c9d8c552260b4bfb834d5dc25cf6c10edb04ee151b5f2b07174984cddaeeea380658b9f2ef598f306e251a759')
+b2sums=('f013c944fe378b02d0e467427cf69c57968eb426d115d1b6bedcb86630ee8dfcbadef3044b39703869f86aa2d0dd72e3513ba866aadef9881e09935e6950fed1')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
