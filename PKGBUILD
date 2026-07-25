@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
-# Contributor: AlphaJack <alpha at tuta dot io>
-# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: AlphaJack <alpha at tuta dot io>
+# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname="python-opentimestamps-git"
 pkgver=0.4.5.r6.g3af4643
