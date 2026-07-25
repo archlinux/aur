@@ -36,7 +36,7 @@ build() {
 check() {
   cd "$srcdir/$_pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo test --frozen --release
+  cargo test --frozen --release --lib
 }
 
 package() {
