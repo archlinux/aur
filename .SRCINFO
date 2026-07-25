@@ -1,6 +1,6 @@
 pkgbase = wayle-bin
 	pkgdesc = A configurable desktop shell for Wayland compositors
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/wayle-rs/wayle
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = wayle-bin
 	optdepends = matugen: Material You color extraction
 	optdepends = wallust: color extraction
 	optdepends = python-pywal: color extraction
-	provides = wayle=0.6.0
+	provides = wayle=0.7.0
 	conflicts = wayle
 	conflicts = wayle-git
-	source_x86_64 = wayle-0.6.0.tar.gz::https://github.com/wayle-rs/wayle/releases/download/v0.6.0/wayle-0.6.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = fe127cbbc376c407010e318b7122f3a4030d8ba8489643f880845b37d324746e
+	source_x86_64 = wayle-0.7.0.tar.gz::https://github.com/wayle-rs/wayle/releases/download/v0.7.0/wayle-0.7.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = a0e2a61ffc45f064ae0d110e4c9c969f65da7a87de93c8e25801ad3cd2833a5a
 
 pkgname = wayle-bin
