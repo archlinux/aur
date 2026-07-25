@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=mongreldb-viewer
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 _ortver=1.24.2
 pkgdesc='Desktop viewer for exploring MongrelDB databases'
@@ -33,7 +33,7 @@ source=(
   "onnxruntime-$_ortver-ThirdPartyNotices.txt::https://raw.githubusercontent.com/microsoft/onnxruntime/v$_ortver/ThirdPartyNotices.txt"
 )
 noextract=("onnxruntime-$_ortver-x86_64.tar.lzma2")
-sha256sums=('0634043b7d2764eb9f3a8066796f29c8655c9f0f68eaf432723ad69c94b1b8dd'
+sha256sums=('8772ab2e39e6d1e8451df52f560b00993bf1cef8dce1640262c8a1e4a7b90602'
             '10e74160895b60fa9efc6ee06d4ff1cec3852d940c4c0c87e60b1bd06a8bff26'
             'acc1cba79c337594ead1d88ca72516147aa60054c84217b53399a31caa5ba671'
             '2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c'
