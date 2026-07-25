@@ -1,6 +1,6 @@
 # Maintainer: PairUX Team <hello@pairux.com>
 pkgname=pairux-bin
-pkgver=0.9.32
+pkgver=0.9.33
 pkgrel=1
 pkgdesc="Collaborative screen sharing with remote control"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('pairux')
 conflicts=('pairux' 'pairux-git')
 options=('!strip')
 source=("PairUX-${pkgver}.AppImage::https://github.com/profullstack/pairux.com/releases/download/v${pkgver}/PairUX-${pkgver}-x86_64.AppImage")
-sha256sums=('7715f760ef9835d623aeea0c3dde7996015b0ce8d070144013fbaf1ce5ae67e9')
+sha256sums=('fc697037997c1d7a50fe5ec80c109e5409ef190363f0769caf453c02055c2340')
 
 package() {
     cd "$srcdir"
