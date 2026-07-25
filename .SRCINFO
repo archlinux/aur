@@ -1,0 +1,36 @@
+pkgbase = unisic-bin
+	pkgdesc = Capture, annotate, record and share your screen on Linux Wayland (binary release)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/unisic/unisic
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = pipewire
+	depends = ffmpeg
+	depends = wl-clipboard
+	depends = xdg-desktop-portal
+	depends = tesseract
+	depends = leptonica
+	depends = layer-shell-qt
+	depends = zxing-cpp
+	depends = kguiaddons
+	depends = libinput
+	depends = hicolor-icon-theme
+	optdepends = curl: FTP/SFTP upload destinations
+	optdepends = xdg-desktop-portal-kde: KDE portal backend for screenshots and screen recording
+	optdepends = xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops
+	optdepends = tesseract-data-eng: English OCR language data
+	optdepends = tesseract-data-pol: Polish OCR language data
+	provides = unisic=0.7.5
+	conflicts = unisic
+	noextract = unisic-0.7.5-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = unisic-0.7.5-1-x86_64.pkg.tar.zst::https://github.com/unisic/unisic/releases/download/v0.7.5/unisic-0.7.5-1-x86_64.pkg.tar.zst
+	sha256sums = 33cc6e123cfbb4de5ef7468338d977a9d40a102f6c3ce9dafec3b23854dc7029
+
+pkgname = unisic-bin
