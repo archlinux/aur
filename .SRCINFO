@@ -1,6 +1,6 @@
 pkgbase = gittype
 	pkgdesc = Turn your source code into typing challenges
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gittype
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gittype
 	depends = gcc-libs
 	depends = zlib
 	options = !lto
-	source = gittype-0.10.0.tar.gz::https://github.com/unhappychoice/gittype/archive/v0.10.0.tar.gz
-	sha256sums = aa5f5ff1240946352456d2c56f37373ad9f5f480f58f77cee09a7a56c9a8d44b
+	source = gittype-0.10.1.tar.gz::https://github.com/unhappychoice/gittype/archive/v0.10.1.tar.gz
+	sha256sums = 94f701fd87824c2d1ecb2b9e76e7d9665eb26eab1c97795d23213d12027d6407
 
 pkgname = gittype
