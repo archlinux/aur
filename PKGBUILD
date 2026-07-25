@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-cleanup
 pkgver=26.07.4arch
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
 url="https://github.com/mxlinux/mx-cleanup"
@@ -17,13 +17,17 @@ build() {
 
     rm -rf build
 
+    # CMake's project() VERSION only accepts numeric major.minor.patch.tweak,
+    # so strip any non-numeric suffix (e.g. "arch") used in the pkgver/tag.
+    local _cmakever="${pkgver%%[a-zA-Z]*}"
+
     cmake -G Ninja \
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DHELPER_INSTALL_DIR=/usr/lib/mx-cleanup \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-        -DPROJECT_VERSION_OVERRIDE="${pkgver}"
+        -DPROJECT_VERSION_OVERRIDE="${_cmakever}"
 
     cmake --build build --parallel
 }

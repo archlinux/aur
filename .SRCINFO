@@ -1,7 +1,7 @@
 pkgbase = mx-cleanup
 	pkgdesc = GUI for system cleanup and maintenance
 	pkgver = 26.07.4arch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mxlinux/mx-cleanup
 	install = mx-cleanup.install
 	arch = x86_64
