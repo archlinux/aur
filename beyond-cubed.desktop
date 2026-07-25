@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Beyond³
+Comment=An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility.
+Exec=/opt/beyond-cubed/beyond-cubed
+Terminal=false
+Categories=Utility;Game;

@@ -1,0 +1,21 @@
+pkgbase = beyond-cubed-git
+	pkgdesc = An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility.
+	pkgver = r37.9cb67a6
+	pkgrel = 1
+	url = https://gitlab.com/coolGi/beyond-cubed
+	arch = x86_64
+	license = LGPL 3.0
+	makedepends = git
+	makedepends = cargo
+	depends = hidapi
+	provides = beyond-cubed-git
+	conflicts = beyond-cubed-git
+	replaces = beyond-cubed
+	source = git+https://gitlab.com/coolGi/beyond-cubed
+	source = hidapi-linking.patch
+	source = beyond-cubed.desktop
+	sha256sums = SKIP
+	sha256sums = a44ffdeb6295bc8fe15091dcf1e766c606129be376ea2cc2e74cd81d18f1068b
+	sha256sums = 303fb21657ac89786771a132702a7b50c03c4bd9ed3e6dc503fba80897124ef7
+
+pkgname = beyond-cubed-git
