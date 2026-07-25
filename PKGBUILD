@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=nix-user-chroot
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run and install nix as user without root permissions."
 url="https://github.com/nix-community/nix-user-chroot"
 arch=(x86_64)
