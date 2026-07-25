@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.28
+pkgver=1.0.29
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -47,7 +47,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1a64028d9574a38f4824323acb4c984b284b4f44061999161b9ba489fae6ec7d')
+sha256sums=('c365bfbd84bac93aa3e871f67f4c755e38e58539c35fceaa0193f16c4261d4b2')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
