@@ -1,5 +1,5 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
-# Co-Maintainer: lapsus <yakov.till@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ccusage
 pkgver=20.0.18
 pkgrel=1
