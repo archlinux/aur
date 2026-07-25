@@ -1,7 +1,7 @@
 # Maintainer: Chris Zhang <develop [at] zcy [dot] moe>
 
 pkgname=shader-slang-git
-pkgver=2026.12.0.1
+pkgver=2026.14
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion.'
 url='https://github.com/shader-slang/slang'
