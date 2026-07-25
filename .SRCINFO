@@ -1,7 +1,7 @@
 pkgbase = cellar
 	pkgdesc = Enforce an aging period on AUR package upgrades
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/le0kar0ub1/Cellar
 	install = cellar.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = cellar
 	depends = pacman
 	optdepends = paru: preferred AUR helper for cellar upgrade
 	optdepends = yay: alternative AUR helper for cellar upgrade
-	source = cellar-0.1.0.tar.gz::https://github.com/le0kar0ub1/Cellar/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8cd33d26466bd4bc436e881a623788866d2bc6b30802376a1ea1433465387435
+	source = cellar-0.1.1.tar.gz::https://github.com/le0kar0ub1/Cellar/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = a63997256f80036a6d074182a5bbeb394d0c3ccb7f63b142bd368c283de9971e
 
 pkgname = cellar
