@@ -1,0 +1,4 @@
+[moonscript]
+source = "git"
+git = "https://github.com/leafo/moonscript.git"
+prefix = "v"
