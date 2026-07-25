@@ -1,0 +1,4 @@
+[gnome-shell-extension-applications-overview-tooltip-git]
+source      = "git"
+git         = "https://codeberg.org/RaphaelRochet/applications-overview-tooltip.git"
+use_commit  = true

@@ -1,5 +1,15 @@
+# Ignore everything
 *
-!gnome-shell-extension-applications-overview-tooltip.install
-!PKGBUILD
+
+# But not these files...
 !.gitignore
+!PKGBUILD
 !.SRCINFO
+!LICENSE
+!.nvchecker.toml
+!/keys
+!/keys/pgp
+!/keys/pgp/*.asc
+!/LICENSES
+!/LICENSES/*.txt
+!REUSE.toml
