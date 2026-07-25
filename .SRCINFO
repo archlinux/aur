@@ -1,0 +1,18 @@
+pkgbase = sshbox-bin
+	pkgdesc = A tool that allows you to make disposable SSH servers within docker
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kknxzz/sshbox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = docker
+	provides = sshbox
+	conflicts = sshbox
+	options = !strip
+	source_x86_64 = sshbox-x86_64-1.1.0.tgz::https://github.com/kknxzz/sshbox/releases/download/v1.1.0/sshbox_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 72fef7f5ac0981cd730506faa2a7b2d1cb2dfd0425d8d7abe7436150f9c0e9f1
+	source_aarch64 = sshbox-aarch64-1.1.0.tgz::https://github.com/kknxzz/sshbox/releases/download/v1.1.0/sshbox_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8a3c78c53524587341537871f53de9fa16003d5b553239ecd91b31ca83764b16
+
+pkgname = sshbox-bin

@@ -1,0 +1,5 @@
+[sshbox-bin]
+source = "github"
+github = "kknxzz/sshbox"
+use_latest_release = true
+prefix = "v"
