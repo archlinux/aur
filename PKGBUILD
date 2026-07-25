@@ -4,9 +4,8 @@
 
 pkgname=flux-bin
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 _srcname=flux
-_srcver=2.8.6
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
 provides=("fluxcd")
@@ -17,17 +16,17 @@ optdepends=('bash-completion: auto-completion for flux in Bash'
             'fish-completion: auto-completion for flux in Fish'
             'zsh-completions: auto-completion for flux in ZSH')
 source_x86_64=(
-  "${pkgname}-${pkgver}_linux_amd64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${_srcver}/flux_${_srcver}_linux_amd64.tar.gz"
+  "${pkgname}-${pkgver}_linux_amd64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_amd64.tar.gz"
 )
 source_armv7h=(
-  "${pkgname}-${pkgver}_linux_arm.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${_srcver}/flux_${_srcver}_linux_arm.tar.gz"
+  "${pkgname}-${pkgver}_linux_arm.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm.tar.gz"
 )
 source_aarch64=(
-  "${pkgname}-${pkgver}_linux_arm64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${_srcver}/flux_${_srcver}_linux_arm64.tar.gz"
+  "${pkgname}-${pkgver}_linux_arm64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('c53cc990ae266f7840f64c81515d701d8821d558a9062aa4211d71b38cf044be')
-sha256sums_armv7h=('be062d350dbecdcb089556f21cf397e5bd3bdd0732b0e261436b8cea6f20530c')
-sha256sums_aarch64=('bc460320c2d33ad833791277896dd1aaf1cff6b3e64ba397c44238f00d4ae5bc')
+sha256sums_x86_64=('eae4e8608c0ade2bf4e8dec1669dbb6b0c28b5822b252d97feccfb4fb1181fd2')
+sha256sums_armv7h=('369a812a43e42688c5b0bce5b9ebb1b0bd649f9e2c58336862cf797433d18ced')
+sha256sums_aarch64=('24ec315313621bf82ea97db8a544725bc4f6de19737681f01f49c651ad3b884e')
 
 package() {
 	install -Dm755 ${_srcname} "${pkgdir}/usr/bin/${_srcname}"
