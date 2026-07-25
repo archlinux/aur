@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=music-assistant-tui-git
-pkgver=0.1.0.r17.g1d0d218
+pkgver=20260725.0.r19.gf7ab5c3
 pkgrel=1
 pkgdesc="Terminal UI for Music Assistant (git version)"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ pkgver() {
   if [ -n "$version" ]; then
     printf '%s' "$version"
   else
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "%s.0.r%s.g%s" "$(git log -1 --format=%cd --date=format:%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
