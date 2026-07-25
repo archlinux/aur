@@ -1,15 +1,21 @@
 pkgbase = python-textparser
-	pkgdesc = A text parser written in the Python language.
-	pkgver = 0.23.0
+	pkgdesc = A text parser library for python
+	pkgver = 0.26
 	pkgrel = 1
-	url = https://github.com/eerimoq/textparser
+	url = https://github.com/cantools/textparser
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
+	optdepends = python-cantools: Python CAN bus tools in Python 3
 	provides = python-textparser
-	source = python-textparser-0.23.0.tar.gz::https://github.com/eerimoq/textparser/archive/0.23.0.tar.gz
-	sha512sums = dbbe3181317a26ccf7623c8319b8063d189d8800e02ea3524d3d4ae04e28be4f9896361fc5fac56858fb95bf0674cafece3fb0b51748c3bbb67ec2f6d5f8c9fd
+	conflicts = python-textparser
+	source = textparser::git+https://github.com/cantools/textparser.git#tag=0.26
+	sha256sums = 50e0f4052eb54c77601acc7b66f93624f001633891b29a5bc4390cf6f2b987d9
 
 pkgname = python-textparser
-

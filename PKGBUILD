@@ -1,19 +1,48 @@
-# Maintainer: Richard Tucker <rtucker@mookins.com>
-pkgname=python-textparser
-provides=('python-textparser')
-pkgdesc="A text parser written in the Python language."
-url="https://github.com/eerimoq/textparser"
-pkgver=0.23.0
-pkgrel=1
-arch=('any')
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Richard Tucker <rtucker@mookins.com>
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('dbbe3181317a26ccf7623c8319b8063d189d8800e02ea3524d3d4ae04e28be4f9896361fc5fac56858fb95bf0674cafece3fb0b51748c3bbb67ec2f6d5f8c9fd')
+pkgname=python-textparser
+_name=${pkgname#python-}
+pkgver=0.26
+pkgrel=1
+pkgdesc="A text parser library for python"
+provides=(${pkgname})
+conflicts=(${pkgname})
+arch=('any')
+url="https://github.com/cantools/textparser"
+_pydeps=(
+)
+depends=(
+    'python'
+    "${_pydeps[@]/#/python-}"
+)
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+	'python-setuptools-scm'
+    'python-wheel'
+)
+optdepends=(
+    'python-cantools: Python CAN bus tools in Python 3'
+)
+license=('MIT')
+source=("${_name}::git+${url}.git#tag=$pkgver")
+sha256sums=('50e0f4052eb54c77601acc7b66f93624f001633891b29a5bc4390cf6f2b987d9')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
+
+build() {
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-	cd "textparser-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
