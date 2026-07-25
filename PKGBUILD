@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A modern, container-friendly, optionally-distributed, fault-tolerant, highly available, leader-electing, highly configurable, precompiled, multi-architecture, portable, security-hardened, production-ready cron replacement"
 
-pkgver=1.2.30
+pkgver=1.2.32
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,7 +26,7 @@ depends=('bash' 'python' 'python-uvloop' 'python-psutil' 'python-strictyaml' 'py
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f0ffb02f63659fe67b1decea483acd33ecc31e5c8d5c1f3fbffa5a136401cb54')
+sha256sums=('3ce161e4adb02702211a30cfc9cee1a65ee66ccd2e4ee81eb32c2372afcfce2d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit

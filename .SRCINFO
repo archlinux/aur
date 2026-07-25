@@ -1,6 +1,6 @@
 pkgbase = cronstable
 	pkgdesc = A modern, container-friendly, optionally-distributed, fault-tolerant, highly available, leader-electing, highly configurable, precompiled, multi-architecture, portable, security-hardened, production-ready cron replacement
-	pkgver = 1.2.30
+	pkgver = 1.2.32
 	pkgrel = 1
 	url = https://github.com/ptweezy/cronstable
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = cronstable
 	depends = python-aiosmtplib
 	provides = cronstable
 	options = !strip
-	source = cronstable-1.2.30.tgz::https://github.com/ptweezy/cronstable/releases/download/1.2.30/cronstable-1.2.30.tar.gz
-	sha256sums = f0ffb02f63659fe67b1decea483acd33ecc31e5c8d5c1f3fbffa5a136401cb54
+	source = cronstable-1.2.32.tgz::https://github.com/ptweezy/cronstable/releases/download/1.2.32/cronstable-1.2.32.tar.gz
+	sha256sums = 3ce161e4adb02702211a30cfc9cee1a65ee66ccd2e4ee81eb32c2372afcfce2d
 
 pkgname = cronstable
