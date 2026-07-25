@@ -1,0 +1,19 @@
+pkgbase = dateminal-git
+	pkgdesc = A breathtaking TUI calendar and scheduling application for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/berkeoruc/dateminal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = sqlite
+	provides = dateminal
+	conflicts = dateminal
+	source = dateminal-git::git+https://github.com/berkeoruc/dateminal.git
+	sha256sums = SKIP
+
+pkgname = dateminal-git
