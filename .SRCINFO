@@ -1,4 +1,4 @@
-pkgbase = naji-cli
+pkgbase = nitr-ai-judge-cli
 	pkgdesc = CLI client for judge.nitro-ai.org
 	pkgver = 2.2.1
 	pkgrel = 2
@@ -13,7 +13,8 @@ pkgbase = naji-cli
 	depends = python
 	optdepends = docker: required for naji play commands
 	optdepends = docker-compose: required for docker compose support used by play commands
-	source = naji-cli::git+https://github.com/MihneaTeodorStoica/nitro-ai-judge-cli.git#tag=v2.2.1
+	conflicts = naji-cli
+	source = nitr-ai-judge-cli::git+https://github.com/MihneaTeodorStoica/nitro-ai-judge-cli.git#tag=v2.2.1
 	sha256sums = SKIP
 
-pkgname = naji-cli
+pkgname = nitr-ai-judge-cli

@@ -1,5 +1,5 @@
 # Maintainer: Răzvan <aurstuff@razv.xyz>
-pkgname=naji-cli
+pkgname=nitro-ai-judge-cli
 pkgver=2.2.1
 pkgrel=2
 pkgdesc="CLI client for judge.nitro-ai.org"
@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/MihneaTeodorStoica/nitro-ai-judge-cli"
 license=('custom:unknown')
 depends=('python')
+conflicts=('naji-cli')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
   'docker: required for naji play commands'
