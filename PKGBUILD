@@ -6,14 +6,14 @@
 
 pkgname=lib32-gmp4-v2
 pkgver=4.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Legacy version of gmp. Provides libgmp.so.3 (32 bit)"
 arch=('x86_64')
 url="http://gmplib.org/"
 depends=('lib32-gcc-libs' 'sh' 'lib32-gmp')
 makedepends=('gcc-multilib')
 license=('LGPL3')
-options=('!libtool' '!lto')
+options=('!libtool' '!lto') # Fix aggressive alias analysis optimization.
 source=(
   "https://gmplib.org/download/gmp/archive/gmp-${pkgver}.tar.bz2"
   'fix_get-d_and_t-scan.patch'
