@@ -75,6 +75,7 @@ paru -Rns uuyc
 ```text
 uuyc-wine [OPTION] [CLIENT_ARGUMENT...]
 
+--stop         Stop the UU Remote wineserver and its clients
 --repair       Recheck and repair the Wine prefix before launching
 --setup-only   Prepare the Wine prefix without launching UU Remote
 --uri URI      Open a uuremote: URI through Wine's registered handler
@@ -85,10 +86,18 @@ uuyc-wine [OPTION] [CLIENT_ARGUMENT...]
 Examples:
 
 ```bash
+uuyc-wine --stop
 uuyc-wine --setup-only
 uuyc-wine --repair
 uuyc-wine --uri 'uuremote:...'
 ```
+
+`--stop` exits before prefix migration, repair, or application startup. It asks
+the selected prefix's `wineserver` to terminate its clients and itself, allows
+Wine's built-in kill escalation to complete, then waits for the server lock to
+be released. It never scans or signals numeric PIDs; if no server is running,
+it reports that state without touching unrelated processes. Set
+`UUYC_WINE_PREFIX` to stop a custom prefix.
 
 The desktop entry registers `uuyc-wine.desktop` as a handler for the upstream `uuremote:` URI scheme.
 
@@ -140,18 +149,17 @@ When reporting a problem, include the package release, Wine version, the relevan
 
 ## Uninstallation
 
-Remove the system package with pacman or an AUR helper:
+Stop UU Remote, remove the system package with pacman or an AUR helper, then
+optionally remove the preserved per-user Wine data:
 
 ```bash
+uuyc-wine --stop
 paru -Rns uuyc-wine
-```
-
-Pacman intentionally does not delete per-user Wine data. The package's post-remove script prints a one-line cleanup command. Before running it, close UU Remote and stop the default prefix's Wine server:
-
-```bash
-WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine/wineprefix" wineserver -k
 rm -rf -- "${XDG_DATA_HOME:-$HOME/.local/share}/uuyc-wine" "${XDG_STATE_HOME:-$HOME/.local/state}/uuyc-wine"
 ```
+
+Pacman intentionally does not delete per-user Wine data. The package's
+post-remove script prints the same cleanup command.
 
 Verify the paths before running the removal command. A custom `UUYC_WINE_PREFIX` is not removed by those commands.
 

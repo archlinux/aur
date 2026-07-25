@@ -30,6 +30,7 @@ usage() {
 Usage: uuyc-wine [OPTION] [CLIENT_ARGUMENT...]
 
 Options:
+  --stop         Stop the UU Remote wineserver and its clients
   --repair       Recheck and repair the Wine prefix before launching
   --setup-only   Prepare the Wine prefix without launching UU Remote
   --uri URI      Open a uuremote: URI through Wine's registered handler
@@ -38,22 +39,19 @@ Options:
 EOF
 }
 
-[[ -r "$upstream_version_file" ]] || die "Missing package data: $upstream_version_file"
-[[ -r "$package_release_file" ]] || die "Missing package data: $package_release_file"
-[[ -r "$installer" ]] || die "Missing package data: $installer"
-[[ -r "$wevtapi_shim" ]] || die "Missing package data: $wevtapi_shim"
 
-upstream_version="$(<"$upstream_version_file")"
-package_release="$(<"$package_release_file")"
-readonly upstream_version package_release
-
+stop_requested=false
 repair=false
 setup_only=false
 uri=""
+uri_requested=false
 client_args=()
 
 while (($# > 0)); do
     case $1 in
+        --stop)
+            stop_requested=true
+            ;;
         --repair)
             repair=true
             ;;
@@ -63,10 +61,17 @@ while (($# > 0)); do
         --uri)
             shift
             (($# > 0)) || die "--uri requires an argument."
+            [[ -n $1 ]] || die "--uri requires a non-empty argument."
+            uri_requested=true
             uri=$1
             ;;
         --version)
-            printf '%s\n' "$package_release"
+            # ShellCheck 0.11 loses the earlier die definition after the early stop path.
+            # shellcheck disable=SC2218
+            if [[ ! -r $package_release_file ]]; then
+                die "Missing package data: $package_release_file"
+            fi
+            printf '%s\n' "$(<"$package_release_file")"
             exit 0
             ;;
         -h|--help)
@@ -79,6 +84,7 @@ while (($# > 0)); do
             break
             ;;
         uuremote:*)
+            uri_requested=true
             uri=$1
             ;;
         *)
@@ -87,6 +93,14 @@ while (($# > 0)); do
     esac
     shift
 done
+
+# ShellCheck 0.11 loses the earlier die definition after the early stop path.
+# shellcheck disable=SC2218
+if $stop_requested; then
+    if $repair || $setup_only || $uri_requested || ((${#client_args[@]} > 0)); then
+        die "--stop cannot be combined with launch or setup options."
+    fi
+fi
 
 readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 readonly state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
@@ -143,6 +157,105 @@ prefix_has_processes() {
     return 1
 }
 
+canonicalize_prefix() {
+    local candidate=$1
+
+    if ! IFS= read -r -d '' prefix < <(
+        /usr/bin/readlink -zm -- "$candidate"
+    ); then
+        die "Failed to resolve the Wine prefix: $candidate"
+    fi
+}
+
+stop_prefix() {
+    local prefix_path=$1
+    local status
+
+    if WINEPREFIX="$prefix_path" WINEDEBUG=-all \
+        /usr/bin/timeout 15s "$wineserver" -k >/dev/null 2>&1; then
+        :
+    else
+        status=$?
+        case $status in
+            1)
+                if WINEPREFIX="$prefix_path" WINEDEBUG=-all \
+                    /usr/bin/timeout 5s "$wineserver" -w >/dev/null 2>&1; then
+                    printf 'No running UU Remote wineserver remains for: %s\n' "$prefix_path"
+                    return 0
+                else
+                    status=$?
+                fi
+                case $status in
+                    124)
+                        die "The UU Remote wineserver is still running after the stop request failed."
+                        ;;
+                    *)
+                        die "Failed to inspect the UU Remote wineserver after the stop request failed."
+                        ;;
+                esac
+                ;;
+            124)
+                die "Timed out while requesting the UU Remote wineserver to stop."
+                ;;
+            *)
+                die "Failed to request the UU Remote wineserver to stop."
+                ;;
+        esac
+    fi
+
+    if WINEPREFIX="$prefix_path" WINEDEBUG=-all \
+        /usr/bin/timeout 5s "$wineserver" -w >/dev/null 2>&1; then
+        notify_status "UU Remote stopped."
+        printf 'UU Remote stopped.\n'
+        return 0
+    else
+        status=$?
+    fi
+
+    case $status in
+        124)
+            die "Timed out while waiting for the UU Remote wineserver to stop."
+            ;;
+        *)
+            die "Failed while waiting for the UU Remote wineserver to stop."
+            ;;
+    esac
+}
+
+select_stop_prefix() {
+    if [[ -n ${UUYC_WINE_PREFIX:-} ]]; then
+        prefix=$UUYC_WINE_PREFIX
+    elif [[ -d $xdg_prefix ]]; then
+        prefix=$xdg_prefix
+    elif [[ -d $previous_xdg_prefix ]]; then
+        prefix=$previous_xdg_prefix
+    elif [[ -d $legacy_prefix ]]; then
+        prefix=$legacy_prefix
+    else
+        prefix=$xdg_prefix
+    fi
+}
+
+if $stop_requested; then
+    select_stop_prefix
+    canonicalize_prefix "$prefix"
+    readonly prefix
+    stop_prefix "$prefix"
+    exit 0
+fi
+
+# ShellCheck 0.11 loses the earlier die definition after the early stop path.
+# shellcheck disable=SC2218
+for required_file in \
+    "$upstream_version_file" "$package_release_file" "$installer" "$wevtapi_shim"; do
+    [[ -r $required_file ]] || die "Missing package data: $required_file"
+done
+unset required_file
+
+upstream_version="$(<"$upstream_version_file")"
+package_release="$(<"$package_release_file")"
+readonly upstream_version package_release
+
 ensure_prefix_inactive() {
     local prefix_path=$1
     local quoted_prefix
@@ -157,6 +270,8 @@ mkdir -p "${migration_lock%/*}"
 exec 8>"$migration_lock"
 /usr/bin/flock 8
 
+# ShellCheck 0.11 loses earlier helper definitions after the early stop path.
+# shellcheck disable=SC2218
 if [[ -n ${UUYC_WINE_PREFIX:-} ]]; then
     prefix=$UUYC_WINE_PREFIX
 else
@@ -179,6 +294,9 @@ else
     prefix=$xdg_prefix
 fi
 /usr/bin/flock -u 8
+# ShellCheck 0.11 loses the earlier helper definition after the early stop path.
+# shellcheck disable=SC2218
+canonicalize_prefix "$prefix"
 readonly prefix
 
 readonly install_dir="$prefix/drive_c/Program Files/Netease/GameViewer"
@@ -482,7 +600,7 @@ ensure_wine_process_running "$server" || \
 
 sleep 1
 cd "$install_dir"
-if [[ -n $uri ]]; then
+if $uri_requested; then
     exec "$wine" start "$uri"
 fi
 exec "$wine" "$client" "${client_args[@]}"
