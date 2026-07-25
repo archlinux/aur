@@ -3,7 +3,7 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.10.16
+pkgver=1.10.17
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Your local LLM context-feeder"
 arch=('aarch64' 'i686' 'x86_64')
@@ -22,14 +22,14 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64_v${pkgver}")
 source_i686=("${_pkgsrc}-i686::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386_v${pkgver}")
 source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64_v${pkgver}")
-sha256sums=('810306ad6a9e6d663e100fa1d6fb11130bf66339fe117ac69356f99fe76b2bfa'
+sha256sums=('a5590e0ca824c602c888eb60cde658c8893aba2dd7b61716d404bc556928fe41'
             '0292111b2a0e3f68351506ce475f6b039f8df8823f37f129dd07efa3f64bdc37'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
             '824075343fe6b2f0bda7a627bec99f826e86571fee6c393812315f265d82a741'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('81641e0b083d707b6a349da4e4f9b4ca6387afe09fbc49867d4c7a9e65610312')
-sha256sums_i686=('68e71817f764f980e2789d7abb1ff7ac88d5b46f7d3155ce6c501a2ed0433d1b')
-sha256sums_x86_64=('329518b53ee79572e7440f80cb5f83808a73cf58d32c5771664dc9d23a58b862')
+sha256sums_aarch64=('31b4ee3ae9744cab86d2ebb7d373f9a419fe3e5c6574f5819d688e5d8a62ff68')
+sha256sums_i686=('32c970b47d9af3b88f3fcb28999882fad5e889ff686346e4969b515978f5a39a')
+sha256sums_x86_64=('0ea955c1aadeea3a3f0acde379310f66a3ba0b30cd8b432bc8bef3ca9f4ef107')
 
 package() {
   cd "${srcdir}"
