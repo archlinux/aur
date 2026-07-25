@@ -1,0 +1,24 @@
+pkgbase = python-okta-jwt-verifier
+	pkgdesc = Okta JWT Verifier for Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/okta/okta-jwt-verifier-python
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-cryptography
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-setuptools
+	depends = python
+	depends = python-acachecontrol
+	depends = python-pyjwt
+	depends = python-requests
+	depends = python-retry
+	source = okta-jwt-verifier-0.5.0.tar.gz::https://github.com/okta/okta-jwt-verifier-python/archive/v0.5.0.tar.gz
+	b2sums = c3b779f019770c5c84023002033bdec3760d6f33de2ac0d9903703f943390a6bc304255b6a3b1fcd76b9abc08e97469bd0f95949755c25280af86059789733b0
+
+pkgname = python-okta-jwt-verifier

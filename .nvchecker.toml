@@ -1,0 +1,5 @@
+[python-okta-jwt-verifier]
+source = "github"
+github = "okta/okta-jwt-verifier-python"
+prefix = "v"
+use_latest_release = true
