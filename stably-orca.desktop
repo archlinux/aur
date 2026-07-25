@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Orca
+GenericName=Agentic Coding IDE
+Comment=Run coding agents in parallel worktrees
+Exec=stably-orca %U
+Terminal=false
+Type=Application
+Icon=stably-orca
+Categories=Development;IDE;TextEditor;
+StartupWMClass=orca
+MimeType=x-scheme-handler/stably-orca;
