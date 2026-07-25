@@ -14,7 +14,7 @@
 pkgname=stepmania
 _pkgver=d55acb1ba26f1c5b5e3048d6d6c0bd116625216f
 pkgver=5.1.0.b2.r627.d55acb1ba2
-pkgrel=6
+pkgrel=7
 pkgdesc="Advanced rhythm game. Designed for both home and arcade use."
 arch=(x86_64)
 url="http://www.stepmania.com/"
@@ -24,8 +24,8 @@ depends=('mesa' 'glew' 'glu' 'udev' 'libx11' 'libxext' 'libxtst' 'libxinerama' '
   'gtk3' 'libtommath' 'libtomcrypt' 'jsoncpp' 'pcre' 'zlib')
 makedepends=('cmake')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/stepmania/stepmania/archive/$_pkgver.tar.gz"
-  "$pkgname-3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch::https://github.com/stepmania/stepmania/commit/3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch"
-  "$pkgname-e0d2a5182dcd855e181fffa086273460c553c7ff.patch::https://github.com/stepmania/stepmania/commit/e0d2a5182dcd855e181fffa086273460c553c7ff.patch"
+  "$pkgname-3fef5ef60b7674d6431f4e1e4ba8c69b0c21c023.patch"
+  "$pkgname-e0d2a5182dcd855e181fffa086273460c553c7ff.patch"
   "ffmpeg-7.patch"
   "ffmpeg-8.patch"
   "libtom-use-pkgconfig.patch"

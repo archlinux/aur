@@ -1,0 +1,44 @@
+From e0d2a5182dcd855e181fffa086273460c553c7ff Mon Sep 17 00:00:00 2001
+From: mid-kid <esteve.varela@gmail.com>
+Date: Tue, 8 Nov 2022 21:37:28 +0100
+Subject: [PATCH] Fix crash on loading animated previews while using newer
+ ffmpeg
+
+0  0x00007ffff6ba7592 in avcodec_is_open () from /usr/lib64/libavcodec.so.58
+1  0x00007ffff6a83c0d in avcodec_close () from /usr/lib64/libavcodec.so.58
+2  0x00007ffff6fab5b9 in avcodec_free_context () from /usr/lib64/libavcodec.so.58
+3  0x0000555555a52075 in MovieDecoder_FFMpeg::Init (this=this@entry=0x55555695aae0) at <path>/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp:167
+4  0x0000555555a528cc in MovieDecoder_FFMpeg::MovieDecoder_FFMpeg (this=0x55555695aae0) at <path>/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp:120
+5  MovieTexture_FFMpeg::MovieTexture_FFMpeg (this=0x55555bd0b7f0, ID=...) at <path>/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp:564
+6  0x0000555555a52a40 in RageMovieTextureDriver_FFMpeg::Create (this=this@entry=0x55555c5b8b60, ID=..., sError=...)
+   at <path>/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp:570
+7  0x0000555555a4ece3 in RageMovieTexture::Create (ID=...) at <path>/stepmania/src/arch/MovieTexture/MovieTexture.cpp:113
+8  0x0000555555c32753 in RageTextureManager::LoadTextureInternal (this=<optimized out>, ID=...) at <path>/stepmania/src/RageTextureManager.cpp:168
+9  0x0000555555c32951 in RageTextureManager::LoadTexture (this=this@entry=0x55555a9aa8f0, ID=...) at <path>/stepmania/src/RageTextureManager.cpp:184
+10 0x000055555595f9e7 in Sprite::LoadFromTexture (this=0x55555b461900, ID=...) at <path>/stepmania/src/Sprite.cpp:362
+11 0x000055555595fb7a in Sprite::Load (this=0x55555b461900, ID=...) at <path>/stepmania/src/Sprite.cpp:176
+12 0x00005555559623d2 in LunaSprite::Load (p=0x55555b461900, L=0x5555567f9b50) at <path>/stepmania/src/Sprite.cpp:1132
+---
+ src/arch/MovieTexture/MovieTexture_FFMpeg.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+index 935ddf324b..8a7abb601a 100644
+--- a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
++++ b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+@@ -112,6 +112,7 @@ MovieDecoder_FFMpeg::MovieDecoder_FFMpeg()
+ 	m_swsctx = NULL;
+ 	m_avioContext = NULL;
+ 	m_buffer = NULL;
++	m_pStreamCodec = NULL;
+ 	m_fctx = nullptr;
+ 	m_pStream = nullptr;
+ 	m_iCurrentPacketOffset = -1;
+@@ -166,6 +167,7 @@ void MovieDecoder_FFMpeg::Init()
+ 	{
+ 		avcodec::avcodec_free_context(&m_pStreamCodec);
+ 	}
++	m_pStreamCodec = NULL;
+ #endif
+ }
+ 
