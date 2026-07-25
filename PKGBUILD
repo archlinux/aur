@@ -1,7 +1,7 @@
 # Maintainer: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
 
 pkgname=kwin-polonium-git
-pkgver=1.0rc.r79.g8c7e279
+pkgver=1.2.1.r0.g3638b16
 pkgrel=1
 pkgdesc='A tiling window manager for KWin 5.27 and up (Git version)'
 arch=('any')
@@ -20,7 +20,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd polonium
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
