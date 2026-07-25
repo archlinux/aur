@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.155
-pkgrel=1
+pkgrel=3
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -33,11 +33,15 @@ depends=(
   'zlib'
 )
 optdepends=(
+  'kwin: optional KWin virtual Wayland compositor service'
   'wl-clipboard: Wayland clipboard support for computer-use'
   'xclip: X11 clipboard support for computer-use'
   'xsel: alternative X11 clipboard support for computer-use'
   'xdotool: X11 hotkey and window activation support for computer-use'
   'xorg-server-xvfb: automatic virtual X display when no DISPLAY is provided'
+  'xorg-xauth: Xwayland authentication for the KWin virtual display service'
+  'xorg-xdpyinfo: external X display readiness validation'
+  'xorg-xwayland: Xwayland support for the KWin virtual display service'
 )
 makedepends=(
   'nodejs>=24'
@@ -47,6 +51,7 @@ makedepends=(
 provides=("orca-ide=$pkgver")
 conflicts=('stably-orca-bin' 'stably-orca-git' 'orca-ide' 'orca-ide-bin')
 options=('!strip' '!debug')
+install=stably-orca.install
 
 _pnpmver=10.24.0
 _electronmajor=43
@@ -56,12 +61,24 @@ source=(
   'stably-orca.sh'
   'orca-ide.sh'
   'stably-orca.desktop'
+  'stably-orca-serve@.service'
+  'stably-orca-serve-systemd'
+  'stably-orca-kwin-virtual@.service'
+  'stably-orca-kwin-display'
+  'stably-orca-serve.env.example'
+  'stably-orca-serve-kwin.conf.example'
 )
 sha256sums=('386f2cca226866f27b7cacf7cf3efa55085f9ded50dd7e6c868a646f769107f6'
             '196f4bd174ebcbd99786b33452f144cb2dc32ef4e7138ed44491e9d43d702d75'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
-            '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835')
+            '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
+            '0d262438d6ca1de562db33ba8373ccc08298f3fdfa18209864d4189bddfaf742'
+            'd423881ade5704432cbe9afea626438991a1dcda3dda3ed18811e1b3fd721e1e'
+            '3b1943f5b65997ce52196f055b3c10b30dd5e81ae934a91bff096d42c7fcc425'
+            'aba5146aed46aa61abf4000285460f088698f618991d81ef9730d408173cc253'
+            'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
+            'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0')
 noextract=("pnpm-$_pnpmver.tgz")
 
 prepare() {
@@ -242,6 +259,18 @@ PY
 
   install -Dm755 "$srcdir/stably-orca.sh" "$pkgdir/usr/bin/stably-orca"
   install -Dm755 "$srcdir/orca-ide.sh" "$pkgdir/usr/bin/orca-ide"
+  install -Dm755 "$srcdir/stably-orca-serve-systemd" \
+    "$pkgdir/usr/lib/$pkgname/stably-orca-serve-systemd"
+  install -Dm755 "$srcdir/stably-orca-kwin-display" \
+    "$pkgdir/usr/lib/$pkgname/stably-orca-kwin-display"
+  install -Dm644 "$srcdir/stably-orca-serve@.service" \
+    "$pkgdir/usr/lib/systemd/user/stably-orca-serve@.service"
+  install -Dm644 "$srcdir/stably-orca-kwin-virtual@.service" \
+    "$pkgdir/usr/lib/systemd/user/stably-orca-kwin-virtual@.service"
+  install -Dm644 "$srcdir/stably-orca-serve.env.example" \
+    "$pkgdir/usr/share/doc/$pkgname/stably-orca-serve.env.example"
+  install -Dm644 "$srcdir/stably-orca-serve-kwin.conf.example" \
+    "$pkgdir/usr/share/doc/$pkgname/stably-orca-serve-kwin.conf.example"
   install -Dm644 "$srcdir/stably-orca.desktop" \
     "$pkgdir/usr/share/applications/stably-orca.desktop"
   install -Dm644 resources/build/icon.png \

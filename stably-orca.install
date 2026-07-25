@@ -1,0 +1,48 @@
+_stably_orca_service_help() {
+  cat <<'EOF'
+==> Stably Orca user services are available.
+
+  Basic server setup:
+    mkdir -p ~/.config/stably-orca/serve
+    cp /usr/share/doc/stably-orca/stably-orca-serve.env.example \
+      ~/.config/stably-orca/serve/default.env
+    $EDITOR ~/.config/stably-orca/serve/default.env
+    systemctl --user daemon-reload
+    systemctl --user enable --now stably-orca-serve@default.service
+
+  Pairing credentials are not written to the journal. During runtime or mobile
+  pairing, read the mode-0600 readiness file at:
+    $XDG_RUNTIME_DIR/stably-orca-default/pairing.json
+
+  After registering the intended clients, set
+  ORCA_SERVE_PAIRING_MODE=disabled and restart the service.
+
+  Display modes:
+    auto      Use an existing DISPLAY or Orca-managed Xvfb when available.
+    xvfb      Require xorg-server-xvfb and use Orca's private display :99.
+    external  Require a working DISPLAY and xorg-xdpyinfo.
+
+  KWin virtual + Xwayland setup:
+    mkdir -p \
+      ~/.config/systemd/user/stably-orca-serve@default.service.d
+    cp /usr/share/doc/stably-orca/stably-orca-serve-kwin.conf.example \
+      ~/.config/systemd/user/stably-orca-serve@default.service.d/kwin.conf
+    systemctl --user daemon-reload
+    systemctl --user enable --now stably-orca-serve@default.service
+
+  The KWin mode additionally requires kwin, xorg-xwayland, xorg-xauth, and
+  xorg-xdpyinfo. Service status and redacted readiness are available with:
+    systemctl --user status stably-orca-serve@default.service
+    journalctl --user -u stably-orca-serve@default.service
+EOF
+}
+
+post_install() {
+  _stably_orca_service_help
+}
+
+post_upgrade() {
+  if (( $(vercmp "$2" '1.4.155-2') < 0 )); then
+    _stably_orca_service_help
+  fi
+}

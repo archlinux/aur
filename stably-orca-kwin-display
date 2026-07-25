@@ -1,0 +1,252 @@
+#!/usr/bin/python
+
+import json
+import os
+from pathlib import Path
+import stat
+import subprocess
+import sys
+import time
+
+X11_SOCKET_DIRECTORY = Path("/tmp/.X11-unix")
+
+
+def fail(message: str) -> "NoReturn":
+    print(f"stably-orca-kwin-display: {message}", file=sys.stderr, flush=True)
+    raise SystemExit(1)
+
+
+def parse_timeout() -> int:
+    raw = os.environ.get("ORCA_KWIN_DISPLAY_TIMEOUT", "20").strip()
+    try:
+        value = int(raw, 10)
+    except ValueError:
+        fail(f"ORCA_KWIN_DISPLAY_TIMEOUT must be an integer, found {raw!r}")
+    if value < 1 or value > 120:
+        fail("ORCA_KWIN_DISPLAY_TIMEOUT must be between 1 and 120")
+    return value
+
+
+def display_number(path: Path) -> int | None:
+    name = path.name
+    if not name.startswith("X") or not name[1:].isdigit():
+        return None
+    return int(name[1:])
+
+
+def snapshot_sockets() -> list[dict[str, object]]:
+    sockets: list[dict[str, object]] = []
+    if not X11_SOCKET_DIRECTORY.is_dir():
+        return sockets
+    for path in X11_SOCKET_DIRECTORY.iterdir():
+        number = display_number(path)
+        if number is None:
+            continue
+        try:
+            metadata = path.stat()
+        except FileNotFoundError:
+            continue
+        if not stat.S_ISSOCK(metadata.st_mode):
+            continue
+        sockets.append({"path": str(path), "inode": metadata.st_ino, "display": number})
+    return sorted(sockets, key=lambda item: int(item["display"]))
+
+
+def atomic_write(path: Path, content: str, mode: int = 0o600) -> None:
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    try:
+        fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, mode)
+        with os.fdopen(fd, "w", encoding="utf-8") as output:
+            output.write(content)
+            output.flush()
+            os.fsync(output.fileno())
+        os.chmod(temporary, mode)
+        os.replace(temporary, path)
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def prepare(before_path: Path, environment_path: Path) -> None:
+    try:
+        environment_path.unlink()
+    except FileNotFoundError:
+        pass
+    atomic_write(before_path, json.dumps(snapshot_sockets(), separators=(",", ":")) + "\n")
+
+
+def process_parent(pid: int) -> int | None:
+    try:
+        for line in Path(f"/proc/{pid}/status").read_text(encoding="utf-8").splitlines():
+            if line.startswith("PPid:"):
+                return int(line.split()[1])
+    except (FileNotFoundError, PermissionError, ProcessLookupError, ValueError):
+        return None
+    return None
+
+
+def descendant_pids(root_pid: int) -> set[int]:
+    descendants = {root_pid}
+    changed = True
+    while changed:
+        changed = False
+        for entry in Path("/proc").iterdir():
+            if not entry.name.isdigit():
+                continue
+            pid = int(entry.name)
+            if pid in descendants:
+                continue
+            parent = process_parent(pid)
+            if parent in descendants:
+                descendants.add(pid)
+                changed = True
+    descendants.discard(root_pid)
+    return descendants
+
+
+def xauthority_candidates(kwin_pid: int | None) -> list[str | None]:
+    candidates: list[str | None] = []
+    uid = os.getuid()
+    if kwin_pid is None:
+        process_ids = {
+            int(entry.name) for entry in Path("/proc").iterdir() if entry.name.isdigit()
+        }
+    else:
+        process_ids = descendant_pids(kwin_pid)
+    for pid in process_ids:
+        entry = Path(f"/proc/{pid}")
+        try:
+            if entry.stat().st_uid != uid:
+                continue
+            raw = (entry / "cmdline").read_bytes()
+        except (FileNotFoundError, PermissionError, ProcessLookupError):
+            continue
+        argv = [part.decode(errors="replace") for part in raw.split(b"\0") if part]
+        if not argv or Path(argv[0]).name != "Xwayland":
+            continue
+        try:
+            index = argv.index("-auth")
+        except ValueError:
+            continue
+        if index + 1 < len(argv) and Path(argv[index + 1]).is_file():
+            candidates.append(argv[index + 1])
+
+    inherited = os.environ.get("XAUTHORITY", "").strip()
+    if inherited and Path(inherited).is_file():
+        candidates.append(inherited)
+
+    runtime_directory = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{uid}"))
+    try:
+        runtime_candidates = sorted(
+            runtime_directory.glob("xauth_*"),
+            key=lambda path: path.stat().st_mtime_ns,
+            reverse=True,
+        )
+    except (FileNotFoundError, PermissionError):
+        runtime_candidates = []
+    candidates.extend(str(path) for path in runtime_candidates if path.is_file())
+    candidates.append(None)
+
+    unique: list[str | None] = []
+    for candidate in candidates:
+        if candidate not in unique:
+            unique.append(candidate)
+    return unique
+
+
+def quote_environment(value: str) -> str:
+    return '"' + value.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n") + '"'
+
+
+def validate_display(display: str, xauthority: str | None) -> bool:
+    environment = dict(os.environ)
+    environment["DISPLAY"] = display
+    if xauthority:
+        environment["XAUTHORITY"] = xauthority
+    else:
+        environment.pop("XAUTHORITY", None)
+    try:
+        result = subprocess.run(
+            ["/usr/bin/xdpyinfo", "-display", display],
+            env=environment,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=3,
+            check=False,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return False
+    return result.returncode == 0
+
+
+def publish_display(
+    before_path: Path,
+    environment_path: Path,
+    kwin_pid: int | None,
+) -> None:
+    if not os.access("/usr/bin/xdpyinfo", os.X_OK):
+        fail("install xorg-xdpyinfo to validate the KWin Xwayland display")
+    try:
+        before_items = json.loads(before_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError) as error:
+        fail(f"cannot read pre-start X socket snapshot: {error}")
+    before = {
+        (str(item.get("path")), int(item.get("inode")))
+        for item in before_items
+        if isinstance(item, dict) and isinstance(item.get("inode"), int)
+    }
+
+    deadline = time.monotonic() + parse_timeout()
+    while time.monotonic() < deadline:
+        authorities = xauthority_candidates(kwin_pid)
+        for item in snapshot_sockets():
+            identity = (str(item["path"]), int(item["inode"]))
+            if identity in before:
+                continue
+            display = f":{item['display']}"
+            for xauthority in authorities:
+                if not validate_display(display, xauthority):
+                    continue
+                values = {
+                    "DISPLAY": display,
+                    "WAYLAND_DISPLAY": "",
+                    "XDG_SESSION_TYPE": "x11",
+                    "ELECTRON_OZONE_PLATFORM_HINT": "x11",
+                    "GDK_BACKEND": "x11",
+                }
+                if xauthority:
+                    values["XAUTHORITY"] = xauthority
+                content = "".join(
+                    f"{key}={quote_environment(value)}\n" for key, value in values.items()
+                )
+                atomic_write(environment_path, content)
+                print(f"Stably Orca KWin display ready: DISPLAY={display}", flush=True)
+                return
+        time.sleep(0.1)
+    fail("KWin did not publish a usable Xwayland display before the timeout")
+
+
+def main() -> None:
+    if len(sys.argv) < 2:
+        fail("usage: stably-orca-kwin-display prepare|ready ...")
+    command = sys.argv[1]
+    if command == "prepare" and len(sys.argv) == 4:
+        prepare(Path(sys.argv[2]), Path(sys.argv[3]))
+        return
+    if command == "ready" and len(sys.argv) in (4, 5):
+        kwin_pid = None
+        if len(sys.argv) == 5:
+            try:
+                kwin_pid = int(sys.argv[4], 10)
+            except ValueError:
+                fail(f"invalid KWin PID: {sys.argv[4]!r}")
+        publish_display(Path(sys.argv[2]), Path(sys.argv[3]), kwin_pid)
+        return
+    fail("usage: stably-orca-kwin-display prepare BEFORE ENV | ready BEFORE ENV [KWIN_PID]")
+
+if __name__ == "__main__":
+    main()

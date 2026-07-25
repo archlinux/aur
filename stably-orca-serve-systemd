@@ -1,0 +1,265 @@
+#!/usr/bin/python
+
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import socket
+import subprocess
+import sys
+
+ORCA_EXECUTABLE = "/usr/bin/orca-ide"
+READY_TYPE = "orca_server_ready"
+READY_SCHEMA_VERSION = 1
+
+
+def fail(message: str) -> "NoReturn":
+    print(f"stably-orca-serve-systemd: {message}", file=sys.stderr, flush=True)
+    raise SystemExit(1)
+
+
+def parse_integer(name: str, default: int, minimum: int, maximum: int) -> int:
+    raw = os.environ.get(name, str(default)).strip()
+    try:
+        value = int(raw, 10)
+    except ValueError:
+        fail(f"{name} must be an integer, found {raw!r}")
+    if value < minimum or value > maximum:
+        fail(f"{name} must be between {minimum} and {maximum}, found {value}")
+    return value
+
+
+def validate_external_display(env: dict[str, str]) -> None:
+    display = env.get("DISPLAY", "").strip()
+    if not display:
+        fail("ORCA_SERVE_DISPLAY_MODE=external requires DISPLAY")
+    xdpyinfo = shutil.which("xdpyinfo", path=env.get("PATH"))
+    if not xdpyinfo:
+        fail("external display validation requires xdpyinfo (package: xorg-xdpyinfo)")
+    try:
+        result = subprocess.run(
+            [xdpyinfo, "-display", display],
+            env=env,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        fail(f"DISPLAY={display} did not respond to xdpyinfo within 10 seconds")
+    if result.returncode != 0:
+        detail = result.stderr.strip().splitlines()
+        suffix = f": {detail[-1]}" if detail else ""
+        fail(f"DISPLAY={display} failed xdpyinfo validation{suffix}")
+
+
+def configure_display(env: dict[str, str]) -> None:
+    mode = os.environ.get("ORCA_SERVE_DISPLAY_MODE", "auto").strip().lower()
+    if mode == "auto":
+        return
+    if mode == "xvfb":
+        if not shutil.which("Xvfb", path=env.get("PATH")):
+            fail("ORCA_SERVE_DISPLAY_MODE=xvfb requires Xvfb (package: xorg-server-xvfb)")
+        env.pop("DISPLAY", None)
+        env.pop("WAYLAND_DISPLAY", None)
+        env.pop("XAUTHORITY", None)
+        env["XDG_SESSION_TYPE"] = "x11"
+        return
+    if mode == "external":
+        validate_external_display(env)
+        return
+    fail("ORCA_SERVE_DISPLAY_MODE must be auto, xvfb, or external")
+
+
+def build_serve_command(env: dict[str, str]) -> list[str]:
+    if os.environ.get("ORCA_SERVE_RECIPE_JSON") or os.environ.get("ORCA_SERVE_PROJECT_ROOT"):
+        fail("recipe-json/project-root mode is not supported under systemd supervision")
+
+    port = parse_integer("ORCA_SERVE_PORT", 6768, 0, 65535)
+    args = [ORCA_EXECUTABLE, "serve", "--json", "--port", str(port)]
+
+    pairing_address = os.environ.get("ORCA_SERVE_PAIRING_ADDRESS", "").strip()
+    if pairing_address:
+        args.extend(["--pairing-address", pairing_address])
+
+    pairing_mode = os.environ.get("ORCA_SERVE_PAIRING_MODE", "runtime").strip().lower()
+    if pairing_mode == "runtime":
+        pass
+    elif pairing_mode == "mobile":
+        args.append("--mobile-pairing")
+    elif pairing_mode == "disabled":
+        args.append("--no-pairing")
+    else:
+        fail("ORCA_SERVE_PAIRING_MODE must be runtime, mobile, or disabled")
+
+    configure_display(env)
+    return args
+
+
+def atomic_write_json(path: Path, value: object) -> None:
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    payload = json.dumps(value, ensure_ascii=False, separators=(",", ":")) + "\n"
+    try:
+        fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(fd, "w", encoding="utf-8") as output:
+            output.write(payload)
+            output.flush()
+            os.fsync(output.fileno())
+        os.chmod(temporary, 0o600)
+        os.replace(temporary, path)
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def notify_systemd(message: str) -> None:
+    address = os.environ.get("NOTIFY_SOCKET")
+    if not address:
+        fail("NOTIFY_SOCKET is missing; stably-orca-serve@.service must use Type=notify")
+    if address.startswith("@"):
+        address = "\0" + address[1:]
+    with socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM) as client:
+        client.sendto(message.encode(), address)
+
+
+def publish_readiness(instance: str, pairing_path: Path, ready: dict[str, object]) -> None:
+    pairing = ready.get("pairing")
+    pairing_available = isinstance(pairing, dict) and pairing.get("available") is True
+    if pairing_available:
+        atomic_write_json(pairing_path, ready)
+    else:
+        try:
+            pairing_path.unlink()
+        except FileNotFoundError:
+            pass
+
+    bound = ready.get("boundEndpoint") or "unavailable"
+    advertised = ready.get("advertisedEndpoint") or "unavailable"
+    if pairing_available:
+        pairing_status = f"available; credentials={pairing_path}"
+    else:
+        reason = pairing.get("reason") if isinstance(pairing, dict) else "unavailable"
+        pairing_status = f"unavailable ({reason})"
+    summary = (
+        f"Stably Orca server ready ({instance}): bound={bound}; "
+        f"advertised={advertised}; pairing={pairing_status}"
+    )
+    print(summary, flush=True)
+    notify_systemd(f"READY=1\nSTATUS={summary}")
+
+
+def terminate_like_child(returncode: int) -> "NoReturn":
+    if returncode >= 0:
+        raise SystemExit(returncode)
+    signum = -returncode
+    signal.signal(signum, signal.SIG_DFL)
+    os.kill(os.getpid(), signum)
+    raise SystemExit(128 + signum)
+
+
+def supervise_server(instance: str, pairing_path: Path) -> "NoReturn":
+    if not instance:
+        fail("missing systemd instance name")
+    pairing_path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    try:
+        pairing_path.unlink()
+    except FileNotFoundError:
+        pass
+
+    env = dict(os.environ)
+    args = build_serve_command(env)
+    child: subprocess.Popen[str] | None = None
+    forwarded_signal: int | None = None
+
+    def forward_signal(signum: int, _frame: object) -> None:
+        nonlocal forwarded_signal
+        forwarded_signal = signum
+        if child is not None and child.poll() is None:
+            try:
+                child.send_signal(signum)
+            except ProcessLookupError:
+                pass
+
+    signal.signal(signal.SIGTERM, forward_signal)
+    signal.signal(signal.SIGINT, forward_signal)
+
+    child = subprocess.Popen(
+        args,
+        env=env,
+        stdin=None,
+        stdout=subprocess.PIPE,
+        stderr=None,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        bufsize=1,
+    )
+    ready_published = False
+    assert child.stdout is not None
+    try:
+        for line in child.stdout:
+            value: object | None = None
+            try:
+                value = json.loads(line)
+            except json.JSONDecodeError:
+                pass
+            if isinstance(value, dict) and value.get("type") == READY_TYPE:
+                if value.get("schemaVersion") != READY_SCHEMA_VERSION:
+                    print(
+                        "stably-orca-serve-systemd: suppressed unsupported readiness record",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                    child.terminate()
+                    child.wait()
+                    raise SystemExit(1)
+                if ready_published:
+                    print(
+                        "stably-orca-serve-systemd: suppressed duplicate readiness record",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                    continue
+                publish_readiness(instance, pairing_path, value)
+                ready_published = True
+                continue
+            if READY_TYPE in line:
+                print(
+                    "stably-orca-serve-systemd: suppressed malformed readiness output",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                continue
+            sys.stdout.write(line)
+            sys.stdout.flush()
+    finally:
+        child.stdout.close()
+
+    returncode = child.wait()
+    if not ready_published and returncode == 0:
+        print(
+            "stably-orca-serve-systemd: Orca exited before publishing readiness",
+            file=sys.stderr,
+            flush=True,
+        )
+        raise SystemExit(1)
+    if forwarded_signal is not None and returncode == 0:
+        signal.signal(forwarded_signal, signal.SIG_DFL)
+        os.kill(os.getpid(), forwarded_signal)
+    terminate_like_child(returncode)
+
+
+def main() -> None:
+    if len(sys.argv) == 4 and sys.argv[1] == "run":
+        supervise_server(sys.argv[2], Path(sys.argv[3]))
+    fail("usage: stably-orca-serve-systemd run INSTANCE PAIRING_JSON")
+
+
+if __name__ == "__main__":
+    main()

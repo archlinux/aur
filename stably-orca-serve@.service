@@ -1,0 +1,25 @@
+[Unit]
+Description=Stably Orca runtime server (%i)
+Documentation=https://github.com/stablyai/orca
+
+[Service]
+Type=notify
+NotifyAccess=main
+WorkingDirectory=%h
+UMask=0077
+RuntimeDirectory=stably-orca-%i
+RuntimeDirectoryMode=0700
+Environment=ORCA_APP_EXECUTABLE=/usr/bin/stably-orca
+Environment=ORCA_SERVE_PORT=6768
+Environment=ORCA_SERVE_PAIRING_MODE=runtime
+Environment=ORCA_SERVE_DISPLAY_MODE=auto
+EnvironmentFile=-%h/.config/stably-orca/serve/%i.env
+EnvironmentFile=-%t/stably-orca-kwin-%i/display.env
+ExecStart=/usr/lib/stably-orca/stably-orca-serve-systemd run %i %t/stably-orca-%i/pairing.json
+Restart=on-failure
+RestartSec=5s
+TimeoutStartSec=75s
+TimeoutStopSec=30s
+
+[Install]
+WantedBy=default.target

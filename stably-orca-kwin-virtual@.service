@@ -1,0 +1,25 @@
+[Unit]
+Description=KWin virtual Wayland/Xwayland display for Stably Orca (%i)
+Documentation=https://github.com/stablyai/orca
+Wants=stably-orca-serve@%i.service
+Before=stably-orca-serve@%i.service
+
+[Service]
+Type=simple
+UMask=0077
+RuntimeDirectory=stably-orca-kwin-%i
+RuntimeDirectoryMode=0700
+Environment=PATH=/usr/bin:/bin
+Environment=ORCA_KWIN_DISPLAY_TIMEOUT=20
+EnvironmentFile=-%h/.config/stably-orca/serve/%i.env
+ExecStartPre=/usr/lib/stably-orca/stably-orca-kwin-display prepare %t/stably-orca-kwin-%i/before.json %t/stably-orca-kwin-%i/display.env
+ExecStart=/usr/bin/kwin_wayland --virtual --socket stably-orca-wayland-%i --xwayland --no-lockscreen --no-global-shortcuts --no-kactivities
+ExecStartPost=/usr/lib/stably-orca/stably-orca-kwin-display ready %t/stably-orca-kwin-%i/before.json %t/stably-orca-kwin-%i/display.env $MAINPID
+Restart=always
+RestartSec=2s
+SuccessExitStatus=15 SIGTERM
+TimeoutStartSec=30s
+TimeoutStopSec=15s
+
+[Install]
+WantedBy=default.target
