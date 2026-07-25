@@ -1,13 +1,20 @@
 pkgbase = animesama-cli
-	pkgdesc = Outil TUI & CLI pour Anime-Sama
-	pkgver = 1.0.6
+	pkgdesc = Browse and watch anime from anime-sama.fr in your terminal
+	pkgver = 1.0.8
 	pkgrel = 1
-	url = https://github.com/DictateurMiro/animesama-cli
+	url = https://github.com/Miro-sh/animesama-cli
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-textual
 	depends = mpv
-	source = animesama-cli-1.0.6.tar.gz::https://github.com/DictateurMiro/animesama-cli/archive/refs/tags/v1.0.6.tar.gz
-	sha256sums = SKIP
+	source = animesama-cli-1.0.8.tar.gz::https://github.com/Miro-sh/animesama-cli/archive/refs/tags/v1.0.8.tar.gz
+	sha256sums = 398f8559658076b30a525ebf5d19c497a443bb115fef1701af0b3d9cfbeca3c4
 
 pkgname = animesama-cli

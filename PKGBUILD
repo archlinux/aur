@@ -1,29 +1,22 @@
-# Maintainer: Miro
+# Maintainer: Miro-sh
 pkgname=animesama-cli
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
-pkgdesc="Outil TUI & CLI pour Anime-Sama"
+pkgdesc="Browse and watch anime from anime-sama.fr in your terminal"
 arch=('any')
-url="https://github.com/DictateurMiro/animesama-cli"
+url="https://github.com/Miro-sh/animesama-cli"
 license=('GPL3')
-depends=('python' 'mpv')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/DictateurMiro/animesama-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-textual' 'mpv')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Miro-sh/animesama-cli/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('398f8559658076b30a525ebf5d19c497a443bb115fef1701af0b3d9cfbeca3c4')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  
-  # Create necessary directories
-  install -dm755 "$pkgdir/usr/share/animesama-cli"
-  install -dm755 "$pkgdir/usr/bin"
-  
-  # Install the Python script
-  install -Dm644 anime-sama.py "$pkgdir/usr/share/animesama-cli/anime-sama.py"
-  
-  # Create a wrapper script
-  cat > "$pkgdir/usr/bin/animesama-cli" << 'EOF'
-#!/bin/bash
-exec python3 /usr/share/animesama-cli/anime-sama.py "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/animesama-cli"
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
