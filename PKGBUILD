@@ -1,6 +1,6 @@
 # Maintainer: queinu (ZzEdovec) <zzedovec@yahoo.com>
 pkgname=onlinefix-linux-launcher-bin
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="OnlineFix Linux Launcher - play games with community multiplayer fixes on Linux!"
 arch=('x86_64')
@@ -13,13 +13,13 @@ source=(
   "onlinefix-linux-launcher"
   "onlinefix-linux-launcher.png"
   "onlinefix-linux-launcher.desktop"
-  "OFMELauncher-${pkgver}.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.7/OFMELauncher.jar"
+  "OFMELauncher-${pkgver}.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.7.1/OFMELauncher.jar"
 )
 sha256sums=(
   'bae845134d033ae38b16374efce8a21e65e8e4e07fedf3ff0090570872b89e28'
   '4262abfe7db3a930b75790772e774b8cdb11e9d224608751f608aed2689c1d40'
   '410c837f645d4a82f9ceabe9eb7b16f6f3c30929bb772c40ddeeaa25011c3b20'
-  'efa68fb54195029ae958f1c194f89365ecefebc0a1d8da9c00cf9976db51c8c1'
+  '9cae4f2cc06669ec1a1477102d1d25acf96f8393c9c1d61c3728424d2edca5d1'
 )
 
 package() {

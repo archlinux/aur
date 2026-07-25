@@ -1,6 +1,6 @@
 pkgbase = onlinefix-linux-launcher-bin
 	pkgdesc = OnlineFix Linux Launcher - play games with community multiplayer fixes on Linux!
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/ZzEdovec/onlinefix-linux
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = onlinefix-linux-launcher-bin
 	source = onlinefix-linux-launcher
 	source = onlinefix-linux-launcher.png
 	source = onlinefix-linux-launcher.desktop
-	source = OFMELauncher-2.7.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.7/OFMELauncher.jar
+	source = OFMELauncher-2.7.1.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.7.1/OFMELauncher.jar
 	sha256sums = bae845134d033ae38b16374efce8a21e65e8e4e07fedf3ff0090570872b89e28
 	sha256sums = 4262abfe7db3a930b75790772e774b8cdb11e9d224608751f608aed2689c1d40
 	sha256sums = 410c837f645d4a82f9ceabe9eb7b16f6f3c30929bb772c40ddeeaa25011c3b20
-	sha256sums = efa68fb54195029ae958f1c194f89365ecefebc0a1d8da9c00cf9976db51c8c1
+	sha256sums = 9cae4f2cc06669ec1a1477102d1d25acf96f8393c9c1d61c3728424d2edca5d1
 
 pkgname = onlinefix-linux-launcher-bin
