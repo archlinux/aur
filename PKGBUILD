@@ -1,15 +1,15 @@
 # Maintainer: Minnow Contributors <noreply@example.com>
 pkgname=minnow
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple, lightweight file manager for KDE"
 arch=('x86_64')
 url="https://github.com/minnowfm/minnow"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'kcoreaddons' 'kconfigwidgets' 'kwidgetsaddons' 'kio')
+depends=('qt6-base' 'kcoreaddons' 'kconfigwidgets' 'kwidgetsaddons' 'kio' 'kfilemetadata')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('910bcc8c881993c6bd11d86e915260983feb89db0ae47f7e9ee1987e38b83212')
+sha256sums=('c85fef7bcb05ff6ce657fd838215c9a3d442ad73020976231000a0df9ed87220')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
