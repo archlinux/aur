@@ -1,7 +1,7 @@
 pkgbase = hunspell-be-tarask
 	pkgdesc = Belarusian hunspell dictionary (classic orthography)
 	pkgver = 0.65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/375gnu/spell-be-tarask
 	arch = any
 	license = CC-BY-SA-3.0
@@ -9,8 +9,14 @@ pkgbase = hunspell-be-tarask
 	makedepends = qt6-webengine
 	optdepends = hunspell: the spell checking libraries and apps
 	provides = hunspell-dictionary
-	conflicts = hunspell-be
+	options = !emptydirs
 	source = hunspell-be-tarask::git+https://github.com/375gnu/spell-be-tarask.git#commit=v0.65
 	b2sums = 32fab0731d71507dabb5c84854f48e23093f8eec9ae67afa1518173ab5882555f24bf73451d8d7a9e93fb8dfb37e927ff4147104a7ecc09ff2a65ed75d61e107
 
 pkgname = hunspell-be-tarask
+	conflicts = hunspell-be
+	conflicts = hunspell-be-tarask-alt
+
+pkgname = hunspell-be-tarask-alt
+	pkgdesc = Belarusian hunspell dictionary (classic orthography) - without be_BY aliases
+	conflicts = hunspell-be-tarask
