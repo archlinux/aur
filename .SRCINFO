@@ -1,6 +1,6 @@
 pkgbase = pi-ui-bin
 	pkgdesc = Minimal GUI for pi
-	pkgver = 0.19.1
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/pi-ui
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = pi-ui-bin
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	provides = pi-ui=0.19.1
+	provides = pi-ui=0.19.2
 	conflicts = pi-ui
 	options = !strip
 	source = pi-logo.svg
@@ -43,9 +43,9 @@ pkgbase = pi-ui-bin
 	sha256sums = a5624bc3b8cac94de75f6f13701eca2ad3ef67bbeba286c4af3f398806f0858a
 	sha256sums = 2554a747e3d834f1ffd588530ceb46e3a3b8af4773282997df958d292bfc1b11
 	sha256sums = 6b7faf66323093e92a63a7d6d0cd20ef3718b77a2192e06cb00466fe870f14cf
-	source_x86_64 = pi-ui-bin-0.19.1-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.19.1/pi-ui-linux-x64.tar.zst
-	sha256sums_x86_64 = 8d8728b98d50738cde04ac6c73fe72ec5e1bb42d1e5242c6f323f22722aa1e27
-	source_aarch64 = pi-ui-bin-0.19.1-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.19.1/pi-ui-linux-arm64.tar.zst
-	sha256sums_aarch64 = 2537e53f8e86dd68ec97ae4ae6b29b47e97d0e05d9128cae3070c17394a25a58
+	source_x86_64 = pi-ui-bin-0.19.2-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.19.2/pi-ui-linux-x64.tar.zst
+	sha256sums_x86_64 = afb9a7a6cbb97121f635c19c445c7e9c3ea3470ca80bf973585fb9510e44042f
+	source_aarch64 = pi-ui-bin-0.19.2-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v0.19.2/pi-ui-linux-arm64.tar.zst
+	sha256sums_aarch64 = 274c75cd20101008cb4f39728e5aad624daa86a30697a01330cb3da4f81b121c
 
 pkgname = pi-ui-bin
