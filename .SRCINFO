@@ -1,0 +1,26 @@
+pkgbase = 2d-mmo-launcher
+	pkgdesc = Launcher extensível para instalar e executar MMORPGs 2D no Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nkaique21/2D-MMO-Launcher
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = dotnet-sdk
+	makedepends = fish
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	provides = 2d-mmo-launcher
+	conflicts = 2d-mmo-launcher-bin
+	conflicts = 2d-mmo-launcher-git
+	options = !lto
+	source = 2d-mmo-launcher-0.2.0.tar.gz::https://github.com/nkaique21/2D-MMO-Launcher/archive/refs/tags/v0.2.0.tar.gz
+	source = 2d-mmo-launcher.desktop
+	sha256sums = dbcd053317d49d4152f7105b8342a16f085863670ab5d51ddfbfd7522ce4fabe
+	sha256sums = 7bd9e8bedc09e7790a515fc24897e7255492850f2a07d74d926a61ac4a9332d3
+
+pkgname = 2d-mmo-launcher

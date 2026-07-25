@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Launcher extensível para MMORPGs 2D
+Exec=two-d-mmo-launcher
+StartupWMClass=two-d-mmo-launcher
+Icon=two-d-mmo-launcher
+Name=2D MMO Launcher
+Terminal=false
+Type=Application
