@@ -1,0 +1,17 @@
+pkgbase = python-tokenscope
+	pkgdesc = Token-Aware Directory Explorer for LLMs (MCP server): report how many tokens a directory tree costs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cdgaete/token-scope-mcp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-tiktoken
+	optdepends = python-fastmcp: run as an MCP server
+	source = https://files.pythonhosted.org/packages/source/t/tokenscope/tokenscope-0.2.0.tar.gz
+	sha256sums = 8cedf7586521b9545b26041bbb7b14ffaf83825821dec8ecf5a943cf1ad7310d
+
+pkgname = python-tokenscope
