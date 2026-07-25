@@ -1,0 +1,23 @@
+pkgbase = mineminal-git
+	pkgdesc = A stunning TUI Minecraft Launcher for Linux — built with Rust
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/berkeoruc/mineminal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust>=1.70
+	depends = glibc
+	depends = gcc-libs
+	depends = java-runtime>=21
+	optdepends = alsa-lib: Minecraft audio
+	optdepends = libx11: Minecraft windowing
+	optdepends = libgl: OpenGL rendering
+	provides = mineminal
+	conflicts = mineminal
+	source = mineminal-git::git+https://github.com/berkeoruc/mineminal.git
+	sha256sums = SKIP
+
+pkgname = mineminal-git
