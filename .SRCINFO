@@ -1,23 +1,22 @@
 pkgbase = moonscript
 	pkgdesc = A programmer friendly language that compiles to Lua
-	pkgver = 0.5.0_1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://moonscript.org
-	install = rock.install
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = curl
-	depends = luarocks
-	depends = lua>=5.1
-	depends = lua-lpeg>=0.10
-	depends = lua-alt-getopt>=0.7
-	depends = lua-filesystem>=1.5
-	source = https://luarocks.org/manifests/leafo/moonscript-0.5.0-1.rockspec
-	source = https://github.com/leafo/moonscript/archive/v0.5.0.tar.gz
-	sha256sums = cd4803862a15ecb73887bee9081e1a5ca28d280b94a8822c5f95cd667fddd31b
-	sha256sums = 1adb5bb38f9c6f306250f6e90d92796fe100408ee062ac0d14f3c4c22c92e682
+	makedepends = lua
+	makedepends = luarocks
+	depends = lua
+	depends = lua-argparse
+	depends = lua-filesystem
+	depends = lua-lpeg
+	conflicts = moon
+	conflicts = moonbit
+	conflicts = moonstone
+	source = https://github.com/leafo/moonscript/archive/refs/tags/v0.6.0/moonscript-0.6.0.tar.gz
+	source = https://luarocks.org/manifests/leafo/moonscript-0.6.0-1.rockspec
+	sha256sums = b98e58f4657ffc2e730904da0b4034796ff16f08e4e6c47c681905fd56509037
+	sha256sums = c5ac773ab9f9f76f033d34fa3c830b4b6e47921036c1b7beeb6b03de7851cf33
 
 pkgname = moonscript
-
