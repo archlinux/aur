@@ -1,0 +1,27 @@
+pkgbase = kimi-desktop-bin
+	pkgdesc = Kimi AI assistant desktop client
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://kimi.moonshot.cn/
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = cairo
+	depends = curl
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsoup
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk
+	depends = wget
+	provides = kimi-desktop
+	conflicts = kimi-desktop
+	noextract = Kimi_x86_64.deb
+	source = Kimi_x86_64.deb::https://kimi-moonshot.github.io/download/Kimi_x86_64.deb
+	sha256sums = 822abf05bd669201c9984e828b2624e67e0923ac3cb5a6bcc72f91bc61324e7c
+
+pkgname = kimi-desktop-bin
