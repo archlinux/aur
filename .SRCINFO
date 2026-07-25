@@ -1,7 +1,7 @@
 pkgbase = python-bitsandbytes
 	pkgdesc = k-bit optimizers and matrix multiplication routines.
 	pkgver = 0.50.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bitsandbytes-foundation/bitsandbytes
 	arch = x86_64
 	license = MIT
@@ -26,11 +26,10 @@ pkgbase = python-bitsandbytes
 	depends = python-pytorch
 	depends = python-triton
 	depends = python-typing_extensions
-	depends = python-nvidia-ml-py
 	provides = python-bitsandbytes
 	conflicts = python-bitsandbytes
 	options = !strip
 	source = bitsandbytes::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.50.0
-	sha256sums = d1c0ee840dd4b08f76273ad258ec53bad84c1064917c7f2de900360a285822c9
+	sha256sums = 589dea3f8404d625ba87afabff16f9002ed735d491588927c2b0817d523ba896
 
 pkgname = python-bitsandbytes
