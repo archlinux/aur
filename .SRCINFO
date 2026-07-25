@@ -1,6 +1,6 @@
 pkgbase = home-assistant-tui-bin
 	pkgdesc = Terminal UI for Home Assistant (prebuilt binary)
-	pkgver = 20260724.0
+	pkgver = 20260725.0
 	pkgrel = 1
 	url = https://github.com/timmo001/home-assistant-tui
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = home-assistant-tui-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = home-assistant-tui-20260724.0-linux-x86_64.tar.gz::https://github.com/timmo001/home-assistant-tui/releases/download/20260724.0/home-assistant-tui-20260724.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 91e01100d8e994179a3a7b2fef3e85b7c1b2739e484a8cfb655fd833b1ca0181
-	source_aarch64 = home-assistant-tui-20260724.0-linux-x86_64.tar.gz::https://github.com/timmo001/home-assistant-tui/releases/download/20260724.0/home-assistant-tui-20260724.0-linux-x86_64.tar.gz
-	sha256sums_aarch64 = e9e292a4145f54869aec982faee47cc27270473a55448ec4f79fdaae37693653
+	source_x86_64 = home-assistant-tui-20260725.0-linux-x86_64.tar.gz::https://github.com/timmo001/home-assistant-tui/releases/download/20260725.0/home-assistant-tui-20260725.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 15c2db1f8d1ac308ad935cc41bb56217308e2af9f3d12c52b17ce2adb2f0b06e
+	source_aarch64 = home-assistant-tui-20260725.0-linux-x86_64.tar.gz::https://github.com/timmo001/home-assistant-tui/releases/download/20260725.0/home-assistant-tui-20260725.0-linux-x86_64.tar.gz
+	sha256sums_aarch64 = b80b0dbd7bd894b5c7e2ac321a724740777e23ef230f0838b975d8af721ea366
 
 pkgname = home-assistant-tui-bin
