@@ -1,7 +1,7 @@
 pkgbase = slay
 	pkgdesc = Compile C++ code by detecting flags and includes automatically
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/slay
 	arch = x86_64
 	license = BSD-3-Clause

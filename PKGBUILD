@@ -2,7 +2,7 @@
 
 pkgname=slay
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile C++ code by detecting flags and includes automatically'
 arch=(x86_64)
 url='https://github.com/xyproto/slay'
@@ -31,4 +31,5 @@ package() {
   DESTDIR="$pkgdir" make install
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  ln -s /usr/bin/slay "$pkgdir/usr/bin/cxx"
 }
