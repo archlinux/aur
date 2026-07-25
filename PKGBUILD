@@ -1,6 +1,6 @@
 # Maintainer: NodeRelay <joe@linuxdojo.org>
 pkgname=uplink-irc-bin
-pkgver=2026.8.0
+pkgver=2026.8.1
 pkgrel=1
 pkgdesc="Fast, secure, IRCv3-featured IRC client (Qt6, prebuilt binary)"
 arch=('x86_64')
@@ -14,9 +14,9 @@ source=("$_gh/releases/download/v$pkgver/Uplink-v$pkgver-linux-x86_64.tar.gz"
         "$pkgname-$pkgver.desktop::$_gh/raw/v$pkgver/packaging/io.github.noderelay.UplinkIRC.desktop"
         "$pkgname-$pkgver.metainfo.xml::$_gh/raw/v$pkgver/packaging/io.github.noderelay.UplinkIRC.metainfo.xml"
         "$pkgname-$pkgver.png::$_gh/raw/v$pkgver/packaging/io.github.noderelay.UplinkIRC.png")
-sha256sums=('b21e32ac4e6434aa629c206d71e013b86a2743c589d0d3768ccaf4d282739aad'
+sha256sums=('0c7663f5b3af28324a40ea5ebbf925bf84863b7046fe53fe19a0e4dd9a5d6d8d'
             'e23d7bc0e13cc05703e84f0cd1acfb84cef3717e601f56ac6a141757dc73b620'
-            'fd60d9d560c8c2991532eafa85bc044e6bf7ae19e4fca45d4ba44c2b97bd2599'
+            'ed68124685ec4b039ef34b78a541a6d9be280dbcdc0537e0f183962fead7b607'
             '6513f9608ef456d246791cff08116e84c2c1f591fc6c8de7ea0d43e53a6a8d12')
 
 package() {
