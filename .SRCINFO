@@ -1,0 +1,17 @@
+pkgbase = ndstrim-rs-git
+	pkgdesc = A cross-platform NDS(i) ROM trimmer written in Rust (git-version)
+	pkgver = 0.2.1.r14.g9001c15
+	pkgrel = 1
+	url = https://github.com/Nemris/ndstrim-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = ndstrim
+	conflicts = ndstrim
+	source = ndstrim-rs::git+https://github.com/Nemris/ndstrim-rs.git
+	b2sums = SKIP
+
+pkgname = ndstrim-rs-git
