@@ -1,0 +1,15 @@
+pkgbase = smooth-scroll-linux-git
+	pkgdesc = A lightweight tool to enhance mouse wheel scrolling, adding inertia and high-resolution precision for buttery-smooth navigation on Linux desktops.
+	pkgver = r64.5f9e568
+	pkgrel = 1
+	url = https://github.com/Wayne6530/smooth-scroll-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = spdlog
+	depends = libevdev
+	source = smooth-scroll-linux-git::git+https://github.com/Wayne6530/smooth-scroll-linux
+	md5sums = SKIP
+
+pkgname = smooth-scroll-linux-git
