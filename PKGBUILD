@@ -1,11 +1,11 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=g2ttrss-mobile
 pkgver=20151113
-pkgrel=2
+pkgrel=3
 pkgdesc='A Google inspired mobile interface for TT-RSS.'
 arch=(any)
 url='https://github.com/g2ttrss/g2ttrss-mobile'
-license=(unknown)
+license=(LicenseRef-unknown)
 depends=('tt-rss')
 _commit=c5af46ebf64076e4c62c978551fa749af268710b
 source=("https://github.com/g2ttrss/g2ttrss-mobile/archive/${_commit}.zip")
