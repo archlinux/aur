@@ -19,9 +19,11 @@ url=${_ghurl}
 
 license=('MIT')
 
-depends=('docker')
 provides=("${_appname}")
 conflicts=("${_appname}")
+
+depends=('openssh')
+optdepends=('docker' 'podman')
 
 options=(!strip)
 
