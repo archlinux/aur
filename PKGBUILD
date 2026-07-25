@@ -3,7 +3,7 @@ pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='5.1.0.20260721'
 libaddr2line_commit=2c580cba4764faf5605592ae201f892df937ef12
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL-2.1-or-later')
@@ -28,7 +28,7 @@ prepare() {
 
 	# The OpenMPI package also has a library called libompitrace, which conflicts with
 	# extrae's version - rename extrae's version to libextraeompitrace to avoid the clash
-	sed -ie 's/libompitrace/libextraeompitrace/g' example/LINUX/MPI+OMP/ld-preload/trace.sh scripts/mpitrace_wizard src/tracer/Makefile.am
+	sed -i -e 's/libompitrace/libextraeompitrace/g' example/LINUX/MPI+OMP/ld-preload/trace.sh scripts/mpitrace_wizard src/tracer/Makefile.am
 
 	autoreconf -i -f
 }
