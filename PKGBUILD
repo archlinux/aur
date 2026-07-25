@@ -2,7 +2,7 @@
 pkgname='wxparaver'
 pkgdesc='Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).'
 pkgver='4.12.0.20241204'
-pkgrel='4'
+pkgrel='5'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL-2.1-or-later')
@@ -12,7 +12,7 @@ source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "wxParaver.desktop")
 sha512sums=(9d44e08cb0372d1bda5d859c8cdc3aa17e4ea211694969b520c85b79fb70cc9584a9f408403ca3f3153404cf66c3484c6891fa16d09fde3d297366b11fd684c1
             942fd0f3df5fb8fed60b5a56e29b3b5b3c8e84d1c81de254824224aa584fbd367371556c9b38ae7f6db97f1025919ba2ff8c6bf121d31e68e429693e431c4806
-            f1b000ea660765bbd454d9ae54d360233389121e54f8bcab241420b42aefa4f679735500efd43afdcd932f3a7bd339f00ff299f755a62163c1c3e34bd6920f6e)
+            50dd3ff677895b9aad9b17a67c6791f96acc2b9c5bf65b3991a1b92cb17c6567735a740188aaedcf211ca9bfbfb7ef758109d57296315afdd35707b49955cb3c)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
