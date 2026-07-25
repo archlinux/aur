@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=PDF-Equilibrist
+GenericName=Éditeur PDF
+Comment=Éditer, annoter, convertir et protéger des PDF localement, sans télémétrie
+Comment[en]=Edit, annotate, convert and protect PDF files locally, with no telemetry
+Exec=pdf-equilibrist %f
+Icon=io.github.BitScripts.PDFEquilibrist
+Terminal=false
+Categories=Office;Viewer;
+MimeType=application/pdf;
+StartupWMClass=pdf-equilibrist

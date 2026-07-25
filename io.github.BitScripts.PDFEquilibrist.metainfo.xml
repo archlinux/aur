@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.BitScripts.PDFEquilibrist</id>
+  <name>PDF-Equilibrist</name>
+  <summary>Éditeur PDF open-source — éditer, annoter, convertir et protéger vos PDF localement</summary>
+  <summary xml:lang="en">Open-source PDF editor — edit, annotate, convert and protect PDF files locally</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <developer id="io.github.bitscripts">
+    <name>Paul Woisard</name>
+  </developer>
+
+  <description>
+    <p>
+      PDF-Equilibrist est un éditeur PDF de bureau, gratuit et open-source, construit avec
+      Python (PyQt6 + PyMuPDF). Il fonctionne entièrement en local — aucun cloud, aucune
+      télémétrie, aucun compte requis.
+    </p>
+    <p xml:lang="en">
+      PDF-Equilibrist is a free, open-source desktop PDF editor built with Python
+      (PyQt6 + PyMuPDF). It runs entirely locally — no cloud, no telemetry, no account
+      required.
+    </p>
+    <p>Fonctionnalités :</p>
+    <ul>
+      <li>Édition de texte, annotations (surligner, barrer, souligner)</li>
+      <li>Filigrane, signatures et tampons</li>
+      <li>Gestion des pages (insérer, diviser, fusionner, pivoter)</li>
+      <li>Conversion vers/depuis Word, Excel, PowerPoint, images</li>
+      <li>Chiffrement et déchiffrement AES-256</li>
+      <li>Traitement par lot</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.BitScripts.PDFEquilibrist.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/Bit-Scripts/PDF-Equilibrist/main/docs/pr%C3%A9sentation/screenshot_v1.png</image>
+      <caption>Interface principale de PDF-Equilibrist</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://paulwoisard.fr</url>
+  <url type="bugtracker">https://github.com/Bit-Scripts/PDF-Equilibrist/issues</url>
+  <url type="vcs-browser">https://github.com/Bit-Scripts/PDF-Equilibrist</url>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="0.1.10" date="2026-07-25">
+      <description>
+        <p>Première version publiée sur Flathub.</p>
+      </description>
+    </release>
+  </releases>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+
+  <categories>
+    <category>Office</category>
+    <category>Viewer</category>
+  </categories>
+</component>
