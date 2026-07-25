@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/share/ltsa/ltsa.jar $*
+exec java -jar /usr/share/ltsa/ltsa.jar "$@"
