@@ -82,7 +82,7 @@ b2sums=('a1e56405fa1c0e6baeec166a716c4b90af07c78e51f1961ece988e877e469ffe1e3c7da
         'c6071ce12cc719a6bf33d9486f54648edb62c710b216181524fef9a9fec26cf9ced6d65a3433b2af941e75b03fc4b261d5e901a7f736de29b0b98192df59fdd2'
         '8a66c540b5cea1e303602cf78ca173da226c6693ec455a060c3d8a6e9616c5bfbab590e8e8a3c8e395bce8e026107b03abfa862ff436d22db271c359a977219d'
         'e7a40359104cfd13c3563a5b988dcd9d2c132179a5e7e3eb5fe333a3667843e3c04e9eea8157b5f76a7dae18ac5736a487a2b97e2f8b30d6bdc7b2298f8b9e02'
-        'c530746be9ec2e64ee4f6a7f7d52d0c204d05eff7f5c793aafce10431fc92edf8e1ba1e037ed3e498077f79e37f6fbc41d01b0b94287c0dba61fc2f24e1d1823'
+        'bc4251222a7dfe12d43f48def608ccc08b10ca37fc1eefd08ff8e7328195384598bae2af5b3af58ae3114727efdb9ccb9f20a908c5a919973f6001c69bae627a'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -203,7 +203,11 @@ package_immich-server() {
 	# symlink to server management scripts
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s ../lib/immich/app/server/bin/immich-healthcheck "${pkgdir}/usr/bin/immich-healthcheck"
-	ln -s ../lib/immich/app/server/bin/start.sh "${pkgdir}/usr/bin/immich-admin"  # only difference is a few more logs
+	cat <<-EOF > "${pkgdir}/usr/bin/immich-admin"
+	#!/usr/bin/env sh
+	cd /usr/lib/immich/app/server/bin/
+	./start.sh immich-admin "$@"
+	EOF
 }
 
 package_immich-cli() {

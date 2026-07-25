@@ -17,12 +17,8 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-	if [ "$(printf '%s\n' "$2" "1.133.1" | sort -V | tail -n1)" = "1.133.1" ]; then
-	echo -e "\033[1;33mIMPORTANT\033[0m\033[1m: Newer versions of immich server have deprecated pgvecto.rs in favor of vectorchord."
-	echo -e "\tPlease follow the *manual* migration steps at https://immich.app/docs/administration/postgres-standalone/#migrating-to-vectorchord."
-	fi
 	if [ "$(printf '%s\n' "$2" "1.142.0" | sort -V | tail -n1)" = "1.142.0" ]; then
-	echo -e "\033[1;33mIMPORTANT\033[0m\033[1m: immich-machine-learning is now packaged separately. It is required for features such as smart search, duplicate detection, and facial recognition."
+	echo -e "\033[1;33mIMPORTANT\033[0m: \033[1mimmich-machine-learning\033[0m is now packaged separately. It is required for features such as smart search, duplicate detection, and facial recognition."
 	echo -e "\tInstall and enable immich-machine-learning to continue using these features."
 	fi
 }
