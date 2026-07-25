@@ -11,7 +11,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}
 pkgdesc="A fast and convenient TUI file browser for remote servers"
 
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('d7ffc14ad4ea0e129d81d59a0c3a077aaa617366a45e2cf93de4edcb959b011d')
+sha256sums=('18eac08b20be536c1a700982b968035b89de0b9ea7954969f81b47e1f3b0a983')
 
 
 build() {
