@@ -1,6 +1,6 @@
 pkgbase = mqvpn
 	pkgdesc = Multipath VPN using MASQUE CONNECT-IP (RFC 9484) and Multipath QUIC
-	pkgver = 0.13.4
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/mp0rta/mqvpn
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mqvpn
 	makedepends = git
 	makedepends = go
 	depends = libevent
-	source = git+https://github.com/mp0rta/mqvpn.git#tag=v0.13.4
+	source = git+https://github.com/mp0rta/mqvpn.git#tag=v0.14.0
 	source = mqvpn-xquic::git+https://github.com/mp0rta/xquic.git
 	source = mqvpn-lwip::git+https://github.com/mp0rta/heiher-lwip.git
 	source = boringssl::git+https://github.com/google/boringssl.git
