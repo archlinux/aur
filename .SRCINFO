@@ -1,6 +1,6 @@
 pkgbase = cosmic-camera
 	pkgdesc = Camera application for the COSMIC™ desktop environment
-	pkgver = 0.3.4
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/camera
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = cosmic-camera
 	makedepends = cmake
 	makedepends = just
 	makedepends = nasm
+	depends = cosmic-icon-theme
 	depends = gst-plugin-pipewire
 	depends = gst-plugins-bad
 	depends = gst-plugins-base
@@ -24,8 +25,8 @@ pkgbase = cosmic-camera
 	depends = libxkbcommon
 	depends = seatd
 	depends = systemd-libs
-	optdepends = networkmanager: D-Bus access for WiFi connection from QR codes
-	source = camera-0.3.4.tar.gz::https://github.com/cosmic-utils/camera/archive/refs/tags/v0.3.4.tar.gz
-	sha256sums = 9710f1a14adb44f35d596b8d3fa6eb52c64ff82469001857d44fc79d6978298d
+	depends = wayland
+	source = camera-1.0.2.tar.gz::https://github.com/cosmic-utils/camera/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 9ef00ff76d3df7559215ab2be880618d6bfb9966d9bafe479331bc0fc0e644a5
 
 pkgname = cosmic-camera
