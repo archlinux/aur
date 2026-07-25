@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets-git
-pkgver=r483.828fae9
+pkgver=r493.2ca7ba7
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ build() {
     -DFEATURE_MULTI_VERSIONS=ON \
     -DSKIP_CPM=ON \
     -DGENERATE_PROTOCOLS=OFF \
-    -Wno-dev \
+    -Wno-author \
     -DCMAKE_C_FLAGS="${CFLAGS:-} -ffile-prefix-map=$srcdir=." \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS:-} -ffile-prefix-map=$srcdir=."
 
