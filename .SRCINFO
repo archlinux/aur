@@ -1,6 +1,6 @@
 pkgbase = streamworks-bin
 	pkgdesc = Streaming Hub local-first para desktop, web e operações
-	pkgver = 1.1.12
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://gitlab.com/bernardopg/streamworks-releases
 	arch = x86_64
@@ -13,19 +13,19 @@ pkgbase = streamworks-bin
 	optdepends = ffmpeg: transcode e compatibilidade de codecs
 	optdepends = mpv: reprodução externa e fallback de diagnóstico
 	optdepends = tor: validação de listas por proxy Tor
-	provides = streamworks=1.1.12
-	provides = streamworks-hub=1.1.12
+	provides = streamworks=1.1.13
+	provides = streamworks-hub=1.1.13
 	conflicts = streamworks
 	conflicts = streamworks-hub
 	options = !strip
 	options = !debug
-	source = streamworks-1.1.12.AppImage::https://gitlab.com/bernardopg/streamworks-releases/-/releases/v1.1.12/downloads/StreamWorks-Hub-1.1.12-x86_64.AppImage
-	source = streamworks-1.1.12.AppImage.asc::https://gitlab.com/bernardopg/streamworks-releases/-/releases/v1.1.12/downloads/StreamWorks-Hub-1.1.12-x86_64.AppImage.asc
+	source = streamworks-1.1.13.AppImage::https://gitlab.com/bernardopg/streamworks-releases/-/releases/v1.1.13/downloads/StreamWorks-Hub-1.1.13-x86_64.AppImage
+	source = streamworks-1.1.13.AppImage.asc::https://gitlab.com/bernardopg/streamworks-releases/-/releases/v1.1.13/downloads/StreamWorks-Hub-1.1.13-x86_64.AppImage.asc
 	source = streamworks.desktop
 	source = streamworks.png
 	source = LICENSE
 	validpgpkeys = BAA02ADB0110F341143B612200142FAC7F3B52D9
-	sha256sums = f621bc93ff72d78735707a81c51b3cae13b678a47f716727b5e0c753025b4888
+	sha256sums = d8d7020c4d626ee110f00c2a3bdbf6ec4800dce59a5989b3e6b0348d5dde1a7c
 	sha256sums = SKIP
 	sha256sums = b16cbd1509cf60176598d0629780a2688b9972d985eb6805b2984008018580d0
 	sha256sums = 31651ccdc061ac7116db2c04f06326b0a66235b54e81402cb0601cba6c632d28
