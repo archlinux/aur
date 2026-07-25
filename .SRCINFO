@@ -1,0 +1,20 @@
+pkgbase = allp-manager-bin
+	pkgdesc = A transparent package-manager orchestrator for Linux (pre-compiled binary)
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/allp-manager/allp-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = allp
+	provides = allp-manager
+	conflicts = allp
+	conflicts = allp-manager
+	conflicts = allp-manager-git
+	source_x86_64 = https://github.com/allp-manager/allp-manager/releases/download/v0.3.5/allp-v0.3.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8bc197d6ece8b8476ae75dd9b3240e947ee1ae9d91f2be8ec371ca42a98f1f7d
+	source_aarch64 = https://github.com/allp-manager/allp-manager/releases/download/v0.3.5/allp-v0.3.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = beccaa745c5cc912d763e371a646c07221d607e0c4aa320579e0bf069905fa81
+
+pkgname = allp-manager-bin
