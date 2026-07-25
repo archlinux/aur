@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Fleasion
+Exec=fleasion
+Icon=fleasion
+Categories=Utility;
+Terminal=false
