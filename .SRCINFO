@@ -1,15 +1,17 @@
 pkgbase = claude-brain
-	pkgdesc = A local second brain for Claude Code: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, 3D visualisation, cloud sync
-	pkgver = 0.2.0
+	pkgdesc = A local second brain for Claude Code: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory, 3D visualisation, cloud sync
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/claude-brain
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = bun
 	depends = rclone
 	depends = xdg-utils
-	source = claude-brain-0.2.0.tar.gz
-	sha256sums = c0f6bf029842bf5d008d4c33c7cd44eb15e827543417b9f443fa54f331651ed0
+	optdepends = claude-code: LLM-assisted vault reorganisation and design descriptions
+	options = !strip
+	options = !debug
+	source = claude-brain-0.3.0.tar.gz
+	sha256sums = 7522debecfabca6177042f82e36870b497a7d7c112f893895ca0b70d7c324895
 
 pkgname = claude-brain
