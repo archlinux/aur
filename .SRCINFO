@@ -1,6 +1,6 @@
 pkgbase = jd-gui-duo-bin
 	pkgdesc = Binary release of jd-gui-duo, a 2-in-1 JAVA decompiler based on JD-CORE v0 and v1
-	pkgver = 2.0.113
+	pkgver = 2.0.114
 	pkgrel = 1
 	url = https://github.com/nbauma109/jd-gui-duo
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = jd-gui-duo-bin
 	depends = java-runtime>=25
 	provides = jd-gui-duo
 	conflicts = jd-gui-duo
-	source = jd-gui-duo-bin-2.0.113.zip::https://github.com/nbauma109/jd-gui-duo/releases/download/2.0.113/jd-gui-duo-linux-2.0.113.tar.xz
+	source = jd-gui-duo-bin-2.0.114.zip::https://github.com/nbauma109/jd-gui-duo/releases/download/2.0.114/jd-gui-duo-linux-2.0.114.tar.xz
 	source = jd-gui-duo
 	source = jd-gui-duo.desktop
 	source = jd_icon_128.png
-	sha256sums = 8e5969f4365e6aee58f40e63fb80edeadeff162ba94fb9ffab659f3c3aec12b8
+	sha256sums = 751d31105a8bded6f11cdf82cc42e6bd7f0237bfde6e3b190578de860a96d81e
 	sha256sums = 7e3c81892a95aa411afe7a5dc93b5e7a891b1c52fcc65670a08b5b5618b8aafc
 	sha256sums = d40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184
 	sha256sums = 62c763642af8cbfd1e00dc8763dcc92a66eefc7aceaa4069d29909bfc197240a
