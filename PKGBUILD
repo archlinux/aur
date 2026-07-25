@@ -6,7 +6,7 @@
 
 pkgname=dma
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='DragonFly BSD mail transport agent'
 url='https://github.com/corecode/dma'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 	$pkgname.tmpfiles
 )
 b2sums=('48e48b7a07725759467078ffb94452d395d55b27a6d6b2be187f6ca4e4df73612ad2b464b65555f4842574f4ff35007a8b94e9024fb2b173dc44bf1e2e86cfef'
-        '8d1abbfd68ff3d33ff1148207ecbb1461de298f1ccdb407b4ee174d8704ba534169476639e158964a7401892f4862d51905358cf76c4af88911dee4c5c991913')
+        'be6dc5a268d8b6f6f081e9aa9d8286719976f28c4a46ba5bf0dfc5d2b8c294aafc7fe757c714ea9e840508f85c9936495b678ea6eff571f9484b56b44e1050e1')
 backup=('etc/dma/auth.conf' 'etc/dma/dma.conf')
 options=('emptydirs')
 
