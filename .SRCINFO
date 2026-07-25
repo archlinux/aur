@@ -1,6 +1,6 @@
 pkgbase = zef
 	pkgdesc = Rakudo Module Management
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/ugexe/zef
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zef
 	makedepends = git
 	depends = rakudo
 	options = !purge
-	source = zef-1.1.1.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v1.1.1
-	sha256sums = f71c511378ca31461a29b8c5d63f0fcf78d44a2d27601ac7b29114c2fee4bce8
+	source = zef-1.1.3.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v1.1.3
+	sha256sums = 98109108baf445e51975259bbf448c7716a5e1747e76fa764411d78068321c85
 
 pkgname = zef
