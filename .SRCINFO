@@ -1,0 +1,23 @@
+pkgbase = llauncher-bin
+	pkgdesc = Native Linux launcher for Arknights: Endfield
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/AugustLigh/LLauncher
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib-networking
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	optdepends = gamemode: CPU governor optimizations while gaming
+	optdepends = mangohud: FPS / frametime overlay
+	optdepends = gamescope: micro-compositor with FSR upscaling, FPS cap and HDR
+	provides = llauncher
+	conflicts = llauncher
+	noextract = llauncher-bin-0.3.0.deb
+	options = !strip
+	source = llauncher-bin-0.3.0.deb::https://github.com/AugustLigh/LLauncher/releases/download/0.3.0/LLauncher_0.3.0_amd64.deb
+	sha256sums = cc68e27011ad678e28dbf447ebf170dc89afa6767fa48b157b7deaa50845e7d8
+
+pkgname = llauncher-bin
