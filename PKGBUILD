@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 
 pkgname=btrfs-headroom
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Read-only Btrfs allocator headroom health check'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'libnotify: send optional desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('5e026703f2ac43fc311d2308cdcebd13352ef5b510af34a423a4d44aa0a266c454b7b9e444c27dd572615242aa882f2ea8d6d9d26f4bd026d9cf9f04952c3899')
+b2sums=('67e1532f01e47e6d8fc3b2385846ffc36b1d591e361995b26f29d07a0c751eeb41f5ea7c0cc31dc2577dace07569f7051e574f6f8c330639d2f387f6ddcb2105')
 
 build() {
   cd "$pkgname-$pkgver"
