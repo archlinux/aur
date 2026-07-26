@@ -1,6 +1,6 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034
-# Maintainer: Chinmay Dalal <~chinmay/public-inbox@lists.sr.ht>
+# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: desbma
@@ -25,20 +25,20 @@ sha256sums=('a43bd37528b841bdf160a8b3d5f72afd5ba5b1caa22948d5b33097012d1cf9c2'
 conflicts=('zoxide' 'zoxide-git')
 
 prepare() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   git apply "$srcdir/extra_opts.diff"
 
   cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
 
   cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   _pkgname=zoxide
 
   # binary
@@ -54,7 +54,7 @@ package() {
   install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
 
   # shell auto-completions
-  cd contrib/completions || exit 1
+  cd contrib/completions
   install -vDm644 -t "$pkgdir/usr/share/zsh/site-functions/" _zoxide
   install -vDm644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" zoxide.fish
   install -vDm644 -t "$pkgdir/usr/share/nushell/vendor/autoload/" zoxide.nu
