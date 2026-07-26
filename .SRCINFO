@@ -1,6 +1,6 @@
 pkgbase = orca-bambustudio-appimage
 	pkgdesc = G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.) with changes from Pawel Jarczak for Bambu Cloud Support
-	pkgver = 02.07.01.57_p5
+	pkgver = 02.08.01.55
 	pkgrel = 1
 	url = https://github.com/jarczakpawel/OrcaStudio
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = orca-bambustudio-appimage
 	conflicts = orca-bambustudio-bin
 	options = !strip
 	options = !debug
-	source = BambuStudio-OrcaSlicer-02.07.01.57-p5.AppImage::https://github.com/jarczakpawel/OrcaStudio/releases/download/v02.07.01.57-p5/BambuStudio-OrcaSlicer_Linux_AppImage_ubuntu24.04_amd64_02.07.01.57-p5.AppImage
-	sha256sums = ce88816ad669fea1b34027583eda888d08983fac9dd83f7976be7c34b8a62239
+	source = OrcaStudio-02.08.01.55.AppImage::https://github.com/jarczakpawel/OrcaStudio/releases/download/v02.08.01.55/OrcaStudio_Linux_AppImage_ubuntu24.04_amd64_02.08.01.55.AppImage
+	sha256sums = ffb2756c0bc46fd84f3afa68ef78bee35e5d1aa30f6313a20671dd9b610a6e36
 
 pkgname = orca-bambustudio-appimage

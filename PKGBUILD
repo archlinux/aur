@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=orca-bambustudio-appimage
-_pkgname=BambuStudio-OrcaSlicer
-pkgver=02.07.01.57_p5
+_pkgname=OrcaStudio
+pkgver=02.08.01.55
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.) with changes from Pawel Jarczak for Bambu Cloud Support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
 depends=('libwebp' 'webkit2gtk-4.1')
 source=("${_pkgname}-${pkgver//_/-}.AppImage::https://github.com/jarczakpawel/OrcaStudio/releases/download/v${pkgver//_/-}/${_pkgname}_Linux_AppImage_ubuntu24.04_amd64_${pkgver//_/-}.AppImage")
-sha256sums=('ce88816ad669fea1b34027583eda888d08983fac9dd83f7976be7c34b8a62239')
+sha256sums=('ffb2756c0bc46fd84f3afa68ef78bee35e5d1aa30f6313a20671dd9b610a6e36')
 
 package() {
 
@@ -29,18 +29,18 @@ package() {
   cd "$srcdir"
   chmod +x "${_pkgname}-${pkgver//_/-}.AppImage"
   ./"${_pkgname}-${pkgver//_/-}.AppImage" --appimage-extract 
-  if [ -f "squashfs-root/com.orcaslicer.BambuStudio-OrcaSlicer.desktop" ]; then
-    sed 's|Exec=AppRun %F|Exec=/usr/bin/bambustudio-orcaslicer|' squashfs-root/com.orcaslicer.BambuStudio-OrcaSlicer.desktop > com.orcaslicer.BambuStudio-OrcaSlicer.desktop
-    install -Dm644 "com.orcaslicer.BambuStudio-OrcaSlicer.desktop" "$pkgdir/usr/share/applications/com.orcaslicer.BambuStudio-OrcaSlicer.desktop"
+  if [ -f "squashfs-root/com.orcaslicer.${_pkgname}.desktop" ]; then
+	  sed "s|Exec=AppRun %F|Exec=/usr/bin/${_pkgname,,}|" squashfs-root/com.orcaslicer.${_pkgname}.desktop > com.orcaslicer.${_pkgname}.desktop
+    install -Dm644 "com.orcaslicer.${_pkgname}.desktop" "$pkgdir/usr/share/applications/com.orcaslicer.${_pkgname}.desktop"
   else
-    echo "Fail: Could not automatically find Desktop entry file (com.orcaslicer.BambuStudio-OrcaSlicer.desktop) within the AppImage."
+    echo "Fail: Could not automatically find Desktop entry file (com.orcaslicer.${_pkgname}.desktop) within the AppImage."
     exit 1
   fi
 
-  if [ -f "squashfs-root/BambuStudio-OrcaSlicer.png" ]; then
-    install -Dm644 "squashfs-root/BambuStudio-OrcaSlicer.png" "$pkgdir/usr/share/pixmaps/BambuStudio-OrcaSlicer.png"
+  if [ -f "squashfs-root/${_pkgname}.png" ]; then
+    install -Dm644 "squashfs-root/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
   else
-    echo "Warning: Could not automatically find an icon file (OrcaSlicer.png) within the AppImage."
+    echo "Warning: Could not automatically find an icon file (${_pkgname}.png) within the AppImage."
     echo "         Desktop entry icon might be missing."
   fi
 
