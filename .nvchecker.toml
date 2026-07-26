@@ -1,0 +1,4 @@
+[vim-css3]
+source = "git"
+git = "https://github.com/hail2u/vim-css3-syntax.git"
+prefix = "v"
