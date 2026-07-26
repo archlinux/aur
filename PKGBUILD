@@ -1,6 +1,6 @@
 # Maintainer: vermin <vermin.gov@proton.me>
 pkgname=polycarbon
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Double-click Windows programs: self-installing Wine runtime, crash recovery and per-app sandboxing"
 arch=('any')
@@ -12,7 +12,11 @@ license=('GPL-3.0-or-later')
 # owns both the Windows MIME types the handler claims and the globs table that
 # decides whether a Windows file type is already spoken for on the Linux side;
 # python parses the prefix registry, hyprctl's JSON and Windows command lines;
-# gtk3 + python-gobject are `polycarbon config`.
+# gtk3 + python-gobject are `polycarbon config`, and between them they also cover
+# the tray bridge without adding anything: it binds libX11/libXcomposite/
+# libXdamage through ctypes, all three already direct gtk3 dependencies, and
+# reaches D-Bus through the GLib bindings python-gobject provides. That is why
+# there is no python-xlib or dbus-python here.
 #
 # Not listed, on purpose: base members (coreutils, findutils, gawk, grep, sed,
 # procps-ng, tar, util-linux, xz) are guaranteed present and only add noise;
@@ -46,12 +50,13 @@ optdepends=('bubblewrap: enforce per-app restrictions — without it, Restricted
 checkdepends=('desktop-file-utils')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('819c81e42dc8181dc26417809863d6137d3458c587493efe4b69dc241aad62b0')
+sha256sums=('c59f595431734d9ed45ec88bc8daf0a365353d0daa47c5fb347ee198799c7c1a')
 
 check() {
 	cd "$pkgname-$pkgver"
 	bash -n polycarbon
 	python -m py_compile polycarbon-config.py
+	python -m py_compile polycarbon-tray.py
 	desktop-file-validate polycarbon.desktop polycarbon-config.desktop
 }
 
@@ -59,9 +64,11 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	install -Dm755 polycarbon "$pkgdir/usr/bin/polycarbon"
-	# Not a $PATH command — `polycarbon config` execs it by path, and the runner
-	# looks here whenever it is not running out of a source checkout.
+	# Not $PATH commands — `polycarbon config` execs the settings GUI by path and
+	# the runner starts the tray bridge by path, both looking here whenever they
+	# are not running out of a source checkout.
 	install -Dm755 polycarbon-config.py "$pkgdir/usr/lib/$pkgname/polycarbon-config.py"
+	install -Dm755 polycarbon-tray.py "$pkgdir/usr/lib/$pkgname/polycarbon-tray.py"
 
 	# The MIME handler entry is NoDisplay; the settings entry is the visible one.
 	# Neither is followed by an update-desktop-database or update-mime-database
