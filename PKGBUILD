@@ -2,7 +2,7 @@
 
 pkgname=execline-static
 _pkgname=execline
-pkgver=2.9.9.1
+pkgver=2.9.9.2
 pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('execline')
 replaces=('execline-musl')
 options=('staticlibs' '!lto' '!debug')
 source=("${url}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('be63533297a93c36fd267195117b4e668687a526f834517a8db47d85b6c7ec6a')
+sha256sums=('908ed4db3a6b3a23a205d8fd4cf2a71089156f2aeae0f54656045aafad2dee32')
 build() {
   cd "${_pkgname}-${pkgver}"
   export CC="musl-gcc"
