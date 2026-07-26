@@ -3,7 +3,7 @@
 
 _name=stripe-python
 pkgname=python-stripe
-pkgver=14.4.1
+pkgver=15.3.1
 pkgrel=1
 pkgdesc='Stripe python bindings'
 arch=('any')
@@ -12,8 +12,13 @@ license=('MIT')
 depends=('python>=3.6' 'python-requests' 'python-typing_extensions')
 makedepends=('python-build' 'python-flit-core' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("https://github.com/stripe/stripe-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('9abe91812ed024339c5b665c911bd6fded3b76daf46448673a79794628ac0dc574780ecdd15677a4a27eabbca66ff7d066bb09d4e61911af9ed9bfa21a3170e2')
-b2sums=('10cdda24321ad02423f256bab6ce72f609ff0ffadd740d836293c2a5c077181786ed0cf19994fc19951e76728dee6acfe8bbed1aceb63fa397c72d1477e268cd')
+sha512sums=('5de00f9fc5f46e6a351b19e0f00ad2c029e4d61d8122ae96ef89e88e061707ef9ea79eda9c826d1cd32db89e4caeae94ab6d14350479b10dc1e919c5765bb76d')
+b2sums=('403d4d2f0d8275b45d55ba2867a98036fa2239af00d80fc2520929e0ca240fdeb3b0d30343b93fbab8cee6037027218ca206fd9a69f48eba791a7418e8699179')
+
+prepare() {
+	cd "$_name-$pkgver"
+	sed -i 's/requires = \["flit_core >=3.11, <4"\]/requires = ["flit_core >=3.11"]/' pyproject.toml
+}
 
 build() {
 	cd "$_name-$pkgver"
