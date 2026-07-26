@@ -1,7 +1,7 @@
 pkgbase = piko-bin
-	pkgdesc = A small parallel downloader
+	pkgdesc = A small segmented downloader
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UruhaLushia/piko
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = piko-bin
 	conflicts = piko-git
 	options = !strip
 	options = !debug
-	source_x86_64 = piko-0.1.5-1-x86_64::https://github.com/UruhaLushia/piko/releases/download/v0.1.5/piko-linux-amd64-v1
+	source_x86_64 = piko-0.1.5-2-x86_64::https://github.com/UruhaLushia/piko/releases/download/v0.1.5/piko-linux-amd64-v1
 	sha256sums_x86_64 = 3346ac1c5090a0c24ca8dcd87c867e509d9b0e866b24044ae0ba7df2c68c62a1
-	source_aarch64 = piko-0.1.5-1-aarch64::https://github.com/UruhaLushia/piko/releases/download/v0.1.5/piko-linux-arm64
+	source_aarch64 = piko-0.1.5-2-aarch64::https://github.com/UruhaLushia/piko/releases/download/v0.1.5/piko-linux-arm64
 	sha256sums_aarch64 = f652612c892c23820b16c78af0085faffeaf4d2ee0deecf0dc61a548c559014e
 
 pkgname = piko-bin
