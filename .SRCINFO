@@ -1,6 +1,6 @@
 pkgbase = xconnect
 	pkgdesc = KDE Connect protocol implementation in Vala/C with GTK3/XApp GUI
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Twilight0/xconnect
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = xconnect
 	depends = xapp
 	provides = xconnectctl
 	provides = xconnect-app
-	source = xconnect-2.1.0.tar.gz::https://github.com/Twilight0/xconnect/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = eccddc1c543d81c00a5e9a0ad7277a0111c1fc1d39f04994f84621cafe7cb956
+	source = xconnect-2.2.0.tar.gz::https://github.com/Twilight0/xconnect/archive/refs/tags/v2.2.0-1.tar.gz
+	sha256sums = de670032624389da9c88e6773b5f31c2b07e68adae7c82118a37770a09e9ec68
 
 pkgname = xconnect

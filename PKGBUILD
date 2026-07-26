@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=xconnect
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C with GTK3/XApp GUI"
 arch=('x86_64')
@@ -26,8 +26,8 @@ makedepends=(
     'pkg-config'
 )
 provides=('xconnectctl' 'xconnect-app')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eccddc1c543d81c00a5e9a0ad7277a0111c1fc1d39f04994f84621cafe7cb956')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-1.tar.gz")
+sha256sums=('de670032624389da9c88e6773b5f31c2b07e68adae7c82118a37770a09e9ec68')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -68,10 +68,4 @@ package() {
     # Icons
     install -Dm644 gui/icons/xconnect.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/xconnect.svg"
-    install -Dm644 gui/icons/xconnect.png \
-        "$pkgdir/usr/share/icons/hicolor/128x128/apps/xconnect.png"
-    install -Dm644 gui/icons/xconnect-bw.png \
-        "$pkgdir/usr/share/xconnect/gui/icons/xconnect-bw.png"
-    install -Dm644 gui/icons/xconnect.png \
-        "$pkgdir/usr/share/xconnect/gui/icons/xconnect.png"
 }
