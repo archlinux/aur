@@ -1,0 +1,8 @@
+# Autoupdater manifest - consumed by aur/.autoupdate
+srchost="github"
+srcmntr="Sunhaiy"
+srcname="Reflex"
+verstrip="v"
+gui="true"
+desktop="reflex.desktop"
+icon="reflex.png"
