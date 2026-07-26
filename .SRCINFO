@@ -1,28 +1,25 @@
 pkgbase = screencloud
 	pkgdesc = An easy to use screenshot sharing application
-	pkgver = 1.5.3
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/olav-st/screencloud/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake
-	makedepends = zlib
-	makedepends = openssl
-	makedepends = qt5-svg
-	makedepends = qt5-tools
-	depends = quazip
-	depends = python
-	depends = libx11
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = qt5-multimedia
+	depends = bash
+	depends = glibc
 	depends = hicolor-icon-theme
-	depends = pythonqt
-	optdepends = python-ssh2: for SFTP support
-	source = screencloud-1.5.3.tar.gz::https://github.com/olav-st/screencloud/archive/v1.5.3.tar.gz
-	source = 010-screencloud-fix-python-link-libraries.patch
-	sha256sums = cff8cf5f5afa5c7aee2d7dd3a8ce28a9808f703042e03dd635b255c5b5a12c27
-	sha256sums = bf9327568513852f02b87c7a72474b50ed323ed525098e790e190472f9b1fa8e
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	depends = python
+	depends = pythonqt>=4.1.0
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = quazip-qt6
+	depends = xdg-utils
+	optdepends = python-ssh2: for SFTP plugin support
+	source = https://github.com/olav-st/screencloud/archive/v1.6.2/screencloud-1.6.2.tar.gz
+	sha256sums = 076b01ceca0797051b0075fb6e9c5cc826392f765599145ce5a04dfb5ffe30a8
 
 pkgname = screencloud
-
