@@ -98,6 +98,14 @@ fi
     -autosave-config
     -nobasic
     -ntsc
+    -colors-preset 'standard'
+    #-saturation '0'
+    #-contrast '0'
+    #-brightness '0'
+    #-tint '0'
+    #-gamma '2.35'
+    -bpp '0'
+    -no-video-accel
     # -run ~/"${_atari}/romsdave/mule.atr'
     -osa_rom ~/"${_atari}/AtariBIOS/OS Rev A (19xx)(Atari)(PAL)(400-800).rom"
     -osb_rom ~/"${_atari}/AtariBIOS/OS Rev B (19xx)(Atari)(NTSC)(400-800).rom"
@@ -124,10 +132,11 @@ fi
     # new features as of 2019-12-27
     #-kbdjoy0
     #-kbdjoy1
-    -no-kbdjoy0
-    -no-kbdjoy1
-    -atari_files "${HOME}/${_atari}/romsdave"
-    -saved_files "${HOME}/${_atari}"
+    #-no-kbdjoy0
+    #-no-kbdjoy1
+    # These create dup lines
+    #-atari_files "${HOME}/${_atari}/romsdave"
+    #-saved_files "${HOME}/${_atari}"
   )
 
   analog='Off'
@@ -144,9 +153,9 @@ fi
       -joy3hat
     )
 #  fi
-if ! :; then
-  # No command line switches for some settings
-  sed -e 's:^\(SDL_JOY_0_ENABLED\)=.*$:\1=1:g' \
+if :; then
+  # No or broken command line switches for some settings
+  sed -e '#s:^\(SDL_JOY_0_ENABLED\)=.*$:\1=1:g' \
       -e 's:^\(ATARI_FILES_DIR\)=.*$:'"\1=${HOME}/${_atari}/romsdave:g" \
       -e 's:^\(SAVED_FILES_DIR\)=.*$:'"\1=${HOME}/${_atari}:g" \
     -i ~/'.atari800.cfg'
