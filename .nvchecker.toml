@@ -1,0 +1,5 @@
+[serverhub-bin]
+source = "github"
+github = "nickprotop/ServerHub"
+use_latest_release = true
+prefix = "v"

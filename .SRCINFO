@@ -1,0 +1,26 @@
+pkgbase = serverhub-bin
+	pkgdesc = A TUI server monitoring and management dashboard for Linux. Real-time metrics, logs, and remote control from your terminal
+	pkgver = 0.0.47
+	pkgrel = 1
+	url = https://github.com/nickprotop/ServerHub
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = serverhub
+	conflicts = serverhub
+	options = !strip
+	source = WIDGETS-0.0.47.tgz::https://github.com/nickprotop/ServerHub/releases/download/v0.0.47/widgets.tar.gz
+	source = README-0.0.47.md::https://raw.githubusercontent.com/nickprotop/ServerHub/v0.0.47/README.md
+	source = LICENSE-0.0.47::https://raw.githubusercontent.com/nickprotop/ServerHub/v0.0.47/LICENSE
+	sha256sums = ce3d0500cca0d8bb9f1625a5d6d314bff4ade62576b0ca771baabc106eae6b82
+	sha256sums = 48c9224eaad0665d4e645c25e8f571c31706eab1009ad7a6d388a1ed7cd30e87
+	sha256sums = 2c10c21061c318db599bce29e1a1ed265f1e91bb7a84c6a852e39b359b24539f
+	source_x86_64 = serverhub-x86_64-0.0.47::https://github.com/nickprotop/ServerHub/releases/download/v0.0.47/serverhub-linux-x64
+	sha256sums_x86_64 = 91bd6e5214b6fc02374c2867d250cf20c98885f48a5b8f4adb37c2963c9c1752
+	source_aarch64 = serverhub-aarch64-0.0.47::https://github.com/nickprotop/ServerHub/releases/download/v0.0.47/serverhub-linux-arm64
+	sha256sums_aarch64 = a3d228d757416697959740abac44189f5bbc17cba938eb94da16efeb5ac0052c
+
+pkgname = serverhub-bin
