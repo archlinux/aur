@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 url='https://awesomewm.org/'
 license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
-         'lua' 'lua-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
+         'lua54' 'lua54-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
          'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-xrm' 'libxfixes')
 makedepends=('asciidoctor' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
              'xmlto')
@@ -31,7 +31,7 @@ backup=('etc/xdg/awesome/rc.lua')
 source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
 
-_LUA_VER=5.5
+_LUA_VER=5.4
 _BUILD_DOCS=${_BUILD_DOCS:-0}
 
 pkgver() {
