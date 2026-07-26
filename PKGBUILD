@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=ovrport-bin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Patch Quest games to run on Pico and other VR headsets"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('GPL-3.0-only')
 depends=()
 provides=('ovrport' 'overport')
 conflicts=('ovrport' 'overport')
-source=("${pkgname}-${pkgver}.zip::https://github.com/ovrport/app/releases/download/v${pkgver}/desktop-linux.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/ovrport/app/releases/download/${pkgver}/desktop-linux.zip"
         "ovrport.desktop")
-sha256sums=('ff9007afc365007e246c2b070528f7f5ccfb68598b100c43627e3ef60b7f3528'
+sha256sums=('497e2ca913de02a4c70763421401199313b2e782040f673e81b4f4da0239dbc7'
             '84aeba61906e77d69a15e90ef09624fa37589d9c87a77f1811e3633cfa00c38a')
 
 package() {
