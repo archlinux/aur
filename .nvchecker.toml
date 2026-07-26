@@ -1,0 +1,5 @@
+[sqltui-bin]
+source = "github"
+github = "LinPr/sqltui"
+use_latest_release = true
+prefix = "v"
