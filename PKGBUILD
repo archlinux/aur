@@ -1,5 +1,5 @@
 pkgname=hyclock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Une horloge ASCII pour le terminal écrite en Python"
 arch=('any')
