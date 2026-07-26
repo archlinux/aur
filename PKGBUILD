@@ -1,7 +1,7 @@
 # Maintainer: Renato de Oliveira <renatoi at github>
 pkgname=azeron-software
 pkgver=1.5.6
-pkgrel=10
+pkgrel=11
 pkgdesc='Configuration tool for Azeron keypads (unofficial Linux repackage)'
 arch=('x86_64')
 url='https://github.com/renatoi/azeron-linux'
@@ -26,7 +26,7 @@ prepare() {
 
     # Rebuild node-hid for Linux targeting Electron
     cd app
-    npm install node-hid@2.2.0
+    npm install --ignore-scripts node-hid@2.2.0
     cd ..
     npx @electron/rebuild -f -w node-hid -m app -v "${_electron_ver}"
 
