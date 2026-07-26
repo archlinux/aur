@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pluto
+Comment=Pluto is an all-in-one machinima studio, forked from sm64coopdx 0.2 by the Coop Deluxe team.
+Exec=pluto-sm64
+Icon=pluto-sm64
+Type=Application
+Terminal=false
+Categories=Games
