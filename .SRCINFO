@@ -1,0 +1,14 @@
+pkgbase = oklch-color-picker
+	pkgdesc = A standalone color picker application using the Oklch colorspace (based on Oklab)
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://oklch.eerolehtinen.fi/
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = libglvnd
+	depends = libxkbcommon
+	source = https://oklch.eerolehtinen.fi//archive/refs/tags/2.3.4.tar.gz
+	sha512sums = 1ef1709f763476ff4bd60c60866151f4b7be1fd34961a8b22fb6819c0565a2582ebfbbd5ebaac660d90630d9cd75cabcc31e6443ac5c7cb9b00777898018dc91
+
+pkgname = oklch-color-picker
