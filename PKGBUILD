@@ -10,7 +10,7 @@
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.3.7
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Opinionated, e2e-only XMPP client, post-quantum by default'
 arch=('x86_64')
@@ -31,11 +31,14 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('9133d9832ac815a981b8ac377b5559556d0b62012ca8c2548fd9c9aada4cc846' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
+sha256sums=('70ad065f628b31dc9a87b3f8a51c355ae506779d4ea6c7f035aa71193af4b6f5' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
 	cp -a "$srcdir/${_pkgname}-linux-x64/." "$pkgdir/opt/$_pkgname/"
+	# cp -a applies the source directory's own mode to the destination, undoing the install
+	# above. Releases up to 0.3.7 shipped that as 0700, which denied every non-root user.
+	chmod 755 "$pkgdir/opt/$_pkgname"
 
 	install -dm755 "$pkgdir/usr/bin"
 	ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
