@@ -34,7 +34,7 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'xdg-desktop-portal-gnome: screencasting support'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
-provides=("${pkgname%-spicy-git}=${pkgver}")
+provides=("${pkgname%-spicy-git}=${pkgver}" 'wayland-compositor')
 conflicts=("${pkgname%-spicy-git}-bin" "${pkgname%-spicy-git}")
 options=(!debug !lto !strip)
 source=("${pkgname%-spicy-git}::git+https://github.com/losnoco/niri.git#branch=spicy-main"

@@ -32,6 +32,7 @@ pkgbase = niri-spicy-git
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
 	provides = niri=26.04.r87.g56b2df0
+	provides = wayland-compositor
 	conflicts = niri-bin
 	conflicts = niri
 	options = !debug
