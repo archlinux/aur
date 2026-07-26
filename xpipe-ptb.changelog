@@ -44,6 +44,14 @@ This ordering is persistent while the new manual sorting mode is active:
 
 You can still switch to the existing sort modes of last used and alphabetical at any time.
 
+## Password manager listing
+
+You now open a popup to list all the available password manager entries that can be selected, so no more manual typing required:
+
+![Password Manager List](https://xpipe.io/assets/images/BlogPage/pwman-list.png)
+
+This feature is supported for all password managers that support listing their entries.
+
 ## Wake-on-LAN
 
 This release introduces support for Wake-on-LAN:
