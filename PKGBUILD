@@ -1,4 +1,4 @@
-# Maintainer: Pierre Manceron <pierre.manceron@raidium.eu>
+# Maintainer: phylliade
 pkgname=notion-cli
 pkgver=0.21.2
 pkgrel=1
