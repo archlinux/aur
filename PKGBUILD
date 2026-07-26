@@ -1,6 +1,6 @@
 # Maintainer: jaoppb <joaopedroperes06@gmail.com>
 pkgname=cranky
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A minimalist, performant, and modular bar for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('wayland' 'libxkbcommon' 'fontconfig' 'dbus')
 optdepends=('uwsm: for systemd session management')
 makedepends=('cargo' 'pkg-config')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b13f32642ab665d4f225b1866580eab7377c6841a6890ccd128a16f116187ab3')
+sha256sums=('34c35069a88aabd9a6d894a42ee0d756a3157ca829ebce0b922469f6aea9f0b9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
