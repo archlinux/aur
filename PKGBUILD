@@ -1,4 +1,4 @@
-# Maintainer: Filip <denuvo@duck.com>
+# Maintainer: Filip <denuvo at tuta dot io>
 
 pkgname=xprinter-cups
 pkgver=3.13.3
