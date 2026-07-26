@@ -1,0 +1,18 @@
+pkgbase = sable-electron-git
+	pkgdesc = Yet another matrix client — Unofficial electron version
+	pkgver = r29.139e3cb
+	pkgrel = 1
+	url = https://github.com/chopper1337/sable-electron
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = pnpm
+	makedepends = npm
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = sable-electron
+	conflicts = sable-electron
+	source = sable-electron::git+https://github.com/chopper1337/sable-electron.git
+	sha256sums = SKIP
+
+pkgname = sable-electron-git

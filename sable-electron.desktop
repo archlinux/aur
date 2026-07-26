@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Sable
+Exec=/usr/bin/sable-electron %U
+Terminal=false
+Type=Application
+Icon=sable-electron
+StartupWMClass=sable-electron
+GenericName=Internet Messenger
+Categories=Network;
+Keywords=matrix;sable;electron;chat;
+Comment=Yet another matrix client
+MimeType=x-scheme-handler/matrix;
