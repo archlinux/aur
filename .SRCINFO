@@ -1,0 +1,23 @@
+pkgbase = sqlnow-desktop-bin
+	pkgdesc = Local SQL viewer for files and databases, in a native window
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/kindly/sqlnow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sqlnow-bin: the command-line version, sharing the same sessions
+	provides = sqlnow-desktop
+	conflicts = sqlnow-desktop
+	options = !strip
+	options = !debug
+	source_x86_64 = sqlnow-desktop-bin-0.4.1-x86_64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.4.1/sqlnow-desktop-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c2f4d3c5fab7d2ed112810fecbc8b22acd9419d11cc47cc496c0fe7a308fe5fb
+	source_aarch64 = sqlnow-desktop-bin-0.4.1-aarch64.tar.gz::https://github.com/kindly/sqlnow/releases/download/v0.4.1/sqlnow-desktop-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0d321bbcc994f2df654e1913a55ba34769fe3876bd4bcd489423c6a5c5b315a0
+
+pkgname = sqlnow-desktop-bin
