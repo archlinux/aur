@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Control suite for Aquaero 6 LT and Farbwerk 360"
 arch=('any')
@@ -29,7 +29,7 @@ conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b338723db94fec7257df3c9f256da3c885dde717d3f80cb265955cff406278e8')
+sha256sums=('6e34ffd3a815bf6eac4735159f9888fbea493b05639d6bcf98db3138f8b85b22')
 
 package() {
     cd "$pkgname-$pkgver"
