@@ -1,0 +1,4 @@
+[oavif]
+source = "github"
+github = "gianni-rosato/oavif"
+use_max_release = true

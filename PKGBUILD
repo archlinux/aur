@@ -1,7 +1,8 @@
 # Maintainer: Uyanide <me@uyani.de>
+
 pkgname=oavif
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Target quality AVIF encoding'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
@@ -9,6 +10,9 @@ license=('Apache-2.0')
 depends=(
     'glibc'
     'libavif'
+)
+makedepends=(
+    'zig'
 )
 options=('!debug')
 source=(
