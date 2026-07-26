@@ -1,29 +1,56 @@
 pkgbase = libinput-epp
 	pkgdesc = Replaces Adaptive acceleration with Windows' Enhance Pointer Precision
 	pkgver = 1.31.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/tehabstract/libinput-epp
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = gtk4
-	makedepends = meson
-	makedepends = wayland-protocols
+	makedepends = cairo
 	makedepends = check
-	depends = mtdev
-	depends = libevdev
-	depends = libwacom
-	depends = systemd-libs
+	makedepends = glib2
+	makedepends = gtk4
+	makedepends = libx11
+	makedepends = meson
+	makedepends = python
+	makedepends = python-libevdev
+	makedepends = python-pyudev
+	makedepends = python-yaml
+	makedepends = wayland
+	makedepends = wayland-protocols
 	depends = glibc
-	optdepends = gtk4: libinput debug-gui
-	optdepends = python-pyudev: libinput measure
-	optdepends = python-libevdev: libinput measure
-	optdepends = python-yaml: used by various tools
-	provides = libinput=1.31.3
-	provides = libinput
-	provides = libinput.so=10-64
-	conflicts = libinput
+	depends = libevdev
+	depends = libgcc
+	depends = libwacom
+	depends = lua54
+	depends = mtdev
+	depends = systemd-libs
 	source = libinput-epp-1.31.3.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/1.31.3/libinput-epp-1.31.3.tar.gz
 	sha256sums = 73e4f7430e97aff268980cb8d669b750e9cc2e2f4b863007a7e51af99e975b03
 
 pkgname = libinput-epp
+	optdepends = libinput-epp-tools: debug utilities
+	provides = libinput=1.31.3
+	provides = libinput
+	provides = libinput.so
+	conflicts = libinput
+
+pkgname = libinput-epp-tools
+	pkgdesc = Replaces Adaptive acceleration with Windows' Enhance Pointer Precision (debug utilities)
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libevdev
+	depends = libgcc
+	depends = libinput-epp
+	depends = libx11
+	depends = python
+	depends = python-libevdev
+	depends = python-pyudev
+	depends = python-yaml
+	depends = systemd-libs
+	depends = wayland
+	provides = libinput-tools=1.31.3
+	provides = libinput-tools
+	conflicts = libinput-tools

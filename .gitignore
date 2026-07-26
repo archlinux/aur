@@ -4,3 +4,4 @@ pkg/
 *.tar.*
 .build*
 .swp
+*.log
