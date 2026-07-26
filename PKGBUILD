@@ -2,7 +2,7 @@
 
 pkgname=wiki2book
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook."
 arch=("any")
 url="https://github.com/hauke96/wiki2book"
@@ -49,6 +49,14 @@ package() {
 
   install -d "${pkgdir}"/usr/share/wiki2book/
   install -Dm644 wiki2book/configs/* "${pkgdir}"/usr/share/wiki2book/
+
+  install -d "${pkgdir}"/usr/share/doc/wiki2book/doc/
+  install -d "${pkgdir}"/usr/share/doc/wiki2book/projects/astronomie/
+  install -Dm644 wiki2book/README.md "${pkgdir}"/usr/share/doc/wiki2book/
+  install -Dm644 wiki2book/LICENSE "${pkgdir}"/usr/share/doc/wiki2book/
+  # TODO: Enable this when the changelog file exists: install -Dm644 wiki2book/CHANGELOG.md "${pkgdir}"/usr/share/doc/wiki2book/
+  install -Dm644 wiki2book/doc/* "${pkgdir}"/usr/share/doc/wiki2book/doc/
+  install -Dm644 wiki2book/projects/de/astronomie/* "${pkgdir}"/usr/share/doc/wiki2book/projects/astronomie/ # Just to provide a real world project
 
   install -Dm644 wiki2book/wiki2book-completion-bash "${pkgdir}"/usr/share/bash-completion/completions/wiki2book
   install -Dm644 wiki2book/wiki2book-completion-fish "${pkgdir}"/usr/share/fish/vendor_completions.d/wiki2book.fish

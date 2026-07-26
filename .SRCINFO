@@ -1,7 +1,7 @@
 pkgbase = wiki2book
 	pkgdesc = Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hauke96/wiki2book
 	arch = any
 	license = GPL-3.0
