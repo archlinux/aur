@@ -1,6 +1,6 @@
 pkgbase = foldingathome
 	pkgdesc = A distributed computing project for simulating protein dynamics
-	pkgver = 8.5.5
+	pkgver = 8.5.6
 	pkgrel = 1
 	epoch = 1
 	url = https://foldingathome.org/
