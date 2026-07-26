@@ -15,74 +15,89 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=4.0.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Control suite for Aquaero 6 LT and Farbwerk 360"
 arch=('any')
 url="https://github.com/raffaele-90/aquacontrol"
 license=('GPL3')
 depends=('python' 'pyside6' 'python-hidapi')
-optdepends=('python-pynvml: supporto lettura sensori GPU Nvidia')
+optdepends=('python-pynvml: Nvidia GPU sensor readings'
+            'libpulse: alarm sound playback (paplay)')
 provides=('aquacontrol')
 conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21057a4675f1cea5e6587634339c4805d49d85067dcf1ce2b085f2054b75f6ea')
+sha256sums=('b338723db94fec7257df3c9f256da3c885dde717d3f80cb265955cff406278e8')
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Directory di sistema
+    # Directory di sistema.
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "$pkgdir/etc/udev/rules.d"
+    install -dm755 "$pkgdir/usr/lib/systemd/system"   # servizio di sistema (demone root)
+    install -dm755 "$pkgdir/usr/lib/systemd/user"     # servizio utente (agent di sessione)
 
-    # Codice Python e Assets
+    # Codice Python e assets
     install -m644 *.py "$pkgdir/usr/lib/$pkgname/"
     cp -r assets "$pkgdir/usr/lib/$pkgname/"
     find "$pkgdir/usr/lib/$pkgname/assets" -type d -exec chmod 755 {} +
     find "$pkgdir/usr/lib/$pkgname/assets" -type f -exec chmod 644 {} +
 
-    # Wrapper Eseguibile
+    # Wrapper della GUI
     echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
     echo 'exec python3 /usr/lib/aquacontrol/main.py "$@"' >> "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
 
-    # File .desktop per i DE (Wayland/X11)
-    echo '[Desktop Entry]' > "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Name=AquaControl' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment=Control suite for Aquaero 6 LT and Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[it]=Suite di controllo per Aquaero 6 LT e Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[fr]=Suite de contrôle pour Aquaero 6 LT et Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[es]=Suite de control para Aquaero 6 LT y Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[de]=Steuerungssuite für Aquaero 6 LT und Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[ru]=Пакет управления для Aquaero 6 LT и Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment[zh_CN]=Aquaero 6 LT 和 Farbwerk 360 控制套件' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo "Exec=/usr/bin/$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo "Icon=$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Terminal=false' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Type=Application' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Categories=System;HardwareSettings;' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    # Servizio di SISTEMA (demone root)
+    cat > "$pkgdir/usr/lib/systemd/system/aquacontrold.service" <<'EOF'
+[Unit]
+Description=AquaControl Hardware Daemon (root)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/lib/aquacontrol/aquacontrold.py
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    # Servizio UTENTE (agent di sessione)
+    cat > "$pkgdir/usr/lib/systemd/user/aquacontrol-agent.service" <<'EOF'
+[Unit]
+Description=AquaControl Session Agent (alarm reaction, login diagnostics)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/lib/aquacontrol/aquacontrol-agent.py
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
+EOF
+
+    # File .desktop
+    cat > "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+[Desktop Entry]
+Name=AquaControl
+Comment=Control suite for Aquaero 6 LT and Farbwerk 360
+Exec=/usr/bin/$pkgname
+Icon=$pkgname
+Terminal=false
+Type=Application
+Categories=System;HardwareSettings;
+EOF
     chmod 644 "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Icona
     install -m644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-
-    # Regole UDEV
-    echo '# AquaControl - Permessi hardware per Aquaero 6 LT e Farbwerk 360' > "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f010", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f010", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    echo 'ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="aquaero", RUN+="/bin/sh -c '\''chmod a+w /sys$devpath/pwm*'\''"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-    chmod 644 "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
-
-    # Regola Sudoers per lo spegnimento forzato
-    install -dm755 "$pkgdir/etc/sudoers.d"
-    echo '# AquaControl - Spegnimento di emergenza' > "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
-    echo '%wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff --force --force' >> "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
-    chmod 440 "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
 }

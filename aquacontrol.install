@@ -13,19 +13,53 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Gruppo 'aquacontrol' e /var/lib/aquacontrol come root:aquacontrol 2770 (setgid): il
+# demone (root) legge, GUI/agent (utente nel gruppo) scrivono lo stesso file di config.
+# Qui vivono anche il log e il biglietto d'emergenza.
+_ensure_shared_env() {
+    getent group aquacontrol >/dev/null 2>&1 || groupadd -r aquacontrol
+    install -dm2770 -o root -g aquacontrol /var/lib/aquacontrol
+}
+
+_remove_legacy_sudoers() {
+    rm -f /etc/sudoers.d/99-aquacontrol-shutdown
+}
+
+_post_msg() {
+    cat <<'EOF'
+
+==> AquaControl 5.0 - post-installation steps:
+
+   1) System daemon (once per machine), as root:
+        sudo systemctl enable --now aquacontrold.service
+
+   2) Session agent (once per user), as a NORMAL user, NEVER with sudo:
+        systemctl --user enable --now aquacontrol-agent.service
+
+   3) Add your user to the 'aquacontrol' group (needed to read the daemon
+      socket and to write the configuration), then log out and back in:
+        sudo usermod -aG aquacontrol "$USER"
+
+   NOTE: 'aquacontrol-agent' is a --user service. Running it with sudo would
+   bind it to the (non-existent) root session and it would not start.
+
+EOF
+}
 
 post_install() {
-    echo "=> Aggiornamento regole udev e polkit in corso..."
-    udevadm control --reload-rules
-    udevadm trigger
-
-    if command -v gtk-update-icon-cache &> /dev/null; then
-        gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    fi
-
-    echo "=> ATTENZIONE: È necessario un riavvio del sistema per applicare i permessi hardware."
+    _ensure_shared_env
+    _remove_legacy_sudoers
+    _post_msg
 }
 
 post_upgrade() {
-    post_install
+    _ensure_shared_env
+    _remove_legacy_sudoers
+    systemctl try-restart aquacontrold.service >/dev/null 2>&1 || true
+    _post_msg
+}
+
+post_remove() {
+    rm -rf /var/lib/aquacontrol
+    getent group aquacontrol >/dev/null 2>&1 && groupdel aquacontrol
 }

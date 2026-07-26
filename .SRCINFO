@@ -1,6 +1,6 @@
 pkgbase = aquacontrol
 	pkgdesc = Control suite for Aquaero 6 LT and Farbwerk 360
-	pkgver = 4.0.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/raffaele-90/aquacontrol
 	install = aquacontrol.install
@@ -9,11 +9,12 @@ pkgbase = aquacontrol
 	depends = python
 	depends = pyside6
 	depends = python-hidapi
-	optdepends = python-pynvml: supporto lettura sensori GPU Nvidia
+	optdepends = python-pynvml: Nvidia GPU sensor readings
+	optdepends = libpulse: alarm sound playback (paplay)
 	provides = aquacontrol
 	conflicts = openaquaero
 	replaces = openaquaero
-	source = aquacontrol-4.0.2.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v4.0.2.tar.gz
-	sha256sums = 21057a4675f1cea5e6587634339c4805d49d85067dcf1ce2b085f2054b75f6ea
+	source = aquacontrol-5.0.0.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = b338723db94fec7257df3c9f256da3c885dde717d3f80cb265955cff406278e8
 
 pkgname = aquacontrol
