@@ -6,7 +6,6 @@ pkgbase = jquake
 	install = jquake.install
 	arch = any
 	license = Apache
-	makedepends = fastjar
 	depends = java-runtime
 	optdepends = pipewire-alsa: sound output on PipeWire systems
 	optdepends = pulseaudio-alsa: sound output on PulseAudio systems

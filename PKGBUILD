@@ -13,7 +13,6 @@ depends=('java-runtime')
 # Java outputs sound through ALSA, so sound servers need their ALSA bridge
 optdepends=('pipewire-alsa: sound output on PipeWire systems'
             'pulseaudio-alsa: sound output on PulseAudio systems')
-makedepends=('fastjar')
 install="${pkgname}.install"
 source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
         "jquake.desktop"
@@ -24,7 +23,7 @@ md5sums=('2c42a9dd8d5cb3597e5dcd5986ccf370'
 
 build() {
   # Extract app icon
-  fastjar xf JQuake.jar icon.png .
+  bsdtar xf JQuake.jar icon.png
 }
 
 package() {
