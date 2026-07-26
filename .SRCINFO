@@ -1,7 +1,7 @@
 pkgbase = lua-lgi-git
 	pkgdesc = Lua bindings for gnome/gobject using gobject-introspection library
 	pkgver = 0.9.2.r55.g05038e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pavouk/lgi
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = lua-lgi-git
 	md5sums = SKIP
 
 pkgname = lua-lgi-git
-

@@ -7,7 +7,7 @@ _pkgbase=lgi
 pkgbase=lua-lgi-git
 pkgname=$pkgbase
 pkgver=0.9.2.r55.g05038e4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua bindings for gnome/gobject using gobject-introspection library'
 arch=(i686 x86_64)
 url='https://github.com/pavouk/lgi'
@@ -19,7 +19,7 @@ conflicts=('lgi' 'lua-lgi')
 provides=('lua-lgi')
 source=('git+https://github.com/pavouk/lgi.git')
 md5sums=('SKIP')
-_LUA_VER=5.4
+_LUA_VER=5.5
 
 pkgver() {
   cd $_pkgbase
