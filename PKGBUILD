@@ -1,6 +1,6 @@
 pkgname=open-design
 pkgver=0.16.1
-pkgrel=7
+pkgrel=8
 _tag="open-design-v${pkgver}"
 # Upstream CLI name is `od`; this package installs `open-design` because /usr/bin/od is coreutils (octal dump).
 pkgdesc='Local-first design product: design skills and design systems with your code-agent CLI; daemon and static web UI (CLI: open-design).'
@@ -22,9 +22,8 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   # Corepack is absent on some Node installs (e.g. nodejs-lts-jod); pin pnpm via npx instead.
   _pnpm() { npx --yes pnpm@10.33.2 "$@"; }
-  _pnpm install --frozen-lockfile
-  _pnpm --filter @open-design/contracts build
-  _pnpm --filter @open-design/daemon build
+  _pnpm install --frozen-lockfile --ignore-scripts
+  _pnpm bootstrap
   _pnpm --filter @open-design/web build
 }
 

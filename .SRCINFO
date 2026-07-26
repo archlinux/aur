@@ -1,7 +1,7 @@
 pkgbase = open-design
 	pkgdesc = Local-first design product: design skills and design systems with your code-agent CLI; daemon and static web UI (CLI: open-design).
 	pkgver = 0.16.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/nexu-io/open-design
 	arch = x86_64
 	arch = aarch64
