@@ -2,7 +2,7 @@
 
 _pkgname="gitstore"
 pkgname="${_pkgname}-git"
-pkgver=1.2r1.gec3058e
+pkgver=1.2r3.g3ac2bf1
 pkgrel=1
 pkgdesc="Thin git-backed transactional store manager, inspired by pass."
 url="https://codeberg.org/ValOm/gitstore"
@@ -18,6 +18,10 @@ md5sums=("SKIP")
 pkgver() {
 	cd "$srcdir/$_pkgname" || exit 1
 	git describe --tags --long | sed '{ s/^v//; s/-/r/; s/-/./}'
+}
+
+check() {
+	cd "$srcdir/$_pkgname" && make test
 }
 
 build() {
