@@ -18,10 +18,9 @@ _ensure_environment() {
 
     install -dm755 -o astrbot -g astrbot /var/lib/astrbot
     install -dm755 -o astrbot -g astrbot /var/cache/astrbot
-    install -dm755 -o astrbot -g astrbot /var/cache/astrbot/python
-    install -dm755 -o astrbot -g astrbot /var/cache/astrbot/cargo
-    install -dm755 -o astrbot -g astrbot /var/cache/astrbot/rustup
-    install -dm755 -o astrbot -g astrbot /var/cache/astrbot/cargo_target
+    for _subdir in python cargo rustup cargo_target; do
+        install -dm755 -o astrbot -g astrbot "/var/cache/astrbot/$_subdir"
+    done
     install -dm755 -o root -g root /etc/astrbot
 
     [ -d "/var/lib/astrbot" ] && chown -R astrbot:astrbot /var/lib/astrbot
@@ -59,6 +58,21 @@ pre_install() {
 
 pre_upgrade() {
     _ensure_root
+}
+
+pre_remove() {
+    _ensure_root
+
+    local units
+    units=$(systemctl list-units --type=service --state=active 'astrbot@*' --no-legend 2>/dev/null | awk '{print $1}')
+    [ -n "$units" ] || return 0
+
+    echo ">>> 停止运行中的 AstrBot 实例服务，避免残留进程指向已删除的代码..."
+    while IFS= read -r unit; do
+        [ -n "$unit" ] || continue
+        echo "  - stopping $unit"
+        systemctl stop "$unit" || true
+    done <<<"$units"
 }
 
 # ─── Shared banner (install vs upgrade) ────────────────────────────────────────
