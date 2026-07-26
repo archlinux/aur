@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
 pkgver=r535.g46c35064
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
@@ -40,18 +40,36 @@ package() {
   mv "$pkgdir"/usr/bin/amptest{,.plc}
 
   # Avoid conflict with aur/pev
-  mv "$pkgdir"/usr/bin/pev{,.plc}
+  #mv "$pkgdir"/usr/bin/pev{,.plc}
 
-  # Restrict binaries that send or capture arbitrary frames
-  for f in "$pkgdir"/usr/bin/e[df]??; do
-    chmod -c u-s "$f"
+  # Remove setuid from all binaries
+  #
+  # Some of them can send or capture arbitrary Ether frames (edsu/edru,
+  # ef[rsbe]u) and shouldn't be accessible to anyone but root by default.
+  #
+  # Other tools likely have untested ways to read/write arbitrary files, or
+  # buffer overflow exploits, so in general they should not have setuid when
+  # all they need is cap_net_raw.
+  chmod -c u-s "$pkgdir"/usr/bin/*
+
+  # Grant cap_net_raw to a few "Probably Fine" user-facing binaries
+  # Don't grant it to binaries that can reboot/reset/reflash the hardware
+  # (i.e. not bin/{int6k,amptool,plctool} nor bin/*boot)
+  for file in "$pkgdir"/usr/bin/{amp,plc,int6k}{stat,wait}; do
+    setcap cap_net_raw=ep "$file"
+    echo "capabilities of '$file' added"
   done
 
-  # Make the remaining binaries look less scary in `ls`
-  # (I'm still on the fence about making all of them :wheel-only)
-  find "$pkgdir"/usr/bin -type f -perm /u+s \
-    -exec chmod -c u-s {} \; \
-    -exec setcap cap_net_raw=ep {} \;
+  # Move some junk hardware-devel tools out of $PATH
+  mkdir -p "$pkgdir"/usr/lib/$pkgname
+  mv -v -t "$pkgdir"/usr/lib/$pkgname/ \
+    "$pkgdir"/usr/bin/e[df]?? \
+    "$pkgdir"/usr/bin/CMEncrypt \
+    "$pkgdir"/usr/bin/{sada,sdram,weeder,int6kuart} \
+    "$pkgdir"/usr/bin/{pev,evse} \
+    "$pkgdir"/usr/bin/mdio* \
+    "$pkgdir"/usr/bin/tty* \
+    ;
 }
 
 # vim: ts=2:sw=2:et:
