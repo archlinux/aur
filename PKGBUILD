@@ -2,7 +2,7 @@
 
 _pkgname="gitstore"
 pkgname="${_pkgname}-git"
-pkgver=1.0r0.ga301b2b
+pkgver=1.2r1.gec3058e
 pkgrel=1
 pkgdesc="Thin git-backed transactional store manager, inspired by pass."
 url="https://codeberg.org/ValOm/gitstore"
@@ -27,5 +27,5 @@ build() {
 
 package() {
 	cd "$_pkgname" || exit 1
-	make install DESTDIR="$pkgdir" prefix="/usr/share" exec_prefix="/usr/bin"
+	make install DESTDIR="$pkgdir" prefix="/usr"
 }
