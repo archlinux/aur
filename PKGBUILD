@@ -35,7 +35,7 @@
 # shellcheck disable=SC1003,SC2034,SC2154,SC2164
 
 pkgname=ventoy
-pkgver=1.1.16
+pkgver=1.1.17
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -131,7 +131,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('6f82ce5c9c2a8d51cb6fc65714c4e8c9c271826fae7246a7b0cbf783d92c383a'
+sha256sums=('f8826dd29afc93ad599cc4840dcac6fa17b60d1ce3e9448dab7c4f4ac693d69c'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'e6cccc4a958a9fafbb11b05c9bc98612d75b293035d7c47d52588590103a40a0'
             '5ee49d23d376aeea24269f7605fcaa7fbd326c04cda4e31b8eb7fa15a540ef44'
