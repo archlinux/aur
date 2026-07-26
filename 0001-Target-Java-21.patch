@@ -1,4 +1,4 @@
-From faa1b16d5a280ce17075b0abe16a785c1024da2c Mon Sep 17 00:00:00 2001
+From 303c6c0c96615b657264559e38ce5e898ddff9b0 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Thu, 1 Jan 2026 00:00:00 +0000
 Subject: [PATCH 1/2] Target Java 21
@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] Target Java 21
  3 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
-index 156969060..c71aa109e 100644
+index 6606ecc75..296ec40aa 100644
 --- a/HMCL/build.gradle.kts
 +++ b/HMCL/build.gradle.kts
-@@ -110,8 +110,8 @@ fun attachSignature(jar: File) {
+@@ -114,8 +114,8 @@ fun attachSignature(jar: File) {
  }
  
  tasks.withType<JavaCompile> {
@@ -25,7 +25,7 @@ index 156969060..c71aa109e 100644
  
  tasks.checkstyleMain {
 diff --git a/HMCLCore/build.gradle.kts b/HMCLCore/build.gradle.kts
-index 86ca2bde9..3590b06b7 100644
+index 7035c76c4..97cd58df1 100644
 --- a/HMCLCore/build.gradle.kts
 +++ b/HMCLCore/build.gradle.kts
 @@ -3,8 +3,8 @@ plugins {
@@ -40,10 +40,10 @@ index 86ca2bde9..3590b06b7 100644
  
  tasks.compileJava {
 diff --git a/buildSrc/build.gradle.kts b/buildSrc/build.gradle.kts
-index 789dca8a8..4952ad770 100644
+index 568bad20c..3427a4415 100644
 --- a/buildSrc/build.gradle.kts
 +++ b/buildSrc/build.gradle.kts
-@@ -14,8 +14,8 @@ dependencies {
+@@ -15,8 +15,8 @@ dependencies {
  }
  
  java {
@@ -55,5 +55,5 @@ index 789dca8a8..4952ad770 100644
  
  tasks.withType<JavaCompile> {
 -- 
-2.52.0
+2.55.0
 

@@ -5,7 +5,7 @@
 
 pkgname=hmcl-new
 _pkgname=HMCL
-_ver=3.10
+_ver=3.15
 _build=2
 _pkgver=v$_ver.$_build
 pkgver=$_ver.$_build
@@ -24,10 +24,10 @@ source=('hmcl.desktop'
   "0001-Target-Java-21.patch"
   "0002-Cleanup.patch")
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
-  '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
-  'f6d3ded0dd3205142be48b37ad4b99b9a9fe828721553efa10fa88d6cabbc26e'
-  '5dcc4a379d8b5af065a8d561b8cb69f1f3e1ab1b3a6afc3b17e7a9b959fc5812'
-  '436f81e4d67d80fbce92a21d6877d8ffc37e742c058153564fe1cf54d7125a5d')
+  '4bf05f4a67da8355f3072bffffe02912c694f2250fd63764082aec9397c22a68'
+  '791bb0c4e901ed772a285e42865ffc4d605b492990d2cda54ede8d52ca73d48a'
+  'a9751ec86619b91ce20207f9d58de9fcef502da226ecd8bc9503556ec7de74cd'
+  '4457d3f15a595271b7b810a846b050b58e92ee5d1462c3e17bdd3d34f85abac1')
 
 prepare() {
   cd "$_pkgname-$pkgver"

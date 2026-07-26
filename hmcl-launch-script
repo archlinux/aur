@@ -11,7 +11,7 @@ JAVA_HOME=$(pacman -Ql java-runtime | grep -e '/usr/lib/jvm/.*/bin/java$' | head
 JAVAFX_HOME=$(dirname "$(pacman -Ql java-openjfx | grep -e '/javafx\..*\.jar$' | head -n 1 | cut -s -d ' ' -f '2-')")
 
 exec "${JAVA_HOME}"/bin/java \
-  --module-path "${JAVAFX_HOME}/javafx.base.jar:${JAVAFX_HOME}/javafx.fxml.jar:${JAVAFX_HOME}/javafx.graphics.jar:${JAVAFX_HOME}/javafx.media.jar:${JAVAFX_HOME}/javafx.swing.jar:${JAVAFX_HOME}/javafx.web.jar:${JAVAFX_HOME}/javafx.controls.jar" \
-  --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls \
+  --module-path "${JAVAFX_HOME}/javafx.base.jar:${JAVAFX_HOME}/javafx.fxml.jar:${JAVAFX_HOME}/javafx.graphics.jar:${JAVAFX_HOME}/javafx.media.jar:${JAVAFX_HOME}/javafx.swing.jar:${JAVAFX_HOME}/javafx.web.jar:${JAVAFX_HOME}/javafx.controls.jar:${JAVAFX_HOME}/jdk.jsobject.jar" \
+  --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls --add-modules=jdk.jsobject \
   -jar /usr/share/java/hmcl-new/hmcl-new.jar \
   "$@"
