@@ -1,0 +1,5 @@
+[cxpost-bin]
+source = "github"
+github = "nickprotop/cxpost"
+use_latest_release = true
+prefix = "v"
