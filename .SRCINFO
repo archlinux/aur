@@ -1,11 +1,13 @@
 pkgbase = seanime-denshi
 	pkgdesc = A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)
 	pkgver = 3.10.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/5rahim/seanime
 	arch = x86_64
 	license = MIT
+	makedepends = gtk-update-icon-cache
 	depends = fuse2
+	depends = hicolor-icon-theme
 	conflicts = seanime
 	conflicts = seanime-bin
 	options = !strip

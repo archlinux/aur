@@ -3,14 +3,15 @@
 pkgname=seanime-denshi
 _pkgname=seanime-denshi
 pkgver=3.10.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)"
 arch=(x86_64)
 url="https://github.com/5rahim/seanime"
 license=('MIT')
 
-depends=('fuse2')
+depends=('fuse2' 'hicolor-icon-theme')
 conflicts=('seanime' 'seanime-bin')
+makedepends=('gtk-update-icon-cache')
 
 options=('!strip')
 
@@ -46,7 +47,11 @@ Categories=Network;Video;
 Terminal=false
 EOF
 
-    install -Dm644 \
-        "${srcdir}/squashfs-root/usr/share/icons/hicolor/439x439/apps/seanime-denshi.png" \
-        "${pkgdir}/usr/share/icons/hicolor/439x439/apps/${pkgname}.png"
+    local icon="${srcdir}/squashfs-root/usr/share/icons/hicolor/439x439/apps/seanime-denshi.png"
+    for size in 256x256 512x512; do
+        install -Dm644 "${icon}" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+    done
+
+    gtk-update-icon-cache -q "${pkgdir}/usr/share/icons/hicolor" || true
 }
