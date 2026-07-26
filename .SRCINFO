@@ -1,0 +1,35 @@
+pkgbase = orion-beta
+	pkgdesc = Orion Beta web browser using native Arch Linux libraries
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://kagi.com/orion/
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = ostree
+	makedepends = patchelf
+	depends = bzip2
+	depends = cairo
+	depends = curl
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4
+	depends = harfbuzz
+	depends = libadwaita
+	depends = libsecret
+	depends = libsoup3
+	depends = pango
+	depends = vulkan-icd-loader
+	depends = webkitgtk-6.0
+	depends = xz
+	provides = orion-browser=0.3.0
+	noextract = oriongtk.0.3.0.flatpak
+	options = !debug
+	source = oriongtk.0.3.0.flatpak::https://orionbrowser.com/download/oriongtk.0.3.0.flatpak
+	source = LICENSE
+	sha256sums = d0d3963d2d98bf93699d3c6ab2232fb211c5c93c83a2d3e2f7ae3fda883f6c2c
+	sha256sums = 18fd7c419da08efe8ef55acb05f411704ee6b4622879a98209416eb4b9f49e40
+
+pkgname = orion-beta
