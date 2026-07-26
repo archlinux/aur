@@ -11,9 +11,9 @@ pkgbase = xytz-bin
 	provides = xytz
 	arch = aarch64
 	source_aarch64 = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz-v0.9.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5c8ca8231d313550b0c03605bbfe421077fa769f678b0015f3f26a6aaa8cf856
+	sha256sums_aarch64 = 058799df46e69f84c3506038280c03a63a690cdc3c8bd4def7162d70db3b37a2
 	arch = x86_64
 	source_x86_64 = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz-v0.9.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8fbde7bb5dae1577d67233f39686b0bd5992567aac0766fbc1f235f17cc9d212
+	sha256sums_x86_64 = 2d1a1ced7c2eac8c37d3c1359685e390d8646afd24b03c1b996135f8c113b02a
 	
 pkgname = xytz-bin

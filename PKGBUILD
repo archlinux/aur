@@ -15,10 +15,10 @@ depends=('yt-dlp' 'ffmpeg')
 optdepends=('mpv: for playing videos')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('5c8ca8231d313550b0c03605bbfe421077fa769f678b0015f3f26a6aaa8cf856')
+sha256sums_aarch64=('058799df46e69f84c3506038280c03a63a690cdc3c8bd4def7162d70db3b37a2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('8fbde7bb5dae1577d67233f39686b0bd5992567aac0766fbc1f235f17cc9d212')
+sha256sums_x86_64=('2d1a1ced7c2eac8c37d3c1359685e390d8646afd24b03c1b996135f8c113b02a')
 
 package() {
   install -Dm755 "./xytz" "${pkgdir}/usr/bin/xytz"
