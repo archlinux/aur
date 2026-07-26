@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=singcast
 epoch=1
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="A clash GUI client based on Flutter"
 arch=('x86_64')
