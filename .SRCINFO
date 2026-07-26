@@ -1,6 +1,6 @@
 pkgbase = vacask-git
 	pkgdesc = Verilog-A Circuit Analysis Kernel is an analog circuit simulator
-	pkgver = 0.3.3.r207.g5d9085d
+	pkgver = 0.3.3.r209.g764f693
 	pkgrel = 1
 	url = https://codeberg.org/arpadbuermen/VACASK
 	arch = x86_64
