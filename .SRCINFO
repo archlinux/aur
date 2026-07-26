@@ -1,7 +1,7 @@
 pkgbase = axolotl-launcher
 	pkgdesc = A cross-platform Minecraft launcher
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mystic-Stars/Axolotl
 	arch = x86_64
 	arch = aarch64
