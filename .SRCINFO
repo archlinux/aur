@@ -1,6 +1,6 @@
 pkgbase = overcrow-bin
 	pkgdesc = Opt-in external Linux game overlay by PlayerVox
-	pkgver = 0.1.0prealpha2
+	pkgver = 0.1.0prealpha3
 	pkgrel = 1
 	url = https://github.com/Valhallab/PlayerVox-OverCrow
 	install = overcrow.install
@@ -22,10 +22,10 @@ pkgbase = overcrow-bin
 	optdepends = plasma-workspace: Plasma overlay integration
 	provides = overcrow
 	conflicts = overcrow
-	noextract = overcrow-bin-0.1.0prealpha2-1-upstream-x86_64.pkg.tar.zst
+	noextract = overcrow-bin-0.1.0prealpha3-1-upstream-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source_x86_64 = overcrow-bin-0.1.0prealpha2-1-upstream-x86_64.pkg.tar.zst::https://github.com/Valhallab/PlayerVox-OverCrow/releases/download/v0.1.0-pre-alpha.2/overcrow-bin-0.1.0prealpha2-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 06f095e613af4ac06191e18ad847a06085b443a8f98ded852b5e9be67b8cdaef
+	source_x86_64 = overcrow-bin-0.1.0prealpha3-1-upstream-x86_64.pkg.tar.zst::https://github.com/Valhallab/PlayerVox-OverCrow/releases/download/v0.1.0-pre-alpha.3/overcrow-bin-0.1.0prealpha3-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = db7f9f401f793ebf950a9ab34fe704013d452c05158baa9836b34f5527a87ee0
 
 pkgname = overcrow-bin
