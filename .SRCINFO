@@ -1,0 +1,38 @@
+pkgbase = mesee-git
+	pkgdesc = Modular screen-capture daemon and OCR translator client
+	pkgver = 0.1.0.r0.geec16f5
+	pkgrel = 1
+	url = https://github.com/MatieBaal/mesee
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = go
+	makedepends = git
+	makedepends = wayland
+	makedepends = libx11
+	makedepends = tesseract
+	options = !debug
+	source = git+https://github.com/MatieBaal/mesee.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = mesee-x11-git
+	pkgdesc = Modular screen-capture daemon and OCR translator client (X11 Backend)
+	depends = glibc
+	depends = tesseract
+	depends = libx11
+	provides = mesee-git
+	provides = mesee-backend
+	conflicts = mesee-git
+	conflicts = mesee-backend
+
+pkgname = mesee-wayland-git
+	pkgdesc = Modular screen-capture daemon and OCR translator client (Wayland Backend)
+	depends = glibc
+	depends = tesseract
+	depends = wayland
+	depends = libx11
+	provides = mesee-git
+	provides = mesee-backend
+	conflicts = mesee-git
+	conflicts = mesee-backend
