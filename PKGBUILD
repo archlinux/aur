@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=dory-git
-pkgver=6.7.4.r0
+pkgver=6.7.4.r2646.566c2579
 pkgrel=1
 pkgdesc="A standalone Nemo fork named Dory for file picking and portal integration (git)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd dory
-  printf "6.7.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "6.7.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
