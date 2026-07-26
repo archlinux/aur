@@ -1,7 +1,7 @@
 # Maintainer: awaae001 <awaae001 at qq dot com>
 
 pkgname=pinclip
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Pin clipboard text or images as always-on-top desktop notes'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
     'xclip: clipboard fallback under X11'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9763166b47651e429611b2d46ac45f58da57ec102c5a3a98cd365a09780328c4')
+sha256sums=('dfa5edc1f9f741c329189c58c73fd67d8a9d500ad810945045ec58eb6ff394c9')
 
 build() {
     cmake \
