@@ -19,9 +19,10 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 # Core execution dependencies
-depends=('libperconaserverclient' 'boost-libs' 'readline' 'openssl')
-conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
-makedepends=('git' 'cmake' 'clang' 'boost' 'percona-server' 'openssl')
+depends=('libmysqlclient84' 'boost-libs' 'readline' 'openssl')
+conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl')
+
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
