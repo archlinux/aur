@@ -1,6 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
-pkgver=2.2.0
+_pkgver=2.3.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
 
 pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
@@ -11,10 +12,8 @@ license=('BSD-3-Clause')
 depends=('gcc-libs' 'libusb')
 makedepends=('pico-sdk' 'cmake')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "70-picotool.rules")
-sha256sums=('aab3d82fb1e576d97156ddcb962ae7cf290518a5f20d9002ac27e628dc657620'
-            'e7abda1f88afddc2f49b27d0edce0f2a1daba7c7b90260a5e6fccc456da24b18')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
+sha256sums=('ee60c3fcdc2ccc8da0ec1b58b7a86132b808ca3424c76b6bdd978deadad4844b')
 
 build() {
 	if [ -z "${PICO_SDK_PATH}" ]; then
@@ -28,7 +27,7 @@ build() {
 	fi
 
 	cd "${srcdir}"
-	cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+	cmake -B build -S "${pkgname}-${_pkgver}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
@@ -37,11 +36,11 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 
 	# Install udev rules
-	install -Dm644 "${srcdir}/70-picotool.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
+	install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/udev/60-picotool.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
 
 	# Install docs
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
 	# Install license
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

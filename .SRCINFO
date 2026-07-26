@@ -1,6 +1,6 @@
 pkgbase = picotool
 	pkgdesc = Tool for inspecting RP2040 binaries and interacting with RP2040 devices.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/raspberrypi/picotool
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = picotool
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libusb
-	source = picotool-2.2.0.tar.gz::https://github.com/raspberrypi/picotool/archive/refs/tags/2.2.0.tar.gz
-	source = 70-picotool.rules
-	sha256sums = aab3d82fb1e576d97156ddcb962ae7cf290518a5f20d9002ac27e628dc657620
-	sha256sums = e7abda1f88afddc2f49b27d0edce0f2a1daba7c7b90260a5e6fccc456da24b18
+	source = picotool-2.3.0.tar.gz::https://github.com/raspberrypi/picotool/releases/download/2.3.0/picotool-2.3.0.tar.gz
+	sha256sums = ee60c3fcdc2ccc8da0ec1b58b7a86132b808ca3424c76b6bdd978deadad4844b
 
 pkgname = picotool
