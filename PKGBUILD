@@ -1,45 +1,64 @@
-# Maintainer: Guilhem Saurel <guilhem dot saurel at laas dot fr>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Guilhem Saurel <guilhem dot saurel at laas dot fr>
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Chris <christopher.r.mullins g-mail>
 # Contributor: Ainola
 # Contributor: speps
 
-_org=MeVisLab
 pkgname=pythonqt
-pkgver=3.6.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='A dynamic Python binding for Qt applications'
-arch=('i686' 'x86_64')
-url="https://github.com/$_org/${pkgname}"
-license=('LGPL-2.1-only')
-depends=('python' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-declarative' 'qt5-xmlpatterns' 'qt5-webengine')
-makedepends=('git' 'qt5-tools')
-conflicts=("${pkgname}-svn" "${pkgname}-for-screencloud" 'qt5-python27-git')
-replaces=("${pkgname}-qt5")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('7ac879b506279a182e2f96bc04306836a6f73dd4ac273a56be6d6fd1cc22d36b0b5f8c40e8bf0a77b840c26e1f542c0c986c57e526c0f8cfe93c2556275607f8')
+arch=(x86_64)
+url="https://github.com/MeVisLab/pythonqt"
+license=(LGPL-2.1-only)
+depends=(
+    glibc
+    libgcc
+    libstdc++
+    python
+    qt6-base
+    qt6-declarative
+    qt6-multimedia
+    qt6-svg
+    qt6-tools
+    qt6-webchannel
+    qt6-webengine
+    )
+source=("pythonqt-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('e62b0d0c7ce9aa5a051a033a8b4d151b807fdda669dc7fbfc7fcf437bcf2b99f4338661fe360969d6bf158f6dfdd4298d76cd3796cef9d4ea2b01705e0d60c24')
 
 build() {
-    # Building package
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake-qt5 \
-        PYTHON_VERSION=$(python -c 'import sys; print(".".join(sys.version.split(".")[:2]))') \
-        QMAKE_CFLAGS="${CFLAGS}" \
-        QMAKE_CXXFLAGS="${CXXFLAGS}" \
-        CONFIG+=release
-    make
+  # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+  export LANG=C.UTF-8
+  export LC_ALL=C.UTF-8
+
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
+
+  cd "pythonqt-${pkgver}"
+
+  qmake6 CONFIG+=generator_only CONFIG+=Release PythonQt.pro
+  make
+
+  cd generator
+  ./pythonqt_generator qtscript_masterinclude.h build_all.txt
+  cd ..
+
+  qmake6 \
+    PYTHON_VERSION=$(python -c 'import sys; print(".".join(sys.version.split(".")[:2]))') \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    CONFIG+=release \
+    PythonQt.pro
+
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    # Includes
-    mkdir -p "${pkgdir}"/usr/include/PythonQt/{gui,extensions/PythonQt_QtAll}
-    cp src/*.h "${pkgdir}"/usr/include/PythonQt/
-    cp src/gui/*.h "${pkgdir}"/usr/include/PythonQt/gui/
-    cp extensions/PythonQt_QtAll/*.h "${pkgdir}"/usr/include/PythonQt/extensions/PythonQt_QtAll/
-
-    # Library
-    mkdir -p "${pkgdir}"/usr/lib
-    cp -a lib/*.so* "${pkgdir}"/usr/lib/
+  cd "pythonqt-${pkgver}"
+ make install INSTALL_ROOT="${pkgdir}/usr"
 }
+
