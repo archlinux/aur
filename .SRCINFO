@@ -1,6 +1,6 @@
 pkgbase = openvino-bin
 	pkgdesc = OpenVINO™ Toolkit (Pre-compiled Binary) - Includes Python Bindings
-	pkgver = 2025.4.0
+	pkgver = 2026.2.1
 	pkgrel = 1
 	url = https://software.intel.com/en-us/openvino-toolkit
 	install = openvino-bin.install
@@ -24,7 +24,7 @@ pkgbase = openvino-bin
 	conflicts = openvino-intel-npu-plugin
 	conflicts = python-openvino
 	conflicts = openvino-git
-	source = https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.4/linux/openvino_toolkit_ubuntu24_2025.4.0.20398.8fdad55727d_x86_64.tgz
-	sha256sums = c57bc759a04bf316d66dc42d644433cf3bd590ad640933630a0616efb380a630
+	source = https://storage.openvinotoolkit.org/repositories/openvino/packages/2026.2.1/linux/openvino_toolkit_ubuntu24_2026.2.1.21919.ede283a88e3_x86_64.tgz
+	sha256sums = 6931e5a3c9b1fc9cb170137196df2c40489625703f2d184f511b7add2c110ef8
 
 pkgname = openvino-bin

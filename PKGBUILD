@@ -1,8 +1,11 @@
-# Maintainer: givani30 <givaniboek@hotmail.com>
+# Maintainer: marcopus <marrez89@gmail.com>
+# Contributor: givani30 <givaniboek@hotmail.com>
 
 pkgname=openvino-bin
-pkgver=2025.4.0
-_buildver=20398.8fdad55727d
+pkgver=2026.2.1
+_pathver=2026.2.1
+_ubuntuver=24
+_buildver=21919.ede283a88e3
 pkgrel=1
 pkgdesc="OpenVINO™ Toolkit (Pre-compiled Binary) - Includes Python Bindings"
 arch=('x86_64')
@@ -15,12 +18,12 @@ optdepends=('intel-compute-runtime: for Intel GPU support'
             'python: for Python bindings')
 provides=('openvino' 'openvino-intel-gpu-plugin' 'openvino-intel-npu-plugin' 'python-openvino')
 conflicts=('openvino' 'openvino-intel-gpu-plugin' 'openvino-intel-npu-plugin' 'python-openvino' 'openvino-git')
-source=("https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.4/linux/openvino_toolkit_ubuntu24_${pkgver}.${_buildver}_x86_64.tgz")
-sha256sums=('c57bc759a04bf316d66dc42d644433cf3bd590ad640933630a0616efb380a630')
+source=("https://storage.openvinotoolkit.org/repositories/openvino/packages/${_pathver}/linux/openvino_toolkit_ubuntu${_ubuntuver}_${pkgver}.${_buildver}_x86_64.tgz")
+sha256sums=('6931e5a3c9b1fc9cb170137196df2c40489625703f2d184f511b7add2c110ef8')
 install=openvino-bin.install
 
 package() {
-  cd "$srcdir/openvino_toolkit_ubuntu24_${pkgver}.${_buildver}_x86_64"
+  cd "$srcdir/openvino_toolkit_ubuntu${_ubuntuver}_${pkgver}.${_buildver}_x86_64"
 
   # Install to /opt/intel/openvino
   install -d "$pkgdir/opt/intel/openvino"
