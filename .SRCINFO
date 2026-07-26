@@ -1,7 +1,7 @@
 pkgbase = python-spectral
 	pkgdesc = A Python module for hyperspectral image processing.
-	pkgver = 0.24
-	pkgrel = 3
+	pkgver = 0.25
+	pkgrel = 1
 	url = https://www.spectralpython.net/
 	arch = any
 	license = MIT
@@ -18,9 +18,9 @@ pkgbase = python-spectral
 	optdepends = python-matplotlib: Required if rendering raster displays or spectral plots
 	optdepends = ipython: Required for interactive, non-blocking GUI windows
 	optdepends = python-opengl: Required if calling view_cube or view_nd
-	source = python-spectral::git+https://github.com/spectralpython/spectral.git#tag=0.24
+	source = python-spectral::git+https://github.com/spectralpython/spectral.git#tag=0.25
 	source = python-spectral-sample-data::git+https://github.com/spectralpython/sample-data#commit=b2c0458d18a26b84c4262a09a106bd7cdeb1203d
-	sha256sums = 11f3aafc70fb29f41e0b2cbe23200f3483fb25ae3abc06e8c4214c89eddac2f4
+	sha256sums = 6ca421577f89e024b5d5648b0f4986dff6b334c94f4c7556f62d6fce7e292341
 	sha256sums = 19f3128d452bcb40a605620b7c9a7410d7c9553a707aa342f15a118ee8e62e3d
 
 pkgname = python-spectral
