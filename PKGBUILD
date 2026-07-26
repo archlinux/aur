@@ -2,7 +2,7 @@
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=wleave
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland-native logout script written in GTK4 "
 arch=('x86_64')
 url="https://github.com/AMNatty/wleave"
@@ -24,7 +24,7 @@ build() {
     scdoc < "${pkgname}/man/wleave.1.scd" | gzip > "${pkgname}/wleave.1.gz"
     scdoc < "${pkgname}/man/wleave.5.scd" | gzip > "${pkgname}/wleave.5.gz"
 
-    cd "${pkgname}"
+    cd "${pkgname}" || exit 1
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
