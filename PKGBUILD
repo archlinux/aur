@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ima2-gen
-pkgver=2.0.20
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Local OAuth image generation studio for GPT Image 2 workflows'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('6dc51becb4aa39d65e3024598950c9b2cef2ca926a7f2d926bfafbd31fa218e6')
+sha256sums=('72d9542a195e6f38d37876bd71e794f4748ad5af1d14478fab15f78cb3e38f12')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 latestver() {
@@ -31,6 +31,8 @@ package() {
     "${srcdir}/${pkgname}-${pkgver}.tgz"
 
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
+  install -Dm644 "${node_root}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   find "${node_root}" -type f -name '*.node' \
     \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*-musl*' \) \
