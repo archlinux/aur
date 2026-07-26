@@ -25,6 +25,13 @@ _srcroot() {
 
 prepare() {
   cd "$(_srcroot)"
+
+  # Fix: Tauri's build.rs determines dev mode based on whether the
+  # "custom-protocol" feature is enabled. Without it, dev=true and the
+  # binary uses devUrl (http://localhost:1420) instead of embedded frontend.
+  sed -i 's/tauri = { version = "2", features = \[\] }/tauri = { version = "2", features = ["custom-protocol"] }/' \
+    src-tauri/Cargo.toml
+
   npm install --no-audit --no-fund
 }
 
@@ -42,9 +49,18 @@ package() {
   install -Dm755 "src-tauri/target/release/md-editor" \
     "$pkgdir/usr/lib/$pkgname/md-editor"
 
-  # Wrapper script
+  # Wrapper script with two workarounds:
+  # 1. WEBKIT_DISABLE_DMABUF_RENDERER=1 — NVIDIA GBM doesn't support all
+  #    buffer modifiers WebKitGTK DMA-BUF renderer requests. Disables DMA-BUF
+  #    zero-copy path but keeps GL-accelerated compositing.
+  # 2. WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1 — WebKitGTK sandbox
+  #    blocks Tauri's custom tauri://localhost protocol handler, causing
+  #    "Could not connect to localhost: Connection refused" fallback to TCP.
+  #    WEBKIT_FORCE_SANDBOX is deprecated since WebKitGTK 2.44+.
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << 'WRAPPER'
 #!/bin/bash
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+export WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1
 exec /usr/lib/tmd-type-markdown/md-editor "$@"
 WRAPPER
 
