@@ -9,7 +9,7 @@
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='XMPP client with OMEMO encryption'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('1741a3d48dce55b53baa538bc3cb0fd6c155e2a73f735bd1e27dade902a77b1a' '56c46d99006fdeb72a4bac3a551726eb134d573d2ca0280741b2fd7c3141e1b7')
+sha256sums=('cbdb362fd723a521ffaec8d3a3fbc9b5df005b4a7a9168ed26046799af91a533' '56c46d99006fdeb72a4bac3a551726eb134d573d2ca0280741b2fd7c3141e1b7')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
