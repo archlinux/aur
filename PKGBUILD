@@ -5,7 +5,7 @@ _pkgname=youtube-music-cli
 pkgname=${_pkgname}-bin
 pkgdesc="A powerful Terminal User Interface (TUI) music player for YouTube Music"
 
-pkgver=0.0.99
+pkgver=0.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("FEATURE_STATUS-${pkgver}.md::${_urlraw}/FEATURE_STATUS.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
 sha256sums=('2cfff77ae9e5e4e068f65a1b279e08d6b30cf450c3e6f5b260e18a0afd1b8d5b'
-            'bed4d565cac0795570a25ce7177bb4329c2868c08b8446a1f9196732c9a63d04'
-            '09ff581382cefe86a23ae5c173e1adb7984465b5d905db7bd5ad3b4129b4ceef'
+            '86ea1bd9992e9a85cb32ef7e1e7c13fcad192bb07df2581213af3f2797258ee7'
+            '265b7a38831668c44ee038d27979558f49ed50e2e5413e75f4de8a6bc779c9f6'
             '8e0fa698e1e37adc44d567345a8db5e099f99c78e13123d631416a3813c6832e')
-sha256sums_x86_64=('caf9525e2b234fb36d29f0855034fdd5e8e1e0cc61452bb475696c3f760a4f69')
+sha256sums_x86_64=('114340363ef4c2c5c9e65662e33c8348966592a25da92b3e655daa7477e07461')
 
 
 package() {
