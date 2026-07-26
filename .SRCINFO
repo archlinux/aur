@@ -1,6 +1,6 @@
 pkgbase = chan-desktop
 	pkgdesc = Desktop edition of the chan AI-native IDE
-	pkgver = 0.76.1
+	pkgver = 0.77.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = chan-desktop
 	depends = systemd
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	provides = chan=0.76.1
+	provides = chan=0.77.0
 	conflicts = chan
 	options = !lto
-	source = chan-0.76.1.tar.gz::https://github.com/fiorix/chan/archive/v0.76.1.tar.gz
-	sha256sums = f4729bbf0a91d85aab1d894a5ee3b84dda64fcee8ea8167460a0d4421b6e313d
+	source = chan-0.77.0.tar.gz::https://github.com/fiorix/chan/archive/v0.77.0.tar.gz
+	sha256sums = ef9563b2142806cc68f906beebe0a8f24daac928fabd1dcbc07b673061b85040
 
 pkgname = chan-desktop
