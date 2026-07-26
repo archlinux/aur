@@ -1,0 +1,14 @@
+pkgbase = sddm-theme-yorha
+	pkgdesc = A YoRHa-themed SDDM login screen
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NeekoKun/YoRHa-sddm-theme
+	install = yorha-sddm-theme.install
+	arch = any
+	license = GPL-3.0-only
+	depends = sddm
+	backup = etc/sddm.conf.d/YoRHa-sddm-theme.conf
+	source = sddm-theme-yorha-1.0.0.tar.gz::https://github.com/NeekoKun/YoRHa-sddm-theme/archive/v1.0.0.tar.gz
+	sha256sums = 119d0e2d064206fc125888817433e7563a0f7e88cf1b201c7f2a1ed117bb3bc7
+
+pkgname = sddm-theme-yorha

@@ -1,0 +1,12 @@
+post_install() {
+    echo "==> YoRHa SDDM theme installed."
+    echo "==> A config snippet was placed at /etc/sddm.conf.d/sddm-theme-yorha.conf"
+    echo "==> setting Current=YoRHa-sddm-theme."
+    echo "==> If /etc/sddm.conf already sets 'Current=', remove or comment that line"
+    echo "==> so the snippet takes effect."
+    echo "==> Enable the display manager with: systemctl enable sddm.service"
+}
+
+post_upgrade() {
+    post_install
+}
