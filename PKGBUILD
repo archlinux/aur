@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
-pkgver=0.2.5.r0.gf130f74e
+pkgver=0.2.6.r0.g8777d390
 pkgrel=1
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -87,7 +87,14 @@ build() {
   # use the embedded custom-protocol frontend from dist/. `tauri build` would
   # set this for us; since we build with cargo directly, enable it here.
   # (Additive feature; does not touch Cargo.lock, so --locked still holds.)
-  cargo build --release --locked --features tauri/custom-protocol
+  #
+  # `--no-default-features` disables kappastream's default `updater` Cargo
+  # feature, so the tauri-plugin-updater / -process plugins are NOT registered
+  # here (see src-tauri/src/lib.rs). pacman owns updates on Arch — an AUR
+  # install must never surface an in-app update prompt or hit the update
+  # endpoint. The feature is empty (no deps), so --locked still holds and only
+  # the registration cfg changes.
+  cargo build --release --locked --no-default-features --features tauri/custom-protocol
 }
 
 package() {
