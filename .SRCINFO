@@ -1,0 +1,13 @@
+pkgbase = nyqfetch
+	pkgdesc = A tuff custom system fetch utility written in Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://archlinux.org
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-psutil
+	source = nyqfetch
+	sha256sums = SKIP
+
+pkgname = nyqfetch

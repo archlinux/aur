@@ -1,0 +1,63 @@
+import os
+import platform
+import psutil
+
+# Culori ANSI pentru stilizare (asortate cu setup-ul tău Catppuccin Mocha)
+ALBASTRU = "\033[38;5;111m"
+CYAN = "\033[38;5;117m"
+ALB = "\033[38;5;255m"
+RESET = "\033[0m"
+
+# 1. Colectăm datele reale ale sistemului operativ
+user = os.getlogin()
+host = platform.node()
+os_name = "Arch Linux x86_64"
+kernel = platform.release()
+shell = os.environ.get("SHELL", "").split("/")[-1]
+
+# Calculăm memoria RAM reală (în GB)
+ram = psutil.virtual_memory()
+ram_used = round(ram.used / (1024**3), 2)
+ram_total = round(ram.total / (1024**3), 2)
+
+# 2. Definim logo-ul Arch în format ASCII (linie cu linie)
+logo = [
+    r"       /\       ",
+    r"      /  \      ",
+    r"     /\   \     ",
+    r"    /      \    ",
+    r"   /   _    \   ",
+    r"  /   _     _\  ",
+    r" /_  /  _  /  \_",
+    r"/_ _/  /_ _/  /_"
+]
+
+# 3. Definim informațiile care apar în dreapta logo-ului
+info = [
+    f"{ALBASTRU}{user}{ALB}@{CYAN}{host}{RESET}",
+    f"{ALB}-------------------------{RESET}",
+    f"{ALBASTRU}OS: {RESET}{os_name}",
+    f"{ALBASTRU}Kernel: {RESET}{kernel}",
+    f"{ALBASTRU}Shell: {RESET}{shell}",
+    f"{ALBASTRU}Memory: {RESET}{ram_used} GiB / {ram_total} GiB",
+    f"{ALBASTRU}Terminal: {RESET}Kitty (nyqfetch)",
+    " " # Linie goală la final
+]
+
+# 4. Combinăm logo-ul și informațiile pe rânduri paralele
+print("") # Un rând gol la început pentru spațiere
+max_lines = max(len(logo), len(info))
+
+for i in range(max_lines):
+    # Luăm linia din logo sau spațiu gol dacă logo-ul s-a terminat
+    line_logo = f"{CYAN}{logo[i]}{RESET}" if i < len(logo) else " " * 16
+    # Luăm linia de info sau spațiu gol dacă informațiile s-au terminat
+    line_info = info[i] if i < len(info) else ""
+    
+    # Printează-le pe același rând cu spațiu între ele
+    print(f" {line_logo}   {line_info}")
+
+print("") # Un rând gol la final
+
+#!/usr/bin/env python
+
