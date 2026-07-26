@@ -4,9 +4,9 @@
 
 pkgname="jquake"
 pkgver="1.8.5"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Free software that helps you monitor real-time shaking events in Japan"
-arch=('x86_64')
+arch=('any')
 url="https://jquake.net/en/"
 license=('Apache')
 depends=('java-runtime')
@@ -38,9 +38,7 @@ package() {
   install -m 755 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE*
   # Install main program and libraries
   install -m 755 -d "${pkgdir}/usr/share/java/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/java/${pkgname}" JQuake.jar
-  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" JQuake_lib/*.jar
+  install -m 644 -t "${pkgdir}/usr/share/java/${pkgname}" JQuake.jar JQuake_lib/*.jar
   # Install sounds
   install -m 755 -d "${pkgdir}/usr/share/${pkgname}"
   cp -r sounds "${pkgdir}/usr/share/${pkgname}/"
