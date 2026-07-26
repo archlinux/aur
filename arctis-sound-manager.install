@@ -49,6 +49,12 @@ post_install() {
 post_upgrade() {
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger --action=add --subsystem-match=usb 2>/dev/null || true
+
+    # Replacing files on disk does not touch running processes: asm-daemon keeps
+    # executing the version it loaded at startup until something restarts it.
+    [ -x /usr/lib/arctis-sound-manager/restart-user-services.sh ] && \
+        /usr/lib/arctis-sound-manager/restart-user-services.sh || true
+
     echo "==> Arctis Sound Manager upgraded to $(pacman -Q arctis-sound-manager | awk '{print $2}')."
     echo ""
 }

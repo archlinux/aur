@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -46,7 +46,7 @@ depends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0f455b0d4999abba235bf8134ff44c483a6650d9023f516ca384acc1891f4da8')
+sha256sums=('0e1c56d53f33485935ddd8a91903ff8d3da8a46b15418e0ee6d45295f10c2b0e')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -104,6 +104,12 @@ package() {
     install -Dm755 scripts/asm-diag-dinit.py \
         "$pkgdir/usr/bin/asm-diag-dinit"
 
+    # Post-upgrade helper: restarts the user services so the new code is the
+    # code that runs. Not in /usr/bin — it is packaging machinery, not a
+    # command users are meant to invoke.
+    install -Dm755 scripts/restart-user-services.sh \
+        "$pkgdir/usr/lib/$pkgname/restart-user-services.sh"
+
     # PipeWire configs (shared, copied to user dir on first run by asm-setup)
     install -Dm644 scripts/pipewire/10-arctis-virtual-sinks.conf \
         "$pkgdir/usr/share/$pkgname/pipewire/10-arctis-virtual-sinks.conf"
@@ -123,6 +129,14 @@ package() {
     python3 scripts/generate_metainfo_releases.py --in-place
     install -Dm644 src/arctis_sound_manager/desktop/com.github.loteran.arctis-sound-manager.metainfo.xml \
         "$pkgdir/usr/share/metainfo/com.github.loteran.arctis-sound-manager.metainfo.xml"
+
+    # AppStream catalog entry. The metainfo above describes the app; only this
+    # ties it to a package name, which is what a software centre needs to show
+    # it at all. Arch's archlinux-appstream-data covers the official repos only,
+    # so a package from anywhere else is invisible in Discover without it.
+    python3 scripts/generate_appstream_catalog.py \
+        --output "$pkgdir/usr/share/swcatalog/xml/$pkgname.xml.gz"
+    chmod 644 "$pkgdir/usr/share/swcatalog/xml/$pkgname.xml.gz"
 
     # First-run autostart (triggers asm-setup on first graphical login)
     install -Dm644 debian/asm-first-run.desktop \
