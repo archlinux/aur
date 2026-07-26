@@ -9,6 +9,7 @@ pkgbase = azerothcore
 	makedepends = cmake
 	makedepends = clang
 	makedepends = boost
+	makedepends = mysql84
 	makedepends = mysql-clients84
 	makedepends = openssl
 	depends = libmysqlclient84

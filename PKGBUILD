@@ -25,7 +25,7 @@ depends=('libmysqlclient84' 'boost-libs' 'readline' 'openssl')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
 
 # Targets the absolute package string so yay searches the AUR flawlessly
-makedepends=('git' 'cmake' 'clang' 'boost' 'mysql-clients84' 'openssl')
+makedepends=('git' 'cmake' 'clang' 'boost' 'mysql84' 'mysql-clients84' 'openssl')
 
 # Helpful pointers for setting up databases without forcing local bloat
 optdepends=(
