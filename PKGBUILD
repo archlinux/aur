@@ -7,7 +7,7 @@
 
 pkgname=('luajit-lgi')
 pkgver=0.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc='LuaJIT bindings for gnome/gobject using gobject-introspection library'
 url='https://github.com/pavouk/lgi'
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha512sums=('755a96b78530f42da6d4e2664f8e37cb07a356419e7e6448003c3f841c9d98ad18b
 
 prepare() {
   cd lgi-${pkgver}
-  patch -Np1 -i "${srcdir}/../352.patch"
+  patch -Np1 -i "${srcdir}/352.patch"
 }
 
 build() {
