@@ -1,7 +1,7 @@
 pkgbase = flite1-llvm
 	pkgdesc = A lighweight speech synthesis engine (version 1.x) — built with Clang and LLVM lld
 	pkgver = 1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.speech.cs.cmu.edu/flite/
 	arch = x86_64
 	license = custom
@@ -18,7 +18,6 @@ pkgbase = flite1-llvm
 	conflicts = flite1
 	conflicts = flite1-patched
 	replaces = flite1-patched
-	options = !lto
 	source = http://www.festvox.org/flite/packed/flite-1.4/flite-1.4-release.tar.bz2
 	source = 010-flite1-tempfile-CVE-2014-0027.patch
 	source = 020-flite1-fix-parallel-builds.patch
