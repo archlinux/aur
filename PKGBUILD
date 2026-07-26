@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Phelps <138162007+nm-z@users.noreply.github.com>
 
 pkgname=minivna
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Native CLI for automated Tiny vector network analyzer data collection'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('741b0d1980a6ef9e77bafd5151d87102d3f9b08127aad8bee0231b73ef2b29a8c69511cf3b6c341469d73e1e0a97a733ce8295c28d5136a1d56396168741e44b')
+b2sums=('79893c929b67ff468a977905efd3e03634f97742c64cfc83bd9dc2282c276ac50938e95a6268f02b90859262558049c794e183c4f367f25f63eef2fa255f31eb')
 
 prepare() {
   cd "minivna-rs-$pkgver"
