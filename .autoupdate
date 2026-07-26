@@ -1,0 +1,8 @@
+# Autoupdater manifest - consumed by aur/.autoupdate
+srchost="github"
+srcmntr="jely2002"
+srcname="youtube-dl-gui"
+verstrip="app-v"
+gui="true"
+desktop="Open Video Downloader.desktop"
+icon="Open Video Downloader.png"
