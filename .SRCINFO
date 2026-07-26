@@ -1,6 +1,6 @@
 pkgbase = glibc-eac
 	pkgver = 2.44+r3+g0b05bc142249
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	arch = aarch64
@@ -50,7 +50,7 @@ pkgname = glibc-eac
 	depends = filesystem
 	optdepends = gd: for memusagestat
 	optdepends = perl: for mtrace
-	provides = glibc
+	provides = glibc=2.44+r3+g0b05bc142249
 	conflicts = glibc
 	backup = etc/gai.conf
 	backup = etc/locale.gen
@@ -58,7 +58,7 @@ pkgname = glibc-eac
 pkgname = lib32-glibc-eac
 	pkgdesc = GNU C Library with DT_HASH enabled (32-bit)
 	arch = x86_64
-	depends = glibc=2.44+r3+g0b05bc142249
+	depends = glibc-eac=2.44+r3+g0b05bc142249
 	provides = lib32-glibc
 	conflicts = lib32-glibc
 	options = staticlibs

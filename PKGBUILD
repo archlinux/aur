@@ -8,7 +8,7 @@ pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac)
 pkgver=2.44+r3+g0b05bc142249
 _commit=0b05bc142249ac47e72be5cad5c37f33f4bb68d4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/libc'
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
@@ -175,7 +175,7 @@ _check() (
 )
 
 package_glibc-eac() {
-  provides=(glibc)
+  provides=("glibc=$pkgver")
   conflicts=(glibc)
   pkgdesc='GNU C Library with DT_HASH enabled'
   depends=('linux-api-headers>=4.10' tzdata filesystem)
@@ -233,7 +233,7 @@ package_lib32-glibc-eac() {
   provides=(lib32-glibc)
   conflicts=(lib32-glibc)
   pkgdesc='GNU C Library with DT_HASH enabled (32-bit)'
-  depends=("glibc=$pkgver")
+  depends=("glibc-eac=$pkgver")
   options+=('!emptydirs')
   arch=(x86_64)
 
@@ -262,7 +262,7 @@ package_lib32-glibc-eac() {
 
 _package_glibc-locales() {
   pkgdesc='Pregenerated locales for GNU C Library with DT_HASH enabled'
-  depends=("glibc=$pkgver")
+  depends=("glibc-eac=$pkgver")
 
   cp -r locales/* -t "${pkgdir}"
   rm -r "${pkgdir}"/usr/lib/locale/C.utf8
