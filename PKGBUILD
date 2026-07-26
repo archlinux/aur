@@ -1,6 +1,6 @@
 # Maintainer: neolax <NEOLAX@proton.me>
 pkgname=anihub-cli-bin
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Unofficial terminal client for browsing and watching anime from AniHub (prebuilt binary)'
 arch=('x86_64')
