@@ -1,6 +1,6 @@
 # Maintainer: Elias Ghafari <eliasghafari@disroot.org>
 pkgname="quantframe"
-pkgver=1.6.25
+pkgver=1.6.26
 pkgrel=1
 pkgdesc="Algorithmic trading program for Warframe"
 arch=("x86_64")
@@ -15,7 +15,7 @@ conflicts=('quantframe-git')
 makedepends=('git' 'nodejs' 'pnpm' 'rust' 'cargo' 'jq')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('ce672e6271dffeeda97a122956a24b8908c2bc5532e3165651f0e98c8ca6f9ea58d2d30a89c3a913b1e7e6944a48cff7b31ce266d856b39b01151f80fe80b244')
+sha512sums=('b5789152f5c6a7b69e643d3bfad1841e013075d157432c35e290b6b8bd3f5e5772b546450bd4f960cd89561efb62c0f89481447ad4f2c815b03849a85c44303e')
 
 prepare() {
 	cd "quantframe-react-${pkgver}"
