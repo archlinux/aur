@@ -1,17 +1,17 @@
 pkgbase = bash-devel-git
 	pkgdesc = The GNU Bourne Again shell (development version)
-	pkgver = 5.3.r1353.ga6421d84
+	pkgver = 5.3.r1372.g9b6349ef
 	pkgrel = 1
 	url = https://www.gnu.org/software/bash/bash.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = glibc
 	depends = ncurses
 	depends = readline>=7.0
 	optdepends = bash-completion: for tab completion
-	provides = bash=5.3.r1353.ga6421d84
+	provides = bash=5.3.r1372.g9b6349ef
 	provides = sh
 	conflicts = bash
 	backup = etc/bash.bashrc

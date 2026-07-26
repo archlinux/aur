@@ -6,12 +6,12 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=bash-devel-git
-pkgver=5.3.r1353.ga6421d84
+pkgver=5.3.r1372.g9b6349ef
 pkgrel=1
 pkgdesc="The GNU Bourne Again shell (development version)"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/bash/bash.html"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'ncurses' 'readline>=7.0')
 makedepends=('git')
 optdepends=('bash-completion: for tab completion')
