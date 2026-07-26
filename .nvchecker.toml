@@ -1,0 +1,5 @@
+[cxfiles-bin]
+source = "github"
+github = "nickprotop/cxfiles"
+use_latest_release = true
+prefix = "v"

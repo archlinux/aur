@@ -1,0 +1,24 @@
+pkgbase = cxfiles-bin
+	pkgdesc = Terminal file explorer built with SharpConsoleUI
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/nickprotop/cxfiles
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cxfiles
+	conflicts = cxfiles
+	options = !strip
+	source = README-0.0.6.md::https://raw.githubusercontent.com/nickprotop/cxfiles/v0.0.6/README.md
+	source = LICENSE-0.0.6::https://raw.githubusercontent.com/nickprotop/cxfiles/v0.0.6/LICENSE
+	sha256sums = b0841376bb59150226c7f44f47506d91a763ae35987456ab6435c50c7146ce56
+	sha256sums = c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73
+	source_x86_64 = cxfiles-x86_64-0.0.6::https://github.com/nickprotop/cxfiles/releases/download/v0.0.6/cxfiles-linux-x64
+	sha256sums_x86_64 = 167254635f2d6ed739443cc8d83742ba63cdd7369a589b2239e548433da21fff
+	source_aarch64 = cxfiles-aarch64-0.0.6::https://github.com/nickprotop/cxfiles/releases/download/v0.0.6/cxfiles-linux-arm64
+	sha256sums_aarch64 = 35c929582af110c61557c0b41b9d2373d32cbf82230579d77b9d4336ca1594cf
+
+pkgname = cxfiles-bin
