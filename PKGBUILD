@@ -10,13 +10,16 @@
 _pkgname=awesome
 pkgname=${_pkgname}-git
 pkgver=4.3.1735.gfa805ab46
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
 url='https://awesomewm.org/'
 license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
-         'lua' 'lua-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
+         'lua'
+		 #'lua-lgi'
+		 'lua-lgi-git'
+		 'pango' 'startup-notification' 'xcb-util-cursor'
          'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-xrm' 'libxfixes')
 makedepends=('asciidoctor' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
              'xmlto')
