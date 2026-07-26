@@ -18,15 +18,14 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 url="http://www.azerothcore.org"
 license=('AGPL3')
 
-# Explicitly use the split package names that exist only in the AUR mysql stack
+# Core execution dependencies
 depends=('libmysqlclient' 'boost-libs' 'readline' 'openssl')
 
-# Drop generic 'mysql' from makedepends to stop pacman from mapping it to mariadb.
-# Instead, target 'mysql-clients' which only exists in the AUR.
-makedepends=('git' 'cmake' 'clang' 'boost' 'mysql-clients' 'openssl')
-
-# Block all variants of mariadb to completely stop implicit resolution
+# Hard wall preventing any variant of mariadb from infiltrating the build sandbox
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
+
+# Changing 'mysql-clients' to 'mysql' breaks the official repo loop
+makedepends=('git' 'cmake' 'clang' 'boost' 'mysql' 'openssl')
 
 # Helpful pointers for setting up databases without forcing local bloat
 optdepends=(
