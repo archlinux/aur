@@ -1,0 +1,15 @@
+# 安装/卸载钩子：管理 systemd TUN 提权服务
+# 参见 linux/packaging/deb/DEBIAN/{postinst,prerm}
+
+post_install() {
+  # 只写 unit/rules；运行中进程不重启，下次 start 或开 TUN 时加载新 core
+  /opt/Singcast/singcast-core service install 2>/dev/null || true
+}
+
+post_upgrade() {
+  /opt/Singcast/singcast-core service install 2>/dev/null || true
+}
+
+pre_remove() {
+  /opt/Singcast/singcast-core service uninstall 2>/dev/null || true
+}
