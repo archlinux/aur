@@ -1,0 +1,21 @@
+pkgbase = python-pytest-blender
+	pkgdesc = Blender Pytest plugin.
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = https://github.com/mondeja/pytest-blender
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = blender
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-pytest
+	optdepends = blender: headless Blender execution
+	source = https://files.pythonhosted.org/packages/source/p/pytest-blender/pytest_blender-3.0.8.tar.gz
+	source = pytest-blender-tests-3.0.8.tar.gz::https://github.com/mondeja/pytest-blender/archive/refs/tags/v3.0.8.tar.gz
+	sha256sums = 1d2592c6b8a7666225905e90d944c3efcf102a3e816eb0d44429112928287cc3
+	sha256sums = 939e6601b560ea3b75ab0b397004329b9625ab3a332efab40868496e143fb4ae
+
+pkgname = python-pytest-blender
