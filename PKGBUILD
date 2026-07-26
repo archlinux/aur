@@ -21,7 +21,7 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'libstdc++')
+depends=('glibc' 'libgcc' 'libstdc++' 'bash')
 
 options=(!strip)
 

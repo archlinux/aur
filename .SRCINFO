@@ -9,6 +9,7 @@ pkgbase = serverhub-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = bash
 	provides = serverhub
 	conflicts = serverhub
 	options = !strip
