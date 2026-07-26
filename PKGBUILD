@@ -21,7 +21,7 @@ license=('AGPL3')
 # Core execution dependencies
 depends=('libmysqlclient84' 'mysql-clients84' 'boost-libs' 'readline' 'openssl' 'mysql84')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
-makedepends=('git' 'cmake' 'clang' 'boost' 'openssl')
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'mysql-clients84')
 optdepends=('mysql84: To host the localized server database engine maps')
 
 
