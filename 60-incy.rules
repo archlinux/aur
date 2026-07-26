@@ -1,0 +1,13 @@
+// Cache INCY's pkexec auth for ~5 min so start, routes, iptables, stop
+// each don't prompt separately. auth_admin_keep = prompt once, keep.
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.policykit.exec") {
+        var program = action.lookup("program");
+        if (program &&
+            (program.indexOf("incy-helper") >= 0 ||
+             program.indexOf("incy") >= 0 ||
+             program == "/usr/bin/iptables")) {
+            return polkit.Result.AUTH_ADMIN_KEEP;
+        }
+    }
+});
