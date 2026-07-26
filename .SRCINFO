@@ -1,6 +1,6 @@
 pkgbase = animesama-cli
 	pkgdesc = Browse and watch anime from anime-sama.fr in your terminal
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://github.com/Miro-sh/animesama-cli
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = animesama-cli
 	depends = python-beautifulsoup4
 	depends = python-textual
 	depends = mpv
-	source = animesama-cli-1.0.11.tar.gz::https://github.com/Miro-sh/animesama-cli/archive/refs/tags/v1.0.11.tar.gz
-	sha256sums = c9764dafe990943a2ccb964420dff1c59c80143461ef95492180bd142532de51
+	source = animesama-cli-1.0.12.tar.gz::https://github.com/Miro-sh/animesama-cli/archive/refs/tags/v1.0.12.tar.gz
+	sha256sums = 79b5e9c93b75065f6e2ec2f1180ff7283300048ab270fd9ed3fe63f7c0ed717d
 
 pkgname = animesama-cli
