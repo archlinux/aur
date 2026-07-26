@@ -1,6 +1,6 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jelmer/ognibuild
@@ -11,7 +11,7 @@ pkgbase = ognibuild
 	depends = glibc
 	depends = libgcc
 	depends = python
-	source = ognibuild-0.2.18.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.2.18.tar.gz
-	sha256sums = bb6333351404b7c7ef70a21a7702505ae876a8d9b69a0af456c3c3f539e0995c
+	source = ognibuild-0.2.19.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.2.19.tar.gz
+	sha256sums = 4253b2c6ae0de6db30a8f60f83d87a570d78309e32a45b8cca2d20e9e36e7b08
 
 pkgname = ognibuild
