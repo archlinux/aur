@@ -1,0 +1,27 @@
+pkgbase = xmclauncher-bin
+	pkgdesc = X Minecraft Launcher - A modern, open-source Minecraft Launcher (repackaged from the official .pacman artifact)
+	pkgver = 0.63.1
+	pkgrel = 1
+	url = https://xmcl.app/
+	arch = x86_64
+	license = MIT
+	makedepends = libarchive
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	optdepends = jre8-openjdk: Minimum requirement for launching older game versions
+	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
+	optdepends = jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above
+	optdepends = flite: In-game narrator (Text-to-Speech) support
+	optdepends = gamemode: GameMode support for performance optimization
+	optdepends = libusb: Controller support (needed by mods like Controlify)
+	optdepends = nvidia-prime: Hybrid graphics support
+	provides = xmcl
+	provides = xmcl-launcher
+	conflicts = xmcl-launcher
+	options = !strip
+	options = !debug
+	source_x86_64 = xmcl-0.63.1-x64.pacman::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.63.1/xmcl-0.63.1-x64.pacman
+	sha256sums_x86_64 = SKIP
+
+pkgname = xmclauncher-bin
