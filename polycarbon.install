@@ -1,0 +1,13 @@
+post_install() {
+	cat <<'MSG'
+  Polycarbon downloads its Wine runtime (~95 MB) the first time you run a
+  Windows program, into ~/.local/share/polycarbon. Nothing goes outside your
+  home directory and nothing needs root.
+
+  That first run also makes polycarbon the handler for the Windows file types
+  no other program has claimed. To do it now, or to take over types something
+  else already owns:
+
+      polycarbon --register [--force]
+MSG
+}
