@@ -2,7 +2,7 @@
 
 pkgname=rox-player
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
 url="https://github.com/zealsprince/rox"
@@ -52,6 +52,8 @@ build() {
   export CFLAGS="-O2 -fPIC"
   export RING_PREGEN_PREFIX=1
 
+  export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
+
   cargo build --frozen --release --all-targets
 }
 
@@ -67,10 +69,7 @@ package() {
   fi
 
   # Desktop entry & app icon
-  if [ -f "assets/rox.desktop"]; then
-    install -Dm644 "assets/rox.desktop" "$pkgdir/usr/share/applications/rox.desktop"
-  fi
-  if [-f "assets/rox.png"]; then
-    install -Dm644 "assets/rox.png" "$pkgdir/usr/share/pixmaps/rox.png"
-  fi
+  install -Dm644 "crates/rox/assets/app/rox.desktop" "$pkgdir/usr/share/applications/rox.desktop"
+  
+  install -Dm644 "crates/rox/assets/app/rox.png" "$pkgdir/usr/share/pixmaps/rox.png"
 }
