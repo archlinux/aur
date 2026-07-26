@@ -2,21 +2,28 @@
 
 _pkgbase=biopass
 pkgname="$_pkgbase"
-pkgver=1.2.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='An alternative to Windows Hello/Howdy'
 arch=('x86_64')
 url='https://github.com/TickLabVN/biopass'
 license=('MIT')
-depends=('libwebkit2gtk-4.1.so' 'librsvg-2.so' 'libssl.so' 'libxdo.so')
+depends=('libwebkit2gtk-4.1.so' 'librsvg-2.so' 'libssl.so' 'libxdo.so' 'libturbojpeg.so')
 optdepends=('libayatana-appindicator: for tray icon support')
-makedepends=('git' 'bun' 'cmake' 'rust' 'cli11')
+makedepends=('git' 'bun' 'cmake' 'rust' 'cli11' 'meson' 'ninja'
+             'python-jinja' 'python-yaml' 'python-ply')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 options=(!lto !debug)
 install='setup.install'
 source=("$_pkgbase::git+https://github.com/TickLabVN/biopass.git#tag=$pkgver")
-sha256sums=('dbbb785f509a6d85b3e09e5a9c9af7c432d8a34bc1801783c31534bb8a7c5c74')
+sha256sums=('aa3358436e97e67c3418121a4aad574cb3621d0623ab72f827c56462aacd9f31')
+
+prepare() {
+	cd "$_pkgbase"
+	sed -i 's/--buildtype=release/--buildtype=release -Dwerror=false/' \
+		auth/BundleLibcamera.cmake
+}
 
 build() {
 	cd "$_pkgbase"

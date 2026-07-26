@@ -1,6 +1,6 @@
 pkgbase = biopass
 	pkgdesc = An alternative to Windows Hello/Howdy
-	pkgver = 1.2.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/TickLabVN/biopass
 	install = setup.install
@@ -20,7 +20,7 @@ pkgbase = biopass
 	conflicts = biopass
 	options = !lto
 	options = !debug
-	source = biopass::git+https://github.com/TickLabVN/biopass.git#tag=1.2.0
-	sha256sums = dbbb785f509a6d85b3e09e5a9c9af7c432d8a34bc1801783c31534bb8a7c5c74
+	source = biopass::git+https://github.com/TickLabVN/biopass.git#tag=1.4.1
+	sha256sums = aa3358436e97e67c3418121a4aad574cb3621d0623ab72f827c56462aacd9f31
 
 pkgname = biopass
