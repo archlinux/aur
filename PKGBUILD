@@ -10,6 +10,8 @@ license=(AGPL-3.0)
 depends=(webkit2gtk-4.1)
 makedepends=('unzip')
 options=()
+provides=("${_name}")
+conflicts=("${_name}")
 source=(
 "https://downloads.soundshed.com/downloads/SoundshedGuitar-${pkgver}-Linux-x64.zip"
 "$_name.desktop"
