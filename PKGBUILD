@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ source=(
     "aqueous::git+${url}.git#tag=v${pkgver}"
     "wlroots-0.20.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.20.2/wlroots-0.20.2.tar.gz"
 )
-sha256sums=('172de0679c5bdc14f90eb5d88b21fa648f8f68501831b5cdd1ffb806cfa757ad'
+sha256sums=('c813d6020eb29bc59b67987529f5c2b54e02aa4be005b749c1f5eadf203c24b1'
             '972c7ac44b17828f4702bfae7cd8347346a3fb5b2c1076cfa2c3fcedac5ec343')
 
 build() {
