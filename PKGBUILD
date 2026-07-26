@@ -13,7 +13,6 @@ optdepends=(
     "wofi: history selector"
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Osrepnay/zzzclip/archive/refs/tags/v$pkgver.tar.gz")
-# source=("$pkgname-$pkgver.tar.gz::file:///home/jimothy/Documents/fart.tar.gz")
 sha256sums=("881d15c420cc4ced3190da89244b4e2c1a3e9159201f95dfbe4d310e514f1daf")
 validpgpkeys=()
 
