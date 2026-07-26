@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=journalctl-desktop-notification-git
-pkgver=r71.c799261
+pkgver=r74.27a62ae
 pkgrel=1
 pkgdesc="Displays notifications for journalctl error messages."
 arch=('any')
@@ -15,13 +15,13 @@ source=('git+https://gitlab.com/Zesko/journalctl-desktop-notification.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -dm 755 "usr/share/doc/${pkgname%-git}/"
-  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
-  cp -r usr etc "$pkgdir"
+	cd "$srcdir/${pkgname%-git}"
+	install -dm 755 "$pkgdir/usr/share/doc/${pkgname%-git}}/"
+	install -Dm 644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/${pkgname%-git}}/"
+	cp -a usr etc "$pkgdir"
 }
