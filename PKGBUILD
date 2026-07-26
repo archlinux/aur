@@ -7,8 +7,8 @@ pkgdesc="High performance visual profiler, debugger, tests enabler for C++ and P
 arch=('x86_64')
 url="https://github.com/dfeneyrou/${pkgname}"
 license=('AGPL-3.0' 'MIT')
-makedepends=('gcc' 'cmake' 'make' 'python312' 'python-pip' 'python-wheel')
-depends=('python')
+makedepends=('gcc' 'cmake' 'make')
+depends=('python312')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2e36f6b969ac44621de902adf3d5a7dbdbb6e00002ba7c8d29b1e303500144e1')
 
