@@ -1,8 +1,8 @@
 # Maintainer: Jagapathi Gondi <gondijagapathi at gmail dot com>
 # Contributor: Raryel C. Souza <raryel.csouza at protonmail dot com>
 pkgname=zoom-citrix-plugin
-pkgver=6.6.15
-_subver=27010
+pkgver=6.6.16
+_subver=27040
 pkgrel=1
 pkgdesc="Zoom VDI Citrix plugin "
 arch=('x86_64')
@@ -15,7 +15,7 @@ install=$pkgname.install
 
 source=("https://zoom.us/download/vdi/${pkgver}.${_subver}/zoomvdi-universal-plugin-centos_${pkgver}.rpm")
 
-sha512sums=('bf40d6073d062d3af8fe47d7115e4fac06731abae0fd627b8274bc37a5b6fe39c2412194098c656749958a2f4209db15cbdb50fbe88331ed0d1347903e43f18d')
+sha512sums=('6467a69e85d467aac21ad81e6cc7b5102cfede6e6f9488534792b8e88885eee9c98e61a857ba894deece5372cad8ef765ece5070c9ec2cd59de32c9f1be3d478')
 
 package() {
     find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
