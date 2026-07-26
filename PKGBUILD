@@ -1,8 +1,8 @@
 # Maintainer: claude-brain maintainers
 pkgname=claude-brain
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="A local second brain for Claude Code: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory, 3D visualisation, cloud sync"
+pkgdesc="A local second brain for Claude Code: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory from screenshots and captured URLs, 3D visualisation, cloud sync"
 # x86_64 only: fastembed pulls @anush008/tokenizers, which publishes prebuilds for
 # win32-x64, linux-x64-gnu and darwin-universal but no linux-arm64-gnu. On aarch64 the
 # lazy `await import("fastembed")` in src/embedder.ts throws and the brain silently
@@ -19,7 +19,7 @@ optdepends=('claude-code: LLM-assisted vault reorganisation and design descripti
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('05ef6f2bd5cdc3cf94d844f7e116aae95aa999dfbf4635f9c9b87cb33c3a1308')
+sha256sums=('cd7c382ed1a9b1cf2a105e8edf21dcbc36131e5a2424df9e8ef574a7ad94d659')
 
 build() {
 	cd "$pkgname-$pkgver"
