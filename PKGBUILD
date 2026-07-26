@@ -2,7 +2,7 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.9.r0.g7f07e31
+pkgver=1.0.r0.g2dc5664
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -14,11 +14,14 @@ depends=(
 	"libgcc"
 	"openssl"
 	"mpv"
-	"nodejs"
 )
 makedepends=(
 	"git"
 	"rust"
+)
+optdepends=(
+	"kitty: support for displaying cover image in tmux"
+	"nodejs>=23.5.0: support for custom JS music source"
 )
 provides=("voicefox=${pkgver}")
 conflicts=("voicefox" "voicefox-bin")
@@ -51,6 +54,14 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen --package voicefox-app
+}
+
+check() {
+	cd "${_pkgname}"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo test --release --frozen --workspace
 }
 
 package() {

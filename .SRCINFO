@@ -1,6 +1,6 @@
 pkgbase = voicefox-git
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 0.9.r0.g7f07e31
+	pkgver = 0.9.r7.gca6fb67
 	pkgrel = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = voicefox-git
 	depends = libgcc
 	depends = openssl
 	depends = mpv
-	depends = nodejs
-	provides = voicefox=0.9.r0.g7f07e31
+	optdepends = kitty: support for displaying cover image in tmux
+	optdepends = nodejs>=23.5.0: support for custom JS music source
+	provides = voicefox=0.9.r7.gca6fb67
 	conflicts = voicefox
 	conflicts = voicefox-bin
 	options = !lto
