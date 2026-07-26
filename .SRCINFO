@@ -1,0 +1,15 @@
+pkgbase = minivna
+	pkgdesc = Native CLI for automated Tiny vector network analyzer data collection
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nm-z/minivna-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !debug
+	source = minivna-0.1.0.tar.gz::https://github.com/nm-z/minivna-rs/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 741b0d1980a6ef9e77bafd5151d87102d3f9b08127aad8bee0231b73ef2b29a8c69511cf3b6c341469d73e1e0a97a733ce8295c28d5136a1d56396168741e44b
+
+pkgname = minivna
