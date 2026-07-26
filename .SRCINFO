@@ -1,6 +1,6 @@
 pkgbase = gitnibble-bin
-	pkgdesc = 🚫 Instant, offline-first, context-aware .gitignore TUI
-	pkgver = 0.1.0
+	pkgdesc = 🐭 Instant, offline-first, context-aware .gitignore TUI
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/programmersd21/gitnibble
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gitnibble-bin
 	provides = gitnibble
 	conflicts = gitnibble
 	options = !strip
-	source = README-0.1.0.md::https://raw.githubusercontent.com/programmersd21/gitnibble/v0.1.0/README.md
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/programmersd21/gitnibble/v0.1.0/LICENSE
-	sha256sums = f6144708e5d58d03cbabe925152ecf4608708149e554b07dcdcb26981222973b
+	source = README-0.1.2.md::https://raw.githubusercontent.com/programmersd21/gitnibble/v0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/programmersd21/gitnibble/v0.1.2/LICENSE
+	sha256sums = aa5aa2501c8f268f3021a224d122d4f3539cfc207c78222e607a03ba0abda3a8
 	sha256sums = 2f274a236f4cb1fec191172be07dedde3dcac015f15f7d18d1dbc6e100cbe61e
-	source_x86_64 = gitnibble-x86_64-0.1.0::https://github.com/programmersd21/gitnibble/releases/download/v0.1.0/gitnibble-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 334d52227c3822a28281cb17919e07e939fedb88d119e46aadae13cc7fec65d8
+	source_x86_64 = gitnibble-x86_64-0.1.2::https://github.com/programmersd21/gitnibble/releases/download/v0.1.2/gitnibble-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 7f5e513bcb6235c82ea0cbb0efa18897706410d04b1e9c65de7d57a2345156bf
 
 pkgname = gitnibble-bin

@@ -4,9 +4,9 @@ _gitauthor=programmersd21
 _gitname=gitnibble
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="🚫 Instant, offline-first, context-aware .gitignore TUI"
+pkgdesc="🐭 Instant, offline-first, context-aware .gitignore TUI"
 
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('f6144708e5d58d03cbabe925152ecf4608708149e554b07dcdcb26981222973b'
+sha256sums=('aa5aa2501c8f268f3021a224d122d4f3539cfc207c78222e607a03ba0abda3a8'
             '2f274a236f4cb1fec191172be07dedde3dcac015f15f7d18d1dbc6e100cbe61e')
-sha256sums_x86_64=('334d52227c3822a28281cb17919e07e939fedb88d119e46aadae13cc7fec65d8')
+sha256sums_x86_64=('7f5e513bcb6235c82ea0cbb0efa18897706410d04b1e9c65de7d57a2345156bf')
 
 
 package() {
