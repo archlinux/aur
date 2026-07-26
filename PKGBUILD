@@ -19,13 +19,9 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 # Core execution dependencies
-depends=('libmysqlclient84' 'boost-libs' 'readline' 'openssl')
-
-# A solid wall blocking any generic elements from intercepting your build
-conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
-
-# Targets the absolute package string so yay searches the AUR flawlessly
-makedepends=('git' 'cmake' 'clang' 'boost' 'mysql84' 'mysql-clients84' 'openssl')
+depends=('libperconaserverclient' 'boost-libs' 'readline' 'openssl')
+conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
+makedepends=('git' 'cmake' 'clang' 'boost' 'percona-server' 'openssl')
 
 # Helpful pointers for setting up databases without forcing local bloat
 optdepends=(
