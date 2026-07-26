@@ -1,6 +1,6 @@
 pkgbase = obscura-browser-bin
 	pkgdesc = The headless browser for AI agents and web scraping (binary release)
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/h4ckf0r0day/obscura
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = obscura-browser-bin
 	license = Apache-2.0
 	depends = gcc-libs
 	depends = glibc
-	provides = obscura-browser=0.1.10
+	provides = obscura-browser=0.1.11
 	conflicts = obscura-browser
-	source = LICENSE-0.1.10::https://github.com/h4ckf0r0day/obscura/raw/v0.1.10/LICENSE
+	source = LICENSE-0.1.11::https://github.com/h4ckf0r0day/obscura/raw/v0.1.11/LICENSE
 	sha256sums = 50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a
-	source_x86_64 = obscura-0.1.10-x86_64-linux.tar.gz::https://github.com/h4ckf0r0day/obscura/releases/download/v0.1.10/obscura-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 7efd9d53546b69ed6cc84a47d5c08ee7a7041ee87ab95e7310fda708608a5093
-	source_aarch64 = obscura-0.1.10-aarch64-linux.tar.gz::https://github.com/h4ckf0r0day/obscura/releases/download/v0.1.10/obscura-aarch64-linux.tar.gz
-	sha256sums_aarch64 = a50c154970934af3cf9fd2bec6c8a53ff76f25b0c4d9e78c286ce4bc3bca0adf
+	source_x86_64 = obscura-0.1.11-x86_64-linux.tar.gz::https://github.com/h4ckf0r0day/obscura/releases/download/v0.1.11/obscura-x86_64-linux.tar.gz
+	sha256sums_x86_64 = c9343428c9692c49e837487f1d0a8f308b280dd854981c5a06f2aece0048230e
+	source_aarch64 = obscura-0.1.11-aarch64-linux.tar.gz::https://github.com/h4ckf0r0day/obscura/releases/download/v0.1.11/obscura-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 166178103f2c79db9c32988774c16a0e71b3fac44cd064eb96db00ce732ccf0f
 
 pkgname = obscura-browser-bin
