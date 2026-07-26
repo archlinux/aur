@@ -1,7 +1,7 @@
 # Maintainer: nugget <vincent@sshmoi.com>
 
 pkgname=kickoutchi-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="TUI and CLI to see which process owns a local port and kill it safely (prebuilt)"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ _archive_x86_64="kickoutchi-x86_64-unknown-linux-gnu.tar.xz"
 _archive_aarch64="kickoutchi-aarch64-unknown-linux-gnu.tar.xz"
 source_x86_64=("${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/${_archive_x86_64}")
 source_aarch64=("${pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/${_archive_aarch64}")
-sha256sums_x86_64=("6361a1b9cdfce10c0c32ef495b350bbadeea8febd8955f708c115eee120098d8")
-sha256sums_aarch64=("6716cf6d607cc20b2d1d3d79793ea1211a8f804bebba4bbcab0a2549aeff8739")
+sha256sums_x86_64=("20adfad255d493e810a7feeac4983721799effd6f2ed03cfa5b31a391cbdc621")
+sha256sums_aarch64=("33d28ae68e8579b949bdcc53e64199eedf9b31665f698550dc0be5fc6466944d")
 
 _dist_target() {
   case "${CARCH}" in
@@ -36,4 +36,6 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -d "${pkgdir}/usr/share/kickoutchi"
+  printf '%s\n' aur > "${pkgdir}/usr/share/kickoutchi/install-provenance"
 }
