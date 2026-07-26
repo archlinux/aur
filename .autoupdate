@@ -1,0 +1,6 @@
+# Autoupdater manifest - consumed by aur/.autoupdate
+srchost="gitea"
+srcmntr="source"
+srcname="tsparams"
+verstrip=""
+gui="false"
