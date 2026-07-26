@@ -16,6 +16,6 @@ pkgbase = minnow-bin
 	provides = minnow
 	conflicts = minnow
 	source = minnow-bin-0.1.3.tar.gz::https://github.com/minnowfm/minnow/releases/download/v0.1.3/minnow-v0.1.3-x86_64.tar.gz
-	sha256sums = d4adf28708e8bec0b2e1ef359c360205c2f61d639c71c25ab4f7cecb8ba975e5
+	sha256sums = 0a219e5f820a568fa95c3d5d96a00370a44ac10b5c06e81a86652fd514067049
 
 pkgname = minnow-bin

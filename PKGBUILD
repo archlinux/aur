@@ -12,7 +12,7 @@ conflicts=('minnow')
 # Pulls the tarball the "Release packages" GitHub Actions workflow attaches to each
 # tagged release (built in an archlinux:latest container, so it's ABI-compatible here).
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/releases/download/v$pkgver/minnow-v$pkgver-x86_64.tar.gz")
-sha256sums=('d4adf28708e8bec0b2e1ef359c360205c2f61d639c71c25ab4f7cecb8ba975e5')
+sha256sums=('0a219e5f820a568fa95c3d5d96a00370a44ac10b5c06e81a86652fd514067049')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
