@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-tui-browser
-pkgver=1.30.18
+pkgver=1.30.19
 pkgrel=1
 pkgdesc="A terminal-based mDNS service browser"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo' 'cargo-auditable' 'git' 'rust')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0598dee758f14fe1f479ad113ecdbd106bbb3a8cd76460c40c0a47b7e227c90c')
+sha256sums=('4d917c4b7f81b89bb6ce8b723de490565b77c7cfb37b2a8d82fdd4dde038ddb5')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
