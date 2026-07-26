@@ -1,7 +1,7 @@
 pkgbase = azeron-software
 	pkgdesc = Configuration tool for Azeron keypads (unofficial Linux repackage)
 	pkgver = 1.5.6
-	pkgrel = 7
+	pkgrel = 10
 	url = https://github.com/renatoi/azeron-linux
 	arch = x86_64
 	license = custom:proprietary
@@ -19,7 +19,7 @@ pkgbase = azeron-software
 	optdepends = python-pyusb: standalone XInput drain script (for use without the app)
 	noextract = electron-30.0.9.zip
 	options = !strip
-	source = azeron-software-1.5.6-7.tar.gz::https://github.com/renatoi/azeron-linux/archive/refs/tags/v1.5.6.tar.gz
+	source = azeron-software-1.5.6-10.tar.gz::https://github.com/renatoi/azeron-linux/archive/refs/tags/v1.5.6.tar.gz
 	source = electron-30.0.9.zip::https://github.com/electron/electron/releases/download/v30.0.9/electron-v30.0.9-linux-x64.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
