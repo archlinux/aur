@@ -1,7 +1,7 @@
 pkgbase = screenshaver
 	pkgdesc = Next-generation Linux screensaver that renders ISF, ShaderToy and GLSL shaders
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bauclair/screenshaver
 	arch = x86_64
 	license = GPL-3.0-or-later

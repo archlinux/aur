@@ -2,7 +2,7 @@
 
 pkgname=screenshaver
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation Linux screensaver that renders ISF, ShaderToy and GLSL shaders"
 arch=('x86_64')
 url="https://github.com/bauclair/screenshaver"
@@ -76,7 +76,9 @@ package() {
         "assets/screenshaver-splash.png" \
         "$pkgdir/usr/share/screenshaver/screenshaver-splash.png"
 
+    install -d "$pkgdir/usr/share/icons/hicolor"
+
     cp -a \
-        "assets/icons/hicolor" \
-        "$pkgdir/usr/share/icons/"
+        "assets/icons/hicolor/." \
+        "$pkgdir/usr/share/icons/hicolor/"
 }
