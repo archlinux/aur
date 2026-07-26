@@ -38,7 +38,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/hydra serve
+ExecStart=/usr/bin/hydra serve
 Restart=always
 RestartSec=3
 Environment=HOME=%h
