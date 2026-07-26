@@ -1,0 +1,35 @@
+pkgbase = lx-music-shell
+	pkgdesc = Terminal music player with multi-source support and auto-reconnect
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/existyay/LX-Music-Shell
+	install = lx-music-shell.install
+	arch = any
+	license = MIT
+	checkdepends = shellcheck
+	depends = bash>=4.4
+	depends = coreutils
+	depends = curl
+	depends = glibc
+	depends = grep
+	depends = gawk
+	depends = ncurses
+	depends = procps-ng
+	optdepends = alsa-utils: ALSA audio control
+	optdepends = bluez: bluetooth support and monitoring
+	optdepends = bluez-utils: bluetoothctl for bluetooth device management
+	optdepends = ffmpeg: ffplay backend support and audio tools
+	optdepends = iputils: ping for network connectivity monitoring
+	optdepends = jq: enhanced JSON parsing for music APIs
+	optdepends = mplayer: alternative audio player backend
+	optdepends = mpv: recommended audio player backend
+	optdepends = networkmanager: network management integration
+	optdepends = pipewire: PipeWire audio system support
+	optdepends = pulseaudio: PulseAudio audio system support
+	optdepends = wireless_tools: WiFi connection monitoring
+	backup = etc/skel/.config/lx-music-shell/config
+	backup = etc/skel/.config/lx-music-shell/sources.list
+	source = lx-music-shell-source-v1.1.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lx-music-shell

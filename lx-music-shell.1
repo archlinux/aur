@@ -1,0 +1,75 @@
+.TH "LX-MUSIC-SHELL" "1" "2024" "" "LX-Music-Shell Manual"
+.SH NAME
+lx-music-shell \- terminal music player
+.SH SYNOPSIS
+.B lx-music-shell
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+.B lx-music-shell
+is a pure shell-based terminal music player that supports multiple music sources.
+.PP
+It can search and play music from various Chinese music platforms including Kugou, Kuwo, QQ Music, NetEase Cloud Music, MiGu, and Ximalaya.
+.SH OPTIONS
+.TP
+.B \-s, \-\-search \fIQUERY\fR
+Search for music
+.TP
+.B \-\-test-sources
+Test connectivity of all music sources
+.TP
+.B \-\-update-sources
+Update music source configurations from network
+.TP
+.B \-\-import-source \fIFILE\fR
+Import external source configuration file
+.TP
+.B \-h, \-\-help
+Show help message
+.TP
+.B \-v, \-\-version
+Show version information
+.SH INTERACTIVE COMMANDS
+.TP
+.B /search, /s
+Search for music
+.TP
+.B /play, /p \fIINDEX\fR
+Play music by index
+.TP
+.B /pause
+Pause playback
+.TP
+.B /next, /n
+Play next track
+.TP
+.B /prev
+Play previous track
+.TP
+.B /test-sources
+Test all music source connectivity
+.TP
+.B /quit, /q
+Exit program
+.SH CONFIGURATION
+.TP
+Configuration file: \fI~/.config/lx-music-shell/config\fR
+.TP
+Sources file: \fI~/.config/lx-music-shell/sources.list\fR
+.SH EXAMPLES
+.TP
+Start interactive mode:
+.B lx-music-shell
+.TP
+Search for music:
+.B lx-music-shell --search "周杰伦"
+.TP
+Test all sources:
+.B lx-music-shell --test-sources
+.SH AUTHOR
+Written by Your Name
+.SH REPORTING BUGS
+Report bugs at <https://github.com/yourname/lx-music-shell/issues>
+.SH COPYRIGHT
+Copyright \(co 2024 Your Name
+.br
+This is free software; see the source for copying conditions.

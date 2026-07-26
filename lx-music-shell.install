@@ -1,0 +1,68 @@
+#==============================================================================
+# LX-Music-Shell pacman 安装钩子
+#==============================================================================
+
+# 安装前执行
+pre_install() {
+    # 停止任何运行中的实例
+    pkill -9 -f "lx-music-shell" 2>/dev/null || true
+}
+
+# 安装后执行
+post_install() {
+    echo ">>> LX-Music-Shell has been installed"
+    echo ""
+    echo "Usage:"
+    echo "  lx-music-shell          # Interactive mode"
+    echo "  lx-music-shell --help   # Show help"
+    echo "  lx-music-shell --test-sources  # Test source connectivity"
+    echo ""
+    echo "Config location: ~/.config/lx-music-shell/"
+    echo ""
+    echo "Optional dependencies:"
+    echo "  mpv         - Default player backend"
+    echo "  mplayer     - Alternative player backend"
+    echo "  ffmpeg      - ffplay backend"
+    echo "  jq          - JSON parsing support"
+    echo "  bluez       - Bluetooth support"
+    echo "  pipewire    - PipeWire audio support"
+    echo ""
+    echo "Uninstall with yay/pacman:"
+    echo "  sudo pacman -R lx-music-shell    # Remove package only"
+    echo "  sudo pacman -Rns lx-music-shell  # Remove package and dependencies"
+}
+
+# 升级前执行
+pre_upgrade() {
+    pre_install
+}
+
+# 升级后执行
+post_upgrade() {
+    post_install
+}
+
+# 卸载前执行
+pre_remove() {
+    # 停止所有运行中的实例
+    pkill -9 -f "lx-music-shell" 2>/dev/null || true
+    pkill -9 mpv 2>/dev/null || true
+    sleep 1
+}
+
+# 卸载后执行
+post_remove() {
+    echo ">>> LX-Music-Shell has been removed"
+    echo ""
+    echo "System files cleaned up"
+    echo ""
+    echo "To remove user config files, run:"
+    echo "  rm -rf ~/.config/lx-music-shell"
+    echo "  rm -rf ~/.cache/lx-music-shell"
+    echo "  rm -rf ~/.local/share/lx-music-shell"
+    echo ""
+    echo "For complete cleanup (including downloaded music):"
+    echo "  rm -rf ~/.config/lx-music-shell ~/.cache/lx-music-shell"
+    echo "  rm -rf ~/.local/share/lx-music-shell"
+    echo "  rm -rf ~/Music/LX-Music-Shell"
+}

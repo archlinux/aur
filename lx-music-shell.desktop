@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=LX-Music-Shell
+Comment=Terminal Music Player for Chinese Music Sources
+Comment[zh_CN]=终端音乐播放器
+Exec=lx-music-shell
+Icon=audio-x-generic
+Terminal=true
+Type=Application
+Categories=AudioVideo;Audio;Player;Music;
+Keywords=music;player;terminal;kugou;kuwo;netease;qq;
+StartupNotify=false
