@@ -51,16 +51,9 @@ package() {
   sed -i 's/JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/#JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/' $pkgname
 
   msg2 "Moving stuff in place..."
-
-  # Launcher
-  sed -i 's/\r//' $pkgname
-  mv $pkgname "$pkgdir"/usr/bin/
-
-  # Icon and desktop
+  sed 's/\r//' $pkgname >"$pkgdir"/usr/bin/$pkgname
   mv $pkgname.svg "$pkgdir"/usr/share/pixmaps/
-  mv $pkgname.desktop "$pkgdir"/usr/share/applications/
-
-  # Licenses
+  sed 's/\r//' $pkgname.desktop >"$pkgdir"/usr/share/applications/$pkgname.desktop
   mv 3rdPartyLicences.txt GPL.txt GPLv3.txt "$pkgdir"/usr/share/licenses/$pkgname/  
 
   msg2 "Removing redundancies..."
