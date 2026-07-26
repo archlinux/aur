@@ -1,7 +1,7 @@
 # Maintainer: nugget <vincent@sshmoi.com>
 
 pkgname=kickoutchi
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="TUI and CLI to see which process owns a local port and kill it safely"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("cargo")
 conflicts=("kickoutchi-bin")
 options=("!debug" "!lto")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/source.tar.gz")
-sha256sums=("eb014303322beb005ed3dd714902dfbeaf2b4885b5a896b4a657c966f2e88ac1")
+sha256sums=("66289a3b4a69923490e4f2f45e692a87f8da1ec8ccbb5a67f38d3cb702f4a17d")
 
 _cargo() {
   RUSTC=/usr/bin/rustc RUSTDOC=/usr/bin/rustdoc /usr/bin/cargo "$@"
@@ -40,6 +40,4 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -d "${pkgdir}/usr/share/kickoutchi"
-  printf '%s\n' aur > "${pkgdir}/usr/share/kickoutchi/install-provenance"
 }
