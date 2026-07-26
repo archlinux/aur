@@ -1,10 +1,15 @@
-# Maintainer: shipa
+# Maintainer: Shipa Snake <aurahag2@gmail.com>
 
-pkgbase=vulkan-terakan
-pkgname=(vulkan-terakan lib32-vulkan-terakan)
-pkgver=1.1.r1.gcc57fd4f47f
+pkgbase=vulkan-ai-terakan
+pkgname=(
+  vulkan-ai-terakan
+  lib32-vulkan-ai-terakan
+)
+# Bootstrap value required by makepkg. pkgver() replaces it with the version
+# derived from the latest commit fetched from Terakan_state_rework.
+pkgver=25.2.0_devel.r208368.ga4099a35bd5
 pkgrel=1
-pkgdesc="Experimental Vulkan 1.1 driver for AMD TeraScale GPUs"
+pkgdesc="Updated and enhanced fork of the experimental Mesa Terakan Vulkan driver for AMD TeraScale GPUs"
 arch=(x86_64)
 url="https://github.com/shipa-2/mesa-terakan-ai-upstreamed"
 license=(MIT)
@@ -37,6 +42,7 @@ makedepends=(
   lib32-vulkan-icd-loader
   lib32-wayland
   lib32-xcb-util-keysyms
+  lib32-zlib
   lib32-zstd
   meson
   ninja
@@ -50,6 +56,8 @@ makedepends=(
 )
 
 _branch=Terakan_state_rework
+# This is intentionally an unpinned VCS source: makepkg updates the cached
+# repository and checks out the current branch HEAD before pkgver() and build().
 _source_url=${TERAKAN_MESA_SOURCE:-"${url}.git#branch=${_branch}"}
 source=(
   "mesa-terakan::git+${_source_url}"
@@ -59,18 +67,21 @@ source=(
   terakan-test-capabilities
   README.md
 )
-sha256sums=(
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-)
+sha256sums=('SKIP'
+            '3feb3a6aaeaa19d3123cf04b10d1b908e27349a6661574ba0453f270ac65d716'
+            'd9e147d9b21719c97257c01fe5f6c06169edbb7fcb2bce5abb5119b6a63faee2'
+            '7508c7c69bb43e25238b5a1ee7ad53eb44ccea4c4a08f352ca2e706076bff270'
+            'eda559db6e40ba21d8d1a66fa0644d9ee7e90c50706d7c50f64977d6cd67317b'
+            '557288f665893bbe7cc31f5aea6a828ff07afd3eda40d02b60f5cfbd705cf6d3')
 
 pkgver() {
   cd mesa-terakan
-  printf '1.1.r%s.g%s' \
+
+  local mesa_version
+  mesa_version=$(<VERSION)
+  mesa_version=${mesa_version//-/_}
+  printf '%s.r%s.g%s' \
+    "$mesa_version" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=11 HEAD)"
 }
@@ -149,8 +160,8 @@ _remove_shared_mesa_files() {
     "$pkgdir/usr/share/glvnd"
 }
 
-package_vulkan-terakan() {
-  pkgdesc="64-bit experimental Vulkan 1.1 driver for AMD TeraScale GPUs"
+package_vulkan-ai-terakan() {
+  pkgdesc="Updated and enhanced 64-bit fork of the Mesa Terakan Vulkan driver"
   depends=(
     expat
     libdrm
@@ -165,8 +176,16 @@ package_vulkan-terakan() {
     zlib
     zstd
   )
-  provides=(vulkan-driver)
-  install=vulkan-terakan.install
+  provides=(
+    vulkan-driver
+    vulkan-terakan
+    vulkan-terakan-git
+  )
+  conflicts=(
+    vulkan-terakan
+    vulkan-terakan-git
+  )
+  install=vulkan-ai-terakan.install
 
   DESTDIR="$pkgdir" meson install \
     -C "$srcdir/mesa-terakan/build-terakan64" --no-rebuild
@@ -178,17 +197,17 @@ package_vulkan-terakan() {
   install -Dm755 terakan-test-capabilities \
     "$pkgdir/usr/bin/terakan-test-capabilities"
   install -Dm644 README.md \
-    "$pkgdir/usr/share/doc/vulkan-terakan/README.md"
+    "$pkgdir/usr/share/doc/vulkan-ai-terakan/README.md"
   install -Dm644 "$srcdir/mesa-terakan/docs/license.rst" \
-    "$pkgdir/usr/share/licenses/vulkan-terakan/LICENSE"
+    "$pkgdir/usr/share/licenses/vulkan-ai-terakan/LICENSE"
 
   _remove_shared_mesa_files
 }
 
-package_lib32-vulkan-terakan() {
-  pkgdesc="32-bit Terakan Vulkan ICD for Wine and 32-bit games"
+package_lib32-vulkan-ai-terakan() {
+  pkgdesc="Updated and enhanced 32-bit Terakan Vulkan fork for Wine and games"
   depends=(
-    vulkan-terakan
+    "vulkan-ai-terakan=$pkgver"
     lib32-expat
     lib32-gcc-libs
     lib32-libdrm
@@ -203,7 +222,15 @@ package_lib32-vulkan-terakan() {
     lib32-zlib
     lib32-zstd
   )
-  provides=(lib32-vulkan-driver)
+  provides=(
+    lib32-vulkan-driver
+    lib32-vulkan-terakan
+    lib32-vulkan-terakan-git
+  )
+  conflicts=(
+    lib32-vulkan-terakan
+    lib32-vulkan-terakan-git
+  )
 
   DESTDIR="$pkgdir" meson install \
     -C "$srcdir/mesa-terakan/build-terakan32" --no-rebuild
@@ -217,7 +244,7 @@ package_lib32-vulkan-terakan() {
   install -Dm755 terakan-vulkan32 "$pkgdir/usr/bin/terakan-vulkan32"
   ln -s terakan-vulkan32 "$pkgdir/usr/bin/terakan-vulkan32-setup"
   install -Dm644 "$srcdir/mesa-terakan/docs/license.rst" \
-    "$pkgdir/usr/share/licenses/lib32-vulkan-terakan/LICENSE"
+    "$pkgdir/usr/share/licenses/lib32-vulkan-ai-terakan/LICENSE"
 
   _remove_shared_mesa_files
 }

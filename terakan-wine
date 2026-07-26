@@ -5,7 +5,7 @@ icd64=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
 icd32=/usr/share/vulkan/icd.d/terascale_icd.i686.json
 
 if [[ ! -r "$icd64" ]]; then
-  echo "terakan-wine: install vulkan-terakan first" >&2
+  echo "terakan-wine: install vulkan-ai-terakan first" >&2
   exit 1
 fi
 if (($# == 0)); then

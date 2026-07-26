@@ -5,7 +5,7 @@ icd=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
 driver=/usr/lib/libvulkan_terascale.so
 
 if [[ ! -r "$icd" || ! -r "$driver" ]]; then
-  echo "terakan-vulkan: install vulkan-terakan first" >&2
+  echo "terakan-vulkan: install vulkan-ai-terakan first" >&2
   exit 1
 fi
 if (($# == 0)); then
