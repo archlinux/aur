@@ -3,7 +3,7 @@
 # Contributor: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-plugin-csd-deco-git
-pkgver=r121.98f49e1
+pkgver=r159.59aef6a
 pkgrel=1
 pkgdesc="3D wayland compositor decorator plugin"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "wayfire-plugin-gtk4-decorator-git")
 replaces=()
 options=()
-source=('git+https://github.com/soreau/wf-csd-deco#branch=add-qt6-client')
+source=('git+https://github.com/soreau/wf-csd-deco')
 sha256sums=('SKIP')
 pkgver() {
         cd "$srcdir/wf-csd-deco"
