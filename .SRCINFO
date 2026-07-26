@@ -1,0 +1,19 @@
+pkgbase = jscpumonitor-bin
+	pkgdesc = Per-core CPU monitor for the Linux desktop
+	pkgver = 1.14
+	pkgrel = 2
+	url = https://www.budbrain.de
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = jscpumonitor
+	conflicts = jscpumonitor
+	noextract = jscpumonitor-1.14-2.x86_64.rpm
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source = https://www.budbrain.de/rpm/x86_64/jscpumonitor-1.14-2.x86_64.rpm
+	sha256sums = a7e41815e45a5b59ac7a3f98b334844755f387a2dd9f98a46718458b1180308a
+
+pkgname = jscpumonitor-bin
