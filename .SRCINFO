@@ -6,9 +6,13 @@ pkgbase = python-shell
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
 	depends = python
-	source = https://github.com/toastdriven/shell/archive/v1.0.1.tar.gz
+	source = shell-1.0.1.tar.gz::https://github.com/toastdriven/shell/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = d114d74338877a8739ede11ef5466e950c5820a93d7dd20aa96408b2e353af0c
 
 pkgname = python-shell
-
