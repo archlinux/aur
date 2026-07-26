@@ -1,6 +1,6 @@
 pkgbase = rhythr-bin
 	pkgdesc = Unofficial community tool that renders Rhythia (.rhr) replays into pixel-accurate videos
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/KillerOp007/rhythr
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = rhythr-bin
 	depends = hicolor-icon-theme
 	provides = rhythr
 	conflicts = rhythr
-	noextract = rhythr_0.3.4_amd64.deb
+	noextract = rhythr_0.4.0_amd64.deb
 	options = !strip
-	source = https://github.com/KillerOp007/rhythr/releases/download/v0.3.4/rhythr_0.3.4_amd64.deb
-	source = LICENSE-0.3.4::https://raw.githubusercontent.com/KillerOp007/rhythr/v0.3.4/LICENSE
-	sha256sums = 1d1951cf5089559aaae7b8cb17bde76d3120cdd46b3307da37bf1e9641090ca9
+	source = https://github.com/KillerOp007/rhythr/releases/download/v0.4.0/rhythr_0.4.0_amd64.deb
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/KillerOp007/rhythr/v0.4.0/LICENSE
+	sha256sums = 1c829114ef42b79bb98586189593e74020527aee51ad5433e0bc7bb1c56fc0fe
 	sha256sums = 74f100c0e5ed1b3e3dd697ebb21c868526375dd03e9a1dd93c2e2609c1444bdc
 
 pkgname = rhythr-bin
