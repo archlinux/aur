@@ -1,18 +1,21 @@
 pkgbase = form
 	pkgdesc = Symbolic Manipulation System developed at Nikhef.
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://www.nikhef.nl/~form/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = autoconf
 	makedepends = automake
 	depends = gmp>=4.2
 	depends = zlib>=1.2
+	optdepends = zstd
+	optdepends = mpfr
+	optdepends = flint
 	provides = tform
 	conflicts = form-git
-	source = https://github.com/vermaseren/form/releases/download/v5.0.0/form-5.0.0.tar.gz
-	sha256sums = 10d22acf2f0acf831b494e6a73682828980b9054ea8ec2b5dc46677dca8d6518
+	source = https://github.com/form-dev/form/releases/download/v5.0.1/form-5.0.1.tar.gz
+	sha256sums = ce62530a54e5232dfefb6c1ff0e7047372a43941b3c0e0db08b5714fd868722c
 
 pkgname = form
