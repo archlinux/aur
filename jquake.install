@@ -1,7 +1,7 @@
 post_install() {
   echo "Sound: on PipeWire or PulseAudio systems, install pipewire-alsa or"
-  echo "pulseaudio-alsa (Java outputs through ALSA). In JQuake's sound settings,"
-  echo "keep 'Peripheral' on the first entry (upstream bug with other entries)."
+  echo "pulseaudio-alsa (Java outputs through ALSA). JQuake always plays on"
+  echo "the system default audio device."
 }
 
 post_upgrade() {
