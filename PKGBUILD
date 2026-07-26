@@ -1,5 +1,5 @@
 pkgname=sway-title-animator
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Animated Unicode titlebars for Sway"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('sway')
 optdepends=('libpulse: sound-reactive animation presets via parec')
 makedepends=('go>=1.26')
 source=("sway-title-animator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b54cf7ba991b4ab44b6de2a42021a83199aec435239e5552d818c20664d0948a')
+sha256sums=('75e5acff9b2b42382c90da7c708ab44b70187f5e825ea998dd97840310f445eb')
 
 build() {
   cd "sway-title-animator-$pkgver"
