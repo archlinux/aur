@@ -8,7 +8,7 @@
 # 詳細は packaging/arch/README.md を参照。
 
 pkgname=grimodex-bin
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="AI-integrated novel writing editor (Electron + React)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 source=("LICENSE-v${pkgver}::https://raw.githubusercontent.com/kazormia296/Grimodex/v${pkgver}/LICENSE")
 source_x86_64=("${url}/releases/download/v${pkgver}/Grimodex-${pkgver}-linux-amd64.deb")
 sha256sums=('0e90de829ce8a918b0c934e241c4f68bd49c3d0aef55649b78d6d38a64c87f85')
-sha256sums_x86_64=('ab9ca560c4326fa4a2404c65f805f46571da49c8828f37c0dad1786b7af28fba')
+sha256sums_x86_64=('594a725185fd49310ef2e4375e55d801a2195a0cb0b6a5bde06ad1f4b40503b7')
 
 package() {
   # makepkg が .deb (ar アーカイブ) を srcdir へ自動展開済み。
