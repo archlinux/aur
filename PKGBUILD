@@ -7,7 +7,7 @@
 pkgname=python-textual-image
 _pkgname=textual-image
 pkgver=0.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
 url="https://github.com/lnqs/textual-image"
@@ -31,6 +31,7 @@ checkdepends=(
   'python-pytest'
   'python-pytest-asyncio'
   'python-syrupy'
+  'python-pytest-xdist'
 )
 source=("git+https://github.com/lnqs/${_pkgname}#tag=v${pkgver}")
 license=('LGPL-3.0-only')
