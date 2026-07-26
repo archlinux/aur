@@ -1,6 +1,6 @@
 # Maintainer: mirarrapp <iknowarch@proton.me>
 pkgname=mirarr-bin
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A Flutter-based movie and TV show app"
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('gtk3')
 provides=('mirarr')
 conflicts=('mirarr')
+options=(!debug)
 
 source=("$pkgname-$pkgver.zip::https://github.com/mirarr-app/mirarr/releases/download/$pkgver/mirarr.zip")
 sha256sums=('SKIP')
