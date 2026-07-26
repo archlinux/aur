@@ -1,7 +1,7 @@
 # Maintainer: Fabian Beita <fabianbeita@users.noreply.github.com>
 
 pkgname=bc250-control-center-git
-pkgver=0.1.0.r23.ge75d129
+pkgver=1.17.21
 pkgrel=1
 pkgdesc='Graphical control center for AMD BC-250 community tools'
 arch=('any')
@@ -24,6 +24,7 @@ optdepends=(
   'paru: optional AUR dependency helper used by the GUI'
   'libnotify: desktop notifications through notify-send'
   'polkit: graphical authentication for elevated actions'
+  'python-evdev: preferred Linux gamepad input backend'
   'vulkan-tools: Vulkan diagnostics'
   'mesa-utils: OpenGL diagnostics'
   'nct6687d-dkms-git: experimental PWM fan control on BC-250'
@@ -47,6 +48,10 @@ package() {
 
   install -Dm755 scripts/bc250-control-center "$pkgdir/usr/bin/bc250-control-center"
   install -Dm755 scripts/bc250-control-centerd "$pkgdir/usr/bin/bc250-control-centerd"
+  install -Dm755 mvc/Resources/privileged/bc250-fan-pwm-helper \
+    "$pkgdir/usr/libexec/bc250-control-center/bc250-fan-pwm-helper"
+  install -Dm644 packaging/common/polkit/io.github.fabianbeita.bc250-control-center.policy \
+    "$pkgdir/usr/share/polkit-1/actions/io.github.fabianbeita.bc250-control-center.policy"
 
   for size in 32 48 64 128 256 512 1024; do
     install -Dm644 "mvc/Resources/icons/bc250-control-center-${size}.png" \
@@ -61,12 +66,8 @@ package() {
     "$pkgdir/usr/lib/systemd/user/bc250-control-centerd.service"
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/bc250-control-center/README.md"
-  if [[ -d docs ]]; then
-    for doc in docs/*.md; do
-      [[ -f "$doc" ]] || continue
-      install -Dm644 "$doc" "$pkgdir/usr/share/doc/bc250-control-center/$(basename "$doc")"
-    done
-  fi
+  install -Dm644 docs/ARQUITECTURA_MVC.md "$pkgdir/usr/share/doc/bc250-control-center/ARQUITECTURA_MVC.md"
+  install -Dm644 docs/THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/doc/bc250-control-center/THIRD_PARTY_NOTICES.md"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
