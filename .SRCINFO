@@ -1,6 +1,6 @@
 pkgbase = ouijit-bin
 	pkgdesc = Kanban terminal manager for CLI agent workflows with git worktree isolation
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/ouijit/ouijit
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ouijit-bin
 	conflicts = ouijit
 	options = !strip
 	options = !debug
-	source = ouijit-bin-1.4.0.zip::https://github.com/ouijit/ouijit/releases/download/v1.4.0/ouijit-linux-x64.zip
-	sha256sums = cbc1762859dac4602fe712e88d8cca0f7f58747faed98c3a785a4c061c1ce2e4
+	source = ouijit-bin-1.5.0.zip::https://github.com/ouijit/ouijit/releases/download/v1.5.0/ouijit-linux-x64.zip
+	sha256sums = 2423f356f4ddc82c96a839cff15d468c3d008c1e95dfdfb9a32f0a5acd995375
 
 pkgname = ouijit-bin
