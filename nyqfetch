@@ -1,26 +1,36 @@
+#!/usr/bin/env python3
 import os
 import platform
-import psutil
 
-# Culori ANSI pentru stilizare (asortate cu setup-ul tău Catppuccin Mocha)
-ALBASTRU = "\033[38;5;111m"
+# Color definitions (Standard ANSI Escape Codes)
+BLUE = "\033[38;5;111m"
 CYAN = "\033[38;5;117m"
-ALB = "\033[38;5;255m"
+WHITE = "\033[38;5;255m"
 RESET = "\033[0m"
 
-# 1. Colectăm datele reale ale sistemului operativ
-user = os.getlogin()
+# 1. Gather real system metrics
+try:
+    user = os.getlogin()
+except Exception:
+    user = os.environ.get("USER", "user")
+
 host = platform.node()
 os_name = "Arch Linux x86_64"
 kernel = platform.release()
 shell = os.environ.get("SHELL", "").split("/")[-1]
 
-# Calculăm memoria RAM reală (în GB)
-ram = psutil.virtual_memory()
-ram_used = round(ram.used / (1024**3), 2)
-ram_total = round(ram.total / (1024**3), 2)
+# Calculate real RAM usage via /proc/meminfo
+try:
+    with open('/proc/meminfo', 'r') as f:
+        lines = f.readlines()
+    mem_total_kb = int([x for x in lines if "MemTotal" in x].split()[1])
+    mem_avail_kb = int([x for x in lines if "MemAvailable" in x].split()[1])
+    ram_used = round((mem_total_kb - mem_avail_kb) / 1024 / 1024, 2)
+    ram_total = round(mem_total_kb / 1024 / 1024, 2)
+except Exception:
+    ram_used, ram_total = 0.0, 0.0
 
-# 2. Definim logo-ul Arch în format ASCII (linie cu linie)
+# 2. Arch Linux ASCII Logo
 logo = [
     r"       /\       ",
     r"      /  \      ",
@@ -32,32 +42,19 @@ logo = [
     r"/_ _/  /_ _/  /_"
 ]
 
-# 3. Definim informațiile care apar în dreapta logo-ului
+# 3. System info definitions using English variables
 info = [
-    f"{ALBASTRU}{user}{ALB}@{CYAN}{host}{RESET}",
-    f"{ALB}-------------------------{RESET}",
-    f"{ALBASTRU}OS: {RESET}{os_name}",
-    f"{ALBASTRU}Kernel: {RESET}{kernel}",
-    f"{ALBASTRU}Shell: {RESET}{shell}",
-    f"{ALBASTRU}Memory: {RESET}{ram_used} GiB / {ram_total} GiB",
-    f"{ALBASTRU}Terminal: {RESET}Kitty (nyqfetch)",
-    " " # Linie goală la final
+    f"{BLUE}{user}{WHITE}@{CYAN}{host}{RESET}",
+    f"{WHITE}-------------------------{RESET}",
+    f"{BLUE}OS: {RESET}{os_name}",
+    f"{BLUE}Kernel: {RESET}{kernel}",
+    f"{BLUE}Shell: {RESET}{shell}",
+    f"{BLUE}Memory: {RESET}{ram_used} GiB / {ram_total} GiB",
+    f"{BLUE}Terminal: {RESET}Kitty"
 ]
 
-# 4. Combinăm logo-ul și informațiile pe rânduri paralele
-print("") # Un rând gol la început pentru spațiere
-max_lines = max(len(logo), len(info))
-
-for i in range(max_lines):
-    # Luăm linia din logo sau spațiu gol dacă logo-ul s-a terminat
-    line_logo = f"{CYAN}{logo[i]}{RESET}" if i < len(logo) else " " * 16
-    # Luăm linia de info sau spațiu gol dacă informațiile s-au terminat
-    line_info = info[i] if i < len(info) else ""
-    
-    # Printează-le pe același rând cu spațiu între ele
-    print(f" {line_logo}   {line_info}")
-
-print("") # Un rând gol la final
-
-#!/usr/bin/env python
-
+# 4. Print layout side-by-side
+for i in range(max(len(logo), len(info))):
+    l = logo[i] if i < len(logo) else " " * 16
+    r = info[i] if i < len(info) else ""
+    print(f"{BLUE}{l}{RESET}  {r}")

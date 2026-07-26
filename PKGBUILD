@@ -8,8 +8,10 @@ url="https://archlinux.org"
 license=('MIT')
 depends=('python' 'python-psutil')
 source=('nyqfetch')
-sha256sums=('SKIP')
+sha256sums=('e18f01a0d445ab09d2b18a5c3425debfedde0b29aada1d540bf5794a235e8ffe')
 
 package() {
     install -Dm755 "${srcdir}/nyqfetch" "${pkgdir}/usr/bin/nyqfetch"
 }
+
+url="https://aur.archlinux.org/packages/nyqfetch"
