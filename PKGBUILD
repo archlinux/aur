@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal UI to manage SSH keys, edit ~/.ssh/config, and audit your SSH security"
 
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('359353583f5b1b49ede2b8a86ba0043e3b010a6eb77f513e2330e38bfe82d2fc')
-sha256sums_aarch64=('af831dcfeab5fd61c11d8241dbdcdf6d1bb6351932e3eecfe82fd47288358660')
+sha256sums_x86_64=('55caa52c48a3219e0d51788605369ab912d0fdf9278da8d5834689fbfc7356d2')
+sha256sums_aarch64=('74ca0c7ebe090e549ba05912eddb068c88797065bfaf6bedd61c98513ee3a12d')
 
 
 package() {
