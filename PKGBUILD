@@ -2,10 +2,10 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 pkgname=itch-bin
-pkgver=26.9.0
+pkgver=26.15.0
 pkgrel=1
-pkgdesc="The itch.io desktop app (binary release)"
-url="https://itchio.itch.io/itch"
+pkgdesc="🎮 The best way to play your itch.io games (binary release)"
+url="https://github.com/itchio/itch"
 license=('MIT')
 arch=('x86_64')
 provides=("itch")
@@ -16,25 +16,12 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'glib2'
          'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 optdepends=('firejail: sandbox preference'
             'wine: Windows games')
-source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.zone/itch/linux-amd64/$pkgver/archive/default"
-        "https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE")
-sha256sums=('689083036a945db8dd2a744760432082a39568b6fc8cbbde66f00996323ee2d5'
-            '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
+noextract=("itch-v$pkgver-linux-amd64.tar.gz")
+source=("$url/releases/download/v$pkgver/itch-v$pkgver-linux-amd64.tar.gz")
+sha256sums=('efbfee645a29bb2f4d3347817db3348b42d114760f325d72371dfcae4e2e4841')
 
 prepare() {
-# Fix only if installed
-if pacman -Qq firejail &>/dev/null; then
-  echo "# Creating two symlinks under the HOME directory" && sleep 1
-  echo "# to fix the firejail issue, see:" && sleep 1
-  echo "# https://github.com/itchio/itch/issues/2732" && sleep 4
-  _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
-  _DIR2="$HOME/.config/itch/prereqs/firejail-386"
-  mkdir -p "$_DIR" "$_DIR2"
-  ln -sf /usr/bin/firejail "$_DIR"
-  ln -sf /usr/bin/firejail "$_DIR2"
-fi
-
-# Create a shortcut
+# Create the desktop file
   echo -e "[Desktop Entry]\n\
 Name=itch\n\
 Comment=The itch.io desktop app\n\
@@ -45,18 +32,22 @@ Type=Application\n\
 StartupWMClass=itch\n\
 Categories=Game;
 MimeType=x-scheme-handler/itchio;x-scheme-handler/itch;" > itch.desktop
+# Extract files to a folder
+  tar -xf itch-v$pkgver-linux-amd64.tar.gz --one-top-level=itch-$pkgver
 }
 
 package() {
+  _icon=usr/share/icons/hicolor
 # Create directories
   mkdir -p "$pkgdir/opt/itch" "$pkgdir/usr/bin"
 # Install
   install -Dm644 itch.desktop -t "$pkgdir/usr/share/applications"
+  cd itch-$pkgver
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/itch"
-  install -Dm644 resources/app/src/static/images/tray/itch.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -Dm644 resources/app/src/static/images/window/itch/icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/itch.png"
-  install -Dm644 resources/app/src/static/images/window/itch/icon-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/itch.png"
-  rm LICENSE itch.desktop itch-linux-amd64-$pkgver.zip
-  mv * "$pkgdir/opt/itch"
+  cd resources/app/src/static/images
+  install -Dm644 tray/itch.png -t "$pkgdir/$_icon/256x256/apps"
+  install -Dm644 window/itch/icon.png "$pkgdir/$_icon/128x128/apps/itch.png"
+  install -Dm644 window/itch/icon-32.png "$pkgdir/usr/$_icon/32x32/apps/itch.png"
+  mv "${srcdir}"/itch-$pkgver/* "$pkgdir/opt/itch"
   ln -s /opt/itch/itch "$pkgdir/usr/bin"
 }

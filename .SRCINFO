@@ -1,8 +1,8 @@
 pkgbase = itch-bin
-	pkgdesc = The itch.io desktop app (binary release)
-	pkgver = 26.9.0
+	pkgdesc = 🎮 The best way to play your itch.io games (binary release)
+	pkgver = 26.15.0
 	pkgrel = 1
-	url = https://itchio.itch.io/itch
+	url = https://github.com/itchio/itch
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib
@@ -32,9 +32,8 @@ pkgbase = itch-bin
 	provides = itch
 	conflicts = itch
 	conflicts = itch-setup
-	source = itch-linux-amd64-26.9.0.zip::https://broth.itch.zone/itch/linux-amd64/26.9.0/archive/default
-	source = https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE
-	sha256sums = 689083036a945db8dd2a744760432082a39568b6fc8cbbde66f00996323ee2d5
-	sha256sums = 747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c
+	noextract = itch-v26.15.0-linux-amd64.tar.gz
+	source = https://github.com/itchio/itch/releases/download/v26.15.0/itch-v26.15.0-linux-amd64.tar.gz
+	sha256sums = efbfee645a29bb2f4d3347817db3348b42d114760f325d72371dfcae4e2e4841
 
 pkgname = itch-bin
