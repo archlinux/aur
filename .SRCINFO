@@ -1,0 +1,23 @@
+pkgbase = telegram-owl-bin
+	pkgdesc = CLI utility to send messages and files to Telegram chats and channels
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/beeyev/telegram-owl
+	license = MIT
+	depends = ca-certificates
+	conflicts = telegram-owl
+	provides = telegram-owl
+	arch = aarch64
+	source_aarch64 = https://github.com/beeyev/telegram-owl/releases/download/v2.1.1/telegram-owl_v2.1.1_Linux_ARM64.tar.gz
+	sha256sums_aarch64 = 781e817418db9ede84687e1e50b3917e82a9154576871b0f350d463e6da3a6b1
+	arch = armv7h
+	source_armv7h = https://github.com/beeyev/telegram-owl/releases/download/v2.1.1/telegram-owl_v2.1.1_Linux_ARM.tar.gz
+	sha256sums_armv7h = c6339800f51913d267a4762f47aa9930dbad6a4250a86f7550d672b5f9a22b6f
+	arch = i686
+	source_i686 = https://github.com/beeyev/telegram-owl/releases/download/v2.1.1/telegram-owl_v2.1.1_Linux_32bit.tar.gz
+	sha256sums_i686 = ee83440810ba8d483f781ade8b08cd1b06b1fc41fc68099faa49b6d7765624f6
+	arch = x86_64
+	source_x86_64 = https://github.com/beeyev/telegram-owl/releases/download/v2.1.1/telegram-owl_v2.1.1_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 81c6430db30e392c377518fc0d8ae2f3e22b8278aa00741cdd8f4d7b64783fdc
+	
+pkgname = telegram-owl-bin
