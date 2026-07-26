@@ -1,13 +1,21 @@
 pkgbase = bigwebapp-manager
-	pkgdesc = BigLinux WebApps manager (precompiled binary)
-	pkgver = 26.02.27
+	pkgdesc = BigLinux WebApps - Web applications manager with automatic icon fetching
+	pkgver = r100.g1234567
 	pkgrel = 1
-	url = https://www.biglinux.com.br
-	arch = any
-	license = GPL
+	url = https://github.com/biglinux/biglinux-webapps
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = gettext
+	depends = openssl
 	provides = biglinux-webapps
 	conflicts = biglinux-webapps
-	source = biglinux-webapps-26.02.27-0737-any.pkg.tar.zst
+	source = git+https://github.com/biglinux/biglinux-webapps.git
 	sha256sums = SKIP
 
 pkgname = bigwebapp-manager
