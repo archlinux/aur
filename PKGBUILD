@@ -3,7 +3,7 @@
 _corever=0.1.1
 
 pkgname=fvs2
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Standalone CLI for FVS v2'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "core-${_corever}.tar.gz::https://github.com/fvs-lab/core/archive/refs/tags/v${_corever}.tar.gz"
 )
-sha256sums=('adcc2e0e5130b4bb8c18ffdcc3c63522b36894d32dbae508d5c90dbeeabb1837'
+sha256sums=('74aa67ab731c7a25da4a7858cbebdd2a87f361568977b19653651bf2b1979815'
             '91b417276815752ab7608659b33d09d8d4b3e4d03303c2314685440808a52eb6')
 
 prepare() {
