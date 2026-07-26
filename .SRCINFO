@@ -1,0 +1,17 @@
+pkgbase = ollie-appimage-bin
+	pkgdesc = A minimalist desktop client for Ollama (AppImage release)
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/MedGm/Ollie
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
+	source = ollie-appimage-bin-0.2.9.AppImage::https://github.com/MedGm/Ollie/releases/download/v0.2.9/Ollie_0.2.9_amd64.AppImage
+	source = ollie.png::https://raw.githubusercontent.com/MedGm/Ollie/main/docs/logo.png
+	sha256sums = 78bd164b153cda916e6b3c6285216405c1b1a873135993872cd9e1d41f26af56
+	sha256sums = 35b48343c7bf119724ffb696cb4f3a3c11834c9c39bb52c54e4bd25f1238f579
+
+pkgname = ollie-appimage-bin
