@@ -1,0 +1,4 @@
+[vim-srcery]
+source = "git"
+git = "https://github.com/srcery-colors/srcery-vim.git"
+prefix = "v"
