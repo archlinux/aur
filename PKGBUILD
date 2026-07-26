@@ -1,32 +1,60 @@
-# Maintainer: Daniel Landau <aur@landau.fi> 
+# Maintainer:
+# Contributor: Daniel Landau <aur@landau.fi>
 
-_pkgname=AppCSXCAD
-pkgname=appcsxcad
-pkgver=0.2.2
-pkgrel=2
-pkgdesc="Minimal GUI Application using the QCSXCAD library."
+_pkgname=appcsxcad
+pkgname="$_pkgname"
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Minimal GUI Application using the QCSXCAD library"
+url="https://github.com/thliebig/AppCSXCAD"
+license=('GPL-3.0-or-later')
 arch=("x86_64")
-url="https://github.com/thliebig/$_pkgname"
-license=("GPL3")
-depends=("csxcad-git" "hdf5" "vtk" "qt5-base")
-makedepends=("cmake")
-optdepends=()
-source=("https://github.com/thliebig/$_pkgname/archive/v$pkgver.tar.gz"
+
+depends=(
+  'qt6-base'
+  'vtk'
+
+  # AUR
+  'csxcad'
+  'openems'
+  'qcsxcad'
 )
-md5sums=('97d4cbc9c116579c8bfd5bde00e80627')
+makedepends=(
+  'cmake'
+  'ninja'
+
+  'eigen3'
+  'fast_float'
+  'nlohmann-json'
+  'openmpi'
+  'utf8cpp'
+  'vulkan-headers'
+)
+
+_pkgsrc="AppCSXCAD-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums=('b15d0a1a221725dc2ac8d6c26828a0761183b7ef36021732c3063f76544d3ea9')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  mkdir -p build
+  sed -E -e '/cmake_policy/d' -i "$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -Wno-author
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 }

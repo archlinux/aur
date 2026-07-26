@@ -1,17 +1,24 @@
 pkgbase = appcsxcad
-	pkgdesc = Minimal GUI Application using the QCSXCAD library.
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgdesc = Minimal GUI Application using the QCSXCAD library
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/thliebig/AppCSXCAD
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
-	depends = csxcad-git
-	depends = hdf5
+	makedepends = ninja
+	makedepends = eigen3
+	makedepends = fast_float
+	makedepends = nlohmann-json
+	makedepends = openmpi
+	makedepends = utf8cpp
+	makedepends = vulkan-headers
+	depends = qt6-base
 	depends = vtk
-	depends = qt5-base
-	source = https://github.com/thliebig/AppCSXCAD/archive/v0.2.2.tar.gz
-	md5sums = 97d4cbc9c116579c8bfd5bde00e80627
+	depends = csxcad
+	depends = openems
+	depends = qcsxcad
+	source = appcsxcad-0.2.3.tar.gz::https://github.com/thliebig/AppCSXCAD/archive/v0.2.3.tar.gz
+	sha256sums = b15d0a1a221725dc2ac8d6c26828a0761183b7ef36021732c3063f76544d3ea9
 
 pkgname = appcsxcad
-
