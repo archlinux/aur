@@ -1,6 +1,6 @@
 # Maintainer: claude-brain maintainers
 pkgname=claude-brain
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A local second brain for Claude Code: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory from screenshots and captured URLs, 3D visualisation, cloud sync"
 # x86_64 only: fastembed pulls @anush008/tokenizers, which publishes prebuilds for
@@ -19,7 +19,7 @@ optdepends=('claude-code: LLM-assisted vault reorganisation and design descripti
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('cd7c382ed1a9b1cf2a105e8edf21dcbc36131e5a2424df9e8ef574a7ad94d659')
+sha256sums=('6c0f941fc5db4760f56ea5dcc1248408b1f0d110f6e106b11b7ea6e58efc836d')
 
 build() {
 	cd "$pkgname-$pkgver"
