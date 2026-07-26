@@ -1,0 +1,12 @@
+pkgbase = whitefire
+	pkgdesc = Descriere scurtă a scriptului whitefire
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user-tau/whitefire
+	arch = any
+	license = MIT
+	depends = python
+	source = whitefire.py
+	sha256sums = SKIP
+
+pkgname = whitefire
