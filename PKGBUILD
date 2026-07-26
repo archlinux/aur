@@ -7,7 +7,7 @@
 # as sqlnow-bin: the two are the same server and the same session store, so
 # either can open a session the other left, and both can be installed at once.
 pkgname=sqlnow-desktop-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Local SQL viewer for files and databases, in a native window"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ provides=('sqlnow-desktop')
 conflicts=('sqlnow-desktop')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/sqlnow-desktop-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/sqlnow-desktop-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('c2f4d3c5fab7d2ed112810fecbc8b22acd9419d11cc47cc496c0fe7a308fe5fb')
-sha256sums_aarch64=('0d321bbcc994f2df654e1913a55ba34769fe3876bd4bcd489423c6a5c5b315a0')
+sha256sums_x86_64=('a32c76fb0f455bad2c3fc6d6fd5c6a71bc7c788f582581a714afd10fe434c05f')
+sha256sums_aarch64=('79abf2f3f4b7cf0456d7740aacde2e6da9ed46a972e3742996df4cc524800ae2')
 
 package() {
     install -Dm755 sqlnow-desktop "$pkgdir/usr/bin/sqlnow-desktop"
