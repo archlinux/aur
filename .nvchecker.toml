@@ -1,0 +1,4 @@
+[vim-splitjoin]
+source = "git"
+git = "https://github.com/andrewradev/splitjoin.vim.git"
+prefix = "v"
