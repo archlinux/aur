@@ -11,6 +11,7 @@ pkgbase = azerothcore
 	makedepends = boost
 	makedepends = openssl
 	depends = libmysqlclient84
+	depends = mysql-clients84
 	depends = boost-libs
 	depends = readline
 	depends = openssl
