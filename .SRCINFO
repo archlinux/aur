@@ -17,11 +17,12 @@ pkgbase = azerothcore
 	depends = readline
 	depends = openssl
 	depends = mysql84
-	optdepends = mysql84: To host the localized server database engine maps
 	conflicts = mariadb
 	conflicts = mariadb-libs
 	conflicts = mariadb-clients
 	conflicts = mysql
+	conflicts = mysql-clients
+	conflicts = libmysqlclient
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	sha512sums = SKIP
 
