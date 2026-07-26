@@ -1,0 +1,19 @@
+post_install() {
+    local real_user="${SUDO_USER:-$USER}"
+    local user_home=$(eval echo "~$real_user")
+
+    if [ "$real_user" != "root" ]; then
+        echo "==> Enabling UltralightWeb Cursor KWin plugin for user: ${real_user}"
+        
+
+        sudo -u "${real_user}" kwriteconfig6 --file "${user_home}/.config/kwinrc" \
+            --group Plugins \
+            --key ultralightwebcursorEnabled true
+            
+        sudo -u "${real_user}" qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.reconfigureEffect ultralightwebcursor 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
