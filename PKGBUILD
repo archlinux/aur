@@ -52,8 +52,10 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << 'WRAPPER'
 #!/bin/bash
-# Workaround: WebKitGTK 4.1 GBM buffer creation failure on some drivers
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
+# Workaround: NVIDIA proprietary driver GBM doesn't support all buffer
+# modifiers WebKitGTK DMA-BUF renderer requests. Disables DMA-BUF
+# zero-copy path but keeps GL-accelerated compositing.
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
 exec /usr/lib/orcasvn/OrcaSVN "$@"
 WRAPPER
 
