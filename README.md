@@ -33,7 +33,7 @@ latest GitHub revision.
 ```bash
 sudo pacman -S --needed base-devel git meson ninja pkgconf vulkan-headers \
   wayland-protocols spirv-tools systemd-libs xcb-util-keysyms \
-  lib32-gcc-libs lib32-libdrm lib32-libx11 lib32-libxcb \
+  libxrandr lib32-gcc-libs lib32-libdrm lib32-libx11 lib32-libxrandr lib32-libxcb \
   lib32-libxshmfence lib32-spirv-tools lib32-systemd \
   lib32-vulkan-icd-loader lib32-wayland lib32-xcb-util-keysyms \
   lib32-zlib lib32-zstd

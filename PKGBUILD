@@ -8,7 +8,7 @@ pkgname=(
 # Bootstrap value required by makepkg. pkgver() replaces it with the version
 # derived from the latest commit fetched from Terakan_state_rework.
 pkgver=25.2.0_devel.r208368.ga4099a35bd5
-pkgrel=2
+pkgrel=3
 pkgdesc="Updated and enhanced fork of the experimental Mesa Terakan Vulkan driver for AMD TeraScale GPUs"
 arch=(x86_64)
 url="https://github.com/shipa-2/mesa-terakan-ai-upstreamed"
@@ -32,9 +32,11 @@ depends=(
 makedepends=(
   git
   glslang
+  libxrandr
   lib32-gcc-libs
   lib32-libdrm
   lib32-libx11
+  lib32-libxrandr
   lib32-libxcb
   lib32-libxshmfence
   lib32-spirv-tools
@@ -73,7 +75,7 @@ sha256sums=('SKIP'
             'd9e147d9b21719c97257c01fe5f6c06169edbb7fcb2bce5abb5119b6a63faee2'
             '7508c7c69bb43e25238b5a1ee7ad53eb44ccea4c4a08f352ca2e706076bff270'
             'eda559db6e40ba21d8d1a66fa0644d9ee7e90c50706d7c50f64977d6cd67317b'
-            '49ffc2b47ac56b9b213bf3f57f72bd4a9a6e9962120239c1130d1ef3c48eebe7')
+            '435d5b07af0c32f3ef1080a6927f24f431a22cbe7cd1efaef318f7009a986536')
 
 pkgver() {
   cd mesa-terakan
