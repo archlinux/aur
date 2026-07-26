@@ -1,8 +1,8 @@
 # Maintainer: Justin Milam <jsmilam at gmail dot com>
 # Maintainer: Syco <sycolth at gmail dot com>
 pkgname=sngrep
-pkgver=1.8.3
-_commit=b84f0663e47de6f238d9f81eed67612a9ab616ef
+pkgver=1.8.4
+_commit=9c370866afaf5ccb258bf03848b2d22f30cf61bd
 pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
 arch=('x86_64' 'i386')
