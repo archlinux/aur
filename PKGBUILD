@@ -65,7 +65,7 @@ build() {
 			echo " cannot resolve or download automatically."
 			echo ""
 			echo " To build this manually, you must install the dependency first:"
-			echo "   1. git clone https://archlinux.org"
+			echo "   1. git clone https://aur.archlinux.org/mysql.git"
 			echo "   2. cd mysql && makepkg -si"
 			echo "   3. Go back to your azerothcore folder and run 'makepkg -si' again."
 			echo ""
