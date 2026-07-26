@@ -1,0 +1,3 @@
+[vim-quickui]
+source = "git"
+git = "https://github.com/skywind3000/vim-quickui.git"
