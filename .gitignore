@@ -1,0 +1,10 @@
+# makepkg leftovers. An AUR repo holds only PKGBUILD and .SRCINFO — everything
+# below is downloaded or produced at build time, and the release binary alone is
+# ~11 MB, which must never be pushed to the AUR.
+src/
+pkg/
+*.pkg.tar.*
+*.tar.gz
+anihub-cli-bin-*
+anihub-cli-*
+LICENSE-*
