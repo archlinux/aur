@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Drop-in OpenAI API Replacement for Local LLMs"
 
-pkgver=2.2.0
+pkgver=2.3.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -24,7 +24,7 @@ makedepends=('rust')
 depends=('glibc' 'libgcc' 'libstdc++')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('5f53a33fd0204407f334769e76b53e361292251ff87a649f2feba55b16973039')
+sha256sums=('e50a56eb696d5f3f472958fa4f8296be5d847faa5d12e6f88dc43b6226141601')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}/" || exit
