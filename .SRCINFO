@@ -1,0 +1,18 @@
+pkgbase = biglinux-webapps-git
+	pkgdesc = BigLinux WebApps - Web applications manager with automatic icon fetching
+	pkgver = r100.g1234567
+	pkgrel = 1
+	url = https://github.com/biglinux/biglinux-webapps
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = python
+	depends = python-pyqt5
+	depends = kio
+	provides = biglinux-webapps
+	conflicts = biglinux-webapps
+	source = git+https://github.com/biglinux/biglinux-webapps.git
+	sha256sums = SKIP
+
+pkgname = biglinux-webapps-git
