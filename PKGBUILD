@@ -2,7 +2,7 @@
 
 _pkgbase=ab-download-manager
 pkgname=${_pkgbase}-git
-pkgver=1.6.14.r1.g5a6ba7e
+pkgver=1.10.1.r5.gc7473a7
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('any')
