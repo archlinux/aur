@@ -4,7 +4,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="HTML/CSS/JS-based global animated cursor framework integrated with KDE 6 System Settings and KWin Effects"
 arch=('x86_64')
-url="https://github.com/LuYishan-4/UltralightWeb_Cursor"
+url="https://github.com/LuYishan-4/Animated_UltralightWeb_Cursor"
 license=('MIT')
 depends=(
     'qt6-base'
@@ -22,7 +22,7 @@ provides=("ultralightwebcursor" "kcm-ultralightwebcursor")
 conflicts=("ultralightwebcursor" "kcm-ultralightwebcursor")
 
 install=ultralightwebcursor.install
-source=("git+https://github.com/LuYishan-4/UltralightWeb_Cursor.git")
+source=("git+https://github.com/LuYishan-4/Animated_UltralightWeb_Cursor")
 sha256sums=('SKIP')
 
 pkgver() {
