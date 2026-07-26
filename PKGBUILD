@@ -1,8 +1,8 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowm-git
-pkgver=r1351.94380a3
-pkgrel=1.4
+pkgver=1b6e01d7
+pkgrel=1.5
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/mangowm/mango"
 arch=("x86_64")
