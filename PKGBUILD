@@ -1,7 +1,8 @@
 # Maintainer: Uyanide <me@uyani.de>
+
 pkgname=fssimu2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast SSIMULACRA2 derivative implementation in Zig.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gianni-rosato/fssimu2'
@@ -11,6 +12,9 @@ depends=(
     'libavif'
     'libwebp'
     'libjpeg-turbo'
+)
+makedepends=(
+    'zig'
 )
 options=('!debug')
 source=(

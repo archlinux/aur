@@ -1,11 +1,12 @@
 pkgbase = fssimu2
 	pkgdesc = Fast SSIMULACRA2 derivative implementation in Zig.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gianni-rosato/fssimu2
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	makedepends = zig
 	depends = glibc
 	depends = libavif
 	depends = libwebp

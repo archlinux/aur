@@ -1,0 +1,4 @@
+[fssimu2]
+source = "github"
+github = "gianni-rosato/fssimu2"
+use_max_release = true
