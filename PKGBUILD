@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
-pkgver=78
+pkgver=85
 pkgrel=1
 epoch=1
 pkgdesc="Very fast file searcher without indexing"
 arch=('any')
 url="https://drill.software"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 depends=('python-pyqt6')
 makedepends=(
   'python-build'
@@ -23,9 +23,9 @@ conflicts=("$pkgname-cli" "$pkgname-gtk")
 source=("Drill-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-$pkgver.tar.gz"
         'drill.sh'
         'drill.desktop')
-sha256sums=('5776294423e43b13c2afcf74a853aca620825300d4dbf57bbf614714ada0a228'
+sha256sums=('20ba1961bdb87189a4ba8de6f45f2f1ae63244d6f273739eb0c1023d26086c74'
             '255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c'
-            '6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988')
+            '678f996d401540eeec0ea2b010e462f7fb6bbd2e5fedfaa3aad96c866ff8643f')
 
 prepare() {
   cd "Drill-release-$pkgver"
