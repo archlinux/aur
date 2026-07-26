@@ -1,0 +1,5 @@
+post_install() {
+    printf '%s\n' \
+        'Enable and start keyd with:' \
+        '  sudo systemctl enable --now keyd.service'
+}
