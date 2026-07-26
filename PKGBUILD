@@ -1,12 +1,14 @@
-# Maintainer: Jeff Henson <jeff@henson.io>
+# Maintainer: yetipaw
+# Co-Maintainer: tuananh
+# Old Maintainer: Jeff Henson <jeff@henson.io>
 # Old Maintainer: Andy Nicholson <andrew@anicholson.net>
 # Contributors: teutat3s
 
 pkgname=k6
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern load testing tool, using Go and JavaScript"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/grafana/k6"
 license=('AGPL3')
 depends=('glibc')
@@ -20,7 +22,10 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	# -buildvcs=false: the build dir sits inside the AUR packaging repo, so Go
+	# would otherwise stamp this repo's git HEAD (and a -dirty flag) into
+	# `k6 version` instead of upstream's commit.
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -buildvcs=false"
 	go build -o ${pkgname}
 }
 
