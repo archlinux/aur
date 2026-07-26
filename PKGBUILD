@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 
 pkgname=btrfs-headroom-git
-pkgver=0.1.0.r0.g75697d8
+pkgver=0.1.1.r1.g441eb4d
 pkgrel=1
 pkgdesc='Read-only Btrfs allocator headroom health check'
 arch=('x86_64')
@@ -26,7 +26,7 @@ pkgver() {
     git describe --long --tags --abbrev=7 --match 'v[0-9]*' |
       sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf '0.1.0.r%s.g%s' \
+    printf '0.1.1.r%s.g%s' \
       "$(git rev-list --count HEAD)" \
       "$(git rev-parse --short=7 HEAD)"
   fi
