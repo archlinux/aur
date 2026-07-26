@@ -10,6 +10,7 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
+  'cargo-tauri'
   'nodejs'
   'npm'
   'rust'
@@ -25,21 +26,17 @@ _srcroot() {
 
 prepare() {
   cd "$(_srcroot)"
-
-  # Fix: Tauri's build.rs determines dev mode based on whether the
-  # "custom-protocol" feature is enabled. Without it, dev=true and the
-  # binary uses devUrl (http://localhost:1420) instead of embedded frontend.
-  sed -i 's/tauri = { version = "2", features = \[\] }/tauri = { version = "2", features = ["custom-protocol"] }/' \
-    src-tauri/Cargo.toml
-
   npm install --no-audit --no-fund
 }
 
 build() {
   cd "$(_srcroot)"
-  npm run build
-  cd src-tauri
-  cargo build --release
+
+  # Use `cargo tauri build --no-bundle` instead of bare `cargo build --release`.
+  # The Tauri CLI automatically injects the `custom-protocol` feature (which
+  # the upstream Cargo.toml leaves disabled), ensuring the binary uses embedded
+  # frontend via tauri://localhost rather than devUrl (http://localhost:1420).
+  cargo tauri build --no-bundle
 }
 
 package() {

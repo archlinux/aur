@@ -5,6 +5,7 @@ pkgbase = tmd-type-markdown
 	url = https://github.com/KoniKee/TMD_Type-Markdown
 	arch = x86_64
 	license = MIT
+	makedepends = cargo-tauri
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = rust
