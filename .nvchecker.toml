@@ -1,4 +1,0 @@
-[appcsxcad-git]
-source = "git"
-git = "https://github.com/thliebig/AppCSXCAD.git"
-prefix = "v"

@@ -3,29 +3,33 @@
 
 _pkgname="appcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.2.3.r6.g688c07c
-pkgrel=1
+pkgver=0.2.3.r17.gbd996a1
+pkgrel=2
 pkgdesc="Minimal GUI Application using the QCSXCAD library"
 url="https://github.com/thliebig/AppCSXCAD"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'libxcursor'
-  'qt5-base'
+  'qt6-base'
   'vtk'
 
   # AUR
   'csxcad-git'
   'openems-git'
-  'qcsxcad'
+  'qcsxcad-git'
 )
 makedepends=(
   'cmake'
   'git'
   'ninja'
+
+  'eigen3'
+  'fast_float'
   'nlohmann-json'
   'openmpi'
+  'utf8cpp'
+  'vulkan-headers'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -48,8 +52,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"
