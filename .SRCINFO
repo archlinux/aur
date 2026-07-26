@@ -1,6 +1,6 @@
 pkgbase = perssua-bin
 	pkgdesc = Your AI companion for LeetCode - because sometimes we all feel stupid
-	pkgver = 0.24.7
+	pkgver = 0.24.8
 	pkgrel = 1
 	url = https://perssua.com/
 	install = perssua-bin.install
@@ -20,9 +20,9 @@ pkgbase = perssua-bin
 	conflicts = perssua
 	options = !strip
 	options = !emptydirs
-	source = https://downloads.perssua.com/Perssua-0.24.7-amd64.deb
+	source = https://downloads.perssua.com/Perssua-0.24.8-amd64.deb
 	source = hyprland-perssua.conf
-	sha256sums = a44ac643844d01c4896f0e7e0948bcab388f06cff5ee5efb9a0d520be1182ff1
+	sha256sums = 033490b104c654090137a1a295648e7fe6be77f684c576abf81cfe06c7a23cd1
 	sha256sums = SKIP
 
 pkgname = perssua-bin
