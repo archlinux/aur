@@ -30,7 +30,7 @@ conflicts=('mark-shot')
 source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
 noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('2434355a4540c22291bf1d624a6ac4bd59223fc77e1a96e2cc0bd150d81db715')
+sha256sums_x86_64=('4a227ba89e769980e3f23e23c2bd30aa66e3df0a0d1d4110f4381b7da293ae8f')
 sha256sums_aarch64=('be280b153d99ca96a568689fec4cb2eb84808cf81ecea55fed6776e1d4a84e77')
 options=('!strip')
 
