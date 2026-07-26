@@ -1,29 +1,32 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
-_commit=1e22f740cac329dd61663cba12e181142f1c94de
+_commit=d8f676ad9ab9979b92f070b96e44506c47db8971
 pkgname=psptool
-pkgver=2.2
+pkgver=3.6
 pkgrel=1
 pkgdesc="Swiss Army knife for dealing with firmware of the AMD Secure Processor"
 arch=('any')
 url="https://github.com/PSPReverse/PSPTool"
 license=('GPL3')
 depends=(
-  'ipython'
-  'python'
   'python-cryptography'
   'python-prettytable'
-  'python-setuptools'
+)
+makedepends=(
+  'python-hatchling'
+  'python-hatch-vcs'
+  'python-build'
+  'python-installer'
 )
 provides=("$pkgname")
 conflicts=("${pkgname}-git")
-options=(!emptydirs)
 source=(https://github.com/PSPReverse/$pkgname/archive/$_commit.tar.gz)
-sha512sums=('09c5264ba2a9fc16cba5568be2b2b8161e5234f0473629785b928d34f16e9611e83816378c04c337d812bd74d78c7c682590f7c4ffe8bb58f8aed3779b04a0e9')
+sha512sums=('56d9e33abb82bacda7dc57a86b23a17558ffae4979f1c09edf69909394cc265f8941e5dc2aa5821dbcc12aa355b6f483f367ff12bc5e863a3eb4034426d01d45')
 
 package() {
   cd "PSPTool-$_commit"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
