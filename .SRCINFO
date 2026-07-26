@@ -1,0 +1,17 @@
+pkgbase = telemetry-admin
+	pkgdesc = Telemetry dashboard designer and recorder for sim racing rigs (typiql)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/MrDavid5465/telemetry-admin
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = typiql
+	conflicts = typiql
+	options = !strip
+	source = https://github.com/MrDavid5465/telemetry-admin/releases/download/telemetry-admin-v0.1.1/typiql_0.1.1_amd64.deb
+	sha256sums = b114d0d4c9436560d48eb741c97aa82e0c6b909e97349e021e827afeafcc2819
+
+pkgname = telemetry-admin
