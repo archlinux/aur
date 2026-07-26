@@ -1,6 +1,6 @@
 pkgbase = floorp-bin
 	pkgdesc = Firefox-based web browser focused on performance and customizability
-	pkgver = 12.16.3
+	pkgver = 12.16.4
 	pkgrel = 1
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = floorp-bin
 	source = floorp.png
 	sha256sums = 8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604
 	sha256sums = 71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8
-	source_x86_64 = floorp-12.16.3-linux-x86_64.tar.xz::https://github.com/Floorp-Projects/Floorp/releases/download/v12.16.3/floorp-linux-x86_64.tar.xz
-	sha256sums_x86_64 = 314e1eaa1a6a34bbc5729ce1fc9c1810096e441679a7cd1f4063efc765adbdce
-	source_aarch64 = floorp-12.16.3-linux-aarch64.tar.xz::https://github.com/Floorp-Projects/Floorp/releases/download/v12.16.3/floorp-linux-aarch64.tar.xz
-	sha256sums_aarch64 = acc9d68a38b69909bab5baa8fcc8ed8a54744ae08ae7a702d43740d178901644
+	source_x86_64 = floorp-12.16.4-linux-x86_64.tar.xz::https://github.com/Floorp-Projects/Floorp/releases/download/v12.16.4/floorp-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 5192fcf1ac000e0f5e56d08cb088de799671958573d2fe5d42b8352f1599bdf7
+	source_aarch64 = floorp-12.16.4-linux-aarch64.tar.xz::https://github.com/Floorp-Projects/Floorp/releases/download/v12.16.4/floorp-linux-aarch64.tar.xz
+	sha256sums_aarch64 = e0f8b3824f6a4445273114eaff513d343d67ca26891e48848ae15fa3a3f32d37
 
 pkgname = floorp-bin
 	depends = alsa-lib
