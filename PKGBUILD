@@ -50,18 +50,18 @@ package() {
   install -Dm755 scripts/bc250-control-centerd "$pkgdir/usr/bin/bc250-control-centerd"
   install -Dm755 mvc/Resources/privileged/bc250-fan-pwm-helper \
     "$pkgdir/usr/libexec/bc250-control-center/bc250-fan-pwm-helper"
-  install -Dm644 packaging/common/polkit/io.github.fabianbeita.bc250-control-center.policy \
-    "$pkgdir/usr/share/polkit-1/actions/io.github.fabianbeita.bc250-control-center.policy"
+  install -Dm644 packaging/common/polkit/io.github.movacx.bc250-control-center.policy \
+    "$pkgdir/usr/share/polkit-1/actions/io.github.movacx.bc250-control-center.policy"
 
   for size in 32 48 64 128 256 512 1024; do
     install -Dm644 "mvc/Resources/icons/bc250-control-center-${size}.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bc250-control-center.png"
   done
 
-  install -Dm644 packaging/common/desktop/io.github.fabianbeita.bc250-control-center.desktop \
-    "$pkgdir/usr/share/applications/io.github.fabianbeita.bc250-control-center.desktop"
-  install -Dm644 packaging/common/metainfo/io.github.fabianbeita.bc250-control-center.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/io.github.fabianbeita.bc250-control-center.metainfo.xml"
+  install -Dm644 packaging/common/desktop/io.github.movacx.bc250-control-center.desktop \
+    "$pkgdir/usr/share/applications/io.github.movacx.bc250-control-center.desktop"
+  install -Dm644 packaging/common/metainfo/io.github.movacx.bc250-control-center.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/io.github.movacx.bc250-control-center.metainfo.xml"
   install -Dm644 packaging/common/systemd-user/bc250-control-centerd.service \
     "$pkgdir/usr/lib/systemd/user/bc250-control-centerd.service"
 
