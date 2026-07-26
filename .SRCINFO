@@ -1,15 +1,13 @@
 pkgbase = tsparams
 	pkgdesc = A simple tool to extract and display Tailscale parameters
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.bjphoster.com/source/tsparams
 	arch = any
 	license = GPL3
 	depends = python
 	depends = tailscale
 	source = https://git.bjphoster.com/source/tsparams/archive/1.0.0.tar.gz
-	md5sums = b215f07928ceb4399b51ab8107d275cc
-	sha1sums = 316becbc9b10d004cfc89e3eeb3e2f3498b70035
 	sha256sums = 2cbf10ffca2f0adf21daff04bfb1cde401b2f9e713863a23b01aa6bddf1ff62d
 
 pkgname = tsparams
