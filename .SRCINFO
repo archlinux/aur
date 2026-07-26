@@ -1,6 +1,6 @@
 pkgbase = mpeghdec
 	pkgdesc = Fraunhofer MPEG-H audio decoder
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://mpegh.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mpeghdec
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	source = https://github.com/Fraunhofer-IIS/mpeghdec/archive/r4.0.0/mpeghdec-4.0.0.tar.gz
-	sha256sums = 62733df4f7bcd38c19c4eccafa12e789dec0c38e052a3dec46039d86d49ee17c
+	source = https://github.com/Fraunhofer-IIS/mpeghdec/archive/r4.0.1/mpeghdec-4.0.1.tar.gz
+	sha256sums = e7842b46c8054367eea0537922b61180be7e7dc9747d872071854b08139c6016
 
 pkgname = mpeghdec

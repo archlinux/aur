@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpeghdec
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Fraunhofer MPEG-H audio decoder'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
     'cmake'
     'git')
 source=("https://github.com/Fraunhofer-IIS/mpeghdec/archive/r${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('62733df4f7bcd38c19c4eccafa12e789dec0c38e052a3dec46039d86d49ee17c')
+sha256sums=('e7842b46c8054367eea0537922b61180be7e7dc9747d872071854b08139c6016')
 
 build() {
     cmake -B build -S "mpeghdec-r${pkgver}" \
