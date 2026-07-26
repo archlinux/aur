@@ -19,15 +19,13 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 # Core execution dependencies
-# Changing 'libmysqlclient' to 'libmysqlclient.so' breaks the MariaDB mapping hook
-depends=('libmysqlclient.so' 'boost-libs' 'readline' 'openssl')
+depends=('libmysqlclient84' 'boost-libs' 'readline' 'openssl')
 
-# Absolute structural wall blocking any aspect of MariaDB from being used as a builder
-conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
+# A solid wall blocking any generic elements from intercepting your build
+conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
 
-# Force yay to look for the absolute package name 'mysql-clients' 
-# instead of the generic virtual tag 'mysql'
-makedepends=('git' 'cmake' 'clang' 'boost' 'mysql-clients' 'openssl')
+# Targets the absolute package string so yay searches the AUR flawlessly
+makedepends=('git' 'cmake' 'clang' 'boost' 'mysql-clients84' 'openssl')
 
 # Helpful pointers for setting up databases without forcing local bloat
 optdepends=(
