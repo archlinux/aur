@@ -8,7 +8,7 @@
 readonly _pkgname="semver"
 
 pkgname="semver-cpp"
-pkgver="0.3.1"
+pkgver="1.0.0"
 pkgrel="1"
 pkgdesc="Semantic versioning for modern C++."
 arch=("x86_64")
@@ -18,7 +18,7 @@ makedepends=("cmake")
 checkdepends=("cmake")
 conflicts=("semver-cpp-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("4757043fe7395d8167fccaf1c1ef91cc321348e21cd5503a05af8cfa57b93d256071f80527545ebc48aad572a90ffb2ad80b613d913b4c3ec7efe0b197c6c669")
+sha512sums=("dbef2a5d6d6e38b1136edb0576b6b1480c5d646caffcce07a92782bb2678ca1478be5c4a1451e0c1beb887d28cf19af2c0f5f006462e0a5c47b8a59499d59024")
 
 _compile()
 {
