@@ -1,4 +1,4 @@
-pkgbase = ntn
+pkgbase = notion-cli
 	pkgdesc = Official Notion CLI (beta) — access your Notion workspace from any terminal
 	pkgver = 0.18.1
 	pkgrel = 1
@@ -6,9 +6,9 @@ pkgbase = ntn
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = notion-cli
+	provides = ntn
 	options = !debug
 	source = https://registry.npmjs.org/ntn/-/ntn-0.18.1.tgz
 	sha256sums = f62457e1b180975ecb6d9469c308b4e65dedad83ad193c8e000154e244bb119c
 
-pkgname = ntn
+pkgname = notion-cli

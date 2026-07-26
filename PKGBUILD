@@ -1,12 +1,12 @@
 # Maintainer: Pierre Manceron <pierre.manceron@raidium.eu>
-pkgname=ntn
+pkgname=notion-cli
 pkgver=0.18.1
 pkgrel=1
 pkgdesc="Official Notion CLI (beta) — access your Notion workspace from any terminal"
 arch=('x86_64' 'aarch64')
 url="https://developers.notion.com"
 license=('MIT')
-provides=('notion-cli')
+provides=('ntn')
 options=('!debug')
 # Upstream distributes via npm, but the tarball ships self-contained static
 # binaries per platform — no Node.js needed at runtime.
