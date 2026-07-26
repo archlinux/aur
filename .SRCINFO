@@ -1,6 +1,6 @@
 pkgbase = sculk-tui-git
 	pkgdesc = Minecraft P2P multiplayer tunnel TUI client (git version)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/KercyDing/sculk
 	arch = x86_64
