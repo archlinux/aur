@@ -22,6 +22,7 @@ license=('AGPL3')
 depends=('libmysqlclient84' 'boost-libs' 'readline' 'openssl')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl')
+optdepends=('mysql84: To host the localized server database engine maps')
 
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
@@ -70,14 +71,6 @@ build() {
 		fi
 	fi
 
-	# Oracles signing key must be trusted for the mysql AUR install
-	if ! pacman-key --list-keys B7B3B788A8D3785C >/dev/null 2>&1; then
-		echo "Warning: the signing key B7B3B788A8D3785C is not currently trusted."
-		echo "If you are installing MySQL from the AUR, import it with:"
-		echo "  sudo pacman-key --recv-keys B7B3B788A8D3785C"
-		echo "  sudo pacman-key --lsign-key B7B3B788A8D3785C"
-  	fi
-
 	# Clean build sandbox creation using the native, modern CMake wrapper
     # Fixed the installation target directories to proper Linux standards
 	CC=clang CXX=clang++ cmake -B build -S "${_pkgname}" \
@@ -89,6 +82,8 @@ build() {
 	-DTOOLS_BUILD=all \
     -DSCRIPTS=static \
 	-DMODULES=static \
+	-DMYSQL_INCLUDE_DIR=/usr/include/mysql \
+	-DMYSQL_LIBRARY=/usr/lib/libmysqlclient.so \
     ${_extraargs}
     
   	# Respects the user's /etc/makepkg.conf CPU core limits cleanly
