@@ -2,7 +2,7 @@
 # Contributor: <add yourself when you start helping out>
 
 pkgname=claudex
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Query, search, and analyze Claude Code sessions from the command line (built from source)"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ conflicts=('claudex-bin' 'claudex-git')
 options=(!lto)
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('103abb6a4fad04c76409001e05ece7d2ee65672e5686a3444da4d37f5694ecfe')
+sha256sums=('da56688c0fe2ac2b1e68d292ac1caf939caf6f3efee3f7f465f691b448cf969d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = claudex
 	pkgdesc = Query, search, and analyze Claude Code sessions from the command line (built from source)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/utensils/claudex
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = claudex
 	optdepends = bash-completion: Bash tab completion
 	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
 	optdepends = fish: Fish tab completion
-	provides = claudex=0.12.0
+	provides = claudex=0.13.0
 	conflicts = claudex-bin
 	conflicts = claudex-git
 	options = !lto
-	source = https://github.com/utensils/claudex/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = 103abb6a4fad04c76409001e05ece7d2ee65672e5686a3444da4d37f5694ecfe
+	source = https://github.com/utensils/claudex/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = da56688c0fe2ac2b1e68d292ac1caf939caf6f3efee3f7f465f691b448cf969d
 
 pkgname = claudex
