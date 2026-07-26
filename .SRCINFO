@@ -1,11 +1,11 @@
 pkgbase = source-to-image-bin
 	pkgdesc = A tool for building artifacts from source and injecting into container images
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/openshift/source-to-image
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/openshift/source-to-image/releases/download/v1.6.2/source-to-image-v1.6.2-038c647b1-linux-amd64.tar.gz
-	sha256sums = 2e34789185b796fae513a50f49bb1774e3ca79ab62cd3b8de29c1929cd08bf9e
+	source = https://github.com/openshift/source-to-image/releases/download/v1.6.3/source-to-image-v1.6.3-f1a48f01c-linux-amd64.tar.gz
+	sha256sums = 66e5053421704c496f4d63eb4819ad91dd5b2b7f12c2ce395882ebcf5fc77e53
 
 pkgname = source-to-image-bin
