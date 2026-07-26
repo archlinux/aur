@@ -1,5 +1,6 @@
 pkg/
 src/
+*.run
 *.tar
 *.tar.zip
 *.tar.zst
