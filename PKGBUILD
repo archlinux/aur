@@ -3,7 +3,7 @@
 _pkgauthor=0xjuanma
 _pkgname=helm
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.8.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A minimalistic and customizable pomodoro-like timer for your terminal"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('4dc0a5daa325b37f64f50f726db4dd94342dcfec49bd0fe80266a0ef59953bfa'
-            '431e7e7bddd75522c0c69fe3d374e1d2fdb9684a58d6e3dfee1a2800dec14c27')
-sha256sums_x86_64=('fd42ce0047e551a0a8fe4219f1511a25b2bc59640c5b72561ebae0dd8150590c')
-sha256sums_aarch64=('165dc2886b9f6cbc91daa6703b8a2cd2cbdd00ab31aa6a7ff6d7052e12ed1e4e')
+            '0797d831f9170ed9fbad61dd5bcceb9c70ec2529120f0a5753eb007d341a4ddb')
+sha256sums_x86_64=('0d89bd62a84fabf687cc6576755fc1fa49064729a2d126482a7880bd5911ac79')
+sha256sums_aarch64=('9b7d07d2bcade3c47e26407313ec2e16f2ef69b57f2ebe576e08eec925cf9427')
 
 
 package() {
