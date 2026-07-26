@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=misa77
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast LZ77 codec with high decompression throughput"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
 options=('!lto' 'staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/welcome-to-the-sunny-side/misa77/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8bcb31c577c54c526f2d621c071df8e597204db9947a83321c182854125f7bdc')
+sha256sums=('d56adb1a3423dcb750ab2f0d097791ad7113327c8393309181f81eb674557c3c')
 
 latestver() {
     gh api --paginate repos/welcome-to-the-sunny-side/misa77/tags --jq '.[].name' |
