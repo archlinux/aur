@@ -3,7 +3,6 @@ pkg/
 *.pkg.*
 *.tar.*
 !PKGBUILD
-!modules-load.conf
 !smfc.install
 !.SRCINFO
 !reload-modules.hook

@@ -29,15 +29,13 @@ _smfc_detect_nvme_names() {
 }
 
 post_install() {
-    # Fresh install only: pre-fill disk lists from /dev/disk/by-id
-    _smfc_detect_hd_names
-    _smfc_detect_nvme_names
-    cat <<'MSG'
-==> Review the configuration in /etc/smfc/smfc.conf and /etc/default/smfc,
-    then enable the service:  systemctl enable --now smfc.service
-==> hwmon sensor drivers (coretemp/k10temp/drivetemp) are preloaded via
-    /usr/lib/modules-load.d/smfc.conf; load now with: modprobe coretemp drivetemp.
-MSG
+echo "Thank you very much to petersulyok for the tremendous help in getting this updated and possible to maintain it in the AUR. Check out his github."
+echo
+echo "Fresh installs only: Read lines 60 to 134 in /etc/smfc/smfc.conf for a basic setup."
+echo
+echo "Review the configuration in /etc/smfc/smfc.conf and /etc/default/smfc, then enable the service:  systemctl enable --now smfc.service"
+echo
+echo "hwmon sensor drivers (coretemp/k10temp/drivetemp) are preloaded via /usr/lib/modules-load.d/smfc.conf; load now with: modprobe coretemp drivetemp."
 }
 
 post_upgrade() {
