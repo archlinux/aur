@@ -21,6 +21,9 @@ license=('AGPL3')
 # Dynamic link dependencies needed to execute the binaries
 depends=('libmysqlclient' 'boost-libs' 'readline' 'openssl')
 
+# Use the AUR mysql and not the official package
+conflicts=('mariadb')
+
 # Heavy development tools only needed to fetch and build the binary
 makedepends=('git' 'cmake' 'clang' 'boost' 'mysql')
 
