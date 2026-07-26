@@ -1,6 +1,6 @@
 pkgbase = dory
 	pkgdesc = A standalone Nemo fork named Dory for file picking and portal integration
-	pkgver = 6.7.5
+	pkgver = 6.7.6
 	pkgrel = 1
 	url = https://github.com/Twilight0/dory
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = dory
 	depends = exempi
 	depends = xapp
 	depends = gtk3
-	source = dory-6.7.5.tar.gz::https://github.com/Twilight0/dory/archive/refs/tags/v6.7.5.tar.gz
+	source = dory-6.7.6.tar.gz::https://github.com/Twilight0/dory/archive/refs/tags/v6.7.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = dory
