@@ -1,0 +1,4 @@
+[vim-quick-scope]
+source = "git"
+git = "https://github.com/unblevable/quick-scope.git"
+prefix = "v"
