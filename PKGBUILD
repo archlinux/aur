@@ -1,4 +1,4 @@
-# Maintainer: captience <antoniojennings@icloud.com>
+# Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
 pkgver=1.2.6
 pkgrel=1
