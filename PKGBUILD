@@ -1,6 +1,6 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034
-# Maintainer: Chinmay Dalal <~chinmay/public-inbox@lists.sr.ht>
+# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 # Contributor: A Farzat <a@farzat.xyz>
 # Contributor: éclairevoyant
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
@@ -98,7 +98,7 @@ _zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-pa
 
 pkgver() {
     local nvim_version_git
-    cd "${srcdir}/neovim" || exit 1
+    cd "${srcdir}/neovim"
     _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
     nvim_version_git="$(git describe --always --dirty --match 'v*.*.*' | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
     printf "%s.r%s\n" "$_nvim_version" "$nvim_version_git"
@@ -121,8 +121,8 @@ prepare() {
     uncrustify_hash='N-V-__8AAHtpjADYwuwWGmuD_g-_sfCssv0hLN0zgXCSHeux'
     zig_cc_hash='zig_compile_commands-0.0.1-OZg5-e_JAAAGg1WHAePtq4l4Uvjs34BexnFFCZk63EaG'
 
-    cd "${srcdir}/neovim" || exit 1
-    mkdir -p zig_deps && cd zig_deps || exit 1
+    cd "${srcdir}/neovim"
+    mkdir -p zig_deps && cd zig_deps
 
     mkdir -p $zlua_hash \
         $translate_c_hash \
@@ -158,14 +158,14 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/neovim" || exit 1
+    cd "${srcdir}/neovim"
     zig build "${_zig_options[@]}" \
         --global-cache-dir "${srcdir}/zig-global-cache" \
         --cache-dir "${srcdir}/zig-local-cache"
 }
 
 check() {
-    cd "${srcdir}/neovim" || exit 1
+    cd "${srcdir}/neovim"
     zig-out/bin/nvim --version
     zig-out/bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -175,7 +175,7 @@ package() {
     install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
     pushd . >/dev/null
-    cd "${srcdir}/neovim" || exit 1
+    cd "${srcdir}/neovim"
     zig build install "${_zig_options[@]}" \
         --prefix "${pkgdir}/usr" \
         --global-cache-dir "${srcdir}/zig-global-cache" \
@@ -187,7 +187,6 @@ package() {
     install -Dm644 runtime/org.neovim.nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
     install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
 
-    # shellcheck disable=SC2164
     popd >/dev/null
 
     # Include system-wide Vim directory in runtimepath
