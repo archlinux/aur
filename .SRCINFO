@@ -1,6 +1,6 @@
 pkgbase = idlerd-git
 	pkgdesc = Configless idle management daemon for Wayland with gamepad support
-	pkgver = 1.0.0.r0.gc2c92bf
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/kotleni/idlerd
 	arch = x86_64

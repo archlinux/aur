@@ -1,7 +1,7 @@
-# Maintainer: kotleni <kotleni@users.noreply.github.com>
+# Maintainer: Viktor Varenik <yavarenikya@gmail.com>
 
 pkgname=idlerd-git
-pkgver=1.0.0.r0.gc2c92bf
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Configless idle management daemon for Wayland with gamepad support'
 arch=('x86_64')
