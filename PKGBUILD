@@ -8,6 +8,7 @@
   license=('GPL-3.0-only')
   depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm'
            'mpv' 'libraw')
+  optdepends=('libheif: HEIC/HEIF/AVIF-Dateien lesen')
   provides=('ferrumpix')
   conflicts=('ferrumpix')
   options=('!strip')

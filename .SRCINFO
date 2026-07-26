@@ -16,6 +16,7 @@ pkgbase = ferrumpix-bin
 	depends = libsm
 	depends = mpv
 	depends = libraw
+	optdepends = libheif: HEIC/HEIF/AVIF-Dateien lesen
 	provides = ferrumpix
 	conflicts = ferrumpix
 	noextract = FerrumPix-0.9.12-2-linux-x64-aur.zip
