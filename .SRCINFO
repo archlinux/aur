@@ -16,6 +16,7 @@ pkgbase = azerothcore
 	depends = openssl
 	optdepends = mysql: To host the Oracle MySQL database server locally
 	optdepends = docker: To run the AzerothCore server in a containerized environment
+	conflicts = mariadb
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	sha512sums = SKIP
 
