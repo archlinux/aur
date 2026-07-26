@@ -2,8 +2,8 @@
 
 pkgname=minivna
 pkgver=0.1.1
-pkgrel=1
-pkgdesc='Native CLI for automated Tiny vector network analyzer data collection'
+pkgrel=2
+pkgdesc='Native Rust CLI for controlling the miniVNA Tiny and collecting VNA measurements'
 arch=('x86_64')
 url='https://github.com/nm-z/minivna-rs'
 license=('MIT')
