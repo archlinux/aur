@@ -1,0 +1,17 @@
+pkgbase = libinput-curve
+	pkgdesc = Plan, apply, and persist custom libinput curves under Xorg
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Mr-Tao/libinput-curve
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = go
+	makedepends = scdoc
+	depends = glibc
+	depends = xf86-input-libinput
+	depends = xorg-xinput
+	optdepends = systemd: optional X11-session watcher
+	source = libinput-curve-0.1.0.tar.gz::https://github.com/Mr-Tao/libinput-curve/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 956ac9f24a33e1750104a8c2a3b809c4f52074bf9c3aaa8bbf03ab89d8794bac31bab32be72a6c1ed2f5175721a70eb5116f5e83bcedbf6b58e215ce1c0e839a
+
+pkgname = libinput-curve
