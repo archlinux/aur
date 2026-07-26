@@ -1,6 +1,6 @@
 pkgbase = phpactor
 	pkgdesc = PHP completion, refactoring, introspection tool and language server
-	pkgver = 2026.06.25.0
+	pkgver = 2026.07.22.0
 	pkgrel = 1
 	url = https://github.com/phpactor/phpactor
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = phpactor
 	optdepends = composer: faster class location and more features
 	optdepends = git: faster refactorings in your repository scope
 	provides = phpactor
-	source = https://github.com/phpactor/phpactor/archive/refs/tags/2026.06.25.0.tar.gz
-	sha256sums = 366c3e003272d27b74f07263762dafec33f1f04eeb61bfb800ca8759895cd829
+	source = https://github.com/phpactor/phpactor/archive/refs/tags/2026.07.22.0.tar.gz
+	sha256sums = e3bd68bba0805afafea681c9442e8c902da2a603206f5345647eed88bf8a9b7a
 
 pkgname = phpactor
