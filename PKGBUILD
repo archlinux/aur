@@ -18,14 +18,11 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 url="http://www.azerothcore.org"
 license=('AGPL3')
 
-# Core execution dependencies
 depends=('libmysqlclient' 'boost-libs' 'readline' 'openssl')
-
-# Hard wall preventing any variant of mariadb from infiltrating the build sandbox
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
 
-# Changing 'mysql-clients' to 'mysql' breaks the official repo loop
-makedepends=('git' 'cmake' 'clang' 'boost' 'mysql' 'openssl')
+# Using mysql-clients completely eliminates official repo mariadb mapping masquerades
+makedepends=('git' 'cmake' 'clang' 'boost' 'mysql-clients' 'openssl')
 
 # Helpful pointers for setting up databases without forcing local bloat
 optdepends=(
