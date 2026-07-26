@@ -1,6 +1,6 @@
 # Maintainer: Pierre Manceron <pierre.manceron@raidium.eu>
 pkgname=notion-cli
-pkgver=0.18.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Official Notion CLI (beta) — access your Notion workspace from any terminal"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ options=('!debug')
 # Upstream distributes via npm, but the tarball ships self-contained static
 # binaries per platform — no Node.js needed at runtime.
 source=("https://registry.npmjs.org/ntn/-/ntn-${pkgver}.tgz")
-sha256sums=('f62457e1b180975ecb6d9469c308b4e65dedad83ad193c8e000154e244bb119c')
+sha256sums=('cfb6ca323ed3459307df57083812beb8025b8c12f1fc9ac3dc38be4cac2a3a98')
 
 _target() {
   case "$CARCH" in
