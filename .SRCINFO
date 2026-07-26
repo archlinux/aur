@@ -1,0 +1,20 @@
+pkgbase = reflex-appimage
+	pkgdesc = A next-generation, modern, and lightweight SSH client engineered for absolute efficiency
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/Sunhaiy/Reflex
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	provides = reflex
+	conflicts = reflex
+	options = !strip
+	options = !debug
+	source = reflex-1.0.11.AppImage::https://github.com/Sunhaiy/Reflex/releases/download/v1.0.11/reflex-1.0.11-linux-x86_64.AppImage
+	source = reflex.desktop
+	source = reflex.png
+	sha256sums = 0745ea0dbb05213b36541aab9945479dd3e9a46ab78ff481bae979bb825bc350
+	sha256sums = ee0633f7f8b9d6996eed77120d41c31839891c0177217d38885245491a3156ea
+	sha256sums = 90a0628bd8b3628609e7965d792478cf9f4fcc74a31ef450d0d47148eeb2da0a
+
+pkgname = reflex-appimage
