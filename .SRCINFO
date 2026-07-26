@@ -1,0 +1,19 @@
+pkgbase = monamc
+	pkgdesc = MonaMC - A TUI Minecraft Launcher for Arch Linux. Freedom launcher, no account required.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BerkeOruc/monamc
+	install = monamc.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkg-config
+	depends = java-runtime>=17
+	depends = glibc
+	depends = gcc-libs
+	source = monamc-0.1.0.tar.gz::https://github.com/BerkeOruc/monamc/archive/v0.1.0.tar.gz
+	sha256sums = 1208f82dcb15569acb8c46a0517c4651ea7968cd686894ad296bb452b0ac37d0
+
+pkgname = monamc
