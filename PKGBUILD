@@ -2,14 +2,26 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 pkgname=pythonqt-git
-pkgver=3.5.6.r2.g39ef1f05
+pkgver=4.1.0.r3.g642c06b6
 pkgrel=2
 pkgdesc="A dynamic Python binding for Qt applications"
 arch=(x86_64)
 url="https://github.com/MeVisLab/pythonqt"
 license=(LGPL-2.1-only)
-depends=(glibc gcc-libs python qt5-base qt5-multimedia qt5-svg qt5-webkit   qt5-declarative qt5-xmlpatterns) #qt5-webengine qt5-webchannel
-makedepends=(git qt5-tools)
+depends=(
+    glibc
+    libgcc
+    libstdc++
+    python
+    qt6-base
+    qt6-declarative
+    qt6-multimedia
+    qt6-svg
+    qt6-tools
+    qt6-webchannel
+    qt6-webengine
+    )
+makedepends=(git)
 provides=(pythonqt)
 conflicts=(pythonqt)
 source=("git+https://github.com/MeVisLab/pythonqt.git")
@@ -21,12 +33,31 @@ pkgver() {
 }
 
 build() {
+  # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+  export LANG=C.UTF-8
+  export LC_ALL=C.UTF-8
+
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
+
   cd "pythonqt"
-  qmake-qt5 \
+
+  qmake6 CONFIG+=generator_only CONFIG+=Release PythonQt.pro
+  make
+
+  cd generator
+  ./pythonqt_generator qtscript_masterinclude.h build_all.txt
+  cd ..
+
+  qmake6 \
     PYTHON_VERSION=$(python -c 'import sys; print(".".join(sys.version.split(".")[:2]))') \
     QMAKE_CFLAGS="${CFLAGS}" \
     QMAKE_CXXFLAGS="${CXXFLAGS}" \
-    CONFIG+=release
+    CONFIG+=release \
+    PythonQt.pro
+
   make
 }
 
