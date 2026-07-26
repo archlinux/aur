@@ -1,0 +1,8 @@
+pkgbase = absolutely_unsuspicious_package_with_a_very_unassuming_name_that_doesnt_catch_anyones_eye
+	pkgdesc = A dummy package for a CTF forensics task. Please don't report it, I'll remove it after the event ends.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+pkgname = absolutely_unsuspicious_package_with_a_very_unassuming_name_that_doesnt_catch_anyones_eye
