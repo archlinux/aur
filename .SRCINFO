@@ -1,7 +1,7 @@
 pkgbase = xavs2-llvm
 	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and LLVM lld
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pkuvcl/xavs2/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,8 +17,9 @@ pkgbase = xavs2-llvm
 	conflicts = xavs2
 	conflicts = libxavs2
 	replaces = libxavs2
-	options = !lto
 	source = https://github.com/pkuvcl/xavs2/archive/1.4/xavs2-1.4.tar.gz
+	source = 010-xavs2-lto-configure.patch
 	sha256sums = 1e6d731cd64cb2a8940a0a3fd24f9c2ac3bb39357d802432a47bc20bad52c6ce
+	sha256sums = 52dfd415fa2812aab8b366253fa5e7c1989533463df359c222b771b9e120fdc9
 
 pkgname = xavs2-llvm
