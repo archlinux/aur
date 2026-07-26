@@ -1,6 +1,6 @@
 # Maintainer: OpenSourceGuy <osguy@duck.com>
 pkgname=brokkr-flash-appimage
-pkgver=1.4.7
+pkgver=1.4.8.beta1
 pkgrel=1
 pkgdesc="Samsung device flashing utility (Odin alternative) — AppImage release"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ provides=('brokkr-flash')
 conflicts=('brokkr-flash' 'brokkr-flash-git' 'brokkr-flash-bin')
 options=('!strip' '!debug' '!emptydirs')
 install=brokkr-flash-appimage.install
-source_x86_64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver}/Brokkr-linux-x86_64.AppImage")
-source_aarch64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver}/Brokkr-linux-arm64.AppImage")
-sha256sums_x86_64=('2433631b3fe73486ebd3a1c9ba940834c2f0d88276c84fd1b154b469127d25b2')
-sha256sums_aarch64=('1b89443c99a3b700e6ddb723443ab6e11d839349f2cf43ff1d8164f2e582c213')
+source_x86_64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver/.beta/-beta}/Brokkr-linux-x86_64.AppImage")
+source_aarch64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver/.beta/-beta}/Brokkr-linux-arm64.AppImage")
+sha256sums_x86_64=('11d26a393a80f49298fed55af9b2899e1a800a6a5f0f8f1a5120157c2a8c237a')
+sha256sums_aarch64=('14d100300ef512732f2abe0b3bfeac75535a84dd5e36b5097a424f6b522ff55f')
 
 prepare() {
   local _appimg
@@ -36,8 +36,6 @@ build() {
   fi
   cd "${srcdir}"
 
-  # Try native AppImage extraction first (fastest, works on matching arch)
-  # Falls back to unsquashfs for cross-architecture builds (e.g. aarch64 on x86_64 host)
   if "./${_appimg}" --appimage-extract >/dev/null 2>&1; then
     mv squashfs-root squashfs-root-tmp
   else
@@ -54,7 +52,6 @@ build() {
     fi
   fi
 
-  # Fix permissions
   chmod -R go-w squashfs-root-tmp/
   find squashfs-root-tmp/ -type d -exec chmod 755 {} +
   find squashfs-root-tmp/ -type f -exec chmod 644 {} +
@@ -65,22 +62,18 @@ build() {
 package() {
   local _squashroot="${srcdir}/squashfs-root"
 
-  # Install extracted AppImage to /opt/brokkr-flash/
   install -dm755 "${pkgdir}/opt/brokkr-flash"
   cp -a "${_squashroot}/." "${pkgdir}/opt/brokkr-flash/"
 
-  # Install wrapper script to /usr/bin/ (forces xcb platform for Wayland compat)
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/brokkr-flash" <<'EOF'
 #!/bin/sh
 export QT_QPA_PLATFORM=xcb
 exec /opt/brokkr-flash/AppRun "$@"
 EOF
 
-  # Install .desktop file
   install -Dm644 "${srcdir}/../brokkr-flash.desktop" \
     "${pkgdir}/usr/share/applications/brokkr-flash.desktop"
 
-  # Install icon — prefer SVG, fall back to PNG, then .DirIcon
   local _icon=""
   for f in "${_squashroot}/usr/share/icons/"*"/apps/"*.svg; do
     if [[ -f "$f" ]]; then
@@ -96,11 +89,9 @@ EOF
     install -Dm644 "${_squashroot}/brokkr.png" "${pkgdir}/usr/share/pixmaps/brokkr-flash.png"
   fi
 
-  # Install udev rules
   install -Dm644 "${srcdir}/../51-brokkr-samsung.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/51-brokkr-samsung.rules"
 
-  # Install license
   if [[ -f "${_squashroot}/LICENSE" ]]; then
     install -Dm644 "${_squashroot}/LICENSE" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
