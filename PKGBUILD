@@ -1,69 +1,97 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
-# Co-Maintainer: FGD
-# Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=12.9.1
+_pkgver=13.0.0
+_branding=dr460nized
 
-pkgname=${_pkgname}-bin
+__pkgname=$_pkgname
+_rdns=org.garudalinux.$__pkgname
+
+pkgname=$__pkgname-bin
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=1
-pkgdesc="Floorp fork build using custom branding and settings"
-url='https://firedragon.garudalinux.org'
-arch=('x86_64' 'aarch64')
-license=('MPL2')
-depends=(dbus
-         dbus-glib
-         ffmpeg
-         gtk3
-         libxss
-         libxt
-         mime-types
-         nss
-         ttf-font
-         zlib)
-makedepends=()
-optdepends=('hunspell-dictionary: Spell checking'
-            'libnotify: Notification integration'
-            'networkmanager: Location detection via available WiFi networks'
-            'profile-sync-daemon: Load the browser profile into RAM'
-            'pulse-native-provider: Audio support'
-            'searx: Searching the web using a locally running searX instance'
-            'speech-dispatcher: Text-to-Speech'
-            'whoogle: Searching the web using a locally running Whoogle instance'
-            'xdg-desktop-portal: Screensharing with Wayland')
-conflicts=("$_pkgname")
-provides=("$_pkgname")
-options=(!debug
-         !emptydirs
-         !lto
-         !makeflags
-         !strip)
-backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
-        "usr/lib/${_pkgname}/distribution/policies.json")
-source=(firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-        https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v"$_pkgver"/assets/firedragon.desktop)
-source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-linux-x64.tar.xz)
-source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-linux-arm64.tar.xz)
-sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-sha256sums_x86_64=('e57c60940913ac340bf67800e4b3f8bc6e27adce2feca481b848a562c2ea8ba5')
-sha256sums_aarch64=('26b01257ae0d2d4a932dfb498639551f4d2ba5623349237566b7dbbec3add84f')
-
-
+epoch=2
+pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
+url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
+arch=(x86_64 aarch64)
+license=(MPL-2.0)
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  ffmpeg
+  fontconfig
+  freetype2
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libgcc
+  libpulse
+  libstdc++
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  ttf-font
+)
+makedepends=(
+  git
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+replaces=($__pkgname-next-bin)
+options=(
+  !emptydirs
+)
+install=$_pkgname.install
+noextract=(
+  $__pkgname-v$_pkgver.linux-x64.tar.xz
+  $__pkgname-v$_pkgver.linux-arm64.tar.xz
+)
+source=(
+  $_pkgname::git+$url.git#tag=v$_pkgver
+)
+source_x86_64=(
+  $__pkgname-v$_pkgver.linux-x64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-x64.tar.xz
+)
+source_aarch64=(
+  $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
+)
+sha256sums=('bf06162c2fc6f62f932e98895648dec8d1b3138d03983347d1704607a2324199')
+sha256sums_x86_64=('4d865d586e1c3dcdec2d1e34c3683d30d713559119fbd644ea8192728287c0c9')
+sha256sums_aarch64=('376ebd9793b0faff5469da2ac152cae940057dfe6523c42f0026172b81c1fae2')
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  mkdir -p "$pkgdir/usr/lib"
+  if [ $CARCH = x86_64 ]; then
+    tar -xvf "$srcdir/$__pkgname-v$_pkgver.linux-x64.tar.xz" -C "$pkgdir/usr/lib"
+  elif [ $CARCH = aarch64 ]; then
+    tar -xvf "$srcdir/$__pkgname-v$_pkgver.linux-arm64.tar.xz" -C "$pkgdir/usr/lib"
+  fi
 
-  install -Ddvm755 "${pkgdir}/usr/lib/${_pkgname}"
-  cp -rvf "${srcdir}/firedragon/." "${pkgdir}/usr/lib/${_pkgname}"
+  local appdir="$pkgdir/usr/lib/$_pkgname"
 
-  install -Ddvm755 "${pkgdir}/usr/bin"
-  ln -srfv "$pkgdir/usr/lib/${_pkgname}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-
-  local vendorjs="${pkgdir}/usr/lib/${_pkgname}/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "${vendorjs}" << END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -80,8 +108,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("browser.gnome-search-provider.enabled", true);
 END
 
-  local distini="${pkgdir}/usr/lib/${_pkgname}/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "${distini}" << END
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
 id=${pkgname}
 version=${pkgver}-${pkgrel}
@@ -93,35 +120,37 @@ app.distributor.channel=${pkgname}
 app.partner.garudalinux=garudalinux
 END
 
-  # Use system certificates
-  local nssckbi="${pkgdir}/usr/lib/${_pkgname}/libnssckbi.so"
-  if [[ -e "${nssckbi}" ]]; then
-    ln -srfv "${pkgdir}/usr/lib/libnssckbi.so" "${nssckbi}"
-  fi
-
-  # Make native messaging work
-  ln -s "/usr/lib/mozilla/native-messaging-hosts" "${pkgdir}/usr/lib/${_pkgname}/native-messaging-hosts"
-
-  # GNOME search provider
-  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/${_pkgname}.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" << END
-[Shell Search Provider]
-DesktopId=$pkgname.desktop
-BusName=org.mozilla.${pkgname//-/}.SearchProvider
-ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
-Version=2
-END
-
-  # Application icons
-  for i in 16 32 48 64 128; do
-    install -Dvm644 browser/chrome/icons/default/default$i.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
+  # Install desktop icons and metadata
+  local i
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dvm644 "$_pkgname/branding/$_branding/default$i.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_rdns.png"
   done
+
+  install -Dvm644 $_pkgname/assets/$_rdns.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 $_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+#!/bin/sh
+exec /usr/lib/$_pkgname/$_pkgname "\$@"
+END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/${_pkgname}" "$pkgdir/usr/lib/${_pkgname}/${_pkgname}-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
-  # All the needed configuration files
-  install -Dvm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dvm644 "${srcdir}/${_pkgname}.psd" "${pkgdir}/usr/share/psd/browsers/${_pkgname}"
+  # Use system certificates
+  if [[ -e $appdir/libnss3.so ]]; then
+    ln -sfv ../libnssckbi.so -t "$appdir"
+  fi
+
+  # Register GNOME search provider
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" <<END
+[Shell Search Provider]
+DesktopId=$_pkgname.desktop
+BusName=org.mozilla.${_pkgname//-/_}.SearchProvider
+ObjectPath=/org/mozilla/${_pkgname//-/_}/SearchProvider
+Version=2
+END
 }
