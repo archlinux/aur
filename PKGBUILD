@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-studio-liberty
-pkgver=32.2.0
+pkgver=32.2.1
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
@@ -96,7 +96,7 @@ source=(
   #"qt_fix.patch"
 )
 
-sha512sums=('c22cf3767f71d0dca1aa4795c2be5c1c8fdde9fbae9e0aa54af31aa8bdb485c93fc84a7c6e20ffb0fc3cb18d10f12d5d5f0c4ed0050a4eadd68d6917380d7206'
+sha512sums=('68b40a60991cc67819510f4c878014e476db15994d594c7b63f31b6b2afc99a8dc5799ebb70613197019a6692ed533e0056da8c43c672d158dffc291fb4f61dd'
             'SKIP'
             'SKIP'
             '790da9bf3a2495eb6d4d155ae89adea88a45f496b5996278d72df47a1dea662241b2b73d93be7fc56f83186805c591dcd718266575a74d1b25b6b93379ce74b3')
