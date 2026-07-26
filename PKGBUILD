@@ -7,7 +7,7 @@ pkgname=(
     'openvino-llvm-intel-npu-plugin'
     'python-openvino-llvm')
 pkgver=2026.2.1
-pkgrel=4
+pkgrel=5
 _commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld'
 arch=('x86_64')
@@ -152,10 +152,6 @@ build() {
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export CFLAGS="${CFLAGS// -flto/}"
-    export CXXFLAGS="${CXXFLAGS// -flto/}"
-    export LDFLAGS="${LDFLAGS// -flto/}"
-
     # fix warning: "_FORTIFY_SOURCE" redefined
     # note: upstream forces _FORTIFY_SOURCE=2
     export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
@@ -168,9 +164,12 @@ build() {
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_AR:FILEPATH='/usr/bin/llvm-ar' \
         -DCMAKE_CXX_STANDARD:STRING='17' \
         -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_NM:FILEPATH='/usr/bin/llvm-nm' \
+        -DCMAKE_RANLIB:FILEPATH='/usr/bin/llvm-ranlib' \
         -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DENABLE_SSE42:BOOL='OFF' \
@@ -179,6 +178,7 @@ build() {
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
         -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
+        -DENABLE_LTO:BOOL='ON' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_PLUGINS_XML:BOOL='ON' \
         -DENABLE_PYTHON:BOOL='ON' \
