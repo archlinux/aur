@@ -19,6 +19,11 @@ pkgver() {
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$_pkgname"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "$_pkgname"
   cargo build --release --workspace --locked
@@ -33,13 +38,13 @@ package() {
   install -Dm755 target/release/big-webapps-exec    "$pkgdir/usr/bin/big-webapps-exec"
 
   # Desktop files, icons, polkit policy etc.
-  if [ -d "$_pkgname/usr" ]; then
-    cp -r "$_pkgname/usr/." "$pkgdir/usr/"
+  if [ -d "usr" ]; then
+    cp -r "usr/." "$pkgdir/usr/"
   fi
 
   # Compiled translations
-  if [ -d "po" ]; then
-    for po in po/*.po; do
+  if [ -d "../po" ]; then
+    for po in ../po/*.po; do
       lang=$(basename "$po" .po)
       msgfmt -o "$srcdir/${lang}.mo" "$po"
       install -Dm644 "$srcdir/${lang}.mo" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/biglinux-webapps.mo"
