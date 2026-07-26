@@ -1,4 +1,5 @@
 [qcsxcad]
 source = "git"
 git = "https://github.com/thliebig/QCSXCAD.git"
+include_regex = 'v[0-9.]+'
 prefix = "v"

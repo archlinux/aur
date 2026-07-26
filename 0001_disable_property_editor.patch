@@ -1,0 +1,189 @@
+diff --git a/QCSPropEditor.cpp b/QCSPropEditor.cpp
+index 15804e0..e64b562 100644
+--- a/QCSPropEditor.cpp
++++ b/QCSPropEditor.cpp
+@@ -174,48 +174,48 @@ void QCSPropEditor::Cancel()
+ 	reject();
+ }
+ 
+-void QCSPropEditor::ChangeType(int item)
+-{
+-	bool ok=false;
+-	int type = TypeCB->itemData(item).toInt(&ok);
+-	if (ok==false) return;
+-	if (type==clProp->GetType()) return;
+-	//if (propGB!=NULL) MainLayout->removeWidget(propGB);
+-	//if (propGB!=savePropGB) delete propGB;
+-	if (clProp!=saveProp) delete clProp;
+-	delete propGB;propGB=NULL;
+-	if (type==saveProp->GetType())
+-	{
+-		clProp=saveProp;
+-	}
+-	else switch (type)
+-	{
+-		case CSProperties::MATERIAL:
+-			clProp = new CSPropMaterial(saveProp);
+-			break;
+-		case CSProperties::METAL:
+-			clProp = new CSPropMetal(saveProp);
+-			break;
+-		case CSProperties::EXCITATION:
+-			clProp = new CSPropExcitation(saveProp);
+-			break;
+-		case CSProperties::PROBEBOX:
+-			clProp = new CSPropProbeBox(saveProp);
+-			break;
+-		case CSProperties::DUMPBOX:
+-			clProp = new CSPropDumpBox(saveProp);
+-			break;
+-		case CSProperties::RESBOX:
+-			clProp = new CSPropResBox(saveProp);
+-			break;
+-		default:
+-			clProp = new CSPropUnknown(saveProp);
+-			break;
+-	};
+-	propGB=BuildPropGroupBox(clProp);
+-	if (propGB!=NULL) MainLayout->insertWidget(1,propGB);
+-	setLayout(MainLayout);
+-}
++// void QCSPropEditor::ChangeType(int item)
++// {
++// 	bool ok=false;
++// 	int type = TypeCB->itemData(item).toInt(&ok);
++// 	if (ok==false) return;
++// 	if (type==clProp->GetType()) return;
++// 	//if (propGB!=NULL) MainLayout->removeWidget(propGB);
++// 	//if (propGB!=savePropGB) delete propGB;
++// 	if (clProp!=saveProp) delete clProp;
++// 	delete propGB;propGB=NULL;
++// 	if (type==saveProp->GetType())
++// 	{
++// 		clProp=saveProp;
++// 	}
++// 	else switch (type)
++// 	{
++// 		case CSProperties::MATERIAL:
++// 			clProp = new CSPropMaterial(saveProp);
++// 			break;
++// 		case CSProperties::METAL:
++// 			clProp = new CSPropMetal(saveProp);
++// 			break;
++// 		case CSProperties::EXCITATION:
++// 			clProp = new CSPropExcitation(saveProp);
++// 			break;
++// 		case CSProperties::PROBEBOX:
++// 			clProp = new CSPropProbeBox(saveProp);
++// 			break;
++// 		case CSProperties::DUMPBOX:
++// 			clProp = new CSPropDumpBox(saveProp);
++// 			break;
++// 		case CSProperties::RESBOX:
++// 			clProp = new CSPropResBox(saveProp);
++// 			break;
++// 		default:
++// 			clProp = new CSPropUnknown(saveProp);
++// 			break;
++// 	};
++// 	propGB=BuildPropGroupBox(clProp);
++// 	if (propGB!=NULL) MainLayout->insertWidget(1,propGB);
++// 	setLayout(MainLayout);
++// }
+ 
+ void QCSPropEditor::Fill2EdgeColor()
+ {
+@@ -238,18 +238,18 @@ QGroupBox* QCSPropEditor::BuildGeneral()
+ 	grid->addWidget(Name,0,1);
+ 	grid->addWidget(new QLabel(QString(tr("ID: %1")).arg(clProp->GetID())),0,2);
+ 
+-	grid->addWidget(new QLabel(tr("Type: ")),1,0);
+-	TypeCB = new QComboBox();
+-	TypeCB->addItem(tr("Unknown"),QVariant(CSProperties::UNKNOWN));
+-	TypeCB->addItem(tr("Material"),QVariant(CSProperties::MATERIAL));
+-	TypeCB->addItem(tr("Metal"),QVariant(CSProperties::METAL));
+-	TypeCB->addItem(tr("Excitation"),QVariant(CSProperties::EXCITATION));
+-	TypeCB->addItem(tr("Probe Box"),QVariant(CSProperties::PROBEBOX));
+-	TypeCB->addItem(tr("Res Box"),QVariant(CSProperties::RESBOX));
+-	TypeCB->addItem(tr("Dump Box"),QVariant(CSProperties::DUMPBOX));
+-	TypeCB->setEnabled(QCSX_Settings.GetEdit());
+-	grid->addWidget(TypeCB,1,1,1,2);
+-	QObject::connect(TypeCB,SIGNAL(currentIndexChanged(int)),this,SLOT(ChangeType(int)));
++	// grid->addWidget(new QLabel(tr("Type: ")),1,0);
++	// TypeCB = new QComboBox();
++	// TypeCB->addItem(tr("Unknown"),QVariant(CSProperties::UNKNOWN));
++	// TypeCB->addItem(tr("Material"),QVariant(CSProperties::MATERIAL));
++	// TypeCB->addItem(tr("Metal"),QVariant(CSProperties::METAL));
++	// TypeCB->addItem(tr("Excitation"),QVariant(CSProperties::EXCITATION));
++	// TypeCB->addItem(tr("Probe Box"),QVariant(CSProperties::PROBEBOX));
++	// TypeCB->addItem(tr("Res Box"),QVariant(CSProperties::RESBOX));
++	// TypeCB->addItem(tr("Dump Box"),QVariant(CSProperties::DUMPBOX));
++	// TypeCB->setEnabled(QCSX_Settings.GetEdit());
++	// grid->addWidget(TypeCB,1,1,1,2);
++	// QObject::connect(TypeCB,SIGNAL(currentIndexChanged(int)),this,SLOT(ChangeType(int)));
+ 
+ 	QHBoxLayout* HLay = new QHBoxLayout();
+ 	HLay->addStretch(1);
+@@ -312,7 +312,7 @@ void QCSPropEditor::GetValues()
+ 	propGB = BuildPropGroupBox(clProp);
+ 
+ 	Name->setText(QString::fromUtf8(clProp->GetName().c_str()));
+-	TypeCB->setCurrentIndex(GetIndexOfType());
++	// TypeCB->setCurrentIndex(GetIndexOfType());
+ 	FCButton->SetColor(clProp->GetFillColor());
+ 	ECButton->SetColor(clProp->GetEdgeColor());
+ }
+@@ -327,14 +327,14 @@ void QCSPropEditor::SetValues()
+ 	if (saveProp!=clProp) clCS->ReplaceProperty(saveProp,clProp);
+ }
+ 
+-int QCSPropEditor::GetIndexOfType()
+-{
+-	for (int i=0;i<TypeCB->count();++i)
+-	{
+-		if (TypeCB->itemData(i).toInt()==clProp->GetType()) return i;
+-	}
+-	return 0;
+-}
++// int QCSPropEditor::GetIndexOfType()
++// {
++// 	for (int i=0;i<TypeCB->count();++i)
++// 	{
++// 		if (TypeCB->itemData(i).toInt()==clProp->GetType()) return i;
++// 	}
++// 	return 0;
++// }
+ 
+ /***************************QCSPropertyGroupBox**************************************/
+ QCSPropertyGroupBox::QCSPropertyGroupBox(QWidget *parent) : QGroupBox(parent)
+diff --git a/QCSPropEditor.h b/QCSPropEditor.h
+index d46ce85..3531981 100644
+--- a/QCSPropEditor.h
++++ b/QCSPropEditor.h
+@@ -62,7 +62,7 @@ protected slots:
+ 	void Save();
+ 	void Cancel();
+ 
+-	void ChangeType(int item);
++	// void ChangeType(int item);
+ 
+ 	void Fill2EdgeColor();
+ 	void Edge2FillColor();
+@@ -71,7 +71,7 @@ protected slots:
+ 	void SetValues();
+ 
+ protected:
+-	QComboBox* TypeCB;
++	// QComboBox* TypeCB;
+ 
+ 	QGroupBox* BuildGeneral();
+ 	QLayout* BuildButtons();
+@@ -92,7 +92,7 @@ protected slots:
+ 	QCSPropertyGroupBox* BuildPropGroupBox(CSProperties* clProp);
+ 	QCSPropertyGroupBox* propGB;
+ 
+-	int GetIndexOfType();
++	// int GetIndexOfType();
+ 
+ 	int m_SimMode;
+ };
