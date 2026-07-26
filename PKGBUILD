@@ -1,7 +1,7 @@
 # Maintainer: smiley <smiley@aur.archlinux.org>
 
 pkgname=cosmic-ext-applet-logomenu
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Logo Menu applet for the COSMIC desktop'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'just' 'git')
 conflicts=('cosmic-ext-applet-logomenu-git')
 provides=('cosmic-ext-applet-logomenu')
 source=("https://github.com/cosmic-utils/cosmic-ext-applet-logomenu/archive/v${pkgver}.tar.gz")
-sha256sums=('a15fc42d7e7b7e2a7acb6810d85ef1bb9cbc6210c2b67e976c7a1972e54fe629')
+sha256sums=('9e0c3dfd9faeddc70229791f23961c9f91851427afc74ae3f9f58f651025c1b8')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
