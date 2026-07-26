@@ -1,6 +1,6 @@
 pkgbase = aitasks
 	pkgdesc = Agentic IDE in your terminal: markdown tasks, YAML frontmatter, git-native
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://aitasks.io/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = aitasks
 	depends = curl
 	optdepends = github-cli: GitHub integration
 	optdepends = glab: GitLab integration
-	source = ait::https://github.com/beyondeye/aitasks/releases/download/v0.28.0/ait
+	source = ait::https://github.com/beyondeye/aitasks/releases/download/v0.29.0/ait
 	sha256sums = ad4e92f3fe00549f8fb4c92b977fd462bc4df02454270404cfc762dd516fb5bd
 
 pkgname = aitasks
