@@ -1,0 +1,15 @@
+pkgbase = lazy-search
+	pkgdesc = Fuzzy TUI search over official Arch repos and the AUR, part of the Lazy ecosystem
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Halespider396/lazy-search
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = pacman
+	depends = curl
+	depends = tar
+	depends = gzip
+
+pkgname = lazy-search
