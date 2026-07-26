@@ -1,0 +1,26 @@
+pkgbase = xdg-desktop-portal-xapp-filepicker
+	pkgdesc = A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/Twilight0/xdg-desktop-portal-xapp-filepicker
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = glib2-devel
+	makedepends = meson
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = xapp
+	depends = xapp-symbolic-icons
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	provides = xdg-desktop-portal-xapp-filepicker
+	provides = xdg-desktop-portal-impl
+	provides = xdg-desktop-portal-xapp
+	conflicts = xdg-desktop-portal-xapp
+	conflicts = xdg-desktop-portal-filepicker
+	source = xdg-desktop-portal-xapp-filepicker-1.1.4.tar.gz::https://github.com/Twilight0/xdg-desktop-portal-xapp-filepicker/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = xdg-desktop-portal-xapp-filepicker
