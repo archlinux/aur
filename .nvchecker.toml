@@ -1,0 +1,3 @@
+[python-aiohttp-rpc]
+source = "pypi"
+pypi = "aiohttp_rpc"
