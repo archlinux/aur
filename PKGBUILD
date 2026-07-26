@@ -1,7 +1,7 @@
 # Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 pkgname=nvidia-mft
-pkgver=4.35.0
-pkgverrel=159
+pkgver=4.36.0
+pkgverrel=147
 pkgversarch="${pkgver}-${pkgverrel}-$(uname -m)"
 pkgrel=1
 epoch=
@@ -23,8 +23,7 @@ install=
 changelog=
 source=("https://www.mellanox.com/downloads/MFT/mft-${pkgver}-${pkgverrel}-x86_64-deb.tgz")
 noextract=()
-b2sums=('6cee60dcc46bc4030e23033c83462d5eec55872978d8acacd67ee63a240fa6f6e45e9f86422014a8d30e7e7ea21bc99e5e80b291d73ec19385aad5657afef9e4')
-validpgpkeys=()
+b2sums=('d2652a34c3294b1505102c51ec728641aca122343c5c5d94e8f942878931f1cc69f9a27e2f12ea1851f0dd5a8d10e1be532ea41fb110975f4855cc4247a61dd3')
 
 package() {
     for deb in mft-${pkgversarch}-deb/*DEBS/*.deb; do
