@@ -1,0 +1,5 @@
+pkg/
+src/
+niri-display-settings/
+*.pkg.tar.zst
+*.log

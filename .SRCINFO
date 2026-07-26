@@ -1,0 +1,23 @@
+pkgbase = niri-display-settings-git
+	pkgdesc = A GTK4/libadwaita GUI to configure monitors for the niri compositor
+	pkgver = r9.ec607d5
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/niri-display-settings
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = niri
+	provides = niri-display-settings
+	conflicts = niri-display-settings
+	source = git+https://github.com/SHORiN-KiWATA/niri-display-settings.git
+	sha256sums = SKIP
+
+pkgname = niri-display-settings-git
