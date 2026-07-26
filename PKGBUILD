@@ -1,7 +1,7 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=daikhan-git
-pkgver=r615.13c3260
+pkgver=r677.6494f3e
 pkgrel=1
 pkgdesc="A media player for the modern desktop"
 arch=('x86_64')
@@ -10,6 +10,9 @@ license=('GPL-3.0-or-later')
 depends=('gst-plugin-gtk4' 'libadwaita' 'xxhash')
 makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 checkdepends=('appstream')
+optdepends=(
+  'libclapper-gtk: improved color accuracy'
+)
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/daikhan/daikhan.git')
 sha256sums=('SKIP')

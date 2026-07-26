@@ -13,6 +13,7 @@ pkgbase = daikhan-git
 	depends = gst-plugin-gtk4
 	depends = libadwaita
 	depends = xxhash
+	optdepends = libclapper-gtk: improved color accuracy
 	provides = daikhan
 	source = git+https://gitlab.com/daikhan/daikhan.git
 	sha256sums = SKIP
