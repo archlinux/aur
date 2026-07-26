@@ -1,8 +1,10 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
+
 _pkgname=nub
 pkgname="${_pkgname}-bin"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
@@ -15,8 +17,8 @@ source=("LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v${pkgve
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-x64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::https://github.com/nubjs/nub/releases/download/v${pkgver}/nub-linux-arm64.tar.gz")
 sha256sums=('950fffd5e5c4c4be9e44ccf80bcf5147b25afc19bfef2f53a1e87facb1144b66')
-sha256sums_x86_64=('26218366269476abfea1ad01531bc9edf317339bbc2783e398d23d212e108ebd')
-sha256sums_aarch64=('361756af1eca35a8945e4b333c8daae42627d74eb1b8e0de0b1c3fb4cd63acd8')
+sha256sums_x86_64=('9da96cc4600abb7995b5e06e8f74c3c89c295a70d9b62747d08b21b0d5de4c5d')
+sha256sums_aarch64=('8ab023e14a030a151b3e24e3bef360dcc3b230ea36b657d111919e73a51c28ff')
 
 
 package() {
