@@ -1,0 +1,20 @@
+pkgbase = wheredidmystoragego-bin
+	pkgdesc = See where your disk space went — as a colourful treemap
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://www.budbrain.de
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = zenity: Rückfalldialoge, wenn der Desktop keine eigenen anbietet
+	provides = wheredidmystoragego
+	conflicts = wheredidmystoragego
+	noextract = wheredidmystoragego-1.0.7-1.x86_64.rpm
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source = https://www.budbrain.de/rpm/x86_64/wheredidmystoragego-1.0.7-1.x86_64.rpm
+	sha256sums = 8d947a4e69ef249eee3e022286f24947c792b3c8799b8a479fbb75d43bf418f7
+
+pkgname = wheredidmystoragego-bin
