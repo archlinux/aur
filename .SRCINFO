@@ -1,7 +1,7 @@
 pkgbase = vulkan-ai-terakan
 	pkgdesc = Updated and enhanced fork of the experimental Mesa Terakan Vulkan driver for AMD TeraScale GPUs
 	pkgver = 25.2.0_devel.r208368.ga4099a35bd5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shipa-2/mesa-terakan-ai-upstreamed
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = vulkan-ai-terakan
 	makedepends = lib32-zstd
 	makedepends = meson
 	makedepends = ninja
+	makedepends = pkgconf
 	makedepends = python-mako
 	makedepends = python-packaging
 	makedepends = python-ply
@@ -53,7 +54,7 @@ pkgbase = vulkan-ai-terakan
 	sha256sums = d9e147d9b21719c97257c01fe5f6c06169edbb7fcb2bce5abb5119b6a63faee2
 	sha256sums = 7508c7c69bb43e25238b5a1ee7ad53eb44ccea4c4a08f352ca2e706076bff270
 	sha256sums = eda559db6e40ba21d8d1a66fa0644d9ee7e90c50706d7c50f64977d6cd67317b
-	sha256sums = 557288f665893bbe7cc31f5aea6a828ff07afd3eda40d02b60f5cfbd705cf6d3
+	sha256sums = 49ffc2b47ac56b9b213bf3f57f72bd4a9a6e9962120239c1130d1ef3c48eebe7
 
 pkgname = vulkan-ai-terakan
 	pkgdesc = Updated and enhanced 64-bit fork of the Mesa Terakan Vulkan driver
