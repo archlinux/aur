@@ -3,7 +3,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=moonscript
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _rockrel=1
 pkgdesc='A programmer friendly language that compiles to Lua'
@@ -26,8 +26,8 @@ _rock="$_archive-$_rockrel.all.rock"
 _rockspec="$_archive-$_rockrel.rockspec"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "https://luarocks.org/manifests/leafo/$_archive-1.rockspec")
-sha256sums=('b98e58f4657ffc2e730904da0b4034796ff16f08e4e6c47c681905fd56509037'
-            'c5ac773ab9f9f76f033d34fa3c830b4b6e47921036c1b7beeb6b03de7851cf33')
+sha256sums=('98fcf86d47694c81ccf9012e310f86d443ddf516e90b267ea33eb7ff1b0747c4'
+            'fd17e182432124f6a1f4f5a6ab714a544ba99791825bfc400723fd5baac330b8')
 
 build() {
 	cd "$_archive"
