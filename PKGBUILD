@@ -3,7 +3,7 @@
 _pkgauthor=nao1215
 _pkgname=atago
 pkgname=${_pkgname}-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="End-to-end test runner for CLI tools"
@@ -24,10 +24,10 @@ source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_pkgvername}/check
 		"${_pkgsrc}-checksums.txt.sigstore.json::${url}/releases/download/${_pkgvername}/checksums.txt.sigstore.json")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('4c2960986dfd45e2aff6c59502fcd7da5dfb4ace56bd3f767d46004aa812d626'
-            '4138aad11cff9be1320690332309c28991d00b9b0e3eab904f73968262824303')
-sha256sums_x86_64=('88e7f3b5e1960f35442aa9a50532c4f254ddb381906d3ff339bfcfd754c3518f')
-sha256sums_aarch64=('c4115590857aad2b1b7a5478c3c58fb15ba938f1a0a59f8935e8f9581a960cc2')
+sha256sums=('b1f121d7a3c117c0e9ddc15d3bc9bc1b2624a1aae80a41099889ff1898e2eacb'
+            '8cd2739c6ed794bf8c42b3aa5d53c8e183116e6203b83f504727f7366da3b83c')
+sha256sums_x86_64=('2600ebf0ef8d9a5183eafd78809e6f33e53f1b17d93d10b55e124283d4cc8938')
+sha256sums_aarch64=('01320890be3e2da029c27e4a44cfa2b96991c019a79a66a9bf232fcb6c95556b')
 
 
 verify() {
