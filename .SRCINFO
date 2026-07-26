@@ -1,23 +1,21 @@
 pkgbase = keyleds
 	pkgdesc = Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro
-	pkgver = 1.1.1
-	pkgrel = 3
-	url = https://github.com/spectras/keyleds
-	arch = i686
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ticpu/keyleds
 	arch = x86_64
-	license = GPL3
-	makedepends = cmake>=3.0
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	depends = libevdev
 	depends = libuv
 	depends = libx11
 	depends = libxi
-	depends = libxml2
 	depends = libyaml
 	depends = luajit
-	depends = systemd
+	depends = systemd-libs
 	backup = etc/keyledsd.conf
-	source = https://github.com/spectras/keyleds/archive/v1.1.1/keyleds-1.1.1.tar.gz
-	source = pr74.patch
-	sha256sums = 619997d1f3401153370013693cbfa3d7a41edecb9c5654fe99d017b686ada69a
-	sha256sums = a0edb3496655cce4a7e839af8a869e4c03ce5f3917e894df5b684b2a0ee111ad
+	source = keyleds-1.2.0.tar.xz::https://github.com/ticpu/keyleds/releases/download/v1.2.0/keyleds-1.2.0.tar.xz
+	sha256sums = 87ea7148c40fe15e8273068f96203a522bb0c95ea7567b75d009f98edc8e55a1
 
 pkgname = keyleds

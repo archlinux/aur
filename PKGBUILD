@@ -1,61 +1,44 @@
-# Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
+# Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
+# Contributor: Jiri Tyr <jiri.tyr@gmail.com>
 
 pkgname='keyleds'
-pkgver='1.1.1'
-pkgrel='3'
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro'
-arch=('i686' 'x86_64')
-url="https://github.com/spectras/keyleds"
-license=('GPL3')
-groups=()
+arch=('x86_64' 'aarch64')
+url="https://github.com/ticpu/keyleds"
+license=('GPL-3.0-only')
 depends=(
+  'libevdev'
   'libuv'
   'libx11'
   'libxi'
-  'libxml2'
   'libyaml'
   'luajit'
-  'systemd'
+  'systemd-libs'
 )
 makedepends=(
-  'cmake>=3.0'
+  'cmake'
 )
-optdepends=()
 backup=('etc/keyledsd.conf')
-options=()
-install=
-source=(
-  "https://github.com/spectras/keyleds/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-  'pr74.patch'
-)
-sha256sums=(
-  '619997d1f3401153370013693cbfa3d7a41edecb9c5654fe99d017b686ada69a'
-  'a0edb3496655cce4a7e839af8a869e4c03ce5f3917e894df5b684b2a0ee111ad'
-)
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 -i ../pr74.patch
-}
+source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('87ea7148c40fe15e8273068f96203a522bb0c95ea7567b75d009f98edc8e55a1')
 
 build() {
-  cd "$pkgname-$pkgver/build"
-  cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib ..
-  make
-  gzip -9 ../keyledsd/keyledsd.1 -c > keyledsd.1.gz
-  gzip -9 ../keyledsctl/keyledsctl.1 -c > keyledsctl.1.gz
+  cd "$pkgname-$pkgver"
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=MinSizeRel \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  cmake --build build -j"$(nproc)"
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir/" install
-  cd ..
+  cd "$pkgname-$pkgver"
+  DESTDIR="$pkgdir" cmake --install build
+
+  # The systemd unit and the udev rule are installed by the build itself
   install -m 644 -D keyledsd/keyledsd.conf.sample "$pkgdir/etc/keyledsd.conf"
-  install -d "$pkgdir/etc/xdg/autostart"
-  ln -s /usr/share/keyledsd/keyledsd.desktop "$pkgdir/etc/xdg/autostart/"
-  install -m 644 -D logitech.rules "$pkgdir/usr/share/keyledsd/logitech.rules"
-  install -d "$pkgdir/usr/lib/udev/rules.d/"
-  ln -s /usr/share/keyledsd/logitech.rules "$pkgdir/usr/lib/udev/rules.d/70-logitech-hidpp.rules"
-  install -m 644 -D build/keyledsd.1.gz "$pkgdir/usr/share/man/man1/keyledsd.1"
-  install -m 644 -D build/keyledsctl.1.gz "$pkgdir/usr/share/man/man1/keyledsctl.1"
+  install -m 644 -D keyledsd/keyledsd.1 "$pkgdir/usr/share/man/man1/keyledsd.1"
+  install -m 644 -D keyledsctl/keyledsctl.1 "$pkgdir/usr/share/man/man1/keyledsctl.1"
 }
