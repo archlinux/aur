@@ -1,6 +1,6 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=arbit-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('arbit' 'donutstudio')
 conflicts=('donutstudio-bin')
 install="${pkgname}.install"
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('ff13022227e8ee55a957a7cf86ed2ea4d5c686dc8b1e67c17a6e38abd69fb389')
+sha256sums=('2fb0b9cc9669f1a5daa5dd8bda587af02fdce7176b3144948988f82054999eb6')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
