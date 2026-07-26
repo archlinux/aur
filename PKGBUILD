@@ -4,7 +4,7 @@
 # Contributor: paul2lv <paul2lv@gmail.com>
 # Contributor: dtw <dibblethewrecker@gmail.com>
 pkgname=foldingathome
-pkgver=8.5.5
+pkgver=8.5.6
 pkgrel=1
 epoch=1
 pkgdesc='A distributed computing project for simulating protein dynamics'
@@ -29,17 +29,10 @@ makedepends=('git'
              'snappy')
 backup=("etc/fah-client/config.xml")
 install="fah.install"
-source=("git+https://github.com/cauldrondevelopmentllc/cbang#commit=83a4be55c1b21d5383650f51a7887fd9c25b836c"
-        "git+https://github.com/foldingathome/fah-client-bastet#commit=2c6fbaa45e4ee4854195a9f0d4b86300975b6543"
-        "as_string_fix.patch")
-sha256sums=('cc7768e72599e8e7285e981702fb96fbb0fcad22660722dbc425c16677e0ddf0'
-            '2415b1ca05c1dc34bfbe01b6d8566bb5106c0f59d2382addeba05ff75ee4df99'
-            '21ce7c732dc289e6eda5f4236d1f613c93228c49ce9aef0c2eb1d9d31ce1fc38')
-
-prepare() {
-	cd cbang
-	patch -p1 -i ../as_string_fix.patch
-}
+source=("git+https://github.com/cauldrondevelopmentllc/cbang#commit=20224041bbf5e5f1ed6a3e4cd1a9e10dd08b1f1d"
+        "git+https://github.com/foldingathome/fah-client-bastet#commit=93b96817a82ade9769fba3571ac697788f13357a")
+sha256sums=('7f683cdf6e7b4710ddb00d3a8709b2e548ff71e85df98ad9ec1e4105914cefcf'
+            '2c8f9cfaea57b268c5576cb08f539a5d3ef1daaddff6bd2786b9e8aba243e6cd')
 
 build() {
 	export CBANG_HOME=$PWD/cbang

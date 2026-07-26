@@ -48,7 +48,7 @@ post_install() {
 	echo "  systemctl restart $NAME"
 	echo
 	echo "Access the web interface by going to"
-	echo " https://v8-4.foldingathome.org/"
+	echo " https://v8-5.foldingathome.org/"
 	echo
 	echo "If upgrading from v7 move /etc/fahclient/config.xml to $CLIENT_CONFIG to retain settings"
 	echo
