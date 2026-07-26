@@ -1,6 +1,6 @@
 pkgbase = based
 	pkgdesc = GUI for viewing and editing Base16/Base24 color scheme YAML files
-	pkgver = 0.1.0
+	pkgver = 0.1.0beta1
 	pkgrel = 1
 	url = https://github.com/OldJobobo/based
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = based
 	depends = libxkbcommon
 	depends = wayland
 	options = !debug
-	source = based-0.1.0.tar.gz::https://github.com/OldJobobo/based/archive/v0.1.0.tar.gz
-	sha256sums = 1fefa69026f37be2b901dc32ea2f107166651dcfc692e6a1832037bde0c2d6c3
+	source = based-0.1.0-beta1.tar.gz::https://github.com/OldJobobo/based/archive/v0.1.0-beta1.tar.gz
+	sha256sums = 3c204b8fbf92246715644ddf93171561ee785eec5f926a205b034265572771ca
 
 pkgname = based
