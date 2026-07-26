@@ -1,6 +1,6 @@
 pkgbase = pomchat-bin
 	pkgdesc = 通过本地音频 + ASS字幕实现即时通讯聊天渲染并导出视频的桌面工具
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/AlanWanco/PomChat
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = pomchat-bin
 	makedepends = imagemagick
 	provides = pomchat
 	conflicts = pomchat
-	source = https://github.com/AlanWanco/PomChat/releases/download/v0.4.1/PomChat-0.4.1-linux-x64.tar.gz
-	source = https://github.com/AlanWanco/PomChat/raw/refs/tags/v0.4.1/LICENSE
+	source = https://github.com/AlanWanco/PomChat/releases/download/v0.4.2/PomChat-0.4.2-linux-x64.tar.gz
+	source = https://github.com/AlanWanco/PomChat/raw/refs/tags/v0.4.2/LICENSE
 	source = pomchat.desktop
-	sha256sums = 8fe2e0acf68d8ac162d8282ec7016513f67221d1a1fb549379fe39208c1787b6
+	sha256sums = 7370142372b64df1ffc34e0284d0e8de4dfe00ce270b0eea75850e5d87766a5a
 	sha256sums = 6f83a3354bd403442a0391078b470b471c611157c5246061367ba9a93dd34836
 	sha256sums = 0440b7b0ecf812c826c12693f37eae6d7f1703130bd8409a8af170e2719c667f
 
