@@ -12,7 +12,7 @@
 # Original project: https://github.com/nostar/DroidStar
 
 pkgname=droidstar-9m2pju-bin
-pkgver=1.0.e8e6129
+pkgver=1.0.4507d69
 pkgrel=1
 pkgdesc="DroidStar-9M2PJU - amateur radio digital modes client (binary release, Arch-native)"
 arch=('x86_64')
@@ -24,11 +24,11 @@ provides=('droidstar-9m2pju')
 conflicts=('droidstar-9m2pju' 'droidstar' 'droidstar-git' 'droidstar-9m2pju-git')
 options=('!strip' '!debug')
 
-_release_tag="DroidStar-9M2PJU-e8e6129"
-_pkgbase="DroidStar-9M2PJU-1.0.e8e6129"
+_release_tag="DroidStar-9M2PJU-4507d69"
+_pkgbase="DroidStar-9M2PJU-1.0.4507d69"
 
 source_x86_64=("${_pkgbase}-x86_64.pkg.tar.zst::${url}/releases/download/${_release_tag}/${_pkgbase}-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('cc4c57d92a27a5ca674ce0f9a3f6a3c4b81e4405a28794109b94c91879fd39bd')
+sha256sums_x86_64=('dc0744b5b8069ade25bb8bc4afeafc8ea33e88eaf966ac5c2126ba0b78a89ae2')
 
 # The downloaded artifact is itself an Arch package archive. We unpack it
 # and re-stage the payload into $pkgdir, preserving the desktop entry, icon
