@@ -1,11 +1,11 @@
 pkgbase = mesen2-git
 	pkgdesc = Multi-system emulator (NES, SNES, Game Boy and PC Engine)
-	pkgver = r3714.aec7718c
-	pkgrel = 2
+	pkgver = r3765.4b99a0f2
+	pkgrel = 1
 	url = https://www.mesen.ca
 	arch = x86_64
 	license = GPL3
-	makedepends = dotnet-sdk-8.0
+	makedepends = dotnet-sdk-10.0
 	makedepends = git
 	makedepends = zip
 	makedepends = clang
