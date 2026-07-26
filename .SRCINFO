@@ -1,0 +1,20 @@
+pkgbase = vaultapp
+	pkgdesc = Local, encrypted (AES-256-GCM) notes vault — desktop app, no network access
+	pkgver = r2.9984ec5
+	pkgrel = 1
+	url = https://github.com/bezau1/vault-desktop
+	arch = x86_64
+	license = custom
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	source = git+https://github.com/bezau1/vault-desktop.git
+	sha256sums = SKIP
+
+pkgname = vaultapp
