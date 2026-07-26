@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile-git
 	pkgdesc = Plasma Mobile shell components
-	pkgver = 6.6.90.r84.ge9e9ebb
+	pkgver = 6.6.90.r86.g695d7c0
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-mobile
 	arch = any
