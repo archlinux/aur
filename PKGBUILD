@@ -39,6 +39,8 @@ build() {
 	cd "Axolotl-$pkgver"
 	export CC=clang
 	export CXX=clang++
+	export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+    export PATH="${JAVA_HOME}/bin:${PATH}"
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export RUSTUP_TOOLCHAIN=stable
