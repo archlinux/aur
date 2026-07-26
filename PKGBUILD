@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -34,12 +34,13 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
 	"${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('67de4dc5345a85192bf23a02273356753638525f88f26b7c60be30be4b26ac54'
+sha256sums=('08bcc8d5d54f07bf22e3d6cb07c4c54ac6699a9f18e1c196461f4d2344ebf52b'
             'ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a'
             '15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917'
             '80f802b4068d2a4ca35c4def9952d6289233a0a7d145d8228ec52804e26884cd'
             '4baf4a805e37db88b95506cdbdb59e97a0c4e7b59205917a2e8eb77c804bdc3d'
             'ab3e40452498b965180109b560d352646c6dcc048675b5fd2b371f6632f6a827')
+options=(!strip !debug)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -51,9 +52,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  echo "Building"
-  pnpm install --frozen-lockfile --prod
+  echo "Running pnpm install"
+  pnpm install --frozen-lockfile
+  echo "Running pnpm run build"
   pnpm run build
+  echo "Running pnpm prune --prod"
   pnpm prune --prod
 }
 
