@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna kyle[at]kylemanna[d0t]com
 
 pkgname=mynewt-newt
-pkgver=1.10.0
+pkgver=1.15.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 epoch=
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 makedepends=('go')
 source=("https://github.com/apache/mynewt-newt/archive/mynewt_${_pkgver}_tag.tar.gz")
-sha512sums=('6109b0421d8e02d5b83082f8085ccf0904ad7f1997e1d9932fad015d3cb40ab6804571a2466d2a42f3f7970e114ac25b2a9084c3c15e16c46eb01f359ecc0151')
+sha512sums=('c184ae89dd54a698a94eb0809a1a7d65e0544053a86cedaffb37e5b5912999c956ac6759bc9ae0106f26249c038329a1aa4628c773d307fae11bac5d527b114d')
 
 build() {
 	cd "${srcdir}/mynewt-newt-mynewt_${_pkgver}_tag"
@@ -27,4 +27,3 @@ package() {
     msg2 'Packaging binary...'
     install -Dm 755 newt/newt "${pkgdir}/usr/bin/newt"
 }
-
