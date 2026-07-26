@@ -1,17 +1,19 @@
 pkgbase = python-parsimonious
-	pkgdesc = Fast parser based on parsing expression grammars (PEGs)
-	pkgver = 0.10.0
-	pkgrel = 1
+	pkgdesc = The fastest pure-Python PEG parser I can muster
+	pkgver = 0.11.0
+	pkgrel = 2
 	url = https://github.com/erikrose/parsimonious
 	arch = any
 	license = MIT
-	makedepends = python
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
 	depends = python-regex
-	source = python-parsimonious-0.10.0::https://github.com/erikrose/parsimonious/archive/0.10.0.tar.gz
-	sha256sums = 5fb1a5084d603e890d4fad10fd78ae10962a7a60810d18b2d723570dfd827055
+	source = https://files.pythonhosted.org/packages/source/p/parsimonious/parsimonious-0.11.0.tar.gz
+	sha512sums = 4d4e54ba74f205c937771db4ccc93ecd2831fa030a767ec1af010d9f3905e1ad0620e0f0d07b2711bec6276f4f921c9851c31f6f29ef93490b0e765891d63239
 
 pkgname = python-parsimonious
