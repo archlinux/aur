@@ -1,7 +1,7 @@
 # Maintainer: Do1e <https://aur.archlinux.org/account/Do1e>
 
 pkgname=python-njulogin
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
@@ -22,8 +22,8 @@ makedepends=(
   'python-installer'
 )
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/f3/37/57cfe367572164a1480d963b6127800bd0ae29d3cd29255e2a38c9024e4e/njulogin-5.1.0.tar.gz")
-sha256sums=('13efe61d4b38b655356502a0df24606bda5ce0a4660cc0dc03582a4dc4ef8ea8')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/53/a3/868ffd6086c2a24592a3054b8acfc98b85151498c0a3e6ae17abb0d697d8/njulogin-5.1.1.tar.gz")
+sha256sums=('0cc1d967b48fbed6efe21b5ef7200f70d5be4b6ba58475e759c1f17ca7f8aa60')
 
 build() {
   cd "njulogin-$pkgver"
