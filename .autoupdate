@@ -1,0 +1,6 @@
+# Autoupdater manifest - consumed by aur/.autoupdate
+srchost="github"
+srcmntr="jely2002"
+srcname="youtube-dl-gui"
+verstrip="app-v"
+gui="false"
