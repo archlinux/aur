@@ -1,0 +1,8 @@
+# Autoupdater manifest - consumed by aur/.autoupdate
+srchost="github"
+srcmntr="NethServer"
+srcname="nethlink"
+verstrip="v"
+gui="true"
+desktop="nethlink.desktop"
+icon="nethlink.png"
