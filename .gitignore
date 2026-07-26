@@ -8,6 +8,7 @@ src/
 # Ignorar arquivos com extensões especifidados
 *.pkg.tar.xz
 *.pkg.tar.zst
+*.gz
 
 # NÃO ignorar arquivos especificados
 !/.SRCINFO
