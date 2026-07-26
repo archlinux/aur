@@ -4,7 +4,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=13.0.1
+pkgver=13.0.2
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
@@ -50,7 +50,7 @@ optdepends=(
     'wavpack: For WavPack support'
     )
 source=("git+https://github.com/flacon/flacon.git#tag=v${pkgver}")
-sha256sums=('f21f89e95d653a84a07a6900984d0082f8334afca90a1a2e68f20bf04b1525c2')
+sha256sums=('b0bf43978a6b12618f4156ee2f90d6e05147bf118de9861c669e1a41747fd1a2')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
