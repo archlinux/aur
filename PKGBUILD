@@ -1,8 +1,8 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowm-wlonly-git
-pkgver=r1293.794e96d
-pkgrel=1.2
+pkgver=d8d0b173
+pkgrel=1.3
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
 arch=("x86_64")
