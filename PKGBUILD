@@ -3,7 +3,7 @@
 _pkgname="opencv4"
 pkgname="$_pkgname-llvm"
 pkgver=4.13.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Source Computer Vision Library (version 4.x) — built with Clang and LLVM lld"
 url="https://github.com/opencv/opencv"
 license=('Apache-2.0')
@@ -93,9 +93,6 @@ sha256sums=(
   'c05fe7572ee5193cf3de7f02a500f446f3457ec20c315590a326bf1bfb5552cc'
   '6379b0f23ba4068d2daa43ec158e515f58ef36242138eb10f752a93dc1cec375'
 )
-
-# https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
-options=('!lto')
 
 prepare() {
   pushd "$_pkgsrc"

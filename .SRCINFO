@@ -1,7 +1,7 @@
 pkgbase = opencv4-llvm
 	pkgdesc = Open Source Computer Vision Library (version 4.x) — built with Clang and LLVM lld
 	pkgver = 4.13.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/opencv/opencv
 	arch = x86_64
 	license = Apache-2.0
@@ -59,7 +59,6 @@ pkgbase = opencv4-llvm
 	optdepends = vtk: for the viz module
 	provides = opencv4
 	conflicts = opencv4
-	options = !lto
 	source = opencv-4.13.0.tar.gz::https://github.com/opencv/opencv/archive/refs/tags/4.13.0.tar.gz
 	source = opencv_contrib-4.13.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/4.13.0.tar.gz
 	source = vtk9.patch
