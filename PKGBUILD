@@ -15,7 +15,7 @@ depends=('yt-dlp' 'ffmpeg')
 makedepends=('go' 'git')
 optdepends=('mpv: for playing videos')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz_${pkgver}.tar.gz")
-sha256sums=('5404b9174eb1d6f42c287699bd1700ed21011d70d1e067d4430d2630dc297a4f')
+sha256sums=('1179c764f0dc71783c0f019d55a1414aaf8ff018cf1a75232777ba23dc87e73e')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"

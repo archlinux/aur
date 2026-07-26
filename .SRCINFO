@@ -15,6 +15,6 @@ pkgbase = xytz
 	provides = xytz
 	
 	source = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz_0.9.2.tar.gz
-	sha256sums = 5404b9174eb1d6f42c287699bd1700ed21011d70d1e067d4430d2630dc297a4f
+	sha256sums = 1179c764f0dc71783c0f019d55a1414aaf8ff018cf1a75232777ba23dc87e73e
 	
 pkgname = xytz
