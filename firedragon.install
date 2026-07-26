@@ -1,0 +1,9 @@
+post_upgrade() {
+  if [[ $2 == 1:* ]]; then
+    echo -e '
+
+\033[1;33m==> WARNING: For safety creating a new, separate profile is recommended, start FireDragon using the firedragon -P command to create and switch profile!\033[0m
+
+'
+  fi
+}
