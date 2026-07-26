@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+icd=/usr/share/vulkan/icd.d/terascale_icd.i686.json
+driver=/usr/lib32/libvulkan_terascale.so
+
+if [[ ! -r "$icd" || ! -r "$driver" ]]; then
+  echo "terakan-vulkan32: install lib32-vulkan-terakan first" >&2
+  exit 1
+fi
+if (($# == 0)); then
+  echo "usage: terakan-vulkan32 COMMAND [ARG ...]" >&2
+  exit 2
+fi
+
+export VK_DRIVER_FILES="$icd"
+export VK_ICD_FILENAMES="$icd"
+exec "$@"

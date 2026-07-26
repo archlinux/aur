@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+icd64=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
+icd32=/usr/share/vulkan/icd.d/terascale_icd.i686.json
+
+if [[ ! -r "$icd64" ]]; then
+  echo "terakan-wine: install vulkan-terakan first" >&2
+  exit 1
+fi
+if (($# == 0)); then
+  echo "usage: terakan-wine wine GAME.exe [ARG ...]" >&2
+  exit 2
+fi
+
+icds="$icd64"
+[[ -r "$icd32" ]] && icds="$icds:$icd32"
+export VK_DRIVER_FILES="$icds"
+export VK_ICD_FILENAMES="$icds"
+
+# Do not force WineD3D, DLL overrides, esync settings, or unsupported Mesa
+# features here. DXVK/Proton configuration belongs to the selected prefix.
+exec "$@"
