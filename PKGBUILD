@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-1.tar.gz")
 sha256sums=('de670032624389da9c88e6773b5f31c2b07e68adae7c82118a37770a09e9ec68')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver-1"
     if [ -d build ]; then
         rm -rf build
     fi
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver-1"
 
     DESTDIR="$pkgdir" ninja -C build install
 
