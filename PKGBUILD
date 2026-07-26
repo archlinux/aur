@@ -1,13 +1,18 @@
 # Maintainer:
 # Contributor: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
 : ${_commit:=b0f3f80dad6ef9976b447992337c2483bbb3725a} # 0.3.6
 
 _pkgname="eruption"
 pkgname="$_pkgname"
 pkgdesc='Realtime RGB LED Driver for Linux'
 pkgver=0.3.6
-pkgrel=2
+pkgrel=3
 url="https://github.com/eruption-project/eruption"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
@@ -19,8 +24,8 @@ depends=(
   'libevdev'
   'libpulse'
   'libusb'
-  'lua'
-  'lua-socket'
+  'lua54'
+  'lua54-socket'
   'systemd-libs'
 )
 makedepends=(
@@ -51,21 +56,7 @@ _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/$_commit.$_pkgext")
 sha256sums=('357ed6ab085e59ed0758553b11d54128dd411292400649eada9837cf319a3c68')
 
-_cargo_env() {
-  export CARGO_HOME="$SRCDEST/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-
-  local n=$(nproc)
-  export CARGO_PROFILE_RELEASE_LTO=false
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((n > 16 ? n : 16))
-
-  # silence lint errors
-  export RUSTFLAGS+=" -A rust_2024_compatibility"
-}
-
 prepare() {
-  _cargo_env
   cd "$_pkgsrc"
   sed -e '/hidapi-rs\.git/s&branch=master&branch=main&' -i Cargo.lock */Cargo.lock
   sed -e '/hidapi-rs\.git/s&"master"&"main"&' -i *.toml */*.toml
@@ -73,7 +64,13 @@ prepare() {
 }
 
 build() {
-  _cargo_env
+  local _units=$(($(nproc) > 16 ? $(nproc) : 16))
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
+
+  # silence lint errors
+  export RUSTFLAGS+=" -A rust_2024_compatibility"
+
   cd "$_pkgsrc"
   cargo build --release
 }
