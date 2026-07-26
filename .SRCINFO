@@ -1,6 +1,6 @@
 pkgbase = notify-gnome-shell-update
 	pkgdesc = Get a notification when GNOME Shell has updates available
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,6 +12,6 @@ pkgbase = notify-gnome-shell-update
 	source = notify-gnome-shell-update.sh
 	sha256sums = 33562c39c0c1c165e1b68670fe0e08cebb039f3bcd6affdc13a267f365b3993c
 	sha256sums = 847095e136588cd63e0ac83043d0c3ba553155b9a9ad9d1e832dbd12dc579f22
-	sha256sums = a08c43003ab2c41b7bc04b51a5b2b38877a53234d4aef128a1c19bde1d9a114f
+	sha256sums = 71561ffd852258eda5a00cbd91ab6c7ba8809038aabfaf69b0374eda7c0b263a
 
 pkgname = notify-gnome-shell-update
