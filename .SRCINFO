@@ -1,0 +1,21 @@
+pkgbase = rpnx-rs-bin
+	pkgdesc = Terminal RPN / XRPN scientific calculator written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isene/rpnx
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = rpnx
+	conflicts = rpnx-rs
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/isene/rpnx/v0.1.0/README.md
+	sha256sums = ea8b6bfcac34aeb8d089d52fd150e4ea41e9bb4a621a8b02c7f9a04e2bd2f394
+	source_x86_64 = rpnx-x86_64-0.1.0::https://github.com/isene/rpnx/releases/download/v0.1.0/rpnx-linux-x86_64
+	sha256sums_x86_64 = eb651204bb6092aaa77f189bdc13db1423d1ccc8361c17059ec1061e5bba146c
+	source_aarch64 = rpnx-aarch64-0.1.0::https://github.com/isene/rpnx/releases/download/v0.1.0/rpnx-linux-aarch64
+	sha256sums_aarch64 = 434faff7d2c193d54741146949eabd8870b9b5d085c9a1242b91a9b515eb4132
+
+pkgname = rpnx-rs-bin
