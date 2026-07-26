@@ -1,7 +1,7 @@
 pkgbase = mesee-git
 	pkgdesc = Modular screen-capture daemon and OCR translator client
 	pkgver = 0.1.0.r0.geec16f5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatieBaal/mesee
 	arch = x86_64
 	license = MIT
