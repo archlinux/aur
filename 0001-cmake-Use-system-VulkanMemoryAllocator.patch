@@ -1,0 +1,38 @@
+From 046d906fa42bdb0fbfa477f8c12fa747f5ec31e2 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 26 Jul 2026 20:55:41 +0800
+Subject: [PATCH 1/2] cmake: Use system VulkanMemoryAllocator
+
+---
+ CMakeLists.txt         | 1 +
+ plugins/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55555ad..887a056 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,6 +66,7 @@ if(WAYWALLEN_BUILD_DAEMON)
+ endif()
+ 
+ if(WAYWALLEN_BUILD_PLUGINS)
++    find_package(VulkanMemoryAllocator 3.4.0 REQUIRED)
+     add_subdirectory(plugins)
+ endif()
+ 
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 21999ef..7b0981a 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -8,7 +8,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/FetchDeps.cmake)
+ set(VMA_BUILD_DOCUMENTATION OFF CACHE INTERNAL "")
+ set(VMA_BUILD_SAMPLES       OFF CACHE INTERNAL "")
+ set(VMA_ENABLE_INSTALL      OFF CACHE INTERNAL "")
+-fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES vma rstd vvk wavsen)
++fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd vvk wavsen)
+ 
+ add_subdirectory(../bridge waywallen-bridge-build)
+ 
+-- 
+2.55.0
+

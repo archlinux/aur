@@ -1,43 +1,49 @@
 # TODO: Use system qmlmaterial, remove qt6-shadertools and git-lfs
 
 # deps.json
-_rstd_commit=629bda81eb98856ca023f0f87f57dde8d22b4823
-_ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
-_wavsen_commit=aab112235e4da7e03c233793a9d612507f0e6355
-_qml_material_commit=a2c77e3db1888f6b907e9b06bcb0c4aaf8a7a573
-_qextra_commit=d02d9a7bfed546dfb7f87a5627b1c9e8f6fcc95a
+_rstd_commit=bf5f855ddb1b84390306e0913b89149ac72a3510
+_vvk_commit=8fcfd34b43a13ade515f029b0b4209bd3684645f
+_ncrequest_commit=37d3c588fb1307dd6c40fbc8681790b45eb5402a
+_wavsen_commit=e49fc62fdc1b57abeabb643daa6ebab96fb3821f
+_qml_material_commit=628f580b60f8e7195447ec9e27dae5cce5b0fcbc
+_qextra_commit=2106172c8c55693248661f5ddfc0623ff489285d
 
 pkgname=waywallen
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
 license=(MIT)
-depends=(libgcc libstdc++ glibc ffmpeg curl mesa sqlite vulkan-icd-loader
-         qt6-base qt6-declarative qt6-grpc libpulse zstd)
-makedepends=(git cmake cargo "clang>=22" lld vulkan-headers ninja asio pegtl qt6-shadertools git-lfs
-             corrosion nlohmann-json)
+depends=(libgcc libstdc++ glibc ffmpeg mesa sqlite vulkan-icd-loader
+         qt6-base qt6-declarative qt6-grpc qt6-websockets zstd)
+makedepends=(git cmake cargo "clang>=22" lld vulkan-headers ninja qt6-shadertools git-lfs
+             corrosion vulkan-memory-allocator)
 optdepends=('waywallen-display: Required for layer-shell based compositors')
 options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
-        "git+https://github.com/hypengw/rstd.git#commit=$_rstd_commit"
+        "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
+        "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
-        "0001-use-system-deps.diff")
-sha256sums=('c563807ca8087f1ac670ff212c656617a77d8e9b495e7ce59eeb78f7be79b466'
-            '80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d'
-            '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
-            'ac96147170def04ce0bcc6f675874579db89e905d58f99b073d5ca6022aac7ef'
-            'd935fc76c304c8fc445234d66d92bf6706dfc8c2d3c671385fdf1e53cc4c76a9'
-            '012c6593ae9f980c033a18dea491675ad9d4af3247806e8477223f53109688d7'
-            '31bd980073336fdb44dcdbddc193c7d4ada4a51d491ef201f9078e9ce2e51e4e')
+        "0001-cmake-Use-system-VulkanMemoryAllocator.patch"
+        "0002-cmake-Use-system-Corrosion.patch")
+sha256sums=('ea8f6c36859ccda93572b186d3058845d303a505f3c16489ff550a11575276e2'
+            'a5ce0c3f766a5b75230cb05e5b9f49f52a8d10111e0391d418f27a239194e310'
+            '1c2f9e285109a2024219212781202d19bbef56a68c6dff42a5622155b2d8276f'
+            'c3bc9687c54234441ec948d7f80aaf9ddbb0f39c5dfb90bea78bf9fddb985b09'
+            'd3bd59f908243f5e87f1c42e3340ee70eeaf6c86315c48726dc50fc07904791e'
+            'f0c92c0a8d9918ccd2a296ec67ab1b8e95e79fd17cd52af4e7f281f826a956b2'
+            '7c8d8909c48c921b4bd00a1b710cf8563f37c46a1aaafff236060ee17a9bebfd'
+            '2a8c44a7caa2f8424528cd69d0118268dd3e36015cc003f5b39a4fdac4fbdfe4'
+            '7d45ef8daaec6e006a7f2514657079c9dd8f046bcb252a4227ad34cd34a02727')
 
 prepare() {
     cd "$pkgname"
-    patch -Np1 -i ../0001-use-system-deps.diff
+    patch -Np1 -i ../0001-cmake-Use-system-VulkanMemoryAllocator.patch
+    patch -Np1 -i ../0002-cmake-Use-system-Corrosion.patch
 
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target host-tuple
@@ -66,6 +72,7 @@ build() {
         -DCMAKE_LINKER_TYPE=LLD \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DFETCHCONTENT_SOURCE_DIR_RSTD="$srcdir/rstd" \
+        -DFETCHCONTENT_SOURCE_DIR_VVK="$srcdir/vvk" \
         -DFETCHCONTENT_SOURCE_DIR_NCREQUEST="$srcdir/ncrequest" \
         -DFETCHCONTENT_SOURCE_DIR_WAVSEN="$srcdir/wavsen" \
         -DFETCHCONTENT_SOURCE_DIR_QML_MATERIAL="$srcdir/QmlMaterial" \

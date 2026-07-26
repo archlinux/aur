@@ -1,0 +1,25 @@
+From c795028602f8053117afe868cb8737539515a59a Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 26 Jul 2026 20:58:43 +0800
+Subject: [PATCH 2/2] cmake: Use system Corrosion
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 887a056..2ccd804 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,7 +46,7 @@ option(WAYWALLEN_CARGO_OFFLINE "Pass --frozen to cargo (offline + locked, for fl
+ 
+ if(WAYWALLEN_BUILD_DAEMON)
+     include(FetchDeps)
+-    fetchdeps(${CMAKE_CURRENT_SOURCE_DIR}/deps.json NAMES Corrosion)
++    find_package(Corrosion 0.6.1 REQUIRED)
+     # FROZEN = --locked --offline; requires a committed/staged Cargo.lock
+     # and a vendored CARGO_HOME (set by the flatpak manifest).
+     set(_waywallen_corrosion_extra "")
+-- 
+2.55.0
+
