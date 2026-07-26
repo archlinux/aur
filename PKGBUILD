@@ -11,7 +11,7 @@
 # See scripts/aur/README.md.
 
 pkgname=mcpp-m
-pkgver=0.0.108
+pkgver=0.0.109
 pkgrel=1
 pkgdesc="Modern C++ build & package management tool (built from source)"
 arch=('x86_64' 'aarch64')
