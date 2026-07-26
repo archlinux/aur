@@ -1,6 +1,6 @@
 pkgbase = quantum-espresso
 	pkgdesc = A suite of codes for electronic-structure calculations and modeling
-	pkgver = 7.5
+	pkgver = 7.6
 	pkgrel = 1
 	url = https://www.quantum-espresso.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = quantum-espresso
 	depends = libgfortran.so
 	depends = blas-openblas
 	depends = fftw
-	source = https://gitlab.com/QEF/q-e/-/archive/qe-7.5/q-e-qe-7.5.tar.gz
-	sha256sums = 7e1f7a9a21b63192f5135218bee20a5321b66582e4756536681b76e9c59b3cc8
+	source = https://gitlab.com/QEF/q-e/-/archive/qe-7.6/q-e-qe-7.6.tar.gz
+	sha256sums = 945c8f16ab330c8f0b30f4de1a9a088b85038476fcd819394e641f4d2d8b7d51
 
 pkgname = quantum-espresso
