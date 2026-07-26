@@ -1,131 +1,123 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
-# Co-Maintainer: FGD
-# Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
-# Three-stage profile-guided optimization
-: ${_build_pgo:=false}
+_pkgname=firedragon
+__pkgname=$_pkgname-catppuccin
+_rdns=org.garudalinux.$__pkgname
+_pkgver=13.0.0
+_branding=catppuccin
+_gentoo=firefox-153-patches-01.tar.xz
+_gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
 
-# Profile with xvfb-run, if possible
-: ${_build_pgo_xvfb:=false}
-
-_pkgver=12.9.1
-_deno_ver=2.4.5
-
-__pkgname=firedragon
-pkgname=$__pkgname-catppuccin
-_pkgname=FireDragon
+pkgname=$__pkgname
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=1
-pkgdesc="Floorp fork build using custom branding and settings"
-url='https://firedragon.garudalinux.org'
-arch=('x86_64' 'aarch64')
-license=('MPL2')
-depends=(dbus
-         dbus-glib
-         ffmpeg
-         gtk3
-         libpulse
-         libxss
-         libxt
-         mime-types
-         nss
-         ttf-font)
-makedepends=(rsync
-             cbindgen
-             clang
-             diffutils
-             dump_syms
-             imagemagick
-             imake
-             inetutils
-             git
-             jack
-             lld
-             llvm
-             mesa
-             nasm
-             nodejs
-             python
-             rust
-             unzip
-             wasi-compiler-rt
-             wasi-libc
-             wasi-libc++
-             wasi-libc++abi
-             xorg-server-xvfb
-             yasm
-             zip)
-optdepends=('hunspell-dictionary: Spell checking'
-            'libnotify: Notification integration'
-            'networkmanager: Location detection via available WiFi networks'
-            'profile-sync-daemon: Load the browser profile into RAM'
-            'pulse-native-provider: Audio support'
-            'searx: Searching the web using a locally running searX instance'
-            'speech-dispatcher: Text-to-Speech'
-            'whoogle: Searching the web using a locally running Whoogle instance'
-            'xdg-desktop-portal: Screensharing with Wayland')
-provides=("$__pkgname")
-conflicts=("$__pkgname")
-options=(!debug
-         !emptydirs
-         !lto
-         !makeflags
-         !strip)
-backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
-        "usr/lib/${__pkgname}/distribution/policies.json")
-source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-source.tar.zst
-        firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-        fix-wasm32-wasi-target.patch
-        0023-bgo-969412-glibc-2.43.patch)
-source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
-source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
-sha256sums=('2431a463d63d0c33fe765aab607cbf43ca5fbceeca3e5a64b2514bba6fd63955'
-            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
-            'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
-            '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
-sha256sums_x86_64=('6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444')
-sha256sums_aarch64=('4e3e86739fe527c6891dbfa73799a5ec1b11f45898aaebf73bf3247c2e6a53dd')
-
-# Select the method of profiling
-if [[ "${_build_pgo::1}" == "t" ]]; then
-  if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-    makedepends+=(xorg-server-xvfb)
-  else
-    makedepends+=(weston xwayland-run)
-  fi
-fi
-
-_deno() {
-  pushd "${srcdir}/firedragon-source-v${_pkgver}/firedragon" > /dev/null || return
-  DENO_DIR="${srcdir}/.deno" "${srcdir}/deno" "$@"
-  popd > /dev/null || return
-}
+epoch=2
+pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
+url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
+arch=(x86_64 aarch64)
+license=(MPL-2.0)
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  ffmpeg
+  fontconfig
+  freetype2
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libgcc
+  libpulse
+  libstdc++
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  ttf-font
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  imake
+  jack
+  lld
+  llvm
+  mesa
+  nasm
+  nodejs
+  onnxruntime
+  pnpm
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'onnxruntime: Local machine learning features such as smart tab groups'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+replaces=($__pkgname-next)
+options=(
+  !emptydirs
+  !lto
+  !makeflags
+)
+install=$_pkgname.install
+noextract=($_gentoo)
+source=(
+  $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
+  https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo
+)
+sha256sums=('a4058023d5d1eb45ae240eeb6dc0a390ba3c3abd2ad061a96d2f6046e9348dcc'
+            '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e')
 
 prepare() {
-  rm -rf "${srcdir}/mozbuild"
-  mkdir "${srcdir}/mozbuild"
+  mkdir -p mozbuild
+  cd $_pkgname-v$_pkgver
 
-  export PATH="${srcdir}:$PATH"
+  tar -Oxf "$srcdir/$_gentoo" $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}") | patch -Nsp1
 
-  cd firedragon-source-v"${_pkgver}" || exit
+  echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
+  export FIREDRAGON_EDITION=$_branding
 
-  patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
-  patch -Nsp1 -i "$srcdir"/0023-bgo-969412-glibc-2.43.patch
-  sed -i -e 's/\("files":{\)[^}]*/\1/' third_party/rust/glslopt/.cargo-checksum.json
+  if [ $CARCH = x86_64 ]; then
+    echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-x64.mozconfig\"" >> ../mozconfig
+    export FIREDRAGON_TARGET=linux-x64
+  elif [ $CARCH = aarch64 ]; then
+    echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-arm64.mozconfig\"" >> ../mozconfig
+    export FIREDRAGON_TARGET=linux-arm64
+  fi
 
-  _deno install --allow-scripts --frozen
+  pnpm -C browser/$_pkgname install --frozen-lockfile
+  pnpm -C browser/$_pkgname all:build
 
-  _target="$(_deno task build --get-target)"
-
-  cat > ../mozconfig << END
-. "\$topsrcdir/firedragon/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig"
-. "\$topsrcdir/firedragon/gecko/mozconfigs/target/$_target.mozconfig"
-
-ac_add_options --with-noraneko-dist=firedragon/_dist/noraneko
-ac_add_options --enable-firedragon-settings
-
-# Build options
+  cat >> ../mozconfig <<END
 ac_add_options --enable-linker=lld
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -135,33 +127,20 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
 # Features
-ac_add_options --disable-updater
 ac_add_options --enable-jack
-
-# Other
-export AR=/usr/bin/llvm-ar
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
-export NM=/usr/bin/llvm-nm
-export RANLIB=/usr/bin/llvm-ranlib
+ac_add_options --disable-updater
 END
 }
 
 build() {
-  cd firedragon-source-v"${_pkgver}" || exit
+  cd $_pkgname-v$_pkgver
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
-  export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
 
-  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
-  export RUST_MIN_STACK=16777216
-
-  # Fix DRI/zink issues during compilation
-  export LIBGL_ALWAYS_SOFTWARE=true
-
-  # Malloc_usable_size is used in various parts of the codebase
+  # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
@@ -172,107 +151,54 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  # Clean source directory from previous build attempts
-  ./mach clobber
+  if [[ "${_build_pgo:-t}" == "t" ]]; then
+    # Do 3-tier PGO
+    echo "Building instrumented browser..."
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+    ./mach build --priority normal
 
-  _deno task build --write-buildid2
-  NODE_ENV=production _deno task build --release-build-before
+    echo "Profiling instrumented browser..."
+    ./mach package
+    LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+      dbus-run-session \
+      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      ./mach python build/pgo/profileserver.py
 
-  # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]]; then
-    local _old_profdata="$srcdir/merged.profdata"
-    local _old_jarlog="$srcdir/jarlog"
+    stat -c "Profile data found (%s bytes)" merged.profdata
+    test -s merged.profdata
 
-    # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
-      if [[ -s "$_old_profdata" ]]; then
-        echo "Restoring old profile data."
-        cp --reflink=auto -f "$_old_profdata" merged.profdata
-      fi
+    stat -c "Jar log found (%s bytes)" jarlog
+    test -s jarlog
 
-      if [[ -s "$_old_jarlog" ]]; then
-        echo "Restoring old jar log."
-        cp --reflink=auto -f "$_old_jarlog" jarlog
-      fi
-    fi
-
-    # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
-      echo "Building instrumented browser..."
-      cat > .mozconfig ../mozconfig
-      echo >> .mozconfig "ac_add_options --enable-profile-generate=cross"
-      ./mach build
-
-      _deno task build --release-build-after
-
-      echo "Profiling instrumented browser..."
-      ./mach package
-
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-        local _headless_run=(
-          xvfb-run
-          -s "-screen 0 1920x1080x24 -nolisten local"
-        )
-      else
-        local _headless_run=(
-          wlheadless-run
-          -c weston --width=1920 --height=1080
-        )
-      fi
-
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD"/jarlog \
-        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
-
-      echo "Removing instrumented browser..."
-      ./mach clobber objdir
-    fi
+    echo "Removing instrumented browser..."
+    ./mach clobber objdir
 
     echo "Building optimized browser..."
-    cat > .mozconfig ../mozconfig
-    echo >> .mozconfig "ac_add_options --enable-lto=cross,full"
-
-    if [[ -s merged.profdata ]]; then
-      stat -c "Profile data found (%s bytes)" merged.profdata
-      echo >> .mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >> .mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
-
-      # save profdata for reuse
-      cp --reflink=auto -f merged.profdata "$_old_profdata"
-    else
-      echo "Profile data not found."
-    fi
-
-    if [[ -s jarlog ]]; then
-      stat -c "Jar log found (%s bytes)" jarlog
-      echo >> .mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
-
-      # save jarlog for reuse
-      cp --reflink=auto -f jarlog "$_old_jarlog"
-    else
-      echo "Jar log not found."
-    fi
-
-    ./mach build
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross,full
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
   else
-    echo "Building browser..."
-    cat > .mozconfig ../mozconfig
-    echo >> .mozconfig "ac_add_options --enable-lto=cross,full"
-    ./mach build
+    cat >.mozconfig ../mozconfig
   fi
+  ./mach build --priority normal
 
-  _deno task build --release-build-after
+  cat browser/locales/shipped-locales | xargs ./mach package-multi-locale --locales
 }
 
 package() {
-  cd firedragon-source-v"${_pkgver}" || exit
+  cd $_pkgname-v$_pkgver
 
-  DESTDIR="$pkgdir" ./mach install
+  mkdir -p "$pkgdir/usr/lib"
+  tar -xvf obj/dist/"$(cat obj/dist/package_name.txt)" -C "$pkgdir/usr/lib"
 
-  install -Ddvm755 "${pkgdir}/usr/bin"
-  ln -srfv "$pkgdir/usr/lib/${__pkgname}/${__pkgname}" "$pkgdir/usr/bin/${__pkgname}"
+  local appdir="$pkgdir/usr/lib/$_pkgname"
 
-  local vendorjs="${pkgdir}/usr/lib/${__pkgname}/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "${vendorjs}" << END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -289,45 +215,52 @@ pref("extensions.autoDisableScopes", 11);
 pref("browser.gnome-search-provider.enabled", true);
 END
 
-  local distini="${pkgdir}/usr/lib/${__pkgname}/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "${distini}" << END
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
-id=${__pkgname}
+id=${pkgname}
 version=${pkgver}-${pkgrel}
 about=${pkgdesc}
 
 [Preferences]
 app.distributor=garudalinux
-app.distributor.channel=${__pkgname}
+app.distributor.channel=${pkgname}
 app.partner.garudalinux=garudalinux
 END
 
-  # Make native messaging work
-  ln -s "/usr/lib/mozilla/native-messaging-hosts" "${pkgdir}/usr/lib/${__pkgname}/native-messaging-hosts"
+  # Link up system ONNX runtime
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$appdir"
 
-  # GNOME search provider
-  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" << END
-[Shell Search Provider]
-DesktopId=$pkgname.desktop
-BusName=org.mozilla.${pkgname//-/}.SearchProvider
-ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
-Version=2
-END
-
-  # Application icons
-  for i in 16 32 48 64 128; do
-    install -Dvm644 browser/branding/firedragon-catppuccin/default$i.png \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${__pkgname}.png"
+  # Install desktop icons and metadata
+  local i
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dvm644 "browser/$_pkgname/branding/$_branding/default$i.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_rdns.png"
   done
-  install -Dvm644 browser/branding/firedragon-catppuccin/content/about-logo.png \
-    "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${__pkgname}.png"
+
+  install -Dvm644 browser/$_pkgname/assets/$_rdns.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 browser/$_pkgname/assets/$_rdns.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+#!/bin/sh
+exec /usr/lib/$_pkgname/$_pkgname "\$@"
+END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/${__pkgname%-*}-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
-  # All the needed configuration files
-  install -Dvm644 "firedragon/assets/${__pkgname}.desktop" "${pkgdir}/usr/share/applications/${__pkgname}.desktop"
-  install -Dvm644 "${srcdir}/firedragon.psd" "${pkgdir}/usr/share/psd/browsers/firedragon"
+  # Use system certificates
+  if [[ -e $appdir/libnss3.so ]]; then
+    ln -sfv ../libnssckbi.so -t "$appdir"
+  fi
+
+  # Register GNOME search provider
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini" <<END
+[Shell Search Provider]
+DesktopId=$_pkgname.desktop
+BusName=org.mozilla.${_pkgname//-/_}.SearchProvider
+ObjectPath=/org/mozilla/${_pkgname//-/_}/SearchProvider
+Version=2
+END
 }
