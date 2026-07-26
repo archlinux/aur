@@ -9,6 +9,6 @@ package() {
     install -d "$pkgdir/tmp"
 
     cat << 'EOF' > "$pkgdir/tmp/flag.txt"
-p4ck4g3_w1th0ut_pack4g3s
+p4ckm4n_Syu_br0k3_my_5y573m_4g41n
 EOF
 }
