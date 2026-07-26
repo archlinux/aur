@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=pandia
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='JSON IDE built for files the rest of your tools choke on'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'cairo' 'libsoup3' 'webkit2gtk-4.1')
 makedepends=('rust' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/hendurhance/pandia/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('146ef95f01f4fa87142654a58b5c56e9671c9696024621f36d98fe771d91f330'
+sha256sums=('f5745a4e9601d1e990b85d690c9d7efd6bf0be31784b3d7966fda3dffb41db3b'
             'fc33f56e614ac421b3f620e32e62b67e3bcf6566d980d18cdd8c88635e1f2c7f')
 options=('!lto')
 
