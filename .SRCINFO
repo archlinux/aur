@@ -1,6 +1,6 @@
 pkgbase = bip39-generator
 	pkgdesc = BIP-39 Mnemonic Generator with optional user provided and keyboard entropy
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://codeberg.org/FortisCard/bip39-generator
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = bip39-generator
 	makedepends = git
 	depends = python
 	depends = python-mnemonic
-	source = git+https://codeberg.org/FortisCard/bip39-generator.git#tag=v1.1.0
+	source = git+https://codeberg.org/FortisCard/bip39-generator.git#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = bip39-generator

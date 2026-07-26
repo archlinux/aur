@@ -1,6 +1,6 @@
 # Maintainer: Agam Singh <agam@agamsingh.me>
 pkgname=bip39-generator
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="BIP-39 Mnemonic Generator with optional user provided and keyboard entropy"
 arch=('any')
