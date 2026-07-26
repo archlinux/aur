@@ -12,7 +12,7 @@ conflicts=('anihub-cli')
 source=("LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/anihub-cli-x86_64-unknown-linux-gnu")
 sha256sums=('904efe94bb82661871085d8f7250a5355aed12433d9d291d0fbcb21ca5d90580')
-sha256sums_x86_64=('746f5874fd2a48451e4efa273298a5adad4a1d009467a04abe3169a3438f40f8')
+sha256sums_x86_64=('c8d4d612d1c731b5e8ec412b0cb6c8c95c2d1cc23b963a84f5b32cbfb0cb1b3e')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/anihub-cli"

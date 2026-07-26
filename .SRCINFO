@@ -12,6 +12,6 @@ pkgbase = anihub-cli-bin
 	source = LICENSE-0.8.0::https://github.com/NEO-LAX/anihub-cli/raw/v0.8.0/LICENSE
 	sha256sums = 904efe94bb82661871085d8f7250a5355aed12433d9d291d0fbcb21ca5d90580
 	source_x86_64 = anihub-cli-bin-0.8.0::https://github.com/NEO-LAX/anihub-cli/releases/download/v0.8.0/anihub-cli-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 746f5874fd2a48451e4efa273298a5adad4a1d009467a04abe3169a3438f40f8
+	sha256sums_x86_64 = c8d4d612d1c731b5e8ec412b0cb6c8c95c2d1cc23b963a84f5b32cbfb0cb1b3e
 
 pkgname = anihub-cli-bin
