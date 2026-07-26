@@ -30,6 +30,7 @@ package() {
     cp -rp "lib" "${pkgdir}/opt/${pkgname%-reload-bin}/"
     cp -rp "data" "${pkgdir}/opt/${pkgname%-reload-bin}/"
 
+    sed -i 's/^Exec=.*/Exec=LD_LIBRARY_PATH="\/opt\/nipaplay\/lib:$LD_LIBRARY_PATH" \/opt\/nipaplay\/NipaPlay %f/' "${srcdir}/${_desktop_name}.desktop"
     install -Dm644 "${srcdir}/${_desktop_name}.desktop" "${pkgdir}/usr/share/applications/${_desktop_name}.desktop"
     install -Dm644 "${srcdir}/${_desktop_name}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_desktop_name}.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
