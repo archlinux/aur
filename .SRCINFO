@@ -1,6 +1,6 @@
 pkgbase = glassy-music-nankill-git
 	pkgdesc = Glassy Music is extension for music player
-	pkgver = 3.12.10.beta.r0.g5e6721d
+	pkgver = 3.12.10.beta.r1.g65fcf09
 	pkgrel = 1
 	url = https://github.com/NanKillBro/glassy-music-nankill
 	arch = x86_64
