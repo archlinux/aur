@@ -2,7 +2,7 @@
 
 pkgname=sigil2-wad
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 
 url="https://romero.com/sigil"
 pkgdesc="SIGIL II, the unofficial 6th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD"
@@ -15,7 +15,7 @@ source=("https://romero.com/s/SIGIL_II_V1_0.zip"
         "sigil2.desktop")
 
 sha256sums=('41741ce797e6faf9ebd0e3d577b5eaf9a648b64d850fbd741c1b9c28d8461017'
-            'c03b260d91529b6f6746605f9af4f5adc6d8fd27115d7a56b904c95d971c3815'
+            '595e182f0ef0266d349402a615ad39723cd620e834f34183bd456f4cd3380d9b'
             '35a3a026b4c2e6d55797b6d0f5b4d44ded6f4b27a3f3b94be3560a716a5d5231')
 
 latestver() {
