@@ -1,7 +1,7 @@
 pkgbase = singcast
 	pkgdesc = A clash GUI client based on Flutter
 	pkgver = 1.1.15
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/mapleafgo/singcast
 	install = singcast.install
