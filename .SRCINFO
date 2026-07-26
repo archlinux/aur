@@ -1,0 +1,20 @@
+pkgbase = undo-cli-bin
+	pkgdesc = Revert what the last shell command did to the filesystem
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/edaywalid/undo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = zsh: zsh hook
+	optdepends = bash: bash hook
+	optdepends = fish: fish hook
+	provides = undo-cli
+	conflicts = undo-cli
+	source_x86_64 = https://github.com/edaywalid/undo/releases/download/v0.2.5/undo_0.2.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7072e0c5566b2f6a52e9a30cd5f7bf5ea8c12cbe802dfdab2b4c2ad61190136a
+	source_aarch64 = https://github.com/edaywalid/undo/releases/download/v0.2.5/undo_0.2.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3398b9ba5b780658d90f3b9d66b8acc2edcfb1fa7138f69f80a7f7e8137c1e17
+
+pkgname = undo-cli-bin
