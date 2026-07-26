@@ -1,6 +1,6 @@
 pkgbase = hydra-proxy
 	pkgdesc = Terminal AI proxy gateway for Antigravity accounts (OpenAI/Anthropic-compatible)
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/deungjaho/hydra
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hydra-proxy
 	provides = hydra
 	conflicts = hydra
 	conflicts = hydra-git
-	source = hydra-proxy-0.4.3.tar.gz::https://github.com/deungjaho/hydra/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 037e18a41ca5678bfd6e8a7b4fb33ab4711b04f7305addc8a852e186db1e4026
+	source = hydra-proxy-0.4.4.tar.gz::https://github.com/deungjaho/hydra/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = a31a7a66946dc7f2be9a657189ccd940499be4ab16b577cb28110a728e92abbc
 
 pkgname = hydra-proxy
