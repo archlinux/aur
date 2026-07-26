@@ -1,7 +1,7 @@
 pkgbase = optmem-git
 	pkgdesc = Permanent memory for AI agents: an append-only memory store and a 426-token prompt
 	pkgver = r37.d618a3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VictorTaelin/OptMem
 	arch = any
 	license = unknown
