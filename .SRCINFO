@@ -1,0 +1,20 @@
+pkgbase = btrfs-headroom-git
+	pkgdesc = Read-only Btrfs allocator headroom health check
+	pkgver = 0.1.0.r0.g75697d8
+	pkgrel = 1
+	url = https://github.com/Mr-Tao/btrfs-headroom
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	depends = glibc
+	depends = systemd
+	optdepends = jq: parse status for the optional desktop notifier
+	optdepends = libnotify: send optional desktop notifications
+	provides = btrfs-headroom=0.1.0.r0.g75697d8
+	conflicts = btrfs-headroom
+	source = btrfs-headroom-git::git+https://github.com/Mr-Tao/btrfs-headroom.git
+	b2sums = SKIP
+
+pkgname = btrfs-headroom-git
