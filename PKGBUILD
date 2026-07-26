@@ -1,6 +1,6 @@
 # Maintainer: bezau1 <your-email@example.com>
 pkgname=vaultapp
-pkgver=r2.9984ec5
+pkgver=r4.284e704
 pkgrel=1
 pkgdesc="Local, encrypted (AES-256-GCM) notes vault — desktop app, no network access"
 arch=('x86_64')

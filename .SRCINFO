@@ -1,6 +1,6 @@
 pkgbase = vaultapp
 	pkgdesc = Local, encrypted (AES-256-GCM) notes vault — desktop app, no network access
-	pkgver = r2.9984ec5
+	pkgver = r4.284e704
 	pkgrel = 1
 	url = https://github.com/bezau1/vault-desktop
 	arch = x86_64
