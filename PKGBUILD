@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🍵 Simple ephemeral chat in your terminal"
 
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2c04787b432f899609ffebb24788fe7c50672cfa20327349a9854b2f9ef85485')
-sha256sums_aarch64=('fdc527c83a532bcef65fe6d1d7928e7c0b090171661a93c85d25b8174171a96f')
+sha256sums_x86_64=('d27fa20ca888789daf8ff178eea7f1ac8817a03c31bf085686786bd7bfc777dd')
+sha256sums_aarch64=('c72479e9cb1900221401752678e0347254dac62be9afa77260690655855948f0')
 
 
 package() {
