@@ -2,7 +2,7 @@
 
 _pkgname="pman"
 pkgname="${_pkgname}-helper"
-pkgver=""
+pkgver="1.3.0"
 pkgrel="3"
 pkgdesc="A pacman helper script, because you forget all the stupid flags"
 url="https://git.bjphoster.com/source/${_pkgname}"
