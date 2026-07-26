@@ -1,31 +1,28 @@
 pkgbase = smfc
-	pkgdesc = Super Micro fan control for Arch Linux (home) servers.
-	pkgver = 4.2.1
+	pkgdesc = Supermicro fan control systemd service for Linux (home) servers
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
-	arch = x86_64
-	license = GPL3
-	checkdepends = flake8
-	checkdepends = python-coverage
-	checkdepends = python-pylint
+	arch = any
+	license = GPL-3.0-only
 	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
 	checkdepends = python-mock
-	checkdepends = python-pytest-cov
 	checkdepends = python-pyudev
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
+	depends = python-pyudev
 	depends = ipmitool
-	depends = bash
-	depends = systemd
-	optdepends = smartmontools: For SAS/SCSI disks and standby guard feature
-	optdepends = nvidia-utils: For GPU fan controller
-	backup = etc/default/smfc
+	optdepends = smartmontools: SAS/SCSI disk temperatures and standby guard feature
+	optdepends = nvidia-utils: NVIDIA GPU fan controller (gpu_type=nvidia)
+	optdepends = rocm-smi-lib: AMD GPU fan controller (gpu_type=amd)
 	backup = etc/smfc/smfc.conf
-	source = smfc-v4.2.1.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v4.2.1.tar.gz
-	source = modules-load.conf
-	source = reload-modules.hook
-	sha256sums = 0ab042f3bf1c43ebe7394afdb276c317d2399e39bb86245ea94ba4662e1a6949
-	sha256sums = cb5d4c408aa5adfdf5b476c6c203cdefda8e765bb4e306c95afdda13b905d1ba
-	sha256sums = e1c85e8b2ba25ff6384205fe4a4bb2492919861a56c0059f3b6f6feb6f580df8
+	backup = etc/default/smfc
+	source = smfc-6.0.0.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v6.0.0.tar.gz
+	sha256sums = 4d1aea5b0f66479026352c29bd93568a50f54261af89d093232a109cfeb43e54
 
 pkgname = smfc

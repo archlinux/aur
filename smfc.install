@@ -1,21 +1,45 @@
+CONF_FILE="/etc/smfc/smfc.conf"
+
+_smfc_detect_hd_names() {
+    if [ -d /dev/disk/by-id ] && grep -q '^hd_names=$' "$CONF_FILE"; then
+        hd_disks=$(ls /dev/disk/by-id/ | grep -v -E '\-part|^wwn-|\-eui|nvme|^dm-|^lvm-|^md-|^zd-|_1+$' || true)
+        if [ -n "$hd_disks" ]; then
+            replacement=""; first=1
+            for disk in $hd_disks; do
+                if [ "$first" = 1 ]; then replacement="/dev/disk/by-id/${disk}"; first=0
+                else replacement="${replacement}\n\t/dev/disk/by-id/${disk}"; fi
+            done
+            sed -i "s|^hd_names=$|hd_names=${replacement}|" "$CONF_FILE"
+        fi
+    fi
+}
+
+_smfc_detect_nvme_names() {
+    if [ -d /dev/disk/by-id ] && grep -q '^nvme_names=$' "$CONF_FILE"; then
+        nvme_disks=$(ls /dev/disk/by-id/ | grep -E '^nvme-' | grep -v -E '\-part|\-eui|\-nvme|_1+$' || true)
+        if [ -n "$nvme_disks" ]; then
+            replacement=""; first=1
+            for disk in $nvme_disks; do
+                if [ "$first" = 1 ]; then replacement="/dev/disk/by-id/${disk}"; first=0
+                else replacement="${replacement}\n\t/dev/disk/by-id/${disk}"; fi
+            done
+            sed -i "s|^nvme_names=$|nvme_names=${replacement}|" "$CONF_FILE"
+        fi
+    fi
+}
+
 post_install() {
-  echo "Set up IPMI fan thresholds by reading"
-  echo "https://github.com/petersulyok/smfc/tree/main?tab=readme-ov-file#6-ipmi-fan-control-and-sensor-thresholds"
-  echo
-  echo "Prior to enabling the service,"
-  echo "Check if the cpu temp monitor module for your system is loaded"
-  echo "coretemp kernel module for Intel CPUs"
-  echo "k10temp kernel module for AMD CPUs"
-  echo "Load module as needed"
-  echo
-  echo "Enable Super Micro Fan Control as systemd service"
-  echo "by running:"
-  echo "$ systemctl enable smfc.service"
-  echo
-  echo "Modify /etc/smfc/smfc.conf and fill 'hd_names' with"
-  echo "the hard drive and/or SSD you'd like to monitor the"
-  echo "temperatures of."
-  echo
-  echo "Increase verbosity of the service by modifying"
-  echo "command-line arguments in /etc/default/smfc."
+    # Fresh install only: pre-fill disk lists from /dev/disk/by-id
+    _smfc_detect_hd_names
+    _smfc_detect_nvme_names
+    cat <<'MSG'
+==> Review the configuration in /etc/smfc/smfc.conf and /etc/default/smfc,
+    then enable the service:  systemctl enable --now smfc.service
+==> hwmon sensor drivers (coretemp/k10temp/drivetemp) are preloaded via
+    /usr/lib/modules-load.d/smfc.conf; load now with: modprobe coretemp drivetemp.
+MSG
+}
+
+post_upgrade() {
+    :
 }

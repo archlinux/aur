@@ -1,50 +1,61 @@
-# Contributer: Ewout van Mansom <ewout@vanmansom.name>
 # Maintainer: Uri Ramirez <urirocky@no.email>
+# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
-pkgver=4.2.1
+pkgver=6.0.0
 pkgrel=1
-pkgdesc="Super Micro fan control for Arch Linux (home) servers."
-arch=('x86_64')
-install=smfc.install
-backup=('etc/default/smfc' 'etc/smfc/smfc.conf')
+pkgdesc="Supermicro fan control systemd service for Linux (home) servers"
+arch=('any')
 url="https://github.com/petersulyok/smfc"
-license=('GPL3')
-depends=('python' 'ipmitool'  'bash' 'systemd')
-optdepends=('smartmontools: For SAS/SCSI disks and standby guard feature'
- 'nvidia-utils: For GPU fan controller')
-checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-mock' 'python-pytest-cov' 'python-pyudev')
-source=(
-  "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  'modules-load.conf'
-  'reload-modules.hook'
-)
-sha256sums=('0ab042f3bf1c43ebe7394afdb276c317d2399e39bb86245ea94ba4662e1a6949'
-            'cb5d4c408aa5adfdf5b476c6c203cdefda8e765bb4e306c95afdda13b905d1ba'
-            'e1c85e8b2ba25ff6384205fe4a4bb2492919861a56c0059f3b6f6feb6f580df8')
+license=('GPL-3.0-only')
+depends=('python' 'python-pyudev' 'ipmitool')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-mock' 'python-pyudev')
+optdepends=('smartmontools: SAS/SCSI disk temperatures and standby guard feature'
+            'nvidia-utils: NVIDIA GPU fan controller (gpu_type=nvidia)'
+            'rocm-smi-lib: AMD GPU fan controller (gpu_type=amd)')
+backup=('etc/smfc/smfc.conf' 'etc/default/smfc')
+install="$pkgname.install"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4d1aea5b0f66479026352c29bd93568a50f54261af89d093232a109cfeb43e54')
+
 build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  cd "$pkgname-$pkgver"
+  # pyproject sets pythonpath=src, so the suite runs from the source tree.
+  # -P keeps CWD off sys.path so only the configured pythonpath is used.
+  python -P -m pytest
 }
 
 package() {
-  install -o root -g root -Dm644 modules-load.conf "${pkgdir}/etc/smfc/smfc.conf"
+  cd "$pkgname-$pkgver"
 
-  cd "${pkgname}-${pkgver}"
-
-  install -o root -g root -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -o root -g root -Dm755 config/smfc.conf "${pkgdir}/etc/smfc/smfc.conf"
-  install -o root -g root -Dm644 config/smfc.service "${pkgdir}/etc/systemd/system/smfc.service"
-  install -o root -g root -Dm644 config/smfc "${pkgdir}/etc/default/smfc"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 doc/smfc.1 "$pkgdir/usr/share/man/man1/smfc.1"
-  install -o root -g root -Dm755 "${pkgdir}/usr/share/libalpm/hooks"
-  install -o root -g root -Dm644 "${pkgdir}/modules-reload.hook" "${pkgdir}/usr/share/libalpm/hooks/95-modules-reload.hook"
+
+  # Config, service unit and environment file
+  install -Dm644 config/smfc.conf    "$pkgdir/etc/smfc/smfc.conf"
+  install -Dm644 config/smfc         "$pkgdir/etc/default/smfc"
+  install -Dm644 config/smfc.service "$pkgdir/usr/lib/systemd/system/smfc.service"
+
+  # Man pages (auto-compressed by makepkg)
+  install -Dm644 doc/smfc.1        "$pkgdir/usr/share/man/man1/smfc.1"
+  install -Dm644 doc/smfc-client.1 "$pkgdir/usr/share/man/man1/smfc-client.1"
+
+  # Sample configurations and documentation
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" config/samples/*.conf
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md CHANGELOG.md
+
+  # License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Preload hwmon temperature-sensor drivers that smfc reads via /sys/class/hwmon
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf" <<'EOF'
+# hwmon sensor drivers smfc reads for CPU and disk temperatures
+coretemp
+k10temp
+drivetemp
+EOF
 }
