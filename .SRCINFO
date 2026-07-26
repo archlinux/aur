@@ -1,10 +1,10 @@
 pkgbase = fluent-bit-git
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations
-	pkgver = 3.2.4.r77.gc2b3d4768
+	pkgver = 5.0.9.r148.gcb7256c28
 	pkgrel = 1
 	url = https://fluentbit.io/
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = git
 	makedepends = cmake

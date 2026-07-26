@@ -2,11 +2,11 @@
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=fluent-bit-git
-pkgver=3.2.4.r77.gc2b3d4768
+pkgver=5.0.9.r148.gcb7256c28
 pkgrel=1
 pkgdesc="Collect data/logs from different sources, unify and send them to multiple destinations"
 url="https://fluentbit.io/"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 license=('Apache')
 makedepends=('git' 'cmake' 'make' 'gcc')
 depends=('luajit')
