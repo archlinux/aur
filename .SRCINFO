@@ -13,6 +13,8 @@ pkgbase = python-shell
 	makedepends = python-hatchling
 	depends = python
 	source = shell-1.0.1.tar.gz::https://github.com/toastdriven/shell/archive/refs/tags/v1.0.1.tar.gz
+	source = change-working-directory.patch
 	sha256sums = d114d74338877a8739ede11ef5466e950c5820a93d7dd20aa96408b2e353af0c
+	sha256sums = ad26311c4fe9d43804af3ac3daed1554898987e30c9bd64503ba1a44927ff6ae
 
 pkgname = python-shell

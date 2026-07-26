@@ -1,0 +1,210 @@
+--- ./shell.py.orig	2026-07-25 22:10:20.789163635 -0300
++++ ./shell.py	2026-07-25 22:11:07.367607428 -0300
+@@ -23,28 +23,41 @@
+     ['Hello, world!']
+ 
+ """
++from typing import Union, Optional
+ import shlex
+ import subprocess
++import sys
++import os
+ 
+ 
+-__author__ = 'Daniel Lindsley'
+-__license__ = 'New BSD'
++__author__ = "Daniel Lindsley"
++__license__ = "New BSD"
+ __version__ = (1, 0, 1)
+ 
+ 
++PathTypes = Union[str, bytes, os.PathLike]
++
++
+ class ShellException(Exception):
+     """The base exception for all shell-related errors."""
++
+     pass
+ 
+ 
+ class MissingCommandException(ShellException):
+     """Thrown when no command was setup."""
++
+     pass
+ 
+ 
+ class CommandError(ShellException):
+     """Thrown when a command fails."""
+-    error_code = 1
++
++    def __init__(self, message, code, stderr):
++        self.message = message
++        self.code = code
++        self.stderr = stderr
++        super(CommandError, self).__init__(message)
+ 
+ 
+ class Shell(object):
+@@ -66,21 +79,41 @@
+     Optionally accepts a ``strip_empty`` parameter, which should be a boolean.
+     If set to ``True``, only non-empty lines from ``Shell.output`` or
+     ``Shell.errors`` will be returned. (Default: ``True``)
++
++    Optionally accepts a ``die`` parameter, which should be a boolean.
++    If set to ``True``, raises a CommandError if the command exits with a
++    non-zero return code. (Default: ``False``)
++
++    Optionally accepts a ``verbose`` parameter, which should be a boolean.
++    If set to ``True``, prints stdout to stdout and stderr to stderr as
++    execution happens. (Default: ``False``)
+     """
+-    def __init__(self, has_input=False, record_output=True, record_errors=True,
+-                 strip_empty=True):
++
++    def __init__(
++        self,
++        has_input=False,
++        record_output=True,
++        record_errors=True,
++        strip_empty=True,
++        die=False,
++        verbose=False,
++        cwd: Optional[PathTypes] = None,
++    ):
+         self.has_input = has_input
+         self.record_output = record_output
+         self.record_errors = record_errors
+         self.strip_empty = strip_empty
++        self.die = die
++        self.verbose = verbose
+ 
+-        self.last_command = ''
+-        self.line_breaks = '\n'
++        self.last_command = ""
++        self.line_breaks = "\n"
+         self.pid = None
+         self.code = 0
++        self.cwd = cwd
+         self._popen = None
+-        self._stdout = ''
+-        self._stderr = ''
++        self._stdout = ""
++        self._stderr = ""
+ 
+     def _split_command(self, command):
+         """
+@@ -105,13 +138,19 @@
+ 
+         Records nothing if the ``record_*`` options have been set to ``False``.
+         """
+-        if self.record_output:
+-            if stdout != None:
++        if stdout != None:
++            if self.record_output:
+                 self._stdout += stdout
++            if self.verbose:
++                sys.stdout.write(stdout)
++                sys.stdout.flush()
+ 
+-        if self.record_errors:
+-            if stderr != None:
++        if stderr != None:
++            if self.record_errors:
+                 self._stderr += stderr
++            if self.verbose:
++                sys.stderr.write(stderr)
++                sys.stderr.flush()
+ 
+     def _communicate(self, the_input=None):
+         """
+@@ -126,6 +165,13 @@
+         if self._popen.returncode is not None:
+             self.code = self._popen.returncode
+ 
++        if self.die and self.code != 0:
++            raise CommandError(
++                message="Command exited with code {}".format(self.code),
++                code=self.code,
++                stderr=stderr,
++            )
++
+     def run(self, command):
+         """
+         Runs a given command.
+@@ -140,24 +186,22 @@
+ 
+             >>> from shell import Shell
+             >>> sh = Shell()
+-            >>> sh.run('ls- alh')
++            >>> sh.run('ls -alh')
+ 
+         """
+         self.last_command = command
+         command_bits = self._split_command(command)
+         kwargs = {
+-            'stdout': subprocess.PIPE,
+-            'stderr': subprocess.PIPE,
+-            'universal_newlines': True,
++            "stdout": subprocess.PIPE,
++            "stderr": subprocess.PIPE,
++            "universal_newlines": True,
++            "cwd": self.cwd,
+         }
+ 
+         if self.has_input:
+-            kwargs['stdin'] = subprocess.PIPE
++            kwargs["stdin"] = subprocess.PIPE
+ 
+-        self._popen = subprocess.Popen(
+-            command_bits,
+-            **kwargs
+-        )
++        self._popen = subprocess.Popen(command_bits, **kwargs)
+         self.pid = self._popen.pid
+ 
+         if not self.has_input:
+@@ -276,8 +320,16 @@
+         return lines
+ 
+ 
+-def shell(command, has_input=False, record_output=True, record_errors=True,
+-          strip_empty=True):
++def shell(
++    command,
++    has_input=False,
++    record_output=True,
++    record_errors=True,
++    strip_empty=True,
++    die=False,
++    verbose=False,
++    cwd: Optional[PathTypes] = None,
++):
+     """
+     A convenient shortcut for running commands.
+ 
+@@ -301,6 +353,14 @@
+     If set to ``True``, only non-empty lines from ``Shell.output`` or
+     ``Shell.errors`` will be returned. (Default: ``True``)
+ 
++    Optionally accepts a ``die`` parameter, which should be a boolean.
++    If set to ``True``, raises a CommandError if the command exits with a
++    non-zero return code. (Default: ``False``)
++
++    Optionally accepts a ``verbose`` parameter, which should be a boolean.
++    If set to ``True``, prints stdout to stdout and stderr to stderr as
++    execution happens. (Default: ``False``)
++
+     Returns the ``Shell`` instance, which has been run with the given command.
+ 
+     Example::
+@@ -315,6 +375,9 @@
+         has_input=has_input,
+         record_output=record_output,
+         record_errors=record_errors,
+-        strip_empty=strip_empty
++        strip_empty=strip_empty,
++        die=die,
++        verbose=verbose,
++        cwd=cwd,
+     )
+     return sh.run(command)

@@ -22,10 +22,17 @@ url="${_url_github}"
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
 depends=('python')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('d114d74338877a8739ede11ef5466e950c5820a93d7dd20aa96408b2e353af0c')
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "change-working-directory.patch")
+source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "change-working-directory.patch")
+sha256sums=('d114d74338877a8739ede11ef5466e950c5820a93d7dd20aa96408b2e353af0c'
+            'ad26311c4fe9d43804af3ac3daed1554898987e30c9bd64503ba1a44927ff6ae')
 
+
+prepare() {
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    patch -p1 < "../change-working-directory.patch"
+}
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
