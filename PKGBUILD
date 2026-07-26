@@ -4,7 +4,7 @@
 pkgname=warsaw-bin
 _pkgver=2.22.1-6
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the needed software to use some banking services"
 arch=(x86_64)
 url="https://www.topaz.com.br"
@@ -38,9 +38,10 @@ package() {
     cp -r usr "$pkgdir"
     # dump lib files to /lib
     cp -r lib "$pkgdir/usr/"
-  
+
     # Install copyright and license in proper directory
     install -Dm644 "${srcdir}/gpl-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+    install -Dm644 "${srcdir}/warsaw_setup/license-pt.html" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/license-pt.html"
     install -Dm644 "$pkgdir"/usr/share/{doc,licenses}/${pkgname%-bin}/copyright
     rm -rf "$pkgdir/usr/share/doc"
 }

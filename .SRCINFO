@@ -1,7 +1,7 @@
 pkgbase = warsaw-bin
 	pkgdesc = Provides the needed software to use some banking services
 	pkgver = 2.22.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.topaz.com.br
 	install = warsaw-bin.install
 	arch = x86_64
