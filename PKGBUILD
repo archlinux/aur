@@ -3,8 +3,8 @@
 
 _pkgname="qcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.6.3.r2.ga6a9c0e
-pkgrel=1
+pkgver=0.6.3.r14.g92d546f
+pkgrel=2
 pkgdesc="Qt-GUI for CSXCAD"
 url="https://github.com/thliebig/QCSXCAD"
 license=("LGPL-3.0-or-later")
@@ -12,21 +12,24 @@ arch=("x86_64")
 
 depends=(
   'csxcad' # AUR
-  'qt5-base'
-  'tinyxml'
+  'qt6-5compat'
+  'qt6-base'
   'vtk'
 )
 makedepends=(
   'cmake'
-  'fmt'
-  'glew'
+  'git'
   'ninja'
+
+  'eigen3'
+  'fast_float'
   'nlohmann-json'
   'openmpi'
-  'verdict'
+  'utf8cpp'
+  'vulkan-headers'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -46,7 +49,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"

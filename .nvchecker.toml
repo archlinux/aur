@@ -1,4 +1,0 @@
-[qcsxcad-git]
-source = "git"
-git = "https://github.com/thliebig/QCSXCAD.git"
-prefix = "v"
