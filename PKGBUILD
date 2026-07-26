@@ -23,12 +23,6 @@ depends=('libperconaserverclient' 'boost-libs' 'readline' 'openssl')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
 makedepends=('git' 'cmake' 'clang' 'boost' 'percona-server' 'openssl')
 
-# Helpful pointers for setting up databases without forcing local bloat
-optdepends=(
-	'mysql: To host the Oracle MySQL database server locally'
-	'docker: To run the AzerothCore server in a containerized environment'
-)
-
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
 
