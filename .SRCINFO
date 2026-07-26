@@ -1,0 +1,15 @@
+pkgbase = termsweeper
+	pkgdesc = Just a game-minesweeper on the Linux terminal.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/nikitastrelom/termsweeper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	source = termsweeper-1.0.8.tar.gz::https://github.com/nikitastrelom/termsweeper/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = termsweeper
