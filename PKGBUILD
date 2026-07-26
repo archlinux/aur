@@ -49,7 +49,7 @@ prepare() {
         if [ -d "sdk/include" ] && [ -f "sdk/include/AppCore/App.h" ]; then
             echo "==> SDK extracted flatly into sdk/. Re-structuring into target directory layout..."
             mkdir -p "${sdk_target}"
-            mv sdk/bin sdk/include sdk/layers "${sdk_target}/" 2>/dev/null || true
+            mv sdk/bin sdk/include sdk/inspector sdk/lib sdk/license sdk/resources sdk/samples sdk/shaders sdk/tools "${sdk_target}/" 2>/dev/null || true
         fi
 
         if [ -d "${sdk_target}/ultralight-free-sdk-1.4.0-linux-x64" ]; then
