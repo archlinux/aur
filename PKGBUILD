@@ -1,6 +1,6 @@
 # Maintainer: Miro-sh
 pkgname=animesama-cli
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Browse and watch anime from anime-sama.fr in your terminal"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-textual' 'mpv')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Miro-sh/animesama-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79b5e9c93b75065f6e2ec2f1180ff7283300048ab270fd9ed3fe63f7c0ed717d')
+sha256sums=('35f59e90ec8faa5856c8d71acd3c75c484a0d2216043bd69b9c57128bd54e359')
 
 build() {
   cd "$pkgname-$pkgver"
