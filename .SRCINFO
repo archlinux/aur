@@ -1,7 +1,7 @@
 pkgbase = weg-fm
 	pkgdesc = Keyboard-first GTK4 file manager for Linux featuring desktop interop and multi-level undo
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frsaghna/weg-fm
 	arch = any
 	license = GPL-3.0-or-later
