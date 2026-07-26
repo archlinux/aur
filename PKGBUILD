@@ -1,6 +1,6 @@
 # Maintainer: nyq <batasignal@proton.me>
 pkgname=nyqfetch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tuff custom system fetch utility written in Python"
 arch=('any')
