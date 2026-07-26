@@ -1,6 +1,6 @@
 # Maintainer: frsaghna <frsaghna@github.com>
 pkgname=weg-fm
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Keyboard-first GTK4 file manager for Linux featuring desktop interop and multi-level undo"
 arch=('any')
@@ -13,7 +13,12 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf33bdcec841eb1b39c4f7e9f4681b50efd4cfefbd02d7e3fd45443cecbc9ba0')
+sha256sums=('55f71db12905fc506f8ee6925da5785aae96e7476075ccbb30cd8523c2b66c44')
+
+prepare() {
+    rm -rf "$pkgname-$pkgver"
+    tar -xzf "$pkgname-$pkgver.tar.gz"
+}
 
 build() {
     cd "$pkgname-$pkgver"
