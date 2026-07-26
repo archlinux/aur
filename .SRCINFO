@@ -1,6 +1,6 @@
 pkgbase = nml
 	pkgdesc = OpenTTD NewGRF Meta Language Tools
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/OpenTTD/nml
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nml
 	depends = python-ply
 	depends = python-pillow
 	depends = python-setuptools
-	source = nml-0.8.1.tar.gz::https://github.com/OpenTTD/nml/archive/0.8.1.tar.gz
-	source = nml-0.8.1-set-version.patch
-	sha256sums = d8d3efac1396e61d8a3a5e8b39b2015c8742fddd96b76689ab898062022d72b0
-	sha256sums = afe75ee57633026972a2617c2f8023e0a364eab57b5df3f1079af149dee4112d
+	source = nml-0.9.0.tar.gz::https://github.com/OpenTTD/nml/archive/0.9.0.tar.gz
+	source = nml-0.9.0-set-version.patch
+	sha256sums = c60232f48b05b5bf15918e597a15e97192634b1d4b84bcf0a1f829f167a8d7d8
+	sha256sums = d36d8bed287b95bb8e8b3acf6dd187f1dd17ab27a1ade08d583af8dbe7799a9d
 
 pkgname = nml
