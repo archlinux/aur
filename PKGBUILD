@@ -1,6 +1,6 @@
 # Maintainer: Illia Zavadzkyi <i68281124@gmail.com>
 pkgname=fastaur
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Fast, Go-powered AUR helper with parallel RPC queries and mandatory PKGBUILD review"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('pacman' 'git' 'base-devel' 'sudo')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/user14923929/fastaur/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('069e87a996f730840d7574a67c6ca3c019e08312a7787996799508b43bca98e9')
+sha256sums=('dd10f59cc7605435b3f9ffca9249f9129841ef015eeb30ea6c6beab1dbcd21d9')
 
 build() {
   cd "$pkgname-$pkgver"
