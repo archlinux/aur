@@ -3,7 +3,7 @@
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
 pkgver=1.0.r0.g2dc5664
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
