@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=xdg-desktop-portal-xapp-filepicker-git
-pkgver=1.1.4.r73.35f454d
+pkgver=1.1.4.r74.b8de080
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support (git)'
 arch=(x86_64)
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd xdg-desktop-portal-xapp-filepicker
-  printf "1.1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.1.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

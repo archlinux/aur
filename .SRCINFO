@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-xapp-filepicker-git
 	pkgdesc = A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support (git)
-	pkgver = 1.1.4.r73.35f454d
+	pkgver = 1.1.4.r74.b8de080
 	pkgrel = 1
 	url = https://github.com/Twilight0/xdg-desktop-portal-xapp-filepicker
 	arch = x86_64
