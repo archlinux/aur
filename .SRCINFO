@@ -13,11 +13,11 @@ pkgbase = synara
 	options = !debug
 	source = Synara-0.6.1-x86_64.AppImage::https://github.com/Emanuele-web04/synara/releases/download/v0.6.1/Synara-0.6.1-x86_64.AppImage
 	source = synara.desktop
-	source = synara.png
+	source = synara-code.svg
 	source = LICENSE::https://raw.githubusercontent.com/Emanuele-web04/synara/v0.6.1/LICENSE
 	sha256sums = d54ddf5deb3306adbc68b83688186bef712a2231e6bd091b7518ad2e87163e46
-	sha256sums = a6a5dbdcd15b78fa36370059b1c95d3e534811c324e4a7774d64da968ba03f9b
-	sha256sums = 3914e01ffa931a12adef6531e90adbdeb1a267cf3721dbfe8291fe81a77b05b3
+	sha256sums = 18edbd09c38d58bcde63c2fb93f670f8d2eaeca84a1baa0d398fac3ade78ae56
+	sha256sums = 426cd0c3bacd826957099cb20609c6aeb62445c8203b515924b998623a646fad
 	sha256sums = 6c263925edf74f9255c979b585b2b012b16c730f4c455a0aad4db8ddd5c91c5f
 
 pkgname = synara
