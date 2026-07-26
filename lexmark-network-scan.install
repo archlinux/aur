@@ -96,8 +96,6 @@ post_install() {
 	chmod 444 '/usr/local/lexmark/unix_scan_drivers/docs/license/ru/license.txt'
 	chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn'
 	chmod 755 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn'
-	chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn/license.txt'
-	chmod 444 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_cn/license.txt'
 	chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw'
 	chmod 755 '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw'
 	chown root:bin '/usr/local/lexmark/unix_scan_drivers/docs/license/zh_tw/license.txt'
@@ -1197,7 +1195,7 @@ post_install() {
 
 
 	if [ -z "$RPM_INSTALL_PREFIX" ];then
-	   RPM_INSTALL_PREFIX=/usr/local/lexmark
+		RPM_INSTALL_PREFIX=/usr/local/lexmark
 	fi
 
 	$RPM_INSTALL_PREFIX/network-scan.link $RPM_INSTALL_PREFIX
@@ -1240,9 +1238,9 @@ post_install() {
 					-e 's/\/chinese\//\/zh_CN\//g' > ${FONTFILE_TRGT}
 			fi
 		else
-		   if [ -f "${FONTFILE_SRC}" ];then
-			  /bin/cp -f ${FONTFILE_SRC} ${FONTFILE_TRGT}
-		   fi
+			if [ -f "${FONTFILE_SRC}" ];then
+				/bin/cp -f ${FONTFILE_SRC} ${FONTFILE_TRGT}
+			fi
 		fi
 	}
 
@@ -1409,7 +1407,7 @@ post_install() {
 	recycling options in European Union countries, please refer to the
 	document listed below.
 
-	  ${RPM_INSTALL_PREFIX}/docs/EU_Waste_Electronic_Information.pdf
+	${RPM_INSTALL_PREFIX}/docs/EU_Waste_Electronic_Information.pdf
 
 	*******************************
 
@@ -1647,7 +1645,7 @@ pre_remove() {
 	fi
 
 	if [ "$1" = "remove" -o "$1" = "0" ];then
-		$RPM_INSTALL_PREFIX/network-scan.unlink 3.18.0.0
+		$RPM_INSTALL_PREFIX/network-scan.unlink 3.19.0.0
 	fi
 
 	# If above command fails, remove files manually
@@ -1659,6 +1657,7 @@ pre_remove() {
 #	rm -rf /usr/local/lexmark
 #	rm /usr/share/locale/*/LC_MESSAGES/sane-lexmark_nscan.mo
 
+	# cleanup_demon
 	#terminate running instance/s of device monitor
 	killall -9 demond_nscan > /dev/null 2>&1
 

@@ -3,7 +3,7 @@
 # Contributor: jharch <julian dot hossbach at gmx dot de>
 # Contributor: Joonas Kärkkäinen <group55 at eth1 dot fi>
 pkgname=lexmark-network-scan
-pkgver=3.18.0.0
+pkgver=3.19.0.0
 pkgrel=1
 pkgdesc='Lexmark Network and USB Scan Drivers'
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=('sane-frontends: sane scanner frontends'
             'xsane: sane scanner frontend')
 provides=('libsane-lexmark_nscan.so=1.0.16')
 install="$pkgname.install"
-source=('https://downloads.lexmark.com/downloads/drivers/lexmark_network-scan-linux-glibc2_02132025_x86_64.deb')
-sha256sums=('8b2f0d8c1de3ddd63e7aa2113f5e411346631bf294ac7892bb812e33bb0d09aa')
+source=('https://downloads.lexmark.com/downloads/drivers/lexmark_network-scan-linux-glibc2_06122026_x86_64.deb')
+sha256sums=('3c055cb29dae3b869adac330cc66bf217a783a0c549d23a9ef9de003465751cd')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir"
