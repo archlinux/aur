@@ -1,6 +1,6 @@
 pkgbase = froststrap-bin
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
-	pkgver = 2.0.0.beta.9
+	pkgver = 2.0.0.beta.10
 	pkgrel = 2
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = froststrap-bin
 	depends = hicolor-icon-theme
 	depends = gcc-libs
 	options = !strip
-	source = https://github.com/Froststrap/Froststrap/releases/download/v2.0.0-beta.9/Froststrap-linux-x64.deb
+	source = https://github.com/Froststrap/Froststrap/releases/download/v2.0.0-beta.10/Froststrap-linux-x64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/heads/main/LICENSE
 	source = LICENSE-MIT::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/heads/main/LICENSE-MIT
-	sha256sums = 0efc97356da064787f73e8cba442e1ee0a27872e4c8673df4cc6adbe5fd33192
+	sha256sums = a0994e74475cda7bf81e229de09dfde7d89464332a6dadba8b071bfb1804f8f4
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 	sha256sums = 34559d013a5a46dcce5bcb5efb3b9489dcf5e77381da540b6baf0cde78583db2
 
