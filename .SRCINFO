@@ -1,6 +1,6 @@
 pkgbase = retrovibed
 	pkgdesc = Personal digital archiving and distribution platform with a built-in torrent client, media player, and at-cost cloud storage
-	pkgver = 0.0.1785087559000
+	pkgver = 0.0.1785089582000
 	pkgrel = 1
 	url = https://retrovibe.space
 	arch = x86_64
