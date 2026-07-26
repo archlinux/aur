@@ -1,7 +1,7 @@
 # Maintainer: coffee <coffee@coffeecat.top>
 
 pkgname=orcasvn
-pkgver=0.4.10
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Visual SVN Desktop client (Tauri 2)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9bb9f6df029cd4fd569174e407adda091a95d21edd1580a644f5efa7e3e2cee5')
+sha256sums=('d7cb8962259d08262eaeaeac27e41fbe5b1a19a995e29032c4a8cd16189095f9')
 
 _srcroot() {
   find "$srcdir" -maxdepth 1 -mindepth 1 -type d -name 'OrcaSVN*' | head -n1
