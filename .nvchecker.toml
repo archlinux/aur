@@ -1,0 +1,5 @@
+[cxnet-bin]
+source = "github"
+github = "nickprotop/cxnet"
+use_latest_release = true
+prefix = "v"

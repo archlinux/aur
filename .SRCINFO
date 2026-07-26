@@ -1,0 +1,24 @@
+pkgbase = cxnet-bin
+	pkgdesc = A real-time network throughput monitor for the terminal, built with SharpConsoleUI
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/nickprotop/cxnet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cxnet
+	conflicts = cxnet
+	options = !strip
+	source = README-0.0.2.md::https://raw.githubusercontent.com/nickprotop/cxnet/v0.0.2/README.md
+	source = LICENSE-0.0.2::https://raw.githubusercontent.com/nickprotop/cxnet/v0.0.2/LICENSE
+	sha256sums = c876a489faf9f99ede9e1babd17d35a82a10379c4fb2d50bbf537db27c3e9abc
+	sha256sums = c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73
+	source_x86_64 = cxnet-x86_64-0.0.2::https://github.com/nickprotop/cxnet/releases/download/v0.0.2/cxnet-linux-x64
+	sha256sums_x86_64 = d8c81a2142d847b20f2cb8e018028af4c59c2fbb8176f2be3d37067073ce4529
+	source_aarch64 = cxnet-aarch64-0.0.2::https://github.com/nickprotop/cxnet/releases/download/v0.0.2/cxnet-linux-arm64
+	sha256sums_aarch64 = 9c121a85c1f9a7b551a102af4d9ee815e80bb07c5394c4733ee0850251f2a5a3
+
+pkgname = cxnet-bin
