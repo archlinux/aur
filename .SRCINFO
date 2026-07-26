@@ -1,6 +1,6 @@
 pkgbase = go-hass-agent
 	pkgdesc = A Home Assistant, native app for desktop/laptop devices.
-	pkgver = 14.14.1
+	pkgver = 14.15.0
 	pkgrel = 1
 	url = https://github.com/joshuar/go-hass-agent
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = go-hass-agent
 	optdepends = power-profiles-daemon: power state monitoring
 	optdepends = upower: battery sensors
 	optdepends = xdg-desktop-portal: running apps list and desktop settings
-	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=5cfb543?signed
+	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=6fdeed4?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	b2sums = 3cfae3c7a82a921d23e4c3a64e09699e839710d7be3d08e660fe8b5cf6aa66714bd80b888a147bb45bde256580558101209dad216a9f9c31fdce8912d32971c5
+	b2sums = 1a9b63a38a70d7fa121023521005bc43446d916b5c304193ae7848a302086a945ef1e2168bc291205439c3044ef33de16694e46ce4f00b7aecce68815178d0bf
 
 pkgname = go-hass-agent
