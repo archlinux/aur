@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r39.6f9cf06
+pkgver=r40.efd8a66
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --release --locked --bins
+  env -u RUSTFLAGS -u CFLAGS -u CXXFLAGS -u LDFLAGS cargo build --release --locked --bins
 }
 
 package() {
