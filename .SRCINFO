@@ -1,6 +1,6 @@
 pkgbase = anope
 	pkgdesc = A set of IRC Services designed for flexibility and ease of use
-	pkgver = 2.0.19
+	pkgver = 2.0.20
 	pkgrel = 1
 	url = https://www.anope.org/
 	install = anope.install
@@ -14,13 +14,15 @@ pkgbase = anope
 	optdepends = openssl: OpenSSL support
 	optdepends = gnutls: GnuTLS support
 	optdepends = pcre: Perl-compatible regular expression support
-	source = https://github.com/anope/anope/archive/2.0.19.tar.gz
+	source = https://github.com/anope/anope/archive/2.0.20.tar.gz
 	source = anope.install
 	source = anope.service
+	source = anope.conf
 	source = anope.tmpfiles
-	sha512sums = 9145265531bb9b4152622ea1dff0a48c171a5b863a86f2a6f1d6826ff0097dd6852755b35fe76d4e623551d064b5e53c2f4b8f90a07cfbea3ec5f7ab4e300ba3
+	sha512sums = f3f7e4b491f0b4999f82806722d2d803b5c383f6927eb3dc0425d8ab29adbc9c48d04c7e907dcf915abc57077c5f70f648822ba5996eaa10e06be93371d73cdd
 	sha512sums = 81bc1bbb504fa021417312a72799b04682e54dd0dd1e070a035d62fa66ac7fa8ee3cb1c8ffe3746c4569e7716d591cfa14e9631571a74a4b8224fae18fd50bef
-	sha512sums = 6535e075c27a124e3aeb45f1496194a70130da88e2eae29a80ac3d33754ce4020b405438681690b3df032b386bccbb3f65983ad84f85fe76f3562e744ea55b52
+	sha512sums = 0e1465aec499276c26b23e5ca4cc3df1c3250547cfdb007e4ded931b57bda4a650e33904d862c49603d30d7f36dd3c5e8b72f01a6f63fb7684afea9ef3158f32
+	sha512sums = a79678ca5a9de2484283d9c979eb0ebdf8d3312f802279fa68083bf3ed635ff5044eef73e6fbd6a769e28e87ec0306e5eeec49480d429d8cc2517996796fc739
 	sha512sums = 5c58a55c7e5974dec516f43eb960c9cdcadb68c92ceeaed7d96c82c180f8073d76d7491575331bca46f4714b19cdb188fe1bd056efb3391e3b3113c076407d21
 
 pkgname = anope
