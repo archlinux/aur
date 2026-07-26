@@ -4,14 +4,14 @@
 
 pkgname=jagex-launcher
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Jagex Launcher for Linux'
 arch=('x86_64')
 url="https://osrs.runescape.com/download"
 # TODO: Figure out proper license
 # electron & chromium licenses are included, but no package license
 license=('custom:Unlicense')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('jagex-launcher')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
