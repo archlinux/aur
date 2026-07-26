@@ -1,0 +1,15 @@
+pkgbase = rcc-sync
+	pkgdesc = Explicit, non-destructive local <-> OneDrive sync tool for Rogue Community College
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Skeome/rcc-sync
+	arch = any
+	license = MIT
+	depends = bash
+	depends = rsync
+	depends = diffutils
+	optdepends = libnewt: for full-screen TUI support
+	source = rcc-sync-1.1.0.tar.gz::https://github.com/Skeome/rcc-sync/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 555e1b625a03887078c56149086770a496d1543a610dd117a0be5d9b12f6f4b1
+
+pkgname = rcc-sync
