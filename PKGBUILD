@@ -16,8 +16,7 @@ depends=(
 )
 makedepends=(
 	'git'
-	'java-environment=21'
-	'gradle'
+	'java-environment=25'
 )
 optdepends=(
 	'libappindicator-gtk3: tray icon support'
@@ -38,8 +37,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgbase"
-	export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-	gradle createReleaseDistributable
+	export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
+	./gradlew createReleaseDistributable
 }
 
 package() {

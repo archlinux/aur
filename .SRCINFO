@@ -6,8 +6,7 @@ pkgbase = ab-download-manager-git
 	arch = any
 	license = Apache-2.0
 	makedepends = git
-	makedepends = java-environment=21
-	makedepends = gradle
+	makedepends = java-environment=25
 	depends = libxrender
 	depends = libxtst
 	depends = harfbuzz
