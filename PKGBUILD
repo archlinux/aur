@@ -1,7 +1,7 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=sgdboop
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program used for applying custom artwork to Steam, using SteamGridDB. Supports both Windows and Linux, written completely in C."
 arch=('x86_64' 'aarch64')
 url="https://www.steamgriddb.com/boop"
@@ -24,18 +24,16 @@ build() {
 
 package() {
 	cd "$_dir_name"
+
 	# Executable
-	install -dm755 "$pkgdir/usr/bin"
 	install -Dm755 "SGDBoop" "$pkgdir/usr/bin/SGDBoop"
 	
 	# Desktop file
 	install -Dm644 "res/linux/com.steamgriddb.SGDBoop.desktop" -t "$pkgdir/usr/share/applications"
-	
-	# Mime or sumthing idk
-	install -dm755 "$pkgdir/usr/share/mime/packages"
-	install -m644 "com.steamgriddb.SGDBoop.appdata.xml" "$pkgdir/usr/share/mime/packages/x-$_pkgname.xml"
+
+    # AppStream metadata
+    install -Dm644 "com.steamgriddb.SGDBoop.appdata.xml" "$pkgdir/usr/share/metainfo/com.steamgriddb.SGDBoop.appdata.xml"
 
 	# License
-	install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
-	install -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
