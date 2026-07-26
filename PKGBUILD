@@ -1,6 +1,6 @@
 # Maintainer: m39d
 pkgname=crosshair-overlay
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Native Wayland crosshair overlay for gaming, with a graphical settings tool"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 # standard naming for tag archives), which is why every path in
 # package() below is prefixed with "$pkgname-$pkgver/".
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m39d/crosshair-overlay/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('996afd903be8ad42c3d9a46764a81ee80ae4d9de432a0b5eb32232ae49988333')
+sha256sums=('121312e5066265bb151e727eb20d0a4d61d91c285939b7bb28097a5a2d18acec')
 
 package() {
     local libdir="$pkgdir/usr/lib/crosshair-overlay"
