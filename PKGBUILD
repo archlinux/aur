@@ -7,7 +7,7 @@
 
 _gitname=lgi
 pkgname=luajit-lgi-git
-pkgver=0.9.2.r124.ga858212
+pkgver=0.9.2.r128.gdfa8297
 pkgrel=1
 pkgdesc='Lua binadings for gobject using gobject-introspection library'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd $_gitname
-  patch -Np1 -i "${srcdir}/../352.patch"
+  patch -Np1 -i "${srcdir}/352.patch"
 }
 
 build() {
