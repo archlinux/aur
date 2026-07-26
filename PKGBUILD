@@ -2,7 +2,7 @@
 # Contributor: Mikele <mikele@gmail.com>
 
 pkgname=multiringstrobodiscgen-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A handy tool for creating custom stroboscopic discs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/mikelexp/multiringstrobodiscgen"
 license=('custom:CC BY-NC 4.0')
 depends=('glibc')
 source=("${url}/releases/download/v${pkgver}/multiringstrobodiscgen-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('d9164e03e2e31c48ed320a2ab1583a18cad0949bb5078dc96d27f4a6a37c5990')
+sha256sums=('4ef639a700b2bdff6827697686df893f83aa954d080da80d8871b97a713fdbbf')
 
 package() {
   cd "${srcdir}"
