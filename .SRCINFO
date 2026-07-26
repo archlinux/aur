@@ -1,9 +1,10 @@
 pkgbase = sgdboop
 	pkgdesc = A program used for applying custom artwork to Steam, using SteamGridDB. Supports both Windows and Linux, written completely in C.
-	pkgver = 1.3.2
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://www.steamgriddb.com/boop
 	arch = x86_64
+	arch = aarch64
 	license = Zlib
 	makedepends = make
 	makedepends = gcc
@@ -12,7 +13,8 @@ pkgbase = sgdboop
 	depends = gtk3
 	provides = sgdboop
 	conflicts = sgdboop
-	source = sgdboop-1.3.2.tar.gz::https://github.com/SteamGridDB/SGDBoop/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = db086eef2626bde403aacf7d05e4f80fe5690195d1e8eb881de0ba45cd9200ab
+	options = !debug
+	source = sgdboop-1.4.1.tar.gz::https://github.com/SteamGridDB/SGDBoop/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = ffea4e2367211191b28f56adb0f54508b4285b05f5a5148fdeb3978a7a387842
 
 pkgname = sgdboop
