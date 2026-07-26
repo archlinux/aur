@@ -1,0 +1,4 @@
+[neovim-lsp_signature]
+source = "git"
+git = "https://github.com/ray-x/lsp_signature.nvim.git"
+prefix = "v"
