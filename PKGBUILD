@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 depends=('libglvnd' 'libxkbcommon')
 makedepends=('rust')
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+source=("https://github.com/eero-lehtinen/oklch-color-picker/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('1ef1709f763476ff4bd60c60866151f4b7be1fd34961a8b22fb6819c0565a2582ebfbbd5ebaac660d90630d9cd75cabcc31e6443ac5c7cb9b00777898018dc91')
 
 build() {
