@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 pkgname=air
-pkgver=1.67.2
+pkgver=1.67.3
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=(x86_64)
