@@ -1,5 +1,5 @@
 pkgbase = wine-dwproton-bin
-	pkgdesc = dwproton的wine版
+	pkgdesc = dwproton的wine版|dwproton's wine version
 	pkgver = 11.0
 	pkgrel = 9
 	url = https://dawn.wine/dawn-winery/wine-dwproton
