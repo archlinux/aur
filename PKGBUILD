@@ -53,6 +53,29 @@ prepare() {
 
 build() {
 
+	# Detect if being run manually via makepkg or via an AUR helper
+	# Check if the build directory path includes common AUR helper cache folders
+	if [[ ! "$startdir" =~ \.cache/(yay|paru|yay-git|paru-git) ]]; then
+		# Check if the mysql package or client libraries are actually installed
+		if ! pacman -Qi mysql-clients >/dev/null 2>&1 && ! pacman -Qi libmysqlclient >/dev/null 2>&1; then
+			echo "======================================================================="
+			echo " ERROR: Manual compilation via 'makepkg' detected!"
+			echo "======================================================================="
+			echo " This package requires Oracle MySQL from the AUR, which standard pacman"
+			echo " cannot resolve or download automatically."
+			echo ""
+			echo " To build this manually, you must install the dependency first:"
+			echo "   1. git clone https://archlinux.org"
+			echo "   2. cd mysql && makepkg -si"
+			echo "   3. Go back to your azerothcore folder and run 'makepkg -si' again."
+			echo ""
+			echo " Alternative: Use an AUR helper which handles this automatically:"
+			echo "   yay -S azerothcore"
+			echo "======================================================================="
+			exit 1
+		fi
+	fi
+
 	# Oracles signing key must be trusted for the mysql AUR install
 	if ! pacman-key --list-keys B7B3B788A8D3785C >/dev/null 2>&1; then
 		echo "Warning: the signing key B7B3B788A8D3785C is not currently trusted."
