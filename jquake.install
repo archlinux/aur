@@ -1,3 +1,9 @@
 post_install() {
-  echo "BUG: No sound support for now."
+  echo "Sound: on PipeWire or PulseAudio systems, install pipewire-alsa or"
+  echo "pulseaudio-alsa (Java outputs through ALSA). In JQuake's sound settings,"
+  echo "keep 'Peripheral' on the first entry (upstream bug with other entries)."
+}
+
+post_upgrade() {
+  post_install
 }

@@ -4,12 +4,15 @@
 
 pkgname="jquake"
 pkgver="1.8.5"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Free software that helps you monitor real-time shaking events in Japan"
 arch=('x86_64')
 url="https://jquake.net/en/"
 license=('Apache')
 depends=('java-runtime')
+# Java outputs sound through ALSA, so sound servers need their ALSA bridge
+optdepends=('pipewire-alsa: sound output on PipeWire systems'
+            'pulseaudio-alsa: sound output on PulseAudio systems')
 makedepends=('fastjar')
 install="${pkgname}.install"
 source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
