@@ -1,7 +1,7 @@
 pkgbase = sigil-wad
 	pkgdesc = SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD
 	pkgver = 1.23
-	pkgrel = 6
+	pkgrel = 7
 	url = https://romero.com/sigil
 	arch = any
 	license = LicenseRef-custom
@@ -11,7 +11,7 @@ pkgbase = sigil-wad
 	source = sigil.desktop
 	source = sigil_compat.desktop
 	sha256sums = 57c35a6bcd722433fc97344314e52c06c91fdfde33b18c6d1c14a4d29e229105
-	sha256sums = 6edb842c592043cc3d3f3a8bb968e8c8392a9813f45510140f0e7d4f53c47e0a
+	sha256sums = 0e577afac4cd598a501e445d2abe58285b01f9f2c8fbdad99cb83ab880306c61
 	sha256sums = 37ea66ee77f07b64ec8646ee6ca761be6c1d63719ec3e7106abc902c97391abd
 	sha256sums = 7d5c26f36b43a90abf76d22da762303aff166bd85d5e3d141dcaa09bbc348523
 
