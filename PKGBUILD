@@ -50,4 +50,4 @@ EOF
         install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" \
             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
-}
+}    
