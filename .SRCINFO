@@ -11,5 +11,7 @@ pkgbase = lazy-search
 	depends = curl
 	depends = tar
 	depends = gzip
+	source = lazy-search-1.0.0.tar.gz::https://github.com/Halespider396/lazy-search/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
 
 pkgname = lazy-search

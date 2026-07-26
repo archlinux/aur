@@ -8,15 +8,16 @@ url="https://github.com/Halespider396/lazy-search"
 license=('MIT')
 depends=('pacman' 'curl' 'tar' 'gzip')
 makedepends=('gcc' 'make')
-source=()
-sha256sums=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Halespider396/lazy-search/archive/refs/heads/main.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-	cd "$startdir"
+	cd "$srcdir/$pkgname-main"
 	make clean
 	make
 }
 
 package() {
+	cd "$srcdir/$pkgname-main"
 	install -Dm755 "$startdir/lazy-search" "$pkgdir/usr/bin/lazy-search"
 }
