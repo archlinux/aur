@@ -1,5 +1,5 @@
 pkgname=ultralightwebcursor-git
-_pkgname=UltralightWeb_Cursor
+_pkgname=Animated_UltralightWeb_Cursor
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="HTML/CSS/JS-based global animated cursor framework integrated with KDE 6 System Settings and KWin Effects"
