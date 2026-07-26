@@ -1,11 +1,11 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=bankai-bin
 pkgver=0.2.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Focused Electron workspace for persistent project shell sessions"
 arch=('x86_64')
 url="https://github.com/juicerq/bankai-2"
-license=('LicenseRef-unknown')
+license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libnotify' 'hicolor-icon-theme' 'git')
 provides=('bankai')
 conflicts=('bankai')

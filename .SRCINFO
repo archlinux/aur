@@ -1,10 +1,10 @@
 pkgbase = bankai-bin
 	pkgdesc = Focused Electron workspace for persistent project shell sessions
 	pkgver = 0.2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juicerq/bankai-2
 	arch = x86_64
-	license = LicenseRef-unknown
+	license = MIT
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
