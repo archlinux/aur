@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'rsync' 'diffutils')
 optdepends=('libnewt: for full-screen TUI support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Skeome/rcc-sync/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1e9a8e268231c0a1aea9220e0bbe1abbd78249a6bdc8d1d67843f540a261669')
+sha256sums=('f97da7c5843cc183556e8491dd438668712d63690c6db9b2bfd5d8ed3ec1df02')
 
 package() {
   cd "$pkgname-$pkgver"
