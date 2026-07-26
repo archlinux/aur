@@ -3,7 +3,7 @@
 pkgname=aqueous
 pkgbase=aqueous
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -17,7 +17,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
          'mesa' 'systemd-libs' 'seatd' 'libdisplay-info' 'libliftoff'
-         'lcms2' 'vulkan-icd-loader' 'libxcb' 'xcb-util-errors' 'xcb-util-wm')
+         'lcms2' 'vulkan-icd-loader' 'libxcb' 'xcb-util-errors' 'xcb-util-wm' 'xcb-renderutil')
 makedepends=('clang' 'lld' 'llvm'
              'git' 'curl' 'patch' 'scdoc' 'wayland-protocols' 'pkgconf'
              'meson' 'ninja' 'glslang' 'vulkan-headers' 'hwdata' 'zig>=0.16')
