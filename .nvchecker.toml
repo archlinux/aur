@@ -1,0 +1,5 @@
+[cxtop-bin]
+source = "github"
+github = "nickprotop/cxtop"
+use_latest_release = true
+prefix = "v"

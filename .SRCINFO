@@ -1,0 +1,24 @@
+pkgbase = cxtop-bin
+	pkgdesc = A ntop/btop-inspired terminal system monitor built with SharpConsoleUI
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/nickprotop/cxtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cxtop
+	conflicts = cxtop
+	options = !strip
+	source = README-0.0.7.md::https://raw.githubusercontent.com/nickprotop/cxtop/v0.0.7/README.md
+	source = LICENSE-0.0.7::https://raw.githubusercontent.com/nickprotop/cxtop/v0.0.7/LICENSE
+	sha256sums = b4c31667d967348099a35d15bf13343aa55fb526495199dd7ba88b9ab3319724
+	sha256sums = c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73
+	source_x86_64 = cxtop-x86_64-0.0.7::https://github.com/nickprotop/cxtop/releases/download/v0.0.7/cxtop-linux-x64
+	sha256sums_x86_64 = e560c647c0c5103deeded5a2687ad1676066b8d8ccf4e9e14b1c8c51f5bcc8f5
+	source_aarch64 = cxtop-aarch64-0.0.7::https://github.com/nickprotop/cxtop/releases/download/v0.0.7/cxtop-linux-arm64
+	sha256sums_aarch64 = 4a23023df866aa9fb24ee0db0d796b1cdee8fa6d08917579022f96759671cf69
+
+pkgname = cxtop-bin
