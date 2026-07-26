@@ -1,7 +1,7 @@
 pkgbase = camofox-browser-bin
 	pkgdesc = Anti-detection browser server for AI agents — REST API wrapping Camoufox stealth browser engine (Firefox fork with C++-level fingerprint spoofing)
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jo-inc/camofox-browser
 	arch = x86_64
 	license = MIT
