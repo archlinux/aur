@@ -1,6 +1,6 @@
 pkgbase = miniconda3
 	pkgdesc = Mini version of Anaconda Python distribution
-	pkgver = 26.3.2.2
+	pkgver = 26.5.3.1
 	pkgrel = 1
 	url = https://conda.io/en/latest/miniconda
 	install = miniconda3.install
@@ -11,9 +11,9 @@ pkgbase = miniconda3
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source_x86_64 = https://repo.anaconda.com/miniconda/Miniconda3-py313_26.3.2-2-Linux-x86_64.sh
-	sha512sums_x86_64 = 46d0ffabbcccc5308fe4e88b15c8d348bb4bc59a86e4012749cd98e99789f83f766bd70a40a49edc18b97bc537e57040c8780db62a0b529908cfd5b2f8271d65
-	source_aarch64 = https://repo.anaconda.com/miniconda/Miniconda3-py313_26.3.2-2-Linux-aarch64.sh
-	sha512sums_aarch64 = d5e909726479947d1377664be0b0163fcdba7395560b77a44603a8071a1db83c461482697babfefa5c910b8a5c98d7a765b04926be099ae1f9cf9149db14df49
+	source_x86_64 = https://repo.anaconda.com/miniconda/Miniconda3-py313_26.5.3-1-Linux-x86_64.sh
+	sha512sums_x86_64 = 8c4ec22246908141b6ee637cf061475c9a84b43a4799918010765ce8b65eea2fd6fc4273998ee6e54d6bc766f2a3b411a280ea2f38b01ea98ba253a6ac98bee3
+	source_aarch64 = https://repo.anaconda.com/miniconda/Miniconda3-py313_26.5.3-1-Linux-aarch64.sh
+	sha512sums_aarch64 = 9986d62fb83e15e3187c90e6c0a5a20e7fd4dfa179e1bda8f463fbd28badb01e21a8094c814bf4b5ae291748bdf3a521d31f19172481e964956ae6e731346325
 
 pkgname = miniconda3
