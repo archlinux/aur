@@ -1,7 +1,7 @@
 pkgbase = jquake
 	pkgdesc = Free software that helps you monitor real-time shaking events in Japan
 	pkgver = 1.8.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://jquake.net/en/
 	install = jquake.install
 	arch = any

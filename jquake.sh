@@ -6,6 +6,8 @@ CP=""
 for name in /usr/share/java/jquake/*.jar; do
   CP=$CP:$name
 done
+# Strip leading colon: an empty classpath entry means the current directory
+CP="${CP#:}"
 
 # The app stores its settings (Settings.properties) and errors.log
 # in the working directory, so run from a persistent per-user directory
