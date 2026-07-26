@@ -9,7 +9,7 @@ pkgdesc="A fast, minimal, modern Linux shell. Named after swag, slang for stylis
 arch=('x86_64')
 url="https://github.com/${_appauthor}/${_appname}"
 _urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//_/-}"
-license=('Apache-2.0')
+license=('GPL-3.0-or-later')
 
 provides=("${_appname}")
 
