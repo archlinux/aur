@@ -5,11 +5,12 @@
 # through pacman without rebuilding electron.
 #
 # pkgver and both hashes are rewritten from the published assets by
-# packaging/ci-aur-publish.sh. To bump by hand: set pkgver, then run `updpkgsums`.
+# packaging/ci-aur-publish.sh, so all three stay placeholders here — this file is never built
+# as committed, only after CI has filled it in. To build it by hand: set pkgver, run `updpkgsums`.
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='XMPP client with OMEMO encryption'
 arch=('x86_64')
@@ -30,7 +31,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('d1b32eefd2d66f4f682c9d777c9a570eef8fe7399bb0ec52f1c53a94978ae5aa' '56c46d99006fdeb72a4bac3a551726eb134d573d2ca0280741b2fd7c3141e1b7')
+sha256sums=('334ef1aa9edbfd45f1cf1421d1580c23f3728f3a8de9cc08665f3b641962ca6d' '56c46d99006fdeb72a4bac3a551726eb134d573d2ca0280741b2fd7c3141e1b7')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
