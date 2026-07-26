@@ -1,0 +1,24 @@
+pkgbase = cxgpu-bin
+	pkgdesc = A multi-vendor GPU monitor for the terminal — NVIDIA and AMD — built on SharpConsoleUI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/nickprotop/cxgpu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cxgpu
+	conflicts = cxgpu
+	options = !strip
+	source = README-1.1.0.md::https://raw.githubusercontent.com/nickprotop/cxgpu/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/nickprotop/cxgpu/v1.1.0/LICENSE
+	sha256sums = eeef70bbd63ca8ac7b6508f69c17b302f103d4d1a8f00a82e4f474c758d8a525
+	sha256sums = c5d50f2ab68a8939a4c0986e3ab5f9fe21f5f8b525f013f72680a2198b14ee73
+	source_x86_64 = cxgpu-x86_64-1.1.0::https://github.com/nickprotop/cxgpu/releases/download/v1.1.0/cxgpu-linux-x64
+	sha256sums_x86_64 = 746a13b7b1c014776547aaaef46f3f91cdfc12fc15be074f63280a9939c09c6a
+	source_aarch64 = cxgpu-aarch64-1.1.0::https://github.com/nickprotop/cxgpu/releases/download/v1.1.0/cxgpu-linux-arm64
+	sha256sums_aarch64 = d059a3524af3a1fb0ed17f0777699872971b08b121408320ae92812496b94f76
+
+pkgname = cxgpu-bin

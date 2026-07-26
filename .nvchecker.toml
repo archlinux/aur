@@ -1,0 +1,5 @@
+[cxgpu-bin]
+source = "github"
+github = "nickprotop/cxgpu"
+use_latest_release = true
+prefix = "v"
