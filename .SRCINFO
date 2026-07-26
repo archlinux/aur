@@ -1,6 +1,6 @@
 pkgbase = sqlnow-desktop-bin
 	pkgdesc = Local SQL viewer for files and databases, in a native window
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/kindly/sqlnow
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = sqlnow-desktop-bin
 	conflicts = sqlnow-desktop
 	options = !strip
 	options = !debug
-	source_x86_64 = sqlnow-desktop-bin-0.4.3-x86_64.AppImage::https://github.com/kindly/sqlnow/releases/download/v0.4.3/sqlnow-desktop-linux-x86_64.AppImage
-	sha256sums_x86_64 = 50ade7e9b1b64d428d46cf5e1a9d97de703153849226e95391bd066e747686fd
-	source_aarch64 = sqlnow-desktop-bin-0.4.3-aarch64.AppImage::https://github.com/kindly/sqlnow/releases/download/v0.4.3/sqlnow-desktop-linux-arm64.AppImage
-	sha256sums_aarch64 = ef9659e447385282fd466b44b2202cbc05a2e1e4110e3069b9260a586e69f591
+	source_x86_64 = sqlnow-desktop-bin-0.4.4-x86_64.AppImage::https://github.com/kindly/sqlnow/releases/download/v0.4.4/sqlnow-desktop-linux-x86_64.AppImage
+	sha256sums_x86_64 = e47b58f01fa825260f5e92eeb6d36e528c09448079507c1484dc0083cc09024f
+	source_aarch64 = sqlnow-desktop-bin-0.4.4-aarch64.AppImage::https://github.com/kindly/sqlnow/releases/download/v0.4.4/sqlnow-desktop-linux-arm64.AppImage
+	sha256sums_aarch64 = 4de657e4426df0991e1fe4ba8ca2c517c7fcb188d537f708e00e803caa80fc49
 
 pkgname = sqlnow-desktop-bin
