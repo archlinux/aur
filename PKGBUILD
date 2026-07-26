@@ -4,7 +4,7 @@
 
 pkgname="jquake"
 pkgver="1.8.5"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="Free software that helps you monitor real-time shaking events in Japan"
 arch=('any')
 url="https://jquake.net/en/"
