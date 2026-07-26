@@ -3,8 +3,8 @@
 _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
 
-_pkgver=154.0a1
-_pkgverx="_FP1"
+_pkgver=155.0a1
+_pkgverx=""
 pkgver=${_pkgver}${_pkgverx}
 
 pkgrel=1
@@ -59,7 +59,7 @@ source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/hellfire-${_pkgver}.en-US.linux-x86_64.tar.xz")
-sha256sums_x86_64=('a6fd4e4e59447753d4a67b93f0dae52446b8c99336416199413354d1ad782efe')
+sha256sums_x86_64=('b3f481b699bf5cb1b0e805117e0ef8f76cf6b2200d9ef4a136d97628fcf6fbaa')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
