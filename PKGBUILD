@@ -1,23 +1,27 @@
+# Maintainer: Han <tabularasa8931@gmail.com>
 pkgname=gorae-bin
-pkgver=1.2.1
+_pkgname=gorae
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Terminal-first TUI librarian for PDF & EPUB (prebuilt binary)"
+pkgdesc="Terminal-first knowledge base for PDFs, EPUBs, and Markdown — with a built-in AI assistant"
 arch=('x86_64')
 url="https://github.com/Han8931/gorae"
-license=('MIT')  # repo license is MIT :contentReference[oaicite:2]{index=2}
-depends=('glibc' 'poppler')  # pdfinfo/pdftotext come from poppler
+license=('MIT')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+depends=('poppler')
 optdepends=(
-  'zathura: recommended PDF viewer'
-  'zathura-pdf-mupdf: mupdf backend for zathura'
+  'chafa: ASCII/sixel preview fallback for non-Kitty/iTerm2 terminals'
+  'zathura: recommended PDF viewer with vi-style navigation'
+  'zathura-pdf-mupdf: MuPDF backend for zathura'
 )
-provides=('gorae')
-conflicts=('gorae')
-
-source=(
-  "gorae::${url}/releases/download/v${pkgver}/gorae-linux-amd64"
-)
-sha256sums=('34d8cd072098fe0613542dc33c02a6007ae376915b1c26084a3f42c51b706861')
+source=("$_pkgname-$pkgver::https://github.com/Han8931/gorae/releases/download/v$pkgver/gorae-linux-amd64"
+        "LICENSE-$_pkgname-$pkgver::https://raw.githubusercontent.com/Han8931/gorae/v$pkgver/LICENSE")
+sha256sums=('f670fb8796ae574453edd9b173c259065a8f972c1e101fcef2d53ddca70b26aa'
+            'SKIP')
+noextract=("$_pkgname-$pkgver")
 
 package() {
-  install -Dm755 "gorae" "${pkgdir}/usr/bin/gorae"
+  install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$srcdir/LICENSE-$_pkgname-$pkgver" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
