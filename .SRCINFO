@@ -1,7 +1,7 @@
 pkgbase = gearlever-bin
 	pkgdesc = Manage AppImages with ease (prebuilt)
 	pkgver = 4.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gearlever.mijorus.it
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,12 +18,12 @@ pkgbase = gearlever-bin
 	depends = 7zip
 	depends = binutils
 	depends = squashfs-tools
+	depends = dwarfs
 	depends = fuse2
-	optdepends = dwarfs: extract AppImages that use a DwarFS filesystem
 	optdepends = libxml2-legacy: required by the LibreOffice AppImage
 	provides = gearlever
 	conflicts = gearlever
-	source = gearlever-bin-4.6.2-2.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/gearlever-bin-4.6.2/gearlever-bin-4.6.2.tar.zst
+	source = gearlever-bin-4.6.2-3.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/gearlever-bin-4.6.2/gearlever-bin-4.6.2.tar.zst
 	sha256sums = 225dd08d1fbdf33bb5979660737cee180f60b8cfa6477f1553025a6c2f5236a5
 
 pkgname = gearlever-bin
