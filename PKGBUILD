@@ -9,7 +9,7 @@ pkgdesc="A terminal music app: keyboard-driven, for people who live in the comma
 arch=('x86_64')
 url="https://github.com/${_appauthor}/${_appname}"
 _urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//_/-}"
-license=('Apache-2.0')
+license=('GPL-3.0-or-later')
 
 provides=("${_appname}")
 
