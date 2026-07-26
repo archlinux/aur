@@ -1,7 +1,7 @@
 pkgbase = voicefox-bin
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 0.9
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
 	license = MIT
@@ -9,13 +9,14 @@ pkgbase = voicefox-bin
 	depends = libgcc
 	depends = openssl
 	depends = mpv
-	depends = nodejs
-	provides = voicefox=0.9
+	optdepends = kitty: support for displaying cover image in tmux
+	optdepends = nodejs>=23.5.0: support for custom JS music source
+	provides = voicefox=1.0
 	conflicts = voicefox
 	conflicts = voicefox-git
-	source = voicefox-0.9.zip::https://github.com/emoeem/voicefox/releases/download/0.9/voicefox-linux-x86_64.zip
-	source = voicefox-0.9-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.9/LICENSE
-	sha512sums = 3336d6c1995d7d3099746dd78e541bdbc863bca6d8e3d1ded5c5a6f1cf08ee84abc3e883e61c851eb772c081a2119d0a5e3d0207d7c08ea731e5c39563202aa2
+	source = voicefox-1.0.zip::https://github.com/emoeem/voicefox/releases/download/1.0/voicefox-linux-x86_64.zip
+	source = voicefox-1.0-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.0/LICENSE
+	sha512sums = 473e1bfe7d02776136349fb094ebc74c4b4f30a9cda6721e900dc75134a9a791e09fb1ea988eae4706bce7bdb2e69af9ab8b70214be66d129ccff611c5424595
 	sha512sums = e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814
 
 pkgname = voicefox-bin
