@@ -13,7 +13,7 @@
 # system looks for them.
 pkgname=sqlnow-desktop-bin
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Local SQL viewer for files and databases, in a native window"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kindly/sqlnow"
@@ -43,6 +43,13 @@ package() {
 
     install -d "$pkgdir/usr/lib/$pkgname"
     cp -a --no-preserve=ownership . "$pkgdir/usr/lib/$pkgname/"
+
+    # --appimage-extract unpacks with 0700 directories, and cp -a copies that
+    # faithfully: installed as root, nothing else can even traverse them. Reset
+    # to what a package should carry — readable dirs, readable files, execute
+    # kept where it already was.
+    chmod -R u=rwX,go=rX "$pkgdir/usr/lib/$pkgname"
+    chown -R root:root "$pkgdir/usr/lib/$pkgname"
     # the AppImage's own launcher and top-level metadata are replaced below
     rm -f "$pkgdir/usr/lib/$pkgname/AppRun" \
           "$pkgdir/usr/lib/$pkgname/.DirIcon" \
@@ -50,6 +57,7 @@ package() {
           "$pkgdir/usr/lib/$pkgname/sqlnow-desktop.png"
     rm -rf "$pkgdir/usr/lib/$pkgname/usr"
 
+    # Applied after the chmod above, which would clear the setuid bit.
     # Chromium uses its namespace sandbox where unprivileged user namespaces are
     # allowed, which is the case on Arch, and falls back to this helper where
     # they are not. Setuid root is what makes that fallback work, and is what

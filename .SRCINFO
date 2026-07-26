@@ -1,7 +1,7 @@
 pkgbase = sqlnow-desktop-bin
 	pkgdesc = Local SQL viewer for files and databases, in a native window
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kindly/sqlnow
 	arch = x86_64
 	arch = aarch64
