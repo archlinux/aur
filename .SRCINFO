@@ -1,0 +1,16 @@
+pkgbase = tmd-type-markdown
+	pkgdesc = A local Markdown editor with a similar experience to Typora
+	pkgver = 0.1.33
+	pkgrel = 1
+	url = https://github.com/KoniKee/TMD_Type-Markdown
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	source = tmd-type-markdown-0.1.33.tar.gz::https://github.com/KoniKee/TMD_Type-Markdown/archive/refs/tags/v0.1.33.tar.gz
+	sha256sums = SKIP
+
+pkgname = tmd-type-markdown
