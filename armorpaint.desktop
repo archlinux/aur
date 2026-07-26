@@ -1,12 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=armorpaint
-Comment=ArmorPaint is a software for 3D PBR texture painting
-TryExec=armorpaint
-Exec=armorpaint
+Name=ArmorPaint
+Comment=3D PBR Texture Painting software
+Exec=armorpaint %f
 Icon=armorpaint
 Terminal=false
-X-MultipleArgs=false
-Type=Application
 Categories=Graphics;3DGraphics;
+MimeType=application/x-armorpaint;
+Keywords=3d;pbr;painting;texturing;
