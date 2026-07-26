@@ -1,0 +1,5 @@
+[python-jupyterhub-oauthenticator]
+source = "github"
+github = "jupyterhub/oauthenticator"
+prefix = ""
+use_latest_tag = true # This requires GH PAT to be set in keyfile or as `token`
