@@ -37,6 +37,11 @@ install=bc250-control-center.install
 
 pkgver() {
   cd "$srcdir/bc250-control-center"
+  local exact
+  if exact="$(git describe --tags --exact-match 2>/dev/null)"; then
+    printf '%s\n' "${exact#v}"
+    return
+  fi
   git describe --long --tags --always 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
