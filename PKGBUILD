@@ -19,10 +19,10 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 # Dynamic link dependencies needed to execute the binaries
-depends=('libmysqlclient' 'boost-libs' 'readline' 'openssl')
+depends=('mysql-clients' 'boost-libs' 'readline' 'openssl')
 
 # Use the AUR mysql and not the official package
-conflicts=('mariadb')
+conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
 
 # Heavy development tools only needed to fetch and build the binary
 makedepends=('git' 'cmake' 'clang' 'boost' 'mysql')

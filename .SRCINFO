@@ -10,13 +10,15 @@ pkgbase = azerothcore
 	makedepends = clang
 	makedepends = boost
 	makedepends = mysql
-	depends = libmysqlclient
+	depends = mysql-clients
 	depends = boost-libs
 	depends = readline
 	depends = openssl
 	optdepends = mysql: To host the Oracle MySQL database server locally
 	optdepends = docker: To run the AzerothCore server in a containerized environment
 	conflicts = mariadb
+	conflicts = mariadb-libs
+	conflicts = mariadb-clients
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	sha512sums = SKIP
 
