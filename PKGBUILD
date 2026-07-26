@@ -1,21 +1,21 @@
 # Maintainer: Calagopus <contact@calagopus.com>
 pkgname=calagopus-wings-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Game server node daemon'
 arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
 url='https://calagopus.com'
 license=('MIT')
 
-source_x86_64=('wings-rs-1.1.0-x86_64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-x86_64-linux')
-source_aarch64=('wings-rs-1.1.0-aarch64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-aarch64-linux')
-source_powerpc64le=('wings-rs-1.1.0-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-ppc64le-linux')
-source_riscv64=('wings-rs-1.1.0-riscv64::https://github.com/calagopus/wings/releases/download/release-1.1.0/wings-rs-riscv64-linux')
+source_x86_64=('wings-rs-1.1.1-x86_64::https://github.com/calagopus/wings/releases/download/release-1.1.1/wings-rs-x86_64-linux')
+source_aarch64=('wings-rs-1.1.1-aarch64::https://github.com/calagopus/wings/releases/download/release-1.1.1/wings-rs-aarch64-linux')
+source_powerpc64le=('wings-rs-1.1.1-ppc64le::https://github.com/calagopus/wings/releases/download/release-1.1.1/wings-rs-ppc64le-linux')
+source_riscv64=('wings-rs-1.1.1-riscv64::https://github.com/calagopus/wings/releases/download/release-1.1.1/wings-rs-riscv64-linux')
 
-sha256sums_x86_64=('7f57db73cbb531b4cabdaec193f97cb2d74d2274446d20a8c6d12bff8178dfec')
-sha256sums_aarch64=('87477f2ce71c8ab03122520ba2a5a271707c3e08de8bbcb8c6b8a3b913ec8d1b')
-sha256sums_powerpc64le=('8c0fd92c4d1953d5e4f864902e05c25b92ab5eb6851b12a94400e3f4b7bcd6e0')
-sha256sums_riscv64=('a568005555249294690ee4121081985ca11fbcdf4b960f9eff05766ab33f5fd5')
+sha256sums_x86_64=('3612a016a166b83cedd11319d56d95ab94d470a537c1295e795ed5c8c746941b')
+sha256sums_aarch64=('6096e9bc85d8fdd518426bb1b2bb4fefd3134e6bf8b0b2aed6d53f2027446bde')
+sha256sums_powerpc64le=('1dc11f4e1151ef538042b2d2161fe05958482fbd2f4e5fad83f50e54991b0c4d')
+sha256sums_riscv64=('d97f3421938ba11a21dc5d41a25f0c39f3fa9192a70e6f27f75348fd327532fd')
 
 package() {
     case "$CARCH" in
@@ -24,5 +24,5 @@ package() {
         powerpc64le) _a=ppc64le ;;
         riscv64)     _a=riscv64 ;;
     esac
-    install -Dm755 "${srcdir}/wings-rs-1.1.0-${_a}" "${pkgdir}/usr/bin/calagopus-wings"
+    install -Dm755 "${srcdir}/wings-rs-1.1.1-${_a}" "${pkgdir}/usr/bin/calagopus-wings"
 }
