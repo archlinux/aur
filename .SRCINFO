@@ -1,6 +1,6 @@
 pkgbase = r-huge
 	pkgdesc = High-Dimensional Undirected Graph Estimation
-	pkgver = 1.6
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=huge
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-huge
 	depends = r-igraph
 	depends = r-rcpp
 	depends = r-rcppeigen
-	source = https://cran.r-project.org/src/contrib/huge_1.6.tar.gz
-	sha256sums = d71a72512b4c5815d70f1cde6cb8bc7f519e79651ee2bdf4e1fca6cf84b485ce
+	source = https://cran.r-project.org/src/contrib/huge_2.0.0.tar.gz
+	sha256sums = c5987c535b27d2678cdfab10014404cf860fef393ad433ba10f16bec0aaaa725
 
 pkgname = r-huge
