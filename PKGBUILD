@@ -1,6 +1,6 @@
-# Maintainer:  <>
+# Maintainer: Demo User <demo@localhost>
 pkgname=lx-music-shell
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Terminal music player with multi-source support and auto-reconnect"
 arch=("any")
@@ -35,7 +35,7 @@ backup=("etc/skel/.config/lx-music-shell/config"
         "etc/skel/.config/lx-music-shell/sources.list")
 options=()
 install=lx-music-shell.install
-source=("lx-music-shell-source-v$pkgver.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v$pkgver.tar.gz")
+source=("lx-music-shell-source-v1.1.1.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v1.1.1.tar.gz")
 sha256sums=("SKIP")
 
 prepare() {
@@ -108,9 +108,9 @@ EOFSOURCES
     # Install man pages
     install -Dm644 aur/lx-music-shell.1 \
         "$pkgdir/usr/share/man/man1/lx-music-shell.1"
-    install -Dm644 aur/lx-music-shell.1 \
+    install -Dm644 aur/lx-music-sources.1 \
         "$pkgdir/usr/share/man/man1/lx-music-sources.1"
-    install -Dm644 aur/lx-music-shell.1 \
+    install -Dm644 aur/lx-music-shell-uninstall.1 \
         "$pkgdir/usr/share/man/man1/lx-music-shell-uninstall.1"
 
     # Install bash completion

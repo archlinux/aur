@@ -1,0 +1,64 @@
+.TH "LX-MUSIC-SHELL-UNINSTALL" "1" "2026" "" "LX-Music-Shell Uninstaller Manual"
+.SH NAME
+lx-music-shell-uninstall \- uninstall LX-Music-Shell installed from source
+.SH SYNOPSIS
+.B lx-music-shell-uninstall
+.SH DESCRIPTION
+.B lx-music-shell-uninstall
+removes LX-Music-Shell files that were installed manually via the install.sh
+script (NOT via pacman/yay).
+.PP
+For packages installed via the AUR or official package managers, use:
+.PP
+.RS
+.B sudo pacman -R lx-music-shell
+.RE
+.PP
+or:
+.PP
+.RS
+.B yay -R lx-music-shell
+.RE
+.SH OPTIONS
+.TP
+.B \-\-purge
+Also remove user configuration files (~/.config/lx-music-shell)
+.TP
+.B \-\-keep-config
+Keep user configuration files (default)
+.TP
+.B \-h, \-\-help
+Show help message
+.SH FILES REMOVED
+.TP
+.B /usr/local/bin/lx-music-shell
+Main executable
+.TP
+.B /usr/local/bin/lx-music-sources
+Sources management tool
+.TP
+.B /usr/local/share/man/man1/lx-music-shell*
+Man pages
+.SH FILES PRESERVED (unless --purge)
+.TP
+.B ~/.config/lx-music-shell/
+User configuration directory
+.TP
+.B ~/.local/share/lx-music-shell/
+User data directory
+.TP
+.B ~/.cache/lx-music-shell/
+User cache directory
+.SH "SEE ALSO"
+.BR lx-music-shell (1),
+.BR lx-music-sources (1),
+.BR pacman (8),
+.BR yay (8)
+.SH AUTHOR
+Written by existyay <liujam826@gmail.com>
+.SH REPORTING BUGS
+Report bugs at <https://github.com/existyay/LX-Music-Shell/issues>
+.SH COPYRIGHT
+Copyright \(co 2026 existyay
+.br
+This is free software; see the source for copying conditions.

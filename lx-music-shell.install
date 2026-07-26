@@ -4,7 +4,9 @@
 
 # 安装前执行
 pre_install() {
-    # 停止任何运行中的实例
+    # 停止任何运行中的实例，尽量优雅退出，必要时强制终止
+    pkill -TERM -f "lx-music-shell" 2>/dev/null || true
+    sleep 1
     pkill -9 -f "lx-music-shell" 2>/dev/null || true
 }
 
@@ -44,10 +46,12 @@ post_upgrade() {
 
 # 卸载前执行
 pre_remove() {
-    # 停止所有运行中的实例
+    # 尝试优雅停止，然后强制终止残留进程
+    pkill -TERM -f "lx-music-shell" 2>/dev/null || true
+    pkill -TERM mpv 2>/dev/null || true
+    sleep 1
     pkill -9 -f "lx-music-shell" 2>/dev/null || true
     pkill -9 mpv 2>/dev/null || true
-    sleep 1
 }
 
 # 卸载后执行
