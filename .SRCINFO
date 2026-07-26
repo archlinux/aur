@@ -1,0 +1,21 @@
+pkgbase = soundshed-guitar-git
+	pkgdesc = A guitar/bass effects app and plugin.
+	pkgver = r904.f219ebb
+	pkgrel = 1
+	url = https://github.com/webprofusion/soundshed-guitar
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	provides = soundshed-guitar
+	conflicts = soundshed-guitar
+	conflicts = soundshed-guitar-bin
+	source = git+https://github.com/webprofusion/soundshed-guitar.git
+	source = soundshed-guitar.desktop
+	sha256sums = SKIP
+	sha256sums = 841f9d304c6bce88380d30c86c8badc89c985548d9b5ad31e0c6c19cb7ca26a9
+
+pkgname = soundshed-guitar-git

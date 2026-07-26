@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=soundshed-guitar
+Comment=A guitar/bass effects app and plugin
+Exec=/opt/Soundshed/soundshed-guitar/soundshed-guitar
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;
+Keywords=music;midi;alsa;jack;clap;lv2
