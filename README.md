@@ -31,7 +31,7 @@ latest GitHub revision.
 ## Build
 
 ```bash
-sudo pacman -S --needed base-devel git meson ninja pkgconf vulkan-headers \
+sudo pacman -S --needed base-devel bison byacc flex git meson ninja pkgconf vulkan-headers \
   wayland-protocols spirv-tools systemd-libs xcb-util-keysyms \
   libxrandr lib32-gcc-libs lib32-libdrm lib32-libx11 lib32-libxrandr lib32-libxcb \
   lib32-libxshmfence lib32-spirv-tools lib32-systemd \
