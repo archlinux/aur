@@ -1,0 +1,25 @@
+pkgbase = fzf-make-bin
+	pkgdesc = A command line tool that executes make target using fuzzy finder with preview window
+	pkgver = 0.73.0
+	pkgrel = 1
+	url = https://github.com/kyu08/fzf-make
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = fzf
+	depends = make
+	provides = fzf-make
+	conflicts = fzf-make
+	options = !strip
+	source = README-0.73.0.md::https://raw.githubusercontent.com/kyu08/fzf-make/v0.73.0/README.md
+	source = LICENSE-0.73.0::https://raw.githubusercontent.com/kyu08/fzf-make/v0.73.0/LICENSE
+	sha256sums = 9e9e6e595ca2fcf3a3817f340c3cda1f2bbcd76f32133e56d48b84f64bda7f1d
+	sha256sums = 3a45867c41a5980fc038e1c2fc7e5e33b4de05c3dc4f72efbc7821f523e4a6f5
+	source_x86_64 = fzf-make-x86_64-0.73.0.tgz::https://github.com/kyu08/fzf-make/releases/download/v0.73.0/fzf-make_v0.73.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9a3bfb44e5291e344aa6d0cfbcfc8ca7978bca11e1778630c1edda78a6abc05a
+	source_aarch64 = fzf-make-aarch64-0.73.0.tgz::https://github.com/kyu08/fzf-make/releases/download/v0.73.0/fzf-make_v0.73.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 38fdd7192e63c142524f27c20569787016da69e731d92c849f84e122f2d18323
+
+pkgname = fzf-make-bin

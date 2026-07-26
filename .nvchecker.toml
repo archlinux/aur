@@ -1,0 +1,5 @@
+[fzf-make-bin]
+source = "github"
+github = "kyu08/fzf-make"
+use_latest_release = true
+prefix = "v"
