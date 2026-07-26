@@ -1,0 +1,10 @@
+pkgbase = hamburger
+	pkgdesc = A hamburger PNG. Installed because why not.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = WTFPL
+	source = hamburger.png
+	sha256sums = SKIP
+
+pkgname = hamburger
