@@ -1,6 +1,6 @@
 pkgbase = plasma-nano-git
 	pkgdesc = A minimal plasma shell package intended for embedded devices
-	pkgver = 6.6.90.r9.gfb39c72
+	pkgver = 6.6.90.r10.g12e7290
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-nano
 	arch = x86_64
