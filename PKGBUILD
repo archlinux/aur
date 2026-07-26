@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
-_commit=5d4b77594b2fc488fbb8e2c3a5275b6e5a694e32
+_commit=60aeaddfb3ecdb6a132e8da7569a6c442e6bb217
 
 pkgname=fcitx5-themes-candlelight
-pkgver=0.1.1.5d4b77
+pkgver=0.1.1.60aead
 pkgrel=1
 url='https://github.com/thep0y/fcitx5-themes-candlelight'
 pkgdesc='fcitx5的简约风格皮肤——烛光'
@@ -22,8 +22,11 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
     install -dm755 "$pkgdir"/usr/share/fcitx5/themes/
-    cp -r spring summer autumn winter "$pkgdir"/usr/share/fcitx5/themes/
-    cp -r green transparent-green "$pkgdir"/usr/share/fcitx5/themes/
-    cp -r macOS-light macOS-dark "$pkgdir"/usr/share/fcitx5/themes/
+    # ponytail: install every dir that has a theme.conf instead of listing the
+    # themes by hand — upstream adds variants (e.g. macOS-{light,dark}-png) and
+    # a hardcoded list silently drops them.
+    for _theme in */theme.conf; do
+        cp -r "${_theme%/theme.conf}" "$pkgdir"/usr/share/fcitx5/themes/
+    done
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
