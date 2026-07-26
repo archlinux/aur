@@ -2,7 +2,7 @@
 
 _base=PEASS-ng
 pkgname=peass-ng
-pkgver=81d3c7f8
+pkgver=c62415cf
 _pkgver=20230903
 pkgrel=1
 pkgdesc="Privilege Escalation Awesome Scripts SUITE new generation"
