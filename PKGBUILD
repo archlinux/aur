@@ -8,7 +8,7 @@
 # Original project: https://github.com/nostar/DroidStar
 
 pkgname=droidstar-9m2pju-git
-pkgver=1.0.79a957f
+pkgver=1.0.e8e6129
 pkgrel=1
 pkgdesc="DroidStar-9M2PJU - amateur radio digital modes client (built from git, Arch-native)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ options=('!strip' '!debug')
 
 # Use a tagged ref so pkgver is deterministic across rebuilds. To bump, update
 # _gitref to the new short SHA and re-run `makepkg --printsrcinfo > .SRCINFO`.
-_gitref="79a957f"
+_gitref="e8e6129"
 _pkgname="DroidStar-Linux"
 
 source=("${_pkgname}::git+${url}.git#commit=${_gitref}")

@@ -1,6 +1,6 @@
 pkgbase = droidstar-9m2pju-git
 	pkgdesc = DroidStar-9M2PJU - amateur radio digital modes client (built from git, Arch-native)
-	pkgver = 1.0.79a957f
+	pkgver = 1.0.e8e6129
 	pkgrel = 1
 	url = https://github.com/9M2PJU/DroidStar-Linux
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = droidstar-9m2pju-git
 	conflicts = droidstar-git
 	options = !strip
 	options = !debug
-	source = DroidStar-Linux::git+https://github.com/9M2PJU/DroidStar-Linux.git#commit=79a957f
+	source = DroidStar-Linux::git+https://github.com/9M2PJU/DroidStar-Linux.git#commit=e8e6129
 	sha256sums = SKIP
 
 pkgname = droidstar-9m2pju-git
