@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=weg
+GenericName=File Manager
+Comment=Keyboard-first GTK4 file manager for Linux
+Exec=weg %U
+Icon=system-file-manager
+Terminal=false
+Type=Application
+Categories=System;FileTools;FileManager;Utility;
+MimeType=inode/directory;
+Keywords=file;manager;explorer;gtk4;keyboard;

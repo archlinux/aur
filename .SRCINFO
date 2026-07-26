@@ -1,0 +1,20 @@
+pkgbase = weg-fm
+	pkgdesc = Keyboard-first GTK4 file manager for Linux featuring desktop interop and multi-level undo
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/frsaghna/weg-fm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gtk4
+	depends = python-gobject
+	depends = python
+	optdepends = fd: for fast recursive fuzzy search
+	optdepends = ffmpegthumbnailer: for video thumbnail generation
+	source = weg-fm-0.1.0.tar.gz::https://github.com/frsaghna/weg-fm/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 264ec4f59a972fabb95ba1b3e3bc1660bfce93010aa7567f98c7538325630473
+
+pkgname = weg-fm
