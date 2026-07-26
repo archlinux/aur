@@ -1,0 +1,21 @@
+pkgbase = fonts-rs-bin
+	pkgdesc = TUI font picker with live previews written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isene/fonts
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = fonts
+	conflicts = fonts-rs
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/isene/fonts/v0.1.0/README.md
+	sha256sums = 07b475e91c2a0f95b65b919be70f018c9aa4b99e5665e8e6490a61509b300914
+	source_x86_64 = fonts-x86_64-0.1.0::https://github.com/isene/fonts/releases/download/v0.1.0/fonts-linux-x86_64
+	sha256sums_x86_64 = 5f85f0a5d6724583bf9e5aa175ac77b490dca9877493c8a0514b4986418b418e
+	source_aarch64 = fonts-aarch64-0.1.0::https://github.com/isene/fonts/releases/download/v0.1.0/fonts-linux-aarch64
+	sha256sums_aarch64 = 3bafeec80019428b06c728183c5ca942de4327d4ac4535a47249eb228367cc8c
+
+pkgname = fonts-rs-bin
