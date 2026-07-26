@@ -2,16 +2,16 @@
 
 _pkgname=doas-sudo-shim
 pkgname=${_pkgname}-git
-pkgver=0.1.2.r1.g6833c8d
-pkgrel=2
-pkgdesc="Sudo wrapper which wields doas (Original upstream by Jakub Jirutka)"
+pkgver=0.2.0.r0.gefd3413
+pkgrel=1
+pkgdesc="Sudo wrapper which wields doas"
 arch=('any')
 url="https://github.com/jirutka/${_pkgname}"
 license=('ISC')
-depends=('doas')
+depends=('opendoas')
 makedepends=('git' 'asciidoctor')
 provides=('sudo' "${_pkgname}")
-conflicts=('sudo' "${_pkgname}" 'doas-sudo-shim-k')
+conflicts=('sudo' "${_pkgname}")
 source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
