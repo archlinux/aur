@@ -1,7 +1,7 @@
 pkgbase = steam-manifest-downloader
 	pkgdesc = Download Steam game depots and manifests via a modern Tauri GUI
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = https://github.com/MCbabel/Steam-Manifest-Downloader
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -16,7 +16,7 @@ pkgbase = steam-manifest-downloader
 	depends = libayatana-appindicator
 	depends = openssl
 	options = !lto
-	source = steam-manifest-downloader-1.4.2.tar.gz::https://github.com/MCbabel/Steam-Manifest-Downloader/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = 711053dcb423c72cccc1cb3ecffabb6d93cd711df504e035da015fa12590019c
+	source = steam-manifest-downloader-1.4.3.tar.gz::https://github.com/MCbabel/Steam-Manifest-Downloader/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = 832c84c3d9b5780b85509ee53a3ea5a060ee4102b2815033ddb9b6695e542632
 
 pkgname = steam-manifest-downloader
