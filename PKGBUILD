@@ -8,7 +8,7 @@
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
 pkgver=153.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ package() {
     ln -s /opt/$_pkgname/firefox $pkgdir/usr/bin/$_pkgname
     install -m644 $srcdir/{$_pkgname.desktop,$_pkgname-safe.desktop} $pkgdir/usr/share/applications/
     install -m644 $srcdir/firefox/browser/chrome/icons/default/default128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
-    mkdir $pkgdir/opt/$_pkgname/distribution
+    mkdir -p $pkgdir/opt/$_pkgname/distribution
     install -m644 $srcdir/policies.json $pkgdir/opt/$_pkgname/distribution/policies.json
 }
 
