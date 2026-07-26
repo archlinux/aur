@@ -7,7 +7,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="A command-line text editor inspired by ed/ex"
 
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64')
@@ -19,7 +19,9 @@ license=('BSD-3-Clause')
 
 provides=("${_appname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc' 'libstdc++')
+
+makedepends=('patchelf')
+depends=('glibc' 'libgcc' 'libstdc++' 'lua54')
 
 source=("MANPAGE-${pkgver}.1::${_urlraw}/mandoc/${_appname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
@@ -30,6 +32,12 @@ sha256sums=('7decb4299bcde5dc8e2af8e67833225a666e5784dfd8a53212c5d645e6133327'
             'e765681d9c8c02828c6e27356b9579fea63c562c8d8afc3dd0671429821efcd0')
 sha256sums_x86_64=('e30d81b72f200517f68ddcf20e20950048a965a589b962a099f13a2a3826a5cf')
 
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	patchelf --replace-needed "liblua5.4.so.0" "liblua5.4.so" "${_pkgname}-${CARCH}-${pkgver}"
+}
 
 package() {
 	cd "${srcdir}/" || exit

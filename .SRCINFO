@@ -1,13 +1,15 @@
 pkgbase = tedit-bin
 	pkgdesc = A command-line text editor inspired by ed/ex
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RobertFlexx/tedit
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = patchelf
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = lua54
 	provides = tedit
 	conflicts = tedit
 	source = MANPAGE-2.2.0.1::https://raw.githubusercontent.com/RobertFlexx/tedit/v2.2.0/mandoc/tedit.1
