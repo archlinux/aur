@@ -76,5 +76,5 @@ package() {
   # Desktop entry & app icon
   install -Dm644 "crates/rox/assets/app/rox.desktop" "$pkgdir/usr/share/applications/rox.desktop"
 
-  install -Dm644 "crates/rox/assets/app/assets/rox.png" "$pkgdir/usr/share/pixmaps/rox.png"
+  install -Dm644 "crates/rox/assets/app/rox.png" "$pkgdir/usr/share/pixmaps/rox.png"
 }
