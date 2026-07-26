@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = Fast, secure, easy-to-use web browser (Developer Stream)
 	pkgver = 135.0.5966.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = LicenseRef-opera
@@ -52,6 +52,6 @@ pkgbase = opera-developer
 	sha256sums = b059a4241852cf013297c559881be9af2334f1651406641dd8d93e641872d690
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
-	sha256sums = eccac785a61f552d7ce75a1aba990486d977d74cd6ac78091c21b3c807cf1b01
+	sha256sums = 521e3e9c59fba536c5316cc3a9eb5ab6ac2f3cdce1051fda1a7446a4c3147bcd
 
 pkgname = opera-developer

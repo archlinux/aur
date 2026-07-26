@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=135.0.5966.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -71,12 +71,10 @@ source=(
     "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
 
-sha256sums=(
-    'b059a4241852cf013297c559881be9af2334f1651406641dd8d93e641872d690'
-    '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
-    '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
-    'eccac785a61f552d7ce75a1aba990486d977d74cd6ac78091c21b3c807cf1b01'
-)
+sha256sums=('b059a4241852cf013297c559881be9af2334f1651406641dd8d93e641872d690'
+            '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
+            '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
+            '521e3e9c59fba536c5316cc3a9eb5ab6ac2f3cdce1051fda1a7446a4c3147bcd')
 
 prepare() {
     sed -e 's|%pkgname%|opera-developer|g' \
