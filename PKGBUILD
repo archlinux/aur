@@ -1,6 +1,18 @@
 # Maintainer: Yatao Li <yatao.li@live.com>
+#
+# Canonical AUR recipe for dingtalk-wayland-screenshare-git.
+# IMPORTANT: after editing this file (or after pushing new upstream commits),
+# ALWAYS regenerate .SRCINFO so the advertised pkgver matches pkgver():
+#
+#     makepkg --printsrcinfo > .SRCINFO
+#     git add PKGBUILD .SRCINFO && git commit && git push
+#
+# The perpetual "yay -Syu wants to reinstall this every time" bug was caused by
+# .SRCINFO advertising a static pkgver=0.1.0 while pkgver() builds r<count>.<hash>.
+# Because a numeric-leading version sorts NEWER than an alphabetic-leading one,
+# yay saw 0.1.0-1 as a permanent upgrade over the installed r2.b44c9ac-1.
 pkgname=dingtalk-wayland-screenshare-git
-pkgver=0.1.0
+pkgver=r4.37b3e58
 pkgrel=1
 pkgdesc="Wayland screen sharing hook for Dingtalk (via xdg-desktop-portal + pipewire)"
 arch=('x86_64')
@@ -12,7 +24,6 @@ depends=(
   'pipewire'
   'wireplumber'
   'xdg-desktop-portal'
-  'opencv'
   'libxrandr'
   'libxcomposite'
 )
@@ -22,29 +33,33 @@ makedepends=(
   'pkgconf'
   'git'
 )
-provides=('dingtalk-wayland-screenshare')
+provides=("dingtalk-wayland-screenshare=${pkgver}")
 conflicts=('dingtalk-wayland-screenshare')
-source=("git+https://github.com/yatli/dingtalk-wayland-screencast.git")
+source=('dingtalk-wayland-screencast::git+https://github.com/yatli/dingtalk-wayland-screencast.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd dingtalk-wayland-screencast
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/dingtalk-wayland-screencast"
+  # r<commit-count>.<short-hash>; monotonic and matches the currently
+  # installed version scheme (r2.b44c9ac). Keep this scheme so upgrades sort
+  # correctly (r2 -> r3 -> ...). Do NOT reintroduce a plain 0.x.y here.
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd dingtalk-wayland-screencast
-  mkdir -p build
-  cd build
-  cmake ../src -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  ninja
+  cmake \
+    -S "$srcdir/dingtalk-wayland-screencast/src" \
+    -B "$srcdir/build" \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build "$srcdir/build"
 }
 
 package() {
-  cd dingtalk-wayland-screencast
-
   # Install the hook library
-  install -Dm755 build/libdingtalk_hook.so "$pkgdir/usr/lib/dingtalk/libdingtalk_hook.so"
+  install -Dm755 "$srcdir/build/libdingtalk_hook.so" \
+    "$pkgdir/usr/lib/dingtalk/libdingtalk_hook.so"
 
   # Install the launcher script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/dingtalk-wayland-screenshare" <<'LAUNCHER'
@@ -52,7 +67,7 @@ package() {
 # Launch Dingtalk with Wayland screen share hook
 export QT_QPA_PLATFORM="wayland;xcb"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export LD_PRELOAD="/usr/lib/dingtalk/libdingtalk_hook.so"
+export LD_PRELOAD="/usr/lib/dingtalk/libdingtalk_hook.so${LD_PRELOAD:+:$LD_PRELOAD}"
 cd /opt/dingtalk/release
 exec ./com.alibabainc.dingtalk "$@"
 LAUNCHER
