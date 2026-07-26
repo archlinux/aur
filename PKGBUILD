@@ -2,7 +2,7 @@
 # Contributor: Jener Rasmussen <aur@jener.me>
 
 pkgname=opentofu-bin
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -16,10 +16,10 @@ source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v${pkgver
 source_i686=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_386.zip")
 source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_arm64.zip")
 source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_arm.zip")
-sha256sums_x86_64=('f5d2ae8a0efcddd3722546b3e0f2f2f0648ce5e5a3e411176041adcb7dccc1e8')
-sha256sums_i686=('1695fe3bd9ff34cd64fbbb41113453b140019a7c1d6df30ce7c5e9a5275fd31a')
-sha256sums_aarch64=('a3b01db857c7c650768ffa8ad9119dc2db82fe1b98125b7238392a160aca7f8a')
-sha256sums_armv7h=('3bc49a5802265b1345aba1be33266385ac2421548b3c08c7b56201566debd34a')
+sha256sums_x86_64=('dade9650e6b74fc7a8b986bd8717497d32f9e09cf82e479afef4977fa3085536')
+sha256sums_i686=('018870f8b0efd78aaab785e7b8989faf3dfb6fe08d01eb28abe7b41cd306a501')
+sha256sums_aarch64=('528f4eea63452bbddb30fa4f1780b57fac8d7676f9dda0f772e847bb62c1260a')
+sha256sums_armv7h=('30e6fa569d22300b769a0a50ef51af0f3002e37bd11290f817cd363b357f2e69')
 
 package() {
     install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
