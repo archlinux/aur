@@ -7,7 +7,7 @@
 _pkgname=davs2
 pkgname=${_pkgname}-llvm
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and LLVM lld'
 url='https://github.com/pkuvcl/davs2/'
@@ -17,9 +17,14 @@ makedepends=('nasm' 'clang' 'lld' 'llvm')
 provides=('davs2' 'libdavs2')
 conflicts=('davs2' 'libdavs2')
 replaces=('libdavs2')
-options=('!lto')
-source=("https://github.com/pkuvcl/davs2/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b697d0b376a1c7f7eda3a4cc6d29707c8154c4774358303653f0a9727f923cc8')
+source=("https://github.com/pkuvcl/davs2/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        '010-davs2-lto-configure.patch')
+sha256sums=('b697d0b376a1c7f7eda3a4cc6d29707c8154c4774358303653f0a9727f923cc8'
+            '419ae2f0b202da3feb5241f4fa3ec8fdb3cffe264d0890c4a0492ab7bfbd866c')
+
+prepare() {
+    patch -d "${_pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-davs2-lto-configure.patch"
+}
 
 build() {
     cd "${_pkgname}-${pkgver}/build/linux"
