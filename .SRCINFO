@@ -1,0 +1,16 @@
+pkgbase = linux-minesweeper
+	pkgdesc = A faithful recreation of the Windows 7 Minesweeper
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/actuallyaridan/linux-minesweeper
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	source = linux-minesweeper-2.0.1.tar.gz::https://github.com/actuallyaridan/linux-minesweeper/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 22879c0fe92c95ce17ef2c11071026ce99fc5ba803eedd41e33c4344d909a5ab
+
+pkgname = linux-minesweeper
