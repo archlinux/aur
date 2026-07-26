@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tssh"
-pkgver="0.1.25"
+pkgver="0.1.26"
 pkgrel=1
 epoch=0
 pkgdesc="Highly OpenSSH-compatible client with extended features"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/trzsz-ssh/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('099b5ce3672a28b53e93bf27d0150032')
+md5sums=('422416e4854da55ef7b86444a1860648')
 validpgpkeys=()
 
 build() {
