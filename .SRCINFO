@@ -1,6 +1,6 @@
 pkgbase = vboard
 	pkgdesc = Wayland virtual keyboard for GNU/Linux with modifier key support
-	pkgver = 2.5.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/vboard
 	install = vboard.install
@@ -16,7 +16,7 @@ pkgbase = vboard
 	depends = libayatana-appindicator
 	optdepends = desktop-file-utils: provides update-desktop-database for helper scripts
 	optdepends = hunspell-en_us: enables word suggestions
-	source = vboard::git+https://github.com/archisman-panigrahi/vboard.git#tag=v2.5.0
+	source = vboard::git+https://github.com/archisman-panigrahi/vboard.git#tag=v2.7.0
 	sha256sums = SKIP
 
 pkgname = vboard
