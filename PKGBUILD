@@ -10,7 +10,7 @@
 _pkgname=awesome
 pkgname=${_pkgname}-git
 pkgver=4.3.1735.gfa805ab46
-pkgrel=1
+pkgrel=3
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
 url='https://awesomewm.org/'

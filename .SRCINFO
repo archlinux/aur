@@ -1,7 +1,7 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
 	pkgver = 4.3.1735.gfa805ab46
-	pkgrel = 1
+	pkgrel = 3
 	url = https://awesomewm.org/
 	arch = i686
 	arch = x86_64
