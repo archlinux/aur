@@ -17,6 +17,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
+    'python-setuptools'
 )
 
 source=(
