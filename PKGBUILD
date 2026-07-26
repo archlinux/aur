@@ -2,7 +2,7 @@
 
 _pkgbase=ab-download-manager
 pkgname="$_pkgbase"
-pkgver=1.8.7
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('any')
@@ -17,8 +17,7 @@ depends=(
 )
 makedepends=(
 	'git'
-	'java-environment=21'
-	'gradle'
+	'java-environment=25'
 )
 optdepends=(
 	'libappindicator-gtk3: tray icon support'
@@ -28,13 +27,13 @@ source=(
 	"$_pkgbase::git+https://github.com/amir1376/ab-download-manager.git#tag=v$pkgver"
 	'abdownloadmanager.desktop'
 )
-sha256sums=('fffe14ecd72e0d7137c5e5eb72406605f93ec44b15e92de9ecd419ea43c2eb35'
+sha256sums=('5e271d5106c06973c4581f057d43ce75e8b7f6cf149cc74e1a52766a686fbbfe'
             'd194cf142921d78c8a2a8c6c2b3a8b41bf2545eb2c7147a8f866946528227031')
 
 build() {
 	cd "$_pkgbase"
-	export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-	gradle createReleaseDistributable
+	export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
+	./gradlew createReleaseDistributable
 }
 
 package() {
