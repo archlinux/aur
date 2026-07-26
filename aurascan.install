@@ -1,0 +1,33 @@
+post_install() {
+  cat <<'EOF'
+AuraScan installed.
+
+Run first-run setup:
+  aurascan init
+
+Check local configuration:
+  aurascan doctor
+
+Run aurascan init to optionally enable read-only monitoring, logged-in two-pass AI repair planning, and the separately controlled reversible Safe Autopilot policy.
+Run aurascan init or aurascan recovery --install to explicitly install the optional recovery image and boot entry; package installation leaves them disabled.
+
+For AUR build-time protection, configure your helper to use:
+  aurascan-makepkg
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+AuraScan upgraded.
+
+Review setup and local diagnostics when needed:
+  aurascan init
+  aurascan doctor
+
+Run aurascan init to review optional monitoring, background AI repair planning, and Safe Autopilot settings.
+Run aurascan recovery --status to check an enabled recovery image after major kernel or storage changes.
+
+For AUR build-time protection, configure your helper to use:
+  aurascan-makepkg
+EOF
+}
