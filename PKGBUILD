@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -26,7 +26,7 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('da6232af7003ed5ede4f5e44b7daf82c89d328ca81facb980d33b687ae92ed57'
+sha256sums=('4d11554848fcbf422e882c8e82834d0c10855aa3ca92e280828a129a6e0323f8'
             '5f744a24a3605f78ee30348e1d705f47d803f915e58e076ea6e11f151d678407'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
