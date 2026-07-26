@@ -1,18 +1,18 @@
 pkgbase = kickoutchi-bin
 	pkgdesc = TUI and CLI to see which process owns a local port and kill it safely (prebuilt)
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/nuggocto/kickoutchi
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	provides = kickoutchi=1.3.5
+	provides = kickoutchi=1.3.6
 	conflicts = kickoutchi
 	options = !debug
-	source_x86_64 = kickoutchi-bin-1.3.5-x86_64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/kickoutchi/releases/download/v1.3.5/kickoutchi-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 3144d78412bbded5d74effcb2363d267c3de965abc39b6b6e32338e713b3769a
-	source_aarch64 = kickoutchi-bin-1.3.5-aarch64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/kickoutchi/releases/download/v1.3.5/kickoutchi-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 08d35bb182236043d3f7d42599ab554d5b1eb2b454565440d605deccaf4957f5
+	source_x86_64 = kickoutchi-bin-1.3.6-x86_64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/kickoutchi/releases/download/v1.3.6/kickoutchi-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4acf141a6c02a7f6368eb09644b3eb4d8ca6b260b145ef599ac987199ef97304
+	source_aarch64 = kickoutchi-bin-1.3.6-aarch64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/kickoutchi/releases/download/v1.3.6/kickoutchi-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c792a8b08f6e9d397773df7c9e37d711a8d981f33dc852c4156d4aa5f0e350c0
 
 pkgname = kickoutchi-bin
