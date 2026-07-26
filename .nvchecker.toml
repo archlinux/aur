@@ -1,0 +1,4 @@
+[starpsx-bin]
+source = "git"
+git = "https://github.com/kaezrr/starpsx.git"
+prefix = "v"
