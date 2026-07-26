@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=frame-x-server
-pkgver=0.0.27
+pkgver=0.0.146
 pkgrel=1
 pkgdesc='X11 display server for the CHasm desktop written in x86_64 assembly'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Unlicense')
 makedepends=(
     'nasm')
 source=("https://github.com/isene/frame/archive/v${pkgver}/frame-x-server-${pkgver}.tar.gz")
-sha256sums=('c189b3ae995945b8bcf260176bd3d23953f9c6f296639600e37acb7b3ccf88e2')
+sha256sums=('384a0eae7ad26d8173e62a48690df814bab499eaebdbd46739a886aeadf7a8fd')
 
 build() {
     make -C "frame-${pkgver}"
