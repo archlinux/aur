@@ -1,0 +1,26 @@
+pkgbase = hitokoto-cli-bin
+	pkgdesc = Command-line tool to fetch hitokoto (yiyan) from hitokoto.cn
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xiSage/hitokoto-cli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = hitokoto-cli=0.1.0
+	conflicts = hitokoto-cli
+	options = !strip
+	source_x86_64 = hitokoto-0.1.0-linux-x64.tar.gz::https://github.com/xiSage/hitokoto-cli/releases/download/v0.1.0/hitokoto-linux-x64.tar.gz
+	source_x86_64 = LICENSE-upstream::https://raw.githubusercontent.com/xiSage/hitokoto-cli/v0.1.0/LICENSE
+	sha256sums_x86_64 = c265ab870ead7c6b33c3380b7e1f2822d7b2df28d55351666f9c0c29140fd7bf
+	sha256sums_x86_64 = a9b606e32daf815bb801da0260e0a5fb83dfee31397db003c64a456e055778ed
+	source_aarch64 = hitokoto-0.1.0-linux-arm64.tar.gz::https://github.com/xiSage/hitokoto-cli/releases/download/v0.1.0/hitokoto-linux-arm64.tar.gz
+	source_aarch64 = LICENSE-upstream::https://raw.githubusercontent.com/xiSage/hitokoto-cli/v0.1.0/LICENSE
+	sha256sums_aarch64 = 44d9bd650c3395a2d80a499197e5b56e37358f11f330fdd30c68fd0cf0a906d8
+	sha256sums_aarch64 = a9b606e32daf815bb801da0260e0a5fb83dfee31397db003c64a456e055778ed
+	source_armv7h = hitokoto-0.1.0-linux-arm.tar.gz::https://github.com/xiSage/hitokoto-cli/releases/download/v0.1.0/hitokoto-linux-arm.tar.gz
+	source_armv7h = LICENSE-upstream::https://raw.githubusercontent.com/xiSage/hitokoto-cli/v0.1.0/LICENSE
+	sha256sums_armv7h = b6b0bf032577fe891b8cbc2acfb963b5d0407eb2ca2e566b9d820412fb4e07ba
+	sha256sums_armv7h = a9b606e32daf815bb801da0260e0a5fb83dfee31397db003c64a456e055778ed
+
+pkgname = hitokoto-cli-bin
