@@ -2,9 +2,9 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=Ckmeans.1d.dp
-_pkgver=4.3.5
+_pkgver=4.3.6
 pkgname=r-${_pkgname,,}
-pkgver=4.3.5
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='Optimal, Fast, and Reproducible Univariate Clustering'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a30599db8bc1c77f20b3b9193772c60e713232a6f4aa6ac68c5569a0b6bc403d')
+sha256sums=('187bb067505e1c9693100aa974e4104eb4d852536bd4abc5950c1a922b95e32f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

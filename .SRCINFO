@@ -1,6 +1,6 @@
 pkgbase = r-ckmeans.1d.dp
 	pkgdesc = Optimal, Fast, and Reproducible Univariate Clustering
-	pkgver = 4.3.5
+	pkgver = 4.3.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Ckmeans.1d.dp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-ckmeans.1d.dp
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Ckmeans.1d.dp_4.3.5.tar.gz
-	sha256sums = a30599db8bc1c77f20b3b9193772c60e713232a6f4aa6ac68c5569a0b6bc403d
+	source = https://cran.r-project.org/src/contrib/Ckmeans.1d.dp_4.3.6.tar.gz
+	sha256sums = 187bb067505e1c9693100aa974e4104eb4d852536bd4abc5950c1a922b95e32f
 
 pkgname = r-ckmeans.1d.dp
