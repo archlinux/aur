@@ -1,7 +1,7 @@
 pkgbase = bedrock-on-linux-bin
 	pkgdesc = Run Minecraft Bedrock for Windows on Linux with native Microsoft identity and multiplayer
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wyze3306/BedrockOnLinux
 	arch = x86_64
 	license = MIT
