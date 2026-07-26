@@ -1,0 +1,12 @@
+post_install() {
+	echo '请打开 Agent Glow 桌面应用，通过总开关启动 daemon 并启用开机启动。'
+	echo '请在 Agent 集成页面按需接入 Codex 或 OpenCode。'
+}
+
+post_upgrade() {
+	echo '请在 Agent Glow 桌面应用中重启服务，以应用升级。'
+}
+
+post_remove() {
+	echo '用户配置和 Agent Hooks 未自动删除；如有需要，请手动清理。'
+}
