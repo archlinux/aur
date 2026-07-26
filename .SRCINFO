@@ -1,6 +1,6 @@
 pkgbase = python-resend
 	pkgdesc = Resend's Python SDK
-	pkgver = 2.33.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://github.com/resend/resend-python
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-resend
 	depends = python-typing_extensions
 	depends = python-requests
 	optdepends = python-httpx: async support
-	source = https://github.com/resend/resend-python/archive/refs/tags/v2.33.0.tar.gz
-	sha512sums = f566e753198980bdf4a8fd4db7848dd33de0e5f5c8ce8032add011772a9f13d6d8e0a2724cc33a5f6154d79607da1a816b66b21f8b0062b6bdd339cc2396ac30
-	b2sums = 597c1ea68ed3bfaec698ec8678ebfcec78940ec5c545661d42199152975ec1f72ff60a7221507bd80f98b2fa368ded53b2fc216299e1f2bc4e810f0ee5bbc6bf
+	source = https://github.com/resend/resend-python/archive/refs/tags/v2.34.0.tar.gz
+	sha512sums = b304dfcf6e67a6ffd6262a1719aecd53d61b44d748b13e7f8d34039b35475a5aa3b38d2ba745aafb64b856f5ee11cde1521d326d2590ead00e761fc24c597897
+	b2sums = e4dea79394c68fa340a4049731fee1ea37402b285bb87180f06fc790e73a3e16c45ceb7d4d85a2b5da004d28e66a6f87b8b73b513337cd718351e22451a0dc36
 
 pkgname = python-resend
