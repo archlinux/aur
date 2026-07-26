@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Nano-Collective
-pkgver=1.28.1
+pkgver=1.29.0
 pkgrel=1
 
 _npmname=nanocoder
@@ -26,7 +26,7 @@ changelog="changelog.md"
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('c4d148360a28666fe572e3bca416715d46b67097a93b97ffc9fcb48103b6569f954123b502c592200c7b837911d933273cd662c0d83167533a4f8543f098d288')
+b2sums=('14fa4cddac66fb212507afc73fac8c011ba35ba0669b1df94f84bb627e94b51963abffbe1cb4fea3d9b22103f18733992baa28919b58d852a4d72135a5e6d000')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
