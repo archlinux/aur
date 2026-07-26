@@ -1,0 +1,21 @@
+pkgbase = typo-rs-bin
+	pkgdesc = Terminal touch-typing tutor written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isene/typo
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = typo
+	conflicts = typo-rs
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/isene/typo/v0.1.0/README.md
+	sha256sums = e2a5ab02d1fc54218b6a637294aeea7618c9e5dc3755254b61e9c6fba44db8c2
+	source_x86_64 = typo-x86_64-0.1.0::https://github.com/isene/typo/releases/download/v0.1.0/typo-linux-x86_64
+	sha256sums_x86_64 = 014b0e70be5796fc875b06fc47eb60fc650588d0ab9615f1e4d4e726e41acbb4
+	source_aarch64 = typo-aarch64-0.1.0::https://github.com/isene/typo/releases/download/v0.1.0/typo-linux-aarch64
+	sha256sums_aarch64 = 42cb0f8ac3249e510f123deef1eff2c78291c0f3327ae13c6a90a129a340af61
+
+pkgname = typo-rs-bin

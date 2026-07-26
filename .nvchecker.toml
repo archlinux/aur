@@ -1,0 +1,5 @@
+[typo-rs-bin]
+source = "github"
+github = "isene/typo"
+use_latest_release = true
+prefix = "v"
