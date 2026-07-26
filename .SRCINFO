@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-kdeconnect-git
 	pkgdesc = Native KDE Connect applet for the COSMIC desktop
-	pkgver = 0.9.0.r368.g26513c2
+	pkgver = 0.10.0.r0.gc83895f
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/kdeconnect
 	arch = x86_64
