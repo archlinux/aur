@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -13,15 +13,18 @@ depends=(
 	"libgcc"
 	"openssl"
 	"mpv"
-	"nodejs"
 )
 makedepends=(
 	"rust"
 )
+optdepends=(
+	"kitty: support for displaying cover image in tmux"
+	"nodejs>=23.5.0: support for custom JS music source"
+)
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('92d430c4a1b21104f190a77fe015ee9063a6fcc9b0e0335a24534d735903018f7709458380fcc7b9f5a270543e798fc2a7c7f4555aca7d2a41a002c2f87634be')
+sha512sums=('8df3371c09cf806dec36718309a301794f7e7477e10de33a53988145a65160af1273d0ac39c07725449bc4fd9e40fbe6144fd8cf9af8f8d6e92c5c596746c7e0')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -36,6 +39,14 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen --package voicefox-app
+}
+
+check() {
+	cd "${pkgname}-${pkgver}"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo test --release --frozen --workspace
 }
 
 package() {
