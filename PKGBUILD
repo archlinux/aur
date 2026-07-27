@@ -2,12 +2,12 @@
 
 pkgname=pcl-n-bin
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="一个基于 PCL-CE 开发的 Minecraft 启动器"
 arch=('x86_64')
 url="https://github.com/PCL-N-Edition/PCL-N"
 license=('Apache-2.0')
-depends=('dotnet-runtime-10.0')
+depends=('dotnet-runtime-10.0' 'hicolor-icon-theme')
 source=("$url/releases/download/v$pkgver-release/PCL_N_Release_linux-x64_NoRuntime_NoPlugin.tar.gz"
         "https://raw.githubusercontent.com/PCL-N-Edition/PCL-N/refs/heads/dev/PCL.Desktop/Assets/icon.png"
         "pcl-n"
