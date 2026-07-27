@@ -1,6 +1,6 @@
 pkgbase = libfastjson-git
 	pkgdesc = A performance-focused json library for C
-	pkgver = 1.2304.0.r5.gf1983a8
+	pkgver = 1.2304.0.r25.ga630254
 	pkgrel = 1
 	url = https://github.com/rsyslog/libfastjson
 	arch = x86_64
