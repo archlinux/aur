@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Termforge
+Comment=Forkable framework for terminal emulators
+Exec=termforge
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
