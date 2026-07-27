@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.4.32.r0.g6eff602
+pkgver=0.4.36.r0.g1a79288
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -45,12 +45,12 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-	export electronDist="/usr/lib/electron${_electronversion}"
+    export CARGO_HOME="${srcdir}/.cargo"
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_OVERRIDE_DIST_PATH="${electronDist}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export BUN_CONFIG_REGISTRY="https://registry.npmmirror.com"
         export npm_config_registry="https://registry.npmmirror.com"
@@ -60,9 +60,9 @@ _set_build_env() {
         export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron"
         export npm_config_electron_mirror="https://npmmirror.com/mirrors/electron/"
         export BUN_BINARY_MIRROR_OVERRIDE="https://npmmirror.com/-/binary/"
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+		export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
-        export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
     fi
 }
 _get_electron_version() {
@@ -86,11 +86,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    #sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
-    #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/configManager.js
-    #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
-    #sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, "simpleshell", "config.json");/g' src/core/configManager.js
-    #sed -i 's/return path.join(path.dirname(process.execPath), "log");/return path.join(configDir, "simpleshell", "log");/g' src/core/utils/logger.js
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
