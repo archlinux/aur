@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=text-diff-view-bin
 _pkgname='Text Diff View'
-pkgver=1.8.1
-_electronversion=41
+pkgver=1.9.1
+_electronversion=43
 pkgrel=1
 pkgdesc="Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,12 +19,21 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/text-diff-view/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4e0fd2d50f085f3e4f6140784a30764303fd3e6e909cb2ddadf314aac217252b'
+sha256sums=('59b14c1a9bcced1874f7026f7131faf66b4d330db909a7c94ffabedf198e57d6'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -32,7 +41,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -41,23 +49,22 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _get_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    _check_electron_version
+    local _app_dir=$(_get_app_dir)
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

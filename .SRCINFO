@@ -1,18 +1,18 @@
 pkgbase = text-diff-view-bin
 	pkgdesc = Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.8.1
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://sandbox.saino.me/text-diff-view/
 	arch = x86_64
 	license = MIT
-	depends = electron41
-	provides = text-diff-view=1.8.1
+	depends = electron43
+	provides = text-diff-view=1.9.1
 	conflicts = text-diff-view
-	source = text-diff-view-1.8.1-x86_64.AppImage::https://github.com/kaishuu0123/text-diff-view/releases/download/v1.8.1/text-diff-view-1.8.1.AppImage
-	source = LICENSE-1.8.1::https://raw.githubusercontent.com/kaishuu0123/text-diff-view/v1.8.1/LICENSE
+	source = text-diff-view-1.9.1-x86_64.AppImage::https://github.com/kaishuu0123/text-diff-view/releases/download/v1.9.1/text-diff-view-1.9.1.AppImage
+	source = LICENSE-1.9.1::https://raw.githubusercontent.com/kaishuu0123/text-diff-view/v1.9.1/LICENSE
 	source = text-diff-view.sh
-	sha256sums = 4e0fd2d50f085f3e4f6140784a30764303fd3e6e909cb2ddadf314aac217252b
+	sha256sums = 59b14c1a9bcced1874f7026f7131faf66b4d330db909a7c94ffabedf198e57d6
 	sha256sums = 2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = text-diff-view-bin
