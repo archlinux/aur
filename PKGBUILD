@@ -1,8 +1,8 @@
 # Maintainer: Nikhil Iyer <iyer.h.nikhil at gmail dot com>
 
 pkgname="nhost"
-pkgrel=2
-pkgver=1.34.12
+pkgrel=1
+pkgver=1.50.0
 pkgdesc="Used to set up a local development environment with Nhost. This environment will automatically track database migrations and Hasura metadata."
 arch=('x86_64')
 url="https://github.com/nhost/nhost"
@@ -14,11 +14,7 @@ conflicts=("${pkgname}")
 replaces=()
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/cli@${pkgver}.tar.gz")
-sha256sums=('eb484b97af53f84fcc8072974169e60e253980a4bfcbd42e78dc3835c280eb03')
-
-pkgver() {
-  git ls-remote --sort "version:refname" ${url}.git "cli@*" | grep -E 'cli@([0-9]+\.[0-9]+\.[0-9]+)$' | tail -n 1 | sed -E 's/^.*cli@([0-9]+\.[0-9]+\.[0-9]+)$/\1/g'
-}
+sha256sums=('15a38b50f97f003de83dec2aac0f7e17c237e31cb922de6d99e06efd1eb9f5db')
 
 build() {
   cd "$srcdir/${pkgname}-cli-${pkgver}/cli"
