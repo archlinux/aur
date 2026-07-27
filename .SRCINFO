@@ -1,6 +1,6 @@
 pkgbase = chillspot
 	pkgdesc = Fan curve control and temperature monitor for MSI laptops
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://codeberg.org/FVtronics/Chillspot
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = chillspot
 	depends = libadwaita
 	depends = polkit
 	depends = systemd
-	source = chillspot-0.2.1.tar.gz::https://codeberg.org/FVtronics/Chillspot/archive/v0.2.1.tar.gz
-	sha256sums = f7a256ac4c5f85d3f6ec460527506c9125f6949e55e964901dc46a96dde12a84
+	source = chillspot-0.2.2.tar.gz::https://codeberg.org/FVtronics/Chillspot/archive/v0.2.2.tar.gz
+	sha256sums = a1335b47d69cea2d8b95791dc2e695e200631e45d635f8781809d172463c017f
 
 pkgname = chillspot
