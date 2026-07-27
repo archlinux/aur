@@ -1,19 +1,19 @@
 pkgbase = affine-bin
 	pkgdesc = There can be more than Notion and Miro.AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.27.2
+	pkgver = 0.27.3
 	pkgrel = 1
 	url = https://affine.pro/
 	arch = x86_64
 	license = LicenseRef-custom
 	license = MIT
 	depends = electron39
-	provides = affine=0.27.2
+	provides = affine=0.27.3
 	conflicts = affine
-	source = affine-0.27.2.deb::https://github.com/toeverything/AFFiNE/releases/download/v0.27.2/affine-0.27.2-stable-linux-x64.deb
-	source = LICENSE-0.27.2::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.27.2/LICENSE
-	source = LICENSE-MIT-0.27.2::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.27.2/LICENSE-MIT
+	source = affine-0.27.3.deb::https://github.com/toeverything/AFFiNE/releases/download/v0.27.3/affine-0.27.3-stable-linux-x64.deb
+	source = LICENSE-0.27.3::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.27.3/LICENSE
+	source = LICENSE-MIT-0.27.3::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.27.3/LICENSE-MIT
 	source = affine.sh
-	sha256sums = 6552ed5946c22df8b64546748bd09fc5c0c7273a5041bb24a5d7708d6b42955c
+	sha256sums = c06054662bc800c545bf02cb06073eda73aaadb53f16892bf0929a4fc022c107
 	sha256sums = c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b
 	sha256sums = 1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
