@@ -1,20 +1,20 @@
 pkgbase = requesto-bin
 	pkgdesc = A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.5.17
+	pkgver = 1.5.19
 	pkgrel = 1
 	url = https://requesto.com.au/
 	arch = x86_64
 	license = MIT
-	depends = electron42
+	depends = electron43
 	depends = nodejs
-	provides = requesto=1.5.17
+	provides = requesto=1.5.19
 	conflicts = requesto
 	options = !emptydirs
 	options = !strip
-	source = requesto-1.5.17.deb::https://github.com/t3rr11/Requesto/releases/download/v1.5.17/requesto-electron_1.5.17_amd64.deb
-	source = LICENSE-1.5.17::https://raw.githubusercontent.com/t3rr11/Requesto/v1.5.17/LICENSE
+	source = requesto-1.5.19.deb::https://github.com/t3rr11/Requesto/releases/download/v1.5.19/requesto-electron_1.5.19_amd64.deb
+	source = LICENSE-1.5.19::https://raw.githubusercontent.com/t3rr11/Requesto/v1.5.19/LICENSE
 	source = requesto.sh
-	sha256sums = 6e1b1042adc923dbc1013f9aeaf5a9c9d23fe0f3f6219ef6c8ae2c27ad847f04
+	sha256sums = f585b8f7da1a9a3dfe423c9e775ce04b7c723745ed3c526ca06854f49890e109
 	sha256sums = baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
