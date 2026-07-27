@@ -1,7 +1,12 @@
 # Maintainer: Eric Cañas <elcorreodeharu@gmail.com>
 
+# This recipe is 0BSD (see LICENSE), which is a different thing from the MIT below:
+# `license=('MIT')` is idlectl's licence, and 0BSD is this packaging's. The AUR
+# submission rules ask for the second one, and without it the package cannot be promoted
+# to the official repositories.
+
 pkgname=idlectl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Idle policy daemon that decides when a machine may blank, suspend, hibernate or power off'
 arch=('x86_64' 'aarch64')
@@ -44,7 +49,7 @@ install="$pkgname.install"
 # hence the separate variable rather than the usual "$pkgname-$pkgver".
 _srcname="cachyos-idlectl-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7fb36988f11e50d9b6cff51b51f9cdbb6294d6ebf0e0ca07f1ca1dc5c13b4d1b')
+sha256sums=('1d2c212003ce5057b90f3655c73484328a8d057bcd2ab4c3db75086c853bd4fe')
 
 prepare() {
 	cd "$_srcname"
@@ -78,9 +83,23 @@ check() {
 
 package() {
 	cd "$_srcname"
-	make DESTDIR="$pkgdir" prefix=/usr install
+	# CARGO_TARGET_DIR is passed on the command line rather than exported, because a make
+	# command-line variable beats both the Makefile's `?=` and the environment.
+	#
+	# Not needed on the normal route -- measured rather than assumed: with
+	# CARGO_TARGET_DIR exported to some other directory, `makepkg -f` still built and
+	# packaged correctly, because build()'s own export mutates makepkg's process
+	# environment and the fakeroot child inherits it.
+	#
+	# It IS needed under `makepkg -R`, which skips build() and therefore skips that
+	# export. The same test there died in package() with `install: cannot stat
+	# .../release/idlectl: No such file or directory`, the path being the inherited
+	# CARGO_TARGET_DIR. It failed loudly only because that directory happened to be
+	# empty: one already holding binaries of these three names would have been packaged
+	# silently, which is the case this line actually defends against.
+	make CARGO_TARGET_DIR=target DESTDIR="$pkgdir" prefix=/usr install
 	# Upstream's own assertion that the package owns nothing under /etc and enables no
 	# unit. Cheap, and it turns two invariants that a reviewer would otherwise take on
 	# trust into a build failure.
-	make DESTDIR="$pkgdir" prefix=/usr verify-install
+	make CARGO_TARGET_DIR=target DESTDIR="$pkgdir" prefix=/usr verify-install
 }
