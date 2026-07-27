@@ -1,7 +1,7 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=mkbrr-gui-bin
-_srcver="v1.24.0"
+_srcver="v1.24.1"
 pkgver="${_srcver#v}"
 pkgver="${pkgver/-rc./_rc}"
 pkgrel=1
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}releases/download/${_srcver}/mkbrr-g
         "mkbrr-gui-license::https://raw.githubusercontent.com/autobrr/mkbrr/${_srcver}/LICENSE"
         mkbrr.png
         mkbrr.desktop)
-sha256sums=('79396c26df8aeb95851f2764bacc04c9ad87d958a0542efe16027283e3201142'
+sha256sums=('2690a5de897cbf74fd3baaf5c081e04e8e2d3c3f9eb54f58809b3b33354846ca'
             'SKIP'
             '3d2ae1c183781e2fab4008b42f7d2004bbefe363f3e965e95b7b4e00bb67b93d'
             'ae73ca45fc81e322750454725b5c315b5566625511854ced2716b0c19a4d1515')
