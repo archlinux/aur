@@ -2,7 +2,7 @@
 
 pkgname=rox-player
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
 url="https://github.com/zealsprince/rox"
@@ -37,7 +37,7 @@ prepare() {
 
   # Download rust deps
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -54,7 +54,7 @@ build() {
 
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 
-  cargo build --frozen --release --all-targets
+  cargo build --offline --release --all-targets
 }
 
 package() {
