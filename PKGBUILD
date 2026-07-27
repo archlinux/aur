@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: Jonathan Bangert <jonathan@bangert.dk>
 pkgname=music-assistant-desktop
-pkgver=0.5.9
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 )
 conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a3e127449911f52d2849a07c8173fa01d0e88f811e7fae2c6e09c4505de9997c')
+sha256sums=('b593dce0b8f3c30e7b7cd980af03aced6d6f838d4a830d94279b014810a5bd19')
 # Never let makepkg put -flto in CFLAGS/CXXFLAGS/LDFLAGS here. The C sources
 # pulled in through build.rs ('cc' crate) are compiled by gcc and emit GNU IR,
 # which rust-lld cannot consume, so the final link fails on unresolved symbols.
@@ -98,8 +98,6 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/music-assistant-companion.png"
     install -Dm644 app-icon.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/music-assistant-companion.png"
-    install -Dm644 src-tauri/icons/app-icon.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/music-assistant-companion.svg"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
