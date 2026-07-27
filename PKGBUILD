@@ -1,7 +1,7 @@
 # Maintainer: TJ Smith
 
 pkgname='cfgd'
-pkgver='0.6.1'
+pkgver='0.6.2'
 pkgrel=1
 pkgdesc="Declarative, GitOps-style machine configuration management"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 optdepends=('git: GitOps source sync from remote repositories')
 conflicts=('cfgd')
 provides=('cfgd')
-source=("https://github.com/tj-smith47/cfgd/archive/refs/tags/v0.6.1.tar.gz")
+source=("https://github.com/tj-smith47/cfgd/archive/refs/tags/v0.6.2.tar.gz")
 sha256sums=('SKIP')
 
 build() {
