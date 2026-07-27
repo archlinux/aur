@@ -1,5 +1,5 @@
-# shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 pkgname=lsr-git
 pkgver=v1.0.0.r17.g833935b
 pkgrel=1
@@ -7,25 +7,25 @@ pkgdesc="ls but with io_uring"
 arch=('x86_64')
 url="https://github.com/rockorager/lsr.git"
 license=('MIT')
-makedepends=('zig>=0.15.1')
+makedepends=('zig>=0.15.1' 'git')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 provides=('lsr')
 conflicts=('lsr')
 
 pkgver() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache/"
   zig build --fetch
 }
 
 build() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   DESTDIR=build zig build \
                 --summary all \
                 --prefix "/usr" \
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname" || exit 1
+  cd "$pkgname"
   cp -a build/* "$pkgdir/"
 }
 
