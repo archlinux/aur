@@ -1,0 +1,14 @@
+pkgbase = tui_calculator
+	pkgdesc = Advanced CASIO-inspired scientific TUI calculator with LaTeX and matrix support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Bonifac0/TUI_Calculator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = tui_calculator-0.1.0.tar.gz::https://github.com/Bonifac0/TUI_Calculator/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b49fb7e38b02273f566480d50fcfbeb5d8c60bcbe144f24cf5c1f13ba0cc23fc
+
+pkgname = tui_calculator
