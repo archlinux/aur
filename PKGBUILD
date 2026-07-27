@@ -4,8 +4,8 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.2.11
-pkgrel=2
+pkgver=4.2.12
+pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://w1hkj.org"
@@ -13,15 +13,15 @@ license=('GPL-2.0-or-later')
 depends=('cty' 'fltk' 'libsamplerate' 'flxmlrpc>=1.0.1' 'libsndfile'
          'portaudio' 'libpulse' 'libgpiod' 'hamlib' 'hamradio-menus')
 optdepends=('pulseaudio: pulseaudio support')
-source=(http://w1hkj.org/files/$pkgname/$pkgname-$pkgver.tar.gz
-	diff.wayland.fix
-	flarq.wayland.patch)
+source=(http://w1hkj.org/files/$pkgname/$pkgname-$pkgver.tar.gz)
+#	diff.wayland.fix)
+#	flarq.wayland.patch)
 
 prepare () {
 	cd $srcdir/$pkgname-$pkgver
 
-	patch -p0 < ../diff.wayland.fix
-	patch -p0 < ../flarq.wayland.patch
+#	patch -p0 < ../diff.wayland.fix
+#	patch -p0 < ../flarq.wayland.patch
 }
 
 build() {
@@ -45,9 +45,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('89e9cc6e90ba99309a3eb74f3920d5df'
-         '530f155674f35eb3fe034c99ea6da39e'
-         'c180f454288d495ecbc65b364818530d')
-sha256sums=('762b370ffe9cae773a2a03b512d0b7242e7e90407c11d5abbd2d31ae6501664f'
-            'b68ef54934361d9f23580cff4c930dbf460aea99c8ada7a90bf4ce675722095c'
-            '3bdbd3fe1b8d7864f46418606e1ab98ca45b48fecd2338a573074c4185dbf380')
+md5sums=('2138b4eff9cd51f7824b79e1b751da1c')
+sha256sums=('028bcb1c100cb790cad36324b8063c13594e160743f9378320ceabcf16dbc44a')
