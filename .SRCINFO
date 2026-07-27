@@ -1,6 +1,6 @@
 pkgbase = r-rweka
 	pkgdesc = R/Weka Interface
-	pkgver = 0.4.49
+	pkgver = 0.4.50
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RWeka
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-rweka
 	optdepends = r-e1071
 	optdepends = r-mlbench
 	optdepends = r-partykit
-	source = https://cran.r-project.org/src/contrib/RWeka_0.4-49.tar.gz
-	sha256sums = bcd042213d8bcbf8a425fcbdf684d41702c37e1211e66d0c491d07a97af8d943
+	source = https://cran.r-project.org/src/contrib/RWeka_0.4-50.tar.gz
+	sha256sums = b7bd239460f37f8d7e088771076e9a7b480ca70c4ad01b3d778b7d3ca65808c3
 
 pkgname = r-rweka
