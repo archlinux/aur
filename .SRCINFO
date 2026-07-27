@@ -1,12 +1,12 @@
 pkgbase = bookstory-bin
 	pkgdesc = A Native desktop client for Audiobookshelf
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaptensea/bookstory
 	arch = x86_64
 	license = MIT
 	depends = libappindicator-gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libx11
 	source = bookstory-bin-1.4.1.deb::https://github.com/kaptensea/bookstory/releases/download/v1.4.1/bookstory_1.4.1_amd64.deb
