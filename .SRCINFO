@@ -1,6 +1,6 @@
 pkgbase = mathematica-light
 	pkgdesc = Computational software for mathematics, with online-only documentation
-	pkgver = 15
+	pkgver = 15.0.1
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = mathematica-light
 	conflicts = mathematica
 	options = !strip
 	options = !debug
-	source = Wolfram_15_LIN.sh::https://account.wolfram.com/dl/WolframApp?version=15.0&platform=Linux&downloadManager=false&includesDocumentation=false
+	source = Wolfram_15.0.1_LIN.sh::https://account.wolfram.com/dl/WolframApp?version=15.0.1&platform=Linux&downloadManager=false&includesDocumentation=false
 	source = wolfram-remove-xdg-scripts.patch
-	sha256sums = df11164827b883cbad26b7bb87aa6bdee00387456b0cdfa087861eede444c8bc
+	sha256sums = ecde452688f481318dc18dd0fbc8491998becdee88451327c2eea72c4bf7705e
 	sha256sums = 1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe
 
 pkgname = mathematica-light

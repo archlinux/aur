@@ -10,7 +10,7 @@
 
 pkgname=mathematica-light
 pkgdesc='Computational software for mathematics, with online-only documentation'
-pkgver=15
+pkgver=15.0.1
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
 _minor=${_minor:-0}
 pkgrel=1
@@ -58,7 +58,7 @@ if [[ ${SKIP_DYNAMIC_SIGNATURE:-${PRINTSRCINFO}} != 1 ]]; then
 fi
 source=("Wolfram_${pkgver}_LIN.sh::${_source_url}?version=${_major}.${_minor}${_patch/#?/.&}&platform=Linux&downloadManager=false&includesDocumentation=false${_dynamic_signature}"
         'wolfram-remove-xdg-scripts.patch')
-sha256sums=('df11164827b883cbad26b7bb87aa6bdee00387456b0cdfa087861eede444c8bc'
+sha256sums=('ecde452688f481318dc18dd0fbc8491998becdee88451327c2eea72c4bf7705e'
             '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't be of too much help here, since this is a binary distribution.
@@ -153,7 +153,7 @@ package() {
 
     for mimetype in "${mimetypes[@]}"; do
       icon="SystemFiles/FrontEnd/SystemResources/X/$(basename "${mimetype}")-${i}.png"
-      if [[ -f "${icon}" ]]; then
+      if [[ -f ${icon} ]]; then
         install -vD -m644 "${icon}" \
           -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/${mimetype//\//-}.png"
       else
