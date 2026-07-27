@@ -2,7 +2,7 @@
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprfocus')
 pkgbase='hyprland-plugins'
 pkgver='0.56.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hyprwm/hyprland-plugins'
