@@ -20,7 +20,7 @@ license=('AGPL3')
 
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl')
-conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
+conflicts=('mariadb-libs' 'mariadb-clients')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
