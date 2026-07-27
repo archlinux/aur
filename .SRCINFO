@@ -1,6 +1,6 @@
 pkgbase = ygrep-bin
 	pkgdesc = grep for YAML with jq-style filter expressions (prebuilt binary)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/subnix-work/jgrep-tinox
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ygrep-bin
 	depends = gc
 	provides = ygrep
 	conflicts = ygrep
-	source = https://github.com/subnix-work/jgrep-tinox/releases/download/v1.0.1/ygrep-1.0.1-linux-x86_64.tar.gz
-	sha256sums = 14f8159d0760064d644a949141895f90d53d37d8ec5e91239d86a4bbc6caeeb1
+	source = https://github.com/subnix-work/jgrep-tinox/releases/download/v1.0.2/ygrep-1.0.2-linux-x86_64.tar.gz
+	sha256sums = bd62dd8649fcddc86dff6e7217f94f301c1d97365cd78e1629cc55e2873f28c2
 
 pkgname = ygrep-bin
