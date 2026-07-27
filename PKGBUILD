@@ -1,4 +1,4 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 pkgname=bsdiff-gui
 pkgver=1
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='GUI for bsdiff/bspatch binary diff tools'
 arch=(x86_64)
 url=https://github.com/Raflos10/PatchGUI
-license=(BSD custom:bzip2)
+license=('BSD-2-Clause' 'LicenseRef-bzip2')
 depends=(qt5-base)
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -20,13 +20,16 @@ sha256sums=(
 )
 
 build() {
-  qmake PatchGUI-$pkgver/BSDiff-GUI.pro
+  qmake CONFIG-=ltcg PatchGUI-$pkgver/BSDiff-GUI.pro
   make
 }
 
 package() {
   install -Dm755 BSDiff-GUI -t "$pkgdir"/usr/bin
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bsdiff
-  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/bzip2/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bzip2
+  install -Dm644 $pkgname.desktop \
+    "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bsdiff
+  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/bzip2/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bzip2
 }
