@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-bin
 _pkgname=Leavepad
-pkgver=2.7.1
+pkgver=2.7.2
 _electronversion=43
 pkgrel=1
 pkgdesc="A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/leavepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('57ba445827188c490f8952c71e223c411a3c3d7ad9e32668f43f4ce3f38294e0'
+sha256sums=('1afd3e4025f679eb9e13f893d3dda7ed2ca5b9e94f9fb0600a756da74a212369'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
