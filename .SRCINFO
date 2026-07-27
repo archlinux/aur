@@ -1,6 +1,6 @@
 pkgbase = unisic
 	pkgdesc = Capture, annotate, record and share your screen on Linux Wayland
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/unisic/unisic
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = unisic
 	optdepends = xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops
 	optdepends = tesseract-data-eng: English OCR language data
 	optdepends = tesseract-data-pol: Polish OCR language data
-	provides = unisic=0.8
+	provides = unisic=0.8.1
 	conflicts = unisic-bin
-	source = unisic-0.8.tar.gz::https://github.com/unisic/unisic/releases/download/v0.8/unisic-0.8.tar.gz
-	sha256sums = 8ae606e6006a2887a9172b12b9041073b0ff3bc1264e8295ef540e1b13f07f09
+	source = unisic-0.8.1.tar.gz::https://github.com/unisic/unisic/releases/download/v0.8.1/unisic-0.8.1.tar.gz
+	sha256sums = 98ac32a3b1cc5e2cd8d8535891619d64eacd25c0b4b14fecb2f960558a0ba11d
 
 pkgname = unisic
