@@ -1,0 +1,13 @@
+pkgbase = cool-rain
+	pkgdesc = Very cool and fun ASCII rain animation for your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com
+	arch = any
+	license = MIT
+	depends = bash
+	depends = ncurses
+	source = cool-rain::https://githubusercontent.com
+	sha256sums = SKIP
+
+pkgname = cool-rain
