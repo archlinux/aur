@@ -10,7 +10,7 @@
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Opinionated, e2e-only XMPP client, post-quantum by default'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('70ad065f628b31dc9a87b3f8a51c355ae506779d4ea6c7f035aa71193af4b6f5' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
+sha256sums=('0d38bcc8fb90a791cc415f4467db98529a09bedb2e23f370775213161703a9af' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
