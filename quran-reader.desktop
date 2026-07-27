@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Quran Reader
+Comment=A beautiful, fast, offline-first Quran reader
+Exec=quran-reader
+Icon=quran-reader
+Terminal=false
+Categories=Education;Viewer;
+Keywords=quran;islam;mushaf;arabic;
+StartupWMClass=quran-reader
