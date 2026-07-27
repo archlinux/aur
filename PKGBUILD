@@ -28,7 +28,7 @@ optdepends=(
 
 options=('!strip' '!emptydirs')
 source=("https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.1/cfait-linux-v1.1.1.tar.xz")
-sha256sums=('8f9d9d9e28f7da0388ae240d93d3364eddb647c5c8f4b7bbea6df0bf19e5c880')
+sha256sums=('d9fc0d2ddce802a9bc37d616d32b101afd3b8128fcd009172349f2391b3a1faa')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait' 'cfait-gui')
 conflicts=('cfait')
