@@ -1,5 +1,5 @@
 pkgbase = pulse-remote-desktop
-	pkgdesc = Package is @deprecated – installs pulse-remote-bin or pulse-remote-bin which now bundles the desktop wrapper
+	pkgdesc = Package is @deprecated – installs pulse-remote-bin or pulse-remote-git which now bundles the desktop wrapper
 	pkgver = 1.0.17
 	pkgrel = 2
 	url = https://github.com/undg/pulse-remote
