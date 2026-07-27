@@ -1,6 +1,6 @@
 pkgbase = foundry-cli-bin
 	pkgdesc = Foundry DevOps automation CLI
-	pkgver = 0.0.37
+	pkgver = 0.0.38
 	pkgrel = 1
 	url = https://github.com/shpitdev/foundry-cli
 	install = foundry-cli-bin.install
