@@ -3,7 +3,7 @@
 _basename=overlayed
 pkgname=${_basename}
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern, open-source, and free voice chat overlay for Discord (stable version)"
 arch=('x86_64')
 url="https://overlayed.dev"
@@ -41,6 +41,7 @@ build() {
 	_ensure_local_nvm
 	export TURBO_UI=0
 	export CFLAGS="$CFLAGS -ffat-lto-objects" # prevent linker error
+	export TAURI_APP_PATH="$PWD/src-tauri"
 
 	pnpm build:desktop --no-bundle
 }
