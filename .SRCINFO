@@ -8,6 +8,7 @@ pkgbase = pulse-remote-bin
 	license = MIT
 	depends = libpulse
 	depends = electron
+	options = !debug
 	source = pulse-remote-0.11.2-Linux_x86_64.tar.gz::https://github.com/undg/pulse-remote/releases/download/v0.11.2/pulse-remote_0.11.2_Linux_x86_64.tar.gz
 	sha256sums = SKIP
 
