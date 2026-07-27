@@ -14,8 +14,7 @@ pkgbase = openscad-snapshot-appimage
 	source = openscad.desktop
 	source = openscad.png::https://openscad.org/assets/img/logo.png
 	sha256sums = 570a39a199b443c2072312db458a405e18efe51d4c83756e76048ea1069d946c
-	sha256sums = 0054ea531181266a881fec9ee6b976e7165a404081cd048509621aa1b05403c8
+	sha256sums = 2fe98b0d6359549219d45b40c1a92c15be5762fa1aaddb04208b3627e3d90c53
 	sha256sums = 9839be1ae8e9203798713b2d0377d265354f4c5d70fc457c3ff6f015e0e5f56d
 
 pkgname = openscad-snapshot-appimage
-

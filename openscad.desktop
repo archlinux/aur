@@ -6,3 +6,4 @@ Icon=openscad
 Terminal=false
 Type=Application
 Categories=Graphics;3DGraphics;
+MimeType=application/x-openscad;
