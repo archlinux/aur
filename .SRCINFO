@@ -5,7 +5,7 @@ pkgbase = flite-voices-extra
 	url = http://www.festvox.org/flite/
 	arch = x86_64
 	license = LicenseRef-Flite
-	depends = flite
+	depends = flite=2.2
 	depends = alsa-lib
 	depends = glibc
 	source = flite-2.2.tar.gz::https://github.com/festvox/flite/archive/v2.2/flite-2.2.tar.gz

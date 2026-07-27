@@ -2,13 +2,17 @@
 # Repository: https://github.com/aslafy-z/aur-packages
 
 pkgname=flite-voices-extra
-pkgver=2.2
+# Tracks the flite package in Arch's extra repository rather than upstream
+# festvox releases. These modules are compiled from the same source tree and
+# link against the libflite that flite ships, so building a version Arch does
+# not have would produce libraries no installed flite can load.
+pkgver=2.2 # renovate: datasource=custom.archlinux depName=flite
 pkgrel=1
 pkgdesc='Flite voices and grapheme lexicon omitted from the flite package'
 arch=('x86_64')
 url='http://www.festvox.org/flite/'
 license=('LicenseRef-Flite')
-depends=('flite' 'alsa-lib' 'glibc')
+depends=("flite=${pkgver}" 'alsa-lib' 'glibc')
 source=("flite-${pkgver}.tar.gz::https://github.com/festvox/flite/archive/v${pkgver}/flite-${pkgver}.tar.gz")
 sha256sums=('ab1555fe5adc3f99f1d4a1a0eb1596d329fd6d74f1464a0097c81f53c0cf9e5c')
 
