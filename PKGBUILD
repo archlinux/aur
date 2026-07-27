@@ -1,6 +1,6 @@
 # Maintainer: dfdc1123 <ch3fmt1g@outlook.com>
 pkgname=kneadnet-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Convert electronic schematics into breadboard layouts and routing suggestions'
 arch=('x86_64')
@@ -19,8 +19,8 @@ source_x86_64=(
 )
 noextract=("${_deb}" "${_examples}")
 sha256sums_x86_64=(
-  '51e6de6e293575f9ba21f23835598db2048510f3f410f7bdefa8a1e24716af8a'
-  '4e85db3ef5b6edd7cb25d96cf0be45fba2cb98b419a753c79d494deedf4b214c'
+  '3b3c8d3c1e99f11c9e0b65e14ae8cdfd0fcc6aafaf4edfd33242ece10399c187'
+  'd33602be8e7975eab4bffdb83cd1d0091604bdd26320354f3bc1e02e0206bc11'
 )
 
 package() {
