@@ -1,6 +1,6 @@
 # Maintainer: nikitastrelom <l35gamershaman@gmail.com>
 pkgname=termsweeper
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Just a game-minesweeper on the Linux terminal."
 arch=('any')
