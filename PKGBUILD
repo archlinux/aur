@@ -1,7 +1,7 @@
 # Maintainer: voidbornfr 
 pkgname=void-files
 pkgver=1.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A minimal file manager for Wayland/Niri with Python PyQt6 GUI and Go TUI"
 arch=('x86_64')
 url="https://github.com/voidbornfr/void-files"
