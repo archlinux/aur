@@ -43,7 +43,7 @@ build()
 
 
     make setup prefix="$pkgdir/usr" GPR2KBDIR=/usr/share/gprconfig ENABLE_SHARED=yes
-    make
+    make -j1     # Building w/o -j1 can cause gcc to crash.
 
 
     ## Generate documentation.
