@@ -1,36 +1,36 @@
 pkgbase = linux-hardened-versioned-bin
 	pkgdesc = The Security-Hardened Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 7.1.4.hardened1
-	pkgrel = 1
+	pkgver = 7.1.5.hardened1
+	pkgrel = 2
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL2
-	noextract = linux-hardened-7.1.4.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-headers-7.1.4.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-docs-7.1.4.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-7.1.5.hardened1-2-x86_64.pkg.tar.zst
+	noextract = linux-hardened-headers-7.1.5.hardened1-2-x86_64.pkg.tar.zst
+	noextract = linux-hardened-docs-7.1.5.hardened1-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-hardened-7.1.4.hardened1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-hardened-headers-7.1.4.hardened1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-hardened-docs-7.1.4.hardened1-1-x86_64.pkg.tar.zst
-	sha256sums = a17c7cafecde0f91cacda3e998cff86a558f8e27138e6c981dde99c7237953d2
-	sha256sums = 63d077ea30c2ab6a0a82ddc230793b7d71b0d9195748e2c044b4266051005b6a
-	sha256sums = 3c5a40dc4d58785415e5e1ad89765712246c054a39467d4c9520354ae2fb7b4e
+	source = https://archive.archlinux.org/packages/.all/linux-hardened-7.1.5.hardened1-2-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-hardened-headers-7.1.5.hardened1-2-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-hardened-docs-7.1.5.hardened1-2-x86_64.pkg.tar.zst
+	sha256sums = f2ed87f83ec8a00807c26d2e5e4e3d5fa6934cd76fb05d2e163d482157a9dda0
+	sha256sums = d130895050c0d55bd9984c9cc2d745fb3b990048cfd75e283fe3d17dd7d4ae27
+	sha256sums = b65bac8d975a1f0a671e3aa8ed2633eb9ac38879a53ecb5c498125de2e621621
 
 pkgname = linux-hardened-versioned-bin
-	pkgdesc = Metapackage depending on linux7.1.4.hardened1-1-hardened-bin
-	depends = linux7.1.4.hardened1-1-hardened-bin
+	pkgdesc = Metapackage depending on linux7.1.5.hardened1-2-hardened-bin
+	depends = linux7.1.5.hardened1-2-hardened-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-hardened-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux7.1.4.hardened1-1-hardened-headers-bin
-	depends = linux7.1.4.hardened1-1-hardened-headers-bin
+	pkgdesc = Metapackage depending on linux7.1.5.hardened1-2-hardened-headers-bin
+	depends = linux7.1.5.hardened1-2-hardened-headers-bin
 
 pkgname = linux-hardened-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux7.1.4.hardened1-1-hardened-docs-bin
-	depends = linux7.1.4.hardened1-1-hardened-docs-bin
+	pkgdesc = Metapackage depending on linux7.1.5.hardened1-2-hardened-docs-bin
+	depends = linux7.1.5.hardened1-2-hardened-docs-bin
 
-pkgname = linux7.1.4.hardened1-1-hardened-bin
-	pkgdesc = The Security-Hardened Linux kernel and modules, version 7.1.4-hardened1-1-hardened
+pkgname = linux7.1.5.hardened1-2-hardened-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules, version 7.1.5-hardened1-2-hardened
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -45,8 +45,8 @@ pkgname = linux7.1.4.hardened1-1-hardened-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-hardened
 
-pkgname = linux7.1.4.hardened1-1-hardened-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 7.1.4-hardened1-1-hardened
+pkgname = linux7.1.5.hardened1-2-hardened-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 7.1.5-hardened1-2-hardened
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -59,6 +59,6 @@ pkgname = linux7.1.4.hardened1-1-hardened-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-hardened-headers
 
-pkgname = linux7.1.4.hardened1-1-hardened-docs-bin
-	pkgdesc = Documentation for the Security-Hardened Linux kernel 7.1.4-hardened1-1-hardened
+pkgname = linux7.1.5.hardened1-2-hardened-docs-bin
+	pkgdesc = Documentation for the Security-Hardened Linux kernel 7.1.5-hardened1-2-hardened
 	conflicts = linux-hardened-docs
