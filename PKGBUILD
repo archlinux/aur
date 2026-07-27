@@ -3,7 +3,7 @@
 # Contributor: Asuka Minato
 _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
-pkgver=2.13.0
+pkgver=2.14.0
 _electronversion=42
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)"
@@ -25,15 +25,16 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('1dd16fa12a170e70fcdb9901ff653e5b4c1a3e9a69a19b304800fe1c4f148fb0')
-sha256sums_armv7h=('8e9ea2a066387b47f406ea38abcce5785a9a67c13a4cabc8d76722b79e3151a4')
-sha256sums_x86_64=('438712195abe3f36b7efd28697bbdefa132904b64610292d4faf2110b909ae3e')
+sha256sums_aarch64=('b78dc62d45194b1e7d6cc7adf16c04f51d973e9a381da048ab0c8615839fa756')
+sha256sums_armv7h=('1d9167c56ade73f64911a51c3dde7c6e09b7367fdb8734488c905e2fd959adc0')
+sha256sums_x86_64=('2d5893781eaba50144554b7ef3a35b2786415aee69bcf539df5ba5127da1b774')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -64,7 +65,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
