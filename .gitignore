@@ -1,0 +1,12 @@
+# Build artifacts makepkg leaves in the package directory.
+#
+# These must never be committed: the AUR rejects any blob over 488 KiB, and
+# the source tarballs fetched by `makepkg --verifysource` land right here,
+# next to PKGBUILD. A `git add -A` after a verify run picks up several MB of
+# them and the push is refused server-side.
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+/src/
+/pkg/
