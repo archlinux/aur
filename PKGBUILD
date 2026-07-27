@@ -1,10 +1,11 @@
-# Maintainer: Nichlas Severinsen <ns@nsz.no>
+# Maintainer: Aaruni Kaushik <akaushik@mathematik.uni-kl.de>
+# Contributor: Nichlas Severinsen <ns@nsz.no>
 pkgname=tusd-bin
 _gitname='tusd'
 provides=('tusd')
 conflicts=('tusd')
-pkgver=2.9.1
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='Server implementation of tus in Go'
 arch=('x86_64')
 _archname='amd64'
@@ -19,7 +20,7 @@ source=(
 )
 
 sha256sums=('a83378b969ef0f4ca7eba194704c4a53650a7015201cc9148003d4d1a9a0d671'
-            'SKIP'
+            '68bd62773a494c621b2b806dfaa03a57aac44044c9757440a17765283fbd7a68'
             '6ffc8271ebdc9f41112f385e7a80ca0c5167650883c90c4727848f5dc291fb5c')
 
 package() {
