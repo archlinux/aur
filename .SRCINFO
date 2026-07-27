@@ -1,0 +1,19 @@
+pkgbase = python-humancursor
+	pkgdesc = Simulate Human Cursor Movement for Automated Scripts
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/HumanCursor/
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-selenium
+	depends = python-pyautogui
+	source = https://files.pythonhosted.org/packages/source/H/HumanCursor/HumanCursor-1.1.5.tar.gz
+	sha256sums = df34a499af06a215227c792413dfbcaee41bf795860d7cec621575a7f9a9ff76
+
+pkgname = python-humancursor
