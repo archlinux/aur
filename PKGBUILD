@@ -1,5 +1,5 @@
-# shellcheck shell=bash
-# Maintainer: Chinmay Dalal
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 pkgname=ttf-aporetic
 _pkgmajor=1
 _pkgminor=2
