@@ -4,7 +4,7 @@
 # hand-edit it. `scripts/version.sh set <x.y.z>` rewrites this file, and CI
 # fails the build if it drifts (see .github/workflows/quality.yml).
 pkgname=neowall-git
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="GPU shader wallpapers for Wayland and X11"
 arch=('x86_64' 'aarch64')
