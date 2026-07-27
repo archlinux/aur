@@ -1,0 +1,102 @@
+.\" -*- mode: nroff -*-
+.TH OPENOMEN 1 "2026-07-03" "openomen 0.3.4" "User Commands"
+.SH NAME
+openomen \- CLI tool for HP Victus/OMEN laptop management
+.SH SYNOPSIS
+.B openomen
+.RI [ command ]
+.RI [ subcommand ]
+.RI [ options ]
+.SH DESCRIPTION
+.B openomen
+is an unofficial CLI, driver and daemon for managing HP Victus/OMEN laptops
+on Linux. It provides fan control, power profile management, and real-time
+system monitoring.
+.SH COMMANDS
+.TP
+.B fan
+Control fan behavior.
+.RS
+.TP
+.B max
+Set fans to maximum RPM.
+.TP
+.B auto
+Restore BIOS/auto fan control.
+.TP
+.B toggle
+Toggle fan max on/off.
+.TP
+.B status
+Show current fan status.
+.RE
+.TP
+.B cpu
+Read current CPU stats.
+.TP
+.B gpu
+Read current GPU stats.
+.TP
+.B stats
+Show unified system stats dashboard.
+.RS
+.TP
+.BR \-w ", " \-\-watch
+Update every 2 seconds (exit with Ctrl+C).
+.RE
+.TP
+.B info
+Show system information for debugging.
+.TP
+.B power
+Manage power profiles.
+.RS
+.TP
+.B status
+Show current power profile.
+.TP
+.B set
+Set ACPI power profile directly.
+.TP
+.B apply
+Apply a combined profile (gaming, balanced, quiet).
+.TP
+.B list
+List available profiles.
+.RE
+.TP
+.B doctor
+Check hardware compatibility and driver status.
+.TP
+.B update
+Update OpenOMEN to the latest version.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show help message.
+.TP
+.BR \-v ", " \-\-version
+Show version.
+.SH EXAMPLES
+.PP
+Max fan speed:
+.RS 4
+.B openomen fan max
+.RE
+.PP
+Real-time dashboard:
+.RS 4
+.B openomen stats \-w
+.RE
+.PP
+List power profiles:
+.RS 4
+.B openomen power list
+.RE
+.SH SEE ALSO
+.BR lm_sensors (1)
+.SH AUTHORS
+OpenOMEN project.
+.PP
+.UR https://github.com/openomen/openomen
+.UE

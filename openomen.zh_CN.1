@@ -1,0 +1,101 @@
+.\" -*- mode: nroff -*-
+.TH OPENOMEN 1 "2026-07-03" "openomen 0.3.4" "用户命令"
+.SH NAME
+openomen \- HP Victus/OMEN 笔记本 Linux 管理工具
+.SH 概要
+.B openomen
+.RI [ 命令 ]
+.RI [ 子命令 ]
+.RI [ 选项 ]
+.SH 描述
+.B openomen
+是非官方的 HP Victus/OMEN 笔记本 Linux 管理工具，
+提供风扇控制、电源方案管理和实时系统监控功能。
+.SH 命令
+.TP
+.B fan
+控制风扇行为。
+.RS
+.TP
+.B max
+风扇全速运转。
+.TP
+.B auto
+恢复 BIOS 自动控制。
+.TP
+.B toggle
+切换风扇全速开/关。
+.TP
+.B status
+显示当前风扇状态。
+.RE
+.TP
+.B cpu
+读取 CPU 实时状态。
+.TP
+.B gpu
+读取 GPU 实时状态。
+.TP
+.B stats
+显示系统状态仪表盘。
+.RS
+.TP
+.BR \-w ", " \-\-watch
+每 2 秒刷新（Ctrl+C 退出）。
+.RE
+.TP
+.B info
+显示系统信息（调试用）。
+.TP
+.B power
+管理电源方案。
+.RS
+.TP
+.B status
+显示当前电源方案。
+.TP
+.B set
+直接设置 ACPI 电源方案。
+.TP
+.B apply
+应用组合方案（gaming、balanced、quiet）。
+.TP
+.B list
+列出可用方案。
+.RE
+.TP
+.B doctor
+检查硬件兼容性和驱动状态。
+.TP
+.B update
+更新 OpenOMEN 到最新版本。
+.SH 选项
+.TP
+.BR \-h ", " \-\-help
+显示帮助信息。
+.TP
+.BR \-v ", " \-\-version
+显示版本号。
+.SH 示例
+.PP
+风扇全速：
+.RS 4
+.B openomen fan max
+.RE
+.PP
+实时监控：
+.RS 4
+.B openomen stats \-w
+.RE
+.PP
+列出电源方案：
+.RS 4
+.B openomen power list
+.RE
+.SH 参见
+.BR lm_sensors (1)
+.SH 作者
+OpenOMEN 项目
+.PP
+.UR https://github.com/openomen/openomen
+.UE
