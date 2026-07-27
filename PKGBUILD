@@ -2,7 +2,7 @@
 
 pkgname=visor
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal, fast, graphical UEFI boot manager"
 arch=('x86_64')
 url="https://github.com/IO-ZetZor/Visor-BootManager"
