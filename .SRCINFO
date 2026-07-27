@@ -1,0 +1,12 @@
+pkgbase = sharkfetch
+	pkgdesc = A custom system fetch script with a sharky!
+	pkgver = 1.71.0
+	pkgrel = 1
+	url = https://git.chillcog.com/chillcog/sharkfetch
+	arch = any
+	license = MIT
+	depends = bash
+	source = sharkfetch-1.71.0.tar.gz::https://git.chillcog.com/chillcog/sharkfetch/archive/refs/tags/v1.71.0.tar.gz
+	sha256sums = 46851a932ebd0f85e08f59e57ad5a91a5d572be95622117c4d083fee431785c7
+
+pkgname = sharkfetch
