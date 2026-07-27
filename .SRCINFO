@@ -10,6 +10,7 @@ pkgbase = pulse-remote-git
 	makedepends = git
 	depends = libpulse
 	depends = electron
+	options = !debug
 	source = pulse-remote-git::git+https://github.com/undg/pulse-remote.git
 	sha256sums = SKIP
 
