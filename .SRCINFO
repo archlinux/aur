@@ -1,7 +1,7 @@
 pkgbase = fronius-bridge
 	pkgdesc = Lightweight Modbus-to-MQTT bridge for Fronius devices
-	pkgver = 1.5.10
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/ahpohl/fronius-bridge
 	arch = x86_64
 	arch = aarch64
@@ -18,10 +18,10 @@ pkgbase = fronius-bridge
 	depends = fmt
 	depends = postgresql-libs
 	backup = etc/fronius-bridge/config.yaml
-	source = fronius-bridge-1.5.10::git+https://github.com/ahpohl/fronius-bridge.git#tag=v1.5.10
+	source = fronius-bridge-1.6.0::git+https://github.com/ahpohl/fronius-bridge.git#tag=v1.6.0
 	source = sysusers-meter.conf
 	source = fronius-bridge.service
-	sha256sums = bf0319002ab64a53c4fc4d7f4f8d013f58a63c0056e3079092759469ab263592
+	sha256sums = c78fa10dbad2f14a3d22bfd7133effe01dd6d3f5af817ded8b8fd001f8d04675
 	sha256sums = ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24
 	sha256sums = 50f81682ebd9fb41380201ff285af15906c2d6b4ece16c264cd029a6449cdb77
 
