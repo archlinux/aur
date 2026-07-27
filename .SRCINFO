@@ -1,6 +1,6 @@
 pkgbase = moosic-bin
 	pkgdesc = Lightweight cross-platform retro-style audio player with Subsonic support
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://moosic.now
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = moosic-bin
 	source = moosic.png::https://dl.moosic.now/icon.png
 	sha256sums = fe0f7721359cbf6c022a7be3350620df6ac9d8b85b7db2464b4260558d701ef8
 	sha256sums = 2397b6ad52802060ad69280ceb44ce4ebb190f53a64d87403c98ab9645b68d8d
-	source_x86_64 = moosic-0.1.7-x86_64::https://dl.moosic.now/v0.1.7/moosic-v0.1.7-linux-amd64
-	sha256sums_x86_64 = 0bd3556032a87bfac4b0b1ff30f6197d8ed6dcba4dbf96b2d65701765477a599
-	source_aarch64 = moosic-0.1.7-aarch64::https://dl.moosic.now/v0.1.7/moosic-v0.1.7-linux-arm64
-	sha256sums_aarch64 = 9076bfc1c0af75dae5d504ad1580628bdf1ddcb8151e300a73be7e0cf065f553
+	source_x86_64 = moosic-0.1.8-x86_64::https://dl.moosic.now/v0.1.8/moosic-v0.1.8-linux-amd64
+	sha256sums_x86_64 = fbee1f60d421d8d638ec9a22ca162867a26cd0133a4c9915d5a45b59ba9d68d4
+	source_aarch64 = moosic-0.1.8-aarch64::https://dl.moosic.now/v0.1.8/moosic-v0.1.8-linux-arm64
+	sha256sums_aarch64 = 24173e310e2919aad2e8a133b0684eff6b8b25aef736a60e77d58a9b516a0dfd
 
 pkgname = moosic-bin
