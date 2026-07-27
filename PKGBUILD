@@ -3,13 +3,13 @@
 _pkgname=wlanthy
 pkgname=${_pkgname}-git
 pkgver=r44.19ccdb7
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental, simple Wayland-native Japanese input method"
 arch=('any')
 url="https://github.com/st3r4g/wlanthy"
 license=('MIT')
 depends=('anthy' 'wayland' 'libxkbcommon')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'wayland-protocols')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=('git+https://github.com/st3r4g/wlanthy.git')

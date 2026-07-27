@@ -1,12 +1,13 @@
 pkgbase = wlanthy-git
 	pkgdesc = Experimental, simple Wayland-native Japanese input method
 	pkgver = r44.19ccdb7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/st3r4g/wlanthy
 	arch = any
 	license = MIT
 	makedepends = meson
 	makedepends = git
+	makedepends = wayland-protocols
 	depends = anthy
 	depends = wayland
 	depends = libxkbcommon
@@ -16,4 +17,3 @@ pkgbase = wlanthy-git
 	sha256sums = SKIP
 
 pkgname = wlanthy-git
-
