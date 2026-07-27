@@ -57,13 +57,24 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  yq -i --yaml-output '. + {
+    "allow-newer": true,
+    "allow-newer-deps": ["pandoc-crossref"],
+    "extra-deps": []
+  }' stack.yaml
 
   # if pandoc updates break the golden tests, cf
   # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
   # for how to bump
   verPat='\([0-9]\+\.\)\{1,3\}[0-9]\+'
   case "$_pandoc_type" in
-  stock) return;;
+  stock) if git diff --quiet -- stack.yaml; then
+      echo "stack.yaml has been modified, can't use stock version selection"
+      echo '(you probably need to comment out the modifications to stack.yaml'
+      echo 'in prepare())'
+      exit 1
+    fi
+    return;;
   commit)  _rmDep pandoc-cli
            _rmDep pandoc-lua-engine
            _bumpGH pandoc 'jgm/pandoc' "$_pandoc_commit" \
