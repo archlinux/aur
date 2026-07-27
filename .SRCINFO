@@ -1,6 +1,6 @@
 pkgbase = ccgui-bin
 	pkgdesc = Next-generation VibeCoding editor (prebuilt binary)
-	pkgver = 0.7.9
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://github.com/zhukunpenglinyutong/desktop-cc-gui
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ccgui-bin
 	depends = webkit2gtk-4.1
 	provides = ccgui
 	conflicts = ccgui
-	noextract = ccgui_0.7.9_amd64.AppImage
+	noextract = ccgui_0.7.10_amd64.AppImage
 	options = !strip
-	source = ccgui_0.7.9_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.7.9/ccgui_0.7.9_amd64.AppImage
+	source = ccgui_0.7.10_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.7.10/ccgui_0.7.10_amd64.AppImage
 	source = LICENSE
-	sha256sums = c223ac62c668f304f30a5a322dcb5f27a1d806a2492a878b98869da02a803c13
+	sha256sums = 0b7fc58712d0ffeb69e6eb43040b84154530e55441c2cd8d894cf81cbdd0f1ea
 	sha256sums = 7ee7adbd9c6ba3df8397de73285eeac6d21f9692482c0dc92d5c3f11884dae49
 
 pkgname = ccgui-bin
