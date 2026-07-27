@@ -1,0 +1,16 @@
+pkgbase = claude-config-bin
+	pkgdesc = Cross-platform provider manager for Claude Code
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ayan-de/claude-config
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = claude-config
+	conflicts = claude-config
+	options = !strip
+	source = claude-config-bin-0.9.0.deb::https://github.com/ayan-de/claude-config/releases/download/v0.9.0/Claude.Config_0.9.0_amd64.deb
+	sha256sums = 3849d70657a6263805dbcd00feacfd2c327fea2a5b97438f64da7e480e0c3271
+
+pkgname = claude-config-bin
