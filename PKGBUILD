@@ -16,7 +16,7 @@
 
 _pkgname=anki
 pkgname=anki-plus-bin
-pkgver=26.05.1
+pkgver=26.05.2
 pkgrel=1
 
 # 本包对应的确切源码（AGPL 要求可指回，写仓库名不够）：
@@ -86,7 +86,7 @@ options=('!debug')
 _releases="https://github.com/zmr-233/anki-workspace/releases/download"
 _tarball="$pkgname-$pkgver-$CARCH.tar.zst"
 source_x86_64=("$_tarball::$_releases/v$pkgver/$_tarball")
-sha256sums_x86_64=('28b030ff71b2d0347a9472311dd5d00596626b04a0fd1dc466914d14d19b82a5')
+sha256sums_x86_64=('3a27eb64e51dd3596d08ae9eb863a8c5afc00604518b25ebc14b219d122b36f6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-$CARCH"

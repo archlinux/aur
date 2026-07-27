@@ -1,6 +1,6 @@
 pkgbase = anki-plus-bin
 	pkgdesc = Anki with a pinned scheduling timezone and minute-level day rollover (prebuilt)
-	pkgver = 26.05.1
+	pkgver = 26.05.2
 	pkgrel = 1
 	url = https://github.com/zmr-233/anki-dev
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = anki-plus-bin
 	conflicts = anki-git
 	conflicts = anki-snapshot
 	options = !debug
-	source_x86_64 = anki-plus-bin-26.05.1-x86_64.tar.zst::https://github.com/zmr-233/anki-workspace/releases/download/v26.05.1/anki-plus-bin-26.05.1-x86_64.tar.zst
-	sha256sums_x86_64 = 28b030ff71b2d0347a9472311dd5d00596626b04a0fd1dc466914d14d19b82a5
+	source_x86_64 = anki-plus-bin-26.05.2-x86_64.tar.zst::https://github.com/zmr-233/anki-workspace/releases/download/v26.05.2/anki-plus-bin-26.05.2-x86_64.tar.zst
+	sha256sums_x86_64 = 3a27eb64e51dd3596d08ae9eb863a8c5afc00604518b25ebc14b219d122b36f6
 
 pkgname = anki-plus-bin
