@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
 url="https://github.com/crizzler/AuraScan"
@@ -23,6 +23,11 @@ optdepends=(
   'python-pyqt6: AuraScan Updater tray applet'
   'pyside6: alternative Qt binding for the AuraScan Updater tray applet'
   'pacman-contrib: bounded package-cache cleanup for incident recovery'
+  'pciutils: readable GPU model names in hardware-aware follow-up'
+  'dmidecode: DIMM type and configured-speed context when privilege is already available'
+  'inxi: unprivileged filtered DIMM topology and memory speed context'
+  'lm_sensors: broader temperature and cooling sensor visibility'
+  'fwupd: supported motherboard and device firmware update checks'
   'mkosi: build the optional local AuraScan Recovery UKI'
   'systemd: systemd-boot integration and recovery runtime support'
   'systemd-ukify: validate and assemble the optional recovery UKI'
@@ -37,19 +42,8 @@ optdepends=(
   'snapper: snapshot test and confirmed restore workflows'
   'xfsprogs: read-only XFS recovery diagnostics'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  'clear-expired-historical-incident-alerts.patch'
-)
-sha256sums=(
-  '8709199a16ec96382ba7995ef817a53109050baf5511a7a162877ad87eb9ed91'
-  '03cb40411ecfdf28017a63bfe09e66cfefb28ea0edc6dd6d74a9ae43e9729788'
-)
-
-prepare() {
-  cd "AuraScan-$pkgver"
-  patch -Np1 -i "$srcdir/clear-expired-historical-incident-alerts.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f304a2ae861b39564bb11bac5c581df9d7a2d302c0f055983a92e085c9b1a95f')
 
 build() {
   cd "AuraScan-$pkgver"
