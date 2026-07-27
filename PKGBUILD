@@ -3,7 +3,7 @@
 # Maintainer: LuoTianyi_amd64 <3511139170@qq.com>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=v1.2.3.r25.g1152aaf
+pkgver=1.2.3.r25.g1152aaf
 pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,13 +19,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 build() {
   cd "$pkgname"
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#develop",|' package.json
   rm -rf node_modules
-  rm -f pnpm-lock.yaml
   pnpm install --no-frozen-lockfile
   pnpm run fetch
   pnpm run webpack:prod
@@ -33,7 +32,7 @@ build() {
   [[ "$CARCH" == "aarch64" ]] && _target_arch="arm64"
   [[ "$CARCH" == "armv7h" ]] && _target_arch="armv7l"
 
-  npx electron-builder --linux --dir --$_target_arch
+  node release-automation/build.mjs --linux-dir --$_target_arch --production
 }
 package() {
   cd "$pkgname"
