@@ -2,7 +2,7 @@
 
 pkgname=mangowm-wlonly-git
 pkgver=d8d0b173
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
 arch=("x86_64")
@@ -39,7 +39,7 @@ options=('!strip' '!lto')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
