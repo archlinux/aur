@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=args
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Simple header-only C++ argument parser library"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/Taywee/args"
 license=(MIT)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Taywee/args/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c2b05d582783b20160966c5a9136fbd704d9c910deb3bec38c8cae46138de53f')
+sha256sums=('9949b763e4b43ad3362d5da365e7f6118df296bc29c1d2dff415baac1e430c43')
 
 build() {
   cmake -B build -S "args-${pkgver}" -Wno-dev \
