@@ -1,10 +1,10 @@
 pkgbase = leavepad
 	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Use system-wide electron)
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = any
-	license = AGPL-3.0-only
+	license = MIT
 	makedepends = npm
 	makedepends = yarn
 	makedepends = git
@@ -13,9 +13,9 @@ pkgbase = leavepad
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron43
-	source = leavepad-2.7.1::git+https://github.com/kaishuu0123/leavepad#tag=v2.7.1
+	source = leavepad-2.7.2::git+https://github.com/kaishuu0123/leavepad#tag=v2.7.2
 	source = leavepad.sh
-	sha256sums = 4cc3ce9982dc6e828d19f7e26f1d3d05d7c748462b2fa46cb0ab0de71ed0c2a0
+	sha256sums = 1a5f526aab99beda16bf5b3a463e4ccba36862daf5d4181bb0cec928f401e69e
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = leavepad
