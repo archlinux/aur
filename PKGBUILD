@@ -2,11 +2,8 @@
 # Contributor: KineticWE project
 
 pkgname=kineticwe
-pkgver=6.7.80
-pkgrel=10
-# epoch: AUR previously shipped 6.7.81-x; the project re-aligned on the COPR
-# 6.7.80-N numbering, which pacman would otherwise see as a downgrade.
-epoch=1
+pkgver=6.7.81
+pkgrel=2
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
@@ -151,24 +148,29 @@ provides=('kglobalacceld' 'kglobalacceld-devel' 'kwin' 'kwin-common' 'kwin-libs'
 conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel')
 
 
+# Pinned KConfig commit containing the kconfig_compiler enum-class setter fix
+# (KConfig 41592cc, first released in KConfig 6.30). kconfig_compiler from
+# KConfig < 6.30 generates uncompilable setters for enum-class kcfg entries.
+# Build-time tool only; drop this once Arch ships kconfig >= 6.30.
+_kconfig_ref=41592ccfd9748be82c83ce98912037bffb73954e
+
 # Source: kwin-we from GitLab + kglobalacceld from KDE invent
-# kwin-we is pinned to a commit (not a tag) to match the COPR 6.7.80-N
-# releases, which package master HEAD via `git archive`. Bump _commit and
-# reset pkgrel together on each upstream sync.
-_commit=6b4a93c3d78cf9de5eee85d12f4b8f79aba52031
 _sourcebase="$pkgname-$pkgver"
 source=(
-    "$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
+    "$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
     "kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git"
+    "kconfig-$_kconfig_ref.tar.gz::https://invent.kde.org/frameworks/kconfig/-/archive/$_kconfig_ref/kconfig-$_kconfig_ref.tar.gz"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            '7c6b355a97f44fe694011d40535d8f989298e8b36fd38640093d8576cf1a00b2')
 
 prepare() {
     cd "$srcdir"
 
     echo "==> Extracting kwin-we source..."
-    # GitLab commit archive extracts to 'kineticwe-$_commit', rename to $_sourcebase
-    local extract_dir="$pkgname-$_commit"
+    # GitLab archive extracts to 'kineticwe-v$pkgver', rename to $_sourcebase
+    local extract_dir="$pkgname-v$pkgver"
     if [[ -d "$extract_dir" && ! -d $_sourcebase ]]; then
         mv "$extract_dir" "$_sourcebase"
     fi
@@ -205,7 +207,21 @@ build() {
     mkdir -p "$srcdir/kga-staging"
     DESTDIR="$srcdir/kga-staging" cmake --install kglobalacceld/build
 
-    # --- Phase 2: Build kwin-we ---
+    # --- Phase 2: Build the fixed kconfig_compiler (build-time tool only) ---
+    echo "==> Building fixed kconfig_compiler (KConfig <6.30 workaround)..."
+
+    mkdir -p "kconfig-$_kconfig_ref/build"
+    pushd "kconfig-$_kconfig_ref/build"
+
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=OFF \
+        -Wno-dev
+
+    cmake --build . --target kconfig_compiler --parallel "$(nproc)"
+    popd
+
+    # --- Phase 3: Build kwin-we ---
     echo "==> Building kwin-we..."
 
     mkdir -p "$_sourcebase/build"
@@ -216,6 +232,7 @@ build() {
         -DCMAKE_PREFIX_PATH="$srcdir/kga-staging/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF \
+        -DKWIN_KCONFIG_COMPILER="$srcdir/kconfig-$_kconfig_ref/build/bin/kconfig_compiler_kf6" \
         -DKWIN_BUILD_GLOBALSHORTCUTS=ON \
         -Wno-dev
 
@@ -263,11 +280,6 @@ package() {
 _INSTALL_PREFIX_=/usr
 
 export XDG_MENU_PREFIX=plasma-
-# Marks this as a full KDE session (startplasma sets this too). KDE apps use
-# it to pick their desktop file identity — e.g. System Settings uses
-# systemsettings.desktop instead of kdesystemsettings.desktop, which is what
-# docks/launchers need to resolve its icon correctly.
-export KDE_FULL_SESSION=true
 
 find_portal() {
     local name="$1"
@@ -317,18 +329,7 @@ export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=KDE
 export KDE_SESSION_VERSION=6
-export KDE_FULL_SESSION=true
 export XDG_MENU_PREFIX=plasma-
-
-# KWin exports WAYLAND_DISPLAY and DISPLAY (XWayland) before launching this
-# payload; the fallback guards against the payload being started other ways.
-export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
-
-# Publish the session environment to D-Bus/systemd-activated services.
-# Without this, on-demand services (e.g. Spectacle via its global shortcut)
-# start without WAYLAND_DISPLAY/DISPLAY and crash at launch:
-# "could not activate remote peer org.kde.spectacle: startup job failed".
-dbus-update-activation-environment --systemd --all 2>/dev/null || true
 
 # 1. Rebuild KDE service cache so System Settings finds installed KCMs
 if command -v kbuildsycoca6 >/dev/null 2>&1; then
@@ -382,17 +383,8 @@ else
     echo "Warning: org_kde_powerdevil not found; power management unavailable" >&2
 fi
 
-# 4. Start the shell (supervised)
-# Run noctalia under a supervisor loop: if it crashes or is killed (e.g.
-# pkill noctalia to recover a broken shell), it restarts automatically
-# instead of taking the whole session down. The session ends only when the
-# login session itself is terminated (logout -> loginctl terminate-session,
-# or the display manager), which tears down this payload and KWin together.
-while true; do
-    noctalia >"$HOME/.local/share/noctalia.log" 2>&1
-    echo "noctalia exited (code $?), restarting in 2s..."
-    sleep 2
-done
+# 4. Start user applications
+nohup noctalia >"$HOME/.local/share/noctalia.log" 2>&1 &
 PAYLOADEOF
 
 chmod +x "$STARTUP_PAYLOAD"
@@ -438,7 +430,7 @@ if [[ "$_kglobalaccel_cleared" != "true" ]]; then
 fi
 
 export XDG_CURRENT_DESKTOP=KineticWE:KDE
-exec kinetic-we --xwayland --exit-with-session "$STARTUP_PAYLOAD"
+exec kinetic-we --xwayland "$STARTUP_PAYLOAD"
 STARTEOF
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
 
