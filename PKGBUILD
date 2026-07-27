@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=3.15.159
+pkgver=3.15.171
 _electronversion=41
 _nodeversion=24
-pkgrel=2
+pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
 arch=(
     'aarch64'
