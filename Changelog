@@ -1,14 +1,17 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 0.10.0 ➙ 1.0.2
+ Tags         : 0.10.0 ➙ 1.0.3
               : 2026-07-27 ➙ 2026-07-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-27   : 1.0.2
+ 2026-07-27   : 1.0.3
+              - Simplify meson.build using common compile and linker options for patricia26 library and the cython c-code
+
+ 2026-07-27   : 1.0.2, origin/master, origin/HEAD
               - Add options to uv build --wheel
 
- 2026-07-27   : 1.0.0, origin/master, origin/HEAD
+ 2026-07-27   : 1.0.0
               - Add pyproject.toml
 
  2026-07-27   : 0.11.0

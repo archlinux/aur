@@ -12,7 +12,7 @@ pkgdesc="Updated fork of Dave Plonka's patricia library and dual-tree Python mod
 
 _gitname='patricia26'
 
-pkgver="1.0.2"
+pkgver="1.0.3"
 pkgrel=1
 url="https://github.com/gene-git/patricia26"
 

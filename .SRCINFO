@@ -1,6 +1,6 @@
 pkgbase = patricia26
 	pkgdesc = Updated fork of Dave Plonka's patricia library and dual-tree Python module
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/gene-git/patricia26
 	changelog = Changelog
@@ -20,7 +20,7 @@ pkgbase = patricia26
 	provides = libpatricia26.so
 	options = !strip
 	options = !debug
-	source = git+https://github.com/gene-git/patricia26#tag=1.0.2
+	source = git+https://github.com/gene-git/patricia26#tag=1.0.3
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
