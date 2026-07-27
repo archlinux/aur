@@ -1,0 +1,26 @@
+pkgbase = 9router-webui-bin
+	pkgdesc = 9Router - WebUI AI Router with 40+ providers, auto-fallback, RTK token optimization
+	pkgver = 0.5.40
+	pkgrel = 1
+	url = https://github.com/decolua/9router
+	install = 9router-webui-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	depends = bun
+	depends = curl
+	depends = libnotify
+	optdepends = systemd: user service management
+	optdepends = xdg-utils: for opening browser
+	options = !strip
+	source = 9router-webui-bin-0.5.40.tgz::https://registry.npmjs.org/9router/-/9router-0.5.40.tgz
+	source = 9router.sh
+	source = 9router.service
+	source = 9router.env
+	sha256sums = 437935e7f7514cdd415a310613eaac7815b29ff9453b31d11e8d319a5126db8d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = 9router-webui-bin
