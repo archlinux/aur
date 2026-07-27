@@ -10,8 +10,9 @@ _pkgname=python-croniter
 pkgname="$_pkgname-git"
 _name="${_pkgname#python-}"
 pkgdesc='Parses cron schedules to iterate over datetime objects (development version)'
-pkgver=6.2.2.r21.ge55d70b
+pkgver=6.2.4.r3.g70564f2
 pkgrel=1
+changelog="$_pkgname.changelog"
 url='https://github.com/pallets-eco/croniter'
 arch=('any')
 license=('MIT')
@@ -44,13 +45,9 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_name"
 
-  git clean -dfx
-
   # Relax requirements
-  #sed -i 's/"packaging==26.0"/"packaging>=26.0"/g' pyproject.toml
-  #sed -i 's/"pathspec==1.0.4"/"pathspec=1.0.4"/g'  pyproject.toml
-  sed -i 's/"trove-classifiers==2026.5.22.10"/"trove-classifiers>=2026.5.20.19"/g' pyproject.toml
   sed -i 's/==/>=/g' pyproject.toml
+  sed -i 's/hatchling>=1.31.0/hatchling>=1.30.1/g' pyproject.toml
 }
 
 pkgver() {
@@ -62,6 +59,8 @@ pkgver() {
 build() {
   cd "$_name"
 
+  sed -i 's/hatchling>=1.31.0/hatchling>=1.30.1/g' pyproject.toml
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
@@ -82,7 +81,7 @@ package() {
   )
   rm -rf "$pkgdir/$_site_packages/$_name/tests"
 
-  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname"      ./*.rst
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.rst
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   for _dir in doc licenses; do
