@@ -1,0 +1,18 @@
+pkgbase = qemu-wtg-git
+	pkgdesc = Interactive launcher for a Windows-To-Go USB drive in a QEMU/KVM VM
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/dasbd72/qemu-wtg
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = qemu-desktop
+	depends = edk2-ovmf
+	depends = sudo
+	provides = qemu-wtg
+	conflicts = qemu-wtg
+	source = qemu-wtg-git::git+https://github.com/dasbd72/qemu-wtg.git
+	sha256sums = SKIP
+
+pkgname = qemu-wtg-git
