@@ -6,6 +6,7 @@ pkgbase = lsr
 	arch = x86_64
 	license = MIT
 	makedepends = zig0.14
+	makedepends = git
 	source = lsr::git+https://tangled.sh/@rockorager.dev/lsr#tag=v1.0.0
 	md5sums = 06e83941f97dc95bf825dd67fc05948a
 
