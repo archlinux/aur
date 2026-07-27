@@ -1,6 +1,6 @@
 pkgbase = sd-boot
 	pkgdesc = Tools to install linux kernels via kernel-install from systemd
-	pkgver = 6.4.0
+	pkgver = 6.4.1
 	pkgrel = 1
 	url = https://github.com/gene-git/sd-boot
 	changelog = Changelog
@@ -33,7 +33,7 @@ pkgbase = sd-boot
 	backup = etc/sd-boot/efi-tool.packages
 	backup = etc/sd-boot/edk2-shell.image
 	backup = etc/sd-boot/memtest86_64-git.image
-	source = git+https://github.com/gene-git/sd-boot#tag=6.4.0
+	source = git+https://github.com/gene-git/sd-boot#tag=6.4.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

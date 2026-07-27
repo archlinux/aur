@@ -1,11 +1,15 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.0.0 ➙ 6.4.0
-              : 2026-07-04 ➙ 2026-07-17
+ Tags         : 6.1.0 ➙ 6.4.1
+              : 2026-07-05 ➙ 2026-07-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-17   : 6.4.0
+ 2026-07-27   : 6.4.1
+              - Update src/.clang-tidy
+                Add nvcheker to the AUR package not just packaging directory in the git repo
+
+ 2026-07-17   : 6.4.0, origin/master
               - **6.4.0**
             
                 * BugFix: sd-find-boot was not showing output unless verbose = 2 in version 6.3.0.
@@ -18,7 +22,7 @@
                   an error, including any from external libraries. Add valgrind suppression rules
                   to ignore these specific ones.
 
- 2026-07-13   : 6.3.0, origin/master
+ 2026-07-13   : 6.3.0
               - **6.3.0**
             
                 * Copy file with kernel mediated copy_file_range:
@@ -54,28 +58,3 @@
                 * efi-tool (always uses bls layout) - simplify the bls initialization.
             
                   Assisted-by: Claude (Anthropic) <https://claude.ai>
-
- 2026-07-04   : 6.0.0
-              - **6.0.0**
-            
-                * Happy 250th USA!
-                * Small change to how meson installs config/hooks/man pages
-                  No change in the end result just the meson.build.
-                * When reading kernel-install "install.conf" files to get layout etc.,
-                  follow the file priority rules set out by kernel-install,
-                  Includes any "drop in" config files from "install.conf.d/xxx.conf"
-                * Code: Spawning processes.
-                  - Reset child signal masks (defensive).  Good practice to clear any
-                    blocked/igmored signals even though not required by current code.
-                  - tune up reading child process stdout.
-                * Code review:
-                  - focus on exception handling
-                  - some code tidying
-                  - use AI to review some of the code
-                * Config.
-                  - Change to libcyaml instead of libyaml
-                  - drop toml support (including auto converting toml to yaml).
-                * Add .nvchecker.toml file (pkgctl version check)
-                * bump major version since quite a few files were touched.
-                  git diff --stat:
-                  75 files changed, 1919 insertions(+), 2146 deletions(-)
