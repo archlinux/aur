@@ -1,39 +1,60 @@
-# Maintainer: Pierre Rossi <pierre.rossi@pm.me>
+# Maintainer: Roc Gwei <roc dot gui at foxmail dot com>
 
-pkgname='airconnect-bin'
-pkgver=1.1.1
+pkgbase=airconnect-bin
+pkgname=(
+    'airconnect-airupnp-bin'
+    'airconnect-aircast-bin'
+)
+
+pkgver=1.10.1
 pkgrel=1
-pkgdesc='Use AirPlay to stream to UPnP/Sonos & Chromecast devices'
-arch=(any)
-url='https://github.com/philippe44/AirConnect'
-license=('MIT')
+pkgdesc="AirPlay bridge for DLNA/UPnP and Chromecast devices"
+arch=( 'x86_64' 'aarch64')
+url="https://github.com/philippe44/AirConnect"
+license=(MIT)
 
-arch=('x86_64')
+depends=(
+    glibc
+)
 
-source=("https://raw.githubusercontent.com/philippe44/AirConnect/1.1.1/bin/airupnp-linux-x86_64")
+options=(!strip)
 
-sha256sums=('34a809862f5dffc9a18d3942d635fe95c8af946294cac183a3cfdfefd90bed21')
+source=(
+    "AirConnect-${pkgver}.zip::https://github.com/philippe44/AirConnect/releases/download/${pkgver}/AirConnect-${pkgver}.zip"
+    airupnp.service
+    aircast.service
+)
 
-package() {
-  cat <<EOF > "${srcdir}/airupnp@.service"
-[Unit]
-Description=AirUPnP bridge
-After=network-online.target
-Wants=network-online.target
+sha256sums=('ea0fdad7a1aeb837ee99b2c21aad7e4c3ce84de03c2e86ac64bed804b87588b0'
+            'a67281019c753010efc35ade083fb5f48a28353d4c8df6e03320767afbf885b2'
+            '54d9d2e035dbb03addda55ad444fd55a619153180616b4c685547a7c5683401d')
 
-[Service]
-User=%i
-ExecStart=/var/lib/airconnect/airupnp -l 1000:2000 -Z
-Restart=on-failure
-RestartSec=30
+package_airconnect-airupnp-bin() {
+    pkgdesc="AirPlay to UPnP/DLNA/Sonos bridge"
 
-[Install]
-WantedBy=multi-user.target
+    provides=(airupnp)
+    conflicts=(airupnp)
 
-EOF
+    install -Dm755 \
+        "${srcdir}/airupnp-linux-${CARCH}" \
+        "${pkgdir}/usr/bin/airupnp"
 
+    install -Dm644 \
+        "${srcdir}/airupnp.service" \
+        "${pkgdir}/usr/lib/systemd/system/airupnp.service"
+}
 
-  install -D -m 755 "${srcdir}/airupnp-linux-x86_64" "${pkgdir}/var/lib/airconnect/airupnp"
-  install -D -m 755 "${srcdir}/airupnp@.service" "${pkgdir}/usr/lib/systemd/system/airupnp@.service"
+package_airconnect-aircast-bin() {
+    pkgdesc="AirPlay to Chromecast bridge"
 
+    provides=(aircast)
+    conflicts=(aircast)
+
+    install -Dm755 \
+        "${srcdir}/aircast-linux-${CARCH}" \
+        "${pkgdir}/usr/bin/aircast"
+
+    install -Dm644 \
+        "${srcdir}/aircast.service" \
+        "${pkgdir}/usr/lib/systemd/system/aircast.service"
 }

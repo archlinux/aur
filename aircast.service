@@ -1,0 +1,14 @@
+[Unit]
+Description=AirConnect AirPlay to Chromecast bridge
+Documentation=https://github.com/philippe44/AirConnect
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aircast -Z
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,11 +1,26 @@
 pkgbase = airconnect-bin
-	pkgdesc = Use AirPlay to stream to UPnP/Sonos & Chromecast devices
-	pkgver = 1.1.1
+	pkgdesc = AirPlay bridge for DLNA/UPnP and Chromecast devices
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/philippe44/AirConnect
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	source = https://raw.githubusercontent.com/philippe44/AirConnect/1.1.1/bin/airupnp-linux-x86_64
-	sha256sums = 34a809862f5dffc9a18d3942d635fe95c8af946294cac183a3cfdfefd90bed21
+	depends = glibc
+	options = !strip
+	source = AirConnect-1.10.1.zip::https://github.com/philippe44/AirConnect/releases/download/1.10.1/AirConnect-1.10.1.zip
+	source = airupnp.service
+	source = aircast.service
+	sha256sums = ea0fdad7a1aeb837ee99b2c21aad7e4c3ce84de03c2e86ac64bed804b87588b0
+	sha256sums = a67281019c753010efc35ade083fb5f48a28353d4c8df6e03320767afbf885b2
+	sha256sums = 54d9d2e035dbb03addda55ad444fd55a619153180616b4c685547a7c5683401d
 
-pkgname = airconnect-bin
+pkgname = airconnect-airupnp-bin
+	pkgdesc = AirPlay to UPnP/DLNA/Sonos bridge
+	provides = airupnp
+	conflicts = airupnp
+
+pkgname = airconnect-aircast-bin
+	pkgdesc = AirPlay to Chromecast bridge
+	provides = aircast
+	conflicts = aircast
