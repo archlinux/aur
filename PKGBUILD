@@ -10,6 +10,7 @@ license=('MIT')
 depends=('libpulse' 'electron')
 makedepends=('go' 'git')
 install=pulse-remote-git.install
+options=(!debug)
 
 source=("$pkgname::git+https://github.com/undg/pulse-remote.git")
 sha256sums=('SKIP')
