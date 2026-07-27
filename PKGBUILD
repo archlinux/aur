@@ -13,7 +13,20 @@ license=('MIT')
 # state-changing method is gated by an action rather than by a uid check written here.
 # Without polkit the daemon still runs, but only uid 0 may call anything, which is not a
 # configuration anybody wants by accident.
-depends=('systemd' 'dbus' 'polkit' 'gcc-libs' 'glibc' 'wayland')
+#
+# namcap will report the first three as "included, but may not be needed": it reads ELF
+# linkage, and these are services this package talks to over a socket rather than
+# libraries it links. They stay.
+#
+# `wayland` is deliberately NOT here even though the agent speaks the protocol. Measured
+# on the built binary: no DT_NEEDED entry and no "libwayland" string anywhere in it, so
+# neither linked nor dlopened -- wayland-client is compiled with its pure-Rust backend.
+# Adding the dependency back would be a guess that contradicts `ldd`.
+#
+# libgcc, not gcc-libs. Since the GCC package split, gcc-libs is a meta-package that also
+# pulls libasan, libtsan, libgfortran, libobjc, libquadmath and the rest of the sanitizer
+# runtimes; the only thing these three binaries need is libgcc_s.so.1, which is libgcc.
+depends=('systemd' 'dbus' 'polkit' 'libgcc' 'glibc')
 
 # cargo is provided by both `rust` and `rustup`; scdoc builds the three man pages and the
 # Makefile fails loudly rather than skipping them, so it is a hard build dependency.
