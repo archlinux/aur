@@ -1,7 +1,7 @@
 pkgbase = python-okf-generator
 	pkgdesc = OKF v0.2 knowledge bundle generator - Claude skill + OpenCode integration
 	pkgver = 0.1.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UmairBaig8/okf-generator
 	install = python-okf-generator.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-okf-generator
 	depends = python-watchdog
 	optdepends = python-openai: LLM enrichment and training pair generation
 	optdepends = python-fastapi: dashboard feature
-	optdepends = python-uvicorn: dashboard feature
+	optdepends = uvicorn: dashboard feature
 	source = python-okf-generator-0.1.51.tar.gz::https://github.com/UmairBaig8/okf-generator/archive/refs/tags/v0.1.51.tar.gz
 	source = tree_sitter-0.26.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/e2/7a/f56e7d8282859452611024c7cbc623bfba5b24b8cb9b8f8bc88c5219fe9a/tree_sitter-0.26.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
 	source = tree_sitter_python-0.25.0-cp310-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl::https://files.pythonhosted.org/packages/aa/cb/d9b0b67d037922d60cbe0359e0c86457c2da721bc714381a63e2c8e35eba/tree_sitter_python-0.25.0-cp310-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl

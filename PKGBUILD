@@ -2,7 +2,7 @@
 
 pkgname=python-okf-generator
 pkgver=0.1.51
-pkgrel=1
+pkgrel=2
 pkgdesc="OKF v0.2 knowledge bundle generator - Claude skill + OpenCode integration"
 arch=('x86_64')
 url="https://github.com/UmairBaig8/okf-generator"
@@ -17,7 +17,7 @@ depends=(
 optdepends=(
     'python-openai: LLM enrichment and training pair generation'
     'python-fastapi: dashboard feature'
-    'python-uvicorn: dashboard feature'
+    'uvicorn: dashboard feature'
 )
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
