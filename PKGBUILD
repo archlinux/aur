@@ -12,7 +12,7 @@ pkgname='py-cidr'
 pkgdesc='python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver="3.13.0"
+pkgver="4.0.0"
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -23,7 +23,8 @@ license=(GPL-2.0-or-later)
 depends=(
     'python>=3.14' 
     'lockmgr'
-    'python-pytricia'
+    'patricia26'
+    'python-pytricia'           # Keep (for now) to convert old CidrMaps (Pytricia to Patricia26)
 )
 makedepends=(
     'git'

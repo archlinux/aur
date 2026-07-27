@@ -1,6 +1,6 @@
 pkgbase = py-cidr
 	pkgdesc = python module providing network / CIDR tools
-	pkgver = 3.13.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/gene-git/py-cidr
 	arch = any
@@ -13,8 +13,9 @@ pkgbase = py-cidr
 	makedepends = python-uv-build
 	depends = python>=3.14
 	depends = lockmgr
+	depends = patricia26
 	depends = python-pytricia
-	source = git+https://github.com/gene-git/py-cidr#tag=3.13.0
+	source = git+https://github.com/gene-git/py-cidr#tag=4.0.0
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.9.0 ➙ 3.13.0
-              : 2025-08-31 ➙ 2026-03-11
+ Tags         : 3.10.0 ➙ 4.0.0
+              : 2025-09-01 ➙ 2026-07-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-07-27   : 4.0.0
+              - **4.0.0**
+            
+                * CidrMap:
+                  - use Patricia26 (instead of PyTricia) for the Patricia trees.
+                  - maps are now very much smaller, about 1/6 th the size of previous files.
+                    A benefit that Patricia26 stores only the necessary data.
+                  - cache files are automatically converted to the new format.
+                  - PrefixMap: compact defaults to False.
+ 2026-03-11   ⋯
+              - update Docs/Changelogs
 
  2026-03-11   : 3.13.0
               - **3.13.0**
@@ -62,9 +74,4 @@
               - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
               - Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
  2025-08-31   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-08-31   : 3.9.0
-              - compact(cidrs) can now handle mixed ipv4/ipv6
- 2025-07-17   ⋯
               - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
