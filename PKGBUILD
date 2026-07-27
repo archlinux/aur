@@ -2,7 +2,7 @@
 
 pkgname=bc250-control-center-git
 pkgver=1.17.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical control center for AMD BC-250 community tools'
 arch=('any')
 url='https://github.com/movacx/bc250-control-center'
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   'python'
   'python-pyqt6'
+  'qt6-svg'
   'python-psutil'
   'lm_sensors'
   'stress'
