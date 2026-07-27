@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codenest-bin
 _pkgname=CodeNest
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version)一款本地项目管理工具，可整理分散在磁盘各处的项目"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('bdc66047db588ba0bd3d9cc32606b559413a9c8decb931d25e2545dd5fa9459a')
+sha256sums=('02fc774e531e54d00161c0ff27c3b4d64c39002db559447dec50f7499f30be99')
 prepare() {
     sed -i -e "
         s/Categories=/Categories=Utility;/g
@@ -32,5 +32,5 @@ package() {
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/_up_/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

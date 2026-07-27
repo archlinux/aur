@@ -1,6 +1,6 @@
 pkgbase = codenest-bin
 	pkgdesc = A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version)一款本地项目管理工具，可整理分散在磁盘各处的项目
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/MidnightCrowing/CodeNest
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = codenest-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = codenest=1.0.1
+	provides = codenest=1.1.1
 	conflicts = codenest
-	source = codenest-1.0.1.rpm::https://github.com/MidnightCrowing/CodeNest/releases/download/v1.0.1/CodeNest-1.0.1-1.x86_64.rpm
-	sha256sums = bdc66047db588ba0bd3d9cc32606b559413a9c8decb931d25e2545dd5fa9459a
+	source = codenest-1.1.1.rpm::https://github.com/MidnightCrowing/CodeNest/releases/download/v1.1.1/CodeNest-1.1.1-1.x86_64.rpm
+	sha256sums = 02fc774e531e54d00161c0ff27c3b4d64c39002db559447dec50f7499f30be99
 
 pkgname = codenest-bin
