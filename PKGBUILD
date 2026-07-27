@@ -1,0 +1,143 @@
+# Maintainer: Cabel <mxzcabel at tuta dot com>
+
+# ———————————————————————————— NOTICE ————————————————————————————————————
+# Chatto
+# Copyright 2026 ChattoCorp GmbH
+
+#This product includes third-party open source software. This notice lists direct dependencies, shipped browser assets, and upstream NOTICE text known to apply to the Chatto server, CLI, frontend, and documentation website.
+
+#Dependency manifests and lockfiles in this repository remain the authoritative set of third-party packages, including transitive dependencies, used to build each artifact.
+
+#Server and CLI Go Components:
+
+#- age (https://filippo.io/age) - BSD 3-Clause License
+#- AWS SDK for Go v2 (https://github.com/aws/aws-sdk-go-v2) - Apache License 2.0
+#- AWS Smithy Go (https://github.com/aws/smithy-go) - Apache License 2.0
+#- Buf Protovalidate and generated protocol buffer tooling
+  #(https://protovalidate.com/, https://buf.build/) - Apache License 2.0
+#- caarlos0/env (https://github.com/caarlos0/env) - MIT License
+#- Charmbracelet log (https://github.com/charmbracelet/log) - MIT License
+#- ConnectRPC, Connect Authn, Connect validation, and Connect gRPC reflection packages
+  #(https://connectrpc.com/) - Apache License 2.0
+#- Cobra CLI framework (https://github.com/spf13/cobra) - Apache License 2.0
+#- CoreOS go-oidc (https://github.com/coreos/go-oidc) - Apache License 2.0
+#- datasize (https://github.com/c2h5oh/datasize) - MIT License
+#- Gin web framework (https://github.com/gin-gonic/gin) - MIT License
+#- gin-contrib/sessions (https://github.com/gin-contrib/sessions) - MIT License
+#- go-jwt (https://github.com/golang-jwt/jwt) - MIT License
+#- go-mail (https://github.com/wneessen/go-mail) - MIT License
+#- go-nanoid (https://github.com/matoous/go-nanoid) - MIT License
+#- go-smtp-mock (https://github.com/mocktools/go-smtp-mock) - MIT License
+#- go-str2duration (https://github.com/xhit/go-str2duration) - BSD 3-Clause License
+#- go-toml (https://github.com/pelletier/go-toml) - MIT License
+#- Goldmark Markdown parser (https://github.com/yuin/goldmark) - MIT License
+#- Gorilla securecookie, sessions, and websocket
+  #(https://github.com/gorilla) - BSD 3-Clause License
+#- Goth OAuth/OIDC authentication (https://github.com/markbates/goth) -
+  #MIT License
+#- imageorient (https://github.com/disintegration/imageorient) - MIT License
+#- LiveKit Protocol (https://github.com/livekit/protocol) - Apache License 2.0
+#- NATS Server, Go client, JSM, and nkeys (https://nats.io/) - Apache License 2.0
+#- nativewebp (https://github.com/HugoSmits86/nativewebp) - MIT License
+#- opengraph (https://github.com/otiai10/opengraph) - MIT License
+#- Prometheus Go client (https://github.com/prometheus/client_golang) - Apache License 2.0
+#- protoc-gen-doc (https://github.com/pseudomuto/protoc-gen-doc) - MIT License
+#- Testify (https://github.com/stretchr/testify) - MIT License
+#- Twirp (https://github.com/twitchtv/twirp) - Apache License 2.0
+#- webpush-go (https://github.com/SherClockHolmes/webpush-go) - MIT License
+#- Google Go libraries: x/crypto, x/image, x/oauth2, x/sync, x/term,
+  #and protobuf (https://go.googlesource.com/) - BSD 3-Clause License
+
+#Frontend and Documentation Components:
+
+#- Astro and Starlight (https://astro.build/) - MIT License
+#- Buf Protobuf runtime and ES code generation for TypeScript
+  # (https://github.com/bufbuild/protobuf-es) - Apache License 2.0
+#- ConnectRPC for Web and Connect-ES code generation
+  # (https://connectrpc.com/) - Apache License 2.0
+#- ESLint packages (https://eslint.org/) - MIT License and Apache License 2.0
+#- Fontsource IBM Plex Sans and IBM Plex Mono
+  # (https://fontsource.org/fonts/ibm-plex-sans,
+  # https://fontsource.org/fonts/ibm-plex-mono) - SIL Open Font License 1.1
+#- gemoji (https://github.com/github/gemoji) - MIT License
+#- heic2any (https://github.com/alexcorvi/heic2any) - MIT License
+#- highlight.js (https://highlightjs.org/) - BSD 3-Clause License
+#- Iconify packages (https://iconify.design/) - MIT License
+#- js-sha256 (https://github.com/emn178/js-sha256) - MIT License
+#- linkify-it (https://github.com/markdown-it/linkify-it) - MIT License
+#- LiveKit client SDK for JS (https://github.com/livekit/client-sdk-js) -
+  #Apache License 2.0
+#- lowlight (https://github.com/wooorm/lowlight) - MIT License
+#- markdown-it (https://github.com/markdown-it/markdown-it) - MIT License
+#- Parcel watcher (https://github.com/parcel-bundler/watcher) - MIT License
+#- Playwright (https://playwright.dev/) - Apache License 2.0
+#- Prettier and plugins (https://prettier.io/) - MIT License
+#- Sharp image toolkit (https://sharp.pixelplumbing.com/) - Apache License 2.0
+#- Storybook packages (https://storybook.js.org/) - MIT License
+#- Svelte, SvelteKit, Svelte check, and Svelte tooling
+  # (https://svelte.dev/) - MIT License
+#- svelte-dnd-action (https://github.com/isaacHagoel/svelte-dnd-action) -
+  #MIT License
+#- Tailwind CSS packages (https://tailwindcss.com/) - MIT License
+#- Tiptap and ProseMirror (https://tiptap.dev/, https://prosemirror.net/) -
+  #MIT License
+#- tlds (https://github.com/segmentio/tlds) - MIT License
+#- TypeScript (https://www.typescriptlang.org/) - Apache License 2.0
+#- TypeScript ESLint (https://typescript-eslint.io/) - MIT License
+#- Vidstack (https://www.vidstack.io/) - MIT License
+#- Virtua (https://github.com/inokawa/virtua) - MIT License
+#- Vite and Vitest (https://vite.dev/, https://vitest.dev/) - MIT License
+#- zod (https://zod.dev/) - MIT License
+
+#Upstream NOTICE Text:
+
+# CoreOS go-oidc:
+# CoreOS Project
+# Copyright 2014 CoreOS, Inc.
+# This product includes software developed at CoreOS, Inc. (http://www.coreos.com/).
+
+# LiveKit Protocol:
+# Copyright 2023 LiveKit, Inc.
+
+# AWS SDK for Go:
+# AWS SDK for Go
+# Copyright 2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright 2014-2015 Stripe, Inc.
+
+# Prometheus Go client:
+# Prometheus instrumentation library for Go applications
+# Copyright 2012-2015 The Prometheus Authors
+# This product includes software developed at SoundCloud Ltd.
+# (http://soundcloud.com/).
+#
+# Twirp:
+# Twirp Copyright 2018 Twitch Interactive, Inc. All Rights Reserved.
+#
+# Trademark Notice:
+# Chatto's source code uses mixed licensing. The default repository license is the GNU Affero General Public License version 3 or any later version, with Apache License 2.0 exceptions for selected frontend, integration, and documentation surfaces as annotated in REUSE.toml. These licenses do not grant permission to use the "Chatto" name, Chatto logos, or other Chatto marks except as otherwise permitted by law. "Chatto" and the Chatto logos are marks and trade names of ChattoCorp GmbH, and are not registered trademarks at this time.
+
+# You may truthfully refer to Chatto to describe the origin of the software, for example by saying that a project is "based on Chatto" or "forked from Chatto". You may not use the Chatto name, logos, or marks in a way that suggests your project, service, distribution, or modified version is official, endorsed by, sponsored by, or operated by ChattoCorp GmbH unless you have separate written permission.
+
+# ————————————————————————————— PKGBUILD —————————————————————————————————
+pkgname=chatto-bin
+pkgver=0.4.17
+pkgrel=1 
+pkgdesc='A fully-featured team and group chat application that you can easily selfhost'
+arch=('x86_64' 'arm64')
+url="https://github.com/chattocorp/chatto"
+license=('AGPL-3.0')
+provides=('chatto')
+conflicts=('chatto')
+source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_x86_64.tar.gz")
+source_arm64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_arm64.tar.gz")
+sha256sums_x86_64=('2ae5916a2e09bbbeaf95ed4d4648c2b3d2e295037af0571d8cc2c2093d1ef5e5')
+sha256sums_arm64=('33e418a1e4aa984c5b3daa4e46a069fb88ca6fce67478021b3a83f2bde03e68d')
+
+package() {
+    bsdtar -C "${pkgdir}" -xf *.tar.gz
+    install "${pkgdir}/LICENSES/AGPL-3.0-or-later.txt" -Dm644 -t "${pkgdir}/usr/share/licenses/${provides}/"
+    install "${pkgdir}/${provides}" -Dm755 -t "${pkgdir}/usr/bin/"
+    rm "${pkgdir}/NOTICE"
+    rm "${pkgdir}/${provides}"
+    rm -r "${pkgdir}/LICENSES"
+}

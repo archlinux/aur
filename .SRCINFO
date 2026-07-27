@@ -1,0 +1,16 @@
+pkgbase = chatto-bin
+	pkgdesc = A fully-featured team and group chat application that you can easily selfhost
+	pkgver = 0.4.17
+	pkgrel = 1
+	url = https://github.com/chattocorp/chatto
+	arch = x86_64
+	arch = arm64
+	license = AGPL-3.0
+	provides = chatto
+	conflicts = chatto
+	source_x86_64 = https://github.com/chattocorp/chatto/releases/download/v0.4.17/chatto_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2ae5916a2e09bbbeaf95ed4d4648c2b3d2e295037af0571d8cc2c2093d1ef5e5
+	source_arm64 = https://github.com/chattocorp/chatto/releases/download/v0.4.17/chatto_Linux_arm64.tar.gz
+	sha256sums_arm64 = 33e418a1e4aa984c5b3daa4e46a069fb88ca6fce67478021b3a83f2bde03e68d
+
+pkgname = chatto-bin
