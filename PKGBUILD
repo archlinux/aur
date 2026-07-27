@@ -14,8 +14,11 @@ conflicts=("${_pkgbase}")
 makedepends=('sed' 'binutils' 'git')
 source=("git+https://github.com/google/gasket-driver.git"
         "https://github.com/google/gasket-driver/commit/4b2a1464f3b619daaf0f6c664c954a42c4b7ce00.patch"
-        "https://github.com/google/gasket-driver/commit/6fbf8f8f8bcbc0ac9c9bef7a56f495a2c9872652.patch")
+        "https://github.com/google/gasket-driver/commit/6fbf8f8f8bcbc0ac9c9bef7a56f495a2c9872652.patch"
+        "https://gist.githubusercontent.com/flocke/0757c03608e386809c86e2d564b90916/raw/37319f64b9c39e5e52805982d50bfa12408047cc/linux-7.1-compat.patch")
+
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -28,6 +31,7 @@ prepare() {
   cd gasket-driver
   patch -Np1 -i ../../4b2a1464f3b619daaf0f6c664c954a42c4b7ce00.patch # no_llseek patch for kernels >= 6.12
   patch -Np1 -i ../../6fbf8f8f8bcbc0ac9c9bef7a56f495a2c9872652.patch # MODULE_IMPORT_NS patch for kernels >= 6.13
+  patch -Np1 -i ../../37319f64b9c39e5e52805982d50bfa12408047cc.patch # zap_special_vma_range for kernels >= 7.1
 }
 
 package() {
