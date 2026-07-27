@@ -1,7 +1,7 @@
 pkgbase = flyline
 	pkgdesc = A Bash plugin to replace readline for a modern line editing experience
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HalFrgrd/flyline
 	install = flyline.install
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = flyline
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = bash
-	depends = gcc-libs
-	source = flyline-1.3.0.tar.gz::https://github.com/HalFrgrd/flyline/archive/v1.3.0.tar.gz
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/HalFrgrd/flyline/archive/refs/tags/v1.3.0/flyline-1.3.0.tar.gz
 	sha256sums = cf6984e075286050f03e2b1550290db367cfb249b48d63d2d8e9d5d840e5ae8c
 
 pkgname = flyline
