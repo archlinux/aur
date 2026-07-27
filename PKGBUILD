@@ -2,7 +2,7 @@
 # Maintainer: parhelia
 
 pkgname=throne
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'gendesk' 'git' 'go' 'lld' 'protobuf' 'qt6-tools' 'vulkan-h
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('3e6ca5a6284f8b42fd4d4a8357a1b8a9157266c58cb249e7619f7b32a9f8a2f3'
+sha256sums=('2db86e0b7e7200a2779829404f42c26728969d7ce6f9e246f5fd22b8bda2779a'
             '3bb765a93afa8c4f3b4fbf4440507c79ba32e4e4600e94706ccd7705209e0c34'
             'SKIP')
 
