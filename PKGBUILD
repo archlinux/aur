@@ -8,7 +8,7 @@
 
 pkgname=ghc9.14-bin
 pkgver=9.14.1
-pkgrel=1
+pkgrel=2
 _ver_branch=9.14
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
@@ -20,6 +20,7 @@ provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
 source=("https://downloads.haskell.org/~ghc/${pkgver}/ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
 sha256sums=('60f7ab75f28df892729fbaff3a54f58ee3ad7e731929f1b2f3eb0208f73de841')
+options=(!strip !debug)
 
 
 prepare() {
