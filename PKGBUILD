@@ -1,6 +1,6 @@
 pkgname=vgs-shell-git
 pkgver=0.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri (git)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/vanillagreencom/vgs'
@@ -15,6 +15,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd vgs
   printf '%s.r%s.g%s' "$(cat VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/vgs"
+  sed -i 's|^#!/bin/env bash$|#!/usr/bin/env bash|' config/vshell/nvim/colorschemes/tokyonight.nvim/scripts/{build,docs}
 }
 
 build() {
