@@ -1,6 +1,6 @@
 pkgbase = ferp
 	pkgdesc = A GNU grep clone written in Fortran
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/ferp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ferp
 	depends = glibc
 	depends = gcc-libs
 	depends = pcre2
-	source = ferp-0.9.1.tar.gz::https://github.com/FortranGoingOnForty/ferp/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 22215a544137239defd1a419db88a7bc49bb3d8d2a8728619200992c7b4c5394
+	source = ferp-0.10.0.tar.gz::https://github.com/FortranGoingOnForty/ferp/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 039821e46c045f328150cc5f4ad1f79f97a50aaf8007273a7f2030eb033c0653
 
 pkgname = ferp
