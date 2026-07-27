@@ -1,10 +1,10 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=1.0.9
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
-url="https://codeberg.org/trougnouf/cfait"
+url="https://git.disroot.org/trougnouf/cfait"
 license=('GPL-3.0-or-later')
 depends=(
     'gcc-libs'
@@ -27,8 +27,8 @@ optdepends=(
 )
 
 options=('!lto' '!strip' '!debug')
-source=("cfait-source-v1.0.9.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v1.0.9/cfait-source-v1.0.9.tar.gz")
-sha256sums=('897d8a92614bcdf0536835e1f7fd13c20426e2d877a677a906c0c0d8c46abc21')
+source=("cfait-source-v1.1.1.tar.gz::https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.1/cfait-source-v1.1.1.tar.gz")
+sha256sums=('dd8998cdbee76f14a15fac92b673695fd8d459ed8e0f6ea4cf42b49d5b72e693')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
