@@ -1,6 +1,6 @@
 pkgbase = penguin-citizen-bin
 	pkgdesc = A Linux management tool for Star Citizen — RSI Launcher GUI with Wine/Proton runner management
-	pkgver = 0.5.12
+	pkgver = 0.5.13
 	pkgrel = 1
 	url = https://github.com/TomRhodan/penguin-citizen
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = penguin-citizen-bin
 	conflicts = penguin-citizen
 	options = !strip
 	options = !emptydirs
-	source = penguin-citizen-0.5.12-1.deb::https://github.com/TomRhodan/penguin-citizen/releases/download/v0.5.12-1/Penguin.Citizen_0.5.12_amd64.deb
-	sha256sums = f0ce0c5b13588029141dff67369dd0df0767b4f11077af354117e5262bb32eb4
+	source = penguin-citizen-0.5.13-1.deb::https://github.com/TomRhodan/penguin-citizen/releases/download/v0.5.13-1/Penguin.Citizen_0.5.13_amd64.deb
+	sha256sums = 6fd63f74430dfb2a682e837fa881762e4606e8c391850a2fede341e26c101543
 
 pkgname = penguin-citizen-bin
