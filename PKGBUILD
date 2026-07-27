@@ -2,12 +2,12 @@
 pkgname=dmenu-extended
 _name=${pkgname//-/_}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension to dmenu for quickly opening files and folders."
 arch=('any')
 url="https://github.com/markhedleyjones/dmenu-extended"
 license=('MIT')
-depends=(python dmenu)
+depends=(python)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 provides=(dmenu-extended)
 conflicts=(dmenu-extended)

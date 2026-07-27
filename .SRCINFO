@@ -1,7 +1,7 @@
 pkgbase = dmenu-extended
 	pkgdesc = An extension to dmenu for quickly opening files and folders.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markhedleyjones/dmenu-extended
 	arch = any
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = dmenu-extended
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = dmenu
 	provides = dmenu-extended
 	conflicts = dmenu-extended
 	source = https://files.pythonhosted.org/packages/source/d/dmenu_extended/dmenu_extended-1.5.0.tar.gz
