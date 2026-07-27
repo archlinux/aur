@@ -1,0 +1,15 @@
+[Unit]
+Description=9Router WebUI - AI Model Router
+After=network.target
+
+[Service]
+Type=simple
+Environment="NODE_ENV=production"
+Environment="PORT=20128"
+ExecStart=/usr/bin/9router --service
+ExecStop=/usr/bin/pkill -f "bun.*9router"
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

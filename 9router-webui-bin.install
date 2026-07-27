@@ -1,0 +1,34 @@
+post_install() {
+  echo ""
+  echo "✨ 9Router WebUI installed successfully!"
+  echo ""
+  echo "  ─────────────────────────────────────────────"
+  echo "  📋 First-run setup:"
+  echo "     Run '9router' to start the interactive setup"
+  echo "     You'll be asked for port and preferences"
+  echo ""
+  echo "  🔧 Systemd service (optional):"
+  echo "     systemctl --user enable --now 9router.service"
+  echo ""
+  echo "  🌐 Access WebUI:"
+  echo "     http://localhost:20128/dashboard"
+  echo "  ─────────────────────────────────────────────"
+  echo ""
+  echo "  📁 Configuration: ~/.config/9router/.env"
+  echo "  📁 Data directory: ~/.local/share/9router"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl --user stop 9router.service 2>/dev/null || true
+  echo ""
+  echo "⚠️  Configuration and data files were NOT removed:"
+  echo "   ~/.config/9router/.env"
+  echo "   ~/.local/share/9router/"
+  echo ""
+  echo "   Remove manually if desired."
+}
