@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export DOTNET_BUNDLE_EXTRACT_BASE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"
+exec /usr/bin/PCL-N "$@"
