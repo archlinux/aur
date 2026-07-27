@@ -1,0 +1,20 @@
+pkgbase = tarvalon-scraper
+	pkgdesc = Tar Valon Library scraper
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/code7wormer/tar_valon_scraper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-rich
+	depends = python-ebooklib
+	depends = python-markdown
+	source = https://files.pythonhosted.org/packages/b7/d3/a4c382e41b885cf11a323c712279e9e36680f0505c4eb585567ed38d3cda/tarvalon_scraper-0.2.0.tar.gz
+	sha256sums = 6a6c1722cadf7d04c2d55c7c0f857204ab388fc4c877305105143cf24588d2e4
+
+pkgname = tarvalon-scraper
