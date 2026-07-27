@@ -1,18 +1,18 @@
 pkgbase = porter-cli
 	pkgdesc = CLI for Porter.dev, a Kubernetes powered PaaS that runs in your own cloud.
-	pkgver = 0.68.45
+	pkgver = 0.68.46
 	pkgrel = 1
 	url = https://www.porter.run/
 	arch = x86_64
 	arch = aarch64
 	license = custom:porter
-	source_x86_64 = https://github.com/porter-dev/releases/releases/download/v0.68.45/porter_0.68.45_linux_amd64
-	source_x86_64 = https://github.com/porter-dev/releases/releases/download/v0.68.45/docker-credential-porter_0.68.45_linux_amd64
-	sha256sums_x86_64 = e3f4f84682e47bf864d71b21a508226a72fb29cd34aba097a89cd7f4cd706885
-	sha256sums_x86_64 = 62dc57e6adcc2473d1ee4c02f12c5f0d6445c756feaf70b75cd8c439a13734ba
-	source_aarch64 = https://github.com/porter-dev/releases/releases/download/v0.68.45/porter_0.68.45_linux_arm64
-	source_aarch64 = https://github.com/porter-dev/releases/releases/download/v0.68.45/docker-credential-porter_0.68.45_linux_arm64
-	sha256sums_aarch64 = 44692ef1e7db667d7bfe49b20b6b99751b0bb31d457220994bfbc3851cba7d5c
-	sha256sums_aarch64 = 95db348b921af61f8def9599fb95fe9053fbf861905bc2ff7271d0d16cb51ea1
+	source_x86_64 = https://github.com/porter-dev/releases/releases/download/v0.68.46/porter_0.68.46_linux_amd64
+	source_x86_64 = https://github.com/porter-dev/releases/releases/download/v0.68.46/docker-credential-porter_0.68.46_linux_amd64
+	sha256sums_x86_64 = 8400ff614779ffc71b7dc411ec67d8033604ab2343dd7384acef8d8c9820b89d
+	sha256sums_x86_64 = 40fd845e2e5f36b9bd9d212fe7c59b62e0a273f06ce0c0d6b27419e61dcd75ed
+	source_aarch64 = https://github.com/porter-dev/releases/releases/download/v0.68.46/porter_0.68.46_linux_arm64
+	source_aarch64 = https://github.com/porter-dev/releases/releases/download/v0.68.46/docker-credential-porter_0.68.46_linux_arm64
+	sha256sums_aarch64 = 00908192a9852d3f7f89f84d97b81ed6c8bdf75240487442689468f72d7245b0
+	sha256sums_aarch64 = 4b18d806b4a03b12c747a31e1b7979469521fa25c6ad56f974f105fcf808445c
 
 pkgname = porter-cli
