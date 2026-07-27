@@ -2,7 +2,7 @@
 
 pkgname=bc250-control-center-git
 pkgver=1.17.22
-pkgrel=3
+pkgrel=4
 pkgdesc='Graphical control center for AMD BC-250 community tools'
 arch=('any')
 url='https://github.com/movacx/bc250-control-center'
@@ -56,6 +56,8 @@ package() {
   install -Dm755 scripts/bc250-control-centerd "$pkgdir/usr/bin/bc250-control-centerd"
   install -Dm755 mvc/Resources/privileged/bc250-fan-pwm-helper \
     "$pkgdir/usr/libexec/bc250-control-center/bc250-fan-pwm-helper"
+  install -Dm755 mvc/Resources/privileged/bc250-steamos-game-helper \
+    "$pkgdir/usr/libexec/bc250-control-center/bc250-steamos-game-helper"
   install -Dm644 packaging/common/polkit/io.github.movacx.bc250-control-center.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.github.movacx.bc250-control-center.policy"
 
