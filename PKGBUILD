@@ -77,7 +77,7 @@ build() {
     export LDFLAGS="${LDFLAGS/-flto=auto/}"
     
     # Alternative safeguard flag for newer versions of makepkg
-    options=(!lto)
+    options=(!lto !debug strip)
 
 	# Clean build sandbox creation using the native, modern CMake wrapper
     # Fixed the installation target directories to proper Linux standards
