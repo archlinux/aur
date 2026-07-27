@@ -72,6 +72,9 @@ package() {
   # Fix python venv shebang paths (makes the venv portable to /opt/tracefinity)
   find "$pkgdir/opt/$_pkgname/venv/bin" -type f -exec sed -i "s|$srcdir/venv|/opt/$_pkgname/venv|g" {} +
 
+  # Inject the package version into the backend systemd service
+  sed -i "/^Environment=\"STORAGE_PATH=/a Environment=\"APP_VERSION=${pkgver}\"" "$srcdir/tracefinity-backend.service"
+
   install -Dm644 "$srcdir/tracefinity-backend.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$srcdir/tracefinity-frontend.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$srcdir/tracefinity.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
