@@ -1,0 +1,20 @@
+pkgbase = vgs-shell-git
+	pkgdesc = VanillaGreen desktop shell for Hyprland and Niri (git)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/vanillagreencom/vgs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = quickshell
+	depends = jq
+	depends = python
+	depends = systemd
+	provides = vgs-shell
+	conflicts = vgs-shell
+	source = git+https://github.com/vanillagreencom/vgs.git
+	sha256sums = SKIP
+
+pkgname = vgs-shell-git
