@@ -1,6 +1,6 @@
 # Maintainer: Thomas Büngener <tombueng@gmail.com>
 pkgname=leolink
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Native Linux client for Reolink cameras: live view, motion alerts, recording"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 # dependency.
 optdepends=('ffmpeg: recording to disk, and motion and sound detection')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d6a81276461bc76c73a6f865d23d5072b9bdbed87e90913f71a9dfd0a7f30c3f')
+sha256sums=('e1bfeb34fb7b9afc3101dfe0bb1d514a2f85b886d3f6f5139abbd631fbc9df0e')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build -G Ninja \
