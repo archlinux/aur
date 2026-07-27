@@ -1,6 +1,6 @@
 pkgbase = jitterentropy-rngd
 	pkgdesc = Jitter RNG daemon
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://www.chronox.de/jent.html
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = jitterentropy-rngd
 	license = BSD-3-Clause
 	license = GPL-2.0-or-later
 	depends = glibc
-	source = jitterentropy-rngd-1.3.1-src.tar.gz::https://github.com/smuellerDD/jitterentropy-rngd/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = affd90b1d5896d0b3329d5c5274262f9389a89e5b90f43d9b906db638345f79d
+	source = jitterentropy-rngd-1.3.2-src.tar.gz::https://github.com/smuellerDD/jitterentropy-rngd/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = f04f62899adfc0fbde02ba05430e748803374f70a7572f1a6191b7cd6b4d68a5
 
 pkgname = jitterentropy-rngd
