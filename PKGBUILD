@@ -1,7 +1,7 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
 pkgname=9router-webui-bin
 pkgver=0.5.40
-pkgrel=1
+pkgrel=2
 pkgdesc="9Router - WebUI AI Router with 40+ providers, auto-fallback, RTK token optimization"
 arch=('x86_64' 'aarch64')
 url="https://github.com/decolua/9router"

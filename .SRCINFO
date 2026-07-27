@@ -1,7 +1,7 @@
 pkgbase = 9router-webui-bin
 	pkgdesc = 9Router - WebUI AI Router with 40+ providers, auto-fallback, RTK token optimization
 	pkgver = 0.5.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decolua/9router
 	install = 9router-webui-bin.install
 	arch = x86_64
