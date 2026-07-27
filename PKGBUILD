@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -49,7 +49,8 @@ check() {
     cd $_name
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest -o addopts=""
+    # https://github.com/ranaroussi/yfinance/issues/2926
+    test-env/bin/python -P -m pytest -o addopts="" -k "not test_repair_bad_stock_splits"
 }
 
 package() {
