@@ -1,46 +1,36 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redis-viewer-bin
-_pkgname=redisviewer
-_appname='Redis Viewer'
-pkgver=2.4.9
-_electronversion=28
-pkgrel=2
-pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version.(Use system-wide electron)"
+_pkgname=RedisViewer
+_debname=io.github.redisviewer
+pkgver=3.2.2
+pkgrel=1
+pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version"
 arch=('x86_64')
 url="https://github.com/redisviewer/RedisViewer"
 license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+)
+options=(
+    '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux.pacman"
-    "${pkgname%-bin}.sh"
+    "${pkgname%-bin}-${pkgver}.flatpak::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.flatpak"
+    "flatpak_unpack.py"
 )
-sha256sums=('b90e9d5ba3927006e836c4c1d275286eb3fb61ca5f68a821e740fa3a7453efbb'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('f2e3efea82e8819998d1a063eebbc9297392ad3b4c4ec9fd31975fee0cdab6d1'
+            '25952d131dc9d9da14e84a99b83da66c2c6e2e067569599972901d7704297feb')
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
-        s/\"\/opt\/${_appname}\/${_pkgname}\"/${pkgname%-bin}/g
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-        s/Utility/Development/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    cd "${srcdir}"
+    python3 flatpak_unpack.py "${pkgname%-bin}-${pkgver}.flatpak"
+    sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/flatpak_unpacked/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_appname}/resources/server/redismanager" -t "${pkgdir}/usr/lib/${pkgname%-bin}/server"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/server/manager.db" -t "${pkgdir}/usr/lib/${pkgname%-bin}/server"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/server/configs/config.yaml" -t "${pkgdir}/usr/lib/${pkgname%-bin}/server/configs"
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/opt/${_appname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir}/flatpak_unpacked/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/flatpak_unpacked/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/flatpak_unpacked/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }

@@ -1,16 +1,19 @@
 pkgbase = redis-viewer-bin
-	pkgdesc = A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version.(Use system-wide electron)
-	pkgver = 2.4.9
-	pkgrel = 2
+	pkgdesc = A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://github.com/redisviewer/RedisViewer
 	arch = x86_64
 	license = LicenseRef-unknown
-	depends = electron28
-	provides = redis-viewer=2.4.9
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = redis-viewer=3.2.2
 	conflicts = redis-viewer
-	source = redis-viewer-2.4.9.pacman::https://github.com/redisviewer/RedisViewer/releases/download/v2.4.9/Redis.Viewer-2.4.9-linux.pacman
-	source = redis-viewer.sh
-	sha256sums = b90e9d5ba3927006e836c4c1d275286eb3fb61ca5f68a821e740fa3a7453efbb
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	options = !strip
+	source = redis-viewer-3.2.2.flatpak::https://github.com/redisviewer/RedisViewer/releases/download/v3.2.2/RedisViewer_3.2.2_linux_amd64.flatpak
+	source = flatpak_unpack.py
+	sha256sums = f2e3efea82e8819998d1a063eebbc9297392ad3b4c4ec9fd31975fee0cdab6d1
+	sha256sums = 25952d131dc9d9da14e84a99b83da66c2c6e2e067569599972901d7704297feb
 
 pkgname = redis-viewer-bin
