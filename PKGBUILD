@@ -1,114 +1,151 @@
-# Maintainer: SamuelLira99 <samuellira99@bol.com.br>
+# Maintainer: mrbass21 <jbeck@bumpsk.com>
+# Contributor: June <zanthed@riseup.net>
+# Submitter: Viste <viste02@gmail.com>
 
+## Put in any extra CMake arguments here.
+## See https://www.azerothcore.org/wiki/cmake-options
+_extraargs=''
+
+## If you want to add in your own arguments entirely and replace the default below, fill this in.
+_cmakeargs=''
+
+_pkgname='azerothcore-wotlk'
 pkgname='azerothcore-wotlk-git'
-pkgver=1.3
+pkgver=placeholder
 pkgrel=1
 arch=('x86_64')
-pkgdesc="Open-source game-server application for World of Warcraft, currently supporting the 3.3.5a game version"
+pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 url="http://www.azerothcore.org"
 license=('AGPL3')
-depends=('mariadb' 'boost' 'cmake' 'clang')
-makedepends=('git')
-install="${pkgname}.install"
+
+# Core execution dependencies
+depends=('boost-libs' 'readline' 'openssl')
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
+options=(!lto !debug strip)
+provides=('azerothcore')
 conflicts=('azerothcore')
-source=(
-"${pkgname}::git+https://github.com/azerothcore/azerothcore-wotlk.git"
-"https://github.com/wowgaming/client-data/releases/download/v12/data.zip"
-"git+https://github.com/SamuelLira99/azerothcore-systemd-units.git"
-)
-sha1sums=(
-"SKIP"
-"SKIP"
-"SKIP"
+
+backup=(
+  'etc/azerothcore/authserver.conf'
+  'etc/azerothcore/worldserver.conf'
 )
 
-_SERVER_ROOT=/opt/azeroth-server
-_SRC_DIR=/opt/azerothcore
+source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
+		"acore-auth-server.service"
+		"acore-world-server.service")
+sha512sums=('SKIP' "SKIP" "SKIP")
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	# Get the latest tag and count the number of commits since that tag
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  # Start mysql services
-  sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-  sudo systemctl start mariadb.service
 
-  # Create needed directories and copy azerothcore-wotlk to /opt/azerothcore
-  sudo mkdir -p ${_SERVER_ROOT}
-  sudo cp -rv ${srcdir}/${pkgname} ${_SRC_DIR}
+	# Why don't I just use `depends=('mysql')`? Because MariaDB is a conflicting implementation of MySQL, 
+	# and AzerothCore requires the Oracle MySQL ecosystem to be installed. Because the dependencies can
+	# be satisfied by either MariaDB or MySQL, pacman will happily install MariaDB. Further, Mysql will 
+	# claim it offers MariaDB and its libraries, so using `conflicts` will cause the installation to fail.
+	# So I have to do this hackery just so I can make sure the _actual_ mysql server and libraries are 
+	# installed.
+	#
+	# I wish I still had my sanity.
+	if pacman -Qq | grep -E '^mariadb(-libs|-clients)?$' >/dev/null 2>&1; then 
+		echo "======================================================================="
+		echo " ERROR: MariaDB is installed!"
+		echo "======================================================================="
+		echo " AzerothCore requires the Oracle MySQL ecosystem to be installed,"
+		echo " and MariaDB is a conflicting implementation. Please uninstall "
+		echo " MariaDB and install the full MySQL development stack instead."
+		echo ""
+		echo " Uninstall MariaDB using the following command:"
+		echo "   pacman -Qq | grep -E '^mariadb(-libs|-clients)?$' | xargs -r sudo pacman -Rns"
+		echo ""
+		echo " Please verify or install all three components manually before continuing:"
+		echo "   1. libmysqlclient  (The C API development connector libraries)"
+		echo "   2. mysql-clients   (The CLI tooling suite like mysqldump)"
+		echo "   3. mysql           (The background SQL database server daemon)"
+		echo ""
+		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
+		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
+		echo ""
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
+		echo "======================================================================="
+		exit 1
+	
+	fi
 
-  # Change ownership for needed directories
-  sudo chown ${USER}:${USER} ${_SERVER_ROOT}
-  sudo chown ${USER}:${USER} ${_SRC_DIR}
+	# Enforce rigid filesystem tracking for all 3 critical MySQL 8.4 packages
+	if ! pacman -Qq | grep -E '^mysql[0-9]*$' >/dev/null 2>&1 || \
+	   ! pacman -Qq | grep -E '^libmysqlclient[0-9]*$' >/dev/null 2>&1 || \
+	   ! pacman -Qq | grep -E '^mysql-clients[0-9]*$' >/dev/null 2>&1; then
+		echo "======================================================================="
+		echo " ERROR: Required Oracle MySQL Package Ecosystem is Incomplete!"
+		echo "======================================================================="
+		echo " To shield your system from upstream dependency bugs that pull in"
+		echo " conflicting MariaDB environments, AzerothCore requires you to have"
+		echo " the full MySQL development stack pre-installed."
+		echo ""
+		echo " Please verify or install all three components manually before continuing:"
+		echo "   1. libmysqlclient  (The C API development connector libraries)"
+		echo "   2. mysql-clients   (The CLI tooling suite like mysqldump)"
+		echo "   3. mysql           (The background SQL database server daemon)"
+		echo ""
+		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
+		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
+		echo ""
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
+		echo "======================================================================="
+		exit 1
+	fi
 
-  cd ${_SRC_DIR}
-  mkdir -p build
-	cd build
-  cmake ../ -DCMAKE_INSTALL_PREFIX=${_SERVER_ROOT}/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS=0 -DSCRIPTS=static
+	# Apply any patches here, if needed
+	cd "${srcdir}/${_pkgname}"
+
+	# jemalloc is broken in master. AzerothCore is replacing jemalloc, so this is temporary.
+	# Skip the patch when the source tree is already in the patched state.
+	if ! grep -q 'throw std::bad_alloc();' deps/jemalloc/src/jemalloc_cpp.cpp; then
+		patch --forward -Np1 -i "${startdir}/jemalloc.patch"
+	fi
 }
 
 build() {
-  cd ${_SRC_DIR}/build
-	make -j $(nproc --all)
+	# Force-disable Link-Time Optimization (LTO)
+    # This strips the heavy symbol tables, capping lld's peak RAM usage at ~3.5 GB
+    export CFLAGS="${CFLAGS/-flto=auto/}"
+    export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
+    export LDFLAGS="${LDFLAGS/-flto=auto/}"
+
+	# Clean build sandbox creation using the native, modern CMake wrapper
+    # Fixed the installation target directories to proper Linux standards
+	CC=clang CXX=clang++ cmake -B build -S "${_pkgname}" \
+	-DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/share/azerothcore \
+    -DCONF_DIR=/etc/azerothcore \
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++ \
+	-DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
+	-DWITH_WARNINGS=1 \
+	-DTOOLS_BUILD=all \
+    -DSCRIPTS=static \
+	-DMODULES=static \
+	-DMYSQL_INCLUDE_DIR=/usr/include/mysql \
+	-DMYSQL_LIBRARY=/usr/lib/libmysqlclient.so \
+    ${_extraargs}
+    
+  	# Respects the user's /etc/makepkg.conf CPU core limits cleanly
+  	cmake --build build
 }
 
 package() {
-  # Install azerothcore to /opt/azeroth-server
-	cd ${_SRC_DIR}/build
-	make install
+	# Directs files into Arch's strict isolated filesystem staging area
+  	DESTDIR="${pkgdir}" cmake --install build
 
-  # Extract data folder into azeroth-server
-  mkdir -p ${_SERVER_ROOT}/data
-  cp -rv ${srcdir}/Cameras ${srcdir}/dbc ${srcdir}/maps ${srcdir}/mmaps ${srcdir}/vmaps ${_SERVER_ROOT}/data
+	# Copies the runtime helper script into the package
+  	install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"
 
-  # create authserver.conf and worldserver.conf
-  cp ${_SERVER_ROOT}/etc/authserver.conf.dist ${_SERVER_ROOT}/etc/authserver.conf
-  cp ${_SERVER_ROOT}/etc/worldserver.conf.dist ${_SERVER_ROOT}/etc/worldserver.conf
-
-  # set DataDir = /opt/azeroth-server/data on worldserver.conf
-  sed -i 's@DataDir\s=\s"\."@DataDir = "'"${_SERVER_ROOT}"'/data"@' ${_SERVER_ROOT}/etc/worldserver.conf
-
-  # Setup database
-  sudo mysql -u root < ${srcdir}/${pkgname}/data/sql/create/create_mysql.sql
-
-  # Install systemd units
-  sed -i 's@/home/samuel/azeroth-server@'"${_SERVER_ROOT}"'@' ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service
-  sudo cp ${srcdir}/azerothcore-systemd-units/acore-{auth,world}-server.service /etc/systemd/system
-  sudo systemctl daemon-reload
-
-  # Run authserver in order to generate database tables
-  echo ''
-  echo 'generating database tables, please wait... (it may take 60 seconds)'
-  sudo systemctl start acore-auth-server.service
-
-  sleep 60
-
-  # Create default user
-  echo ''
-  echo 'creating default user' # it has security level 4 in order to create other accounts
-  _last_insert_id=$(sudo mysql -u root -e "INSERT INTO acore_auth.account(username, salt, verifier) VALUES('SECURITY4', X'955adb649b38c472805ee6adc002dad1f553b85254bfdd21b930c940d1e17fd1', X'4f9c575b09104c08fd3d41e93b115028486ce72a315b51e58c25effd61debb17'); SELECT LAST_INSERT_ID()")
-  sudo mysql -u root -e "INSERT INTO acore_auth.account_access(id, gmlevel, RealmID) VALUES(${_last_insert_id:17}, 4, -1)"
-
-  # Networking
-  current_ip=$(ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep 192)
-  echo ''
-  echo "Your current IP over LAN is ${current_ip}"
-
-  echo ''
-  echo "will other computers play on this server? (if so, don't forget to set ${current_ip} as static IP address to this computer) [y/n]"
-  read will_other_pcs_connect
-
-  realmlist_ip='127.0.0.1' # default
-	if [[ "$will_other_pcs_connect" == "y" ]]; then
-		sudo mysql -u root -e "UPDATE acore_auth.realmlist SET address = '${current_ip}' WHERE id = 1"
-    realmlist_ip=${current_ip}
-	fi
-
-  echo ${realmlist_ip} | sudo tee /tmp/azerothcore-wotlk-git-realmlist-ip
-
-  echo ""
-	echo "enter the name you want for your realm (leave blank for default)"
-	read realm_name
-	if [[ -n $realm_name ]]; then
-		sudo mysql -u root -e "UPDATE acore_auth.realmlist SET name = '${realm_name}' WHERE id = 1"
-	fi
-
-
+	# Installs the systemd service units so the server can be managed with systemctl
+  	install -Dm644 "${srcdir}/acore-auth-server.service" "${pkgdir}/usr/lib/systemd/system/acore-auth-server.service"
+  	install -Dm644 "${srcdir}/acore-world-server.service" "${pkgdir}/usr/lib/systemd/system/acore-world-server.service"
 }

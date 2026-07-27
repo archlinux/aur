@@ -1,18 +1,22 @@
 post_install() {
 	_realmlist_ip=$(cat /tmp/azerothcore-wotlk-git-realmlist-ip)
 
+	if command -v systemctl >/dev/null 2>&1; then
+    	systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+
 	# Restart authserver
-  sudo systemctl restart acore-auth-server.service
+  	sudo systemctl restart acore-auth-server.service
 
 	# Start worldserver
-  sudo systemctl start acore-world-server.service
+  	sudo systemctl start acore-world-server.service
 
 	# Enable needed services
-  sudo systemctl enable acore-auth-server.service
-  sudo systemctl enable acore-world-server.service
-  sudo systemctl enable mariadb.service
+	sudo systemctl enable acore-auth-server.service
+	sudo systemctl enable acore-world-server.service
+	sudo systemctl enable mysqld.service
 
-  # Display some instructions
+  	# Display some instructions
 	echo ''
 	echo ''
 	echo '#####################  IMPORTANT  #####################'
@@ -60,6 +64,12 @@ post_install() {
 	echo ''
 	echo ''
 	echo 'the server may take some time to fully boot up, so if you can login, but is stuck at realm selection screen, maybe the server is still booting up, in this case just wait a few minutes and try again'
+}
+
+post_upgrade() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
 }
 
 pre_remove() {
