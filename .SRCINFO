@@ -1,0 +1,21 @@
+pkgbase = rusbmux-bin
+	pkgdesc = A usbmuxd replacement in pure Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abdullah-albanna/rusbmux
+	install = rusbmux-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = rusbmux
+	provides = usbmuxd
+	conflicts = usbmuxd
+	source_x86_64 = rusbmux-0.1.0-x86_64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.1.0/rusbmux-0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = 0491548b44545cb29cb0ef91a8246d06dbe8d142e70091d23dc2cae6c2ac257b
+	source_aarch64 = rusbmux-0.1.0-aarch64.tar.gz::https://github.com/abdullah-albanna/rusbmux/releases/download/v0.1.0/rusbmux-0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = 4de393671bc8ec6d8bd2d1299bd66c14281e120bde794300b33509c62cb66660
+
+pkgname = rusbmux-bin

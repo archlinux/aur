@@ -1,0 +1,19 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl enable --now rusbmux.service 2>/dev/null
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if systemctl is-active --quiet rusbmux.service 2>/dev/null; then
+    systemctl stop rusbmux.service
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload
+}
+
