@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytubic
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Fast, responsive YouTube Music desktop client"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("YTubic-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('435df1e3b03f9e2a003922d743175ca0445f52712847a14aae1ed19d178bf68f'
+sha256sums=('234102e0cab9c3d992574efc0c5f308ef2d06bc292ba2a8ede685d8ec66a1f03'
             '70c6737b1daa8a7524a62934cf9067c976db12fb7a016226cd2debba440d4c4c')
 
 prepare() {
@@ -32,8 +32,7 @@ prepare() {
   pnpm install --frozen-lockfile
 
   export RUSTUP_TOOLCHAIN=stable
-  # cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
-  cargo fetch --manifest-path src-tauri/Cargo.toml --target host-tuple
+  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
 }
 
 build() {
@@ -41,8 +40,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
-  # cargo tauri build --no-bundle -- --frozen
-  cargo tauri build --no-bundle
+  cargo tauri build --no-bundle -- --frozen
 }
 
 check() {

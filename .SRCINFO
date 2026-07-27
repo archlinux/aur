@@ -1,6 +1,6 @@
 pkgbase = ytubic
 	pkgdesc = Fast, responsive YouTube Music desktop client
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/ameenalasady/YTubic
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ytubic
 	depends = libayatana-appindicator
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	source = YTubic-0.8.0.tar.gz::https://github.com/ameenalasady/YTubic/archive/refs/tags/v0.8.0.tar.gz
+	source = YTubic-0.8.1.tar.gz::https://github.com/ameenalasady/YTubic/archive/refs/tags/v0.8.1.tar.gz
 	source = ytubic.desktop
-	sha256sums = 435df1e3b03f9e2a003922d743175ca0445f52712847a14aae1ed19d178bf68f
+	sha256sums = 234102e0cab9c3d992574efc0c5f308ef2d06bc292ba2a8ede685d8ec66a1f03
 	sha256sums = 70c6737b1daa8a7524a62934cf9067c976db12fb7a016226cd2debba440d4c4c
 
 pkgname = ytubic
