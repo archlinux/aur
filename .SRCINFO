@@ -1,6 +1,6 @@
 pkgbase = leavepad-git
 	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Use system-wide electron)
-	pkgver = 2.5.0.r0.g8343493
+	pkgver = 2.7.2.r0.gca8f450
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = leavepad-git
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
-	depends = electron41
-	provides = leavepad=2.5.0
+	depends = electron43
+	provides = leavepad=2.7.2
 	conflicts = leavepad
 	source = leavepad.git::git+https://github.com/kaishuu0123/leavepad.git
 	source = leavepad.sh
