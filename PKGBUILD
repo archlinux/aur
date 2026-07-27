@@ -3,7 +3,7 @@
 pkgbase=libajantv2
 pkgname=('libajantv2' 'ajantv2-tools'  'ajantv2-dkms')
 pkgdesc="Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc"
-_pkgver=17.5.0
+_pkgver=18.0.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
@@ -12,7 +12,7 @@ url="https://github.com/aja-video/libajantv2"
 license=(MIT)
 makedepends=("cmake" "git")
 options=('debug')
-source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=792732f6893998daa869564f0f60f4c83b9ffbc5")
+source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=4add45239a03960aa36de6fef326ee1b753e8ec9")
 sha256sums=("SKIP")
 
 prepare() {
@@ -20,12 +20,6 @@ prepare() {
 
   # Properly make CNTV2DeviceScanner::GetDeviceInfoList a class method (https://github.com/aja-video/libajantv2/pull/57)
   sed -i "s|NTV2DeviceInfoList	GetDeviceInfoList|NTV2DeviceInfoList CNTV2DeviceScanner::GetDeviceInfoList|g" ajantv2/src/ntv2devicescanner.cpp
-
-  # Use ccflags-y instead of EXTRA_CFLAGS (https://github.com/aja-video/libajantv2/pull/55)
-  sed -i "s|EXTRA_CFLAGS|ccflags-y|g" driver/linux/Makefile
-
-  # Add fixup VERSION and add SOVERSION
-  sed -i 's|VERSION "${AJA_NTV2_VER_STR}"|VERSION "${AJA_NTV2_VER_STR}" SOVERSION "${AJA_NTV2_SDK_VERSION_MAJOR}"|g' ajantv2/CMakeLists.txt
 }
 
 # TODO: Add Qt deps ("qt6-base" "qt6-multimedia") and create the demo package
@@ -66,7 +60,7 @@ _install() {
 }
 
 package_libajantv2() {
-  depends=("gcc-libs" "glibc" "systemd-libs")
+  depends=("glibc" "libgcc" "libstdc++" "systemd-libs")
 
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib
@@ -75,7 +69,7 @@ package_libajantv2() {
 }
 
 package_ajantv2-tools() {
-  depends=("gcc-libs" "glibc" "libajantv2")
+  depends=("glibc" "libgcc" "libstdc++" "libajantv2")
 
   _install fakeinstall/usr/bin  
 
