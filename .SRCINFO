@@ -1,6 +1,6 @@
 pkgbase = unreallauncher-git
 	pkgdesc = Unreal Launcher, launcher made for UnrealStudios needs
-	pkgver = 0.6.17.r309.g8b5caa6
+	pkgver = 0.6.18.r309.g8b5caa6
 	pkgrel = 1
 	url = https://github.com/unh0lyalexzero/Unreal-Launcher
 	arch = any
