@@ -1,7 +1,7 @@
 # Maintainer: Faris Aghna <frsaghna@gmail.com>
 
 pkgname=markdowned
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Premium, distraction-free Markdown editor and viewer"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('electron39')
 makedepends=('npm' 'esbuild' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('507e73fdd06b69bb9f6c6a44b5fcf5b43395df7e2f79120221a8c6145c21f27f')
+sha256sums=('92d3bd6e11708e2741bd2bb8799d40cba3e29972c25eecd78454b679593264a9')
 
 prepare() {
   cd "$pkgname-$pkgver"
