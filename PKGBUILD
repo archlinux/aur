@@ -13,6 +13,7 @@ depends=(
     'python-gobject'
     'gtk3'
     'python-pillow'
+    'python-cairo'
 )
 optdepends=(
     'unrar: for CBR/RAR archive support'

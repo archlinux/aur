@@ -12,6 +12,7 @@ pkgbase = mcomix3
 	depends = python-gobject
 	depends = gtk3
 	depends = python-pillow
+	depends = python-cairo
 	optdepends = unrar: for CBR/RAR archive support
 	optdepends = p7zip: for 7Zip archive support
 	optdepends = lha: for LHA/LZA archive support
