@@ -1,7 +1,6 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
-# Contributor: Your Name <your.email@example.com>
 pkgname=9router-webui-plasma-git
-pkgver=0.5.40.r0.g79918c783
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="9Router - AI model router with WebUI. Built with Bun, optimized for KDE Plasma desktop (systemd user service)"
 arch=('x86_64' 'aarch64')
@@ -13,18 +12,17 @@ source=("$pkgname::git+https://github.com/decolua/9router.git")
 sha256sums=('SKIP')
 options=('!strip')
 
+# ==================== VERSIONING (AUR STANDARD) ====================
 pkgver() {
   cd "$srcdir/$pkgname"
+  # Generate version from git tags: v0.1.0 -> 0.1.0.r12.g78a26cc
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+# ==================================================================
 
 build() {
   cd "$srcdir/$pkgname"
-
-  # Install dependencies with Bun
   bun install
-
-  # Build the Next.js application
   bun run build
 }
 
@@ -35,14 +33,14 @@ package() {
   install -dm755 "$pkgdir/usr/lib/9router"
   cp -r . "$pkgdir/usr/lib/9router/"
 
-  # 2. Remove unnecessary files to reduce size
+  # 2. Remove unnecessary files
   rm -rf "$pkgdir/usr/lib/9router/"{.git,.env.example,*.log}
 
   # 3. Install production dependencies with Bun
   cd "$pkgdir/usr/lib/9router"
   bun install --production
 
-  # 4. Main launcher script with systemd service management
+  # 4. Main launcher script (systemd user service + Plasma integration)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/9router" <<'EOF'
 #!/bin/bash
 # 9Router Launcher - Built with Bun, Optimized for Plasma Desktop
@@ -60,7 +58,6 @@ if [ ! -d "$APP_DIR" ]; then
   rsync -a --exclude='node_modules' --exclude='.next' /usr/lib/9router/ "$APP_DIR/"
   cd "$APP_DIR"
   bun install --production
-  # Create default .env
   cat > "$APP_DIR/.env" <<EOL
 PORT=$PORT
 NODE_ENV=production
@@ -69,17 +66,14 @@ NEXT_PUBLIC_BASE_URL=http://localhost:$PORT
 EOL
 fi
 
-# Create data directory
 mkdir -p "$APP_DIR/data"
 
-# Load config
 if [ -f "$CONFIG_FILE" ]; then
   set -a
   source "$CONFIG_FILE"
   set +a
 fi
 
-# --- Systemd user service installation ---
 install_service() {
   mkdir -p "$USER_SERVICE_DIR"
   cat > "$USER_SERVICE_DIR/$SERVICE_NAME" <<EOL
@@ -106,7 +100,6 @@ EOL
   echo "✅ Systemd user service installed: $SERVICE_NAME"
 }
 
-# --- Command handling ---
 case "$1" in
   start)
     systemctl --user start "$SERVICE_NAME"
@@ -134,7 +127,6 @@ case "$1" in
     echo "🔧 Service enabled to start at login"
     ;;
   *)
-    # Default: check service, start if not running
     if ! systemctl --user is-active --quiet "$SERVICE_NAME"; then
       echo "🚀 Starting 9Router service..."
       install_service
@@ -147,7 +139,7 @@ case "$1" in
 esac
 EOF
 
-  # 5. Advanced Plasma desktop entry
+  # 5. Plasma desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/9router.desktop" <<EOF
 [Desktop Entry]
 Name=9Router
@@ -177,7 +169,7 @@ Exec=konsole -e /usr/bin/9router logs
 Icon=utilities-log
 EOF
 
-  # 6. KRunner shortcut to open dashboard directly
+  # 6. KRunner shortcut
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/9router-krunner.desktop" <<EOF
 [Desktop Entry]
 Name=9Router Dashboard
@@ -190,23 +182,12 @@ Categories=Development;
 OnlyShowIn=KDE;
 EOF
 
-  # 7. Bash completion for 9router command
+  # 7. Bash completion
   install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/9router" <<'EOF'
 _9router() {
   local cmds="start stop restart status logs install"
   COMPREPLY=($(compgen -W "$cmds" -- "${COMP_WORDS[1]}"))
 }
 complete -F _9router 9router
-EOF
-
-  # 8. Add a small wrapper to use bun as the interpreter
-  install -Dm755 /dev/stdin "$pkgdir/usr/lib/9router/start.sh" <<'EOF'
-#!/usr/bin/env bun
-Bun.serve({
-  port: process.env.PORT || 20128,
-  fetch(req) {
-    return new Response("9Router is running with Bun!");
-  },
-});
 EOF
 }
