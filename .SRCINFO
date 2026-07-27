@@ -1,14 +1,14 @@
 pkgbase = degit
 	pkgdesc = Straightforward project scaffolding
-	pkgver = 3.6.3
+	pkgver = 3.6.4
 	pkgrel = 1
 	url = https://github.com/Rich-Harris/degit
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=8
-	noextract = degit-3.6.3.tgz
-	source = http://registry.npmjs.org/degit/-/degit-3.6.3.tgz
-	sha256sums = f1b98192055a26374375bbd000f84d927a55b383f086c259819028e11199f0d4
+	noextract = degit-3.6.4.tgz
+	source = degit-3.6.4.tgz::https://github.com/Rich-Harris/degit/archive/refs/tags/v3.6.4.tar.gz
+	sha256sums = 84df39a2d82a736f07721c28afda4b1dcd7d5d0ea59d6ff18c6390d3aba89b30
 
 pkgname = degit

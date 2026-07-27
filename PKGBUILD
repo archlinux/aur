@@ -1,7 +1,7 @@
 # Maintainer: Ian Emnace <igemnace@gmail.com>
 
 pkgname=degit
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="Straightforward project scaffolding"
 arch=('any')
@@ -9,9 +9,9 @@ url='https://github.com/Rich-Harris/degit'
 license=('MIT')
 depends=('nodejs>=8')
 makedepends=('npm')
-source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+source=("$pkgname-$pkgver.tgz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('f1b98192055a26374375bbd000f84d927a55b383f086c259819028e11199f0d4')
+sha256sums=('84df39a2d82a736f07721c28afda4b1dcd7d5d0ea59d6ff18c6390d3aba89b30')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
