@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
 
 	# Why don't I just use `depends=('mysql')`? Because MariaDB is a conflicting implementation of MySQL, 
-	# and AzerothCore requires the Oracle MySQL ecosystem to be installed. Becuase the dependencies can
+	# and AzerothCore requires the Oracle MySQL ecosystem to be installed. Because the dependencies can
 	# be satisfied by either MariaDB or MySQL, pacman will happily install MariaDB. Furtherm Mysql will 
 	# claim it offers MariaDB and its libraries, so using conflict will cause the installation to fail.
 	# So I have to do this hackery just so I can make sure the _actual_ mysql server and libraries are 
