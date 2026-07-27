@@ -1,15 +1,22 @@
 pkgbase = hulios-git
 	pkgdesc = HULIOS - Rust-based transparent Tor proxy for Linux with full system traffic routing, DNS leak protection, and enhanced privacy
-	pkgver = 1.0.0
+	pkgver = 2.0.0.rc.2.r0.gc7b9ba2
 	pkgrel = 1
 	url = https://github.com/ghaziwali/Hulios
 	arch = x86_64
-	license = GPL
+	arch = aarch64
+	license = GPL3
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
 	depends = tor
-	source = git+https://github.com/ghaziwali/Hulios.git
+	depends = libelf
+	depends = zlib
+	provides = hulios
+	conflicts = hulios
+	source = git+https://github.com/ghaziwali/Hulios.git#branch=main
 	sha256sums = SKIP
 
 pkgname = hulios-git
