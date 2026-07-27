@@ -1,6 +1,6 @@
 pkgbase = aurascan
 	pkgdesc = AI-assisted safety and recovery layer for Arch-family systems
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/crizzler/AuraScan
 	install = aurascan.install
@@ -14,6 +14,7 @@ pkgbase = aurascan
 	depends = python
 	depends = hicolor-icon-theme
 	optdepends = clamav: AV signature scanning through clamscan
+	optdepends = arch-audit: official Arch Security Team vulnerability advisories
 	optdepends = gnupg: explicit deep-static signature verification
 	optdepends = pacman: local package database, upgrade preflight, and vercmp support
 	optdepends = base-devel: makepkg wrapper workflows
@@ -41,7 +42,7 @@ pkgbase = aurascan
 	optdepends = btrfs-progs: Btrfs diagnosis and snapshot recovery
 	optdepends = snapper: snapshot test and confirmed restore workflows
 	optdepends = xfsprogs: read-only XFS recovery diagnostics
-	source = aurascan-0.7.0.tar.gz::https://github.com/crizzler/AuraScan/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = f304a2ae861b39564bb11bac5c581df9d7a2d302c0f055983a92e085c9b1a95f
+	source = aurascan-0.7.1.tar.gz::https://github.com/crizzler/AuraScan/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 5aa1d2512e8a43b1c242e66e5d36abb69177041b8c17612353a4e1c5987a817f
 
 pkgname = aurascan
