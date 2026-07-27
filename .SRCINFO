@@ -1,0 +1,16 @@
+pkgbase = video-archive-converter
+	pkgdesc = Convert video archives to H.264 720p while preserving audio, subtitles and attachments.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BlueSlime07/Video_archive_converter
+	arch = any
+	license = MIT
+	depends = python
+	depends = ffmpeg
+	depends = mkvtoolnix-cli
+	depends = gpac
+	provides = video-archive-converter
+	source = video-archive-converter-1.0.0.tar.gz::https://github.com/BlueSlime07/Video_archive_converter/releases/download/1.0.0/video-archive-converter-1.0.0.tar.gz
+	sha256sums = 7682bc69d79d083e03a99f523dbc2c53101161c9fb09763ea718f7bc3808c418
+
+pkgname = video-archive-converter
