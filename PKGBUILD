@@ -3,8 +3,8 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=26.707.31428
-pkgrel=1
+pkgver=26.721.41059
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -14,8 +14,13 @@ depends=(
   'electron42'
   'openai-codex'
   'python'
+  'libnotify'
   'hicolor-icon-theme'
   'xdg-utils'
+)
+
+optdepends=(
+  'qt6-tools: reliable pet always-on-top behavior on KDE Plasma Wayland'
 )
 
 makedepends=(
@@ -35,9 +40,14 @@ source=(
   "better-sqlite3.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
   "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
+  "kwin-codex-pet-keep-above.js"
   "Codex.desktop"
   "patch-linux-open-targets.mjs"
   "patch-linux-opaque-bg.mjs"
+  "patch-linux-cli-history.mjs"
+  "patch-linux-notification-timeout.mjs"
+  "patch-linux-pet-lifecycle.mjs"
+  "patch-linux-pet-pointer-recovery.mjs"
 )
 
 noextract=(
@@ -46,13 +56,18 @@ noextract=(
   'node-pty.tgz'
 )
 
-sha256sums=('ffdc351a507105d55d7464e3340302c758b8a54b926711c4b15bf373ccb47d64'
+sha256sums=('e2b45056f3d1f8ab90f7f16249bfb5a40d09d0f8099f12ca0d8d7a8fdf9108ce'
             'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-            '8f5d55f92df1d5a29c73fb97e73e35ca4de67cb0ce0ee8ffc8d0b99020a8ab41'
+            '9c0acc866b76554449d3c4ba60892bd2915b088080bf681488e414a1a741f48b'
+            '9af210241b308db2c19071d15e2db76377d1a98a5e9043e13aaf2bed9a81afd5'
             '568228ade14afa0afd43eea6887547b7541e45e8438042367f628c5dae3aa810'
-            'b9303b892b3e0b35333e2cb96052905439105049efc5a8a3706e22a16dc30018'
-            'a181ace049a057654acdd789df60ee0f2b0435a119f8a2c53046bfe6aa4c4cb9')
+            '0792b628e4b80f041d3635037d2622a2dda271968ec90cc00d41fa81d301d636'
+            'a181ace049a057654acdd789df60ee0f2b0435a119f8a2c53046bfe6aa4c4cb9'
+            '1d318827418113522dcd8265023308dd294886015269143a2da4053fde3fe174'
+            '7122048ad6ada7fb06e7c6470bffdaea83322292e8ef90e4b0cd7d14b05e9c1c'
+            '71e95da13466739d2e717c32a08482cdbaef08776bb09925859fc5148a50190a'
+            'abf853e80ede9a92bc35ac620563a7cf5753b37559927f02b24e4aa8b17fc74e')
 
 prepare() {
   cd "${srcdir}"
@@ -89,6 +104,10 @@ prepare() {
 
   node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
   node "${srcdir}/patch-linux-opaque-bg.mjs" app-extracted
+  node "${srcdir}/patch-linux-cli-history.mjs" app-extracted
+  node "${srcdir}/patch-linux-notification-timeout.mjs" app-extracted
+  node "${srcdir}/patch-linux-pet-lifecycle.mjs" app-extracted
+  node "${srcdir}/patch-linux-pet-pointer-recovery.mjs" app-extracted
 
   local bs3_ver npty_ver
   bs3_ver="$(node -p "require('${srcdir}/app-extracted/node_modules/better-sqlite3/package.json').version")"
@@ -185,6 +204,9 @@ package() {
 
   install -Dm755 codex-desktop.sh \
     "${pkgdir}/usr/bin/codex-desktop"
+
+  install -Dm644 kwin-codex-pet-keep-above.js \
+    "${pkgdir}/usr/lib/${pkgname}/kwin-codex-pet-keep-above.js"
 
   local icon_png
   icon_png="$(find icon -maxdepth 1 -type f -name '*512x512*.png' -print -quit)"

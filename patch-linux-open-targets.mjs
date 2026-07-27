@@ -88,8 +88,11 @@ const expectedTargets = ["vscode", "vscodeInsiders", "cursor", "windsurf", "zed"
 
 function findRequireBinding(source, moduleName) {
   const escapedModuleName = moduleName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // The module id may be quoted with a backtick, single, or double quote
+  // depending on how the bundler emitted the require call.
+  const q = "[\"'`]";
   const pattern = new RegExp(
-    String.raw`(?:^|[;,])(?:let |const |var )?([A-Za-z_$][\w$]*)=require\(\`node:${escapedModuleName}\`\)`,
+    `(?:^|[;,])(?:let |const |var )?([A-Za-z_$][\\w$]*)=require\\(${q}node:${escapedModuleName}${q}\\)`,
   );
   return source.match(pattern)?.[1] ?? null;
 }

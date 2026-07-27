@@ -7,6 +7,27 @@ appdir="/usr/lib/openai-codex-desktop"
 electron="${appdir}/codex"
 webview_dir="${appdir}/content/webview"
 user_flags=()
+ozone_flags=(--ozone-platform-hint=auto)
+pet_pointer_recovery_default=0
+
+# Electron cannot request global always-on-top placement through standard
+# Wayland. Plasma users need XWayland for the pet overlay; other desktops keep
+# Electron's native auto-selection unless the fallback is explicitly enabled.
+desktop_id="${XDG_CURRENT_DESKTOP:-${DESKTOP_SESSION:-}}"
+if [[ "${XDG_SESSION_TYPE:-}" == "wayland" || -n "${WAYLAND_DISPLAY:-}" ]]; then
+  if [[ "${CODEX_DESKTOP_NATIVE_WAYLAND:-0}" != "1" ]]; then
+    case "${desktop_id,,}" in
+      *kde*|*plasma*) ozone_flags=(--ozone-platform=x11) ;;
+      *)
+        [[ "${CODEX_DESKTOP_FORCE_XWAYLAND:-0}" == "1" ]] &&
+          ozone_flags=(--ozone-platform=x11)
+        ;;
+    esac
+  fi
+fi
+
+[[ "${ozone_flags[0]}" == "--ozone-platform=x11" ]] &&
+  pet_pointer_recovery_default=1
 
 [[ -x "${electron}" ]] || {
   echo "Missing Electron runtime: ${electron}" >&2
@@ -29,6 +50,9 @@ fi
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
+export CODEX_DESKTOP_QUIT_ON_LAST_WINDOW="${CODEX_DESKTOP_QUIT_ON_LAST_WINDOW:-1}"
+export CODEX_DESKTOP_PET_POINTER_RECOVERY="${CODEX_DESKTOP_PET_POINTER_RECOVERY:-${pet_pointer_recovery_default}}"
+export CODEX_DESKTOP_ISOLATE_NOTIFICATIONS="${CODEX_DESKTOP_ISOLATE_NOTIFICATIONS:-1}"
 webview_cache_version=""
 if [[ -f "${appdir}/resources/app.asar" ]]; then
   webview_cache_version="$(stat -c '%Y-%s' "${appdir}/resources/app.asar" 2>/dev/null || true)"
@@ -47,21 +71,34 @@ if [[ -n "${config_home}" && -n "${webview_cache_version}" ]]; then
   fi
 fi
 
-renderer_url="http://localhost:5175/"
-if [[ -n "${webview_cache_version}" ]]; then
-  renderer_url="http://localhost:5175/?aurWebviewVersion=${webview_cache_version}"
-fi
-export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-${renderer_url}}"
+renderer_query=""
+[[ -n "${webview_cache_version}" ]] &&
+  renderer_query="?aurWebviewVersion=${webview_cache_version}"
 
 http_pid=""
 electron_pid=""
 tmpdir=""
+kwin_script_loaded=0
+kwin_script_name="codex-pet-keep-above-v1"
 
 cleanup() {
-  [[ -n "${electron_pid}" ]] && wait "${electron_pid}" 2>/dev/null || true
+  local exit_status=$?
+
+  trap - EXIT HUP INT TERM
   [[ -n "${http_pid}" ]] && kill "${http_pid}" 2>/dev/null || true
   [[ -n "${http_pid}" ]] && wait "${http_pid}" 2>/dev/null || true
+  if [[ -n "${electron_pid}" ]] && kill -0 "${electron_pid}" 2>/dev/null; then
+    kill -TERM "${electron_pid}" 2>/dev/null || true
+  fi
+  [[ -n "${electron_pid}" ]] && wait "${electron_pid}" 2>/dev/null || true
+  if [[ "${kwin_script_loaded}" == "1" ]]; then
+    /usr/bin/qdbus6 org.kde.KWin /Scripting \
+      org.kde.kwin.Scripting.unloadScript "${kwin_script_name}" \
+      >/dev/null 2>&1 || true
+  fi
   [[ -n "${tmpdir}" ]] && rm -rf "${tmpdir}"
+
+  return "${exit_status}"
 }
 
 forward_signal() {
@@ -69,7 +106,6 @@ forward_signal() {
 
   if [[ -n "${electron_pid}" ]] && kill -0 "${electron_pid}" 2>/dev/null; then
     kill -"${sig}" "${electron_pid}" 2>/dev/null || true
-    wait "${electron_pid}" 2>/dev/null || true
   fi
 
   exit 0
@@ -80,21 +116,58 @@ trap 'forward_signal HUP' HUP
 trap 'forward_signal INT' INT
 trap 'forward_signal TERM' TERM
 
-if [[ -d "${webview_dir}" ]] && find "${webview_dir}" -mindepth 1 -maxdepth 1 -print -quit | grep -q .; then
+start_kwin_pet_keep_above() {
+  local script_path="${appdir}/kwin-codex-pet-keep-above.js"
+  local script_id
+
+  [[ "${CODEX_DESKTOP_PET_POINTER_RECOVERY}" == "1" ]] || return 0
+  [[ "${desktop_id,,}" == *kde* || "${desktop_id,,}" == *plasma* ]] || return 0
+  [[ -x /usr/bin/qdbus6 ]] || return 0
+  [[ -f "${script_path}" ]] || return 0
+
+  script_id="$(
+    /usr/bin/qdbus6 org.kde.KWin /Scripting org.kde.kwin.Scripting.loadScript \
+      "${script_path}" "${kwin_script_name}" 2>/dev/null || true
+  )"
+  [[ "${script_id}" =~ ^[0-9]+$ ]] || return 0
+
+  if /usr/bin/qdbus6 org.kde.KWin "/Scripting/Script${script_id}" \
+    org.kde.kwin.Script.run >/dev/null 2>&1; then
+    kwin_script_loaded=1
+    return 0
+  fi
+
+  /usr/bin/qdbus6 org.kde.KWin /Scripting \
+    org.kde.kwin.Scripting.unloadScript "${kwin_script_name}" \
+    >/dev/null 2>&1 || true
+}
+
+if [[ -z "${ELECTRON_RENDERER_URL:-}" && -d "${webview_dir}" ]] &&
+  find "${webview_dir}" -mindepth 1 -maxdepth 1 -print -quit | grep -q .; then
   tmpdir="$(mktemp -d)"
   ready_file="${tmpdir}/ready"
   fail_file="${tmpdir}/fail"
 
-  python - 5175 "${webview_dir}" "${ready_file}" "${fail_file}" >/dev/null 2>&1 <<'PY' &
+  python - "${webview_dir}" "${ready_file}" "${fail_file}" >/dev/null 2>&1 <<'PY' &
 import http.server
 import os
 import socketserver
 import sys
+import threading
+import time
 
-port = int(sys.argv[1])
-root = sys.argv[2]
-ready_file = sys.argv[3]
-fail_file = sys.argv[4]
+root = sys.argv[1]
+ready_file = sys.argv[2]
+fail_file = sys.argv[3]
+
+parent_pid = os.getppid()
+
+def exit_with_parent():
+    while os.getppid() == parent_pid:
+        time.sleep(0.25)
+    os._exit(0)
+
+threading.Thread(target=exit_with_parent, daemon=True).start()
 
 os.chdir(root)
 
@@ -112,9 +185,9 @@ class TCPServer(socketserver.TCPServer):
     allow_reuse_address = True
 
 try:
-    with TCPServer(("127.0.0.1", port), Handler) as httpd:
+    with TCPServer(("127.0.0.1", 0), Handler) as httpd:
         with open(ready_file, "w") as f:
-            f.write("ok")
+            f.write(str(httpd.server_address[1]))
         httpd.serve_forever()
 except Exception as e:
     with open(fail_file, "w") as f:
@@ -126,7 +199,7 @@ PY
   for _ in {1..50}; do
     [[ -f "${ready_file}" ]] && break
     if [[ -f "${fail_file}" ]]; then
-      echo "Failed to start local webview server on 127.0.0.1:5175" >&2
+      echo "Failed to start local webview server" >&2
       cat "${fail_file}" >&2
       exit 1
     fi
@@ -138,14 +211,23 @@ PY
   done
 
   [[ -f "${ready_file}" ]] || {
-    echo "Timed out waiting for local webview server on 127.0.0.1:5175" >&2
+    echo "Timed out waiting for local webview server" >&2
     exit 1
   }
+
+  bridge_port="$(<"${ready_file}")"
+  [[ "${bridge_port}" =~ ^[0-9]+$ ]] || {
+    echo "Local webview server returned an invalid port: ${bridge_port}" >&2
+    exit 1
+  }
+  export ELECTRON_RENDERER_URL="http://127.0.0.1:${bridge_port}/${renderer_query}"
 fi
+
+start_kwin_pet_keep_above
 
 "${electron}" \
   --enable-sandbox \
-  --ozone-platform-hint=auto \
+  "${ozone_flags[@]}" \
   --class=codex \
   "${user_flags[@]}" \
   "${appdir}/resources/app.asar" \
