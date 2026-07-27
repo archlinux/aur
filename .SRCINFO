@@ -1,6 +1,6 @@
 pkgbase = anodizer
 	pkgdesc = A Rust-native release automation tool
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/tj-smith47/anodizer
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = anodizer
 	depends = glibc
 	conflicts = anodizer
 	provides = anodizer
-	source = https://github.com/tj-smith47/anodizer/archive/refs/tags/v0.25.0.tar.gz
+	source = https://github.com/tj-smith47/anodizer/archive/refs/tags/v0.25.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = anodizer
