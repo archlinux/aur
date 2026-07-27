@@ -3,7 +3,7 @@ pkgname=novelwriter-bin
 _pkgname=novelWriter
 pkgver=26.1.2
 _pyver=3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
 arch=('x86_64')
 url="https://novelwriter.io/"
@@ -17,6 +17,7 @@ depends=(
     'python-pyenchant'
     'python-importlib-metadata'
     'python-pyqt6'
+    'qt6-svg'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_all.deb"
