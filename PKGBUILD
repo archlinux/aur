@@ -7,7 +7,7 @@
 
 pkgname=tuxguitar
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64' 'aarch64')
 url='https://www.tuxguitar.app/'
@@ -64,7 +64,7 @@ package() {
     mkdir -p usr/share/{applications,man/man1,mime/packages,pixmaps}
 
     ln -s /opt/tuxguitar/tuxguitar.sh usr/bin/tuxguitar
-    ln -s /opt/tuxguitar/share/applications/tuxguitar.desktop usr/share/applications/
+    ln -s /opt/tuxguitar/share/applications/*.desktop usr/share/applications/
     ln -s /opt/tuxguitar/share/mime/packages/tuxguitar.xml usr/share/mime/packages/
     ln -s /opt/tuxguitar/share/pixmaps/tuxguitar.png usr/share/pixmaps/
     ln -s /opt/tuxguitar/share/man/man1/tuxguitar.1.gz usr/share/man/man1/tuxguitar.1.gz
