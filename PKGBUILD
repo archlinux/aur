@@ -1,5 +1,4 @@
-# Maintainer: Your Name <your-email@example.com>
-# Contributor: Your Name <your-email@example.com>
+# Maintainer: Melvin Ragusa <admin@ragusa-it.de>
 
 # Binary package repackaged from upstream's official .deb release.
 # To update: bump _upstream_ver + _upstream_tag, run updpkgsums, then makepkg -si.
