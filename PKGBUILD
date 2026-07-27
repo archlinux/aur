@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.5.0
+pkgver=0.5.1
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -36,7 +36,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('dcc2f72e0c5ee057abdac4988982f63d484ab607ee235e6effab9274d108c9c2'
+sha256sums=('2db7fc0523f765d54cde5dcacc12b2fec7f008c4b481e67e8226c7655aa7b927'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,10 +45,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    export HOME="${srcdir}/.electron-gyp"
     {
         export PNPM_LINK_WORKSPACE_PACKAGES=true
         export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
@@ -109,7 +109,7 @@ build() {
     NODE_ENV=production     pnpm exec zx scripts/bundle-openclaw.mjs
     NODE_ENV=production     pnpm exec zx scripts/bundle-openclaw-plugins.mjs
     NODE_ENV=production     pnpm exec zx scripts/bundle-preinstalled-skills.mjs
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${SYSTEM_ELECTRON_VERSION} --config electron-builder.yml"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} -c.electronVersion=${SYSTEM_ELECTRON_VERSION} --config electron-builder.yml"
     local _arch_rem
     local _app_dir=$(_get_app_dir)
     case "${CARCH}" in
