@@ -47,10 +47,14 @@ package() {
     install -Dm644 images/mx-datetime.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-datetime.svg"
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-datetime"
+
+    install -Dm644 "${srcroot}/help"/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
     if [ -f debian/changelog ]; then
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-datetime/changelog.gz"
     fi
-    if [ -d help ]; then
-        cp -r help/* "${pkgdir}/usr/share/doc/mx-datetime/" 2>/dev/null || true
+    if [ -d "${srcroot}/help" ]; then
+        for help_file in "${srcroot}"/help/*.html "${srcroot}"/help/*.jpg "${srcroot}"/help/*.png "${srcroot}"/help/*.css; do
+            [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/mx-datetime/$(basename "$help_file")"
+        done
     fi
 }
