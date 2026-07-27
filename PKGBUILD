@@ -7,7 +7,7 @@
 # release workflow (ticket 14) publishes a `cargo aur` tarball, this file's
 # fields already match cargo-aur's output layout.
 pkgname=voisu-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Cloud-first Linux dictation for Wayland (prebuilt binaries)"
 arch=('x86_64')
@@ -52,7 +52,7 @@ install="$pkgname.install"
 # ring's tree must keep those UPSTREAM names and paths so the cross-references
 # inside ring's own LICENSE manifest resolve once installed.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v$pkgver/voisu-$pkgver-${CARCH}.tar.gz")
-sha256sums=('7a1533788a50a94aeab6f8f0456839ccf51457ffc65294d33635b45b3a324ba4')
+sha256sums=('e665bd6d51d5cf039d3608c52de0f80a64634b8d945461bf946b72b344d11860')
 
 package() {
     install -Dm755 voisu "$pkgdir/usr/bin/voisu"
