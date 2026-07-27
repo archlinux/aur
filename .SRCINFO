@@ -1,6 +1,6 @@
 pkgbase = lunarr
 	pkgdesc = Self-hosted media streaming server and Plex alternative for movies and TV
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/lunarr-app/lunarr-go
 	install = lunarr.install
@@ -10,7 +10,7 @@ pkgbase = lunarr
 	makedepends = npm
 	depends = nodejs>=24
 	depends = ffmpeg
-	source = https://github.com/lunarr-app/lunarr-go/archive/refs/tags/v0.8.0.tar.gz
+	source = https://github.com/lunarr-app/lunarr-go/archive/refs/tags/v0.9.0.tar.gz
 	source = lunarr.service
 	source = lunarr.install
 	source = lunarr.sh
