@@ -1,6 +1,6 @@
 # Maintainer: eslachance <eslachance@users.noreply.github.com>
 pkgname=winmiddle
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Windows-faithful middle-click autoscroll for Linux (Plasma/Wayland)"
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=winmiddle.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1d54f6b2c99ca56309e14640f5d6f220754e276e0eb295e1ffdd02402faf052d')
+sha256sums=('ed39e7b40e75d01a3847b99922bb15dc2ac11cdb61e9f39d6e95267fe2d681b0')
 
 build() {
   cd "$srcdir/winscroll-$pkgver"

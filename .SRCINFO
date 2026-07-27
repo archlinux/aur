@@ -1,6 +1,6 @@
 pkgbase = winmiddle
 	pkgdesc = Windows-faithful middle-click autoscroll for Linux (Plasma/Wayland)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/eslachance/winscroll
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = winmiddle
 	optdepends = python-gobject: AT-SPI scrollable-under-cursor probing
 	optdepends = at-spi2-core: accessibility bus for scroll probing
 	install = winmiddle.install
-	source = winmiddle-0.1.0.tar.gz::https://github.com/eslachance/winscroll/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1d54f6b2c99ca56309e14640f5d6f220754e276e0eb295e1ffdd02402faf052d
+	source = winmiddle-0.2.0.tar.gz::https://github.com/eslachance/winscroll/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ed39e7b40e75d01a3847b99922bb15dc2ac11cdb61e9f39d6e95267fe2d681b0
 
 pkgname = winmiddle
