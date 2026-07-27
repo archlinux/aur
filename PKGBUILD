@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2025-12-10.
+# PKGBUILD last time manually edited: At least on 2026-07-27.
 
 _year='26'
 _fullyear="20${_year}"
@@ -9,7 +9,7 @@ url="https://www.inprop.eu/Home/Downloads"
 _pkgver() {
   # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
   # Use the version of the newest updated file.
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky ${_year}" | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1 | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  wget -q -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky ${_year}" | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1 | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
 }
 
 _pkgname="idos-timetable-data-zsr-sk-20${_year}"
@@ -62,7 +62,7 @@ conflicts=(
 )
 
 _list_sources() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky ${_year}" | sed 's|^.*href="/Home/\(DownloadFile/[^"]*\)".*$|\1|g' | head -n1 | while read _line; do
+  wget -q -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky ${_year}" | sed 's|^.*href="/Home/\(DownloadFile/[^"]*\)".*$|\1|g' | head -n1 | while read _line; do
     echo "$(basename "${_line}")-${_pkgver}.exe::$(dirname "${url}")/${_line}"
   done
 }
