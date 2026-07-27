@@ -1,0 +1,20 @@
+pkgbase = ciliterm-bin
+	pkgdesc = A web-first, daily-driver sci-fi terminal in the spirit of eDEX-UI, with a TRON / ENCOM-style glowing hex globe (inspired by encom-globe).(Prebuilt version.Use system-wide electron)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ciliverse/ciliterm
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron43
+	depends = nodejs
+	depends = python
+	provides = ciliterm=2.0.1
+	conflicts = ciliterm
+	options = !emptydirs
+	options = !strip
+	source = ciliterm-2.0.1.deb::https://github.com/ciliverse/ciliterm/releases/download/v2.0.1/CiliTerm-2.0.1-linux-amd64.deb
+	source = ciliterm.sh
+	sha256sums = ca1f4e1ebf5eadc4e76404002cc2f66b2e19ed17aab8a68a7e97be13d55bce6d
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = ciliterm-bin
