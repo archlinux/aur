@@ -1,6 +1,6 @@
 pkgbase = bounce
 	pkgdesc = A metadata-protecting distributed group chat application
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/bounce-chat/bounce
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = bounce
 	conflicts = bounce
 	conflicts = bounce-bin
 	options = !debug
-	source = bounce::git+https://github.com/bounce-chat/bounce.git#tag=v0.1.0
+	source = bounce::git+https://github.com/bounce-chat/bounce.git#tag=v0.2.0
 	source = bounce-fyne::git+https://github.com/bounce-chat/fyne.git
 	source = bounce-fyne-tools::git+https://github.com/bounce-chat/tools.git
-	sha256sums = 153b0585c94b1b2b979d21854938766d51b1294c28829b7e618607addb336351
+	sha256sums = 77ecaea879decf2b4c5a44dc7a907f969383e8af5b038ef084cca92de7045b93
 	sha256sums = SKIP
 	sha256sums = SKIP
 
