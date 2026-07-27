@@ -1,6 +1,6 @@
 pkgbase = ggml-cuda-git
 	pkgdesc = Tensor library for machine learning (with NVIDIA CUDA optimizations)
-	pkgver = b9905.r8.bec4772f6a
+	pkgver = b10142.r1.88b47a755c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ggml-org/ggml
@@ -15,7 +15,8 @@ pkgbase = ggml-cuda-git
 	depends = gcc-libs
 	depends = glibc
 	depends = nvidia-utils
-	optdepends = nccl: needed for multi-GPU parallelism
+	optdepends = nccl: needed for multi-GPU parallelism (rebuild required)
+	optdepends = rdma-core: RDMA transport for RPC backend (rebuild required)
 	provides = ggml-cuda-git
 	provides = libggml
 	provides = libggml.so

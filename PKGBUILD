@@ -3,7 +3,7 @@
 pkgname=ggml-cuda-git
 _pkgname="${pkgname%-cuda-git}"
 _srcname=llama.cpp
-pkgver=b9905.r8.bec4772f6a
+pkgver=b10142.r1.88b47a755c
 pkgrel=1
 epoch=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
@@ -23,7 +23,8 @@ makedepends=(
   ninja
 )
 optdepends=(
-  'nccl: needed for multi-GPU parallelism'
+  'nccl: needed for multi-GPU parallelism (rebuild required)'
+  'rdma-core: RDMA transport for RPC backend (rebuild required)'
 )
 # Note: This package provides libggml (with CUDA) to support downstream packages
 # like llama.cpp-cuda-git and whisper.cpp-cuda that require CUDA-enabled GGML backends.
@@ -106,7 +107,6 @@ EOF
       -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
       -DGGML_CPU_ALL_VARIANTS=ON
-      -DCMAKE_CUDA_ARCHITECTURES=all-major
     )
   else
     # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
