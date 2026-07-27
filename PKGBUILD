@@ -35,6 +35,25 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
+	# 1. IMMEDIATE FIREWALL: Check for MariaDB components before doing anything else
+	if pacman -Qq | grep -i "mariadb" >/dev/null 2>&1; then
+		echo "======================================================================="
+		echo " ERROR: MariaDB environmental packages detected!"
+		echo "======================================================================="
+		echo " AzerothCore requires Oracle MySQL 8.4 and cannot compile or run alongside"
+		echo " MariaDB packages. Due to an upstream dependency resolution bug with split"
+		echo " packages, your AUR helper accidentally pulled down MariaDB."
+		echo ""
+		echo " To resolve this loop, please manually drop MariaDB and seed the exact"
+		echo " MySQL 8.4 ecosystem onto your machine first:"
+		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
+		echo ""
+		echo " Once those three packages are fully active, re-run 'yay -S azerothcore'"
+		echo " and the build sandbox will succeed immediately without prompts."
+		echo "======================================================================="
+		exit 1
+	fi
+
 	# Apply any patches here, if needed
 
 	# jemalloc is broken in master. AzerothCore is replacing jemalloc, so this is temporary.
@@ -45,24 +64,6 @@ prepare() {
 }
 
 build() {
-
-    # Detect if yay's provider prompt caused mariadb-clients to leak into the host
-    if pacman -Qq | grep -i "mariadb" >/dev/null 2>&1;  then
-        echo "======================================================================="
-        echo " ERROR: MariaDB components detected in the build sandbox!"
-        echo "======================================================================="
-        echo " Due to a dependency sorting limitation in your AUR helper, choosing"
-        echo " the default options at the provider prompt pulls in MariaDB."
-        echo ""
-        echo " To build AzerothCore successfully, you must install the MySQL 8.4"
-        echo " stack first to satisfy the system capabilities natively:"
-        echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
-        echo ""
-        echo " Once installed, re-run 'yay -S azerothcore' and it will bypass"
-        echo " the prompts completely."
-        echo "======================================================================="
-        exit 1
-    fi
 
 	# Detect if being run manually via makepkg or via an AUR helper
 	# Check if the build directory path includes common AUR helper cache folders
