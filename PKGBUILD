@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boxplayer-bin
 _pkgname=BoxPlayer
-pkgver=5.0.7
+pkgver=5.0.9
 _electronversion=40
 pkgrel=1
 pkgdesc="Unified cloud drive management, smart media library, media servers, and high-speed downloads.(Prebuilt version.Use system-wide electron)小白羊网盘 BoxPlayer - 多网盘统一管理 + 智能媒体库 + 媒体服务器 + 高速下载."
@@ -16,7 +16,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-#    'aria2'
     'nodejs'
 )
 makedepends=(
@@ -30,8 +29,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('45c5d4570809363405834175b0d73470ece6b0ead4e4e4f7a4edf2ac0a0d9f23')
-sha256sums_x86_64=('a8e90cdadb96db60984842724c6a729a0d72a96dc02672c704d30ebc12b35c1a')
+sha256sums_aarch64=('ea260116ff693ae742f1e68c618085310e536e5d675cc11d4d25141844598ca5')
+sha256sums_x86_64=('5368c5a0b85fe705e8b7acc7ebe043739dea4dc537839c3de2d40cef330b6def')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -62,14 +61,6 @@ prepare() {
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-#    case "${CARCH}" in
-#        aarch64)
-#            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/arm64/aria2c"
-#            ;;
-#        x86_64)
-#            ln -sf "/usr/bin/aria2c" "${_app_dir}/resources/engine/linux/x64/aria2c"
-#            ;;
-#    esac
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
     cd "${srcdir}/app.asar.unpacked"
