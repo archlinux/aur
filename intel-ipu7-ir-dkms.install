@@ -1,8 +1,17 @@
 _modules=(hm1092 intel-cvs ipu-bridge-patched ov05c10)
-_ver=1.0
+_ver=1.0.2
 
-_dkms_add_install() {
-  local failed=0 built=0
+_dkms_build() {
+  local failed=0 built=0 kernels=0
+  for k in $(ls /usr/lib/modules 2>/dev/null); do
+    [[ -d /usr/lib/modules/$k/build ]] && kernels=$((kernels + 1))
+  done
+  if [[ $kernels -eq 0 ]]; then
+    printf '\n  !! No kernel with headers installed — nothing could be built.\n'
+    printf '     Install the headers for your kernel (e.g. linux-headers) and\n'
+    printf '     reinstall this package.\n\n'
+    return
+  fi
   for m in "${_modules[@]}"; do
     dkms add "$m/$_ver" >/dev/null 2>&1 || true
     for k in $(ls /usr/lib/modules); do
@@ -15,15 +24,14 @@ _dkms_add_install() {
       fi
     done
   done
-  # Do not claim success for something that did not happen. A build that fails
-  # for one kernel leaves the camera dead when you boot that kernel, and saying
-  # nothing about it is how people end up debugging the wrong component.
+  # Never let a partial result read as success. A module that failed for one
+  # kernel leaves the camera dead when that kernel is booted, and saying nothing
+  # is how people end up debugging the wrong component entirely.
   if [[ $built -eq 0 ]]; then
-    printf '\n  !! nothing was built. The camera will not work.\n'
-    printf '     Check that kernel headers are installed for your running kernel.\n\n'
+    printf '\n  !! Nothing was built. The camera will not work.\n\n'
   elif [[ $failed -gt 0 ]]; then
-    printf '\n  !! %d per-kernel build(s) failed — booting those kernels leaves the\n' "$failed"
-    printf '     camera broken. Fix the errors above and reinstall this package.\n\n'
+    printf '\n  !! %d per-kernel build(s) failed. Booting those kernels leaves the\n' "$failed"
+    printf '     camera broken. Fix the errors above and reinstall.\n\n'
   fi
 }
 
@@ -33,55 +41,51 @@ _dkms_remove() {
   done
 }
 
-_notes() {
+post_install() {
+  _dkms_build
   cat <<'EOF'
 
   Intel IPU7 infrared camera support installed.
 
   REBOOT is required. hm1092 leaks module references and cannot be swapped
-  live -- unbind succeeds, the refcount stays above zero, and rmmod reports
+  live: unbind succeeds, the refcount stays above zero, and rmmod reports
   "Module is in use".
 
-  THIS PACKAGE IS NOT SUFFICIENT ON ITS OWN. It provides the sensor, bridge
-  and swnode-graph drivers. You also need Intel's IPU7 ISYS/PSYS drivers,
-  which are not in mainline:
+  THIS IS NOT SUFFICIENT ON ITS OWN. It provides the sensor, bridge and
+  swnode-graph drivers. You also need Intel's IPU7 ISYS/PSYS drivers, which
+  are not in mainline:
 
       intel-ipu7-dkms-git   (AUR)
 
   ** Pin that package. ** Revisions r76 and later append fields to
-  struct ipu7_bus_device and make ipu7_psys_probe() write to one of them. That
-  struct is allocated by the kernel's intel_ipu7, which does not have them, so
-  psys writes past the end of a kernel-owned allocation: /dev/ipu7-psys0 never
-  appears and the RGB camera is gone, silently. See
-  https://github.com/intel/ipu7-drivers/issues/93
+  struct ipu7_bus_device and make psys write to one of them. That struct is
+  allocated by the kernel's intel_ipu7, which does not have them, so psys
+  writes past the end of a kernel-owned allocation: /dev/ipu7-psys0 never
+  appears and the RGB camera is gone, with no error anywhere.
+  See https://github.com/intel/ipu7-drivers/issues/93
 
       # /etc/pacman.conf
       IgnorePkg = intel-ipu7-dkms-git
 
-  Recovery if you are already on r76 or later, and to apply the psys patches
+  If an update has already broken your camera, or to apply the psys patches
   this stack needs:
 
       sudo /usr/share/intel-ipu7-ir-dkms/tools/install-ipu7-r74.sh
 
-  After rebooting, check the whole stack:
+  After rebooting, check everything:
 
       sudo /usr/share/intel-ipu7-ir-dkms/tools/verify.sh
 
-  For infrared face unlock with Howdy, the IR recorder is at
-  /usr/share/intel-ipu7-ir-dkms/howdy/ -- see the README for wiring it up.
-  Note that /dev/videoN numbers shuffle between boots; find-ir-node.sh
-  identifies the right one.
+  For face unlock with Howdy, the IR recorder is in
+  /usr/share/intel-ipu7-ir-dkms/howdy/ — see the README. Note that
+  /dev/videoN numbers shuffle between boots; find-ir-node.sh identifies the
+  right one.
 
 EOF
 }
 
-post_install() {
-  _dkms_add_install
-  _notes
-}
-
 post_upgrade() {
-  _dkms_add_install
+  _dkms_build
   printf '\n  REBOOT to load the rebuilt modules.\n\n'
 }
 

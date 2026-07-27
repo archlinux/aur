@@ -1,19 +1,18 @@
 pkgbase = intel-ipu7-ir-dkms
 	pkgdesc = Infrared camera and face-unlock support for Intel IPU7 laptops (Himax HM1092 behind a Synaptics SVP7500 bridge)
-	pkgver = 1.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/jibsta210/svp7500-camera-fix-pack
 	install = intel-ipu7-ir-dkms.install
 	arch = any
 	license = GPL-2.0-only
 	depends = dkms
-	optdepends = intel-ipu7-dkms-git: the IPU7 ISYS/PSYS vendor drivers — required for the camera to work at all
-	optdepends = howdy: infrared face authentication (this package ships the IR recorder for it)
-	optdepends = python-numpy: required by the Howdy IR recorder
-	optdepends = python-opencv: required by the Howdy IR recorder
+	optdepends = intel-ipu7-dkms-git: the IPU7 ISYS/PSYS vendor drivers — the camera cannot work without them
+	optdepends = howdy: infrared face authentication (this package ships the IR recorder it needs)
 	optdepends = libcamera: to enumerate and test the cameras
-	optdepends = v4l-utils: for media-ctl and v4l2-ctl, used by the verification tooling
-	source = intel-ipu7-ir-dkms-1.0.tar.gz::https://github.com/jibsta210/svp7500-camera-fix-pack/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 687d0d4a1d771d3c7df91bdc9172c7cd73e3e7fc20d7fe3e794e47bee5fc709b
+	optdepends = v4l-utils: media-ctl and v4l2-ctl, used by the verification tooling
+	optdepends = zstd: lets verify.sh read compressed modules to check what was actually built
+	source = intel-ipu7-ir-dkms-1.0.2.tar.gz::https://github.com/jibsta210/svp7500-camera-fix-pack/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = c29ff7d744d36ebc683a82833118a35789c8119b09d591ed82d7e7a07de84074
 
 pkgname = intel-ipu7-ir-dkms
