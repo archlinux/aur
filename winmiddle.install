@@ -3,17 +3,19 @@ post_install() {
 
 winmiddle installed.
 
-  1. First-time session setup (paste-kill, KWin script, mouse udev, enable service):
+  Required once per user session (enables KWin focus script + service):
        winmiddle --setup
-     Or open the settings app:
-       winmiddle-ui
-  2. Log out and back in once (KWin reapplies primary-selection on session start).
-  3. Status / logs:
+  Or open: winmiddle-ui  → Setup
+
+  The daemon also tries to load the KWin script on start, but --setup still
+  handles paste-kill, udev, and enabling the user service.
+
+  Status / logs:
        systemctl --user status winmiddle
        journalctl --user -u winmiddle -f
 
-Settings UI: winmiddle-ui  (app launcher: "winmiddle")
-Config: ~/.config/winmiddle/config.toml
+Settings: winmiddle-ui
+Config:   ~/.config/winmiddle/config.toml
 EOF
 }
 
