@@ -4,8 +4,8 @@
 
 _target=i686-elf
 pkgname=$_target-binutils
-pkgver=2.45
-pkgrel=2
+pkgver=2.47
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
 arch=(i686 x86_64 aarch64)
 url='https://www.gnu.org/software/binutils/'
@@ -13,7 +13,7 @@ license=('GPL')
 depends=(zlib libelf)
 options=(!emptydirs !docs)
 source=(https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
+sha256sums=('154ab23b60070e8f27013c22977f1129425d67d1e8acd6e13010e617811e4cff'
             'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F) # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 _basedir=binutils-$pkgver

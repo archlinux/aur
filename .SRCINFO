@@ -1,7 +1,7 @@
 pkgbase = i686-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the i686-elf target
-	pkgver = 2.45
-	pkgrel = 2
+	pkgver = 2.47
+	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = i686-elf-binutils
 	depends = libelf
 	options = !emptydirs
 	options = !docs
-	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.45.tar.xz
-	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.45.tar.xz.sig
+	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.47.tar.xz
+	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.47.tar.xz.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2
+	sha256sums = 154ab23b60070e8f27013c22977f1129425d67d1e8acd6e13010e617811e4cff
 	sha256sums = SKIP
 
 pkgname = i686-elf-binutils
