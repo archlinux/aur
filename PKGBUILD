@@ -1,7 +1,7 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-hy3')
 pkgver='0.56.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hyprland plugin for i3 like tiling'
 arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'
@@ -22,3 +22,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hy3/LICENSE"
 }
+
