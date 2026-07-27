@@ -48,11 +48,15 @@ package() {
     install -Dm644 formatusb.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/formatusb.svg"
 
     install -dm755 "${pkgdir}/usr/share/doc/formatusb"
+
+    install -Dm644 help/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
     install -Dm644 authors.txt "${pkgdir}/usr/share/doc/formatusb/authors.txt"
     install -Dm644 license.html "${pkgdir}/usr/share/doc/formatusb/license.html"
     gzip -c debian/changelog > "${pkgdir}/usr/share/doc/formatusb/changelog.gz"
-    if [ -d help ]; then
-        cp -r help "${pkgdir}/usr/share/doc/formatusb/" 2>/dev/null || true
+    if [ -d "help" ]; then
+        for help_file in help/*.html help/*.jpg help/*.png help/*.css; do
+            [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/formatusb/help/$(basename "$help_file")"
+        done
     fi
 
     install -Dm644 scripts/cli-shell-utils.bash "${pkgdir}/usr/lib/cli-shell-utils/cli-shell-utils.bash"
