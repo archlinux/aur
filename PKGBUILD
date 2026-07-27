@@ -2,22 +2,49 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 
 pkgname=rawtherapee-git
-pkgver=5.11.r1.g40dccc3fc
-pkgrel=1
+pkgver=5.13.r1.g123b4d7b5
+pkgrel=2
 epoch=1
 pkgdesc="A powerful cross-platform raw image processing program"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-url="https://www.rawtherapee.com/"
+arch=(x86_64 aarch64)
+url="https://github.com/Beep6581/RawTherapee"
 license=(GPL-3.0-or-later)
-depends=(fftw gtk3 glibmm gtkmm3 lcms2 lensfun libcanberra exiv2 libjxl
-         libiptcdata hicolor-icon-theme
-
-         # namcap implicit depends
-         libsigc++ libtiff pangomm gcc-libs expat cairomm librsvg atkmm zlib libpng libjpeg cairo glibc glib2)
-makedepends=(cmake git)
+depends=(
+    atkmm
+    cairo
+    cairomm
+    exiv2
+    expat
+    fftw
+    glib2
+    glibc
+    glibmm
+    gtk3
+    gtkmm3
+    hicolor-icon-theme
+    lcms2
+    lensfun
+    libcanberra
+    libgcc
+    libgomp
+    #libiptcdata
+    libjpeg-turbo
+    libjxl
+    libpng
+    librsvg
+    libsigc++
+    libstdc++
+    libtiff
+    pangomm
+    zlib
+    )
+makedepends=(
+    cmake
+    git
+    libiptcdata
+    )
 provides=(rawtherapee)
 conflicts=(rawtherapee)
-options=(!lto)
 source=("git+https://github.com/Beep6581/RawTherapee.git#branch=dev")
 sha256sums=('SKIP')
 
@@ -27,7 +54,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "RawTherapee" -Wno-dev \
+  cmake -B build -S "RawTherapee" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
