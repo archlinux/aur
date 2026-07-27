@@ -1,7 +1,7 @@
 pkgbase = python-pyhanko
 	pkgdesc = sign and stamp PDF files
-	pkgver = 0.36.1
-	pkgrel = 2
+	pkgver = 0.36.2
+	pkgrel = 1
 	url = https://github.com/MatthiasValvekens/pyhanko
 	arch = any
 	license = MIT
@@ -38,7 +38,7 @@ pkgbase = python-pyhanko
 	depends = python-dateutil
 	depends = python-lxml
 	depends = python-signxml
-	source = git+https://github.com/MatthiasValvekens/pyhanko.git#tag=v0.36.1
-	sha256sums = 5b8775df319fe1d0dd826790fe9e3366603ab07f5ccf5f9cace2fcfd073f170b
+	source = git+https://github.com/MatthiasValvekens/pyhanko.git#tag=v0.36.2
+	sha256sums = c1ed8f2ca9b63bf75894b1265933a77ad35216ad1975f64285eebbeb52d54bd2
 
 pkgname = python-pyhanko
