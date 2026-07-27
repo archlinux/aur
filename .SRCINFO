@@ -1,12 +1,12 @@
 pkgbase = gori
 	pkgdesc = TUI web proxy (MITM) for inspecting, intercepting and replaying HTTP traffic.
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hahwul/gori
 	arch = x86_64
 	license = Apache-2.0
-	source = gori-0.1.4::https://github.com/hahwul/gori/releases/download/v0.1.4/gori-v0.1.4-linux-x86_64
-	source = LICENSE-gori-0.1.4::https://raw.githubusercontent.com/hahwul/gori/refs/tags/v0.1.4/LICENSE
+	source = gori-0.2.0::https://github.com/hahwul/gori/releases/download/v0.2.0/gori-v0.2.0-linux-x86_64
+	source = LICENSE-gori-0.2.0::https://raw.githubusercontent.com/hahwul/gori/refs/tags/v0.2.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 

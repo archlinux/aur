@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=gori
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="TUI web proxy (MITM) for inspecting, intercepting and replaying HTTP traffic."
 arch=('x86_64')
