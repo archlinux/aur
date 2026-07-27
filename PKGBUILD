@@ -1,7 +1,7 @@
 # Maintainer: Adr Ian <S9yN37 at gmail dot com>
 pkgname=subtitletools-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for managing and synchronizing subtitle files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/S9yN37/SubtitleTools"
@@ -26,9 +26,10 @@ package() {
   # Make the main binary executable
   chmod +x "${pkgdir}/opt/SubtitleTools/SubtitleTools"
   
-  # Create symlink in /usr/bin
+  # Create symlinks in /usr/bin (full name + short alias `st`)
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/SubtitleTools/SubtitleTools "${pkgdir}/usr/bin/SubtitleTools"
+  ln -s /opt/SubtitleTools/SubtitleTools "${pkgdir}/usr/bin/st"
   
   # Install LICENSE
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
