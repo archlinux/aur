@@ -1,0 +1,28 @@
+pkgbase = cosmic-applet-colortemp-git
+	pkgdesc = COSMIC panel applet for drm-colortemp: one-click screen color temperature (git)
+	pkgver = 2.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/jjo/drm-colortemp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = drm-colortemp
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = wayland
+	depends = sudo
+	depends = kbd
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = libx11: X11 backend fallback
+	optdepends = libxcb: X11 backend fallback
+	optdepends = libxi: X11 backend fallback
+	provides = cosmic-applet-colortemp=2.0.1.r0.g0000000
+	conflicts = cosmic-applet-colortemp
+	backup = etc/sudoers.d/drm-colortemp-applet
+	source = drm-colortemp::git+https://github.com/jjo/drm-colortemp.git
+	sha256sums = SKIP
+
+pkgname = cosmic-applet-colortemp-git
