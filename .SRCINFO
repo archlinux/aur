@@ -1,7 +1,7 @@
 pkgbase = sdroxide
 	pkgdesc = PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (CAT + USB-audio backend, no SoapySDR)
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dividebysandwich/sdroxide
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,8 @@ pkgbase = sdroxide
 	makedepends = trunk
 	makedepends = wasm-bindgen
 	makedepends = binaryen
+	makedepends = cmake
+	makedepends = clang
 	depends = alsa-lib
 	depends = opus
 	depends = libxkbcommon
@@ -22,6 +24,8 @@ pkgbase = sdroxide
 	conflicts = sdroxide-soapysdr
 	options = !lto
 	source = sdroxide-0.6.0.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v0.6.0.tar.gz
+	source = rade_c-a36161bce0fb37daf3f4602344b095f6817dddb1.tar.gz::https://github.com/freedv/rade_c/archive/a36161bce0fb37daf3f4602344b095f6817dddb1.tar.gz
 	sha256sums = 4dc631106ff3c568263edc6bd533d7fa2dbd8d13a1db761818af0fde642aa529
+	sha256sums = eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd
 
 pkgname = sdroxide

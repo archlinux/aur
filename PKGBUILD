@@ -1,6 +1,6 @@
 pkgname=sdroxide
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (CAT + USB-audio backend, no SoapySDR)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -12,15 +12,30 @@ depends=('alsa-lib' 'opus' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor'
 # rust/rust-wasm build the native binary and the wasm web client; trunk bundles
 # the web client; wasm-bindgen + binaryen(wasm-opt) are trunk's post-processors.
 # (The rustup package provides all of rust/cargo/rust-wasm.)
-makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen')
+# cmake drives the vendored RADE C build, clang supplies the libclang that
+# bindgen loads for its headers; neither is part of base-devel. RADE's own
+# CMake autotools-builds a patched Opus, which needs autoconf/automake/libtool
+# from base-devel.
+makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang')
 # Same /usr/bin/sdroxide as the SoapySDR-enabled build.
 conflicts=('sdroxide-soapysdr')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4dc631106ff3c568263edc6bd533d7fa2dbd8d13a1db761818af0fde642aa529')
+# vendor/rade_c is a git submodule, and GitHub's release tarballs carry no
+# submodule contents, so it is fetched separately and put in place in prepare().
+# Keep in sync with the tag: git rev-parse "v$pkgver:vendor/rade_c"
+_rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz")
+sha256sums=('4dc631106ff3c568263edc6bd533d7fa2dbd8d13a1db761818af0fde642aa529'
+            'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd')
 
 prepare() {
   cd "sdroxide-$pkgver"
+  # Stand in for `git submodule update --init`: crates/sdroxide-rade/build.rs
+  # reads vendor/rade_c straight out of the source tree.
+  rm -rf vendor/rade_c
+  mkdir -p vendor
+  cp -a "$srcdir/rade_c-$_rade_commit" vendor/rade_c
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   cargo fetch --locked --target wasm32-unknown-unknown
