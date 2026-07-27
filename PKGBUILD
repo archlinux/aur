@@ -2,7 +2,7 @@
 # Maintainer: Eric Busch <me@etbus.ch>
 # Contributor: McKay
 pkgname=digitalwatchdog-client
-pkgver=6.1.1.42624
+pkgver=6.1.2.43047
 pkgrel=1
 pkgdesc="DW Spectrum Client"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('binutils')
 replaces=('digitalwatchdog-client-1.2<4.2.0')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://updates.digital-watchdog.com/digitalwatchdog/42624/linux/dwspectrum-client-6.1.1.42624-linux_x64.deb")
-sha512sums_x86_64=('9c1be447b0d2c98cc150b9d5d341224231264fd60ebac2500d845f04884ca5ec73933a0aa701d0d279b0ec49cac99316a5fbdd9325a3acfdc1df7dffb1b0d871')
+source_x86_64=("https://updates.digital-watchdog.com/digitalwatchdog/43047/linux/dwspectrum-client-6.1.2.43047-linux_x64.deb")
+sha512sums_x86_64=('63f06aad09e584a25a6bab914bd493968ad38d81a01087dc418def0a1b9bfe54d5540cf893e3024f08d66d7dabbc6609f94192687bb485af074eb84bdabdff3e')
 
 package(){
 
