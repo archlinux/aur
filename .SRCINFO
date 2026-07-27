@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 32.2.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 14
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = obs-studio-rc
 	depends = glibc
 	depends = jack
 	depends = jansson
-	depends = libajantv2>=17.5.0
+	depends = libajantv2>=18
 	depends = libdatachannel>=0.24.3
 	depends = libfdk-aac
 	depends = libgl
