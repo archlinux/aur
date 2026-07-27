@@ -1,6 +1,6 @@
 pkgbase = driftwm
 	pkgdesc = Trackpad-first infinite canvas Wayland compositor
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/malbiruk/driftwm
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = driftwm
 	optdepends = grim: screenshots
 	optdepends = slurp: region selection for screenshots
 	optdepends = adwaita-fonts: Adwaita Sans SSD title bars matching GTK apps
-	source = driftwm-0.15.0.tar.gz::https://github.com/malbiruk/driftwm/archive/refs/tags/v0.15.0.tar.gz
+	source = driftwm-0.16.0.tar.gz::https://github.com/malbiruk/driftwm/archive/refs/tags/v0.16.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = driftwm
