@@ -3,7 +3,7 @@
 pkgname=hyprland-presenter
 _pkgname=hyprland
 pkgver=0.56.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hyprland with selective layer-shell overlay exclusion from screen capture'
 arch=(x86_64 aarch64)
 url='https://github.com/m01seeev/Hyprland/tree/presenter/omit-capture-poc'
@@ -74,7 +74,7 @@ source=("$_archive.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/
         'README.md')
 sha256sums=('3e24a3b3a989cbb49621cdcd8a50b5ee442384d0f4602834ca55c8f993d0898c'
             '4e8f9d849a5c4f48ebe21b311d9633dff70e12a41dc075665c4d8187f2912ca2'
-            '3cc90fff963f8c43e7440104ac48057a4be9e6bef8fed8d73d444557e8f30b3e')
+            'f67db2fd8c45f3bfd130b35e08098d1c0cc276d84a9da419aac72d5b056eb53e')
 
 prepare() {
 	ln -sf hyprland-source "$_archive"
