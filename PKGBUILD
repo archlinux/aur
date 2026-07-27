@@ -1,5 +1,6 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034
+# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 declare pkgdir
 pkgname="fennel-ls"
 pkgrel=1
@@ -15,11 +16,11 @@ b2sums=('68822a908cc422cb6be28e5461ff11756eb54a50bfbf951b3d1b38d9133f7d3b10629e9
 conflicts=("${pkgname}-git")
 
 build() {
-    cd "${pkgname}-${pkgver}" || exit 1
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}" || exit 1
+    cd "${pkgname}-${pkgver}"
     make install PREFIX="${pkgdir}/usr"
 }
