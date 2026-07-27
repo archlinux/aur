@@ -1,11 +1,10 @@
 pkgbase = meguri-bin
 	pkgdesc = Local video and image browser with thumbnails, search, and playback
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zabuton-app/meguri
 	arch = x86_64
 	license = MIT
-	depends = fuse2
 	provides = meguri
 	conflicts = meguri
 	noextract = Meguri-0.2.6-linux-x86_64.AppImage

@@ -2,12 +2,11 @@
 pkgname=meguri-bin
 _appname=Meguri
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Local video and image browser with thumbnails, search, and playback"
 arch=('x86_64')
 url="https://github.com/zabuton-app/meguri"
 license=('MIT')
-depends=('fuse2')
 options=('!strip')
 provides=('meguri')
 conflicts=('meguri')
@@ -20,15 +19,37 @@ sha256sums=('9d545d97baef2c8dfaea7aa2c8e28985f0a47d5f0186ed3b98edaf4a232feeb4'
 
 prepare() {
   chmod +x "${_appimage}"
-  ./"${_appimage}" --appimage-extract meguri.desktop > /dev/null
-  ./"${_appimage}" --appimage-extract 'usr/share/icons' > /dev/null
-  sed -i 's|^Exec=AppRun|Exec=meguri|' squashfs-root/meguri.desktop
+  # Extract the full AppImage contents and run from real files instead of a
+  # FUSE-mounted squashfs. The FUSE indirection made every read (app.asar,
+  # bundled ffmpeg/ffprobe spawned per seek preview) go through decompression,
+  # causing noticeable runtime sluggishness.
+  rm -rf squashfs-root
+  ./"${_appimage}" --appimage-extract > /dev/null
+  # Rewrite the whole Exec line: the AppImage desktop entry carries
+  # --no-sandbox (AppImages cannot ship a setuid helper), but this package
+  # installs chrome-sandbox setuid, so the sandbox works normally.
+  sed -i 's|^Exec=.*|Exec=meguri %U|' squashfs-root/meguri.desktop
 }
 
 package() {
-  install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a squashfs-root/. "${pkgdir}/opt/${pkgname}/"
+
+  # The squashfs image stores directories as 0700; normalize so non-root
+  # users can read the installed tree (keeps existing execute bits via X).
+  chmod -R u=rwX,go=rX "${pkgdir}/opt/${pkgname}"
+
+  # Chromium's setuid sandbox helper; required when unprivileged user
+  # namespaces are unavailable (AppRun falls back to --no-sandbox otherwise).
+  chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${_appname}.AppImage" "${pkgdir}/usr/bin/meguri"
+  ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/meguri"
+  # Backward-compatibility symlink for anything launching the old AppImage
+  # path directly. AppRun is a plain shell wrapper, so plain launches keep
+  # working (AppImage runtime flags such as --appimage-extract do not).
+  ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
+
   install -Dm644 squashfs-root/meguri.desktop \
     "${pkgdir}/usr/share/applications/meguri.desktop"
   local icon
