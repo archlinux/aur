@@ -1,0 +1,39 @@
+From 2b51f5fb0f467a95ff079dbc93b080626827e835 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Mon, 27 Jul 2026 11:31:52 +0800
+Subject: [PATCH 3/6] cmake: Use system quickjs-ng
+
+---
+ CMakeLists.txt             | 1 +
+ third_party/CMakeLists.txt | 3 +--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6c9ee16..3c1b68c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,6 +38,7 @@ find_package(Threads REQUIRED)
+ 
+ find_package(CEF 149.0.7827.156 REQUIRED)
+ find_package(Eigen3 5.0.1 REQUIRED)
++find_package(qjs REQUIRED) # >= 0.14.0 in deps.json, but version is not supported in extra/quickjs-ng
+ 
+ set(OWE_CXX_COMPILE_OPTIONS
+     -Wall
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index f68bd8d..b995fa2 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -55,8 +55,7 @@ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES
+     vma
+     rstd
+     vvk
+-    wavsen
+-    quickjs)
++    wavsen)
+ 
+ # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
+ # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
+-- 
+2.55.0
+

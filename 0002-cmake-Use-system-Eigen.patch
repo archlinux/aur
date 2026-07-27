@@ -1,0 +1,48 @@
+From 592e3bf06fafab92794c56d96e17eb3e849741d8 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Mon, 27 Jul 2026 11:29:17 +0800
+Subject: [PATCH 2/6] cmake: Use system Eigen3
+
+---
+ CMakeLists.txt             | 1 +
+ third_party/CMakeLists.txt | 6 ------
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e83de12..6c9ee16 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,6 +37,7 @@ find_package(PkgConfig REQUIRED)
+ find_package(Threads REQUIRED)
+ 
+ find_package(CEF 149.0.7827.156 REQUIRED)
++find_package(Eigen3 5.0.1 REQUIRED)
+ 
+ set(OWE_CXX_COMPILE_OPTIONS
+     -Wall
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index 01f5711..f68bd8d 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -50,7 +50,6 @@ set(GLSLANG_TESTS           OFF CACHE INTERNAL "")
+ set(BUILD_TESTING           OFF CACHE INTERNAL "")
+ 
+ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES
+-    eigen
+     spirv_reflect
+     glslang
+     vma
+@@ -59,10 +58,5 @@ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES
+     wavsen
+     quickjs)
+ 
+-# Post-fetch setup for eigen (header-only, source_subdir=cmake-noop).
+-add_library(eigen INTERFACE)
+-add_library(Eigen3::Eigen ALIAS eigen)
+-target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
+-
+ # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
+ # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
+-- 
+2.55.0
+

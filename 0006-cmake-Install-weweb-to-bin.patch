@@ -1,6 +1,6 @@
-From 0aee47771c7ff856081df2b81bf49a1b9904cf18 Mon Sep 17 00:00:00 2001
+From 69832f3142b4f373bc04431ff83bd9ffa29c2200 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Wed, 15 Jul 2026 08:41:24 +0800
+Date: Mon, 27 Jul 2026 11:34:10 +0800
 Subject: [PATCH 6/6] cmake: Install weweb to bin
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 6/6] cmake: Install weweb to bin
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index 90c390e..b385cd0 100644
+index 0802b13..d98081d 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
 @@ -12,11 +12,11 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)

@@ -1,10 +1,10 @@
 *
 !PKGBUILD
 !0001-cmake-Use-system-cef.patch
-!0002-cmake-Use-system-Eigen3.patch
-!0003-cmake-Use-system-argparse.patch
-!0004-cmake-Use-system-quickjs-ng.patch
-!0005-cmake-Use-system-glslang.patch
+!0002-cmake-Use-system-Eigen.patch
+!0003-cmake-Use-system-quickjs-ng.patch
+!0004-cmake-Use-system-glslang.patch
+!0005-cmake-Use-system-VulkanMemoryAllocator.patch
 !0006-cmake-Install-weweb-to-bin.patch
 !.SRCINFO
 !.nvchecker.toml

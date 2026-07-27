@@ -1,0 +1,65 @@
+From cb9c60150b8b02cc97f0a8807f3504d394cd380c Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Mon, 27 Jul 2026 11:33:04 +0800
+Subject: [PATCH 4/6] cmake: Use system glslang
+
+---
+ CMakeLists.txt             | 1 +
+ src/Vulkan/CMakeLists.txt  | 2 +-
+ src/Vulkan/Shader.cpp      | 2 +-
+ third_party/CMakeLists.txt | 1 -
+ 4 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c1b68c..22d7f4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,7 @@ find_package(Threads REQUIRED)
+ find_package(CEF 149.0.7827.156 REQUIRED)
+ find_package(Eigen3 5.0.1 REQUIRED)
+ find_package(qjs REQUIRED) # >= 0.14.0 in deps.json, but version is not supported in extra/quickjs-ng
++find_package(glslang 16.3.0 REQUIRED)
+ 
+ set(OWE_CXX_COMPILE_OPTIONS
+     -Wall
+diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
+index 9eab05e..1c6745d 100644
+--- a/src/Vulkan/CMakeLists.txt
++++ b/src/Vulkan/CMakeLists.txt
+@@ -7,7 +7,7 @@ target_sources(owe-shader-compile
+   PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ShaderCompile.cppm)
+ target_link_libraries(owe-shader-compile
+   PUBLIC rstd::rstd rstd.cppstd owe-types vvk::ffi::vulkan
+-  PRIVATE glslang SPIRV glslang-default-resource-limits spirv-reflect-static)
++  PRIVATE glslang::glslang glslang::SPIRV glslang::glslang-default-resource-limits spirv-reflect-static)
+ target_include_directories(owe-shader-compile
+   PUBLIC  .. ../Scene/Utils/include
+   PRIVATE ../Scene/Utils ../Scene/Utils/include/Utils .)
+diff --git a/src/Vulkan/Shader.cpp b/src/Vulkan/Shader.cpp
+index 0905863..b377d04 100644
+--- a/src/Vulkan/Shader.cpp
++++ b/src/Vulkan/Shader.cpp
+@@ -5,7 +5,7 @@ module;
+ 
+ #include <glslang/Public/ShaderLang.h>
+ #include <glslang/Public/ResourceLimits.h>
+-#include <SPIRV/GlslangToSpv.h>
++#include <glslang/SPIRV/GlslangToSpv.h>
+ 
+ #include "Utils/Sha.hpp"
+ module wescene.shader_compile;
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index b995fa2..dbd7e0f 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -51,7 +51,6 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
+ 
+ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES
+     spirv_reflect
+-    glslang
+     vma
+     rstd
+     vvk
+-- 
+2.55.0
+
