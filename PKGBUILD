@@ -21,7 +21,7 @@ license=('AGPL3')
 # Core execution dependencies
 depends=('libmysqlclient84' 'mysql-clients84' 'boost-libs' 'readline' 'openssl' 'mysql84')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql' 'mysql-clients' 'libmysqlclient')
-makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'mysql-clients84')
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld' 'mysql-clients84')
 provides=('libmysqlclient' 'mysql-clients')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
