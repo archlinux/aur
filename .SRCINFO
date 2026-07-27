@@ -1,6 +1,6 @@
 pkgbase = terax-bin
 	pkgdesc = Open-source ultra-lightweight AI terminal emulator
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/crynta/terax-ai
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = terax-bin
 	conflicts = terax
 	options = !strip
 	options = !debug
-	source = terax-bin-0.8.5.deb::https://github.com/crynta/terax-ai/releases/download/v0.8.5/Terax_0.8.5_amd64.deb
+	source = terax-bin-0.8.6.deb::https://github.com/crynta/terax-ai/releases/download/v0.8.6/Terax_0.8.6_amd64.deb
 	sha256sums = SKIP
 
 pkgname = terax-bin

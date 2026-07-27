@@ -1,7 +1,7 @@
 # Maintainer: crynta <info@terax.app>
 pkgname=terax-bin
 _pkgname=terax
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Open-source ultra-lightweight AI terminal emulator"
 arch=('x86_64')
