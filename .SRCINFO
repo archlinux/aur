@@ -1,0 +1,20 @@
+pkgbase = openomen
+	pkgdesc = Unofficial CLI, driver and daemon for managing HP Victus/OMEN laptops on Linux
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/openomen/openomen
+	install = openomen.install
+	arch = x86_64
+	license = MIT
+	source = openomen-0.3.4::https://github.com/openomen/openomen/releases/download/v0.3.4/openomen
+	source = openomen.bash
+	source = openomen.fish
+	source = openomen.1
+	source = openomen.zh_CN.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openomen
