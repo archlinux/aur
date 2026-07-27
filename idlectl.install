@@ -18,5 +18,14 @@ starts; /etc/idlectl/ is yours and this package never writes there.
 
   idlectl doctor      # what it can see, and who else owns power on this machine
 
+Two things that surprise people, both documented in the README:
+
+  * The agent is PER SESSION and is not enabled by any preset. Without it the daemon
+    holds every sleep action, on purpose: a compositor is running, so somebody could
+    be sitting in front of it and nothing is in a position to say otherwise.
+  * Asking remotely needs a polkit rule. The shipped default requires authentication
+    from anywhere that is not the seat, and every ssh session is "anywhere else", so
+    a relay gets AccessDenied until you grant it .rest -- and never .rest-forced.
+
 EOF
 }
