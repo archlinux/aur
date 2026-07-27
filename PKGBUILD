@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -40,14 +40,12 @@ optdepends=(
     'xfce-polkit: native polkit agent for XFCE'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-# sha256 of the v1.4.0 source tarball - regenerate once the tag is pushed:
-#   updpkgsums  &&  makepkg --printsrcinfo > .SRCINFO
-sha256sums=('d86269e95e51ae4468f03877d26de55600cd60fc8fd73246b5cffad3bb3ccb1a')
+sha256sums=('fd18de07897a333c391704cccfe560a73871298da746da461d3dafd84d6873ed')
 
 build() {
     cd "$pkgname-$pkgver"
 
-    # Strip GCC LTO from CFLAGS — GCC LTO bytecode is incompatible with
+    # Strip GCC LTO from CFLAGS - GCC LTO bytecode is incompatible with
     # Rust's linkers (musl self-contained and rust-lld) and causes undefined
     # references in native C/asm libraries (ring, libsqlite3-sys).
     # Rust applies its own LTO via [profile.release] lto = true.
@@ -55,7 +53,7 @@ build() {
     export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
 
     # Remap absolute source paths embedded by panic!/unwrap/tracing to
-    # relative prefixes — prevents $srcdir and $HOME leaking into binaries.
+    # relative prefixes - prevents $srcdir and $HOME leaking into binaries.
     _remap="--remap-path-prefix=$srcdir=src: --remap-path-prefix=$HOME/.cargo/registry/src/=registry: --remap-path-prefix=$HOME/.rustup/toolchains/=toolchain:"
     export RUSTFLAGS="${RUSTFLAGS:-} ${_remap}"
 
