@@ -73,12 +73,14 @@ build() {
 	# Clean build sandbox creation using the native, modern CMake wrapper
     # Fixed the installation target directories to proper Linux standards
 	CC=clang CXX=clang++ cmake -B build -S "${_pkgname}" \
+	-DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/share/azerothcore \
     -DCONF_DIR=/etc/azerothcore \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
-	-DWITH_WARNINGS=all \
-	-DTOOLS_BUILD=all \
+	-DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
+	-DWITH_WARNINGS=1 \
+	-DTOOLS=1 \
     -DSCRIPTS=static \
 	-DMODULES=static \
 	-DMYSQL_INCLUDE_DIR=/usr/include/mysql \
