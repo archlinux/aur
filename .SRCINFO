@@ -1,6 +1,6 @@
 pkgbase = frame-bin
 	pkgdesc = FFmpeg GUI media conversion utility (binary release)
-	pkgver = 0.31.1
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/66HEX/frame
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = frame-bin
 	depends = ffmpeg
 	provides = frame
 	conflicts = frame
-	source = frame-bin-0.31.1.tar.gz::https://github.com/66HEX/frame/releases/download/0.31.1/frame-linux-x86_64.tar.gz
-	sha256sums = 91fcda8513f5d3a574ab511b69192e96ec236e1effa79065d1f7fcc8b81d92b5
+	source = frame-bin-0.32.0.tar.gz::https://github.com/66HEX/frame/releases/download/0.32.0/frame-linux-x86_64.tar.gz
+	sha256sums = a7ea614456b184cfbceaf841f697e1bff313e6f774fc539b8aa007115cf7bc55
 
 pkgname = frame-bin
