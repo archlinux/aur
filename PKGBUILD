@@ -1,16 +1,33 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
-license=('GPL3')
-depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
-makedepends=('cargo')
+license=('GPL-3.0-or-later')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'fontconfig'        # Required by the GUI for system font discovery
+    'libxkbcommon'      # Required by the GUI for keyboard handling (especially on Wayland)
+    'vulkan-icd-loader' # Required by the GUI to load Vulkan drivers for rendering
+)
+makedepends=('cargo' 'pkgconf' 'git')  # git is needed as long as libdav > 0.10.3 is not released
+# Optional dependencies for the GUI and specific features
+optdepends=(
+    'vulkan-driver: Required by the GUI for hardware-accelerated rendering'
+    'wayland: Required by the GUI for Wayland session support'
+    'libx11: Required by the GUI for X11 session support'
+    'libxcursor: Required by the GUI for X11 cursor support'
+    'libxi: Required by the GUI for X11 input devices'
+    'libxrandr: Required by the GUI for X11 monitor layout support'
+    'xdg-desktop-portal: Required by the GUI for the file picker (export/import)'
+)
+
 options=('!lto' '!strip' '!debug')
-source=("cfait-source-v0.5.8.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.8/cfait-source-v0.5.8.tar.gz")
-sha256sums=('2cdbb1202027eb0e6aab5862ba061f60fb0beec1649d95c534ba56c89c8e076a')
+source=("cfait-source-v0.5.9.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.9/cfait-source-v0.5.9.tar.gz")
+sha256sums=('74d216b34deb961081790adbe2d5a0475e11c0adc56d6b567e8c5bc7c7b6786d')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
@@ -21,6 +38,8 @@ build() {
   # Skip compiling the problematic fallback RNG.
   # Linux's native getrandom() is used instead.
   export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
+  # Build both TUI and GUI
   cargo build --release --features gui
 }
 
@@ -28,7 +47,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm755 "$srcdir/target/release/cfait" "$pkgdir/usr/bin/cfait"
-  install -Dm755 "$srcdir/target/release/gui" "$pkgdir/usr/bin/cfait-gui"
+  install -Dm755 "$srcdir/target/release/cfait-gui" "$pkgdir/usr/bin/cfait-gui"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
