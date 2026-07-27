@@ -57,6 +57,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  stack config set resolver lts-23.28 # ghc-9.8.4
   yq -i --yaml-output '. + {
     "allow-newer": true,
     "allow-newer-deps": ["pandoc-crossref"],
