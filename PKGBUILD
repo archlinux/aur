@@ -1,4 +1,4 @@
-_FORCE_ts=20260615030127
+_FORCE_ts=20260727071945
 # Maintainer: <your name> <your email>
 
 # Ensure UTF-8 locale for files with non-ASCII names during packaging.
@@ -9,7 +9,7 @@ pkgname=layaair-ide
 pkgver=3.4.0
 _upstream_ver=3.4.0
 _url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.0.AppImage
-pkgrel=3
+pkgrel=6
 pkgdesc='LayaAir IDE (repacked from official AppImage)'
 arch=('x86_64')
 url='https://layaair.com/'
@@ -76,7 +76,7 @@ package() {
   cd "$srcdir"
 
   install -d "$pkgdir/opt/layaair-ide"
-  cp -a squashfs-root/. "$pkgdir/opt/layaair-ide/"
+  cp -a --no-preserve=ownership squashfs-root/. "$pkgdir/opt/layaair-ide/"
   chmod -R a+rX "$pkgdir/opt/layaair-ide"
   if [[ -f "$pkgdir/opt/layaair-ide/AppRun" ]]; then
     chmod 755 "$pkgdir/opt/layaair-ide/AppRun"
@@ -84,6 +84,26 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/layaair-ide" <<'EOF_WRAPPER'
 #!/bin/sh
+
+# Electron 39 can render a black window on native Wayland with hybrid
+# Intel/NVIDIA graphics. Prefer XWayland there, while allowing callers to
+# select an Ozone backend explicitly.
+if [ "${XDG_SESSION_TYPE:-}" = 'wayland' ] && [ -n "${DISPLAY:-}" ]; then
+  has_ozone_platform=false
+  for arg in "$@"; do
+    case "$arg" in
+      --ozone-platform|--ozone-platform=*)
+        has_ozone_platform=true
+        break
+        ;;
+    esac
+  done
+
+  if [ "$has_ozone_platform" = false ]; then
+    set -- --ozone-platform=x11 "$@"
+  fi
+fi
+
 exec /opt/layaair-ide/AppRun "$@"
 EOF_WRAPPER
 
