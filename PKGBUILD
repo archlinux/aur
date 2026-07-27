@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.677
+pkgver=8.3.678
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -13,10 +13,18 @@ depends=(
    'glibc'
    'tcl'
    'tk'
-   'libx11'
    'zlib'
    'python'
    'bash'
+   'libsm'
+   'libice'
+   'libx11'
+   'libxi'
+   'libxmu'
+   'libxext'
+   'fontconfig'
+   'freetype2'
+   'libstdc++'
 )
 makedepends=(
    'git'
@@ -34,7 +42,7 @@ optdepends=(
 
 source=("${pkgname}::git+${_git_url}#tag=${pkgver}")
 
-b2sums=('dbe9c4ced11c3085499630e3b0ee370bcd608b3ea263f9aa784d02b63da62297f8e9e8725e0ac5acf6032225054d41d73fcede38841959de2969c161ea1a6c98')
+b2sums=('26cbf913bffff3993ceb803f21eff7f0b9e5a37569b591ad4144ba4e2ace3e8df9f0f1cb676e4fb0bd475fee5b2042af967729625c112c7764434a5d8d3875be')
 
 options=()
 
