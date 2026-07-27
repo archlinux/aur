@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/pyrofling"
-  git submodule update --init --recursive
+  git submodule update --init --recursive --jobs 8 --depth 1
 }
 
 build() {
