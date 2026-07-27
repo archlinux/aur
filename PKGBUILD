@@ -1,5 +1,5 @@
-# shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 pkgname=wleave
 pkgver=0.7.1
 pkgrel=2
@@ -14,7 +14,7 @@ license=("MIT")
 conflicts=("wleave-git")
 
 prepare() {
-    cd "$pkgname" || exit 1
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo fetch --locked
@@ -24,7 +24,7 @@ build() {
     scdoc < "${pkgname}/man/wleave.1.scd" | gzip > "${pkgname}/wleave.1.gz"
     scdoc < "${pkgname}/man/wleave.5.scd" | gzip > "${pkgname}/wleave.5.gz"
 
-    cd "${pkgname}" || exit 1
+    cd "${pkgname}"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
