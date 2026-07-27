@@ -1,0 +1,7 @@
+/src/
+/pkg/
+*.tar.gz
+*.pkg.tar.zst
+*.log
+SonicTree-*-x86_64.AppImage
+LICENSE
