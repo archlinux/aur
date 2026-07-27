@@ -1,18 +1,22 @@
 # Maintainer: theesfeld
-# f00tils — pure assembly coreutils replacement (binary package)
+# f00tils — freestanding ASM multicall (coreutils+grep+findutils+diffutils)
+#
+# If upgrade fails with "exists in filesystem" on f00-grep / /usr/lib/f00/bin/*:
+#   sudo scripts/arch-clean-unowned-f00.sh
+#   # or: pacman -S f00 --overwrite '/*'
+# Those orphans come from pre-0.16.6 packages (coreutils-only links) mixed with
+# a root install.sh into /usr. Never mix install.sh → /usr with the AUR package.
 pkgname=f00
-pkgver=0.16.4
+pkgver=0.16.6
 pkgrel=1
-pkgdesc="f00tils — pure assembly coreutils replacement (multicall, freestanding)"
+pkgdesc="f00tils — freestanding ASM multicall (coreutils+grep+findutils+diffutils)"
 arch=('x86_64')
 url="https://f00.sh"
 license=('MIT')
 depends=()
-provides=('f00')
-conflicts=('f00')
 options=('!strip')
-source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.16.4-linux-x86_64.tar.gz")
-sha256sums=('9325ddfaa5356cb38f55a68e643c1b7ae37ff0d7e012948114268be8c099fb31')
+source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.16.6-linux-x86_64.tar.gz")
+sha256sums=('5e5a389385395b2585670a737be17cd7ed95c644c88e10f1cc9ebaa4f1ac0e89')
 
 package() {
   local root
