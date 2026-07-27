@@ -1,0 +1,86 @@
+.\" -*- mode: nroff -*-
+.TH MIMO-VOICE 1 "2026-07-03" "mimo-voice 0.5.0" "用户命令"
+.SH NAME
+mimo-voice \- MiMo TTS 快速音色切换工具
+.SH 概要
+.B mimo-voice
+.RI [ 选项 ]
+.RI [ 音色名 ]
+.SH 描述
+.B mimo-voice
+是小米 MiMo TTS speech-dispatcher 模块的命令行音色切换工具。
+读取并修改配置文件中的
+.I MIMO_VOICE
+设置，然后重启 speech-dispatcher 使配置生效。
+.PP
+配置文件查找顺序：
+.RS 4
+.I ~/.config/speech-dispatcher/mimo-tts.env
+（用户级，优先）
+.RE
+.RS 4
+.I /etc/speech-dispatcher/mimo-tts.env
+（系统级，兜底）
+.RE
+.SH 选项
+.TP
+.BR \-l ", " \-\-list
+列出所有可用音色及描述。
+.TP
+.BR \-s " 名称, " \-\-set " 名称"
+切换到指定音色。
+.TP
+.BR \-t ", " \-\-test
+使用当前音色播放测试语音。
+.TP
+.BR \-c ", " \-\-current
+显示当前音色名称。
+.TP
+.BR \-h ", " \-\-help
+显示帮助信息。
+.SH 音色列表
+.SS 中文音色
+.TS
+l l.
+mimo_default	默认女声
+冰糖	甜美女声
+茉莉	温柔女声
+苏打	活力男声
+白桦	沉稳男声
+.TE
+.SS 英文音色
+.TS
+l l.
+Mia	女声
+Chloe	女声
+Milo	男声
+Dean	男声
+.TE
+.SH 示例
+.PP
+列出音色：
+.RS 4
+.B mimo-voice \-\-list
+.RE
+.PP
+切换到冰糖：
+.RS 4
+.B mimo-voice \-\-set 冰糖
+.RE
+.PP
+简写形式：
+.RS 4
+.B mimo-voice 冰糖
+.RE
+.SH 文件
+.TP
+.I ~/.config/speech-dispatcher/mimo-tts.env
+用户配置文件（优先）。
+.TP
+.I /etc/speech-dispatcher/mimo-tts.env
+系统配置文件（兜底）。
+.SH 参见
+.BR spd-say (1),
+.BR speech-dispatcher (1)
+.SH 作者
+jo

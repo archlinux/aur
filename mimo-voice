@@ -1,0 +1,159 @@
+#!/bin/bash
+# Quick voice switcher for MiMo TTS
+
+# ── i18n ────────────────────────────────────────────────────────
+_is_zh() { [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; }
+
+if _is_zh; then
+    _T_NO_CFG="错误: 未找到配置文件"
+    _T_CREATE="请先创建"
+    _T_VOICES="可用音色:"
+    _T_CURRENT="当前"
+    _T_SWITCHED="已切换到:"
+    _T_UNKNOWN="错误: 未知音色"
+    _T_RUN_LIST="运行 mimo-voice --list 查看可用音色"
+    _T_TESTING="测试当前音色:"
+    _T_HELLO="你好，我是"
+    _T_USAGE="用法: mimo-voice [选项] [音色名]"
+    _T_OPT_LIST="列出可用音色"
+    _T_OPT_SET="切换到指定音色"
+    _T_OPT_TEST="测试当前音色"
+    _T_OPT_CUR="显示当前音色"
+    _T_OPT_HELP="显示帮助"
+    _T_EXAMPLE="示例"
+else
+    _T_NO_CFG="Error: config file not found"
+    _T_CREATE="Please create"
+    _T_VOICES="Available voices:"
+    _T_CURRENT="(current)"
+    _T_SWITCHED="Switched to:"
+    _T_UNKNOWN="Error: unknown voice"
+    _T_RUN_LIST="Run mimo-voice --list to see available voices"
+    _T_TESTING="Testing current voice:"
+    _T_HELLO="Hello, I'm "
+    _T_USAGE="Usage: mimo-voice [options] [voice-name]"
+    _T_OPT_LIST="List available voices"
+    _T_OPT_SET="Switch to specified voice"
+    _T_OPT_TEST="Test current voice"
+    _T_OPT_CUR="Show current voice"
+    _T_OPT_HELP="Show help"
+    _T_EXAMPLE="Examples"
+fi
+# ── end i18n ────────────────────────────────────────────────────
+
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/speech-dispatcher/mimo-tts.env"
+SYSCONF="/etc/speech-dispatcher/mimo-tts.env"
+
+if [ -f "$CONFIG" ]; then
+    CONF="$CONFIG"
+elif [ -f "$SYSCONF" ]; then
+    CONF="$SYSCONF"
+else
+    echo "$_T_NO_CFG"
+    echo "$_T_CREATE $CONFIG"
+    exit 1
+fi
+
+declare -A VOICES=(
+    ["mimo_default"]="default female (zh)"
+    ["冰糖"]="sweet female (zh)"
+    ["茉莉"]="gentle female (zh)"
+    ["苏打"]="lively male (zh)"
+    ["白桦"]="calm male (zh)"
+    ["Mia"]="Female (en)"
+    ["Chloe"]="Female (en)"
+    ["Milo"]="Male (en)"
+    ["Dean"]="Male (en)"
+)
+
+# Localized voice descriptions (zh)
+if _is_zh; then
+    VOICES=(
+        ["mimo_default"]="默认女声 (zh)"
+        ["冰糖"]="甜美女声 (zh)"
+        ["茉莉"]="温柔女声 (zh)"
+        ["苏打"]="活力男声 (zh)"
+        ["白桦"]="沉稳男声 (zh)"
+        ["Mia"]="Female (en)"
+        ["Chloe"]="Female (en)"
+        ["Milo"]="Male (en)"
+        ["Dean"]="Male (en)"
+    )
+fi
+
+get_current() {
+    grep "^MIMO_VOICE=" "$CONF" | cut -d= -f2 | tr -d '"' | tr -d "'"
+}
+
+list_voices() {
+    current=$(get_current)
+    echo "$_T_VOICES"
+    echo "─────────────────────────────────"
+    for voice in mimo_default 冰糖 茉莉 苏打 白桦 Mia Chloe Milo Dean; do
+        desc="${VOICES[$voice]}"
+        if [ "$voice" = "$current" ]; then
+            printf "  ▶ %-14s %s (%s)\n" "$voice" "$desc" "$_T_CURRENT"
+        else
+            printf "    %-14s %s\n" "$voice" "$desc"
+        fi
+    done
+}
+
+set_voice() {
+    voice="$1"
+    if [ -z "${VOICES[$voice]}" ]; then
+        echo "$_T_UNKNOWN '$voice'"
+        echo "$_T_RUN_LIST"
+        exit 1
+    fi
+
+    if [ -w "$CONF" ]; then
+        if grep -q "^MIMO_VOICE=" "$CONF"; then
+            sed -i "s/^MIMO_VOICE=.*/MIMO_VOICE=$voice/" "$CONF"
+        else
+            echo "MIMO_VOICE=$voice" >> "$CONF"
+        fi
+    else
+        if grep -q "^MIMO_VOICE=" "$CONF"; then
+            sudo sed -i "s/^MIMO_VOICE=.*/MIMO_VOICE=$voice/" "$CONF"
+        else
+            echo "MIMO_VOICE=$voice" | sudo tee -a "$CONF" > /dev/null
+        fi
+    fi
+
+    systemctl --user restart speech-dispatcher.socket 2>/dev/null
+    sleep 0.5
+
+    echo "$_T_SWITCHED $voice (${VOICES[$voice]})"
+}
+
+test_voice() {
+    voice=$(get_current)
+    echo "$_T_TESTING $voice"
+    spd-say -o mimo "${_T_HELLO}${voice}"
+}
+
+usage() {
+    echo "$_T_USAGE"
+    echo ""
+    echo "  -l, --list      $_T_OPT_LIST"
+    echo "  -s, --set NAME  $_T_OPT_SET"
+    echo "  -t, --test      $_T_OPT_TEST"
+    echo "  -c, --current   $_T_OPT_CUR"
+    echo "  -h, --help      $_T_OPT_HELP"
+    echo ""
+    echo "$_T_EXAMPLE:"
+    echo "  mimo-voice --list"
+    echo "  mimo-voice --set 冰糖"
+    echo "  mimo-voice 冰糖"
+}
+
+case "${1:-}" in
+    -l|--list)   list_voices ;;
+    -s|--set)    set_voice "$2" ;;
+    -t|--test)   test_voice ;;
+    -c|--current) get_current ;;
+    -h|--help)   usage ;;
+    "")          list_voices ;;
+    *)           set_voice "$1" ;;
+esac

@@ -1,0 +1,86 @@
+.\" -*- mode: nroff -*-
+.TH MIMO-VOICE 1 "2026-07-03" "mimo-voice 0.5.0" "User Commands"
+.SH NAME
+mimo-voice \- quick voice switcher for MiMo TTS
+.SH SYNOPSIS
+.B mimo-voice
+.RI [ options ]
+.RI [ voice-name ]
+.SH DESCRIPTION
+.B mimo-voice
+is a command-line tool for switching voices of the Xiaomi MiMo TTS
+speech-dispatcher module. It reads and writes the
+.I MIMO_VOICE
+setting in the config file and restarts speech-dispatcher to apply changes.
+.PP
+Config file lookup order:
+.RS 4
+.I ~/.config/speech-dispatcher/mimo-tts.env
+(user, preferred)
+.RE
+.RS 4
+.I /etc/speech-dispatcher/mimo-tts.env
+(system fallback)
+.RE
+.SH OPTIONS
+.TP
+.BR \-l ", " \-\-list
+List all available voices with descriptions.
+.TP
+.BR \-s " NAME, " \-\-set " NAME"
+Switch to the specified voice.
+.TP
+.BR \-t ", " \-\-test
+Speak a test phrase using the current voice.
+.TP
+.BR \-c ", " \-\-current
+Print the current voice name.
+.TP
+.BR \-h ", " \-\-help
+Show usage information.
+.SH VOICES
+.SS Chinese
+.TS
+l l.
+mimo_default	Default female
+冰糖	Sweet female
+茉莉	Gentle female
+苏打	Lively male
+白桦	Calm male
+.TE
+.SS English
+.TS
+l l.
+Mia	Female
+Chloe	Female
+Milo	Male
+Dean	Male
+.TE
+.SH EXAMPLES
+.PP
+List voices:
+.RS 4
+.B mimo-voice \-\-list
+.RE
+.PP
+Switch to 冰糖:
+.RS 4
+.B mimo-voice \-\-set 冰糖
+.RE
+.PP
+Short form:
+.RS 4
+.B mimo-voice 冰糖
+.RE
+.SH FILES
+.TP
+.I ~/.config/speech-dispatcher/mimo-tts.env
+User config (preferred).
+.TP
+.I /etc/speech-dispatcher/mimo-tts.env
+System config (fallback).
+.SH SEE ALSO
+.BR spd-say (1),
+.BR speech-dispatcher (1)
+.SH AUTHORS
+Written by jo.
