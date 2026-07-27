@@ -1,0 +1,15 @@
+pkgbase = wtfis-cli
+	pkgdesc = Find projects fast from your terminal
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/prophesourvolodymyr/WTFIS-CLI
+	arch = x86_64
+	license = WTFPL
+	depends = glibc
+	makedepends = rust
+	optdepends = bash: Bash shell integration
+	optdepends = zsh: Zsh shell integration
+	source = wtfis-cli-1.0.1.tar.gz::https://github.com/prophesourvolodymyr/WTFIS-CLI/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = f175d9f022ac98bcb89242579dac17f9b14e867a8cc5ba862bd6957f4330ee42
+
+pkgname = wtfis-cli
