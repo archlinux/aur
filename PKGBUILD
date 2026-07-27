@@ -1,5 +1,5 @@
 # Maintainer: Micheal <micheal12111@proton.me>
-pkgname=duh
+pkgname=duhh
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="The RAM tool with personality - sassy quotes and beautiful stats for Arch"

@@ -1,4 +1,4 @@
-pkgbase = duh
+pkgbase = duhh
 	pkgdesc = The RAM tool with personality - sassy quotes and beautiful stats for Arch
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = duh
 	makedepends = cargo
 	makedepends = rust
 	depends = glibc
-	source = duh-0.1.0.tar.gz::https://github.com/duhcli/duh/archive/v0.1.0.tar.gz
+	source = duhh-0.1.0.tar.gz::https://github.com/duhcli/duh/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = duh
+pkgname = duhh
