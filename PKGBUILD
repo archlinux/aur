@@ -1,7 +1,7 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.5.9.r0.g65c7601
+pkgver=0.6.1.r0.g8328268
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -114,8 +114,6 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/music-assistant-companion.png"
     install -Dm644 app-icon.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/music-assistant-companion.png"
-    install -Dm644 src-tauri/icons/app-icon.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/music-assistant-companion.svg"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
