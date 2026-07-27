@@ -1,7 +1,7 @@
 pkgbase = mangowm-git
 	pkgdesc = A Wayland compositor with smooth animation
 	pkgver = 1b6e01d7
-	pkgrel = 1.5
+	pkgrel = 1.6
 	url = https://github.com/mangowm/mango
 	arch = x86_64
 	license = GPL-3.0

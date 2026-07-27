@@ -2,7 +2,7 @@
 
 pkgname=mangowm-git
 pkgver=1b6e01d7
-pkgrel=1.5
+pkgrel=1.6
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/mangowm/mango"
 arch=("x86_64")
@@ -38,7 +38,7 @@ options=('!strip' '!lto')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'}
 }
 
 prepare() {
