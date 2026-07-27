@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OpenAI Codex (Codex++)
+Comment=OpenAI Codex desktop app with Codex++ injection
+Exec=/usr/bin/codex-plus-plus run %U
+Icon=openai-codex-desktop
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+MimeType=x-scheme-handler/codex;
+StartupNotify=true
+StartupWMClass=codex

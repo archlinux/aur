@@ -1,7 +1,7 @@
 pkgbase = codex-plus-plus
-	pkgdesc = Codex++ auto-injector bridge for openai-codex-desktop
+	pkgdesc = Codex++ manual injection bridge for openai-codex-desktop
 	pkgver = 1.2.41
-	pkgrel = 2
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/BigPizzaV3/CodexPlusPlus
 	install = codex-plus-plus.install
@@ -19,11 +19,13 @@ pkgbase = codex-plus-plus
 	source = plugin-auth-unlocked.js
 	source = codex-plus-plus-linux-port-fallback.patch
 	source = 90-codex-plus-plus-reapply.hook
+	source = codex-plus-plus.desktop
 	sha256sums = 831326ed17dbfd9f97c0f04a0a5494f4b7b619d09b97483fca41b3754f938141
-	sha256sums = 0f45cd59ba6d0964d783cc37fc185aeaaa50cc5bdef8a027a6ca2e0e82c03619
+	sha256sums = 417e7417a00b0a4bca6febe23e0549a91c597856b7b190a8b8492abdeb5075df
 	sha256sums = 2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661
 	sha256sums = 4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e
 	sha256sums = 29ce576c8bf9fdc9c0082c7380f7b0d3aaec630d835aa981ab4ac888d1251ed1
 	sha256sums = 187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9
+	sha256sums = edcfffcf75f9aad5f4c4a7daa747d67e6e0712b44be52d1f38f603468bb3a86f
 
 pkgname = codex-plus-plus

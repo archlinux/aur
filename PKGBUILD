@@ -2,9 +2,9 @@
 
 pkgname=codex-plus-plus
 pkgver=1.2.41
-pkgrel=2
+pkgrel=5
 epoch=1
-pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
+pkgdesc='Codex++ manual injection bridge for openai-codex-desktop'
 arch=('x86_64')
 url='https://github.com/BigPizzaV3/CodexPlusPlus'
 license=('MIT')
@@ -26,14 +26,16 @@ source=(
   'plugin-auth-unlocked.js'
   "${pkgname}-linux-port-fallback.patch"
   '90-codex-plus-plus-reapply.hook'
+  'codex-plus-plus.desktop'
 )
 sha256sums=(
   '831326ed17dbfd9f97c0f04a0a5494f4b7b619d09b97483fca41b3754f938141'
-  '0f45cd59ba6d0964d783cc37fc185aeaaa50cc5bdef8a027a6ca2e0e82c03619'
+  '417e7417a00b0a4bca6febe23e0549a91c597856b7b190a8b8492abdeb5075df'
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
   '29ce576c8bf9fdc9c0082c7380f7b0d3aaec630d835aa981ab4ac888d1251ed1'
   '187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9'
+  'edcfffcf75f9aad5f4c4a7daa747d67e6e0712b44be52d1f38f603468bb3a86f'
 )
 
 prepare() {
@@ -75,6 +77,8 @@ package() {
 
   install -Dm644 "${srcdir}/90-codex-plus-plus-reapply.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/90-codex-plus-plus-reapply.hook"
+  install -Dm644 "${srcdir}/codex-plus-plus.desktop" \
+    "${pkgdir}/usr/share/applications/codex-plus-plus.desktop"
   install -Dm644 README.md \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

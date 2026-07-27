@@ -48,6 +48,7 @@ resolve_configured_electron() {
   local configured
 
   [[ -f "${ELECTRON_CONFIG}" ]] || return 0
+
   while IFS= read -r configured || [[ -n "${configured}" ]]; do
     configured="${configured%%#*}"
     configured="${configured#"${configured%%[![:space:]]*}"}"
@@ -70,16 +71,12 @@ resolve_upstream_launcher_electron() {
 
   [[ -f "${launcher}" ]] || return 0
 
-  appdir_value="$(awk '
-    match($0, /appdir="([^"]+)"/, m) {
-      print m[1]
-      exit
-    }
-    match($0, /appdir='\''([^'\'']+)'\''/, m) {
-      print m[1]
-      exit
-    }
-  ' "${launcher}")"
+  appdir_value="$(
+    awk '
+      match($0, /appdir="([^"]+)"/, m) { print m[1]; exit }
+      match($0, /appdir='\''([^'\'']+)'\''/, m) { print m[1]; exit }
+    ' "${launcher}"
+  )"
 
   awk -v appdir="${appdir_value}" '
     match($0, /electron="([^"]+)"/, m) {
@@ -110,10 +107,10 @@ create_patched_webview_dir() {
   local entry
   local name
 
-  if [[ ! -f "${PLUGIN_AUTH_UNLOCK_FILE}" ]]; then
+  [[ -f "${PLUGIN_AUTH_UNLOCK_FILE}" ]] || {
     echo "Codex++ plugin auth unlock file not found: ${PLUGIN_AUTH_UNLOCK_FILE}" >&2
     exit 1
-  fi
+  }
 
   PATCHED_WEBVIEW_DIR="$(mktemp -d "${TMPDIR:-/tmp}/codex-plus-plus-webview.XXXXXX")"
   install -dm755 "${PATCHED_WEBVIEW_DIR}/assets"
@@ -198,7 +195,7 @@ fi
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
-export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://localhost:${RENDERER_PORT}/}"
+export ELECTRON_RENDERER_URL="${CODEXPP_ELECTRON_RENDERER_URL:-http://127.0.0.1:${RENDERER_PORT}/}"
 
 create_patched_webview_dir
 
@@ -215,10 +212,15 @@ port = int(sys.argv[1])
 root = sys.argv[2]
 ready_file = sys.argv[3]
 fail_file = sys.argv[4]
-
 os.chdir(root)
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
     def log_message(self, fmt, *args):
         pass
 
@@ -240,7 +242,7 @@ HTTP_PID="$!"
 for _ in {1..50}; do
   [[ -f "${READY_FILE}" ]] && break
   if [[ -f "${FAIL_FILE}" ]]; then
-    echo "Failed to start local webview server on 127.0.0.1:${RENDERER_PORT}" >&2
+    echo "Failed start local webview server on 127.0.0.1:${RENDERER_PORT}" >&2
     cat "${FAIL_FILE}" >&2
     exit 1
   fi
@@ -264,5 +266,4 @@ done
   "${APP_ASAR}" \
   "$@" &
 ELECTRON_PID="$!"
-
 wait "${ELECTRON_PID}"
