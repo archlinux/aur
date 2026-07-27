@@ -1,0 +1,28 @@
+pkgbase = traycer-desktop-bin
+	pkgdesc = Traycer standalone desktop shell (Electron) hosting the gui-app renderer
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://traycer.ai
+	install = traycer-desktop.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: system tray indicator
+	optdepends = apparmor: AppArmor profile (auto-installed by upstream postinst)
+	provides = traycer-desktop=1.1.8
+	conflicts = traycer-desktop
+	noextract = traycer-desktop-1.1.8.deb
+	options = !strip
+	options = !emptydirs
+	source = traycer-desktop-1.1.8.deb::https://github.com/traycerai/traycer/releases/download/desktop-v1.1.8/traycer-desktop-linux-amd64.deb
+	sha256sums = 9dc8379ccbe5450b164ce7339ff3985204bd40b63c7f8bde12eb4a43ff9a69de
+
+pkgname = traycer-desktop-bin
