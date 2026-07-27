@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apiflow-bin
 _pkgname=Apiflow
-pkgver=0.9.73
+pkgver=0.9.4
 _electronversion=32
 pkgrel=1
 pkgdesc="A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
 sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('a2a49f9f43927deebc3bb69ee9ef2e1744d57f4dc35dfe985bdd68a69cebae3a')
-sha256sums_x86_64=('675c91f8a189b6687440a7924c8a6d1f573ec7abdcee51d42a0bac60c03f2709')
+sha256sums_aarch64=('0ca0e14cd3ecb52b35360ba1685c3ffe65260d11a57212b55b7a5cef50dc7a2b')
+sha256sums_x86_64=('2cf4bb89ab7211d3b405fd8517350d5f930a0fc88b0c0fac2aae1b82abe446ef')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
