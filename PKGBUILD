@@ -1,6 +1,6 @@
 # Maintainer: eslachance <eslachance@users.noreply.github.com>
 pkgname=winmiddle-git
-pkgver=0.1.0.r0.ga06fe9d
+pkgver=0.2.0.r0.g0092085
 pkgrel=1
 pkgdesc="Windows-faithful middle-click autoscroll for Linux (Plasma/Wayland) — git"
 arch=('any')
@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/winscroll"
   git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-    || printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    || printf "0.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

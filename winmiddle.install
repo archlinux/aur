@@ -5,11 +5,14 @@ winmiddle-git installed.
 
   1. First-time session setup (paste-kill, KWin script, mouse udev, enable service):
        winmiddle --setup
+     Or open the settings app:
+       winmiddle-ui
   2. Log out and back in once (KWin reapplies primary-selection on session start).
   3. Status / logs:
        systemctl --user status winmiddle
        journalctl --user -u winmiddle -f
 
+Settings UI: winmiddle-ui  (app launcher: "winmiddle")
 Config: ~/.config/winmiddle/config.toml
 EOF
 }
