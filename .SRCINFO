@@ -1,7 +1,7 @@
 pkgbase = bc250-control-center-git
 	pkgdesc = Graphical control center for AMD BC-250 community tools
 	pkgver = 1.17.21
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/movacx/bc250-control-center
 	install = bc250-control-center.install
 	arch = any
