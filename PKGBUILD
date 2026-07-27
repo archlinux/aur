@@ -1,6 +1,6 @@
 # Maintainer: Matjaz Domen Pecan <matjaz.pecan@gmail.com>
 pkgname=rusted-claude-meter
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Cross-platform tray app showing your Claude plan usage"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
   'npm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mpecan/rusted-claude-meter/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ccedef9c0046f7f6d346c9b5a4bac93e5dcd6d13976a600fc055aefc4f9d003')
+sha256sums=('54560168e857823fa33557416f3d604062c5c8b5034c1226f4c2ba1392847f2f')
 
 build() {
   cd "$pkgname-$pkgver"
