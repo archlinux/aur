@@ -1,34 +1,16 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=1.1.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
-url="https://git.disroot.org/trougnouf/cfait"
-license=('GPL-3.0-or-later')
-depends=(
-    'gcc-libs'
-    'glibc'
-    'fontconfig'        # Required by the GUI for system font discovery
-    'libxkbcommon'      # Required by the GUI for keyboard handling (especially on Wayland)
-    'vulkan-icd-loader' # Required by the GUI to load Vulkan drivers for rendering
-    'org.freedesktop.secrets'  # Required to store the CalDAV password
-)
-makedepends=('cargo' 'pkgconf' 'git')  # git is needed as long as libdav > 0.10.3 is not released
-# Optional dependencies for the GUI and specific features
-optdepends=(
-    'vulkan-driver: Required by the GUI for hardware-accelerated rendering'
-    'wayland: Required by the GUI for Wayland session support'
-    'libx11: Required by the GUI for X11 session support'
-    'libxcursor: Required by the GUI for X11 cursor support'
-    'libxi: Required by the GUI for X11 input devices'
-    'libxrandr: Required by the GUI for X11 monitor layout support'
-    'xdg-desktop-portal: Required by the GUI for the file picker (export/import)'
-)
-
+url="https://codeberg.org/trougnouf/cfait"
+license=('GPL3')
+depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
+makedepends=('cargo')
 options=('!lto' '!strip' '!debug')
-source=("cfait-source-v1.1.0.tar.gz::https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.0/cfait-source-v1.1.0.tar.gz")
-sha256sums=('72e2e943a205619edec70dd281c4ec2b5739defaa00131a3cdc629dd1a8c9fc6')
+source=("cfait-source-v0.4.5.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.4.5/cfait-source-v0.4.5.tar.gz")
+sha256sums=('4442e6dfa5e1f1e25f6f1fb7b6720d23a5409814012b14020039b53cf1293e7b')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
@@ -36,11 +18,6 @@ build() {
   cd "$pkgname-$pkgver"
   # Set the target directory to be at the root of the makepkg build area
   export CARGO_TARGET_DIR="$srcdir/target"
-  # Skip compiling the problematic fallback RNG.
-  # Linux's native getrandom() is used instead.
-  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
-
-  # Build both TUI and GUI
   cargo build --release --features gui
 }
 
@@ -48,7 +25,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm755 "$srcdir/target/release/cfait" "$pkgdir/usr/bin/cfait"
-  install -Dm755 "$srcdir/target/release/cfait-gui" "$pkgdir/usr/bin/cfait-gui"
+  install -Dm755 "$srcdir/target/release/gui" "$pkgdir/usr/bin/cfait-gui"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
