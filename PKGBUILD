@@ -2,7 +2,7 @@
 
 _name=fastapi-cli
 pkgname=python-$_name
-pkgver=0.0.4
+pkgver=0.0.32
 pkgrel=1
 pkgdesc='Run and manage FastAPI apps from the command line with FastAPI CLI'
 arch=(any)
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   python
   python-typer
+  python-rich-toolkit
 )
 
 makedepends=(
@@ -26,7 +27,7 @@ optdepends=(
 )
 
 source=($_name-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('094c11ac845917033e6eb84b1005b34592f80a2dcd21f3dc3e0091ff6e31fe61')
+sha256sums=('36187ac78d7fb6eaaf5c26a9ca24a19336f1d98b44b433b0ff13290091320da5')
 
 build() {
   cd $_name-$pkgver
