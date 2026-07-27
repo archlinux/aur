@@ -4,12 +4,12 @@
 
 pkgname='cmsend-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.4.2.r0.ga8af8dc
-pkgrel=4
+pkgver=0.4.2.r1.g76fc618
+pkgrel=1
 pkgdesc='CLI for sending end-to-end encrypted chatmail messages between systems (development version)'
 arch=('any')
 url='https://github.com/chatmail/cmsend'
-license=('MPL-2.0')  # SPDX-License-Identifier: MPL-2.0
+license=('MPL-2.0')
 makedepends=(
   'git'
   'python-build'
@@ -26,6 +26,7 @@ depends=(
 source=("$_pkgname::git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,11 +39,13 @@ prepare() {
   cd "$_pkgname"
 
   git clean -dfx
+  sed -i 's/"setuptools-git-versioning >=2.0,<3"/"setuptools-git-versioning >=2.0,<=3.1"/g' pyproject.toml
 }
 
 build() {
   cd "$_pkgname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
@@ -51,9 +54,9 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 
-  cd "$pkgdir/usr/share/doc" && ln -vsrf "$pkgname" "$_pkgname"
+  cd "$pkgdir/usr/share/doc" && ln -srf "$pkgname" "$_pkgname"
 }
 
 # eof
