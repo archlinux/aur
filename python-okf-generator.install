@@ -1,0 +1,20 @@
+post_install() {
+    cat <<EOF
+
+  okf-generator v${1%-*} installed.
+
+  Quick start:
+    okf generate ./my-project ./okf-bundle
+    okf lookup <symbol-name>
+    okf install opencode          # wire into OpenCode with /lookup command
+
+  CLI:     okf --help
+  Docs:    https://umairbaig8.github.io/okf-generator/
+  GitHub:  https://github.com/UmairBaig8/okf-generator
+
+EOF
+}
+
+post_upgrade() {
+    post_install "$1"
+}
