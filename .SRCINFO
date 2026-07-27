@@ -1,0 +1,14 @@
+pkgbase = duh
+	pkgdesc = The RAM tool with personality - sassy quotes and beautiful stats for Arch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/duhcli/duh
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = glibc
+	source = duh-0.1.0.tar.gz::https://github.com/duhcli/duh/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = duh
