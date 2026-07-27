@@ -1,6 +1,6 @@
 pkgbase = asteroidz
 	pkgdesc = wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)
-	pkgver = 0.17.5
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/asteroidzman/asteroidz
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = asteroidz
 	depends = vulkan-icd-loader
 	depends = xcb-util-wm
 	depends = libxcb
-	depends = asteroidz-scenefx
+	depends = asteroidz-scenefx>=0.18.0
 	optdepends = xorg-xwayland: run X11 applications under XWayland
-	source = git+https://github.com/asteroidzman/asteroidz.git#tag=0.17.5
+	source = git+https://github.com/asteroidzman/asteroidz.git#tag=0.18.0
 	sha256sums = SKIP
 
 pkgname = asteroidz

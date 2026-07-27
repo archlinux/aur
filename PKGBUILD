@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.17.5
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)'
 arch=('x86_64')
@@ -11,7 +11,11 @@ depends=(
   'cjson' 'pango' 'gdk-pixbuf2' 'libdrm' 'systemd-libs'
   'vulkan-icd-loader'
   'xcb-util-wm' 'libxcb'
-  'asteroidz-scenefx'
+  # Version-pinned: 0.18.0 calls fx_renderer_set_srgb_blending, which does not
+  # exist in earlier asteroidz-scenefx. Unpinned, pacman happily leaves an
+  # older scenefx in place and the build dies at link time on a missing symbol
+  # instead of pulling the companion package forward.
+  'asteroidz-scenefx>=0.18.0'
 )
 makedepends=('meson' 'ninja' 'wayland-protocols' 'vulkan-headers' 'glslang' 'git')
 optdepends=(
