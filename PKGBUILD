@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=cleanuparr
-pkgver=2.9.16
+pkgver=2.10.0
 _pkgver_qbittorrent=1.0.3
 _pkgver_transmission=1.0.3
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
   cleanuparr.tmpfiles
   cleanuparr.install
 )
-sha256sums=('9974501080b16ae3943a4a9b55dbb292f51dc1d772fc897dc9b8aac35959e0b9'
+sha256sums=('9ef8750ad31e3eacfd66083f24d030c2fb4017a3575d4cb5b112cc9f15a25c50'
             'SKIP'
             'SKIP'
             'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
