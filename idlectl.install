@@ -1,0 +1,22 @@
+# Printed once, on a fresh install only.
+#
+# This package deliberately ships no systemd preset and enables nothing: installing a
+# program that can suspend a machine is not the same act as permitting it to. That
+# design is only defensible if the package says how to grant the permission, otherwise
+# it installs and appears to do nothing at all.
+
+post_install() {
+	cat <<'EOF'
+
+idlectl is installed and nothing is enabled yet, on purpose.
+
+  sudo systemctl enable --now idlepolicyd.service    # the decider
+  systemctl --user enable --now idlectl-agent.service  # per-session idle and media
+
+The vendor policy at /usr/lib/idlectl/idlectl.toml is already in effect once the daemon
+starts; /etc/idlectl/ is yours and this package never writes there.
+
+  idlectl doctor      # what it can see, and who else owns power on this machine
+
+EOF
+}

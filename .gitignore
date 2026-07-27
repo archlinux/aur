@@ -1,0 +1,10 @@
+# An AUR repository holds the recipe, never what the recipe produces. Everything below
+# is a makepkg artefact: pushing any of it would ship binaries through a source channel.
+src/
+pkg/
+*.pkg.tar.*
+*.src.tar.*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.log
