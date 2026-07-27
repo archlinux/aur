@@ -1,6 +1,6 @@
 # Maintainer: Hayden Parker <hayden@bounce.chat>
 pkgname=bounce-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A metadata-protecting distributed group chat application"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/bounce-chat/bounce/releases/download/v${pkgver}/bounce-${pkgver}.deb"
 	"LICENSE"
 )
-sha256sums=('c2eae492c08af5460f4a53f7f0f6e0abb92aed624589e930e50040d610dbb519'
+sha256sums=('87b3762afd8a216fc5183947a65def0e81090351a841e71f8ac023ee78494a64'
             'e52465d21d1b91e02357470ae262725b8f73d7ecc271a8d1ed7ff2e49f3bc6dc')
 
 package() {
