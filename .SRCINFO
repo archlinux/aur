@@ -1,4 +1,4 @@
-pkgbase = gshell
+pkgbase = g-shell
 	pkgdesc = A POSIX-compliant shell written in Rust with a custom theme system
 	pkgver = 1.2.6
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = gshell
 	source = https://github.com/Crazygiscool/G-shell/archive/v1.2.6.tar.gz
 	sha256sums = SKIP
 
-pkgname = gshell
+pkgname = g-shell

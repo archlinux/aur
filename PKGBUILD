@@ -1,7 +1,7 @@
 # Maintainer: Crazygiscool <crazygiscool@proton.me>
 # Contributors: Craigyiscool
 
-pkgname=gshell
+pkgname=g-shell
 pkgver=1.2.6
 pkgrel=1
 pkgdesc="A POSIX-compliant shell written in Rust with a custom theme system"
