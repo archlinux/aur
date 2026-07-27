@@ -1,14 +1,14 @@
 # Maintainer: Mikele <mikele@gmail.com>
 
 pkgname=fila-bin
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Browse folders, filter media, generate playlists, and play files"
 arch=('x86_64')
 url="https://github.com/mikelexp/Fila"
 depends=('mpv' 'ffmpeg' 'xdg-utils')
-source=("https://github.com/mikelexp/Fila/releases/download/v0.2.1/fila-0.2.1-linux-x86_64.tar.gz")
-sha256sums=('bc22b4fe18360885f615b6021ec6d0f74cecd4a40aa22ff6b87c737618af85f1')
+source=("https://github.com/mikelexp/Fila/releases/download/v0.2.2/fila-0.2.2-linux-x86_64.tar.gz")
+sha256sums=('27c803bfc198970b56e4928e67a489da2c7787cc15c214e1246012a2d334e267')
 
 package() {
   cd "$srcdir"
