@@ -21,7 +21,7 @@ package() {
   cd "xpadneo-${pkgver}"
 
   # Add modprobe and udev files
-  make VERSION="v${pkgver}" PREFIX="${pkgdir}" ETC_PREFIX='/usr/lib' \
+  make PREFIX="${pkgdir}" ETC_PREFIX='/usr/lib' \
     install
 
   # License applicability
