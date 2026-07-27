@@ -1,5 +1,5 @@
 pkgname=wtfis-cli
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Find projects fast from your terminal'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 optdepends=('bash: Bash shell integration' 'zsh: Zsh shell integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/prophesourvolodymyr/WTFIS-CLI/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('04abb5745906cb16f14eb322e01804c4b5d23f433be4820520bb1c3cca43cc68')
+sha256sums=('da8f18f6126562c7972bb0c957a8856db8a806ef71bca0671bfa087789934f9c')
 
 build() {
   cd "$srcdir/WTFIS-CLI-$pkgver"
