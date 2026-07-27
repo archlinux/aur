@@ -1,6 +1,6 @@
 # Maintainer: Adr Ian <S9yN37 at gmail dot com>
 pkgname=subtitletools-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A command-line tool for managing and synchronizing subtitle files"
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/S9yN37/SubtitleTools"
 license=('AGPL3')
 source_x86_64=("${url}/releases/download/v${pkgver}/SubtitleTools-v${pkgver}-linux-x64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/SubtitleTools-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('0fb0f6b621138fec3eb6d02dc4cf3e8a77dde69e9cfe68fc148aba34dd4b0a89')
-sha256sums_aarch64=('2de3c068089020a7e9ed4068513a1f92403694cd81af8b006f7fcb6f63e283a9')
+sha256sums_x86_64=('d1c1c52b26d047a1129710eb5666e28ae0c5d45ecde996088d247f005a97bd19')
+sha256sums_aarch64=('d6999ba9a1e0263081f52a008aa138cbc0dd4590249532e2e1145b2714925300')
 
 pkgver() {
   curl -s "https://api.github.com/repos/S9yN37/SubtitleTools/releases/latest" \
