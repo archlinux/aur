@@ -2,8 +2,8 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.r0.g2dc5664
-pkgrel=2
+pkgver=1,1.r0.gd62f1b8
+pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
@@ -11,6 +11,7 @@ license=("MIT")
 options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
+	"hicolor-icon-theme"
 	"libgcc"
 	"openssl"
 	"mpv"
@@ -69,4 +70,6 @@ package() {
 
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/voicefox
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	install -Dm644 assets/voicefox.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 icons/1.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.desktop"
 }
