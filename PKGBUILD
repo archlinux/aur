@@ -1,6 +1,6 @@
 pkgname=sdroxide
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (CAT + USB-audio backend, no SoapySDR)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -16,17 +16,8 @@ makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen')
 # Same /usr/bin/sdroxide as the SoapySDR-enabled build.
 conflicts=('sdroxide-soapysdr')
 options=('!lto')
-# The desktop entry and icon are carried here rather than taken from the
-# tarball: v0.5.0 ships a .desktop without an Icon= key and no icon at all.
-# From the next upstream release both live in packaging/ and these two local
-# files can be dropped in favour of packaging/linux/sdroxide.desktop and
-# packaging/icons/sdroxide.svg.
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'sdroxide.desktop'
-        'sdroxide.svg')
-sha256sums=('45e3b2d1ebc06001efc2680b9ffaf4316da591915f691adda48c07d0670f8f82'
-            '946899328386dde005553bd382e31b46ecaa2886dd08686ec5ad30d681255db3'
-            '0767ee1185128a4062bcfe86ebc28f78a85605e41d97b6629836c88be2223d24')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4dc631106ff3c568263edc6bd533d7fa2dbd8d13a1db761818af0fde642aa529')
 
 prepare() {
   cd "sdroxide-$pkgver"
@@ -49,10 +40,15 @@ build() {
 package() {
   cd "sdroxide-$pkgver"
   install -Dm755 target/release/sdroxide "$pkgdir/usr/bin/sdroxide"
-  # Desktop-menu entry plus the icon its `Icon=sdroxide` resolves against;
+  # Desktop-menu entry plus the icons its `Icon=sdroxide` resolves against;
   # pacman hooks rebuild the desktop database and icon cache on install.
-  install -Dm644 "$srcdir/sdroxide.desktop" "$pkgdir/usr/share/applications/sdroxide.desktop"
-  install -Dm644 "$srcdir/sdroxide.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/sdroxide.svg"
+  install -Dm644 packaging/linux/sdroxide.desktop "$pkgdir/usr/share/applications/sdroxide.desktop"
+  install -Dm644 packaging/icons/sdroxide.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/sdroxide.svg"
+  for _s in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "packaging/icons/sdroxide-$_s.png" \
+      "$pkgdir/usr/share/icons/hicolor/${_s}x${_s}/apps/sdroxide.png"
+  done
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
