@@ -2,7 +2,7 @@
 pkgname=servicebus-browser-bin
 _appname='@service-bus-browsersource'
 _pkgname='Servicebus Browser'
-pkgver=2.3.1
+pkgver=2.3.2
 _electronversion=43
 pkgrel=1
 pkgdesc="A cross platform tool to manage your Azure Service Bus instances.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mligtenberg/ServicebusBrowser/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e942e5fe9878ea788c9a9477290413a78da6a86391df073c52c3046f9294986e'
+sha256sums=('148684963e9cd662669c291627132a169cb291c2dc54b4d5a85618bec2a6194f'
             'b33b4b2af599610ba244014649e02c1894cb44513807cf3229a869f26a8a0d24'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
