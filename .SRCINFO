@@ -1,0 +1,18 @@
+pkgbase = zenplay-bin
+	pkgdesc = A lightweight Electron-based desktop client designed for a fast, clean, and distraction-free YouTube experience.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/erebos-git/ZenPlay
+	arch = x86_64
+	license = ISC
+	depends = electron41
+	provides = zenplay=2.1.0
+	conflicts = zenplay
+	source = zenplay-2.1.0.deb::https://github.com/erebos-git/ZenPlay/releases/download/v2.1.0/ZenPlay_2.1.0_amd64.deb
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/erebos-git/ZenPlay/v2.1.0/LICENSE
+	source = zenplay.sh
+	sha256sums = 968b850ef9163fa76e24cf56ecc0874b63f08779c5e184cf5f97f9d0cdaed07c
+	sha256sums = ef6167f39ce8ea8fe037da2ef01e45b47a32cede9622d1f70d5c6cf1b1c10490
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = zenplay-bin
