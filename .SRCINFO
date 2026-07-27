@@ -1,6 +1,6 @@
 pkgbase = spotatui
 	pkgdesc = A Spotify client for the terminal written in Rust, powered by Ratatui
-	pkgver = 0.40.2
+	pkgver = 0.40.3
 	pkgrel = 1
 	url = https://github.com/LargeModGames/spotatui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spotatui
 	depends = openssl
 	depends = pipewire
 	options = !lto
-	source = spotatui-0.40.2.tar.gz::https://github.com/LargeModGames/spotatui/archive/refs/tags/v0.40.2.tar.gz
-	sha256sums = 385742c6b1c192e2b2703d65fbfc84d16edc1426030f2d7a46374bff2c3586f1
+	source = spotatui-0.40.3.tar.gz::https://github.com/LargeModGames/spotatui/archive/refs/tags/v0.40.3.tar.gz
+	sha256sums = f05ed015cdc38ecf95e99ad05f2864309b66bb2b85f9f79bb183300a3688f517
 
 pkgname = spotatui
