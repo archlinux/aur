@@ -1,7 +1,7 @@
 # Maintainer: theesfeld
 # f00tils — pure assembly coreutils replacement (binary package)
 pkgname=f00
-pkgver=0.16.2
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="f00tils — pure assembly coreutils replacement (multicall, freestanding)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=()
 provides=('f00')
 conflicts=('f00')
 options=('!strip')
-source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.16.2-linux-x86_64.tar.gz")
-sha256sums=('09f9e0601b67daf44b7b694a2a98515b717efb1ebc331fdbfaed6be16e6aacd3')
+source=("https://github.com/theesfeld/f00/releases/download/v${pkgver}/f00-0.16.4-linux-x86_64.tar.gz")
+sha256sums=('9325ddfaa5356cb38f55a68e643c1b7ae37ff0d7e012948114268be8c099fb31')
 
 package() {
   local root
@@ -53,6 +53,8 @@ unset _f00_libbin
 unset -f _f00_replace_enabled 2>/dev/null || true
 EOS
   fi
+  # Full multicall surface: coreutils + grep + findutils + diffutils (+ hub)
+  # Keep in sync with scripts/tools-all.txt and asm/Makefile UTILS.
   local u
   for u in ls cat true false yes nproc tty whoami basename dirname \
            head tail wc tee seq echo pwd sleep \
@@ -64,10 +66,12 @@ EOS
            id groups uname arch date users who pinky uptime hostname \
            nice nohup timeout kill test printf \
            md5sum sha1sum sha256sum sha224sum sha384sum sha512sum b2sum cksum sum \
-           base64 basenc base32 dircolors chroot stty stdbuf runcon chcon config; do
+           base64 basenc base32 dircolors chroot stty stdbuf runcon chcon config \
+           grep egrep fgrep find xargs diff cmp diff3 sdiff; do
     ln -s f00 "${pkgdir}/usr/bin/f00-${u}"
     ln -s ../../../bin/f00 "${pkgdir}/usr/lib/f00/bin/${u}"
   done
+  ln -s f00 "${pkgdir}/usr/bin/f00-["
   ln -s ../../../bin/f00 "${pkgdir}/usr/lib/f00/bin/["
   if [[ -f "${root}/LICENSE" ]]; then
     install -Dm644 "${root}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
