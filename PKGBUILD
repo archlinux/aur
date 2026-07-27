@@ -2,21 +2,21 @@
 # Maintainer: Jishnu Teegala <134275562+jishnuteegala@users.noreply.github.com>
 
 pkgname='git-chunks-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Commit and push changes in chunks to avoid SCM push size limits'
 url='https://github.com/jishnuteegala/git-chunks'
 arch=('aarch64' 'x86_64')
 license=('MIT')
-depends=('git')
 provides=('git-chunks')
 conflicts=('git-chunks')
+depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jishnuteegala/git-chunks/releases/download/v${pkgver}/git-chunks_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('bbd48fbf21a262654abecc19fa61d1a3703495b37ab099197711b9b564d14bbd')
+sha256sums_aarch64=('f79783ae41010b88e9ec0be6c97307933d7f0e99e903ab568f75b25a1e61cc37')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jishnuteegala/git-chunks/releases/download/v${pkgver}/git-chunks_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2f2edfb4934cb9cec4444efc5187ea0b97dffb45ec1faf0c67a4bb68d17b72d8')
+sha256sums_x86_64=('e60a765e787fe2beb63c1b9248f42acc745af77d0227489dd58ec7137f72a069')
 
 package() {
   install -Dm755 "./git-chunks" "${pkgdir}/usr/bin/git-chunks"
