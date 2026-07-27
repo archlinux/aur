@@ -7,9 +7,9 @@ pkgbase = baml-bin
 	arch = aarch64
 	license = Apache-2.0
 	source_x86_64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.2.2/baml-wrapper-no-self-update-0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = adb6a88ae769a2d29da1464ef2ab3e1df4a1810f326900fbc1cad4c2910e32f9
+	sha256sums_x86_64 = b7e914a828530fe6febf5d01846c525f8c13e7d56152e6f92505bdccf2d69d0c
 	source_aarch64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.2.2/baml-wrapper-no-self-update-0.2.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 96b7fec946c0bc72534059076ff893b5dba60fbf4d4f14a3c813f96c36aa8796
+	sha256sums_aarch64 = 12be7587a8ee85c1a91070f2b6f5d7f20bee4de040e4f4d0b1eed15c766e27bc
 	provides = baml
 	conflicts = baml
 
