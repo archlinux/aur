@@ -8,7 +8,7 @@ pkgname=('authentik-cli-bin'
          'authentik-sysd-bin'
          'libpam-authentik-bin' 
          'libnss-authentik-bin')
-pkgver=0.50.3
+pkgver=0.50.5
 pkgrel=1
 url="https://github.com/goauthentik/platform"
 license=('MIT')
@@ -35,16 +35,16 @@ source_aarch64=("authentik-agent.deb::https://pkg.goauthentik.io/pool/main/a/aut
 sha256sums=('16e52ff7d18c8aa97edc8f0b06da0ac0f45f4a87ca0ce3a8cf700b5477cfaf57'
             '1db5d2f9fb1d5d6e5f9cca34e58f1b3b9f55e161d478c76198a4889dfca9fada'
             'ce6e0895be72586d3944c2b1efdffc3ee16d9e8897690a07f44be733d19b77cf')
-sha256sums_x86_64=('0fed25a31e598b3c7355d5917ba6684119cf6af1c483b7be863f2a7b78aa99cf'
-                   'd51c9d8a2d104bbab34ab90e09014285304fa052d3979eca761cfbe3013bb62c'
-                   '2411b67d0581c1545997c0744122b677dc3ebfefd344a6518ce2d6b38552ea79'
-                   '7d512a1ee2aa18e0541e110abf2d06a0ac809dfa2e9434bd3025749620d71220'
-                   'd061c809a524c643a1a7f47febb4201409e9665ba1872737b27cc8466aa869e5')
-sha256sums_aarch64=('0fed25a31e598b3c7355d5917ba6684119cf6af1c483b7be863f2a7b78aa99cf'
-                    'd51c9d8a2d104bbab34ab90e09014285304fa052d3979eca761cfbe3013bb62c'
-                    '2411b67d0581c1545997c0744122b677dc3ebfefd344a6518ce2d6b38552ea79'
-                    '7d512a1ee2aa18e0541e110abf2d06a0ac809dfa2e9434bd3025749620d71220'
-                    'd061c809a524c643a1a7f47febb4201409e9665ba1872737b27cc8466aa869e5')
+sha256sums_x86_64=('846e32ad5d645e56ea03f5e6035a4f821a60d22c0d021353251c0db4c0c83222'
+                   '38b63d0150ae7dbc93dcfbd510c0ab2098860b786a74cc8d111a95e72b63f1ef'
+                   '98f6de439139fdb9a5f4919db98b840c5d8a2dd0ea6871af28e3fb2486e31c7d'
+                   '3e1a6c2d7821beeb4793f4e6077572ea3c9262b344e5cd9b449b3c765882cb9a'
+                   '11da5b4f94f74e7643a3523a48918193df2a6d81ec3b8a7802595ccc728b47c6')
+sha256sums_aarch64=('846e32ad5d645e56ea03f5e6035a4f821a60d22c0d021353251c0db4c0c83222'
+                    '38b63d0150ae7dbc93dcfbd510c0ab2098860b786a74cc8d111a95e72b63f1ef'
+                    '98f6de439139fdb9a5f4919db98b840c5d8a2dd0ea6871af28e3fb2486e31c7d'
+                    '3e1a6c2d7821beeb4793f4e6077572ea3c9262b344e5cd9b449b3c765882cb9a'
+                    '11da5b4f94f74e7643a3523a48918193df2a6d81ec3b8a7802595ccc728b47c6')
 
 noextract=('authentik-agent.deb'
            'authentik-cli.deb'
