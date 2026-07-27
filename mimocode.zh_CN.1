@@ -1,0 +1,126 @@
+.\" -*- mode: nroff -*-
+.TH MIMO 1 "2026-07-03" "mimo 0.1.4" "用户命令"
+.SH NAME
+mimo \- 小米 MiMo 团队出品的终端 AI 编程助手
+.SH 概要
+.B mimo
+.RI [ 项目路径 ]
+.RI [ 选项 ]
+.br
+.B mimo run
+.RI [ 消息 ]
+.RI [ 选项 ]
+.SH 描述
+.B MiMo Code
+是小米 MiMo 团队开发的终端 AI 编程助手。
+它能读取代码、搜索文本、编辑文件、执行命令，
+并集成 MiMo API 及其他兼容的 AI 提供商。
+.PP
+无参数启动时进入交互式 TUI 会话。
+.SH 命令
+.TP
+.B completion
+生成 shell 补全脚本。
+.TP
+.B acp
+启动 ACP（Agent Client Protocol）服务器。
+.TP
+.B mcp
+管理 MCP（Model Context Protocol）服务器。
+.TP
+.B run
+以消息方式运行（非交互式）。
+.TP
+.B providers
+管理 AI 提供商和凭据。
+.RS
+.TP
+.B login
+登录提供商。
+.TP
+.B logout
+登出提供商。
+.TP
+.B list
+列出已配置的提供商。
+.TP
+.B whoami
+显示当前用户信息。
+.RE
+.TP
+.B agent
+管理 Agent。
+.RS
+.TP
+.B create
+创建新 Agent。
+.TP
+.B list
+列出可用 Agent。
+.RE
+.TP
+.B upgrade
+升级到最新或指定版本。
+.TP
+.B uninstall
+卸载 MiMo Code。
+.TP
+.B serve
+启动无头服务器。
+.TP
+.B models
+列出可用模型。
+.TP
+.B stats
+显示 token 用量和费用统计。
+.TP
+.B session
+管理会话。
+.TP
+.B db
+数据库工具。
+.SH 选项
+.TP
+.BR \-m " 模型, " \-\-model " 模型"
+指定模型，格式为 provider/model。
+.TP
+.BR \-c ", " \-\-continue
+继续上次会话。
+.TP
+.BR \-s " ID, " \-\-session " ID"
+继续指定会话 ID。
+.TP
+.B \-\-agent
+指定使用的 Agent。
+.TP
+.B \-\-never-ask
+自动决策模式，不询问。
+.TP
+.B \-\-trust
+跳过工作区信任提示。
+.TP
+.BR \-\-port " 端口"
+监听端口。
+.TP
+.BR \-\-hostname " 主机"
+监听主机名。
+.TP
+.B \-\-mdns
+启用 mDNS 服务发现。
+.TP
+.B \-\-no-auth
+允许无认证连接。
+.SH 文件
+.TP
+.I ~/.local/share/mimocode/
+会话数据和数据库。
+.TP
+.I ~/.mimocode/
+安装目录，包含二进制文件和插件。
+.SH 参见
+.BR claude (1)
+.SH 作者
+小米 MiMo 团队
+.PP
+.UR https://github.com/XiaomiMiMo/MiMo-Code
+.UE

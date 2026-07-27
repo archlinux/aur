@@ -1,0 +1,126 @@
+.\" -*- mode: nroff -*-
+.TH MIMO 1 "2026-07-03" "mimo 0.1.4" "User Commands"
+.SH NAME
+mimo \- AI-powered CLI coding agent by Xiaomi MiMo Team
+.SH SYNOPSIS
+.B mimo
+.RI [ project ]
+.RI [ options ]
+.br
+.B mimo run
+.RI [ message ]
+.RI [ options ]
+.SH DESCRIPTION
+.B MiMo Code
+is an AI-powered CLI coding agent built by the Xiaomi MiMo Team.
+It reads code, searches text, edits files, and runs commands,
+integrating with the MiMo API and other compatible providers.
+.PP
+With no arguments, starts an interactive TUI session.
+.SH COMMANDS
+.TP
+.B completion
+Generate shell completion script.
+.TP
+.B acp
+Start ACP (Agent Client Protocol) server.
+.TP
+.B mcp
+Manage MCP (Model Context Protocol) servers.
+.TP
+.B run
+Run MiMo Code with a message (non-interactive).
+.TP
+.B providers
+Manage AI providers and credentials.
+.RS
+.TP
+.B login
+Log in to a provider.
+.TP
+.B logout
+Log out from a provider.
+.TP
+.B list
+List configured providers.
+.TP
+.B whoami
+Show current user info.
+.RE
+.TP
+.B agent
+Manage agents.
+.RS
+.TP
+.B create
+Create a new agent.
+.TP
+.B list
+List available agents.
+.RE
+.TP
+.B upgrade
+Upgrade to latest or specific version.
+.TP
+.B uninstall
+Uninstall MiMo Code.
+.TP
+.B serve
+Start a headless server.
+.TP
+.B models
+List available models.
+.TP
+.B stats
+Show token usage and cost statistics.
+.TP
+.B session
+Manage sessions.
+.TP
+.B db
+Database tools.
+.SH OPTIONS
+.TP
+.BR \-m " MODEL, " \-\-model " MODEL"
+Model to use in provider/model format.
+.TP
+.BR \-c ", " \-\-continue
+Continue the last session.
+.TP
+.BR \-s " ID, " \-\-session " ID"
+Session ID to continue.
+.TP
+.B \-\-agent
+Agent to use.
+.TP
+.B \-\-never-ask
+Auto-decide without asking.
+.TP
+.B \-\-trust
+Skip workspace trust prompt.
+.TP
+.BR \-\-port " PORT"
+Port to listen on.
+.TP
+.BR \-\-hostname " HOST"
+Hostname to listen on.
+.TP
+.B \-\-mdns
+Enable mDNS service discovery.
+.TP
+.B \-\-no-auth
+Allow without authentication.
+.SH FILES
+.TP
+.I ~/.local/share/mimocode/
+Session data and database.
+.TP
+.I ~/.mimocode/
+Installation directory with binary and plugins.
+.SH SEE ALSO
+.BR claude (1)
+.SH AUTHORS
+Xiaomi MiMo Team.
+.PP
+.UR https://github.com/XiaomiMiMo/MiMo-Code
+.UE

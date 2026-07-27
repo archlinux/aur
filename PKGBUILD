@@ -1,6 +1,6 @@
 # Maintainer: spiriwind <ruiting_mail@qq.com>
 pkgname=mimocode
-pkgver=0.1.6
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="AI-powered CLI coding agent by Xiaomi MiMo Team"
 arch=('x86_64')
