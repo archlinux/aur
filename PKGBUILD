@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -29,7 +29,7 @@ install=${pkgname}.install
 
 build() {
   cd "$srcdir/${pkgname}"
-  make build
+  RUSTFLAGS="" make build
 }
 
 package() {
