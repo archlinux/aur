@@ -4,19 +4,21 @@
 
 pkgname=jagex-launcher
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Jagex Launcher for Linux'
 arch=('x86_64')
 url="https://osrs.runescape.com/download"
 # TODO: Figure out proper license
 # electron & chromium licenses are included, but no package license
-license=('custom:Unlicense')
+license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('jagex-launcher')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::https://rs-launcher-updates.runescape.com/production/linux/x64/releases/$pkgver/jagex-launcher-beta-linux-x86_64.AppImage")
-sha256sums=('55459fc70be75538dfb00f255d81811ba4982900dbce1650aab800a62cfb9481')
+source=("${_appimage}::https://rs-launcher-updates.runescape.com/production/linux/x64/releases/$pkgver/jagex-launcher-beta-linux-x86_64.AppImage"
+        "JAGEX-EULA")
+sha256sums=('55459fc70be75538dfb00f255d81811ba4982900dbce1650aab800a62cfb9481'
+            '9feba555717fe2e04335146cace192f48760e46670f4fa8248732fc4ea07e6fd')
 
 prepare() {
   chmod +x "${_appimage}"
@@ -37,6 +39,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html"
+    install -Dm644 "${srcdir}/JAGEX-EULA" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${pkgname}.desktop"\
@@ -54,4 +57,5 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/$pkgname/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "/opt/$pkgname/LICENSEs.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
