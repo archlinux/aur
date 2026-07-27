@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan-bin
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux (prebuilt)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source_x86_64=(
 )
 noextract=("$_deb")
 sha256sums_x86_64=(
-  '2a364005fc0a7d5dbe2d575175ab9dff8a3cc268ffde1b418052a1b1aec5c588'
+  '666866911503ba11d6e0874ca2bff1ff431551be93a42909909056f9e8a6385f'
   'fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0'
 )
 
