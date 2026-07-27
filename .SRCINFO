@@ -1,0 +1,22 @@
+pkgbase = 9router-webui-plasma-git
+	pkgdesc = 9Router - AI model router with WebUI. Built with Bun, optimized for KDE Plasma desktop (systemd user service)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/decolua/9router
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = make
+	makedepends = gcc
+	depends = bun
+	depends = curl
+	depends = rsync
+	depends = libnotify
+	depends = systemd
+	options = !strip
+	source = 9router-webui-plasma-git::git+https://github.com/decolua/9router.git
+	sha256sums = SKIP
+
+pkgname = 9router-webui-plasma-git
