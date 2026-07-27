@@ -1,0 +1,642 @@
+diff --git a/src/config/lua/bindings/LuaBindingsConfigRules.cpp b/src/config/lua/bindings/LuaBindingsConfigRules.cpp
+index 8095b170..fb8f5b05 100644
+--- a/src/config/lua/bindings/LuaBindingsConfigRules.cpp
++++ b/src/config/lua/bindings/LuaBindingsConfigRules.cpp
+@@ -190,6 +190,7 @@ namespace {
+         {"order", []() -> ILuaConfigValue* { return new CLuaConfigInt(0); }, LE::LAYER_RULE_EFFECT_ORDER},
+         {"above_lock", []() -> ILuaConfigValue* { return new CLuaConfigInt(0, 0, 2); }, LE::LAYER_RULE_EFFECT_ABOVE_LOCK},
+         {"no_screen_share", []() -> ILuaConfigValue* { return new CLuaConfigBool(false); }, LE::LAYER_RULE_EFFECT_NO_SCREEN_SHARE},
++        {"screen_share_mode", []() -> ILuaConfigValue* { return new CLuaConfigString("normal"); }, LE::LAYER_RULE_EFFECT_SCREEN_SHARE_MODE},
+     };
+ 
+     static_assert(sizeof(LAYER_RULE_EFFECT_DESCS) / sizeof(SLayerRuleEffectDesc) == LE::LAYER_RULE_EFFECT_LAST_STATIC - 1);
+diff --git a/src/desktop/rule/layerRule/LayerRule.cpp b/src/desktop/rule/layerRule/LayerRule.cpp
+index 11cdd702..f2995ed2 100644
+--- a/src/desktop/rule/layerRule/LayerRule.cpp
++++ b/src/desktop/rule/layerRule/LayerRule.cpp
+@@ -45,6 +45,13 @@ static std::expected<int64_t, std::string> parseAboveLock(const std::string& raw
+     return std::clamp(*parsed, int64_t{0}, int64_t{2});
+ }
+ 
++static std::expected<std::string, std::string> parseScreenShareMode(const std::string& raw) {
++    if (raw != "normal" && raw != "black" && raw != "omit")
++        return std::unexpected(std::format("screen_share_mode rule \"{}\" must be one of: normal, black, omit", raw));
++
++    return raw;
++}
++
+ static std::expected<LayerRuleEffectValue, std::string> parseLayerRuleEffect(CLayerRuleEffectContainer::storageType e, const std::string& raw) {
+     if (layerEffects()->isEffectDynamic(e))
+         return std::string{raw};
+@@ -81,6 +88,12 @@ static std::expected<LayerRuleEffectValue, std::string> parseLayerRuleEffect(CLa
+                 return std::unexpected(parsed.error());
+             return std::clamp(*parsed, 0.F, 1.F);
+         }
++        case LAYER_RULE_EFFECT_SCREEN_SHARE_MODE: {
++            auto parsed = parseScreenShareMode(raw);
++            if (!parsed)
++                return std::unexpected(parsed.error());
++            return *parsed;
++        }
+         case LAYER_RULE_EFFECT_ANIMATION: return std::string{raw};
+     }
+ }
+diff --git a/src/desktop/rule/layerRule/LayerRuleApplicator.cpp b/src/desktop/rule/layerRule/LayerRuleApplicator.cpp
+index 79ee80ae..616786d3 100644
+--- a/src/desktop/rule/layerRule/LayerRuleApplicator.cpp
++++ b/src/desktop/rule/layerRule/LayerRuleApplicator.cpp
+@@ -30,8 +30,9 @@ CLayerRuleApplicator::CLayerRuleApplicator(PHLLS ls) : m_ls(ls) {
+ }
+ 
+ void CLayerRuleApplicator::resetProps(std::underlying_type_t<eRuleProperty> props, Types::eOverridePriority prio) {
+-    std::apply([&](auto&... prop) { (resetRuleProp(prop, props, prio), ...); },
+-               std::forward_as_tuple(m_noanim, m_blur, m_blurPopups, m_dimAround, m_xray, m_noScreenShare, m_order, m_aboveLock, m_ignoreAlpha, m_animationStyle));
++    std::apply(
++        [&](auto&... prop) { (resetRuleProp(prop, props, prio), ...); },
++        std::forward_as_tuple(m_noanim, m_blur, m_blurPopups, m_dimAround, m_xray, m_noScreenShare, m_order, m_aboveLock, m_ignoreAlpha, m_animationStyle, m_screenShareMode));
+ 
+     if (prio == Types::PRIORITY_WINDOW_RULE)
+         std::erase_if(m_otherProps.props, [props](const auto& el) { return !el.second || el.second->propMask & props; });
+@@ -100,6 +101,11 @@ void CLayerRuleApplicator::applyDynamicRule(const SP<CLayerRule>& rule) {
+                 m_noScreenShare.second |= rule->getPropertiesMask();
+                 break;
+             }
++            case LAYER_RULE_EFFECT_SCREEN_SHARE_MODE: {
++                m_screenShareMode.first.set(std::get<std::string>(value), Types::PRIORITY_WINDOW_RULE);
++                m_screenShareMode.second |= rule->getPropertiesMask();
++                break;
++            }
+             case LAYER_RULE_EFFECT_ORDER: {
+                 m_order.first.set(std::get<int64_t>(value), Types::PRIORITY_WINDOW_RULE);
+                 m_order.second |= rule->getPropertiesMask();
+diff --git a/src/desktop/rule/layerRule/LayerRuleApplicator.hpp b/src/desktop/rule/layerRule/LayerRuleApplicator.hpp
+index b208aac6..5073e112 100644
+--- a/src/desktop/rule/layerRule/LayerRuleApplicator.hpp
++++ b/src/desktop/rule/layerRule/LayerRuleApplicator.hpp
+@@ -60,10 +60,19 @@ namespace Desktop::Rule {
+         DEFINE_PROP(Config::FLOAT, ignoreAlpha, 0.F)
+ 
+         DEFINE_PROP(std::string, animationStyle, std::string(""))
++        DEFINE_PROP(std::string, screenShareMode, std::string("normal"))
+ 
+ #undef COMMA
+ #undef DEFINE_PROP
+ 
++        bool blocksScreenShare() const {
++            return m_noScreenShare.first.valueOrDefault() || m_screenShareMode.first.valueOrDefault() == "black";
++        }
++
++        bool omitsFromScreenShare() const {
++            return !blocksScreenShare() && m_screenShareMode.first.valueOrDefault() == "omit";
++        }
++
+       private:
+         PHLLSREF m_ls;
+ 
+diff --git a/src/desktop/rule/layerRule/LayerRuleEffectContainer.cpp b/src/desktop/rule/layerRule/LayerRuleEffectContainer.cpp
+index 17394239..38e31d80 100644
+--- a/src/desktop/rule/layerRule/LayerRuleEffectContainer.cpp
++++ b/src/desktop/rule/layerRule/LayerRuleEffectContainer.cpp
+@@ -21,12 +21,13 @@ static const std::vector<std::string> EFFECT_STRINGS = {
+     "order",                  //
+     "above_lock",             //
+     "no_screen_share",        //
++    "screen_share_mode",      //
+     "__internal_last_static", //
+ };
+ 
+ // This is here so that if we change the rules, we get reminded to update
+ // the strings.
+-static_assert(LAYER_RULE_EFFECT_LAST_STATIC == 11);
++static_assert(LAYER_RULE_EFFECT_LAST_STATIC == 12);
+ 
+ CLayerRuleEffectContainer::CLayerRuleEffectContainer() : IEffectContainer<eLayerRuleEffect>(std::vector<std::string>{EFFECT_STRINGS}) {
+     ;
+diff --git a/src/desktop/rule/layerRule/LayerRuleEffectContainer.hpp b/src/desktop/rule/layerRule/LayerRuleEffectContainer.hpp
+index e3b3d26c..56f1da60 100644
+--- a/src/desktop/rule/layerRule/LayerRuleEffectContainer.hpp
++++ b/src/desktop/rule/layerRule/LayerRuleEffectContainer.hpp
+@@ -19,6 +19,7 @@ namespace Desktop::Rule {
+         LAYER_RULE_EFFECT_ORDER,
+         LAYER_RULE_EFFECT_ABOVE_LOCK,
+         LAYER_RULE_EFFECT_NO_SCREEN_SHARE,
++        LAYER_RULE_EFFECT_SCREEN_SHARE_MODE,
+ 
+         LAYER_RULE_EFFECT_LAST_STATIC,
+     };
+@@ -30,4 +31,4 @@ namespace Desktop::Rule {
+     };
+ 
+     SP<CLayerRuleEffectContainer> layerEffects();
+-};
+\ No newline at end of file
++};
+diff --git a/src/desktop/state/Fadeout.cpp b/src/desktop/state/Fadeout.cpp
+index 1f5d3086..ed00d4d9 100644
+--- a/src/desktop/state/Fadeout.cpp
++++ b/src/desktop/state/Fadeout.cpp
+@@ -14,3 +14,7 @@ PHLWORKSPACEREF IFadeout::workspace() const {
+ SFadeoutRenderEffects IFadeout::effects() const {
+     return m_effects;
+ }
++
++bool IFadeout::omitFromScreenShare() const {
++    return m_omitFromScreenShare;
++}
+diff --git a/src/desktop/state/Fadeout.hpp b/src/desktop/state/Fadeout.hpp
+index f213ebde..77cf9145 100644
+--- a/src/desktop/state/Fadeout.hpp
++++ b/src/desktop/state/Fadeout.hpp
+@@ -58,6 +58,7 @@ namespace Desktop {
+         virtual float                 alpha() const     = 0;
+         virtual bool                  done() const      = 0;
+         virtual SFadeoutRenderEffects effects() const;
++        bool                          omitFromScreenShare() const;
+ 
+       protected:
+         IFadeout() = default;
+@@ -65,5 +66,6 @@ namespace Desktop {
+         SP<Render::IFramebuffer> m_framebuffer;
+         PHLWORKSPACEREF          m_workspace;
+         SFadeoutRenderEffects    m_effects;
++        bool                     m_omitFromScreenShare = false;
+     };
+ }
+diff --git a/src/desktop/state/LayerFadeout.cpp b/src/desktop/state/LayerFadeout.cpp
+index 283f920a..2a3125da 100644
+--- a/src/desktop/state/LayerFadeout.cpp
++++ b/src/desktop/state/LayerFadeout.cpp
+@@ -49,11 +49,12 @@ SP<CLayerFadeout> CLayerFadeout::create(PHLLS layer, SP<Render::IFramebuffer> sn
+     if (!MONITOR)
+         return nullptr;
+ 
+-    auto fadeout           = SP<CLayerFadeout>(new CLayerFadeout());
+-    fadeout->m_monitor     = MONITOR;
+-    fadeout->m_framebuffer = snapshot;
+-    fadeout->m_geometry    = layer->m_geometry;
+-    fadeout->m_zIndex      = layerZIndex(layer);
++    auto fadeout                   = SP<CLayerFadeout>(new CLayerFadeout());
++    fadeout->m_monitor             = MONITOR;
++    fadeout->m_framebuffer         = snapshot;
++    fadeout->m_geometry            = layer->m_geometry;
++    fadeout->m_zIndex              = layerZIndex(layer);
++    fadeout->m_omitFromScreenShare = layer->m_ruleApplicator->omitsFromScreenShare();
+ 
+     static auto PDIMAROUND = CConfigValue<Config::FLOAT>("decoration:dim_around");
+     if (*PDIMAROUND && layer->m_ruleApplicator->dimAround().valueOrDefault())
+diff --git a/src/desktop/state/PopupFadeout.cpp b/src/desktop/state/PopupFadeout.cpp
+index 5db59704..c7470762 100644
+--- a/src/desktop/state/PopupFadeout.cpp
++++ b/src/desktop/state/PopupFadeout.cpp
+@@ -43,6 +43,8 @@ SP<CPopupFadeout> CPopupFadeout::create(SP<CPopup> popup, SP<Render::IFramebuffe
+     auto fadeout           = SP<CPopupFadeout>(new CPopupFadeout());
+     fadeout->m_monitor     = MONITOR;
+     fadeout->m_framebuffer = snapshot;
++    if (const auto LAYER = popup->layerOwner(); LAYER)
++        fadeout->m_omitFromScreenShare = LAYER->m_ruleApplicator->omitsFromScreenShare();
+ 
+     static CConfigValue PBLURIGNOREA = CConfigValue<Config::FLOAT>("decoration:blur:popups_ignorealpha");
+     if (shouldBlurPopup()) {
+diff --git a/src/managers/screenshare/ScreenshareFrame.cpp b/src/managers/screenshare/ScreenshareFrame.cpp
+index 69f61785..253d6ea5 100644
+--- a/src/managers/screenshare/ScreenshareFrame.cpp
++++ b/src/managers/screenshare/ScreenshareFrame.cpp
+@@ -11,17 +11,39 @@
+ #include "../../state/MonitorState.hpp"
+ #include "../../desktop/view/Window.hpp"
+ #include "../../desktop/state/FocusState.hpp"
++#include "../../desktop/state/FadingOutState.hpp"
+ #include "../../render/pass/ClearPassElement.hpp"
+ #include "../../render/pass/RectPassElement.hpp"
+ #include "helpers/cm/ColorManagement.hpp"
+ #include "../../managers/fullscreen/FullscreenController.hpp"
++#include "../../protocols/SessionLock.hpp"
++#include "../../errorOverlay/Overlay.hpp"
++#include "../../notification/NotificationOverlay.hpp"
+ #include <hyprutils/math/Region.hpp>
+ #include <hyprgraphics/egl/Egl.hpp>
+ 
++#include <algorithm>
++
+ using namespace Hyprgraphics::Egl;
+ using namespace Screenshare;
+ using namespace Desktop::View;
+ 
++static bool monitorNeedsCleanCapture(PHLMONITOR monitor) {
++    if (!monitor)
++        return false;
++
++    for (const auto& layerLevel : monitor->m_layerSurfaceLayers) {
++        for (const auto& weakLayer : layerLevel) {
++            const auto layer = weakLayer.lock();
++            if (layer && layer->visible() && layer->m_ruleApplicator->omitsFromScreenShare())
++                return true;
++        }
++    }
++
++    return std::ranges::any_of(Desktop::fadingOutState()->fadeouts(),
++                               [monitor](const auto& fadeout) { return fadeout && fadeout->monitor() == monitor && fadeout->omitFromScreenShare(); });
++}
++
+ CScreenshareFrame::CScreenshareFrame(WP<CScreenshareSession> session, bool overlayCursor, bool isFirst) :
+     m_session(session), m_bufferSize(m_session->bufferSize()), m_overlayCursor(overlayCursor), m_isFirst(isFirst) {
+     ;
+@@ -173,49 +195,136 @@ void CScreenshareFrame::copy() {
+         m_callback(RESULT_NOT_COPIED);
+ }
+ 
++bool CScreenshareFrame::renderCleanMonitor(PHLMONITOR monitor) {
++    const bool NEEDS_CLEAN_CAPTURE = monitorNeedsCleanCapture(monitor);
++    if (!NEEDS_CLEAN_CAPTURE) {
++        if (m_session->m_cleanCaptureOmissionActive)
++            LOGM(Log::DEBUG, "[clean-capture] No omitted layers remain; returning to the mirror framebuffer");
++
++        m_session->m_cleanCaptureOmissionActive = false;
++        m_session->m_cleanCaptureFallbackLogged = false;
++        return false;
++    }
++
++    if (!m_session->m_cleanCaptureOmissionActive) {
++        LOGM(Log::DEBUG, "[clean-capture] Omitted layer detected on monitor {} at {}", monitor->m_name, monitor->m_pixelSize);
++        m_session->m_cleanCaptureOmissionActive = true;
++    }
++
++    if (m_session->m_type != SHARE_MONITOR) {
++        if (m_session->m_type == SHARE_REGION && !m_session->m_cleanCaptureFallbackLogged) {
++            LOGM(Log::DEBUG, "[clean-capture] Region capture is not supported in Stage 2; using black fallback");
++            m_session->m_cleanCaptureFallbackLogged = true;
++        }
++        return false;
++    }
++
++    if (monitor->m_transform != WL_OUTPUT_TRANSFORM_NORMAL) {
++        if (!m_session->m_cleanCaptureFallbackLogged)
++            LOGM(Log::ERR, "[clean-capture] Output transform {} is not supported yet; using black fallback", sc<int>(monitor->m_transform));
++        m_session->m_cleanCaptureFallbackLogged = true;
++        return false;
++    }
++
++    if (m_bufferSize != monitor->m_pixelSize) {
++        if (!m_session->m_cleanCaptureFallbackLogged)
++            LOGM(Log::ERR, "[clean-capture] Buffer size {} does not match output size {}; using black fallback", m_bufferSize, monitor->m_pixelSize);
++        m_session->m_cleanCaptureFallbackLogged = true;
++        return false;
++    }
++
++    if (g_pSessionLockManager->isSessionLocked()) {
++        if (!m_session->m_cleanCaptureFallbackLogged)
++            LOGM(Log::WARN, "[clean-capture] Session is locked; using black fallback");
++        m_session->m_cleanCaptureFallbackLogged = true;
++        return false;
++    }
++
++    m_session->m_cleanCaptureFallbackLogged = false;
++
++    const auto PREVIOUS_CLEAN_CAPTURE = g_pHyprRenderer->m_bRenderingCleanCapture;
++    auto       restoreCleanCapture    = Render::CScopeGuard([PREVIOUS_CLEAN_CAPTURE]() { g_pHyprRenderer->m_bRenderingCleanCapture = PREVIOUS_CLEAN_CAPTURE; });
++
++    m_previousBlockSurfaceFeedback            = g_pHyprRenderer->m_bBlockSurfaceFeedback;
++    m_cleanCaptureRendered                    = true;
++    g_pHyprRenderer->m_bBlockSurfaceFeedback  = true;
++    g_pHyprRenderer->m_bRenderingCleanCapture = true;
++
++    const auto NOW       = Time::steadyNow();
++    const auto RENDERBOX = CBox{0, 0, sc<int>(monitor->m_pixelSize.x), sc<int>(monitor->m_pixelSize.y)};
++
++    g_pHyprRenderer->renderWorkspace(monitor, monitor->m_activeWorkspace, NOW, RENDERBOX);
++
++    if (monitor == Desktop::focusState()->monitor()) {
++        Notification::overlay()->draw(monitor);
++        ErrorOverlay::overlay()->draw();
++    }
++
++    if (monitor->m_dpmsBlackOpacity->value() != 0.F) {
++        g_pHyprRenderer->draw(
++            CRectPassElement::SRectData{
++                .box   = RENDERBOX,
++                .color = Colors::BLACK.modifyA(monitor->m_dpmsBlackOpacity->value()),
++            },
++            RENDERBOX);
++    }
++
++    return true;
++}
++
++void CScreenshareFrame::restoreCleanCaptureState() {
++    if (!m_cleanCaptureRendered)
++        return;
++
++    g_pHyprRenderer->m_bBlockSurfaceFeedback = m_previousBlockSurfaceFeedback;
++    m_cleanCaptureRendered                   = false;
++}
++
+ void CScreenshareFrame::renderMonitor() {
+     if ((m_session->m_type != SHARE_MONITOR && m_session->m_type != SHARE_REGION) || done())
+         return;
+ 
+     const auto PMONITOR = m_session->monitor();
+ 
+-    auto       TEXTURE = g_pHyprRenderer->m_renderData.pMonitor->resources()->getMirrorTexture();
+-    if (!TEXTURE) {
+-        LOGM(Log::ERR, "Invalid source texture");
+-        return;
+-    }
++    if (!renderCleanMonitor(PMONITOR)) {
++        auto TEXTURE = g_pHyprRenderer->m_renderData.pMonitor->resources()->getMirrorTexture();
++        if (!TEXTURE) {
++            LOGM(Log::ERR, "Invalid source texture");
++            return;
++        }
+ 
+-    if (!TEXTURE->m_imageDescription)
+-        Log::logger->log(Log::ERR, "CM: FIXME no source image description for screenshare");
++        if (!TEXTURE->m_imageDescription)
++            Log::logger->log(Log::ERR, "CM: FIXME no source image description for screenshare");
+ 
+-    if (!g_pHyprRenderer->m_renderData.currentFB->imageDescription())
+-        Log::logger->log(Log::ERR, "CM: FIXME no target image description for screenshare");
++        if (!g_pHyprRenderer->m_renderData.currentFB->imageDescription())
++            Log::logger->log(Log::ERR, "CM: FIXME no target image description for screenshare");
+ 
+-    if (TEXTURE->m_imageDescription && g_pHyprRenderer->m_renderData.currentFB->imageDescription())
+-        Log::logger->log(Log::TRACE, "CM: screenshot renderMonitor {} -> {}", TEXTURE->m_imageDescription->value(),
+-                         g_pHyprRenderer->m_renderData.currentFB->imageDescription()->value());
++        if (TEXTURE->m_imageDescription && g_pHyprRenderer->m_renderData.currentFB->imageDescription())
++            Log::logger->log(Log::TRACE, "CM: screenshot renderMonitor {} -> {}", TEXTURE->m_imageDescription->value(),
++                             g_pHyprRenderer->m_renderData.currentFB->imageDescription()->value());
+ 
+-    const bool IS_CM_AWARE                        = PROTO::colorManagement && PROTO::colorManagement->isClientCMAware(m_session->m_client);
+-    g_pHyprRenderer->m_renderData.transformDamage = false;
+-    g_pHyprRenderer->m_renderData.noSimplify      = true;
++        const bool IS_CM_AWARE                        = PROTO::colorManagement && PROTO::colorManagement->isClientCMAware(m_session->m_client);
++        g_pHyprRenderer->m_renderData.transformDamage = false;
++        g_pHyprRenderer->m_renderData.noSimplify      = true;
+ 
+-    // render monitor texture
+-    CBox       monbox = CBox{{}, PMONITOR->m_pixelSize}
+-                            .transform(Math::wlTransformToHyprutils(Math::invertTransform(PMONITOR->m_transform)), PMONITOR->m_pixelSize.x, PMONITOR->m_pixelSize.y)
+-                            .translate(-m_session->m_captureBox.pos()); // vvvv kinda ass-backwards but that's how I designed the renderer... sigh.
++        // render monitor texture
++        CBox       monbox = CBox{{}, PMONITOR->m_pixelSize}
++                                .transform(Math::wlTransformToHyprutils(Math::invertTransform(PMONITOR->m_transform)), PMONITOR->m_pixelSize.x, PMONITOR->m_pixelSize.y)
++                                .translate(-m_session->m_captureBox.pos()); // vvvv kinda ass-backwards but that's how I designed the renderer... sigh.
+ 
+-    const auto OLD                                    = g_pHyprRenderer->m_renderData.renderModif.enabled;
+-    g_pHyprRenderer->m_renderData.renderModif.enabled = false;
+-    g_pHyprRenderer->startRenderPass();
+-    g_pHyprRenderer->draw(
+-        CTexPassElement::SRenderData{
+-            .tex          = TEXTURE,
+-            .box          = monbox,
+-            .flipEndFrame = true,
+-            .cmBackToSRGB = !IS_CM_AWARE,
+-        },
+-        {0, 0, PMONITOR->m_pixelSize.x, PMONITOR->m_pixelSize.y});
+-    g_pHyprRenderer->m_renderData.renderModif.enabled = OLD;
++        const auto OLD                                    = g_pHyprRenderer->m_renderData.renderModif.enabled;
++        g_pHyprRenderer->m_renderData.renderModif.enabled = false;
++        g_pHyprRenderer->startRenderPass();
++        g_pHyprRenderer->draw(
++            CTexPassElement::SRenderData{
++                .tex          = TEXTURE,
++                .box          = monbox,
++                .flipEndFrame = true,
++                .cmBackToSRGB = !IS_CM_AWARE,
++            },
++            {0, 0, PMONITOR->m_pixelSize.x, PMONITOR->m_pixelSize.y});
++        g_pHyprRenderer->m_renderData.renderModif.enabled = OLD;
++    }
+ 
+     // render black boxes for noscreenshare
+     auto hidePopups = [&](Vector2D popupBaseOffset) {
+@@ -238,7 +347,7 @@ void CScreenshareFrame::renderMonitor() {
+     };
+ 
+     for (auto const& l : Desktop::layerState()->layers()) {
+-        if (!l->m_ruleApplicator->noScreenShare().valueOrDefault())
++        if (!l->m_ruleApplicator->blocksScreenShare() && (m_cleanCaptureRendered || !l->m_ruleApplicator->omitsFromScreenShare()))
+             continue;
+ 
+         if UNLIKELY (!l->visible())
+@@ -260,6 +369,17 @@ void CScreenshareFrame::renderMonitor() {
+             l->m_popupHead->breadthfirst(hidePopups(popupBaseOffset), nullptr);
+     }
+ 
++    if (!m_cleanCaptureRendered) {
++        for (const auto& fadeout : Desktop::fadingOutState()->fadeouts()) {
++            if (!fadeout || fadeout->monitor() != PMONITOR || !fadeout->omitFromScreenShare())
++                continue;
++
++            const auto box = fadeout->renderBox().translate(-m_session->m_captureBox.pos());
++            if (!box.empty())
++                g_pHyprRenderer->draw(CRectPassElement::SRectData{.box = box, .color = Colors::BLACK}, box);
++        }
++    }
++
+     for (auto const& w : Desktop::windowState()->windows()) {
+         if (!w->m_ruleApplicator->noScreenShare().valueOrDefault())
+             continue;
+@@ -419,6 +539,7 @@ bool CScreenshareFrame::copyDmabuf() {
+         self->m_callback(RESULT_COPIED);
+         self->m_copied = true;
+     });
++    restoreCleanCaptureState();
+ 
+     return true;
+ }
+@@ -451,6 +572,7 @@ bool CScreenshareFrame::copyShm() {
+     g_pHyprRenderer->m_renderData.blockScreenShader = true;
+ 
+     g_pHyprRenderer->endRender();
++    restoreCleanCaptureState();
+ 
+     bool readSucceeded = true;
+     m_damage.forEachRect([&](const auto& rect) {
+@@ -501,6 +623,7 @@ void CScreenshareFrame::storeTempFB() {
+     }
+ 
+     g_pHyprRenderer->endRender();
++    restoreCleanCaptureState();
+ }
+ 
+ Vector2D CScreenshareFrame::bufferSize() const {
+diff --git a/src/managers/screenshare/ScreenshareManager.hpp b/src/managers/screenshare/ScreenshareManager.hpp
+index d115d211..beaf6400 100644
+--- a/src/managers/screenshare/ScreenshareManager.hpp
++++ b/src/managers/screenshare/ScreenshareManager.hpp
+@@ -79,7 +79,9 @@ namespace Screenshare {
+         SP<Render::IFramebuffer> m_tempFB;
+ 
+         SP<CEventLoopTimer>      m_shareStopTimer;
+-        bool                     m_sharing = false;
++        bool                     m_sharing                    = false;
++        bool                     m_cleanCaptureOmissionActive = false;
++        bool                     m_cleanCaptureFallbackLogged = false;
+ 
+         struct {
+             CHyprSignalListener monitorDestroyed;
+@@ -174,9 +176,11 @@ namespace Screenshare {
+         Vector2D                m_bufferSize = Vector2D(0, 0);
+         CRegion                 m_damage; // damage in buffer coords
+         bool                    m_shared = false, m_copied = false, m_failed = false;
+-        bool                    m_copyInFlight  = false; // a dmabuf copy is issued and waiting on its fence
+-        bool                    m_overlayCursor = true;
+-        bool                    m_isFirst       = false;
++        bool                    m_copyInFlight                 = false; // a dmabuf copy is issued and waiting on its fence
++        bool                    m_overlayCursor                = true;
++        bool                    m_isFirst                      = false;
++        bool                    m_cleanCaptureRendered         = false;
++        bool                    m_previousBlockSurfaceFeedback = false;
+ 
+         //
+         void copy();
+@@ -185,6 +189,8 @@ namespace Screenshare {
+ 
+         void render();
+         void renderMonitor();
++        bool renderCleanMonitor(PHLMONITOR monitor);
++        void restoreCleanCaptureState();
+         void renderMonitorRegion();
+         void renderWindow();
+ 
+diff --git a/src/render/Renderer.cpp b/src/render/Renderer.cpp
+index 0d31b583..b59a62dc 100644
+--- a/src/render/Renderer.cpp
++++ b/src/render/Renderer.cpp
+@@ -331,7 +331,8 @@ bool IHyprRenderer::shouldRenderMonitor(PHLMONITOR monitor) {
+ void IHyprRenderer::renderWorkspaceWindowsFullscreen(PHLMONITOR pMonitor, PHLWORKSPACE pWorkspace, const Time::steady_tp& time) {
+     PHLWINDOW pWorkspaceWindow = nullptr;
+ 
+-    Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOWS);
++    if (!m_bRenderingCleanCapture)
++        Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOWS);
+ 
+     // pre-filter renderable windows once for the tiled + floating passes
+     std::vector<PHLWINDOW> windows;
+@@ -435,7 +436,8 @@ void IHyprRenderer::renderWorkspaceWindowsFullscreen(PHLMONITOR pMonitor, PHLWOR
+ void IHyprRenderer::renderWorkspaceWindows(PHLMONITOR pMonitor, PHLWORKSPACE pWorkspace, const Time::steady_tp& time) {
+     PHLWINDOW lastWindow;
+ 
+-    Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOWS);
++    if (!m_bRenderingCleanCapture)
++        Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOWS);
+ 
+     std::vector<PHLWINDOWREF> windows;
+     windows.reserve(Desktop::windowState()->windows().size());
+@@ -614,7 +616,8 @@ void IHyprRenderer::renderWindow(PHLWINDOW pWindow, PHLMONITOR pMonitor, const T
+     // for plugins
+     m_renderData.currentWindow = pWindow;
+ 
+-    Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOW);
++    if (!m_bRenderingCleanCapture)
++        Event::bus()->m_events.render.stage.emit(RENDER_PRE_WINDOW);
+ 
+     const auto fullAlpha = renderdata.alpha * renderdata.fadeAlpha;
+ 
+@@ -819,7 +822,8 @@ void IHyprRenderer::renderWindow(PHLWINDOW pWindow, PHLMONITOR pMonitor, const T
+         }
+     }
+ 
+-    Event::bus()->m_events.render.stage.emit(RENDER_POST_WINDOW);
++    if (!m_bRenderingCleanCapture)
++        Event::bus()->m_events.render.stage.emit(RENDER_POST_WINDOW);
+ 
+     m_renderData.currentWindow.reset();
+ }
+@@ -939,6 +943,9 @@ void IHyprRenderer::renderLayer(PHLLS pLayer, PHLMONITOR pMonitor, const Time::s
+     if (!pLayer->visible())
+         return;
+ 
++    if (m_bRenderingCleanCapture && pLayer->m_ruleApplicator->omitsFromScreenShare())
++        return;
++
+     // skip rendering based on abovelock rule and make sure to not render abovelock layers twice
+     if ((pLayer->m_ruleApplicator->aboveLock().valueOrDefault() && !lockscreen && g_pSessionLockManager->isSessionLocked()) ||
+         (lockscreen && !pLayer->m_ruleApplicator->aboveLock().valueOrDefault()))
+@@ -1138,7 +1145,8 @@ void IHyprRenderer::renderAllClientsForWorkspace(PHLMONITOR pMonitor, PHLWORKSPA
+         }
+         renderFadeouts(pMonitor, Desktop::FADEOUT_PLANE_LAYER_BACKGROUND);
+ 
+-        Event::bus()->m_events.render.stage.emit(RENDER_POST_WALLPAPER);
++        if (!m_bRenderingCleanCapture)
++            Event::bus()->m_events.render.stage.emit(RENDER_POST_WALLPAPER);
+ 
+         for (auto const& ls : pMonitor->m_layerSurfaceLayers[ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM]) {
+             renderLayer(ls.lock(), pMonitor, time);
+@@ -1166,7 +1174,8 @@ void IHyprRenderer::renderAllClientsForWorkspace(PHLMONITOR pMonitor, PHLWORKSPA
+         }
+         renderFadeouts(pMonitor, Desktop::FADEOUT_PLANE_LAYER_BACKGROUND);
+ 
+-        Event::bus()->m_events.render.stage.emit(RENDER_POST_WALLPAPER);
++        if (!m_bRenderingCleanCapture)
++            Event::bus()->m_events.render.stage.emit(RENDER_POST_WALLPAPER);
+ 
+         for (auto const& ls : pMonitor->m_layerSurfaceLayers[ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM]) {
+             renderLayer(ls.lock(), pMonitor, time);
+@@ -1228,7 +1237,8 @@ void IHyprRenderer::renderAllClientsForWorkspace(PHLMONITOR pMonitor, PHLWORKSPA
+         renderWindow(w, pMonitor, time, true, RENDER_PASS_ALL);
+     }
+ 
+-    Event::bus()->m_events.render.stage.emit(RENDER_POST_WINDOWS);
++    if (!m_bRenderingCleanCapture)
++        Event::bus()->m_events.render.stage.emit(RENDER_POST_WINDOWS);
+ 
+     // Render surfaces above windows for monitor
+     for (auto const& ls : pMonitor->m_layerSurfaceLayers[ZWLR_LAYER_SHELL_V1_LAYER_TOP]) {
+@@ -3203,6 +3213,9 @@ void IHyprRenderer::renderFadeouts(PHLMONITOR monitor, Desktop::eFadeoutPlane pl
+         if (!fadeout || fadeout->monitor() != monitor || fadeout->plane() != plane)
+             continue;
+ 
++        if (m_bRenderingCleanCapture && fadeout->omitFromScreenShare())
++            continue;
++
+         if (fadeout->workspace() && fadeout->workspace() != workspace)
+             continue;
+ 
+diff --git a/src/render/Renderer.hpp b/src/render/Renderer.hpp
+index 87fa50bf..c6cf8157 100644
+--- a/src/render/Renderer.hpp
++++ b/src/render/Renderer.hpp
+@@ -106,8 +106,9 @@ namespace Render {
+         virtual void                        endRender(const std::function<void()>& renderingDoneCallback = {}) = 0;
+ 
+         NColorManagement::PImageDescription workBufferImageDescription();
+-        bool                                m_bBlockSurfaceFeedback = false;
+-        bool                                m_bRenderingSnapshot    = false;
++        bool                                m_bBlockSurfaceFeedback  = false;
++        bool                                m_bRenderingSnapshot     = false;
++        bool                                m_bRenderingCleanCapture = false;
+         PHLMONITORREF                       m_mostHzMonitor;
+         bool                                m_directScanoutBlocked = false;
+ 
+diff --git a/tests/desktop/rule/LayerRule.cpp b/tests/desktop/rule/LayerRule.cpp
+new file mode 100644
+index 00000000..f2613495
+--- /dev/null
++++ b/tests/desktop/rule/LayerRule.cpp
+@@ -0,0 +1,25 @@
++#include <desktop/rule/layerRule/LayerRule.hpp>
++
++#include <gtest/gtest.h>
++
++using namespace Desktop::Rule;
++
++TEST(LayerRule, screenShareModeAcceptsKnownModes) {
++    for (const auto* mode : {"normal", "black", "omit"}) {
++        CLayerRule rule;
++        const auto result = rule.addEffect(LAYER_RULE_EFFECT_SCREEN_SHARE_MODE, mode);
++
++        ASSERT_TRUE(result.has_value());
++        ASSERT_EQ(rule.effects().size(), 1);
++        EXPECT_EQ(std::get<std::string>(rule.effects().front().value), mode);
++    }
++}
++
++TEST(LayerRule, screenShareModeRejectsUnknownMode) {
++    CLayerRule rule;
++    const auto result = rule.addEffect(LAYER_RULE_EFFECT_SCREEN_SHARE_MODE, "transparent");
++
++    ASSERT_FALSE(result.has_value());
++    EXPECT_NE(result.error().find("normal, black, omit"), std::string::npos);
++    EXPECT_TRUE(rule.effects().empty());
++}
