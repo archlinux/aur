@@ -1,0 +1,77 @@
+post_install() {
+    if [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; then
+        cat << 'MSG'
+==> speech-dispatcher-mimo 已安装！
+
+  小米 MiMo TTS 通过 MiMo 云 API 提供高质量中英文神经语音合成。
+
+  1. 创建 API 密钥配置:
+     mkdir -p ~/.config/speech-dispatcher
+     cat > ~/.config/speech-dispatcher/mimo-tts.env << 'EOF'
+MIMO_API_KEY="your-key-here"
+EOF
+     chmod 600 ~/.config/speech-dispatcher/mimo-tts.env
+
+  2. 测试:
+     spd-say "你好世界"
+
+  3. 切换音色:
+     mimo-voice --list
+     mimo-voice --set 冰糖
+
+  配置文件查找顺序:
+    ~/.config/speech-dispatcher/mimo-tts.env  (用户级，优先)
+    /etc/speech-dispatcher/mimo-tts.env       (系统级，兜底)
+MSG
+    else
+        cat << 'MSG'
+==> speech-dispatcher-mimo installed!
+
+  Xiaomi MiMo TTS provides high-quality Chinese/English neural speech
+  synthesis via the MiMo cloud API (OpenAI-compatible).
+
+  1. Create your API key config:
+     mkdir -p ~/.config/speech-dispatcher
+     cat > ~/.config/speech-dispatcher/mimo-tts.env << 'EOF'
+MIMO_API_KEY="your-key-here"
+EOF
+     chmod 600 ~/.config/speech-dispatcher/mimo-tts.env
+
+  2. Test:
+     spd-say "Hello, World"
+
+  3. Switch voice:
+     mimo-voice --list
+     mimo-voice --set 冰糖
+
+  Config lookup order:
+    ~/.config/speech-dispatcher/mimo-tts.env  (user, preferred)
+    /etc/speech-dispatcher/mimo-tts.env       (system fallback)
+MSG
+    fi
+
+    # Register module + set as default
+    conf="/etc/speech-dispatcher/speechd.conf"
+    if [ -f "$conf" ]; then
+        sed -i '/^AddModule.*"mimo"/d' "$conf"
+        sed -i '/^#AddModule "mimic3-generic"/a AddModule "mimo"              "sd_mimo"      "mimo.conf"' "$conf"
+        grep -q 'AddModule.*mimo' "$conf" || \
+            echo 'AddModule "mimo"              "sd_mimo"      "mimo.conf"' >> "$conf"
+
+        if ! grep -q '^DefaultModule' "$conf"; then
+            echo 'DefaultModule "mimo"' >> "$conf"
+        fi
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    conf="/etc/speech-dispatcher/speechd.conf"
+    if [ -f "$conf" ]; then
+        sed -i '/^DefaultModule "mimo"/d' "$conf"
+        sed -i '/^AddModule.*mimo/d' "$conf"
+    fi
+}
