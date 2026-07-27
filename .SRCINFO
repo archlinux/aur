@@ -1,0 +1,21 @@
+pkgbase = rusted-claude-meter
+	pkgdesc = Cross-platform tray app showing your Claude plan usage
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/mpecan/rusted-claude-meter
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.96.0
+	makedepends = nodejs>=24
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = gtk3
+	depends = openssl
+	depends = xdotool
+	options = !lto
+	source = rusted-claude-meter-0.1.4.tar.gz::https://github.com/mpecan/rusted-claude-meter/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 4ccedef9c0046f7f6d346c9b5a4bac93e5dcd6d13976a600fc055aefc4f9d003
+
+pkgname = rusted-claude-meter
