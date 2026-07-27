@@ -1,5 +1,5 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index ae28f90..890602d 100644
+index 1712267..ef58212 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -19,7 +19,7 @@ beyond-lib = { path = "./beyond-lib", version = "*" }
@@ -8,6 +8,6 @@ index ae28f90..890602d 100644
  serde = { version = "1.0", features = ["derive"] }
 -hidapi = "2.6"
 +hidapi = { version = "2.6", default-features = false, features = ["linux-shared-hidraw"] }
- rusb = "0.9.4"
- dfu-libusb = "0.6.2"
- 
+ rusb = "0.9"
+ dfu-libusb = "0.6"
+ indicatif = "0.18"

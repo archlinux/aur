@@ -1,7 +1,7 @@
 # Maintainer: Glax <its@glax.dev>
 _pkgname=beyond-cubed
 pkgname="${_pkgname}-git"
-pkgver=r38.c39a425
+pkgver=r35.af743c5
 pkgrel=1
 pkgdesc="An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+${url}"
 	"hidapi-linking.patch"
 	"beyond-cubed.desktop")
 sha256sums=('SKIP'
-	"a44ffdeb6295bc8fe15091dcf1e766c606129be376ea2cc2e74cd81d18f1068b"
+	"d6ff7d6eda1a137d973b3c0802ee363762aaacfda307df32ddbbec5571b8b9e5"
 	"303fb21657ac89786771a132702a7b50c03c4bd9ed3e6dc503fba80897124ef7")
 
 prepare() {
