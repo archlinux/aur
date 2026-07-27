@@ -1,6 +1,6 @@
 pkgbase = r-multcompview
 	pkgdesc = Visualizations of Paired Comparisons
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=multcompView
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = r-multcompview
 	depends = r
 	optdepends = r-multcomp
 	optdepends = r-pgirmess
-	source = https://cran.r-project.org/src/contrib/multcompView_0.1-11.tar.gz
-	md5sums = 3c0a9b4cf2061837c0000f464f0dca8f
-	b2sums = 5f098010259920183799b91f61ce847e12b0e3cf82c037c6cdd0dc680fb9562dc98119f1d6f5b5bc93c63fc799e63299b2ec453e6dad46d5f24899d30669b360
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/multcompView_0.1-12.tar.gz
+	md5sums = d205a7fd15658c339ffe5eac8481e63d
+	b2sums = 18e3557a98e5ee5c7a16045d4567ee8dd4689ec6a9fd6a1fc85745b40ede51a683c29ff0de9e2975bcd0cc07094077f02cee96be7a952cd94d7bf2af9c92fb9f
 
 pkgname = r-multcompview
