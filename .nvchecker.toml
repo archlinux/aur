@@ -1,5 +1,5 @@
-[python-phiml]
+[python-pyfvtool]
 source = "github"
 github = "FiniteVolumeTransportPhenomena/PyFVTool"
-use_latest_release = "true"
+use_latest_release = "True"
 prefix = "v"

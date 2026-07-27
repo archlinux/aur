@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PyFVTool
 pkgname=python-${_base,,}
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Finite volume toolbox in Python"
 arch=(any)
 url="https://github.com/FiniteVolumeTransportPhenomena/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools
   python-sphinx python-myst-parser python-nbsphinx python-sphinx_rtd_theme pandoc-cli)
 checkdepends=(python-pytest python-tqdm python-pypardiso)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('da3476288acb22e5bbed548f0a98fddb3e22e6f7ad264b902e3cea595bc2cf96e0e4df9641af6f09e7175c0447eea39bbf14820409bda03e8a9ff6fa75d15839')
+sha512sums=('916c867abc58683421b95a418bbd8bda8409e52be03a1d7156f70f7bc6a7e43db978cda163d51fbb8d265622d6a0d4262cb2bbcd4ea55db7da410687bf4bf23d')
 
 build() {
   cd ${_base}-${pkgver}

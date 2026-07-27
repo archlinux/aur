@@ -1,7 +1,7 @@
 pkgbase = python-pyfvtool
 	pkgdesc = Finite volume toolbox in Python
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/FiniteVolumeTransportPhenomena/PyFVTool
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-pyfvtool
 	makedepends = pandoc-cli
 	depends = python-scipy
 	depends = python-matplotlib
-	source = PyFVTool-0.4.2.tar.gz::https://github.com/FiniteVolumeTransportPhenomena/PyFVTool/archive/v0.4.2.tar.gz
-	sha512sums = da3476288acb22e5bbed548f0a98fddb3e22e6f7ad264b902e3cea595bc2cf96e0e4df9641af6f09e7175c0447eea39bbf14820409bda03e8a9ff6fa75d15839
+	source = PyFVTool-0.5.1.tar.gz::https://github.com/FiniteVolumeTransportPhenomena/PyFVTool/archive/v0.5.1.tar.gz
+	sha512sums = 916c867abc58683421b95a418bbd8bda8409e52be03a1d7156f70f7bc6a7e43db978cda163d51fbb8d265622d6a0d4262cb2bbcd4ea55db7da410687bf4bf23d
 
 pkgname = python-pyfvtool
