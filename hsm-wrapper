@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# AUR packages are updated through pacman rather than HSM's Git updater.
+export HSM_DISABLE_UPDATE_CHECK=1
+exec /usr/lib/harness-session-manager/src/index.mjs "$@"
