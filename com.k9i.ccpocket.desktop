@@ -4,6 +4,7 @@ Name=CC Pocket
 Comment=Mobile client for Claude Code and Codex
 Exec=ccpocket
 Icon=cc-pocket
+StartupWMClass=com.k9i.ccpocket
 Terminal=false
 Categories=Development;Utility;
 Keywords=claude;codex;ai;agent;

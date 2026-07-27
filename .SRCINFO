@@ -1,6 +1,6 @@
 pkgbase = cc-pocket-bin
 	pkgdesc = Mobile client for Claude Code and Codex — Linux desktop app
-	pkgver = 1.104.1
+	pkgver = 1.109.2
 	pkgrel = 1
 	url = https://github.com/K9i-0/ccpocket
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = cc-pocket-bin
 	makedepends = patchelf
 	depends = gtk3
 	depends = libsecret
-	source = cc-pocket-bin-1.104.1.tar.gz::https://github.com/K9i-0/ccpocket/releases/download/linux%2Fv1.104.1%2B186/CC-Pocket-linux-x64-v1.104.1.tar.gz
-	source = cc-pocket.desktop
+	source = cc-pocket-bin-1.109.2.tar.gz::https://github.com/K9i-0/ccpocket/releases/download/linux%2Fv1.109.2%2B201/CC-Pocket-linux-x64-v1.109.2.tar.gz
+	source = com.k9i.ccpocket.desktop
 	source = cc-pocket.png
-	source = LICENSE::https://raw.githubusercontent.com/K9i-0/ccpocket/main/LICENSE
-	sha256sums = f5c6b26033e088899b7a5e3eb9c8b07d40e813b28a6653f8c30a3ab7b8dab82e
+	source = LICENSE::https://raw.githubusercontent.com/K9i-0/ccpocket/linux%2Fv1.109.2%2B201/LICENSE
+	sha256sums = 2f686af2ff927938c286fe247a55b8ba5ae8e565de7843c7b3e5d20b071fe080
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 738b2c95e9933f9c75149e12f3d4a258e6ec996ac64bf39b1adbf426055ff57c
 
 pkgname = cc-pocket-bin
