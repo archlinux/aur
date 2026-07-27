@@ -3,7 +3,7 @@
 
 _pkgname=3proxy
 pkgname=${_pkgname}-standalone
-pkgver=0.9.4
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Standalone HTTP/SOCKS proxy binaries from 3proxy proxy server"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('gcc' 'make')
 source=("https://github.com/z3APA3A/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b497f74d6cc7ee58ff824457427acc02c6f7a102e483816fbb1b2494942ef983')
+sha256sums=('efe862ef8b7c0ddf7b1c45d6b5d72f0b7cd0a3c54447419c7f1bd2239a06fc30')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
