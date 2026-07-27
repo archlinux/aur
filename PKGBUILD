@@ -10,7 +10,7 @@
 
 pkgname=mathematica
 pkgdesc='Computational software for mathematics, with offline documentation bundled'
-pkgver=15
+pkgver=15.0.1
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
 _minor=${_minor:-0}
 pkgrel=1
@@ -55,7 +55,7 @@ if [[ ${SKIP_DYNAMIC_SIGNATURE:-${PRINTSRCINFO}} != 1 ]]; then
 fi
 source=("Wolfram_${pkgver}.sh::${_source_url}?version=${_major}.${_minor}${_patch/#?/.&}&platform=Linux&downloadManager=false${_dynamic_signature}"
         'wolfram-remove-xdg-scripts.patch')
-sha256sums=('e46ba53f714cee9fd104a26c915cf2c0f189312f7418d013a5ccdc71e2a650aa'
+sha256sums=('5732bc0ae3a1938b0e3b908be33deb7e9639eb7d45d9137a7340e1f1c13179e8'
             '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't be of too much help here, since this is a binary distribution.
