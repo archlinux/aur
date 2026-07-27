@@ -21,9 +21,12 @@ license=('AGPL3')
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
+options=(!lto !debug strip)
 
-source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
-sha512sums=('SKIP')
+source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
+		"azerothcore-auth.service"
+		"azerothcore-world.service")
+sha512sums=('SKIP' "SKIP" "SKIP")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -106,9 +109,6 @@ build() {
     export CFLAGS="${CFLAGS/-flto=auto/}"
     export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
     export LDFLAGS="${LDFLAGS/-flto=auto/}"
-    
-    # Alternative safeguard flag for newer versions of makepkg
-    options=(!lto !debug strip)
 
 	# Clean build sandbox creation using the native, modern CMake wrapper
     # Fixed the installation target directories to proper Linux standards
@@ -139,6 +139,6 @@ package() {
   	install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"
 
 	# Installs the systemd service units so the server can be managed with systemctl
-  	install -Dm644 "${startdir}/azerothcore-auth.service" "${pkgdir}/usr/lib/systemd/system/azerothcore-auth.service"
-  	install -Dm644 "${startdir}/azerothcore-world.service" "${pkgdir}/usr/lib/systemd/system/azerothcore-world.service"
+  	install -Dm644 "${srcdir}/azerothcore-auth.service" "${pkgdir}/usr/lib/systemd/system/azerothcore-auth.service"
+  	install -Dm644 "${srcdir}/azerothcore-world.service" "${pkgdir}/usr/lib/systemd/system/azerothcore-world.service"
 }

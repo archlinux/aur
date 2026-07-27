@@ -14,7 +14,14 @@ pkgbase = azerothcore
 	depends = boost-libs
 	depends = readline
 	depends = openssl
+	options = !lto
+	options = !debug
+	options = strip
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
+	source = azerothcore-auth.service
+	source = azerothcore-world.service
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = azerothcore
