@@ -1,6 +1,6 @@
 pkgbase = idlectl
 	pkgdesc = Idle policy daemon that decides when a machine may blank, suspend, hibernate or power off
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Eric-Canas/cachyos-idlectl
 	install = idlectl.install
@@ -15,7 +15,7 @@ pkgbase = idlectl
 	depends = libgcc
 	depends = glibc
 	optdepends = nvidia-utils: GPU memory detection on NVIDIA cards
-	source = idlectl-0.2.1.tar.gz::https://github.com/Eric-Canas/cachyos-idlectl/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 186dc49f71413375293365bd8c711b5c98dc288b21018c993d6206e3bcd0333c
+	source = idlectl-0.3.0.tar.gz::https://github.com/Eric-Canas/cachyos-idlectl/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = d356bc46c94810a4e97e934b9b0b9f3e9356a0392bbf3221cc9dd680d0d756c3
 
 pkgname = idlectl
