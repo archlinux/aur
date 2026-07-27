@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.16.23.r3.g96376e47
+pkgver=3.16.25.r0.g17baf4ab
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -46,7 +46,8 @@ makedepends=(
   'ninja'
   'updpkgsrcs'
   'vulkan-headers'
-  'wayland-protocols')
+  'wayland-protocols'
+  'catch2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -68,9 +69,9 @@ prepare() {
 
   msg2 'Retrieving git build dependencies...'
   local outmsg='first loop'
-  # I need the loop for resolve submodules of a submodule
+  # I need this “while” loop to resolve the submodule of a submodule
   while true; do
-    outmsg=$( { eval "$(updpkgsrcs echoGitCMDForSubModule force)" 1>/dev/null; } 2>&1 )
+    outmsg=$( { eval "$(updpkgsrcs echoGitCMDForSubModule force)" 1>/dev/null || true; } )
     if [[ -z $outmsg ]]; then # no new git submodule checked out
       updpkgsrcs updateBuildScriptForSubModule || exit $?
       break
@@ -110,7 +111,7 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283'
          'subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=47a5590e9c4eb35d67651b8c05a55f1a48259329'
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
-         'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=c08d99437ec8bb56a703f04ad1ef199502c62d10') # End
+         'subprojects|wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#commit=88a869855742281c98c22cab9641b317b8d065ef') # End
 
 sha512sums=('SKIP'
             '16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa'

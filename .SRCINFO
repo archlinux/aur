@@ -1,6 +1,6 @@
 pkgbase = gamescope-nvidia-git
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.16.23.r3.g96376e47
+	pkgver = 3.16.25.r0.g17baf4ab
 	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install
@@ -16,6 +16,7 @@ pkgbase = gamescope-nvidia-git
 	makedepends = updpkgsrcs
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
+	makedepends = catch2
 	depends = libpipewire
 	depends = libcap
 	depends = libxcomposite
@@ -47,7 +48,7 @@ pkgbase = gamescope-nvidia-git
 	source = src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283
 	source = subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=47a5590e9c4eb35d67651b8c05a55f1a48259329
 	source = subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4
-	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=c08d99437ec8bb56a703f04ad1ef199502c62d10
+	source = subprojects|wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#commit=88a869855742281c98c22cab9641b317b8d065ef
 	sha512sums = SKIP
 	sha512sums = 16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa
 	sha512sums = 53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f
