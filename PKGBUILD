@@ -17,7 +17,7 @@
 # `unisic` source package instead.
 
 pkgname=unisic-bin
-pkgver=0.7.5
+pkgver=0.8
 pkgrel=1
 # pkgrel of the upstream release asset - part of its file name, and it moves
 # independently of this package's own pkgrel.
@@ -31,9 +31,13 @@ license=('GPL-3.0-or-later')
 # links libinput.so.10 for the keystroke/click overlays, and the icons land in
 # the hicolor hierarchy. Both happen to be present on any real Wayland
 # desktop, which is why nobody hit it - they still belong here.
+# The libx* four are the X11 capture and hotkey paths added in 0.8 (XShm
+# screen recording and the XGrabKey global shortcuts an X11 session needs,
+# neither of which has a Wayland route), so they are runtime dependencies on
+# every install, not just X11 ones - the binary links them unconditionally.
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'pipewire' 'ffmpeg' 'wl-clipboard'
          'xdg-desktop-portal' 'tesseract' 'leptonica' 'layer-shell-qt' 'zxing-cpp' 'kguiaddons'
-         'libinput' 'hicolor-icon-theme')
+         'libinput' 'hicolor-icon-theme' 'libx11' 'libxext' 'libxfixes' 'libxcb')
 optdepends=('curl: FTP/SFTP upload destinations'
             'xdg-desktop-portal-kde: KDE portal backend for screenshots and screen recording'
             'xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops'
@@ -43,7 +47,7 @@ provides=("unisic=${pkgver}")
 conflicts=('unisic')
 options=('!strip' '!debug')
 source=("unisic-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst::${url}/releases/download/v${pkgver}/unisic-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('33cc6e123cfbb4de5ef7468338d977a9d40a102f6c3ce9dafec3b23854dc7029')
+sha256sums=('8c86ed1969d72d7e39fd882c22305b62fada7ba19fe7ecdcbcec1e635de0f1ee')
 # makepkg would auto-extract a pacman package into $srcdir alongside its
 # metadata; unpack it explicitly instead so only usr/ can ever reach $pkgdir.
 noextract=("unisic-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
