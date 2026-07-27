@@ -16,7 +16,7 @@ source=("git+${url}"
 	"hidapi-linking.patch"
 	"beyond-cubed.desktop")
 sha256sums=('SKIP'
-	"d6ff7d6eda1a137d973b3c0802ee363762aaacfda307df32ddbbec5571b8b9e5"
+	"7366d8a07b1fb097ea15db9d1bc2b21a1f13fa36b06c7060a460fa289b84f15b"
 	"303fb21657ac89786771a132702a7b50c03c4bd9ed3e6dc503fba80897124ef7")
 
 prepare() {

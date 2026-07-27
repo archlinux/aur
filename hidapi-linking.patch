@@ -1,3 +1,12 @@
+From f13caf0841406f0c7b786384ef32e6a1d0b98deb Mon Sep 17 00:00:00 2001
+From: Glax <its@glax.dev>
+Date: Mon, 27 Jul 2026 18:53:49 +0200
+Subject: [PATCH] fix
+
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/Cargo.toml b/Cargo.toml
 index 1712267..ef58212 100644
 --- a/Cargo.toml
@@ -11,3 +20,6 @@ index 1712267..ef58212 100644
  rusb = "0.9"
  dfu-libusb = "0.6"
  indicatif = "0.18"
+-- 
+2.55.0
+
