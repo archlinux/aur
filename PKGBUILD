@@ -2,13 +2,13 @@
 
 pkgbase=mdcz
 pkgname=("${pkgbase}-desktop")
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
-pkgdesc="Media metadata scraper built on Electron"
+pkgdesc="Media metadata scraper (desktop, built on Electron)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShotHeadman/${pkgbase}"
 license=("GPL-3.0-or-later")
-_electron="electron39"
+_electron="electron"
 conflicts=("${pkgbase}")
 replaces=("${pkgbase}")
 depends=("bash" "$_electron" "hicolor-icon-theme")
@@ -17,7 +17,7 @@ install="${pkgbase}.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
-sha256sums=('b6a1c9f14e39cf94621e0b0f1eb64ea7e4644bf7e4b7427741c9aeb40e4c39bc'
+sha256sums=('76ddc3966c8cc53f1f83e8a2db6f068ea4199076c7552c11e5f29d9b415e9106'
             '045c3410b0ecb1aa6eb4e1a9c5d72f70d49146135f7f631decbc40bbb0bbde40'
             'cbfd7e103b2cd99572348601e4e9d809d7dca993b1c7d664ddeeb7a24f84549a')
 
