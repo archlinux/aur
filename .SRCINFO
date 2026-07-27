@@ -1,6 +1,6 @@
 pkgbase = garmin-tracker-rs
 	pkgdesc = Sync your devices and track your strength training
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/garmin-tracker-rs
 	install = garmin-tracker-rs.install
@@ -14,7 +14,7 @@ pkgbase = garmin-tracker-rs
 	makedepends = python-yaml
 	depends = webkit2gtk-4.1
 	depends = zlib-ng-compat
-	source = git+https://github.com/Emiliopg91/garmin-tracker-rs.git#tag=1.6.4
+	source = git+https://github.com/Emiliopg91/garmin-tracker-rs.git#tag=1.6.5
 	sha256sums = SKIP
 
 pkgname = garmin-tracker-rs
