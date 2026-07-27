@@ -57,9 +57,6 @@ package() {
 
 	install -Dm644 "${_rootfs}/etc/${_appname}/${_config}" "${pkgdir}/etc/${_appname}/${_config}"
 
-	install -dm755 "${pkgdir}/usr/share/${_appname}"
-	cp -rf "${_rootfs}/usr/share/${_appname}/"* "${pkgdir}/usr/share/${_appname}"
-
 	install -Dm644 "${_rootfs}/etc/systemd/system/${_appname}-sandbox.socket" "${pkgdir}/usr/lib/systemd/system/${_appname}-sandbox.socket"
 	install -Dm644 "${_rootfs}/etc/systemd/system/${_appname}-sandbox.service" "${pkgdir}/usr/lib/systemd/system/${_appname}-sandbox.service"
 
