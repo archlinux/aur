@@ -1,0 +1,61 @@
+post_install() {
+    if [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; then
+        cat << 'MSG'
+==> MiMo Code 已安装！
+
+  小米 MiMo 团队出品的终端 AI 编程助手。
+
+  快速开始:
+    mimo                      启动交互式 TUI
+    mimo "写一个快速排序"       直接执行任务
+    mimo providers login      登录 MiMo 账号
+    mimo providers list       查看已配置的 provider
+    mimo --help               查看所有命令
+
+  首次启动选择 "MiMo Auto (free)" 即可免费使用。
+  付费用户可选择 "MiMo" 登录浏览器获取更多模型。
+
+  文档:
+    https://mimo.xiaomi.com/zh/mimocode
+
+  项目:
+    https://github.com/XiaomiMiMo/MiMo-Code
+MSG
+    else
+        cat << 'MSG'
+==> MiMo Code installed!
+
+  AI-powered CLI coding agent by the Xiaomi MiMo Team.
+
+  Quick start:
+    mimo                      Start interactive TUI
+    mimo "write quicksort"    Run a task directly
+    mimo providers login      Log in to MiMo
+    mimo providers list       List configured providers
+    mimo --help               Show all commands
+
+  Select "MiMo Auto (free)" on first launch for free usage.
+  Paid users can choose "MiMo" to log in via browser for more models.
+
+  Docs:
+    https://mimo.xiaomi.com/zh/mimocode
+
+  Repository:
+    https://github.com/XiaomiMiMo/MiMo-Code
+MSG
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; then
+        echo "==> MiMo Code 已移除。"
+        echo "    会话数据和配置保留在 ~/.local/share/mimocode/"
+    else
+        echo "==> MiMo Code removed."
+        echo "    Session data and config kept in ~/.local/share/mimocode/"
+    fi
+}
