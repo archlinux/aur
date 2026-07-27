@@ -1,0 +1,23 @@
+pkgbase = mimocode
+	pkgdesc = AI-powered CLI coding agent by Xiaomi MiMo Team
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://mimo.xiaomi.com/coder
+	install = mimocode.install
+	arch = x86_64
+	license = MIT
+	depends = nodejs>=18
+	optdepends = sox: voice input support
+	options = !strip
+	source = https://mimocode.cnbj1.mi-fds.com/mimocode/mimocode/releases/v0.1.6/mimocode-linux-x64.tar.gz
+	source = mimocode.bash
+	source = mimocode.fish
+	source = mimocode.1
+	source = mimocode.zh_CN.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mimocode
