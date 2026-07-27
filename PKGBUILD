@@ -15,8 +15,8 @@ depends=(
 options=(!strip)
 
 source=(
-    "SonicTree-${pkgver}-${CARCH}.AppImage::https://master.dl.sourceforge.net/project/sonictree/${pkgver}/SonicTree-${pkgver}-${CARCH}.AppImage"
-    "LICENSE::https://master.dl.sourceforge.net/project/sonictree/${pkgver}/LICENSE"
+    "SonicTree-${pkgver}-${CARCH}.AppImage::https://downloads.sourceforge.net/project/sonictree/${pkgver}/SonicTree-${pkgver}-${CARCH}.AppImage"
+    "LICENSE::https://downloads.sourceforge.net/sonictree/${pkgver}/LICENSE"
 )
 
 sha256sums=('fa4e0d7bb2e4155594b28c8309cfe191b749859b1bd1dda97691a4d12f3b5530'
@@ -33,9 +33,7 @@ package() {
         "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-
-    install -m755 \
+    install -Dm755 \
         "${srcdir}/SonicTree-${pkgver}-${CARCH}.AppImage" \
         "${pkgdir}/opt/${pkgname}/SonicTree.AppImage"
 
@@ -63,11 +61,5 @@ EOF
         install -Dm644 \
             "$icon" \
             "${pkgdir}/usr/share/pixmaps/sonictree.png"
-    fi
-
-    if [[ -f "${srcdir}/squashfs-root/LICENSE" ]]; then
-        install -Dm644 \
-            "${srcdir}/squashfs-root/LICENSE" \
-            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
