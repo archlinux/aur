@@ -23,6 +23,11 @@ depends=('boost-libs' 'readline' 'openssl')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 options=(!lto !debug strip)
 
+backup=(
+  'etc/azerothcore/authserver.conf'
+  'etc/azerothcore/worldserver.conf'
+)
+
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"azerothcore-auth.service"
 		"azerothcore-world.service")

@@ -17,6 +17,8 @@ pkgbase = azerothcore
 	options = !lto
 	options = !debug
 	options = strip
+	backup = etc/azerothcore/authserver.conf
+	backup = etc/azerothcore/worldserver.conf
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	source = azerothcore-auth.service
 	source = azerothcore-world.service
