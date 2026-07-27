@@ -13,7 +13,7 @@ declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
 pkgver=0.13.0.r1438.gf95bd73935
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
 url='https://neovim.io'
