@@ -1,6 +1,6 @@
 pkgbase = wtfis-cli
 	pkgdesc = Find projects fast from your terminal
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/prophesourvolodymyr/WTFIS-CLI
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wtfis-cli
 	makedepends = rust
 	optdepends = bash: Bash shell integration
 	optdepends = zsh: Zsh shell integration
-	source = wtfis-cli-1.0.1.tar.gz::https://github.com/prophesourvolodymyr/WTFIS-CLI/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = f175d9f022ac98bcb89242579dac17f9b14e867a8cc5ba862bd6957f4330ee42
+	source = wtfis-cli-1.0.2.tar.gz::https://github.com/prophesourvolodymyr/WTFIS-CLI/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 04abb5745906cb16f14eb322e01804c4b5d23f433be4820520bb1c3cca43cc68
 
 pkgname = wtfis-cli
