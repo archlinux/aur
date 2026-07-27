@@ -2,7 +2,7 @@
 # Repository: https://github.com/aslafy-z/aur-packages
 
 pkgname=kftray-appimage
-pkgver=0.27.30
+pkgver=0.27.30 # renovate: datasource=github-releases depName=kftray packageName=hcavarsan/kftray
 pkgrel=1
 pkgdesc='kubectl port forward manager, with support for UDP and proxy connections through k8s clusters'
 arch=('x86_64' 'aarch64')
