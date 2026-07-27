@@ -1,0 +1,22 @@
+pkgbase = cleanarch-tui
+	pkgdesc = Safe, preset-driven cleanup TUI for Arch-family Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SHN2004/cleanarch
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = sudo: privileged cleanup tasks
+	optdepends = pacman-contrib: paccache and pacnew/pacsave support
+	optdepends = flatpak: Flatpak cleanup tasks
+	optdepends = docker: Docker cleanup tasks
+	optdepends = podman: Podman cleanup tasks
+	optdepends = snapd: Snap cleanup tasks
+	conflicts = cleanarch
+	source = cleanarch-0.1.0.tar.gz::https://github.com/SHN2004/cleanarch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8e4f12516c0abee8b6a2663cc1a1b75b344efd47c19804a0e0c9c470c43c3636
+
+pkgname = cleanarch-tui
