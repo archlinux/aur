@@ -1,6 +1,6 @@
 pkgbase = genv-bin
 	pkgdesc = Track, sync, and reproduce your software environment across Linux, macOS, and WSL2.
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://github.com/ks1686/genv
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = genv-bin
 	license = MIT
 	provides = genv
 	conflicts = genv
-	source_x86_64 = https://github.com/ks1686/genv/releases/download/v4.0.6/genv_4.0.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = c6d9316f1d1af79689d878a3ca197b4d7e02d2293156b86d44de51ed0120a94f
-	source_aarch64 = https://github.com/ks1686/genv/releases/download/v4.0.6/genv_4.0.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 14e580370c1dd67c66be9f3ee7f406215c8f60a5c058835f384403e9d789a37d
+	source_x86_64 = https://github.com/ks1686/genv/releases/download/v4.0.7/genv_4.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 31ed823e1df83fa7dc1e7fdaacc0fc5196daa6ca0ea99515c4153c698e6046d4
+	source_aarch64 = https://github.com/ks1686/genv/releases/download/v4.0.7/genv_4.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = e8efaea4e8107b2cc3d431e4f742cbf9b5628959f59367590a9cabb98d26a3a0
 
 pkgname = genv-bin
