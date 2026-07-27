@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Empower the Shell to think. Evolve Operations."
 
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,10 +32,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('182b432e0e2ba88c28049e5e2386f0d640b0bc28dfd397f578428e46774edb56'
+sha256sums=('9eb9c0f06cbe918a0f5485931c3b2f57e890eb242997127992e2b97dc2096b06'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('c645534ed492e893ef8da04cc42750430e9cac89252344ae38f16408d3629773')
-sha256sums_aarch64=('23b7ff882b51a3289e72980de59626a01af49f5923a0291c7083fdabe4d9b835')
+sha256sums_x86_64=('dc34b7a6cadeafce937603f5ade23c8db549285b54776bee2430e27299b8ad45')
+sha256sums_aarch64=('69d469fca230036b5f9525a156fb5709a9425ed74e1e21a376da5e778538c423')
 
 
 case ${CARCH} in
