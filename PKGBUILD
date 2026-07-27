@@ -22,7 +22,6 @@ license=('AGPL3')
 depends=('libmysqlclient84' 'mysql-clients84' 'boost-libs' 'readline' 'openssl' 'mysql84')
 conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql' 'mysql-clients' 'libmysqlclient')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld' 'mysql84')
-provides=('libmysqlclient' 'mysql-clients')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
