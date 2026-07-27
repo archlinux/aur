@@ -1,0 +1,11 @@
+pkgbase = bootstrap-devuan
+	pkgdesc = Devuan debootstrap scripts and keyring
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = debootstrap
+	depends = gnupg
+	depends = curl
+
+pkgname = bootstrap-devuan
