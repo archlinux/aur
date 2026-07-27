@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PCL-N
+Comment=一个基于 PCL-CE 开发的 Minecraft 启动器
+Exec=DOTNET_BUNDLE_EXTRACT_BASE_DIR=${XDG_DATA_HOME:-$HOME/.local/share} /usr/bin/PCL-N
+Icon=pcl-n
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=minecraft;launcher;
