@@ -1,7 +1,7 @@
 pkgbase = iscsi-util-bin
 	pkgdesc = A simple and modern GUI for managing iSCSI.
-	pkgver = 3.0.1
-	pkgrel = 4
+	pkgver = 4.0.1
+	pkgrel = 5
 	url = https://github.com/mijocecr/iscsi-util
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = iscsi-util-bin
 	depends = cifs-utils
 	options = !debug
 	options = !strip
-	source = https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v3.0/ISCSI-Util.tar.gz
+	source = https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v4/ISCSI-Util.tar.gz
 	sha256sums = SKIP
 
 pkgname = iscsi-util-bin
