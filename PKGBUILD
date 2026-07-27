@@ -1,17 +1,17 @@
 # Maintainer: Pranav S <pranav.ppanch@gmail.com>
 
 pkgname=freeciv21-unstable
-pkgver=3.1.0
+pkgver=3.2_dev.3
 pkgrel=1
 pkgdesc="Freeciv for the 21st Century (Unstable version from master branch)"
 arch=('x86_64')
 url="https://github.com/longturn/freeciv21"
 license=('GPL3')
-depends=( 'lua' 'qt5-base' 'qt5-svg' 'sdl2_mixer' 'karchive5' 'libertinus-font')
+depends=( 'lua' 'qt6-base' 'qt6-svg' 'sdl2_mixer' 'karchive5' 'libertinus-font')
 makedepends=('cmake' 'ninja' 'python')
 conflicts=('freeciv21')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.1.0/Freeciv21-v3.1.0.tar.gz")
-sha256sums=('269b3b8647c8cda5c2f06c3b00bd6ff162f5ba920414f45432f34b88ad4452e2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.2-dev.3/Freeciv21-v3.2-dev.3.tar.gz")
+sha256sums=('bfbfc33f79818179c0733c43c55db622f125d0979379a6dc94cb32d3e346c06c')
 build() {
     cd freeciv21
     cmake . -B build  -G Ninja\
