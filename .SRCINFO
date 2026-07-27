@@ -1,0 +1,14 @@
+pkgbase = python-rich-toolkit
+	pkgdesc = A very opinionated set of components for building CLI applications, based on Rich
+	pkgver = 0.20.3
+	pkgrel = 1
+	url = https://github.com/patrick91/rich-toolkit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = rich-toolkit-0.20.3.tar.gz::https://github.com/patrick91/rich-toolkit/archive/0.20.3.tar.gz
+	sha256sums = 58fc6967c9c704943a709a3866656e8ef18a76a1e2bcb4492e6db748a83f685f
+
+pkgname = python-rich-toolkit
