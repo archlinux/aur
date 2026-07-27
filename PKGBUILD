@@ -3,7 +3,7 @@
 _reponame=mdcz
 pkgname="${_reponame}-server"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Media metadata scraper (server)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShotHeadman/${_reponame}"
@@ -39,6 +39,8 @@ build() {
     cp -ar "release/staging/${_reponame}-${pkgver}" "../${pkgname}"
     cd "../${pkgname}"
     npm install --omit=dev --no-audit --no-fund --no-package-lock
+    npm install-scripts approve better-sqlite3 impit sharp
+    npm rebuild better-sqlite3 impit sharp
     find . -type f -name "*.map" -delete
     grep -rl "${srcdir}/${pkgname}" . | xargs -I {} sed -i "s|${srcdir}/${pkgname}|/usr/lib/${_reponame}/server|g" {}
     perl -0777 -pe 's{
