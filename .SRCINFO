@@ -1,0 +1,16 @@
+pkgbase = python-chibi-browser
+	pkgdesc = Layer to controll seleniium with chibi_site
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi-browser/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-chibi-site
+	depends = python-selenium
+	depends = python-humancursor
+	depends = python-undetected
+	source = https://files.pythonhosted.org/packages/source/c/chibi_browser/chibi_browser-1.3.0.tar.gz
+	sha256sums = 408a012f36ee344861d3c8d58ea804efc755407de6ede591f722caf2f1043b97
+
+pkgname = python-chibi-browser
