@@ -1,7 +1,7 @@
 pkgbase = itch-bin
 	pkgdesc = 🎮 The best way to play your itch.io games (binary release)
 	pkgver = 26.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itchio/itch
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=itch-bin
 pkgver=26.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="🎮 The best way to play your itch.io games (binary release)"
 url="https://github.com/itchio/itch"
 license=('MIT')
@@ -32,7 +32,7 @@ Type=Application\n\
 StartupWMClass=itch\n\
 Categories=Game;
 MimeType=x-scheme-handler/itchio;x-scheme-handler/itch;" > itch.desktop
-# Extract files to a folder
+# Extract files into a folder
   tar -xf itch-v$pkgver-linux-amd64.tar.gz --one-top-level=itch-$pkgver
 }
 
@@ -47,7 +47,7 @@ package() {
   cd resources/app/src/static/images
   install -Dm644 tray/itch.png -t "$pkgdir/$_icon/256x256/apps"
   install -Dm644 window/itch/icon.png "$pkgdir/$_icon/128x128/apps/itch.png"
-  install -Dm644 window/itch/icon-32.png "$pkgdir/usr/$_icon/32x32/apps/itch.png"
+  install -Dm644 window/itch/icon-32.png "$pkgdir/$_icon/32x32/apps/itch.png"
   mv "${srcdir}"/itch-$pkgver/* "$pkgdir/opt/itch"
   ln -s /opt/itch/itch "$pkgdir/usr/bin"
 }
