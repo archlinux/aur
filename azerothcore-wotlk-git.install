@@ -2,8 +2,19 @@ post_install() {
 	_realmlist_ip=$(cat /tmp/azerothcore-wotlk-git-realmlist-ip)
 
 	if command -v systemctl >/dev/null 2>&1; then
-    	systemctl daemon-reload >/dev/null 2>&1 || true
+    	sudo systemctl daemon-reload >/dev/null 2>&1 || true
     fi
+
+	if [[ ! -f /etc/azerothcore/authserver.conf ]]; then
+		sudo cp /etc/azerothcore/authserver.conf.dist /etc/azerothcore/authserver.conf
+	fi
+
+	if [[ ! -f /etc/azerothcore/worldserver.conf ]]; then
+		sudo cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
+	fi
+
+	# If source dir is empty, point it to our install location
+	sudo sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
 
 	# Restart authserver
   	sudo systemctl restart acore-auth-server.service

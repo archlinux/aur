@@ -3,6 +3,7 @@ pkgbase = azerothcore-wotlk-git
 	pkgver = placeholder
 	pkgrel = 1
 	url = http://www.azerothcore.org
+	install = azerothcore-wotlk-git.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = git

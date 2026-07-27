@@ -18,6 +18,8 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 url="http://www.azerothcore.org"
 license=('AGPL3')
 
+install='azerothcore-wotlk-git.install'
+
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
@@ -144,6 +146,10 @@ package() {
 
 	# Copies the runtime helper script into the package
   	install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"
+
+	# Install SQL data files into the runtime tree
+  	install -dm755 "${pkgdir}/usr/share/azerothcore/data/sql"
+  	cp -a "${srcdir}/${_pkgname}/data/sql/." "${pkgdir}/usr/share/azerothcore/data/sql/"
 
 	# Installs the systemd service units so the server can be managed with systemctl
   	install -Dm644 "${srcdir}/acore-auth-server.service" "${pkgdir}/usr/lib/systemd/system/acore-auth-server.service"
