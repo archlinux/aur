@@ -1,6 +1,6 @@
 pkgbase = sqlite-utils
 	pkgdesc = CLI tool and Python utility functions for manipulating SQLite databases
-	pkgver = 4.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://sqlite-utils.datasette.io/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = sqlite-utils
 	depends = python-pluggy
 	depends = python-pip
 	conflicts = sqlite-utils
-	source = https://pypi.io/packages/source/s/sqlite-utils/sqlite_utils-4.0.tar.gz
-	sha256sums = cea711807c2bbc18829ed642ae19a23a80e853f4136c4d2a28078a6117ad9426
+	source = https://pypi.io/packages/source/s/sqlite-utils/sqlite_utils-4.1.1.tar.gz
+	sha256sums = cf97e620b3940cd541cae9117cc24af961a6da426189fdb662f20f1950ba1f49
 
 pkgname = sqlite-utils
