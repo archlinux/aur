@@ -1,0 +1,4 @@
+[klikka]
+source = "git"
+git = "https://github.com/cosmic-utils/klikka.git"
+prefix = "v"
