@@ -1,0 +1,5 @@
+[treekanga-bin]
+source = "github"
+github = "garrettkrohn/treekanga"
+use_latest_release = true
+prefix = "v"
