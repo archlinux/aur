@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=bchd
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=0
 pkgdesc="BCHD is an alternative BCH implementation written in Go."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("${pkgname}")
 source=("https://github.com/gcash/${pkgname}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('194e622459bb76fad9b1afaca736af6101a0f4c7d7ea454cb9bdec0c2128764c')
+sha256sums=('928835c5ad0b19bd4a9aacb2b597ff7815b376989f43430a3c81ef28b3f2aa2a')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/gcash"
