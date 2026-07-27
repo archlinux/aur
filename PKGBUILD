@@ -2,7 +2,7 @@
 
 pkgname=filen-menubar-bin
 _pkgname=filen-menubar
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Lightweight system tray app for Filen cloud sync"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Filen.Men
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 # .deb is an ar archive; unpack it explicitly in package().
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('60b0c53858eef7e6f9ba7180042005d02ec74c9c3bfae35862a183b25149c4dc'
+sha256sums=('e8993c5b57a02d47cd37489a5aaa7d9c2cd6491298cc00a0570b98fa0711834a'
             '63d3d5dbe2ed4b855613bc1d0cdaa541583985329fd66b4179f937eb55ded130')
 
 package() {
