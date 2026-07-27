@@ -1,0 +1,16 @@
+pkgbase = pragtical-bin
+	pkgdesc = The practical and pragmatic code editor
+	pkgver = 3.12.4
+	pkgrel = 1
+	url = https://pragtical.dev
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = pragtical
+	conflicts = pragtical
+	source = https://github.com/pragtical/pragtical/releases/download/v3.12.4/pragtical-v3.12.4-linux-x86_64-portable.tar.gz
+	b2sums = 5f6fc829fe26c39c3ae82b79ad52021077621a8dde33d52e91a12b66f7a76e09f8d292a2d1363b86b64e7f190406b9b0fd0e53b1c42d4b8a8719d5454f349334
+
+pkgname = pragtical-bin
