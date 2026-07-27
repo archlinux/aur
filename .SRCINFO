@@ -1,6 +1,6 @@
 pkgbase = reeden-bin
 	pkgdesc = Modern cross-platform ebook reader (prebuilt binary)
-	pkgver = 1.36.1+684
+	pkgver = 1.37.1+726
 	pkgrel = 1
 	url = https://reeden.app/cn/download
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = reeden-bin
 	provides = reeden
 	conflicts = reeden
 	options = !strip
-	source = Reeden-1.36.1+684-linux-x86_64.deb::https://download.reeden.app/Reeden/1.36.1+684/Reeden-1.36.1+684-linux-x86_64.deb
-	sha256sums = 9ca9b830219a39b50254ac5b58488b9876a3f62fac82945d2213272567860b33
+	source = Reeden-1.37.1+726-linux-x86_64.deb::https://download.reeden.app/Reeden/1.37.1+726/Reeden-1.37.1+726-linux-x86_64.deb
+	sha256sums = 4aacf7344ec2e7d8b86b67d58a9247c2ac5ceb0bc59a3db4366f2bc2e9e3ea10
 
 pkgname = reeden-bin
