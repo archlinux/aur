@@ -1,0 +1,18 @@
+pkgbase = speech-dispatcher-mimo-git
+	pkgdesc = speech-dispatcher output module that uses Xiaomi MiMo API for high-quality Chinese/English neural TTS (git version)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://platform.xiaomimimo.com
+	install = speech-dispatcher-mimo.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-redis
+	depends = sox
+	depends = speech-dispatcher
+	optdepends = valkey: for TTS response caching
+	source = git+https://github.com/spiriwind/speech-dispatcher-mimo.git
+	sha256sums = SKIP
+
+pkgname = speech-dispatcher-mimo-git
