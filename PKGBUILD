@@ -2,7 +2,7 @@
 pkgname=go-music-dl-bin
 _pkgname="Go Music DL"
 _rpmname=music-dl-desktop-go
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc="一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('295f29ae256e835d3bd239f42af8f973e8858349daca4ef6c127792615fe2abb')
+sha256sums=('099ca53d6ce979cf2821d425bf8e0c95b9577d825eb68750f9f175dc9b0cd229')
 prepare() {
     sed -i -e "
         s/Name=${_rpmname}/Name=${_pkgname}/g
