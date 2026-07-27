@@ -14,8 +14,6 @@ pkgbase = azerothcore
 	depends = boost-libs
 	depends = readline
 	depends = openssl
-	conflicts = mariadb-libs
-	conflicts = mariadb-clients
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	sha512sums = SKIP
 

@@ -20,7 +20,6 @@ license=('AGPL3')
 
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl')
-conflicts=('mariadb-libs' 'mariadb-clients')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
@@ -33,6 +32,31 @@ pkgver() {
 }
 
 prepare() {
+	if pacman -Qq | grep -E '^mariadb(-libs|-clients)?$' >/dev/null 2>&1; then 
+		echo "======================================================================="
+		echo " ERROR: MariaDB is installed!"
+		echo "======================================================================="
+		echo " AzerothCore requires the Oracle MySQL ecosystem to be installed,"
+		echo " and MariaDB is a conflicting implementation. Please uninstall "
+		echo " MariaDB and install the full MySQL development stack instead."
+		echo ""
+		echo " Uninstall MariaDB using the following command:"
+		echo "   pacman -Qq | grep -E '^mariadb(-libs|-clients)?$' | xargs -r sudo pacman -Rns"
+		echo ""
+		echo " Please verify or install all three components manually before continuing:"
+		echo "   1. libmysqlclient  (The C API development connector libraries)"
+		echo "   2. mysql-clients   (The CLI tooling suite like mysqldump)"
+		echo "   3. mysql           (The background SQL database server daemon)"
+		echo ""
+		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
+		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
+		echo ""
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
+		echo "======================================================================="
+		exit 1
+	
+	fi
+
 	# Enforce rigid filesystem tracking for all 3 critical MySQL 8.4 packages
 	if ! pacman -Qq | grep -E '^mysql[0-9]*$' >/dev/null 2>&1 || \
 	   ! pacman -Qq | grep -E '^libmysqlclient[0-9]*$' >/dev/null 2>&1 || \
