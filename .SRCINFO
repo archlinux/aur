@@ -1,11 +1,12 @@
 pkgbase = filen-desktop-bin
 	pkgdesc = Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.0.53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://filen.io/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = asar
 	depends = electron43
 	provides = filen-desktop-bin=3.0.53
 	conflicts = filen-desktop
