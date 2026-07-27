@@ -1,6 +1,6 @@
 pkgbase = smartsub-bin
 	pkgdesc = A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators.(Prebuilt version,use system-wide electron)
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://smartsub.lxd.one/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = smartsub-bin
 	depends = python-openai-whisper
 	depends = ffmpeg
 	depends = nodejs
-	provides = smartsub=3.4.0
+	provides = smartsub=3.5.0
 	conflicts = smartsub
-	source = smartsub-3.4.0.deb::https://github.com/buxuku/SmartSub/releases/download/v3.4.0/SmartSub_Linux_3.4.0_amd64.deb
-	source = LICENSE-3.4.0::https://raw.githubusercontent.com/buxuku/SmartSub/v3.4.0/LICENSE
+	source = smartsub-3.5.0.deb::https://github.com/buxuku/SmartSub/releases/download/v3.5.0/SmartSub_Linux_3.5.0_amd64.deb
+	source = LICENSE-3.5.0::https://raw.githubusercontent.com/buxuku/SmartSub/v3.5.0/LICENSE
 	source = smartsub.sh
-	sha256sums = 43451326784d4fe3cd85ec298c83f291eb6ef14bd9dadd7b72affcc1bf5c78a4
+	sha256sums = 7b10c98d8578e5d8f82c2571f161c2eae54e13aa2fd30344df9bc4894e3d09f7
 	sha256sums = 324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
