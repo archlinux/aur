@@ -1,5 +1,5 @@
-# shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 pkgname=fish-foreign-env-git
 _pkgname="${pkgname%-git}"
 _repo="plugin-foreign-env"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 noextract=()
 
 pkgver() {
-    cd "$_repo" || exit 1
+    cd "$_repo"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
