@@ -1,6 +1,6 @@
 pkgname=vgs-shell
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri'
 arch=('x86_64' 'aarch64')
 url='https://github.com/vanillagreencom/vgs'
@@ -14,5 +14,6 @@ sha256sums_aarch64=('dee66ae3d7f81d63f6f2634b81bf487ce53a11e67635b4bfbc2a933a4e7
 
 package() {
   cd "vgs-$pkgver-linux-$CARCH"
+  sed -i 's|^#!/bin/env bash$|#!/usr/bin/env bash|' config/vshell/nvim/colorschemes/tokyonight.nvim/scripts/{build,docs}
   DESTDIR="$pkgdir" VGS_BACKEND_BINARY="$PWD/bin/vshell-backend" packaging/install-system.sh
 }
