@@ -1,7 +1,7 @@
 pkgbase = jami-qt-git
 	pkgdesc = Free and universal communication platform which preserves the users' privacy and freedoms (Qt client, built from upstream git)
-	pkgver = 20260707.0.r0.g0000000
-	pkgrel = 1
+	pkgver = 20260717.0.r17.g2e34c0bb
+	pkgrel = 2
 	url = https://jami.net
 	arch = x86_64
 	groups = jami

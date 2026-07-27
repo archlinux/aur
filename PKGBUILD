@@ -4,8 +4,8 @@
 pkgname=jami-qt-git
 _pkgname=jami-client-qt
 _release_ver=20260707.0
-pkgver="${_release_ver}.r0.g0000000"
-pkgrel=1
+pkgver=20260717.0.r17.g2e34c0bb
+pkgrel=2
 pkgdesc="Free and universal communication platform which preserves the users' privacy and freedoms (Qt client, built from upstream git)"
 arch=('x86_64')
 url="https://jami.net"
@@ -59,7 +59,7 @@ sha256sums=(
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags --always 2>/dev/null \
+    git describe --long --tags --match 'stable/*' --always 2>/dev/null \
         | sed 's/^stable\///;s/\([^-]*-g\)/r\1/;s/-/./g' \
         || echo "${_release_ver}.r0.g$(git rev-parse --short HEAD)"
 }
