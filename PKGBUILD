@@ -1,15 +1,17 @@
-# Maintainer: Rob Zolkos <rob@zolkos.com>
+# Maintainer: 37signals <support@37signals.com>
 pkgname=fizzy-cli
-pkgver=3.0.3
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="CLI for managing Fizzy boards, cards, and tasks"
 arch=('x86_64' 'aarch64')
-url="https://github.com/robzolkos/fizzy-cli"
+url="https://github.com/basecamp/fizzy-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/robzolkos/fizzy-cli/archive/v$pkgver.tar.gz")
-sha256sums=('bb578fecb9b340ffcd4b79fe62cebef8839c23c82b171a9200732126a95fc73f')
+provides=('fizzy')
+conflicts=('fizzy' 'fizzy-bin')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/basecamp/fizzy-cli/archive/v$pkgver.tar.gz")
+sha256sums=('0c78d84cd99096dfcd5f7987766c98fbe0489f7872ebb8bfce52a80e3594c27a')
 options=('!debug')
 
 build() {
@@ -20,10 +22,18 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -ldflags "-s -w -X main.version=${pkgver}" -o fizzy ./cmd/fizzy
+
+    # Generate completions
+    ./fizzy completion bash > fizzy.bash
+    ./fizzy completion zsh > fizzy.zsh
+    ./fizzy completion fish > fizzy.fish
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 fizzy "$pkgdir/usr/bin/fizzy"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+    install -Dm644 fizzy.bash "$pkgdir/usr/share/bash-completion/completions/fizzy"
+    install -Dm644 fizzy.zsh "$pkgdir/usr/share/zsh/site-functions/_fizzy"
+    install -Dm644 fizzy.fish "$pkgdir/usr/share/fish/vendor_completions.d/fizzy.fish"
 }
