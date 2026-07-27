@@ -1,6 +1,6 @@
 # Maintainer: knightinfected <hmzmahmood5@gmail.com>
 pkgname=pipewire-controller
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="GTK4/libadwaita control center for PipeWire — patchbay, monitoring, virtual devices, effect inserts, filter chains, HRIR virtual surround, drop-in config management"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
             'lsp-plugins-lv2: extra LV2 plugins for effect racks'
             'carla: bridge VST3/CLAP plugins into the graph via the patchbay')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fde9a50e235541145f8204205db0c5a4fea80803d45bd8d6c08fbc58142ffb73')
+sha256sums=('041b1e2158d1482d776a8a3fca1aba398955fdcd956c7de3b0a71645918a9078')
 
 package() {
   cd "PipeWireController-$pkgver"
