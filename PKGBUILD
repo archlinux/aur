@@ -34,25 +34,25 @@ pkgver() {
 
 prepare() {
 	# Enforce rigid filesystem tracking for all 3 critical MySQL 8.4 packages
-	if ! pacman -Qi mysql84 >/dev/null 2>&1 || \
-	   ! pacman -Qi libmysqlclient84 >/dev/null 2>&1 || \
-	   ! pacman -Qi mysql-clients84 >/dev/null 2>&1; then
+	if ! pacman -Qq | grep -E '^mysql[0-9]*$' >/dev/null 2>&1 || \
+	   ! pacman -Qq | grep -E '^libmysqlclient[0-9]*$' >/dev/null 2>&1 || \
+	   ! pacman -Qq | grep -E '^mysql-clients[0-9]*$' >/dev/null 2>&1; then
 		echo "======================================================================="
-		echo " ERROR: Required MySQL 8.4 Package Stack is Incomplete on this Host!"
+		echo " ERROR: Required Oracle MySQL Package Ecosystem is Incomplete!"
 		echo "======================================================================="
 		echo " To shield your system from upstream dependency bugs that pull in"
 		echo " conflicting MariaDB environments, AzerothCore requires you to have"
-		echo " the full MySQL 8.4 ecosystem pre-installed."
+		echo " the full MySQL development stack pre-installed."
 		echo ""
 		echo " Please verify or install all three components manually before continuing:"
-		echo "   1. libmysqlclient84  (The C API development connector libraries)"
-		echo "   2. mysql-clients84   (The CLI tooling suite like mysqldump)"
-		echo "   3. mysql84           (The background SQL database server daemon)"
+		echo "   1. libmysqlclient  (The C API development connector libraries)"
+		echo "   2. mysql-clients   (The CLI tooling suite like mysqldump)"
+		echo "   3. mysql           (The background SQL database server daemon)"
 		echo ""
-		echo " Execution command to resolve the environmental missing packages:"
+		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
 		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
 		echo ""
-		echo " Once those three packages are fully active, re-run 'yay -S azerothcore'."
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
 		echo "======================================================================="
 		exit 1
 	fi
@@ -68,30 +68,6 @@ prepare() {
 }
 
 build() {
-
-	# Detect if being run manually via makepkg or via an AUR helper
-	# Check if the build directory path includes common AUR helper cache folders
-	if [[ ! "$startdir" =~ \.cache/(yay|paru|yay-git|paru-git) ]]; then
-		# Check if the mysql package or client libraries are actually installed
-		if ! pacman -Qi mysql-clients >/dev/null 2>&1 && ! pacman -Qi libmysqlclient >/dev/null 2>&1; then
-			echo "======================================================================="
-			echo " ERROR: Manual compilation via 'makepkg' detected!"
-			echo "======================================================================="
-			echo " This package requires Oracle MySQL from the AUR, which standard pacman"
-			echo " cannot resolve or download automatically."
-			echo ""
-			echo " To build this manually, you must install the dependency first:"
-			echo "   1. git clone https://aur.archlinux.org/mysql.git"
-			echo "   2. cd mysql && makepkg -si"
-			echo "   3. Go back to your azerothcore folder and run 'makepkg -si' again."
-			echo ""
-			echo " Alternative: Use an AUR helper which handles this automatically:"
-			echo "   yay -S azerothcore"
-			echo "======================================================================="
-			exit 1
-		fi
-	fi
-
 	# Force-disable Link-Time Optimization (LTO)
     # This strips the heavy symbol tables, capping lld's peak RAM usage at ~3.5 GB
     export CFLAGS="${CFLAGS/-flto=auto/}"
