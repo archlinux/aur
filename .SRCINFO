@@ -1,19 +1,21 @@
 pkgbase = tuff-bin
 	pkgdesc = An open-source core for your OS, built on a sandboxed architecture with a local-first AI and a powerful TypeScript SDK.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.12
+	pkgver = 2.4.13
 	pkgrel = 1
 	url = https://tuff.tagzxia.com/
 	arch = x86_64
 	license = MPL-2.0
+	makedepends = asar
 	depends = electron41
 	depends = libxt
-	provides = tuff=2.4.12
+	depends = nodejs
+	provides = tuff=2.4.13
 	conflicts = tuff
 	options = !emptydirs
 	options = !strip
-	source = tuff-2.4.12.deb::https://github.com/talex-touch/tuff/releases/download/v2.4.12/ubuntu-latest-release-tuff-2.4.12.deb
+	source = tuff-2.4.13.deb::https://github.com/talex-touch/tuff/releases/download/v2.4.13/ubuntu-latest-release-tuff-2.4.13.deb
 	source = tuff.sh
-	sha256sums = b425dca45d014e555d6cac6cb2a190ce8c85d0d24adb6511aa8904291afdca96
+	sha256sums = b59e87bc0875aa0a207c56e07c5d66ad850fc4a572cc28b7eb15548c7c407eef
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = tuff-bin
