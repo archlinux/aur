@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -59,7 +59,6 @@ build() {
   # Build the goose CLI; the desktop UI talks ACP to this binary directly
   cargo build --release --features vulkan -p goose-cli --bin goose
   just copy-binary
-  cargo run -p goose-server --bin generate_schema
 
   cd ui/desktop
 

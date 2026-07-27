@@ -1,7 +1,7 @@
 pkgbase = goose-desktop
 	pkgdesc = Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
 	pkgver = 1.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaif-goose/goose
 	arch = x86_64
 	license = Apache-2.0
