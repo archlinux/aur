@@ -8,9 +8,9 @@ pkgbase = cheatbreaker
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source_x86_64 = cheatbreaker-2026.6.1-x86_64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage
-	md5sums_x86_64 = 16074a8d828094f8d3348452627ff335
-	source_arm64 = cheatbreaker-2026.6.1-arm64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage
-	md5sums_arm64 = b4d957273caa260bfb218d98710e0031
+	source_x86_64 = https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage
+	md5sums_x86_64 = 30c7fb03a67ab8f47ed4967bd1c28ca7
+	source_arm64 = https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage
+	md5sums_arm64 = b77e161d3969e16d18aa5e8723ccf1b0
 
 pkgname = cheatbreaker

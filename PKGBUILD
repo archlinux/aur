@@ -9,16 +9,16 @@ url=https://cheatbreaker.net
 arch=('x86_64' 'arm64')
 depends=(fuse xorg-xrandr)
 options=(!strip)
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage")
-source_arm64=("${_pkgname}-${pkgver}-arm64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage")
-md5sums_x86_64=('16074a8d828094f8d3348452627ff335')
-md5sums_arm64=('b4d957273caa260bfb218d98710e0031')
+source_x86_64=("https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage")
+source_arm64=("https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage")
+md5sums_x86_64=('30c7fb03a67ab8f47ed4967bd1c28ca7')
+md5sums_arm64=('b77e161d3969e16d18aa5e8723ccf1b0')
 
 prepare() {
 	if [ "${CARCH}" == 'arm64' ]; then
-		_appimage="${_pkgname}-${pkgver}-arm64.AppImage"
+		_appimage="CheatBreaker-ARM64.AppImage"
 	else
-		_appimage="${_pkgname}-${pkgver}-x86_64.AppImage"
+		_appimage="CheatBreaker.AppImage"
 	fi
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
@@ -35,9 +35,9 @@ build() {
 
 package() {
 	if [ "${CARCH}" == 'arm64' ]; then
-		_appimage="${_pkgname}-${pkgver}-arm64.AppImage"
+		_appimage="CheatBreaker-ARM64.AppImage"
 	else
-		_appimage="${_pkgname}-${pkgver}-x86_64.AppImage"
+		_appimage="CheatBreaker.AppImage"
 	fi
  
 	# AppImage
