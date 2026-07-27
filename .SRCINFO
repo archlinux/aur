@@ -1,0 +1,15 @@
+pkgbase = markdowned
+	pkgdesc = Premium, distraction-free Markdown editor and viewer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/frsaghna/markdowned
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = npm
+	makedepends = esbuild
+	makedepends = git
+	depends = electron39
+	source = markdowned-1.0.0.tar.gz::https://github.com/frsaghna/markdowned/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 507e73fdd06b69bb9f6c6a44b5fcf5b43395df7e2f79120221a8c6145c21f27f
+
+pkgname = markdowned
