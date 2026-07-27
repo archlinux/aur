@@ -1,5 +1,5 @@
 pkgname=throne-sysqt-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box) not pack the Qt libraries"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=(throne-$_appver-debian-system-qt-x64.deb::$url/releases/download/
 )
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
-sha256sums_x86_64=('c9fdf7cff49322653fba318c05231b8a5815a40716e49cac46cd9348923946c5')
+sha256sums_x86_64=('b0c27e38b356b874c7f5315359406cc676422569ffe1d7dc62a2c97e1b9fe1e1')
 
 prepare() {
   cd "$srcdir"
