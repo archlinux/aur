@@ -1,10 +1,10 @@
 # Maintainer: Noctalia Team <team@noctalia.dev>
 
 _pkgname=noctalia
-_tagver=5.0.0-beta.5
+_tagver=5.0.0-beta.6
 pkgname=noctalia
-pkgver=5.0.0_beta.5
-pkgrel=2
+pkgver=5.0.0_beta.6
+pkgrel=1
 pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -49,7 +49,7 @@ makedepends=(
 )
 conflicts=('noctalia-git' 'noctalia-bin')
 source=("${_pkgname}-${_tagver}.tar.gz::${url}/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('1460781135969e9a8985c2c7343131df69f5b8595e8428cfdc416f85585b9447')
+sha256sums=('f20391942b635e8750dff6e37748d86562d51d6f9be62befc5495787ffe93dc8')
 
 build() {
   CXXFLAGS+=" -Wno-unused-result"
