@@ -1,7 +1,9 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=1.0
+pkgver=1.1
+_pkgver=1,1
+__pkgver=1-1
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -10,6 +12,7 @@ license=("MIT")
 options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
+	"hicolor-icon-theme"
 	"libgcc"
 	"openssl"
 	"mpv"
@@ -22,19 +25,19 @@ optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_pkgver}.tar.gz"
 )
-sha512sums=('8df3371c09cf806dec36718309a301794f7e7477e10de33a53988145a65160af1273d0ac39c07725449bc4fd9e40fbe6144fd8cf9af8f8d6e92c5c596746c7e0')
+sha512sums=('ffeebd389fd575184c5bb9ebab8f6bde77b326b6cf2842e5772815d55106f471c63335d261e7593056a2c8d7c179ac94d2d496cca5fd5a9a60fe7bc0028804c5')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${__pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${__pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -42,7 +45,7 @@ build() {
 }
 
 check() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${__pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -50,8 +53,11 @@ check() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${__pkgver}"
 
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/voicefox
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	install -Dm644 -t "${pkgdir}/usr/share/applications" assets/voicefox.desktop
+	install -Dm644 icons/1.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+
 }
