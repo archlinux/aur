@@ -2,7 +2,7 @@
 
 pkgname=sonictree-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder-based music player (AppImage binary)"
 provides=('sonictree')
 conflicts=('sonictree')

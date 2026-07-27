@@ -1,7 +1,7 @@
 pkgbase = sonictree-bin
 	pkgdesc = Folder-based music player (AppImage binary)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/sonictree/
 	arch = x86_64
 	license = LicenseRef-SonicTree-EULA
