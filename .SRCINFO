@@ -15,6 +15,7 @@ pkgbase = termux-language-server
 	depends = python-rfc3987
 	depends = namcap
 	depends = pyalpm
+	depends = python-marisa-trie
 	optdepends = portage
 	provides = pkgbuild-language-server
 	provides = portage-language-server
