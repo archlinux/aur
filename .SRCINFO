@@ -1,0 +1,17 @@
+pkgbase = tokentracker-bin
+	pkgdesc = AI provider quota monitor — track usage, rate limits, and spend across 40+ LLM providers
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/ayan-de/Token-Tracker
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = tokentracker
+	conflicts = tokentracker
+	options = !strip
+	source = tokentracker-bin-0.1.11.deb::https://github.com/ayan-de/Token-Tracker/releases/download/v0.1.12/TokenTracker_0.1.11_amd64.deb
+	sha256sums = f3d37bd56843d90025448a77a9d0667f35de636ce87dd9d142ab304d5cfeff70
+
+pkgname = tokentracker-bin
