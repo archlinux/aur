@@ -1,5 +1,6 @@
 # Maintainer: vsk11-12
 pkgname=tuiplay-git
+pkgbase=tuiplay-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A terminal music player built with Ratatui"
