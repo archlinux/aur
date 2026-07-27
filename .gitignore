@@ -1,0 +1,5 @@
+pkg/
+src/
+Voix/
+*.tar.gz
+*.tar.zst

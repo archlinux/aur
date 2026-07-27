@@ -1,0 +1,23 @@
+pkgbase = voix-bin
+	pkgdesc = A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/Voix
+	install = voix-bin.install
+	arch = x86_64
+	license = OSL-3.0
+	depends = pam
+	depends = libcap
+	depends = libseccomp
+	depends = yaml-cpp
+	provides = sudo
+	provides = doas
+	conflicts = sudo
+	conflicts = doas
+	conflicts = voix
+	backup = etc/pam.d/voix
+	backup = etc/voix.conf
+	source = voix-x86_64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v4.9.1/voix-x86_64-bin.tar.gz
+	sha256sums = 8280540e80afcda8f1f8e59de5e132cbe61a248fdf4d8fd1657cd1fa008a97d8
+
+pkgname = voix-bin
