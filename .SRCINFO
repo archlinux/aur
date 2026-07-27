@@ -1,7 +1,7 @@
 pkgbase = bastionguard
 	pkgdesc = BastionGuard - transparent security control plane for Linux desktops
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://bastionguard.eu/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -82,7 +82,7 @@ pkgbase = bastionguard
 	depends = bubblewrap
 	depends = rsync
 	options = strip
-	source = BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v2.0.1
+	source = BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v2.0.2
 	sha256sums = SKIP
 
 pkgname = bastionguard

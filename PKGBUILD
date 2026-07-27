@@ -21,8 +21,8 @@
 # Maintainer: BastionGuard info@bastionguard.eu
 
 pkgname=bastionguard
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="BastionGuard - transparent security control plane for Linux desktops"
 arch=('x86_64')
 url="https://bastionguard.eu/"
