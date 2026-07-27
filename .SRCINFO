@@ -1,15 +1,10 @@
 pkgbase = pulse-remote-desktop
-	pkgdesc = Electron desktop wrapper for pulse-remote-web - remote PulseAudio/PipeWire controller
+	pkgdesc = Package is @deprecated – installs pulse-remote-bin or pulse-remote-bin which now bundles the desktop wrapper
 	pkgver = 1.0.17
-	pkgrel = 1
-	url = https://github.com/undg/pulse-remote-desktop
-	arch = x86_64
+	pkgrel = 2
+	url = https://github.com/undg/pulse-remote
+	install = pulse-remote-desktop.install
+	arch = any
 	license = MIT
-	optdepends = pulse-remote: local PulseAudio/PipeWire server (stable)
-	optdepends = pulse-remote-git: local PulseAudio/PipeWire server (git)
-	options = !strip
-	options = !debug
-	source = pulse-remote-desktop-1.0.17::https://github.com/undg/pulse-remote-desktop/releases/download/v1.0.17/pulse-remote-desktop
-	sha256sums = 952817f50ddcdf710817c2c31c9524188a1c10dffcc3fc6753fa5bb93de546a9
 
 pkgname = pulse-remote-desktop
