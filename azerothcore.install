@@ -1,0 +1,14 @@
+#!/bin/sh
+# Run systemd daemon-reload after package install/upgrade so services are recognized
+
+post_install() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+}
+
+post_upgrade() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+}
