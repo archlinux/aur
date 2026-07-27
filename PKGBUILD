@@ -1,6 +1,6 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=0.5.1
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
 makedepends=('cargo')
 options=('!lto' '!strip' '!debug')
-source=("cfait-source-v0.5.1.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.1/cfait-source-v0.5.1.tar.gz")
-sha256sums=('0d3352f7b79d4204e2aa500218789b0af4f83691a70c4c4ed1c3a608a9e6e232')
+source=("cfait-source-v0.5.4.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.4/cfait-source-v0.5.4.tar.gz")
+sha256sums=('df85a87629b627c9f8f1e30caac5bdd58e649252000e8d17c34b7b94de120c3e')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
@@ -18,6 +18,9 @@ build() {
   cd "$pkgname-$pkgver"
   # Set the target directory to be at the root of the makepkg build area
   export CARGO_TARGET_DIR="$srcdir/target"
+  # Skip compiling the problematic fallback RNG.
+  # Linux's native getrandom() is used instead.
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --release --features gui
 }
 
