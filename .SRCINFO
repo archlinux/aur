@@ -6,6 +6,7 @@ pkgbase = lsr-git
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.15.1
+	makedepends = git
 	provides = lsr
 	conflicts = lsr
 	source = lsr-git::git+https://github.com/rockorager/lsr.git
