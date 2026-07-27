@@ -31,7 +31,7 @@ prepare() {
   cd gasket-driver
   patch -Np1 -i ../../4b2a1464f3b619daaf0f6c664c954a42c4b7ce00.patch # no_llseek patch for kernels >= 6.12
   patch -Np1 -i ../../6fbf8f8f8bcbc0ac9c9bef7a56f495a2c9872652.patch # MODULE_IMPORT_NS patch for kernels >= 6.13
-  patch -Np1 -i ../../37319f64b9c39e5e52805982d50bfa12408047cc.patch # zap_special_vma_range for kernels >= 7.1
+  patch -Np1 -i ../../linux-7.1-compat.patch # zap_special_vma_range for kernels >= 7.1
 }
 
 package() {
