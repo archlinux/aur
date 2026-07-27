@@ -1,6 +1,6 @@
 pkgbase = powerls
 	pkgdesc = A colorful terminal directory explorer written in C++20
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/themazyworlds/powerls
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = powerls
 	makedepends = ninja
 	provides = powerls
 	conflicts = powerls
-	source = https://github.com/themazyworlds/powerls/archive/refs/tags/v1.1.0.tar.gz
+	source = https://github.com/themazyworlds/powerls/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = powerls

@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=powerls
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A colorful terminal directory explorer written in C++20'
 arch=('x86_64')
