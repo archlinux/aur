@@ -1,13 +1,13 @@
 pkgbase = bgpipe
 	pkgdesc = BGP reverse proxy and firewall
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/bgpfix/bgpipe
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = bgpipe-0.21.1.tar.gz::https://github.com/bgpfix/bgpipe/archive/v0.21.1.tar.gz
-	sha256sums = 316c6bca051cf4fe419be01906206b1699a7a1171e39677f8e519e05c15c19e5
+	source = bgpipe-0.22.0.tar.gz::https://github.com/bgpfix/bgpipe/archive/v0.22.0.tar.gz
+	sha256sums = 7920f591a22deb2db8d013a64b6cfe4f4be39487119df3bea0c01391f9f11da9
 
 pkgname = bgpipe
