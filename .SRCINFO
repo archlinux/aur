@@ -1,6 +1,6 @@
 pkgbase = neowall-git
 	pkgdesc = GPU shader wallpapers for Wayland and X11
-	pkgver = 0.4.6
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/1ay1/neowall
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = neowall-git
 	depends = libjpeg-turbo
 	depends = libx11
 	depends = libxrandr
+	depends = libxkbcommon
 	provides = neowall
 	conflicts = neowall
 	source = git+https://github.com/1ay1/neowall.git
