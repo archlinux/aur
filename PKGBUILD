@@ -1,8 +1,8 @@
 # Maintainer: Bill Auclair <screenshaver@proton.me>
 
 pkgname=screenshaver
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Next-generation Linux screensaver that renders ISF, ShaderToy and GLSL shaders"
 arch=('x86_64')
 url="https://github.com/bauclair/screenshaver"
@@ -22,12 +22,10 @@ makedepends=(
 )
 
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 )
 
-sha256sums=(
-    '38e02ebb0b2563c9b1cd5c41cda36588c1fa1f1fed72f6d9c6403d2e2ccae870'
-)
+sha256sums=('ca4779d202667738c25b24a3b2b62132b8e4e77dc3fa7813108556efabc8cc36')
 
 prepare() {
     cd "$pkgname-$pkgver"
