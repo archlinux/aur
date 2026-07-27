@@ -2,7 +2,7 @@
 pkgname=gridplayer-appimage
 _pkgname=GridPlayer
 _appname="com.vzhd1701.${pkgname%-appimage}"
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Simple VLC-based media player that can play multiple videos at the same time."
 arch=('x86_64')
@@ -16,7 +16,7 @@ _install_path="/usr/lib/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
 )
-sha256sums=('3a9d525b18bdd5ca9cca0835af274175190e34489d8cd40829b6fba9d0c2f82e')
+sha256sums=('0d04c55bfb494de879f18a83f5b061726ae25533662b42109400f7e6463444eb')
 prepare() {
     if [ ! -x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
