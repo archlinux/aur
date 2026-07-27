@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=powerls
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A colorful terminal directory explorer written in C++20'
 arch=('x86_64')
@@ -8,9 +8,9 @@ url='https://github.com/themazyworlds/powerls'
 license=('MIT')
 makedepends=('cmake' 'ninja')
 depends=()
-provides=('powerls')
+provides=('powerls' 'pls')
 conflicts=('powerls')
-options=('!debug')
+options=('!debug' 'strip')
 source=("https://github.com/themazyworlds/powerls/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
