@@ -8,7 +8,7 @@
 # $ curl -sL $(curl -s https://github.com/RafaUC/Allusion/releases | sed -n -e "s/^.*\(\/allusion-app\/Allusion\/releases\/download\/.*\/latest-linux.yml\)\".*/https:\/\/github.com\1/p" | head -n1)
 
 pkgname=allusion-appimage-rafauc
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source_x86_64=("Allusion-${gitver}-ruc.AppImage::https://github.com/RafaUC/Allus
                "LICENSE::https://raw.githubusercontent.com/RafaUC/Allusion/refs/heads/master/LICENSE"
                )
 noextract=("Allusion-${gitver}.AppImage")
-sha256sums_x86_64=('0b9c84ab0e9f0f7de0fc7cb365f586d21acb9928a19fe5dc734ab367ab198e1c'
+sha256sums_x86_64=('e5081ded9d49fd77ee7f3f0114f7ae4faeb381fe7a1f9e76d932fe5ce67e7b0a'
                    'df1225b564f5301ce2a092e63856012db0370861c317bfa65586e06a842f2438'
                    'fdaccc7f6521f98b22b31b5996f65929b33068b86aaacd6ec00727b1a5fee2fa'
                    '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
