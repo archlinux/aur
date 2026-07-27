@@ -1,6 +1,6 @@
 pkgbase = gpredict
 	pkgdesc = Real-time satellite tracking and orbit prediction application
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = http://gpredict.oz9aec.net/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = gpredict
 	provides = gpredict
 	conflicts = gpredict
 	options = !emptydirs
-	source = https://github.com/csete/gpredict/releases/download/v2.5.1/gpredict-2.5.1.tar.bz2
-	md5sums = c6acc86f9a0bf3eb8673557775e13604
-	sha256sums = c26ff5f9bfe9468bd48426dac4782f860c208960b0551feba3e38e364fbcd797
+	source = https://github.com/csete/gpredict/releases/download/v2.5.2/gpredict-2.5.2.tar.bz2
+	md5sums = 142dda8834e039e3afe48397f575bd35
+	sha256sums = 186907660a96a95e70df2212d9d783710bcf53079b1508eb55a13dbed60573bc
 
 pkgname = gpredict
