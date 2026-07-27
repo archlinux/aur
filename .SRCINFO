@@ -1,6 +1,6 @@
 pkgbase = asteroidz-scenefx
 	pkgdesc = scenefx fork for asteroidz — wlroots effects library with GLES2 and Vulkan (fx_vk) renderers
-	pkgver = 0.17.5
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/asteroidzman/asteroidz-scenefx
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = asteroidz-scenefx
 	provides = asteroidz-scenefx
 	provides = libasteroidz-scenefx-0.5.so
 	conflicts = asteroidz-scenefx
-	source = git+https://github.com/asteroidzman/asteroidz-scenefx.git#tag=0.17.5
+	source = git+https://github.com/asteroidzman/asteroidz-scenefx.git#tag=0.18.0
 	sha256sums = SKIP
 
 pkgname = asteroidz-scenefx
