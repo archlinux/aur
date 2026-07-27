@@ -1,16 +1,16 @@
 # maintainer: asitos @ https://github.com/asitos
 # PKGBUILD
 pkgname=haj
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
-pkgdesc="fast, quiet, beautiful package manager and tui for blahArch"
+pkgdesc="fast, quiet, beautiful package manager and tui for blahArch."
 arch=('x86_64')
 url="https://github.com/asitos/haj"
 license=('MIT')
 depends=('pacman' 'libalpm.so' 'display3d')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3e83fe82e3733d225f346b43dd8d439cbe4312d3fbcbfd7779409de967ad95e')
+sha256sums=('e8345d7ce19320fcff00288a4e9c17bee52f37b51506aae1a0e382cc9e375584')
 
 build() {
   cd "$pkgname-$pkgver"

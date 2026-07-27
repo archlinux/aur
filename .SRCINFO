@@ -1,6 +1,6 @@
 pkgbase = haj
-	pkgdesc = fast, quiet, beautiful package manager and tui for blahArch
-	pkgver = 0.2.4
+	pkgdesc = fast, quiet, beautiful package manager and tui for blahArch.
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/asitos/haj
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = haj
 	depends = pacman
 	depends = libalpm.so
 	depends = display3d
-	source = haj-0.2.4.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = f3e83fe82e3733d225f346b43dd8d439cbe4312d3fbcbfd7779409de967ad95e
+	source = haj-0.2.5.tar.gz::https://github.com/asitos/haj/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = e8345d7ce19320fcff00288a4e9c17bee52f37b51506aae1a0e382cc9e375584
 
 pkgname = haj
