@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-    patch -Np1 -i "../hidapi-linking.patch"
+        patch -Np1 --fuzz=3 -i "../hidapi-linking.patch"
 }
 
 pkgver() {
