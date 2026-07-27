@@ -1,7 +1,7 @@
 pkgbase = pince-bin
 	pkgdesc = Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.10
+	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,9 @@ pkgbase = pince-bin
 	provides = PINCE
 	conflicts = pince
 	conflicts = pince-git
-	noextract = PINCE-x86_64-0.9.3.AppImage
+	noextract = PINCE-x86_64-0.10.AppImage
 	options = !strip
-	source = PINCE-x86_64-0.9.3.AppImage::https://github.com/korcankaraokcu/PINCE/releases/download/v0.9.3/PINCE-x86_64.AppImage
-	sha256sums = 6b06231178a093b6bfa6d00c606154f3a32b9cb8940707b9192e2d925f1e2b8c
+	source = PINCE-x86_64-0.10.AppImage::https://github.com/korcankaraokcu/PINCE/releases/download/v0.10/PINCE-x86_64.AppImage
+	sha256sums = 46424c9b86a25bb752dd60229ef2af3bf04d4db61d9e24c8ba15d368f3ddaa8e
 
 pkgname = pince-bin

@@ -1,8 +1,8 @@
 # Maintainer: Keiran <keircn@proton.me>
 
 pkgname=pince-bin
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.10
+pkgrel=1
 pkgdesc="Reverse engineering tool for linux games - front-end/reverse engineering tool for GDB"
 arch=('x86_64')
 url="https://github.com/korcankaraokcu/PINCE"
@@ -12,7 +12,7 @@ provides=('PINCE')
 conflicts=('pince' 'pince-git')
 options=('!strip')
 source=(PINCE-x86_64-${pkgver}.AppImage::https://github.com/korcankaraokcu/PINCE/releases/download/v${pkgver}/PINCE-x86_64.AppImage)
-sha256sums=('6b06231178a093b6bfa6d00c606154f3a32b9cb8940707b9192e2d925f1e2b8c')
+sha256sums=('46424c9b86a25bb752dd60229ef2af3bf04d4db61d9e24c8ba15d368f3ddaa8e')
 noextract=("PINCE-x86_64-${pkgver}.AppImage")
 
 prepare() {
