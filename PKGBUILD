@@ -14,7 +14,7 @@ options=('!debug')
 depends=()
 makedepends=('go' 'go-md2man')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Veitangie/sinq/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('0e9187c920dc7cdf6477957a1d1923b31cf8e14bbaf7c21eea51d1f373926df0')
+sha256sums=('702006d4c9d94459ebf911659b1f86abeeb5e299baaa5749a923ab3aac308425')
 
 build() {
   cd "$pkgname-${_tag#v}"

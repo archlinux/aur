@@ -13,6 +13,6 @@ pkgbase = sinq
 	conflicts = sinq-git
 	options = !debug
 	source = sinq-1.0.0_rc.14.tar.gz::https://github.com/Veitangie/sinq/archive/refs/tags/v1.0.0-rc.14.tar.gz
-	sha256sums = 0e9187c920dc7cdf6477957a1d1923b31cf8e14bbaf7c21eea51d1f373926df0
+	sha256sums = 702006d4c9d94459ebf911659b1f86abeeb5e299baaa5749a923ab3aac308425
 
 pkgname = sinq
