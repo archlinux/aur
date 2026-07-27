@@ -1,6 +1,6 @@
 pkgbase = openloco
 	pkgdesc = An open source re-implementation of Chris Sawyer's Locomotion
-	pkgver = 26.05
+	pkgver = 26.07.1
 	pkgrel = 1
 	url = https://github.com/OpenLoco/OpenLoco
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = openloco
 	makedepends = cmake
 	makedepends = git
 	makedepends = gtest
+	depends = fmt
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
@@ -19,8 +20,7 @@ pkgbase = openloco
 	depends = yaml-cpp
 	optdepends = libpipewire: audio output
 	optdepends = libpulse: audio output
-	options = !lto
-	source = openloco-26.05.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v26.05.tar.gz
-	sha256sums = c5d036bc6a290e34b4430621621ba230534820cdf663e6c859654fe944574609
+	source = openloco-26.07.1.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v26.07.1.tar.gz
+	sha256sums = 6d2e4b0248778102d80a2459fd820af06095f398768aeddfc0ce2bab16f2038d
 
 pkgname = openloco
