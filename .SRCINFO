@@ -1,0 +1,15 @@
+pkgbase = python-chibi-site
+	pkgdesc = Library for creating website scrapers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi-site/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-chibi
+	depends = python-chibi-requests
+	depends = python-selenium
+	source = https://files.pythonhosted.org/packages/source/c/chibi_site/chibi_site-0.2.0.tar.gz
+	sha256sums = b30e479b1e3df343e4fca854bccb385a742fb429537387a8bcc69a5e54a88838
+
+pkgname = python-chibi-site
