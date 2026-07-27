@@ -1,8 +1,8 @@
 # Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 pkgname=panobble-git
-pkgver=r15.70054c3
+pkgver=r17.42ef169
 pkgrel=1
-pkgdesc="Minimal MPRIS to Last.fm scrobbler daemon"
+pkgdesc="Minimal MPRIS to Last.fm/MusicBrainz scrobbler daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arrufat/panobble"
 license=('GPL-3.0-only')
