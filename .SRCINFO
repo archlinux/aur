@@ -1,0 +1,20 @@
+pkgbase = phpantom_lsp
+	pkgdesc = Fast PHP language server with deep type intelligence.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://phpantom-dev.github.io/phpantom_lsp/
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = xz
+	depends = libgcc
+	depends = bzip2
+	options = !lto
+	source = phpantom_lsp-0.9.0.tar.gz::https://github.com/PHPantom-dev/phpantom_lsp/archive/refs/tags/0.9.0.tar.gz
+	b2sums = 08046b8ad2920e7ba179a6c5aa6dff6b60f0b6f935287d7a9b3efbaed2c7fb683b1508f4a41c526fd087f238b482bc26536e08964abf99179daa8f35f3e8d199
+
+pkgname = phpantom_lsp
