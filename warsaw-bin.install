@@ -1,11 +1,5 @@
 #!/bin/bash
 
-PREFIX=/usr/local
-CONF_DIR=${PREFIX}/etc/warsaw
-BIN_DIR=${PREFIX}/bin/warsaw
-CORE=${BIN_DIR}/core
-GAS_DBD_FILE=${CONF_DIR}/gas.dbd
-
 post_install() {
     if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
         echo -e "\e[34;1m==>\e[39;1m Reinicie o sistema e conclua a configuração do seu banco no site abaixo: \e[0m"
@@ -19,41 +13,27 @@ post_install() {
         echo -e "\e[34;1m==>\e[39;1m Sicredi: https://www.sicredi.com.br/diagnostico/html/modulo/index.html \e[0m"
     fi
 
-    [ -f ${GAS_DBD_FILE}.dpkg-save ] && mv -f ${GAS_DBD_FILE}{.dpkg-save,}
-    if systemctl is-active warsaw.service 1>/dev/null; then
-      warsaw start
-    else
-      systemctl daemon-reload
-      systemctl enable --now warsaw.service
-    fi
+    systemctl enable --now warsaw.service
 }
 
 pre_upgrade() {
     if systemctl is-active warsaw.service 1>/dev/null; then
-      systemctl stop warsaw.service
-      warsaw stop
+        systemctl disable --now warsaw.service
     fi
-    [ -f ${GAS_DBD_FILE} ] && cp -a ${GAS_DBD_FILE}{,.dpkg-save}
 }
 
 post_upgrade() {
-    [ -f ${GAS_DBD_FILE}.dpkg-save ] && mv -f ${GAS_DBD_FILE}{.dpkg-save,}
-    if systemctl is-active warsaw.service 1>/dev/null; then
-      warsaw start
-    else
-      systemctl daemon-reload
-      systemctl enable --now warsaw.service
+    if systemctl is-inactive warsaw.service 1>/dev/null; then
+        systemctl enable --now warsaw.service
     fi
 }
 
 pre_remove() {
     if systemctl is-enabled warsaw.service 1>/dev/null; then
-      systemctl stop warsaw.service
-      systemctl disable warsaw.service
-      systemctl daemon-reload
+        systemctl disable --now warsaw.service
     fi
 }
 
 post_remove() {
-   rm -rf ${CONF_DIR}
+   rm -rf /usr/local/etc/warsaw
 }
