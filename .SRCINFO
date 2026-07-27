@@ -1,0 +1,19 @@
+pkgbase = ptouch-studio
+	pkgdesc = Design and print labels for Brother P-touch tape cassettes over Bluetooth
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tombueng/ptouch-studio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = bluez
+	depends = bluez-utils
+	depends = cups
+	depends = ptouch-driver
+	source = ptouch-studio-0.2.0.tar.gz::https://github.com/tombueng/ptouch-studio/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 02ff8837dd2455e3af2df3c9bb9f536450e2c4aea0c99f306e84f2e6aa0bb80a
+
+pkgname = ptouch-studio
