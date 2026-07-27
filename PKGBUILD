@@ -46,6 +46,24 @@ prepare() {
 
 build() {
 
+    # Detect if yay's provider prompt caused mariadb-clients to leak into the host
+    if pacman -Qq | grep -i "mariadb" >/dev/null 2>&1;  then
+        echo "======================================================================="
+        echo " ERROR: MariaDB components detected in the build sandbox!"
+        echo "======================================================================="
+        echo " Due to a dependency sorting limitation in your AUR helper, choosing"
+        echo " the default options at the provider prompt pulls in MariaDB."
+        echo ""
+        echo " To build AzerothCore successfully, you must install the MySQL 8.4"
+        echo " stack first to satisfy the system capabilities natively:"
+        echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
+        echo ""
+        echo " Once installed, re-run 'yay -S azerothcore' and it will bypass"
+        echo " the prompts completely."
+        echo "======================================================================="
+        exit 1
+    fi
+
 	# Detect if being run manually via makepkg or via an AUR helper
 	# Check if the build directory path includes common AUR helper cache folders
 	if [[ ! "$startdir" =~ \.cache/(yay|paru|yay-git|paru-git) ]]; then
