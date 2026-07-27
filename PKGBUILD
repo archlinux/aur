@@ -2,7 +2,7 @@
 
 pkgbase=oxc
 pkgname=(oxlint oxfmt)
-pkgver=1.75.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc="A collection of JavaScript tools written in Rust"
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/oxc-project/oxc/archive/ref
   oxlint.install
 )
 sha256sums=(
-  '31c650bd192cb9d4a2b7fac521a0817eb2bd04b04e2f12e763c036bdddd8b6ed'
+  '7db154e9242c561603a2fe8dd00831993de2afc156927be7c5cd311840cb5069'
   '287cbed847b3fdf8bc5fcc7d35f7437121bbec2a7b6ac998137385bfabc03861'
 )
 
