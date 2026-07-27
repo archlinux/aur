@@ -2,13 +2,13 @@
 
 pkgname=obs-studio-liberty
 pkgver=32.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 _qtver=6.11.0
-_libajantv2ver=17.5.0
+#_libajantv2ver=17.5.0
 _libdatachannelver=0.24.5
 _mbedtlsver=3.6.1
 _pythonver=3.14
@@ -24,7 +24,7 @@ depends=(
   "glibc" # Deps of any C related binary
   "jack" # Deps of JACK plugin
   "jansson" # Deps of libobs and rtmp-services plugin
-  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
+#  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
   "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
@@ -123,6 +123,7 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
+    -DENABLE_AJA=OFF \
     -DENABLE_BROWSER=ON \
     -DENABLE_NVENC=ON \
     -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
