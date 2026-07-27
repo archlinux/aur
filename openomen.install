@@ -1,0 +1,49 @@
+post_install() {
+    if [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; then
+        cat << 'MSG'
+==> OpenOMEN 已安装！
+
+  非官方的 HP Victus/OMEN 笔记本 Linux 管理工具。
+
+  快速开始:
+    openomen --help          显示帮助
+    openomen fan status      查看风扇状态
+    openomen fan max         风扇全速运转
+    openomen fan auto        恢复 BIOS 自动控制
+    openomen power list      列出可用电源方案
+    openomen stats           实时系统监控面板
+
+  更多信息:
+    https://github.com/openomen/openomen/wiki
+MSG
+    else
+        cat << 'MSG'
+==> OpenOMEN installed!
+
+  Unofficial CLI for managing HP Victus/OMEN laptops on Linux.
+
+  Quick start:
+    openomen --help          Show help
+    openomen fan status      Show fan status
+    openomen fan max         Set fans to maximum RPM
+    openomen fan auto        Set fans to auto/BIOS control
+    openomen power list      List available power profiles
+    openomen stats           Show system stats dashboard
+
+  For more information:
+    https://github.com/openomen/openomen/wiki
+MSG
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if [[ "${LANG:-}${LC_ALL:-}${LC_MESSAGES:-}" == *zh* ]]; then
+        echo "==> OpenOMEN 已移除。"
+    else
+        echo "==> OpenOMEN removed."
+    fi
+}
