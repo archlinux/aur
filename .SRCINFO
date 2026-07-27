@@ -1,6 +1,6 @@
 pkgbase = arte-ogre
 	pkgdesc = GPU-native, non-destructive image editor
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/visorcraft/Arte-Ogre
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = arte-ogre
 	depends = vulkan-icd-loader
 	depends = wayland
 	options = !lto
-	source = arte-ogre-1.7.2.tar.gz::https://github.com/visorcraft/Arte-Ogre/archive/refs/tags/v1.7.2.tar.gz
+	source = arte-ogre-1.8.0.tar.gz::https://github.com/visorcraft/Arte-Ogre/archive/refs/tags/v1.8.0.tar.gz
 	source = arte-ogre.desktop
-	sha256sums = 2ca0a2b21622b8dbda12a34663a47fdacddc04300519eb96cc81b22b07c27dff
+	sha256sums = a6efe51e104e300548ff0fc9248d44c2846b13269dbf9cc9e54eeb32c5e63547
 	sha256sums = e31bb5f9f760ed48130d3a40b071858334cccdc207bb7bc06746e311d19e73f3
 
 pkgname = arte-ogre

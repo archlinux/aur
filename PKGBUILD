@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft LLC <packages@visorcraft.com>
 
 pkgname=arte-ogre
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='GPU-native, non-destructive image editor'
 arch=('x86_64')
@@ -26,8 +26,10 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'arte-ogre.desktop'
 )
-sha256sums=('2ca0a2b21622b8dbda12a34663a47fdacddc04300519eb96cc81b22b07c27dff'
-            'e31bb5f9f760ed48130d3a40b071858334cccdc207bb7bc06746e311d19e73f3')
+sha256sums=(
+  'a6efe51e104e300548ff0fc9248d44c2846b13269dbf9cc9e54eeb32c5e63547'
+  'e31bb5f9f760ed48130d3a40b071858334cccdc207bb7bc06746e311d19e73f3'
+)
 
 prepare() {
   cd "Arte-Ogre-$pkgver"
