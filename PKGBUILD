@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/Carrie
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/Carrier/releases/download/v${pkgver}/Carrier_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/Carrier/releases/download/v${pkgver}/Carrier_${pkgver}_lin_arm.deb")
 sha256sums=('957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d')
-sha256sums_x86_64=('7eeebff5e5a044f784db9e309a84eaabd7065ea68b6a9f8869e43747d2b827fe')
-sha256sums_aarch64=('db65cdc4c9883b9b82b1fd549e2473455735df254d00254d2947b9ff147dfffe')
+sha256sums_x86_64=('c0b196c366d85cd2e5c587892a937a106a3316d8c063ba431d22cb6e428db149')
+sha256sums_aarch64=('5e5713cb9e65e2e950d53b065a8ed44fa5dda922dee13ea10add621c0edcbe12')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
