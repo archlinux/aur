@@ -1,6 +1,6 @@
 # Maintainer: OpenSourceGuy <osguy@duck.com>
 pkgname=brokkr-flash-appimage
-pkgver=1.4.8.beta1
+pkgver=2.4.8.beta2
 pkgrel=1
 pkgdesc="Samsung device flashing utility (Odin alternative) — AppImage release"
 arch=('x86_64' 'aarch64')
@@ -12,17 +12,18 @@ provides=('brokkr-flash')
 conflicts=('brokkr-flash' 'brokkr-flash-git' 'brokkr-flash-bin')
 options=('!strip' '!debug' '!emptydirs')
 install=brokkr-flash-appimage.install
-source_x86_64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver/.beta/-beta}/Brokkr-linux-x86_64.AppImage")
-source_aarch64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${pkgver/.beta/-beta}/Brokkr-linux-arm64.AppImage")
-sha256sums_x86_64=('11d26a393a80f49298fed55af9b2899e1a800a6a5f0f8f1a5120157c2a8c237a')
-sha256sums_aarch64=('14d100300ef512732f2abe0b3bfeac75535a84dd5e36b5097a424f6b522ff55f')
+_upstream_tag=${pkgver/.beta/-beta}
+source_x86_64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${_upstream_tag}/Brokkr-${_upstream_tag}-linux-x86_64.AppImage")
+source_aarch64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${_upstream_tag}/Brokkr-${_upstream_tag}-linux-arm64.AppImage")
+sha256sums_x86_64=('f912510ad80051718d5c217a53be3992c135448f1a25e6cf48e011a03ca62d4c')
+sha256sums_aarch64=('42ebaa6e7a8ad533e2d78dfe2a38c239850c4bd776862db47e6784fe6963a091')
 
 prepare() {
   local _appimg
   if [[ "${CARCH}" == "x86_64" ]]; then
-    _appimg="Brokkr-linux-x86_64.AppImage"
+    _appimg="Brokkr-${_upstream_tag}-linux-x86_64.AppImage"
   else
-    _appimg="Brokkr-linux-arm64.AppImage"
+    _appimg="Brokkr-${_upstream_tag}-linux-arm64.AppImage"
   fi
   chmod +x "${srcdir}/${_appimg}"
 }
@@ -30,9 +31,9 @@ prepare() {
 build() {
   local _appimg
   if [[ "${CARCH}" == "x86_64" ]]; then
-    _appimg="Brokkr-linux-x86_64.AppImage"
+    _appimg="Brokkr-${_upstream_tag}-linux-x86_64.AppImage"
   else
-    _appimg="Brokkr-linux-arm64.AppImage"
+    _appimg="Brokkr-${_upstream_tag}-linux-arm64.AppImage"
   fi
   cd "${srcdir}"
 
