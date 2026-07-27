@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202607241
+pkgver=202607271
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.07.24.1/linux/phoenix-2026.07.24.1-linux.tar.xz")
-sha512sums=('bf675a0e1dae6b36e58dc0f2cafb082540da7390ff985df3eee820dd5566d02f8a568243caa624e5fef84223ff1af73a5a782ad29bc155f1512ea7a5759d5816')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.07.27.1/linux/phoenix-2026.07.27.1-linux.tar.xz")
+sha512sums=('134cb3c64c2b053401e786d0b8239186fdad3140d2aad53f34302daa5fe601e1f44cafc921c15e82735ae60c9a36020bb32230cbdf066eeffb7e03108e6a0311')
 
 pkgver() {
   echo "$pkgver"
