@@ -1,6 +1,6 @@
 pkgbase = g-shell
 	pkgdesc = A POSIX-compliant shell written in Rust with a custom theme system
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/Crazygiscool/G-shell
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = g-shell
 	optdepends = fastfetch: welcome banner in default .gshellrc
 	optdepends = git: git branch display in prompt
 	optdepends = hostname: hostname in prompt
-	source = https://github.com/Crazygiscool/G-shell/archive/v1.2.6.tar.gz
+	source = https://github.com/Crazygiscool/G-shell/archive/v1.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = g-shell

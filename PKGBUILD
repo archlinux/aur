@@ -2,7 +2,7 @@
 # Contributors: Craigyiscool
 
 pkgname=g-shell
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A POSIX-compliant shell written in Rust with a custom theme system"
 arch=('x86_64' 'aarch64')
