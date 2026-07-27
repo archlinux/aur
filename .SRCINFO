@@ -17,6 +17,7 @@ pkgbase = termux-language-server
 	depends = pyalpm
 	depends = python-marisa-trie
 	optdepends = portage
+	optdepends = paru
 	provides = pkgbuild-language-server
 	provides = portage-language-server
 	conflicts = pkgbuild-language-server
