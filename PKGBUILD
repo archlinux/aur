@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
-pkgver=1.15.7+76
+pkgver="2.0.0+89"
 pkgrel=1
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!(Prebuilt version)"
 arch=(
@@ -18,8 +18,9 @@ depends=(
     'gdk-pixbuf2'
     'mpv'
     'libdbusmenu-glib'
-    'libnotify'
-    'libappindicator-gtk3'
+    'libayatana-appindicator'
+    'libayatana-indicator'
+    'ayatana-ido'
     'gtk3'
 )
 makedepends=(
@@ -28,12 +29,12 @@ makedepends=(
 options=(
     '!emptydirs'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}-desktop/${pkgname%-bin}-linux-aarch64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}-desktop/${pkgname%-bin}-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('c850cf686c449c6f6c1628a7ed01e47761f4d1dfd5275904716a4c63f56a3396')
-sha256sums_x86_64=('80e421d77e463cad75fa0fc73577fdbf6a99d7c1c80d9dc939bdbba4053a9bd4')
+sha256sums_aarch64=('83debb7b908efc156590c18ebf39c49dc9579b5fb5d124e1fa0cd407e1b0e2cd')
+sha256sums_x86_64=('75f6d31ba798f7c2c3de1ab94818b7ef3be8a14b8e014b0c9728f07b1018076a')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
