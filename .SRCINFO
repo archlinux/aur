@@ -1,6 +1,6 @@
 pkgbase = koreader-appimage
 	pkgdesc = An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats.
-	pkgver = 2026.03
+	pkgver = 2026.07
 	pkgrel = 1
 	url = https://koreader.rocks/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = koreader-appimage
 	arch = armhf
 	license = AGPL3
 	depends = zlib
-	noextract = koreader-v2026.03-x86_64.AppImage
+	noextract = koreader-v2026.07-x86_64.AppImage
 	options = !strip
-	source = https://github.com/koreader/koreader/releases/download/v2026.03/koreader-v2026.03-x86_64.AppImage
-	sha512sums = 7b915d66cb6f830c96f9c775c284b3b831ceab9a451c8b499d51744b3d674ae8ec73628d22b62d528b309af312dbc6d4e57445115bc91d67c48adf3b97cc68c7
+	source = https://github.com/koreader/koreader/releases/download/v2026.07/koreader-v2026.07-x86_64.AppImage
+	sha512sums = aa30a0129753f3fead16abfc5da38467d47458e82791e2fff0cd8592c5b3acdf2b0201e18e6b975b93eaf74299f0258866cb1f1fd5e2c1f608632196b96b48cc
 
 pkgname = koreader-appimage
