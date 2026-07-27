@@ -19,9 +19,9 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 # Core execution dependencies
-depends=('libmysqlclient84' 'mysql-clients84' 'boost-libs' 'readline' 'openssl' 'mysql84')
-conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients' 'mysql' 'mysql-clients' 'libmysqlclient')
-makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld' 'mysql84')
+depends=('boost-libs' 'readline' 'openssl')
+conflicts=('mariadb' 'mariadb-libs' 'mariadb-clients')
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
@@ -33,28 +33,32 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-
-	# 1. IMMEDIATE FIREWALL: Check for MariaDB components before doing anything else
-	if pacman -Qq | grep -i "mariadb" >/dev/null 2>&1; then
+	# Enforce rigid filesystem tracking for all 3 critical MySQL 8.4 packages
+	if ! pacman -Qi mysql84 >/dev/null 2>&1 || \
+	   ! pacman -Qi libmysqlclient84 >/dev/null 2>&1 || \
+	   ! pacman -Qi mysql-clients84 >/dev/null 2>&1; then
 		echo "======================================================================="
-		echo " ERROR: MariaDB environmental packages detected!"
+		echo " ERROR: Required MySQL 8.4 Package Stack is Incomplete on this Host!"
 		echo "======================================================================="
-		echo " AzerothCore requires Oracle MySQL 8.4 and cannot compile or run alongside"
-		echo " MariaDB packages. Due to an upstream dependency resolution bug with split"
-		echo " packages, your AUR helper accidentally pulled down MariaDB."
+		echo " To shield your system from upstream dependency bugs that pull in"
+		echo " conflicting MariaDB environments, AzerothCore requires you to have"
+		echo " the full MySQL 8.4 ecosystem pre-installed."
 		echo ""
-		echo " To resolve this loop, please manually drop MariaDB and seed the exact"
-		echo " MySQL 8.4 ecosystem onto your machine first:"
+		echo " Please verify or install all three components manually before continuing:"
+		echo "   1. libmysqlclient84  (The C API development connector libraries)"
+		echo "   2. mysql-clients84   (The CLI tooling suite like mysqldump)"
+		echo "   3. mysql84           (The background SQL database server daemon)"
+		echo ""
+		echo " Execution command to resolve the environmental missing packages:"
 		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
 		echo ""
-		echo " Once those three packages are fully active, re-run 'yay -S azerothcore'"
-		echo " and the build sandbox will succeed immediately without prompts."
+		echo " Once those three packages are fully active, re-run 'yay -S azerothcore'."
 		echo "======================================================================="
 		exit 1
 	fi
 
 	# Apply any patches here, if needed
+	cd "${srcdir}/${_pkgname}"
 
 	# jemalloc is broken in master. AzerothCore is replacing jemalloc, so this is temporary.
 	# Skip the patch when the source tree is already in the patched state.

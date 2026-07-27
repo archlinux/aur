@@ -11,19 +11,12 @@ pkgbase = azerothcore
 	makedepends = boost
 	makedepends = openssl
 	makedepends = lld
-	makedepends = mysql84
-	depends = libmysqlclient84
-	depends = mysql-clients84
 	depends = boost-libs
 	depends = readline
 	depends = openssl
-	depends = mysql84
 	conflicts = mariadb
 	conflicts = mariadb-libs
 	conflicts = mariadb-clients
-	conflicts = mysql
-	conflicts = mysql-clients
-	conflicts = libmysqlclient
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	sha512sums = SKIP
 
