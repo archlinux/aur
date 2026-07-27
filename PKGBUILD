@@ -1,6 +1,6 @@
 # Maintainer: existyay <liujam826@gmail.com>
 pkgname=lx-music-shell
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Terminal music player with multi-source support and auto-reconnect"
 arch=("any")
@@ -35,7 +35,7 @@ backup=("etc/skel/.config/lx-music-shell/config"
         "etc/skel/.config/lx-music-shell/sources.list")
 options=()
 install=lx-music-shell.install
-source=("lx-music-shell-source-v2.0.1.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v2.0.1.tar.gz")
+source=("lx-music-shell-source-v2.1.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v2.1.0.tar.gz")
 sha256sums=("SKIP")
 
 prepare() {
@@ -90,6 +90,19 @@ UI_COLOR="true"
 NETWORK_CHECK_INTERVAL="3"
 MAX_RECONNECT_ATTEMPTS="5"
 RECONNECT_DELAY="2"
+
+# LX-Music 聚合 API 服务器 (用于解析 5 大音源真实 URL)
+LX_API_URL="https://lxmusicapi.onrender.com"
+LX_API_KEY="share-v3"
+LX_API_TIMEOUT="15"
+
+# 音质与保底 (hires/flac/320/128, highest/balanced/fastest)
+QUALITY_MODE="highest"
+DEFAULT_QUALITY="flac"
+
+# TUI 模式 (auto/on/off)
+UI_TUI="auto"
+UI_MOUSE="auto"
 AUTO_RECONNECT="true"
 WATCH_BLUETOOTH="true"
 EOFCONFIG
