@@ -1,0 +1,36 @@
+pkgbase = shitty-git
+	pkgdesc = Small, fast Wayland Vulkan-enabled terminal emulator
+	pkgver = 2026.07.28.r0.g042c60f
+	pkgrel = 1
+	url = https://github.com/pg83/shitty
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = MIT
+	makedepends = clang
+	makedepends = git
+	makedepends = glslang
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = ragel6
+	makedepends = vulkan-headers
+	depends = brotli
+	depends = fontconfig
+	depends = freetype2
+	depends = harfbuzz
+	depends = libutf8proc
+	depends = libxkbcommon
+	depends = simdutf
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xxhash
+	provides = shitty
+	conflicts = shitty
+	source = shitty-git::git+https://github.com/pg83/shitty.git#commit=042c60fc3dfcb84d5a7dfb33c040a38a5eb94c64
+	source = libstd::git+https://github.com/pg83/std.git#commit=6ab662255eb2c459e5e69e13248c964eef5eedc1
+	source = glfw::git+https://github.com/pg83/glfw.git#commit=a2b295420d899be60c6a27ced21eb172bf51f675
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shitty-git
