@@ -1,38 +1,39 @@
 pkgname=test-yourself
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A modern, highly-polished quiz and testing application"
 arch=('x86_64')
 url="https://github.com/albibenni/test-yourself"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'glib2' 'pango' 'gdk-pixbuf2' 'libayatana-appindicator')
-makedepends=('cargo' 'nodejs' 'npm' 'pnpm')
+depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'glib2' 'pango' 'gdk-pixbuf2' 'libayatana-appindicator' 'libsodium')
+makedepends=('cargo' 'nodejs' 'npm' 'pnpm' 'pkgconf')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/albibenni/test-yourself/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
-
-    # Fix for Arch Linux LLVM 22 vs Rust LLVM 21 LTO linking panic in libsodium
-    export CFLAGS="${CFLAGS/-flto/} -fno-lto"
-    export CXXFLAGS="${CXXFLAGS/-flto/} -fno-lto"
-    export LDFLAGS="${LDFLAGS/-flto/} -fno-lto"
-    export RUSTUP_TOOLCHAIN=stable
-
-    # Install frontend dependencies
-    pnpm install
-
-    # Build only the DEB bundle.
-    # We do this because the Tauri DEB bundler automatically generates
-    # the perfectly structured .desktop files and icon folders for us!
-    pnpm tauri build -b deb
+  cd "$pkgname-$pkgver"
+  
+  # Arch's newest makepkg.conf adds -flto=auto which breaks rustc's LLVM linker.
+  export CFLAGS="$(echo $CFLAGS | sed 's/-flto=auto//g' | sed 's/-flto//g')"
+  export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-flto=auto//g' | sed 's/-flto//g')"
+  export LDFLAGS="$(echo $LDFLAGS | sed 's/-flto=auto//g' | sed 's/-flto//g')"
+  
+  export CARGO_PROFILE_RELEASE_LTO="false"
+  export RUSTUP_TOOLCHAIN=stable
+  
+  # Force libsodium-sys to dynamically link against Arch's native libsodium!
+  export SODIUM_USE_PKG_CONFIG=1
+  
+  pnpm install
+  
+  # We append || true because Tauri will panic at the very end when it tries 
+  # to sign the auto-updater artifact without your private GitHub keys. 
+  # We don't care about the auto-updater in Arch, and the DEB is successfully built before the panic!
+  pnpm tauri build -b deb || true
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    # The Tauri bundler outputs the compiled binary, icons, and .desktop file
-    # inside this cleanly structured mock data directory.
-    # We simply copy its contents directly into the Arch Linux package directory.
-    cp -r src-tauri/target/release/bundle/deb/*/data/usr "$pkgdir/"
+  cd "$pkgname-$pkgver"
+  cp -r src-tauri/target/release/bundle/deb/*/data/usr "$pkgdir/"
 }
