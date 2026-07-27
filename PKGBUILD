@@ -2,7 +2,7 @@
 # Co-Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=adskidentitymanager
-pkgver=1.19.0.6
+pkgver=1.19.1.8
 pkgrel=1
 pkgdesc='Autodesk Identity Manager'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('webkit2gtk>=2')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://adskidentitymanager${pkgver}-1.x86_64.rpm")
-b2sums=('81ddd53d948fc9832b69a03f38b19f5fd1abdb30950f80468a9da69c72ce2df00300c427fedca62e697ae211d9de50e534df80fb2346d48b38dff253ae339145')
+b2sums=('48ca1c132e6663219bd6b6c062b9f4edc570b773473445ce7c33adf2e716a9ba358dc70c6c51bcaf1074c69836b339e200d3b34ea7f6689655011bfc85e216a6')
 
 options=(!strip)
 

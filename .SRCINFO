@@ -1,13 +1,13 @@
 pkgbase = adskidentitymanager
 	pkgdesc = Autodesk Identity Manager
-	pkgver = 1.19.0.6
+	pkgver = 1.19.1.8
 	pkgrel = 1
 	url = https://www.autodesk.com/
 	arch = x86_64
 	license = custom
 	depends = webkit2gtk>=2
 	options = !strip
-	source = manual://adskidentitymanager1.19.0.6-1.x86_64.rpm
-	b2sums = 81ddd53d948fc9832b69a03f38b19f5fd1abdb30950f80468a9da69c72ce2df00300c427fedca62e697ae211d9de50e534df80fb2346d48b38dff253ae339145
+	source = manual://adskidentitymanager1.19.1.8-1.x86_64.rpm
+	b2sums = 48ca1c132e6663219bd6b6c062b9f4edc570b773473445ce7c33adf2e716a9ba358dc70c6c51bcaf1074c69836b339e200d3b34ea7f6689655011bfc85e216a6
 
 pkgname = adskidentitymanager
