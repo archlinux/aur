@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openjph
 	pkgdesc = Open-source implementation of JPEG2000 Part-15 (mingw-w64)
-	pkgver = 0.30.1
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/aous72/OpenJPH
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = mingw-w64-openjph
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = openjph-0.30.1.tar.gz::https://github.com/aous72/OpenJPH/archive/refs/tags/0.30.1.tar.gz
+	source = openjph-0.31.0.tar.gz::https://github.com/aous72/OpenJPH/archive/refs/tags/0.31.0.tar.gz
 	source = 62450e6cc3110731bee703719145f852610ce632.patch
 	source = 77f287df698ecddcfa44c5080ed7ed2069714ec4.patch
-	sha256sums = fb3ccf71af838ed2a42c6ea669308a2adaba115ae9d5862dfb1e2865b43eb5b8
+	sha256sums = fe169dbbaae71a169a0a6a68dccb346616193252c1ca044217afa0d5d1dc436f
 	sha256sums = 1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7
 	sha256sums = a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3
 
