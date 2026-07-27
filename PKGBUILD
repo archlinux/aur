@@ -1,3 +1,4 @@
+# Maintainer: FlowEye <FlowEyeDev@proton.me>
 # Maintainer: s3rj1k <evasive dot gyron at gmail dot com>
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
