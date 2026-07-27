@@ -1,0 +1,21 @@
+pkgbase = vgs-shell
+	pkgdesc = VanillaGreen desktop shell for Hyprland and Niri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vanillagreencom/vgs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = quickshell
+	depends = jq
+	depends = python
+	depends = systemd
+	optdepends = hyprland: reference compositor
+	optdepends = niri: scrolling compositor
+	optdepends = wl-clipboard: clipboard history
+	source_x86_64 = https://github.com/vanillagreencom/vgs/releases/download/v0.1.0/vgs-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a0bc9dfe74a9eb76513608b196ae11153dee89b370d30bf5121a9256fc23cec5
+	source_aarch64 = https://github.com/vanillagreencom/vgs/releases/download/v0.1.0/vgs-0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = dee66ae3d7f81d63f6f2634b81bf487ce53a11e67635b4bfbc2a933a4e79656e
+
+pkgname = vgs-shell
