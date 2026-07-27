@@ -1,6 +1,6 @@
 pkgbase = rusted-claude-meter
 	pkgdesc = Cross-platform tray app showing your Claude plan usage
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/mpecan/rusted-claude-meter
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rusted-claude-meter
 	depends = openssl
 	depends = xdotool
 	options = !lto
-	source = rusted-claude-meter-0.1.5.tar.gz::https://github.com/mpecan/rusted-claude-meter/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 54560168e857823fa33557416f3d604062c5c8b5034c1226f4c2ba1392847f2f
+	source = rusted-claude-meter-0.1.6.tar.gz::https://github.com/mpecan/rusted-claude-meter/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 456b9a8f9cde647760428619887ffd726a61ecb165afed2f37f1f53fb7e58e3d
 
 pkgname = rusted-claude-meter
