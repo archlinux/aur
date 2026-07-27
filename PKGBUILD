@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-conky
-pkgver=26.06
+pkgver=26.07
 pkgrel=1
 pkgdesc="MX Conky - Conky configuration tool, for MX, antiX, and Arch Linux"
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://mxlinux.org"
 license=('GPL3')
 depends=('conky' 'qt6-base')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-conky/archive/refs/tags/26.06.tar.gz")
-sha256sums=('0abb60979f94a21020ec071d693f1399ce25f14eb5249c9aa1d977faf506fb9f')
+source=("https://github.com/MX-Linux/mx-conky/archive/refs/tags/26.07.tar.gz")
+sha256sums=('20184dd4dabf68bce8b2e4882af3e231fe8f93b84cdc31527147271c88a324c6')
 install=mx-conky.install
 
 build() {
@@ -43,8 +43,12 @@ package() {
 
     # Install documentation
     install -dm755 "${pkgdir}/usr/share/doc/mx-conky"
+
+    install -Dm644 "${srcroot}"/help/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
     if [ -d "${srcroot}/help" ]; then
-        cp -r "${srcroot}/help/"* "${pkgdir}/usr/share/doc/mx-conky/" 2>/dev/null || true
+        for help_file in "${srcroot}"/help/*.html "${srcroot}"/help/*.jpg "${srcroot}"/help/*.png "${srcroot}"/help/*.css; do
+            [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/mx-conky/$(basename "$help_file")"
+        done
     fi
     if [ -f "${srcroot}/debian/changelog" ]; then
         gzip -9 -c "${srcroot}/debian/changelog" > "${pkgdir}/usr/share/doc/mx-conky/changelog.gz"
