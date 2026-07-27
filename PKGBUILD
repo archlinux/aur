@@ -1,5 +1,5 @@
-# shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 pkgname=run0edit
 pkgver=1.2.1
 pkgrel=1
@@ -14,20 +14,20 @@ source=("$pkgname::git+$_repo#tag=${pkgver}")
 b2sums=("SKIP")
 
 prepare() {
-  cd $pkgname || exit 1
+  cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $pkgname || exit 1
+  cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 package() {
-  cd $pkgname || exit 1
+  cd $pkgname
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 
