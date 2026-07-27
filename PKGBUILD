@@ -1,6 +1,6 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034
-# Maintainer: Chinmay Dalal <~chinmay/public-inbox@lists.sr.ht>
+# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Chinmay Dalal <TILDE chinmay SLASH public-inbox AT lists.sr.ht>
 
 declare pkgdir
 pkgname=n2-git
@@ -19,32 +19,32 @@ source=("${_git_dir}::git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${_git_dir}" || exit 1
+    cd "${_git_dir}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
-    cd "${_git_dir}" || exit 1
+    cd "${_git_dir}"
     printf "%s.r%s.%s" \
         "$(cargo pkgid | cut -d# -f2 | cut -d@ -f2 | cut -d: -f2 | sed 's/-/_/g')" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${_git_dir}" || exit 1
+    cd "${_git_dir}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 check() {
-    cd "${_git_dir}" || exit 1
+    cd "${_git_dir}"
     cargo test --frozen
 }
 
 package() {
-    cd "${_git_dir}" || exit 1
+    cd "${_git_dir}"
     install -Dm755 target/release/"${pkgname%-git}" -t "$pkgdir/usr/bin/"
     ln -sf "/usr/bin/n2" "${pkgdir}/usr/bin/ninja"
 }
