@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.47.7
+pkgver=0.47.9
 _electronversion=41
-pkgrel=2
+pkgrel=1
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://getpublii.com"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/download/${_pkgname}-${pkgver}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6ffdb1c9aad4528fa8cd4e47e50bf3aade47ee476fab281f19d396698b1bc184'
+sha256sums=('eb3a34d54a5211a437c22509d57b55610827b4986fffbcbd60b80e67d81f25ef'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
