@@ -1,7 +1,7 @@
 # Maintainer: Bink
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9893.r0.6f8895feec
+pkgver=b10142.r1.88b47a755c
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -29,7 +29,6 @@ optdepends=(
 'python-sentencepiece: needed for convert_hf_to_gguf.py'
 'python-pytorch: needed for convert_hf_to_gguf.py'
 'python-transformers: needed for convert_hf_to_gguf.py'
-'rdma-core: RDMA transport for RPC backend'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

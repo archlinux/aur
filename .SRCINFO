@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-cuda-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
-	pkgver = b9893.r0.6f8895feec
+	pkgver = b10142.r1.88b47a755c
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = llama.cpp-cuda-git
 	optdepends = python-sentencepiece: needed for convert_hf_to_gguf.py
 	optdepends = python-pytorch: needed for convert_hf_to_gguf.py
 	optdepends = python-transformers: needed for convert_hf_to_gguf.py
-	optdepends = rdma-core: RDMA transport for RPC backend
 	provides = llama.cpp
 	conflicts = llama.cpp
 	backup = etc/conf.d/llama.cpp
