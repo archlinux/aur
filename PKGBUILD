@@ -1,4 +1,4 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=aom-psy101
 pkgname=$_pkgname-git
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Another aom psy fork'
 arch=(x86_64)
 url=https://gitlab.com/damian101/aom-psy101
-license=(BSD-2-Clause custom:PATENTS)
+license=('BSD-2-Clause' 'LicenseRef-PATENTS')
 depends=(gcc-libs)
 makedepends=(
   git
