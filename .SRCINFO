@@ -1,0 +1,20 @@
+pkgbase = spendo-git
+	pkgdesc = GnuCash financial data importer and explorer
+	pkgver = f69ef57
+	pkgrel = 1
+	url = https://codeberg.org/lewisflames/spendo
+	arch = x86_64
+	license = MIT
+	makedepends = bun
+	makedepends = cargo
+	makedepends = rust
+	makedepends = base-devel
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	options = !debug
+	source = spendo-git::git+https://codeberg.org/lewisflames/spendo.git
+	b2sums = SKIP
+
+pkgname = spendo-git
