@@ -2,14 +2,14 @@
 
 _basename=overlayed
 pkgname=${_basename}-git
-pkgver=r1014.4e92603
+pkgver=r1053.d2e86f0
 pkgrel=1
 pkgdesc="A modern, open-source, and free voice chat overlay for Discord (git version)"
 arch=('x86_64')
 url="https://overlayed.dev"
 license=('AGPL-3.0')
 depends=('webkit2gtk-4.1' 'libayatana-appindicator' 'openssl' 'librsvg')
-makedepends=('git' 'pnpm' 'nvm' 'cargo')
+makedepends=('git' 'nvm' 'cargo')
 optdepends=('discord: Needed for overlay to work')
 provides=("$_basename")
 conflicts=("$_basename")
@@ -35,10 +35,13 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-	cd $_basename/apps/desktop
+	cd $_basename
 
 	_ensure_local_nvm
 	nvm install 20
+	npm install -g "$(node -p 'require("./package.json").packageManager')"
+
+	cd apps/desktop
 	pnpm install
 }
 
@@ -48,6 +51,7 @@ build() {
 	_ensure_local_nvm
 	export TURBO_UI=0
 	export CFLAGS="$CFLAGS -ffat-lto-objects" # prevent linker error
+	export TAURI_APP_PATH="$PWD/src-tauri"
 
 	pnpm build:desktop --no-bundle
 }
