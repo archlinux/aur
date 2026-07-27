@@ -1,0 +1,26 @@
+pkgbase = speakoflow-appimage
+	pkgdesc = An ai transcriber to transcribe your thoughts faster than you can type.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AbhishekBarali/SpeakoFlow
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = vulkan-icd-loader
+	depends = alsa-lib
+	depends = openssl
+	depends = gtk-layer-shell
+	depends = fuse2
+	provides = speakoflow-appimage
+	conflicts = speakoflow-bin
+	conflicts = speakoflow-git
+	conflicts = speakoflow
+	options = !strip
+	options = !debug
+	source = SpeakoFlow_1.0.0_amd64.AppImage::https://github.com/AbhishekBarali/SpeakoFlow/releases/download/v1.0.0/SpeakoFlow_1.0.0_amd64.AppImage
+	sha256sums = 8394a4d364be6fe4a6f0d89c040f791bc7d87eef941176a582b6a4187952259e
+
+pkgname = speakoflow-appimage
