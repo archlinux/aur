@@ -1,0 +1,27 @@
+pkgbase = timetable
+	pkgdesc = GTK4 + LibAdwaita client for WebUntis
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://codeberg.org/ostfriese4/untis
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glib2-devel
+	makedepends = gettext
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = libsecret
+	depends = python
+	depends = python-gobject
+	depends = python-requests
+	depends = python-pyotp
+	depends = glib2
+	depends = hicolor-icon-theme
+	provides = untis
+	conflicts = untis
+	source = timetable-4.2.1.tar.gz::https://codeberg.org/ostfriese4/untis/archive/v4.2.1.tar.gz
+	sha256sums = 68ff7ef34047c51c74610f3b4d145a0ce6ce11287f6aa5ed38766d11279957cd
+
+pkgname = timetable
