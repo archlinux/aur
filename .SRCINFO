@@ -1,0 +1,14 @@
+pkgbase = quickemu-tui
+	pkgdesc = TUI/CLI manager for quickemu virtual machines
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/quickemu-project/quickemu
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = quickemu
+	options = !strip
+	source = quickemu-tui.py
+	sha256sums = SKIP
+
+pkgname = quickemu-tui
