@@ -1,6 +1,6 @@
 pkgbase = tristim
 	pkgdesc = Wayland compositor color validation with USB display colorimeters (CLI + GUI)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/computer-whisperer/tristim
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tristim
 	depends = vulkan-icd-loader
 	optdepends = xdg-desktop-portal: file open/save dialogs in tristim-gui
 	optdepends = argyllcms: build ICC profiles from exported .ti3 measurements
-	source = tristim-0.2.2.tar.gz::https://github.com/computer-whisperer/tristim/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 6577b7337d0aa410a1f0de508555bf767844d8f8b5495ff8ce7bf24888473e15
+	source = tristim-0.3.0.tar.gz::https://github.com/computer-whisperer/tristim/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 73e707cb280296354edd78d9b92d24190babec5b151fab04f3f0c7c5f77d8a06
 
 pkgname = tristim

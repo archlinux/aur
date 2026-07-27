@@ -1,6 +1,6 @@
 # Maintainer: Christian Balcom <robot.inventor@gmail.com>
 pkgname=tristim
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Wayland compositor color validation with USB display colorimeters (CLI + GUI)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('xdg-desktop-portal: file open/save dialogs in tristim-gui'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Placeholder until the release tag exists — run `updpkgsums` against the
 # published tag before pushing to the AUR.
-sha256sums=('6577b7337d0aa410a1f0de508555bf767844d8f8b5495ff8ce7bf24888473e15')
+sha256sums=('73e707cb280296354edd78d9b92d24190babec5b151fab04f3f0c7c5f77d8a06')
 
 prepare() {
   cd "$pkgname-$pkgver"
