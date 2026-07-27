@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=网易邮箱大师
+GenericName=邮箱
+Comment=高效强大的全平台邮箱客户端
+Exec=mailmaster %U
+Icon=mailmaster
+Terminal=false
+StartupNotify=true
+StartupWMClass=mailmaster
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;text/calendar;text/vcard;text/x-vcard;x-scheme-handler/webcal;x-scheme-handler/webcals;x-scheme-handler/mid;

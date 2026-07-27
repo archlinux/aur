@@ -1,0 +1,8 @@
+/src/
+/pkg/
+*.deb
+*.pkg.tar.zst
+*.tar.gz
+*.tar.zst
+LICENSE.html
+*.old-*
