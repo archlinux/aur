@@ -1,6 +1,6 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=0.5.9
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
     'fontconfig'        # Required by the GUI for system font discovery
     'libxkbcommon'      # Required by the GUI for keyboard handling (especially on Wayland)
     'vulkan-icd-loader' # Required by the GUI to load Vulkan drivers for rendering
+    'org.freedesktop.secrets'  # Required to store the CalDAV password
 )
 makedepends=('cargo' 'pkgconf' 'git')  # git is needed as long as libdav > 0.10.3 is not released
 # Optional dependencies for the GUI and specific features
@@ -26,8 +27,8 @@ optdepends=(
 )
 
 options=('!lto' '!strip' '!debug')
-source=("cfait-source-v0.5.9.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.9/cfait-source-v0.5.9.tar.gz")
-sha256sums=('74d216b34deb961081790adbe2d5a0475e11c0adc56d6b567e8c5bc7c7b6786d')
+source=("cfait-source-v1.0.1.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v1.0.1/cfait-source-v1.0.1.tar.gz")
+sha256sums=('e127c51573777815b97745ff341f74d6427fd45f9009544495928ccabfbaaf25')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 

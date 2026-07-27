@@ -1,6 +1,6 @@
 pkgbase = cfait
 	pkgdesc = Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)
-	pkgver = 0.5.9
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/trougnouf/cfait
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = cfait
 	depends = fontconfig
 	depends = libxkbcommon
 	depends = vulkan-icd-loader
+	depends = org.freedesktop.secrets
 	optdepends = vulkan-driver: Required by the GUI for hardware-accelerated rendering
 	optdepends = wayland: Required by the GUI for Wayland session support
 	optdepends = libx11: Required by the GUI for X11 session support
@@ -28,7 +29,7 @@ pkgbase = cfait
 	options = !lto
 	options = !strip
 	options = !debug
-	source = cfait-source-v0.5.9.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.5.9/cfait-source-v0.5.9.tar.gz
-	sha256sums = 74d216b34deb961081790adbe2d5a0475e11c0adc56d6b567e8c5bc7c7b6786d
+	source = cfait-source-v1.0.1.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v1.0.1/cfait-source-v1.0.1.tar.gz
+	sha256sums = e127c51573777815b97745ff341f74d6427fd45f9009544495928ccabfbaaf25
 
 pkgname = cfait
