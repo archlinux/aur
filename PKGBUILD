@@ -9,7 +9,7 @@ url=https://github.com/AdaCore/gnatdoc
 arch=(i686 x86_64)
 license=(GPL-3.0-or-later Apache-2.0 custom)
 
-depends=(gnatcoll-core markdown)
+depends=(gnatcoll-core markdown libadalang)
 makedepends=(gprbuild)
 
 options=(!strip)

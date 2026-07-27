@@ -11,6 +11,7 @@ pkgbase = gnatdoc
 	makedepends = gprbuild
 	depends = gnatcoll-core
 	depends = markdown
+	depends = libadalang
 	options = !strip
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/gnatdoc4-src.tar.gz
 	sha256sums = d9f0adc837e3d0392d7cff05a9b58482abd6ff46d59025580315fbb2bc5c74ab
