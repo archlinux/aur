@@ -1,6 +1,6 @@
 # Maintainer: Hayden Parker <hayden@bounce.chat>
 pkgname=bounce
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A metadata-protecting distributed group chat application"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options+=( !debug )
 source=("${pkgname}::git+https://github.com/${pkgname}-chat/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}-fyne::git+https://github.com/${pkgname}-chat/fyne.git"
         "${pkgname}-fyne-tools::git+https://github.com/${pkgname}-chat/tools.git")
-sha256sums=('153b0585c94b1b2b979d21854938766d51b1294c28829b7e618607addb336351'
+sha256sums=('77ecaea879decf2b4c5a44dc7a907f969383e8af5b038ef084cca92de7045b93'
             'SKIP'
             'SKIP')
 
