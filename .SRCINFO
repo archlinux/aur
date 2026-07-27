@@ -1,6 +1,6 @@
 pkgbase = tdf-git
 	pkgdesc = A terminal-based PDF viewer
-	pkgver = 20250420.r80.061863d
+	pkgver = 20260628.r153.c2117da
 	pkgrel = 1
 	url = https://github.com/itsjunetime/tdf
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = tdf-git
 	license = MPL-2.0
 	makedepends = clang
 	makedepends = git
-	makedepends = rustup
+	makedepends = rust
 	makedepends = unzip
 	depends = cairo
 	depends = poppler-glib
