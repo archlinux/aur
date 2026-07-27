@@ -70,6 +70,15 @@ build() {
 		fi
 	fi
 
+	# Force-disable Link-Time Optimization (LTO)
+    # This strips the heavy symbol tables, capping lld's peak RAM usage at ~3.5 GB
+    export CFLAGS="${CFLAGS/-flto=auto/}"
+    export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
+    export LDFLAGS="${LDFLAGS/-flto=auto/}"
+    
+    # Alternative safeguard flag for newer versions of makepkg
+    options=(!lto)
+
 	# Clean build sandbox creation using the native, modern CMake wrapper
     # Fixed the installation target directories to proper Linux standards
 	CC=clang CXX=clang++ cmake -B build -S "${_pkgname}" \
