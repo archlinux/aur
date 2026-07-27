@@ -1,6 +1,6 @@
 pkgbase = intel-ipu7-ir-dkms
 	pkgdesc = Infrared camera and face-unlock support for Intel IPU7 laptops (Himax HM1092 behind a Synaptics SVP7500 bridge)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/jibsta210/svp7500-camera-fix-pack
 	install = intel-ipu7-ir-dkms.install
@@ -12,7 +12,7 @@ pkgbase = intel-ipu7-ir-dkms
 	optdepends = libcamera: to enumerate and test the cameras
 	optdepends = v4l-utils: media-ctl and v4l2-ctl, used by the verification tooling
 	optdepends = zstd: lets verify.sh read compressed modules to check what was actually built
-	source = intel-ipu7-ir-dkms-1.0.2.tar.gz::https://github.com/jibsta210/svp7500-camera-fix-pack/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = c29ff7d744d36ebc683a82833118a35789c8119b09d591ed82d7e7a07de84074
+	source = intel-ipu7-ir-dkms-1.0.3.tar.gz::https://github.com/jibsta210/svp7500-camera-fix-pack/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = cc1b9d381cc3e7068fcb370cbb5b7ca45f6a9b325bb44dcfa23a627c092174a6
 
 pkgname = intel-ipu7-ir-dkms

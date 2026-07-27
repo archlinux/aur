@@ -1,7 +1,7 @@
 # Maintainer: Jake Steinman <j@metarealtyinc.ca>
 
 pkgname=intel-ipu7-ir-dkms
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Infrared camera and face-unlock support for Intel IPU7 laptops (Himax HM1092 behind a Synaptics SVP7500 bridge)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c29ff7d744d36ebc683a82833118a35789c8119b09d591ed82d7e7a07de84074')
+sha256sums=('cc1b9d381cc3e7068fcb370cbb5b7ca45f6a9b325bb44dcfa23a627c092174a6')
 
 _src="svp7500-camera-fix-pack-$pkgver"
 

@@ -1,5 +1,5 @@
 _modules=(hm1092 intel-cvs ipu-bridge-patched ov05c10)
-_ver=1.0.2
+_ver=1.0.3
 
 _dkms_build() {
   local failed=0 built=0 kernels=0
