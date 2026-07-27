@@ -1,7 +1,7 @@
 # Maintainer: Brandon Doornbos <b.doornbos at pm dot me>
 # Co-maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
@@ -27,8 +27,8 @@ optdepends=(
 )
 
 options=('!strip' '!emptydirs')
-source=("https://codeberg.org/trougnouf/cfait/releases/download/v1.0.7/cfait-linux-v1.0.7.tar.xz")
-sha256sums=('03de25ec9e9a2ab1d00c4c5c3aec75ef8ae64184564b0761aee10d7b482620cb')
+source=("https://codeberg.org/trougnouf/cfait/releases/download/v1.0.8/cfait-linux-v1.0.8.tar.xz")
+sha256sums=('350ec8c3ddca033158932c2b55d3ca0d8846fed17f28b966b68c3246a80f90aa')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait' 'cfait-gui')
 conflicts=('cfait')
