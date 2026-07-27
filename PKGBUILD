@@ -22,5 +22,5 @@ build() {
 }
 
 package() {
-  install -Dm 0755 "$srcdir/build/powerls" "$pkgdir/usr/bin/powerls"
+  install -Dm 0755 "$srcdir/build/pls" "$pkgdir/usr/bin/pls"
 }
