@@ -11,7 +11,6 @@ license=('MIT')
 provides=('speakoflow-appimage')
 conflicts=('speakoflow-bin' 'speakoflow-git' 'speakoflow')
 
-depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'vulkan-icd-loader' 'alsa-lib' 'openssl' 'gtk-layer-shell' 'fuse2')
 
 options=(!strip !debug)
 _appimage="SpeakoFlow_${pkgver}_amd64.AppImage"
