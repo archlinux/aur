@@ -1,8 +1,8 @@
 pkgbase = dualcpy-linux
 	pkgdesc = Multi-window scrcpy launcher for dual-screen Android handhelds (X11 docking / Wayland floating)
-	pkgver = 1.0.0
+	pkgver = 1.0.5
 	pkgrel = 1
-	url = https://github.com/DrSkyfaR/DualCPY-Linux
+	url = https://forgejo.skyfar.de/SkyfaR/DualCPY-Linux
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -15,10 +15,10 @@ pkgbase = dualcpy-linux
 	depends = python-customtkinter
 	depends = python-darkdetect
 	depends = python-mss
-	source = dualcpy-linux-1.0.0.tar.gz::https://github.com/DrSkyfaR/DualCPY-Linux/archive/refs/tags/v1.0.0.tar.gz
+	source = dualcpy-linux-1.0.5.tar.gz::https://forgejo.skyfar.de/SkyfaR/DualCPY-Linux/archive/v1.0.5.tar.gz
 	source = dualcpy-linux.sh
 	source = dualcpy-linux.desktop
-	sha256sums = 93e44fdeaf33c9227ffd07da92ea29298341a1401ded8407914dc7ec30b65e89
+	sha256sums = 2d353f17b1a5f0a7068e875943f2f40a1e45e34ce19706cd82fc8d240cc99e81
 	sha256sums = 4f401d149814e34ae39580852b76310b0e281e3f366a0bd0dcfb224cd0213418
 	sha256sums = a84f963ea9a365da1b993a48caef482f8f42dc33178433eeae1b2036220df4c0
 
