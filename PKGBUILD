@@ -10,8 +10,8 @@ conflicts=('baml')
 
 source_x86_64=("https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.2.2/baml-wrapper-no-self-update-0.2.2-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.2.2/baml-wrapper-no-self-update-0.2.2-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b7e914a828530fe6febf5d01846c525f8c13e7d56152e6f92505bdccf2d69d0c')
-sha256sums_aarch64=('12be7587a8ee85c1a91070f2b6f5d7f20bee4de040e4f4d0b1eed15c766e27bc')
+sha256sums_x86_64=('2c8a5daebcbcf724fb6aec62c42c981c88401653b64d9aedb7856d81f6a83bfd')
+sha256sums_aarch64=('a83454c00b5a8f34b0c9f3eaaf6bc5ef47a64223dc84343f9e398cea03c4b49d')
 
 package() {
     install -Dm755 bin/baml "$pkgdir/usr/bin/baml"
