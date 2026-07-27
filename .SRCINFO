@@ -1,0 +1,22 @@
+pkgbase = test-yourself
+	pkgdesc = A modern, highly-polished quiz and testing application
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/albibenni/test-yourself
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pnpm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libayatana-appindicator
+	source = test-yourself-1.2.2.tar.gz::https://github.com/albibenni/test-yourself/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = test-yourself
