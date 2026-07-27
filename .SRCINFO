@@ -1,7 +1,7 @@
 pkgbase = aws-cli-bin
 	pkgdesc = Unified command line interface for Amazon Web Services (Amazon provided v2 binary release)
 	pkgver = 2.36.8
-	pkgrel = 2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/aws/aws-cli/tree/v2
 	install = aws-cli-v2-bin.install
