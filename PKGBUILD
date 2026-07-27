@@ -80,7 +80,7 @@ build() {
 	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
 	-DWITH_WARNINGS=1 \
-	-DTOOLS=1 \
+	-DTOOLS_BUILD=all \
     -DSCRIPTS=static \
 	-DMODULES=static \
 	-DMYSQL_INCLUDE_DIR=/usr/include/mysql \
