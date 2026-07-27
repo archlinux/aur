@@ -1,0 +1,29 @@
+post_install() {
+    setcap cap_sys_admin+ep /usr/bin/key-mcursor
+
+    echo -e "\n\n"
+    echo -e "\033[33m:: Post-install — please also run:\033[0m"
+    echo ""
+    echo -e "\033[92m:: Join the input group:\033[0m"
+    echo -e "    $ sudo usermod -aG input $USER"
+    echo -e "\033[90m    # log out and back in\033[0m"
+    echo ""
+    echo -e "\033[92m:: To start the NumPad navigation service:\033[0m"
+    echo -e "    $ sudo systemctl enable --now key-mcursord"
+    echo -e "\033[90m    # swtich kp-nav by NumClk + KPEnter\033[0m"
+    echo -e "\n\n"
+}
+
+post_upgrade() {
+    setcap cap_sys_admin+ep /usr/bin/key-mcursor
+    post_install
+}
+
+pre_remove() {
+    echo ":: Stopping key-mcursord service before removal..."
+
+    if systemctl is-active --quiet key-mcursord 2>/dev/null; then
+        systemctl stop key-mcursord
+        systemctl disable key-mcursord
+    fi
+}

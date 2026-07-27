@@ -1,0 +1,15 @@
+pkgbase = key-mcursor-bin
+	pkgdesc = Keyboard-driven mouse-cursor control (pre-built binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rruxx/key-mcursor
+	install = key-mcursor-bin.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	provides = key-mcursor=1.0.0
+	conflicts = key-mcursor
+	source = https://github.com/rruxx/key-mcursor/releases/download/v1.0.0/key-mcursor-v1.0.0-x86_64-unknown-linux-gnu.tar.zst
+	sha256sums = 28a99a5c43407f014b88a730af2e22dacba712ec67e4895b9de79c90f3b8c775
+
+pkgname = key-mcursor-bin
