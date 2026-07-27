@@ -1,11 +1,11 @@
 pkgbase = f00
 	pkgdesc = f00tils — freestanding ASM multicall (coreutils+grep+findutils+diffutils)
-	pkgver = 0.16.8
+	pkgver = 0.16.9
 	pkgrel = 1
 	url = https://f00.sh
 	arch = x86_64
 	license = MIT
-	source = https://github.com/theesfeld/f00/releases/download/v0.16.8/f00-0.16.8-linux-x86_64.tar.gz
-	sha256sums = daeccbc440be7377d7a3b563f9ef3cec55655c9ba7dcf30b1ababb84d0685550
+	source = https://github.com/theesfeld/f00/releases/download/v0.16.9/f00-0.16.9-linux-x86_64.tar.gz
+	sha256sums = ff6bf62ff84448f2423eaa82c6ca08ebaccbaa9b354f0cf88c502ea882147b16
 
 pkgname = f00
