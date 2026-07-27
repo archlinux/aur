@@ -1,6 +1,6 @@
 pkgbase = echidna-bin
 	pkgdesc = A fast smart contract fuzzer (precompiled binary)
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/crytic/echidna
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = echidna-bin
 	provides = echidna
 	conflicts = echidna
 	options = !debug
-	source = echidna-2.3.2-x86_64-linux.tar.gz::https://github.com/crytic/echidna/releases/download/v2.3.2/echidna-2.3.2-x86_64-linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/crytic/echidna/v2.3.2/LICENSE
-	sha256sums = 38e4eb12627d8dea2a9eabfaebbcdb4d9ad0bde633aafbcae4d69656d6bcdb4a
+	source = echidna-2.3.3-x86_64-linux.tar.gz::https://github.com/crytic/echidna/releases/download/v2.3.3/echidna-2.3.3-x86_64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/crytic/echidna/v2.3.3/LICENSE
+	sha256sums = 436d26cb5af34c6c525812b857ac53f218c7f6ad07d69495ef88bc4cdc85c764
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = echidna-bin
