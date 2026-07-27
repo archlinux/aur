@@ -7,8 +7,6 @@
 ## options
 : ${_build_level:=1}
 
-: ${_cksum=1c63922a119675d38e3ae0f8f6ee07f15c41a786ab9ed66563749bb8c9a08e2e}
-
 _pkgtype="-vfio"
 [[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
@@ -17,7 +15,7 @@ _pkgtype="-vfio"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=7.1.4
+pkgver=7.1.5
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -82,7 +80,7 @@ source=(
   1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(
-  "${_cksum:-SKIP}"
+  '22a0196b3cbcdf34dc27b77561f4d040585fd3447edc9ab3531a1ac79e3041e7' # cksum
   'SKIP'
   'SKIP'
   'SKIP'
