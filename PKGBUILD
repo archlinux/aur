@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=filen-desktop-git
 _pkgname="Filen Desktop"
-pkgver=3.0.50.r0.g49a4af0
+pkgver=3.0.53.r0.g370514d
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -86,6 +86,7 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     NODE_ENV=development    npm install
 }
 build() {
