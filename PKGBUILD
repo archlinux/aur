@@ -11,6 +11,8 @@ pkgdesc='GnuCash financial data importer and explorer'
 arch=('x86_64')
 url='https://codeberg.org/lewisflames/spendo'
 license=('MIT')
+conflicts=('spendo')
+provides=('spendo')
 depends=(
   'webkit2gtk-4.1'
   'libayatana-appindicator'
@@ -18,9 +20,7 @@ depends=(
 )
 makedepends=(
   'bun'
-  'cargo'
   'rust'
-  'base-devel'
   'git'
 )
 options=('!debug')
@@ -35,11 +35,12 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   bun install --frozen-lockfile
-  node_modules/.bin/tauri icon src-tauri/icons/app-icon.svg
+  bun run generate-icons
 }
 
 build() {
   cd "$srcdir/$pkgname"
+  # Build frontend (vite) so cargo build can embed it
   bun run build
   CFLAGS="" cargo build --release --features production --manifest-path src-tauri/Cargo.toml
 }

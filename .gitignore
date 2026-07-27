@@ -1,4 +1,5 @@
 pkg/
 src/
+spendo-git/
 *.tar.zst
 *.tar.gz
