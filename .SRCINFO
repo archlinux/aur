@@ -1,28 +1,29 @@
 pkgbase = legcord-bin
 	pkgdesc = a custom client designed to enhance your Discord experience while keeping everything lightweight.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.4
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://legcord.app
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = OSL-3.0
-	depends = electron41
+	depends = electron43
 	depends = python
 	depends = libpulse
+	depends = nodejs
 	depends = libpipewire
-	provides = legcord=1.2.4
+	provides = legcord=1.3.0
 	conflicts = legcord
 	options = !emptydirs
-	source = LICENSE-1.2.4.txt::https://raw.githubusercontent.com/Legcord/Legcord/v1.2.4/license.txt
+	source = LICENSE-1.3.0.txt::https://raw.githubusercontent.com/Legcord/Legcord/v1.3.0/license.txt
 	source = legcord.sh
 	sha256sums = c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = legcord-1.2.4-aarch64.rpm::https://github.com/Legcord/Legcord/releases/download/v1.2.4/Legcord-1.2.4-linux-aarch64.rpm
-	sha256sums_aarch64 = 1e930e8c3477a634e7c5972096420fc454a60b1c5fa1794bfe4dba645f14f10b
-	source_armv7h = legcord-1.2.4-armv7h.rpm::https://github.com/Legcord/Legcord/releases/download/v1.2.4/Legcord-1.2.4-linux-armv7l.rpm
-	sha256sums_armv7h = 21269dc09e9320cc64ed445ac0924223a12e27b09a53ef6b6a1c49ea36ad2219
-	source_x86_64 = legcord-1.2.4-x86_64.rpm::https://github.com/Legcord/Legcord/releases/download/v1.2.4/Legcord-1.2.4-linux-x86_64.rpm
-	sha256sums_x86_64 = 9796877e249da528a1a7a9dacbf93e28c02039cad81fb572bc3659d132b48217
+	source_aarch64 = legcord-1.3.0-aarch64.rpm::https://github.com/Legcord/Legcord/releases/download/v1.3.0/Legcord-1.3.0-linux-aarch64.rpm
+	sha256sums_aarch64 = 9324822b9087aa9774a37eafbc72afee401e21877797ffd735073f5a9aaf4b16
+	source_armv7h = legcord-1.3.0-armv7h.rpm::https://github.com/Legcord/Legcord/releases/download/v1.3.0/Legcord-1.3.0-linux-armv7l.rpm
+	sha256sums_armv7h = 57c5e4a4cbb2b8a486b5128ab41bc115a0a145f9f3158dbef37745483c7f2516
+	source_x86_64 = legcord-1.3.0-x86_64.rpm::https://github.com/Legcord/Legcord/releases/download/v1.3.0/Legcord-1.3.0-linux-x86_64.rpm
+	sha256sums_x86_64 = 9fa350d2c71057e34e0f1a29ed564f39005ca056a8bac04651b09062f27f327f
 
 pkgname = legcord-bin
