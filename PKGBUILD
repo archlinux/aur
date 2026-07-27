@@ -2,7 +2,7 @@
 
 pkgname=ez2lazer-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.724.0
+pkgver=2026.726.0
 pkgrel=1
 _pkgtag=$pkgver-ez2lazer
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
@@ -26,7 +26,7 @@ source=(
   'ez2lazer-uri-handler.desktop'
   'ez2lazer')
 noextract=("$_pkgname-$pkgver.AppImage")
-sha256sums=('81d116d7ce6d3261589859478b107ef0f0cbd692619fbdb4ab165171ef3f8354'
+sha256sums=('6d0e3a515debcde8021878e100d2bf995786c60dfdad3019abbc023c10e30784'
             'ae382d6f50b8a767ccb30f49925020b610805f5403b7a99cd331a4f7b720e8ac'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'c59ce9a6c90cfafb97c6a8f5f01c7a95191565c7169603c40fa785fc01e0b557'
