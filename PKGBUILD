@@ -1,6 +1,6 @@
 # Maintainer: Yury Zhelezko <yzhelezko@users.noreply.github.com>
 pkgname=ferrisscope-bin
-pkgver=1.0.36
+pkgver=1.0.37
 pkgrel=1
 pkgdesc="Rust-native, open-source desktop IDE for Kubernetes"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3')
 optdepends=('kubectl: required for embedded terminal exec/kubectl tabs')
 provides=('ferrisscope')
 conflicts=('ferrisscope' 'ferrisscope-git')
-source=("${pkgname}-${pkgver}.deb::https://github.com/dzcorp/FerrisScope/releases/download/v${pkgver}/FerrisScope_1.0.36_amd64-linux-x64.deb")
-sha256sums=('d921456c9ab93191f75d0c562c2a7ee346368398f18785cf6e4269c4ba57bc93')
+source=("${pkgname}-${pkgver}.deb::https://github.com/dzcorp/FerrisScope/releases/download/v${pkgver}/FerrisScope_1.0.37_amd64-linux-x64.deb")
+sha256sums=('a77c797749d3fe00bdd8eb86519416ce0dc0c171eacf9bba174328d8ee73c37d')
 
 package() {
     # Tauri's .deb is a standard ar archive containing
