@@ -4,14 +4,14 @@
 _pkgname=n-dhcp4
 pkgname=$_pkgname-git
 pkgver=1.86.g5c0c3bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Host Configuration Protocol for IPv4"
 url="https://github.com/nettools/n-dhcp4"
 license=('Apache-2.0 OR LGPL-2.1-or-later')
 arch=(x86_64)
 depends=(glibc)
 makedepends=(git meson pkgconf)
-provides=($_pkgname)
+provides=("$_pkgname=${pkgver%%.*}")
 conflicts=($_pkgname)
 # subprojects/{c-list,c-siphash,c-stdaux} are git submodules; clone them as
 # separate sources and rewire the submodule URLs to these local checkouts in
@@ -31,7 +31,7 @@ sha256sums=(
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/^v//;s/-/./g;s/_/./g;'
+  git describe --long --tags | sed 's/^v//;s/-/./g;s/_/./g;'
 }
 
 prepare() {
