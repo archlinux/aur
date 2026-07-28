@@ -19,6 +19,7 @@ build() {
     cmake -G Ninja \
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
+        -DHELPER_INSTALL_DIR=/usr/lib/mx-service-manager \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
@@ -36,17 +37,19 @@ package() {
 
     install -Dm644 mx-service-manager.desktop "${pkgdir}/usr/share/applications/mx-service-manager.desktop"
 
-    install -Dm644 mx-service-manager.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/mx-service-manager.png"
+    install -Dm644 mx-service-manager.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-service-manager.png"
     install -Dm644 mx-service-manager.png "${pkgdir}/usr/share/pixmaps/mx-service-manager.png"
 
     install -dm755 "${pkgdir}/usr/lib/mx-service-manager"
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-service-manager/helper"
 
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
-    install -Dm644 scripts/org.mxlinux.pkexec.mxsm-helper.policy \
+    install -Dm644 build/org.mxlinux.pkexec.mxsm-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mxsm-helper.policy"
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-service-manager"
+
+    install -Dm644 help/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
     if [ -d docs ]; then
         cp -r docs/* "${pkgdir}/usr/share/doc/mx-service-manager/" 2>/dev/null || true
     fi
