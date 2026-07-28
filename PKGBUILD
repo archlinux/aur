@@ -2,7 +2,7 @@
 
 pkgname=dmenu-aegix-git
 _pkgname=dmenu
-pkgver=r4.1d3b110
+pkgver=r5.538acab
 pkgrel=1
 pkgdesc="Aegix Linux's custom build of dmenu (dynamic menu) with aegix-flavored config; ships dmenu, dmenu_path, dmenu_run, and stest"
 arch=('x86_64')
