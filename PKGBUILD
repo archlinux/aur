@@ -1,14 +1,14 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=nispor-git
 pkgver=2.0.2.r8.g8ce4b1d
-pkgrel=1
+pkgrel=2
 pkgdesc='Unified interface for Linux network state querying'
 arch=('x86_64')
 url='https://github.com/nispor/nispor'
 license=('Apache-2.0')
-depends=('glibc')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
-provides=('nispor')
+provides=("nispor=${pkgver%%.r*}")
 conflicts=('nispor')
 options=(!debug)
 source=("$pkgname::git+$url.git")
