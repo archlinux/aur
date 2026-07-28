@@ -1,0 +1,19 @@
+pkgbase = bast-bin
+	pkgdesc = A terminal UI and CLI for browsing SSH hosts, managing keys, and connecting to servers
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://bast.sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = openssh
+	optdepends = aws-cli-v2: AWS cloud instance synchronization
+	provides = bast
+	conflicts = bast
+	options = !debug
+	source_x86_64 = bast-bin-0.5.0-x86_64.tar.gz::https://github.com/ellipse-software/bast/releases/download/v0.5.0/bast_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4cff13dc8e92b18e213ddc5376380734954b50e3ef11fb1feef01000d23e0a5e
+	source_aarch64 = bast-bin-0.5.0-aarch64.tar.gz::https://github.com/ellipse-software/bast/releases/download/v0.5.0/bast_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a96597c12ba754f60e70499262969ad9882c503bea122787f41c6718b7f7e5d9
+
+pkgname = bast-bin
