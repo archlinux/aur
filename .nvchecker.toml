@@ -1,0 +1,6 @@
+[sudo]
+source = 'regex'
+url = 'https://www.sudo.ws/releases/stable/'
+regex = 'is version ([\d.p]+)\.'
+from_pattern = 'p'
+to_pattern = '.p'

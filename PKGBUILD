@@ -10,7 +10,7 @@
 
 pkgname=sudo-selinux
 _sudover=1.9.17p2
-pkgrel=1
+pkgrel=6
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig
 sha256sums=('4a38a1ab3adb1199257edc2a7c4a2bd714665eb605b04368843b06dada2cfcfb'
             'SKIP'
             'bd4bc2f5d85cbe14d7e7acc5008cb4fe62c38de7d42dc6876c87bfaa273c0a6e'
-            'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
+            '7ec1c668c10e0f83d00e25f336872212fe04ce2c2563e1d661d34d28852f4649')
 validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
 
 prepare() {
