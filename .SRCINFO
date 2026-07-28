@@ -1,0 +1,18 @@
+pkgbase = noetica-bin
+	pkgdesc = Governed, sovereign AI workstation — local-first, cites its sources, abstains instead of guessing
+	pkgver = 0.4.24
+	pkgrel = 1
+	url = https://socioprophet.ai
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	provides = noetica
+	conflicts = noetica
+	options = !strip
+	source = https://github.com/SocioProphet/Noetica/releases/download/v0.4.24/Noetica_0.4.24_amd64.deb
+	sha256sums = 3971e337e623b540fdc4073f8f9cd4080e82473e3730f042c104cc51b51bcb25
+
+pkgname = noetica-bin
