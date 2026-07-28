@@ -2,8 +2,8 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=python-habanero
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.9.2
+pkgrel=1
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -11,7 +11,7 @@ pkgdesc="A low level client for Crossref's Search API"
 url="https://github.com/sckott/habanero"
 depends=(
   'python'
-  'python-httpx'
+  'python-httpx2'
   'python-packaging'
   'python-tqdm'
   'python-urllib3'
@@ -34,7 +34,7 @@ optdepends=(
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('871e5d088ef641b05514d44b004af512852b309bcd0d81f10545e58d54a654ab')
+sha256sums=('efcdfecec965c413e0f1ee9034fbe955d42e6b815b0784aa0c4a3df2cc272019')
 
 build() {
     cd "$_src_folder"
