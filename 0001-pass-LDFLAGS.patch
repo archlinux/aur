@@ -1,0 +1,12 @@
+diff --git a/scripts/configure b/scripts/configure
+index c0f274c7..8ae0a6b0 100755
+--- a/scripts/configure
++++ b/scripts/configure
+@@ -9229,7 +9229,7 @@ fi
+       if test "x${loader_run_path}" != "x" ; then
+         LD_RUN_PATH="${LD_RUN_PATH} -Wl,-rpath,${loader_run_path}"
+       fi
+-      LDFLAGS=""
++      LDFLAGS="${LDFLAGS}"
+       EXTRA_LIB_SPECS="-ldl"
+       ;;
