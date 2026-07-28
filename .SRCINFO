@@ -1,0 +1,21 @@
+pkgbase = snapcap-wayland
+	pkgdesc = A lightweight screenshot capture tool for Wayland (wlroots)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kenjaku-dev/snapcap-wayland
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = grim
+	depends = python
+	depends = python-pyside6
+	depends = slurp
+	optdepends = wl-clipboard: native Wayland clipboard support
+	source = https://github.com/kenjaku-dev/snapcap-wayland/archive/v0.1.0.tar.gz
+	source = snapcap-wayland.desktop
+	sha256sums = 4cd8059317c0079a8b2bbff420f318d0f009a822bc0e083f57afef83cda67a1a
+	sha256sums = 4124a9f4d3d0a332dfddc32488ae5b1e80e2485ffbc96dd53e84c4de1de3f4ce
+
+pkgname = snapcap-wayland
