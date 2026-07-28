@@ -1,0 +1,13 @@
+pkgbase = pacterm
+	pkgdesc = A terminal pacman game by Wael
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wael.work.gd/arch/pacterm
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	options = !debug
+	source = pacterm-1.0.0::https://wael.work.gd/arch/pacterm/bin/1.0.0/pacterm
+	sha256sums = 4ffee88263f63bfb2015faf06ce84cae314d6359d120a4f34c0b3766fef9ee9b
+
+pkgname = pacterm
