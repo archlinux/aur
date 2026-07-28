@@ -1,11 +1,12 @@
 pkgname=file-manager-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Linux desktop file manager written in Rust and Iced'
 arch=('x86_64')
 url='https://github.com/nsjsv/File_Manager'
 license=('GPL-3.0-or-later')
 depends=(
+    'acl'
     'alsa-lib'
     'fontconfig'
     'glib2'
@@ -20,6 +21,9 @@ optdepends=(
     'ffmpeg: video preview and metadata support'
     'ffmpegthumbnailer: video thumbnail generation'
     'gvfs: SFTP and WebDAV network locations'
+    'gvfs-afc: Apple/AFC portable device support'
+    'gvfs-gphoto2: digital camera/GPhoto support'
+    'gvfs-mtp: Android and media-player MTP support'
     'gvfs-smb: SMB network locations'
     'libsecret: saved network passwords'
     'udisks2: storage device discovery and management'
@@ -27,7 +31,7 @@ optdepends=(
 provides=('file-manager')
 conflicts=('file-manager')
 source_x86_64=("https://github.com/nsjsv/File_Manager/releases/download/v${pkgver}/file-manager-v${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('825e279a16041bb15324072b0a819aaec3fcac9041135bf67a331680952d6ec7')
+sha256sums_x86_64=('ef98d648d67fbb19fe762da9711a525f4a32fd03b28f02f765f4f2838beac9a3')
 
 package() {
     cp -a "${srcdir}/file-manager-v${pkgver}-x86_64/usr" "${pkgdir}/"
