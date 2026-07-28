@@ -1,4 +1,4 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=umbrielpng
 pkgname=$_pkgname-git
@@ -21,11 +21,10 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd $_pkgname
-  printf %s.c%s.%s \
-    $(grep -m1 '@version' umbrielpng.c | awk '{print $3}') \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short HEAD)
+  local _ver=$(grep -m1 '@version' $_pkgname/umbrielpng.c | awk '{print $3}')
+  printf '%s.r%s.%s' "$_ver" \
+    "$(git -C $_pkgname rev-list --count HEAD)" \
+    "$(git -C $_pkgname rev-parse --short HEAD)"
 }
 
 build() {
