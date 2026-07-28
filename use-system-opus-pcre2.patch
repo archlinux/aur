@@ -1,5 +1,5 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index 5ed93a86d4..511862bbc0 100644
+index 0aec4ace93..681a4001ff 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -240,7 +240,7 @@ xxhash-rust = { version = "0.8", features = ["xxh64"] }
@@ -12,10 +12,10 @@ index 5ed93a86d4..511862bbc0 100644
  # build graph so Bazel actions stay hermetic.
  maudio = "0.1.6"
 diff --git a/MODULE.bazel b/MODULE.bazel
-index df090aed4e..49f9aaa5ea 100644
+index 7846ae953b..31b86aaaa9 100644
 --- a/MODULE.bazel
 +++ b/MODULE.bazel
-@@ -111,41 +111,16 @@ crate.from_cargo(
+@@ -110,41 +110,16 @@ crate.from_cargo(
      manifests = ["//:Cargo.toml"],
  )
  

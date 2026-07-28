@@ -1,8 +1,8 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.1.7
-pkgrel=4
+pkgver=17.1.8
+pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -18,8 +18,8 @@ source=(
     "embed-header-generator-data.patch"
 )
 sha256sums=('SKIP'
-            '2545baa734e57b43acba3fc9826d1e916cb9fb0a6ed97af80173cf05057f9549'
-            'f9ca6e004c28d8d2b3d9c1d4e15093edf4d436b1646e63aa5c53078b601ba9b9'
+            '42fe8c3a932b9c162a5092972d2623f254936fb22f4268aa8332651cadac9ce0'
+            'b15916b7fa894f498c66562dad5045479143722b033f6a1fb90377abdc6b1ac5'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
             '09317a262db1a314cbf2a7f4efcfbcead37d000e148c82512abd5f533d857b3e')
 
