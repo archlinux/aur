@@ -1,6 +1,6 @@
 pkgbase = mdts
 	pkgdesc = A local markdown preview server
-	pkgver = 0.20.5
+	pkgver = 0.20.6
 	pkgrel = 1
 	url = https://github.com/unhappychoice/mdts
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = mdts
 	depends = nodejs
 	depends = java-runtime
 	provides = mdts
-	noextract = mdts-0.20.5.tgz
+	noextract = mdts-0.20.6.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = mdts-0.20.5.tgz::https://registry.npmjs.org/mdts/-/mdts-0.20.5.tgz
-	b2sums = 1df032e6a542bdd681d917e262d978fbbc8ff3c3250cb8b6f4ccae11e22d26fa8d5616a17e5bbd8161f6b5176cbc38386da37a6d8a2b53ddbb9847a60d307da4
+	source = mdts-0.20.6.tgz::https://registry.npmjs.org/mdts/-/mdts-0.20.6.tgz
+	b2sums = c40741050df8af3961fefe27e13d9845b4a7c6b98ad86024e089f99a0bc63dc44dd4a3a4d8cd725f70f466a8acacd7e5819b45bba37439bc3137fca788e88549
 
 pkgname = mdts
