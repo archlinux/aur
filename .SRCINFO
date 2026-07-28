@@ -25,6 +25,6 @@ pkgbase = stably-orca-bin
 	source = stably-orca.desktop
 	sha256sums = 19a2bab50aa7d65c9d16b9e5e85e89242dfe7e437ec31038674944e7c1ee010b
 	sha256sums = 99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c
-	sha256sums = 6e05296c09a37e0c28b9a2886b804d167a0c025ef1e72f955e9ba744be2f1dcd
+	sha256sums = 08a9b253cf5fac087a8e4565520ea2339a58263f210e17691945d2e674e23a19
 
 pkgname = stably-orca-bin

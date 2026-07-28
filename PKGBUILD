@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('19a2bab50aa7d65c9d16b9e5e85e89242dfe7e437ec31038674944e7c1ee010b'
             '99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
-            '6e05296c09a37e0c28b9a2886b804d167a0c025ef1e72f955e9ba744be2f1dcd')
+            '08a9b253cf5fac087a8e4565520ea2339a58263f210e17691945d2e674e23a19')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
@@ -57,17 +57,34 @@ package() {
     "${pkgdir}/usr/share/applications/stably-orca.desktop"
 
   # Theme-aware icon install (in addition to the copies inside /opt).
-  local found=0
-  for size in 16 32 48 64 128 256 512; do
-    local src="${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/orca.png"
-    if [[ -f "${src}" ]]; then
+  # Upstream names the Linux executable and its icon `orca-ide` (GNOME Orca
+  # already owns `orca`), and has renamed it before, so match whatever single
+  # icon each hicolor size ships instead of hardcoding a basename.
+  local found=0 size src
+  for size in 16 24 32 48 64 128 256 512; do
+    for src in "${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/"*.png; do
+      [[ -f "${src}" ]] || continue
       install -Dm644 "${src}" \
         "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/stably-orca.png"
       found=1
-    fi
+      break
+    done
   done
-  if [[ "${found}" -eq 0 && -f "${sqfs}/orca.png" ]]; then
-    install -Dm644 "${sqfs}/orca.png" \
-      "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
+  if (( found == 0 )); then
+    for src in "${sqfs}"/*.png; do
+      [[ -f "${src}" ]] || continue
+      install -Dm644 "${src}" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
+      found=1
+      break
+    done
+  fi
+  # Fail loudly: a silently icon-less package looks fine in CI but ships a
+  # blank launcher entry, which is how the orca -> orca-ide rename went
+  # unnoticed in the first place.
+  if (( found == 0 )); then
+    echo "ERROR: no application icon found under ${sqfs}."
+    echo "Upstream icon layout changed. Inspect the extracted tree and update PKGBUILD."
+    return 1
   fi
 }

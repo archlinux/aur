@@ -7,5 +7,5 @@ Terminal=false
 Type=Application
 Icon=stably-orca
 Categories=Development;IDE;TextEditor;
-StartupWMClass=Orca
+StartupWMClass=orca
 MimeType=x-scheme-handler/stably-orca;
