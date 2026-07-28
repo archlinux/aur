@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-qt
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB Qt profile library"
 url="https://www.codesynthesis.com/products/odb/"
@@ -10,7 +10,7 @@ depends=('build2' 'libodb')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9456c6afdd966b189ece0e0e3486317fe2506a2590da24fbdf81e71b8d5ed130')
+sha256sums=('277ef1c545482e61067806eea1b405d3101c6348e7d93bc2d0ad32a5603611e0')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
