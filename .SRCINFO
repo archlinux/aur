@@ -1,10 +1,11 @@
 pkgbase = oh-my-pi
 	pkgdesc = AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more
-	pkgver = 17.1.5
+	pkgver = 17.1.6
 	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
 	license = MIT
+	makedepends = bazel
 	makedepends = bun
 	makedepends = clang
 	makedepends = cmake
@@ -15,11 +16,11 @@ pkgbase = oh-my-pi
 	depends = icu
 	depends = zlib
 	options = !strip
-	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.1.5
+	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.1.6
 	source = tree-sitter-haskell-new-repo.patch
 	source = skip-native-embed-for-aur.patch
 	sha256sums = SKIP
-	sha256sums = 5b004b65890244524e47e8d9d4cb4e363e32b9fdab5a42f6f065473bf7bf6068
+	sha256sums = 63dd1ebb99d7113874aea1731f6103551f2d36c4822b89fb7d36908db89e1d21
 	sha256sums = a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f
 
 pkgname = oh-my-pi

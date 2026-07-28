@@ -25,3 +25,38 @@ index 3057d06831..74adc650cc 100644
  tree-sitter-hcl = "1.1"
  tree-sitter-html = "0.23"
  tree-sitter-ini = "1.4.0"
+
+diff --git a/Cargo.Bazel.lock b/Cargo.Bazel.lock
+--- a/Cargo.Bazel.lock
++++ b/Cargo.Bazel.lock
+@@ -1,5 +1,5 @@
+ {
+-  "checksum": "4e1cedf8cc2475ca9c7a5ea3759f9252fc0561a94e51e3c7791d2608369805b4",
++  "checksum": "0fbd54bd55cb175ab60a60125a970d8977a6f8b1817cbb72a4256cf210e9f006",
+   "crates": {
+     "adler2 2.0.1": {
+       "name": "adler2",
+@@ -43125,9 +43125,11 @@
+       "version": "0.23.1",
+       "package_url": "https://github.com/tree-sitter/tree-sitter-haskell",
+       "repository": {
+-        "Http": {
+-          "url": "https://static.crates.io/crates/tree-sitter-haskell/0.23.1/download",
+-          "sha256": "977c51e504548cba13fc27cb5a2edab2124cf6716a1934915d07ab99523b05a4"
++        "Git": {
++          "remote": "https://github.com/tree-sitter-grammars/tree-sitter-haskell",
++          "commitish": {
++            "Rev": "98aedbd2d6947a168ba3ba3755d70b0cb6b78395"
++          }
+         }
+       },
+       "targets": [
+@@ -43210,7 +43212,7 @@
+       "license_ids": [
+         "MIT"
+       ],
+-      "license_file": null
++      "license_file": "LICENSE"
+     },
+     "tree-sitter-hcl 1.1.0": {
+       "name": "tree-sitter-hcl",

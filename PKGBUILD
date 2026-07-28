@@ -1,14 +1,14 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.1.5
+pkgver=17.1.6
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'zlib')
-makedepends=('bun' 'clang' 'cmake' 'git' 'rustup')
+makedepends=('bazel' 'bun' 'clang' 'cmake' 'git' 'rustup')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
@@ -16,7 +16,7 @@ source=(
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            '5b004b65890244524e47e8d9d4cb4e363e32b9fdab5a42f6f065473bf7bf6068'
+            '63dd1ebb99d7113874aea1731f6103551f2d36c4822b89fb7d36908db89e1d21'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
 prepare() {
@@ -51,8 +51,7 @@ build() {
 
     bun install --frozen-lockfile
 
-    CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
-        bun run ci:build:native
+    bun ./scripts/bazel-natives.ts linux-x64-baseline linux-x64-modern --dest packages/natives/native
 
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 }
