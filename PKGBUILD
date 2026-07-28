@@ -3,12 +3,13 @@
 # Contributor: Dennis Fink <the_metalgamer@hackerspace.lu>
 
 _pkgname=translitcodec
-pkgbase=python2-${_pkgname}
-pkgname=("python2-${_pkgname}" "python-${_pkgname}")
+pkgbase=python-${_pkgname}
+pkgname=("python-${_pkgname}")
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode to 8-bit charset transliteration codec"
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 arch=('any')
 url="https://github.com/claudep/translitcodec"
 license=('MIT')
@@ -20,13 +21,7 @@ prepare() {
   sed -i '1s/^/# -*- coding: utf-8 -*-\n\n/' translitcodec/__init__.py
 }
 
-package_python2-translitcodec() {
-  cd "${srcdir}/${_pkgname}-version-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
-
-package_python-translitcodec() {
+package() {
   cd "${srcdir}/${_pkgname}-version-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
