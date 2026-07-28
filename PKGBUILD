@@ -49,4 +49,10 @@ package() {
 
 	# license
 	install -vDm644 "${_pkgname}_license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	echo "Generating shell completions."
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/" "${pkgdir}/usr/share/bash-completion/completions/" "${pkgdir}/usr/share/zsh/site-functions/"
+	"${pkgdir}/usr/bin/${_pkgname}" completion bash > "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+	"${pkgdir}/usr/bin/${_pkgname}" completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+	"${pkgdir}/usr/bin/${_pkgname}" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
