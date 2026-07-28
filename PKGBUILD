@@ -1,22 +1,32 @@
 # Maintainer: kukapu <susokukapu@gmail.com>
 #
 # Binary package for AudiblePort (Tauri desktop app).
-# Downloads the official prebuilt AppImage — no source code is published.
+# Downloads the official prebuilt AppImage, extracts it, and runs against
+# Arch system WebKitGTK/GTK/Mesa — the Ubuntu-bundled WebKit causes a black
+# window + "Could not create default EGL display: EGL_BAD_PARAMETER" on
+# Arch/Omarchy (Intel and NVIDIA).
 
 pkgname=audibleport-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Download and convert Audible audiobooks locally"
 arch=('x86_64')
 url="https://audibleport.com"
 license=('LicenseRef-Proprietary')
 depends=(
+  'webkit2gtk-4.1'
+  'gtk3'
+  'libsoup3'
+  'gstreamer'
+  'gst-plugins-base'
+  'gst-plugins-good'
+  'openssl'
   'hicolor-icon-theme'
   'zlib'
 )
 optdepends=(
-  'fuse2: preferred FUSE mount for the AppImage runtime'
-  'fuse3: alternative FUSE backend on modern Arch systems'
+  'gst-plugins-bad: extra media codecs for the webview'
+  'gst-libav: extra media codecs for the webview'
 )
 provides=('audibleport')
 conflicts=('audibleport')
@@ -35,26 +45,44 @@ sha256sums=(
   'ab768f90de1bebd36122c52dce48305f9191660e017772cf7d852de9a6376594'
 )
 
-package() {
-  install -Dm755 \
-    "${srcdir}/AudiblePort-${pkgver}-linux-x64.AppImage" \
-    "${pkgdir}/opt/audibleport/AudiblePort.AppImage"
+prepare() {
+  chmod +x "${srcdir}/AudiblePort-${pkgver}-linux-x64.AppImage"
+  cd "${srcdir}"
+  rm -rf squashfs-root
+  "./AudiblePort-${pkgver}-linux-x64.AppImage" --appimage-extract
 
-  # Wrapper: try normal AppImage mount, fall back to extract-and-run (no FUSE).
+  # Drop Ubuntu-bundled WebKit so the app uses Arch webkit2gtk-4.1 + system Mesa.
+  rm -f squashfs-root/usr/lib/libwebkit2gtk-4.1.so*
+  rm -f squashfs-root/usr/lib/libjavascriptcoregtk-4.1.so*
+  rm -rf squashfs-root/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1
+}
+
+package() {
+  install -d "${pkgdir}/opt/audibleport"
+  cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/audibleport/"
+
+  # Keep the main binary and bundled resources (ffmpeg) executable.
+  chmod 755 "${pkgdir}/opt/audibleport/usr/bin/audibleport"
+
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/audibleport" <<'EOF'
 #!/bin/sh
-APPIMAGE="/opt/audibleport/AudiblePort.AppImage"
-if [ ! -x "$APPIMAGE" ]; then
-  echo "audibleport: missing $APPIMAGE" >&2
+APPDIR="/opt/audibleport"
+BIN="${APPDIR}/usr/bin/audibleport"
+
+if [ ! -x "$BIN" ]; then
+  echo "audibleport: missing $BIN" >&2
   exit 1
 fi
 
-# Prefer native FUSE mount when available; otherwise extract-and-run.
-if command -v fusermount >/dev/null 2>&1 || command -v fusermount3 >/dev/null 2>&1; then
-  exec "$APPIMAGE" "$@"
-fi
+# Prefer Arch system libraries (WebKit/GTK/GLib/Mesa/GStreamer) over the
+# Ubuntu copies still present in the extracted AppImage tree. Without this,
+# WebKit dies with: Could not create default EGL display: EGL_BAD_PARAMETER
+export LD_LIBRARY_PATH="/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
-exec env APPIMAGE_EXTRACT_AND_RUN=1 "$APPIMAGE" "$@"
+# Extra safety on Wayland + DMA-BUF (Intel/NVIDIA/AMD).
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+
+exec "$BIN" "$@"
 EOF
 
   install -Dm644 "${srcdir}/audibleport.desktop" \
