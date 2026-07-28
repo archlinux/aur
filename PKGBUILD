@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  stack build ormolu:exe:ormolu
+  stack build ormolu:exe:ormolu --test --no-run-test
 }
 
 check() {
