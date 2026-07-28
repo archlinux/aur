@@ -1,0 +1,17 @@
+post_install() {
+    echo "Hyprland Control Center (git) installed."
+    echo
+    echo "Run 'hcc doctor' to check your system."
+    echo "Run 'hcc desktop list' to view available desktops."
+    echo
+    echo "For login screen integration:"
+    echo "  sudo hcc session setup-login"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "HCC removed. Your desktop profiles in ~/.local/share/hcc/ are preserved."
+}

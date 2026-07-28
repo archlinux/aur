@@ -1,48 +1,47 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
-_pkgname=hcc
-pkgname="$_pkgname-git"
-pkgver=latest
-pkgrel=2
-pkgdesc="C++ Compiler for Heterogeneous Compute"
-arch=('x86_64')
-url="https://github.com/RadeonOpenCompute/hcc"
-license=('custom:NCSAOSL')
-depends=('hsa-rocr')
-makedepends=('git' 'cmake' 'python')
+# Maintainer: Hyprland Control Center <https://github.com/laosifu/Hyprland-Control-Center>
+# Contributor: laosifu
+
+pkgname=hcc-git
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="Hyprland Control Center (git version) — Install and manage Hyprland desktops"
+arch=('any')
+url="https://github.com/laosifu/Hyprland-Control-Center"
+license=('GPL-3.0-only')
+depends=('bash' 'git' 'curl' 'sudo')
+optdepends=(
+    'python: TOML config parser'
+    'yay: AUR package installation'
+    'paru: AUR package installation'
+)
+conflicts=('hcc-bin')
 provides=('hcc')
-conflicts=('hcc')
-source=("git+https://github.com/RadeonOpenCompute/hcc.git"
-        "git+https://github.com/RadeonOpenCompute/llvm-project.git"
-        "git+https://github.com/RadeonOpenCompute/ROCm-Device-Libs.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("$url.git")
+sha256sums=('SKIP')
+install=hcc.install
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  git submodule init
-  git config submodule.llvm-project.url "$srcdir/llvm-project"
-  git config submodule.rocdl.url "$srcdir/ROCm-Device-Libs"
-  git submodule update
-}
-
-build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/hcc \
-        -DLLVM_INSTALL_UTILS=TRUE \
-        "$srcdir/$_pkgname"
-  make
+    cd "$srcdir/Hyprland-Control-Center"
+    git describe --long --tags 2>/dev/null || echo "0.7.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/build"
+    cd "$srcdir/Hyprland-Control-Center"
 
-  make DESTDIR="$pkgdir" install
+    install -Dm755 bin/hcc "$pkgdir/usr/bin/hcc"
+
+    install -Dm755 lib/launchers/session-launcher.sh \
+        "$pkgdir/usr/lib/hcc/session-launcher"
+
+    install -dm755 "$pkgdir/usr/share/hcc"
+    cp -a desktops "$pkgdir/usr/share/hcc/desktops"
+    cp -a lib "$pkgdir/usr/share/hcc/lib"
+    cp -a services "$pkgdir/usr/share/hcc/services"
+    cp -a operations "$pkgdir/usr/share/hcc/operations"
+    cp -a modules "$pkgdir/usr/share/hcc/modules"
+    cp -a plugins "$pkgdir/usr/share/hcc/plugins"
+    cp -a themes "$pkgdir/usr/share/hcc/themes"
+    cp -a handlers "$pkgdir/usr/share/hcc/handlers"
+    cp -a VERSION "$pkgdir/usr/share/hcc/VERSION"
+    cp -a docs "$pkgdir/usr/share/hcc/docs"
 }
