@@ -2,7 +2,7 @@
 
 pkgname=dwm-aegix-git
 _pkgname=dwm
-pkgver=r28.7e7400d
+pkgver=r29.581e677
 pkgrel=1
 pkgdesc="Aegix Linux's custom build of dwm (dynamic window manager) with menu button, gaps, dark scheme, and aegix-flavored config"
 arch=('x86_64')
