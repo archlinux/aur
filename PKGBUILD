@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -25,7 +25,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('cc951ec101abcc08670f4303f2c64fe66b6d9b0b83c67d3fd86c91e35eb31338fceedb2a644639c93d3dc978dc1c626b764bb2ada9545e713a758e239fa8b9cc')
+sha512sums=('4d57d57bf51488abd4f1605e2767d9eb6c2489afaadf5d4453c0149f54b7a5e01bee8b2f112b1189202c808e14ce49a4b3576e5ba81de6e7030a424db58b87ea')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -56,6 +56,7 @@ package() {
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/voicefox
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 	install -Dm644 -t "${pkgdir}/usr/share/applications" assets/voicefox.desktop
-	install -Dm644 icons/1.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+	install -Dm644 icons/512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+	install -Dm644 icons/1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 
 }
