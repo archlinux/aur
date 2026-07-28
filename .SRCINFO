@@ -1,17 +1,22 @@
 pkgbase = shelly-git
-	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 3.0.0+8r3540.g6674144
+	pkgver = 3.0.0+9r3698.g9284d70
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = zig
+	makedepends = zig>=0.16
 	makedepends = clang
 	makedepends = gettext
 	makedepends = vala
 	makedepends = meson
 	makedepends = ninja
+	makedepends = flatpak
+	source = shelly-git::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
+	sha256sums = SKIP
+
+pkgname = shelly-git
+	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
 	depends = pacman
 	depends = gtk4
 	depends = glib2
@@ -27,14 +32,19 @@ pkgbase = shelly-git
 	depends = gnupg
 	depends = zstd
 	depends = json-glib
-	optdepends = flatpak: For supporting flatpak implementation.
 	optdepends = fish: Fish shell completions
 	optdepends = zsh: Zsh shell completions
 	optdepends = libstarfish: dependency viewer for arch packages
+	optdepends = shelly-flatpak-backend-git: Flatpak package management support
+	optdepends = fuse2: run AppImages that require FUSE 2
 	provides = shelly
 	conflicts = shelly
 	conflicts = shelly-bin
-	source = shelly-git::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
-	sha256sums = SKIP
 
-pkgname = shelly-git
+pkgname = shelly-flatpak-backend-git
+	pkgdesc = Optional native Flatpak backend for Shelly (git version)
+	depends = shelly-git=3.0.0+9r3698.g9284d70-1
+	depends = flatpak
+	provides = shelly-flatpak-backend=3.0.0+9r3698.g9284d70
+	conflicts = shelly-flatpak-backend
+	conflicts = shelly-flatpak-backend-bin
