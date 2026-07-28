@@ -1,6 +1,6 @@
 pkgbase = twitch-dl
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
-	pkgver = 2.9.2
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
@@ -18,7 +18,8 @@ pkgbase = twitch-dl
 	depends = python-click
 	depends = python-httpx
 	depends = python-m3u8
-	source = twitch-dl-2.9.2.tar.gz::https://github.com/ihabunek/twitch-dl/archive/2.9.2.tar.gz
-	b2sums = bf44be789b81026ef2069981e78b972817f9e16a71ace80a92d002fca2141a1c0fb638959e8ba5d750f7ce951b2fe06f682d721f9c74fe03ed786d231af96174
+	depends = python-wcwidth
+	source = twitch-dl-3.3.1.tar.gz::https://github.com/ihabunek/twitch-dl/archive/3.3.1.tar.gz
+	b2sums = b18a152700c594f1acbdaafca4d7fe7dd7d1e5220d974cfb796e5139ee80d3d361496d503b5204136c3ef20374cc53e1f62f3b8442db8f9bdd5faf36a8a44fa0
 
 pkgname = twitch-dl

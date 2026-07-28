@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl
-pkgver=2.9.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=('any')
@@ -12,7 +12,8 @@ depends=(
   ffmpeg
   python-click
   python-httpx
-  python-m3u8)
+  python-m3u8
+  python-wcwidth)
 makedepends=(
   python-setuptools
   python-setuptools-scm
@@ -26,7 +27,7 @@ makedepends=(
   python-wheel)
 checkdepends=('python-pytest')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-b2sums=('bf44be789b81026ef2069981e78b972817f9e16a71ace80a92d002fca2141a1c0fb638959e8ba5d750f7ce951b2fe06f682d721f9c74fe03ed786d231af96174')
+b2sums=('b18a152700c594f1acbdaafca4d7fe7dd7d1e5220d974cfb796e5139ee80d3d361496d503b5204136c3ef20374cc53e1f62f3b8442db8f9bdd5faf36a8a44fa0')
 
 prepare() {
   cd "$pkgname-$pkgver"
