@@ -2,7 +2,7 @@
 
 pkgname=qlcplus
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('x86_64' 'armv7h')
 url="http://qlcplus.org/"
@@ -16,14 +16,24 @@ source=("https://github.com/mcallegari/qlcplus/archive/QLC+_${pkgver}.tar.gz")
 sha512sums=('3381269f784a867920bf0184edea2e06b74be6da35d1e95b2781dfaa40b6962cb81a28b3c8e0f3ce0de5334ae1e4311da0d93fc9ffe4feef088672a7fb1a5e16')
 options=(!lto)
 
+prepare() {
+  cd "${srcdir}/${pkgname}-QLC-_${pkgver}"
+  mkdir build
+}
+
 build() {
-  cd "${srcdir}/qlcplus-QLC-_${pkgver}/"
-  #cmake -B build -W no-dev -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -Dqmlui=ON -DCMAKE_PREFIX_PATH="/usr/lib/cmake/Qt6"
-  cmake -DCMAKE_PREFIX_PATH="/usr/lib/cmake/Qt6" -Dqmlui=ON -Wno-error=sfinae-incomplete
-  make
+  cd "${srcdir}/${pkgname}-QLC-_${pkgver}"
+  export CXXFLAGS+="-Wno-error=sfinae-incomplete"
+  export CMAKE_BUILD_TYPE="Release"
+
+  cmake -B build \
+    -DCMAKE_PREFIX_PATH="/usr/lib/cmake/Qt6" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Dqmlui=ON
+  make -C build
 }
 
 package() {
   cd "${srcdir}/qlcplus-QLC-_${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
