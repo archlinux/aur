@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mahmoud Presser
+Comment=Modern Cross-Platform Auto-Clicker & Macro Sequence Builder
+Exec=/usr/bin/mahmoud-presser
+Icon=input-mouse
+Terminal=false
+Categories=Utility;System;
