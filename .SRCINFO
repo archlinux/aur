@@ -9,6 +9,7 @@ pkgbase = pandoc-static-git
 	makedepends = git
 	makedepends = cabal-install
 	makedepends = ghc
+	makedepends = curl
 	depends = gmp
 	depends = zlib
 	optdepends = texlive-core: for pdf output

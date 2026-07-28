@@ -17,7 +17,7 @@ license=('GPL-2.0-or-later')
 provides=("${_pkgname_old[@]/%/=${pkgver%%*([a-z]).r*}}")
 conflicts=("${_pkgname_old[@]}")
 depends=('gmp' 'zlib')
-makedepends=('git' 'cabal-install' 'ghc')
+makedepends=('git' 'cabal-install' 'ghc' 'curl')
 optdepends=('texlive-core: for pdf output')
 _url=https://github.com/jgm/pandoc
 source=("$pkgname::git+$_url.git")
@@ -39,7 +39,12 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  cabal update hackage.haskell.org,$(TZ=UTC date +@%s --date='today 00:00')
+
+  rts=$(date +%s --date="$(curl -I http://hackage.haskell.org/01-index.tar |
+    awk -F': ' '$1 == "Last-modified" { print $2 }')")
+  lts=$(TZ=UTC date +@%s --date='today 00:00')
+  ts=$(printf '%s\n' "$rts" "$lts" | sort -n | head -n1)
+  cabal update hackage.haskell.org,$ts
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
     --enable-tests --flag embed_data_files
   cabal build --only-dependencies
