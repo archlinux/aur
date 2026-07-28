@@ -11,6 +11,8 @@ AUR packaging repo for the Archon Linux AppImage release.
 
 This package tracks the upstream GitHub release from `RPGLogs/Uploaders-archon`. Upstream tags look like `v9.0.1`, with the AppImage asset named `archon-v9.0.1.AppImage`. The `PKGBUILD` and `.SRCINFO` are kept checked in and updated in place by automation.
 
+When upstream publishes a new AppImage, automation updates `pkgver`, resets `pkgrel` to `1`, and refreshes the checksum. When this packaging repo changes without a new upstream AppImage release, automation bumps `pkgrel` and records the packaging commit in `PKGBUILD` so the AUR package still rolls forward once per packaging change.
+
 ## Validation
 
 `namcap` runs against `PKGBUILD` at the start of every workflow run to catch packaging issues before any update is applied. It checks for missing dependencies, bad permissions, incorrect license declarations, and other AUR guideline violations.
@@ -29,7 +31,7 @@ The workflow at `.github/workflows/update-release.yml` runs on an hourly schedul
 
 1. Runs `scripts/update-from-release.sh` to fetch the latest release, compute the sha256, and rewrite `PKGBUILD`
 2. Regenerates `.SRCINFO` in an Arch Linux container
-3. Commits and pushes if anything changed
+3. Commits and tags `v<pkgver>-<pkgrel>` if anything changed
 4. Pushes `PKGBUILD`, `.SRCINFO`, and `README.md` to the AUR if `AUR_SSH_PRIVATE_KEY` is set
 
 The workflow also listens for `repository_dispatch` with event type `archon_release` for immediate triggering.

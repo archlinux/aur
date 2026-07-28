@@ -2,8 +2,9 @@
 
 pkgname=archon-appimage
 _pkgapp=archon
+_pkgbuild_commit=d7e946e
 pkgver=9.4.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop uploader app for Archon packaged as the upstream AppImage"
 arch=('x86_64')
 url='https://www.archon.gg/download'
@@ -37,11 +38,11 @@ package() {
   install -Dm755 "${srcdir}/${_pkgapp}" "${pkgdir}/usr/bin/${_pkgapp}"
 
   install -Dm644 \
-    "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/Archon App.png" \
+    "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/archon.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/archon.png"
 
   install -Dm644 \
-    "${srcdir}/squashfs-root/Archon App.desktop" \
+    "${srcdir}/squashfs-root/archon.desktop" \
     "${pkgdir}/usr/share/applications/archon.desktop"
   sed -i \
     -e 's|^Exec=.*|Exec=/usr/bin/archon %U|' \
