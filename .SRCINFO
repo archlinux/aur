@@ -1,7 +1,7 @@
 pkgbase = bananadashboard-bin
 	pkgdesc = Desktop system dashboard by BananaBrother77
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/BananaBrother77/BananaDashboard
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = bananadashboard-bin
 	depends = alsa-lib
 	provides = bananadashboard
 	conflicts = bananadashboard
-	source = https://github.com/BananaBrother77/BananaDashboard/releases/download/v0.1.5/bananadashboard-0.1.5.pacman
+	source = https://github.com/BananaBrother77/BananaDashboard/releases/download/v0.1.6/bananadashboard-0.1.6.pacman
 	sha256sums = SKIP
 
 pkgname = bananadashboard-bin
