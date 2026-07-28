@@ -8,7 +8,7 @@ _npmver=26.7.0
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
 arch=(x86_64)
 url="https://actualbudget.org"
@@ -34,7 +34,7 @@ sha256sums=(
 )
 
 package() {
-    npm install --no-fund -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+    npm install --no-fund -g --allow-scripts=bcrypt,better-sqlite3 --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
     install -D -m 0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m 0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"

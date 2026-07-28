@@ -1,7 +1,7 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget server used for syncing across devices. Includes the web client.
 	pkgver = 26.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://actualbudget.org
 	arch = x86_64
 	license = MIT
