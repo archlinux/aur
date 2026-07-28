@@ -1,6 +1,6 @@
 # Maintainer: Khaled Eldoheiri <khaled@eldoheiri.com>
 pkgname=wltile
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A CLI tool that manages outputs/displays for wlroots based compositors"
 url="https://github.com/kdehairy/wltile"
@@ -10,7 +10,7 @@ depends=()
 makedepends=('git' 'cargo')
 provides=("${pkgname}")
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("ce5da2b302834b70bfdfaee1a9a3883d6b9bea806a06ea79d57b1b48d78e4783")
+sha256sums=("4ec6e133d632540185941249bc2f9686dda799146b777daff8db01e93a13a1ee")
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
