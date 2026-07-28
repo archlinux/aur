@@ -1,18 +1,19 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=bankai-bin
-pkgver=0.2.33
+pkgver=0.2.35
 pkgrel=1
 pkgdesc="Focused Electron workspace for persistent project shell sessions"
 arch=('x86_64')
 url="https://github.com/juicerq/bankai-2"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libnotify' 'hicolor-icon-theme' 'git')
+makedepends=('imagemagick')
 provides=('bankai')
 conflicts=('bankai')
 options=('!strip' '!debug')
 source=("bankai-$pkgver.AppImage::$url/releases/download/v$pkgver/Bankai-$pkgver.AppImage")
 noextract=("bankai-$pkgver.AppImage")
-sha256sums=('f1b84d97f34f4b8fa7ab183f631a1d4b99d577620295dc6f8dafbb652d5f556e')
+sha256sums=('02c619d96853d12fe6074b99d970eb9bbc3d6ef2a93effc54fc385ff15266f39')
 
 prepare() {
 	chmod +x "bankai-$pkgver.AppImage"
@@ -33,8 +34,12 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	ln -s /opt/bankai/bankai "$pkgdir/usr/bin/bankai"
 
-	install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/bankai.png" \
-		"$pkgdir/usr/share/icons/hicolor/1024x1024/apps/bankai.png"
+	for size in 128 256 512; do
+		magick "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/bankai.png" \
+			-resize "${size}x${size}" "$srcdir/bankai-$size.png"
+		install -Dm644 "$srcdir/bankai-$size.png" \
+			"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bankai.png"
+	done
 
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/bankai.desktop" <<-EOF
 		[Desktop Entry]
