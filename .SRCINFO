@@ -1,0 +1,19 @@
+pkgbase = ddos
+	pkgdesc = Arunachalam's ArcXos: A specialized penetration testing and security auditing distribution built on Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/Ddos
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = iptables
+	depends = iproute2
+	optdepends = hyprland: Wayland window focus & shortcut dispatch
+	optdepends = xdotool: X11 window focus & shortcut dispatch
+	optdepends = wtype: Wayland shortcut dispatch
+	optdepends = ydotool: Input device shortcut dispatch
+	source = ddos-1.0.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Ddos/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ddos
