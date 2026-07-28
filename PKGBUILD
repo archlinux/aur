@@ -3,9 +3,9 @@
 # AUR page: https://aur.archlinux.org/packages/tuitab-bin
 
 pkgname=tuitab-bin
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Terminal tabular data explorer — CSV/JSON/Parquet/Excel/SQLite viewer (pre-built binary)"
+pkgdesc="Terminal tabular data explorer — CSV/JSON/YAML/TOML/Parquet/Excel/SQLite viewer (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/denisotree/tuitab"
 license=('Apache-2.0')
@@ -18,8 +18,8 @@ _base_url="https://github.com/denisotree/tuitab/releases/download/v${pkgver}"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/tuitab-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/tuitab-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('eac651f8807a53682fdfe87fb8e64739761db05f5a69daa4243ec045924c0a24')
-sha256sums_aarch64=('c67d17a0467a753a0102aa9f7d5d821c4830a084b3de0dd3119f6a3f8a6e14a1')
+sha256sums_x86_64=('9746a161d3d305ef2becab6073c28182ea88252b2881d5720165bfb67ad26b09')
+sha256sums_aarch64=('7d900dd25a463df71936796b4c2a42404ae001296ef9cb9539a578a3fef1cec5')
 
 package() {
     local _src_dir="tuitab-v${pkgver}-${CARCH}-unknown-linux-gnu"
