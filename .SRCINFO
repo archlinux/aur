@@ -1,0 +1,14 @@
+pkgbase = arch-gf
+	pkgdesc = A terminal girlfriend who judges your Arch Linux setup
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kolgrim33/arch-gf
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = gcc-libs
+	source = arch-gf-1.0.0.tar.gz::https://github.com/Kolgrim33/arch-gf/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = arch-gf
