@@ -1,0 +1,21 @@
+pkgbase = hcc-bin
+	pkgdesc = Hyprland Control Center — Install and manage Hyprland desktops
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/laosifu/Hyprland-Control-Center
+	install = hcc.install
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = git
+	depends = curl
+	depends = sudo
+	optdepends = python: TOML config parser (faster than pure-bash)
+	optdepends = yay: AUR package installation
+	optdepends = paru: AUR package installation
+	provides = hcc
+	conflicts = hcc-git
+	source = https://github.com/laosifu/Hyprland-Control-Center/archive/v0.8.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hcc-bin
