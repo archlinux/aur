@@ -2,8 +2,8 @@
 
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
-pkgver=3.8.8
-pkgrel=2
+pkgver=3.8.9
+pkgrel=1
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
 url="https://libarchive.org"
@@ -30,13 +30,11 @@ makedepends=(
 )
 provides=(libarchive.so)
 source=($_name::git+$_url.git?signed#tag=v$pkgver)
-sha256sums=('188b50a8533d6ef46d1fe3b974c660ffe0ce7ef6daa35089010e7a9fe9ddc571')
+sha256sums=('033f8b22a755d01f87a79a5723ce4faed4d3772ab703f739c26ce32c6b1da0fd')
 validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <martin@matuska.org>
               '659C84C0E23EA1FA97E0B58CC040B508D63D2B36') # Martin Matuska <mm@FreeBSD.org>
 
 _backports=(
-  # read_data_into_fd: Fix spurious "Seek error" for trailing holes
-  '91c146e87d61e952c629e2f8a8f9f2a9267c13ff'
 )
 
 _reverts=(

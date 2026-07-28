@@ -1,14 +1,14 @@
 pkgbase = lib32-libarchive
 	pkgdesc = Multi-format archive and compression library - 32bit
-	pkgver = 3.8.8
-	pkgrel = 2
+	pkgver = 3.8.9
+	pkgrel = 1
 	url = https://libarchive.org
 	arch = x86_64
 	license = BSD-2-Clause
 	license = BSD-4-Clause-UC
 	license = Apache-2.0 OR CC0-1.0 OR OpenSSL
 	makedepends = git
-	depends = libarchive=3.8.8
+	depends = libarchive=3.8.9
 	depends = lib32-acl
 	depends = lib32-bzip2
 	depends = lib32-glibc
@@ -19,9 +19,9 @@ pkgbase = lib32-libarchive
 	depends = lib32-zlib
 	depends = lib32-zstd
 	provides = libarchive.so
-	source = libarchive::git+https://github.com/libarchive/libarchive.git?signed#tag=v3.8.8
+	source = libarchive::git+https://github.com/libarchive/libarchive.git?signed#tag=v3.8.9
 	validpgpkeys = DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B
 	validpgpkeys = 659C84C0E23EA1FA97E0B58CC040B508D63D2B36
-	sha256sums = 188b50a8533d6ef46d1fe3b974c660ffe0ce7ef6daa35089010e7a9fe9ddc571
+	sha256sums = 033f8b22a755d01f87a79a5723ce4faed4d3772ab703f739c26ce32c6b1da0fd
 
 pkgname = lib32-libarchive
