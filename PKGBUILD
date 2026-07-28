@@ -6,7 +6,7 @@
 # runtime deps are listed in optdepends so a pure Arch/CachyOS install stays minimal.
 
 pkgname=kodexbar-suite
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok quotas (optional codexbar for Antigravity)'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 install=kodexbar-suite.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('83c9d5782fffe6cde2e4861b841bb45296d3c323882cc36a93648bc1eac559a4')
+sha256sums=('c96b3c5061bf90448f2d1e9398e8a771f7a241246f6f7126cce324a9354fc5a6')
 
 package() {
   cd "${srcdir}/KodexBar-Suite-${pkgver}"
@@ -41,6 +41,7 @@ package() {
     packages/ai-cli-control/kodexbar-panel \
     packages/ai-cli-control/kodexbar-tray \
     packages/ai-cli-control/local-ai \
+    packages/ai-cli-control/kodexbar-skills \
     packages/ai-cli-control/recover.py \
     "${payload}/"
 
@@ -57,6 +58,7 @@ package() {
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-panel "${pkgdir}/usr/bin/kodexbar-panel"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-tray "${pkgdir}/usr/bin/kodexbar-tray"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/local-ai "${pkgdir}/usr/bin/local-ai"
+  ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-skills "${pkgdir}/usr/bin/kodexbar-skills"
 
   # Distributable plasmoid only: metadata.json and contents/ (no tests, scripts,
   # docs of development, screenshots, or dotfiles).
