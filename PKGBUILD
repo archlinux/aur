@@ -12,8 +12,8 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r1438.gf95bd73935
-pkgrel=2
+pkgver=0.13.0.r1509.g26357692c8
+pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
 url='https://neovim.io'
@@ -41,7 +41,6 @@ provides=("neovim=${_nvim_version}" 'vim-plugin-runtime')
 conflicts=('neovim' 'neovim-git')
 source=(
     'git+https://github.com/neovim/neovim.git'
-    # 'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/2f0f668a9a7e7d4ab5d90853958837bae5bc3ca2.tar.gz'
     'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/9ae39fa50b1ab8427d35f963216116d7bff1e584.tar.gz'
     'translate_c.tar.gz::https://codeberg.org/ziglang/translate-c/archive/46b5609b5ac4c0a896217d1d984f3ae50e4810b5.tar.gz'
     'aro.tar.gz::https://github.com/Vexu/arocc/archive/5f5a050569a95ecc40a426f0c3666ae7ef987ede.tar.gz'
@@ -106,7 +105,7 @@ pkgver() {
 
 prepare() {
     local zlua_hash lua_dev_deps_hash ts_c_hash ts_markdown_hash ts_lua_hash ts_vim_hash ts_vimdoc_hash ts_query_hash
-    zlua_hash='zlua-0.1.0-hGRpC8aUBQD4jNxDkqeKXAk_5HInJKze1SWVYbYkLuxO'
+    zlua_hash='zlua-0.1.0-hGRpC1mUBQCNQf4CnmRTM4I7gxE3YpCvZ-p2EarlcyER'
     lua_dev_deps_hash='N-V-__8AAGevEQCHAkCozca5AIdN9DFc3Luf3g3r2AcbyOrm'
     translate_c_hash='translate_c-0.0.0-Q_BUWpf0BgAwrh5AM-acJcslN_YPEhcoCVKbbNjwuUTJ'
     aro_hash='aro-0.0.0-JSD1Qi7QNgDnfcrdEJf82v3o6MhZySjYVrtdfEf3E4Se'
