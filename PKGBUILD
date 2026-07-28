@@ -1,4 +1,5 @@
 # Maintainer: Reazndev <ruby.florian@proton.me>
+# Co-maintainer: denislupookov
 
 pkgname=altersend-bin
 pkgver=1.7.0
