@@ -1,6 +1,6 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://bytedz.com/products/pclink
 	arch = x86_64
@@ -64,9 +64,9 @@ pkgbase = pclink
 	optdepends = spectacle: Screenshot support on KDE Plasma
 	optdepends = speedtest-cli: Required for PC Speed Test Extension
 	optdepends = wl-clipboard: Clipboard support on Wayland
-	source = PCLink-4.6.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.6.0.tar.gz
+	source = PCLink-4.6.1.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.6.1.tar.gz
 	source = FerrumCast-0.2.2.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = b935726640d56c5185db88a2d1b8b6dda2d2ceb6cc1fa9f42e94f3731d52517f
+	sha256sums = fdbe4ec836df26a4c55f9d4324cfb5b6a5de52d7d1346d571d6b85ef2c632bc4
 	sha256sums = 4852789895d408786a9220418435a7ce6fd239174f6b5e73bbe9e52d2c45b307
 
 pkgname = pclink

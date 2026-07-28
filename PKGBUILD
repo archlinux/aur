@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 _fc_ver=0.2.2
 pkgdesc="Desktop app for secure remote PC control and management"
@@ -75,7 +75,7 @@ optdepends=(
 _commit=a8798f26530933f3e41791d5c5304f6df83c90b2
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "FerrumCast-${_fc_ver}.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v${_fc_ver}.tar.gz")
-sha256sums=('b935726640d56c5185db88a2d1b8b6dda2d2ceb6cc1fa9f42e94f3731d52517f'
+sha256sums=('fdbe4ec836df26a4c55f9d4324cfb5b6a5de52d7d1346d571d6b85ef2c632bc4'
             '4852789895d408786a9220418435a7ce6fd239174f6b5e73bbe9e52d2c45b307')
 
 prepare() {
