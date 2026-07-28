@@ -3,7 +3,7 @@ pkgname=filen-desktop-bin
 _pkgname=Filen
 pkgver=3.0.53
 _electronversion=43
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -62,7 +62,7 @@ prepare() {
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     rm -rf "${_app_dir}/resources/app.asar.unpacked/bin/"*
     case "${CARCH}" in
         aarch64)
