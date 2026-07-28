@@ -1,0 +1,49 @@
+diff --git a/subhunter/app.py b/subhunter/app.py
+index 2df3356..a9f0b37 100644
+--- a/subhunter/app.py
++++ b/subhunter/app.py
+@@ -1,7 +1,7 @@
+ import os
+ import sys
+ import customtkinter as ctk
+-from tkinter import filedialog, messagebox
++from tkinter import filedialog, messagebox, PhotoImage
+ 
+ from subhunter.core.theme import DARK, LIGHT
+ from subhunter.core.constants import LANGUAGES
+@@ -11,12 +11,12 @@ from subhunter.core.updater import Updater, VERSION
+ from subhunter.components import GlowBar, Toolbar, VideoList, StatusBar, SettingsPanel, SubtitlePicker
+ 
+ 
+-def _icon_path():
++def _icon_path(name):
+     if getattr(sys, 'frozen', False):
+         base = sys._MEIPASS
+     else:
+         base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+-    return os.path.join(base, "icon.ico")
++    return os.path.join(base, name)
+ 
+ 
+ class SubHunterApp(ctk.CTk):
+@@ -27,10 +27,16 @@ class SubHunterApp(ctk.CTk):
+         self.geometry("950x680")
+         self.minsize(750, 500)
+ 
+-        ico = _icon_path()
+-        if os.path.exists(ico):
+-            self.iconbitmap(ico)
+-            self.after(200, lambda: self.iconbitmap(ico))
++        if sys.platform == "win32":
++            ico = _icon_path("icon.ico")
++            if os.path.exists(ico):
++                self.iconbitmap(ico)
++                self.after(200, lambda: self.iconbitmap(ico))
++        else:
++            png = _icon_path("icon.png")
++            if os.path.exists(png):
++                self._icon_img = PhotoImage(file=png)
++                self.iconphoto(True, self._icon_img)
+ 
+         # Load persistent config
+         self.config = Config()
