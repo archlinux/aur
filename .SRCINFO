@@ -1,6 +1,6 @@
 pkgbase = cefdetector-bin
 	pkgdesc = Check how many CEFs are on your Linux.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/CefDetectorLinux
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = cefdetector-bin
 	depends = fontconfig
 	depends = libglvnd
 	depends = xdg-utils
-	provides = cefdetector
+	provides = cefdetector=0.4.0
 	conflicts = cefdetector
-	source = cefdetector-bin-0.3.0.tar.gz::https://github.com/Tobiichi-Origuchi/CefDetectorLinux/releases/download/v0.3.0/cefdetector_0.3.0_x86_64.tar.gz
-	noextract = cefdetector-bin-0.3.0.tar.gz
-	sha256sums = 9e42948ba9490e98645b2b58ebf79429200c5b8fe3ccf1808a2aca2cab09817e
+	noextract = cefdetector-bin-0.4.0.tar.gz
+	source = cefdetector-bin-0.4.0.tar.gz::https://github.com/Tobiichi-Origuchi/CefDetectorLinux/releases/download/v0.4.0/cefdetector_0.4.0_x86_64.tar.gz
+	sha256sums = f059bc70965850d65029eac3333fc74351361daa9d918500f1bc6e9d7fc7ca56
 
 pkgname = cefdetector-bin
