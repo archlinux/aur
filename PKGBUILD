@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/pyrefly"
-  cargo build --release --frozen
+  cargo +nightly build --release --frozen
 }
 
 check() {
