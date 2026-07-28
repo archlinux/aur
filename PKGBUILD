@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-mssql
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB mssql runtime library"
 url="https://www.codesynthesis.com/products/odb/"
@@ -10,7 +10,7 @@ depends=('build2' 'unixodbc' 'libodb')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('eefa34f8b174629b06fced38c9b5b5da7545c03bcb56e328e98bd79b325bb43f')
+sha256sums=('a33932e69f63d8b09bec3f6966250e4f388b0e20e00a13307eedef597c9c3867')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
