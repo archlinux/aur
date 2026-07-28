@@ -1,0 +1,23 @@
+pkgbase = forgecode-bin2
+	pkgdesc = CLI code assistant; pre-built upstream binary
+	pkgver = 2.13.19
+	pkgrel = 1
+	url = https://github.com/tailcallhq/forgecode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fzf
+	depends = bat
+	depends = fd
+	provides = forgecode-bin
+	provides = forge
+	conflicts = forgecode-bin
+	conflicts = forge
+	source = LICENSE
+	sha256sums = 3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9
+	source_x86_64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.13.19/forge-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 5f395637c264f3f195d22fe8e2ce1b47e54cb6f51e2bb7bab5ce2e11b8b83958
+	source_aarch64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.13.19/forge-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 49d2d072997d5558676cec4247f55b3860d79a2442b5f1d9b038d154bbac3162
+
+pkgname = forgecode-bin2
