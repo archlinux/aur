@@ -1,8 +1,8 @@
 pkgbase = libstudxml
 	pkgdesc = Streaming XML pull parser and streaming XML serializer
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = www.codesynthesis.com/projects/libstudxml/
+	pkgrel = 2
+	url = https://www.codesynthesis.com/projects/libstudxml/
 	arch = i686
 	arch = x86_64
 	license = MIT

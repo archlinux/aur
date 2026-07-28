@@ -2,7 +2,7 @@
 
 pkgname=libstudxml
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming XML pull parser and streaming XML serializer"
 url="https://www.codesynthesis.com/projects/libstudxml/"
 arch=('i686' 'x86_64')
@@ -39,8 +39,8 @@ package() {
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 	cd "${srcdir}/odb-gcc-${GPPVER}"
 
-	bpkg install libstudxml
+	bpkg install ${pkgname}
 
-	rm ${pkgdir}/usr/lib/pkgconfig/libstudxml.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 	install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
