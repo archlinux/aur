@@ -933,9 +933,17 @@ def run_qt_app(engine):
             if key in [Qt.Key.Key_Control, Qt.Key.Key_Shift, Qt.Key.Key_Alt, Qt.Key.Key_Meta]:
                 return # Wait for actual key
             
-            key_name = QKeySequence(key).toString().upper()
-            if not key_name and key < 256:
+            key_name = ""
+            if key > 0:
+                key_name = QKeySequence(key).toString().upper()
+                
+            if not key_name or key_name.strip() == "":
+                key_name = event.text().upper()
+                
+            if not key_name and key > 0 and key < 256:
                 key_name = chr(key).upper()
+                
+            key_name = key_name.strip()
                 
             if key_name:
                 self.recorded_key = "+".join(mods + [key_name])
@@ -962,6 +970,7 @@ def run_qt_app(engine):
             super().__init__()
             os_title = f" ({platform.system()} Edition)"
             self.setWindowTitle("Mahmoud Presser" + os_title)
+            self.setMinimumSize(300, 200)
             self.resize(800, 720)
             self.setStyleSheet(MODERN_QT_STYLE)
 
