@@ -133,7 +133,7 @@ package_azerothcore-wotlk-git() {
 	#backup=('usr/share/azerothcore/acore.json')
 
 	# Core execution dependencies
-	depends=('boost-libs' 'readline' 'openssl')
+	depends=('boost-libs' 'readline' 'openssl' 'tmux')
 	optdepends=('azerothcore-clientdata-git: To automatically provision pre-extracted map assets')
 	options=(!lto !debug strip)
 	provides=('azerothcore')

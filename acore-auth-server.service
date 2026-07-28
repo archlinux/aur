@@ -9,7 +9,8 @@ Restart=always
 RestartSec=1
 User=root
 WorkingDirectory=/usr/share/azerothcore
-ExecStart=/usr/share/azerothcore/acore.sh run-authserver
+ExecStart=/usr/bin/tmux new-session -d -s acore-auth /usr/share/azerothcore/acore.sh run-authserver
+ExecStop=/usr/bin/tmux kill-session -t acore-auth || true
 
 [Install]
 WantedBy=multi-user.target

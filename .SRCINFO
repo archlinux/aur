@@ -23,6 +23,7 @@ pkgname = azerothcore-wotlk-git
 	depends = boost-libs
 	depends = readline
 	depends = openssl
+	depends = tmux
 	optdepends = azerothcore-clientdata-git: To automatically provision pre-extracted map assets
 	provides = azerothcore
 	conflicts = azerothcore
