@@ -1,6 +1,6 @@
 # Maintainer: Zeffuro <Jeffroiscool@gmail.com>
 pkgname=zeff-boy-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Game Boy, Game Boy Color, and NES emulator written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'systemd-libs')
 provides=('zeff-boy')
 conflicts=('zeff-boy')
 source=("zeff-boy-${pkgver}.tar.gz::https://github.com/Zeffuro/zeff-boy/releases/download/v${pkgver}/zeff-boy-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('cb3ecd590546bd713907b71ce33044ca567ec41aa73fc381d8ad078755279e4f')
+sha256sums=('86b89ecf84c0a653e338e75fe48c1bfc5ae58292255b3f2e9aebc070c91dd4db')
 
 package() {
     install -Dm755 "zeff-boy" "${pkgdir}/usr/bin/zeff-boy"
