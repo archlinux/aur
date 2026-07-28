@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-pgsql
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB PostgreSQL runtime library"
 url="https://www.codesynthesis.com/products/odb/"
@@ -10,7 +10,7 @@ depends=('build2' 'postgresql-libs' 'libodb')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f6e63db4a2f77604f48115f64c74a5854ca20f03f208568966693e95712a3e17')
+sha256sums=('9576dae364952f756630cd6509fcf254f56929847997ab5db55a2955b6f41759')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
