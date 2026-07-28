@@ -37,7 +37,7 @@ source=("https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-${pkgver}
 b2sums=('8e8ccd375174c064c7c18ca9521d4a516c2d54478b24f249627ddcdfc51f42ad390424a23cfd7b1a907ac74c0a38e5364f698cfb28d0590048c1a0344f5e5898')
 
 build() {
-  cd "${srcdir}/Tree-RB-XS-${pkgver}"
+  cd "Tree-RB-XS-${pkgver}"
 
   unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
