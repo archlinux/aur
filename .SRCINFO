@@ -1,0 +1,13 @@
+pkgbase = activatelinux
+	pkgdesc = A fake Activate Linux wizard parody with a Windows-style activation GUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zyvxi/fake-windows
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	source = https://github.com/zyvxi/fake-windows/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = activatelinux
