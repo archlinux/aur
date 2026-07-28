@@ -9,6 +9,7 @@ pkgbase = hasktags-static-git
 	makedepends = git
 	makedepends = cabal-install
 	makedepends = ghc
+	makedepends = curl
 	depends = gmp
 	provides = hasktags=0.73.0
 	conflicts = hasktags
