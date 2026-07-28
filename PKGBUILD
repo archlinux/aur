@@ -28,6 +28,7 @@ source=(
 sha256sums=('f36b30a1c02919f7fa1831406da8695c888588099d1ceb69efc326bd73d38f29'
             'bab75f0a6b32e329042d07f377b5127727fde2ce24f8a4138f695e347ad1e605')
 install="lm-studio.install"
+options=("!strip")
 
 
 package() {
