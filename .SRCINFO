@@ -1,6 +1,6 @@
 pkgbase = z-code-bin
 	pkgdesc = ZCode - AI Agents combined with existing toolchains for planning, coding, review and deployment
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://zcode.z.ai
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = z-code-bin
 	conflicts = zcode-desktop-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = z-code-bin-3.5.2-amd64::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.2/linux-x64/ZCode-3.5.2-linux-x64.deb
-	sha256sums_x86_64 = 00c2b3b83fb3c99dcd98d2db78f45bb3dedbc4d415c19874f5d982bc503b5ee1
-	source_aarch64 = z-code-bin-3.5.2-arm64::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.2/linux-arm64/ZCode-3.5.2-linux-arm64.deb
-	sha256sums_aarch64 = a478cdcd7924e550c799fe6a3f89cc1ae0559be5df6d5f732292266ff2771e24
+	source_x86_64 = z-code-bin-3.5.3-amd64::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.3/linux-x64/ZCode-3.5.3-linux-x64.deb
+	sha256sums_x86_64 = e6610065ed4a711efc139a60d373ffcc606a3c13e782306876e49fc07e336bc7
+	source_aarch64 = z-code-bin-3.5.3-arm64::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.3/linux-arm64/ZCode-3.5.3-linux-arm64.deb
+	sha256sums_aarch64 = 66b1c5b03e0c523f3c431915e911ada5539948dc497d6dd05aa9740a6d285ab4
 
 pkgname = z-code-bin
