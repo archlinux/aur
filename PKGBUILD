@@ -16,7 +16,6 @@ depends=(
     'lapack'
     'tbb'
     'qt5-base'
-    'ros2-humble-nav2-map-server'
 )
 makedepends=('cmake' 'boost')
 source=("https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/${pkgver}.tar.gz"
@@ -51,5 +50,9 @@ build() {
 }
 
 package() {
+    # Runtime-only dep: map_saver invokes nav2_map_server via subprocess.
+    # Declared here (not global depends) so it's not required at build time.
+    depends+=('ros2-humble-nav2-map-server')
+
     DESTDIR="$pkgdir" cmake --install build
 }
