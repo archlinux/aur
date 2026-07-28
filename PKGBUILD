@@ -1,36 +1,55 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at+manjaro dot+org>
-# Contributor: Kr1ss <kr1ss.x#yandex#com>
-# Contributor: Dmitry Valter <dvalter"protonmail"com>
+# Maintainer:
+# Contributor: Jonathon Fernyhough <jonathon_at+manjaro dot+org>
 
-_pkgbase=birdtray
-pkgname=$_pkgbase-git
-pkgver=latest
-pkgrel=5
-pkgdesc="Run Thunderbird with a system tray icon."
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+_pkgname="birdtray"
+pkgname="$_pkgname-git"
+pkgver=1.11.4.r67.g7e35be6
+pkgrel=1
+pkgdesc="Run Thunderbird with a system tray icon"
 url="https://github.com/gyunaev/birdtray"
-license=('GPL-3.0')
-depends=(qt5-svg qt5-x11extras)
-optdepends=('qt5-translations: Support for translations')
-makedepends=(cmake git qt5-tools)
-conflicts=($_pkgbase)
-provides=($_pkgbase)
-source=("git+$url.git")
-sha1sums=(SKIP)
+license=('GPL-3.0-or-later')
+arch=('i686' 'x86_64' 'aarch64')
+
+depends=(
+  'hicolor-icon-theme'
+  'qt6-base'
+  'qt6-svg'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'qt6-declarative'
+  'qt6-tools'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  git -C $_pkgbase describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^RELEASE_//g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p build && cd build
-  cmake ../$_pkgbase \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-author
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgbase/" $_pkgbase/README.md 
+  DESTDIR="$pkgdir" cmake --install build
 }
