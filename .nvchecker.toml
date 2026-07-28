@@ -1,0 +1,5 @@
+[parllama]
+source = "github"
+github = "paulrobello/parllama"
+use_latest_release = true
+prefix = "v"
