@@ -8,6 +8,7 @@ url="https://github.com/ghaziwali/Hulios"
 license=('GPL3')
 depends=('tor' 'libelf' 'zlib')
 makedepends=('git' 'rust' 'cargo' 'clang' 'llvm')
+options=(!lto)
 provides=('hulios')
 conflicts=('hulios')
 source=("git+https://github.com/ghaziwali/Hulios.git#branch=main")

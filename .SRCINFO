@@ -16,6 +16,7 @@ pkgbase = hulios-git
 	depends = zlib
 	provides = hulios
 	conflicts = hulios
+	options = !lto
 	source = git+https://github.com/ghaziwali/Hulios.git#branch=main
 	sha256sums = SKIP
 
