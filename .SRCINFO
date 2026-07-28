@@ -1,7 +1,7 @@
 pkgbase = cockpit-pacman
 	pkgdesc = Cockpit plugin for Arch Linux package management using alpm.rs
 	pkgver = 0.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pfeifferj/cockpit-pacman
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,12 +9,13 @@ pkgbase = cockpit-pacman
 	makedepends = rust
 	makedepends = cargo
 	depends = cockpit
+	depends = gcc-libs
+	depends = glibc
 	depends = pacman
-	provides = cockpit-pacman
 	conflicts = cockpit-pacman-git
 	options = !lto
 	options = !debug
 	source = cockpit-pacman-0.3.7.tar.gz::https://github.com/pfeifferj/cockpit-pacman/archive/v0.3.7.tar.gz
-	sha256sums = SKIP
+	sha256sums = cd7bf2650749e5327cdf1c88be7db37359e9d368cef4bbde3172c02b1770e3f5
 
 pkgname = cockpit-pacman
