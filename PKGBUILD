@@ -1,7 +1,7 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm-git
 pkgver=1.0.0rc14.r0.g3b8d7fd
-pkgrel=1
+pkgrel=2
 pkgdesc='Omarchy 4-native manager for external theme integrations (git)'
 arch=('any')
 url='https://github.com/oldjobobo/thpm'
@@ -12,6 +12,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 provides=('thpm' 'theme-hook-plugin-manager')
 conflicts=('thpm' 'theme-hook-plugin-manager')
 replaces=('theme-hook-plugin-manager')
+install=thpm.install
 source=('git+https://github.com/oldjobobo/thpm.git')
 sha256sums=('SKIP')
 
