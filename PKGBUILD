@@ -1,6 +1,6 @@
 # Maintainer: NoverPlay Team
 pkgname=noverplay-bin
-pkgver=1.0.8
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='NoverPlay desktop music player'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('noverplay')
 conflicts=('noverplay')
 options=('!strip')
 source_x86_64=("https://noverplay.space/download/linux/noverplay-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('a903fbe3753b3d9c8a9e6ad9f51f9ce56dc9e753b1a1a2e179997a480841f3ab')
+sha256sums_x86_64=('4d9ea95e88bcdb28343078229399508d6d3c2e9673dc57156ba4627fe796f343')
 
 package() {
   cd "${srcdir}/noverplay-${pkgver}-x86_64"

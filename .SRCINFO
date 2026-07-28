@@ -1,6 +1,6 @@
 pkgbase = noverplay-bin
 	pkgdesc = NoverPlay desktop music player
-	pkgver = 1.0.8
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://noverplay.space
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = noverplay-bin
 	provides = noverplay
 	conflicts = noverplay
 	options = !strip
-	source_x86_64 = https://noverplay.space/download/linux/noverplay-1.0.8-x86_64.tar.gz
-	sha256sums_x86_64 = a903fbe3753b3d9c8a9e6ad9f51f9ce56dc9e753b1a1a2e179997a480841f3ab
+	source_x86_64 = https://noverplay.space/download/linux/noverplay-1.1.1-x86_64.tar.gz
+	sha256sums_x86_64 = 4d9ea95e88bcdb28343078229399508d6d3c2e9673dc57156ba4627fe796f343
 
 pkgname = noverplay-bin
