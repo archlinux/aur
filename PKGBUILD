@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-sqlite
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB SQLite runtime library"
 url="https://www.codesynthesis.com/products/odb/"
@@ -10,7 +10,7 @@ depends=('build2' 'libodb' 'sqlite' 'cli')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b28ab73a902554bba6eb9ba6f4c9099d1e15826de7a1fa4fba6451a410856fbd')
+sha256sums=('d153d9f0a4d786a92d1ff80b437387aa686f4a99eaa3e799a187e72bad34085e')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
