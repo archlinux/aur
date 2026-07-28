@@ -2,7 +2,7 @@
 
 _pkgname=cursor-clip
 pkgname=${_pkgname}-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay (prebuilt binary)"
 arch=("x86_64" "aarch64")
@@ -26,14 +26,14 @@ source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
 sha256sums_x86_64=(
-  "5cc229751b35e10d9236d896264f37bbeeb430f5d606739c03c52fa163a13773"
+  "8073da13c90f5c9e67de72b986b4cc0be7f3d36fb07b1331f973cb9d0c79ddf4"
 )
 
 source_aarch64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 sha256sums_aarch64=(
-  "bbdb0a8dcc5be21dbaecc14b7f8b87807b47dd8605ddcdc224a221f3beb1299f"
+  "0a7b58725887f4011f84fd27009561f0cba4c6a6379657d8f76d939a4ab77801"
 )
 
 package() {
