@@ -63,8 +63,8 @@ if [ -w "\$SYS_DIR" ]; then
 else
     # Copy to user directory if not already present
     if [ ! -d "\$USER_DIR" ]; then
-        mkdir -p "\$USER_DIR"
-        cp -r "\$SYS_DIR"/* "\$USER_DIR"/
+	mkdir -p "$USER_DIR"
+	cp -a "$SYS_DIR"/. "$USER_DIR"/
     fi
     cd "\$USER_DIR" || exit 1
     exec "./\$BIN_NAME" "\$@"
