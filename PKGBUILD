@@ -2,7 +2,7 @@
 
 pkgname=tofi-rs-git
 _pkgname=tofi-rs
-pkgver=r407.b931b97
+pkgver=r437.d114d7b
 pkgrel=1
 pkgdesc="A Wayland application launcher — Rust port of tofi"
 arch=('x86_64' 'aarch64')
