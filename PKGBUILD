@@ -3,7 +3,7 @@
 
 pkgname=hcc-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland Control Center — Install and manage Hyprland desktops"
 arch=('any')
 url="https://github.com/laosifu/Hyprland-Control-Center"
@@ -23,7 +23,32 @@ install=hcc.install
 package() {
     cd "$srcdir/Hyprland-Control-Center-$pkgver"
 
-    install -Dm755 bin/hcc "$pkgdir/usr/bin/hcc"
+    # Install hcc entry point with system path detection
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/hcc" << 'HCC_EOF'
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ "$(dirname "${BASH_SOURCE[0]}")" == "/usr/bin" ]]; then
+    PROJECT_ROOT="/usr/share/hcc"
+else
+    PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
+
+source "$PROJECT_ROOT/lib/bootstrap.sh"
+source "$PROJECT_ROOT/services/bootstrap.sh"
+source "$PROJECT_ROOT/modules/bootstrap.sh"
+execution_set_command_context "$@"
+source "$PROJECT_ROOT/lib/dispatcher.sh"
+
+load_config
+log_info "Starting HCC..."
+VERSION="$(<"$PROJECT_ROOT/VERSION")"
+command_context_set "$@"
+dispatch_command "$@"
+HCC_EOF
+    chmod 755 "$pkgdir/usr/bin/hcc"
 
     install -Dm755 lib/launchers/session-launcher.sh \
         "$pkgdir/usr/lib/hcc/session-launcher"
