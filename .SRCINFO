@@ -32,5 +32,6 @@ pkgname = azerothcore-wotlk-git
 
 pkgname = azerothcore-clientdata-git
 	pkgdesc = Pre-extracted client map data assets (dbc, maps, vmaps, mmaps) for AzerothCore
+	install = azerothcore-clientdata-git.install
 	arch = any
 	depends = azerothcore-wotlk-git

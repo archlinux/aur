@@ -1,0 +1,3 @@
+post_install() {
+	sudo sed -i 's#^DataDir\s*=\s*""#DataDir = "/usr/share/azerothcore/data"#' /etc/azerothcore/worldserver.conf
+}

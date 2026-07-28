@@ -178,6 +178,7 @@ package_azerothcore-clientdata-git() {
 	pkgdesc="Pre-extracted client map data assets (dbc, maps, vmaps, mmaps) for AzerothCore"
 	arch=('any')
 	depends=('azerothcore-wotlk-git')
+	install='azerothcore-clientdata-git.install'
 
 	local tmp_download="${srcdir}/runtime_assets"
 	mkdir -p "${tmp_download}"
