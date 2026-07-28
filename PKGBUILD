@@ -5,7 +5,7 @@ _pkgname=agentsview
 pkgname=${_pkgname}-bin
 pkgdesc="A local-first desktop and web application for browsing, searching, and analyzing AI agent coding sessions. Supports Claude Code, Codex, Gemini, OpenCode, Copilot and many other agents."
 
-pkgver=0.38.1
+pkgver=0.39.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('23fc78fbd73176bd9e0912ecd654cbfa4236e1d14f0dd24c909b957a51f7c4b0'
+sha256sums=('584192e035c78dd6931c61cfb271c8a6e7ee5f709b6d02bf791f456783d5a8f8'
             'ffb1006bf3c32ec8da3ad6c5f693d8516eecb355df848a694332fa13174a77d4')
-sha256sums_x86_64=('3b3f7098ab855571df8e6d6c99efdf307be3407d32197816f0c4c698fac4f997')
-sha256sums_aarch64=('aace4bea2f6b8626fb9aaecf28b4ffaf93d510550e3468231de81f741266d037')
+sha256sums_x86_64=('c71e4ed030adba6cc418e099328e3f44a4232bccc7317ccc3408182542262387')
+sha256sums_aarch64=('7e03146eafdc89732ddca8609c6ef1bb4ec1466701652a8ead49c25942f77355')
 
 
 package() {
