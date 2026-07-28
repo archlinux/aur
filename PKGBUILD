@@ -1,7 +1,7 @@
 # Maintainer: imsyy <imsyy1024@gmail.com>
 pkgname=splayer-next-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern cross-platform music player built with Electron, Vue 3, and TypeScript (unofficial build)"
 arch=('x86_64')
 url="https://splayer.imsyy.top"

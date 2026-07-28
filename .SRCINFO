@@ -1,6 +1,6 @@
 pkgbase = splayer-next-bin
 	pkgdesc = A modern cross-platform music player built with Electron, Vue 3, and TypeScript (unofficial build)
-	pkgrel = 1
+	pkgrel = 2
 	pkgurl = https://splayer.imsyy.top
 	pkgver = 1.0.0
 	arch = x86_64
