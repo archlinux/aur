@@ -2,11 +2,12 @@
 
 pkgname=pagerduty-short-circuiter
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integration of go-pagerduty and ocm-container to spawn ocm-container with automatic cluster login and other features based on PagerDuty alerts."
 arch=(x86_64)
 url="https://github.com/openshift/pagerduty-short-circuiter"
 license=('Apache-2.0')
+depends=(glibc)
 makedepends=(git go)
 _commit="abe4840436f2907e3f064ad94bcc370d01a50ac1" # 27 Feb 2023
 source=("$pkgname::git+$url#commit=$_commit")
@@ -40,5 +41,5 @@ check() {
 package() {
   cd "$pkgname"
   install -Dm755 build/kite "$pkgdir"/usr/bin/kite
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/kite/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
