@@ -1,0 +1,17 @@
+pkgbase = patricia
+	pkgdesc = Super aggressive chess engine
+	pkgver = 5
+	pkgrel = 1
+	url = https://github.com/Adam-Kulju/Patricia
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = clang
+	makedepends = make
+	depends = glibc
+	depends = gcc-libs
+	source = patricia-5.tar.gz::https://github.com/Adam-Kulju/Patricia/archive/refs/tags/5.tar.gz
+	b2sums = a71c61c4034269a82b6b58b87501ae662f40d13a327fcf1fa9360bc63ff7dee926184068dacfeb11de565ebaefe6db131c0300d469d4ee4d9dd600090d024d7f
+
+pkgname = patricia
