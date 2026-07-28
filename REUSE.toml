@@ -17,6 +17,12 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "other",
+    "system-auth",
+    "system-local-login",
+    "system-login",
+    "system-remote-login",
+    "system-services",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

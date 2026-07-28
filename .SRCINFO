@@ -1,13 +1,13 @@
 pkgbase = pambase-selinux
 	pkgdesc = SELinux aware base PAM configuration for services
-	pkgver = 20250719
+	pkgver = 20260616
 	pkgrel = 1
 	url = https://www.archlinux.org
 	arch = any
 	groups = selinux
 	license = GPL-3.0-or-later
-	provides = pambase=20250719-1
-	provides = selinux-pambase=20250719-1
+	provides = pambase=20260616-1
+	provides = selinux-pambase=20260616-1
 	conflicts = pambase
 	conflicts = selinux-pambase
 	conflicts = pam-selinux<1.4.0

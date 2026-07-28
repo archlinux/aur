@@ -8,7 +8,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pambase-selinux
-pkgver=20250719
+pkgver=20260616
 pkgrel=1
 pkgdesc="SELinux aware base PAM configuration for services"
 arch=(any)
