@@ -1,6 +1,6 @@
 pkgbase = jre17-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 17.0.19
+	pkgver = 17.0.20.u8
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = jre17-zulu-bin.install
@@ -10,27 +10,36 @@ pkgbase = jre17-zulu-bin
 	license = custom
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	depends = nss
-	depends = libnet
+	depends = freetype2
 	depends = glibc
-	depends = gcc-libs
+	depends = harfbuzz
+	depends = lcms2
+	depends = libgcc
+	depends = libjpeg-turbo
+	depends = libnet
+	depends = libstdc++
+	depends = nss
+	depends = giflib
 	depends = libpng
-	conflicts = jdk17-openjdk
-	conflicts = jre17-openjdk
-	conflicts = jre17-openjdk-headless
-	conflicts = zulu-17-bin
-	conflicts = zulu-17-fx-bin
-	conflicts = zulu17-fx-bin
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-openjdk=17
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	provides = jre17-openjdk=17.0.19-1
-	provides = jre17-openjdk-headless=17.0.19-1
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.66.19-ca-jre17.0.19-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 2921ec4927e3ba5bd970bea3257f236b4235af6640193e999d1a33cba163d6f8
-	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.19.66.19-ca-jre17.0.19-linux_i686.tar.gz
-	sha256sums_i686 = 01988951ede56bb3733258de0494df3e5269d1a0fb540aaa60056f16c25d92b8
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.66.19-ca-jre17.0.19-linux_x64.tar.gz
-	sha256sums_x86_64 = c72c1967afec8ca4b66747875468178ffa45cd8133a5ab7823650a15a01db204
+	provides = jre17-openjdk=17.0.20.u8-1
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	provides = jre17-openjdk-headless=17.0.20.u8-1
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_aarch64.tar.gz
+	source_aarch64 = freedesktop-java.desktop
+	sha256sums_aarch64 = dc2004d03e7a8dc82940a35433f1337303dafdbd34a06a030ce957ba38bb3a8a
+	sha256sums_aarch64 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_i686.tar.gz
+	source_i686 = freedesktop-java.desktop
+	sha256sums_i686 = 946b02fe10d6b9832aac69a7ec6670574b4c6e5c9d2e87b9b16c334922981260
+	sha256sums_i686 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_x64.tar.gz
+	source_x86_64 = freedesktop-java.desktop
+	sha256sums_x86_64 = 96c6a5cbc4d0c582bb126d41e280b254db0332a93ed37ae2219debfbe4d3e73f
+	sha256sums_x86_64 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
+
 pkgname = jre17-zulu-bin
