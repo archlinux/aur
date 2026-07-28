@@ -2,7 +2,7 @@
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
 pkgname=("librefang-git" "librefang-desktop-git" "librefang-whatsapp-gateway-git")
-pkgver=2026.6.29.r9.g83ee2627b
+pkgver=2026.7.27.r13.g1b9518fd1
 pkgrel=1
 pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version with patches for local STT,TTS,IMAGE support) '
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ sha256sums=('SKIP'
             'cf026330b3d4c3c708bd079b15401731e1afef4f3e780c4ad286ad0d961a6d5c'
             'a640db0197d001c5ae9348d57cda8092e2c8170fa27ced98d5546557fadb6d17'
             '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975'
-            '0e4ccc9ec9d34b0c765f1fac33a8e22949ef19fc05148fe18c1dad78718dcbc4'
-            '8d8e5722dcdbe7821e9375018076cebfcc5d30a7b8e646623714190dd0d1383e'
-            '6226943a917e31ea998fdf9626a8d67aff17541491b62c58ce12c4f679c6d187'
+            'aa2df1c379d02a52bf4072f3de2f6c3be0512fc3efcbb141320ba19d8fc3ca46'
+            'c4fccf730140e3cbe1c694b6f4f3b94c47b998ba76262ce50c63f578822d5918'
+            '673dc14c22aa89457a2e1684bf075b7e0ae5ecc520830529b6edcfac1e68246b'
             '6fa3cb22d68b37cdc9605cc5c02c9095ea4ce47466e415c01dc54c7f7e81bb6a')
 
 pkgver() {

@@ -1,18 +1,18 @@
 diff --git a/crates/librefang-runtime-media/src/media_understanding.rs b/crates/librefang-runtime-media/src/media_understanding.rs
-index da809fd77..887275d9a 100644
+index 43a9a9a4..fbb83406 100644
 --- a/crates/librefang-runtime-media/src/media_understanding.rs
 +++ b/crates/librefang-runtime-media/src/media_understanding.rs
-@@ -257,7 +257,8 @@ impl MediaEngine {
-         let transcription = match provider {
-             // Whisper-compatible providers (OpenAI multipart protocol)
-             "groq" | "openai" | "minimax" | "fireworks" | "together" | "siliconflow" => {
--                let (api_url, api_key) = whisper_provider_config(provider)?;
-+                let custom_url = self.config.audio_base_url.as_deref();
-+                let (api_url, api_key) = whisper_provider_config(provider, custom_url)?;
-                 whisper_transcribe(&api_url, &api_key, model, audio_bytes, &filename, &mime).await?
-             }
-             // Gemini — multimodal content generation with audio input
-@@ -626,32 +627,44 @@ async fn gemini_describe_image(
+@@ -310,7 +310,8 @@ impl MediaEngine {
+             match provider {
+                 // Whisper-compatible providers (OpenAI multipart protocol)
+                 "groq" | "openai" | "minimax" | "fireworks" | "together" | "siliconflow" => {
+-                    let (api_url, api_key) = whisper_provider_config(provider)?;
++                    let custom_url = self.config.audio_base_url.as_deref();
++                    let (api_url, api_key) = whisper_provider_config(provider, custom_url)?;
+                     whisper_transcribe(&api_url, &api_key, model, audio_bytes, &filename, &mime)
+                         .await
+                 }
+@@ -692,32 +693,44 @@ async fn gemini_describe_image(
  // ── STT provider helpers ──────────────────────────────────────────────
  
  /// Resolve Whisper-compatible API URL and key for a provider.
@@ -65,7 +65,7 @@ index da809fd77..887275d9a 100644
          )),
          other => Err(format!("Unknown Whisper-compatible provider: {other}")),
 diff --git a/crates/librefang-types/src/media.rs b/crates/librefang-types/src/media.rs
-index db7fb8411..4223a6058 100644
+index bf3387c1..7f86b88f 100644
 --- a/crates/librefang-types/src/media.rs
 +++ b/crates/librefang-types/src/media.rs
 @@ -124,6 +124,8 @@ pub struct MediaConfig {

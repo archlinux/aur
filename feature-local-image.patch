@@ -1,18 +1,18 @@
 diff --git a/crates/librefang-runtime-media/src/media_understanding.rs b/crates/librefang-runtime-media/src/media_understanding.rs
-index 887275d9a..321ef66ef 100644
+index fbb83406..e5579202 100644
 --- a/crates/librefang-runtime-media/src/media_understanding.rs
 +++ b/crates/librefang-runtime-media/src/media_understanding.rs
-@@ -113,7 +113,8 @@ impl MediaEngine {
-         let description = match provider {
-             "anthropic" => anthropic_describe_image(model, &image_bytes, mime_type).await?,
-             "openai" | "groq" => {
--                let (api_url, api_key) = openai_vision_provider_config(provider)?;
-+                let custom_url = self.config.image_base_url.as_deref();
-+                let (api_url, api_key) = openai_vision_provider_config(provider, custom_url)?;
-                 openai_describe_image(&api_url, &api_key, model, &image_bytes, mime_type).await?
-             }
-             "gemini" => gemini_describe_image(model, &image_bytes, mime_type).await?,
-@@ -394,14 +395,21 @@ fn detect_vision_provider() -> Option<&'static str> {
+@@ -151,7 +151,8 @@ impl MediaEngine {
+             match provider {
+                 "anthropic" => anthropic_describe_image(model, &image_bytes, mime_type).await,
+                 "openai" | "groq" => {
+-                    let (api_url, api_key) = openai_vision_provider_config(provider)?;
++                    let custom_url = self.config.image_base_url.as_deref();
++                    let (api_url, api_key) = openai_vision_provider_config(provider, custom_url)?;
+                     openai_describe_image(&api_url, &api_key, model, &image_bytes, mime_type).await
+                 }
+                 "gemini" => gemini_describe_image(model, &image_bytes, mime_type).await,
+@@ -460,14 +461,21 @@ fn detect_vision_provider() -> Option<&'static str> {
  // ── Vision provider helpers ───────────────────────────────────────────────
  
  /// Resolve OpenAI-compatible vision API URL and key for a provider.
@@ -37,7 +37,7 @@ index 887275d9a..321ef66ef 100644
              std::env::var("GROQ_API_KEY").map_err(|_| "GROQ_API_KEY not set")?,
          )),
          other => Err(format!(
-@@ -1385,19 +1393,35 @@ mod tests {
+@@ -1500,19 +1508,35 @@ mod tests {
      #[test]
      fn openai_vision_provider_config_resolves_known_providers() {
          // With no env set these return Err("not set"), but the URL/structure is stable
@@ -77,7 +77,7 @@ index 887275d9a..321ef66ef 100644
  
      #[test]
 diff --git a/crates/librefang-types/src/media.rs b/crates/librefang-types/src/media.rs
-index 4223a6058..c58d2983d 100644
+index 7f86b88f..ee149af5 100644
 --- a/crates/librefang-types/src/media.rs
 +++ b/crates/librefang-types/src/media.rs
 @@ -117,6 +117,8 @@ pub struct MediaConfig {
@@ -97,7 +97,7 @@ index 4223a6058..c58d2983d 100644
              audio_provider: None,
              audio_model: None,
              audio_base_url: None,
-@@ -792,6 +795,7 @@ mod tests {
+@@ -930,6 +933,7 @@ mod tests {
          assert_eq!(config.max_concurrency, 2);
          assert!(config.image_provider.is_none());
          assert!(config.image_model.is_none());
