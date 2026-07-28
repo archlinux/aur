@@ -1,16 +1,16 @@
 pkgbase = bomexpo-bin
 	pkgdesc = KiCad fabrication tool: assign LCSC parts and export a JLCPCB order from a .kicad_pcb
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/antaresrvish/bomexpo
 	license = MIT
 	conflicts = bomexpo
 	provides = bomexpo
 	arch = aarch64
-	source_aarch64 = https://github.com/antaresrvish/bomexpo/releases/download/v0.1.2/bomexpo_0.1.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = c2fdb801d3e84337ad25b41a6ab8c5227944e23fa830305e8275c107f9fd2057
+	source_aarch64 = https://github.com/antaresrvish/bomexpo/releases/download/v0.1.3/bomexpo_0.1.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 60376f9e38c0b965ac79da33afc80241a6e01205a1e23b0ba2efb9bce1415ff8
 	arch = x86_64
-	source_x86_64 = https://github.com/antaresrvish/bomexpo/releases/download/v0.1.2/bomexpo_0.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 80a28469d59a012394511d93c8f0005ef79e53f5300175108e03fb412df0ef5f
+	source_x86_64 = https://github.com/antaresrvish/bomexpo/releases/download/v0.1.3/bomexpo_0.1.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 47bef220f232a6aac1b765d9f9effd15f4c01a82ce47a7b8c260ff5fc6c9f8b7
 	
 pkgname = bomexpo-bin
