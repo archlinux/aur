@@ -4,7 +4,7 @@
 
 pkgname=python-loro
 _name=${pkgname#python-}
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Python bindings for Loro CRDT"
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/loro-dev/loro-py/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d41bfe37520be6ff7b4d3124ceea0806b60fa3d0283c17eedbc6a41e885c8a3107635cba164ab753bef253d0fa21455ac903adde85ada64eaa0e6fc4d158efa1')
+b2sums=('d8a4551e4a87bf00ef90041756d8b1650d668f983b8794e218a215313936b41c2bfbb9ee3841c951be3e18ffe3daf8ac580be46816dd72023278ffef50d8d5a1')
 
 
 build() {
