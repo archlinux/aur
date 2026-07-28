@@ -1177,9 +1177,11 @@ def run_qt_app(engine):
             self.seq_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
             self.seq_table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
 
+            self.seq_table.setMinimumHeight(300)
+            
             # Direct Table Cell Editing
             self.seq_table.itemChanged.connect(self.on_table_item_changed)
-            seq_layout.addWidget(self.seq_table)
+            seq_layout.addWidget(self.seq_table, 1) # 1 adds stretch factor so table takes all available space
 
             # Step Manual Editor / Creator Box
             creator_box = QGroupBox("Manual Step Editor / Adder")
