@@ -1,0 +1,19 @@
+pkgbase = ear
+	pkgdesc = many text sources, one output bus: your ears — local neural TTS reader (CLI + GUI)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/timbeach/ear
+	arch = x86_64
+	license = MIT
+	license = OFL-1.1
+	makedepends = cargo
+	depends = mpv
+	depends = ffmpeg
+	depends = python
+	optdepends = poppler: PDF ingestion (pdftotext)
+	optdepends = piper-tts-bin: fast local TTS tier (or: pipx install piper-tts)
+	options = !lto
+	source = ear-0.2.0.tar.gz::https://github.com/timbeach/ear/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = d5ed82115ca9c755c3a14e7b201c4dcd7054aa98347d05be4f80b852ca6d139a
+
+pkgname = ear
