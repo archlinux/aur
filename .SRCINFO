@@ -1,14 +1,14 @@
 pkgbase = bilibili-bin
 	pkgdesc = Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。
 	pkgver = 1.17.9_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	depends = electron43-bin
+	depends = electron43
 	depends = libappindicator
 	depends = libinput
 	provides = bilibili=1.17.9_2

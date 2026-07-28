@@ -13,7 +13,7 @@ _subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'libappindicator'
     'libinput'
 )
