@@ -50,6 +50,10 @@ dispatch_command "$@"
 HCC_EOF
     chmod 755 "$pkgdir/usr/bin/hcc"
 
+    # Fix LOG_DIR to use user-writable path
+    sed -i 's|LOG_DIR="\$PROJECT_ROOT/logs"|LOG_DIR="${HCC_LOG_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/hcc/logs}"|' \
+        "$pkgdir/usr/share/hcc/lib/logger.sh"
+
     install -Dm755 lib/launchers/session-launcher.sh \
         "$pkgdir/usr/lib/hcc/session-launcher"
 
