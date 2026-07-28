@@ -21,7 +21,7 @@ sha256sums=(
 )
 
 prepare() {
-  7z x $pkgname-v$pkgver.7z -o$pkgname-v$pkgver > /dev/null
+  7z x $pkgname-v$pkgver.7z -o$pkgname-v$pkgver >/dev/null
 }
 
 package() {
