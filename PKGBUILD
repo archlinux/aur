@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=update-notifier-qt
-pkgver=26.05
+pkgver=26.07
 pkgrel=1
 pkgdesc="Qt-based update notifier tray for Arch Linux"
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=("GPL")
 depends=("qt6-base" "qt6-svg" "dbus" "polkit" "pacman")
 makedepends=("cmake" "ninja" "qt6-tools")
 install=update-notifier-qt.install
-source=("https://github.com/AdrianTM/update-notifier-qt/archive/refs/tags/26.05.tar.gz")
-sha256sums=('0b231dd04aa4b88fdf3f3f638db5e9fbb79bc1952e39dcd1600b7de97216ed49')
+source=("https://github.com/AdrianTM/update-notifier-qt/archive/refs/tags/26.07.tar.gz")
+sha256sums=('7e8382903538728c8b3dc7684b640fac278814a2eefd9fa201caa6d226a788cd')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
