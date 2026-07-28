@@ -1,0 +1,22 @@
+diff --git a/tools/gfx4snes/src/gradients.c b/tools/gfx4snes/src/gradients.c
+index 9e6acbb..d956300 100644
+--- a/tools/gfx4snes/src/gradients.c
++++ b/tools/gfx4snes/src/gradients.c
+@@ -165,7 +165,7 @@ void gradient_save (const char *filename, bool isquiet)
+ 		if(row_len>=3)
+ 		{
+ 			strcat(strval,"\n");
+-			fprintf(fp,strval);
++			fputs(strval,fp);
+ 			row_len=0;
+ 		}
+ 
+@@ -187,7 +187,7 @@ void gradient_save (const char *filename, bool isquiet)
+  
+ 	// write end of data
+ 	strcat(strval,"\n");
+-	fprintf(fp,strval);
++	fputs(strval,fp);
+     fprintf(fp, " .db $00\n\t");
+ 
+ 	// close file and leave

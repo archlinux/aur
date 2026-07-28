@@ -1,17 +1,17 @@
 diff --git a/devkitsnes/snes_rules b/devkitsnes/snes_rules
-index db35e05..1b34950 100644
+index f60298c..db61067 100644
 --- a/devkitsnes/snes_rules
 +++ b/devkitsnes/snes_rules
-@@ -78,7 +78,7 @@ export CTF		:=	$(PVSNESLIB_HOME)/devkitsnes/tools/constify
+@@ -110,7 +110,7 @@ export OPT		:=	$(PVSNESLIB_HOME)/devkitsnes/tools/816-opt
  #---------------------------------------------------------------------------------
  # Add default flag for compiling
  #---------------------------------------------------------------------------------
 -CFLAGS += -I$(PVSNESLIB_HOME)/pvsneslib/include -I$(PVSNESLIB_HOME)/devkitsnes/include -I$(CURDIR)
 +TCC_CFLAGS += -I$(PVSNESLIB_HOME)/pvsneslib/include -I$(PVSNESLIB_HOME)/devkitsnes/include -I$(CURDIR)
  
- 
- SFILES=
-@@ -117,15 +117,15 @@ export OFILES	:=	$(BINFILES:.bin=.obj) $(CFILES:.c=.obj) $(SFILES:.asm=.obj)
+ # -d switch disable WLA's ability to calculate A-B where A and B are labels.
+ # if you remove it, you will have some updates to do at least in crt0_snes.asm
+@@ -164,15 +164,15 @@ BUILD_LOG := $(ROMNAME).log
  	@echo Compiling to .ps ... $(notdir $<)
  ifeq ($(HIROM),1)
  ifeq ($(FASTROM),1)
@@ -32,10 +32,10 @@ index db35e05..1b34950 100644
  endif
  
 diff --git a/pvsneslib/source/Makefile b/pvsneslib/source/Makefile
-index fac1c8d..a171a87 100644
+index 313119d..f1a07a4 100644
 --- a/pvsneslib/source/Makefile
 +++ b/pvsneslib/source/Makefile
-@@ -13,7 +13,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
+@@ -16,7 +16,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
  #---------------------------------------------------------------------------------
  C_SRC	:=
  
@@ -44,7 +44,7 @@ index fac1c8d..a171a87 100644
  		-I${PVSNESLIB_HOME}/pvsneslib/include \
  		-I${PVSNESLIB_HOME}/pvsneslib/source
  
-@@ -26,15 +26,15 @@ export SNESOBJS = crt0_snes.obj libm.obj libtcc.obj libc.obj
+@@ -30,15 +30,15 @@ export PVSSPCDIR = ${PVSNESLIB_HOME}/pvsneslib/snesmod
  
  ifeq ($(HIROM),1)
  ifeq ($(FASTROM),1)
@@ -63,14 +63,14 @@ index fac1c8d..a171a87 100644
 +	$(CC) $(TCC_CFLAGS) -Wall -c $< -o $@
  endif
  endif
- 	sed -i 's/.include "hdr.asm"//' $@
-diff --git a/snes-examples/maps/mapbuffer/Makefile b/snes-examples/maps/mapbuffer/Makefile
-index b6d29f0..2c5e1ce 100644
---- a/snes-examples/maps/mapbuffer/Makefile
-+++ b/snes-examples/maps/mapbuffer/Makefile
-@@ -9,7 +9,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
- MAPDIR := ./maps/$(MAPDIR)
- GFXDIR := ./gfx/$(GFXDIR)
+ 	@sed 's/.include "hdr.asm"//' $@ > $@.tmp && mv $@.tmp $@
+diff --git a/snes-examples/thirdparty/maps/mapbuffer/Makefile b/snes-examples/thirdparty/maps/mapbuffer/Makefile
+index efe5e83..e9ae2d5 100644
+--- a/snes-examples/thirdparty/maps/mapbuffer/Makefile
++++ b/snes-examples/thirdparty/maps/mapbuffer/Makefile
+@@ -12,7 +12,7 @@ include ${PVSNESLIB_HOME}/devkitsnes/snes_rules
+ MAPDIR := maps/$(MAPDIR)
+ GFXDIR := gfx/$(GFXDIR)
  
 -CFLAGS += -I$(CURDIR)/maps $\
 +TCC_CFLAGS += -I$(CURDIR)/maps $\

@@ -1,6 +1,6 @@
 pkgbase = pvsneslib-git
 	pkgdesc = A free/libre toolchain to program the SNES using assembler and C
-	pkgver = r1776.f63310c2
+	pkgver = r2012.1fab4b2a
 	pkgrel = 1
 	url = https://github.com/alekmaul/pvsneslib
 	arch = x86_64
@@ -16,9 +16,11 @@ pkgbase = pvsneslib-git
 	source = pvsneslib.sh
 	source = flag_specification_improvement.patch
 	source = tcc_cflags_separation.patch
+	source = gfx4snes_fprintf_format_security.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = eb64a9c09c62dc51c449c4a1fbfb1a085c94a41fc8349bfc3d3f52e15a271ed2
+	sha256sums = 3974962cb71093db79bd48f374dc7f0d114e11f6495cbae896e21ddd03fb1fb2
+	sha256sums = c390aacd307129e4e512d0a38e17805639caeff683b7bde6d66daa70ea2fd3b6
+	sha256sums = a6d8799dea5ea31bfbb98e55e2b32d508ae17e3dcc26fe00c0d8c23be38d64e3
 
 pkgname = pvsneslib-git

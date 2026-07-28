@@ -1,5 +1,5 @@
 diff --git a/tools/816-opt/Makefile b/tools/816-opt/Makefile
-index fad634a..f7bf4b7 100644
+index 224af18..a070eb9 100644
 --- a/tools/816-opt/Makefile
 +++ b/tools/816-opt/Makefile
 @@ -4,19 +4,20 @@ DATESTRING := $(shell date +%Y%m%d)
@@ -107,7 +107,7 @@ index acec44a..ca66d23 100644
  
  # Link the object files to create the executable
 diff --git a/tools/gfx4snes/Makefile b/tools/gfx4snes/Makefile
-index dc8f3cd..a9767fd 100644
+index a644d81..4bde83d 100644
 --- a/tools/gfx4snes/Makefile
 +++ b/tools/gfx4snes/Makefile
 @@ -4,16 +4,17 @@ DATESTRING := $(shell date +%Y%m%d)
@@ -123,32 +123,29 @@ index dc8f3cd..a9767fd 100644
  	EXT     :=
  else ifeq ($(OS),Windows_NT)
 -    CFLAGS  += -static
-+    override CFLAGS += -static
++    override CFLAGS  += -static
  	EXT     :=.exe
  else
 -	CFLAGS 	+= -static
-+	override CFLAGS += -static
++	override CFLAGS 	+= -static
  	EXT     :=
  endif
  
 diff --git a/tools/smconv/Makefile b/tools/smconv/Makefile
-index 610e09a..be70f52 100644
+index 610e09a..8ff891e 100644
 --- a/tools/smconv/Makefile
 +++ b/tools/smconv/Makefile
-@@ -4,9 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+@@ -4,7 +4,8 @@ DATESTRING := $(shell date +%Y%m%d)
  
  # Define compilers and flags
  CP       := g++
 -CFLAGS   := -O2 -Wall -Wno-unused-result -fpermissive -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
--# Flags for both C and C++ files
--CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions  # Flags only for C++ files
 +CFLAGS   ?= -O2 -Wall -Wno-unused-result -fpermissive
 +override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
-+CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions
+ # Flags for both C and C++ files
+ CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions  # Flags only for C++ files
  
- # Define sources, objects and executable name
- SOURCES := $(wildcard *.cpp)
-@@ -26,7 +26,7 @@ all: $(EXE)$(EXT)
+@@ -26,7 +27,7 @@ all: $(EXE)$(EXT)
  # Define the libraries to be used depending on the OS
  UNAME := $(shell uname -s)
  ifneq ($(UNAME), Darwin)
@@ -229,10 +226,10 @@ index 4f0cffa..d125f16 100644
  
  # Define the rule to link the executable from the object files
 diff --git a/tools/tmx2snes/Makefile b/tools/tmx2snes/Makefile
-index f5ab6d5..cdaa3dd 100644
+index 0ac20bf..59619eb 100644
 --- a/tools/tmx2snes/Makefile
 +++ b/tools/tmx2snes/Makefile
-@@ -4,7 +4,9 @@ DATESTRING := $(shell date +%Y%m%d)
+@@ -4,16 +4,18 @@ DATESTRING := $(shell date +%Y%m%d)
  
  # Set the C compiler to use and the compiler flags
  CC     := gcc
@@ -241,14 +238,16 @@ index f5ab6d5..cdaa3dd 100644
 +override CFLAGS += -Wno-implicit-function-declaration
 +override CFLAGS += -D__BUILD_DATE="\"$(DATESTRING)\"" -D__BUILD_VERSION="\"$(VERSION)\""
  
- # Identify the source files and object files to be used in the build
- SOURCES := $(wildcard *.c)
-@@ -25,7 +27,7 @@ all: $(EXE)$(EXT)
- # Define the libraries to be used depending on the OS
- UNAME := $(shell uname -s)
- ifneq ($(UNAME), Darwin)
--	CFLAGS += -static
-+	override CFLAGS += -static
+ # Define the libraries and compilation flags to be used depending on the OS.
+ ifeq ($(shell uname),Darwin)
+ 	EXT     :=
+ else ifeq ($(OS),Windows_NT)
+-    CFLAGS  += -static
++    override CFLAGS  += -static
+ 	EXT     :=.exe
+ else
+-	CFLAGS 	+= -static
++	override CFLAGS 	+= -static
+ 	EXT     :=
  endif
  
- # Define the rule to compile object files from source files
