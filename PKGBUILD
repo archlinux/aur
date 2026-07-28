@@ -1,8 +1,8 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.22.0
-pkgrel=2
+pkgver=2.23.1
+pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -64,7 +64,7 @@ source=(
   "git+${url}.git#tag=v${pkgver}"
   "vibe_reduce_relayouts.patch::https://github.com/mistralai/mistral-vibe/compare/main...ikicic:mistral-vibe:reduce_relayouts.patch"
   "lower_hatchling_version_requirements.patch")
-sha256sums=('1b37955c2cd761d90542e16ca851b802c74585308814e3cbd500620396f64f23'
+sha256sums=('c79676cde64aec0d071a30e70363ebb3c469f00f7144b2d8651f0ca1fbc4d70b'
             '126311122dfefdcf235f41a209d2606000741d1d1b7392e8264c74f55cd1d0d3'
             'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014')
 
