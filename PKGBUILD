@@ -12,7 +12,7 @@
 # FUSE at runtime and its desktop entry and icons go where the rest of the
 # system looks for them.
 pkgname=sqlnow-desktop-bin
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Local SQL viewer for files and databases, in a native window"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ provides=('sqlnow-desktop')
 conflicts=('sqlnow-desktop')
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/v$pkgver/sqlnow-desktop-linux-x86_64.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/v$pkgver/sqlnow-desktop-linux-arm64.AppImage")
-sha256sums_x86_64=('8053b0341c0cb38e9a829b4ae9c55984639d7caa1d1c62ede45b28621f9c321a')
-sha256sums_aarch64=('b572559b7f6971413ae8dc53ba82297f59b3863de5ff98f5009c1eabd6b066c7')
+sha256sums_x86_64=('34d6ca40d0a9ad7814a8bfbc81989dcda48043291740a8378eedbda681a5dd72')
+sha256sums_aarch64=('bc1b9ab95dbd1e892012d62ae2cdddda9ba700bc19003fb981d9e82bdfb1ec7b')
 
 _image="$pkgname-$pkgver-$CARCH.AppImage"
 
