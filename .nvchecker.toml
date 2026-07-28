@@ -1,0 +1,5 @@
+[keepkit-bin]
+source = "github"
+github = "stanlyzoolo/keepkit"
+use_latest_release = true
+prefix = "v"
