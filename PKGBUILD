@@ -8,14 +8,14 @@
 pkgname=pekwm-git
 _pkgname=pekwm
 epoch=1
-pkgver=0.2.0.r57.gac6a637
+pkgver=0.3.0.r235.g1157647
 pkgrel=1
 pkgdesc='Tabbed X11 window manager'
 arch=(x86_64 i686)
 license=(GPL)
 url='https://github.com/pekdon/pekwm'
 makedepends=(cmake gendesk git ninja)
-depends=(libjpeg libpng libxft libxinerama libxpm libxrandr bash)
+depends=(libjpeg-turbo libpng libxft libxinerama libxpm libxrandr bash)
 optdepends=('lxappearance: feature-rich GTK+ theme switcher'
             'nitrogen: background browser and setter'
             'tint2: basic, good-looking task manager')
@@ -48,8 +48,8 @@ prepare() {
   gendesk -f -n --pkgname $_pkgname --pkgdesc "$pkgdesc" --name PekWM
   gendesk -f -n -wm --pkgname ${_pkgname}_kdm --exec $_pkgname --name PekWM
   # Harbour without border
-  cd $pkgname
-  patch -p1 -i "$srcdir"/harbour-no-border.patch
+  # cd $pkgname
+  # patch -p1 -i "$srcdir"/harbour-no-border.patch
 }
 
 build() {
