@@ -1,6 +1,6 @@
 pkgbase = votrim-bin
 	pkgdesc = Native video trimmer and encoder with a multi-segment timeline and live mpv preview
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dowoge/votrim
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = votrim-bin
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
-	provides = votrim=0.1.0
+	provides = votrim=0.2.0
 	conflicts = votrim
 	options = !strip
 	options = !debug
-	source = votrim-0.1.0.tar.gz::https://github.com/dowoge/votrim/releases/download/v0.1.0/votrim-0.1.0-x86_64.tar.gz
-	sha256sums = 80279d746946736478b28cf086f813731e56dd308cded0b5c53749d436fb5f7e
+	source = votrim-0.2.0.tar.gz::https://github.com/dowoge/votrim/releases/download/v0.2.0/votrim-0.2.0-x86_64.tar.gz
+	sha256sums = cb973545cce7c88cc62bf3286ac9edbb18a8135d6eb2947b17cdd79e6188a164
 
 pkgname = votrim-bin
