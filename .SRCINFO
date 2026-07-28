@@ -1,6 +1,6 @@
 pkgbase = pulse-remote-bin
 	pkgdesc = Audio mixer for PulseAudio and PipeWire — local desktop app and web UI accessible from any device on your network (pre-built binary)
-	pkgver = 0.11.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/undg/pulse-remote
 	install = pulse-remote-bin.install
@@ -9,7 +9,7 @@ pkgbase = pulse-remote-bin
 	depends = libpulse
 	depends = electron
 	options = !debug
-	source = pulse-remote-0.11.9-Linux_x86_64.tar.gz::https://github.com/undg/pulse-remote/releases/download/v0.11.9/pulse-remote_0.11.9_Linux_x86_64.tar.gz
+	source = pulse-remote-1.0.0-Linux_x86_64.tar.gz::https://github.com/undg/pulse-remote/releases/download/v1.0.0/pulse-remote_1.0.0_Linux_x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = pulse-remote-bin
