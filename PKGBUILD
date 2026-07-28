@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("$url/archive/v$pkgver.tar.gz"
         "snapcap-wayland.desktop")
-sha256sums=('66ec050fb6ab7a4aa16d28709d7095cd31adb4156cbc612808618e242d0f7d40'
+sha256sums=('9747c2da4f0a9fdc0f6dde4e4f29133933a11680d34e30709426ad15cf6240ea'
             '6fcb9d9976beeb4bf24ff0f12a424c4d6dc7d42ac01c2a30d11e24003cde5d7f')
 
 build() {
