@@ -1,17 +1,17 @@
 pkgbase = novafetch-git
 	pkgdesc = Simple tool written in Rust to get information about your pc
-	pkgver = 0.1.1
+	pkgver = 0.4.0.r0.g5e8a6ec
 	pkgrel = 1
-	url = https://github.com/UnversedBlood/novafetch
+	url = https://github.com/victorjdg/novafetch
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
-	makedepends = make
+	depends = libgcc
 	provides = novafetch
 	conflicts = novafetch
-	source = git+https://github.com/UnversedBlood/novafetch.git
-	md5sums = SKIP
+	options = !lto
+	source = novafetch::git+https://github.com/victorjdg/novafetch.git
+	sha256sums = SKIP
 
 pkgname = novafetch-git
-
