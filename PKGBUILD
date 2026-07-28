@@ -81,10 +81,19 @@ build() {
     export CARGO_PROFILE_RELEASE_LTO=false
     cargo build --frozen --release --bin librefang --bin librefang-desktop
 
-    # Build Node.js whatsapp-gateway
+    # Build Node.js whatsapp-gateway.
+    # baileys depends on libsignal from git. npm >= 12 defaults allow-git to
+    # "none" and refuses to fetch it; --allow-git=root is not enough because
+    # libsignal is transitive, not in the gateway's own package.json. The
+    # lockfile also resolves it over ssh, which has no credentials here, so
+    # rewrite ssh to https (HOME is confined to ${srcdir}/.home above).
     local _gwdir="${srcdir}/${pkgbase}/packages/whatsapp-gateway"
     cd "${_gwdir}"
-    npm install --ignore-scripts --omit=dev --legacy-peer-deps
+    # makepkg pins GIT_CONFIG_GLOBAL to /dev/null, so redirect it at a writable
+    # path before configuring the rewrite.
+    export GIT_CONFIG_GLOBAL="${srcdir}/.home/.gitconfig"
+    git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+    npm install --ignore-scripts --omit=dev --legacy-peer-deps --allow-git=all
     # Copy system node-addon-api for compiling sharp/better-sqlite3 if needed
     cp -r /usr/lib/node_modules/node-addon-api "${_gwdir}/node_modules/node-addon-api"
 
