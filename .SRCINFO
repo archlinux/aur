@@ -1,6 +1,7 @@
 pkgbase = nevi
+	pkgdesc = Fast terminal editor inspired by Neovim and Zed, written in Rust
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthonyamaro15/nevi
 	arch = x86_64
 	license = MIT
