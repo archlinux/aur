@@ -1,14 +1,14 @@
 pkgbase = timr-cli
 	pkgdesc = A simple cli timer
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://devan.gg/timr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = timr-linux-amd64-0.4.1.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v0.4.1/timr-linux-amd64.tar.gz
-	sha256sums_x86_64 = 9a8082354dd65e6e169b7a7f6e69fba7bedfc70e9acd857684395d87e7f354e0
-	source_aarch64 = timr-linux-arm64-0.4.1.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v0.4.1/timr-linux-arm64.tar.gz
-	sha256sums_aarch64 = a0de59d80a22aa9d4e608a4a012f742e19d0a59d779bd841080ad01ea9f81ddc
+	source_x86_64 = timr-linux-amd64-0.4.2.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v0.4.2/timr-linux-amd64.tar.gz
+	sha256sums_x86_64 = 037879a1bb6ac5eeee818621e1ccac35b26e280194ada6ba97f57fbefcc2126e
+	source_aarch64 = timr-linux-arm64-0.4.2.tar.gz::https://github.com/imdevan/timr-cli/releases/download/v0.4.2/timr-linux-arm64.tar.gz
+	sha256sums_aarch64 = 01445f46983ddfff029f51f97f1144ec2c5d1d686d4dd2b4aa9e4a6882dd222d
 
 pkgname = timr-cli
