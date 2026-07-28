@@ -1,6 +1,6 @@
 pkgbase = kilnmud
 	pkgdesc = Cross-platform MUD client built on Tauri 2
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/SeanStoves/KilnMUD-Releases
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kilnmud
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = https://github.com/SeanStoves/KilnMUD-Releases/releases/download/v0.35.0/KilnMUD_0.35.0_amd64.deb
-	sha256sums = ef6954b951735cfce8af5c5c46a8b598da8057866aa876b0d48683c723a64025
+	source = https://github.com/SeanStoves/KilnMUD-Releases/releases/download/v0.36.0/KilnMUD_0.36.0_amd64.deb
+	sha256sums = bea489ef263120169510d6532087909e8bb50a3edcca9a240982080984fe3b9a
 
 pkgname = kilnmud
