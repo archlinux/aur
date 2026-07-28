@@ -1,8 +1,8 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _plug=julek
 pkgname=vapoursynth-plugin-$_plug-git
-pkgver=r3.3.7674578
+pkgver=r3.r3.7674578
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(
   vapoursynth
   brotli
   gperftools
-  )
+)
 makedepends=(
   git
   cmake
@@ -42,8 +42,8 @@ sha256sums=(
 )
 
 pkgver() {
-  cd $_plug
-  git describe --tags --long | tr - . | tr -d g
+  git -C $_plug describe --long --tags |
+    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/.r\1.\2/; s/-/./g'
 }
 
 prepare() {

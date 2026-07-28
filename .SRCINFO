@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-julek-git
 	pkgdesc = Plugin for Vapoursynth: julek (GIT version)
-	pkgver = r3.3.7674578
+	pkgver = r3.r3.7674578
 	pkgrel = 1
 	url = https://github.com/dnjulek/vapoursynth-julek-plugin
 	arch = x86_64
