@@ -1,6 +1,6 @@
 pkgbase = polycarbon
 	pkgdesc = Double-click Windows programs: self-installing Wine runtime, crash recovery and per-app sandboxing
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/basement-interactive/polycarbon
 	install = polycarbon.install
@@ -24,7 +24,7 @@ pkgbase = polycarbon
 	optdepends = hyprland: display-scale sync and hang detection from live window state
 	optdepends = desktop-file-utils: refresh the launcher list the moment a Windows installer creates one
 	optdepends = google-breakpad: decode a minidump left by a program that crashed internally
-	source = polycarbon-1.0.1.tar.gz::https://github.com/basement-interactive/polycarbon/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = b31e4d2591a6cd0dc5db12484e53fd9f9e445fd334536ed295ca3170c0737427
+	source = polycarbon-1.1.0.tar.gz::https://github.com/basement-interactive/polycarbon/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 83bd5de8347131ed94c98a535fd4b9fc2a8f4257ccfb2f37c1a4ef1a201edf07
 
 pkgname = polycarbon

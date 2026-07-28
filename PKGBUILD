@@ -1,6 +1,6 @@
 # Maintainer: vermin <vermin.gov@proton.me>
 pkgname=polycarbon
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Double-click Windows programs: self-installing Wine runtime, crash recovery and per-app sandboxing"
 arch=('any')
@@ -50,14 +50,16 @@ optdepends=('bubblewrap: enforce per-app restrictions — without it, Restricted
 checkdepends=('desktop-file-utils')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b31e4d2591a6cd0dc5db12484e53fd9f9e445fd334536ed295ca3170c0737427')
+sha256sums=('83bd5de8347131ed94c98a535fd4b9fc2a8f4257ccfb2f37c1a4ef1a201edf07')
 
 check() {
 	cd "$pkgname-$pkgver"
 	bash -n polycarbon
 	python -m py_compile polycarbon-config.py
 	python -m py_compile polycarbon-tray.py
-	desktop-file-validate polycarbon.desktop polycarbon-config.desktop
+	python -m py_compile polycarbon-progress.py
+	python -m py_compile polycarbon-tasks.py
+	desktop-file-validate polycarbon.desktop polycarbon-config.desktop polycarbon-tasks.desktop
 }
 
 package() {
@@ -69,6 +71,8 @@ package() {
 	# are not running out of a source checkout.
 	install -Dm755 polycarbon-config.py "$pkgdir/usr/lib/$pkgname/polycarbon-config.py"
 	install -Dm755 polycarbon-tray.py "$pkgdir/usr/lib/$pkgname/polycarbon-tray.py"
+	install -Dm755 polycarbon-progress.py "$pkgdir/usr/lib/$pkgname/polycarbon-progress.py"
+	install -Dm755 polycarbon-tasks.py "$pkgdir/usr/lib/$pkgname/polycarbon-tasks.py"
 
 	# The MIME handler entry is NoDisplay; the settings entry is the visible one.
 	# Neither is followed by an update-desktop-database or update-mime-database
@@ -76,6 +80,7 @@ package() {
 	# exactly that, and repeating the work in an install script is redundant.
 	install -Dm644 polycarbon.desktop "$pkgdir/usr/share/applications/polycarbon.desktop"
 	install -Dm644 polycarbon-config.desktop "$pkgdir/usr/share/applications/polycarbon-config.desktop"
+	install -Dm644 polycarbon-tasks.desktop "$pkgdir/usr/share/applications/polycarbon-tasks.desktop"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
