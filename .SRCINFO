@@ -1,6 +1,6 @@
 pkgbase = openloco-git
 	pkgdesc = An open source re-implementation of Chris Sawyer's Locomotion
-	pkgver = 26.07.1.r2.g867306691
+	pkgver = 26.07.1.r5.gef55ac7cb
 	pkgrel = 2
 	url = https://github.com/OpenLoco/OpenLoco
 	arch = x86_64
