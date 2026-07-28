@@ -1,4 +1,4 @@
-#  Maintainer: Jacob S. Gordon <jacob.as.gordon@gmail.com
+# Contributor: Jacob S. Gordon <jacob.as.gordon@gmail.com
 # Contributor: jyantis <yantis@yantis.net>
 # shellcheck disable=SC2034,SC2154,SC2164
 _pkgbase=nameparser
