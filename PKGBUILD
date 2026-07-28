@@ -1,6 +1,6 @@
 # Maintainer: leaeasy <leaeasy at gmail dot com>
 pkgname=hclient-cli
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="懒猫微服客户端 Lazy Cat microservice desktop client (cli version)"
 url='https://lazycat.cloud/download'
@@ -19,8 +19,8 @@ source_x86_64=("hclient-cli-linux-amd64::${_url_prefix}/v${pkgver}/hclient-cli-l
 source_aarch64=("hclient-cli-linux-arm64::${_url_prefix}/v${pkgver}/hclient-cli-linux-arm64")
 
 sha256sums=('7a80d01c8a86cbedf7fe0fe7adcc9a039dab719f83251d20e117e75c7deb3531')
-sha256sums_x86_64=('77bfdc49f3abfffd1b1c1cb8ea1962a80680a3dcdf9c360a8f103d640c34d84e')
-sha256sums_aarch64=('b0bbb299e1b799bc74811562234e0ae93d97b8ff12f5091b1dc5fbc66c4d8963')
+sha256sums_x86_64=('47519ae0378506b098634545ab2989861ae58a0c367d77481a23cb47495767cd')
+sha256sums_aarch64=('e7bb81fd8f66d2b3ac9ea3810ca4d97d6ff5a53c7e375a893938d5f270e084f5')
 
 
 package() {
