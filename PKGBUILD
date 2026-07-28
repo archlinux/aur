@@ -6,7 +6,7 @@ _basename=typhoon
 pkgname=${_basename}-bin
 pkgdesc="A stylish weather app based on Stormcloud"
 
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-dbus' 'python-
 makedepends=('tar')
 
 source=("https://github.com/archisman-panigrahi/typhoon/releases/download/v${pkgver}/${_basename}_${pkgver}_all.deb")
-sha256sums=('2108539de27dac448719ce01c31009850ff453c72dba86c18179d978e777e967')
+sha256sums=('5518a191306e43b55190e1afabaf168d2b0d2452e2b37878c724f6b6dcb11425')
 
 package() {
     cd "${pkgdir}"
