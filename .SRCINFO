@@ -1,6 +1,6 @@
 pkgbase = dotenv-sync-bin
 	pkgdesc = Keep .env files in sync with .env.example and provider-managed secrets
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/mikeboiko/dotenv-sync
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dotenv-sync-bin
 	conflicts = dotenv-sync
 	conflicts = dotenv-sync-git
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v0.1.5/LICENSE
-	source = README.md::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v0.1.5/README.md
+	source = LICENSE::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v0.1.6/LICENSE
+	source = README.md::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v0.1.6/README.md
 	sha256sums = 6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef
 	sha256sums = ee0eac7c12b510a4fbe203716df27637d4d78fb8ee8bca45ecb5cf50fe89c305
-	source_x86_64 = dotenv-sync-bin-0.1.5-x86_64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v0.1.5/ds_v0.1.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = bbadbeccd23a05740f2ad43393ea34d24745074d31f22bc550c07c7142e79878
-	source_aarch64 = dotenv-sync-bin-0.1.5-aarch64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v0.1.5/ds_v0.1.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4257d11b5343e95e0531534e3c285ea6353271cf78bd3cfbe5ae50e2ca90ac74
+	source_x86_64 = dotenv-sync-bin-0.1.6-x86_64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v0.1.6/ds_v0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = d95037db8d7f2499c2619544be5dcc4dc74c4e40bfeb7f60f75494bee697ac01
+	source_aarch64 = dotenv-sync-bin-0.1.6-aarch64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v0.1.6/ds_v0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 08017399d45a82fc2655a257f8317d06c60ddf8014eb6cf138988f293c630a69
 
 pkgname = dotenv-sync-bin
