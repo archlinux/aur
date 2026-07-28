@@ -2,8 +2,8 @@
 
 pkgname=yurigram-bin
 _pkgname=yurigram
-pkgver=7.0.5
-pkgrel=3
+pkgver=7.0.6
+pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Revincx/Yurigram"
@@ -28,8 +28,8 @@ optdepends=('crow-translate: translation provider'
 source_x86_64=("$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz::${url}/releases/download/$pkgver-$pkgrel/$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-$pkgrel-aarch64.tar.gz::${url}/releases/download/$pkgver-$pkgrel/$_pkgname-$pkgver-$pkgrel-aarch64.tar.gz")
 
-sha256sums_x86_64=('aef46eb4b07f0069ad85fd158b36b0b31fd3b51b5c5ba43100981c570eeacacd')
-sha256sums_aarch64=('9f22b70f2335ab9957ba0a2ef4106e5a622dab608cda3f71a8f5bfdef9d16a3d')
+sha256sums_x86_64=('c9d782b8f0e09920f878a274c6cd3857e4a047d1192446a0a4dc91c76d58e0c5')
+sha256sums_aarch64=('5daae40f4002c3e7a1982f865dee6a9c1cd4f58f9b085a444aabfba53c4644b4')
 
 package() {
 
