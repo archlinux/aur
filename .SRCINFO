@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Windows Hello-style face login for Linux
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -14,7 +14,7 @@ pkgbase = irlume
 	depends = tpm2-tss
 	depends = pam
 	optdepends = fprintd: fingerprint companion factor
-	source = git+https://github.com/archledger/irlume.git#tag=v0.6.1
+	source = git+https://github.com/archledger/irlume.git#tag=v0.7.0
 	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
 	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
 	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx

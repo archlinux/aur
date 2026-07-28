@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux"
 arch=('x86_64')
@@ -59,6 +59,18 @@ package() {
     # them. No-op until `irlume login enable` writes its marker.
     install -Dm0644 packaging/systemd/irlume-reconcile.path "$pkgdir/usr/lib/systemd/system/irlume-reconcile.path"
     install -Dm0644 packaging/systemd/irlume-reconcile.service "$pkgdir/usr/lib/systemd/system/irlume-reconcile.service"
+    install -Dm0644 packaging/systemd/irlume-reconcile.timer "$pkgdir/usr/lib/systemd/system/irlume-reconcile.timer"
+    # AppArmor profile for the daemon. Arch does not run AppArmor by default, so
+    # it sits inert unless the user boots with `lsm=...,apparmor`; irlume.install
+    # loads it only when apparmor_parser is present. The profile confines the
+    # /usr/bin/irlumed binary (same path Arch installs to) and already covers the
+    # system onnxruntime under /usr/lib, so no Arch-specific variant is needed.
+    install -Dm0644 packaging/apparmor/usr.bin.irlumed "$pkgdir/etc/apparmor.d/usr.bin.irlumed"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    # The machine-API contract, beside the engine that implements it: a consumer
+    # validating our JSON should never have to guess which schema this build speaks.
+    install -Dm0644 schemas/machine-api-v1.schema.json "$pkgdir/usr/share/irlume/schemas/machine-api-v1.schema.json"
+    install -Dm0644 docs/MACHINE-API.md "$pkgdir/usr/share/doc/$pkgname/MACHINE-API.md"
+    install -Dm0644 docs/INTEGRATION.md "$pkgdir/usr/share/doc/$pkgname/INTEGRATION.md"
 }
