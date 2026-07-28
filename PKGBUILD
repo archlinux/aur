@@ -3,7 +3,7 @@
 
 pkgname=florist
 pkgdesc='An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding.'
-pkgver=2025
+pkgver=2026
 pkgrel=1
 
 arch=(i686 x86_64)
@@ -49,7 +49,7 @@ build()
   PROCESSORS=$(nproc) \
   make
   
-#  make rm-doc     # Requires gnatdoc.
+#  make rm-doc     # Requires gnatdoc, although gnatdoc breaks when building the docs.
 }
 
 
@@ -58,4 +58,12 @@ package()
   cd $srcdir/$pkgname
 
   make DESTDIR="$pkgdir/" install
+  
+  ## Add a 'lib_florist' GPR file for Alire compatability.
+  #
+  cp "$pkgdir"/usr/share/gpr/florist.gpr "$pkgdir"/usr/share/gpr/lib_florist.gpr
+  
+  sed -i -e 's/\blibrary project Florist\b/library project Lib_Florist/' \
+         -e 's/^end Florist;/end Lib_Florist;/'                          \
+         "$pkgdir"/usr/share/gpr/lib_florist.gpr
 }

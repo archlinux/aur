@@ -1,6 +1,6 @@
 pkgbase = florist
 	pkgdesc = An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding.
-	pkgver = 2025
+	pkgver = 2026
 	pkgrel = 1
 	url = https://github.com/Blady-Com/florist
 	arch = i686
