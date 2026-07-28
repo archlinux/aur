@@ -2,18 +2,25 @@
 
 pkgname=etwm
 pkgver=3.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Claude's Tab Window Manager with full ICCCM/EMWH support."
 arch=('i686' 'x86_64')		
 url="https://github.com/bbidulock/etwm/"
 license=('custom:MIT/X Consortium')
-depends=('libxinerama' 'libxrandr' 'libxmu' 'libxpm' 'libjpeg')
+depends=('libxinerama' 'libxrandr' 'libxmu' 'libxpm' 'libjpeg-turbo')
 options=('!emptydirs')
 backup=('usr/share/X11/etwm/system.etwmrc')
-source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('0e4122799dc141fe803b8632821377d9')
+source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+        handler.patch)
+md5sums=('0e4122799dc141fe803b8632821377d9'
+         '6623080186a213f7a46dafa53ea3fc7d')
 
-CFLAGS="${CFLAGS} -fcommon"
+CFLAGS="${CFLAGS} -fcommon -Wno-incompatible-pointer-types"
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -Np2 -b -z .orig<../handler.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver}

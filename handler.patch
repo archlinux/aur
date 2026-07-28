@@ -1,0 +1,12 @@
+diff -up src/etwm-3.8.3/util.c.orig src/etwm-3.8.3/util.c
+--- src/etwm-3.8.3/util.c.orig	2026-07-27 22:31:05.030000000 -0600
++++ src/etwm-3.8.3/util.c	2026-07-27 22:31:18.630000000 -0600
+@@ -1330,7 +1330,7 @@ void AnimateHandler (void)
+ #else /* VMS */
+ 
+ #ifdef USE_SIGNALS
+-SIGNAL_T AnimateHandler ();
++SIGNAL_T AnimateHandler (int);
+ #endif
+ 
+ #ifndef USE_SIGNALS
