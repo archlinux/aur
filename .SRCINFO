@@ -1,0 +1,23 @@
+pkgbase = jam-cli-bin
+	pkgdesc = CLI for reading and creating Jam bug reports (prebuilt binary)
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://jam.dev/docs/cli
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Jam-Terms
+	depends = glibc
+	optdepends = xdg-utils: browser-based authentication
+	provides = jam-cli
+	conflicts = jam
+	conflicts = jam-cli
+	options = !debug
+	options = !strip
+	source = jam-terms.html::https://jam.dev/legal/terms
+	sha256sums = 3653db64c7b32a2ba8fe73ea11bd1aeffa12aac706bf234cb202b129f088799b
+	source_x86_64 = jam-cli-bin-1.11.0::https://native.jam.dev/download/linux/x64?version=1.11.0
+	sha256sums_x86_64 = 2e3da24ee4601d1c466eb77247cb9783cfc98011fd9f345dc1d355828362bd28
+	source_aarch64 = jam-cli-bin-1.11.0::https://native.jam.dev/download/linux/arm64?version=1.11.0
+	sha256sums_aarch64 = c461c21460090e20bacac2c773bca5dedb5e29a3d6faad7f84699749f272663c
+
+pkgname = jam-cli-bin
