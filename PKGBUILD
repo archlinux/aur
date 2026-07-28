@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=10
+pkgrel=11
 # epoch: AUR previously shipped 6.7.81-x; the project re-aligned on the COPR
 # 6.7.80-N numbering, which pacman would otherwise see as a downgrade.
 epoch=1
