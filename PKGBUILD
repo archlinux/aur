@@ -1,24 +1,24 @@
 # Maintainer: Laurent Carlier <lordheavym@archlinux.org>
 
 pkgname=rasm
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Powerful Z80 assembler"
 url="https://github.com/EdouardBERGE/rasm"
 license=('custom')
 arch=('x86_64')
 makedepends=('upx')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v${pkgver}bis.tar.gz")
-sha256sums=('97082ce5f8dbf514c44573b55236d510238f022f1616ec2f966fee8b32b992a8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('81321aee55e2b70dea869c4e58c9a517f7144a27acecd69b511a5a08ececea29')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"bis
+  cd "${pkgname}-${pkgver}"
 
   sed -i "s#./upx#upx#g" makefile
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"bis
+  cd "${pkgname}-${pkgver}"
 
   make release
 }
@@ -30,7 +30,7 @@ build() {
 # }
 
 package() {
-  cd "${pkgname}-${pkgver}"bis
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 rasm.exe "${pkgdir}"/usr/bin/rasm.exe
 
