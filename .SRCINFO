@@ -7,6 +7,7 @@ pkgbase = amneziavpn-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = binwalk
+	makedepends = p7zip
 	provides = amneziavpn
 	conflicts = amneziavpn
 	conflicts = amneziavpn-git
