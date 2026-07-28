@@ -1090,17 +1090,7 @@ def run_qt_app(engine):
 
             main_layout.addWidget(hk_banner)
 
-            # Mode Selector
-            mode_group = QGroupBox("Operation Mode")
-            mode_layout = QHBoxLayout(mode_group)
-            self.single_mode_rb = QRadioButton("Single Click / Key Combination")
-            self.seq_mode_rb = QRadioButton("Multi-Step Action Sequence (Macro)")
-            self.text_mode_rb = QRadioButton("Auto-Type Text")
 
-            mode_layout.addWidget(self.single_mode_rb)
-            mode_layout.addWidget(self.seq_mode_rb)
-            mode_layout.addWidget(self.text_mode_rb)
-            main_layout.addWidget(mode_group)
 
             # Interval Group
             self.interval_group = QGroupBox("Interval / Repeat Delay (Hover for info ℹ️)")
@@ -1112,8 +1102,9 @@ def run_qt_app(engine):
             self.ms_entry = self.create_time_entry("MS (Millis)", interval_layout, self.saved_config.get("ms", "60"))
             main_layout.addWidget(self.interval_group)
 
-            # Isolated QStackedWidget for Clean Mode Switching
-            self.stack_widget = QStackedWidget()
+            # QTabWidget for Spacious and Organized Mode Switching
+            self.stack_widget = QTabWidget()
+            self.stack_widget.setStyleSheet("QTabBar::tab { height: 40px; width: 200px; font-weight: bold; font-size: 14px; margin-right: 2px; }")
 
             # --- Page 1: Single Clicker ---
             click_widget = QWidget()
@@ -1134,7 +1125,7 @@ def run_qt_app(engine):
             self.record_btn.clicked.connect(lambda: self.start_record(self.record_btn, self.hotkey_entry, is_sequence_record=False))
             click_layout.addWidget(self.record_btn, 0, 3)
 
-            self.stack_widget.addWidget(click_widget)
+            self.stack_widget.addTab(click_widget, "🖱️ Single Clicker")
 
             # --- Page 2: Multi-Step Sequence Builder ---
             seq_widget = QWidget()
@@ -1190,43 +1181,44 @@ def run_qt_app(engine):
 
             # Step Manual Editor / Creator Box
             creator_box = QGroupBox("Manual Step Editor / Adder")
-            creator_layout = QHBoxLayout(creator_box)
+            creator_layout = QGridLayout(creator_box)
+            creator_layout.setSpacing(10)
 
-            creator_layout.addWidget(QLabel("Key/Combo:"))
+            # Row 0
+            creator_layout.addWidget(QLabel("Key/Combo:"), 0, 0)
             self.seq_step_key = QLineEdit("Mouse 1")
-            self.seq_step_key.setFixedWidth(90)
-            creator_layout.addWidget(self.seq_step_key)
+            self.seq_step_key.setMinimumWidth(120)
+            creator_layout.addWidget(self.seq_step_key, 0, 1)
 
             self.seq_preset_combo = QComboBox()
             self.seq_preset_combo.addItems(["Preset..."] + COMMON_PRESET_KEYS)
             self.seq_preset_combo.currentIndexChanged.connect(
                 lambda idx: self.on_preset_selected(self.seq_preset_combo, self.seq_step_key, idx)
             )
-            creator_layout.addWidget(self.seq_preset_combo)
+            creator_layout.addWidget(self.seq_preset_combo, 0, 2)
 
             self.seq_record_btn = QPushButton("Record")
-            self.seq_record_btn.clicked.connect(lambda: self.start_record(self.seq_record_btn, self.seq_step_key, is_sequence_record=True))
-            creator_layout.addWidget(self.seq_record_btn)
+            self.seq_record_btn.clicked.connect(lambda: self.start_record(self.seq_record_btn, self.seq_step_key, is_sequence_record=False))
+            creator_layout.addWidget(self.seq_record_btn, 0, 3)
 
-            creator_layout.addWidget(QLabel("Hold (ms):"))
+            # Row 1
+            creator_layout.addWidget(QLabel("Hold (ms):"), 1, 0)
             self.seq_hold_entry = QLineEdit("50")
-            self.seq_hold_entry.setFixedWidth(45)
-            creator_layout.addWidget(self.seq_hold_entry)
+            creator_layout.addWidget(self.seq_hold_entry, 1, 1)
 
-            creator_layout.addWidget(QLabel("Next Delay (ms):"))
+            creator_layout.addWidget(QLabel("Next Delay (ms):"), 1, 2)
             self.seq_delay_entry = QLineEdit("200")
-            self.seq_delay_entry.setFixedWidth(45)
-            creator_layout.addWidget(self.seq_delay_entry)
+            creator_layout.addWidget(self.seq_delay_entry, 1, 3)
 
             add_step_btn = QPushButton("➕ Add Step")
-            add_step_btn.setStyleSheet("font-weight: bold; background-color: #89b4fa; color: #11111b;")
+            add_step_btn.setStyleSheet("font-weight: bold; background-color: #89b4fa; color: #11111b; padding: 6px;")
             add_step_btn.clicked.connect(self.add_sequence_step)
-            creator_layout.addWidget(add_step_btn)
+            creator_layout.addWidget(add_step_btn, 0, 4, 2, 1)
 
             update_selected_btn = QPushButton("💾 Update Selected")
-            update_selected_btn.setStyleSheet("font-weight: bold; background-color: #a6e3a1; color: #11111b;")
+            update_selected_btn.setStyleSheet("font-weight: bold; background-color: #a6e3a1; color: #11111b; padding: 6px;")
             update_selected_btn.clicked.connect(self.update_selected_step_from_editor)
-            creator_layout.addWidget(update_selected_btn)
+            creator_layout.addWidget(update_selected_btn, 0, 5, 2, 1)
 
             seq_layout.addWidget(creator_box)
 
@@ -1258,7 +1250,7 @@ def run_qt_app(engine):
             ctrl_bar.addWidget(self.seq_loop_entry)
 
             seq_layout.addLayout(ctrl_bar)
-            self.stack_widget.addWidget(seq_widget)
+            self.stack_widget.addTab(seq_widget, "📜 Macro Sequence")
 
             # --- Page 3: Auto-Type Text ---
             text_widget = QWidget()
@@ -1277,7 +1269,7 @@ def run_qt_app(engine):
             self.text_edit.setPlainText(self.saved_config.get("text", "Hello World!"))
             text_layout.addWidget(self.text_edit)
 
-            self.stack_widget.addWidget(text_widget)
+            self.stack_widget.addTab(text_widget, "⌨️ Auto-Typer")
             main_layout.addWidget(self.stack_widget)
 
             # Start / Stop Buttons
@@ -1310,9 +1302,7 @@ def run_qt_app(engine):
             else:
                 self.single_mode_rb.setChecked(True)
 
-            self.single_mode_rb.toggled.connect(self.on_mode_changed)
-            self.seq_mode_rb.toggled.connect(self.on_mode_changed)
-            self.text_mode_rb.toggled.connect(self.on_mode_changed)
+            self.stack_widget.currentChanged.connect(self.on_mode_changed)
 
             self.on_mode_changed()
 
@@ -1410,9 +1400,10 @@ def run_qt_app(engine):
                 combo.setCurrentIndex(0)
 
         def on_mode_changed(self):
-            if self.single_mode_rb.isChecked():
+            idx = self.stack_widget.currentIndex()
+            if idx == 0:
                 self.stack_widget.setCurrentIndex(0)
-            elif self.seq_mode_rb.isChecked():
+            elif idx == 1:
                 self.stack_widget.setCurrentIndex(1)
             else:
                 self.stack_widget.setCurrentIndex(2)
@@ -1617,7 +1608,8 @@ def run_qt_app(engine):
             def on_stop_cb():
                 self.dispatcher.stop_signal.emit()
 
-            if self.single_mode_rb.isChecked():
+            idx = self.stack_widget.currentIndex()
+            if idx == 0:
                 key_str = self.hotkey_entry.text()
                 self.seq_status_lbl.setText(f"Status: ▶ RUNNING SINGLE CLICKER [{key_str}]")
                 self.seq_status_lbl.setStyleSheet("font-weight: bold; color: #a6e3a1;")
@@ -1627,7 +1619,7 @@ def run_qt_app(engine):
                     daemon=True
                 ).start()
 
-            elif self.seq_mode_rb.isChecked():
+            elif idx == 1:
                 if not self.sequence_steps:
                     QMessageBox.warning(self, "Warning", "Please add at least one step to the action sequence.")
                     self.on_stop_ui()
