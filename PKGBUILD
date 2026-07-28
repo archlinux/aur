@@ -10,15 +10,15 @@
 pkgbase=vkbasalt-redemp-git
 pkgname=("${pkgbase}" "lib32-${pkgbase}")
 pkgdesc='A Vulkan post-processing layer (Redemp fork)'
-pkgver=r470.d5c38ed
-pkgrel=2
+pkgver=r470.gd5c38ed
+pkgrel=1
 url='https://github.com/Redemp/vkBasalt'
 arch=(x86_64)
 license=('Zlib')
-_depends=('glibc' 'gcc-libs' 'libx11')
 makedepends=(
   'git' 'glslang' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers'
-  "${_depends[@]}" "${_depends[@]/#/lib32-}"
+  'glibc' 'libgcc' 'libx11'
+  'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11'
 )
 optdepends=('reshade-shaders-git: collection of shaders to use with vkBasalt')
 source=("Redemp-vkBasalt::git+${url}.git")
@@ -30,7 +30,7 @@ pkgver() {
   local version commit
   version="$(git rev-list --count HEAD)"
   commit="$(git rev-parse --short=7 HEAD)"
-  printf 'r%s.%s\n' "${version}" "${commit}"
+  printf 'r%s.g%s\n' "${version}" "${commit}"
 }
 
 prepare() {
@@ -63,7 +63,7 @@ build() {
 }
 
 package_vkbasalt-redemp-git() {
-  depends=("${_depends[@]}")
+  depends=('glibc' 'libgcc' 'libx11')
   provides=('vkbasalt')
   conflicts=('vkbasalt')
 
@@ -76,7 +76,7 @@ package_vkbasalt-redemp-git() {
 
 package_lib32-vkbasalt-redemp-git() {
   pkgdesc="${pkgdesc} (32-bit)"
-  depends=("${pkgbase}" "${_depends[@]/#/lib32-}")
+  depends=("${pkgbase}" 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11')
   provides=('lib32-vkbasalt')
   conflicts=('lib32-vkbasalt')
 

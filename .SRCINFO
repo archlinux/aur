@@ -1,7 +1,7 @@
 pkgbase = vkbasalt-redemp-git
 	pkgdesc = A Vulkan post-processing layer (Redemp fork)
-	pkgver = r470.d5c38ed
-	pkgrel = 2
+	pkgver = r470.gd5c38ed
+	pkgrel = 1
 	url = https://github.com/Redemp/vkBasalt
 	arch = x86_64
 	license = Zlib
@@ -12,7 +12,7 @@ pkgbase = vkbasalt-redemp-git
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	makedepends = glibc
-	makedepends = gcc-libs
+	makedepends = libgcc
 	makedepends = libx11
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
@@ -23,7 +23,7 @@ pkgbase = vkbasalt-redemp-git
 
 pkgname = vkbasalt-redemp-git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	depends = libx11
 	provides = vkbasalt
 	conflicts = vkbasalt
