@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=latuicon
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A terminal UI icon picker for emoji, kaomoji, Unicode characters, and Nerd Font glyphs"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c285382dddbf91bbe91f23b118737e42889cd5e773a8980096da562646960808')
+sha256sums=('6a07a8e2a8e59dc3cd067be1efb1b7d76540e0a389c0cb61e9ad35352f523b14')
 
 prepare() {
   cd "$pkgname-$pkgver"
