@@ -1,0 +1,14 @@
+post_install() {
+  cat <<'EOF'
+==> Tabex needs browser-profile and extension setup after install.
+==> Start with:
+==>   tabex setup
+==>
+==> That saves browser config, installs or updates the managed Chrome extension locally,
+==> and prints the Chrome load or refresh steps.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
