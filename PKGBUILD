@@ -26,7 +26,7 @@ source=("https://github.com/K-Blaaaack/SPlayer-Next/releases/download/v${pkgver}
 sha256sums=('7fda6ec459937e07f1b7e3346990e482a2d22809a37159a21f0b8971f8945a41')
 
 package() {
-  bsdtar -xf "$srcdir/splayer-next-${pkgver}-x64.pacman" -C "$pkgdir" --no-same-permissions --no-same-owner
+  bsdtar -xf "$srcdir/splayer-next-${pkgver}-x64.pacman" --exclude='.*' -C "$pkgdir" --no-same-permissions --no-same-owner
   mv "$pkgdir/opt/SPlayer-Next" "$pkgdir/opt/splayer-next" 2>/dev/null || true
   ln -sf "/opt/splayer-next/SPlayer-Next" "$pkgdir/usr/bin/splayer-next" 2>/dev/null || true
 }
