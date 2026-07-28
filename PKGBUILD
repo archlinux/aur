@@ -13,7 +13,7 @@ _pkgver=dev-${pkgver}
 _vboxver='7.2.14'
 _pkgvboxver='7.2.6'	# Version of VBox the patch was made for
 _vboxsubver=''
-pkgrel=5
+pkgrel=6
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -35,7 +35,7 @@ makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'gls
              'qt6-tools' 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}${_vboxsubver}.tar.bz2"
-        "${url}/releases/download/${_pkgvboxver}/kvm-backend-${_pkgvboxver}-${_pkgver}.patch"
+        "${url}/releases/download/${_pkgver}/kvm-backend-${_pkgvboxver}-${_pkgver}.patch"
         'virtualbox-host-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'

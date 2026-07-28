@@ -1,7 +1,7 @@
 pkgbase = virtualbox-kvm
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (KVM backend)
 	pkgver = 20260201
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/cyberus-technology/virtualbox-kvm
 	arch = x86_64
 	license = GPL-3.0-only AND (GPL-3.0-only OR CDDL-1.0)
@@ -74,7 +74,7 @@ pkgbase = virtualbox-kvm
 	replaces = virtualbox-ose
 	backup = etc/vbox/vbox.cfg
 	source = https://download.virtualbox.org/virtualbox/7.2.14/VirtualBox-7.2.14.tar.bz2
-	source = https://github.com/cyberus-technology/virtualbox-kvm/releases/download/7.2.6/kvm-backend-7.2.6-dev-20260201.patch
+	source = https://github.com/cyberus-technology/virtualbox-kvm/releases/download/dev-20260201/kvm-backend-7.2.6-dev-20260201.patch
 	source = virtualbox-host-dkms.conf
 	source = virtualbox.sysusers
 	source = virtualbox-guest-utils.sysusers
