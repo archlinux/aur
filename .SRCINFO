@@ -1,5 +1,5 @@
 pkgbase = speakoflow-appimage
-	pkgdesc = An ai transcriber to transcribe your thoughts faster than you can type.
+	pkgdesc = SpeakoFlow is a free, open-source, local-first voice-to-text desktop application with offline speech recognition, AI-assisted writing, speech cleanup, translation, and a system-wide voice assistant. Learn more at https://www.speakoflow.com/
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/AbhishekBarali/SpeakoFlow
