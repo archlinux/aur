@@ -1,6 +1,6 @@
 pkgbase = roomeqwizard-beta
 	pkgdesc = A room acoustics analysis software for measuring and analysing room and loudspeaker responses
-	pkgver = 5.40.beta.130
+	pkgver = 5.40.beta.131
 	pkgrel = 1
 	url = https://www.roomeqwizard.com
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = roomeqwizard-beta
 	depends = xdg-utils
 	depends = bash
 	depends = glibc
-	depends = java-runtime=11
+	depends = java-runtime=17
 	depends = alsa-lib
 	depends = xorg-xwayland
 	options = !debug
-	source = https://www.roomeqwizard.com/installers/REW_linux_no_jre_5_40_beta_130-api.sh
+	source = https://www.roomeqwizard.com/installers/REW_linux_no_jre_5_40_beta_131-api.sh
 	source = https://www.roomeqwizard.com/Sampledata.mdat
-	sha512sums = 00384eed0db35a84725122798b069494eb93f06e8c29a8ea6fbaf9cf3eb19a9fe12557bc8eca695094409de3d086549adc68849c21e6bf003964a41d35c59a53
+	sha512sums = 4bf98c465d0bab294a963a7fefccb4a3247f13cda3d413087433295240ebd5652309ab67f061ebd2bf9323b5b9972a293a1b11bd096e30122bdafd7dad1dd468
 	sha512sums = 79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770
 
 pkgname = roomeqwizard-beta

@@ -6,24 +6,22 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard-beta
-pkgver=5.40.beta.130
+pkgver=5.40.beta.131
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
 options=('!debug')
 url="https://www.roomeqwizard.com"
 license=('custom')
-depends=('xdg-utils' 'bash' 'glibc' 'java-runtime=11' 'alsa-lib' 'xorg-xwayland')
+depends=('xdg-utils' 'bash' 'glibc' 'java-runtime=17' 'alsa-lib' 'xorg-xwayland')
 makedepends=('fontconfig' 'freetype2')
 #conflicts=('roomeqwizard')
 source=(
     "https://www.roomeqwizard.com/installers/REW_linux_no_jre_${pkgver//./_}-api.sh"
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
-sha512sums=(
-    '00384eed0db35a84725122798b069494eb93f06e8c29a8ea6fbaf9cf3eb19a9fe12557bc8eca695094409de3d086549adc68849c21e6bf003964a41d35c59a53'
-    '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
-)
+sha512sums=('4bf98c465d0bab294a963a7fefccb4a3247f13cda3d413087433295240ebd5652309ab67f061ebd2bf9323b5b9972a293a1b11bd096e30122bdafd7dad1dd468'
+            '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770')
 
 
 package() {
