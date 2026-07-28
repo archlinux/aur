@@ -2,8 +2,8 @@
 # Contributor: laosifu
 
 pkgname=hcc-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Hyprland Control Center — Install and manage Hyprland desktops"
 arch=('any')
 url="https://github.com/laosifu/Hyprland-Control-Center"
