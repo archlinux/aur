@@ -22,52 +22,11 @@ depends=(
   'libnotify'
   'libappindicator-gtk3'
 )
-makedepends=(
-  'git'
-  'nodejs>=22'
-  'pnpm>=10'
-  'rust'
-  'cargo'
-  'npm'
-)
-options=(!strip)
-source=("splayer-next::git+https://github.com/SPlayer-Dev/SPlayer-Next.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "splayer-next"
-  git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' || echo "1.0.0"
-}
-
-prepare() {
-  cd "splayer-next"
-  export HOME="$srcdir"
-  corepack enable
-  pnpm install --frozen-lockfile
-}
-
-build() {
-  cd "splayer-next"
-  export HOME="$srcdir"
-  pnpm build:native
-  pnpm typecheck
-  pnpm electron-vite build
-  pnpm electron-builder --config electron-builder.config.ts --dir --linux
-}
+source=("https://github.com/K-Blaaaack/SPlayer-Next/releases/download/v${pkgver}/splayer-next-${pkgver}-x64.pacman")
+sha256sums=('7fda6ec459937e07f1b7e3346990e482a2d22809a37159a21f0b8971f8945a41')
 
 package() {
-  cd "splayer-next"
-
-  install -d "$pkgdir/opt/splayer-next"
-  cp -r dist/linux-unpacked/* "$pkgdir/opt/splayer-next/"
-
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/splayer-next/SPlayer-Next" "$pkgdir/usr/bin/splayer-next"
-
-  install -d "$pkgdir/usr/share/applications"
-  install -Dm644 dist/linux-unpacked/splayer-next.desktop "$pkgdir/usr/share/applications/"
-
-  install -d "$pkgdir/usr/share/icons"
-  cp -r dist/linux-unpacked/resources/public/icons/* "$pkgdir/usr/share/icons/" 2>/dev/null || true
-  install -Dm644 public/icons/favicon-512x512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/splayer-next.png"
+  bsdtar -xf "$srcdir/splayer-next-${pkgver}-x64.pacman" -C "$pkgdir" --no-same-permissions --no-same-owner
+  mv "$pkgdir/opt/SPlayer-Next" "$pkgdir/opt/splayer-next" 2>/dev/null || true
+  ln -sf "/opt/splayer-next/SPlayer-Next" "$pkgdir/usr/bin/splayer-next" 2>/dev/null || true
 }

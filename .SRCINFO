@@ -19,14 +19,7 @@ pkgbase = splayer-next-unofficial_build
 	depends = libnotify
 	depends = libappindicator-gtk3
 	license = AGPL-3.0
-	makedepends = git
-	makedepends = nodejs>=22
-	makedepends = pnpm>=10
-	makedepends = rust
-	makedepends = cargo
-	makedepends = npm
-	options = !strip
-	source = splayer-next::git+https://github.com/SPlayer-Dev/SPlayer-Next.git
-	sha256sums = SKIP
+	source = https://github.com/K-Blaaaack/SPlayer-Next/releases/download/v1.0.0/splayer-next-1.0.0-x64.pacman
+	sha256sums = 7fda6ec459937e07f1b7e3346990e482a2d22809a37159a21f0b8971f8945a41
 
 pkgname = splayer-next-unofficial_build
