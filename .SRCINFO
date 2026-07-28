@@ -1,6 +1,6 @@
 pkgbase = mindwtr-bin-beta
 	pkgdesc = A complete Getting Things Done (GTD) productivity system - Mind Like Water (beta binary release)
-	pkgver = 1.1.5rc5
+	pkgver = 1.1.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dongdongbh/Mindwtr
@@ -14,7 +14,7 @@ pkgbase = mindwtr-bin-beta
 	provides = mindwtr-bin
 	conflicts = mindwtr
 	conflicts = mindwtr-bin
-	source_x86_64 = https://github.com/dongdongbh/Mindwtr/releases/download/v1.1.5-rc.5/mindwtr_1.1.5-rc.5_amd64.deb
-	sha256sums_x86_64 = f1e74e702cfdecca82f5f4b7f70b042d882a6df204ba4388423cad71b3acdf1b
+	source_x86_64 = https://github.com/dongdongbh/Mindwtr/releases/download/v1.1.5/mindwtr_1.1.5_amd64.deb
+	sha256sums_x86_64 = 930c0cb00a4cea21bd4c9d903323ffae0e8de3a73b545a7ac0e224ac3ae75378
 
 pkgname = mindwtr-bin-beta
