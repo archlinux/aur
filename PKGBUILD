@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRLAB
-_pkgver=1.38.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Dry lab for exploring miRNA-mRNA relationships'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('179779b0788d1161b10ff181d0237581e3c5167ff2000e6f18032dde63f47ada')
+sha256sums=('d670e0aa62a1c08e5eab776d851d472f1a56b5c21d9a833cdb85b53b32e604e6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
