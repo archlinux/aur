@@ -1,6 +1,6 @@
 pkgbase = openlawsvpn
 	pkgdesc = AWS Client VPN client with SAML/SSO support — pure Go stack
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/openlawsvpn/go-openlawsvpn
 	install = openlawsvpn.install
@@ -13,8 +13,8 @@ pkgbase = openlawsvpn
 	makedepends = gtk4
 	makedepends = libadwaita
 	makedepends = openssl
-	source = openlawsvpn-1.1.7-1.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/1.1.7-1.tar.gz
-	sha256sums = 55e7da9673eb82ac2af4f81bda33094d403ec45ef0b353b2d599fd3cd5ea1ba0
+	source = openlawsvpn-1.1.8-1.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/1.1.8-1.tar.gz
+	sha256sums = c050777f2f58a95a6effd9c514b9cc09eb01cfc08a11275d9bd30c8fb1ae028e
 
 pkgname = openlawsvpn-daemon
 	pkgdesc = openlawsvpn VPN daemon (D-Bus system service)
