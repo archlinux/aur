@@ -1,0 +1,22 @@
+pkgbase = relaypony-bin
+	pkgdesc = Encrypted, direct device-to-device file transfer - desktop app (prebuilt)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://relaypony.app
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fontconfig
+	provides = relaypony
+	conflicts = relaypony
+	options = !strip
+	source = relaypony.desktop::https://raw.githubusercontent.com/norsehorse-dev/RelayPonyDesktop/v2.0.3/packaging/aur/relaypony.desktop
+	source = relaypony.png::https://raw.githubusercontent.com/norsehorse-dev/RelayPonyDesktop/v2.0.3/packaging/relaypony.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = relaypony-bin-2.0.3-x86_64.tar.gz::https://github.com/norsehorse-dev/RelayPonyDesktop/releases/download/v2.0.3/RelayPony-linux-x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = relaypony-bin-2.0.3-aarch64.tar.gz::https://github.com/norsehorse-dev/RelayPonyDesktop/releases/download/v2.0.3/RelayPony-linux-aarch64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = relaypony-bin
