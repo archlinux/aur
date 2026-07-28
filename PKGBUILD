@@ -3,13 +3,13 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.8.2
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64' 'aarch64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'spatialite-tools' 'luajit' 'chrono-date' 'gdal' 'lz4')
+depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'spatialite-tools' 'luajit' 'chrono-date' 'gdal' 'lz4' 'libgeotiff')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'cxxopts' 'libosmium' 'protozero' 'rapidjson')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
 sha256sums=('SKIP')
@@ -28,25 +28,17 @@ prepare() {
   # request with costing=auto|truck|taxi), the unwinder lands at a trap-filler
   # address `mov 0x28, %eax; ud2` between two endbr64 landing pads, dereferencing
   # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3 through master (still
-  # present in 3.8.2). Upstream docker uses no -march so it never triggers.
+  # present in 3.8.3). Upstream docker uses no -march so it never triggers.
   # Tracked upstream: https://github.com/valhalla/valhalla/issues/6079 (OPEN).
   # Full investigation: build/debug/INVESTIGATION.md in valhalla-pi repo.
   #
   # Trade-off: -mno-sse4.2 removes SSE4.2 AND everything above it in gcc's flag
   # hierarchy (AVX, AVX2, FMA, AVX-512). Routing is memory-bound; perf impact
   # is small. Remove this flag if/when upstream fixes the underlying UB (#6079).
+  #
+  # 3.8.3 fixed the PREFER_EXTERNAL_DEPS GeoTIFF wiring (TIFF::tiff → TIFF::TIFF
+  # alias for libtiff >= 4.7), so ENABLE_GEOTIFF can stay ON (default).
 
-  # ENABLE_GEOTIFF=OFF: 3.8.x added an optional libgeotiff feature (isochrone
-  # raster/isotile serialization) that is ON by default, but its CMake wiring is
-  # broken on the PREFER_EXTERNAL_DEPS path. With system libtiff+libgeotiff
-  # present, GTIFF_TARGETS is set to "TIFF::TIFF geotiff_library": the TIFF::TIFF
-  # imported target is not reliably created (config- vs module-mode find), and
-  # 'geotiff_library' is a phantom (cmake/FindGeoTIFF.cmake creates
-  # GeoTIFF::GeoTIFF instead). valhalla_module() then evaluates
-  # $<TARGET_PROPERTY:TIFF::TIFF,...> at generate time → "Target TIFF::TIFF not
-  # found", aborting configure. Feature is new in 3.8.x (absent from our 3.7.0
-  # pkg), so disabling it is zero regression. Drop this flag if upstream fixes
-  # the external-deps GeoTIFF wiring.
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS} -mno-sse4.2" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -mno-sse4.2" \
@@ -55,7 +47,6 @@ prepare() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPREFER_EXTERNAL_DEPS=ON \
-    -DENABLE_GEOTIFF=OFF \
     -DENABLE_DATA_TOOLS=On \
     -DENABLE_PYTHON_BINDINGS=On \
     -DENABLE_SERVICES=On \
