@@ -1,0 +1,23 @@
+pkgbase = portfolio-performance
+	pkgdesc = Track your investment portfolio performance – XDG base directory conforming
+	pkgver = 0.86.0
+	pkgrel = 1
+	url = https://www.portfolio-performance.info
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = archlinux-java-run
+	makedepends = java-environment=21
+	makedepends = maven
+	depends = gtk3
+	depends = java-runtime
+	optdepends = webkit2gtk-4.1: pie chart rendering without fallback to SWTChart
+	conflicts = portfolio
+	conflicts = portfolio-performance-bin
+	source = portfolio-performance-0.86.0.tar.gz::https://github.com/buchen/portfolio/archive/0.86.0.tar.gz
+	source = portfolio-performance
+	source = portfolio-performance.desktop
+	sha1sums = e434e8830a323fe0cc1a05a64a99c79bb926c02d
+	sha1sums = 0dd892ac5ad02ad52f12202bc986ee8685acb34e
+	sha1sums = cacc120b5270555da950e4f3583daa7e1ddba17c
+
+pkgname = portfolio-performance

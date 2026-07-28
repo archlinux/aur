@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/share/portfolio-performance/PortfolioPerformance -data "${XDG_CONFIG_HOME:-${HOME}/.config}/PortfolioPerformance" "$@"

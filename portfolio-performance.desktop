@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Portfolio Performance
+GenericName=Personal Finance
+Comment=Track and evaluate the performance of your investment portfolio across stocks, cryptocurrencies, and other assets.
+TryExec=portfolio-performance
+Exec=portfolio-performance %f
+Icon=portfolio-performance
+Terminal=false
+Categories=Office;Finance;
+StartupNotify=true
+StartupWMClass=Portfolio Performance
