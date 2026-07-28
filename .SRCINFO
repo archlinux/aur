@@ -1,6 +1,6 @@
 pkgbase = jre21-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 21.0.11
+	pkgver = 21.0.12.u8
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = jre21-zulu-bin.install
@@ -9,24 +9,32 @@ pkgbase = jre21-zulu-bin
 	license = custom
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	depends = nss
-	depends = libnet
+	depends = freetype2
 	depends = glibc
-	depends = gcc-libs
+	depends = harfbuzz
+	depends = lcms2
+	depends = libgcc
+	depends = libjpeg-turbo
+	depends = libnet
+	depends = libstdc++
+	depends = nss
+	depends = giflib
 	depends = libpng
-	conflicts = jdk21-openjdk
-	conflicts = jre21-openjdk
-	conflicts = jre21-openjdk-headless
-	conflicts = zulu-21-bin
-	conflicts = zulu21-fx-bin
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.11-1
-	provides = jre21-openjdk-headless=21.0.11-1
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.50.19-ca-jre21.0.11-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 649464c11d6e8256f0ef6740c84c3401056f6d584efc7c439abeca87a201a9ab
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.50.19-ca-jre21.0.11-linux_x64.tar.gz
-	sha256sums_x86_64 = a080f14957bf0f2951cc6e3fb7b3cbfc3c0a324b8ef7e23c714ef58ef0d76cbd
+	provides = jre21-openjdk=21.0.12.u8-1
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	provides = jre21-openjdk-headless=21.0.12.u8-1
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.52.15-ca-jre21.0.12-linux_aarch64.tar.gz
+	source_aarch64 = freedesktop-java.desktop
+	sha256sums_aarch64 = 8301c06f6e020d09fd30068160adc12d33728c11c03d9ace3a1087be8e84f6e2
+	sha256sums_aarch64 = 64e1442e837d09e950059c56e0908107488edfbf7cf9c0b71fa8442ea3451270
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.52.15-ca-jre21.0.12-linux_x64.tar.gz
+	source_x86_64 = freedesktop-java.desktop
+	sha256sums_x86_64 = 8e0374ffe9ff662c2f6b1872d6b48ab3859f69de11afe583af363264d24b299f
+	sha256sums_x86_64 = 64e1442e837d09e950059c56e0908107488edfbf7cf9c0b71fa8442ea3451270
+
 pkgname = jre21-zulu-bin
