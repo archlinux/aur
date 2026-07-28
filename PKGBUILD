@@ -1,8 +1,8 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=alabamaencoder
 pkgname=$_pkgname-git
-pkgver=0.5.4.c376.70298b1
+pkgver=.r381.a46b4a8
 pkgrel=1
 pkgdesc='Video encoder framework with a focus on chunked target quality encoding'
 arch=(x86_64)
@@ -35,11 +35,10 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd $_pkgname
-  printf %s.c%s.%s \
-    $(grep -oP 'version=\"\K[^\"]+' setup.py) \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short HEAD)
+  local _ver=$(grep -oP 'version="\K[^"]+' $_pkgname/setup.py)
+  printf '%s.r%s.%s' "$_ver" \
+    "$(git -C $_pkgname rev-list --count HEAD)" \
+    "$(git -C $_pkgname rev-parse --short HEAD)"
 }
 
 build() {
