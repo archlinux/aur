@@ -1,5 +1,5 @@
 pkgbase = maa-assistant-arknights
-	pkgver = 6.14.0beta.1
+	pkgver = 6.15.0beta.3
 	pkgrel = 1
 	url = https://github.com/MaaAssistantArknights/MaaAssistantArknights
 	install = maa-assistant-arknights.install
@@ -10,13 +10,12 @@ pkgbase = maa-assistant-arknights
 	makedepends = git
 	makedepends = cmake
 	makedepends = cuda
-	makedepends = gcc13
 	depends = opencv
 	depends = onnxruntime
-	source = git+https://github.com/MaaAssistantArknights/MaaAssistantArknights.git#tag=v6.14.0-beta.1
+	source = git+https://github.com/MaaAssistantArknights/MaaAssistantArknights.git#tag=v6.15.0-beta.3
 	source = git+https://github.com/MaaXYZ/MaaUtils.git
 	source = FastDeploy-e962983da6daba7d0c12f6bf5f8ff7173be70982.tar.gz::https://github.com/MaaXYZ/FastDeploy/archive/e962983da6daba7d0c12f6bf5f8ff7173be70982.tar.gz
-	md5sums = ba5e7c964b7bae7834e1ec17cc17f0ef
+	md5sums = 16d2ed62e26ee39d8f3b19ca5ca57dac
 	md5sums = SKIP
 	md5sums = 4555f8dce0cec02022356d50c8f2275c
 
