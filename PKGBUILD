@@ -9,7 +9,7 @@ pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
 pkgrel=13
 arch=('i686' 'x86_64' 'armv7h')
-license=('LGPL')
+license=('LGPL-2.0-or-later')
 makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia'
              'libvisual' 'libvorbis' 'libtheora' 'pango' 'cairo' 'gobject-introspection'
              'glib2-devel' 'libxml2')

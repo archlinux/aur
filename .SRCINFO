@@ -5,7 +5,7 @@ pkgbase = gstreamer0.10-base
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = LGPL
+	license = LGPL-2.0-or-later
 	makedepends = gstreamer0.10>=0.10.36
 	makedepends = orc
 	makedepends = libxv
