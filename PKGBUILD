@@ -2,7 +2,7 @@
 pkgname=ddos
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Arunachalam's ARC-GHOST: Cyberpunk Authorized Security Assessment & Targeted Process Isolation Suite built for Linux by a 7-year veteran builder (Tamil Nadu, India)"
+pkgdesc="Arunachalam's ARC-GHOST: Cyberpunk Authorized Security Assessment & Targeted Process Isolation Suite built for Linux by a 7-year veteran builder (Tamil Nadu), India."
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/Ddos"
 license=('MIT')
