@@ -12,8 +12,6 @@ depends=(gcc-libs)
 makedepends=(
   git
   cmake
-  clang
-  lld
   perl
   yasm
   vmaf
@@ -32,13 +30,11 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  git -C $_pkgname describe --long --tags | \
-    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/-r\1.\2/; s/-/./g'
+  git -C $_pkgname describe --long --tags |
+    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/.r\1.\2/; s/-/./g'
 }
 
 build() {
-  export CC=clang CXX=clang++
-  export LDFLAGS+=' -fuse-ld=lld'
   CFLAGS=${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=0}
   CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=0}
   cmake -S $_pkgname -B build \
