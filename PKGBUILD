@@ -2,7 +2,7 @@
 
 pkgname=st-aegix-git
 _pkgname=st
-pkgver=r13.17faeee
+pkgver=r14.01f49ad
 pkgrel=1
 pkgdesc="Aegix Linux's custom build of st (simple terminal) with harfbuzz support and aegix-flavored config"
 arch=('x86_64')
