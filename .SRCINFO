@@ -1,6 +1,6 @@
 pkgbase = thpm-git
 	pkgdesc = Omarchy 4-native manager for external theme integrations (git)
-	pkgver = 1.0.0rc12.r0.g3534c6c
+	pkgver = 1.0.0rc13.r0.g861cd62
 	pkgrel = 1
 	url = https://github.com/oldjobobo/thpm
 	arch = any
