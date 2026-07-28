@@ -1,15 +1,15 @@
 pkgbase = eavs
 	pkgdesc = Unified API gateway for LLM providers with virtual API keys and usage tracking
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/eavs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	source_x86_64 = eavs-0.7.3-x86_64.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.7.3/eavs-v0.7.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e257d199d07027838b9044e91ccd17e91138f549b7d3deb55af98d09489eb15a
-	source_aarch64 = eavs-0.7.3-aarch64.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.7.3/eavs-v0.7.3-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c1faa84baace756b9013be7cf86accaf3c514715deb2d23deb71ab54735d08f9
+	source_x86_64 = eavs-0.8.0-x86_64.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.8.0/eavs-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 48838351c144b34d2cd1715d2c2edcc0dac4c69f1c4b1f73b44dbdf25e95e6ae
+	source_aarch64 = eavs-0.8.0-aarch64.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.8.0/eavs-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3cb27f311cc4f6f7f5bd8cfb3112dc5d53e5caa48c1bfe2a543d115de6a50872
 
 pkgname = eavs
