@@ -1,0 +1,4 @@
+[cargo-diet]
+source = "git"
+git = "https://github.com/the-lean-crate/cargo-diet.git"
+prefix = "v"
