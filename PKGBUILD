@@ -2,8 +2,8 @@
 # Contributor: liyp <my@liyp.cc>
 
 pkgname=uudeck-bwrap
-pkgver=14.3.0
-pkgrel=2
+pkgver=14.4.20
+pkgrel=1
 pkgdesc="Simplified UU Accelerator for Steam Deck on Arch Linux, with some extra patches"
 arch=('x86_64')
 license=('custom')
@@ -15,7 +15,7 @@ install=uudeck.install
 source=("uu.tar.gz::https://uurouter.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v${pkgver}/uu.tar.gz"
         "launch.sh"
         "uuplugin.service")
-sha256sums=('e2549c755a15eee36851a2d1bb0191e7110658159950eb7ab821b2fafb438024'
+sha256sums=('964c92bdf1f26dbe07d274aa315eb014a84e9c29532edaaf6f3abe28980268ba'
             '3cd77d7249cdc90a3ab6622ce18ef2bf2f24edb83ce50132f6717b96218b2529'
             'b77dff2fa1f2e0b9237cda9d56158a644414a1ce22c788d9a43887f77ab39f20')
 
