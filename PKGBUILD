@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.24.r8.gd29dabe.pandoc.3.10
+pkgver=0.3.24.r8.gd29dabe.pandoc.3.10.1
 _pandoc_type=version
-_pandoc_ver=3.10
-_pandoc_lua_ver=0.5.3
-_pandoc_commit=9376458c26d25d222e5a898ede254ebb2f47ffbe
+_pandoc_ver=3.10.1
+_pandoc_lua_ver=0.5.3.1
+_pandoc_commit=d6011e4465d4cb0d0a6fb872dab3ed089f404a75
 pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
@@ -97,6 +97,7 @@ prepare() {
   _bumpVer commonmark-pandoc 0.3
   _bumpVer djot 0.1.4.1
   _bumpVer doclayout 0.5.0.3
+  _bumpVer emojis 0.1.5
   _bumpVer hslua 2.5.0
   _bumpVer hslua-module-doclayout 1.2.1.1
   _bumpVer hslua-module-path 1.2.0
@@ -108,12 +109,13 @@ prepare() {
   _bumpVer hslua-packaging 2.4.1
   _bumpVer hslua-typing 0.2.0
   _bumpVer pandoc-lua-marshal 0.3.2.1
+  _bumpVer pandoc-types 1.23.1.2
   _bumpVer skylighting 0.14.7
   _bumpVer skylighting-core 0.14.7
   _bumpVer skylighting-format-typst 0.1
-  _bumpVer texmath 0.13.1.2
-  _bumpVer typst 0.10
-  _bumpVer typst-symbols 0.2
+  _bumpVer texmath 0.13.2
+  _bumpVer typst 0.11
+  _bumpVer typst-symbols 0.3
 }
 
 build() {
