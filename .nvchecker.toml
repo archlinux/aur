@@ -1,0 +1,6 @@
+[mystiq]
+source = "git"
+git = "https://github.com/biglinux/MystiQ.git"
+include_regex = 'mystiq-[0-9.]+-[0-9]+-x86_64'
+from_pattern = 'mystiq-([0-9.]+)-([0-9]+)-x86_64'
+to_pattern = '\1+\2'
