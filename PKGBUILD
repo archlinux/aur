@@ -2,7 +2,7 @@
 
 pkgname=dwmblocks-aegix-git
 _pkgname=dwmblocks
-pkgver=r4.7ad2c17
+pkgver=r7.11a36ab
 pkgrel=1
 pkgdesc="Aegix Linux's custom build of dwmblocks (modular status bar for dwm) with aegix-flavored block config"
 arch=('x86_64')
