@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=uefi-manager
-pkgver=26.07
+pkgver=26.07.1
 pkgrel=1
 pkgdesc="A graphical tool for managing UEFI boot entries"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ depends=('efibootmgr' 'qt6-base' 'polkit')
 provides=('uefi-manager')
 conflicts=('uefi-manager')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.07.tar.gz")
-sha256sums=('b47590aea00df3243609ea58fbda23aebfee7b602229cf985195d1f91246415e')
+source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.07.1.tar.gz")
+sha256sums=('282c5a7b910f06265eecea9b5016f8c174a8689c78f02f0102680526e340f1f7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
