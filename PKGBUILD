@@ -3,7 +3,7 @@
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
 pkgver=1.3.r0.gd75c560
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
@@ -71,6 +71,6 @@ package() {
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/voicefox
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 	install -Dm644 assets/voicefox.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 icons/512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.desktop"
-	install -Dm644 icons/1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.desktop"
+	install -Dm644 icons/512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+	install -Dm644 icons/1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
 }
