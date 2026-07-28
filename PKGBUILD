@@ -1,6 +1,6 @@
 pkgname=bearhub-git
-pkgver=0.10.7.r2372.g70988336
-pkgrel=5
+pkgver=0.10.7.r2385.g4d5e5cd7
+pkgrel=1
 pkgdesc="Arch-first package manager hub (development snapshot, fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -12,6 +12,8 @@ depends=(
   'python-colorama'
   'python-pyyaml'
   'python-dateutil'
+  'qt5-svg'
+  'hicolor-icon-theme'
 )
 optdepends=(
   'python-lxml: web application support'
@@ -28,7 +30,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/bearhub"
   local ver
-  ver="$(sed -n "s/^__version__ = '\(.*\)'/\1/p" bauh/__init__.py)"
+  ver="$(sed -n "s/^__version__ = '\(.*\)'/\1/p" bearhub/__init__.py)"
   printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
