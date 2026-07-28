@@ -1,6 +1,6 @@
 # Maintainer: Loek Le Blansch <loek dot le-blansch dot pv at renesas dot com>
 pkgname=e2-studio-bin
-pkgver=2025.12
+pkgver=2026.07
 pkgrel=1
 epoch=1
 pkgdesc="Eclipse-based IDE for Renesas MCUs"
@@ -13,13 +13,13 @@ optdepends=(arm-none-eabi-gcc)
 provides=(e2-studio)
 conflicts=(e2-studio)
 options=(!strip !debug)
-_installer="e2studio_installer-${pkgver/./-}_linux_host.run"
+_installer="e2studio_installer-${pkgver/./-}${_rc:+.}${_rc}_linux_host.run"
 source=(
 	"file:///$_installer"
 	"e2-studio.desktop"
 )
 sha256sums=(
-	'581dd4c52f1b51fd5b3199b3703890a3f840507b1d92133065504c678d286418'
+	'760d166dfda097eb2d00598bae29e75525785c208b70ee88b6c5ff6bc2afa7b7'
 	'722d40188bbbc7925aa7b264d79817548edbf0e3d01f8195eea2880bc60a1c95'
 )
 
