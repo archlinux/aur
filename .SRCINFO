@@ -1,18 +1,21 @@
 pkgbase = xboomx
 	pkgdesc = A wrapper for most common occurrences in dmenu
-	pkgver = 2025.02.26
+	pkgver = 2026.07.27
 	pkgrel = 1
 	url = https://github.com/sciunto-org/xboomx
 	arch = any
 	license = GPL-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-sqlalchemy
 	depends = dmenu
 	provides = xboomx
 	conflicts = xboomx
 	conflicts = xboomx-snilius
-	source = https://github.com/sciunto-org/xboomx/archive/refs/tags/2025.02.26.zip
-	sha512sums = 70aa1a62d49ae14e7af23132ea8fb33c079118ebcaa9aa024153fd1152f246ce2925f0784f3282758d5c45d59514f4b3a894c2804055cb8f3ae5f62e4fb8b8c2
+	source = https://github.com/sciunto-org/xboomx/archive/refs/tags/v2026.07.27.zip
+	sha512sums = 31d72ed3017b76467951cfe867553099343dcff891e102bb033d935563a374e20969709bf5c32ef92a9a1e99f2346bd00f3817d94d7576b48880c53daa92b241
 
 pkgname = xboomx
