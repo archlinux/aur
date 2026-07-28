@@ -39,7 +39,7 @@ sha256sums_aarch64=('50acd4c7a3b8ebfe5083d8350956057030c44be3515dedd55b45263495c
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/trufflehog" <<EOF
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_appname}" <<EOF
 #!/usr/bin/sh
 
 exec /usr/lib/${_appname}/${_appname} --no-update "\$@"
