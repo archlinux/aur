@@ -2,7 +2,7 @@
 
 _pkgname=alabamaencoder
 pkgname=$_pkgname-git
-pkgver=.r381.a46b4a8
+pkgver=0.5.4.r381.a46b4a8
 pkgrel=1
 pkgdesc='Video encoder framework with a focus on chunked target quality encoding'
 arch=(x86_64)
