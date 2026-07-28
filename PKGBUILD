@@ -35,7 +35,7 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  local _ver=$(grep -oP 'version="\K[^"]+' $_pkgname/setup.py)
+  local _ver=$(grep -oP 'version = "\K[^"]+' $_pkgname/pyproject.toml)
   printf '%s.r%s.%s' "$_ver" \
     "$(git -C $_pkgname rev-list --count HEAD)" \
     "$(git -C $_pkgname rev-parse --short HEAD)"
