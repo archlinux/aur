@@ -1,0 +1,36 @@
+pkgbase = vaxp-aether
+	pkgdesc = Aether – a wlroots-based Wayland compositor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vaxp/aether
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = wayland
+	makedepends = gcc
+	makedepends = libdrm
+	makedepends = pixman
+	depends = wayland
+	depends = wlroots
+	depends = libxkbcommon
+	depends = libinput
+	depends = pcre2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = xcb-util-wm
+	depends = libxcb
+	depends = xwayland
+	optdepends = xdg-desktop-portal: screen capture / portal support
+	optdepends = xdg-desktop-portal-wlr: wlroots XDG portal backend
+	provides = vaxp-aether
+	source = vaxp-aether::git+https://github.com/vaxp/aether.git#branch=main
+	source = scenefx::git+https://github.com/wlrfx/scenefx.git#tag=0.4.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vaxp-aether
