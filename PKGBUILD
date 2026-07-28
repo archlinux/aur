@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dec5b053b58acffc4e5d3ae0131aff0681c4a1a343db08b3343fea6dbc172d15')
+sha256sums=('77437a7500fb6561741c84a64791e6db7f722483cdf6e248b6ed5c8f1af71e1f')
 
 # Owner this release was cut from. Synced from config/packaging.json by
 # scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
@@ -69,7 +69,7 @@ package() {
   cp -a . "$libdir/"
 
   # Only the two entry points go on PATH; `glovebox` dispatches to its
-  # glovebox-* siblings from within libdir/bin.
+  # bin/subcommands/ scripts from within libdir/bin.
   install -d "$pkgdir/usr/bin"
   local wrapper
   for wrapper in glovebox claude-github-app; do
