@@ -1044,8 +1044,10 @@ def run_qt_app(engine):
 
         def save_config(self):
             mode_str = "single"
-            if self.seq_mode_rb.isChecked(): mode_str = "sequence"
-            elif self.text_mode_rb.isChecked(): mode_str = "text"
+            if hasattr(self, 'stack_widget'):
+                idx = self.stack_widget.currentIndex()
+                if idx == 1: mode_str = "sequence"
+                elif idx == 2: mode_str = "text"
 
             cfg = {
                 "mode": mode_str,
@@ -1296,11 +1298,11 @@ def run_qt_app(engine):
 
             saved_mode = self.saved_config.get("mode", "single")
             if saved_mode == "sequence":
-                self.seq_mode_rb.setChecked(True)
+                self.stack_widget.setCurrentIndex(1)
             elif saved_mode == "text":
-                self.text_mode_rb.setChecked(True)
+                self.stack_widget.setCurrentIndex(2)
             else:
-                self.single_mode_rb.setChecked(True)
+                self.stack_widget.setCurrentIndex(0)
 
             self.stack_widget.currentChanged.connect(self.on_mode_changed)
 

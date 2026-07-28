@@ -1,6 +1,6 @@
 pkgbase = mahmoud-presser
 	pkgdesc = Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/Mimogu/mahmoud-presser
 	arch = any
