@@ -84,16 +84,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-	_SERVER_ROOT=/opt/azeroth-server
-	_SRC_DIR=/opt/azerothcore
-
-	sudo rm -rf ${_SERVER_ROOT}
-	sudo rm -rf ${_SRC_DIR}
-
-	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_auth"
-	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_characters"
-	sudo mysql -u root -e "DROP DATABASE IF EXISTS acore_world"
-
 	sudo systemctl stop acore-auth-server.service
 	sudo systemctl stop acore-world-server.service
 

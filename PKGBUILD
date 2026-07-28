@@ -27,11 +27,6 @@ options=(!lto !debug strip)
 provides=('azerothcore')
 conflicts=('azerothcore')
 
-backup=(
-  'etc/azerothcore/authserver.conf'
-  'etc/azerothcore/worldserver.conf'
-)
-
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-auth-server.service"
 		"acore-world-server.service")
