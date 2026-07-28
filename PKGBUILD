@@ -1,7 +1,7 @@
 # Maintainer: maintainer@speakoflow.com
 
 pkgname=speakoflow-appimage
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An ai transcriber to transcribe your thoughts faster than you can type."
 
