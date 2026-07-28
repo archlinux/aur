@@ -1,0 +1,21 @@
+pkgbase = kdegraphics-thumbnailer-ooxml
+	pkgdesc = KDE thumbnail plugin for Microsoft Office documents
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/leaeasy/kde-thumbnailer-ooxml
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = karchive
+	depends = kcoreaddons
+	depends = kio
+	depends = qt6-base
+	optdepends = catdoc: preview support for legacy .doc, .ppt and .xls files
+	optdepends = cmark: preview support for Markdown files
+	source = kde-thumbnailer-ooxml-0.3.0.tar.gz::https://github.com/leaeasy/kde-thumbnailer-ooxml/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = d0fd462239c19060c5c6c08b944d1530d0672923f32d2f8718cfe5d32561c079
+
+pkgname = kdegraphics-thumbnailer-ooxml
