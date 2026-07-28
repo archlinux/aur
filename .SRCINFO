@@ -24,7 +24,6 @@ pkgbase = teb-obs
 	depends = glibc
 	depends = jack
 	depends = jansson
-	depends = libajantv2>=17.5.0
 	depends = libdatachannel>=0.24
 	depends = libfdk-aac
 	depends = libgl

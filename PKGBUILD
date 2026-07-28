@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 _obsversion="32.1.0-enhanced-broadcasting-v62"
 _obsversionbranch="release/v62"
 _qtver=6.10.0
-_libajantv2ver=17.5.0
+#_libajantv2ver=17.5.0
 _libdatachannelver=0.24
 _mbedtlsver=3.6.1
 _pythonver=3.14
@@ -26,7 +26,7 @@ depends=(
   "glibc" # Deps of any C related binary
   "jack" # Deps of JACK plugin
   "jansson" # Deps of libobs and rtmp-services plugin
-  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
+  #"libajantv2>=$_libajantv2ver" # Deps of AJA plugins
   "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
@@ -124,6 +124,7 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DENABLE_NVENC=ON \
+    -DENABLE_AJA=OFF \
     -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="${_obsversion}" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
