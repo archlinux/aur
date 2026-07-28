@@ -2,7 +2,7 @@
 # Contributor: Huynh Thien Khiem <my_github_name 2000 at gmail dot com>
 
 pkgname=euphonica
-pkgver=0.99.4
+pkgver=0.99.5
 pkgrel=1
 pkgdesc="An MPD client with delusions of grandeur, made with Rust, GTK and Libadwaita"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(cairo dbus dconf glib2 glibc gcc-libs graphene gtk4 hicolor-icon-theme
 makedepends=(cargo clang meson)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}-beta.tar.gz)
-sha256sums=('3d55e16f805849fdbe8634b0433b26205e7a6f0bd7591fc8a2ed8d7b59312ae3')
+sha256sums=('7dedb56d1f4f51cf38a5f759fe8df58e308260c3691fe7911648f509ba8c8272')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable

@@ -1,6 +1,6 @@
 pkgbase = euphonica
 	pkgdesc = An MPD client with delusions of grandeur, made with Rust, GTK and Libadwaita
-	pkgver = 0.99.4
+	pkgver = 0.99.5
 	pkgrel = 1
 	url = https://github.com/htkhiem/euphonica
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = euphonica
 	depends = sqlite
 	depends = xdg-desktop-portal-gtk
 	options = !lto
-	source = euphonica-0.99.4.tar.gz::https://github.com/htkhiem/euphonica/archive/refs/tags/v0.99.4-beta.tar.gz
-	sha256sums = 3d55e16f805849fdbe8634b0433b26205e7a6f0bd7591fc8a2ed8d7b59312ae3
+	source = euphonica-0.99.5.tar.gz::https://github.com/htkhiem/euphonica/archive/refs/tags/v0.99.5-beta.tar.gz
+	sha256sums = 7dedb56d1f4f51cf38a5f759fe8df58e308260c3691fe7911648f509ba8c8272
 
 pkgname = euphonica
