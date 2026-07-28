@@ -1,6 +1,6 @@
 # Maintainer: KercyDing <dkx215417@gmail.com>
 pkgname=sculk-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 _releasever=${pkgver//_/-}
 pkgdesc="Minecraft P2P multiplayer tunnel CLI"
@@ -11,7 +11,7 @@ provides=("sculk=${pkgver}" "sculk-cli=${pkgver}")
 conflicts=('sculk' 'sculk-git' 'sculk-cli-bin' 'sculk-cli-git')
 replaces=('sculk-cli-bin')
 source=("sculk-${pkgver}::${url}/releases/download/v${_releasever}/sculk-linux-amd64")
-sha256sums=('40ba6ad852b2fdb7056b49826fe6a6eac9d097b99c368002aeafbdd45c050171')
+sha256sums=('b859f3edf4653065b850d50b8d06c21806f2a7d125a1d0564913c78357650375')
 
 package() {
     install -Dm755 "${srcdir}/sculk-${pkgver}" "${pkgdir}/usr/bin/sculk"
