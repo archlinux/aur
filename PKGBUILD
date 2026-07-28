@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=2.2.0
-_version=c948bd9dc56221a6f21c345f8c3f77f7574d0cfc-257651054
+pkgver=3.2.2
+_version=4318e1d3aa81935708fe621c4121287d83f5bd68-262762091
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -43,34 +43,24 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('a8bc5fd3f812e99060966d24f38295a1b07874e82bb5f28bfa8633b0f173af39'
+sha256sums=('463871c6f4f1ca35328f02d6c81aaeec1d6aa998e4ca5c6c206c39a8f6cf3ae0'
             'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('cd58013e25bcd8563947e6b73a29ff762e8316d7d0694e3327fc542ac169ad84')
+sha256sums_x86_64=('2a3475ab89a8b7415f24da0e5f8dbb8e6b7da0c7e4cae622a521441ab161e562')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(_get_app_dir)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     _check_electron_version
