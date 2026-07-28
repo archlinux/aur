@@ -25,6 +25,7 @@ pkgbase = vkbasalt-redemp-git
 pkgname = vkbasalt-redemp-git
 	depends = glibc
 	depends = libgcc
+	depends = libstdc++
 	depends = libx11
 	provides = vkbasalt
 	conflicts = vkbasalt

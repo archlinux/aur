@@ -63,7 +63,7 @@ build() {
 }
 
 package_vkbasalt-redemp-git() {
-  depends=('glibc' 'libgcc' 'libx11')
+  depends=('glibc' 'libgcc' 'libstdc++' 'libx11')
   provides=('vkbasalt')
   conflicts=('vkbasalt')
 
