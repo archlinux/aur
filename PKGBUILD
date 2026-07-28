@@ -1,5 +1,5 @@
 pkgname=test-yourself
-pkgver=2.0.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A modern, highly-polished quiz and testing application"
 arch=('x86_64')
@@ -36,4 +36,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   cp -r src-tauri/target/release/bundle/deb/*/data/usr "$pkgdir/"
+  
+  # Ensure the desktop file passes the URI to the app via %u
+  find "$pkgdir/usr/share/applications" -name "*.desktop" -exec sed -i 's/^Exec=\(.*\)$/Exec=\1 %u/' {} +
 }
