@@ -1,0 +1,5 @@
+[grid-rs-bin]
+source = "github"
+github = "isene/grid"
+use_latest_release = true
+prefix = "v"
