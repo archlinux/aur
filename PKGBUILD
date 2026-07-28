@@ -15,7 +15,7 @@
 # Maintainer: bilibili_xiaok <the_xiaok@qq.com>
 # Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
-pkgver=0.62.0
+pkgver=0.65.1
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source_x86_64=("xmcl-${pkgver}-x64.tar.xz::https://github.com/Voxelum/x-minecraf
 
 sha256sums=('01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
-sha256sums_x86_64=('d152bce6b745975a603b305a1dd3208bb04ef3e0c5deafa463d66cec497d08db')
+sha256sums_x86_64=('7299a3683e88057e435285ba4f314de8932c9e5d3bc9161243b4fc8c7de32d8c')
 
 prepare() {
   bsdtar -xf "xmcl-${pkgver}-x64.tar.xz"
