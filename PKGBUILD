@@ -36,10 +36,10 @@ package() {
 	cd "${srcdir}"
 
 
-	# binary file
+	echo "Installing the binary file."
 	install -vDm755 "bin/${_pkgname}" -t "${pkgdir}/usr/bin/"
 
-	# man pages
+	echo "Installing man pages."
 	(
 		cd share/man/man1
 		for each in *; do
@@ -47,7 +47,7 @@ package() {
 		done
 	)
 
-	# license
+	echo "Installing the license file."
 	install -vDm644 "${_pkgname}_license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	echo "Generating shell completions."
