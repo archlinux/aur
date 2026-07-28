@@ -2,7 +2,7 @@
 # AUR package for mklang (ADR 0021 phase 3). Build from the PyPI sdist so the
 # released artifact is what ships; bump pkgver on every release (see README.md).
 pkgname=mklang
-pkgver=1.0.13
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A declarative language for LLM-driven state machines (reference interpreter)"
 arch=(any)
@@ -11,11 +11,13 @@ license=(Apache-2.0)
 depends=(python python-yaml python-jsonschema python-dotenv python-openai python-rich python-textual)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 checkdepends=(python-pytest python-mcp)
-optdepends=('python-mcp: mklang-mcp MCP server'
+# mklang-mcp targets MCP SDK v2 (`mcp>=2`); extra/python-mcp is still on the
+# 1.x line, so the server exits with an actionable hint until Arch catches up.
+optdepends=('python-mcp>=2: mklang-mcp MCP server'
             'python-argcomplete: shell completions')
 backup=(etc/mklang/runtime.yaml)
-source=("https://files.pythonhosted.org/packages/8c/9c/0754a7f82d0e385aaba0a103739f25e75e4c13919771b580e78bc6ae759a/mklang-$pkgver.tar.gz")
-sha256sums=('30d040ade8591c3bd633969ea49434fe1d910a1a644a0802a57111ddcf1fca00')
+source=("https://files.pythonhosted.org/packages/5e/10/56b9af17c917e38cce74d38d8b194874f6d7ea885fa07fa0ffe777cc4d82/mklang-$pkgver.tar.gz")
+sha256sums=('6a514862d7633a18a3a41a4ad3fa132397261ee421e954db7f18fb0da9e31fda')
 
 build() {
   cd "mklang-$pkgver"
