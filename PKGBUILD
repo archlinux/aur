@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)'
 arch=('x86_64')
@@ -11,11 +11,14 @@ depends=(
   'cjson' 'pango' 'gdk-pixbuf2' 'libdrm' 'systemd-libs'
   'vulkan-icd-loader'
   'xcb-util-wm' 'libxcb'
-  # Version-pinned: 0.18.0 calls fx_renderer_set_srgb_blending, which does not
-  # exist in earlier asteroidz-scenefx. Unpinned, pacman happily leaves an
-  # older scenefx in place and the build dies at link time on a missing symbol
-  # instead of pulling the companion package forward.
-  'asteroidz-scenefx>=0.18.0'
+  # asteroidz-scenefx is NOT a dependency any more: it lives in-tree at
+  # subprojects/asteroidz-scenefx and is linked statically, so there is no
+  # libasteroidz-scenefx-0.5.so to install or keep in version lockstep. What
+  # remains are the libraries IT pulls in, which the static link now makes
+  # asteroidz's own runtime dependencies:
+  'libglvnd'   # libEGL, libGLESv2 -- the GLES2 renderer
+  'mesa'       # libgbm
+  'lcms2'      # colour management
 )
 makedepends=('meson' 'ninja' 'wayland-protocols' 'vulkan-headers' 'glslang' 'git')
 optdepends=(
@@ -28,7 +31,11 @@ source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
+  # -Dtracy=false is the default and is stated anyway: an accidental profiling
+  # build would try to fetch subprojects/tracy.wrap from the network, which a
+  # clean-chroot build cannot do and should not want to.
   arch-meson "$pkgname" build \
+    -Dtracy=false \
     -Db_lto=true
   meson compile -C build
 }
