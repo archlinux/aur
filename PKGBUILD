@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  stack build --test --no-run-test
+  stack build --test --no-run-tests
 }
 
 check() {
