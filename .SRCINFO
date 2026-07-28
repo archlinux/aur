@@ -1,0 +1,19 @@
+pkgbase = kprompt-git
+	pkgdesc = AI Kubernetes CLI: natural language to a reviewable plan, applied after approval
+	pkgver = 0.6.0.r10.g7e73ecd
+	pkgrel = 1
+	url = https://kprompt.ai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = helm: plan Helm chart installs and upgrades
+	provides = kprompt=0.6.0
+	conflicts = kprompt
+	options = !debug
+	source = kprompt::git+https://github.com/kprompt/kprompt.git
+	sha256sums = SKIP
+
+pkgname = kprompt-git
