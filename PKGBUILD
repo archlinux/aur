@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=1.18.2
+pkgver=1.19.1
 _electronversion=42
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
