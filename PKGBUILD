@@ -44,4 +44,6 @@ package() {
     cp -a handlers "$pkgdir/usr/share/hcc/handlers"
     cp -a VERSION "$pkgdir/usr/share/hcc/VERSION"
     cp -a docs "$pkgdir/usr/share/hcc/docs"
+    cp -a completions "$pkgdir/usr/share/hcc/completions"
+    install -Dm644 completions/hcc.bash "$pkgdir/usr/share/bash-completion/completions/hcc"
 }
