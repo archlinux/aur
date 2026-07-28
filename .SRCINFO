@@ -1,7 +1,7 @@
 pkgbase = subhunter
 	pkgdesc = Automatic subtitle downloader for movies and TV series (GUI)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hyzokaaa/SubHunter
 	arch = any
 	license = MIT

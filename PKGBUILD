@@ -1,7 +1,7 @@
 # Maintainer: Carlos Daniel Robaina Rivero <orlando260501@gmail.com>
 pkgname=subhunter
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic subtitle downloader for movies and TV series (GUI)"
 arch=('any')
 url="https://github.com/Hyzokaaa/SubHunter"
@@ -38,6 +38,11 @@ package() {
   python -m venv --symlinks "$venv"
   "$venv/bin/pip" install --no-cache-dir --upgrade pip
   "$venv/bin/pip" install --no-cache-dir .
+
+  # pip bakes the build-time staging path ($pkgdir/opt/...) into the
+  # shebang of the generated launcher script, which doesn't exist once
+  # installed. Point it at the real runtime path instead.
+  sed -i "1s|^#!.*|#!/opt/$pkgname/venv/bin/python|" "$venv/bin/$pkgname"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/venv/bin/subhunter" "$pkgdir/usr/bin/$pkgname"
