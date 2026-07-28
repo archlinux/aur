@@ -12,7 +12,7 @@ _ver=37
 _ver_install=$_ver.$_minor.$_micro
 _displayversion=37
 pkgver=r37.0.0
-pkgrel=1
+pkgrel=2
 _sdk=android-sdk
 _android=android-37.0
 
