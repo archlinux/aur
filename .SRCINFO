@@ -1,7 +1,7 @@
 pkgbase = buzz-desktop-git
 	pkgdesc = Workspace where humans and agents build together (desktop client, git version)
 	pkgver = 0.5.0.r25.g90e058ebf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buzz.xyz
 	arch = x86_64
 	license = Apache-2.0
