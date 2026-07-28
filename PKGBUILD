@@ -1,6 +1,6 @@
 # Maintainer: KercyDing <dkx215417@gmail.com>
 pkgname=sculk-git
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Minecraft P2P multiplayer tunnel CLI (git version)"
 arch=('x86_64')
