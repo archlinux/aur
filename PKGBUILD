@@ -10,28 +10,19 @@ _extraargs=''
 _cmakeargs=''
 
 _pkgname='azerothcore-wotlk'
-pkgname='azerothcore-wotlk-git'
-pkgver=placeholder
+pkgname=('azerothcore-wotlk-git' 'azerothcore-clientdata-git')
+pkgver=r18936.9f66598caa
 pkgrel=1
 arch=('x86_64')
-pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 url="http://www.azerothcore.org"
 license=('AGPL3')
-
-install='azerothcore-wotlk-git.install'
-#backup=('usr/share/azerothcore/acore.json')
-
-# Core execution dependencies
-depends=('boost-libs' 'readline' 'openssl')
-makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
-options=(!lto !debug strip)
-provides=('azerothcore')
-conflicts=('azerothcore')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-auth-server.service"
 		"acore-world-server.service")
 sha512sums=('SKIP' "SKIP" "SKIP")
+
+makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -136,7 +127,18 @@ build() {
   	cmake --build build
 }
 
-package() {
+package_azerothcore-wotlk-git() {
+	pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
+	install='azerothcore-wotlk-git.install'
+	#backup=('usr/share/azerothcore/acore.json')
+
+	# Core execution dependencies
+	depends=('boost-libs' 'readline' 'openssl')
+	optdepends=('azerothcore-clientdata-git: To automatically provision pre-extracted map assets')
+	options=(!lto !debug strip)
+	provides=('azerothcore')
+	conflicts=('azerothcore')
+
 	# Directs files into Arch's strict isolated filesystem staging area
   	DESTDIR="${pkgdir}" cmake --install build
 
@@ -170,4 +172,43 @@ package() {
 	# Installs the systemd service units so the server can be managed with systemctl
   	install -Dm644 "${srcdir}/acore-auth-server.service" "${pkgdir}/usr/lib/systemd/system/acore-auth-server.service"
   	install -Dm644 "${srcdir}/acore-world-server.service" "${pkgdir}/usr/lib/systemd/system/acore-world-server.service"
+}
+
+package_azerothcore-clientdata-git() {
+	pkgdesc="Pre-extracted client map data assets (dbc, maps, vmaps, mmaps) for AzerothCore"
+	arch=('any')
+	depends=('azerothcore-wotlk-git')
+
+	local tmp_download="${srcdir}/runtime_assets"
+	mkdir -p "${tmp_download}"
+	install -d "${pkgdir}/usr/share/azerothcore/data"
+
+	echo " -> Resolving the latest map data release url from wowgaming..."
+	local latest_url="https://github.com/wowgaming/client-data/releases/latest/download/Data.zip"
+	
+	if [ -z "${latest_url}" ]; then
+		echo "ERROR: Failed to resolve the dynamic map URL from GitHub APIs."
+		exit 1
+	fi
+
+	echo " -> Downloading latest map data assets from: ${latest_url}"
+	curl -L "${latest_url}" -o "${tmp_download}/Data.zip"
+
+	echo " -> Extracting server map geometric data directly..."
+	unzip -q "${tmp_download}/Data.zip" -d "${tmp_download}"
+
+	local target_src=""
+	if [ -d "${tmp_download}/Data" ]; then
+		target_src="${tmp_download}/Data"
+	elif [ -d "${tmp_download}/data" ]; then
+		target_src="${tmp_download}/data"
+	else
+		target_src="${tmp_download}"
+	fi
+
+	cp -r "${target_src}/"[Cc]ameras "${pkgdir}/usr/share/azerothcore/data/Cameras"
+	cp -r "${target_src}/"[Dd][Bb][Cc]     "${pkgdir}/usr/share/azerothcore/data/dbc"
+	cp -r "${target_src}/"[Mm]aps         "${pkgdir}/usr/share/azerothcore/data/maps"
+	cp -r "${target_src}/"[Mm][Mm]aps     "${pkgdir}/usr/share/azerothcore/data/mmaps"
+	cp -r "${target_src}/"[Vv][Mm]aps     "${pkgdir}/usr/share/azerothcore/data/vmaps"
 }

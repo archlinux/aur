@@ -1,9 +1,7 @@
 pkgbase = azerothcore-wotlk-git
-	pkgdesc = AzerothCore - MMORPG Server - continuous build from master branch
-	pkgver = r18935.b0afc4fca8
+	pkgver = r18936.9f66598caa
 	pkgrel = 1
 	url = http://www.azerothcore.org
-	install = azerothcore-wotlk-git.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
@@ -12,14 +10,6 @@ pkgbase = azerothcore-wotlk-git
 	makedepends = boost
 	makedepends = openssl
 	makedepends = lld
-	depends = boost-libs
-	depends = readline
-	depends = openssl
-	provides = azerothcore
-	conflicts = azerothcore
-	options = !lto
-	options = !debug
-	options = strip
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	source = acore-auth-server.service
 	source = acore-world-server.service
@@ -28,3 +18,19 @@ pkgbase = azerothcore-wotlk-git
 	sha512sums = SKIP
 
 pkgname = azerothcore-wotlk-git
+	pkgdesc = AzerothCore - MMORPG Server - continuous build from master branch
+	install = azerothcore-wotlk-git.install
+	depends = boost-libs
+	depends = readline
+	depends = openssl
+	optdepends = azerothcore-clientdata-git: To automatically provision pre-extracted map assets
+	provides = azerothcore
+	conflicts = azerothcore
+	options = !lto
+	options = !debug
+	options = strip
+
+pkgname = azerothcore-clientdata-git
+	pkgdesc = Pre-extracted client map data assets (dbc, maps, vmaps, mmaps) for AzerothCore
+	arch = any
+	depends = azerothcore-wotlk-git
