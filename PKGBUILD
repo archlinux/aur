@@ -21,16 +21,6 @@ sha256sums=('SKIP'
             'f9ca6e004c28d8d2b3d9c1d4e15093edf4d436b1646e63aa5c53078b601ba9b9'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
-# --output_user_root keeps bazel's output base and caches in $srcdir instead of
-# ~/.cache/bazel. It is a startup option, so it has to arrive via an rc fragment:
-# bazel-natives.ts forwards $OMP_BAZEL_RC as `--bazelrc=` to its nested calls.
-_bazel_env() {
-    export OMP_BAZEL_RC="${srcdir}/aur-bazel.rc"
-    printf 'startup --output_user_root=%s\n' "${srcdir}/bazel-root" >"${OMP_BAZEL_RC}"
-    # bazel-natives.ts prefers bazelisk over bazel when it is installed.
-    export BAZELISK_HOME="${srcdir}/bazelisk-home"
-}
-
 prepare() {
     cd "${srcdir}/${pkgname}"
 
@@ -38,16 +28,12 @@ prepare() {
     patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
     patch -p1 -i "${srcdir}/tree-sitter-haskell-no-strict-aliasing.patch"
     # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
-    _bazel_env
-    CARGO_BAZEL_REPIN=1 bazel --bazelrc="${OMP_BAZEL_RC}" fetch @crates//...
+    CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-    _bazel_env
-    # Default is ~/.cache/.bun/install/cache.
-    export BUN_INSTALL_CACHE_DIR="${srcdir}/bun-cache"
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
     bun install --frozen-lockfile
@@ -58,7 +44,7 @@ build() {
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 
     # Release the server holding an output base under $srcdir.
-    bazel --bazelrc="${OMP_BAZEL_RC}" shutdown
+    bazel shutdown
 }
 
 _install_completions() {
