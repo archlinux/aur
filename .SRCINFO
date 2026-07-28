@@ -1,0 +1,32 @@
+pkgbase = splayer-next-unofficial_build
+	pkgdesc = A modern cross-platform music player built with Electron, Vue 3, and TypeScript (unofficial build)
+	pkgrel = 1
+	pkgurl = https://splayer.imsyy.top
+	pkgver = 1.0.0
+	arch = x86_64
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = nodejs>=22
+	makedepends = pnpm>=10
+	makedepends = rust
+	makedepends = cargo
+	makedepends = npm
+	options = !strip
+	source = splayer-next::git+https://github.com/SPlayer-Dev/SPlayer-Next.git
+	sha256sums = SKIP
+
+pkgname = splayer-next-unofficial_build
