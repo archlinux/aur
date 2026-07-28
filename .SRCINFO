@@ -1,0 +1,21 @@
+pkgbase = deepfilternet-plus-bin
+	pkgdesc = AI noise suppression: LADSPA mic plugin for EasyEffects/PipeWire and deep-filter CLI (prebuilt)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ismailivanov/DeepFilterNetPlus
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	optdepends = easyeffects: use the plugin as microphone noise suppression (Deep Noise Remover)
+	provides = deepfilternet-plus
+	provides = deep-filter
+	conflicts = deepfilternet-plus-git
+	source = deep-filter-1.0.0::https://github.com/ismailivanov/DeepFilterNetPlus/releases/download/v1.0.0/deep-filter-linux-x86_64
+	source = libdeep_filter_ladspa-1.0.0.so::https://github.com/ismailivanov/DeepFilterNetPlus/releases/download/v1.0.0/libdeep_filter_ladspa.so
+	source = LICENSE-MIT-1.0.0::https://github.com/ismailivanov/DeepFilterNetPlus/raw/v1.0.0/LICENSE-MIT
+	source = LICENSE-APACHE-1.0.0::https://github.com/ismailivanov/DeepFilterNetPlus/raw/v1.0.0/LICENSE-APACHE
+	sha256sums = 8efbb80f24cc3662c0e9b874d2e4719e803e78bacf2ea364257544012b783e02
+	sha256sums = cf6e5cf069985afb4bf73dd39d3c9146850bbbd37d11dcc1e0182cbaa555c50a
+	sha256sums = 24e6bb09c928af8d8e56268082f87413247ce36b39dd5d33add2f9893968065e
+	sha256sums = 1eaee808c5fb6b4e895ba30425285a5cdc5dd25bba2cd230f264c2200c331aec
+
+pkgname = deepfilternet-plus-bin
