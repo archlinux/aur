@@ -1,0 +1,12 @@
+pkgbase = bashing
+	pkgdesc = Bash Scripting, such as laravel environment, githelper and more
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RangS-1/Bashing
+	arch = any
+	license = MIT
+	depends = bash
+	source = bashing-1.0.0.tar.gz::https://github.com/RangS-1/Bashing/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 314ac521b75fb014fbb0407c49e0263f11bc011d20cf81c6530b0ba25cbe9fc9
+
+pkgname = bashing
