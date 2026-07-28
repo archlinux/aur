@@ -2,7 +2,7 @@
 
 pkgauthor=aaravmaloo
 pkgname=blob
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A minimal note manager that stays out of your way"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('glibc' 'libgcc')
 provides=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${pkgauthor}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('96b380773290784ca68108337b5a33f06c1869ade2b99897aaa6e3978a05a8e5')
+sha256sums=('971a323dbfa15b60ac047fe0301e0114ed4afe8be0fe6819bd123ab151669200')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
