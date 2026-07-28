@@ -28,7 +28,6 @@ prepare() {
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
   sed -e 's/static volatile gsize gonce_data/static gsize gonce_data/g' -i gst/gstutils.h
   
-  # Create local symlinks to required glib tools if needed
   if [ ! -f /usr/bin/glib-mkenums ]; then
     mkdir -p tools
     cat > tools/glib-mkenums <<'EOF'
@@ -47,14 +46,12 @@ EOF
     chmod +x tools/glib-genmarshal
   fi
   
-  # Run autogen script
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
   
-  # Add our tools directory to the PATH if it exists
   if [ -d "$PWD/tools" ]; then
     export PATH="$PWD/tools:$PATH"
   fi
