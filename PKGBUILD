@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-mysql
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB MySQL runtime library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('build2' 'mariadb-libs' 'libodb')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('456bc2624b232a1066cc22503a19b0492d17b5bd42eef3b0dba7ea85c78e705f')
+sha256sums=('d06b552a64d24fb542319733d3264b954bf361e77608391b721036814de267ff')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
