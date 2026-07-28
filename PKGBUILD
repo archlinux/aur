@@ -5,7 +5,7 @@
 # Or:          paru -S .
 
 pkgname=spendo-git
-pkgver=f69ef57
+pkgver=a0d4752
 pkgrel=1
 pkgdesc='GnuCash financial data importer and explorer'
 arch=('x86_64')

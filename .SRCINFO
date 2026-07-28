@@ -1,6 +1,6 @@
 pkgbase = spendo-git
 	pkgdesc = GnuCash financial data importer and explorer
-	pkgver = f69ef57
+	pkgver = a0d4752
 	pkgrel = 1
 	url = https://codeberg.org/lewisflames/spendo
 	arch = x86_64
