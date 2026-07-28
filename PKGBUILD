@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=17.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -12,13 +12,13 @@ makedepends=('bazel' 'bun' 'git')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
-    "tree-sitter-haskell-no-strict-aliasing.patch"
+    "tree-sitter-no-strict-aliasing.patch"
     "use-system-opus-pcre2.patch"
     "skip-native-embed-for-aur.patch"
     "embed-header-generator-data.patch"
 )
 sha256sums=('SKIP'
-            '42fe8c3a932b9c162a5092972d2623f254936fb22f4268aa8332651cadac9ce0'
+            'a3af6b88fa05125f1ba0e9b25b0fad769446fdea9707a145385bd28429ffdd32'
             'b15916b7fa894f498c66562dad5045479143722b033f6a1fb90377abdc6b1ac5'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
             '09317a262db1a314cbf2a7f4efcfbcead37d000e148c82512abd5f533d857b3e')
@@ -28,7 +28,7 @@ prepare() {
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
-    patch -p1 -i "${srcdir}/tree-sitter-haskell-no-strict-aliasing.patch"
+    patch -p1 -i "${srcdir}/tree-sitter-no-strict-aliasing.patch"
     patch -p1 -i "${srcdir}/embed-header-generator-data.patch"
     # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
     CARGO_BAZEL_REPIN=1 bazel fetch @crates//...

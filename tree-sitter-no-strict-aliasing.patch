@@ -1,0 +1,45 @@
+diff --git a/MODULE.bazel b/MODULE.bazel
+index 7846ae953b..ff9537afb0 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -153,6 +153,40 @@ crate.annotation(
+     build_script_env = {"CFLAGS": "-UNDEBUG"},
+ )
+ 
++# tree-sitter's `array.h` type-puns every `Array(T) *` through `Array(void) *`;
++# under -fstrict-aliasing (implied by -O2 and up) that miscompiles, e.g. the
++# tree-sitter-haskell scanner segfaults:
++# https://github.com/tree-sitter/tree-sitter-haskell/issues/144
++# Fixed upstream in tree-sitter 0.26.4 (tree-sitter/tree-sitter@ed6e42c), which
++# reworked the `_array__*` helpers to take individual fields. The crates below
++# still vendor a pre-0.26.4 `array.h` that a compiled translation unit includes
++# (`lib.c` for the runtime, `scanner.c` for the grammars); every other
++# tree-sitter crate here either ships the fixed header or never compiles it.
++[
++    crate.annotation(
++        crate = crate_name,
++        build_script_env = {"CFLAGS": "-fno-strict-aliasing"},
++    )
++    for crate_name in [
++        "tree-sitter",
++        "tree-sitter-astro-next",
++        "tree-sitter-bash",
++        "tree-sitter-erlang",
++        "tree-sitter-haskell",
++        "tree-sitter-html",
++        "tree-sitter-kotlin-sg",
++        "tree-sitter-php",
++        "tree-sitter-python",
++        "tree-sitter-ruby",
++        "tree-sitter-starlark",
++        "tree-sitter-svelte-next",
++        "tree-sitter-tlaplus",
++        "tree-sitter-vue-next",
++        "tree-sitter-xml",
++        "tree-sitter-yaml",
++    ]
++]
++
+ # `generate-bindings` is enabled for darwin so miniaudio's Rust bindings match
+ # its CoreAudio C layout. Build scripts execute for the host, however, so a
+ # macOS-hosted Linux cross-build also sees that feature. Use Cargo's TARGET to
