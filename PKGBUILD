@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,12 +6,12 @@
 pkgname='python-bsky-bridge-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.0.7.r3.gcc999d8
-pkgrel=2
-pkgdesc='Python module for the Bluesky social network API (latest commit)'
-arch=('any')
+pkgdesc='Python module for the Bluesky social network API (development version)'
+pkgver=1.1.0.r1.gc29372f
+pkgrel=1
 url='https://github.com/0xExal/bsky-bridge'
-license=('MIT')  # SPDX-License-Identifier: MIT
+arch=('any')
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -18,25 +19,27 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python>=3.6'
+  'python>=3.9'
   'python-pillow'
   'python-requests'
 )
-source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_srcname"
 
   git describe --tags --long \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_srcname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
@@ -45,8 +48,14 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README{,.es-ES}.md
+
+  for _dir in doc licenses; do
+    pushd "$pkgdir/usr/share/$_dir"
+    ln -srf "$pkgname" "$_pkgname"
+    popd
+  done > /dev/null
 }
 
 # eof
