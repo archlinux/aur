@@ -1,6 +1,6 @@
 # Maintainer: Johan Slåttavik
 pkgname=neon-breakout-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A colorful and relaxing Breakout game by Yeloby"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "io.github.Yeloby.NeonBreakout.svg::${url}/raw/v${pkgver}/packaging/flatpak/io.github.Yeloby.NeonBreakout.svg"
 )
 sha256sums=(
-  '7e08219102ced70616a9852366388604c36ab0a99b01c4d7bb1d3eb5f603752b'
+  'f9bbad7e7cbb0ea86a9565ae9cc69187e1dbfaaf611a2e31548e6705c800419a'
   '63300a6eed08e78999952ab1857de75c0751d545fb5abc32d295634046c8a951'
   '8b4c87d41069f614b1f2fba14148a45fe8381d567869a6525779c025932ca0ab'
 )

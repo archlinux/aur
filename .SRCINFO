@@ -1,6 +1,6 @@
 pkgbase = neon-breakout-bin
 	pkgdesc = A colorful and relaxing Breakout game by Yeloby
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/Yeloby/neon-breakout
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = neon-breakout-bin
 	depends = libxss
 	provides = neon-breakout
 	conflicts = neon-breakout
-	source = neon-breakout-1.5.2.tar.gz::https://github.com/Yeloby/neon-breakout/releases/download/v1.5.2/neon-breakout-1.5.2.tar.gz
-	source = io.github.Yeloby.NeonBreakout.desktop::https://github.com/Yeloby/neon-breakout/raw/v1.5.2/packaging/flatpak/io.github.Yeloby.NeonBreakout.desktop
-	source = io.github.Yeloby.NeonBreakout.svg::https://github.com/Yeloby/neon-breakout/raw/v1.5.2/packaging/flatpak/io.github.Yeloby.NeonBreakout.svg
-	sha256sums = 7e08219102ced70616a9852366388604c36ab0a99b01c4d7bb1d3eb5f603752b
+	source = neon-breakout-1.5.3.tar.gz::https://github.com/Yeloby/neon-breakout/releases/download/v1.5.3/neon-breakout-1.5.3.tar.gz
+	source = io.github.Yeloby.NeonBreakout.desktop::https://github.com/Yeloby/neon-breakout/raw/v1.5.3/packaging/flatpak/io.github.Yeloby.NeonBreakout.desktop
+	source = io.github.Yeloby.NeonBreakout.svg::https://github.com/Yeloby/neon-breakout/raw/v1.5.3/packaging/flatpak/io.github.Yeloby.NeonBreakout.svg
+	sha256sums = f9bbad7e7cbb0ea86a9565ae9cc69187e1dbfaaf611a2e31548e6705c800419a
 	sha256sums = 63300a6eed08e78999952ab1857de75c0751d545fb5abc32d295634046c8a951
 	sha256sums = 8b4c87d41069f614b1f2fba14148a45fe8381d567869a6525779c025932ca0ab
 
