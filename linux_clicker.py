@@ -901,6 +901,62 @@ def run_qt_app(engine):
         stop_signal = pyqtSignal()
         toggle_signal = pyqtSignal()
 
+
+    class KeyRecorderDialog(QDialog):
+        def __init__(self, parent=None):
+            super().__init__(parent)
+            self.setWindowTitle("Record Keybind")
+            self.setFixedSize(350, 180)
+            self.setWindowFlags(self.windowFlags() | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint)
+            self.setStyleSheet("background-color: #1e1e2e; color: #cdd6f4; border: 2px solid #89b4fa; border-radius: 8px;")
+            layout = QVBoxLayout(self)
+            self.lbl = QLabel("Press any key or combination...\n(e.g., CTRL + H, or Mouse Button)\n\nPress ESC to cancel.")
+            self.lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            self.lbl.setStyleSheet("font-size: 14px; font-weight: bold; border: none;")
+            layout.addWidget(self.lbl)
+            self.recorded_key = ""
+            self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
+            self.grabKeyboard()
+        
+        def keyPressEvent(self, event):
+            mods = []
+            if event.modifiers() & Qt.KeyboardModifier.ControlModifier: mods.append("CTRL")
+            if event.modifiers() & Qt.KeyboardModifier.AltModifier: mods.append("ALT")
+            if event.modifiers() & Qt.KeyboardModifier.ShiftModifier: mods.append("SHIFT")
+            if event.modifiers() & Qt.KeyboardModifier.MetaModifier: mods.append("SUPER")
+            
+            key = event.key()
+            if key == Qt.Key.Key_Escape and not mods:
+                self.reject()
+                return
+                
+            if key in [Qt.Key.Key_Control, Qt.Key.Key_Shift, Qt.Key.Key_Alt, Qt.Key.Key_Meta]:
+                return # Wait for actual key
+            
+            key_name = QKeySequence(key).toString().upper()
+            if not key_name and key < 256:
+                key_name = chr(key).upper()
+                
+            if key_name:
+                self.recorded_key = "+".join(mods + [key_name])
+                self.accept()
+                
+        def mousePressEvent(self, event):
+            mods = []
+            if event.modifiers() & Qt.KeyboardModifier.ControlModifier: mods.append("CTRL")
+            if event.modifiers() & Qt.KeyboardModifier.AltModifier: mods.append("ALT")
+            if event.modifiers() & Qt.KeyboardModifier.ShiftModifier: mods.append("SHIFT")
+            if event.modifiers() & Qt.KeyboardModifier.MetaModifier: mods.append("SUPER")
+            
+            btn = "Mouse 1"
+            if event.button() == Qt.MouseButton.RightButton: btn = "Mouse 3"
+            elif event.button() == Qt.MouseButton.MiddleButton: btn = "Mouse 2"
+            elif event.button() == Qt.MouseButton.ExtraButton1: btn = "Mouse 4"
+            elif event.button() == Qt.MouseButton.ExtraButton2: btn = "Mouse 5"
+            
+            self.recorded_key = "+".join(mods + [btn])
+            self.accept()
+
     class MahmoudPresserQtWindow(QWidget):
         def __init__(self):
             super().__init__()
@@ -1362,13 +1418,12 @@ def run_qt_app(engine):
                 self.stack_widget.setCurrentIndex(2)
 
         def start_record(self, btn, target_entry, is_sequence_record=False, is_start_stop_record=False):
-            btn.setText("Press Keys...")
-            btn.setEnabled(False)
-
-            def callback(res):
-                self.dispatcher.hotkey_recorded.emit(res, (btn, target_entry, is_sequence_record, is_start_stop_record))
-
-            record_hotkey_universal(callback)
+            dlg = KeyRecorderDialog(self)
+            if dlg.exec() == QDialog.DialogCode.Accepted and dlg.recorded_key:
+                res = dlg.recorded_key
+                self.on_hotkey_recorded(res, (btn, target_entry, is_sequence_record, is_start_stop_record))
+            else:
+                self.on_hotkey_recorded(None, (btn, target_entry, is_sequence_record, is_start_stop_record))
 
         def on_hotkey_recorded(self, res, refs):
             btn, target_entry, is_sequence_record, is_start_stop_record = refs
@@ -2329,11 +2384,7 @@ def main():
     else:
         success = False
         if IS_LINUX:
-            desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
-            if any(de in desktop for de in ["gnome", "xfce", "cinnamon", "mate", "pantheon"]):
-                success = run_gtk_app(engine) or run_qt_app(engine)
-            else:
-                success = run_qt_app(engine) or run_gtk_app(engine)
+            success = run_qt_app(engine) or run_gtk_app(engine)
         else:
             success = run_qt_app(engine) or run_gtk_app(engine)
             
