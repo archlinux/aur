@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.35.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('146daaebd948f2bbb8e46c31c139b79531c9a780f94f915a0fc4cac2ebcfb05b')
+sha256sums=('770abf7f91b13aba86cc7bb7d548b8e07c812d5a109321905e7b7da0ad07d998')
 
 package() {
     install -Dm755 "$srcdir/docker-sbx/sbx" \
@@ -28,8 +28,8 @@ package() {
         "$pkgdir/usr/libexec/mkfs.erofs"
     install -Dm644 "$srcdir/docker-sbx/nerdbox-kernel-x86_64" \
         "$pkgdir/usr/libexec/nerdbox-kernel-x86_64"
-    install -Dm644 "$srcdir/docker-sbx/nerdbox-initrd-x86_64" \
-        "$pkgdir/usr/libexec/nerdbox-initrd-x86_64"
+    install -Dm644 "$srcdir/docker-sbx/nerdbox-rootfs-x86_64.erofs" \
+        "$pkgdir/usr/libexec/nerdbox-rootfs-x86_64.erofs"
     install -Dm755 "$srcdir/docker-sbx/libsailor.so" \
         "$pkgdir/usr/libexec/lib/libsailor.so"
 
