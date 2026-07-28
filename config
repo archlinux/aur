@@ -1,8 +1,8 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 7.2.0-pf2 Kernel Configuration
+# Linux/x86 7.2.0-pf3 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="gcc (GCC) 16.1.1 20260625"
+CONFIG_CC_VERSION_TEXT="gcc (GCC) 16.1.1 20260725"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=160101
 CONFIG_CLANG_VERSION=0
