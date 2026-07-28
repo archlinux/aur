@@ -1,6 +1,6 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=bankai-bin
-pkgver=0.2.32
+pkgver=0.2.33
 pkgrel=1
 pkgdesc="Focused Electron workspace for persistent project shell sessions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('bankai')
 options=('!strip' '!debug')
 source=("bankai-$pkgver.AppImage::$url/releases/download/v$pkgver/Bankai-$pkgver.AppImage")
 noextract=("bankai-$pkgver.AppImage")
-sha256sums=('03321519033cb0643ebce2bf2859bec4bbfcc81dcab0bd5c906860b7f6b7e1b2')
+sha256sums=('f1b84d97f34f4b8fa7ab183f631a1d4b99d577620295dc6f8dafbb652d5f556e')
 
 prepare() {
 	chmod +x "bankai-$pkgver.AppImage"
@@ -25,6 +25,8 @@ package() {
 
 	rm -f "$pkgdir/opt/bankai/AppRun" "$pkgdir/opt/bankai/bankai.desktop" "$pkgdir/opt/bankai/bankai.png" "$pkgdir/opt/bankai/.DirIcon"
 	rm -rf "$pkgdir/opt/bankai/usr"
+
+	find "$pkgdir/opt/bankai" -type d -exec chmod 755 {} +
 
 	chmod 4755 "$pkgdir/opt/bankai/chrome-sandbox"
 
