@@ -1,0 +1,15 @@
+pkgbase = stoolap-git
+	pkgdesc = Modern Embedded SQL Database written in Rust
+	pkgver = 0.4.0.r
+	pkgrel = 1
+	url = https://github.com/stoolap/stoolap
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = git
+	provides = stoolap
+	conflicts = stoolap
+	source = stoolap-git::git+https://github.com/stoolap/stoolap
+	b2sums = SKIP
+
+pkgname = stoolap-git
