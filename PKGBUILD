@@ -1,4 +1,4 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 pkgname=chaptereditor
 pkgver=1.45
@@ -9,8 +9,9 @@ url=https://forum.doom9.org/showthread.php?t=169984
 license=()
 depends=()
 makedepends=(7zip)
+_url="https://forum.videohelp.com/attachments/82994-1729438370"
 source=(
-  $pkgname-v$pkgver.7z::"https://forum.videohelp.com/attachments/82994-1729438370/cE-L($pkgver).7z"
+  $pkgname-v$pkgver.7z::"$_url/cE-L($pkgver).7z"
   $pkgname.desktop
 )
 noextract=($pkgname-v$pkgver.7z)
@@ -27,11 +28,13 @@ package() {
   _name=chapterEditor
   install -dm755 "$pkgdir"/opt
   cp -r $pkgname-v$pkgver "$pkgdir"/opt/$_name
-  install -Dm666 /dev/null "$pkgdir"/opt/$_name/$_name.ini # problematic: config shared between users
+  install -Dm666 /dev/null "$pkgdir"/opt/$_name/$_name.ini  # problematic: config shared between users
   install -dm755 "$pkgdir"/usr/bin
   ln -s /opt/$_name/$_name "$pkgdir"/usr/bin/$_name
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 $pkgname.desktop \
+    "$pkgdir"/usr/share/applications/$pkgname.desktop
   for _size in 32 16; do
-    install -Dm644 $pkgname-v$pkgver/Ico/cE_$_size.png "$pkgdir"/usr/share/icons/hicolor/${_size}x$_size/apps/$pkgname.png
+    install -Dm644 $pkgname-v$pkgver/Ico/cE_$_size.png \
+      "$pkgdir"/usr/share/icons/hicolor/${_size}x$_size/apps/$pkgname.png
   done
 }
