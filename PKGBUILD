@@ -2,7 +2,7 @@
 pkgname=realcopy
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="GTK4 file copy utility that actually writes to slow USB drives — no more kernel cache lies"
+pkgdesc="GTK4 file copy utility that actually writes to slow USB drives - no more kernel cache lies"
 arch=('x86_64')
 url="https://github.com/proshiv85-byte/realcopy"
 license=('MIT')
