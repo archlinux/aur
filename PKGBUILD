@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ClassDiscovery
-_pkgver=3.4.9
+_pkgver=3.4.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c4e5a4b8aabf9581bb02e6c8a1fff63c')
-b2sums=('d4eb97ade10011960137d762baec1ca6ea0645e6a2f2fa06bac82cfff4e1b51d86667a409d2cce61e04dc5f5da0e4842072ced67455fd5ff3b46be551693d6b0')
+md5sums=('2faca73e8ef3d1f54c74ed3d28075fe7')
+b2sums=('cb25da04063ba42a5b73ba8e7a9b07ce0038cf11d46aa584c9f20edd3fa0047325ba49aa29113d2b5512b1f15a3af1991f9fb9c838530151c00352f6adab9efa')
 
 build() {
   mkdir build
