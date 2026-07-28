@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AudiblePort
+Comment=Download and convert Audible audiobooks locally
+Exec=audibleport %U
+Icon=audibleport
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=audibleport
+Keywords=audible;audiobook;mp3;aax;

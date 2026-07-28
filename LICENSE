@@ -1,0 +1,26 @@
+AudiblePort Proprietary Software License
+Copyright (c) 2026 AudiblePort. All rights reserved.
+
+This software and its associated files (the "Software") are proprietary
+and confidential. You are granted a limited, non-exclusive, non-transferable
+license to install and use the Software solely for your personal or internal
+business purposes, subject to the terms of your purchase or subscription.
+
+You may NOT, without prior written permission:
+  - copy, modify, merge, publish, distribute, sublicense, or sell the Software
+  - reverse engineer, decompile, or disassemble the Software, except to the
+    extent that such activity is expressly permitted by applicable law
+  - remove or alter any proprietary notices on the Software
+  - use the Software to provide a competing commercial service
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Third-party components bundled with this Software (including FFmpeg builds
+distributed under LGPL) remain under their respective licenses. Notices for
+those components are available from the vendor upon request.

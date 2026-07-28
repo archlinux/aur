@@ -1,0 +1,26 @@
+pkgbase = audibleport-bin
+	pkgdesc = Download and convert Audible audiobooks locally
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://audibleport.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = hicolor-icon-theme
+	depends = zlib
+	optdepends = fuse2: preferred FUSE mount for the AppImage runtime
+	optdepends = fuse3: alternative FUSE backend on modern Arch systems
+	provides = audibleport
+	conflicts = audibleport
+	noextract = AudiblePort-1.0.0-linux-x64.AppImage
+	options = !strip
+	options = !debug
+	source = AudiblePort-1.0.0-linux-x64.AppImage::https://downloads.audibleport.com/v1.0.0/AudiblePort-linux-x64.AppImage
+	source = audibleport.desktop
+	source = audibleport.png
+	source = LICENSE
+	sha256sums = d0ea2d6ba0fc83e4e43e5a884ba1fa510a3dbdb10d946ed3a866037a5532ed05
+	sha256sums = d7afd4229854d68a47e0cdadbbf4cd44a2cbef90b4104e30800557f6846cd3a0
+	sha256sums = f306dfb5d537724f15d2af8c2bd81d8bf666c85c45e20aea6e8fb9cda2f4881e
+	sha256sums = ab768f90de1bebd36122c52dce48305f9191660e017772cf7d852de9a6376594
+
+pkgname = audibleport-bin
