@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.tar.gz
+jami-qt-beta-git/
+jami-client-qt/

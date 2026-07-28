@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = "**"
+SPDX-License-Identifier = "0BSD"
+Copyright = "Arch Linux Contributors"
