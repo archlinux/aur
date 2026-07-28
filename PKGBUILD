@@ -2,7 +2,7 @@
 
 _npmname=mjml
 pkgname=nodejs-$_npmname
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="The only framework that makes responsive-email easy"
 arch=(any)
@@ -15,7 +15,7 @@ source=(
   https://raw.githubusercontent.com/mjmlio/mjml/v$pkgver/LICENSE.md
 )
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e9504d7fc6130bf016e5ef40d2ce0ed104b6ba5f43a4f890ed6f5cf4f46a75c7'
+sha256sums=('80ac516552ae86528fae737586aff9c864fe1f02b87930e981e082249a8c2eff'
             '0c4f37a6b1d7fdc8e2abb11cf49ba9dfe8128a4242861930d810f01f00ca4c49')
 
 package() {
