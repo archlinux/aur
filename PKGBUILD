@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=uefi-manager
-pkgver=26.06
+pkgver=26.07
 pkgrel=1
 pkgdesc="A graphical tool for managing UEFI boot entries"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ depends=('efibootmgr' 'qt6-base' 'polkit')
 provides=('uefi-manager')
 conflicts=('uefi-manager')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.06.tar.gz")
-sha256sums=('0db60d66aeb35d308fe028307ebc44082bb59c9b6e0c861f24827e38bfcab8d1')
+source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.07.tar.gz")
+sha256sums=('b47590aea00df3243609ea58fbda23aebfee7b602229cf985195d1f91246415e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -26,6 +26,7 @@ build() {
     cmake -G Ninja \
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
+        -DHELPER_INSTALL_DIR=/usr/lib/uefi-manager \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
@@ -50,14 +51,14 @@ package() {
     install -Dm755 scripts/uefimanager-lib "${pkgdir}/usr/lib/uefi-manager/uefimanager-lib"
 
     # Install PolicyKit policy
-    install -Dm644 scripts/org.mxlinux.pkexec.mx-uefimanager-helper.policy \
+    install -Dm644 build/org.mxlinux.pkexec.mx-uefimanager-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mx-uefimanager-helper.policy"
 
     # Install desktop file
     install -Dm644 uefi-manager.desktop "${pkgdir}/usr/share/applications/uefi-manager.desktop"
 
     # Install icons
-    install -Dm644 uefi-manager.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/uefi-manager.png"
+    install -Dm644 uefi-manager.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/uefi-manager.png"
     install -Dm644 uefi-manager.png "${pkgdir}/usr/share/pixmaps/uefi-manager.png"
     install -Dm644 uefi-manager.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/uefi-manager.svg"
 
