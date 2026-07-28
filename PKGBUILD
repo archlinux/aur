@@ -64,6 +64,10 @@ HCC_EOF
     cp -a handlers "$pkgdir/usr/share/hcc/handlers"
     cp -a VERSION "$pkgdir/usr/share/hcc/VERSION"
     cp -a docs "$pkgdir/usr/share/hcc/docs"
+    cp -a completions "$pkgdir/usr/share/hcc/completions"
+
+    # Install shell completions (bash)
+    install -Dm644 completions/hcc.bash "$pkgdir/usr/share/bash-completion/completions/hcc"
 
     # Fix LOG_DIR to use user-writable path
     sed -i 's|LOG_DIR="\$PROJECT_ROOT/logs"|LOG_DIR="${HCC_LOG_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/hcc/logs}"|' \
