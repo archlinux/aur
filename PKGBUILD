@@ -52,6 +52,34 @@ pkgver() {
   printf '%s.r%s.g%s' "${tag:-0}" "${count}" "${hash}"
 }
 
+prepare() {
+  cd "${srcdir}/${_gitname}"
+
+  # Upstream's electron-builder afterPack hook runs verifyLinuxGlibcFloor(),
+  # which aborts packaging if any bundled native binary needs a glibc or
+  # libstdc++ symbol newer than Ubuntu 20.04 (glibc 2.31). That gate protects
+  # upstream's own AppImage, which must run on old distros.
+  #
+  # It cannot hold here: node-pty is rebuilt from source against the build
+  # host's glibc, so on Arch it legitimately records GLIBC_2.42 and
+  # GLIBC_ABI_DT_RELR and the gate kills the build. Build host and target host
+  # are the same rolling-release system, so the floor is meaningless for us —
+  # replace the checker with a no-op.
+  local gate='config/scripts/verify-linux-glibc-floor.cjs'
+  if [[ ! -f "${gate}" ]]; then
+    echo "ERROR: expected upstream ${gate}, not found."
+    echo "Upstream may have moved or dropped the glibc floor gate. Re-check the"
+    echo "afterPack hook in config/electron-builder.config.cjs and update this PKGBUILD."
+    return 1
+  fi
+  cat > "${gate}" <<'EOF'
+// Replaced by the stably-orca-git PKGBUILD. See the prepare() comment: the
+// upstream Ubuntu 20.04 glibc floor does not apply to natives compiled
+// against the same Arch system they will run on.
+module.exports = { verifyLinuxGlibcFloor: () => {} }
+EOF
+}
+
 build() {
   cd "${srcdir}/${_gitname}"
   # Electron + node-pty need a working C toolchain and Python, covered by base-devel + makedepends.
@@ -91,17 +119,35 @@ package() {
   install -Dm644 "${srcdir}/stably-orca.desktop" \
     "${pkgdir}/usr/share/applications/stably-orca.desktop"
 
-  local found=0
-  for size in 16 32 48 64 128 256 512; do
-    local src="${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/orca.png"
-    if [[ -f "${src}" ]]; then
+  # Theme-aware icon install (in addition to the copies inside /opt).
+  # Upstream names the Linux executable and its icon `orca-ide` (GNOME Orca
+  # already owns `orca`), and has renamed it before, so match whatever single
+  # icon each hicolor size ships instead of hardcoding a basename.
+  local found=0 size src
+  for size in 16 24 32 48 64 128 256 512; do
+    for src in "${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/"*.png; do
+      [[ -f "${src}" ]] || continue
       install -Dm644 "${src}" \
         "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/stably-orca.png"
       found=1
-    fi
+      break
+    done
   done
-  if [[ "${found}" -eq 0 && -f "${sqfs}/orca.png" ]]; then
-    install -Dm644 "${sqfs}/orca.png" \
-      "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
+  if (( found == 0 )); then
+    for src in "${sqfs}"/*.png; do
+      [[ -f "${src}" ]] || continue
+      install -Dm644 "${src}" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
+      found=1
+      break
+    done
+  fi
+  # Fail loudly: a silently icon-less package looks fine in CI but ships a
+  # blank launcher entry, which is how the orca -> orca-ide rename went
+  # unnoticed in the first place.
+  if (( found == 0 )); then
+    echo "ERROR: no application icon found under ${sqfs}."
+    echo "Upstream icon layout changed. Inspect the extracted tree and update PKGBUILD."
+    return 1
   fi
 }
