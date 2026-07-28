@@ -1,7 +1,7 @@
 pkgbase = guayadeque
 	pkgdesc = Lightweight music player
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thothix/guayadeque
 	arch = x86_64
 	license = GPL-3.0-only
@@ -26,7 +26,8 @@ pkgbase = guayadeque
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
+	options = !lto
 	source = guayadeque-0.7.5.tar.gz::https://codeberg.org/thothix/guayadeque/archive/v0.7.5.tar.gz
-	sha256sums = 1b0fa2f95270bf3ae4e33ffd676266e78426105f18d2317772e4b108dc947363
+	sha256sums = 333203a0aa3ea8c7d81e32467aff2b24fe739da942c0d8cd25643a7ba2d845e3
 
 pkgname = guayadeque
