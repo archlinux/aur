@@ -19,6 +19,7 @@ url="http://www.azerothcore.org"
 license=('AGPL3')
 
 install='azerothcore-wotlk-git.install'
+#backup=('usr/share/azerothcore/acore.json')
 
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl')
@@ -140,7 +141,27 @@ package() {
   	DESTDIR="${pkgdir}" cmake --install build
 
 	# Copies the runtime helper script into the package
-  	install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"
+  	#install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"
+
+	# The following dependencies are required for acore.sh (Disabled for now)
+  	# install -dm755 "${pkgdir}/usr/share/azerothcore/apps"
+  	# cp -a "${srcdir}/${_pkgname}/apps/." "${pkgdir}/usr/share/azerothcore/apps/"
+
+	# install -dm755 "${pkgdir}/usr/share/azerothcore/deps/acore/bash-lib/src"
+  	# cp -a "${srcdir}/${_pkgname}/deps/acore/bash-lib/src/." "${pkgdir}/usr/share/azerothcore/deps/acore/bash-lib/src/"
+
+	# install -dm755 "${pkgdir}/usr/share/azerothcore/deps/acore/bash-lib/src"
+  	# cp -a "${srcdir}/${_pkgname}/deps/acore/bash-lib/src/." "${pkgdir}/usr/share/azerothcore/deps/acore/bash-lib/src/"
+
+	# install -dm755 "${pkgdir}/usr/share/azerothcore/apps/installer/includes"
+  	# cp -a "${srcdir}/${_pkgname}/apps/installer/includes/." "${pkgdir}/usr/share/azerothcore/apps/installer/includes/"
+
+	# install -Dm755 "${srcdir}/${_pkgname}/deps/acore/joiner/joiner.sh" "${pkgdir}/usr/share/azerothcore/deps/acore/joiner/joiner.sh"
+	# install -Dm755 "${srcdir}/${_pkgname}/deps/jsonpath/JSONPath.sh" "${pkgdir}/usr/share/azerothcore/deps/jsonpath/JSONPath.sh"
+	# install -Dm755 "${srcdir}/${_pkgname}/conf/dist/config.sh" "${pkgdir}/usr/share/azerothcore/conf/dist/config.sh"
+	# install -Dm755 "${srcdir}/${_pkgname}/apps/installer/main.sh" "${pkgdir}/usr/share/azerothcore/apps/installer/main.sh"
+	# install -Dm755 "${srcdir}/${_pkgname}/deps/semver_bash/semver.sh" "${pkgdir}/usr/share/azerothcore/deps/semver_bash/semver.sh"
+	# install -Dm755 "${srcdir}/${_pkgname}/acore.json" "${pkgdir}/usr/share/azerothcore/acore.json"
 
 	# Install SQL data files into the runtime tree
   	install -dm755 "${pkgdir}/usr/share/azerothcore/data/sql"

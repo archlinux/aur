@@ -13,6 +13,11 @@ post_install() {
 		sudo cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
 	fi
 
+	# I'm not distributing acore.sh for now
+	#if [[ ! -f /usr/share/azerothcore/conf/config.conf ]]; then
+	#	sudo cp /usr/share/azerothcore/conf/dist/config.conf /usr/share/azerothcore/conf/config.conf
+	#fi
+
 	# If source dir is empty, point it to our install location
 	sudo sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
 
@@ -34,32 +39,7 @@ post_install() {
 	echo ''
 	echo "The installation has finished. please, follow these steps to connect to the server:"
 
-	echo ''
-	echo ''
-	echo "a default user has been created with the following credentials:"
-	echo ''
-	echo 'username: security4'
-	echo 'password: console'
-
-	echo ''
-	echo ''
-	echo "It is an account that has security level 4 (not recommended), so use it to create a GM account by running the following GM commands in game chat:"
-	echo ''
-	echo '.account create myuser mypass'
-	echo '.account set gmlevel myuser 3 -1'
-
-	echo ''
-	echo ''
-	echo "If you want to create a non-GM account, type the following instead:"
-	echo ''
-	echo '.account create myuser mypass'
-	echo '.account set gmlevel myuser 0 -1'
-
-	echo ''
-	echo ''
-	echo "replace the content in your realmlist.wtf file with the following:"
-	echo ''
-	echo "set realmlist ${_realmlist_ip}"
+	echo ' TO BE FILLED IN'
 
 	echo ''
 	echo ''
