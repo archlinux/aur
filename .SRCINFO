@@ -1,6 +1,6 @@
 pkgbase = r-scone
 	pkgdesc = Single Cell Overview of Normalized Expression data
-	pkgver = 1.32.1
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scone
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = r-scone
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
 	optdepends = r-visnetwork
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scone_1.32.1.tar.gz
-	sha256sums = 06bc23002c1b6eefaea9367a098e8ba33ce578b41f65c6f3e8e1efcbac8fca0a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scone_1.36.0.tar.gz
+	sha256sums = 2c66f9d7aa71b396216a8cd46c94043ac9edff22a0380b653befbfdb124483b1
 
 pkgname = r-scone
