@@ -1,8 +1,8 @@
 # Maintainer: Veitangie <emignatiev.work@gmail.com>
 
 pkgname=sinq
-_tag=v1.0.0-rc.14
-pkgver=1.0.0_rc.14
+_tag=v1.0.0-rc.15
+pkgver=1.0.0_rc.15
 pkgrel=1
 pkgdesc='A concurrent HTTP functional and integration testing tool.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ options=('!debug')
 depends=()
 makedepends=('go' 'go-md2man')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Veitangie/sinq/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('702006d4c9d94459ebf911659b1f86abeeb5e299baaa5749a923ab3aac308425')
+sha256sums=('66440e046962b5c8947ea2d0e2a4ae4447bc248fb6a734220956ba4f49d260e5')
 
 build() {
   cd "$pkgname-${_tag#v}"
