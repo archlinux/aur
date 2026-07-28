@@ -51,7 +51,7 @@ _build_32-bit() (
   export LDFLAGS="${LDFLAGS} -m32"
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  arch-meson --libdir=lib32 build32 -D b_lto=true
+  arch-meson --libdir=lib32 build32 -D b_lto=true -D with_json=false
   meson compile -C build32
 )
 
@@ -70,21 +70,18 @@ package_vkbasalt-redemp-git() {
   cd Redemp-vkBasalt
 
   meson install -C build --destdir "${pkgdir}"
-  mv "${pkgdir}"/usr/share/vulkan/implicit_layer.d/vkBasalt.{,"${CARCH}".}json
   install -vD -m644 config/vkBasalt.conf -T "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgbase}/" -m644 LICENSE
 }
 
 package_lib32-vkbasalt-redemp-git() {
   pkgdesc="${pkgdesc} (32-bit)"
-  depends=("${_depends[@]/#/lib32-}")
-  optdepends+=("${pkgbase}: sample config at /usr/share/vkBasalt/vkBasalt.conf.example")
+  depends=("${pkgbase}" "${_depends[@]/#/lib32-}")
   provides=('lib32-vkbasalt')
   conflicts=('lib32-vkbasalt')
 
   cd Redemp-vkBasalt
 
   meson install -C build32 --destdir "${pkgdir}"
-  mv "${pkgdir}/usr/share/vulkan/implicit_layer.d"/vkBasalt.{,x86.}json
   install -vD -t "${pkgdir}/usr/share/licenses/lib32-${pkgbase}/" -m644 LICENSE
 }

@@ -30,10 +30,9 @@ pkgname = vkbasalt-redemp-git
 
 pkgname = lib32-vkbasalt-redemp-git
 	pkgdesc = A Vulkan post-processing layer (Redemp fork) (32-bit)
+	depends = vkbasalt-redemp-git
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-libx11
-	optdepends = reshade-shaders-git: collection of shaders to use with vkBasalt
-	optdepends = vkbasalt-redemp-git: sample config at /usr/share/vkBasalt/vkBasalt.conf.example
 	provides = lib32-vkbasalt
 	conflicts = lib32-vkbasalt
