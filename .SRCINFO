@@ -1,6 +1,6 @@
 pkgbase = r-evaluomer
 	pkgdesc = Evaluation of Bioinformatics Metrics
-	pkgver = 1.24.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/evaluomeR
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = r-evaluomer
 	optdepends = r-knitr
 	optdepends = r-magrittr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/evaluomeR_1.24.0.tar.gz
-	md5sums = 4fef7bf5078a46d30a2f8c7374e6a5c6
-	b2sums = fc26e4c47f72a03e47ce4e8396e4ead20856cf9c4dffdb50a5cdb21f0612c94e5fdeb8bb3ee28fd8338255f237c3943ea4635d92dcac235229b72bf4b2689c23
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/evaluomeR_1.28.0.tar.gz
+	md5sums = 92c9d2efc5fcb57e27eeeb63dc34e3d4
+	b2sums = 6986c05edfb8b175bc9e2464ab9bda867083814c5e5b80cacaf5944cb5ab7805e6e0760e3b51cb674335b4accced59727948cf6d012f17191e7e29a6dc0da45b
 
 pkgname = r-evaluomer
