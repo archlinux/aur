@@ -1,6 +1,6 @@
 pkgbase = tchap-desktop
 	pkgdesc = Desktop app for Tchap.
-	pkgver = 4.20.0
+	pkgver = 4.21.1
 	pkgrel = 1
 	url = https://github.com/tchapgouv/tchap-desktop
 	install = tchap-desktop.install
@@ -21,7 +21,7 @@ pkgbase = tchap-desktop
 	depends = sqlcipher
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.20.0/Tchap-prod_4.20.0_amd64.deb
-	sha256sums_x86_64 = ace479370f1668f8c77b08f792258072a676645a3043b8d7b3a5dd8e1f57b1c8
+	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.21.1/Tchap-prod_4.21.1_amd64.deb
+	sha256sums_x86_64 = 1d5ac8512be5f180e1a202331055cc1b5f3b22f5210428257d782938ff3fd9c1
 
 pkgname = tchap-desktop
