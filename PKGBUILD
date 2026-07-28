@@ -61,12 +61,15 @@ checkdepends=(
     "vulture"
 )
 source=("git+${url}.git#tag=v${pkgver}"
-        "lower_hatchling_version_requirements.patch")
+        "lower_hatchling_version_requirements.patch"
+        "clear_multiplexer_env_in_theme_tests.patch")
 sha256sums=('c79676cde64aec0d071a30e70363ebb3c469f00f7144b2d8651f0ca1fbc4d70b'
-            'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014')
+            'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
+            'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069')
 prepare() {
     cd "$pkgname"
     cat "$srcdir/lower_hatchling_version_requirements.patch" | patch -p1
+    cat "$srcdir/clear_multiplexer_env_in_theme_tests.patch" | patch -p1
 }
 
 build() {

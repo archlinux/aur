@@ -1,0 +1,18 @@
+diff --git a/tests/cli/test_theme_detection.py b/tests/cli/test_theme_detection.py
+index b165d0c2..1f7f2939 100644
+--- a/tests/cli/test_theme_detection.py
++++ b/tests/cli/test_theme_detection.py
+@@ -35,6 +35,13 @@ def _clear_cache() -> None:
+     resolve_auto_theme.cache_clear()
+ 
+ 
++@pytest.fixture(autouse=True)
++def _clear_multiplexer_env(monkeypatch: pytest.MonkeyPatch) -> None:
++    # Don't let a host TMUX/STY/ZELLIJ session short-circuit the POSIX probe tests.
++    for name in ("TMUX", "STY", "ZELLIJ"):
++        monkeypatch.delenv(name, raising=False)
++
++
+ def test_returns_none_on_unsupported_platform(monkeypatch: pytest.MonkeyPatch) -> None:
+     monkeypatch.setattr(sys, "platform", "freebsd")
+     _clear_cache()
