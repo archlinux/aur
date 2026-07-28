@@ -1,0 +1,78 @@
+From f0a36b1ce41095a6fe659d1ca8b1915c8093819e Mon Sep 17 00:00:00 2001
+From: Joar Heimonen <contact@joar.me>
+Date: Tue, 28 Jul 2026 13:16:00 +0200
+Subject: [PATCH] Fix false XML declaration error with modern libxml2 in
+ NETCONF hello parsing
+
+handle_prolog_state() in ses_read_cb unconditionally inserted a synthetic
+leading newline before an incoming message's <?xml ...?> declaration when
+none was present on the wire, based on an old assumption that libxml2
+required it. Current libxml2 (2.15.x) strictly enforces that nothing may
+precede the XML declaration and rejects it with "XML declaration allowed
+only at the start of the document", which xml_consume_node() reports
+generically as ERR_XML_READER_EOF ("get node failed (xml reader EOF);
+session dropped") right after the very first message is read.
+
+Stop injecting the newline when the buffer already starts with "<?";
+only inject the synthetic prolog when the peer actually sent no XML
+declaration at all.
+---
+ netconf/src/ncx/ses.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/netconf/src/ncx/ses.c b/netconf/src/ncx/ses.c
+index e75c98d4..b0d5d4ff 100644
+--- a/netconf/src/ncx/ses.c
++++ b/netconf/src/ncx/ses.c
+@@ -817,7 +817,6 @@ static void
+                          int *retlen)
+ {
+     boolean needprolog = FALSE;
+-    boolean needfirstnl = FALSE;
+     char    tempbuff[4];
+     int     i, j, k;
+ 
+@@ -835,14 +834,12 @@ static void
+             /* expected string is present */
+             msg->prolog_state = SES_PRST_DONE;
+             return;
+-        } else if (!strncmp((const char *)&buff->buff[buff->buffpos], 
+-                            "<?", 
++        } else if (!strncmp((const char *)&buff->buff[buff->buffpos],
++                            "<?",
+                             2)) {
+-            /* expected string except a newline needs
+-             * to be inserted first to make libxml2 happy
+-             */
+-            needfirstnl = TRUE;
++            /* expected string is present, no newline needed */
+             msg->prolog_state = SES_PRST_DONE;
++            return;
+         } else {
+             needprolog = TRUE;
+             msg->prolog_state = SES_PRST_DONE;
+@@ -864,10 +861,8 @@ static void
+                 /* expected string is present */
+                 ;
+             } else if (!strncmp(tempbuff, "<?", 2)) {
+-                /* expected string except a newline needs
+-                 * to be inserted first to make libxml2 happy
+-                 */
+-                needfirstnl = TRUE;
++                /* expected string is present, no newline needed */
++                ;
+             } else {
+                 needprolog = TRUE;
+             }
+@@ -880,7 +875,7 @@ static void
+         return;
+     }
+ 
+-    if (needfirstnl || needprolog) {
++    if (needprolog) {
+         buffer[0] = '\n';
+         i = 1;
+     } else {
+-- 
+2.55.0
+

@@ -1,7 +1,7 @@
 pkgbase = yuma123-git
 	pkgdesc = Open-source YANG API in C, yangcli and netconfd server
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vlvassilev/yuma123
 	arch = any
 	license = BSD
@@ -13,6 +13,8 @@ pkgbase = yuma123-git
 	provides = yuma123
 	conflicts = yuma123
 	source = git+https://github.com/vlvassilev/yuma123#commit=4ee2d632ccfd3d00ccfb7c0faf96639d0b47ec73
+	source = yuma123-libxml2-prolog-newline.patch
 	sha256sums = a82ab24dd79a80f1a98df4d7fd94009a70613d0ade77d3c6e8cd5a71e4f7757f
+	sha256sums = 6ea9f3fe25b5bf57f6e8c3fbc8da8b0948efff5e05e423cef522fe0ccf4293a0
 
 pkgname = yuma123-git
