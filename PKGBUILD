@@ -1,7 +1,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=iprange
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Manage IP ranges. From the FireHOL project."
 url="http://firehol.org/"
@@ -25,4 +25,4 @@ package() {
 	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" sbindir="$pkgdir/usr/bin" install
 }
 
-md5sums=('09e72b033e98d286c811e63dbb14bf7e')
+md5sums=('1cecfd1f6c3161aaf1eff914690208cf')
