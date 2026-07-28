@@ -13,6 +13,7 @@ Environment=HOME=/var/lib/pocket-id
 WorkingDirectory=/var/lib/pocket-id
 ExecStart=/usr/bin/pocket-id
 Restart=on-failure
+RestartSec=5
 
 ProtectSystem=strict
 ReadWritePaths=/var/lib/pocket-id

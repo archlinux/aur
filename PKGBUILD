@@ -2,7 +2,7 @@
 _pkgname=pocket-id
 pkgname="${_pkgname}-bin"
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy-to-use OIDC provider (Pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/pocket-id/pocket-id"
@@ -24,7 +24,7 @@ source=(
 sha256sums=('ae15e3c71770bf59cae4935d328692bbb6a336008e149f648a965644d0300b7f'
             '98e9be8f7efdf7d67e853a76a1a87f525078a21b9d3f3a6c52ac2f19ad76fee8'
             'c4822dc23fddabd9aef6cd1b1e5dfe307cbc36dc0f1d662e82d58ebc886d9d0f'
-            'b3eecd75778be96a757fadb11366d7cc5e166deb7d06c2c75fc6e4d63545d90b'
+            '14efeddfe70c3ff949335f78264b3990d0a8781af97e4c071b9144983d48b5ef'
             '48ee29e40d3b949bb884fb6c3bb2b6739626c38a42ab4f8ab10a5a4e3d7c735d'
             'fdead2921933c62fe2a0bccdfa2b2a0ff630edce3a3b62d0a97594302dd05e44')
 
