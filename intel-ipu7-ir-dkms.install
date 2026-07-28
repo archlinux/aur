@@ -1,5 +1,5 @@
 _modules=(hm1092 intel-cvs ipu-bridge-patched ov05c10)
-_ver=1.0.3
+_ver=1.0.4
 
 _dkms_build() {
   local failed=0 built=0 kernels=0
@@ -67,8 +67,18 @@ post_install() {
       # /etc/pacman.conf
       IgnorePkg = intel-ipu7-dkms-git
 
-  If an update has already broken your camera, or to apply the psys patches
-  this stack needs:
+  ** On kernel 7.1 and newer you MUST apply the psys patches, ** or
+  /dev/ipu7-psys0 never appears and NO application sees a camera --
+  even though `cam -l` and `cam -c` keep working perfectly, because
+  PipeWire's libcamera monitor needs that device node.
+
+  Upstream ipu-psys.c puts its char device on a custom bus but only
+  ever calls module_auxiliary_driver(), never bus_register(). Kernels
+  up to ~7.0 tolerated that; 7.1 rejects it, so probe reaches its last
+  step and fails with device_register -22.
+
+  That, and recovery from an ipu7-drivers update that broke the
+  camera, are both handled by:
 
       sudo /usr/share/intel-ipu7-ir-dkms/tools/install-ipu7-r74.sh
 
