@@ -1,4 +1,5 @@
 # Maintainer: AlterSend contributors
+# Co-maintainer: denislupookov
 
 pkgname=altersend-git
 pkgver=1.7.0.r0.g697785f
