@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2026.1.2.10
+	pkgver = 2026.1.2.11
 	pkgrel = 1
 	url = https://developer.android.com/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = android-studio
 	optdepends = libgl: emulator support
 	optdepends = ncurses5-compat-libs: native debugger support
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.2.10/android-studio-quail2-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.2.11/android-studio-quail2-patch1-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	sha256sums = 64445a54092e7056c6eb7f1a89ad116d0feec2ef5f965b8e594d62abdb58590f
+	sha256sums = 1cc9cd54f400dbb0d07884f0f7c0cab524db5ce0a5ef70b23aed6fdd3cd445b9
 	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 	sha256sums = 9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e
 
