@@ -1,14 +1,28 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 0.10.0 ➙ 1.0.3
-              : 2026-07-27 ➙ 2026-07-27
+ Tags         : 0.11.0 ➙ 1.0.4
+              : 2026-07-27 ➙ 2026-07-28
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-27   : 1.0.3
+ 2026-07-28   : 1.0.4
+              - **1.1.0**
+            
+                * C-Code
+                  - network family now defined as posix sa_family_t
+                  - bitlen changed to uint8_t bitlen (holds ipv4/ipv6 prefix lengths <= 128)
+                  - prefix_toa2x(): ipv4 block now uses inet_ntop() same as ipv6.
+                    Seems to also be faster.
+                  - tidying
+            
+                * Python:
+                  - synchronize with library changes
+                  - tidying
+
+ 2026-07-27   : 1.0.3, origin/master, origin/HEAD
               - Simplify meson.build using common compile and linker options for patricia26 library and the cython c-code
 
- 2026-07-27   : 1.0.2, origin/master, origin/HEAD
+ 2026-07-27   : 1.0.2
               - Add options to uv build --wheel
 
  2026-07-27   : 1.0.0
@@ -16,6 +30,3 @@
 
  2026-07-27   : 0.11.0
               - Add missing meson.options file to repo
-
- 2026-07-27   : 0.10.0
-              - Add meson.build to repo
