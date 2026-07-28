@@ -2,12 +2,12 @@
 pkgname=python-termforge
 _name=termforge
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Forkable Python framework for building terminal emulators"
 arch=('any')
 url="https://github.com/user14923929/termforge"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pyte' 'python-ptyprocess')
+depends=('python' 'python-pyte' 'python-ptyprocess' 'python-pyqt6')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/user14923929/termforge/archive/refs/tags/v$pkgver.tar.gz"
