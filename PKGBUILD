@@ -1,7 +1,7 @@
 # Maintainer: Lukas Hertel <dev@lukas-hertel.de>
 # Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 pkgname=iwasm
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Executable binary built with WAMR VMCore, supporting WASI and CLI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('cmake' 'git')
 options=(!strip)
 source=(https://github.com/bytecodealliance/wasm-micro-runtime/archive/refs/tags/WAMR-$pkgver.tar.gz)
-b2sums=('d4a1ea7c8651e76f90e1ceac96444f3276eb3bfa377b50c765c3d6a654fffdefe5f213e23e1955cf630899a97bcd51bcdf38e576eca8616b62dda0196d7bc349')
+b2sums=('2f1d53dff6afecfd00f4b782cce20e2ad88d9b81fe7875b10857feaf5efaae83c5a37f4da1edaa7e992fc33a8b1fc1f182d0d8eeb6c059456df2133a8209f54c')
 
 build() {
 	cd wasm-micro-runtime-WAMR-$pkgver/product-mini/platforms/linux/
