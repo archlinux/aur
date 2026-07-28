@@ -3,7 +3,7 @@
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
 pkgver=8.3.678
-pkgrel=2
+pkgrel=3
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
 url="http://opencircuitdesign.com/magic/"
@@ -55,20 +55,25 @@ prepare() {
 }
 
 build() {
-   cd "${pkgname}"
    # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
    # for more details about why we need to use C17
+   # export CFLAGS="${CFLAGS} -std=c17 -D_DEFAULT_SOURCE=1"
+   # Make build directory and run configure
    export CFLAGS="${CFLAGS} -std=c17 -D_DEFAULT_SOURCE=1"
-   ./configure --prefix=/usr
-   make
+   (
+      mkdir build
+      cd build
+      ../"${pkgname}"/configure --prefix=/usr
+   )
+   # build
+   make -C build
 }
 
 package() {
-   cd "${pkgname}"
-   make DESTDIR="$pkgdir" MANDIR=/usr/share/man install
+   make -C build DESTDIR="$pkgdir" MANDIR=/usr/share/man install
 
    # License
-   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" ${pkgname}/LICENSE
    # Avoid name collision
    mv "$pkgdir/usr/share/man/man1/extcheck.1" "$pkgdir/usr/share/man/man1/extcheck-magic.1"
 }
