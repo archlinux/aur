@@ -2,27 +2,33 @@
 
 pkgname=lua-rs
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Lua 5.5 interpreter written in pure Rust'
 arch=(x86_64 i686)
 url="https://github.com/CppCXY/$pkgname"
 license=(MIT)
-depends=(gcc-libs libgcc_s.so
-         glibc) # libc.so libm.so
+depends=(glibc # libc.so libm.so
+         libgcc libgcc_s.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz")
+source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
 sha256sums=('076ea024317c3a42a67a9a8f276b26cdeb35caf1d5cf2cc8a114875a01382b92')
-
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target host-tuple
-}
 
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -32,7 +38,7 @@ build() {
 
 check() {
 	_srcenv
-	cargo test --frozen --release
+	cargo test --frozen
 }
 
 package () {
