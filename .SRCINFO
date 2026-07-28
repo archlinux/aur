@@ -1,0 +1,12 @@
+pkgbase = 0xbin-cli
+	pkgdesc = Fast command-line client for the ephemeral 0xbin paste service
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/0atxl/0xbin-cli
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source_x86_64 = 0xbin-cli-0.1.2-x86_64.tar.gz::https://github.com/0atxl/0xbin-cli/releases/download/v0.1.2/0xbin-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 393d002ab2e1a6e8ce0e93b9d37e565d1ee19041aae9bb6d257940e2ad7c391e
+
+pkgname = 0xbin-cli
