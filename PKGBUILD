@@ -2,12 +2,12 @@
 pkgname=ddos
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Arunachalam's ArcXos: A specialized penetration testing and security auditing distribution built on Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India."
+pkgdesc="ARC-GHOST: Authorized Security Assessment Suite & Process Isolator for Linux by Arunachalam"
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/Ddos"
 license=('MIT')
 depends=('python' 'python-pillow' 'iptables' 'iproute2')
-optdepends=(
+optdependents=(
     'hyprland: Wayland window focus & shortcut dispatch'
     'xdotool: X11 window focus & shortcut dispatch'
     'wtype: Wayland shortcut dispatch'
