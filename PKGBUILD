@@ -1,6 +1,6 @@
 # Maintainer: Austin Choi <austin.c.percussion@gmail.com>
 pkgname=dusk-lang-git
-pkgver=1.3.1.r0.g131a93b
+pkgver=0.3.2.r0.g31fc15b
 pkgrel=1
 pkgdesc="Compiler for the dusk programming language, a systems language with generational memory safety (development build)"
 # The seed IR artifact pins the x86_64 linux triple; other platforms bootstrap
@@ -15,23 +15,21 @@ makedepends=('git' 'xz')
 optdepends=('git: package fetching through the dawn tool')
 provides=('dusk-lang')
 conflicts=('dusk-lang' 'dawn')
+# The seed release the bootstrap starts from. Pinned to a tagged, immutable
+# URL under a versioned filename with a real checksum, so a new release never
+# collides with a cached download and the IR linked below is exactly the IR
+# that release's stage ladder proved. A release binary is guaranteed to build
+# the next release's source, so bump this pin as the tree moves ahead; the
+# preflight in build() names the mismatch loudly when the pin has gone stale.
+_seedver=1.12.0
 source=("dusk::git+https://github.com/choice404/dusk.git"
-        "dusk.ll.xz::https://github.com/choice404/dusk/releases/latest/download/dusk.ll.xz"
-        "dusk-artifact-sums::https://github.com/choice404/dusk/releases/latest/download/sha256sums")
+        "dusk-seed-${_seedver}.ll.xz::https://github.com/choice404/dusk/releases/download/v${_seedver}/dusk.ll.xz")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+            '7b2891f583a9626c81c571dd916dd42cd84af98042a0b0adff09719909f93016')
 
 pkgver() {
   cd dusk
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # The release's own sums file carries the hash the release's stage ladder
-  # printed, so the IR being linked below is the IR the release proved.
-  cd "$srcdir"
-  grep ' dusk.ll.xz$' dusk-artifact-sums | sha256sum -c -
 }
 
 build() {
@@ -39,8 +37,22 @@ build() {
   # No Rust toolchain here: link the release IR artifact into a seed
   # compiler with clang, then have the seed self-build this source tree.
   # Each self build peaks around 11GB, so it runs caged.
-  xz -dkc ../dusk.ll.xz > seed.ll
+  xz -dkc "../dusk-seed-${_seedver}.ll.xz" > seed.ll
   clang seed.ll runtime/*.c -pthread -lm -o seed
+  # Preflight: a release binary is guaranteed to build only the very next
+  # release's source, so the pinned seed must be at least the newest tag older
+  # than this source's own version. A stale pin fails here with the reason,
+  # instead of mid-build with an undefined-name error.
+  seed_ver=$(./seed version | awk '{print $2}')
+  src_ver=$(grep -oE 'return "dusk [0-9.]+"' compiler/dusk.dusk | grep -oE '[0-9.]+')
+  min_seed=$(git tag -l 'v*' | sed 's/^v//' | grep -vx "$src_ver" | sort -V | tail -1)
+  echo "seed compiler: $seed_ver, source: $src_ver, minimum seed: $min_seed"
+  if [ -n "$min_seed" ] && [ "$(printf '%s\n%s\n' "$min_seed" "$seed_ver" | sort -V | head -1)" != "$min_seed" ]; then
+    echo "ERROR: the published seed release ($seed_ver) is older than this source needs ($min_seed)." >&2
+    echo "Upstream has not yet published the current release's artifacts; install a release" >&2
+    echo "package instead, or wait for the v$src_ver release to appear on GitHub." >&2
+    return 1
+  fi
   DUSK_HOME="$PWD" timeout 600 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 ./seed build compiler/dusk.dusk'
   DUSK_HOME="$PWD" timeout 600 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 target/dusk-out/dusk build compiler/dawn.dusk'
 }

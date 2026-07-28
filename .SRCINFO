@@ -1,6 +1,6 @@
 pkgbase = dusk-lang-git
 	pkgdesc = Compiler for the dusk programming language, a systems language with generational memory safety (development build)
-	pkgver = 1.3.1.r0.g131a93b
+	pkgver = 0.3.2.r0.g31fc15b
 	pkgrel = 1
 	url = https://github.com/choice404/dusk
 	arch = x86_64
@@ -14,10 +14,8 @@ pkgbase = dusk-lang-git
 	conflicts = dusk-lang
 	conflicts = dawn
 	source = dusk::git+https://github.com/choice404/dusk.git
-	source = dusk.ll.xz::https://github.com/choice404/dusk/releases/latest/download/dusk.ll.xz
-	source = dusk-artifact-sums::https://github.com/choice404/dusk/releases/latest/download/sha256sums
+	source = dusk-seed-1.12.0.ll.xz::https://github.com/choice404/dusk/releases/download/v1.12.0/dusk.ll.xz
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 7b2891f583a9626c81c571dd916dd42cd84af98042a0b0adff09719909f93016
 
 pkgname = dusk-lang-git
