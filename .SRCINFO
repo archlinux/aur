@@ -1,0 +1,23 @@
+pkgbase = hicurl-bin
+	pkgdesc = A modern HTTP CLI tool
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/cladam/hicurl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = curl
+	provides = hicurl
+	conflicts = hicurl
+	options = !strip
+	source = README-0.9.0.md::https://raw.githubusercontent.com/cladam/hicurl/v0.9.0/README.md
+	source = LICENSE-0.9.0::https://raw.githubusercontent.com/cladam/hicurl/v0.9.0/LICENSE
+	sha256sums = f85b6c6b5e32687f8698c15fc6e6603f2eb87f7a9be55c77ad03ff39ed09ea76
+	sha256sums = c2e699bae27b590b18fa0c655931b4d17106e374a7add781c430232c3f0379ae
+	source_x86_64 = hicurl-x86_64-0.9.0.tgz::https://github.com/cladam/hicurl/releases/download/v0.9.0/hicurl-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0d495dc1af9df47fee5dcb5f4e2c0a30500f65bd90351b092ba22001654f2823
+	source_aarch64 = hicurl-aarch64-0.9.0.tgz::https://github.com/cladam/hicurl/releases/download/v0.9.0/hicurl-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4966f1db342fe992f19c606003d95bc6bb6cacf342e4cd8774429094ec8dd5d7
+
+pkgname = hicurl-bin
