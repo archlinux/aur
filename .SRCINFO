@@ -1,0 +1,22 @@
+pkgbase = er-save-manager-bin
+	pkgdesc = Elden Ring save editor, backup manager and corruption fixer
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/Hapfel1/er-save-manager
+	arch = x86_64
+	license = LicenseRef-Source-Available
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = er-save-manager
+	conflicts = er-save-manager
+	options = !strip
+	source = er-save-manager_1.7.1_Linux.AppImage::https://github.com/Hapfel1/er-save-manager/releases/download/v1.7.1/er-save-manager_1.7.1_Linux.AppImage
+	source = er-save-manager.png::https://raw.githubusercontent.com/Hapfel1/er-save-manager/v1.7.1/resources/icon/icon.png
+	source = LICENSE-1.7.1::https://raw.githubusercontent.com/Hapfel1/er-save-manager/v1.7.1/LICENSE
+	source = er-save-manager.desktop
+	sha256sums = cf72468bf3d35aada269bc883df318436e286ce3a7de966559ba7e80eca9d53d
+	sha256sums = 0d423ea2d046fc107e4af4d2938ccebf530bf99d7ac87032d8ce93d6e7d15ce8
+	sha256sums = d50b6f5b22971b3e53912a1b4f09a77cf99c20853f451126721caf830c715e13
+	sha256sums = 351edfde8daa69af9144819cc341ba1ba2cc2aabc71c7806af52e8a49a6736bf
+
+pkgname = er-save-manager-bin

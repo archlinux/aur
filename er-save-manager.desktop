@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ER Save Manager
+GenericName=Elden Ring Save Manager
+Comment=Elden Ring Save File Editor and Manager
+Exec=er-save-manager
+Icon=er-save-manager
+Terminal=false
+Categories=Game;Utility;
+Keywords=Elden Ring;Save;Editor;Backup;
+StartupNotify=true
