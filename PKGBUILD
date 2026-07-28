@@ -11,8 +11,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=9.10
-pkgrel=1
+pkgver=9.11
+pkgrel=2
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
 license=(
@@ -48,9 +48,9 @@ validpgpkeys=(
  6C37DC12121A5006BC1DB804DF6FD971306037D9 # Pádraig Brady
 )
 options=(!lto)
-b2sums=('7f78aa9c87f4faebc7ae9b07a18c550fb34d63dfeaeede8e55e29bfe0bedc909959eac5f1c8d91bb9ca3f78ec0bc4b9d02a8f2cb96eb31c92d66bdd0d02c0e2e'
+b2sums=('24d9727afb79279eccab35496452462d881d3ef6031739e44aeee53c2379a04e42a7c8dad8ae03e0cdc9befbfea44d6b4884829f7bb638a441e22bf31a5e5d2e'
         'SKIP'
-        '31614bbd57ff4f569b646f89e6f16f26d14d8293b316c3321587699bd25ee71b8e79fa96fbe6cef4f0b3e3ed5c9c67a7920d9ec6140b6b30fd83d9eb1bf0f282'
+        '6c3e1763df577c9bebb91fcf7ee3ce56dcb2aa3cb911bebbf2ec3493cad1a0cbeffb2ab7caeb0351fba92e8b631ae4dfee7a32d9542d8e25c4dcdd2fec8cbcf3'
         'SKIP')
 
 prepare() {
@@ -96,7 +96,6 @@ build() {
     --prefix=/usr \
     --libexecdir=/usr/lib \
     --with-openssl \
-    --enable-no-install-program=hostname,kill,uptime \
     --with-selinux
   make
   
@@ -120,7 +119,8 @@ package() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}/po"
   for mo in *.mo; do
     install -Dm 644 "${mo}" "${pkgdir}/usr/share/locale/${mo%.mo}/LC_MESSAGES/${pkgname/-selinux}.mo"
-    install -Dm 644 "${mo}" "${pkgdir}/usr/share/locale/${mo%.mo}/LC_TIME/${pkgname/-selinux}.mo"
+    install -dm 755 ${pkgdir}/usr/share/locale/${mo%.mo}/LC_TIME
+    ln -s "../LC_MESSAGES/${pkgname/-selinux}.mo" "${pkgdir}/usr/share/locale/${mo%.mo}/LC_TIME/${pkgname}.mo"
   done
 }
 
