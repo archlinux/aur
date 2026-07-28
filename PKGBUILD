@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=26.1.1.5
+pkgver=26.1.1.7
 pkgrel=1
 pkgdesc="Media relay for RTP sessions (Sipwise proxy)"
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archi
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "10-kmod.conf")
-sha256sums=('25240115fbbeb8b9465d474cc06db117be8fff610c0341dd965210da10013be3'
+sha256sums=('86ab4881882c6c2a51864a13d5b3f1aee60054092c1c7ca3d4ca3bf50b396904'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e'
             '50330c2dd7c3f3fcb4dd0ed947cbc08139a1255199885299646ebefc48f5f34f'
             '342781f68382a10521dfe2eb1c0527e7f1bab18435995ea41da8eb57ca7d7e9d')
@@ -69,6 +69,7 @@ prepare() {
 
   # Set version for the new build system via .release-version
   echo "${pkgver}" > .release-version
+
 }
 
 build() {
