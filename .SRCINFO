@@ -1,11 +1,12 @@
 pkgbase = option-term
 	pkgdesc = GTK4 + libadwaita terminal emulator powered by libghostty-vt
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/fireflylabss/optionTerm
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -13,9 +14,9 @@ pkgbase = option-term
 	depends = libadwaita
 	depends = cairo
 	depends = pango
-	source = option-term-0.1.4.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.1.4.tar.gz
+	source = option-term-0.1.5.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.1.5.tar.gz
 	source = zig-x86_64-linux-0.15.2.tar.xz::https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
-	sha256sums = 355bf343039e385a30df7fc9731c59f71de7ef6b40018a503b909eb99b16a7fe
+	sha256sums = c141ec6c8970daa5e5f72c5251499746219bea22d7e1bbb23644b35cadfd9ba3
 	sha256sums = 02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239
 
 pkgname = option-term

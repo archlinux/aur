@@ -1,7 +1,7 @@
 # Maintainer: AE Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=option-term
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='GTK4 + libadwaita terminal emulator powered by libghostty-vt'
 arch=('x86_64')
@@ -18,6 +18,8 @@ depends=(
 )
 makedepends=(
   'cargo'
+  # libghostty-vt-sys clones the Ghostty sources during build.rs
+  'git'
 )
 # libghostty-vt-sys builds the vendored Ghostty VT with Zig and only supports
 # 0.15.x, while extra/zig is already 0.16 — ship the upstream 0.15.2 toolchain
@@ -28,7 +30,7 @@ source=(
   "zig-x86_64-linux-$_zigver.tar.xz::https://ziglang.org/download/$_zigver/zig-x86_64-linux-$_zigver.tar.xz"
 )
 sha256sums=(
-  '355bf343039e385a30df7fc9731c59f71de7ef6b40018a503b909eb99b16a7fe'
+  'c141ec6c8970daa5e5f72c5251499746219bea22d7e1bbb23644b35cadfd9ba3'
   '02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239'
 )
 
