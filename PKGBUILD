@@ -14,10 +14,10 @@ depends=(
 	"yosys-nightly"
 	"python"
 	"boost-libs"
-	"qt5-base"
+	"qt6-base"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost" "qt6-tools")
 conflicts=(
 	"nextpnr-git"
 	"nextpnr-all-nightly"
