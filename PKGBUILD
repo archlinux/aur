@@ -1,14 +1,14 @@
-# Maintainer:  rafael silva <perigoso at riseup dot net>
-# Contributor: bs mt <bsmt at bsmt dot me>
+# Maintainer:  3mb3dw0rk5 <3mb3dw0rk5 at gmail dot com>
+# Contributor: rafael silva <perigoso at riseup dot net>, bs mt <bsmt at bsmt dot me>
 
 pkgname=socketcand-git
-pkgver=0.6.1.r28.g02ad0f5
+pkgver=0.6.1.r103.g6dd5d33
 pkgrel=1
 pkgdesc="Provide access to CAN interfaces on a machine via a network interface."
 arch=('i686' 'x86_64')
 url="https://github.com/linux-can/socketcand"
-license=('unknown')
-makedepends=('git' 'autoconf' 'libconfig')
+license=('GPL-2.0-only' 'BSD-3-Clause')
+makedepends=('git' 'meson' 'libconfig')
 source=("git+https://github.com/linux-can/socketcand.git")
 md5sums=('SKIP')
 
@@ -19,16 +19,15 @@ pkgver() {
 
 prepare() {
   cd 'socketcand'
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-init-script --mandir=/usr/share/man/man1
+  meson setup -Dlibconfig=true --buildtype=release build
 }
 
 build() {
   cd 'socketcand'
-  make
+  meson compile -C build
 }
 
 package() {
   cd 'socketcand'
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" meson install -C build
 }
