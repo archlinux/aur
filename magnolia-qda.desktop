@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Magnolia-QDA
+Comment=Free and open-source qualitative data analysis software.
+Path=/var/log/magnolia-qda/
+Exec=/usr/bin/magnolia-qda
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/magnolia-qda/magnolia-qda.png
