@@ -14,11 +14,12 @@ pkgbase = nextpnr-machxo2-nightly
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
+	makedepends = qt6-tools
 	depends = yosys-nightly
 	depends = prjtrellis-nightly
 	depends = python
 	depends = boost-libs
-	depends = qt5-base
+	depends = qt6-base
 	provides = nextpnr-machxo2=0.9
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
