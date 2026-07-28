@@ -1,7 +1,7 @@
 pkgbase = gmodpatchtool-bin
 	pkgdesc = 🇬🩹🛠 Patches for Garry's Mod. Updates/Improves CEF and Fixes common launch/performance issues (esp. on Linux/Proton/macOS). Formerly GModCEFCodecFix.
 	pkgver = 20260722
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/solsticegamestudios/gmodpatchtool
 	arch = x86_64
 	license = GPL3

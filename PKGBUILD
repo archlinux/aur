@@ -3,7 +3,7 @@ execname=gmodpatchtool
 pkgname="${execname}-bin"
 projname=gmodpatchtool
 pkgver=20260722
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="🇬🩹🛠 Patches for Garry's Mod. Updates/Improves CEF and Fixes common launch/performance issues (esp. on Linux/Proton/macOS). Formerly GModCEFCodecFix."
 url="https://github.com/solsticegamestudios/${projname}"
@@ -17,7 +17,6 @@ prepare() {
   cd "${srcdir}"
   unzip -o "${execname}-Linux.zip"
 
-  # Auto-detect main binary: first executable file matching execname*
   binfile=$(find . -type f -perm -u=x -name "${execname}*" | head -n 1)
   if [[ -z "$binfile" ]]; then
     echo "Error: Could not find executable in archive" >&2
@@ -25,17 +24,14 @@ prepare() {
   fi
   echo "$binfile" > "${srcdir}/.binarypath"
 
-  # Detect required libraries
   mapfile -t libs < <(ldd "$binfile" 2>/dev/null | awk '/=>/ {print $1}' | sort -u)
 
-  # Convert library names to Arch package names
   depends_list=()
   for lib in "${libs[@]}"; do
     pkg=$(pacman -Qo "/usr/lib/$lib" 2>/dev/null | awk '{print $5}' | head -n1)
     [[ -n "$pkg" ]] && depends_list+=("$pkg")
   done
 
-  # Remove duplicates
   depends_list=($(printf "%s\n" "${depends_list[@]}" | sort -u))
   printf "%s\n" "${depends_list[@]}" > "${srcdir}/.depends"
 }
@@ -44,32 +40,32 @@ package() {
   cd "${srcdir}"
   binfile=$(<.binarypath)
 
-  # Install everything into /opt
   install -d "${pkgdir}/opt/${execname}"
-  cp -r ./* "${pkgdir}/opt/${execname}"
+  cp -a ./. "${pkgdir}/opt/${execname}"
 
-  # Create wrapper in /usr/bin
   install -d "${pkgdir}/usr/bin"
+
   cat > "${pkgdir}/usr/bin/${execname}" <<EOF
 #!/bin/bash
+set -e
+
 SYS_DIR="/opt/${execname}"
 USER_DIR="\$HOME/.local/share/${execname}"
-BIN_NAME="$(basename "$binfile")"
+BIN_PATH="${binfile#./}"
+PKGVER="${pkgver}"
 
-# If writable, run from system directory
-if [ -w "\$SYS_DIR" ]; then
-    cd "\$SYS_DIR" || exit 1
-    exec "./\$BIN_NAME" "\$@"
-else
-    # Copy to user directory if not already present
-    if [ ! -d "\$USER_DIR" ]; then
-	mkdir -p "$USER_DIR"
-	cp -a "$SYS_DIR"/. "$USER_DIR"/
-    fi
-    cd "\$USER_DIR" || exit 1
-    exec "./\$BIN_NAME" "\$@"
+if [[ ! -f "\$USER_DIR/.pkgver" ]] || [[ "\$(cat "\$USER_DIR/.pkgver")" != "\$PKGVER" ]]; then
+    rm -rf "\$USER_DIR"
+    mkdir -p "\$USER_DIR"
+    cp -a "\$SYS_DIR"/. "\$USER_DIR"/
+    chmod +x "\$USER_DIR/\$BIN_PATH"
+    echo "\$PKGVER" > "\$USER_DIR/.pkgver"
 fi
+
+cd "\$USER_DIR"
+exec "./\$BIN_PATH" "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${execname}"
+
+  chmod 755 "${pkgdir}/usr/bin/${execname}"
 }
 
