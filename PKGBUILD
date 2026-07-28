@@ -1,0 +1,33 @@
+# Maintainer: Your Name <your@email.com>
+pkgname=archinstaller-git
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Modern GTK4 GUI installer for Arch Linux"
+arch=('any')
+url="https://github.com/youruser/arch-installer"
+license=('GPL3')
+depends=('python' 'gtk4' 'libadwaita' 'python-gobject' 'python-cairo'
+         'gparted' 'reflector' 'arch-install-scripts' 'cryptsetup'
+         'dosfstools' 'btrfs-progs' 'xfsprogs' 'f2fs-tools')
+makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+provides=('archinstaller')
+conflicts=('archinstaller')
+
+source=("git+https://github.com/youruser/arch-installer.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/arch-installer"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "$srcdir/arch-installer"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$srcdir/arch-installer"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
