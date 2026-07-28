@@ -1,5 +1,5 @@
 pkgbase = ddos
-	pkgdesc = ARC-GHOST: Authorized Security Assessment Suite & Process Isolator for Linux by Arunachalam
+	pkgdesc = Arunachalam's ARC-GHOST: Cyberpunk Authorized Security Assessment & Targeted Process Isolation Suite built for Linux by a 7-year veteran builder (Tamil Nadu, India)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Ddos
