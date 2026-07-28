@@ -1,6 +1,6 @@
 pkgbase = chan
 	pkgdesc = AI-native IDE with an embedded web editor
-	pkgver = 0.79.1
+	pkgver = 0.79.2
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chan
 	depends = systemd
 	conflicts = chan-desktop
 	options = !lto
-	source = chan-0.79.1.tar.gz::https://github.com/fiorix/chan/archive/v0.79.1.tar.gz
-	sha256sums = 9637126bfdfd7e4ace1aa3857ef1fe39d336b4083b47450f39f3b25500b60a12
+	source = chan-0.79.2.tar.gz::https://github.com/fiorix/chan/archive/v0.79.2.tar.gz
+	sha256sums = 4dc5d9461594febd6942b29c194f36d4829b1ef46f1ce87f5dcd5a461fc5d46f
 
 pkgname = chan
