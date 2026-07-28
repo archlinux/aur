@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-mcp
-pkgver=1.28.1
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK'
 arch=(any)
@@ -48,7 +48,7 @@ optdepends=(
   'python-websockets: deprecated websocket transport support'
 )
 source=("git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v$pkgver")
-b2sums=('1fd185e2a29fef23ea7f2b1877105dd41eab2c513c11893f46089035e4a1a114459769ef0b0c26fcac870393807533e762b8770cb41a34c587f35da310ae9d20')
+b2sums=('f65cb4f3333d5b22644e5308d00ef4c467ff3d24894791fce2a727b845abfeed5bf6ee4844d468e27d326ed52586cfaffd499a49278c88dbbe726ab6a24b947d')
 
 prepare() {
   cd python-sdk
