@@ -1,7 +1,7 @@
 # Maintainer: Martin Vacek <mpvvac at gmail dot com>
 
 pkgname=keyd-mapper
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Visual editor for keyd configuration files"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 checkdepends=('python-pytest')
 install=keyd-mapper.install
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('07f7eb5260709949c5409bd91452cba862bd3cccbf12e1516fc01cdfa5ac400f1be4ce2bd11bd737a85b7531e3d2cb6925dee02a679f5b7c16679b49cbc93dd9')
+b2sums=('8d3c48a198dd56dddab11d22e74a188df7ea247ea45bd1f194fff9ed9e6f99e7079a14499ed72b078b9c3ee96e3454c7a10ccd2b4bba519ee63759d42036a0cd')
 
 build() {
     cd KeydMapper
