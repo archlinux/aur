@@ -50,6 +50,7 @@ pkgver() {
 
 prepare() {
   cd buzz
+  mkdir -p "$srcdir/corepack-bin"
   corepack enable --install-directory "$srcdir/corepack-bin"
   export PATH="$srcdir/corepack-bin:$PATH"
   pnpm install --frozen-lockfile
