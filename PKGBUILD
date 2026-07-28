@@ -8,8 +8,8 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname_old=(pandoc-cli pandoc)
-pkgver=3.6.4.r8.g68bb4ae58
-pkgrel=2
+pkgver=3.10.2.r14.g0ce83fb13
+pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
 url='https://pandoc.org'
@@ -70,8 +70,15 @@ package() {
   env -C "$pkgdir/usr/bin" ln -s pandoc pandoc-server
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 pandoc-cli/man/pandoc*.1 -t "$pkgdir"/usr/share/man/man1/
-  install -Dm644 pandoc.bash \
-      "$pkgdir"/usr/share/bash-completion/completions/pandoc
+  _install_completion_script bash bash-completion/completions/pandoc
+  _install_completion_script zsh zsh/site-functions/_pandoc
+  _install_completion_script fish fish/vendor_completions.d/pandoc.fish
+}
+
+_install_completion_script() {
+  install -Dm644 \
+    <("$pkgdir/usr/bin/pandoc" --completion=$1) \
+    "$pkgdir/usr/share/$2"
 }
 
 # vim:set ts=2 sw=2 et
