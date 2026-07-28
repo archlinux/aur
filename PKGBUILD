@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liveplay-bin
 _pkgname=LivePlay
-pkgver=2.3.4
+pkgver=2.4.1
 _electronversion=42
 pkgrel=1
 pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v${pkgver}/LICENCE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('40b7e53946b57b85874f41ddc48f542311c3e1ff7e09f239b0bac5ba23e3e273'
+sha256sums=('bdb0b671c5052d44bf7316ca27e69d0301bcb9bc16bf25af5d1e260d47801c8c'
             '20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -64,7 +64,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
