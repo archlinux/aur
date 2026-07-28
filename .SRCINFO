@@ -8,12 +8,9 @@ pkgbase = oh-my-pi
 	makedepends = bazel
 	makedepends = bun
 	makedepends = git
-	depends = gcc-libs
 	depends = glibc
-	depends = icu
 	depends = opus
 	depends = pcre2
-	depends = zlib
 	options = !strip
 	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.1.7
 	source = tree-sitter-haskell-no-strict-aliasing.patch
