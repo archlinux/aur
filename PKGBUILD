@@ -3,8 +3,8 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=0.26.0
-_pkgver_btcd=v0.26.0
+pkgver=0.26.2
+_pkgver_btcd=v0.26.2
 _pkgver_btcwallet=v0.18.0
 pkgrel=1
 pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
@@ -18,7 +18,7 @@ provides=('btcd' 'btcwallet')
 conflicts=('btcd')
 source=(git+https://github.com/btcsuite/btcd#tag=$_pkgver_btcd
         git+https://github.com/btcsuite/btcwallet#tag=$_pkgver_btcwallet)
-sha256sums=('b850b52d74a2ae7fdbfb2bb967c2d86627703a94d29b1b3cd6b5b2905f9a83cb'
+sha256sums=('2c44673ffb3c82551eeb70187662163a6dfdbeb867241833b61d68f7f404176e'
             '04ef29c47ce0d249effab1089c06b248c231ac925e384b5c95739088cf0033be')
 
 prepare() {

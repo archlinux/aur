@@ -1,6 +1,6 @@
 pkgbase = btcd
 	pkgdesc = btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go
-	pkgver = 0.26.0
+	pkgver = 0.26.2
 	pkgrel = 1
 	url = https://github.com/btcsuite
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = btcd
 	provides = btcwallet
 	conflicts = btcd
 	options = !emptydirs
-	source = git+https://github.com/btcsuite/btcd#tag=v0.26.0
+	source = git+https://github.com/btcsuite/btcd#tag=v0.26.2
 	source = git+https://github.com/btcsuite/btcwallet#tag=v0.18.0
-	sha256sums = b850b52d74a2ae7fdbfb2bb967c2d86627703a94d29b1b3cd6b5b2905f9a83cb
+	sha256sums = 2c44673ffb3c82551eeb70187662163a6dfdbeb867241833b61d68f7f404176e
 	sha256sums = 04ef29c47ce0d249effab1089c06b248c231ac925e384b5c95739088cf0033be
 
 pkgname = btcd
