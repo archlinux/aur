@@ -1,0 +1,22 @@
+pkgbase = wiretray
+	pkgdesc = A Linux Wi-Fi hotspot manager with a system tray interface
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/aghastygd/wiretray
+	install = wiretray.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = desktop-file-utils
+	makedepends = gtk-update-icon-cache
+	depends = gtk4
+	depends = glib2
+	depends = networkmanager
+	depends = dnsmasq
+	depends = iptables
+	depends = hicolor-icon-theme
+	source = wiretray-0.3.1.tar.gz::https://github.com/aghastygd/wiretray/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = eb91482cff7b1bdf4a7390e4176f41ad6e5b1add27b7c9779fea607827cb535a
+
+pkgname = wiretray
