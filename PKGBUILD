@@ -17,25 +17,21 @@ prepare(){
   cd "${pkgname}-${pkgver}"
   mkdir -p build/
   
-  # Download dependencies
   go mod download -x
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   
-  # Set up proper build flags as per Arch Go packaging guidelines
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   
-  # Get version info for proper versioning
   local _version="v${pkgver}"
   local _commit=$(git ls-remote "${url}" "refs/tags/v${pkgver}" | cut -f1)
   
-  # Build with proper ldflags for version information
   go build \
     -trimpath \
     -buildmode=pie \
@@ -48,30 +44,12 @@ build() {
     .
 }
 
-# Disabled due to upstream linter issues
-# check() {
-#   cd "${pkgname}-${pkgver}"
-#   
-#   # Run tests with proper flags
-#   export CGO_CPPFLAGS="${CPPFLAGS}"
-#   export CGO_CFLAGS="${CFLAGS}"
-#   export CGO_CXXFLAGS="${CXXFLAGS}"
-#   export CGO_LDFLAGS="${LDFLAGS}"
-#   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-#   
-#   # Run tests
-#   go test -v ./...
-# }
-
 package() {
   cd "${pkgname}-${pkgver}"
   
-  # Install binary
   install -Dm755 build/cherryctl "${pkgdir}/usr/bin/cherryctl"
   
-  # Install license
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  # Install documentation
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
