@@ -1,0 +1,19 @@
+pkgbase = kprompt-dash-git
+	pkgdesc = Localhost read-only Kubernetes inventory UI for kprompt
+	pkgver = 0.1.0.r0.g96f5e58
+	pkgrel = 1
+	url = https://github.com/kprompt/kprompt-dash
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = xdg-utils: open the UI in a browser with --open
+	provides = kprompt-dash=0.1.0
+	conflicts = kprompt-dash
+	options = !debug
+	source = kprompt-dash::git+https://github.com/kprompt/kprompt-dash.git
+	sha256sums = SKIP
+
+pkgname = kprompt-dash-git
