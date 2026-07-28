@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=renesas-flash-programmer-bin
-pkgver=3.23.00
+pkgver=3.24.00
 pkgrel=1
 epoch=
 pkgdesc="Renesas Flash Programmer"
@@ -9,11 +9,9 @@ arch=(x86_64)
 url="https://www.renesas.com/rfp"
 license=('LicenseRef-scancode-commercial-license')
 depends=(
-	glibc
-	libgcc
-	libstdc++
-	libusb
-	zlib
+	libgcc_s.so
+	libstdc++.so
+	libz.so
 )
 makedepends=(
 	libarchive
@@ -29,7 +27,7 @@ _installer="RFP_CLI_Linux_V${pkgver//./}_x64.tgz"
 source=(
 	"file:///$_installer"
 )
-sha256sums=('4e2af9fe45de0bcdd20e102d8a984ad63ca3df3ad9d0ae8b7b77fff522307fca')
+sha256sums=('61338e57c10d9f8c1178074c5bdb0b3a7575900a29d4ae1994aa4ff83f24a509')
 noextract=(
 	$_installer
 )
