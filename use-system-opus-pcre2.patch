@@ -1,0 +1,63 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 5ed93a86d4..511862bbc0 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -240,7 +240,7 @@ xxhash-rust = { version = "0.8", features = ["xxh64"] }
+ # ──────────────────────────────────────────────────────────────────────────────
+ # Audio & Realtime Media
+ # ──────────────────────────────────────────────────────────────────────────────
+-audiopus_sys = { version = "0.2.2", features = ["static"] }
++audiopus_sys = { version = "0.2.2", features = ["dynamic"] }
+ # Pregenerated bindings (crate default): keeps bindgen/libclang out of the
+ # build graph so Bazel actions stay hermetic.
+ maudio = "0.1.6"
+diff --git a/MODULE.bazel b/MODULE.bazel
+index df090aed4e..49f9aaa5ea 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -111,41 +111,16 @@ crate.from_cargo(
+     manifests = ["//:Cargo.toml"],
+ )
+ 
+-# audiopus_sys builds its vendored opus via the `cmake` crate: give the build
+-# script a PATH that resolves cmake/make (runner image, GH runners, dev hosts)
+-# and the policy override its old CMakeLists needs under CMake 4.x. The cmake
+-# crate picks up CC/CFLAGS from the Bazel cc toolchain on its own.
++# Link against Arch's shared libopus instead of building vendored source.
+ crate.annotation(
+     crate = "audiopus_sys",
+     build_script_env = {
+-        "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
+-        # msvc cross only (cmake-rs reads VAR_<triple> before VAR; the key is
+-        # inert for every other target): without a generator override cmake-rs
+-        # insists on a Visual Studio generator for msvc targets, which cannot
+-        # exist on linux/mac hosts. Ninja must be on the PATH below.
+-        "CMAKE_GENERATOR_x86_64_pc_windows_msvc": "Ninja",
+-        # msvc cross only: cmake's vs_link_exe insists on rc/mt tools for
+-        # MSVC-ABI exe links (try_compile), which find_program can't locate on
+-        # linux/mac PATH. @msvc_cc's toolchain.cmake pins compiler/linker/
+-        # rc/mt to the wrapper dir (self-locating via CMAKE_CURRENT_LIST_DIR).
+-        # $${pwd} → exec root in the rules_rust runner; the canonical repo
+-        # path must track the repo rule/name in the msvc section below.
+-        "CMAKE_TOOLCHAIN_FILE_x86_64_pc_windows_msvc": "$${pwd}/external/+msvc_cc_repository+msvc_cc/toolchain.cmake",
+-        # zig cc enables UBSan by default; cmake's try-compile links a test
+-        # exe with the raw wrapper (no toolchain features), which would demand
+-        # the UBSan runtime. Opus shipped without sanitizers under
+-        # cargo-zigbuild too.
+-        "CFLAGS": "-fno-sanitize=undefined",
+-        "PATH": "/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin",
++        "LIBOPUS_LIB_DIR": "/usr",
++        "OPUS_NO_PKG": "1",
+     },
+ )
+ 
+-# Release addons must never pick up a host libpcre2 (Homebrew paths leaked into
+-# shipped dylibs before); always build the vendored static copy.
+-crate.annotation(
+-    crate = "pcre2-sys",
+-    build_script_env = {"PCRE2_SYS_STATIC": "1"},
+-)
++# pcre2-sys discovers Arch's shared PCRE2 through pkg-config.
+ 
+ # tree-sitter-just's scanner.c hard-errors when NDEBUG is set (opt-mode cc
+ # default). cc-rs appends env CFLAGS after its computed flags, so -UNDEBUG wins.
