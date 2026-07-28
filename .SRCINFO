@@ -1,6 +1,6 @@
 pkgbase = network-doctor
 	pkgdesc = Terminal UI that diagnoses network connectivity and explains where the connection breaks
-	pkgver = 1.7.5
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/heymaikol/network-doctor
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = network-doctor
 	conflicts = network-doctor
 	provides = network-doctor
 	
-	source = https://github.com/heymaikol/network-doctor/releases/download/v1.7.5/network-doctor-1.7.5.tar.gz
-	sha256sums = 41447c1c45a1701f636af7850aad66ed6b3180f271da387e2bddec7c183836f0
+	source = https://github.com/heymaikol/network-doctor/releases/download/v1.8.0/network-doctor-1.8.0.tar.gz
+	sha256sums = 698edbbaea487a8e9fbd049953da7ce38524c79ac0046a8e07c76837dc5b49a6
 	
 pkgname = network-doctor
