@@ -1,0 +1,29 @@
+pkgbase = lua-mumble
+	pkgdesc = A lua module to connect to a mumble server and interact with it
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bkacjios/lua-mumble
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = protobuf-c
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = git
+	depends = libuv
+	depends = openssl
+	depends = libsndfile
+	depends = opus
+	source = git+https://github.com/bkacjios/lua-mumble.git#commit=8dd6b9c01917d6180d7e3b8e316a69de45121d9b
+	md5sums = SKIP
+
+pkgname = lua51-mumble
+
+pkgname = lua52-mumble
+
+pkgname = lua53-mumble
+
+pkgname = lua54-mumble
