@@ -17,7 +17,6 @@ pkgbase = nmstate
 	source = nmstate-vendor-2.2.61.tar.xz::https://github.com/nmstate/nmstate/releases/download/v2.2.61/nmstate-vendor-2.2.61.tar.xz
 	validpgpkeys = 48FD6FAE515A77B48436821C8789567B8715CEBC
 	validpgpkeys = 2B5F3B2028801E15F57AAA309906C97AA15D984F
-	validpgpkeys = AB7CCD3127483231C544DA66A63D99D7755A67054
 	validpgpkeys = 07F9AEC86144386D9576210B66A44781B4EBC2D0
 	validpgpkeys = C698DE9589AD876D618B03B4157D02EF4DD5D752
 	sha256sums = 25cb1b4055c3f1c9d6e98c7efd3084f09d38f105b34ce6d80132d4427a98ed16

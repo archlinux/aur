@@ -35,7 +35,6 @@ sha256sums=(
 validpgpkeys=(
     '48FD6FAE515A77B48436821C8789567B8715CEBC' # Gris Ge <fge@redhat.com>
     '2B5F3B2028801E15F57AAA309906C97AA15D984F' # Fernando Fernandez Mancera <ffmancera@riseup.net>
-    'AB7CCD3127483231C544DA66A63D99D7755A67054' # Wen Liang <liangwen12year@gmail.com>
     '07F9AEC86144386D9576210B66A44781B4EBC2D0' # Íñigo Huguet <ihuguet@redhat.com>
     'C698DE9589AD876D618B03B4157D02EF4DD5D752' # Ján Václav <jvaclav@redhat.com>
 )
@@ -76,10 +75,8 @@ build() {
     # silently resolving "latest compatible" crates from crates.io.
     cargo build --offline --release --workspace --manifest-path rust/Cargo.toml
 
-    # Generate man pages and C header/pkg-config from .in templates
     make manpage clib
 
-    # Build Python bindings wheel
     cd rust/src/python
     python -m build --wheel --no-isolation
 }
@@ -97,7 +94,6 @@ package_nmstate() {
 
     cd "$pkgbase-$pkgver"
 
-    # Install everything via Makefile
     make install \
         DESTDIR="$pkgdir" \
         PREFIX=/usr \
@@ -106,17 +102,15 @@ package_nmstate() {
         SYSTEMD_UNIT_DIR=/usr/lib/systemd/system \
         SKIP_PYTHON_INSTALL=1
 
-    # Install Python bindings into the tree (will be picked out)
+    # installed into this pkgdir, picked out into python-libnmstate below
     python -m installer --destdir="$pkgdir" rust/src/python/dist/*.whl
 
     cd "$pkgdir"
 
-    # Pick out libnmstate files
     _pick libnmstate usr/lib/libnmstate.*
     _pick libnmstate usr/include/nmstate.h
     _pick libnmstate usr/lib/pkgconfig/nmstate.pc
 
-    # Pick out python-libnmstate files
     _pick python-libnmstate usr/lib/python*
 
     install -Dm644 "$srcdir/$pkgbase-$pkgver/LICENSE" \
