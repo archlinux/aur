@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'EOF'
+
+THPM needs one user-level setup step after package installation:
+
+  thpm install           # hook, templates, and graphical manager
+  thpm install --no-ui   # hook and templates without the graphical manager
+
+You can add the graphical manager later with:
+
+  thpm ui install
+
+Run these commands as your normal desktop user, not as root.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+If you use the THPM graphical manager, deploy the updated QML files with:
+
+  thpm ui install
+
+Run this command as your normal desktop user, not as root.
+EOF
+}
