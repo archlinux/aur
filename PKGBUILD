@@ -1,5 +1,5 @@
 pkgname=shrieker-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='GUI client for the sculk P2P tunnel library (prebuilt binary)'
 arch=('x86_64')
@@ -9,12 +9,12 @@ depends=('glibc' 'gcc-libs' 'libxkbcommon' 'wayland' 'libx11' 'libglvnd' 'glib2'
 provides=('shrieker')
 conflicts=('shrieker')
 source=(
-  'shrieker-linux-amd64.deb::https://github.com/KercyDing/shrieker/releases/download/v0.5.1/shrieker-linux-amd64.deb'
-  'shrieker.desktop::https://raw.githubusercontent.com/KercyDing/shrieker/v0.5.1/shrieker.desktop'
-  'icon.png::https://raw.githubusercontent.com/KercyDing/shrieker/v0.5.1/assets/icon.png'
+  'shrieker-linux-amd64.deb::https://github.com/KercyDing/shrieker/releases/download/v0.6.0/shrieker-linux-amd64.deb'
+  'shrieker.desktop::https://raw.githubusercontent.com/KercyDing/shrieker/v0.6.0/shrieker.desktop'
+  'icon.png::https://raw.githubusercontent.com/KercyDing/shrieker/v0.6.0/assets/icon.png'
 )
 sha256sums=(
-  '19dfb9ae41393aa6c03de6c0aeb9af414932d85b93f84a0eae6cf2386cacf89e'
+  '82bc4b0cca6a3754b8e9603b295b09109334a9c187f4f3db5ad3fff34f852e1e'
   'b23ed24be29740d0138d94045415f73ab563eb3b94bd7f7937aaae1a33f6c977'
   'df06d92c1ed31506aebfb9af388e22ac5bd0b4b95152d499c7905065d1d5aebc'
 )
