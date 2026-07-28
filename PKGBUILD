@@ -4,7 +4,7 @@
 pkgname=zju-connect-bin
 _pkgname=zju-connect
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Go client for ZJU RVPN"
 arch=("i686" "x86_64" "armv7h" "aarch64" "riscv64")
 url="https://github.com/Mythologyli/zju-connect"
@@ -24,11 +24,11 @@ source_riscv64=("${pkgname}-${pkgver}-riscv64.zip::https://github.com/Mythologyl
 
 sha256sums=('96f9145b783e770d6c448d9db7e43796b79c19f984f2b1387333a64c1874a74a'
             '9024fc303620a539a2263551432c8484d09d2369e4bf4b8b033939fe9f363649')
-sha256sums_i686=('756b86a5707e79bd7038865191615bf4749337bea80df366c27c0096899f3868')
-sha256sums_x86_64=('c8fe727dbed7cc9adb04b1f52899f25bf6b1594ad815766d622bcd7deda6ca64')
-sha256sums_armv7h=('65d9603a2a4efdb228cf0907b2a655d94976e1bde03239214fca199d3527e226')
-sha256sums_aarch64=('773fd0d5bd490728321b455284efdfc7b95c062baf445f9ec16109a66b52db76')
-sha256sums_riscv64=('cf801601171a03e07f953e5f70cce18abdbce5558d0d68c6cd8d08518de85404')
+sha256sums_i686=('e4e61b80914a6cca08570cec94ea3780627d4529888c38280d72c718d719888e')
+sha256sums_x86_64=('3ec969c040bd65ba0064700073bbdfc8497f113e462155e2fea47da1106d50c5')
+sha256sums_armv7h=('4bf944b268d33c3309d1b4c8ba1c06f66e714a4305cb3fcde3ff9d4d446c6aa1')
+sha256sums_aarch64=('c80a690748861f669048963247c2cbec4f2fe8993df15883efae94ba763f1824')
+sha256sums_riscv64=('714f3d494150b25ac6e8fd82375c2719637e3162c1c977975f58a15bacdb5b94')
 
 package() {
 	cd ${srcdir}
