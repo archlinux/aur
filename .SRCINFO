@@ -1,13 +1,13 @@
 pkgbase = dockerfmt
 	pkgdesc = Dockerfile formatter - a modern dockfmt
-	pkgver = 0.5.2
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/reteps/dockerfmt
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/reteps/dockerfmt/archive/v0.5.2/dockerfmt-0.5.2.tar.gz
-	sha256sums = cbe837f1168a6903c3903b17d8e2f6f167530ff8ecd227becd5144720ee9a049
+	source = https://github.com/reteps/dockerfmt/archive/v0.5.4/dockerfmt-0.5.4.tar.gz
+	sha256sums = feceb63f17513d8310efbe81c660bf48f6a3bd8040ab00a45dc4c9fbf591033f
 
 pkgname = dockerfmt

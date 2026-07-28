@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=dockerfmt
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Dockerfile formatter - a modern dockfmt"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=(${url}/archive/v${pkgver}/$pkgname-$pkgver.tar.gz)
-sha256sums=('cbe837f1168a6903c3903b17d8e2f6f167530ff8ecd227becd5144720ee9a049')
+sha256sums=('feceb63f17513d8310efbe81c660bf48f6a3bd8040ab00a45dc4c9fbf591033f')
 
 prepare() {
   cd $pkgname-$pkgver
