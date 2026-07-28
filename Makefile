@@ -31,7 +31,7 @@ update_version:
 	fi
 
 src/core-$(VERSION):
-	makepkg -o --noprepare --skipinteg
+	makepkg -o --noprepare
 
 src/stg: src/core-$(VERSION)
 	$(STG_ENV) git init && \

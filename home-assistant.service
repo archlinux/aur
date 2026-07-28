@@ -1,22 +1,28 @@
 [Unit]
 Description=Home assistant
-After=network.target
+Documentation=https://www.home-assistant.io/docs/
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
 
 [Service]
 Restart=on-failure
+RestartSec=30
 User=hass
 Group=hass
 LogsDirectory=hass
+LogsDirectoryMode=0750
 StateDirectory=hass
+StateDirectoryMode=0750
 WorkingDirectory=/var/lib/hass
+UMask=0027
 Environment=HOME=/var/lib/hass
 Environment=PATH=/usr/bin:/var/lib/hass/.venv/bin
 
 ExecStartPre=/usr/bin/bash -c 'if [ -f /var/lib/hass/.venv/ha_version ]; then OLD=$$(< /var/lib/hass/.venv/ha_version); NEW="@VERSION@"; if [ "$${OLD%.*}" != "$${NEW%.*}" ]; then rm -rf /var/lib/hass/.venv; fi; fi'
 ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/hass/.venv
-ExecStartPre=/usr/bin/bash -c 'echo "@VERSION@" > /var/lib/hass/.venv/ha_version'
-ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install /usr/share/home-assistant/homeassistant-@VERSION@-py3-none-any.whl
+ExecStartPre=/usr/bin/bash -c 'echo "@VERSION@" > /var/lib/hass/.venv/ha_version'
 ExecStart=/var/lib/hass/.venv/bin/hass \
   --config /var/lib/hass/ \
   --log-file /var/log/hass/home-assistant.log \
@@ -26,10 +32,23 @@ TimeoutSec=15min
 
 AmbientCapabilities=
 CapabilityBoundingSet=
+NoNewPrivileges=true
 LockPersonality=true
+PrivateTmp=true
+ProtectClock=true
 ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
+ProtectSystem=full
+RemoveIPC=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=multi-user.target
