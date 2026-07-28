@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=subtitle-translator-electron-bin
 _pkgname=Subtitle-Translator
-pkgver=2.0.2
+pkgver=2.1.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Translate subtitle using ChatGPT.(Prebuilt version.Use system-wide electron)"
@@ -14,11 +14,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname//-/.}-2.0.2.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/gnehs/subtitle-translator-electron/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('51f08ba34648e02111b47518d9436e7c65334a3e4987ed9acf711393cb428a31'
+sha256sums=('5e16562a38e1fc15b8df8a991d22a6df13b162697c99aa9c230f9fdfb48ab36a'
             '9903884b44b8909bf1b1b66d35df2a94685ebc254f00a203b6ee5a933986419f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
