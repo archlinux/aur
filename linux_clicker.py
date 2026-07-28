@@ -877,7 +877,7 @@ def run_qt_app(engine):
                                      QGroupBox, QLabel, QLineEdit, QPushButton, QGridLayout,
                                      QRadioButton, QTextEdit, QStackedWidget,
                                      QTableWidget, QTableWidgetItem, QHeaderView, QComboBox,
-                                     QAbstractItemView, QMessageBox, QInputDialog, QDialog)
+                                     QAbstractItemView, QMessageBox, QInputDialog, QDialog, QTabWidget)
         from PyQt6.QtCore import pyqtSignal, QObject, Qt, QTimer
         from PyQt6.QtGui import QShortcut, QKeySequence
     except ImportError:
@@ -886,7 +886,7 @@ def run_qt_app(engine):
                                          QGroupBox, QLabel, QLineEdit, QPushButton, QGridLayout,
                                          QRadioButton, QTextEdit, QStackedWidget,
                                          QTableWidget, QTableWidgetItem, QHeaderView, QComboBox,
-                                         QAbstractItemView, QMessageBox, QInputDialog, QDialog)
+                                         QAbstractItemView, QMessageBox, QInputDialog, QDialog, QTabWidget)
             from PyQt5.QtCore import pyqtSignal, QObject, Qt, QTimer
             from PyQt5.QtGui import QShortcut, QKeySequence
         except ImportError:
