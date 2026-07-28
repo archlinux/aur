@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="AI-powered CLI coding agent by Xiaomi MiMo Team"
 arch=('x86_64')
 url="https://mimo.xiaomi.com/coder"
-license=('MIT')
+license=('custom:proprietary')
 options=('!strip')
 depends=('nodejs>=18')
 optdepends=('sox: voice input support')

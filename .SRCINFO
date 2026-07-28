@@ -5,7 +5,7 @@ pkgbase = mimocode
 	url = https://mimo.xiaomi.com/coder
 	install = mimocode.install
 	arch = x86_64
-	license = MIT
+	license = custom:proprietary
 	depends = nodejs>=18
 	optdepends = sox: voice input support
 	options = !strip
