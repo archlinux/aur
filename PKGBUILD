@@ -8,7 +8,7 @@ pkgdesc="A local second brain for Claude Code: hybrid recall over notes and past
 # lazy `await import("fastembed")` in src/embedder.ts throws and the brain silently
 # degrades to BM25-only — worse than not shipping. Re-add when upstream does.
 arch=('x86_64')
-url="https://aur.archlinux.org/packages/claude-brain"
+url="https://github.com/basement-interactive/claude-brain"
 license=('MIT')
 depends=('bun' 'rclone' 'xdg-utils')
 optdepends=('claude-code: LLM-assisted vault reorganisation and design descriptions')
@@ -18,8 +18,8 @@ optdepends=('claude-code: LLM-assisted vault reorganisation and design descripti
 # debug passes walking several thousand vendor files to no purpose.
 options=('!strip' '!debug')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('6c0f941fc5db4760f56ea5dcc1248408b1f0d110f6e106b11b7ea6e58efc836d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c75c4e90955e3e93d86b73464e295dba704f08995a68947ca7d9cab01ac70993')
 
 build() {
 	cd "$pkgname-$pkgver"

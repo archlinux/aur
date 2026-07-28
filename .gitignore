@@ -1,0 +1,7 @@
+# Never commit sources into the AUR repo — the AUR carries the build recipe,
+# not the software. makepkg downloads the source from upstream into this dir.
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
+pkg/
+src/
