@@ -1,6 +1,6 @@
 pkgbase = lib32-opencl-icd-loader
 	pkgdesc = The OpenCL ICD Loader project. (32-bit)
-	pkgver = 2025.07.22
+	pkgver = 2026.05.29
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenCL-ICD-Loader
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lib32-opencl-icd-loader
 	provides = libOpenCL.so=1
 	provides = lib32-ocl-icd
 	conflicts = lib32-ocl-icd
-	source = OpenCL-ICD-Loader-2025.07.22.tar.gz::https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/refs/tags/v2025.07.22.tar.gz
-	sha256sums = dff7a0b11ad5b63a669358e3476e3dc889a4a361674e5b69b267b944d0794142
+	source = OpenCL-ICD-Loader-2026.05.29.tar.gz::https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/refs/tags/v2026.05.29.tar.gz
+	sha256sums = 48fd0c5181db7cd046f4f731d5955694892e10998d49d09ee0d997e7e04fd939
 
 pkgname = lib32-opencl-icd-loader
