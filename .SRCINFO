@@ -1,7 +1,7 @@
 pkgbase = neru-bin
 	pkgdesc = tool to navigate your entire screen without touching the mouse
 	pkgver = 1.46.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/y3owk1n/neru
 	arch = x86_64
 	license = MIT
