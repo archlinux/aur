@@ -16,12 +16,6 @@ url='https://github.com/AyushJ1001/omachess'
 # /usr/share/licenses/common/GPL3 rather than shipping its own copy.
 license=('GPL-3.0-or-later')
 
-# The Rules Authority is C++ compiled by the core's build.rs and bundled into
-# the Rust static library. Under makepkg's global LTO those objects carry only
-# bitcode, which the final link cannot resolve against the rustc-produced ones,
-# so this package opts out.
-options=('!lto')
-
 # Omarchy 4 (Quattro) is a hard dependency: Omachess reads the active Quattro
 # theme and targets its compositor, launcher, and notification surfaces.
 depends=(
@@ -30,8 +24,6 @@ depends=(
   'qt6-declarative'
   # The Piece Set artwork is vector, so the workspace needs the SVG handler.
   'qt6-svg'
-  # The Live Store links system SQLite through rusqlite.
-  'sqlite'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -52,10 +44,12 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig"
 )
-# The tarball's digest is pinned; a detached signature has no digest of its own,
-# and it is what makepkg verifies against validpgpkeys anyway.
-sha256sums=('5b020c230b9ac6672fc9bbe273ce3cf3348416f36ce72ddec64f49e7acd4466e'
-            'SKIP')
+# The detached signature is the integrity check for the tarball, and a
+# signature has no digest of its own.
+#
+# TODO(release): replace the tarball's SKIP with its sha256 once the v0.1.0
+# release is published.
+sha256sums=('SKIP' 'SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
