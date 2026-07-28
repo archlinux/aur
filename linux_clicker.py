@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mimogu Presser - Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
+Mahmoud Presser - Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
 Compatible with Linux (Wayland/X11), Windows (10/11), and macOS.
 
 Features:
@@ -174,13 +174,13 @@ if "--toggle" in sys.argv:
                 os.kill(running_pid, signal.SIGUSR1)
             else:
                 os.kill(running_pid, signal.SIGTERM)
-            print("Toggled Mimogu Presser.")
+            print("Toggled Mahmoud Presser.")
             sys.exit(0)
         except Exception as err:
             print(f"Error toggling presser: {err}")
             sys.exit(1)
     else:
-        print("Mimogu Presser is not currently running.")
+        print("Mahmoud Presser is not currently running.")
         sys.exit(1)
 
 # Write PID
@@ -330,7 +330,7 @@ class PresserEngine:
                 e.EV_REL: [e.REL_X, e.REL_Y, e.REL_WHEEL]
             }
             try:
-                self.ui = UInput(caps, name="Mimogu Presser Virtual Device")
+                self.ui = UInput(caps, name="Mahmoud Presser Virtual Device")
                 self.backend = "evdev"
                 return
             except Exception:
@@ -957,11 +957,11 @@ def run_qt_app(engine):
             self.recorded_key = "+".join(mods + [btn])
             self.accept()
 
-    class MimoguPresserQtWindow(QWidget):
+    class MahmoudPresserQtWindow(QWidget):
         def __init__(self):
             super().__init__()
             os_title = f" ({platform.system()} Edition)"
-            self.setWindowTitle("Mimogu Presser" + os_title)
+            self.setWindowTitle("Mahmoud Presser" + os_title)
             self.resize(800, 720)
             self.setStyleSheet(MODERN_QT_STYLE)
 
@@ -1674,7 +1674,7 @@ def run_qt_app(engine):
             event.accept()
 
     app = QApplication(sys.argv)
-    win = MimoguPresserQtWindow()
+    win = MahmoudPresserQtWindow()
     win.show()
     sys.exit(app.exec())
     return True
@@ -1802,9 +1802,9 @@ def run_gtk_app(engine):
                 cfg_data.update(json.load(f))
         except Exception: pass
 
-    class MimoguPresserGtk3Window(Gtk.Window):
+    class MahmoudPresserGtk3Window(Gtk.Window):
         def __init__(self):
-            super().__init__(title="Mimogu Presser (GTK3 Edition)")
+            super().__init__(title="Mahmoud Presser (GTK3 Edition)")
             self.set_default_size(800, 720)
             self.connect("destroy", Gtk.main_quit)
             self.engine = engine
@@ -2351,14 +2351,14 @@ def run_gtk_app(engine):
             }
             save_config_atomic(CONFIG_FILE, cfg)
 
-    win = MimoguPresserGtk3Window()
+    win = MahmoudPresserGtk3Window()
     win.show_all()
     Gtk.main()
     return True
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Mimogu Presser - Cross-Platform Auto Clicker, Macro & Auto Typer")
+    parser = argparse.ArgumentParser(description="Mahmoud Presser - Cross-Platform Auto Clicker, Macro & Auto Typer")
     parser.add_argument("--qt", action="store_true", help="Force Qt GUI")
     parser.add_argument("--gtk", action="store_true", help="Force GTK GUI")
     parser.add_argument("--toggle", action="store_true", help="Toggle auto-presser state of running instance")
