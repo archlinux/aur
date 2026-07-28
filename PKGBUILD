@@ -1,10 +1,9 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Contributor: hexchain <i@hexchain.org>
+# Maintainer: Volodymyr Zolotopupov <zvova7890@gmail.com>
 
 pkgname=telegram-desktop-fscale
-pkgver=6.8.2
-_td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
-pkgrel=2
+pkgver=7.0.6
+_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+pkgrel=1
 pkgdesc='Official Telegram Desktop client with fractional scale support'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -12,6 +11,7 @@ license=('GPL-3.0-or-later WITH OpenSSL-exception')
 depends=(
   'abseil-cpp'
   'ada'
+  'cmark-gfm'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -19,7 +19,6 @@ depends=(
   'hunspell'
   'kcoreaddons'
   'libavif'
-  'libdispatch'
   'libgcc'
   'libheif'
   'libjpeg-turbo'
@@ -48,6 +47,8 @@ depends=(
   'rnnoise'
   'xxhash'
   'zlib'
+  'minizip'
+  'qrcodegencpp-cmake'
 )
 makedepends=(
   'boost'
@@ -56,6 +57,7 @@ makedepends=(
   'git'
   'glib2-devel'
   'gobject-introspection'
+  'qt6-shadertools'
   'gperf'
   'libtg_owt'
   'microsoft-gsl'
@@ -67,24 +69,22 @@ makedepends=(
 optdepends=(
   'geoclue: geoinformation support'
   'crow-translate: translation provider'
-  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
-  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)'
+  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)'
   'xdg-desktop-portal: desktop integration'
 )
 conflicts=(telegram-desktop)
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  tdesktop-fix-minizip-includes.patch
+  "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   telegram-fractional-scale.diff
 )
-sha512sums=('a733992a12268ee4d429ed383f63182c12e3a5d61d78e0f31cbfc705a5a36cb872a2f2dfb6c76d50a22ed46d141b9c13f80da4ab94286fe35b339ca685d954e3'
-            'f8f98b02b1c7d1ca9162c4867461605fa7a5ab449ac53701877f49ba393ff4a495a58984538fe3960c7090ab5b3749666b4d169058f5e40f8d35ea4c15aea8d5'
-            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
-            '19dc94189d7b03f1720f4857bed395e90e456152d8cf4ccdc0b35c2693c2e2431c877994f0bcb28da6611a7e68637905eba6b999cb2a3bbcd3b525d700ad0c44')
+sha512sums=('dff323953fe6c07dbd3f5fcbf942e8311625ddc3c57593b41412bc8ab7d7c8ac0706b34402cf07ace899103ff1ba3fe6048c913f985632f6011befee3c50aa07'
+            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
+            '71d7165eeeb8dc83867d22f6e7586f3d0b38f8697f7d0c7f743f50ea55865ac8f26ba93d45051048eb6b33c8cedf33625d0c9286dd2b464e7bcdfe9b19333241')
+options=(!strip !lto)
 
 prepare() {
-  patch -Np1 -d tdesktop-$pkgver-full/Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
   patch -Np1 -d tdesktop-$pkgver-full/ -i "$srcdir"/telegram-fractional-scale.diff
 }
 
