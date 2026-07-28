@@ -1,11 +1,18 @@
 Description: escape a double quote in a regexp
 Author: gregor herrmann <gregoa@debian.org>
+Date: Mon, 08 Feb 2010 22:20:42 -0200
 Reviewed-by: Jonathan Yu <jawnsy@cpan.org>
-Origin: vendor
-Forwarded: no
+Origin: https://salsa.debian.org/perl-team/modules/packages/libstring-escape-perl/-/blob/debian/2010.002-3/debian/patches/backslash.patch
+Last-Update: 2026-07-28
+---
+ Escape.pm |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: b/Escape.pm
+===================================================================
 --- a/Escape.pm
 +++ b/Escape.pm
-@@ -699,7 +699,7 @@
+@@ -699,7 +699,7 @@ sub string2list {
  		} elsif ($text =~ s/\A\s+//m){
  			push(@words, unprintable($word));
  			$word = '';

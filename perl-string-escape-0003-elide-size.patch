@@ -1,0 +1,23 @@
+Description: String::Escape::elide exact size match
+Author: BOWMANBS <BOWMANBS@cpan.org>
+Date: Thu, 27 Jun 2013 22:31:03 -0000
+Bug-CPAN: https://rt.cpan.org/Public/Bug/Display.html?id=86508
+Origin: https://rt.cpan.org/Public/Ticket/Attachment/1229479/649607
+Last-Update: 2026-07-28
+---
+ Escape.pm |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: b/Escape.pm
+===================================================================
+--- a/Escape.pm
++++ b/Escape.pm
+@@ -377,7 +377,7 @@ sub elide ($;$$) {
+ 	my $elipses    = scalar(@_) ? shift() : $Elipses;
+ 	
+ 	# If the source is already short, we don't need to do anything
+-	return $source if (length($source) < $length);
++	return $source if (length($source) <= $length);
+ 	
+ 	# Leave room for the elipses and make sure we include at least one character.
+ 	$length -= length( $elipses );

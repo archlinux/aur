@@ -1,0 +1,22 @@
+Description: incorrect characters escaped in sub backslash
+Author: David <http://dr1024.myopenid.com>
+Date: Mon, 14 May 2012 15:12:09 -0000
+Bug-CPAN: https://rt.cpan.org/Public/Bug/Display.html?id=77202
+Origin: https://rt.cpan.org/Public/Ticket/Attachment/1077940/567246
+Last-Update: 2026-07-28
+---
+ Escape.pm |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: b/Escape.pm
+===================================================================
+--- a/Escape.pm
++++ b/Escape.pm
+@@ -198,7 +198,7 @@ sub _define_backslash_escapes {
+ sub backslash ($) {
+ 	local $_ = ( defined $_[0] ? $_[0] : '' );
+ 	# Preserve only printable ASCII characters other than \, ", $, and @
+-	s/([^\x20\x21\x24\x25-\x39\x41-\x5b\x5d-\x7e])/\\$Backslashed{$1}/gs;
++	s/([^\x20\x21\x23\x25-\x3f\x41-\x5b\x5d-\x7e])/\\$Backslashed{$1}/gs;
+ 	return $_;
+ }

@@ -14,3 +14,11 @@ SPDX-License-Identifier = "0BSD"
 path = "perl-string-escape-0001-backlash.patch"
 SPDX-FileCopyrightText = "Debian contributors"
 SPDX-License-Identifier = "Artistic-1.0-Perl OR GPL-1.0-or-later"
+
+[[annotations]]
+path = [
+  "perl-string-escape-0002-incorrect-escape.patch",
+  "perl-string-escape-0003-elide-size.patch",
+]
+SPDX-FileCopyrightText = "CPAN contributors"
+SPDX-License-Identifier = "Artistic-1.0-Perl OR GPL-1.0-or-later"
