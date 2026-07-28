@@ -1,0 +1,14 @@
+pkgbase = libstud-optional
+	pkgdesc = A reasonably-conforming optional class template implementation for C++14
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.codesynthesis.com/projects/libstud-optional/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = build2
+	options = !libtool
+	source = https://pkg.cppget.org/1/stable/libstud/libstud-optional-1.0.0.tar.gz
+	sha256sums = 5ae2487e81b95335c25b89b61390353a84a31c93f51a88151d8ca635bcfddbe4
+
+pkgname = libstud-optional
