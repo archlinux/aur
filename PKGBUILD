@@ -1,6 +1,6 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=donutstudio-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="DonutStudio — harmonic composition workstation and MIDI editor (just-intonation native)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('donutstudio')
 conflicts=('donutstudio')
 install="${pkgname}.install"
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('2fb0b9cc9669f1a5daa5dd8bda587af02fdce7176b3144948988f82054999eb6')
+sha256sums=('5ec428fac7804bfb2111247ec334fbf72ee47d436b480cc4ca469e5bf2318d17')
 
 package() {
   install -dm755 "${pkgdir}/opt/donutstudio"
