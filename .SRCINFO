@@ -1,6 +1,6 @@
 pkgbase = libodb-oracle
 	pkgdesc = The ODB Oracle runtime library
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libodb-oracle
 	depends = oracle-instantclient-sqlplus
 	depends = unixodbc
 	options = !libtool
-	source = https://www.codesynthesis.com/download/odb/2.5.0/libodb-oracle-2.5.0.tar.gz
-	sha256sums = e1e95a85adc9b336f645ed21685e35a47da1a8ce4de96fa689a656851df6be39
+	source = https://www.codesynthesis.com/download/odb/2.6.0/libodb-oracle-2.6.0.tar.gz
+	sha256sums = bc5d5910382888ee2da3b3a7332afd520b94dbae5a13e4d90484b6f2b5897d70
 
 pkgname = libodb-oracle

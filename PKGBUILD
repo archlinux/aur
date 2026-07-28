@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-oracle
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The ODB Oracle runtime library"
 url="https://www.codesynthesis.com/products/odb/"
@@ -10,7 +10,7 @@ depends=('build2' 'libodb' 'oracle-instantclient-sdk' 'oracle-instantclient-sqlp
 options=('!libtool')
 license=('custom')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e1e95a85adc9b336f645ed21685e35a47da1a8ce4de96fa689a656851df6be39')
+sha256sums=('bc5d5910382888ee2da3b3a7332afd520b94dbae5a13e4d90484b6f2b5897d70')
 
 prepare() {
 
@@ -41,7 +41,7 @@ package() {
 
         bpkg install ${pkgname}
 
-		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+	rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
 
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
