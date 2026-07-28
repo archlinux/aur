@@ -9,6 +9,7 @@ pkgbase = hlint-static-git
 	makedepends = git
 	makedepends = cabal-install
 	makedepends = ghc
+	makedepends = curl
 	depends = gmp
 	optdepends = haskell-apply-refact: automatically apply suggested refactorings
 	provides = hlint=3.8

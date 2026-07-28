@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
-makedepends=('git' 'cabal-install' 'ghc')
+makedepends=('git' 'cabal-install' 'ghc' 'curl')
 optdepends=('haskell-apply-refact: automatically apply suggested refactorings')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -25,7 +25,12 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  cabal update hackage.haskell.org,$(TZ=UTC date +@%s --date='today 00:00')
+
+  rts=$(date +%s --date="$(curl -I http://hackage.haskell.org/01-index.tar |
+    awk -F': ' '$1 == "Last-modified" { print $2 }')")
+  lts=$(TZ=UTC date +@%s --date='today 00:00')
+  ts=$(printf '%s\n' "$rts" "$lts" | sort -n | head -n1)
+  cabal update hackage.haskell.org,$ts
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
     --enable-tests
   cabal build --only-dependencies
