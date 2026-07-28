@@ -3,7 +3,7 @@
 pkgname=neru-bin
 _pkgname=neru
 pkgver=1.46.1
-pkgrel=1
+pkgrel=2
 pkgdesc="tool to navigate your entire screen without touching the mouse"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
