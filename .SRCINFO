@@ -1,6 +1,6 @@
 pkgbase = hdrcopier-git
 	pkgdesc = Copies colorspace and HDR metadata from one file to another
-	pkgver = 0.2.3.r22.91c75fa
+	pkgver = 0.6.1.r0.7a95153
 	pkgrel = 1
 	url = https://github.com/shssoichiro/hdrcopier
 	arch = x86_64

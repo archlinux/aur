@@ -1,8 +1,8 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=hdrcopier
 pkgname=$_pkgname-git
-pkgver=0.2.3.r22.91c75fa
+pkgver=0.6.1.r0.7a95153
 pkgrel=1
 pkgdesc='Copies colorspace and HDR metadata from one file to another'
 arch=(x86_64)
@@ -23,8 +23,8 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  git -C $_pkgname describe --long --tags | \
-    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/-r\1.\2/; s/-/./g'
+  git -C $_pkgname describe --long --tags |
+    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/.r\1.\2/; s/-/./g'
 }
 
 prepare() {
