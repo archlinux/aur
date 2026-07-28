@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname='NVM Desktop'
-pkgver=4.3.2.r2.g7c743ec
+pkgver=4.4.0.r0.g0eeff7a
 _nodeversion=24
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -38,6 +38,30 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
+_set_build_env() {
+    export HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export RUSTUP_DIST_SERVER="https://mirrors.aliyun.com/rustup"
+            export RUSTUP_UPDATE_ROOT="https://mirrors.aliyun.com/rustup/rustup"
+        }
+    fi
+}
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -51,12 +75,8 @@ prepare() {
         --categories="Development" \
         --name="${pkgname%-git}" \
         --exec="${pkgname%-git} %U"
-    export CARGO_HOME="${srcdir}/.cargo"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-    fi
+    _set_build_env
+    _ensure_local_nvm
     rustup default stable
     # build nvmd
     cd "${srcdir}/nvmd.git"
@@ -65,24 +85,14 @@ prepare() {
     # build nvm-desktop
     cd "${srcdir}/${pkgname%-git}.git"
     install -Dm755 "${srcdir}/nvmd.git/target/release/nvmd" -t "${srcdir}/${pkgname%-git}.git/src-tauri/resources"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-    } >> .npmrc
-    _ensure_local_nvm
     sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
     cp "src-tauri/icons/128x128@2x.png" "src-tauri/icons/256x256.png"
     NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _set_build_env
     _ensure_local_nvm
-    rustup default stable
     NODE_ENV=production     pnpm run build
 }
 package() {
