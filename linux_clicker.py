@@ -1177,7 +1177,7 @@ def run_qt_app(engine):
             self.seq_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
             self.seq_table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
 
-            self.seq_table.setMinimumHeight(300)
+            self.seq_table.setMinimumHeight(150)
             
             # Direct Table Cell Editing
             self.seq_table.itemChanged.connect(self.on_table_item_changed)
