@@ -1,7 +1,7 @@
 pkgbase = bearhub
 	pkgdesc = Arch-first package manager hub (community-maintained fork of bauh)
 	pkgver = 0.10.7
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/spalencsar/bearhub
 	arch = any
 	license = ZLIB
@@ -24,7 +24,7 @@ pkgbase = bearhub
 	conflicts = bearhub-git
 	conflicts = bauh
 	conflicts = bauh-git
-	source = bearhub-0.10.7-bearhub.6.tar.gz::https://github.com/spalencsar/bearhub/archive/refs/tags/0.10.7-bearhub.6.tar.gz
-	sha256sums = 6fa9dfbff1cdb86a5eb837275170434069d320fd3072324ca9f4eb4beea92a04
+	source = bearhub-0.10.7-bearhub.7.tar.gz::https://github.com/spalencsar/bearhub/archive/refs/tags/0.10.7-bearhub.7.tar.gz
+	sha256sums = 6077e5c489dc05ed2ba49df7014f7998de72caacf5d422cf971c086fd73d0428
 
 pkgname = bearhub
