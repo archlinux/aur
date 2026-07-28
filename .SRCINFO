@@ -1,0 +1,18 @@
+pkgbase = kindle-for-arch
+	pkgdesc = A simple Kindle desktop app for Arch Linux based on Electron
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/ProphetPX/Kindle-for-Arch
+	arch = any
+	license = MIT
+	depends = electron
+	depends = nodejs
+	depends = npm
+	source = Kindle.png
+	source = main.js
+	source = package.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kindle-for-arch
