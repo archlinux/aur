@@ -7,13 +7,13 @@ pkgbase = buzz-desktop-git
 	license = Apache-2.0
 	makedepends = clang
 	makedepends = cmake
+	makedepends = corepack
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = librsvg
 	makedepends = nodejs>=24
 	makedepends = patchelf
 	makedepends = pkgconf
-	makedepends = pnpm
 	makedepends = rust
 	depends = alsa-lib
 	depends = cairo

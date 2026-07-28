@@ -25,13 +25,13 @@ depends=(
 makedepends=(
   'clang'
   'cmake'
+  'corepack'
   'desktop-file-utils'
   'git'
   'librsvg'
   'nodejs>=24'
   'patchelf'
   'pkgconf'
-  'pnpm'
   'rust'
 )
 provides=('buzz')
@@ -50,12 +50,15 @@ pkgver() {
 
 prepare() {
   cd buzz
+  corepack enable --install-directory "$srcdir/corepack-bin"
+  export PATH="$srcdir/corepack-bin:$PATH"
   pnpm install --frozen-lockfile
 }
 
 build() {
   cd buzz
 
+  export PATH="$srcdir/corepack-bin:$PATH"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
 
