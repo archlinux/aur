@@ -39,9 +39,9 @@ pkgbase = zed-bin
 	conflicts = zed
 	conflicts = zed-git
 	conflicts = zed-preview-bin
-	source_x86_64 = zed-bin-1.12.1.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.12.1/zed-linux-x86_64.tar.gz
+	source_x86_64 = zed-bin-1.12.1-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.12.1/zed-linux-x86_64.tar.gz
 	sha256sums_x86_64 = d3c0665cd9338c1d7b95288993167dcc53db98f9dcf1cea3965825b2e299f2a7
-	source_aarch64 = zed-bin-1.12.1.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.12.1/zed-linux-aarch64.tar.gz
+	source_aarch64 = zed-bin-1.12.1-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.12.1/zed-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 41d04694fce05a4fe9d785cacd05983b7235050541d8a787855b3f3e1a0e26df
 
 pkgname = zed-bin

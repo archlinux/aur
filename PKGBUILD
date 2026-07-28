@@ -37,8 +37,8 @@ optdepends=('clang: improved C/C++ language support'
             'org.freedesktop.secrets: to keep you logged into your Zed account')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" 'zed-git' 'zed-preview-bin')
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-aarch64.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-aarch64.tar.gz")
 sha256sums_x86_64=('d3c0665cd9338c1d7b95288993167dcc53db98f9dcf1cea3965825b2e299f2a7')
 sha256sums_aarch64=('41d04694fce05a4fe9d785cacd05983b7235050541d8a787855b3f3e1a0e26df')
 
