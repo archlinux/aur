@@ -1,0 +1,17 @@
+pkgbase = plaster
+	pkgdesc = Dynamic wallpaper and ambient theme manager for GNOME
+	pkgver = 0.1.0_beta1
+	pkgrel = 1
+	url = https://github.com/sanoguel/plaster
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pywal
+	depends = python-pystray
+	source = plaster-0.1.0_beta1.tar.gz::https://github.com/sanoguel/plaster/archive/refs/tags/v0.1.0-beta1.tar.gz
+	sha256sums = 846e5d94def3a886334054a27bdbd544cd90f970faf7da3b75788478fec6e3c9
+
+pkgname = plaster
