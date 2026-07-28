@@ -1,10 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
+_fc_ver=0.2.2
 pkgdesc="Desktop app for secure remote PC control and management"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://bytedz.com/products/pclink"
 license=('AGPL-3.0-or-later AND LicenseRef-custom')
 depends=(
@@ -68,17 +69,18 @@ optdepends=(
   'python-pyperclip: Fallback for clipboard support'
   'python-pystray: Fallback for system tray'
   'spectacle: Screenshot support on KDE Plasma'
+  'speedtest-cli: Required for PC Speed Test Extension'
   'wl-clipboard: Clipboard support on Wayland'
 )
 _commit=a8798f26530933f3e41791d5c5304f6df83c90b2
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-        "git+https://github.com/BYTEDz/FerrumCast.git#commit=${_commit}")
-sha256sums=('618dd952d49e9780d605e829953eb00bfc7d33caf94285cbde83cd6a0651ec52'
-            '75c2627b16d1b3074f9bd68ac274c74533dced37e32ff5c38b76173747a52bc6')
+        "FerrumCast-${_fc_ver}.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v${_fc_ver}.tar.gz")
+sha256sums=('b935726640d56c5185db88a2d1b8b6dda2d2ceb6cc1fa9f42e94f3731d52517f'
+            '4852789895d408786a9220418435a7ce6fd239174f6b5e73bbe9e52d2c45b307')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path=FerrumCast/Cargo.toml --locked --target host-tuple
+  cargo fetch --manifest-path="FerrumCast-${_fc_ver}/Cargo.toml" --locked --target host-tuple
 
   cd "PCLink-$pkgver"
 
@@ -92,7 +94,7 @@ prepare() {
 }
 
 build() {
-  pushd FerrumCast
+  pushd "FerrumCast-${_fc_ver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -112,7 +114,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -Dm755 "$srcdir/FerrumCast/target/release/ferrumcast" -t \
+  install -Dm755 "$srcdir/FerrumCast-${_fc_ver}/target/release/ferrumcast" -t \
     "${pkgdir}${site_packages}/$pkgname/assets/bin/"
 
   install -Dm755 "scripts/linux/$pkgname-power-wrapper" -t "$pkgdir/usr/bin/"
