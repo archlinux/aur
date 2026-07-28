@@ -11,7 +11,9 @@ pkgbase = deepfilternet-plus-git
 	optdepends = easyeffects: use the plugin as microphone noise suppression (Deep Noise Remover)
 	provides = deepfilternet-plus
 	provides = deep-filter
+	provides = libdeep_filter_ladspa
 	conflicts = deepfilternet-plus-bin
+	conflicts = libdeep_filter_ladspa
 	source = deepfilternetplus::git+https://github.com/ismailivanov/DeepFilterNetPlus.git
 	sha256sums = SKIP
 
