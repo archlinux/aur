@@ -1,7 +1,7 @@
 # Maintainer: nugget <vincent@sshmoi.com>
 
 pkgname=kickoutchi
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="TUI and CLI to see which process owns a local port and kill it safely"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("cargo")
 conflicts=("kickoutchi-bin")
 options=("!debug" "!lto")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/source.tar.gz")
-sha256sums=("66289a3b4a69923490e4f2f45e692a87f8da1ec8ccbb5a67f38d3cb702f4a17d")
+sha256sums=("5df1dc7ad85a83d0eb819c64d5419a4cdcfa4599cfa9fd215aad792b93d7dcf6")
 
 _cargo() {
   RUSTC=/usr/bin/rustc RUSTDOC=/usr/bin/rustdoc /usr/bin/cargo "$@"
