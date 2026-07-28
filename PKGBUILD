@@ -6,7 +6,7 @@
 # to the official repositories.
 
 pkgname=idlectl
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='Idle policy daemon that decides when a machine may blank, suspend, hibernate or power off'
 arch=('x86_64' 'aarch64')
@@ -49,7 +49,7 @@ install="$pkgname.install"
 # hence the separate variable rather than the usual "$pkgname-$pkgver".
 _srcname="cachyos-idlectl-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af8ec6f8066109f04b77858bd827e7359aec63b2d97e2eef0cdda58ec476d2db')
+sha256sums=('ed7a788f5260ebfc7f87e966d39e5d63c773cadb33c8efe4f4bc9de38391d201')
 
 prepare() {
 	cd "$_srcname"
