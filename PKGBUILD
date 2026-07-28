@@ -15,7 +15,7 @@ conflicts=('speakoflow-bin' 'speakoflow-git' 'speakoflow')
 options=(!strip !debug)
 _appimage="SpeakoFlow_${pkgver}_amd64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('8394a4d364be6fe4a6f0d89c040f791bc7d87eef941176a582b6a4187952259e')
+sha256sums=('c7fa361909f076ab7cdd45a8069ff34b84d54e41d3b5a6482c5acf178578c9e6')
 
 prepare(){
     cd "$srcdir"
