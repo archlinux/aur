@@ -1,6 +1,6 @@
 pkgbase = drivebeacon
 	pkgdesc = KDE Plasma client and service for Microsoft Graph OneDrive synchronization
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/clmates/drivebeacon
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = drivebeacon
 	depends = qt6-base
 	optdepends = dolphin: Dolphin actions and item state overlays
 	optdepends = onedrive-abraunegg: optional legacy backend and migration support
-	source = drivebeacon-1.0.1.tar.gz::https://github.com/clmates/drivebeacon/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = e2f02798a5a31ac919321a8014f26d384021c143b7d86bc1c5310059a85d2f93
+	source = drivebeacon-1.0.2.tar.gz::https://github.com/clmates/drivebeacon/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 6cdd35e9337cb22ca51bafa15bbc128d6c8df06ac21f0fa0c70813a4182f297c
 
 pkgname = drivebeacon
