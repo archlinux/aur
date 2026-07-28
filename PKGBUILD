@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DepecheR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1e17b2d8970d895974a6f034a3c8de4')
-b2sums=('4d20e0f1af21110fc41936e7616c5beaa58748e9f3a9a953badc19d5eea50edc053ddf961663be16d1552ab706a289d9dfdc09685a52d74cc233045af935024b')
+md5sums=('90016b8b6f0ce471be9788f582d12fbc')
+b2sums=('f9420cd26a194c526464f9466bc0a8f2efc9a0eedf7da6abd1314306b5956408fc2224137ec3b4d611f63ed7dbbe0c2c9c8d1883fd65136ef4d625aa40f15411')
 
 build() {
   mkdir build
