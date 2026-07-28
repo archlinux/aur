@@ -9,6 +9,7 @@ pkgbase = ghcid-static-git
 	makedepends = git
 	makedepends = cabal-install
 	makedepends = ghc
+	makedepends = curl
 	depends = gmp
 	provides = ghcid=0.8.9
 	conflicts = ghcid
