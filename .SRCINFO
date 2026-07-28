@@ -1,6 +1,6 @@
 pkgbase = clipboard-transformer
 	pkgdesc = Rule-based clipboard transformer (built from source)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jag-k/clipboard-transformer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = clipboard-transformer
 	optdepends = wayland: native Wayland clipboard support
 	optdepends = xdg-utils: fallback for opening support links
 	conflicts = clipboard-transformer-bin
-	source = clipboard-transformer-0.1.0.tar.gz::https://github.com/jag-k/clipboard-transformer/releases/download/v0.1.0/clipboard-transformer-0.1.0.tar.gz
-	sha256sums = a550dde551d4212c26d22d83c12f5cc752ddd22c42a5577967e8abf576e97190
+	source = clipboard-transformer-0.1.1.tar.gz::https://github.com/jag-k/clipboard-transformer/releases/download/v0.1.1/clipboard-transformer-0.1.1.tar.gz
+	sha256sums = 5b49f511b258dabdda3891b492fdbcaddbcfe2ffb402243c87972f6731e80fef
 
 pkgname = clipboard-transformer
