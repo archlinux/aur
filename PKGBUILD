@@ -3,19 +3,19 @@ pkgname=wltile
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="A CLI tool that manages outputs/displays for wlroots based compositors"
-url="https://codeberg.org/kdehairy/wltile"
+url="https://github.com/kdehairy/wltile"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
 depends=()
 makedepends=('git' 'cargo')
 provides=("${pkgname}")
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("197d7b07f5a127106ce8d0afe3ca0ddbd4ccd39193c8b9d99b376e1a7019c72a")
+sha256sums=("ce5da2b302834b70bfdfaee1a9a3883d6b9bea806a06ea79d57b1b48d78e4783")
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -23,11 +23,11 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
 }
