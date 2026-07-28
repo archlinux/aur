@@ -1,10 +1,11 @@
 pkgbase = ros2-humble-slam-toolbox
 	pkgdesc = This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets
-	pkgver = 2.6.4
-	pkgrel = 5
+	pkgver = 2.6.10
+	pkgrel = 1
 	url = https://index.ros.org/p/slam_toolbox/
 	arch = any
 	makedepends = cmake
+	makedepends = boost
 	depends = ros2-humble
 	depends = eigen
 	depends = boost-libs
@@ -14,7 +15,9 @@ pkgbase = ros2-humble-slam-toolbox
 	depends = tbb
 	depends = qt5-base
 	depends = ros2-humble-nav2-map-server
-	source = https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/2.6.4.tar.gz
-	sha256sums = 27242664b7964180f48f53f7594a1e6a06a2f96e9d54285eb159be9fd7eedb08
+	source = https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/2.6.10.tar.gz
+	source = ceres-manifold.patch
+	sha256sums = 1a69a6db1473e4c2cabe34e3fd38186fcde3f5bacf00e5e9fcfa0b6b43263303
+	sha256sums = 43802b0d920dba1cabb2de1c89dde80088a70a472f80cc766255db5c27068343
 
 pkgname = ros2-humble-slam-toolbox
