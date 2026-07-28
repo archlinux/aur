@@ -8,7 +8,7 @@
 
 pkgname=psmisc-selinux
 pkgver=23.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Miscellaneous procfs tools with SELinux support'
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/psmisc/psmisc'
@@ -20,7 +20,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 validpgpkeys=('5D2FB320B825D93904D205193938F96BDF50FEA5') # Craig Small <csmall@debian.org>
-source=("git+https://gitlab.com/psmisc/psmisc.git#tag=v${pkgver}?signed")
+source=("git+https://gitlab.com/psmisc/psmisc.git?signed#tag=v${pkgver}")
 sha256sums=('80ae6e626ba83232b7af1c02f3f528834ebdd96325367b701f69125d3e196f2f')
 
 prepare() {

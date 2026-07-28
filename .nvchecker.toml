@@ -1,0 +1,4 @@
+[psmisc]
+source = "git"
+git = "https://gitlab.com/psmisc/psmisc.git"
+prefix = "v"

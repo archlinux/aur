@@ -1,7 +1,7 @@
 pkgbase = psmisc-selinux
 	pkgdesc = Miscellaneous procfs tools with SELinux support
 	pkgver = 23.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/psmisc/psmisc
 	arch = x86_64
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = psmisc-selinux
 	makedepends = po4a
 	depends = ncurses
 	depends = libselinux
-	provides = psmisc=23.7-1
-	provides = selinux-psmisc=23.7-1
+	provides = psmisc=23.7-2
+	provides = selinux-psmisc=23.7-2
 	conflicts = psmisc
 	conflicts = selinux-psmisc
-	source = git+https://gitlab.com/psmisc/psmisc.git#tag=v23.7?signed
+	source = git+https://gitlab.com/psmisc/psmisc.git?signed#tag=v23.7
 	validpgpkeys = 5D2FB320B825D93904D205193938F96BDF50FEA5
 	sha256sums = 80ae6e626ba83232b7af1c02f3f528834ebdd96325367b701f69125d3e196f2f
 
