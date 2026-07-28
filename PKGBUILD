@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
 # TODO: Remove the two raw GitHub sources below once the next release
 # is published — they'll be included in the tarball (fixed in
 # moonshine/.github/workflows/release.yaml).
-sha256sums=('2b868b3eaa60a1c7f9743308e3907c6aa192c29676b467f6397ce335c071b7dc'
+sha256sums=('353308e2c59de1e36b470e2c6adcf88a433b5d06c671b4ebebd714d81adacf0c'
             '66465404a061b767524cbd9f2cd9ea3eda336d4d57a985b775db9fe59ea71612'
             'a01ffbd68e9e78c2904db1b933898fa821875d33ff40fa77f5b24940fe287a4b')
 
