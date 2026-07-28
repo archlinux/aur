@@ -40,14 +40,12 @@ prepare() {
   patch -Np1 -i ../gstaudio-symbols.patch
   patch -Np1 -i ../enum_headers.patch
   
-  # Directly modify the problematic file with sed instead of using a patch
   sed -i 's|g_object_ref (G_OBJECT (interface))|g_object_ref ((GstMixer *)(interface))|' ext/alsa/gstalsamixer.c
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
 
-  # Set compiler flags before configure
   export CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags pangocairo pango cairo)"
   export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
   export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
