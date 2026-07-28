@@ -1,0 +1,21 @@
+pkgbase = netinfo-tui
+	pkgdesc = Terminal UI for network interfaces: negotiated link speed, addresses, throughput and per-interface reachability
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/joaquinwojcik/netinfo-tui
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = iproute2
+	depends = sed
+	depends = gawk
+	optdepends = iputils: ICMP probes for the PING column
+	optdepends = docker: resolve br-<id> bridges to their docker network name
+	optdepends = iw: show the associated SSID as a wifi interface name
+	optdepends = systemd: udev hardware model names and per-link DNS in the detail pane
+	optdepends = ncurses: terminal size detection via tput
+	source = netinfo-tui-0.1.0.tar.gz::https://github.com/joaquinwojcik/netinfo-tui/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 98bb99d0e114d6c49f197eca6bae356eec19ae40119e56017b82d1cd38a9a28b
+
+pkgname = netinfo-tui
