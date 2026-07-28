@@ -1,7 +1,7 @@
 pkgbase = stably-orca-git
 	pkgdesc = Stably AI Orca - Electron-based agentic coding IDE (built from main)
 	pkgver = 1.1.30.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stablyai/orca
 	arch = x86_64
 	license = MIT

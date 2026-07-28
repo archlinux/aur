@@ -3,7 +3,7 @@
 pkgname=stably-orca-git
 _gitname=orca
 pkgver=1.1.30.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (built from main)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
