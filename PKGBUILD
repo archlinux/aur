@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm-git
-pkgver=1.0.0rc11.r0.g69ee223
+pkgver=1.0.0rc12.r0.g3534c6c
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations (git)'
 arch=('any')
