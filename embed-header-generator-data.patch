@@ -1,0 +1,45 @@
+diff --git a/packages/coding-agent/scripts/compile-binary.ts b/packages/coding-agent/scripts/compile-binary.ts
+index 4956120418..2b74db4575 100644
+--- a/packages/coding-agent/scripts/compile-binary.ts
++++ b/packages/coding-agent/scripts/compile-binary.ts
+@@ -37,10 +37,17 @@ export async function compileCodingAgent(options: CodingAgentCompileOptions): Pr
+ 			root: options.repoRoot,
+ 			external: [...COMPILED_EXTERNAL_DEPENDENCIES],
+ 			define: {
++				// `header-generator` loads its Bayesian model with `readFileSync(`${__dirname}/data_files/…`)`,
++				// a computed path the bundler cannot see. `browser-headers.ts` pulls those files into the
++				// graph as assets, and `[dir]/[name].[ext]` naming reproduces their node_modules layout
++				// under the standalone binary's read-only root, so this `__dirname` resolves them there
++				// instead of baking the build host's absolute path into the executable.
++				__dirname: JSON.stringify("/$bunfs/root/node_modules/header-generator"),
+ 				"process.env.PI_COMPILED": JSON.stringify("true"),
+ 				"process.env.PI_TINY_TRANSFORMERS_VERSION": JSON.stringify(options.transformersVersion),
+ 				"process.env.PI_DOCS_EMBED": JSON.stringify((await buildDocsIndexPayload()).payload),
+ 			},
++			naming: { asset: "[dir]/[name].[ext]" },
+ 			minify: {
+ 				identifiers: options.minifyIdentifiers ?? false,
+ 				keepNames: true,
+diff --git a/packages/coding-agent/src/web/search/providers/browser-headers.ts b/packages/coding-agent/src/web/search/providers/browser-headers.ts
+index 4fc5c7d564..3176813de4 100644
+--- a/packages/coding-agent/src/web/search/providers/browser-headers.ts
++++ b/packages/coding-agent/src/web/search/providers/browser-headers.ts
+@@ -1,8 +1,15 @@
+ import { HeaderGenerator } from "header-generator";
+ 
+-// Lazily instantiate the singleton header generator. Bun single-file binaries do not
+-// bundle header-generator's fs-loaded data_files, so construction may throw when the
+-// original build-time node_modules path is absent.
++// header-generator reads these through a computed `${__dirname}/data_files/…` path, so import
++// them as assets to force them into the bundle; compile-binary.ts maps `__dirname` onto their
++// embedded location. Keep in sync with the reads in header-generator/header-generator.js.
++import "../../../../../../node_modules/header-generator/data_files/browser-helper-file.json" with { type: "file" };
++import "../../../../../../node_modules/header-generator/data_files/header-network-definition.zip" with { type: "file" };
++import "../../../../../../node_modules/header-generator/data_files/headers-order.json" with { type: "file" };
++import "../../../../../../node_modules/header-generator/data_files/input-network-definition.zip" with { type: "file" };
++
++// Lazily instantiate the singleton header generator; construction still degrades to the static
++// fallback profile if the model data cannot be loaded.
+ let generator: HeaderGenerator | undefined;
+ let generatorUnavailable = false;
+ 

@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=17.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -15,11 +15,13 @@ source=(
     "tree-sitter-haskell-no-strict-aliasing.patch"
     "use-system-opus-pcre2.patch"
     "skip-native-embed-for-aur.patch"
+    "embed-header-generator-data.patch"
 )
 sha256sums=('SKIP'
             '2545baa734e57b43acba3fc9826d1e916cb9fb0a6ed97af80173cf05057f9549'
             'f9ca6e004c28d8d2b3d9c1d4e15093edf4d436b1646e63aa5c53078b601ba9b9'
-            'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
+            'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
+            '09317a262db1a314cbf2a7f4efcfbcead37d000e148c82512abd5f533d857b3e')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -27,6 +29,7 @@ prepare() {
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
     patch -p1 -i "${srcdir}/tree-sitter-haskell-no-strict-aliasing.patch"
+    patch -p1 -i "${srcdir}/embed-header-generator-data.patch"
     # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
     CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
 }
