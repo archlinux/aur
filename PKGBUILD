@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-next-bin
 _pkgname=MooTool-Next-Electron
-pkgver=1.0.9
+pkgver=1.1.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Handy tool set for developers.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/rememberber/MooTool/next-electron-v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('06aaddcf52e094f50edb21724d7aa55528b6beafc05ed8fa47ca38ba905183bb'
+sha256sums=('66c999c8f879a2614c1ee6a9568dc2f6d4541bb33534bfcaeb84a9a65f2aa148'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
