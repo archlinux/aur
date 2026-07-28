@@ -1,6 +1,6 @@
 pkgbase = meads-bin
 	pkgdesc = Task tracking in a single file — just TASKS.md and git
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/jpillora/meads
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = meads-bin
 	provides = md
 	conflicts = meads
 	options = !strip
-	source = LICENSE-0.35.0::https://raw.githubusercontent.com/jpillora/meads/v0.35.0/LICENSE
-	source = README-0.35.0.md::https://raw.githubusercontent.com/jpillora/meads/v0.35.0/README.md
+	source = LICENSE-0.36.0::https://raw.githubusercontent.com/jpillora/meads/v0.36.0/LICENSE
+	source = README-0.36.0.md::https://raw.githubusercontent.com/jpillora/meads/v0.36.0/README.md
 	sha256sums = 1a92d94f8eb94c93edd66675141c929d86b61aeab9387bbdc65ed6e7b9bb1e30
 	sha256sums = 696f191a94ffd1472a0883724c5a18afd82ad0bf4699aa6c67c699a8ae09513e
-	source_x86_64 = meads-x86_64-0.35.0.gz::https://github.com/jpillora/meads/releases/download/v0.35.0/md_0.35.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = aa6dbadd55bf9321b102136ee43d38067e3c000048c7aeb15f00aef622dc008d
-	source_aarch64 = meads-aarch64-0.35.0.gz::https://github.com/jpillora/meads/releases/download/v0.35.0/md_0.35.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0c30aaf66ee193ef1acc476d28270624a44ce79d9e0a2c2b9010d24106e2bb5f
+	source_x86_64 = meads-x86_64-0.36.0.gz::https://github.com/jpillora/meads/releases/download/v0.36.0/md_0.36.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8dde382374bf01a46bbcde481a28cbf5bad1fb2d56f4e44a3e6b0b222a17d6ea
+	source_aarch64 = meads-aarch64-0.36.0.gz::https://github.com/jpillora/meads/releases/download/v0.36.0/md_0.36.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b89cf1b388515c3b9b866da3ac9971a2df2eed5b6f19aa4e4bef712632416b7e
 
 pkgname = meads-bin
