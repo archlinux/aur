@@ -10,14 +10,38 @@ pkgrel=2
 url='https://github.com/g-plane/pnpm-shell-completion'
 arch=(x86_64)
 license=('MIT')
-depends=('glibc' 'libgcc')
-options=(!strip !debug)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/pnpm-shell-completion_${CARCH}-unknown-linux-gnu.tar.gz")
-b2sums=('694309194fbe92955bc7ae42ba309cc27b8ca05823d8993e631243fd786e39631918443be0044e5a63e2c1078dde05079b0718b99b43637e30d6a77f9297766b')
+makedepends=('cargo')
+depends=('libgcc')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('b6a8006927862682a4758df67b635d84871a2dce65fb3a59dc7bcd33aebf22c052d9e5c79364851e274272609e36208135b6c4a36a5b0a02cddb8e8228431830')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features --config profile.release.strip=false
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
 
 package() {
+  cd "${pkgname}-${pkgver}"
+
   install -vD -t "${pkgdir}/usr/bin" \
-    -m755 pnpm-shell-completion
+    -m755 target/release/pnpm-shell-completion
   install -vD -m644 pnpm-shell-completion.plugin.zsh \
     -T "${pkgdir}/usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh"
   install -vD -t "${pkgdir}/usr/share/fish/vendor_completions.d" \
