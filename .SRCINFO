@@ -1,0 +1,27 @@
+pkgbase = oysterav
+	pkgdesc = Linux security orchestrator: oyst-cli backend + oysterAV GTK4 GUI
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/oysterAV
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-pydantic
+	depends = python-defusedxml
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	optdepends = clamav: required scanner spine
+	optdepends = rkhunter: rootkit checks
+	optdepends = chkrootkit: rootkit checks
+	optdepends = lynis: hardening audits
+	source = oysterav-0.2.2.tar.gz::https://github.com/asafelobotomy/oysterAV/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 3bf3eedb518bf5559f007a692c8822c42c33e17a62b44e3911c4a683805cd5ac
+
+pkgname = oysterav
