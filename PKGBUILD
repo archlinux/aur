@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=plex2jellyfin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Migrate a Plex library to Jellyfin and keep new downloads clean"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 # Tagged source ships embedded/frontend/; no npm at build time.
 makedepends=('go>=1.25')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f30a60a3e39032e401c095c37c26f8cb3afef733739580ed82859109e6dd00f')
+sha256sums=('f3de8986948023a0abf88ca1dec02d742301f948ffef879c7d5052ba55f5463b')
 install=${pkgname}.install
 
 build() {
