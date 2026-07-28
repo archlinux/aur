@@ -3,8 +3,9 @@ post_install() {
 ==> voice-agent installed.
 
   First run:   voice-agent
-               (bootstraps ~/.local/share/voice-agent + a uv venv; downloads the
-                Python deps + STT/TTS models on first launch — multi-GB, needs network)
+               (bootstraps ~/.local/share/voice-agent + provisions a uv venv, installing
+                the Python deps + STT/TTS models — multi-GB, needs network, may take a
+                minute; later runs start instantly)
 
   Config:      edit ~/.local/share/voice-agent/.env — pick a brain (it's pluggable):
                  default local Anthropic brain → set ANTHROPIC_API_KEY
