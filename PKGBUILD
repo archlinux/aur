@@ -2,7 +2,7 @@
 # Contributor: Axel Navarro <navarroaxel gmail>
 
 pkgname=meridian-git
-pkgver=1.56.1.r3.gf0c885c
+pkgver=1.57.1.r0.g27f3181
 pkgrel=1
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
