@@ -2,13 +2,13 @@
 
 pkgname=oh-my-pi
 pkgver=17.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'opus' 'pcre2' 'zlib')
-makedepends=('bazel' 'bun' 'git' 'rustup')
+makedepends=('bazel' 'bun' 'git')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
@@ -21,42 +21,44 @@ sha256sums=('SKIP'
             'f9ca6e004c28d8d2b3d9c1d4e15093edf4d436b1646e63aa5c53078b601ba9b9'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
+# --output_user_root keeps bazel's output base and caches in $srcdir instead of
+# ~/.cache/bazel. It is a startup option, so it has to arrive via an rc fragment:
+# bazel-natives.ts forwards $OMP_BAZEL_RC as `--bazelrc=` to its nested calls.
+_bazel_env() {
+    export OMP_BAZEL_RC="${srcdir}/aur-bazel.rc"
+    printf 'startup --output_user_root=%s\n' "${srcdir}/bazel-root" >"${OMP_BAZEL_RC}"
+    # bazel-natives.ts prefers bazelisk over bazel when it is installed.
+    export BAZELISK_HOME="${srcdir}/bazelisk-home"
+}
+
 prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
     patch -p1 -i "${srcdir}/tree-sitter-haskell-no-strict-aliasing.patch"
-    # The crate annotation changes the Bazel crate graph.
-    CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
+    # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
+    _bazel_env
+    CARGO_BAZEL_REPIN=1 bazel --bazelrc="${OMP_BAZEL_RC}" fetch @crates//...
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
-    export CARGO_HOME="${srcdir}/cargo-home"
-    export RUSTUP_HOME="${srcdir}/rustup-home"
 
-    local _toolchain
-
-    _toolchain="$(awk -F'\"' '/^channel = / { print $2; exit }' rust-toolchain.toml)"
-    if [[ -z ${_toolchain}   ]]; then
-        msg2 "Unable to determine rustup toolchain from rust-toolchain.toml"
-        return 1
-    fi
-
-    if ! rustup run "${_toolchain}" rustc --version >/dev/null 2>&1; then
-        msg2 "Installing rustup toolchain ${_toolchain}..."
-        rustup toolchain install "${_toolchain}"
-    fi
-
-    export RUSTUP_TOOLCHAIN="${_toolchain}"
+    _bazel_env
+    # Default is ~/.cache/.bun/install/cache.
+    export BUN_INSTALL_CACHE_DIR="${srcdir}/bun-cache"
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
     bun install --frozen-lockfile
 
+    # rules_rust fetches the pinned nightly rustc and cargo; no host rust toolchain.
     bun ./scripts/bazel-natives.ts linux-x64-baseline linux-x64-modern --dest packages/natives/native
 
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
+
+    # Release the server holding an output base under $srcdir.
+    bazel --bazelrc="${OMP_BAZEL_RC}" shutdown
 }
 
 _install_completions() {
