@@ -1,6 +1,6 @@
 pkgbase = hdr-launcher-appimage
 	pkgdesc = Launcher for the HewDraw Remix conversion mod for Super Smash Bros. Ultimate
-	pkgver = 0.7.8
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/techyCoder81/hdr-launcher-react/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = hdr-launcher-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse
-	noextract = HDRLauncher-0.7.8.AppImage
+	noextract = HDRLauncher-0.8.0.AppImage
 	options = !strip
-	source_x86_64 = HDRLauncher-0.7.8.AppImage::https://github.com/techyCoder81/hdr-launcher-react/releases/download/v0.7.8/HDRLauncher-0.7.8.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/techyCoder81/hdr-launcher-react/v0.7.8/LICENSE
-	sha256sums_x86_64 = 8f9fcaef5c4f69d07aacab49c1da57f416d7f3b9211ced5cf9a8a3c89fbcb411
+	source_x86_64 = HDRLauncher-0.8.0.AppImage::https://github.com/techyCoder81/hdr-launcher-react/releases/download/v0.8.0/HDRLauncher-0.8.0.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/techyCoder81/hdr-launcher-react/v0.8.0/LICENSE
+	sha256sums_x86_64 = 65417ae746d34a787b50020ed0a7c057f8b9358138fd6cdf41941ac7c85e7aa1
 	sha256sums_x86_64 = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
 
 pkgname = hdr-launcher-appimage
