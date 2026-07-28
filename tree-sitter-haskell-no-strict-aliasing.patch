@@ -1,0 +1,18 @@
+diff --git a/MODULE.bazel b/MODULE.bazel
+index df090aed4e..8833e8af14 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -153,6 +153,13 @@ crate.annotation(
+     crate = "tree-sitter-just",
+     build_script_env = {"CFLAGS": "-UNDEBUG"},
+ )
++
++# Prevent the tree-sitter-haskell strict-aliasing crash:
++# https://github.com/tree-sitter/tree-sitter-haskell/issues/144
++crate.annotation(
++    crate = "tree-sitter-haskell",
++    build_script_env = {"CFLAGS": "-fno-strict-aliasing"},
++)
+ use_repo(crate, "crates")
+ 
+ 

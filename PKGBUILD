@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.1.6
+pkgver=17.1.7
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -12,20 +12,20 @@ makedepends=('bazel' 'bun' 'clang' 'cmake' 'git' 'rustup')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
-    "tree-sitter-haskell-new-repo.patch"
+    "tree-sitter-haskell-no-strict-aliasing.patch"
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            '63dd1ebb99d7113874aea1731f6103551f2d36c4822b89fb7d36908db89e1d21'
+            '2545baa734e57b43acba3fc9826d1e916cb9fb0a6ed97af80173cf05057f9549'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    # Use a maintained fork of tree-sitter-haskell to resolve a crash issue. See:
-    # https://github.com/tree-sitter/tree-sitter-haskell/issues/144
-    patch -p1 -i "${srcdir}/tree-sitter-haskell-new-repo.patch"
+    patch -p1 -i "${srcdir}/tree-sitter-haskell-no-strict-aliasing.patch"
+    # The crate annotation changes the Bazel crate graph.
+    CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
 }
 
 build() {
