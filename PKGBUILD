@@ -2,7 +2,7 @@
 # Contributor: fossdd <fossdd@pwned.life
 # Contributor: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=invidious
-pkgver=2.20260626.0
+pkgver=2.20260723.0
 pkgrel=1
 pkgdesc="Alternative front-end to YouTube"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('invidious-git')
 backup=('etc/invidious.yml')
 source=("git+https://github.com/iv-org/invidious.git#tag=v$pkgver"
 	"invidious.sysusers")
-md5sums=('3334fb45f294c3bc6c2896cb02932c68'
+md5sums=('14acb0849807871e82ad5336e520b86a'
          '8f516eaa2a60660fb65a1de3412ad785')
 
 prepare() {

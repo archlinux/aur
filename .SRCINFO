@@ -1,6 +1,6 @@
 pkgbase = invidious
 	pkgdesc = Alternative front-end to YouTube
-	pkgver = 2.20260626.0
+	pkgver = 2.20260723.0
 	pkgrel = 1
 	url = https://github.com/iv-org/invidious
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = invidious
 	optdepends = postgresql: Database, not needed if remote
 	conflicts = invidious-git
 	backup = etc/invidious.yml
-	source = git+https://github.com/iv-org/invidious.git#tag=v2.20260626.0
+	source = git+https://github.com/iv-org/invidious.git#tag=v2.20260723.0
 	source = invidious.sysusers
-	md5sums = 3334fb45f294c3bc6c2896cb02932c68
+	md5sums = 14acb0849807871e82ad5336e520b86a
 	md5sums = 8f516eaa2a60660fb65a1de3412ad785
 
 pkgname = invidious
