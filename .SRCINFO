@@ -10,6 +10,7 @@ pkgbase = cabal-fmt-static-git
 	makedepends = git
 	makedepends = cabal-install
 	makedepends = ghc
+	makedepends = curl
 	depends = gmp
 	provides = cabal-fmt=0.1.13
 	conflicts = cabal-fmt
