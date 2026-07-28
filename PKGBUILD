@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-switchy-bin
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="CLI/TUI for restoring CC Switch cloud snapshots from WebDAV or S3"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('cc-switchy')
 conflicts=('cc-switchy')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v${pkgver}/cc-switchy-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/ca-x/cc-switchy/releases/download/v${pkgver}/cc-switchy-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('7a193c33f19aa92377b628d61db4f3d3d693384736fcb0ca36f5e53b93a49f69')
-sha256sums_aarch64=('911e0043599ceed1b94ac255dcec5eb25811919a1d546d5ccec7170e338f7ab8')
+sha256sums_x86_64=('83333b73772dbc36609a545f4ff686d0150b09b46e01d8398d6f2a0ff31c867c')
+sha256sums_aarch64=('ae3aec01d5f322993aa688e08ecbe551c42e42578cb28cdbb01103f735613463')
 
 package() {
     install -Dm755 "${srcdir}/cc-switchy" "${pkgdir}/usr/bin/cc-switchy"
