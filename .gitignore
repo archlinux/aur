@@ -1,0 +1,12 @@
+# AUR packaging artifacts (generated, never commit)
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Editor/OS noise
+*~
+.*.swp
+.DS_Store
