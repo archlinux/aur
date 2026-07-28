@@ -1,0 +1,39 @@
+From fa900b0694ffc8b835b91ef47a96ed90ac94823b Mon Sep 17 00:00:00 2001
+From: zlice <zlice555@gmail.com>
+Date: Sun, 6 Jul 2025 13:58:28 -0400
+Subject: [PATCH] Process: kill then WAIT for child, in reverse. fixes #777
+
+---
+ src/Utils/Process.cpp | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/Utils/Process.cpp b/src/Utils/Process.cpp
+index 9e3f7584c8..12085abcaa 100644
+--- a/src/Utils/Process.cpp
++++ b/src/Utils/Process.cpp
+@@ -100,18 +100,21 @@ namespace gamescope::Process
+ 
+     void KillProcessTree( std::vector<pid_t> nPids, int nSignal )
+     {
+-        for ( pid_t nPid : nPids )
++        pid_t nPid = 0;
++        int sz = nPids.size() - 1;
++        while (sz >= 0)
+         {
+-            auto nChildPids = GetChildPids( nPid );
++            nPid = nPids[sz--];
+             KillProcess( nPid, nSignal );
+-            KillProcessTree( nChildPids, nSignal );
++            WaitForChild( nPid );
+         }
+     }
+ 
++
+     void KillAllChildren( pid_t nParentPid, int nSignal )
+     {
+         std::vector<pid_t> nChildPids = GetChildPids( nParentPid );
+-        return KillProcessTree( nChildPids, nSignal );
++        KillProcessTree( nChildPids, nSignal );
+     }
+ 
+     void KillProcess( pid_t nPid, int nSignal )

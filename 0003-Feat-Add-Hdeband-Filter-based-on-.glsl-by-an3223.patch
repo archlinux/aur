@@ -1,0 +1,143 @@
+From 142ae8faeaa5c3e047dd3cb254a3cef3f588144f Mon Sep 17 00:00:00 2001
+From: Thomas Eric <thombelcar@gmail.com>
+Date: Mon, 13 Apr 2026 20:47:16 -0300
+Subject: [PATCH 3/5] Feat: Add Hdeband Filter based on .glsl by an3223
+
+An AI assisted implementation of Hdeband, based on the hdeband.glsl by AN3223.
+
+Co-authored-by: AN3223 <ethanr2048@gmail.com>
+Co-authored-by: Claude <noreply@anthropic.com>
+---
+ src/shaders/cs_hdeband.comp | 120 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 120 insertions(+)
+ create mode 100644 src/shaders/cs_hdeband.comp
+
+diff --git a/src/shaders/cs_hdeband.comp b/src/shaders/cs_hdeband.comp
+new file mode 100644
+index 0000000..a1d76c5
+--- /dev/null
++++ b/src/shaders/cs_hdeband.comp
+@@ -0,0 +1,120 @@
++#version 460
++
++#extension GL_GOOGLE_include_directive : require
++#extension GL_EXT_scalar_block_layout   : require
++
++// hdeband (homogeneous-run debanding) post-process.
++//
++// Port of hdeband.glsl by an3223 (LGPL) originally written as an mpv hook.
++// Adapted for gamescope: operates in RGB (compute shader) and runs as an
++// in-place post-pass after downscaling. Parameters match the reference
++// implementation's defaults for the RGB path.
++//
++// Algorithm: for each pixel, scan a handful of directions looking for runs
++// of near-constant value. Average those runs together using a Gaussian
++// intensity weight to erase banding while preserving edges.
++
++#include "descriptor_set.h"
++
++layout( local_size_x = 8, local_size_y = 8, local_size_z = 1 ) in;
++
++// Tunables (mirroring hdeband.glsl RGB defaults)
++const float S         = 0.0;   // spatial distance falloff (lower = more blur)
++const float SI        = 50.0;  // intensity falloff scale
++const float SR        = 0.0;   // 1px-run penalty reduction
++const float SW        = 4.0;   // POI starting weight
++const int   RADIUS    = 8;
++const float SPARSITY  = 2.0;
++const int   DIRECTIONS = 8;
++const float TOLERANCE = 0.0;
++const float RUN_START = 1.0;
++
++float gaussian( float x ) { return exp( -1.0 * x * x ); }
++
++vec3 fetch( ivec2 p )
++{
++    ivec2 ext = imageSize( dst );
++    p = clamp( p, ivec2( 0 ), ext - ivec2( 1 ) );
++    vec2 uv = ( vec2( p ) + vec2( 0.5 ) ) / vec2( ext );
++    return textureLod( s_samplers[0], uv, 0.0 ).rgb;
++}
++
++float fetchAlpha( ivec2 p )
++{
++    ivec2 ext = imageSize( dst );
++    p = clamp( p, ivec2( 0 ), ext - ivec2( 1 ) );
++    vec2 uv = ( vec2( p ) + vec2( 0.5 ) ) / vec2( ext );
++    return textureLod( s_samplers[0], uv, 0.0 ).a;
++}
++
++void main()
++{
++    ivec2 pos = ivec2( gl_GlobalInvocationID.xy );
++    ivec2 ext = imageSize( dst );
++    if ( pos.x >= ext.x || pos.y >= ext.y )
++        return;
++
++    vec3  poi     = fetch( pos );
++    float poiA    = fetchAlpha( pos );
++
++    vec3 sum          = poi * SW;
++    vec3 total_weight = vec3( SW );
++
++    vec2 directions[8] = vec2[8](
++        vec2(  1.0,  0.0 ),
++        vec2( -1.0,  0.0 ),
++        vec2(  0.0,  1.0 ),
++        vec2(  0.0, -1.0 ),
++        vec2(  1.0,  1.0 ),
++        vec2( -1.0, -1.0 ),
++        vec2(  1.0, -1.0 ),
++        vec2( -1.0,  1.0 )
++    );
++
++    for ( int dir = 0; dir < DIRECTIONS; ++dir )
++    {
++        vec2 direction = directions[dir];
++
++        vec3 prev_px       = poi;
++        vec3 prev_is_run   = vec3( RUN_START );
++        vec3 prev_weight   = vec3( 0.0 );
++        vec3 not_done      = vec3( 1.0 );
++
++        for ( int i = 1; i <= RADIUS; ++i )
++        {
++            vec2 coord = ( float( i ) + floor( float( i ) * SPARSITY ) ) * direction;
++            vec3 px    = fetch( pos + ivec2( coord ) );
++
++            vec3 diff = abs( prev_px - px );
++            vec3 is_run = vec3(
++                diff.x <= TOLERANCE ? 1.0 : 0.0,
++                diff.y <= TOLERANCE ? 1.0 : 0.0,
++                diff.z <= TOLERANCE ? 1.0 : 0.0 );
++
++            vec3 weight = vec3( gaussian( length( coord ) * max( 0.0, S ) ) );
++
++            not_done *= max( vec3( clamp( SR, 0.0, 1.0 ) ),
++                             clamp( prev_is_run + is_run, vec3( 0.0 ), vec3( 1.0 ) ) );
++
++            vec3 idiff = abs( poi - px ) * max( 0.0, SI );
++            weight *= vec3(
++                gaussian( idiff.x ),
++                gaussian( idiff.y ),
++                gaussian( idiff.z ) );
++
++            // Compensate for the 1px-run first-pixel skip.
++            vec3 prev_weight_compensate = ( vec3( 1.0 ) - prev_is_run ) * prev_weight;
++            prev_px      = px;
++            prev_is_run  = is_run;
++            prev_weight  = weight;
++            weight      += prev_weight_compensate;
++            weight      *= is_run;
++
++            sum          += px * weight * not_done;
++            total_weight += weight * not_done;
++        }
++    }
++
++    vec3 result = sum / max( total_weight, vec3( 1e-6 ) );
++    imageStore( dst, pos, vec4( result, poiA ) );
++}
+-- 
+2.53.0
+

@@ -1,0 +1,202 @@
+From db166d8ab1c3c9873fc5ee8e2b05668921694857 Mon Sep 17 00:00:00 2001
+From: Thomas Eric <thombelcar@gmail.com>
+Date: Mon, 13 Apr 2026 20:11:13 -0300
+Subject: [PATCH 1/5] Feat: Add Ewa Lanczos Filter based on Libplacebo
+
+An AI assisted implementation of the Lanczos Downscaler based on Libplacebo's code.
+
+Co-authored-by: Niklas Haas <git@haasn.dev>
+Co-authored-by: Claude <noreply@anthropic.com>
+---
+ src/shaders/cs_ewa_lanczos.comp | 179 ++++++++++++++++++++++++++++++++
+ 1 file changed, 179 insertions(+)
+ create mode 100644 src/shaders/cs_ewa_lanczos.comp
+
+diff --git a/src/shaders/cs_ewa_lanczos.comp b/src/shaders/cs_ewa_lanczos.comp
+new file mode 100644
+index 0000000..fff725f
+--- /dev/null
++++ b/src/shaders/cs_ewa_lanczos.comp
+@@ -0,0 +1,179 @@
++#version 460
++
++#extension GL_GOOGLE_include_directive : require
++#extension GL_EXT_scalar_block_layout   : require
++
++// EWA Lanczos4 Sharpest (jinc * jinc) downscaler with anti-ringing.
++//
++// This is a polar (elliptical weighted averaging) filter adapted from
++// libplacebo's pl_filter_ewa_lanczos4sharpest (see filters.c):
++//
++//   kernel = jinc, window = jinc
++//   radius = JINC_ZERO4 = 4.2410628637960698819573
++//   blur   = 0.88451209326050047745788
++//   antiring = 0.8
++//
++// For downscaling by a factor F >= 1 (input/output), the filter support is
++// stretched by F so the output integrates ~F^2 input samples. For upscaling
++// (F < 1), the filter runs at its native support. This is the same scheme
++// libplacebo uses (it multiplies cfg.blur by inv_scale = max(1/ratio, 1)).
++//
++// The same shader therefore handles both integer and fractional ratios.
++
++#include "descriptor_set.h"
++
++layout( local_size_x = 8, local_size_y = 8, local_size_z = 1 ) in;
++
++layout( binding = 0, scalar )
++uniform lanczos_push_t {
++    vec2  u_invInputSize;   // 1.0 / input_size
++    vec2  u_invOutputSize;  // 1.0 / output_size
++    vec2  u_inputSize;      // textureSize of layer 0
++    vec2  u_scale;          // input_size / output_size (>1 means downscale)
++};
++
++// Constants baked in at compile time.
++const float LANCZOS_RADIUS      = 4.2410628637960698819573;     // JINC_ZERO4
++const float LANCZOS_BLUR        = 0.88451209326050047745788;
++const float LANCZOS_ANTIRING    = 0.8;
++const float JINC_WINDOW_RADIUS  = 1.2196698912665045;           // first jinc zero
++const float PI                  = 3.14159265358979323846;
++// First lobe boundary (in unit-scale space) for anti-ringing tracking.
++// This is roughly where the kernel lobe first crosses zero.
++const float AR_INNER_RADIUS     = JINC_WINDOW_RADIUS * LANCZOS_BLUR; // ~1.0788
++
++// Abramowitz & Stegun 9.4.4 / 9.4.6 approximation of Bessel J1(x).
++// Accurate to ~1e-7 absolute which is ample for LUT-free evaluation.
++float bessel_j1( float x )
++{
++    float ax = abs( x );
++    if ( ax < 3.0 )
++    {
++        // J1(x)/x = 0.5 - 0.56249985*y + 0.21093573*y^2 - 0.03954289*y^3
++        //         + 0.00443319*y^4 - 0.00031761*y^5 + 0.00001109*y^6
++        // with y = (x/3)^2 (A&S 9.4.4)
++        float y = ( x / 3.0 );
++        y = y * y;
++        float p = 0.5
++              + y * ( -0.56249985
++              + y * (  0.21093573
++              + y * ( -0.03954289
++              + y * (  0.00443319
++              + y * ( -0.00031761
++              + y *    0.00001109 ) ) ) ) );
++        return x * p;
++    }
++    else
++    {
++        float y  = 3.0 / ax;
++        float f1 = 0.79788456
++              + y * ( 0.00000156
++              + y * ( 0.01659667
++              + y * ( 0.00017105
++              + y * ( -0.00249511
++              + y * (  0.00113653
++              + y *   -0.00020033 ) ) ) ) );
++        float theta = ax - 2.35619449
++              + y * ( 0.12499612
++              + y * ( 0.00005650
++              + y * ( -0.00637879
++              + y * (  0.00074348
++              + y * (  0.00079824
++              + y *   -0.00029166 ) ) ) ) );
++        float j1 = f1 * cos( theta ) / sqrt( ax );
++        return ( x < 0.0 ) ? -j1 : j1;
++    }
++}
++
++float jinc( float x )
++{
++    float t = PI * x;
++    if ( abs( t ) < 1e-6 ) return 1.0;
++    return 2.0 * bessel_j1( t ) / t;
++}
++
++// Evaluate the ewa_lanczos4sharpest kernel at unit-space distance `x`
++// (i.e. the kernel already scaled by 1/F for the downscale factor).
++float lanczos_weight( float x )
++{
++    if ( x >= LANCZOS_RADIUS ) return 0.0;
++    // Kernel: jinc( x / blur )
++    float k = jinc( x / LANCZOS_BLUR );
++    // Window: jinc scaled so it reaches first zero exactly at x == radius.
++    float w = jinc( ( x / LANCZOS_RADIUS ) * JINC_WINDOW_RADIUS );
++    return k * w;
++}
++
++void main()
++{
++    ivec2 outPos = ivec2( gl_GlobalInvocationID.xy );
++    ivec2 outExt = imageSize( dst );
++    if ( outPos.x >= outExt.x || outPos.y >= outExt.y )
++        return;
++
++    // Center of the output pixel in normalized output coordinates -> input coords.
++    vec2 inCenter = ( vec2( outPos ) + vec2( 0.5 ) ) * u_scale;
++
++    // Downscale factor per axis (>=1 for downscaling, clamped for upscaling).
++    vec2 F = max( u_scale, vec2( 1.0 ) );
++    // Use the largest factor to form a circular support in input space.
++    float Fmax = max( F.x, F.y );
++
++    // Integer search window in input pixels (symmetric around center).
++    int bound = int( ceil( LANCZOS_RADIUS * Fmax ) ) + 1;
++    // Safety cap so the inner loop is always bounded.
++    // 18 covers downscale factors up to ~4x (8K -> ~1080p).
++    if ( bound > 18 ) bound = 18;
++
++    ivec2 baseTexel = ivec2( floor( inCenter - vec2( 0.5 ) ) );
++
++    vec4  color   = vec4( 0.0 );
++    float wsum    = 0.0;
++
++    // Anti-ringing accumulators (track min/max over the inner lobe only).
++    vec4 arMin = vec4( 1e9 );
++    vec4 arMax = vec4( -1e9 );
++
++    float arInner = AR_INNER_RADIUS * Fmax;
++
++    for ( int dy = -bound; dy <= bound; ++dy )
++    {
++        for ( int dx = -bound; dx <= bound; ++dx )
++        {
++            ivec2 p = baseTexel + ivec2( dx, dy );
++            vec2  sc = vec2( p ) + vec2( 0.5 );
++            float d  = length( sc - inCenter );
++            if ( d >= LANCZOS_RADIUS * Fmax )
++                continue;
++
++            float xUnit = d / Fmax;
++            float w     = lanczos_weight( xUnit );
++            if ( w == 0.0 )
++                continue;
++
++            vec2 uv = sc * u_invInputSize;
++            vec4 s  = textureLod( s_samplers[0], uv, 0.0 );
++
++            color += s * w;
++            wsum  += w;
++
++            if ( d <= arInner )
++            {
++                arMin = min( arMin, s );
++                arMax = max( arMax, s );
++            }
++        }
++    }
++
++    if ( wsum > 0.0 )
++        color /= wsum;
++
++    // Anti-ringing clamp: mix the original output towards [arMin,arMax].
++    if ( arMax.r >= arMin.r )
++    {
++        vec4 clamped = clamp( color, arMin, arMax );
++        color = mix( color, clamped, LANCZOS_ANTIRING );
++    }
++
++    imageStore( dst, outPos, color );
++}
+-- 
+2.53.0
+

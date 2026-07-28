@@ -1,0 +1,129 @@
+From 57538253263488ef5436610a92f699c7ba8da665 Mon Sep 17 00:00:00 2001
+From: Thomas Eric <thombelcar@gmail.com>
+Date: Mon, 13 Apr 2026 20:32:06 -0300
+Subject: [PATCH 2/5] Feat: Add Bilateral Denoiser based on KrigBilateral
+
+An AI assisted implementation of the Bilateral Denoiser partially based on IGV's KrigBilateral.glsl, which was originally created by Shiandow for MPDN Extensions.
+
+Co-authored-by: Shiandow <Shiandow@gmail.com>
+Co-authored-by: igv <igv@users.noreply.github.com>
+Co-authored-by: Claude <noreply@anthropic.com>
+---
+ src/shaders/cs_bilateral_denoiser.comp | 105 +++++++++++++++++++++++++
+ 1 file changed, 105 insertions(+)
+ create mode 100644 src/shaders/cs_bilateral_denoiser.comp
+
+diff --git a/src/shaders/cs_bilateral_denoiser.comp b/src/shaders/cs_bilateral_denoiser.comp
+new file mode 100644
+index 0000000..a8ed30a
+--- /dev/null
++++ b/src/shaders/cs_bilateral_denoiser.comp
+@@ -0,0 +1,105 @@
++#version 460
++
++#extension GL_GOOGLE_include_directive : require
++#extension GL_EXT_scalar_block_layout   : require
++
++// Joint / Cross-Bilateral denoiser for post-downscale cleanup.
++//
++// Runs immediately after a sharp downscaler (e.g. EWA Lanczos4) to suppress
++// low-contrast compression artefacts and quantisation noise that survive the
++// downscale, while strictly preserving the high-frequency edges the
++// downscaler just produced.
++//
++// Range sigma (SIGMA_R = 0.05) is intentionally tight: at this threshold the
++// bilateral kernel aggressively smooths sub-5% luma variations — the
++// hallmark of block-coding noise and banding — but leaves any edge with
++// >= 5% contrast completely untouched.
++//
++// When a high-resolution guide image is available (u_useJointGuide == 1) the
++// luma used for range weighting is sampled from the original pre-downscale
++// frame via s_samplers[1], making this a true joint/cross-bilateral filter.
++// Guide sampling uses normalised UV coordinates so the filter works correctly
++// even when guide and output resolutions differ drastically.  The bilinear
++// sampler interpolates guide luma at the mapped position automatically.
++//
++// When no guide is bound the shader falls back to self-guided mode: range
++// weights are derived from the downscaled image's own luma, producing a
++// standard bilateral filter.
++//
++// Colour is always accumulated from the downscaled source (s_samplers[0]).
++
++#include "descriptor_set.h"
++
++layout( local_size_x = 8, local_size_y = 8, local_size_z = 1 ) in;
++
++layout( binding = 0, scalar ) uniform bilateral_push_t
++{
++    uvec2 u_outputExtent;
++    uint  u_useJointGuide;   // 1 = joint bilateral (guide on slot 1), 0 = self-guide
++};
++
++const float SIGMA_S = 1.5;    // spatial sigma (pixels)
++const float SIGMA_R = 0.05;   // range sigma  (luma units) — tight to preserve edges
++const int   RADIUS  = 2;      // 5x5 neighbourhood
++
++// Rec.709 luma.  For linear-light HDR / scRGB buffers this remains correct as
++// long as the guide and source share the same transfer function; the bilateral
++// weight comparison is relative, so a uniform non-linearity cancels out.
++float luma( vec3 c )
++{
++    return dot( c, vec3( 0.2126, 0.7152, 0.0722 ) );
++}
++
++void main()
++{
++    ivec2 pos = ivec2( gl_GlobalInvocationID.xy );
++    if ( pos.x >= int( u_outputExtent.x ) || pos.y >= int( u_outputExtent.y ) )
++        return;
++
++    vec2 ext = vec2( u_outputExtent );
++
++    // Centre pixel — colour from downscaled source, guide luma from guide (or self).
++    vec2 centerUV = ( vec2( pos ) + 0.5 ) / ext;
++    vec4 center   = textureLod( s_samplers[0], centerUV, 0.0 );
++
++    float yCenter;
++    if ( u_useJointGuide != 0u )
++        yCenter = luma( textureLod( s_samplers[1], centerUV, 0.0 ).rgb );
++    else
++        yCenter = luma( center.rgb );
++
++    float invSigmaS2 = 1.0 / ( 2.0 * SIGMA_S * SIGMA_S );
++    float invSigmaR2 = 1.0 / ( 2.0 * SIGMA_R * SIGMA_R );
++
++    vec4  sum  = vec4( 0.0 );
++    float wsum = 0.0;
++
++    for ( int dy = -RADIUS; dy <= RADIUS; ++dy )
++    {
++        for ( int dx = -RADIUS; dx <= RADIUS; ++dx )
++        {
++            vec2 sampleUV = ( vec2( pos + ivec2( dx, dy ) ) + 0.5 ) / ext;
++            sampleUV = clamp( sampleUV, vec2( 0.0 ), vec2( 1.0 ) );
++
++            // Colour: always from the downscaled source.
++            vec4 sampleCol = textureLod( s_samplers[0], sampleUV, 0.0 );
++
++            // Guide luma: from hi-res guide or self.
++            float ys;
++            if ( u_useJointGuide != 0u )
++                ys = luma( textureLod( s_samplers[1], sampleUV, 0.0 ).rgb );
++            else
++                ys = luma( sampleCol.rgb );
++
++            float ds = float( dx * dx + dy * dy );
++            float dr = ys - yCenter;
++            float w  = exp( -ds * invSigmaS2 - ( dr * dr ) * invSigmaR2 );
++
++            sum  += sampleCol * w;
++            wsum += w;
++        }
++    }
++
++    vec4 result = ( wsum > 0.0 ) ? ( sum / wsum ) : center;
++    imageStore( dst, pos, result );
++}
+-- 
+2.53.0
+

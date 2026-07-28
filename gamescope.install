@@ -1,0 +1,34 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+    printf "${blue}!!${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}!!${yellow} Note:${bold} $1${all_off}\n"
+}
+
+do_setcap() {
+  note "${all_off}\"No CAP_SYS_NICE, falling back to regular-priority compute and threads.\""
+  msg_blue 'Use the following command to resolve the above output maybe print by Gamescope, but this probably will cause stutters.'
+  msg_blue "${all_off}setcap cap_sys_nice=eip \"\$(realpath \"\$(which gamescope)\")\""
+}
+
+issue_1662() {
+  note "${all_off}\"[gamescope] [Error] vulkan: vkImportSemaphoreFdKHR failed (VkResult: -3)\""
+  msg_blue "This is due to upstream issue #1662"
+  msg_blue "Add the environment variable ${all_off}'ENABLE_GAMESCOPE_WSI=0'${bold} to your command, or run Gamescope in tty to workaround this bug."
+}
+
+post_install() {
+  do_setcap
+  echo ---
+  issue_1662
+}
+
+post_upgrade() {
+  post_install
+}

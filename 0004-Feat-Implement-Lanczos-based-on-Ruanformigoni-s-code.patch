@@ -1,0 +1,584 @@
+From b1e98428c8a0f280144f117f8ada98d6331a1579 Mon Sep 17 00:00:00 2001
+From: Thomas Eric <thombelcar@gmail.com>
+Date: Mon, 13 Apr 2026 21:03:15 -0300
+Subject: [PATCH 4/5] Feat: Implement Lanczos based on Ruanformigoni's code
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+An AI assisted integration of the new .comp‎ filters into gamescope: cs_bilateral_denoiser.comp, cs_ewa_lanczos.comp and cs_hdeband.comp. Based on Ruanformigoni's Bicubic Downscaling PR (#740) in upstream Gamescope.
+
+Co-authored-by: Ruan E. Formigoni <ruanformigoni@gmail.com>
+Co-authored-by: Claude <noreply@anthropic.com>
+---
+ README.md                       |   1 +
+ src/Backends/DRMBackend.cpp     |   1 +
+ src/Backends/OpenVRBackend.cpp  |   1 +
+ src/Backends/WaylandBackend.cpp |   1 +
+ src/commit.cpp                  |  12 ++
+ src/main.cpp                    |  30 +++-
+ src/main.hpp                    |  10 ++
+ src/meson.build                 |   3 +
+ src/rendervulkan.cpp            | 257 +++++++++++++++++++++++++++++++-
+ src/rendervulkan.hpp            |   6 +
+ src/steamcompmgr.cpp            |   4 +
+ 11 files changed, 321 insertions(+), 5 deletions(-)
+
+diff --git a/README.md b/README.md
+index 28e2239..61181b6 100644
+--- a/README.md
++++ b/README.md
+@@ -73,6 +73,7 @@ See `gamescope --help` for a full list of options.
+ * `-o`: set a frame-rate limit for the game when unfocused. Specified in frames per second. Defaults to unlimited.
+ * `-F fsr`: use AMD FidelityFX™ Super Resolution 1.0 for upscaling
+ * `-F nis`: use NVIDIA Image Scaling v1.0.3 for upscaling
++* `-F lanczos`: use EWA Lanczos4-sharpest (polar `jinc*jinc`) for downscaling, with built-in anti-ringing. Handles integer and fractional ratios (e.g. 4K→1080p, 1440p→1080p, 8K→1080p) and is intended as a Linux equivalent to Windows "supersampling" modes. Optional post-processing passes can be chained via `:`: e.g. `-F lanczos:krigbilateral`, `-F lanczos:hdeband`, `-F lanczos:krigbilateral,hdeband` — `krigbilateral` is an edge-preserving cross-channel smoother (adapted from Shiandow's KrigBilateral hook) and `hdeband` is a homogeneous-run debander (ported from an3223's hdeband.glsl).
+ * `-S integer`: use integer scaling.
+ * `-S stretch`: use stretch scaling, the game will fill the window. (e.g. 4:3 to 16:9)
+ * `-b`: create a border-less window.
+diff --git a/src/Backends/DRMBackend.cpp b/src/Backends/DRMBackend.cpp
+index 134e19a..e7c33a6 100644
+--- a/src/Backends/DRMBackend.cpp
++++ b/src/Backends/DRMBackend.cpp
+@@ -3546,6 +3546,7 @@ namespace gamescope
+ 			bNeedsFullComposite |= bWasFirstFrame;
+ 			bNeedsFullComposite |= pFrameInfo->useFSRLayer0;
+ 			bNeedsFullComposite |= pFrameInfo->useNISLayer0;
++			bNeedsFullComposite |= pFrameInfo->useLanczosLayer0;
+ 			bNeedsFullComposite |= pFrameInfo->blurLayer0;
+ 			bNeedsFullComposite |= bNeedsCompositeFromFilter;
+ 			bNeedsFullComposite |= !k_bUseCursorPlane && bDrewCursor;
+diff --git a/src/Backends/OpenVRBackend.cpp b/src/Backends/OpenVRBackend.cpp
+index ad7a6ed..bb0bbc4 100644
+--- a/src/Backends/OpenVRBackend.cpp
++++ b/src/Backends/OpenVRBackend.cpp
+@@ -1609,6 +1609,7 @@ namespace gamescope
+         bNeedsFullComposite |= cv_composite_force;
+         bNeedsFullComposite |= pFrameInfo->useFSRLayer0;
+         bNeedsFullComposite |= pFrameInfo->useNISLayer0;
++        bNeedsFullComposite |= pFrameInfo->useLanczosLayer0;
+         bNeedsFullComposite |= pFrameInfo->blurLayer0;
+         bNeedsFullComposite |= bNeedsCompositeFromFilter;
+         bNeedsFullComposite |= g_bColorSliderInUse;
+diff --git a/src/Backends/WaylandBackend.cpp b/src/Backends/WaylandBackend.cpp
+index 8c17849..41a70aa 100644
+--- a/src/Backends/WaylandBackend.cpp
++++ b/src/Backends/WaylandBackend.cpp
+@@ -1066,6 +1066,7 @@ namespace gamescope
+             bNeedsFullComposite |= cv_composite_force;
+             bNeedsFullComposite |= pFrameInfo->useFSRLayer0;
+             bNeedsFullComposite |= pFrameInfo->useNISLayer0;
++            bNeedsFullComposite |= pFrameInfo->useLanczosLayer0;
+             bNeedsFullComposite |= pFrameInfo->blurLayer0;
+             bNeedsFullComposite |= bNeedsCompositeFromFilter;
+             bNeedsFullComposite |= g_bColorSliderInUse;
+diff --git a/src/commit.cpp b/src/commit.cpp
+index b3fcaca..fdea806 100644
+--- a/src/commit.cpp
++++ b/src/commit.cpp
+@@ -142,6 +142,18 @@ bool commit_t::ShouldPreemptivelyUpscale()
+     if ( DoesHardwareSupportUpscaleFilter( g_upscaleFilter ) )
+         return false;
+ 
++    // LANCZOS is a downscaler that only runs at composite time. The
++    // pre-emptive upscale path in steamcompmgr.cpp temporarily forces
++    // globalScaleRatio=1.0 and unconditionally sets useLanczosLayer0,
++    // which fires the lanczos dispatch with no actual scaling work to
++    // do (and, because the path runs once per fifo commit, quickly
++    // exhausts Vulkan allocation slots via update_tmp_images retries,
++    // causing vkAllocateMemory to return OUT_OF_DEVICE_MEMORY and
++    // taking gamescope down). Skip preemptive handling entirely for
++    // LANCZOS — the composite-time path handles up/downscale fine.
++    if ( g_upscaleFilter == GamescopeUpscaleFilter::LANCZOS )
++        return false;
++
+     if ( !vulkanTex )
+         return false;
+ 
+diff --git a/src/main.cpp b/src/main.cpp
+index 9fc54f0..ed98094 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -174,7 +174,11 @@ const char usage[] =
+ 	"  -r, --nested-refresh           game refresh rate (frames per second)\n"
+ 	"  -m, --max-scale                maximum scale factor\n"
+ 	"  -S, --scaler                   upscaler type (auto, integer, fit, fill, stretch)\n"
+-	"  -F, --filter                   upscaler filter (linear, nearest, fsr, nis, pixel)\n"
++	"  -F, --filter                   upscaler/downscale filter\n"
++"                                   linear, nearest, fsr, nis, pixel\n"
++"                                   lanczos  (EWA Lanczos4 sharpest downscaler)\n"
++"                                   lanczos:bilateral / lanczos:hdeband /\n"
++"                                   lanczos:bilateral,hdeband combine post-process passes\n"
+ 	"                                     fsr => AMD FidelityFX™ Super Resolution 1.0\n"
+ 	"                                     nis => NVIDIA Image Scaling v1.0.3\n"
+ 	"  --sharpness, --fsr-sharpness   upscaler sharpness from 0 (max) to 20 (min)\n"
+@@ -315,6 +319,8 @@ GamescopeUpscaleFilter g_wantedUpscaleFilter = GamescopeUpscaleFilter::LINEAR;
+ GamescopeUpscaleScaler g_wantedUpscaleScaler = GamescopeUpscaleScaler::AUTO;
+ int g_upscaleFilterSharpness = 2;
+ 
++GamescopeLanczosOptions g_lanczosOptions = {};
++
+ gamescope::GamescopeModeGeneration g_eGamescopeModeGeneration = gamescope::GAMESCOPE_MODE_GENERATE_CVT;
+ 
+ bool g_bBorderlessOutputWindow = false;
+@@ -413,6 +419,28 @@ static enum GamescopeUpscaleFilter parse_upscaler_filter(const char *str)
+ 		return GamescopeUpscaleFilter::NIS;
+ 	} else if (strcmp(str, "pixel") == 0) {
+ 		return GamescopeUpscaleFilter::PIXEL;
++	} else if (strncmp(str, "lanczos", 7) == 0 && (str[7] == '\0' || str[7] == ':')) {
++		// Syntax: lanczos[:pass1[,pass2...]]
++		// Known passes: bilateral, hdeband
++		g_lanczosOptions = {};
++		if (str[7] == ':') {
++			const char *p = str + 8;
++			while (*p) {
++				const char *comma = strchr(p, ',');
++				size_t len = comma ? (size_t)(comma - p) : strlen(p);
++				if (len == 9 && strncmp(p, "bilateral", 9) == 0) {
++					g_lanczosOptions.bBilateralDenoiser = true;
++				} else if (len == 7 && strncmp(p, "hdeband", 7) == 0) {
++					g_lanczosOptions.bHdeband = true;
++				} else {
++					fprintf( stderr, "gamescope: unknown lanczos post-process pass '%.*s' (valid: bilateral, hdeband)\n",
++						(int)len, p );
++					exit(1);
++				}
++				p = comma ? comma + 1 : p + len;
++			}
++		}
++		return GamescopeUpscaleFilter::LANCZOS;
+ 	} else {
+ 		fprintf( stderr, "gamescope: invalid value for --filter\n" );
+ 		exit(1);
+diff --git a/src/main.hpp b/src/main.hpp
+index 45c5ec5..fd632cf 100644
+--- a/src/main.hpp
++++ b/src/main.hpp
+@@ -36,10 +36,20 @@ enum class GamescopeUpscaleFilter : uint32_t
+     FSR,
+     NIS,
+     PIXEL,
++    LANCZOS,    // EWA Lanczos4 Sharpest downscaler (+ optional bilateral denoiser / hdeband passes)
+ 
+     FROM_VIEW = 0xF, // internal
+ };
+ 
++// Optional post-processing passes the LANCZOS filter can chain after the
++// downscale. Enabled via --filter=lanczos:bilateral etc.
++struct GamescopeLanczosOptions
++{
++    bool bBilateralDenoiser = false;
++    bool bHdeband           = false;
++};
++extern GamescopeLanczosOptions g_lanczosOptions;
++
+ static constexpr bool DoesHardwareSupportUpscaleFilter( GamescopeUpscaleFilter eFilter )
+ {
+     // Could do nearest someday... AMDGPU DC supports custom tap placement to an extent.
+diff --git a/src/meson.build b/src/meson.build
+index 662f752..bb6ad4e 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -70,6 +70,9 @@ shader_src = [
+   'shaders/cs_nis.comp',
+   'shaders/cs_nis_fp16.comp',
+   'shaders/cs_rgb_to_nv12.comp',
++  'shaders/cs_ewa_lanczos.comp',
++  'shaders/cs_bilateral_denoiser.comp',
++  'shaders/cs_hdeband.comp',
+ ]
+ 
+ spirv_shaders = glsl_generator.process(shader_src)
+diff --git a/src/rendervulkan.cpp b/src/rendervulkan.cpp
+index 5c2dd11..0a4dd16 100644
+--- a/src/rendervulkan.cpp
++++ b/src/rendervulkan.cpp
+@@ -43,6 +43,9 @@
+ #include "cs_composite_rcas.h"
+ #include "cs_easu.h"
+ #include "cs_easu_fp16.h"
++#include "cs_ewa_lanczos.h"
++#include "cs_bilateral_denoiser.h"
++#include "cs_hdeband.h"
+ #include "cs_gaussian_blur_horizontal.h"
+ #include "cs_nis.h"
+ #include "cs_nis_fp16.h"
+@@ -964,6 +967,9 @@ bool CVulkanDevice::createShaders()
+ 		SHADER(EASU, cs_easu);
+ 		SHADER(NIS, cs_nis);
+ 	}
++	SHADER(EWA_LANCZOS, cs_ewa_lanczos);
++	SHADER(BILATERAL_DENOISER, cs_bilateral_denoiser);
++	SHADER(HDEBAND, cs_hdeband);
+ 	SHADER(RGB_TO_NV12, cs_rgb_to_nv12);
+ #undef SHADER
+ 
+@@ -1194,6 +1200,9 @@ void CVulkanDevice::compileAllPipelines(std::stop_token st)
+ 	SHADER(RCAS, k_nMaxLayers, k_nMaxYcbcrMask_ToPreCompile, 1);
+ 	SHADER(EASU, 1, 1, 1);
+ 	SHADER(NIS, 1, 1, 1);
++	SHADER(EWA_LANCZOS, 1, 1, 1);
++	SHADER(BILATERAL_DENOISER, 1, 1, 1);
++	SHADER(HDEBAND, 1, 1, 1);
+ 	SHADER(RGB_TO_NV12, 1, 1, 1);
+ #undef SHADER
+ 
+@@ -1621,6 +1630,11 @@ void CVulkanCmdBuffer::clearState()
+ 
+ 	m_target = nullptr;
+ 	m_useSrgb.reset();
++
++	for (auto& lut : m_shaperLut)
++		lut = nullptr;
++	for (auto& lut : m_lut3D)
++		lut = nullptr;
+ }
+ 
+ template<class PushData, class... Args>
+@@ -3475,14 +3489,18 @@ static void update_tmp_images( uint32_t width, uint32_t height )
+ 	createFlags.bSampled = true;
+ 	createFlags.bStorage = true;
+ 
+-	g_output.tmpOutput = new CVulkanTexture();
+-	bool bSuccess = g_output.tmpOutput->BInit( width, height, 1u, DRM_FORMAT_ARGB8888, createFlags, nullptr );
+-
+-	if ( !bSuccess )
++	gamescope::OwningRc<CVulkanTexture> pNew = new CVulkanTexture();
++	if ( !pNew->BInit( width, height, 1u, DRM_FORMAT_ARGB8888, createFlags, nullptr ) )
+ 	{
+ 		vk_log.errorf( "failed to create fsr output" );
++		// Leave g_output.tmpOutput as-is (previous valid texture or nullptr)
++		// instead of replacing it with a broken one — broken textures would
++		// leak a VkImage/VkDeviceMemory slot on every retry and eventually
++		// exhaust the driver's allocation budget.
+ 		return;
+ 	}
++
++	g_output.tmpOutput = std::move( pNew );
+ }
+ 
+ 
+@@ -3911,6 +3929,37 @@ struct NisPushData_t
+ 			tempX, tempY);
+ 	}
+ };
++
++struct LanczosPushData_t
++{
++	vec2_t u_invInputSize;
++	vec2_t u_invOutputSize;
++	vec2_t u_inputSize;
++	vec2_t u_scale;
++
++	LanczosPushData_t(uint32_t inputX, uint32_t inputY, uint32_t outputX, uint32_t outputY)
++	{
++		u_invInputSize  = { 1.0f / (float)inputX,  1.0f / (float)inputY };
++		u_invOutputSize = { 1.0f / (float)outputX, 1.0f / (float)outputY };
++		u_inputSize     = { (float)inputX, (float)inputY };
++		u_scale         = { (float)inputX / (float)outputX, (float)inputY / (float)outputY };
++	}
++};
++
++struct BilateralPushData_t
++{
++	uint32_t u_outputExtent[2];
++	uint32_t u_useJointGuide;
++	uint32_t _pad;
++
++	BilateralPushData_t(uint32_t outW, uint32_t outH, bool bJointGuide)
++	{
++		u_outputExtent[0] = outW;
++		u_outputExtent[1] = outH;
++		u_useJointGuide   = bJointGuide ? 1u : 0u;
++		_pad              = 0u;
++	}
++};
+ #pragma pack(pop)
+ 
+ void bind_all_layers(CVulkanCmdBuffer* cmdBuffer, const struct FrameInfo_t *frameInfo)
+@@ -4041,6 +4090,56 @@ std::optional<uint64_t> vulkan_composite( struct FrameInfo_t *frameInfo, gamesco
+ 	for (uint32_t i = 0; i < EOTF_Count; i++)
+ 		cmdBuffer->bindColorMgmtLuts(i, frameInfo->shaperLut[i], frameInfo->lut3D[i]);
+ 
++	// Lanczos safety: the EWA Lanczos compute shader only reads s_samplers[0]
++	// (RGB(A)) and only targets rgba8. Bail to the plain BLIT path if layer 0
++	// is YCbCr, has invalid dimensions, or would produce a zero-sized temp.
++	// Without this guard, the dispatch crashes for games that briefly push an
++	// unusual buffer (e.g. Unity shader-compile/splash surfaces in Slay the
++	// Spire 2) through the lanczos pipeline on startup.
++	if ( frameInfo->useLanczosLayer0 )
++	{
++		const FrameInfo_t::Layer_t *l0 = &frameInfo->layers[0];
++		uint32_t inputX = l0->tex ? l0->tex->width() : 0;
++		uint32_t inputY = l0->tex ? l0->tex->height() : 0;
++		uint32_t tempX  = l0->tex ? l0->integerWidth() : 0;
++		uint32_t tempY  = l0->tex ? l0->integerHeight() : 0;
++
++		const bool bCanLanczos =
++			l0->tex != nullptr
++			&& !l0->isYcbcr()
++			&& inputX > 0 && inputY > 0
++			&& tempX > 0 && tempY > 0
++			&& tempX <= 16384 && tempY <= 16384
++			&& l0->scale.x > 1e-6f && l0->scale.x < 1.0e6f
++			&& l0->scale.y > 1e-6f && l0->scale.y < 1.0e6f;
++
++		static std::atomic<bool> s_loggedLanczos{ false };
++		if ( !s_loggedLanczos.exchange( true ) )
++		{
++			vk_log.infof(
++				"lanczos: first dispatch input=%ux%u temp=%ux%u scale=(%.4f,%.4f) "
++				"ycbcr=%d colorspace=%u fmt=0x%x canRun=%d layers=%d",
++				inputX, inputY, tempX, tempY,
++				l0->scale.x, l0->scale.y,
++				l0->tex ? (int)l0->isYcbcr() : -1,
++				(unsigned)l0->colorspace,
++				l0->tex ? (unsigned)l0->tex->format() : 0u,
++				(int)bCanLanczos,
++				frameInfo->layerCount );
++		}
++
++		if ( !bCanLanczos )
++		{
++			vk_log.infof(
++				"lanczos: skipping dispatch (unsafe input) input=%ux%u temp=%ux%u "
++				"scale=(%.4f,%.4f) ycbcr=%d — falling back to plain BLIT",
++				inputX, inputY, tempX, tempY,
++				l0->scale.x, l0->scale.y,
++				l0->tex ? (int)l0->isYcbcr() : -1 );
++			frameInfo->useLanczosLayer0 = false;
++		}
++	}
++
+ 	if ( frameInfo->useFSRLayer0 )
+ 	{
+ 		uint32_t inputX = frameInfo->layers[0].tex->width();
+@@ -4074,6 +4173,155 @@ std::optional<uint64_t> vulkan_composite( struct FrameInfo_t *frameInfo, gamesco
+ 
+ 		cmdBuffer->dispatch(div_roundup(currentOutputWidth, pixelsPerGroup), div_roundup(currentOutputHeight, pixelsPerGroup));
+ 	}
++	else if ( frameInfo->useLanczosLayer0 )
++	{
++		uint32_t inputX = frameInfo->layers[0].tex->width();
++		uint32_t inputY = frameInfo->layers[0].tex->height();
++
++		uint32_t tempX = frameInfo->layers[0].integerWidth();
++		uint32_t tempY = frameInfo->layers[0].integerHeight();
++
++		update_tmp_images(tempX, tempY);
++
++		if ( g_output.tmpOutput == nullptr
++				|| g_output.tmpOutput->width()  != tempX
++				|| g_output.tmpOutput->height() != tempY )
++		{
++			vk_log.errorf( "lanczos: tmpOutput unavailable (%ux%u) — falling back to BLIT",
++				tempX, tempY );
++
++			cmdBuffer->bindPipeline( g_device.pipeline(SHADER_TYPE_BLIT, frameInfo->layerCount, frameInfo->ycbcrMask(), 0u, frameInfo->colorspaceMask(), outputTF ) );
++			bind_all_layers( cmdBuffer.get(), frameInfo );
++			cmdBuffer->bindTarget( compositeImage );
++			cmdBuffer->uploadConstants<BlitPushData_t>( frameInfo );
++
++			const int pixelsPerGroup = 8;
++			cmdBuffer->dispatch( div_roundup( currentOutputWidth, pixelsPerGroup ), div_roundup( currentOutputHeight, pixelsPerGroup ) );
++
++			goto after_composite;
++		}
++
++		// Run the EWA Lanczos downscale in its own command buffer.
++		// The EWA Lanczos compute shader's heavy per-pixel loop (~700+
++		// texture fetches at 2.67x downscale) interacts badly with the
++		// NVIDIA driver when followed by another dispatch in the same
++		// command buffer — the subsequent dispatch produces a black
++		// image.  Isolating EWA Lanczos in its own submission avoids
++		// the issue entirely.
++		{
++			const int lanczosGroup = 8;
++
++			{
++				auto lanczosCmdBuf = g_device.commandBuffer();
++				lanczosCmdBuf->bindPipeline(g_device.pipeline(SHADER_TYPE_EWA_LANCZOS));
++				lanczosCmdBuf->bindTarget(g_output.tmpOutput);
++				lanczosCmdBuf->bindTexture(0, frameInfo->layers[0].tex);
++				lanczosCmdBuf->setTextureSrgb(0, true);
++				lanczosCmdBuf->setSamplerUnnormalized(0, false);
++				lanczosCmdBuf->setSamplerNearest(0, false);
++				lanczosCmdBuf->uploadConstants<LanczosPushData_t>(inputX, inputY, tempX, tempY);
++				lanczosCmdBuf->dispatch(div_roundup(tempX, lanczosGroup), div_roundup(tempY, lanczosGroup));
++				uint64_t seq = g_device.submit(std::move(lanczosCmdBuf));
++				g_device.wait(seq);
++			}
++
++			// Optional post-process passes (bilateral denoiser / hdeband)
++			// run in a fresh command buffer after the EWA Lanczos submit
++			// has completed, avoiding the NVIDIA black-image issue.
++			gamescope::Rc<CVulkanTexture> lanczosFinal = g_output.tmpOutput;
++			bool bLanczosFinalIsAux = false;
++
++			auto ensureAux = [&]() -> bool {
++				if ( g_output.tmpOutputAux != nullptr
++						&& g_output.tmpOutputAux->width() == tempX
++						&& g_output.tmpOutputAux->height() == tempY )
++					return true;
++				CVulkanTexture::createFlags f;
++				f.bSampled = true;
++				f.bStorage = true;
++				g_output.tmpOutputAux = new CVulkanTexture();
++				if ( !g_output.tmpOutputAux->BInit( tempX, tempY, 1u, DRM_FORMAT_ARGB8888, f, nullptr ) )
++				{
++					vk_log.errorf( "lanczos: failed to create tmpOutputAux (%ux%u)", tempX, tempY );
++					g_output.tmpOutputAux = nullptr;
++					return false;
++				}
++				return true;
++			};
++
++			if ( g_lanczosOptions.bBilateralDenoiser || g_lanczosOptions.bHdeband )
++			{
++				auto postCmdBuf = g_device.commandBuffer();
++
++				auto runPostPass = [&]( ShaderType type ) {
++					if ( !ensureAux() )
++						return;
++					gamescope::Rc<CVulkanTexture> srcTex = lanczosFinal;
++					gamescope::Rc<CVulkanTexture> dstTex =
++						bLanczosFinalIsAux
++							? gamescope::Rc<CVulkanTexture>(g_output.tmpOutput)
++							: gamescope::Rc<CVulkanTexture>(g_output.tmpOutputAux);
++
++					postCmdBuf->bindPipeline(g_device.pipeline(type));
++					postCmdBuf->bindTarget(dstTex);
++					postCmdBuf->bindTexture(0, srcTex);
++					postCmdBuf->setTextureSrgb(0, true);
++					postCmdBuf->setSamplerUnnormalized(0, false);
++					postCmdBuf->setSamplerNearest(0, false);
++					postCmdBuf->dispatch(div_roundup(tempX, lanczosGroup), div_roundup(tempY, lanczosGroup));
++					lanczosFinal = dstTex;
++					bLanczosFinalIsAux = !bLanczosFinalIsAux;
++				};
++
++				if ( g_lanczosOptions.bBilateralDenoiser && ensureAux() )
++				{
++					gamescope::Rc<CVulkanTexture> srcTex = lanczosFinal;
++					gamescope::Rc<CVulkanTexture> dstTex =
++						bLanczosFinalIsAux
++							? gamescope::Rc<CVulkanTexture>(g_output.tmpOutput)
++							: gamescope::Rc<CVulkanTexture>(g_output.tmpOutputAux);
++
++					postCmdBuf->bindPipeline(g_device.pipeline(SHADER_TYPE_BILATERAL_DENOISER));
++					postCmdBuf->bindTarget(dstTex);
++					// Slot 0: downscaled colour source.
++					postCmdBuf->bindTexture(0, srcTex);
++					postCmdBuf->setTextureSrgb(0, true);
++					postCmdBuf->setSamplerUnnormalized(0, false);
++					postCmdBuf->setSamplerNearest(0, false);
++					// Slot 1: original hi-res game texture as joint bilateral guide.
++					postCmdBuf->bindTexture(1, frameInfo->layers[0].tex);
++					postCmdBuf->setTextureSrgb(1, true);
++					postCmdBuf->setSamplerUnnormalized(1, false);
++					postCmdBuf->setSamplerNearest(1, false);
++					postCmdBuf->uploadConstants<BilateralPushData_t>(tempX, tempY, true);
++					postCmdBuf->dispatch(div_roundup(tempX, lanczosGroup), div_roundup(tempY, lanczosGroup));
++					lanczosFinal = dstTex;
++					bLanczosFinalIsAux = !bLanczosFinalIsAux;
++				}
++				if ( g_lanczosOptions.bHdeband )
++					runPostPass( SHADER_TYPE_HDEBAND );
++
++				uint64_t seq = g_device.submit(std::move(postCmdBuf));
++				g_device.wait(seq);
++			}
++
++			// Final BLIT composite in the main command buffer: sample the
++			// downscaled result at 1:1 and composite with any remaining
++			// layers / color management.
++			struct FrameInfo_t lanczosFrameInfo = *frameInfo;
++			lanczosFrameInfo.layers[0].tex = lanczosFinal;
++			lanczosFrameInfo.layers[0].scale.x = 1.0f;
++			lanczosFrameInfo.layers[0].scale.y = 1.0f;
++
++			cmdBuffer->bindPipeline( g_device.pipeline(SHADER_TYPE_BLIT, lanczosFrameInfo.layerCount, lanczosFrameInfo.ycbcrMask(), 0u, lanczosFrameInfo.colorspaceMask(), outputTF ));
++			bind_all_layers(cmdBuffer.get(), &lanczosFrameInfo);
++			cmdBuffer->bindTarget(compositeImage);
++			cmdBuffer->uploadConstants<BlitPushData_t>(&lanczosFrameInfo);
++
++			const int pixelsPerGroup = 8;
++			cmdBuffer->dispatch(div_roundup(currentOutputWidth, pixelsPerGroup), div_roundup(currentOutputHeight, pixelsPerGroup));
++		}
++	}
+ 	else if ( frameInfo->useNISLayer0 )
+ 	{
+ 		uint32_t inputX = frameInfo->layers[0].tex->width();
+@@ -4170,6 +4418,7 @@ std::optional<uint64_t> vulkan_composite( struct FrameInfo_t *frameInfo, gamesco
+ 		cmdBuffer->dispatch(div_roundup(currentOutputWidth, pixelsPerGroup), div_roundup(currentOutputHeight, pixelsPerGroup));
+ 	}
+ 
++after_composite:
+ 	if ( pPipewireTexture != nullptr )
+ 	{
+ 
+diff --git a/src/rendervulkan.hpp b/src/rendervulkan.hpp
+index b6749d4..668dba0 100644
+--- a/src/rendervulkan.hpp
++++ b/src/rendervulkan.hpp
+@@ -282,6 +282,7 @@ struct FrameInfo_t
+ {
+ 	bool useFSRLayer0;
+ 	bool useNISLayer0;
++	bool useLanczosLayer0;
+ 	bool bFadingOut;
+ 	BlurMode blurLayer0;
+ 	int blurRadius;
+@@ -544,6 +545,8 @@ struct VulkanOutput_t
+ 
+ 	// NIS and FSR
+ 	gamescope::OwningRc<CVulkanTexture> tmpOutput;
++	// Ping-pong scratch for LANCZOS post-process passes (bilateral denoiser / hdeband).
++	gamescope::OwningRc<CVulkanTexture> tmpOutputAux;
+ 
+ 	// NIS
+ 	gamescope::OwningRc<CVulkanTexture> nisScalerImage;
+@@ -559,6 +562,9 @@ enum ShaderType {
+ 	SHADER_TYPE_EASU,
+ 	SHADER_TYPE_RCAS,
+ 	SHADER_TYPE_NIS,
++	SHADER_TYPE_EWA_LANCZOS,
++	SHADER_TYPE_BILATERAL_DENOISER,
++	SHADER_TYPE_HDEBAND,
+ 	SHADER_TYPE_RGB_TO_NV12,
+ 
+ 	SHADER_TYPE_COUNT
+diff --git a/src/steamcompmgr.cpp b/src/steamcompmgr.cpp
+index ff9ae1f..835c59c 100644
+--- a/src/steamcompmgr.cpp
++++ b/src/steamcompmgr.cpp
+@@ -2631,8 +2631,10 @@ paint_all( global_focus_t *pFocus, bool async )
+ 					paint_window(w, w, &frameInfo, pFocus->cursor, PaintWindowFlag::BasePlane | PaintWindowFlag::DrawBorders, 1.0f, override);
+ 
+ 					bool needsScaling = frameInfo.layers[0].scale.x < 0.999f && frameInfo.layers[0].scale.y < 0.999f;
++					bool needsDownscale = frameInfo.layers[0].scale.x > 1.001f && frameInfo.layers[0].scale.y > 1.001f;
+ 					frameInfo.useFSRLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::FSR && needsScaling;
+ 					frameInfo.useNISLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::NIS && needsScaling;
++					frameInfo.useLanczosLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::LANCZOS && needsDownscale;
+ 				}
+ 				if ( pFocus == GetCurrentFocus() )
+ 					update_touch_scaling( &frameInfo );
+@@ -2773,6 +2775,7 @@ paint_all( global_focus_t *pFocus, bool async )
+ 
+ 		frameInfo.useFSRLayer0 = false;
+ 		frameInfo.useNISLayer0 = false;
++		frameInfo.useLanczosLayer0 = false;
+ 	}
+ 
+ 	g_bFSRActive = frameInfo.useFSRLayer0;
+@@ -7372,6 +7375,7 @@ void update_wayland_res(CommitDoneList_t *doneCommits, steamcompmgr_win_t *w, Re
+ 		paint_window_commit( newCommit, w, w, &upscaledFrameInfo, nullptr );
+ 		upscaledFrameInfo.useFSRLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::FSR;
+ 		upscaledFrameInfo.useNISLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::NIS;
++		upscaledFrameInfo.useLanczosLayer0 = g_upscaleFilter == GamescopeUpscaleFilter::LANCZOS;
+ 		globalScaleRatio = flOldGlobalScale;
+ 		zoomScaleRatio = flOldZoomScale;
+ 		overscanScaleRatio = flOldOverscanScale;
+-- 
+2.53.0
+

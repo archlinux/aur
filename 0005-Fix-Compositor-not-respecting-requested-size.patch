@@ -1,0 +1,52 @@
+From 3e79e9a8b58ed7993f7db30affa31975b4e303b1 Mon Sep 17 00:00:00 2001
+From: Thomas Eric <thombelcar@gmail.com>
+Date: Mon, 13 Apr 2026 21:07:14 -0300
+Subject: [PATCH 5/5] Fix: Compositor not respecting requested size
+
+Co-authored-by: Claude <noreply@anthropic.com>
+---
+ src/Backends/WaylandBackend.cpp | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/src/Backends/WaylandBackend.cpp b/src/Backends/WaylandBackend.cpp
+index 41a70aa..1ceb7ec 100644
+--- a/src/Backends/WaylandBackend.cpp
++++ b/src/Backends/WaylandBackend.cpp
+@@ -1722,7 +1722,8 @@ namespace gamescope
+         int32_t uScale = GetScale();
+ 
+         int nWidth, nHeight;
+-        if ( !libdecor_configuration_get_content_size( pConfiguration, m_pFrame, &nWidth, &nHeight ) )
++        bool bHasContentSize = libdecor_configuration_get_content_size( pConfiguration, m_pFrame, &nWidth, &nHeight );
++        if ( !bHasContentSize )
+         {
+             // XXX(virtual connector): Move g_nOutputWidth etc to connector.
+             // Right now we are doubling this up when we should not be.
+@@ -1731,6 +1732,24 @@ namespace gamescope
+             nWidth  = WaylandScaleToLogical( g_nOutputWidth, uScale );
+             nHeight = WaylandScaleToLogical( g_nOutputHeight, uScale );
+         }
++
++        // If the user explicitly specified -W/-H, don't let the compositor
++        // shrink the output below the requested size. This works around KDE
++        // moving/resizing gamescope to a smaller virtual output (e.g. an XDP
++        // screen-sharing output) instead of the physical monitor.
++        if ( bHasContentSize && g_nPreferredOutputWidth > 0 && g_nPreferredOutputHeight > 0 )
++        {
++            int nPreferredLogicalW = WaylandScaleToLogical( g_nPreferredOutputWidth, uScale );
++            int nPreferredLogicalH = WaylandScaleToLogical( g_nPreferredOutputHeight, uScale );
++            if ( nWidth < nPreferredLogicalW || nHeight < nPreferredLogicalH )
++            {
++                xdg_log.infof( "Configure: compositor suggested %dx%d but preferred is %dx%d, keeping preferred",
++                    nWidth, nHeight, nPreferredLogicalW, nPreferredLogicalH );
++                nWidth  = nPreferredLogicalW;
++                nHeight = nPreferredLogicalH;
++            }
++        }
++
+         g_nOutputWidth  = WaylandScaleToPhysical( nWidth, uScale );
+         g_nOutputHeight = WaylandScaleToPhysical( nHeight, uScale );
+ 
+-- 
+2.53.0
+
