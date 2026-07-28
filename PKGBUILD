@@ -1,7 +1,7 @@
 # Maintainer: Andrii Berezhynskyi <microsolutions_harebrain@aleeas.com>
 # Packages the published Scrolex x86-64 binary for Arch Linux.
 pkgname=scrolex-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 _pkgfullname=scrolex-$pkgver-$CARCH-unknown-linux-gnu
 pkgdesc="A Horizontally Scrolled PDF Viewer"
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 url="https://github.com/molecule-man/scrolex"
 depends=('gtk4')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgfullname.tar.gz")
-sha256sums=('7ad67b1ceedfd9b1941913bd943a92d8de206c86feefddc9a59158dd324d97c5')
+sha256sums=('a8e4053aeb81ed854b14501b01e70e6eb16f8b57fa17a8ce639475d5ec4fbf5f')
 
 package() {
 	cd "$srcdir/$_pkgfullname"
