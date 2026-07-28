@@ -1,0 +1,18 @@
+pkgbase = cefdetector-plocate-bin
+	pkgdesc = Check how many CEFs are on your Linux using the plocate index.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Tobiichi-Origuchi/CefDetectorLinux
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = libglvnd
+	depends = xdg-utils
+	depends = plocate
+	provides = cefdetector=0.4.0
+	conflicts = cefdetector
+	noextract = cefdetector-plocate-bin-0.4.0.tar.gz
+	source = cefdetector-plocate-bin-0.4.0.tar.gz::https://github.com/Tobiichi-Origuchi/CefDetectorLinux/releases/download/v0.4.0/cefdetector-plocate_0.4.0_x86_64.tar.gz
+	sha256sums = 282a00ea6b6a5d48993efc2d1866d055b3237d9d985f68a07f691bb4a2a42ef6
+
+pkgname = cefdetector-plocate-bin
