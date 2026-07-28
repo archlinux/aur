@@ -1,9 +1,9 @@
-# Maintainer: xiaot <i@sin.moe>
+# Maintainer: xiaot <me@xiaot.moe>
 
 pkgname=sparxie-bin
 _pkgname=sparxie
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Cross-platform proxy controller for Mihomo, Clash, Surge, and sing-box"
 arch=('x86_64' 'aarch64')
 url='https://github.com/UruhaLushia/sparxie'
@@ -14,13 +14,12 @@ optdepends=("noto-fonts-cjk: CJK support"
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 options=('!strip' '!debug')
-source_x86_64=("${_pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-x86_64.deb")
-source_aarch64=("${_pkgname}_${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-arm64.deb")
-sha256sums_x86_64=('d80acff84b859adbdf9d983945cd387b623f0d7abd75648bd47f9687574b8f9b')
-sha256sums_aarch64=('ed4b51167d1c14a29f3ff758cb4dd4678dc2d1c380252f301351615a9fcf9212')
+source_x86_64=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-x86_64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-${pkgrel}-aarch64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-arm64.deb")
+sha256sums_x86_64=('12b612be4958c2494fdc7c6843c1d68231237bca12d2ca1e083cd4c7472fc846')
+sha256sums_aarch64=('3fbc72bb4f139fcf7745097d872c0d1a3c63e21ed3dbaf412d581d0c292a1da7')
 
 package() {
-  cd "${srcdir}"
   bsdtar -xf data.tar.* -C "${pkgdir}"
 }
 
