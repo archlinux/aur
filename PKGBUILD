@@ -2,7 +2,7 @@
 
 pkgname=buzz-desktop-git
 pkgver=0.5.0.r25.g90e058ebf
-pkgrel=2
+pkgrel=3
 pkgdesc='Workspace where humans and agents build together (desktop client, git version)'
 arch=('x86_64')
 url='https://buzz.xyz'
@@ -53,6 +53,7 @@ prepare() {
   mkdir -p "$srcdir/corepack-bin"
   corepack enable --install-directory "$srcdir/corepack-bin"
   export PATH="$srcdir/corepack-bin:$PATH"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
   pnpm install --frozen-lockfile
 }
 
@@ -60,6 +61,7 @@ build() {
   cd buzz
 
   export PATH="$srcdir/corepack-bin:$PATH"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgname"
 
