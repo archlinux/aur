@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=12
+pkgrel=13
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -12,6 +12,8 @@ depends=(
   'python-colorama'
   'python-pyyaml'
   'python-dateutil'
+  'qt5-svg'
+  'hicolor-icon-theme'
 )
 optdepends=(
   'python-lxml: web application support'

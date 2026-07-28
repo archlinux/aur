@@ -1,7 +1,7 @@
 pkgbase = bearhub
 	pkgdesc = Arch-first package manager hub (community-maintained fork of bauh)
 	pkgver = 0.10.7
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/spalencsar/bearhub
 	arch = any
 	license = ZLIB
@@ -15,6 +15,8 @@ pkgbase = bearhub
 	depends = python-colorama
 	depends = python-pyyaml
 	depends = python-dateutil
+	depends = qt5-svg
+	depends = hicolor-icon-theme
 	optdepends = python-lxml: web application support
 	optdepends = python-beautifulsoup4: web application support
 	optdepends = flatpak: flatpak support
