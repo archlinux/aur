@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CONFESS
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Cell OrderiNg by FluorEScence Signal'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96be83a860dae470e319b50229b6d04d7bb7cf0f19f28e229eb6595f21a99adb')
+sha256sums=('93f1c5a5433f41a3d8638f8eef7fb7021608d40f59a25a27cb82b38d0b913a1a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
