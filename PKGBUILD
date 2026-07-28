@@ -2,7 +2,7 @@
 
 pkgname=tunarr-bin
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby'
 arch=('x86_64' 'aarch64')
 _pkgarch="x64"
@@ -11,7 +11,6 @@ url='https://tunarr.com/'
 license=('zlib')
 depends=(
   'ffmpeg'
-  'meilisearch'
 )
 optdepends=(
   'plex-media-server'
@@ -19,6 +18,7 @@ optdepends=(
   'emby-server'
 )
 options=(!strip)
+install=tunarr.install
 backup=('etc/conf.d/tunarr')
 source=("https://github.com/chrisbenincasa/tunarr/releases/download/v${pkgver}/tunarr-v${pkgver}-linux-${_pkgarch}.tar.gz"
         'tunarr.sysusers'
@@ -28,12 +28,13 @@ source=("https://github.com/chrisbenincasa/tunarr/releases/download/v${pkgver}/t
 sha256sums=('da57b149f2c3d5d01043124a37ffd1f06f687a0ecf4634d3b2de6ba85b53fd13'
             '85af351451b2dc90f5f611f9be8bbda076d5e1ec42276d44b7d380b1d49767a7'
             'd642c71dd83406fd659fdaed5f3ef5b44a29443a9303e8a3a912fea757571c19'
-            '90e0b430bc045d2d53c3fea79633c78ce3a568778874ed71e45499868f72fbff'
+            '81831dfd3ce2fc6b1546e82ec9690475374259b2c02d22250952237b75cf3f4d'
             'e5ce4fc219b93fefb207b1b10b316e46fe94018cf13e25e42a5c033e9c31edb7')
 
 package()
 {
     install -Dm0755 "${srcdir}/tunarr-v${pkgver}-linux-${_pkgarch}" "${pkgdir}/usr/bin/tunarr"
+    install -Dm0755 "${srcdir}/meilisearch"                         "${pkgdir}/usr/bin/tunarr-meilisearch"
 
     install -Dm0644 "${srcdir}/tunarr.conf.d"   "${pkgdir}/etc/conf.d/tunarr"
     install -Dm0644 "${srcdir}/tunarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/tunarr.conf"

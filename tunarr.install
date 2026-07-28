@@ -1,0 +1,15 @@
+post_install() {
+  if [[ -f "/var/lib/tunarr/data.ms/VERSION" ]]; then
+    DB_VERSION=$(cat /var/lib/tunarr/data.ms/VERSION)
+    MS_VERSION=$(tunarr-meilisearch --version | cut -w -f 2)
+    (printf '%s\n' "${DB_VERSION}" "${MS_VERSION}" | sort -C -V) || (
+      echo -e "\n You need to manually remove files from /var/lib/tunarr/data.ms/* "
+      echo -e "\n due to downgrade in meilisearch! Afterward rescan libraries in tunarr."
+      echo -e "\n"
+    )
+  fi
+}
+
+post_upgrade() {
+  post_install "${1}"
+}
