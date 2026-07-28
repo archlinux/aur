@@ -1,0 +1,23 @@
+pkgbase = marukotoolbox
+	pkgdesc = 小丸工具箱粉丝致敬版
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/arenascats/MarukoToolbox-Rewrite
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = nuitka
+	makedepends = tk
+	makedepends = tcl
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = tkdnd: add native drag'n'drop capabilities to Tk toolkit
+	provides = marukotoolbox
+	conflicts = marukotoolbox
+	options = !strip
+	options = !debug
+	options = !lto
+	source = marukotoolbox::git+https://github.com/arenascats/MarukoToolbox-Rewrite.git#tag=v1.1.2
+	sha256sums = 73e9df3e81dd196a1095cb693de4fc2c1b31a5cf57365f54932d2d4293b803ba
+
+pkgname = marukotoolbox
