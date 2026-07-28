@@ -1,11 +1,11 @@
 pkgbase = pdfstudioviewer
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 2024.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qoppa.com/pdfstudioviewer
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-Qoppa
 	makedepends = dpkg
 	makedepends = desktop-file-utils
 	makedepends = gendesk
@@ -15,5 +15,5 @@ pkgbase = pdfstudioviewer
 	b2sums = 165ee30182fc17799604c942f1a5cfc02d9ab22dc5ad118a5f1f1394bb824000084847d720976e7caf3cac363c05c9ddbbfd2be2b1d00bb74d36307699037be5
 
 pkgname = pdfstudioviewer
-	depends = java-runtime>=9
+	depends = java-runtime-openjdk=25
 	depends = sane
