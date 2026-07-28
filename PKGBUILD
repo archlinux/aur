@@ -1,6 +1,6 @@
 # Maintainer: DonQuinleone <don@donquinleone.com>
 pkgname=antiphon
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A modern mail client for the terminal'
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(notmuch)
 optdepends=('gnupg: OpenPGP signing and decryption via gpg-agent')
 makedepends=(cargo scdoc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6677eb4976eb2a87d0eb32ce4c6fcddaf0ca2a052dd82bc6d9001ba4e45149be')
+sha256sums=('e1ee9869d89dd48cb7470b87216fe43f9025de956f8a9cb0bfd143535c4bfb40')
 
 prepare() {
     cd "$pkgname-v$pkgver"
@@ -54,8 +54,8 @@ package() {
     # package's own binary.
     sed -i 's|%h/\.cargo/bin/antiphond|/usr/bin/antiphond|' \
         "$pkgdir/usr/lib/systemd/user/antiphond.service"
-    install -Dm644 COPYING \
-        "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
