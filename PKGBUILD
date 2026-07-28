@@ -3,7 +3,7 @@
 _appname=zeal
 
 pkgname=${_appname}-git
-pkgver=0.8.1.r185.g0293f61e
+pkgver=0.9.0.r1.g5edfac52
 pkgrel=1
 pkgdesc='Offline documentation browser'
 arch=(aarch64 i686 x86_64)
