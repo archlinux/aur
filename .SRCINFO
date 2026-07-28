@@ -13,6 +13,7 @@ pkgbase = vkbasalt-redemp-git
 	makedepends = vulkan-headers
 	makedepends = glibc
 	makedepends = libgcc
+	makedepends = libstdc++
 	makedepends = libx11
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs

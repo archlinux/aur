@@ -17,7 +17,7 @@ arch=(x86_64)
 license=('Zlib')
 makedepends=(
   'git' 'glslang' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers'
-  'glibc' 'libgcc' 'libx11'
+  'glibc' 'libgcc' 'libstdc++' 'libx11'
   'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11'
 )
 optdepends=('reshade-shaders-git: collection of shaders to use with vkBasalt')
