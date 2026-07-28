@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+set -u
+
+plugin_marker='"plugin": "org.kde.plasma.kodexbar"'
+runtime_root="${KODEXBAR_RUNTIME_ROOT:-/run/user}"
+current_user_only=false
+dry_run=false
+
+for argument in "$@"; do
+    case "$argument" in
+        --current-user)
+            current_user_only=true
+            ;;
+        --dry-run)
+            dry_run=true
+            ;;
+        *)
+            printf 'Unknown reload option: %s\n' "$argument" >&2
+            exit 2
+            ;;
+    esac
+done
+
+qdbus_bin=/usr/bin/qdbus6
+systemctl_bin=/usr/bin/systemctl
+runuser_bin=/usr/bin/runuser
+getent_bin=/usr/bin/getent
+env_bin=/usr/bin/env
+id_bin=/usr/bin/id
+stat_bin=/usr/bin/stat
+
+if [[ ! -x "$qdbus_bin" || ! -x "$systemctl_bin" || ! -x "$id_bin" || ! -x "$stat_bin" ]]; then
+    exit 0
+fi
+
+current_uid="$("$id_bin" -u)"
+current_user="$("$id_bin" -un)"
+
+run_in_session() {
+    local session_uid="$1"
+    local session_user="$2"
+    local runtime_dir="$3"
+    shift 3
+
+    if [[ "$session_uid" == "$current_uid" ]]; then
+        XDG_RUNTIME_DIR="$runtime_dir" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=${runtime_dir}/bus" \
+            "$@"
+        return
+    fi
+
+    if [[ ! -x "$runuser_bin" || ! -x "$env_bin" ]]; then
+        return 1
+    fi
+
+    "$runuser_bin" -u "$session_user" -- \
+        "$env_bin" \
+        XDG_RUNTIME_DIR="$runtime_dir" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=${runtime_dir}/bus" \
+        "$@"
+}
+
+reload_runtime() {
+    local runtime_dir="$1"
+    local session_uid="$2"
+    local session_user="$3"
+    local layout
+
+    [[ -S "${runtime_dir}/bus" ]] || return 0
+    [[ "$("$stat_bin" -c '%u' "$runtime_dir" 2>/dev/null)" == "$session_uid" ]] || return 0
+    [[ "$("$stat_bin" -c '%u' "${runtime_dir}/bus" 2>/dev/null)" == "$session_uid" ]] || return 0
+
+    layout="$(
+        run_in_session "$session_uid" "$session_user" "$runtime_dir" \
+            "$qdbus_bin" \
+            org.kde.plasmashell \
+            /PlasmaShell \
+            org.kde.PlasmaShell.dumpCurrentLayoutJS \
+            2>/dev/null
+    )" || return 0
+
+    [[ "$layout" == *"$plugin_marker"* ]] || return 0
+
+    if [[ "$dry_run" == true ]]; then
+        printf 'KodexBar Suite: Plasma reload required for %s.\n' "$session_user"
+        return 0
+    fi
+
+    if run_in_session "$session_uid" "$session_user" "$runtime_dir" \
+        "$systemctl_bin" --user restart plasma-plasmashell.service >/dev/null 2>&1; then
+        printf 'KodexBar Suite: Plasma reloaded for %s.\n' "$session_user"
+    else
+        printf 'KodexBar Suite: automatic Plasma reload failed for %s. Log out and back in to load the update.\n' \
+            "$session_user" >&2
+    fi
+}
+
+if [[ "$current_user_only" == true ]]; then
+    current_runtime="${XDG_RUNTIME_DIR:-${runtime_root}/${current_uid}}"
+    reload_runtime "$current_runtime" "$current_uid" "$current_user"
+    exit 0
+fi
+
+if [[ ! -d "$runtime_root" || ! -x "$getent_bin" ]]; then
+    exit 0
+fi
+
+for runtime_dir in "$runtime_root"/[0-9]*; do
+    [[ -d "$runtime_dir" ]] || continue
+    session_uid="${runtime_dir##*/}"
+    [[ "$session_uid" =~ ^[0-9]+$ && "$session_uid" != 0 ]] || continue
+    passwd_entry="$("$getent_bin" passwd "$session_uid" 2>/dev/null)" || continue
+    session_user="${passwd_entry%%:*}"
+    [[ -n "$session_user" ]] || continue
+    reload_runtime "$runtime_dir" "$session_uid" "$session_user"
+done
+
+exit 0

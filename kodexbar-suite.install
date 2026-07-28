@@ -1,4 +1,16 @@
+reload_kodexbar_plasma() {
+  if [ -x /usr/lib/kodexbar-suite/reload-plasma-after-upgrade ]; then
+    env -u KODEXBAR_RUNTIME_ROOT \
+      /usr/lib/kodexbar-suite/reload-plasma-after-upgrade || true
+  fi
+}
+
 post_install() {
   echo "Add KodexBar Suite to a Plasma panel: right-click the panel, Add Widgets, search for KodexBar."
   echo "Installed AI CLI quotas are detected automatically on first use."
+  reload_kodexbar_plasma
+}
+
+post_upgrade() {
+  reload_kodexbar_plasma
 }

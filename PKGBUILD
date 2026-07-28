@@ -7,7 +7,7 @@
 
 pkgname=kodexbar-suite
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok quotas (optional codexbar for Antigravity)'
 arch=('any')
 url='https://github.com/Karasowl/KodexBar-Suite'
@@ -25,8 +25,21 @@ optdepends=(
   'xsel: alternate X11 clipboard support for ai recover --copy'
 )
 install=kodexbar-suite.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2e4398277ba9240fc46fa7434c95688346b8da899fc87ac4dd411ef3d2bbc848')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v${pkgver}.tar.gz"
+  'reload-plasma-after-upgrade'
+  'kodexbar-compact-provider-index.patch'
+)
+sha256sums=(
+  '2e4398277ba9240fc46fa7434c95688346b8da899fc87ac4dd411ef3d2bbc848'
+  'b8c7d720603f43fddeefb891ace7780a1ef7716aa4125d0fa3cfa48a6e96a095'
+  '5230bd90888790205bf133eb56dd6513c3c711f1d1a7bc52a8764d7f2cff26ca'
+)
+
+prepare() {
+  cd "${srcdir}/KodexBar-Suite-${pkgver}"
+  patch -Np1 -i "${srcdir}/kodexbar-compact-provider-index.patch"
+}
 
 package() {
   cd "${srcdir}/KodexBar-Suite-${pkgver}"
@@ -66,6 +79,9 @@ package() {
   install -d "${plasmoid}"
   install -m644 packages/kodexbar/metadata.json "${plasmoid}/"
   cp -a packages/kodexbar/contents "${plasmoid}/"
+
+  install -Dm755 "${srcdir}/reload-plasma-after-upgrade" \
+    "${pkgdir}/usr/lib/kodexbar-suite/reload-plasma-after-upgrade"
 
   install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
   install -m644 packages/ai-cli-control/icons/kodexbar-tray-ok.svg \
