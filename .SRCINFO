@@ -1,10 +1,9 @@
 pkgbase = luna-ai
-	pkgdesc = Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux
+	pkgdesc = Arunachalam's Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
 	pkgver = 2.1.0
 	pkgrel = 2
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	arch = any
-	options = !debug
 	license = MIT
 	depends = nodejs
 	depends = npm
@@ -29,6 +28,7 @@ pkgbase = luna-ai
 	optdepends = playerctl: Media playback automation
 	optdepends = zenity: Native GTK folder chooser dialog
 	optdepends = kdialog: Native KDE folder chooser dialog
+	options = !debug
 	source = git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.1.0
 	sha256sums = SKIP
 

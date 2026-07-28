@@ -2,7 +2,7 @@
 pkgname=luna-ai
 pkgver=2.1.0
 pkgrel=2
-pkgdesc="Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux"
+pkgdesc="Arunachalam's Autonomous Personal AI Operating System & Desktop Assistant for Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India."
 arch=('any')
 options=('!debug')
 url="https://github.com/Arunachalam-gojosaturo/Luna-ai"
