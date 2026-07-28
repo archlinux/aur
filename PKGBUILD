@@ -7,8 +7,8 @@
 # or their chess work.
 
 pkgname=omachess
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc='Local-first chess workspace for Omarchy: play, study, and create forms of chess'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AyushJ1001/omachess'
@@ -16,14 +16,30 @@ url='https://github.com/AyushJ1001/omachess'
 # /usr/share/licenses/common/GPL3 rather than shipping its own copy.
 license=('GPL-3.0-or-later')
 
+# The Rules Authority is C++ compiled by the core's build.rs and bundled into
+# the Rust static library. Under makepkg's global LTO those objects carry only
+# bitcode, which the final link cannot resolve against the rustc-produced ones,
+# so this package opts out.
+options=('!lto')
+
 # Omarchy 4 (Quattro) is a hard dependency: Omachess reads the active Quattro
 # theme and targets its compositor, launcher, and notification surfaces.
+#
+# The dependency is unversioned because no package is named `omarchy`: it is
+# supplied through an unversioned `provides` (omarchy-dev today), and pacman
+# cannot satisfy a versioned dependency from an unversioned provides, so a
+# `>=4.0.0` floor here makes the package uninstallable rather than safe. The
+# Omarchy 4 floor is enforced where it can actually be checked — the adapter
+# reads /usr/share/omarchy/version at runtime and falls back to the Built-in
+# Palette when the version is not recognised.
 depends=(
-  'omarchy>=4.0.0'
+  'omarchy'
   'qt6-base'
   'qt6-declarative'
   # The Piece Set artwork is vector, so the workspace needs the SVG handler.
   'qt6-svg'
+  # The Live Store links system SQLite through rusqlite.
+  'sqlite'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -44,12 +60,10 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig"
 )
-# The detached signature is the integrity check for the tarball, and a
-# signature has no digest of its own.
-#
-# TODO(release): replace the tarball's SKIP with its sha256 once the v0.1.0
-# release is published.
-sha256sums=('SKIP' 'SKIP')
+# The tarball's digest is pinned; a detached signature has no digest of its own,
+# and it is what makepkg verifies against validpgpkeys anyway.
+sha256sums=('d5b2f31c56ea25a55af1567fa81ebba4b96a660147800046fbeeb027834df354'
+            'SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
