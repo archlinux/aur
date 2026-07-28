@@ -4,12 +4,16 @@
 _basename=koharu
 pkgname=${_basename}-bin
 pkgver=0.61.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manga translation tools"
 arch=("x86_64")
 url="https://github.com/mayocream/koharu"
 license=("GPL-3.0")
 depends=()
+optdepends=(
+  "llama.cpp: local LLM"
+  "stable-diffusion.cpp: local image impainting"
+)
 provides=("$_basename")
 conflicts=("$_basename")
 options=("!debug")

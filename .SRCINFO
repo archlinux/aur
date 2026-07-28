@@ -1,10 +1,12 @@
 pkgbase = koharu-bin
 	pkgdesc = Manga translation tools
 	pkgver = 0.61.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mayocream/koharu
 	arch = x86_64
 	license = GPL-3.0
+	optdepends = llama.cpp: local LLM
+	optdepends = stable-diffusion.cpp: local image impainting
 	provides = koharu
 	conflicts = koharu
 	options = !debug
