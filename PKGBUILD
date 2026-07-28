@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: silverhikari <kerrickethan@gmail.com>
 # Contributor: Maikel Llamaret Heredia <llamaret@webmisolutions.com>
 
