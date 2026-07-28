@@ -1,0 +1,8 @@
+# Never commit sources into the AUR repo. Shipping the tarball here is what got
+# this package deleted ("no source url, sources hosted on AUR"). The AUR carries
+# the build recipe; makepkg downloads the source from upstream into this dir.
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
+pkg/
+src/

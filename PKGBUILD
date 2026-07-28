@@ -4,7 +4,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Double-click Windows programs: self-installing Wine runtime, crash recovery and per-app sandboxing"
 arch=('any')
-url="https://aur.archlinux.org/packages/polycarbon"
+url="https://github.com/basement-interactive/polycarbon"
 license=('GPL-3.0-or-later')
 # Programs polycarbon calls unconditionally that base does not already pull in.
 # binutils is the strings that reads a .lnk's target out of the binary; zstd is
@@ -49,8 +49,8 @@ optdepends=('bubblewrap: enforce per-app restrictions — without it, Restricted
 # writes into the user's applications dir while an installer is running.
 checkdepends=('desktop-file-utils')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('c59f595431734d9ed45ec88bc8daf0a365353d0daa47c5fb347ee198799c7c1a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b31e4d2591a6cd0dc5db12484e53fd9f9e445fd334536ed295ca3170c0737427')
 
 check() {
 	cd "$pkgname-$pkgver"
