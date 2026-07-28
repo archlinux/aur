@@ -2,14 +2,19 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.18.8
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
 license=('MIT')
 provides=('opencode-desktop')
 conflicts=('opencode-desktop')
-depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils' 'ripgrep')
+# Arch Linux ARM ships no electron package at all (which is also why official
+# code is absent there), so only x86_64 can run on a system runtime.
+_electron=electron42
+depends=('ripgrep')
+depends_x86_64=("${_electron}")
+depends_aarch64=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
 optdepends=('libappindicator-gtk3: tray icon support')
 options=('!debug')
 
@@ -32,14 +37,37 @@ package() {
   bsdtar -xf "${srcdir}/opencode-desktop-${pkgver}-linux-${_debarch}.deb" data.tar.xz
   bsdtar -xf data.tar.xz -C "${pkgdir}"
 
+  local _appdir _exec
+  if [[ "${CARCH}" == x86_64 ]]; then
+    # The app only has to work on the Electron it was built against, so refuse
+    # to package a runtime pairing upstream never shipped.
+    local _bundled
+    _bundled=$(grep -aoP 'Electron/\K[0-9]+' "${pkgdir}/opt/OpenCode/ai.opencode.desktop" | head -1)
+    if [[ "electron${_bundled}" != "${_electron}" ]]; then
+      echo "Upstream now bundles Electron ${_bundled:-<undetected>}; set _electron=electron${_bundled}" >&2
+      exit 1
+    fi
+
+    # Keep the app payload only; the bundled Chromium/Node runtime is replaced
+    # by the system electron, which ships its own sandbox, codecs and ICU data.
+    _appdir="${pkgdir}/usr/lib/opencode-desktop"
+    install -d "${_appdir}"
+    mv "${pkgdir}/opt/OpenCode/resources/"* "${_appdir}/"
+    rm -rf "${pkgdir}/opt"
+    _exec="${_electron} /usr/lib/opencode-desktop/app.asar"
+  else
+    _appdir="${pkgdir}/opt/OpenCode/resources"
+    _exec="/opt/OpenCode/ai.opencode.desktop"
+  fi
+
   # Prune Debian/Ubuntu-specific and dead files
   rm -rf "${pkgdir}/usr/share/doc"
-  rm -f "${pkgdir}/opt/OpenCode/resources/apparmor-profile"
-  rm -f "${pkgdir}/opt/OpenCode/resources/app-update.yml"
+  rm -f "${_appdir}/apparmor-profile"
+  rm -f "${_appdir}/app-update.yml"
 
   # Prune musl native modules (useless on glibc Arch)
-  find "${pkgdir}/opt/OpenCode" -name '*.musl.node' -delete
-  find "${pkgdir}/opt/OpenCode" -depth -type d -name '*-musl' -exec rm -rf {} +
+  find "${_appdir}" -name '*.musl.node' -delete
+  find "${_appdir}" -depth -type d -name '*-musl' -exec rm -rf {} +
 
   # Launcher script (supports user flags and Wayland)
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/opencode-desktop" <<'EOF'
@@ -48,8 +76,9 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 if [[ -f "$XDG_CONFIG_HOME/opencode-desktop-flags.conf" ]]; then
   OPENCODE_USER_FLAGS="$(grep -v '^#' "$XDG_CONFIG_HOME/opencode-desktop-flags.conf")"
 fi
-exec /opt/OpenCode/ai.opencode.desktop $OPENCODE_USER_FLAGS "$@"
+exec @EXEC@ $OPENCODE_USER_FLAGS "$@"
 EOF
+  sed -i "s|@EXEC@|${_exec}|" "${pkgdir}/usr/bin/opencode-desktop"
 
   # Point desktop files at the wrapper (icons/StartupWMClass already match upstream names)
   sed -i 's|Exec=/opt/OpenCode/ai\.opencode\.desktop|Exec=opencode-desktop|' \
