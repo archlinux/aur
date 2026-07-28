@@ -1,7 +1,7 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
-	pkgver = 6.19.0
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
 	arch = aarch64
@@ -23,13 +23,13 @@ pkgbase = iproute2-selinux
 	optdepends = linux-atm: ATM support
 	optdepends = python: for routel
 	provides = iproute
-	provides = iproute2=6.19.0-2
+	provides = iproute2=7.1.0-1
 	conflicts = iproute2
 	options = !emptydirs
-	source = git+https://git.kernel.org/pub/scm/network/iproute2/iproute2.git#tag=v6.19.0
+	source = git+https://git.kernel.org/pub/scm/network/iproute2/iproute2.git#tag=v7.1.0
 	source = 0001-make-iproute2-fhs-compliant.patch
 	validpgpkeys = 9F6FC345B05BE7E766B83C8F80A77F6095CDE47E
-	sha256sums = bdd732f05d497fd26c1cbefa9db8da974d2cf199fbb10affea984b862ab334d7
+	sha256sums = 8e8c2e7c1fc279bb56babe714fd75354ef3cca21dfd6f05b91c95c79488ecd3f
 	sha256sums = 758b82bd61ed7512d215efafd5fab5ae7a28fbfa6161b85e2ce7373285e56a5d
 
 pkgname = iproute2-selinux

@@ -7,15 +7,15 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=6.19.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL-2.0-or-later')
 groups=('selinux')
 url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
 depends=('glibc'
-         'libxtables.so' # from iptables or iptables-nft
+         'libxtables.so' # from iptables or iptables-legacy
          'libcap' 'libcap.so'
          'libelf'
          'libbpf' 'libbpf.so'
@@ -30,7 +30,7 @@ options=('!emptydirs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("git+https://git.kernel.org/pub/scm/network/${pkgname/-selinux}/${pkgname/-selinux}.git#tag=v${pkgver}"
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('bdd732f05d497fd26c1cbefa9db8da974d2cf199fbb10affea984b862ab334d7'
+sha256sums=('8e8c2e7c1fc279bb56babe714fd75354ef3cca21dfd6f05b91c95c79488ecd3f'
             '758b82bd61ed7512d215efafd5fab5ae7a28fbfa6161b85e2ce7373285e56a5d')
 
 prepare() {
