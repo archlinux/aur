@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Azul Zulu OpenJDK Java 25 Runtime
+Comment=Azul Zulu OpenJDK Java 25 Runtime
+Keywords=java;runtime
+Exec=/usr/lib/jvm/java-25-zulu/bin/java -jar
+Terminal=false
+Type=Application
+Icon=java
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true

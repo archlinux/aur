@@ -1,9 +1,12 @@
 # Maintainer: puddings233 <puddings233 at outlook dot com>
-#
-_java_ver=25
-_zulu_build="${_java_ver}.34.17-ca"
-pkgname=jre${_java_ver}-zulu-bin
-pkgver="${_java_ver}.0.3"
+
+_majorver=25
+_minorver=0
+_securityver=4
+_updatever=7
+_zulu_build="36.15"
+pkgname=jre${_majorver}-zulu-bin
+pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 pkgrel=1
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
 arch=('aarch64' 'x86_64')
@@ -16,41 +19,45 @@ depends=(
   "glibc"
   "harfbuzz"
   "lcms2"
-  "libfreetype.so"
   "libgcc"
-  "libharfbuzz.so"
-  "libjpeg.so"
   "libjpeg-turbo"
-  "liblcms2.so"
   "libnet"
   "libstdc++"
   "nss"
   "giflib"
-  "libgif.so"
   "libpng"
 )
-conflicts=(
-  "jdk25-openjdk"
-  "jre25-openjdk"
-  "jre25-openjdk-headless"
-  "zulu-25-bin"
-  "zulu25-fx-bin"
+optdepends=(
+  'alsa-lib: for basic sound support'
+  'gtk3: for the Gtk+ 3 look and feel - desktop usage'
 )
 provides=(
-  "java-runtime-headless=$_java_ver"
-  "java-runtime-headless-openjdk=$_java_ver"
-  "java-runtime=$_java_ver"
-  "java-runtime-openjdk=$_java_ver"
-  "jre${_java_ver}-openjdk=${pkgver}-${pkgrel}"
-  "jre${_java_ver}-openjdk-headless=${pkgver}-${pkgrel}"
+  "java-runtime=${_majorver}"
+  "java-runtime-openjdk=${_majorver}"
+  "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
+  "java-runtime-headless=${_majorver}"
+  "java-runtime-headless-openjdk=${_majorver}"
+  "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
 )
 install="$pkgname.install"
-source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_aarch64.tar.gz")
-source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('b2056ebf2431b0ec4f4c4aeb5b839c02ea7df8a90e2fd4d8de86ff8972e8bc53')
-sha256sums_x86_64=('39ee4454be16822d6899b40e24098ddfe54c00cc406f3dd7757692dc8171051e')
+source_aarch64=(
+  "https://cdn.azul.com/zulu/bin/zulu${_majorver}.${_zulu_build}-ca-jre${_majorver}.${_minorver}.${_securityver}-linux_aarch64.tar.gz"
+  "freedesktop-java.desktop"
+)
+source_x86_64=(
+  "https://cdn.azul.com/zulu/bin/zulu${_majorver}.${_zulu_build}-ca-jre${_majorver}.${_minorver}.${_securityver}-linux_x64.tar.gz"
+  "freedesktop-java.desktop"
+)
+sha256sums_aarch64=(
+  '94f62bbf0e0c8928dbe97d027a5b96f934d53bb56ee9c9571481d2b7003bc3d2'
+  '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
+)
+sha256sums_x86_64=(
+  '41540814fa9d5c28d329e4e201c31ee020fc66272b01582c261c5a73d574e80e'
+  '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
+)
 
-_jvmdir=/usr/lib/jvm/java-${_java_ver}-zulu
+_jvmdir=/usr/lib/jvm/java-${_majorver}-zulu
 
 case "${CARCH}" in
   aarch64) _JARCH='aarch64';;
@@ -59,7 +66,7 @@ esac
 
 package() {
 
-  cd "$srcdir/zulu${_zulu_build}-jre${pkgver}-linux_${_JARCH}"
+  cd "$srcdir/zulu${_majorver}.${_zulu_build}-ca-jre${_majorver}.${_minorver}.${_securityver}-linux_${_JARCH}"
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
@@ -68,14 +75,14 @@ package() {
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java${_java_ver}-zulu"
-  ln -s "/etc/java${_java_ver}-zulu" "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_majorver}-zulu"
+  ln -s "/etc/java${_majorver}-zulu" "${pkgdir}/${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
-  cp -r legal "${pkgdir}/usr/share/licenses/java${_java_ver}-zulu"
-  cp DISCLAIMER "${pkgdir}/usr/share/licenses/java${_java_ver}-zulu/"
-  ln -s "/usr/share/licenses/java${_java_ver}-zulu" "${pkgdir}/${_jvmdir}/legal"
+  cp -r legal "${pkgdir}/usr/share/licenses/java${_majorver}-zulu"
+  cp DISCLAIMER "${pkgdir}/usr/share/licenses/java${_majorver}-zulu/"
+  ln -s "/usr/share/licenses/java${_majorver}-zulu" "${pkgdir}/${_jvmdir}/legal"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"

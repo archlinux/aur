@@ -1,6 +1,6 @@
 pkgbase = jre25-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 25.0.3
+	pkgver = 25.0.4.u7
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = jre25-zulu-bin.install
@@ -13,31 +13,28 @@ pkgbase = jre25-zulu-bin
 	depends = glibc
 	depends = harfbuzz
 	depends = lcms2
-	depends = libfreetype.so
 	depends = libgcc
-	depends = libharfbuzz.so
-	depends = libjpeg.so
 	depends = libjpeg-turbo
-	depends = liblcms2.so
 	depends = libnet
 	depends = libstdc++
 	depends = nss
 	depends = giflib
-	depends = libgif.so
 	depends = libpng
-	conflicts = jdk25-openjdk
-	conflicts = jre25-openjdk
-	conflicts = jre25-openjdk-headless
-	conflicts = zulu-25-bin
-	conflicts = zulu25-fx-bin
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=25
+	provides = java-runtime-openjdk=25
+	provides = jre25-openjdk=25.0.4.u7-1
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = java-runtime=25
-	provides = java-runtime-openjdk=21
-	provides = jre25-openjdk=25.0.3-1
-	provides = jre25-openjdk-headless=25.0.3-1
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu25.34.17-ca-jre25.0.3-linux_aarch64.tar.gz
-	sha256sums_aarch64 = b2056ebf2431b0ec4f4c4aeb5b839c02ea7df8a90e2fd4d8de86ff8972e8bc53
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.34.17-ca-jre25.0.3-linux_x64.tar.gz
-	sha256sums_x86_64 = 39ee4454be16822d6899b40e24098ddfe54c00cc406f3dd7757692dc8171051e
+	provides = jre25-openjdk-headless=25.0.4.u7-1
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu25.36.15-ca-jre25.0.4-linux_aarch64.tar.gz
+	source_aarch64 = freedesktop-java.desktop
+	sha256sums_aarch64 = 94f62bbf0e0c8928dbe97d027a5b96f934d53bb56ee9c9571481d2b7003bc3d2
+	sha256sums_aarch64 = 58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.36.15-ca-jre25.0.4-linux_x64.tar.gz
+	source_x86_64 = freedesktop-java.desktop
+	sha256sums_x86_64 = 41540814fa9d5c28d329e4e201c31ee020fc66272b01582c261c5a73d574e80e
+	sha256sums_x86_64 = 58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c
+
 pkgname = jre25-zulu-bin
