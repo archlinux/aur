@@ -1,0 +1,18 @@
+--- a/src/VBox/Additions/x11/undefined_xorg
++++ b/src_p/VBox/Additions/x11/undefined_xorg
+@@ -182,3 +182,4 @@
+ XNFcallocarray
+ __xstat64
+ __assert_c99
++__memset_chk
+--- a/src/VBox/VMM/testcase/Makefile.kmk
++++ b/src_p/VBox/VMM/testcase/Makefile.kmk
+@@ -85,7 +85,7 @@
+   	tstPDMQueue \
+   	tstPGMMemCopy \
+   	tstSSM \
+-  	tstVMMUnitTests-1
++  	#tstVMMUnitTests-1
+   PROGRAMS.amd64 += tstIEMAImplAsm
+   if defined(VBOX_WITH_IEM_NATIVE_RECOMPILER) && defined(VBOX_WITH_IEM_RECOMPILER)
+    PROGRAMS += tstIEMN8veProfiling

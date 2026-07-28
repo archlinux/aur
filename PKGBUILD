@@ -10,9 +10,10 @@ pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
 pkgver=20260201
 _pkgver=dev-${pkgver}
-_vboxver='7.2.6'
+_vboxver='7.2.14'
+_pkgvboxver='7.2.6'	# Version of VBox the patch was made for
 _vboxsubver=''
-pkgrel=4
+pkgrel=5
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -34,7 +35,7 @@ makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'gls
              'qt6-tools' 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}${_vboxsubver}.tar.bz2"
-        "${url}/releases/download/${_pkgver}/kvm-backend-${_vboxver}-${_pkgver}.patch"
+        "${url}/releases/download/${_pkgvboxver}/kvm-backend-${_pkgvboxver}-${_pkgver}.patch"
         'virtualbox-host-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'
@@ -55,8 +56,9 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '020-python-3-12.patch'
-        '024-soapC.patch')
-sha256sums=('c58443a0e6fcc7fc7e84c1011a10823b3540c6a2b8f2e27c4d8971272baf09f7'
+        '024-soapC.patch'
+        '025-v7_2_14.patch')
+sha256sums=('384f293184c52fd51bc941c17d753b4019446f53a6b07c828adfb3e61fe0a500'
             'c1b1db76af6a79f84c6eb51212ac440b67a7968951ea071472c83da98fc8ca45'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
@@ -78,7 +80,8 @@ sha256sums=('c58443a0e6fcc7fc7e84c1011a10823b3540c6a2b8f2e27c4d8971272baf09f7'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
             '2540381de895fabbcc68d820c1f72ba644ef566ff5dab0f60be055c7b45cc06f'
             'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
-            'b70d86e7ca687f65e2bd71ec87d70daad32872acd9b141fb609dff7cce0cd291')
+            'b70d86e7ca687f65e2bd71ec87d70daad32872acd9b141fb609dff7cce0cd291'
+            '43112d2c885957ce220219b2f9446e7e67de103774f28393993eac452213b988')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"
