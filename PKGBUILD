@@ -1,20 +1,20 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 #
 # RELEASE CANDIDATE channel. This builds the GPG-signed pre-release tag
-# (v1.2.0-rc1) so testers can opt into the next release before it is promoted to
-# stable. It installs the same binaries as `aur-scanner` and therefore conflicts
-# with it -- do NOT run both. For production systems prefer the stable
-# `aur-scanner` / `ks-aur-scanner` packages.
+# (v2.1.0-rc.1) so testers can opt into the next release before it is promoted
+# to stable. It installs the same binaries as `aur-scanner` and therefore
+# conflicts with it -- do NOT run both. For production systems prefer the
+# stable `aur-scanner` / `ks-aur-scanner` packages.
 #
-# NEW in 1.2.0-rc1: opt-in threat intelligence (VirusTotal + URLhaus) and an
-# active verdict cache. It is OFF by default -- a scan stays fully offline and
-# static unless you set `enable_threat_intel` and supply your own API key. Review
-# the 1.2.0-rc1 CHANGELOG before enabling it or driving the tool from scripts/CI.
+# 2.1.0-rc.1 focus: correctness + Atomic Arch coverage depth. Config auto-load
+# from XDG and /etc (threat-intel actually works without -c), false-positive
+# hygiene, ALPM .hook scanning, wave-3/4/5 Atomic Arch rules. Review the
+# CHANGELOG before enabling threat intel or driving the tool from scripts/CI.
 pkgname=aur-scanner-rc
-# AUR pkgver may not contain a hyphen, so the semver pre-release '1.2.0-rc1'
-# becomes '1.2.0rc1' here; the upstream git tag keeps the canonical hyphen.
-pkgver=1.2.0rc1
-_tag=v1.2.0-rc1
+# AUR pkgver may not contain a hyphen, so the semver pre-release '2.1.0-rc.1'
+# becomes '2.1.0rc1' here; the upstream git tag keeps the canonical form.
+pkgver=2.1.0rc1
+_tag=v2.1.0-rc.1
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
@@ -66,6 +66,7 @@ package() {
     install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scan/integration.bash"
     install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scan/integration.zsh"
     install -Dm644 "install/integration.fish" "$pkgdir/usr/share/aur-scan/integration.fish"
+    install -Dm644 "install/integration.nu" "$pkgdir/usr/share/aur-scan/integration.nu"
 
     # Community rules example
     install -Dm644 "install/rules.d/example.toml" "$pkgdir/usr/share/aur-scanner/rules.d/example.toml"
