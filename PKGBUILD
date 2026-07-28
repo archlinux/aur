@@ -3,7 +3,7 @@
 
 pkgname=openloco
 pkgver=26.07.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
 arch=(x86_64)
 url="https://github.com/OpenLoco/OpenLoco"
@@ -57,6 +57,7 @@ package() {
   install -d "${pkgdir}"/usr/share/openloco
   mv "${pkgdir}"/usr/bin/* "${pkgdir}"/usr/share/openloco
   ln -s /usr/share/openloco/OpenLoco "${pkgdir}/usr/bin/openloco"
+  ln -s /usr/share/openloco/OpenLoco "${pkgdir}/usr/bin/OpenLoco"
 
   install -D "OpenLoco-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
