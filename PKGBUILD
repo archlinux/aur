@@ -60,21 +60,8 @@ checkdepends=(
     "uv"
     "vulture"
 )
-source=(
-  "git+${url}.git#tag=v${pkgver}"
-  "vibe_reduce_relayouts.patch::https://github.com/mistralai/mistral-vibe/compare/main...ikicic:mistral-vibe:reduce_relayouts.patch"
-  "lower_hatchling_version_requirements.patch")
-sha256sums=('c79676cde64aec0d071a30e70363ebb3c469f00f7144b2d8651f0ca1fbc4d70b'
-            '126311122dfefdcf235f41a209d2606000741d1d1b7392e8264c74f55cd1d0d3'
-            'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014')
-
-prepare() {
-    cd "$pkgname"
-    # Upstream WIP (Ivica Kičić): reduce relayouts / CPU usage.
-    patch -Np1 -i "../vibe_reduce_relayouts.patch"
-    # Lower hatchling pin (==1.31.0) to ">=1.30" so system hatchling 1.30.x works.
-    patch -Np1 -i "../lower_hatchling_version_requirements.patch"
-}
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('c79676cde64aec0d071a30e70363ebb3c469f00f7144b2d8651f0ca1fbc4d70b')
 
 build() {
     cd "$pkgname"
