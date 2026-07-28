@@ -4,7 +4,7 @@ _corever=0.1.1
 
 pkgname=fvs2
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone CLI for FVS v2'
 arch=('x86_64' 'aarch64')
 url='https://github.com/fvs-lab/fvs2'
@@ -27,7 +27,7 @@ prepare() {
   ln -s "core-${_corever}" "$srcdir/core"
   cd "$builddir"
 
-  export GOPATH="$srcdir"
+  export GOMODCACHE="$srcdir/pkg/mod"
   go mod download -modcacherw
   mkdir -p build
 }
@@ -39,6 +39,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
+  export GOMODCACHE="$srcdir/pkg/mod"
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
   go build -ldflags='-linkmode external' -o "build/$pkgname" "./cmd/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = fvs2
 	pkgdesc = Standalone CLI for FVS v2
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fvs-lab/fvs2
 	arch = x86_64
 	arch = aarch64
