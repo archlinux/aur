@@ -1,0 +1,19 @@
+pkgbase = openthermalright
+	pkgdesc = Linux application for controlling Thermalright USB displays
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/francesco19772509-del/OpenThermalright
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = python-psutil
+	depends = python-pyusb
+	source = openthermalright-1.1.1.tar.gz::https://github.com/francesco19772509-del/OpenThermalright/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = beb624cdf00b9cfc81d51f33af9b862b4edb902580fc8ef1b6bd46d4e84170b3
+
+pkgname = openthermalright
