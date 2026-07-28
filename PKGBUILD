@@ -1,7 +1,7 @@
 # Maintainer: lyokha113 <lyokha113@users.noreply.github.com>
 
 pkgname=lcdiff
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Inspect, compare, and merge JAR/ZIP archives and folders"
 arch=('x86_64')
