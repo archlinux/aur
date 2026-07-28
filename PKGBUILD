@@ -6,8 +6,8 @@ lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
 launcherVer=1.9.2
-loreVer=1.13.2
-tomeVer=1.13.2
+loreVer=1.13.3
+tomeVer=1.13.3
 
 pkgname=amsel_suite-bin
 pkgdesc="TTRPG Game Master companion"
@@ -31,8 +31,8 @@ source=(
 )
 
 sha256sums=('a57e69bc726864be834b4d17efd7b6d796022ff4a15d46b9ffe118a9ff0ccab1'
-            '74fd65b824d12516806d01201aa4588e0a68d21cb7c36e83d8de83264edf13c1'
-            '20f7e6840c958324ff75ce2e8c5433c114a14a413ae3f1c5edde304cc961174a'
+            '75cc2be1a803e874cd256322970d4de689a50abff3d4cd043448cf11a543c105'
+            '37994999fd10c035b428dae37c7aef3cac4a448b4e85b0f8770083c032a21051'
             '122c11f8213a170291184d011670c2ef6c2cc8375bc3fc4a7b933a9e46162978'
             '7cf890499f561081990c13ad95e47541317009cbae1f17baded40df1e3c4cfac'
             '62ed78846e3ce8269e4a6d1475b76b82c713d0db3d53b98b7b99cbf6386c3aaf')
