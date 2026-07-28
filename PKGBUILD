@@ -1,8 +1,8 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.0.5
-pkgrel=3
+pkgver=7.0.6
+pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Revincx/Yurigram"
