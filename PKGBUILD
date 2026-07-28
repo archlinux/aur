@@ -1,9 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=1.1
-_pkgver=1,1
-__pkgver=1-1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -25,19 +23,19 @@ optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('ffeebd389fd575184c5bb9ebab8f6bde77b326b6cf2842e5772815d55106f471c63335d261e7593056a2c8d7c179ac94d2d496cca5fd5a9a60fe7bc0028804c5')
+sha512sums=('cc951ec101abcc08670f4303f2c64fe66b6d9b0b83c67d3fd86c91e35eb31338fceedb2a644639c93d3dc978dc1c626b764bb2ada9545e713a758e239fa8b9cc')
 
 prepare() {
-	cd "${pkgname}-${__pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-	cd "${pkgname}-${__pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -45,7 +43,7 @@ build() {
 }
 
 check() {
-	cd "${pkgname}-${__pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -53,7 +51,7 @@ check() {
 }
 
 package() {
-	cd "${pkgname}-${__pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/voicefox
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
