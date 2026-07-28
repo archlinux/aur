@@ -98,6 +98,7 @@ build() {
       --install-ghc \
       --ghc-options='-fdiagnostics-color=always' \
       --flag 'pandoc:embed_data_files' \
+      --test --no-run-tests \
       --fast
   pandoc -s -t man docs/index.md -o pandoc-crossref.1
 }
