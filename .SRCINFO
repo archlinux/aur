@@ -1,7 +1,7 @@
 pkgbase = python-termforge
 	pkgdesc = Forkable Python framework for building terminal emulators
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/user14923929/termforge
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,6 +10,8 @@ pkgbase = python-termforge
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	depends = python-pyte
+	depends = python-ptyprocess
 	source = python-termforge-0.1.0.tar.gz::https://github.com/user14923929/termforge/archive/refs/tags/v0.1.0.tar.gz
 	source = termforge.desktop
 	sha256sums = 2fc6f41693f224a0ec69de19f99fa9fbdd2b83af3eb2d00025d739f99dfe86fb
