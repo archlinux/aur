@@ -1,0 +1,30 @@
+pkgbase = qt6curve-git
+	pkgdesc = Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)
+	pkgver = 1.9.0.rc1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/ixnewton/qtcurve/tree/Qt6Curve_version
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = qt6-svg
+	depends = kf6-kguiaddons
+	depends = kf6-kconfig
+	depends = kf6-kconfigwidgets
+	depends = kf6-ki18n
+	depends = kf6-kio
+	depends = kf6-kiconthemes
+	depends = kf6-kwidgetsaddons
+	depends = kf6-kwindowsystem
+	depends = kf6-frameworkintegration
+	depends = kf6-kxmlgui
+	depends = kf6-karchive
+	provides = qt6curve
+	conflicts = qt6curve
+	conflicts = qtcurve-qt6
+	source = git+https://github.com/ixnewton/qtcurve.git#branch=Qt6Curve_version
+	sha256sums = SKIP
+
+pkgname = qt6curve-git
