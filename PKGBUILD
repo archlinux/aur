@@ -27,7 +27,7 @@ prepare() {
   patch -Np1 -i ../bison3.patch
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
   sed -e 's/static volatile gsize gonce_data/static gsize gonce_data/g' -i gst/gstutils.h
-  
+
   if [ ! -f /usr/bin/glib-mkenums ]; then
     mkdir -p tools
     cat > tools/glib-mkenums <<'EOF'
@@ -36,7 +36,7 @@ exec /usr/bin/glib-mkenums-2.0 "$@"
 EOF
     chmod +x tools/glib-mkenums
   fi
-  
+
   if [ ! -f /usr/bin/glib-genmarshal ]; then
     mkdir -p tools
     cat > tools/glib-genmarshal <<'EOF'
@@ -45,17 +45,17 @@ exec /usr/bin/glib-genmarshal-2.0 "$@"
 EOF
     chmod +x tools/glib-genmarshal
   fi
-  
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
-  
+
   if [ -d "$PWD/tools" ]; then
     export PATH="$PWD/tools:$PATH"
   fi
-  
+
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
@@ -63,7 +63,7 @@ build() {
               --disable-gtk-doc \
               --disable-static \
               --disable-introspection
-  
+
   make
 }
 
@@ -73,7 +73,7 @@ package() {
 
   # Remove unversioned gst-* binaries to avoid possible conflicts
   cd "${pkgdir}/usr/bin"
-  for bins in `ls *-0.10`; do
-    rm -f ${bins/-0.10/}
+  for bins in *-0.10; do
+    rm -f "${bins/-0.10/}"
   done
 }
