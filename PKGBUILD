@@ -11,7 +11,7 @@
 _pkgname="mailspring"
 pkgname="$_pkgname"
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful and fast mail client"
 url="https://github.com/Foundry376/Mailspring"
 license=('GPL-3.0-only')
@@ -100,20 +100,33 @@ package() {
   # icon
   install -Dm0644 "app/build/resources/linux/icons/512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
-  # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
-$(
-    sed -E \
-      -e 's&<%= productName %>&'"${_pkgname^}"'&' \
-      -e 's&<%= description %>&'"${pkgdesc}"'&' \
-      "app/build/resources/linux/Mailspring.desktop.in"
-  )
-END
+  # launcher and metainfo
+  local _from_path="app/build/resources/linux"
 
-  # metainfo
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/metainfo/$_pkgname.appdata.xml" << END
-$(sed -E -e 's&<%= productName %>&Mailspring&g' "app/build/resources/linux/mailspring.appdata.xml.in")
-END
+  local _regex=""
+  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'productName' "${_pkgname^}")"
+  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'description' "${pkgdesc}")"
+  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'name' "$_pkgname")"
+  _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'desktopName' "$_pkgname.desktop")"
+
+  local _from_file _to_file _path _files=(
+    "Mailspring.desktop.in":"$_pkgname.desktop":'usr/share/applications'
+    "mailspring.metainfo.xml.in":"$_pkgname.metainfo.xml":'usr/share/metainfo'
+  )
+  for i in "${_files[@]}"; do
+    _from_file="$(cut -d: -f1 <<< "$i")"
+    _to_file="$(cut -d: -f2 <<< "$i")"
+    _to_path="$(cut -d: -f3 <<< "$i")"
+
+    echo ":: processing '${_to_file:?}'..."
+    sed -E -e "$_regex" "$_from_path/${_from_file:?}" > "$_to_file"
+    install -Dm644 "$_to_file" -t "$pkgdir/${_to_path:?}/"
+
+    if grep -Po '<%=[^>]+%>' "$_to_file"; then
+      >&2 echo ":: unresolved template tags in $_to_file"
+      return 1
+    fi
+  done
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
