@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="A Python tool to parse OSM data from Protobuf format into GeoDataFrame."
 url="https://pyrosm.readthedocs.io/"
 
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 
 arch=("x86_64")
@@ -52,7 +52,7 @@ source=(
     "${pkgname}-${pkgver}_LICENSE::https://raw.githubusercontent.com/HTenkanen/pyrosm/v${pkgver}/LICENSE"
 )
 b2sums=(
-    "4a49fcdb8cf651ce5ea558f2a7b6a4751749547a8b3d485fe94d3dee569a29673383b2099db44ac31f1ef2b0588108abd0eb7de9d21ca037e0e2d4bc8d9be9ed"
+    "692e643fdbc1ad2739b10ec090799e0302f3ec96dbda82bd585f403bcd11044e4de3e86fc423fbf3978e8f241e95a2cafce13e9e19e5e5246f8420eda253b74d"
     "f6b1ef1a7226efb7c32b58e56a939f0b843fa03bd0cbea401482407587aac1aec8225e83f0fc7cbf10f91dabb4953814c2edc2e0c326cbb887f25a29c7806253"
 )
 
