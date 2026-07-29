@@ -1,9 +1,7 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
-# Former Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-
-pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
@@ -41,6 +39,8 @@ prepare() {
   patch -Np1 -i ../enum_headers.patch
 
   sed -i 's|g_object_ref (G_OBJECT (interface))|g_object_ref ((GstMixer *)(interface))|' ext/alsa/gstalsamixer.c
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -52,7 +52,6 @@ build() {
   export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
   export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
 
-  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
