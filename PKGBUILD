@@ -4,11 +4,11 @@
 pkgname=libttf
 pkgver=0.0.7
 pkgrel=1
-pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
+pkgdesc="A small C++ library to render subtitles for Digital Cinema Packages with DCP-o-matic"
 arch=('i686' 'x86_64')
 url="https://www.dcpomatic.com"
 license=('GPL-2.0-or-later')
-depends=('boost-libs>=1.91.0' 'gcc-libs')
+depends=('boost-libs>=1.91.0' 'gcc-libs' 'fmt')
 makedepends=('git' 'python' 'boost>=1.91.0' 'gcc' 'pkg-config')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")

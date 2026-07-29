@@ -1,5 +1,5 @@
 pkgbase = libttf
-	pkgdesc = A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files
+	pkgdesc = A small C++ library to render subtitles for Digital Cinema Packages with DCP-o-matic
 	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://www.dcpomatic.com
@@ -13,6 +13,7 @@ pkgbase = libttf
 	makedepends = pkg-config
 	depends = boost-libs>=1.91.0
 	depends = gcc-libs
+	depends = fmt
 	provides = libttf.so
 	source = libttf-0.0.7::git+https://git.carlh.net/git/libttf.git#tag=v0.0.7
 	sha256sums = 6e5a1d83752d74b0ce191f01962eda40eafbea88a5c1217576f6f76e9d6914ae
