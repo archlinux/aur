@@ -1,5 +1,5 @@
 pkgbase = swagger-ui
-	pkgdesc = Collection of web assets that dynamically generate documentation from a Swagger-compliant API.
+	pkgdesc = Collection of web assets that dynamically generate documentation from a Swagger-compliant API
 	pkgver = 5.32.11
 	pkgrel = 1
 	url = https://swagger.io/swagger-ui/

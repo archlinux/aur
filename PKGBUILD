@@ -5,7 +5,7 @@
 pkgname=swagger-ui
 pkgver=5.32.11
 pkgrel=1
-pkgdesc="Collection of web assets that dynamically generate documentation from a Swagger-compliant API."
+pkgdesc="Collection of web assets that dynamically generate documentation from a Swagger-compliant API"
 arch=('any')
 url='https://swagger.io/swagger-ui/'
 license=('Apache-2.0')
@@ -15,5 +15,5 @@ sha256sums=('5204ff52c7c8693eb80d564d4ba3739aed5d3919e45d641f91f91cefae69ef38')
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/dist"
   mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
-	cp -r * "${pkgdir}/usr/share/webapps/${pkgname}"
+  cp -r ./* "${pkgdir}/usr/share/webapps/${pkgname}"
 }
