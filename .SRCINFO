@@ -1,6 +1,6 @@
 pkgbase = javinizer-bin
 	pkgdesc = A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI
-	pkgver = 1.1.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/javinizer/javinizer-go
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = javinizer-bin
 	license = MIT
 	provides = javinizer
 	conflicts = javinizer
-	source_x86_64 = javinizer-bin-1.1.1-x86_64::https://github.com/javinizer/javinizer-go/releases/download/v1.1.1/javinizer-linux-amd64
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.1.1/LICENSE
-	sha256sums_x86_64 = 53d0321e0489ee546e5e93dadaa01e333795efa8bd6856d27c0a7183220e7549
+	source_x86_64 = javinizer-bin-1.4.0-x86_64::https://github.com/javinizer/javinizer-go/releases/download/v1.4.0/javinizer-linux-amd64
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.4.0/LICENSE
+	sha256sums_x86_64 = fc06e2b9fecc80a33298e0a350c68672db911c3180bb7cc7227005f68542231c
 	sha256sums_x86_64 = bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3
-	source_aarch64 = javinizer-bin-1.1.1-aarch64::https://github.com/javinizer/javinizer-go/releases/download/v1.1.1/javinizer-linux-arm64
-	source_aarch64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.1.1/LICENSE
-	sha256sums_aarch64 = e596392b80ff8a9054046412c975f2561073f21f1ebe307a6a8b086a298608b2
+	source_aarch64 = javinizer-bin-1.4.0-aarch64::https://github.com/javinizer/javinizer-go/releases/download/v1.4.0/javinizer-linux-arm64
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.4.0/LICENSE
+	sha256sums_aarch64 = 36ea4f95088ae609a17056a10066b3e81cafd739d10e637129faae2831d24995
 	sha256sums_aarch64 = bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3
 
 pkgname = javinizer-bin
