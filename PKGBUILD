@@ -1,12 +1,12 @@
 pkgname=buzz-appimage
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Self-hostable workspace where humans and AI agents build together, on a relay you own"
 arch=(x86_64)
 url="https://github.com/block/buzz"
 license=(Apache-2.0)
 
-depends=("faac" "fuse2" "hicolor-icon-theme")
+depends=("faac" "fuse2" "hicolor-icon-theme" "xdg-utils")
 options=(!strip !debug)
 conflicts=("buzz-bin" "buzz-git" "buzz-desktop-git")
 
