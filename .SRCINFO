@@ -14,7 +14,7 @@ pkgbase = chest-backup
 	optdepends = docker: container-based backup sources (sqlite-container, postgres-container)
 	backup = etc/chest-backup/chest-backup.json
 	backup = etc/chest-backup/.env
-	source = chest-backup-v0.1.0.tar.gz::https://github.com/brankosimic/chest-backup/archive/v0.1.0.tar.gz
+	source = chest-backup-0.1.0.tar.gz::https://github.com/brankosimic/chest-backup/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = chest-backup

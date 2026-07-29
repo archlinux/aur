@@ -40,11 +40,11 @@ backup=(
   'etc/chest-backup/chest-backup.json'
   'etc/chest-backup/.env'
 )
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-v$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # ── Install all dependencies (including native addons) ──────
   pnpm install
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-v$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # ── Application bundles ─────────────────────────────────────
   # The bun build bundles all JS dependencies inline.
