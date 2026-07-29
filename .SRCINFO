@@ -1,7 +1,7 @@
 pkgbase = kineticwe
 	pkgdesc = KineticWE - A tiling KWin Wayland compositor with native window tiling
 	pkgver = 6.7.80
-	pkgrel = 12
+	pkgrel = 13
 	epoch = 1
 	url = https://gitlab.com/theblackdon/kineticwe
 	arch = x86_64
@@ -137,7 +137,7 @@ pkgbase = kineticwe
 	replaces = kwin
 	replaces = kglobalacceld
 	replaces = kdecoration
-	source = https://gitlab.com/theblackdon/kineticwe/-/archive/6b4a93c3d78cf9de5eee85d12f4b8f79aba52031/kineticwe-6b4a93c3d78cf9de5eee85d12f4b8f79aba52031.tar.gz
+	source = https://gitlab.com/theblackdon/kineticwe/-/archive/810f1f63b0bc9645037b097e9f328f76671b6bb5/kineticwe-810f1f63b0bc9645037b097e9f328f76671b6bb5.tar.gz
 	source = kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git#commit=5cc88399d8e2a7951798f85127e23f73f1fa0889
 	source = kdecoration::git+https://invent.kde.org/plasma/kdecoration.git#commit=d13049250c0ea1afc279aa8dc99243565c0d83e8
 	sha256sums = SKIP

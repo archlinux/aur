@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=12
+pkgrel=13
 # epoch: AUR previously shipped 6.7.81-x; the project re-aligned on the COPR
 # 6.7.80-N numbering, which pacman would otherwise see as a downgrade.
 epoch=1
@@ -157,7 +157,7 @@ conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel' 'kdecoration')
 # needs the post-6.7 KGlobalAccelD API and the KDecoration3::Style enum
 # (server-side drop shadows for CSD windows), neither of which is in a
 # released version yet. Bump both pins together with _commit on each sync.
-_commit=6b4a93c3d78cf9de5eee85d12f4b8f79aba52031
+_commit=810f1f63b0bc9645037b097e9f328f76671b6bb5
 _kglobalacceld_commit=5cc88399d8e2a7951798f85127e23f73f1fa0889
 _kdecoration_commit=d13049250c0ea1afc279aa8dc99243565c0d83e8
 _sourcebase="$pkgname-$pkgver"
