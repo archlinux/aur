@@ -1,7 +1,7 @@
 # Maintainer: thelooter <evekolb2204@gmail.com>
 
 pkgname=gcx-bin
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('gcx')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/gcx_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/gcx_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('5e76c064f14d9ec360cc48c46251b06a47762ab0dc755e4275e14ce2f67e8dbe')
-sha256sums_aarch64=('4678cce06fc9d6cc364c460f67be0bb06861e00e3c058e48697ae7428938efcb')
+sha256sums_x86_64=('c88c65958d19d83dc3a192a2a5037e08307a9c776019f24249b89f369c9c4d41')
+sha256sums_aarch64=('605f6bb7406d144bd11c72ff25649ab17229699be585a253460b77396dc57585')
 
 package() {
 	# The release tarball extracts its files (gcx, LICENSE, README.md,
