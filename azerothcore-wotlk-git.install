@@ -21,6 +21,14 @@ post_install() {
 		cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
 	fi
 
+	# Allow "remote access" so we can talk to our service once it starts
+	if [ -f /etc/azerothcore/worldserver.conf ]; then
+		sed -i 's/^Ra.Enable\s*=\s*.*/Ra.Enable = 1/'     /etc/azerothcore/worldserver.conf
+		sed -i 's/^Ra.IP\s*=\s*.*/Ra.IP = "127.0.0.1"/'     /etc/azerothcore/worldserver.conf
+		sed -i 's/^Ra.Port\s*=\s*.*/Ra.Port = 3443/'       /etc/azerothcore/worldserver.conf
+		sed -i 's/^Ra.MinLevel\s*=\s*.*/Ra.MinLevel = 3/' /etc/azerothcore/worldserver.conf
+	fi
+
 	# 5. Point the source tracking option directly to your execution root folder
 	sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
 

@@ -3,14 +3,11 @@ Description=AzerothCore MMORPG Authentication Server
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 User=azerothcore
 Group=acore-admin
-RuntimeDirectory=azerothcore
-RuntimeDirectoryMode=0775
 WorkingDirectory=/usr/share/azerothcore
-ExecStart=/usr/bin/tmux -S /run/azerothcore/auth.sock new-session -d -s authserver '/usr/share/azerothcore/bin/authserver'
-ExecStop=/usr/bin/tmux -S /run/azerothcore/auth.sock kill-session -t authserver
+ExecStart=/usr/share/azerothcore/bin/worldserver
 Restart=on-failure
 
 [Install]
