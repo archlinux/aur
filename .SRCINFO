@@ -1,16 +1,16 @@
 pkgbase = discord-delete-bin
 	pkgdesc = Bulk-delete your Discord messages and reactions from your data package
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/DatCodeMania/discord-delete
 	license = MIT
 	conflicts = discord-delete
 	provides = discord-delete
 	arch = aarch64
-	source_aarch64 = https://github.com/DatCodeMania/discord-delete/releases/download/v1.0.4/discord-delete_1.0.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 699b13d9b9a8cce921ad89678549356dd322d498b483cbcb799a9acf66d2ff73
+	source_aarch64 = https://github.com/DatCodeMania/discord-delete/releases/download/v1.0.5/discord-delete_1.0.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 20fa9044f2f181388002e3ba7fae1d29b1a8b374605a4e678101d0a3ed3ed50d
 	arch = x86_64
-	source_x86_64 = https://github.com/DatCodeMania/discord-delete/releases/download/v1.0.4/discord-delete_1.0.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = dc05fe17ad8492a759f850f214234bb09ebabcd62f4d046abab543fba41d2706
+	source_x86_64 = https://github.com/DatCodeMania/discord-delete/releases/download/v1.0.5/discord-delete_1.0.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4c933f5f2b9e46a343e470606ad9f5112270459c6df6009278df88b901a65625
 	
 pkgname = discord-delete-bin
