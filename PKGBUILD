@@ -2,7 +2,7 @@
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
 pkgname=bpfmon
-pkgver=2.53
+pkgver=2.60
 pkgrel=1
 pkgdesc="BPF based visual packet rate monitor"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
@@ -16,7 +16,6 @@ md5sums=('SKIP' 'SKIP')
 
 package() {
 	cd bpfmon-${pkgver}
-	sed -i 's/sbin/bin/g' Makefile
-	make PREFIX=/usr INSTALL=install DESTDIR="${pkgdir}" V=1 install
+	make PREFIX="${pkgdir}/usr" BINDIR="${pkgdir}/usr/bin" INSTALL=install V=1 install
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
