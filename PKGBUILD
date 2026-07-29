@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub
-pkgver=1.6.61
+pkgver=1.6.62
 pkgrel=1
 pkgdesc="a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python' 'boost>=1.91.0' 'openssl' 'git')
 provides=('libsub')
 conflicts=('libsub')
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('408afcbf64e518bf607d0292693d2866d0b1ddef9d20ab2cc45bebd6493c6ebf')
+sha256sums=('d379d9241db7e735912100e1247a64e6f8bd3b3dae8be426969eab4d63a04a5a')
 
 build() {
   cd  "${srcdir}/${pkgname}-${pkgver}"
