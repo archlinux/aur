@@ -1,0 +1,59 @@
+diff -up a/conquest.nimble b/conquest.nimble
+--- a/conquest.nimble	2026-07-29 10:58:20.016690730 +0200
++++ b/conquest.nimble	2026-07-29 10:55:32.506589643 +0200
+@@ -17,7 +17,7 @@ requires "whisky >= 0.1.3"
+ requires "pixie >= 5.1.0"
+ requires "cligen >= 1.9.3"
+ requires "nimpy >= 0.2.1"
+-requires "gtk2 >= 1.3"
++requires "gtk2"
+ requires "regex >= 0.26.3"
+ 
+ # Build tasks
+@@ -25,16 +25,16 @@ import os, strformat, strutils
+ 
+ # Mummy 0.4.8 has a bug where destroy(true) causes a segfault when we try to stop a listener after any client connection.
+ # This patches the shutdown path to use destroy(false) instead of destroy(true) which leaks instead of crashing.
+-proc patchMummy() =
+-    let 
+-        mummyDir = gorge("nimble path mummy").strip()
+-        mummyFile = mummyDir / "mummy.nim"
+-        content = readFile(mummyFile)
+-        target = "server.destroy(true)\n      return"
+-        patched = "server.destroy(false)\n      return"
++#proc patchMummy() =
++#    let 
++#        mummyDir = gorge("nimble path mummy").strip()
++#        mummyFile = mummyDir / "mummy.nim"
++#        content = readFile(mummyFile)
++#        target = "server.destroy(true)\n      return"
++#        patched = "server.destroy(false)\n      return"
+     
+-    if target in content:
+-        writeFile(mummyFile, content.replace(target, patched))
++#    if target in content:
++#        writeFile(mummyFile, content.replace(target, patched))
+ 
+ proc build(file: string, debug = false) =
+     let cqRoot = getEnv("CONQUEST_ROOT", getCurrentDir())
+@@ -52,11 +52,11 @@ proc buildResources(buildAlways: bool =
+             withDir(dir): exec "nimble dll"
+ 
+ task server, "Build server":
+-    patchMummy()
++    #patchMummy()
+     build("src/server/main.nim")
+ 
+ task server_debug, "Build server (debug)":
+-    patchMummy()
++    #patchMummy()
+     build("src/server/main.nim", true)
+ 
+ task client, "Build client":         
+@@ -68,4 +68,4 @@ task client_debug, "Build client (debug)
+     build("src/client/main.nim", true)
+ 
+ task resources, "Build resources":
+-    buildResources(buildAlways = true)
+\ No newline at end of file
++    buildResources(buildAlways = true)

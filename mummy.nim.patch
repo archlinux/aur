@@ -1,0 +1,12 @@
+diff -up a/mummy.nim b/mummy.nim
+--- a/mummy.nim	2026-06-24 13:00:38.764563190 +0200
++++ b/mummy.nim	2026-07-29 10:24:25.595960239 +0200
+@@ -1262,7 +1262,7 @@ proc loopForever(server: Server) {.raise
+           server.log(DebugLevel, "Dropped message to disconnected client")
+
+     if shutdownTriggered:
+-      server.destroy(false)
++      server.destroy(true)
+       return
+
+     # This is the main client socket select loop

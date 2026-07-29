@@ -1,6 +1,6 @@
 pkgbase = conquest-git
 	pkgdesc = Conquest is a feature-rich and malleable command & control/post-exploitation framework developed in Nim.
-	pkgver = 0.2.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/jakobfriedl/conquest.git
 	install = conquest.install
@@ -25,8 +25,12 @@ pkgbase = conquest-git
 	source = git+https://github.com/jakobfriedl/conquest
 	source = conquest.service
 	source = conquest.1
+	source = conquest.nimble.patch
+	source = mummy.nim.patch
 	sha1sums = SKIP
 	sha1sums = 154fa07dc18012bcf67c95e12750f3c4c7289a56
 	sha1sums = 5b57fcc21655e2ed204cbd100506ae2f3a706cfd
+	sha1sums = e7e2c1f337939c9d799874ecae1f618ced4b111f
+	sha1sums = e9b8436bb03f8003831d8244086596eebf776c24
 
 pkgname = conquest-git
