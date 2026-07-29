@@ -2,7 +2,7 @@
 
 pkgname=dagger-bin
 pkgdesc="Automation engine to build, test and ship any codebase. Runs locally, in CI, or directly in the cloud"
-pkgver=0.21.7 # renovate: datasource=github-tags depName=dagger/dagger
+pkgver=0.21.8 # renovate: datasource=github-tags depName=dagger/dagger
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/dagger/dagger"
@@ -16,9 +16,9 @@ source_aarch64=("https://github.com/dagger/dagger/releases/download/v${pkgver}/d
 source_armv7h=("https://github.com/dagger/dagger/releases/download/v${pkgver}/dagger_v${pkgver}_linux_armv7.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/dagger/dagger/v${pkgver}/LICENSE")
 sha256sums=('4442a42853bd02d190ce5f06f76ba62f1a0ff803e8cc1a524dcaa7085a0b100b')
-sha256sums_x86_64=('44430afc6f9c390fc47c4f352b15de9309a5e97ebd1ae563839617d6df8e8cc5')
-sha256sums_aarch64=('780e8ddc4269aeee94ef21ab7cb06ca2ee04abec5486eba53f49a7549d99637d')
-sha256sums_armv7h=('5947c28599fc13bae1a2bd9b19418812979ffbf94d9da39be2c80afdccc8f4e3')
+sha256sums_x86_64=('53e226c7da8fb75171e58c35759d736d961ce8b3a12db0baa7b7107954fccc5a')
+sha256sums_aarch64=('cd0df4885f2050082932b4abc5a6aad9a733f6aa4e7d8474740558517ffec4af')
+sha256sums_armv7h=('13a377b6361018b379934594adeef8a8457fe6c73c74c4acd8cd44ca98910045')
 
 package() {
   install -Dm755 "${srcdir}/dagger" "${pkgdir}/usr/bin/dagger"
