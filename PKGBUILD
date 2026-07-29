@@ -2,7 +2,7 @@
 
 pkgname=cosmic-ext-applet-now-playing-extended-git
 _srcname=cosmic-ext-applet-now-playing
-pkgver=0.1.0.r1.g6be9750
+pkgver=0.1.0.r39.g6be9750
 pkgrel=1
 pkgdesc='Extended MPRIS now-playing applet for the COSMIC panel'
 arch=('x86_64')

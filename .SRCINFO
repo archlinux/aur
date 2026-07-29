@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-now-playing-extended-git
 	pkgdesc = Extended MPRIS now-playing applet for the COSMIC panel
-	pkgver = 0.1.0.r1.g6be9750
+	pkgver = 0.1.0.r39.g6be9750
 	pkgrel = 1
 	url = https://github.com/AdityaHebballe/cosmic-ext-applet-now-playing
 	arch = x86_64
