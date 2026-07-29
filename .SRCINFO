@@ -25,6 +25,7 @@ pkgbase = linux-soundboard-git
 	optdepends = xorg-xwayland: enables the native X11 backend inside Wayland sessions
 	provides = linux-soundboard
 	conflicts = linux-soundboard
+	options = !lto
 	source = linux-soundboard::git+https://github.com/germanua/Linux-SoundBoard.git#branch=main
 	sha256sums = SKIP
 

@@ -34,6 +34,10 @@ optdepends=(
 provides=('linux-soundboard')
 conflicts=('linux-soundboard')
 install="${pkgname}.install"
+# The bundled SQLite (rusqlite "bundled") is compiled by the cc crate; under LTO
+# it becomes bitcode the final Rust link cannot resolve (undefined sqlite3_*
+# symbols). Disable LTO so the package builds regardless of the host makepkg.conf.
+options=('!lto')
 source=(
   "${_pkgname}::git+${url}.git#branch=main"
 )
