@@ -2,9 +2,9 @@
 
 _rockname=tl
 pkgbase=teal
-pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=(teal "lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.24.8
-pkgrel=1
+pkgrel=2
 pkgdesc='The compiler for Teal, a typed dialect of Lua'
 arch=(any)
 url=https://github.com/teal-language/$_rockname
@@ -16,6 +16,7 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
@@ -40,11 +41,15 @@ _package() {
 package_teal() {
 	optdepends+=('cyan: The Teal build system and project manager')
 	provides+=($_rockname)
-	_package 5.4 bin
+	_package 5.5 bin
 	depends=(lua "lua-tl=$pkgver")
 }
 
 package_lua-tl() {
+	_package 5.5
+}
+
+package_lua54-tl() {
 	_package 5.4
 }
 
