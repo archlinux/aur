@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-universal-xml-plugin
 	pkgdesc = Appium plugin for making XML source and XPath queries the same across iOS and Android
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@appium/universal-xml-plugin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-universal-xml-plugin-2.1.6.tgz
-	source = nodejs-appium-universal-xml-plugin-2.1.6.tgz::https://registry.npmjs.org/@appium/universal-xml-plugin/-/universal-xml-plugin-2.1.6.tgz
-	sha256sums = b4fa5771d4b5cf4a5680361e15098a72ed1f2c4e9d942f2cc15b8d07f468194c
+	noextract = nodejs-appium-universal-xml-plugin-2.1.7.tgz
+	source = nodejs-appium-universal-xml-plugin-2.1.7.tgz::https://registry.npmjs.org/@appium/universal-xml-plugin/-/universal-xml-plugin-2.1.7.tgz
+	sha256sums = 2e8b93abf575789662c9afd5289a394696f302ddd07e7e29134e791aaf2ad181
 
 pkgname = nodejs-appium-universal-xml-plugin
