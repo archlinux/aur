@@ -1,4 +1,5 @@
-# Maintainer: saneki <s@neki.me>
+# Maintainer: hypevhs <hackgammavision at gmail dot com>
+
 pkgname=de4dot-git
 _pkgname=de4dot
 pkgver=2090.b7d5728f
