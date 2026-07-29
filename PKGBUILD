@@ -1,10 +1,10 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
-
 _pkgname=n-dhcp4
 pkgname=$_pkgname-git
-pkgver=1.86.g5c0c3bd
-pkgrel=2
+pkgver=1.r91.g37d0ff4
+pkgrel=1
+epoch=1
 pkgdesc="Dynamic Host Configuration Protocol for IPv4"
 url="https://github.com/nettools/n-dhcp4"
 license=('Apache-2.0 OR LGPL-2.1-or-later')
@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 # separate sources and rewire the submodule URLs to these local checkouts in
 # prepare() so the meson build finds their meson.build files
 source=(
-  "$_pkgname::git+https://github.com/nettools/n-dhcp4.git"
+  "git+https://github.com/nettools/n-dhcp4.git"
   "c-list::git+https://github.com/c-util/c-list.git"
   "c-siphash::git+https://github.com/c-util/c-siphash.git"
   "c-stdaux::git+https://github.com/c-util/c-stdaux.git"
@@ -31,7 +31,7 @@ sha256sums=(
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/-/./g;s/_/./g;'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -44,7 +44,6 @@ prepare() {
 }
 
 build() {
-  rm -rf build
   arch-meson $_pkgname build
   ninja -C build
 }
