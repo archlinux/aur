@@ -1,7 +1,7 @@
 # Maintainer: germanua
 
 pkgname=linux-soundboard
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -37,7 +37,7 @@ options=('!lto')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('1be97cdd863bd22925ea10aac01f8d36e855c1e9b315d9cc1c66ad55a5086c42')
+sha256sums=('5b6e40c67c13a432fd953d98e4dd36dfe67e86b29a1ffdc6f301432468578030')
 install="${pkgname}.install"
 
 prepare() {
