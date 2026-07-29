@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="git-clog"
-pkgver="0.3.2"
+pkgver="0.3.3"
 pkgrel="1"
 pkgdesc="A tool to colorize the commit graph of a Git repository by interpreting the first six commit hash digits as an RGB color value."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://github.com/IngoMeyer441/git-clog/archive/v${pkgver}.tar.gz")
-sha256sums=("5ba7f3f3b00b12ae149f9fc92a0a422acab2cc8abebb46fc711286c29e7d5fc8")
+sha256sums=("ba47b4b0ba2c8622af8d44a4f369048cfd68f3f8650479f01a2bc1ece203f4c7")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
