@@ -1,34 +1,33 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver='1.2'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='memor'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="python-memor"
+pkgver=1.3
 pkgrel=1
 pkgdesc="Reproducible Structured Memory for LLMs"
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 arch=('any')
-url='https://github.com/openscilab/memor'
 license=('MIT')
+url='https://github.com/openscilab/memor'
+
 depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('16b363716b8b1a4e1b7362ab1511a4ce0639be69917c41c65d14b940ad268370')
+sha256sums=('c48b37871201ab14de6a7c63efa9f0db2ab5ebd4d390a653f2d827f5d2219a6f')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
