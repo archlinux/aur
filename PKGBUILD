@@ -27,5 +27,5 @@ build() {
 
 package() {
     cd "$srcdir/livekit-tui-client"
-    install -Dm755 "target/release/client" "$pkgdir/usr/bin/livekit-tui-client"
+    install -Dm755 "target/release/livekit-tui-client" "$pkgdir/usr/bin/livekit-tui-client"
 }
