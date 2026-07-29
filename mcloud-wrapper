@@ -3,11 +3,29 @@
 REAL_HOME="$HOME"
 
 MCLOUD_SANDBOX="$REAL_HOME/.local/share/mcloud_env"
-mkdir -p "$MCLOUD_SANDBOX"
+mkdir -p "$MCLOUD_SANDBOX/mCloud"
 
 export HOME="$MCLOUD_SANDBOX"
 export XDG_CONFIG_HOME="$MCLOUD_SANDBOX/.config"
 export XDG_DATA_HOME="$MCLOUD_SANDBOX/.local/share"
 export XDG_CACHE_HOME="$MCLOUD_SANDBOX/.cache"
 
-exec /opt/apps/com.cmic.mcloud/mcloud "$@"
+LOG_DIR="$MCLOUD_SANDBOX/mCloud/log"
+TMP_LOG_DIR="/tmp/mcloud_logs_$USER"
+
+mkdir -p "$TMP_LOG_DIR"
+
+rm -rf "$TMP_LOG_DIR"/*
+
+if [ -d "$LOG_DIR" ] && [ ! -L "$LOG_DIR" ]; then
+    chmod -R 755 "$LOG_DIR" 2>/dev/null
+    rm -rf "$LOG_DIR"
+fi
+
+# 把日志目录软链接到内存盘里
+if [ ! -L "$LOG_DIR" ]; then
+    ln -s "$TMP_LOG_DIR" "$LOG_DIR"
+fi
+# ===============================================================
+
+exec /opt/apps/com.cmic.mcloud/mcloud "$@" >/dev/null 2>&1
