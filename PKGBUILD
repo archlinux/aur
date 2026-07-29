@@ -1,45 +1,49 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
-pkgname=shelly-bin
-pkgver=2.4.1.4
+pkgbase=shelly-bin
+pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
+pkgver=3.0.0+9
 pkgrel=1
-pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
-provides=('shelly')
-conflicts=('shelly' 'shelly-git')
-depends=(
-    'pacman'
-    'gtk4'
-    'glib2'
-    'sudo'
-    'tar'
-    'bash'
-    'git'
-    'hicolor-icon-theme'
-    'dbus'
-    'glibc'
-    'libarchive'
-    'dconf'
-    'gnupg'
-    'zstd'
-    'json-glib'
-)
-optdepends=(
-    'flatpak: For supporting flatpak implementation.'
-    'fish: Fish shell completions'
-    'zsh: Zsh shell completions'
-    'libstarfish: dependency viewer for arch packages'
-)
-
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
+    "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
 )
 
-sha256sums=('f16960523135d31d1bf2059cb46fe8810ae745167a1d11b4dad844179464eb81')
+sha256sums=('1c696140104d7f51eaa5fe6488b32f4a0d441944c1f127ad9507399b156f8ce6'
+            '46907ce81348430aefbb27cd865cc2470aba9087d352a5f1c3cfb9d576f34f16')
 
-package() {
+package_shelly-bin() {
+  pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
+  provides=('shelly')
+  conflicts=('shelly' 'shelly-git')
+  depends=(
+      'pacman'
+      'gtk4'
+      'glib2'
+      'sudo'
+      'tar'
+      'bash'
+      'git'
+      'hicolor-icon-theme'
+      'dbus'
+      'glibc'
+      'libarchive'
+      'dconf'
+      'gnupg'
+      'zstd'
+      'json-glib'
+  )
+  optdepends=(
+      'fish: Fish shell completions'
+      'zsh: Zsh shell completions'
+      'libstarfish: dependency viewer for arch packages'
+      'shelly-flatpak-backend-bin: Flatpak package management support'
+      'fuse2: run AppImages that require FUSE 2'
+  )
+
   # Install Shelly.Gtk binary
   install -Dm755 "$srcdir/shelly-ui" "$pkgdir/usr/bin/shelly-ui"
 
@@ -49,8 +53,8 @@ package() {
   # Install Shelly.Cli binary
   install -Dm755 "$srcdir/shelly" "$pkgdir/usr/bin/shelly"
 
-  # Install Shelly.Keys binary
-  install -Dm755 "$srcdir/shelly-keys" "$pkgdir/usr/bin/shelly-keys"
+  # Install Shelly.Key binary
+  install -Dm755 "$srcdir/shelly-key" "$pkgdir/usr/bin/shelly-key"
 
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
@@ -64,6 +68,7 @@ Categories=System;Utility;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
 Terminal=false
+X-GNOME-UsesNotifications=true
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
 [Desktop Action FlatpakInstall]
@@ -122,14 +127,10 @@ EOF
 EOF
 
   # Install icon
-  install -Dm644 "$srcdir/Assets/shellylogo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
-  install -Dm644 "$srcdir/Assets/svg/flatpak-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
-  install -Dm644 "$srcdir/Assets/svg/arch-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
-  install -Dm644 "$srcdir/Assets/svg/shelly-updates-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
-  install -Dm644 "$srcdir/Assets/svg/shelly-shell-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
+  install -Dm644 "$srcdir/shellylogo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
 
-  install -Dm644 "$srcdir/Assets/shellylogo-tray.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
-  install -Dm644 "$srcdir/Assets/shellylogo-update.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
+  install -Dm644 "$srcdir/shellylogo-tray.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
+  install -Dm644 "$srcdir/shellylogo-update.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
 
   # Install fish shell completions
   install -Dm644 "$srcdir/shelly.fish" "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
@@ -188,4 +189,17 @@ done
 update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
 echo "Flatpak desktop entries patched with Shelly integration."
 SCRIPT
+}
+
+package_shelly-flatpak-backend-bin() {
+  pkgdesc="Optional native Flatpak backend for Shelly (prebuilt binary)"
+  depends=("shelly-bin=${pkgver}-${pkgrel}" 'flatpak')
+  provides=("shelly-flatpak-backend=${pkgver}")
+  conflicts=('shelly-flatpak-backend' 'shelly-flatpak-backend-git')
+
+  install -Dm755 \
+    "$srcdir/libshelly-flatpak-backend.so.1.0.0" \
+    "$pkgdir/usr/lib/shelly/libshelly-flatpak-backend.so.1.0.0"
+  ln -s libshelly-flatpak-backend.so.1.0.0 \
+    "$pkgdir/usr/lib/shelly/libshelly-flatpak-backend.so.1"
 }
