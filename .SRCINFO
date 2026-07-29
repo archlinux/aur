@@ -1,6 +1,6 @@
 pkgbase = ququ-bin
 	pkgdesc = 开源免费的 Wispr Flow 替代方案 - 为中文而生的桌面端语音输入工具
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/lxp731/ququ
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = ququ-bin
 	optdepends = ydotool: 键盘模拟，用于自动粘贴（推荐）
 	optdepends = wtype: Wayland 原生键盘模拟，自动粘贴备选
 	optdepends = xdotool: X11 键盘模拟，自动粘贴备选
-	provides = ququ=1.1.9
+	provides = ququ=1.1.10
 	conflicts = ququ
 	conflicts = ququ-git
 	options = !strip
-	source = ququ-1.1.9.deb::https://github.com/lxp731/ququ/releases/download/v1.1.9/ququ-v1.1.9.deb
-	sha256sums = 0e3d4c20e457ef5c6fe06055ddb731f3db8a48d91a3fefda66f5278fdc3ba3ed
+	source = ququ-1.1.10.deb::https://github.com/lxp731/ququ/releases/download/v1.1.10/ququ-v1.1.10.deb
+	sha256sums = b41c01d550e1a3d7978c367f68e22fb2ae6d6a4fe6049f337c5b86edd394db6e
 
 pkgname = ququ-bin
