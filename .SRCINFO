@@ -17,7 +17,7 @@ pkgbase = mica-bin
 	source = micalistener.service::https://github.com/acaimingus/Mica/raw/refs/heads/main/Packaging/Debian/usr/lib/systemd/user/micalistener.service
 	source = micalistener.install
 	sha256sums = 53283c0e774af27681a88e23533226a2bed20d4932d31f06a8abdf01548c7c1a
-	sha256sums = 88a437c77ac85273c3a44ef5940dfe1c77c5cedddf86d45a567ab65a63ce9cd8
+	sha256sums = cd6ace936410f66bdd4e8bb6b3f296984815f69049a2a9484001a62b69d8b18b
 	sha256sums = 6ead1a31b9183f1d41962e1ded5a54409dd2409ab4a21eff5a9d78eef82bd2bf
 	sha256sums = f98a73249a1bbb34b9562e21d5fab2fd95cfbf41c470eed4e89abcacbdb812f9
 
