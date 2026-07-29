@@ -1,0 +1,26 @@
+pkgbase = hermes-one-bin
+	pkgdesc = Hermes One — native desktop app for installing, configuring, and chatting with Hermes Agent
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/fathah/hermes-desktop
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	provides = hermes-one
+	conflicts = hermes-one
+	noextract = hermes-desktop-0.7.6.deb
+	options = !strip
+	source = hermes-desktop-0.7.6.deb::https://github.com/fathah/hermes-desktop/releases/download/v0.7.6/hermes-desktop_0.7.6_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/main/LICENSE
+	sha256sums = 9bbc2e0a828b706a3e47f2bde5a4fec0c1d709f1df21a92a1ecf55bdfa6b6732
+	sha256sums = 85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4
+
+pkgname = hermes-one-bin
