@@ -181,7 +181,7 @@ def log_config(config):
         if key in SENSITIVE_KEYS and value:
             lines.append(f"       {key} = **REDACTED**")
         else:
-            lines.append(f"       {key} = {value!r}")
+            lines.append(f"       {key} = {value}")
 
     log.info("Loaded configuration:\n%s", "\n".join(lines))
 
