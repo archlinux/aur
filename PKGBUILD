@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=11
+pkgrel=12
 # epoch: AUR previously shipped 6.7.81-x; the project re-aligned on the COPR
 # 6.7.80-N numbering, which pacman would otherwise see as a downgrade.
 epoch=1
@@ -20,7 +20,6 @@ depends=(
     'kglobalaccel'
     'kirigami'
     'kwayland'
-    'kdecoration'
     'kscreenlocker'
     'xorg-xwayland'
     'hwdata'
@@ -85,7 +84,6 @@ makedepends=(
     'kirigami'
     # Plasma / KDE
     'kwayland'
-    'kdecoration'
     'kscreenlocker'
     'knighttime'
     'plasma-wayland-protocols'
@@ -143,25 +141,32 @@ optdepends=(
 )
 # COPR-compatible package replacement metadata
 # Mimics the COPR spec's Provides + Obsoletes for kwin, kwin-common, kwin-libs,
-# kwin-wayland, kglobalacceld, and kglobalacceld-devel.
+# kwin-wayland, kglobalacceld, kglobalacceld-devel, and kdecoration.
 # On Arch, kwin-common/kwin-libs/kwin-wayland are bundled in 'kwin', but we
 # provide them virtually so packages that reference them see them satisfied.
-replaces=('kwin' 'kglobalacceld')
-provides=('kglobalacceld' 'kglobalacceld-devel' 'kwin' 'kwin-common' 'kwin-libs' 'kwin-wayland')
-conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel')
+replaces=('kwin' 'kglobalacceld' 'kdecoration')
+provides=('kglobalacceld' 'kglobalacceld-devel' 'kdecoration' 'kwin' 'kwin-common' 'kwin-libs' 'kwin-wayland')
+conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel' 'kdecoration')
 
 
-# Source: kwin-we from GitLab + kglobalacceld from KDE invent
+# Source: kwin-we from GitLab + kglobalacceld/kdecoration from KDE invent
 # kwin-we is pinned to a commit (not a tag) to match the COPR 6.7.80-N
 # releases, which package master HEAD via `git archive`. Bump _commit and
 # reset pkgrel together on each upstream sync.
+# kglobalacceld and kdecoration are pinned to KDE master commits: kwin-we
+# needs the post-6.7 KGlobalAccelD API and the KDecoration3::Style enum
+# (server-side drop shadows for CSD windows), neither of which is in a
+# released version yet. Bump both pins together with _commit on each sync.
 _commit=6b4a93c3d78cf9de5eee85d12f4b8f79aba52031
+_kglobalacceld_commit=5cc88399d8e2a7951798f85127e23f73f1fa0889
+_kdecoration_commit=d13049250c0ea1afc279aa8dc99243565c0d83e8
 _sourcebase="$pkgname-$pkgver"
 source=(
     "$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
-    "kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git"
+    "kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git#commit=$_kglobalacceld_commit"
+    "kdecoration::git+https://invent.kde.org/plasma/kdecoration.git#commit=$_kdecoration_commit"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "$srcdir"
@@ -177,9 +182,9 @@ prepare() {
         mv kineticwe "$_sourcebase"
     fi
 
-    echo "==> Preparing kglobalacceld..."
-    cd "$srcdir/kglobalacceld"
-    # kglobalacceld is already cloned via git source; no extra prep needed
+    echo "==> Preparing kglobalacceld and kdecoration..."
+    # Both are already cloned at their pinned commits via git sources;
+    # no extra prep needed
     cd "$srcdir"
 }
 
@@ -187,7 +192,7 @@ build() {
     cd "$srcdir"
 
     # --- Phase 1: Build kglobalacceld ---
-    echo "==> Building kglobalacceld (git master)..."
+    echo "==> Building kglobalacceld (pinned KDE master commit)..."
 
     mkdir -p kglobalacceld/build
     pushd kglobalacceld/build
@@ -205,7 +210,27 @@ build() {
     mkdir -p "$srcdir/kga-staging"
     DESTDIR="$srcdir/kga-staging" cmake --install kglobalacceld/build
 
-    # --- Phase 2: Build kwin-we ---
+    # --- Phase 2: Build kdecoration (pinned KDE master commit) ---
+    # kwin-we uses KDecoration3::Style (server-side drop shadows for CSD
+    # windows), which only exists in kdecoration master — the released 6.7.x
+    # in the repos is too old. Build it and stage it next to kglobalacceld.
+    echo "==> Building kdecoration (pinned KDE master commit)..."
+
+    mkdir -p kdecoration/build
+    pushd kdecoration/build
+
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=OFF \
+        -Wno-dev
+
+    cmake --build . --parallel "$(nproc)"
+    popd
+
+    DESTDIR="$srcdir/kga-staging" cmake --install kdecoration/build
+
+    # --- Phase 3: Build kwin-we ---
     echo "==> Building kwin-we..."
 
     mkdir -p "$_sourcebase/build"
@@ -228,6 +253,9 @@ package() {
     echo "==> Installing kglobalacceld..."
     DESTDIR="$pkgdir" cmake --install kglobalacceld/build
 
+    echo "==> Installing kdecoration..."
+    DESTDIR="$pkgdir" cmake --install kdecoration/build
+
     echo "==> Installing kwin-we..."
     cd "$_sourcebase/build"
     DESTDIR="$pkgdir" cmake --install .
@@ -239,6 +267,13 @@ package() {
     # Strip kglobalacceld development files (matching COPR — keep only runtime lib)
     rm -rf "$pkgdir/usr/include/KGlobalAccelD" 2>/dev/null || true
     rm -f "$pkgdir/usr/lib/libKGlobalAccelD.so" 2>/dev/null || true
+
+    # Strip kdecoration development files (matching COPR — keep only runtime libs)
+    rm -rf "$pkgdir/usr/include/KDecoration3" 2>/dev/null || true
+    rm -f "$pkgdir/usr/include/KF6/kdecoration3_version.h" 2>/dev/null || true
+    rm -rf "$pkgdir/usr/lib/cmake/KDecoration3" 2>/dev/null || true
+    rm -f "$pkgdir/usr/lib/libkdecorations3.so" 2>/dev/null || true
+    rm -f "$pkgdir/usr/lib/libkdecorations3private.so" 2>/dev/null || true
 
     # Compatibility symlinks so Plasma can find the compositor (like COPR does)
     ln -s kinetic-we "$pkgdir/usr/bin/kwin_wayland"
@@ -252,6 +287,12 @@ package() {
     if [[ -d "$srcdir/kglobalacceld/LICENSES" ]]; then
         install -Dm644 "$srcdir/kglobalacceld/LICENSES/"* \
             -t "$pkgdir/usr/share/licenses/$pkgname-kglobalacceld/" 2>/dev/null || true
+    fi
+
+    # Install kdecoration license
+    if [[ -d "$srcdir/kdecoration/LICENSES" ]]; then
+        install -Dm644 "$srcdir/kdecoration/LICENSES/"* \
+            -t "$pkgdir/usr/share/licenses/$pkgname-kdecoration/" 2>/dev/null || true
     fi
 
     # Install Wayland session launcher (start-kineticwe) - written directly to avoid sed issues
