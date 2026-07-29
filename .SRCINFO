@@ -1,0 +1,20 @@
+pkgbase = juicebox-plus-git
+	pkgdesc = System tray app for the Juicepipe file ingest daemon
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/juiceboxdev/juicebox-plus
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libdbus
+	depends = libxdo
+	depends = glibc
+	provides = juicebox-plus
+	conflicts = juicebox-plus
+	source = git+https://github.com/juiceboxdev/juicebox-plus.git
+	md5sums = SKIP
+
+pkgname = juicebox-plus-git
