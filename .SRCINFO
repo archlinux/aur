@@ -12,7 +12,7 @@ pkgbase = libttf
 	makedepends = gcc
 	makedepends = pkg-config
 	depends = boost-libs>=1.91.0
-	depends = gcc-libs
+	depends = libstdc++
 	depends = fmt
 	provides = libttf-1.0.so
 	source = libttf-0.0.7::git+https://git.carlh.net/git/libttf.git#tag=v0.0.7

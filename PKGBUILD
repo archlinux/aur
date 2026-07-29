@@ -8,7 +8,7 @@ pkgdesc="A small C++ library to render subtitles for Digital Cinema Packages wit
 arch=('i686' 'x86_64')
 url="https://www.dcpomatic.com"
 license=('GPL-2.0-or-later')
-depends=('boost-libs>=1.91.0' 'gcc-libs' 'fmt')
+depends=('boost-libs>=1.91.0' 'libstdc++' 'fmt')
 makedepends=('git' 'python' 'boost>=1.91.0' 'gcc' 'pkg-config')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
