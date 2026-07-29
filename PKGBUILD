@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nginx-ui-bin
 _pkgname='Nginx UI'
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Yet another WebUI for Nginx.Prebuilt version."
 arch=(
@@ -25,10 +25,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm32-v7a.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-32.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-64.tar.gz")
-sha256sums_aarch64=('b3d720e444a44fba87dc6185c8292ba1a6ad32a6c1e8054b8221f906cfe472f6')
-sha256sums_armv7h=('dc073095f0ca68513f2814e4b2d6e61e42d3d516a3c23a8467365d260bc2924e')
-sha256sums_i686=('0a815aab2d0fb6c7be4b4dda7fd4e7ff4ece715a36d66015d7977d4ffc6c3138')
-sha256sums_x86_64=('2566911196fd5e250d5c62d036b63c1c1144b1aa5ef0e1f6ecec089dd32e8063')
+sha256sums_aarch64=('48f719e5a5bc5276d660b38a0d620ba0d787ae0482cd057a9a7c4387f4edc1eb')
+sha256sums_armv7h=('3e6b02015afaaf35972361273ac6f7f618eec4edbdc84ef3087be04530e19145')
+sha256sums_i686=('375c9d331917371324b44a7a4fbbcc58eea094ebd7b78b5e2f8f39d83e1432a8')
+sha256sums_x86_64=('c619f2d9aa02b474c8c58446b160e800890e7863de387adbd5b1bc925d841994')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/README"* -t "${pkgdir}/usr/share/docs/${pkgname%-bin}"
