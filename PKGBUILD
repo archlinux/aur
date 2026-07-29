@@ -2,9 +2,8 @@
 # PKGBUILD for ODM (Oryn Download Manager) — Arch / CachyOS.
 # Pre-built binary package (downloads from GitHub Releases).
 #
-# AUR publishing: tag a release (git tag v$pkgver), then update sha256sums:
-#   updpkgsums   # or: makepkg -g >> PKGBUILD
-#   makepkg --printsrcinfo > .SRCINFO
+# Man page, config example, and systemd service are bundled as local source
+# files in the AUR repository (no remote download, no checksum mismatch).
 
 pkgname=odm-bin
 pkgver=1.1.0
@@ -19,25 +18,25 @@ options=('!strip')
 
 source_x86_64=(
     "${pkgname}-${pkgver}-linux_amd64::https://github.com/Fahry-a/odm/releases/download/v${pkgver}/odm_${pkgver}_linux_amd64"
-    "${pkgname}-${pkgver}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
-    "${pkgname}-${pkgver}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
-    "${pkgname}-${pkgver}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
+    "${pkgname}-${pkgver}.1"
+    "${pkgname}-${pkgver}.conf.example"
+    "${pkgname}-${pkgver}.service"
 )
 source_aarch64=(
     "${pkgname}-${pkgver}-linux_arm64::https://github.com/Fahry-a/odm/releases/download/v${pkgver}/odm_${pkgver}_linux_arm64"
-    "${pkgname}-${pkgver}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
-    "${pkgname}-${pkgver}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
-    "${pkgname}-${pkgver}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
+    "${pkgname}-${pkgver}.1"
+    "${pkgname}-${pkgver}.conf.example"
+    "${pkgname}-${pkgver}.service"
 )
 
 sha256sums_x86_64=('503fa4908c4a882d63c9a9f05d1de26aa972001a23451af0e1b622a24f9b1bd5'
-                    'e9bcb1c89c2514bd78c11706e0cf920b7ee511451809ea6d1ba2e48d48cf1807'
-                    '9d49d33f89fafbb0aec3d3205c553cf6398cfc63fa66f5cb1bdd3b5a25c6be15'
-                    '314998f62c236fb2aaa7362e2b1638a72627eb2702f95f9fac4e7219c10a5b7e')
+                    'SKIP'
+                    'SKIP'
+                    'SKIP')
 sha256sums_aarch64=('5d6ad607350fdc8294020692c1cdae28c0462f2fbe58e81a6bee5c9379e8db87'
-                    'e9bcb1c89c2514bd78c11706e0cf920b7ee511451809ea6d1ba2e48d48cf1807'
-                    '9d49d33f89fafbb0aec3d3205c553cf6398cfc63fa66f5cb1bdd3b5a25c6be15'
-                    '314998f62c236fb2aaa7362e2b1638a72627eb2702f95f9fac4e7219c10a5b7e')
+                    'SKIP'
+                    'SKIP'
+                    'SKIP')
 
 package() {
     local _bin

@@ -1,0 +1,28 @@
+[Unit]
+Description=ODM (Oryn Download Manager) — RPC daemon
+Documentation=man:odm(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/odm --rpc
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+DynamicUser=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+RemoveIPC=yes
+CapabilityBoundingSet=~CAP_NET_BIND_SERVICE
+
+# Config
+EnvironmentFile=-/etc/odm/odm.env
+StateDirectory=odm
+ReadWritePaths=/var/lib/odm
+
+[Install]
+WantedBy=multi-user.target
