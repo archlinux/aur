@@ -1,6 +1,6 @@
 pkgbase = buzz-bin
 	pkgdesc = A workspace where humans and agents build together, on a relay you own
-	pkgver = 0.4.26
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://buzz.xyz
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = buzz-bin
 	depends = zlib
 	provides = buzz
 	conflicts = buzz
-	source = https://github.com/block/buzz/releases/download/v0.4.26/Buzz_0.4.26_amd64.deb
-	sha256sums = 1b520756ecfc28ad81981a2cd5cc6688f785f447b3f5d8d553544906f59bf521
+	source = https://github.com/block/buzz/releases/download/v0.5.0/Buzz_0.5.0_amd64.deb
+	sha256sums = 9674cf098eca88333e8d895ec9d0a5c56c796fbc358fe1087b645890b8e2faca
 
 pkgname = buzz-bin
