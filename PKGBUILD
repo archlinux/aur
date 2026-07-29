@@ -31,7 +31,13 @@ sha256sums=('ac8c2b955074bf43533a6afd132c05f105e1bb470ce562f6c61ffefd3c2f8dbf'
     install -dm755 "$pkgdir/opt/ferrumpix"
     cp -a "$srcdir/FerrumPix-${pkgver}/." "$pkgdir/opt/ferrumpix/"
 
-    rm -f "$pkgdir/opt/ferrumpix/"{*.desktop,*.png,LICENSE}
+    install -Dm644 "$pkgdir/opt/ferrumpix/LICENSE" \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    if [ -f "$pkgdir/opt/ferrumpix/THIRD-PARTY-NOTICES.txt" ]; then
+      install -Dm644 "$pkgdir/opt/ferrumpix/THIRD-PARTY-NOTICES.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES.txt"
+    fi
+    rm -f "$pkgdir/opt/ferrumpix/"{*.desktop,*.png}
     chmod +x "$pkgdir/opt/ferrumpix/FerrumPix"
 
     install -dm755 "$pkgdir/usr/bin"
