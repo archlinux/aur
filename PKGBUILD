@@ -2,7 +2,7 @@
 # Bleeding-edge AUR package — builds from latest git main
 
 pkgname=kappicon-git
-pkgver=3.2.1.r2.g6dd612a
+pkgver=3.2.1.r5.g53381be
 pkgrel=1
 pkgdesc='Change Linux app launcher icons without root (GUI + CLI) — git version'
 arch=('any')
