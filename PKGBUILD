@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=opsh
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A small, local-first shell written in Rust'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e061a8f4dc106769458d84d5c50c499ce310f45b58b54ddc5abf3c30a5e247d6')
+sha256sums=('82cc8490e85282963d44ae1543fa90fd07e3ec262d79d09ce269ce8479d0ca00')
 
 prepare() {
   cd "$pkgname-$pkgver"
