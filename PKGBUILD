@@ -1,12 +1,12 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsh-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Hyprland windows"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/DDS"
-license=('MIT')
+license=('OSL-3.0')
 depends=('glibc')
 provides=('ddsh')
 conflicts=('ddsh' 'ddsh-git')
@@ -15,11 +15,11 @@ source=("$url/releases/download/v$pkgver/ddsh"
         "$url/raw/v$pkgver/scripts/discord-monitor-hyprland.service"
         "$url/raw/v$pkgver/common/src/config/default-config.json"
         "$url/raw/v$pkgver/LICENSE")
-b2sums=('e0c69f3e495e4c71dab2fdcc066538ca3875526dd1ba0bdde90c3046bd739bdf5c71a73b96f42024011e34f76fec705393f736b604a939d97ceba60caedbc14c'
+b2sums=('56b10b0ed8263c4a12baa303c12e80c2262676a4b9411049aedea3079de9e3ce0300080622f869a3b55b92b876760f5597bc9047f44331fd85008e7c0c90b69a'
         'df9740ba0092e81bfbaffaff3c97228e3f68b1a723edf14ca5461b434d414e54e0ff26fff6eed2c8710a6d10212f4fe92ba6b20cec4c8771a95d6426bff29cfc'
         '8a28faa7d4c908730cfc4a50d4e6d05eb93757de2814cb1c5d943fd7f99f6180d229957ca6bdf64b82be7c99287734611a93329c1b135b8a472fcae1476c93c6'
         '9edda0c6033376d93b29db3b4d1093263660527503e590bc4028fdb430f3fbf2d6b15e18a2e9598be709d42215ad7b01ab71bc96a42c1cd824b62f1d36994aa6'
-        '50c0cb9c952805d1c3873f6150a5c411ac00cbf180d80437761aa55058aa84cb7dad973b8d5b3005f33287474cc9dbd9691502c8944e76ce99b20399ef74df87')
+        '0f9a28cc3fa997b81fafd8b1af9ec68e80cbd746429efd8f98c18469c5bba013b872121c1018f9d79c87f34b453bf1757e3972856b153ae6833d1f7b957c6878')
 
 package() {
     install -Dm755 "$srcdir/ddsh" -t "$pkgdir/usr/bin/"
