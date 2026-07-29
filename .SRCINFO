@@ -1,0 +1,12 @@
+pkgbase = wirq-bin
+	pkgdesc = A local MITM proxy for inspecting HTTP/HTTPS traffic
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/loadept/wirq
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	source = wirq-0.0.3-linux-amd64.tar.gz::https://github.com/loadept/wirq/releases/download/v0.0.3/wirq-linux-amd64.tar.gz
+	sha256sums = eb9744f464661da65daf6def322107abbed79aa136f8b54ce97c50cb958a7fb6
+
+pkgname = wirq-bin
