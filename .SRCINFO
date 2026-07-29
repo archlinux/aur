@@ -1,0 +1,21 @@
+pkgbase = simply-lighthouse-manager
+	pkgdesc = Manage SteamVR base station (lighthouse) power via Bluetooth LE - fork of openvr-lighthouse-manager-linux
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/SimplyJustJessie/simply-lighthouse-manager
+	install = simply-lighthouse-manager.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glfw
+	depends = dbus
+	depends = bluez
+	provides = openvr-lighthouse-manager-linux
+	conflicts = openvr-lighthouse-manager-linux
+	source = simply-lighthouse-manager-1.1.0.tar.gz::https://github.com/SimplyJustJessie/simply-lighthouse-manager/archive/refs/tags/v1.1.0.tar.gz
+	source = openvr-2.5.1.tar.gz::https://github.com/ValveSoftware/openvr/archive/refs/tags/v2.5.1.tar.gz
+	sha256sums = fd344ee529e8a3871171b7f1f3e9a9b816205014825e6e4d43de5d1a47b8cfde
+	sha256sums = 54f654fce001682d8ac608f544a6c41e03a672b005c1deca3579fa36480a537c
+
+pkgname = simply-lighthouse-manager

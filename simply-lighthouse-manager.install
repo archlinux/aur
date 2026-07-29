@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+==> To auto-start with SteamVR, run once while SteamVR is running:
+==>     lighthouse-manager --register-manifest
+==> Auto-management is opt-in - pick the stations to manage with:
+==>     lighthouse-manager --manage <id>      (or: --manage-all)
+==> or the Auto checkboxes in: lighthouse-manager-gui
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Registration is picked up in place - no re-registration needed.
+==> Coming from openvr-lighthouse-manager-linux: the old copy under
+==> ~/.local/share/SteamVR/drivers/lighthouse-manager/ is obsolete; the next
+==> `lighthouse-manager --register-manifest` (or auto-launch) re-points
+==> SteamVR at /usr/lib/simply-lighthouse-manager/ automatically.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> If auto-start was enabled, SteamVR will drop the missing entry on its
+==> next start. To remove it explicitly beforehand:
+==>     lighthouse-manager --disable-autolaunch   (before uninstalling)
+EOF
+}
