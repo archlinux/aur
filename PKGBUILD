@@ -29,7 +29,7 @@ build() {
 package() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
