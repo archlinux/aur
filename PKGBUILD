@@ -1,7 +1,7 @@
 # Maintainer: sfn
 
 pkgname=python-pyseq
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Python sequence string module"
 arch=(any)

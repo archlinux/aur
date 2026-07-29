@@ -1,6 +1,6 @@
 pkgbase = python-pyseq
 	pkgdesc = Python sequence string module
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://pyseq.rsgalloway.com/#
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pyseq
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = git
-	source = python-pyseq::git+https://github.com/rsgalloway/pyseq.git#tag=0.9.2
+	source = python-pyseq::git+https://github.com/rsgalloway/pyseq.git#tag=0.9.3
 	sha256sums = SKIP
 
 pkgname = python-pyseq
