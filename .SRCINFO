@@ -1,0 +1,29 @@
+pkgbase = asteroidz-bar
+	pkgdesc = The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/asteroidzman/asteroidz-bar
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = git
+	depends = quickshell
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = cairo
+	depends = wayland
+	depends = gdk-pixbuf2
+	depends = libjxl
+	depends = libavif
+	optdepends = asteroidz: the compositor this draws the bar for
+	optdepends = cava: the media visualiser
+	optdepends = swaync: the notification bell
+	optdepends = pipewire: the volume module
+	optdepends = grim: contrib/parity.sh and contrib/tray-test.sh
+	source = git+https://github.com/asteroidzman/asteroidz-bar.git#tag=0.1.1
+	sha256sums = SKIP
+
+pkgname = asteroidz-bar
