@@ -3,7 +3,7 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst3' 'zl-equalizer-lv2' 'zl-equalizer')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
@@ -14,11 +14,11 @@ depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libp
 makedepends=('git' 'cmake' 'kfr' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/JUCE#tag=542dcc3"
-		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=959ff31")
-sha256sums=('c222c55b4a4f7fc39667d961a5543deca056a71528274b3c50c850bcb260d556'
-            '9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659'
-            'd31d805f958746d375debaa1790712e831c2e428aa693a2220013315ff08a882')
+		"git+https://github.com/ZL-Audio/JUCE#tag=176e410"
+		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=0215d7e")
+sha256sums=('da183e02363f7b027edf7dfd78f13bbe9abfc29466114999fd69def68e20bc6f'
+            'ac62a6e5d36059845cf2ad61b1004b5e2b358604d303894c8ea237269c0d22bd'
+            '471edb86c89d5dc9fd60cb75e2768bfe86b34f7c072f0c9dd5f4c4f18b2e5671')
 
 prepare() {
 	cd ZLEqualizer
