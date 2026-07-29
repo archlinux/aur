@@ -18,7 +18,13 @@ _url_pypi="https://pypi.org/project/${_pypi_package}/"
 _url_github="https://github.com/${_appauthor}/${_appname}"
 url="${_url_github}"
 
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-hatchling'
+  'python-hatch-vcs'
+)
 depends=('python' 'python-pydantic' 'python-pydantic-core')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
