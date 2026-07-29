@@ -1,6 +1,6 @@
 pkgbase = openvox-server
 	pkgdesc = Server automation framework and application
-	pkgver = 8.14.1
+	pkgver = 8.15.2
 	pkgrel = 1
 	url = https://github.com/OpenVoxProject/openvox-server
 	install = openvox-server.install
@@ -25,7 +25,7 @@ pkgbase = openvox-server
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
 	backup = etc/puppetlabs/puppetserver/services.d/ca.cfg
-	source = openvox-server-8.14.1.tar.gz::https://artifacts.voxpupuli.org/openvox-server/8.14.1/openvox-server-8.14.1.tar.gz
-	sha512sums = ea3ca20276cfd79cf438f9ea8109ee04568bdc061e2856b14b2a6018b3fbc54f7d574b7687c2e8eca9f1db158949a14c3e5e193b117af037d474c4a8ed7d0ec9
+	source = openvox-server-8.15.2.tar.gz::https://artifacts.voxpupuli.org/openvox-server/8.15.2/openvox-server-8.15.2.tar.gz
+	sha512sums = d6608696ca642e0dd2c33a35ae6d4c55ceb8c7eefdcdbcebb0ed6cd7e892dfe5fe049649fe5166f8ac601f6eeb6116eeefc8d4dc96ae81a751116bc0f05dd177
 
 pkgname = openvox-server
