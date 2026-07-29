@@ -2,7 +2,7 @@
 
 _pkgbase=pakku-mc
 pkgname="$_pkgbase-bin"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=2
 pkgdesc="Modpack manager for Minecraft: Java Edition"
 arch=('any')
@@ -11,7 +11,7 @@ license=('EUPL-1.2')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase-$pkgver.tar::https://github.com/juraj-hrivnak/Pakku/releases/download/v$pkgver/Pakku-$pkgver.tar")
-sha256sums=('ff8f69eb62edd813965500b0655b4a4efb63b49b37e5979f0a951662bc452a1f')
+sha256sums=('034d4cc2e2c5250320ddd7cc7e6a9c372fb8e5a74d2f3d937c1c489e6c54a3e4')
 depends=('java-runtime-headless=21')
 
 build() {
