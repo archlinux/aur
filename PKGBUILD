@@ -2,13 +2,14 @@
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 pkgname=n-dhcp4
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Host Configuration Protocol for IPv4"
 url="https://github.com/nettools/n-dhcp4"
 license=('Apache-2.0 OR LGPL-2.1-or-later')
 arch=(x86_64)
-depends=(glibc)
-makedepends=(meson pkgconf)
+depends=(glibc libgcc)
+makedepends=(meson ninja pkgconf)
+provides=('libndhcp4.so')
 # c-list/c-siphash/c-stdaux are git submodules; the release tarball ships them
 # empty, so they are fetched at the commits pinned by the v$pkgver tag
 _clist=2e4b605c6217cd3c8a1ef773f82f5cc329ba650d
@@ -42,7 +43,7 @@ build() {
 
 check() {
   if unshare -Urn true 2>/dev/null; then
-    meson test -C build
+    unshare -Urn -- meson test -C build
   else
     meson test -C build --no-suite n-dhcp4
     meson test -C build 'n-dhcp4:API Symbol Visibility' 'n-dhcp4:Message Handling' \

@@ -1,13 +1,16 @@
 pkgbase = n-dhcp4
 	pkgdesc = Dynamic Host Configuration Protocol for IPv4
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nettools/n-dhcp4
 	arch = x86_64
 	license = Apache-2.0 OR LGPL-2.1-or-later
 	makedepends = meson
+	makedepends = ninja
 	makedepends = pkgconf
 	depends = glibc
+	depends = libgcc
+	provides = libndhcp4.so
 	source = n-dhcp4-1.tar.gz::https://github.com/nettools/n-dhcp4/archive/refs/tags/v1.tar.gz
 	source = c-list-2e4b605c6217cd3c8a1ef773f82f5cc329ba650d.tar.gz::https://github.com/c-util/c-list/archive/2e4b605c6217cd3c8a1ef773f82f5cc329ba650d.tar.gz
 	source = c-siphash-7c42c592581906fef19458372b8db2b643278211.tar.gz::https://github.com/c-util/c-siphash/archive/7c42c592581906fef19458372b8db2b643278211.tar.gz
