@@ -1,11 +1,12 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Brian Thompson <brianrobt at pm dot me>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _appauthor="BrianPugh"
 _appname="autoregistry"
 
 pkgname="python-${_appname}"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic registry design-pattern library for mapping string names to code functionality."
 
 _pypi_package=${pkgname##python-}
