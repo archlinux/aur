@@ -1,0 +1,11 @@
+post_install() {
+  if [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; then
+    chmod 0755 /opt/SPlayer/chrome-sandbox
+  else
+    chmod 4755 /opt/SPlayer/chrome-sandbox
+  fi
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,7 @@
+/.aur-repo/
+/.known_hosts
+/.reference-splayer/
+/pkg/
+/src/
+/*.pkg.tar.*
+/splayer-*.pkg.tar.zst

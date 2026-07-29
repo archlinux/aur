@@ -1,0 +1,33 @@
+pkgbase = splayer-forge
+	pkgdesc = SPlayer Forge - 修复播放队列的 SPlayer 社区构建
+	pkgver = 3.1.1
+	pkgrel = 5
+	epoch = 1
+	url = https://github.com/Nk-YMZ/SPlayer-Forge
+	install = splayer-forge.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = libevent
+	depends = libnotify
+	depends = libvips
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	optdepends = libappindicator: 系统托盘图标支持
+	optdepends = mpv: MPV 播放引擎支持
+	provides = splayer=3.1.1
+	conflicts = splayer
+	noextract = splayer-3.1.1-5-x64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = splayer-3.1.1-5-x64.pkg.tar.zst::https://github.com/Nk-YMZ/SPlayer-Forge/releases/download/arch-v3.1.1-5/splayer-3.1.1-x64.pkg.tar.zst
+	sha256sums = 00177ca3220c71c5646aea708ff7fca1bdb5b60f41932bb1669543c3f4afedba
+
+pkgname = splayer-forge
