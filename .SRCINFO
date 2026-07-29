@@ -27,4 +27,4 @@ pkgbase = qtcurve-qt6-git
 	source = git+https://github.com/ixnewton/qtcurve.git#branch=Qt6Curve_version
 	sha256sums = SKIP
 
-pkgname = qt6curve-git
+pkgname = qtcurve-qt6-git
