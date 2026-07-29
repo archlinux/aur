@@ -1,9 +1,9 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=gnome-shell-extension-ai-usage
 _extuuid=ai-usage@gonwex-gmail.com
-_commit=ab8b849
+_commit=7b92925
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI Usage Indicator: Show Codex usage quota and DeepSeek API balance in GNOME top bar"
 arch=('any')
 url="https://github.com/gonwe/gonwe-ai-usage"
