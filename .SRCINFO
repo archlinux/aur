@@ -1,7 +1,7 @@
 pkgbase = krita-vision-tools
-	pkgdesc = Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box.
-	pkgver = 2.0.0
-	pkgrel = 1
+	pkgdesc = Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box. This version works with Krita 6.0 (based on Qt6)
+	pkgver = 3.0.0
+	pkgrel = 3
 	url = https://github.com/Acly/krita-vision-tools
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = krita-vision-tools
 	depends = krita
 	depends = kseexpr
 	conflicts = krita-ai-tools
-	source = https://github.com/Acly/krita-vision-tools/releases/download/v2.0.0/krita_vision_tools-linux-x64-2.0.0.zip
-	sha256sums = 04bcc5877ee9a4bf1aef893267b3539f569a4ae5097d070156915a931cce0d70
+	source = https://github.com/Acly/krita-vision-tools/releases/download/v3.0.0-pre/krita_vision_tools-linux-x64-3.0.0.zip
+	sha256sums = b194ea8caa72f98c5bda907e3bb213cdf1d34c5a9dfd99a8818a052c07e7ca92
 
 pkgname = krita-vision-tools

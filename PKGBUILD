@@ -1,9 +1,9 @@
 # Maintainer: Kelvie Wong <kelvie@kelvie.ca>
 pkgname=krita-vision-tools
-pkgver=2.0.0
-pkgrel=1
+pkgver=3.0.0
+pkgrel=3
 epoch=
-pkgdesc="Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box."
+pkgdesc="Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box. This version works with Krita 6.0 (based on Qt6)"
 arch=( 'x86_64' )
 url="https://github.com/Acly/krita-vision-tools"
 license=('GPL')
@@ -21,8 +21,8 @@ install=
 changelog=
 basefilename=krita_vision_tools
 # e.g. https://github.com/Acly/krita-vision-tools/releases/download/v2.0.0/krita_vision_tools-linux-x64-2.0.0.zip
-source=( "https://github.com/Acly/${pkgname}/releases/download/v${pkgver}/${basefilename}-linux-x64-${pkgver}.zip" )
-sha256sums=('04bcc5877ee9a4bf1aef893267b3539f569a4ae5097d070156915a931cce0d70')
+source=( "https://github.com/Acly/${pkgname}/releases/download/v${pkgver}-pre/${basefilename}-linux-x64-${pkgver}.zip" )
+sha256sums=('b194ea8caa72f98c5bda907e3bb213cdf1d34c5a9dfd99a8818a052c07e7ca92')
 noextract=()
 validpgpkeys=()
 
