@@ -1,7 +1,7 @@
 # Maintainer: OldJobobo <oldjobobo@users.noreply.github.com>
 pkgname=lacuna-shell
-_upstream_version=0.1.0-beta.2
-_source_sha256=7f09b6e01fbed15523abcaba9eb86bce3ad1f4e428130f947fc7fd341501975d
+_upstream_version=0.1.0-beta.3
+_source_sha256=4a2db7cc97225fc8fedfadcf422cae50b5f911cad928c3119ee786771648e7ee
 pkgver=${_upstream_version//-/}
 pkgrel=1
 pkgdesc="Cohesive Lacuna desktop plugins for the Omarchy shell"
