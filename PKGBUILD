@@ -1,7 +1,7 @@
 # Maintainer: Lck0427 <lck0427 at hotmail dot com>
 # Contributor: Lck0427 <lck0427 at hotmail dot com>
 pkgname=comfy-desktop
-pkgver=1.0.29
+pkgver=1.0.31
 pkgrel=1
 pkgdesc="Comfy Desktop is the official desktop application for ComfyUI"
 arch=('x86_64' 'aarch64')
@@ -49,7 +49,7 @@ source=(
   "${pkgname}::git+${url}#tag=v${pkgver}"
   "comfy-desktop.desktop"
 )
-sha256sums=('e7d7b7b9d3be3adfa05e01c3f60c406ea51c9f3a942f7e3c4f87506cc52d2358'
+sha256sums=('78ea4f8b406decbe12bca1a21d22167863d1ba8172433e74f033bf56511848ff'
             '6b7dcfbe0897075d288e844e01f42039158806c50c6ba9f7bf87f315d7cc9c4b')
 build() {
   cd "${srcdir}/${pkgname}"

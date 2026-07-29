@@ -1,6 +1,6 @@
 pkgbase = comfy-desktop
 	pkgdesc = Comfy Desktop is the official desktop application for ComfyUI
-	pkgver = 1.0.29
+	pkgver = 1.0.31
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/Comfy-Desktop
 	arch = x86_64
@@ -40,9 +40,9 @@ pkgbase = comfy-desktop
 	conflicts = comfyui-desktop-2-beta
 	replaces = comfyui-desktop-2-beta
 	options = !strip
-	source = comfy-desktop::git+https://github.com/Comfy-Org/Comfy-Desktop#tag=v1.0.29
+	source = comfy-desktop::git+https://github.com/Comfy-Org/Comfy-Desktop#tag=v1.0.31
 	source = comfy-desktop.desktop
-	sha256sums = e7d7b7b9d3be3adfa05e01c3f60c406ea51c9f3a942f7e3c4f87506cc52d2358
+	sha256sums = 78ea4f8b406decbe12bca1a21d22167863d1ba8172433e74f033bf56511848ff
 	sha256sums = 6b7dcfbe0897075d288e844e01f42039158806c50c6ba9f7bf87f315d7cc9c4b
 
 pkgname = comfy-desktop
