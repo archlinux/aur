@@ -46,8 +46,10 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # ── Install all dependencies (including native addons) ──────
-  pnpm install --frozen-lockfile
+  # pnpm 11 blocks dependency build scripts by default.
+  # Install first without scripts, then rebuild only the native addons.
+  pnpm install --frozen-lockfile --ignore-scripts
+  pnpm rebuild cpu-features esbuild ssh2
 
   # ── Build all apps (API, Tray, Web frontend) ────────────────
   pnpm build
