@@ -1,19 +1,20 @@
-# Maintainer: Alex R <alex at ironrobin dot net>
+# Maintainer: Alois~ <aloisianer@proton.me>
+# Colaborator: Joaquin (Pato) Decima <jdecima@vasak.net.ar>
 
-pkgname=twingate-bin
-_pkgname=twingate
-pkgdesc="Twingate (twingate): Client for providing secure access to private resources for distributed workforces under a zero trust networking model"
-pkgver=0.158.2
-pkgrel=0
-arch=('aarch64' 'x86_64')
-url="https://www.twingate.com/"
-depends=('sudo' 'cryptsetup' 'curl' 'dbus' 'libnl')
+pkgname=twingate
+pkgver=2026.188.6692
+pkgrel=2
+pkgdesc="Zero trust remote access client for resource and networks, based on twingate-bin"
+arch=('x86_64' 'aarch64')
+license=(LicenseRef-Proprietary)
+url="https://twingate.com"
+depends=('systemd' 'cryptsetup' 'dbus')
 install=$pkgname.install
-
-source_aarch64=(twingate_arm64_${pkgver}.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst)
-source_x86_64=(twingate_x64_${pkgver}.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst)
-sha256sums_aarch64=('c574df0f47865a9fb0643d1c84520ccde9323afaace888c2220f729d86ab14b3')
-sha256sums_x86_64=('eebba3cffb868ce93c486377c93731c2a53339eb12f6ede9eb92df27e462ac98')
+noextract=(twingate-${pkgver}-${CARCH}.tar.zst)
+source_x86_64=(twingate-${pkgver}-x86_64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst)
+source_aarch64=(twingate-${pkgver}-aarch64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst)
+sha256sums_x86_64=('7b1a3fc6ada23940d6df45d2521143d46ceb0c91797c0959c4621656f7d25ae1')
+sha256sums_aarch64=('170f7d2904b0fa5495d9f8bda341679928f68363ef7d47faac1131e25d0b549d')
 
 package() {
   install -d "${pkgdir}/var/lib/${_pkgname}"
