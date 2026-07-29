@@ -3,7 +3,7 @@
 # Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=docsify-cli
-pkgver=4.4.4
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A magical documentation generator"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=('npm')
 provides=('docsify')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('d8b2a3b6e736b6999534bad0b717958b1c5dd3df392498c030971b342de7c565')
+sha256sums=('41fa9c811081d41a681095f4dcd2281170bf880bd8fbf9f1e92dffd278753365')
 options=(!strip)
 
 package() {
