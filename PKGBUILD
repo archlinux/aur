@@ -1,7 +1,7 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
 pkgver=1.0.32
-pkgrel=1
+pkgrel=2
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
 pkgdesc="A dynamic island for Hyprland and niri using Quickshell"
@@ -47,7 +47,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6c2d828853e70e122cb1e74584fe6c2237ad293c7e29dcd8c1e6b48f89d8b4d9')
+sha256sums=('b4ce742c5fbeeda4a02443223eddccbb0c10764f9405b5bad336198b4901a090')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
