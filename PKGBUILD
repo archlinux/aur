@@ -3,7 +3,7 @@
 
 pkgname=libarchive-static
 _pkgname=libarchive
-pkgver=3.8.8
+pkgver=3.8.9
 pkgrel=1
 _attrver=2.5.2
 _aclver=2.3.2
@@ -23,7 +23,7 @@ validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <mart
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}"
        "libarchive-3.8.3-all-static.patch")
 
-sha512sums=('9397f3f00d590c079518b48b6d6da40e2cb0fb5f115457a4f334b41d202fabffad2e1c7bcf93162a6e55c7abe02f798906667cbdd8df738de8795c593d7adbfe'
+sha512sums=('b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7fee744dc19bec6baee85b9caef042c9aaffc07c152b3be076eccb2dedb7ea6'
             '8478795f3d980073128c31ddd388a113c55d7d2ecc60ccb0488edf5b34d5156f5e773d62a61083dedd5333ef71613d5af619e1dcf2d9acea372c76746b16f879'
             'f587ea544effb7cfed63b3027bf14baba2c2dbe3a9b6c0c45fc559f7e8cb477b3e9a4a826eae30f929409468c50d11f3e7dc6d2500f41e1af8662a7e96a30ef3'
             'SKIP'
@@ -78,7 +78,7 @@ validpgpkeys+=('8657ABB260F056B1E5190839D9C4D26D0E604491'
 
 validpgpkeys+=('8657ABB260F056B1E5190839D9C4D26D0E604491'  # Matt Caswell <matt@openssl.org>
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'   # Matt Caswell <matt@openssl.org>
-              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'   # Tomá? Mráz <tm@t8m.info>
+              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'   # Tomï¿½? Mrï¿½z <tm@t8m.info>
               'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')  # OpenSSL security team key
 # zlib
 source+=("https://zlib.net/zlib-${_zlibver}.tar.gz"{,.asc})
