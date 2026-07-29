@@ -1,6 +1,6 @@
 pkgbase = chowkick-bin
 	pkgdesc = Kick synthesizer based on old-school drum machine circuits
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://chowdsp.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = chowkick-bin
 	depends = freetype2
 	depends = alsa-lib
 	conflicts = chowkick.lv2-git
-	source = https://github.com/Chowdhury-DSP/ChowKick/releases/download/v1.1.1/ChowKick-Linux-x64-1.1.1.deb
-	sha256sums = 06da605ff68b42cdb7dcad4fa2601d3e6f4287507f281396af20d5ac3205ff97
+	source = https://github.com/Chowdhury-DSP/ChowKick/releases/download/v1.2.0/ChowKick-Linux-x64-1.2.0.deb
+	sha256sums = 2c1328c65bd4af1c188f96d088d71527eccbdc5c434cafe57c8352f53969bb2f
 
 pkgname = chowkick-bin
