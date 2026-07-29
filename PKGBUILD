@@ -5,7 +5,7 @@
 pkgname=gpgme-1
 _pkgname=gpgme
 pkgver=1.24.3
-pkgrel=4
+pkgrel=5
 pkgdesc='C wrapper library for GnuPG - 1.x'
 arch=('x86_64' 'pentium4' 'i686' 'i486')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -35,7 +35,7 @@ provides=('libgpgme.so')
 options=('!emptydirs')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
-source=("git+https://dev.gnupg.org/source/gpgme.git#tag=${_pkgname}-${pkgver}?signed"
+source=("git+https://github.com/gpg/gpgme.git#tag=${_pkgname}-${pkgver}?signed"
         '0025_debian_default_is_openpgp.diff')
 sha256sums=('630d7301a614bf22916cecdb78bbb34ea1dd724071a9ea9aee67aab06ba3dea1'
             'f8bdaba4732347067ce291ca2acd6096e7a02c162a760be3515e0c4cdac60d6f')
