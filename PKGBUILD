@@ -2,7 +2,7 @@
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
 pkgname=yascreen
-pkgver=2.11
+pkgver=2.14
 pkgrel=1
 pkgdesc="Yet Another Screen Library (lib(n)curses alternative)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
