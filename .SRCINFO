@@ -1,7 +1,7 @@
 pkgbase = cashlyctl-git
 	pkgdesc = Terminal operations console and CLI for Cashly/DealSense deployments
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goCashly/cashlyctl
 	arch = any
 	license = custom
