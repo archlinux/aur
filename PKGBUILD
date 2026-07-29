@@ -1,87 +1,125 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
-pkgname=shelly-gnome
-pkgver=2.4.1.2.gnome1
+# Upstream Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
+# Upstream Maintainer: Caroline Snyder <hirpeng@gmail.com>
+pkgbase=shelly-gnome
+pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
+pkgver=3.0.0+9.gnome1
 pkgrel=1
-pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
 license=('GPL-3.0-only')
-provides=('shelly')
-conflicts=('shelly' 'shelly-bin' 'shelly-git')
-depends=(
-    'pacman'
-    'gtk4'
-    'libadwaita'
-    'glib2'
-    'sudo'
-    'tar'
-    'bash'
-    'git'
-    'hicolor-icon-theme'
-    'dbus'
-    'glibc'
-    'libarchive'
-    'dconf'
-    'gnupg'
-    'zstd'
-    'json-glib'
-)
-optdepends=(
-    'flatpak: For supporting flatpak implementation.'
-    'fish: Fish shell completions'
-    'zsh: Zsh shell completions'
-    'libstarfish: dependency viewer for arch packages'
-)
-makedepends=('dotnet-sdk-10.0' 'clang' 'gettext' 'vala' 'meson' 'ninja')
+makedepends=('git' 'zig>=0.16' 'clang' 'gettext' 'vala' 'meson' 'ninja' 'flatpak')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
+# Source tarball from GitHub release
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('d9eacc8ba2725f417768bfd23cd582c62bbc5c793d5a67ab24744df4da95807a')
+sha256sums=('d1d6c50f39d3b32412b6c4f27aeabad417a156271d313629fcb7670edbef50c0')
+_source_dir="Shelly-ALPM-GNOME-${pkgver}"
 
 build() {
-  cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
+  cd "$srcdir/${_source_dir}"
 
-  dotnet publish Shelly.Cli/Shelly.Cli.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
-  dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  (cd Shelly.Flatpak.Backend && zig build --verbose \
+    --prefix "${srcdir}/${_source_dir}/out-flatpak-backend" \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSafe)
+
+  (cd Shelly.Ui.Gtk && zig build --verbose \
+    --prefix "${srcdir}/${_source_dir}/out" \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    -Dflatpak-backend-package=shelly-gnome-flatpak-backend \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSafe)
+
+  (cd Shelly.Cli.Zig && zig build --verbose \
+    --prefix "${srcdir}/${_source_dir}/out-cli" \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSmall)
+
+  (cd Shelly.Key && zig build --verbose \
+    --prefix "${srcdir}/${_source_dir}/out-key" \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSmall)
+
   meson setup --prefix=/usr build-notify Shelly.Notifications
   meson compile -C build-notify
-  dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
 
-  # Generate shell completions from the freshly built CLI binary
-  ./out-cli/shelly completions fish > shelly.fish
-  ./out-cli/shelly completions zsh  > _shelly
+  ./out-cli/bin/shelly utility --completions bash > shelly.bash
+  ./out-cli/bin/shelly utility --completions fish > shelly.fish
+  ./out-cli/bin/shelly utility --completions zsh  > _shelly
 
-  # Compile translations
-  for po_file in Shelly.Gtk/po/*.po; do
-    if [ -f "$po_file" ]; then
-      lang=$(basename "$po_file" .po)
-      msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
-    fi
+  for po_file in Shelly.Ui.Gtk/po/*.po; do
+    [ -f "$po_file" ] || continue
+    lang=$(basename "$po_file" .po)
+    msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
   done
 
-  # Compile tray service translations
-    for po_file in Shelly.Notifications/po/*.po; do
-      if [ -f "$po_file" ]; then
-        lang=$(basename "$po_file" .po)
-        msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
-      fi
-    done
+  for po_file in Shelly.Notifications/po/*.po; do
+    [ -f "$po_file" ] || continue
+    lang=$(basename "$po_file" .po)
+    msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
+  done
 }
 
-package() {
-  cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
+check() {
+  cd "$srcdir/${_source_dir}"
 
-  # Install Shelly.Gtk binary
-  install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
+  (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache")
+  (cd Shelly.PackageManager && zig build flatpak-test \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache")
+  (cd Shelly.Cli.Zig && zig build test \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache")
+  scripts/check-flatpak-separation.sh \
+    out-cli/bin/shelly \
+    out-flatpak-backend/lib/libshelly-flatpak-backend.so.1
+}
 
-  # Install Shelly-Notifications binary
+package_shelly-gnome() {
+  pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
+  provides=('shelly')
+  conflicts=('shelly' 'shelly-bin' 'shelly-git')
+  depends=(
+      'pacman'
+      'gtk4'
+      'libadwaita'
+      'glib2'
+      'sudo'
+      'tar'
+      'bash'
+      'git'
+      'hicolor-icon-theme'
+      'dbus'
+      'glibc'
+      'libarchive'
+      'dconf'
+      'gnupg'
+      'zstd'
+      'json-glib'
+  )
+  optdepends=(
+      'fish: Fish shell completions'
+      'zsh: Zsh shell completions'
+      'libstarfish: dependency viewer for arch packages'
+      'shelly-gnome-flatpak-backend: Flatpak package management support'
+      'fuse2: run AppImages that require FUSE 2'
+  )
+
+  cd "$srcdir/${_source_dir}"
   install -Dm755 build-notify/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
-
-  # Install Shelly.Cli binary
-  install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
-
-  # Install Shelly.Keys binary
-  install -Dm755 out-keys/shelly-keys "$pkgdir/usr/bin/shelly-keys"
+  install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
+  install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
+  install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
 
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
@@ -95,6 +133,7 @@ Categories=System;Utility;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
 Terminal=false
+X-GNOME-UsesNotifications=true
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
 [Desktop Action FlatpakInstall]
@@ -153,18 +192,15 @@ EOF
 EOF
 
   # Install icon
-  install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
-  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
-  install -Dm644 Shelly.Gtk/Assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
-  install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/shelly-updates-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
-  install -Dm644 Shelly.Gtk/Assets/svg/shelly-shell-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
+  install -Dm644 assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
+  install -Dm644 assets/shelly-updates-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
+  install -Dm644 assets/shelly-shell-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
 
-  # Install fish shell completions
+  install -Dm644 assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
+  install -Dm644 assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
+
+  install -Dm644 shelly.bash "$pkgdir/usr/share/bash-completion/completions/shelly"
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
-
-  # Install zsh shell completions
   install -Dm644 _shelly "$pkgdir/usr/share/zsh/site-functions/_shelly"
 
   # Install translations
@@ -228,4 +264,18 @@ done
 update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
 echo "Flatpak desktop entries patched with Shelly integration."
 SCRIPT
+}
+
+package_shelly-gnome-flatpak-backend() {
+  pkgdesc="Optional native Flatpak backend for Shelly for GNOME"
+  depends=("shelly-gnome=${pkgver}-${pkgrel}" 'flatpak')
+  provides=("shelly-flatpak-backend=${pkgver}")
+  conflicts=('shelly-flatpak-backend' 'shelly-flatpak-backend-git' 'shelly-flatpak-backend-bin')
+
+  cd "$srcdir/${_source_dir}"
+  install -Dm755 \
+    out-flatpak-backend/lib/libshelly-flatpak-backend.so.1.0.0 \
+    "$pkgdir/usr/lib/shelly/libshelly-flatpak-backend.so.1.0.0"
+  ln -s libshelly-flatpak-backend.so.1.0.0 \
+    "$pkgdir/usr/lib/shelly/libshelly-flatpak-backend.so.1"
 }
