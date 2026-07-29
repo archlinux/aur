@@ -19,15 +19,15 @@ options=('!strip')
 
 source_x86_64=(
     "${pkgname}-${pkgver}-linux_amd64::https://github.com/Fahry-a/odm/releases/download/v${pkgver}/odm_${pkgver}_linux_amd64"
-    "${pkgname}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
-    "${pkgname}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
-    "${pkgname}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
+    "${pkgname}-${pkgver}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
+    "${pkgname}-${pkgver}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
+    "${pkgname}-${pkgver}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
 )
 source_aarch64=(
     "${pkgname}-${pkgver}-linux_arm64::https://github.com/Fahry-a/odm/releases/download/v${pkgver}/odm_${pkgver}_linux_arm64"
-    "${pkgname}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
-    "${pkgname}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
-    "${pkgname}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
+    "${pkgname}-${pkgver}.1::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/docs/odm.1"
+    "${pkgname}-${pkgver}.conf.example::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/configs/odm.conf.example"
+    "${pkgname}-${pkgver}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
 )
 
 sha256sums_x86_64=('503fa4908c4a882d63c9a9f05d1de26aa972001a23451af0e1b622a24f9b1bd5'
@@ -47,8 +47,8 @@ package() {
     esac
     install -Dm755 "$srcdir/$_bin" "$pkgdir/usr/bin/odm"
 
-    install -Dm644 "$srcdir/${pkgname}.1" "$pkgdir/usr/share/man/man1/odm.1"
-    install -Dm644 "$srcdir/${pkgname}.conf.example" "$pkgdir/etc/odm/config.conf.example"
-    install -Dm644 "$srcdir/${pkgname}.conf.example" "$pkgdir/etc/odm/config.conf"
-    install -Dm644 "$srcdir/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/odm.service"
+    install -Dm644 "$srcdir/${pkgname}-${pkgver}.1" "$pkgdir/usr/share/man/man1/odm.1"
+    install -Dm644 "$srcdir/${pkgname}-${pkgver}.conf.example" "$pkgdir/etc/odm/config.conf.example"
+    install -Dm644 "$srcdir/${pkgname}-${pkgver}.conf.example" "$pkgdir/etc/odm/config.conf"
+    install -Dm644 "$srcdir/${pkgname}-${pkgver}.service" "$pkgdir/usr/lib/systemd/system/odm.service"
 }
