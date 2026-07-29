@@ -87,9 +87,9 @@ pkgbase = cinnamon-aliveos
 	source = cinnamon.session
 	source = gwl-grouping-heuristics.patch
 	source = inline-reply-notifications.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224
+	sha256sums = 1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255
+	sha256sums = f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a
+	sha256sums = a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e
 
 pkgname = cinnamon-aliveos

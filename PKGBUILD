@@ -39,10 +39,10 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'cinnamon.session'
         'gwl-grouping-heuristics.patch'
         'inline-reply-notifications.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
+            '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
+            'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
+            'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e')
 
 # Disable strip and debug to speed up repackaging
 options=('!strip' '!debug' 'emptydirs')
