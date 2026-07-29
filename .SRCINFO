@@ -1,0 +1,15 @@
+pkgbase = vlink-git
+	pkgdesc = Portable linker for multiple file formats (git version)
+	pkgver = 0.18a.r0.g432290d
+	pkgrel = 1
+	url = https://github.com/siemens-mobile-hacks/vlink
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = vlink
+	conflicts = vlink
+	source = git+https://github.com/siemens-mobile-hacks/vlink.git
+	sha256sums = SKIP
+
+pkgname = vlink-git
