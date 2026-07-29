@@ -1,0 +1,22 @@
+pkgbase = ip-watch-bin
+	pkgdesc = Keep cloud-provider IP ranges applied to your webserver/firewall
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/rezmoss/ip-watch
+	license = MIT
+	conflicts = ip-watch
+	provides = ip-watch
+	arch = aarch64
+	source_aarch64 = https://github.com/rezmoss/ip-watch/releases/download/v0.0.6/ip-watch_0.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = f2851e169ce2a0af96635d0daa87352f6e6674c404fe333275f78895c09d223d
+	arch = armv7h
+	source_armv7h = https://github.com/rezmoss/ip-watch/releases/download/v0.0.6/ip-watch_0.0.6_linux_armv7.tar.gz
+	sha256sums_armv7h = 12fc590375f40eb383c96a2661c16ad7113d2e1555923325e0cf900ed9531367
+	arch = i686
+	source_i686 = https://github.com/rezmoss/ip-watch/releases/download/v0.0.6/ip-watch_0.0.6_linux_i386.tar.gz
+	sha256sums_i686 = 5b2b3751bd97fca2b18c03a1ee43349567f180aba237f63d8f371ed445d0035b
+	arch = x86_64
+	source_x86_64 = https://github.com/rezmoss/ip-watch/releases/download/v0.0.6/ip-watch_0.0.6_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a14cff8e3a7c6ea3d9f3ea20a3485e82669ec28860b434bf47f2ea789fdc8f3a
+	
+pkgname = ip-watch-bin
