@@ -1,6 +1,6 @@
 pkgname=sdroxide-soapysdr
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -35,7 +35,7 @@ options=('!lto')
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
 source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz")
-sha256sums=('4dc631106ff3c568263edc6bd533d7fa2dbd8d13a1db761818af0fde642aa529'
+sha256sums=('b9599e1104bcb9ec4d212ea46c59f36e63160276149102b3a4836e18897a2125'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd')
 
 prepare() {
