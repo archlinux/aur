@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgbase=dcpomatic
-pkgver=2.18.43
+pkgver=2.18.45
 provides=('dcpomatic')
 conflicts=('dcpomatic')
 pkgrel=1
@@ -12,11 +12,11 @@ arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
 license=('GPL-2.0-or-later')
-depends=('libsub>=1.6.61' 'libcxml>=0.17.17' 'libdcp>=1.10.58' 'ffmpeg>=7.0' 'glib2' 'glu' 'icu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea' 'xerces-c' 'libxml++2.6' 'gtkmm3' 'cairomm')
+depends=('libsub>=1.6.62' 'libcxml>=0.17.17' 'libdcp>=1.10.59' 'libttf>=0.0.6' 'ffmpeg>=7.0' 'glib2' 'glu' 'icu' 'imagemagick' 'libssh' 'libharu' 'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r13.gd75d0af' 'xerces-c' 'libxml++2.6' 'gtkmm3' 'cairomm')
 makedepends=('python' 'which' 'boost>=1.91.0' 'git' )
 source=("${pkgname}::git+https://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
 
-sha256sums=('0a9c75c1987f2f0254ee057a183755b6391a171a7c720f285b761336b51f3f9d')
+sha256sums=('8010b45ff89f92e0dc7f20be6c70367b7a40767be3d0bc3a58228c3c3268fff2')
 
 # Pull fixes until new major release is available
 _cherry_picks=()
