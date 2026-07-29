@@ -1,6 +1,6 @@
 pkgbase = plasmazones-bin
 	pkgdesc = Window tiling and autotiling for KDE Plasma (binary)
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
@@ -22,7 +22,7 @@ pkgbase = plasmazones-bin
 	provides = plasmazones
 	conflicts = plasmazones
 	conflicts = plasmazones-git
-	source = plasmazones-bin-3.3.1.tar.gz::https://github.com/fuddlesworth/PlasmaZones/releases/download/v3.3.1/plasmazones-3.3.1-linux-x86_64.tar.gz
-	sha256sums = 0b41ffd276019bba46ea91e71c32fbfdbee2f292c9a23f8913b60ebad51a9f39
+	source = plasmazones-bin-3.3.2.tar.gz::https://github.com/fuddlesworth/PlasmaZones/releases/download/v3.3.2/plasmazones-3.3.2-linux-x86_64.tar.gz
+	sha256sums = 896ffdc24e4487cc4aef8a4751f44fd637869c1e616db2bec7f6dbe9852f7845
 
 pkgname = plasmazones-bin
