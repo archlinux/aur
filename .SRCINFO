@@ -1,12 +1,11 @@
-pkgbase = speakoflow-appimage
-	pkgdesc = SpeakoFlow is a free, open-source, local-first voice-to-text desktop application with offline speech recognition, AI-assisted writing, speech cleanup, translation, and a system-wide voice assistant. Learn more at https://www.speakoflow.com/
+pkgbase = speakoflow-bin
+	pkgdesc = A free, open-source, local-first voice-to-text desktop application with offline speech recognition, AI-assisted writing, speech cleanup, translation, and a system-wide voice assistant.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AbhishekBarali/SpeakoFlow
 	arch = x86_64
 	license = MIT
-	provides = speakoflow-appimage
-	conflicts = speakoflow-bin
+	provides = speakoflow-bin
 	conflicts = speakoflow-git
 	conflicts = speakoflow
 	options = !strip
@@ -14,4 +13,4 @@ pkgbase = speakoflow-appimage
 	source = SpeakoFlow_1.0.2_amd64.AppImage::https://github.com/AbhishekBarali/SpeakoFlow/releases/download/v1.0.2/SpeakoFlow_1.0.2_amd64.AppImage
 	sha256sums = c7fa361909f076ab7cdd45a8069ff34b84d54e41d3b5a6482c5acf178578c9e6
 
-pkgname = speakoflow-appimage
+pkgname = speakoflow-bin
