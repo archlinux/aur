@@ -9,6 +9,7 @@ depends=('glibc' 'gcc-libs' 'alsa-lib')
 makedepends=('cargo' 'zig' 'odin' 'git')
 provides=("livekit-tui-client")
 conflicts=("livekit-tui-client")
+options=('!lto')
 source=("git+https://github.com/TatsuyaM2667/livekit-tui-client.git")
 md5sums=('SKIP')
 

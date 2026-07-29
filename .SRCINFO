@@ -14,6 +14,7 @@ pkgbase = livekit-tui-client-git
 	depends = alsa-lib
 	provides = livekit-tui-client
 	conflicts = livekit-tui-client
+	options = !lto
 	source = git+https://github.com/TatsuyaM2667/livekit-tui-client.git
 	md5sums = SKIP
 
