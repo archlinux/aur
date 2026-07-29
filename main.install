@@ -1,0 +1,20 @@
+pre_install() {
+	useradd -d /var/opt/inventree/ inventree
+	install -o inventree -Dm755 -d /var/opt/inventree/
+	install -o inventree -Dm755 -d /var/opt/inventree/config
+	# this is written to during `invoke install`. don't ask me, fam
+	install -o inventree -Dm644 /dev/null /opt/inventree/src/backend/InvenTree/InvenTree/licenses.txt
+}
+
+post_install() {
+	echo 'running inventree "installer"…'
+	su -Plc 'cd /opt/inventree/ && invoke install --skip-plugins' inventree
+	echo 'Please follow the instructions on the page linked below to set up your database and such:' >&2
+	echo '    https://docs.inventree.org/en/stable/start/install/#create-database' >&2
+}
+
+post_remove() {
+	echo "don't forget to clean up /var/opt/inventree as well as your database(s)" >&2
+}
+
+# TODO: run migrations on upgrade
