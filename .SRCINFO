@@ -26,7 +26,7 @@ pkgbase = inventree-git
 	source = env.sh
 	sha256sums = SKIP
 	sha256sums = 37fcef1d112c92112d5e20f00567be34a759d9b590582be8c240fbdfeb302a22
-	sha256sums = 19f0779fcfceb9ed4f7b41c087a7f50d2fae0cc1e08e4dbb9962902785e1daf3
+	sha256sums = efe2da3d37adde1456fd3d36219ff0d662722ab461b950945829892cf38b4d11
 	sha256sums = 2783d57f4f9f34c3b33395c78c8c926e9bd2a780e91e29bb92796424784d8c10
 
 pkgname = inventree-git
