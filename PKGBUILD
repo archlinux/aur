@@ -1,4 +1,4 @@
-# Maintainer: Venomtek <your-email@example.com>
+# Maintainer: Mr.Wizard <process-pylon-62 at icloud.com>
 pkgname=baresip-qt
 pkgver=4.10.0_qt.1
 pkgrel=1
