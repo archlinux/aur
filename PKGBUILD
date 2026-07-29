@@ -5,8 +5,8 @@
 # ═══════════════════════════════════════════════════════════════
 #
 # Before publishing to AUR:
-#   1. Create a signed tag:  git tag -s v0.1.1 -m "v0.1.1"
-#   2. Push the tag:         git push origin v0.1.1
+#   1. Create a signed tag:  git tag -s v0.1.2 -m "v0.1.2"
+#   2. Push the tag:         git push origin v0.1.2
 #   3. Generate .SRCINFO:    makepkg --printsrcinfo > .SRCINFO
 #   4. Submit to AUR via     git clone aur@aur.archlinux.org:chest-backup.git
 #      the AUR repo (not
@@ -18,8 +18,8 @@
 # and the build()/package() functions use $srcdir/$pkgname.
 
 pkgname=chest-backup
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brankosimic/chest-backup"
