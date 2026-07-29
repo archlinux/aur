@@ -1,6 +1,6 @@
 pkgbase = keydous-linux
 	pkgdesc = Linux bridge for configuring Keydous keyboards with the official web driver
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Arrelin/keydous-linux
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = keydous-linux
 	depends = gcc-libs
 	depends = hidapi
 	depends = systemd-libs
-	source = keydous-linux-0.1.1.tar.gz::https://github.com/Arrelin/keydous-linux/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9a9c2be406d5d02eff183af3ff82893284089d409d2b419de4e3992137f97410
+	source = keydous-linux-0.1.2.tar.gz::https://github.com/Arrelin/keydous-linux/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 8734268b37960212400d6a8ab45acaad588eba6de25fbb1a3804dcaf19daaae0
 
 pkgname = keydous-linux

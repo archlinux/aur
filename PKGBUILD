@@ -1,5 +1,5 @@
 pkgname=keydous-linux
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Linux bridge for configuring Keydous keyboards with the official web driver'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'hidapi' 'systemd-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a9c2be406d5d02eff183af3ff82893284089d409d2b419de4e3992137f97410')
+sha256sums=('8734268b37960212400d6a8ab45acaad588eba6de25fbb1a3804dcaf19daaae0')
 
 prepare() {
   cd "$pkgname-$pkgver"
