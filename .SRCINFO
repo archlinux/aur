@@ -1,6 +1,6 @@
 pkgbase = linux-soundboard-git
 	pkgdesc = Native Linux soundboard with full Wayland/X11 support and virtual microphone support
-	pkgver = 2.2.0.r154.g5b43138
+	pkgver = 2.2.1.r158.gbd0e3a6
 	pkgrel = 1
 	url = https://github.com/germanua/Linux-SoundBoard
 	install = linux-soundboard-git.install
