@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=offlineimap3-git
-pkgver=8.0.0.r38.gd29a4dc
+pkgver=8.0.3.r0.g0eac4e8
 pkgrel=1
 pkgdesc="Read/sync your IMAP mailboxes (python3)"
 arch=("any")
@@ -11,7 +11,7 @@ depends=(
     "python-rfc6555"
     "python-distro"
 )
-makedepends=("asciidoc")
+makedepends=("asciidoc" "python-build" "python-installer" "python-setuptools" "python-wheel")
 optdepends=(
     "python-gssapi: for Kerberos authentication"
     "python-portalocker: if you need to run offlineimap in Cygwin for Windows"
@@ -32,8 +32,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    make clean
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     cd "${srcdir}/${pkgname}/docs"
     make man
@@ -41,7 +40,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     # install README
     install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
