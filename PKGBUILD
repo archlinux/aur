@@ -1,4 +1,4 @@
-# Maintainer: Based on core/glibc, synced on 2026-07-26
+# Maintainer: Based on core/glibc, synced on 2026-07-29
 export LDFLAGS+=" -Wl,--hash-style=both"
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
@@ -6,9 +6,9 @@ export LDFLAGS+=" -Wl,--hash-style=both"
 
 pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac)
-pkgver=2.44+r3+g0b05bc142249
-_commit=0b05bc142249ac47e72be5cad5c37f33f4bb68d4
-pkgrel=2
+pkgver=2.44+r5+g7cba77790f32
+_commit=7cba77790f3279bec3ac20e9c7632b021cd53f95
+pkgrel=1
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/libc'
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
@@ -37,7 +37,7 @@ source=(
 )
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-b2sums=('43cfed60ea2fd6f560be0dc0cea5fce8accaa8dde30f80a9c5a0cb57f82968e7c59dae21520c2a9eca9097e75a28af57e5a988c5e47889cb90e3d4831821bf83'
+b2sums=('c93da960127f2fe11dbd015b3ff46896393b5d13cf297ab2d20412b28514626a4e0bb8f99ae95807b447f56ec303d8c6c83af4f061b30c4a944712bdba42a388'
         'c859bf2dfd361754c9e3bbd89f10de31f8e81fd95dc67b77d10cb44e23834b096ba3caa65fbc1bd655a8696c6450dfd5a096c476b3abf5c7e125123f97ae1a72'
         'bdc313a77d7158768b06864fdee6419b25f9eda5b942a394713bf61e289a37993d003c779761be4a70d9febeee2377ba2912f459e879801e3d80f4d0550a2592'
         '7c265e6d36a5c0dff127093580827d15519b6c7205c2e1300e82f0fb5b9dd00b6accb40c56581f18179c4fbbc95bd2bf1b900ace867a83accde0969f7b609f8a'
@@ -230,10 +230,10 @@ package_glibc-eac() {
 }
 
 package_lib32-glibc-eac() {
-  provides=(lib32-glibc)
+  provides=("lib32-glibc=$pkgver")
   conflicts=(lib32-glibc)
   pkgdesc='GNU C Library with DT_HASH enabled (32-bit)'
-  depends=("glibc-eac=$pkgver")
+  depends=("glibc=$pkgver")
   options+=('!emptydirs')
   arch=(x86_64)
 
@@ -261,8 +261,10 @@ package_lib32-glibc-eac() {
 }
 
 _package_glibc-locales() {
+  provides=("glibc-locales=$pkgver")
+  conflicts=(glibc-locales)
   pkgdesc='Pregenerated locales for GNU C Library with DT_HASH enabled'
-  depends=("glibc-eac=$pkgver")
+  depends=("glibc=$pkgver")
 
   cp -r locales/* -t "${pkgdir}"
   rm -r "${pkgdir}"/usr/lib/locale/C.utf8
