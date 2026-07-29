@@ -1,6 +1,6 @@
 pkgbase = clipboard-transformer-bin
 	pkgdesc = Rule-based clipboard transformer (prebuilt)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jag-k/clipboard-transformer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clipboard-transformer-bin
 	provides = clipboard-transformer
 	conflicts = clipboard-transformer
 	options = !debug
-	source = clipboard-transformer-0.1.1-x86_64.tar.gz::https://github.com/jag-k/clipboard-transformer/releases/download/v0.1.1/clipboard-transformer-app_0.1.1_x86_64.tar.gz
-	sha256sums = 6fff7a7a6b3df0f780e19cc36ecdd2f603af96f1cd6c550803648b93d66731d4
+	source = clipboard-transformer-0.1.2-x86_64.tar.gz::https://github.com/jag-k/clipboard-transformer/releases/download/v0.1.2/clipboard-transformer-app_0.1.2_x86_64.tar.gz
+	sha256sums = ab40fa72379589cc1bfae6b23c3ab218ed7364e2d906bbc195e5e4b4b4f2b258
 
 pkgname = clipboard-transformer-bin
