@@ -32,29 +32,46 @@ post_install() {
 	sudo systemctl enable acore-world-server.service
 	sudo systemctl enable mysqld.service
 
-  	# Display some instructions
+	# Display some instructions
 	echo ''
 	echo ''
 	echo '#####################  IMPORTANT  #####################'
 	echo ''
-	echo "The installation has finished. please, follow these steps to connect to the server:"
-
-	echo ' TO BE FILLED IN'
-
+	echo 'The installation has finished!'
 	echo ''
+	echo 'Configuration files:'
+	echo '  - /etc/azerothcore/authserver.conf'
+	echo '  - /etc/azerothcore/worldserver.conf'
 	echo ''
-	echo "#######################  NOTES  #######################"
-
+	echo 'Executables and runtime files:'
+	echo '  - /usr/share/azerothcore/'
 	echo ''
-	echo "the server is already running. If you reboot the computer, the server will also automatically run on boot (you can disable this by running 'sudo systemctl disable acore-{auth,world}-server.service')"
-
+	echo 'MySQL note:'
+	echo '  - Make sure MySQL is configured and running before using the services.'
 	echo ''
+	echo 'Enable and start services automatically:'
+	echo '  - sudo systemctl enable --now acore-auth-server.service'
+	echo '  - sudo systemctl enable --now acore-world-server.service'
 	echo ''
-	echo "a list of GM commands is available on this link: https://www.azerothcore.org/wiki/gm-commands"
-
+	echo 'Check service status:'
+	echo '  - sudo systemctl status acore-auth-server.service'
+	echo '  - sudo systemctl status acore-world-server.service'
 	echo ''
+	echo 'Check service logs:'
+	echo '  - sudo journalctl -u acore-auth-server.service -f'
+	echo '  - sudo journalctl -u acore-world-server.service -f'
 	echo ''
-	echo 'the server may take some time to fully boot up, so if you can login, but is stuck at realm selection screen, maybe the server is still booting up, in this case just wait a few minutes and try again'
+	echo 'The servers are started with tmux. To connect to one of them and issue commands:'
+	echo '  - tmux attach -t acore-auth'
+	echo '  - tmux attach -t acore-world'
+	echo ''
+	echo 'To disconnect, press Ctrl+b, then d.'
+	echo ''
+	echo 'Map data:'
+	echo '  - Either extract the map data manually using the guide at:'
+	echo '    https://www.azerothcore.org/wiki/linux-server-setup'
+	echo '  - Or install the AUR package:'
+	echo '    yay -S azerothcore-clientdata'
 }
 
 post_upgrade() {
