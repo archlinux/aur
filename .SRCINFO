@@ -1,7 +1,7 @@
 pkgbase = steamdepotdownloadergui
 	pkgdesc = Downgrade Steam games to older versions with ease using DepotDownloader
-	pkgver = 3.2.0
-	pkgrel = 3
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://github.com/mmvanheusden/SteamDepotDownloaderGUI
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,8 @@ pkgbase = steamdepotdownloadergui
 	depends = glib2
 	depends = pango
 	depends = bash
-	source = https://github.com/mmvanheusden/SteamDepotDownloaderGUI/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = 9605010e33a37ea965e5e5e0c271b4b283a58f22492c5bafb01b72e03af3daee
+	depends = dbus
+	source = https://github.com/mmvanheusden/SteamDepotDownloaderGUI/archive/refs/tags/v3.2.1.tar.gz
+	sha256sums = 603878856f8365f53514c93bad4b67871166680419461c67b7a50f7c230c24c9
 
 pkgname = steamdepotdownloadergui
