@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=SnapCap
-Comment=A lightweight screenshot capture tool for Wayland (wlroots)
+Comment=Screenshot capture tool for Wayland (wlroots)
 Categories=Utility;Graphics;
 Icon=snapcap
 Exec=snapcap
 Terminal=false
+StartupNotify=true
