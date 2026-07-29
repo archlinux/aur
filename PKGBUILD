@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-terminal
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Agentics Terminal - the voice-reactive terminal, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('agentics')
 options=('!strip' '!debug')
-source=("agentics-terminal-0.1.4-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-terminal-0.1.4-x86_64.enc")
-sha512sums=('4cabcb6b14a57cb86c991763086334924e5672d7d4e0355b8f64891c5eb9a5b8aab2b9984833e063e4f5fbca22e34198ffb1a9f5e6dfd6ef11629e86780a4aa6')
+source=("agentics-terminal-0.1.6-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-terminal-0.1.6-x86_64.enc")
+sha512sums=('c0e85eefbf2b2dd879a18b7d7617d9fe9ee98b66f36fcdfc1218855c1dc109e36c43c18d3b9ebb4841d17a963986dccd19c500b2f874aa41deeb2f949a8fc19d')
 
 package() {
-  install -Dm644 "$srcdir/agentics-terminal-0.1.4-x86_64.enc" "$pkgdir/opt/agentics/components/terminal/0.1.4/terminal-0.1.4-linux-amd64.enc"
+  install -Dm644 "$srcdir/agentics-terminal-0.1.6-x86_64.enc" "$pkgdir/opt/agentics/components/terminal/0.1.6/terminal-0.1.6-linux-amd64.enc"
   install -dm755 "$pkgdir/usr/share/doc/agentics-terminal"
   printf '%s\n' \
     'agentics-terminal ships the encrypted Agentics terminal component.' \
