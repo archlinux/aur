@@ -1,5 +1,4 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
-
 pkgname=cherryctl
 pkgver=0.10.0
 pkgrel=2
