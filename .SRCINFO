@@ -1,0 +1,17 @@
+pkgbase = doubao-desktop-bin
+	pkgdesc = Doubao AI Assistant - web app wrapper (ByteDance)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.doubao.com/chat/
+	arch = any
+	license = custom
+	depends = xdg-utils
+	optdepends = chromium: best app-mode experience
+	optdepends = google-chrome: app-mode support
+	optdepends = firefox: works but no app-mode
+	source = doubao-desktop-bin.sh
+	source = doubao-desktop-bin.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = doubao-desktop-bin

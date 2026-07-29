@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Doubao
+GenericName=AI Assistant
+Comment=ByteDance AI intelligent assistant (web app)
+Exec=doubao-desktop
+Icon=doubao-desktop
+Terminal=false
+Type=Application
+Categories=Network;Chat;ArtificialIntelligence;
+Keywords=doubao;豆包;AI;bytedance;chat;
+StartupWMClass=Doubao
