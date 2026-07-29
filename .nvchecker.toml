@@ -1,0 +1,5 @@
+[kranz-bin]
+source = "github"
+github = "kranz-org/kranz"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,19 @@
+pkgbase = kranz-bin
+	pkgdesc = Keyboard-first local service orchestrator with a focused terminal UI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kranz-org/kranz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = kranz
+	conflicts = kranz
+	options = !strip
+	source_x86_64 = kranz-x86_64-0.3.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.3.0/kranz_0.3.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = eccbaad3e369b9101b48d74cd4b0311d6aa1f819924e72cb2742f610ddb5464c
+	source_aarch64 = kranz-aarch64-0.3.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.3.0/kranz_0.3.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e577454d530c4dcf8c954c351af6fe28f1484461910886773ac3dc0410933ab7
+
+pkgname = kranz-bin
