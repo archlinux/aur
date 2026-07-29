@@ -3,7 +3,7 @@
 pkgname=cashlyctl-git
 _pkgname=cashlyctl
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal operations console and CLI for Cashly/DealSense deployments"
 arch=("any")
 url="https://github.com/goCashly/cashlyctl"
