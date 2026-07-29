@@ -14,7 +14,7 @@ provides=('baresip')
 conflicts=('baresip')
 
 # Hardcoded direct git link to your repo. No tags or shortcuts to confuse curl.
-source=("git+https://github.com/Venomtek/baresip-qt.git")
+source=("git+https://github.com/Venomtek/baresip-qt.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {

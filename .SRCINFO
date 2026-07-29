@@ -13,7 +13,7 @@ pkgbase = baresip-qt
 	depends = opus
 	provides = baresip
 	conflicts = baresip
-	source = git+https://github.com/Venomtek/baresip-qt.git
+	source = git+https://github.com/Venomtek/baresip-qt.git#tag=v4.10.0_qt.1
 	sha256sums = SKIP
 
 pkgname = baresip-qt
