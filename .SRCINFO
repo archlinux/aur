@@ -9,6 +9,7 @@ pkgbase = livekit-tui-client-git
 	makedepends = zig
 	makedepends = odin
 	makedepends = git
+	makedepends = nasm
 	depends = glibc
 	depends = gcc-libs
 	depends = alsa-lib

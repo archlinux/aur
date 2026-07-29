@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/TatsuyaM2667/livekit-tui-client"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'alsa-lib')
-makedepends=('cargo' 'zig' 'odin' 'git')
+makedepends=('cargo' 'zig' 'odin' 'git' 'nasm')
 provides=("livekit-tui-client")
 conflicts=("livekit-tui-client")
 options=('!lto')
@@ -20,6 +20,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/livekit-tui-client"
+    # ring crate asm objects require GNU ld, not rust-lld
+    export RUSTFLAGS="-C linker=cc -C link-arg=-fuse-ld=bfd"
     cargo build --release --bin client
 }
 
