@@ -1,6 +1,6 @@
 pkgbase = opendeck
 	pkgdesc = A cross-platform desktop application that provides functionality for stream controller devices.
-	pkgver = 2.13.1
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/nekename/OpenDeck
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = opendeck
 	optdepends = wine-mono: Needed to support some Windows-only plugins
 	optdepends = nodejs: Needed to support Node.js plugins
 	options = !lto
-	source = opendeck::git+https://github.com/nekename/OpenDeck#tag=v2.13.1
-	sha256sums = a1556cdc07e87f8cd538ce96725505ac90c1aa54ea07d3e1b1dca6da6009e2b8
+	source = opendeck::git+https://github.com/nekename/OpenDeck#tag=v2.14.0
+	sha256sums = d78b58bb4091261b8211142e1f109aa6ec77fd50a8d835cff04e193a2f01824d
 
 pkgname = opendeck
