@@ -1,6 +1,6 @@
 # Maintainer: Yann Masoch <231734284+yannmasoch@users.noreply.github.com>
 pkgname=nautilus-my-computer
-pkgver=0.12.5
+pkgver=0.12.6
 pkgrel=1
 pkgdesc="My Computer for Nautilus, what GNOME Files should have always been"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-nautilus' 'libadwaita')
 makedepends=('gettext')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yannmasoch/nautilus-my-computer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32ab2191005d6bccc07778e785df880b6b7a2a6e62fb3abce4c0d161b8bd7db1')
+sha256sums=('e91c34f527db23ef8d64e967b0fbb95f7369f6896c6fbc315c67eb05f99145a5')
 
 build() {
 	cd "$pkgname-$pkgver"
