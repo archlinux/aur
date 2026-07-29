@@ -3,8 +3,9 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.6.r533.g025aebd
+pkgver=0.6.r652.g0e99f94
 pkgrel=1
+_app_id=org.gnome.GTG
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('any')
 url="https://getting-things-gnome.github.io"
@@ -14,10 +15,8 @@ depends=(
   'gtksourceview5'
   'libportal-gtk4'
   'libsecret'
-  'python-caldav'
   'python-dbus'
   'python-gobject'
-  'python-liblarch-git'
   'python-lxml'
   'python-typing_extensions'
 )
@@ -26,18 +25,22 @@ makedepends=(
   'itstool'
   'meson'
 )
-#checkdepends=(
-#  'python-pytest'
-#  'xorg-server-xvfb'
-#)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+  # 'python-caldav'
+  # 'python-pytest'
+  # 'xorg-server-xvfb'
+)
 optdepends=(
-  'hamster-time-tracker: send a task to the Hamster time tracking applet'
-  'pdftk: for the Export and print plugin'
-  'python-cheetah3: for the Export and print plugin'
-  'python-setproctitle: to set the process title when listing processes like ps)'
+  'hamster-time-tracker: Send a task to the Hamster time tracking applet'
+  'pdftk: For the Export and print plugin'
+  'python-caldav: Required to enable the CalDAV synchronization backend'
+  'python-cheetah3: For the Export and print plugin'
+  'python-setproctitle: Set the process title when listing processes like ps et al)'
   'texlive-bin: pdflatex, for the Export and print plugin'
   'texlive-binextra: pdfjam, for the Export and print plugin'
-  'yelp: view user manual'
+  'yelp: View user manual'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -49,22 +52,19 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-
-  # Correct required GtkSourceView version
-  sed -i 's/gtksourceview-4/gtksourceview-5/g' meson.build
-}
-
 build() {
   arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
-#check() {
-#  cd "${pkgname%-git}"
-#  PYTHONPATH=. xvfb-run pytest
-#}
+check() {
+  appstreamcli validate --no-net "build/data/${_app_id}.metainfo.xml"
+  desktop-file-validate "build/data/${_app_id}.desktop"
+
+  # export LIBGL_ALWAYS_SOFTWARE=1
+  # python -m venv --clear --without-pip --system-site-packages test-env
+  # xvfb-run test-env/bin/python -P -m pytest
+}
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
