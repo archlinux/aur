@@ -1,6 +1,6 @@
 pkgbase = convertwithmoss
 	pkgdesc = A tool for converting multi-samples from one format to another
-	pkgver = 17.1.0
+	pkgver = 19.1.0
 	pkgrel = 1
 	url = https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = convertwithmoss
 	makedepends = jdk-openjdk
 	depends = java-runtime>=16
 	depends = sh
-	source = convertwithmoss-17.1.0.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/17.1.0.tar.gz
-	source = convertwithmoss-javafx-version.patch
+	source = convertwithmoss-19.1.0.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/19.1.0.tar.gz
 	source = convertwithmoss.sh
-	sha256sums = 2336501c17bfb935d45b740c4688e4d4c46302df5010fe425ae020bb0c3109b0
-	sha256sums = 56b98e20ea95de4705be0696935c23dffb2f30c496c7532b37eaf9bfb5b10df0
+	source = settings.xml.in
+	sha256sums = 6c278243c3928f0b214ff3a01817dda892c44d3702d51736a62972f7dcbc10e2
 	sha256sums = 119c190f92a96c3556b770d504ada91fc89d522e837bf490dd3c6b4577d7ca3d
+	sha256sums = 21dd62b95d6d9801c7dcb86522ba5b3c7bbe4bc5855a14353d99e6977513b0cb
 
 pkgname = convertwithmoss
