@@ -9,8 +9,8 @@ _pypi_package=${pkgname##python-}
 _pypi_version=${pkgver}
 
 arch=('any')
-url='https://github.com/openscilab/opr'
 license=('MIT')
+url='https://github.com/openscilab/opr'
 
 depends=('python')
 optdepends=()
@@ -21,7 +21,7 @@ sha256sums=('c84d7f7493a09310830b73f6a46ce650702f6f8e794ae88720d40b1536cf219e')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-$_pypi_version}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
@@ -29,7 +29,7 @@ build() {
 package() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
