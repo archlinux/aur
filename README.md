@@ -25,7 +25,7 @@ makepkg -si
 
 ## Requirements
 
-- [dory-git](https://aur.archlinux.org/packages/dory-git) - The Dory file manager
+- [dory](https://archlinux.org/packages/extra/x86_64/dory/) - The Dory file manager
 - [cinnamon-dory-session](https://aur.archlinux.org/packages/cinnamon-dory-session) - Session configuration (optional, included in this package)
 
 ## How it works

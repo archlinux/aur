@@ -1,8 +1,8 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=cinnamon-no-nemo
-pkgver=6.6.8
-pkgrel=2
+pkgver=6.6.9
+pkgrel=1
 pkgdesc="Cinnamon desktop environment repackaged without Nemo dependency (uses Dory)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
