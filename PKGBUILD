@@ -1,6 +1,6 @@
 # Maintainer: Wallun <wallun@disroot.org>
 pkgname=prometheus-libvirt-exporter
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A prometheus exporter for libvirt"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         prometheus-libvirt-exporter.service)
-sha256sums=('bbd494bb4f50ad170df7b449c40162ca446a4b80dc51815d8679dc92b3d8cc15'
+sha256sums=('2e44aab64c6377a3338fac5b10c87d77276c4f9ecebb240f2a4e085c63a02a7e'
             'fd2852b523324e4b97efbe280b36b615f6d54895280b5ddd30e9fe60152bbec2')
 
 prepare() {
