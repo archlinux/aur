@@ -1,6 +1,6 @@
 pkgbase = cine
 	pkgdesc = Video Player for Linux
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/diegopvlk/Cine
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = cine
 	depends = mpv
 	depends = python-gobject
 	depends = python-mpv
-	source = Cine-1.8.0.tar.gz::https://github.com/diegopvlk/Cine/archive/refs/tags/v1.8.0.tar.gz
-	sha256sums = a885611bfa404b159bde1a79490e870cacbbd505cd812f1537e77304275bf4ba
+	source = Cine-1.8.1.tar.gz::https://github.com/diegopvlk/Cine/archive/refs/tags/v1.8.1.tar.gz
+	sha256sums = 6edd6e9564d761c80026bdb07c3a743945c21f602fda6325ea67450e51e76ae2
 
 pkgname = cine
