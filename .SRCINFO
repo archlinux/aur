@@ -1,0 +1,23 @@
+pkgbase = tinymist-viewer-bin
+	pkgdesc = Standalone native preview client for Tinymist (Typst language server)
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/Myriad-Dreamin/tinymist
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	depends = libgcc
+	provides = tinymist-viewer=0.15.2
+	conflicts = tinymist-viewer
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/main/LICENSE
+	sha256sums = a9f29769fd3a7ee2976e6e161a93e16461fa305c088c4806242e50ec8ef86bce
+	source_x86_64 = tinymist-viewer-0.15.2-x86_64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-viewer-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8f7b08c5df9d1bf399483cb6dba914cca67e40b75f3072a3c18f1bf95c651508
+	source_aarch64 = tinymist-viewer-0.15.2-aarch64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-viewer-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1f8613f748d56d85a284ae68e9006bb9929a1b0c5ebb01a891fc20787b97920a
+	source_armv7h = tinymist-viewer-0.15.2-armv7.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-viewer-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 9cf094717bfc23bc0784f5f19c3a5b9c6a6973c52350230d8d2cfbe5a12e3b96
+
+pkgname = tinymist-viewer-bin
