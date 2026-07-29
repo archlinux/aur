@@ -3,7 +3,6 @@
 # Contributor: OpenPrivacy <maildrop AT comedia DOT com>
 # Contributor: Cyrinux <pkgbuilds AT levis DOT name>
 # Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
-
 pkgname=openscap
 pkgver=1.4.4
 pkgrel=1
@@ -39,7 +38,7 @@ makedepends=(
 	'swig'
 )
 optdepends=(
-	'libselinux: SELinux boolean and security context probes (AUR)'
+	'libselinux: SELinux boolean and security context probes'
 	'openssh: oscap-ssh utility for scanning remote hosts'
 	'rpm-tools: rpminfo probe and scap-as-rpm utility'
 )
