@@ -1,6 +1,6 @@
 pkgbase = hcc-bin
 	pkgdesc = Hyprland Control Center — Install and manage Hyprland desktops
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/laosifu/Hyprland-Control-Center
 	install = hcc.install
@@ -15,7 +15,7 @@ pkgbase = hcc-bin
 	optdepends = paru: AUR package installation
 	provides = hcc
 	conflicts = hcc-git
-	source = https://github.com/laosifu/Hyprland-Control-Center/archive/v0.9.1.tar.gz
+	source = https://github.com/laosifu/Hyprland-Control-Center/archive/v0.9.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = hcc-bin

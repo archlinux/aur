@@ -2,7 +2,7 @@
 # Contributor: laosifu
 
 pkgname=hcc-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Hyprland Control Center — Install and manage Hyprland desktops"
 arch=('any')
