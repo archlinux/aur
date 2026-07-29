@@ -11,7 +11,7 @@ provides=('minnow')
 conflicts=('minnow')
 # grabs the tarball built by the release workflow (archlinux:latest container, so ABI matches)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/releases/download/v$pkgver/minnow-v$pkgver-x86_64.tar.gz")
-sha256sums=('ee7792a415ba49cee507e4eedc3e641746de425eba452d058f6291ecb284aa59')
+sha256sums=('ea5844763eae7bebacba751b1572349f07df9d805a30b1a0730064f00d874aa8')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
