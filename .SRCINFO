@@ -1,0 +1,22 @@
+pkgbase = docklane-bin
+	pkgdesc = Local HTTPS gateway for Docker containers using Traefik
+	pkgver = 0.1.0_alpha.2
+	pkgrel = 1
+	url = https://github.com/lcaohoanq/docklane
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = ca-certificates-utils
+	depends = dnsmasq
+	depends = docker
+	depends = systemd
+	provides = docklane=0.1.0_alpha.2
+	conflicts = docklane
+	options = !strip
+	options = !debug
+	source_x86_64 = docklane-bin-0.1.0_alpha.2-x86_64.tar.gz::https://github.com/lcaohoanq/docklane/releases/download/v0.1.0-alpha.2/docklane_0.1.0-alpha.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = eae8062d2d3c24d55ebeb8520d19edb4f550b059413c6ac014138ac15dcc35a9
+	source_aarch64 = docklane-bin-0.1.0_alpha.2-aarch64.tar.gz::https://github.com/lcaohoanq/docklane/releases/download/v0.1.0-alpha.2/docklane_0.1.0-alpha.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8465259efd1c4d035be05f86fd7c3b3d2ff48afed0f748ef5845c29bc672c53f
+
+pkgname = docklane-bin
