@@ -21,7 +21,7 @@ source=("git+https://github.com/inventree/inventree.git#branch=master"
         'env.sh')
 sha256sums=('SKIP'
             '37fcef1d112c92112d5e20f00567be34a759d9b590582be8c240fbdfeb302a22'
-            'efe2da3d37adde1456fd3d36219ff0d662722ab461b950945829892cf38b4d11'
+            'c5357e1da98bfc4996ff2757c81edd31a6554916e300871bff8716913f73b4b7'
             '2783d57f4f9f34c3b33395c78c8c926e9bd2a780e91e29bb92796424784d8c10')
 provides=('inventree')
 conflicts=('inventree')

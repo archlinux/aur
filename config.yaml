@@ -7,7 +7,7 @@
 secret_key_file: '/var/opt/inventree/config/secret_key.txt'
 # Use the environment variable INVENTREE_OIDC_PRIVATE_KEY or INVENTREE_OIDC_PRIVATE_KEY_FILE
 #oidc_private_key: '-----BEGIN PRIVATE KEY-----aaa'
-#oidc_private_key_file: '/var/opt/inventree/config/inventree/oidc.key'
+oidc_private_key_file: '/var/opt/inventree/config/inventree/oidc.key'
 
 # Database backend selection - Configure backend database settings
 # Documentation: https://docs.inventree.org/en/latest/start/config/
