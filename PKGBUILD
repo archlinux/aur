@@ -1,27 +1,51 @@
 # Maintainer: Kaylin Aurora <kaylin@cmdly.dev>
 pkgname=aria-fm-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Native Spotify desktop client — Go + Electron (Chromium) + librespot, FFI-first transport"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cmdly/aria.fm"
 license=('MIT')
 # Runtime libs the bundled Electron/Chromium shell dlopens. Electron ships its
 # own Chromium, so we no longer depend on gtk4/webkitgtk-6.0/libsoup3 (the
 # WebKitGTK webview was the 60fps-capped path we migrated off). The Go sidecar
 # (build/bin/aria-server, shipped under the app's resources/) embeds the
-# librespot cdylib and the frontend, and links oto (alsa-lib) + librespot's
-# openssl-sys (openssl).
-depends=('gtk3' 'nss' 'alsa-lib' 'openssl' 'libnotify' 'at-spi2-core' 'libxss' 'hicolor-icon-theme')
+# librespot cdylib and the frontend.
+#
+# alsa-lib is a runtime dependency by two independent routes: the bundled
+# Chromium links libasound.so.2 directly (objdump -p aria-shell | grep NEEDED),
+# and the cgo-free Go sidecar dlopens it through purego for audio output
+# (internal/audio/backend_alsa_linux.go). PipeWire/PulseAudio users still need
+# it — their ALSA plugins live behind the same libasound.
+#
+# openssl is NOT a dependency any more: librespot-ffi moved from native-tls to
+# rustls, so the cdylib links no libssl/libcrypto (verified via objdump -p
+# NEEDED). Trust roots are read from the system store, which is ca-certificates
+# on Arch — already pulled in by the base system.
+depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'at-spi2-core' 'libxss' 'hicolor-icon-theme')
 provides=('aria.fm')
 conflicts=('aria.fm')
 # The app dir ships prebuilt Electron binaries + the stripped Go sidecar.
 options=('!strip')
-source=("aria-fm-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria-fm/v${pkgver}/aria-fm-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('cc8f46fab05c722b7ff783d7dc7f0be83b490df69f8c0dd761b4ba72c9de14af')
+# Per-arch prebuilt tarballs. Arch's $CARCH spellings (x86_64/aarch64) are
+# exactly the ones the release assets use, so the arch appears in the URL and
+# in the extracted directory name with no mapping table.
+#
+# The download is renamed per arch: both tarballs would otherwise land in
+# makepkg's shared SRCDEST under one name, and a cached x86_64 tarball would be
+# reused for an aarch64 build (and vice versa) — a wrong-arch package that only
+# fails when the user runs it.
+source_x86_64=("aria-fm-${pkgver}-x86_64.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria-fm/v${pkgver}/aria-fm-v${pkgver}-linux-x86_64.tar.gz")
+source_aarch64=("aria-fm-${pkgver}-aarch64.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria-fm/v${pkgver}/aria-fm-v${pkgver}-linux-aarch64.tar.gz")
+sha256sums_x86_64=('2d5ba6bd705d3c4576f284b0c5bc73a3a762f0978f310ddc50ff79192ba2c31c')
+# Both sums are written by scripts/bump-aur.sh from the PUBLISHED tarballs, not
+# from a local build — the bytes users fetch are the bytes that must be pinned.
+# Never 'SKIP' here: that disables verification entirely, so a truncated or
+# wrong-arch download would build silently. A stale hash fails loudly instead.
+sha256sums_aarch64=('d7e25b3ee0a250802c89248bad96b27c6390ce6813e4f76dddb0798510545d52')
 
 package() {
-  cd "${srcdir}/aria-fm-v${pkgver}-linux-x86_64"
+  cd "${srcdir}/aria-fm-v${pkgver}-linux-${CARCH}"
 
   # Install the whole Electron app (shell binary + Chromium runtime + the
   # aria-server sidecar under resources/) into /opt.
