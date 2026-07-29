@@ -1,6 +1,6 @@
 pkgbase = juicebox2-plus-bin
   pkgdesc = The companion app for juicebox! (binary release)
-  pkgver = REPLACE_ME
+  pkgver = 0.0.0
   pkgrel = 1
   url = https://github.com/juiceboxdev/juicebox-plus
   arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = juicebox2-plus-bin
   depends = glibc
   provides = juicebox2-plus
   conflicts = juicebox2-plus
-  source = https://github.com/juiceboxdev/juicebox-plus/releases/download/vREPLACE_ME/juicebox-plus-linux
+  source = https://github.com/juiceboxdev/juicebox-plus/releases/download/v0.0.0/juicebox-plus-linux
   source = https://raw.githubusercontent.com/juiceboxdev/juicebox-plus/main/packaging/linux/juicebox-plus.desktop
   source = https://raw.githubusercontent.com/juiceboxdev/juicebox-plus/main/assets/logo.png
   source = https://raw.githubusercontent.com/juiceboxdev/juicebox-plus/main/LICENSE

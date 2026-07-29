@@ -2,7 +2,7 @@
 # Contributor: JuiceyDev <me@juicey.dev>
 
 pkgname=juicebox2-plus-bin
-pkgver=REPLACE_ME
+pkgver=0.0.0
 pkgrel=1
 pkgdesc='The companion app for juicebox! (binary release)'
 arch=('x86_64')
@@ -18,6 +18,11 @@ source=(
   "https://raw.githubusercontent.com/juiceboxdev/juicebox-plus/main/LICENSE"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+  curl -s https://api.github.com/repos/juiceboxdev/juicebox-plus/releases/latest \
+    | grep '"tag_name":' | sed 's/.*"v//; s/".*//'
+}
 
 package() {
   install -Dm755 "juicebox-plus-linux" "$pkgdir/usr/bin/juicebox-plus"
