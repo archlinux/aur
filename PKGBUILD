@@ -1,6 +1,6 @@
 # Maintainer: nyq-dev <adresa_ta_de_email@example.com>
 pkgname=nyqfetch
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A fast, pure Python fetch tool for Arch Linux"
 arch=('any')
@@ -13,7 +13,7 @@ sha256sums=()
 package() {
     install -d "${pkgdir}/usr/bin"
 
-    cat << 'EOF' > "${pkgdir}/usr/bin/nyqfetch"
+    cat << 'OUTER_EOF' > "${pkgdir}/usr/bin/nyqfetch"
 #!/usr/bin/env python3
 import os
 import platform
@@ -22,20 +22,20 @@ import socket
 
 def get_ram_usage():
     try:
-        total = 0
-        avail = 0
+        t, a = 0, 0
         with open("/proc/meminfo", "r") as f:
             for line in f:
                 if "MemTotal" in line:
-                    total = int(line.split()[1]) / 1024 / 1024
+                    for word in line.split():
+                        if word.isdigit():
+                            t = int(word) / 1024 / 1024
                 elif "MemAvailable" in line:
-                    avail = int(line.split()[1]) / 1024 / 1024
-        
-        if total == 0:
+                    for word in line.split():
+                        if word.isdigit():
+                            a = int(word) / 1024 / 1024
+        if t == 0:
             return "Unknown"
-            
-        used = total - avail
-        return f"{used:.2f} GiB / {total:.2f} GiB"
+        return f"{t - a:.2f} GiB / {t:.2f} GiB"
     except:
         return "Unknown"
 
@@ -53,7 +53,7 @@ shell = get_shell()
 ram = get_ram_usage()
 term = get_terminal().capitalize()
 
-C1 = "\033[36m" # Cyan
+C1 = "\033[36m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
 
@@ -69,7 +69,7 @@ logo_and_info = [
 ]
 
 print("\n" + "\n".join(logo_and_info) + "\n")
-EOF
+OUTER_EOF
 
     chmod +x "${pkgdir}/usr/bin/nyqfetch"
 }
