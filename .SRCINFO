@@ -1,0 +1,20 @@
+pkgbase = pipixiv-bin
+	pkgdesc = A third-party Pixiv client based on Compose Multiplatform
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/darriousliu/PiPixiv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = libx11
+	depends = libxcb
+	depends = freetype2
+	depends = fontconfig
+	depends = mesa-utils
+	source = https://github.com/darriousliu/PiPixiv/releases/download/v2.3.0/PiPixiv-v2.3.0-linux-x86_64.tar.gz
+	sha256sums = cb4bd9175d94455a6d04d26278d6b3750558b24fa7d7f08cb81b6defe38a86e9
+
+pkgname = pipixiv-bin
