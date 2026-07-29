@@ -1,13 +1,14 @@
 pkgbase = jgrep
 	pkgdesc = grep for JSON with jq-style filter expressions (built from source)
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subnix-work/jgrep-tinox
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = tinox
 	depends = glibc
 	depends = gc
+	options = !debug
 	source = jgrep-1.0.3.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v1.0.3.tar.gz
 	sha256sums = 93f9cb66498441a4829f43cdc2ffc28e225ebdbb856b0061c39241eaaa150181
 
