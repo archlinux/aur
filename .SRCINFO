@@ -1,6 +1,6 @@
 pkgbase = asteroidz-bar
 	pkgdesc = The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/asteroidzman/asteroidz-bar
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = asteroidz-bar
 	optdepends = swaync: the notification bell
 	optdepends = pipewire: the volume module
 	optdepends = grim: contrib/parity.sh and contrib/tray-test.sh
-	source = git+https://github.com/asteroidzman/asteroidz-bar.git#tag=0.1.2
+	source = git+https://github.com/asteroidzman/asteroidz-bar.git#tag=0.1.3
 	sha256sums = SKIP
 
 pkgname = asteroidz-bar
