@@ -5,37 +5,34 @@
 _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
-pkgrel=14
+pkgrel=15
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL-2.0-or-later')
 makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia'
-             'libvisual' 'libvorbis' 'libtheora' 'pango' 'cairo' 'gobject-introspection'
-             'glib2-devel' 'libxml2')
+             'libvisual' 'libvorbis' 'libtheora' 'pango' 'cairo' 'glib2-devel'
+             'libogg' 'libx11' 'libxext' 'libxml2' 'perl' 'zlib')
 options=(!emptydirs)
-url='http://gstreamer.freedesktop.org/'
+url='https://gstreamer.freedesktop.org/'
 source=("https://gstreamer.freedesktop.org/src/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
         fix-crash-0-byte-ogg.patch
         colorbalance-fix-abi.patch
         videoscale-fix-negotiation.patch
         ayuv64-lanczos.patch
-        gstaudio-symbols.patch
         enum_headers.patch)
 sha256sums=('1fe45c3894903001d4d008b0713dab089f53726dcb5842d5b40c2595a984e64a'
             'a6a01035ea9627737f9c17f72919857ed43ccc7c2cb08b645b43ed89f78d0f4f'
             '7442c5c68068428b8c7ac1d3825ce29f1bb152b75b77047b9e806c7d322b780c'
             'ae27f7be58997217f67898b37b138a485c203389e56b65e6b31c23f769ef39ca'
             '3792dfe80c69f51c0db98533e8fb16707b5dd2ee6933ea6098583af873ceb44a'
-            '56e7a988df39d2ec4befa265536ad8c30d3c8d18d136cebef64e8d6baac1abae'
-            '0e2a6ef0479621d522c7dbaeb577df3e422c8f7111f5892540f8437475a38932')
+            '6c2b99c62741a17c6571fe36f82a263e06608316f9d17172edbf07517787ce88')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
   sed -i -e '/AC_PATH_XTRA/d' -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
   patch -Np1 -i ../fix-crash-0-byte-ogg.patch
   patch -Np1 -i ../colorbalance-fix-abi.patch
   patch -Np1 -i ../ayuv64-lanczos.patch
   patch -Np1 -i ../videoscale-fix-negotiation.patch
-  patch -Np1 -i ../gstaudio-symbols.patch
   patch -Np1 -i ../enum_headers.patch
 
   sed -i 's|g_object_ref (G_OBJECT (interface))|g_object_ref ((GstMixer *)(interface))|' ext/alsa/gstalsamixer.c
@@ -44,13 +41,13 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
 
   CPPFLAGS+=" $(pkg-config --cflags pangocairo pango cairo)"
   LDFLAGS+=" $(pkg-config --libs libxml-2.0)"
   export CPPFLAGS LDFLAGS
-  export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
-  export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -62,23 +59,37 @@ build() {
               --disable-introspection
 
   make
-  sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  make check-exports
+  make -C tests/check check CFLAGS="${CFLAGS} -std=gnu17" \
+    TESTS='libs/audio libs/fft libs/netbuffer'
 }
 
 package_gstreamer0.10-base() {
-  pkgdesc="GStreamer Multimedia Framework Base plugin libraries"
-  depends=('gstreamer0.10>=0.10.36' 'orc' 'libxv')
+  pkgdesc="Legacy GStreamer 0.10 base plugin libraries"
+  depends=('gstreamer0.10>=0.10.36' 'glib2' 'glibc' 'libx11' 'libxext' 'libxml2'
+           'libxv' 'orc' 'perl' 'zlib')
+  provides=('libgstapp-0.10.so' 'libgstaudio-0.10.so' 'libgstcdda-0.10.so'
+            'libgstfft-0.10.so' 'libgstinterfaces-0.10.so' 'libgstnetbuffer-0.10.so'
+            'libgstpbutils-0.10.so' 'libgstriff-0.10.so' 'libgstrtp-0.10.so'
+            'libgstrtsp-0.10.so' 'libgstsdp-0.10.so' 'libgsttag-0.10.so'
+            'libgstvideo-0.10.so')
 
-  cd ${_pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" SUBDIRS_EXT= install
 }
 
 package_gstreamer0.10-base-plugins() {
-  pkgdesc="GStreamer Multimedia Framework Base Plugins (gst-plugins-base)"
-  depends=("gstreamer0.10-base=${pkgver}" 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango')
+  pkgdesc="Legacy GStreamer 0.10 base plugins"
+  depends=("gstreamer0.10-base=${pkgver}-${pkgrel}" 'alsa-lib' 'cairo' 'cdparanoia'
+           'glib2' 'glibc' 'gstreamer0.10' 'libogg' 'libtheora' 'libvisual' 'libvorbis'
+           'pango')
   groups=('gstreamer0.10-plugins')
 
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
   make -C gst-libs DESTDIR="${pkgdir}" install
   make -C ext DESTDIR="${pkgdir}" install
   make -C gst-libs DESTDIR="${pkgdir}" uninstall
