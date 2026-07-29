@@ -1,5 +1,5 @@
 pkgname=shovel-bin
-pkgver=0.2.3.0
+pkgver=0.2.3.1
 pkgrel=1
 pkgdesc="Fast native desktop database client built with Rust and Dioxus"
 arch=('x86_64')
@@ -14,10 +14,10 @@ provides=('shovel')
 conflicts=('shovel' 'shovel-git')
 options=('!debug' '!lto')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/Shovel/releases/download/v0.2.3.0/shovel-linux-x86_64.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/Shovel/releases/download/v0.2.3.1/shovel-linux-x86_64.tar.gz"
 )
 sha256sums=(
-  'ec39b779a02c125599d6e8fef324fb669c1133fbf4ca77032e1d6879b8163c74'
+  '4423e9470175900d9db481d485667a94787a97c007b26b529b7a0d6cd6decc1a'
 )
 
 package() {
