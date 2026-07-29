@@ -2,7 +2,7 @@
 pkgname=harbor-stremio-beta-bin
 _pkgname=harbor
 pkgver=0.9.115
-pkgrel=2
+pkgrel=3
 pkgdesc='A Stremio client built for adventure (beta binary release)'
 arch=('x86_64')
 url='https://github.com/harborstremio/harbor'
@@ -12,7 +12,7 @@ makedepends=('libarchive')
 provides=('harbor-stremio-beta' 'harbor')
 conflicts=('harbor-stremio-bin' 'harbor-stremio' 'harbor' 'harbor-stremio-git')
 source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/harborstremio-linux/harbor-linux-builds/releases/download/beta-v0.9.115/Harbor_0.9.115_amd64.deb")
-sha256sums=('f894e463019369b15c378ef4dcdabd440dbaa4cd0fe563f8dd9e4944f8fdb8a3')
+sha256sums=('43eb0cf188f804b4228244db447672578530f75b6e7cea6c2caef5f1624d5e28')
 package() {
   local extract="$srcdir/deb-extract"
   rm -rf "$extract"; mkdir -p "$extract"
