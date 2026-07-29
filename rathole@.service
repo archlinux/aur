@@ -1,0 +1,39 @@
+[Unit]
+Description=Rathole reverse proxy (%i)
+Documentation=https://github.com/rapiz1/rathole
+Wants=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/rathole/%i.toml
+
+[Service]
+Type=exec
+User=rathole
+Group=rathole
+ExecStart=/usr/bin/rathole /etc/rathole/%i.toml
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=1048576
+UMask=0077
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

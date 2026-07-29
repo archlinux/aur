@@ -1,0 +1,2 @@
+d /etc/rathole 0750 root rathole -
+z /etc/rathole/*.toml 0640 root rathole -
