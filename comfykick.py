@@ -19,7 +19,7 @@ from pathlib import Path
 import yaml
 
 PROJECT_NAME = "comfykick"
-PROJECT_VERSION = "v1.5"
+PROJECT_VERSION = "v1.6"
 PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"
