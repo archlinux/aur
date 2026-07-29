@@ -3,7 +3,7 @@
 
 pkgname="python-fastmcp"
 _name=${pkgname#python-}
-pkgver=4.0.0a2
+pkgver=4.0.0b1
 pkgrel=1
 pkgdesc="The fast, Pythonic way to build MCP servers and clients."
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
     'python-uv-build'
 )
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('443060a074ff652424a734686b172faea9611ee08646761c7c8edd5495ba063e')
+sha256sums=('df7a2cd0d421e039c2cbaa4a99517f597470fcecf242e993622419b47bed1516')
 
 
 build() {
