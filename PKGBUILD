@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=netwatch-tui-bin
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
-pkgver=0.8.2
+pkgver=0.28.1
 pkgrel=1
 _gitversion=v0.14.0-rc.3
 
