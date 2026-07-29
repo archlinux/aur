@@ -1,34 +1,33 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver='0.6'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='opr'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="python-opr"
+pkgver=0.6
 pkgrel=1
 pkgdesc="OPR: Optimized Primer"
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 arch=('any')
 url='https://github.com/openscilab/opr'
 license=('MIT')
+
 depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('c84d7f7493a09310830b73f6a46ce650702f6f8e794ae88720d40b1536cf219e')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-$_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
