@@ -1,7 +1,7 @@
 # Maintainer: Glax its@glax.dev
 pkgname=eyetrackvr
 pkgver=b0.3.0_8
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Affordable, Virtual Reality Eye Tracking Platform. "
 arch=('x86_64')
 url="https://github.com/EyeTrackVR/EyeTrackVR"
@@ -27,5 +27,5 @@ package() {
 	# command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database || true
 
 	# Create logs dir
-	install -dm666 "${INSTALLDIR}/logs"
+	install -dm777 "${INSTALLDIR}/logs"
 }
