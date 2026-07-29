@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'kcoreaddons' 'kconfigwidgets' 'kwidgetsaddons' 'kio' 'kfilemetadata' 'karchive' 'knotifications')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1a68c6555f7a63bff5b181ba8f05eb9e340af2cc0e95f1933ac03e758d4a7f9')
+sha256sums=('600c8eb08ee8a49c9197c39586b8f13a574a55f03579cf5ab193106d31e97ea4')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
