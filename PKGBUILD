@@ -2,7 +2,7 @@
 # Contributor: laosifu
 
 pkgname=hcc-git
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Hyprland Control Center (git version) — Install and manage Hyprland desktops"
 arch=('any')
