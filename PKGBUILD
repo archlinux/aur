@@ -1,5 +1,5 @@
 pkgname=liber-bin
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="A browser-native email client"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'dbus')
 provides=('liber')
 conflicts=('liber')
 source=("https://github.com/nickheyer/liber-releases/releases/download/v${pkgver}/liber_${pkgver}_amd64.deb")
-sha256sums=('487aa53d42bc23631378a4f39fb066d8cc02899ea81e1ba491b2e2d0757c438d')
+sha256sums=('fa3027d937bbc1d18f8797820849d2f6670d2e37a7bff2339ec5f9d213dc2c64')
 
 package() {
   bsdtar -O -xf "liber_${pkgver}_amd64.deb" 'data.tar.*' | bsdtar -xf - -C "${pkgdir}"

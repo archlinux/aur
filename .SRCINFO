@@ -1,6 +1,6 @@
 pkgbase = liber-bin
 	pkgdesc = A browser-native email client
-	pkgver = 1.0.18
+	pkgver = 1.0.19
 	pkgrel = 1
 	url = https://liber.sh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = liber-bin
 	depends = dbus
 	provides = liber
 	conflicts = liber
-	source = https://github.com/nickheyer/liber-releases/releases/download/v1.0.18/liber_1.0.18_amd64.deb
-	sha256sums = 487aa53d42bc23631378a4f39fb066d8cc02899ea81e1ba491b2e2d0757c438d
+	source = https://github.com/nickheyer/liber-releases/releases/download/v1.0.19/liber_1.0.19_amd64.deb
+	sha256sums = fa3027d937bbc1d18f8797820849d2f6670d2e37a7bff2339ec5f9d213dc2c64
 
 pkgname = liber-bin
