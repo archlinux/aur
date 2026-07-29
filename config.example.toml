@@ -1,0 +1,45 @@
+
+# The package and Lua loader are inert until this is changed to true.
+enabled = false
+
+# A llama.cpp OpenAI-compatible base URL or full chat-completions URL.
+# These are equivalent:
+#   http://127.0.0.1:8080
+#   http://127.0.0.1:8080/v1
+#   http://127.0.0.1:8080/v1/chat/completions
+endpoint = "http://127.0.0.1:8080/v1"
+
+# Must match a model advertised/accepted by llama-server.
+model = ""
+
+# Optional environment variable containing an API key. Leave empty for a
+# typical unauthenticated local llama.cpp server.
+api_key_env = ""
+
+# Request behavior.
+timeout_seconds = 180
+max_tokens = 2048
+temperature = 0.0
+
+# safe < low < medium < high < critical
+# The model's non-safe findings below the threshold produce a warning.
+block_threshold = "critical"
+
+# What to do when the server is unavailable, JSON is invalid, etc.
+on_error = "warn" # "warn" or "block"
+quiet_allow = true
+
+# Reviews are keyed by package contents, git diff, endpoint, model and prompt.
+cache = true
+cache_ttl_hours = 720
+
+# Prompt size limits. AUR repositories are normally much smaller than these.
+max_file_bytes = 65536
+max_total_chars = 60000
+max_diff_chars = 30000
+include_git_diff = true
+include_full_files = true
+
+# Optional extra HTTP headers.
+# [headers]
+# X-Custom-Header = "value"

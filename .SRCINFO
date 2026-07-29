@@ -1,0 +1,26 @@
+pkgbase = yay-llm-review
+	pkgdesc = Opt-in llama.cpp security review hook for yay AUR packages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Kicer86/yay-llm-review
+	arch = any
+	license = MIT
+	depends = python
+	depends = git
+	depends = yay
+	source = yay-llm-review
+	source = hook.lua
+	source = config.example.toml
+	source = README.md
+	source = LICENSE
+	source = yay-llm-review.1
+	source = test_yay_llm_review.py
+	sha256sums = 6f4507fd2cfdc7a85f0715be6b410661e0b93e538f45b4132c1e4aead795e335
+	sha256sums = a9313b1ecaaecd6679ed6dd068bda7f89ed4e8ea60946d8338528f93e3e1833a
+	sha256sums = 810e97b5b7c776bac037882e93673c18fdf39b827cef388a3ef0d07063004847
+	sha256sums = 0d9442fda397fc583b8cc0b9aa9e22501f8d7c83c2dc876d8207e2691a6dec2b
+	sha256sums = 604032830b9fa31fdb9af6a6d0bf772bdd37ca2158b33382f54afeee57c220a7
+	sha256sums = 03a41c975d8ac8bacea0031b60c721f4e17344ccc5144f7cdab66cd7140a32fe
+	sha256sums = 34cf43731b0fcfcb2322098d28a9c07329068c5fec45d6acd07304ae92ad3c90
+
+pkgname = yay-llm-review
