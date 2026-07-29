@@ -5,7 +5,7 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=uwsm app -- /usr/bin/node /home/gokhanc/Development/Waykey/run.js
+ExecStart=/usr/bin/node /opt/waykey/run.js
 Restart=on-failure
 RestartSec=3
 Environment=NODE_ENV=production
