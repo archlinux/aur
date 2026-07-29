@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=model.rmoge2.v1.89.g8b414fde8
+pkgver=0.5.3.r159.g8b414fde8
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -63,7 +63,10 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+    # --match: upstream also pushes non-release tags (model-moge2-v1), and an
+    # unfiltered describe picks those up, producing a pkgver that vercmp sorts
+    # BELOW the previous release -> pacman sees a downgrade and offers no update.
+    git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {

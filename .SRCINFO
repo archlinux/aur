@@ -1,6 +1,6 @@
 pkgbase = lichtfeld-studio-git
 	pkgdesc = Real-time 3D Gaussian Splatting studio for point cloud visualization and editing
-	pkgver = model.rmoge2.v1.89.g8b414fde8
+	pkgver = 0.5.3.r159.g8b414fde8
 	pkgrel = 1
 	url = https://github.com/MrNeRF/LichtFeld-Studio
 	arch = x86_64
