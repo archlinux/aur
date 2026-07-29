@@ -1,6 +1,6 @@
 pkgbase = dynamic-drpc-wayland-bin
 	pkgdesc = Dynamic Discord Rich Presence based on active Hyprland / Niri windows
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/mrkirill046/discord-dynamic-status-wayland
 	install = dynamic-drpc-wayland-bin.install
@@ -8,7 +8,7 @@ pkgbase = dynamic-drpc-wayland-bin
 	license = MIT
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/mrkirill046/discord-dynamic-status-wayland/releases/download/v2.0.1/discord-dynamic-status-wayland
+	source_x86_64 = https://github.com/mrkirill046/discord-dynamic-status-wayland/releases/download/v2.0.2/discord-dynamic-status-wayland
 	sha256sums_x86_64 = 349db627f7716b50b1efb49441451e449147cec3bdc432696fbb1029311bc97e
 
 pkgname = dynamic-drpc-wayland-bin
