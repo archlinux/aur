@@ -2,7 +2,7 @@
 # Maintainer: antaresrvish <antaresrvish@users.noreply.github.com>
 
 pkgname='bomexpo-bin'
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='KiCad fabrication tool: assign LCSC parts and export a JLCPCB order from a .kicad_pcb'
 url='https://github.com/antaresrvish/bomexpo'
@@ -11,12 +11,16 @@ license=('MIT')
 provides=('bomexpo')
 conflicts=('bomexpo')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.1.3/bomexpo_0.1.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('60376f9e38c0b965ac79da33afc80241a6e01205a1e23b0ba2efb9bce1415ff8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.2.0/bomexpo_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('7b2c2d2f5efe851721605b16b64a407eaf6bf0d4f17f7c67164bc8d9c690bec6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.1.3/bomexpo_0.1.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('47bef220f232a6aac1b765d9f9effd15f4c01a82ce47a7b8c260ff5fc6c9f8b7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.2.0/bomexpo_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('a13fafe9090755530d6eac94836fde5db030bfa263a7ed3765cc3cf41fd2c445')
 
 package() {
   install -Dm755 "./bomexpo" "${pkgdir}/usr/bin/bomexpo"
+  # MIT carries a per-project copyright line, so it isn't one of the licenses
+  # in /usr/share/licenses/common and Arch requires the package to ship its
+  # own copy. goreleaser puts LICENSE in the archive by default.
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
