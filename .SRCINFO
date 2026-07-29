@@ -1,7 +1,7 @@
 pkgbase = zalo-for-linux-bin
 	pkgdesc = Zalo for Linux
 	pkgver = 26.7.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/doandat943/zalo-for-linux
 	arch = x86_64
 	license = MIT
