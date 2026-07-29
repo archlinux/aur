@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
 """
-Mahmoud Presser - Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
-Compatible with Linux (Wayland/X11), Windows (10/11), and macOS.
+Mahmoud Presser — Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
+
+Compatible with Linux (Wayland/X11), Windows (10/11). macOS experimental.
+This is the single entry point — run it directly:
+    python presser_core.py
 
 Features:
- 1. Multi-Column X11 & Cross-Platform Latin Base Key Resolution: Iterates all OS KeySym columns (0 to 7) to dynamically detect the exact Latin base character (A-Z, 0-9) for every physical key. Fully portable across all devices, OS platforms, and active keyboard layout groups without hardcoded maps.
- 2. Discard Stop Action: Clicking 'Stop Live Recording' automatically discards the trailing Mouse 1 click so it is NEVER saved into your macro sequence!
- 3. Resolved ASCII Collision: Key 'O' records as 'O' and 'Up' arrow records as 'UP'.
- 4. ESC & F8 Stop Triggers for Live Sequence Recording: Pressing ESC or F8 cleanly stops live recording without saving ESC/F8 into the sequence.
- 5. Overriding show_all() in GTK & QStackedWidget in Qt: Fixes startup tab bleed / overlapping widgets glitch.
- 6. Premium Modern Dark Theme: Sleek dark palette (#1e1e2e), rounded cards, high-contrast action badges.
- 7. Named Macro Sequence Profiles Manager: Save As, Load, Rename, and Delete custom profiles.
- 8. Dual Step Editing: Direct double-click table cell editing + Edit Selected / Update Selected buttons.
- 9. Fixed Step Reordering: Move Up & Move Down with live selection tracking in Qt & GTK.
- 10. Multi-Key & Combination Support: e.g., ALT+A, CTRL+SHIFT+E, CTRL+C, F8, Mouse 1.
- 11. Combo-Aware Global Hotkey Listener: Starts/Stops on single keys OR key combinations.
- 12. 20ms Micro-Hold Synthesis for 100% reliable combination registration across OS & apps.
+ 1. Multi-Column X11 & Cross-Platform Latin Base Key Resolution
+ 2. Live Recording with automatic trailing click discard
+ 3. ESC / hotkey stop triggers for sequence recording
+ 4. Named Macro Sequence Profiles Manager
+ 5. Premium Modern Dark Theme (Qt & GTK)
+ 6. Multi-Key & Combination Support (e.g., ALT+A, CTRL+SHIFT+E)
+ 7. Combo-Aware Global Hotkey Listener
 """
 
 import sys
@@ -28,13 +26,24 @@ import threading
 import subprocess
 import select
 import re
+import argparse
 import platform
+import atexit
 
-# Platform Flags (Hardcoded for Linux Only)
-SYSTEM_NAME = "linux"
-IS_WINDOWS = False
-IS_LINUX = True
-IS_MACOS = False
+# Platform Flags (Auto-detected)
+SYSTEM_NAME = platform.system().lower()
+IS_WINDOWS = SYSTEM_NAME == "windows"
+IS_LINUX = SYSTEM_NAME == "linux"
+IS_MACOS = SYSTEM_NAME == "darwin"
+
+# Debug Mode (set by --debug flag in main())
+DEBUG = sys.stdout.isatty()  # Auto-enable debug logs when running from terminal
+
+
+def debug_log(msg):
+    """Print a debug message (only shows when running from terminal or --debug is passed)."""
+    if DEBUG:
+        print(f"[DEBUG] {msg}")
 
 # Auto-redirect execution to virtual environment if available
 venv_linux = os.path.expanduser("~/venv/bin/python3")
@@ -152,42 +161,50 @@ if EVDEV_AVAILABLE:
     }
 
 
-def get_running_pid():
-    if os.path.exists(PID_FILE):
+def cleanup_pid():
+    """Remove PID file on exit."""
+    try:
+        if os.path.exists(PID_FILE):
+            os.unlink(PID_FILE)
+    except Exception:
+        pass
+
+
+def acquire_pid_lock():
+    """Try to acquire exclusive PID file lock. Returns True if successful (we are the sole instance)."""
+    try:
+        # Try exclusive create to detect another instance atomically
+        fd = os.open(PID_FILE, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        with os.fdopen(fd, 'w') as f:
+            f.write(str(os.getpid()))
+        atexit.register(cleanup_pid)
+        return True
+    except FileExistsError:
+        # PID file exists - check if it's stale
         try:
-            with open(PID_FILE, "r") as f:
+            with open(PID_FILE, 'r') as f:
                 pid = int(f.read().strip())
             os.kill(pid, 0)
-            return pid
-        except Exception:
-            pass
-    return None
+            # Another instance is alive
+            return False
+        except (ValueError, ProcessLookupError):
+            # Stale PID file, overwrite it
+            try:
+                with open(PID_FILE, 'w') as f:
+                    f.write(str(os.getpid()))
+                atexit.register(cleanup_pid)
+                return True
+            except Exception:
+                return False
+    except Exception:
+        return False
 
 
-# Handle CLI Toggle
-running_pid = get_running_pid()
-if "--toggle" in sys.argv:
-    if running_pid:
-        try:
-            if hasattr(signal, "SIGUSR1"):
-                os.kill(running_pid, signal.SIGUSR1)
-            else:
-                os.kill(running_pid, signal.SIGTERM)
-            print("Toggled Mahmoud Presser.")
-            sys.exit(0)
-        except Exception as err:
-            print(f"Error toggling presser: {err}")
-            sys.exit(1)
-    else:
-        print("Mahmoud Presser is not currently running.")
-        sys.exit(1)
+def signal_cleanup(signum=None, frame=None):
+    """Signal handler for clean shutdown."""
+    cleanup_pid()
+    sys.exit(0)
 
-# Write PID
-try:
-    with open(PID_FILE, "w") as f:
-        f.write(str(os.getpid()))
-except Exception:
-    pass
 
 
 def normalize_key_str(k):
@@ -337,6 +354,7 @@ class PresserEngine:
         self.stop_event = threading.Event()
 
         self.init_input_backend()
+        debug_log(f"Engine initialized with backend: {self.backend}")
 
     def init_input_backend(self):
         if IS_LINUX and EVDEV_AVAILABLE:
@@ -361,6 +379,7 @@ class PresserEngine:
                 print("Error initializing pynput controller:", ex)
 
         self.backend = "none"
+        debug_log(f"No input backend available (evdev={EVDEV_AVAILABLE}, pynput={PYNPUT_AVAILABLE})")
 
     def parse_single_key(self, key_str):
         key_norm = normalize_key_str(key_str)
@@ -474,7 +493,7 @@ class PresserEngine:
 
         self.stop_event.clear()
         try:
-            self.stop_event.wait(max(0.3, delay))
+            self.stop_event.wait(delay)
             while not self.stop_event.is_set():
                 self.press_combo_down(parsed_keys)
                 self.stop_event.wait(0.02)
@@ -492,7 +511,7 @@ class PresserEngine:
 
         self.stop_event.clear()
         try:
-            self.stop_event.wait(max(0.3, sequence_delay))
+            self.stop_event.wait(sequence_delay)
             current_loop = 0
             while not self.stop_event.is_set():
                 current_loop += 1
@@ -541,7 +560,7 @@ class PresserEngine:
 
         self.stop_event.clear()
         try:
-            self.stop_event.wait(max(0.3, interval_delay))
+            self.stop_event.wait(interval_delay)
             while not self.stop_event.is_set():
                 if self.backend == "evdev" and self.ui:
                     for char in text:
@@ -589,6 +608,7 @@ class GlobalHotkeyListener:
         self.listener = None
         self.running = False
         self.last_trigger_time = 0
+        debug_log(f"GlobalHotkeyListener created, default key: F8")
 
     def set_toggle_key(self, key_str):
         if key_str:
@@ -821,6 +841,7 @@ def record_live_macro_sequence(on_step_added, stop_event, toggle_key_str="F8", o
         except Exception: pass
 
     threading.Thread(target=_live_worker, daemon=True).start()
+    debug_log(f"Live macro recording started (toggle key: {toggle_key_str})")
 
 
 # --- Qt GUI Implementation ---
@@ -1026,6 +1047,7 @@ def run_qt_app(engine):
                 signal.signal(signal.SIGUSR1, lambda signum, frame: self.dispatcher.toggle_signal.emit())
 
         def load_config(self):
+            debug_log(f"Loading config from {CONFIG_FILE}")
             cfg = {
                 "mode": "single",
                 "start_stop_hotkey": "F8",
@@ -1064,9 +1086,11 @@ def run_qt_app(engine):
                 for s in p_steps:
                     s["key"] = normalize_key_str(s.get("key", "Mouse 1"))
 
+            debug_log(f"Config loaded: mode={cfg.get('mode', 'single')}, hotkey={cfg.get('start_stop_hotkey', 'F8')}, steps={len(steps)}")
             return cfg
 
         def save_config(self):
+            debug_log(f"Saving config to {CONFIG_FILE}")
             mode_str = "single"
             if hasattr(self, 'stack_widget'):
                 idx = self.stack_widget.currentIndex()
@@ -1429,12 +1453,10 @@ def run_qt_app(engine):
 
         def on_mode_changed(self):
             idx = self.stack_widget.currentIndex()
-            if idx == 0:
-                self.stack_widget.setCurrentIndex(0)
-            elif idx == 1:
-                self.stack_widget.setCurrentIndex(1)
-            else:
-                self.stack_widget.setCurrentIndex(2)
+            mode_names = ["Single Clicker", "Macro Sequence", "Auto-Typer"]
+            if 0 <= idx < len(mode_names):
+                self.seq_status_lbl.setText(f"Status: ⏹ Ready — {mode_names[idx]} mode")
+                self.seq_status_lbl.setStyleSheet("font-weight: bold; color: #a6adc8;")
 
         def start_record(self, btn, target_entry, is_sequence_record=False, is_start_stop_record=False):
             dlg = KeyRecorderDialog(self)
@@ -1481,6 +1503,8 @@ def run_qt_app(engine):
                 record_live_macro_sequence(on_step_added, self.live_rec_stop_event, self.start_stop_keybind, on_stopped)
 
         def on_live_step_added(self, step):
+            if not self.is_live_recording:
+                return
             if self.sequence_steps:
                 self.sequence_steps[-1]["delay_ms"] = step.get("delay_ms", 200)
             step["key"] = normalize_key_str(step.get("key", "Mouse 1"))
@@ -1681,9 +1705,6 @@ def run_qt_app(engine):
             self.engine.stop()
             if hasattr(self, 'global_listener') and self.global_listener:
                 self.global_listener.stop()
-            if os.path.exists(PID_FILE):
-                try: os.remove(PID_FILE)
-                except Exception: pass
             event.accept()
 
     app = QApplication(sys.argv)
@@ -2212,6 +2233,8 @@ def run_gtk_app(engine):
 
                     def on_step(step):
                         def _u():
+                            if not self.is_live_recording:
+                                return False
                             if self.sequence_steps:
                                 self.sequence_steps[-1]["delay_ms"] = step.get("delay_ms", 200)
                             step["key"] = normalize_key_str(step.get("key", "Mouse 1"))
@@ -2314,7 +2337,7 @@ def run_gtk_app(engine):
                     threading.Thread(target=self.engine.sequence_loop, args=(self.sequence_steps, delay, loop_cnt, on_stop_ui, on_progress), daemon=True).start()
                 else:
                     txt = text_buffer.get_text(text_buffer.get_start_iter(), text_buffer.get_end_iter(), True)
-                cdelay = safe_float(char_delay_entry.get_text(), 20) / 1000.0
+                    cdelay = safe_float(char_delay_entry.get_text(), 20) / 1000.0
                     threading.Thread(target=self.engine.type_loop, args=(txt, cdelay, delay, on_stop_ui), daemon=True).start()
 
             start_btn.connect("clicked", on_start)
@@ -2359,13 +2382,163 @@ def run_gtk_app(engine):
     return True
 
 
+def print_progress_bar(current, total, label, bar_width=24):
+    """Draw a clean text-based progress bar to the terminal."""
+    percent = current / total if total > 0 else 1.0
+    filled = int(bar_width * percent)
+    bar = "█" * filled + "░" * (bar_width - filled)
+    pct_str = f"{percent:.0%}".rjust(4)
+    print(f"\r  {pct_str} |{bar}| Step {current}/{total} — {label}", end="", flush=True)
+    if current == total and total > 0:
+        print()
+
+
+def check_import(pkg):
+    """Try to import a package. Returns True if available."""
+    try:
+        if pkg == "PyQt6":
+            try:
+                from PyQt6.QtWidgets import QApplication
+                return True
+            except ImportError:
+                try:
+                    from PyQt5.QtWidgets import QApplication
+                    return True
+                except ImportError:
+                    return False
+        elif pkg == "pynput":
+            import pynput
+            return True
+        elif pkg == "python-xlib":
+            import Xlib
+            return True
+        elif pkg == "evdev":
+            from evdev import ecodes
+            return True
+        else:
+            __import__(pkg)
+            return True
+    except ImportError:
+        return False
+
+
+def ensure_dependencies():
+    """Check & auto-install missing Python dependencies. Silent when all are satisfied."""
+    # Platform-specific package sets
+    if IS_WINDOWS:
+        all_packages = ["PyQt6", "pynput"]
+    elif IS_LINUX:
+        all_packages = ["PyQt6", "pynput", "python-xlib", "evdev"]
+    else:
+        all_packages = ["PyQt6", "pynput"]
+
+    # Phase 1: Scan which packages are missing
+    to_install = []
+    for pkg in all_packages:
+        if not check_import(pkg):
+            to_install.append(pkg)
+
+    if not to_install:
+        return  # Silent when everything is already installed
+
+    # Phase 2: Install missing packages with progress
+    total = len(to_install)
+    print()
+    print(f"⬇️  Installing {total} missing package{'s' if total > 1 else ''}...")
+    print()
+
+    for i, pkg in enumerate(to_install, 1):
+        print_progress_bar(0, total, f"Installing {pkg}...")
+        print()
+        print(f"  Downloading {pkg}...")
+
+        try:
+            pip_args = [sys.executable, "-m", "pip", "install", pkg]
+            if "--no-reexec" not in sys.argv:
+                pip_args.append("--user")
+
+            result = subprocess.run(
+                pip_args + ["-q"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+
+            if result.returncode == 0:
+                if check_import(pkg):
+                    print_progress_bar(i, total, f"✅ {pkg} installed")
+                else:
+                    print(f"  ⚠️  {pkg} installed but import failed (restart may be needed)")
+                    print_progress_bar(i, total, f"⚠️  {pkg} — import failed")
+            else:
+                err = result.stderr.strip().split("\n")[-1] if result.stderr else "unknown error"
+                print(f"  ❌ Error: {err}")
+                print(f"     Try: pip install {pkg}")
+                print_progress_bar(i, total, f"❌ {pkg} failed")
+
+        except Exception as ex:
+            print(f"  ❌ Error installing {pkg}: {ex}")
+            print(f"     Try: pip install {pkg}")
+            print_progress_bar(i, total, f"❌ {pkg} error")
+
+    print()
+    print(f"Done. {total} package{'s' if total > 1 else ''} installed.")
+    print(f"If the app fails to launch, run: pip install -r requirements.txt")
+    print()
+
+
 def main():
+    ensure_dependencies()
     parser = argparse.ArgumentParser(description="Mahmoud Presser - Cross-Platform Auto Clicker, Macro & Auto Typer")
     parser.add_argument("--qt", action="store_true", help="Force Qt GUI")
     parser.add_argument("--gtk", action="store_true", help="Force GTK GUI")
     parser.add_argument("--toggle", action="store_true", help="Toggle auto-presser state of running instance")
+    parser.add_argument("--debug", action="store_true", help="Enable verbose debug output for troubleshooting")
     parser.add_argument("--no-reexec", action="store_true", help=argparse.SUPPRESS)
     args, unknown = parser.parse_known_args()
+
+    global DEBUG
+    if args.debug:
+        DEBUG = True
+        debug_log("Debug mode enabled")
+
+    # Acquire PID lock or handle --toggle
+    if args.toggle:
+        try:
+            with open(PID_FILE, 'r') as f:
+                pid = int(f.read().strip())
+            os.kill(pid, 0)
+            if hasattr(signal, "SIGUSR1"):
+                os.kill(pid, signal.SIGUSR1)
+            else:
+                os.kill(pid, signal.SIGTERM)
+            print("Toggled Mahmoud Presser.")
+            sys.exit(0)
+        except FileNotFoundError:
+            print("Mahmoud Presser is not currently running.")
+            sys.exit(1)
+        except ProcessLookupError:
+            print("Mahmoud Presser is not currently running (stale PID file).")
+            cleanup_pid()
+            sys.exit(1)
+        except Exception as err:
+            print(f"Error toggling Mahmoud Presser: {err}")
+            sys.exit(1)
+    else:
+        if not acquire_pid_lock():
+            print("Another instance of Mahmoud Presser is already running.")
+            print("Use --toggle to toggle it, or stop the existing process first.")
+            sys.exit(1)
+
+    # Register signal handlers for clean shutdown
+    for sig in [signal.SIGINT, signal.SIGTERM]:
+        try:
+            signal.signal(sig, signal_cleanup)
+        except Exception:
+            pass
+
+    debug_log(f"Platform: {platform.system()}, Python: {sys.version}")
+    debug_log(f"Arguments: {sys.argv[1:]}")
 
     engine = PresserEngine()
 

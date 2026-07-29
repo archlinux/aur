@@ -1,6 +1,6 @@
 pkgbase = mahmoud-presser
 	pkgdesc = Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/Mimogu/mahmoud-presser
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mahmoud-presser
 	depends = python-pynput
 	depends = python-evdev
 	depends = python-gobject
-	source = linux_clicker.py
+	source = mahmoud-presser.py
 	source = mahmoud-presser.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
