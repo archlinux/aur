@@ -1,0 +1,27 @@
+pkgbase = ftpocket
+	pkgdesc = A secure FTP, FTPS, and SFTP desktop client
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Navid079/ftpocket
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	options = !strip
+	source = git+https://github.com/Navid079/ftpocket.git#tag=v1.2.1
+	sha256sums = SKIP
+
+pkgname = ftpocket
