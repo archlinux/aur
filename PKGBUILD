@@ -1,18 +1,18 @@
 # Maintainer: maintainer@speakoflow.com
 
-pkgname=speakoflow-appimage
+pkgname=speakoflow-bin
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="SpeakoFlow is a free, open-source, local-first voice-to-text desktop application with offline speech recognition, AI-assisted writing, speech cleanup, translation, and a system-wide voice assistant. Learn more at https://www.speakoflow.com/"
+pkgrel=2
+pkgdesc="A free, open-source, local-first voice-to-text desktop application with offline speech recognition, AI-assisted writing, speech cleanup, translation, and a system-wide voice assistant."
 
 arch=('x86_64')
 url="https://github.com/AbhishekBarali/SpeakoFlow"
 license=('MIT')
-provides=('speakoflow-appimage')
-conflicts=('speakoflow-bin' 'speakoflow-git' 'speakoflow')
-
+conflicts=('speakoflow-git' 'speakoflow')
+provides=('speakoflow-bin')
 
 options=(!strip !debug)
+
 _appimage="SpeakoFlow_${pkgver}_amd64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('c7fa361909f076ab7cdd45a8069ff34b84d54e41d3b5a6482c5acf178578c9e6')
@@ -26,24 +26,22 @@ prepare(){
 package() {
     cd "$srcdir"
 
-    # 1. Install the AppImage as the main binary
-    install -Dm755 "${_appimage}" "${pkgdir}/usr/bin/speakoflow"
+    #Installing App image
+    install -Dm755 "${_appimage}" "${pkgdir}/opt/speakoflow/SpeakoFlow.AppImage"
 
-    # 2. Automatically find the Desktop file (wherever it is in the extracted folder)
-    # This fixes the "cannot stat" error by searching for any .desktop file
-    local _desktop_path=$(find squashfs-root -name "*.desktop" -print -quit)
-    
-    if [ -n "$_desktop_path" ]; then
-        install -Dm644 "$_desktop_path" "${pkgdir}/usr/share/applications/speakoflow.desktop"
-        
-        # 3. Fix the Exec path so it launches /usr/bin/speakoflow
-        sed -i "s|Exec=.*|Exec=/usr/bin/speakoflow|g" "${pkgdir}/usr/share/applications/speakoflow.desktop"
-    fi
+    #create /usr/bin file
+    install -dm755 "${pkgdir}/usr/bin"
 
-    # 4. Install Icons
-    # We look for the standard icons directory and copy it to the system
-    if [ -d "squashfs-root/usr/share/icons" ]; then
-        mkdir -p "${pkgdir}/usr/share"
-        cp -r squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
-    fi
+    #create a link to the appimage and bin file
+    ln -s /opt/speakoflow/SpeakoFlow.AppImage "${pkgdir}/usr/bin/speakoflow"
+
+    #find the desktop file
+    desktop_file=$(find squashfs-root -name '*.desktop' -print -quit)
+    install -Dm644 "$desktop_file" "${pkgdir}/usr/share/applications/speakoflow.desktop"
+
+    #update exec line
+    sed -i 's|^Exec=.*|Exec=/usr/bin/speakoflow|' "${pkgdir}/usr/share/applications/speakoflow.desktop"
+
+    #installing icons
+    cp -r squashfs-root/usr/share/icons "${pkgdir}/usr/share"
 }
