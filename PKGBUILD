@@ -3,14 +3,14 @@
 _pkgname=gotohp
 pkgname=${_pkgname}-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Google Photos Desktop GUI Client - binary version'
 arch=('x86_64')
 url='https://github.com/xob0t/gotohp'
 license=('MIT')
 depends=(
-  webkit2gtk-4.1
-  gtk3
+  gtk4
+  webkitgtk-6.0
 )
 provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
