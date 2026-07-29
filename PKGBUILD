@@ -6,17 +6,17 @@ _firefox_pkgname=firefox-$_pkgname_suffix
 _librewolf_pkgname=librewolf-$_pkgname_suffix
 _id=idcac-pub@guus.ninja
 pkgname=("$_librewolf_pkgname-bin" "$_firefox_pkgname-bin")
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=2
 pkgdesc="Debloated fork of the extension I don't care about cookies"
 url=https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies
 arch=('any')
 license=('GPL-3.0-only')
 noextract=("$_id-$pkgver.xpi")
-_number=4613590
+_number=4637154
 source=("$_id-$pkgver.xpi::https://addons.mozilla.org/firefox/downloads/file/$_number/istilldontcareaboutcookies-$pkgver.xpi"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/refs/tags/v$pkgver/LICENSE")
-b2sums=('4d12bef164c69edc6f3274ea9b8404a0a45b88c7ebe8ac3e33a8219fcc70d6bc2cd07853db28f16dba4a513ed8cea169db7078e2c4dacf9e93e8b79185475ade'
+b2sums=('7d4a8c11af7b9c43a095155ebd78979e309b3f03751cd28a57cbf239914ade0b96fcee6754e44bb83ba6b364e89c9efe0a257902c8ac77c0aa8c8a756f0980ca'
         '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
 
 _package() {

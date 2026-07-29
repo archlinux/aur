@@ -1,14 +1,14 @@
 pkgbase = librewolf-extension-istilldontcareaboutcookies-bin
 	pkgdesc = Debloated fork of the extension I don't care about cookies
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 2
 	url = https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies
 	arch = any
 	license = GPL-3.0-only
-	noextract = idcac-pub@guus.ninja-1.1.8.xpi
-	source = idcac-pub@guus.ninja-1.1.8.xpi::https://addons.mozilla.org/firefox/downloads/file/4613590/istilldontcareaboutcookies-1.1.8.xpi
-	source = LICENSE-1.1.8::https://raw.githubusercontent.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/refs/tags/v1.1.8/LICENSE
-	b2sums = 4d12bef164c69edc6f3274ea9b8404a0a45b88c7ebe8ac3e33a8219fcc70d6bc2cd07853db28f16dba4a513ed8cea169db7078e2c4dacf9e93e8b79185475ade
+	noextract = idcac-pub@guus.ninja-1.1.9.xpi
+	source = idcac-pub@guus.ninja-1.1.9.xpi::https://addons.mozilla.org/firefox/downloads/file/4637154/istilldontcareaboutcookies-1.1.9.xpi
+	source = LICENSE-1.1.9::https://raw.githubusercontent.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/refs/tags/v1.1.9/LICENSE
+	b2sums = 7d4a8c11af7b9c43a095155ebd78979e309b3f03751cd28a57cbf239914ade0b96fcee6754e44bb83ba6b364e89c9efe0a257902c8ac77c0aa8c8a756f0980ca
 	b2sums = 74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd
 
 pkgname = librewolf-extension-istilldontcareaboutcookies-bin
