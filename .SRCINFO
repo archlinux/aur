@@ -1,0 +1,15 @@
+pkgbase = dumb-uki-efi-stub-git
+	pkgdesc = Dumb UKI EFI Stub
+	pkgver = r3.8dd1224
+	pkgrel = 1
+	url = https://codeberg.org/dimich/dumb-uki-efi-stub
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = BSD-3-Clause
+	makedepends = clang
+	source = git+https://codeberg.org/dimich/dumb-uki-efi-stub
+	source = git+https://github.com/ncroxon/gnu-efi
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = dumb-uki-efi-stub-git
