@@ -3,7 +3,7 @@
 
 pkgname=hcc-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland Control Center — Install and manage Hyprland desktops"
 arch=('any')
 url="https://github.com/laosifu/Hyprland-Control-Center"
@@ -70,6 +70,7 @@ HCC_EOF
     cp -a handlers "$pkgdir/usr/share/hcc/handlers"
     cp -a VERSION "$pkgdir/usr/share/hcc/VERSION"
     cp -a docs "$pkgdir/usr/share/hcc/docs"
+    cp -a config "$pkgdir/usr/share/hcc/config"
     cp -a completions "$pkgdir/usr/share/hcc/completions"
 
     # Install shell completions (bash)
