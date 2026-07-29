@@ -1,7 +1,7 @@
 pkgbase = jgrep-bin
 	pkgdesc = grep for JSON with jq-style filter expressions (prebuilt binary)
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subnix-work/jgrep-tinox
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = jgrep-bin
 	depends = gc
 	provides = jgrep
 	conflicts = jgrep
+	options = !debug
 	source = https://github.com/subnix-work/jgrep-tinox/releases/download/v1.0.3/jgrep-1.0.3-linux-x86_64.tar.gz
 	sha256sums = 4d91111cf6ad48419ca1b3d0062c6c4a65be48e7df07618ce854ac652762d594
 
