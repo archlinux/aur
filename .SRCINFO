@@ -53,6 +53,7 @@ pkgbase = codex-desktop-git
 	provides = codex-desktop
 	conflicts = codex-desktop
 	conflicts = codex-desktop-linux
+	conflicts = openai-codex-desktop
 	options = !debug
 	options = !strip
 	source = codex-desktop-git::git+https://github.com/ilysenko/codex-desktop-linux.git

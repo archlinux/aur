@@ -25,9 +25,10 @@ depends=(
     'xdg-utils'
     'hicolor-icon-theme'
     # Electron runtime libraries. Upstream's packaging/linux/PKGBUILD.template
-    # also lists atk, which Arch merged into at-spi2-core, and omits the direct
-    # links namcap reports against opt/codex-desktop/electron and the rebuilt
-    # native modules: expat, systemd-libs, gcc-libs and glibc.
+    # names atk, which still resolves because at-spi2-core provides it, but
+    # at-spi2-core is the package that actually exists. The template also omits
+    # the direct links namcap reports against opt/codex-desktop/electron and the
+    # rebuilt native modules: expat, systemd-libs, gcc-libs and glibc.
     'alsa-lib'
     'at-spi2-core'
     'cairo'
@@ -58,8 +59,10 @@ makedepends=(
     'python'
     'curl'
     'unzip'
-    # 7zip, not p7zip: upstream's check_deps rejects p7zip outright because it
-    # cannot read the APFS DMG the payload ships in.
+    # Upstream's template names p7zip here. Either resolves, since 7zip both
+    # provides and replaces it, but 7zip is the package that actually exists.
+    # The installer does refuse genuinely old p7zip builds, which cannot read
+    # the APFS DMG, and those are no longer installable on Arch anyway.
     '7zip'
     'nodejs'
     'npm'
@@ -81,10 +84,15 @@ optdepends=(
 )
 # codex-desktop is upstream's own identity for the app: /opt/codex-desktop, the
 # Electron WM_CLASS, the ~/.config/codex-desktop settings directory, and the name
-# its deb, rpm and pacman packages all use. codex-desktop-linux is a separate AUR
-# package built from a soft-fork, and installs to the same paths.
+# its deb, rpm and pacman packages all use.
+#
+# The other two are separate AUR packagings of the same app that cannot be
+# co-installed. codex-desktop-linux builds from a soft-fork into the same paths.
+# openai-codex-desktop repackages the macOS archive and owns /usr/bin/codex-desktop
+# as well, but declares no provides, so the name has to be listed explicitly.
+# Listing it also covers chatgpt-desktop-bin, which provides and replaces it.
 provides=('codex-desktop')
-conflicts=('codex-desktop' 'codex-desktop-linux')
+conflicts=('codex-desktop' 'codex-desktop-linux' 'openai-codex-desktop')
 options=('!debug' '!strip')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/ilysenko/codex-desktop-linux.git"
