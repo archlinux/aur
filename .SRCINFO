@@ -23,6 +23,7 @@ pkgbase = linux-soundboard
 	optdepends = swhkd-git: native Wayland hotkey daemon from upstream source
 	optdepends = xorg-xwayland: enables the native X11 backend inside Wayland sessions
 	conflicts = linux-soundboard-git
+	options = !lto
 	source = linux-soundboard-2.2.0.tar.gz::https://github.com/germanua/Linux-SoundBoard/archive/refs/tags/v2.2.0.tar.gz
 	sha256sums = 1be97cdd863bd22925ea10aac01f8d36e855c1e9b315d9cc1c66ad55a5086c42
 

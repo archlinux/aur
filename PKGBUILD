@@ -30,6 +30,10 @@ optdepends=(
   'xorg-xwayland: enables the native X11 backend inside Wayland sessions'
 )
 conflicts=('linux-soundboard-git')
+# The bundled SQLite (rusqlite "bundled") is compiled by the cc crate; under LTO
+# it becomes bitcode the final Rust link cannot resolve (undefined sqlite3_*
+# symbols). Disable LTO so the package builds regardless of the host makepkg.conf.
+options=('!lto')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
