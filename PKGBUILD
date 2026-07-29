@@ -1,7 +1,7 @@
 # Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
 pkgname=bibtex-tidy
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc="BibTeX Tidy - Cleaner and Formatter for BibTeX files "
 arch=('any')
 url="https://github.com/FlamingTempura/bibtex-tidy"
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq' 'txt2man')
 source=("https://registry.npmjs.org/bibtex-tidy/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('0a2c1bb73911a7cee36a30ce1fc86feffe39b2d39acd4c94d02aac6f84a00285')
+sha256sums=('cebe51d16c99a9881d33d52fbd477d4c2c808ca01cc33a04e0437e999a352e09')
 
 package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
