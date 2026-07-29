@@ -1,4 +1,3 @@
-
 # The package and Lua loader are inert until this is changed to true.
 enabled = false
 
@@ -28,6 +27,10 @@ block_threshold = "critical"
 # What to do when the server is unavailable, JSON is invalid, etc.
 on_error = "warn" # "warn" or "block"
 quiet_allow = true
+
+# Show a spinner while waiting for llama.cpp. When stderr is not a terminal,
+# a single persistent status line is printed instead.
+show_progress = true
 
 # Reviews are keyed by package contents, git diff, endpoint, model and prompt.
 cache = true

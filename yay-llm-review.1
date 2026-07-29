@@ -26,6 +26,11 @@ Show effective paths and basic configuration.
 .B scan
 Manually review an AUR checkout. Use --package-base NAME to override its name
 and --json to print the normalized model response.
+.SH PROGRESS
+When standard error is a terminal, the hook displays a spinner while waiting for
+llama.cpp. With redirected output it prints one status line. Set
+.B show_progress = false
+in the configuration to disable this behavior.
 .SH FILES
 .TP
 .I $XDG_CONFIG_HOME/yay/init.lua

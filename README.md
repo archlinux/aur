@@ -1,4 +1,3 @@
-
 # yay-llm-review
 
 `yay-llm-review` adds an opt-in `AURPreInstall` Lua hook to yay 13. The hook
@@ -59,6 +58,15 @@ yay-llm-review scan ~/.cache/yay/some-package
 
 Exit statuses are `0` for allow, `10` for warning, `20` for block and `30` for
 scanner failure.
+
+## Progress indication
+
+On a terminal, the hook displays a spinner while waiting for `llama.cpp`.
+For redirected output it prints one persistent status line instead. Disable it with:
+
+```toml
+show_progress = false
+```
 
 ## Policy
 
