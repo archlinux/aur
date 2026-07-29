@@ -3,15 +3,15 @@
 _pkgname=n-dhcp4
 pkgname=$_pkgname-git
 pkgver=1.r91.g37d0ff4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Dynamic Host Configuration Protocol for IPv4"
 url="https://github.com/nettools/n-dhcp4"
 license=('Apache-2.0 OR LGPL-2.1-or-later')
 arch=(x86_64)
-depends=(glibc)
-makedepends=(git meson pkgconf)
-provides=("$_pkgname=${pkgver%%.*}")
+depends=(glibc libgcc)
+makedepends=(git meson ninja pkgconf)
+provides=("$_pkgname=${pkgver%%.r*}" 'libndhcp4.so')
 conflicts=("$_pkgname")
 # subprojects/{c-list,c-siphash,c-stdaux} are git submodules; clone them as
 # separate sources and rewire the submodule URLs to these local checkouts in
@@ -50,7 +50,7 @@ build() {
 
 check() {
   if unshare -Urn true 2>/dev/null; then
-    meson test -C build
+    unshare -Urn -- meson test -C build
   else
     meson test -C build --no-suite n-dhcp4
     meson test -C build 'n-dhcp4:API Symbol Visibility' 'n-dhcp4:Message Handling' \
