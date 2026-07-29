@@ -32,12 +32,11 @@ build() {
     npm run build
     cd ..
     #Build the database
-    echo 'DATABASE_URL="sqlite:///tmp/qobuz-player.db"' > .env
+    export DATABASE_URL="sqlite:///tmp/qobuz-player.db"
     cargo sqlx db create
     cargo sqlx migrate run --source player-module/migrations
     #Build the program
-    cargo build --frozen --release --all-features
-
+    cargo build --frozen --release
 }
 
 package() {
