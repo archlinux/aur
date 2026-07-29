@@ -1,7 +1,7 @@
 # Maintainer: Pavle Barši <pakibarsipavle@gmail.com>
 
 pkgname=mcmodm
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Minecraft Mod Manager written in C++"
 arch=('x86_64')
