@@ -13,7 +13,7 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
 pkgver=r18952.5bdaa898db
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
@@ -140,6 +140,8 @@ build() {
 package() {
 	# Directs files into Arch's strict isolated filesystem staging area
   	DESTDIR="${pkgdir}" cmake --install build
+
+	install -d "${pkgdir}/usr/bin"
 
 	# 1. Create a global shortcut command called 'attach-world'
 	echo '#!/bin/sh' > "${pkgdir}/usr/bin/attach-world"
