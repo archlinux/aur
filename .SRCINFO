@@ -1,7 +1,7 @@
 pkgbase = r-torch
 	pkgdesc = Tensors and Neural Networks with 'GPU' Acceleration
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=torch
 	arch = x86_64
 	license = MIT
@@ -28,7 +28,13 @@ pkgbase = r-torch
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/torch_0.17.0.tar.gz
+	source = https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-2.8.0+cpu.zip
+	source = https://torch-cdn.mlverse.org/binaries/refs/heads/cran/v0.17.0/latest/lantern-0.17.0+cpu+x86_64-Linux.zip
 	md5sums = 962471bc62a5a8a35e4bcc14bc0e27e5
+	md5sums = cedcb2102f9734543df22a8e33523e2f
+	md5sums = f69b8b2f6a2229fb35e0f6c4903333dd
 	b2sums = 0f19ee2587008374a5c64dfa3bdf109562e0057258b3e8a46f3b483b2faad8f4a51840480a91bcd9a39dd429a5886fcc656949ba9d76155e538d0192ca55cea4
+	b2sums = a2453310eb45ff42ca1fa5938429e1a2cdfe9a15821baa29e2b275f4fe9a2d2c78948886cfb130bfd3177e534520924f3e39d1bad57bcf90704eb75de2ece7b7
+	b2sums = 600cce08b214ff811104276ea1fe989e88c9c274d84eaccdf0efa96514ee43ca2eb9b9153e7dbf25d1a2620028b10568a53be879c3bf34575fd5fbd19cd5cb5f
 
 pkgname = r-torch
