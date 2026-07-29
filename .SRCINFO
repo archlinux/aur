@@ -1,6 +1,6 @@
 pkgbase = voltius-git
 	pkgdesc = Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required (main branch)
-	pkgver = 0.12.0.r0.gbbb4d7d9
+	pkgver = 0.13.0.r0.g5a7b10e0
 	pkgrel = 1
 	url = https://github.com/VoltiusApp/voltius
 	arch = x86_64
