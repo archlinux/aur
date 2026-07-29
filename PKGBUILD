@@ -1,6 +1,5 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
-
 pkgname=n-dhcp4
 pkgver=1
 pkgrel=1
@@ -37,7 +36,6 @@ prepare() {
 }
 
 build() {
-  rm -rf build
   arch-meson "$pkgname-$pkgver" build
   ninja -C build
 }
@@ -55,4 +53,3 @@ check() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-
