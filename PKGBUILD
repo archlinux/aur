@@ -109,7 +109,7 @@ package() {
   _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'name' "$_pkgname")"
   _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'desktopName' "$_pkgname.desktop")"
 
-  local _from_file _to_file _path _files=(
+  local _from_file _to_file _to_path _files=(
     "Mailspring.desktop.in":"$_pkgname.desktop":'usr/share/applications'
     "mailspring.metainfo.xml.in":"$_pkgname.metainfo.xml":'usr/share/metainfo'
   )
