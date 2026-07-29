@@ -9,6 +9,6 @@ pkgbase = pagerduty-short-circuiter
 	makedepends = go
 	depends = glibc
 	source = pagerduty-short-circuiter::git+https://github.com/openshift/pagerduty-short-circuiter#commit=abe4840436f2907e3f064ad94bcc370d01a50ac1
-	sha256sums = SKIP
+	sha256sums = d431985cefcbe61671df482329a9786c9c1d46bd6ba1f35ab2a3d0c9d28e778b
 
 pkgname = pagerduty-short-circuiter

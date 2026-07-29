@@ -1,5 +1,4 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
-
 pkgname=pagerduty-short-circuiter
 pkgver=0.1.0
 pkgrel=3
@@ -11,7 +10,7 @@ depends=(glibc)
 makedepends=(git go)
 _commit="abe4840436f2907e3f064ad94bcc370d01a50ac1" # 27 Feb 2023
 source=("$pkgname::git+$url#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('d431985cefcbe61671df482329a9786c9c1d46bd6ba1f35ab2a3d0c9d28e778b')
 
 pkgver() {
   cd "$srcdir/$pkgname"
