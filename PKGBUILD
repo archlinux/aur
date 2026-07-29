@@ -2,22 +2,23 @@
 # Contributor: William Tang <galaxyking0419@gmail.com>
 # Contributor: Chris Severance <aur.severach@spamgourmet.com>
 # Contributor: David Roheim <david.roheim@gmail.com>
+# Contributor: AutoUpdateBot <auto_update_bot@arch4edu.org>
 
 pkgname=hadoop
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
 url='https://hadoop.apache.org/'
 license=('APACHE')
 conflicts=('yarn')
-makedepends=('cmake' 'gcc12' 'java-environment=11' 'make' 'maven' 'pkgconfig')
-depends=('inetutils' 'java-runtime-headless=11' 'openssh' 'protobuf')
+makedepends=('java-environment=17' 'maven')
+depends=('inetutils' 'java-runtime-headless=17' 'openssh')
 
 source=("https://github.com/apache/hadoop/archive/refs/tags/rel/release-$pkgver.tar.gz"
         "${pkgname}" "${pkgname}.sh"
         hadoop-{datanode,historyserver,namenode,resourcemanager,secondarynamenode}.service)
-sha256sums=('7877b9879c9a4e279da6cb52dc9641863a72273a11174e1b82ada78c792f31d8'
+sha256sums=('04e517572356a531050e7e3d4363f27d9f1827416c1394e3e83d3c917346f76c'
             '1ec173297234b0d587255c1fac978b3929e967146ac542e2e1b44323f80e0bc5'
             '3d20dd2ad1b773e7d4cb855c7556613e36ff56081749fe7b01c6e4fd0c743cc5'
             '876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a'
@@ -29,13 +30,10 @@ sha256sums=('7877b9879c9a4e279da6cb52dc9641863a72273a11174e1b82ada78c792f31d8'
 install=$pkgname.install
 
 build() {
-    export CC=/usr/bin/gcc-12
-    export CXX=/usr/bin/g++-12
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
     cd hadoop-rel-release-${pkgver}
-    mvn package -Pdist,native \
-        -Drequire.openssl -Drequire.zstd \
+    mvn package -Pdist \
         -Dmaven.javadoc.skip=true -DskipTests
 }
 
@@ -48,10 +46,6 @@ package() {
     cd "$pkgdir"/usr
     mv sbin/* bin/
     rmdir sbin
-
-    # Move native libraries to /usr/lib
-    mv lib/native/* lib/
-    rmdir lib/native
 
     # Move license and notice files
     mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
