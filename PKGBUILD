@@ -1,6 +1,6 @@
-# Maintainer: yakuda <DEINE-EMAIL@example.com>
+# Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.1.4_alpha
+pkgver=1.1.5_alpha
 pkgrel=1
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-speechrecognition: Speech to Text'
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('00f0934f8ef9a80abfd4c6478e7fea405f8e37a70bb9666b4e3e8607b41857d8')
+sha256sums=('7835c0a582f14ae75913f0ea859b05d2c5c92b2dfbaed346b4c8ec88e3dfac0a')
 
 package() {
     cd "OSC-DreamChatbox-${_tag#v}"
@@ -46,5 +46,7 @@ LAUNCH
     # Lizenz + Doku
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 THIRD_PARTY_NOTICES.md \
+        "${pkgdir}/usr/share/doc/${pkgname}/THIRD_PARTY_NOTICES.md"
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
