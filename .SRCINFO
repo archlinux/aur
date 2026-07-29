@@ -1,6 +1,6 @@
 pkgbase = juicebox2-plus-git
   pkgdesc = The companion app to juicebox² !
-  pkgver = r16.338e9d2
+  pkgver = r17.582fd84
   pkgrel = 1
   url = https://github.com/juiceboxdev/juicebox-plus
   arch = x86_64
