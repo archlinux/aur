@@ -1,7 +1,7 @@
 # Maintainer: Jan Keith Darunday <aur@jkcdarunday.mozmail.com>
 
 pkgname=slither
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc='A static analysis framework for Solidity'
 arch=(any)
@@ -28,7 +28,7 @@ optdepends=(
 makedepends=(python-build python-hatchling python-installer)
 _name=slither_analyzer
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/s/slither-analyzer/${_name}-${pkgver}.tar.gz")
-sha256sums=('d90af76b86bdf7ced56fc4c8eea8792cde1ec2c375372d5e70298c2ff998d5e1')
+sha256sums=('72aff6c1924a8641c1c8e4d84f9a4e6c97b5bfb3221bf71a11ffaee46d2f7da2')
 
 latestver() {
   curl -fsSL 'https://pypi.org/pypi/slither-analyzer/json' |

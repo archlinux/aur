@@ -1,6 +1,6 @@
 pkgbase = slither
 	pkgdesc = A static analysis framework for Solidity
-	pkgver = 0.11.5
+	pkgver = 0.11.6
 	pkgrel = 1
 	url = https://github.com/crytic/slither
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = slither
 	optdepends = python-numpy: slither-simil analysis
 	optdepends = python-openai: OpenAI Codex integration
 	optdepends = python-scikit-learn: slither-simil plotting
-	source = slither_analyzer-0.11.5.tar.gz::https://files.pythonhosted.org/packages/source/s/slither-analyzer/slither_analyzer-0.11.5.tar.gz
-	sha256sums = d90af76b86bdf7ced56fc4c8eea8792cde1ec2c375372d5e70298c2ff998d5e1
+	source = slither_analyzer-0.11.6.tar.gz::https://files.pythonhosted.org/packages/source/s/slither-analyzer/slither_analyzer-0.11.6.tar.gz
+	sha256sums = 72aff6c1924a8641c1c8e4d84f9a4e6c97b5bfb3221bf71a11ffaee46d2f7da2
 
 pkgname = slither
