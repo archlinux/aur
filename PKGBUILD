@@ -16,7 +16,7 @@ _system_clang=1
 _system_stdlib=
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
-url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
+url="https://chromium.googlesource.com/chromium/src/+/refs/tags/${pkgver}/components/cronet"
 license=('BSD-3-Clause')
 depends=(
   glibc
