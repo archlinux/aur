@@ -1,7 +1,7 @@
 # Maintainer: Mark Keller <mark at markkeller dot  dev>
 _BIN=hooky
 pkgname=${_BIN}-bin
-pkgver=1.0.0
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A minimal git pre-commit hook runner"
 url="https://github.com/brandonchinn178/hooky"
@@ -15,10 +15,10 @@ source_x86_64=("${_BIN}::https://github.com/brandonchinn178/hooky/releases/downl
 source_aarch64=("${_BIN}::https://github.com/brandonchinn178/hooky/releases/download/v${pkgver}/hooky-${pkgver}-linux-arm64"
                "https://github.com/brandonchinn178/hooky/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('f6c6500e24e3c1e8f0a67e3b23963661b10c966e5c5eda6634eb35be00f42f05'
-                   '4cc8c00203d10aad470bb071a6a00d18e3a55b314f675ed19b824acd87567b1c')
-sha256sums_aarch64=('f6c6500e24e3c1e8f0a67e3b23963661b10c966e5c5eda6634eb35be00f42f05'
-                    '4cc8c00203d10aad470bb071a6a00d18e3a55b314f675ed19b824acd87567b1c')
+sha256sums_x86_64=('ea5bd9b0cea43681b0c464ad54f2407117df51f983b524b78fb54c8c56ff25a5'
+                   'f1ab5e9537577206bffc95525775eece0a1b85f710ef1f9159e0ed92ac6d2ccf')
+sha256sums_aarch64=('ea5bd9b0cea43681b0c464ad54f2407117df51f983b524b78fb54c8c56ff25a5'
+                    'f1ab5e9537577206bffc95525775eece0a1b85f710ef1f9159e0ed92ac6d2ccf')
 
 package() {
   install -Dm755 "${srcdir}/${_BIN}" \
