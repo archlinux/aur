@@ -23,8 +23,8 @@ prepare() {
 
     sed -i \
         -e "s|Exec=.*|Exec=/usr/bin/${pkgname} --enable-features=UseOzonePlatform --ozone-platform-hint=auto %U|" \
-        Osmium.desktop
-    echo 'Path=/usr/bin' >> Osmium.desktop
+        chat.osmium.Osmium.desktop
+    echo 'Path=/usr/bin' >> chat.osmium.Osmium.desktop
 }
 
 package() {
@@ -38,7 +38,7 @@ package() {
 
     install -d "${pkgdir}"/usr/{bin,share/{pixmaps,applications}}
     ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "/opt/${pkgname}/Osmium.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    ln -s "/opt/${pkgname}/chat.osmium.Osmium.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     ln -s "/opt/${pkgname}/resources/assets/icon-1024.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     install -Dm644 LICENSE.electron.txt \
