@@ -2,7 +2,7 @@
 
 pkgname=go2webp
 _pkgname=go2webp
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='CLI tool for converting images and folders of images to WebP format'
 url='https://codeberg.org/fausty/go2webp'
