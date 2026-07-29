@@ -1,7 +1,7 @@
-# Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
+# Maintainer: Xarth <xarthleo at gmail dot com>
 pkgname=rathole-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and high-performance reverse proxy for NAT traversal"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/rapiz1/rathole"
@@ -18,5 +18,5 @@ sha256sums_armv7h=('e8662d80d2cc9acc5f8f4d8a1c1a5ff7717b2fa71919a405d0eed8b64c8c
 package() {
 	#	use upx -d to allow namcap check the deps
 	# upx -d rathole
-	install -Dm755 rathole -t $pkgdir/usr/bin/rathole
+	install -Dm755 rathole "$pkgdir/usr/bin/rathole"
 }

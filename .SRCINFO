@@ -1,7 +1,7 @@
 pkgbase = rathole-bin
 	pkgdesc = A lightweight and high-performance reverse proxy for NAT traversal
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rapiz1/rathole
 	arch = x86_64
 	arch = aarch64
