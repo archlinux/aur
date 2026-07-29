@@ -1,6 +1,6 @@
 pkgbase = hooky-bin
 	pkgdesc = A minimal git pre-commit hook runner
-	pkgver = 1.0.0
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/brandonchinn178/hooky
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = hooky-bin
 	license = BSD-3-Clause
 	depends = glibc
 	depends = gmp
-	provides = hooky=1.0.0
-	source_x86_64 = hooky::https://github.com/brandonchinn178/hooky/releases/download/v1.0.0/hooky-1.0.0-linux-x86_64
-	source_x86_64 = https://github.com/brandonchinn178/hooky/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums_x86_64 = f6c6500e24e3c1e8f0a67e3b23963661b10c966e5c5eda6634eb35be00f42f05
-	sha256sums_x86_64 = 4cc8c00203d10aad470bb071a6a00d18e3a55b314f675ed19b824acd87567b1c
-	source_aarch64 = hooky::https://github.com/brandonchinn178/hooky/releases/download/v1.0.0/hooky-1.0.0-linux-arm64
-	source_aarch64 = https://github.com/brandonchinn178/hooky/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums_aarch64 = f6c6500e24e3c1e8f0a67e3b23963661b10c966e5c5eda6634eb35be00f42f05
-	sha256sums_aarch64 = 4cc8c00203d10aad470bb071a6a00d18e3a55b314f675ed19b824acd87567b1c
+	provides = hooky=1.0.4
+	source_x86_64 = hooky::https://github.com/brandonchinn178/hooky/releases/download/v1.0.4/hooky-1.0.4-linux-x86_64
+	source_x86_64 = https://github.com/brandonchinn178/hooky/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums_x86_64 = ea5bd9b0cea43681b0c464ad54f2407117df51f983b524b78fb54c8c56ff25a5
+	sha256sums_x86_64 = f1ab5e9537577206bffc95525775eece0a1b85f710ef1f9159e0ed92ac6d2ccf
+	source_aarch64 = hooky::https://github.com/brandonchinn178/hooky/releases/download/v1.0.4/hooky-1.0.4-linux-arm64
+	source_aarch64 = https://github.com/brandonchinn178/hooky/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums_aarch64 = ea5bd9b0cea43681b0c464ad54f2407117df51f983b524b78fb54c8c56ff25a5
+	sha256sums_aarch64 = f1ab5e9537577206bffc95525775eece0a1b85f710ef1f9159e0ed92ac6d2ccf
 
 pkgname = hooky-bin
