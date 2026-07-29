@@ -1,6 +1,6 @@
 pkgbase = nono-ai
 	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock
-	pkgver = 0.69.0
+	pkgver = 0.70.0
 	pkgrel = 1
 	url = https://github.com/always-further/nono
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nono-ai
 	conflicts = nono
 	conflicts = nono-ai-bin
 	options = !lto
-	source = nono-0.69.0.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v0.69.0.tar.gz
-	sha256sums = eca9a027cd186e595824c99cd8bb88467a03619fb793ef7c249993fc771fe1ce
+	source = nono-0.70.0.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v0.70.0.tar.gz
+	sha256sums = 414f897b8525a003eb37df03186ac79e3e09b4ad0c3be6b4569f985a4a0d092f
 
 pkgname = nono-ai
