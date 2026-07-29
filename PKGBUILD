@@ -2,7 +2,7 @@
 # Backup contact: admin@azccriminal.space
 pkgname=auto-cpufreq-rust-git
 _pkgname=auto-cpufreq-rust
-pkgver=r579.1536aae
+pkgver=3.2.1.r0.ga43593e
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer (Rust port)'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,8 @@ options=(!strip !debug)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
