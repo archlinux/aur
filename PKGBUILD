@@ -6,7 +6,7 @@ _rocm_repo='https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604'
 pkgname=opencl-amd
 pkgdesc="ROCm components repackaged from AMD's Ubuntu releases (ROCr runtime, OpenCL runtime, HIP runtime) - This package is intended to work along with the free amdgpu stack."
 pkgver=7.14.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -28,11 +28,11 @@ source=(
 )
 
 sha256sums=(
-"c28c1863f3f5006fb60976e5dde098fa8ae8fe8e4b65f02116586d68fc261a00"
-"e1f1e278f87e35d6d52b2fceb01e083a1ef6e2ed808eb30701f6e7cf0a332d98"
-"19d6547f447dcfab9890d3608c5aa9b35647ab293bfb5ffbc829402e6fcc7233"
-"23a5667f15b45fcc1b06197eed8800d8d6757e7fd7f8806557eb7e9d80715358"
-"5bc27da187b44592ed04e674a00668dbe8b73bb9a87d820c31a366905dcac772"
+"6e6ab8b0560f9157ceb2afefe481eddb93789041cbb53137018571d749205a8b"
+"46f336f876528d0c2c98503491cb1e1e176986caaf2ea281f84c56c1a8822747"
+"3b940320e839d68e05360ef70e6c4d3222cd135a4b02d68ece2267366330748c"
+"4221475e72a3481ae746f7562d6db2094133bb5b9c394fd7f9f1820a5f83695b"
+"58dad7d4d0b6ef795117b818aecfee7e2719c66f3fa9151a3c07123a839c0d2d"
 )
 
 package() {
