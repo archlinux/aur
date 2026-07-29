@@ -4,12 +4,12 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r3.g5c9aa9d
+pkgver=0.2.2.r4.gfba3995
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llavon-ime/ime-fcitx5'
-license=('BSD-2-Clause')
+license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
 depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader')
 makedepends=('cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
 optdepends=(
@@ -68,5 +68,9 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${srcdir}/${_model_file}" \
         "${pkgdir}/usr/share/llavon-ime/models/${_model_file}"
-    install -Dm644 "${_srcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cmake \
+        -DVCPKG_INSTALLED_DIR="${srcdir}/service-build/vcpkg_installed" \
+        -DDESTINATION="${pkgdir}/usr/share/licenses/${pkgname}" \
+        -DPROJECT_ROOT="${srcdir}/${_srcname}" \
+        -P "${srcdir}/${_srcname}/scripts/install-licenses.cmake"
 }
