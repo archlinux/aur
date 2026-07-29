@@ -1,0 +1,15 @@
+The Linux port that this package builds is MIT licensed; see the LICENSE file
+installed alongside this notice.
+
+The ChatGPT desktop application the port converts is OpenAI's and is not
+redistributed by this package. build() downloads it from OpenAI's content
+delivery network onto the machine performing the build, and the resulting
+binary package is not intended for redistribution.
+
+Use of the application itself is governed by OpenAI's terms:
+
+    https://openai.com/policies/terms-of-use/
+    https://openai.com/policies/service-terms/
+
+This is an unofficial community port. It is not affiliated with, authorised by,
+or endorsed by OpenAI.
