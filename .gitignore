@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/cosmic-ext-applet-now-playing/
+/*.pkg.tar.*
+/*.src.tar.*
