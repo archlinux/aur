@@ -1,0 +1,19 @@
+pkgbase = krunner-chrome-bookmark
+	pkgdesc = KRunner plugin to search Google Chrome bookmarks with the bk: prefix
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ber1276/krunner-chrome-bookmark
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = gcc
+	depends = qt6-base
+	depends = krunner
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kconfig
+	source = krunner-chrome-bookmark-1.0.0.zip::https://github.com/Ber1276/krunner-chrome-bookmark/archive/refs/tags/v1.0.0.zip
+	sha256sums = d7ba26195588486b737f7fc929d00ad2d00bb68a490924aff8f94910f29f0068
+
+pkgname = krunner-chrome-bookmark
