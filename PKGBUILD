@@ -10,16 +10,12 @@ license=(LicenseRef-Proprietary)
 url="https://twingate.com"
 depends=('systemd' 'cryptsetup' 'dbus')
 install=$pkgname.install
-noextract=(twingate-${pkgver}-${CARCH}.tar.zst)
 source_x86_64=(twingate-${pkgver}-x86_64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst)
 source_aarch64=(twingate-${pkgver}-aarch64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst)
 sha256sums_x86_64=('7b1a3fc6ada23940d6df45d2521143d46ceb0c91797c0959c4621656f7d25ae1')
 sha256sums_aarch64=('170f7d2904b0fa5495d9f8bda341679928f68363ef7d47faac1131e25d0b549d')
 
 package() {
-  cd "${srcdir}"
-  bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.tar.zst"
-
   install -d "${pkgdir}/var/lib/${_pkgname}"
   install -d "${pkgdir}/run/${_pkgname}"
 
