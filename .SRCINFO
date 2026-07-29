@@ -1,14 +1,14 @@
 pkgbase = r-muhaz
 	pkgdesc = Hazard Function Estimation in Survival Analysis
-	pkgver = 1.2.6.4
-	pkgrel = 3
+	pkgver = 1.2.6.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=muhaz
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/muhaz_1.2.6.4.tar.gz
-	md5sums = 6021d80354ee966f0d7be4ba6ce8c2d1
-	b2sums = f724117788269e53de36c1e4790914185998caf417925dffa7225d7c42afba6a928d5690643ccdd6d430d36883d42ac6fc3a683757018ee27abe480c80723e49
+	source = https://cran.r-project.org/src/contrib/muhaz_1.2.6.5.tar.gz
+	md5sums = 507ca4e70109075d9a871b1a7facbeaa
+	b2sums = 4183c007812ea77c557b26d38ba8958fd7bc206ebdea0f22561a4be142fa3d64927dd916e76a5eecce8235cff7d78f0972eea9b175cd868b36b12856b9a7b737
 
 pkgname = r-muhaz
