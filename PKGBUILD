@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -13,7 +13,12 @@ url="https://github.com/mescon/logitech-trueforce-linux-driver"
 # logi-wheel-gui (the Slint settings GUI) is GPL-3.0-or-later. Each split
 # package narrows this to its own license.
 license=('GPL-2.0-only' 'GPL-3.0-or-later')
-makedepends=('cargo')
+# fontconfig is a BUILD dependency as well as a runtime one: logi-wheel-gui
+# pulls yeslogic-fontconfig-sys, whose build script resolves the system
+# library through pkg-config and panics without fontconfig.pc. It went
+# unnoticed because any desktop already has fontconfig installed; a clean
+# chroot build (devtools, aurutils, paru --chroot) does not.
+makedepends=('cargo' 'fontconfig')
 # !lto: makepkg's default -flto=auto would leave libtrueforce.a (built by
 # tf-sim's build.rs and linked statically into logi-tf-sim) as GCC LTO
 # bitcode, which rustc's lld link step cannot read (undefined logiTrueForce*
@@ -22,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('2df28838a84d11ca24fb79287764652b1ec5366a042f98a52369ae08987e4eae')
+sha256sums=('9e317c442eeb9a9496c5783006ccbcf1c82dffe7701938325c79d1b3bd21b33e')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"

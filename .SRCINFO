@@ -1,15 +1,16 @@
 pkgbase = logitech-trueforce-dkms
 	pkgdesc = DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/mescon/logitech-trueforce-linux-driver
 	arch = x86_64
 	license = GPL-2.0-only
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = fontconfig
 	options = !lto
-	source = logitech-trueforce-dkms-0.18.0.tar.gz::https://github.com/mescon/logitech-trueforce-linux-driver/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 2df28838a84d11ca24fb79287764652b1ec5366a042f98a52369ae08987e4eae
+	source = logitech-trueforce-dkms-0.22.1.tar.gz::https://github.com/mescon/logitech-trueforce-linux-driver/archive/refs/tags/v0.22.1.tar.gz
+	sha256sums = 9e317c442eeb9a9496c5783006ccbcf1c82dffe7701938325c79d1b3bd21b33e
 
 pkgname = logitech-trueforce-dkms
 	pkgdesc = DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs
@@ -29,8 +30,8 @@ pkgname = logi-wheel
 	optdepends = python: required by the TrueForce Proton shim installer
 	optdepends = wine: run Logitech SDK DLLs for TrueForce in Proton sims
 	provides = logi-dd
-	replaces = logi-dd
 	conflicts = logi-dd
+	replaces = logi-dd
 
 pkgname = logi-wheel-gui
 	pkgdesc = Graphical settings app for Logitech TrueForce wheels
@@ -49,5 +50,5 @@ pkgname = logi-wheel-gui
 	depends = freetype2
 	depends = hicolor-icon-theme
 	provides = logi-dd-gui
-	replaces = logi-dd-gui
 	conflicts = logi-dd-gui
+	replaces = logi-dd-gui
