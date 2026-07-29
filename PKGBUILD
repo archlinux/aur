@@ -1,7 +1,7 @@
 # Maintainer: DODOEX <maintainers@dodoex.io>
 
 pkgname=chainpilot-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="CLI tool for on-chain DeFi operations on EVM-compatible networks"
 url="https://github.com/DODOEX/ChainPilot"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('MIT')
 provides=('chainpilot')
 conflicts=('chainpilot')
-sha256sums=('e0e9a21e1295229ea9a07758affdd84305f45e0dcd3c22474f53e4902f8a0c8d')
+sha256sums=('a919c4ceaabea04b5c4d93465ce0a8eadbf2a2c99da43c8c7ab62121904b6b33')
 
 package() {
   install -Dm755 "$srcdir/chainpilot-linux-x86_64/chainpilot" "$pkgdir/usr/bin/chainpilot"

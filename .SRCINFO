@@ -1,13 +1,13 @@
 pkgbase = chainpilot-bin
 	pkgdesc = CLI tool for on-chain DeFi operations on EVM-compatible networks
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/DODOEX/ChainPilot
 	arch = x86_64
 	license = MIT
 	conflicts = chainpilot
 	provides = chainpilot
-	source = chainpilot-bin-1.2.1.tar.gz::https://github.com/DODOEX/ChainPilot/releases/download/v1.2.1/chainpilot-linux-x86_64.tar.gz
-	sha256sums = e0e9a21e1295229ea9a07758affdd84305f45e0dcd3c22474f53e4902f8a0c8d
+	source = chainpilot-bin-1.2.2.tar.gz::https://github.com/DODOEX/ChainPilot/releases/download/v1.2.2/chainpilot-linux-x86_64.tar.gz
+	sha256sums = a919c4ceaabea04b5c4d93465ce0a8eadbf2a2c99da43c8c7ab62121904b6b33
 
 pkgname = chainpilot-bin
