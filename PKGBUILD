@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Minecraft Mod Manager written in C++"
 arch=('x86_64')
 url="https://github.com/MidnightPavlaka635920/Minecraft-ModM"
-license=('GPLv3')
+license=('MIT')
 depends=('curl' 'nlohmann-json')
 makedepends=('make' 'gcc')
 
