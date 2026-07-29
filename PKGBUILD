@@ -1,7 +1,7 @@
 # Maintainer: edaywalid <becharwalid9@gmail.com>
 # Source build of undo (https://github.com/edaywalid/undo).
 pkgname=undo-cli
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Revert what the last shell command did to the filesystem"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('zsh: zsh hook' 'bash: bash hook' 'fish: fish hook')
 provides=('undo-cli')
 conflicts=('undo-cli-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('45242364b8de67c9b920fe6876c9fae30e42ca555bfb288b8f0f87578dc4b93b')
+sha256sums=('85b5d653b5c68ed9e34d23dcdfbcfed487cb6ca46c600c19d3e446326bad527b')
 
 build() {
     cd "undo-$pkgver"
