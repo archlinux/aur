@@ -1,6 +1,6 @@
-# Maintainer: nyq-dev batasignal@gmail.com
+# Maintainer: nyq-dev <adresa_ta_de_email@example.com>
 pkgname=nyqfetch
-pkgver=1.0.0
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A fast, pure Python fetch tool for Arch Linux"
 arch=('any')
@@ -11,10 +11,8 @@ source=()
 sha256sums=()
 
 package() {
-    # Creăm folderul pentru binare în pachet
     install -d "${pkgdir}/usr/bin"
 
-    # Scriem codul Python direct în fișierul final din /usr/bin/nyqfetch
     cat << 'EOF' > "${pkgdir}/usr/bin/nyqfetch"
 #!/usr/bin/env python3
 import os
@@ -24,22 +22,27 @@ import socket
 
 def get_ram_usage():
     try:
-        mem_info = {}
+        total = 0
+        avail = 0
         with open("/proc/meminfo", "r") as f:
             for line in f:
-                parts = line.split()
-                if len(parts) >= 2:
-                    mem_info[parts[0].replace(":", "")] = int(parts[1])
-        total = mem_info.get("MemTotal", 0) / 1024 / 1024
-        avail = mem_info.get("MemAvailable", 0) / 1024 / 1024
-        return f"{total - avail:.2f} GiB / {total:.2f} GiB"
-    except: return "Unknown"
+                if "MemTotal" in line:
+                    total = int(line.split()[1]) / 1024 / 1024
+                elif "MemAvailable" in line:
+                    avail = int(line.split()[1]) / 1024 / 1024
+        
+        if total == 0:
+            return "Unknown"
+            
+        used = total - avail
+        return f"{used:.2f} GiB / {total:.2f} GiB"
+    except:
+        return "Unknown"
 
 def get_shell():
     return os.environ.get("SHELL", "").split("/")[-1] or "Unknown"
 
 def get_terminal():
-    # Încearcă să ia numele terminalului din variabilele de mediu
     return os.environ.get("TERM_PROGRAM") or os.environ.get("TERM") or "Unknown"
 
 user = getpass.getuser()
@@ -68,6 +71,5 @@ logo_and_info = [
 print("\n" + "\n".join(logo_and_info) + "\n")
 EOF
 
-    # Îi dăm drepturi de rulare scriptului creat
     chmod +x "${pkgdir}/usr/bin/nyqfetch"
 }
