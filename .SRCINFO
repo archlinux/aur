@@ -1,10 +1,10 @@
 pkgbase = ddsc-git
 	pkgdesc = Dynamic Discord Rich Presence based on active COSMIC windows (git)
-	pkgver = 1.4.1.0.gHEAD
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/DDS
 	arch = x86_64
-	license = MIT
+	license = OSL-3.0
 	makedepends = cargo
 	makedepends = git
 	makedepends = clang

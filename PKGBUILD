@@ -1,12 +1,12 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-git
-pkgver=1.4.1.0.gHEAD
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows (git)"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/DDS"
-license=('MIT')
+license=('OSL-3.0')
 depends=('glibc')
 makedepends=('cargo' 'git' 'clang' 'lld')
 provides=('ddsc')
