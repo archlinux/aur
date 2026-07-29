@@ -2,7 +2,7 @@
 # Contributor: soloturn <soloturn@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
-pkgver=1.0.17.beta.r1.g
+pkgver=1.6.beta.r1.g
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches that support pointer-constraints-v1, pointer-warp-v1, commit-timing-v1, fifo-v1 and respect fullscreen function"
 arch=('x86_64' 'aarch64')
@@ -51,9 +51,9 @@ conflicts=(
 	"cosmic-randr-git"
 )
 source=(
-	'git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate'
-	'git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate'
-	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate'
+	'git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v2'
+	'git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate_v2'
+	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
 )
 sha256sums=(
 	'SKIP'
