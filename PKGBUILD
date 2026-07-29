@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.1.2.r72.gfee1b7e
+pkgver=2.2.0.r154.g5b43138
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -15,8 +15,6 @@ depends=(
   'opus'
   'libx11'
   'libxi'
-  'libxtst'
-  'libxkbcommon'
   'hicolor-icon-theme'
   'polkit'
   'pipewire'
@@ -96,6 +94,8 @@ package() {
     "${pkgdir}/usr/share/metainfo/com.linuxsoundboard.app.metainfo.xml"
   install -Dm644 packaging/linux/linux-soundboard-engine.service \
     "${pkgdir}/usr/lib/systemd/user/linux-soundboard-engine.service"
+  install -Dm644 packaging/linux/linux-soundboard-engine.target \
+    "${pkgdir}/usr/lib/systemd/user/linux-soundboard-engine.target"
   install -Dm755 packaging/linux/install-swhkd-helper.sh \
     "${pkgdir}/usr/libexec/linux-soundboard/install-swhkd-helper.sh"
   install -Dm644 packaging/linux/com.linuxsoundboard.install-swhkd.policy \
