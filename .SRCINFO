@@ -1,13 +1,13 @@
 pkgbase = erigon-bin
 	pkgdesc = Ethereum implementation on the efficiency frontier. Binary distribution
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://github.com/erigontech/erigon
 	arch = x86_64
 	license = GPL3
 	provides = erigon
 	conflicts = erigon
-	source = https://github.com/erigontech/erigon/releases/download/v3.5.3/erigon_v3.5.3_linux_amd64.tar.gz
-	b2sums = bea75c54bfc89bd474ef7dba5ef6146b2b959bbd3d3745e3756b06abf436c5155420f130c33736e591af2a201201c1258965b10ed4503f00b3b3bec45c53089d
+	source = https://github.com/erigontech/erigon/releases/download/v3.5.4/erigon_v3.5.4_linux_amd64.tar.gz
+	b2sums = ab0a0f83445229261b94969faafae399cdcb86de5c90ca6f3f74566ada42c83fc1d2d0294384729b834e80cc1047533c92a7c199e63b3241158dde0c1980ff61
 
 pkgname = erigon-bin
