@@ -1,6 +1,6 @@
 pkgbase = omarchy-world-clock-bin
 	pkgdesc = World clock widget for Omarchy
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/olivoil/omarchy-world-clock
 	install = omarchy-world-clock-bin.install
@@ -16,11 +16,11 @@ pkgbase = omarchy-world-clock-bin
 	optdepends = quickshell: Omarchy 4 status bar integration
 	optdepends = waybar: Omarchy 3 status bar integration
 	optdepends = hyprland: target compositor for Omarchy sessions
-	provides = omarchy-world-clock=0.2.0
+	provides = omarchy-world-clock=0.2.1
 	conflicts = omarchy-world-clock
 	options = !strip
 	options = !debug
-	source_x86_64 = omarchy-world-clock-0.2.0-x86_64.tar.gz::https://github.com/olivoil/omarchy-world-clock/releases/download/v0.2.0/omarchy-world-clock-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8920a0ec6236d94e429e18bdf809b372c1201c8f6e065704656018186bdf3beb
+	source_x86_64 = omarchy-world-clock-0.2.1-x86_64.tar.gz::https://github.com/olivoil/omarchy-world-clock/releases/download/v0.2.1/omarchy-world-clock-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 90a3c0947318cfbfb5c60cf97443983db11a46ce6b586e442352d930be9f364d
 
 pkgname = omarchy-world-clock-bin
