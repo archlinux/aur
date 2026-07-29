@@ -9,7 +9,7 @@ pkgbase = azerothcore-clientdata
 	depends = azerothcore-wotlk-git
 	options = !strip
 	options = !debug
-	source = Data.zip::https://github.com/wowgaming/client-data/releases/download/v20.0/Data.zip
+	source = Data.zip::https://github.com/wowgaming/client-data/releases/download/v${pkgver}/Data.zip
 	sha256sums = a3d4df635ae6c2c8f08052c32a79e0f806955150ad36b014a823dd08a32a4610
 
 pkgname = azerothcore-clientdata
