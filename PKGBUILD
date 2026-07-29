@@ -2,7 +2,7 @@
 # Backup contact: admin@azccriminal.space
 pkgname=auto-cpufreq-rust-git
 _pkgname=auto-cpufreq-rust
-pkgver=3.2.1.r0.ga43593e
+pkgver=3.2.1.r1.gec72edc
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer (Rust port)'
 arch=('x86_64' 'aarch64')
