@@ -3,7 +3,7 @@
 # Upstream Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-gnome
 pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
-pkgver=3.0.0+9.gnome1
+pkgver=3.0.0+9.gnome2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
@@ -13,8 +13,10 @@ makedepends=('git' 'zig>=0.16' 'clang' 'gettext' 'vala' 'meson' 'ninja' 'flatpak
 # Source tarball from GitHub release
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('67999625288d44e95150c50bd3927c54295e85ee4d84a6025574ab3640803cdc')
-_source_dir="Shelly-ALPM-GNOME-${pkgver}"
+sha256sums=('152bfca5f629035d000bbd30251d52fb58cadc5c614e432341acf7aebb3b9852')
+# GitHub sanitises '+' to '-' in the archive's root directory, so the extracted
+# tree is Shelly-ALPM-GNOME-3.0.0-9.gnome1 even though the tag is v3.0.0+9.gnome1.
+_source_dir="Shelly-ALPM-GNOME-${pkgver//+/-}"
 
 build() {
   cd "$srcdir/${_source_dir}"

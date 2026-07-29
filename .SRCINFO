@@ -1,5 +1,5 @@
 pkgbase = shelly-gnome
-	pkgver = 3.0.0+9.gnome1
+	pkgver = 3.0.0+9.gnome2
 	pkgrel = 1
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = shelly-gnome
 	makedepends = meson
 	makedepends = ninja
 	makedepends = flatpak
-	source = shelly-gnome-3.0.0+9.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v3.0.0+9.gnome1.tar.gz
-	sha256sums = 67999625288d44e95150c50bd3927c54295e85ee4d84a6025574ab3640803cdc
+	source = shelly-gnome-3.0.0+9.gnome2.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v3.0.0+9.gnome2.tar.gz
+	sha256sums = 152bfca5f629035d000bbd30251d52fb58cadc5c614e432341acf7aebb3b9852
 
 pkgname = shelly-gnome
 	pkgdesc = Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager.
@@ -45,9 +45,9 @@ pkgname = shelly-gnome
 
 pkgname = shelly-gnome-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for Shelly for GNOME
-	depends = shelly-gnome=3.0.0+9.gnome1-1
+	depends = shelly-gnome=3.0.0+9.gnome2-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.0.0+9.gnome1
+	provides = shelly-flatpak-backend=3.0.0+9.gnome2
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
