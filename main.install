@@ -9,12 +9,34 @@ pre_install() {
 post_install() {
 	echo 'running inventree "installer"…'
 	su -Plc 'cd /opt/inventree/ && invoke install --skip-plugins' inventree
-	echo 'Please follow the instructions on the page linked below to set up your database and such:' >&2
-	echo '    https://docs.inventree.org/en/stable/start/install/#create-database' >&2
+	echo 'running frontend build…'
+	# ↓ must be run as root because it modifies /opt/inventree
+	(
+		cd /opt/inventree/ &&
+		source /var/opt/inventree/.bashrc &&
+		HOME='/var/opt/inventree/' invoke int.frontend-compile
+	)
+	echo 'generating static files…'
+	su -Plc 'cd /opt/inventree/ && invoke static' inventree
+	cat <<PENIS
+Please follow the instructions on the page linked below to set up your database and such:
+	https://docs.inventree.org/en/stable/start/install/#create-database
+some notes:
+	- 'invoke update' will try to update your read-only files - use 'invoke migrate' instead
+	- sqlite3 expects a filename in the database.name field - I recommend putting it in /var/opt/inventree/
+PENIS
 }
 
 post_remove() {
-	echo "don't forget to clean up /var/opt/inventree as well as your database(s)" >&2
+	rm -dr /opt/inventree
+	echo "don't forget to clean up /var/opt/inventree as well as your database(s)"
 }
 
-# TODO: run migrations on upgrade
+pre_upgrade() {
+	: # TODO: check that server isn't running? but how…
+}
+
+post_upgrade() {
+	# NOTE: can't run migrations on upgrade because that depends on DB setup, which we don't touch.
+	echo "don't forget to run migrations if necessary."
+}

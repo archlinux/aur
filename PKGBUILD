@@ -1,7 +1,7 @@
 # Maintainer: Lisa Magdalena Riedler <inventree.aur@riedler.wien>
 
 pkgname=inventree-git
-pkgver=1.4.2.18105
+pkgver=1.4.3.18106
 pkgrel=1
 pkgdesc="Intuitive Inventory Management"
 arch=('any')
