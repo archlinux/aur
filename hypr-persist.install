@@ -1,0 +1,6 @@
+post_install() {
+    echo ":: Add to your hyprland.conf:"
+    echo "     exec-once = hypr-persist"
+    echo ":: Configuration: ~/.config/hypr/hypr-persist.toml"
+    echo ":: Documentation: https://github.com/ngamber/hypr-persist"
+}
