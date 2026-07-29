@@ -1,0 +1,21 @@
+pkgbase = claude-crab
+	pkgdesc = Clawd walks above your KDE Plasma panel and animates to what Claude Code is doing
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/quinnjr/claude-crab
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-pillow
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = layer-shell-qt
+	depends = hicolor-icon-theme
+	depends = python
+	source = claude-crab-1.1.1.tar.gz::https://github.com/quinnjr/claude-crab/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = e368fb48f07e5bdd2f2b0dcd0088b9a10a701d2b64c5fd67e39febb29d3148aa
+
+pkgname = claude-crab
