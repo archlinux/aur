@@ -1,16 +1,16 @@
 pkgbase = crankshaft-client-bin
 	pkgdesc = A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.12.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/KraXen72/crankshaft
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron12
-	provides = crankshaft-client=1.12.0
+	depends = electron44
+	provides = crankshaft-client=2.0.0
 	conflicts = crankshaft-client
-	source = crankshaft-client-1.12.0-x86_64.AppImage::https://github.com/KraXen72/crankshaft/releases/download/1.12.0/crankshaft-portable-linux-x86_64.AppImage
+	source = crankshaft-client-2.0.0-x86_64.AppImage::https://github.com/KraXen72/crankshaft/releases/download/2.0.0/crankshaft-x64.AppImage
 	source = crankshaft-client.sh
-	sha256sums = b0b5f4bf558ea2d1e69c0e133cdf092ad13ac6842aa9b2816a2f7f058066c206
+	sha256sums = 2fb03cc04b2583b54c457ceaf93dd41f322f50536985286d8246c19301d07e6c
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = crankshaft-client-bin
