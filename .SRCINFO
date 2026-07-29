@@ -1,0 +1,23 @@
+pkgbase = tc2-launcher-bin
+	pkgdesc = Manages downloading and launching Team Comtress 2 (TC2)
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/mastercomfig/tc2-launcher
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = tc2-launcher
+	conflicts = tc2-launcher
+	options = !strip
+	options = !debug
+	source = https://github.com/mastercomfig/tc2-launcher/releases/download/1.1.3/TC2Launcher-linux
+	source = tc2-launcher.desktop
+	source = tc2-launcher.png
+	source = LICENSE
+	sha256sums = 0e0ee7d0125c8e3e5fb979376c3e5976a5cc08f95b63d5527048136d710e1b19
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tc2-launcher-bin
