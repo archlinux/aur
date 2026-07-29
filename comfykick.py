@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 import tomllib
 import urllib.error
 import urllib.request
@@ -47,6 +48,7 @@ XDG_DATA_HOME = Path(
 
 DEFAULTS = {
     "base_dir": XDG_DATA_HOME / PROJECT_NAME / "base",
+    "cleanup_stale_comfyui": True,
     "comfyui_extra_options": [
         "--disable-xformers",
         "--fast",
@@ -447,6 +449,51 @@ def _ensure_tarball(
     return tarball_path
 
 
+def cleanup_stale_tarballs(version_cache_dir, exempt_names=None):
+    """Remove tarballs older than 30 days from ``version_cache_dir``.
+
+    Tarballs that are the target of a symlink in ``version_cache_dir``
+    are exempt, as well as any names in ``exempt_names``.
+    """
+    exempt = set(exempt_names) if exempt_names else set()
+
+    for entry in Path(version_cache_dir).glob("*.tar.gz"):
+        if entry.is_symlink():
+            try:
+                target = os.readlink(entry)
+            except OSError:
+                continue
+            exempt.add(Path(target).name)
+
+    cutoff = time.time() - 30 * 24 * 3600
+    candidates = []
+
+    for entry in Path(version_cache_dir).glob("*.tar.gz"):
+        if entry.is_symlink() or entry.name in exempt:
+            continue
+        try:
+            mtime = entry.stat().st_mtime
+        except OSError:
+            continue
+        if mtime < cutoff:
+            candidates.append((mtime, entry))
+
+    if len(candidates) < 10:
+        log.info(
+            "Skipping cleanup: only %d stale tarball(s) found "
+            "(threshold: 10).",
+            len(candidates),
+        )
+        return
+
+    for mtime, entry in sorted(candidates):
+        log.info("Removing stale tarball: %s", entry.name)
+        try:
+            entry.unlink()
+        except OSError:
+            log.warning("Failed to remove %s", entry.name)
+
+
 def _extract_tarball(tarball_path, dest_dir):
     try:
         with tarfile.open(tarball_path, "r:gz") as tar:
@@ -654,6 +701,12 @@ def main():
         version_cache_dir,
         tarball_url=tarball_url,
     )
+
+    if config["cleanup_stale_comfyui"]:
+        cleanup_stale_tarballs(
+            version_cache_dir,
+            exempt_names={tarball_path.name},
+        )
 
     log.info("Extracting ComfyUI %s ...", version_head)
 

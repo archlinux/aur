@@ -135,3 +135,9 @@
 # # e.g. `["mkdir -p \"$PWD\"/dir", "/path/to/my.sh"]`
 # # Default: []
 # prekick_exec           = []
+
+# # Cleanup the stale ComfyUI tarballs.
+# # Automatically removes version-cache tarballs older than 30 days.
+# # Set to false to disable stale ComfyUI cleanup.
+# # Default: true
+# cleanup_stale_comfyui  = true
