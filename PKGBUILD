@@ -9,14 +9,14 @@ license=('GPL-3.0')
 replaces=('qobuz-player')
 conflicts=('qobine-git')
 depends=('alsa-lib' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'pango' 'gdk-pixbuf2' 'graphene')
-makedepends=('protobuf' 'cargo' 'nodejs' 'npm' 'sqlx-cli')optdepends=('ttf-font-nerd: glyph support')
+makedepends=('protobuf' 'cargo' 'nodejs' 'npm' 'sqlx-cli')
 optdepends=('ttf-font-nerd: glyph support')
 source=("qobine-${_release_version}.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v${_release_version}.tar.gz")
 sha256sums=('8beda8cf9a78ef02f97f8ed2c3649cdc04bc551dc2d8db5552f9bba89c52fe7e')
 options=('!lto')
 
 prepare() {
-    cd ${pkgname}-${_release_version}
+    cd "${pkgname}-${_release_version}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target $(rustc --print host-tuple)
     cd web-module
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-    cd ${pkgname}-${_release_version}
+    cd "${pkgname}-${_release_version}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     #Build the webUI (thanks to moystard)
