@@ -1,6 +1,6 @@
 # Maintainer: Simon Jackson <sizeak at gmail dot com>
 pkgname=claude-commander
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 pkgdesc='A high-performance terminal UI for managing Claude coding sessions'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=('cargo' 'clang')
 # [profile.release], not here.
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sizeak/claude-commander/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0c4570216631a4598ac5e08e925c8632f0be6880a50c38029404c92c88ce7b7')
+sha256sums=('dced7cf8b358597d8233b9fef15157eae1594f9eb97b6ebbddffb08d7fe2dff9')
 
 prepare() {
   cd "$pkgname-$pkgver"
