@@ -22,11 +22,14 @@ PROJECT_VERSION = "v1.5"
 PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"
+GITHUB_API_CODELOAD = (
+    f"https://codeload.github.com/{COMFYUI_REPO}/tar.gz/{{}}"
+)
+GITHUB_API_COMMIT = (
+    f"https://api.github.com/repos/{COMFYUI_REPO}/commits/{{}}"
+)
 GITHUB_API_LATEST = (
     f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
-)
-CODELOAD_URL_TEMPLATE = (
-    f"https://codeload.github.com/{COMFYUI_REPO}/tar.gz/{{}}"
 )
 
 _API_TIMEOUT = 30
@@ -324,37 +327,52 @@ def _api_request(url, github_token=None):
 
 
 def _resolve_version(config, version_cache_dir):
-    """Resolve the ComfyUI version head and tarball URL.
+    """Resolve the ComfyUI version head and tarball URL."""
+    version_head = [config["version"]]
 
-    ``version_head`` may be a tag name, branch name, or commit hash.
-    """
-    version = config["version"]
     update = config["update"]
     github_token = config["github_token"]
 
     # TODO: Fetch the latest release version from both the comfy.org API
     # (https://api.comfy.org/releases?project=comfyui&locale=zh)
     # and the GitHub API, then race the two to decide the final version.
-    if version == "latest":
-        if update:
+    if update:
+        tag_name = None
+        if version_head[0] == "latest":
             data = _api_request(
                 GITHUB_API_LATEST,
                 github_token=github_token,
             )
-            latest_tag = data["tag_name"]
-            return latest_tag, CODELOAD_URL_TEMPLATE.format(latest_tag)
+            tag_name = data["tag_name"]
+            version_head.append(tag_name)
 
-        latest_link = version_cache_dir / "latest"
-        if not latest_link.is_symlink():
-            die("No cached 'latest' version and update is disabled.")
+        data = _api_request(
+            GITHUB_API_COMMIT.format(version_head[-1]),
+            github_token=github_token,
+        )
+        version_head.append(data["sha"])
 
-        cached_version = latest_link.readlink().name[: -len(".tar.gz")]
-        return cached_version, None
+        return (
+            version_head[-1],
+            GITHUB_API_CODELOAD.format(version_head[-1]),
+            tag_name,
+        )
 
-    if update:
-        return version, CODELOAD_URL_TEMPLATE.format(version)
+    version_tarball = version_cache_dir / f"{version_head[0]}.tar.gz"
 
-    return version, None
+    if not version_tarball.exists():
+        die(
+            "No cached '%s' version and update is disabled.",
+            version_head[0],
+        )
+
+    if version_tarball.is_symlink():
+        cached_version = version_tarball.readlink().name[: -len(".tar.gz")]
+        version_head.append(cached_version)
+    else:
+        return version_head[0], None, None
+
+    return version_head[-1], None, None
 
 
 def _download_tarball(tarball_url, tarball_path, github_token):
@@ -624,7 +642,7 @@ def main():
     create_directories(config, extra_dirs)
 
     version_cache_dir = Path(config["version_cache_dir"])
-    version_head, tarball_url = _resolve_version(
+    version_head, tarball_url, tag_name = _resolve_version(
         config,
         version_cache_dir,
     )
@@ -677,8 +695,9 @@ def main():
     run_prekick_commands(config, extracted_dir)
 
     log.info(
-        "Kicking ComfyUI %s on http://%s:%s ...",
-        version_head,
+        "Kicking ComfyUI %s (%s) on http://%s:%s ...",
+        config["version"],
+        tag_name or version_head,
         config["listen"],
         config["port"],
     )
