@@ -5,8 +5,8 @@
 # ═══════════════════════════════════════════════════════════════
 #
 # Before publishing to AUR:
-#   1. Create a signed tag:  git tag -s v0.1.0 -m "v0.1.0"
-#   2. Push the tag:         git push origin v0.1.0
+#   1. Create a signed tag:  git tag -s v0.1.1 -m "v0.1.1"
+#   2. Push the tag:         git push origin v0.1.1
 #   3. Generate .SRCINFO:    makepkg --printsrcinfo > .SRCINFO
 #   4. Submit to AUR via     git clone aur@aur.archlinux.org:chest-backup.git
 #      the AUR repo (not
@@ -18,7 +18,7 @@
 # and the build()/package() functions use $srcdir/$pkgname.
 
 pkgname=chest-backup
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
@@ -46,8 +46,17 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # ── pnpm 11+ blocks dependency build scripts by default ──────
+  # Approved native addons: cpu-features (ssh2 dep), esbuild, ssh2
+  cat >> pnpm-workspace.yaml <<-EOF
+onlyBuiltDependencies:
+  - cpu-features
+  - esbuild
+  - ssh2
+EOF
+
   # ── Install all dependencies (including native addons) ──────
-  pnpm install
+  pnpm install --frozen-lockfile
 
   # ── Build all apps (API, Tray, Web frontend) ────────────────
   pnpm build
