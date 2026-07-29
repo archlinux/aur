@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=kvrt
-pkgver=24.0.6.0.202607281649
+pkgver=24.0.6.0.202607290533
 pkgrel=1
 pkgdesc='Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected.'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver-$pkgrel.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run")
-b2sums=('c8dbb4b6412eea7425865863a2f5722a4902beae3d22bf7deb4214ce967fb8549c9b13ab6dca0b6cfb4b378970459a0f524647ec747d0c90cc57b2a3fd1699e7')
+b2sums=('b914973d115b9b416ca1012b3eb40bd34c6def65e95b7fb6aee0a1e98a0c453478bc93dec377b2b66ba9f1c8eb3624f3346e157d0cf069d9a9025302586429ed')
 
 prepare() {
   # Extract kvrt icon
