@@ -2,7 +2,7 @@
 
 pkgname=buzz-desktop-git
 pkgver=0.5.0.r25.g90e058ebf
-pkgrel=3
+pkgrel=4
 pkgdesc='Workspace where humans and agents build together (desktop client, git version)'
 arch=('x86_64')
 url='https://buzz.xyz'
@@ -14,6 +14,7 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
+  'gst-plugins-good'
   'gtk3'
   'hicolor-icon-theme'
   'libsoup3'
