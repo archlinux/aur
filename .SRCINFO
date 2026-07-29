@@ -1,0 +1,17 @@
+pkgbase = nikau-git
+	pkgdesc = Linux network KVM for Wayland/X11/Console (git version)
+	pkgver = r0.g3847fd4
+	pkgrel = 1
+	url = https://nikau.nickbp.com/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	provides = nikau
+	conflicts = nikau
+	source = nikau::git+https://git.sr.ht/~nickbp/nikau
+	sha256sums = SKIP
+
+pkgname = nikau-git
