@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
 pkgname=cherryctl
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cherry Servers CLI for managing cloud infrastructure'
 arch=('x86_64' 'aarch64')
 url='https://github.com/cherryservers/cherryctl'
@@ -11,11 +11,12 @@ depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f035906ead30c538682ed322b2d10627de18c15ee586fe813aac9a19bfa5e064')
 
-prepare(){
+prepare() {
   cd "${pkgname}-${pkgver}"
+  export GOPATH="$srcdir"
   mkdir -p build/
 
-  go mod download -x
+  go mod download -modcacherw
 }
 
 build() {
@@ -25,17 +26,21 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw"
 
   go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
     -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
       -X github.com/cherryservers/cherryctl/cmd.Version=${pkgver}" \
     -o build/cherryctl \
     .
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  export GOPATH="$srcdir"
+  export GOFLAGS="-mod=readonly -modcacherw"
+  go test ./...
 }
 
 package() {
