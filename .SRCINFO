@@ -1,0 +1,29 @@
+pkgbase = lua-ltreesitter
+	pkgdesc = Standalone tree sitter bindings for the Lua language
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/euclidianAce/ltreesitter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = lua
+	makedepends = lua54
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	makedepends = tree-sitter
+	source = git+https://github.com/euclidianAce/ltreesitter.git#tag=v0.3.0
+	source = git+https://github.com/tree-sitter/tree-sitter.git#tag=v0.26.8
+	sha256sums = 6c8c647f97cc1ebfdac7e1592bbe4969c850983c395354e158c0a6ec35ae9c56
+	sha256sums = 22e3f1f4bce1df2ea73d3bdc2b29713ce319b66538c03c4927e144bbf187d34f
+
+pkgname = lua-ltreesitter
+
+pkgname = lua54-ltreesitter
+
+pkgname = lua53-ltreesitter
+
+pkgname = lua52-ltreesitter
+
+pkgname = lua51-ltreesitter

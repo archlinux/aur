@@ -1,0 +1,4 @@
+[lua-ltreesitter]
+source = "git"
+git = "https://github.com/euclidianAce/ltreesitter.git"
+prefix = "v"
