@@ -1,7 +1,7 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=jgrep
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="grep for JSON with jq-style filter expressions (built from source)"
 arch=('x86_64')
 url="https://github.com/subnix-work/jgrep-tinox"
@@ -17,7 +17,7 @@ makedepends=('tinox')
 # already work around for the same reason). Disable it here too.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93f9cb66498441a4829f43cdc2ffc28e225ebdbb856b0061c39241eaaa150181')
+sha256sums=('160e94f7bd6703e0779d0bf0fb2c189a93b637d6cfa62dd0c92cbeff8c9ecfc0')
 
 build() {
   cd "jgrep-tinox-$pkgver"
