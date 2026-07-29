@@ -1,7 +1,7 @@
 # Maintainer: Timothy D Beach <beachtimothyd@gmail.com>
 pkgname=ear
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="many text sources, one output bus: your ears — local neural TTS reader (CLI + GUI)"
 arch=('x86_64')
 url="https://github.com/timbeach/ear"

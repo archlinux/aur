@@ -1,7 +1,7 @@
 pkgbase = ear
 	pkgdesc = many text sources, one output bus: your ears — local neural TTS reader (CLI + GUI)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timbeach/ear
 	install = ear.install
 	arch = x86_64
