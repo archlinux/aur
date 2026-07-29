@@ -1,0 +1,22 @@
+pkgbase = heimdall-rs-bin
+	pkgdesc = Advanced EVM toolkit for bytecode analysis and decompiling unverified contracts
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://heimdall.rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = heimdall-rs
+	conflicts = heimdall-rs
+	options = !debug
+	source = heimdall-rs-bin-0.9.3-LICENSE::https://raw.githubusercontent.com/Jon-Becker/heimdall-rs/0.9.3/LICENSE
+	sha256sums = a0b5efeafe7a3fb21daa0124b7c080f3950a6277bfded6e1da06c4f3bd8ed5a4
+	source_x86_64 = heimdall-rs-bin-0.9.3-x86_64::https://github.com/Jon-Becker/heimdall-rs/releases/download/0.9.3/heimdall-linux-amd64
+	sha256sums_x86_64 = 8d58c97f56d584d5d0737d0d0895fc8c68b7b8b2b680f2a7842245789f0b4868
+	source_aarch64 = heimdall-rs-bin-0.9.3-aarch64::https://github.com/Jon-Becker/heimdall-rs/releases/download/0.9.3/heimdall-linux-arm64
+	sha256sums_aarch64 = ef1d236e5e194e1722e12552b66303d3172e0c4cc267b096f7bc8a053f168df8
+
+pkgname = heimdall-rs-bin
