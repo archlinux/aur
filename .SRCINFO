@@ -1,4 +1,4 @@
-pkgbase = qtcurve-qt6-git
+pkgbase = qt6curve-git
 	pkgdesc = Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)
 	pkgver = 1.9.0.rc1.r0.g0000000
 	pkgrel = 3
@@ -27,4 +27,4 @@ pkgbase = qtcurve-qt6-git
 	source = git+https://github.com/ixnewton/qtcurve.git#branch=Qt6Curve_version
 	sha256sums = SKIP
 
-pkgname = qtcurve-qt6-git
+pkgname = qt6curve-git
