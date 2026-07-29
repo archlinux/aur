@@ -2,8 +2,8 @@
 
 pkgname=cashlyctl-git
 _pkgname=cashlyctl
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.0.r3.ged9eef7
+pkgrel=1
 pkgdesc="Terminal operations console and CLI for Cashly/DealSense deployments"
 arch=("any")
 url="https://github.com/goCashly/cashlyctl"
@@ -35,8 +35,15 @@ import subprocess
 import tomllib
 
 version = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
-count = subprocess.check_output(["git", "rev-list", "--count", "HEAD"], text=True).strip()
-short = subprocess.check_output(["git", "rev-parse", "--short=7", "HEAD"], text=True).strip()
+pathspecs = [".", ":(exclude)packaging/aur/cashlyctl-git"]
+count = subprocess.check_output(
+    ["git", "rev-list", "--count", "HEAD", "--", *pathspecs],
+    text=True,
+).strip()
+short = subprocess.check_output(
+    ["git", "log", "-1", "--format=%h", "--", *pathspecs],
+    text=True,
+).strip()
 print(f"{version}.r{count}.g{short}")
 PY
 }
