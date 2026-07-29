@@ -1,0 +1,20 @@
+pkgbase = livekit-tui-client-git
+	pkgdesc = Terminal-based LiveKit client with Zig/Odin video rendering
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TatsuyaM2667/livekit-tui-client
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = zig
+	makedepends = odin
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	provides = livekit-tui-client
+	conflicts = livekit-tui-client
+	source = git+https://github.com/TatsuyaM2667/livekit-tui-client.git
+	md5sums = SKIP
+
+pkgname = livekit-tui-client-git
