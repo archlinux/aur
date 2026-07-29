@@ -1,6 +1,6 @@
 pkgbase = ygrep
 	pkgdesc = grep for YAML with jq-style filter expressions (built from source)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/subnix-work/jgrep-tinox
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ygrep
 	depends = glibc
 	depends = gc
 	options = !debug
-	source = jgrep-tinox-1.0.3.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 93f9cb66498441a4829f43cdc2ffc28e225ebdbb856b0061c39241eaaa150181
+	source = jgrep-tinox-1.0.4.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 160e94f7bd6703e0779d0bf0fb2c189a93b637d6cfa62dd0c92cbeff8c9ecfc0
 
 pkgname = ygrep
