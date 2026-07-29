@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=zgit-desktop-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A modern, fast Git & GitHub client — Desktop app (Wails)"
 arch=('x86_64')
@@ -14,25 +14,16 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-desktop-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('f812e258b5d0f79d6cfec866819ab7cac4f06d1cb2349d4d14f55f6347d30f9a')
+sha256sums=('6e3ac48d2b10cbe27eff5c469747cda3713ac8854317aea7959cf7c85d802497')
 
 package() {
-  local _destdir="${pkgdir}/opt/zgit-desktop"
-  install -d "${_destdir}"
-  tar -xzf "${srcdir}/zgit-desktop-v${pkgver}-linux-amd64.tar.gz" -C "${_destdir}"
+    # Install binary dynamically using $pkgver
+    install -Dm755 "zgit-desktop-v${pkgver}-linux-amd64" "$pkgdir/usr/bin/zgit-desktop"
 
-  # Binary
-  install -Dm755 "${_destdir}/zgit-desktop" "${pkgdir}/usr/bin/zgit-desktop"
-
-  # Desktop entry
-  install -Dm644 "${srcdir}/zgit.desktop" "${pkgdir}/usr/share/applications/zgit.desktop"
-
-  # Icon
-  install -Dm644 "${_destdir}/zgit.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/zgit.png"
-
-  # AppStream metadata
-  install -Dm644 "${_destdir}/com.zaidejjo.zgit.metainfo.xml" \
-    "${pkgdir}/usr/share/metainfo/com.zaidejjo.zgit.metainfo.xml"
+    # Install desktop integration files
+    install -Dm644 zgit.png "$pkgdir/usr/share/pixmaps/zgit.png"
+    install -Dm644 zgit.desktop "$pkgdir/usr/share/applications/zgit.desktop"
+    install -Dm644 com.zaidejjo.zgit.metainfo.xml "$pkgdir/usr/share/metainfo/com.zaidejjo.zgit.metainfo.xml"
 }
 
 # vim:set ts=2 sw=2 et:
