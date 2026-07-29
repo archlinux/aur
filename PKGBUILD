@@ -69,7 +69,7 @@ prepare() {
 		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
 		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
 		echo ""
-		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore-wotlk-git'."
 		echo "======================================================================="
 		exit 1
 	
@@ -94,7 +94,7 @@ prepare() {
 		echo " Execution example using the MySQL 8.4 LTS tracking tree to resolve this:"
 		echo "   yay -S libmysqlclient84 mysql-clients84 mysql84"
 		echo ""
-		echo " Once those three components are fully active, re-run 'yay -S azerothcore'."
+		echo " Once those three components are fully active, re-run 'yay -S azerothcore-wotlk-git'."
 		echo "======================================================================="
 		exit 1
 	fi
