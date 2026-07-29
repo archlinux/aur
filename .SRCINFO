@@ -1,6 +1,6 @@
 pkgbase = mcpls
 	pkgdesc = Universal MCP to LSP bridge - expose Language Server Protocol capabilities as MCP tools for AI agents
-	pkgver = 0.3.6
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/bug-ops/mcpls
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mcpls
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/bug-ops/mcpls.git#tag=v0.3.6
-	md5sums = 0eee299f182b84789f5c6b9d1c5e61ad
+	source = git+https://github.com/bug-ops/mcpls.git#tag=v0.3.8
+	md5sums = c2a0ec5f5c90d7d30203f71a2a7173fb
 
 pkgname = mcpls
