@@ -1,0 +1,17 @@
+pkgbase = dbui-bin
+	pkgdesc = Universal Database TUI for MySQL, PostgreSQL, and SQLite
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/KenanBek/dbui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = dbui
+	conflicts = dbui
+	options = !strip
+	source_x86_64 = dbui-x86_64-0.9.0.tgz::https://github.com/KenanBek/dbui/releases/download/v0.9.0/dbui_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e68953ab928d1db82bc13a6b36e46f127aa52034d236f8657d8a0a97e525c880
+	source_aarch64 = dbui-aarch64-0.9.0.tgz::https://github.com/KenanBek/dbui/releases/download/v0.9.0/dbui_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4d07095e3f887dce9d039f6a4358f894ab74c49da598658a70d063f710140d32
+
+pkgname = dbui-bin

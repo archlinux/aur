@@ -1,0 +1,5 @@
+[dbui-bin]
+source = "github"
+github = "KenanBek/dbui"
+use_latest_release = true
+prefix = "v"
