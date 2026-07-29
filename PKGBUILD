@@ -1,9 +1,9 @@
 # Maintainer: YesPlayMusic contributors
 
 pkgname=yesplaymusic-axuanran-bin
-pkgver=0.1.1_alpha.6
+pkgver=0.1.1_alpha.7
 pkgrel=1
-_releasever=0.1.1-alpha.6
+_releasever=0.1.1-alpha.7
 pkgdesc="A third-party Netease Cloud Music player"
 arch=('x86_64')
 url="https://github.com/axuanran/YesPlayMusic"
@@ -31,7 +31,7 @@ source=(
     "YesPlayMusic-${_releasever}.pacman::${url}/releases/download/v${_releasever}/YesPlayMusic-${_releasever}.pacman"
     "LICENSE-${_releasever}::https://raw.githubusercontent.com/axuanran/YesPlayMusic/v${_releasever}/LICENSE"
 )
-sha256sums=('b0ae87dd7fe325d7c019831819605d607cbc892edb20020062b8ed145e12858e'
+sha256sums=('0db95834c876ced7122004ea894c66fcdd4f57f0b1bf4ea7b3617a9d70f75b7e'
             'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6')
 
 package() {
