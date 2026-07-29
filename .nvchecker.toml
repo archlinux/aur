@@ -1,0 +1,3 @@
+[luajit-rs]
+source = "git"
+git = "https://github.com/CppCXY/luajit-rs.git"

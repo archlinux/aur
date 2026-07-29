@@ -1,0 +1,16 @@
+pkgbase = luajit-rs
+	pkgdesc = A LuaJIT 3 interpreter written in pure Rust
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/CppCXY/luajit-rs
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	source = https://github.com/CppCXY/luajit-rs/archive/refs/tags/0.0.0/luajit-rs-0.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = luajit-rs
