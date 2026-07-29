@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-astt
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Agentics ASTT - the on-device speech engine, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('agentics')
 options=('!strip' '!debug')
-source=("agentics-astt-0.1.1-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-astt-0.1.1-x86_64.enc")
-sha512sums=('6162b88cc5f63dbb7404f607a6d6ddfc0d74db622794cfaa2a8e8959b072adc64a2088eadbd41b067e0e6d581e216cb2e0b6be5041bf03bac4cc353ae3cb5b8b')
+source=("agentics-astt-0.1.2-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-astt-0.1.2-x86_64.enc")
+sha512sums=('4aab6aaa444d1ec252e996d97467d2f32b4db819bb7264b6e9b311d4abc62d320a05157e6e0f94a6aae8f530874d9b2786ee6d2e51bc58ce2d34ee4db86258bf')
 
 package() {
-  install -Dm644 "$srcdir/agentics-astt-0.1.1-x86_64.enc" "$pkgdir/opt/agentics/components/speech/0.1.1/speech-0.1.1-linux-amd64.enc"
+  install -Dm644 "$srcdir/agentics-astt-0.1.2-x86_64.enc" "$pkgdir/opt/agentics/components/speech/0.1.2/speech-0.1.2-linux-amd64.enc"
   install -dm755 "$pkgdir/usr/share/doc/agentics-astt"
   printf '%s\n' \
     'agentics-astt ships the encrypted Agentics speech component.' \
