@@ -1,0 +1,49 @@
+From e39b52defe90067e5725e99c7238246c68a2500e Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 18 Mar 2015 01:50:00 +0000
+Subject: [PATCH] nativesdk-glibc: Fix buffer overrun with a relocated SDK
+
+When ld-linux-*.so.2 is relocated to a path that is longer than the
+original fixed location, the dynamic loader will crash in open_path
+because it implicitly assumes that max_dirnamelen is a fixed size that
+never changes.
+
+The allocated buffer will not be large enough to contain the directory
+path string which is larger than the fixed location provided at build
+time.
+
+Upstream-Status: Inappropriate [OE SDK specific]
+
+Signed-off-by: Jason Wessel <jason.wessel@windriver.com>
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ elf/dl-load.c | 12 ++++++++++++
+ elf/dl-load.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+--- a/elf/dl-load.c
++++ b/elf/dl-load.c
+@@ -1784,6 +1784,23 @@
+      loader rejects empty names well before reaching here).  */
+   assert (namelen >= 1);
+ 
++  /* A relocated SDK can carry system directory paths longer than the ones
++     present when the loader was built, but max_dirnamelen still holds the
++     build-time SYSTEM_DIRS_MAX_LEN: relocate_sdk.py rewrites the .sysdirslen
++     section while the maximum is a compile-time constant with no section to
++     patch.  Recompute it from the actual entries so bufsize is not short.  */
++  do
++    {
++      struct r_search_path_elem *this_dir = *dirs;
++      if (this_dir->dirnamelen > max_dirnamelen)
++	{
++	  max_dirnamelen = this_dir->dirnamelen;
++	}
++    }
++  while (*++dirs != NULL);
++
++  dirs = sps->dirs;
++
+   size_t bufsize = max_dirnamelen + max_capstrlen + namelen;
+   struct dl_scratch_buffer scratch = dl_scratch_buffer_init ();
+   dl_scratch_buffer_allocate (&scratch, bufsize, 0);
