@@ -1,7 +1,7 @@
 # Maintainer: Glax <its@glax.dev>
 _pkgname=beyond-cubed
 pkgname="${_pkgname}-git"
-pkgver=r35.af743c5
+pkgver=r40.e3ee9a7
 pkgrel=1
 pkgdesc="An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility."
 arch=('x86_64')
@@ -35,8 +35,8 @@ build() {
 }
 
 package() {
-	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
-	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}-cli" "${pkgdir}/opt/${_pkgname}/${_pkgname}-cli"
+	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -D "${srcdir}/${_pkgname}/target/release/${_pkgname}-cli" "${pkgdir}/usr/bin/${_pkgname}-cli"
 	# Add .desktop entry
 	install -D "${srcdir}/beyond-cubed.desktop" "${pkgdir}/usr/share/applications/beyond-cubed.desktop"
 }

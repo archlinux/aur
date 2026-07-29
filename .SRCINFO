@@ -1,6 +1,6 @@
 pkgbase = beyond-cubed-git
 	pkgdesc = An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility.
-	pkgver = r35.af743c5
+	pkgver = r40.e3ee9a7
 	pkgrel = 1
 	url = https://gitlab.com/coolGi/beyond-cubed
 	arch = x86_64
