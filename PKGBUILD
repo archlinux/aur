@@ -1,5 +1,5 @@
 pkgname=vectomancy-bin
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Image-to-Equation Converter CLI (Pre-compiled)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("https://github.com/Xuepoo/vectomancy/releases/download/v$pkgver/
 source_aarch64=("https://github.com/Xuepoo/vectomancy/releases/download/v$pkgver/vectomancy-linux-aarch64")
 
 sha256sums=('b611f7feb097dac1235bc2901046f36ff85e753b075b741412b6a0447ab20390')
-sha256sums_x86_64=('f71cf1e8ee9fc0ef4c26b2d98d5e76f65e775de32e344fa1be5931024465f0a9')
-sha256sums_aarch64=('57261e948f5fa2eb7a372ed0938ddda62d10b4c61e6fd7dee279f7e97ce67828')
+sha256sums_x86_64=('61cee56645d0ab6a6a19fa4d06dd5c0acb898f6b17af05697e808e2236c7c9e7')
+sha256sums_aarch64=('95e0e7a93701b9decf9c80076ef0e47e4a519c0bf51724b0700a0c97bc70da8b')
 
 package() {
   install -Dm755 "$srcdir/vectomancy-linux-$CARCH" "$pkgdir/usr/bin/vectomancy"
