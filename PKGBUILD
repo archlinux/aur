@@ -80,7 +80,7 @@ b2sums=(
   'SKIP'
 )
 
-options=(!debug !strip)
+options=(!debug)
 
 prepare() {
   cd ppsspp
