@@ -1,7 +1,7 @@
 # Maintainer: Anatolii Vorona <vorona.tolik@gmail.com>
 pkgbase=openlawsvpn
 pkgname=(openlawsvpn-daemon openlawsvpn-cli openlawsvpn-gui)
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="AWS Client VPN client with SAML/SSO support — pure Go stack"
 arch=(x86_64 aarch64 powerpc64le)
@@ -11,7 +11,7 @@ makedepends=(go rust gtk4 libadwaita openssl)
 install=openlawsvpn.install
 _srcdir="go-openlawsvpn-pkg-$pkgver-$pkgrel"
 source=("$pkgbase-$pkgver-$pkgrel.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/$pkgver-$pkgrel.tar.gz")
-sha256sums=('83bc4f3ae1185a57e66a45708356e4684995223917f47f6373e2617c00ba3cdc')
+sha256sums=('66cea7ac558c76ff9ef67b18900671740627259dc381868e3899b9794ac1bfff')
 
 prepare() {
     cd "$_srcdir"
