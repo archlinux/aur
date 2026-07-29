@@ -1,0 +1,12 @@
+pkgbase = battli4k-ascii
+	pkgdesc = Программа для вывода ASCII котика в терминал
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://archlinux.org
+	arch = any
+	license = MIT
+	depends = bash
+	source = battli4k-ascii.sh
+	sha256sums = SKIP
+
+pkgname = battli4k-ascii
