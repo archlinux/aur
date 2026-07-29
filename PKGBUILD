@@ -14,7 +14,7 @@ arch=(x86_64)
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
 license=('custom:NoSQL Workbench Local License Agreement ')
 options=(!strip)
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://dy9cqqaswpltd.cloudfront.net/NoSQL_Workbench.AppImage"
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://dy9cqqaswpltd.cloudfront.net/NoSQL%20Workbench-linux-${pkgver}.AppImage"
 "LICENSE::https://aws.amazon.com/nosql/nosql-workbench-license/"
 "nosql-workbench.png"
 )
