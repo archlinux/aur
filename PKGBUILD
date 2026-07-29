@@ -2,7 +2,7 @@
 # Maintainer: DatCodeMania <aur@codemania.dev>
 
 pkgname='discord-delete-bin'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Bulk-delete your Discord messages and reactions from your data package'
 url='https://github.com/DatCodeMania/discord-delete'
@@ -12,10 +12,10 @@ provides=('discord-delete')
 conflicts=('discord-delete')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/DatCodeMania/discord-delete/releases/download/v${pkgver}/discord-delete_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('fad4516fda415258993792b61e5699093c74d4d94d36d41eb924388688a1b316')
+sha256sums_aarch64=('699b13d9b9a8cce921ad89678549356dd322d498b483cbcb799a9acf66d2ff73')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/DatCodeMania/discord-delete/releases/download/v${pkgver}/discord-delete_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('1b57f1a8a62ab31edbd055c880d48274fd5dc2693d059e396aa928835efb39a4')
+sha256sums_x86_64=('dc05fe17ad8492a759f850f214234bb09ebabcd62f4d046abab543fba41d2706')
 
 package() {
   install -Dm755 ./*/discord-delete "${pkgdir}/usr/bin/discord-delete"
