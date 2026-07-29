@@ -1,6 +1,6 @@
 pkgbase = mangatan-bin
 	pkgdesc = Read manga and light novels, and watch anime
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/1Selxo/Mangatan
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = mangatan-bin
 	conflicts = mangayomi-bin
 	conflicts = mangayomi-git
 	options = !strip
-	source = mangatan.desktop::https://raw.githubusercontent.com/1Selxo/Mangatan/v1.0.9/linux/mangayomi.desktop
-	source = LICENSE-1.0.9::https://raw.githubusercontent.com/1Selxo/Mangatan/v1.0.9/LICENSE
+	source = mangatan.desktop::https://raw.githubusercontent.com/1Selxo/Mangatan/v1.1.0/linux/mangayomi.desktop
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/1Selxo/Mangatan/v1.1.0/LICENSE
 	sha256sums = d00453f6aa1f75357a31d0a696861be6f7e82bd824920faa98bf48b2a4769c25
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
-	source_x86_64 = mangatan-bin-1.0.9-x86_64.tar.gz::https://github.com/1Selxo/Mangatan/releases/download/v1.0.9/Mangatan-v1.0.9-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 25331bc6dc47f27cbd0aa24c22c3e5475366803c45425bad6c5dcd2f07645248
+	source_x86_64 = mangatan-bin-1.1.0-x86_64.tar.gz::https://github.com/1Selxo/Mangatan/releases/download/v1.1.0/Mangatan-v1.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8f3b8ec5dc3eb07aaab7f77a6f394e0aa4785dfa20ead172566579aaf5f25e28
 
 pkgname = mangatan-bin
