@@ -1,0 +1,12 @@
+pkgbase = docker-model-plugin-bin
+	pkgdesc = Docker Model Runner CLI plugin (prebuilt binary)
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/docker/model-runner
+	arch = x86_64
+	license = Apache-2.0
+	depends = docker
+	source = docker-model-plugin_1.2.6.deb::https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-model-plugin_1.2.6-1~ubuntu.24.04~noble_amd64.deb
+	sha256sums = 99e5c1e278ff73f4a950f39dfa4499db949424cc9002e4ba47e21ed951cd0d8e
+
+pkgname = docker-model-plugin-bin
