@@ -1,7 +1,7 @@
 # Maintainer: Kristyan Carvalho <kristyancarvalho@hotmail.com>
 
 pkgname=desktube-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Control YouTube on your computer from your phone, over your local network"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('desktube')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libnotify')
 options=('!strip' '!debug')
 source=("DeskTube-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/DeskTube-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('7735779fdee858930dc187932ac9bf39139c2d86ef5357fd2e92e3d4bea36887')
+sha256sums=('2736d5a544760a3bb7af40eac2375597569ca90c3caf1bf900340f6fbb94f9cc')
 
 package() {
   local appdir
