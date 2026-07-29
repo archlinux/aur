@@ -1,7 +1,7 @@
 # Maintainer: Mathias Tausen <aur at alias dot tausen dot org>
 pkgname=classic-repair-toolbox-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for diagnosing, troubleshooting, and repairing vintage computers and peripherals"
 arch=("x86_64")
 url="https://github.com/HovKlan-DH/Classic-Repair-Toolbox"
