@@ -2,7 +2,7 @@
 # Contributor: JuiceyDev <me@juicey.dev>
 
 pkgname=juicebox2-plus-git-bin
-pkgver=09d153b
+pkgver=02736f2
 pkgrel=1
 pkgdesc='The companion app to juicebox² ! (binary release)'
 arch=('x86_64')
