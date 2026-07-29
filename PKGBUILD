@@ -1,15 +1,16 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=qt6curve-git
 pkgver=1.9.0.rc1.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)"
 arch=('x86_64')
 url="https://github.com/ixnewton/qtcurve/tree/Qt6Curve_version"
 license=('LGPL2.1')
-depends=('qt6-base' 'qt6-svg' 'kf6-kguiaddons' 'kf6-kconfig' 'kf6-kconfigwidgets'
-         'kf6-ki18n' 'kf6-kio' 'kf6-kiconthemes' 'kf6-kwidgetsaddons'
-         'kf6-kwindowsystem' 'kf6-frameworkintegration' 'kf6-kxmlgui'
-         'kf6-karchive')
+depends=('qt6-base' 'qt6-svg'
+         'kguiaddons' 'kconfig' 'kconfigwidgets'
+         'ki18n' 'kio' 'kiconthemes' 'kwidgetsaddons'
+         'kwindowsystem' 'frameworkintegration' 'kxmlgui'
+         'karchive')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('qt6curve')
 conflicts=('qt6curve' 'qtcurve')
