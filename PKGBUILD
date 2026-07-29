@@ -1,7 +1,7 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.32
-pkgrel=4
+pkgver=1.0.33
+pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
 pkgdesc="A dynamic island for Hyprland and niri using Quickshell"
@@ -36,6 +36,7 @@ optdepends=(
     'cava: for audio visualizer'
     'imagemagick: for wallpaper thumbnails'
     'awww: for applying wallpapers from the wallpaper picker'
+    'python-pywal: for generating colors from the selected wallpaper'
     'networkmanager: for wifi control'
     'iwd: for wifi control'
     'swaync: for the Focus do-not-disturb toggle'
@@ -47,7 +48,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6f9d0e2b36a955107f90d8eb9bc388470b0672db438c73beb1789792fc5ed2e6')
+sha256sums=('bb8920d19895355f06c9907b5c7eab9b5a282601e0057e2950aa30da3f4488f2')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
