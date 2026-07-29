@@ -1,5 +1,5 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
-pkgname=qt6curve-git
+pkgname=qtcurve-qt6-git
 pkgver=1.9.0.rc1.r0.g0000000
 pkgrel=3
 pkgdesc="Qt6 widget style with extensive configurability (Qt6 version only, separate from qtcurve)"
