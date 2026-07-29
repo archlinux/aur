@@ -19,7 +19,8 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'libpng' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl'
 		'qt6-base' 'qt6-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu74')
 options=('!strip' '!emptydirs')
-source=("local://${pkgname}-${pkgver}-${incrver}.ubuntu24-64.x86_64.deb")
+source=("local://scrt-${pkgver}-${incrver}.ubuntu24-64.x86_64.deb")
+  'compressor'
 md5sums=('82197f9427ae3a349f0c9dba1e556e35')
 
 package() {
@@ -65,3 +66,4 @@ package() {
        install -Dm 644 ./usr/share/applications/SecureCRT.desktop ${pkgdir}/usr/share/applications/SecureCRT.desktop
 
 }
+
