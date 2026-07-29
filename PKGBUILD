@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.14159265358
+pkgver=3.1416
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -151,7 +151,7 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.14159265358:"
+    echo "New in v3.1416:"
     echo "  - Pads: a new tab next to DJ with a grid of labelled, coloured pads"
     echo "    that fire a jingle, a stab or a bed the moment you press them."
     echo "    Eight banks, per-pad volume and looping, made for a touch screen"
@@ -159,6 +159,8 @@ package() {
     echo "  - Every entry in every top menu now carries an icon"
     echo "  - Tor is no longer bundled: it is installed on first use of the"
     echo "    Torrents feature, with your consent, like the other optional tools"
+    echo "  - Fixed: the update check reported 'you have the latest version'"
+    echo "    even when a newer release was out"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
