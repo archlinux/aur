@@ -30,6 +30,11 @@ post_install() {
 	sudo systemctl enable acore-world-server.service
 	sudo systemctl enable mysqld.service
 
+	# Create azerothcore user
+	if ! getent passwd azerothcore >/dev/null; then
+		useradd -r -s /usr/bin/nologin -d /usr/share/azerothcore azerothcore
+	fi
+
 	# Ensure the administrative access group exists
 	if ! getent group acore-admin >/dev/null; then
 		groupadd -r acore-admin

@@ -1,15 +1,17 @@
 [Unit]
 Description=AzerothCore MMORPG World Server
-After=network.target azerothcore-auth.service
-StartLimitIntervalSec=0
+After=network.target acore-auth-server.service
 
 [Service]
 Type=forking
 User=azerothcore
 Group=acore-admin
+RuntimeDirectory=azerothcore
+RuntimeDirectoryMode=0775
 WorkingDirectory=/usr/share/azerothcore
 ExecStart=/usr/bin/tmux -S /run/azerothcore/world.sock new-session -d -s worldserver '/usr/share/azerothcore/bin/worldserver'
 ExecStop=/usr/bin/tmux -S /run/azerothcore/world.sock kill-session -t worldserver
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
