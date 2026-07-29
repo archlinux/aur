@@ -1,7 +1,6 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
-# Former Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
+# Contributor: Marcus Hoffmann <bubu@bubu1.eu>
 # Contributor: Optize sp. z o.o. <hello@optize.pl>
-
 pkgname=swagger-ui
 pkgver=5.32.11
 pkgrel=1
@@ -13,7 +12,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/swagger-api/${pkgname}/
 sha256sums=('5204ff52c7c8693eb80d564d4ba3739aed5d3919e45d641f91f91cefae69ef38')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/dist"
-  mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
-  cp -r ./* "${pkgdir}/usr/share/webapps/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  install -Dm644 -t "${pkgdir}/usr/share/webapps/${pkgname}" dist/*
 }
