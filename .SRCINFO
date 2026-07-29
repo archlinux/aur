@@ -1,0 +1,21 @@
+pkgbase = ros2-humble-vision-opencv
+	pkgdesc = ROS2 vision_opencv stack - cv_bridge, image_geometry, and metapackage
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/ros-perception/vision_opencv
+	arch = x86_64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = ros2-humble
+	depends = opencv4
+	depends = boost
+	depends = python-numpy
+	source = https://github.com/ros-perception/vision_opencv/archive/refs/tags/3.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = ros2-humble-vision-opencv
+	pkgdesc = ROS2 vision_opencv metapackage
+	depends = ros2-humble-cv-bridge
+	depends = ros2-humble-image-geometry
