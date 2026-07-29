@@ -45,6 +45,6 @@ package() {
     # Install the binaries for the players
     install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{qobine-gtk,qobine-tui,qobine-web,qobine-rfid}
     # Install the binaries for the disconnect service
-    install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{qobine-connect,disconnect-module,disconnect-server}
+    install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{qobine-connect,disconnect-server}
 
 }
