@@ -5,7 +5,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=python-soco
-pkgver=0.31.1
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="A Python library that allows you to control Sonos speakers programmatically"
 arch=('any')
@@ -13,10 +13,11 @@ url="https://github.com/SoCo/SoCo"
 license=('MIT')
 provides=("$pkgname")
 conflicts=("$pkgname")
-depends=('python' 'python-requests' 'python-xmltodict' 'python-ifaddr' 'python-twisted' 'python-aiohttp' 'python-appdirs' 'python-lxml')
+depends=('python' 'python-requests' 'python-xmltodict' 'python-ifaddr'
+         'python-twisted' 'python-aiohttp' 'python-appdirs' 'python-lxml')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("SoCo-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8404ba5385df9786cba51bda2ff12c1608b7343c59edb9ba4a8fb314bd71d9e3')
+sha256sums=('a8c0eb3f7b48d4d317958f5840f033101e5c1d95fc4d288defbbff7a1c373bd3')
 
 build() {
     cd SoCo-$pkgver
