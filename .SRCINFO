@@ -9,9 +9,9 @@ pkgbase = librewolf-extension-sponsorblock-bin
 	depends = librewolf
 	provides = librewolf-extension-sponsorblock
 	conflicts = librewolf-extension-sponsorblock
-	noextract = sponsorBlocker@ajay.app.xpi
-	source = sponsorBlocker@ajay.app.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/6.1.4/FirefoxSignedInstaller.xpi
-	source = https://raw.githubusercontent.com/ajayyy/SponsorBlock/refs/tags/6.1.4/LICENSE
+	noextract = sponsorBlocker@ajay.app-6.1.4.xpi
+	source = sponsorBlocker@ajay.app-6.1.4.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/6.1.4/FirefoxSignedInstaller.xpi
+	source = LICENSE-6.1.4::https://raw.githubusercontent.com/ajayyy/SponsorBlock/refs/tags/6.1.4/LICENSE
 	b2sums = 4dd0a8abd25aa777dfd3e00b9da6e95b2b6359e593e483b8360a85a0d3fc474e2ef947fda7588c649f2e5cb5013c834c7469695df76c2254ce8d1117b6706316
 	b2sums = ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c
 
