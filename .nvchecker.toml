@@ -1,0 +1,4 @@
+[cerulean]
+source = "git"
+git = "https://github.com/efredriksson/cerulean.git"
+prefix = "v"

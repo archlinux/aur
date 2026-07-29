@@ -1,0 +1,18 @@
+pkgbase = cerulean
+	pkgdesc = an opinionated code formatter for the Teal programming language
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/efredriksson/cerulean
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = lua54
+	depends = lua54-filesystem
+	depends = lua54-tl
+	depends = teal
+	source = https://github.com/efredriksson/cerulean/archive/refs/tags/v1.8.0/cerulean-1.8.0.tar.gz
+	source = https://luarocks.org/manifests/efredriksson/cerulean-1.8.0-1.rockspec
+	sha256sums = 6f591ab7b45ffcfcd3b0d7e942cf85abdbb1618792adaee2e592ef64a93ed4cc
+	sha256sums = 8b0942f26b001d1b344906374b18cc7461944deb89cdc67d48412f7cde9459ab
+
+pkgname = cerulean
