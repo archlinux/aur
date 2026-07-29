@@ -7,7 +7,7 @@ pkgdesc="Vuetify widgets for trame"
 pkgver=3.2.5
 _npm_pkgver=3.11.2
 _npm_font_pkgver=7.4.47
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -31,11 +31,11 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_base}-${pkgver}/vue2
+  cd ${srcdir}/${_base}-${pkgver}/js-libs/v2
   npm install
   npm run build
 
-  # cd ${srcdir}/${_base}-${pkgver}/vue3
+  # cd ${srcdir}/${_base}-${pkgver}/js-libs/v3
   # npm install
   # npm run build
 
