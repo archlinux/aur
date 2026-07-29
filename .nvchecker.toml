@@ -1,0 +1,5 @@
+[iris-autocomplete-bin]
+source = "github"
+github = "versenilvis/IRIS"
+use_latest_release = true
+prefix = "v"
