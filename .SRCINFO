@@ -1,0 +1,26 @@
+pkgbase = gleem-crossfade
+	pkgdesc = Dual-mix virtual audio mixer for PipeWire
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/gleem-gg/crossfade
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = libpulse
+	depends = alsa-lib
+	depends = pipewire-pulse
+	depends = hicolor-icon-theme
+	optdepends = lilv: LV2 effect plugin browser
+	optdepends = carla: VST2/VST3 effect support
+	optdepends = python: required by the Carla VST host helper
+	provides = openwave-mixer
+	conflicts = openwave-mixer
+	replaces = openwave-mixer
+	source = crossfade-0.8.0.tar.gz::https://github.com/gleem-gg/crossfade/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 577c872f4e77284bfef88ad8011d69d98e4fa79af7e6e868a61052e742c04253
+
+pkgname = gleem-crossfade
