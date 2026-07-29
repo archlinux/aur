@@ -1,6 +1,6 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=bankai-bin
-pkgver=0.2.38
+pkgver=0.2.39
 pkgrel=1
 pkgdesc="Focused Electron workspace for persistent project shell sessions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('bankai')
 options=('!strip' '!debug')
 source=("bankai-$pkgver.AppImage::$url/releases/download/v$pkgver/Bankai-$pkgver.AppImage")
 noextract=("bankai-$pkgver.AppImage")
-sha256sums=('d2fd899977e6e7792b84e29109daa4f6529e7aed09df06b9841d01ef04a698e1')
+sha256sums=('bc218ee7277a80ed471a0c1ee0450a33bffb61721cdb9e8e16ff56ea31551d22')
 
 prepare() {
 	chmod +x "bankai-$pkgver.AppImage"
