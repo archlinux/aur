@@ -1,0 +1,16 @@
+pkgbase = exfat-resize
+	pkgdesc = Grow an existing exFAT filesystem in a regular file or on a raw block device
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/huven/exfat-resize
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	options = staticlibs
+	options = !lto
+	source = https://github.com/huven/exfat-resize/releases/download/v1.0.1/exfat-resize-1.0.1.tar.gz
+	b2sums = a49eeafcf89b9f3fc9ff5727c0bd3b8e402ad78308dac1cbc6c5b1f3a61349cdc942b261433189de08e7ce8856d243750a07d566c5733014bda986022c1fffbe
+
+pkgname = exfat-resize
