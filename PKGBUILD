@@ -1,5 +1,5 @@
 pkgname=archclone
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Plugin-based backup and restore framework for Arch Linux"
 arch=('any')

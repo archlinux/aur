@@ -1,6 +1,6 @@
 pkgbase = archclone
 	pkgdesc = Plugin-based backup and restore framework for Arch Linux
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/a4ace1/ArchClone
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = archclone
 	depends = findutils
 	depends = grep
 	depends = sed
-	source = archclone-1.0.3.tar.gz::https://github.com/a4ace1/ArchClone/archive/refs/tags/v1.0.3.tar.gz
+	source = archclone-1.0.4.tar.gz::https://github.com/a4ace1/ArchClone/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = archclone
