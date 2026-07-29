@@ -5,7 +5,7 @@
 # Contributor: Ravi Desai <ravster3@hotmail.com>
 
 pkgname=xfe
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='X File Explorer (Xfe) is an MS-Explorer like file manager for X'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL-2.0-or-later')
 depends=('fox' 'freetype2' 'xcb-util' 'libxft')
 makedepends=('intltool')
 source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f539dd333296d91bd318ba62403bc7bee4069262df23f518e4453c80273b82be')
+sha256sums=('be5a0c71397e40cf9bcc91994ec295aa1372de268c80c345478c59724f35a033')
 
 build() {
   cd "${pkgname}-${pkgver}"
