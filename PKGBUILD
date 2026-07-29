@@ -13,17 +13,17 @@ source=("$pkgname-$pkgver.tar.gz::https://git.komun.buzz/Book-Enjoyer/volta/arch
 sha256sums=('ea39bcc9391494642bdbdcc0ca7170867500b3beddb0425544d518649f7573b3')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/volta"
     cargo build --release --manifest-path core/Cargo.toml
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/volta"
     cargo test --release --manifest-path core/Cargo.toml
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/volta"
 
     # TUI binary
     install -Dm755 target/release/volta-tui "$pkgdir/usr/bin/volta-tui"
