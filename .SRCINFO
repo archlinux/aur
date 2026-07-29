@@ -1,6 +1,6 @@
 pkgbase = lucebox-git
 	pkgdesc = Fast LLM speculative inference server for consumer hardware
-	pkgver = r995.7c27e33
+	pkgver = r1280.aab6c2d6
 	pkgrel = 1
 	url = https://lucebox.com
 	arch = x86_64
@@ -19,6 +19,10 @@ pkgbase = lucebox-git
 	options = !lto
 	options = !debug
 	source = lucebox::git+https://github.com/Luce-Org/lucebox-hub.git
+	source = Block-Sparse-Attention::git+https://github.com/mit-han-lab/Block-Sparse-Attention.git
+	source = cutlass::git+https://github.com/NVIDIA/cutlass.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = lucebox-git

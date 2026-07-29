@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lucebox-git
-pkgver=r995.7c27e33
+pkgver=r1280.aab6c2d6
 pkgrel=1
 pkgdesc='Fast LLM speculative inference server for consumer hardware'
 arch=('x86_64')
@@ -22,8 +22,16 @@ makedepends=(
 options=('!lto' '!debug')
 provides=('lucebox')
 conflicts=('lucebox')
-source=('lucebox::git+https://github.com/Luce-Org/lucebox-hub.git')
-sha256sums=('SKIP')
+source=(
+    'lucebox::git+https://github.com/Luce-Org/lucebox-hub.git'
+    'Block-Sparse-Attention::git+https://github.com/mit-han-lab/Block-Sparse-Attention.git'
+    'cutlass::git+https://github.com/NVIDIA/cutlass.git'
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd lucebox
@@ -32,7 +40,27 @@ pkgver() {
 
 prepare() {
     cd lucebox
-    git submodule update --init --recursive
+
+    # Resolve submodules to the makepkg-declared local clones instead of the
+    # network. The rewrites must be passed with -c: written via `git config`
+    # they land in this repository's local config, which the separate
+    # `git clone` process fetching each submodule never reads.
+    local _source _source_name _source_url
+    local -a _local_urls=()
+    for _source in "${source[@]}"; do
+        [[ $_source == *::git+* ]] || continue
+        _source_name=${_source%%::*}
+        _source_url=${_source#*::}
+        _source_url=${_source_url#git+}
+        _source_url=${_source_url%%#*}
+        _local_urls+=(-c "url.${srcdir}/${_source_name}.insteadOf=${_source_url}")
+    done
+
+    if ! git "${_local_urls[@]}" -c protocol.allow=never -c protocol.file.allow=always \
+        submodule update --init --recursive; then
+        msg 'Submodule update failed; add its repository to source=() first.'
+        return 1
+    fi
 }
 
 build() {
