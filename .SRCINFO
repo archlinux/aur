@@ -1,0 +1,19 @@
+pkgbase = baresip-qt
+	pkgdesc = Baresip bundled with custom native Qt applet
+	pkgver = 4.10.0_qt.1
+	pkgrel = 1
+	url = https://github.com/Venomtek/baresip-qt
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = libre
+	depends = openssl
+	depends = opus
+	provides = baresip
+	conflicts = baresip
+	source = git+https://github.com/Venomtek/baresip-qt.git
+	sha256sums = SKIP
+
+pkgname = baresip-qt
