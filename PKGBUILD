@@ -1,5 +1,5 @@
 # Maintainer: Your Name <you@example.com>
-pkgname=azerothcore-clientdata-git
+pkgname=azerothcore-clientdata
 _pkgname=azerothcore-wotlk
 pkgver=20.0
 pkgrel=1
