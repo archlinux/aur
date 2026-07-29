@@ -1,16 +1,16 @@
 # Maintainer: sanekpixel101 <sanekpixel101@gmail.com>
 
 pkgname=genote
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Generate IT study notes using local LLMs via Ollama"
+pkgdesc="Generate IT study notes using local LLMs and cloud APIs"
 arch=('x86_64')
 url="https://github.com/xmb03/Genote"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ffcdda7dc9426c6acf56e214f84a1ebd62b9e3f6e40bc7835bf441d84e4c0d60')
+sha256sums=('87c7ffc2d830b2ee7a6c81896835f6d33309f61b9365c88ecec95a0ce29c2c29')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
