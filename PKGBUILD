@@ -1,16 +1,15 @@
 # Maintainer: Josephine Pfeiffer <josie@redhat.com>
 # Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
-
-# Prebuilt upstream binaries: namcap ELF warnings (RELRO, PIE, SHSTK, unstripped) are not fixable here
 _pkgname=kube-burner
 pkgname=kube-burner-bin
 pkgver=2.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubernetes performance and scale test orchestration framework'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kube-burner/kube-burner'
 license=('Apache-2.0')
 provides=("kube-burner=${pkgver}")
+conflicts=('kube-burner')
 options=('!strip' '!debug')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-x86_64.tar.gz")
