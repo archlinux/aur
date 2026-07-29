@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Palencsar <moin@nerdbear.de>
 pkgname=bearwave-git
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE-focused desktop internet radio app"
 arch=('x86_64')
 url="https://github.com/spalencsar/bearwave"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-multimedia-ffmpeg')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'qt6-tools')
 provides=('bearwave')
 conflicts=('bearwave')
 source=("git+${url}.git")
