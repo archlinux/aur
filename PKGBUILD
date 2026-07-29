@@ -1,7 +1,7 @@
 # Maintainer: AE Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=option-term
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='GTK4 + libadwaita terminal emulator powered by libghostty-vt'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   "zig-x86_64-linux-$_zigver.tar.xz::https://ziglang.org/download/$_zigver/zig-x86_64-linux-$_zigver.tar.xz"
 )
 sha256sums=(
-  'c141ec6c8970daa5e5f72c5251499746219bea22d7e1bbb23644b35cadfd9ba3'
+  'a030166eb3c9f07859e6df5951b810ba4933ce1a8fcd36746e48321754db6555'
   '02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239'
 )
 
@@ -61,8 +61,8 @@ check() {
 package() {
   cd "$_srcdir"
   install -Dm755 "target/release/option-term" "$pkgdir/usr/bin/option-term"
-  install -Dm644 "packaging/labs.firefly.optionTerm.desktop" \
-    "$pkgdir/usr/share/applications/labs.firefly.optionTerm.desktop"
+  install -Dm644 "packaging/io.option.terminal.desktop" \
+    "$pkgdir/usr/share/applications/io.option.terminal.desktop"
   install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 'CHANGELOG.md' "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
