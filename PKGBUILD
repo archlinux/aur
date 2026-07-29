@@ -49,30 +49,10 @@ install="${_pkgname}.install"
 source=(
 	"${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
 	"brotli::git+https://github.com/google/brotli"
-	"edk2-cmocka::git+https://github.com/tianocore/edk2-cmocka.git"
-	"jansson::git+https://github.com/akheron/jansson"
-	"googletest::git+https://github.com/google/googletest.git"
-	"libspdm::git+https://github.com/DMTF/libspdm.git"
-	"mbedtls::git+https://github.com/ARMmbed/mbedtls"
 	"mipisyst::git+https://github.com/MIPI-Alliance/public-mipi-sys-t.git"
-	"oniguruma::git+https://github.com/kkos/oniguruma"
-	"openssl::git+https://github.com/openssl/openssl"
-	"pylibfdt::git+https://github.com/devicetree-org/pylibfdt.git"
-	"subhook::git+https://github.com/tianocore/edk2-subhook.git"
-	"TPM::git+https://github.com/TrustedComputingGroup/TPM"
 )
 
 sha1sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -106,7 +86,15 @@ _prepare_tianocore_sources() {
 	done
 
 	msg "Updating submodules"
-	git submodule init
+	# A Shell build needs only these: BaseTools compiles BrotliCompress, and the
+	# .dec files parsed for ShellPkg list brotli and mipisyst include paths
+	# unconditionally. edk2 adding another such path breaks build() with
+	# "error 000E: File/directory not found in workspace" naming the .dec that
+	# wants it; declare that submodule in source=() and init its path here.
+	git submodule init \
+		BaseTools/Source/C/BrotliCompress/brotli \
+		MdeModulePkg/Library/BrotliCustomDecompressLib/brotli \
+		MdePkg/Library/MipiSysTLib/mipisyst
 	if ! git "${_local_urls[@]}" -c protocol.allow=never -c protocol.file.allow=always submodule update; then
 		msg 'Submodule update failed; add its repository to source=() first.'
 		return 1
