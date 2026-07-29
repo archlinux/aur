@@ -1,0 +1,17 @@
+pkgbase = vbcc-git
+	pkgdesc = Portable and retargetable ISO C compiler (git version)
+	pkgver = 0.9i.pre.r0.gab1caaf
+	pkgrel = 1
+	url = https://github.com/siemens-mobile-hacks/vbcc
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = vasm
+	depends = vlink
+	provides = vbcc
+	conflicts = vbcc
+	source = git+https://github.com/siemens-mobile-hacks/vbcc.git
+	sha256sums = SKIP
+
+pkgname = vbcc-git
