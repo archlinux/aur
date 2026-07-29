@@ -3,11 +3,12 @@
 # Contributor: Ben Reedy <thebenj88@gmail.com>
 # Contributor: Clement Guerin <geecko.dev@free.fr>
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
+# Contributor: caramel1205zh <forgezhzh@outlook.com>
 
-pkgbase=ppsspp
+pkgbase=ppssppgold
 pkgname=(
-  ppsspp
-  ppsspp-assets
+  ppssppgold
+  ppssppgold-assets
 )
 pkgver=1.20.4
 pkgrel=4
@@ -15,6 +16,7 @@ pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
 license=(GPL-2.0-or-later)
+
 makedepends=(
   clang
   cmake
@@ -33,8 +35,10 @@ makedepends=(
   snappy
   zlib
 )
+
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}
+  0001-ppssppgold.patch
   git+https://github.com/Kethen/aemu_postoffice.git
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/google/cpu_features.git
@@ -53,31 +57,38 @@ source=(
   git+https://github.com/RetroAchievements/rcheevos.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
 )
-b2sums=('cd2bca3351b97831f2e0d372bf544dcf3aa9d44095b56fe30de8bf4d586216e56ba24f22f3fac51ffb1343d4763fe3466628d6730c502c5e2230315b6319c336'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+
+b2sums=(
+  'cd2bca3351b97831f2e0d372bf544dcf3aa9d44095b56fe30de8bf4d586216e56ba24f22f3fac51ffb1343d4763fe3466628d6730c502c5e2230315b6319c336'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+options=(!debug !strip)
 
 prepare() {
   cd ppsspp
+
+  patch -Np1 -i ../0001-ppssppgold.patch
+
   sed 's|miniupnpc/include/|miniupnpc/|g' -i Core/Util/PortManager.h
 
-  # Add Comment field to desktop entry
-  # https://github.com/hrydgard/ppsspp/pull/21880
   git cherry-pick -n 0f48685bb9158e5d6cafa0158441d7adba2471c7
 
   for submodule in ffmpeg assets/lang ext/freetype ext/glslang ext/lua; do
@@ -85,12 +96,15 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
+
   for submodule in ext/{aemu_postoffice,armips,cpu_features,discord-rpc,libchdr,miniupnp,nanosvg,OpenXR-SDK,rapidjson,rcheevos,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
+
   cd ext/armips
+
   for submodule in ext/filesystem; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../../../armips-${submodule#*/}
@@ -101,11 +115,18 @@ prepare() {
 build() {
   export CC=clang
   export CXX=clang++
+
+  export CFLAGS="-march=native -mtune=native -O3 -pipe"
+  export CXXFLAGS="$CFLAGS"
+
   cmake -S ppsspp -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DHEADLESS=ON \
+    -DGOLD=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_MINIUPNPC=ON \
@@ -113,10 +134,14 @@ build() {
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF \
     -Wno-dev
-  cmake --build build
+
+  cmake --build build --parallel
 }
 
-package_ppsspp() {
+package_ppssppgold() {
+  provides=(ppsspp)
+  conflicts=(ppsspp)
+
   depends=(
     glew
     glibc
@@ -128,22 +153,44 @@ package_ppsspp() {
     libzip
     miniupnpc
     openxr
-    ppsspp-assets
+    ppssppgold-assets
     sdl2
     sdl2_ttf
     snappy
     zlib
     zstd
   )
-  install -Dm 755 build/PPSSPPSDL -t "${pkgdir}"/usr/bin/
-  install -Dm 755 build/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
-  install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve=ownership ppsspp/icons/hicolor "${pkgdir}"/usr/share/icons/
-  install -Dm 644 ppsspp/icons/icon-512.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/ppsspp.svg
-  install -Dm 644 ppsspp/SDL/PPSSPPSDL.desktop -t "${pkgdir}"/usr/share/applications/
+
+  install -Dm755 build/PPSSPPGold -t "${pkgdir}"/usr/bin/
+  install -Dm755 build/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
+
+  install -dm755 "${pkgdir}"/usr/share/icons
+
+  cp -dr --no-preserve=ownership \
+    ppsspp/icons/hicolor \
+    "${pkgdir}"/usr/share/icons/
+
+  install -Dm644 \
+    ppsspp/icons/icon-512.svg \
+    "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/ppsspp.svg
+
+  install -Dm644 \
+    build/ppsspp.desktop \
+    -t "${pkgdir}"/usr/share/applications/
 }
 
-package_ppsspp-assets() {
-  install -dm 755 "${pkgdir}"/usr/share/ppsspp
-  cp -dr --no-preserve=ownership build/assets "${pkgdir}"/usr/share/ppsspp/
+package_ppssppgold-assets() {
+  provides=(ppsspp-assets)
+  conflicts=(ppsspp-assets)
+
+  depends=(
+    noto-fonts
+    noto-fonts-cjk
+  )
+
+  install -dm755 "${pkgdir}"/usr/share/ppssppgold
+
+  cp -dr --no-preserve=ownership \
+    build/assets \
+    "${pkgdir}"/usr/share/ppssppgold/
 }

@@ -1,0 +1,35 @@
+---
+ UI/NativeApp.cpp      | 4 ++++
+ headless/Headless.cpp | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/UI/NativeApp.cpp b/UI/NativeApp.cpp
+
+--- a/UI/NativeApp.cpp
++++ b/UI/NativeApp.cpp
+@@ -369,6 +369,10 @@ void NativeInit(int argc, const char *argv[], const char *savegame_dir, const ch
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/games/ppsspp/assets")));
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/share/ppsspp/assets")));
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/share/games/ppsspp/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/games/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/share/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/share/games/ppssppgold/assets")));
+ #endif
+ 
+ #if PPSSPP_PLATFORM(SWITCH)
+diff --git a/headless/Headless.cpp b/headless/Headless.cpp
+
+--- a/headless/Headless.cpp
++++ b/headless/Headless.cpp
+@@ -607,6 +607,10 @@ int main(int argc, const char* argv[])
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/games/ppsspp/assets")));
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/share/ppsspp/assets")));
+ 	g_VFS.Register("", new DirectoryReader(Path("/usr/share/games/ppsspp/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/local/share/games/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/share/ppssppgold/assets")));
++	g_VFS.Register("", new DirectoryReader(Path("/usr/share/games/ppssppgold/assets")));
+ #endif
+ 
+ 	UpdateUIState(UISTATE_INGAME);
