@@ -1,7 +1,7 @@
 # Maintainer: Glax its@glax.dev
 pkgname=mica-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your Android phone as a microphone"
 arch=('x86_64')
 url="https://github.com/acaimingus/Mica"
