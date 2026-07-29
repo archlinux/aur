@@ -6,7 +6,7 @@ pkgname=(
     python-libnmstate
 )
 pkgver=2.2.61
-pkgrel=2
+pkgrel=3
 pkgdesc='Declarative network manager API for Linux hosts'
 arch=('x86_64')
 url='https://nmstate.io'
@@ -42,7 +42,7 @@ validpgpkeys=(
 _pick() {
     local p="$1" f d; shift
     for f; do
-        d="$srcdir/$p/${f#$pkgdir/}"
+        d="$srcdir/$p/${f#"$pkgdir"/}"
         mkdir -p "$(dirname "$d")"
         mv "$f" "$d"
         rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
@@ -112,9 +112,6 @@ package_nmstate() {
     _pick libnmstate usr/lib/pkgconfig/nmstate.pc
 
     _pick python-libnmstate usr/lib/python*
-
-    install -Dm644 "$srcdir/$pkgbase-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_libnmstate() {
@@ -123,10 +120,7 @@ package_libnmstate() {
     optdepends=('networkmanager: required for most operations')
     provides=(libnmstate.so)
 
-    mv -v $pkgname/* "$pkgdir"
-
-    install -Dm644 "$srcdir/$pkgbase-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    mv -v libnmstate/* "$pkgdir"
 }
 
 package_python-libnmstate() {
@@ -138,8 +132,5 @@ package_python-libnmstate() {
     )
     arch=('any')
 
-    mv -v $pkgname/* "$pkgdir"
-
-    install -Dm644 "$srcdir/$pkgbase-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    mv -v python-libnmstate/* "$pkgdir"
 }

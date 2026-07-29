@@ -1,7 +1,7 @@
 pkgbase = nmstate
 	pkgdesc = Declarative network manager API for Linux hosts
 	pkgver = 2.2.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nmstate.io
 	arch = x86_64
 	license = Apache-2.0
@@ -25,7 +25,7 @@ pkgbase = nmstate
 
 pkgname = nmstate
 	pkgdesc = Declarative network manager API - CLI tools and service
-	depends = libnmstate=2.2.61-2
+	depends = libnmstate=2.2.61-3
 	depends = networkmanager
 	optdepends = python-libnmstate: Python bindings
 	optdepends = openvswitch: Open vSwitch support
@@ -40,6 +40,6 @@ pkgname = libnmstate
 pkgname = python-libnmstate
 	pkgdesc = Declarative network manager API - Python bindings
 	arch = any
-	depends = libnmstate=2.2.61-2
+	depends = libnmstate=2.2.61-3
 	depends = python
 	depends = python-pyyaml
