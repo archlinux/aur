@@ -1,36 +1,35 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver='1.5'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='xnum'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="python-xnum"
+pkgver=1.5
 pkgrel=1
 pkgdesc="Simple and lightweight Python library that helps you convert digits between different numeral systems"
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 arch=('any')
-url='https://github.com/openscilab/xnum'
 license=('MIT')
+url='https://github.com/openscilab/xnum'
+
 depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('8fa163eaf4050f5c664ff1ab7a6f09005a21d4500464049ad3b3537f864d8fdc')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
