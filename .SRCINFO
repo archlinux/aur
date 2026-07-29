@@ -1,0 +1,20 @@
+pkgbase = desktube-bin
+	pkgdesc = Control YouTube on your computer from your phone, over your local network
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kristyancarvalho/desktube
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libnotify
+	provides = desktube
+	conflicts = desktube
+	options = !strip
+	options = !debug
+	source = DeskTube-1.0.0-linux-x86_64.tar.gz::https://github.com/kristyancarvalho/desktube/releases/download/v1.0.0/DeskTube-1.0.0-linux-x86_64.tar.gz
+	sha256sums = 7735779fdee858930dc187932ac9bf39139c2d86ef5357fd2e92e3d4bea36887
+
+pkgname = desktube-bin
