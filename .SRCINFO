@@ -1,7 +1,7 @@
 pkgbase = mica-bin
 	pkgdesc = Use your Android phone as a microphone
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/acaimingus/Mica
 	install = micalistener.install
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = mica-bin
 	optdepends = systemd: Automatic service startup
 	provides = mica
 	provides = micalistener
-	noextract = mica-bin-1.0.0_3
-	source = mica-bin-1.0.0_3::https://github.com/acaimingus/Mica/releases/download/1.0.0/MicaListener-1.0.0-amd64
+	noextract = mica-bin-1.0.0_5
+	source = mica-bin-1.0.0_5::https://github.com/acaimingus/Mica/releases/download/1.0.0/MicaListener-1.0.0-amd64
 	source = MicaListener.desktop
 	source = micalistener.service::https://github.com/acaimingus/Mica/raw/refs/heads/main/Packaging/Debian/usr/lib/systemd/user/micalistener.service
 	source = micalistener.install
 	sha256sums = 53283c0e774af27681a88e23533226a2bed20d4932d31f06a8abdf01548c7c1a
-	sha256sums = cd6ace936410f66bdd4e8bb6b3f296984815f69049a2a9484001a62b69d8b18b
+	sha256sums = ccad0d61376365af60bd81ed1bd4d56c057d9959ffe341a98f7022990059048c
 	sha256sums = 6ead1a31b9183f1d41962e1ded5a54409dd2409ab4a21eff5a9d78eef82bd2bf
 	sha256sums = f98a73249a1bbb34b9562e21d5fab2fd95cfbf41c470eed4e89abcacbdb812f9
 

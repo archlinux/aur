@@ -2,6 +2,6 @@
 Type=Application
 Name=MicaListener
 Comment=Use your Android phone as a microphone
-Exec=/usr/bin/micalistener
+Exec=/usr/bin/MicaListener
 Terminal=true
 Categories=Utility;Audio;

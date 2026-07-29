@@ -1,7 +1,7 @@
 # Maintainer: Glax its@glax.dev
 pkgname=mica-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Use your Android phone as a microphone"
 arch=('x86_64')
 url="https://github.com/acaimingus/Mica"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}_${pkgrel}::${url}/releases/download/${pkgver}/Mica
 	"micalistener.service::${url}/raw/refs/heads/main/Packaging/Debian/usr/lib/systemd/user/micalistener.service" # systemd service
 	"micalistener.install")
 sha256sums=("53283c0e774af27681a88e23533226a2bed20d4932d31f06a8abdf01548c7c1a"
-	"cd6ace936410f66bdd4e8bb6b3f296984815f69049a2a9484001a62b69d8b18b"
+	"ccad0d61376365af60bd81ed1bd4d56c057d9959ffe341a98f7022990059048c"
 	"6ead1a31b9183f1d41962e1ded5a54409dd2409ab4a21eff5a9d78eef82bd2bf"
 	"f98a73249a1bbb34b9562e21d5fab2fd95cfbf41c470eed4e89abcacbdb812f9")
 noextract=("${pkgname}-${pkgver}_${pkgrel}")
