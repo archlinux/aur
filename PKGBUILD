@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=0.5.2.r2.g85efbd07
-pkgrel=2
+pkgver=model.rmoge2.v1.89.g8b414fde8
+pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -54,8 +54,10 @@ conflicts=('lichtfeld-studio')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
 source=("${pkgname}::git+https://github.com/MrNeRF/LichtFeld-Studio.git"
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
+        'libvterm::git+https://github.com/neovim/libvterm.git'
         'lichtfeld-studio.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
@@ -67,7 +69,26 @@ pkgver() {
 prepare() {
     cd "$pkgname"
 
-    git submodule update --init --recursive
+    # Resolve submodules to the makepkg-declared local clones instead of the
+    # network. The rewrites must be passed with -c: written via `git config`
+    # they land in this repository's local config, which the separate
+    # `git clone` process fetching each submodule never reads.
+    local _source _source_name _source_url
+    local -a _local_urls=()
+    for _source in "${source[@]}"; do
+        [[ $_source == *::git+* ]] || continue
+        _source_name=${_source%%::*}
+        _source_url=${_source#*::}
+        _source_url=${_source_url#git+}
+        _source_url=${_source_url%%#*}
+        _local_urls+=(-c "url.${srcdir}/${_source_name}.insteadOf=${_source_url}")
+    done
+
+    if ! git "${_local_urls[@]}" -c protocol.allow=never -c protocol.file.allow=always \
+        submodule update --init --recursive; then
+        msg 'Submodule update failed; add its repository to source=() first.'
+        return 1
+    fi
 
     # Bootstrap vcpkg (makepkg manages clone/fetch via source array).
     # Copy instead of symlink: bootstrap downloads binary to vcpkg/vcpkg
