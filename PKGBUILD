@@ -1,7 +1,7 @@
 # Maintainer: Xarth <xarthleo at gmail dot com>
 pkgname=rathole-bin
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight and high-performance reverse proxy for NAT traversal"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/rapiz1/rathole"
@@ -19,7 +19,7 @@ source_x86_64=("https://github.com/rapiz1/rathole/releases/download/v$pkgver/rat
 source_aarch64=("https://github.com/rapiz1/rathole/releases/download/v$pkgver/rathole-aarch64-unknown-linux-musl.zip")
 source_armv7h=("https://github.com/rapiz1/rathole/releases/download/v$pkgver/rathole-armv7-unknown-linux-musleabihf.zip")
 sha256sums=(
-	'6dc6cc775311f672d31d4daac5156052e70f3f5697c780edbc6a7cf14cc5faba'
+	'2f6e990c3cbd0892764a6f96f962c27b4337eaca6c7e1f13fa65174f532e701a'
 	'f3ff6c1115e59a6108ebd4a450d91fc65cedacc2e6219e3fa3a8a3fa1b9bef1d'
 	'd3ec8c7d96d7a6e94f54f3f2d70f78d4bb6a683b1ba98b22b5c67ed1eba1129d'
 	'668c6d50e395a466069b72f7f84bf2b7f432aeb3e940b73e937f231385405c67'
