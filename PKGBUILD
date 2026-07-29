@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.141592653
+pkgver=3.1415926535
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -151,7 +151,7 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.141592653:"
+    echo "New in v3.1415926535:"
     echo "  - Accessibility: the screen reader and audio feedback services now"
     echo "    actually run; announcements carry their text to the reader"
     echo "  - Keyboard: play/pause/stop/next and add-to-playlist shortcuts, plus a"
