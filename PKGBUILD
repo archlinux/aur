@@ -4,14 +4,20 @@ pkgname=de4dot-git
 _pkgname=de4dot
 pkgver=2090.b7d5728f
 pkgrel=1
-pkgdesc=".NET deobfuscator and unpacker."
-arch=("any")
-url="https://github.com/0xd4d/de4dot"
-license=("GPL-3.0")
-makedepends=(git mono-msbuild)
-depends=(mono)
-source=("git+https://github.com/0xd4d/${_pkgname}" "de4dot.sh" "de4dot-x64.sh")
-sha256sums=("SKIP" "835243121454a7a525cb0a1a90c6fef84003cf0a52cb73445440b2766b7c2114" "2ce5e81ecf633c3fd4b310b19cfa8250001110fbb23cfc1d6062822abb25b5d7")
+pkgdesc='.NET deobfuscator and unpacker.'
+arch=('any')
+url='https://github.com/0xd4d/de4dot'
+license=('GPL-3.0-or-later')
+makedepends=(git
+             mono-msbuild)
+depends=(mono
+         bash)
+source=("git+${url}"
+        'de4dot.sh'
+        'de4dot-x64.sh')
+sha256sums=('SKIP'
+            '835243121454a7a525cb0a1a90c6fef84003cf0a52cb73445440b2766b7c2114'
+            '2ce5e81ecf633c3fd4b310b19cfa8250001110fbb23cfc1d6062822abb25b5d7')
 
 pkgver() {
   cd "${_pkgname}"
