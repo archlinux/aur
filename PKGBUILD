@@ -3,37 +3,44 @@
 
 _gitname=vuln
 pkgname=govulncheck-git
-pkgver=1.1.3
-pkgrel=3
-pkgdesc='Database client and tools for the Go vulnerability database'
+pkgver=1.6.0.r0.g19b0bb6a2
+pkgrel=1
+pkgdesc='Database client and tools for the Go vulnerability database (git version)'
 url='https://go.googlesource.com/vuln/'
 arch=('x86_64')
 license=('BSD-3-Clause')
+depends=('glibc')
 makedepends=('go' 'git')
-provides=('govulncheck')
+provides=("govulncheck=${pkgver}")
 conflicts=('govulncheck')
-source=(git+http://go.googlesource.com/${_gitname}/)
+source=("git+https://go.googlesource.com/${_gitname}")
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
-  echo ${pkgver}
+  cd "${_gitname}"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_gitname}"
-  # Checkout the specific tag
-  git checkout "v${pkgver}"
+  cd "${_gitname}"
+  go mod download
 }
 
 build() {
-  cd ${_gitname}
-  go build -o govulncheck ./cmd/govulncheck
+  cd "${_gitname}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  # Build outside the worktree: an untracked binary in it would make the
+  # VCS stamp report +dirty and would also perturb pkgver() on rebuilds.
+  go build -o "${srcdir}/govulncheck" ./cmd/govulncheck
 }
 
 package() {
-  cd ${_gitname}
-  install -Dm 755 govulncheck -t "${pkgdir}/usr/bin"
+  cd "${_gitname}"
+  install -Dm 755 "${srcdir}/govulncheck" -t "${pkgdir}/usr/bin"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
