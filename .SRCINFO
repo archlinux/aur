@@ -1,7 +1,7 @@
 pkgbase = odb
 	pkgdesc = C++ Object-Relational Mapping compiler
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codesynthesis.com/products/odb/
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = odb
 	depends = libcutl
 	depends = libstudxml
 	depends = cli
+	depends = libstud-optional
 	options = !libtool
 	source = https://www.codesynthesis.com/download/odb/2.6.0/odb-2.6.0.tar.gz
 	sha256sums = 93a61928b6302360ad4c268bd1d432276b062992cf79aa70554da22b279d61b9

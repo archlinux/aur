@@ -2,11 +2,11 @@
 
 pkgname=odb
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('x86_64')
-depends=('build2' 'libcutl' 'libstudxml' 'cli')
+depends=('build2' 'libcutl' 'libstudxml' 'cli' 'libstud-optional')
 options=('!libtool')
 license=('GPL3')
 source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
