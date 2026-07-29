@@ -1,9 +1,8 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
-# Former Maintainer: ava1ar <mail(at)ava1ar(dot)me>
-# Former Maintainer: Matrix <thysupremematrix at tuta dot io>
+# Contributor: ava1ar <mail(at)ava1ar(dot)me>
+# Contributor: Matrix <thysupremematrix at tuta dot io>
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-
 pkgname=gstreamer0.10
 _pkgname=gstreamer
 pkgver=0.10.36
@@ -28,33 +27,11 @@ prepare() {
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
   sed -e 's/static volatile gsize gonce_data/static gsize gonce_data/g' -i gst/gstutils.h
 
-  if [ ! -f /usr/bin/glib-mkenums ]; then
-    mkdir -p tools
-    cat > tools/glib-mkenums <<'EOF'
-#!/bin/sh
-exec /usr/bin/glib-mkenums-2.0 "$@"
-EOF
-    chmod +x tools/glib-mkenums
-  fi
-
-  if [ ! -f /usr/bin/glib-genmarshal ]; then
-    mkdir -p tools
-    cat > tools/glib-genmarshal <<'EOF'
-#!/bin/sh
-exec /usr/bin/glib-genmarshal-2.0 "$@"
-EOF
-    chmod +x tools/glib-genmarshal
-  fi
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
-
-  if [ -d "$PWD/tools" ]; then
-    export PATH="$PWD/tools:$PATH"
-  fi
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -72,8 +49,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Remove unversioned gst-* binaries to avoid possible conflicts
-  cd "${pkgdir}/usr/bin"
-  for bins in *-0.10; do
-    rm -f "${bins/-0.10/}"
-  done
+  rm -f "${pkgdir}"/usr/bin/gst-{feedback,inspect,launch,typefind,xmlinspect,xmllaunch}
 }
