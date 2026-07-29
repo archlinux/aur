@@ -7,7 +7,7 @@ pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
-pkgrel=13
+pkgrel=14
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL-2.0-or-later')
 makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia'
@@ -39,17 +39,18 @@ prepare() {
   patch -Np1 -i ../videoscale-fix-negotiation.patch
   patch -Np1 -i ../gstaudio-symbols.patch
   patch -Np1 -i ../enum_headers.patch
-  
+
   sed -i 's|g_object_ref (G_OBJECT (interface))|g_object_ref ((GstMixer *)(interface))|' ext/alsa/gstalsamixer.c
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
 
-  export CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags pangocairo pango cairo)"
+  CPPFLAGS+=" $(pkg-config --cflags pangocairo pango cairo)"
+  LDFLAGS+=" $(pkg-config --libs libxml-2.0)"
+  export CPPFLAGS LDFLAGS
   export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
   export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
-  export LDFLAGS="$LDFLAGS $(pkg-config --libs libxml-2.0)"
 
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
@@ -76,8 +77,6 @@ package_gstreamer0.10-base() {
 package_gstreamer0.10-base-plugins() {
   pkgdesc="GStreamer Multimedia Framework Base Plugins (gst-plugins-base)"
   depends=("gstreamer0.10-base=${pkgver}" 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango')
-  replaces=('gstreamer0.10-alsa' 'gstreamer0.10-theora' 'gstreamer0.10-libvisual' 'gstreamer0.10-pango' 'gstreamer0.10-cdparanoia' 'gstreamer0.10-vorbis' 'gstreamer0.10-ogg')
-  conflicts=('gstreamer0.10-alsa' 'gstreamer0.10-theora' 'gstreamer0.10-libvisual' 'gstreamer0.10-pango' 'gstreamer0.10-cdparanoia' 'gstreamer0.10-vorbis' 'gstreamer0.10-ogg')
   groups=('gstreamer0.10-plugins')
 
   cd ${_pkgname}-${pkgver}
