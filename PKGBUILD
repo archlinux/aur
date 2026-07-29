@@ -2,8 +2,8 @@
 
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
-pkgver=1.2.r0.g0912888
-pkgrel=2
+pkgver=1.2.r2.g1c9f3a4
+pkgrel=1
 pkgdesc="MiAssistantTool"
 arch=($CARCH)
 url="https://github.com/offici5l/MiAssistantTool"
@@ -14,7 +14,6 @@ conflicts=(${pkgbase%-git})
 replaces=()
 depends=(
     curl
-    glibc
     libusb
     openssl
     tiny-json)
@@ -45,11 +44,11 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}"
     gcc -o ${pkgname%-git} *.c /usr/include/tiny-json/tiny-json.c \
-        -I/usr/include/openssl -lssl -lcrypto -lcurl \
-        -lusb-1.0 -lcurl
+        -I/usr/include/openssl -lssl -lcrypto -lcurl -lusb-1.0
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     install -Dm755 ${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
+    install -vDm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
