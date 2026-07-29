@@ -1,6 +1,6 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13gui-bin
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='GTK4 overlay GUI companion for z13ctl'
 arch=('x86_64')
@@ -11,11 +11,14 @@ conflicts=('z13gui')
 depends=('glibc' 'gtk4' 'gtk4-layer-shell' 'z13ctl')
 install=z13gui-bin.install
 source=("https://github.com/dahui/z13gui/releases/download/v${pkgver}/z13gui_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('46b741afd941f2235bd03773195ce9e0f7449155fa3c19489e2df9d94cb4e9a4')
+sha256sums=('171be79260810fb45ac5d38b95b3178c0021b8ab358622f5916a1c950f7a339b')
 
 package() {
     install -Dm755 "z13gui"                                    "${pkgdir}/usr/bin/z13gui"
     install -Dm644 "LICENSE"                                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "NOTICE"                                    "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    # Inter is compiled into the binary, so the OFL notice ships with it.
+    install -Dm644 "internal/gui/fonts/LICENSE-Inter.txt"       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Inter.txt"
     install -Dm644 "contrib/z13gui.service"                    "${pkgdir}/usr/lib/systemd/user/z13gui.service"
     install -Dm644 "contrib/z13gui.desktop"                    "${pkgdir}/usr/share/applications/z13gui.desktop"
     install -Dm644 "contrib/99-z13gui-gamepad.rules"           "${pkgdir}/usr/lib/udev/rules.d/99-z13gui-gamepad.rules"
