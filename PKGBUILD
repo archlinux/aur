@@ -1,6 +1,6 @@
 pkgname=buzz-appimage
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hostable workspace where humans and AI agents build together, on a relay you own"
 arch=(x86_64)
 url="https://github.com/block/buzz"
@@ -8,6 +8,7 @@ license=(Apache-2.0)
 
 depends=("fuse2" "hicolor-icon-theme")
 options=(!strip !debug)
+conflicts=("buzz-bin" "buzz-git" "buzz-desktop-git")
 
 _appimage="Buzz_${pkgver}_amd64.AppImage"
 source=("${_appimage}::https://github.com/block/buzz/releases/download/v0.5.2/Buzz_0.5.2_amd64.AppImage")
