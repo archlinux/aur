@@ -1,0 +1,17 @@
+pkgbase = radiq
+	pkgdesc = A weapon-select-wheel-style radial application launcher for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/israrkhan-cys/radiq
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = layer-shell-qt
+	depends = hyprland
+	source = radiq-0.1.0.tar.gz::https://github.com/israrkhan-cys/radiq/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 558543e32044dd643605fbb8d8a028a49143174a71ed2af9c3e313e2a8820c8c
+
+pkgname = radiq
