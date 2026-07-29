@@ -1,6 +1,6 @@
-# Maintainer: allbandee <mw@z.tm.pl>
+# Maintainer: All Ban Dee <mw@z.tm.pl>
 pkgname=plasma-drop
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="KDE Plasma 6 dropdown app launcher for Wayland (Yakuake-style for any app)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('kwin' 'qt6-base')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ec9effe07819f578460eec2fa3899076de5b5c25064243029d44c56fe288f0df')
+sha256sums=('da8516700ae4441727d54b91ee78d68b0089b80b6a7221baf10a9f560d2bbcab')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
