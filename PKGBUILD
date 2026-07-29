@@ -7,9 +7,9 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=odm-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Oryn Download Manager — an aria2c-inspired CLI with a Connection Balancer and a pacman-style progress bar"
+pkgdesc="Oryn Download Manager — aria2c-inspired CLI download manager with Connection Balancer, parallel download acceleration, pacman/ILoveCandy progress bar, JSON-RPC + WebSocket daemon, and resume support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Fahry-a/odm"
 license=('MIT')
@@ -30,13 +30,13 @@ source_aarch64=(
     "${pkgname}.service::https://raw.githubusercontent.com/Fahry-a/odm/v${pkgver}/packaging/odm.service"
 )
 
-sha256sums_x86_64=('4c34c8fe20e0583f200e5d66097bfac1005e1021f643b98833aa658a83484619'
-                    'e4ce4b2444a15646e33917442c92c99473230675f1fbe23959c07d1da15fd6bc'
-                    '147927f1159686577a143c88cebff2d8ca25daf781e344c989a8db4e856ea748'
+sha256sums_x86_64=('503fa4908c4a882d63c9a9f05d1de26aa972001a23451af0e1b622a24f9b1bd5'
+                    'e9bcb1c89c2514bd78c11706e0cf920b7ee511451809ea6d1ba2e48d48cf1807'
+                    '9d49d33f89fafbb0aec3d3205c553cf6398cfc63fa66f5cb1bdd3b5a25c6be15'
                     '314998f62c236fb2aaa7362e2b1638a72627eb2702f95f9fac4e7219c10a5b7e')
-sha256sums_aarch64=('4c58158a0ab80fe592ab06b02204423554cbadfb043ba104463b1e441ec64bbc'
-                    'e4ce4b2444a15646e33917442c92c99473230675f1fbe23959c07d1da15fd6bc'
-                    '147927f1159686577a143c88cebff2d8ca25daf781e344c989a8db4e856ea748'
+sha256sums_aarch64=('5d6ad607350fdc8294020692c1cdae28c0462f2fbe58e81a6bee5c9379e8db87'
+                    'e9bcb1c89c2514bd78c11706e0cf920b7ee511451809ea6d1ba2e48d48cf1807'
+                    '9d49d33f89fafbb0aec3d3205c553cf6398cfc63fa66f5cb1bdd3b5a25c6be15'
                     '314998f62c236fb2aaa7362e2b1638a72627eb2702f95f9fac4e7219c10a5b7e')
 
 package() {
