@@ -6,7 +6,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="Cross-platform GPU-accelerated terminal emulator with inline graphics support (Sixel, iTerm2, Kitty)"
 
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,9 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'gdk-pixbuf2' 'openssl' 'alsa-lib')
+
+makedepends=('patchelf')
+depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'xdotool' 'gdk-pixbuf2' 'openssl' 'alsa-lib')
 
 source=("${_pkgname}.desktop"
 		"ICON-${pkgver}.png::${_urlraw}/assets/icon.png"
@@ -34,6 +36,12 @@ sha256sums=('42adb7bfc245f5365f0afb67730e67e6a74e9b2e976c86a3dfda4bd479962b95'
 sha256sums_x86_64=('fea94db82bdebedbdba5621a738c8f8e69073cbba5de86c75197cd336c606d2e')
 sha256sums_aarch64=('efdc73a0b46d0573f887fe90e664a21ee1e1ece83d47b3fed83d611ccac4f6e1')
 
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	patchelf --replace-needed "libxdo.so.3" "libxdo.so.4" "${_pkgname}-${CARCH}-${pkgver}"
+}
 
 package() {
 	cd "${srcdir}/" || exit
