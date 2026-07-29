@@ -1,0 +1,13 @@
+pkgbase = star-cups-driver
+	pkgdesc = Star Micronics CUPS printer drivers
+	pkgver = 3.17.0
+	pkgrel = 1
+	url = https://starmicronics.com/support/download/cups-driver-for-linux/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = custom:Star
+	depends = cups
+	source = manual://Star_CUPS_Driver-3.17.0_linux.tar.gz
+	sha256sums = 1078288f8e48468a31c6ebef635fe17f7b9ab11f9ff3b2f68299f85b52df29a9
+
+pkgname = star-cups-driver
