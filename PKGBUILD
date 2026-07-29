@@ -1,9 +1,10 @@
 # Maintainer: Miguel Scaramozzino <mikele@gmail.com>
 pkgname=pipeiris-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fullscreen PipeWire audio flow inspector for Linux'
 arch=('x86_64')
+options=('!strip')
 url='https://github.com/mikelexp/pipeiris'
 license=('custom')
 depends=('pipewire')

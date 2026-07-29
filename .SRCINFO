@@ -1,12 +1,13 @@
 pkgbase = pipeiris-bin
 	pkgdesc = Fullscreen PipeWire audio flow inspector for Linux
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikelexp/pipeiris
 	arch = x86_64
 	license = custom
 	depends = pipewire
 	optdepends = wireplumber: optional wpctl command for additional metadata
+	options = !strip
 	source = https://github.com/mikelexp/pipeiris/releases/download/v0.2.0/pipeiris-0.2.0-linux-x86_64.tar.gz
 	sha256sums = 202c5b9d91a1d2233e611f73eb6534aa4bae469a6bc9678e7dd4e69bbbf02877
 
