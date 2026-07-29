@@ -10,9 +10,9 @@ pkgbase = gcr-ssh-agent-dinit
 	depends = dinit
 	optdepends = userspawn
 	optdepends = userspawn-dinit
-	backup = etc/dinit.d/user/
 	source = gcr-ssh-agent.dinit-service
 	source = gcr-ssh-agent-start
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gcr-ssh-agent-dinit
