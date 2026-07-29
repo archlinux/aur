@@ -35,8 +35,12 @@ conflicts=('cinnamon' 'nemo')
 provides=("cinnamon=$pkgver")
 backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
 source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download"
-        'cinnamon.session')
+        'cinnamon.session'
+        'gwl-grouping-heuristics.patch'
+        'inline-reply-notifications.patch')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 # Disable strip and debug to speed up repackaging
@@ -47,6 +51,10 @@ prepare() {
   mkdir -p extracted
   cd extracted
   tar -xf "$srcdir/cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
+
+  # Apply custom PR patches
+  patch -Np1 -i "$srcdir/gwl-grouping-heuristics.patch"
+  patch -Np1 -i "$srcdir/inline-reply-notifications.patch"
 }
 
 package() {

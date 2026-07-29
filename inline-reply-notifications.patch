@@ -1,0 +1,278 @@
+diff --git a/usr/share/cinnamon/js/ui/messageTray.js b/usr/share/cinnamon/js/ui/messageTray.js
+index b1495031f..cc1b28fcb 100644
+--- a/usr/share/cinnamon/js/ui/messageTray.js
++++ b/usr/share/cinnamon/js/ui/messageTray.js
+@@ -260,6 +260,10 @@ var Notification = class Notification {
+         this._titleDirection = St.TextDirection.NONE;
+         this._scrollArea = null;
+         this._actionArea = null;
++        this._replyArea = null;
++        this._replyEntry = null;
++        this.hasInlineReply = false;
++        this.inlineReplyAction = null;
+         this._imageBin = null;
+         this._timestamp = new Date();
+         this._inNotificationBin = false;
+@@ -464,7 +468,7 @@ var Notification = class Notification {
+     }
+ 
+     _updateLayout() {
+-        if (this._imageBin || this._scrollArea || this._actionArea) {
++        if (this._imageBin || this._scrollArea || this._actionArea || this._replyArea) {
+             this._table.add_style_class_name('multi-line-notification');
+         } else {
+             this._table.remove_style_class_name('multi-line-notification');
+@@ -486,6 +490,11 @@ var Notification = class Notification {
+                 col: this._imageBin ? 2 : 1,
+                 col_span: this._imageBin ? 2 : 3
+             });
++        if (this._replyArea)
++            this._table.child_set(this._replyArea, {
++                col: this._imageBin ? 2 : 1,
++                col_span: this._imageBin ? 2 : 3
++            });
+     }
+ 
+     setImage(image) {
+@@ -565,6 +574,37 @@ var Notification = class Notification {
+         this._updateLayout();
+     }
+ 
++    addReplyButton(id, label) {
++        if (!this._actionArea) {
++            this._actionArea = new St.BoxLayout({ name: 'notification-actions' });
++            this._table.add(this._actionArea, {
++                row: 2,
++                col: 1,
++                col_span: 3,
++                x_expand: true,
++                y_expand: false,
++                x_fill: true,
++                y_fill: false,
++                x_align: St.Align.START
++            });
++        }
++
++        let button = new St.Button({ can_focus: true, style_class: 'notification-button', label: label });
++
++        if (this._actionArea.get_n_children() > 0)
++            this._buttonFocusManager.remove_group(this._actionArea);
++
++        this._actionArea.add(button);
++        this._buttonFocusManager.add_group(this._actionArea);
++
++        button.connect('clicked', () => {
++            this._ensureReplyArea();
++            button.destroy();
++        });
++
++        this._updateLayout();
++    }
++
+     /**
+      * clearButtons:
+      *
+@@ -578,6 +618,122 @@ var Notification = class Notification {
+         this._updateLayout();
+     }
+ 
++    setInlineReply(hasInlineReply, actionId, expandImmediately = false) {
++        this.hasInlineReply = hasInlineReply;
++        this.inlineReplyAction = actionId;
++        if (hasInlineReply && expandImmediately) {
++            this._ensureReplyArea();
++        } else if (!hasInlineReply && this._replyArea) {
++            this._replyArea.destroy();
++            this._replyArea = null;
++            this._replyEntry = null;
++            this._updateLayout();
++        }
++    }
++
++    _ensureReplyArea() {
++        if (this._replyArea)
++            return;
++
++        this._replyArea = new St.BoxLayout({
++            name: 'notification-reply-box',
++            style_class: 'notification-reply-box',
++            x_expand: true,
++            y_expand: false,
++            reactive: true
++        });
++
++        this._table.add(this._replyArea, {
++            row: 3,
++            col: 1,
++            col_span: 3,
++            x_expand: true,
++            y_expand: false,
++            x_fill: true,
++            y_fill: false,
++            x_align: St.Align.START
++        });
++
++        this._replyEntry = new St.Entry({
++            can_focus: true,
++            hint_text: _("Type a reply..."),
++            style_class: 'notification-entry',
++            x_expand: true,
++            reactive: true
++        });
++
++        let sendButton = new St.Button({
++            label: _("Send"),
++            can_focus: true,
++            style_class: 'notification-button',
++            reactive: true
++        });
++
++        let isModal = false;
++
++        let releaseModal = () => {
++            if (isModal) {
++                Main.popModal(this._replyEntry.clutter_text);
++                isModal = false;
++            }
++        };
++
++        let grabFocus = () => {
++            if (!isModal) {
++                isModal = Main.pushModal(this._replyEntry.clutter_text);
++            }
++            if (isModal) {
++                this._replyEntry.clutter_text.grab_key_focus();
++                global.stage.set_key_focus(this._replyEntry.clutter_text);
++            }
++            return true;
++        };
++
++        let onSend = () => {
++            let text = this._replyEntry.get_text();
++            if (text && text.trim().length > 0) {
++                releaseModal();
++                this.emit('reply', text);
++                if (this.inlineReplyAction && typeof this.inlineReplyAction === 'string') {
++                    this.emit('action-invoked', this.inlineReplyAction);
++                }
++                if (!this.resident) {
++                    this.emit('done-displaying');
++                    this.destroy();
++                }
++            }
++        };
++
++        sendButton.connect('clicked', onSend);
++
++        this._replyEntry.clutter_text.connect('activate', onSend);
++
++        this._replyEntry.connect('button-press-event', grabFocus);
++        this._replyEntry.clutter_text.connect('button-press-event', grabFocus);
++        this._replyArea.connect('button-press-event', grabFocus);
++
++        this.connect('destroy', () => {
++            releaseModal();
++        });
++
++        this._replyArea.add(this._replyEntry, { expand: true });
++        this._replyArea.add(sendButton, { expand: false });
++
++        if (this._buttonFocusManager) {
++            this._buttonFocusManager.add_group(this._replyArea);
++        }
++
++        // Auto focus the entry when reply area is created
++        Mainloop.idle_add(() => {
++            if (this._replyEntry && this._replyEntry.clutter_text && this._replyEntry.get_stage()) {
++                grabFocus();
++            }
++            return false;
++        });
++
++        this._updateLayout();
++    }
++
+     setUrgency(urgency) {
+         this.urgency = urgency;
+     }
+diff --git a/usr/share/cinnamon/js/ui/notificationDaemon.js b/usr/share/cinnamon/js/ui/notificationDaemon.js
+index 7c01633a5..a8e6ac9f3 100644
+--- a/usr/share/cinnamon/js/ui/notificationDaemon.js
++++ b/usr/share/cinnamon/js/ui/notificationDaemon.js
+@@ -65,6 +65,10 @@ const NotificationDaemonIface =
+                 <arg type="u"/> \
+                 <arg type="s"/> \
+             </signal> \
++            <signal name="NotificationReplied"> \
++                <arg type="u"/> \
++                <arg type="s"/> \
++            </signal> \
+         </interface> \
+     </node>';
+ 
+@@ -474,6 +478,9 @@ NotificationDaemon.prototype = {
+                 function(n, actionId) {
+                     this._emitActionInvoked(ndata.id, actionId);
+                 }));
++            notification.connect('reply', (n, text) => {
++                this._emitNotificationReplied(ndata.id, text);
++            });
+         } else {
+             notification.update(summary, body, { icon: iconActor,
+                                                  bodyMarkup: true,
+@@ -509,6 +516,9 @@ NotificationDaemon.prototype = {
+ 
+         notification.clearButtons();
+ 
++        let inlineReplyHint = hints.maybeGet('x-canonical-private-inline-reply') || hints.maybeGet('inline-reply');
++        let hasReplyAction = false;
++
+         if (actions.length) {
+             notification.setUseActionIcons(hints.maybeGet('action-icons') == true);
+             for (let i = 0; i < actions.length - 1; i += 2) {
+@@ -517,7 +527,10 @@ NotificationDaemon.prototype = {
+                         function() {
+                             this._emitActionInvoked(ndata.id, "default");
+                         }));
+-                else
++                else if (inlineReplyHint && actions[i] === inlineReplyHint) {
++                    notification.addReplyButton(actions[i], actions[i + 1]);
++                    hasReplyAction = true;
++                } else
+                     notification.addButton(actions[i], actions[i + 1]);
+             }
+         }
+@@ -537,6 +550,12 @@ NotificationDaemon.prototype = {
+         // of the 'transient' hint with hints['transient'] rather than hints.transient
+         notification.setTransient(hints.maybeGet('transient') == true);
+ 
++        if (inlineReplyHint != null) {
++            notification.setInlineReply(true, inlineReplyHint, !hasReplyAction);
++        } else {
++            notification.setInlineReply(false, null, false);
++        }
++
+         let sourceIconActor = source.useNotificationIcon ? this._iconForNotificationData(appIcon, hints, source.ICON_SIZE) : null;
+         source.processNotification(notification, sourceIconActor);
+     },
+@@ -562,6 +581,8 @@ NotificationDaemon.prototype = {
+             'icon-static',
+             'persistence',
+             'sound',
++            'inline-reply',
++            'x-canonical-private-inline-reply',
+         ];
+     },
+ 
+@@ -603,6 +624,11 @@ NotificationDaemon.prototype = {
+                                    GLib.Variant.new('(us)', [id, action]));
+     },
+ 
++    _emitNotificationReplied: function(id, text) {
++        this._dbusImpl.emit_signal('NotificationReplied',
++                                   GLib.Variant.new('(us)', [id, text]));
++    },
++
+     _onTrayIconAdded: function(o, icon) {
+         let source = this._getSource(icon.title || icon.wm_class || _("Unknown"), icon.pid, null, null, icon);
+     },

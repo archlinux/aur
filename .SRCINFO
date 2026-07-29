@@ -83,6 +83,10 @@ pkgbase = cinnamon-no-nemo
 	backup = etc/xdg/cinnamon-session/sessions/cinnamon.session
 	source = cinnamon-6.6.9-1-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download
 	source = cinnamon.session
+	source = gwl-grouping-heuristics.patch
+	source = inline-reply-notifications.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
