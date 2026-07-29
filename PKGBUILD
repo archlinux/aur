@@ -2,7 +2,7 @@
 # Repository: https://github.com/aslafy-z/aur-packages
 
 pkgname=kprompt-bin
-pkgver=0.6.0 # renovate: datasource=github-releases depName=kprompt packageName=kprompt/kprompt
+pkgver=0.7.0 # renovate: datasource=github-releases depName=kprompt packageName=kprompt/kprompt
 pkgrel=1
 pkgdesc='AI Kubernetes CLI: natural language to a reviewable plan, applied after approval'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("kprompt-${pkgver}-NOTICE::https://raw.githubusercontent.com/kprompt/kpr
 source_x86_64=("https://github.com/kprompt/kprompt/releases/download/v${pkgver}/kprompt_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/kprompt/kprompt/releases/download/v${pkgver}/kprompt_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('3513bb19225b1e4d2f6ee1f8e5247b62063cefc71bd513beef65afc1e0f39150')
-sha256sums_x86_64=('baadb3b46a2e03e0b85fd8cb6d92947a149b83c63bd094216be66ee42cb57069')
-sha256sums_aarch64=('37eb519c1e10e746bf4585acc5fe501e61491b74505f93e02f378549def25c0e')
+sha256sums_x86_64=('1e9cdc4c757d4c6345ad99bf080864fcde3eedd89d971c5f5edee9b3e2f00560')
+sha256sums_aarch64=('b151d0ee8839b455de06e70b66df915ee97d46fd077055fa435caede59398c70')
 
 package() {
     install -D -m755 "${srcdir}/kprompt" "${pkgdir}/usr/bin/kprompt"
