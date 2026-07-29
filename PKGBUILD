@@ -2,9 +2,9 @@
 
 pkgname=archon-appimage
 _pkgapp=archon
-_pkgbuild_commit=ed8a843
+_pkgbuild_commit=b786574
 pkgver=9.4.44
-pkgrel=31
+pkgrel=32
 pkgdesc="Desktop uploader app for Archon packaged as the upstream AppImage"
 arch=('x86_64')
 url='https://www.archon.gg/download'
