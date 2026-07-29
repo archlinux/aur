@@ -1,20 +1,20 @@
 pkgbase = undo-cli-bin
 	pkgdesc = Revert what the last shell command did to the filesystem
-	pkgver = 0.2.6
+	pkgver = 0.2.8
 	pkgrel = 1
-	url = https://github.com/edaywalid/undo
-	arch = x86_64
-	arch = aarch64
+	url = https://undo.edaywalid.com
 	license = MIT
+	optdepends = zsh: shell hook
+	optdepends = bash: shell hook
+	optdepends = fish: shell hook
 	depends = glibc
-	optdepends = zsh: zsh hook
-	optdepends = bash: bash hook
-	optdepends = fish: fish hook
-	provides = undo-cli
 	conflicts = undo-cli
-	source_x86_64 = https://github.com/edaywalid/undo/releases/download/v0.2.6/undo_0.2.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = a4ea8d2def1f21c04706da0f2abf47d7db2cb9d058d0cea1fb4057f13268f7ec
-	source_aarch64 = https://github.com/edaywalid/undo/releases/download/v0.2.6/undo_0.2.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1ba52c74281baf6986017bbd998b00255296e299dde2665fc2b434d6134f4dcb
-
+	provides = undo-cli
+	arch = aarch64
+	source_aarch64 = https://github.com/edaywalid/undo/releases/download/v0.2.8/undo_0.2.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7221a8d5027111dc9b5c22532b7856c41a47951ee87c50c16764d5ddaa8427da
+	arch = x86_64
+	source_x86_64 = https://github.com/edaywalid/undo/releases/download/v0.2.8/undo_0.2.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2364fdc94ab19eb1d4223a4184b6ccc4f13f8879d74245f83d3a4341c783b0df
+	
 pkgname = undo-cli-bin
