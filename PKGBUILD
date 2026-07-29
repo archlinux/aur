@@ -2,7 +2,7 @@
 _pkgname=beyond-cubed
 pkgname="${_pkgname}-git"
 pkgver=r40.e3ee9a7
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt at reverse engineering and reimplementing all the functions of the official Bigscreen Beyond utility."
 arch=('x86_64')
 url="https://gitlab.com/coolGi/beyond-cubed"
@@ -17,7 +17,7 @@ source=("git+${url}"
 	"beyond-cubed.desktop")
 sha256sums=('SKIP'
 	"7366d8a07b1fb097ea15db9d1bc2b21a1f13fa36b06c7060a460fa289b84f15b"
-	"303fb21657ac89786771a132702a7b50c03c4bd9ed3e6dc503fba80897124ef7")
+	"92f82b9223d7447fb018be4f09a7c0a9f67b2fdc1c8c9b2f5703a36219a2ea7c")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
