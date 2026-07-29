@@ -1,0 +1,20 @@
+pkgbase = php-castor
+	pkgdesc = A lightweight and modern task runner, automate everything in PHP (phar, uses system PHP)
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://castor.jolicode.com/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = php>=8.4
+	conflicts = php-castor-bin
+	options = !strip
+	options = !debug
+	source = LICENSE-1.6.1::https://raw.githubusercontent.com/jolicode/castor/v1.6.1/LICENSE
+	sha256sums = 873ddfe436c906c14a9069c2358f2f81dd95d140c88a44c390419bcebc920409
+	source_x86_64 = castor-1.6.1-x86_64.phar::https://github.com/jolicode/castor/releases/download/v1.6.1/castor.linux-amd64.phar
+	sha256sums_x86_64 = ee7277349c346efddb9d8c5d80f6d29efbcb6719b564bfb0e623a755ca94400b
+	source_aarch64 = castor-1.6.1-aarch64.phar::https://github.com/jolicode/castor/releases/download/v1.6.1/castor.linux-arm64.phar
+	sha256sums_aarch64 = 60fdabae7291bcfc25aaee0f7b3ecb5ae2348f88a578f3882097d1e02a326fcd
+
+pkgname = php-castor
