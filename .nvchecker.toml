@@ -1,0 +1,5 @@
+[basika]
+source = "github"
+github = "kdekorte/basika"
+use_latest_release = true
+prefix = "v"
