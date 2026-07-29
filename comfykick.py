@@ -416,15 +416,18 @@ def _ensure_tarball(
     """Ensure the tarball for ``version_head`` exists in cache."""
     tarball_name = f"{version_head}.tar.gz"
     tarball_path = version_cache_dir / tarball_name
+    version = config["version"]
+    version_link = version_cache_dir / f"{version}.tar.gz"
     github_token = config["github_token"]
-    is_latest = config["version"] == "latest"
+
+    # Maintain a "<version>.tar.gz" symlink when version and version_head
+    # differ, except when version is a prefix of version_head (e.g. a short
+    # commit SHA that resolves to the same full SHA).
+    need_symlink = not version_head.startswith(version)
 
     if refresh:
         log.info("Refreshing cached tarball for %s ...", version_head)
         tarball_path.unlink(missing_ok=True)
-
-        if is_latest:
-            (version_cache_dir / "latest").unlink(missing_ok=True)
 
     if not tarball_path.exists():
         if tarball_url is None:
@@ -437,11 +440,9 @@ def _ensure_tarball(
         log.info("Downloading ComfyUI %s ...", version_head)
         _download_tarball(tarball_url, tarball_path, github_token)
 
-    if is_latest:
-        latest_link = version_cache_dir / "latest"
-        if latest_link.is_symlink() or latest_link.is_file():
-            latest_link.unlink()
-        latest_link.symlink_to(tarball_name)
+    if need_symlink:
+        version_link.unlink(missing_ok=True)
+        version_link.symlink_to(tarball_name)
 
     return tarball_path
 
