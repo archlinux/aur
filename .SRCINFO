@@ -1,0 +1,18 @@
+pkgbase = gcr-ssh-agent-dinit
+	pkgdesc = Dinit user service definition for starting gcr-ssh-agent - Gnome SSH agent, previously part of gnome-keyring
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gcr
+	arch = any
+	license = unknown
+	depends = gcr-4
+	depends = gcr
+	depends = dinit
+	optdepends = userspawn
+	optdepends = userspawn-dinit
+	backup = etc/dinit.d/user/
+	source = gcr-ssh-agent.dinit-service
+	source = gcr-ssh-agent-start
+	sha256sums = SKIP
+
+pkgname = gcr-ssh-agent-dinit

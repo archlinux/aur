@@ -1,0 +1,5 @@
+type = process
+command = /usr/bin/gcr-ssh-agent-start
+log-type = buffer
+restart = on-failure
+before: login.target

@@ -1,0 +1,8 @@
+#!/bin/sh
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+
+mkdir -p "$XDG_RUNTIME_DIR/gcr"
+chmod 0700 "$XDG_RUNTIME_DIR/gcr"
+
+exec /usr/lib/gcr-ssh-agent --base-dir "$XDG_RUNTIME_DIR/gcr"
