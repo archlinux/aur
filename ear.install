@@ -1,0 +1,16 @@
+post_install() {
+  echo ""
+  echo ":: ear is installed, but it can't speak until the voice models exist."
+  echo ":: Run this once (downloads ~400 MB of neural TTS models):"
+  echo "::"
+  echo "::     ear-cli setup"
+  echo "::"
+  echo ":: Then: type 'ear' for the GUI, or pipe anything: man ear | ear-cli"
+  echo ""
+}
+
+post_upgrade() {
+  if ! [ -e "$HOME/.local/share/ear/kokoro/venv/bin/python" ] 2>/dev/null; then
+    echo ":: reminder: run 'ear-cli setup' if you haven't yet — ear can't speak without it"
+  fi
+}
