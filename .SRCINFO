@@ -1,0 +1,18 @@
+pkgbase = encounty-bin
+	pkgdesc = Free, open-source auto shiny counter for Pokémon shiny hunting.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/ZSleyer/Encounty
+	arch = x86_64
+	license = AGPL-3.0
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = encounty-0.19.1.AppImage::https://github.com/ZSleyer/Encounty/releases/download/v0.19.1/Encounty-x86_64.AppImage
+	source = encounty.png::https://raw.githubusercontent.com/ZSleyer/Encounty/main/backend/winres/icon.png
+	source = encounty.desktop
+	sha256sums = 3d633a1f156ccc22a077292eae4fe108479ba21bcf29514294685cf54a38befc
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = encounty-bin
