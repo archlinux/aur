@@ -6,6 +6,7 @@ pkgbase = virtual-surround-manager
 	arch = any
 	license = MIT
     depends = pipewire
+    depends = kirigami-addons
 	makedepends = git
     makedepends = ninja
     makedepends = libpipewire

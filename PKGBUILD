@@ -6,7 +6,8 @@ pkgdesc="3D sound for headphones"
 arch=('x86_64')
 url="https://github.com/Berny23/virtual-surround-manager"
 license=('MIT')
-depends=('pipewire')
+depends=('pipewire'
+    'kirigami-addons')
 makedepends=('git'
     'ninja'
     'libpipewire'
