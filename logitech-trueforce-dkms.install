@@ -25,7 +25,7 @@ post_install() {
            ~/.local/share/logitech-trueforce/sdk/Logi/wheel_sdk/9_1_0/logi_steering_wheel_x86.dll
          (or point --sdk-dir / $LOGITECH_TRUEFORCE_SDK_DIR elsewhere)
       2. Run as your normal user (NOT root):
-           logitech-trueforce-install-shim --all-steam
+           logi-shim --all-steam
       3. Per SDK sim in Steam: set launch option PROTON_ENABLE_HIDRAW=1
          and disable Steam Input for the wheel.
 

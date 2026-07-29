@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('45674a9979de82950ce3ec130c6574c4469e524d10fb14ae605a72911691fc76')
+sha256sums=('2df28838a84d11ca24fb79287764652b1ec5366a042f98a52369ae08987e4eae')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -132,11 +132,14 @@ package_logi-wheel() {
 	# TrueForce-in-Proton helper (resolves the SDK DLL dir via --sdk-dir /
 	# $LOGITECH_TRUEFORCE_SDK_DIR / ~/.local/share/logitech-trueforce/sdk).
 	install -Dm755 "$_src/tools/install-tf-shim.sh" \
-		"$pkgdir/usr/bin/logitech-trueforce-install-shim"
+		"$pkgdir/usr/bin/logi-shim"
 
-	# Transitional symlink: scripts and habits built around the old
-	# `logi-dd` binary name keep working.
+	# Transitional symlinks: scripts and habits built around the old
+	# `logi-dd` and `logitech-trueforce-install-shim` names keep working.
+	# Every binary this project installs is now `logi-*`, so that `pgrep
+	# logi-` finds all of them.
 	ln -s logi-wheel "$pkgdir/usr/bin/logi-dd"
+	ln -s logi-shim "$pkgdir/usr/bin/logitech-trueforce-install-shim"
 }
 
 package_logi-wheel-gui() {
