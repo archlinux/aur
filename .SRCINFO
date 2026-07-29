@@ -1,0 +1,17 @@
+pkgbase = fcitx5-sime
+	pkgdesc = Sime Chinese input method for Fcitx5
+	pkgver = 2026.04.29
+	pkgrel = 1
+	url = https://github.com/Ismantic/SimeApp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = fcitx5
+	source = SimeApp-0.15.2.tar.gz::https://github.com/Ismantic/SimeApp/archive/refs/tags/v0.15.2.tar.gz
+	source = Sime-2026.04.29.tar.gz::https://github.com/Ismantic/Sime/archive/refs/tags/v2026.04.29.tar.gz
+	source = sime-model-2026.04.29.tar.zst::https://github.com/Ismantic/Sime/releases/download/v2026.04.29/sime-model-2026.04.29.tar.zst
+	sha256sums = 7cf2051c84a70ce6d24f21316f6115a3956f4272c58179935cec5685b6b4462a
+	sha256sums = d224e1ec2933c5186dd73d5fb1be0206e658d83b8bfa3ecec729ae4a48b22b60
+	sha256sums = 840ac365d36b200f4e7ebdc168d9bfde5cd458eb71b16e0bf9ef1ef0fdd84333
+
+pkgname = fcitx5-sime
