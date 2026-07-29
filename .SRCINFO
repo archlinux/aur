@@ -23,7 +23,7 @@ pkgbase = qt6curve-git
 	depends = kf6-karchive
 	provides = qt6curve
 	conflicts = qt6curve
-	conflicts = qtcurve-qt6
+	conflicts = qtcurve
 	source = git+https://github.com/ixnewton/qtcurve.git#branch=Qt6Curve_version
 	sha256sums = SKIP
 

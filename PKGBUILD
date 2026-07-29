@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-svg' 'kf6-kguiaddons' 'kf6-kconfig' 'kf6-kconfigwidgets
          'kf6-karchive')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('qt6curve')
-conflicts=('qt6curve' 'qtcurve-qt6')
+conflicts=('qt6curve' 'qtcurve')
 source=("git+https://github.com/ixnewton/qtcurve.git#branch=Qt6Curve_version")
 sha256sums=('SKIP')
 
