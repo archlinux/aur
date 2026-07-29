@@ -1,6 +1,6 @@
 pkgbase = zedg
 	pkgdesc = Zed editor with globalization support (pre-built binary)
-	pkgver = 1.11.3
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/WenYin-Community/zed-globalization
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zedg
 	provides = zedg
 	conflicts = zedg
 	options = !debug
-	source_x86_64 = https://github.com/WenYin-Community/zed-globalization/releases/download/v1.11.3/zedg-zh-cn-linux-x86_64-v1.11.3.tar.gz
-	sha256sums_x86_64 = f4b8cfc3dafe37d49f0c89dfdaa75d6919aca5904285efe9dfc088ebc9cc87ae
-	source_aarch64 = https://github.com/WenYin-Community/zed-globalization/releases/download/v1.11.3/zedg-zh-cn-linux-aarch64-v1.11.3.tar.gz
-	sha256sums_aarch64 = 704267c1ba62793c8b2736a2d42c8b98780513ce6406f7567050866d28dd2dcf
+	source_x86_64 = https://github.com/WenYin-Community/zed-globalization/releases/download/v1.12.1/zedg-zh-cn-linux-x86_64-v1.12.1.tar.gz
+	sha256sums_x86_64 = 1d629f1e210e84b6f6aa806bb716c232414d3dc805e02ab3be674bd7a2d29cfe
+	source_aarch64 = https://github.com/WenYin-Community/zed-globalization/releases/download/v1.12.1/zedg-zh-cn-linux-aarch64-v1.12.1.tar.gz
+	sha256sums_aarch64 = 9765e810b45ee598338861c8805dafc5262d3c7982c9254b1546f331970b6655
 
 pkgname = zedg
