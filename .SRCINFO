@@ -1,6 +1,6 @@
 pkgbase = smartdns-plugin-ui
 	pkgdesc = Dashboard UI plugin for smartdns
-	pkgver = 48.2
+	pkgver = 48.3
 	pkgrel = 1
 	url = https://github.com/pymumu/smartdns
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = smartdns-plugin-ui
 	makedepends = git
 	makedepends = rust
 	makedepends = rust-bindgen
-	depends = smartdns=48.2
+	depends = smartdns=48.3
 	depends = smartdns-webui
-	source = git+https://github.com/pymumu/smartdns.git#tag=Release48.2
-	sha512sums = f488b4ba40d348d3f79b25d092ef1a987cf9d58bf796c22a352fc896fc61f270abdd14e324da5a83abb0f3052982c93004e828a3f86aa0a24ccb1fcf6f39af4f
+	source = git+https://github.com/pymumu/smartdns.git#tag=Release48.3
+	sha512sums = 0ef770b9580fd2bccfe8bbbff695138ad3d773206f06393d5e7fbc9e48c91924e2d74a8d002f6b1d517cf52b01a7c02277086e3ed98a4657a16f2a51def092c0
 
 pkgname = smartdns-plugin-ui
