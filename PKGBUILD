@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=systemrdl-toolkit
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="A pure C++ toolkit for parsing and elaborating SystemRDL files"
@@ -22,6 +22,7 @@ makedepends=(
     nlohmann-json
     inja
     pkgconf
+    python
 )
 optdepends=(
 
@@ -37,7 +38,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('baf5dc6d7566750f3c05944f09ba281eb6d1ff43ae5262910878cfcf351da38b')
+sha256sums=('cb3eecc5ba7b58e3accfe3436f8e2c26374043a692cb78edd9942ada2dcdc5d5')
 validpgpkeys=()
 
 prepare() {
@@ -52,7 +53,7 @@ build() {
         -D USE_SYSTEM_ANTLR4=ON \
         -D USE_SYSTEM_NLOHMANN_JSON=ON \
         -D USE_SYSTEM_INJA=ON \
-        -D SYSTEMRDL_BUILD_STATIC=OFF \
+        -D SYSTEMRDL_BUILD_STATIC=ONls  \
         -B build \
         -G Ninja
 
@@ -63,4 +64,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+    mv ${pkgdir}/usr/bin/example ${pkgdir}/usr/bin/systemrdl_example
 }
