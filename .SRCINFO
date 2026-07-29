@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-tridactyl-bin
 	pkgdesc = Replace LibreWolf's control mechanism with one modelled on Vim.
-	pkgver = 1.24.4
+	pkgver = 1.24.6
 	pkgrel = 1
 	url = https://tridactyl.xyz/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = librewolf-extension-tridactyl-bin
 	depends = librewolf
 	provides = librewolf-extension-tridactyl
 	conflicts = librewolf-extension-tridactyl
-	noextract = tridactyl.vim@cmcaine.co.uk-1.24.4.xpi
-	source = tridactyl.vim@cmcaine.co.uk-1.24.4.xpi::https://addons.mozilla.org/firefox/downloads/file/4549492/tridactyl_vim-1.24.4.xpi
-	source = LICENSE-1.24.4::https://raw.githubusercontent.com/tridactyl/tridactyl/refs/tags/1.24.4/LICENSE
-	b2sums = 2e16ca90100d7289aa2cfa6cce258eaa3eefa36c0d6435fe2f00bf050215a1ce7c2f62f0c301311734adaac862f6b24edc43797c7ff9366a244802a7c3ed714e
+	noextract = tridactyl.vim@cmcaine.co.uk-1.24.6.xpi
+	source = tridactyl.vim@cmcaine.co.uk-1.24.6.xpi::https://addons.mozilla.org/firefox/downloads/file/4854935/tridactyl_vim-1.24.6.xpi
+	source = LICENSE-1.24.6::https://raw.githubusercontent.com/tridactyl/tridactyl/refs/tags/1.24.6/LICENSE
+	b2sums = 45bd1e16df48c1456831627725631eab1ff6ef8074ba6eecbb6818987664164706e7359ee264288e5a660526128a82cd03c0e9679c66f12c8164d70a41b2f262
 	b2sums = 5b502323a8f7bb8e4d768c33e773c1092a2e45b5194fb274e542144298360266db7cbf1d5f67f23ee8d9207de7e289c2292bee1f5dd066202bbe20a1dc680c31
 
 pkgname = librewolf-extension-tridactyl-bin
