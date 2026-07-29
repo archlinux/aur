@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=structure-bin
 _pkgname=Structure
-pkgver=0.26.1
+pkgver=0.26.2
 _electronversion=39
 pkgrel=1
 pkgdesc="A knowledge management tool.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f3a0a8e4c68d1fe8a34486661f009c00843713eb2e8864af05737b4463a07330'
+sha256sums=('50fdcdb47088150e165c6403541971675a136365e0e586eabbe80c6d483736a7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
