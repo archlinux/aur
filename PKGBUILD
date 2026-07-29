@@ -3,7 +3,7 @@
 pkgbase=shelly
 pkgname=('shelly' 'shelly-flatpak-backend')
 pkgver=3.0.0+9
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
@@ -267,7 +267,7 @@ SCRIPT
 
 package_shelly-flatpak-backend() {
   pkgdesc="Optional native Flatpak backend for Shelly"
-  depends=("shelly=${pkgver}-${pkgrel}" 'flatpak')
+  depends=("shelly=${pkgver}" 'flatpak')
   provides=("shelly-flatpak-backend=${pkgver}")
   conflicts=('shelly-flatpak-backend-git' 'shelly-flatpak-backend-bin')
 
