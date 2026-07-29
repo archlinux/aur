@@ -1,7 +1,7 @@
 pkgbase = osmium
 	pkgdesc = A globally distributed community messaging and voice/video platform
 	pkgver = 0.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmium.chat/
 	arch = x86_64
 	license = custom

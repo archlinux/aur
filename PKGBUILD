@@ -2,7 +2,7 @@
 
 pkgname=osmium
 pkgver=0.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A globally distributed community messaging and voice/video platform"
 arch=('x86_64')
 url='https://osmium.chat/'
