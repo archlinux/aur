@@ -13,7 +13,7 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
 pkgver=r18952.5bdaa898db
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
@@ -140,6 +140,16 @@ build() {
 package() {
 	# Directs files into Arch's strict isolated filesystem staging area
   	DESTDIR="${pkgdir}" cmake --install build
+
+	# 1. Create a global shortcut command called 'attach-world'
+	echo '#!/bin/sh' > "${pkgdir}/usr/bin/attach-world"
+	echo 'exec /usr/bin/tmux -S /run/azerothcore/world.sock attach-session -t worldserver' >> "${pkgdir}/usr/bin/attach-world"
+	chmod +x "${pkgdir}/usr/bin/attach-world"
+
+	# 2. Create a global shortcut command called 'attach-auth'
+	echo '#!/bin/sh' > "${pkgdir}/usr/bin/attach-auth"
+	echo 'exec /usr/bin/tmux -S /run/azerothcore/auth.sock attach-session -t authserver' >> "${pkgdir}/usr/bin/attach-auth"
+	chmod +x "${pkgdir}/usr/bin/attach-auth"
 
 	# Copies the runtime helper script into the package
   	#install -Dm755 "${srcdir}/${_pkgname}/acore.sh" "${pkgdir}/usr/share/azerothcore/acore.sh"

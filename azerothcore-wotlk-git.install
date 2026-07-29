@@ -1,47 +1,28 @@
 post_install() {
-	if command -v systemctl >/dev/null 2>&1; then
-    	sudo systemctl daemon-reload >/dev/null 2>&1 || true
-    fi
-
-	if [[ ! -f /etc/azerothcore/authserver.conf ]]; then
-		sudo cp /etc/azerothcore/authserver.conf.dist /etc/azerothcore/authserver.conf
-	fi
-
-	if [[ ! -f /etc/azerothcore/worldserver.conf ]]; then
-		sudo cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
-	fi
-
-	# I'm not distributing acore.sh for now
-	#if [[ ! -f /usr/share/azerothcore/conf/config.conf ]]; then
-	#	sudo cp /usr/share/azerothcore/conf/dist/config.conf /usr/share/azerothcore/conf/config.conf
-	#fi
-
-	# If source dir is empty, point it to our install location
-	sudo sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
-
-	# Restart authserver
-  	sudo systemctl restart acore-auth-server.service
-
-	# Start worldserver
-  	sudo systemctl start acore-world-server.service
-
-	# Enable needed services
-	sudo systemctl enable acore-auth-server.service
-	sudo systemctl enable acore-world-server.service
-	sudo systemctl enable mysqld.service
-
-	# Create azerothcore user
+	# 1. Dynamically provision the unprivileged system user account first!
 	if ! getent passwd azerothcore >/dev/null; then
 		useradd -r -s /usr/bin/nologin -d /usr/share/azerothcore azerothcore
 	fi
 
-	# Ensure the administrative access group exists
+	# 2. Ensure the administrative access group exists
 	if ! getent group acore-admin >/dev/null; then
 		groupadd -r acore-admin
 	fi
 
-	Add daemon user to that group
+	# 3. Add daemon user to that group (Fixed the missing '#' hashtag error!)
 	usermod -aG acore-admin azerothcore
+
+	# 4. Copy default configuration templates safely if they do not exist
+	if [[ ! -f /etc/azerothcore/authserver.conf ]]; then
+		cp /etc/azerothcore/authserver.conf.dist /etc/azerothcore/authserver.conf
+	fi
+
+	if [[ ! -f /etc/azerothcore/worldserver.conf ]]; then
+		cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
+	fi
+
+	# 5. Point the source tracking option directly to your execution root folder
+	sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
 
 	echo "======================================================================="
 	echo " 🔐 MULTI-USER TMUX CONSOLE ACCESS CONFIGURATION"
@@ -54,7 +35,7 @@ post_install() {
 	echo " (Note: The user must log out and log back in for changes to apply)."
 	echo "======================================================================="
 
-	# Display some instructions
+	# Display clear user instructions
 	echo ''
 	echo ''
 	echo '#####################  IMPORTANT  #####################'
@@ -84,32 +65,28 @@ post_install() {
 	echo '  - sudo journalctl -u acore-world-server.service -f'
 	echo ''
 	echo 'The servers are started with tmux. To connect to one of them and issue commands:'
-	echo '  - tmux attach -t acore-auth'
-	echo '  - tmux attach -t acore-world'
+	echo '  - attach-auth   (Connects straight to the live authentication console)'
+	echo '  - attach-world  (Connects straight to the live world server console)'
 	echo ''
-	echo 'To disconnect, press Ctrl+b, then d.'
+	echo 'To disconnect safely without killing the server, press Ctrl+b, then d.'
 	echo ''
 	echo 'Map data:'
 	echo '  - Either extract the map data manually using the guide at:'
 	echo '    https://www.azerothcore.org/wiki/linux-server-setup'
 	echo '  - Or install the AUR package:'
-	echo '    yay -S azerothcore-clientdata'
+	echo '    yay -S azerothcore-clientdata-git'
 }
 
 post_upgrade() {
-    if command -v systemctl >/dev/null 2>&1; then
-        systemctl daemon-reload >/dev/null 2>&1 || true
-    fi
+    # Systemd hooks in Arch handle daemon-reloads natively.
+    true
 }
 
 pre_remove() {
-	sudo systemctl stop acore-auth-server.service
-	sudo systemctl stop acore-world-server.service
+	# Safely disable background services before removing files
+	systemctl stop acore-auth-server.service 2>/dev/null || true
+	systemctl stop acore-world-server.service 2>/dev/null || true
 
-	sudo systemctl disable acore-auth-server.service
-	sudo systemctl disable acore-world-server.service
-
-	sudo rm -f /etc/systemd/system/acore-auth-server.service
-	sudo rm -f /etc/systemd/system/acore-world-server.service
-	sudo systemctl daemon-reload
+	systemctl disable acore-auth-server.service 2>/dev/null || true
+	systemctl disable acore-world-server.service 2>/dev/null || true
 }
