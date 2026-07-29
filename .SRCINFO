@@ -1,12 +1,14 @@
 pkgbase = keyfuzz
 	pkgdesc = A Utility for manipulating the scancode/keycode translation tables of keyboard drivers
 	pkgver = 0.2
-	pkgrel = 11
+	pkgrel = 12
 	url = http://0pointer.de/lennart/projects/keyfuzz
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = lynx
+	depends = bash
+	depends = glibc
 	source = keyfuzz-0.2.tar.gz
 	source = keyfuzz.systemd
 	source = logitech_media_keyboard_600.keyfuzz
