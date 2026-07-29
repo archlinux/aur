@@ -1,0 +1,21 @@
+pkgbase = python-material-color-utilities-cpp
+	pkgdesc = Theme color library for Material You (C++/pybind11 implementation by RuurdBijlsma; not to be confused with the unrelated, unmaintained pure-Python python-material-color-utilities package)
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/RuurdBijlsma/material-color-utilities
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pybind11
+	makedepends = python-scikit-build-core
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = gcc-libs
+	source = material-color-utilities-0.2.6.tar.gz::https://files.pythonhosted.org/packages/source/m/material-color-utilities/material_color_utilities-0.2.6.tar.gz
+	sha256sums = 40840387817eea3ac3a5f5fb9928583ff5bcfd070c83097efe5e77b62e098102
+
+pkgname = python-material-color-utilities-cpp
