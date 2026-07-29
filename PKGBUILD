@@ -1,7 +1,7 @@
 # Maintainer: Mr.Wizard <process-pylon-62 at icloud.com>
 pkgname=baresip-qt
 pkgver=4.10.0_qt.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Baresip bundled with custom native Qt applet"
 arch=('x86_64')
 url="https://github.com/Venomtek/baresip-qt"
