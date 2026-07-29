@@ -1,6 +1,7 @@
 # Maintainer: Joaquin (Pato) Decima <jdecima@vasak.net.ar>
 
 pkgname=twingate-bin
+_pkgname=twingate
 pkgver=2026.188.6692
 pkgrel=1
 pkgdesc="Zero trust remote access client for resource and networks, based on twingate-bin"
@@ -16,6 +17,9 @@ sha256sums_x86_64=('7b1a3fc6ada23940d6df45d2521143d46ceb0c91797c0959c4621656f7d2
 sha256sums_aarch64=('170f7d2904b0fa5495d9f8bda341679928f68363ef7d47faac1131e25d0b549d')
 
 package() {
+  cd "${srcdir}"
+  bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.tar.zst"
+
   install -d "${pkgdir}/var/lib/${_pkgname}"
   install -d "${pkgdir}/run/${_pkgname}"
 
