@@ -2,7 +2,7 @@
 
 pkgname=nevi
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Fast terminal editor inspired by Neovim and Zed, written in Rust'
 arch=(x86_64)
 url=https://github.com/anthonyamaro15/nevi
@@ -20,13 +20,14 @@ makedepends=(
   cargo
   cmake
   pkgconf
+  rust
 )
 source=(${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz)
 sha256sums=(9c51c1ce666f7bad7e522894d5f485faadf9f91087fe5179fcb8dd14272805b8)
 options=('!lto')
 
-package() {
-  cd $pkgname-pkgver
+prepare() {
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
