@@ -1,6 +1,6 @@
 pkgbase = nosql-workbench
 	pkgdesc = NoSQL Workbench for Amazon DynamoDB
-	pkgver = 3.20.2
+	pkgver = 3.20.3
 	pkgrel = 1
 	url = https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = nosql-workbench
 	makedepends = gendesk
 	depends = fuse2
 	options = !strip
-	source_x86_64 = nosql-workbench-3.20.2.AppImage::https://dy9cqqaswpltd.cloudfront.net/NoSQL%20Workbench-linux-3.20.2.AppImage
+	source_x86_64 = nosql-workbench-3.20.3.AppImage::https://dy9cqqaswpltd.cloudfront.net/NoSQL%20Workbench-linux-3.20.3.AppImage
 	source_x86_64 = LICENSE::https://aws.amazon.com/nosql/nosql-workbench-license/
 	source_x86_64 = nosql-workbench.png
-	sha256sums_x86_64 = 3bad89b151c9e4e13a1cbb773e0f5756b7778f57a86373be6e3aaba28c0610e1
+	sha256sums_x86_64 = 60923112d5220a074bbdcad41db5d8acc576cd8275fe1d87a407b1f21e0b48f7
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
