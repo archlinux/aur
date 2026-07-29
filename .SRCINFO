@@ -1,0 +1,21 @@
+pkgbase = teal-language-server
+	pkgdesc = A language server for Teal, a typed dialect of Lua
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/teal-language/teal-language-server
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = lua54
+	depends = lua54-argparse
+	depends = lua54-cjson
+	depends = lua54-filesystem
+	depends = lua54-luv
+	depends = lua54-lusc_luv
+	depends = lua54-ltreesitter
+	depends = lua54-tl
+	depends = teal
+	source = https://github.com/teal-language/teal-language-server/archive/refs/tags/0.2.1/teal-language-server-0.2.1.tar.gz
+	sha256sums = 48fecc37cdbe20f0e87863fd40d25e54a7ef6aa3610a55a9f81aaf4805a63159
+
+pkgname = teal-language-server

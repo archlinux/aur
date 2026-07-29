@@ -1,0 +1,3 @@
+[teal-language-server]
+source = "git"
+git = "https://github.com/teal-language/teal-language-server.git"
