@@ -1,6 +1,6 @@
 # Maintainer: Piero <biagini93@ik.me>
 pkgname=nirilayout-git
-pkgver=r34.9c40bf1
+pkgver=r36.2103d6a
 pkgrel=1
 pkgdesc="Quickly switch niri output configuration between different layouts (GTK switcher)"
 arch=('x86_64')
