@@ -1,6 +1,6 @@
 # Maintainer: Bryson K <bryson@azin-lang (dot) org>
 pkgname=azin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Systems programming language"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc')
 optdepends=('clang: alternative backend C compiler')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/azin-lang/Azin/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ab266403c5d94cc8e5f7921749087ba40227529e00553e9f32dfeb7fc4ae41d0')
+sha256sums=('c9eb786affc32d5bce718439144ff00c4f9e843007fa37fb7dd84f4e5a6a4c1e')
 
 build() {
     cd "Azin-$pkgver"

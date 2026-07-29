@@ -1,6 +1,6 @@
 pkgbase = azin
 	pkgdesc = Systems programming language
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/azin-lang/Azin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = azin
 	makedepends = go
 	depends = gcc
 	optdepends = clang: alternative backend C compiler
-	source = azin-0.2.1.tar.gz::https://github.com/azin-lang/Azin/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = ab266403c5d94cc8e5f7921749087ba40227529e00553e9f32dfeb7fc4ae41d0
+	source = azin-0.2.2.tar.gz::https://github.com/azin-lang/Azin/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = c9eb786affc32d5bce718439144ff00c4f9e843007fa37fb7dd84f4e5a6a4c1e
 
 pkgname = azin
