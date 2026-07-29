@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.26.0.329.g3dd6b6a
+pkgver=1.26.0.338.g0bc325a
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -40,7 +40,6 @@ depends=(
 )
 makedepends=(
   cmake
-  doxygen
   git
   ninja
   python
