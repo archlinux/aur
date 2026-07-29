@@ -1,0 +1,10 @@
+#!/bin/bash
+
+post_install() {
+	systemctl daemon-reload
+	echo "Start the micalistener.service manually or 'systemctl enable --now micalistener.service'"
+}
+
+post_upgrade(){
+	systemctl daemon-reload
+}
