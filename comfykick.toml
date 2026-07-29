@@ -121,7 +121,7 @@
 # #      ```                                            (PyPI Mirrors)
 # # Leave empty to use environment's default.
 # # Default: []
-# pypi_list                   = []
+# pypi_list              = []
 
 # # Extra Python packages install.
 # # Can use this to bake in custom-node dependencies that are not yet
