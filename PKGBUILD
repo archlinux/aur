@@ -6,17 +6,17 @@ url='https://brlcad.org'
 license=('LGPL-2.1-only' 'BSD-3-Clause' 'LicenseRef-BDL')
 arch=(i686 x86_64)
 depends=(gdal libgl libxft libxi)
-makedepends=(cmake ninja git lemon re2c astyle geogram zlib netpbm libpng lmdb eigen3 sqlite proj gdal pugixml assimp opencv manifold tcl tk itk)
+makedepends=(cmake ninja git re2c astyle zlib netpbm libpng lmdb eigen sqlite proj gdal pugixml assimp opencv tcl tk itk onetbb)
 install="${pkgname}.install"
 _tag_name="rel-${pkgver//./-}"
 source=(
   "${pkgname}-${_tag_name}.tar.gz::https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz"
-  "bext::git+https://github.com/BRL-CAD/bext.git"
-  "fix-utahrle-gcc15.patch"
+  "bext::git+https://github.com/BRL-CAD/bext.git#commit=12f7d5669eec143eb882a367fa2d2a56127d1942"
+  "fix-bext-system-mode.patch"
 )
 sha512sums=('c2c4c6be526f99179d3577b32c070438a4d60a1fb73c2ad96e0176d3529c5d21b2944d98d2dcc5e1172c23cbf97f0898b83e16c4125fba953d46587b6745386b'
             'SKIP'
-            'f19a38ed643af14f761bdd535b75456266bccfdc5fbc2454b7be75a90e38e3884e72eb012b528acf7e6a2266c525b1e817acfacbc523f6124e4c94d92ae4fa2b')
+            'SKIP')
 
 _build_config='Release'
 _prefix="/opt/${pkgname}"
@@ -24,15 +24,11 @@ _prefix="/opt/${pkgname}"
 prepare() {
   cd "${srcdir}/${pkgname}-${_tag_name}"
   sed -i 's/g_target/#g_target/' db/nist/CMakeLists.txt
-
-  # Initialize only utahrle submodule in bext
-  cd "${srcdir}/bext"
-  git submodule update --init utahrle
-  # Apply patches
-  patch -Np1 -i "${srcdir}/fix-utahrle-gcc15.patch"
+  patch -Np1 -i "${srcdir}/fix-bext-system-mode.patch"
 }
 
 build() {
+  export CXXFLAGS+=" -include cstdint -DSTRCASECMP=strcasecmp"
   cmake \
     -G Ninja \
     -S "${srcdir}/${pkgname}-${_tag_name}" \
@@ -46,7 +42,6 @@ build() {
     -DBRLCAD_FLAGS_DEBUG=OFF \
     -DBRLCAD_BUNDLED_LIBS=SYSTEM \
     -DBRLCAD_ENABLE_MINIMAL=ON \
-    -DBRLCAD_GDAL=OFF \
     -DBRLCAD_PNG=OFF \
     -DBRLCAD_REGEX=OFF \
     -DBRLCAD_ZLIB=OFF \
@@ -54,12 +49,9 @@ build() {
     -DBRLCAD_ENABLE_QT=OFF \
     -DBRLCAD_ENABLE_TCL=OFF \
     "-DBRLCAD_EXT_PARALLEL=$(nproc)" \
-    # Only specify paths for makedepends that are not found automatically
     -DPNG_PNG_INCLUDE_DIR=/usr/include \
     -DLMDB_LIBRARY=/usr/lib/liblmdb.so \
     -DLMDB_INCLUDE_DIR=/usr/include \
-    -DMANIFOLD_LIBRARY=/usr/lib/libmanifold.so \
-    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold \
     -DSQLite3_LIBRARY=/usr/lib/libsqlite3.so \
     -DSQLite3_INCLUDE_DIR=/usr/include \
     "-DBRLCAD_EXT_SOURCE_DIR=${srcdir}/bext"
