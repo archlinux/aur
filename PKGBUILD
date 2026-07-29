@@ -1,12 +1,12 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=nispor-git
 pkgver=2.0.2.r9.g73281c8
-pkgrel=1
+pkgrel=2
 pkgdesc='Unified interface for Linux network state querying'
 arch=('x86_64')
 url='https://github.com/nispor/nispor'
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
 provides=("nispor=${pkgver%%.r*}")
 conflicts=('nispor')
@@ -22,6 +22,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
+    cargo generate-lockfile
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -30,6 +31,14 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --workspace
+}
+
+check() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo --config 'target.x86_64-unknown-linux-gnu.runner="env"' \
+        test --frozen --package nispor --lib -- --skip integ_tests::
 }
 
 package() {
