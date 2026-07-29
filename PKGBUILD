@@ -1,6 +1,6 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=jgrep
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="grep for JSON with jq-style filter expressions (built from source)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc' 'gc')
 makedepends=('tinox')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a7fd51aa64bea40bcc9c4e9e8fabbc437b5fd3a8724da2ae467a52cb4940785')
+sha256sums=('93f9cb66498441a4829f43cdc2ffc28e225ebdbb856b0061c39241eaaa150181')
 
 build() {
   cd "jgrep-tinox-$pkgver"
