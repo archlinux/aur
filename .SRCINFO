@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-sponsorblock-bin
 	pkgdesc = Skip YouTube video sponsors.
-	pkgver = 6.1.4
+	pkgver = 6.1.7
 	pkgrel = 1
 	url = https://github.com/ajayyy/SponsorBlock
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = librewolf-extension-sponsorblock-bin
 	depends = librewolf
 	provides = librewolf-extension-sponsorblock
 	conflicts = librewolf-extension-sponsorblock
-	noextract = sponsorBlocker@ajay.app-6.1.4.xpi
-	source = sponsorBlocker@ajay.app-6.1.4.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/6.1.4/FirefoxSignedInstaller.xpi
-	source = LICENSE-6.1.4::https://raw.githubusercontent.com/ajayyy/SponsorBlock/refs/tags/6.1.4/LICENSE
-	b2sums = 4dd0a8abd25aa777dfd3e00b9da6e95b2b6359e593e483b8360a85a0d3fc474e2ef947fda7588c649f2e5cb5013c834c7469695df76c2254ce8d1117b6706316
+	noextract = sponsorBlocker@ajay.app-6.1.7.xpi
+	source = sponsorBlocker@ajay.app-6.1.7.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/6.1.7/FirefoxSignedInstaller.xpi
+	source = LICENSE-6.1.7::https://raw.githubusercontent.com/ajayyy/SponsorBlock/refs/tags/6.1.7/LICENSE
+	b2sums = 793de5636c13c63afe925cdc1f9b8a24e55136570aff6322b3dfaffd12ae0ee13b7db40460c777b71805723755089efe76f3b6c1b8a5c973b534a160942bbdb8
 	b2sums = ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c
 
 pkgname = librewolf-extension-sponsorblock-bin
