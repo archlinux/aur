@@ -4,7 +4,7 @@
 pkgname=juicebox-plus-git
 pkgver=r0.0000000
 pkgrel=1
-pkgdesc='System tray app for the Juicepipe file ingest daemon'
+pkgdesc='The companion app for juicebox!'
 arch=('x86_64')
 url='https://github.com/juiceboxdev/juicebox-plus'
 license=('LGPL-3.0-or-later')
@@ -17,7 +17,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/juicebox-plus"
-  git describe --long --tags --always 2>/dev/null | sed 's/^v//; s/\([^-]*\)-\([^-]*\)-\(.*\)/r\2.\3/'
+  local desc=$(git describe --long --tags --always 2>/dev/null)
+  if echo "$desc" | grep -q -- '-'; then
+    echo "$desc" | sed 's/^v//; s/\([^-]*\)-\([^-]*\)-\(.*\)/r\2.\3/'
+  else
+    echo "r$(git rev-list --count HEAD).${desc}"
+  fi
 }
 
 build() {

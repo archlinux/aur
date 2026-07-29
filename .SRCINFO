@@ -1,5 +1,5 @@
 pkgbase = juicebox-plus-git
-	pkgdesc = System tray app for the Juicepipe file ingest daemon
+	pkgdesc = The companion app for juicebox!
 	pkgver = r0.0000000
 	pkgrel = 1
 	url = https://github.com/juiceboxdev/juicebox-plus
