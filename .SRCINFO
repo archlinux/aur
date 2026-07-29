@@ -1,7 +1,7 @@
 pkgbase = handy-bin
 	pkgdesc = A free, open source, and extensible speech-to-text application that works completely offline
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://handy.computer/
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = handy-bin
 	depends = hicolor-icon-theme
 	depends = libappindicator-gtk3
 	depends = libsoup3
+	depends = openblas
 	depends = openssl
 	depends = vulkan-icd-loader
 	depends = webkit2gtk-4.1

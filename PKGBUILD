@@ -4,7 +4,7 @@
 
 pkgname="handy-bin"
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
 license=("MIT")
@@ -23,6 +23,7 @@ depends=(
     "hicolor-icon-theme"
     "libappindicator-gtk3"
     "libsoup3"
+    "openblas"
     "openssl"
     "vulkan-icd-loader"
     "webkit2gtk-4.1"
