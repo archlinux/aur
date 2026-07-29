@@ -1,0 +1,20 @@
+pkgbase = recordly
+	pkgdesc = Open-source screen recorder and editor with auto-zoom, cursor effects, and polished video export。(Use system-wide electron)
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://recordly.dev/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = jq
+	depends = electron43
+	source = recordly-1.3.3.tar.gz::https://github.com/webadderallorg/Recordly/archive/refs/tags/v1.3.3.tar.gz
+	source = recordly.sh
+	sha256sums = a06141f547d644d5dd208fa26e826df3b063f727d2fd7dc884937611cf85a0c6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = recordly
