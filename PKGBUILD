@@ -25,13 +25,9 @@ pkgver() {
   fi
 }
 
-prepare() {
-  cd "$srcdir/juicebox-plus"
-  git submodule update --init
-}
-
 build() {
   cd "$srcdir/juicebox-plus"
+  git submodule update --init
   export CARGO_HOME="$srcdir/.cargo"
   cargo build --release --locked
 }
