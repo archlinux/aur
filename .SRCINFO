@@ -1,0 +1,19 @@
+pkgbase = memgroups
+	pkgdesc = Show where your RAM went: Linux memory grouped by application, no root needed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Softer/memgroups
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	optdepends = docker: name container groups by image and by compose project
+	source = memgroups-1.0.0.tar.gz::https://github.com/Softer/memgroups/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 05d43aaf723bcd38476611a43d4b1facddddff818d833cfc6fe88910186389de
+
+pkgname = memgroups
