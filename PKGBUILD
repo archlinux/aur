@@ -13,7 +13,7 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=140.13.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=100}
+: ${_lwrelver:=101}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -152,7 +152,7 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('abe5dce7b32c9ef5757b93626bfc5e942e109ba9df994ff3384b375b6812c393'
+sha256sums=('e8fd486c3f4859cde87ba2437824e6bb598caf6a8fcfb5e529b36347075a162c'
             'f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
