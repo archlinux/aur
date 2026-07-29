@@ -7,8 +7,8 @@
 # Contributor: David Wells <drwells.aur at fastmail dot com>
 _base=Silo
 pkgname=${_base,,}
-pkgver=4.12.0
-pkgrel=2
+pkgver=4.12.1
+pkgrel=1
 pkgdesc="File-based, scientific data exchange and software interoperability"
 url="https://software.llnl.gov/${_base}"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(gcc-fortran)
 license=(BSD)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/LLNL/${_base}/archive/${pkgver}.tar.gz
   local://hdf5-2.patch)
-sha512sums=('66b5c5935794ac557f6feb7d060af1c269d3267780da8cb54c4e2c9829182fae289f8aa9a5596e18d41ce43611e66a79ec466de3b2c8a5269021270fb4452d87'
+sha512sums=('290e1070b3a684e532d5402247110fa1e5143cbc5ffa30d7fdec747aba0c66bb889d2bd953cb6e912509030366b083eed1d9b95a47158212843082f93e4fa6d1'
             '5b8d3cb1cdbfa1095c8d558f919e1dee0d91edbf4a626077e2d0cc789d120b6e119ac0d9af52241aa65c7b1e35a65e6ec0e4bdf0fa40fd7222c52338683adeb8')
 
 prepare() {
