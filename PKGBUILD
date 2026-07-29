@@ -7,14 +7,13 @@ pkgdesc="Intuitive Inventory Management"
 arch=('any')
 url='https://inventree.org/'
 license=('MIT')
-depends=('python' 'pango' 'libjpeg-turbo' 'libwebp')
+depends=('python-invoke' 'python-dotenv' 'pango' 'libjpeg-turbo' 'libwebp')
 optdepends=(
 	'python-psycopg: for PostgreSQL'
 	'pgcli: for PostgreSQL'
 	'python-mysqlclient: for MySQL'
 	'python-mariadb-connector: for MySQL'
 )
-makedepends=('python-invoke' 'python-dotenv')
 source=("git+https://github.com/inventree/inventree.git#branch=master"
         'fix-installer.patch'
         'config.yaml'
