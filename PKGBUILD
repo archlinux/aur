@@ -5,18 +5,22 @@ pkgname=(
   solarus-launcher
   solarus-editor
 )
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A lightweight, free and open-source 2D game engine for Action-RPGs"
 arch=("i686" "x86_64")
 url="https://www.solarus-games.org/"
+# changelogs
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.0/changelog.md#solarus-210-2026-07-27
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.0/editor/changelog.md?ref_type=heads#solarus-editor-210-2026-07-27
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.0/launcher/changelog.md#solarus-launcher-210-2026-07-27
 license=("GPL-3.0-only AND CC-BY-SA-3.0 AND CC-BY-SA-4.0")
 makedepends=(
   "cmake"
   "zip"
 )
 source=("https://gitlab.com/solarus-games/$pkgbase/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.gz")
-sha256sums=('714f1d9db56f62059ec4ac58ba803985492ea62fdf6b005e8a5136a34b9b0107')
+sha256sums=('523a39a02208da49764b1484147ac0db31f204303d400401a6caf68943274378')
 _rootdir=$pkgname-v$pkgver
 
 prepare() {
@@ -83,7 +87,7 @@ package_solarus() {
 package_solarus-launcher() {
   depends=(
     "solarus"
-    "qt6-base>6.7"
+    "qt6-base>6.8"
     "qt6-svg"
     "qt6-tools"
   )
@@ -93,7 +97,7 @@ package_solarus-launcher() {
 package_solarus-editor() {
   depends=(
     "solarus"
-    "qt6-base>6.7"
+    "qt6-base>6.8"
     "qt6-svg"
     "qt6-tools"
   )
