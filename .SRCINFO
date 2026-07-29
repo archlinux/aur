@@ -1,6 +1,6 @@
 pkgbase = pakku-mc
 	pkgdesc = Modpack manager for Minecraft: Java Edition
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://juraj-hrivnak.github.io/Pakku/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pakku-mc
 	depends = java-runtime-headless=21
 	provides = pakku-mc
 	conflicts = pakku-mc
-	source = pakku-mc::git+https://github.com/juraj-hrivnak/Pakku.git#tag=v1.4.0
-	sha256sums = 00c4a04f93fa500d68f2b38c9f39b8996c6a2b795cd8317ad0370c9eca01b63b
+	source = pakku-mc::git+https://github.com/juraj-hrivnak/Pakku.git#tag=v1.5.0
+	sha256sums = cc7c9cb3a6448df74e2404cb486a035ab7fe720504cd7c88c4b241e88cb85bba
 
 pkgname = pakku-mc
