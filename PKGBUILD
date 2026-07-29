@@ -1,7 +1,7 @@
 # Maintainer: germanua
 
 pkgname=linux-soundboard
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -14,8 +14,6 @@ depends=(
   'opus'
   'libx11'
   'libxi'
-  'libxtst'
-  'libxkbcommon'
   'hicolor-icon-theme'
   'polkit'
   'pipewire'
@@ -35,12 +33,19 @@ conflicts=('linux-soundboard-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('f04b1c5027c841f0d5e0ab57fb9d02d9aac841a90f3922290f9192d0c4b2a70f')
+sha256sums=('1be97cdd863bd22925ea10aac01f8d36e855c1e9b315d9cc1c66ad55a5086c42')
 install="${pkgname}.install"
+
+prepare() {
+    cd "$srcdir/Linux-SoundBoard-$pkgver"
+    bash packaging/linux/generate-icons.sh assets/icons/icon.png
+    export CARGO_HOME="$srcdir/cargo-home"
+    cargo fetch --locked --manifest-path src/Cargo.toml
+}
 
 build() {
     cd "$srcdir/Linux-SoundBoard-$pkgver"
-    bash packaging/linux/generate-icons.sh assets/icons/icon.png
+    export CARGO_HOME="$srcdir/cargo-home"
     export CARGO_TARGET_DIR="$srcdir/target"
     export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=."
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${HOME}=~"
@@ -49,6 +54,7 @@ build() {
 
 check() {
     cd "$srcdir/Linux-SoundBoard-$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
     export CARGO_TARGET_DIR="$srcdir/target"
     cargo test --frozen --locked --release --manifest-path src/Cargo.toml -- --test-threads=1
 }
@@ -84,4 +90,6 @@ package() {
       "$pkgdir/usr/share/polkit-1/actions/com.linuxsoundboard.install-swhkd.policy"
     install -Dm644 packaging/linux/linux-soundboard-engine.service \
       "$pkgdir/usr/lib/systemd/user/linux-soundboard-engine.service"
+    install -Dm644 packaging/linux/linux-soundboard-engine.target \
+      "$pkgdir/usr/lib/systemd/user/linux-soundboard-engine.target"
 }

@@ -12,7 +12,8 @@ post_install() {
   fi
 
   if command -v systemctl >/dev/null 2>&1; then
-    systemctl --global enable linux-soundboard-engine.service >/dev/null 2>&1 || true
+    systemctl --global disable linux-soundboard-engine.service >/dev/null 2>&1 || true
+    systemctl --global enable linux-soundboard-engine.target >/dev/null 2>&1 || true
     echo "==> Enabled Linux Soundboard audio engine for user sessions."
   fi
 

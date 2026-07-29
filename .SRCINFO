@@ -1,6 +1,6 @@
 pkgbase = linux-soundboard
 	pkgdesc = Native Linux soundboard with full Wayland/X11 support and virtual microphone support
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/germanua/Linux-SoundBoard
 	install = linux-soundboard.install
@@ -16,8 +16,6 @@ pkgbase = linux-soundboard
 	depends = opus
 	depends = libx11
 	depends = libxi
-	depends = libxtst
-	depends = libxkbcommon
 	depends = hicolor-icon-theme
 	depends = polkit
 	depends = pipewire
@@ -25,7 +23,7 @@ pkgbase = linux-soundboard
 	optdepends = swhkd-git: native Wayland hotkey daemon from upstream source
 	optdepends = xorg-xwayland: enables the native X11 backend inside Wayland sessions
 	conflicts = linux-soundboard-git
-	source = linux-soundboard-2.1.2.tar.gz::https://github.com/germanua/Linux-SoundBoard/archive/refs/tags/v2.1.2.tar.gz
-	sha256sums = f04b1c5027c841f0d5e0ab57fb9d02d9aac841a90f3922290f9192d0c4b2a70f
+	source = linux-soundboard-2.2.0.tar.gz::https://github.com/germanua/Linux-SoundBoard/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 1be97cdd863bd22925ea10aac01f8d36e855c1e9b315d9cc1c66ad55a5086c42
 
 pkgname = linux-soundboard
