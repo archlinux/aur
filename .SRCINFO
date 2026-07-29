@@ -1,0 +1,24 @@
+pkgbase = zen-browser-tst-bin
+	pkgdesc = Zen Browser with native tree-style tabs (unofficial fork)
+	pkgver = 1.21.9b_tst.1
+	pkgrel = 1
+	url = https://github.com/joegoldin/zen-browser-desktop
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	depends = libpulse
+	provides = zen-browser=1.21.9b_tst.1
+	conflicts = zen-browser
+	conflicts = zen-browser-bin
+	options = !strip
+	source = zen-browser-tst-bin-1.21.9b_tst.1.tar.xz::https://github.com/joegoldin/zen-browser-desktop/releases/download/1.21.9b-tst.1/zen.linux-x86_64.tar.xz
+	source = zen.desktop
+	sha256sums = bec9fa4053fb672e93fe8dc8de261adbf8ed2d4f91e273ce274dc7b3eb0974ef
+	sha256sums = 24d5b3c16139ba00e39fb62d6e7a7efddf21a4fecf294f5330e9198388ea0674
+
+pkgname = zen-browser-tst-bin
