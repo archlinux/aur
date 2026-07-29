@@ -1,6 +1,6 @@
 # Maintainer: rzhli
 pkgname=longbridge-bin
-pkgver=0.18.1
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="Longbridge Desktop trading platform"
 arch=("x86_64")
@@ -21,7 +21,7 @@ provides=("longbridge")
 conflicts=("longbridge")
 options=('!strip')
 source=("https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v${pkgver}-linux-x86_64.deb")
-sha256sums=('218775d5600f5cfcf7ea62a317fda2b35dea55be0afcc7bcb5545e3ca7059a02')
+sha256sums=('c03bbc0994db46b184ad41e65590bba92c681a35a1c3fd9fa5e5d76a4dcfcea9')
 
 prepare() {
     cd "$srcdir"
