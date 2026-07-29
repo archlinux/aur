@@ -1,7 +1,7 @@
 pkgbase = baresip-qt
 	pkgdesc = Baresip bundled with custom native Qt applet
 	pkgver = 4.10.0_qt.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Venomtek/baresip-qt
 	arch = x86_64
 	license = BSD-3-Clause
