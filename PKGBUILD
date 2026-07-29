@@ -3,8 +3,8 @@
 # Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=260601
-_commit=a7d098548
+pkgver=260728
+_commit=bbde8f452
 _pkgver="${pkgver}-${_commit}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
@@ -32,7 +32,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
 	"defaults.yml"
 	"01-internal-config-config_go.patch")
 backup=("etc/${pkgname}/defaults.yml")
-b2sums=('382edd25008c0985d2a862ecee8803b01c62e1f02cfc9ab6f4c6edc1a34b9c97a6aeaeec45047bf484f3e40a220a84ab2901863670955536018f645dbc1b44e8'
+b2sums=('613ef4ae5f486f2c5797bf1d4dd3c94cb87c34ef316c7144feef40fed1e6dd8fc0c29698e73f8169f08c9c3bcdc558412ef95e7a5918493d2e2d37d0cb8dd837'
         '2cafc2c00eabba8dee5e63982c4c642c5df00975c568b37d3cff81f0da94c8db746ea3fc31c4a98086527ed2db86b2ff48c36551163d0457001913eddfdbddc4'
         'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
         '846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
