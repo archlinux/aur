@@ -20,7 +20,7 @@
 pkgname=chest-backup
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, SFTP/docker/local destinations"
+pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brankosimic/chest-backup"
 license=('MIT')
