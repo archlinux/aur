@@ -1,0 +1,17 @@
+pkgbase = diskbloom-bin
+	pkgdesc = 🌸 A pastel treemap TUI that shows what's eating your disk
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Zingzy/diskbloom
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = diskbloom
+	conflicts = diskbloom
+	options = !strip
+	source_x86_64 = diskbloom-x86_64-0.1.0.tgz::https://github.com/Zingzy/diskbloom/releases/download/v0.1.0/diskbloom_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e9f44970b7cfa12d68c62bf94fe3fd87ab3bd83fb2f6440acdbb0234f7b916eb
+	source_aarch64 = diskbloom-aarch64-0.1.0.tgz::https://github.com/Zingzy/diskbloom/releases/download/v0.1.0/diskbloom_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6d621a550d78256f283e88daffaf47cf7551750c2cbbbb2945caacc28d31a202
+
+pkgname = diskbloom-bin

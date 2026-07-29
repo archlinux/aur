@@ -1,0 +1,5 @@
+[diskbloom-bin]
+source = "github"
+github = "Zingzy/diskbloom"
+use_latest_release = true
+prefix = "v"
