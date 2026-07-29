@@ -2,7 +2,7 @@
 
 pkgname=marukotoolbox
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="小丸工具箱粉丝致敬版"
 arch=($CARCH)
 url="https://github.com/arenascats/MarukoToolbox-Rewrite"
@@ -15,13 +15,23 @@ depends=(
     hicolor-icon-theme
 )
 makedepends=(
+    ffmpeg
     git
     nuitka
-    tk
     tcl
+    tk
+    tkdnd
 )
 optdepends=(
-    "tkdnd: add native drag'n'drop capabilities to Tk toolkit"
+    "amf-amdgpu-pro: AMDGPU Pro Advanced Multimedia Framework"
+    "nvidia-utils: NVIDIA drivers utilities"
+    "faac: Freeware Advanced Audio Coder"
+    "ffmpeg: Complete solution to record, convert and stream audio and video"
+    "libvpx: VP8 and VP9 codec"
+    "svt-av1: Scalable Video Technology AV1 encoder and decoder"
+    "svt-hevc: Scalable Video Technology HEVC encoder"
+    "x264: Open Source H264/AVC video encoder"
+    "x265: Open Source H265/HEVC video encoder"
 )
 backup=()
 options=('!strip' '!debug' '!lto')
@@ -59,6 +69,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}/"
     # install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm755 "dist/marukotoolbox" -t "${pkgdir}/usr/bin/"
     install -vDm644 /dev/stdin -t "${pkgdir}/usr/share/applications/marukotoolbox.desktop" <<EOF
 [Desktop Entry]
