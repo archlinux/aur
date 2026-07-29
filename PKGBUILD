@@ -37,10 +37,23 @@ sha256sums_x86_64=('bb7b2567715f9ff83148b590cdb5e569eabc18bbc09051e3c8521f9fee20
 sha256sums_aarch64=('beed1535ea1bc13407454db0ba4042fc7cc0107774157f314e590b8074485faf')
 
 
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p completions
+	./"${_appname}" completion zsh > "completions/${_appname}.zsh"
+	./"${_appname}" completion bash > "completions/${_appname}.bash"
+	./"${_appname}" completion fish > "completions/${_appname}.fish"
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
 	install -Dm644 "GUIDE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/GUIDE.md"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
