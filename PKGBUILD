@@ -3,7 +3,7 @@ pkgname=qoder-cn-bin
 _pkgname=QoderCN
 pkgver=1.8.1
 _electronversion=42
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com.cn"
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('0f930049c093909e20040d95fe6ff22577e78ecf6aba0e7b32436755c9435458'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
             '5956a85ba4da0a580d2e93197fd5de03eee3be3d541aab68562435a09a3e94fe'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
@@ -63,6 +63,7 @@ prepare() {
     sed -i -e "
         s/\/usr\/share\/${pkgname%-bin}\///g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/StartupWMClass=${_pkgname}/StartupWMClass=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
     local _app_dir=$(_get_app_dir)
     find "${_app_dir}/resources/app" -name "win32-*" -name "*.node" -delete
