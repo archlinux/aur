@@ -1,6 +1,6 @@
 pkgbase = volta-reader
 	pkgdesc = Desktop ebook reader with RSVP speed reading — dual-mode TUI + LÖVE GUI
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://git.komun.buzz/Book-Enjoyer/volta
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = volta-reader
 	depends = curl
 	depends = gcc-libs
 	conflicts = volta
-	source = volta-reader-0.1.1.tar.gz::https://git.komun.buzz/Book-Enjoyer/volta/archive/v0.1.1.tar.gz
-	sha256sums = ea39bcc9391494642bdbdcc0ca7170867500b3beddb0425544d518649f7573b3
+	source = volta-reader-0.1.2.tar.gz::https://git.komun.buzz/Book-Enjoyer/volta/archive/v0.1.2.tar.gz
+	sha256sums = 51675ea3753c01184039833d3617d698f734180b756d482ea3750d925966830e
 
 pkgname = volta-reader

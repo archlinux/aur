@@ -1,6 +1,6 @@
 # Maintainer: Book-Enjoyer <catperson@catperson.online>
 pkgname=volta-reader
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Desktop ebook reader with RSVP speed reading — dual-mode TUI + LÖVE GUI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('love' 'poppler' 'zenity' 'curl' 'gcc-libs')
 makedepends=('cargo' 'rust')
 conflicts=('volta')
 source=("$pkgname-$pkgver.tar.gz::https://git.komun.buzz/Book-Enjoyer/volta/archive/v$pkgver.tar.gz")
-sha256sums=('ea39bcc9391494642bdbdcc0ca7170867500b3beddb0425544d518649f7573b3')
+sha256sums=('51675ea3753c01184039833d3617d698f734180b756d482ea3750d925966830e')
 
 build() {
     cd "$srcdir/volta"
