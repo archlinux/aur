@@ -1,6 +1,6 @@
 pkgbase = ringo-flow-bin
 	pkgdesc = Declarative telephony scenario test runner for baresip
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/davidborzek/ringo
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ringo-flow-bin
 	depends = spandsp
 	provides = ringo-flow
 	conflicts = ringo-flow
-	source_x86_64 = ringo-flow-0.12.1-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.12.1/ringo-flow-0.12.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = efc3fa0d35b5c28b2d9cb1900b813e9bc589737ff4c4a74ba598e2a8fd7280a4
-	source_aarch64 = ringo-flow-0.12.1-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.12.1/ringo-flow-0.12.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 33f9b8cb5c8d294993fa2708cf5d58a188cafffc8686b23630414d3e921355d8
+	source_x86_64 = ringo-flow-0.12.2-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.12.2/ringo-flow-0.12.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f37d7a4ea999fb2cf03bbca3a37a5683fdcb4ff7e8488165b7e83743cc2ffbc2
+	source_aarch64 = ringo-flow-0.12.2-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.12.2/ringo-flow-0.12.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 63c0f49fc646ca70ac141ffd3b2a1f5dafd5e1ca30be52d02688ef6772a132ea
 
 pkgname = ringo-flow-bin
