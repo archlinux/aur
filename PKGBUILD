@@ -2,16 +2,16 @@
 
 pkgname=cosmic-ext-applet-now-playing-extended-git
 _srcname=cosmic-ext-applet-now-playing
-pkgver=0.1.0.r39.g6be9750
+pkgver=0.1.0.r42.ga876f57
 pkgrel=1
 pkgdesc='Extended MPRIS now-playing applet for the COSMIC panel'
 arch=('x86_64')
 url='https://github.com/AdityaHebballe/cosmic-ext-applet-now-playing'
 license=('GPL-3.0-only')
 depends=('dbus' 'gcc-libs' 'glibc' 'libxkbcommon')
-# Rust's Linux toolchain invokes the LLVM linker through `cc -fuse-ld=lld`.
-# Declare it explicitly so clean AUR builds do not rely on a preinstalled lld.
-makedepends=('cargo' 'git' 'lld')
+makedepends=('cargo' 'git')
+# `ring`'s GCC-LTO objects cannot be linked by Rust's bundled rust-lld.
+options=(!lto)
 provides=('cosmic-ext-applet-now-playing')
 conflicts=('cosmic-ext-applet-now-playing')
 source=("${_srcname}::git+${url}.git")
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_srcname}"
-  cargo build --release --locked
+  CARGO_PROFILE_RELEASE_LTO=thin cargo build --release --locked
 }
 
 package() {
