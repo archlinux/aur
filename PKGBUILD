@@ -2,7 +2,7 @@
 
 pkgname=python-odxtools
 _name=${pkgname#python-}
-pkgver=11.4.1
+pkgver=11.4.2
 pkgrel=1
 epoch=
 pkgdesc="Utilities to work with the ODX standard for automotive diagnostics"
@@ -38,7 +38,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('b1bbe78cf40fa2bda8e6763bb05e7cba571d874cf17f2e2e8ac800ed5417b497')
+sha256sums=('8fba155a1707c4be07728b1fde596dc9f26bf4ffd98f1a376ad24f6060f8babf')
 
 build() {
     cd "${srcdir}/${_name}"
