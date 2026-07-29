@@ -1,5 +1,5 @@
-pkgbase = cinnamon-no-nemo
-	pkgdesc = Cinnamon desktop environment repackaged without Nemo dependency (uses Dory)
+pkgbase = cinnamon-aliveos
+	pkgdesc = Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)
 	pkgver = 6.6.9
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon
@@ -77,6 +77,8 @@ pkgbase = cinnamon-no-nemo
 	provides = cinnamon=6.6.9
 	conflicts = cinnamon
 	conflicts = nemo
+	conflicts = cinnamon-no-nemo
+	replaces = cinnamon-no-nemo
 	options = !strip
 	options = !debug
 	options = emptydirs
@@ -90,4 +92,4 @@ pkgbase = cinnamon-no-nemo
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = cinnamon-no-nemo
+pkgname = cinnamon-aliveos

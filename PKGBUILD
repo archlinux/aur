@@ -1,9 +1,9 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
-pkgname=cinnamon-no-nemo
+pkgname=cinnamon-aliveos
 pkgver=6.6.9
 pkgrel=1
-pkgdesc="Cinnamon desktop environment repackaged without Nemo dependency (uses Dory)"
+pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
 license=('GPL-2.0-or-later')
@@ -31,8 +31,9 @@ optdepends=('blueman: Bluetooth support'
             'system-config-printer: printer settings'
             'touchegg: touch gestures'
             'wget: cover download support in audio applet')
-conflicts=('cinnamon' 'nemo')
+conflicts=('cinnamon' 'nemo' 'cinnamon-no-nemo')
 provides=("cinnamon=$pkgver")
+replaces=('cinnamon-no-nemo')
 backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
 source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download"
         'cinnamon.session'
