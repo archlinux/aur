@@ -13,7 +13,7 @@ makedepends=('git' 'python' 'boost>=1.91.0' 'gcc' 'pkg-config')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('6e5a1d83752d74b0ce191f01962eda40eafbea88a5c1217576f6f76e9d6914ae')
-provides=('libttf.so')
+provides=('libttf-1.0.so')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
