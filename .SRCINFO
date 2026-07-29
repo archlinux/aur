@@ -1,6 +1,6 @@
 pkgbase = taomni-bin
 	pkgdesc = AI-native remote workspace for developers - terminal, SSH, SFTP, RDP/VNC, tunnels, database client
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/engcapa/taomni
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = taomni-bin
 	depends = libsecret
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = taomni=0.4.1
+	provides = taomni=0.4.2
 	conflicts = taomni
 	options = !strip
-	source_x86_64 = taomni_0.4.1_amd64.deb::https://github.com/engcapa/taomni/releases/download/v0.4.1/Taomni_0.4.1_amd64.deb
-	sha256sums_x86_64 = 09476ba862fa87250b31a47c9a6eaf1bd760af9d71a50687bf3fdfaee783877a
+	source_x86_64 = taomni_0.4.2_amd64.deb::https://github.com/engcapa/taomni/releases/download/v0.4.2/Taomni_0.4.2_amd64.deb
+	sha256sums_x86_64 = 997336fbf9f73138000263c68f12df4fe7df2a39c4198312c2ed61bf30668f34
 
 pkgname = taomni-bin
