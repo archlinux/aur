@@ -1,11 +1,8 @@
 # Maintainer: Josephine Pfeiffer <josie@redhat.com>
-
-# Former Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 # Prebuilt upstream binaries: namcap ELF warnings (RELRO, PIE, SHSTK, unstripped) are not fixable here
-
 _pkgname=kube-burner
-
 pkgname=kube-burner-bin
 pkgver=2.7.3
 pkgrel=3
