@@ -1,0 +1,26 @@
+pkgbase = vantah-bin
+	pkgdesc = Unofficial GUI and tray front-end for the AdGuard VPN CLI (adguardvpn-cli)
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/bolikcraft/vantah
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = icu
+	depends = openssl
+	depends = fontconfig
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = hicolor-icon-theme
+	optdepends = adguardvpn-cli-bin: the AdGuard VPN CLI itself — Vantah is useless without it
+	provides = vantah
+	conflicts = vantah
+	options = !strip
+	options = !debug
+	source = vantah-bin-0.3.4.tar.gz::https://github.com/bolikcraft/vantah/releases/download/v0.3.4/vantah-0.3.4-linux-x64.tar.gz
+	sha256sums = 61a56f6bfc12020cc5fa4983cd0ef5f20b0e5b99e4f32f810fe28c472f2bc7e8
+
+pkgname = vantah-bin
