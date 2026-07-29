@@ -1,0 +1,22 @@
+pkgbase = resolve-kit
+	pkgdesc = DaVinci Resolve Linux toolkit — transcode, export, diagnose, and optimize
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DarshanS26/davinci-kit
+	install = resolve-kit.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = ffmpeg
+	depends = python
+	depends = desktop-file-utils
+	optdepends = python-pyqt6: GUI frontend (recommended)
+	optdepends = python-pyside6: GUI frontend alternative
+	optdepends = parallel: parallel transcode/export/audio jobs
+	optdepends = inotify-tools: davinci-kit-watch folder monitoring
+	optdepends = clinfo: OpenCL diagnostics in davinci-kit-info
+	optdepends = nvidia-utils: NVIDIA GPU diagnostics in davinci-kit-info
+	source = resolve-kit-1.0.0.tar.gz::https://github.com/DarshanS26/davinci-kit/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f0f8ef668877a41ddd4d21344fdbdb272d170d4686b58b1bf673269cb1212663
+
+pkgname = resolve-kit
