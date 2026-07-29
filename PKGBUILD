@@ -2,7 +2,7 @@
 # Contributor: laosifu
 
 pkgname=hcc-git
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Hyprland Control Center (git version) — Install and manage Hyprland desktops"
 arch=('any')
@@ -44,6 +44,7 @@ package() {
     cp -a handlers "$pkgdir/usr/share/hcc/handlers"
     cp -a VERSION "$pkgdir/usr/share/hcc/VERSION"
     cp -a docs "$pkgdir/usr/share/hcc/docs"
+    cp -a config "$pkgdir/usr/share/hcc/config"
     cp -a completions "$pkgdir/usr/share/hcc/completions"
     install -Dm644 completions/hcc.bash "$pkgdir/usr/share/bash-completion/completions/hcc"
 }
