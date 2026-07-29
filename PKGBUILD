@@ -4,7 +4,7 @@
 pkgname=juicebox2-plus-git
 pkgver=r0.0000000
 pkgrel=1
-pkgdesc='The companion app for juicebox!'
+pkgdesc='The companion app to juicebox² !'
 arch=('x86_64')
 url='https://github.com/juiceboxdev/juicebox-plus'
 license=('LGPL-3.0-or-later')
