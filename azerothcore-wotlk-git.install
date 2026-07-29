@@ -1,6 +1,4 @@
 post_install() {
-	_realmlist_ip=$(cat /tmp/azerothcore-wotlk-git-realmlist-ip)
-
 	if command -v systemctl >/dev/null 2>&1; then
     	sudo systemctl daemon-reload >/dev/null 2>&1 || true
     fi
@@ -31,6 +29,25 @@ post_install() {
 	sudo systemctl enable acore-auth-server.service
 	sudo systemctl enable acore-world-server.service
 	sudo systemctl enable mysqld.service
+
+	# Ensure the administrative access group exists
+	if ! getent group acore-admin >/dev/null; then
+		groupadd -r acore-admin
+	fi
+
+	Add daemon user to that group
+	usermod -aG acore-admin azerothcore
+
+	echo "======================================================================="
+	echo " 🔐 MULTI-USER TMUX CONSOLE ACCESS CONFIGURATION"
+	echo "======================================================================="
+	echo " To allow a regular Linux user to attach to the live server console,"
+	echo " add them to the 'acore-admin' group using this command:"
+	echo ""
+	echo "   sudo usermod -aG acore-admin your_username"
+	echo ""
+	echo " (Note: The user must log out and log back in for changes to apply)."
+	echo "======================================================================="
 
 	# Display some instructions
 	echo ''

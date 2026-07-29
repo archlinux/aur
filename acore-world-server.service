@@ -4,13 +4,12 @@ After=network.target azerothcore-auth.service
 StartLimitIntervalSec=0
 
 [Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=root
+Type=forking
+User=azerothcore
+Group=acore-admin
 WorkingDirectory=/usr/share/azerothcore
-ExecStart=/usr/bin/tmux new-session -d -s acore-world /usr/share/azerothcore/acore.sh run-worldserver
-ExecStop=/usr/bin/tmux kill-session -t acore-world || true
+ExecStart=/usr/bin/tmux -S /run/azerothcore/world.sock new-session -d -s worldserver '/usr/share/azerothcore/bin/worldserver'
+ExecStop=/usr/bin/tmux -S /run/azerothcore/world.sock kill-session -t worldserver
 
 [Install]
 WantedBy=multi-user.target

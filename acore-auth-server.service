@@ -4,13 +4,12 @@ After=network.target
 StartLimitIntervalSec=0
 
 [Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=root
+Type=forking
+User=azerothcore
+Group=acore-admin
 WorkingDirectory=/usr/share/azerothcore
-ExecStart=/usr/bin/tmux new-session -d -s acore-auth /usr/share/azerothcore/acore.sh run-authserver
-ExecStop=/usr/bin/tmux kill-session -t acore-auth || true
+ExecStart=/usr/bin/tmux -S /run/azerothcore/auth.sock new-session -d -s worldserver '/usr/share/azerothcore/bin/authserver'
+ExecStop=/usr/bin/tmux -S /run/azerothcore/auth.sock kill-session -t worldserver
 
 [Install]
 WantedBy=multi-user.target
