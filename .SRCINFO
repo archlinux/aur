@@ -1,0 +1,14 @@
+pkgbase = rig.fm
+	pkgdesc = Terminal Radio Player
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/MWhyte/rig
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	depends = mpv
+	source = https://github.com/MWhyte/rig/archive/v0.2.2/rig-0.2.2.tar.gz
+	sha256sums = 70c61d41b05c5a4429a9a0f6a9826f9729ee53944a72c4fe52275a9b5799e54e
+
+pkgname = rig.fm
