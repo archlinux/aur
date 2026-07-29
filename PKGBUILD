@@ -34,6 +34,6 @@ build() {
 package() {
   cd "$pkgname"
   install -vDm755 build/appeasyCut -t "$pkgdir/usr/bin/"
-  install -vDm755 build/exec_cmd/exec_cmd -t "$pkgdir/usr/lib/"
-  install -vDm755 build/exec_cmd_gui/appexec_cmd_gui -t "$pkgdir/usr/lib/"
+  install -vDm755 build/exec_cmd/exec_cmd -t "$pkgdir/usr/lib/easyCut/"
+  install -vDm755 build/exec_cmd_gui/appexec_cmd_gui -t "$pkgdir/usr/lib/easyCut/"
 }
