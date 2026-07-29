@@ -19,7 +19,7 @@
 
 pkgname=chest-backup
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brankosimic/chest-backup"
@@ -104,4 +104,17 @@ package() {
 
   # ── License ─────────────────────────────────────────────────
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+post_install() {
+  echo
+  echo "  █ chest-backup installed."
+  echo
+  echo "  Edit configuration:  sudoedit /etc/chest-backup/chest-backup.json"
+  echo "                       sudoedit /etc/chest-backup/.env"
+  echo
+  echo "  Enable the service:  systemctl --user enable --now chest-backup"
+  echo
+  echo "  Web UI:              http://localhost:5199"
+  echo
 }
