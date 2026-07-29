@@ -1,6 +1,6 @@
 pkgbase = orender
 	pkgdesc = Omniphony spatial audio engine (orender CLI + liborender.so)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/mgth/Omniphony
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = orender
 	depends = pipewire
 	optdepends = harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin
 	options = !lto
-	source = omniphony-0.4.1.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 0e388d91506f413e0b8924b13db9c7d36f2fcd8dd5cf310b73f527cdaacdf594
+	source = omniphony-0.4.2.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 4597612eb30489766431bb1440553f9eeacbd9b446c98b70c393571fef1ac708
 
 pkgname = orender
