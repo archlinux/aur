@@ -9,7 +9,7 @@
 # The decoder bridge stays optional (`harletty-bridge`), matching the engine.
 
 pkgname=omniphony-studio
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Omniphony Studio — control and 3D visualization UI for the orender spatial audio engine"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('rust' 'cargo' 'nodejs' 'npm' 'jq')
 # (GCC LTO bitcode is unreadable by the Rust linker; same issue as orender).
 options=('!lto')
 source=("omniphony-$pkgver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e388d91506f413e0b8924b13db9c7d36f2fcd8dd5cf310b73f527cdaacdf594')
+sha256sums=('4597612eb30489766431bb1440553f9eeacbd9b446c98b70c393571fef1ac708')
 
 _src="Omniphony-$pkgver"
 _studio="$_src/omniphony-studio"
@@ -34,7 +34,13 @@ prepare() {
     # sidecar API), and the sidecar build step is what would otherwise
     # recompile the whole renderer inside this package. The system `orender`
     # from the dependency is picked up at runtime instead.
-    jq 'del(.bundle.externalBin) | .build.beforeBuildCommand = "npm run build"' \
+    # Since 0.4.2 Studio also bundles the engine as a `resources` entry, so it
+    # can deploy its own liborender. A distro build must not: the glob points at
+    # CI-produced binaries absent from the source tarball (the bundler fails on
+    # it), and the system liborender from `orender` is the one to load.
+    jq 'del(.bundle.externalBin)
+        | del(.bundle.resources["binaries/engine/*"])
+        | .build.beforeBuildCommand = "npm run build"' \
         src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.new
     mv src-tauri/tauri.conf.json.new src-tauri/tauri.conf.json
 }
