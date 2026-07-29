@@ -22,7 +22,7 @@ build() {
     cd "$srcdir/livekit-tui-client"
     # ring crate asm objects require GNU ld, not rust-lld
     export RUSTFLAGS="-C linker=cc -C link-arg=-fuse-ld=bfd"
-    cargo build --release --bin client
+    cargo build --release --bin livekit-tui-client
 }
 
 package() {
