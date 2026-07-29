@@ -1,0 +1,26 @@
+pkgbase = sharkfin-keyboard
+	pkgdesc = Configurator for Attack Shark and other ROYUAN keyboards
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/dniminenn/sharkfin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = npm
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup3
+	depends = systemd-libs
+	depends = webkit2gtk-4.1
+	conflicts = sharkfin
+	options = !lto
+	source = sharkfin-0.1.8.tar.gz::https://github.com/dniminenn/sharkfin/archive/refs/tags/v0.1.8.tar.gz
+	b2sums = b0fdf1a34662694dafae5150bb584e58c0a6bdaaf47a643acf6687e2389271a9584fdc7cbce73a8b81bf4fce34da2de7c09749c85d39059712c88e826ffd345d
+
+pkgname = sharkfin-keyboard
