@@ -10,7 +10,7 @@ _notes() {
   command=${COMP_WORDS[1]-}
 
   if (( cword == 1 )); then
-    COMPREPLY=( $(compgen -W 'root context list read write delete handoffs mcp completions help -h --help' -- "$cur") )
+    COMPREPLY=( $(compgen -W 'root context list read write delete handoffs mcp daemon completions help -h --help' -- "$cur") )
     return
   fi
 
@@ -78,6 +78,13 @@ _notes() {
       ;;
     mcp)
       opts='--help -h'
+      if [[ $cur == -* ]]; then
+        COMPREPLY=( $(compgen -W "$opts" -- "$cur") )
+      fi
+      return
+      ;;
+    daemon)
+      opts='--config --once --help -h'
       if [[ $cur == -* ]]; then
         COMPREPLY=( $(compgen -W "$opts" -- "$cur") )
       fi

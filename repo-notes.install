@@ -1,0 +1,23 @@
+#!/bin/bash
+
+restart_running_daemons() {
+  local uid user unit
+
+  while read -r uid user _; do
+    [ -S "/run/user/$uid/bus" ] || continue
+
+    for unit in notes-capture-opencode.service notes-capture-daemon.service; do
+      if systemctl --user --machine="$user@.host" is-active --quiet "$unit"; then
+        systemctl --user --machine="$user@.host" restart "$unit" || true
+      fi
+    done
+  done < <(loginctl list-users --no-legend)
+}
+
+post_install() {
+  restart_running_daemons
+}
+
+post_upgrade() {
+  restart_running_daemons
+}

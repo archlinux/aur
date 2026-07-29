@@ -11,6 +11,7 @@ notes_commands=(
   'delete:Delete a note file, then commit and push it'
   'handoffs:Browse handoff-tagged notes'
   'mcp:Run the notes MCP server over stdio'
+  'daemon:Process captured notes through local OpenCode'
   'completions:Generate shell completions'
   'help:Show notes help'
 )
@@ -76,6 +77,13 @@ case $command in
     ;;
   mcp)
     _arguments -S \
+      '{-h,--help}[Show this help message]' \
+      '*::arg:->args'
+    ;;
+  daemon)
+    _arguments -S \
+      '--config[Daemon YAML configuration path]:path:' \
+      '--once[Process one queue snapshot and exit]' \
       '{-h,--help}[Show this help message]' \
       '*::arg:->args'
     ;;
