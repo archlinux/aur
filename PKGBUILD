@@ -30,7 +30,7 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=36326.edk2.stable202605.360.g3a4556803d
+pkgver=36432.edk2.stable202605.466.g3ff3b0e43f
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
@@ -92,18 +92,22 @@ _setup_env_vars() {
 _prepare_tianocore_sources() {
 	cd "${_UDK_DIR}/"
 
+	# Each submodule is fetched by its own `git clone` process, which never reads
+	# this repository's local config, so these rewrites only take effect when
+	# passed with -c: that exports them through GIT_CONFIG_PARAMETERS to children.
 	local _source _source_name _source_url
+	local -a _local_urls=()
 	for _source in "${source[@]}"; do
 		_source_name=${_source%%::*}
 		_source_url=${_source#*::}
 		_source_url=${_source_url#git+}
 		_source_url=${_source_url%%#*}
-		git config "url.${srcdir}/${_source_name}.insteadOf" "${_source_url}"
+		_local_urls+=(-c "url.${srcdir}/${_source_name}.insteadOf=${_source_url}")
 	done
 
 	msg "Updating submodules"
 	git submodule init
-	if ! git -c protocol.allow=never -c protocol.file.allow=always submodule update; then
+	if ! git "${_local_urls[@]}" -c protocol.allow=never -c protocol.file.allow=always submodule update; then
 		msg 'Submodule update failed; add its repository to source=() first.'
 		return 1
 	fi
