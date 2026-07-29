@@ -17,6 +17,6 @@ pkgbase = correlation
 	depends = libxcb
 	depends = fftw
 	source = correlation-3.7.3.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v3.7.3.tar.gz
-	sha256sums = 4d021de41c2a8bb83366f44cdf23b9925d2a522a5081fa5b5ec89b71a9c93ed2
+	sha256sums = ab0a039e86a76c2b0d5d53fe5324649001cb912f00c80b33d47b8f4ba018034d
 
 pkgname = correlation
