@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
-pkgver=26.07.5
+pkgver=26.07.6
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -21,8 +21,8 @@ provides=('mx-remaster-live-files=1.0.0')
 # /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
 # without this, pacman would overwrite local changes on every upgrade.
 backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.5.tar.gz")
-sha256sums=('9759f2d51a84d43766911ed48dc67e8f97d63241fe3294a04152c0f85439344c')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.6.tar.gz")
+sha256sums=('33694d94448e4ead98fbb0497c9e3774a574b374b6f26ad1a3c9d014d6ff7062')
 
 build() {
     cd "${srcdir}"/mx-snapshot*-"${pkgver}"
@@ -67,7 +67,7 @@ package() {
     done
 
     install -Dm644 mx-snapshot.desktop "${pkgdir}/usr/share/applications/mx-snapshot.desktop"
-    install -Dm644 icons/mx-snapshot.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/mx-snapshot.png"
+    install -Dm644 icons/mx-snapshot.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-snapshot.png"
     install -Dm644 icons/mx-snapshot.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-snapshot.svg"
     install -Dm644 icons/mx-snapshot.png "${pkgdir}/usr/share/pixmaps/mx-snapshot.png"
 
