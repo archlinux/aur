@@ -1,0 +1,15 @@
+pkgbase = ttf-genzengothic-kai
+	pkgdesc = Japanese gothic font imitating the MV subtitles of 「全てあなたの所為です。」
+	pkgver = 1.501
+	pkgrel = 1
+	url = https://github.com/snowdropQwQ/GenZenGothic-Kai
+	arch = any
+	license = OFL-1.1-RFN
+	noextract = GenZenGothic.ttf
+	noextract = OTF.txt
+	source = https://github.com/snowdropQwQ/GenZenGothic-Kai/releases/download/v1.501/GenZenGothic.ttf
+	source = https://raw.githubusercontent.com/snowdropQwQ/GenZenGothic-Kai/refs/heads/master/OFL.txt
+	sha256sums = 28fc857af4632ee0dfbe0544218c781958a86a0a8a2ca3fac3ca6048c13d38fc
+	sha256sums = bf3d88b45f0469d7c3668a0a13216c18b4e728d1d4d9ba09deabd0b317d00add
+
+pkgname = ttf-genzengothic-kai
