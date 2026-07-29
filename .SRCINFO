@@ -1,0 +1,20 @@
+pkgbase = cosmic-external-osd-git
+	pkgdesc = D-Bus-activated desktop-wide on-screen display service for COSMIC extensions
+	pkgver = 0.1.0.r1.gbcf9e75
+	pkgrel = 1
+	url = https://github.com/AdityaHebballe/cosmic-external-osd
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	provides = cosmic-external-osd
+	conflicts = cosmic-external-osd
+	options = !lto
+	source = cosmic-external-osd::git+https://github.com/AdityaHebballe/cosmic-external-osd.git
+	b2sums = SKIP
+
+pkgname = cosmic-external-osd-git
