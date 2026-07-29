@@ -28,7 +28,6 @@ import threading
 import subprocess
 import select
 import re
-import argparse
 import platform
 
 # Platform Flags (Hardcoded for Linux Only)
@@ -309,6 +308,22 @@ def save_config_atomic(filepath, cfg_data):
     except Exception as ex:
         print("Error saving config:", ex)
         return False
+
+
+def safe_float(val, default=0.0):
+    """Safely parse a float from user input, returning default on failure."""
+    try:
+        return float(val or default)
+    except (ValueError, TypeError):
+        return default
+
+
+def safe_int(val, default=0):
+    """Safely parse an int from user input, returning default on failure."""
+    try:
+        return int(val or default)
+    except (ValueError, TypeError):
+        return default
 
 
 class PresserEngine:
@@ -1427,7 +1442,7 @@ def run_qt_app(engine):
                 res = dlg.recorded_key
                 self.on_hotkey_recorded(res, (btn, target_entry, is_sequence_record, is_start_stop_record))
             else:
-                self.on_hotkey_recorded(None, (btn, target_entry, is_sequence_record, is_start_stop_record))
+                pass # Cancelled
 
         def on_hotkey_recorded(self, res, refs):
             btn, target_entry, is_sequence_record, is_start_stop_record = refs
@@ -1469,7 +1484,6 @@ def run_qt_app(engine):
             if self.sequence_steps:
                 self.sequence_steps[-1]["delay_ms"] = step.get("delay_ms", 200)
             step["key"] = normalize_key_str(step.get("key", "Mouse 1"))
-            step["delay_ms"] = 200
             self.sequence_steps.append(step)
             self.refresh_sequence_table()
             self.seq_status_lbl.setText(f"Status: 🔴 RECORDING LIVE — Captured {len(self.sequence_steps)} steps")
@@ -1496,10 +1510,8 @@ def run_qt_app(engine):
 
         def add_sequence_step(self):
             key = normalize_key_str(self.seq_step_key.text().strip() or "Mouse 1")
-            try: hold = float(self.seq_hold_entry.text() or 50)
-            except Exception: hold = 50
-            try: delay = float(self.seq_delay_entry.text() or 200)
-            except Exception: delay = 200
+            hold = safe_float(self.seq_hold_entry.text(), 50)
+            delay = safe_float(self.seq_delay_entry.text(), 200)
 
             self.sequence_steps.append({
                 "key": key,
@@ -1521,10 +1533,8 @@ def run_qt_app(engine):
             row = self.seq_table.currentRow()
             if 0 <= row < len(self.sequence_steps):
                 key = normalize_key_str(self.seq_step_key.text().strip() or "Mouse 1")
-                try: hold = float(self.seq_hold_entry.text() or 50)
-                except Exception: hold = 50
-                try: delay = float(self.seq_delay_entry.text() or 200)
-                except Exception: delay = 200
+                hold = safe_float(self.seq_hold_entry.text(), 50)
+                delay = safe_float(self.seq_delay_entry.text(), 200)
 
                 self.sequence_steps[row] = {
                     "key": key,
@@ -1543,11 +1553,9 @@ def run_qt_app(engine):
                 if col == 1:
                     self.sequence_steps[row]["key"] = normalize_key_str(text) or "Mouse 1"
                 elif col == 2:
-                    try: self.sequence_steps[row]["hold_ms"] = float(text)
-                    except Exception: pass
+                    self.sequence_steps[row]["hold_ms"] = safe_float(text, self.sequence_steps[row].get("hold_ms", 50))
                 elif col == 3:
-                    try: self.sequence_steps[row]["delay_ms"] = float(text)
-                    except Exception: pass
+                    self.sequence_steps[row]["delay_ms"] = safe_float(text, self.sequence_steps[row].get("delay_ms", 200))
                 self.save_config()
 
         def remove_sequence_step(self):
@@ -1605,13 +1613,11 @@ def run_qt_app(engine):
             if self.is_running: return
             self.save_config()
 
-            try:
-                h = float(self.hours_entry.text() or 0)
-                m = float(self.mins_entry.text() or 0)
-                s = float(self.secs_entry.text() or 0)
-                ms = float(self.ms_entry.text() or 0)
-                interval_delay = (h * 3600) + (m * 60) + s + (ms / 1000.0)
-            except Exception: interval_delay = 0.05
+            h = safe_float(self.hours_entry.text(), 0)
+            m = safe_float(self.mins_entry.text(), 0)
+            s = safe_float(self.secs_entry.text(), 0)
+            ms = safe_float(self.ms_entry.text(), 0)
+            interval_delay = (h * 3600) + (m * 60) + s + (ms / 1000.0)
 
             self.is_running = True
             self.start_btn.setEnabled(False)
@@ -1637,8 +1643,7 @@ def run_qt_app(engine):
                     QMessageBox.warning(self, "Warning", "Please add at least one step to the action sequence.")
                     self.on_stop_ui()
                     return
-                try: loop_cnt = int(self.seq_loop_entry.text() or 0)
-                except Exception: loop_cnt = 0
+                loop_cnt = safe_int(self.seq_loop_entry.text(), 0)
 
                 def on_progress(step_idx, total_steps, loop_num, key_name):
                     self.dispatcher.step_progress.emit(step_idx, total_steps, loop_num, key_name)
@@ -1653,8 +1658,7 @@ def run_qt_app(engine):
                 text = self.text_edit.toPlainText()
                 self.seq_status_lbl.setText("Status: ▶ RUNNING AUTO-TYPER")
                 self.seq_status_lbl.setStyleSheet("font-weight: bold; color: #a6e3a1;")
-                try: cdelay = float(self.char_delay_entry.text() or 20) / 1000.0
-                except Exception: cdelay = 0.02
+                cdelay = safe_float(self.char_delay_entry.text(), 20) / 1000.0
                 threading.Thread(
                     target=self.engine.type_loop,
                     args=(text, cdelay, interval_delay, on_stop_cb),
@@ -1948,8 +1952,7 @@ def run_gtk_app(engine):
             def on_hold_edited(widget, path, new_text):
                 idx = int(path)
                 if 0 <= idx < len(self.sequence_steps):
-                    try: self.sequence_steps[idx]["hold_ms"] = float(new_text)
-                    except Exception: pass
+                    self.sequence_steps[idx]["hold_ms"] = safe_float(new_text, self.sequence_steps[idx].get("hold_ms", 50))
                     refresh_sequence_table()
                     self.save_config()
             ren2.connect("edited", on_hold_edited)
@@ -1962,8 +1965,7 @@ def run_gtk_app(engine):
             def on_delay_edited(widget, path, new_text):
                 idx = int(path)
                 if 0 <= idx < len(self.sequence_steps):
-                    try: self.sequence_steps[idx]["delay_ms"] = float(new_text)
-                    except Exception: pass
+                    self.sequence_steps[idx]["delay_ms"] = safe_float(new_text, self.sequence_steps[idx].get("delay_ms", 200))
                     refresh_sequence_table()
                     self.save_config()
             ren3.connect("edited", on_delay_edited)
@@ -2145,10 +2147,8 @@ def run_gtk_app(engine):
                     idx = model.get_path(tree_iter).get_indices()[0]
                     if 0 <= idx < len(self.sequence_steps):
                         key = normalize_key_str(seq_step_key_entry.get_text().strip() or "Mouse 1")
-                        try: hold = float(seq_hold_entry.get_text() or 50)
-                        except Exception: hold = 50
-                        try: delay = float(seq_delay_entry.get_text() or 200)
-                        except Exception: delay = 200
+                        hold = safe_float(seq_hold_entry.get_text(), 50)
+                        delay = safe_float(seq_delay_entry.get_text(), 200)
 
                         self.sequence_steps[idx] = {"key": key, "hold_ms": hold, "delay_ms": delay}
                         refresh_sequence_table()
@@ -2159,10 +2159,8 @@ def run_gtk_app(engine):
 
             def on_add_step(btn):
                 key = normalize_key_str(seq_step_key_entry.get_text().strip() or "Mouse 1")
-                try: hold = float(seq_hold_entry.get_text() or 50)
-                except Exception: hold = 50
-                try: delay = float(seq_delay_entry.get_text() or 200)
-                except Exception: delay = 200
+                hold = safe_float(seq_hold_entry.get_text(), 50)
+                delay = safe_float(seq_delay_entry.get_text(), 200)
                 self.sequence_steps.append({"key": key, "hold_ms": hold, "delay_ms": delay})
                 refresh_sequence_table()
                 self.save_config()
@@ -2217,7 +2215,6 @@ def run_gtk_app(engine):
                             if self.sequence_steps:
                                 self.sequence_steps[-1]["delay_ms"] = step.get("delay_ms", 200)
                             step["key"] = normalize_key_str(step.get("key", "Mouse 1"))
-                            step["delay_ms"] = 200
                             self.sequence_steps.append(step)
                             refresh_sequence_table()
                             self.seq_status_lbl.set_label(f"Status: 🔴 RECORDING LIVE — Captured {len(self.sequence_steps)} steps")
@@ -2299,13 +2296,11 @@ def run_gtk_app(engine):
             def on_start(btn):
                 if self.is_running: return
                 self.save_config()
-                try:
-                    h = float(h_entry.get_text() or 0)
-                    m = float(m_entry.get_text() or 0)
-                    s = float(s_entry.get_text() or 0)
-                    ms = float(ms_entry.get_text() or 0)
-                    delay = (h * 3600) + (m * 60) + s + (ms / 1000.0)
-                except Exception: delay = 0.05
+                h = safe_float(h_entry.get_text(), 0)
+                m = safe_float(m_entry.get_text(), 0)
+                s = safe_float(s_entry.get_text(), 0)
+                ms = safe_float(ms_entry.get_text(), 0)
+                delay = (h * 3600) + (m * 60) + s + (ms / 1000.0)
 
                 self.is_running = True
                 start_btn.set_sensitive(False)
@@ -2315,13 +2310,11 @@ def run_gtk_app(engine):
                     key_str = hk_entry.get_text()
                     threading.Thread(target=self.engine.click_loop, args=(delay, key_str, on_stop_ui), daemon=True).start()
                 elif self.rb_seq.get_active():
-                    try: loop_cnt = int(seq_loop_cnt_entry.get_text() or 0)
-                    except Exception: loop_cnt = 0
+                    loop_cnt = safe_int(seq_loop_cnt_entry.get_text(), 0)
                     threading.Thread(target=self.engine.sequence_loop, args=(self.sequence_steps, delay, loop_cnt, on_stop_ui, on_progress), daemon=True).start()
                 else:
                     txt = text_buffer.get_text(text_buffer.get_start_iter(), text_buffer.get_end_iter(), True)
-                    try: cdelay = float(char_delay_entry.get_text() or 20) / 1000.0
-                    except Exception: cdelay = 0.02
+                cdelay = safe_float(char_delay_entry.get_text(), 20) / 1000.0
                     threading.Thread(target=self.engine.type_loop, args=(txt, cdelay, delay, on_stop_ui), daemon=True).start()
 
             start_btn.connect("clicked", on_start)

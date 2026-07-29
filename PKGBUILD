@@ -1,6 +1,6 @@
 # Maintainer: Mimogu <mimogu1@proton.me>
 pkgname=mahmoud-presser
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Modern Cross-Platform Auto-Clicker, Macro Sequence Builder & Auto-Typer"
 arch=('any')
