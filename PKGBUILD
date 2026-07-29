@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=openspec
-pkgver=1.6.0 # renovate: datasource=github-tags depName=Fission-AI/OpenSpec
+pkgver=1.7.0 # renovate: datasource=github-tags depName=Fission-AI/OpenSpec
 pkgrel=2
 pkgdesc="AI-native system for spec-driven development"
 arch=('any')
@@ -9,12 +9,12 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fission-AI/OpenSpec/archive/v${pkgver}.tar.gz")
-sha256sums=('3db9391082f372a2e4365a59afdf58959092cf4095e360291e0f07aba0d53b41')
+sha256sums=('4979a1e788a5a15230676b1bdb4124c460130f286a245994fc8bc5816ba8a28b')
 
 prepare() {
   cd "${srcdir}/OpenSpec-${pkgver}"
   # Allow esbuild's postinstall script to download platform binary
-  cat > pnpm-workspace.yaml << 'EOF'
+  cat >pnpm-workspace.yaml <<'EOF'
 packages:
   - "."
 allowBuilds:
