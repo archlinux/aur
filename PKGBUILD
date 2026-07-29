@@ -1,6 +1,6 @@
 # Maintainer: Bendik Aagaard Lynghaug <bendik.lynghaug@gmail.com>
 pkgname=cnats
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Web chat over NATS subjects with Kanidm SSO (Leptos SSR)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('cnats-git' 'cnats-bin')
 backup=('etc/cnats/env')
 source_x86_64=("cnats-v${pkgver}-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v${pkgver}/cnats-v${pkgver}-x86_64.tar.gz")
 source_aarch64=("cnats-v${pkgver}-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v${pkgver}/cnats-v${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('da757c2aeb9bbec9b0336889c21ada5e20fa97b8886e297d5f8ee7b106de2a3d')
-sha256sums_aarch64=('8676695a97248661ab5036b1ef73c42b73b9768eb6a6785e17cde1d24e70b326')
+sha256sums_x86_64=('60f2a2bcc522c25c9bf1bdbe72ac2db19fe591a317b4bbf24cfb17e1dcd42a4b')
+sha256sums_aarch64=('736abc9e611aae3a295f469117f5a5a0d05e9bade0b4cf4724e3f02bd2fca5a7')
 
 package() {
     install -Dm755 cnats "$pkgdir/usr/bin/cnats"
