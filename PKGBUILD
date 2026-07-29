@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=13
+pkgrel=14
 # epoch: AUR previously shipped 6.7.81-x; the project re-aligned on the COPR
 # 6.7.80-N numbering, which pacman would otherwise see as a downgrade.
 epoch=1
@@ -157,7 +157,7 @@ conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel' 'kdecoration')
 # needs the post-6.7 KGlobalAccelD API and the KDecoration3::Style enum
 # (server-side drop shadows for CSD windows), neither of which is in a
 # released version yet. Bump both pins together with _commit on each sync.
-_commit=227d30a0a78367509b98a719819d3b13bf22f1b0
+_commit=2f5b20747295568d1eb63ac258612ab8b9acb521
 _kglobalacceld_commit=5cc88399d8e2a7951798f85127e23f73f1fa0889
 _kdecoration_commit=d13049250c0ea1afc279aa8dc99243565c0d83e8
 _sourcebase="$pkgname-$pkgver"
@@ -295,192 +295,15 @@ package() {
             -t "$pkgdir/usr/share/licenses/$pkgname-kdecoration/" 2>/dev/null || true
     fi
 
-    # Install Wayland session launcher (start-kineticwe) - written directly to avoid sed issues
+    # Install Wayland session launcher (start-kineticwe) from the source tree
+    # Single canonical launcher: scripts/start-kineticwe.sh is installed by
+    # both this package and the COPR RPM. Older revisions embedded a copy
+    # here that drifted out of sync (and broke logout -> greeter return).
     echo "==> Installing start-kineticwe session launcher..."
-    cat > "$pkgdir/usr/bin/start-kineticwe" << 'STARTEOF'
-#!/bin/bash
-# KineticWE session launcher (system-wide install)
-
-_INSTALL_PREFIX_=/usr
-
-export XDG_MENU_PREFIX=plasma-
-# Marks this as a full KDE session (startplasma sets this too). KDE apps use
-# it to pick their desktop file identity — e.g. System Settings uses
-# systemsettings.desktop instead of kdesystemsettings.desktop, which is what
-# docks/launchers need to resolve its icon correctly.
-export KDE_FULL_SESSION=true
-
-find_portal() {
-    local name="$1"
-    for path in "/usr/libexec/$name" "/usr/lib/$name" "$_INSTALL_PREFIX_/libexec/$name"
-    do
-        if [[ -x "$path" ]]; then
-            printf '%s\n' "$path"
-            return 0
-        fi
-    done
-    command -v "$name" 2>/dev/null || true
-}
-
-find_bin() {
-    local name="$1"
-    for path in "/usr/libexec/$name" "/usr/lib/$name" "/usr/bin/$name"
-    do
-        if [[ -x "$path" ]]; then
-            printf '%s\n' "$path"
-            return 0
-        fi
-    done
-    command -v "$name" 2>/dev/null || true
-}
-
-PORTAL_KDE="$(find_portal xdg-desktop-portal-kde)"
-PORTAL="$(find_portal xdg-desktop-portal)"
-POWERDEVIL="$(find_bin org_kde_powerdevil)"
-UPOWERD="$(find_bin upowerd)"
-
-# The payload below is written with a quoted heredoc ('PAYLOADEOF'), so these
-# variables are expanded when the payload runs, not when it is written. They
-# must be exported, otherwise the payload sees them as empty and the portals
-# and power management daemons are never launched.
-export PORTAL_KDE PORTAL POWERDEVIL UPOWERD
-
-STARTUP_PAYLOAD_DIR="${XDG_RUNTIME_DIR:-/tmp}/kineticwe-$USER"
-mkdir -p "$STARTUP_PAYLOAD_DIR"
-STARTUP_PAYLOAD="$STARTUP_PAYLOAD_DIR/startup.sh"
-
-cat > "$STARTUP_PAYLOAD" << 'PAYLOADEOF'
-#!/bin/bash
-# KineticWE startup payload — run by KWin as a detached child process.
-
-export PATH=/usr/bin:/usr/lib
-export XDG_CURRENT_DESKTOP=KDE
-export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=KDE
-export KDE_SESSION_VERSION=6
-export KDE_FULL_SESSION=true
-export XDG_MENU_PREFIX=plasma-
-
-# KWin exports WAYLAND_DISPLAY and DISPLAY (XWayland) before launching this
-# payload; the fallback guards against the payload being started other ways.
-export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
-
-# Publish the session environment to D-Bus/systemd-activated services.
-# Without this, on-demand services (e.g. Spectacle via its global shortcut)
-# start without WAYLAND_DISPLAY/DISPLAY and crash at launch:
-# "could not activate remote peer org.kde.spectacle: startup job failed".
-dbus-update-activation-environment --systemd --all 2>/dev/null || true
-
-# 1. Rebuild KDE service cache so System Settings finds installed KCMs
-if command -v kbuildsycoca6 >/dev/null 2>&1; then
-    kbuildsycoca6 --noincremental 2>/dev/null || true
-fi
-
-# 2. Start XDG Desktop Portals
-killall -q xdg-desktop-portal-kde xdg-desktop-portal xdg-desktop-portal-gtk xdg-document-portal 2>/dev/null || true
-sleep 1
-
-mkdir -p "$HOME/.local/share"
-
-if [[ -x "$PORTAL_KDE" ]]; then
-    XDG_CURRENT_DESKTOP=KDE nohup "$PORTAL_KDE" >"$HOME/.local/share/xdg-desktop-portal-kde.log" 2>&1 &
-else
-    echo "Warning: xdg-desktop-portal-kde not found" >&2
-fi
-
-sleep 2
-
-if [[ -x "$PORTAL" ]]; then
-    nohup "$PORTAL" >"$HOME/.local/share/xdg-desktop-portal.log" 2>&1 &
-else
-    echo "Warning: xdg-desktop-portal not found" >&2
-fi
-
-# 2.5. Start kded6 for shortcut component discovery
-if command -v kded6 >/dev/null 2>&1; then
-    kded6 &>/dev/null &
-    sleep 2
-fi
-
-# 3. Start power management
-# org_kde_powerdevil aborts at startup if WAYLAND_DISPLAY is unset (which
-# happens when it is spawned via D-Bus activation instead of this payload).
-# KWin exports WAYLAND_DISPLAY before launching this payload; the fallback
-# keeps PowerDevil alive if the payload is started any other way.
-export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
-
-# upowerd provides battery and power device monitoring via D-Bus
-if [[ -n "$UPOWERD" ]]; then
-    nohup "$UPOWERD" >"$HOME/.local/share/upowerd.log" 2>&1 &
-    # Give upowerd time to register on D-Bus before starting powerdevil
-    sleep 2
-fi
-
-# org_kde_powerdevil provides idle timeouts, DPMS, suspend, brightness, and power profile management
-if [[ -n "$POWERDEVIL" ]]; then
-    nohup "$POWERDEVIL" >"$HOME/.local/share/powerdevil.log" 2>&1 &
-else
-    echo "Warning: org_kde_powerdevil not found; power management unavailable" >&2
-fi
-
-# 4. Start the shell (supervised)
-# Run noctalia under a supervisor loop: if it crashes or is killed (e.g.
-# pkill noctalia to recover a broken shell), it restarts automatically
-# instead of taking the whole session down. The session ends only when the
-# login session itself is terminated (logout -> loginctl terminate-session,
-# or the display manager), which tears down this payload and KWin together.
-while true; do
-    noctalia >"$HOME/.local/share/noctalia.log" 2>&1
-    echo "noctalia exited (code $?), restarting in 2s..."
-    sleep 2
-done
-PAYLOADEOF
-
-chmod +x "$STARTUP_PAYLOAD"
-
-# ---------------------------------------------------------------------------
-# 5. Stop any competing global-shortcuts daemon and verify D-Bus name is free
-# ---------------------------------------------------------------------------
-# kwin-we embeds kglobalacceld and registers the org.kde.kglobalaccel D-Bus
-# service at startup (KGlobalAccelD::init).  If a Plasma session was
-# previously active, the standalone plasma-kglobalaccel.service (which runs
-# /usr/libexec/kglobalacceld) may still own that D-Bus name.  When that
-# happens kwin-we's init() fails to register the service, m_kglobalAccel is
-# reset, and ALL keyboard shortcuts stop working with the error
-# "error communicating with global shortcuts service".
-#
-# Stop any competing daemon so kwin-we can claim the name cleanly, then
-# verify the D-Bus name is actually free before proceeding.
-
-_kglobalaccel_cleared=false
-for _attempt in 1 2 3 4 5; do
-    # Try stopping via systemd and pkill
-    systemctl --user stop plasma-kglobalaccel.service 2>/dev/null || true
-    pkill -x kglobalacceld 2>/dev/null || true
-    sleep 1
-
-    # Check if the D-Bus service name is free.
-    if command -v busctl >/dev/null 2>&1; then
-        if ! busctl get-proxy org.kde.kglobalaccel /kglobalaccel >/dev/null 2>&1; then
-            _kglobalaccel_cleared=true
-            break
-        fi
-        # Service still owns the name — try harder
-        pkill -9 -x kglobalacceld 2>/dev/null || true
-    else
-        # No busctl available, assume stop was enough
-        _kglobalaccel_cleared=true
-        break
-    fi
-done
-
-if [[ "$_kglobalaccel_cleared" != "true" ]]; then
-    echo "Warning: Could not clear kglobalacceld D-Bus name. Shortcuts may not work." >&2
-fi
-
-export XDG_CURRENT_DESKTOP=KineticWE:KDE
-exec kinetic-we --xwayland --exit-with-session "$STARTUP_PAYLOAD"
-STARTEOF
+    mkdir -p "$pkgdir/usr/bin"
+    sed -e "s|@INSTALL_PREFIX@|/usr|g" \
+        "$srcdir/$_sourcebase/scripts/start-kineticwe.sh" \
+        > "$pkgdir/usr/bin/start-kineticwe"
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
 
 
