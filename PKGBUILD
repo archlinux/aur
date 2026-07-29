@@ -17,7 +17,7 @@
 # Cargo.toml expects.
 
 pkgname=harletty-bridge
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Format-decoder bridge plugin for the orender engine (loaded via dlopen at runtime)"
 arch=('x86_64')
@@ -27,12 +27,12 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 
 # Omniphony tag providing the workspace path-deps (bridge_api/spdif/sys).
-_omniver=0.4.1
+_omniver=0.4.2
 
 source=("harletty-bridge-$pkgver.tar.gz::https://github.com/harletty/harletty-bridge/archive/refs/tags/v$pkgver.tar.gz"
         "omniphony-$_omniver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/liborender-v$_omniver.tar.gz")
-sha256sums=('4baf7f1236b4c55eaf2632a1830247ffa3fc0fc500d767cb079b75649a91414e'
-            '2828762b8d0b1bbfaf642108393a02fecc66e975ce0f370de9817c18f7f8b3d5')
+sha256sums=('5c53b2d75e575bf8cb8299d1414925cfd0bb709415d043853c6ba825e88cd78d'
+            '103d10f67024e5038cd43fb85a6425a69e4ca17ff548980f82254f7f2005fd58')
 
 _bridge="harletty-bridge-$pkgver"
 

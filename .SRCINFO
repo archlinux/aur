@@ -1,6 +1,6 @@
 pkgbase = harletty-bridge
 	pkgdesc = Format-decoder bridge plugin for the orender engine (loaded via dlopen at runtime)
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/harletty/harletty-bridge
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = harletty-bridge
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = harletty-bridge-0.7.1.tar.gz::https://github.com/harletty/harletty-bridge/archive/refs/tags/v0.7.1.tar.gz
-	source = omniphony-0.4.1.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/liborender-v0.4.1.tar.gz
-	sha256sums = 4baf7f1236b4c55eaf2632a1830247ffa3fc0fc500d767cb079b75649a91414e
-	sha256sums = 2828762b8d0b1bbfaf642108393a02fecc66e975ce0f370de9817c18f7f8b3d5
+	source = harletty-bridge-0.7.3.tar.gz::https://github.com/harletty/harletty-bridge/archive/refs/tags/v0.7.3.tar.gz
+	source = omniphony-0.4.2.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/liborender-v0.4.2.tar.gz
+	sha256sums = 5c53b2d75e575bf8cb8299d1414925cfd0bb709415d043853c6ba825e88cd78d
+	sha256sums = 103d10f67024e5038cd43fb85a6425a69e4ca17ff548980f82254f7f2005fd58
 
 pkgname = harletty-bridge
