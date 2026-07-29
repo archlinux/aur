@@ -1,5 +1,5 @@
 # Maintainer: DarshanS26 <https://github.com/DarshanS26>
-pkgname=resolve-kit
+pkgname=davinci-kit
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="DaVinci Resolve Linux toolkit — transcode, export, diagnose, and optimize"
