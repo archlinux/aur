@@ -2,7 +2,7 @@
 
 pkgname=netbird-ui-bin
 pkgver=0.75.1 # datasource=github-releases depName=netbirdio/netbird
-pkgrel=1
+pkgrel=2
 pkgdesc='Official GUI for the Netbird client'
 arch=('x86_64')
 url='https://netbird.io'
@@ -10,8 +10,12 @@ license=('BSD-3-Clause AND AGPL-3.0-only')
 provides=('netbird-ui')
 
 depends=(
+	'glib2'
 	'glibc'
-	'libglvnd'
+	'libcairo.so=2-64'
+	'libgtk-4.so=1-64'
+	'libsoup-3.0.so=0-64'
+	'libwebkitgtk-6.0.so=4-64'
 	'libx11'
 	'netbird'
 )

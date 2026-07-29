@@ -1,12 +1,16 @@
 pkgbase = netbird-ui-bin
 	pkgdesc = Official GUI for the Netbird client
 	pkgver = 0.75.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbird.io
 	arch = x86_64
 	license = BSD-3-Clause AND AGPL-3.0-only
+	depends = glib2
 	depends = glibc
-	depends = libglvnd
+	depends = libcairo.so=2-64
+	depends = libgtk-4.so=1-64
+	depends = libsoup-3.0.so=0-64
+	depends = libwebkitgtk-6.0.so=4-64
 	depends = libx11
 	depends = netbird
 	provides = netbird-ui
