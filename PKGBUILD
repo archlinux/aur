@@ -14,5 +14,5 @@ source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux-${CARCH}.ta
 sha256sums=('51392f168c2c7ef03644058e806d04e34b0c1413e2cc8108f49406e11382e00d')
 
 package() {
-    install -Dm0755 -t "${pkgdir}/usr/bin" "${_name}"
+    install -Dm755 -t "${pkgdir}/usr/bin" "${_name}"
 }
