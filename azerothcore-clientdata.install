@@ -1,0 +1,12 @@
+post_install() {
+  local config_file="/etc/azerothcore/worldserver.conf"
+  local data_dir="/usr/share/azerothcore/data"
+
+  if [ -f "$config_file" ]; then
+    sed -i 's|DataDir = "."|DataDir = "'"$data_dir"'"|g' "$config_file"
+  fi
+}
+
+post_upgrade() {
+  post_install
+}

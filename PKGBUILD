@@ -8,6 +8,7 @@ arch=('any')
 url="https://www.azerothcore.org"
 license=('AGPL3')
 depends=('azerothcore-wotlk-git')
+install='azerothcore-clientdata.install'
 makedepends=('unzip')
 options=(!strip !debug)
 source=("Data.zip::https://github.com/wowgaming/client-data/releases/download/v${pkgver}/Data.zip")
