@@ -43,7 +43,13 @@ build() {
 }
 
 check() {
-  meson test -C build
+  if unshare -Urn true 2>/dev/null; then
+    meson test -C build
+  else
+    meson test -C build --no-suite n-dhcp4
+    meson test -C build 'n-dhcp4:API Symbol Visibility' 'n-dhcp4:Message Handling' \
+      'n-dhcp4:Client Runner' 'n-dhcp4:Packet Utility Library'
+  fi
 }
 
 package() {
