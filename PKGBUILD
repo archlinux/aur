@@ -1,18 +1,18 @@
-# Maintainer: Yamashiro <dev cosmicheron com>
+# Maintainer: CosmicHeron <dev cosmicheron com>
 
 _pkgbase='yquake2remaster'
 pkgname="${_pkgbase}-git"
-pkgver=r5741.8d1117d
-pkgrel=1
+pkgver='r6265.95422e1'
+pkgrel='1'
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${_pkgbase}"
 arch=('i686' 'x86_64' 'aarch64')
 license=('Info-ZIP' 'GPL-2.0-only')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-depends=('ffmpeg' 'glibc' 'libglvnd' 'sdl3')
-makedepends=('curl' 'git' 'openal' 'vulkan-headers')
-optdepends=('curl' 'openal' 'quake2-data' 'quake2-demo' 'vulkan-driver')
+depends=('curl' 'ffmpeg' 'glibc' 'glu' 'libglvnd' 'openal' 'sdl3')
+makedepends=('vulkan-headers')
+optdepends=('quake2-data' 'quake2-demo' 'vulkan-driver')
 source=("${_pkgbase}::git+${url}.git"
 	"${_pkgbase}.desktop"
 	"${_pkgbase}-ctf.desktop"
