@@ -2,7 +2,7 @@
 pkgname=azerothcore-clientdata
 _pkgname=azerothcore-wotlk
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pre-extracted client map data assets for AzerothCore"
 arch=('any')
 url="https://www.azerothcore.org"

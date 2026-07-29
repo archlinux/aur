@@ -1,7 +1,7 @@
 pkgbase = azerothcore-clientdata
 	pkgdesc = Pre-extracted client map data assets for AzerothCore
 	pkgver = 20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azerothcore.org
 	install = azerothcore-clientdata.install
 	arch = any
