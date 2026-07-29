@@ -9,7 +9,9 @@ arch=('x86_64')
 url='https://github.com/AdityaHebballe/cosmic-ext-applet-now-playing'
 license=('GPL-3.0-only')
 depends=('dbus' 'gcc-libs' 'glibc' 'libxkbcommon')
-makedepends=('cargo' 'git')
+# Rust's Linux toolchain invokes the LLVM linker through `cc -fuse-ld=lld`.
+# Declare it explicitly so clean AUR builds do not rely on a preinstalled lld.
+makedepends=('cargo' 'git' 'lld')
 provides=('cosmic-ext-applet-now-playing')
 conflicts=('cosmic-ext-applet-now-playing')
 source=("${_srcname}::git+${url}.git")
