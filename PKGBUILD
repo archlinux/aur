@@ -4,12 +4,12 @@
 # refs, missing deps, and missing options three times. Verify after publish:
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 pkgname=llama-launcher
-pkgver=19
+pkgver=22
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
 url="https://codeberg.org/LuminaNAO/llama-launcher"
-license=(MIT)
+license=(AGPL-3.0-only)
 depends=('bash' 'cmake' 'curl' 'git' 'jq' 'yq' 'bc' 'nodejs' 'openssh')
 optdepends=(
     'llama-hdd: llama-server binary (required to launch models)'
