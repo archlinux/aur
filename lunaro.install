@@ -1,0 +1,12 @@
+post_install() {
+    echo "=================================================================="
+    echo " Lunaro"
+    echo "=================================================================="
+    echo " If you plan to use 'run as root' (-r flag), passwordless sudo is"
+    echo " recommended -- otherwise -r may not work from inside the GUI/CLI."
+    echo "=================================================================="
+}
+
+post_upgrade() {
+    post_install
+}
