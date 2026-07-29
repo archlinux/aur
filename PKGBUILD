@@ -13,12 +13,10 @@ makedepends=('cmake' 'git')
 provides=('baresip')
 conflicts=('baresip')
 
-# Hardcoded direct git link to your repo. No tags or shortcuts to confuse curl.
 source=("git+https://github.com/Venomtek/baresip-qt.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-  # Compiles out of the folder created by cloning the repo name
   cmake -B build -S "${srcdir}/baresip-qt" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
