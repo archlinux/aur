@@ -1,6 +1,6 @@
 pkgbase = sftool-gui
 	pkgdesc = A user-friendly graphical serial port operation tool for SIFLI series SoC chips.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/OpenSiFli/sftool-gui
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = sftool-gui
 	conflicts = sftool-gui-bin
 	options = !lto
 	options = !debug
-	source = sftool-gui::git+https://github.com/OpenSiFli/sftool-gui.git#tag=v1.2.0
-	sha256sums = 49ed91057c9227eb5aebbac64710b577d910c119625a0092042defd25392151d
+	source = sftool-gui::git+https://github.com/OpenSiFli/sftool-gui.git#tag=v1.2.1
+	sha256sums = 36ba7a2dbae5163e3f53a9a038893a0ba3022d5aa469c3a6a652c72203b3b1ae
 
 pkgname = sftool-gui

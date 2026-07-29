@@ -2,7 +2,7 @@
 
 pkgbase=sftool-gui
 pkgname=sftool-gui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=
 pkgdesc="A user-friendly graphical serial port operation tool for SIFLI series SoC chips."
@@ -49,7 +49,7 @@ checkdepends=()
 options=(!lto !debug)
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('49ed91057c9227eb5aebbac64710b577d910c119625a0092042defd25392151d')
+sha256sums=('36ba7a2dbae5163e3f53a9a038893a0ba3022d5aa469c3a6a652c72203b3b1ae')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
