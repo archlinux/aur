@@ -1,0 +1,23 @@
+pre_install() {
+    # Nothing
+}
+
+post_install() {
+    glib-compile-schemas /usr/share/gnome-shell/extensions/ai-usage@gonwex-gmail.com/schemas/
+}
+
+pre_upgrade() {
+    # Nothing
+}
+
+post_upgrade() {
+    glib-compile-schemas /usr/share/gnome-shell/extensions/ai-usage@gonwex-gmail.com/schemas/
+}
+
+pre_remove() {
+    # Nothing
+}
+
+post_remove() {
+    rm -f /usr/share/gnome-shell/extensions/ai-usage@gonwex-gmail.com/schemas/gschemas.compiled
+}

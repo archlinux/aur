@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-ai-usage
+	pkgdesc = AI Usage Indicator: Show Codex usage quota and DeepSeek API balance in GNOME top bar
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gonwe/gonwe-ai-usage
+	install = gnome-shell-extension-ai-usage.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-ai-usage-1.tar.gz::https://github.com/gonwe/gonwe-ai-usage/archive/ab8b849.tar.gz
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-ai-usage
