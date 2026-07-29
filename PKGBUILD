@@ -17,6 +17,8 @@ sha256sums=("53283c0e774af27681a88e23533226a2bed20d4932d31f06a8abdf01548c7c1a"
 noextract=("${pkgname}-${pkgver}_${pkgrel}")
 provides=("mica" "micalistener")
 install="micalistener.install"
+depends=("avahi" "pipewire")
+optdepends=("systemd: Automatic service startup")
 
 package() {
 	# Copy files
