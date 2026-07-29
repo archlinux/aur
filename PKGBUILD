@@ -46,15 +46,6 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # ── pnpm 11+ blocks dependency build scripts by default ──────
-  # Approved native addons: cpu-features (ssh2 dep), esbuild, ssh2
-  cat >> pnpm-workspace.yaml <<-EOF
-onlyBuiltDependencies:
-  - cpu-features
-  - esbuild
-  - ssh2
-EOF
-
   # ── Install all dependencies (including native addons) ──────
   pnpm install --frozen-lockfile
 
