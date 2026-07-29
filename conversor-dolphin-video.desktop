@@ -1,0 +1,49 @@
+[Desktop Entry]
+Type=Service
+X-KDE-Priority=TopLevel
+MimeType=video/mp4;video/x-matroska;video/webm;video/quicktime;video/x-msvideo;video/x-flv;video/mpeg;video/x-ms-wmv;video/3gpp;
+Actions=vidMp4;vidMp41080;vidMp4720;vidWebm;vidGif;vidAudio;vidComprimir
+X-KDE-Submenu=Convert video
+X-KDE-Submenu[es]=Convertir vídeo
+
+[Desktop Action vidMp4]
+Name=to MP4 (H.264)
+Name[es]=a MP4 (H.264)
+Icon=video-x-generic
+Exec=/usr/share/conversor-dolphin/video-convertir.sh mp4 %F
+
+[Desktop Action vidMp41080]
+Name=to MP4 1080p
+Name[es]=a MP4 1080p
+Icon=video-x-generic
+Exec=/usr/share/conversor-dolphin/video-convertir.sh mp4-1080 %F
+
+[Desktop Action vidMp4720]
+Name=to MP4 720p
+Name[es]=a MP4 720p
+Icon=video-x-generic
+Exec=/usr/share/conversor-dolphin/video-convertir.sh mp4-720 %F
+
+[Desktop Action vidWebm]
+Name=to WebM (VP9)
+Name[es]=a WebM (VP9)
+Icon=video-x-generic
+Exec=/usr/share/conversor-dolphin/video-convertir.sh webm %F
+
+[Desktop Action vidGif]
+Name=to animated GIF
+Name[es]=a GIF animado
+Icon=image-gif
+Exec=/usr/share/conversor-dolphin/video-convertir.sh gif %F
+
+[Desktop Action vidAudio]
+Name=Extract audio (MP3)
+Name[es]=Extraer audio (MP3)
+Icon=audio-x-generic
+Exec=/usr/share/conversor-dolphin/video-convertir.sh audio %F
+
+[Desktop Action vidComprimir]
+Name=Compress (smaller MP4)
+Name[es]=Comprimir (MP4 más pequeño)
+Icon=archive-insert
+Exec=/usr/share/conversor-dolphin/video-convertir.sh comprimir %F

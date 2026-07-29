@@ -1,0 +1,43 @@
+[Desktop Entry]
+Type=Service
+X-KDE-Priority=TopLevel
+MimeType=image/jpeg;image/png;image/webp;image/tiff;image/bmp;image/gif;image/heif;image/heic;image/avif;
+Actions=imgToPdf;imgToJpg;imgToPng;imgToWebp;imgToAvif;imgToTiff
+X-KDE-Submenu=Convert image
+X-KDE-Submenu[es]=Convertir imagen
+
+[Desktop Action imgToPdf]
+Name=to PDF (combine)
+Name[es]=a PDF (unir)
+Icon=application-pdf
+Exec=/usr/share/conversor-dolphin/img-a-pdf.sh %F
+
+[Desktop Action imgToJpg]
+Name=to JPG
+Name[es]=a JPG
+Icon=image-jpeg
+Exec=/usr/share/conversor-dolphin/img-convertir.sh jpg %F
+
+[Desktop Action imgToPng]
+Name=to PNG
+Name[es]=a PNG
+Icon=image-png
+Exec=/usr/share/conversor-dolphin/img-convertir.sh png %F
+
+[Desktop Action imgToWebp]
+Name=to WebP
+Name[es]=a WebP
+Icon=image-x-generic
+Exec=/usr/share/conversor-dolphin/img-convertir.sh webp %F
+
+[Desktop Action imgToAvif]
+Name=to AVIF
+Name[es]=a AVIF
+Icon=image-x-generic
+Exec=/usr/share/conversor-dolphin/img-convertir.sh avif %F
+
+[Desktop Action imgToTiff]
+Name=to TIFF
+Name[es]=a TIFF
+Icon=image-x-generic
+Exec=/usr/share/conversor-dolphin/img-convertir.sh tiff %F

@@ -1,0 +1,15 @@
+post_install() {
+    cat <<'MSG'
+  To make the "PDF Actions" entry appear in Dolphin's right-click menu, run:
+      kbuildsycoca6
+  and restart Dolphin (close all its windows) if it was open.
+MSG
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "  Run 'kbuildsycoca6' to refresh Dolphin's menu cache."
+}

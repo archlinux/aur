@@ -1,0 +1,50 @@
+[Desktop Entry]
+Type=Service
+X-KDE-Priority=TopLevel
+MimeType=application/pdf;
+X-KDE-MaxNumberOfUrls=1
+Actions=pdfDivPaginas;pdfDivRango;pdfDivBloques;pdfImagenes;pdfTexto;pdfComprimir;pdfOcr
+X-KDE-Submenu=PDF Actions
+X-KDE-Submenu[es]=Acciones PDF
+
+[Desktop Action pdfDivPaginas]
+Name=Split: one file per page
+Name[es]=Dividir: cada página en un archivo
+Icon=split
+Exec=/usr/share/conversor-dolphin/pdf-dividir.sh paginas %f
+
+[Desktop Action pdfDivRango]
+Name=Split: extract a page range…
+Name[es]=Dividir: extraer un rango de páginas…
+Icon=edit-select-all
+Exec=/usr/share/conversor-dolphin/pdf-dividir.sh rango %f
+
+[Desktop Action pdfDivBloques]
+Name=Split: into blocks of N pages…
+Name[es]=Dividir: en bloques de N páginas…
+Icon=view-split-left-right
+Exec=/usr/share/conversor-dolphin/pdf-dividir.sh bloques %f
+
+[Desktop Action pdfImagenes]
+Name=Convert to images (PNG/JPG)…
+Name[es]=Convertir a imágenes (PNG/JPG)…
+Icon=image-x-generic
+Exec=/usr/share/conversor-dolphin/pdf-convertir.sh imagenes %f
+
+[Desktop Action pdfTexto]
+Name=Convert to plain text
+Name[es]=Convertir a texto plano
+Icon=text-x-generic
+Exec=/usr/share/conversor-dolphin/pdf-convertir.sh texto %f
+
+[Desktop Action pdfComprimir]
+Name=Compress (reduce size)…
+Name[es]=Comprimir (reducir tamaño)…
+Icon=archive-insert
+Exec=/usr/share/conversor-dolphin/pdf-convertir.sh comprimir %f
+
+[Desktop Action pdfOcr]
+Name=OCR (make text searchable)…
+Name[es]=OCR (hacer el texto buscable)…
+Icon=scanner
+Exec=/usr/share/conversor-dolphin/pdf-convertir.sh ocr %f

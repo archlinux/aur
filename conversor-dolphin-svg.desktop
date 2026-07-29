@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Service
+X-KDE-Priority=TopLevel
+MimeType=image/svg+xml;image/svg+xml-compressed;
+Actions=svgToPng;svgToPdf
+X-KDE-Submenu=Convert SVG
+X-KDE-Submenu[es]=Convertir SVG
+
+[Desktop Action svgToPng]
+Name=to PNG
+Name[es]=a PNG
+Icon=image-png
+Exec=/usr/share/conversor-dolphin/svg-convertir.sh png %F
+
+[Desktop Action svgToPdf]
+Name=to PDF
+Name[es]=a PDF
+Icon=application-pdf
+Exec=/usr/share/conversor-dolphin/svg-convertir.sh pdf %F
