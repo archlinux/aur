@@ -18,8 +18,8 @@ post_install() {
 irlume installed. Next steps:
   irlume tui                      # enroll your face + configure
   sudo irlume login enable --apply   # opt-in: wire greeter/lock screen
-(enrollment auto-enables the 850nm IR emitter when IR frames are black;
- manual fallback for IR cameras: sudo irlume ir-setup)
+(most Hello cameras need no emitter step; if IR frames stay dark,
+ sudo irlume ir-setup writes to the camera and tells you so first)
 Arch runs no LSM policy by default; SO_PEERCRED authorizes every daemon
 request. If you boot with AppArmor, the bundled profile
 (/etc/apparmor.d/usr.bin.irlumed) is loaded automatically.
