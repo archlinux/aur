@@ -1,7 +1,7 @@
 pkgbase = rebased-bin
 	pkgdesc = Standalone JetBrains-based Git client (prebuilt binary)
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
 	arch = aarch64
