@@ -375,7 +375,7 @@ def _resolve_version(config, version_cache_dir):
     return version_head[-1], None, None
 
 
-def _download_tarball(tarball_url, tarball_path, github_token):
+def download_tarball(tarball_url, tarball_path, github_token):
     tmp_path = None
 
     try:
@@ -438,7 +438,7 @@ def _ensure_tarball(
             )
 
         log.info("Downloading ComfyUI %s ...", version_head)
-        _download_tarball(tarball_url, tarball_path, github_token)
+        download_tarball(tarball_url, tarball_path, github_token)
 
     if need_symlink:
         version_link.unlink(missing_ok=True)
