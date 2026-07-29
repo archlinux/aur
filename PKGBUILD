@@ -1,7 +1,7 @@
 # Maintainer: Berny23 <webmaster@berny23.de>
 pkgname=virtual-surround-manager
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="3D sound for headphones"
 arch=('x86_64')
 url="https://github.com/Berny23/virtual-surround-manager"
