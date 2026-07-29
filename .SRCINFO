@@ -1,7 +1,7 @@
 pkgbase = opennow
 	pkgdesc = custom GeForce Now client
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://opennow.zortos.me/
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = opennow
 	depends = nss
 	depends = nspr
 	depends = alsa-lib
-	depends = electron42>=42.3.3
+	depends = electron43>=43.1.1
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-bad-libs
@@ -31,11 +31,11 @@ pkgbase = opennow
 	provides = opennow
 	conflicts = opennow-appimage
 	options = !strip
-	source = opennow-0.5.2.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v0.5.2.tar.gz
+	source = opennow-0.5.3.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v0.5.3.tar.gz
 	source = opennow.desktop
 	source = opennow
-	sha256sums = 5c05ed4122150eb5f1326bcdd3b457db1390c8c30dd670516c35e1130c5ea128
+	sha256sums = 46b49207c981c806589557fbd3687a905299102e7458cf8e081a0a2d0c575e23
 	sha256sums = 2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513
-	sha256sums = 69483db477be806334fc7fc03933d7f5ed866be15e7157b7a18895e370c946e8
+	sha256sums = d6e8f57fb06df8ec46d4e88f13dabadc8281cfc4122cc0c337f3efde9096a27f
 
 pkgname = opennow

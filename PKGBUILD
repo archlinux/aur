@@ -1,28 +1,27 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=0.5.2
+pkgver=0.5.3
 #_pkgver=0.5.3-nightly.47.1
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
 depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib'
-	'electron42>=42.3.3' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+	'electron43>=43.1.1' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 makedepends=('npm' 'imagemagick' 'libxcrypt-compat' 'cargo')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
-# we could have avoided building and installing opennow-streamer for now because it is not avaiable and used on linux
+options=(!strip)
 provides=('opennow')
 conflicts=('opennow-appimage')
 arch=('x86_64')
-options=(!strip)
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
 	opennow.desktop opennow)
 
-sha256sums=('5c05ed4122150eb5f1326bcdd3b457db1390c8c30dd670516c35e1130c5ea128'
+sha256sums=('46b49207c981c806589557fbd3687a905299102e7458cf8e081a0a2d0c575e23'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
-            '69483db477be806334fc7fc03933d7f5ed866be15e7157b7a18895e370c946e8')
+            'd6e8f57fb06df8ec46d4e88f13dabadc8281cfc4122cc0c337f3efde9096a27f')
 
 prepare() {
 	cd "$_pkgname-$_pkgver"
@@ -58,6 +57,8 @@ package() {
 	# only install the required npm module
 	npm install --cache "${srcdir}/npm/cache" --omit=dev --prefix "${pkgdir}/usr/lib/opennow/opennow-stable"
 	cp -a native/opennow-streamer/bin/opennow-streamer ${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin/
+        # manually strip binary streamer
+        strip ${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin/opennow-streamer
 	# misc (licence, dekstop)
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -m 644 -D -t "${pkgdir}/usr/share/applications/" "${srcdir}/opennow.desktop"
