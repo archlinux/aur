@@ -1,6 +1,6 @@
 pkgbase = zoitechat-git
 	pkgdesc = GTK3 IRC client based on HexChat
-	pkgver = r4799.479f1649
+	pkgver = r4919.54514f49
 	pkgrel = 1
 	url = https://github.com/ZoiteChat/zoitechat
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = zoitechat-git
 	optdepends = pciutils: sysinfo plugin support
 	optdepends = perl: perl script support
 	optdepends = lua: lua script support
+	optdepends = noto-fonts-emoji: emoji support
 	provides = zoitechat
 	conflicts = zoitechat
 	source = git+https://github.com/ZoiteChat/zoitechat.git
