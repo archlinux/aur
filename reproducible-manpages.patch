@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 64365e6..e41aaea 100644
+--- a/Makefile
++++ b/Makefile
+@@ -90 +90 @@ $(CLI_MANPAGE): $(CLI_MANPAGE).in
+-	sed -i -e "s/@DATE@/$(shell date +'%B %d, %Y')/" $(CLI_MANPAGE)
++	sed -i -e "s/@DATE@/$(shell LC_ALL=C date -u -d "@$$SOURCE_DATE_EPOCH" +'%B %d, %Y')/" $(CLI_MANPAGE)
+@@ -96 +96 @@ $(CLI_MANPAGE2): $(CLI_MANPAGE2).in
+-	sed -i -e "s/@DATE@/$(shell date +'%B %d, %Y')/" $(CLI_MANPAGE2)
++	sed -i -e "s/@DATE@/$(shell LC_ALL=C date -u -d "@$$SOURCE_DATE_EPOCH" +'%B %d, %Y')/" $(CLI_MANPAGE2)
+@@ -102 +102 @@ $(SYSTEMD_UNIT_MANPAGE): $(SYSTEMD_UNIT_MANPAGE).in
+-	sed -i -e "s/@DATE@/$(shell date +'%B %d, %Y')/" $(SYSTEMD_UNIT_MANPAGE)
++	sed -i -e "s/@DATE@/$(shell LC_ALL=C date -u -d "@$$SOURCE_DATE_EPOCH" +'%B %d, %Y')/" $(SYSTEMD_UNIT_MANPAGE)

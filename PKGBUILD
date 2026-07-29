@@ -6,7 +6,7 @@ pkgname=(
     python-libnmstate
 )
 pkgver=2.2.61
-pkgrel=3
+pkgrel=4
 pkgdesc='Declarative network manager API for Linux hosts'
 arch=('x86_64')
 url='https://nmstate.io'
@@ -24,12 +24,14 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/nmstate/nmstate/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz"
     "$pkgbase-$pkgver.tar.gz.asc::https://github.com/nmstate/nmstate/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz.asc"
     "$pkgbase-vendor-$pkgver.tar.xz::https://github.com/nmstate/nmstate/releases/download/v$pkgver/$pkgbase-vendor-$pkgver.tar.xz"
+    'reproducible-manpages.patch'
 )
 # vendor tarball is unsigned upstream; sha256 only
 sha256sums=(
             '25cb1b4055c3f1c9d6e98c7efd3084f09d38f105b34ce6d80132d4427a98ed16'
             '4306b81631898d628ad3376577a4aff08e3eb78b4f60b8e88bfdc0868de5792b'
             '13412239f623451a86a8ee2e3a8a0d00da5dd5e754be1006e063cfe2f07ed0d3'
+            'd354da70562902faf02d9a36a6ced135b111f1b3167875ff9b178c41d2ac51a1'
 )
 # nmstate release signers (from upstream nmstate.gpg keyring)
 validpgpkeys=(
@@ -52,10 +54,7 @@ _pick() {
 prepare() {
     cd "$pkgbase-$pkgver"
 
-    # Set up vendored Rust dependencies. The config must sit in $srcdir so
-    # cargo finds it walking up from the build cwd ($pkgbase-$pkgver); a config
-    # under rust/.cargo is never read because build() runs cargo from the
-    # project root via --manifest-path, so it would silently hit crates.io.
+    patch -Np1 -i "$srcdir/reproducible-manpages.patch"
     mv "$srcdir/vendor" rust/vendor
     mkdir -p "$srcdir/.cargo"
     cat > "$srcdir/.cargo/config.toml" <<EOF
@@ -65,15 +64,22 @@ replace-with = "vendored-sources"
 [source.vendored-sources]
 directory = "$srcdir/$pkgbase-$pkgver/rust/vendor"
 EOF
+
+    export CARGO_NET_OFFLINE=true
+    export CARGO_TARGET_DIR="$srcdir/$pkgbase-$pkgver/rust/target"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo generate-lockfile --offline --manifest-path rust/Cargo.toml
+    cargo fetch --locked --offline --manifest-path rust/Cargo.toml \
+        --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgbase-$pkgver"
 
-    # Build Rust components (CLI + C library). --offline forces use of the
-    # vendored sources and fails loudly if vendoring breaks, rather than
-    # silently resolving "latest compatible" crates from crates.io.
-    cargo build --offline --release --workspace --manifest-path rust/Cargo.toml
+    export CARGO_NET_OFFLINE=true
+    export CARGO_TARGET_DIR="$srcdir/$pkgbase-$pkgver/rust/target"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo build --frozen --release --workspace --manifest-path rust/Cargo.toml
 
     make manpage clib
 
@@ -81,10 +87,26 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "$pkgbase-$pkgver"
+    export CARGO_NET_OFFLINE=true
+    export CARGO_TARGET_DIR="$srcdir/$pkgbase-$pkgver/rust/target"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --workspace --manifest-path rust/Cargo.toml -- \
+        --test-threads=1
+    local _date _manpage
+    _date="$(LC_ALL=C date -u -d "@$SOURCE_DATE_EPOCH" +'%B %d, %Y')"
+    for _manpage in doc/nmstatectl.8 doc/nmstate-autoconf.8 doc/nmstate.service.8; do
+        grep -F "$_date" "$_manpage"
+    done
+}
+
 package_nmstate() {
     pkgdesc='Declarative network manager API - CLI tools and service'
     depends=(
         "libnmstate=$pkgver-$pkgrel"
+        'glibc'
+        'libgcc'
         'networkmanager'
     )
     optdepends=(
@@ -102,7 +124,6 @@ package_nmstate() {
         SYSTEMD_UNIT_DIR=/usr/lib/systemd/system \
         SKIP_PYTHON_INSTALL=1
 
-    # installed into this pkgdir, picked out into python-libnmstate below
     python -m installer --destdir="$pkgdir" rust/src/python/dist/*.whl
 
     cd "$pkgdir"
@@ -116,7 +137,7 @@ package_nmstate() {
 
 package_libnmstate() {
     pkgdesc='Declarative network manager API - C library'
-    depends=('gcc-libs' 'glibc')
+    depends=('glibc' 'libgcc')
     optdepends=('networkmanager: required for most operations')
     provides=(libnmstate.so)
 

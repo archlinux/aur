@@ -1,7 +1,7 @@
 pkgbase = nmstate
 	pkgdesc = Declarative network manager API for Linux hosts
 	pkgver = 2.2.61
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nmstate.io
 	arch = x86_64
 	license = Apache-2.0
@@ -15,6 +15,7 @@ pkgbase = nmstate
 	source = nmstate-2.2.61.tar.gz::https://github.com/nmstate/nmstate/releases/download/v2.2.61/nmstate-2.2.61.tar.gz
 	source = nmstate-2.2.61.tar.gz.asc::https://github.com/nmstate/nmstate/releases/download/v2.2.61/nmstate-2.2.61.tar.gz.asc
 	source = nmstate-vendor-2.2.61.tar.xz::https://github.com/nmstate/nmstate/releases/download/v2.2.61/nmstate-vendor-2.2.61.tar.xz
+	source = reproducible-manpages.patch
 	validpgpkeys = 48FD6FAE515A77B48436821C8789567B8715CEBC
 	validpgpkeys = 2B5F3B2028801E15F57AAA309906C97AA15D984F
 	validpgpkeys = 07F9AEC86144386D9576210B66A44781B4EBC2D0
@@ -22,24 +23,27 @@ pkgbase = nmstate
 	sha256sums = 25cb1b4055c3f1c9d6e98c7efd3084f09d38f105b34ce6d80132d4427a98ed16
 	sha256sums = 4306b81631898d628ad3376577a4aff08e3eb78b4f60b8e88bfdc0868de5792b
 	sha256sums = 13412239f623451a86a8ee2e3a8a0d00da5dd5e754be1006e063cfe2f07ed0d3
+	sha256sums = d354da70562902faf02d9a36a6ced135b111f1b3167875ff9b178c41d2ac51a1
 
 pkgname = nmstate
 	pkgdesc = Declarative network manager API - CLI tools and service
-	depends = libnmstate=2.2.61-3
+	depends = libnmstate=2.2.61-4
+	depends = glibc
+	depends = libgcc
 	depends = networkmanager
 	optdepends = python-libnmstate: Python bindings
 	optdepends = openvswitch: Open vSwitch support
 
 pkgname = libnmstate
 	pkgdesc = Declarative network manager API - C library
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	optdepends = networkmanager: required for most operations
 	provides = libnmstate.so
 
 pkgname = python-libnmstate
 	pkgdesc = Declarative network manager API - Python bindings
 	arch = any
-	depends = libnmstate=2.2.61-3
+	depends = libnmstate=2.2.61-4
 	depends = python
 	depends = python-pyyaml
