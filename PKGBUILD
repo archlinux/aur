@@ -1,6 +1,6 @@
 # Maintainer: Lu Xu <oliver_lew at outlook dot com>
 pkgname=javinizer
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go' 'git' 'make' 'npm')
 provides=('javinizer')
 conflicts=('javinizer-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('51a73ce31162c4aaaf0b253cbd592ed69d6194dca794d2c31e85a72a1771e3c3')
+sha256sums=('956417aaab764c144d151406ac332d473138b2f08eb24544ebb63fc1f6138adc')
 
 build() {
     cd "${srcdir}/javinizer-go-${pkgver}"
