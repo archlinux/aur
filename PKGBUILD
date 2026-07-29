@@ -2,7 +2,7 @@
 
 pkgname=snapcap-wayland
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight screenshot capture tool for Wayland (wlroots)"
 arch=('x86_64')
 url="https://github.com/kenjaku-dev/snapcap-wayland"
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("$url/archive/v$pkgver.tar.gz"
         "snapcap-wayland.desktop")
-sha256sums=('9747c2da4f0a9fdc0f6dde4e4f29133933a11680d34e30709426ad15cf6240ea'
+sha256sums=('6288c21405f79c3162ac014bca646cf35a8038cf8c653a68ed171a91d9bc5b1a'
             '6fcb9d9976beeb4bf24ff0f12a424c4d6dc7d42ac01c2a30d11e24003cde5d7f')
 
 build() {
