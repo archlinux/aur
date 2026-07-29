@@ -12,7 +12,7 @@ arch=(x86_64)
 depends=(glibc)
 makedepends=(git meson pkgconf)
 provides=("$_pkgname=${pkgver%%.*}")
-conflicts=($_pkgname)
+conflicts=("$_pkgname")
 # subprojects/{c-list,c-siphash,c-stdaux} are git submodules; clone them as
 # separate sources and rewire the submodule URLs to these local checkouts in
 # prepare() so the meson build finds their meson.build files
@@ -50,7 +50,13 @@ build() {
 }
 
 check() {
-  meson test -C build
+  if unshare -Urn true 2>/dev/null; then
+    meson test -C build
+  else
+    meson test -C build --no-suite n-dhcp4
+    meson test -C build 'n-dhcp4:API Symbol Visibility' 'n-dhcp4:Message Handling' \
+      'n-dhcp4:Client Runner' 'n-dhcp4:Packet Utility Library'
+  fi
 }
 
 package() {
