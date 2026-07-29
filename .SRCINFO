@@ -1,6 +1,6 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
-	pkgver = 4.6.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/setools/wiki
 	arch = i686
@@ -10,22 +10,24 @@ pkgbase = setools
 	license = GPL
 	license = LGPL
 	checkdepends = checkpolicy
+	checkdepends = python-fastmcp-slim
 	checkdepends = python-pyqt6
 	checkdepends = python-pytest
 	checkdepends = python-pytest-qt
 	makedepends = cython
 	makedepends = python-tox
-	depends = libsepol>=3.2
-	depends = libselinux>=3.2
+	depends = libsepol>=3.9
+	depends = libselinux>=3.9
 	depends = python
 	depends = python-networkx>=2.6
 	depends = python-setuptools
+	optdepends = python-fastmcp-slim: for SETools AI tools
 	optdepends = python-graphviz: for seinfoflow, sedta, apol
 	optdepends = python-pyqt6: needed for graphical tools
 	optdepends = qt6-tools: display apol help with Qt Assistant
-	provides = selinux-setools=4.6.0-1
+	provides = selinux-setools=4.7.1-1
 	conflicts = selinux-setools
-	source = https://github.com/SELinuxProject/setools/releases/download/4.6.0/setools-4.6.0.tar.bz2
-	sha256sums = 97319aabaf9d4237841ee60dcc9b2f291e73a761f317fd13e293ea2367d5806c
+	source = https://github.com/SELinuxProject/setools/releases/download/4.7.1/setools-4.7.1.tar.bz2
+	sha256sums = 9b414eae7f17aa6ca53248d11d74fad01582a21985c78a483fa1240e70bd3b6a
 
 pkgname = setools
