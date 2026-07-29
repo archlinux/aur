@@ -8,8 +8,8 @@ _pkgname=kube-burner
 
 pkgname=kube-burner-bin
 pkgver=2.7.3
-pkgrel=2
-pkgdesc='Kubernetes performance and scale test orchestration framework written in golang.'
+pkgrel=3
+pkgdesc='Kubernetes performance and scale test orchestration framework'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kube-burner/kube-burner'
 license=('Apache-2.0')
@@ -23,7 +23,5 @@ sha256sums_x86_64=('20407adc462529bbd61c906fe6cd9ab4fa8d550c5d5c437f80c4d6bc494f
 sha256sums_aarch64=('0c87745f4d2ce75467efbc6c7f7487689519340cbf4b6c4e07c162515bff6e21')
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
