@@ -1,13 +1,14 @@
 pkgbase = simple-spreadsheets
 	pkgdesc = Qt6 Spreadsheets processor with basic features for casual use
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/spikest3r/Spreadsheets
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = qt6-base
+	makedepends = git
 	depends = qt6-base
-	source = simple-spreadsheets-1.0.tar.gz::https://github.com/spikest3r/Spreadsheets/archive/v1.0.tar.gz
-	sha256sums = 38ab9de4aa3c89065ef1bde97fed317a64398be0173b451761b9fb20255ca600
+	source = simple-spreadsheets-2.0::git+https://github.com/spikest3r/Spreadsheets.git
+	sha256sums = SKIP
 
 pkgname = simple-spreadsheets
