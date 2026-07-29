@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.4.3
+pkgver=2.5.2
 _pkgver=${pkgver//_/-}
 pkgrel=1
 epoch=1
@@ -11,9 +11,9 @@ url="https://github.com/0xJacky/${pkgname}"
 backup=("etc/${pkgname}/config.ini")
 license=("AGPL-3.0-or-later")
 depends=("nginx")
-makedepends=("pnpm" "go")
+makedepends=("bun" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('eff77851ac66fc99a755e45cf1de95791408cb8bf49dc659e612c7eccbab50a3')
+sha256sums=('c3e1b816bea7c3d87113bd1f2401634562e8678c915b56a1dd4c99a882ebad99')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
@@ -21,8 +21,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
 
     cd "${pkgname}-${_pkgver}"
-    pnpm --prefix app install
-    pnpm --prefix app build
+    bun --cwd=app install
+    bun --cwd=app run build
 
     local ldflags="
         -s -w \
