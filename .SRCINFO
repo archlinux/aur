@@ -1,0 +1,15 @@
+pkgbase = opsh
+	pkgdesc = A small, local-first shell written in Rust
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/fireflylabss/opsh
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = opsh-0.1.5.tar.gz::https://github.com/fireflylabss/opsh/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = e061a8f4dc106769458d84d5c50c499ce310f45b58b54ddc5abf3c30a5e247d6
+
+pkgname = opsh
