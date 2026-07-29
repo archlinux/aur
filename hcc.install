@@ -1,11 +1,11 @@
 post_install() {
     echo "Hyprland Control Center (HCC) installed."
     echo
+    echo "Run 'hcc' to open the interactive menu."
     echo "Run 'hcc doctor' to check your system."
-    echo "Run 'hcc desktop list' to view available desktops."
     echo
     echo "For login screen integration:"
-    echo "  sudo hcc session setup-login"
+    echo "  hcc session setup-login"
 }
 
 post_upgrade() {

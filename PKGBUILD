@@ -2,7 +2,7 @@
 # Contributor: laosifu
 
 pkgname=hcc-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Hyprland Control Center — Install and manage Hyprland desktops"
 arch=('any')
@@ -34,6 +34,12 @@ if [[ "$(dirname "${BASH_SOURCE[0]}")" == "/usr/bin" ]]; then
     PROJECT_ROOT="/usr/share/hcc"
 else
     PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
+
+if [[ "$(id -u)" -eq 0 && -n "${SUDO_USER:-}" ]]; then
+    HCC_REAL_USER="$SUDO_USER"
+    HCC_REAL_HOME="$(getent passwd "$SUDO_USER" 2>/dev/null | cut -d: -f6 || echo "/home/$SUDO_USER")"
+    export HCC_REAL_USER HCC_REAL_HOME
 fi
 
 source "$PROJECT_ROOT/lib/bootstrap.sh"
