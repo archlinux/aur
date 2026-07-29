@@ -1,15 +1,14 @@
-# Maintainer: Alois~ <aloisianer@proton.me>
-# Colaborator: Joaquin (Pato) Decima <jdecima@vasak.net.ar>
+# Maintainer: Joaquin (Pato) Decima <jdecima@vasak.net.ar>
 
-pkgname=twingate
+pkgname=twingate-bin
 pkgver=2026.188.6692
-pkgrel=2
+pkgrel=1
 pkgdesc="Zero trust remote access client for resource and networks, based on twingate-bin"
 arch=('x86_64' 'aarch64')
 license=(LicenseRef-Proprietary)
 url="https://twingate.com"
 depends=('systemd' 'cryptsetup' 'dbus')
-install=$pkgname.install
+install=twingate.install
 noextract=(twingate-${pkgver}-${CARCH}.tar.zst)
 source_x86_64=(twingate-${pkgver}-x86_64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst)
 source_aarch64=(twingate-${pkgver}-aarch64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst)

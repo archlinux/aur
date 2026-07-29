@@ -1,7 +1,7 @@
-pkgbase = twingate
+pkgbase = twingate-bin
 	pkgdesc = Zero trust remote access client for resource and networks, based on twingate-bin
 	pkgver = 2026.188.6692
-	pkgrel = 2
+	pkgrel = 1
 	url = https://twingate.com
 	install = twingate.install
 	arch = x86_64
