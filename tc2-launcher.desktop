@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Team Comtress 2
+Comment=Manages downloading and launching TC2
+GenericName=Text Editor
+Actions=launch;server;
+Exec=/usr/bin/TC2Launcher-linux
+Icon=tc2-launcher
+Type=Application
+Categories=Game;
+Keywords=tc2;
+
+[Desktop Action launch]
+Name=Launch (No GUI)
+Comment=Launch the game after ensuring latest archive
+Exec=/usr/bin/TC2Launcher-linux --launch
+Terminal=false
