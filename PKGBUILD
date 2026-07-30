@@ -2,7 +2,7 @@
 
 pkgname=python-dom-toml
 _name=${pkgname#python-}
-pkgver=2.3.0
+pkgver=2.4.0b1
 pkgrel=1
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 provides=(${pkgname})
@@ -24,10 +24,12 @@ makedepends=(
 )
 license=('MIT')
 source=("${_name}::git+https://github.com/domdfcoding/dom_toml.git#tag=v$pkgver")
-sha512sums=('7ec94f3a22f90463b6f3d9f1db942b4d3065f315cee333e290b0cb1d1518a635988c596d51050f31c135b0f4fe131bd68328aeff682797db3ae6ee407e36610e')
+sha512sums=('01cbd5a644901c9e0646c8369f72c5a07ad1520e7b527204de0ae9804f2cd1197d0344b7614609c014aa70c1a0c5c433aae36031e6269cd3aa2a2eb0332f2efc')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
+    cd "${srcdir}/${_name}"
+    sed -i 's/"\([a-zA-Z0-9_.-]*\)[<>=!~][^"]*"/"\1"/g' pyproject.toml
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-dom-toml
 	pkgdesc = Dom's tools for Tom's Obvious, Minimal Language
-	pkgver = 2.3.0
+	pkgver = 2.4.0b1
 	pkgrel = 1
 	url = https://dom-toml.readthedocs.io/en/latest/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-dom-toml
 	depends = python-toml
 	provides = python-dom-toml
 	conflicts = python-dom-toml
-	source = dom-toml::git+https://github.com/domdfcoding/dom_toml.git#tag=v2.3.0
-	sha512sums = 7ec94f3a22f90463b6f3d9f1db942b4d3065f315cee333e290b0cb1d1518a635988c596d51050f31c135b0f4fe131bd68328aeff682797db3ae6ee407e36610e
+	source = dom-toml::git+https://github.com/domdfcoding/dom_toml.git#tag=v2.4.0b1
+	sha512sums = 01cbd5a644901c9e0646c8369f72c5a07ad1520e7b527204de0ae9804f2cd1197d0344b7614609c014aa70c1a0c5c433aae36031e6269cd3aa2a2eb0332f2efc
 
 pkgname = python-dom-toml
