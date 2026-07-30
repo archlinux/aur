@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ChamelShot
+Comment=Screenshot capture tool for Wayland (wlroots)
+Categories=Utility;Graphics;
+Icon=chamelshot
+Exec=chamelshot
+Terminal=false
+StartupNotify=true

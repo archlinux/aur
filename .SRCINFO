@@ -1,0 +1,21 @@
+pkgbase = chamelshot
+	pkgdesc = A lightweight screenshot capture tool for Wayland (wlroots)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kenjaku-dev/chamelshot
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = grim
+	depends = python
+	depends = python-pyside6
+	depends = slurp
+	optdepends = wl-clipboard: native Wayland clipboard support
+	source = https://github.com/kenjaku-dev/chamelshot/archive/v0.3.0.tar.gz
+	source = chamelshot.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = chamelshot
