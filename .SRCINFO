@@ -1,0 +1,13 @@
+pkgbase = matsyaos-grub-theme
+	pkgdesc = MatsyaOS GRUB2 theme (fork of vinceliuice/grub2-themes)
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/matsyaos-grub-theme
+	arch = any
+	license = GPL-3.0-only
+	makedepends = optipng
+	depends = grub
+	source = https://github.com/MatsyaOs/matsyaos-grub-theme/archive/v3.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = matsyaos-grub-theme
