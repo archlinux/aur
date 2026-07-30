@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Shell scripts with superpowers"
 
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums=('d6957c8034a4a341d2359d6e5dac02466adb3ed5b882c0d54a68c5162d7da65d'
+sha256sums=('9f423a83e7739375280217c6244f2ba5f481009f685849c864e190f522c0f2c6'
             '1aeb6c22f163e3fc68f4370e6c9a805f59238c29f9995f1a5d65e562d10ba174')
-sha256sums_x86_64=('3aabfeedafc04748eff676c73aee10f0e42408cc58e1b5b7a860c022259057b8')
+sha256sums_x86_64=('af855223a03f2a154d9dfcfdd958215998e07221a236d5066eae1285e007b7a8')
 
 case ${CARCH} in
   ${arch[0]})
