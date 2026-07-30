@@ -6,8 +6,8 @@ _electron_pkg=electron41
 _archive_extension="tar.gz"
 
 pkgname=ipfs-desktop
-pkgver=0.49.0
-pkgrel=2
+pkgver=0.49.1
+pkgrel=1
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
 	"$pkgname.desktop"
 	"$pkgname-startup.sh"
 )
-b2sums=('2294eff390fb073a5d9ad76610e33cc2408991d7a6918ff4a9de3c38ca9a7e8e5a6ae3d11623d62ae086c6d77fcaa9abbeb6d4e02118d5fab015fccdeb527daf'
+b2sums=('643e89643b68508373938df8eb1d086311d9f1a3964ecbc1b422a87438fc9e8e45f0a0ffede4b97b16652b06130a731a8cc51a13ef9e06704a1e210ea1f29f0f'
         '849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
         '6f603c79a83057d4f4077a859656dbce513be3aa0ab9993dc5b994929e6e26f2f8f58ecd030ea415c44f2d0fbc7dd0cc16526172613555b0f619c530ee7d583d')
 _pkgsrc="$pkgname-$pkgver"
