@@ -1,7 +1,7 @@
 # Maintainer: LazySeldi <197385604+LazySeldi@users.noreply.github.com>
 pkgname=lazydmi
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that uses lazybios for reading SMBIOS/DMI tables easily"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LazySeldi/lazydmi"
