@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tomatick
+Comment=Modern, lightweight Pomodoro timer
+Exec=tomatick
+Icon=tomatick
+Type=Application
+Categories=Utility;
+Keywords=pomodoro;timer;focus;productivity;
+StartupWMClass=tomatick
+StartupNotify=true

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Tomato body -->
+  <circle cx="32" cy="36" r="22" fill="#E74C3C"/>
+  <!-- Depth ring -->
+  <circle cx="32" cy="36" r="22" fill="none" stroke="#C0392B" stroke-width="2" opacity="0.5"/>
+  <!-- Highlight -->
+  <ellipse cx="26" cy="28" rx="5" ry="3.5" fill="white" opacity="0.18" transform="rotate(-20 26 28)"/>
+  <!-- Stem -->
+  <line x1="32" y1="14" x2="32" y2="8" stroke="#27AE60" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left leaf -->
+  <path d="M32 12 C28 9 21 10 20 14 C24 13 29 14 32 14" fill="#2ECC71"/>
+  <!-- Right leaf -->
+  <path d="M32 12 C36 9 43 10 44 14 C40 13 35 14 32 14" fill="#2ECC71"/>
+  <!-- Clock face ring -->
+  <circle cx="32" cy="36" r="15" fill="none" stroke="white" stroke-width="1.5" opacity="0.25"/>
+  <!-- 12 o'clock tick -->
+  <line x1="32" y1="21" x2="32" y2="24" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Clock center -->
+  <circle cx="32" cy="36" r="2.5" fill="white"/>
+  <!-- Hour hand (~10 o'clock) -->
+  <line x1="32" y1="36" x2="24" y2="31" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Minute hand (~2 o'clock) -->
+  <line x1="32" y1="36" x2="43" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

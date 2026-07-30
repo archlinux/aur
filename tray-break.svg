@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22">
+  <!-- Tomato body -->
+  <circle cx="11" cy="12" r="9" fill="#2ECC71"/>
+  <circle cx="11" cy="12" r="9" fill="none" stroke="#27AE60" stroke-width="1" opacity="0.4"/>
+  <!-- Stem -->
+  <line x1="11" y1="3" x2="11" y2="1" stroke="#27AE60" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Left leaf bump -->
+  <path d="M11 2.5 C9 1.5 7 2 7 3.5 C8.5 3 10 3 11 3" fill="#1a8a4a"/>
+  <!-- Right leaf bump -->
+  <path d="M11 2.5 C13 1.5 15 2 15 3.5 C13.5 3 12 3 11 3" fill="#1a8a4a"/>
+  <!-- Pause bars -->
+  <line x1="8.5" y1="9" x2="8.5" y2="15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="13.5" y1="9" x2="13.5" y2="15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>
