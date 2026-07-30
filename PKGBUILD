@@ -1,4 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Maintainer: Noah Sherwin <noahrsherwin@gmail.com>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
