@@ -2,11 +2,11 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-pencil-bin
-pkgver=1.1.70
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Pencil - Full canvas design tool with native performance"
 arch=('x86_64')
-url="https://www.pencil.dev"
+url="https://www.pen.dev"
 license=('LicenseRef-proprietary')
 depends=(
     'alsa-lib'
@@ -38,8 +38,8 @@ provides=('pencil')
 conflicts=('pencil')
 options=('!strip')
 
-source_x86_64=("Pencil-${pkgver}-linux-x64.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz")
-sha256sums_x86_64=('935a11317389077c7095d89009863f094e67f4b73f62c1dc6c0dbec4e29df408')
+source_x86_64=("Pencil-${pkgver}-linux-x64.tar.gz::https://www.pen.dev/download/Pencil-linux-x64.tar.gz")
+sha256sums_x86_64=('5cb28d5dcd3825c7f1c8e343706ccf6772f6244cce8e0ab6dea8a5c36933f700')
 
 # _extract_asar_file: 从 app.asar 中提取指定文件
 # 用法: _extract_asar_file <asar_path> <内部路径> <输出路径>
