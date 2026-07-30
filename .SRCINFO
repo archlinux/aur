@@ -1,0 +1,22 @@
+pkgbase = douyin-bin
+	pkgdesc = Third-party Linux client for Douyin.(Prebuilt version.Use system-wide electron)第三方抖音 Linux 客户端
+	pkgver = 8.1.201
+	pkgrel = 1
+	url = https://www.douyin.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-douyin
+	depends = electron42
+	depends = nodejs
+	provides = douyin=8.1.201
+	conflicts = douyin
+	source = LICENSE-8.1.201.html::https://www.douyin.com/draft/douyin_agreement/douyin_agreement_user.html?id=6773906068725565448
+	source = douyin.sh
+	sha256sums = 12e8d0a130a2dae1d6f52c9bc18c4ea572ae1366c21b083936310b780b9cf2c7
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = douyin-8.1.201-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/douyin8.1.201/com.douyin.otohime_8.1.201_arm64.deb
+	sha256sums_aarch64 = bf686de21bca3cba3a9ea2a12caf644dc05527e8062c67baff3d3e954494c057
+	source_x86_64 = douyin-8.1.201-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/douyin8.1.201/com.douyin.otohime_8.1.201_amd64.deb
+	sha256sums_x86_64 = 9acf2c48052695f71c5341beb410db613b002bf56dccff2168daf3228227c953
+
+pkgname = douyin-bin
