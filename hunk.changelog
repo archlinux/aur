@@ -1,14 +1,20 @@
 # Changelog
 
-All notable user-visible changes to Hunk are documented in this file.
+## 0.16.0
 
-## [Unreleased]
+### Minor Changes
 
-### Added
+- 8ffe0ba: Refresh Hunk's built-in theme system, default to `github-dark-default`, and simplify theme selection around one `theme` setting with `View -> Themes…` / `t` opening the selector. Custom themes can inherit from any built-in theme with `custom_theme.base` while keeping explicit syntax color overrides, and removed theme ids such as `graphite` and `paper` remain accepted as compatibility aliases.
 
-### Changed
+### Patch Changes
 
-### Fixed
+- 4bef148: Allow session comment cleanup commands to remove human `c` notes: `comment rm` accepts `user:*` note ids, and `comment clear --include-user`/`--all` clears user notes alongside live agent comments.
+- 48b97ac: Adopt Changesets for release-note fragments so pull requests can avoid conflicting `CHANGELOG.md` edits.
+- c0cf637: Prevent standalone Hunk binaries from loading `bunfig.toml` files from the caller's working directory.
+- c28c266: Improve React review-stream responsiveness by reducing offscreen file mounting work while preserving adjacent highlight prefetching.
+- 3906f39: Honor explicit split layout mode in static pager output for captured hosts like LazyGit.
+- 8ffe0ba: Improve generated theme contrast checks for built-in themes, including diff rows, metadata, chrome, and fallback token colors.
+- 59fcdbb: Require an explicit click or keyboard action before previewing a theme from the theme selector, while keeping mouse-wheel navigation available inside the selector.
 
 ## [0.15.3] - 2026-06-13
 
