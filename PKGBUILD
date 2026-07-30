@@ -1,33 +1,23 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-owlrl
 _name=${pkgname#python-}
-pkgver=6.0.2
+pkgver=7.6.2
 pkgrel=1
 pkgdesc="OWL-RL and RDFS based RDF Closure inferencing for Python"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/RDFLib/OWL-RL/"
 license=('W3C')
-groups=()
-depends=('python-rdflib')
-makedepends=('python-setuptools')
-optdepends=()
-provides=('python-owlrl')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+depends=(python-rdflib)
+makedepends=(python-build python-installer python-poetry-core python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-noextract=()
-md5sums=('034f9262901fb82761ba5337bbfa0445')
+sha256sums=('c743f35c2d908396e77823852bb1ebbce88340cd49961493983bec42c93283a8')
 
 build() {
-    cd "${_name}-${pkgver}"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
