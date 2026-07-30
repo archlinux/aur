@@ -1,0 +1,22 @@
+pkgbase = exhibit
+	pkgdesc = 3D model viewer for the GNOME desktop powered by F3D
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/Nokse22/Exhibit
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = meson
+	depends = f3d
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-wand
+	optdepends = yelp: view the built-in help
+	source = Exhibit-1.6.1::git+https://github.com/Nokse22/Exhibit.git#tag=v1.6.1
+	source = exhibit.sh
+	sha256sums = SKIP
+	sha256sums = b95a67538328deade77a8006708fb1ef90aa78833e28307d7989aa948d200d09
+
+pkgname = exhibit
