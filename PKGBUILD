@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=lightpanda
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('lightpanda')
 makedepends=('zig0.15' 'rust' 'cargo' 'git' 'python3')
 
 source=(lightpanda_${pkgver}.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('a5005b353a1738dd3d239234841cfcc808a7ec9faaebfcede3528f9fab3ae058')
+sha256sums=('5c2dd0f0dd93d67f5eb4394d9a778fcfd35cdcf3cae0403caf9d2a023e65a479')
 build() {
     zig() { zig-0.15 "$@"; }
     zig version
