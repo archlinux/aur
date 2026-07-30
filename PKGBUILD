@@ -1,8 +1,8 @@
 # Maintainer: Movacx <movacx@users.noreply.github.com>
 
 pkgname=bc250-control-center-git
-pkgver=1.17.23
-pkgrel=2
+pkgver=1.18.2
+pkgrel=1
 pkgdesc='Graphical control center for AMD BC-250 community tools'
 arch=('any')
 url='https://github.com/movacx/bc250-control-center'
@@ -58,6 +58,12 @@ package() {
     "$pkgdir/usr/libexec/bc250-control-center/bc250-fan-pwm-helper"
   install -Dm755 mvc/Resources/privileged/bc250-steamos-game-helper \
     "$pkgdir/usr/libexec/bc250-control-center/bc250-steamos-game-helper"
+  install -Dm755 mvc/Resources/privileged/bc250-governor-config-helper \
+    "$pkgdir/usr/libexec/bc250-control-center/bc250-governor-config-helper"
+  install -Dm755 mvc/Resources/privileged/bc250-core-unlock-helper \
+    "$pkgdir/usr/libexec/bc250-control-center/bc250-core-unlock-helper"
+  install -Dm644 mvc/Repository/governor_toml.py \
+    "$pkgdir/usr/libexec/bc250-control-center/lib/governor_toml.py"
   install -Dm644 packaging/common/polkit/io.github.movacx.bc250-control-center.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.github.movacx.bc250-control-center.policy"
 
