@@ -1,6 +1,6 @@
 # Maintainer: Pantelis Christou <pantelis@kernrift.org>
 pkgname=kernrift
-pkgver=2.8.32
+pkgver=2.8.34
 pkgrel=1
 pkgdesc="Self-hosted systems language compiler for kernel and bare-metal development"
 arch=('x86_64' 'aarch64')
@@ -71,8 +71,8 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    'ede0a58541966fd67d9de55767a8cdd82361e628011ff0b0103e19e64599e285'  # krc
-    '1d441e0bd2acebe28be9c5d24bf9109015ee746b95a0984391c61b58b0046d0c'  # kr
+    'e6b1699f1d2cb2d0dd0f80dac234bb41abcd5097fa9177c4b41fd302523dcdc0'  # krc
+    '4c3bf4eb2fdbc166d18fa89205395d83a13f8724834998798b9f8b52f728d3f3'  # kr
     '3cfcfd48dbe7e31e6050621e5f7250054b26773d866712db0ea8563ecb509b85'  # alloc
     '8f14cdb50cd5e66f3a85c70a762cc57daf03fd734089770ef404cf813f10291f'  # string
     'b28a2b6af75010cfeaaff86e27c3eadb3445a365eb6f87120746ba4f24b9f90b'  # io
@@ -96,8 +96,8 @@ sha256sums_x86_64=(
 )
 
 sha256sums_aarch64=(
-    '5b2f0b4788af0c7462c681e00e5cce11eee8e20728258cac2cba2ff78ae65552'  # krc
-    '187cac2a4fded623105a7be74cd69075d121f1d6810dcd623c00c77f59c84071'  # kr
+    'd3947044027ea775aa96e584bb0e4faf58c5e1957b283752ae11c1cf0f7d188e'  # krc
+    '75b9817d064d44459b39b547a7d3311a51df0097b3dd60bba4be20e2d683dfbf'  # kr
     '3cfcfd48dbe7e31e6050621e5f7250054b26773d866712db0ea8563ecb509b85'  # alloc
     '8f14cdb50cd5e66f3a85c70a762cc57daf03fd734089770ef404cf813f10291f'  # string
     'b28a2b6af75010cfeaaff86e27c3eadb3445a365eb6f87120746ba4f24b9f90b'  # io
