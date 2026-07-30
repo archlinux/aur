@@ -11,9 +11,9 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
-pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
+pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
 url="${_repo}"
 license=('GPL-3.0-only')
@@ -39,7 +39,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # packaging/aur/build-release-tarball.sh). No makedepends, no build() — this
 # is a pure -bin repackage.
 source=("${_repo}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('00e330ac38baf03b65f772c966fc78f7f2b648a89fb9034c38fedae7e63bbb56')   # sha256 of the release tarball; bump alongside pkgver on each release
+sha256sums=('258566a89d4a6d08303ab0a169e6eabf2b41f8a9fab522a5fe74c8894e7096e6')   # sha256 of the release tarball; bump alongside pkgver on each release
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-x86_64"
