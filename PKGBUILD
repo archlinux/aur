@@ -2,7 +2,7 @@
 pkgname=jiwu-mall-chat-bin
 _pkgname=JiwuChat
 _zhsname='极物圈聊天'
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.(Prebuilt version)一个轻量的多端随时随地的聊天应用 ✨"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('ad1ebec855f43e925d50844776d6bee633d81f480a6f23fc1a4124ba840b9ee1')
+sha256sums=('aa3e2ec83830ea0bf5b27a361fd8224fead3f301769983d259c431b8e9e9d6d6')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
@@ -29,11 +29,12 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
-    _icon_sizes=(32x32 128x128 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
+    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
