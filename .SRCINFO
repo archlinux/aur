@@ -1,6 +1,6 @@
 pkgbase = whatly-bin
 	pkgdesc = Feature-rich WhatsApp Web desktop client based on Qt WebEngine (prebuilt)
-	pkgver = 6.8.1
+	pkgver = 6.8.2
 	pkgrel = 1
 	url = https://github.com/shakaran/whatly
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = whatly-bin
 	conflicts = whatly
 	conflicts = whatly-git
 	options = !strip
-	source = Whatly-6.8.1-x86_64.AppImage::https://github.com/shakaran/whatly/releases/download/v6.8.1/Whatly-6.8.1-x86_64.AppImage
-	sha256sums = 34e8d083c0e1ecf735ad782a0857e5043b12c0fe61422cde15c4d80e099bbb9b
+	source = Whatly-6.8.2-x86_64.AppImage::https://github.com/shakaran/whatly/releases/download/v6.8.2/Whatly-6.8.2-x86_64.AppImage
+	sha256sums = 891f3e5c35bdecd1d1008b66c0b2a60c955d59569602dcee8b547cafd4e39b2d
 
 pkgname = whatly-bin
