@@ -12,8 +12,8 @@ options=('!strip' '!debug')
 install=dropout-bin.install
 source_x86_64=("https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.6/Dropout_0.2.0-alpha.6_amd64.deb")
 source_aarch64=("https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.6/Dropout_0.2.0-alpha.6_arm64.deb")
-sha256sums_x86_64=('7fd47c5e18cff3c30ce4d6e9856a00a376cced4a1c67fafb0ed7b042648e31e3')
-sha256sums_aarch64=('8c5cdb4d4ad2612bbb99df3a8b680435342e9b43e1b9f121548909520ab4c14e')
+sha256sums_x86_64=('fdd0dd714f4abf86ca5d6bf98e5c17248e144c54d6afe707e420e2e7cf96ca28')
+sha256sums_aarch64=('b8a0cb5d47d3ba5eb04e11ad8ade4b68dadd84e5174add8733e5411dc5df67c5')
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
