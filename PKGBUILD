@@ -1,4 +1,4 @@
-# Maintainer: Zhoneym <Zhoneym@outlook.com>
+# Maintainer: forgezhzh <forgezhzh@outlook.com>
 pkgname=cri-dockerd-bin
 pkgver=0.4.4
 pkgrel=1
