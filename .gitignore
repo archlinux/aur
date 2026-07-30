@@ -1,0 +1,6 @@
+*
+# dev tools
+!.gitignore
+# actual package
+!PKGBUILD
+!.SRCINFO
