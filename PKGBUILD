@@ -1,6 +1,6 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=ni-wine
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Native Instruments software under Wine — setup, launch, and product management"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('wine-staging: recommended Wine build for Native Instruments'
             'chromium: automatic download-URL capture (alternative to firefox)'
             'yad: nicer-looking setup progress dialog')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('841a0be0c2d4a6eb8fb0df732ebd9fecbf5e8266de71b2e352d478e83cca24cd')
+sha256sums=('7cd9865fdf7ed433bfe925080b525dac194aaa559b2913d6634cf19a78964302')
 
 build() {
   cd "native-instruments-$pkgver"

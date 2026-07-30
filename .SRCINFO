@@ -1,6 +1,6 @@
 pkgbase = ni-wine
 	pkgdesc = Native Instruments software under Wine — setup, launch, and product management
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/selimbucher/native-instruments
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ni-wine
 	optdepends = firefox: automatic download-URL capture (any firefox- or chromium-family browser works)
 	optdepends = chromium: automatic download-URL capture (alternative to firefox)
 	optdepends = yad: nicer-looking setup progress dialog
-	source = ni-wine-2.1.0.tar.gz::https://github.com/selimbucher/native-instruments/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 841a0be0c2d4a6eb8fb0df732ebd9fecbf5e8266de71b2e352d478e83cca24cd
+	source = ni-wine-2.1.1.tar.gz::https://github.com/selimbucher/native-instruments/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 7cd9865fdf7ed433bfe925080b525dac194aaa559b2913d6634cf19a78964302
 
 pkgname = ni-wine
