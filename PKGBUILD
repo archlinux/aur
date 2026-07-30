@@ -1,7 +1,7 @@
 # Maintainer: Lucas Hubner <lucashubner@archlinux.org>
 
 pkgname=infisical
-pkgver=0.43.113
+pkgver=0.43.115
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/cli"
@@ -10,7 +10,7 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4a71200620b502a8949af030a38fcf50382c2a77e8f70c8e531beb95f87f1df')
+sha256sums=('45f530b316ccd3a0b33e0858288a17ae0c0f0a978fe099815a9940cf9691faee')
 
 _archive="cli-$pkgver"
 
