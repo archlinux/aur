@@ -18,6 +18,11 @@ depends=(
   'python-pyparsing'
   'hicolor-icon-theme'
   'desktop-file-utils'
+  # Le ribbon utilise des emojis couleur comme icônes (🖨, 🖼, 🔒, 🌐…) — sans
+  # police d'emoji couleur installée, ces boutons s'affichent comme des
+  # rectangles vides (glyphe manquant), pas juste en noir et blanc. Trouvé en
+  # testant le paquet AUR de la 0.1.16 sur un système Arch minimal.
+  'noto-fonts-emoji'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 # bandit n'est pas empaqueté sur Arch/AUR (ni officiel ni AUR à ce jour) — l'analyse

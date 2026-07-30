@@ -20,6 +20,7 @@ pkgbase = pdf-equilibrist
 	depends = python-pyparsing
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	depends = noto-fonts-emoji
 	optdepends = python-pip: pour installer bandit manuellement et activer l'analyse SAST intégrée
 	source = pdf-equilibrist-0.1.16.tar.gz::https://github.com/Bit-Scripts/PDF-Equilibrist/archive/refs/tags/v0.1.16.tar.gz
 	source = io.github.BitScripts.PDFEquilibrist.desktop
