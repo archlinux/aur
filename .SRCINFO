@@ -1,22 +1,22 @@
 pkgbase = hunk
 	pkgdesc = Terminal diffs for humans and agents
-	pkgver = 0.13.2
+	pkgver = 0.14.1
 	pkgrel = 0
 	url = https://www.hunk.dev/
 	changelog = hunk.changelog
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	checkdepends = git
 	checkdepends = jujutsu
 	checkdepends = nodejs
 	makedepends = bun
+	makedepends = git
 	depends = glibc
 	depends = icu
 	provides = hunkdiff
 	options = !strip
 	options = !debug
-	source = hunk-v0.13.2.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v0.13.2.tar.gz
-	b2sums = d8499937315da6d05202be69ead35d053d37e21d0fc23bb2e7f3c34ec54468aeba13ab45d5d37ee604d5b92b8eae30ef40828ad1fdcf24ed6d36a1d4b4dffb89
+	source = hunk::git+https://github.com/modem-dev/hunk.git#tag=v0.14.1
+	b2sums = 66470ab8679fcef3868845ad43e53d039c2dfb8ccbe42c5dda0030a9bc2d3c230eda070dedf1a8493a04069238154a93e51177ef6d62d6a078f802c8d8faef75
 
 pkgname = hunk
