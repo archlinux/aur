@@ -6,8 +6,8 @@
 # submodule-built C++ dependencies that the upstream tree normally drives.
 
 pkgname=rocm-gpu-agent
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="AMD ROCm GPU Agent: metrics daemon (gpuagent) and control CLI (gpuctl) for AMD Instinct GPUs"
 arch=('x86_64')
 url="https://github.com/ROCm/gpu-agent"
@@ -36,12 +36,14 @@ source=(
     'gpuagent.conf'
     'fix-base-snprintf-sizeof-pointer.patch'
     'fix-gpu-watch-stack-overflow.patch'
+    'fix-boost-lockfree-queue-capacity.patch'
 )
-sha256sums=('f540f6ca1221f675357f96fa561d78bf6e46345cab75401d51caf5e729fe571c'
+sha256sums=('011f44387aad24942b63b346f360453ba4abfb6790d493dd34401b768cc94cc6'
             '8d35441bdbae38652e52fcfe22c7b677fdcad9a184ffe333e77507afc9d5d27e'
             'b266380dbe91bc69ffc94ea9a9b7412f4699eda7faf22a617769faeab19ba0bb'
             '70291528d5b84a29516cc7aa907aa5c4c6251b7b0bd6b01f6fc6fd37ee897018'
-            '1a331e00133c6ff3306d314d9084201b3ddaaa62f9b0cdc54b3f7f94a4decd32')
+            '1a331e00133c6ff3306d314d9084201b3ddaaa62f9b0cdc54b3f7f94a4decd32'
+            '5e31b7a994d359221553beb3561ef844f954cab8613364c98e017e8104e7be52')
 backup=('etc/gpuagent/gpuagent.conf')
 
 # ---------------------------------------------------------------------------
@@ -50,11 +52,18 @@ backup=('etc/gpuagent/gpuagent.conf')
 prepare() {
     local agentdir="${srcdir}/${_srcname}/sw/nic/gpuagent"
 
+    # Use GOPROXY mirror for all go commands: this host's IPv6 route to
+    # proxy.golang.org times out (dial tcp [2607:...]:443: i/o timeout).
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
+
     # ---- 0. Fix upstream bug: sizeof(pointer) used instead of buffer size in snprintf ----
     patch -p1 -d "${srcdir}/${_srcname}" < "${srcdir}/fix-base-snprintf-sizeof-pointer.patch"
 
     # ---- 0b. Fix GPUWatchGet stack overflow: ~2.3 MB stack var -> heap allocation ----
     patch -p1 -d "${srcdir}/${_srcname}" < "${srcdir}/fix-gpu-watch-stack-overflow.patch"
+
+    # ---- 0c. Fix boost >= 1.91: lockfree::queue default ctor requires static capacity ----
+    patch -p1 -d "${srcdir}/${_srcname}" < "${srcdir}/fix-boost-lockfree-queue-capacity.patch"
 
     # ---- 1. Fix hardcoded ABS_DIR (absolute build-root path) ----
     sed -i "s|ABS_DIR\s*:=\s*/usr/src/github.com/ROCm/gpu-agent/sw|ABS_DIR := ${srcdir}/${_srcname}/sw|g" \
@@ -188,7 +197,8 @@ build() {
     # gpuagent C++ daemon via patched Makefile
     make -C "${agentdir}" TOPDIR="${topdir}" gpuagent
 
-    # gpuctl pure-Go CLI
+    # gpuctl pure-Go CLI (GOPROXY mirror avoids IPv6 timeout; vendored anyway)
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
     cd "${agentdir}"
     CGO_ENABLED=1 go build \
         -trimpath \

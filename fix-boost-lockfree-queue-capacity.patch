@@ -1,0 +1,11 @@
+--- a/sw/nic/sdk/lib/lfq/lfq.cc
++++ b/sw/nic/sdk/lib/lfq/lfq.cc
+@@ -62,7 +62,7 @@
+ 
+ private:
+     lfq_impl(uint32_t size):queue_(size) {}
+-    lfq_impl():queue_() {}
++    lfq_impl():queue_(128) {}
+     ~lfq_impl() {}
+ 
+ private:
