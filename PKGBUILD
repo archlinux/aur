@@ -9,7 +9,7 @@ _rev=r03
 _ext=ext3
 pkgname=android-platform-${_apilevel}
 pkgver=${_apilevel}_${_rev}
-pkgrel=1
+pkgrel=2
 pkgdesc="Android SDK Platform, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
@@ -20,7 +20,7 @@ options=('!strip')
 source=("https://dl.google.com/android/repository/platform-${_apilevel}-${_ext}_${_rev}.zip"
          "package.xml")
 sha256sums=('b32b10f787867987f03ae8e101d217e053a9065b7136379fb353b388379aed1d'
-            '7cf97324916132f88a5ae817f8dec0353b52bbf64c457394c8a52cd3cb9460a8')
+            '2124a22d3c0435cfd592c737b0e6b09db74d96f1c7f60f340e98be6144cb4c5d')
 
 package() {
   depends=('android-sdk' 'android-sdk-platform-tools')
