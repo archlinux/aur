@@ -1,0 +1,13 @@
+pkgbase = eternalterminal
+	pkgdesc = A custom Qt6 terminal emulator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FourSage747/EternalTerminal
+	arch = x86_64
+	license = GPL
+	depends = qt6-base
+	depends = qt6-declarative
+	source = git+https://github.com/FourSage747/EternalTerminal.git
+	sha256sums = SKIP
+
+pkgname = eternalterminal
