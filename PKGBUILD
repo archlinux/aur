@@ -1,6 +1,6 @@
 # Maintainer: Paul Woisard <paulwoisard@gmail.com>
 pkgname=pdf-equilibrist
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Éditeur PDF de bureau, gratuit et open-source, construit avec PyQt6 et PyMuPDF"
 arch=('any')
@@ -37,7 +37,7 @@ source=(
   "io.github.BitScripts.PDFEquilibrist-256.png"
 )
 sha256sums=(
-  'e09da66e4cc88d55ac49200e5b66867a01b31dc7d972aaae79e1a61f46b9d341'
+  'c2f4ebaff8f548d0d71fd4cb102554e388ef1f539559308af152032836071a7c'
   '51e985d95bae29ed2c6fb94029f7d790d9edc8d6dfe20a6385e275670cb8c383'
   'c35f51471c5dc7b607724da79828f039b9a6649f12e1faae10053f5513e33002'
   '91debebf1a5663c6b52cb1ad101c023d6ce751d3773476448808ad50c63fc440'
@@ -78,4 +78,12 @@ package() {
   # vide au lancement, cf. bug trouvé lors du premier test makepkg -si).
   mkdir -p "$pkgdir/usr/share/pdf-equilibrist"
   cp -r assets "$pkgdir/usr/share/pdf-equilibrist/assets"
+
+  # Même piège pour les traductions Qt (.qm) : resource_path() ne les trouve
+  # que sous $PREFIX/share/pdf-equilibrist/translations/ pour un paquet système
+  # — sans ça install_translator() ne trouve jamais le fichier et l'app reste
+  # toujours en français quelle que soit la langue choisie (trouvé lors du
+  # test AUR de la 0.1.15, i18n de l'app jamais testé sur un paquet système
+  # avant ce test).
+  cp -r translations "$pkgdir/usr/share/pdf-equilibrist/translations"
 }
