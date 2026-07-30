@@ -1,0 +1,14 @@
+pkgbase = luna-gpt
+	pkgdesc = Arunachalam's An advanced cybersecurity chatbot and intelligent desktop assistant for Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/Luna-gpt
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	source = git+https://github.com/Arunachalam-gojosaturo/Luna-gpt.git
+	sha256sums = SKIP
+
+pkgname = luna-gpt
