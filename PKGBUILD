@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Wayland voice dictation daemon and recording HUD (prebuilt)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('sayall' 'sayall-src' 'sayall-git')
 options=('!debug')
 install='sayall-bin.install'
 source=("sayall-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/sayall-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('7f261b00b5ac1334488b0dcbf03d8330b8323f9662e5b678cbeeb164cf7f59cf')
+sha256sums=('5162f63368fbfb62a5545e9128cfd56a2d7add46d062a67a3041072575285218')
 
 package() {
   local src="$srcdir/sayall-$pkgver-linux-x86_64"
