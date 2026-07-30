@@ -4,8 +4,8 @@
 _gitname="krohnkite"
 _pkgname="kwin-scripts-$_gitname"
 pkgname="$_pkgname-git"
-pkgver=0.9.9.2.r57.g39486c4
-pkgrel=2
+pkgver=0.9.9.2.r97.g7b53860
+pkgrel=1
 pkgdesc="A dynamic tiling extension for KWin"
 url="https://codeberg.org/anametologin/Krohnkite"
 license=('MIT')
@@ -23,9 +23,16 @@ _pkgsrc="codeberg.krohnkite"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+  sed -e '/"compilerOptions":/a "rootDir": "src",' \
+    -e '/"compilerOptions":/a "ignoreDeprecations": "6.0",' \
+    -i "$_pkgsrc/tsconfig.json"
+}
+
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
