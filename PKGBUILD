@@ -1,7 +1,7 @@
 # Maintainer: DonutsDelivery <donutsdelivery@users.noreply.github.com>
 # The historical package name is retained so existing AUR users upgrade in place.
 pkgname=localbooru-donut
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Private local image and video library with optional AI tagging"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=(
     '3306b10d23af40e7666e965b0f0a4ea95b4528ade79ecccee0a3b68e583ab21d'
 )
 sha256sums_x86_64=(
-    '6bee3a7e9a0d418b6a58159de49604fc7b53520ef4bc8f35e8caf840a4509c21'
+    '9fe94e851b111234900dfc0d09749ae2b5fe8b252181388939acaef598800c3c'
 )
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = localbooru-donut
 	pkgdesc = Private local image and video library with optional AI tagging
-	pkgver = 2.0.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/LocalBooru
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = localbooru-donut
 	depends = fuse2
 	depends = zlib
 	options = !strip
-	source = localbooru-icon-2.0.0.png::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v2.0.0/assets/icon.png
-	source = localbooru-license-2.0.0::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v2.0.0/LICENSE
+	source = localbooru-icon-2.0.3.png::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v2.0.3/assets/icon.png
+	source = localbooru-license-2.0.3::https://raw.githubusercontent.com/DonutsDelivery/LocalBooru/v2.0.3/LICENSE
 	sha256sums = 1c21d4fc5e5dbf6df38e739d8284e048e0d6be83dc9973c882b6eb69d92fb341
 	sha256sums = 3306b10d23af40e7666e965b0f0a4ea95b4528ade79ecccee0a3b68e583ab21d
-	source_x86_64 = LocalBooru-Linux-2.0.0.AppImage::https://github.com/DonutsDelivery/LocalBooru/releases/download/v2.0.0/LocalBooru-Linux.AppImage
-	sha256sums_x86_64 = 6bee3a7e9a0d418b6a58159de49604fc7b53520ef4bc8f35e8caf840a4509c21
+	source_x86_64 = LocalBooru-Linux-2.0.3.AppImage::https://github.com/DonutsDelivery/LocalBooru/releases/download/v2.0.3/LocalBooru-Linux.AppImage
+	sha256sums_x86_64 = 9fe94e851b111234900dfc0d09749ae2b5fe8b252181388939acaef598800c3c
 
 pkgname = localbooru-donut
