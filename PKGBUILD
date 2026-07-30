@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-speechrecognition: Speech to Text'
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('b50b3e866d3a0e2270435832a0c29d6eaf8ac36808c44220445d1090107bdb4f')
+sha256sums=('51ac0de1506849c0dfbee282c4d57347303cea987e8faca5337fa51202b422e9')
 
 package() {
     cd "OSC-DreamChatbox-${_tag#v}"
