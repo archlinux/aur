@@ -9,6 +9,7 @@ pkgbase = cosmic-vrr-toggle-git
 	makedepends = git
 	depends = bash
 	depends = cosmic-randr
+	depends = cosmic-session
 	depends = gamemode
 	depends = procps-ng
 	depends = systemd
