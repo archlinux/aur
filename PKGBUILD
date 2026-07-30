@@ -15,7 +15,6 @@ depends=(
   'qt6-svg'
   'layer-shell-qt'
   'libqalculate'
-  'minizip'
   'qtkeychain-qt6'
   'syntax-highlighting'
 )
