@@ -1,7 +1,7 @@
-# Maintainer: Christian Kühn (damachine3 at proton dot me)
+# Maintainer: Christian Kühn (damachin3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=3.2.3.r0.g0695e0c
+pkgver=3.2.4.r0.g1b6045f
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -14,7 +14,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('var/lib/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=0695e0c2f1a45a5d75f7a4fada52164e518ef66f
+_commit=1b6045f87fbb1906106a92852c4e5b03103643b6
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
@@ -46,6 +46,8 @@ package() {
     install -dm711 "${pkgdir}/var/lib/coolercontrol"
     install -dm755 "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash"
     install -Dm755 "${srcdir}/${pkgname}/bin/coolerdash" "${pkgdir}/usr/libexec/coolerdash/coolerdash"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s ../libexec/coolerdash/coolerdash "${pkgdir}/usr/bin/coolerdash"
     install -m644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/README.md"
     install -m644 "${srcdir}/${pkgname}/VERSION" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/VERSION"
     install -m644 "${srcdir}/${pkgname}/CHANGELOG.md" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/CHANGELOG.md"
