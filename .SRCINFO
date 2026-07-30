@@ -6,11 +6,11 @@ pkgbase = niri-screenshare
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	depends = gtk4
-	depends = libadwaita
 	depends = xdg-desktop-portal
 	depends = pipewire
 	depends = niri
+	depends = gtk4
+	depends = libadwaita
 	source = niri-screenshare-0.2.1.tar.gz::https://github.com/pantarune/niri-screenshare/archive/v0.2.1.tar.gz
 	sha256sums = SKIP
 

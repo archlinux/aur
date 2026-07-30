@@ -8,11 +8,11 @@ arch=('x86_64')
 url="https://github.com/pantarune/niri-screenshare"
 license=('GPL3')
 depends=(
-  'gtk4'
-  'libadwaita'
   'xdg-desktop-portal'
   'pipewire'
   'niri'
+  'gtk4'
+  'libadwaita'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pantarune/$pkgname/archive/v$pkgver.tar.gz")
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export CARGO_TARGET_DIR="$srcdir/target"
-  cargo build --release 
+  cargo build --release
 }
 
 package() {
