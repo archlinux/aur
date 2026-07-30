@@ -1,7 +1,7 @@
 pkgbase = wljs-notebook-bin
 	pkgdesc = WLJS Notebook – interactive notebook for Wolfram Language / Wolfram Engine
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wljs.io
 	arch = x86_64
 	license = GPL-3

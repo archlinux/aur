@@ -2,7 +2,7 @@
 
 pkgname=wljs-notebook-bin
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WLJS Notebook – interactive notebook for Wolfram Language / Wolfram Engine"
 arch=('x86_64')
 url="https://wljs.io"
@@ -34,8 +34,8 @@ package() {
   find "$pkgdir" -type f -exec chmod 644 {} \;
 
   # mark the main binary executable
-  if [[ -f "$pkgdir/opt/WLJS Notebook/wljs-notebook" ]]; then
-    chmod +x "$pkgdir/opt/WLJS Notebook/wljs-notebook"
+  if [[ -f "$pkgdir/opt/wljs-notebook/wljs-notebook" ]]; then
+    chmod +x "$pkgdir/opt/wljs-notebook/wljs-notebook"
   fi
 }
 
