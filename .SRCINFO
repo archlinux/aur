@@ -1,0 +1,18 @@
+pkgbase = cosmic-ext-applet-caffeine-berchi-git
+	pkgdesc = Caffeine for COSMIC – Prevent screen sleep, display timeout, and system suspend. Native Rust applet with timer options and multiple inhibit modes.
+	pkgver = r7.83fdd93
+	pkgrel = 1
+	url = https://github.com/Oussamaberchi/caffeine-cosmic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-applets
+	provides = cosmic-ext-applet-caffeine-berchi
+	conflicts = cosmic-ext-applet-caffeine-berchi
+	source = cosmic-ext-applet-caffeine-berchi::git+https://github.com/Oussamaberchi/caffeine-cosmic.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-applet-caffeine-berchi-git
