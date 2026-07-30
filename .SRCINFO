@@ -1,7 +1,7 @@
 pkgbase = prometheus-bind-exporter-git
 	pkgdesc = Prometheus exporter for BIND metrics
 	pkgver = v0.8.0.r46.g78cbe84
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prometheus-community/bind_exporter
 	arch = x86_64
 	license = Apache-2.0

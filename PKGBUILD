@@ -4,7 +4,7 @@
 pkgname=prometheus-bind-exporter-git
 _pkgname=bind_exporter
 pkgver=v0.8.0.r46.g78cbe84
-pkgrel=3
+pkgrel=4
 pkgdesc='Prometheus exporter for BIND metrics'
 arch=('x86_64')
 url='https://github.com/prometheus-community/bind_exporter'
@@ -64,8 +64,8 @@ build() {
 
 package() {
   # systemd integration
-  install -Dm644 "systemd.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 "sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "systemd.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 "sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
 
   # binary
   install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname/build/$_pkgname"
