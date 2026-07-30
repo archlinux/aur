@@ -22,26 +22,17 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.2004
+pkgver=0.5.120
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50c93a46a218362d5000a27b0f7473d0d63b76e46a5c04426f3eda46cd7da783')
+sha256sums=('6ca86bb67ed1ed86aa2e0d2ea1cefbc08c79e6e26615924958141c7d685e8f8b')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
 
-    # The xcb crate gates its screensaver module behind the "screensaver"
-    # feature flag (xcb >= 1.7.0) but deadsync's Cargo.toml does not request
-    # it, causing a compile error.  Inject the feature with `cargo add` before
-    # fetching dependencies.  Remove this block once fixed upstream.
     export RUSTUP_TOOLCHAIN=stable
-    cargo add xcb --features screensaver
-
-    # Cargo.lock will have been updated by the above so we use --target
-    # without --locked here.  The build step still uses --frozen since no
-    # further changes will be made between prepare() and build().
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
