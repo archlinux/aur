@@ -3,7 +3,7 @@
 
 pkgname=hydrogen-music-bin
 _pkgname=hydrogen-music
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Arknights-style third-party NetEase Cloud Music player built with Electron and Vue 3'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 noextract=("${_pkgname}-${pkgver}.AppImage")
 sha256sums=(
-  'e46e026e50e1efc4a18b91fc832cde7dcc3f2a00df5736d8bd78067937b106e9'
+  'eedf74f9e597a4391af2952fa1fecc6f0ef8810a772cbe14caf2bcd7f0cd2d0e'
   'e942d5307c7690a86826828212bbabbc13b17e13879d828b4a06b73c34cf0025'
   '0d63d1741e2c23866af592ac48a93f986a386575f90ffff2c67add4633db04e6'
 )
