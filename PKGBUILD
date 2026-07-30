@@ -15,7 +15,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulseaudio: Sound'
             'upower: Battery API')
 provides=("firefox-34")
-source=($url)
+source=("${url}firefox-34.0.tar.bz2")
 sha256sums=("afe20592beef371ef6e536010c95e3cc9e4c82927a53d58436f5c8348e4ad3dd")
 
 package() {
