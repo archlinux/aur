@@ -1,51 +1,25 @@
-# Maintainer: FantomTchi7 <vladislav.kudriashev@gmail.com>
-# Based on android-sdk-build-tools by xgdgsc and mynacol
+# Maintainer: farwayer <farwayer@gmail.com>
 
-pkgname=android-sdk-build-tools-34
-#_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
-_major=34
-_minor=0
-_micro=1
-_ver=34.0.0
-_displayversion=34
-pkgver=r34.0.0
-pkgrel=1
-_sdk=android-sdk
+_ver=34
+_fullver=34.0.0
 _android=android-14
-
+pkgname=android-sdk-build-tools-$_ver
+pkgver=r$_ver
+pkgrel=2
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('x86_64')
-url="https://developer.android.com/studio/releases/build-tools"
+url='https://developer.android.com/studio/releases/build-tools'
 license=('custom')
-depends=('gcc-libs' 'zlib' 'bash')
-optdepends=('lib32-gcc-libs' 'lib32-zlib' 'java-runtime')
-
-source=("https://dl-ssl.google.com/android/repository/build-tools_r${_major}-linux.zip"
-        "package.xml")
-sha512sums=('c28dd52f8eca82996726905617f3cb4b0f0aee1334417b450d296991d7112cab1288f5fd42c48a079ba6788218079f81caa3e3e9108e4a6f27163a1eb7f32bd7'
-            '501211771b02940010420a4003b8396d3d6599fb339c2f64959335ab1c3cf615811cc62acaa093c9f4e14bbc019a9e493835573a5136383617d8b5184509d3f8')
+depends=('gcc-libs' 'zlib')
+optdepends=('lib32-gcc-libs' 'lib32-zlib')
+source=("https://dl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
+sha256sums=('e858c4b60069d0431051b225d384413b1643e1289b00a4825aed347f25bd510f')
 options=('!strip')
 
 package() {
   cd "$pkgdir"
-
-  install -d usr/share/licenses/$pkgname/
-  ln -s /opt/$_sdk/build-tools/$_ver/NOTICE.txt usr/share/licenses/$pkgname/NOTICE.txt
-  sed -i "s/@major@/$_major/g;s/@minor@/$_minor/g;s/@micro@/$_micro/g;s/@displayv@/$_displayversion/g;s/@pathv@/$_ver/g" "$srcdir/package.xml"
-  install -Dm644 "${srcdir}/package.xml" opt/$_sdk/build-tools/$_ver/package.xml
-  ln -s /opt/$_sdk/build-tools/$_ver/package.xml usr/share/licenses/$pkgname/package.xml
-
-  target="opt/$_sdk/build-tools/$_ver"
-  mkdir -p "$target"
-  cp -r "$srcdir/$_android/"* "$target"
-  chmod +Xr -R "$target"
-
-  # Add symlinks to binaries to usr/bin/
-  mkdir -p usr/bin/
-  # lld is also provided by extra/lld, not creating symlink
-  binaries=$(find "${target}" -maxdepth 1 -type f -executable -not -iname lld -printf "%f\n")
-  for f in ${binaries[@]}
-  do
-    ln -s "/$target/$f" "usr/bin/$f"
-  done
+  install -Dm644 "${srcdir}/$_android/NOTICE.txt" usr/share/licenses/$pkgname/NOTICE.txt
+  mkdir -p opt/android-sdk/build-tools/$_fullver
+  cp -r "$srcdir/$_android/"* "$pkgdir/opt/android-sdk/build-tools/$_fullver"
+  chmod +Xr -R "$pkgdir/opt/android-sdk/build-tools/$_fullver"
 }
