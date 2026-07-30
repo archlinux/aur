@@ -47,6 +47,7 @@ package() {
   cd "$srcdir/${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 scripts/AUR/com.aziis98.pdfatlas.desktop "$pkgdir/usr/share/applications/com.aziis98.pdfatlas.desktop"
+  install -Dm644 assets/com.aziis98.pdfatlas.desktop "$pkgdir/usr/share/applications/com.aziis98.pdfatlas.desktop"
   install -Dm644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.aziis98.pdfatlas.png"
+
 }
