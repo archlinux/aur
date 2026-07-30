@@ -19,6 +19,7 @@ _github_repo=Curfew
 
 build() {
   cd "$srcdir/${_github_repo}-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
@@ -26,6 +27,5 @@ package() {
   cd "$srcdir/${_github_repo}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # 安装 LICENSE 文件
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
