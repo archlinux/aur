@@ -1,6 +1,6 @@
 pkgbase = catenary
 	pkgdesc = LSP-powered code intelligence for AI coding agents
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/TwoWells/Catenary
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = catenary
 	depends = gcc-libs
 	provides = catenary
 	conflicts = catenary-bin
-	source = catenary-2.1.1.tar.gz::https://github.com/TwoWells/Catenary/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = 3abd5be8a880952f00d86aed02e94b553338d9aea5d3793eb8d9f5b85bacb12e
+	source = catenary-2.1.2.tar.gz::https://github.com/TwoWells/Catenary/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = 2174534eaea7c5d2e9ecc5356a02da305e81ca64428ad50eda757caaf59b3bd1
 
 pkgname = catenary
