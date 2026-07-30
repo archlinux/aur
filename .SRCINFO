@@ -1,0 +1,20 @@
+pkgbase = electron-webtoon
+	pkgdesc = A webtoon comic reading software (reader).(Use system-wide electron)
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://github.com/Qquanwei/electron-webtoon
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = jq
+	depends = electron33
+	source = electron-webtoon-2.5.2.tar.gz::https://github.com/Qquanwei/electron-webtoon/archive/refs/tags/v2.5.2.tar.gz
+	source = electron-webtoon.sh
+	sha256sums = b76dc1c120d6f0e5fdde51b5c46b5403e2ccf2aff3666e37f7c90cdf347bfb9a
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = electron-webtoon
