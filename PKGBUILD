@@ -1,6 +1,6 @@
 # Maintainer: Jose Andres Auyon <auyon.joseandres@gmail.com>
 pkgname=git-profile-switcher-git
-_appname=git-config-switcher
+_appname=git-profile-switcher
 pkgver=1.0.0.r0.g44bfc24
 pkgrel=1
 pkgdesc="Cross-platform desktop tray app for managing multiple Git identities"
@@ -71,7 +71,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/git-profile-switcher" <<'EOF'
 #!/usr/bin/env bash
-exec /opt/git-profile-switcher/git-config-switcher "$@"
+exec /opt/git-profile-switcher/git-profile-switcher "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/git-profile-switcher"
 
