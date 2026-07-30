@@ -19,8 +19,6 @@ depends=(
   layer-shell-qt
   libqalculate
   qtkeychain-qt6
-  libxml2
-  minizip
   syntax-highlighting
 )
 makedepends=("sed")
