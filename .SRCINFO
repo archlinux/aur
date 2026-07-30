@@ -1,7 +1,7 @@
 pkgbase = oh-my-pi
 	pkgdesc = AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more
-	pkgver = 17.1.8
-	pkgrel = 2
+	pkgver = 17.2.0
+	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = oh-my-pi
 	depends = opus
 	depends = pcre2
 	options = !strip
-	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.1.8
+	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.2.0
 	source = tree-sitter-no-strict-aliasing.patch
 	source = use-system-opus-pcre2.patch
 	source = skip-native-embed-for-aur.patch
