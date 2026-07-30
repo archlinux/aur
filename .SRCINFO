@@ -1,0 +1,25 @@
+pkgbase = tomatick-bin
+	pkgdesc = Modern, lightweight Pomodoro timer (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/motudev/tomatick
+	install = tomatick.install
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus
+	provides = tomatick
+	conflicts = tomatick
+	source = tomatick::https://github.com/motudev/tomatick/releases/download/v0.1.0/tomatick
+	source = tomatick.svg
+	source = tray-break.svg
+	source = dev.motusoft.Tomatick.desktop
+	source = LICENSE
+	sha256sums = ba6b63aa4e21cba98ee32f9654332da74cba2e7264b3f7e401f8ec8cc4f04941
+	sha256sums = 60f58c592416951379fa3b4cfcf3b68b3976da7b4cc7901d77933db9a85e20f1
+	sha256sums = 9021cff41dbaa22e94fc5cdf3d219d2ec52663ba6c34e161f0e32c0149915a8f
+	sha256sums = 0cae62e6dd9c7a64e3a56743e0be9403e135202d055da2e4b9a624a97f4d8e52
+	sha256sums = 1b6feffdec4f2448110bf7c020a6802eb3761b883224902180e89c20dcbc88ba
+
+pkgname = tomatick-bin
