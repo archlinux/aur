@@ -1,0 +1,3 @@
+[changed-cli]
+source = "cratesio"
+cratesio = "changed-cli"

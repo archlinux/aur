@@ -1,0 +1,18 @@
+pkgbase = changed-cli
+	pkgdesc = Live read-only TUI showing what changed in your git worktree
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/changed-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = git
+	provides = changed-cli
+	conflicts = changed-cli
+	source = changed-cli-0.3.0.crate::https://crates.io/api/v1/crates/changed-cli/0.3.0/download
+	sha256sums = 662ffedc07d477c24a3ab27aa8cd84b424ae9b811dfad3be39ddc7eb2c12d9bd
+
+pkgname = changed-cli
