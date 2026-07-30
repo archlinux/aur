@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Forensics and audit toolkit for shell environments"
 
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_linux_386=("${_appname}-${arch[1]}-${pkgver}.tzst::${_ghurl}/releases/dow
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tzst::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[02]}.pkg.tar.zst")
 sha256sums=('ad0acab668cb609eb06b24168b15d21925087b095bb91790d74a3666ebc1674e'
             '9ff9f3810963da568c194ffa007b480c9c66dfc44cbde49c2efcc1fc5508bc37')
-sha256sums_x86_64=('c9e9d2a555b9628730e93aa2c3be14daacb78fa1aa988cb6108de686d3478e8f')
-sha256sums_aarch64=('56642d558d4c8608dbfcc6b97ecf5547ea9614a727eadcbd2bcbbf38cb617cb4')
+sha256sums_x86_64=('a6569e1f4fc323cc29c002c622eb06170cf18d2a02c8852bab9930f7bbdeba41')
+sha256sums_aarch64=('5a9e599069c70b055b1606d04b4247e957581323412d346b218ae1bbd04195a1')
 
 
 package() {
