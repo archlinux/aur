@@ -1,6 +1,6 @@
 # Maintainer: Tjw123hh Pigmonky <tjw123hh@outlook.com>
 pkgname=python-east-asian-spacing-git
-pkgver=1.4.5.r7.g6dd1e59
+pkgver=1.4.5.r49.ge1a2f0b
 pkgrel=1
 pkgdesc="East Asian Contextual Spacing Build Tools"
 arch=('any')
@@ -15,7 +15,8 @@ makedepends=('git'
              'python-build'
              'python-installer'
              'python-hatchling'
-             'python-wheel')
+             'python-wheel'
+             'python-setuptools-scm')
 checkdepends=('python-pytest'
               'python-pytest-asyncio')
 provides=(${pkgname%-*}=$pkgver)
