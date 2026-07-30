@@ -4,7 +4,7 @@
 # Contributor: Ismaël Bouya <ismael.bouya@normalesup.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 pkgname=anaconda
-pkgver=2025.12.2
+pkgver=2026.07.1
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="Simplifies package management and deployment of Anaconda"
@@ -31,8 +31,8 @@ source_x86_64=(https://repo.${pkgname}.com/archive/Anaconda3-${_pkgver}-Linux-x8
 source_aarch64=(https://repo.${pkgname}.com/archive/Anaconda3-${_pkgver}-Linux-aarch64.sh)
 options=(!strip libtool staticlibs)
 sha512sums=('5822dd55b1668b166134ec6dc414b3ad13f34c4271e9dba8d2d4adb34440c8b664ce5b6f2b6bb9752f5ec115d8671015fca035f2f94c92d5ce8aba2a1782a9d5')
-sha512sums_x86_64=('126ba7b48f26fd2861c8b4c146671eaf3a65ab12c8b3cfb98e6ae293b0feddbdaeb3e23c12b34178fc529eb9d30c3fd36e7d6568a0ab243d41a508e0cb91ed31')
-sha512sums_aarch64=('02e762331481d0f1040e3560bee002c63f218ee7e7a05a9d15a259a5a7df70f1fd1f762e4dfef337242ed7b778a15aac34a6ef7f9c138745a7693c0f81438c8d')
+sha512sums_x86_64=('4991e6e0cb7c9814d755a47d4fd863478a97ba1f4701a067f517af3beddfaa3df614791135ea46366106f13e5ebdf062603a4194076e2d247edefbbc117a4120')
+sha512sums_aarch64=('4669fbb939fd626452ad59979d13dabc5aacdea61d7de9fedb156ff62853a633e9e7475d20892c3d7d69f32d6f2498c73c51e517ca942741d731f2b53bcfa1a4')
 install="${pkgname}.install"
 
 package() {
