@@ -6,7 +6,7 @@ _appname=zl
 pkgname=${_gitname}-bin
 pkgdesc="A modern ls alternative written in Zig"
 
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('dd0a0c7879712130df180d3aa1013f37a1c60b637ad5e75d4187bfc175ce4fe5'
             '0cc8677757eeadbb8743f51a8a5302af7af538ea75c0b8e1b301d277d0280c08')
-sha256sums_x86_64=('6821c424e2fd6bd79af892d689c5117233f77f914cd7f42703e2e7a5ab1542c6')
-sha256sums_aarch64=('d943d155c3c66d9e9692f9d9a6b55ccd7c0327b2a2f3460c08e44327f5570f48')
+sha256sums_x86_64=('c58c2b542fff7ccc78eb6add7177fec2e795482c164c4970d5614fadaacad668')
+sha256sums_aarch64=('2b0902c7ea4757b6c0f79d464cfd9898c9b4083d13067cd2f59b60f90fc68e87')
 
 
 case ${CARCH} in
