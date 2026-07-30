@@ -2,8 +2,8 @@
 
 _pkgname=shit
 pkgname=shit-git
-pkgver=r76.3a16d89
-pkgrel=2
+pkgver=r77.921b8d6
+pkgrel=1
 pkgdesc="Simple file server in Go (latest git)"
 arch=('x86_64' 'aarch64' 'pentium4' 'riscv64' 'loong64')
 url="https://github.com/notwithering/shit"
