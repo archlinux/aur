@@ -1,6 +1,6 @@
 pkgbase = classfi
 	pkgdesc = A simple classical music player
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/carmiac/classfi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = classfi
 	provides = classfi
 	conflicts = classfi-git
 	conflicts = classfi-bin
-	source = classfi-0.2.0.tar.gz::https://github.com/carmiac/classfi/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 7fb434015cda05adbeb92871118a2d716af049f2ede1700f9f7b74ae352cbc84
+	source = classfi-0.2.1.tar.gz::https://github.com/carmiac/classfi/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 0cd7f217b50f16f5a9cdcf8d46502a8993afdcfe91142559a33b7ca23ecc755c
 
 pkgname = classfi
