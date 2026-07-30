@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='dsr'
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Video compression tool"
 arch=('x86_64')
 url=https://git.mylloon.fr/Anri/dsr
@@ -14,7 +14,7 @@ conflicts=("$pkgname")
 optdepends=('ffmpeg: needed for some encoders')
 source_x86_64=("$pkgname-$pkgver.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip"
                "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png")
-sha256sums_x86_64=('745a0eef4a2905529c7c1518370b79eab693d90ff865d80a789943ff24a757fe'
+sha256sums_x86_64=('e1ce783c82cbc82d5bb9ea031145e1b311ae30cb6ef8ada428b85601f830f136'
                    '4233e03f2fcfa583ccfe5358c8709b459f1f2e9048cad837bb93d69c92fba17f')
 
 package() {
