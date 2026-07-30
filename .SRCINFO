@@ -1,6 +1,6 @@
 pkgbase = anvil-organizer
-	pkgdesc = Native Linux Mod Manager inspired by Mod Organizer 2
-	pkgver = 1.2.6
+	pkgdesc = Native Linux mod manager
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/Marc1326/Anvil-Organizer
 	arch = x86_64
@@ -10,11 +10,13 @@ pkgbase = anvil-organizer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.11
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-lz4
+	depends = python-keyring
+	depends = python-cryptography
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	source = anvil-organizer-1.2.6.tar.gz::https://github.com/Marc1326/Anvil-Organizer/archive/refs/tags/v1.2.6.tar.gz
-	sha256sums = SKIP
+	source = anvil-organizer-1.6.1.tar.gz::https://github.com/Marc1326/Anvil-Organizer/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = ec9414ec3ca3ceec116c1d271181289ee3ec62e25df8a8907b163f12ce443f6f
 
 pkgname = anvil-organizer
