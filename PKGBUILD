@@ -5,12 +5,13 @@ pkgname=python-postfix-policyd-spf
 _pkgname=pypolicyd-spf
 pkgver=2.0.2
 _pkgver=2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Python Postfix Sender Policy Framework (SPF) filter"
 arch=('any')
 url="https://launchpad.net/pypolicyd-spf/"
 license=('GPL')
 depends=('postfix' 'python-pyspf' 'python>=3.3')
+makedepends=('python-setuptools')
 optdepends=('python-authres: RFC 7001 Authentication-Results header support') 
 conflicts=('python2-postfix-policyd-spf')
 options=(!emptydirs)
