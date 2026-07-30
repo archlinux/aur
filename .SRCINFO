@@ -1,0 +1,14 @@
+pkgbase = aruu-git
+	pkgdesc = Actual replacement for Busybox
+	pkgver = r58.175955d
+	pkgrel = 1
+	url = https://github.com/xplshn/aruu
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = aruu
+	conflicts = aruu
+	source = git+https://github.com/xplshn/aruu.git
+	sha512sums = SKIP
+
+pkgname = aruu-git
