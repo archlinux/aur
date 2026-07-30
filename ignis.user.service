@@ -1,0 +1,22 @@
+[Unit]
+Description=Ignis Server (user)
+Documentation=https://ignis.thiefling.com/docs
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+SyslogIdentifier=ignis
+EnvironmentFile=-%E/ignis/ignis.env
+Environment=NODE_ENV=production
+Environment=OBSIDIAN_ASSETS_PATH=/usr/lib/ignis/obsidian
+Environment=VAULT_ROOT=%D/ignis/vault
+Environment=DATA_ROOT=%D/ignis/data
+ExecStartPre=/usr/bin/sh -c 'if [ ! -d %E/ignis ]; then /usr/bin/mkdir -p %E/ignis; fi'
+ExecStartPre=/usr/bin/sh -c 'if [ ! -d %D/ignis/vault ]; then /usr/bin/mkdir -p %D/ignis/vault; fi'
+ExecStartPre=/usr/bin/sh -c 'if [ ! -d %D/ignis/data ]; then /usr/bin/mkdir -p %D/ignis/data; fi'
+ExecStartPre=/usr/bin/sh -c 'if [ ! -f %E/ignis/ignis.env ]; then cp /usr/lib/ignis/ignis.env.example %E/ignis/ignis.env; fi'
+ExecStart=/usr/bin/node /usr/lib/ignis/apps/ignis-server/server/index.js
+
+[Install]
+WantedBy=default.target

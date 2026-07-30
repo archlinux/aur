@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ignis
-pkgver=0.8.8+obsidian.1.12.7
-_obver=$(echo "$pkgver" | awk -F 'obsidian.' '{print $2}')
+pkgver=0.8.9+obsidian.1.12.7
+_obver=$(echo "$pkgver" | awk -F '\\+obsidian.' '{print $2}')
 pkgrel=1
 pkgdesc="Run Obsidian as a self-hosted web app."
 arch=("x86_64" "aarch64")
@@ -10,20 +10,23 @@ url="https://github.com/Nystik-gh/${pkgname}"
 license=('AGPL-3.0-or-later')
 depends=("nodejs")
 makedepends=("asar" "npm")
+optdepends=("obsidian-headless: for obsidian server-side headless sync")
 backup=("etc/conf.d/${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
+        "${pkgname}.user.service"
         "obsidian-${_obver}.asar.gz::https://github.com/obsidianmd/obsidian-releases/releases/download/v${_obver}/obsidian-${_obver}.asar.gz")
-sha256sums=('1e9eb4d5906a6ca7b522fc8486e7cf079e5078ebe276e8d9bc433e3f20f4ca35'
-            '905000c098f2ec0f88ef64a31ac20c083b77f531dcda10cd9846c6570cd13f66'
+sha256sums=('c1d22d0fd226567a32bf78f2a8f4d4ae053a4dffed8101921680704fdeb0f50c'
+            '75dd22bcbf0fcc96aa270bcb4726e273af36e73aff261a20f369d8f5ad65954b'
             '48b83055b593d3ab81e5e09918944f836a99f2c1e89e3810d80ce7a18e086be1'
             '36e53ddc44a502acf4576af4bbf30a2793150ace548695bd24b260104a7ff38a'
+            '027f4adf77abb00a3ed2a6d59f35cb632201685b42e8b8adaab85516d2e1dbbe'
             '75dd34f14c9db558fbad19e80f0b201bc9805b51b7388370277e0f91a38bd850')
 
 prepare() {
-    awk -F'\\|' '
+    awk -F '|' '
         BEGIN {
             skip["VAULT_ROOT"]
             skip["DATA_ROOT"]
@@ -39,45 +42,42 @@ prepare() {
             return s
         }
 
-        /^## Environment Variables$/ {
-            in_section = 1
+        /^\|[[:space:]]*Variable[[:space:]]*\|/ {
             next
         }
 
-        in_section && /^\|[[:space:]]*Variable[[:space:]]*\|/ {
-            in_table = 1
+        /^\|[[:space:]]*---/ {
             next
         }
 
-        in_table && /^\|[[:space:]]*-+/ {
-            next
-        }
+        /^\|[[:space:]]*`[^`]+`[[:space:]]*\|/ {
 
-        in_table && /^\|/ {
             var  = trim($2)
-            desc = trim($3)
-            def  = trim($4)
+            def  = trim($3)
+            desc = trim($4)
 
             gsub(/`/, "", var)
-            gsub(/`/, "", desc)
             gsub(/`/, "", def)
+            gsub(/`/, "", desc)
 
             if (var in skip)
                 next
 
+            if (desc !~ /\.$/)
+                desc = desc "."
+
             if (def == "unset")
                 def = ""
 
-            printf "## %s Default: %s\n", desc, def
-            printf "#%s=\"%s\"\n\n", var, def
-
-            next
+            if (def == "") {
+                printf "## %s\n", desc
+                printf "#%s=\"\"\n\n", var
+            } else {
+                printf "## %s Default: %s\n", desc, def
+                printf "#%s=\"%s\"\n\n", var, def
+            }
         }
-
-        in_table && !/^\|/ {
-            exit
-        }
-        ' "${pkgname}-${pkgver//+/-}/apps/ignis-server/README.md" > "${pkgname}.env"
+    ' "${pkgname}-${pkgver//+/-}/apps/docs/src/content/docs/server/environment.md" > "${pkgname}.env"
 }
 
 build() {
@@ -89,16 +89,21 @@ build() {
         aarch64) find node_modules -type d \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "linux-x64*" -o -name "win32-*" \) | xargs rm -rf;;
         x86_64)  find node_modules -type d \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "linux-arm*" -o -name "win32-*" \) | xargs rm -rf;;
     esac
+    find . -type f -name ".gitkeep" -delete
 }
 
 package() {
-    install -Dm644 "${pkgname}.env"      "${pkgdir}/etc/conf.d/${pkgname}"
-    install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.env"          "${pkgdir}/etc/conf.d/${pkgname}"
+    install -Dm644 "${pkgname}.env"          "${pkgdir}/usr/lib/${pkgname}/${pkgname}.env.example"
+    install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    asar extract "obsidian-${_obver}.asar"   "${pkgdir}/usr/lib/${pkgname}/obsidian"
 
     cd "${pkgname}-${pkgver//+/-}"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "README.md"               "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "docs/ARCHITECTURE.md"    "${pkgdir}/usr/share/doc/${pkgname}/ARCHITECTURE.md"
     cp --parents -r -t "${pkgdir}/usr/lib/${pkgname}" \
         apps/ignis-server/package.json \
         apps/ignis-server/server/ \
@@ -114,5 +119,7 @@ package() {
         packages/shim/dist/ \
         packages/ui/package.json \
         packages/ui/dist/
-    asar extract "../obsidian-${_obver}.asar" "${pkgdir}/usr/lib/${pkgname}/obsidian"
+    
+    cd apps/docs/src/content/docs
+    find . -type f -iname "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }

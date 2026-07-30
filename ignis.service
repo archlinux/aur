@@ -1,6 +1,6 @@
 [Unit]
 Description=Ignis Server
-Documentation=https://github.com/Nystik-gh/ignis
+Documentation=https://ignis.thiefling.com/docs
 Wants=network-online.target
 After=network-online.target
 
