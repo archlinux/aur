@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=optimParallel
-_pkgver=1.0-2
+_pkgver=1.0-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Parallel Version of the L-BFGS-B Optimization Method"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f41a14e30017e5e034f7a1a58d4e8f4c')
-b2sums=('5c824734bb06993a23daedd5a5a79f73125c83ece6847613d1059ff1218b321140439e6b63d23c2664cb2c2aba9e1ab3519c8c51b03ddcddf8067081741a5eb9')
+md5sums=('e8e2a6c66f42adf4063bfc6c855185a1')
+b2sums=('2e4869e7b3ad046e286a81e7bd68eea0afeb41829a8e35b1d350b7e347c18290ea49c14717933f1b0655bfb7e0e653e250447e4bb7572722e1fd4c4028c22235')
 
 build() {
   mkdir build
