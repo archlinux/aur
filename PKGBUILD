@@ -12,10 +12,10 @@ provides=('wt')
 conflicts=('wt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d0b0fd68db9d69114ee456bfd3a04d6da9517703f772632b1877405dd616dd51')
+sha256sums_aarch64=('3e33ae76fdea426c7e8929057a0fd202720a0563eb2e131bea0beb0ae7b887da')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d02790cee5c80885ad44ebbb6ba8b6adcabc8bc62b3f9a7bfdfdc92bea0eecf0')
+sha256sums_x86_64=('d032ef3eed134fc19f07908cf2d1ee60d43609d3096f165c843d85a70ef487e9')
 
 package() {
   install -Dm755 wt "${pkgdir}/usr/bin/wt"
