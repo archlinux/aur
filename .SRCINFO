@@ -1,0 +1,15 @@
+pkgbase = fancymumble-bin
+	pkgdesc = A Modern, Feature-Rich Mumble Client
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Map1en/VRCX-0
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator
+	provides = fancymumble
+	conflicts = fancymumble
+	source = https://github.com/Fancy-Mumble/FancyMumble/releases/download/v0.3.0/FancyMumble_0.3.0_amd64.deb
+	sha256sums = 12de8ac15bfff11ae8cf4f024d86e17f9f66bafa0a48c60f897c9db6daa130c7
+
+pkgname = fancymumble-bin
