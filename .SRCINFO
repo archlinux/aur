@@ -1,6 +1,6 @@
 pkgbase = mx-packageinstaller
 	pkgdesc = MX Package Installer - a tool for managing packages and Flatpaks
-	pkgver = 26.07.1arch
+	pkgver = 26.07.4
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-packageinstaller
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mx-packageinstaller
 	depends = polkit
 	depends = flatpak
 	optdepends = paru: AUR helper for AUR tab operations and Snap setup (snapd is built from the AUR)
-	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.07.1arch.tar.gz
-	sha256sums = 6c97e8d61e2a6043a7b3cefe5924de208a7b0a54e2d82c3ff4375aef455b22ad
+	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.07.4.tar.gz
+	sha256sums = e625d9a510735e419a024dfec522118f55a9026e56b0fd881b66ed99e2c180ea
 
 pkgname = mx-packageinstaller
