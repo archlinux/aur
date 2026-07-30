@@ -1,7 +1,7 @@
 # Maintainer: Krzysztof Demir Kuzniak <krzysztofdemirkuzniak@gmail.com>
 pkgname=firefox-34-bin
 pkgver=34.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox 34.0 for WebIDE and other legacy features."
 arch=('any')
 url="https://ftp.mozilla.org/pub/firefox/releases/34.0/linux-x86_64/en-US/"
@@ -14,8 +14,8 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Sound'
             'upower: Battery API')
-            provides=("firefox-34")
-source=(https://mozilla.org)
+provides=("firefox-34")
+source=($url)
 sha256sums=("afe20592beef371ef6e536010c95e3cc9e4c82927a53d58436f5c8348e4ad3dd")
 
 package() {
