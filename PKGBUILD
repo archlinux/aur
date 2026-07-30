@@ -2,7 +2,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop-bin
-pkgver=1.44.0
+pkgver=1.45.0
 pkgrel=1
 pkgdesc="Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
@@ -25,8 +25,8 @@ source=(
     "goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb"
     "goose-cli-${pkgver}.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose-x86_64-unknown-linux-gnu.tar.bz2"
 )
-b2sums=('a7f3c6fa30a6b4092af0b7d8d111ddff2f39c18bf6a64b799f64c96ab520cc19c3248be1b1ff73a31d738328e0efe9aec533e47f6165ed72d1b7991e9706913c'
-        'e4fd7a392f6b4d19b2faf852a899c019bb2191c7fddf98ac881eaf20998244a0d4d5568de7da15d969b3ad3f3ae4799e5d06304d392fcf281d8f66077ed3fcba')
+b2sums=('7acdfff11f7643e2b4eefaea33d147beeb18e95289ba37303efb3a80837dff07b773a8383b50dce99fb1340471ec86988b089a38074848745b85e63bc59d2cd9'
+        '25ecc4355aa685e40de6eb14fe776cc1c0c7b0d48b5fcaae232ae17bb07b5cfae4974dd36512a6523a0f63309c8048a9c63399b8e5d8c3191cc2149db5c3171a')
 
 build() { :; }
 
