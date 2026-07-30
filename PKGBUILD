@@ -4,7 +4,7 @@
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
 pkgver=0.17.7
-pkgrel=0
+pkgrel=1
 url='https://www.hunk.dev/'
 changelog=${pkgname}.changelog
 arch=(aarch64 x86_64)
