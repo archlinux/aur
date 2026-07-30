@@ -1,16 +1,16 @@
 pkgbase = nctl-bin
 	pkgdesc = A CLI tool to interact with Nine API resources.
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://github.com/ninech/nctl
 	license = Apache 2.0
 	conflicts = nctl
 	provides = nctl
 	arch = aarch64
-	source_aarch64 = https://github.com/ninech/nctl/releases/download/v1.18.1/nctl_1.18.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8fdf644d16636f1285feeec087d8381a3ac0d7b15fc79b183e43fc635cc98290
+	source_aarch64 = https://github.com/ninech/nctl/releases/download/v1.18.2/nctl_1.18.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = ad1e253910bc529bf3c71d182c4ec142d7781828840392d5a43e90adb2111ca8
 	arch = x86_64
-	source_x86_64 = https://github.com/ninech/nctl/releases/download/v1.18.1/nctl_1.18.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 85488000b0b6ec5764255b564096c80b920c67294d81ab52078ab8f73a641490
+	source_x86_64 = https://github.com/ninech/nctl/releases/download/v1.18.2/nctl_1.18.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = fd1162b4cb40a74c7caf2393a6f1c2847e47e00a91b2b3882b672f97cdab410c
 	
 pkgname = nctl-bin
