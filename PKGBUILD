@@ -4,7 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=9
+pkgrel=10
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
 _audacity_tag_prefix=Audacity-3.7
@@ -22,19 +22,20 @@ depends=(
   vamp-plugin-sdk wavpack suil twolame
 )
 optdepends=(
-  'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
-  'level-zero-loader: Level Zero GPU API support'
-  'libtorch-cuda: CUDA GPU tensor operations (replaces libtorch)'
-  'libtorch-rocm: ROCM GPU tensor operations (replaces libtorch)'
+  intel-compute-runtime
+  level-zero-loader
+  libtorch-cuda
+  libtorch-rocm
+  cuda
 )
 conflicts=(audacity)
 provides=(
-	ladspa-host
-	lv2-host
-	vamp-host
-	vst-host
-	vst3-host
-	audacity
+  ladspa-host
+  lv2-host
+  vamp-host
+  vst-host
+  vst3-host
+  audacity
 )
 makedepends=(
   git cmake chrpath ffmpeg rapidjson vst3sdk opencl-clhpp
@@ -58,7 +59,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-)
+) # Yes I know this looks suspicious. I'm not trying to be - because I'm modifying code on the fly I can't do a checksum as far as I know. Please feel free to leave a comment on the package if you have a solution!
 
 pkgver() {
   cd "${srcdir}/audacity"
@@ -74,14 +75,14 @@ pkgver() {
 prepare() {
   cd "${srcdir}/audacity"
 
-   # Checkout the latest matching tag
-   local latest_tag
-   latest_tag=$(git tag -l "${_audacity_tag_prefix}.*" --sort=-v:refname | head -1 || true)
-    if [ -n "$latest_tag" ]; then
-      git -c advice.detachedHead=false checkout "$latest_tag"
-   else
-     echo "==> WARNING: no tag matching ${_audacity_tag_prefix}.* found, using HEAD"
-   fi
+  # Checkout the latest matching tag
+  local latest_tag
+  latest_tag=$(git tag -l "${_audacity_tag_prefix}.*" --sort=-v:refname | head -1 || true)
+  if [ -n "$latest_tag" ]; then
+    git -c advice.detachedHead=false checkout "$latest_tag"
+  else
+    echo "==> WARNING: no tag matching ${_audacity_tag_prefix}.* found, using HEAD"
+  fi
 
   rm -rf modules/openvino-plugins-ai-audacity
   cp -r "${srcdir}/openvino-plugins-ai-audacity" modules/openvino-plugins-ai-audacity
@@ -127,65 +128,65 @@ EOF
 }
 
 build() {
-    cd "${srcdir}/audacity"
+  cd "${srcdir}/audacity"
+  # Use CUDA libtorch if available, then ROCm, then system libtorch, fall back to CPU
+  if [ -d "/opt/libtorch-cuda" ] && command -v nvcc &> /dev/null; then
+    export LIBTORCH_ROOTDIR="/opt/libtorch-cuda"
+    export CMAKE_CUDA_COMPILER=$(command -v nvcc)
+  elif [ -d "/opt/libtorch-rocm" ]; then
+    export LIBTORCH_ROOTDIR="/opt/libtorch-rocm"
+  elif [ -d "/opt/libtorch" ]; then
+    export LIBTORCH_ROOTDIR="/opt/libtorch"
+  else
+    export LIBTORCH_ROOTDIR="/opt/libtorch-cpu"
+  fi
 
-     # Use CUDA libtorch if available, then ROCm, then system libtorch, fall back to CPU
-     if [ -d "/opt/libtorch-cuda" ]; then
-       export LIBTORCH_ROOTDIR="/opt/libtorch-cuda"
-     elif [ -d "/opt/libtorch-rocm" ]; then
-       export LIBTORCH_ROOTDIR="/opt/libtorch-rocm"
-     elif [ -d "/opt/libtorch" ]; then
-       export LIBTORCH_ROOTDIR="/opt/libtorch"
-     else
-       export LIBTORCH_ROOTDIR="/opt/libtorch-cpu"
-     fi
+  # Fix ELF load command alignment in libtorch_cpu.so at the selected path.
+  # Pre-built ROCm binaries sometimes ship zero-length LOAD segments with
+  # misaligned p_offset, glibc rejects with "not page-aligned" (bug #2).
+  if [ -f "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ] && [ -w "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ]; then
+  python3 -c "
+import struct
+with open('${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so', 'r+b') as f:
+  f.seek(32); e_phoff = struct.unpack('<Q', f.read(8))[0]
+  f.seek(56); e_phnum = struct.unpack('<H', f.read(2))[0]
+  fixed = 0
+  for i in range(e_phnum):
+    entry_off = e_phoff + i * 56; f.seek(entry_off)
+    p_type, p_flags, p_offset, p_vaddr, p_paddr, p_filesz, p_memsz, p_align = struct.unpack('<IIQQQQQQ', f.read(56))
+    if p_type != 1 or p_filesz or p_memsz: continue
+    if (p_vaddr - p_offset) & (p_align - 1) == 0: continue
+    f.seek(entry_off + 8); f.write(struct.pack('<Q', p_vaddr))
+    print(f'Fixed segment {i}: p_offset 0x{p_offset:x} -> 0x{p_vaddr:x}'); fixed += 1
+  if fixed: print(f'Fixed {fixed} ELF segment(s) in libtorch_cpu.so')
+  else: print('No ELF alignment issues in libtorch_cpu.so')
+"
+  elif [ -f "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ]; then
+    echo "WARNING: Skipping ELF alignment fix for libtorch_cpu.so due to insufficient permissions. You may need to fix this manually if encountering 'not page-aligned' errors."
+  fi
 
-     # Fix ELF load command alignment in libtorch_cpu.so at the selected path.
-     # Pre-built ROCm binaries sometimes ship zero-length LOAD segments with
-     # misaligned p_offset, glibc rejects with "not page-aligned" (bug #2).
-     if [ -f "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ] && [ -w "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ]; then
-       python3 -c "
- import struct
- with open('${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so', 'r+b') as f:
-     f.seek(32); e_phoff = struct.unpack('<Q', f.read(8))[0]
-     f.seek(56); e_phnum = struct.unpack('<H', f.read(2))[0]
-     fixed = 0
-     for i in range(e_phnum):
-         entry_off = e_phoff + i * 56; f.seek(entry_off)
-         p_type, p_flags, p_offset, p_vaddr, p_paddr, p_filesz, p_memsz, p_align = struct.unpack('<IIQQQQQQ', f.read(56))
-         if p_type != 1 or p_filesz or p_memsz: continue
-         if (p_vaddr - p_offset) & (p_align - 1) == 0: continue
-         f.seek(entry_off + 8); f.write(struct.pack('<Q', p_vaddr))
-         print(f'Fixed segment {i}: p_offset 0x{p_offset:x} -> 0x{p_vaddr:x}'); fixed += 1
-     if fixed: print(f'Fixed {fixed} ELF segment(s) in libtorch_cpu.so')
-     else: print('No ELF alignment issues in libtorch_cpu.so')
- "
-     elif [ -f "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ]; then
-       echo "WARNING: Skipping ELF alignment fix for libtorch_cpu.so due to insufficient permissions. You may need to fix this manually if encountering 'not page-aligned' errors."
-     fi
+  local cmake_options=(
+    -B build
+    -S .
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D audacity_use_openvino=ON
+    -D audacity_conan_enabled=OFF
+    -D audacity_has_tests=OFF
+    -D audacity_lib_preference=system
+    -D audacity_obey_system_dependencies=ON
+    -W no-dev
+    -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations"
+    -D CMAKE_RULE_MESSAGES=OFF
+    --log-level=ERROR
+  )
 
-    local cmake_options=(
-      -B build
-      -S .
-      -D CMAKE_BUILD_TYPE=Release
-      -D CMAKE_INSTALL_PREFIX=/usr
-      -D audacity_use_openvino=ON
-      -D audacity_conan_enabled=OFF
-      -D audacity_has_tests=OFF
-      -D audacity_lib_preference=system
-      -D audacity_obey_system_dependencies=ON
-      -W no-dev
-      -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations"
-      -D CMAKE_RULE_MESSAGES=OFF
-      --log-level=ERROR
-    )
+  export CFLAGS+=" -DNDEBUG -std=gnu11"
+  export CXXFLAGS+=" -DNDEBUG"
+  export VST3SDK="/usr/src/vst3sdk"
 
-    export CFLAGS+=" -DNDEBUG -std=gnu11"
-    export CXXFLAGS+=" -DNDEBUG"
-    export VST3SDK="/usr/src/vst3sdk"
-
-    cmake "${cmake_options[@]}"
-    cmake --build build -- -j$(nproc)
+  cmake "${cmake_options[@]}"
+  cmake --build build -- -j$(nproc)
 }
 
 package() {
@@ -212,5 +213,4 @@ package() {
   mkdir -p "${pkgdir}/usr/share/audacity/openvino-models/user-models"
   chmod a+w "${pkgdir}/usr/share/audacity/openvino-models/user-models"
 
-  
 }
