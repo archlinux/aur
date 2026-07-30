@@ -1,0 +1,34 @@
+pkgbase = tesseract-matrix-git
+	pkgdesc = Cross-platform Matrix chat client (latest git build)
+	pkgver = 0.8.16.r41.g83396ea1
+	pkgrel = 1
+	url = https://github.com/surakin/tesseract
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = rust
+	makedepends = go
+	makedepends = perl
+	makedepends = qt6-base
+	makedepends = qt6-multimedia
+	makedepends = wayland
+	makedepends = opus
+	makedepends = gstreamer
+	makedepends = gst-plugins-base
+	makedepends = ffmpeg
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = opus
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = ffmpeg
+	depends = emoji-font
+	provides = tesseract-matrix
+	conflicts = tesseract-matrix
+	source = tesseract-matrix-git::git+https://github.com/surakin/tesseract.git#branch=main
+	sha256sums = SKIP
+
+pkgname = tesseract-matrix-git
