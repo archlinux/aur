@@ -1,6 +1,6 @@
 # Maintainer: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
-pkgver=1.18.7
+pkgver=1.18.8
 pkgrel=1
 pkgdesc="基于 Mihomo（Clash.Meta 内核）的多平台代理客户端"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ depends=(
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-amd64.deb")
 source_aarch64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-arm64.deb")
-sha256sums_x86_64=('0a7ed6d08d922a2eca77a196173eb93209ecd7e631875550477d1926e97dc5e7')
-sha256sums_aarch64=('6e665d62b9360f6c49bb0b59a0435744d0bb794d97c88105390ee3986d1d49ba')
+sha256sums_x86_64=('e4a290297495cf80e7321626d8b75c406f6bbcbfeec40ee58270787c4edfa2e2')
+sha256sums_aarch64=('341a47121800a4a21ee2f657d386bfbcb6fea36c8751b41d26b0050f39185c0d')
 
 package() {
   bsdtar -xf data.tar.zst -C "${srcdir}"
