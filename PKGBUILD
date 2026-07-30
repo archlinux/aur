@@ -3,7 +3,7 @@
 pkgname=python-consolekit
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Additional utilities for click'
 arch=(any)
 url='https://consolekit.readthedocs.io/'
@@ -12,9 +12,12 @@ depends=(
   python
   python-click
   python-colorama
+  python-coincidence
   python-deprecation-alias
   python-domdf-python-tools
   python-mistletoe
+  python-psutil
+  python-pytest
   python-typing_extensions
 )
 makedepends=(
