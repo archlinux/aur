@@ -41,7 +41,7 @@ makedepends=(
     'gst-plugins-base'
     'ffmpeg'             # libavutil headers
 )
-source=("$pkgname::git+https://github.com/surakin/tesseract.git#branch=main")
+source=("$pkgname::git+https://github.com/surakin/tesseract.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {
