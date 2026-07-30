@@ -3,7 +3,7 @@
 pkgname=cosmic-corners-enhanced-git
 _srcname=cosmic-hotcorners
 pkgver=0.1.0.r15.gd4699e4
-pkgrel=1
+pkgrel=2
 pkgdesc='Enhanced configurable hot corners for the COSMIC desktop'
 arch=('x86_64')
 url='https://github.com/AdityaHebballe/cosmic-hotcorners'
