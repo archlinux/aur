@@ -13,7 +13,7 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
 pkgver=r18952.5bdaa898db
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
@@ -169,8 +169,8 @@ echo "Connecting to AzerothCore Live Admin Console..."
 exec nc -C 127.0.0.1 3443
 EOF
 
-	install -m755 "${srcdir}/acore-setup" "${pkgdir}/usr/bin/acore-setup"
-	chmod +x "${pkgdir}/usr/bin/acore-setup"
+	install -m755 "${srcdir}/acore_setup" "${pkgdir}/usr/bin/acore_setup"
+	chmod +x "${pkgdir}/usr/bin/acore_setup"
 	chmod +x "${pkgdir}/usr/bin/attach-world"
 
 	# Copies the runtime helper script into the package
