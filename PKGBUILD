@@ -2,7 +2,7 @@
 
 pkgbase=bcu-git
 pkgname=bcu-git
-pkgver=1.1.130.r0.g806e143
+pkgver=1.1.130.r1.g952800e
 pkgrel=1
 epoch=
 pkgdesc="bcu (Board Control Utilities)"
@@ -13,7 +13,6 @@ groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
-    glibc
     libftdi
     libyaml
     libusb
@@ -28,7 +27,7 @@ makedepends=(
     libzip
     openssl
     zlib
-    )
+)
 checkdepends=()
 optdepends=("mfgtools-git: uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.")
 replaces=()
