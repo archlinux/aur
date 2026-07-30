@@ -38,7 +38,8 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/mx-packageinstaller"
   install -Dm755 helper "${pkgdir}/usr/lib/mx-packageinstaller/helper"
   install -Dm755 ../scripts/mxpi-lib "${pkgdir}/usr/lib/mx-packageinstaller/mxpi-lib"
-  install -Dm644 ../scripts/org.mxlinux.pkexec.mxpi-helper.policy \
+  install -Dm755 ../scripts/mxpi-maintenance-pacman "${pkgdir}/usr/lib/mx-packageinstaller/mxpi-maintenance"
+  install -Dm644 org.mxlinux.pkexec.mxpi-helper.policy \
     "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mxpi-helper.policy"
 
   install -Dm644 ../mx-packageinstaller.desktop "${pkgdir}/usr/share/applications/mx-packageinstaller.desktop"
