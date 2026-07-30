@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=()
 provides=()
 conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-md5sums=('d50b74319b6233d88dda4e705b0546c4')
+md5sums=('5efee079e71b8752a8a63a5af009b750')
 
 check() {
     cd "$srcdir/${pkgname#python-}-$pkgver" || return
