@@ -2,8 +2,8 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=1.3.r0.gd75c560
-pkgrel=2
+pkgver=1.5.r0.g7157ce9
+pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
@@ -21,7 +21,6 @@ makedepends=(
 	"rust"
 )
 optdepends=(
-	"kitty: support for displaying cover image in tmux"
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 provides=("voicefox=${pkgver}")
