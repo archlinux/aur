@@ -1,6 +1,6 @@
 pkgbase = fast-folder
 	pkgdesc = Template-driven project folder generator with TUI and browser UI (fastf)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/cristocola/fast-folder
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fast-folder
 	makedepends = cargo
 	depends = gcc-libs
 	optdepends = chromium: dedicated app window for fastf ui --app
-	source = fast-folder-1.3.0.tar.gz::https://github.com/cristocola/fast-folder/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = d6bb9b64b585065892210fb93dff2efec15678e8a3a7a2747d7beb6322aebf5b
+	source = fast-folder-1.4.0.tar.gz::https://github.com/cristocola/fast-folder/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = fafcc957870b1eb241778d96b867f3018b1bdebacb5c6e84b673fbb703c5c1fc
 
 pkgname = fast-folder
