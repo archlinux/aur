@@ -1,0 +1,13 @@
+pkgbase = barfi-bin
+	pkgdesc = Command line file uploader for buzzheavier
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/burritoflakes/barfi
+	arch = x86_64
+	license = unknown
+	provides = barfi
+	conflicts = barfi
+	source = barfi-1.0.0::https://github.com/burritoflakes/barfi/releases/download/v1.0.0/barfi-linux-amd64
+	sha256sums = SKIP
+
+pkgname = barfi-bin
