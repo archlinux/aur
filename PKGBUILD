@@ -16,7 +16,7 @@
 pkgname=zigoku
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Terminal anime browser & player"
+pkgdesc="Terminal anime browser & player (retired; development continues in sabigoku)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vantroy/zigoku"
 license=('GPL-3.0-or-later')

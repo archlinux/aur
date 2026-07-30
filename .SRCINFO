@@ -1,5 +1,5 @@
 pkgbase = zigoku
-	pkgdesc = Terminal anime browser & player
+	pkgdesc = Terminal anime browser & player (retired; development continues in sabigoku)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vantroy/zigoku
