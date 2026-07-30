@@ -1,0 +1,19 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger
+    cat <<'MSG'
+:: CleverSwitch installed.
+::   - Replug your Logitech receiver so the udev rule takes effect.
+::   - Start now + at login:  systemctl --user enable --now cleverswitch.service
+MSG
+}
+
+post_upgrade() {
+    udevadm control --reload-rules
+    udevadm trigger
+}
+
+post_remove() {
+    udevadm control --reload-rules
+    udevadm trigger
+}

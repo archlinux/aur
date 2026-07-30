@@ -1,0 +1,11 @@
+[Unit]
+Description=CleverSwitch — sync Logitech Easy-Switch host switching
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/cleverswitch
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

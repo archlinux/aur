@@ -1,0 +1,21 @@
+pkgbase = cleverswitch
+	pkgdesc = Synchronize Logitech Easy-Switch host switching between keyboard and mouse
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/MikalaiBarysevich/CleverSwitch
+	install = cleverswitch.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = hidapi
+	source = cleverswitch-1.4.5.tar.gz::https://github.com/MikalaiBarysevich/CleverSwitch/archive/refs/tags/v1.4.5.tar.gz
+	source = cleverswitch.service
+	sha256sums = 9f6d4c3b6aeb9007e8c7fe51d146b2a41d63235f78234e3302fff4840f29e05f
+	sha256sums = 978f0bab35fd9289202571036e881ae52975c74a0178489d6686d005dd6d712a
+
+pkgname = cleverswitch
