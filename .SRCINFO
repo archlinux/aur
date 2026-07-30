@@ -1,13 +1,13 @@
 pkgbase = pinact
 	pkgdesc = CLI to pin GitHub Actions and Reusable Workflows to full hashes
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/suzuki-shunsuke/pinact
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = pinact-4.1.0.tar.gz::https://github.com/suzuki-shunsuke/pinact/archive/v4.1.0.tar.gz
-	sha256sums = 0305c7db5cfcb2a62f7f5faa74e7cc3312c9ec10cbe01eadc23128d6a119eb03
+	source = pinact-4.1.1.tar.gz::https://github.com/suzuki-shunsuke/pinact/archive/v4.1.1.tar.gz
+	sha256sums = d7b2596e871bdd1711c9d81cf074ac4d51e2555509f9f19eafca4ced11b555fa
 
 pkgname = pinact
