@@ -1,0 +1,46 @@
+diff --git a/src/fsearch.c b/src/fsearch.c
+index 64409b8..21131d9 100644
+--- a/src/fsearch.c
++++ b/src/fsearch.c
+@@ -290,8 +290,10 @@ static void
+ action_new_window_activated(GSimpleAction *action, GVariant *parameter, gpointer app) {
+     FsearchApplicationWindow *app_window = fsearch_application_window_new(FSEARCH_APPLICATION(app));
+     FsearchApplication *self = FSEARCH_APPLICATION(app);
+-    gboolean minimized = g_variant_get_boolean(parameter);
+-
++    gboolean minimized = false;
++    if (parameter != NULL) {
++        minimized = g_variant_get_boolean(parameter);
++    }
+     show_app_window(self, app_window, minimized);
+ }
+ 
+@@ -496,7 +498,7 @@ fsearch_application_startup(GApplication *app) {
+     }
+     set_accel_for_action(app, "win.toggle_focus", "Tab");
+     set_accel_for_action(app, "win.focus_search", "<control>f");
+-    set_accel_for_action(app, "app.new_window", "<control>n");
++    set_accel_for_action(app, "app.new_window_null", "<control>n");
+     set_accel_for_action(app, "win.select_all", "<control>a");
+     set_accel_for_action(app, "win.match_case", "<control>i");
+     set_accel_for_action(app, "win.search_mode", "<control>r");
+@@ -510,6 +512,7 @@ fsearch_application_startup(GApplication *app) {
+ 
+ static GActionEntry fsearch_app_entries[] = {
+     {"new_window", action_new_window_activated, "b", NULL, NULL},
++    {"new_window_null", action_new_window_activated, NULL, NULL, NULL},
+     {"about", action_about_activated, NULL, NULL, NULL},
+     {"online_help", action_online_help_activated, NULL, NULL, NULL},
+     {"help", action_help_activated, NULL, NULL, NULL},
+diff --git a/src/menus.ui b/src/menus.ui
+index 5be5b85..4275f49 100644
+--- a/src/menus.ui
++++ b/src/menus.ui
+@@ -8,6 +8,7 @@
+                 <item>
+                     <attribute name="label" translatable="yes">New Window</attribute>
+                     <attribute name="action">app.new_window</attribute>
++                    <attribute name="target" type="b">false</attribute>
+                     <attribute name="icon">window-new</attribute>
+                 </item>
+             </section>

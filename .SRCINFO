@@ -1,7 +1,7 @@
 pkgbase = fsearch-git
 	pkgdesc = A fast graphical file search utility
-	pkgver = 0.2.3.r294.g92caee8
-	pkgrel = 1
+	pkgver = 0.3.r43.g975be2f
+	pkgrel = 2
 	url = https://github.com/cboxdoerfer/fsearch
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = fsearch-git
 	depends = gtk3
 	depends = libicuuc.so
 	depends = pcre2
-	provides = fsearch=0.2.3.r294.g92caee8
+	provides = fsearch
 	conflicts = fsearch
 	source = fsearch::git+https://github.com/cboxdoerfer/fsearch.git
+	source = 0001-fix_new_window.patch
 	sha256sums = SKIP
+	sha256sums = 66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1
 
 pkgname = fsearch-git
