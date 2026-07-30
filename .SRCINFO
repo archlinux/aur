@@ -1,0 +1,14 @@
+pkgbase = matsya-wallpappers
+	pkgdesc = Wallpapers for Matsya OS
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/wallpappers
+	arch = any
+	groups = Matsya
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	source = git+https://github.com/MatsyaOs/wallpappers
+	md5sums = SKIP
+
+pkgname = matsya-wallpappers
