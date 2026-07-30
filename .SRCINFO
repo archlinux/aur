@@ -1,6 +1,6 @@
 pkgbase = tide
 	pkgdesc = A brutalist multi-source music desktop client
-	pkgver = 1.2.7
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/captiencelovesarch/tide
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = tide
 	optdepends = kwallet: KDE wallet backend for cookie import
 	optdepends = python-watchdog: live re-indexing of the local files source
 	optdepends = librespot: Spotify Premium playback via the librespot backend
-	source = tide-1.2.7.tar.gz::https://github.com/captiencelovesarch/tide/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = 6d653f0fb2ec6b40f9859b2fb368062d802222e95b20bf7f2097f0989d4ea9a8
+	source = tide-1.3.0.tar.gz::https://github.com/captiencelovesarch/tide/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 47401bf258379a19545e305c2b7fe1a22026dd4bb97de4feb45909d955aaa066
 
 pkgname = tide
