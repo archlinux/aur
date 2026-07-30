@@ -1,7 +1,7 @@
 pkgbase = bazarr
 	pkgdesc = Subtitle management and download automation for Sonarr and Radarr.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.bazarr.media
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,7 +18,7 @@ pkgbase = bazarr
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-platformdirs
-	depends = python-pygobject
+	depends = python-gobject
 	depends = python-setuptools
 	depends = python-sqlalchemy
 	depends = python-tomli

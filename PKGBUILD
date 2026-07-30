@@ -4,7 +4,7 @@
 
 pkgname=bazarr
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Subtitle management and download automation for Sonarr and Radarr."
 arch=('any')
 url="https://www.bazarr.media"
@@ -22,7 +22,7 @@ depends=(
   python-numpy
   python-pillow
   python-platformdirs
-  python-pygobject
+  python-gobject
   python-setuptools
   python-sqlalchemy
   python-tomli
