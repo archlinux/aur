@@ -1,0 +1,19 @@
+pkgbase = mam-automate-git
+	pkgdesc = Ratio-safe MyAnonaMouse -> qBittorrent automation (CLI/TUI/GUI)
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/zsigisti/mam-automate
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = python: local-LLM AI sidecar (decision.backend = "llm")
+	optdepends = ollama: local model backend for the AI sidecar
+	provides = mam-automate
+	conflicts = mam-automate
+	options = !lto
+	source = mam-automate-git::git+https://github.com/zsigisti/mam-automate.git#branch=rust-rewrite
+	sha256sums = SKIP
+
+pkgname = mam-automate-git
