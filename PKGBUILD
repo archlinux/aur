@@ -1,24 +1,31 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=amneziawg-tools
-pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard."
+pkgdesc="AmneziaWG tools with AWG 3.0 (HeaderProtectionKey, padding, timing ranges)"
 url="https://github.com/amnezia-vpn/amneziawg-tools"
 arch=("x86_64")
-pkgver=1.0.20260618
-pkgrel=2
+pkgver=1.0.20260730.r535.c8aaf3d
+pkgrel=1
 license=('GPL-2.0')
 depends=('bash')
+makedepends=('git')
 optdepends=('amneziawg-go: go implementation of amneziawg'
+            'amneziawg-dkms: kernel module with AWG 3.0 support'
             'resolvconf: if you are controling DNS via AmneziaWG')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-tools/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz")
-sha512sums=('5f75260e9de307b1e20f403b5acaf044e0930557adfc1556d9fa04f96e776d73be261658d9aee21aec518c09fa98d4405ef663c8eb908ea76c84d184bf77ec53')
+source=("git+https://github.com/amnezia-vpn/amneziawg-tools.git#branch=feat/awg3")
+sha256sums=('SKIP')
 
-build(){
-	cd ${pkgname}-${pkgver}-${pkgrel}/src
-	make
+pkgver() {
+  cd amneziawg-tools
+  printf "1.0.20260730.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd amneziawg-tools/src
+  make
 }
 
 package() {
-	cd ${pkgname}-${pkgver}-${pkgrel}/src
-	make DESTDIR="$pkgdir/" install
+  cd amneziawg-tools/src
+  make DESTDIR="${pkgdir}/" install
 }
