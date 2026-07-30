@@ -1,6 +1,6 @@
 pkgbase = yakc
 	pkgdesc = Yet Another Key Caster — cross-platform key & mouse click visualizer
-	pkgver = 2.0.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/iammodev/YAKC
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = yakc
 	depends = gtk3
 	depends = libxkbcommon
 	depends = libappindicator-gtk3
+	depends = systemd-libs
 	optdepends = speech-dispatcher: text-to-speech for keystrokes
-	source = yakc-2.0.0.tar.gz::https://github.com/iammodev/YAKC/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = c2f6d26c5bbdad8285682397e3e8b0f3c228c656e6a64bcb477174739d18e941
+	source = yakc-2.8.0.tar.gz::https://github.com/iammodev/YAKC/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = cbbed73f51ab53aa168fb8e23538162bc8aff271ae0bce1aa96266766e830e5d
 
 pkgname = yakc

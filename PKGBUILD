@@ -1,16 +1,16 @@
 # Maintainer: Aslan Devecioglu <modevecioglu@gmail.com>
 pkgname=yakc
-pkgver=2.0.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Yet Another Key Caster — cross-platform key & mouse click visualizer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iammodev/YAKC"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'libxkbcommon' 'libappindicator-gtk3')
+depends=('webkit2gtk-4.1' 'gtk3' 'libxkbcommon' 'libappindicator-gtk3' 'systemd-libs')
 optdepends=('speech-dispatcher: text-to-speech for keystrokes')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iammodev/YAKC/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2f6d26c5bbdad8285682397e3e8b0f3c228c656e6a64bcb477174739d18e941')
+sha256sums=('cbbed73f51ab53aa168fb8e23538162bc8aff271ae0bce1aa96266766e830e5d')
 
 prepare() {
   cd "YAKC-$pkgver/src-tauri"
