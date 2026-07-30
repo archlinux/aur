@@ -1,0 +1,25 @@
+pkgbase = aur-malware-check-git
+	pkgdesc = Detection tools for the June 2026 atomic-lockfile AUR supply-chain attack and maybe other comprimised AUR packages. Consolidated from community Gists. Having this tool reporting nothing does not mean you are safe!
+	pkgver = 5.3.0.r109.20260707.9023c17
+	pkgrel = 1
+	url = https://github.com/lenucksi/aur-malware-check
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python>=3.14
+	optdepends = aur-malware-check-pacman-hook: To invoke the check script at each pacman installation.
+	optdepends = aur-malware-check-systemd: Systemd service for continuous monitoring.
+	provides = aur-check=5.3.0.r109.20260707.9023c17
+	provides = aur-malware-check=5.3.0.r109.20260707.9023c17
+	provides = python-aur_check=5.3.0.r109.20260707.9023c17
+	provides = python-aur_check-git=5.3.0.r109.20260707.9023c17
+	conflicts = aur-check
+	conflicts = aur-malware-check
+	conflicts = python-aur_check
+	conflicts = python-aur_check-git
+	source = aur-malware-check::git+https://github.com/lenucksi/aur-malware-check.git
+	source = aur-malware-check.sh
+	sha256sums = SKIP
+	sha256sums = df9ae735e2e3681c4c94f5d188437599ab8469cbd6b1798bd7deb452b353097e
+
+pkgname = aur-malware-check-git
