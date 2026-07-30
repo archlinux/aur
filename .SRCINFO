@@ -1,0 +1,31 @@
+pkgbase = thunar-z-jump-git
+	pkgdesc = Thunar plugin to jump to frecency-ranked directories from z / zsh-z / zoxide
+	pkgver = 1.0.0.r0.g1bebf50
+	pkgrel = 1
+	url = https://github.com/ddibiasi/thunar-z-jump
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-gobject
+	checkdepends = gtk3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = glib2
+	depends = gtk3
+	depends = thunar
+	depends = thunarx-python
+	optdepends = zsh: required unless THUNAR_Z_JUMP_SHELL points at another shell
+	optdepends = zsh-z: default backend, provides the `zshz` function (AUR); required unless THUNAR_Z_JUMP_COMMAND is set
+	optdepends = zoxide: alternative backend (set THUNAR_Z_JUMP_COMMAND=zoxide query --list)
+	provides = thunar-z-jump=1.0.0.r0.g1bebf50
+	conflicts = thunar-z-jump
+	source = thunar-z-jump-git::git+https://github.com/ddibiasi/thunar-z-jump.git
+	sha256sums = SKIP
+
+pkgname = thunar-z-jump-git
