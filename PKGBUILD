@@ -1,9 +1,9 @@
 # Maintainer: Damian Höster <damian.hoester@posteo.de>
-# Contributor:  Joshua Holmer <jholmer.in@gmail.com>
+# Contributor: Joshua Holmer <jholmer.in@gmail.com>
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics-git
-pkgver=0.12.0.r3.196a43d9
+pkgver=0.12.snapshot.r2.196a43d9
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -67,10 +67,8 @@ prepare() {
 }
 
 pkgver() {
-  local _tag=$(git -C $_pkgname tag --list --sort=-v:refname 'v[[:digit:]]*' |
-    sed 's/^v//;/[[:alpha:]]/d' | head -n1)
-  printf $_tag.r%s.%s $(git -C $_pkgname rev-list --count v$_tag..HEAD) \
-    $(git -C $_pkgname rev-parse --short HEAD)
+  git -C $_pkgname describe --long --tags |
+    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/.r\1.\2/; s/-/./g'
 }
 
 build() {
