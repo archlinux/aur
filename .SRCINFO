@@ -1,6 +1,6 @@
 pkgbase = rake-unstable-bin
 	pkgdesc = Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled, nightly unstable build)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/rustyhorde/cargo-rake
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = rake-unstable-bin
 	conflicts = rake
 	options = !strip
 	options = !debug
-	source = https://github.com/rustyhorde/cargo-rake/releases/download/v0.7.2/dist-rake.tar.gz
-	sha256sums = fdc75130ad1899a12b0951fbd7cb533508990f17bae74f4b60cb5efde96ca1bf
-	source_x86_64 = rake-unstable-x86_64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.7.2/rake-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = ad24e0f0522faee1aab6fc817bfe762e1bbf0e2044743ce941705ef882708bbf
-	source_aarch64 = rake-unstable-aarch64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.7.2/rake-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = d86be73903dc330cab8861d884e64cf42fea4b2d998654b17af39e1404af67a5
+	source = https://git.jasonozias.com/dl/cargo-rake/v0.7.3/dist-rake.tar.gz
+	sha256sums = 185ddc729d43f9af1ec77bd84a2857dfeec4dbf5179bcdae0e9aa5be102b7c6d
+	source_x86_64 = rake-unstable-x86_64::https://git.jasonozias.com/dl/cargo-rake/v0.7.3/rake-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 8bd22a250464eff5bb47d9e6ac1e56e2442b2c639f580f8c76810e28b0aa1b3a
+	source_aarch64 = rake-unstable-aarch64::https://git.jasonozias.com/dl/cargo-rake/v0.7.3/rake-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = e7b5b740ba9cf4957d556262e0a1a72c803ad39751d5cb83b3aef09f2da87a8c
 
 pkgname = rake-unstable-bin
