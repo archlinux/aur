@@ -1,6 +1,6 @@
 # Maintainer: Robert Wolff <mahlzahn@posteo.de>
 pkgname=censor
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='PDF document redaction for the GNOME desktop'
 arch=(x86_64)
@@ -10,12 +10,12 @@ depends=(gtk4
          libadwaita
          python-cairo
          python-gobject
-         'python-pymupdf>=1.27.2.3')
+         'python-pymupdf>=1.28.0')
 makedepends=(meson
              ninja)
 checkdepends=(appstream-glib)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=(8c48eed1681e6e865a552e56aa9f87c8a3e9f610e375204f3850f01b21dfee09)
+sha256sums=(e51d7fd8bd7b18c452cccb3111d4f63d06efa3f7404567cd3adf6cefe1fc611f)
 validpgpkeys=()
 
 blddir="$(pwd)/$pkgname-$pkgver-$pkgrel-build"
