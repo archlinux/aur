@@ -2,7 +2,8 @@
 
 pkgbase=quartus-pro
 _components=(${pkgbase}-{quartus,questa,help,riscfree,eda_cdclib,devinfo-{agilex,arria10,cyclone10gx,stratix10}})
-pkgname=(${pkgbase} ${_components[@]})
+# Build pkgbase last so that bashrc/bash_profile cleanup works correctly
+pkgname=(${_components[@]} ${pkgbase})
 # Keep dot in _patchver so regex to filter URLs for _patchver=.0 works
 _mainver=26.1; _patchver=.0; _buildver=110
 _urlver="${_mainver}${_patchver/.0/}/${_buildver}"; _filver="${_mainver}${_patchver}.${_buildver}"
@@ -27,10 +28,8 @@ source=("${_base_url}/${_urlver}/ib_installers/QuartusProSetup-${_filver}-linux.
         "${_base_url}/${_urlver}/ib_installers/eda_"{cdc,sim}"lib-${_filver}-linux.qdz"
         "${_base_url}/${_urlver}/ib_installers/"{agilex{3,5,7,_common},arria10,cyclone10gx,stratix10}"-${_filver}.qdz"
         # Rename files to avoid conflicting with quartus-free
-        'quartus-pro.desktop' 'questa-fse-pro.desktop' 'questa.gif' '51-usbblaster-pro.rules')
-noextract=("QuartusProSetup-part2-${_filver}.qdz"
-           "eda_"{cdc,sim}"lib-${_filver}-linux.qdz"
-           {agilex{3,5,7,_common},arria10,cyclone10gx,stratix10}"-${_filver}.qdz") # Will extract directly to pkgdir
+        'quartus-pro.desktop' 'questa-fse-pro.desktop' 'questa.gif' '51-usbblaster-pro.rules' 'quartus-pro.sh')
+noextract=("${source[@]##*/}") # Any .qdz files will extract directly to pkgdir
 # Still using SHA1 because it's given in the download site
 sha1sums=(
     694c03383a30c196440a22cb75f045cd1cdb40ef # QuartusProSetup
@@ -52,20 +51,21 @@ sha1sums=(
     c51b7de3701af0088bb924295f153bb2439d927d # questa-fse-pro.desktop
     20224d8007807eed71b27783bb95c73faf6de20b # questa.gif
     8264e342640583e31777782a8584566cb0cc7351 # 51-usbblaster-pro.rules
+    57d171e3d54311cadfb35a8784e7bcb2eb8c8a5e # quartus-pro.sh
 )
 
 options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
 
 prepare() {
-    echo "Notice: Requires around 240GB of free space, of which 154GB in build dir, during package building!"
-    echo "Notice: The compressed package files also require around 84GB of free space"
+    echo "Notice: Package building requires around 240GB of free space, with 154/240GB in build dir!"
+    echo "Notice: The compressed package files additionally require around 90GB of free space"
+    echo "Notice: The evil and intimidating Quartus Pro installer changes your .bashrc and .bash_profile."
+    echo "Notice: Backups will be taken and restored, so don't edit those files until packaging is complete!"
+
+    cp -a ~/.bashrc "${srcdir}"/bashrc_bk
+    cp -a ~/.bash_profile "${srcdir}"/bash_profile_bk
 
     chmod +x {QuartusPro,Questa,QuartusProHelp,RiscFree}Setup-${_filver}-linux.run
-}
-
-package_quartus-pro() {
-    depends=(${_components[@]})
-    pkgdesc="Meta-package containing all Quartus Prime Pro tools and device libraries"
 }
 
 package_quartus-pro-quartus() {
@@ -105,6 +105,7 @@ package_quartus-pro-quartus() {
 
     # Replace altera directory in integration files
     sed -i "s,@_instdir@,${_instdir},g" quartus-pro.desktop
+    sed -i "s,@_instdir@,${_instdir},g" quartus-pro.sh
 
     # Remove pkgdir reference in sopc_builder
     sed -i "s,${pkgdir},,g" "${pkgdir}${_instdir}/quartus/sopc_builder/.sopc_builder"
@@ -125,6 +126,7 @@ package_quartus-pro-quartus() {
     # Install integration files
     install -D -m644 51-usbblaster-pro.rules "${pkgdir}/etc/udev/rules.d/51-usbblaster-pro.rules"
     install -D -m644 quartus-pro.desktop "${pkgdir}/usr/share/applications/quartus-pro.desktop"
+    install -D -m644 quartus-pro.sh "${pkgdir}/etc/profile.d/quartus-pro.sh"
 }
 
 package_quartus-pro-questa() {
@@ -263,4 +265,13 @@ package_quartus-pro-devinfo-stratix10() {
     install -d "${pkgdir}${_instdir}"
     bsdtar -xf "stratix10-${_filver}.qdz" -C "${pkgdir}${_instdir}"
     find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
+}
+
+package_quartus-pro() {
+    depends=(${_components[@]})
+    pkgdesc="Meta-package containing all Quartus Prime Pro tools and device libraries"
+
+    # Restore bashrc and bash_profile...
+    cp -a "${srcdir}"/bashrc_bk ~/.bashrc
+    cp -a "${srcdir}"/bash_profile_bk ~/.bash_profile
 }
