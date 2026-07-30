@@ -10,8 +10,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 pkgver() {
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
