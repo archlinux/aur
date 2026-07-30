@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)"
 arch=(
@@ -20,7 +20,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('e2b4c80af8a0d49903fb68b1d51525f0100a4601fbef9e3b8204dec9c7ac142a')
+sha256sums=('29c54256f5f1f9ca71c2e5d38a602b504ce7ce81b8045a5ffe671a40ef1a6787')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
