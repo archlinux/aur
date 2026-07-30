@@ -1,6 +1,6 @@
 pkgbase = r-ncrnatools
 	pkgdesc = An R toolkit for non-coding RNA
-	pkgver = 1.22.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ncRNAtools
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ncrnatools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ncRNAtools_1.22.1.tar.gz
-	sha256sums = 860cc7f7f2ea01c686ad40a073bab24cb378b8e5dc6006d1294f387bdc53a93a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ncRNAtools_1.22.2.tar.gz
+	sha256sums = ef8a30577a034967774ae84cd043351dc747b500ae195dd22d4a07329e9d9780
 
 pkgname = r-ncrnatools
