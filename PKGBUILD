@@ -1,5 +1,5 @@
 # Maintainer: AmetistYT <ametist0yt@gmail.com>
-pkgname=soundpaad-bin
+pkgname=soundpaaad-bin
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Sound pad with virtual microphone support for Linux"

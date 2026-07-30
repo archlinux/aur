@@ -1,4 +1,4 @@
-pkgbase = soundpaad-bin
+pkgbase = soundpaaad-bin
 	pkgdesc = Sound pad with virtual microphone support for Linux
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = soundpaad-bin
 	sha256sums = 8359701edad14fde483728eb275dee9b7c8052e4b9a4d470af150b805dec1926
 	sha256sums = 711a600b092364e9b787243d9c234b9e44582cba7a6261b79f305a0323e08785
 
-pkgname = soundpaad-bin
+pkgname = soundpaaad-bin
