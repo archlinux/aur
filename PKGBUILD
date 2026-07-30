@@ -4,7 +4,7 @@
 pkgname=prometheus-bind-exporter-git
 _pkgname=bind_exporter
 pkgver=v0.8.0.r46.g78cbe84
-pkgrel=1
+pkgrel=2
 pkgdesc='Prometheus exporter for BIND metrics'
 arch=('x86_64')
 url='https://github.com/prometheus-community/bind_exporter'
