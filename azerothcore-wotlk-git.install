@@ -22,48 +22,36 @@ post_install() {
 	fi
 
 	sudo sed -i 's#^SourceDirectory\s*=\s*"".*#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/worldserver.conf
+	sudo sed -i 's#^SourceDirectory\s*=\s*"".*#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
 
 	# Display clear user instructions
-	echo ''
-	echo ''
-	echo '#####################  IMPORTANT  #####################'
-	echo ''
-	echo 'The installation has finished!'
-	echo ''
-	echo 'Configuration files:'
-	echo '  - /etc/azerothcore/authserver.conf'
-	echo '  - /etc/azerothcore/worldserver.conf'
-	echo ''
-	echo 'Executables and runtime files:'
-	echo '  - /usr/share/azerothcore/'
-	echo ''
-	echo 'MySQL note:'
-	echo '  - Make sure MySQL is configured and running before using the services.'
-	echo ''
-	echo 'Enable and start services automatically:'
-	echo '  - sudo systemctl enable --now acore-auth-server.service'
-	echo '  - sudo systemctl enable --now acore-world-server.service'
-	echo ''
-	echo 'Check service status:'
-	echo '  - sudo systemctl status acore-auth-server.service'
-	echo '  - sudo systemctl status acore-world-server.service'
-	echo ''
-	echo 'Check service logs:'
-	echo '  - sudo journalctl -u acore-auth-server.service -f'
-	echo '  - sudo journalctl -u acore-world-server.service -f'
-	echo ''
-	echo ''
-	echo 'To disconnect safely without killing the server, press Ctrl+b, then d.'
-	echo ''
-	echo 'Map data:'
-	echo '  - Either extract the map data manually using the guide at:'
-	echo '    https://www.azerothcore.org/wiki/linux-server-setup'
-	echo '  - Or install the AUR package:'
-	echo '    yay -S azerothcore-clientdata-git'
-	echo ''
-	echo "Please run the following command to finish server setup:"
-	echo ''
-	echo "  - sudo acore_setup"
+	# Structural formatting tags
+	BOLD='\033[1m'
+	NC='\033[0m' # Reset formatting
+
+	echo "======================================================================="
+	echo -e " ⚔️  ${BOLD}AZEROTHCORE INSTALLATION SUCCESSFUL${NC}"
+	echo "======================================================================="
+	echo ""
+	echo -e "${BOLD}MAP DATA REQUIREMENTS:${NC}"
+	echo "   You need client map data before the worldserver can start."
+	echo -e "   Choose ${BOLD}one${NC} of the following options:"
+	echo ""
+	echo -e "   [Option 1 - Manual]: Extract assets using the official guide at:"
+	echo "     https://azerothcore.org"
+	echo ""
+	echo -e "   [Option 2 - Automated]: Install the pre-extracted data package via AUR:"
+	echo "     yay -S azerothcore-clientdata-git"
+	echo ""
+	echo "-----------------------------------------------------------------------"
+	echo -e "${BOLD}FINAL STEP:${NC}"
+	echo "   Please run the administrative configuration provisioner tool to"
+	echo "   initialize your databases and secure your master admin account:"
+	echo ""
+	echo "     sudo acore_setup"
+	echo ""
+	echo "======================================================================="
+
 }
 
 post_upgrade() {

@@ -1,12 +1,20 @@
 #!/bin/bash
 # Ensure the script is run with administrative root privileges
 if [ "$EUID" -ne 0 ]; then
-    echo "❌ Error: Please run this setup script using sudo: sudo acore-setup"
+    echo "======================================================================="
+    echo " ❌ ERROR: ADMINISTRATIVE PRIVILEGES REQUIRED"
+    echo "======================================================================="
+    echo " Please run this setup script using sudo: sudo acore_setup"
+    echo "======================================================================="
     exit 1
 fi
 
+# Structural typography markers for clean terminal accessibility
+BOLD='\033[1m'
+NC='\033[0m' # Reset formatting
+
 echo "======================================================================="
-echo " ⚔️  AZEROTHCORE ADMINISTRATIVE SERVICE PROVISIONER"
+echo -e " ⚔️  ${BOLD}AZEROTHCORE ADMINISTRATIVE SERVICE PROVISIONER${NC}"
 echo "======================================================================="
 echo " This utility will securely initialize your server environment layers."
 echo ""
@@ -15,22 +23,35 @@ echo ""
 read -s -p "Enter your MySQL root password (leave blank if none): " DB_PASS
 echo ""
 
-# Test the provided database credentials cleanly
-if [ -z "$DB_PASS" ]; then
-    MYSQL_CMD="mysql -u root"
-else
-    MYSQL_CMD="mysql -u root -p${DB_PASS}"
-fi
+# =======================================================================
+# THE WARNING SUPPRESSION FIX: Create a temporary native options file
+# =======================================================================
+ACORE_CNF="/tmp/.acore_mysql_$$.cnf"
+touch "$ACORE_CNF"
+chmod 600 "$ACORE_CNF" # Strictly lock file permissions so only root can read it
 
+cat << EOF > "$ACORE_CNF"
+[client]
+user=root
+password="${DB_PASS}"
+EOF
+
+# Define the clean client execution command utilizing the options file wrapper
+export MYSQL_CMD="mysql --defaults-file=$ACORE_CNF"
+
+# Setup an automatic cleanup trap so the password file is deleted even if the script crashes midway
+trap 'rm -f "$ACORE_CNF"' EXIT
+
+# Test the provided database credentials cleanly
 if ! $MYSQL_CMD -e "EXIT" >/dev/null 2>&1; then
     echo "❌ Error: Could not connect to MySQL with those credentials."
     exit 1
 fi
 
-echo " -> Database credentials verified successfully!"
+echo " -> Database credentials verified successfully (Warnings suppressed)!"
 
 # =======================================================================
-# THE SQL INITIALIZATION FIX: Run the baseline table schema creations
+# THE SQL INITIALIZATION: Run the baseline shell setup
 # =======================================================================
 if [ -f /usr/share/azerothcore/data/sql/create/create_mysql.sql ]; then
     echo " -> Initializing core database templates and permissions..."
@@ -43,81 +64,177 @@ else
     exit 1
 fi
 
-# 2. Automatically apply your configuration variables securely
+# =======================================================================
+# 2. Securely apply configuration variables & enable automatic updaters
+# =======================================================================
 echo " -> Tuning configuration paths inside /etc/azerothcore/..."
-if [ -f /etc/azerothcore/worldserver.conf ]; then
-    sed -i 's/^Ra.Enable\s*=\s*.*/Ra.Enable = 1/'     /etc/azerothcore/worldserver.conf
-    sed -i 's/^Ra.IP\s*=\s*.*/Ra.IP = "127.0.0.1"/'     /etc/azerothcore/worldserver.conf
-    sed -i 's/^Ra.Port\s*=\s*.*/Ra.Port = 3443/'       /etc/azerothcore/worldserver.conf
-    sed -i 's/^Ra.MinLevel\s*=\s*.*/Ra.MinLevel = 3/' /etc/azerothcore/worldserver.conf
-    sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 0/' /etc/azerothcore/worldserver.conf
+
+# Ensure the Authserver configuration explicitly allows automatic database compilation
+if [ -f /etc/azerothcore/authserver.conf ]; then
+    sed -i 's/^Updates.Enable\s*=\s*.*/Updates.Enable = 1/' /etc/azerothcore/authserver.conf
 fi
 
-# 3. Securely prompt the user to define their custom Master GM account keys
-echo ""
-echo "--- Account Provisioning ---"
-read -p "Enter desired Master Admin Username: " GM_USER
-read -s -p "Enter desired Master Admin Password: " GM_PASS
-echo ""
+if [ -f /etc/azerothcore/worldserver.conf ]; then
+    sed -i 's/^Updates.Enable\s*=\s*.*/Updates.Enable = 1/' /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.Enable\s*=\s*.*/Ra.Enable = 1/'           /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.IP\s*=\s*.*/Ra.IP = "127.0.0.1"/'         /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.Port\s*=\s*.*/Ra.Port = 3443/'             /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.MinLevel\s*=\s*.*/Ra.MinLevel = 3/'       /etc/azerothcore/worldserver.conf
+    sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 0/' /etc/azerothcore/worldserver.conf
+    sed -i 's/^Log.Async.Enable\s*=\s*.*/Log.Async.Enable = 0/' /etc/azerothcore/worldserver.conf
+fi
 
-# Create a temporary log file to catch the server's initialization text
-SETUP_LOG="/tmp/acore_bootstrap.log"
-rm -f "${SETUP_LOG}"
+# =======================================================================
+# 3. INITIALIZE TABLES VIA AUTHSERVER WITH PORT POLLING
+# =======================================================================
+echo " -> Cleaning up previous table fragments to prevent migration crashes..."
+$MYSQL_CMD -e "DROP DATABASE IF EXISTS acore_auth; CREATE DATABASE acore_auth;"
+if [ -f /usr/share/azerothcore/data/sql/create/create_mysql.sql ]; then
+    $MYSQL_CMD < /usr/share/azerothcore/data/sql/create/create_mysql.sql >/dev/null 2>&1
+fi
 
-# 4. Spin up the worldserver in the background, directing output to our log file
-echo " -> Starting background initialization thread (This may take a moment)..."
-echo -e "account create ${GM_USER} ${GM_PASS}\naccount set gmlevel ${GM_USER} 3 -1" | \
-    sudo -u azerothcore /usr/share/azerothcore/bin/worldserver --asdaemon > "${SETUP_LOG}" 2>&1 &
+echo " -> Launching authserver initialization engine..."
 
-local BOOTSTRAP_PID=$!
-
-# Actively monitor the logs for readiness tokens
-local TIMEOUT=300 # Max 5 minutes for slow hard drives/initial populations
-local ELAPSED=0
-local READY=0
-
-while [ ${ELAPSED} -lt ${TIMEOUT} ]; do
-    # Check if the server successfully processed the account creation command strings
-    if grep -q "Account created:" "${SETUP_LOG}" || grep -q "worldserver-daemon) ready" "${SETUP_LOG}"; then
-        READY=1
-        break
-    fi
-    
-    # Check if the process died unexpectedly on its own (e.g., bad database password)
-    if ! kill -0 ${BOOTSTRAP_PID} >/dev/null 2>&1; then
-        echo "❌ Error: The server process terminated prematurely. Check ${SETUP_LOG} for details."
-        exit 1
-    fi
-    
-    sleep 2
-    ELAPSED=$((ELAPSED + 2))
-    printf " -> Waiting for server engine cores to load... (%ds/%ds)\r" "${ELAPSED}" "${TIMEOUT}"
-done
-
-echo "" # Clear the carriage return line
-
-# 5. Clean up the background thread instances safely
-kill ${BOOTSTRAP_PID} >/dev/null 2>&1
-wait ${BOOTSTRAP_PID} >/dev/null 2>&1
-rm -f "${SETUP_LOG}"
-
-if [ ${READY} -eq 0 ]; then
-    echo "❌ Error: Bootstrapping timed out after 5 minutes before account could be created."
+# Verify execution path exists before starting the background process thread
+if [ ! -f /usr/share/azerothcore/bin/authserver ] && [ ! -f /usr/bin/authserver ]; then
+    echo "❌ Error: Mandated authserver executable not found in default search paths."
     exit 1
 fi
 
+# Select binary execution target based on your custom cmake binary directories layout
+if [ -f /usr/bin/authserver ]; then
+    AUTH_BIN="/usr/bin/authserver"
+else
+    AUTH_BIN="/usr/share/azerothcore/bin/authserver"
+fi
+
+$AUTH_BIN > /dev/null 2>&1 &
+AUTH_PID=$!
+
+echo " -> Processing core updates. Monitoring migration structures..."
+
+# Active Network Port Polling Loop - Completely independent of SQL filenames or buffer boundaries
+MIGRATION_FINISHED=0
+TIMEOUT=300 
+ELAPSED=0
+
+while [ $ELAPSED -lt $TIMEOUT ]; do
+    # Check if authserver has opened port 3724 (default auth port) to listen for connections
+    if ss -tlnp 2>/dev/null | grep -q ":3724 "; then
+        MIGRATION_FINISHED=1
+        break
+    fi
+
+    # Check if the process died silently on its own
+    if ! kill -0 $AUTH_PID >/dev/null 2>&1; then
+        echo "❌ Error: The authserver process terminated prematurely. Check your configuration."
+        exit 1
+    fi
+
+    sleep 1
+    ELAPSED=$((ELAPSED + 1))
+    printf " -> Synchronizing schemas... (%ds/%ds)\r" "${ELAPSED}" "${TIMEOUT}"
+done
+
+echo "" # Clear the carriage return line output stream
+
+# Gracefully terminate the authserver now that initialization is verified complete
+kill $AUTH_PID >/dev/null 2>&1
+wait $AUTH_PID >/dev/null 2>&1
+
+if [ $MIGRATION_FINISHED -eq 0 ]; then
+    echo "❌ Error: Schema migration timed out before the auth network port became active."
+    exit 1
+fi
+
+echo " -> Database schemas populated successfully!"
+
+# =======================================================================
+# 4. DYNAMIC FOREGROUND LOG STREAMING & ACCOUNT PROVISIONING
+# =======================================================================
+echo ""
+echo "======================================================================="
+echo -e " ⏳ ${BOLD}AZEROTHCORE FOREGROUND ACCOUNT CONFIGURATION${NC}"
+echo "======================================================================="
+echo " Define the master keys you want to build for your administrator account."
+echo ""
+read -p "Enter desired Master Admin Username: " SETUP_USER
+read -s -p "Enter desired Master Admin Password: " SETUP_PASS
+echo ""
+
+# Convert username cleanly to uppercase to align with MySQL storage mechanics
+SETUP_USER_UPPER=$(echo "$SETUP_USER" | tr '[:lower:]' '[:upper:]')
+
+# Verify the worldserver binary destination paths before proceeding to foreground execution
+if [ ! -f /usr/share/azerothcore/bin/worldserver ] && [ ! -f /usr/bin/worldserver ]; then
+    echo "❌ Error: Mandated worldserver execution targets not found inside path parameters."
+    exit 1
+fi
+
+if [ -f /usr/bin/worldserver ]; then
+    WORLD_BIN="/usr/bin/worldserver"
+else
+    WORLD_BIN="/usr/share/azerothcore/bin/worldserver"
+fi
+
+# Force turn ON the interactive console in the config file so it attaches to this terminal
+if [ -f /etc/azerothcore/worldserver.conf ]; then
+    sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 1/' /etc/azerothcore/worldserver.conf
+fi
+
+echo ""
+echo "======================================================================="
+echo -e " 🚀 ${BOLD}BOOTING WORLDSERVER INITIALIZATION LAYER${NC}"
+echo "======================================================================="
+echo " The server log files will now stream live in this window."
+echo " This step takes roughly 20 minutes to extract and load map vectors."
+echo ""
+echo " ONCE LOGS ARE COMPLETE AND YOU SEE THE 'AC>' PROMPT, RUN EXCLUSIVELY:"
+echo -e "   1. ${BOLD}account create ${SETUP_USER_UPPER} ${SETUP_PASS}${NC}"
+echo -e "   2. ${BOLD}server shutdown 0h0m1s${NC}"
+echo -e "   3. ${BOLD}If the server does not shutdown, press Ctrl+C to terminate the process manually.${NC}"
+echo ""
+echo " Press [ENTER] to stream logs and initialize the application core..."
+echo "======================================================================="
+read -r 
+
+# Launch the worldserver in the foreground.
+# This attaches the binary straight to stdout/stdin, displaying full real-time logs!
+$WORLD_BIN
+
+echo ""
+echo " -> Server shutdown caught cleanly! Processing backend account components..."
+
+# Automatically elevate the newly created account to Master GM Status behind the scenes
+# This removes the risk of the user mistyping the complex syntax values
+SQL_AUTO_ELEVATE="
+USE acore_auth;
+INSERT INTO account_access (id, gmlevel, RealmID, comment) 
+VALUES ((SELECT id FROM account WHERE username='${SETUP_USER_UPPER}'), 3, -1, 'Master GM Account');
+"
+
+if ! $MYSQL_CMD -e "$SQL_AUTO_ELEVATE" >/dev/null 2>&1; then
+    echo "❌ WARNING: Database privilege elevation block returned an execution error."
+    echo "            Please elevate your account level manually via the database terminal."
+else
+    echo " -> Account ${SETUP_USER_UPPER} elevated to Master GM status successfully!"
+fi
+
+# Secure the application configuration for systemd background use moving forward
 if [ -f /etc/azerothcore/worldserver.conf ]; then
     sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 0/' /etc/azerothcore/worldserver.conf
 fi
 
-
-echo " -> Secure SRP6 account tokens generated and injected successfully!"
+echo " -> Configuration profiles locked down and secured."
+echo ""
 echo "======================================================================="
-echo " 🎉 AZEROTHCORE PROVISIONING COMPLETE!"
+echo -e " 🎉 ${BOLD}AZEROTHCORE PROVISIONING COMPLETE!${NC}"
 echo "======================================================================="
-echo " 1. Enable and start your server engines natively right now:"
+echo " Your master user has been generated and elevated safely by the core."
+echo ""
+echo " 1. Enable and start your server engines background daemons natively:"
 echo "    sudo systemctl enable --now acore-auth-server acore-world-server"
 echo ""
-echo " 2. Connect directly to your live scrolling interactive server console:"
-echo "    attach-world (server must fully start first)"
+echo " 2. Connect directly to your live scrolling interactive server console once the server is running:"
+echo "    attach-world" and use ctl+c to exit the console without stopping the server.
 echo "======================================================================="

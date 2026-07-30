@@ -12,8 +12,8 @@ _cmakeargs=''
 pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
-pkgver=r18952.5bdaa898db
-pkgrel=8
+pkgver=r18954.9963e60396
+pkgrel=1
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
@@ -25,7 +25,7 @@ source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 sha512sums=('SKIP'
             'b8f13b46be156fc93ee639b8d1c10cd86f055e61201ee28b6c40dfaa95a71c0f2f7374fab34edda9881f4ead537e4c89b57fb6ff57a9373f7742ec00a9cb30fd'
             '14ed11734dee5c2351bd3e799b5221afc846ee78b06bfa42ad5677b8d8f679b4170c641c489cba582f939742de5ff74bb7966bbd843c8be8e80bfc969cff6243'
-            '1617aa9b6556c7095386064adf884838d606f87837c0a8b36b21ebaf5cbf3031bbbfab1492a3ef0c34e84cfbd1e7bfc539c44afe9fd85911dcf008420daf0615')
+            '58a0a32ce56a6398371334c736bb24deb699b5e1c83d90a7671d15482fc6d193ba95ae27e15b5126d7574fcab6ffdd8dcaf17dea4087cc18365284faec6f2638')
 
 install='azerothcore-wotlk-git.install'
 #backup=('usr/share/azerothcore/acore.json')
@@ -124,7 +124,7 @@ build() {
     # Fixed the installation target directories to proper Linux standards
 	CC=clang CXX=clang++ cmake -B build -S "${_pkgname}" \
 	-DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr/share/azerothcore \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCONF_DIR=/etc/azerothcore \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
@@ -200,6 +200,9 @@ EOF
   	install -dm755 "${pkgdir}/usr/share/azerothcore/data/sql"
   	cp -a "${srcdir}/${_pkgname}/data/sql/." "${pkgdir}/usr/share/azerothcore/data/sql/"
 
+	# Install module sql folders
+	install -dm755 "${pkgdir}/usr/share/azerothcore/modules/"
+ 
 	# Installs the systemd service units so the server can be managed with systemctl
   	install -Dm644 "${srcdir}/acore-auth-server.service" "${pkgdir}/usr/lib/systemd/system/acore-auth-server.service"
   	install -Dm644 "${srcdir}/acore-world-server.service" "${pkgdir}/usr/lib/systemd/system/acore-world-server.service"
