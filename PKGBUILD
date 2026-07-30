@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=zgit-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern, fast Git & GitHub client — TUI binary"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('a575c1dd2a5d369c40c4490d54c368ab35175ecb16ee2cc0768c47f59c422a7a')
+sha256sums=('19a35ce73e084d60209bbd97a2e54229c3debf8c29b540df5ec3f1f367dc023a')
 
 package() {
   install -Dm755 "zgit-v${pkgver}-linux-amd64/zgit" "${pkgdir}/usr/bin/zgit"
