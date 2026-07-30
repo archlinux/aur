@@ -1,8 +1,8 @@
 # Maintainer: RangS-1 <rangga19sj@gmail.com>
 pkgname=bashing
 _repo=Bashing
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Bash Scripting, such as laravel environment, githelper and more"
 arch=('any')
 url="https://github.com/RangS-1/Bashing"
@@ -10,6 +10,31 @@ license=('MIT')
 
 depends=(
     bash
+    git
+    sudo
+    pacman
+    pacman-contrib
+    networkmanager
+    iproute2
+    iputils
+    procps-ng
+    coreutils
+    findutils
+    gawk
+    grep
+    sed
+    tar
+    gzip
+    systemd
+    shadow
+    mariadb
+    php
+    php-fpm
+    composer
+    nginx
+    nodejs
+    npm
+    yay
 )
 
 makedepends=(
@@ -20,7 +45,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/RangS-1/${_repo}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('314ac521b75fb014fbb0407c49e0263f11bc011d20cf81c6530b0ba25cbe9fc9')
+sha256sums=('b60604a1852db62662c3f08badf3ef1f4dc4b9928d42c201e362d88fa820b6a3')
 
 package() {
     cd "$srcdir/${_repo}-${pkgver}"
@@ -38,4 +63,7 @@ package() {
 
     install -Dm644 README.md \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
