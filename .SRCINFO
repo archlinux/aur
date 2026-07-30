@@ -1,6 +1,6 @@
 pkgbase = emergent-bin
 	pkgdesc = Event-driven workflow engine using publish-subscribe primitives
-	pkgver = 0.10.9
+	pkgver = 0.10.10
 	pkgrel = 1
 	url = https://github.com/Govcraft/emergent
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = emergent-bin
 	provides = emergent
 	conflicts = emergent
 	validpgpkeys = EDAAD3730AB9855765E57445965785C9F837377C
-	source_x86_64 = https://github.com/Govcraft/emergent/releases/download/v0.10.9/emergent-0.10.9-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://github.com/Govcraft/emergent/releases/download/v0.10.9/emergent-0.10.9-x86_64-unknown-linux-gnu.tar.gz.asc
-	sha256sums_x86_64 = 585d978270ca01e6a2ffe12a5859bcbe0b5ac967afeba26e05bbb3e2ca15c7d6
+	source_x86_64 = https://github.com/Govcraft/emergent/releases/download/v0.10.10/emergent-0.10.10-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/Govcraft/emergent/releases/download/v0.10.10/emergent-0.10.10-x86_64-unknown-linux-gnu.tar.gz.asc
+	sha256sums_x86_64 = 4563acce8833b67ed132c2aa47aec01db573199d25123323fed42dee48f9c5ca
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Govcraft/emergent/releases/download/v0.10.9/emergent-0.10.9-aarch64-unknown-linux-gnu.tar.gz
-	source_aarch64 = https://github.com/Govcraft/emergent/releases/download/v0.10.9/emergent-0.10.9-aarch64-unknown-linux-gnu.tar.gz.asc
-	sha256sums_aarch64 = 28a877415ad2c7f85a04af5807d2e156fb3bb7bff728ccffffefb65be7672b04
+	source_aarch64 = https://github.com/Govcraft/emergent/releases/download/v0.10.10/emergent-0.10.10-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/Govcraft/emergent/releases/download/v0.10.10/emergent-0.10.10-aarch64-unknown-linux-gnu.tar.gz.asc
+	sha256sums_aarch64 = 03c77446e355b4e27f62b278cbdf15d93e8091dd285d69e934fb77b52d1894e9
 	sha256sums_aarch64 = SKIP
 
 pkgname = emergent-bin
