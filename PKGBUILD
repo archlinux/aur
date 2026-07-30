@@ -1,7 +1,7 @@
 # Maintainer: chris.imx <chris.imx.aur@online.de>
 
 pkgname=findmydeviceserver
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Official server for the android app FindMyDevice (FMD) written in Go'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source=(git+https://gitlab.com/fmd-foss/fmd-server.git#tag=v${pkgver}
         findmydeviceserver.tmpfiles
 	modify-defaults-db-and-unix-socket-path.patch
 )
-sha256sums=('96cbdcd5cb224fb03c4fccedddf4bcebf100a665644959e7d93a95941db46d40'
+sha256sums=('7715071c4301ec9852a234a9fdb3776c52290f90e187f28dec331b1355833c76'
             'f3d973cee143e7ba182ad3f228f2d5f15f5847dd6eeb48ea0122aa7c298a3cd6'
             'd3f754171a12f8559de28b9c08699dd96f741abeb0f0e44dff9a912e9b381387'
             'cb1daf2913c9c76125b79a037bb0d1a7bd8f0224cf98abfd0af0886ff729073d'
@@ -51,6 +51,8 @@ build() {
   # the only option to make the binary full RELRO
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o fmd-server
+
+  go build -o fmd-server-ctl ./ctl
 }
 
 package() {
@@ -62,6 +64,7 @@ package() {
   install -Dm700 "${srcdir}/fmd-server/config.example.yml" "$pkgdir/etc/fmdserver/config.yml"
   chmod 700 "$pkgdir/etc/fmdserver"
   install -Dm755 "${srcdir}/fmd-server/fmd-server" "${pkgdir}/usr/bin/fmdserver"
+  install -Dm755 "${srcdir}/fmd-server/fmd-server-ctl" "${pkgdir}/usr/bin/fmd-server-ctl"
   install -Dm644 "${srcdir}/findmydeviceserver.service" "${pkgdir}/usr/lib/systemd/system/findmydeviceserver.service"
 }
 
