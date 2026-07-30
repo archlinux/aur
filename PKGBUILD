@@ -1,18 +1,18 @@
-# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Maintainer: Abhishek Sharma >
 
 _pkgname=mpvz
-_github="Zren/${_pkgname}"
+_github="MatsyaOs${_pkgname}"
 pkgname=${_pkgname}-git
 pkgver=0.r190.g89208b7
 pkgrel=1
-pkgdesc='Qt5/QML based GUI for libmpv. Based on the Tethys theme for Bomi.'
+pkgdesc='Qt6/QML based GUI for libmpv. Based on the Tethys theme for Bomi.'
 url="https://github.com/${_github}"
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git')
-depends=('qt5-x11extras' 'qt5-quickcontrols' 'mpv')
+depends=('qt6-wayland' 'qt6-quickcontrols2' 'mpv')
 source=("${_pkgname}::git+https://github.com/${_github}")
 sha256sums=('SKIP')
 
