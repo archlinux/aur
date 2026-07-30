@@ -1,0 +1,13 @@
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 123afb4..ca9e1ef 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -49,7 +49,7 @@ portable-pty = "0.9"
+ libc = "0.2"
+ 
+ [target.'cfg(target_os = "linux")'.dependencies]
+-x11 = "2.21"
++x11 = { version = "2.21", features = ["xlib"] }
+ 
+ [target.'cfg(target_os = "windows")'.dependencies]
+ portable-pty = "0.8.1"

@@ -28,14 +28,18 @@ conflicts=('orca-sofriendly')
 options=('!lto')
 source=(
   "$pkgname::git+$url.git"
-  'desktop-build.patch'
+  'linux-crate-type.patch'
+  'system-libs.patch'
+  'linux-x11.patch'
   'disable-self-updater.patch'
   'orca-sofriendly.desktop'
   'orca-sofriendly.xml'
 )
 sha256sums=(
   'SKIP'
-  '7d55f1103d497597edbbb6499c81568428ed837276148637bba29156ea436042'
+  'cdef6e48d0997d3da567472e8a0912b4fb10bfdb0a5bbf55f8d5786349f698ed'
+  'ad131638d7c1f342d7997d6b038f0d1aed6987cda40b823d93022673828f684b'
+  'd4d73482ceb6901942935c66b79ff13d029b7d34267261a5d4af9262aa6ee027'
   'cf2a604c6322a84253185125612ffdd6cd675317c30cf7df3ee776d14e1fd407'
   '6072b928c27f30a70f54bf6106103d0e510e4e0f9dc3c10d999e18f0a844219d'
   '0eb3e0bbc4f08d029b00e22abf9f252aada1afa9a61b4988bea2be97f2f7bf7b'
@@ -51,7 +55,9 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  patch -Np1 -i "$srcdir/desktop-build.patch"
+  patch -Np1 -i "$srcdir/linux-crate-type.patch"
+  patch -Np1 -i "$srcdir/system-libs.patch"
+  patch -Np1 -i "$srcdir/linux-x11.patch"
   patch -Np1 -i "$srcdir/disable-self-updater.patch"
 
   npm ci --cache "$srcdir/npm-cache"
@@ -59,9 +65,9 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   local rust_target
   rust_target="$(rustc -vV | sed -n 's/^host: //p')"
+  # Reconcile the upstream lockfile after disabling vendored-only features.
   cargo fetch \
     --manifest-path src-tauri/Cargo.toml \
-    --locked \
     --target "$rust_target"
 }
 

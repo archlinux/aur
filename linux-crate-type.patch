@@ -1,0 +1,13 @@
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 123afb4..8ced838 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -7,7 +7,7 @@ edition = "2021"
+ 
+ [lib]
+ name = "orca_lib"
+-crate-type = ["staticlib", "cdylib", "rlib"]
++crate-type = ["rlib"]
+ 
+ [build-dependencies]
+ tauri-build = { version = "2", features = [] }
