@@ -3,7 +3,7 @@
 # Contributor: Thomas Quillan <tjquillan@gmail.com>
 
 pkgname=harmonoid-bin
-pkgver=0.3.22
+pkgver=0.3.32
 pkgrel=2
 pkgdesc="Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more."
 arch=("x86_64" "aarch64")
@@ -16,12 +16,12 @@ conflicts=(harmonoid)
 optdepends=('playerctl: mpris support')
 options=(!strip)
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eca5bcf1e522c80d21c31dec357ba53d282f30831f05560beeae2d1195255a88')
+sha256sums=('6164c4121f372227bb0020967a0fff5a05e7387f1e4ec998287c3edb4ed54c97')
 
 source_x86_64=("harmonoid-linux-${pkgver//_/-}-x86_64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v${pkgver//_/-}/harmonoid-linux-x86_64.tar.gz")
-sha256sums_x86_64=('f9f131df4baed2b662391aed134d311b6a62273a456dfc52670dce8eb84b2728')
+sha256sums_x86_64=('2029e08580b6e422dfe64cc1ead502fe870a23e2791c0ef3c8af5d1242ce5961')
 source_aarch64=("harmonoid-linux-${pkgver//_/-}-aarch64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v${pkgver//_/-}/harmonoid-linux-aarch64.tar.gz")
-sha256sums_aarch64=("8d73798be2ee76c3833595336f94970a5aa04316336a7adb642a81f17d292514")
+sha256sums_aarch64=("8fd3ef7aaee250b054545ee87211d64bd5729e5265935e26dca2d1c8070d2a20")
 
 package() {
    cp -dr "$srcdir"/usr "$pkgdir"/usr
