@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=pipdeptree
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d834785a7be2e31258c8de1225ed6cbd7e94f58439c5e709aef1335c86baf190')
+sha256sums=('adc0a67a8e101d20e181fae0e0bdb422c45a45df4f4f870e59e5d589d5377559')
 
 prepare() {
   cd "$pkgname-$pkgver"
