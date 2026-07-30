@@ -1,7 +1,6 @@
 # Maintainer: Egor Kurochkin <itsegork@gmail.com>
-
 pkgname=shellix
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Virtual terminal for Linux with tab support and customizable options"
 arch=('any')
@@ -21,9 +20,9 @@ depends=(
     'conspy'
     'nautilus-python'
 )
-makedepends=('git')
+makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dceb322db7eaf6e71cb54863bb62ec2c184c29a89e7f51a38e047a1c107824df')
+sha256sums=('e395d05e9add45d9ccb7121f5db6560d2001d6d258abf7d02aeb500420c9740c')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,11 +32,19 @@ package() {
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/nautilus-python/extensions"
 
-    install -m644 src/shellix_nautilus.py \
-        "${pkgdir}/usr/share/nautilus-python/extensions/shellix_nautilus.py"
+    if [ -f "src/shellix_nautilus.py" ]; then
+        install -m644 src/shellix_nautilus.py \
+            "${pkgdir}/usr/share/nautilus-python/extensions/shellix_nautilus.py"
+    fi
     
     cp -r src "${pkgdir}/usr/share/${pkgname}/"
     
+    if [ -d "locale" ]; then
+        install -dm755 "${pkgdir}/usr/share/locale"
+        cp -r locale/* "${pkgdir}/usr/share/locale/"
+        cp -r locale "${pkgdir}/usr/share/${pkgname}/"
+    fi
+
     echo -e "#!/bin/bash\nexec python3 /usr/share/${pkgname}/src/main.py \"\$@\"" > "${pkgdir}/usr/bin/${pkgname}"
     chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
@@ -83,4 +90,3 @@ EOF
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('b9770298bf759d0cc7dd394ed2a06ec84222dc835f72c5215e57682181bba5a9')
