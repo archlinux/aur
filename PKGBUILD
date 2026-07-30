@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=2.0.65
+pkgver=2.0.66
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('eb08d37b1c252c4f8d80f03302565e154a9bc8055a011e701b30b99b9885d9c1')
+sha256sums=('80889a7e6bf13ce6f7f0690473248d3d35b0f928c8c0846708411839c0843067')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
