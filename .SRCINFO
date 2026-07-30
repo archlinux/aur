@@ -6,11 +6,10 @@ pkgbase = battery-charge-limiter
 	install = battery-charge-limiter.install
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = python
 	depends = acpi_call
 	provides = battery-charge-limiter
-	source = battery-charge-limiter-master.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/master.tar.gz
-	sha256sums = SKIP
+	source = battery-charge-limiter-v1.0.0.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/v1.0.0.tar.gz
+	sha256sums = 07d17497f8f2575e75982e50d7641a9cae001767a10056e913a0f7711d7243e4
 
 pkgname = battery-charge-limiter

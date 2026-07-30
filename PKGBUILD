@@ -9,15 +9,14 @@ arch=('any')
 url="https://github.com/SarangRao20/battery-charge-limiter"
 license=('MIT')
 depends=('python' 'acpi_call')
-makedepends=('git')
 conflicts=()
 provides=("${pkgname}")
-source=("${pkgname}-master.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/master.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/v${pkgver}.tar.gz")
 install=battery-charge-limiter.install
-sha256sums=('SKIP')
+sha256sums=('07d17497f8f2575e75982e50d7641a9cae001767a10056e913a0f7711d7243e4')
 
 package() {
-  cd "${srcdir}/${pkgname}-master"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Daemon script
   install -Dm755 "arch/battery-charge-limiter" "${pkgdir}/usr/bin/battery-charge-limiter"
