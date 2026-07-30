@@ -3,7 +3,7 @@
 # Do not edit manually — changes are overwritten.
 
 pkgname=horde-bin
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Distributed multi-agent system"
 arch=('x86_64' 'aarch64')

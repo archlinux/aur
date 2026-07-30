@@ -1,6 +1,6 @@
 pkgbase = horde-bin
 	pkgdesc = Distributed multi-agent system
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/geoffjay/horde
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = horde-bin
 	license = MIT
 	provides = horde
 	conflicts = horde
-	source = https://github.com/geoffjay/horde/releases/download/v0.2.0/horde_0.2.0_linux_amd64.tar.gz
+	source = https://github.com/geoffjay/horde/releases/download/v0.4.0/horde_0.4.0_linux_amd64.tar.gz
 	sha256sums = SKIP
 
 pkgname = horde-bin
