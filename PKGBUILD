@@ -53,7 +53,7 @@ prepare() {
   git clean -dfx
 
   # Don't attempt to update with the Flatpak release
-  sed -i 's/ return ".flatpak"/ return ""/' dlss_updater/auto_updater.py
+  sed -i 's/return ".flatpak"/return ""/' dlss_updater/auto_updater.py
 }
 
 build() {
