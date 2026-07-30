@@ -1,6 +1,6 @@
 # Maintainer: Timothy D Beach <beachtimothyd@gmail.com>
 pkgname=ear
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="many text sources, one output bus: your ears — local neural TTS reader (CLI + GUI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 optdepends=('poppler: PDF ingestion (pdftotext)'
             'piper-tts-bin: fast local TTS tier (or: pipx install piper-tts)')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timbeach/ear/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc2f9b1ec8336ef7ee6217cd7848f7565315248d9a56140114261f754a473134')
+sha256sums=('0793eec69691c15aff320c78253eebb4b2a057cb49dd815b08f4773c3d436c2a')
 
 build() {
   cd "$pkgname-$pkgver"
