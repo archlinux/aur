@@ -1,11 +1,11 @@
 pkgbase = minimal-bin
-	pkgdesc = A declarative build system, developer environment tool, and task runner
+	pkgdesc = Isolated, reproducible development environments and a secure package manager that give your whole team identical environments, while keeping AI agents off the laptop
 	pkgver = e6cf884b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minimal.dev
 	arch = x86_64
 	arch = aarch64
-	license = proprietary
+	license = Apache-2.0
 	makedepends = curl
 	depends = git
 	optdepends = bash: shell integration and completions

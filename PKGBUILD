@@ -1,13 +1,14 @@
 # Maintainer: 0chroma <me at chroma dot sh>
 # Upstream installer: https://go.minimal.dev/install.sh
+# Source: https://github.com/gominimal/minimal
 
 pkgname=minimal-bin
 pkgver=e6cf884b
-pkgrel=1
-pkgdesc="A declarative build system, developer environment tool, and task runner"
+pkgrel=2
+pkgdesc="Isolated, reproducible development environments and a secure package manager that give your whole team identical environments, while keeping AI agents off the laptop"
 arch=(x86_64 aarch64)
 url="https://minimal.dev"
-license=("proprietary")
+license=("Apache-2.0")
 depends=(git)
 makedepends=(curl)
 optdepends=(
