@@ -2,7 +2,7 @@
 
 pkgname=phantomfido
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FIDO caBLE v2 hybrid transport daemon bridging Linux browser WebAuthn to mobile passkeys"
 arch=('x86_64' 'aarch64')
 url="https://github.com/reece4277/phantomfido"
@@ -22,10 +22,12 @@ options=('!lto')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.sysusers"
+  "$pkgname.modules-load"
 )
 sha256sums=(
   'e509857c853b2923a34e40891ec62ec1eebbdd6279339a4a13d7bee1074fffb0'
   '55f76b8dc4703b4ac98a6aa67260cb4c4b5f450e0abcd265c58b7adf17c246be'
+  '58e43222b81de11baa62712c64fc198a4d4071c429b70041c60b1e41b27017a2'
 )
 
 prepare() {
@@ -71,6 +73,11 @@ package() {
   # stock Arch group; systemd-sysusers creates it on install.
   install -Dm644 "$srcdir/$pkgname.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
+  # Nothing on a stock Arch system autoloads uhid, so /dev/uhid would never
+  # appear and the udev rule above would have nothing to act on.
+  install -Dm644 "$srcdir/$pkgname.modules-load" \
+    "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 

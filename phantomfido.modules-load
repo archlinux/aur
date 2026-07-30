@@ -1,0 +1,5 @@
+# /dev/uhid only exists once the uhid module is loaded, and nothing on a stock
+# Arch system autoloads it: it is a misc character device with no hardware
+# modalias to trigger on. Without this the udev rule never fires and the daemon
+# cannot open /dev/uhid.
+uhid

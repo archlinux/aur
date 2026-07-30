@@ -1,48 +1,63 @@
+_phantomfido_load_uhid() {
+  # modules-load.d handles every subsequent boot; this makes /dev/uhid appear
+  # now so the udev rule below has something to act on.
+  if command -v modprobe >/dev/null 2>&1; then
+    modprobe uhid 2>/dev/null || true
+  fi
+}
+
 _phantomfido_reload_udev() {
   if command -v udevadm >/dev/null 2>&1; then
-    udevadm control --reload-rules && udevadm trigger --subsystem-match=misc
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=misc 2>/dev/null || true
   fi
 }
 
 _phantomfido_notice() {
   cat <<'EOF'
 
-==> phantomfido requires two permissions that are NOT granted automatically:
+==> phantomfido needs two things before it can authenticate:
 
-    1. Bluetooth (BlueZ / HCI) access
-       Your account must be a member of the `bluetooth` group:
-
-           sudo usermod -aG bluetooth "$USER"
-
-    2. Read/write access to /dev/uhid
-       The installed udev rule sets /dev/uhid to group `uhid` (mode 0660).
-       That group is created for you, but you must join it:
+    1. Access to /dev/uhid  (the virtual FIDO2 HID device)
+       The `uhid` module is loaded now and on every boot from
+       /usr/lib/modules-load.d/phantomfido.conf. The udev rule sets
+       /dev/uhid to group `uhid` (mode 0660) -- you must join that group:
 
            sudo usermod -aG uhid "$USER"
 
-    Group changes only take effect in NEW login sessions -- log out and back
-    in (or reboot), then verify with:
+       Group changes apply only to NEW login sessions: log out and back in
+       (or reboot) before starting the daemon.
 
-           id -nG                 # should list both bluetooth and uhid
-           ls -l /dev/uhid        # should show  crw-rw---- root uhid
+    2. A running Bluetooth stack
+       No group membership is required on Arch -- BlueZ's D-Bus policy
+       already permits local users. You only need the daemon running:
 
-    Without BOTH of these, the daemon cannot create its virtual FIDO HID
-    device or scan for the caBLE BLE advertisement, and every passkey
-    request will fail.
+           sudo systemctl enable --now bluetooth.service
 
-==> Start the daemon as a user service:
+==> Verify both:
+
+           ls -l /dev/uhid              # crw-rw---- root uhid
+           id -nG | grep -w uhid        # your account is in the group
+           systemctl is-active bluetooth
+
+==> Then start phantomfido as a user service:
 
            systemctl --user enable --now phantomfidod.service
+
+    The QR window needs a graphical session. Set PHANTOMFIDO_QR_ANSI=1 to
+    render the QR code in the terminal instead.
 
 EOF
 }
 
 post_install() {
+  _phantomfido_load_uhid
   _phantomfido_reload_udev
   _phantomfido_notice
 }
 
 post_upgrade() {
+  _phantomfido_load_uhid
   _phantomfido_reload_udev
   _phantomfido_notice
 }
