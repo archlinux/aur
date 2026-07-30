@@ -4,7 +4,7 @@
 
 pkgname=cppcms
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="CppCMS is the web development framework written in C++, that is aimed on development of high performance web application."
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.sourceforge.net/"
@@ -32,7 +32,9 @@ build() {
   mkdir -p "$srcdir/cppcms-build"
   cd "$srcdir/cppcms-build"
 
-  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppcms-$pkgver"
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD_REQUIRED=ON -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppcms-$pkgver"
   make
 }
 

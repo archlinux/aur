@@ -1,7 +1,7 @@
 pkgbase = cppcms
 	pkgdesc = CppCMS is the web development framework written in C++, that is aimed on development of high performance web application.
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cppcms.sourceforge.net/
 	arch = i486
 	arch = i686
