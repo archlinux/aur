@@ -2,7 +2,7 @@
 
 pkgname=rox-player
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
 url="https://github.com/zealsprince/rox"
@@ -43,6 +43,11 @@ prepare() {
 build() {
   cd "rox-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
+
+  # AUR build API keys from Upstream
+  export LASTFM_API_KEY=186d4bf7bd5d686fedb15dc27f33b954
+  export LASTFM_API_SECRET=56addddfc3e50143c90152568ce9185f
+  export DISCORD_APPLICATION_ID=1531533372051030036
 
   # Tell ring and sqlite3-sys to link against system libraries / build C code correctly
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
