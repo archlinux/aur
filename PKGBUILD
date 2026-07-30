@@ -1,8 +1,8 @@
 # Maintainer: Atharva Potdar <atharvapotdar07@gmail.com>
 
 pkgname=koreader-nightly-bin
-pkgver=2026.07_3_g74e3ffbde
-_realver=2026.07-3-g74e3ffbde
+pkgver=2026.07_5_g574fe9f6e
+_realver=2026.07-5-g574fe9f6e
 pkgrel=1
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats (Nightly Build)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 source_x86_64=("koreader-nightly-x86_64-${pkgver}.deb::https://build.koreader.rocks/download/nightly/${_realver}/koreader_${_realver}-1_amd64.deb")
 source_aarch64=("koreader-nightly-aarch64-${pkgver}.deb::https://build.koreader.rocks/download/nightly/${_realver}/koreader_${_realver}-1_arm64.deb")
 
-sha256sums_x86_64=('e3eef14490009dfdb27c5527db5675a1a50c2c5802b70beafd6f9dc23953c27f')
-sha256sums_aarch64=('3db4e4c261af4c6a3a9f77f90fc24bdd13d78f24efeb638a43256d958bc19459')
+sha256sums_x86_64=('37fd40d0ee23ccb8f88ac23d21d204b1736d855eb35aea3268caf21df1bc0637')
+sha256sums_aarch64=('4fda45753327347dcecfbd4d1e7837fac911ac985f1b30d102108f6d52183e40')
 
 prepare() {
   rm -rf "${srcdir}/dpkgdir"
