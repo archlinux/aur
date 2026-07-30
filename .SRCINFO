@@ -1,9 +1,9 @@
 pkgbase = kiwi-settings
 	pkgdesc = Settings application for Kiwi Shell
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/selimbucher/kiwi-settings
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
 	makedepends = gobject-introspection
 	depends = gtk4
@@ -13,7 +13,7 @@ pkgbase = kiwi-settings
 	depends = python-cairo
 	depends = imagemagick
 	optdepends = kiwi-shell: companion shell environment
-	source = kiwi-settings-0.1.0.tar.gz::https://github.com/selimbucher/kiwi-settings/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 387e2d6586323050fad540c741f04df82c416c31d0613364ba5351af057f8232
+	source = kiwi-settings-0.2.0.tar.gz::https://github.com/selimbucher/kiwi-settings/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 69a3939ee333619dede5f022502c2e03eb335809a8eae5bb0efa06efb32d3af7
 
 pkgname = kiwi-settings
