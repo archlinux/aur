@@ -1,0 +1,18 @@
+pkgbase = leaves-git
+	pkgdesc = A text-mode disk usage visualization utility.
+	pkgver = 0.2.0.cross.r1.g6805bfa
+	pkgrel = 1
+	url = https://github.com/patonw/leaves
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	provides = leaves
+	conflicts = leaves
+	conflicts = leaves-bin
+	source = leaves-main::git+https://github.com/patonw/leaves.git#branch=main
+	sha256sums = SKIP
+
+pkgname = leaves-git
