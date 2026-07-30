@@ -1,0 +1,21 @@
+pkgbase = sealantern-connect
+	pkgdesc = Lightweight Minecraft Java Edition P2P multiplayer client powered by sculk
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SeaLantern-Studio/SeaLantern-Connect
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = gcc-libs
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	options = !strip
+	source_x86_64 = sealantern-connect-0.1.0-x86_64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.1.0/SeaLantern.Connect_0.1.0_amd64.deb
+	sha256sums_x86_64 = 063db052f7cb43f54c17592418a7f7a64973f3a7470c1c2ef5f8d2890fbe2bb0
+	source_aarch64 = sealantern-connect-0.1.0-aarch64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.1.0/SeaLantern.Connect_0.1.0_arm64.deb
+	sha256sums_aarch64 = 379e59a6f82fb6a799921bffb20b41ab591838b4273c0a5fcdd418e215c924fb
+
+pkgname = sealantern-connect
