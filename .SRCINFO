@@ -1,0 +1,16 @@
+pkgbase = steamidra-bin
+	pkgdesc = Advanced Steam game management tool with manifest handling, Lua integrations, backups, fixes, and GUI
+	pkgver = 6.5.5
+	pkgrel = 1
+	url = https://github.com/Midrags/SFF
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	provides = steamidra
+	conflicts = steamidra
+	noextract = SteaMidra-6.5.5-linux.zip
+	source = SteaMidra-6.5.5-linux.zip::https://github.com/Midrags/SFF/releases/download/v6.5.5/SteaMidra-6.5.5-linux.zip
+
+pkgname = steamidra-bin
