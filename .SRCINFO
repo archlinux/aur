@@ -1,6 +1,6 @@
 pkgbase = pius-bin
 	pkgdesc = Organizational asset discovery tool with 20+ plugins covering certificate transparency, passive DNS, and all 5 Regional Internet Registries
-	pkgver = 1.1.13
+	pkgver = 1.1.14
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/pius
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pius-bin
 	provides = pius
 	conflicts = pius
 	options = !strip
-	source_x86_64 = pius-x86_64-1.1.13.tgz::https://github.com/praetorian-inc/pius/releases/download/v1.1.13/pius_1.1.13_linux_amd64.tar.gz
-	sha256sums_x86_64 = 54a376b1870b78591e0173c04aa87f4c72aeccc92b604019ec66e344c7760e75
-	source_aarch64 = pius-aarch64-1.1.13.tgz::https://github.com/praetorian-inc/pius/releases/download/v1.1.13/pius_1.1.13_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3b577d3eaedcb5d7d30ec222c576dbabcf7323739bb542d7049f4e50f299a322
+	source_x86_64 = pius-x86_64-1.1.14.tgz::https://github.com/praetorian-inc/pius/releases/download/v1.1.14/pius_1.1.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3fa2b3d298a22cf2a4d2ba0fc75a632316c9dcba7656b63d7fcf4041de2a3d2f
+	source_aarch64 = pius-aarch64-1.1.14.tgz::https://github.com/praetorian-inc/pius/releases/download/v1.1.14/pius_1.1.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = b84fa5a42b7ab5ebd9097cefce8ca8f023bcf0c7131a0884d15c02a9d76bc0ae
 
 pkgname = pius-bin
