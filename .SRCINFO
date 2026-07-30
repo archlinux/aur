@@ -7,7 +7,7 @@
 	license = MIT
 	provides = opcda-bridge-client
 	conflicts = opcda-bridge-client
-	source_x86_64 = opcda-bridge-client-bin-$pkgver-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/v0.1.0/opcda-bridge-client-linux-x86_64.tar.gz
+	source_x86_64 = opcda-bridge-client-bin-$pkgver-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/opcda-bridge-client-v0.1.0/opcda-bridge-client-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 47b6997a5ffdbcd9a57cda8adb3ffd23ea08ad497c42d5326bf23bc2220db6b6
 
 pkgname = opcda-bridge-client-bin
