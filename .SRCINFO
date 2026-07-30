@@ -1,6 +1,6 @@
 pkgbase = optionterm
 	pkgdesc = GTK4 + libadwaita terminal emulator powered by libghostty-vt
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/fireflylabss/optionTerm
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = optionterm
 	provides = option-term
 	conflicts = option-term
 	replaces = option-term
-	source = optionterm-0.1.12.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.1.12.tar.gz
+	source = optionterm-0.1.13.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.1.13.tar.gz
 	source = zig-x86_64-linux-0.15.2.tar.xz::https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
-	sha256sums = ce9163b38134940cec1bd939a2c772d9298d2c1080b9c3ec4aaf87c4d8a23478
+	sha256sums = b731efae71ba2b9f69914149de074ad3b1cc5a4864fe7639fbeeed75a8145670
 	sha256sums = 02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239
 
 pkgname = optionterm
