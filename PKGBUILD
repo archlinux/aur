@@ -1,7 +1,7 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=kiwi-shell
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop shell for Hyprland built with AGS and Astal"
 arch=('x86_64')
 url="https://github.com/selimbucher/kiwi-shell"
@@ -11,7 +11,7 @@ depends=(
     'gtk4'
     'libadwaita'
     'libsoup3'
-    'awww-git'
+    'awww'
     'hyprsunset'
     'brightnessctl'
     'zenity'

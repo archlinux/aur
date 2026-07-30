@@ -1,7 +1,7 @@
 pkgbase = kiwi-shell
 	pkgdesc = Desktop shell for Hyprland built with AGS and Astal
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/selimbucher/kiwi-shell
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = kiwi-shell
 	depends = gtk4
 	depends = libadwaita
 	depends = libsoup3
-	depends = awww-git
+	depends = awww
 	depends = hyprsunset
 	depends = brightnessctl
 	depends = zenity
