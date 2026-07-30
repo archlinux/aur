@@ -2,13 +2,14 @@
 
 pkgname='python-securetar'
 _module=${pkgname#python-}
-pkgver='2024.2.1'
-pkgrel=4
+pkgver='2026.4.1'
+pkgrel=1
 pkgdesc="Python module to handle tarfile backups."
-url="https://github.com/pvizeli/securetar"
+url="https://github.com/home-assistant-libs/securetar"
 depends=(
-	'python>=3.12'
+	'python>=3.11'
 	'python-cryptography'
+	'python-pynacl'
 )
 makedepends=(
 	'python-build'
@@ -16,10 +17,10 @@ makedepends=(
 	'python-wheel'
 	'python-setuptools'
 )
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-b2sums=('ff4768bbd474fe71bd00dd86872ae2251f1beb461f00789baa547dda079efa31bc98d5495bb1ede131b1f20b52fdc30e67607dd1d1b25791200412a8f759a236')
+source=("${_module}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('44bfc2f6d8c6bf4fbf49e668a0a461c9f2295de49f7cc7e0b14e8a2da5878ece338677cbd514eb5a3fdf4a3bf85f577d6100d83c93e77bdb6e45b954ecd92b01')
 
 build() {
 	cd "${srcdir}/${_module}-${pkgver}"
