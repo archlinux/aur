@@ -1,40 +1,26 @@
 # Maintainer: Agam Singh <agam@agamsingh.me>
 pkgname=globalplatformpro
 pkgver=25.10.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
 license=('LGPL3')
 depends=('java-runtime-headless' 'pcsclite')
-makedepends=('git' 'java-environment' 'maven' 'which')
-source=(
-  "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git#tag=v${pkgver}"
-  'gpp'
+makedepends=('git')
+source=("https://github.com/martinpaljak/GlobalPlatformPro/releases/download/v${pkgver}/gp.jar")
+sha256sums=('c88e0c5093032ec4571571f5397b6174e56bf632667950fa5bb716338534b122'
 )
-sha256sums=(
-  'SKIP'
-  'a8769c37ac54b3e98645f509b011a290d7e914937de0158cc8f2a8fcef0e255e'
-)
-
-prepare() {
-	cd $pkgname
-	# otherwise git complains about nested tags
-	git config user.email makepkg@example.com
-	git config user.name "makepkg"
-	git tag -f -a v${pkgver} -m "v${pkgver}" v${pkgver}^{}
-}
-
-build() {
-  cd $pkgname
-  mvn package
-}
+noextract=('gp.jar')
 
 package() {
-  # Install the executables
-  install -d "$pkgdir"/usr/bin/
-  install -m 755 gpp "$pkgdir"/usr/bin/
-  cd $pkgname
+  # Install gp.jar (reproducibly built)
   install -d "$pkgdir"/usr/share/java/globalplatformpro/
-  install -m 644 tool/target/gp.jar "$pkgdir"/usr/share/java/globalplatformpro/
+  install -m 644 gp.jar "$pkgdir"/usr/share/java/globalplatformpro/
+
+  # Install the launcher wrapper
+  install -d "$pkgdir"/usr/bin/
+  printf '#!/bin/sh\n' > gpp
+  printf "exec /usr/bin/java -jar '/usr/share/java/globalplatformpro/gp.jar' \"\$@\"" >> gpp
+  install -m 755 gpp "$pkgdir"/usr/bin/gpp
 }
