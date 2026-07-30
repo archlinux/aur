@@ -1,13 +1,13 @@
 # Maintainer: @RubenKelevra
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 
-_electron_pkg=electron42
+_electron_pkg=electron43
 
 _archive_extension="tar.gz"
 
 pkgname=ipfs-desktop
 pkgver=0.49.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
