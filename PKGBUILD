@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=m3u8-downloader-bin
 _pkgname=M3U8-Downloader
-pkgver=2.3.2
+pkgver=2.3.3
 _electronversion=24
 pkgrel=1
 pkgdesc="M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux_amd64-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7c876d9856a0158be2b5c00d0ed8b022094a7f1d654a4ebc0f0bfb6c0b648f7a'
+sha256sums=('ab74ea1f8696eb080c5f02f6c83758e807a4f8d4dc3e8394d3a4d0299211f281'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
