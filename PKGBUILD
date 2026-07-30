@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proftools
-_pkgver=0.99-3
+_pkgver=0.99-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Profile Output Processing Tools for R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d37a9164123380f5ad571d73216ff967')
-b2sums=('6092bdfa613c2e0caa858079f2364f40f5a539a9f495f65c3fafc0a92d90259a10755b81e9763822c44d9f4604a182e3564350fb45d943bfba4d880a63272c8a')
+md5sums=('6be0cdeb89878066a387b6c4141034e4')
+b2sums=('1b289e2562b7b72beadfe48a606ddc77c5f6639616064ef782c65f900a2a8ed6a94d9122ed5e9babfc071575d36fd7cca210d0516ad7a1e614cb0aca23d1f07f')
 
 build() {
   mkdir build
