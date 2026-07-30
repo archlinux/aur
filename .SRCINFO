@@ -1,0 +1,18 @@
+pkgbase = mpvz
+	pkgdesc = Qt6/QML based GUI for libmpv. Based on the Tethys theme for Bomi.
+	pkgver = 0.r190.g89208b7
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/mpvz
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt6-wayland
+	depends = qt6-quickcontrols2
+	depends = mpv
+	provides = mpvz
+	conflicts = mpvz
+	source = mpvz::git+https://github.com/MatsyaOs/mpvz
+	sha256sums = SKIP
+
+pkgname = mpvz
