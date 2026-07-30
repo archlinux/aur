@@ -2,7 +2,7 @@
 
 _pkgname=shit
 pkgname=shit-git
-pkgver=r71.d17a323
+pkgver=r74.85df03c
 pkgrel=1
 pkgdesc="Simple file server in Go (latest git)"
 arch=('x86_64')
