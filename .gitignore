@@ -4,6 +4,7 @@
 !LICENSE
 !LICENSES
 !LICENSES/*
+!updpkg.sh
 !REUSE.toml
 # actual package
 !PKGBUILD

@@ -4,6 +4,7 @@ version = 1
 path = [
   "PKGBUILD",
   ".SRCINFO",
+  "updpkg.sh",
   ".gitignore",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
