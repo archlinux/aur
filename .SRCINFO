@@ -1,7 +1,7 @@
 pkgbase = phantomfido
 	pkgdesc = FIDO caBLE v2 hybrid transport daemon bridging Linux browser WebAuthn to mobile passkeys
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/reece4277/phantomfido
 	install = phantomfido.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = phantomfido
 	depends = dbus
 	depends = openssl
 	depends = libx11
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	optdepends = wayland: native Wayland backend for the QR code window
 	optdepends = libxkbcommon: keyboard handling for the Wayland backend

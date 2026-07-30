@@ -2,12 +2,15 @@
 
 pkgname=phantomfido
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="FIDO caBLE v2 hybrid transport daemon bridging Linux browser WebAuthn to mobile passkeys"
 arch=('x86_64' 'aarch64')
 url="https://github.com/reece4277/phantomfido"
 license=('AGPL-3.0-or-later')
-depends=('bluez' 'dbus' 'openssl' 'libx11' 'gcc-libs' 'glibc')
+# namcap flags bluez and libx11 as "may not be needed": neither is in the
+# binary's NEEDED set. Both are deliberate -- bluez is reached over D-Bus at
+# runtime, and minifb dlopen()s libX11 for the QR window.
+depends=('bluez' 'dbus' 'openssl' 'libx11' 'libgcc' 'glibc')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
   'wayland: native Wayland backend for the QR code window'
