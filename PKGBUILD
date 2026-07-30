@@ -2,7 +2,7 @@
 
 pkgname=kvrt-x86_64
 pkgver=24.0.6.0.202607292308
-pkgrel=1
+pkgrel=2
 pkgdesc='Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected.'
 arch=('x86_64')
 url='https://www.kaspersky.com/downloads/free-virus-removal-tool'
@@ -25,10 +25,11 @@ prepare() {
   
   # Create .desktop file
   gendesk -f \
+    --pkgname="kvrt" \
     --name="Kaspersky Virus Removal Tool" \
+    --comment="Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected." \
     --exec="/usr/bin/kvrt" \
     --icon="kvrt" \
-    --comment="Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected." \
     --categories="System;Security"
 }
 
