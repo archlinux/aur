@@ -1,6 +1,6 @@
 pkgbase = noxdir-bin
 	pkgdesc = Terminal utility for visualizing file system usage.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/crumbyte/noxdir
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = noxdir-bin
 	license = MIT
 	provides = noxdir
 	conflicts = noxdir
-	source_x86_64 = noxdir-x86_64-1.2.1.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.1/noxdir-v1.2.1-Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 93c45309724a71c1513c7c8d65078cde90af86c36b4f58f2325fc5a3fb504194
-	source_i686 = noxdir-i686-1.2.1.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.1/noxdir-v1.2.1-Linux_i386.tar.gz
-	sha256sums_i686 = 0a2cda4e7d42837584dc1f10139aa22bf27f56ff60256a724dae2c3efd174218
-	source_aarch64 = noxdir-aarch64-1.2.1.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.1/noxdir-v1.2.1-Linux_arm64.tar.gz
-	sha256sums_aarch64 = 151c48522ee7f1aeb19ad1d60bb91ae1a1bc4cabc05ece3ba15efaa5efab82e2
+	source_x86_64 = noxdir-x86_64-1.2.2.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.2/noxdir-v1.2.2-Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6d40464a97ca775bc1b62cfdbc7b6ccd16f29d32a9f1f7fd71644a35c7b5e997
+	source_i686 = noxdir-i686-1.2.2.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.2/noxdir-v1.2.2-Linux_i386.tar.gz
+	sha256sums_i686 = 6ebd8f95e5ff6cc2d8bbc867997f8c2958195291955fbe8460eb2d19274a2be6
+	source_aarch64 = noxdir-aarch64-1.2.2.tgz::https://github.com/crumbyte/noxdir/releases/download/v1.2.2/noxdir-v1.2.2-Linux_arm64.tar.gz
+	sha256sums_aarch64 = 59483fc5a26eaf2592147ba786b26675e87e97b5d2147e4f9445719befe1416a
 
 pkgname = noxdir-bin
