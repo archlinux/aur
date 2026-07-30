@@ -2,21 +2,20 @@
 # Maintainer: hypevhs <hackgammavision at gmail dot com>
 
 pkgname='oscgoesbrrr'
-pkgver=2.1.20
+pkgver=2.1.27
 pkgrel=1
 pkgdesc='Make haptics in real life go BRRR from VRChat'
 arch=('x86_64')
 url='https://osc.toys/'
 license=('CC-BY-NC-SA-4.0')
-# waiting for electron40
-_electron_ver=39
+_electron_ver=43
 depends=("electron$_electron_ver")
 makedepends=('node-gyp' 'pnpm' 'asar')
 source=("OscGoesBrrr-$pkgver.tar.gz::https://github.com/OscToys/OscGoesBrrr/archive/refs/tags/v$pkgver.tar.gz"
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/v$pkgver/LICENSE"
         'oscgoesbrrr'
         'OscGoesBrrr.desktop')
-sha256sums=('89da88c91f4577645d516306f72d883771b760858c323ff326904226ec3d7687'
+sha256sums=('ae23500d1f4a3228af31f71ad7e96cbd41386697888c1d36d0e1fcff728e76d9'
             'fc17405da5786602c4667eb9b69e4bff644be78f5d96c489ae0fc7ddb9b5fd1d'
             '1d4e12d6aa0e615a90ad025acbb83e61580276c5329e3109e6b0beae983a1178'
             '4285dd7c558811c1f46c2313753490c8d35f0e83ee5c2ed898b191d440d98bb9')
@@ -34,13 +33,15 @@ build() {
     rm -f .gitignore
     rm -f README.md
 
+    # map CARCH to process.arch using indirect expansion ${!CARCH}
+    local i686=ia32 x86_64=x64 armv7h=arm aarch64=arm64 riscv64=riscv64
+
     pnpm install --frozen-lockfile --config.platform=linux --cpu="${!CARCH}"
     # pnpm install --frozen-lockfile --config.platform=linux --cpu="${!CARCH}" --prod --no-optional
     # pnpm audit --fix || :
     # pnpm install --no-frozen-lockfile --config.platform=linux --cpu="${!CARCH}" --no-optional
     pnpm run build
 
-    local i686=ia32 x86_64=x64 armv7h=arm aarch64=arm64 riscv64=riscv64
     export NODE_ENV=production
     export NODE_OPTIONS='--openssl-legacy-provider'
     pnpm exec electron-builder --linux --"${!CARCH}" --dir \
