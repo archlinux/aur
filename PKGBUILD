@@ -10,7 +10,7 @@ conflicts=('wmacro-git')
 options=("!debug")
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/uint82/wmacro/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d07f9da81a976a7e4e9abfa2e718e0fe3c3032e501769597bf658a257ae1bfa0')
+sha256sums=('37e51b916b03437e344326d35c39d071ae2ab8b0af3a9facab79bee4fe10ef15')
 install="wmacro.install"
 
 build() {
