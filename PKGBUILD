@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=0
 url='https://www.hunk.dev/'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('fecae3b285d31627aa88925fc03e06b624cc04a6943938ff7e785a33cf758f1c85e1594870d188d9f184b9a3653cc39d08ad3bb3030577fae6097a41e8a8f58a')
+b2sums=('808dbd653a46f6d44526cab2c6710a32a5109fe5ce8ba90009cc9803f45db9af32182030da687e32d4fb1aaa4063ca6e6fde8f513ab4d7b8889a20db8c6df725')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -37,6 +37,9 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -vD -t "${pkgdir}/usr/bin/" -m755 dist/hunk
+  install -vD -t "${pkgdir}/usr/hunkdiff/" -m755 dist/hunk
+  install -vd "${pkgdir}/usr/bin"
+  ln -v -ft "${pkgdir}/usr/bin/" -sr "${pkgdir}/usr/lib/hunkdiff/hunk"
+
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
 }
