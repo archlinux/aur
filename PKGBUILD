@@ -5,11 +5,11 @@ pkgname=intel-sgx-sdk-bin
 pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
 pkgver=2.29
 _pkgver="${pkgver}.100.1"
-pkgrel=1
+pkgrel=2
 url='https://github.com/intel/confidential-computing.sgx'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
-depends=('gcc-libs' 'python' 'glibc' 'bash' 'openssl')
+depends=('glibc' 'libstdc++' 'openssl' 'bash' 'python')
 optdepends=(
   'intel-sgx-psw: for hardware support'
   'gdb: GDB plugin for SGX binaries'
