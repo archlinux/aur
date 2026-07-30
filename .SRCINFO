@@ -1,6 +1,6 @@
 pkgbase = cnats
 	pkgdesc = Web chat over NATS subjects with Kanidm SSO (Leptos SSR)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://prosjekt.klingenbergbygg.no/bl/cnats
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = cnats
 	conflicts = cnats-git
 	conflicts = cnats-bin
 	backup = etc/cnats/env
-	source_x86_64 = cnats-v0.2.3-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.2.3/cnats-v0.2.3-x86_64.tar.gz
-	sha256sums_x86_64 = 60f2a2bcc522c25c9bf1bdbe72ac2db19fe591a317b4bbf24cfb17e1dcd42a4b
-	source_aarch64 = cnats-v0.2.3-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.2.3/cnats-v0.2.3-aarch64.tar.gz
-	sha256sums_aarch64 = 736abc9e611aae3a295f469117f5a5a0d05e9bade0b4cf4724e3f02bd2fca5a7
+	source_x86_64 = cnats-v0.2.4-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.2.4/cnats-v0.2.4-x86_64.tar.gz
+	sha256sums_x86_64 = a09b11df123d8659293c9d5481e9ad1692ef999be9cca926d7a95c8779c83259
+	source_aarch64 = cnats-v0.2.4-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.2.4/cnats-v0.2.4-aarch64.tar.gz
+	sha256sums_aarch64 = e5c369490ccd242ef13894bab46e39603065ea435cb83ed5af5c546b0788cafe
 
 pkgname = cnats
