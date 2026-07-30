@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=4.5.0
+pkgver=4.5.1
 _electronversion=36
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('65dff9c234613d5ca892f8a52b54de23fcf3b9f996d51651bc611aca239ef606'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f68b80158922811cdc1581215b70045bcddbf18256d620f368c9accaa1997929')
-sha256sums_x86_64=('04ec91a35c56a078f1f79db1c8e9b7ec051b31cef389a27b0b5da05f5da9511c')
+sha256sums_aarch64=('e0bf6ea1864bbc1be111ac7bd4f83925c2a9b49db7bc5a48bced68d2a37d3a1d')
+sha256sums_x86_64=('c29006226b7681e49cb1c52d20a7a37734949357e0f9d476a66cc2fda89644f0')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
