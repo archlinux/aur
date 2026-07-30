@@ -1,0 +1,11 @@
+pkgbase = matsya-namaste
+	pkgdesc = Welcome Application for Matsya OS
+	pkgver = 23.01
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/matsya-namaste
+	arch = any
+	license = GPL-2.0-only
+	source = https://github.com/MatsyaOs/matsya-namaste/archive/v23.01.tar.gz
+	sha256sums = SKIP
+
+pkgname = matsya-namaste
