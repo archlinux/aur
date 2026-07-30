@@ -1,6 +1,6 @@
 pkgbase = lore-vcs
 	pkgdesc = Lore is a next-generation, open source version control system
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/EpicGames/lore
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lore-vcs
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = lore-vcs-0.8.5.tar.gz::https://github.com/EpicGames/lore/archive/refs/tags/v0.8.5.tar.gz
-	sha256sums = 9912fd0496c92d53896214e3aaeb822a74856c610963670e2317bfeffc528008
+	source = lore-vcs-0.8.6.tar.gz::https://github.com/EpicGames/lore/archive/refs/tags/v0.8.6.tar.gz
+	sha256sums = 970db12225658bc4b97cb92c43381117778e26609e4bde85f49dbed9553e8b09
 
 pkgname = lore-vcs

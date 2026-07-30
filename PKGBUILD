@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 
 pkgname=lore-vcs
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Lore is a next-generation, open source version control system'
 url='https://github.com/EpicGames/lore'
@@ -10,7 +10,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9912fd0496c92d53896214e3aaeb822a74856c610963670e2317bfeffc528008')
+sha256sums=('970db12225658bc4b97cb92c43381117778e26609e4bde85f49dbed9553e8b09')
 options=(!lto)
 
 prepare() {
