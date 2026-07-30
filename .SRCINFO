@@ -1,6 +1,6 @@
 pkgbase = python-pygrister
 	pkgdesc = A Python client for the Grist API.
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/ricpol/pygrister
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pygrister
 	makedepends = python-wheel
 	depends = python-requests
 	depends = python-typer
-	source = https://files.pythonhosted.org/packages/source/p/pygrister/pygrister-0.9.1.tar.gz
-	sha256sums = 86dec3476290823c824269f331fb6ae2c7e7e1a0d2b37a453e432388129c044c
+	source = https://files.pythonhosted.org/packages/source/p/pygrister/pygrister-0.10.0.tar.gz
+	sha256sums = d3939cad7ddcd64acfcab8597e57026103e791df636d41a102bb75069abfbbf7
 
 pkgname = python-pygrister
