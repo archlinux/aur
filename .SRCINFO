@@ -1,0 +1,11 @@
+pkgbase = matsya-gtk-themes
+	pkgdesc = MatsyaOS GTK themes
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/gtk-themes
+	arch = any
+	groups = Matsya
+	license = GPL
+	md5sums = SKIP
+
+pkgname = matsya-gtk-themes
