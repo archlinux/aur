@@ -1,13 +1,14 @@
 pkgbase = cosmic-audio-switch-git
 	pkgdesc = Cycle selected PipeWire or PulseAudio outputs and show a COSMIC OSD
 	pkgver = r1.g8635fa9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdityaHebballe/cosmic-audio-switch
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = bash
 	depends = cosmic-external-osd-git
+	depends = cosmic-session
 	depends = jq
 	depends = libpulse
 	depends = systemd

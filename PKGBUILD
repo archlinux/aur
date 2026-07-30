@@ -3,12 +3,12 @@
 pkgname=cosmic-audio-switch-git
 _srcname=cosmic-audio-switch
 pkgver=r1.g8635fa9
-pkgrel=1
+pkgrel=2
 pkgdesc='Cycle selected PipeWire or PulseAudio outputs and show a COSMIC OSD'
 arch=('any')
 url='https://github.com/AdityaHebballe/cosmic-audio-switch'
 license=('unknown')
-depends=('bash' 'cosmic-external-osd-git' 'jq' 'libpulse' 'systemd')
+depends=('bash' 'cosmic-external-osd-git' 'cosmic-session' 'jq' 'libpulse' 'systemd')
 makedepends=('git')
 provides=('cosmic-audio-switch')
 conflicts=('cosmic-audio-switch')
