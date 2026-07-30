@@ -1,13 +1,13 @@
 pkgbase = shelly-bin
-	pkgver = 3.0.0+9
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
-	source = Shelly-ALPM-linux-x64-3.0.0+9.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.0.0+9/Shelly-ALPM-linux-x64.tar.gz
-	source = Shelly-Flatpak-Backend-linux-x64-3.0.0+9.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.0.0+9/Shelly-Flatpak-Backend-linux-x64.tar.gz
-	sha256sums = 1c696140104d7f51eaa5fe6488b32f4a0d441944c1f127ad9507399b156f8ce6
-	sha256sums = 46907ce81348430aefbb27cd865cc2470aba9087d352a5f1c3cfb9d576f34f16
+	source = Shelly-ALPM-linux-x64-3.0.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.0.1/Shelly-ALPM-linux-x64.tar.gz
+	source = Shelly-Flatpak-Backend-linux-x64-3.0.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.0.1/Shelly-Flatpak-Backend-linux-x64.tar.gz
+	sha256sums = 0c330927272030333c9d7c9fbedb1e8c1fe5fd02b4452a5ba1fe1da47f537324
+	sha256sums = db001d3ed81866fd9a02f53ff4611741f9662c09253bbfad290a82bd0f486868
 
 pkgname = shelly-bin
 	pkgdesc = Shelly: A Modern Arch Package Manager (prebuilt binary)
@@ -37,8 +37,8 @@ pkgname = shelly-bin
 
 pkgname = shelly-flatpak-backend-bin
 	pkgdesc = Optional native Flatpak backend for Shelly (prebuilt binary)
-	depends = shelly-bin=3.0.0+9-1
+	depends = shelly-bin=3.0.1-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.0.0+9
+	provides = shelly-flatpak-backend=3.0.1
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
