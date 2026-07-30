@@ -12,5 +12,6 @@ pkgbase = steamidra-bin
 	conflicts = steamidra
 	noextract = SteaMidra-6.5.5-linux.zip
 	source = SteaMidra-6.5.5-linux.zip::https://github.com/Midrags/SFF/releases/download/v6.5.5/SteaMidra-6.5.5-linux.zip
+	sha256sums = e7a2bce9f1d855720bee59f33fb089dd03dc6513115133e2debe7db9976c8e4f
 
 pkgname = steamidra-bin
