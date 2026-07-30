@@ -1,6 +1,6 @@
 pkgbase = forgecode
 	pkgdesc = An AI-powered code assistant CLI tool
-	pkgver = 2.13.19
+	pkgver = 2.13.20
 	pkgrel = 1
 	url = https://github.com/antinomyhq/forgecode
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = forgecode
 	provides = forge
 	conflicts = forge
 	options = !lto
-	source = forgecode-2.13.19.tar.gz::https://github.com/antinomyhq/forgecode/archive/refs/tags/v2.13.19.tar.gz
-	b2sums = b45185840aff8c852a35897a44ed6e4191210720194a0c91309d96a742acad2f0c224e31e688429e5548f316c7adad3b98742ad7efff83c1ddaec68870a20a73
+	source = forgecode-2.13.20.tar.gz::https://github.com/antinomyhq/forgecode/archive/refs/tags/v2.13.20.tar.gz
+	b2sums = d804ef1a0687fd7406580b5a4c087fa9fb1c6e130c4c713dcec4fb7d54b34165aa40a1c1ad9af6c6b0aecea691bf9ff06a804e9fe2a894f3a114b9d0ca7199ad
 
 pkgname = forgecode
