@@ -5,7 +5,7 @@ pkgname=project-zomboid-server-unstable
 _basename=project-zomboid-server
 # While the pkgver is set here, the latest unstable version will always be downloaded via steamcmd
 # Build 42 is currently on the unstable beta branch
-pkgver=42.15.2
+pkgver=42.20
 pkgrel=1
 pkgdesc="Dedicated server for the game Project Zomboid (Build 42 unstable)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('448325d636dfa825c8dd849303b6a92fa63eee628da57e2438dd173657b9b056'
             'ecd0abe220d2fa7ad1c31d7a46aa086c74e92aa5801cb013c7943dc301f411a0')
 
 prepare() {
-    steamcmd +force_install_dir "$srcdir/$_basename" +login anonymous +app_update 380870 -beta unstable validate +quit
+    steamcmd +force_install_dir "$srcdir/$_basename" +login anonymous +app_update 380870 validate +quit
 }
 
 package() {
