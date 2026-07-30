@@ -1,6 +1,6 @@
 pkgbase = voicefox-bin
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
@@ -10,17 +10,16 @@ pkgbase = voicefox-bin
 	depends = libgcc
 	depends = openssl
 	depends = mpv
-	optdepends = kitty: support for displaying cover image in tmux
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=1.4
+	provides = voicefox=1.5
 	conflicts = voicefox
 	conflicts = voicefox-git
-	source = voicefox-1.4.zip::https://github.com/emoeem/voicefox/releases/download/1.4/voicefox-linux-x86_64.zip
-	source = voicefox-1.4-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.4/LICENSE
-	source = voicefox-1.4-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.4/icons/512.png
-	source = voicefox-1.4-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.4/icons/1024.png
-	source = voicefox-1.4-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.4/assets/voicefox.desktop
-	sha512sums = b636262059c1c0828dbe9b499144a899fbff626fdce8da09bac8b25cdda24008d6fde02e240d08fb8bffe583ff19e874cfe4d37fbf0912ccf12ac0611a7a232b
+	source = voicefox-1.5.zip::https://github.com/emoeem/voicefox/releases/download/1.5/voicefox-linux-x86_64.zip
+	source = voicefox-1.5-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.5/LICENSE
+	source = voicefox-1.5-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.5/icons/512.png
+	source = voicefox-1.5-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.5/icons/1024.png
+	source = voicefox-1.5-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/1.5/assets/voicefox.desktop
+	sha512sums = 591e27097ee7bc1c2ea3a3f42da18d0994211216ca07b60ab49985e84c9b90b55d1857c35c57bf4fe4bc7e012555dbd9ce270e4b630d329794d649f1ef4c8b68
 	sha512sums = e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814
 	sha512sums = 980a563b61ebd519a5346de26b67d6782830f6183ad2b4c42ac3e85d0ebd1b4341a1041976cb06c10d1eed346d9f4c009341753f560db63882a5df56e180471b
 	sha512sums = 4749d0f3d9cff9caec6c9dbd18f9ff571905e22d4669fb504e8c2b778dead770d2b5ddbbf0bdadc7b60ca9317f25579e97a016888f38c1b8ade6a476e09a3e6e
