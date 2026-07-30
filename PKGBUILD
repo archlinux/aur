@@ -2,7 +2,7 @@
 pkgname=smartsub-bin
 _pkgname=SmartSub
 _zhsname='妙幕'
-pkgver=3.5.0
+pkgver=3.6.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators.(Prebuilt version,use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/buxuku/SmartSub/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7b10c98d8578e5d8f82c2571f161c2eae54e13aa2fd30344df9bc4894e3d09f7'
+sha256sums=('91fc4473fac33dcd45d846b4dc585d3acc93ebf1d927e79a16df2f02355e4b0b'
             '324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -58,8 +58,6 @@ prepare() {
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
