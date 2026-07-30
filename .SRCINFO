@@ -1,7 +1,7 @@
 pkgbase = noctalia-git
 	pkgdesc = A sleek, customizable desktop shell crafted for Wayland
 	pkgver = 5.0.0.r1191.g39a4a335c
-	pkgrel = 23
+	pkgrel = 24
 	url = https://github.com/noctalia-dev/noctalia
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = noctalia-git
 	depends = libqalculate
 	depends = librsvg
 	depends = libsecret
+	depends = libsndfile
 	depends = libsodium
 	depends = libwebp
 	depends = libwireplumber
