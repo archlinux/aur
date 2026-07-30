@@ -21,12 +21,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/arch
 sha512sums=('2c6991e3ae7e12b00339607fbce45985864f6f308a799c6785e77cb5a8f69ddff44b1739f0afd7d695fb146fd3b7dc06f82dad708bd1627266df0a90ddb3ea81')
 
 
-# prepare() {
-#     cd "${srcdir}/${_name}-${pkgver}"
-#
-#     sed -e 's|required-version = \".*\"|required-version = ">=0.9"|g' -i "./pyproject.toml"
-# }
-
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
 
