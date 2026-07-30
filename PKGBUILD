@@ -1,7 +1,7 @@
 # Maintainer: L3-N0X <leon.goett@web.de>
 pkgname=noti-notes
 _binname=noti
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal, keyboard-first Markdown note editor for Linux/Hyprland"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 conflicts=('noti')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Run `updpkgsums` after tagging a new release to refresh this.
-sha256sums=('95f0620042bd1424bb90b042042918a6d61de72cd6bce4afa28a52103640fc46')
+sha256sums=('d2747e26a0bca32b6c8e76fed22b644622cea33bbdc347c4815d4e325f62b9a9')
 
 prepare() {
   cd "$_binname-$pkgver"
