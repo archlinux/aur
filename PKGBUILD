@@ -250,6 +250,17 @@ package() {
     # liblfs_core.so and the python module carry NEEDED entries for it.
     install -Dm755 build/Build/lib/libOpenMesh*.so.* -t "$pkgdir/usr/lib/"
 
+    # Vendored USD and ONNX Runtime keep their upstream sonames and plugin
+    # layout, so in /usr/lib they collide with the official usd (62 files) and
+    # onnxruntime (4 files) packages. Both locate their own resources relative
+    # to the library that loads them -- USD derives its plugInfo search path
+    # from libusd_plug.so, ONNX Runtime loads its providers from its own
+    # directory -- so the payload relocates as a unit and is reached via RUNPATH.
+    local _privdir="$pkgdir/usr/lib/lichtfeld-studio"
+    install -d "$_privdir"
+    mv "$pkgdir/usr/lib/usd" "$_privdir/usd"
+    mv "$pkgdir"/usr/lib/libonnxruntime*.so* "$_privdir/"
+
     # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
     # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
     local _vcpkg_lib="build/vcpkg_installed/x64-linux/lib"
@@ -259,21 +270,20 @@ package() {
         libusd_usdGeom libusd_usdVol libusd_vt libusd_work
     )
     for _lib in "${_usd_libs[@]}"; do
-        install -Dm755 "$_vcpkg_lib/$_lib.so" -t "$pkgdir/usr/lib/"
+        install -Dm755 "$_vcpkg_lib/$_lib.so" -t "$_privdir/"
     done
 
-    # Fix RUNPATH: replace vcpkg build paths with /usr/lib
-    for f in $(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \)); do
-        if readelf -d "$f" 2>/dev/null | grep -q RUNPATH; then
-            local _rpath
-            _rpath=$(patchelf --print-rpath "$f" 2>/dev/null) || continue
-            # Replace build-tree and unnecessary absolute CUDA paths; ldconfig
-            # already exposes CUDA libs from the system package.
-            _rpath=$(echo "$_rpath" | tr ':' '\n' | grep -v "$srcdir" | grep -v '^/opt/cuda/' | paste -sd:)
-            [[ -z "$_rpath" ]] && _rpath="/usr/lib"
-            patchelf --set-rpath "$_rpath" "$f"
-        fi
-    done
+    # Drop vcpkg build-tree and absolute CUDA paths (ldconfig already exposes the
+    # CUDA libs), then point every ELF at the private lib dir. Files with no
+    # RUNPATH get one too, since that is where the vendored payload now lives.
+    local f _rpath
+    while IFS= read -r f; do
+        readelf -h "$f" &>/dev/null || continue
+        _rpath=$(patchelf --print-rpath "$f" 2>/dev/null) || continue
+        _rpath=$(echo "$_rpath" | tr ':' '\n' \
+            | grep -v "$srcdir" | grep -v '^/opt/cuda/' | grep -v '^$' | paste -sd:)
+        patchelf --set-rpath "${_rpath:+$_rpath:}/usr/lib/lichtfeld-studio" "$f"
+    done < <(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \))
 
     # Drop the uv that cmake downloads and installs to bin/: it would collide
     # with the uv package. PackageManager::uv_path() looks for <exe_dir>/uv,
