@@ -1,0 +1,4 @@
+[fsearch]
+source = "git"
+git = "https://github.com/cboxdoerfer/fsearch.git"
+include_regex = '[0-9.]+'

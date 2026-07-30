@@ -1,7 +1,7 @@
 pkgbase = fsearch
 	pkgdesc = A fast graphical file search utility
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cboxdoerfer/fsearch
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = fsearch
 	depends = libicuuc.so
 	depends = pcre2
 	source = fsearch-0.3.1.tar.gz::https://github.com/cboxdoerfer/fsearch/archive/0.3.1.tar.gz
+	source = 0001-fix_new_window.patch
 	sha256sums = b16ab75556d841bf858633710d71c92f35d34362614b8584b0a5b71690a72c39
+	sha256sums = 66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1
 
 pkgname = fsearch
