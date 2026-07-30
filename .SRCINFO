@@ -1,6 +1,6 @@
 pkgbase = python-consolekit
 	pkgdesc = Additional utilities for click
-	pkgver = 1.13.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://consolekit.readthedocs.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-consolekit
 	depends = python-mistletoe
 	depends = python-typing_extensions
 	optdepends = python-psutil: better terminal support
-	source = consolekit::git+https://github.com/domdfcoding/consolekit#tag=v1.13.0
-	sha512sums = c1cc9c4ac0b530638ca97cb0a2ea07a483ca25c2ac3c227a12bd1370d805a5dc760e0a838ed6081ffb740ca4751b8b84a31ae45c7f919a380c448d2c3f427944
+	source = consolekit::git+https://github.com/domdfcoding/consolekit#tag=v2.0.0
+	sha512sums = cd13ef17e10034055706d2c0f86f42d797fd81f0fa1e390c74c047b1d582933e0329110ff3c3c1c5a357d78524a02ee2e82a28f18a3a1df16451cf296555c399
 
 pkgname = python-consolekit

@@ -2,7 +2,7 @@
 
 pkgname=python-consolekit
 _name=${pkgname#python-}
-pkgver=1.13.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Additional utilities for click'
 arch=(any)
@@ -29,10 +29,12 @@ optdepends=(
   'python-psutil: better terminal support'
 )
 source=("$_name::git+https://github.com/domdfcoding/consolekit#tag=v$pkgver")
-sha512sums=('c1cc9c4ac0b530638ca97cb0a2ea07a483ca25c2ac3c227a12bd1370d805a5dc760e0a838ed6081ffb740ca4751b8b84a31ae45c7f919a380c448d2c3f427944')
+sha512sums=('cd13ef17e10034055706d2c0f86f42d797fd81f0fa1e390c74c047b1d582933e0329110ff3c3c1c5a357d78524a02ee2e82a28f18a3a1df16451cf296555c399')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
+    cd "${srcdir}/${_name}"
+    sed -i 's/"\([a-zA-Z0-9_.-]*\)[<>=!~][^"]*"/"\1"/g' pyproject.toml
 }
 
 build() {
