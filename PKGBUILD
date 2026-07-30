@@ -1,7 +1,7 @@
 # Maintainer: TwoWells <mwellsa@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=catenary
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="LSP-powered code intelligence for AI coding agents"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 provides=('catenary')
 conflicts=('catenary-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TwoWells/Catenary/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a2eecc011f5adebe7ba06c350b80251d6b6f8db1c45fc004ccef8587ed04989f')
+sha256sums=('3abd5be8a880952f00d86aed02e94b553338d9aea5d3793eb8d9f5b85bacb12e')
 
 # The GitHub archive extracts to Catenary-$pkgver/ (the repo name is
 # capitalized). The workspace's catenary-proc library crate is in-tree
