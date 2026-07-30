@@ -1,6 +1,6 @@
 pkgname=buzz-appimage
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Self-hostable workspace where humans and AI agents build together, on a relay you own"
 arch=(x86_64)
 url="https://github.com/block/buzz"
