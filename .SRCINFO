@@ -1,7 +1,7 @@
 pkgbase = ardudeck-appimage
 	pkgdesc = Modern cross-platform ground control station for ArduPilot, Betaflight, and iNav (AppImage)
-	pkgver = 0.0.33
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/rubenCodeforges/ardudeck
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,11 +9,11 @@ pkgbase = ardudeck-appimage
 	depends = fuse2
 	provides = ardudeck
 	conflicts = ardudeck
-	noextract = ardudeck-appimage-0.0.33.AppImage
+	noextract = ardudeck-appimage-0.1.0.AppImage
 	options = !strip
-	source = ardudeck-appimage-0.0.33.AppImage::https://github.com/rubenCodeforges/ardudeck/releases/download/v0.0.33/ArduDeck-0.0.33-linux-x86_64.AppImage
-	source = ardudeck-appimage-0.0.33.LICENSE::https://raw.githubusercontent.com/rubenCodeforges/ardudeck/v0.0.33/LICENSE
-	sha256sums = e659f4f17e6d03e6e67e75ad437838fabcedea453405fc0f483e1ebbcb2da46d
+	source = ardudeck-appimage-0.1.0.AppImage::https://github.com/rubenCodeforges/ardudeck/releases/download/v0.1.0/ArduDeck-0.1.0-linux-x86_64.AppImage
+	source = ardudeck-appimage-0.1.0.LICENSE::https://raw.githubusercontent.com/rubenCodeforges/ardudeck/v0.1.0/LICENSE
+	sha256sums = 68a44ceaf90f92071de08b2bad4dcfdfad16ae7634a21242f44b0bd7eedb2ede
 	sha256sums = 86030766b025ce4e69bdc8e3cf33ba9e573b92e32c5392d0b8df0d1dddbc35d1
 
 pkgname = ardudeck-appimage
