@@ -61,10 +61,10 @@ sha1sums=(
 options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
 
 prepare() {
-    echo "Notice: Package building requires around 240GB of free space, with 154/240GB in build dir!"
-    echo "Notice: The compressed package files additionally require around 90GB of free space"
-    echo "Notice: The evil and intimidating Quartus Pro installer changes your .bashrc and .bash_profile."
-    echo "Notice: Backups will be taken and restored, so don't edit those files until packaging is complete!"
+    echo "Notice: Package building requires 223GB of free space, with 141/223GB in build dir!"
+    echo "Notice: The compressed package files require an additional 83G of free space"
+    echo "Notice 2: The evil and intimidating Quartus Pro installer changes your .bashrc and .bash_profile."
+    echo "Notice 2: Backups will be taken and restored, so don't edit those files until packaging is complete!"
 
     cp -a ~/.bashrc "${srcdir}"/bashrc_bk
     cp -a ~/.bash_profile "${srcdir}"/bash_profile_bk
