@@ -24,7 +24,7 @@ source=(
   "$pkgname.sysusers"
 )
 sha256sums=(
-  '7631d9979783c49b6540fe940c906ed6a72b80cc25cea7f2ba5b433e1dc203ba'
+  'e509857c853b2923a34e40891ec62ec1eebbdd6279339a4a13d7bee1074fffb0'
   '55f76b8dc4703b4ac98a6aa67260cb4c4b5f450e0abcd265c58b7adf17c246be'
 )
 
