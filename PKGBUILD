@@ -189,6 +189,18 @@ EOF
     # such option; its only use is #ifdef-guarded, so dropping the define is enough.
     sed -i '/LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="/d' \
         src/rendering/rasterizer/vulkan/CMakeLists.txt
+
+    # configure_usd_plugins() registers <exe_dir>/../lib/usd, which package()
+    # moves aside to stop it colliding with the usd package. USD's own discovery
+    # still finds the plugins via libusd_plug.so, but this call would log an
+    # error and leave PXR_PLUGINPATH_NAME unset. Keep exe_dir relative so the
+    # path stays prefix-independent.
+    sed -i 's|exe_dir / ".." / "lib" / "usd"|exe_dir / ".." / "lib" / "lichtfeld-studio" / "usd"|' \
+        src/app/main.cpp
+    grep -q 'exe_dir / ".." / "lib" / "lichtfeld-studio" / "usd"' src/app/main.cpp || {
+        error 'USD plugin path patch did not apply; check configure_usd_plugins()'
+        return 1
+    }
     # Use the packaged interpreter path instead of whatever build-local Python
     # path CMake resolved.
     sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3.12"|' \
