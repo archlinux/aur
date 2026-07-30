@@ -1,6 +1,6 @@
 # Maintainer: chocolateimage <chocolateimage@protonmail.com>
 pkgname=qrhythmcafe
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A desktop version of rhythm.cafe to download levels directly into the Rhythm Doctor levels folder"
 url="https://github.com/chocolateimage/qrhythmcafe"
@@ -15,7 +15,7 @@ depends=(
 	'glib2'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chocolateimage/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('80154681f8d3e1138d88e5745249538030881f10fd59037a3f6c45543a6deed1')
+sha256sums=('f5ff4c476b1360c78cd8749bdb810656b93bc79f454a9fa43d2c4da5c47bcf58')
 
 package() {
 	cd "$pkgname-$pkgver"
