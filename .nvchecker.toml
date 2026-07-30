@@ -1,0 +1,4 @@
+[cosmic-ext-camera]
+source = "git"
+git = "https://github.com/cosmic-utils/cosmic-ext-camera.git"
+prefix = "v"
