@@ -1,6 +1,6 @@
 pkgbase = ppm2pwg-git
-	pkgdesc = Misc printing format conversion utilities: ppm2pwg, pwg2ppm, pdf2printable, baselinify, ippposter
-	pkgver = r388.30fc42a
+	pkgdesc = Misc printing format conversion utilities: ppm2pwg, pwg2ppm, pdf2printable, baselinify, ippclient, ippdiscover
+	pkgver = r389.960ba83
 	pkgrel = 1
 	url = https://github.com/attah/ppm2pwg
 	arch = x86_64
