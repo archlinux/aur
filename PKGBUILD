@@ -1,13 +1,13 @@
 # Maintainer: @RubenKelevra
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 
-_electron_pkg=electron41
+_electron_pkg=electron42
 
 _archive_extension="tar.gz"
 
 pkgname=ipfs-desktop
 pkgver=0.49.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
 )
 b2sums=('643e89643b68508373938df8eb1d086311d9f1a3964ecbc1b422a87438fc9e8e45f0a0ffede4b97b16652b06130a731a8cc51a13ef9e06704a1e210ea1f29f0f'
         '849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
-        '6f603c79a83057d4f4077a859656dbce513be3aa0ab9993dc5b994929e6e26f2f8f58ecd030ea415c44f2d0fbc7dd0cc16526172613555b0f619c530ee7d583d')
+        'bb68e2cca3f55d38476964ac57d75492ba4ddc54f2025fc80c1e7b8722e6e63e079be4aa49f0ca1011af2e8d803e9bb9e36994ae0e289bf5cdf3cafc8999cc2a')
 _pkgsrc="$pkgname-$pkgver"
 
 _electron_env() {
@@ -66,8 +66,16 @@ build() {
 	)
 
 	cd "$_pkgsrc"
+	local _kubo_version
+	_kubo_version=$(node -p "require('./package.json').dependencies.kubo")
+	npm pkg set "allowScripts[kubo@${_kubo_version}]=true" --json
+
 	npm ci --no-audit --no-fund \
 		2> >(sed '/glob@11\.1\.0: Old versions of glob are not supported/d' >&2)
+	test -x node_modules/kubo/kubo/ipfs || {
+		echo "Kubo binary was not installed" >&2
+		return 1
+	}
 	npm run build
 	npm exec -- electron-builder --linux --dir --publish never "${_builder_options[@]}"
 }
@@ -93,7 +101,9 @@ package() {
 	install -Dm644 "$_pkgsrc/assets/webui/ipfs-logo-512-ice.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 
-	install -Dm755 "$srcdir/ipfs-desktop-startup.sh" "$pkgdir/usr/bin/$pkgname"
+	sed "s|@ELECTRON_PKG@|${_electron_pkg}|" \
+		"$srcdir/ipfs-desktop-startup.sh" \
+		| install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$srcdir/ipfs-desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 	chmod -R u+rwX,go+rX,go-w "$pkgdir/"

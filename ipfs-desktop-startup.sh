@@ -5,4 +5,4 @@ export ELECTRON_IS_DEV
 : ${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron41 "/usr/lib/ipfs-desktop/app.asar" "$@"
+exec @ELECTRON_PKG@ "/usr/lib/ipfs-desktop/app.asar" "$@"
