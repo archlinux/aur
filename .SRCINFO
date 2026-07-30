@@ -1,0 +1,21 @@
+pkgbase = cosmic-vrr-toggle-git
+	pkgdesc = Toggle COSMIC VRR and enable automatic VRR when GameMode activates
+	pkgver = r1.gc9e11fd
+	pkgrel = 1
+	url = https://github.com/AdityaHebballe/cosmic-vrr-toggle
+	install = cosmic-vrr-toggle-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = cosmic-randr
+	depends = gamemode
+	depends = procps-ng
+	depends = systemd
+	optdepends = cosmic-external-osd-git: COSMIC-style on-screen feedback
+	provides = cosmic-vrr-toggle
+	conflicts = cosmic-vrr-toggle
+	source = cosmic-vrr-toggle::git+https://github.com/AdityaHebballe/cosmic-vrr-toggle.git
+	b2sums = SKIP
+
+pkgname = cosmic-vrr-toggle-git

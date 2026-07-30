@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+To enable automatic VRR when GameMode activates, add this to ~/.config/gamemode.ini:
+
+[custom]
+start=/usr/lib/cosmic-vrr-toggle/gamemode-start
+
+Restart GameMode afterwards:
+  systemctl --user restart gamemoded.service
+
+Edit /usr/bin/cosmic-vrr-toggle to configure the output, resolution, and refresh rate.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

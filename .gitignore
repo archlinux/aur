@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/cosmic-vrr-toggle/
+/*.pkg.tar.*
+/*.log
