@@ -1,0 +1,24 @@
+pkgbase = zetamac-tui-git
+	pkgdesc = Zetamac clone (identical core interface) with SQLite tracking and more (VCS version)
+	pkgver = 0.1.2.r18.g705f54f
+	pkgrel = 1
+	url = https://github.com/yaofanfish/zetamac-tui
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-pyfiglet
+	provides = zetamac-tui
+	provides = python-zetamac-tui
+	conflicts = zetamac-tui
+	conflicts = python-zetamac-tui
+	source = zetamac-tui::git+https://github.com/yaofanfish/zetamac-tui.git
+	sha256sums = SKIP
+
+pkgname = zetamac-tui-git
