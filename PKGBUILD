@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=rake-bin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -12,15 +12,15 @@ conflicts=('rake')
 makedepends=()
 options=(!strip !debug)
 
-_base="https://github.com/rustyhorde/cargo-rake/releases/download/v${pkgver}"
+_base="https://git.jasonozias.com/dl/cargo-rake/v${pkgver}"
 
 source=("${_base}/dist-rake.tar.gz")
 source_x86_64=("rake-x86_64::${_base}/rake-x86_64-unknown-linux-musl")
 source_aarch64=("rake-aarch64::${_base}/rake-aarch64-unknown-linux-musl")
 # Checksums are filled in by the release workflow before publishing to the AUR.
-sha256sums=('fdc75130ad1899a12b0951fbd7cb533508990f17bae74f4b60cb5efde96ca1bf')
-sha256sums_x86_64=('ef02a85bfe20b64fbd5af716043d97dd1bb31b66d17418692f1cce040f23131d')
-sha256sums_aarch64=('3fec175fe95e9c17e4ebf4c58d7a5e9c31d60dc417eb5c67ec55bfc0c2196abd')
+sha256sums=('185ddc729d43f9af1ec77bd84a2857dfeec4dbf5179bcdae0e9aa5be102b7c6d')
+sha256sums_x86_64=('7364824a97ee08ff66230e1ad095fc685b6dce4330cd664732fdc77d4f043d5f')
+sha256sums_aarch64=('98f69ca8258055952dbb3c8dbebad31de416661f2d739821c40978e154a437d2')
 
 package() {
     install -Dm755 "rake-${CARCH}" "$pkgdir/usr/bin/rake"
