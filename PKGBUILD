@@ -1,7 +1,7 @@
 # Maintainer: TwoWells <mwellsa@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=catenary-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="LSP-powered code intelligence for AI coding agents (prebuilt binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!debug' '!strip')
 # LICENSE-COMMERCIAL — dual licensing — but the distributed grant is the AGPL).
 source=("catenary-$pkgver-linux-amd64::https://github.com/TwoWells/Catenary/releases/download/v$pkgver/catenary-linux-amd64"
     "LICENSE-$pkgver::https://raw.githubusercontent.com/TwoWells/Catenary/v$pkgver/LICENSE")
-sha256sums=('f586b0545a010d3b2cb7fc2bee7ed519ff68921e230b9e77aef7508d481f44ee'
+sha256sums=('d36b8861bb3873138b5e85d8aef31eb851ec06d0b434d5cf790a8a29c16a6eb4'
             '4536a8a77757f57e16cb8b4a490e1dd52d01e63945a3a53e5fd99168b2ffdd48')
 
 package() {
