@@ -5,7 +5,7 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tools-for-eclipse
-pkgver=5.2.0
+pkgver=5.3.0
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.40.0
 _eclipse_pkgver_short=e4.40
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.desktop"
     "spring-tools-for-eclipse.install"
 )
-sha256sums=('3eb026de83a75c8788c7cdc6316cd789062ca901c2674dfa44cf3a9927f28ed6'
+sha256sums=('eb1497c45f1d0009472d614bed36e30c433768f0c4aa088ff1c4d372f806c2d3'
             '1e2e23447e1d616480a790f36807ee64630a4ad71345834633e4e8f6e9bba066'
             '99655c1631a60d8f3358488bf66b442dc8bb4abfae98681a49248399dfe10cd0')
 
