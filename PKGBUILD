@@ -3,7 +3,7 @@
 pkgname=noctalia-git
 _pkgname=noctalia
 pkgver=5.0.0.r1191.g39a4a335c
-pkgrel=24
+pkgrel=25
 pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -20,6 +20,7 @@ depends=(
   'glibc'
   'jemalloc'
   'libglvnd'
+  'libical'
   'libjxl'
   'libpipewire'
   'libqalculate'
