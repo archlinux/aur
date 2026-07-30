@@ -4,7 +4,7 @@ _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
 _pkgver_stable=1.13.15-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_stable//-/\.}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
 sha256sums_x86_64=('93f0053c1d4d35acaeb02b79012cb9c6edad5a9b61abaa13720387f16d8d09b7')
 sha256sums_aarch64=('a928ca409d0377cb83a79a9cc9c121f6bbca0f1e427837bd35a07be087c34999')
 
-conflicts=("$_pkgname"  "$_pkgname-bin" "$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-beta-bin" "$_pkgname-ref1nd" "$_pkgname-ref1nd-git")
+conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-beta-bin" "$_pkgname-ref1nd" "$_pkgname-ref1nd-git")
 
 backup=("etc/$_pkgname/config.json")
 
@@ -50,6 +50,7 @@ package() {
 
     cd "sing-box-$_pkgver_stable-linux-${ARCH_MAP[$CARCH]}-purego"
     install -Dm755 sing-box -t "$pkgdir/usr/bin"
+    install -Dm644 libcronet.so -t "$pkgdir/usr/lib"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 <(./sing-box completion bash) "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
     install -Dm644 <(./sing-box completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
