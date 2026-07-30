@@ -1,0 +1,87 @@
+From fe2bfdf800a4b2ab84ae884a401676ca2b761782 Mon Sep 17 00:00:00 2001
+From: bones <bones-dev99@proton.me>
+Date: Tue, 21 Jul 2026 09:28:04 -0500
+Subject: [PATCH] Always merge on directory conflicts
+
+---
+ libnemo-private/nemo-file-operations.c    | 18 ++++++++++++++++++
+ libnemo-private/nemo-global-preferences.h |  3 +++
+ libnemo-private/org.nemo.gschema.xml      |  5 +++++
+ 3 files changed, 26 insertions(+)
+
+diff --git a/libnemo-private/nemo-file-operations.c b/libnemo-private/nemo-file-operations.c
+index 7107e937..1a239f6c 100644
+--- a/libnemo-private/nemo-file-operations.c
++++ b/libnemo-private/nemo-file-operations.c
+@@ -4398,6 +4398,16 @@ get_target_file_for_display_name (GFile *dir,
+ 	return dest;
+ }
+ 
++static gboolean
++should_always_merge_dirs (void)
++{
++	gboolean confirm_merge;
++
++	confirm_merge = g_settings_get_boolean (nemo_preferences, NEMO_PREFERENCES_ALWAYS_MERGE_DIRS);
++
++	return confirm_merge;
++}
++
+ /* Debuting files is non-NULL only for toplevel items */
+ static void
+ copy_move_file (CopyMoveJob *copy_job,
+@@ -4665,6 +4675,10 @@ copy_move_file (CopyMoveJob *copy_job,
+ 			is_a_merge = TRUE;
+ 		}
+ 
++		if (is_a_merge && should_always_merge_dirs()) {
++			job->merge_all = TRUE;
++		}
++
+ 		if ((is_a_merge && job->merge_all) ||
+ 		    (!is_a_merge && job->replace_all)) {
+ 			overwrite = TRUE;
+@@ -5338,6 +5352,10 @@ move_file_prepare (CopyMoveJob *move_job,
+ 			is_merge = TRUE;
+ 		}
+ 
++		if (is_merge && should_always_merge_dirs()) {
++			job->merge_all = TRUE;
++		}
++
+ 		if ((is_merge && job->merge_all) ||
+ 		    (!is_merge && job->replace_all)) {
+ 			overwrite = TRUE;
+diff --git a/libnemo-private/nemo-global-preferences.h b/libnemo-private/nemo-global-preferences.h
+index 91f40485..5f144811 100644
+--- a/libnemo-private/nemo-global-preferences.h
++++ b/libnemo-private/nemo-global-preferences.h
+@@ -36,6 +36,9 @@ G_BEGIN_DECLS
+ #define NEMO_PREFERENCES_ENABLE_DELETE			"enable-delete"
+ #define NEMO_PREFERENCES_SWAP_TRASH_DELETE      "swap-trash-delete"
+ 
++/* Conflic Behavior */
++#define NEMO_PREFERENCES_ALWAYS_MERGE_DIRS            "always-merge-directories"
++
+ /* Desktop options */
+ #define NEMO_PREFERENCES_DESKTOP_IS_HOME_DIR                "desktop-is-home-dir"
+ 
+diff --git a/libnemo-private/org.nemo.gschema.xml b/libnemo-private/org.nemo.gschema.xml
+index abc2814d..b0b336af 100644
+--- a/libnemo-private/org.nemo.gschema.xml
++++ b/libnemo-private/org.nemo.gschema.xml
+@@ -206,6 +206,11 @@
+       <summary>Whether to swap the hotkeys for Trash and Delete</summary>
+       <description>If set to true, the Delete key will permanently delete a file, and the Shift-Delete key will only trash a file.</description>
+     </key>
++    <key name="always-merge-directories" type="b">
++      <default>false</default>
++      <summary>Whether to automatically resolve conflicts between two directories by merging them.</summary>
++      <description>If set to true, a file conflict between two directories will always automatically be resolved to "Merge", rather than "Skip" or "Duplicate".</description>
++    </key>
+     <key name="show-directory-item-counts"  enum="org.nemo.SpeedTradeoff">
+       <aliases><alias value='local_only' target='local-only'/></aliases>
+       <default>'local-only'</default>
+-- 
+2.55.0
+
