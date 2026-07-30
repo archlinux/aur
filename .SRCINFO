@@ -1,0 +1,15 @@
+pkgbase = brother-dcpl3515cdw
+	pkgdesc = CUPS driver for Brother DCP-L3515CDW
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl3515cdw_eu
+	arch = x86_64
+	license = custom:brother-license
+	license = GPL-2.0-only
+	depends = cups
+	depends = perl
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf105768/dcpl3515cdwpdrv-3.5.1-2.i386.rpm
+	sha256sums = 77f73f76873a75f53f9a709ec064430d9b820ca478d7e625b800e4046df1630c
+
+pkgname = brother-dcpl3515cdw
