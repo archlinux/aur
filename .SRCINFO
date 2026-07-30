@@ -1,0 +1,17 @@
+pkgbase = tomatick
+	pkgdesc = Modern, lightweight Pomodoro timer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/motudev/tomatick
+	install = tomatick.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus
+	source = tomatick-0.1.0.tar.gz::https://github.com/motudev/tomatick/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = aa1f70075af6beb3489fcd9ab0295d0e384024c659e246766858e4f75ba10fc8
+
+pkgname = tomatick
