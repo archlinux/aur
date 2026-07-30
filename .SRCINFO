@@ -1,0 +1,20 @@
+pkgbase = wmacro-git
+	pkgdesc = Macro recorder and automation tool for Hyprland
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/uint82/wmacro
+	install = wmacro.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = wmacro
+	conflicts = wmacro
+	options = !debug
+	source = git+https://github.com/uint82/wmacro.git
+	sha256sums = SKIP
+
+pkgname = wmacro-git

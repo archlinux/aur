@@ -1,0 +1,22 @@
+post_install() {
+    if command -v modprobe >/dev/null 2>&1; then
+        modprobe uinput >/dev/null 2>&1 || true
+    fi
+
+    echo -e "\e[1;34m==>\e[0m WMacro daemon installed successfully."
+    echo -e "\e[1;31m==> IMPORTANT: To allow your GUI to communicate with the system daemon,\e[0m"
+    echo -e "\e[1;31m==> you must manually add your user to the 'wmacro' group:\e[0m"
+    echo -e "\e[1;32m    sudo usermod -aG wmacro \$USER\e[0m"
+    echo -e ""
+    echo -e "\e[1;34m==>\e[0m After running the command, log out and log back in (or reboot)."
+    echo -e "\e[1;34m==>\e[0m Then, start the system daemon with:\e[0m"
+    echo -e "\e[1;32m    sudo systemctl enable --now wmacro-daemon\e[0m"
+}
+
+post_upgrade() {
+    if command -v modprobe >/dev/null 2>&1; then
+        modprobe uinput >/dev/null 2>&1 || true
+    fi
+    echo -e "\e[1;34m==>\e[0m WMacro upgraded. Restart the system daemon with:"
+    echo -e "\e[1;32m    sudo systemctl restart wmacro-daemon\e[0m"
+}
