@@ -1,0 +1,18 @@
+pkgbase = plaympv
+	pkgdesc = Qt6/QML based player for MatsyaOS.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/plaympv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt6-wayland
+	depends = qt6-quickcontrols2
+	depends = mpv
+	provides = mplaympv
+	conflicts = mplaympv
+	source = https://github.com/matsyaos/plaympv
+	sha256sums = SKIP
+
+pkgname = plaympv
