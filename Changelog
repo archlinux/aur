@@ -1,9 +1,17 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.3.0 ➙ 7.7.0
-              : 2026-04-04 ➙ 2026-07-14
+ Tags         : 7.5.0 ➙ 7.8.1
+              : 2026-04-07 ➙ 2026-07-30
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-07-30   : 7.8.1
+              - 7.8.1 - update version in pyproject.toml
+
+ 2026-07-30   : 7.8.0, origin/master
+              - **7.8.0**
+            
+                * Expiration & Issue format improvements
 
  2026-07-14   : 7.7.0
               - **7.7.0**
@@ -14,7 +22,7 @@
                   a cert with expiration in between 45 and 90 would use a renew days target that
                   is linearly interpolated between 10 and 30 days.
 
- 2026-07-13   : 7.6.0, origin/master
+ 2026-07-13   : 7.6.0
               - **version 7.6.0**
             
                 * Fixes an issue where a 45 day cert with original days to expiration less than 45, (e.g. 44.5)
@@ -36,35 +44,4 @@
               - Fix installer bug which installed sslm-verify with trailing ","
                 Doc improvements
  2026-04-04   ⋯
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2026-04-04   : 7.4.0
-              - **Version 7.4.0**
-            
-                * DANE TLSA record now supports a time-to-live (TTL). It is specifed in the service file:
-            
-                  dane_tls_ttl = 3600
-                  dane_tls = [[25, 'tcp', 3, 1, 1, 'MX']]
-            
-                  If dane_tls_ttl is not set, it defaults to 1800 seconds (30 minutes).
-                  Earlier versions inherited the TTL for the DNS zone.
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2026-04-04   : 7.3.0
-              - Add new sslm-tlsa-hash app to repo
-              - **Version 7.3.0**
-            
-                * Fix Typo that broke generation of DANE TLSA files.
-                * New tool: sslm-tlsa-hash
-            
-                  Given a cert, generate the DANE TLSA hash using internal tools and using openssl.
-                  Confirm they match. Once TLSA records are created, you can now double check the cert hash
-                  is correct.
-            
-                * Coming soon: support for DNS-PERSIST-01
-                  See `Letsecnrypt Blog <https://letsencrypt.org/2026/02/18/dns-persist-01>`_ and
-                  preliminary `Draft spec <https://datatracker.ietf.org/doc/html/draft-ietf-acme-dns-persist-00>`_.
- 2026-01-09   ⋯
-              - Update license sting in pyproject
- 2026-01-06   ⋯
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf
