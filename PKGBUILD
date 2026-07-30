@@ -1,7 +1,6 @@
 # Maintainer: Soymadip <soumadip@zohomail.in>
-
 pkgname=ireader-bin
-pkgver=2.0.17
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="Open source novel reader"
 arch=('x86_64')

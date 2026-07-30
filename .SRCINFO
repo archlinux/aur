@@ -1,6 +1,6 @@
 pkgbase = ireader-bin
 	pkgdesc = Open source novel reader
-	pkgver = 2.0.17
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://github.com/IReaderorg/IReader
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ireader-bin
 	options = !strip
 	source = ireader
 	source = ireader.desktop
-	source = IReader.jar::https://github.com/IReaderorg/IReader/releases/download/v2.0.17/IReader-linux-x64-2.0.17.jar
+	source = IReader.jar::https://github.com/IReaderorg/IReader/releases/download/v2.0.13/IReader-linux-x64-2.0.13.jar
 	source = ireader.png::https://raw.githubusercontent.com/IReaderorg/IReader/master/desktop/src/main/resources/icon.png
 	source = LICENSE::https://raw.githubusercontent.com/IReaderorg/IReader/master/LICENSE
 	sha256sums = SKIP
