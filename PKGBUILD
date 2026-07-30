@@ -2,7 +2,7 @@
 
 _name=odsexport
 pkgname=python-"$_name"
-pkgver=0.0.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Python-native library to create ODS (Open Document Spreadsheet) documents'
 arch=(any)
@@ -14,15 +14,8 @@ makedepends=(
     python-installer
     python-setuptools
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-       "$url/commit/ccc8abb9e532179a9642f365bb7dbbc13fa42e78.patch")
-sha256sums=('3462d58cf025d28f8cc8548145c2de7a99118aa3022195e52b98cd85b32d6042'
-            '59587bfb675edafc472d10ffe880e32319c8fb89cbd19aca6044b1f643faaf44')
-
-prepare() {
-    cd "$_name-$pkgver"
-    patch -p1 -i "$srcdir"/ccc8abb9e532179a9642f365bb7dbbc13fa42e78.patch
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2591fd6142a25c5f1744a462a8ac1a8382228d183fb3610366eead023c689c67')
 
 build() {
     cd "$_name-$pkgver"
