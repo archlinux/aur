@@ -182,6 +182,13 @@ EOF
     sed -i '/SHADER_PATH="\${RENDERING_BUILD_RESOURCE_DIR}/d;
             /RENDERING_SOURCE_SHADER_PATH="\${RENDERING_SOURCE_RESOURCE_DIR}/d' \
         src/rendering/CMakeLists.txt
+
+    # Resource and Python hot reload are switched off in build() via cmake's own
+    # LFS_DEV_IMPORT_SOURCE_* options, which is what keeps their source paths out
+    # of the binaries. The SPIR-V directory is the same class of leak but has no
+    # such option; its only use is #ifdef-guarded, so dropping the define is enough.
+    sed -i '/LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="/d' \
+        src/rendering/rasterizer/vulkan/CMakeLists.txt
     # Use the packaged interpreter path instead of whatever build-local Python
     # path CMake resolved.
     sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3.12"|' \
@@ -265,6 +272,8 @@ build() {
     cmake -B build \
         -DSLANGC="${_slangc}" \
         -DLFS_DOWNLOAD_CACHE_DIR="$srcdir/download-cache" \
+        -DLFS_DEV_IMPORT_SOURCE_RESOURCES=OFF \
+        -DLFS_DEV_IMPORT_SOURCE_PYTHON=OFF \
         -DFETCHCONTENT_SOURCE_DIR_NATIVEFILEDIALOG_EXTENDED="$srcdir/nativefiledialog-extended-${_nfd_ver}" \
         -DFETCHCONTENT_SOURCE_DIR_NVJPEG2K_HEADERS="$srcdir/${_nvjpeg2k_archive}" \
         -DCUDAToolkit_ROOT=/opt/cuda \
