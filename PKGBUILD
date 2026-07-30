@@ -1,7 +1,7 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=kiwi-shell
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Desktop shell for Hyprland built with AGS and Astal"
 arch=('x86_64')
 url="https://github.com/selimbucher/kiwi-shell"
@@ -42,7 +42,7 @@ optdepends=(
     'upower: battery status'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/selimbucher/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('28d547a24efdf31911836c833b668c45d279d4e6389e7024c94086a75ecf3286')
+sha256sums=('8bac12b6df7c4193477dd9b27ab626d69b9489d37420f519af1517e33098724d')
 
 build() {
     cd "$pkgname-$pkgver"

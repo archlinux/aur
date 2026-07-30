@@ -1,7 +1,7 @@
 pkgbase = kiwi-shell
 	pkgdesc = Desktop shell for Hyprland built with AGS and Astal
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/selimbucher/kiwi-shell
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -34,7 +34,7 @@ pkgbase = kiwi-shell
 	optdepends = wireplumber: audio control
 	optdepends = pipewire: audio support
 	optdepends = upower: battery status
-	source = kiwi-shell-0.4.0.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 28d547a24efdf31911836c833b668c45d279d4e6389e7024c94086a75ecf3286
+	source = kiwi-shell-0.4.1.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 8bac12b6df7c4193477dd9b27ab626d69b9489d37420f519af1517e33098724d
 
 pkgname = kiwi-shell
