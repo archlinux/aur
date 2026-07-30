@@ -1,0 +1,13 @@
+# AUR / makepkg artifacts
+*.tar.gz
+*.tar.zst
+*.tar.xz
+*.pkg.tar.*
+*.src.tar.*
+pkg/
+src/
+
+# makepkg's VCS mirror for the git source. It clones the upstream repo into
+# $startdir under the source's name, so this is a bare kiosk-rs/ next to the
+# PKGBUILD -- not something to commit to the AUR repo.
+/kiosk-rs/
