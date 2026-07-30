@@ -1,6 +1,6 @@
 pkgname=sdroxide-soapysdr
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -55,7 +55,26 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   # Build the wasm web client first; `embed-web` bakes crates/sdroxide-web/dist
   # into the binary via rust-embed at compile time.
-  ( cd crates/sdroxide-web && trunk build --release )
+  #
+  # Host RUSTFLAGS must not reach the wasm32 build. A `-Ctarget-cpu=...` -- a
+  # common /etc/makepkg.conf or ~/.cargo/config.toml tweak -- means nothing to
+  # wasm32-unknown-unknown, so LLVM falls back to the baseline wasm CPU and drops
+  # the target features that target normally enables, `reference-types` among
+  # them. wasm-bindgen's build script keys its externref intrinsics off that
+  # feature, so they vanish from the crate while the linked module still asks the
+  # wasm-bindgen CLI to run its externref transform, and the build dies with
+  # "failed to find the __wbindgen_externref_table_dealloc function". An empty
+  # RUSTFLAGS outranks both the environment and build.rustflags from a cargo
+  # config; the native cargo build below still gets the packager's flags.
+  #
+  # Naming the binaryen already in makedepends also keeps trunk from downloading
+  # its own wasm-opt into ~/.cache/trunk from inside build().
+  local _wasm_opt_ver
+  _wasm_opt_ver="$(wasm-opt --version | sed -n 's/.*version \([0-9]\+\).*/\1/p')"
+  ( cd crates/sdroxide-web
+    env -u CARGO_ENCODED_RUSTFLAGS RUSTFLAGS= \
+      ${_wasm_opt_ver:+TRUNK_TOOLS_WASM_OPT="version_$_wasm_opt_ver"} \
+      trunk build --release )
   # Default features include `soapy`, so this links libSoapySDR for wideband
   # device support in addition to the CAT/USB-audio backend.
   cargo build --release --locked -p sdroxide --features embed-web

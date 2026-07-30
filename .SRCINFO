@@ -1,7 +1,7 @@
 pkgbase = sdroxide-soapysdr
 	pkgdesc = PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dividebysandwich/sdroxide
 	arch = x86_64
 	license = GPL-3.0-or-later
