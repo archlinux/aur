@@ -4,7 +4,7 @@
 # Contributor: Giampaolo Mancini <giampaolo@trampolineup.com>
 
 pkgname=python-gpiozero
-pkgver=2.0.1.post2
+pkgver=2.0.1.post3
 pkgrel=1
 pkgdesc='A simple interface to GPIO devices with Raspberry Pi'
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('f4972125f2b591544fe1eb64a8b89ef29f8520db070b0880fd9a8b31c7160089')
+sha256sums=('2c362e076ddd88b324c9509a50cae84b83c5d28987f01cbbd9ec7dc5d2b07e53')
 validpgpkeys=('C6D8FC68EE91033CB8BD913A3D633E44A057F8D5')
 
 build() {
