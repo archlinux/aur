@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 _flutter_ver=3.44.0
 pkgdesc="A modern Plex and Jellyfin client"
@@ -27,7 +27,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f695d86b225c6b775dc0351c7d3b387f43b82c6f2e45d3aae9ae5ea90f3aa1a0')
+sha256sums=('f27f97c5df1e9580d360da62632d920e206d9a53ea514801856041769edb3472')
 
 prepare() {
   cd "$pkgname-$pkgver"
