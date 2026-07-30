@@ -1,13 +1,14 @@
 pkgbase = pacpeek
 	pkgdesc = A small CLI tool that is completely unnecessary, but way cooler than pacman -Qi
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/RustyWaffle/pacpeek
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = pacpeek-0.1.0.tar.gz::https://github.com/RustyWaffle/pacpeek/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 80fd4ad0a89021d969e011474ed7524e08453dfc1a87ba9ef703448d30310677
+	options = !debug
+	source = pacpeek-0.1.1.tar.gz::https://github.com/RustyWaffle/pacpeek/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 5c69c9d8faeb4cfa0e3ae5e6dbdd7596288bd9fa5b15f46c9a36b7fe2c3c3f20
 
 pkgname = pacpeek
