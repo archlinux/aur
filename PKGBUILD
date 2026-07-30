@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.56.1
+pkgver=1.58.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -23,6 +23,8 @@ license=(LGPL-2.1-or-later)
 makedepends=(
   audit
   bash
+  bpf
+  clang
   curl
   dnsmasq
   git
@@ -34,6 +36,7 @@ makedepends=(
   iproute2
   iwd
   jansson
+  libbpf
   libgcc
   libmm-glib
   libndp
@@ -53,6 +56,7 @@ makedepends=(
   ppp
   python-gobject
   readline
+  slang
   systemd
   systemd-libs
   vala
@@ -63,7 +67,7 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('fbd3fd7ca98b75cddc61c85e888f10f103dfed2405e9798a6bfc988788312b47b3b5f011664db303939c75ca404e258a23b8515a308cbf77ecfc29188524e20e'
+b2sums=('1bf42970ab8ffc3fe919d00cf2aca9626dfde0db24e655514b4f2873fef2dda3a88608d72487619c755f5c9e366789cf18943e7502a3ec5476ea7c914d7d48a4'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 build() {
@@ -82,6 +86,7 @@ build() {
     -D config_wifi_backend_default=iwd
     -D iwd=true
     -D teamdctl=true
+    -D bpf-compiler=clang
 
     # configuration plugins
     -D config_plugins_default=keyfile
@@ -120,11 +125,13 @@ _pick() {
 package_networkmanager-iwd() {
   depends=(
     audit
+    bash
     curl
     glib2
     glibc
     iproute2
     jansson
+    libbpf
     libgcc
     iwd
     libmm-glib
@@ -137,6 +144,7 @@ package_networkmanager-iwd() {
     nspr
     nss
     readline
+    slang
     systemd-libs
   )
   provides=(networkmanager)
