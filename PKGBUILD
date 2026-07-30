@@ -2,8 +2,8 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.4
-pkgrel=3
+pkgver=0.4.5
+pkgrel=2
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -33,7 +33,7 @@ source=(
     "aqueous::git+${url}.git#tag=v${pkgver}"
     "wlroots-0.20.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.20.2/wlroots-0.20.2.tar.gz"
 )
-sha256sums=('c813d6020eb29bc59b67987529f5c2b54e02aa4be005b749c1f5eadf203c24b1'
+sha256sums=('1656ba0ac2a6811988fa78ebad9884d3ece169ec99b5c97f37f5848b1549b31d'
             '972c7ac44b17828f4702bfae7cd8347346a3fb5b2c1076cfa2c3fcedac5ec343')
 
 build() {
@@ -72,6 +72,14 @@ build() {
     zig build -Dcpu=baseline -Doptimize=ReleaseSafe -Dxwayland -Dllvm \
         -Dman-pages=true \
         --prefix "$srcdir/aqueous-dist" install
+
+    # Build the helper used by the native Noctalia v5 Aqueous Settings plugin.
+    msg2 "Building Aqueous Settings helper..."
+    cd "$srcdir/aqueous/plugin/helper"
+    ZIG_GLOBAL_CACHE_DIR="$srcdir/aqueous-plugin-zig-global" \
+    ZIG_LOCAL_CACHE_DIR="$srcdir/aqueous-plugin-zig-local" \
+    zig build -Dcpu=baseline -Doptimize=ReleaseSafe \
+        --prefix "$srcdir/aqueous-plugin-dist" install
 }
 
 check() {
@@ -100,12 +108,22 @@ check() {
         error "compositor still links SceneFX"
         return 1
     fi
+
+    if [[ ! -x "$srcdir/aqueous-plugin-dist/bin/aqueous-config" ]]; then
+        error "build output is missing required file: bin/aqueous-config"
+        return 1
+    fi
+    "$srcdir/aqueous/plugin/tests/test-helper.sh" \
+        "$srcdir/aqueous-plugin-dist/bin/aqueous-config"
+    noctalia plugins lint "$srcdir/aqueous/plugin/settings"
 }
 
 package() {
-    # Install the compositor/window-manager and read-only inspection client.
+    # Install the compositor/window-manager and inspection/layout client.
     install -Dm755 "$srcdir/aqueous-dist/bin/aqueous" "$pkgdir/usr/bin/aqueous"
     install -Dm755 "$srcdir/aqueous-dist/bin/aqueousctl" "$pkgdir/usr/bin/aqueousctl"
+    install -Dm755 "$srcdir/aqueous-plugin-dist/bin/aqueous-config" \
+        "$pkgdir/usr/bin/aqueous-config"
     install -Dm755 "$srcdir/aqueous-dist/lib/aqueous/libwlroots-0.20.so" \
         "$pkgdir/usr/lib/aqueous/libwlroots-0.20.so"
 
@@ -157,6 +175,8 @@ package() {
     # started, post xdg-desktop-autostart.target).
     install -Dm644 "$srcdir/aqueous/packaging/noctalia.service" \
         "$pkgdir/usr/lib/systemd/user/noctalia.service"
+    install -Dm755 "$srcdir/aqueous/packaging/enable-noctalia-plugin.sh" \
+        "$pkgdir/usr/lib/aqueous/enable-noctalia-plugin"
     install -d "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
     ln -s ../noctalia.service \
         "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/noctalia.service"
@@ -173,6 +193,24 @@ package() {
     # the user has no ~/.config/noctalia/config.toml yet).
     install -Dm644 "$srcdir/aqueous/packaging/noctalia/config.toml" \
         "$pkgdir/usr/share/aqueous/noctalia/config.toml"
+
+    # System-owned Noctalia v5 path source. The one-shot ExecStartPost helper
+    # registers this source and enables aqueous/settings for each user.
+    local plugin_source="$pkgdir/usr/share/aqueous/noctalia-plugins"
+    local plugin_runtime="$plugin_source/settings"
+    install -dm755 "$plugin_runtime/translations"
+    install -m644 "$srcdir/aqueous/plugin/catalog.toml" \
+        "$plugin_source/catalog.toml"
+    install -m644 "$srcdir/aqueous/plugin/settings/plugin.toml" \
+        "$plugin_runtime/plugin.toml"
+    install -m644 "$srcdir/aqueous/plugin/settings/widget.luau" \
+        "$plugin_runtime/widget.luau"
+    install -m644 "$srcdir/aqueous/plugin/settings/panel.luau" \
+        "$plugin_runtime/panel.luau"
+    install -m644 "$srcdir/aqueous/plugin/settings/aqueous.png" \
+        "$plugin_runtime/aqueous.png"
+    install -m644 "$srcdir/aqueous/plugin/settings/translations/en.json" \
+        "$plugin_runtime/translations/en.json"
 
     # Default wallpapers referenced by the shipped Noctalia config.
     install -d "$pkgdir/usr/share/aqueous/wallpapers"
