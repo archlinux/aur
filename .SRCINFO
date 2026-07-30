@@ -1,0 +1,14 @@
+pkgbase = cetch
+	pkgdesc = A horizontally centered, modern fetch tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/willcannotcode/cetch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = ncurses
+	source = cetch-1.0.0.tar.gz::https://github.com/willcannotcode/cetch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 700dcdd50b9fed9315162fc229b8811b0127e4523d39a322feaa5b3f5b9ee77f
+
+pkgname = cetch
