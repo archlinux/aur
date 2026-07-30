@@ -1,0 +1,19 @@
+pkgbase = matsya-launcher
+	pkgdesc = MatsyaOS application launcher
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/launcher
+	arch = x86_64
+	groups = Matsya
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	md5sums = SKIP
+
+pkgname = matsya-launcher
