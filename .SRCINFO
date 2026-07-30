@@ -1,0 +1,14 @@
+pkgbase = sniplab
+	pkgdesc = Filesystem-native snippet library and terminal CLI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gitkeniwo/snip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = sniplab-0.3.0.tar.gz::https://github.com/gitkeniwo/snip/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 41b165671d6a5ef8da0d23145b6f6ac79a36353ce83c08656b9d4f524a9f699b
+
+pkgname = sniplab
