@@ -3,9 +3,9 @@
 # This prebuilt binary supports multiple backends for Slint and includes HEIF and AVIF support.
 
 pkgname=krokiet-bin
-pkgver=12.0.0
-pkgrel=2
-pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
+pkgver=12.0.1
+pkgrel=1
+pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support and all backends)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
 license=('GPL-3.0-only')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/downlo
         "LICENSE_GPL_APP-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE_GPL_APP"
         "LICENSE_MIT_CODE-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE_MIT_CODE")
 
-sha256sums=('ef583bebb43d0a1c75a5959cc56f04ecfdadac3cd515cae6fee7c9dd604554d1'
+sha256sums=('3a117ac8c354e6b6b9622245a86bfde207e6d1a0b252ddc239e67641069158e5'
             '2e04d60cb940771a159669c3c0eec3812919c730f9fe5cd4a3391c797c8ed80f'
             'e41e4ba0db2f8423d2b7da6948eecc5378ef00ffc98fa01dee51b849ce754c1a'
             '1b685e3eae5ea925fbb2cf4e58fa30e99bed1d4f58c83dc666063e289be09d37'
