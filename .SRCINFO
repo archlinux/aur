@@ -1,13 +1,13 @@
 pkgbase = cri-dockerd-bin
 	pkgdesc = A shim for using Docker as a Kubernetes container runtime
-	pkgver = 0.3.17
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/Mirantis/cri-dockerd
 	arch = x86_64
 	license = Apache
 	depends = docker
 	options = !debug
-	source = https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.17/cri-dockerd-0.3.17.amd64.tgz
+	source = https://github.com/Mirantis/cri-dockerd/releases/download/v0.4.4/cri-dockerd-0.4.4.amd64.tgz
 	source = https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.service
 	source = https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.socket
 	sha256sums = 5568d571c2cfee7a31ce0b35b7fcc65b96c85b573ee6645151c4d022ed92a626

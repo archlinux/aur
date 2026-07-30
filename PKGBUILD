@@ -1,6 +1,6 @@
 # Maintainer: Zhoneym <Zhoneym@outlook.com>
 pkgname=cri-dockerd-bin
-pkgver=0.3.17
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A shim for using Docker as a Kubernetes container runtime"
 arch=('x86_64')
