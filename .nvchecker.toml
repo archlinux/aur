@@ -1,4 +1,0 @@
-[prometheus-bind-exporter]
-source = "git"
-git = "https://github.com/prometheus-community/bind_exporter.git"
-prefix = "v"

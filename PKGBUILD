@@ -1,20 +1,20 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: bretello <bretello@distruzione.org>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=prometheus-bind-exporter-git
 _pkgname=bind_exporter
-pkgver=0.0.0
+pkgver=v0.8.0.r34.g7b25a2f
 pkgrel=1
 pkgdesc='Prometheus exporter for BIND metrics'
 arch=('x86_64')
 url='https://github.com/prometheus-community/bind_exporter'
 license=('Apache-2.0')
 depends=('glibc')
-conflicts=('prometheus-bind-exporter')
 makedepends=('go' 'git')
 optdepends=('bind: for monitoring a local BIND server')
 options=('!lto')
 source=(
-  "git+${url}.git"
+    "${pkgname}::git+${url}.git"
   'systemd.service'
   'sysusers.conf'
 )
@@ -26,15 +26,15 @@ b2sums=('SKIP'
         '739b1e4e7ab277096d0875ed14d61f223e7b990e7081721e4638aebad9c3beccc270ce9944384784af8eab035dbb34a86badae687c065291bfb384abfb42573a')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "%s.r%s.g%s" "$(git describe --tags --long | sed 's/^v//;s/-.*//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    git describe --long --tags --abbrev=7 --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgname"
 
   # create folder for build output
-  mkdir build
+  mkdir -p build
 
   # download dependencies
   go mod download
@@ -49,10 +49,10 @@ build() {
     -modcacherw \
     -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
     -X github.com/prometheus/common/version.Version=$pkgver \
-    -X github.com/prometheus/common/version.Revision=$(git rev-parse --short HEAD) \
-    -X github.com/prometheus/common/version.Branch=$(git rev-parse --abbrev-ref HEAD) \
-    -X github.com/prometheus/common/version.BuildUser=brethil@doop \
-    -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
+    -X github.com/prometheus/common/version.Revision=$pkgver \
+    -X github.com/prometheus/common/version.Branch=$(git branch --show-current) \
+    -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostname) \
+    -X github.com/prometheus/common/version.BuildDate=$(date -u +%Y%m%d-%H:%M:%S)" \
     -o build .
 }
 
@@ -63,8 +63,8 @@ build() {
 
 package() {
   # systemd integration
-  install -Dm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "systemd.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   # binary
   install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname/build/$_pkgname"
