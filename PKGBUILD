@@ -2,7 +2,7 @@
 
 pkgname=kvrt-aarch64
 pkgver=24.0.6.0.202607301720
-pkgrel=1
+pkgrel=2
 pkgdesc='Kaspersky Virus Removal Tool - Runtime and Database Signature'
 arch=('aarch64')
 url='https://www.kaspersky.com/downloads/free-virus-removal-tool'
@@ -22,7 +22,7 @@ prepare() {
 
   # Extract kvrt icon
   binwalk -M -q -e $pkgname-$pkgver-$pkgrel.run 2>/dev/null
-  mv $srcdir/extractions/kvrt-*.run.extracted/*/decompressed.bin.extracted/*/bin/libKvrtGui.so.extracted/1F72E5/image.png kvrt.png
+  mv $srcdir/extractions/kvrt-*.run.extracted/*/decompressed.bin.extracted/*/bin/libKvrtGui.so.extracted/1F6FA5/image.png kvrt.png
   
   # Create .desktop file
   gendesk -f \
