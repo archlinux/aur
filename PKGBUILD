@@ -1,33 +1,48 @@
-# Maintainer:
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jacob Mischka <jacob@mischka.me>
-pkgname=gnomecast-git
-pkgver=1.9.9.r174.b87b597
+
+_pkgname=gnomecast
+pkgname=$_pkgname-git
+pkgver=1.9.11.r187.d42d891
 pkgrel=1
-pkgdesc="A native Linux GUI for casting local files to Chromecast devices"
-arch=('any')
-url="https://github.com/keredson/gnomecast"
-license=('GPL3')
-depends=('ffmpeg' 'gtk3' 'python-html5lib' 'python-pychromecast' 'python-bottle'
-         'python-pycaption' 'python-paste' 'python-gobject' 'python-dbus')
-makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/keredson/gnomecast.git')
-sha256sums=('SKIP')
+pkgdesc='A native Linux GUI for casting local files to Chromecast devices'
+arch=(any)
+url=https://github.com/keredson/gnomecast
+license=(GPL-3.0-or-later)
+depends=(
+  ffmpeg
+  gtk3
+  python-html5lib
+  python-pychromecast
+  python-bottle
+  python-pycaption
+  python-paste
+  python-gobject
+  python-dbus
+)
+makedepends=(
+  git
+  python-setuptools
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url.git)
+sha256sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s.r%s.%s" "$(grep '__version__ = ' gnomecast.py | head -n1 | cut -d\' -f2)" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _ver=$(grep '__version__ = ' $_pkgname/gnomecast.py | head -n1 | cut -d\' -f2)
+  printf '%s.r%s.%s' "$_ver" \
+    "$(git -C $_pkgname rev-list --count HEAD)" \
+    "$(git -C $_pkgname rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py build
+  cd $_pkgname
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_pkgname
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
