@@ -95,7 +95,7 @@ if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.
   fi
   _renamed=false
   if [[ -n "$_friendly_name_expr" ]]; then
-    if _friendly="$(kubectl -n "$namespace" get cluster "$name" -o yaml 2>/dev/null | yq -er "(${_friendly_name_expr}) // empty" 2>/dev/null)"; then
+    if _friendly="$(kubectl -n "$namespace" get cluster "$name" -o yaml 2>/dev/null | yq -er "(${_friendly_name_expr}) // empty" 2>/dev/null)" && [[ -n "$_friendly" ]]; then
       yq -i -Y --arg name "$_friendly" '
         (.contexts[0].context.cluster) as $oldCluster |
         (.clusters[] | select(.name == $oldCluster) | .name) = $name |
