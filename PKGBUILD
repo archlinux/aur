@@ -9,6 +9,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'dbus')
 provides=('tomatick')
 conflicts=('tomatick')
+options=('!debug' '!strip')
 install=tomatick.install
 source=(``
     "tomatick::https://github.com/motudev/tomatick/releases/download/v${pkgver}/tomatick"
