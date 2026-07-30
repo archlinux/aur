@@ -1,8 +1,9 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=mdbook-template
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1+deprecated
+_pkgver=1.1.1-deprecated
+pkgrel=1
 pkgdesc="A preprocessor for mdbook to use template files with dynamic arguments"
 url="https://github.com/sgoudham/mdbook-template"
 arch=('x86_64')
@@ -14,29 +15,29 @@ depends=(
   'mdbook'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1f961da5e07f00179b552c68617880952e6120dd1c4e2ccdf89ad7769d315bb5')
+sha256sums=('bd3d4d04f9c8d6313204350660554617329f2226f20f3735cf87ba3aa284988e')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
