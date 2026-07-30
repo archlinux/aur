@@ -1,0 +1,20 @@
+pkgbase = rupu-bin
+	pkgdesc = Agentic code-development CLI (prebuilt binary)
+	pkgver = 0.71.0
+	pkgrel = 1
+	url = https://github.com/Section9Labs/rupu
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = ripgrep
+	optdepends = git: repository operations
+	optdepends = ast-grep: structural search tool
+	provides = rupu
+	conflicts = rupu
+	options = !strip
+	source_x86_64 = rupu-0.71.0-x86_64::https://github.com/Section9Labs/rupu/releases/download/v0.71.0/rupu-linux-x64
+	sha256sums_x86_64 = 9e4658b78d43db21d4405f1854abc15a5180b4eee109a40692c5724aa3b8030b
+	source_aarch64 = rupu-0.71.0-aarch64::https://github.com/Section9Labs/rupu/releases/download/v0.71.0/rupu-linux-arm64
+	sha256sums_aarch64 = 1083db3741a9dc73eb6d5c288c10894d7237d815001486b68028737dccd807c8
+
+pkgname = rupu-bin
