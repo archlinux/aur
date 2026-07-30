@@ -1,0 +1,10 @@
+pkgbase = matsya-calamares-config
+	pkgdesc = Calamares installer configuration and branding for MatsyaOS
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/matsya-calameres-config
+	arch = any
+	license = GPL-2.0-only
+	depends = matsya-calamares
+
+pkgname = matsya-calamares-config
