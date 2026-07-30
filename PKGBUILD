@@ -1,4 +1,8 @@
 # Maintainer:  Randolph Ha <raster.dynamo-2h.icloud@com>
+# Contributor: Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Contributor: Nico Rumpeltin <$forename at $surname dot de>
+# Contributor: Matthias Blaicher <matthias at blaicher dot com>
+# Contributor: Danny Dutton <duttondj@vt.edu>
 
 pkgbase=quartus-pro
 _components=(${pkgbase}-{quartus,questa,help,riscfree,eda_cdclib,devinfo-{agilex,arria10,cyclone10gx,stratix10}})
