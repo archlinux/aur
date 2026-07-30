@@ -1,44 +1,33 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=amneziawg-dkms
-pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard."
+pkgdesc="AmneziaWG kernel module with AWG 3.0 (Header Protection) + kernel 7.1 fixes"
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
 arch=("x86_64")
-pkgver=1.0.20260611
-pkgrel=2
+pkgver=1.0.20260728.r1350.86b4403
+pkgrel=1
 license=('GPLv2')
-provides=("AMNEZIAWG-MODULE=${pkgver}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
-        "ipv6-stub-fix.patch::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/commit/2a764691e22f15770aa1551ecae12c0431dbd651.patch")
-sha512sums=('3a99b7812b86087aa6f2c0af02a1c43aa6f540d025a1613d484930a99d3589c4ba2e6c2fb7f1b941357bf13855a56a220ff7c0688b22359f954b4dc689db0fdc'
-            'cc7f9d303e6a8387e0682383585391be4b1c2f355129b7b7b4383c898d341f685e466f5c7f6b3ae8bfd724afcc00899baece980f0b6bc039ac300119f2d21243')
+provides=("AMNEZIAWG-MODULE")
+source=("git+https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git#branch=feat/awg3"
+        "kernel-7.1-compat.patch")
+sha256sums=('SKIP'
+            '79531d6ba515395ef4abbe96196fa5fb39b29163629cbd742223bbc21efa233a')
+makedepends=("git")
+conflicts=("amneziawg-linux" "amneziawg-linux-hardened")
+
+pkgver() {
+  cd amneziawg-linux-kernel-module
+  printf "1.0.20260728.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-cd "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/"
-patch -Np1 -i "$srcdir/ipv6-stub-fix.patch"
+  cd amneziawg-linux-kernel-module
+  patch -Np1 -i "${srcdir}/kernel-7.1-compat.patch"
+  sed -i 's/MODERN_KERNEL_SOURCES_NOT_FOUND_ERROR/KERNEL_SRC_ABSENT_ERR/g' src/Makefile
 }
 
 package() {
-depends=("dkms" "wget")
-cat > "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/kernel-tree-scripts/prepare-sources.sh" <<'EOF'
-#!/bin/bash -eux
-kernel="${1%%[^0-9.]*}"
-if [[ "$kernel" =~ .0$ ]]; then kernel="${kernel%.0}"; fi
-kernel_major="${1%%[^0-9]*}"
-wget "https://cdn.kernel.org/pub/linux/kernel/v${kernel_major}.x/linux-${kernel}.tar.xz" -O- | tar -xvJf - --wildcards linux-${kernel}/drivers/net/wireguard "linux-${kernel}/K*" linux-${kernel}/include/uapi/linux/
-ln -sf linux-${kernel} kernel;
-EOF
-cat > "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/kernel-tree-scripts/cleanup-sources.sh" <<'EOF'
-#!/bin/bash
-AWG_TEMP_DIR="$(cat /var/lib/amnezia/amneziawg/.tempdir 2>/dev/null)"
-PREFIX=${AWG_TEMP_DIR:-/tmp}
-WORKDIR="${PREFIX}/amneziawg"
-[ -e kernel ] && rm -rf kernel
-if [[ -d "${WORKDIR}" ]]; then
-rm -rf "${WORKDIR}";
-fi
-EOF
-cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
-sed -i 's/MODERN_KERNEL_SOURCES_NOT_FOUND_ERROR/KERNEL_SRC_ABSENT_ERR/g' Makefile
-make DESTDIR=${pkgdir} dkms-install
+  depends+=("dkms")
+  cd amneziawg-linux-kernel-module/src
+  make DESTDIR="${pkgdir}" dkms-install
 }

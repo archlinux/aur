@@ -1,16 +1,18 @@
 pkgbase = amneziawg-dkms
-	pkgdesc = AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard.
-	pkgver = 1.0.20260611
-	pkgrel = 2
+	pkgdesc = AmneziaWG kernel module with AWG 3.0 (Header Protection) + kernel 7.1 fixes
+	pkgver = 1.0.20260728.r1350.86b4403
+	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
 	arch = x86_64
 	license = GPLv2
-	provides = AMNEZIAWG-MODULE=1.0.20260611
-	source = amneziawg-dkms-1.0.20260611.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v1.0.20260611.tar.gz
-	source = ipv6-stub-fix.patch::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/commit/2a764691e22f15770aa1551ecae12c0431dbd651.patch
-	sha512sums = 3a99b7812b86087aa6f2c0af02a1c43aa6f540d025a1613d484930a99d3589c4ba2e6c2fb7f1b941357bf13855a56a220ff7c0688b22359f954b4dc689db0fdc
-	sha512sums = cc7f9d303e6a8387e0682383585391be4b1c2f355129b7b7b4383c898d341f685e466f5c7f6b3ae8bfd724afcc00899baece980f0b6bc039ac300119f2d21243
+	makedepends = git
+	provides = AMNEZIAWG-MODULE
+	conflicts = amneziawg-linux
+	conflicts = amneziawg-linux-hardened
+	source = git+https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git#branch=feat/awg3
+	source = kernel-7.1-compat.patch
+	sha256sums = SKIP
+	sha256sums = 79531d6ba515395ef4abbe96196fa5fb39b29163629cbd742223bbc21efa233a
 
 pkgname = amneziawg-dkms
 	depends = dkms
-	depends = wget

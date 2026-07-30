@@ -1,0 +1,79 @@
+diff --git a/src/compat/compat.h b/src/compat/compat.h
+index 608f3db..efc730d 100644
+--- a/src/compat/compat.h
++++ b/src/compat/compat.h
+@@ -1436,4 +1436,12 @@ static inline void __compat_chacha20_crypt(struct chacha_state *state,
+ 
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 1, 0) && !IS_ENABLED(CONFIG_IPV6)
++#include <net/ipv6_stubs.h>
++static inline struct dst_entry *ip6_dst_lookup_flow(struct net *net, const struct sock *sk, struct flowi6 *fl6,
++						   const struct in6_addr *final_dst) {
++	return ipv6_stub->ipv6_dst_lookup_flow(net, sk, fl6, final_dst);
++}
++#endif
++
+ #endif /* _WG_COMPAT_H */
+diff --git a/src/socket.c b/src/socket.c
+index 71a7dc7..5cd9ce2 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -137,8 +137,7 @@ static int send6(struct wg_device *wg, struct sk_buff *skb,
+ 			if (cache)
+ 				dst_cache_reset(cache);
+ 		}
+-		dst = ipv6_stub->ipv6_dst_lookup_flow(sock_net(sock), sock, &fl,
+-						      NULL);
++		dst = ip6_dst_lookup_flow(sock_net(sock), sock, &fl, NULL);
+ 		if (IS_ERR(dst)) {
+ 			ret = PTR_ERR(dst);
+ 			net_dbg_ratelimited("%s: No route to %pISpfsc, error %d\n",
+@@ -350,7 +349,12 @@ static void sock_free(struct sock *sock)
+ 	if (unlikely(!sock))
+ 		return;
+ 	sk_clear_memalloc(sock);
++	/* 7.1.5+: udp_tunnel_sock_release takes struct sock * */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 5)
++	udp_tunnel_sock_release(sock);
++#else
+ 	udp_tunnel_sock_release(sock->sk_socket);
++#endif
+ }
+ 
+ static void set_sock_opts(struct socket *sock)
+@@ -404,14 +408,22 @@ retry:
+ 		goto out;
+ 	}
+ 	set_sock_opts(new4);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 5)
++	setup_udp_tunnel_sock(net, new4->sk, &cfg);
++#else
+ 	setup_udp_tunnel_sock(net, new4, &cfg);
++#endif
+ 
+ #if IS_ENABLED(CONFIG_IPV6)
+ 	if (ipv6_mod_enabled()) {
+ 		port6.local_udp_port = inet_sk(new4->sk)->inet_sport;
+ 		ret = udp_sock_create(net, &port6, &new6);
+ 		if (ret < 0) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 5)
++			udp_tunnel_sock_release(new4->sk);
++#else
+ 			udp_tunnel_sock_release(new4);
++#endif
+ 			if (ret == -EADDRINUSE && !port && retries++ < 100)
+ 				goto retry;
+ 			pr_err("%s: Could not create IPv6 socket\n",
+@@ -419,7 +431,11 @@ retry:
+ 			goto out;
+ 		}
+ 		set_sock_opts(new6);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 5)
++		setup_udp_tunnel_sock(net, new6->sk, &cfg);
++#else
+ 		setup_udp_tunnel_sock(net, new6, &cfg);
++#endif
+ 	}
+ #endif
+ 
