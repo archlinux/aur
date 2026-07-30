@@ -1,0 +1,2 @@
+# The udev rule shipped by phantomfido chowns /dev/uhid to this group.
+g uhid -

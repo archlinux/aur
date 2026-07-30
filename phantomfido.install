@@ -1,0 +1,48 @@
+_phantomfido_reload_udev() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules && udevadm trigger --subsystem-match=misc
+  fi
+}
+
+_phantomfido_notice() {
+  cat <<'EOF'
+
+==> phantomfido requires two permissions that are NOT granted automatically:
+
+    1. Bluetooth (BlueZ / HCI) access
+       Your account must be a member of the `bluetooth` group:
+
+           sudo usermod -aG bluetooth "$USER"
+
+    2. Read/write access to /dev/uhid
+       The installed udev rule sets /dev/uhid to group `uhid` (mode 0660).
+       That group is created for you, but you must join it:
+
+           sudo usermod -aG uhid "$USER"
+
+    Group changes only take effect in NEW login sessions -- log out and back
+    in (or reboot), then verify with:
+
+           id -nG                 # should list both bluetooth and uhid
+           ls -l /dev/uhid        # should show  crw-rw---- root uhid
+
+    Without BOTH of these, the daemon cannot create its virtual FIDO HID
+    device or scan for the caBLE BLE advertisement, and every passkey
+    request will fail.
+
+==> Start the daemon as a user service:
+
+           systemctl --user enable --now phantomfidod.service
+
+EOF
+}
+
+post_install() {
+  _phantomfido_reload_udev
+  _phantomfido_notice
+}
+
+post_upgrade() {
+  _phantomfido_reload_udev
+  _phantomfido_notice
+}
