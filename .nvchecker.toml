@@ -1,0 +1,4 @@
+[wiki-tui]
+source = "git"
+git = "https://github.com/Builditluc/wiki-tui.git"
+prefix = "v"

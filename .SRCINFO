@@ -1,17 +1,14 @@
 pkgbase = wiki-tui
 	pkgdesc = A simple and easy to use Wikipedia Text User Interface
-	pkgver = 0.7.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/Builditluc/wiki-tui
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
-	makedepends = git
-	depends = ncurses
-	provides = wiki-tui
-	conflicts = wiki-tui
-	source = wiki-tui-0.7.0.tar.gz::https://github.com/Builditluc/wiki-tui/archive/refs/tags/v0.7.0.tar.gz
-	md5sums = SKIP
+	depends = openssl
+	depends = libgcc
+	source = wiki-tui-0.9.2.tar.gz::https://github.com/Builditluc/wiki-tui/archive/refs/tags/v0.9.2.tar.gz
+	sha512sums = 1cf07dc6ca815eec1ce58bd6d0fd28ede6f147303f2e5a11c6d6258ae1883ee099bfd2beec4a0e0e5a0cceac7d63f2d492ebdb26d0356790a4abfb0a78861ddb
 
 pkgname = wiki-tui
