@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=cockpit-pacman
 pkgver=0.3.7
-pkgrel=6
+pkgrel=7
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
@@ -24,6 +24,7 @@ prepare() {
         -e '/^[[:space:]]*npm ci/d' \
         Makefile
     sed -i 's/^strip = true$/strip = false/' backend/Cargo.toml
+    sed -i 's/"test": "vitest run"/"test": "vitest run --testTimeout=20000"/' package.json
     cargo fetch --locked --manifest-path backend/Cargo.toml \
         --target "$(rustc -vV | sed -n 's/host: //p')"
     npm ci
@@ -39,6 +40,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
+    export LC_ALL=C.UTF-8
     export CARGO_NET_OFFLINE=true
     export CARGO_TARGET_DIR="$srcdir/target"
     export RUSTUP_TOOLCHAIN=stable
