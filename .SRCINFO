@@ -1,14 +1,12 @@
 pkgbase = crom
 	pkgdesc = Fast parallel file finder by name or content, freestanding, no libc
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/hedgeg0d/crom
 	arch = x86_64
 	license = MIT
-	makedepends = clang
-	makedepends = lld
 	makedepends = python
-	source = crom-0.3.0.tar.gz::https://github.com/hedgeg0d/crom/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 66d7894240c0e8949a2d19ad7651506b62ea98f2fb6a482871459558dfb82daf
+	source = crom-0.3.1.tar.gz::https://github.com/hedgeg0d/crom/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 96c712ffccab12e07d321b57fb9e8e28f971ee4b5cf6e5afacef94fdf5eb8b55
 
 pkgname = crom
