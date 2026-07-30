@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=0
 url='https://www.hunk.dev/'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b8ce79513bf7fc0cc67c45aacd8b3b0c9b2b73a157a8308d773fe0629aff6f287d1b294b15e0bf33749fe675af46ddb2fad97468a67f0b48ec6f90ae8b1c5f3e')
+b2sums=('16a4e89fbb3f17759a0da8a3d592e1bd12de3fdb4fdfd48df929ffb87661b171d8b3c2dc2a99f8b9af4fba3bf0ec8f03e06f7d1b71e07923ff5b9f9e71bb595b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -31,7 +31,7 @@ build() {
 check() {
   cd "${pkgname}-${pkgver}"
 
-  bun test -t '(?<!PierreDiffView renders stack-mode wrapped continuation rows)$'
+  bun test
 }
 
 package() {
