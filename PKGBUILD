@@ -2,7 +2,7 @@
 
 pkgname=ionix-quickshell-git
 _pkgname=ionix-quickshell
-pkgver=r9.51aa95c
+pkgver=r10.d23fa6d
 pkgrel=1
 pkgdesc="Ionix Quickshell desktop shell — bar, popouts and OSD (git)"
 arch=('any')
