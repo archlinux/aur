@@ -1,10 +1,11 @@
 pkgbase = detect-it-easy-git
-	pkgdesc = Detect It Easy, or abbreviated "DIE" is a program for determining types of files
-	pkgver = 3.10.r18916.f0655a9
+	pkgdesc = Detect It Easy (DIE) is a program for determining types of files
+	pkgver = 4.0.0.r21502.44209ea
 	pkgrel = 1
 	url = https://horsicq.github.io
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
 	depends = freetype2

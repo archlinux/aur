@@ -2,18 +2,15 @@
 # Co-Maintainer: Hors Icq <horsicq at googlemail dot com>
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=detect-it-easy-git
-pkgver=3.10.r18916.f0655a9
+_pkgname=${pkgname%-git}
+pkgver=4.0.0.r21502.44209ea
 pkgrel=1
-pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
+pkgdesc='Detect It Easy (DIE) is a program for determining types of files'
 arch=('x86_64')
 url='https://horsicq.github.io'
-license=(MIT)
-provides=(
-  'detect-it-easy'
-)
-conflicts=(
-  'detect-it-easy'
-)
+license=('MIT')
+provides=('detect-it-easy')
+conflicts=('detect-it-easy')
 depends=(
   'freetype2'
   'gcc-libs'
@@ -29,25 +26,20 @@ depends=(
   'systemd-libs'
 )
 makedepends=(
+  'cmake'
   'git'
   'qt5-tools'
 )
+
 _srcname="DIE-engine"
-source=(
-  'git+https://github.com/horsicq/DIE-engine.git'
-)
-sha512sums=(
-  'SKIP'
-)
-_pkgname="${pkgname/-git/}"
-_stop='\e[m'
-_color="\e[33m"
-_bold='\e[1m'
-_prefix=" ${_bold}${_color}==>${_stop} "
+source=('git+https://github.com/horsicq/DIE-engine.git')
+sha512sums=('SKIP')
+
+_prefix="==> "
 
 pkgver() {
   cd "$_srcname"
-  local _base_ver=$(sed -n 's/^AC_INIT([^,]*, *\([^)]*\)).*/\1/p' configure.ac)
+  local _base_ver=$(cat release_version.txt)
   local _rev_count=$(git rev-list --count HEAD)
   local _short_hash=$(git rev-parse --short=7 HEAD)
   printf "%s.r%s.%s" "$_base_ver" "$_rev_count" "$_short_hash"
@@ -60,63 +52,61 @@ prepare() {
 
 build() {
   cd "$_srcname" || return
-  echo -e "${_prefix}Building detect-it-easy"
+  echo "${_prefix}Building detect-it-easy"
 
-  _subdirs="build_libs gui_source console_source lite_source"
+  cmake \
+    -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_RUNTIME_OUTPUT_DIRECTORY="$(pwd)/build/release" \
+    -DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -DNDEBUG"
 
-  # [DEPRECATED] FIXME UPSTREAM: -Werror=format-security is causing build errors (merged upstream)
-  #export CFLAGS+=" -Wno-format-security"
-  #export CXXFLAGS+=" -Wno-format-security"
-
-  for _subdir in $_subdirs; do
-    pushd "$_subdir" || return
-    echo -e "${_prefix}${_prefix}Building $_subdir"
-    qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "$_subdir.pro"
-    make -f Makefile clean
-    make -f Makefile
-    popd || return
-  done
-
-  echo -e "${_prefix}${_prefix}Running Qt's Linguist tool chain for gui_source"
-  cd gui_source || return
-  lupdate gui_source_tr.pro
-  lrelease gui_source_tr.pro
+  cmake --build build -j$(nproc)
 }
 
 package() {
   cd "$_srcname" || return
 
-  echo -e "${_prefix}Creating the package base"
+  echo "${_prefix}Creating the package base"
   install -d "$pkgdir"/{opt/"${_pkgname}",usr/bin,usr/share/icons}
-  install -d "$pkgdir/opt/${_pkgname}"/{lang,qss,info,db,signatures,images,yara_rules}
+  install -d "$pkgdir/opt/${_pkgname}"/{lang,qss,info,db,db_extra,signatures,images,yara_rules,peid}
 
-  echo -e "${_prefix}Copying the package binaries"
+  echo "${_prefix}Copying the package binaries"
   install -Dm 755 build/release/die -t "$pkgdir"/opt/"${_pkgname}"
   install -Dm 755 build/release/diec -t "$pkgdir"/opt/"${_pkgname}"
   install -Dm 755 build/release/diel -t "$pkgdir"/opt/"${_pkgname}"
 
-  echo -e "${_prefix}Copying the package files"
-  install -Dm 644 gui_source/translation/* -t "$pkgdir"/opt/"${_pkgname}"/lang
-  install -Dm 644 XStyles/qss/* -t "$pkgdir"/opt/"${_pkgname}"/qss
-  cp -r XInfoDB/info/* -t "$pkgdir"/opt/"${_pkgname}"/info/
-  cp -r Detect-It-Easy/db/* -t "$pkgdir"/opt/"${_pkgname}"/db/
-  cp -r XYara/yara_rules/* -t "$pkgdir"/opt/"${_pkgname}"/yara_rules/
-  install -Dm 644 signatures/crypto.db -t "$pkgdir"/opt/"${_pkgname}"/signatures
+  echo "${_prefix}Copying the package files"
+  install -Dm 644 build/src/translations/*.qm -t "$pkgdir"/opt/"${_pkgname}"/lang
+  install -Dm 644 dep/XStyles/qss/* -t "$pkgdir"/opt/"${_pkgname}"/qss
+  cp -r dep/XInfoDB/info/* -t "$pkgdir"/opt/"${_pkgname}"/info/
+  cp -r dep/Detect-It-Easy/db/* -t "$pkgdir"/opt/"${_pkgname}"/db/
+  cp -r dep/Detect-It-Easy/db_extra/* -t "$pkgdir"/opt/"${_pkgname}"/db_extra/
+  cp -r dep/XYara/yara_rules/* -t "$pkgdir"/opt/"${_pkgname}"/yara_rules/
+  cp -r dep/XPEID/peid/* -t "$pkgdir"/opt/"${_pkgname}"/peid/
+  install -Dm 644 dep/signatures/crypto.db -t "$pkgdir"/opt/"${_pkgname}"/signatures
   cp -r images/* -t "$pkgdir"/opt/"${_pkgname}"/images/
 
-  echo -e "${_prefix}Setting up /usr/bin launchers"
+  echo "${_prefix}Setting up /usr/bin launchers"
   ln -s /opt/"${_pkgname}"/die "$pkgdir"/usr/bin/die
   ln -s /opt/"${_pkgname}"/diec "$pkgdir"/usr/bin/diec
   ln -s /opt/"${_pkgname}"/diel "$pkgdir"/usr/bin/diel
 
-  echo -e "${_prefix}Setting up desktop icons"
+  echo "${_prefix}Setting up desktop icons"
   cp -r LINUX/hicolor "$pkgdir"/usr/share/icons
 
-  echo -e "${_prefix}Setting up desktop shortcuts"
+  echo "${_prefix}Setting up desktop shortcuts"
   install -Dm 644 LINUX/io.github.horsicq.detect-it-easy.desktop -t "$pkgdir"/usr/share/applications
 
-  echo -e "${_prefix}Setting up metainfo file"
+  echo "${_prefix}Setting up metainfo file"
   install -Dm 644 LINUX/io.github.horsicq.detect-it-easy.metainfo.xml -t "$pkgdir"/usr/share/metainfo
-  
+
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  echo "${_prefix}Applying directory layout fix"
+  install -d "$pkgdir/usr/lib/die/"
+  for dir in db db_extra images info lang qss signatures yara_rules peid; do
+    ln -s "/opt/${_pkgname}/$dir" "$pkgdir/usr/lib/die/$dir"
+  done
 }
