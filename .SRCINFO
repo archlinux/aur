@@ -1,0 +1,24 @@
+pkgbase = usbtree-git
+	pkgdesc = Live USB device tree in your terminal.
+	pkgver = 0.1.0.r3.g26a20ba
+	pkgrel = 1
+	url = https://github.com/gnomeria/usbtree
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = libgit2
+	provides = usbtree
+	conflicts = usbtree
+	conflicts = usbtree-bin
+	options = !lto
+	options = !debug
+	options = !strip
+	source = usbtree-main::git+https://github.com/gnomeria/usbtree.git#branch=main
+	sha256sums = SKIP
+
+pkgname = usbtree-git
