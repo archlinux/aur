@@ -1,7 +1,7 @@
 pkgbase = azerothcore-wotlk-git
 	pkgdesc = AzerothCore - MMORPG Server - continuous build from master branch
 	pkgver = r18952.5bdaa898db
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.azerothcore.org
 	install = azerothcore-wotlk-git.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = azerothcore-wotlk-git
 	depends = boost-libs
 	depends = readline
 	depends = openssl
-	depends = tmux
+	depends = openbsd-netcat
 	optdepends = azerothcore-clientdata: To automatically provision pre-extracted map assets
 	provides = azerothcore
 	conflicts = azerothcore
@@ -25,8 +25,10 @@ pkgbase = azerothcore-wotlk-git
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git#branch=master
 	source = acore-auth-server.service
 	source = acore-world-server.service
+	source = acore_setup
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = b8f13b46be156fc93ee639b8d1c10cd86f055e61201ee28b6c40dfaa95a71c0f2f7374fab34edda9881f4ead537e4c89b57fb6ff57a9373f7742ec00a9cb30fd
+	sha512sums = 14ed11734dee5c2351bd3e799b5221afc846ee78b06bfa42ad5677b8d8f679b4170c641c489cba582f939742de5ff74bb7966bbd843c8be8e80bfc969cff6243
+	sha512sums = 1617aa9b6556c7095386064adf884838d606f87837c0a8b36b21ebaf5cbf3031bbbfab1492a3ef0c34e84cfbd1e7bfc539c44afe9fd85911dcf008420daf0615
 
 pkgname = azerothcore-wotlk-git

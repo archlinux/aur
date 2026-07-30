@@ -13,21 +13,25 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
 pkgver=r18952.5bdaa898db
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-auth-server.service"
-		"acore-world-server.service")
-sha512sums=('SKIP' "SKIP" "SKIP")
+		"acore-world-server.service"
+		"acore_setup")
+sha512sums=('SKIP'
+            'b8f13b46be156fc93ee639b8d1c10cd86f055e61201ee28b6c40dfaa95a71c0f2f7374fab34edda9881f4ead537e4c89b57fb6ff57a9373f7742ec00a9cb30fd'
+            '14ed11734dee5c2351bd3e799b5221afc846ee78b06bfa42ad5677b8d8f679b4170c641c489cba582f939742de5ff74bb7966bbd843c8be8e80bfc969cff6243'
+            '1617aa9b6556c7095386064adf884838d606f87837c0a8b36b21ebaf5cbf3031bbbfab1492a3ef0c34e84cfbd1e7bfc539c44afe9fd85911dcf008420daf0615')
 
 install='azerothcore-wotlk-git.install'
 #backup=('usr/share/azerothcore/acore.json')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 # Core execution dependencies
-depends=('boost-libs' 'readline' 'openssl' 'tmux')
+depends=('boost-libs' 'readline' 'openssl' 'openbsd-netcat')
 optdepends=('azerothcore-clientdata: To automatically provision pre-extracted map assets')
 options=(!lto !debug strip)
 provides=('azerothcore')
@@ -143,9 +147,30 @@ package() {
 
 	install -d "${pkgdir}/usr/bin"
 
-	echo '#!/bin/sh' > "${pkgdir}/usr/bin/attach-world"
-	echo 'echo "Connecting to AzerothCore Live Admin Console..."' >> "${pkgdir}/usr/bin/attach-world"
-	echo 'exec openssl s_client -connect 127.0.0.1:3443 -quiet' >> "${pkgdir}/usr/bin/attach-world"
+	cat << 'EOF' > "${pkgdir}/usr/bin/attach-world"
+#!/bin/sh
+# Check if the Remote Access network port 3443 is actively listening
+if ! ss -ltn | grep -q :3443; then
+    echo "======================================================================="
+    echo " ⏳ AZEROTHCORE IS STILL BOOTING / INITIALIZING MAPS"
+    echo "======================================================================="
+    echo " The world server process is currently running, but it has not turned"
+    echo " on its Remote Access listener port yet."
+    echo ""
+    echo " To monitor the live database population or grid loading phase, run:"
+    echo "   sudo journalctl -u acore-world-server -n 50 -f"
+    echo ""
+    echo " Please re-run 'attach-world' in a moment once loading completes."
+    echo "======================================================================="
+    exit 1
+fi
+
+echo "Connecting to AzerothCore Live Admin Console..."
+exec nc -C 127.0.0.1 3443
+EOF
+
+	install -m755 "${srcdir}/acore-setup" "${pkgdir}/usr/bin/acore-setup"
+	chmod +x "${pkgdir}/usr/bin/acore-setup"
 	chmod +x "${pkgdir}/usr/bin/attach-world"
 
 	# Copies the runtime helper script into the package

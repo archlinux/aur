@@ -21,27 +21,7 @@ post_install() {
 		cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
 	fi
 
-	# Allow "remote access" so we can talk to our service once it starts
-	if [ -f /etc/azerothcore/worldserver.conf ]; then
-		sed -i 's/^Ra.Enable\s*=\s*.*/Ra.Enable = 1/'     /etc/azerothcore/worldserver.conf
-		sed -i 's/^Ra.IP\s*=\s*.*/Ra.IP = "127.0.0.1"/'     /etc/azerothcore/worldserver.conf
-		sed -i 's/^Ra.Port\s*=\s*.*/Ra.Port = 3443/'       /etc/azerothcore/worldserver.conf
-		sed -i 's/^Ra.MinLevel\s*=\s*.*/Ra.MinLevel = 3/' /etc/azerothcore/worldserver.conf
-	fi
-
-	# 5. Point the source tracking option directly to your execution root folder
-	sed -i 's#^SourceDirectory\s*=\s*""#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
-
-	echo "======================================================================="
-	echo " 🔐 MULTI-USER TMUX CONSOLE ACCESS CONFIGURATION"
-	echo "======================================================================="
-	echo " To allow a regular Linux user to attach to the live server console,"
-	echo " add them to the 'acore-admin' group using this command:"
-	echo ""
-	echo "   sudo usermod -aG acore-admin your_username"
-	echo ""
-	echo " (Note: The user must log out and log back in for changes to apply)."
-	echo "======================================================================="
+	sudo sed -i 's#^SourceDirectory\s*=\s*"".*#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/worldserver.conf
 
 	# Display clear user instructions
 	echo ''
@@ -72,9 +52,6 @@ post_install() {
 	echo '  - sudo journalctl -u acore-auth-server.service -f'
 	echo '  - sudo journalctl -u acore-world-server.service -f'
 	echo ''
-	echo 'The servers are started with tmux. To connect to one of them and issue commands:'
-	echo '  - attach-auth   (Connects straight to the live authentication console)'
-	echo '  - attach-world  (Connects straight to the live world server console)'
 	echo ''
 	echo 'To disconnect safely without killing the server, press Ctrl+b, then d.'
 	echo ''
@@ -83,6 +60,10 @@ post_install() {
 	echo '    https://www.azerothcore.org/wiki/linux-server-setup'
 	echo '  - Or install the AUR package:'
 	echo '    yay -S azerothcore-clientdata-git'
+	echo ''
+	echo "Please run the following command to finish server setup:"
+	echo ''
+	echo "  - sudo acore_setup"
 }
 
 post_upgrade() {

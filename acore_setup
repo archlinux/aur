@@ -1,0 +1,123 @@
+#!/bin/bash
+# Ensure the script is run with administrative root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "❌ Error: Please run this setup script using sudo: sudo acore-setup"
+    exit 1
+fi
+
+echo "======================================================================="
+echo " ⚔️  AZEROTHCORE ADMINISTRATIVE SERVICE PROVISIONER"
+echo "======================================================================="
+echo " This utility will securely initialize your server environment layers."
+echo ""
+
+# 1. Prompt the administrator for their MySQL root credentials interactively
+read -s -p "Enter your MySQL root password (leave blank if none): " DB_PASS
+echo ""
+
+# Test the provided database credentials cleanly
+if [ -z "$DB_PASS" ]; then
+    MYSQL_CMD="mysql -u root"
+else
+    MYSQL_CMD="mysql -u root -p${DB_PASS}"
+fi
+
+if ! $MYSQL_CMD -e "EXIT" >/dev/null 2>&1; then
+    echo "❌ Error: Could not connect to MySQL with those credentials."
+    exit 1
+fi
+
+echo " -> Database credentials verified successfully!"
+
+# =======================================================================
+# THE SQL INITIALIZATION FIX: Run the baseline table schema creations
+# =======================================================================
+if [ -f /usr/share/azerothcore/data/sql/create/create_mysql.sql ]; then
+    echo " -> Initializing core database templates and permissions..."
+    if ! $MYSQL_CMD < /usr/share/azerothcore/data/sql/create/create_mysql.sql >/dev/null 2>&1; then
+        echo "❌ Error: Failed to execute core database initialization scripts."
+        exit 1
+    fi
+else
+    echo "❌ Error: Mandatory file /usr/share/azerothcore/data/sql/create/create_mysql.sql not found."
+    exit 1
+fi
+
+# 2. Automatically apply your configuration variables securely
+echo " -> Tuning configuration paths inside /etc/azerothcore/..."
+if [ -f /etc/azerothcore/worldserver.conf ]; then
+    sed -i 's/^Ra.Enable\s*=\s*.*/Ra.Enable = 1/'     /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.IP\s*=\s*.*/Ra.IP = "127.0.0.1"/'     /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.Port\s*=\s*.*/Ra.Port = 3443/'       /etc/azerothcore/worldserver.conf
+    sed -i 's/^Ra.MinLevel\s*=\s*.*/Ra.MinLevel = 3/' /etc/azerothcore/worldserver.conf
+    sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 0/' /etc/azerothcore/worldserver.conf
+fi
+
+# 3. Securely prompt the user to define their custom Master GM account keys
+echo ""
+echo "--- Account Provisioning ---"
+read -p "Enter desired Master Admin Username: " GM_USER
+read -s -p "Enter desired Master Admin Password: " GM_PASS
+echo ""
+
+# Create a temporary log file to catch the server's initialization text
+SETUP_LOG="/tmp/acore_bootstrap.log"
+rm -f "${SETUP_LOG}"
+
+# 4. Spin up the worldserver in the background, directing output to our log file
+echo " -> Starting background initialization thread (This may take a moment)..."
+echo -e "account create ${GM_USER} ${GM_PASS}\naccount set gmlevel ${GM_USER} 3 -1" | \
+    sudo -u azerothcore /usr/share/azerothcore/bin/worldserver --asdaemon > "${SETUP_LOG}" 2>&1 &
+
+local BOOTSTRAP_PID=$!
+
+# Actively monitor the logs for readiness tokens
+local TIMEOUT=300 # Max 5 minutes for slow hard drives/initial populations
+local ELAPSED=0
+local READY=0
+
+while [ ${ELAPSED} -lt ${TIMEOUT} ]; do
+    # Check if the server successfully processed the account creation command strings
+    if grep -q "Account created:" "${SETUP_LOG}" || grep -q "worldserver-daemon) ready" "${SETUP_LOG}"; then
+        READY=1
+        break
+    fi
+    
+    # Check if the process died unexpectedly on its own (e.g., bad database password)
+    if ! kill -0 ${BOOTSTRAP_PID} >/dev/null 2>&1; then
+        echo "❌ Error: The server process terminated prematurely. Check ${SETUP_LOG} for details."
+        exit 1
+    fi
+    
+    sleep 2
+    ELAPSED=$((ELAPSED + 2))
+    printf " -> Waiting for server engine cores to load... (%ds/%ds)\r" "${ELAPSED}" "${TIMEOUT}"
+done
+
+echo "" # Clear the carriage return line
+
+# 5. Clean up the background thread instances safely
+kill ${BOOTSTRAP_PID} >/dev/null 2>&1
+wait ${BOOTSTRAP_PID} >/dev/null 2>&1
+rm -f "${SETUP_LOG}"
+
+if [ ${READY} -eq 0 ]; then
+    echo "❌ Error: Bootstrapping timed out after 5 minutes before account could be created."
+    exit 1
+fi
+
+if [ -f /etc/azerothcore/worldserver.conf ]; then
+    sed -i 's/^Console.Enable\s*=\s*.*/Console.Enable = 0/' /etc/azerothcore/worldserver.conf
+fi
+
+
+echo " -> Secure SRP6 account tokens generated and injected successfully!"
+echo "======================================================================="
+echo " 🎉 AZEROTHCORE PROVISIONING COMPLETE!"
+echo "======================================================================="
+echo " 1. Enable and start your server engines natively right now:"
+echo "    sudo systemctl enable --now acore-auth-server acore-world-server"
+echo ""
+echo " 2. Connect directly to your live scrolling interactive server console:"
+echo "    attach-world (server must fully start first)"
+echo "======================================================================="

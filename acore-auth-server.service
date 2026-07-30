@@ -7,7 +7,7 @@ Type=simple
 User=azerothcore
 Group=acore-admin
 WorkingDirectory=/usr/share/azerothcore
-ExecStart=/usr/share/azerothcore/bin/worldserver
+ExecStart=/usr/share/azerothcore/bin/authserver
 Restart=on-failure
 
 [Install]
