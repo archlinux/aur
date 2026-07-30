@@ -1,0 +1,26 @@
+pkgbase = ltbox-bin
+	pkgdesc = Lenovo tablet firmware tool (region, root, EDL) — binary release
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/miner7222/LTBox
+	install = ltbox-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = python
+	depends = systemd-libs
+	depends = hicolor-icon-theme
+	optdepends = android-tools: optional host adb/fastboot alongside LTBox
+	optdepends = polkit: GUI-assisted udev install (not needed; rules are packaged)
+	provides = ltbox
+	conflicts = ltbox
+	options = !strip
+	options = !debug
+	source = 51-ltbox-qcom.rules::https://raw.githubusercontent.com/miner7222/LTBox/v3.2.2/misc/udev/51-ltbox-qcom.rules
+	sha256sums = 0f6346cbba24fd373e3edaefb2a212412517c4f34f7600fe20df432d58acfccb
+	source_x86_64 = LTBox-linux_x86_64-v3.2.2.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.2.2/LTBox-linux_x86_64-v3.2.2.tar.gz
+	sha256sums_x86_64 = b64085ea9fa6f5871126a71e90bdf6a914f63551f5f30eaca5f71c6f915bfb42
+	source_aarch64 = LTBox-linux_arm64-v3.2.2.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.2.2/LTBox-linux_arm64-v3.2.2.tar.gz
+	sha256sums_aarch64 = 064fec83312cce30ab12de05a18aa5c00e9d1f37ad1966b5480b50a128154b8d
+
+pkgname = ltbox-bin

@@ -1,0 +1,10 @@
+post_install() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload
+    udevadm trigger
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
