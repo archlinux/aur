@@ -2,7 +2,7 @@
 # Maintainer: cilgin <cilgincc@outlook.com>
 
 pkgname=vicinae-git
-pkgver=0.21.0.r2.ge8a3757
+pkgver=0.24.0.r1.gdef25a3
 pkgrel=1
 pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,6 @@ depends=(
   'qt6-base'
   'qt6-declarative'
   'qt6-svg'
-  'protobuf'
-  'cmark-gfm'
   'layer-shell-qt'
   'libqalculate'
   'minizip'
@@ -26,9 +24,9 @@ makedepends=(
   'cmake'
   'ninja'
   'npm'
-  'rapidfuzz-cpp'
   'glaze'
   'qt6-shadertools'
+  'qt6-tools'
 )
 install=vicinae-git.install
 provides=("vicinae")
