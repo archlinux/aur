@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(
     python-build
     python-installer
-    python-nanobind
+    nanobind
     python-scikit-build-core
     python-wheel
 )
