@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=o2-rs
 _pkgname=o2
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Rust port of the ORCΛ esoteric programming language and terminal livecoding environment'
 arch=(
@@ -20,16 +20,11 @@ provides=('o2')
 conflicts=('o2-rs-git' 'o2-rs-bin')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    "Cargo-${pkgver}.lock"
 )
-sha256sums=(
-    '069de70c8dd93be2434f9f8b1a4a3b4fc77953db86ea6f1cfc67675976d0eea7'
-    'd885d21077c5aedbd7140627dcfe26aee6972ef6d65da046bff4835b4544c9b0'
-)
+sha256sums=('1f9d7532d5af710ba2e8fbf5852186bf87753c04a9b8d0fe5f1f5134ff503cfc')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    mv ../Cargo-"${pkgver}".lock Cargo.lock
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
