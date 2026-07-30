@@ -1,7 +1,7 @@
 pkgbase = tauritavern-bin
 	pkgdesc = A Tauri-based frontend for SillyTavern (Custom build with thin titlebar)
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/LX2000WASD/TauriTavern-aur
 	arch = x86_64
 	license = AGPL-3.0
@@ -15,7 +15,7 @@ pkgbase = tauritavern-bin
 	provides = tauritavern
 	conflicts = tauritavern
 	options = !debug
-	source = TauriTavern_2.1.1_amd64.deb::https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v2.1.1-2/TauriTavern_2.1.1_amd64.deb
-	md5sums = df561f75eb8585303f0caeae6858d208
+	source = TauriTavern_2.2.0_amd64.deb::https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v2.2.0-1/TauriTavern_2.2.0_amd64.deb
+	md5sums = 45d2b25637c62de617d0f010ea064af6
 
 pkgname = tauritavern-bin
