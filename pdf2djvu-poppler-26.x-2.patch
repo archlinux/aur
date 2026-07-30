@@ -1,0 +1,104 @@
+--- src/pdf2djvu-0.9.19/pdf-document-map.cc.orig
++++ src/pdf2djvu-0.9.19/pdf-document-map.cc
+@@ -41,9 +41,15 @@
+             std::unique_ptr<pdf::Document> doc(new pdf::Document(path));
+             pdf::Catalog *catalog = doc->getCatalog();
+             for (int i = 0; i < doc->getNumPages(); i++) {
++#if POPPLER_VERSION > 260600
++                std::string s;
++                if (catalog->indexToLabel(i, &s)) {
++                    std::string str = pdf::string_as_utf8(s);
++#else                    
+                 pdf::String s;
+                 if (catalog->indexToLabel(i, &s)) {
+                     std::string str = pdf::string_as_utf8(&s);
++#endif                    
+                     this->labels.push_back(str);
+                 }
+                 else
+--- src/pdf2djvu-0.9.19/pdf-unicode.hh.orig
++++ src/pdf2djvu-0.9.19/pdf-unicode.hh
+@@ -32,6 +32,7 @@
+     void write_as_utf8(std::ostream &stream, Unicode unicode_char);
+ 
+     std::string string_as_utf8(const pdf::String *);
++    std::string string_as_utf8(const std::string &);
+     std::string string_as_utf8(pdf::Object &);
+ 
+ /* class pdf::NFKC
+--- src/pdf2djvu-0.9.19/pdf-unicode.cc.orig
++++ src/pdf2djvu-0.9.19/pdf-unicode.cc
+@@ -41,15 +41,13 @@
+     stream.write(buffer, seqlen);
+ }
+ 
+-std::string pdf::string_as_utf8(const pdf::String *string)
++static std::string string_as_utf8_implementation(const char *cstring, size_t clength)
+ {
+     /* See
+      * https://unicode.org/faq/utf_bom.html
+      * for description of both UTF-16 and UTF-8.
+      */
+     const static uint32_t replacement_character = 0xFFFD;
+-    const char *cstring = pdf::get_c_string(string);
+-    size_t clength = string->size();
+     std::ostringstream stream;
+     if (clength >= 2 && (cstring[0] & 0xFF) == 0xFE && (cstring[1] & 0xFF) == 0xFF) {
+         /* UTF-16-BE Byte Order Mark */
+@@ -98,11 +96,27 @@
+     } else {
+         /* PDFDoc encoding */
+         for (size_t i = 0; i < clength; i++)
+-            write_as_utf8(stream, pdfDocEncoding[cstring[i] & 0xFF]);
++            pdf::write_as_utf8(stream, pdfDocEncoding[cstring[i] & 0xFF]);
+     }
+     return stream.str();
+ }
+ 
++std::string pdf::string_as_utf8(const pdf::String *string)
++{
++    const char *cstring = pdf::get_c_string(string);
++#if POPPLER_VERSION > 251000
++    size_t clength = string->size();
++#else
++    size_t clength = string->getLength();
++#endif
++    return string_as_utf8_implementation(cstring, clength);
++}
++
++std::string pdf::string_as_utf8(const std::string &s)
++{
++    return string_as_utf8_implementation(s.data(), s.size());
++}
++
+ std::string pdf::string_as_utf8(pdf::Object &object)
+ {
+ #if POPPLER_VERSION > 260300
+--- src/pdf2djvu-0.9.19/pdf-backend.cc.orig
++++ src/pdf2djvu-0.9.19/pdf-backend.cc
+@@ -239,6 +239,14 @@
+ 
+ const std::string pdf::Document::get_xmp()
+ {
++  const char *cstring = nullptr;
++#if POPPLER_VERSION_NUMBER > 260700
++  std::optional<std::string> mstring = this->readMetadata();
++  if (!mstring)
++    return "";
++  cstring = mstring->c_str();
++#else
++
+   std::unique_ptr<const pdf::String> mstring;
+ #if POPPLER_VERSION >= 211000
+   mstring = this->readMetadata();
+@@ -247,7 +255,9 @@
+ #endif
+   if (mstring.get() == nullptr)
+     return "";
+-  const char *cstring = pdf::get_c_string(mstring.get());
++  cstring = pdf::get_c_string(mstring.get());
++#endif
++
+   if (strncmp(cstring, "<?xpacket begin=", 16) != 0)
+     return "";
+   cstring += 16;

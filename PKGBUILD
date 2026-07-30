@@ -5,7 +5,7 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.19
-pkgrel=7
+pkgrel=8
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
@@ -18,12 +18,14 @@ source=(
   "pdf2djvu-tests-python-3.patch"
   "pdf2djvu-poppler-26.01.0.patch"
   "pdf2djvu-poppler-26.x.patch"
+  "pdf2djvu-poppler-26.x-2.patch"
 )
 sha256sums=(
   'eb45a480131594079f7fe84df30e4a5d0686f7a8049dc7084eebe22acc37aa9a'
   'fe6f45c09dee733c7b96a68556e635a47e1faf69bb47aca35599dc6117d22dc2'
   '29f12d01cb13ccc9a412469f1adcc71b1e2e5a81c7c6269a28eb23f1098de41a'
   '413f214c393c093812d4b50cccae38dbec2f55565b1a49d844335ce700a79ac1'
+  'efee89b64a4b79ef293bb621553d2ac9fb78bdbe19c816deb97200a643ae72ee'
 )
 
 prepare() {
@@ -36,6 +38,9 @@ prepare() {
 
   # Fix build with recent poppler changes
   patch -p1 < "$srcdir"/pdf2djvu-poppler-26.x.patch
+
+  # Fix build with next recent poppler changes
+  patch -p1 < "$srcdir"/pdf2djvu-poppler-26.x-2.patch
 
   # fix tests - assert_regexp_matches has been deprecated in nose
   sed -i -e 's/assert_regexp_matches as assert_regex/assert_regex/' "$srcdir"/${pkgname}-${pkgver}/tests/tools.py
