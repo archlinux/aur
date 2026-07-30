@@ -1,7 +1,7 @@
 # Maintainer: Dani Rodríguez <dani@danirod.es>
 # Contributor: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-binutils
-pkgver=2.46.1
+pkgver=2.47
 pkgrel=1
 epoch=
 pkgdesc="GNU binutils for the i386- toolchain"
@@ -12,7 +12,7 @@ groups=(i386-elf-toolchain)
 makedepends=(gcc)
 depends=(xz)
 source=("http://ftpmirror.gnu.org/binutils/binutils-$pkgver.tar.xz")
-sha512sums=("a5c65e56e400ed3fb8906a995dbb93eb5bea54b16344244653d7f44ef29ceb60270da263b19d25302c37759784e14fcb4b9421b29e0e2c7f450bd99f6bb4595c")
+sha512sums=("3126a1064374d8da40d4d70630c204ed1e75d542c447d53fca9778c7ceff095c28e9b445e15a313fef9729082d7966471ee6b5b715d479aa6d568528743e1d98")
 
 build() {
     # Create temporary build dir
