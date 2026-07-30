@@ -1,6 +1,6 @@
 pkgbase = lat.md
 	pkgdesc = A knowledge graph for your codebase, written in markdown
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/1st1/lat.md
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lat.md
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = lat.md-0.12.1.tgz
+	noextract = lat.md-0.12.2.tgz
 	options = !debug
-	source = lat.md-0.12.1.tgz::https://registry.npmjs.org/lat.md/-/lat.md-0.12.1.tgz
-	sha256sums = b0d0a6015c01736c5fc4801a160c8cc4767706eb3c208b06b7c3af9851df20f8
+	source = lat.md-0.12.2.tgz::https://registry.npmjs.org/lat.md/-/lat.md-0.12.2.tgz
+	sha256sums = 5879417268f30d9147638f4e559bfd6d78761c63534ae960726e6bc3d7cb4a21
 
 pkgname = lat.md
