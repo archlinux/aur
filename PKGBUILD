@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-autocomplete-bin
 pkgdesc="Shell auto-completion tool that works like code editors IntelliSense."
 
-pkgver=0.4.9
+pkgver=0.4.11
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,16 +25,14 @@ conflicts=("${pkgname%-bin}")
 
 options=(!strip)
 
-source=("GUIDE-${pkgver}.md::${_ghurlraw}/docs/README.md"
-		"README-${pkgver}.md::${_ghurlraw}/README.md"
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums=('1342d344b52cd1f1886d6a361aca6859cf05e7ed9e13ee294bbb7124e3245789'
-            'fc91adf6ac1a6666ec57faa8f2c26b1dd6a7973515a3892fef11dd64286a78eb'
+sha256sums=('51d9f636c35dafece359dd863113b8627f8155ad399fe590cec622739ccd308e'
             '0db3336be1d50c18d8d0f844a996cdddaf66a018dbdee58ab94933c1c6ffc2e9')
-sha256sums_x86_64=('fa041d837ab14f428c3c3b5b13d4a08ae011e75b4c819b326c116e1f950a833f')
-sha256sums_aarch64=('da6babcfa4dd6b9f4ee95963ad6c731fcddb5533e3501bd44bfd12af9420d33d')
+sha256sums_x86_64=('db2bd9a25c400460260a610e36da0beda5234fb5a9595eb29994c822193d70c8')
+sha256sums_aarch64=('c8a6a87339d52d542384ba05b71179068b6b6732850af62e94b80ce4d1cc9f13')
 
 
 build() {
@@ -55,7 +53,6 @@ package() {
 	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
 	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
-	install -Dm644 "GUIDE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/GUIDE.md"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
