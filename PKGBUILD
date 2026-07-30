@@ -1,213 +1,266 @@
-# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
-# Contributor: Nico Rumpeltin <$forename at $surname dot de>
-# Contributor: Matthias Blaicher <matthias at blaicher dot com>
-# Contributor: Danny Dutton <duttondj@vt.edu>
+# Maintainer:  Randolph Ha <raster.dynamo-2h.icloud@com>
 
-pkgbase=quartus-free
-_components=(${pkgbase}-{quartus,questa,help,riscfree,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}}})
+pkgbase=quartus-pro
+_components=(${pkgbase}-{quartus,questa,help,riscfree,eda_cdclib,devinfo-{agilex,arria10,cyclone10gx,stratix10}})
 pkgname=(${pkgbase} ${_components[@]})
-# Keep dot in _patchver
-_mainver=25.1; _patchver=.0; _buildver=1129; _litever=${_mainver}std${_patchver}.${_buildver}
-pkgver=${_mainver}${_patchver}.${_buildver}
+# Keep dot in _patchver so regex to filter URLs for _patchver=.0 works
+_mainver=26.1; _patchver=.0; _buildver=110
+_urlver="${_mainver}${_patchver/.0/}/${_buildver}"; _filver="${_mainver}${_patchver}.${_buildver}"
+pkgver=${_filver}
 pkgrel=1
-pkgdesc="Quartus Prime Lite design software for Intel FPGAs"
+pkgdesc="Quartus Prime Pro design software for Intel FPGAs"
 arch=('x86_64')
-url="http://fpgasoftware.intel.com/?edition=lite"
+url="https://www.altera.com/downloads/fpga-development-tools/quartus-prime-pro-edition-design-software-version-26-1-linux"
 license=('LicenseRef-QuartusPrime')
 
-_inteldir="/opt/intelFPGA/${_mainver}"
+_instdir="/opt/altera_pro/${_mainver}"
 
 # See individual packages
 depends=()
 
 _base_url="https://downloads.intel.com/akdlm/software/acdsinst"
-source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusLiteSetup-${_litever}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuestaSetup-${_litever}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusHelpSetup-${_litever}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/RiscFreeSetup-${_litever}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/"{arria_lite,cyclone{,10lp,v},max{,10}}"-${_litever}.qdz"
-        'quartus.sh' 'quartus.desktop' 'questa-fse.sh' 'questa-fse.desktop' 'questa.gif' '51-usbblaster.rules')
-noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${_litever}.qdz") # Will extract directly to pkgdir
+source=("${_base_url}/${_urlver}/ib_installers/QuartusProSetup-${_filver}-linux.run"
+        "${_base_url}/${_urlver}/ib_installers/QuartusProSetup-part2-${_filver}.qdz"
+        "${_base_url}/${_urlver}/ib_installers/QuestaSetup-${_filver}-linux.run"
+        "${_base_url}/${_urlver}/ib_installers/QuartusProHelpSetup-${_filver}-linux.run"
+        "${_base_url}/${_urlver}/ib_installers/RiscFreeSetup-${_filver}-linux.run"
+        "${_base_url}/${_urlver}/ib_installers/eda_"{cdc,sim}"lib-${_filver}-linux.qdz"
+        "${_base_url}/${_urlver}/ib_installers/"{agilex{3,5,7,_common},arria10,cyclone10gx,stratix10}"-${_filver}.qdz"
+        # Rename files to avoid conflicting with quartus-free
+        'quartus-pro.desktop' 'questa-fse-pro.desktop' 'questa.gif' '51-usbblaster-pro.rules')
+noextract=("QuartusProSetup-part2-${_filver}.qdz"
+           "eda_"{cdc,sim}"lib-${_filver}-linux.qdz"
+           {agilex{3,5,7,_common},arria10,cyclone10gx,stratix10}"-${_filver}.qdz") # Will extract directly to pkgdir
 # Still using SHA1 because it's given in the download site
 sha1sums=(
-    ce0773469eacab5b7035c175484625f4ec3737d1
-    149fe1e1cf253f2929804582c6cb658bca941dd5
-    078ec6422fe6bbdceecf1a7683965a45e3e08411
-    2d457bd18bfbf32f8f4037266b6c04853caed8e8
-    d803f8a865d260f47cdb1f856c123fab5a9934bf
-    835d2b1732549294eed625b692d044135499b5e8
-    b3cc2ca1b2e1b225407968e2f380e596dff5b80d
-    a7225ec1bd36ccfd6826ea6273df5d21dd95633b
-    a3bc065b42a9d005f8d27fe45525411b49c13c43
-    8936dac1b092853f3b49a67fef22968ec10f8087
-    f6d660c62a71ac650f23f1ab8ab272eef445632a
-    2efb252903bed064dd1ce5ced3ba84de2d5ef280
-    b69614473e3f622676dcbb7a9a91e65003b3550c
-    da7c90d1569c2819e37315daf0c4e2f894683318
-    20224d8007807eed71b27783bb95c73faf6de20b
-    45a7d09831554252715e5fa377db0c04c553e833
+    694c03383a30c196440a22cb75f045cd1cdb40ef # QuartusProSetup
+    99aab564ca8035beab7e083eaf2524b7cdbbb16e # QuartusProSetup-part2
+    d7d431325762e343a39a1e4e6a8a97d46923b8b1 # QuestaSetup
+    6817d60872172c44c62fc8f7a1a6fb44afec17a7 # QuartusProHelpSetup
+    0cbdb211af09c861653e9c71ee70b6eff7d14d32 # RiscFreeSetup
+    757551153ab07d4d89930a77f6de306f10ac4617 # eda_cdclib
+    531379202a1aa656af2c107aa28e518cd63a6136 # eda_simlib
+    c8a9c4a05e77ed4a86d941702a15bd055060acab # agilex3
+    57a63a203f4e4d0efdd2d9936d8a7a871706ca33 # agilex5
+    9c9d8172723d3ee5b3f33ec0a9edb3545e7de4df # agilex7
+    ba5caf895dbe40cb96c3df76332c2db32059c83c # agilex_common
+    f998b82882f664d9694f5ecee8292682499c23e5 # arria10
+    a3f1c0aff500292bb59997d9672b0e55ee1e599e # cyclone10gx
+    e10f405331e394dab768311afc67042806d82491 # stratix10
+
+    3e7d319306c7c73bf5c8d867df206912b2c0d8e6 # quartus-pro.desktop
+    c51b7de3701af0088bb924295f153bb2439d927d # questa-fse-pro.desktop
+    20224d8007807eed71b27783bb95c73faf6de20b # questa.gif
+    8264e342640583e31777782a8584566cb0cc7351 # 51-usbblaster-pro.rules
 )
 
 options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
-PKGEXT=".pkg.tar.zst" # ZSTD is fast enough for compression
 
 prepare() {
-    echo "Notice: Requires around 31GB of free space, of which 23GB in build dir, during package building!"
-    echo "Notice: The compressed package files also require around 11GB of free space"
+    echo "Notice: Requires around 240GB of free space, of which 154GB in build dir, during package building!"
+    echo "Notice: The compressed package files also require around 84GB of free space"
 
-    chmod +x {QuartusLite,Questa,QuartusHelp,RiscFree}Setup-${_litever}-linux.run
+    chmod +x {QuartusPro,Questa,QuartusProHelp,RiscFree}Setup-${_filver}-linux.run
 }
 
-package_quartus-free() {
+package_quartus-pro() {
     depends=(${_components[@]})
-    pkgdesc="Meta-package containing all Quartus Prime Lite tools and device libraries"
+    pkgdesc="Meta-package containing all Quartus Prime Pro tools and device libraries"
 }
 
-package_quartus-free-quartus() {
+package_quartus-pro-quartus() {
     depends=(ld-lsb alsa-lib bzip2 dbus expat fontconfig freetype2 gcc-libs glib2 lib32-gcc-libs lib32-glibc
              libdrm libice libpulse libsm libx11 libxau libxext libxi libxml2
-             libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-free-devinfo)
+             libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-pro-devinfo)
     optdepends=("eclipse: For Nios II EDS")
+    pkgdesc="Quartus Prime Pro - Base installation"
 
-    DISPLAY="" ./QuartusLiteSetup-${_litever}-linux.run \
-        --disable-components quartus_help,devinfo,questa_fse,questa_fe \
+    # Some notes here:
+    # 1) I think disabling devinfo disables all boards (agilex5, cyclone10gx, etc.)
+    # 2) Pretty sure the programmer, emb, driver .run's are just subcomponents already installed with this
+    # 3) Maybe quartus_update is for Altera Remote Update?
+    # 4) Can't install eda_simlib separately, it would overwrite files from quartus-pro-quartus
+    # 5) Sorry, but easicn5x doesn't have an independent .qdz file, so it doesn't get support.
+    ./QuartusProSetup-${_filver}-linux.run \
+        --disable-components quartus_help,eda_cdclib,devinfo,riscfree,questa_fse,questa_fe \
         --mode unattended \
-        --unattendedmodeui none \
         --accept_eula 1 \
-        --installdir "${pkgdir}${_inteldir}"
+        --installdir "${pkgdir}${_instdir}"
+
+    # Fix broken openocd board config
+    mv "${pkgdir}${_instdir}/quartus/linux64/oocd/openocd/scripts/target/"{1986Ð²Ðµ1Ñ.cfg,1986ве1т.cfg}
+    mv "${pkgdir}${_instdir}/quartus/linux64/oocd/openocd/scripts/target/"{Ðº1879xÐ±1Ñ.cfg,к1879хб1я.cfg}
 
     # Remove uninstaller and install logs since we have a working package management
-    rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
+    rm -r "${pkgdir}${_instdir}/"{uninstall,logs}
 
     # Remove useless unzip binaries
-    find "${pkgdir}${_inteldir}" -name unzip -delete
+    find "${pkgdir}${_instdir}" -name unzip -delete
 
     # Remove duplicated file from help
-    rm -r "${pkgdir}${_inteldir}/quartus/common/help/webhelp"
-
-    # Split RiscFree to a separate package
-    rm -r "${pkgdir}${_inteldir}/riscfree"
+    rm -r "${pkgdir}${_instdir}/quartus/common/help/webhelp"
 
     # Fix missing permissions
-    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} +
+    find "${pkgdir}${_instdir}" \! -perm /o+rwx -exec chmod o=g {} +
 
     # Replace altera directory in integration files
-    sed -i "s,@_inteldir@,${_inteldir},g" quartus.sh
-    sed -i "s,@_inteldir@,${_inteldir},g" quartus.desktop
+    sed -i "s,@_instdir@,${_instdir},g" quartus-pro.desktop
 
     # Remove pkgdir reference in sopc_builder
-    sed -i "s,${pkgdir},,g" "${pkgdir}${_inteldir}/quartus/sopc_builder/.sopc_builder"
+    sed -i "s,${pkgdir},,g" "${pkgdir}${_instdir}/quartus/sopc_builder/.sopc_builder"
 
     # Fix world writable permissions
-    find "${pkgdir}${_inteldir}/nios2eds/documents" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/nios2eds/bin" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/ip/altera/mentor_vip_ae" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/quartus/dspba" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/quartus/common/tcl" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/quartus/linux64" -perm -o+w -exec chmod go-w {} +
-    find "${pkgdir}${_inteldir}/quartus/sopc_builder/bin/europa" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_instdir}/quartus/dspba" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_instdir}/quartus/common/tcl" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_instdir}/quartus/linux64" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_instdir}/quartus/sopc_builder/bin/europa" -perm -o+w -exec chmod go-w {} +
 
     # Remove sticky bit from directories
-    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${_inteldir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "${_instdir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install integration files
-    install -D -m755 quartus.sh "${pkgdir}/etc/profile.d/quartus.sh"
-    install -D -m644 51-usbblaster.rules "${pkgdir}/etc/udev/rules.d/51-usbblaster.rules"
-    install -D -m644 quartus.desktop "${pkgdir}/usr/share/applications/quartus.desktop"
+    install -D -m644 51-usbblaster-pro.rules "${pkgdir}/etc/udev/rules.d/51-usbblaster-pro.rules"
+    install -D -m644 quartus-pro.desktop "${pkgdir}/usr/share/applications/quartus-pro.desktop"
 }
 
-package_quartus-free-questa() {
+package_quartus-pro-questa() {
     depends=(expat fontconfig freetype2 gcc-libs gd lib32-gcc-libs lib32-glibc lib32-libxml2
              libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
-    pkgdesc="Quartus Prime Lite - Questa-Intel FPGA Starter Edition"
+    pkgdesc="Quartus Prime Pro - Questa-Intel FPGA Starter Edition"
     license=('LicenseRef-QuestaSim')
 
-    DISPLAY="" ./QuestaSetup-${_litever}-linux.run \
+    ./QuestaSetup-${_filver}-linux.run \
         --questa_edition questa_fse \
         --mode unattended \
-        --unattendedmodeui none \
         --accept_eula 1 \
-        --installdir "${pkgdir}${_inteldir}"
+        --installdir "${pkgdir}${_instdir}"
 
     # Remove uninstaller and install logs since we have a working package management
-    rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
+    rm -r "${pkgdir}${_instdir}/"{uninstall,logs}
 
     # Fix missing permissions
-    find "${pkgdir}${_inteldir}" \! -perm /o+rwx -exec chmod o=g {} +
+    find "${pkgdir}${_instdir}" \! -perm /o+rwx -exec chmod o=g {} +
 
     # Fix world writable permissions
-    find "${pkgdir}${_inteldir}/questa_fse/intel" -perm -o+w -exec chmod go-w {} +
+    find "${pkgdir}${_instdir}/questa_fse/intel" -perm -o+w -exec chmod go-w {} +
 
     # Remove sticky bit from directories
-    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
 
     # Replace altera directory in integration files
-    sed -i "s,@_inteldir@,${_inteldir},g" questa-fse.sh
-    sed -i "s,@_inteldir@,${_inteldir},g" questa-fse.desktop
+    sed -i "s,@_instdir@,${_instdir},g" questa-fse-pro.desktop
 
     # Add application icon
-    install -D -m644 "${srcdir}/questa.gif" "${pkgdir}${_inteldir}/questa_fse/questa.gif"
+    install -D -m644 "${srcdir}/questa.gif" "${pkgdir}${_instdir}/questa_fse/questa.gif"
 
     # Suppress spurious warning about linux-gate.so.1
-    #sed -i '/msg_system/a suppress = 3116' "${pkgdir}${_inteldir}/questa_fse/modelsim.ini"
+    #sed -i '/msg_system/a suppress = 3116' "${pkgdir}${_instdir}/questa_fse/modelsim.ini"
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${_inteldir}/questa_fse/EULA.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "${_instdir}/questa_fse/EULA.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install integration files
-    install -D -m755 questa-fse.sh "${pkgdir}/etc/profile.d/questa-fse.sh"
-    install -D -m644 questa-fse.desktop "${pkgdir}/usr/share/applications/questa-fse.desktop"
+    install -D -m644 questa-fse-pro.desktop "${pkgdir}/usr/share/applications/questa-fse-pro.desktop"
 }
 
-package_quartus-free-help() {
-    depends=(quartus-free-quartus)
-    pkgdesc="Quartus Prime Lite - help files"
+package_quartus-pro-help() {
+    depends=(quartus-pro-quartus)
+    pkgdesc="Quartus Prime Pro - Help files"
 
-    DISPLAY="" ./QuartusHelpSetup-${_litever}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_inteldir}"
+    ./QuartusProHelpSetup-${_filver}-linux.run --mode unattended --accept_eula 1 --installdir "${pkgdir}${_instdir}"
 
     # Remove uninstaller and install logs since we have a working package management
-    rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
+    rm -r "${pkgdir}${_instdir}/"{uninstall,logs}
 
     # Remove sticky bit from directories
-    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${_inteldir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "${_instdir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_quartus-free-riscfree() {
-    depends=(quartus-free-quartus)
-    pkgdesc="Quartus Prime Lite - RiscFree IDE for Altera"
+package_quartus-pro-riscfree() {
+    depends=(quartus-pro-quartus)
+    pkgdesc="Quartus Prime Pro - RiscFree IDE for Altera"
     license=('LicenseRef-RiscFree')
 
-    DISPLAY="" ./RiscFreeSetup-${_litever}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_inteldir}"
+    ./RiscFreeSetup-${_filver}-linux.run --mode unattended --accept_eula 1 --installdir "${pkgdir}${_instdir}"
 
     # Remove uninstaller and install logs since we have a working package management
-    rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
+    rm -r "${pkgdir}${_instdir}/"{uninstall,logs}
 
     # Remove sticky bit from directories
-    find "${pkgdir}${_inteldir}" -type d -exec chmod a-s {} +
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
 
     # Link license file
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${_inteldir}/riscfree/licenses/license.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "${_instdir}/riscfree/licenses/license.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-for _dev in {arria_lite,cyclone{,10lp,v},max{,10}}; do
-    eval "
-package_${pkgbase}-devinfo-${_dev}() {
-   provides=(quartus-free-devinfo)
-   depends=()
-   pkgdesc='Quartus Prime Lite - devinfo files for ${_dev}'
-   install -d \"\${pkgdir}\${_inteldir}\"
-   bsdtar -xf \"${_dev}-\${_litever}.qdz\" -C \"\${pkgdir}\${_inteldir}\"
-   find \"\${pkgdir}\${_inteldir}\" -type d -exec chmod a-s {} +
+# For some reason, this eval doesn't work reliably, and the eval needs to be executed twice
+# for anything to work. Instead, I'm just going to write some boilerplate to save my sanity.
+#for _dev in {agilex{3,5,7,_common},arria10,cyclone10gx,stratix10}; do
+#    eval "
+#package_${pkgbase}-devinfo-${_dev}() {
+#   provides=(${pkgbase}-devinfo)
+#   depends=( $([[ "${_dev}" =~ agilex[357] ]] && echo "${pkgbase}-devinfo-agilex_common") )
+#   pkgdesc='Quartus Prime Pro - devinfo files for ${_dev}'
+#   install -d \"\${pkgdir}\${_instdir}\"
+#   bsdtar -xf \"${_dev}-\${_filver}.qdz\" -C \"\${pkgdir}\${_instdir}\"
+#   find \"\${pkgdir}\${_instdir}\" -type d -exec chmod a-s {} +
+#}
+#"
+
+package_quartus-pro-eda_cdclib() {
+    depends=(quartus-pro-quartus)
+    pkgdesc='Quartus Prime Pro - EDA CDC Libraries for Synopsys Spyglass'
+    install -d "${pkgdir}${_instdir}"
+    bsdtar -xf "eda_cdclib-${_filver}-linux.qdz" -C "${pkgdir}${_instdir}"
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
 }
-"
-done
+
+# Can't package separately, some files are shared
+package_quartus-pro-devinfo-agilex() {
+    provides=(quartus-pro-devinfo)
+    depends=()
+    pkgdesc='Quartus Prime Pro - devinfo files for agilex3/5/7'
+    install -d "${pkgdir}${_instdir}"
+    bsdtar -xf "agilex3-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    bsdtar -xf "agilex5-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    bsdtar -xf "agilex7-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    bsdtar -xf "agilex_common-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
+}
+
+package_quartus-pro-devinfo-arria10() {
+    provides=(quartus-pro-devinfo)
+    depends=()
+    pkgdesc='Quartus Prime Pro - devinfo files for arria10'
+    install -d "${pkgdir}${_instdir}"
+    bsdtar -xf "arria10-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
+}
+
+package_quartus-pro-devinfo-cyclone10gx() {
+    provides=(quartus-pro-devinfo)
+    depends=()
+    pkgdesc='Quartus Prime Pro - devinfo files for cyclone10gx'
+    install -d "${pkgdir}${_instdir}"
+    bsdtar -xf "cyclone10gx-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
+}
+
+package_quartus-pro-devinfo-stratix10() {
+    provides=(quartus-pro-devinfo)
+    depends=()
+    pkgdesc='Quartus Prime Pro - devinfo files for stratix10'
+    install -d "${pkgdir}${_instdir}"
+    bsdtar -xf "stratix10-${_filver}.qdz" -C "${pkgdir}${_instdir}"
+    find "${pkgdir}${_instdir}" -type d -exec chmod a-s {} +
+}
