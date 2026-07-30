@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jumble-bin
 _pkgname=Jumble
-pkgver=26.7.1
+pkgver=26.7.2
 _electronversion=41
 pkgrel=1
 pkgdesc="yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('7fb52ff2bcd9dcc6e9b0aa8e40102a37020ab8bde84baab4dff030e034dd7bab')
-sha256sums_x86_64=('6b83cb9b9f397ce2e093bfb00568bc495bb847b2a6f7415012a04fb9b8db50fe')
+sha256sums_aarch64=('ab3eeffdbc2e8ccaf31122f58241699344ac66a349214deaf55099c331dbdc1c')
+sha256sums_x86_64=('7f6e35734704e67ccf8e667fc7cfa0073f58cb2aa39db824f781cb21233a1c77')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -57,7 +57,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
