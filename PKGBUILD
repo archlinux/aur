@@ -15,7 +15,7 @@
 #   symlink-vs-copy pitfall).
 
 pkgname=omniroute
-pkgver=3.8.48
+pkgver=3.8.49
 pkgrel=1
 pkgdesc='Unified AI router with 160+ providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 )
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('SKIP')
+sha256sums=('7dc1ac03139dbf5652c2ddb878726ef7b9724404ca070f2b61e16f193461c58b')
 
 build() {
   cd "${srcdir}"
@@ -38,13 +38,13 @@ build() {
 
   cd package
 
-  # Install production deps with --ignore-scripts to avoid:
+  # Install prod deps (--omit=dev) with --ignore-scripts to avoid:
   #   1. "prepare: husky" failure — husky is a devDep, not installed
-  #      with --production, so the postinstall's prepare step fails.
+  #      with --omit=dev, so the postinstall's prepare step fails.
   #   2. postinstall's npm rebuild in dist/node_modules/ being blocked
   #      by npm's allowScripts mechanism.
   npm install \
-    --production \
+    --omit=dev \
     --no-audit \
     --no-fund \
     --legacy-peer-deps \

@@ -1,6 +1,6 @@
 pkgbase = omniroute
 	pkgdesc = Unified AI router with 160+ providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.
-	pkgver = 3.8.48
+	pkgver = 3.8.49
 	pkgrel = 1
 	url = https://omniroute.online
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = omniroute
 	optdepends = nodejs-better-sqlite3: SQLite storage for local data
 	options = !strip
 	options = !emptydirs
-	source = https://registry.npmjs.org/omniroute/-/omniroute-3.8.48.tgz
-	sha256sums = SKIP
+	source = https://registry.npmjs.org/omniroute/-/omniroute-3.8.49.tgz
+	sha256sums = 7dc1ac03139dbf5652c2ddb878726ef7b9724404ca070f2b61e16f193461c58b
 
 pkgname = omniroute
