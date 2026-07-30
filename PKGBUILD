@@ -1,15 +1,17 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-web
 pkgver=5.0.0_beta.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Stremio web client frontend"
 arch=('x86_64')
 url="https://github.com/Stremio/$pkgname"
 license=('GPL-2.0-only')
 depends=('nodejs')
 makedepends=('nvm' 'pnpm' 'esbuild')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('e1b5d50b55afbcb1ca1da1c9cb1edd030d9d9aeffd53fc38abbb270b66fc268c')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+    'stremio-video-legacy-shell-reveal.patch')
+sha256sums=('e1b5d50b55afbcb1ca1da1c9cb1edd030d9d9aeffd53fc38abbb270b66fc268c'
+    '525253f1086244b242b3c5ba0bdf28e588b252ecba2623a30e263db8da87b106')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -32,6 +34,10 @@ prepare() {
     nvm install
     pnpm clean-install
     pnpm install express@4 # https://github.com/Stremio/stremio-web/blob/development/Dockerfile#L30
+
+    # Restore the shell reveal behavior used before stremio-video 0.0.84.
+    patch -Np1 -d node_modules/@stremio/stremio-video \
+        -i "$srcdir/stremio-video-legacy-shell-reveal.patch"
 }
 
 build() {

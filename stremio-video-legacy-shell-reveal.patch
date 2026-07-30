@@ -1,0 +1,16 @@
+diff --git a/src/ShellVideo/ShellVideo.js b/src/ShellVideo/ShellVideo.js
+index b5b71f6..7169f5d 100644
+--- a/src/ShellVideo/ShellVideo.js
++++ b/src/ShellVideo/ShellVideo.js
+@@ -144,6 +144,11 @@ function ShellVideo(options) {
+                 // for bitwise maths so the maximum supported video duration is 1073741823 (2 ^ 30 - 1)
+                 // which is around 34 years of playback time.
+                 avgDuration = avgDuration ? (avgDuration + intDuration) >> 1 : intDuration;
++                props.loaded = intDuration > 0;
++                if (props.loaded) {
++                    setBackground(false);
++                    onPropChanged('loaded');
++                }
+                 break;
+             }
+             case 'time-pos': {
