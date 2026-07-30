@@ -2,7 +2,7 @@
 
 _exec_name=key-mcursor
 pkgname=${_exec_name}-bin
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor control (pre-built binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_exec_name")
 install="$pkgname.install"
 depends=('glibc')
 source=("$url/releases/download/v$pkgver/$_exec_name-v$pkgver-$arch-unknown-linux-gnu.tar.zst")
-sha256sums=('071a1f8d6e68b64d34db1451f706f8ddce1efb1c367385c532ba0ee7dd8b6013')
+sha256sums=('20cd179d99e209e2d549d2ee6e04ab5a1774e2c9a804eaa53a87cbc1ca569d6f')
 
 # Binary tarball — no build step needed, makepkg auto-extracts.
 
