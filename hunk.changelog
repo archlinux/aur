@@ -1,5 +1,77 @@
 # Changelog
 
+## 0.17.7
+
+### Patch Changes
+
+- f7eff9d: Fix session commands when the local daemon uses the IPv6 loopback address.
+- dc61750: Fix Nix flake evaluation on Nixpkgs 26.11, which dropped `x86_64-darwin`. Hunk's flake no longer declares that system, and it now pins bun2nix's `systems` input to the same list so building the `aarch64-darwin` package never forces an Intel macOS Nixpkgs. The system list is exposed as a `systems` flake input for consumers that need to override it.
+
+## 0.17.6
+
+### Patch Changes
+
+- 736b1d7: Republish the 0.17.5 application changes as 0.17.6 so the GitHub release includes downloadable binaries for every supported platform. Application behavior is unchanged from 0.17.5.
+
+## 0.17.5
+
+### Patch Changes
+
+- 034ec93: Avoid loading OpenTUI's embedded native library for headless commands. Help, version, session polling, daemon serving, markup rendering, and non-interactive pager paths now stay behind a lightweight CLI entrypoint, preventing Bun from leaking a native temp file for commands that never open the review UI.
+- aa123df: Optimize terminal cell width measurement so diffs with CJK, emoji, and chrome-glyph runs render faster: single-scalar clusters now measure through a fast zero-width check plus the East Asian Width table instead of string-width's expensive emoji regexes, while multi-scalar clusters still defer to string-width for identical results.
+
+## 0.17.4
+
+### Patch Changes
+
+- a9b8694: Restore OpenTUI's platform-default renderer threading to improve interactive startup on macOS.
+- 67674fa: Rapidly pressing Ctrl+S (or double-clicking Save) while saving a draft note no longer saves the same note twice, and saved note ids stay unique even within one millisecond.
+
+## 0.17.3
+
+### Patch Changes
+
+- 9d1c346: Extend static pager diff-row backgrounds to the edge of host panels such as Lazygit.
+- 05d6c17: Wrap plain-text agent notes by terminal cells instead of UTF-16 code
+  units, so CJK and emoji text wraps correctly instead of being truncated
+  with silent content loss. Long unbroken words split on grapheme
+  boundaries, so wide characters and surrogate pairs are never cut apart.
+
+## 0.17.2
+
+### Patch Changes
+
+- 7e934a0: Reject malformed and unsafe line and hunk numbers instead of accepting their numeric prefix.
+- d1d36fc: Fix mouse-selection copy misalignment on lines with wide (CJK, emoji) characters: drag, double-click, and triple-click selections now convert terminal cell columns into string indices before slicing, so the copied text matches the selected cells exactly. File-header rows with wide-character filenames now copy with the same cell alignment, and invisible zero-width characters at a selection boundary round-trip through the clipboard.
+
+## 0.17.1
+
+### Patch Changes
+
+- cb8d626: Prevent Windows crashes when scrolling to the end of a diff and suppress Yoga NaN warning spam in Apple Silicon npm installs by upgrading OpenTUI to 0.4.3.
+- 45f6402: Reduced retained memory for large reviews by lazily materializing cached geometry row plans only when copy selection needs them.
+- 7ae443d: Fix global config discovery on Windows when `HOME` is unavailable.
+
+## 0.17.0
+
+### Minor Changes
+
+- 6cd39c9: Add a configurable menu bar toggle so keyboard-driven reviews can reclaim one row of terminal space.
+- 8945272: Add an `enableClaudeIntegration` home-manager option that links the packaged `hunk-review` skill into `~/.claude/skills`, so Nix users get the Claude Code review skill without manual setup.
+- d2be4e7: Add an `enableJujutsuIntegration` home-manager option that sets hunk as the jujutsu pager and switches `ui.diff-formatter` to `:git` so jj emits diffs hunk can render.
+
+### Patch Changes
+
+- 0a3cc06: Add an Agent menu dialog that shows and copies the Hunk review skill setup prompt.
+- d7f1558: Upgrade OpenTUI to 0.4.2 and Bun to 1.3.14 for renderer, input, and platform fixes.
+- 675104f: Fix a transient bottom-edge scroll clamp: mounted diff sections now always render their agent-note rows, so the review stream's painted height matches its measured layout height and over-scrolling at the bottom can no longer snap short by the height of an offscreen note.
+- 65a2740: Highlight `.mts` and `.cts` files as TypeScript instead of plain text.
+- ed8268a: Stop treating Escape as a global quit shortcut; use `q` to quit while preserving Escape for dialogs and focused controls.
+- 290ebcd: Keep live review sessions from being pruned after the machine wakes from sleep.
+- ae57101: Avoid transient mixed-color frames when previewing or accepting themes from the theme selector.
+- 916cd8a: Preserve added and removed diff row tints when transparent background mode is enabled in the interactive TUI.
+- d4b829f: Fix session daemon auto-launch on Windows: the compiled binary's virtual `B:\~BUN\...` entrypoint was mistaken for a script path and passed to the relaunched daemon as a bogus argument, so `hunk session` commands never found a live session.
+
 ## 0.16.0
 
 ### Minor Changes
