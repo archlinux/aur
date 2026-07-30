@@ -1,8 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
+
 pkgname=ymake-git
-pkgver=0.8.9
-pkgrel=3
-pkgdesc="ymake"
+pkgver=0.8.9.30.g233266d
+pkgrel=1
+pkgdesc="A cross build dsl make tool"
 arch=('any')
 url="https://github.com/evilbinary/ymake"
 license=('MIT')
@@ -13,14 +14,15 @@ depends=(
 	python-colorama
 	python-colorlog
 	python-networkx
-	python-setuptools
+	python-pkg_resources
 	# AUR
 	python-diskcache
 )
 makedepends=(
 	git
-       	python-build 
+    python-build 
 	python-installer 
+	python-setuptools
 	python-wheel 
 )
 backup=()
@@ -40,7 +42,6 @@ prepare()
 
 build() {
     cd "${srcdir}/${pkgname}"
-    # pip install -r requirements.txt
     python -m build --wheel --no-isolation
 }
 
