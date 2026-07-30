@@ -1,7 +1,7 @@
 # Maintainer: Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=optionterm
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='GTK4 + libadwaita terminal emulator powered by libghostty-vt'
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   "zig-x86_64-linux-$_zigver.tar.xz::https://ziglang.org/download/$_zigver/zig-x86_64-linux-$_zigver.tar.xz"
 )
 sha256sums=(
-  '5063ee4343bc0dd8eee0e19a58159487f8df8ac0b02dea284898683cecd4a229'
+  '1208cf79c55b3e4b00d9ee8700a0b865fe68d84dbe1e6e184f57ca64d8fc3625'
   '02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239'
 )
 
