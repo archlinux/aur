@@ -1,6 +1,6 @@
 pkgbase = ioexplorer-git
 	pkgdesc = Wayland-native provider-oriented file manager for Wayland desktops
-	pkgver = r49.2d3eea8
+	pkgver = r51.1939712
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ioexplorer
 	arch = x86_64

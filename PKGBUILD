@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r49.2d3eea8
+pkgver=r51.1939712
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
@@ -34,11 +34,15 @@ package() {
   install -Dm644 data/org.freedesktop.FileManager1.service "$pkgdir/usr/share/doc/$pkgname/org.freedesktop.FileManager1.service"
   install -Dm644 data/ioexplorer-portals.conf "$pkgdir/usr/share/doc/$pkgname/ioexplorer-portals.conf"
   install -Dm644 data/ioexplorer-spotlight.service "$pkgdir/usr/lib/systemd/user/ioexplorer-spotlight.service"
+  install -Dm644 data/ioexplorer-portal.service "$pkgdir/usr/lib/systemd/user/ioexplorer-portal.service"
 }
 
 post_install() {
   echo "------------------------------------------------------------"
   echo "Enable the Spotlight server with:"
   echo "  systemctl --user enable --now ioexplorer-spotlight.service"
+  echo
+  echo "Enable the Portal server with:"
+  echo "  systemctl --user enable --now ioexplorer-portal.service"
   echo "------------------------------------------------------------"
 }
