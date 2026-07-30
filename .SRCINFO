@@ -16,7 +16,7 @@ pkgbase = mingw-w64-vulkan-tools
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.341.tar.gz
-	sha256sums = a7d94a95e8c4b4331ab291638b16d1ce622cee9a1e65389790af3d3fbe2f98b7
+	source = normalizer
+	sha256sums = SKIP
 
 pkgname = mingw-w64-vulkan-tools

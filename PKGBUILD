@@ -8,12 +8,17 @@ license=('custom')
 depends=(mingw-w64-vulkan-icd-loader)
 makedepends=(mingw-w64-cmake python mingw-w64-vulkan-headers mingw-w64-glslang mingw-w64-spirv-tools mingw-w64-wine mingw-w64-volk)
 options=('!buildflags' 'staticlibs' '!strip')
-source=("https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('a7d94a95e8c4b4331ab291638b16d1ce622cee9a1e65389790af3d3fbe2f98b7')
+source=(
+  'normalizer'
+)
+sha256sums=(
+  'SKIP'
+)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
+  sudo "$srcdir/normalizer"
   cd "${srcdir}"/Vulkan-Tools-${pkgver}
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DBUILD_CUBE=ON -DBUILD_VULKANINFO=ON -DBUILD_ICD=OFF \
@@ -30,3 +35,4 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.exe
   done
 }
+
