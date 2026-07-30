@@ -1,13 +1,13 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2020.06.r1458.gba098c6a
+pkgver=2020.06.r1789.gfa48350d
 _basis_pkgver=1_50_0_2
 pkgrel=1
-pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
+pkgdesc="Plugins for the Magnum C++11 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
-depends=('magnum-git' 'devil' 'faad2' 'libpng' 'libjpeg' 'freetype2' 'assimp' 'meshoptimizer' 'openexr' 'spirv-tools' 'glslang' 'zstd' 'libwebp' 'libspng')
+depends=('magnum-git' 'devil' 'faad2' 'libpng' 'libjpeg-turbo' 'freetype2' 'assimp' 'meshoptimizer' 'openexr' 'spirv-tools' 'glslang' 'zstd' 'libwebp' 'libspng' 'lunasvg' 'libavif')
 makedepends=('cmake' 'git' 'ninja')
 provides=('magnum-plugins')
 conflicts=('magnum-plugins')
@@ -33,6 +33,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DMAGNUM_WITH_ASSIMPIMPORTER=ON \
         -DMAGNUM_WITH_ASTCIMPORTER=ON \
+        -DMAGNUM_WITH_AVIFIMPORTER=ON \
         -DMAGNUM_WITH_BASISIMAGECONVERTER=ON \
         -DMAGNUM_WITH_BASISIMPORTER=ON \
         -DMAGNUM_WITH_BCDECIMAGECONVERTER=ON \
@@ -53,14 +54,17 @@ build() {
         -DMAGNUM_WITH_JPEGIMAGECONVERTER=ON \
         -DMAGNUM_WITH_KTXIMAGECONVERTER=ON \
         -DMAGNUM_WITH_KTXIMPORTER=ON \
+        -DMAGNUM_WITH_LUNASVGIMPORTER=ON \
         -DMAGNUM_WITH_MESHOPTIMIZERSCENECONVERTER=ON \
         -DMAGNUM_WITH_MINIEXRIMAGECONVERTER=ON \
         -DMAGNUM_WITH_OPENEXRIMAGECONVERTER=ON \
         -DMAGNUM_WITH_OPENEXRIMPORTER=ON \
         -DMAGNUM_WITH_OPENGEXIMPORTER=ON \
+        -DMAGNUM_WITH_PLUTOSVGIMPORTER=OFF \
         -DMAGNUM_WITH_PNGIMAGECONVERTER=ON \
         -DMAGNUM_WITH_PNGIMPORTER=ON \
         -DMAGNUM_WITH_PRIMITIVEIMPORTER=ON \
+        -DMAGNUM_WITH_RESVGIMPORTER=OFF \
         -DMAGNUM_WITH_SPIRVTOOLSSHADERCONVERTER=ON \
         -DMAGNUM_WITH_SPNGIMPORTER=ON \
         -DMAGNUM_WITH_STANFORDIMPORTER=ON \
