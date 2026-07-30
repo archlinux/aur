@@ -3,9 +3,9 @@
 
 pkgname=subtitleedit
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced subtitle editor and converter'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://www.nikse.dk/subtitleedit'
 license=('MIT')
 optdepends=('ffmpeg: waveform extraction'
@@ -15,12 +15,14 @@ conflicts=('libHarfBuzzSharp.so'
            'libonigwrap.so'
            'libSkiaSharp.so')
 options=('!strip')
-source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver}/SubtitleEdit-Linux-x64.tar.gz"
-        'subtitleedit.desktop'
+source=('subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('b941f558f8605385cf1c3f3e896a6a1b11ea376eaac97f10878c8ec578e435248a5c307c818c9d91f274a2bfda138b5d21fd5b0c6aae5b5318720e8d8933f37d'
-        'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
+source_x86_64=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver}/SubtitleEdit-Linux-x64.tar.gz")
+source_aarch64=("SubtitleEdit-Linux-ARM64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver}/SubtitleEdit-Linux-ARM64.tar.gz")
+b2sums=('bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
+b2sums_x86_64=('b941f558f8605385cf1c3f3e896a6a1b11ea376eaac97f10878c8ec578e435248a5c307c818c9d91f274a2bfda138b5d21fd5b0c6aae5b5318720e8d8933f37d')
+b2sums_aarch64=('dc7a38b9d6a2b21c8102738b8f41f77ddcd37a1c986cf13b77f08e2f162640b790f8e09fccb7a09388400e92cc7c946be08953bf8b37f84b7380d4635fd7d0cc')
 
 package() {
     install -Dm755 SubtitleEdit "${pkgdir}"/usr/bin/subtitleedit
