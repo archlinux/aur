@@ -1,39 +1,44 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=java-debug
-pkgver=0.53.1
-pkgrel=2
+pkgver=0.53.2 # renovate: datasource=github-tags depName=microsoft/java-debug
+pkgrel=1
 pkgdesc="The debug server implementation for Java."
 arch=(any)
 url="https://github.com/microsoft/java-debug"
 license=('EPL-1.0')
-depends=('java-runtime>=17')
+depends=('java-runtime>=21')
+makedepends=('java-environment-openjdk=21')
 
-source=(
-	"https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.core/${pkgver}/com.microsoft.java.debug.core-${pkgver}.jar"
-	"https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/${pkgver}/com.microsoft.java.debug.plugin-${pkgver}.jar"
-	"https://raw.githubusercontent.com/microsoft/java-debug/refs/heads/main/LICENSE.txt"
-)
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('09aa39292e892307270bb8f813bd9e9f1b969252fcb20ccfdfc074b596ddb30f')
 
-sha256sums=(
-	'50c58683cc97e91e95d73a6160df0316f3a1832045d33e7ea93fdf852a65fb38'
-    '4f4778d452a6a0665536f43ce4e32403a24be6593336b80dc85a322912859e24'
-    'f494326c16bc95ebb14874ea5fa2c16a963eb36d1f2ab6fe99490073709771c1'
-)
+prepare() {
 
-noextract=(
-	"com.microsoft.java.debug.core-${pkgver}.jar"
-	"com.microsoft.java.debug.plugin-${pkgver}.jar"
-)
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# fix build error
+	sed -i -e "s#/4.36-I-builds/#/4.40/#" \
+		"com.microsoft.java.debug.target/com.microsoft.java.debug.tp.target"
+}
+
+build() {
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	JAVA_HOME="/usr/lib/jvm/java-21-openjdk" \
+	MAVEN_OPTS="-Dmaven.repo.local=${startdir}/m2" \
+		./mvnw clean install
+}
 
 package() {
 
-	cd $srcdir
+	cd "$srcdir/$pkgname-$pkgver"
 
-	install -Dm755 "com.microsoft.java.debug.plugin-${pkgver}.jar" \
+	install -Dm755 "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${pkgver}.jar" \
 		"$pkgdir/usr/share/java-debug/com.microsoft.java.debug.plugin.jar"
 
-	install -Dm755 "com.microsoft.java.debug.core-${pkgver}.jar" \
+	install -Dm755 "com.microsoft.java.debug.core/target/com.microsoft.java.debug.core-${pkgver}.jar" \
 		"$pkgdir/usr/share/java-debug/com.microsoft.java.debug.core.jar"
 
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
