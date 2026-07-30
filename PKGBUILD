@@ -1,14 +1,14 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=python-py-slvs-git
-pkgver=1.0.6.r31.ab95814
+pkgver=1.0.6.r2.ga2b35be.r33.a2b35be
 pkgrel=1
 pkgdesc="Python binding of SOLVESPACE geometry constraint solver"
 arch=('x86_64')
 url="https://github.com/realthunder/slvs_py"
 license=('GPL3')
 groups=()
-depends=("python" "swig")
+depends=("python" "swig" "gtkmm3")
 makedepends=("python-setuptools" "python-scikit-build" "cmake" "git")
 checkdepends=()
 optdepends=()
