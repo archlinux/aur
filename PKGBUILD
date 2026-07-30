@@ -3,12 +3,12 @@
 pkgname=cosmic-ext-applet-now-playing-extended-git
 _srcname=cosmic-ext-applet-now-playing
 pkgver=0.1.0.r42.ga876f57
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended MPRIS now-playing applet for the COSMIC panel'
 arch=('x86_64')
 url='https://github.com/AdityaHebballe/cosmic-ext-applet-now-playing'
 license=('GPL-3.0-only')
-depends=('dbus' 'gcc-libs' 'glibc' 'libxkbcommon')
+depends=('cosmic-session' 'dbus' 'gcc-libs' 'glibc' 'libxkbcommon')
 makedepends=('cargo' 'git')
 # `ring`'s GCC-LTO objects cannot be linked by Rust's bundled rust-lld.
 options=(!lto)

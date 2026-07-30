@@ -1,12 +1,13 @@
 pkgbase = cosmic-ext-applet-now-playing-extended-git
 	pkgdesc = Extended MPRIS now-playing applet for the COSMIC panel
 	pkgver = 0.1.0.r42.ga876f57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdityaHebballe/cosmic-ext-applet-now-playing
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
+	depends = cosmic-session
 	depends = dbus
 	depends = gcc-libs
 	depends = glibc
