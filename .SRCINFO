@@ -1,4 +1,4 @@
-pkgbase = eternalterminal
+pkgbase = eternal-terminal
 	pkgdesc = A custom Qt6 terminal emulator
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = eternalterminal
 	source = git+https://github.com/FourSage747/EternalTerminal.git
 	sha256sums = SKIP
 
-pkgname = eternalterminal
+pkgname = eternal-terminal

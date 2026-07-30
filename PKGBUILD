@@ -1,4 +1,4 @@
-pkgname=eternalterminal
+pkgname=eternal-terminal
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A custom Qt6 terminal emulator"
