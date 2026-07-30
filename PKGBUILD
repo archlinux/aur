@@ -45,4 +45,10 @@ package() {
         mv "${pkgdir}/usr/share/applications/Zuno.desktop" \
            "${pkgdir}/usr/share/applications/zuno.desktop"
     fi
+
+    # Upstream ships an empty Categories= field, which makes KDE (and other
+    # XDG-compliant launchers) hide the entry from the categorized menu. Set
+    # proper categories so it shows up under Multimedia.
+    sed -i 's/^Categories=.*/Categories=AudioVideo;Audio;Music;/' \
+        "${pkgdir}/usr/share/applications/zuno.desktop"
 }
