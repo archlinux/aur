@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=44
 pkgrel=1
 pkgdesc="A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2fb03cc04b2583b54c457ceaf93dd41f322f50536985286d8246c19301d07e6c'
+sha256sums=('068aa270da4836159e7273fa7883991378faa76c5dcbe27c0931071b609fa6d1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
