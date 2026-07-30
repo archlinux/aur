@@ -9,21 +9,22 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.26.0.338.g0bc325a
+pkgver=1.26.0.342.g9a912ab
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://deskflow.org/"
 license=(LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception)
 depends=(
-  gcc-libs
   glibc
   hicolor-icon-theme
   libei
+  libgcc
   libglvnd
   libice
   libportal
   libsm
+  libstdc++
   libx11
   libxext
   libxi
