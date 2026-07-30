@@ -1,6 +1,6 @@
 pkgbase = pinact-bin
 	pkgdesc = CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows.
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/suzuki-shunsuke/pinact
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pinact-bin
 	license = MIT
 	provides = pinact
 	conflicts = pinact
-	source_x86_64 = pinact-amd64-4.1.0.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v4.1.0/pinact_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8fcbf1b3e95551c82fd995535e3c1defa70e23299ce36eb3afd6c98778de6ca0
-	source_aarch64 = pinact-arm64-4.1.0.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v4.1.0/pinact_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2807669cd423a3572bc12ea4a5eab80cd2f30d5644710e0c97a08a075fdadf10
+	source_x86_64 = pinact-amd64-4.1.1.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v4.1.1/pinact_linux_amd64.tar.gz
+	sha256sums_x86_64 = d1cffebe5704b74e2e5f8a864efb9f7e54768972dc686188c008033fb1797841
+	source_aarch64 = pinact-arm64-4.1.1.tar.gz::https://github.com/suzuki-shunsuke/pinact/releases/download/v4.1.1/pinact_linux_arm64.tar.gz
+	sha256sums_aarch64 = dd1f29908319ed3e59f9fe6b39196efbb76936357f3bd741cd759a96306ae8d8
 
 pkgname = pinact-bin
