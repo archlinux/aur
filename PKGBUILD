@@ -2,8 +2,8 @@
 
 pkgname=kvrt-x86_64
 pkgver=24.0.6.0.202607292308
-pkgrel=5
-pkgdesc='Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected.'
+pkgrel=6
+pkgdesc='Kaspersky Virus Removal Tool - Runtime and Database Signature'
 arch=('x86_64')
 url='https://www.kaspersky.com/downloads/free-virus-removal-tool'
 license=('LicenseRef-EULA-Kaspersky')

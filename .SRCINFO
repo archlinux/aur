@@ -1,12 +1,12 @@
 pkgbase = kvrt-x86_64
-	pkgdesc = Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected.
+	pkgdesc = Kaspersky Virus Removal Tool - Runtime and Database Signature
 	pkgver = 24.0.6.0.202607292308
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.kaspersky.com/downloads/free-virus-removal-tool
 	arch = x86_64
 	license = LicenseRef-EULA-Kaspersky
 	options = !debug
-	source_x86_64 = kvrt-x86_64-24.0.6.0.202607292308-5.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run
+	source_x86_64 = kvrt-x86_64-24.0.6.0.202607292308-6.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run
 	provides_x86_64 = kvrt-run
 	optdepends_x86_64 = kesl-gui: Kaspersky Endpoint Security for Linux
 	makedepends_x86_64 = binwalk
