@@ -2,14 +2,15 @@
 
 pkgname=bsdiff
 pkgver=4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="bsdiff and bspatch are tools for building and applying patches to binary files"
 arch=(i686 x86_64)
 url="https://www.daemonology.net/bsdiff/"
-license=(LicenseRef-bsdiff)
+license=(BSD-2-Clause)
 depends=(bzip2 glibc)
 makedepends=(patch)
-source=("https://src.fedoraproject.org/repo/pkgs/bsdiff/${pkgname}-${pkgver}.tar.gz/e6d812394f0e0ecc8d5df255aa1db22a/${pkgname}-${pkgver}.tar.gz"
+orig_md5='e6d812394f0e0ecc8d5df255aa1db22a'
+source=("https://src.fedoraproject.org/repo/pkgs/${pkgname}/${pkgname}-${pkgver}.tar.gz/${orig_md5}/${pkgname}-${pkgver}.tar.gz"
         "CVE-2014-9862.patch"
         "LICENSE")
 sha256sums=('18821588b2dc5bf159aa37d3bcb7b885d85ffd1e19f23a0c57a58723fea85f48'

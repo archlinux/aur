@@ -1,11 +1,11 @@
 pkgbase = bsdiff
 	pkgdesc = bsdiff and bspatch are tools for building and applying patches to binary files
 	pkgver = 4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.daemonology.net/bsdiff/
 	arch = i686
 	arch = x86_64
-	license = LicenseRef-bsdiff
+	license = BSD-2-Clause
 	makedepends = patch
 	depends = bzip2
 	depends = glibc
