@@ -1,6 +1,6 @@
 pkgbase = shit-git
 	pkgdesc = Simple file server in Go (latest git)
-	pkgver = r77.921b8d6
+	pkgver = r78.2856ec9
 	pkgrel = 1
 	url = https://github.com/notwithering/shit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = shit-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = shit=r77.921b8d6
+	provides = shit=r78.2856ec9
 	conflicts = shit
 	source = shit::git+https://github.com/notwithering/shit.git
 	sha256sums = SKIP
