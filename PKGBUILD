@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Live read-only TUI showing what changed in your git worktree"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('662ffedc07d477c24a3ab27aa8cd84b424ae9b811dfad3be39ddc7eb2c12d9bd')
+sha256sums=('8c92da4eb0e253b0fa6a300373ae48e9ccd98f8fb8c8b12e4b5b9e4d7fad4f2b')
 
 
 build() {
