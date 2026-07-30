@@ -1,6 +1,6 @@
 pkgbase = mvis-bin
 	pkgdesc = Lightweight cross-platform memory visualizer tool
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/SickleFire/m-vis
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = mvis-bin
 	provides = mvis
 	conflicts = mvis
 	options = !strip
-	source = README-0.4.1.md::https://raw.githubusercontent.com/SickleFire/m-vis/v0.4.1/README.md
-	source = LICENSE-0.4.1::https://raw.githubusercontent.com/SickleFire/m-vis/v0.4.1/LICENSE.md
+	source = README-0.5.0.md::https://raw.githubusercontent.com/SickleFire/m-vis/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/SickleFire/m-vis/v0.5.0/LICENSE.md
 	sha256sums = 2f0da775c8c83116de4d7647ecbe3922487cde4f3b60c65d96809252d4460581
 	sha256sums = 019f7f5848f43d6afb179ac038dc41eb208a83caa10db821b1fb097b1ed6f1bd
-	source_x86_64 = mvis-x86_64-0.4.1::https://github.com/SickleFire/m-vis/releases/download/v0.4.1/mvis-linux-x86_64
-	sha256sums_x86_64 = 03abf11bd9cdd1bb24eab8d45bbf35e5381a83b0fd10394cd7370d59d58ea798
+	source_x86_64 = mvis-x86_64-0.5.0::https://github.com/SickleFire/m-vis/releases/download/v0.5.0/mvis-linux-x86_64
+	sha256sums_x86_64 = 8f9a00e6ec6fdb9a5cb03f4c3777a8a4c46a1aacd838c2d04d887877b0d5afe6
 
 pkgname = mvis-bin
