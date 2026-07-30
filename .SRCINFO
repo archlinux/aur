@@ -1,6 +1,6 @@
 pkgbase = timedctl
 	pkgdesc = Click CLI for Timed using libtimed
-	pkgver = 5.10.3
+	pkgver = 5.10.4
 	pkgrel = 2
 	url = https://github.com/adfinis/timedctl.git
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = timedctl
 	depends = python-click-aliases>=1.0.1
 	depends = fzf>=0.42.0
 	depends = python-pyjwt>=2.8.0
+	depends = python-keyring>=24.1
 	provides = timedctl
 	conflicts = timedctl
 	source = git+https://github.com/adfinis/timedctl.git
