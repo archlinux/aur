@@ -2,7 +2,7 @@
 # Maintainer: Joshua Winkler <josh@bemoty.dev>
 
 pkgname='clip-bin'
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Upload your clipboard for sharing'
 url='https://github.com/bemoty/clip'
@@ -12,10 +12,10 @@ provides=('clip')
 conflicts=('clip')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bemoty/clip/releases/download/v${pkgver}/clip_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('148e416acfa75459804a41c0342a6b69f6c947f1c5cd72ec09ee506c636d94c7')
+sha256sums_aarch64=('8dd80328579a0296d5ab39ae926ab95fe6b3fe0795a84011f5bc9c7ada04f378')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bemoty/clip/releases/download/v${pkgver}/clip_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('32f1f658e1e3ad247bc79b22cba7122c343f671e1e44bc59c112baa3f63eedbe')
+sha256sums_x86_64=('47a37dfb57b5655159773644c78ecbf5e5876d32181ff075771ea3373a22d345')
 
 package() {
   install -Dm755 "./clip" "${pkgdir}/usr/bin/clip"
