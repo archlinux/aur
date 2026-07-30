@@ -3,7 +3,7 @@
 pkgname=python-dom-toml
 _name=${pkgname#python-}
 pkgver=2.4.0b1
-pkgrel=1
+pkgrel=3
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -11,8 +11,11 @@ arch=('any')
 url='https://dom-toml.readthedocs.io/en/latest/'
 depends=(
     python
+    python-attrs
     python-domdf-python-tools
-    python-toml
+    python-tomli
+    python-tomli-w
+    python-numpy
 )
 makedepends=(
     'git'

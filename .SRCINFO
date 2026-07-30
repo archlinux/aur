@@ -1,7 +1,7 @@
 pkgbase = python-dom-toml
 	pkgdesc = Dom's tools for Tom's Obvious, Minimal Language
 	pkgver = 2.4.0b1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://dom-toml.readthedocs.io/en/latest/
 	arch = any
 	license = MIT
@@ -12,8 +12,11 @@ pkgbase = python-dom-toml
 	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
+	depends = python-attrs
 	depends = python-domdf-python-tools
-	depends = python-toml
+	depends = python-tomli
+	depends = python-tomli-w
+	depends = python-numpy
 	provides = python-dom-toml
 	conflicts = python-dom-toml
 	source = dom-toml::git+https://github.com/domdfcoding/dom_toml.git#tag=v2.4.0b1
