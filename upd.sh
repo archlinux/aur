@@ -14,7 +14,6 @@ if [[ -z "$pkgver" ]]; then
 	exit 1
 fi
 
-updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 
 rm -rf src shit
