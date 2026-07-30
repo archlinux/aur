@@ -1,0 +1,5 @@
+*.pkg.tar.*
+src/
+pkg/
+LTBox-linux_*.tar.gz
+51-ltbox-qcom.rules
