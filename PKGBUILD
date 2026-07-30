@@ -1,7 +1,7 @@
 # Maintainer: voidlesity <me@voidlesity.dev>
 
 pkgname=logseq-desktop-nightly-bin
-pkgver=20260702
+pkgver=20260728
 _appver=2.0.1-alpha
 pkgrel=1
 pkgdesc="Nightly build of Logseq, a privacy-first, open-source knowledge management platform"
@@ -20,10 +20,10 @@ source_x86_64=("$pkgname-$pkgver.zip::$url/releases/download/nightly/Logseq-linu
 source_aarch64=("$pkgname-$pkgver.zip::$url/releases/download/nightly/Logseq-linux-arm64-$_appver+nightly.$pkgver.zip")
 noextract=("$pkgname-$pkgver.zip")
 
-sha256sums=('ef7d0d2efe04d880dae1c7046c76c11f70fd7e508f54d293cf88b8128bde7fd7'
+sha256sums=('1d2ca6e23e6cdff83e58fbe9e1ef27da2091556f3cbab8aed86dd1aa158d6f05'
             'e3801c054138a9cc5eb555c0cea985620716ddf621421369213da82b9fff557a')
-sha256sums_x86_64=('0e55b3c704a1b0d6bcce1a227c0cd481dddedb44cdf46d21d468a28d00c324f8')
-sha256sums_aarch64=('bab0c6f84d12e0a0ec08b26b0fcdc20b7ac3574452883c47e65474535640b4ec')
+sha256sums_x86_64=('97d32b2ec3ce55cb73719167f138843b086db09ea3d9c4255f22ae2736140e1a')
+sha256sums_aarch64=('97d32b2ec3ce55cb73719167f138843b086db09ea3d9c4255f22ae2736140e1a')
 
 package() {
   # App files (the zip has no top-level folder, so extract it straight in).
