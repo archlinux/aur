@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WorkBuddy
+Exec=/usr/bin/workbuddy %U
+Terminal=false
+Type=Application
+Icon=WorkBuddy
+StartupWMClass=workbuddy
+Comment=Tencent WorkBuddy🦞
+Comment[zh_CN]=腾讯版🦞
+Categories=Office;
