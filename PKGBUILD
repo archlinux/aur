@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-deep-learning-essentials
 pkgver=2026.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library"
 arch=('x86_64')
 url="https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html"
@@ -28,15 +28,15 @@ conflicts=(
 options=('!strip' 'staticlibs')
 source=(
     'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c109e1ae-e02c-48a6-917b-b03b90d33f77/intel-deep-learning-essentials-2026.1.2.25_offline.sh'
-    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0451dc19-00a2-4236-bace-dc0b4aec0680/intel-onednn-2026.0.1.64_offline.sh'
+    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/94c3dbac-0852-45be-a57d-21c204cada3e/intel-onednn-2026.0.2.46_offline.sh'
 )
 noextract=(
     'intel-deep-learning-essentials-2026.1.2.25_offline.sh'
-    'intel-onednn-2026.0.1.64_offline.sh'
+    'intel-onednn-2026.0.2.46_offline.sh'
 )
 sha384sums=(
     '71bef416ccab3d73e6768cbe2e82e08bb97b6ace61bbcb437369901c26872be583ff571225d648b7fa82e63ff31994d2'
-    '7e59c0bfa76eb66290a10f533cbcc3e13a92cc28882e9d674a757a840803f51932137be689e5d72bd3c4835d701520f7'
+    'a3cb11a67b400ca8ae2338c6a4802108204cfcebba0f736560ebf8acb834b73b351776c412c7050d7b3eedde18f29a6e'
 )
 
 package() {
@@ -54,7 +54,7 @@ package() {
     env -i HOME="/home/${_real_user}" \
            USER="${_real_user}" \
            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    sh "${srcdir}/intel-onednn-2026.0.1.64_offline.sh" \
+    sh "${srcdir}/intel-onednn-2026.0.2.46_offline.sh" \
         -a --silent --eula accept \
         --install-dir "${pkgdir}/opt/intel/oneapi" \
         --log-dir "${srcdir}/"
