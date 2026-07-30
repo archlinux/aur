@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv' 'wayland' 'libglvnd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c7fccc2a89bc13e2bd21935b32b373cb3ef248171d796fa1774738851e3d285c')
 
 prepare() {
     cd "$srcdir/$pkgname-rs-$pkgver"
