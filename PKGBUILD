@@ -1,6 +1,6 @@
 # Maintainer: BlueSlime07 <mokhtar.tavakolian.boy@gmail.com>
 pkgname=video-archive-converter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Convert video archives to H.264 720p while preserving audio, subtitles and attachments."
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-    '7682bc69d79d083e03a99f523dbc2c53101161c9fb09763ea718f7bc3808c418'
+    '5f92f4b0773c08a4ab72616b7dfc8220018582ff3f81687b9d96b27801b41f7c'
 )
 
 package() {
