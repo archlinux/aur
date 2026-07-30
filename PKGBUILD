@@ -1,10 +1,10 @@
 pkgname=rfetch
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple fetch tool written in Rust"
 arch=('x86_64')
 url="https://github.com/skerrixx/rfetch"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('rust' 'git')
 
