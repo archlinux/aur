@@ -7,20 +7,18 @@
 
 _gitname=lgi
 pkgname=luajit-lgi-git
-pkgver=0.9.2.r128.gdfa8297
+pkgver=0.9.2.r134.g7a2276f
 pkgrel=1
 pkgdesc='Lua binadings for gobject using gobject-introspection library'
 arch=('i686' 'x86_64')
-url='https://github.com/pavouk/lgi'
+url='https://github.com/lgi-devs/lgi'
 license=('custom:MIT')
 provides=('luajit-lgi')
 conflicts=('luajit-lgi')
 depends=('libffi' 'luajit' 'gobject-introspection-runtime')
 makedepends=('git' 'gobject-introspection')
-source=('git+https://github.com/pavouk/lgi.git'
-  https://patch-diff.githubusercontent.com/raw/lgi-devs/lgi/pull/352.patch)
-md5sums=('SKIP'
-         'f255965efb71236e3a144acac5d67b42')
+source=("git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -28,10 +26,10 @@ pkgver() {
   git describe --long | sed 's/-/.r/; s/-/./'
 }
 
-prepare() {
-  cd $_gitname
-  patch -Np1 -i "${srcdir}/352.patch"
-}
+#prepare() {
+#  cd $_gitname
+#  patch -Np1 -i "${srcdir}/352.patch"
+#}
 
 build() {
   cd $_gitname
