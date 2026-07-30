@@ -3,15 +3,36 @@ pkgname=cri-dockerd-bin
 pkgver=0.4.4
 pkgrel=1
 pkgdesc="A shim for using Docker as a Kubernetes container runtime"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Mirantis/cri-dockerd"
 options=('!debug')
 license=('Apache')
 depends=('docker')
-source=("https://github.com/Mirantis/cri-dockerd/releases/download/v${pkgver}/cri-dockerd-${pkgver}.amd64.tgz"
-        "https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.service"
-        "https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.socket")
-sha256sums=('5568d571c2cfee7a31ce0b35b7fcc65b96c85b573ee6645151c4d022ed92a626' 'SKIP' 'SKIP')
+source_x86_64=(
+    "https://github.com/Mirantis/cri-dockerd/releases/download/v${pkgver}/cri-dockerd-${pkgver}.amd64.tgz"
+)
+
+source_aarch64=(
+    "https://github.com/Mirantis/cri-dockerd/releases/download/v${pkgver}/cri-dockerd-${pkgver}.arm64.tgz"
+)
+
+source=(
+    "cri-docker.service::https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.service"
+    "cri-docker.socket::https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.socket"
+)
+
+sha256sums_x86_64=(
+    '109b7540053a507dd85ad7b9fee9cee9caae55feedcc28365d3e7ab4fb2172d5'
+)
+
+sha256sums_aarch64=(
+    '4f96b4e9b7fcb1c90f78470325c2197a67fa28c0e0c901509437b791f5588a37'
+)
+
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 package() {
     cd "$srcdir"
