@@ -12,10 +12,10 @@ provides=('sinq')
 conflicts=('sinq' 'sinq-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.16/sinq-1.0.0-rc.16-linux-arm64.tar.gz")
-sha256sums_aarch64=('b7285d2e71f6c1db71efed95fa11a9c224ef6982c3d124e619f0d16517c45a12')
+sha256sums_aarch64=('ee55092663dcf79d731c676e6e19a576a0c9de3cce02c035703bf0e4c22ed80f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.16/sinq-1.0.0-rc.16-linux-x86_64.tar.gz")
-sha256sums_x86_64=('ac9a4a7906d8b9de65d66d04e642d7b983560a7bc630753aeee4e4e716fb3324')
+sha256sums_x86_64=('f79b212a37f501ec234c8e9ad8fa64f4f2c60c1584820ddb59619c0647e0c3ff')
 
 package() {
   install -Dm755 sinq "${pkgdir}/usr/bin/sinq"
