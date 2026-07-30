@@ -1,0 +1,29 @@
+post_install() {
+  echo ""
+  echo "  Battery Charge Limiter installed!"
+  echo ""
+  echo "  Load the kernel module:"
+  echo "    sudo modprobe acpi_call"
+  echo ""
+  echo "  Make it persistent:"
+  echo "    echo acpi_call | sudo tee /etc/modules-load.d/acpi_call.conf"
+  echo ""
+  echo "  Enable and start the service:"
+  echo "    sudo systemctl enable --now battery-charge-limiter.service"
+  echo ""
+  echo "  Commands:"
+  echo "    battery-charge-limiter-detect-ec  → Scan EC registers"
+  echo ""
+  echo "  Config: /etc/battery-charge-limiter.conf"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if systemctl is-active --quiet battery-charge-limiter.service 2>/dev/null; then
+    systemctl stop battery-charge-limiter.service
+  fi
+}
