@@ -13,8 +13,8 @@
 
 pkgbase=amdgpu-exporter
 pkgname=('amdgpu-exporter' 'rocprofiler-client')
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="AMD GPU metrics exporter for Prometheus"
 arch=('x86_64')
 url="https://github.com/ROCm/device-metrics-exporter"
@@ -36,20 +36,9 @@ _srcname="device-metrics-exporter-${pkgver}"
 source=(
     "${_srcname}.tar.gz::https://github.com/ROCm/device-metrics-exporter/archive/refs/tags/v${pkgver}.tar.gz"
     "amd-metrics-exporter.service"
-    "fix-missing-iseventsdisabled.patch"
 )
-sha256sums=('0b5d5dfca74d97976c6fb83bddc69abe7396367ba61a410484673209cdcf8d14'
-            '1200ad9753baf0cc7f16fa702303dac3b7f3ec9a049a77b0fbc7e5f7fe7c586f'
-            '39fb1e4e3530679acb5ab4686f1ca1ab17be2ecea20e28523595fbe5376e7968')
-
-# ---------------------------------------------------------------------------
-# prepare(): apply patches
-# ---------------------------------------------------------------------------
-prepare() {
-    cd "${srcdir}/${_srcname}"
-    # Fix upstream bug: IsEventsDisabled is called but never defined
-    patch -Np1 -i "${srcdir}/fix-missing-iseventsdisabled.patch"
-}
+sha256sums=('25319d8be59cc0f17011a952a5da83b8d9cf97678788bd252f4b18809836ee33'
+            '1200ad9753baf0cc7f16fa702303dac3b7f3ec9a049a77b0fbc7e5f7fe7c586f')
 
 # ---------------------------------------------------------------------------
 # build(): compile all outputs from device-metrics-exporter

@@ -1,7 +1,7 @@
 pkgbase = amdgpu-exporter
 	pkgdesc = AMD GPU metrics exporter for Prometheus
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/ROCm/device-metrics-exporter
 	arch = x86_64
 	license = Apache-2.0
@@ -14,12 +14,10 @@ pkgbase = amdgpu-exporter
 	makedepends = amdsmi
 	makedepends = rocm-gpu-agent
 	makedepends = patchelf
-	source = device-metrics-exporter-1.5.0.tar.gz::https://github.com/ROCm/device-metrics-exporter/archive/refs/tags/v1.5.0.tar.gz
+	source = device-metrics-exporter-1.5.1.tar.gz::https://github.com/ROCm/device-metrics-exporter/archive/refs/tags/v1.5.1.tar.gz
 	source = amd-metrics-exporter.service
-	source = fix-missing-iseventsdisabled.patch
-	sha256sums = 0b5d5dfca74d97976c6fb83bddc69abe7396367ba61a410484673209cdcf8d14
+	sha256sums = 25319d8be59cc0f17011a952a5da83b8d9cf97678788bd252f4b18809836ee33
 	sha256sums = 1200ad9753baf0cc7f16fa702303dac3b7f3ec9a049a77b0fbc7e5f7fe7c586f
-	sha256sums = 39fb1e4e3530679acb5ab4686f1ca1ab17be2ecea20e28523595fbe5376e7968
 
 pkgname = amdgpu-exporter
 	pkgdesc = AMD GPU metrics exporter for Prometheus
