@@ -2,8 +2,8 @@
 
 pkgname=pdfatlas-git
 _pkgname=pdfatlas
-pkgver=r84.a82b784
-pkgrel=2
+pkgver=r85.99c9d0f
+pkgrel=1
 pkgdesc="PDF Reader with Search Portals and Auto-Crop"
 arch=('any')
 url="https://github.com/aziis98/pdfatlas"

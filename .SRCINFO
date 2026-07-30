@@ -1,7 +1,7 @@
 pkgbase = pdfatlas-git
 	pkgdesc = PDF Reader with Search Portals and Auto-Crop
-	pkgver = r84.a82b784
-	pkgrel = 2
+	pkgver = r85.99c9d0f
+	pkgrel = 1
 	url = https://github.com/aziis98/pdfatlas
 	arch = any
 	license = AGPL-3.0-only
