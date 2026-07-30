@@ -1,0 +1,13 @@
+# makepkg directories
+/pkg/
+/src/
+/pdfatlas/
+
+# Package files
+*.pkg.tar
+*.pkg.tar.*
+
+# makepkg log & signature files
+*.log
+*.log.*
+*.sig
