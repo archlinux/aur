@@ -3,7 +3,7 @@
 
 pkgname=prometheus-bind-exporter-git
 _pkgname=bind_exporter
-pkgver=v0.8.0.r34.g7b25a2f
+pkgver=v0.8.0.r46.g78cbe84
 pkgrel=1
 pkgdesc='Prometheus exporter for BIND metrics'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('go' 'git')
 optdepends=('bind: for monitoring a local BIND server')
 options=('!lto')
 source=(
-    "${pkgname}::git+${url}.git"
+    "${_pkgname}::git+${url}.git"
   'systemd.service'
   'sysusers.conf'
 )
