@@ -1,0 +1,17 @@
+pkgbase = leaves
+	pkgdesc = A text-mode disk usage visualization utility.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/patonw/leaves
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MPL-2.0
+	makedepends = cargo
+	provides = leaves
+	conflicts = leaves-git
+	conflicts = leaves-bin
+	source = leaves-0.2.0.tar.gz::https://github.com/patonw/leaves/archive/refs/tags/v0.2.0-cross.tar.gz
+	sha256sums = ffdfce45bc37b774ca183a36952f0cebad4e2dc1afc4188b663691493889c7bc
+
+pkgname = leaves
