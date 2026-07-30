@@ -1,6 +1,6 @@
 pkgbase = simplearchiver-bin
 	pkgdesc = An alternative to tar
-	pkgver = 3.4.2
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/Stephen-Seo/simplearchiver
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = simplearchiver-bin
 	depends = glibc
 	provides = simplearchiver
 	conflicts = simplearchiver
-	source = LICENSE-3.4.2::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/3.4.2/LICENSE
-	source = README-3.4.2.md::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/3.4.2/README.md
+	source = LICENSE-3.5.0::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/3.5.0/LICENSE
+	source = README-3.5.0.md::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/3.5.0/README.md
 	sha256sums = db7f7ce8121ec5084ef74e60e72d22f165f6d7d6664a1af5ccdbb956e1f38793
 	sha256sums = ada37a2379579375ee085bc7f0a838bbddb17f1ccdf281ad81dae157527c9646
-	source_x86_64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/3.4.2/simplearchiver_debian_x86_64
-	sha256sums_x86_64 = 8f7c776362b7c0b2d4dc76f493eb1a13bd2aaa684c3274137d783c71853e6c53
-	source_aarch64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/3.4.2/simplearchiver_debian_aarch64
-	sha256sums_aarch64 = b3ebb2a64ce9b05c0630bf9643527dfc9d261cedabe746ee142437b411335e16
+	source_x86_64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/3.5.0/simplearchiver_debian_x86_64
+	sha256sums_x86_64 = ff868e23f24395541fe9771a5ef12bddc651bd0df104efdda29afd87f76c9389
+	source_aarch64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/3.5.0/simplearchiver_debian_aarch64
+	sha256sums_aarch64 = 5b8da55070d6c9ec262f6cd303b4416fa899dc0fbe4325463b514630d5a03868
 
 pkgname = simplearchiver-bin
