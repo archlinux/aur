@@ -1,0 +1,13 @@
+pkgbase = geas
+	pkgdesc = Contract oriented interop language: contracts compile to in process C ABI modules and a gRPC bridge
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/choice404/geas
+	arch = x86_64
+	license = MIT
+	makedepends = dusk-lang
+	depends = gcc
+	source = geas-0.7.3.tar.gz::https://github.com/choice404/geas/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 7e9248ea5fe1705799240463828b914147849f2e834303fa42418d620dfdde5f
+
+pkgname = geas
