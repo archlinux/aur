@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Simple Live
+Comment=A live streaming client (Forked from xiaoyaocz/dart_simple_live)
+Exec=dart-simple-live
+Icon=dart-simple-live
+Terminal=false
+Type=Application
+Categories=Network;AudioVideo;Player;
+StartupNotify=true
