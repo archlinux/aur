@@ -307,6 +307,19 @@ package() {
     # liblfs_core.so and the python module carry NEEDED entries for it.
     install -Dm755 build/Build/lib/libOpenMesh*.so.* -t "$pkgdir/usr/lib/"
 
+    # libnvjpeg2k_ext.so dlopens libnvjpeg2k.so.0, but upstream creates that
+    # symlink with WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib, which ignores
+    # DESTDIR: during packaging it tries to write into the live /usr/lib, fails
+    # with EACCES, and cmake --install still exits 0. Assert the runtime landed
+    # and link it here instead.
+    local -a _nvjpeg2k_so=("$pkgdir"/usr/lib/libnvjpeg2k.so.*.*)
+    [[ -f ${_nvjpeg2k_so[0]} ]] || {
+        error "nvjpeg2k runtime missing; check the redist path in build()"
+        return 1
+    }
+    ln -sf "${_nvjpeg2k_so[0]##*/}" "$pkgdir/usr/lib/libnvjpeg2k.so.0"
+    ln -sf libnvjpeg2k.so.0 "$pkgdir/usr/lib/libnvjpeg2k.so"
+
     # Vendored USD and ONNX Runtime keep their upstream sonames and plugin
     # layout, so in /usr/lib they collide with the official usd (62 files) and
     # onnxruntime (4 files) packages. Both locate their own resources relative
