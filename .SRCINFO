@@ -1,0 +1,16 @@
+pkgbase = rustask-es-git
+	pkgdesc = Gestor de tareas estilo kanban en terminal (TUI), con las tareas guardadas como Markdown en un repositorio git (versión de desarrollo, siempre la última de main)
+	pkgver = r1.0a86fef
+	pkgrel = 1
+	url = https://github.com/danicorgam/rustask-es
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = git
+	provides = rustask
+	conflicts = rustask
+	source = rustask-es-git::git+https://github.com/danicorgam/rustask-es.git
+	sha256sums = SKIP
+
+pkgname = rustask-es-git
