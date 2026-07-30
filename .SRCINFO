@@ -1,20 +1,19 @@
 pkgbase = r-archive
 	pkgdesc = Multi-Format Archive and Compression Support
-	pkgver = 1.1.13
+	pkgver = 1.1.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=archive
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
-	depends = libarchive
 	depends = r-cli
 	depends = r-glue
 	depends = r-rlang
 	depends = r-tibble
-	optdepends = r-covr
+	depends = libarchive
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/archive_1.1.13.tar.gz
-	md5sums = b450ad9ad0c9b2855fefee0898c4b612
-	b2sums = acc99b1c5c902872f33831476b29536f9395644a94a288d4b817744bfc6b2340eeb9f5d69937c553acf60bf9c1d38033cb5032f546208875d9fa1f5f92cfa574
+	source = https://cran.r-project.org/src/contrib/archive_1.1.14.tar.gz
+	md5sums = 64a45b9ae99c3bf46697cc8a33b793b8
+	b2sums = 3dd4977c6bb9f2e616c06443300e5a43766500f2a608231d313a9947e583ce7cbd796fea97b49c9b9dd128ead5307a7155214e064ba5e6f9643bb3c6266a46e0
 
 pkgname = r-archive
