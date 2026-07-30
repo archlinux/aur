@@ -1,0 +1,18 @@
+pkgbase = gdscheck
+	pkgdesc = A fast, open source Design Rule Check (DRC) engine for GDSII layouts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/aesc-silicon/gdscheck
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = gdscheck::git+https://github.com/aesc-silicon/gdscheck#tag=v0.1.2
+	b2sums = 9581cc504d03402272129dac64e3f42c9483a293e92e00fb6818f4b8769507ffdd7b0fbc4ece7927a2631df0b2f3b07a834df1f69285683e4c013a46f3eaa834
+
+pkgname = gdscheck
