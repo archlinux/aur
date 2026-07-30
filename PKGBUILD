@@ -1,5 +1,6 @@
 # Maintainer: cilgin <cilgincc@outlook.com>
 # Maintainer: Arjix <me@arjix.dev>
+# Maintainer: Aurelle <aur@aurelle.dev>
 
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
@@ -19,7 +20,6 @@ depends=(
   'libqalculate'
   'minizip'
   'qtkeychain-qt6'
-  'libxml2'
   'qt6-declarative'
   'syntax-highlighting'
 )
@@ -28,11 +28,11 @@ makedepends=(
   'cmake'
   'ninja'
   'npm'
-  'rapidfuzz-cpp'
   'jq'
   'glaze'
   'curl'
   'qt6-shadertools'
+  'qt6-tools'
 )
 install=vicinae.install
 provides=("vicinae")
