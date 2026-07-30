@@ -2,10 +2,10 @@
 
 _ver=33
 _fullver=33.0.0
-_android=android-14
+_android=android-13
 pkgname=android-sdk-build-tools-$_ver
 pkgver=r$_ver
-pkgrel=2
+pkgrel=3
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('x86_64')
 url='https://developer.android.com/studio/releases/build-tools'
