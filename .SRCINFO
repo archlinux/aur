@@ -28,7 +28,7 @@ pkgbase = tesseract-matrix-git
 	depends = emoji-font
 	provides = tesseract-matrix
 	conflicts = tesseract-matrix
-	source = tesseract-matrix-git::git+https://github.com/surakin/tesseract.git#branch=main
+	source = tesseract-matrix-git::git+https://github.com/surakin/tesseract.git#branch=development
 	sha256sums = SKIP
 
 pkgname = tesseract-matrix-git
