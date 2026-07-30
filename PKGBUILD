@@ -18,8 +18,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-pkgver=2.41.3
-pkgrel=2
+pkgver=2.42.2
+pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/util-linux/util-linux'
 arch=('x86_64' 'aarch64')
@@ -53,14 +53,14 @@ license=(
 )
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("git+https://github.com/util-linux/util-linux#tag=v${pkgver/rc/-rc}?signed"
+source=("git+https://github.com/util-linux/util-linux?signed#tag=v${pkgver/rc/-rc}"
         ${pkgbase/-selinux}-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
         {login,common,remote,runuser,su}.pam
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('d95e1a90d4a0733372f46c4af4fbb6fe7667d96b800c46a0cc05c5abe699eabe'
+sha256sums=('b12ee0ba37ccaf6c88f767637a4519d5fdf76ddd1acbf7e6fc29e9eeeea30d8f'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -93,9 +93,6 @@ prepare() {
     git revert --mainline 1 --no-commit "${_c}"
   done
 
-  # create fully locked system accout
-  sed -i '/^u /s|u|u!|' misc-utils/uuidd-sysusers.conf.in
-
   # do not mark dirty
   sed -i '/dirty=/c dirty=' tools/git-version-gen
 }
@@ -122,6 +119,11 @@ build() {
   arch-meson "${pkgbase/-selinux}" build "${_meson_options[@]}"
 
   meson compile -C build
+}
+
+check() {
+  cd build
+  ../util-linux/tests/run.sh --show-diff
 }
 
 package_util-linux-selinux() {
