@@ -62,14 +62,35 @@ makedepends=(
 provides=('lichtfeld-studio')
 conflicts=('lichtfeld-studio')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
+
+# Archives upstream's cmake fetches itself. Declaring them here gets makepkg's
+# checksum and source cache; prepare() asserts each pin still matches upstream.
+# This does not make the build offline: vcpkg still fetches its own ports.
+_nfd_ver=1.3.0
+_onnx_ver=1.23.2
+_uv_ver=0.10.2
+_nvjpeg2k_ver=0.9.0.43
+_nvjpeg2k_archive="libnvjpeg_2k-linux-x86_64-${_nvjpeg2k_ver}-archive"
+
 source=("${pkgname}::git+https://github.com/MrNeRF/LichtFeld-Studio.git"
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         'libvterm::git+https://github.com/neovim/libvterm.git'
-        'lichtfeld-studio.desktop')
+        'lichtfeld-studio.desktop'
+        "nativefiledialog-extended-${_nfd_ver}.tar.gz::https://github.com/btzy/nativefiledialog-extended/archive/v${_nfd_ver}.tar.gz"
+        "${_nvjpeg2k_archive}.tar.xz::https://developer.download.nvidia.com/compute/nvjpeg2000/redist/libnvjpeg_2k/linux-x86_64/${_nvjpeg2k_archive}.tar.xz"
+        "onnxruntime-linux-x64-gpu-${_onnx_ver}.tgz::https://github.com/microsoft/onnxruntime/releases/download/v${_onnx_ver}/onnxruntime-linux-x64-gpu-${_onnx_ver}.tgz"
+        "uv-${_uv_ver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/astral-sh/uv/releases/download/${_uv_ver}/uv-x86_64-unknown-linux-gnu.tar.gz")
+# The last two are consumed as archives from LFS_DOWNLOAD_CACHE_DIR, not as trees.
+noextract=("onnxruntime-linux-x64-gpu-${_onnx_ver}.tgz"
+           "uv-${_uv_ver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
+            'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65'
+            '2fea19102cf4d5283a80fb87a784792166988e85bb92baa962d34f72b22dcc1a'
+            '1d26f62a7141e81c604342a610deb8ad8d10e1c08cb59598881dc201e59f21a3'
+            '2083e361072a79ce16a90dcd5f5cb3ab92574a82a3ce0ac01e5cfa3158176f53'
+            '6aa4576c31f791c0b9d4739e256d07358d45e7535695287fec03cf6839e25512')
 
 pkgver() {
     cd "$pkgname"
@@ -102,6 +123,32 @@ prepare() {
         msg 'Submodule update failed; add its repository to source=() first.'
         return 1
     fi
+
+    # source=() pins the same versions upstream's cmake pins. Both the download
+    # cache and FETCHCONTENT_SOURCE_DIR take precedence over upstream's URL, so a
+    # pin that moved here would silently build the declared version instead of
+    # the wanted one. Fail with the new value rather than ship the mismatch.
+    local _what _want _got
+    while read -r _what _want _got; do
+        [[ $_want == "$_got" ]] && continue
+        error "$_what pin moved: PKGBUILD has '$_want', upstream wants '$_got'"
+        return 1
+    done <<EOF
+nativefiledialog $_nfd_ver $(sed -nE 's|.*nativefiledialog-extended/archive/v([0-9.]+)\.tar\.gz.*|\1|p' cmake/SetupNativeFileDialog.cmake | head -1)
+onnxruntime $_onnx_ver $(sed -nE 's|.*LFS_ONNXRUNTIME_VERSION "([^"]+)".*|\1|p' cmake/SetupOnnxRuntime.cmake | head -1)
+uv $_uv_ver $(sed -nE 's|.*UV_VERSION "([^"]+)".*|\1|p' cmake/FetchUV.cmake | head -1)
+nvjpeg2k $_nvjpeg2k_ver $(sed -nE 's|.*libnvjpeg_2k-linux-x86_64-([0-9.]+)-archive.*|\1|p' external/nvImageCodec/cmake/Dependencies.cmake | head -1)
+EOF
+
+    # Upstream defaults its download cache to ~/.cache/lichtfeld, which puts 252M
+    # outside the build tree where no clean reaches it. Keep it in $srcdir and
+    # seed it with the declared archives so cmake finds them instead of fetching.
+    # Symlinks, not copies: cmake only hashes and reads these, and the onnxruntime
+    # archive alone is 250M.
+    install -d "$srcdir/download-cache"
+    ln -sf "$srcdir/onnxruntime-linux-x64-gpu-${_onnx_ver}.tgz" \
+           "$srcdir/uv-${_uv_ver}-x86_64-unknown-linux-gnu.tar.gz" \
+           "$srcdir/download-cache/"
 
     # Bootstrap vcpkg (makepkg manages clone/fetch via source array).
     # Copy instead of symlink: bootstrap downloads binary to vcpkg/vcpkg
@@ -208,8 +255,18 @@ build() {
     [[ -x "$_slangc" ]] || { error "slangc not found; install shader-slang or shader-slang-bin"; return 1; }
     echo "==> slangc: $_slangc"
 
+    # The nvjpeg2k runtime is looked up at a hardcoded
+    # $CMAKE_BINARY_DIR/_deps/nvjpeg2k_headers-src/lib/<cuda major>, ignoring the
+    # FetchContent source dir, so point that path at the declared redist as well.
+    # Without this the copy is skipped and only a configure-time warning says so.
+    install -d build/_deps
+    ln -sfn "$srcdir/${_nvjpeg2k_archive}" build/_deps/nvjpeg2k_headers-src
+
     cmake -B build \
         -DSLANGC="${_slangc}" \
+        -DLFS_DOWNLOAD_CACHE_DIR="$srcdir/download-cache" \
+        -DFETCHCONTENT_SOURCE_DIR_NATIVEFILEDIALOG_EXTENDED="$srcdir/nativefiledialog-extended-${_nfd_ver}" \
+        -DFETCHCONTENT_SOURCE_DIR_NVJPEG2K_HEADERS="$srcdir/${_nvjpeg2k_archive}" \
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DCMAKE_CUDA_HOST_COMPILER="${_cuda_host_cxx}" \
         -DCMAKE_BUILD_TYPE=Release \
