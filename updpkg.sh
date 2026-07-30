@@ -9,7 +9,7 @@ curl -L "https://github.com/modem-dev/hunk/raw/refs/tags/v${VERSION}/LICENSE" -o
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git add -v .
-git commit -F - <<EOF
+git commit -F - << EOF
 updpkg: v${VERSION}
 
 https://github.com/modem-dev/hunk/releases/tag/v${VERSION}

@@ -1,0 +1,5 @@
+[hunk]
+source = "github"
+github = "modem-dev/hunk"
+use_max_tag = true
+prefix = "v"
