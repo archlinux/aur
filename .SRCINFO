@@ -14,6 +14,7 @@ pkgbase = curfew
 	depends = python-flask
 	depends = python-chinese-calendar
 	depends = python-daemon
+	depends = python-plyer
 	provides = curfew
 	conflicts = curfew
 	source = curfew-2.7.1.0.tar.gz::https://github.com/aura-deak/Curfew/archive/refs/tags/v2.7.1.0.tar.gz
