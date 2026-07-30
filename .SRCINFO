@@ -38,6 +38,6 @@ pkgbase = mangatan-bin
 	sha256sums = d00453f6aa1f75357a31d0a696861be6f7e82bd824920faa98bf48b2a4769c25
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
 	source_x86_64 = mangatan-bin-1.1.0-x86_64.tar.gz::https://github.com/1Selxo/Mangatan/releases/download/v1.1.0/Mangatan-v1.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 8f967cb324ea671319f1f970a130dbf2ed719a7483288c70cd5b286fd9f77657
+	sha256sums_x86_64 = 1a2c0b110489817ec42ceacf0325b929d89e0a1875d3689e8122dc54148243b3
 
 pkgname = mangatan-bin
