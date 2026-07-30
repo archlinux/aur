@@ -11,9 +11,15 @@ license=('MIT')
 provides=('opcda-bridge-client')
 conflicts=('opcda-bridge-client')
 
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/opcda-bridge-client-v0.1.0/opcda-bridge-client-linux-x86_64.tar.gz")
+source=("LICENSE::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/v${pkgver}/LICENSE"
+        "README.md::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/v${pkgver}/README.md")
+sha256sums=('6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef'
+            'c175e4adbb47ce3f85e59eef5813f068d9ae897df629a2de95e9eab3b47bb51d')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/v${pkgver}/opcda-bridge-client-linux-x86_64.tar.gz")
 sha256sums_x86_64=('47b6997a5ffdbcd9a57cda8adb3ffd23ea08ad497c42d5326bf23bc2220db6b6')
 
 package() {
     install -Dm755 "opcda-bridge-client" "${pkgdir}/usr/bin/opcda-bridge-client"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
