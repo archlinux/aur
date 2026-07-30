@@ -2,7 +2,7 @@
 
 pkgname=rathole
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
 url="https://github.com/rapiz1/rathole"
@@ -18,6 +18,10 @@ options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  # time 0.3.29 fails to build with rustc >=1.80 (E0282, fixed upstream in
+  # time-rs/time#693); bump the transitive dep since upstream hasn't cut a
+  # new rathole release with an updated Cargo.lock yet.
+  cargo update -p time --precise 0.3.36
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -28,6 +32,11 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  # The TLS integration tests ship a pre-generated self-signed cert
+  # (examples/tls/rootCA.crt, identity.pfx) that expires a year after
+  # release; regenerate it so `cargo test` doesn't hang retrying a
+  # handshake against an expired certificate.
+  (cd examples/tls && sh create_self_signed_cert.sh)
   cargo test --frozen
 }
 
