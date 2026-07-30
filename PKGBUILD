@@ -2,7 +2,7 @@
 
 pkgname=steamidra-bin
 pkgver=6.5.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Advanced Steam game management tool with manifest handling, Lua integrations, backups, fixes, and GUI"
 arch=('x86_64')
 url="https://github.com/Midrags/SFF"
@@ -11,6 +11,7 @@ depends=(
   'gtk3'
   'nss'
   'alsa-lib'
+  'fuse2'
 )
 provides=('steamidra')
 conflicts=('steamidra')
@@ -30,13 +31,21 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
 
+
   bsdtar -xf "SteaMidra-${pkgver}-linux.zip" \
     -C "$pkgdir/opt/steamidra"
 
 
+  mv "$pkgdir/opt/steamidra/SteaMidra-${pkgver}-x86_64.AppImage" \
+     "$pkgdir/opt/steamidra/SteaMidra.AppImage"
+
+
+  chmod +x "$pkgdir/opt/steamidra/SteaMidra.AppImage"
+
+
   cat > "$pkgdir/usr/bin/steamidra" << 'EOF'
 #!/bin/bash
-exec /opt/steamidra/SteaMidra "$@"
+exec /opt/steamidra/SteaMidra.AppImage "$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/steamidra"
@@ -55,4 +64,3 @@ Comment=SteaMidra Steam utility
 EOF
 
 }
-

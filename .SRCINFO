@@ -1,13 +1,14 @@
 pkgbase = steamidra-bin
 	pkgdesc = Advanced Steam game management tool with manifest handling, Lua integrations, backups, fixes, and GUI
 	pkgver = 6.5.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Midrags/SFF
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
+	depends = fuse2
 	provides = steamidra
 	conflicts = steamidra
 	noextract = SteaMidra-6.5.5-linux.zip
