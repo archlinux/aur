@@ -1,7 +1,7 @@
 pkgbase = pacman-static
 	pkgdesc = Statically-compiled pacman (to fix or install systems without libc)
 	pkgver = 7.1.0.r9.g54d9411
-	pkgrel = 13
+	pkgrel = 14
 	url = https://www.archlinux.org/pacman/
 	arch = i486
 	arch = i686
@@ -46,8 +46,8 @@ pkgbase = pacman-static
 	source = https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.0.tar.bz2.sig
 	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-2.1.2.tar.bz2
 	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-2.1.2.tar.bz2.sig
-	source = https://github.com/libarchive/libarchive/releases/download/v3.8.8/libarchive-3.8.8.tar.xz
-	source = https://github.com/libarchive/libarchive/releases/download/v3.8.8/libarchive-3.8.8.tar.xz.asc
+	source = https://github.com/libarchive/libarchive/releases/download/v3.8.9/libarchive-3.8.9.tar.xz
+	source = https://github.com/libarchive/libarchive/releases/download/v3.8.9/libarchive-3.8.9.tar.xz.asc
 	source = git+https://github.com/seccomp/libseccomp.git#tag=v2.6.0?signed
 	validpgpkeys = 6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD
 	validpgpkeys = B8151B117037781095514CA7BBDFFC92306B1121
@@ -98,7 +98,7 @@ pkgbase = pacman-static
 	sha512sums = SKIP
 	sha512sums = 21ec03ea83b6178fdcf89d691053d4c3e356916ec6926ae33b045424c6e960ef2fe11249775a415a345f9b18c3db7f631423e0eac84f7b22ef24f37d4f8ad0bd
 	sha512sums = SKIP
-	sha512sums = 6952aaa3f7aa275b1a678c03b3ca3a50111a1305f0eb50362b8a85599f1c13a0c771530c7caea6ddcc3c8ceead4c206abca851d8b2c4b64968773d8fd6fc64de
+	sha512sums = f37425417a9e3fdc194a2b892137452ddba6601c69e822598692d4d776c573a90e70aac4598d47c915615facc45d0c83fc46c24856ddf04afd7494b63bb9f137
 	sha512sums = SKIP
 	sha512sums = 34d33f96df79b4e6bb3112bc01d5991fb8045e2af43568f8a6bf02481c0e9295c71987ee17ef49d1fc32a870632acc2c233a851316ecfc9a212095868de24e33
 
