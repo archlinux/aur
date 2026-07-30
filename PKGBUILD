@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.9.1.r13.gd3328df41
+pkgver=3.9.1.r16.g491c2ebce
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -18,12 +18,13 @@ depends=(
     gtkspell3
     hicolor-icon-theme
     icu
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     lucene++
     pugixml
     wxwidgets-common
-    wxwidgets-gtk3)
+    wxwidgets-gtk3
+)
 makedepends=(
     asciidoc
     automake
@@ -46,7 +47,8 @@ makedepends=(
     webkit2gtk-4.1
     wxwidgets-gtk3
     xmlto
-    zlib)
+    zlib
+)
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
