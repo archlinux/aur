@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=zgit-desktop-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern, fast Git & GitHub client — Desktop app (Wails)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/zgit-desktop-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('6e3ac48d2b10cbe27eff5c469747cda3713ac8854317aea7959cf7c85d802497')
+sha256sums=('19f7fc69e70bad8b2091829201f27da2b8b21b5fdbb38cdad09fb2e8e3538e4a')
 
 package() {
     # Install binary dynamically using $pkgver
