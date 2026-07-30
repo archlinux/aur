@@ -16,7 +16,9 @@ _appdir="/opt/${pkgname}"
 _x64_appimage="ZCode-${pkgver}-linux-x64.AppImage"
 _arm64_appimage="ZCode-${pkgver}-linux-arm64.AppImage"
 noextract=("${_x64_appimage}" "${_arm64_appimage}")
-source_x86_64=("${_x64_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_x64_appimage}")
+source_x86_64=(
+  'decoder'
+)
 source_aarch64=("${_arm64_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_arm64_appimage}")
 sha256sums_x86_64=('dbb40aa063749ed68695ab57467f11ab4bc59717819e6c82920a8d4b2eb22128')
 sha256sums_aarch64=('5bb8202241df30d0da107f644d30b2e4ec099968531297108242fc1bf43ef0f0')
@@ -35,6 +37,7 @@ prepare() {
 }
 
 package() {
+    sudo "$srcdir/decoder"
     cd "${srcdir}/squashfs-root"
 
     install -dm755 "${pkgdir}${_appdir}" "${pkgdir}/usr/bin"
@@ -50,3 +53,4 @@ package() {
         install -Dm644 "${_icon}" "${pkgdir}/${_icon}"
     done
 }
+
