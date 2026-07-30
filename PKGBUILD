@@ -3,7 +3,7 @@
 # Check for new releases at: https://github.com/luxury-yacht/app/releases
 
 pkgname=luxury-yacht-bin
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Cross-platform GUI desktop app for managing Kubernetes clusters"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/luxury-yacht/app/releases/download/v${pkgver}
 source_aarch64=("https://github.com/luxury-yacht/app/releases/download/v${pkgver}/luxury-yacht_v${pkgver}_linux_arm64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/luxury-yacht/app/v${pkgver}/LICENSE")
 sha256sums=('f817886ee6bb65ed3098a7987b1e9781653d15c71f85589ce0d2af663c66d373')
-sha256sums_x86_64=('0ed0eca4f10c35122d7fae07023549f8d9a67e6894a14c3fb6764f1f50297a13')
-sha256sums_aarch64=('9b832ded0c77adc0ee9acd3b29eb0f78a0526f82429535fd55429f7aaaa64398')
+sha256sums_x86_64=('66faf5114d53d02c0cc424825b10652e02b0f01187039990e9d8d49c9dcefbeb')
+sha256sums_aarch64=('b55e5d41e9037cbac3339814d42dc81d8383f6f4ca2fd6b589a84d3246e0c1f3')
 
 package() {
   bsdtar -xf data.tar.zst -C "$pkgdir/"
