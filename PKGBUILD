@@ -3,7 +3,7 @@
 
 pkgname=opcda-bridge-client-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OPC DA cross-platform client'
 arch=('x86_64')
 url='https://github.com/mikeboiko/opcda-bridge'
@@ -13,8 +13,8 @@ conflicts=('opcda-bridge-client')
 
 source=("LICENSE::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.0/LICENSE"
         "README.md::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.0/README.md")
-sha256sums=('0000000000000000000000000000000000000000000000000000000000000000'
-            '0000000000000000000000000000000000000000000000000000000000000000')
+sha256sums=('6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef'
+            '9a2cfdfbfdf5a8459cf7976cdbd1f4566474f8b580ad607629888e0f96ba2eda')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/opcda-bridge-client-v0.1.0/opcda-bridge-client-linux-x86_64.tar.gz")
 sha256sums_x86_64=('a2032511c1d9fec074966567d90973c22d42a6bf94172b2e92461d0177be6dff')
