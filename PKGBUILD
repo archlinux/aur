@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=darya
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc=' Disk usage explorer with a TUI and live treemap'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('darya')
 conflicts=('darya-git' 'darya-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dea36d2b7cc41e7ae7b9c9bff19e34d3043f540832f8b2e61950cb4c6e17f9dc')
+sha256sums=('c119350a4943ee1663a680046bba06fac9c0c6971fd61e93182ab3c366dca3ab')
 
 prepare() {
     cd "$pkgname-$pkgver"
