@@ -1,6 +1,6 @@
 pkgbase = xql-bin
 	pkgdesc = Run real SQL — SELECT, UPDATE, INSERT, DELETE — against SharePoint Lists and CSV files from one command-line tool.
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/excelano/xql
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xql-bin
 	provides = xql
 	conflicts = xql
 	options = !strip
-	source_x86_64 = xql-x86_64-1.6.1.tgz::https://github.com/excelano/xql/releases/download/v1.6.1/xql_1.6.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 061f53f315fc7392df737559bbb1eb66abdf3ee551f9455b1f5e8765a6676294
-	source_aarch64 = xql-aarch64-1.6.1.tgz::https://github.com/excelano/xql/releases/download/v1.6.1/xql_1.6.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = fd677381bab8b4b0ab41d0735c7f9d0dc27ca10888c5bac7082d8b97c3c23943
+	source_x86_64 = xql-x86_64-1.8.0.tgz::https://github.com/excelano/xql/releases/download/v1.8.0/xql_1.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 576b7efdb1a455f0661483716ec31bd1492ddb572722fbefc6f3bc54a31ba630
+	source_aarch64 = xql-aarch64-1.8.0.tgz::https://github.com/excelano/xql/releases/download/v1.8.0/xql_1.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fcf9faf157380c19b1ef2a93a9cdcbdbb50748ccfe732b98d2233404c6f1361a
 
 pkgname = xql-bin
