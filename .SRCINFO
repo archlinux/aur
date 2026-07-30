@@ -1,0 +1,18 @@
+pkgbase = shwetank
+	pkgdesc = Developer, student, builder. Prints a business card and a man page.
+	pkgver = 2026.7.30
+	pkgrel = 1
+	url = https://github.com/shwetankg07/shwetank.dev
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = nodejs: for the interactive version, npx shwetank
+	optdepends = cowsay: for when you want the card, but worse
+	source = shwetank
+	source = shwetank.1
+	source = LICENSE
+	sha256sums = 9170f17cfcb2eece965452cb20d43a603fcd277a6e4de9236c41c138f39154ac
+	sha256sums = 75c6d70f87cd4da26c79544a43ec7cbcccd047363834d308c6d20c83346a6b28
+	sha256sums = 2faf3af98c763655fd9db38d0c08748145207f0d16d3848a4af6c6bf084d83a3
+
+pkgname = shwetank

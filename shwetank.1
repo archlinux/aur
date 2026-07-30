@@ -1,0 +1,185 @@
+.TH SHWETANK 1 "2026-07-30" "shwetank 2026.7.30" "User Commands"
+.SH NAME
+shwetank \- developer, student, builder
+.SH SYNOPSIS
+.B shwetank
+.RI [ option ]
+.SH DESCRIPTION
+.B shwetank
+prints a business card to standard output.
+.PP
+Builds products end to end, from the Postgres schema to the pixel. Studies at
+Scaler School of Technology, Bangalore. Works from a terminal, inside
+.BR nvim (1),
+on Arch.
+.PP
+There is no daemon and no configuration file. It prints the card and exits,
+which is more than most software manages.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Print a usage summary and exit.
+.TP
+.BR \-v ", " \-\-version
+Print the version and exit. Versioning is CalVer, because a human is not
+semantically versioned and pretending otherwise invites breaking changes.
+.TP
+.B \-\-hire\-me
+Print the short pitch.
+.TP
+.B \-\-man
+Open this page. You are already here.
+.SH DEPENDENCIES
+Declared at runtime:
+.BR typescript (1)
+as the default dialect,
+.BR python (1)
+3.13 for anything that involves prying a device open,
+.BR node (1)
+for APIs and CLIs,
+.BR psql (1)
+for the parts that have to still be correct next year, and C++ for when speed
+is the actual feature.
+.PP
+Currently installing:
+.B rust
+(fighting the borrow checker, winning sometimes) and
+.BR docker (1).
+Neither is claimed as fluent, because the internet can read a commit history.
+.PP
+Build\-time only:
+.BR git (1),
+.BR bash (1),
+.BR nvim (1),
+and Arch Linux, btw.
+.SH OUTPUT
+Selected artifacts, all of which exist and can be verified:
+.TP
+.B kbrgb
+A userspace driver for the Acer ENE KB5130 i2c\-HID keyboard controller, written
+after discovering that the vendor's WMI interface accepts every command and
+silently does nothing. One Python file, zero dependencies, 29 animated effects.
+Available from the AUR and PyPI, so the next person with this laptop does not
+have to repeat the reverse\-engineering.
+.TP
+.B RailRaag
+Every train in India, drawn in light: 9,298 trains derived from 183,000
+timetable rows, routed over real OpenStreetMap track by Dijkstra across a
+612,000\-node graph, rendered in raw WebGL2 at roughly 0.3 ms per frame. No
+runtime dependencies, because adding a library felt like cheating.
+.TP
+.B Claribb.AI
+A multi\-agent research workspace with pgvector semantic memory and four agents
+(Recall, Explorer, Critique, Connector) running in parallel on every query.
+Top 4 at the Ventures Hackathon, built by a team of four.
+.TP
+.B shellmon
+A terminal pet that feeds on your development activity. It is the only
+dependency in this list with feelings.
+.TP
+.B CipherDrop
+Zero\-knowledge file transfer: AES\-256\-GCM in the browser, key in the URL
+fragment, so the server is structurally incapable of reading what it stores.
+.PP
+Three packages are published on npm:
+.BR shwetank ,
+.B shellmon
+and
+.BR make\-npx\-card .
+The first one is this card, but interactive, which is either recursion or a
+cry for help.
+.SH ENVIRONMENT
+.TP
+.B NO_COLOR
+If set to any value, output is printed without ANSI escapes. Also honoured
+automatically when standard output is not a terminal, because a business card
+piped into
+.BR grep (1)
+should not fight back.
+.SH EXIT STATUS
+.TP
+.B 0
+The card printed.
+.TP
+.B 2
+An unknown option was given.
+.SH EXAMPLES
+Print the card:
+.PP
+.RS
+.EX
+$ shwetank
+.EE
+.RE
+.PP
+The same card, over HTTP, because the website content\-negotiates on your user
+agent and serves terminals plain text:
+.PP
+.RS
+.EX
+$ curl shwetank.is-a.dev
+.EE
+.RE
+.PP
+The interactive version, which requires Node:
+.PP
+.RS
+.EX
+$ npx shwetank
+.EE
+.RE
+.PP
+The website is also a real git remote, served over git's dumb HTTP protocol.
+Cloning it gets you a repository with one commit per release and a PKGBUILD:
+.PP
+.RS
+.EX
+$ git clone https://shwetank.is-a.dev
+.EE
+.RE
+.SH HISTORY
+.TP
+.B 2025
+Printed "hello world". It appeared twice. Debugging began.
+.TP
+.B Oct 2025
+Migrated to Arch and Neovim. Productivity fell for two weeks and then did not
+stop rising.
+.TP
+.B Feb 2026
+Placed top 4 at the Ventures Hackathon.
+.TP
+.B Mar 2026
+Began publishing to npm, on the theory that a business card should be
+installable.
+.TP
+.B 2026
+Moved lower in the stack: drivers, protocols, and the kind of bug that only
+reproduces on one machine.
+.SH BUGS
+Requires sleep. Roughly seven hours, though this has been observed to degrade
+gracefully under load.
+.PP
+Does not scale horizontally. Running multiple instances has not been attempted
+and is not supported.
+.PP
+Occasionally rewrites something that already worked. This is documented
+behaviour and will not be fixed.
+.PP
+Will read the datasheet instead of going to bed. Closed as WONTFIX.
+.PP
+Report anything else to the author.
+.SH SEE ALSO
+.BR pacman (8),
+.BR kbrgb (1),
+.BR git (1),
+.BR nvim (1)
+.PP
+If
+.B kbrgb
+is installed, that cross\-reference resolves. It was written by the same author,
+which is the closest thing this package has to a dependency graph.
+.SH AUTHOR
+Shwetank Gupta <shwetankg07@gmail.com>
+.PP
+https://github.com/shwetankg07

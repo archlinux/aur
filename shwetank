@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# shwetank — prints a business card. See shwetank(1).
+set -euo pipefail
+
+VERSION="2026.7.30"
+
+R=$'\e[31m' B=$'\e[1m' D=$'\e[2m' G=$'\e[32m' X=$'\e[0m'
+if [[ -n ${NO_COLOR-} || ! -t 1 ]]; then R= B= D= G= X=; fi
+
+WIDTH=46
+INNER=$((WIDTH - 4))
+
+# line <visible-text> [pre-colored-render]
+line() {
+  local vis=$1 col=${2-$1} n=$((INNER - ${#1}))
+  ((n < 0)) && n=0
+  printf '%s│%s  %s%*s%s│%s\n' "$R" "$X" "$col" "$n" "" "$R" "$X"
+}
+kv() { line "$(printf '%-10s%s' "$1" "$2")" "$D$(printf '%-10s' "$1")$X$2"; }
+rule() { local c=$1 d=$2; printf '%s%s' "$R$c" "$(printf '─%.0s' $(seq $((WIDTH - 2))))"; printf '%s%s\n' "$d" "$X"; }
+
+card() {
+  local name="shwetank" ver="v$VERSION" status="● stable · open to interesting work"
+  rule '╭' '╮'
+  line ""
+  line "$(printf '%s%*s%s' "$name" $((INNER - ${#name} - ${#ver})) "" "$ver")" \
+       "$B$name$X$(printf '%*s' $((INNER - ${#name} - ${#ver})) "")$D$ver$X"
+  line "developer · student · builder"
+  line "bangalore, india"
+  line ""
+  kv "education" "scaler sst + bits pilani bs"
+  kv "github"    "github.com/shwetankg07"
+  kv "linkedin"  "linkedin.com/in/shwetankg07"
+  kv "email"     "shwetankg07@gmail.com"
+  line ""
+  line "$status" "$G$status$X"
+  line ""
+  line "\$ npx shwetank   · interactive card" \
+       "$R\$$X ${B}npx shwetank$X$D   · interactive card$X"
+  line "\$ git clone https://shwetank.is-a.dev" \
+       "$R\$$X git clone https://shwetank.is-a.dev"
+  line ""
+  rule '╰' '╯'
+  printf '  %sarch btw · ships real products, end to end%s\n\n' "$D" "$X"
+}
+
+usage() {
+  cat <<EOF
+usage: shwetank [option]
+
+  -h, --help      this
+  -v, --version   print version
+      --hire-me   the short pitch
+      --man       open the manual
+
+with no arguments, prints the card. see shwetank(1).
+EOF
+}
+
+case ${1-} in
+  "")            card ;;
+  -v|--version)  printf 'shwetank %s\n' "$VERSION" ;;
+  -h|--help)     usage ;;
+  --man)         exec man 1 shwetank ;;
+  --hire-me)
+    printf '%sopen to interesting work.%s\n' "$B" "$X"
+    printf '  mailto:shwetankg07@gmail.com\n'
+    printf '  %sresponse time is measured in hours, not sprints.%s\n' "$D" "$X"
+    ;;
+  *)
+    printf 'shwetank: unknown option %s\n' "$1" >&2
+    usage >&2
+    exit 2
+    ;;
+esac
