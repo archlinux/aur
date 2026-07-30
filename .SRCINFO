@@ -1,13 +1,15 @@
 pkgbase = ros2-humble-gazebo-ros-pkgs
 	pkgdesc = ROS2 gazebo_ros_pkgs stack (classic Gazebo integration)
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/gazebo_ros_pkgs/
 	arch = x86_64
 	license = Apache-2.0
 	license = BSD
 	makedepends = cmake
 	makedepends = ros2-humble
+	makedepends = ros2-humble-cv-bridge
+	makedepends = gazebo
 	makedepends = python-lxml
 	depends = ros2-humble
 	source = https://github.com/ros-simulation/gazebo_ros_pkgs/archive/refs/tags/3.7.0.tar.gz

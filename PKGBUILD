@@ -11,27 +11,15 @@ pkgname=(
   'ros2-humble-gazebo-ros-pkgs'
 )
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS2 gazebo_ros_pkgs stack (classic Gazebo integration)"
 arch=('x86_64')
 url="https://index.ros.org/p/gazebo_ros_pkgs/"
 license=('Apache-2.0' 'BSD')
 depends=('ros2-humble')
-makedepends=('cmake' 'ros2-humble' 'python-lxml')
+makedepends=('cmake' 'ros2-humble' 'ros2-humble-cv-bridge' 'gazebo' 'python-lxml')
 source=("https://github.com/ros-simulation/gazebo_ros_pkgs/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('69093e3cc7c4194f958bff777e76ab7c9a8f5c880f764332eb961f791a5a73a4')
-
-# Pre-extracted ros2-humble base (same approach as ros2-humble-navigation2)
-_ros2_install="${startdir}/ros2-humble-install"
-_pkgfile="/var/cache/pacman/pkg/ros2-humble-2026.02.20-1-x86_64.pkg.tar.zst"
-
-prepare() {
-    if [ ! -d "${_ros2_install}/opt/ros/humble" ]; then
-        msg2 "Extracting ros2-humble to ${_ros2_install} ..."
-        mkdir -p "${_ros2_install}"
-        tar -I zstd -xf "${_pkgfile}" -C "${_ros2_install}"
-    fi
-}
 
 build() {
     local _src="$srcdir/gazebo_ros_pkgs-$pkgver"
@@ -44,17 +32,17 @@ build() {
         local _subdir="$1"
         local _extra_prefix="$2"
         cd "$_src/$_subdir"
-        source "${_ros2_install}/opt/ros/humble/setup.bash"
+        source /opt/ros/humble/setup.bash
         if [ -n "$_extra_prefix" ]; then
-            export AMENT_PREFIX_PATH="${_extra_prefix}:${_ros2_install}/opt/ros/humble"
-            export CMAKE_PREFIX_PATH="${_extra_prefix}:${_ros2_install}/opt/ros/humble"
+            export AMENT_PREFIX_PATH="${_extra_prefix}:/opt/ros/humble"
+            export CMAKE_PREFIX_PATH="${_extra_prefix}:/opt/ros/humble"
         else
-            export AMENT_PREFIX_PATH="${_ros2_install}/opt/ros/humble"
-            export CMAKE_PREFIX_PATH="${_ros2_install}/opt/ros/humble"
+            export AMENT_PREFIX_PATH="/opt/ros/humble"
+            export CMAKE_PREFIX_PATH="/opt/ros/humble"
         fi
         export CXXFLAGS="${CXXFLAGS} -Wno-error -Wno-unused-parameter -I/usr/include/opencv4"
         export CFLAGS="${CFLAGS} -Wno-error"
-        export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${_ros2_install}/opt/ros/humble/lib"
+        export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,/opt/ros/humble/lib"
         local _pkg_staging="$_staging/$_subdir"
         local _bdir="build-$_subdir"
         cmake -B "$_bdir" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/humble -DBUILD_TESTING=OFF -Wno-dev
@@ -70,7 +58,7 @@ build() {
         printf '%s' "$_p"
     }
 
-    # cv_bridge comes from a -I local package in the chroot's /opt/ros/humble
+    # cv_bridge is provided by ros2-humble-cv-bridge under /opt/ros/humble
     local _cvbridge="/opt/ros/humble"
 
     _build_install_isolated gazebo_msgs ""
