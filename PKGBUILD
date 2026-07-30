@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=marklite
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A lightweight Markdown viewer and editor for Linux'
 arch=('x86_64')
@@ -8,10 +8,12 @@ url='https://gitlab.com/mchilson/marklite'
 license=('MIT')
 depends=('gtk3')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
-_commit=f03972b139a61f0149fc4cdbb37eb940a0372407
+# There are no specific tags or source tarballs for releases.
+# The commit is determined by manually inspecting the git history.
+_commit=5318a3e4bff05b09de87c3ffdd1ddd547113f315
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/mchilson/marklite/-/archive/${_commit}/marklite-${_commit}.tar.gz"
         'marklite.desktop')
-b2sums=('d2b7bd0c423b18d5e2bfd02408ef5f34219a052365a270f665fbdaad993aff32489f0807bae17c03b34354554eac19739891d1e7a0f54c2cfd91924b8e285823'
+b2sums=('15a3046484e070d8354ff9937c949d838afea8a8f06d7ab95b561031cbda5fffedf7e6d545c8ceb068076b42fb0546ae6bb75b5f9f9073874ad9b0edaff570d4'
         '55f9fe3888754e9408fe23ce088cf7237112ea22b7234e60ac6c61ccee773c19fb14da7465a45562bf23cb326d514f9b2251cd601211dba87160b75fb00ce7b9')
 
 build() {
