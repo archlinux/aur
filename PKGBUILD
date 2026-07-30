@@ -2,7 +2,7 @@
 
 _pkgname=artemis
 pkgname=${_pkgname}-bin
-pkgver=4.1.5
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Radio Signals Recognition Manual"
 url="https://aresvalley.com/"
@@ -11,7 +11,7 @@ license=(GPL-3.0-only)
 depends=(glibc python qt6-base)
 makedepends=(zstd)
 source=("${_pkgname}-${pkgver}.tar.zst::https://github.com/AresValley/Artemis/releases/download/v${pkgver}/Artemis-Linux-${arch}-${pkgver}.pkg.tar.zst")
-sha256sums=('8052b079d05d0f65af83c9e0b5e4966e943766ad84ac2cdbf92709f9b6b85205')
+sha256sums=('976936064c23878a0431c1065b473a798b5fb564a330f8e7c723d5994ad8805f')
 noextract=("${_pkgname}-${pkgver}.tar.zst")
 
 prepare() {

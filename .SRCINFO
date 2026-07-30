@@ -1,6 +1,6 @@
 pkgbase = artemis-bin
 	pkgdesc = Radio Signals Recognition Manual
-	pkgver = 4.1.5
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://aresvalley.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = artemis-bin
 	depends = glibc
 	depends = python
 	depends = qt6-base
-	noextract = artemis-4.1.5.tar.zst
-	source = artemis-4.1.5.tar.zst::https://github.com/AresValley/Artemis/releases/download/v4.1.5/Artemis-Linux-x86_64-4.1.5.pkg.tar.zst
-	sha256sums = 8052b079d05d0f65af83c9e0b5e4966e943766ad84ac2cdbf92709f9b6b85205
+	noextract = artemis-4.2.0.tar.zst
+	source = artemis-4.2.0.tar.zst::https://github.com/AresValley/Artemis/releases/download/v4.2.0/Artemis-Linux-x86_64-4.2.0.pkg.tar.zst
+	sha256sums = 976936064c23878a0431c1065b473a798b5fb564a330f8e7c723d5994ad8805f
 
 pkgname = artemis-bin
