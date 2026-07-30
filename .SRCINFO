@@ -1,0 +1,14 @@
+pkgbase = matsya-icons
+	pkgdesc = System default icon theme of Matsya OS
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/matsyaos/icons
+	arch = any
+	groups = Matsya
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	source = git+https://github.com/matsyaos/icons
+	md5sums = SKIP
+
+pkgname = matsya-icons
