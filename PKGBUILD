@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -19,13 +19,12 @@ makedepends=(
 	"rust"
 )
 optdepends=(
-	"kitty: support for displaying cover image in tmux"
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('20a7f88d3a30822b0ae42f81390b534c753fe6f4bb2522996fa1418e4c240cc339e0008af214cbb1dc36c90e8c17a936fe53dc5962f9213043961bab7c166a5d')
+sha512sums=('1a8efea674c4e948c5f75bf4f7b595e8c85386b717ea0743b228d6b46722ad340532c23bdedc30fb487c484e00d5a7b68865a2636031480983596481ffa4d4d6')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
