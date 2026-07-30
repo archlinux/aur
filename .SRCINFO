@@ -1,5 +1,5 @@
 pkgbase = vicinae-bin
-	pkgdesc = Raycast like FOSS app on Linux
+	pkgdesc = A focused launcher for your desktop — native, fast, extensible
 	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/vicinaehq/vicinae

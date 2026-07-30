@@ -1,13 +1,13 @@
 # Maintainer: cilgin <cilgincc@outlook.com>
 # Maintainer: Arjix <me@arjix.dev>
-# Maintainer: Aurelle <gh@aurelle.dev>
+# Maintainer: Aurelle <aur@aurelle.dev>
 
 # shellcheck disable=SC2034,SC2154,SC2128,SC2164
 
 pkgname=vicinae-bin
 pkgver=0.24.0
 pkgrel=1
-pkgdesc="Raycast like FOSS app on Linux"
+pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64')
 url="https://github.com/vicinaehq/vicinae"
 license=('GPL3')
