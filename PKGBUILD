@@ -3,7 +3,7 @@
 pkgname=pdfatlas-git
 _pkgname=pdfatlas
 pkgver=r89.de80a49
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF Reader with Search Portals and Auto-Crop"
 arch=('any')
 url="https://github.com/aziis98/pdfatlas"
@@ -19,6 +19,7 @@ depends=(
   'python-rapidfuzz'
   'python-tqdm'
   'python-numpy'
+  'hicolor-icon-theme'
 )
 makedepends=(
   'git'
@@ -53,6 +54,4 @@ package() {
   install -Dm644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.aziis98.pdfatlas.png"
   install -Dm644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/com.aziis98.pdfatlas.png"
   install -Dm644 assets/logo.png "$pkgdir/usr/share/pixmaps/com.aziis98.pdfatlas.png"
-
-
 }
