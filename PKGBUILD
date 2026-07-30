@@ -2,22 +2,22 @@
 
 pkgname=kvrt-x86_64
 pkgver=24.0.6.0.202607292308
-pkgrel=3
+pkgrel=4
 pkgdesc='Kaspersky Virus Removal Tool helps clean your Linux PC of malware if it has been infected.'
 arch=('x86_64')
 url='https://www.kaspersky.com/downloads/free-virus-removal-tool'
 license=('LicenseRef-EULA-Kaspersky')
-makedepends=(
+makedepends_x86_64=(
   'binwalk'
   'gendesk'
 )
-optdepends=(
+optdepends_x86_64=(
   'kesl-gui: Kaspersky Endpoint Security for Linux'
 )
 provides=('kvrt-run')
 options=(!debug)
-source=("$pkgname-$pkgver-$pkgrel.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run")
-b2sums=('05d01e870271389263927329504ea7fd96031981ce547972fa12c97f611bb9a098291e2dec99db18abb3916ff86d68ea57484455c9de3a321b396e1b4dcd6d0d')
+source_x86_64=("$pkgname-$pkgver-$pkgrel.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run")
+b2sums_x86_64=('05d01e870271389263927329504ea7fd96031981ce547972fa12c97f611bb9a098291e2dec99db18abb3916ff86d68ea57484455c9de3a321b396e1b4dcd6d0d')
 
 prepare() {
   if [[ "$CARCH" != "x86_64" ]]; then
