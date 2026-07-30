@@ -1,0 +1,25 @@
+pkgbase = cow-wm-git
+	pkgdesc = cow is a stacking window manager using river as the compositor.
+	pkgver = 0.1.rc.r121.g55a2c30
+	pkgrel = 1
+	url = https://codeberg.org/thomasadam/cow/
+	arch = x86_64
+	license = custom:ISC
+	makedepends = meson
+	makedepends = git
+	depends = wayland
+	depends = river
+	depends = libxkbcommon
+	depends = pango
+	depends = cairo
+	depends = libbsd
+	depends = scdoc
+	depends = bison
+	depends = flex
+	optdepends = waybar: wayland status bar
+	optdepends = dunst: notification daemon
+	optdepends = wl-clip-persist: clipboard persistance after closing apps
+	source = cow-wm::git+https://codeberg.org/thomasadam/cow/
+	b2sums = SKIP
+
+pkgname = cow-wm-git
