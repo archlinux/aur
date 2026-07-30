@@ -8,7 +8,7 @@ url='https://github.com/hedgeg0d/crom'
 license=('MIT')
 makedepends=('clang' 'lld' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e12fe0cdde1be615f2a22e0d814ff274213ea70cf6120aa0a68422d30ffc524')
+sha256sums=('66d7894240c0e8949a2d19ad7651506b62ea98f2fb6a482871459558dfb82daf')
 
 # AUR builds on the machine that will run it, so tune for this CPU. Set
 # _native=0 if the built package will be copied to a different machine.

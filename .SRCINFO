@@ -9,6 +9,6 @@ pkgbase = crom
 	makedepends = lld
 	makedepends = python
 	source = crom-0.3.0.tar.gz::https://github.com/hedgeg0d/crom/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 8e12fe0cdde1be615f2a22e0d814ff274213ea70cf6120aa0a68422d30ffc524
+	sha256sums = 66d7894240c0e8949a2d19ad7651506b62ea98f2fb6a482871459558dfb82daf
 
 pkgname = crom
