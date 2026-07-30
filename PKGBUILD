@@ -1,6 +1,6 @@
-# Maintainer: Selim Bucher <your@email>
+# Maintainer: Selim Bucher <me@selim.one>
 pkgname=kiwi-shell
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Desktop shell for Hyprland built with AGS and Astal"
 arch=('x86_64')
@@ -10,14 +10,17 @@ depends=(
     'gjs'
     'gtk4'
     'libadwaita'
-    'libsoup'
-    'swww'
+    'libsoup3'
+    'awww-git'
     'hyprsunset'
     'brightnessctl'
     'zenity'
     'imagemagick'
+    'libpulse'
     'psmisc'
+    'glib2'
     'libastal-meta'
+    'libastal-quarrel-git'
     'kiwi-settings'
 )
 makedepends=(
@@ -28,7 +31,6 @@ makedepends=(
     'wayland'
     'wayland-protocols'
     'gobject-introspection'
-    'glib2'
     'dart-sass'
 )
 optdepends=(
@@ -40,7 +42,7 @@ optdepends=(
     'upower: battery status'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/selimbucher/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf02208c6598fd89d49e9029ae49ad39859e82204ed9ee1ae9d4820b4b924cf8')
+sha256sums=('28d547a24efdf31911836c833b668c45d279d4e6389e7024c94086a75ecf3286')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -49,12 +51,18 @@ build() {
         --prefix=/usr \
         --buildtype=release
     ninja -C build-app-capture
+
+    meson setup src/hyprland-shortcuts build-hyprland-shortcuts \
+        --prefix=/usr \
+        --buildtype=release
+    ninja -C build-hyprland-shortcuts
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
     DESTDIR="$pkgdir" ninja -C build-app-capture install
+    DESTDIR="$pkgdir" ninja -C build-hyprland-shortcuts install
 
     install -dm755 "$pkgdir/usr/bin"
     ags bundle src/kiwi-shell/app.tsx "$pkgdir/usr/bin/.kiwi-core" \
@@ -72,9 +80,11 @@ echo "--- Starting Kiwi Shell at $(date) ---" | tee -a "$LOG_FILE"
 EOF
     chmod +x "$pkgdir/usr/bin/kiwi"
 
+    # "--" stops the ags CLI from eating flags meant for the shell's own
+    # quarrel-based command parser
     cat > "$pkgdir/usr/bin/kiwictl" << 'EOF'
 #!/usr/bin/env bash
-exec ags request "$@"
+exec ags request -- "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/kiwictl"
 
