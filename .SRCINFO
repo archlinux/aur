@@ -1,6 +1,6 @@
 pkgbase = andcli-bin
 	pkgdesc = A 2FA TUI for your shell
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/tjblackheart/andcli
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = andcli-bin
 	depends = glibc
 	provides = andcli
 	conflicts = andcli
-	source = LICENSE-2.7.0::https://raw.githubusercontent.com/tjblackheart/andcli/v2.7.0/LICENSE.md
-	source = README-2.7.0.md::https://raw.githubusercontent.com/tjblackheart/andcli/v2.7.0/README.md
+	source = LICENSE-2.8.0::https://raw.githubusercontent.com/tjblackheart/andcli/v2.8.0/LICENSE.md
+	source = README-2.8.0.md::https://raw.githubusercontent.com/tjblackheart/andcli/v2.8.0/README.md
 	sha256sums = d45afd6fb9c249b4daef3c0362a71ff3c9cfa607c8162c29af42a5546e9b3246
 	sha256sums = 7b58c12721cef0b66e00a010ec0a571693a9b0d6ca9561eb5a9ca4971ea26f5e
-	source_x86_64 = andcli-x86_64-2.7.0::https://github.com/tjblackheart/andcli/releases/download/v2.7.0/andcli_v2.7.0_linux_amd64
-	sha256sums_x86_64 = 15c3eed110c5b92c5473d73fa401c255de180cd52b6f9a753b3027456990347f
-	source_aarch64 = andcli-aarch64-2.7.0::https://github.com/tjblackheart/andcli/releases/download/v2.7.0/andcli_v2.7.0_linux_arm64
-	sha256sums_aarch64 = 3612ca4cbc35b412146c5abd6ad49fec5a34af031bae260a012dd6bcd9c66bcf
+	source_x86_64 = andcli-x86_64-2.8.0::https://github.com/tjblackheart/andcli/releases/download/v2.8.0/andcli_v2.8.0_linux_amd64
+	sha256sums_x86_64 = 93c402f842c33ba70f2795e0aa92b96bfdfb98d86db4c756d6733df83cfd3187
+	source_aarch64 = andcli-aarch64-2.8.0::https://github.com/tjblackheart/andcli/releases/download/v2.8.0/andcli_v2.8.0_linux_arm64
+	sha256sums_aarch64 = 66bb80906c1b20166aff28e383dc522536ba0797a89b1975c8f6c9baa5dfbe20
 
 pkgname = andcli-bin
