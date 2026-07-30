@@ -1,0 +1,6 @@
+[kvrt-aarch64]
+source = "regex"
+url = "https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/arm-64/kvrt.xml"
+regex = '\d+\.\d+\.\d+\.\d+"\s+databases_timestamp\s*=\s*"\d+'
+from_pattern = '(\d+\.\d+\.\d+\.\d+)"\s+databases_timestamp\s*=\s*"(\d+)'
+to_pattern = '\1.\2'
