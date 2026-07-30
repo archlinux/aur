@@ -1,0 +1,33 @@
+pkgbase = certora-cli
+	pkgdesc = Runner for the Certora Prover: formal verification of EVM, Solana and Stellar smart contracts
+	pkgver = 8.18.0
+	pkgrel = 1
+	url = https://www.certora.com
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = java-runtime>=19
+	depends = python
+	depends = python-click
+	depends = python-jinja
+	depends = python-json5
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-rich
+	depends = python-sly
+	depends = python-strenum
+	depends = python-tabulate
+	depends = python-tqdm
+	depends = python-typing_extensions
+	depends = python-wcmatch
+	optdepends = certora-prover-bin: run verification locally instead of on Certora's cloud
+	optdepends = certora-gambit-bin: mutant generation for certoraMutate
+	optdepends = solidity: solc compiler for building Solidity contracts
+	optdepends = graphviz: TAC reports
+	source = https://files.pythonhosted.org/packages/source/c/certora_cli/certora_cli-8.18.0.tar.gz
+	sha256sums = d059116e852aafbfbfca7f6d8090968e9ea2bbcc056989ed9a282e3f6fed07dd
+
+pkgname = certora-cli
