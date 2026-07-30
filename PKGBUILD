@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Lightweight TUI for tracking versions of your favorite tools"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('4b305280b1055b3dcf319284ae147e3502d6e57153e03bb5587d89c03d4d320f')
-sha256sums_aarch64=('0e752bc81d24172a102371bbaed7f14caaeb6a053dae54066f6953fd5ae5b306')
+sha256sums_x86_64=('08f62bab74caf05625532d4e1e596f587c555d5351353dbca5e3edd66d83c557')
+sha256sums_aarch64=('1e238709c16de506de5960d04edaa67cc4c078f5b9295981aa728798ee979240')
 
 
 package() {
