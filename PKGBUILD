@@ -1,7 +1,7 @@
 # Maintainer: Ruben Kelevra <rubenkelevra@gmail.com>
 
 pkgname=whoneeds
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Show explicitly installed Arch packages that depend on a package'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=(
            'pkgtools-git'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('cf74cdf3b7b30a7b0064d94beb7880b4248bad82e8aefba3eea60fe4c9b8e7482c0b0897693e9d4a37518d9f40968a8941f87bda34326e57ea33e377de3fa9b0')
+b2sums=('a5af6e8ac112bac21f6b54a9ad6e1b2ea886ac6f8cd86204b706661f2178a5367883e12d6705bad3a774ae13029495d91b3a3e0a13ef587114c27225fa564965')
 
 build() {
 	cd "${pkgname}-${pkgver}"
