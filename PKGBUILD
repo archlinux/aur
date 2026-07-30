@@ -42,7 +42,7 @@ optdepends=(
     'upower: battery status'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/selimbucher/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8bac12b6df7c4193477dd9b27ab626d69b9489d37420f519af1517e33098724d')
+sha256sums=('6ddd1d6c16262a5c8a7f6ff6777888f1430a55a54833730457464931c20d55de')
 
 build() {
     cd "$pkgname-$pkgver"

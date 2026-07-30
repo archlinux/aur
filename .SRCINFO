@@ -35,6 +35,6 @@ pkgbase = kiwi-shell
 	optdepends = pipewire: audio support
 	optdepends = upower: battery status
 	source = kiwi-shell-0.4.1.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 8bac12b6df7c4193477dd9b27ab626d69b9489d37420f519af1517e33098724d
+	sha256sums = 6ddd1d6c16262a5c8a7f6ff6777888f1430a55a54833730457464931c20d55de
 
 pkgname = kiwi-shell
