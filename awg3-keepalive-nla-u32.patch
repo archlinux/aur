@@ -1,0 +1,13 @@
+diff --git a/src/netlink.c b/src/netlink.c
+index cdf1981..ea56676 100644
+--- a/src/netlink.c
++++ b/src/netlink.c
+@@ -74,7 +74,7 @@ static const struct nla_policy peer_policy[WGPEER_A_MAX + 1] = {
+ 	[WGPEER_A_PRESHARED_KEY]			= NLA_POLICY_EXACT_LEN(NOISE_SYMMETRIC_KEY_LEN),
+ 	[WGPEER_A_FLAGS]				= NLA_POLICY_MASK(NLA_U32, __WGPEER_F_ALL),
+ 	[WGPEER_A_ENDPOINT]				= NLA_POLICY_MIN_LEN(sizeof(struct sockaddr)),
+-	[WGPEER_A_PERSISTENT_KEEPALIVE_INTERVAL]	= { .type = NLA_U64 },
++	[WGPEER_A_PERSISTENT_KEEPALIVE_INTERVAL]	= { .type = NLA_U32 },
+ 	[WGPEER_A_LAST_HANDSHAKE_TIME]			= NLA_POLICY_EXACT_LEN(sizeof(struct __kernel_timespec)),
+ 	[WGPEER_A_RX_BYTES]				= { .type = NLA_U64 },
+ 	[WGPEER_A_TX_BYTES]				= { .type = NLA_U64 },

@@ -1,7 +1,7 @@
 pkgbase = amneziawg-dkms
 	pkgdesc = AmneziaWG kernel module with AWG 3.0 (Header Protection) + kernel 7.1 fixes
 	pkgver = 1.0.20260728.r1350.86b4403
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
 	arch = x86_64
 	license = GPLv2
@@ -11,8 +11,10 @@ pkgbase = amneziawg-dkms
 	conflicts = amneziawg-linux-hardened
 	source = git+https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git#branch=feat/awg3
 	source = kernel-7.1-compat.patch
+	source = awg3-keepalive-nla-u32.patch
 	sha256sums = SKIP
 	sha256sums = 79531d6ba515395ef4abbe96196fa5fb39b29163629cbd742223bbc21efa233a
+	sha256sums = a06885a1719735d12a8cd4315113b67ea023c96ad7cfd9808c741a492377998d
 
 pkgname = amneziawg-dkms
 	depends = dkms
