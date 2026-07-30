@@ -1,7 +1,7 @@
 pkgbase = fcitx5-sime
 	pkgdesc = Sime Chinese input method for Fcitx5
 	pkgver = 2026.04.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ismantic/SimeApp
 	arch = x86_64
 	license = Apache-2.0

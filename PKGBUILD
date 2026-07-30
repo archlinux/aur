@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-sime
 pkgver=2026.04.29
-pkgrel=1
+pkgrel=2
 _appver=0.15.3
 _enginever=2026.04.29
 pkgdesc="Sime Chinese input method for Fcitx5"
