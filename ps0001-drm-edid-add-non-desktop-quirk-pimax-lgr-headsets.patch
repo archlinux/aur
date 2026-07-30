@@ -1,0 +1,25 @@
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index 0f7c4c5b14b9..87ca0637732b 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -237,6 +237,16 @@ static const struct edid_quirk {
+ 	EDID_QUIRK('S', 'E', 'C', 0x144a, BIT(EDID_QUIRK_NON_DESKTOP)),
+	EDID_QUIRK('A', 'U', 'S', 0xc102, BIT(EDID_QUIRK_NON_DESKTOP)),
+ 
++	/* Pimax VR Headsets */
++	EDID_QUIRK('O', 'V', 'R', 0x0003, BIT(EDID_QUIRK_NON_DESKTOP)),
++	EDID_QUIRK('S', 'V', 'R', 0x1019, BIT(EDID_QUIRK_NON_DESKTOP)),
++	EDID_QUIRK('P', 'V', 'R', 0x1019, BIT(EDID_QUIRK_NON_DESKTOP)),
++	EDID_QUIRK('P', 'V', 'R', 0x101a, BIT(EDID_QUIRK_NON_DESKTOP)),
++	EDID_QUIRK('P', 'V', 'R', 0x101b, BIT(EDID_QUIRK_NON_DESKTOP)),
++
++	/* LG 360 VR Headset */
++	EDID_QUIRK('T', 'S', 'B', 0x8888, BIT(EDID_QUIRK_NON_DESKTOP)),
++
+ 	/* Sony PlayStation VR Headset */
+	EDID_QUIRK('S', 'N', 'Y', 0x0704, BIT(EDID_QUIRK_NON_DESKTOP)),
+ 
+	
+-- 
+2.44.0
+

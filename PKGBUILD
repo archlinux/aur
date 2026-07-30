@@ -41,6 +41,8 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   bigscreen-beyond-kernel-7.0.12.patch
   0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSi.patch
+  ps0001-drm-edid-add-non-desktop-quirk-pimax-lgr-headsets.patch
+  ps0002-drm-displayid-Ignore-invalid-Pimax-checksums.patch
   amd-bsb-dsc-fix.patch
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
 )
@@ -53,6 +55,8 @@ sha256sums=('22a0196b3cbcdf34dc27b77561f4d040585fd3447edc9ab3531a1ac79e3041e7'
             'SKIP'
             '31b1dd41bde411c860b86eb338e4e51775ba8e19771cbb9fbe12a978cd7c1c82'
             '62aa97495d491b6efda27055a0a203d98ec527a8c7d21a168ffa7fd12c08a927'
+            'dada0c6e89237105d87d927db81a618a060ee0d0fe0bdf5264eb80ebc58af9fa'
+            '123b076f296bf357e2a9c220041d5bf0ad4cba01b7242377d235061c437de496'
             'c22989441488c4d7a027f4ab2c049be838a43caac3f22abd987c0bef718c5438'
             '04efe829f7b0df735f18fd8c4a0f5025fb2811012a3c8cd20b6c88350171437d'
             'SKIP')
@@ -61,6 +65,8 @@ b2sums=('d1dcf9b2a7ba1ed431d2b2c785ffc9a4ce729e4a004629061a73451a471316f43721200
         'SKIP'
         '30ee044796d191d8fcac830c1100c482921cdeccb19f34c314944cc324981e879016e2f7770c9e3e244d873b149fbdae2c628edb5e78e7a86ab5a0a081b3bab5'
         'f2ea744efc628122f96500880717a9bfe03ffdfee30e8027bac44cbc7e0ab2f684dc6a3f9619da8941d1cb45dd80f4e34a022fcfea135baa4174f41fbd10f8eb'
+        '4077a7c711f962ed1bc779ce5d10aac09e849dde44260c8f190be7b7429647ff4d1d19d6ce32636cce607218407ddcd78b658d5846f0e168f79b1e1ede872d5b'
+        '8d8229d36aa31e4879adfc457e316f4a3cae2672a3d010d0b8097245ded37c30192a97188f3b3dfc450e511b57b8bd69df3b9ab59e3e6ad36cb23b449ea4e48e'
         '77a7eb3a552ca944de6d86364c197472653fba465f0cfbf490059bcf9f5df0638b41478d012febb6be272e16684112116e3fa5d3f0cdd0870f454f588dbd5784'
         'a4c870cb5a22b410432d0aa773b591ed7778e8ef5ac46f589a26518d0c0650d7cd2e34566cf850dc827eb0b21f19957a4e50179298ca69c3a55da9a178d942e8'
         'SKIP')

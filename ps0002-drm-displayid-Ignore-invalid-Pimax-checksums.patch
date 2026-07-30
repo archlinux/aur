@@ -1,0 +1,33 @@
+--- a/drivers/gpu/drm/drm_displayid.c	2026-07-22 13:54:05.724348630 +0200
++++ b/drivers/gpu/drm/drm_displayid.c	2026-07-22 13:58:15.789983265 +0200
+@@ -23,6 +23,38 @@
+ 		.ident = DRM_EDID_IDENT_INIT('C', 'S', 'O', 5142, "MNE007ZA1-5"),
+ 		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
+ 	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x1019, "Pimax P2N"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x1019, "Pimax P2A"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x101a, "Pimax P2B"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x101b, "Pimax P2C"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x101a, "Pimax P2C"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x101b, "Pimax P2Z"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
+ };
+ 
+ static u8 get_quirks(const struct drm_edid *drm_edid)
