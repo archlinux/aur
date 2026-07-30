@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=rake-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source=("${_base}/dist-rake.tar.gz")
 source_x86_64=("rake-x86_64::${_base}/rake-x86_64-unknown-linux-musl")
 source_aarch64=("rake-aarch64::${_base}/rake-aarch64-unknown-linux-musl")
 # Checksums are filled in by the release workflow before publishing to the AUR.
-sha256sums=('185ddc729d43f9af1ec77bd84a2857dfeec4dbf5179bcdae0e9aa5be102b7c6d')
-sha256sums_x86_64=('7364824a97ee08ff66230e1ad095fc685b6dce4330cd664732fdc77d4f043d5f')
-sha256sums_aarch64=('98f69ca8258055952dbb3c8dbebad31de416661f2d739821c40978e154a437d2')
+sha256sums=('7baf97802f8f38d01c3561ab3a297fcb9ab0f35c497a5d4fa7cd8a0b6501582c')
+sha256sums_x86_64=('a71e8bc36a12935004642720c93cfee4a3bd631594c7ec1ede7986b8b1e06300')
+sha256sums_aarch64=('bb1f9466b6855dd011212b77745ec74bfe1c86f9b013d2059c8a837beac84ef1')
 
 package() {
     install -Dm755 "rake-${CARCH}" "$pkgdir/usr/bin/rake"
