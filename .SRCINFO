@@ -1,0 +1,21 @@
+pkgbase = xdg-desktop-portal-hypr-remote-git
+	pkgdesc = a complete implementation of the RemoteDesktop portal for Hyprland
+	pkgver = r4.f463018
+	pkgrel = 1
+	url = https://github.com/gac3k/xdg-desktop-portal-hypr-remote
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = hyprland-protocols
+	makedepends = sdbus-cpp
+	makedepends = systemd
+	makedepends = wayland-protocols
+	depends = libei
+	depends = xdg-desktop-portal
+	provides = xdg-desktop-portal-hypr-remote
+	conflicts = xdg-desktop-portal-hypr-remote
+	source = git+https://github.com/gac3k/xdg-desktop-portal-hypr-remote.git
+	sha256sums = SKIP
+
+pkgname = xdg-desktop-portal-hypr-remote-git
