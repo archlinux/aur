@@ -1,6 +1,6 @@
 pkgbase = open-code-review-bin
 	pkgdesc = Alibaba's open-source AI-powered code review CLI tool
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/alibaba/open-code-review
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = open-code-review-bin
 	provides = open-code-review
 	conflicts = ocr
 	conflicts = open-code-review
-	source_x86_64 = open-code-review-bin-1.8.0::https://github.com/alibaba/open-code-review/releases/download/v1.8.0/opencodereview-linux-amd64
-	sha256sums_x86_64 = e3465a8f508c4ca1a2b0510e6714707ee852d0a659e04c53bde1d8e27f966a94
+	source_x86_64 = open-code-review-bin-1.8.1::https://github.com/alibaba/open-code-review/releases/download/v1.8.1/opencodereview-linux-amd64
+	sha256sums_x86_64 = ba1267a7b54be82642971d5fc2b0bb4378f99609a339f85cdf9f660f14286c9b
 
 pkgname = open-code-review-bin
