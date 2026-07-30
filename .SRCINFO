@@ -1,12 +1,12 @@
 pkgbase = rockscript
 	pkgdesc = Esolang named rockscript
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/kirbytheburger/rockscript
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = rockscript-0.2.3.tar.gz::https://static.crates.io/crates/rockscript/rockscript-0.2.3.crate
-	sha256sums = 49229ff70edbe5607da59e2a30eb8f308db607ac528d9dfde6afb8a8e5b505ba
+	source = rockscript-0.2.4.tar.gz::https://static.crates.io/crates/rockscript/rockscript-0.2.4.crate
+	sha256sums = 15b553955d97a41634061aca3e3a83b485d8169aa7be4fc8e60c5a3adbe90f58
 
 pkgname = rockscript
