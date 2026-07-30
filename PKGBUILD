@@ -1,7 +1,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=mdbook-pagetoc
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="A preprocessor for mdbook to render a table of contents for each page"
 url="https://github.com/slowsage/mdbook-pagetoc"
@@ -14,7 +14,7 @@ depends=(
   'mdbook'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0101c3d8931345d43a17f02cb12cde86f7120fda51bcdd4137736b6361f6eabf')
+sha256sums=('404b72d2d9039fc52b2a1b5e516f96d42f0f80637846947b4b63f25d5261a672')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
