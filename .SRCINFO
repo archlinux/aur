@@ -1,0 +1,19 @@
+pkgbase = certora-gambit-bin
+	pkgdesc = Certora's Gambit mutant generator for Solidity, used by certoraMutate
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/Certora/gambit
+	arch = x86_64
+	license = MIT
+	depends = certora-cli
+	depends = glibc
+	depends = libgcc
+	provides = certora-gambit
+	conflicts = certora-gambit
+	options = !debug
+	source = gambit-1.0.6::https://github.com/Certora/gambit/releases/download/v1.0.6/gambit-linux-v1.0.6
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/Certora/gambit/v1.0.6/LICENSE
+	sha256sums = 76321d84564ff4d8222bfb359f1fe67eae69f21e689dbc9c23760257a94864fa
+	sha256sums = bb6f1839428742aee306857f853048e89c8b45ef20499ad97255099256dc2f8c
+
+pkgname = certora-gambit-bin
