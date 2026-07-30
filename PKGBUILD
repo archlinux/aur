@@ -13,6 +13,7 @@ arch=('any')
 url="https://github.com/trektn/hakubun-plus"
 license=('GPL-3.0-or-later')
 depends=('python')
+conflicts=('hakubun-git')
 
 makedepends=(
   desktop-file-utils
