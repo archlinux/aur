@@ -1,0 +1,15 @@
+pkgbase = cheap
+	pkgdesc = Cheapest Hierarchical Enchant-Anvil Planner -- native Minecraft enchantment ordering tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lokifisch/cheap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = gtk4
+	source = cheap-1.0.0.tar.gz::https://github.com/Lokifisch/cheap/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 92a63ce9dbd93657f2ec659d1d8478b1e7e1371f9e683f4ef8d26397207bdda2
+
+pkgname = cheap
