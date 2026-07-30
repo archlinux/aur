@@ -1,0 +1,12 @@
+pkgbase = emmy-lua-code-style-bin
+	pkgdesc = EmmyLuaCodeStyle: project is an example of Lua code analysis\formatting\code diagnosis algorithm library and language service based on C++
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/CppCXY/EmmyLuaCodeStyle
+	arch = x86_64
+	license = MIT License
+	provides = emmy-lua-code-style
+	source_x86_64 = https://github.com/CppCXY/EmmyLuaCodeStyle/releases/download/1.6.0/linux-x64.tar.gz
+	sha256sums_x86_64 = ce712ffecb697c2019c0602665cc58276c2559c0a0f3d319b2ade4c539faecce
+
+pkgname = emmy-lua-code-style-bin
