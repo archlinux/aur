@@ -1,6 +1,6 @@
 pkgbase = xfce4-meowmenu-plugin
 	pkgdesc = Modern menu launcher plugin for the Xfce panel
-	pkgver = 0.8.0
+	pkgver = 1.0.0rc1
 	pkgrel = 1
 	url = https://github.com/matteobonanomi/xfce4-meowmenu-plugin
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = xfce4-meowmenu-plugin
 	depends = libxfce4util
 	depends = xfce4-panel
 	depends = xfconf
-	source = xfce4-meowmenu-plugin-0.8.0.tar.gz::https://github.com/matteobonanomi/xfce4-meowmenu-plugin/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = ecdc194064d2838c6d1fd678687ee08a6ab09252da2ce89b55ca6349dd116ed7
+	source = xfce4-meowmenu-plugin-1.0.0-rc1.tar.gz::https://github.com/matteobonanomi/xfce4-meowmenu-plugin/archive/refs/tags/v1.0.0-rc1.tar.gz
+	sha256sums = 3af33310dfa7b82fced0fb7b94d4dbff1f7fed1c62c4c73eb0a7641f0e6aac15
 
 pkgname = xfce4-meowmenu-plugin

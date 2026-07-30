@@ -1,7 +1,8 @@
 # Maintainer: Matteo Bonanomi <mbonanomi.dev@proton.me>
 
 pkgname=xfce4-meowmenu-plugin
-pkgver=0.8.0
+_upstream_version=1.0.0-rc1
+pkgver=1.0.0rc1
 pkgrel=1
 pkgdesc="Modern menu launcher plugin for the Xfce panel"
 arch=('x86_64')
@@ -15,8 +16,8 @@ depends=('accountsservice' 'exo' 'garcon' 'glib2' 'gtk-layer-shell' 'gtk3'
 # base-devel is assumed present (standard makepkg requirement) and is NOT
 # listed here. meson/ninja are real build inputs not guaranteed by base-devel.
 makedepends=('gettext' 'git' 'meson' 'ninja' 'pkgconf')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ecdc194064d2838c6d1fd678687ee08a6ab09252da2ce89b55ca6349dd116ed7')
+source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
+sha256sums=('3af33310dfa7b82fced0fb7b94d4dbff1f7fed1c62c4c73eb0a7641f0e6aac15')
 
 build() {
   cd "${srcdir}"
@@ -24,12 +25,17 @@ build() {
   # explicit meson setup when the image lacks the helper, without touching the
   # project's own Meson files.
   if command -v arch-meson >/dev/null 2>&1; then
-    arch-meson "${pkgname}-${pkgver}" build
+    arch-meson "${pkgname}-${_upstream_version}" build
   else
-    meson setup "${pkgname}-${pkgver}" build \
+    meson setup "${pkgname}-${_upstream_version}" build \
       --prefix=/usr --buildtype=plain --wrap-mode=nodownload
   fi
   meson compile -C build
+}
+
+check() {
+  cd "${srcdir}"
+  meson test -C build --print-errorlogs
 }
 
 package() {
