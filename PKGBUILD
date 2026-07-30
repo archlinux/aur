@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=blaster
-_pkgver=1.0.7
+_pkgver=1.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('80ecfcdc4cbd001e2db5f8a622b96eed')
-b2sums=('ef2d139129061887c9a461c46c0d7211d08f54e59d8bb7e8d2a0bb361620839ffd51d99803bad72d791c58b2abc7270e7bdaa1d5a92cde66855079ad09f5b9e2')
+md5sums=('cff66e0511c61be25ab9068dffeb15a9')
+b2sums=('223826dce74cf4daf7b60e87b70490c3ec31b31a40bb0d2e28eb9260c9d7c71b41a4159d1d9d86607eb7e9a9a293c248c24b139b094fccc8b1efc2375a393570')
 
 build() {
   mkdir build
