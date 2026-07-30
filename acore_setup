@@ -96,7 +96,7 @@ fi
 echo " -> Launching authserver initialization engine..."
 
 # Verify execution path exists before starting the background process thread
-if [ ! -f /usr/share/azerothcore/bin/authserver ] && [ ! -f /usr/bin/authserver ]; then
+if [ ! -f /usr/bin/authserver ]; then
     echo "❌ Error: Mandated authserver executable not found in default search paths."
     exit 1
 fi
@@ -104,8 +104,6 @@ fi
 # Select binary execution target based on your custom cmake binary directories layout
 if [ -f /usr/bin/authserver ]; then
     AUTH_BIN="/usr/bin/authserver"
-else
-    AUTH_BIN="/usr/share/azerothcore/bin/authserver"
 fi
 
 $AUTH_BIN > /dev/null 2>&1 &
@@ -166,15 +164,13 @@ echo ""
 SETUP_USER_UPPER=$(echo "$SETUP_USER" | tr '[:lower:]' '[:upper:]')
 
 # Verify the worldserver binary destination paths before proceeding to foreground execution
-if [ ! -f /usr/share/azerothcore/bin/worldserver ] && [ ! -f /usr/bin/worldserver ]; then
+if [ ! -f /usr/bin/worldserver ]; then
     echo "❌ Error: Mandated worldserver execution targets not found inside path parameters."
     exit 1
 fi
 
 if [ -f /usr/bin/worldserver ]; then
     WORLD_BIN="/usr/bin/worldserver"
-else
-    WORLD_BIN="/usr/share/azerothcore/bin/worldserver"
 fi
 
 # Force turn ON the interactive console in the config file so it attaches to this terminal

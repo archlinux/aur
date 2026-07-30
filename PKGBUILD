@@ -13,7 +13,7 @@ pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
 pkgver=r18954.9963e60396
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.azerothcore.org"
 license=('AGPL3')
@@ -23,9 +23,9 @@ source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-world-server.service"
 		"acore_setup")
 sha512sums=('SKIP'
-            'b8f13b46be156fc93ee639b8d1c10cd86f055e61201ee28b6c40dfaa95a71c0f2f7374fab34edda9881f4ead537e4c89b57fb6ff57a9373f7742ec00a9cb30fd'
-            '14ed11734dee5c2351bd3e799b5221afc846ee78b06bfa42ad5677b8d8f679b4170c641c489cba582f939742de5ff74bb7966bbd843c8be8e80bfc969cff6243'
-            '58a0a32ce56a6398371334c736bb24deb699b5e1c83d90a7671d15482fc6d193ba95ae27e15b5126d7574fcab6ffdd8dcaf17dea4087cc18365284faec6f2638')
+            'b71132ace8a0710b22038716258ed4ecaba81074c7a9c69951440049b955d95e3dd1f8ca81305832ec8f2bea32672f06a19a3b5a569ca3152eb9a4e7a1f7d72c'
+            '40fa719a7fc331210eb12266717e8cd8789390462f3cdd026a6917b0f15f177708dbf6e524b26dc0523381fa51901d21000c49132c27643a48cb9a592856adca'
+            'e2507661acdc8eef4dc733dc945e4e6bac188694f103dff2c165e8812a61a1196038cc31f602c5f89df2723d70c9fddbef0f35b4af698b17c74cab2d5a86cba9')
 
 install='azerothcore-wotlk-git.install'
 #backup=('usr/share/azerothcore/acore.json')
