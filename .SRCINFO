@@ -1,6 +1,6 @@
 pkgbase = hypr-persist
 	pkgdesc = Session persistence daemon for Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ngamber/hypr-persist
 	install = hypr-persist.install
@@ -10,7 +10,7 @@ pkgbase = hypr-persist
 	makedepends = mold
 	depends = gcc-libs
 	options = !debug
-	source = hypr-persist-0.1.1.tar.gz::https://github.com/ngamber/hypr-persist/archive/v0.1.1.tar.gz
-	sha256sums = d339ba91eff710114fe57837b76f363086463a39b24282d8891d3324e2a0d4af
+	source = hypr-persist-0.1.2.tar.gz::https://github.com/ngamber/hypr-persist/archive/v0.1.2.tar.gz
+	sha256sums = 362199cfb5172cf1b2b8c2d46218c6f7b0099d8e91947556fd0f72d6c3341686
 
 pkgname = hypr-persist
