@@ -1,6 +1,6 @@
 pkgbase = pdfatlas-git
 	pkgdesc = PDF Reader with Search Portals and Auto-Crop
-	pkgver = r90.3b7aa32
+	pkgver = r91.e9fa6e4
 	pkgrel = 1
 	url = https://github.com/aziis98/pdfatlas
 	arch = any
@@ -20,7 +20,6 @@ pkgbase = pdfatlas-git
 	depends = python-rapidfuzz
 	depends = python-tqdm
 	depends = python-numpy
-	depends = hicolor-icon-theme
 	provides = pdfatlas
 	conflicts = pdfatlas
 	source = pdfatlas::git+https://github.com/aziis98/pdfatlas.git
