@@ -1,0 +1,18 @@
+pkgbase = druk-bin
+	pkgdesc = A terminal code editor with a file tree, tabs, search, git integration, and syntax highlighting
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/letstri/druk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = druk
+	conflicts = druk
+	options = !debug
+	source_x86_64 = druk-1.7.0-linux-x86_64.tar.gz::https://github.com/letstri/druk/releases/download/v1.7.0/druk-linux-x64.tar.gz
+	sha256sums_x86_64 = 6b655ed56530f2dfb11eef6c91268f10ba7788ed518f4d892565ea2371f583c5
+	source_aarch64 = druk-1.7.0-linux-aarch64.tar.gz::https://github.com/letstri/druk/releases/download/v1.7.0/druk-linux-arm64.tar.gz
+	sha256sums_aarch64 = f172cf1d4217afa2cd82b0d9854fbbfab53d0bf338d7e94ea0819ce132436c54
+
+pkgname = druk-bin
