@@ -1,0 +1,19 @@
+pkgbase = keadm-bin
+	pkgdesc = KubeEdge installer tool for setting up cloud and edge components (prebuilt binary)
+	pkgver = 1.23.1
+	pkgrel = 1
+	url = https://kubeedge.io
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/kubeedge/kubeedge/releases/download/v1.23.1/keadm-v1.23.1-linux-amd64.tar.gz
+	sha512sums_x86_64 = d25e287785858d113bca1f9f46c5c46bd239be9997365595df4d305520db8c9aba3177147fa96bd48a2e4c1ee8e25f99d4f4c50874909d826f2bbd3e5bac23cd
+	source_aarch64 = https://github.com/kubeedge/kubeedge/releases/download/v1.23.1/keadm-v1.23.1-linux-arm64.tar.gz
+	sha512sums_aarch64 = c57b8cdb79780e81a10d75499a6f8f4d804b4871a828324a530e0edfc1a233af061f46b3a1fe07d1af3f493ec9c0382b8ed0627001d010e8f119405aaaccc9a7
+	source_armv7h = https://github.com/kubeedge/kubeedge/releases/download/v1.23.1/keadm-v1.23.1-linux-arm.tar.gz
+	sha512sums_armv7h = 303029a452cd6292c076efd4a26e94a3d1dd6377c65f691a5041c7ae5e743fad57f73d32fe2a5c73ffa92cfb3e83a556b8a1ab6b50cbe54f512d327e216e9e21
+
+pkgname = keadm-bin
