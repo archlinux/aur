@@ -1,6 +1,6 @@
 pkgbase = aria2-next-bin
 	pkgdesc = aria2 fork with extensive bug fixes and modernized architecture (binary version)
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/AnInsomniacy/aria2-next
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = aria2-next-bin
 	depends = ca-certificates
 	depends = libssh2
 	provides = aria2-next
-	provides = aria2-next=2.5.2
+	provides = aria2-next=2.5.3
 	conflicts = aria2-next
-	source_x86_64 = https://github.com/AnInsomniacy/aria2-next/releases/download/v2.5.2/aria2-next-2.5.2-linux-x86_64
-	sha256sums_x86_64 = e3f448b40487d5899d292ac78598052b938db98dc5e7e3533d6b94a00bc40213
-	source_aarch64 = https://github.com/AnInsomniacy/aria2-next/releases/download/v2.5.2/aria2-next-2.5.2-linux-aarch64
-	sha256sums_aarch64 = 6784e5381a8816950203e2eeaef46ef58fd291e56403e0d478afb28f192ff340
+	source_x86_64 = https://github.com/AnInsomniacy/aria2-next/releases/download/v2.5.3/aria2-next-2.5.3-linux-x86_64
+	sha256sums_x86_64 = 1093409bdc9686ed9b4fa6183631dd513e75d3e7dde70e59e1c729e0b2b802e9
+	source_aarch64 = https://github.com/AnInsomniacy/aria2-next/releases/download/v2.5.3/aria2-next-2.5.3-linux-aarch64
+	sha256sums_aarch64 = 3bc12bf3d3ed72b91ba941d20578201395d9e83209de4fe04f016765933de7bd
 
 pkgname = aria2-next-bin
