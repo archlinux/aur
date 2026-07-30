@@ -27,4 +27,8 @@ build() {
 
 package() {
     cmake --install build --prefix "$pkgdir/usr"
+
+    install -d "$pkgdir/usr/bin"
+
+    ln -s EternalTerminalApp "$pkgdir/usr/bin/eternal-terminal"
 }
