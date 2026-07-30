@@ -4,12 +4,13 @@
 pkgname=prometheus-bind-exporter-git
 _pkgname=bind_exporter
 pkgver=v0.8.0.r46.g78cbe84
-pkgrel=2
+pkgrel=3
 pkgdesc='Prometheus exporter for BIND metrics'
 arch=('x86_64')
 url='https://github.com/prometheus-community/bind_exporter'
 license=('Apache-2.0')
 depends=('glibc')
+conflicts=('prometheus-bind-exporter')
 makedepends=('go' 'git')
 optdepends=('bind: for monitoring a local BIND server')
 options=('!lto')
