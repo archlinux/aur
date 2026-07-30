@@ -2,7 +2,7 @@
 
 _pkgname=zlint
 pkgname=$_pkgname-git
-pkgver=0.7.9.r10.1ebc4d2
+pkgver=0.9.1.r1.e2a8692
 pkgrel=1
 pkgdesc='A linter for the Zig programming language'
 arch=(x86_64)
