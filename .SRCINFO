@@ -1,6 +1,6 @@
 pkgbase = task-manager-linux-bin
 	pkgdesc = GTK4/libadwaita system task manager and performance monitor for Linux
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/task-manager-linux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = task-manager-linux-bin
 	optdepends = lm_sensors: CPU temperature monitoring
 	provides = task-manager-linux
 	conflicts = task-manager-linux
-	source = task-manager-linux-bin-0.3.1.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/releases/download/v0.3.1/task-manager-linux-x86_64.tar.gz
-	sha256sums = 21b68c4c8b08cc70231f3466678017fcecf2e8114b99c82ce06cb059d6759511
+	source = task-manager-linux-bin-0.3.2.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/releases/download/v0.3.2/task-manager-linux-x86_64.tar.gz
+	sha256sums = 911488ef8fe0d13270b781cf8a7d48b590f57b9cabe1ff5af872ceda1925923b
 
 pkgname = task-manager-linux-bin
