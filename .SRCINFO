@@ -1,0 +1,19 @@
+pkgbase = xshape-bin
+	pkgdesc = Reshape for tabular data — pivot, unpivot, split, merge, explode, transpose a CSV/DSV without changing, filtering, or aggregating a value.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/excelano/xshape
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = xshape
+	conflicts = xshape
+	options = !strip
+	source_x86_64 = xshape-x86_64-0.2.0.txz::https://github.com/excelano/xshape/releases/download/v0.2.0/xshape-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8eff2722004f88f75e9102f788655768e089be45deb81a0cd70e9107f3e80541
+	source_aarch64 = xshape-aarch64-0.2.0.txz::https://github.com/excelano/xshape/releases/download/v0.2.0/xshape-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b2dc9e154a79603102836ac7ba4b49576385280e27be6cb99907d2ffcf721baf
+
+pkgname = xshape-bin
