@@ -1,0 +1,19 @@
+pkgbase = python-akp02
+	pkgdesc = Driver library for the Ajazz AKP02 USB secondary display
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/deonspengler/akp02
+	arch = any
+	license = MPL-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pillow
+	depends = python-hidapi
+	source = python-akp02-1.0.0.tar.gz::https://github.com/deonspengler/akp02/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-akp02
