@@ -5,7 +5,7 @@
 
 _pkgname="flow"
 pkgname="$_pkgname-bin"
-pkgver=0.324.0
+pkgver=0.325.0
 pkgrel=1
 pkgdesc="A static type checker for JavaScript"
 
