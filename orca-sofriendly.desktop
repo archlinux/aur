@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Orca
+GenericName=Visual Git Client
+Comment=Track changes made by AI coding assistants
+Exec=orca-sofriendly %F
+Icon=orca-sofriendly
+Terminal=false
+Type=Application
+Categories=Development;RevisionControl;
+MimeType=application/x-orca;
+StartupWMClass=Orca
+Keywords=Git;AI;Coding;Terminal;

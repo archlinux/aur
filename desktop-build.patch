@@ -1,0 +1,75 @@
+diff --git a/src-tauri/Cargo.lock b/src-tauri/Cargo.lock
+index d0cf046..27455b7 100644
+--- a/src-tauri/Cargo.lock
++++ b/src-tauri/Cargo.lock
+@@ -2327,7 +2327,6 @@ version = "0.36.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "95b4103cffefa72eb8428cb6b47d6627161e51c2739fc5e3b734584157bc642a"
+ dependencies = [
+- "cc",
+  "pkg-config",
+  "vcpkg",
+ ]
+@@ -2972,15 +2971,6 @@ version = "0.2.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7c87def4c32ab89d880effc9e097653c8da5d6ef28e6b539d313baaacfbafcbe"
+ 
+-[[package]]
+-name = "openssl-src"
+-version = "300.5.5+3.5.5"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3f1787d533e03597a7934fd0a765f0d28e94ecc5fb7789f8053b1e699a56f709"
+-dependencies = [
+- "cc",
+-]
+-
+ [[package]]
+ name = "openssl-sys"
+ version = "0.9.111"
+@@ -2989,7 +2979,6 @@ checksum = "82cab2d520aa75e3c58898289429321eb788c3106963d0dc886ec7a5f4adc321"
+ dependencies = [
+  "cc",
+  "libc",
+- "openssl-src",
+  "pkg-config",
+  "vcpkg",
+ ]
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 123afb4..efea142 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -7,7 +7,7 @@ edition = "2021"
+ 
+ [lib]
+ name = "orca_lib"
+-crate-type = ["staticlib", "cdylib", "rlib"]
++crate-type = ["rlib"]
+ 
+ [build-dependencies]
+ tauri-build = { version = "2", features = [] }
+@@ -20,12 +20,12 @@ tauri-plugin-updater = "2"
+ tauri-plugin-process = "2"
+ serde = { version = "1", features = ["derive"] }
+ serde_json = "1"
+-git2 = { version = "0.20", features = ["vendored-openssl", "vendored-libgit2"] }
++git2 = "0.20"
+ tokio = { version = "1", features = ["full"] }
+ parking_lot = "0.12"
+ uuid = { version = "1", features = ["v4"] }
+ dirs = "6"
+-rusqlite = { version = "0.38", features = ["bundled"] }
++rusqlite = "0.38"
+ thiserror = "1"
+ log = "0.4"
+ env_logger = "0.11"
+@@ -49,9 +49,8 @@ portable-pty = "0.9"
+ libc = "0.2"
+ 
+ [target.'cfg(target_os = "linux")'.dependencies]
+-x11 = "2.21"
++x11 = { version = "2.21", features = ["xlib"] }
+ 
+ [target.'cfg(target_os = "windows")'.dependencies]
+ portable-pty = "0.8.1"
+ windows-sys = { version = "0.59", features = ["Win32_System_Console", "Win32_UI_WindowsAndMessaging", "Win32_Foundation"] }
+-
