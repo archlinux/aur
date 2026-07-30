@@ -3,7 +3,7 @@
 # works before a tagged release exists. Builds the CLI + TUI (the GUI is an
 # opt-in cargo feature, left out so no desktop libraries are needed).
 pkgname=mam-automate-git
-pkgver=r0.g0000000
+pkgver=r20.g01949d5
 pkgrel=1
 pkgdesc="Ratio-safe MyAnonaMouse -> qBittorrent automation (CLI/TUI/GUI)"
 arch=('x86_64')

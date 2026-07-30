@@ -1,6 +1,6 @@
 pkgbase = mam-automate-git
 	pkgdesc = Ratio-safe MyAnonaMouse -> qBittorrent automation (CLI/TUI/GUI)
-	pkgver = r0.g0000000
+	pkgver = r20.g01949d5
 	pkgrel = 1
 	url = https://github.com/zsigisti/mam-automate
 	arch = x86_64
