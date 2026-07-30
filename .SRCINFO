@@ -1,0 +1,16 @@
+pkgbase = cosbrowser-bin
+	pkgdesc = Tencent Cloud COS client (repacked from official AppImage)
+	pkgver = 2.11.26
+	pkgrel = 3
+	url = https://cosbrowser.cloud.tencent.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = cosbrowser=2.11.26
+	conflicts = cosbrowser
+	options = !strip
+	source = cosbrowser-linux.zip::https://cosbrowser.cloud.tencent.com/cosbrowser-latest-linux.zip
+	sha256sums = 390f2654dc3b78e5dd4439213631a33870cd0479208721bd3c02e79d03d3dd37
+
+pkgname = cosbrowser-bin

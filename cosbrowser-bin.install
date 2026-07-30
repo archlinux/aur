@@ -1,0 +1,32 @@
+post_install() {
+  if [[ -d /opt/cosbrowser ]]; then
+    chmod -R a+rX /opt/cosbrowser 2>/dev/null || true
+    if [[ -f /opt/cosbrowser/AppRun ]]; then
+      chmod 755 /opt/cosbrowser/AppRun 2>/dev/null || true
+    fi
+  fi
+
+  echo "==> cosbrowser launches with --no-sandbox and --disable-gpu via its wrapper script."
+  echo "==> --no-sandbox: required by the upstream AppImage (no SUID chrome-sandbox under /opt)."
+  echo "==> --disable-gpu: avoids GPU init failures / blank window on some setups."
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  fi
+  if command -v gtk-update-icon-cache >/dev/null 2>&1 && [[ -d /usr/share/icons/hicolor ]]; then
+    gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  fi
+  if command -v gtk-update-icon-cache >/dev/null 2>&1 && [[ -d /usr/share/icons/hicolor ]]; then
+    gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+}
