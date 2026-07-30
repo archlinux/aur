@@ -2,7 +2,7 @@
 
 pkgname=pdfatlas-git
 _pkgname=pdfatlas
-pkgver=r92.aac78c0
+pkgver=r99.2813860
 pkgrel=1
 pkgdesc="PDF Reader with Search Portals and Auto-Crop"
 arch=('any')
@@ -48,6 +48,6 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 assets/com.aziis98.pdfatlas.desktop "$pkgdir/usr/share/applications/com.aziis98.pdfatlas.desktop"
-  install -Dm644 assets/logo.png "$pkgdir/usr/share/pixmaps/com.aziis98.pdfatlas.png"
+  install -Dm644 assets/logo.png "$pkgdir/usr/share/pixmaps/com-aziis98-pdfatlas.png"
 }
 
