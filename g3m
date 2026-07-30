@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/python /usr/lib/g3m/main.py "$@"

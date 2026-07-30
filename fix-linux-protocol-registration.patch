@@ -1,0 +1,13 @@
+diff --git a/src/app/startup.py b/src/app/startup.py
+index fc5a5e1..5d34d9a 100644
+--- a/src/app/startup.py
++++ b/src/app/startup.py
+@@ -210,7 +210,7 @@ def register_url_protocol():
+         executable_path = f'"{sys.executable}"'
+     else:
+         main_script_path = os.path.abspath(
+-            os.path.join(get_launcher_dir(), "..", "src", "main.py")
++            os.path.join(get_launcher_dir(), "..", "main.py")
+         )
+         executable_path = f'"{sys.executable}" "{main_script_path}"'
+     system = platform.system()

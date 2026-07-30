@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=G3M
+Comment=GameMaker Mod Manager
+Exec=g3m %u
+Icon=g3m
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/g3m;x-scheme-handler/deltahub;
+StartupNotify=true

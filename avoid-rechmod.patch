@@ -1,0 +1,13 @@
+diff --git a/src/adapters/g3mtool_adapter.py b/src/adapters/g3mtool_adapter.py
+index b1f25d4..1e2d17a 100644
+--- a/src/adapters/g3mtool_adapter.py
++++ b/src/adapters/g3mtool_adapter.py
+@@ -70,7 +70,7 @@ class G3MToolManager:
+         exe_name = "G3MTool.exe" if self.platform == "windows" else "G3MTool"
+         exe_path = os.path.join(base_path, exe_name)
+         if os.path.exists(exe_path):
+-            if self.platform != "windows":
++            if self.platform != "windows" and not os.access(exe_path, os.X_OK):
+                 try:
+                     os.chmod(exe_path, 0o700)
+                 except Exception as e:
