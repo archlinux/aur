@@ -1,6 +1,6 @@
 # Maintainer: DonQuinleone <don@donquinleone.com>
 pkgname=antiphon
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A modern mail client for the terminal'
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(notmuch)
 optdepends=('gnupg: OpenPGP signing and decryption via gpg-agent')
 makedepends=(cargo scdoc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9675e65e5251d48128f4116386badc9f833635c80db1a63cfe1a9cc27cf9a010')
+sha256sums=('e8558995c1c94f279d918d5a14daa8330e87b7bf7702a0566138fc5c8143e672')
 
 prepare() {
     cd "$pkgname-v$pkgver"
