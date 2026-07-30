@@ -5,7 +5,7 @@
 # Releases: https://github.com/SeanStoves/KilnMUD-Releases/releases
 
 pkgname=kilnmud
-pkgver=0.59.0
+pkgver=0.60.0
 pkgrel=1
 pkgdesc="Cross-platform MUD client built on Tauri 2"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'dbus' 'libsoup3'
          'gcc-libs' 'glibc' 'hicolor-icon-theme')
 options=('!strip' '!debug')
 source=("https://github.com/SeanStoves/KilnMUD-Releases/releases/download/v${pkgver}/KilnMUD_${pkgver}_amd64.deb")
-sha256sums=('6cbce35ca57b3fb3d95b9e1c811b9c501f9c2963318ef991b63d181eae1c0934')
+sha256sums=('f09cfb6b7ef6105c3accb1a78367bfb41822c8272ba9f8fba05a28ab509dcbe9')
 
 package() {
     # makepkg already unpacked the .deb (ar archive) into srcdir
