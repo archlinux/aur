@@ -1,7 +1,7 @@
 pkgbase = exhibit
 	pkgdesc = 3D model viewer for the GNOME desktop powered by F3D
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/Exhibit
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,6 +17,6 @@ pkgbase = exhibit
 	source = Exhibit-1.6.1::git+https://github.com/Nokse22/Exhibit.git#tag=v1.6.1
 	source = exhibit.sh
 	sha256sums = SKIP
-	sha256sums = b95a67538328deade77a8006708fb1ef90aa78833e28307d7989aa948d200d09
+	sha256sums = 956bca5218bdd5e1a6a875ebacf7746f5a52c731efbfb08dba417300b53923f6
 
 pkgname = exhibit
