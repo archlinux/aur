@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.5.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -41,16 +41,19 @@ optdepends=(
 
 # Use commit of what tag should be
 # until upstream fixes CI pipeline
-_commit=5a48d34c68f4870735046f6b82f29c9b7c70a617
+_commit=2c73ef31527dc8fd8626d18c31e09feae5a12a52
 
 source=("git+https://github.com/Recol/DLSS-Updater.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('b29a07e5c9be7eea61898b4a41f566462c04c8c02dace738f7d6aea725b8a7b1'
+sha256sums=('a838a190ded735eb20cbc9d78adfb07e65efb5654b9dd217bfc2aeb5f1d3ca2e'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
   cd DLSS-Updater
   git clean -dfx
+
+  # Don't attempt to update with the Flatpak release
+  sed -i 's/ return ".flatpak"/ return ""/' dlss_updater/auto_updater.py
 }
 
 build() {
