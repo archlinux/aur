@@ -5,7 +5,7 @@
   <summary>Linglong Store Community Edition Nightly</summary>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
-  <launchable type="desktop-id">linglong-store-nightly.desktop</launchable>
+  <launchable type="desktop-id">com.dongpl.linglong-store.v2.desktop</launchable>
   <description>
     <p>Desktop store for browsing and installing Linglong applications.</p>
   </description>

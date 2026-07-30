@@ -1,17 +1,17 @@
-# 旧 desktop ID 的隐藏兼容入口。
-#
-# 该文件只用于保留用户现有的 x-scheme-handler/og 默认应用关联，
-# 不参与菜单展示、AppStream 主入口或系统通知身份识别。
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=玲珑应用商店社区版 Nightly
 Name[zh_CN]=玲珑应用商店社区版 Nightly
+GenericName=Application Store
+GenericName[zh_CN]=应用商店
 Comment=Linglong Store Community Edition Nightly
 Comment[zh_CN]=玲珑应用商店社区版 Nightly
 Exec=linglong-store %u
 Icon=linglong-store
 StartupWMClass=com.dongpl.linglong-store.v2
 Terminal=false
-NoDisplay=true
+Categories=System;PackageManager;
 MimeType=x-scheme-handler/og;
+Keywords=linglong;store;app;package;
+X-GNOME-UsesNotifications=true
