@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bmcweb-git
-pkgver=r3473.aa2dfd2
+pkgver=r3573.df3d7b2
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -10,16 +10,15 @@ url="https://github.com/openbmc/bmcweb"
 license=('Apache-2.0')
 groups=()
 depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     libnghttp2
+    libz.so
+    libzstd.so
     openssl
     tinyxml2
     pam
     systemd-libs
-    zlib
-    zstd
 # AUR
     sdbusplus-git
 )
