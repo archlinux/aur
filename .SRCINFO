@@ -2,7 +2,7 @@ pkgbase = 12to11-git
 	pkgdesc = Tool for running Wayland applications on an X server
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://git.linuxping.win/12to11/12to11
+	url = https://github.com/fish4terrisa-MSDSM/12to11
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -20,7 +20,7 @@ pkgbase = 12to11-git
 	depends = libdrm
 	depends = libxshmfence
 	depends = libxpresent
-	source = git+https://git.linuxping.win/12to11/12to11.git
+	source = git+https://github.com/fish4terrisa-MSDSM/12to11
 	sha256sums = SKIP
 
 pkgname = 12to11-git
