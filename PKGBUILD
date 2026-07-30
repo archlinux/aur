@@ -20,6 +20,13 @@ depends=('python' 'python-click>=8.3.1' 'python-boltons' 'python-pygments' 'pyth
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('8d02cb0b1c4e253ca7caf96eab408732ccf34dfdea9390ff83f3fd9a1540a99873e2b8bf87f47a27f4aa75c5d3ccda4c2b5cda9c04a4b00be71be7bd3c873c62')
 
+
+prepare() {
+    cd "${srcdir}/${_name}-${pkgver}"
+
+    sed -e 's|required-version = \".*\"|required-version = ">=0.9"|g' -i "./pyproject.toml"
+}
+
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
 
