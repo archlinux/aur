@@ -1,0 +1,30 @@
+pkgbase = cosmic-comp-vrr-fix
+	pkgdesc = Compositor for the COSMIC desktop environment
+	pkgver = 1.5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/pop-os/cosmic-comp
+	arch = x86_64
+	groups = cosmic
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = lld
+	depends = fontconfig
+	depends = libgcc
+	depends = glibc
+	depends = libdisplay-info
+	depends = libseat.so
+	depends = libinput
+	depends = libxcb
+	depends = libxkbcommon
+	depends = mesa
+	depends = pixman
+	depends = systemd-libs
+	depends = wayland
+	provides = cosmic-comp
+	conflicts = cosmic-comp
+	source = cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=fix/live-adaptive-sync-updates
+	b2sums = SKIP
+
+pkgname = cosmic-comp-vrr-fix
