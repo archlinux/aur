@@ -6,8 +6,8 @@
 _pkgname='ryelang'
 pkgname="$_pkgname-git"
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
-pkgver=0.2.9.r1.g6c6b1a3
-pkgrel=2
+pkgver=0.2.57.r4.g5c4f1af
+pkgrel=1
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
 install="$_pkgname.install"
