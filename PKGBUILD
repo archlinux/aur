@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-tzfpy
 _name=${pkgname#python-}
-pkgver=1.1.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Probably the fastest Python package to convert longitude/latitude to timezone name"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
     python-tzdata
 )
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('f505b3b00ace4b84ed5939b033dd641e1744dcedd48c9f497305ed050c3d27b3')
+sha256sums=('5f4dbe9be6957ba6eb16fb4deb67f0c14e8da2e46674ead2bd38dffa9c58da08')
 build() {
     cd "${_name}-${pkgver}"
     python -m build --wheel --no-isolation
