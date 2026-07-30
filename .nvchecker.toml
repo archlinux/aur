@@ -1,0 +1,3 @@
+[strobengine]
+source = "pypi"
+pypi = "strobengine"
