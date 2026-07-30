@@ -1,0 +1,20 @@
+pkgbase = matsyaui
+	pkgdesc = UI of Matsya Ui.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/MatsyaOs/matsyaui
+	arch = x86_64
+	groups = Matsya
+	license = GPL
+	makedepends = git
+	depends = kwindowsystem
+	depends = qt6-declarative
+	depends = qt6-graphicaleffects
+	depends = qt6-quickcontrols2
+	depends = qt6-tools
+	depends = ninja
+	depends = extra-cmake-modules
+	source = git+https://github.com/MatsyaOs/matsyaui
+	md5sums = SKIP
+
+pkgname = matsyaui
