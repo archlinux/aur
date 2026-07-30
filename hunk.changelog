@@ -10,6 +10,40 @@ All notable user-visible changes to Hunk are documented in this file.
 
 ### Fixed
 
+## [0.13.2] - 2026-05-21
+
+### Fixed
+
+- Fixed VCS auto-detection so a Git repository nested under a parent Jujutsu workspace still uses Git mode by default.
+
+## [0.13.1] - 2026-05-19
+
+### Fixed
+
+- Hid the inline add-note affordance while scrolling and only show it after deliberate pointer movement, so it no longer flickers during review navigation.
+- Hardened the local session daemon against browser-originated requests by validating Host and Origin headers and requiring JSON content types for API posts.
+- Disabled the generic broker HTTP API by default so Hunk's supported session API is the only app-daemon command surface.
+- Bounded session daemon memory by capping HTTP request body and websocket message sizes and rejecting session registrations with oversized file, hunk, patch, comment, or note payloads.
+
+## [0.13.0] - 2026-05-18
+
+### Added
+
+- Added an `e` shortcut to open the selected diff file in `$EDITOR`.
+- Added `g` and `G` keyboard aliases for jump-to-top and jump-to-bottom review navigation.
+- Added session-persistent user-authored inline notes with `c` to draft/save notes.
+- Added `hunk session comment list --type <live|all|ai|agent|user>` so agents can read human-authored notes through the comment workflow.
+
+### Changed
+
+- Clarified inline note draft actions by labeling buttons as `Save (^S)` and `Cancel (Esc)`.
+
+### Fixed
+
+- Fixed draft note focus handling so app shortcuts resume after the note textarea blurs without discarding the draft.
+- Preserved the resolved auto theme across `--watch` refreshes instead of falling back to the default dark theme.
+- Fixed standalone release archive generation so staged npm package directories are not accidentally packaged as GitHub release assets.
+
 ## [0.12.1] - 2026-05-14
 
 ### Fixed
@@ -318,7 +352,8 @@ All notable user-visible changes to Hunk are documented in this file.
 
 - Stabilized diff repainting, active-hunk scrolling, syntax highlighting, pager stdin patch handling, and terminal cleanup on exit.
 
-[Unreleased]: https://github.com/modem-dev/hunk/compare/v0.12.1...HEAD
+[Unreleased]: https://github.com/modem-dev/hunk/compare/v0.13.0...HEAD
+[0.13.0]: https://github.com/modem-dev/hunk/compare/v0.12.1...v0.13.0
 [0.12.1]: https://github.com/modem-dev/hunk/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/modem-dev/hunk/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/modem-dev/hunk/compare/v0.11.0...v0.11.1
