@@ -1,0 +1,27 @@
+pkgbase = chillpill-shell
+	pkgdesc = Lightweight and feature rich dynamic pill bar for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LUCKYS1NGHH/ChillPill-Shell
+	install = chillpill-shell.install
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = tar
+	makedepends = cmake
+	makedepends = qt6-base
+	depends = cliphist
+	depends = nusgmon-git
+	depends = inotify-tools
+	depends = brightnessctl
+	depends = wl-clipboard
+	depends = quickshell
+	depends = qt6-multimedia
+	depends = qt6-wayland
+	depends = hyprland
+	optdepends = ttf-jetbrains-mono-nerd
+	optdepends = ttf-monocraft-nerd
+	options = !debug
+	source = chillpill-shell-0.1.0.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e295c9f8f5622ea3d7e1aa3a116b1d15ed492f212b7b629c620287312c8e35b7
+
+pkgname = chillpill-shell

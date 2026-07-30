@@ -1,0 +1,4 @@
+post_install() {
+  echo -e "\n\033[1;37mRun 'chillpill-shell' to start now.\033[0m"
+  echo -e '\033[1;32m==> Paste this line in your Hyprland (Lua) config file to auto start:\033[0m \033[1;36mhl.exec_cmd("chillpill-shell")\033[0m\n'
+}
