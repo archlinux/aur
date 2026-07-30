@@ -44,8 +44,10 @@ _phantomfido_notice() {
 
            systemctl --user enable --now phantomfidod.service
 
-    The QR window needs a graphical session. Set PHANTOMFIDO_QR_ANSI=1 to
-    render the QR code in the terminal instead.
+    The QR code is always printed to the daemon's terminal. The GUI window
+    is additional; set PHANTOMFIDO_NO_GUI=1 to suppress it on a headless
+    machine, or PHANTOMFIDO_QR_ANSI=1 if your terminal has a light
+    background (the default half-block rendering inverts and will not scan).
 
 EOF
 }

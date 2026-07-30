@@ -2,7 +2,7 @@
 
 pkgname=phantomfido
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="FIDO caBLE v2 hybrid transport daemon bridging Linux browser WebAuthn to mobile passkeys"
 arch=('x86_64' 'aarch64')
 url="https://github.com/reece4277/phantomfido"
