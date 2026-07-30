@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=qelectrotech-git
-pkgver=r8153.40f788984
+pkgver=r8635.120ca0820
 pkgrel=1
 pkgdesc="libre and open source desktop application to create diagrams and schematics"
 arch=(x86_64)

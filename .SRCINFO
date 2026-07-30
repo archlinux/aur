@@ -1,6 +1,6 @@
 pkgbase = qelectrotech-git
 	pkgdesc = libre and open source desktop application to create diagrams and schematics
-	pkgver = r8153.40f788984
+	pkgver = r8635.120ca0820
 	pkgrel = 1
 	url = https://qelectrotech.org/
 	arch = x86_64
