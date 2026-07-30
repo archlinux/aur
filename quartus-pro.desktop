@@ -2,7 +2,7 @@
 Version=1.0
 Name=Quartus Prime Pro
 Comment=Quartus Prime Pro design software for Intel FPGAs
-Exec=@_instdir@/quartus/bin/quartus --64bit
+Exec=sh -c "PATH=\\"$PATH:@_instdir@/quartus/bin:@_instdir@/quartus/sopc_builder/bin\\" @_instdir@/quartus/bin/quartus --64bit"
 Icon=@_instdir@/quartus/adm/quartusii.png
 Terminal=false
 Type=Application
