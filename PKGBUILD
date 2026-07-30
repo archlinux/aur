@@ -2,17 +2,43 @@
 
 _pkgname=wayvr
 pkgname=$_pkgname-git
-pkgver=26.7.0.r49.a3e3101
+pkgver=26.7.1.r46.6b22e4a
 pkgrel=1
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
-url="https://github.com/wlx-team/wayvr"
+url="https://github.com/wayvr-org/wayvr"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxkbcommon' 'dbus' 'libpipewire' 'alsa-lib' 'openxr' 'openvr' 'dav1d' 'xwayland-satellite')
-makedepends=('git' 'cargo' 'python3' 'cmake' 'clang' 'shaderc' 'libx11' 'libxext' 'libxrandr' 'libxkbcommon-x11' 'vulkan-headers')
+depends=(glibc
+         libxkbcommon
+         libxkbcommon-x11
+         hicolor-icon-theme
+         libx11
+         libstdc++
+         libxcb
+         libinput
+         libxrandr
+         libgcc
+         dbus
+         libpipewire
+         alsa-lib
+         openxr
+         openvr
+         dav1d
+         systemd-libs
+         libxext
+         vulkan-icd-loader
+         xwayland-satellite)
+makedepends=(git
+             cargo
+             python3
+             cmake
+             clang
+             shaderc
+             vulkan-headers)
 replaces=("wlx-overlay-s-git")
 conflicts=("$_pkgname")
 provides=("$_pkgname")
+# can't update this URL, it'll break existing clones. the redirect is permanent anyway.
 source=("$_pkgname::git+https://github.com/wlx-team/wayvr.git")
 sha256sums=('SKIP')
 options=(!lto)
