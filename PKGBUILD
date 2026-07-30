@@ -1,6 +1,6 @@
 # Maintainer: Ludovic Lerus <little.corn3620@fastmail.com>
 pkgname=hubble.md-bin
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="Local-first Markdown editor (Hubble desktop app) — prebuilt binary"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("hubble.md-$pkgver-aarch64.deb::https://github.com/bholmesdev/hu
 # MIT license isn't inside the .deb; pull it from the tagged source.
 source=("hubble.md-$pkgver-LICENSE::https://raw.githubusercontent.com/bholmesdev/hubble.md/desktop-v$pkgver/LICENSE")
 sha256sums=('86ee45fc09f4b8b03eb68e2ba5fbb3eca0ace3e5ece46f805d8c6103266230b4')
-sha256sums_x86_64=('c0cf9a08ab2cea4094cb709ab96e52d288e7e3b6adf7ddd089b9ba2d57ff2643')
-sha256sums_aarch64=('b20cc524ffc2275ceb5710d2acc11d025be8a19e39c950a79db525a2002c1636')
+sha256sums_x86_64=('0dbae685790ef310bbe9de47ca9f69a0704441a1c87d1b81f253983106b33a46')
+sha256sums_aarch64=('6fa37e563ecb12a95563f48ff7626a6817a94ac47011d40788e425f4396e00fd')
 
 package() {
 	cd "$srcdir"
