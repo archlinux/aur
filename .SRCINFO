@@ -1,0 +1,15 @@
+pkgbase = python-olca-schema
+	pkgdesc = A package for reading and writing data sets in the openLCA schema format
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://github.com/GreenDelta/olca-schema
+	arch = any
+	license = CC0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	source = https://files.pythonhosted.org/packages/source/o/olca_schema/olca_schema-2.6.2.tar.gz
+	sha256sums = 899b29e3658aff8907b3c649fa0e27771b659613a50ce89c7c9672971b15c29f
+
+pkgname = python-olca-schema
