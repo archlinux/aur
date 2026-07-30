@@ -1,7 +1,7 @@
 pkgbase = crom
 	pkgdesc = Fast parallel file finder by name or content, freestanding, no libc
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hedgeg0d/crom
 	arch = x86_64
 	license = MIT
