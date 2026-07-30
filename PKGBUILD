@@ -11,12 +11,12 @@
 pkgname=jdk21-openj9-bin
 _jdkver=21
 _jdkminor=0
-_jdkpatch=11
+_jdkpatch=12
 _jdkmainver=${_jdkver}.${_jdkminor}.${_jdkpatch}
 _jdksubpatch=0
 _jdkfullver=${_jdkmainver}.${_jdksubpatch}
-_openj9ver=0.59.0
-_patchver=10
+_openj9ver=0.60.0
+_patchver=8
 pkgrel=1
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
 pkgver="${_jdkfullver}b${_patchver}_openj9_${_openj9ver}"
@@ -36,9 +36,9 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}.tar.gz")
 
-sha256sums=('eca28e31d7be807c7f6afc974f264a2ec2237e7a0119de81e880b29a34d5a912')
+sha256sums=('e76357a3d469f7bc80ed20064f20ca773ef07ad140e3d44d39ba4ae640799ca2')
 
-_jvmdir=usr/lib/jvm/java-${_jdkver}-j9
+_jvmdir=usr/lib/jvm/java-${_jdkver}-openj9
 
 package() {
   # Install
@@ -49,16 +49,16 @@ package() {
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   # Legal
-  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-j9"
-  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-j9/"
-  ln -s /usr/share/licenses/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/legal"
+  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-openj9"
+  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-openj9/"
+  ln -s /usr/share/licenses/java${_jdkver}-openj9 "${pkgdir}/${_jvmdir}/legal"
   # Conf
   install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java${_jdkver}-j9"
-  ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_jdkver}-openj9"
+  ln -s /etc/java${_jdkver}-openj9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
   for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-j9.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-openj9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
