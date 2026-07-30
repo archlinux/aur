@@ -1,38 +1,17 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 
-pkgname=shelly-cli
 pkgbase=shelly-cli
-pkgver=3.0.0+8r3542.g11ff868
+pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
+pkgver=3.0.1r3739.gb9a199b
 pkgrel=1
-pkgdesc='Native Shelly package-manager CLI beta'
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
 license=('GPL-3.0-only')
-provides=('shelly-beta')
-depends=(
-  'diffutils'
-  'flatpak'
-  'git'
-  'glibc'
-  'glib2'
-  'libarchive'
-  'pacman'
-  'sudo'
-)
 makedepends=(
   'git'
   'pkgconf'
   'zig>=0.16.0'
-)
-optdepends=(
-  'base-devel: build and install AUR packages'
-  'devtools: build AUR packages in a clean chroot'
-  'desktop-file-utils: update AppImage desktop entries'
-  'fuse2: run AppImages that require FUSE 2'
-  'gtk-update-icon-cache: update AppImage icons'
-  'opendoas: alternative privilege elevator to sudo'
-  'plocate: locate-based pacfile discovery'
-  'vim: default visual pacfile diff viewer'
+  'flatpak'
 )
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 sha256sums=('SKIP')
@@ -40,18 +19,23 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.0+8r%s.g%s' \
+  printf '3.0.1r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/Shelly.Cli.Zig"
+  cd "${srcdir}/${pkgbase}"
 
-  zig build \
+  (cd Shelly.Flatpak.Backend && zig build --verbose \
+    --prefix "${srcdir}/zig-out-flatpak-backend" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSafe)
+
+  (cd Shelly.Cli.Zig && zig build --verbose \
     --prefix "${srcdir}/zig-out" \
     -Dcpu=baseline \
-    -Doptimize=ReleaseSmall
+    -Doptimize=ReleaseSmall)
 
   for shell in bash fish zsh; do
     "${srcdir}/zig-out/bin/shelly" utility --completions "${shell}" \
@@ -69,8 +53,41 @@ build() {
     "${srcdir}/shelly-beta.zsh"
 }
 
-package() {
-  cd "${srcdir}/${pkgname}"
+check() {
+  cd "${srcdir}/${pkgbase}"
+
+  (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test)
+  (cd Shelly.PackageManager && zig build flatpak-test)
+  (cd Shelly.Cli.Zig && zig build test)
+  scripts/check-flatpak-separation.sh \
+    "${srcdir}/zig-out/bin/shelly" \
+    "${srcdir}/zig-out-flatpak-backend/lib/libshelly-flatpak-backend.so.1"
+}
+
+package_shelly-cli() {
+  pkgdesc='Native Shelly package-manager CLI beta'
+  provides=('shelly-beta')
+  depends=(
+    'diffutils'
+    'git'
+    'glibc'
+    'libarchive'
+    'pacman'
+    'sudo'
+  )
+  optdepends=(
+    'base-devel: build and install AUR packages'
+    'devtools: build AUR packages in a clean chroot'
+    'desktop-file-utils: update AppImage desktop entries'
+    'fuse2: run AppImages that require FUSE 2'
+    'shelly-cli-flatpak-backend: Flatpak package management support'
+    'gtk-update-icon-cache: update AppImage icons'
+    'opendoas: alternative privilege elevator to sudo'
+    'plocate: locate-based pacfile discovery'
+    'vim: default visual pacfile diff viewer'
+  )
+
+  cd "${srcdir}/${pkgbase}"
 
   install -Dm755 "${srcdir}/zig-out/bin/shelly" \
     "${pkgdir}/usr/bin/shelly-beta"
@@ -82,4 +99,22 @@ package() {
     "${pkgdir}/usr/share/zsh/site-functions/_shelly-beta"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_shelly-cli-flatpak-backend() {
+  pkgdesc='Optional native Flatpak backend for the Shelly CLI beta'
+  depends=("shelly-cli=${pkgver}-${pkgrel}" 'flatpak')
+  provides=("shelly-flatpak-backend=${pkgver}")
+  conflicts=(
+    'shelly-flatpak-backend'
+    'shelly-flatpak-backend-git'
+    'shelly-flatpak-backend-bin'
+  )
+  optdepends=()
+
+  install -Dm755 \
+    "${srcdir}/zig-out-flatpak-backend/lib/libshelly-flatpak-backend.so.1.0.0" \
+    "${pkgdir}/usr/lib/shelly/libshelly-flatpak-backend.so.1.0.0"
+  ln -s libshelly-flatpak-backend.so.1.0.0 \
+    "${pkgdir}/usr/lib/shelly/libshelly-flatpak-backend.so.1"
 }

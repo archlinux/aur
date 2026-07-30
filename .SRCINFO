@@ -1,6 +1,5 @@
 pkgbase = shelly-cli
-	pkgdesc = Native Shelly package-manager CLI beta
-	pkgver = 3.0.0+8r3542.g11ff868
+	pkgver = 3.0.1r3739.gb9a199b
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -8,11 +7,15 @@ pkgbase = shelly-cli
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = zig>=0.16.0
+	makedepends = flatpak
+	source = shelly-cli::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
+	sha256sums = SKIP
+
+pkgname = shelly-cli
+	pkgdesc = Native Shelly package-manager CLI beta
 	depends = diffutils
-	depends = flatpak
 	depends = git
 	depends = glibc
-	depends = glib2
 	depends = libarchive
 	depends = pacman
 	depends = sudo
@@ -20,12 +23,19 @@ pkgbase = shelly-cli
 	optdepends = devtools: build AUR packages in a clean chroot
 	optdepends = desktop-file-utils: update AppImage desktop entries
 	optdepends = fuse2: run AppImages that require FUSE 2
+	optdepends = shelly-cli-flatpak-backend: Flatpak package management support
 	optdepends = gtk-update-icon-cache: update AppImage icons
 	optdepends = opendoas: alternative privilege elevator to sudo
 	optdepends = plocate: locate-based pacfile discovery
 	optdepends = vim: default visual pacfile diff viewer
 	provides = shelly-beta
-	source = shelly-cli::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
-	sha256sums = SKIP
 
-pkgname = shelly-cli
+pkgname = shelly-cli-flatpak-backend
+	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
+	depends = shelly-cli=3.0.1r3739.gb9a199b-1
+	depends = flatpak
+	optdepends = 
+	provides = shelly-flatpak-backend=3.0.1r3739.gb9a199b
+	conflicts = shelly-flatpak-backend
+	conflicts = shelly-flatpak-backend-git
+	conflicts = shelly-flatpak-backend-bin
