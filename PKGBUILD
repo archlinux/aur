@@ -81,11 +81,10 @@ build() {
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgbase"
   unset LDFLAGS
 
-  npm run build
-  cargo build \
-    --manifest-path src-tauri/Cargo.toml \
-    --bin orca \
-    --release \
+  npm run tauri -- build \
+    --ci \
+    --no-bundle \
+    -- \
     --frozen
 }
 
