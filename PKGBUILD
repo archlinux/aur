@@ -2,7 +2,7 @@
 
 _name=modelscope
 pkgname=python-$_name
-pkgver=1.37.1
+pkgver=1.39.0
 pkgrel=2
 pkgdesc='ModelScope: bring the notion of Model-as-a-Service to life.'
 arch=('any')
