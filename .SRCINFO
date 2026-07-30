@@ -1,6 +1,6 @@
 pkgbase = autoanimedownloader-bin
 	pkgdesc = An app that automatically downloads your anime from Anilist
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/icarosuper/AutoAnimeDownloader
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = autoanimedownloader-bin
 	depends = qbittorrent
 	provides = autoanimedownloader
 	conflicts = autoanimedownloader-git
-	source_x86_64 = https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v2.0.0/AutoAnimeDownloader_Linux_x86_v1.3.3.zip
-	sha256sums_x86_64 = 3de460d71aea41dd8aeb6b81b9d9a2df3e027ee79b25edc60419b7ed1033a45c
-	source_aarch64 = https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v2.0.0/AutoAnimeDownloader_Linux_Arm64_v1.3.3.zip
-	sha256sums_aarch64 = c3282be010df2571951dc19d6d2d2ae7de8dd20e7a508e738783da84932049fc
+	source_x86_64 = https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v2.1.0/AutoAnimeDownloader_Linux_x86_v1.3.3.zip
+	sha256sums_x86_64 = fa9972b8affd473abc0d66182a02e611be355e1a41f447393e12b7a49521ab35
+	source_aarch64 = https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v2.1.0/AutoAnimeDownloader_Linux_Arm64_v1.3.3.zip
+	sha256sums_aarch64 = bb7fb3c6f6b13035d0c18426cf537add984ae267a50035d76a1d42a7fc89dd22
 
 pkgname = autoanimedownloader-bin
