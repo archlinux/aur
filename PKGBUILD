@@ -1,7 +1,7 @@
 # Maintainer: Jose Andres Auyon <auyon.joseandres@gmail.com>
 pkgname=git-profile-switcher-bin
-_appname=git-config-switcher
-pkgver=1.0.0
+_appname=git-profile-switcher
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cross-platform desktop tray app for managing multiple Git identities"
 arch=('x86_64')
@@ -20,13 +20,13 @@ conflicts=('git-profile-switcher' 'git-profile-switcher-git')
 # !strip: binaries are prebuilt vendor blobs. !debug: no source to build a
 # debug package from, so skip it (avoids an empty usr/src/debug dir).
 options=('!strip' '!debug')
-# electron-builder names the artifact from productName ("Git Config Switcher");
+# electron-builder names the artifact from productName ("Git Profile Switcher");
 # GitHub replaces the spaces with dots when it stores the release asset.
-_asset="Git.Config.Switcher-${pkgver}.AppImage"
+_asset="Git.Profile.Switcher-${pkgver}.AppImage"
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_asset}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kinau-Guatemala/git-profile-switcher/v${pkgver}/LICENSE")
 # Checksums produced by `updpkgsums`; regenerate whenever pkgver changes.
-sha256sums=('e7c5c39f3282bc3abb09f6494f6ba5d93b006c37a682d562b99a40c10ca70c5e'
+sha256sums=('d6483b470012313c8167c94c4bb5275994c67466090e8fa83772e0104c6df626'
             'a75d1cbb2e90e3438c93ec0977d445e2c7c9fb35b9ba858d1a5407d72e516b6c')
 
 build() {
@@ -57,7 +57,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/git-profile-switcher" <<'EOF'
 #!/usr/bin/env bash
-exec /opt/git-profile-switcher/git-config-switcher "$@"
+exec /opt/git-profile-switcher/git-profile-switcher "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/git-profile-switcher"
 
