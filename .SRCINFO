@@ -1,6 +1,6 @@
 pkgbase = stremio-web
 	pkgdesc = Stremio web client frontend
-	pkgver = 5.0.0_beta.38
+	pkgver = 5.0.0_beta.39
 	pkgrel = 1
 	url = https://github.com/Stremio/stremio-web
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = stremio-web
 	makedepends = pnpm
 	makedepends = esbuild
 	depends = nodejs
-	source = stremio-web-5.0.0_beta.38.tar.gz::https://github.com/Stremio/stremio-web/archive/refs/tags/v5.0.0-beta.38.tar.gz
-	sha256sums = 781326a13bc349b26950b9d89d1ff81719bbdbcf23a3bcc90e61c1ed78f9cfb6
+	source = stremio-web-5.0.0_beta.39.tar.gz::https://github.com/Stremio/stremio-web/archive/refs/tags/v5.0.0-beta.39.tar.gz
+	sha256sums = e1b5d50b55afbcb1ca1da1c9cb1edd030d9d9aeffd53fc38abbb270b66fc268c
 
 pkgname = stremio-web
