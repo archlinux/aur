@@ -3,7 +3,7 @@
 _pkgname=glass
 pkgname="$_pkgname-git"
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple Frameless Browser! Perfect for consuming media from any location."
 arch=('x86_64')
 license=('MIT')
@@ -21,6 +21,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname" || exit
     npm i --allow-git=all
+    ./node_modules/electron/install.js
 }
 
 check() {
