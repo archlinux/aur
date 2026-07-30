@@ -1,6 +1,6 @@
 pkgbase = visage
 	pkgdesc = Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference
-	pkgver = 0.3.3
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://sovren.software/#/visage
 	install = setup.install
@@ -12,7 +12,7 @@ pkgbase = visage
 	provides = visage
 	conflicts = visage
 	options = !lto
-	source = visage::git+https://github.com/sovren-software/visage.git#tag=v0.3.3
-	sha256sums = 1a2d3c9746e732ec6480cddc1c6a3e39648e7690fbb8322cafb01670bbb6db09
+	source = visage::git+https://github.com/sovren-software/visage.git#tag=v0.3.6
+	sha256sums = 370c1370910b92bb379c87fa2566ba8269a79284f2a69b1dd87e5108cdb5c8e1
 
 pkgname = visage
