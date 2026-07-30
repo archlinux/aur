@@ -2,7 +2,7 @@
 # Maintainer: antaresrvish <antaresrvish@users.noreply.github.com>
 
 pkgname='bomexpo-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='KiCad fabrication tool: assign LCSC parts and export a JLCPCB order from a .kicad_pcb'
 url='https://github.com/antaresrvish/bomexpo'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('bomexpo')
 conflicts=('bomexpo')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.2.0/bomexpo_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('7b2c2d2f5efe851721605b16b64a407eaf6bf0d4f17f7c67164bc8d9c690bec6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.3.0/bomexpo_0.3.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('211d39e77550742911ac2492ac4c04b3fe6ae18195d90f52c28f95e0f06ad689')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.2.0/bomexpo_0.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('a13fafe9090755530d6eac94836fde5db030bfa263a7ed3765cc3cf41fd2c445')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antaresrvish/bomexpo/releases/download/v0.3.0/bomexpo_0.3.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('d76fafb68930df814beb5bae2c0ccd38f58353775f8178f345bc6d792f05f0bc')
 
 package() {
   install -Dm755 "./bomexpo" "${pkgdir}/usr/bin/bomexpo"
