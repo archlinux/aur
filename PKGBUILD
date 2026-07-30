@@ -20,7 +20,9 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git")
+# pinned: astal has no tagged releases, so build a known-good master commit
+_commit=9dac92f20e6c89b9373bbb238c49b1cb115724db
+source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
