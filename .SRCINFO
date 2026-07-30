@@ -1,13 +1,13 @@
 pkgbase = project-zomboid-server-unstable
 	pkgdesc = Dedicated server for the game Project Zomboid (Build 42 unstable)
-	pkgver = 42.15.2
+	pkgver = 42.20
 	pkgrel = 1
 	url = https://projectzomboid.com
 	install = project-zomboid-server.install
 	arch = x86_64
 	license = custom:ProjectZomboid
 	makedepends = steamcmd
-	depends = jre-openjdk-headless>=25
+	depends = jre25-openjdk-headless
 	depends = lib32-glibc
 	depends = libxext
 	depends = gcc-libs

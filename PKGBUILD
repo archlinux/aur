@@ -11,7 +11,7 @@ pkgdesc="Dedicated server for the game Project Zomboid (Build 42 unstable)"
 arch=('x86_64')
 url='https://projectzomboid.com'
 license=('custom:ProjectZomboid')
-depends=('jre-openjdk-headless>=25' 'lib32-glibc' 'libxext' 'gcc-libs' 'libsm' 'rcon-cli')
+depends=('jre25-openjdk-headless' 'lib32-glibc' 'libxext' 'gcc-libs' 'libsm' 'rcon-cli')
 makedepends=('steamcmd')
 provides=('project-zomboid-server')
 conflicts=('project-zomboid-server')
@@ -36,8 +36,9 @@ package() {
     mkdir -p "$pkgdir/opt"
     cp -r $_basename "$pkgdir/opt/"
 
-    # Remove bundled JRE — we use system jre-openjdk-headless>=25
+    # Remove bundled JRE — we use system jre25-openjdk-headless
     # B42 ships Azul Zulu JDK 25 (class file version 69.0)
+
     rm -rf "$pkgdir/opt/$_basename/jre64"
 
     # Remove unnecessary launch scripts
