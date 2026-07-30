@@ -1,0 +1,16 @@
+pkgbase = psmp
+	pkgdesc = Music Player built with Qt6 and miniaudio
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Chart-ic/music-player
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-declarative
+	source = git+https://github.com/Chart-ic/music-player.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = psmp
