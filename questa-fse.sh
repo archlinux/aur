@@ -1,1 +1,1 @@
-export PATH=$PATH:@_inteldir@/questa_fse/bin
+export PATH=$PATH:@_instdir@/questa_fse/bin

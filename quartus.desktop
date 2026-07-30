@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Name=Quartus Prime Lite
-Comment=Quartus Prime Lite design software for Intel FPGAs
-Exec=@_inteldir@/quartus/bin/quartus --64bit
-Icon=@_inteldir@/quartus/adm/quartusii.png
+Name=Quartus Prime Pro
+Comment=Quartus Prime Pro design software for Intel FPGAs
+Exec=@_instdir@/quartus/bin/quartus --64bit
+Icon=@_instdir@/quartus/adm/quartusii.png
 Terminal=false
 Type=Application
 Categories=Development

@@ -1,8 +1,2 @@
-# USB-Blaster
-ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6001", MODE="660", TAG+="uaccess"
-ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6002", MODE="660", TAG+="uaccess"
-ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6003", MODE="660", TAG+="uaccess"
-
-# USB-Blaster II
-ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6010", MODE="660", TAG+="uaccess"
-ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6810", MODE="660", TAG+="uaccess"
+# USB Blaster III
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6026", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"

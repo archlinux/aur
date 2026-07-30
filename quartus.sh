@@ -1,1 +1,1 @@
-export PATH=$PATH:@_inteldir@/quartus/bin:@_inteldir@/quartus/sopc_builder/bin
+export PATH=$PATH:@_instdir@/quartus/bin:@_instdir@/quartus/sopc_builder/bin
