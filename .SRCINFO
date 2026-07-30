@@ -1,7 +1,7 @@
 pkgbase = ratatouille
 	pkgdesc = Guitar amp neural model and impulse response loader and mixer
 	pkgver = 0.9.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brummer10/Ratatouille.lv2
 	arch = aarch64
 	arch = x86_64
