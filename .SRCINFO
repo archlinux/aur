@@ -1,4 +1,4 @@
-pkgbase = ppsspp
+pkgbase = ppssppgold
 	pkgdesc = A PSP emulator written in C++
 	pkgver = 1.20.4
 	pkgrel = 4
@@ -21,7 +21,9 @@ pkgbase = ppsspp
 	makedepends = sdl2_ttf
 	makedepends = snappy
 	makedepends = zlib
+	options = !debug
 	source = git+https://github.com/hrydgard/ppsspp.git#tag=v1.20.4
+	source = 0001-ppssppgold.patch
 	source = git+https://github.com/Kethen/aemu_postoffice.git
 	source = git+https://github.com/Kingcom/armips.git
 	source = git+https://github.com/google/cpu_features.git
@@ -57,8 +59,9 @@ pkgbase = ppsspp
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = SKIP
 
-pkgname = ppsspp
+pkgname = ppssppgold
 	depends = glew
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -69,11 +72,17 @@ pkgname = ppsspp
 	depends = libzip
 	depends = miniupnpc
 	depends = openxr
-	depends = ppsspp-assets
+	depends = ppssppgold-assets
 	depends = sdl2
 	depends = sdl2_ttf
 	depends = snappy
 	depends = zlib
 	depends = zstd
+	provides = ppsspp
+	conflicts = ppsspp
 
-pkgname = ppsspp-assets
+pkgname = ppssppgold-assets
+	depends = noto-fonts
+	depends = noto-fonts-cjk
+	provides = ppsspp-assets
+	conflicts = ppsspp-assets
