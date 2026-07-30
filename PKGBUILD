@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=0.5.3.r159.g8b414fde8
+pkgver=0.5.3.r163.g32ded4bd8
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -8,32 +8,38 @@ url="https://github.com/MrNeRF/LichtFeld-Studio"
 license=('GPL-3.0-only')
 depends=(
     'assimp'
-    'boost'
     'cuda'
     'ffmpeg'
-    'freetype2'
     'gcc-libs'
     'glibc'
+    'glslang'
+    'gtk3'  # NFD file dialogs, linked into the main binary
     'hicolor-icon-theme'
     'libarchive'
-    'libglvnd'
     'libwebp'
-    'dbus'
     'nvidia-utils'  # driver >= 570 required at runtime
     'openimageio'
-    'onetbb'
     'openssl'
     'python312'
     'python312-packaging'
     'sdl3'
     'spdlog'
+    'vulkan-icd-loader'
+    'zeromq'  # cppzmq is header-only; libzmq is linked into the main binary
+)
+optdepends=(
+    'cudnn: GPU-accelerated MoGe-2 depth/normal inference (CPU fallback without it)'
+    'uv: install Python dependencies for third-party plugins'
+    'xdg-utils: open the containing folder when the file manager has no D-Bus interface'
 )
 makedepends=(
     'autoconf'
     'autoconf-archive'
     'automake'
+    'boost'      # find_package(Boost) — headers only, nothing links libboost
     'cmake>=3.30'
     'curl'
+    'freetype2'  # find_package(Freetype); RmlUi links it statically
     'git'
     'glm'
     'libtool'
@@ -41,12 +47,16 @@ makedepends=(
     'nasm'
     'ninja'
     'nlohmann-json'
+    'onetbb'     # find_package(TBB); no shipped ELF links libtbb
     'patchelf'
     'pkgconf'
     'python312'
     'robin-map'
+    'shader-slang'  # slangc; shader-slang-bin also provides it
     'tar'
     'unzip'
+    'volk'
+    'vulkan-headers'
     'zip'
 )
 provides=('lichtfeld-studio')
@@ -114,9 +124,11 @@ EOF
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
     sed -i 's|get_filename_component(PROJ_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)|set(PROJ_ROOT_DIR "/usr/share/LichtFeld-Studio")|' CMakeLists.txt
 
-    # Remove dev-only fallback paths that leak $srcdir into binaries
-    # (runtime uses FHS paths from getAssetsDir()/getShadersDir(); these are #ifdef guards)
-    sed -i '/PROJECT_ROOT_PATH="\${PROJECT_SOURCE_DIR}"/d;
+    # Keep dev-only fallback paths from leaking $srcdir into binaries. The
+    # VISUALIZER_* ones are #ifdef-guarded and can go, but PROJECT_ROOT_PATH is
+    # referenced unconditionally (python_lsp_client.cpp, python_editor.cpp), so
+    # it must be repointed at the install prefix rather than deleted.
+    sed -i 's|PROJECT_ROOT_PATH="\${PROJECT_SOURCE_DIR}"|PROJECT_ROOT_PATH="/usr/share/LichtFeld-Studio"|;
             /VISUALIZER_.*_PATH="\${VISUALIZER_BUILD_RESOURCE_DIR}/d;
             /VISUALIZER_SOURCE_.*_PATH="\${VISUALIZER_SOURCE_RESOURCE_DIR}/d' \
         src/visualizer/CMakeLists.txt
@@ -135,21 +147,30 @@ import json
 with open('vcpkg.json') as f:
     cfg = json.load(f)
 
-# Keep only deps that have no system equivalent or feature gaps
-keep = {
-    'imgui',              # needs docking-experimental branch
-    'implot',             # must match vcpkg imgui
-    'glad',               # Arch package is generator only
-    'rmlui',              # AUR package lacks SVG feature
-    'args',               # tiny, no Arch package
-    'nativefiledialog-extended',  # no Arch package
-    'usd',                # OpenUSD, no Arch package
+# Deps taken from Arch packages; everything else stays with vcpkg. This is a
+# blocklist on purpose: a whitelist silently drops whatever upstream adds next,
+# which breaks the build rather than merely making it bigger.
+system = {
+    'cppzmq', 'curl', 'assimp', 'boost-preprocessor', 'ffmpeg', 'freetype',
+    'glm', 'libarchive', 'libdeflate', 'libplacebo', 'libwebp', 'nanobind',
+    'nlohmann-json', 'openimageio', 'python3', 'sdl3', 'spdlog', 'tbb',
+    'vulkan', 'vulkan-loader', 'volk', 'glslang', 'shader-slang',
 }
+# usd stays with vcpkg: Arch builds OpenUSD monolithically and its plugin
+# configs (MaterialX, Alembic) name targets they never find_dependency, so
+# consuming it means carrying a workaround per plugin.
 
-cfg['dependencies'] = [
-    d for d in cfg['dependencies']
-    if (d if isinstance(d, str) else d['name']) in keep
-]
+def dep_name(d):
+    return d if isinstance(d, str) else d['name']
+
+deps = [d for d in cfg['dependencies'] if dep_name(d) not in system]
+
+# The RmlUi Vulkan backend includes stb_image.h, which upstream's manifest never
+# declares: with the full manifest it arrives transitively via a port above.
+if not any(dep_name(d) == 'stb' for d in deps):
+    deps.append('stb')
+
+cfg['dependencies'] = deps
 
 with open('vcpkg.json', 'w') as f:
     json.dump(cfg, f, indent=2)
@@ -178,7 +199,17 @@ build() {
     [[ -x "$_cuda_host_cxx" ]] || _cuda_host_cxx="/opt/cuda/bin/g++"
     echo "==> CUDA host compiler: $_cuda_host_cxx (from $_cuda_pkg -> gcc$_cuda_gcc)"
 
+    # upstream's find_program(SLANGC ... REQUIRED) searches PATH, which the
+    # shader-slang-bin provider does not use (it installs under /opt), so seed
+    # the cache variable instead of relying on either provider's layout.
+    local _slangc
+    _slangc=$(command -v slangc || true)
+    [[ -n "$_slangc" ]] || _slangc=/opt/shader-slang-bin/bin/slangc
+    [[ -x "$_slangc" ]] || { error "slangc not found; install shader-slang or shader-slang-bin"; return 1; }
+    echo "==> slangc: $_slangc"
+
     cmake -B build \
+        -DSLANGC="${_slangc}" \
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DCMAKE_CUDA_HOST_COMPILER="${_cuda_host_cxx}" \
         -DCMAKE_BUILD_TYPE=Release \
@@ -215,6 +246,10 @@ package() {
     # liblfs_rmlui.so is built but not installed by cmake
     install -Dm755 build/liblfs_rmlui.so -t "$pkgdir/usr/lib/"
 
+    # OpenMesh is built from external/OpenMesh and likewise not installed;
+    # liblfs_core.so and the python module carry NEEDED entries for it.
+    install -Dm755 build/Build/lib/libOpenMesh*.so.* -t "$pkgdir/usr/lib/"
+
     # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
     # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
     local _vcpkg_lib="build/vcpkg_installed/x64-linux/lib"
@@ -240,7 +275,10 @@ package() {
         fi
     done
 
-    # Remove bundled uv (users should use system uv)
+    # Drop the uv that cmake downloads and installs to bin/: it would collide
+    # with the uv package. PackageManager::uv_path() looks for <exe_dir>/uv,
+    # which for /usr/bin/LichtFeld-Studio is exactly where that package puts it,
+    # so the optdepend covers the feature without vendoring a second copy.
     rm -f "$pkgdir/usr/bin/uv"
 
     # Remove development headers (not needed for end users)
