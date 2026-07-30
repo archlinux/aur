@@ -1,13 +1,13 @@
 pkgbase = zlint
 	pkgdesc = A linter for the Zig programming language
-	pkgver = 0.9.0
-	pkgrel = 0
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/DonIsaac/zlint
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.16.0
 	makedepends = zig<0.17.0
-	source = https://github.com/DonIsaac/zlint/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 69c8084740fc1ec3cc2f2fc4c9fa8cdbbc73f390bb13467e924eba2ed2351f48
+	source = https://github.com/DonIsaac/zlint/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 867538996fa697d3fe797cb5b9559b37674c3d065091df373cee76c1052ff1a4
 
 pkgname = zlint
