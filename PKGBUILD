@@ -1,5 +1,5 @@
 pkgname=livekit-tui-client-git
-pkgver=0.2.0
+pkgver=r42.e1c0810
 pkgrel=1
 pkgdesc="Terminal-based LiveKit client with Zig/Odin video rendering"
 arch=('x86_64')
