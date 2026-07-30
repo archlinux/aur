@@ -69,7 +69,7 @@ package_quartus-pro() {
 }
 
 package_quartus-pro-quartus() {
-    depends=(ld-lsb alsa-lib bzip2 dbus expat fontconfig freetype2 gcc-libs glib2 lib32-gcc-libs lib32-glibc
+    depends=(ld-lsb alsa-lib bzip2 dbus expat fontconfig freetype2 gcc-libs glib2
              libdrm libice libpulse libsm libx11 libxau libxext libxi libxml2
              libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-pro-devinfo)
     optdepends=("eclipse: For Nios II EDS")
@@ -128,7 +128,7 @@ package_quartus-pro-quartus() {
 }
 
 package_quartus-pro-questa() {
-    depends=(expat fontconfig freetype2 gcc-libs gd lib32-gcc-libs lib32-glibc lib32-libxml2
+    depends=(expat fontconfig freetype2 gcc-libs gd
              libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
     pkgdesc="Quartus Prime Pro - Questa-Intel FPGA Starter Edition"
     license=('LicenseRef-QuestaSim')
