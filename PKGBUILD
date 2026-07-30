@@ -1,8 +1,8 @@
 # Maintainer: Reece Standen <reece4277@users.noreply.github.com>
 
 pkgname=phantomfido
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="FIDO caBLE v2 hybrid transport daemon bridging Linux browser WebAuthn to mobile passkeys"
 arch=('x86_64' 'aarch64')
 url="https://github.com/reece4277/phantomfido"
@@ -28,7 +28,7 @@ source=(
   "$pkgname.modules-load"
 )
 sha256sums=(
-  'e509857c853b2923a34e40891ec62ec1eebbdd6279339a4a13d7bee1074fffb0'
+  '39eb315fa7b5039b748f4527c47273cbe3af9a3767338c7285772a70df9d16d0'
   '55f76b8dc4703b4ac98a6aa67260cb4c4b5f450e0abcd265c58b7adf17c246be'
   '58e43222b81de11baa62712c64fc198a4d4071c429b70041c60b1e41b27017a2'
 )
