@@ -1,7 +1,7 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 # Maintainer: JustinWayland<justintwayland@gmail.com>
 pkgname=helion
-pkgver=0.9.9.2t
+pkgver=1.0.0.0
 pkgrel=1
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(' GPL-3.0-or-later')
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
 makedepends=('dotnet-sdk>=10.0' 'clang')
 source=("https://github.com/Helion-Engine/Helion/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5b9c9be4c71cb7030457fd50a11d8c99f4040865ed4fee02080f0dbf85142eee')
+sha256sums=('b3b71e654e64a4b3f9765efc04e1d720d08d839e23f9f77dac2797f3f1e11c87')
 build() {
 	cd "Helion-${pkgver}/Client"
 	dotnet publish -c Release -r linux-x64 -p:AOT=true
