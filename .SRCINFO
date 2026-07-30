@@ -1,13 +1,14 @@
 pkgbase = cosmic-ext-applet-external-monitor-brightness-custom-git
 	pkgdesc = COSMIC panel applet for controlling external-monitor brightness via DDC/CI
 	pkgver = 0.1.0.r1.gf32568d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdityaHebballe/cosmic-ext-applet-external-monitor-brightness
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	depends = cosmic-external-osd-git
+	depends = cosmic-session
 	depends = dbus
 	depends = gcc-libs
 	depends = glibc
