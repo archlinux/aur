@@ -1,6 +1,6 @@
-pkgbase = python-xlsx2csv
-	pkgdesc = XSLX to CSV converter
-	pkgver = 0.8.6
+pkgbase = python-xlsx2csv-git
+	pkgdesc = XSLX to CSV converter (Git)
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/dilshod/xlsx2csv
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = python-xlsx2csv
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = perl
+	makedepends = pod2man
 	depends = python
-	source = xlsx2csv-0.8.6.tar.gz::https://github.com/dilshod/xlsx2csv/archive/0.8.6.tar.gz
-	sha512sums = ab4ff1bfd681b6efe7e9c20818d502f6ce55c50eabf8131b072293247b5de40662bc127b5eda9d6af6f232c9ce9e0dfa34c2ac816ba12ab6a24c11afd68c81c9
+	source = git+https://github.com/dilshod/xlsx2csv.git
+	sha512sums = SKIP
 
-pkgname = python-xlsx2csv
+pkgname = python-xlsx2csv-git

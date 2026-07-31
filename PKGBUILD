@@ -1,10 +1,10 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
-pkgname=python-xlsx2csv
+pkgname=python-xlsx2csv-git
 _gitpkgname=xlsx2csv
-pkgver=0.8.6
+pkgver=0
 pkgrel=1
-pkgdesc="XSLX to CSV converter"
+pkgdesc="XSLX to CSV converter (Git)"
 arch=(any)
 url="https://github.com/dilshod/xlsx2csv"
 license=('MIT')
@@ -14,22 +14,30 @@ makedepends=(
   'python-installer'
   'python-setuptools-scm'
   'python-wheel'
+  'perl'
+  'pod2man'
 )
 
 source=(
-  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/dilshod/xlsx2csv/archive/${pkgver}.tar.gz"
+  "git+https://github.com/dilshod/xlsx2csv.git"
 )
 
-sha512sums=('ab4ff1bfd681b6efe7e9c20818d502f6ce55c50eabf8131b072293247b5de40662bc127b5eda9d6af6f232c9ce9e0dfa34c2ac816ba12ab6a24c11afd68c81c9')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$_gitpkgname"
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   # Disable Python 2 tests
   sed -i -e 's/^\(PYTHON_VERSIONS =\).*/\1 ["3"]/' \
-    "${_gitpkgname}-${pkgver}/test/run"
+    "$_gitpkgname/test/run"
 }
 
 build() {
-  cd "${_gitpkgname}-${pkgver}"
+  cd "$_gitpkgname"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
   echo >&2 'Building wheel'
@@ -40,7 +48,7 @@ build() {
 }
 
 check() {
-  cd "${_gitpkgname}-${pkgver}"
+  cd "$_gitpkgname"
 
   echo >&2 'Running unit tests'
   test/run
@@ -56,7 +64,7 @@ check() {
 }
 
 package() {
-  cd "${_gitpkgname}-${pkgver}"
+  cd "$_gitpkgname"
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
