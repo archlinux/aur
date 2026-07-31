@@ -10,7 +10,6 @@ pkgbase = rmw
 	depends = canfigger
 	depends = glib2
 	depends = ncurses
-	optdepends = canfigger: use system-installed version
 	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.10.0/rmw-0.10.0.tar.xz
 	sha256sums = 8f96fd96831b69bffc8019cb000483ffe92a7764765484df57f63a6515d26fd9
 

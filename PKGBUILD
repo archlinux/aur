@@ -13,7 +13,6 @@ depends=(
   'glib2'
   'ncurses'
 )
-optdepends=('canfigger: use system-installed version')
 makedepends=(
   'meson'
   'ninja'
