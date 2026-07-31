@@ -1,7 +1,7 @@
 # Maintainer: Amro Emad <korialo001 at gmail dot com>
 
 pkgname=p5.js
-pkgver=v2.3.1
+pkgver=v2.3.2
 pkgrel=1
 pkgdesc="p5.js is a client-side JS platform that empowers artists, designers, students, and anyone to learn to code and express themselves creatively on the web. It is based on the core principles of Processing. (Full library)"
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=(
     "git"
     "npm")
 source=("git+https://github.com/processing/p5.js#tag=$pkgver")
-sha256sums=('c254141b8b85a8c543e2f28950ff133b2147c8feaa85d61a7b0b1f50ba4ec8a0')
+sha256sums=('15440184bb7ea782d81eb22b0635e1a119346b1240f2df0675c41ccaea56b5a6')
 
 prepare() {
     cd "${pkgname}"
