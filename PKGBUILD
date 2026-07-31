@@ -4,13 +4,14 @@ _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
 _pkgver_stable=1.13.15-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_stable//-/\.}"
-pkgrel=2
+pkgrel=3
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/reF1nd/sing-box'
 license=('GPL-3.0')
 
+depends=('glibc>=2.31')
 provides=("$_pkgname")
 
 source=(
@@ -21,8 +22,8 @@ source=(
     "sing-box-split-dns.xml::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver_stable}/release/config/sing-box-split-dns.xml"
     "sing-box.sysusers::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver_stable}/release/config/sing-box.sysusers"
 )
-source_x86_64=("sing-box-${_pkgver_stable}-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver_stable}/sing-box-${_pkgver_stable}-linux-amd64-purego.tar.gz")
-source_aarch64=("sing-box-${_pkgver_stable}-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver_stable}/sing-box-${_pkgver_stable}-linux-arm64-purego.tar.gz")
+source_x86_64=("sing-box-${_pkgver_stable}-linux-amd64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver_stable}/sing-box-${_pkgver_stable}-linux-amd64-glibc.tar.gz")
+source_aarch64=("sing-box-${_pkgver_stable}-linux-arm64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver_stable}/sing-box-${_pkgver_stable}-linux-arm64-glibc.tar.gz")
 
 sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '5a1135cd779a948882702e62b349c19cb72ef56c4af6567bc8f1794ca3b9fbcd'
@@ -30,8 +31,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b'
             'ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f'
             '0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473')
-sha256sums_x86_64=('93f0053c1d4d35acaeb02b79012cb9c6edad5a9b61abaa13720387f16d8d09b7')
-sha256sums_aarch64=('a928ca409d0377cb83a79a9cc9c121f6bbca0f1e427837bd35a07be087c34999')
+sha256sums_x86_64=('0e83bc9d2c644097450997aa60f2bf6a1161aa8524cc7fb2bd78b058e2afe753')
+sha256sums_aarch64=('0973cb01ba7221bc461630935e09c4cd470953655990310a20b9c46796b620e1')
 
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-beta-bin" "$_pkgname-ref1nd" "$_pkgname-ref1nd-git")
 
@@ -48,9 +49,8 @@ package() {
     install -Dm644 sing-box.rules -t "$pkgdir/usr/share/polkit-1/rules.d"
     install -Dm644 sing-box-split-dns.xml "$pkgdir/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
 
-    cd "sing-box-$_pkgver_stable-linux-${ARCH_MAP[$CARCH]}-purego"
+    cd "sing-box-$_pkgver_stable-linux-${ARCH_MAP[$CARCH]}-glibc"
     install -Dm755 sing-box -t "$pkgdir/usr/bin"
-    install -Dm644 libcronet.so -t "$pkgdir/usr/lib"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 <(./sing-box completion bash) "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
     install -Dm644 <(./sing-box completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"

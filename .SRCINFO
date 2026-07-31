@@ -1,11 +1,12 @@
 pkgbase = sing-box-ref1nd-bin
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.13.15.reF1nd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/reF1nd/sing-box
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
+	depends = glibc>=2.31
 	provides = sing-box
 	conflicts = sing-box
 	conflicts = sing-box-bin
@@ -28,9 +29,9 @@ pkgbase = sing-box-ref1nd-bin
 	sha256sums = 0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b
 	sha256sums = ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f
 	sha256sums = 0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473
-	source_x86_64 = sing-box-1.13.15-reF1nd-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.13.15-reF1nd/sing-box-1.13.15-reF1nd-linux-amd64-purego.tar.gz
-	sha256sums_x86_64 = 93f0053c1d4d35acaeb02b79012cb9c6edad5a9b61abaa13720387f16d8d09b7
-	source_aarch64 = sing-box-1.13.15-reF1nd-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.13.15-reF1nd/sing-box-1.13.15-reF1nd-linux-arm64-purego.tar.gz
-	sha256sums_aarch64 = a928ca409d0377cb83a79a9cc9c121f6bbca0f1e427837bd35a07be087c34999
+	source_x86_64 = sing-box-1.13.15-reF1nd-linux-amd64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.13.15-reF1nd/sing-box-1.13.15-reF1nd-linux-amd64-glibc.tar.gz
+	sha256sums_x86_64 = 0e83bc9d2c644097450997aa60f2bf6a1161aa8524cc7fb2bd78b058e2afe753
+	source_aarch64 = sing-box-1.13.15-reF1nd-linux-arm64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.13.15-reF1nd/sing-box-1.13.15-reF1nd-linux-arm64-glibc.tar.gz
+	sha256sums_aarch64 = 0973cb01ba7221bc461630935e09c4cd470953655990310a20b9c46796b620e1
 
 pkgname = sing-box-ref1nd-bin
