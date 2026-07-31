@@ -2,7 +2,7 @@
 
 pkgname=alacrium-browser-bin
 pkgver=151.0.7922.71
-pkgrel=1
+pkgrel=2
 pkgdesc='Performance-focused Chromium browser tracking stable releases (prebuilt)'
 arch=('x86_64')
 url='https://github.com/brauliobo/alacrium'
@@ -33,7 +33,6 @@ depends=(
   'vulkan-icd-loader'
   'xdg-utils'
 )
-makedepends=('rpm-tools')
 optdepends=(
   'gnome-keyring: password storage in GNOME'
   'kdialog: native file dialogs in KDE'
@@ -43,22 +42,21 @@ optdepends=(
 provides=("alacrium-browser=${pkgver}")
 conflicts=('alacrium-browser')
 options=('!debug' '!strip')
-_rpm="alacrium-browser_${pkgver}_AVX.rpm"
+_deb="alacrium-browser_${pkgver}_AVX.deb"
 _commit=028ee37e0da2eda3f069f380e40322faddf2a39b
 source=(
-  "https://github.com/brauliobo/alacrium/releases/download/M${pkgver}/${_rpm}"
+  "https://github.com/brauliobo/alacrium/releases/download/M${pkgver}/${_deb}"
   "LICENSE-${_commit}.md::https://raw.githubusercontent.com/brauliobo/alacrium/${_commit}/LICENSE.md"
 )
 sha256sums=(
-  'd5fa104519b58d49a17b6ad8adf36f8cde25fb610b03bcf108497bf44bca8bf4'
+  '1a9bb19c636f66ade079cca866393eaaeb9ba8764bf79ce265593ad6e83a2b3c'
   '1d43c681d483ed1bf2e88507be7368eea8d1dedc503d39b8e17e701d0be00fe2'
 )
+noextract=("$_deb")
 
 package() {
-  rpm2cpio "$srcdir/$_rpm" | bsdtar -xf - -C "$pkgdir"
+  bsdtar -xOf "$srcdir/$_deb" data.tar.xz | bsdtar -xf - -C "$pkgdir"
   rm -rf "$pkgdir/etc/cron.daily"
-  ln -s /opt/alacrium-browser/alacrium-browser \
-    "$pkgdir/usr/bin/alacrium-browser"
   chmod 4755 "$pkgdir/opt/alacrium-browser/chrome-sandbox"
   install -Dm644 "$srcdir/LICENSE-${_commit}.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
