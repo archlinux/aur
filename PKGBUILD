@@ -1,8 +1,8 @@
 # Maintainer: Ben Towali <ben@bentowali.com>
 
 pkgname=raindrop
-pkgver='5.7.7'
-pkgrel=3
+pkgver='5.7.9'
+pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64' 'aarch64')
 url="https://raindrop.io"
@@ -11,11 +11,11 @@ depends=()
 makedepends=()
 provides=(raindrop)
 
-source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-amd64.deb' 'raindrop.desktop')
-sha256sums_x86_64=('b2132c68667eefb689ed0720bee12785ff59973cf1d6a1d2052eb2a729663e11' 'SKIP')
+source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.9/Raindrop-amd64.deb' 'raindrop.desktop')
+sha256sums_x86_64=('66520ba8b3a25b92495550a61c0511267c2305c6d2fb07718f2371a6a4753e4e' 'SKIP')
 
-source_arm64=('raindrop-arm64.dev::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-arm64.deb' 'raindrop.desktop')
-sha256sums_aarch64=('5e4eb72c1c405b49abb50fd6d60864ccfa036f34b69acc16e0040e3ad89da390' 'SKIP')
+source_arm64=('raindrop-arm64.dev::https://github.com/raindropio/desktop/releases/download/v5.7.9/Raindrop-arm64.deb' 'raindrop.desktop')
+sha256sums_aarch64=('b3c0cef4a8be5aea2a870b208e70246d5579ecdd571dcc4cc2bec579f22620eb' 'SKIP')
 
 prepare() {
   echo "Extracting .deb"
