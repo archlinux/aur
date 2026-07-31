@@ -1,17 +1,18 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=gnhf
-_npmver=0.1.41
-
-pkgname=${_npmname}
+pkgauthor="kunchenguid"
+pkgname="gnhf"
 pkgdesc="Before I go to bed, I tell my agents: good night, have fun"
-pkgver=${_npmver}
+pkgver=0.1.43
 pkgrel=1
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 license=("MIT")
 arch=("x86_64")
-url="https://github.com/kunchenguid/gnhf"
-_urlraw="https://raw.githubusercontent.com/kunchenguid/gnhf/v${pkgver}"
+url="https://github.com/${pkgauthor}/${pkgname}"
+_urlraw="https://raw.githubusercontent.com${pkgauthor}/${pkgname}/v${pkgver}"
 
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs")
@@ -22,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('5e52c43192892b5869dac93073a874bab68193994c9c30c347781be19931b1fa4b2b256aed2f568f6aa432cdc40f78214e6b272519ccebc1cb097227cd80c159')
+b2sums=('810351ac8e47f8e9913989ed337c46e003e60fd6b6a987633e2ce5a9caa1d65713ddd113c4f484ec929b185953c4f733e14489a35eba28ede884644f3e1ab423')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
