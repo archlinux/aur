@@ -1,8 +1,8 @@
 pkgbase = tascam-control-panel-git
 	pkgdesc = Control Panel for TASCAM US-144MKII
-	pkgver = r132.aefc02d715cc
-	pkgrel = 3
-	url = https://github.com/akku1139/us144mkii
+	pkgver = r141.b013e2e
+	pkgrel = 1
+	url = https://github.com/akku1139/us144mkii/tree/tascam-control-panel/tascam_controls
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = tascam-control-panel-git
 	optdepends = us144mkii: us144mkii ALSA driver (it is merged on Linux 6.18)
 	provides = tascam-control-panel
 	conflicts = tascam-control-panel
-	source = git+https://github.com/akku1139/us144mkii
+	source = git+https://github.com/akku1139/us144mkii#branch=tascam-control-panel
 	sha256sums = SKIP
 
 pkgname = tascam-control-panel-git
