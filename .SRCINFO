@@ -1,7 +1,7 @@
 pkgbase = basalt-launcher-dev-bin
 	pkgdesc = A polished Minecraft launcher with practical instance and content management (development build)
 	pkgver = 1.0.0.dev.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MegalithOfficial/basalt-launcher
 	arch = x86_64
 	license = GPL-3.0-only

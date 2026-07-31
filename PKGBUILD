@@ -1,7 +1,7 @@
 # Maintainer: MegalithOfficial <gekocakaya@gmail.com>
 pkgname=basalt-launcher-dev-bin
 pkgver=1.0.0.dev.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A polished Minecraft launcher with practical instance and content management (development build)"
 arch=('x86_64')
 url="https://github.com/MegalithOfficial/basalt-launcher"
@@ -17,4 +17,6 @@ sha256sums_x86_64=('e6e072ab9c8c4146535457beb3ce1ca5df18e2e746f64919687e86f46963
 package() {
   bsdtar -xf "${pkgname}-${pkgver}.deb"
   bsdtar -xf data.tar.* -C "${pkgdir}"
+  mv "${pkgdir}/usr/share/applications/Basalt Launcher.desktop" \
+    "${pkgdir}/usr/share/applications/basalt-launcher.desktop"
 }
