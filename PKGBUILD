@@ -1,7 +1,7 @@
 # Maintainer: visorcraft <thomas@visorcraft.com>
 
 pkgname=zigit
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fast screenshots, clipboard handoff, and annotation for Wayland'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ makedepends=(
   'zig>=0.16.0'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/visorcraft/ZigIt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebcb0629762bea5c7fecf91b3b94c075181b4bca99e6ab7c3f8bf8cc865f0b3f')
+sha256sums=('a13b4fe29009175601e36e4d09e079bc97cd9ab139ab4e60cfcefceae209d6f8')
 
 build() {
   cd "ZigIt-$pkgver"
