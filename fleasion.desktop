@@ -2,8 +2,12 @@
 Type=Application
 Name=Fleasion
 Comment=Roblox asset interceptor and replacer for Sober
-Exec=/home/floofy/.local/bin/fleasion-launch
-Icon=/usr/share/fleasion/src/fleasion/fleasionlogoHR.ico
+[Desktop Entry]
+Type=Application
+Name=Fleasion
+Comment=Roblox asset interceptor and replacer for Sober
+Exec=fleasion
+Icon=fleasion
 Terminal=false
 Categories=Game;Utility;
 StartupNotify=true
