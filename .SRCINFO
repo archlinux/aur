@@ -1,0 +1,20 @@
+pkgbase = qt-msg-reader-bin
+	pkgdesc = A Qt-based application for reading Microsoft Outlook MSG files (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mareksamec/qt-msg-reader
+	arch = x86_64
+	license = MIT
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = qt-msg-reader=1.0.0
+	conflicts = qt-msg-reader
+	noextract = qt-msg-reader-bin-1.0.0-v1.0.1.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = qt-msg-reader-bin-1.0.0-v1.0.1.pkg.tar.zst::https://github.com/mareksamec/qt-msg-reader/releases/download/v1.0.1/qt-msg-reader-1.0.0-1-x86_64.pkg.tar.zst
+	sha256sums = 0df9fb9bdb5725e255155844adedd79b78ee371564a4814e643512534a074b81
+
+pkgname = qt-msg-reader-bin
