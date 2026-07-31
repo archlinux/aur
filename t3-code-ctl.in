@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# @PKGNAME@-ctl — helper CLI for T3 Code Docker instance @PKGNAME@
+#
+# Wraps common docker operations against the running container so users
+# don't have to remember docker/systemd invocations.
+set -euo pipefail
+
+readonly PKGNAME='@PKGNAME@'
+readonly T3_PORT='@T3_PORT@'
+readonly IMAGE_TAG='@IMAGE_TAG@'
+
+usage() {
+  cat <<EOF
+Usage: ${PKGNAME}-ctl <command>
+
+Commands:
+  pair              Issue a fresh one-time pairing token and print the
+                    browser URL (host-rewritten to http://127.0.0.1:${T3_PORT}).
+  logs [-f]         Show container logs (add -f to follow).
+  status            Show container state + HTTP reachability.
+  exec <cmd> ...    Run an arbitrary command inside the container.
+  restart           Restart the systemd --user service.
+
+Examples:
+  ${PKGNAME}-ctl pair          # get a browser pairing URL
+  ${PKGNAME}-ctl logs -f       # tail the T3 server logs
+  ${PKGNAME}-ctl exec t3 auth session list
+EOF
+}
+
+# Container name for docker commands. Docker doesn't allow ':' or '/' in
+# names, so this matches PKGNAME 1:1.
+readonly CONTAINER="${PKGNAME}"
+
+require_docker() {
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "error: docker not installed" >&2
+    exit 1
+  fi
+}
+
+require_running() {
+  if ! docker inspect -f '{{.State.Running}}' "${CONTAINER}" 2>/dev/null | grep -q true; then
+    echo "error: container '${CONTAINER}' is not running." >&2
+    echo "hint:  systemctl --user start ${PKGNAME}.service" >&2
+    exit 1
+  fi
+}
+
+cmd_pair() {
+  require_docker
+  require_running
+  # `t3 auth pairing create` prints "Token: XXXX" and "Expires at: ...".
+  local out token expires
+  out=$(docker exec "${CONTAINER}" t3 auth pairing create 2>&1)
+  token=$(printf '%s\n' "${out}" | awk '/^Token:/ {print $2; exit}')
+  expires=$(printf '%s\n' "${out}" | awk -F': ' '/^Expires at:/ {print $2; exit}')
+  if [[ -z "${token}" ]]; then
+    echo "error: failed to parse token from t3 output:" >&2
+    printf '%s\n' "${out}" >&2
+    exit 1
+  fi
+  printf '\n'
+  printf '  Pairing URL: http://127.0.0.1:%s/pair#token=%s\n' "${T3_PORT}" "${token}"
+  printf '  Expires:     %s\n' "${expires:-unknown}"
+  printf '\n'
+  printf '  Open the URL in your browser to complete pairing (one-time).\n'
+  printf '\n'
+}
+
+cmd_logs() {
+  require_docker
+  require_running
+  docker logs "$@" "${CONTAINER}"
+}
+
+cmd_status() {
+  require_docker
+  local state
+  state=$(docker inspect -f '{{.State.Status}}' "${CONTAINER}" 2>/dev/null || echo 'not-created')
+  printf 'Container: %s\n' "${CONTAINER}"
+  printf 'State:     %s\n' "${state}"
+  printf 'Port:      %s\n' "${T3_PORT}"
+  printf 'Image:     %s\n' "${IMAGE_TAG}"
+  if [[ "${state}" == 'running' ]]; then
+    local code
+    code=$(curl -sS -o /dev/null -w '%{http_code}' "http://127.0.0.1:${T3_PORT}/" 2>/dev/null || echo 'unreachable')
+    printf 'HTTP:      %s (http://127.0.0.1:%s/)\n' "${code}" "${T3_PORT}"
+  fi
+}
+
+cmd_exec() {
+  require_docker
+  require_running
+  docker exec -it "${CONTAINER}" "$@"
+}
+
+cmd_restart() {
+  systemctl --user restart "${PKGNAME}.service"
+  echo "restarted ${PKGNAME}.service"
+}
+
+main() {
+  if [[ $# -eq 0 ]]; then
+    usage
+    exit 1
+  fi
+  local cmd="$1"; shift
+  case "${cmd}" in
+    pair)    cmd_pair    "$@" ;;
+    logs)    cmd_logs    "$@" ;;
+    status)  cmd_status  "$@" ;;
+    exec)    cmd_exec    "$@" ;;
+    restart) cmd_restart "$@" ;;
+    -h|--help|help) usage ;;
+    *) echo "error: unknown command '${cmd}'" >&2; usage; exit 1 ;;
+  esac
+}
+
+main "$@"

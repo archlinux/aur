@@ -1,0 +1,96 @@
+# pacman .install hook for t3-code-docker packages.
+#
+# post_install / post_upgrade: docker load the shipped image.
+# pre_remove              : leave user data alone; just remove files.
+
+_load_image() {
+  local pkgname="$1"
+  local tarball="/usr/share/${pkgname}/image.tar.zst"
+
+  if [[ ! -r "${tarball}" ]]; then
+    echo "warning: image tarball not found at ${tarball}; skipping docker load"
+    return
+  fi
+
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "warning: docker not on PATH; skipping image load"
+    return
+  fi
+
+  echo "==> Loading docker image from ${tarball}"
+  if zstd -dc "${tarball}" | docker load; then
+    echo "    image loaded"
+  else
+    echo "    docker load failed — is the docker daemon running?"
+    echo "    Retry manually: zstd -dc ${tarball} | docker load"
+  fi
+}
+
+_print_next_steps() {
+  local pkgname="$1"
+  cat <<EOF
+
+==> ${pkgname} installed.
+
+Next steps (as the user who will run this instance):
+
+    # 1. Ensure your user is in the 'docker' group (docker CLI without sudo).
+    #    If not:
+    #      sudo usermod -aG docker \$USER    # then log out / back in
+
+    # 2. Enable + start the service:
+    #      systemctl --user daemon-reload
+    #      systemctl --user enable --now ${pkgname}.service
+
+    # 3. Get a browser pairing URL:
+    #      ${pkgname}-ctl pair
+
+    # 4. Open the URL in your browser, complete pairing.
+
+    # 5. In T3 Settings → OpenCode → serverUrl,
+    #    point at the opencode HTTP server this instance should drive
+    #    (e.g. http://127.0.0.1:4096 or http://127.0.0.1:8096).
+
+Docs: /usr/share/${pkgname}/README.md
+
+EOF
+}
+
+# Pacman calls with no args but the pkgname is in the environment;
+# fall back to detecting via file location.
+_detect_pkgname() {
+  for candidate in /usr/share/t3-code-*/image.tar.zst; do
+    [[ -e "$candidate" ]] || continue
+    basename "$(dirname "$candidate")"
+  done
+}
+
+post_install() {
+  # Multiple t3-code-* packages may be installed; load each shipped image.
+  # docker load is idempotent on identical layers.
+  local pkgname
+  for pkgname in $(_detect_pkgname); do
+    _load_image "${pkgname}"
+    _print_next_steps "${pkgname}"
+  done
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  local pkgname
+  for pkgname in $(_detect_pkgname); do
+    echo "==> Removing ${pkgname} — stopping any running container"
+    docker rm -f "${pkgname}" 2>/dev/null || true
+  done
+  cat <<EOF
+
+Note: user data (bearer sessions, projects) lives in each user's
+      \$HOME/.t3/ directory and is NOT removed by this package.
+      Docker images tagged t3-code:* remain in the local docker cache
+      until you 'docker image prune'.
+
+EOF
+}

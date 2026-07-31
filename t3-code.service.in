@@ -1,0 +1,49 @@
+[Unit]
+Description=T3 Code (Docker) — @PKGNAME@
+Documentation=file:///usr/share/@PKGNAME@/README.md
+After=network-online.target
+Wants=network-online.target
+
+# systemd --user cannot Require= a system service. If docker.service is
+# down, this unit fails cleanly; the .install post-install note tells the
+# operator docker must be running.
+
+[Service]
+Type=simple
+
+# Remove any stale container from a prior run (idempotent).
+ExecStartPre=-/usr/bin/docker rm -f @PKGNAME@
+
+# Run the T3 server:
+#   --network host   : container shares host netns; localhost inside = host
+#                      loopback, so T3 reaches host's opencode server at
+#                      127.0.0.1:<opencode_port> without UFW gymnastics.
+#   --user %U:%G     : effective UID/GID matches the invoking systemd user
+#                      (domovoy for domovoy's --user, user for user's
+#                      --user). Filesystem writes stay under that user's
+#                      ownership on the bind mount.
+#   -e HOME=%h       : T3 uses $HOME as the default `directory` it sends to
+#                      opencode. Setting HOME to the real user home means
+#                      opencode's per-project config lookup happens against
+#                      a path it owns.
+#   -v %h:%h:rw      : bind mount the user's home dir at the SAME path in
+#                      the container so paths reported to opencode-on-host
+#                      match reality on both sides.
+#   --rm             : container is stateless; state lives in %h/.t3/ on
+#                      the host via the bind mount.
+ExecStart=/usr/bin/docker run --rm --name @PKGNAME@ \
+  --network host \
+  --user %U:%G \
+  -e HOME=%h \
+  -w %h \
+  -v %h:%h:rw \
+  @IMAGE_TAG@ \
+  t3 serve --host 127.0.0.1 --port @T3_PORT@ --no-browser
+
+ExecStop=/usr/bin/docker stop -t 5 @PKGNAME@
+
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

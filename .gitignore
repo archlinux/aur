@@ -1,0 +1,9 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+image.tar.zst
+t3-*.tgz
+t3-code.service
+t3-code-ctl
