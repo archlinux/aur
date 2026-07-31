@@ -1,7 +1,7 @@
 # Maintainer: Goldy goldy@devgoldy.xyz
 
 pkgname=roseate
-_pkgver="0.1.0-alpha.24"
+_pkgver="0.1.0-alpha.25"
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast."
