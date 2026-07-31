@@ -2,7 +2,7 @@
 # Contributor: Peter <peter@nexoid.at>
 pkgname=s7
 # Upstream publishes different versions with the same version number
-pkgver=11.7.r20260129
+pkgver=11.9.r20260730
 _upstreamver=${pkgver%.*}
 pkgrel=1
 epoch=
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=
 changelog=
-_commit="57e46f181f4f7b340eab6afffc4c00b147bd708a"
+_commit="779e11342679c7f5082e1fac8af50535fbf7513e"
 source=("https://cm-gitlab.stanford.edu/bil/s7/-/archive/$_commit/s7-$_commit.tar.gz" Makefile s7.pc pass-through-compiler-flags.patch)
-sha256sums=('7a4531e961aeeacb5d18aec68597b50260b161b494716caea87c339e2932d5cf' SKIP SKIP SKIP)
+sha256sums=('c083b51add696690dc1a9a9d7d9b4117e7e03f74837fb3a4855b16aca425c867' SKIP SKIP SKIP)
 
 noextract=()
 validpgpkeys=()
