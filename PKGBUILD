@@ -29,10 +29,12 @@ sha256sums_armv6h=('56e7beb4492370faa4f375fa99a484fdbf0d6edeb96ff41ffcbbb3f02d52
 package() {
 	install -Dm755 "$srcdir/ant" "$pkgdir/usr/bin/ant"
 
-	install -Dm644 "$srcdir/completions/ant.bash" \
-		"$pkgdir/usr/share/bash-completion/completions/ant"
-	install -Dm644 "$srcdir/completions/ant.fish" \
-		"$pkgdir/usr/share/fish/vendor_completions.d/ant.fish"
+	# Completions are sourced, not executed; drop upstream's shebangs so they
+	# are not mistaken for scripts requiring bash/fish at runtime.
+	sed '1{/^#!/d}' "$srcdir/completions/ant.bash" |
+		install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/ant"
+	sed '1{/^#!/d}' "$srcdir/completions/ant.fish" |
+		install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/ant.fish"
 	install -Dm644 "$srcdir/completions/ant.zsh" \
 		"$pkgdir/usr/share/zsh/site-functions/_ant"
 
