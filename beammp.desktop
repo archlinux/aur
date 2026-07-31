@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=BeamMP
+Comment=Open up BeamNG.drive using the funny launcher thing
+Exec=beammp
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=true
