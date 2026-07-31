@@ -202,27 +202,28 @@ let patchedAny = false;
     const appearanceResolver = appearanceResolverMatch[1];
     const settingsKeys = appearanceResolverMatch[2];
     const installOverlayMatch = source.match(
-      /installApplicationMenuTitleBarOverlaySync\(e,t\)\{if\(process\.platform!==`win32`&&process\.platform!==`linux`\|\|t!==`primary`&&t!==`quickChat`\)return;let ([A-Za-z_$][\w$]*)=\(\)=>\{e\.isDestroyed\(\)\|\|e\.setTitleBarOverlay\(j9\(this\.windowZooms\.get\(e\.id\)\)\)\};return ([A-Za-z_$][\w$]*)\.nativeTheme\.on\(`updated`,\1\),\1\(\),\(\)=>\{\2\.nativeTheme\.off\(`updated`,\1\)\}\}/,
+      /installApplicationMenuTitleBarOverlaySync\(e,t\)\{if\(process\.platform!==`win32`&&process\.platform!==`linux`\|\|t!==`primary`&&t!==`quickChat`\)return;let ([A-Za-z_$][\w$]*)=\(\)=>\{e\.isDestroyed\(\)\|\|e\.setTitleBarOverlay\(([A-Za-z_$][\w$]*)\(this\.windowZooms\.get\(e\.id\)\)\)\};return ([A-Za-z_$][\w$]*)\.nativeTheme\.on\(`updated`,\1\),\1\(\),\(\)=>\{\3\.nativeTheme\.off\(`updated`,\1\)\}\}/,
     );
     if (!installOverlayMatch) {
       fail("could not find Linux titlebar overlay theme listeners");
     }
     const installOverlayBefore = installOverlayMatch[0];
-    const electronBinding = installOverlayMatch[2];
-    const setWindowZoomBefore =
-      "n.setTitleBarOverlay(j9(t))";
+    const overlayFactory = installOverlayMatch[2];
+    const electronBinding = installOverlayMatch[3];
+    const setWindowZoomRe =
+      /([A-Za-z_$][\w$]*)\.setTitleBarOverlay\(([A-Za-z_$][\w$]*)\(([A-Za-z_$][\w$]*)\)\)/g;
     const setWindowZoomAfter =
-      "n.setTitleBarOverlay(process.platform===`linux`?this.linuxTitleBarOverlay(t):j9(t))";
+      `$1.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay($3):$2($3))`;
     const overlayMethod =
-      `linuxTitleBarOverlay(e=1){let t=${appearanceResolver}(this.options.settingsStore.getEffective(${settingsKeys}.theme.key)??\`system\`),r=t===\`light\`?this.options.settingsStore.getEffective(${settingsKeys}.lightChromeTheme.key):this.options.settingsStore.getEffective(${settingsKeys}.darkChromeTheme.key),i=r?.surface,a=r?.ink;return{...j9(e),color:typeof i===\`string\`?i:${electronBinding}.nativeTheme.shouldUseDarkColors?\`#000000\`:\`#f9f9f9\`,symbolColor:typeof a===\`string\`?a:${electronBinding}.nativeTheme.shouldUseDarkColors?\`#ffffff\`:\`#1f1f1f\`}}`;
+      `linuxTitleBarOverlay(e=1){let t=${appearanceResolver}(this.options.settingsStore.getEffective(${settingsKeys}.theme.key)??\`system\`),r=t===\`light\`?this.options.settingsStore.getEffective(${settingsKeys}.lightChromeTheme.key):this.options.settingsStore.getEffective(${settingsKeys}.darkChromeTheme.key),i=r?.surface,a=r?.ink;return{...${overlayFactory}(e),color:typeof i===\`string\`?i:${electronBinding}.nativeTheme.shouldUseDarkColors?\`#000000\`:\`#f9f9f9\`,symbolColor:typeof a===\`string\`?a:${electronBinding}.nativeTheme.shouldUseDarkColors?\`#ffffff\`:\`#1f1f1f\`}}`;
     const installOverlayAfter =
-      `${overlayMethod}installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==\`win32\`&&process.platform!==\`linux\`||t!==\`primary\`&&t!==\`quickChat\`)return;let r=()=>{e.isDestroyed()||e.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay(this.windowZooms.get(e.id)):j9(this.windowZooms.get(e.id)))},i=process.platform===\`linux\`?[this.options.settingsStore.onDidChange(${settingsKeys}.theme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.lightChromeTheme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.darkChromeTheme.key,r)]:[];return ${electronBinding}.nativeTheme.on(\`updated\`,r),r(),()=>{${electronBinding}.nativeTheme.off(\`updated\`,r),i.forEach(e=>e())}}`;
+      `${overlayMethod}installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==\`win32\`&&process.platform!==\`linux\`||t!==\`primary\`&&t!==\`quickChat\`)return;let r=()=>{e.isDestroyed()||e.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay(this.windowZooms.get(e.id)):${overlayFactory}(this.windowZooms.get(e.id)))},i=process.platform===\`linux\`?[this.options.settingsStore.onDidChange(${settingsKeys}.theme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.lightChromeTheme.key,r),this.options.settingsStore.onDidChange(${settingsKeys}.darkChromeTheme.key,r)]:[];return ${electronBinding}.nativeTheme.on(\`updated\`,r),r(),()=>{${electronBinding}.nativeTheme.off(\`updated\`,r),i.forEach(e=>e())}}`;
 
-    let result = replaceExact(
+    let result = replaceRegex(
       source,
-      setWindowZoomBefore,
+      setWindowZoomRe,
       setWindowZoomAfter,
-      setWindowZoomAfter,
+      "setTitleBarOverlay(process.platform===`linux`?this.linuxTitleBarOverlay(",
       "Linux zoom-aware titlebar overlay theme sync",
     );
     source = result.source;
