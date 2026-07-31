@@ -1,6 +1,6 @@
 pkgbase = fizzy-cli
 	pkgdesc = CLI for managing Fizzy boards, cards, and tasks
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/basecamp/fizzy-cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fizzy-cli
 	conflicts = fizzy
 	conflicts = fizzy-bin
 	options = !debug
-	source = fizzy-cli-4.0.0.tar.gz::https://github.com/basecamp/fizzy-cli/archive/v4.0.0.tar.gz
-	sha256sums = 0c78d84cd99096dfcd5f7987766c98fbe0489f7872ebb8bfce52a80e3594c27a
+	source = fizzy-cli-4.0.1.tar.gz::https://github.com/basecamp/fizzy-cli/archive/v4.0.1.tar.gz
+	sha256sums = 46f0ff2f2fc5e69fe2c0830edd89fb2ed1977ec31ecd9694ffa81e71d1576c16
 
 pkgname = fizzy-cli
