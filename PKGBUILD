@@ -10,7 +10,7 @@ depends=('git')
 makedepends=('vlang')
 provides=('create-vlang-app' 'create-awesome-vlang-app')
 conflicts=('create-awesome-vlang-app-bin' 'create-vlang-app')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Create-Vlang-App/create-vlang-app/archive/refs/tags/create-vlang-app@0.1.0.tar.gz")
+source=("create-awesome-vlang-app-${pkgver}.tar.gz::https://github.com/Create-Vlang-App/create-vlang-app/archive/refs/tags/create-vlang-app@0.1.0.tar.gz")
 sha256sums=('f7c1f62f8eab3bcd4e55b05700924c864f182247ff7c050c39884f5013592729')
 
 build() {
