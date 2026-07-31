@@ -1,0 +1,30 @@
+post_install() {
+    # Try to enable as the installing user (works with paru + lingering)
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        sudo -u "$SUDO_USER" systemctl --user daemon-reload 2>/dev/null || true
+        sudo -u "$SUDO_USER" systemctl --user enable --now pomotui.socket 2>/dev/null && return
+    fi
+    echo ""
+    echo "==> To start Pomotui, run:"
+    echo "    systemctl --user daemon-reload && systemctl --user enable --now pomotui.socket"
+    echo ""
+}
+
+post_upgrade() {
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        sudo -u "$SUDO_USER" systemctl --user daemon-reload 2>/dev/null || true
+        sudo -u "$SUDO_USER" systemctl --user try-restart pomotui.service 2>/dev/null || true
+    else
+        systemctl --user daemon-reload 2>/dev/null || true
+        systemctl --user try-restart pomotui.service 2>/dev/null || true
+    fi
+}
+
+pre_remove() {
+    systemctl --user disable --now pomotui.socket 2>/dev/null || true
+    systemctl --user stop pomotui.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl --user daemon-reload 2>/dev/null || true
+}

@@ -1,7 +1,7 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui-git
 pkgver=r0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)"
 arch=('x86_64')
 url="https://github.com/SaintFore/pomotui"
@@ -17,6 +17,7 @@ optdepends=(
 )
 source=('pomotui::git+https://github.com/SaintFore/pomotui.git')
 sha256sums=('SKIP')
+install=pomotui.install
 
 pkgver() {
     cd pomotui
@@ -81,4 +82,3 @@ package() {
     # License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
