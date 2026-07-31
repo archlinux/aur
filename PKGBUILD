@@ -51,7 +51,7 @@ pkgname=(
   'ros2-humble-nav2-system-tests'
 )
 pkgver=1.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS 2 Navigation2 stack - full batch (all ~39 packages)"
 arch=('any')
 url="https://github.com/ros-navigation/navigation2"
@@ -60,30 +60,13 @@ depends=('ros2-humble')
 makedepends=(
   'cmake' 'ros2-humble-bond_core' 'ros2-humble-smclib' 'boost'
   'ros2-humble-angles' 'ros2-humble-behaviortree-cpp-v3' 'ceres-solver'
-  'ros2-humble-diagnostic-updater' 'graphicsmagick'
+  'ros2-humble-diagnostic-updater' 'graphicsmagick' 'ros2-humble-cv-bridge'
   'nanoflann' 'ompl' 'xtensor' 'xsimd' 'xtl' 'nlohmann-json' 'benchmark'
 )
 source=("https://github.com/ros-navigation/navigation2/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('c965b7a36ef48cd7f35f01c1f98883741693d195dae582232d6d0444d2eedab6')
 
-# Use a local ros2-humble installation extracted from prebuilt package
-_ros2_install="${startdir}/ros2-humble-install"
-_pkgfile="/var/cache/pacman/pkg/ros2-humble-2026.02.20-1-x86_64.pkg.tar.zst"
-
 prepare() {
-    # Extract prebuilt ros2-humble v18 if not already present
-    if [ ! -d "${_ros2_install}/opt/ros/humble" ]; then
-        msg2 "Extracting ros2-humble v18 to ${_ros2_install} ..."
-        mkdir -p "${_ros2_install}"
-        tar -I zstd -xf "${_pkgfile}" -C "${_ros2_install}"
-    fi
-
-    # Fix any hardcoded build-time paths in CMake configs (defensive)
-    if [ -d "${_ros2_install}/opt/ros/humble/share" ]; then
-        find "${_ros2_install}/opt/ros/humble/share" -name "*Config.cmake" -exec sed -i 's|/build/ros2-humble/src/install|/opt/ros/humble|g' {} + 2>/dev/null || true
-        find "${_ros2_install}/opt/ros/humble" -name "*.cmake" -path "*/rviz_common/*" -exec sed -i 's|/build/ros2-humble/src/install|/opt/ros/humble|g' {} + 2>/dev/null || true
-    fi
-
     # xtensor 0.27 reorganized its headers into subdirectories; remap the
     # legacy include paths used by nav2_mppi_controller.
     local _mppi="$srcdir/navigation2-$pkgver/nav2_mppi_controller"
@@ -131,28 +114,28 @@ build() {
         local _extra_prefix="$2"
         local _extra_cmake_args="$3"
         cd "$_src/$_subdir"
-        # Use the pre-extracted ros2-humble environment
-        source "${_ros2_install}/opt/ros/humble/setup.bash"
+        # Use the installed ros2-humble environment
+        source "/opt/ros/humble/setup.bash"
         # Clear stale CMake variables
         unset rviz_common_DIR
         # Build-time search paths: local staging prefixes first, then ros2-humble
         # Set both AMENT_PREFIX_PATH (for ament) and CMAKE_PREFIX_PATH (for CMake)
         if [ -n "$_extra_prefix" ]; then
-            export AMENT_PREFIX_PATH="${_extra_prefix}:${_ros2_install}/opt/ros/humble"
-            export CMAKE_PREFIX_PATH="${_extra_prefix}:${_ros2_install}/opt/ros/humble"
+            export AMENT_PREFIX_PATH="${_extra_prefix}:/opt/ros/humble"
+            export CMAKE_PREFIX_PATH="${_extra_prefix}:/opt/ros/humble"
         else
-            export AMENT_PREFIX_PATH="${_ros2_install}/opt/ros/humble"
-            export CMAKE_PREFIX_PATH="${_ros2_install}/opt/ros/humble"
+            export AMENT_PREFIX_PATH="/opt/ros/humble"
+            export CMAKE_PREFIX_PATH="/opt/ros/humble"
         fi
         export CXXFLAGS="${CXXFLAGS} -Wall -Wextra -Wno-error -Wno-missing-include-dirs -Wno-unused-parameter -Wno-error=maybe-uninitialized -Wno-unused-but-set-variable -include cstdint -I/usr/include/opencv4"
         export CFLAGS="${CFLAGS} -Wno-error -Wno-unused-but-set-variable"
-        export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${_ros2_install}/opt/ros/humble/lib"
+        export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,/opt/ros/humble/lib"
         local _pkg_staging="$_staging/$_subdir"
         # Check if this is a Python-only package (no CMakeLists.txt but has setup.py)
         if [ ! -f "CMakeLists.txt" ] && [ -f "setup.py" ]; then
             msg2 "  -> Python-only package, using setup.py"
-            source "${_ros2_install}/opt/ros/humble/setup.bash"
-            PYTHONPATH="${_ros2_install}/opt/ros/humble/lib/python3.11/site-packages:${PYTHONPATH}" \
+            source "/opt/ros/humble/setup.bash"
+            PYTHONPATH="/opt/ros/humble/lib/python3.11/site-packages:${PYTHONPATH}" \
                 python setup.py install --root="$_pkg_staging" --prefix=/opt/ros/humble --optimize=1
             return
         fi

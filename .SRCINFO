@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-navigation2
 	pkgdesc = ROS 2 Navigation2 stack - full batch (all ~39 packages)
 	pkgver = 1.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-navigation/navigation2
 	arch = any
 	license = Apache-2.0
@@ -16,6 +16,7 @@ pkgbase = ros2-humble-navigation2
 	makedepends = ceres-solver
 	makedepends = ros2-humble-diagnostic-updater
 	makedepends = graphicsmagick
+	makedepends = ros2-humble-cv-bridge
 	makedepends = nanoflann
 	makedepends = ompl
 	makedepends = xtensor
