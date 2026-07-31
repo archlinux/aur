@@ -1,17 +1,17 @@
 	pkgbase = opcda-bridge-client-bin
 	pkgdesc = OPC DA cross-platform client
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/mikeboiko/opcda-bridge
 	arch = x86_64
 	license = MIT
-	source = LICENSE::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.0/LICENSE
-	source = README.md::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.0/README.md
+	source = LICENSE::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.1/LICENSE
+	source = README.md::https://raw.githubusercontent.com/mikeboiko/opcda-bridge/opcda-bridge-client-v0.1.1/README.md
 	sha256sums = 6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef
-	sha256sums = 9a2cfdfbfdf5a8459cf7976cdbd1f4566474f8b580ad607629888e0f96ba2eda
+	sha256sums = f64acbf2bf87deb9d8abe1660ef88e68be672c69d6934f353347551136d4e8a4
 	provides = opcda-bridge-client
 	conflicts = opcda-bridge-client
-	source_x86_64 = opcda-bridge-client-bin-$pkgver-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/opcda-bridge-client-v0.1.0/opcda-bridge-client-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a2032511c1d9fec074966567d90973c22d42a6bf94172b2e92461d0177be6dff
+	source_x86_64 = opcda-bridge-client-bin-$pkgver-x86_64.tar.gz::https://github.com/mikeboiko/opcda-bridge/releases/download/opcda-bridge-client-v0.1.1/opcda-bridge-client-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ca12624313034b360e3dd4cee07a30a374e48db9d27c1e923c3482eaf2803737
 
 pkgname = opcda-bridge-client-bin
