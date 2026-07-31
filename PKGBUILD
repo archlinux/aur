@@ -1,9 +1,9 @@
-# Maintainer: SarangRao20 <sarangrao20@gmail.com>
+# Maintainer: SarangRao20 <raosarang2006@gmail.com>
 # Contributor: SarangRao20
 
 pkgname=battery-charge-limiter
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform battery charge limiter — enforces 80% hardware cap on laptops where BIOS hides this feature. Arch Linux daemon using acpi_call."
 arch=('any')
 url="https://github.com/SarangRao20/battery-charge-limiter"
