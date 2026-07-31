@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=archward
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="Safe-update GUI for Arch-based Linux distributions"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('69908a2a994a6eafc13f97945f1176bc6f4bad016d2598dba04723f1db7d9c02')
+sha256sums=('0460d75973c86b459f191a897c6ee58e097dbcdaec4637d8d2d3c74f693e5c22')
 
 build() {
   cd "$pkgname-$pkgver"
