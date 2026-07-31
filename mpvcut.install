@@ -1,0 +1,3 @@
+post_install() {
+	cp /usr/share/mpv/scripts/mpvcut ~/.config/mpv/scripts/
+}
