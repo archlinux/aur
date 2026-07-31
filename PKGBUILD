@@ -10,7 +10,7 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.3.r14.ge46f03a
+pkgver=2.1.3.r27.gfdf2e95
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
@@ -22,7 +22,6 @@ makedepends=(
     'git'
     'pnpm'
     'jq'
-    'aylurs-gtk-shell'
 )
 depends=(
     'gjs'
