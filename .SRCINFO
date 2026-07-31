@@ -1,16 +1,16 @@
 pkgbase = sonarlint-ls
-	pkgdesc = SonarLint language server (used by SonarLint VSCode)
-	pkgver = 3.3.0.74768
+	pkgdesc = Language Server for SonarQube for VSCode
+	pkgver = 5.6.0.78576
 	pkgrel = 1
 	url = https://github.com/SonarSource/sonarlint-language-server
 	arch = x86_64
 	license = LGPLv3
-	makedepends = git
 	makedepends = maven
 	depends = java-runtime>=17
-	source = https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/3.3.0.74768.tar.gz
+	conflicts = sonarlint-ls-bin
+	source = https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/5.6.0.78576.tar.gz
 	source = sonarlint-ls
-	sha256sums = aa69875fd56884d7d8155cb30cc7a91d42c16aa79403dcc076ba0ba9d61de6ed
+	sha256sums = fc045927c21a7ff649b7b5bf1136f579f39302681d2ac30ddad035f28db01d10
 	sha256sums = b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4
 
 pkgname = sonarlint-ls
