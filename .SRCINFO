@@ -1,0 +1,27 @@
+pkgbase = epomaker-rt100-git
+	pkgdesc = Control the Epomaker RT100 on Linux: screen images and GIFs, clock/CPU/temp, per-key RGB (TUI + GTK4)
+	pkgver = 0.2.0.r19.g60909de
+	pkgrel = 1
+	url = https://github.com/dwaycik/epomaker-rt100
+	install = epomaker-rt100.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-epomakercontroller-git
+	depends = python-pillow
+	depends = python-psutil
+	optdepends = python-textual: terminal front end (epomaker-rt100)
+	optdepends = python-gobject: desktop front end (epomaker-rt100-gtk)
+	optdepends = gtk4: desktop front end
+	optdepends = libadwaita: desktop front end
+	provides = epomaker-rt100=0.2.0.r19.g60909de
+	conflicts = epomaker-rt100
+	source = epomaker-rt100::git+https://github.com/dwaycik/epomaker-rt100.git
+	sha256sums = SKIP
+
+pkgname = epomaker-rt100-git
