@@ -14,7 +14,7 @@
 pkgbase=amdgpu-exporter
 pkgname=('amdgpu-exporter' 'rocprofiler-client')
 pkgver=1.5.1
-pkgrel=1
+pkgrel=4
 pkgdesc="AMD GPU metrics exporter for Prometheus"
 arch=('x86_64')
 url="https://github.com/ROCm/device-metrics-exporter"
@@ -125,9 +125,12 @@ package_rocprofiler-client() {
     pkgdesc="ROCm profiler client library and CLI for amdgpu-exporter"
     depends=(
         'glibc'
+        'libstdc++'
+        'libgcc'
         'rocprofiler'
+        'hip-runtime-amd'
     )
-    provides=('librocpclient.so=0-64')
+    provides=('librocpclient.so')
 
     install -Dm755 "${srcdir}/build-rocprofiler-client/librocpclient.so" \
         "${pkgdir}/usr/lib/librocpclient.so"

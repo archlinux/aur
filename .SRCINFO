@@ -1,7 +1,7 @@
 pkgbase = amdgpu-exporter
 	pkgdesc = AMD GPU metrics exporter for Prometheus
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/ROCm/device-metrics-exporter
 	arch = x86_64
 	license = Apache-2.0
@@ -34,5 +34,8 @@ pkgname = amdgpu-exporter
 pkgname = rocprofiler-client
 	pkgdesc = ROCm profiler client library and CLI for amdgpu-exporter
 	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	depends = rocprofiler
-	provides = librocpclient.so=0-64
+	depends = hip-runtime-amd
+	provides = librocpclient.so
