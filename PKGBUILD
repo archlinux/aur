@@ -1,7 +1,7 @@
 # Maintainer: termuellinator
 
 pkgname=lug-helper
-pkgver=4.14
+pkgver=4.15
 pkgrel=1
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
@@ -13,20 +13,20 @@ conflicts=('lug-helper')
 url="https://github.com/starcitizen-lug/lug-helper"
 license=('GPL3')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/starcitizen-lug/lug-helper/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-v${pkgver}.tar.gz::https://github.com/starcitizen-lug/lug-helper/releases/download/v${pkgver}/lug-helper-v${pkgver}.tar.gz"
     'lug-helper.desktop'
 )
 sha256sums=(
-    '3379edf6eb593c9ac8ab72f3097ba07d4e71cc2b5fe7cd8049a9d3d69fbe4fc1'
+    '9669c488af9736b23f49c67fc5ab00a87fc0eaa7130a9fb59f48a5d6ef247971'
     'c2e32dcc04ff2414686d6465a21f7d64d6a8df7a58363e15ade17a58dcf5ca1b'
 )
 
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-helper.sh" "$pkgdir/usr/bin/lug-helper"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lug-logo.png"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/rsi-launcher.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rsi-launcher.png"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/starcitizen.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/starcitizen.png"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lib/sc-launch.sh" "$pkgdir/usr/share/lug-helper/sc-launch.sh"
+    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/lug-helper.sh" "$pkgdir/usr/bin/lug-helper"
+    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/lug-logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lug-logo.png"
+    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/rsi-launcher.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rsi-launcher.png"
+    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/starcitizen.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/starcitizen.png"
+    install -Dm755 "${srcdir}/${pkgname}-v${pkgver}/lib/sc-launch.sh" "$pkgdir/usr/share/lug-helper/sc-launch.sh"
     install -Dm755 "${srcdir}/lug-helper.desktop" "$pkgdir/usr/share/applications/lug-helper.desktop"
 }

@@ -1,6 +1,6 @@
 pkgbase = lug-helper
 	pkgdesc = Star Citizen's Linux Users Group Helper Script
-	pkgver = 4.14
+	pkgver = 4.15
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/starcitizen-lug/lug-helper
@@ -17,9 +17,9 @@ pkgbase = lug-helper
 	optdepends = lutris
 	provides = lug-helper
 	conflicts = lug-helper
-	source = lug-helper-4.14.tar.gz::https://github.com/starcitizen-lug/lug-helper/archive/refs/tags/v4.14.tar.gz
+	source = lug-helper-v4.15.tar.gz::https://github.com/starcitizen-lug/lug-helper/releases/download/v4.15/lug-helper-v4.15.tar.gz
 	source = lug-helper.desktop
-	sha256sums = 3379edf6eb593c9ac8ab72f3097ba07d4e71cc2b5fe7cd8049a9d3d69fbe4fc1
+	sha256sums = 9669c488af9736b23f49c67fc5ab00a87fc0eaa7130a9fb59f48a5d6ef247971
 	sha256sums = c2e32dcc04ff2414686d6465a21f7d64d6a8df7a58363e15ade17a58dcf5ca1b
 
 pkgname = lug-helper
