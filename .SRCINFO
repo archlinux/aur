@@ -1,0 +1,16 @@
+pkgbase = qtmsgreader-bin
+	pkgdesc = A Qt-based application for reading Microsoft Outlook MSG files (git HEAD)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mareksamec/qt-msg-reader
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	provides = qtmsgreader
+	conflicts = qtmsgreader-git
+	source = qt-msg-reader::git+https://github.com/mareksamec/qt-msg-reader.git
+	sha256sums = SKIP
+
+pkgname = qtmsgreader-bin
