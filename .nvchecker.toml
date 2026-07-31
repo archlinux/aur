@@ -1,0 +1,4 @@
+[graphics-creator]
+source = "git"
+git = "https://github.com/chocolateimage/graphics-creator.git"
+prefix = "v"
