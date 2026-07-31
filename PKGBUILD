@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/mango-launcher-bin
 
 pkgname=mango-launcher-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Mango Launcher - An open-source gaming platform"
 arch=('x86_64')
@@ -24,20 +24,20 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-  install -d "$pkgdir/opt/mangolauncher"
-  tar -xzf "$srcdir/mango-launcher-${pkgver}.tar.gz" -C "$pkgdir/opt/mangolauncher"
+  install -d "$pkgdir/opt/mango-launcher"
+  tar -xzf "$srcdir/mango-launcher-${pkgver}.tar.gz" --strip-components=1 -C "$pkgdir/opt/mango-launcher"
 
-  find "$pkgdir/opt/mangolauncher" -type f \( -name "*.so*" -o -name "mango-launcher" -o -name "chrome-sandbox" \) -exec chmod 755 {} \;
+  find "$pkgdir/opt/mango-launcher" -type f \( -name "*.so*" -o -name "mango-launcher" \) -exec chmod 755 {} \;
 
   install -d "$pkgdir/usr/bin"
-  ln -sf "/opt/mangolauncher/mango-launcher" "$pkgdir/usr/bin/mangolauncher"
+  ln -sf "/opt/mango-launcher/mango-launcher" "$pkgdir/usr/bin/mangolauncher"
 
   install -d "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/mangolauncher.desktop" << EOF
 [Desktop Entry]
 Name=Mango Launcher
 Comment=Gaming platform
-Exec=/opt/mangolauncher/mango-launcher %U
+Exec=/opt/mango-launcher/mango-launcher %U
 Icon=mangolauncher
 Terminal=false
 Type=Application
@@ -63,6 +63,11 @@ EOF
 }
 
 post_install() {
+  # Electron needs a SUID chrome-sandbox unless the kernel supports user namespaces.
+  if ! { [[ -L /proc/self/ns/user ]] && unshare --user true; }; then
+    chown root:root /opt/mango-launcher/chrome-sandbox
+    chmod 4755 /opt/mango-launcher/chrome-sandbox
+  fi
   update-mime-database /usr/share/mime
   update-desktop-database /usr/share/applications
   gtk-update-icon-cache /usr/share/icons/hicolor
