@@ -1,0 +1,20 @@
+pkgbase = smyx-git
+	pkgdesc = Navidrome player for the terminal. With reactive themes.
+	pkgver = 0.2.7.r5.g2638e92
+	pkgrel = 1
+	url = https://github.com/ayanchavand/Smyx
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = smyx
+	conflicts = smyx
+	conflicts = smyx-bin
+	options = !lto
+	options = !debug
+	source = smyx-main::git+https://github.com/ayanchavand/Smyx.git#branch=main
+	sha256sums = SKIP
+
+pkgname = smyx-git
