@@ -1,4 +1,5 @@
 [aseprite]
-source = "regex"
-regex = 'v(\d+\.\d+\.\d+)'
-url = "https://github.com/aseprite/aseprite/tags"
+source = "git"
+git = "https://github.com/aseprite/aseprite"
+exclude_regex = "\\d+(\\.\\d+)+(-\\w+).\\d+"
+prefix = "v"
