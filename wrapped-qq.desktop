@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=QQ (Wayland Clipboard)
+Comment=QQ with Wayland clipboard compatibility
+Exec=qq-wayland-clipboard /usr/bin/linuxqq %U
+Icon=qq
+Terminal=false
+StartupWMClass=QQ
+Categories=Network;InstantMessaging;

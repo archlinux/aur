@@ -1,0 +1,22 @@
+pkgbase = qq-wayland-clipboard-git
+	pkgdesc = Clipboard compatibility wrapper for Linux QQ on Wayland
+	pkgver = 0.1.0.r3.ga918398
+	pkgrel = 1
+	url = https://github.com/w568w/qq-wayland-clipboard
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = linuxqq
+	depends = xorg-server-xvfb
+	provides = qq-wayland-clipboard
+	conflicts = qq-wayland-clipboard
+	source = git+https://github.com/w568w/qq-wayland-clipboard.git
+	source = wrapped-qq.desktop
+	b2sums = SKIP
+	b2sums = d13abe15a958b75b53373db4dd3cf6c3686126cb8faa92d562225c55b346a35daea617075655dfc71a2066320fa8a3b52e65880387abe732f93773da2812538e
+
+pkgname = qq-wayland-clipboard-git
