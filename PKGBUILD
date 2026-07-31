@@ -4,12 +4,11 @@
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 url='https://github.com/intel/confidential-computing.sgx'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
-makedepends=()
-depends=('glibc' 'gcc-libs' 'bash')
+depends=('glibc' 'libstdc++' 'bash')
 optdepends=(
   'protobuf-21: required for the AESM service'
   'nodejs: for running the SGX DCAP PCCS Server'
