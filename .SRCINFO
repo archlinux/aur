@@ -1,7 +1,7 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
 	pkgver = 0.19.0
-	pkgrel = 17
+	pkgrel = 18
 	epoch = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -59,6 +59,7 @@ pkgbase = open3d
 	source = civetweb.cmake.patch
 	source = minizip.patch
 	source = cstdint.patch
+	source = backface_culling.patch
 	sha256sums = SKIP
 	sha256sums = e58dacd86497e4d8a61fe00e4e41a4b8748e1dcca8d3172918d1bc5a1e7390cc
 	sha256sums = b29065f9930ce58f09066bd8943be322c07454bfec7084c030ff8b7dd6185ac4
@@ -66,6 +67,7 @@ pkgbase = open3d
 	sha256sums = 18a4dc14fc7d027b864575a856422c2a1b520cbbba47fb7e22300054e796d09b
 	sha256sums = fab155297ebfffdd8a05af13006004e0a39daacc83c0ee6a43e5b9ace61d55e9
 	sha256sums = c04a5540112dffe8dce5fdcf2799b7de9214003743b26a6724a23aab7503b2a7
+	sha256sums = 427d066c27a5a4b1bceffca0502d7138bbaa34bde1323fa7ba020b0e32d0821a
 
 pkgname = open3d
 	depends = libc++abi
