@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: b83c <b83c@outlook.com>
 # Contributor:
 
 pkgname=('libm2k' 'm2k-cli')
