@@ -2,7 +2,7 @@
 # Maintainer: cyucelen <cagatayyucelen@gmail.com>
 
 pkgname='isola-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Isolated dev environment for every git worktree: ports, proxy, and databases'
 url='https://github.com/cyucelen/isola'
@@ -12,10 +12,10 @@ provides=('isola')
 conflicts=('isola')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cyucelen/isola/releases/download/v${pkgver}/isola_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6f2add5513f5c64ceb5b39c75949981ef1f43b0ee881b8c38d9bdee4e08f3312')
+sha256sums_aarch64=('d55604b9dcf72b8164bb41dfec75ab7c6d511634d9d6d778e6661014bf325c7f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cyucelen/isola/releases/download/v${pkgver}/isola_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d982c3c209ef53d53fa25f5e89506c389eec077ab575681b0ae9cd791081f191')
+sha256sums_x86_64=('c0530ea4803c37966d9d0cbeedd89a434cd3bdc84754ad6863507ffc2c654591')
 
 package() {
   install -Dm755 "./isola" "${pkgdir}/usr/bin/isola"
