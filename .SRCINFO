@@ -1,6 +1,6 @@
 pkgbase = bicep-bin
 	pkgdesc = A declarative language for describing and deploying Azure resources(Prebuilt version)
-	pkgver = 0.45.15
+	pkgver = 0.46.1
 	pkgrel = 1
 	url = https://github.com/Azure/bicep
 	arch = aarch64
@@ -9,14 +9,14 @@ pkgbase = bicep-bin
 	depends = glibc>=2.16
 	depends = gcc-libs
 	depends = dotnet-runtime>=8.0
-	provides = bicep=0.45.15
+	provides = bicep=0.46.1
 	conflicts = bicep
 	options = !strip
-	source = LICENSE-0.45.15::https://raw.githubusercontent.com/Azure/bicep/v0.45.15/LICENSE
+	source = LICENSE-0.46.1::https://raw.githubusercontent.com/Azure/bicep/v0.46.1/LICENSE
 	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
-	source_aarch64 = bicep-0.45.15-aarch64::https://github.com/Azure/bicep/releases/download/v0.45.15/bicep-linux-arm64
-	sha256sums_aarch64 = 204684133b8e64027385e358d31aceda57b3ec00d028df769d9767a54d4dd154
-	source_x86_64 = bicep-0.45.15-x86_64::https://github.com/Azure/bicep/releases/download/v0.45.15/bicep-linux-x64
-	sha256sums_x86_64 = ff5b194b042c220df4a50d6768ed1d6c39a32894bfdc4ff83d62b115d966a7ce
+	source_aarch64 = bicep-0.46.1-aarch64::https://github.com/Azure/bicep/releases/download/v0.46.1/bicep-linux-arm64
+	sha256sums_aarch64 = 9e1b4302ff15d6cb0f756c876d58e1dd19b63ba37929f9d004949d714b369348
+	source_x86_64 = bicep-0.46.1-x86_64::https://github.com/Azure/bicep/releases/download/v0.46.1/bicep-linux-x64
+	sha256sums_x86_64 = 3e011d629ea4311b7a7dd8f0040ab2b1a072ea4ff5d02cb75e0e55a9a6703fb9
 
 pkgname = bicep-bin
