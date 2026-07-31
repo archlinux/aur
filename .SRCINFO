@@ -1,7 +1,7 @@
 pkgbase = pacman-static
 	pkgdesc = Statically-compiled pacman (to fix or install systems without libc)
 	pkgver = 7.1.0.r9.g54d9411
-	pkgrel = 14
+	pkgrel = 15
 	url = https://www.archlinux.org/pacman/
 	arch = i486
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = pacman-static
 	source = git+https://gitlab.archlinux.org/pacman/pacman.git#tag=v7.1.0?signed
 	source = pacman-revertme-makepkg-remove-libdepends-and-libprovides.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/354a300cd26bb1c7e6551473596be5ecced921de.patch
 	source = pacman-reproducible-builds.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/f4bdb77470528019aaba4d8b8f947e918c6db17d.patch
-	source = https://github.com/nghttp2/nghttp2/releases/download/v1.69.0/nghttp2-1.69.0.tar.xz
+	source = https://github.com/nghttp2/nghttp2/releases/download/v1.70.0/nghttp2-1.70.0.tar.xz
 	source = https://curl.haxx.se/download/curl-8.21.0.tar.gz
 	source = https://curl.haxx.se/download/curl-8.21.0.tar.gz.asc
 	source = curl-8.19.0-brotli-static.patch
@@ -76,7 +76,7 @@ pkgbase = pacman-static
 	sha512sums = 512c5096c82e00730c884e5d4d452928a66d35b42a831a2b4b8b17af9215140d6b21b2d2de7233eefae70edb8ddd8fc4d4c750bda1ba0235489bc427396c04ba
 	sha512sums = 1a108c4384b6104e627652488659de0b1ac3330640fc3250f0a283af7c5884daab187c1efc024b2545262da1911d2b0b7b0d5e4e5b68bb98db25a760c9f1fb1a
 	sha512sums = 7ca20c2ab350f72552544004b37c5c920ae32b852e7f5315b8b29ee8acb86ca8e1f9f9678792842723908e3cb894f63904af8488cb4d49066a3dba5fc14518aa
-	sha512sums = 31858cfd4a85995d006753c40393a7c23d2bfdd54fdb355757bef1a72b42177d31fff958e9e765a19d83e949eac77998e2bbe933b9390d1f2a1365506f5f6271
+	sha512sums = 8d8a95dcd05dfe8a032b78d99b7d32a9f0ad2c952c4548de4c6b4af0d2f3c584b0a2854b31516eca20b0c9c30f20d0d040edfe9961a3084e96353012f711b9d1
 	sha512sums = 1a1c88d7e52200d0a8879f61868accd7eb7edacb730e09db8e1f741535e9906005c897c2ce39b562c20e1b3ef2c84512f5b4fda9aa50c67e2364c473d15a1f65
 	sha512sums = SKIP
 	sha512sums = c9fa1e8b3e684f260e51ace59654dff4e45c97f986313a10c205cb22c69186569a2c2ec0e98e2f5c3beb8bdea480dc6fa4e2408bcc6e83566b77490193f5c8e4
