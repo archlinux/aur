@@ -1,7 +1,7 @@
 pkgbase = python-pyqcc
 	pkgdesc = Python package to communicate with Crypta Labs QRNG devices
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cryptalabs.com/qrng-driver-downloads/
 	arch = any
 	license = LicenseRef-unknown
