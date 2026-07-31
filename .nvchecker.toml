@@ -1,0 +1,5 @@
+[dashbeam-bin]
+source = "github"
+github = "tonyantony300/dashbeam"
+use_latest_release = true
+prefix = "v"
