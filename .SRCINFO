@@ -1,7 +1,7 @@
 pkgbase = ignis
 	pkgdesc = Run Obsidian as a self-hosted web app.
 	pkgver = 0.8.9+obsidian.1.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nystik-gh/ignis
 	arch = x86_64
 	arch = aarch64

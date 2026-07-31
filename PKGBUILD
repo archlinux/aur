@@ -3,7 +3,7 @@
 pkgname=ignis
 pkgver=0.8.9+obsidian.1.12.7
 _obver=$(echo "$pkgver" | awk -F '\\+obsidian.' '{print $2}')
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Obsidian as a self-hosted web app."
 arch=("x86_64" "aarch64")
 url="https://github.com/Nystik-gh/${pkgname}"
@@ -26,6 +26,8 @@ sha256sums=('c1d22d0fd226567a32bf78f2a8f4d4ae053a4dffed8101921680704fdeb0f50c'
             '75dd34f14c9db558fbad19e80f0b201bc9805b51b7388370277e0f91a38bd850')
 
 prepare() {
+    rm -rf "${pkgname}-${pkgver//+/-}//docs-src" &>/dev/null
+    mv -f "${pkgname}-${pkgver//+/-}/apps/docs" "${pkgname}-${pkgver//+/-}/docs-src"
     awk -F '|' '
         BEGIN {
             skip["VAULT_ROOT"]
@@ -77,7 +79,7 @@ prepare() {
                 printf "#%s=\"%s\"\n\n", var, def
             }
         }
-    ' "${pkgname}-${pkgver//+/-}/apps/docs/src/content/docs/server/environment.md" > "${pkgname}.env"
+    ' "${pkgname}-${pkgver//+/-}/docs-src/src/content/docs/server/environment.md" > "${pkgname}.env"
 }
 
 build() {
@@ -120,6 +122,6 @@ package() {
         packages/ui/package.json \
         packages/ui/dist/
     
-    cd apps/docs/src/content/docs
+    cd docs-src/src/content/docs
     find . -type f -iname "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
