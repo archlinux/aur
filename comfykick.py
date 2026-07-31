@@ -23,15 +23,6 @@ PROJECT_VERSION = "v1.6"
 PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"
-GITHUB_API_CODELOAD = (
-    f"https://codeload.github.com/{COMFYUI_REPO}/tar.gz/{{}}"
-)
-GITHUB_API_COMMIT = (
-    f"https://api.github.com/repos/{COMFYUI_REPO}/commits/{{}}"
-)
-GITHUB_API_LATEST = (
-    f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
-)
 
 XDG_CACHE_HOME = Path(
     os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")
@@ -70,6 +61,16 @@ DEFAULTS = {
 
 SENSITIVE_KEYS = {"github_token"}
 
+GITHUB_API_CODELOAD = (
+    f"https://codeload.github.com/{COMFYUI_REPO}/tar.gz/{{}}"
+)
+GITHUB_API_COMMIT = (
+    f"https://api.github.com/repos/{COMFYUI_REPO}/commits/{{}}"
+)
+GITHUB_API_LATEST = (
+    f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
+)
+
 _SYSTEM_CONFIG_FILE = Path(f"/etc/{PROJECT_NAME}.toml")
 _USER_CONFIG_FILE = (
     XDG_CONFIG_HOME / PROJECT_NAME / f"{PROJECT_NAME}.toml"
@@ -77,7 +78,7 @@ _USER_CONFIG_FILE = (
 _DEV_CONFIG_FILE = PROJECT_DIR / "dev" / f"{PROJECT_NAME}.toml"
 
 # Lower entries have higher priority.
-CONFIG_FILES = [
+_CONFIG_FILES = [
     _SYSTEM_CONFIG_FILE,
     _USER_CONFIG_FILE,
     _DEV_CONFIG_FILE,
@@ -748,7 +749,7 @@ def main():
     log.info("Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
 
     check_user_config(_USER_CONFIG_FILE)
-    config = _load_config(CONFIG_FILES)
+    config = _load_config(_CONFIG_FILES)
     log_config(config)
 
     if not config["github_token"]:
