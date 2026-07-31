@@ -11,9 +11,9 @@ license=('MIT')
 depends=('python' 'acpi_call')
 conflicts=()
 provides=("${pkgname}")
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install=battery-charge-limiter.install
-sha256sums=('0c4241ac375ac06d70d85cd1d4eb8f5ccccc0f3433631c28f4c8a51338d9fdb4')
+sha256sums=('836821877e5b092a865802aa185eb85170514b81e67b16b457d975c989f763e1')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -9,7 +9,7 @@ pkgbase = battery-charge-limiter
 	depends = python
 	depends = acpi_call
 	provides = battery-charge-limiter
-	source = battery-charge-limiter-v1.0.0.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/v1.0.0.tar.gz
-	sha256sums = 0c4241ac375ac06d70d85cd1d4eb8f5ccccc0f3433631c28f4c8a51338d9fdb4
+	source = battery-charge-limiter-1.0.0.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/releases/download/v1.0.0/battery-charge-limiter-1.0.0.tar.gz
+	sha256sums = 836821877e5b092a865802aa185eb85170514b81e67b16b457d975c989f763e1
 
 pkgname = battery-charge-limiter
