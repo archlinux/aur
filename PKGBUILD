@@ -5,7 +5,7 @@ _pkgname=thunar-z-jump
 # Do not pin a real commit here — it goes stale (and cannot point at the commit
 # that contains it anyway). Kept roughly current only so the AUR web frontend and
 # `paru`/`yay` search show a meaningful version instead of 0.r0.g0000000.
-pkgver=1.0.0.r6.g299c55b
+pkgver=1.0.1.r0.g139b786
 pkgrel=1
 pkgdesc="Thunar plugin to jump to frecency-ranked directories from z / zsh-z / zoxide"
 arch=('any')
@@ -32,9 +32,11 @@ makedepends=(
     'python-setuptools-scm'
     'python-wheel'
 )
-# python-gobject + gtk3 let check() also run the accelerator and dump_async tests;
-# the dialog tests need a display and skip themselves in the build chroot.
-checkdepends=('python-pytest' 'python-pytest-timeout' 'python-gobject' 'gtk3')
+# No check(): the suite spawns interactive shells and drives GTK dialogs, which
+# is not what a package build should be doing on the user's session — an
+# interactive shell's job-control setup signalled makepkg's process group and
+# suspended the whole `paru` invocation ("suspended (tty input)"). CI
+# (.github/workflows/ci.yml) runs the tests, with and without a display.
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url.git")
@@ -56,11 +58,6 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     python -m build --wheel --no-isolation
-}
-
-check() {
-    cd "$srcdir/$pkgname"
-    PYTHONPATH="$PWD" python -m pytest tests/
 }
 
 package() {
