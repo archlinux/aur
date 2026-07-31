@@ -2,7 +2,7 @@
 
 pkgname=gajae-code-bin
 _pkgname=gajae-code
-pkgver=0.12.5
+pkgver=0.12.6
 pkgrel=1
 pkgdesc="External coding-agent harness with deep-interview, ralplan, and ultragoal workflows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64::${_base}/gjc-linux-arm64")
 sha256sums=('a6625a82edf7b97e90ccd713c16fc6a3cee8cd8978752b638b34a488154cb0f1'
             '8ebe3221610610c7f5a5d0ce72f878e6aa8a4cee6c1a0a849b58314bb0a3d238')
 sha256sums_x86_64=('5800db774a57c2a29659f8ef11cab382f8e08fd37eb1b633c12ac1b84ab94668')
-sha256sums_aarch64=('2a1dbcb9ba75808e2bab6b0d7e0ede2a572ba3a372601cf30de8c186a4b22488')
+sha256sums_aarch64=('286dd3e6cb817797504d28f170392f0dcc62d74bf27c12bbecc8fc2ac6917948')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" \
