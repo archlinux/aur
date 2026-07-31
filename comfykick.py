@@ -105,6 +105,9 @@ _RETRY_BASE_DELAY = 1.0
 _RETRY_MAX_DELAY = 30.0
 _RETRY_JITTER = 0.25
 
+_CLEANUP_STALE_DAYS = 30
+_CLEANUP_MIN_THRESHOLD = 10
+
 log = logging.getLogger(PROJECT_NAME)
 
 
@@ -584,14 +587,17 @@ def cleanup_stale_tarballs(
     version_cache_dir: Path,
     exempt_names: set[str] | None = None,
 ) -> None:
-    """Remove tarballs older than 30 days from ``version_cache_dir``.
+    """Remove tarballs older than ``_CLEANUP_STALE_DAYS`` days from
+    ``version_cache_dir``.
 
     Tarballs that are the target of a symlink in ``version_cache_dir``
     are exempt, as well as any names in ``exempt_names``.
     """
     exempt = set(exempt_names) if exempt_names else set()
+    entries = list(Path(version_cache_dir).glob("*.tar.gz"))
 
-    for entry in Path(version_cache_dir).glob("*.tar.gz"):
+    # First pass: collect symlink targets into the exempt set.
+    for entry in entries:
         if entry.is_symlink():
             try:
                 target = os.readlink(entry)
@@ -599,10 +605,11 @@ def cleanup_stale_tarballs(
                 continue
             exempt.add(Path(target).name)
 
-    cutoff = time.time() - 30 * 24 * 3600
+    # Second pass: collect stale candidates.
+    cutoff = time.time() - _CLEANUP_STALE_DAYS * 24 * 3600
     candidates = []
 
-    for entry in Path(version_cache_dir).glob("*.tar.gz"):
+    for entry in entries:
         if entry.is_symlink() or entry.name in exempt:
             continue
         try:
@@ -612,11 +619,12 @@ def cleanup_stale_tarballs(
         if mtime < cutoff:
             candidates.append((mtime, entry))
 
-    if len(candidates) < 10:
+    if len(candidates) < _CLEANUP_MIN_THRESHOLD:
         log.info(
             "Skipping cleanup: only %d stale tarball(s) found "
-            "(threshold: 10).",
+            "(threshold: %d).",
             len(candidates),
+            _CLEANUP_MIN_THRESHOLD,
         )
         return
 
