@@ -1,6 +1,6 @@
 pkgbase = xc-git
 	pkgdesc = Markdown defined task runner (latest git).
-	pkgver = 0.9.0.5.gdb19bf7
+	pkgver = 0.9.0.10.g5dc73db
 	pkgrel = 1
 	url = https://github.com/joerdav/xc
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=xc-git
 _pkgname=xc
-pkgver=0.9.0.5.gdb19bf7 # will be set automatically
+pkgver=0.9.0.10.g5dc73db # will be set automatically
 pkgrel=1
 pkgdesc="Markdown defined task runner (latest git)."
 arch=('x86_64')
