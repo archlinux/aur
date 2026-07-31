@@ -1,0 +1,17 @@
+pkgbase = rpgmakerdecrypter-bin
+	pkgdesc = Tool for decrypting and extracting RPG Maker encrypted archives and files
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/uuksu/RPGMakerDecrypter
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = rpgmakerdecrypter
+	conflicts = rpgmakerdecrypter
+	options = !strip
+	source = RPGMakerDecrypter-cli-3.0.4::https://github.com/uuksu/RPGMakerDecrypter/releases/download/v3.0.4/RPGMakerDecrypter-cli
+	sha256sums = c44cfa04abbc2a9debb0db16460eeaeb8e8a7e960abe509f8c32314fb82872bc
+
+pkgname = rpgmakerdecrypter-bin
