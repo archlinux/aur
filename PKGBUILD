@@ -1,7 +1,7 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal
-pkgver=0.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings"
 arch=('any')
 url="https://github.com/ind4skylivey/0ptiscaler4linux"
@@ -13,7 +13,7 @@ optdepends=(
     'python: for advanced YAML parsing'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fe21d6fef1aeef7f8060e6cd1b8faafa0867d52aad1f5de7e202adf921c388e5')
+sha256sums=('eadb1f61e1a1366cb65f9ea0b00d53046ae58048c7e1f57bf8fde4edf53fd1cc')
 
 package() {
     cd "$srcdir/0ptiscaler4linux-$pkgver"
@@ -25,11 +25,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
     # Install core files
-    cp -r core "$pkgdir/usr/share/$pkgname/"
-    cp -r lib "$pkgdir/usr/share/$pkgname/"
-    cp -r profiles "$pkgdir/usr/share/$pkgname/"
-    cp -r scripts "$pkgdir/usr/share/$pkgname/"
-    cp -r templates "$pkgdir/usr/share/$pkgname/"
+    cp -r config core lib profiles scripts src templates "$pkgdir/usr/share/$pkgname/"
 
     # Set executable permissions on scripts
     chmod +x "$pkgdir/usr/share/$pkgname/scripts/"*.sh
