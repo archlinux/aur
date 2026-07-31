@@ -1,6 +1,6 @@
 pkgbase = iris-autocomplete-bin
 	pkgdesc = Shell auto-completion tool that works like code editors IntelliSense.
-	pkgver = 0.4.13
+	pkgver = 0.4.14
 	pkgrel = 1
 	url = https://github.com/versenilvis/IRIS
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = iris-autocomplete-bin
 	provides = iris
 	conflicts = iris-autocomplete
 	options = !strip
-	source = README-0.4.13.md::https://raw.githubusercontent.com/versenilvis/IRIS/v0.4.13/README.md
-	source = LICENSE-0.4.13::https://raw.githubusercontent.com/versenilvis/IRIS/v0.4.13/LICENSE
+	source = README-0.4.14.md::https://raw.githubusercontent.com/versenilvis/IRIS/v0.4.14/README.md
+	source = LICENSE-0.4.14::https://raw.githubusercontent.com/versenilvis/IRIS/v0.4.14/LICENSE
 	sha256sums = c01b48e2501301fb8384e6a799237047c2c1f576329b5e54a197e31c526c91ad
 	sha256sums = 0db3336be1d50c18d8d0f844a996cdddaf66a018dbdee58ab94933c1c6ffc2e9
-	source_x86_64 = iris-x86_64-0.4.13.tgz::https://github.com/versenilvis/IRIS/releases/download/v0.4.13/iris_linux_amd64.tar.gz
-	sha256sums_x86_64 = 79921bc4a2e6cf5a43b2227e78534f557aa375a62fa1e6daad1e4ed6bc8d8930
-	source_aarch64 = iris-aarch64-0.4.13.tgz::https://github.com/versenilvis/IRIS/releases/download/v0.4.13/iris_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0b85c8b3248c700f17a85c835d20f3fb54619eca4a297fb14b144d5906a15420
+	source_x86_64 = iris-x86_64-0.4.14.tgz::https://github.com/versenilvis/IRIS/releases/download/v0.4.14/iris_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1d724000c29decdbe4b445a4c80fe631081c6961fa1adcaa2aec35f136c7f3da
+	source_aarch64 = iris-aarch64-0.4.14.tgz::https://github.com/versenilvis/IRIS/releases/download/v0.4.14/iris_linux_arm64.tar.gz
+	sha256sums_aarch64 = 696e9b6a85dd87d1517e5d9688d852e619f31b310ecbf9ec0c92ba37804db99e
 
 pkgname = iris-autocomplete-bin
