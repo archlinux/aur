@@ -20,8 +20,8 @@ options=('!strip')
 
 source_x86_64=("rupu-$pkgver-x86_64::$url/releases/download/v$pkgver/rupu-linux-x64")
 source_aarch64=("rupu-$pkgver-aarch64::$url/releases/download/v$pkgver/rupu-linux-arm64")
-sha256sums_x86_64=('9e4658b78d43db21d4405f1854abc15a5180b4eee109a40692c5724aa3b8030b')
-sha256sums_aarch64=('1083db3741a9dc73eb6d5c288c10894d7237d815001486b68028737dccd807c8')
+sha256sums_x86_64=('3c47a2079340be0a3bf91f5be6304d3a5b61e2b70c9a0b8368d88278719845e3')
+sha256sums_aarch64=('42ea942c3917ff16d9f1a39d6a3e0a852b93bbddb975a2070e5507a0818acb01')
 
 package() {
   local _bin
