@@ -1,7 +1,7 @@
 # Maintainer: visorcraft <thomas@visorcraft.com>
 
 pkgname=zigit
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Fast screenshots, clipboard handoff, and annotation for Wayland'
 arch=('x86_64' 'aarch64')
@@ -16,14 +16,14 @@ depends=(
 makedepends=(
   'libxkbcommon'
   'mesa'
-  'zig0.13'
+  'zig>=0.16.0'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/visorcraft/ZigIt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e842f2d904f6cf8966d79bee89eb030a43f277c9286c2cae4af43434246ed460')
+sha256sums=('6280c3803a0ec6af24307c19673ec69c8f8a532b1a71d256290236f736c4a686')
 
 build() {
   cd "ZigIt-$pkgver"
-  zig0.13 build -Doptimize=ReleaseSafe \
+  zig build -Doptimize=ReleaseSafe \
     --cache-dir "$srcdir/zig-cache" \
     --global-cache-dir "$srcdir/zig-global-cache"
 }
@@ -33,4 +33,10 @@ package() {
   install -Dm755 zig-out/bin/zigit "$pkgdir/usr/bin/zigit"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 packaging/com.visorcraft.zigit.desktop \
+    "$pkgdir/usr/share/applications/com.visorcraft.zigit.desktop"
+  for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512; do
+    install -Dm644 "packaging/icons/hicolor/${size}/apps/com.visorcraft.zigit.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}/apps/com.visorcraft.zigit.png"
+  done
 }
