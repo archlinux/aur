@@ -1,7 +1,7 @@
 # Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
-pkgver=0.42.3
+pkgver=0.42.4
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'webkit2gtk-4.1')
 makedepends=('cargo' 'cmake' 'git' 'mold' 'nasm')
 options=('!debug' '!lto')
 source=("git+https://github.com/mpiorowski/late-sh.git#tag=v${pkgver//_/-}")
-sha256sums=('99d6264b49a6d58e50d9c999ce35a4cc5454a05a37a311f8fe48fc4f8dd98a12')
+sha256sums=('adcba0acc00182d9a1fedb46c81324704f27cae219de04ac83a34a3ff0c4ecea')
 
 prepare() {
   cd late-sh
