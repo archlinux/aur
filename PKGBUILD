@@ -32,6 +32,7 @@ depends=(
     'libxkbcommon'
     'portaudio'
     'nss'
+    'qwt'
 )
 makedepends=('git')
 source=(
