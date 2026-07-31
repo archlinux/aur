@@ -30,7 +30,7 @@
 # # e.g. `latest`                                   (latest release)
 # #      `v0.24.0`                                  (specify release tag)
 # #      `master`                                   (specify branch snap)
-# #      `f49bdb655707b97952dcef40e12e5af1f08d2007` (specify commit hash)
+# #      `f49bdb655707b97952dcef40e12e5af1f08d2007` (40-char commit hash)
 # # Default: latest
 # version                = "latest"
 
