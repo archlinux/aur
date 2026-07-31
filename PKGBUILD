@@ -2,7 +2,7 @@
 pkgname=mpf-check
 _pkgname=MPF.Check
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (MPF.Check only - Rolling Release)"
-pkgver=r3013.afd616d
+pkgver=r3117.512561e
 pkgrel=1
 url="https://github.com/SabreTools/MPF"
 license=('MIT')
