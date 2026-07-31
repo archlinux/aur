@@ -1,0 +1,19 @@
+post_install() {
+    echo ":: ═══════════════════════════════════════════════════════"
+    echo "::  ✅ hostapd-mana successfully installed!"
+    echo ":: ═══════════════════════════════════════════════════════"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo ":: ═══════════════════════════════════════════════════════"
+    echo "::  🗑️  Removing hostapd-mana..."
+    echo ":: ═══════════════════════════════════════════════════════"
+}
+
+post_remove() {
+    echo ":: ✅ hostapd-mana removed."
+}
