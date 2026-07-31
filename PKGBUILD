@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.13.3
+pkgver=1.13.4
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(git jq nodejs-lts-jod yarn)
 source=(https://github.com/ProtonMail/WebClients/archive/proton-inbox-desktop@$pkgver/$pkgname-$pkgver.tar.gz
         proton-mail.desktop
         proton-mail.sh)
-b2sums=('11d54df063a933d9c98e181d1dc804feaa7265b292e2b1f79655d234be47fb2df6752d5313b47e165b84251581524c1f1afd28a7864cd0488c60231a34e7fce0'
+b2sums=('3a1acc2ba46ecfc265360ce86d888f98c9557da4011c13c711d1da7dcc49b311c2b429d061e8df9129f96cad03df3aed5ff774b486a05e3d94d42d6ecd844a8e'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
