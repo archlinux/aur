@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0
+_pkgver=13.0.1
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
@@ -77,9 +77,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('bf06162c2fc6f62f932e98895648dec8d1b3138d03983347d1704607a2324199')
-sha256sums_x86_64=('4d996fdb166e75a40a32d1736cdb94e7dd8e37b03f4a2e46bcbfd48545fea79e')
-sha256sums_aarch64=('7e560a5d69923de8137da435e1503f2c5fbea186b8c43fde6a744b3b6ec76f7d')
+sha256sums=('1cd17a1fdaf804113f34eb1c231825ab02064253999e9cba391b4f03cfe5936e')
+sha256sums_x86_64=('dd2bb365e00a182ff0d8cb241f8628dbb4c1f7affc3288884c5ef00d272c02a9')
+sha256sums_aarch64=('51ce0042841f48086d66a65550b9fbe11a8f24f344da1035596d50c934ff9153')
 
 package() {
   mkdir -p "$pkgdir/usr/lib"
