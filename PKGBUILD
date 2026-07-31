@@ -1,6 +1,6 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=bytelizer-git
-pkgver=r25.b092f21
+pkgver=r29.6ef1127
 pkgrel=1
 pkgdesc="Bytelizer is a binary packaging/unpack library written in modern c, focusing on performance and lightweight."
 arch=(any)
@@ -9,7 +9,7 @@ license=('GPL-2.0-only')
 groups=()
 depends=()
 makedepends=('git' 'cmake') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-*=$pkgver}")
+provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 replaces=()
 backup=()
