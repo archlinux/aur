@@ -1,0 +1,5 @@
+[timefs-bin]
+source = "github"
+github = "itsbryanman/timefs"
+use_latest_release = true
+prefix = "v"
