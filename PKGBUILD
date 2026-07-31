@@ -16,6 +16,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('df9fa0242d74b18eb2af980f8d68c0fdea33b54ac3193dccc45ac5a5c5ef328f')
 options=('!lto')
+install=pomotui.install
 
 prepare() {
     cd "${pkgname}-${pkgver}"
