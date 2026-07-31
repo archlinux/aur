@@ -1,5 +1,5 @@
 pkgname=codex-native-git
-pkgver=r1.5f83185
+pkgver=r1.31e84b3
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI"
 arch=('x86_64')
@@ -11,9 +11,10 @@ makedepends=('cargo' 'git' 'rust' 'unzip')
 provides=('codex-native')
 conflicts=('codex-native')
 _codex_frontend_version=26.727.40816
+_codex_frontend_artifact=ChatGPT-darwin-arm64
 source=(
   "codex-native::git+${url}.git"
-  "Codex-darwin-arm64-${_codex_frontend_version}.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${_codex_frontend_version}.zip"
+  "${_codex_frontend_artifact}-${_codex_frontend_version}.zip::https://persistent.oaistatic.com/codex-app-prod/${_codex_frontend_artifact}-${_codex_frontend_version}.zip"
 )
 sha256sums=(
   'SKIP'
@@ -32,14 +33,19 @@ build() {
 
 package() {
   local extracted_root="$srcdir/codex-frontend"
+  local asar_path
   local icon_path
 
   cd "$srcdir/codex-native"
 
   rm -rf "$extracted_root"
-  ./target/release/codex-native extract-asar \
-    "$srcdir/Codex.app/Contents/Resources/app.asar" \
-    "$extracted_root"
+  asar_path="$(find "$srcdir" -path '*/Contents/Resources/app.asar' -type f | sort | head -n 1)"
+  if [[ -z "$asar_path" ]]; then
+    echo "failed to locate app.asar in upstream frontend bundle" >&2
+    return 1
+  fi
+
+  ./target/release/codex-native extract-asar "$asar_path" "$extracted_root"
 
   install -Dm755 ./target/release/codex-native "$pkgdir/usr/bin/codex-native"
   install -Dm755 ./packaging/aur/codex-native-launcher "$pkgdir/usr/bin/codex-native-launcher"
