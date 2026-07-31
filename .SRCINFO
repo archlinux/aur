@@ -1,6 +1,6 @@
 pkgbase = slipmat
 	pkgdesc = A native GNOME client for Apple Music
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/SoftARV/Slipmat
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = slipmat
 	depends = hicolor-icon-theme
 	options = !debug
 	options = !lto
-	source = slipmat-0.7.0.tar.gz::https://github.com/SoftARV/Slipmat/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 9c39b4832866c3adcdca3ebc62713848bbbd45ab5f509819717c9f54bbd48859
+	source = slipmat-0.8.0.tar.gz::https://github.com/SoftARV/Slipmat/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 929c3699658c5dbd122252c6234eea303d684192de734b7ecc70f424c3e3dcba
 
 pkgname = slipmat
