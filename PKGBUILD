@@ -5,8 +5,8 @@
 # ═══════════════════════════════════════════════════════════════
 #
 # Before publishing to AUR:
-#   1. Create a signed tag:  git tag -s v0.1.3 -m "v0.1.3"
-#   2. Push the tag:         git push origin v0.1.3
+#   1. Create a signed tag:  git tag -s v0.1.4 -m "v0.1.4"
+#   2. Push the tag:         git push origin v0.1.4
 #   3. Generate .SRCINFO:    makepkg --printsrcinfo > .SRCINFO
 #   4. Submit to AUR via     git clone aur@aur.archlinux.org:chest-backup.git
 #      the AUR repo (not
@@ -18,7 +18,7 @@
 # and the build()/package() functions use $srcdir/$pkgname.
 
 pkgname=chest-backup
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
@@ -72,7 +72,8 @@ package() {
   cp -r packages/web/dist "$pkgdir/usr/share/$pkgname/packages/web/"
 
   # ── Native addon (cpu-features ─ required by ssh2) ──────────
-  # The only external dependency not bundled by bun.
+  # External dependencies not bundled by bun ship as-is; @trayjs/* is
+  # handled in the block below.
   # pnpm install above already compiled the .node binary.
   CPU_FEATURES="node_modules/.pnpm/cpu-features@*/node_modules/cpu-features"
   # shellcheck disable=SC2086
@@ -80,6 +81,25 @@ package() {
     install -d "$pkgdir/usr/share/$pkgname/node_modules/cpu-features"
     # shellcheck disable=SC2086
     cp -r $CPU_FEATURES/* "$pkgdir/usr/share/$pkgname/node_modules/cpu-features/"
+  fi
+
+  # ── System tray native code (@trayjs) ────────────────────────
+  # The tray bundle imports @trayjs at runtime instead of bundling it
+  # (a compiled binary can't be inlined into JS), so the wrapper and
+  # the platform binary must exist in node_modules after install.
+  # pnpm only installed the binary for this CPU (x64 or arm64);
+  # copy whatever is present.
+  TRAYJS="node_modules/.pnpm/@trayjs+*/node_modules/@trayjs"
+  # shellcheck disable=SC2086
+  if ls $TRAYJS/*/package.json >/dev/null 2>&1; then
+    install -d "$pkgdir/usr/share/$pkgname/node_modules/@trayjs"
+    # shellcheck disable=SC2086
+    for dir in $TRAYJS/*; do
+      [ -e "$dir" ] || continue
+      name=$(basename "$dir")
+      [ -e "$pkgdir/usr/share/$pkgname/node_modules/@trayjs/$name" ] && continue
+      cp -r "$dir" "$pkgdir/usr/share/$pkgname/node_modules/@trayjs/"
+    done
   fi
 
   # ── Default configuration (editable, preserved on upgrade) ──
@@ -107,13 +127,35 @@ package() {
 }
 
 post_install() {
-  echo
-  echo "  █ chest-backup installed."
-  echo
-  echo "  Edit configuration:  sudoedit /etc/chest-backup/chest-backup.json"
-  echo "                       sudoedit /etc/chest-backup/.env"
-  echo
-  echo "  Enable the service:  systemctl --user enable --now chest-backup"
+  if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+    uid=$(id -u "$SUDO_USER")
+    user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+
+    if runuser -u "$SUDO_USER" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      systemctl --user enable --now chest-backup 2>/dev/null; then
+      started=true
+    else
+      install -d "$user_home/.config/systemd/user/default.target.wants"
+      ln -sf /usr/lib/systemd/user/chest-backup.service \
+        "$user_home/.config/systemd/user/default.target.wants/chest-backup.service"
+      started=false
+    fi
+
+    # Boot-time start without login so scheduled backups always run.
+    loginctl enable-linger "$SUDO_USER" 2>/dev/null || true
+
+    echo
+    if [ "$started" = true ]; then
+      echo "  █ chest-backup installed and running."
+    else
+      echo "  █ chest-backup installed. Start it with:"
+      echo "      systemctl --user start chest-backup"
+    fi
+  else
+    echo
+    echo "  █ chest-backup installed. Start it with:"
+    echo "      systemctl --user enable --now chest-backup"
+  fi
   echo
   echo "  Web UI:              http://localhost:5199"
   echo
