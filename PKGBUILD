@@ -1,23 +1,32 @@
 # Maintainer: solidstrong <latifishal@gmail.com>
 
 pkgname=ddper
-pkgver=8.4
+pkgver=9.1
 pkgrel=1
 pkgdesc="DDPER (unofficial DDNet client)"
 arch=('x86_64')
 url="https://ddper.ir"
+options=('!debug')
 license=('custom:Proprietary')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
 optdepends=('discord-game-sdk: Enable rich presence in Discord desktop client.')
 provides=('ddper')
+
 _arch="x86_64"
-source=("https://ddper.ir/client/linux/ddper-v${pkgver}-linux_${_arch}.tar.xz"
-        "https://ddper.ir/image/icon.png")
-sha256sums=('2f62ffd210aea3eb2f4015d7a59da35b3ecc1bf861a1df9aed7b7a1e70a8dac0'
-            '6649746c0783e4187422125358126dc65f252330104143fa515ece61ed6aba8a')
+
+source=("https://ddper.ir/client/linux/DDPER-${pkgver}-linux_${_arch}.tar.xz")
+sha256sums=('7228b5ec923c43273b613e72f3f7d0e59430e8a3a2751e8a7825628f490f2c46')
+
+prepare() {
+    mkdir -p "$srcdir/tmp"
+
+    tar -xf "DDPER-${pkgver}-linux_${_arch}.tar.xz" \
+        -C "$srcdir/tmp" \
+        --strip-components=1
+}
 
 build() {
-  :
+    :
 }
 
 package() {
@@ -27,21 +36,26 @@ package() {
     install -d "$pkgdir/usr/share/icons/hicolor/48x48/apps"
     install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-    mkdir -p "$srcdir/tmp"
-    tar -xf "ddper-v${pkgver}-linux_${_arch}.tar.xz" -C "$srcdir/tmp" --strip-components=1
     cp -a "$srcdir/tmp/." "$pkgdir/opt/$pkgname"
 
-    # Use wrapper instead of symlink to ensure correct working directory
+    # Wrapper to ensure correct working directory
     cat << 'EOF' > "$pkgdir/usr/bin/ddper"
 #!/bin/bash
 exec /opt/ddper/DDPER "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/ddper"
 
-    install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/ddper.png"
+    # Application icon
+    install -Dm644 "$srcdir/tmp/data/gui_logo.png" \
+        "$pkgdir/usr/share/icons/hicolor/48x48/apps/ddper.png"
 
-    [ -f "$srcdir/tmp/LICENSE" ] && install -Dm644 "$srcdir/tmp/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # License
+    if [[ -f "$srcdir/tmp/LICENSE" ]]; then
+        install -Dm644 "$srcdir/tmp/LICENSE" \
+            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 
+    # Desktop entry
     cat << EOF > "$pkgdir/usr/share/applications/ddper.desktop"
 [Desktop Entry]
 Type=Application
