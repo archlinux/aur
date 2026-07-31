@@ -1,0 +1,16 @@
+pkgbase = sqzass
+	pkgdesc = A static site generator written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sqzer-x/sqzass
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = sqzass-0.1.0.tar.gz::https://github.com/sqzer-x/sqzass/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a68262010c3e4b8ada884edaa174025d1b605376be26673ea6d44c926cee3dc9
+
+pkgname = sqzass
