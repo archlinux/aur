@@ -1,8 +1,8 @@
 # Maintainer: ember-ana <aur.public at following domain> (https://thei.rs)
 _pkgname="sable"
 pkgname="${_pkgname}-git"
-pkgver=1.20.0.r1044.gc160f50
-pkgrel=2
+pkgver=1.20.0.r1064.gfd5c07b
+pkgrel=1
 pkgdesc="An almost stable Matrix client."
 arch=("x86_64")
 url="https://github.com/SableClient/Sable"
@@ -41,6 +41,7 @@ b2sums=(
   "62eb6cad8ba4c101daa953dd5726ccc605def65cb725c26ae8288955261b59badbeae344c325e11072b13ee966b8fe56f5de96244593465bbab0d2b17281317c"
   "206810829d415a052f9a71c987154b1ff32830f148ff7661c25f4a457b06e7b57360eb4b2991dfee50daf6c59efb503976606090d4010c0160270ce462d3d68c"
 )
+options=('!lto' '!strip')
 
 provides=("sable")
 conflicts=("sable")
