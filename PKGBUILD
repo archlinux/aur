@@ -3,8 +3,8 @@
 
 pkgbase=socalabs-wavetable
 pkgname=($pkgbase-lv2-bin $pkgbase-vst-bin $pkgbase-vst3-bin)
-pkgver=1.0.32
-pkgrel=2
+pkgver=1.0.34
+pkgrel=1
 arch=(x86_64)
 url='https://socalabs.com/synths/wavetable/'
 license=(BSD-3-Clause)
