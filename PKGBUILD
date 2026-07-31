@@ -2,7 +2,7 @@
 pkgname=imfile
 _pkgname=imFile
 _flathubname="io.github.${pkgname}_io.${pkgname}_desktop"
-pkgver=2.1.0
+pkgver=2.2.0
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9af0e77385f333dc9c245cac90963a7b209db142c990e94357756c8efc9b7cc6'
+sha256sums=('0d9c31a6276bb16329d10486b94a3299488a01f716cca0fc4a705837fb290b06'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -49,7 +49,7 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
@@ -118,13 +118,14 @@ build() {
     _ensure_local_nvm
     NODE_ENV=production     pnpm run sync-go-aria2
     NODE_ENV=production     pnpm -c exec "node .electron-vue/build.js"
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/flathub/${_flathubname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/flathub/${_flathubname}.metainfo.xml" \
