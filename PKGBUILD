@@ -1,17 +1,14 @@
 pkgname=simplex-chat
-pkgver=6.5.5
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='The first messaging network operating without user identifiers of any kind (CLI client)'
 arch=('x86_64')
 url='https://github.com/simplex-chat/simplex-chat'
 license=('AGPL-3.0-only')
 depends=(
-  'gcc-libs'
+  'ca-certificates'
   'gmp'
-  'libffi'
-  'ncurses'
   'openssl'
-  'sqlcipher'
   'zlib'
 )
 
@@ -30,7 +27,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'a1f90318e082a7a809891353fa02a3e2f21c7faa6bb7a3016b9ae5b1869a59bc'
+  '273e1db81aa5c4bf9f4c51010ae177c556bd0aa222562264894025b6ce5b4a3b'
 )
 options=(
   '!lto'
