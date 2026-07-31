@@ -1,6 +1,6 @@
 pkgbase = live-paper
 	pkgdesc = A Wayland video wallpaper engine
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sinder38/live-paper-rs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = live-paper
 	depends = mpv
 	depends = wayland
 	depends = libglvnd
-	source = live-paper-0.1.0.tar.gz::https://github.com/sinder38/live-paper-rs/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c7fccc2a89bc13e2bd21935b32b373cb3ef248171d796fa1774738851e3d285c
+	source = live-paper-0.2.0.tar.gz::https://github.com/sinder38/live-paper-rs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 610a11083bf77c225ae4ee46912bc2751688e3bb92f7a9f7e01e6f4b88f2755f
 
 pkgname = live-paper
