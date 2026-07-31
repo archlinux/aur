@@ -1,0 +1,145 @@
+From 774ed0e86d4cc33884cd82c2b4063f368afe5aff Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 6 Mar 2018 23:39:47 +0100
+Subject: [PATCH] Use Arch Linux' device access groups
+
+  cdrom   → optical
+  dialout → uucp
+  tape    → storage
+---
+ meson.build                      |  6 +++---
+ meson_options.txt                | 12 ++++++------
+ rules.d/50-udev-default.rules.in | 14 +++++++-------
+ sysusers.d/basic.conf.in         |  6 +++---
+ 4 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 599d2a3217..536ddb1ae2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -906,21 +906,21 @@ conf.set_quoted('NOBODY_GROUP_NAME', nobody_group)
+ static_ugids = []
+ foreach option : ['adm-gid',
+                   'audio-gid',
+-                  'cdrom-gid',
+                   'clock-gid',
+-                  'dialout-gid',
+                   'disk-gid',
+                   'empower-gid',
+                   'input-gid',
+                   'kmem-gid',
+                   'kvm-gid',
+                   'lp-gid',
++                  'optical-gid',
+                   'render-gid',
+                   'sgx-gid',
+-                  'tape-gid',
++                  'storage-gid',
+                   'tty-gid',
+                   'users-gid',
+                   'utmp-gid',
++                  'uucp-gid',
+                   'video-gid',
+                   'wheel-gid',
+                   'systemd-journal-gid',
+diff --git a/meson_options.txt b/meson_options.txt
+index 1d7c4f4bd2..e63b709397 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -287,12 +287,8 @@ option('adm-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "adm" group')
+ option('audio-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "audio" group')
+-option('cdrom-gid', type : 'integer', value : 0,
+-       description : 'soft-static allocation for the "cdrom" group')
+ option('clock-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "clock" group')
+-option('dialout-gid', type : 'integer', value : 0,
+-       description : 'soft-static allocation for the "dialout" group')
+ option('disk-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "disk" group')
+ option('empower-gid', type : 'integer', value : 0,
+@@ -305,18 +301,22 @@ option('kvm-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "kvm" group')
+ option('lp-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "lp" group')
++option('optical-gid', type : 'integer', value : '0',
++       description : 'soft-static allocation for the "optical" group')
+ option('render-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "render" group')
+ option('sgx-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "sgx" group')
+-option('tape-gid', type : 'integer', value : 0,
+-       description : 'soft-static allocation for the "tape" group')
++option('storage-gid', type : 'integer', value : '0',
++       description : 'soft-static allocation for the "storage" group')
+ option('tty-gid', type : 'integer', value : 5,
+        description : 'the numeric GID of the "tty" group')
+ option('users-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "users" group')
+ option('utmp-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "utmp" group')
++option('uucp-gid', type : 'integer', value : '0',
++       description : 'soft-static allocation for the "uucp" group')
+ option('video-gid', type : 'integer', value : 0,
+        description : 'soft-static allocation for the "video" group')
+ option('wheel-gid', type : 'integer', value : 0,
+diff --git a/rules.d/50-udev-default.rules.in b/rules.d/50-udev-default.rules.in
+index 9264b8e021..67cb9c43c7 100644
+--- a/rules.d/50-udev-default.rules.in
++++ b/rules.d/50-udev-default.rules.in
+@@ -43,7 +43,7 @@ SUBSYSTEM=="tty", KERNEL=="ptmx", GROUP="tty", MODE="0666"
+ SUBSYSTEM=="tty", KERNEL=="tty", GROUP="tty", MODE="0666"
+ SUBSYSTEM=="tty", KERNEL=="tty[0-9]*|hvc[0-9]*|sclp_line[0-9]*|ttysclp[0-9]*|3270/tty[0-9]*", GROUP="tty", MODE="{{TTY_MODE}}"
+ SUBSYSTEM=="vc", KERNEL=="vcs*|vcsa*", GROUP="tty"
+-KERNEL=="tty[A-Z]*[0-9]|ttymxc[0-9]*|pppox[0-9]*|ircomm[0-9]*|noz[0-9]*|rfcomm[0-9]*", GROUP="dialout"
++KERNEL=="tty[A-Z]*[0-9]|ttymxc[0-9]*|pppox[0-9]*|ircomm[0-9]*|noz[0-9]*|rfcomm[0-9]*", GROUP="uucp"
+ 
+ SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
+ 
+@@ -90,13 +90,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
+ SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:0701??:*", GROUP="lp"
+ 
+ SUBSYSTEM=="block", GROUP="disk"
+-SUBSYSTEM=="block", KERNEL=="sr[0-9]*", GROUP="cdrom"
+-SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="4|5", GROUP="cdrom"
+-KERNEL=="sch[0-9]*", GROUP="cdrom"
+-KERNEL=="pktcdvd[0-9]*", GROUP="cdrom"
+-KERNEL=="pktcdvd", GROUP="cdrom"
++SUBSYSTEM=="block", KERNEL=="sr[0-9]*", GROUP="optical"
++SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="4|5", GROUP="optical"
++KERNEL=="sch[0-9]*", GROUP="optical"
++KERNEL=="pktcdvd[0-9]*", GROUP="optical"
++KERNEL=="pktcdvd", GROUP="optical"
+ 
+-SUBSYSTEM=="scsi_generic|scsi_tape", SUBSYSTEMS=="scsi", ATTRS{type}=="1|8", GROUP="tape"
++SUBSYSTEM=="scsi_generic|scsi_tape", SUBSYSTEMS=="scsi", ATTRS{type}=="1|8", GROUP="storage"
+ SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="0", GROUP="disk"
+ KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
+ KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
+diff --git a/sysusers.d/basic.conf.in b/sysusers.d/basic.conf.in
+index cf200fb14f..d922f12f7f 100644
+--- a/sysusers.d/basic.conf.in
++++ b/sysusers.d/basic.conf.in
+@@ -25,18 +25,18 @@ g utmp    {{UTMP_GID   }}     -            -
+ 
+ # Physical and virtual hardware access groups
+ g audio   {{AUDIO_GID  }}     -            -
+-g cdrom   {{CDROM_GID  }}     -            -
+ g clock   {{CLOCK_GID  }}     -            -
+-g dialout {{DIALOUT_GID}}     -            -
+ g disk    {{DISK_GID   }}     -            -
+ g input   {{INPUT_GID  }}     -            -
+ g kmem    {{KMEM_GID   }}     -            -
+ g kvm     {{KVM_GID    }}     -            -
+ g lp      {{LP_GID     }}     -            -
++g optical {{OPTICAL_GID}}     -            -
+ g render  {{RENDER_GID }}     -            -
+ g sgx     {{SGX_GID    }}     -            -
+-g tape    {{TAPE_GID   }}     -            -
++g storage {{STORAGE_GID}}     -            -
+ g tty     {{TTY_GID    }}     -            -
++g uucp    {{UUCP_GID   }}     -            -
+ g video   {{VIDEO_GID  }}     -            -
+ 
+ # Default group for normal users

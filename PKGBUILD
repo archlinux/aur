@@ -1,0 +1,416 @@
+# Maintainer: Claire Farron <diesal3@googlemail.com>
+# Based on core/systemd by Christian Hesse <mail@eworm.de>
+
+pkgbase=systemd-remove-birthdate
+pkgname=('systemd-remove-birthdate'
+         'systemd-remove-birthdate-libs'
+         'systemd-remove-birthdate-resolvconf'
+         'systemd-remove-birthdate-sysvcompat'
+         'systemd-remove-birthdate-tests'
+         'systemd-remove-birthdate-ukify')
+# Upstream versioning is incompatible with pacman's version comparisons, one
+# way or another. We use proper version for pacman here (no dash for rc
+# release!), and change in source array below.
+pkgver=261.2
+pkgrel=1
+arch=('x86_64')
+license=('LGPL-2.1-or-later')
+url='https://www.github.com/systemd/systemd'
+makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
+             'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
+             'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
+             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
+conflicts=("mkinitcpio<38-1")
+validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
+              'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
+              '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
+              '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
+
+# For pacman's version comparisons $pkgver is missing the dash that would be
+# in an upstream rc version so add it back when fetching the tag from github.
+source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}?signed"
+        '0001-Use-Arch-Linux-device-access-groups.patch'
+        # Remove BirthDate Fields
+        '0002-Remove-Birthdate-man-folders.patch'
+        '0003-Remove-Birthdate-src-folders.patch'
+        # bootloader files
+        'arch.conf'
+        'loader.conf'
+        'splash-arch.bmp'
+        # pam configuration
+        'systemd-user.pam'
+        # pacman / libalpm hooks
+        'systemd-hook'
+        '20-systemd-sysusers.hook'
+        '21-systemd-tmpfiles.hook'
+        '25-systemd-binfmt.hook'
+        '25-systemd-catalog.hook'
+        '25-systemd-hwdb.hook'
+        '25-systemd-sysctl.hook'
+        '30-systemd-daemon-reload-system.hook'
+        '30-systemd-daemon-reload-user.hook'
+        '35-systemd-enqueue-marked.hook'
+        '35-systemd-udev-reload.hook'
+        '35-systemd-update.hook')
+sha512sums=('1c2a3aed0b7c613040722ef1bd063a1f35d2f3993e0f678701ef5e4d42d31628804df477158e5fa2bb47e523a9969d01cfb7622762cf32ff44e0367e5f432368'
+            'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
+            '1fa81fdfd50129955cdeb028473b99695b182c9e98da1594bd2db30705c712aadbe9deb31b2ce14f4baea945732f443a9862e226325facc4d5262d2118340f01'
+            '5e759d59ab97714d19c71d60360f524d27e06076a02bf1c0276f503b3b46c0db3aed912da96cf50ac29a5ce627bd68d4385ec22d13974d661006f9f7ed249b0f'
+            '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
+            '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
+            '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
+            '32580b82e97573d3e499821e2ce415ff134c0ec52c9b44a3c0862c4007d347f55636d6afac3dfc6831a9b384c7448075bdf3a12f369b4d8b62b24dfdb9c8a76a'
+            'f2f9c8de7fc10c84f8ad4b3286c6878d35cf80ac9841a55759db46f40e69b012b2d6a6638fb107a442c6e545558f864af1477f701bc0693dc452772be232b7a7'
+            '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
+            'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
+            '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
+            '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
+            'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
+            '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
+            'a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a'
+            '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
+            '51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df'
+            'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
+            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
+
+_meson_version="${pkgver}-${pkgrel}"
+_systemd_src_dir="systemd"
+
+if ((_systemd_UPSTREAM)); then
+  _meson_version="${pkgver}"
+fi
+
+# Some heuristics to detect that we are building on OBS, with no network access. Skip
+# git verification, and use the OBS-provided tarball instead. The sources will be
+# unpacked by OBS in $package-$version/
+if [ -f /.build/build.dist ] && [ -d /usr/src/packages/SOURCES ] &&  [ -d /usr/src/packages/BUILD ] &&  [ -d /usr/src/packages/OTHER ]; then
+  source[0]="$(find . -name "systemd-${pkgver}.tar.*" -print -quit)"
+  sha512sums[0]='SKIP'
+  _systemd_src_dir="systemd-${pkgver}"
+fi
+
+_backports=(
+)
+
+_reverts=(
+)
+
+prepare() {
+  cd "${_systemd_src_dir}"
+
+  # return if not a git repository
+  if ! git status >/dev/null 2>&1; then
+    return
+  fi
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
+  # Replace cdrom/dialout/tape groups with optical/uucp/storage
+  patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+  patch -Np1 -i ../0002-Remove-Birthdate-man-folders.patch
+  patch -Np1 -i ../0003-Remove-Birthdate-src-folders.patch
+}
+
+build() {
+  local _timeservers=({0..3}.arch.pool.ntp.org)
+  local _nameservers=(
+    # We use these public name services, ordered by their privacy policy (hopefully):
+    #  * Quad9 (https://quad9.net/privacy/policy/)
+    '9.9.9.9#dns.quad9.net'
+    '2620:fe::9#dns.quad9.net'
+    #  * Cloudflare (https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/)
+    '1.1.1.1#cloudflare-dns.com'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    #  * Google (https://developers.google.com/speed/public-dns/privacy)
+    '8.8.8.8#dns.google'
+    '2001:4860:4860::8888#dns.google'
+    # You do not agree? Fine, change it in your local configuration.
+  )
+
+  local _meson_options=(
+    -Dversion-tag="${_meson_version}-arch"
+    -Dvcs-tag=false
+    -Dshared-lib-tag="${_meson_version}"
+    -Dmode=release
+
+    -Dapparmor=enabled
+    -Dbootloader=enabled
+    -Dxenctrl=disabled
+    -Dbpf-framework=enabled
+    -Dima=false
+    -Dinstall-tests=true
+    -Dlibidn2=enabled
+    -Dlz4=enabled
+    -Dman=enabled
+    -Dselinux=disabled
+    -Dsshdprivsepdir=/usr/share/empty.sshd
+    -Dsysupdated=enabled
+    -Dvmlinux-h=provided
+    -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
+
+    -Dcompat-sysv-interfaces=false
+    -Ddbuspolicydir=/usr/share/dbus-1/system.d
+    -Ddefault-dnssec=no
+    -Ddefault-kill-user-processes=false
+    -Ddefault-locale='C.UTF-8'
+    -Dlocalegen-path=/usr/bin/locale-gen
+    -Ddns-over-tls=openssl
+    -Dfallback-hostname='archlinux'
+    -Dnologin-path=/usr/bin/nologin
+    -Dntp-servers="${_timeservers[*]}"
+    -Ddns-servers="${_nameservers[*]}"
+    -Drpmmacrosdir=no
+
+    -Dsbat-distro='arch'
+    -Dsbat-distro-summary='Arch Linux AUR'
+    -Dsbat-distro-pkgname="${pkgname}"
+    -Dsbat-distro-version="${pkgver}"
+    -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
+  )
+
+  arch-meson "${_systemd_src_dir}" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
+
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+package_systemd-remove-birthdate() {
+  pkgdesc='system and service manager with birthdate functions removed'
+
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later' # udev
+    'MIT-0' # documentation and config files
+  )
+  
+  # Not all libs are linked, but opened via dlopen() pointed out by 6511918 at
+  # https://aur.archlinux.org/pkgbase/systemd-git#comment-1041291
+  
+  depends=(
+    "systemd-remove-birthdate-libs=${pkgver}"
+    'acl' 'bash' 'cryptsetup' 'dbus'
+    'dbus-units' 'kbd' 'kmod' 'hwdata'
+    'libgcrypt' 'libxcrypt' 'libidn2' 'lz4' 'pam'
+    'libelf' 'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit'
+    'openssl')
+  provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
+  provides+=("systemd=${pkgver}")
+  
+  replaces=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  
+  conflicts+=('systemd' 'systemd-git' 'systemd-liberated-git')
+
+  optdepends=(
+    'apparmor: additional security features'
+    'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
+    'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
+    'iptables: firewall features'
+    'libarchive: convert DDIs to tarballs'
+    'libbpf: support BPF programs'
+    'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+    'libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
+    'libp11-kit: support PKCS#11'
+    'libpwquality: check password quality'
+    'polkit: allow administration as unprivileged user'
+    'qemu-base: systemd-vmspawn'
+    'qrencode: show QR codes'
+    'quota-tools: kernel-level quota management'
+    'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+    'systemd-ukify: combine kernel and initrd into a signed Unified Kernel Image'
+    'tpm2-tss: unlocking LUKS2 volumes with TPM2')
+  backup=(etc/systemd/coredump.conf
+          etc/systemd/homed.conf
+          etc/systemd/journald.conf
+          etc/systemd/journal-remote.conf
+          etc/systemd/journal-upload.conf
+          etc/systemd/logind.conf
+          etc/systemd/networkd.conf
+          etc/systemd/oomd.conf
+          etc/systemd/pstore.conf
+          etc/systemd/resolved.conf
+          etc/systemd/sleep.conf
+          etc/systemd/system.conf
+          etc/systemd/timesyncd.conf
+          etc/systemd/user.conf
+          etc/udev/iocost.conf
+          etc/udev/udev.conf)
+  install=systemd.install
+
+  meson install -C build --no-rebuild --destdir "$pkgdir" --quiet
+
+  # runtime libraries shipped with systemd-libs
+  install -d -m0755 systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/pkgconfig systemd-libs/lib/pkgconfig
+  mv "$pkgdir"/usr/include systemd-libs/include
+  mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
+  install -d -m0755 systemd-libs/man8/
+  mv "$pkgdir"/usr/share/man/man8/*nss* systemd-libs/man8/
+
+  # ukify shipped in separate package
+  install -d -m0755 systemd-ukify/{bin,systemd,man1,install.d}
+  mv "$pkgdir"/usr/bin/ukify systemd-ukify/bin/
+  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ukify/systemd/
+  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
+  # we move the ukify hook itself, but keep 90-uki-copy.install in place,
+  # because there are other ways to generate UKIs w/o ukify, e.g. w/ mkinitcpio
+  mv "$pkgdir"/usr/lib/kernel/install.d/60-ukify.install systemd-ukify/install.d
+
+  # manpages shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/share/man/man1/init.1
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
+
+  # executable (symlinks) shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
+
+  # files shipped with systemd-resolvconf
+  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+
+  # tests shipped with systemd-tests (for upstream)
+  install -d -m0755 systemd-tests/
+  mv "$pkgdir"/usr/lib/systemd/tests systemd-tests/
+
+  # avoid a potential conflict with [core]/filesystem
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+
+  # ship default policy to leave services disabled
+  echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
+
+  # The group 'systemd-journal' is allocated dynamically and may have varying
+  # gid on different systems. Let's install with gid 0 (root), systemd-tmpfiles
+  # will fix the permissions for us. (see /usr/lib/tmpfiles.d/systemd.conf)
+  install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
+
+  # add example bootctl configuration
+  install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
+  install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
+  install -D -m0644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+
+  # pacman hooks
+  install -D -m0755 systemd-hook "$pkgdir"/usr/share/libalpm/scripts/systemd-hook
+  install -D -m0644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
+
+  # overwrite the systemd-user PAM configuration with our own
+  install -D -m0644 systemd-user.pam "$pkgdir"/usr/lib/pam.d/systemd-user
+
+  # create a directory for cryptsetup keys
+  install -d -m0700 "$pkgdir"/etc/cryptsetup-keys.d
+
+  # handle uncommon license
+  install -d -m0755 "$pkgdir/usr/share/licenses/systemd"
+  ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
+
+  # symlink kernel-install to installkernel
+  ln -s kernel-install "$pkgdir"/usr/bin/installkernel
+  ln -s kernel-install.8.gz "$pkgdir"/usr/share/man/man8/installkernel.8.gz
+}
+
+package_systemd-remove-birthdate-libs() {
+  pkgdesc='systemd client libraries with birthdate functions removed'
+  
+  depends=('glibc' 'libgcc' 'libgcc_s.so' 'libgcrypt' 'lz4' 'xz'  'zstd')
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
+  )
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  
+  provides+=("systemd-libs=${pkgver}")
+  conflicts=('libsystemd' 'systemd-libs-git' 'systemd-liberated-libs-git')
+  conflicts+=('systemd-libs')
+
+
+  install -d -m0755 "$pkgdir"/usr/share/man
+  mv systemd-libs/lib "$pkgdir"/usr/lib
+  mv systemd-libs/include "$pkgdir"/usr/include
+  mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
+  mv systemd-libs/man8 "$pkgdir"/usr/share/man/man8
+}
+
+package_systemd-remove-birthdate-resolvconf() {
+  pkgdesc='systemd resolvconf replacement with birthdate functions removed (for use with systemd-resolved)'
+  depends=("systemd-remove-birthdate=${pkgver}")
+  provides=('openresolv' 'resolvconf')
+  
+  provides+=("systemd-resolvconf=${pkgver}")
+  conflicts=('resolvconf' 'systemd-resolvconf-git' 'systemd-liberated-resolvconf-git')
+  conflicts+=('systemd-resolvconf')
+
+
+  install -d -m0755 "$pkgdir"/usr/bin
+  ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
+
+  install -d -m0755 "$pkgdir"/usr/share/man/man1
+  ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
+}
+
+package_systemd-remove-birthdate-sysvcompat() {
+  pkgdesc='sysvinit compat for systemd with birthdate functions removed'
+  
+  conflicts=('sysvinit')
+  
+  conflicts+=('systemd-sysvcompat' 'systemd-sysvcompat-git' 'systemd-liberated-sysvcompat-git')
+  depends=("systemd-remove-birthdate=${pkgver}")
+  provides=("systemd-sysvcompat=${pkgver}")
+
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man1 \
+    build/man/init.1
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
+    build/man/{halt,poweroff,reboot,shutdown}.8
+
+  install -d -m0755 "$pkgdir"/usr/bin
+  ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
+  for tool in halt poweroff reboot shutdown; do
+    ln -s systemctl "$pkgdir"/usr/bin/$tool
+  done
+}
+
+package_systemd-remove-birthdate-tests() {
+  pkgdesc='systemd tests with birthdate functions removed'
+  conflicts=('systemd-tests' 'systemd-tests-git' 'systemd-liberated-tests-git')
+  provides=("systemd-tests=${pkgver}")
+  depends=("systemd-remove-birthdate=${pkgver}")
+
+  install -d -m0755 "$pkgdir"/usr/lib/systemd
+  mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
+}
+
+package_systemd-remove-birthdate-ukify() {
+  pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
+  
+  conflicts=('systemd-ukify' 'systemd-ukify-git' 'systemd-liberated-ukify-git')
+  
+  provides=('ukify')
+  provides+=("systemd-ukify=$pkgver")
+  depends=("systemd-remove-birthdate=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  optdepends=('python-pillow: Show the size of splash image'
+              'sbsigntools: Sign the embedded kernel')
+
+  install -d -m0755 "$pkgdir"/usr/{lib/kernel,share/man}
+  mv systemd-ukify/bin "$pkgdir"/usr/bin
+  mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
+  mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
+  mv systemd-ukify/install.d "$pkgdir"/usr/lib/kernel/install.d
+}
+
+# vim:ft=sh syn=sh et sw=2:
