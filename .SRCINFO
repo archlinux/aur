@@ -1,14 +1,14 @@
 pkgbase = iris-autocomplete
 	pkgdesc = Shell auto-completion tool that works like code editors IntelliSense.
-	pkgver = 0.4.12
+	pkgver = 0.4.14
 	pkgrel = 1
 	url = https://github.com/versenilvis/iris
 	arch = x86_64
 	license = 0BSD
 	makedepends = go
 	depends = glibc
-	source = iris-autocomplete-0.4.12.tar.gz::https://github.com/versenilvis/iris/archive/refs/tags/v0.4.12.tar.gz
-	sha256sums = 802e040b2bb1daf4ec0a02bf1210ed0a8fb1b792d96793479f68f9833e99720b
+	source = iris-autocomplete-0.4.14.tar.gz::https://github.com/versenilvis/iris/archive/refs/tags/v0.4.14.tar.gz
+	sha256sums = dbd838c12dbada2b2d2a4a5a9520a28147c6e68c4b25a6829db2c0a24776baea
 
 pkgname = iris-autocomplete
 	optdepends = zsh
