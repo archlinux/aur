@@ -32,6 +32,7 @@ pkgbase = linux-lqx
 
 pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
+	install = linux-lqx.install
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -44,7 +45,6 @@ pkgname = linux-lqx
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	provides = VHBA-MODULE
-	conflicts = irqbalance
 
 pkgname = linux-lqx-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Liquorix kernel
