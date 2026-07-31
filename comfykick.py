@@ -636,8 +636,27 @@ def cleanup_stale_tarballs(
 
 
 def _extract_tarball(
-    tarball_path: Path, dest_dir: Path
+    tarball_path: Path,
+    parent_dir: Path,
+    prefix: str,
 ) -> Path | None:
+    """Extract ``tarball_path`` into a fresh temporary directory.
+
+    Returns the directory containing the extracted tree, or ``None``
+    when extraction fails.
+
+    The temporary directory is created under ``parent_dir`` and removed
+    on failure.
+    """
+    try:
+        dest_dir = Path(tempfile.mkdtemp(prefix=prefix, dir=parent_dir))
+    except OSError as exc:
+        die(
+            "Failed to create temporary extraction directory under %s: %s",
+            parent_dir,
+            exc,
+        )
+
     try:
         with tarfile.open(tarball_path, "r:gz") as tar:
             tar.extractall(dest_dir, filter="data")
@@ -888,12 +907,7 @@ def main() -> None:
         if old.is_dir() and old.name.startswith("_run-"):
             shutil.rmtree(old, ignore_errors=True)
 
-    work_temp = tempfile.mkdtemp(
-        prefix=prefix,
-        dir=config["runtime_dir"],
-    )
-
-    extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
+    extracted_dir = _extract_tarball(tarball_path, runtime_dir, prefix)
     if extracted_dir is None:
         log.info("Re-preparing tarball for %s ...", version_head)
 
@@ -905,7 +919,7 @@ def main() -> None:
             refresh=True,
         )
 
-        extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
+        extracted_dir = _extract_tarball(tarball_path, runtime_dir, prefix)
         if extracted_dir is None:
             die(
                 "Re-preparing tarball for %s is still corrupted; "
