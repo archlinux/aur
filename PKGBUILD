@@ -3,7 +3,7 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=26.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
@@ -47,6 +47,9 @@ package() {
   rm -r "$LIBDIR/man"
 
   ln -s "../lib/picolisp" -T "$pkgdir/usr/share/$pkgname"
+
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -s "../picolisp/doc" -T "$pkgdir/usr/share/doc/picolisp"
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   mv "$LIBDIR/COPYING" "$pkgdir/usr/share/licenses/$pkgname"
