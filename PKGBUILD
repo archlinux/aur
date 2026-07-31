@@ -2,7 +2,7 @@
 _pkgname="sable"
 pkgname="${_pkgname}-git"
 pkgver=1.20.0.r1044.gc160f50
-pkgrel=1
+pkgrel=2
 pkgdesc="An almost stable Matrix client."
 arch=("x86_64")
 url="https://github.com/SableClient/Sable"
@@ -22,7 +22,7 @@ makedepends=(
   # vcs
   "git"
   # tauri + frontend
-  "nodejs" "pnpm" "rust"
+  "nodejs>=24.0.0" "pnpm" "rust"
   # https://v2.tauri.app/start/prerequisites/#linux
   # https://github.com/SableClient/Sable/blob/25434c2874adb130f80ce00b399a901149924740/mise.tauri.toml#L42
   "librsvg" "xdotool" "curl" "wget"
