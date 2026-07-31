@@ -1,0 +1,19 @@
+pkgbase = midiplusplus-bin
+	pkgdesc = High-performance, un-opinionated C++ piano player and MIDI visualizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dim-ghub/MIDIPlusPlusLinux
+	arch = x86_64
+	license = MIT
+	depends = sdl2
+	depends = alsa-lib
+	provides = midiplusplus
+	conflicts = midiplusplus
+	source = https://github.com/dim-ghub/MIDIPlusPlusLinux/releases/download/v1.0.0/MIDIPlusPlus
+	source = https://github.com/dim-ghub/MIDIPlusPlusLinux/raw/v1.0.0/midiplusplus.desktop
+	source = https://github.com/dim-ghub/MIDIPlusPlusLinux/raw/v1.0.0/assets/icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = midiplusplus-bin
