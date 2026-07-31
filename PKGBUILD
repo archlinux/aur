@@ -10,7 +10,7 @@ license=(LicenseRef-unknown)
 depends=(glibc)
 makedepends=(cmake)
 source=(
-    $pkgname-$pkgver.tar.gz::https://cryptalabs.com/support/releases/qcc/source/qcc-source.zip
+    $pkgname-$pkgver.tar.gz::https://cryptalabs.com/support/releases/Drivers/Cicada%20and%20Firefly/source/qcc-source.zip
     license-unknown.txt
 )
 b2sums=('8aae2a1827eeac05e5337a6035e06a595c49003ab85c433af3700045efc54010e0ebed99d467378f105a19b0342b5fca0bb3787c623b832a9b78ebf1c3ea5539'
