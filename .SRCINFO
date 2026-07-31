@@ -8,7 +8,7 @@ pkgbase = dory-fileroller-git
 	makedepends = git
 	makedepends = meson
 	depends = dory
-	depends = file-roller
+	depends = engrampa
 	source = git+https://github.com/Twilight0/dory-extensions.git
 	sha256sums = SKIP
 
