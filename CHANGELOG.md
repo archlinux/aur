@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
-## [2.20.5] - 2026-07-30
+## [2.20.6] - 2026-07-31
+
+### Added
+- Unit Status context menu option wrap word
 
 ### Changed
 - Journal's follow switch has been replaced by a checkbox. This fixes [Issue 48](https://github.com/plrigaux/sysd-manager/issues/48)
