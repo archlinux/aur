@@ -1,7 +1,7 @@
 pkgbase = cosbrowser-bin
 	pkgdesc = Tencent Cloud COS client (repacked from official AppImage)
 	pkgver = 2.11.26
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cosbrowser.cloud.tencent.com/
 	arch = x86_64
 	license = custom

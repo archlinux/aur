@@ -1,4 +1,4 @@
-_FORCE_ts=20260730054939
+_FORCE_ts=20260731025535
 # Maintainer: Geequlim <geequlim@gmail.com>
 
 # Ensure UTF-8 locale for files with non-ASCII names during packaging.
@@ -9,7 +9,7 @@ pkgname=cosbrowser-bin
 pkgver=2.11.26
 _upstream_ver=2.11.26
 _zip_url=https://cosbrowser.cloud.tencent.com/cosbrowser-latest-linux.zip
-pkgrel=3
+pkgrel=4
 pkgdesc='Tencent Cloud COS client (repacked from official AppImage)'
 arch=('x86_64')
 url='https://cosbrowser.cloud.tencent.com/'
