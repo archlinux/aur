@@ -1,6 +1,6 @@
 pkgbase = gnome-night-shift-git
 	pkgdesc = ::Rolling release:: A Small utility to switch the selected preferred mode.
-	pkgver = r23.a3e04d5
+	pkgver = r24.53b3991
 	pkgrel = 1
 	url = https://github.com/christophermca/gnome-night-shift
 	arch = any

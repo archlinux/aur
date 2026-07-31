@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-night-shift-git"
-pkgver=r23.a3e04d5
+pkgver=r24.53b3991
 pkgrel=1
 pkgdesc="::Rolling release:: A Small utility to switch the selected preferred mode."
 arch=('any')
