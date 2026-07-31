@@ -1,0 +1,7 @@
+/pkg/
+/src/
+/*.pkg.tar.*
+/LICENSE-*
+/README-*.md
+/CHANGELOG-*.md
+/mxcli-nightly-bin-*
