@@ -1,15 +1,15 @@
 pkgbase = r-mclustcomp
 	pkgdesc = Measures for Comparing Clusters
-	pkgver = 0.3.3
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mclustcomp
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = MIT
 	makedepends = r-rcpparmadillo
 	depends = r-rcpp
 	depends = r-rdpack
-	source = https://cran.r-project.org/src/contrib/mclustcomp_0.3.3.tar.gz
-	md5sums = 4e83a5125dae0ec5754bd0a76ed240c5
-	b2sums = df813fef77242f2ffe12bc552f241745db0f1e6db25ebfa07ce2e487894040c80717b33307a6361e9cdf01a4cd2b25e57d89fc3edc472f67173180af6b725f29
+	source = https://cran.r-project.org/src/contrib/mclustcomp_0.3.5.tar.gz
+	md5sums = 56aae293cb4031f77ae018c30b68f965
+	b2sums = fdd2b571f1fdddb68e52ade77b225d811cf478ff98419cb5f385f0222939467d0e760eeb90acdd2f3ca239445f3e170acc2de09e5e7e4d8547f49772bd54227b
 
 pkgname = r-mclustcomp
