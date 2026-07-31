@@ -1,0 +1,5 @@
+[securefs-bin]
+source = "github"
+github = "netheril96/securefs"
+use_latest_release = true
+prefix = "v"
