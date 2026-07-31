@@ -4,7 +4,7 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r9.g37ae7fc
+pkgver=0.2.2.r10.g2a7d9dc
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
@@ -43,15 +43,15 @@ build() {
     git -C "${_srcname}" submodule update --init --recursive
     "${srcdir}/${_srcname}/vcpkg/bootstrap-vcpkg.sh" -disableMetrics
 
-    cmake -S "${_srcname}/ime-service" -B service-build -G Ninja \
+    cmake -S "${_srcname}/ime-unix-service" -B unix-service-build -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_srcname}/vcpkg/scripts/buildsystems/vcpkg.cmake" \
         -DVCPKG_MANIFEST_FEATURES=llama-vulkan \
-        -DIMESVC_REQUIRE_LLAMA=ON \
-        -DIMESVC_BUILD_TESTS=ON
-    cmake --build service-build
-    ctest --test-dir service-build --output-on-failure
+        -DIME_UNIX_SERVICE_REQUIRE_LLAMA=ON \
+        -DIME_UNIX_SERVICE_BUILD_TESTS=ON
+    cmake --build unix-service-build
+    ctest --test-dir unix-service-build --output-on-failure
 
     cmake -S "${_srcname}/fcitx5" -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
@@ -64,12 +64,12 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install service-build
+    DESTDIR="${pkgdir}" cmake --install unix-service-build
     DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${srcdir}/${_model_file}" \
         "${pkgdir}/usr/share/llavon-ime/models/${_model_file}"
     cmake \
-        -DVCPKG_INSTALLED_DIR="${srcdir}/service-build/vcpkg_installed" \
+        -DVCPKG_INSTALLED_DIR="${srcdir}/unix-service-build/vcpkg_installed" \
         -DDESTINATION="${pkgdir}/usr/share/licenses/${pkgname}" \
         -DPROJECT_ROOT="${srcdir}/${_srcname}" \
         -P "${srcdir}/${_srcname}/scripts/install-licenses.cmake"
