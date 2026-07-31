@@ -1,6 +1,6 @@
 pkgbase = proxelar
 	pkgdesc = Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/emanuele-em/proxelar
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = proxelar
 	conflicts = proxelar-bin
 	options = !lto
 	options = !debug
-	source = proxelar-0.5.0.tar.gz::https://github.com/emanuele-em/proxelar/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 738f447569bfdd2c1be23ba24cbaa753e9406a4fe2685c84c694849b684f6ace
+	source = proxelar-0.5.1.tar.gz::https://github.com/emanuele-em/proxelar/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = e4f67a2248a87101c4e4d28180b7d707f12cad90070d9687ad2411e7f25e32d9
 
 pkgname = proxelar

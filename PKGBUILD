@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=proxelar
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface'
 arch=(
@@ -19,7 +19,7 @@ options=(
 provides=('proxelar')
 conflicts=('proxelar-git' 'proxelar-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('738f447569bfdd2c1be23ba24cbaa753e9406a4fe2685c84c694849b684f6ace')
+sha256sums=('e4f67a2248a87101c4e4d28180b7d707f12cad90070d9687ad2411e7f25e32d9')
 
 prepare() {
     cd "$pkgname-$pkgver"
