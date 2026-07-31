@@ -1,10 +1,12 @@
 pkgbase = plasma6-applets-resources-monitor-git
 	pkgdesc = Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO
-	pkgver = 3.0.0.r0.g76b3adf
+	pkgver = 3.4.1.r0.g082ec1b
 	pkgrel = 1
 	url = https://github.com/orblazer/plasma-applet-resources-monitor
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = kitemmodels
 	depends = kquickcharts

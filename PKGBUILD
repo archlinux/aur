@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=plasma6-applets-resources-monitor-git
 _gitpkgname=plasma-applet-resources-monitor
-pkgver=3.0.0.r0.g76b3adf
+pkgver=3.4.1.r0.g082ec1b
 pkgrel=1
 pkgdesc='Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO'
 arch=(any)
@@ -17,7 +17,11 @@ depends=(
 optdepends=(
     "kdeplasma-addons: to support easier click action"
 )
-makedepends=(git)
+makedepends=(
+    cmake
+    extra-cmake-modules
+    git
+)
 conflicts=(
     plasma5-applets-resources-monitor-git
     plasma6-applets-resources-monitor
@@ -30,9 +34,18 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# TODO: change to cmake when upstream porting to Plasma 6
+build() {
+    local cmake_options=(
+        -B build
+        -S $_gitpkgname
+        -W no-author
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
+}
+
 package() {
-    cd $_gitpkgname
-    mkdir -p "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
-    cp -r package/* "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
+    DESTDIR="$pkgdir" cmake --install build
 }
