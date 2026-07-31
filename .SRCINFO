@@ -1,0 +1,15 @@
+pkgbase = markitdown-bin
+	pkgdesc = Utility tool for converting various files to Markdown (uv-based venv, all extras included)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/microsoft/markitdown
+	arch = any
+	license = MIT
+	makedepends = python-uv
+	makedepends = curl
+	depends = python>=3.10
+	conflicts = python-markitdown
+	source = markitdown-0.1.7-py3-none-any.whl::https://files.pythonhosted.org/packages/fc/16/51d269a754d690ec31d3faa0686c8c14ac955dbc0580c358f256ba3391ec/markitdown-0.1.7-py3-none-any.whl
+	sha256sums = 4eca912c87c6aa6897284a7f4bf6769a23bccf8544530f5d8b175fbe3797c916
+
+pkgname = markitdown-bin
