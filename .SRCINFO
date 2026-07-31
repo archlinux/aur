@@ -1,16 +1,17 @@
 pkgbase = smaragd
 	pkgdesc = Native desktop authoring tool for writers
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ljantzen/smaragd
 	arch = x86_64
 	license = GPL-3.0-only
+	checkdepends = git
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
 	depends = libgcc_s.so
-	optdepends = git
-	source = https://github.com/ljantzen/smaragd/archive/refs/tags/v0.5.1/smaragd-0.5.1.tar.gz
-	sha256sums = b4cb6a00dd528a01e57d68b681fe06bf8d7b625fe335fb238ef87b0227359808
+	optdepends = git: VCS integration
+	source = https://github.com/ljantzen/smaragd/archive/refs/tags/v0.5.2/smaragd-0.5.2.tar.gz
+	sha256sums = 2ff7754d15fa42640e5032cd7af4b01a4de65ad0cb1f7eb348e1e1dbbccf5e1d
 
 pkgname = smaragd
