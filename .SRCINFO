@@ -1,0 +1,20 @@
+pkgbase = bili-music
+	pkgdesc = A desktop music player based on Tauri v2 + Rust, which uses the music area of Bilibili as a music library to listen to songs.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/Jmiao11/bili-music
+	arch = any
+	license = LicenseRef-PolyForm-Strict-License-1.0.0
+	makedepends = git
+	makedepends = curl
+	makedepends = rustup
+	makedepends = gendesk
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = bili-music=0.3.3
+	conflicts = bili-music
+	source = bili-music-0.3.3::git+https://github.com/Jmiao11/bili-music.git#tag=v0.3.3
+	sha256sums = 69f3fe9b4e1e366aee8a58bea885d57ef708358598f93cec23be8e0a0f467106
+
+pkgname = bili-music
