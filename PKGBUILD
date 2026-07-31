@@ -6,7 +6,7 @@ _bin_name=devtunnel
 
 # there's no url versioning, so this will install the latest published version
 # regardless what the `pkgver` is set to
-pkgver=1.0.2010+aa42024ecd
+pkgver=1.0.2014+3c9645ccd8
 pkgrel=1
 pkgdesc="Microsoft Dev Tunnels CLI client"
 
@@ -36,8 +36,8 @@ source_x86_64=($_source_x86_64::https://tunnelsassets$_env.blob.core.windows.net
 source_aarch64=($_source_aarch64::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
 noextract=($_source_x86_64 $_source_aarch64)
 
-sha256sums_aarch64=('78f41b5174f9ba8f7b0ede8b356ab2b4f6237ceb4831f98c5a97c9ba73d2b7af')
-sha256sums_x86_64=('14500cfb7847334f0d8a60fea0d3b8543e634bf41edc3fe1909b4ce813681d27')
+sha256sums_aarch64=('f93aea73c27137b9e7b244587d115b5da6263fddd0135ae8d8e3a4307d20da5b')
+sha256sums_x86_64=('5d6034b4bf81dead62635551d8d96b363403e5ca5307a6a653ab31d1c73d00cc')
 
 validpgpkeys=()
 
