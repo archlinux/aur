@@ -2,7 +2,7 @@
 # Maintainer: VERSE <sunnyone0901@gmail.com>
 
 pkgname='iris-cli-bin'
-pkgver=0.4.18
+pkgver=0.4.19
 pkgrel=1
 pkgdesc='A highly customizable, blazing fast and context-aware CLI autocomplete/navigation tool'
 url='https://github.com/versenilvis/iris'
@@ -13,10 +13,10 @@ conflicts=('iris' 'iris-bin')
 install=iris-cli.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/versenilvis/IRIS/releases/download/v${pkgver}/iris_linux_arm64.tar.gz")
-sha256sums_aarch64=('c85b03ec85cbfbffa5ac08c0608e462e780680f82cc9f4e9b5f0e33a5a0f5b5a')
+sha256sums_aarch64=('1a4fbfe5d2e51715a718dc3e47256ce3d7ab9dd28c6eb043db39ade5dce32c43')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/versenilvis/IRIS/releases/download/v${pkgver}/iris_linux_amd64.tar.gz")
-sha256sums_x86_64=('53fc956a4558e9e930a64149bde22919c2b6d02f5777b531afa13b23c252b291')
+sha256sums_x86_64=('4b289a54258462349c41413c27e3dac9ee297e57570c1dc18375be430003b2e6')
 
 package() {
   install -Dm755 "./iris" "${pkgdir}/usr/bin/iris"
