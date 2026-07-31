@@ -1,6 +1,6 @@
 # Maintainer: hacel <arch at sammar dot sa>
 pkgname=jfsh
-pkgver=0.1.17
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A terminal-based client for Jellyfin"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("Unlicense")
 depends=("mpv")
 makedepends=("go>=1.23.1")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hacel/jfsh/archive/v$pkgver.tar.gz")
-sha256sums=('3c177ff96ac458317d3cee09129cb834d39059c48794397ed3043d1940d845cd')
+sha256sums=('829ea9fbb18f1287cadf93f29ea109408864099b40bff20e5d63b0b5bd6a1e90')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
