@@ -1,0 +1,15 @@
+pkgbase = tileroot
+	pkgdesc = Save and restore tiling WM layouts across sway, Hyprland, and i3
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Hinikaa/tileroot
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = nlohmann-json
+	depends = gcc-libs
+	source = tileroot-0.1.0.tar.gz::https://github.com/Hinikaa/tileroot/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 80b4a437d4e88b5501357c1f3430ac73169938c8f56ee61a467fc931240d807f
+
+pkgname = tileroot
