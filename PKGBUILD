@@ -4,7 +4,7 @@
 pkgname=nodejs-gsd-core
 _pkgname=gsd-core
 _scope=@opengsd
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="GSD Core — spec-driven AI dev workflow engine: Research→Plan→Execute→Verify→Ship with 65+ slash commands for Claude Code/Cursor"
 arch=('any')
@@ -26,7 +26,7 @@ noextract=(
   "claude-agent-sdk-$_sdkver.tgz"
   "ws-$_wsver.tgz"
 )
-sha256sums=('7c51eafa1dc588e9c16a4760796d1ee19f6a3cc7ad7e511f80c8e4cc3a498327'
+sha256sums=('051ebd6d9b954307922d7542917fdf9fdfb3ac4e87e88dcd24af7405e2373759'
             '8f53c2b7c671553fa161fad473c54fd76a6679f85dc5df63e7895c33d013103c'
             'd08b726b3aae3a0fed5218a0d9a4b2ac8d75d4ad453a9271db55fe38e94eb4cf'
             '97155997a69ffabd99ff3d1fa63ef33d52181bb009c0792f660efd5ccd9af56c')
