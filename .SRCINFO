@@ -1,0 +1,24 @@
+pkgbase = moonlightweb-bin
+	pkgdesc = Stream your Sunshine games to any device with a browser
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://moonlightweb.top/
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = moonlightweb
+	conflicts = moonlightweb
+	options = !strip
+	options = !debug
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libx11
+	depends = libxkbcommon-x11
+	depends = fontconfig
+	depends = freetype2
+	depends = zlib
+	depends = dbus
+	source = moonlightweb-0.2.3.deb::https://github.com/linckosz/moonlight-web/releases/download/v0.2.3/moonlightweb-0.2.3-linux-x64.deb
+	sha256sums = d7f4304156058a1c76d4e5ed3f71e7daf37eb7eded0ae59bc8e11cff3699f6cc
+
+pkgname = moonlightweb-bin
