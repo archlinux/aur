@@ -1,6 +1,6 @@
 pkgbase = colgrep
 	pkgdesc = Semantic code search powered by ColBERT
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/lightonai/next-plaid
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = colgrep
 	depends = openssl
 	conflicts = colgrep-bin
 	options = !lto
-	source = colgrep-1.6.4.tar.gz::https://github.com/lightonai/next-plaid/archive/refs/tags/v1.6.4.tar.gz
-	sha256sums = ef927289da7cd9f47d2ccd7cca48e59fe1bfa6a8b08aa71cfba90b7ed64ba489
+	source = colgrep-1.6.5.tar.gz::https://github.com/lightonai/next-plaid/archive/refs/tags/v1.6.5.tar.gz
+	sha256sums = 984d1056d276f83a0598d9f47abd2832243bad4a52c4adac62d2ab1a84e1a9d3
 
 pkgname = colgrep
