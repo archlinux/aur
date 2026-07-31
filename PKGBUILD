@@ -1,6 +1,6 @@
 # Maintainer: kitasael-burakku
 pkgname=maly
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('go' 'git')
 _pkgsrc=Malody-Mallow
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "maly.service")
-sha256sums=('1ce9ba8e54cf56697ba6c9446fb16c86628a43422acf8d74aae36e3d8320f45c'
+sha256sums=('5c4feaea199ac5cde63828c0d6b3297561fee5a41734b5c0788bcaac88ee211e'
             '5a16d1b26028debb995d4a3b0ee4beeca41d292507378be735ce4c189d305080')
 
 prepare() {
@@ -34,7 +34,11 @@ build() {
 	export CGO_ENABLED=0
 	export GOPATH="$srcdir/go"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -o build/maly ./cmd/maly
+	# -X marca el binario como empaquetado (internal/version.Channel): así
+	# `maly update` no intenta instalar una segunda copia por detrás de
+	# pacman y en cambio remite al gestor. Version (la const de versión)
+	# no se toca: -X solo puede asignar variables de paquete, no consts.
+	go build -ldflags "-X maly/internal/version.Channel=pacman" -o build/maly ./cmd/maly
 }
 
 check() {
