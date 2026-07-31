@@ -1,0 +1,15 @@
+pkgbase = moviebox-tui
+	pkgdesc = A terminal client for finding and streaming movies, TV shows, and anime from the MovieBox catalog
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/mesamirh/MovieBox-Tui
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = moviebox-tui-0.1.7.tar.gz::https://github.com/mesamirh/MovieBox-Tui/archive/refs/tags/v0.1.7.tar.gz
+	b2sums = 919283a85ba583f8f7a53c87e8738261acbbfe5c05a86bf9443149aaa2834e1c4ffa6141d7eb04c1f9a376cdbc6d72ba9b273e600d930a13b1fb114623c6884c
+
+pkgname = moviebox-tui
