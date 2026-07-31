@@ -1,0 +1,30 @@
+[Unit]
+Description=LMM API service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=lmm-api
+WorkingDirectory=/var/lib/lmm-api
+Environment=GIN_MODE=release
+Environment=PORT=3000
+EnvironmentFile=-/etc/lmm-api/lmm-api.env
+ExecStart=/usr/bin/lmm-api
+Restart=on-failure
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+LockPersonality=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

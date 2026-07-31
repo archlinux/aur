@@ -1,0 +1,23 @@
+pkgbase = lmm-api-git
+	pkgdesc = LMM API model management and distribution system (git version)
+	pkgver = 0.0.0.r1.gbd67db5
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/api.lmm.best
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go>=1.25.1
+	makedepends = bun
+	depends = ca-certificates
+	depends = tzdata
+	provides = lmm-api=0.0.0.r1.gbd67db5
+	conflicts = lmm-api
+	backup = etc/lmm-api/lmm-api.env
+	source = lmm-api::git+https://github.com/LIghtJUNction/api.lmm.best.git#branch=main
+	source = lmm-api.service
+	source = lmm-api.env
+	sha256sums = SKIP
+	sha256sums = 09a044cf5f7d802375e292e5d2ac2464dc4efb5b0645f488b4936d317c4ac05a
+	sha256sums = f204c6576c27812573b155b3f8649537de1f49b576cbb56523d0e3a02c0c9b98
+
+pkgname = lmm-api-git
