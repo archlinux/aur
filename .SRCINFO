@@ -1,7 +1,7 @@
 pkgbase = aperture-router
 	pkgdesc = Universal AI router for Tailscale Aperture with dynamic model discovery
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wayazi/aperture-router
 	install = aperture-router.install
 	arch = x86_64
