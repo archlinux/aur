@@ -1,17 +1,14 @@
-_pkgname=Siril
-_pkgver=1.2.0
-_appimage="${_pkgname}-${_pkgver}-x86_64.AppImage"
-_desktopfile="org.free_astro.siril.desktop"
+# Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
 pkgname=siril-appimage
-pkgver='1.2.0'
+pkgver=1.4.4
 pkgrel=1
-pkgdesc="An astronomical image processing software for Linux. (IRIS clone). Appimage version."
-arch=('x86_64')
+url='https://siril.org'
+pkgdesc='Siril is an astronomical image processing tool'
+arch=(x86_64)
 license=('GPL3')
-makedepends=()   
-options=(!strip)
-url="https://www.siril.org/"
+provides=(siril)
+conflicts=(siril)
 optdepends=('libpng: PNG import'
             'libjpeg: JPEG import and export'
             'libtiff: TIFF import and export'
@@ -19,31 +16,31 @@ optdepends=('libpng: PNG import'
             'ffms2: films native support as image sequences and import'
             'libcurl-gnutls: check for updates'
             'gnuplot: photometry graphs creation')
-source=("${_appimage}::https://free-astro.org/download/${_appimage}")
-sha256sums=('43460ac640b2901205114f16d3be7ea39484bef811c9d78ff1220b09127711e4')
+options=('!strip' '!debug')
+source_x86_64=("https://free-astro.org/download/Siril-${pkgver}-x86_64.AppImage")
+sha512sums_x86_64=('e1ec83b2bd80ad4f0d3c5a5424afc63a9eba0b1a8766f7e6ad3beef9743200b0c2949060abc1ec961b2177b5051e6320770c98c47422f08d5d36901c2bb13149')
 
 prepare() {
-    chmod +x ${_appimage}
-    ./${_appimage} --appimage-extract > /dev/null
-}
+  rm -rf -- "${srcdir}/squashfs-root" "${srcdir}/siril-${pkgver}"
 
-build() {
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/
+  (
+    cd "${srcdir}"
+    ./"Siril-${pkgver}-x86_64.AppImage" --appimage-extract
+  )
+
+  mv -- "${srcdir}/squashfs-root" "${srcdir}/siril-${pkgver}"
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  install -Dm755 \
+    "${srcdir}/Siril-${pkgver}-x86_64.AppImage" \
+    "${pkgdir}/usr/bin/siril"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_desktopfile}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 \
+    "${srcdir}/siril-${pkgver}/usr/share/applications/org.siril.Siril.desktop" \
+    "${pkgdir}/usr/share/applications/org.siril.Siril.desktop"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/org.free_astro.siril.svg" "${pkgdir}/usr/share/pixmaps/org.free_astro.siril.svg"
-
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/siril"
+  cp -a \
+    "${srcdir}/siril-${pkgver}/usr/share/icons/." \
+    "${pkgdir}/usr/share/icons/"
 }
