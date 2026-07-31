@@ -1,6 +1,6 @@
 # Maintainer: dongdongbh <dongdongbhbh@gmail.com>
 pkgname=mindwtr-bin
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A complete Getting Things Done (GTD) productivity system - Mind Like Water"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('evolution-data-server: GNOME system calendar integration')
 provides=('mindwtr')
 conflicts=('mindwtr')
 source_x86_64=("${url}/releases/download/v${pkgver}/mindwtr_${pkgver}_amd64.deb")
-sha256sums_x86_64=('930c0cb00a4cea21bd4c9d903323ffae0e8de3a73b545a7ac0e224ac3ae75378')
+sha256sums_x86_64=('ad903d83b96bdf710ab2b04b187f25e3cff35f1a3d8051373d6148b6d207b430')
 
 package() {
     tar -xf data.tar.zst -C "${pkgdir}" || tar -xf data.tar.gz -C "${pkgdir}"
