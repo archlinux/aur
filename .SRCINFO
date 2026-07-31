@@ -1,0 +1,16 @@
+pkgbase = trc
+	pkgdesc = Yandex Tracker CLI
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/fgazat/trc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !lto
+	source = trc-0.2.tar.gz::https://github.com/fgazat/trc/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 95c06f8f1b6460f17d6ed3beacc1f92c2b80b5043950f29a9173c4839beb52aa
+
+pkgname = trc
