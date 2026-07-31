@@ -1,0 +1,5 @@
+[notema-bin]
+source = "github"
+github = "paviro/Notema"
+use_latest_release = true
+prefix = ""

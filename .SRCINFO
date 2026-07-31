@@ -1,0 +1,22 @@
+pkgbase = notema-bin
+	pkgdesc = A terminal-based Markdown journaling app
+	pkgver = 2026.7.8
+	pkgrel = 1
+	url = https://github.com/paviro/Notema
+	arch = x86_64
+	arch = aarch64
+	license = EUPL-1.2
+	depends = glibc
+	provides = notema
+	conflicts = notema
+	options = !strip
+	source = README-2026.7.8.md::https://raw.githubusercontent.com/paviro/Notema/2026.7.8/README.md
+	source = LICENSE-2026.7.8::https://raw.githubusercontent.com/paviro/Notema/2026.7.8/LICENCE
+	sha256sums = ab7cee085d596279a0a8684f21dbe5322c3f8c1446f0f21f5111e3cb4a239eff
+	sha256sums = 6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665
+	source_x86_64 = notema-x86_64-2026.7.8.zip::https://github.com/paviro/Notema/releases/download/2026.7.8/linux-gnu-x86_64.zip
+	sha256sums_x86_64 = 398adcb31ea3e8af28407802fa4ee40c7e00994a695c51a8fb2f99d6f44ad0b6
+	source_aarch64 = notema-aarch64-2026.7.8.zip::https://github.com/paviro/Notema/releases/download/2026.7.8/linux-gnu-aarch64.zip
+	sha256sums_aarch64 = 2a6a7b0e50869cc83b3ae266fbf584f3484d3093e364936d677a4cbbb2ae7999
+
+pkgname = notema-bin
