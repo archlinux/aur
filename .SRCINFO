@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Fast, Private & Safe Web Browser (Nightly version)
-	pkgver = 155.0a1+20260725.1+hdb59e73163ec
+	pkgver = 155.0a1+20260731.1+h1c497fb70742
 	pkgrel = 1
 	url = https://www.firefox.com/channel/desktop/#nightly
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = firefox-nightly
 	depends = nss
 	depends = pango
 	depends = ttf-font
-	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = hunspell-dictionary: Spell checking
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = onnxruntime: Local machine learning features such as smart tab groups
