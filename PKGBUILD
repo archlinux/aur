@@ -1,6 +1,6 @@
 # Maintainer: Ángel Guzmán Maeso <angel@guzmanmaeso.com>
 pkgname=whatly
-pkgver=6.8.3
+pkgver=6.8.4
 pkgrel=1
 pkgdesc="Feature-rich WhatsApp Web desktop client based on Qt WebEngine"
 arch=('x86_64')
