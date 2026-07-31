@@ -1,4 +1,4 @@
-pkgbase = qt-msg-reader
+pkgbase = qtmsgreader-git
 	pkgdesc = A Qt-based application for reading Microsoft Outlook MSG files
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -34,4 +34,4 @@ pkgbase = qt-msg-reader
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = qt-msg-reader
+pkgname = qtmsgreader-git
