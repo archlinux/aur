@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=kcast
-pkgver=0.2.14
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A KDE Plasma 6 widget that lets you cast video files or YouTube URLs to Chromecast devices in your local network'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('avahi' 'catt' 'plasma-integration')
 makedepends=('extra-cmake-modules' 'vulkan-headers')
 source=("https://github.com/Agundur-KDE/KCast/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e492932b43551192ec77723b39c2728a669b0120100ec522b1315e1ec75a213c1dd80b58aaaa3bf9e76debb95a1c9a868ad47e86bb8022c0079f2574764841a7')
+b2sums=('d7c8855d44893159708a054716ef613a85c0b74e5837991102cac3f25ccbcc1a4360d2d693f77cb401b35d8c22cdb8665dd7fc9cb2979b9bb7619fee6907d284')
 
 build() {
     cd KCast-"${pkgver}"
