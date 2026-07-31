@@ -1,11 +1,11 @@
 # Maintainer: AugusDogus <augie@linux.com>
 
 pkgname=cursor-early-access-bin
-pkgver=3.13.25
-_upstream_pkgver=3.13.25
+pkgver=3.14.7
+_upstream_pkgver=3.14.7
 pkgrel=1
 pkgdesc='AI-first coding environment (early access channel, bundled Electron)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
 provides=('cursor')
@@ -28,21 +28,37 @@ optdepends=(
   'libdbusmenu-glib: KDE global menu support'
 )
 options=(!strip !debug)
-_commit=31e8d61c448c7472e371505838a0fe34083dad55
-source=(
+_commit=a758f2241ca99fecf380180b6cbdbbce0f1f42cf
+source_x86_64=(
   "cursor_${_upstream_pkgver}_amd64.deb::https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${_upstream_pkgver}_amd64.deb"
+)
+source_aarch64=(
+  "cursor_${_upstream_pkgver}_arm64.deb::https://downloads.cursor.com/production/${_commit}/linux/arm64/deb/arm64/deb/cursor_${_upstream_pkgver}_arm64.deb"
+)
+source=(
   cursor.desktop
   cursor-launcher.sh
 )
-sha512sums=('SKIP'
+sha512sums_x86_64=('SKIP')
+sha512sums_aarch64=('SKIP')
+sha512sums=(
   '037aa5d878eddb06fc1d5be788e7bc64545773decacb34228053be746dfc33237371ad49cc331dac8e3437d7d885a9bc1564d0f114fc22e308827b33d0c55ad8'
   '9defecd35fd033a484642732605264cc00faf5791d852234d9705bf9ac005c76173780cd496208e4150685ac9ddbb73c8eb87cd5141526dd4521d455342e8233')
-sha512sums[0]=f750e522d8fc6abcdc41fb4da0b567470a5542f283f5c2eb8e861f1ae55ee08c55ec6b4597b7f907606c47a34800e4c01d3284291f8bf31fbd7a6160ce02292e
-noextract=("cursor_${_upstream_pkgver}_amd64.deb")
+sha512sums_x86_64[0]=d3bd5d7b532e051a326009881cc3c168972273b8db0edea259f156768d85730b9bb62b8abeda58e1f0765da017d794deca10d61952624118c9bb095c91717b6a
+sha512sums_aarch64[0]=bf7506180743e96828b25143663563cf1ef154c0def3034f3a08c2df2719d277301b5fa2d2106184373bb6d7882b4d52d074e119912f26bea0e3bd79873a4aa0
+noextract=(
+  "cursor_${_upstream_pkgver}_amd64.deb"
+  "cursor_${_upstream_pkgver}_arm64.deb"
+)
 
 package() {
+  case "$CARCH" in
+    x86_64)  _deb="cursor_${_upstream_pkgver}_amd64.deb" ;;
+    aarch64) _deb="cursor_${_upstream_pkgver}_arm64.deb" ;;
+  esac
+
   # Extract full deb — keep bundled Electron intact.
-  bsdtar -xOf "cursor_${_upstream_pkgver}_amd64.deb" data.tar.xz |
+  bsdtar -xOf "$_deb" data.tar.xz |
     tar -xJf - -C "$pkgdir"
 
   # Fix zsh completion path for Arch
