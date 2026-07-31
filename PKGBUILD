@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft <thomas@visorcraft.com>
 
 pkgname=zigulator
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Modern desktop calculator built with Zig and Dear ImGui"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'noto-fonts: alternative UI fonts'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a052e8656cd8a7a602c829e0bf52dd68d498b2ab31ee21d79c9a25353fe293a')
+sha256sums=('0ccdb5698d2b6ec0ae8c063ca8570a12c26f46de9b7663ca144790bb08685f91')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -55,6 +55,9 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/zigulator.png"
   done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 THIRD_PARTY_LICENSES.md \
+    "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.md"
+  install -Dm644 CREDITS.md "$pkgdir/usr/share/doc/$pkgname/CREDITS.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/usage.md "$pkgdir/usr/share/doc/$pkgname/usage.md"
 }

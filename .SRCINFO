@@ -1,6 +1,6 @@
 pkgbase = zigulator
 	pkgdesc = Modern desktop calculator built with Zig and Dear ImGui
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/visorcraft/zigulator
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = zigulator
 	optdepends = ttf-dejavu: preferred calculator display and UI fonts
 	optdepends = ttf-liberation: alternative UI fonts
 	optdepends = noto-fonts: alternative UI fonts
-	source = zigulator-0.1.2.tar.gz::https://github.com/visorcraft/zigulator/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 3a052e8656cd8a7a602c829e0bf52dd68d498b2ab31ee21d79c9a25353fe293a
+	source = zigulator-0.1.3.tar.gz::https://github.com/visorcraft/zigulator/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 0ccdb5698d2b6ec0ae8c063ca8570a12c26f46de9b7663ca144790bb08685f91
 
 pkgname = zigulator
