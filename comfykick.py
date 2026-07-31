@@ -698,7 +698,6 @@ def _run(
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
-        bufsize=1,
     ) as process:
         assert process.stdout is not None
         for line in iter(process.stdout.readline, ""):
