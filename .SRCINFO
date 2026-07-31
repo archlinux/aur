@@ -29,6 +29,7 @@ pkgbase = fleasion-git
 	depends = libxkbcommon
 	depends = portaudio
 	depends = nss
+	depends = qwt
 	provides = fleasion
 	conflicts = fleasion
 	source = fleasion-git::git+https://github.com/fleasion/Fleasion.git#branch=main-indev
