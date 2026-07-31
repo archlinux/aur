@@ -11,7 +11,7 @@
 #   4. git commit && git push
 
 pkgname=quick-ssh
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="🚀 Quick-SSH - Docker-style SSH connection manager with TUI (Rust native binary)"
 arch=('x86_64')
