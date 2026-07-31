@@ -2,7 +2,7 @@
 
 pkgname=nodejs-addon-api
 _npmname=${pkgname/js}
-pkgver=8.9.0
+pkgver=8.9.1
 pkgrel=1
 pkgdesc='Node.js API (N-API)'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(jq
              npm)
 _archive="$_npmname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('d3c35d47f57461a49826349928da4913cb467d81288549973b7f9335f5d4c001')
+sha256sums=('90f1b76bc88a2c459fa5166f3ccf5b64e0f52d92e811e31371de41c5f5a73f74')
 
 prepare() {
 	cd "$_archive"
