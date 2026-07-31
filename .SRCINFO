@@ -1,6 +1,6 @@
 pkgbase = verge-tui
 	pkgdesc = Standalone Rust TUI for Mihomo/Clash core management
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/totrytakeoff/verge-tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = verge-tui
 	optdepends = libcap: provide getcap/setcap for TUN capability management
 	options = !lto
 	options = !debug
-	source = verge-tui-0.1.1.tar.gz::https://github.com/totrytakeoff/verge-tui/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 18074e7fd5faa76b1f56f621d91e8efcb6387751e75fe066fa32a5810024eef0
+	source = verge-tui-0.2.0.tar.gz::https://github.com/totrytakeoff/verge-tui/releases/download/v0.2.0/verge-tui-0.2.0.tar.gz
+	sha256sums = e8955bb7d67164938a303c03e182d18ed91a22b6836b80bad35bdde8d363100f
 
 pkgname = verge-tui
