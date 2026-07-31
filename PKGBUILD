@@ -57,7 +57,6 @@ sha256sums=('7d8148ff021c3fc2af9f0eebfa652b5d231cf46086d345bd2a4a1705e52c9508')
 
 prepare() {
   cd "$_pkgsrc"
-  git rm -r externals/MoltenVK
   git rm -r externals/date
   git rm -r externals/ext-boost
   git rm -r externals/ffmpeg-core
@@ -116,6 +115,7 @@ build() {
     -DBUILD_TESTING=OFF
     -Wno-dev
 
+    -DENABLE_SYSTEM_LIBRARIES=ON
     -DENABLE_UPDATER=OFF
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
     -DTRACY_ENABLE=OFF
