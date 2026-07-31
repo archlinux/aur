@@ -8,7 +8,7 @@
 
 pkgname=ecodms-client
 pkgver=26.01
-pkgrel=1
+pkgrel=3
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
@@ -18,10 +18,10 @@ optdepends=('gnome-shell-extension-appindicator')
 options=(!strip !debug)
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-26.01-1_amd64.deb::http://www.ecodms.de/ecodms_260164/noble/ecodmsclient-26.01-1_amd64.deb"
+source_x86_64=("ecodmsclient-26.01-3_amd64.deb::http://www.ecodms.de/ecodms_260164/noble/ecodmsclient-26.01-3_amd64.deb"
   'LICENSE')
 sha256sums_x86_64=(
-  'edc2d4ea6905d5035883bb37d2ed3d537edf5241cd1de48858e86b2ad7b0e225'
+  '071a9861819bc2069cc314b17a357987de91741ce970d37cd3cfeafa8b737492'
   '0f8c7ffe3e43c20b8dbf01370c55013b0c1ba18fa8e9a9caa657f1dc98135cb3')
 
 package() {
