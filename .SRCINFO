@@ -1,6 +1,6 @@
 pkgbase = whatly
 	pkgdesc = Feature-rich WhatsApp Web desktop client based on Qt WebEngine
-	pkgver = 6.8.2
+	pkgver = 6.8.3
 	pkgrel = 1
 	url = https://github.com/shakaran/whatly
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = whatly
 	provides = whatly
 	conflicts = whatly-bin
 	conflicts = whatly-git
-	source = whatly::git+https://github.com/shakaran/whatly.git#tag=v6.8.2
+	source = whatly::git+https://github.com/shakaran/whatly.git#tag=v6.8.3
 	source = libnotify-qt::git+https://github.com/ahm-forks/libnotify-qt.git
 	sha256sums = SKIP
 	sha256sums = SKIP
