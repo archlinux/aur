@@ -3,9 +3,9 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r11402.12b84bdaf
+pkgver=r11907.1a8566182
 pkgrel=1
-pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
+pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
 license=('AGPL-3.0-or-later')
