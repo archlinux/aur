@@ -9,7 +9,7 @@ filter = ".latest.release"
 ["quilt-server:loader"]
 source = "git"
 git = "https://github.com/QuiltMC/quilt-loader"
-exclude_regex = "\\d+\\.\\d+\\.\\d+-(\\w+).\\d+"
+exclude_regex = "\\d+(\\.\\d+)+(-\\w+).\\d+"
 ["quilt-server:installer"]
 source = "git"
 git = "https://github.com/QuiltMC/quilt-installer"
