@@ -1,0 +1,24 @@
+Description: give the top-level project() call an explicit VERSION
+ Modern extra-cmake-modules' ECMGeneratePriFile.cmake requires
+ PROJECT_VERSION (or PROJECT_VERSION_STRING) to be set before
+ ecm_generate_pri_file() is called -- both src/KChart/CMakeLists.txt and
+ src/KGantt/CMakeLists.txt call it, and fail configure with "Required
+ variable PROJECT_VERSION_STRING or PROJECT_VERSION not set" otherwise.
+ This project never calls ecm_setup_version() and its own
+ `project( kdiagram )` never passed a VERSION, so PROJECT_VERSION was
+ never set at all -- give it one explicitly, matching pkgver. CMake
+ propagates PROJECT_VERSION down into subdirectories via
+ add_subdirectory(), and neither KChart's nor KGantt's own CMakeLists.txt
+ calls project() again, so a single top-level fix covers both.
+ See memory/kdiagram5.md in the aurupdater project for the full
+ investigation.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 2.8.12)
+
+-project( kdiagram )
++project(kdiagram VERSION 2.8.0)
+
+ set(KF5_MIN_VERSION "5.60.0")
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
