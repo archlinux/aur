@@ -11,10 +11,10 @@ depends=('gmp')
 makedepends=('stack')
 conflicts=('hadolint-bin' 'hadolint-git')
 source=(
-    "https://github.com/hadolint/hadolint/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     "stack.yaml"
 )
-sha256sums=('52fbc1c8a4558f89e3b0c9d905e62016cf58ae842f9fa3ac93c56bb45f8c9ddb'
+sha256sums=('53a210184be82bd273fb298c0887a84e7d6c1d08fcdfc376373235c0c786bb27'
             'fa3f37928916ca63f95065a3fc2cc9743e9c04e43944c7ed77fb429a1a758297')
 
 build() {
