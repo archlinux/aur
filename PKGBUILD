@@ -52,12 +52,18 @@ _image_tag="t3-code:${pkgver}"
 build() {
   cd "$srcdir"
 
+  # Dereference the local sources — makepkg symlinks them from $startdir
+  # into $srcdir, but docker BuildKit refuses to read a Dockerfile whose
+  # symlink target lands outside the build context. `cp -L` follows the
+  # link so BuildKit sees a plain file.
+  cp -L Dockerfile Dockerfile.build
+
   # docker build needs the vendored t3 tgz alongside the Dockerfile.
-  cp "t3-${pkgver}.tgz" ./t3.tgz
+  cp -L "t3-${pkgver}.tgz" ./t3.tgz
 
   # Build the image. Same tag regardless of pkgname so multiple installs
   # share one image on disk (docker load is idempotent on identical layers).
-  docker build --network=host -t "${_image_tag}" .
+  docker build --network=host -f Dockerfile.build -t "${_image_tag}" .
 
   # Export the image so the package can carry it. zstd -19 gives good
   # compression without exotic tooling.
