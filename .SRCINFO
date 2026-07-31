@@ -1,0 +1,24 @@
+pkgbase = cosmic-randr-vrr-fix
+	pkgdesc = Library and utility for displaying and configuring Wayland outputs (VRR fix)
+	pkgver = 1.5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/skygrango/cosmic-randr
+	arch = x86_64
+	groups = cosmic
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	makedepends = lld
+	depends = libgcc
+	depends = glibc
+	depends = wayland
+	provides = cosmic-randr
+	conflicts = cosmic-randr
+	source = cosmic-randr::git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2
+	source = cosmic-randr-lto.patch
+	b2sums = SKIP
+	b2sums = 3bcdff90827243e43c4c581a8982a2739c339a98de089739c0ceaea2fdd76e555bde0a81a52f3603ee3cf7ccf8cf9e1410fd7211e445252fda7ce909ce13d776
+
+pkgname = cosmic-randr-vrr-fix

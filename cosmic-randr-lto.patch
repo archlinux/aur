@@ -1,0 +1,9 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 8f5666b..3d2cce8 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -6,3 +6,4 @@ resolver = "2"
+ package."*".opt-level = "s"
+ opt-level = 3
+ # rustflags = ["-C", "inline-threshold=1"]
++lto = "thin"
