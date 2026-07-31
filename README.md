@@ -1,62 +1,59 @@
-# cinnamon-no-nemo
+# cinnamon-aliveos
 
-Repackaged Cinnamon desktop environment without Nemo dependency, designed to work with [Dory](https://github.com/Twilight0/dory) file manager.
+Repackaged Cinnamon desktop environment for AliveOS (without Nemo dependency, with Dory integration, GTK3 dialog replacements, and custom enhancements).
 
-## What this does
+## What this package does
 
-This package takes the official Cinnamon package from Arch Linux and:
+This package takes the official Cinnamon package from Arch Linux and applies the following modifications:
 
-1. Removes `nemo` from the dependencies
-2. Replaces `cinnamon.session` to use `dory-autostart` instead of `nemo-autostart`
-3. Removes any leftover Nemo desktop files
-4. Conflicts with both `cinnamon` and `nemo`
+1. **Nemo-free Architecture:**
+   * Removes `nemo` dependency and integrates with [Dory](https://github.com/Twilight0/dory).
+   * Replaces `cinnamon.session` to use `dory-autostart`.
+   * Patches `cs_actions.py` to launch `dory-action-layout-editor` instead of Nemo.
 
-## Installation
+2. **100% Pure GTK3 Dialog Replacements:**
+   * **Power Off / Reboot / Logout Dialog:** Replaced with `zenity-session-quit.py` (GTK3 Zenity dialog).
+   * **Alt + F2 Run Command Dialog:** Replaced with `zenity-run-dialog.py` (native GTK3 dialog featuring live `$PATH` command autocompletion).
+   * **Polkit Password Prompts:** Replaced Cinnamon's internal JS agent with `mate-polkit` (`polkit-mate-authentication-agent-1` GTK3).
+   * **NetworkManager Secret Prompts:** Disabled internal Clutter NM agent to let `nm-applet` (`libnma` GTK3) handle Wi-Fi and VPN password prompts natively.
+   * **SSH / Keyring Password Prompts:** Disabled internal Clutter keyring agent to let `gcr-prompter` (`gcr-3` GTK3) handle password prompts natively.
+   * **Force Quit / Unresponsive Windows:** Handled natively by Muffin + `zenity-gtk3`.
+
+---
+
+## Included Helper Scripts
+
+### 1. `zenity-run-dialog.py`
+A GTK3 Run Command dialog featuring:
+* Live `$PATH` command autocompletion (`Gtk.EntryCompletion`).
+* Inline and popup completion matching.
+* Native GTK3 styling and keyboard shortcuts (`Enter` to run, `Esc` to cancel).
+
+### 2. `zenity-session-quit.py`
+A GTK3 Zenity-based Session Quit dialog handling:
+* Power Off, Reboot, Log Out, and Cancel actions.
+* Command-line argument parsing (`--logout`, `--power-off`, `--reboot`, `--no-prompt`).
+
+---
+
+## Installation & Rebuilding
 
 ```bash
-# From AUR
-yay -S cinnamon-no-nemo
-
-# Or with makepkg
-git clone https://aur.archlinux.org/cinnamon-no-nemo.git
-cd cinnamon-no-nemo
-makepkg -si
+cd ~/Projects/cinnamon-aliveos
+makepkg -s
+sudo pacman -U --overwrite '/usr/bin/cinnamon-session-quit,/usr/share/cinnamon-session/cinnamon-session-quit.py' cinnamon-aliveos-*.pkg.tar.zst
 ```
 
-## Requirements
-
-- [dory](https://archlinux.org/packages/extra/x86_64/dory/) - The Dory file manager
-- [cinnamon-dory-session](https://aur.archlinux.org/packages/cinnamon-dory-session) - Session configuration (optional, included in this package)
-
-## How it works
-
-1. Downloads the official Cinnamon package from Arch Linux mirrors
-2. Extracts and repackages without Nemo
-3. Installs modified `cinnamon.session` with `dory-autostart` as required component
-4. Sets up Dory as the default file manager
-
-## Differences from official cinnamon
-
-| Feature | Official | This Package |
-|---------|----------|--------------|
-| Nemo dependency | Required | Removed |
-| Session component | `nemo-autostart` | `dory-autostart` |
-| File manager | Nemo | Dory |
-| `.nemo_action` support | Yes | Yes (backward compatible) |
+---
 
 ## Reverting to official cinnamon
 
 ```bash
-sudo pacman -Rdd cinnamon-no-nemo
+sudo pacman -Rdd cinnamon-aliveos
 sudo pacman -S cinnamon
 ```
 
-## Notes
-
-- This is a binary repackaging - no compilation required
-- The package version matches the official cinnamon package
-- Dory maintains backward compatibility with `.nemo_action` files
-- Desktop icon management is handled by `dory-desktop`
+---
 
 ## License
 

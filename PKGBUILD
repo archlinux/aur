@@ -14,7 +14,7 @@ depends=('accountsservice' 'at-spi2-core' 'bash' 'cairo' 'cinnamon-control-cente
          'gnome-backgrounds' 'gnome-themes-extra' 'gsound' 'gstreamer' 'gtk3'
          'hicolor-icon-theme' 'libgcc' 'libgirepository' 'libglvnd' 'libibus'
          'libical' 'libkeybinder3' 'libnm' 'libnotify' 'libsecret' 'libx11'
-         'libxfixes' 'libxml2' 'muffin' 'network-manager-applet' 'pango'
+         'libxfixes' 'libxml2' 'mate-polkit' 'muffin' 'network-manager-applet' 'pango'
          'papirus-icon-theme' 'polkit' 'python' 'python-cairo' 'python-gobject'
          'python-pam' 'python-pexpect' 'python-pillow' 'python-psutil'
          'python-pyinotify' 'python-pytz' 'python-requests'          'python-setproctitle'
@@ -38,11 +38,15 @@ backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
 source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download"
         'cinnamon.session'
         'gwl-grouping-heuristics.patch'
-        'inline-reply-notifications.patch')
+        'inline-reply-notifications.patch'
+        'zenity-session-quit.py'
+        'zenity-run-dialog.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
             'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
-            'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e')
+            'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e'
+            'SKIP'
+            'SKIP')
 
 # Disable strip and debug to speed up repackaging
 options=('!strip' '!debug' 'emptydirs')
@@ -91,4 +95,27 @@ EOF
     -e 's|NemoActionsOrganizer|DoryActionsOrganizer|' \
     -e 's|\.local/share/nemo/actions|.local/share/dory/actions|' \
     "$pkgdir/usr/share/cinnamon/cinnamon-settings/modules/cs_actions.py"
+
+  # Override session quit dialog with GTK3 Zenity dialog
+  install -Dm755 "$srcdir/zenity-session-quit.py" \
+    "$pkgdir/usr/share/cinnamon-session/cinnamon-session-quit.py"
+  install -Dm755 "$srcdir/zenity-session-quit.py" \
+    "$pkgdir/usr/bin/cinnamon-session-quit"
+
+  # Override run dialog with GTK3 Zenity run dialog
+  install -Dm755 "$srcdir/zenity-run-dialog.py" \
+    "$pkgdir/usr/bin/zenity-run-dialog.py"
+
+  # Patch main.js to route Alt+F2 runDialog, ShowEndSessionDialog, Polkit authentication, NetworkManager secrets, and Keyring prompts to GTK3 helpers
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/main.js" ]; then
+    sed -i \
+      -e 's|runDialog = new RunDialog.RunDialog();|runDialog = { open: function() { Util.spawnCommandLine("/usr/bin/zenity-run-dialog.py"); return true; }, close: function() {}, destroy: function() {} };|' \
+      -e 's|function showEndSessionDialog(mode) {|function showEndSessionDialog(mode) { Util.spawnCommandLine("/usr/bin/cinnamon-session-quit"); return;|' \
+      -e 's|PolkitAuthenticationAgent.init();|// PolkitAuthenticationAgent.init();|' \
+      -e 's|networkAgent = new NetworkAgent.NetworkAgent();|// networkAgent = new NetworkAgent.NetworkAgent();|' \
+      -e 's|KeyringPrompt.init();|// KeyringPrompt.init();|' \
+      "$pkgdir/usr/share/cinnamon/js/ui/main.js"
+  fi
+
+
 }
