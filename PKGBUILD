@@ -3,22 +3,24 @@
 # Contributor: Christopher Arndt <aur -at -chrisarndt -dot- de>
 
 pkgname=neural-amp-modeler-lv2
-pkgver=0.1.9
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin'
-arch=(x86_64)
+arch=(aarch64 x86_64)
 url='https://github.com/mikeoliphant/neural-amp-modeler-lv2'
 license=(GPL-3.0-only BSD-3-Clause MIT)
 groups=(lv2-plugins pro-audio)
-depends=(gcc-libs glibc)
-makedepends=(cmake lv2 ninja)
+depends=(glibc)
+makedepends=(clang cmake lv2 ninja)
+checkdepends=(lv2lint)
 optdepends=(
   'lv2-host: for loading the LV2 plugin'
 )
 
+_plugin_uri="http://github.com/mikeoliphant/neural-amp-modeler-lv2"
 declare -g -A _modules=(
-  ["NeuralAudio"]="cddc6afcd16f2252506d998a557b30071a25bfdf"
-  ["NeuralAmpModelerCore"]="e181f61efb8d05d34add45b5eecb3893ff21177c"
+  ["NeuralAudio"]="b1137e1db2d43670e7dcf6345ade7808613cac20"
+  ["NeuralAmpModelerCore"]="4c0ee78b71abd5eb20aec58562e7540f43caac3b"
   ["RTNeural"]="5909c44909cd6100367f62cd04b348de85d57dbf"
   ["math_approx"]="f6d55e70f0c5e888d3a0c4e252b02b530210c78a"
   ["xsimd"]="a00c81f7b9e808a42aedcf7da2fbb1f9a636da34"
@@ -31,9 +33,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/mikeoliphant/$pkgname/archi
         "math_approx-${_modules[math_approx]}.tar.gz::https://github.com/Chowdhury-DSP/math_approx/archive/${_modules[math_approx]}.tar.gz"
         "xsimd-${_modules[xsimd]}.tar.gz::https://github.com/xtensor-stack/xsimd/archive/${_modules[xsimd]}.tar.gz"
 )
-sha256sums=('6c7696f2a2f4afab28c34fd89ecf7b7c1d57546dc273123e75600b3af95308ea'
-            'b1fcaf3ada0e90b9ba6eb633e8564413c11882d685d1e33128166946bdbdf937'
-            'e732c6e204597d4059aa01f5f416034383dac13d26859b97ef4b97ba0cb3ab39'
+sha256sums=('31fda69179c31afe8a909437cd447db40997b9bd1b372999475826d8b455bc98'
+            '70f9a5278c7803ede3389f918a38b835e13c9262f5c1ba7481ea43029005e25e'
+            '4e9998ae116c3805089165d7da8c5f79ee004771731fa44e47dde30f96eab276'
             '76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013'
             '3c638ff556d7874c01ccc327a84b9b09ed2334846341195e3f0d26803418a432'
             'f1c485107ae0b29069a88bf9619d2d93eaed8321ae03a83d7fc437da85d5b9fd')
@@ -55,15 +57,48 @@ prepare() {
 }
 
 build() {
+  export CC=clang
+  export CXX="clang++"
+  export CXXFLAGS+=" -static-libstdc++ -static-libgcc"
   cmake \
     -G Ninja \
-    -Wno-dev \
+    -Wno-author \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_NAMCORE=${BUILD_NAMCORE:-ON} \
+    -DBUILD_INTERNAL_STATIC_WAVENET=${DBUILD_INTERNAL_STATIC_WAVENET:-ON} \
+    -DBUILD_INTERNAL_STATIC_LSTM=${BUILD_INTERNAL_STATIC_LSTM:-ON} \
     -DUSE_NATIVE_ARCH=${USE_NATIVE_ARCH:-OFF} \
+    -DSMART_BYPASS_ENABLED=${SMART_BYPASS_ENABLED:-OFF} \
+    -DNAM_USE_INLINE_GEMM=${NAM_USE_INLINE_GEMM:-OFF} \
+    -DMULTIFRAME_8X8_CONVOLUTION=${MULTIFRAME_8X8_CONVOLUTION:-0} \
     -B $pkgname-$pkgver-build \
     -S $pkgname-$pkgver
   cmake --build $pkgname-$pkgver-build
+}
+
+
+check() {
+  cd $pkgname-$pkgver-build
+
+  local lv2specs=(
+    atom buf-size core data-access dynmanifest event instance-access log midi
+    morph options parameters patch port-groups port-props resize-port schemas
+    state time ui units uri-map urid worker kx-programs kx-properties)
+
+  mkdir -p .lv2
+
+  for spec in ${lv2specs[@]}; do
+    ln -vsf /usr/lib/lv2/$spec.lv2 .lv2
+  done
+
+  ln -vsf "$(pwd)"/neural_amp_modeler.lv2 .lv2
+  echo "Checking $pkgbase.lv2 with lv2lint ..."
+  LV2_PATH="${PWD}/.lv2" lv2lint \
+    -s '_Z*' \
+    -s '__*' \
+    -s '*_bak' \
+    "$_plugin_uri"
 }
 
 package() {
@@ -77,8 +112,6 @@ package() {
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-NeuralAmpModelerCore
   install -vDm 644 $pkgname-$pkgver/deps/NeuralAudio/deps/RTNeural/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-RTNeural
-  install -vDm 644 $pkgname-$pkgver/deps/NeuralAudio/deps/RTNeural-NAM/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-RTNeural-NAM
   install -vDm 644 $pkgname-$pkgver/deps/NeuralAudio/deps/math_approx/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-math_approx
   install -vDm 644 $pkgname-$pkgver/deps/NeuralAudio/deps/RTNeural/modules/xsimd/LICENSE \
