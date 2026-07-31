@@ -2,10 +2,14 @@
 # SPDX-FileCopyrightText: JR Lanteigne <root@dnim.dev>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+# pkgver and the checksums below are set from the git tag by the `aur` job
+# in .github/workflows/release.yml, which is what publishes this. The values
+# committed here are the last published ones, kept so the file still builds
+# by hand.
 pkgname=sharkfin-keyboard
 _pkgname=sharkfin
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
 url='https://github.com/dniminenn/sharkfin'
@@ -17,7 +21,9 @@ makedepends=('cargo' 'npm')
 # /usr/bin/sharkfin.
 conflicts=('sharkfin')
 # The hidapi crate compiles vendored C; makepkg's LTO makes ld drop its symbols.
-options=('!lto')
+# The release profile emits no debug info, so a debug package would be an
+# empty directory plus a dangling symlink. namcap flags both.
+options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('644b4d83d83a5cbd5793b809234abaea10491514d01cc026f0b33f25ad09342301c1bfb9c338ddee92466f2834370f33ba3329a6d58980af917cd7d3b0dc571e')
 

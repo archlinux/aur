@@ -1,7 +1,7 @@
 pkgbase = sharkfin-keyboard
 	pkgdesc = Configurator for Attack Shark and other ROYUAN keyboards
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dniminenn/sharkfin
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,6 +20,7 @@ pkgbase = sharkfin-keyboard
 	depends = webkit2gtk-4.1
 	conflicts = sharkfin
 	options = !lto
+	options = !debug
 	source = sharkfin-0.1.11.tar.gz::https://github.com/dniminenn/sharkfin/archive/refs/tags/v0.1.11.tar.gz
 	b2sums = 644b4d83d83a5cbd5793b809234abaea10491514d01cc026f0b33f25ad09342301c1bfb9c338ddee92466f2834370f33ba3329a6d58980af917cd7d3b0dc571e
 
