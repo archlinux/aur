@@ -1,6 +1,6 @@
 pkgbase = sabigoku
 	pkgdesc = Terminal anime browser and player
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/vantroy/sabigoku
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sabigoku
 	depends = mpv
 	options = !lto
 	options = !debug
-	source = sabigoku-0.1.3.tar.gz::https://github.com/vantroy/sabigoku/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = c1078569f70ae7034cd6b8b92acd1f9174b854ee4cbffcf1ccc4dc7521b96d78
+	source = sabigoku-0.1.4.tar.gz::https://github.com/vantroy/sabigoku/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 6f53039573a58fb493e41035a1dbad824b6078b3297531fa0ba6e7b0104337ad
 
 pkgname = sabigoku
