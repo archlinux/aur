@@ -1,0 +1,28 @@
+pkgbase = cosmic-applets-application-volume
+	pkgdesc = Applets for COSMIC Panel
+	pkgver = 1.5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/pop-os/cosmic-applets
+	arch = x86_64
+	groups = cosmic
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	depends = cosmic-icon-theme
+	depends = dbus
+	depends = libgcc
+	depends = glibc
+	depends = libinput
+	depends = libpipewire
+	depends = libpulse
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = util-linux
+	source = git+https://github.com/AdityaHebballe/cosmic-applets.git#branch=feat/application-volume-control
+	b2sums = SKIP
+
+pkgname = cosmic-applets-application-volume
