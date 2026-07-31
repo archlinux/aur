@@ -14,8 +14,8 @@ pkgname=(
     icesugar-pro-demo-git
     icesugar-pro-doc-git
 )
-pkgver=1.1a.r29.ga8c4b15
-pkgrel=5
+pkgver=1.1a.r35.g1ebe71b
+pkgrel=1
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
 arch=($CARCH)
@@ -23,15 +23,17 @@ url="https://github.com/wuxx/icesugar"
 license=('GPL')
 groups=()
 depends=(
-    gcc-libs
-    glibc
     hidapi
     libcap
     libusb
-    systemd-libs)
+    libgcc_s.so
+    libstdc++.so
+    systemd-libs
+)
 makedepends=(
     git
-    pkgconf)
+    pkgconf
+)
 checkdepends=()
 optdepends=()
 replaces=()
@@ -120,12 +122,13 @@ package_icesugar-icesprog-git() {
     conflicts=(${pkgname%-git} icesprog)
     arch=($CARCH)
     depends=(
-        gcc-libs
-        glibc
         hidapi
         libcap
         libusb
-        systemd-libs)
+        libgcc_s.so
+        libstdc++.so
+        systemd-libs
+    )
     optdepends=(
         'openocd: Debugging, in-system programming and boundary-scan testing for embedded target devices')
 
