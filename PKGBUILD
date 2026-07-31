@@ -2,8 +2,8 @@
 # Contributor: SarangRao20
 
 pkgname=battery-charge-limiter
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Cross-platform battery charge limiter — enforces 80% hardware cap on laptops where BIOS hides this feature. Arch Linux daemon using acpi_call."
 arch=('any')
 url="https://github.com/SarangRao20/battery-charge-limiter"
@@ -13,13 +13,18 @@ conflicts=()
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install=battery-charge-limiter.install
-sha256sums=('836821877e5b092a865802aa185eb85170514b81e67b16b457d975c989f763e1')
+sha256sums=('fed8fb735d0ebf2bc347258624dcf5b09d931445b5ada7bd35df3fb05903de7f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Daemon script
   install -Dm755 "arch/battery-charge-limiter" "${pkgdir}/usr/bin/battery-charge-limiter"
+
+  # Helper commands
+  install -Dm755 "arch/bat-status" "${pkgdir}/usr/bin/bat-status"
+  install -Dm755 "arch/bat-inhibit" "${pkgdir}/usr/bin/bat-inhibit"
+  install -Dm755 "arch/bat-auto" "${pkgdir}/usr/bin/bat-auto"
 
   # Systemd service
   install -Dm644 "arch/battery-charge-limiter.service" "${pkgdir}/usr/lib/systemd/system/battery-charge-limiter.service"
