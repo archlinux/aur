@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Sable
+Comment=An almost stable Matrix client.
+Exec=sable %U
+Terminal=false
+StartupWMClass=sable
+Icon=sable
+Categories=Network;InstantMessaging;Chat;
+Keywords=matrix;sable;chat;
+GenericName=Internet messenger
+MimeType=x-scheme-handler/sable;x-scheme-handler/moe.sable.app;x-scheme-handler/matrix;
