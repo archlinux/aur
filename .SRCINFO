@@ -1,7 +1,7 @@
 pkgbase = lmm-api-git
 	pkgdesc = LMM API model management and distribution system (git version)
-	pkgver = 0.0.0.r1.gbd67db5
-	pkgrel = 2
+	pkgver = 0.0.0.r2.g98a18e4
+	pkgrel = 1
 	url = https://github.com/LIghtJUNction/api.lmm.best
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -10,8 +10,8 @@ pkgbase = lmm-api-git
 	makedepends = bun
 	depends = ca-certificates
 	depends = tzdata
-	provides = lmm-api=0.0.0.r1.gbd67db5
-	provides = new-api=0.0.0.r1.gbd67db5
+	provides = lmm-api=0.0.0.r2.g98a18e4
+	provides = new-api=0.0.0.r2.g98a18e4
 	conflicts = lmm-api
 	conflicts = new-api
 	conflicts = new-api-git

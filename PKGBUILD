@@ -1,8 +1,8 @@
 # Maintainer: LIghtJUNction
 
 pkgname=lmm-api-git
-pkgver=0.0.0.r1.gbd67db5
-pkgrel=2
+pkgver=0.0.0.r2.g98a18e4
+pkgrel=1
 pkgdesc='LMM API model management and distribution system (git version)'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/api.lmm.best'
