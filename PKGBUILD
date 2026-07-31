@@ -2,7 +2,7 @@
 
 pkgname=redumper-gui
 epoch=
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
@@ -11,6 +11,8 @@ license=('GPL-3.0')
 
 # The GUI is pre-packaged with a supported and recommended version of redumper therefore, this must be present on the system. Generally this follows redumper git upstream builds.
 # The redumper-bin AUR package is only updated when Media Preservation Frontend (MPF) marks a redumper version as "safe", or based on "safe" Redump.org version
+
+provides=('redumper')
 
 conflicts=(
     "redumper-gui-bin"
@@ -24,13 +26,13 @@ makedepends=(
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/v$pkgver.tar.gz"
-    "https://github.com/superg/redumper/releases/download/b734/redumper-b734-linux-x64.zip"
+    "https://github.com/superg/redumper/releases/download/b736/redumper-b736-linux-x64.zip"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/LICENSE"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md"
 )
 
-sha256sums=('SKIP'
-'36e3fbcb20482014c508867fce8225e01e31f881d4a698bedfa015adcd1c1b0c'
+sha256sums=('c9b086d15b75a5068707fb52ef3ab2988776c61e93bf31df25aa7fb45fc318d0'
+'9556508df3e2f2d204929d7e00733b8e869e8329fe10096cd13573b70160d0e6'
 'SKIP'
 'SKIP')
 
