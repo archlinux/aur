@@ -1,6 +1,6 @@
 pkgbase = opentelemetry-python-contrib
 	pkgver = 0.65b0
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = Apache-2.0
 	makedepends = git

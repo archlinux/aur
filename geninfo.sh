@@ -76,17 +76,24 @@ for dep in deps:
 ## _optdepends
 _gen_optdepends() {
     for info in $infos; do
+        # 当前包名（用于剔除自引用的 [extra] 标记，如 pkg[instruments]）
+        pkgname_cur=$(echo "$info" | awk -F/ '{print $NF}')
         depends=($(
             python3 -c "
 import tomllib, sys
 with open('src/${pkgbase}/${info}/pyproject.toml', 'rb') as f:
     data = tomllib.load(f)
+own = '${pkgname_cur}'
 opt = data.get('project', {}).get('optional-dependencies', {})
 for group, deps in opt.items():
     for dep in deps:
+        # 先去掉 extras 标记（如 pkg[instruments]），否则 makepkg lint 会因 '[]' 报错
+        dep = dep.split('[')[0]
         name = dep.split('>')[0].split('<')[0].split('=')[0].split('~')[0].split('!')[0].strip().lower().replace('_', '-').replace('.', '-')
-        if name:
-            print(f'python-{name}')
+        # 跳过空项与自引用（本包的 instruments extra 指向自身）
+        if not name or name == own:
+            continue
+        print(f'python-{name}')
 " 2>/dev/null | \
             sed 's|python-python|python|' | \
             sed 's|-python||g' | \
