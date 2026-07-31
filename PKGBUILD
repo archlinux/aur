@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=xconnect
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="KDE Connect protocol implementation in Vala/C with GTK3/XApp GUI"
 arch=('x86_64')
@@ -26,11 +26,11 @@ makedepends=(
     'pkg-config'
 )
 provides=('xconnectctl' 'xconnect-app')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-1.tar.gz")
-sha256sums=('de670032624389da9c88e6773b5f31c2b07e68adae7c82118a37770a09e9ec68')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('33774af4ef24397bbe3cf5457f63f5187c03a77297ae8e47468d99727fc4d6c0')
 
 build() {
-    cd "$pkgname-$pkgver-1"
+    cd "$pkgname-$pkgver"
     if [ -d build ]; then
         rm -rf build
     fi
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver-1"
+    cd "$pkgname-$pkgver"
 
     DESTDIR="$pkgdir" ninja -C build install
 
