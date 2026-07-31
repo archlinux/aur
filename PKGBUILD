@@ -4,7 +4,7 @@
 
 pkgname=sharkfin-keyboard-bin
 _pkgname=sharkfin
-pkgver=0.1.8
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('sharkfin-keyboard')
 # /usr/bin/sharkfin.
 conflicts=('sharkfin-keyboard' 'sharkfin')
 source_x86_64=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-b2sums_x86_64=('8e3d85243e154af8c8c1dbe1dee05c8ae08a7d83807ade7e3140267e575ef190822a1df2195b32540ce6d2e46a75fe562552289308bc92ddfb40884c99e16d14')
+b2sums_x86_64=('5df6d10d8de018f289facf5cd4e7514f2b7fcfa53a3f334dd4b064b5486007a1012bb6e7a09646837d5623941cbe3b871ea99d06c249f15fe0390600e535df9e')
 
 package() {
   bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.gz \
