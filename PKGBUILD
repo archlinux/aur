@@ -1,8 +1,8 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-rc-bin
-pkgver=1.14rc5
-pkgrel=2
+pkgver=1.14rc6
+pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
@@ -19,7 +19,7 @@ conflicts=('dota2-minify' 'dota2-minify-bin')
 # https://github.com/Egezenn/dota2-minify/releases
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('527ff74e38401a93391ea0dadcccd7bd09031a47e22334df4c6a327e0839c6be')
+sha256sums=('76bd93e6213ac62e1f906042066bfe8fbca39e2e13ec7a991ad1d6b178db6232')
 
 noextract=("${pkgname}-${pkgver}.zip")
 
@@ -46,7 +46,7 @@ package() {
 
     (
         cd "${srcdir}" || exit
-        for _item in Minify _internal bin mods LICENSE README.md; do
+        for _item in *; do
             cp -a --no-preserve=ownership "${_item}" "${pkgdir}/usr/share/dota2-minify/"
         done
     )
