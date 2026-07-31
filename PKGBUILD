@@ -20,6 +20,7 @@ depends=(
     'nodejs'
     'libgcc'
     'ripgrep'
+    'xdg-utils'
 )
 makedepends=(
     'asar'
@@ -32,7 +33,9 @@ source=(
     "LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
+# First entry: upstream .deb, pinned by zcode-update-checker.sh on each update.
+# LICENSE and zcode.sh are local repo files tracked by git, kept as SKIP.
+sha256sums=('e6610065ed4a711efc139a60d373ffcc606a3c13e782306876e49fc07e336bc7'
             'SKIP'
             'SKIP')
 

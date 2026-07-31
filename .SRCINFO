@@ -16,11 +16,12 @@ pkgbase = zcode-bin
 	depends = nodejs
 	depends = libgcc
 	depends = ripgrep
+	depends = xdg-utils
 	options = !strip
-	source = zcode-3.1.8-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.3/linux-x64/ZCode-3.5.3-linux-x64.deb
+	source = zcode-3.5.3-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.3/linux-x64/ZCode-3.5.3-linux-x64.deb
 	source = LICENSE
 	source = zcode.sh
-	sha256sums = SKIP
+	sha256sums = e6610065ed4a711efc139a60d373ffcc606a3c13e782306876e49fc07e336bc7
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -36,7 +36,35 @@ case "${XDG_CURRENT_DESKTOP}" in
         ;;
 esac
 
-# 3. Load user-defined flags
+# 3. Memory usage optimization
+# Safe Chromium/Electron defaults that keep RAM usage in check (Electron 41 / Chromium 134+):
+#   - PartitionAllocMemoryReclaimer: periodically returns freed allocator memory
+#     to the OS, preventing RSS from growing monotonically
+#   - IntensiveWakeUpThrottling: aggressively throttles timers in background views
+#   - BackForwardCache disabled: an editor never uses back/forward navigation,
+#     so cached page snapshots are wasted memory
+#   - force-gpu-mem-available-mb=512: cap the GPU compositor/tile memory budget
+# These defaults are placed BEFORE user flags below, so any value provided via
+# flags.conf (e.g. --enable-features=...) overrides them (last one wins).
+# NOTE: keep "${_RUNNAME}" as argv[1] (right after the electron binary) - ZCode
+# uses process.argv[1] as its deep-link entry, so all switches must come after it.
+_MEMORY_FLAGS=(
+    "--enable-features=PartitionAllocMemoryReclaimer,IntensiveWakeUpThrottling"
+    "--disable-features=BackForwardCache"
+    "--force-gpu-mem-available-mb=512"
+)
+
+# Aggressive mode for low-RAM machines: ZCODE_MEMORY_SAVER=1 zcode
+# Disables GPU compositing and caps the V8 old-space heap. Expect software
+# rendering; raise --max-old-space-size for very large projects.
+if [[ "${ZCODE_MEMORY_SAVER:-0}" == "1" ]]; then
+    _MEMORY_FLAGS+=(
+        "--disable-gpu"
+        "--js-flags=--max-old-space-size=3072"
+    )
+fi
+
+# 4. Load user-defined flags
 # The script checks for flags in the following order (later files override/append to earlier ones):
 # 1. System-wide Electron flags: $XDG_CONFIG_HOME/electron-flags.conf
 # 2. Version-specific Electron flags: $XDG_CONFIG_HOME/electron@electronversion@-flags.conf
@@ -62,7 +90,7 @@ for _FLAGS_FILE in "${_FLAG_SOURCES[@]}"; do
     fi
 done
 
-# 4. Sandbox and Execution Permissions
+# 5. Sandbox and Execution Permissions
 # Disable sandbox if running as root without ELECTRON_RUN_AS_NODE
 _SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
@@ -70,4 +98,4 @@ if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
 fi
 
 cd "${_APPDIR}"
-exec electron@electronversion@ "${flags[@]}" "${_SANDBOX_ARG[@]}" "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_RUNNAME}" "${_MEMORY_FLAGS[@]}" "${flags[@]}" "${_SANDBOX_ARG[@]}" "$@"
