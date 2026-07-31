@@ -7,14 +7,14 @@
 
 pkgname=mxcli
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial community package for the mxcli Mendix development CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mendixlabs/mxcli"
 license=('Apache-2.0')
 makedepends=(
   'antlr4>=4.13.2'
-  'go>=1.26.0'
+  'go>=1.26.5'
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -25,9 +25,10 @@ build() {
 
   export CGO_ENABLED=0
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  export GOTOOLCHAIN=local
 
   local build_time
-  build_time="$(date -u -d "@$SOURCE_DATE_EPOCH" '+%Y-%m-%dT%H:%M:%SZ')"
+  build_time="$(date -u -r LICENSE '+%Y-%m-%dT%H:%M:%SZ')"
 
   make VERSION="v$pkgver" BUILD_TIME="$build_time" build
 }
