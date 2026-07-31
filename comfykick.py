@@ -15,6 +15,7 @@ import tomllib
 import urllib.error
 import urllib.request
 from pathlib import Path
+from typing import Any, NoReturn
 
 import yaml
 
@@ -103,12 +104,12 @@ _RETRY_MAX_DELAY = 30.0
 log = logging.getLogger(PROJECT_NAME)
 
 
-def die(msg, *args):
+def die(msg: str, *args: Any) -> NoReturn:
     log.error(msg, *args)
     sys.exit(1)
 
 
-def check_user_config(config_path):
+def check_user_config(config_path: Path) -> None:
     try:
         st = config_path.stat()
     except FileNotFoundError:
@@ -127,7 +128,7 @@ def check_user_config(config_path):
         )
 
 
-def _read_toml(path):
+def _read_toml(path: Path) -> dict[str, Any]:
     try:
         with open(path, "rb") as f:
             data = tomllib.load(f)
@@ -157,7 +158,7 @@ def _read_toml(path):
     return cleaned
 
 
-def _load_config(config_files):
+def _load_config(config_files: list[Path]) -> dict[str, Any]:
     config = dict(DEFAULTS)
 
     for path in config_files:
@@ -179,7 +180,7 @@ def _load_config(config_files):
     return config
 
 
-def log_config(config):
+def log_config(config: dict[str, Any]) -> None:
     lines = []
 
     for key in sorted(config):
@@ -192,7 +193,7 @@ def log_config(config):
     log.info("Loaded configuration:\n%s", "\n".join(lines))
 
 
-def _resolve_extra_model_paths(config):
+def _resolve_extra_model_paths(config: dict[str, Any]) -> list[Path]:
     """Parse ``config['extra_model_paths_yaml']``.
 
     Returns the list of model sub-directories declared under sections
@@ -283,7 +284,9 @@ def _resolve_extra_model_paths(config):
     return list(extra_dirs)
 
 
-def create_directories(config, extra_dirs):
+def create_directories(
+    config: dict[str, Any], extra_dirs: list[Path]
+) -> None:
     dirs = [
         config["base_dir"],
         config["base_dir"] / "custom_nodes",
@@ -298,12 +301,14 @@ def create_directories(config, extra_dirs):
         Path(directory).mkdir(parents=True, exist_ok=True)
 
 
-def _retry_delay(attempt):
+def _retry_delay(attempt: int) -> float:
     """Exponential backoff delay for ``attempt`` (0-indexed), in seconds."""
     return min(_RETRY_BASE_DELAY * (2 ** attempt), _RETRY_MAX_DELAY)
 
 
-def _api_request(url, github_token=None):
+def _api_request(
+    url: str, github_token: str | None = None
+) -> Any:
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
 
@@ -360,7 +365,9 @@ def _api_request(url, github_token=None):
     )
 
 
-def _resolve_version(config, version_cache_dir):
+def _resolve_version(
+    config: dict[str, Any], version_cache_dir: Path
+) -> tuple[str, str | None, str | None]:
     """Resolve the ComfyUI version head and tarball URL."""
     version_head = [config["version"]]
 
@@ -409,7 +416,9 @@ def _resolve_version(config, version_cache_dir):
     return version_head[-1], None, None
 
 
-def download_tarball(tarball_url, tarball_path, github_token):
+def download_tarball(
+    tarball_url: str, tarball_path: Path, github_token: str
+) -> None:
     last_exc = None
 
     for attempt in range(_DOWNLOAD_MAX_RETRIES + 1):
@@ -478,12 +487,12 @@ def download_tarball(tarball_url, tarball_path, github_token):
 
 
 def _ensure_tarball(
-    config,
-    version_head,
-    version_cache_dir,
-    tarball_url=None,
-    refresh=False,
-):
+    config: dict[str, Any],
+    version_head: str,
+    version_cache_dir: Path,
+    tarball_url: str | None = None,
+    refresh: bool = False,
+) -> Path:
     """Ensure the tarball for ``version_head`` exists in cache."""
     tarball_name = f"{version_head}.tar.gz"
     tarball_path = version_cache_dir / tarball_name
@@ -518,7 +527,10 @@ def _ensure_tarball(
     return tarball_path
 
 
-def cleanup_stale_tarballs(version_cache_dir, exempt_names=None):
+def cleanup_stale_tarballs(
+    version_cache_dir: Path,
+    exempt_names: set[str] | None = None,
+) -> None:
     """Remove tarballs older than 30 days from ``version_cache_dir``.
 
     Tarballs that are the target of a symlink in ``version_cache_dir``
@@ -563,7 +575,9 @@ def cleanup_stale_tarballs(version_cache_dir, exempt_names=None):
             log.warning("Failed to remove %s", entry.name)
 
 
-def _extract_tarball(tarball_path, dest_dir):
+def _extract_tarball(
+    tarball_path: Path, dest_dir: Path
+) -> Path | None:
     try:
         with tarfile.open(tarball_path, "r:gz") as tar:
             tar.extractall(dest_dir, filter="data")
@@ -583,7 +597,11 @@ def _extract_tarball(tarball_path, dest_dir):
     return dest_dir
 
 
-def install_dependencies(extracted_dir, config, version_head):
+def install_dependencies(
+    extracted_dir: Path,
+    config: dict[str, Any],
+    version_head: str,
+) -> None:
     """Install dependencies with uv.
 
     No multi-instance race: comfykick runs exclusively as a systemd
@@ -608,7 +626,7 @@ def install_dependencies(extracted_dir, config, version_head):
 
     venv_link.symlink_to(venv_cache_dir)
 
-    def run(cmd):
+    def run(cmd: list[str]) -> None:
         subprocess.run(
             cmd,
             cwd=str(extracted_dir),
@@ -653,7 +671,9 @@ def install_dependencies(extracted_dir, config, version_head):
     run(["uv", "sync"])
 
 
-def run_prekick_commands(config, extracted_dir):
+def run_prekick_commands(
+    config: dict[str, Any], extracted_dir: Path
+) -> None:
     """Run trusted shell commands from ``prekick_exec``.
 
     Security note: ``shell=True`` is intentional and safe in this
@@ -692,7 +712,9 @@ def run_prekick_commands(config, extracted_dir):
         )
 
 
-def launch_comfyui(config, extracted_dir):
+def launch_comfyui(
+    config: dict[str, Any], extracted_dir: Path
+) -> NoReturn:
     env = os.environ.copy()
 
     args = [
@@ -730,7 +752,7 @@ def launch_comfyui(config, extracted_dir):
     os.execvpe("uv", args, env)
 
 
-def main():
+def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
         format="[%(levelname)s] %(message)s",
