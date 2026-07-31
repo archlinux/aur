@@ -1,0 +1,20 @@
+pkgbase = smyx-bin
+	pkgdesc = Navidrome player for the terminal. With reactive themes.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/ayanchavand/Smyx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = smyx
+	conflicts = smyx-git
+	conflicts = smyx
+	options = !lto
+	options = !debug
+	options = !strip
+	source = smyx-0.2.7-bin.tar.gz::https://github.com/ayanchavand/Smyx/releases/download/v0.2.7/smyx-linux.tar.gz
+	source = smyx-LICENSE-0.2.7::https://raw.githubusercontent.com/ayanchavand/Smyx/refs/tags/v0.2.7/LICENSE
+	sha256sums = 307de5d40e95ab4813154ce4827f131fb8f6472dfd4deedeac44718542fbb8be
+	sha256sums = 335d6515a751141cb684fd404b0add3ba137506f98607f9f9447dab3e195a26e
+
+pkgname = smyx-bin
