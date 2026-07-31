@@ -5,6 +5,14 @@
  		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
  	},
 +	{
++		.ident = DRM_EDID_IDENT_INIT('O', 'V', 'R', 0x0003, "Pimax ???"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
++		.ident = DRM_EDID_IDENT_INIT('S', 'V', 'R', 0x1019, "Pimax ???"),
++		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
++	},
++	{
 +		.ident = DRM_EDID_IDENT_INIT('P', 'V', 'R', 0x1019, "Pimax P2N"),
 +		.quirks = BIT(QUIRK_IGNORE_CHECKSUM),
 +	},

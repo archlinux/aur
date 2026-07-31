@@ -56,8 +56,8 @@ pkgbase = linux-bsb
 	b2sums = a4c870cb5a22b410432d0aa773b591ed7778e8ef5ac46f589a26518d0c0650d7cd2e34566cf850dc827eb0b21f19957a4e50179298ca69c3a55da9a178d942e8
 	b2sums = SKIP
 	source_x86_64 = config.x86_64
-	sha256sums_x86_64 = 7d299a4f5d4278d1d2d87bc8188447cf4dc76ab1b61cfc2cef46b770b5ffb121
-	b2sums_x86_64 = dc8b97708ce42b9c32767b1b0344e1373640c898aa67e6b0123c0f85a3a7fafa798c7f9ffb744147488309b78229c14eaf0ac0456e1d74a6c80e513ceb26d127
+	sha256sums_x86_64 = ecd8c76eb203493e67ba4052e7bc1fa46f51c91566f102172e7a18d7de2dd5eb
+	b2sums_x86_64 = 0564ea851810a155cd589bd3a5d74344f16ab2c7c5ea5aa740faaf6776230ccd115474b6164ebd32d89d8615e41d24d2612d649b987f1f2cde58476e5561fe5e
 
 pkgname = linux-bsb
 	pkgdesc = The Linux kernel with patches to make the Bigscreen Beyond headset work properly kernel and modules

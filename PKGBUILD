@@ -60,7 +60,7 @@ sha256sums=('22a0196b3cbcdf34dc27b77561f4d040585fd3447edc9ab3531a1ac79e3041e7'
             'c22989441488c4d7a027f4ab2c049be838a43caac3f22abd987c0bef718c5438'
             '04efe829f7b0df735f18fd8c4a0f5025fb2811012a3c8cd20b6c88350171437d'
             'SKIP')
-sha256sums_x86_64=('7d299a4f5d4278d1d2d87bc8188447cf4dc76ab1b61cfc2cef46b770b5ffb121')
+sha256sums_x86_64=('ecd8c76eb203493e67ba4052e7bc1fa46f51c91566f102172e7a18d7de2dd5eb')
 b2sums=('d1dcf9b2a7ba1ed431d2b2c785ffc9a4ce729e4a004629061a73451a471316f437212004fe128157b5fc56b58bb06e60e758124a88c408e0b9124592c6a2d886'
         'SKIP'
         '30ee044796d191d8fcac830c1100c482921cdeccb19f34c314944cc324981e879016e2f7770c9e3e244d873b149fbdae2c628edb5e78e7a86ab5a0a081b3bab5'
@@ -70,7 +70,7 @@ b2sums=('d1dcf9b2a7ba1ed431d2b2c785ffc9a4ce729e4a004629061a73451a471316f43721200
         '77a7eb3a552ca944de6d86364c197472653fba465f0cfbf490059bcf9f5df0638b41478d012febb6be272e16684112116e3fa5d3f0cdd0870f454f588dbd5784'
         'a4c870cb5a22b410432d0aa773b591ed7778e8ef5ac46f589a26518d0c0650d7cd2e34566cf850dc827eb0b21f19957a4e50179298ca69c3a55da9a178d942e8'
         'SKIP')
-b2sums_x86_64=('dc8b97708ce42b9c32767b1b0344e1373640c898aa67e6b0123c0f85a3a7fafa798c7f9ffb744147488309b78229c14eaf0ac0456e1d74a6c80e513ceb26d127')
+b2sums_x86_64=('0564ea851810a155cd589bd3a5d74344f16ab2c7c5ea5aa740faaf6776230ccd115474b6164ebd32d89d8615e41d24d2612d649b987f1f2cde58476e5561fe5e')
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
 
@@ -106,6 +106,7 @@ prepare() {
 
 build() {
   cd $_srcname
+
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
@@ -215,8 +216,8 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Installing Rust files..."
   if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    echo "Installing Rust files..."
     install -Dt "$builddir/rust" -m644 rust/*.rmeta
     install -Dt "$builddir/rust" rust/*.so
   fi

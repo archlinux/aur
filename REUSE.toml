@@ -6,10 +6,13 @@ path = [
     "README.md",
     "keys/**",
     ".SRCINFO",
+    ".gitignore",
     ".nvchecker.toml",
     "*.install",
     "*.sysusers",
+    "*sysusers.conf",
     "*.tmpfiles",
+    "*tmpfiles.conf",
     "*.logrotate",
     "*.pam",
     "*.service",
@@ -17,8 +20,14 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
-    ".gitignore",
     "config.*",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "*.patch",
+]
+SPDX-FileCopyrightText = "Linux Kernel contributors"
+SPDX-License-Identifier = "GPL-2.0-only"
