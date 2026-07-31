@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Launch and manage a versioned ComfyUI instance."""
 
+import datetime
+import email.utils
 import json
 import logging
 import os
+import random
 import shlex
 import shutil
 import subprocess
@@ -100,6 +103,7 @@ _API_MAX_RETRIES = 4
 _DOWNLOAD_MAX_RETRIES = 4
 _RETRY_BASE_DELAY = 1.0
 _RETRY_MAX_DELAY = 30.0
+_RETRY_JITTER = 0.25
 
 log = logging.getLogger(PROJECT_NAME)
 
@@ -301,9 +305,52 @@ def create_directories(
         Path(directory).mkdir(parents=True, exist_ok=True)
 
 
-def _retry_delay(attempt: int) -> float:
-    """Exponential backoff delay for ``attempt`` (0-indexed), in seconds."""
-    return min(_RETRY_BASE_DELAY * (2 ** attempt), _RETRY_MAX_DELAY)
+def _retry_delay(
+    attempt: int, retry_after: float | None = None
+) -> float:
+    """Exponential backoff delay for ``attempt`` (0-indexed), in seconds.
+
+    When ``retry_after`` is provided (e.g. parsed from a ``Retry-After``
+    header), it takes precedence over the computed exponential delay.
+    A ±``_RETRY_JITTER`` multiplicative jitter is applied to avoid
+    thundering-herd effects.
+    """
+    base = min(_RETRY_BASE_DELAY * (2 ** attempt), _RETRY_MAX_DELAY)
+    if retry_after is not None:
+        base = max(base, min(retry_after, _RETRY_MAX_DELAY))
+    jitter = random.uniform(-_RETRY_JITTER, _RETRY_JITTER)
+    return min(base * (1 + jitter), _RETRY_MAX_DELAY)
+
+
+def _parse_retry_after(exc: urllib.error.HTTPError) -> float | None:
+    """Parse the ``Retry-After`` header from an HTTP 429/503 response.
+
+    The header may be either a number of seconds (e.g. ``"120"``) or an
+    HTTP-date (e.g. ``"Wed, 21 Oct 2025 07:28:00 GMT"``).
+
+    Returns the delay in seconds, or ``None`` when the header is absent
+    or unparsable.
+    """
+    value = exc.headers.get("Retry-After")
+    if not value:
+        return None
+
+    # Numeric seconds format: "120"
+    try:
+        return float(value)
+    except ValueError:
+        pass
+
+    # HTTP-date format: "Wed, 21 Oct 2025 07:28:00 GMT"
+    try:
+        dt = email.utils.parsedate_to_datetime(value)
+        if dt is None:
+            return None
+        now = datetime.datetime.now(dt.tzinfo)
+        delay = (dt - now).total_seconds()
+        return delay if delay > 0 else None
+    except (TypeError, ValueError):
+        return None
 
 
 def _api_request(
@@ -317,6 +364,7 @@ def _api_request(
 
     last_exc = None
     for attempt in range(_API_MAX_RETRIES + 1):
+        retry_after = None
         try:
             with urllib.request.urlopen(
                 req,
@@ -326,6 +374,7 @@ def _api_request(
         except urllib.error.HTTPError as exc:
             if exc.code == 429 or exc.code >= 500:
                 last_exc = exc
+                retry_after = _parse_retry_after(exc)
             else:
                 body = exc.read().decode("utf-8", errors="replace")
                 die(
@@ -345,7 +394,7 @@ def _api_request(
             last_exc = exc
 
         if attempt < _API_MAX_RETRIES:
-            delay = _retry_delay(attempt)
+            delay = _retry_delay(attempt, retry_after=retry_after)
             log.warning(
                 "Request to <%s> failed: %s; "
                 "retrying in %.1fs (attempt %d/%d)",
@@ -423,6 +472,7 @@ def download_tarball(
 
     for attempt in range(_DOWNLOAD_MAX_RETRIES + 1):
         tmp_path = None
+        retry_after = None
         try:
             with tempfile.NamedTemporaryFile(
                 prefix=f"comfykick_{tarball_path.name}_",
@@ -464,8 +514,11 @@ def download_tarball(
 
             last_exc = exc
 
+            if isinstance(exc, urllib.error.HTTPError):
+                retry_after = _parse_retry_after(exc)
+
             if attempt < _DOWNLOAD_MAX_RETRIES:
-                delay = _retry_delay(attempt)
+                delay = _retry_delay(attempt, retry_after=retry_after)
                 log.warning(
                     "Download of <%s> failed: %s; "
                     "retrying in %.1fs (attempt %d/%d)",
