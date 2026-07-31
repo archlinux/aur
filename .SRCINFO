@@ -1,6 +1,6 @@
 pkgbase = grimodex-bin
 	pkgdesc = AI-integrated novel writing editor (Electron + React)
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/kazormia296/Grimodex
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = grimodex-bin
 	conflicts = grimodex
 	options = !strip
 	options = !debug
-	source = LICENSE-v2.0.8::https://raw.githubusercontent.com/kazormia296/Grimodex/v2.0.8/LICENSE
+	source = LICENSE-v2.0.9::https://raw.githubusercontent.com/kazormia296/Grimodex/v2.0.9/LICENSE
 	sha256sums = 0e90de829ce8a918b0c934e241c4f68bd49c3d0aef55649b78d6d38a64c87f85
-	source_x86_64 = https://github.com/kazormia296/Grimodex/releases/download/v2.0.8/Grimodex-2.0.8-linux-amd64.deb
-	sha256sums_x86_64 = 594a725185fd49310ef2e4375e55d801a2195a0cb0b6a5bde06ad1f4b40503b7
+	source_x86_64 = https://github.com/kazormia296/Grimodex/releases/download/v2.0.9/Grimodex-2.0.9-linux-amd64.deb
+	sha256sums_x86_64 = 85aac28e7285f8d29344154e28f5c4b0c5cc0847ad9e52ff6e3b7c399de5ebb3
 
 pkgname = grimodex-bin
