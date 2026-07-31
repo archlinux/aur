@@ -1,7 +1,7 @@
 pkgbase = qcc
 	pkgdesc = C Library and tools used to communicate with Crypta Labs QRNG devices.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://cryptalabs.com/qrng-driver-downloads/
 	arch = x86_64

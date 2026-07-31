@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=qcc
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C Library and tools used to communicate with Crypta Labs QRNG devices."
 arch=(x86_64)
