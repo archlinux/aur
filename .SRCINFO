@@ -1,6 +1,6 @@
 pkgbase = picolisp
 	pkgdesc = Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines).
-	pkgver = 25.12
+	pkgver = 26.6
 	pkgrel = 1
 	url = https://picolisp.com
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = picolisp
 	depends = libffi
 	depends = readline
 	depends = ncurses
-	source = https://software-lab.de/picoLisp-25.12.tgz
-	sha256sums = c9ba1da43e1267ffad1e835f201ee9d9c2737ce9c84497420f696067b20e9b80
+	source = https://software-lab.de/picoLisp-26.6.tgz
+	sha256sums = 2642d28908fa7a69d8bf49519396df85f922781d1c41d8eaceca77bb457ab712
 
 pkgname = picolisp
