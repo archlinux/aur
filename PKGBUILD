@@ -2,7 +2,7 @@
 pkgname=fleasion-git
 pkgver=r515.f6e286c
 pkgrel=1
-pkgdesc="Fleasion"
+pkgdesc="Roblox asset interceptor and replacer for Sober"
 arch=('x86_64')
 url="https://github.com/fleasion/Fleasion"
 license=('GPL-3.0-only')
@@ -65,18 +65,8 @@ package() {
 #!/usr/bin/env bash
 set -euo pipefail
 
-INSTALL_DIR="/usr/share/fleasion"
-export PYTHONPATH="$INSTALL_DIR/src${PYTHONPATH:+:$PYTHONPATH}"
-
-VENV_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/fleasion-venv"
-
-if [ ! -d "$VENV_DIR" ]; then
-    python -m venv --system-site-packages "$VENV_DIR"
-fi
-
-source "$VENV_DIR/bin/activate"
-
-cd "$INSTALL_DIR"
+export PYTHONPATH="/usr/share/fleasion/src${PYTHONPATH:+:$PYTHONPATH}"
+cd /usr/share/fleasion
 exec python launcher.py "$@"
 EOF
 

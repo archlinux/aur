@@ -1,5 +1,5 @@
 pkgbase = fleasion-git
-	pkgdesc = Fleasion
+	pkgdesc = Roblox asset interceptor and replacer for Sober
 	pkgver = r515.f6e286c
 	pkgrel = 1
 	url = https://github.com/fleasion/Fleasion
