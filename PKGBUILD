@@ -2,7 +2,7 @@
 # Maintainer: bgh <aur at bgh dot io>
 
 pkgname="cyberchef-web"
-pkgver=11.0.0
+pkgver=11.3.0
 pkgrel=1
 pkgdesc="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis"
 url="https://gchq.github.io/CyberChef/"
@@ -11,9 +11,9 @@ arch=("any")
 conflicts=("cyberchef-html")
 replaces=("cyberchef-html")
 makedepends=("findutils" "libarchive")
-source=("$pkgname-$pkgver.zip::https://github.com/gchq/CyberChef/releases/download/v$pkgver/CyberChef_v$pkgver.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/gchq/CyberChef/releases/download/v$pkgver/CyberChef_d24ba1afce2e3a080308b5df7db033332fe94a1a.zip")
 noextract=("$pkgname-$pkgver.zip")
-b2sums=('5e392413be10b05ec0a4d89cae95060b982ab0c8fd6787e3612d9925ae0b16429cd04891d15ad6c5075947493e423d948d9489b7b54b681c82b95bfa41a9542c')
+b2sums=('c0f33159baa5d385a041dfa8fbe781958c77afcd2fd163fcaca8d26e0147329a4e3c1cdd37e3755a200fb1743e5ee58076c831f1976ff53c855fd300fd2fae50')
 options=("!strip")
 
 package(){
