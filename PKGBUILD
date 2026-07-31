@@ -15,7 +15,7 @@ source=(
     "stack.yaml"
 )
 sha256sums=('52fbc1c8a4558f89e3b0c9d905e62016cf58ae842f9fa3ac93c56bb45f8c9ddb'
-            'c9ae8dbbc1f9bad26e339a58dfe7ba8eb0ad7f4b43ac3c272091bf9304ae9061')
+            '18ac8369a47e0696b7d0fb87ef62cb1fbcd581d31a81e95a211155c85b82194c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
