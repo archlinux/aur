@@ -33,9 +33,6 @@ GITHUB_API_LATEST = (
     f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
 )
 
-_API_TIMEOUT = 30
-_DOWNLOAD_TIMEOUT = 60
-
 XDG_CACHE_HOME = Path(
     os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")
 )
@@ -93,6 +90,14 @@ _PATH_KEYS = (
     "venv_cache_dir",
     "version_cache_dir",
 )
+
+_API_TIMEOUT = 30
+_DOWNLOAD_TIMEOUT = 60
+
+_API_MAX_RETRIES = 4
+_DOWNLOAD_MAX_RETRIES = 4
+_RETRY_BASE_DELAY = 1.0
+_RETRY_MAX_DELAY = 30.0
 
 log = logging.getLogger(PROJECT_NAME)
 
@@ -292,6 +297,11 @@ def create_directories(config, extra_dirs):
         Path(directory).mkdir(parents=True, exist_ok=True)
 
 
+def _retry_delay(attempt):
+    """Exponential backoff delay for ``attempt`` (0-indexed), in seconds."""
+    return min(_RETRY_BASE_DELAY * (2 ** attempt), _RETRY_MAX_DELAY)
+
+
 def _api_request(url, github_token=None):
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
@@ -299,33 +309,54 @@ def _api_request(url, github_token=None):
     if github_token:
         req.add_header("Authorization", f"Bearer {github_token}")
 
-    try:
-        with urllib.request.urlopen(
-            req,
-            timeout=_API_TIMEOUT,
-        ) as resp:
-            return json.load(resp)
-    except TimeoutError:
-        die(
-            "Timed out after %s seconds while requesting %s",
-            _API_TIMEOUT,
-            url,
-        )
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        die(
-            "HTTP error while requesting %s: %s %s (response: %s)",
-            url,
-            exc.code,
-            exc.reason,
-            body,
-        )
-    except urllib.error.URLError as exc:
-        die("Connection error while requesting %s: %s", url, exc)
-    except json.JSONDecodeError as exc:
-        die("Failed to parse JSON response from %s: %s", url, exc)
-    except OSError as exc:
-        die("Error while requesting %s: %s", url, exc)
+    last_exc = None
+    for attempt in range(_API_MAX_RETRIES + 1):
+        try:
+            with urllib.request.urlopen(
+                req,
+                timeout=_API_TIMEOUT,
+            ) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429 or exc.code >= 500:
+                last_exc = exc
+            else:
+                body = exc.read().decode("utf-8", errors="replace")
+                die(
+                    "HTTP error while requesting <%s>: %s %s (response: %s)",
+                    url,
+                    exc.code,
+                    exc.reason,
+                    body,
+                )
+        except TimeoutError as exc:
+            last_exc = exc
+        except urllib.error.URLError as exc:
+            last_exc = exc
+        except json.JSONDecodeError as exc:
+            die("Failed to parse JSON response from %s: %s", url, exc)
+        except OSError as exc:
+            last_exc = exc
+
+        if attempt < _API_MAX_RETRIES:
+            delay = _retry_delay(attempt)
+            log.warning(
+                "Request to <%s> failed: %s; "
+                "retrying in %.1fs (attempt %d/%d)",
+                url,
+                last_exc,
+                delay,
+                attempt + 1,
+                _API_MAX_RETRIES,
+            )
+            time.sleep(delay)
+
+    die(
+        "Request to <%s> failed after %d attempt(s): %s",
+        url,
+        _API_MAX_RETRIES + 1,
+        last_exc,
+    )
 
 
 def _resolve_version(config, version_cache_dir):
@@ -378,34 +409,71 @@ def _resolve_version(config, version_cache_dir):
 
 
 def download_tarball(tarball_url, tarball_path, github_token):
-    tmp_path = None
+    last_exc = None
 
-    try:
-        with tempfile.NamedTemporaryFile(
-            prefix=f"comfykick_{tarball_path.name}_",
-            dir=tempfile.gettempdir(),
-            delete=False,
-        ) as tmp:
-            tmp_path = Path(tmp.name)
+    for attempt in range(_DOWNLOAD_MAX_RETRIES + 1):
+        tmp_path = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                prefix=f"comfykick_{tarball_path.name}_",
+                dir=tempfile.gettempdir(),
+                delete=False,
+            ) as tmp:
+                tmp_path = Path(tmp.name)
 
-            req = urllib.request.Request(tarball_url)
-            if github_token:
-                req.add_header(
-                    "Authorization",
-                    f"Bearer {github_token}",
+                req = urllib.request.Request(tarball_url)
+                if github_token:
+                    req.add_header(
+                        "Authorization",
+                        f"Bearer {github_token}",
+                    )
+
+                with urllib.request.urlopen(
+                    req,
+                    timeout=_DOWNLOAD_TIMEOUT,
+                ) as resp:
+                    shutil.copyfileobj(resp, tmp, length=1024 * 64)
+
+            shutil.move(tmp_path, tarball_path)
+            return
+        except (urllib.error.URLError, OSError) as exc:
+            if tmp_path is not None:
+                tmp_path.unlink(missing_ok=True)
+
+            if (
+                isinstance(exc, urllib.error.HTTPError)
+                and exc.code != 429
+                and exc.code < 500
+            ):
+                die(
+                    "HTTP error while downloading <%s>: %s %s",
+                    tarball_url,
+                    exc.code,
+                    exc.reason,
                 )
 
-            with urllib.request.urlopen(
-                req,
-                timeout=_DOWNLOAD_TIMEOUT,
-            ) as resp:
-                shutil.copyfileobj(resp, tmp, length=1024 * 64)
+            last_exc = exc
 
-        shutil.move(tmp_path, tarball_path)
-    except (urllib.error.URLError, OSError):
-        if tmp_path is not None:
-            tmp_path.unlink(missing_ok=True)
-        raise
+            if attempt < _DOWNLOAD_MAX_RETRIES:
+                delay = _retry_delay(attempt)
+                log.warning(
+                    "Download of <%s> failed: %s; "
+                    "retrying in %.1fs (attempt %d/%d)",
+                    tarball_url,
+                    exc,
+                    delay,
+                    attempt + 1,
+                    _DOWNLOAD_MAX_RETRIES,
+                )
+                time.sleep(delay)
+                continue
+
+    die(
+        "Download of <%s> failed after %d attempt(s): %s",
+        tarball_url,
+        _DOWNLOAD_MAX_RETRIES + 1,
+        last_exc,
+    )
 
 
 def _ensure_tarball(
