@@ -1,5 +1,5 @@
 # Maintainer: Marek Samec
-pkgname=qt-msg-reader-git
+pkgname=qtmsgreader-git
 pkgver=1.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="A Qt-based application for reading Microsoft Outlook MSG files (git HEAD)"
