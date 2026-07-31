@@ -2,14 +2,15 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="trash/recycle bin utility for the command line"
 arch=('x86_64')
 url="https://theimpossibleastronaut.com/rmw-website/"
 license=('GPL-3.0-or-later')
 depends=(
-  'glibc'
+  'canfigger'
+  'glib2'
   'ncurses'
 )
 optdepends=('canfigger: use system-installed version')
@@ -19,10 +20,10 @@ makedepends=(
 )
 
 source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5fa336da39228d4ef6d1314fd86b5dfb0622e80485ebf7b78152198278090050')
+sha256sums=('8f96fd96831b69bffc8019cb000483ffe92a7764765484df57f63a6515d26fd9')
 
 build() {
-  arch-meson $pkgname-$pkgver build -Db_sanitize=none
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 
