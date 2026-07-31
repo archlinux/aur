@@ -1,11 +1,12 @@
 pkgbase = sing-box-ref1nd-beta-bin
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.14.0.beta.3.reF1nd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/reF1nd/sing-box
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
+	depends = glibc>=2.31
 	provides = sing-box
 	conflicts = sing-box
 	conflicts = sing-box-bin
@@ -29,9 +30,9 @@ pkgbase = sing-box-ref1nd-beta-bin
 	sha256sums = 0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b
 	sha256sums = ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f
 	sha256sums = 0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473
-	source_x86_64 = sing-box-1.14.0-beta.3-reF1nd-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-beta.3-reF1nd/sing-box-1.14.0-beta.3-reF1nd-linux-amd64-purego.tar.gz
-	sha256sums_x86_64 = d2ceaeccf53f0ca5a508eaefb8b9aede76f0c0332af309a91d56f79d66b0e5f4
-	source_aarch64 = sing-box-1.14.0-beta.3-reF1nd-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-beta.3-reF1nd/sing-box-1.14.0-beta.3-reF1nd-linux-arm64-purego.tar.gz
-	sha256sums_aarch64 = 2524d1e2ef9232859f33276b57ecd11deedd1cd51e3ce9d93b5104b9b1014033
+	source_x86_64 = sing-box-1.14.0-beta.3-reF1nd-linux-amd64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-beta.3-reF1nd/sing-box-1.14.0-beta.3-reF1nd-linux-amd64-glibc.tar.gz
+	sha256sums_x86_64 = a65dcc3eae7c1f83b40439e3023ecd1f49558a9fc3d64da7e44813146dc296be
+	source_aarch64 = sing-box-1.14.0-beta.3-reF1nd-linux-arm64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-beta.3-reF1nd/sing-box-1.14.0-beta.3-reF1nd-linux-arm64-glibc.tar.gz
+	sha256sums_aarch64 = 11eaa70df00e3141fb84ca4ebb62b6cff07eaffb1201b7446de10e9974f5f0e6
 
 pkgname = sing-box-ref1nd-beta-bin
