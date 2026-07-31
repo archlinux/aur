@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=godap-bin
 _pkgname="${pkgname%-bin}"
-pkgver=v2.10.6
+pkgver=v2.11.1
 pkgrel=1
 pkgdesc="A complete TUI for LDAP."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-linux-amd64.tar.gz")
-sha512sums=('ce7be7bc581489ad5b4ee32b919658cabfdb3eaa46777ef236f1660c696fbf97e48b55b58d95652c7b9d086fb7d0e0cb5854c82655ce16ce5fad212272b97da0')
+sha512sums=('2914f0222bd8c09c218852e4591505dc8e120f30ca1bfa7ee1a36c7282e7abea58b67ee024dddc5ea59be2a6cef16b1adc68892d7ad5236f0a3279e1cffb0c03')
 
 package() {
   install -Dm0755 $srcdir/$_pkgname "$pkgdir/usr/bin/$_pkgname"
