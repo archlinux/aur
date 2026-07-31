@@ -1,7 +1,7 @@
 # Maintainer: Yukari0201 130890393+Yukari0201@users.noreply.github.com
 
 pkgname=fcitx5-pinyin-mihoyo-yukari0201 # 由于已经存在了一个 fcitx5-pinyin-mihoyo，我不得不加一个后缀
-pkgver=20260724 # renovate: datasource=github-releases depName=Yukari0201/fcitx5-pinyin-mihoyo
+pkgver=20260731 # renovate: datasource=github-releases depName=Yukari0201/fcitx5-pinyin-mihoyo
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary for miHoYo Games from wiki.biligame.com"
 arch=('any')
@@ -14,9 +14,9 @@ source=(
     "${url}/releases/download/${pkgver}/zenlesszonezero.dict"
 )
 
-sha256sums=('41037c31482dcac0dbefc1408efd6e86767435c65157217c93ac21b4323a07f8'
+sha256sums=('8d827919ff4fd789d0c297ec06a5dfef10737d144f7cb618af669ceae4c20f35'
             '99150a9be7da6761095e4ba0fee2c8d34883b9fb6cc9e5c0cc1044b09e0529cf'
-            '441dbb4650b34d454e1940be80999b404f86fbf41631c571b04e20f118d32a4f'
+            '7355a57b170f3ce23025ecaacd88111d16c170a1421d0a7a64634e5689e6c27f'
             '99150a9be7da6761095e4ba0fee2c8d34883b9fb6cc9e5c0cc1044b09e0529cf')
 
 package() {
