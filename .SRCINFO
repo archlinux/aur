@@ -1,16 +1,16 @@
 pkgbase = tubenoisseur-bin
 	pkgdesc = YouTuber Reference Scraper.
-	pkgver = 1.0.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gbr-ufs.github.io/tubenoisseur/
 	license = GPL
 	conflicts = tubenoisseur
 	provides = tubenoisseur
 	arch = aarch64
-	source_aarch64 = https://github.com/gbr-ufs/tubenoisseur/releases/download/1.0.4/tubenoisseur_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 432b1f8acf94412da2f94482c38d917963c5e0e2910ea9fc2952ccd552b95bd7
+	source_aarch64 = https://github.com/gbr-ufs/tubenoisseur/releases/download/v1.0.0/tubenoisseur_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 805b69bb5bc61747405e0041cb40ab60ed1e6b3c906d6aa4a36a5cee56a7d851
 	arch = x86_64
-	source_x86_64 = https://github.com/gbr-ufs/tubenoisseur/releases/download/1.0.4/tubenoisseur_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5af36def0094facf4aaf1d3b42bc523a445869f33696f6b602d57679c1661cad
+	source_x86_64 = https://github.com/gbr-ufs/tubenoisseur/releases/download/v1.0.0/tubenoisseur_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5243135423e34776b0428fddd0d589323d979ab9f02ee6e737c7a4c9da8d655b
 	
 pkgname = tubenoisseur-bin
