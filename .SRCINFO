@@ -1,0 +1,21 @@
+pkgbase = python-envwrap
+	pkgdesc = Override parameter defaults via environment variables & config files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tqdm/envwrap
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-toml
+	depends = python-yaml
+	depends = python-platformdirs
+	source = python-envwrap::git+https://github.com/tqdm/envwrap#tag=v1.0.0
+	sha256sums = 307201ac437ceaa03a49ddc7afeec5d51628ca58ac1652f3c854ebf4ad0236a7
+
+pkgname = python-envwrap
