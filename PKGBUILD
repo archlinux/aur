@@ -4,8 +4,8 @@
 # Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
 # TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
 pkgname=hermes-agent
-pkgver=0.19.0
-_tagver=2026.7.20
+pkgver=0.19.1
+_tagver=2026.7.30
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -29,8 +29,9 @@ depends=(
 )
 
 makedepends=('python311' 'nodejs' 'npm' 'rsync')
-source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('285f3fc134ff466a90065e1517801a68993733b807158ee8f32aa01613786990')
+source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz" "nosdistguard.patch")
+sha256sums=('1932d0fca3f2c5288c909f26f03738712083b14749d6855482d24af41feea7e2'
+            'd4849e4997672e4f731770e622c03b1e5cb9ff899f3987df6dfee10346d8cf95')
 validpgpkeys=()
 install=hermes-agent.install
 
@@ -73,8 +74,17 @@ build() {
 
   echo "==> Creating Python venv and installing dependencies..."
   python3.11 -m venv --clear venv || return 1
+  echo "==> disabling distguard to be able to build wheel..."
+  patch -p1 < ../nosdistguard.patch
+  echo "==> Upgrading pip..."
+  venv/bin/pip install --upgrade pip
+  echo "==> Installing hermes-agent and its dependencies..."
   venv/bin/pip install .[all]
-  venv/bin/pip install .[messaging,edge-tts,firecrawl,exa,parallel-web]
+  echo "==> Installing extra dependencies that cannot be lazily installed later..."
+  echo "You may add more dependencies by uncommenting them in PKGBUILD"
+  #venv/bin/pip install .[anthropic,exa,firecrawl,parallel-web,fal,edge-tts,modal,daytona,vercel,hindsight,dev,messaging,cron,slack,matrix,wecom,cli,tts-premium,voice,wake,honcho,supermemory,mem0,vision,pty,mcp,nemo-relay,homeassistant,sms,teams,computer-use,acp,mistral,otlp,bedrock,vertex,azure-identity,termux,termux-all,dingtalk,feishu,google,youtube,web]
+  venv/bin/pip install .[anthropic,messaging]
+
 }
 
 package() {

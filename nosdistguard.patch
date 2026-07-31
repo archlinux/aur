@@ -1,0 +1,22 @@
+diff --git a/setup.py b/setup.py
+index fac7fe8..1be079d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -46,8 +46,6 @@ _BLOCK_MESSAGE = (
+ 
+ class _GuardedSdist(sdist):
+     def run(self, *args, **kwargs):
+-        if not _IN_NIX_BUILD:
+-            raise RuntimeError(_BLOCK_MESSAGE)
+         return super().run(*args, **kwargs)
+ 
+ 
+@@ -63,8 +61,6 @@ try:
+ 
+     class _GuardedBdistWheel(bdist_wheel):
+         def run(self, *args, **kwargs):
+-            if not _IN_NIX_BUILD:
+-                raise RuntimeError(_BLOCK_MESSAGE)
+             return super().run(*args, **kwargs)
+ 
+     cmdclass["bdist_wheel"] = _GuardedBdistWheel
