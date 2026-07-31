@@ -7,7 +7,7 @@
 pkgname=qgpgme1-qt5
 _pkgbase=gpgme
 pkgver=1.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://gnupg.org/software/gpgme/index.html'
@@ -48,9 +48,24 @@ build() {
 }
 
 package() {
-  cd ${_pkgbase}-${pkgver}/lang/qt
+  cd ${_pkgbase}-${pkgver}
 
+  # lang/qt's install-time libtool relink of libqgpgme.so needs -lgpgmepp
+  # resolvable under $pkgdir/usr/lib. gpgme-1 (a depends= here) ships the
+  # runtime libgpgmepp.so.6 but deliberately no unversioned dev symlink
+  # (it's a headers-elsewhere runtime-only package), so install lang/cpp
+  # into $pkgdir first just to satisfy that relink, then strip it back out
+  # below -- gpgme-1 already provides the actual runtime library.
+  make -C lang/cpp DESTDIR="${pkgdir}" install
+
+  cd lang/qt
   make DESTDIR="${pkgdir}" install
+  cd ..
+
+  rm -rf "${pkgdir}"/usr/include/gpgme++ \
+         "${pkgdir}"/usr/lib/libgpgmepp* \
+         "${pkgdir}"/usr/lib/cmake/Gpgmepp \
+         "${pkgdir}"/usr/lib/pkgconfig/gpgmepp.pc
 
   mv "${pkgdir}"/usr/lib/cmake/QGpgme "${pkgdir}"/usr/lib/cmake/QGpgmeQt5
   mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfig.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
