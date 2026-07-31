@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction
 
 pkgname=lmm-api-git
-pkgver=0.0.0.r3.gc9bb472
+pkgver=0.0.0.r4.ga51650a
 pkgrel=1
 pkgdesc='LMM API model management and distribution system (git version)'
 arch=('x86_64')
