@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=150.0.7871.186
+pkgver=151.0.7922.71
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -66,6 +66,7 @@ makedepends=(
   'compiler-rt'
   'git'
   'gn'
+  'go'
   'gperf'
   'java-runtime-headless'
   'lld'
@@ -95,9 +96,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-149-drop-unknown-clang-flag.patch
         chromium-149-use-of-undeclared-identifier-ERROR.patch
         chromium-149-unbundle-minizip-undo-unicode.patch
-        chromium-150-fix-ar-unbundle.patch
-        chromium-150-fix-sysroot-path-error.patch
         chromium-150-revert-avx-flag-change.patch
+        chromium-151-dont-depends-on-histograms.xml-if-it-is-not-git-checkout.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         enable-widevine-arm64.patch
@@ -105,19 +105,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('4ff4b64971c8097631a4f17d2f7fb050e8ede62b1b3c0f1ef0a1fffcac11bbb7'
-            'f40444c3f7ecf63ed5bfe01944e23ebe9d0d6246ce99f5d2adad0728dc35164f'
+sha256sums=('185373684896f308c8585ac7772f5ec0eb0f49250d901531224f51fc92b6fc77'
+            '3b68b04a950b8c085d8ccf27ae654d667666eb9a714e4e3fb46cad9f74866a1f'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
-            '5ade4cdba7afebfcc09fa969f15bf27404579beac5b7bafb59a0214d407e4ad2'
+            'e25cf8fb60f5958127053c515b8decc2b45acceebf9a57654066d093df11f8e9'
             '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
             'c22338d13f12772cdbcb5cfc1ace94438b9f9c72353cdb165a3ff3ef3d677c78'
-            'f056d12571823d06c2a938158734fb4c7eeccb5c6f68228634d0c73d75feaa78'
-            '5c42260b11b87dd01c4ef11598033e9687bdf384af2e45adab2fd00964e977e8'
             '5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60'
+            '552ddcef0cf139927f54c9c728c68b0e385600107e5166449b29de75e5dfcd7f'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '3af12626f563a4b9559102f4fc3cdf34116130402dd20807e08a489f92d5f80c'
@@ -234,17 +233,11 @@ prepare() {
 
   patch -Np1 -i ../chromium-149-unbundle-minizip-undo-unicode.patch
 
-  # Fix issue about missing AR file
-  # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
-  patch -Np1 -i ../chromium-150-fix-ar-unbundle.patch
-
-  # Fix issue about missing sysroot path
-  # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837#issuecomment-4836756738
-  patch -Np1 -i ../chromium-150-fix-sysroot-path-error.patch
-
   # Fix issue about missing AVX functions
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i ../chromium-150-revert-avx-flag-change.patch
+
+  patch -Np1 -i ../chromium-151-dont-depends-on-histograms.xml-if-it-is-not-git-checkout.patch
 
   # Custom Patches
 
@@ -283,13 +276,15 @@ prepare() {
   mkdir -p third_party/node/linux/node-linux-x64/bin \
            third_party/rust-toolchain/bin \
            third_party/jdk/current/bin \
-           third_party/gperf/cipd/bin
+           third_party/gperf/cipd/bin \
+           third_party/dawn/tools/golang/linux-amd64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   if (( ! _manual_colne )); then
     ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
   fi
   ln -s /usr/bin/java third_party/jdk/current/bin/
   ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
+  ln -s /usr/bin/go third_party/dawn/tools/golang/linux-amd64/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
