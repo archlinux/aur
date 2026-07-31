@@ -1,9 +1,9 @@
 # Maintainer: Daniel Grasso
 
 pkgname=wayland-scroll-factor
-pkgver=0.3.5
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)'
+pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME)'
 arch=('x86_64')
 url='https://github.com/daniel-g-carrasco/wayland-scroll-factor'
 license=('MIT')
@@ -12,11 +12,12 @@ depends=('gtk4' 'libadwaita' 'python' 'python-gobject')
 makedepends=('meson' 'ninja' 'pkgconf' 'gcc')
 optdepends=(
   'libinput-tools: for wsf doctor diagnostics'
-  'hyprland: for Hyprland native scroll and gesture support'
 )
 install=wayland-scroll-factor.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daniel-g-carrasco/wayland-scroll-factor/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('59d49cf6e1ebbb5434db0c8f629e50830d33d09a6e6280458b9187f722f7f983')
+# TODO(release): replace with the real sha256 of the v1.0.0 tarball once the
+# tag exists (run updpkgsums), then regenerate .SRCINFO with makepkg.
+sha256sums=('ded61c7351491aac92f9ecc55e7fb5b397ef6325942d1a66856faf7ac6fa1e4e')
 
 build() {
   cd "$pkgname-$pkgver"
