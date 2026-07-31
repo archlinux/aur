@@ -36,7 +36,7 @@ build() {
 package_libm2k() {
   pkgdesc='C++ library for interfacing with the ADALM2000 (M2k)'
   depends=('libiio' 'glibc')
-  provides=('libm2k')
+  provides=('libm2k=0.9.0')
   conflicts=('libm2k' 'libm2k-git')
 
   DESTDIR="${pkgdir}" cmake --install build
@@ -45,7 +45,7 @@ package_libm2k() {
 }
 
 package_m2k-cli() {
-  depends=('libm2k' 'glibc')
+  depends=('libm2k=0.9.0' 'glibc')
   optdepends=('socat: USB to serial UART adapter script (m2k_tty.sh)')
 
   install -Dm755 "build/tools/m2kcli/m2kcli" "${pkgdir}/usr/bin/m2kcli"

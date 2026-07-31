@@ -15,11 +15,11 @@ pkgname = libm2k
 	pkgdesc = C++ library for interfacing with the ADALM2000 (M2k)
 	depends = libiio
 	depends = glibc
-	provides = libm2k
+	provides = libm2k=0.9.0
 	conflicts = libm2k
 	conflicts = libm2k-git
 
 pkgname = m2k-cli
-	depends = libm2k
+	depends = libm2k=0.9.0
 	depends = glibc
 	optdepends = socat: USB to serial UART adapter script (m2k_tty.sh)
