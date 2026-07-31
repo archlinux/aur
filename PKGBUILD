@@ -1,7 +1,7 @@
 # Maintainer: Yukari0201 130890393+Yukari0201@users.noreply.github.com
 
 pkgname=rime-pinyin-mihoyo-yukari0201 # 由于已经存在了一个 fcitx5-pinyin-mihoyo，我不得不加一个后缀
-pkgver=20260724 # renovate: datasource=github-tags depName=Yukari0201/fcitx5-pinyin-mihoyo
+pkgver=20260731 # renovate: datasource=github-tags depName=Yukari0201/fcitx5-pinyin-mihoyo
 pkgrel=1
 pkgdesc="Rime Pinyin (inclue wanxiang pinyin) Dictionary for miHoYo Games from wiki.biligame.com"
 arch=('any')
@@ -18,14 +18,14 @@ source=(
     "${url}/releases/download/${pkgver}/wanxiang_zenlesszonezero.dict.yaml"
 )
 
-sha256sums=('3c6529b77fa728c5dcf057c16aba5f4696dd1e69ef79bebb7788973eb934c8b1'
-            '87a2394acb4efb13b2f1cbab5062fcb771620f6fb6e6efaeff253368737071e5'
-            '1f2b9d177e9ad258a5323fbfb4864e8ee07d2dd923e48fe83771b5e199a366ed'
-            'f22859dd02cd4c8448133a487444cfea9da9271f0b54e203cb163520d751a091'
-            'bc065fdce6661b94e5b3c2400f12e87557e25442fff24028a08f9893a20bd649'
-            'd97e57f57fe5eeecb3ad854f5cdb8a35399a0f4a5c67d0596c7a68a9ca5295e9'
-            '7b0847f6f112fdddfb6315489cdd894c913e475404b4fdcb8251849cea6dd71b'
-            'f18c61819b1451e8f27d7c532668f6259ed716fdc20a6126652612d0d5112668')
+sha256sums=('f040393267cd33475ccad02287a102ff59b222d29fea74dc11bd1cd0447361be'
+            'e839f7e18fdb1cbde87cbccf2c02c25ee1295d3f52e55b7ab45387ec0dbf2eb7'
+            '44f641133d08d73877522024fd95da4773cc7127fd9dc0b2f3c5f33f87f63124'
+            '6ab28639d72052b03dc1d92744525013b0a765d4af9c8300e139d7a5fa82349b'
+            'a7117b4fd3f12fb979bb8a7cc7337439b3397e1c312257df411b0d128daf8cfb'
+            'd86dfbaf34ebe766691364a2afc19432b9881cdd34ba072a3d1fc84b44b5eca9'
+            '9992413485e3a36eb3cc54da8b586f438d426972933a657901b657b31a28205b'
+            '7663ea08364e6b57f20524f14fc213ec5eeea21a682a7011b30d2554d1bfa067')
 
 package() {
     # Rime
