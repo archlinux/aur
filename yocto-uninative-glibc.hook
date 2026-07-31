@@ -1,0 +1,22 @@
+# Warn when a glibc upgrade moves the host past this tarball's glibc.
+#
+# Triggers on glibc rather than on this package, because the event that
+# invalidates the tarball is the other package changing. Upgrade only -
+# an Install means glibc was not there before, which cannot happen on a
+# running system in a way this check would help with.
+#
+# PostTransaction, so the version read from libc.so.6 is the one that just
+# landed. That means the warning arrives after the upgrade rather than
+# blocking it, which is deliberate: the consequence is a disabled uninative
+# on the next build, not a broken system, and blocking a routine `pacman -Syu`
+# over it would be out of proportion.
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = glibc
+
+[Action]
+Description = Checking yocto-uninative-tarball against the new glibc...
+When = PostTransaction
+Exec = /usr/share/yocto-uninative/glibc-upgrade-check
