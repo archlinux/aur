@@ -3,7 +3,7 @@
 # Prebuilt-binary package, repackaging the GitHub release artifacts.
 # After each release: bump pkgver, reset pkgrel, run `updpkgsums`.
 pkgname=sqlnow-bin
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Local SQL viewer for files and databases, with pre-defined queries for LLM-agent workflows"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('sqlnow')
 conflicts=('sqlnow')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/sqlnow-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/sqlnow-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1333356dcdf814199848183685d15cb107ed5a6e9bd9570cc34ce0bf773b029e')
-sha256sums_aarch64=('2f4a5beec1a126cf82fcd17bfaf7e1d1403c51b458121f1792254290076ff4e4')
+sha256sums_x86_64=('f228746bd0b826b1186ce464ef9f994d3ffe95e113765c31126c8de25963369d')
+sha256sums_aarch64=('1d41125b8cbe3ef2ad5c3e0b4d91ef340da5569152591d706573be4d5f3ab035')
 
 package() {
     install -Dm755 sqlnow "$pkgdir/usr/bin/sqlnow"
