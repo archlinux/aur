@@ -1,0 +1,14 @@
+pkgbase = awl-git
+	pkgdesc = a from source package manager
+	pkgver = r34.6fc74ae
+	pkgrel = 1
+	url = https://codeberg.org/nzuum/awl
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = awl
+	conflicts = awl
+	source = git+https://codeberg.org/nzuum/awl.git
+	sha512sums = SKIP
+
+pkgname = awl-git
