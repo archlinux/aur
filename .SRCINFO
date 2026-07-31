@@ -6,6 +6,7 @@ pkgbase = tascam-control-panel-git
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
+	makedepends = cmake
 	depends = qt6-base
 	depends = alsa-lib
 	optdepends = us144mkii: us144mkii ALSA driver (it is merged on Linux 6.18)
