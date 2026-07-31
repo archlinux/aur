@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=val
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='an arbitrary precision calculator language'
 url="https://github.com/terror/$pkgname"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(glibc # libc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('38df3498c3103b3236999dc6fbc5a24295b5abd927950d074ffa7640a652a816')
+sha256sums=('35bf83f2b9095a12959a1b18aee2712a73bcd0079ba9592cd144b18d4ec38262')
 
 _srcenv() {
 	cd "$_archive"
