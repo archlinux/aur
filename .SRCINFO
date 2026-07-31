@@ -1,0 +1,15 @@
+pkgbase = xcpc-git
+	pkgdesc = An Amstrad CPC emulator, git version
+	pkgver = r596.9368d33
+	pkgrel = 1
+	url = http://www.xcpc-emulator.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	source = git+https://bitbucket.org/ponceto/xcpc.git
+	source = fix-scale.patch
+	sha256sums = SKIP
+	sha256sums = 4213da57166360c206c855f4a24e8fe0c949c86b85bb969b9c8e3f484cd9f1dd
+
+pkgname = xcpc-git

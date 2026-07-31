@@ -1,0 +1,33 @@
+diff --git a/src/gtk3ui/gtkemulatorogl.c b/src/gtk3ui/gtkemulatorogl.c
+index 7bd980a..c53e460 100644
+--- a/src/gtk3ui/gtkemulatorogl.c
++++ b/src/gtk3ui/gtkemulatorogl.c
+@@ -186,6 +186,28 @@ static gboolean impl_gl_area_render(GtkGLArea* area, GdkGLContext* context)
+ 
+ static void impl_gl_area_resize(GtkGLArea* area, gint width, gint height)
+ {
++    GtkEmulatorOGL* self   = GTK_EMULATOR_OGL(area);
++    GtkWidget*      widget = GTK_WIDGET(area);
++    XEvent          x11_event;
++
++    /* forge configure event */ {
++        x11_event.xconfigure.type              = ConfigureNotify;
++        x11_event.xconfigure.serial            = 0UL;
++        x11_event.xconfigure.send_event        = True;
++        x11_event.xconfigure.display           = self->video.display;
++        x11_event.xconfigure.event             = self->video.window;
++        x11_event.xconfigure.window            = self->video.window;
++        x11_event.xconfigure.x                 = 0;
++        x11_event.xconfigure.y                 = 0;
++        x11_event.xconfigure.width             = width;
++        x11_event.xconfigure.height            = height;
++        x11_event.xconfigure.border_width      = 0;
++        x11_event.xconfigure.above             = None;
++        x11_event.xconfigure.override_redirect = False;
++    }
++    /* dispatch event */ {
++        (void) gem_events_x11_dispatch(widget, &self->events, gem_events_x11_copy_or_fill(widget, &self->events, &x11_event));
++    }
+ }
+ 
+ static void impl_widget_get_preferred_width(GtkWidget* widget, gint* minimum_width, gint* natural_width)
