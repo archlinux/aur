@@ -2,7 +2,7 @@
 # Created with assistance from Claude Sonnet 4.6.
 
 pkgname=whitelist-bypass-creator-bin
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="WhitelistBypass Creator — bypass platform restrictions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 depends=('fuse2')
 makedepends=('squashfs-tools')
 source=("WhitelistBypass.Creator-${pkgver}-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v${pkgver}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage")
-sha256sums=('3f6936050b049f3cfe552d14d86e01a3e7dc4ae215b120cb690ef107a59ba343')
+sha256sums=('5d76e7e326cb34668c56fdd768697e4f2e4d89ae8ce2c0dee6acee1eda23ed84')
 
 prepare() {
     cp -L "${srcdir}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage" "${srcdir}/real-appimage"
