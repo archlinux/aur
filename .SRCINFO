@@ -1,0 +1,19 @@
+pkgbase = zigit
+	pkgdesc = Fast screenshots, clipboard handoff, and annotation for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/visorcraft/ZigIt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = libxkbcommon
+	makedepends = mesa
+	makedepends = zig0.13
+	depends = glfw
+	depends = libglvnd
+	depends = wayland
+	depends = wl-clipboard
+	source = zigit-0.1.0.tar.gz::https://github.com/visorcraft/ZigIt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e842f2d904f6cf8966d79bee89eb030a43f277c9286c2cae4af43434246ed460
+
+pkgname = zigit
