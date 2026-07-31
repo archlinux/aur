@@ -1,0 +1,25 @@
+pkgbase = python-dracopython
+	pkgdesc = Python wrapper for Google's Draco 3D mesh compression library
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/seung-lab/DracoPy
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = python-scikit-build
+	makedepends = cython
+	makedepends = python-scikit-build-core
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	options = !strip
+	source = git+https://github.com/seung-lab/DracoPy.git#tag=2.0.0
+	source = draco::git+https://github.com/google/draco.git#commit=7d2af85eb76906b0b485a0644675e4827e4571f5
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-dracopython
