@@ -1,26 +1,18 @@
 # Maintainer: Branko Simic <branko@simic.ltd>
 #
-# ═══════════════════════════════════════════════════════════════
-# chest-backup — AUR package
-# ═══════════════════════════════════════════════════════════════
+# Publishing:
+#   1. git tag -s v$pkgver -m "v$pkgver" && git push origin v$pkgver
+#   2. makepkg --printsrcinfo > .SRCINFO
+#   3. Commit PKGBUILD + .SRCINFO to the AUR repo
 #
-# Before publishing to AUR:
-#   1. Create a signed tag:  git tag -s v0.1.6 -m "v0.1.6"
-#   2. Push the tag:         git push origin v0.1.6
-#   3. Generate .SRCINFO:    makepkg --printsrcinfo > .SRCINFO
-#   4. Submit to AUR via     git clone aur@aur.archlinux.org:chest-backup.git
-#      the AUR repo (not
-#      this source repo)
-#
-# For local testing without a tag, replace source() with:
+# Local testing without a tag:
 #   source=("$pkgname::git+https://github.com/brankosimic/chest-backup.git")
 #   sha256sums=('SKIP')
-# and the build()/package() functions use $srcdir/$pkgname.
 
 pkgname=chest-backup
 pkgver=0.1.6
-pkgrel=1
-pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
+pkgrel=2
+pkgdesc="Full-stack backup manager with web UI, system tray and scheduling"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brankosimic/chest-backup"
 license=('MIT')
@@ -32,7 +24,6 @@ makedepends=(
   'nodejs'
   'pnpm'
   'python'
-  'git'
 )
 optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
@@ -42,98 +33,55 @@ backup=(
   'etc/chest-backup/.env'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c558f67be02f358b3eaaf23c89c7ca7a19659b530c7c4e436175dddbe9663645')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # pnpm 11 blocks dependency build scripts by default.
-  # Install first without scripts, then rebuild only the native addons.
+  # pnpm 11 blocks dependency build scripts by default, so install
+  # without scripts, then compile only the native addons we need.
   pnpm install --frozen-lockfile --ignore-scripts
   pnpm rebuild cpu-features esbuild ssh2
-
-  # ── Build all apps (API, Tray, Web frontend) ────────────────
   pnpm build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+  local app="$pkgdir/usr/share/$pkgname"
 
-  # ── Application bundles ─────────────────────────────────────
-  # The bun build bundles all JS dependencies inline.
-  # Only native addons (cpu-features for ssh2) remain external.
+  install -Dm644 packages/api/dist/index.js "$app/packages/api/dist/index.js"
+  install -Dm644 packages/tray/dist/index.js "$app/packages/tray/dist/index.js"
+  install -Dm644 packages/tray/dist/icon_*.png "$app/packages/tray/dist/"
 
-  install -d "$pkgdir/usr/share/$pkgname/packages/api/dist"
-  cp packages/api/dist/index.js "$pkgdir/usr/share/$pkgname/packages/api/dist/"
+  # Parent dir must exist first, otherwise cp renames dist/ to
+  # packages/web/ and the API can't find the UI.
+  install -d "$app/packages/web"
+  cp -r packages/web/dist "$app/packages/web/"
 
-  install -d "$pkgdir/usr/share/$pkgname/packages/tray/dist"
-  cp packages/tray/dist/index.js "$pkgdir/usr/share/$pkgname/packages/tray/dist/"
-  cp packages/tray/dist/icon_*.png "$pkgdir/usr/share/$pkgname/packages/tray/dist/"
-
-  # The destination dir must exist first, otherwise GNU cp renames dist/
-  # to packages/web/ and the UI lands one level too high (no dist/ subdir).
-  install -d "$pkgdir/usr/share/$pkgname/packages/web"
-  cp -r packages/web/dist "$pkgdir/usr/share/$pkgname/packages/web/"
-
-  # bun bakes absolute build paths into bundled libs (pino/ssh2 __dirname
-  # constants). They're only dead fallbacks at runtime, but makepkg warns
-  # about $srcdir references — rewrite them to the install location.
+  # Rewrite bun's baked-in $srcdir paths (dead fallbacks in pino/ssh2)
+  # to the install location so makepkg doesn't warn about them.
   sed -i "s|$srcdir/$pkgname-$pkgver|/usr/share/$pkgname|g" \
-    "$pkgdir/usr/share/$pkgname/packages/api/dist/index.js" \
-    "$pkgdir/usr/share/$pkgname/packages/tray/dist/index.js"
+    "$app/packages/api/dist/index.js" \
+    "$app/packages/tray/dist/index.js"
 
-  # ── Native addon (cpu-features ─ required by ssh2) ──────────
-  # External dependencies not bundled by bun ship as-is; @trayjs/* is
-  # handled in the block below.
-  # pnpm install above already compiled the .node binary.
-  CPU_FEATURES="node_modules/.pnpm/cpu-features@*/node_modules/cpu-features"
-  # shellcheck disable=SC2086
-  if ls $CPU_FEATURES/package.json >/dev/null 2>&1; then
-    install -d "$pkgdir/usr/share/$pkgname/node_modules/cpu-features"
-    # shellcheck disable=SC2086
-    cp -r $CPU_FEATURES/* "$pkgdir/usr/share/$pkgname/node_modules/cpu-features/"
-  fi
+  # Copy pnpm's virtual-store addons (cpu-features, @trayjs) into a
+  # flat node_modules so runtime requires resolve. Unmatched globs
+  # are skipped by the [ -e ] guard.
+  for src in \
+    node_modules/.pnpm/cpu-features@*/node_modules/cpu-features \
+    node_modules/.pnpm/@trayjs+*/node_modules/@trayjs/*; do
+    [ -e "$src" ] || continue
+    rel="${src#node_modules/.pnpm/*/node_modules/}"
+    install -d "$app/node_modules/$(dirname "$rel")"
+    cp -r "$src" "$app/node_modules/$rel"
+  done
 
-  # ── System tray native code (@trayjs) ────────────────────────
-  # The tray bundle imports @trayjs at runtime instead of bundling it
-  # (a compiled binary can't be inlined into JS), so the wrapper and
-  # the platform binary must exist in node_modules after install.
-  # pnpm only installed the binary for this CPU (x64 or arm64);
-  # copy whatever is present.
-  TRAYJS="node_modules/.pnpm/@trayjs+*/node_modules/@trayjs"
-  # shellcheck disable=SC2086
-  if ls $TRAYJS/*/package.json >/dev/null 2>&1; then
-    install -d "$pkgdir/usr/share/$pkgname/node_modules/@trayjs"
-    # shellcheck disable=SC2086
-    for dir in $TRAYJS/*; do
-      [ -e "$dir" ] || continue
-      name=$(basename "$dir")
-      [ -e "$pkgdir/usr/share/$pkgname/node_modules/@trayjs/$name" ] && continue
-      cp -r "$dir" "$pkgdir/usr/share/$pkgname/node_modules/@trayjs/"
-    done
-  fi
-
-  # ── Default configuration (editable, preserved on upgrade) ──
-  # The JSON ships with empty arrays — the app won't crash, and
-  # users add sources/destinations via the web UI.
-  # Both files are in backup=() so pacman creates .pacnew on
-  # upgrade instead of overwriting user edits.
-  install -d "$pkgdir/etc/$pkgname"
-  cp chest-backup.default.json "$pkgdir/etc/$pkgname/chest-backup.json"
-  cp .env.default "$pkgdir/etc/$pkgname/.env"
-
-  # ── Reference copies for users who want fresh examples ──────
-  cp chest-backup.json.example "$pkgdir/usr/share/$pkgname/"
-  cp .env.example "$pkgdir/usr/share/$pkgname/"
-
-  # ── Launch script (entry point) ─────────────────────────────
+  install -Dm644 chest-backup.default.json "$pkgdir/etc/$pkgname/chest-backup.json"
+  install -Dm644 .env.default "$pkgdir/etc/$pkgname/.env"
+  install -Dm644 chest-backup.json.example "$app/chest-backup.json.example"
+  install -Dm644 .env.example "$app/.env.example"
   install -Dm755 bin/chest-backup "$pkgdir/usr/bin/chest-backup"
-
-  # ── Systemd user service ────────────────────────────────────
-  install -Dm644 chest-backup.service \
-    "$pkgdir/usr/lib/systemd/user/chest-backup.service"
-
-  # ── License ─────────────────────────────────────────────────
+  install -Dm644 chest-backup.service "$pkgdir/usr/lib/systemd/user/chest-backup.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -152,19 +100,19 @@ post_install() {
       started=false
     fi
 
-    # Boot-time start without login so scheduled backups always run.
+    # Start at boot without login so scheduled backups always run.
     loginctl enable-linger "$SUDO_USER" 2>/dev/null || true
 
     echo
     if [ "$started" = true ]; then
-      echo "  █ chest-backup installed and running."
+      echo "  chest-backup installed and running."
     else
-      echo "  █ chest-backup installed. Start it with:"
+      echo "  chest-backup installed. Start it with:"
       echo "      systemctl --user start chest-backup"
     fi
   else
     echo
-    echo "  █ chest-backup installed. Start it with:"
+    echo "  chest-backup installed. Start it with:"
     echo "      systemctl --user enable --now chest-backup"
   fi
   echo
