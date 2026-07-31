@@ -2,7 +2,7 @@
 pkgname=beammp
 pkgver=2.8.0
 pkgrel=1
-pkgdesc="since other packages are outdated"
+pkgdesc="Since the other packages i tried didnt want to work"
 arch=('x86_64')
 url="https://github.com/BeamMP/BeamMP-Launcher"
 license=('AGPL-3.0-or-later')
