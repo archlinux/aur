@@ -1,7 +1,7 @@
 # Maintainer: Gowtham2003 <gowtham2003g@gmail.com>
 # Contributor: Gowtham2003 <gowtham2003g@gmail.com>
 pkgname=hoppscotch-bin
-pkgver=26.5.0
+pkgver=26.7.0
 pkgrel=0
 pkgdesc="Hoppscotch. Open source API development ecosystem"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/hoppscotch/releases/releases/download/v${pkgver}-${pkgrel}/Hoppscotch_linux_x64.deb")
-sha512sums_x86_64=('8420918833f2194c5f5834212a9e628990ed17b51b77e0e8d264df4fa72a1a6a1ab7dbe8ff4f2a4c1c09845333a2942eeb5d441a80889b6ef635bba441a7868e')
+sha512sums_x86_64=('833a31b91d2eb8007e1cb5a68f24d7b4c9cba68bb44399d4c680224a3b0f0a456e390a97662863e800efeb802979e5e32daaaf13b4fdc74b39cf79ef58d7cc10')
 
 package(){
 
