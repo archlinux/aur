@@ -1,0 +1,16 @@
+pkgbase = create-awesome-vlang-app-bin
+	pkgdesc = V-native scaffolding CLI for the V programming language (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Create-Vlang-App/create-vlang-app
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = create-vlang-app
+	provides = create-awesome-vlang-app
+	conflicts = create-awesome-vlang-app
+	conflicts = create-vlang-app
+	source = create-vlang-app-linux-x86_64::https://github.com/Create-Vlang-App/create-vlang-app/releases/download/create-vlang-app@0.1.0/create-vlang-app-linux-x86_64
+	sha256sums = 63fe872f041c5b8c045b0c913c002fe188069ebc33c59edc66c27c47d24d550f
+
+pkgname = create-awesome-vlang-app-bin
