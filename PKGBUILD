@@ -1,35 +1,30 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
-# Contributor: Xyne <xyne at archlinux dot org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
-pkgname=bindfs
-pkgver=1.18.4
+pkgname=hfsfuse
+pkgver=0.425
 pkgrel=1
-pkgdesc="A FUSE filesystem for mirroring a directory to another directory, similar to 'mount --bind', with permission settings."
-arch=('i686' 'x86_64' 'armv6h' 'armv6l' 'armv7h')
-url="http://bindfs.org/"
-license=('GPL-2.0')
-depends=('glibc' 'fuse3')
-source=("http://bindfs.org/downloads/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('1fedfcd082980180ccdd684478cc5308f4ea3fa541af12b5aef0b75fb0ec5b285009c4b783fc3cd5550505a83baf015e243f88eb322540d0f82e1952babc799a')
+pkgdesc="A FUSE filesystem for HFS+ filesystems"
+arch=('x86_64')
+url="https://github.com/0x09/hfsfuse"
+license=('MIT' 'BSD')
+depends=('fuse3' 'libarchive' 'libutf8proc' 'zlib')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0x09/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('0a2955fc529dadc2e5a27b6a115897f967631e2c7ee4e3df57179552aafb3dd8ca0ce920aef79598076b179c7511f789100e3c1759f285f4b394d39daeab1662')
 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./autogen.sh
-
-  ./configure --prefix=/usr
-
-  make CPUOPTIMIZATIONS="${CFLAGS}"
+  make WITH_UTF8PROC=local WITH_ZLIB=local
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" prefix=/usr install
 
-  ln -s bindfs "$pkgdir/usr/bin/mount.bindfs"
-  ln -s bindfs "$pkgdir/usr/bin/mount.fuse.bindfs"
+  ln -s hfsfuse "$pkgdir/usr/bin/mount.hfsplus"
+  ln -s hfsfuse "$pkgdir/usr/bin/mount.fuse.hfsplus"
 
   install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
