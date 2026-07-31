@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=forager
+GenericName=Game Launcher
+Comment=Steam-like game launcher for your local game library
+Exec=forager
+Icon=forager
+Terminal=false
+Categories=Game;Qt;
+StartupNotify=true

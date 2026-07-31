@@ -15,6 +15,8 @@ pkgbase = forager
 	depends = python-keyring
 	depends = python-pillow
 	source = forager-v0.1.0.tar.gz::https://github.com/foxinwinter/forager/archive/v0.1.0.tar.gz
+	source = forager.desktop
 	sha256sums = 2bfaffba0dd5a6eb34380f59190da857d0d9afdc3ec004a9284859be23fd29fe
+	sha256sums = f5b25b350334dd490da17325c2408bc51fffae28423ec20b4e60d44a965eddf5
 
 pkgname = forager
