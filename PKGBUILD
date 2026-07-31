@@ -14,8 +14,8 @@ source_x86_64=("https://github.com/Xuepoo/topoglyph/releases/download/v$pkgver/t
 source_aarch64=("https://github.com/Xuepoo/topoglyph/releases/download/v$pkgver/topoglyph-linux-aarch64")
 
 sha256sums=('b611f7feb097dac1235bc2901046f36ff85e753b075b741412b6a0447ab20390')
-sha256sums_x86_64=('1a64269232926c012e4cd13bcfb9ccb747b880c11273058e950fb2902d2f3c4e')
-sha256sums_aarch64=('4f52f69c73b398c6e9bbc89ebdbf1f0bc8829012e8ff447b310edf684a621444')
+sha256sums_x86_64=('4149acbfefaf35b060fd2a164bfcf7b89a477073fc18f052a38c8d4fa487b6ea')
+sha256sums_aarch64=('3919025d3196ea9920f78004c0ff627d8d885f173861dbb9aca20c4f66f123e6')
 
 package() {
   install -Dm755 "$srcdir/topoglyph-linux-$CARCH" "$pkgdir/usr/bin/topoglyph"
