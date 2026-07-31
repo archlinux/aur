@@ -1,4 +1,8 @@
-flags: {}
+flags:
+  process:
+    os-string: true
+  unix:
+    os-string: true
 extra-package-dbs: []
 packages:
   - .
@@ -12,6 +16,7 @@ extra-deps:
   - filepath-1.5.5.0
   - language-docker-16.0.0
   - optparse-applicative-0.19.0.0
+  - os-string-2.0.4
   - process-1.6.30.0
   - spdx-1.1
   - time-1.14
