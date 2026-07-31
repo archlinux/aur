@@ -1,0 +1,37 @@
+pkgbase = doors-git
+	pkgdesc = Wayland compositor inspired by bspwm
+	pkgver = 0
+	pkgrel = 1
+	url = https://dawn.wine/CreeperFace/doors
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = perl
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = libevdev.so
+	depends = libinput
+	depends = libpixman-1.so
+	depends = libsystemd.so
+	depends = libudev.so
+	depends = libwayland-server.so
+	depends = libxcb
+	depends = libxkbcommon.so
+	depends = linux-api-headers
+	depends = pango
+	depends = shaderc
+	depends = vulkan-headers
+	depends = wlroots-git
+	depends = xcb-util-wm
+	depends = xorg-xwayland
+	provides = wayland-compositor
+	source = git+https://dawn.wine/CreeperFace/doors.git#branch=master
+	source = doors-portals.conf
+	source = doors-session.target
+	sha512sums = SKIP
+	sha512sums = ac8d23f5ace35b77c55e00e26976e8981f53e31b10ff1df717bc26acba3567e79d4b477bc8b60d0f83e0ca8d18ab4f42840a8e7734f447cdf525460510bc1063
+	sha512sums = 9bbd5bea647f983884ff92871b17a5cab68e6d46c0d465d859e49be61f6e31c171bb2916665c1b1dcd61988edc76f7b41a051ec35ac3d13aa45c393a0fe746ac
+
+pkgname = doors-git
