@@ -1,0 +1,15 @@
+pkgbase = spotlyric
+	pkgdesc = Real-time synced karaoke lyrics for Spotify over MPRIS/DBus
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hwrhero13gmailcom/spotlyric
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-dbus
+	depends = python-requests
+	depends = yt-dlp
+	source = spotlyric-1.0.0.tar.gz::https://github.com/Hwrhero13gmailcom/spotlyric/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = spotlyric
