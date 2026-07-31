@@ -32,5 +32,18 @@ package() {
   # Копируем необходимые файлы в каталог пакета
   echo "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
+
+  # .desktop-файл ссылается на Icon=chromium-gost (поиск по теме иконок),
+  # но .deb кладёт логотипы только в /opt/chromium-gost/product_logo_*.png -
+  # не по стандартным путям hicolor-темы. Раскладываем их туда вручную,
+  # чтобы иконка реально отображалась в меню приложений.
+  local size
+  for size in 16 24 32 48 64 128 256; do
+    local src="${pkgdir}/opt/chromium-gost/product_logo_${size}.png"
+    if [ -f "${src}" ]; then
+      install -Dm644 "${src}" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/chromium-gost.png"
+    fi
+  done
 }
 
