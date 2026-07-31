@@ -1,20 +1,19 @@
 # Maintainer: orlfman
 pkgname=ffmpeg-converter-gtk
 _pkgname=FFmpeg-Converter-GTK
-pkgver=1.6.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Modern GTK4 + libadwaita frontend for FFmpeg (SVT-AV1, x265, x264, VP9)"
 arch=('x86_64')
 url="https://github.com/orlfman/FFmpeg-Converter-GTK"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'json-glib' 'glib2' 'libsoup3'
-         'cairo' 'pango' 'glibc' 'hicolor-icon-theme'
-         'ffmpeg' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
-         'gst-plugins-bad' 'gst-libav')
+         'mpv' 'cairo' 'pango' 'glibc' 'hicolor-icon-theme'
+         'ffmpeg')
 makedepends=('meson' 'vala')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7deb7143028f60e077918c1c9b35b85054ee3b83fba49b512cf95b7aa3b27593')
+sha256sums=('8f917e3cebc79dce758f165a0f203e67870a09cca22511b287b7c5c918358bce')
 
 build() {
     arch-meson "$_pkgname-$pkgver" build
