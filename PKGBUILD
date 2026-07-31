@@ -1,5 +1,5 @@
 pkgname=svix-cli
-pkgver=1.83.0
+pkgver=1.99.0
 pkgrel=1
 pkgdesc='The Svix CLI (webhooks as a service)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ makedepends=(cargo)
 # Disabling LTO due to https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 source=("https://github.com/svix/svix-webhooks/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dac1bced7df7962e8d5de700c14bcbb738a3673639076178bb2e5d253ebeb4c0')
+sha256sums=('88774110a533ced45374b632379e203bd1cf537068127149d6bb5f63476469d4')
 
 srcpkgdir="svix-webhooks-$pkgver/$pkgname"
 
