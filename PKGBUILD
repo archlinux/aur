@@ -3,7 +3,7 @@
 pkgname=aqueous
 pkgbase=aqueous
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -21,6 +21,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
 makedepends=('clang' 'lld' 'llvm'
              'git' 'curl' 'patch' 'scdoc' 'wayland-protocols' 'pkgconf'
              'meson' 'ninja' 'glslang' 'vulkan-headers' 'hwdata' 'zig>=0.16')
+checkdepends=('jq' 'ripgrep')
 optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'ghostty: recommended terminal emulator'
