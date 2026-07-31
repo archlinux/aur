@@ -1,5 +1,5 @@
 pkgname=test-yourself
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A modern, highly-polished quiz and testing application"
 arch=('x86_64')
