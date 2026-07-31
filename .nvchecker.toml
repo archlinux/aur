@@ -1,0 +1,4 @@
+[nocturne]
+source = "github"
+github = "Jeffser/Nocturne"
+use_max_tag = true
