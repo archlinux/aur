@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft <thomas@visorcraft.com>
 
 pkgname=zigulator
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Modern desktop calculator built with Zig and Dear ImGui"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'noto-fonts: alternative UI fonts'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e3dad75a9ac35860eca32012dfbedf10989d06c5a01688b98ae123a6f96d06f')
+sha256sums=('3a052e8656cd8a7a602c829e0bf52dd68d498b2ab31ee21d79c9a25353fe293a')
 
 prepare() {
   cd "$pkgname-$pkgver"
