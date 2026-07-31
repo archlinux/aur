@@ -1,0 +1,20 @@
+pkgbase = mango-launcher-bin
+	pkgdesc = Mango Launcher - An open-source gaming platform
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/fraa2a/mango-launcher
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = ttf-font
+	provides = mangolauncher
+	conflicts = mangolauncher
+	conflicts = mangolauncher-bin
+	source = https://github.com/fraa2a/mango-launcher/releases/download/v2.0.0/mango-launcher-2.0.0.tar.gz
+	source = https://raw.githubusercontent.com/fraa2a/mango-launcher/v2.0.0/build/icons/512x512.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mango-launcher-bin
