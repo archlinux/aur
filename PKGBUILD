@@ -247,6 +247,7 @@ _package() {
               'sof-firmware: firmware images needed for Sound Open Firmware capable devices'
               'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   provides=(KSMBD-MODULE NTSYNC-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE)
+  conflicts=(irqbalance)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
