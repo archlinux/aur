@@ -1,17 +1,16 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=macros-git
-pkgver=0.3.1.r137.cfec47a
+pkgver=0.4.0.r233.01215d8
 pkgrel=1
-pkgdesc='A libcosmic app to manage and run macros on Linux.'
+pkgdesc='A Tauri app to manage and run macros on Linux.'
 url='https://github.com/EthanRStokes/macros'
 arch=('x86_64')
 license=('GPL-3.0-only')
-makedepends=('rust' 'git' 'gcc' 'glibc')
+makedepends=('rust' 'git' 'gcc' 'glibc' 'pnpm')
 depends=(
-    'expat' 'fontconfig' 'libxkbcommon' 'freetype2' 'hicolor-icon-theme' 'cosmic-icon-theme'
+    'gtk3' 'nss' 'alsa-lib' 'hicolor-icon-theme' 'webkit2gtk-4.1'
     'libgcc' 'glibc'
-    "libx11" "libxi" "libxtst"
 )
 conflicts=('macros')
 provides=('macros')
@@ -30,21 +29,41 @@ prepare() {
     git_tag="$(git describe --tags --abbrev=0 | sed 's/^v//')"
 
     cargo fetch
+    pnpm install --dir ui
 }
 
 build() {
     cd "$srcdir/macros"
-    cargo build --release
+    export MACROS_PNPM_OFFLINE=1
+    cargo build --release --frozen
 }
 
 package() {
     cd "$srcdir/macros"
-    install -Dm755 "target/release/macros" "$pkgdir"/usr/bin/macros
+
+    local libdir="$pkgdir/usr/lib/macros"
+
+    # Binary's RUNPATH is $ORIGIN, so the CEF runtime payload (libcef.so,
+    # GL/Vulkan shims, *.pak, icudtl.dat, locales/, ...) has to live alongside
+    # it in a private libdir, not /usr/bin.
+    install -Dm755 "target/release/macros"                     "$libdir/macros"
+    install -Dm755 "target/release/libcef.so"                  "$libdir/libcef.so"
+    install -Dm755 "target/release/libEGL.so"                  "$libdir/libEGL.so"
+    install -Dm755 "target/release/libGLESv2.so"                "$libdir/libGLESv2.so"
+    install -Dm755 "target/release/libvk_swiftshader.so"       "$libdir/libvk_swiftshader.so"
+    install -Dm755 "target/release/libvulkan.so.1"              "$libdir/libvulkan.so.1"
+    install -Dm755 "target/release/chrome-sandbox"              "$libdir/chrome-sandbox"
+    install -Dm644 "target/release/vk_swiftshader_icd.json"    "$libdir/vk_swiftshader_icd.json"
+    install -Dm644 "target/release/icudtl.dat"                  "$libdir/icudtl.dat"
+    install -Dm644 "target/release/v8_context_snapshot.bin"    "$libdir/v8_context_snapshot.bin"
+    install -Dm644 "target/release/chrome_100_percent.pak"     "$libdir/chrome_100_percent.pak"
+    install -Dm644 "target/release/chrome_200_percent.pak"     "$libdir/chrome_200_percent.pak"
+    install -Dm644 "target/release/resources.pak"               "$libdir/resources.pak"
+    cp -r "target/release/locales" "$libdir/locales"
+
+    install -d "$pkgdir/usr/bin"
+    ln -sf /usr/lib/macros/macros "$pkgdir/usr/bin/macros"
 
     install -Dm644 "res/icons/macros.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/macros.png
     install -Dm644 "res/macros.desktop" "$pkgdir"/usr/share/applications/macros.desktop
-
-    install -Dm644 "res/icons/remove.svg" "$pkgdir"/usr/share/macros/icons/remove.svg
-    install -Dm644 "res/icons/up.svg"     "$pkgdir"/usr/share/macros/icons/up.svg
-    install -Dm644 "res/icons/down.svg"   "$pkgdir"/usr/share/macros/icons/down.svg
 }
