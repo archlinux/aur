@@ -1,5 +1,5 @@
 pkgbase = beammp
-	pkgdesc = since other packages are outdated
+	pkgdesc = Since the other packages i tried didnt want to work
 	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/BeamMP/BeamMP-Launcher
