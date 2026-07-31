@@ -2,7 +2,7 @@
 
 pkgname=siril-appimage
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 url='https://siril.org'
 pkgdesc='Siril is an astronomical image processing tool'
 arch=(x86_64)
@@ -23,10 +23,8 @@ sha512sums_x86_64=('e1ec83b2bd80ad4f0d3c5a5424afc63a9eba0b1a8766f7e6ad3beef97432
 prepare() {
   rm -rf -- "${srcdir}/squashfs-root" "${srcdir}/siril-${pkgver}"
 
-  (
-    cd "${srcdir}"
-    ./"Siril-${pkgver}-x86_64.AppImage" --appimage-extract
-  )
+  chmod +x "Siril-${pkgver}-x86_64.AppImage"
+  ./"Siril-${pkgver}-x86_64.AppImage" --appimage-extract
 
   mv -- "${srcdir}/squashfs-root" "${srcdir}/siril-${pkgver}"
 }
