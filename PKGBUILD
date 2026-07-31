@@ -6,7 +6,7 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -39,7 +39,7 @@ optdepends=(
   "ffmpeg: Compare video files"
 )
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('194333f6dd67c10b04dc1f330d70c50d3223f321c0f4f8800d34536dfcfc972a5f84b8d6a1876c42ab656e26c745b68ff44f5faa5f1ed75d8624ffff1df400d7')
+b2sums=('a4f21eb81ffd2bded91b982d23edcbf98be1885fe1acf5a1147b6460312f3c3f3f182164c3f6c7e53cb2963191cafcffd467937043de92a1f707046df15c0796')
 
 build() {
   cd ${pkgbase}
