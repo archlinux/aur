@@ -1,6 +1,6 @@
 pkgbase = mathmark
 	pkgdesc = Reader for maths written in Markdown: formulas as in textbooks, marking changes one byte
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/VolkinstridoV/mathmark
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mathmark
 	depends = libadwaita
 	depends = webkitgtk-6.0
 	optdepends = python-pytest: for running the test suite
-	source = mathmark-1.0.tar.gz::https://github.com/VolkinstridoV/mathmark/archive/refs/tags/v1.0.tar.gz
-	sha256sums = b764f6288a204dcf7eaa13db984be0ff1a9c2292e4a944a74ddfbf5fede59393
+	source = mathmark-1.0.1.tar.gz::https://github.com/VolkinstridoV/mathmark/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 092b074530cf22006b2d0404035ffb88a87c42e1ddd257719ec57b814496a673
 
 pkgname = mathmark
