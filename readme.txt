@@ -9,11 +9,19 @@ A Steam-like game launcher for your local game library.
     paru -S forager
     yay -S forager
 
-### Manually
+### Manual AUR install
 
     git clone https://aur.archlinux.org/forager.git
     cd forager
     makepkg -si
+
+### Manual install from source (no AUR)
+
+    git clone https://github.com/foxinwinter/forager.git
+    cd forager
+    python -m venv .venv
+    .venv/bin/pip install .
+    .venv/bin/forager
 
 The package installs the `forager` launcher to `/usr/bin`, a `.desktop`
 entry to `/usr/share/applications`, and the license to
