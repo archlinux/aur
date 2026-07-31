@@ -1,7 +1,7 @@
 pkgbase = cosmic-comp-vrr-fix
 	pkgdesc = Compositor for the COSMIC desktop environment
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = cosmic-comp-vrr-fix
 	depends = wayland
 	provides = cosmic-comp
 	conflicts = cosmic-comp
-	source = cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=fix/live-adaptive-sync-updates
+	source = cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=master
 	b2sums = SKIP
 
 pkgname = cosmic-comp-vrr-fix

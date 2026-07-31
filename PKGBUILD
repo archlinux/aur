@@ -5,7 +5,7 @@
 
 pkgname=cosmic-comp-vrr-fix
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Compositor for the COSMIC desktop environment'
 arch=(x86_64)
@@ -33,8 +33,8 @@ makedepends=(
   git
   lld
 )
-# Build the live adaptive-sync fix from the contributor's upstream PR branch.
-source=('cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=fix/live-adaptive-sync-updates')
+# Build the combined live adaptive-sync fix and minimum-VRR-interval fix from master.
+source=('cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=master')
 b2sums=('SKIP')
 
 prepare() {
