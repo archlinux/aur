@@ -5,13 +5,16 @@
 
 pkgname=cosmic-applets-application-volume
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Applets for COSMIC Panel'
 arch=(x86_64)
 url=https://github.com/pop-os/cosmic-applets
 license=(GPL-3.0-only)
 groups=(cosmic)
+provides=(cosmic-applets)
+conflicts=(cosmic-applets)
+replaces=(cosmic-applets)
 depends=(
   cosmic-icon-theme
   dbus
