@@ -1,0 +1,25 @@
+pkgbase = pickled-git
+	pkgdesc = lightweight colorpicker
+	pkgver = r2.3edefe3
+	pkgrel = 1
+	url = https://codeberg.org/j_ole/pickled
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = wayland
+	makedepends = libxkbcommon
+	makedepends = freetype2
+	makedepends = libffi
+	makedepends = zlib
+	makedepends = bzip2
+	makedepends = libpng
+	makedepends = brotli
+	depends = glibc
+	depends = wayland
+	depends = libxkbcommon
+	depends = freetype2
+	optdepends = hyprpicker
+	source = pickled::git+https://codeberg.org/j_ole/pickled.git
+	sha256sums = SKIP
+
+pkgname = pickled-git
