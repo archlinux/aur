@@ -1,0 +1,535 @@
+.TH ODM 1 "2026-07-21" "odm" "User Commands"
+.SH NAME
+odm \- Oryn Download Manager, an aria2c-inspired CLI download manager with a Connection Balancer
+.SH SYNOPSIS
+.B odm
+.RI [ OPTIONS ]
+.RI <URL>
+.RI [ URL ... ]
+.br
+.B odm
+.RI [ OPTIONS ]
+.RB " \fI" URL1,URL2,... "\fR"
+.br
+.B odm
+.RI [ OPTIONS ]
+.B \-i
+.I file-list.txt
+.br
+.B odm
+.B \-\-rpc
+.RI [ OPTIONS ]
+.SH DESCRIPTION
+.B odm
+is a CLI download manager written in Go and inspired by
+.BR aria2c (1).
+It ships as a single static binary with no runtime dependencies.
+.PP
+Its core differentiator is the
+.BR "Connection Balancer" :
+automatic allocation of parallel connections that adapts between
+single-file and many-file (batch) modes, so that one connection budget
+.RB ( \-c )
+is split sensibly across files instead of the user computing
+connections-per-file by hand.
+.PP
+It also has a pacman / CachyOS-style
+.RB ( ILoveCandy )
+progress bar and a JSON-RPC 2.0 + WebSocket RPC server so other programs
+(CLIs, GUIs, scripts) can drive it \(em the same relationship
+.BR aria2c (1)
+has with AriaNg.
+.SH QUICK START
+The three canonical invocations:
+.PP
+1. Single file, 16 parallel connections to one server for one file:
+.PP
+.RS
+.B odm \-c 16 https://files.test.xyz/file.tar.gz
+.RE
+.PP
+2. Batch (no \fB\-sf\fR): 16 URLs, 1 connection per file, 16 files run in
+parallel.
+.B RECOMMENDED:
+space-separated positional args (comma-safe).
+.PP
+.RS
+.B odm \-c 16 https://files.test.xyz/file1.tar.gz url2 url3 ...   # 16 urls
+.RE
+.PP
+3. Batch with \fB\-sf 4\fR: 16 connections split 4 per file \(-> 4 files run
+in parallel (the rest queue automatically as slots free).
+.PP
+.RS
+.B odm \-c 16 \-sf 4 https://files.test.xyz/file1.tar.gz url2 url3 ...
+.RE
+.PP
+For large batches (>10 URLs) prefer an input file:
+.PP
+.RS
+.B odm \-i file-list.txt        # one URL per line, '#' comments and blanks skipped
+.RE
+.SH "CONNECTION BALANCER"
+.I ( \-c , \-sf )
+.PP
+.B \-c
+is the
+.I total
+parallel-connection budget. What it controls depends on the mode:
+.TS
+allbox tab(@);
+cb cb cb cb
+l lw(2.5i) lw(3i).
+Mode@Condition@What \fB\-c\fR controls@per-file connections
+A@one URL (\fB\-sf\fR ignored)@whole budget \(-> the one file@\fBmin(\-c, \-\-max\-connections)\fR
+B@many URLs, no \fB\-sf\fR@how many files run in parallel@1 each
+C@many URLs + \fB\-sf N\fR@\fBfloor(\-c / N)\fR files run in parallel@N (remainder distributed to the first files)
+.TE
+.PP
+.BR \-\-max\-connections
+(default
+.BR 32 )
+is a soft ceiling: going above it just prints a warning
+.RB ( "connections above 32 may get throttled/blocked by some servers" ),
+since many CDN/servers treat >~30 concurrent connections from one IP as
+abusive. Power users on a LAN / local CDN can raise it.
+.PP
+Files that don't support HTTP range requests (the probe falls back through
+HEAD \(-> ranged GET \(-> single-stream) are automatically given a single
+connection, and the freed budget is redistributed to the other files in the
+same scheduling pass. (Mid-flight dynamic rebalancing of
+.I already-downloading
+chunks is a roadmap item, not in this release.)
+.SS "Why a chunk queue (work-stealing)"
+Each file is split into small chunks (default
+.BR \-\-chunk\-size 4M )
+pushed into a shared per-file queue. Worker goroutines \(em one per allocated
+connection \(em pull the next chunk as soon as they finish the previous one.
+This avoids the classic
+.I straggler problem
+of a static equal-split: a slow connection just processes fewer chunks
+instead of holding the whole file back.
+.SH OPTIONS
+.SS "Connection budget (the Balancer auto-splits \fB\-c\fR across files)"
+.TP
+.BR \-c ", " \-\-connections " \fIN\fR"
+total parallel-connection budget
+.RI ( default " 5" )
+.TP
+.BR \-m ", " \-\-max\-connections " \fIN\fR"
+ceiling; exceeding it just warns
+.RI ( default " 32" )
+.TP
+.BR \-\-split-file ", " \-sf " \fIN\fR"
+connections per file in batch mode
+.RI ( unset " = 1 per file" )
+.SS "Inputs / output"
+.TP
+.BR \-o ", " \-\-output " \fINAME\fR"
+output filename (single-file only)
+.TP
+.BR \-d ", " \-\-dir " \fIPATH\fR"
+destination directory
+.RI ( default " cwd" )
+.TP
+.BR \-i ", " \-\-input-file " \fIFILE\fR"
+read URL list from FILE
+.SS "Behavior"
+.TP
+.BR \-y ", " \-\-yes
+skip the confirmation prompt
+.TP
+.BR \-q ", " \-\-quiet
+no progress bar (cron/scripts); also skips the prompt
+.TP
+.BR \-x ", " \-\-continue
+resume an incomplete file via the
+.B .odm
+control file
+.RI ( default " on" )
+.TP
+.BR -s ", " \-\-chunk-size " \fISIZE\fR"
+work-stealing chunk size, e.g.
+.B 4M
+.RI ( default " 4M" )
+.SS "HTTP / network"
+.TP
+.BR -n ", " \-\-max\-redirect " \fIN\fR"
+redirect hops to follow
+.RI ( default " 5" )
+.TP
+.BR -r ", " \-\-retry " \fIN\fR"
+retries per segment on failure
+.RI ( default " 3" )
+.TP
+.BR -w ", " \-\-retry\-wait " \fISEC\fR"
+delay between retries
+.RI ( default " 2" )
+.TP
+.BR -t ", " \-\-timeout " \fISEC\fR"
+dial+headers timeout
+.RI ( default " 30" )
+.TP
+.BR -u ", " \-\-user\-agent " \fIUA\fR"
+custom User-Agent
+.RI ( default " odm/<version>" )
+.TP
+.BR \-H ", " \-\-header " \fIK:V\fR"
+add a custom header (repeatable)
+.TP
+.BR \-\-referer " \fIURL\fR"
+set the Referer header
+.TP
+.BR -p ", " \-\-proxy " \fIURL\fR"
+http/https/socks5 proxy
+.TP
+.BR \-\-check\-certificate " \fIBOOL\fR"
+verify TLS
+.RI ( default " true" )
+.TP
+.BR \-\-checksum " \fIALGO:HASH\fR"
+verify md5/sha1/sha256
+.TP
+.BR -l ", " \-\-limit\-rate " \fIRATE\fR"
+global speed limit, e.g.
+.BR 5M / 500K
+.TP
+.BR \-\-limit\-rate\-per\-task " \fIRATE\fR"
+per-task speed cap (stacked on global), e.g.
+.BR 2M
+.SS "Config / logging / RPC"
+.TP
+.BR \-\-config " \fIPATH\fR"
+config file path
+.RI ( default " /etc/odm/config.conf" )
+.TP
+.BR -L ", " \-\-log " \fIFILE\fR"
+mirror logs to FILE
+.TP
+.BR \-\-log\-level " \fILEVEL\fR"
+debug|info|warn|error
+.RI ( default " info" )
+.TP
+.BR \-\-rpc
+run as the RPC server (daemon)
+.TP
+.BR \-\-rpc\-listen\-port " \fIPORT\fR"
+.RI ( default " 6900" )
+.TP
+.BR \-\-rpc\-listen\-all
+bind 0.0.0.0 (default 127.0.0.1)
+.TP
+.BR \-\-rpc\-secret " \fITOKEN\fR"
+auth for RPC (token:<secret> param or ?secret=)
+.TP
+.BR \-\-rpc\-tls\-cert " \fIFILE\fR"
+TLS certificate path (PEM); enables HTTPS
+.TP
+.BR \-\-rpc\-tls\-key " \fIFILE\fR"
+TLS private key path (PEM); requires \fB\-\-rpc\-tls\-cert\fR
+.TP
+.BR \-V ", " \-\-version
+print version and exit
+.TP
+.BR \-h ", " \-\-help
+show help
+.SH "CONFIGURATION"
+Config source priority (a defaulted flag never overwrites a value the user put
+in a file):
+.PP
+.RS
+CLI args > ~/.config/odm/config.conf > /etc/odm/config.conf > defaults
+.RE
+.PP
+The file is
+.BR "key = value" ,
+one per line,
+.B #
+for comments; key names match the CLI long-flags (without
+.BR \-\- ).
+See
+.I /etc/odm/config.conf.example
+for a fully-commented template.
+.PP
+Example:
+.PP
+.RS
+.nf
+connections        = 5
+max-connections    = 32
+split-file         =
+dir                 = /home/user/Downloads
+max-redirect        = 5
+retry               = 3
+retry-wait          = 2
+timeout             = 30
+user-agent          = odm/1.0
+check-certificate   = true
+continue            = true
+quiet               = false
+limit-rate          =
+limit-rate-per-task  =
+# RPC
+rpc                 = false
+rpc-listen-port     = 6900
+rpc-listen-all       = false
+rpc-secret          =
+rpc-tls-cert        =
+rpc-tls-key         =
+# Logging
+log                 =
+log-level           = info
+.fi
+.RE
+.PP
+.B Comma note:
+the legacy
+.RB \(dq url1,url2,... \(dq
+single-argument form is still supported, but a comma
+.I inside
+a URL (e.g.
+.BR ?ids=1,2,3 )
+is ambiguous, so
+.B space-separated positional args
+are the recommended form. URLs with a literal comma must use either
+space-separated form or
+.BR \-i .
+.SH "RATE LIMITING"
+.BR \-\-limit\-rate
+is enforced with a
+.I global token bucket
+shared across
+.I all
+active workers of
+.I all
+tasks, rather than splitting the limit per connection. Throttling happens at
+the data-stream level (bytes read from the network, before writing to disk),
+so the aggregate throughput stays close to the configured cap regardless of
+how many connections are alive or how the batch queue advances.
+.PP
+An optional
+.BR \-\-limit\-rate\-per\-task
+adds a
+.I per-task token bucket
+stacked on top of the global one. Each worker acquires tokens from both
+buckets before writing to disk, so a single task is capped to
+.BR min ( per-task, global )
+and the sum across all tasks never exceeds the global cap. Both limits can
+be changed at runtime via RPC
+.BR odm.changeOption .
+.SH RESUME
+With
+.B \-x
+/
+.B \-\-continue
+(on by default), each download writes a
+.I <file>.odm
+control file recording which chunks are already done (JSON: URL, total size,
+chunk size, and the list of completed chunks). On re-run with the same
+destination present, only the un-finished chunks are re-fetched \(em no
+corruption, no restart. The control file is deleted on a clean completion.
+.SH "PROGRESS BAR"
+When stderr/stdout is a TTY, odm renders a pacman / CachyOS-style
+.RB ( ILoveCandy )
+progress bar. The per-file line format is:
+.PP
+.RS
+\fI<file_name>\fR   \fI<done/total>\fR   \fI<speed>\fR/s   \fI<ETA>\fR   [\fIx<N>\fR-\fI<progress-bar>\fR]   \fI<percent>\fR%
+.RE
+.PP
+where
+.B <done/total>
+is the hybrid downloaded/total size with compact suffixes (e.g.
+.BR 42.0M/256.0M )
+that grows live as bytes arrive,
+.B x<N>
+is the number of parallel connections currently used by that file (shown inside
+the bar brackets as a prefix, e.g.
+.BR [x4-----c  o  o  o  o] ),
+.B c
+is the pacman icon moving left to right as progress advances,
+.B o
+is a dot not yet eaten, and blank/-
+is already eaten (at 100% the whole bar is blank/dashes).
+.PP
+Color coding (when the terminal supports ANSI colors; disabled automatically
+on non-TTY or
+.BR NO_COLOR ):
+completed = green, downloading = yellow, retrying after an error = red,
+queued/waiting = dim/grey.
+.PP
+If stdout is not a terminal
+.RI ( \-\-quiet
+or redirected to a file/pipe) the progress bar is replaced with periodic log
+lines without ANSI cursor control.
+.SH "RPC SERVER"
+Run odm as a daemon exposing JSON-RPC 2.0 + WebSocket so third-party
+GUIs/scripts can be built on top without parsing terminal output:
+.PP
+.RS
+.nf
+POST  http://127.0.0.1:6900/rpc   (JSON-RPC 2.0)
+ WS   ws://127.0.0.1:6900/ws      (event notifications)
+.fi
+.RE
+.PP
+Default bind is
+.B 127.0.0.1
+(safe).
+.B \-\-rpc\-listen\-all
+binds
+.B 0.0.0.0
+\(em pair that with
+.BR \-\-rpc\-secret .
+.PP
+TLS encryption can be enabled with
+.B \-\-rpc\-tls\-cert
+and
+.BR \-\-rpc\-tls\-key ;
+when both are provided the server switches to HTTPS/WSS and the listener
+prints a
+.B https://
+URL. Without TLS, a
+.B http://
+URL is shown (the default).
+.PP
+Auth is aria2-style: the first JSON-RPC param is
+.RB \(dq token:<secret> \(dq
+(or
+.B ?secret=<value>
+on the WebSocket upgrade).
+.SS "Quickstart with curl"
+.PP
+.RS
+.nf
+odm \-\-rpc \-\-rpc\-secret hunter2 \-\-rpc\-listen\-port 6900 \-d ~/Downloads &
+
+# add a download; note the token:<secret> first param
+curl -s -X POST http://127.0.0.1:6900/rpc \e
+  -H 'Content-Type: application/json' \e
+  -d '{"jsonrpc":"2.0","method":"odm.addUri","params":["token:hunter2","https://files.test.xyz/x.tar.gz"],"id":1}'
+
+# ask its status
+curl -s -X POST http://127.0.0.1:6900/rpc \e
+  -H 'Content-Type: application/json' \e
+  -d '{"jsonrpc":"2.0","method":"odm.tellStatus","params":["token:hunter2","odm-001"],"id":2}'
+.fi
+.RE
+.SS Methods
+.TS
+allbox tab(@);
+lw(3i) lw(3.3i).
+Method@Description
+odm.addUri@Add a single URL to the queue.
+odm.addBatch@Add many URLs at once.
+odm.pause / odm.pauseAll@Pause a task / all tasks.
+odm.unpause / odm.unpauseAll@Resume paused task(s).
+odm.remove@Cancel and remove a task.
+odm.tellStatus@Detailed status of one task (progress, speed, conns, ETA).
+odm.tellActive / odm.tellWaiting / odm.tellStopped@List active / queued / finished tasks.
+odm.changeOption@Change options at runtime: max-download-limit, max-download-limit-per-task, connections.
+odm.getGlobalStat@Global stats (active/waiting/stopped counts).
+odm.getVersion@Version + enabled features.
+odm.shutdown@Shut the daemon down.
+.TE
+.SS "Events (WebSocket /ws)"
+All five PRD events are emitted over the
+.B /ws
+fan-out:
+.TS
+allbox tab(@);
+l l.
+Event@When
+onDownloadStart@a task is added via odm.addUri
+onDownloadProgress@periodic snapshot \(em throttled to ~250ms
+onDownloadComplete@a task finishes cleanly
+onDownloadError@a task fails / is cancelled
+onDownloadPause@a task is paused via odm.pause
+.TE
+.PP
+Each event's
+.B params
+carries the same field set as
+.BR odm.tellStatus 's
+result.
+.SH "EXIT CODES"
+.TS
+allbox tab(@);
+l l.
+Code@Meaning
+0@All downloads succeeded
+1@General error / invalid argument
+2@Network error (all retries exhausted)
+3@Partial failure in a batch (some files failed)
+4@Cancelled by the user
+.TE
+.SH ENVIRONMENT
+.TP
+.B NO_COLOR
+If set, disables colored progress output even when writing to a TTY.
+.SH FILES
+.TP
+.I /etc/odm/config.conf
+System-wide default config (root-owned,
+.BR 0644 ,
+per the security guidance).
+.TP
+.I ~/.config/odm/config.conf
+Per-user overrides.
+.TP
+.I configs/odm.conf.example
+Fully-commented template shipped with the source.
+.TP
+.I <file>.odm
+Per-task resume control file, deleted on a clean completion.
+.SH EXAMPLES
+.PP
+Download a single file with 16 connections into the current directory:
+.PP
+.RS
+.B odm \-c 16 https://files.test.xyz/file.tar.gz
+.RE
+.PP
+Batch download a space-separated list, 5 files at a time (the default
+.BR \-c 5 ),
+1 connection each:
+.PP
+.RS
+.B odm url1 url2 url3 url4 url5 url6
+.RE
+.PP
+Batch with explicit split: 8 connections split 4 per file \-> 2 files at a
+time, resuming any incomplete ones, dumping progress to logs only:
+.PP
+.RS
+.B odm \-c 8 \-sf 4 \-x \-q \-i list.txt
+.RE
+.PP
+Throttle to 5 MiB/s aggregate and verify a sha256 after completion:
+.PP
+.RS
+.B odm \-\-limit\-rate 5M \-\-checksum sha256:9f86... https://files.test.xyz/x.iso
+.RE
+.PP
+Run the RPC daemon on port 6900 with a shared secret, downloads going to
+~/Downloads:
+.PP
+.RS
+.B odm \-\-rpc \-\-rpc\-secret hunter2 \-\-rpc\-listen\-port 6900 \-d ~/Downloads
+.RE
+.SH "SEE ALSO"
+.BR aria2c (1),
+.BR curl (1)
+.SH BUGS
+.LP
+Mid-flight connection reallocation (\fBchangeOption\fR with key
+\fBconnections\fR) is partially supported: graceful drain (excess workers
+finish their current chunk and retire) is implemented; dynamic rebalancing
+of already-dispatched chunks across tasks is a roadmap item.
+.LP
+HTTP/2 / HTTP/3 multiplexing is deliberately not a core feature: odm's
+value proposition is opening many independent TCP connections; against
+HTTP/2-only servers it falls back to single-stream.
+.SH AUTHOR
+.LP
+The odm project \(em see the source repository.

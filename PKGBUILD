@@ -6,7 +6,7 @@
 # files in the AUR repository (no remote download, no checksum mismatch).
 
 pkgname=odm-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Oryn Download Manager — aria2c-inspired CLI download manager with Connection Balancer, parallel download acceleration, pacman/ILoveCandy progress bar, JSON-RPC + WebSocket daemon, and resume support"
 arch=('x86_64' 'aarch64')
@@ -29,11 +29,11 @@ source_aarch64=(
     "${pkgname}-${pkgver}.service"
 )
 
-sha256sums_x86_64=('503fa4908c4a882d63c9a9f05d1de26aa972001a23451af0e1b622a24f9b1bd5'
+sha256sums_x86_64=('b7d5c468299c9126d1bd1a04d6bb775a3e61f8d6eda3cdd353ccd3c6c74e114d'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_aarch64=('5d6ad607350fdc8294020692c1cdae28c0462f2fbe58e81a6bee5c9379e8db87'
+sha256sums_aarch64=('f80ff4a3f9548250d16cff03a2f8702f0867d4aed6fa94140f457fe60fcb3f26'
                     'SKIP'
                     'SKIP'
                     'SKIP')

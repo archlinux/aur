@@ -1,0 +1,50 @@
+# /etc/odm/config.conf
+# Global default configuration for ODM (Oryn Download Manager).
+#
+# Key names match the CLI long-flags (§6.2) without the leading `--`.
+# Format: key = value, one option per line, `#` starts a comment.
+# CLI flags override these; see §6.3: CLI > ~/.config/odm/config.conf > this
+# file > hardcoded defaults. Copy to /etc/odm/config.conf (root:root, 0644) to
+# install as the system config, or to ~/.config/odm/config.conf per-user.
+
+# --- Balancer (§5) ----------------------------------------------------------
+connections        = 5          # total parallel-connection budget (-c)
+max-connections    = 32         # ceiling; exceeding warns, doesn't error
+split-file         =            # connections per file in batch mode (unset = 1 each)
+
+# --- Inputs / output --------------------------------------------------------
+# dir                 = /home/user/Downloads   # destination directory (-d)
+# output              = <only single-file mode>
+
+# --- HTTP / network ---------------------------------------------------------
+max-redirect        = 5          # redirect hops to follow
+retry                = 3          # retries per segment on failure
+retry-wait           = 2          # delay between retries (seconds)
+timeout              = 30         # dial+headers timeout (seconds)
+# user-agent          = odm/1.0
+# header              = Key: value    # repeatable; or use -H on the CLI
+# referer             =
+# proxy               =              # http/https/socks5
+check-certificate    = true       # verify TLS
+
+# --- Integrity / rate ------------------------------------------------------
+# checksum              = sha256:<hex>   # verify md5/sha1/sha256
+# limit-rate            =              # global speed limit, e.g. 5M or 500K
+# limit-rate-per-task   =              # per-task speed cap (stacked on global), e.g. 2M
+# chunk-size            = 4M           # work-stealing chunk size
+
+# --- Behaviour -------------------------------------------------------------
+continue             = true       # resume via the .odm control file (-x)
+quiet                = false      # disable the progress bar (cron/scripts)
+
+# --- RPC (§10) -------------------------------------------------------------
+rpc                  = false      # run as the RPC server (daemon)
+rpc-listen-port      = 6900
+rpc-listen-all       = false      # bind 0.0.0.0 (default 127.0.0.1)
+rpc-secret           =            # auth token; pair with --rpc-listen-all
+# rpc-tls-cert       = /etc/odm/odm.crt   # TLS cert (PEM); enables HTTPS
+# rpc-tls-key        = /etc/odm/odm.key   # TLS key (PEM); requires --rpc-tls-cert
+
+# --- Logging ---------------------------------------------------------------
+# log                  = /var/log/odm.log
+log-level            = info       # debug / info / warn / error
