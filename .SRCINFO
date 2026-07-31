@@ -1,0 +1,17 @@
+pkgbase = livepackageloader-git
+	pkgdesc = Dynamic on-demand package loader for live Linux ISOs: pull software from a secondary desktopfs.sfs into a running live system via a YAD dialog, with RAM/OOM safety checks
+	pkgver = r2.34273f2
+	pkgrel = 1
+	url = https://github.com/7MS8/LivePackageLoader
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = yad
+	depends = dpkg
+	depends = polkit
+	provides = livepackageloader
+	conflicts = livepackageloader
+	source = livepackageloader-git::git+https://github.com/7MS8/LivePackageLoader.git
+	sha256sums = SKIP
+
+pkgname = livepackageloader-git
