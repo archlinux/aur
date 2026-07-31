@@ -14,7 +14,7 @@ pkgname=(
   pd-sfizz-git
 )
 pkgver=1.2.3.r12.g5e0be2e
-pkgrel=1
+pkgrel=2
 pkgdesc="SFZ based sampler (git version)"
 url="https://sfz.tools/sfizz"
 arch=(x86_64)
@@ -88,6 +88,11 @@ b2sums=('SKIP'
         'SKIP'
         '1fff06b5878ee52a0f14fd7e3fb1d6f485dcdcd17fa0c10f4cde339d7802961996d6629cfa25f3894a63031a8e91edd7edf35447b6f1a82f190b7b7f4660264f')
 
+_plugin_uris=(
+  "http://sfztools.github.io/sfizz"
+  "http://sfztools.github.io/sfizz-multi"
+)
+
 _pick() {
   local p="$1" f d; shift
   for f; do
@@ -152,7 +157,7 @@ prepare() {
 
 build() {
   local cmake_options=(
-    -B build
+    -B $_pkgname-build
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_CXX_STANDARD=17
@@ -171,13 +176,30 @@ build() {
     -W no-dev
   )
   cmake "${cmake_options[@]}"
-  cmake --build build --verbose
+  cmake --build $_pkgname-build --verbose
 }
 
 check() {
   # Currently mayn unit test failures due to flawed float value comparisons
   #ctest --test-dir build/library --output-on-failure
-  lv2lint -Mpack -I build/$_pkgname.lv2 "http://sfztools.github.io/sfizz"
+  cd $_pkgname-build
+
+  local lv2specs=(
+    atom buf-size core data-access dynmanifest event instance-access log midi
+    morph options parameters patch port-groups port-props resize-port schemas
+    state time ui units uri-map urid worker kx-programs kx-properties)
+
+  mkdir -p .lv2
+
+  for spec in ${lv2specs[@]}; do
+    ln -vsf /usr/lib/lv2/$spec.lv2 .lv2
+  done
+
+  ln -vsf "$(pwd)"/$_pkgname.lv2 .lv2
+  for _uri in ${_plugin_uris[@]}; do
+    echo "Checking $_uri with lv2lint ..."
+    LV2_PATH="${PWD}/.lv2" lv2lint -s '_Z*' "$_uri"
+  done
 }
 
 package_sfizz-git() {
@@ -188,7 +210,7 @@ package_sfizz-git() {
   provides=($_pkgname)
   conflicts=($_pkgname)
 
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install $_pkgname-build
 
   (
     cd "$pkgdir"

@@ -1,7 +1,7 @@
 pkgbase = sfizz-git
 	pkgdesc = SFZ based sampler (git version)
 	pkgver = 1.2.3.r12.g5e0be2e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sfz.tools/sfizz
 	arch = x86_64
 	license = BSD
