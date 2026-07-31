@@ -532,7 +532,6 @@ def download_tarball(
                     _DOWNLOAD_MAX_RETRIES,
                 )
                 time.sleep(delay)
-                continue
 
     die(
         "Download of <%s> failed after %d attempt(s): %s",
