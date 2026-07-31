@@ -5,7 +5,7 @@
 
 pkgname=cosmic-comp-vrr-fix
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Compositor for the COSMIC desktop environment'
 arch=(x86_64)
@@ -33,8 +33,8 @@ makedepends=(
   git
   lld
 )
-# Build the combined live adaptive-sync fix and minimum-VRR-interval fix from master.
-source=('cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=master')
+# Build Skygrango's VRR target-rate branch with the live adaptive-sync update from PR #2673.
+source=('cosmic-comp::git+https://github.com/AdityaHebballe/cosmic-comp.git#branch=vrr_target_rate_v2-live-sync')
 b2sums=('SKIP')
 
 prepare() {
