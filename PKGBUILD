@@ -1,9 +1,9 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-_pi_ver=0.80.10
+_pi_ver=0.82.0
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shixin-guo/picot"
@@ -37,11 +37,11 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('362e6f9bb0a9f56b0b63d6a372e1867d523adaf771c2e6ba650f4e66ac5e0d20')
+sha256sums=('c8c2823e788d1b36404371dd99b2caba6aa1f8de434a5320a1e969160ff35b2a')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
-sha256sums_x86_64=('ab6604f6c3f3d050783e7abbbdd1f79b775b20f3969833ce9721740685d01e13')
+sha256sums_x86_64=('791abd8043bf85deb4d090b905c9ebce4eb4f5776f919b4e3d371f69a6b977d0')
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
-sha256sums_aarch64=('dfe4340063dfe27406fa64aac99d904726fac079197c4579b9e8155175d05272')
+sha256sums_aarch64=('a0bd25d2f41a754463bc96fb21f5e790adb3b75d1eed98bed2b19d3529022b0f')
 
 prepare() {
     cd "picot-${pkgver}"
@@ -80,7 +80,9 @@ build() {
 package() {
     cd "picot-${pkgver}"
 
-    install -Dm755 "src-tauri/target/release/picot" \
+    # ponytail: upstream 0.3.1 added .cargo/config.toml (target-dir = "target"),
+    # moving the binary out of src-tauri/. Accept either layout.
+    install -Dm755 "$(ls target/release/picot src-tauri/target/release/picot 2>/dev/null | head -1)" \
         "${pkgdir}/usr/bin/${pkgname}"
 
     # Frontend resources

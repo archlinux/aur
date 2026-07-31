@@ -1,6 +1,6 @@
 pkgbase = picot
 	pkgdesc = Local Codex-style desktop GUI for the Pi coding agent
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/shixin-guo/picot
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = picot
 	replaces = pi-studio
 	options = !lto
 	options = !debug
-	source = picot-0.3.0.tar.gz::https://github.com/shixin-guo/picot/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 362e6f9bb0a9f56b0b63d6a372e1867d523adaf771c2e6ba650f4e66ac5e0d20
-	source_x86_64 = pi-linux-x64-0.80.10.tar.gz::https://github.com/earendil-works/pi-mono/releases/download/v0.80.10/pi-linux-x64.tar.gz
-	sha256sums_x86_64 = ab6604f6c3f3d050783e7abbbdd1f79b775b20f3969833ce9721740685d01e13
-	source_aarch64 = pi-linux-arm64-0.80.10.tar.gz::https://github.com/earendil-works/pi-mono/releases/download/v0.80.10/pi-linux-arm64.tar.gz
-	sha256sums_aarch64 = dfe4340063dfe27406fa64aac99d904726fac079197c4579b9e8155175d05272
+	source = picot-0.3.1.tar.gz::https://github.com/shixin-guo/picot/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = c8c2823e788d1b36404371dd99b2caba6aa1f8de434a5320a1e969160ff35b2a
+	source_x86_64 = pi-linux-x64-0.82.0.tar.gz::https://github.com/earendil-works/pi-mono/releases/download/v0.82.0/pi-linux-x64.tar.gz
+	sha256sums_x86_64 = 791abd8043bf85deb4d090b905c9ebce4eb4f5776f919b4e3d371f69a6b977d0
+	source_aarch64 = pi-linux-arm64-0.82.0.tar.gz::https://github.com/earendil-works/pi-mono/releases/download/v0.82.0/pi-linux-arm64.tar.gz
+	sha256sums_aarch64 = a0bd25d2f41a754463bc96fb21f5e790adb3b75d1eed98bed2b19d3529022b0f
 
 pkgname = picot
