@@ -1,0 +1,16 @@
+pkgbase = python-httpstat
+	pkgdesc = curl statistics made simple
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/reorx/httpstat
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/7d/7d/436692f99eb01c0af46aa6019a9d3f0977894e373334abb044f9a8721991/httpstat-2.0.0.tar.gz
+	sha256sums = 9fa2930aebadefabb301daff56962003f26a973dc3f114743fd509909c77a638
+
+pkgname = python-httpstat
