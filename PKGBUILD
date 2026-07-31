@@ -5,7 +5,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=25.3.8
+pkgver=25.4.0
 pkgrel=1
 #pkgdesc='Fast, transactional, distributed graph database'
 #pkgdesc='A high-performance graph database for real-time use cases'
@@ -25,8 +25,8 @@ source=("dgraph-$pkgver.tar.gz::$_git/releases/download/v$pkgver/dgraph-linux-am
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-alpha.service"
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-zero.service"
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-ui.service")
-sha256sums=('b4a7bb570b91e8979e6fd5b219d1200bb8be79d39abdc3fbb096548c76961425'
-            'c4a0b9ab245345405462620b1ca53a03dc7da2af2d36423c47d86ffd22596b8e'
+sha256sums=('c9cae098838d794016f730b21f6b9c7494762169b6349b8a396014a421dad993'
+            'c6fa48f62eb5650f49972f98164174fc8d2a309e962cdad650ae4e64c1eded71'
             'c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08'
             '3ae6aa66dc54919f3183ef0abec35ed11122f2ea49fa30c328b376a3fac69afd'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
