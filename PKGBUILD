@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.162
+pkgver=1.4.163
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -68,7 +68,7 @@ source=(
   'stably-orca-serve.env.example'
   'stably-orca-serve-kwin.conf.example'
 )
-sha256sums=('0b0bfa7b72cd193a7fa1d9790bcb63b2141a2613a6c2a800d341a0dfe7747fc8'
+sha256sums=('51c97582155fa882466df4839fe9a88d5e48446b4b96988a9725d59c08030a9c'
             '196f4bd174ebcbd99786b33452f144cb2dc32ef4e7138ed44491e9d43d702d75'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
