@@ -1,0 +1,5 @@
+[docksurf-bin]
+source = "github"
+github = "praneeth-etta/docksurf"
+use_latest_release = true
+prefix = "v"

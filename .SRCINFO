@@ -1,0 +1,20 @@
+pkgbase = docksurf-bin
+	pkgdesc = Live, keyboard-driven terminal UI for Docker
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/praneeth-etta/docksurf
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = docksurf
+	conflicts = docksurf
+	options = !strip
+	source = README-0.3.1.md::https://raw.githubusercontent.com/praneeth-etta/docksurf/v0.3.1/README.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/praneeth-etta/docksurf/v0.3.1/LICENSE
+	sha256sums = 04bde48e9358ecbee9f1636d3fcab0d5a451b1d5a5399de75290873e84595485
+	sha256sums = 2384b94ba562b2e6b68d7195a66ecabd5d97bf0daec825a4d1ee4b1d13d9c24f
+	source_x86_64 = docksurf-x86_64-0.3.1::https://github.com/praneeth-etta/docksurf/releases/download/v0.3.1/docksurf-linux-x86_64
+	sha256sums_x86_64 = 61db7b7ac678638411cbb5d78aa1f932a8bad2fb562446840a8a654a68cdfae3
+
+pkgname = docksurf-bin
