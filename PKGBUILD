@@ -1,7 +1,7 @@
 # Maintainer: CarlosEvCode <programer.cm12@gmail.com>
 
 pkgname=tui-game-station-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Sleek terminal-based gaming launcher and emulator dashboard (Pre-compiled)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('tui-game-station')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/CarlosEvCode/tui_game_station/releases/download/v${pkgver}/tui_game_station-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('92ccbe18b47d05f0ce8fdd2a0b5db44b48406912fc1d414926377a82591d8cb3')
+sha256sums=('dd34c48231503ecc9631012093a3ece3a381ce9a743c8e0c773dfb62dc0eb592')
 
 package() {
   # Install binary to /usr/bin/tui-game-station
