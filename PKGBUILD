@@ -2,7 +2,7 @@
 
 pkgname=clawx-bin
 _pkgname=${pkgname%-bin}
-pkgver="0.5.1"
+pkgver="0.5.2"
 pkgrel=1
 pkgdesc="Desktop interface for OpenClaw AI agents"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source_x86_64=("ClawX-0.5.1-linux-amd64.deb::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.1/ClawX-0.5.1-linux-amd64.deb")
-sha512sums_x86_64=('3189369a5d090a976b0cdf401806e8d3c68f18c0353c98ddee26f99cc48013dd1e18d55d49ba79435b0051efcdc7d65a3680b4f6d3fd632977886cc63e249e9f')
-source_aarch64=("ClawX-0.5.1-linux-arm64.deb::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.1/ClawX-0.5.1-linux-arm64.deb")
-sha512sums_aarch64=('3888be81bd65284893433b6dacc93342b0631d04ba5a6b7f6beb3672b2eb6249bf7e08ac312d9618a0982d83473c97d103a8ee09e45d1ce6aeec3b36a520b160')
+source_x86_64=("ClawX-0.5.2-linux-amd64.deb::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.2/ClawX-0.5.2-linux-amd64.deb")
+sha512sums_x86_64=('958b7ff475b7cecbd8cd9cefbc20c3005458c8ee263a6281826a630611134a74a1d00894b024d108d44b4c3a5eeba4aab39e11fdcaa248b1bdc97cac41f944f9')
+source_aarch64=("ClawX-0.5.2-linux-arm64.deb::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.2/ClawX-0.5.2-linux-arm64.deb")
+sha512sums_aarch64=('7ac1bc70d0f920b0e99d9e657317c74181ae5663085c5df73b90eb51665ee20b113eeeab342817eec0944f02dc468b65d1ffb800a35f82c596ed91acb62abca2')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
