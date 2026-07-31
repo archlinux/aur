@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(python-installer)
 source=(
-    https://cryptalabs.com/support/releases/pyqcc/$_pkgname-$pkgver-py3-none-$arch.whl
+    https://cryptalabs.com/support/releases/Drivers/Cicada%20and%20Firefly/python/pyqcc/$_pkgname-$pkgver-py3-none-$arch.whl
     license-unknown.txt
 )
 b2sums=('2496e17ebcd4f5ed1b30411e6b1aaeeef851366c9179c60a03c4268bed20c40ec49914f6528bc4a61cfb274a6a071f552904f64aef9b443b2b56263aec1c634c'
