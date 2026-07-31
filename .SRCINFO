@@ -1,0 +1,14 @@
+pkgbase = sigi-bin
+	pkgdesc = A tool for organizing
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/so-dang-cool/sigi
+	arch = x86_64
+	license = GPL-2.0
+	provides = sigi
+	conflicts = sigi
+	options = !strip
+	source_x86_64 = sigi-x86_64-3.8.0.tgz::https://github.com/so-dang-cool/sigi/releases/download/v3.8.0/sigi_v3.8.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 462d4e1ce8a99ee68259aaa3b794bf03a9028c329a4cd2503f9dad0e65fb38bf
+
+pkgname = sigi-bin

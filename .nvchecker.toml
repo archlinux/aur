@@ -1,0 +1,5 @@
+[sigi-bin]
+source = "github"
+github = "so-dang-cool/sigi"
+use_latest_release = true
+prefix = "v"
