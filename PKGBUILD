@@ -1,6 +1,6 @@
 # Maintainer: imnaK <yama@tyrem-envalura.de>
 pkgname=proton-drive-cli-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Official Proton Drive command-line client (precompiled binary)"
 arch=('aarch64' 'x86_64')
@@ -12,8 +12,8 @@ conflicts=('proton-drive-cli')
 options=('!strip' '!debug' '!lto')
 source_aarch64=("proton-drive-${pkgver}-aarch64::https://proton.me/download/drive/cli/${pkgver}/linux-arm64/proton-drive")
 source_x86_64=("proton-drive-${pkgver}-x86_64::https://proton.me/download/drive/cli/${pkgver}/linux-x64/proton-drive")
-sha512sums_aarch64=('4651d7b23d111a940d5a0d308a62aaf7d39f0d6a8ceba4c6faa2bcd69624557e0eb19f5a528e8d759fb1fcd96c9e094777fabdd218372dee563c6712bd13cdde')
-sha512sums_x86_64=('e77f5b27a51a81063c23c15ac0a9f07e0ec5c868e78670f34b45b3c3c2e679ed769e6225796b900d0d02735a0c52a21eba72356f3ad617de076c405532e698dc')
+sha512sums_aarch64=('73c68017171b57f4e1126b1477dd129a8d8e7189fe42387145fccb4808a3ac1da320ef10d83754364706de80ecc700dd8e04321f0d60c202e20d546f9304efc3')
+sha512sums_x86_64=('5a5affcbec04ea926a32d10e236c1342227f1b6d416cb797f88f943b2c4f1dcf53b5897a115f1c1aa9ce8ce92fd637e1c50bd223b04866577681f0584eccdbc6')
 
 package() {
     install -Dm755 "${srcdir}/proton-drive-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/proton-drive"
