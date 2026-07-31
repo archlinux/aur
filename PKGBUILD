@@ -1,4 +1,4 @@
-# Maintainer: ambi <ambigioz@gmail.com>
+# Maintainer: Dario Banfi <hello@dariobanfi.com>
 
 pkgname=anthropic-cli-bin
 _pkgname=anthropic-cli
