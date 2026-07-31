@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 # @PKGNAME@-ctl — helper CLI for T3 Code Docker instance @PKGNAME@
 #
-# Wraps common docker operations against the running container.
-#
-# All docker calls go through `sg docker -c ...` because a user who was
-# added to the docker group AFTER their session started doesn't have the
-# group in their process credentials until they log out and back in. `sg`
-# checks /etc/group at exec time and switches the effective GID, so this
-# tool works immediately after usermod without a re-login.
+# All docker calls go through `sg docker -c ...` so the tool works even
+# when the invoking shell/systemd manager doesn't have `docker` in its
+# supplementary groups (e.g. right after `usermod -aG docker` without
+# a re-login). sg reads /etc/group at exec time.
 set -euo pipefail
 
 readonly PKGNAME='@PKGNAME@'
@@ -15,12 +12,17 @@ readonly T3_PORT='@T3_PORT@'
 readonly IMAGE_TAG='@IMAGE_TAG@'
 readonly CONTAINER="${PKGNAME}"
 
-# Run docker via sg, correctly escaping args so nested quotes work.
 _docker() {
   local cmdline
-  # printf %q escapes each arg for safe eval inside sg -c's single string.
   cmdline=$(printf ' %q' docker "$@")
   sg docker -c "${cmdline# }"
+}
+
+# LAN IP for mobile pairing. Uses the source addr of the default-route
+# lookup; empty string on failure.
+_lan_ip() {
+  ip -4 route get 1.1.1.1 2>/dev/null | \
+    awk '{for (i=1; i<=NF; i++) if ($i=="src") {print $(i+1); exit}}'
 }
 
 usage() {
@@ -28,16 +30,17 @@ usage() {
 Usage: ${PKGNAME}-ctl <command>
 
 Commands:
-  pair              Issue a fresh one-time pairing token and print the
-                    browser URL (http://127.0.0.1:${T3_PORT}/pair#token=...).
+  pair              Issue a fresh one-time pairing token and print BOTH
+                    the desktop URL (127.0.0.1) and the LAN URL (for
+                    mobile devices on the same network).
   logs [-f]         Show container logs (add -f to follow).
   status            Show container state + HTTP reachability.
   exec <cmd> ...    Run an arbitrary command inside the container.
   restart           Restart the systemd --user service.
 
 Examples:
-  ${PKGNAME}-ctl pair          # get a browser pairing URL
-  ${PKGNAME}-ctl logs -f       # tail the T3 server logs
+  ${PKGNAME}-ctl pair              # get pairing URLs for desktop + mobile
+  ${PKGNAME}-ctl logs -f           # tail the T3 server logs
   ${PKGNAME}-ctl exec t3 auth session list
 USAGE
 }
@@ -60,7 +63,7 @@ require_running() {
 cmd_pair() {
   require_docker
   require_running
-  local out token expires
+  local out token expires lan
   out=$(_docker exec "${CONTAINER}" t3 auth pairing create 2>&1)
   token=$(printf '%s\n' "${out}" | awk '/^Token:/ {print $2; exit}')
   expires=$(printf '%s\n' "${out}" | awk -F': ' '/^Expires at:/ {print $2; exit}')
@@ -69,11 +72,22 @@ cmd_pair() {
     printf '%s\n' "${out}" >&2
     exit 1
   fi
+  lan=$(_lan_ip)
+
   printf '\n'
-  printf '  Pairing URL: http://127.0.0.1:%s/pair#token=%s\n' "${T3_PORT}" "${token}"
-  printf '  Expires:     %s\n' "${expires:-unknown}"
+  printf '  Token:    %s\n' "${token}"
+  printf '  Expires:  %s\n' "${expires:-unknown}"
   printf '\n'
-  printf '  Open the URL in your browser to complete pairing (one-time).\n'
+  printf '  Desktop:  http://127.0.0.1:%s/pair#token=%s\n' "${T3_PORT}" "${token}"
+  if [[ -n "${lan}" ]]; then
+    printf '  Mobile:   http://%s:%s/pair#token=%s\n' "${lan}" "${T3_PORT}" "${token}"
+  else
+    printf '  Mobile:   (LAN IP could not be detected)\n'
+  fi
+  printf '\n'
+  printf '  Open ONE of the URLs above to complete pairing (one-time).\n'
+  printf '  The mobile URL requires this device and your phone to be on\n'
+  printf '  the same LAN, and the LAN firewall to allow port %s.\n' "${T3_PORT}"
   printf '\n'
 }
 
@@ -85,8 +99,9 @@ cmd_logs() {
 
 cmd_status() {
   require_docker
-  local state
+  local state lan
   state=$(_docker inspect -f '{{.State.Status}}' "${CONTAINER}" 2>/dev/null || echo 'not-created')
+  lan=$(_lan_ip)
   printf 'Container: %s\n' "${CONTAINER}"
   printf 'State:     %s\n' "${state}"
   printf 'Port:      %s\n' "${T3_PORT}"
@@ -94,7 +109,10 @@ cmd_status() {
   if [[ "${state}" == 'running' ]]; then
     local code
     code=$(curl -sS -o /dev/null -w '%{http_code}' "http://127.0.0.1:${T3_PORT}/" 2>/dev/null || echo 'unreachable')
-    printf 'HTTP:      %s (http://127.0.0.1:%s/)\n' "${code}" "${T3_PORT}"
+    printf 'Desktop:   HTTP %s at http://127.0.0.1:%s/\n' "${code}" "${T3_PORT}"
+    if [[ -n "${lan}" ]]; then
+      printf 'Mobile:    http://%s:%s/ (LAN reachable if firewall allows)\n' "${lan}" "${T3_PORT}"
+    fi
   fi
 }
 

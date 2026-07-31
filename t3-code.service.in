@@ -34,7 +34,7 @@ Type=simple
 #   --rm             : container is stateless; state lives in %h/.t3/ on
 #                      the host via the bind mount.
 ExecStartPre=-/usr/bin/sg docker -c "docker rm -f @PKGNAME@"
-ExecStart=/usr/bin/sg docker -c "docker run --rm --name @PKGNAME@ --network host --user %U:%G -e HOME=%h -w %h -v %h:%h:rw @IMAGE_TAG@ t3 serve --host 127.0.0.1 --port @T3_PORT@ --no-browser"
+ExecStart=/usr/bin/sg docker -c "docker run --rm --name @PKGNAME@ --network host --user %U:%G -e HOME=%h -w %h -v %h:%h:rw @IMAGE_TAG@ t3 serve --host 0.0.0.0 --port @T3_PORT@ --no-browser"
 ExecStop=/usr/bin/sg docker -c "docker stop -t 5 @PKGNAME@"
 
 Restart=on-failure
