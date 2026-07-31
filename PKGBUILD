@@ -2,7 +2,7 @@
 
 pkgname=gd32-isp-console-bin
 pkgver=4.0.5.26748
-pkgrel=2
+pkgrel=5
 pkgdesc="GigaDevice MCU ISP Console for Linux"
 arch=('x86_64')
 url="https://www.gd32mcu.com"
@@ -12,12 +12,12 @@ conflicts=(${pkgname%-bin})
 #replaces=(${pkgname})
 depends=(
     dbus
-    gcc-libs
     glib2
-    glibc
+    libgcc_s.so
+    libstdc++.so
+    libz.so
     libusb
     openssl
-    zlib
 )
 makedepends=(libarchive)
 backup=()
