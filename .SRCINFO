@@ -1,0 +1,25 @@
+pkgbase = nosleep
+	pkgdesc = Simple script to keep your Linux system awake
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Naiko8642/nosleep
+	arch = any
+	license = MIT
+	depends = bash
+	depends = systemd
+	optdepends = libnotify: For desktop notifications
+	optdepends = xorg-xprintidle: For X11 idle time monitoring
+	optdepends = xdotool: For window title checks
+	optdepends = xorg-xprop: For root window property checks
+	optdepends = xorg-xrandr: For external monitor checks
+	optdepends = pulseaudio: For audio playback checks
+	optdepends = bluez-utils: For Bluetooth device checks
+	optdepends = smartmontools: For disk SMART temperature monitoring
+	optdepends = iproute2: For network interface checks
+	optdepends = sysstat: For system statistics
+	optdepends = curl: For HTTP status checks
+	optdepends = wget: For HTTP status checks fallback
+	source = nosleep-1.0.0.tar.gz::https://github.com/Naiko8642/nosleep/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = eee62d3be0076480f136531625fe1aad0be5d7eacdc4b40a477cb2b16c4c2af4
+
+pkgname = nosleep
