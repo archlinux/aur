@@ -1,4 +1,4 @@
-# Maintainer: Your Name <gakganapocno@gmail.com>
+# Maintainer: Ivan Nebotov <i.nebotov@gdllc.dev>
 
 pkgname=trc
 pkgver=0.2
