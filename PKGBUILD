@@ -2,14 +2,14 @@
 
 pkgbase=libfronius
 pkgname=('libfronius' 'libfronius-docs')
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
 makedepends=('cmake' 'git' 'doxygen' 'pkgconf' 'libmodbus')
 source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libfronius.git#tag=v${pkgver}")
-sha256sums=('a4d0620db92f047d7dd4f86942ba76aab2629aed7f046523fc84c5892a3ac06d')
+sha256sums=('7315234be48f505815d8fab1bad784c743db1a14157421e012cdfc7d826e5102')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
