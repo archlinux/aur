@@ -658,6 +658,38 @@ def _extract_tarball(
     return dest_dir
 
 
+def _run(
+    cmd: list[str] | str,
+    *,
+    cwd: str,
+    env: dict[str, str],
+    shell: bool = False,
+) -> None:
+    """Run a command, streaming its output through the logger."""
+    display = cmd if shell else shlex.join(cmd)
+    log.info("Running command: [%s]", display)
+
+    with subprocess.Popen(
+        cmd,
+        shell=shell,
+        cwd=cwd,
+        env=env,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+    ) as process:
+        assert process.stdout is not None
+        for line in iter(process.stdout.readline, ""):
+            line = line.rstrip()
+            if line:
+                log.info("%s", line)
+        return_code = process.wait()
+
+    if return_code != 0:
+        raise subprocess.CalledProcessError(return_code, cmd)
+
+
 def install_dependencies(
     extracted_dir: Path,
     config: dict[str, Any],
@@ -688,12 +720,7 @@ def install_dependencies(
     venv_link.symlink_to(venv_cache_dir)
 
     def run(cmd: list[str]) -> None:
-        subprocess.run(
-            cmd,
-            cwd=str(extracted_dir),
-            env=env,
-            check=True,
-        )
+        _run(cmd, cwd=str(extracted_dir), env=env)
 
     run(["uv", "--quiet", "venv", "--allow-existing"])
     run(["uv", "--quiet", "sync", "--inexact"])
@@ -763,14 +790,7 @@ def run_prekick_commands(
         if not isinstance(cmd, str) or not cmd.strip():
             continue
 
-        log.info("Running command: [%s]", cmd)
-        subprocess.run(
-            cmd,
-            shell=True,
-            cwd=str(extracted_dir),
-            env=env,
-            check=True,
-        )
+        _run(cmd, cwd=str(extracted_dir), env=env, shell=True)
 
 
 def launch_comfyui(
