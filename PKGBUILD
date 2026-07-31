@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Fleasion"
 arch=('x86_64')
 url="https://github.com/fleasion/Fleasion"
-license=('GPL V3')
+license=('GPL-3.0-only')
 provides=('fleasion')
 conflicts=('fleasion')
 depends=(
@@ -23,6 +23,9 @@ depends=(
     'python-zstandard'
     'python-dateutil'
     'python-platformdirs'
+    'python-sounddevice'
+    'python-browser-cookie3'
+    'python3-dracopy'
     'mesa'
     'sdl3'
     'libx11'
@@ -71,10 +74,6 @@ if [ ! -d "$VENV_DIR" ]; then
 fi
 
 source "$VENV_DIR/bin/activate"
-
-python -c "import DracoPy" 2>/dev/null || pip install --quiet DracoPy
-python -c "import browser_cookie3" 2>/dev/null || pip install --quiet browser-cookie3
-python -c "import sounddevice" 2>/dev/null || pip install --quiet sounddevice
 
 cd "$INSTALL_DIR"
 exec python launcher.py "$@"
