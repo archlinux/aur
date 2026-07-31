@@ -1,0 +1,26 @@
+pkgbase = python-epomakercontroller-git
+	pkgdesc = Library and CLI for Epomaker keyboards with a screen (RT100, TH80)
+	pkgver = 0.0.9.r185.g9a0f194
+	pkgrel = 1
+	url = https://github.com/strodgers/epomaker-controller
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-hidapi
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-click
+	depends = python-dateutil
+	depends = python-pillow
+	depends = python-opencv
+	optdepends = python-gpustat: GPU temperature sensors
+	provides = python-epomakercontroller=0.0.9
+	conflicts = python-epomakercontroller
+	source = epomakercontroller::git+https://github.com/strodgers/epomaker-controller.git#commit=9a0f19484427e9756e9cc5dbf1f6f8c5fea44bc2
+	sha256sums = SKIP
+
+pkgname = python-epomakercontroller-git
