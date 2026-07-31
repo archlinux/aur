@@ -1,67 +1,59 @@
 # Maintainer: RadicalMuffinMan <support@moonfin.app>
+# Written by the Moonfin release workflow. Edits here are overwritten.
 pkgname=moonfin-bin
-_pkgname=moonfin
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
-pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
+pkgdesc='Jellyfin & Emby media client for Linux (binary release)'
 arch=('x86_64')
-url="https://github.com/Moonfin-Client/Moonfin-Core"
+url='https://github.com/Moonfin-Client/Moonfin-Core'
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1' 'mpv' 'harfbuzz-icu')
 provides=('moonfin')
 conflicts=('moonfin')
+# The binary and the bundled libraries ship stripped already, and
+# makepkg's pass over a prebuilt Flutter bundle can break it.
+options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
-sha256sums=('d94d35d3b559fd786cd378519f845601884baab11ee886fac9d2406e90f4f6b3')
+sha256sums=('829b6331cbeb495de3e1fa10ebc9843d1a5881feeb6d0d4df69cb85645c93395')
 
 package() {
-  local src_dir="${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/moonfin-${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-  cp -r "${src_dir}"/* "${pkgdir}/usr/lib/${_pkgname}/"
+  # Everything except the shared files is the app itself. Listing what
+  # to skip rather than what to take keeps this working when the
+  # Flutter bundle gains a directory.
+  install -dm755 "${pkgdir}/usr/lib/moonfin"
+  for entry in *; do
+    case "${entry}" in
+      share|README.txt) continue ;;
+    esac
+    cp -a "${entry}" "${pkgdir}/usr/lib/moonfin/"
+  done
+  chmod 755 "${pkgdir}/usr/lib/moonfin/moonfin" \
+    "${pkgdir}/usr/lib/moonfin/moonfin-bin"
 
-  # Drop bundled libs that should come from distro packages
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libmpv.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libass.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libsecret-1.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavcodec.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavdevice.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavfilter.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavformat.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavutil.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libpostproc.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libswresample.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libswscale.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-drm.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-wayland.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-x11.so."*
-  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libvdpau.so."*
+  # These come from the depends list, and the launcher searches the
+  # bundled lib directory first, so leftover copies would shadow the
+  # system ones.
+  for lib in mpv ass secret-1 avcodec avdevice avfilter avformat \
+    avutil postproc swresample swscale va va-drm va-wayland va-x11 \
+    vdpau; do
+    rm -f "${pkgdir}/usr/lib/moonfin/lib/lib${lib}.so."*
+  done
 
+  # The launcher in the bundle reads its own directory to find the
+  # libraries, so it is called by its real path rather than linked to.
   install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
-#!/bin/sh
-APPDIR="/usr/lib/${_pkgname}"
-export LD_LIBRARY_PATH="\${LD_LIBRARY_PATH:+\$LD_LIBRARY_PATH:}\$APPDIR/lib"
-exec "\$APPDIR/${_pkgname}" "\$@"
-EOF
-  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+  printf '%s\n' '#!/bin/sh' 'exec /usr/lib/moonfin/moonfin "$@"' \
+    > "${pkgdir}/usr/bin/moonfin"
+  chmod 755 "${pkgdir}/usr/bin/moonfin"
 
-  install -dm755 "${pkgdir}/usr/share/applications"
-  cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
-[Desktop Entry]
-Name=Moonfin
-Comment=Jellyfin & Emby media client
-Exec=${_pkgname} %u
-Icon=${_pkgname}
-Terminal=false
-Type=Application
-Categories=AudioVideo;Video;Player;
-MimeType=x-scheme-handler/jellyfin;x-scheme-handler/emby;
-StartupWMClass=${_pkgname}
-EOF
-
-  local icon="${src_dir}/data/flutter_assets/assets/icons/${_pkgname}.png"
-  if [ -f "${icon}" ]; then
-    install -Dm644 "${icon}" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  fi
+  install -Dm644 share/applications/org.moonfin.linux.desktop \
+    -t "${pkgdir}/usr/share/applications"
+  install -Dm644 share/metainfo/org.moonfin.linux.metainfo.xml \
+    -t "${pkgdir}/usr/share/metainfo"
+  install -Dm644 share/icons/hicolor/512x512/apps/org.moonfin.linux.png \
+    -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+  install -Dm644 share/pixmaps/org.moonfin.linux.png \
+    -t "${pkgdir}/usr/share/pixmaps"
 }
