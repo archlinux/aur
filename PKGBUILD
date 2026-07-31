@@ -2,7 +2,7 @@
 
 pkgname=python-numbers-parser
 _name=${pkgname#python-}
-pkgver=4.18.5
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="Read and write Apple Numbers spreadsheets"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ makedepends=(
     'python-wheel')
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('6bd7258fb7ae0c8350d574f3994cccb2c012a0c8dec6fef05d492686b2361bbd')
+sha256sums=('09c434ca9d11140b9d612932baab54389a2467650599cbe267e811b6924b6977')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
