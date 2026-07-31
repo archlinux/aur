@@ -2,15 +2,16 @@
 
 pkgname=lmm-api-git
 pkgver=0.0.0.r1.gbd67db5
-pkgrel=1
+pkgrel=2
 pkgdesc='LMM API model management and distribution system (git version)'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/api.lmm.best'
 license=('AGPL-3.0-only')
 depends=('ca-certificates' 'tzdata')
 makedepends=('git' 'go>=1.25.1' 'bun')
-provides=("lmm-api=${pkgver}")
-conflicts=('lmm-api')
+provides=("lmm-api=${pkgver}" "new-api=${pkgver}")
+conflicts=('lmm-api' 'new-api' 'new-api-git')
+replaces=('new-api-git')
 backup=('etc/lmm-api/lmm-api.env')
 source=(
   'lmm-api::git+https://github.com/LIghtJUNction/api.lmm.best.git#branch=main'
@@ -19,7 +20,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '09a044cf5f7d802375e292e5d2ac2464dc4efb5b0645f488b4936d317c4ac05a'
+  '67462494928ff479b9db41f222cbc1936044a234f55d206847bde2bdb6abab22'
   'f204c6576c27812573b155b3f8649537de1f49b576cbb56523d0e3a02c0c9b98'
 )
 
