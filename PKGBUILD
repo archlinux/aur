@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aria2-next
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Maintained aria2 fork with extensive bug fixes and modernized architecture"
 arch=($CARCH)
@@ -12,12 +12,13 @@ conflicts=(${pkgname})
 #replaces=(${pkgname})
 depends=(
     c-ares
-    libgcc
-    libstdc++
-    libxml2
+    expat
+    libgcc_s.so
+    libstdc++.so
+    libssh2
+    libz.so
     openssl
     sqlite
-    zlib
 )
 makedepends=(
     git
@@ -41,7 +42,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('c1e7f4430ffc150c1730cb3341129f4804d6e0954696feb658c919a9c906480e')
+sha256sums=('3640f0c3f38a6b48b68a5f1a51fffb688129a9a23e11f031fdfeffac64217fb7')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
