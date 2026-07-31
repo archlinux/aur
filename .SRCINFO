@@ -3,7 +3,6 @@ pkgbase = mpvcut
 	pkgver = 0.6
 	pkgrel = 1
 	url = https://codeberg.org/tuxnix/mpvcut
-	install = mpvcut.install
 	arch = any
 	license = GLPv2-only
 	makedepends = git
