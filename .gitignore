@@ -1,5 +1,5 @@
-src/
-pkg/
-vcpkg/
+/src/
+/pkg/
 *.pkg.tar.*
 *.tar.gz
+/vcpkg/

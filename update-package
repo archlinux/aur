@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+latest_tag="$(
+    curl \
+        --fail \
+        --silent \
+        --show-error \
+        --location \
+        https://api.github.com/repos/BeamMP/BeamMP-Launcher/releases/latest |
+    sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' |
+    head -n1
+)"
+
+if [[ -z "$latest_tag" ]]; then
+    printf 'Error: could not determine the latest BeamMP release.\n' >&2
+    exit 1
+fi
+
+latest_version="${latest_tag#v}"
+current_version="$(
+    sed -n 's/^pkgver=//p' PKGBUILD |
+    head -n1
+)"
+
+if [[ "$latest_version" == "$current_version" ]]; then
+    printf 'Already current: %s\n' "$current_version"
+    exit 0
+fi
+
+printf 'Updating BeamMP %s -> %s\n' \
+    "$current_version" \
+    "$latest_version"
+
+sed -i \
+    "s/^pkgver=.*/pkgver=$latest_version/" \
+    PKGBUILD
+
+sed -i \
+    's/^pkgrel=.*/pkgrel=1/' \
+    PKGBUILD
+
+rm -rf src pkg
+rm -f ./*.pkg.tar.zst
+
+updpkgsums
+makepkg --printsrcinfo > .SRCINFO
+
+printf '\nUpdated files:\n'
+git diff -- PKGBUILD .SRCINFO
+
+printf '\nNext steps:\n'
+printf '  makepkg -Cfs\n'
+printf '  namcap PKGBUILD\n'
+printf '  namcap ./beammp-%s-1-x86_64.pkg.tar.zst\n' "$latest_version"
+printf '  extra-x86_64-build\n'
+printf '  git add PKGBUILD .SRCINFO\n'
+printf '  git commit -m "Update to %s"\n' "$latest_version"
+printf '  git push\n'
