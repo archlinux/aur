@@ -1,0 +1,26 @@
+pkgbase = ashwc
+	pkgdesc = a minimal wayland compositor with various layouts, animations and all the eye-candy
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/shadowash8/ashwc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libinput
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = wlroots0.20
+	depends = scenefx0.5
+	provides = ashwc
+	provides = wayland-compositor
+	conflicts = ashwc-git
+	conflicts = ashwc-git-debug
+	source = ashwc-0.2.0.tar.gz::https://github.com/shadowash8/ashwc/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9201d11b3a4a01063742febf53b67cea8f8502aff7b980c9f84e114ecf63723f
+
+pkgname = ashwc
