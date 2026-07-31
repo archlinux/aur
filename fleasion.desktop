@@ -2,10 +2,6 @@
 Type=Application
 Name=Fleasion
 Comment=Roblox asset interceptor and replacer for Sober
-[Desktop Entry]
-Type=Application
-Name=Fleasion
-Comment=Roblox asset interceptor and replacer for Sober
 Exec=fleasion
 Icon=fleasion
 Terminal=false
