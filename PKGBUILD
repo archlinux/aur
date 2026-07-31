@@ -4,7 +4,7 @@
 
 pkgname=cosmic-settings-daemon-application-volume
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Cosmic settings daemon'
 arch=(x86_64)
