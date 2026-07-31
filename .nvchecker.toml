@@ -1,0 +1,4 @@
+[signal-cli-native-bin]
+source = "github"
+github = "AsamK/signal-cli"
+use_latest_release = true
