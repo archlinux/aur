@@ -1,11 +1,11 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = cmake<4.4
+	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
 	makedepends = clang>=21
@@ -29,7 +29,7 @@ pkgbase = open-wallpaper-engine
 	depends = quickjs-ng
 	depends = glfw
 	depends = wayland
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.0
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.0-fix
 	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=vulkan-sdk-1.4.321.0
 	source = git+https://github.com/litocpp/rstd.git#commit=bf5f855ddb1b84390306e0913b89149ac72a3510
 	source = git+https://github.com/litocpp/vvk.git#commit=8fcfd34b43a13ade515f029b0b4209bd3684645f
@@ -40,7 +40,7 @@ pkgbase = open-wallpaper-engine
 	source = 0004-cmake-Use-system-glslang.patch
 	source = 0005-cmake-Use-system-VulkanMemoryAllocator.patch
 	source = 0006-cmake-Install-weweb-to-bin.patch
-	sha256sums = 922083c9b54035ede427c66634081f3854ca539ce45f8dffed3c85c653727cf0
+	sha256sums = b5c66ceee52069befbeb43c368c060ef61def00698922c0ad4d747f2c5a5a424
 	sha256sums = 287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca
 	sha256sums = a5ce0c3f766a5b75230cb05e5b9f49f52a8d10111e0391d418f27a239194e310
 	sha256sums = 1c2f9e285109a2024219212781202d19bbef56a68c6dff42a5622155b2d8276f

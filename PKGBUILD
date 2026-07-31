@@ -6,16 +6,16 @@ _wavsen_commit=e49fc62fdc1b57abeabb643daa6ebab96fb3821f
 
 pkgname=open-wallpaper-engine
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
          "waywallen>=0.2.6" cef glslang fontconfig quickjs-ng glfw wayland)
-makedepends=('cmake<4.4' ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
+makedepends=(cmake ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
              vulkan-memory-allocator)
-source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
+source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver-fix"
         "git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=$_spirv_reflect_tag"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
@@ -26,7 +26,7 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "0004-cmake-Use-system-glslang.patch"
         "0005-cmake-Use-system-VulkanMemoryAllocator.patch"
         "0006-cmake-Install-weweb-to-bin.patch")
-sha256sums=('922083c9b54035ede427c66634081f3854ca539ce45f8dffed3c85c653727cf0'
+sha256sums=('b5c66ceee52069befbeb43c368c060ef61def00698922c0ad4d747f2c5a5a424'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
             'a5ce0c3f766a5b75230cb05e5b9f49f52a8d10111e0391d418f27a239194e310'
             '1c2f9e285109a2024219212781202d19bbef56a68c6dff42a5622155b2d8276f'
