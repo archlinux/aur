@@ -1,6 +1,6 @@
 pkgbase = ytcui
 	pkgdesc = A lightweight terminal-based YouTube client written in C++
-	pkgver = 3.5.7
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/MilkmanAbi/ytcui
 	arch = x86_64

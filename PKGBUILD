@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <floss@jetm.me>
 
 pkgname=ytcui
-pkgver=3.5.7
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A lightweight terminal-based YouTube client written in C++'
 arch=('x86_64')
