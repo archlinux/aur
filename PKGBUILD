@@ -12,14 +12,22 @@
 pkgbase=epomaker-rt100-git
 pkgname=('epomaker-rt100-git' 'epomaker-rt100-gtk-git')
 _srcname=epomaker-rt100
-pkgver=0.2.0.r24.g4ee85a9
+pkgver=0.2.0.r25.g0cab073
 pkgrel=1
 arch=('any')
 url="https://github.com/dwaycik/epomaker-rt100"
 license=('MIT')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("${_srcname}::git+https://github.com/dwaycik/epomaker-rt100.git")
-sha256sums=('SKIP')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools'
+             'python-wheel' 'python-poetry-core')
+# The library is built from source here rather than depended on. Its own
+# package must depend on python-opencv and python-gpustat because it also ships
+# upstream's CLI, which imports both -- and that pulls VTK, OpenMPI, hdf5 and
+# qt6-base, roughly 436 MiB. This app needs neither: core.py supplies them with
+# Pillow and numpy, verified byte-identical against real OpenCV through the
+# library's own encoders.
+source=("${_srcname}::git+https://github.com/dwaycik/epomaker-rt100.git"
+        "epomakercontroller::git+https://github.com/strodgers/epomaker-controller.git#commit=9a0f19484427e9756e9cc5dbf1f6f8c5fea44bc2")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_srcname}"
@@ -29,15 +37,32 @@ pkgver() {
 build() {
   cd "${srcdir}/${_srcname}"
   python -m build --wheel --no-isolation
+  cd "${srcdir}/epomakercontroller"
+  python -m build --wheel --no-isolation
 }
 
 package_epomaker-rt100-git() {
   pkgdesc="Control the Epomaker RT100 on Linux: screen images and GIFs, clock/CPU/temp, per-key RGB (terminal UI)"
-  depends=('python' 'python-epomakercontroller-git' 'python-pillow' 'python-psutil'
-           'python-textual')
+  # python-epomakercontroller-git is NOT a dependency. It would drag in
+  # python-opencv (VTK, OpenMPI, hdf5, qt6-base -- about 436 MiB) and
+  # python-gpustat from the AUR, for five image calls and a GPU sensor this
+  # hardware does not have. core.py supplies both with Pillow and numpy
+  # instead, verified byte-identical against real OpenCV through the library's
+  # own encoders. The library source is vendored at build time below.
+  depends=('python' 'python-pillow' 'python-numpy' 'python-psutil'
+           'python-hidapi' 'python-textual' 'python-click' 'python-dateutil')
   provides=("${_srcname}=${pkgver}")
   conflicts=("${_srcname}")
+  # Bundles the library, so it cannot coexist with the standalone package.
+  conflicts+=('python-epomakercontroller-git' 'python-epomakercontroller')
   install="${_srcname}.install"
+
+  python -m installer --destdir="${pkgdir}" \
+    "${srcdir}/epomakercontroller/dist/"*.whl
+  # Upstream's CLI needs opencv and gpustat, which this package deliberately
+  # does not pull in, so the entry point is removed rather than shipped broken.
+  # Install python-epomakercontroller-git if you want the CLI.
+  rm -f "${pkgdir}/usr/bin/epomakercontroller"
 
   cd "${srcdir}/${_srcname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl

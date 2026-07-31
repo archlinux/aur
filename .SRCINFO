@@ -1,5 +1,5 @@
 pkgbase = epomaker-rt100-git
-	pkgver = 0.2.0.r24.g4ee85a9
+	pkgver = 0.2.0.r25.g0cab073
 	pkgrel = 1
 	url = https://github.com/dwaycik/epomaker-rt100
 	arch = any
@@ -9,19 +9,27 @@ pkgbase = epomaker-rt100-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	source = epomaker-rt100::git+https://github.com/dwaycik/epomaker-rt100.git
+	source = epomakercontroller::git+https://github.com/strodgers/epomaker-controller.git#commit=9a0f19484427e9756e9cc5dbf1f6f8c5fea44bc2
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = epomaker-rt100-git
 	pkgdesc = Control the Epomaker RT100 on Linux: screen images and GIFs, clock/CPU/temp, per-key RGB (terminal UI)
 	install = epomaker-rt100.install
 	depends = python
-	depends = python-epomakercontroller-git
 	depends = python-pillow
+	depends = python-numpy
 	depends = python-psutil
+	depends = python-hidapi
 	depends = python-textual
-	provides = epomaker-rt100=0.2.0.r24.g4ee85a9
+	depends = python-click
+	depends = python-dateutil
+	provides = epomaker-rt100=0.2.0.r25.g0cab073
 	conflicts = epomaker-rt100
+	conflicts = python-epomakercontroller-git
+	conflicts = python-epomakercontroller
 
 pkgname = epomaker-rt100-gtk-git
 	pkgdesc = Control the Epomaker RT100 on Linux: screen images and GIFs, clock/CPU/temp, per-key RGB (GTK4 desktop app)
@@ -29,5 +37,5 @@ pkgname = epomaker-rt100-gtk-git
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	provides = epomaker-rt100-gtk=0.2.0.r24.g4ee85a9
+	provides = epomaker-rt100-gtk=0.2.0.r25.g0cab073
 	conflicts = epomaker-rt100-gtk
