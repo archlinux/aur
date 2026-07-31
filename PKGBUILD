@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 
 pkgname=lore-server-bin
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Server for the lore version control system from Epic Games"
 url="https://github.com/EpicGames/lore"
@@ -11,7 +11,7 @@ arch=('x86_64')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/EpicGames/lore/releases/download/v${pkgver}/loreserver-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('42bce4124d07642e0eb1c996d6262889760b142992d0ed0f6054d0968bc9efc1')
+sha256sums=('f0de84c6175a476f157754f57316be0346105be502c93fabb65bb908eab0e1e1')
 
 package() {
   install -Dm755 "$srcdir/loreserver" "$pkgdir/usr/bin/loreserver"
