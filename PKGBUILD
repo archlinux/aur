@@ -45,6 +45,15 @@ prepare() {
   cd "duckstation-${_upstream_commit}"
 
   local goosify="${srcdir}/goosify-${_builder_tag}.sh"
+
+  # goosify.sh is generated for one exact upstream commit; refuse a mismatch.
+  local patch_base
+  patch_base=$(sed -n 's/^# Patch: \([0-9a-f]\{40\}\).*/\1/p' "${goosify}")
+  if [[ ${patch_base} != "${_upstream_commit}" ]]; then
+    echo "ERROR: goosify.sh targets ${patch_base:-<no base header>}, but _upstream_commit=${_upstream_commit}" >&2
+    return 1
+  fi
+
   install -m755 "${goosify}" ./goosify.sh
   bash ./goosify.sh
 }
