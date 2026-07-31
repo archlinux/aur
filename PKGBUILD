@@ -10,13 +10,16 @@
 
 pkgname=zennotes-bin
 _appname=ZenNotes
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Keyboard-first, local-first Markdown notes with vim motions and live preview"
 arch=('x86_64')
 url="https://github.com/ZenNotes/zennotes"
 license=('MIT')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss')
+# desktop-file-utils ships the alpm hook that rebuilds mimeinfo.cache, which is
+# what actually registers x-scheme-handler/zennotes from our .desktop file —
+# without it, zennotes:// deep links silently go nowhere on a minimal install.
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'desktop-file-utils')
 provides=('zennotes')
 conflicts=('zennotes')
 options=('!strip')
@@ -27,7 +30,7 @@ source=(
 
 # sha256 of the uploaded ZenNotes-${pkgver}-linux-x64.tar.gz release asset
 # (GitHub's authoritative asset digest; no Arch tooling needed).
-sha256sums=('7d9cbcce42254ec4cdab5a9a5fbed37221fcd3f462137822e8cc6160084baa49')
+sha256sums=('048e2a57e1d7f91beb532b5ac6cee68fde05f72270aa175f879ee143044b3181')
 
 package() {
   cd "${srcdir}"
