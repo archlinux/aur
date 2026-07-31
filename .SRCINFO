@@ -1,6 +1,6 @@
 pkgbase = rider
 	pkgdesc = A cross-platform .NET IDE by JetBrains.
-	pkgver = 2026.2
+	pkgver = 2026.2.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.jetbrains.com/rider/
@@ -15,9 +15,9 @@ pkgbase = rider
 	options = staticlibs
 	source = jetbrains-rider.desktop
 	sha256sums = 4d5438fd52380ccd09deef98cb82707f296ebb27a3faed2fceb1b68eba335ec8
-	source_x86_64 = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2026.2.tar.gz
-	sha256sums_x86_64 = eebbc49e29852496cbc7f6399eb47b56e8a95fc921c4dae7c05cca6b2f6d22a7
-	source_aarch64 = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2026.2-aarch64.tar.gz
-	sha256sums_aarch64 = 7ef76057543c80b81807f8a1ae9ba4256f43a8bba9678e4918a69deefa2f008a
+	source_x86_64 = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2026.2.0.1.tar.gz
+	sha256sums_x86_64 = 7e973d689b9f3b6422c3b772af5b8eb0c1ecbc1aee16e5f80f4298d5eae99b0a
+	source_aarch64 = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2026.2.0.1-aarch64.tar.gz
+	sha256sums_aarch64 = 32e2b576f8b77e73dd4b21133de1245b893b84d14f90762d68a8e9fc86737485
 
 pkgname = rider
