@@ -305,7 +305,7 @@ def create_directories(
     ]
 
     for directory in dirs:
-        Path(directory).mkdir(parents=True, exist_ok=True)
+        directory.mkdir(parents=True, exist_ok=True)
 
 
 def _retry_delay(
@@ -593,7 +593,7 @@ def cleanup_stale_tarballs(
     are exempt, as well as any names in ``exempt_names``.
     """
     exempt = set(exempt_names) if exempt_names else set()
-    entries = list(Path(version_cache_dir).glob("*.tar.gz"))
+    entries = list(version_cache_dir.glob("*.tar.gz"))
 
     # First pass: collect symlink targets into the exempt set.
     for entry in entries:
@@ -708,7 +708,7 @@ def install_dependencies(
     if config["pypi_list"]:
         env["UV_INDEX"] = " ".join(config["pypi_list"])
 
-    venv_cache_dir = Path(config["venv_cache_dir"])
+    venv_cache_dir = config["venv_cache_dir"]
     venv_link = extracted_dir / ".venv"
 
     if venv_link.is_symlink():
@@ -860,7 +860,7 @@ def main() -> None:
     extra_dirs = _resolve_extra_model_paths(config)
     create_directories(config, extra_dirs)
 
-    version_cache_dir = Path(config["version_cache_dir"])
+    version_cache_dir = config["version_cache_dir"]
     version_head, tarball_url, tag_name = _resolve_version(
         config,
         version_cache_dir,
@@ -882,7 +882,7 @@ def main() -> None:
     log.info("Extracting ComfyUI %s ...", version_head)
 
     prefix = f"_run-{version_head}-"
-    runtime_dir = Path(config["runtime_dir"])
+    runtime_dir = config["runtime_dir"]
 
     for old in runtime_dir.iterdir():
         if old.is_dir() and old.name.startswith("_run-"):
