@@ -10,8 +10,8 @@
 #   sha256sums=('SKIP')
 
 pkgname=chest-backup
-pkgver=0.1.8
-pkgrel=3
+pkgver=0.1.9
+pkgrel=1
 install=chest-backup.install
 pkgdesc="Full-stack backup manager with web UI, system tray and scheduling"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('a274043b31c36e6486a4559d6e09c1db48965eb5af3a1f8194cf83924bce3b98')
+sha256sums=('4e31ad69bab9b4b0eccb0af24d452c31dde25641e6158f58d6d39368f891ed6a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
