@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=kvrt-x86_64
-pkgver=24.0.6.0.202607301739
+pkgver=24.0.6.0.202607310338
 pkgrel=1
 pkgdesc='Kaspersky Virus Removal Tool - Runtime and Database Signature'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends_x86_64=(
 )
 options=(!debug)
 source_x86_64=("$pkgname-$pkgver-$pkgrel.run::https://devbuilds.s.kaspersky-labs.com/devbuilds/kvrt_linux/latest/kvrt.run")
-b2sums_x86_64=('27d8faefcc93bea86cd57529cc6664b0d7846f33c2de74695bdcb49da06a389de86b791d6d57fdbcc684562b943a7dfe9fc64200130b4f1e33c6ffbedc4f2460')
+b2sums_x86_64=('a4a68472de17b7a24faf88ade2f279fde0c1de93114061da460bc574d0e5938846d58066512d53b3fbd6b077ff07a456a34ba403903b33b80a4d9a3e7f952024')
 
 prepare() {
   if [[ "$CARCH" != "x86_64" ]]; then
