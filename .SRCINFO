@@ -36,5 +36,6 @@ pkgbase = cosmic-settings-daemon-application-volume
 	source = git+https://github.com/AdityaHebballe/cosmic-settings-daemon.git#branch=feat/application-volume-control
 	source = cosmic-settings-daemon-lto.patch
 	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = cosmic-settings-daemon-application-volume

@@ -47,7 +47,8 @@ source=(
   git+https://github.com/AdityaHebballe/cosmic-settings-daemon.git#branch=feat/application-volume-control
   cosmic-settings-daemon-lto.patch
 )
-b2sums=('SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
   cd cosmic-settings-daemon
