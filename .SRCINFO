@@ -1,6 +1,6 @@
 pkgbase = kappicon
 	pkgdesc = Change Linux app launcher icons without root (GUI + CLI)
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/rayman1972/kappicon
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = kappicon
 	optdepends = kdialog: optional KDE desktop notifications
 	provides = kappicon
 	conflicts = kappicon-git
-	source = kappicon-3.2.1.tar.gz::https://github.com/rayman1972/kappicon/archive/refs/tags/v3.2.1.tar.gz
-	sha256sums = 214da56d9a179d75faffee73ddf09553fe3147a9c34bc9d0e72d3e091366d0dd
+	source = kappicon-3.3.0.tar.gz::https://github.com/rayman1972/kappicon/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = 5820e81a44dc189448b5667c5e4e23a9a074ed99c23afa426e6464607f8c5abe
 
 pkgname = kappicon
