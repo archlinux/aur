@@ -1,21 +1,35 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.2.2
-pkgrel=1
+pkgver=1.2.3
+pkgrel=2
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 arch=('any')
 url="https://github.com/yakuda-stack/OSC-DreamChatbox"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pyqt6' 'python-zeroconf' 'python-osc' 'python-setproctitle')
-optdepends=('python-speechrecognition: Speech to Text'
-            'python-pyaudio: Speech to Text (microphone access)'
-            'python-deepl: DeepL translation backend'
+# xcb-util-cursor & Co: Qt >= 6.5 braucht sie zum Laden des xcb-Plugins,
+# sonst bricht der Start mit "Could not load the Qt platform plugin xcb" ab
+# python-pyaudio ist hier bewusst eine harte Abhaengigkeit: ohne sie
+# bleibt das Mikrofon-Dropdown auf "System default" stehen und der
+# Aufnahmeknopf tut nichts - fuer AUR-Nutzer sah das wie ein Bug aus.
+# Es liegt in [extra] und zieht portaudio mit, makepkg loest das auf.
+#
+# python-speechrecognition dagegen gibt es NUR im AUR. Als depends
+# scheitert schon 'makepkg -si', und AUR-Helfer wuerden jeden Nutzer in
+# die bekannten Konflikte dieses Pakets ziehen (Tests-Verzeichnis,
+# python-deadlib). Bleibt deshalb optional - die App sagt beim Start
+# klar, was fehlt.
+depends=('python' 'python-pyqt6' 'python-zeroconf' 'python-osc' 'python-setproctitle'
+         'python-pyaudio'
+         'xcb-util-cursor' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms'
+         'xcb-util-renderutil' 'libxkbcommon-x11')
+optdepends=('python-speechrecognition: Speech to Text (AUR)'
+                        'python-deepl: DeepL translation backend'
             'mesa-utils: exact GPU name detection (glxinfo)'
             'nvidia-utils: NVIDIA GPU stats (nvidia-smi)')
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('21a57f583992d508a62dc98df9d4d407a18f8cf0dc8c5a8132060aa48248f6c1')
+sha256sums=('d38c5c20503092de3d1a00a4801489238d865c663404dab8d844c8a15487525c')
 
 package() {
     cd "OSC-DreamChatbox-${_tag#v}"
