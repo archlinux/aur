@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ffmpeg')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/topoglyph/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0b3b8b77badc987a1e556d58bc785382c13071cc32bf99e31a57ff3848c3741')
+sha256sums=('97d1584f9bdf7fc488cd3e24789f08298e4485eacb7818e5574886cbd4146e22')
 
 build() {
   cd "$pkgname-$pkgver"

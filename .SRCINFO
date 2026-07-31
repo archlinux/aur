@@ -11,6 +11,6 @@ pkgbase = topoglyph
 	makedepends = clang
 	depends = ffmpeg
 	source = topoglyph-0.1.0.tar.gz::https://github.com/Xuepoo/topoglyph/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c0b3b8b77badc987a1e556d58bc785382c13071cc32bf99e31a57ff3848c3741
+	sha256sums = 97d1584f9bdf7fc488cd3e24789f08298e4485eacb7818e5574886cbd4146e22
 
 pkgname = topoglyph
