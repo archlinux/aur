@@ -49,15 +49,15 @@ if [[ -f "$_capo_config" ]]; then
     _sshuttle=""
     if [[ -v KUBECONFIG ]]; then
       while IFS= read -r _kc && IFS= read -r _sh; do
-        if [[ "$(envsubst <<< "$_kc")" == "$KUBECONFIG" ]] && [[ -n "$_sh" ]]; then
-          _sshuttle="$(envsubst <<< "$_sh")"
+        if [[ "$(envsubst <<<"$_kc")" == "$KUBECONFIG" ]] && [[ -n "$_sh" ]]; then
+          _sshuttle="$(envsubst <<<"$_sh")"
           break
         fi
-      done < <(yq -r '.management_clusters[] | (.kubeconfig, (.sshuttle_host // ""))' "$_capo_config")
+      done < <(yq -r '.sshuttle_host as $fallback | .management_clusters[] | (.kubeconfig, (.sshuttle_host // $fallback // ""))' "$_capo_config")
     fi
     if [[ -z "$_sshuttle" ]]; then
       _sshuttle="$(yq -r '.sshuttle_host // empty' "$_capo_config")"
-      [[ -n "$_sshuttle" ]] && _sshuttle="$(envsubst <<< "$_sshuttle")"
+      [[ -n "$_sshuttle" ]] && _sshuttle="$(envsubst <<<"$_sshuttle")"
     fi
     [[ -n "$_sshuttle" ]] && CAPO_SHELL_SSHUTTLE_HOST="$_sshuttle"
   fi
@@ -142,7 +142,7 @@ fi
 if [[ "$hasKubeconfig" == false ]]; then
   echo "KUBECONFIG missing, only setting OpenStack env" >/dev/stderr
 elif clusterEndpoint="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -er '.items[0] | if .spec.apiServerLoadBalancer.allowedCIDRs then .spec.controlPlaneEndpoint | "\(.host) \(.port)" else null end')"; then
-  read -r apiServerIP apiServerPort <<< "$clusterEndpoint"
+  read -r apiServerIP apiServerPort <<<"$clusterEndpoint"
   if [[ -v CAPO_SHELL_SSHUTTLE_HOST ]]; then
     sshuttle -r "$CAPO_SHELL_SSHUTTLE_HOST" "$apiServerIP:$apiServerPort" &>/dev/null &
     PROXY_PID=$!
