@@ -2,7 +2,7 @@
 pkgname=plasma6-applets-fokus
 _oldpkgname=kdeplasma-applets-fokus
 _gitpkgname=focus-plasmoid
-pkgver=2.3.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A simple pomodoro KDE plasmoid"
 arch=(any)
@@ -21,8 +21,8 @@ conflicts=(
     plasma5-applets-fokus
 )
 replaces=($_oldpkgname)
-source=($_gitpkgname::git+https://gitlab.com/divinae/${_gitpkgname}#tag=v$pkgver)
-b2sums=('bd115ddffaba10b058e00b0b15c3acebe9d273bb99597af0375853e3f872fb89d4dda08c33e487cc050e26673f09c47bacbf45ed09b3f3b0609f335079b97bb3')
+source=($_gitpkgname::git+https://gitlab.com/divinae/${_gitpkgname}.git#tag=v$pkgver)
+b2sums=('8e7c0d6713cab296d27b1f259f2b33b4c3abfcf8ad7a8eeccd767031d0ee0e07030cce409d7c69151e78fd2267a3dad6446ca137f7ab20be662e6c94e8900e09')
 
 package() {
     cd $_gitpkgname
