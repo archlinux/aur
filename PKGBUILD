@@ -1,6 +1,6 @@
 # Maintainer: wyf9661 <wyf9661@hotmail.com>
 pkgname=metapi
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Meta-layer management and unified proxy for AI API aggregation platforms'
 arch=('any')
@@ -26,7 +26,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
         "${pkgname}-backup.service"
         "${pkgname}-backup.timer")
 sha256sums=(
-            '9f619d31dc7d7c675464c63bc69fc49e23e1f74dfe7f19b762954e75eea19757'
+            'ddb69e21c56d7018d7d0527e7fc24e8c0e5ebffcc1f9b971211010abbcbd2ca0'
             '1f5dede1712658ac3e276d83ac4cad541a636c54f084b07d8c7778b8c69bce95'
             '885b68e552440009d1fa8802650ad9af283f3eec641e9c22bd6a505832b0a177'
             '9ea3f6da87f5a204c792c94707423ab657ee1ba0df729a05204f004b3576b75e'
