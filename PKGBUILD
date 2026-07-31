@@ -10,7 +10,7 @@
 #   sha256sums=('SKIP')
 
 pkgname=chest-backup
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Full-stack backup manager with web UI, system tray and scheduling"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('dfab8c5d0e31bd29f1053ff8296b849686d14a18f43fa33296cf0f1edfe7d9a2')
+sha256sums=('a274043b31c36e6486a4559d6e09c1db48965eb5af3a1f8194cf83924bce3b98')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -82,56 +82,55 @@ package() {
 }
 
 post_install() {
+  local target_user="" target_home="" chown_flags=() started=false
+
   if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
-    uid=$(id -u "$SUDO_USER")
-    user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
-    cfg_dir="$user_home/.config/chest-backup"
+    target_user="$SUDO_USER"
+    target_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    chown_flags=(-o "$SUDO_USER" -g "$SUDO_USER")
+  else
+    target_home=$(getent passwd "$(id -u)" | cut -d: -f6)
+  fi
 
-    install -d -o "$SUDO_USER" -g "$SUDO_USER" -m700 "$cfg_dir"
-    if [ ! -e "$cfg_dir/chest-backup.json" ]; then
-      if [ -e /etc/chest-backup/chest-backup.json ]; then
-        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
-          /etc/chest-backup/chest-backup.json "$cfg_dir/chest-backup.json"
-      else
-        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
-          /usr/share/$pkgname/chest-backup.default.json "$cfg_dir/chest-backup.json"
-      fi
-    fi
-    if [ ! -e "$cfg_dir/.env" ]; then
-      if [ -e /etc/chest-backup/.env ]; then
-        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
-          /etc/chest-backup/.env "$cfg_dir/.env"
-      else
-        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
-          /usr/share/$pkgname/.env.default "$cfg_dir/.env"
-      fi
-    fi
+  cfg_dir="$target_home/.config/chest-backup"
 
-    if runuser -u "$SUDO_USER" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+  install -d -m700 "${chown_flags[@]}" "$cfg_dir"
+  if [ ! -e "$cfg_dir/chest-backup.json" ]; then
+    if [ -e /etc/chest-backup/chest-backup.json ]; then
+      install -m600 "${chown_flags[@]}" /etc/chest-backup/chest-backup.json "$cfg_dir/chest-backup.json"
+    else
+      install -m600 "${chown_flags[@]}" /usr/share/$pkgname/chest-backup.default.json "$cfg_dir/chest-backup.json"
+    fi
+  fi
+  if [ ! -e "$cfg_dir/.env" ]; then
+    if [ -e /etc/chest-backup/.env ]; then
+      install -m600 "${chown_flags[@]}" /etc/chest-backup/.env "$cfg_dir/.env"
+    else
+      install -m600 "${chown_flags[@]}" /usr/share/$pkgname/.env.default "$cfg_dir/.env"
+    fi
+  fi
+
+  if [ -n "$target_user" ]; then
+    uid=$(id -u "$target_user")
+    if runuser -u "$target_user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
       systemctl --user daemon-reload && \
       systemctl --user enable --now chest-backup 2>/dev/null; then
       started=true
     else
-      install -d "$user_home/.config/systemd/user/default.target.wants"
+      install -d "$target_home/.config/systemd/user/default.target.wants"
       ln -sf /usr/lib/systemd/user/chest-backup.service \
-        "$user_home/.config/systemd/user/default.target.wants/chest-backup.service"
-      started=false
+        "$target_home/.config/systemd/user/default.target.wants/chest-backup.service"
     fi
 
-    # Start at boot without login so scheduled backups always run.
-    loginctl enable-linger "$SUDO_USER" 2>/dev/null || true
+    loginctl enable-linger "$target_user" 2>/dev/null || true
+  fi
 
-    echo
-    if [ "$started" = true ]; then
-      echo "  chest-backup installed and running."
-    else
-      echo "  chest-backup installed. Start it with:"
-      echo "      systemctl --user start chest-backup"
-    fi
+  echo
+  if [ "$started" = true ]; then
+    echo "  chest-backup installed and running."
   else
-    echo
     echo "  chest-backup installed. Start it with:"
-    echo "      systemctl --user enable --now chest-backup"
+    echo "      systemctl --user start chest-backup"
   fi
   echo
   echo "  Web UI:              http://localhost:5199"
