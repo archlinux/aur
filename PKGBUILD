@@ -1,7 +1,7 @@
 # Maintainer: svan71 <Keystone.osk@gmail.com>
 
 pkgname=keystone-osk
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Practical on-screen keyboard for Linux desktops"
 arch=('any')
@@ -10,10 +10,11 @@ license=('GPL-3.0-or-later')
 # ydotool is invoked as a subprocess by keystone_osk/backend.py, so namcap
 # cannot see it and reports it as possibly unneeded. It is required.
 depends=('python' 'pyside6' 'ydotool' 'hicolor-icon-theme')
+optdepends=('gnome-shell-extension-appindicator: top-bar tray icon on GNOME')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b11421aa51b56ce9c0bf5408b4906e8e49660224579826bbf364ce088c39bad6')
+sha256sums=('a98e9a0b3181d764597d5eadcc8b321d8b556bc017ec5d0f04bbcb47d8413c1c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/source"

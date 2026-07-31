@@ -1,6 +1,6 @@
 pkgbase = keystone-osk
 	pkgdesc = Practical on-screen keyboard for Linux desktops
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/svan71/keystone-osk
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = keystone-osk
 	depends = pyside6
 	depends = ydotool
 	depends = hicolor-icon-theme
-	source = keystone-osk-0.9.0.tar.gz::https://github.com/svan71/keystone-osk/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = b11421aa51b56ce9c0bf5408b4906e8e49660224579826bbf364ce088c39bad6
+	optdepends = gnome-shell-extension-appindicator: top-bar tray icon on GNOME
+	source = keystone-osk-0.9.1.tar.gz::https://github.com/svan71/keystone-osk/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = a98e9a0b3181d764597d5eadcc8b321d8b556bc017ec5d0f04bbcb47d8413c1c
 
 pkgname = keystone-osk
