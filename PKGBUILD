@@ -126,7 +126,7 @@ build() {
     _ensure_local_nvm
     NODE_ENV=production     pnpm run sync-go-aria2
     NODE_ENV=production     pnpm -c exec "node .electron-vue/build.js"
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
