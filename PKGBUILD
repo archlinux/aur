@@ -5,12 +5,12 @@
 
 pkgname=ulauncher
 pkgver=5.15.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="https://ulauncher.io"
 license=('GPL3')
-depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkitgtk-6.0' 'libnotify'
+depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkit2gtk-4.1' 'libnotify'
          'gdk-pixbuf2' 'wmctrl' 'python-dbus' 'python-levenshtein' 'python-pyinotify'
          'python-websocket-client' 'python-pyxdg' 'python-gobject' 'python-cairo')
 makedepends=('git' 'python-setuptools' 'python-distutils-extra')
