@@ -4,9 +4,9 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends"
 arch=('x86_64')
-url="https://github.com/pomotui/pomotui"
+url="https://github.com/SaintFore/pomotui"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'sqlite')
 makedepends=('cargo')
 optdepends=(
     'libnotify: desktop notifications via notify-send'
