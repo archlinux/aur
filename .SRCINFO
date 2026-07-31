@@ -1,7 +1,7 @@
 pkgbase = maly
 	pkgdesc = Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kitasael-burakku/Malody-Mallow
 	arch = x86_64
 	arch = aarch64

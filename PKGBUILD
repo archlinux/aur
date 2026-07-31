@@ -1,7 +1,7 @@
 # Maintainer: kitasael-burakku
 pkgname=maly
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kitasael-burakku/Malody-Mallow"
@@ -39,10 +39,26 @@ build() {
 	# pacman y en cambio remite al gestor. Version (la const de versión)
 	# no se toca: -X solo puede asignar variables de paquete, no consts.
 	go build -ldflags "-X maly/internal/version.Channel=pacman" -o build/maly ./cmd/maly
+
+	# Generar las completions ACÁ, a archivos, para poder detectar un
+	# fallo del binario: `install -Dm644 <(cmd) dest` en package() NO
+	# propaga el código de salida de cmd — install devuelve 0 igual
+	# aunque cmd muera, dejando un dest de 0 bytes sin que makepkg se
+	# entere (probado en una terminal real). Con la redirección simple de
+	# acá, un `go build` corrupto o un panic de `maly completions` sí
+	# aborta el build (verificado: makepkg corta build() ante cualquier
+	# comando que falle, salvo dentro de una sustitución de proceso).
+	./build/maly completions bash > build/maly.bash
+	./build/maly completions fish > build/maly.fish
+	./build/maly completions zsh > build/maly.zsh
 }
 
 check() {
 	cd "$_pkgsrc-$pkgver"
+	# Mismo CGO_ENABLED que build(): sin esto, check() testea con el
+	# CGO_ENABLED ambiente (típicamente 1, si hay gcc — base-devel lo
+	# trae siempre), un build distinto del que package() empaqueta.
+	export CGO_ENABLED=0
 	export GOPATH="$srcdir/go"
 	export GOFLAGS="-mod=readonly -modcacherw"
 	go vet ./...
@@ -57,10 +73,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/maly.service" "$pkgdir/usr/lib/systemd/user/maly.service"
 
-	install -Dm644 <("$pkgdir/usr/bin/maly" completions bash) \
-		"$pkgdir/usr/share/bash-completion/completions/maly"
-	install -Dm644 <("$pkgdir/usr/bin/maly" completions fish) \
-		"$pkgdir/usr/share/fish/vendor_completions.d/maly.fish"
-	install -Dm644 <("$pkgdir/usr/bin/maly" completions zsh) \
-		"$pkgdir/usr/share/zsh/site-functions/_maly"
+	install -Dm644 build/maly.bash "$pkgdir/usr/share/bash-completion/completions/maly"
+	install -Dm644 build/maly.fish "$pkgdir/usr/share/fish/vendor_completions.d/maly.fish"
+	install -Dm644 build/maly.zsh "$pkgdir/usr/share/zsh/site-functions/_maly"
 }
