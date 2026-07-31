@@ -1,36 +1,27 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=amneziawg-dkms
-pkgdesc="AmneziaWG kernel module with AWG 3.0 (Header Protection) + kernel 7.1 fixes"
+pkgdesc="AmneziaWG kernel module (AWG 3.0) with Linux 7.1.5 udp_tunnel compat"
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
 arch=("x86_64")
-pkgver=1.0.20260728.r1350.86b4403
-pkgrel=2
+pkgver=3.0.20260731.04
+_tag=v3.0.20260731-04
+pkgrel=1
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE")
-source=("git+https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git#branch=feat/awg3"
-        "kernel-7.1-compat.patch"
-        "awg3-keepalive-nla-u32.patch")
-sha256sums=('SKIP'
-            '79531d6ba515395ef4abbe96196fa5fb39b29163629cbd742223bbc21efa233a'
-            'a06885a1719735d12a8cd4315113b67ea023c96ad7cfd9808c741a492377998d')
-makedepends=("git")
 conflicts=("amneziawg-linux" "amneziawg-linux-hardened")
-
-pkgver() {
-  cd amneziawg-linux-kernel-module
-  printf "1.0.20260728.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/${_tag}.tar.gz"
+        "kernel-7.1.5-udp-tunnel.patch")
+sha256sums=('cc0b353107064c13ae85ff4f2077b4a0164de0e5e3b335d57dc720c72356f7a8'
+            'ca70c83f50bf6c52bed5aff370ceb2c7a94bf1e79afdf2b8d21a5700dadc9128')
 
 prepare() {
-  cd amneziawg-linux-kernel-module
-  patch -Np1 -i "${srcdir}/kernel-7.1-compat.patch"
-  patch -Np1 -i "${srcdir}/awg3-keepalive-nla-u32.patch"
-  sed -i 's/MODERN_KERNEL_SOURCES_NOT_FOUND_ERROR/KERNEL_SRC_ABSENT_ERR/g' src/Makefile
+  cd "amneziawg-linux-kernel-module-${_tag#v}"
+  patch -Np1 -i "${srcdir}/kernel-7.1.5-udp-tunnel.patch"
 }
 
 package() {
   depends+=("dkms")
-  cd amneziawg-linux-kernel-module/src
+  cd "amneziawg-linux-kernel-module-${_tag#v}/src"
   make DESTDIR="${pkgdir}" dkms-install
 }
