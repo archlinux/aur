@@ -1,0 +1,11 @@
+pkgbase = kerem
+	pkgdesc = ouuu kerem...
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/kerem
+	arch = any
+	license = custom:unlicense
+	source = kerem
+	sha256sums = 7b2fa7b0c69d6809be18be26f212a31a5dd25473c6ab4bbc4153e918c48553f1
+
+pkgname = kerem
