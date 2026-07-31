@@ -1,11 +1,11 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-bin"
-pkgver="1.13.14"
+pkgver="1.13.15"
 pkgrel="1"
 pkgdesc="The universal proxy platform (binary version)"
 provides=("sing-box")
-conflicts=("sing-box" "sing-box-beta" "sing-box-beta-bin" "sing-box-git" "libcronet.so")
+conflicts=("sing-box" "libcronet.so")
 depends=("glibc" "libgcc")
 optdepends=("sing-geosite-rule-set: GeoSite rule sets"
             "sing-geoip-rule-set: GeoIP rule sets")
@@ -28,9 +28,9 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
             '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
-sha256sums_x86_64=('f48703461a15476951ac4967cdad339d986f4b8096b4eb3ff0829a500502d697')
-sha256sums_armv7h=('e01a58d28512b1447ab6156017afdeeaa306169a95d27abc00e112599e4ae46c')
-sha256sums_aarch64=('4742df6a4314e8ecc41736849fca6d73b8f9e91b6e8b06ee794ff17ba180579e')
+sha256sums_x86_64=('a3a3ff223b23c3f4731d0a17cb0ef94c97ce257c70721a5b07dc7ca079203c9f')
+sha256sums_armv7h=('30e951f091a80464d2b22a2c5f02fbe55f04b2d3f38a5701d51da3be8cf09761')
+sha256sums_aarch64=('f0810bbb5722ae36635687c421019defcc8b328d31a0b3c287901f331747ca93')
 
 package() {
     install -Dm644 sing-box.service -t "$pkgdir/usr/lib/systemd/system"
