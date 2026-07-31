@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -24,7 +24,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('1a8efea674c4e948c5f75bf4f7b595e8c85386b717ea0743b228d6b46722ad340532c23bdedc30fb487c484e00d5a7b68865a2636031480983596481ffa4d4d6')
+sha512sums=('b00cf00da8425c8b8172134e591d6b3cfb373885a9229efb2f42da3807d27271767e6c8dcbe1b925b982a514b55b6f2db9c63f1a96b327dad3ea0c85ab4870d2')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"

@@ -1,5 +1,4 @@
 [voicefox]
 source = "github"
 github = "emoeem/voicefox"
-prefix = "v"
 use_latest_release = true
