@@ -2,7 +2,7 @@
 # Bleeding-edge AUR package — builds from latest git main
 
 pkgname=kappicon-git
-pkgver=3.2.1.r5.g53381be
+pkgver=3.3.0.r1.g6125c4b
 pkgrel=1
 pkgdesc='Change Linux app launcher icons without root (GUI + CLI) — git version'
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/kappicon"
-  # e.g. 3.2.1.r1.gabcdef0 or 3.2.1 if exactly on tag
+  # e.g. 3.3.0.r1.gabcdef0 or 3.3.0 if exactly on tag
   git describe --long --tags --abbrev=7 2>/dev/null \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
     || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
