@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=ElectronShogi
-Exec=/opt/electron-shogi/electron-shogi
+Name=ShogiHome
+Exec=/opt/electron-shogi/shogihome
 Terminal=false
 Type=Application
 Categories=Game;
