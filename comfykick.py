@@ -349,6 +349,9 @@ def _parse_retry_after(exc: urllib.error.HTTPError) -> float | None:
         dt = email.utils.parsedate_to_datetime(value)
         if dt is None:
             return None
+        if dt.tzinfo is None:
+            # HTTP-date is always GMT; treat naive datetimes as UTC.
+            dt = dt.replace(tzinfo=datetime.timezone.utc)
         now = datetime.datetime.now(dt.tzinfo)
         delay = (dt - now).total_seconds()
         return delay if delay > 0 else None
