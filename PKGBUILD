@@ -1,5 +1,5 @@
 # Maintainer: Floofy <floofyiv9@proton.me>
-pkgname=python-dracopython
+pkgname=python3-dracopython
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python wrapper for Google's Draco 3D mesh compression library"
