@@ -1,14 +1,13 @@
 # Maintainer:
 # Contributor: Nick Lay <layns(at)mail(dot)uc(dot)edu>
 
-## options
 : ${_build_clang:=false}
 
-: ${_branch=primehack-aur}
+: ${_branch:=primehack-aur}
 
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname-git"
-pkgver=2509.r10.g060c588
+pkgver=2606.r7.g35313d1
 pkgrel=1
 pkgdesc="A Gamecube and Wii emulator with mouselook controls"
 url="https://github.com/xiota/dolphin-primehack"
@@ -19,6 +18,7 @@ depends=(
   'alsa-lib'
   'bluez-libs'
   'bzip2'
+  'enet'
   'hidapi'
   'libavcodec.so'  # ffmpeg
   'libavformat.so' # ffmpeg
@@ -37,12 +37,14 @@ depends=(
   'libxrandr'
   'lz4'
   'lzo'
-  'mbedtls2'
   'miniupnpc'
   'pugixml'
   'qt6-base'
   'qt6-svg'
   'sdl3'
+  'speexdsp'
+  'xxhash'
+  'zlib-ng'
   'zstd'
 )
 makedepends=(
@@ -55,9 +57,9 @@ makedepends=(
 
 if [[ "${_build_clang::1}" == "t" ]]; then
   makedepends+=(
-    clang
-    lld
-    llvm
+    'clang'
+    'lld'
+    'llvm'
   )
 else
   options+=('!lto')
@@ -80,6 +82,7 @@ prepare() {
   git rm -r 'Externals/Vulkan-Headers'
   git rm -r 'Externals/curl/curl'
   git rm -r 'Externals/fmt/fmt'
+  git rm -r 'Externals/glslang/glslang'
   git rm -r 'Externals/gtest'
   git rm -r 'Externals/hidapi/hidapi-src'
   git rm -r 'Externals/libadrenotools'
@@ -89,14 +92,6 @@ prepare() {
   git rm -r 'Externals/miniupnpc/miniupnp'
   git rm -r 'Externals/spirv_cross/SPIRV-Cross'
   git submodule update --init --depth=1
-
-  # Delete gcc specific options
-  sed '/_ARCHIVE_/d' -i CMakeLists.txt
-
-  # Fix for Qt 6.10
-  sed -E -e '/COMPONENTS/s&\b(Widgets)\b&\1 GuiPrivate&' \
-    -e '$ a target_link_libraries(dolphin-emu PRIVATE Qt6::GuiPrivate)' \
-    -i Source/Core/DolphinQt/CMakeLists.txt
 }
 
 pkgver() {
@@ -125,20 +120,17 @@ END
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -Wno-author
 
-    -DENABLE_AUTOUPDATE=OFF
-    # -DENABLE_ANALYTICS=OFF # default:Opt-in
     # -DUSE_SYSTEM_LIBS=ON # default:AUTO
-
+    -DENABLE_ANALYTICS=OFF # default:Opt-in
+    -DENABLE_AUTOUPDATE=OFF
+    -DENABLE_TESTS=OFF
     -DUSE_SANITIZERS=OFF # cubeb
-
-    -DUSE_SYSTEM_ENET=OFF
+    -DUSE_SYSTEM_ENET=ON
     -DUSE_SYSTEM_FMT=ON
     -DUSE_SYSTEM_LIBMGBA=OFF
-    -DUSE_SYSTEM_XXHASH=OFF
-    -DENABLE_TESTS=OFF
-    -Wno-dev
+    -DUSE_SYSTEM_XXHASH=ON
   )
 
   if [[ "${_build_clang::1}" == "t" ]]; then
