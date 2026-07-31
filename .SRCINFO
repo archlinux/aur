@@ -1,6 +1,6 @@
 pkgbase = aurascan
 	pkgdesc = AI-assisted safety and recovery layer for Arch-family systems
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/crizzler/AuraScan
 	install = aurascan.install
@@ -42,7 +42,7 @@ pkgbase = aurascan
 	optdepends = btrfs-progs: Btrfs diagnosis and snapshot recovery
 	optdepends = snapper: snapshot test and confirmed restore workflows
 	optdepends = xfsprogs: read-only XFS recovery diagnostics
-	source = aurascan-0.7.1.tar.gz::https://github.com/crizzler/AuraScan/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 5aa1d2512e8a43b1c242e66e5d36abb69177041b8c17612353a4e1c5987a817f
+	source = aurascan-0.7.2.tar.gz::https://github.com/crizzler/AuraScan/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 4ff7c7f5de65ebe612006743527dfceecd3d8184de7d858cf30f053e1fbf4143
 
 pkgname = aurascan
