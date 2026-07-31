@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 arch=('any')
@@ -13,23 +13,28 @@ license=('GPL-3.0-or-later')
 # Aufnahmeknopf tut nichts - fuer AUR-Nutzer sah das wie ein Bug aus.
 # Es liegt in [extra] und zieht portaudio mit, makepkg loest das auf.
 #
-# python-speechrecognition dagegen gibt es NUR im AUR. Als depends
-# scheitert schon 'makepkg -si', und AUR-Helfer wuerden jeden Nutzer in
-# die bekannten Konflikte dieses Pakets ziehen (Tests-Verzeichnis,
-# python-deadlib). Bleibt deshalb optional - die App sagt beim Start
-# klar, was fehlt.
+# python-speechrecognition gibt es NUR im AUR, und dieses Paket macht
+# SpeechRecognitions OPTIONALE Backends (pocketsphinx, google-cloud-
+# speech, groq) zu harten depends. Bricht eines davon - derzeit faellt
+# google-cloud-speech in check() durch -, ist Speech to Text nicht
+# installierbar, obwohl wir keins dieser Backends benutzen.
+#
+# Deshalb weder depends noch optdepends: die App installiert sich die
+# reine Python-Bibliothek auf Knopfdruck selbst nach
+# ~/.config/OSC-DreamChatbox/extras (siehe core/pyextras.py). Dort holt
+# pip nur SpeechRecognition + typing-extensions, nichts davon wird von
+# pacman verwaltet, und das kaputte AUR-Paket bleibt aussen vor.
 depends=('python' 'python-pyqt6' 'python-zeroconf' 'python-osc' 'python-setproctitle'
          'python-pyaudio'
          'xcb-util-cursor' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms'
          'xcb-util-renderutil' 'libxkbcommon-x11')
-optdepends=('python-speechrecognition: Speech to Text (AUR)'
-                        'python-deepl: DeepL translation backend'
+optdepends=(            'python-deepl: DeepL translation backend'
             'mesa-utils: exact GPU name detection (glxinfo)'
             'nvidia-utils: NVIDIA GPU stats (nvidia-smi)')
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('8f0d187a5ffce307c690cc2ce490dcc4ada1ef6faa16b372adfcf78c200acb58')
+sha256sums=('5b3cb6ccf1283c2f4281e6cc4ed7df962d5b14fdbccd47d580a7191320b301f1')
 
 package() {
     cd "OSC-DreamChatbox-${_tag#v}"
