@@ -1,6 +1,6 @@
 pkgbase = oniux
 	pkgdesc = Isolate applications over Tor using Linux namespaces
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://gitlab.torproject.org/tpo/core/oniux
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = oniux
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	options = !lto
-	source = git+https://gitlab.torproject.org/tpo/core/oniux.git#tag=v0.11.0?signed
+	depends = sqlite
+	depends = zstd
+	source = git+https://gitlab.torproject.org/tpo/core/oniux.git#tag=v0.12.0?signed
 	validpgpkeys = 772628464C6E8F56DBB5ACEC4CBE96203A1A78A7
 	validpgpkeys = 1C1BC007A9F607AA8152C040BEA7B180B1491921
-	b2sums = fcb752c181826ddbdb3ada55a84b594a9e8822a0c95013a451a10528145da763192b8c29ba7859920e423912a2a448b1cee497417bc277ec21fcf169005343d0
+	b2sums = 34949e51509369a7261f105c336a881440cb0f994e5130d01fa1a308103a763051e0b30a319d7b5b8600f1179bfca7c8b42ddd77ceba5fb5735c95fafd250b03
 
 pkgname = oniux
