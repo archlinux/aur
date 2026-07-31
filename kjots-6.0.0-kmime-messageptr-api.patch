@@ -1,0 +1,77 @@
+Description: port away from removed KMime::Message::Ptr
+ KMime::Message::Ptr (a nested typedef on the Message class) was removed
+ upstream. The free-standing KMime::MessagePtr alias (defined in
+ akonadi-notes' own noteutils.h, `using MessagePtr =
+ QSharedPointer<Message>;` -- already a transitive include here via
+ Akonadi::NoteUtils::NoteMessageWrapper) is the replacement; this is a
+ mechanical rename of every use, no behavior change.
+ See memory/kjots.md in the aurupdater project for the full investigation.
+--- a/src/kjotsmodel.cpp
++++ b/src/kjotsmodel.cpp
+@@ -115,7 +115,7 @@
+ {
+     Item item = m_index.data(EntityTreeModel::ItemRole).value<Item>();
+     if (item.isValid()) {
+-        return item.hasPayload<KMime::Message::Ptr>();
++        return item.hasPayload<KMime::MessagePtr>();
+     }
+     return false;
+ }
+@@ -173,7 +173,7 @@
+             }
+             return EntityTreeModel::setData(index, QVariant::fromValue(col), CollectionRole);
+         }
+-        NoteUtils::NoteMessageWrapper note(item.payload<KMime::Message::Ptr>());
++        NoteUtils::NoteMessageWrapper note(item.payload<KMime::MessagePtr>());
+         note.setTitle(value.toString());
+         item.setPayload(note.message());
+
+@@ -206,11 +206,11 @@
+         if (m_documents.contains(itemId)) {
+             return QVariant::fromValue(m_documents.value(itemId));
+         }
+-        if (!item.hasPayload<KMime::Message::Ptr>()) {
++        if (!item.hasPayload<KMime::MessagePtr>()) {
+             return QVariant();
+         }
+
+-        NoteUtils::NoteMessageWrapper note(item.payload<KMime::Message::Ptr>());
++        NoteUtils::NoteMessageWrapper note(item.payload<KMime::MessagePtr>());
+         const QString doc = note.text();
+         auto document = new QTextDocument();
+         if (note.textFormat() == Qt::RichText
+@@ -255,8 +255,8 @@
+
+ QVariant KJotsModel::entityData(const Akonadi::Item &item, int column, int role) const
+ {
+-    if (item.hasPayload<KMime::Message::Ptr>()) {
+-        auto message = item.payload<KMime::Message::Ptr>();
++    if (item.hasPayload<KMime::MessagePtr>()) {
++        auto message = item.payload<KMime::MessagePtr>();
+         NoteUtils::NoteMessageWrapper note(message);
+         if (role == Qt::DisplayRole) {
+             switch (column) {
+@@ -339,10 +339,10 @@
+
+ Item KJotsModel::updateItem(const Item &item, QTextDocument *document)
+ {
+-    if (!item.hasPayload<KMime::Message::Ptr>()) {
++    if (!item.hasPayload<KMime::MessagePtr>()) {
+         return {};
+     }
+-    NoteUtils::NoteMessageWrapper note(item.payload<KMime::Message::Ptr>());
++    NoteUtils::NoteMessageWrapper note(item.payload<KMime::MessagePtr>());
+     // Saving embedded images
+     const auto images = document->property("images").value<KPIMTextEdit::ImageList>();
+     QVector<NoteUtils::Attachment> &attachments = note.attachments();
+--- a/src/noteshared/notecreatorandselector.cpp
++++ b/src/noteshared/notecreatorandselector.cpp
+@@ -71,7 +71,7 @@
+     Item newItem;
+     newItem.setMimeType(Akonadi::NoteUtils::noteMimeType());
+
+-    Akonadi::NoteUtils::NoteMessageWrapper note(KMime::Message::Ptr(new KMime::Message));
++    Akonadi::NoteUtils::NoteMessageWrapper note(KMime::MessagePtr(new KMime::Message));
+     note.setFrom(QStringLiteral("KJots@KDE6"));
+     note.setTitle(i18nc("The default name for new pages.", "New Page"));
+     note.setCreationDate(QDateTime::currentDateTime());

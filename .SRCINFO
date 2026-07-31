@@ -1,7 +1,7 @@
 pkgbase = kjots
 	pkgdesc = A note taking application using Akonadi
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kde.org/applications/utilities/kjots/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -32,7 +32,9 @@ pkgbase = kjots
 	depends = libakonadi
 	depends = qt6-base
 	source = https://download.kde.org/stable/kjots/6.0.0/kjots-6.0.0.tar.xz
+	source = kjots-6.0.0-kmime-messageptr-api.patch
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
 	sha256sums = 3909cc6df5ebeeabe7c9086fc95b54dcd2a1cf5ee1683e0ad6ea799105b4eb08
+	sha256sums = d84b970505491b06a40482ba2182174c889d4c7bcb57055d1c80d97d02bfc88f
 
 pkgname = kjots
