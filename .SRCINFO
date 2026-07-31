@@ -1,5 +1,5 @@
 pkgbase = opentubex-bin
-	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
+	pkgdesc = A highly customizable, privacy-focused desktop YouTube client
 	pkgver = 0.30.1
 	pkgrel = 1
 	url = https://opentubex.org
