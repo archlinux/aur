@@ -33,6 +33,7 @@ pkgbase = fleasion-git
 	depends = portaudio
 	depends = nss
 	depends = qwt
+	depends = qt6-base
 	provides = fleasion
 	conflicts = fleasion
 	source = fleasion-git::git+https://github.com/fleasion/Fleasion.git#branch=main-indev

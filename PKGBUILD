@@ -36,6 +36,7 @@ depends=(
     'portaudio'
     'nss'
     'qwt'
+    'qt6-base'
 )
 makedepends=('git')
 source=(
