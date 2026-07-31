@@ -2,15 +2,15 @@
 
 pkgname=passbolt-cli
 _pkgname=go-passbolt-cli
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Passbolt CLI tool'
 arch=('x86_64' 'aarch64')
-url="https://passbolt.com"
+url="https://github.com/passbolt/go-passbolt-cli"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/passbolt/$_pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('327c82a82f3c60a088c20717822af136cb946091903bf15016a288137f5e20ba')
+sha256sums=('845383bb8c33ec97d1e708a3e5a7a9475c970d977876faa307271d2d6ff77115')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
