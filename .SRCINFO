@@ -8,7 +8,7 @@
 #  */
 pkgbase = helium-browser-bin
 	pkgdesc = Private, fast, and honest web browser based on Chromium (Latest/Stable)
-	pkgver = 0.14.9.1
+	pkgver = 0.15.1.1
 	pkgrel = 1
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
@@ -32,23 +32,23 @@ pkgbase = helium-browser-bin
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = qt5-base: support for Qt themes
 	optdepends = upower: Battery Status API support
-	provides = helium-browser-beta-bin=0.14.9.1
+	provides = helium-browser-beta-bin=0.15.1.1
 	conflicts = helium-browser-beta-bin
 	options = !strip
 	source = 0001-update-wrapper-arch.patch
 	source = 0002-align-desktop-entry.patch
-	source = LICENSE.ungoogled_chromium::https://raw.githubusercontent.com/imputnet/helium-linux/0.14.9.1/LICENSE.ungoogled_chromium
+	source = LICENSE.ungoogled_chromium::https://raw.githubusercontent.com/imputnet/helium-linux/0.15.1.1/LICENSE.ungoogled_chromium
 	validpgpkeys = BE677C1989D35EAB2C5F26C9351601AD01D6378E
 	sha256sums = 3846be557da5202267fc4d8a45572f4cedcd95e82d4e62e998c4486fed311314
 	sha256sums = b1253d30764b6586b05161b793b728ffee442cebf875e2074eedf2da5140036f
 	sha256sums = 9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d
-	source_x86_64 = helium-0.14.9.1-x86_64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/0.14.9.1/helium-0.14.9.1-x86_64_linux.tar.xz
-	source_x86_64 = helium-0.14.9.1-x86_64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/0.14.9.1/helium-0.14.9.1-x86_64_linux.tar.xz.asc
-	sha256sums_x86_64 = 066617df12a9cd5b32c51c66ca93295d19e9ebe679c0b71a118f1a11837e673d
+	source_x86_64 = helium-0.15.1.1-x86_64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/0.15.1.1/helium-0.15.1.1-x86_64_linux.tar.xz
+	source_x86_64 = helium-0.15.1.1-x86_64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/0.15.1.1/helium-0.15.1.1-x86_64_linux.tar.xz.asc
+	sha256sums_x86_64 = d51aed1d85b94f006120d4eedb62527782a39f13919432bfefbbb5a4495d759a
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = helium-0.14.9.1-arm64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/0.14.9.1/helium-0.14.9.1-arm64_linux.tar.xz
-	source_aarch64 = helium-0.14.9.1-arm64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/0.14.9.1/helium-0.14.9.1-arm64_linux.tar.xz.asc
-	sha256sums_aarch64 = a9500aae092b3d0f0e56ac0bccb840bbd355bb67512c509ed52adb1f6cee07fa
+	source_aarch64 = helium-0.15.1.1-arm64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/0.15.1.1/helium-0.15.1.1-arm64_linux.tar.xz
+	source_aarch64 = helium-0.15.1.1-arm64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/0.15.1.1/helium-0.15.1.1-arm64_linux.tar.xz.asc
+	sha256sums_aarch64 = 1fdfee6a5ef3a98ea62f8dc0474eab8d86e19f1978127aa7a78543103878e264
 	sha256sums_aarch64 = SKIP
 
 pkgname = helium-browser-bin
