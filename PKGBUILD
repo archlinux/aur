@@ -5,8 +5,8 @@
 # ═══════════════════════════════════════════════════════════════
 #
 # Before publishing to AUR:
-#   1. Create a signed tag:  git tag -s v0.1.5 -m "v0.1.5"
-#   2. Push the tag:         git push origin v0.1.5
+#   1. Create a signed tag:  git tag -s v0.1.6 -m "v0.1.6"
+#   2. Push the tag:         git push origin v0.1.6
 #   3. Generate .SRCINFO:    makepkg --printsrcinfo > .SRCINFO
 #   4. Submit to AUR via     git clone aur@aur.archlinux.org:chest-backup.git
 #      the AUR repo (not
@@ -18,7 +18,7 @@
 # and the build()/package() functions use $srcdir/$pkgname.
 
 pkgname=chest-backup
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Full-stack backup manager — web UI, system tray, scheduling, containers, SFTP, local destinations"
 arch=('x86_64' 'aarch64')
@@ -70,7 +70,17 @@ package() {
   cp packages/tray/dist/index.js "$pkgdir/usr/share/$pkgname/packages/tray/dist/"
   cp packages/tray/dist/icon_*.png "$pkgdir/usr/share/$pkgname/packages/tray/dist/"
 
+  # The destination dir must exist first, otherwise GNU cp renames dist/
+  # to packages/web/ and the UI lands one level too high (no dist/ subdir).
+  install -d "$pkgdir/usr/share/$pkgname/packages/web"
   cp -r packages/web/dist "$pkgdir/usr/share/$pkgname/packages/web/"
+
+  # bun bakes absolute build paths into bundled libs (pino/ssh2 __dirname
+  # constants). They're only dead fallbacks at runtime, but makepkg warns
+  # about $srcdir references — rewrite them to the install location.
+  sed -i "s|$srcdir/$pkgname-$pkgver|/usr/share/$pkgname|g" \
+    "$pkgdir/usr/share/$pkgname/packages/api/dist/index.js" \
+    "$pkgdir/usr/share/$pkgname/packages/tray/dist/index.js"
 
   # ── Native addon (cpu-features ─ required by ssh2) ──────────
   # External dependencies not bundled by bun ship as-is; @trayjs/* is
