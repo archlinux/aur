@@ -1,6 +1,6 @@
 pkgbase=eim-bin
 pkgname=('eim-cli' 'eim-gui')
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/espressif/idf-im-ui"
@@ -13,21 +13,21 @@ _icon_url="https://raw.githubusercontent.com/espressif/idf-im-ui/master/src-taur
 
 source=("eim-gui.desktop")
 sha256sums=('eb574ade90f636523bb00078df0b92dfd8e289c31f136af257953e689ac84d69')
-sha256sums_x86_64=('de7e63168446721f9b88624de120ababf8e8f879c0040f06e5dc7b7c73f5a2f7'
-                   '610601ec020215d98d6f3f021fccab4db2afa5bc3ee144792c30d9d5948603bc'
+sha256sums_x86_64=('2012356b638db7432af81e3c48fd470983f9afa35d9ac663f593a57de3a23669'
+                   '1145ed587cfc1a8e8f595a30277d830673d892705b0b5e3e56fb103384071efb'
                    '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_aarch64=('f24c3bb0489262ddb1431938dff24dc3a17b4ccbf0be2e0124974f4a537fe451'
-                    '873f48b2479ac837ee9309fbb89c76c6ba2452db976783f79ead31072adbc385'
+sha256sums_aarch64=('a98bfeb7f14fbe27770d90a4edc0a415f61e95127b0e21c4db195f763923a8b3'
+                    'cbfa3e7411045ff6afc142f1d55800e7dcb217744de3dad8f9915778b0a3af47'
                     '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_armv7h=('f253c260dc60842e5e5aeb2e3d8e04a2c01413cedbbb21e31c5b3c4debdaa052')
+sha256sums_armv7h=('5f3818691e9bacee8cfc80b39e5f2fda5bd890e25df97f69e9c5b09ba7d32b45')
 
-source_x86_64+=("cli-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-x64_v${pkgver}.zip"
-                "gui-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-x64_v${pkgver}.zip"
+source_x86_64+=("cli-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-x64.zip"
+                "gui-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-x64.zip"
                 "icon.png::${_icon_url}")
-source_aarch64+=("cli-${pkgver}-arm64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-aarch64_v${pkgver}.zip"
-                 "gui-${pkgver}-arm64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-aarch64_v${pkgver}.zip"
+source_aarch64+=("cli-${pkgver}-arm64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-aarch64.zip"
+                 "gui-${pkgver}-arm64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-aarch64.zip"
                  "icon.png::${_icon_url}")
-source_armv7h+=("cli-${pkgver}-armv7.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-armv7_v${pkgver}.zip")
+source_armv7h+=("cli-${pkgver}-armv7.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-armv7.zip")
 
 noextract=("cli-${pkgver}-x64.zip" "gui-${pkgver}-x64.zip" "cli-${pkgver}-arm64.zip" "gui-${pkgver}-arm64.zip" "cli-${pkgver}-armv7.zip")
 
