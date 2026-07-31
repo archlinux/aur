@@ -1,16 +1,17 @@
 pkgbase = ixr-bin
 	pkgdesc = Unofficial Rust port of the Internxt CLI (faster, single static binary, streaming transfers)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Bebbssos/internxt-cli-rust
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	optdepends = fuse3: needed by `mount`/`serve fuse` — provides the fusermount3 helper the binary shells out to
 	provides = ixr
 	conflicts = ixr
-	source_x86_64 = https://github.com/Bebbssos/internxt-cli-rust/releases/download/v0.2.0/ixr-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = d4a14e9fb264ee4affa0ebffefe17df20ce7d725dd1fd174444d13adaaa01e21
-	source_aarch64 = https://github.com/Bebbssos/internxt-cli-rust/releases/download/v0.2.0/ixr-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d278a5f69a28ba720a1b489a936106353bcab1df9bdcd2a708e8ed5a1ce23f4d
+	source_x86_64 = ixr-x86_64-unknown-linux-gnu-0.2.1.tar.gz::https://github.com/Bebbssos/internxt-cli-rust/releases/download/v0.2.1/ixr-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a6519cee2689cfd00a37f1903424816ef3c78a51f46c6b71cf2dcfd0a024055c
+	source_aarch64 = ixr-aarch64-unknown-linux-gnu-0.2.1.tar.gz::https://github.com/Bebbssos/internxt-cli-rust/releases/download/v0.2.1/ixr-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f960a65067a8a2c0d41973c5944b82b955e576feff6fca1a4fd22b0c0e501a95
 
 pkgname = ixr-bin
