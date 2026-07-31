@@ -5,7 +5,7 @@ _pkgname=treehouse
 pkgname=${_pkgname}-bin
 pkgdesc="Manage worktrees without managing worktrees"
 
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('312b91de43ae925ba52cbb5f826a96dec2fb88068bcdd3db56c219b404f88a07'
             '1b962d20f826f6a758c737f8aa4e8e76dc719b8aa78fcfacdfb46681bb36c2f4')
-sha256sums_x86_64=('ff030255663bb5d384309cdf1b3a0bd62006e0ac978340d292039697cb70c225')
-sha256sums_aarch64=('d4e37ad11d50fb6381c060d34e7372e944e01af78b0c6707c6d0ff966c7c2c44')
+sha256sums_x86_64=('2fe3e01220ae51a967c3e5ba6ccf10ec83bdbae8e420368d194285a8d04c9ef8')
+sha256sums_aarch64=('980367c0233274eb3181a19a2ca8ec69d09b4a588ba27367937d336f9a2c938e')
 
 
 package() {
