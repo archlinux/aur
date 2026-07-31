@@ -1,4 +1,4 @@
-post_install() {
+seed_config() {
   local target_user="" target_home="" chown_flags=() started=false
 
   if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
@@ -54,4 +54,12 @@ post_install() {
   echo "  Config:              ~/.config/chest-backup/chest-backup.json"
   echo "  Secrets:             ~/.config/chest-backup/.env"
   echo
+}
+
+post_install() {
+  seed_config
+}
+
+post_upgrade() {
+  seed_config
 }

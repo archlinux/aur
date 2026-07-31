@@ -1,7 +1,7 @@
 pkgbase = chest-backup
 	pkgdesc = Full-stack backup manager with web UI, system tray and scheduling
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brankosimic/chest-backup
 	install = chest-backup.install
 	arch = x86_64
