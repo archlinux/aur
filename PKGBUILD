@@ -8,7 +8,7 @@ url="https://github.com/akku1139/us144mkii/tree/tascam-control-panel/tascam_cont
 license=('GPL-2.0-only')
 groups=()
 depends=(qt6-base alsa-lib)
-makedepends=(git)
+makedepends=(git cmake)
 optdepends=(
 	'us144mkii: us144mkii ALSA driver (it is merged on Linux 6.18)'
 )
