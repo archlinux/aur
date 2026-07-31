@@ -1,49 +1,111 @@
 PKGNAME := kanata-switcher
 UPSTREAM := 7mind/kanata-switcher
+SHELL := /usr/bin/bash
 
-CURRENT_VER := $(shell sed --quiet 's/^pkgver=//p' PKGBUILD)
-LATEST_VER := $(shell curl --silent https://api.github.com/repos/$(UPSTREAM)/releases/latest | jq --raw-output '.tag_name | ltrimstr("v")')
+CURRENT_VERSION_CMD := awk -F= '$$1 == "pkgver" { print $$2; exit }' PKGBUILD
+LATEST_VERSION_CMD := curl --fail --silent --show-error --location \
+	--connect-timeout 10 --max-time 30 \
+	https://api.github.com/repos/$(UPSTREAM)/releases/latest | \
+	jq --exit-status --raw-output '.tag_name | select(type == "string" and startswith("v")) | ltrimstr("v")'
+RELEASE_TOOLS := curl git jq makepkg namcap updpkgsums
 
-.PHONY: check-update update build lint srcinfo clean publish
+.PHONY: check-tools check-update update build lint srcinfo clean publish
 
-check-update:
-	@echo "Current: $(CURRENT_VER)"
-	@echo "Latest:  $(LATEST_VER)"
-	@if [ "$(CURRENT_VER)" = "$(LATEST_VER)" ]; then \
-		echo "Up to date."; \
-	else \
-		echo "Update available: $(CURRENT_VER) -> $(LATEST_VER)"; \
-	fi
-
-update:
-	@if [ -z "$(LATEST_VER)" ]; then \
-		echo "ERROR: Could not fetch latest version from GitHub" >&2; \
+check-tools:
+	@missing=(); \
+	for tool in $(RELEASE_TOOLS); do \
+		command -v "$$tool" >/dev/null || missing+=("$$tool"); \
+	done; \
+	(($${#missing[@]} == 0)) || { \
+		printf 'ERROR: Missing tools: %s\n' "$${missing[*]}" >&2; \
+		printf 'Install them with: sudo pacman --sync --needed jq namcap pacman-contrib\n' >&2; \
 		exit 1; \
+	}
+
+check-update: check-tools
+	@current=$$($(CURRENT_VERSION_CMD)) || exit 1; \
+	latest=$$($(LATEST_VERSION_CMD)) || exit 1; \
+	[[ $$latest =~ ^[0-9]+([.][0-9A-Za-z]+)*$$ ]] || { \
+		printf 'ERROR: Invalid upstream version: %s\n' "$$latest" >&2; \
+		exit 1; \
+	}; \
+	printf 'Current: %s\nLatest:  %s\n' "$$current" "$$latest"; \
+	if [[ $$current == "$$latest" ]]; then \
+		printf 'Up to date.\n'; \
+	else \
+		printf 'Update available: %s -> %s\n' "$$current" "$$latest"; \
 	fi
-	@if [ "$(CURRENT_VER)" = "$(LATEST_VER)" ]; then \
-		echo "Already at $(CURRENT_VER), nothing to do."; \
+
+update: check-tools
+	@current=$$($(CURRENT_VERSION_CMD)) || exit 1; \
+	latest=$$($(LATEST_VERSION_CMD)) || exit 1; \
+	[[ $$latest =~ ^[0-9]+([.][0-9A-Za-z]+)*$$ ]] || { \
+		printf 'ERROR: Invalid upstream version: %s\n' "$$latest" >&2; \
+		exit 1; \
+	}; \
+	if [[ $$current == "$$latest" ]]; then \
+		printf 'Already at %s, nothing to do.\n' "$$current"; \
 		exit 0; \
-	fi
-	sed --in-place "s/^pkgver=.*/pkgver=$(LATEST_VER)/" PKGBUILD
-	sed --in-place "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-	updpkgsums
-	@echo "Updated to $(LATEST_VER)"
+	fi; \
+	backup=$$(mktemp) || exit 1; \
+	cp -- PKGBUILD "$$backup" || { rm --force -- "$$backup"; exit 1; }; \
+	updated=false; \
+	trap 'if ! $$updated; then cp -- "$$backup" PKGBUILD; fi; rm --force -- "$$backup"' EXIT; \
+	sed --in-place "s/^pkgver=.*/pkgver=$$latest/; s/^pkgrel=.*/pkgrel=1/" PKGBUILD || exit 1; \
+	updpkgsums || exit 1; \
+	updated=true; \
+	printf 'Updated to %s\n' "$$latest"
 
 build:
-	makepkg --syncdeps --force
+	makepkg --syncdeps --cleanbuild --force
 
 lint:
 	namcap PKGBUILD
-	namcap $(PKGNAME)-$(CURRENT_VER)-*.pkg.tar.zst
+	@found=false; \
+	while IFS= read -r package; do \
+		[[ $${package##*/} == $(PKGNAME)-debug-* ]] && continue; \
+		[[ -f $$package ]] || { printf 'ERROR: Package not found: %s\n' "$$package" >&2; exit 1; }; \
+		namcap "$$package" || exit 1; \
+		found=true; \
+	done < <(makepkg --packagelist); \
+	$$found || { printf 'ERROR: No package artifact found. Run make build first.\n' >&2; exit 1; }
 
 srcinfo:
-	makepkg --printsrcinfo > .SRCINFO
+	@tmp=$$(mktemp) || exit 1; \
+	trap 'rm --force -- "$$tmp"' EXIT; \
+	makepkg --printsrcinfo > "$$tmp" || exit 1; \
+	mv -- "$$tmp" .SRCINFO
 
 clean:
-	rm --recursive --force src/ pkg/ *.tar.gz *.pkg.tar.zst
+	rm --recursive --force src/ pkg/
 
-publish: clean update build lint srcinfo
-	$(MAKE) clean
-	git add PKGBUILD .SRCINFO
-	git commit --message "feat: update to $(LATEST_VER)"
-	git push
+publish: check-tools
+	@[[ $$(git branch --show-current) == master ]] || { \
+		printf 'ERROR: AUR releases must be published from master.\n' >&2; \
+		exit 1; \
+	}; \
+	[[ $$(git remote get-url --push origin) == ssh://aur@aur.archlinux.org/$(PKGNAME).git ]] || { \
+		printf 'ERROR: origin is not the $(PKGNAME) AUR repository.\n' >&2; \
+		exit 1; \
+	}; \
+	[[ -z $$(git status --porcelain) ]] || { \
+		printf 'ERROR: Commit or discard existing changes before publishing.\n' >&2; \
+		exit 1; \
+	}; \
+	original_head=$$(git rev-parse HEAD) || exit 1; \
+	committed=false; \
+	trap 'status=$$?; if ((status != 0)) && ! $$committed; then git restore --source="$$original_head" --staged --worktree -- PKGBUILD .SRCINFO; fi' EXIT; \
+	$(MAKE) update || exit 1; \
+	$(MAKE) build || exit 1; \
+	$(MAKE) lint || exit 1; \
+	$(MAKE) srcinfo || exit 1; \
+	git diff --check || exit 1; \
+	git add -- PKGBUILD .SRCINFO || exit 1; \
+	if ! git diff --cached --quiet; then \
+		version=$$($(CURRENT_VERSION_CMD)) || exit 1; \
+		git commit --gpg-sign --message "feat: update to $$version" || exit 1; \
+		committed=true; \
+	fi; \
+	git verify-commit HEAD || exit 1; \
+	trap - EXIT; \
+	git push origin master

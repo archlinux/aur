@@ -10,11 +10,14 @@ pkgbase = kanata-switcher
 	makedepends = glib2
 	depends = dbus
 	depends = glibc
+	depends = libgcc
 	optdepends = kanata: the keyboard remapper this tool controls
-	optdepends = glib2: GNOME Shell extension schema support
+	optdepends = dconf: persist system tray settings
+	optdepends = glib2: GNOME Shell extension schema and GSettings support
+	optdepends = gnome-shell: GNOME Shell extension integration
 	source = kanata-switcher-1.1.1.tar.gz::https://github.com/7mind/kanata-switcher/archive/refs/tags/v1.1.1.tar.gz
 	source = kanata-switcher.service
 	b2sums = 386276bd0fec836478da7e0bed791f486b7852b800f61a57a3fec8821c0cb05bc5a0b1e839a44e740860ed57a746cce6b01907a658c6d7e04d26984b1167fc5d
-	b2sums = 10cd6e5c170775453d12494e8329e582e289f2b0c1bbe1ccddb7fb3a5d2c9fcff8ff8b3b8687493e4a330ede38ccdcafb707d19e37a187ee1288ce9031b4ecb6
+	b2sums = 8075ae04b6127b83f5b76df9c34345bc66073b22c8bb15f925498fbdd490e4bd3bc36281cb82ec42cc0fccc3056a6c2e0af6afdc3c53c04d91583a876383d95f
 
 pkgname = kanata-switcher
