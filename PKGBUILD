@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-esa20240910
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 epoch=
 pkgdesc="Alibaba Cloud ESA (20240910) SDK Library for Python"
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('c51218098d8ceb7dfb2c40a054720874fb10ab5ce40b607501fd548b1729f7a1')
+sha256sums=('82a0163a8fa629710e458416af5506ff5b0c780dadb38db2719cec6c255920e6')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
