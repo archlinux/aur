@@ -1,6 +1,6 @@
 pkgbase = sealantern-connect
 	pkgdesc = Lightweight Minecraft Java Edition P2P multiplayer client powered by sculk
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/SeaLantern-Studio/SeaLantern-Connect
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = sealantern-connect
 	depends = libayatana-appindicator
 	depends = librsvg
 	options = !strip
-	source_x86_64 = sealantern-connect-0.2.0-x86_64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.2.0/SeaLantern.Connect_0.2.0_amd64.deb
-	sha256sums_x86_64 = 8a73f02c602199d4ee5c0bc2895740d3403430bdc3b96d6d83107ce064773b13
-	source_aarch64 = sealantern-connect-0.2.0-aarch64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.2.0/SeaLantern.Connect_0.2.0_arm64.deb
-	sha256sums_aarch64 = 49416709bd1be23ec9df26778e435b7b7fefaa836f494e37ce199fb7bcc560ee
+	source_x86_64 = sealantern-connect-0.2.1-x86_64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.2.1/SeaLantern.Connect_0.2.1_amd64.deb
+	sha256sums_x86_64 = 54ed9433ab3f877d1ab94d47319ec8ffb300f3ba17f3a8da92c814d5946e05e5
+	source_aarch64 = sealantern-connect-0.2.1-aarch64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v0.2.1/SeaLantern.Connect_0.2.1_arm64.deb
+	sha256sums_aarch64 = 2d255be47628707b9b78a7c2eef88ad1c4919693b47088b7271007c5c13665f1
 
 pkgname = sealantern-connect
