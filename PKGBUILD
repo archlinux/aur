@@ -3,7 +3,7 @@
 pkgname=silex-desktop-v3-bin
 pkgver=3.9.0
 _pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Silex website builder desktop application"
 arch=('x86_64')
 url="https://github.com/silexlabs/Silex"
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("Silex_${_pkgver}_amd64.deb::https://github.com/silexlabs/Silex/releases/download/v${_pkgver}/Silex_${_pkgver}_amd64.deb")
-sha256sums=('ffb4ffd43dfe05ca79623a040756cd5b604c6379e88c4c1c0ee54b7f79c37acb')
+sha256sums=('1bf233109cd014e7d8c8134a4c843b7addc75ba2ff12f560b99a83860f1a1ac5')
 
 package() {
     cd "$srcdir"
