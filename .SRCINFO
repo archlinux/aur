@@ -1,0 +1,20 @@
+pkgbase = smol-snapper
+	pkgdesc = A standalone bootable btrfs snapshot creation tool
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/sabuj66/smol-snapper
+	arch = any
+	license = GPL-3.0-only
+	depends = btrfs-progs
+	depends = limine
+	optdepends = sbctl: Secure Boot signing
+	optdepends = sbsigntools: Secure Boot signing
+	optdepends = systemd: stub provider
+	optdepends = dbus: notification dependency
+	optdepends = fyi: notification functionality
+	optdepends = libnotify: notification functionality
+	backup = etc/smol-snapper.conf
+	source = smol-snapper::https://github.com/sabuj66/smol-snapper/archive/refs/tags/v1.1.tar.gz
+	sha256sums = aef3133a2be7e0fa420783856f2a1944c4322c5e976c645c5f518b92bafb3a58
+
+pkgname = smol-snapper
