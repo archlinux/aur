@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.5.1
+pkgver=0.5.2
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -36,7 +36,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2db7fc0523f765d54cde5dcacc12b2fec7f008c4b481e67e8226c7655aa7b927'
+sha256sums=('0f6a33f61ed1325d8ded917c7cf0ad712d641c2ebdeac533e0d1d4c86321a1fc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -126,7 +126,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"  
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"  
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icons/${_icons}.png" \
