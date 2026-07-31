@@ -10,8 +10,8 @@
 #   sha256sums=('SKIP')
 
 pkgname=chest-backup
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="Full-stack backup manager with web UI, system tray and scheduling"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brankosimic/chest-backup"
@@ -28,12 +28,8 @@ makedepends=(
 optdepends=(
   'docker: container-based backup sources (sqlite-container, postgres-container)'
 )
-backup=(
-  'etc/chest-backup/chest-backup.json'
-  'etc/chest-backup/.env'
-)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brankosimic/chest-backup/archive/v$pkgver.tar.gz")
-sha256sums=('c558f67be02f358b3eaaf23c89c7ca7a19659b530c7c4e436175dddbe9663645')
+sha256sums=('dfab8c5d0e31bd29f1053ff8296b849686d14a18f43fa33296cf0f1edfe7d9a2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -76,8 +72,8 @@ package() {
     cp -r "$src" "$app/node_modules/$rel"
   done
 
-  install -Dm644 chest-backup.default.json "$pkgdir/etc/$pkgname/chest-backup.json"
-  install -Dm644 .env.default "$pkgdir/etc/$pkgname/.env"
+  install -Dm644 chest-backup.default.json "$app/chest-backup.default.json"
+  install -Dm644 .env.default "$app/.env.default"
   install -Dm644 chest-backup.json.example "$app/chest-backup.json.example"
   install -Dm644 .env.example "$app/.env.example"
   install -Dm755 bin/chest-backup "$pkgdir/usr/bin/chest-backup"
@@ -89,8 +85,30 @@ post_install() {
   if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
     uid=$(id -u "$SUDO_USER")
     user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    cfg_dir="$user_home/.config/chest-backup"
+
+    install -d -o "$SUDO_USER" -g "$SUDO_USER" -m700 "$cfg_dir"
+    if [ ! -e "$cfg_dir/chest-backup.json" ]; then
+      if [ -e /etc/chest-backup/chest-backup.json ]; then
+        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
+          /etc/chest-backup/chest-backup.json "$cfg_dir/chest-backup.json"
+      else
+        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
+          /usr/share/$pkgname/chest-backup.default.json "$cfg_dir/chest-backup.json"
+      fi
+    fi
+    if [ ! -e "$cfg_dir/.env" ]; then
+      if [ -e /etc/chest-backup/.env ]; then
+        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
+          /etc/chest-backup/.env "$cfg_dir/.env"
+      else
+        install -o "$SUDO_USER" -g "$SUDO_USER" -m600 \
+          /usr/share/$pkgname/.env.default "$cfg_dir/.env"
+      fi
+    fi
 
     if runuser -u "$SUDO_USER" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      systemctl --user daemon-reload && \
       systemctl --user enable --now chest-backup 2>/dev/null; then
       started=true
     else
@@ -117,5 +135,7 @@ post_install() {
   fi
   echo
   echo "  Web UI:              http://localhost:5199"
+  echo "  Config:              ~/.config/chest-backup/chest-backup.json"
+  echo "  Secrets:             ~/.config/chest-backup/.env"
   echo
 }
