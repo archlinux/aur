@@ -1,0 +1,18 @@
+pkgbase = live-paper-git
+	pkgdesc = A Wayland video wallpaper engine (VCS build)
+	pkgver = 0.2.0.r0.g0bb27ef
+	pkgrel = 1
+	url = https://github.com/sinder38/live-paper-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	depends = wayland
+	depends = libglvnd
+	provides = live-paper
+	conflicts = live-paper
+	source = live-paper::git+https://github.com/sinder38/live-paper-rs.git
+	sha256sums = SKIP
+
+pkgname = live-paper-git
