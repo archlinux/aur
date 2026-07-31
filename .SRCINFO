@@ -1,0 +1,16 @@
+pkgbase = topoglyph
+	pkgdesc = Topology-to-glyph text-art rendering engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuepoo/topoglyph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	depends = ffmpeg
+	source = topoglyph-0.1.0.tar.gz::https://github.com/Xuepoo/topoglyph/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7c835343a6d97ef75ad054e9f84f98f4465930ebd12c6153b9ee404da5482d74
+
+pkgname = topoglyph
