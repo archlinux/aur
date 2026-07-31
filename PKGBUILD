@@ -4,7 +4,7 @@
 
 pkgname=sharkfin-keyboard
 _pkgname=sharkfin
-pkgver=0.1.8
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('sharkfin')
 # The hidapi crate compiles vendored C; makepkg's LTO makes ld drop its symbols.
 options=('!lto')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('b0fdf1a34662694dafae5150bb584e58c0a6bdaaf47a643acf6687e2389271a9584fdc7cbce73a8b81bf4fce34da2de7c09749c85d39059712c88e826ffd345d')
+b2sums=('644b4d83d83a5cbd5793b809234abaea10491514d01cc026f0b33f25ad09342301c1bfb9c338ddee92466f2834370f33ba3329a6d58980af917cd7d3b0dc571e')
 
 prepare() {
   cd "$_pkgname-$pkgver/app"
