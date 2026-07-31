@@ -1,6 +1,6 @@
 pkgbase = ddhx
 	pkgdesc = Console hexadecimal file viewer
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/dd86k/ddhx
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ddhx
 	depends = libgcc
 	provides = ddhx
 	conflicts = ddhx
-	source = https://github.com/dd86k/ddhx/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 281ae967b262d54b4e3a8f03dd0c49bc526b8168d893bd7f7a6fcee349c2d588
+	source = https://github.com/dd86k/ddhx/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 3eeb9996840d1124bd5b507da84a189e222589efa2d6636da3fd0d2f80e71db7
 
 pkgname = ddhx
