@@ -2,7 +2,7 @@
 
 pkgname=pdfatlas-git
 _pkgname=pdfatlas
-pkgver=r101.3fa6281
+pkgver=r85.9a606ed
 pkgrel=1
 pkgdesc="PDF Reader with Search Portals and Auto-Crop"
 arch=('any')
