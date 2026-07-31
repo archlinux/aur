@@ -3,7 +3,7 @@
 pkgname=silex-desktop-v3-bin
 pkgver=3.9.0
 _pkgver=3.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Silex website builder desktop application"
 arch=('x86_64')
 url="https://github.com/silexlabs/Silex"
