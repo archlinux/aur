@@ -1,34 +1,24 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
-# Poached from Arch Strike:
-# Original: ArchStrike <team@archstrike.org>
+# Maintainer: foxinwinter <179904685+foxinwinter at users dot noreply dot github dot com>
 
 pkgname=forager
-_pkgname=Forager
-pkgver=2.0.3
+pkgver=0.1.0
 pkgrel=1
+pkgdesc="Steam-like game launcher for your local game library"
 arch=('any')
-pkgdesc="Multithreaded threat Intelligence gathering utilizing Python3"
-url="https://github.com/byt3smith/Forager"
-license=('MIT')
-depends=('python' 'pdfminer3k' 'python-xlrd' 'python-colorama' 'python-ply')
-source=("https://github.com/byt3smith/Forager/archive/v${pkgver}.tar.gz")
-sha512sums=('89be38719b00e22cd8451da58e2e1117d2bc4e46c0a8761e3484145e725c571f6c139bc2ee2f01751a8fee1847c667bebd89db3a5d34ad0d1660b1a33555f296')
+url="https://github.com/foxinwinter/forager"
+license=('AGPL-3.0-only')
+depends=('python' 'pyside6' 'python-evdev' 'python-keyring')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://github.com/foxinwinter/forager/archive/v${pkgver}.tar.gz")
+sha256sums=('2bfaffba0dd5a6eb34380f59190da857d0d9afdc3ec004a9284859be23fd29fe')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
-cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/usr/bin/env bash
-cd /usr/share/${pkgname}
-python Forager.py "\$@"
-EOF
-chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
