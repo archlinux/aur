@@ -5,7 +5,7 @@
 # `makepkg` in this directory builds, not a record of what is on the AUR.
 
 pkgname=sabigoku
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Terminal anime browser and player"
 # The official Arch container image is x86_64 only, so CI never runs makepkg on
@@ -28,7 +28,7 @@ makedepends=('cargo')
 # yields an empty /usr/src/debug and a dangling build-id symlink.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('480a4d98f8d7d7fbe1354171749c665b62df9b52a056dca61dfed0654d8e5438')
+sha256sums=('c1078569f70ae7034cd6b8b92acd1f9174b854ee4cbffcf1ccc4dc7521b96d78')
 
 prepare() {
   cd "$pkgname-$pkgver"
