@@ -1,0 +1,14 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 8921dc9..5d6ffc0 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -49,6 +49,9 @@ geonames = { path = "geonames" }
+ log = "0.4.28"
+ env_logger = "0.11.8"
+
++[profile.release]
++lto = "thin"
++
+ # For development and testing purposes
+ # [patch.'https://github.com/pop-os/libcosmic']
+ # libcosmic = { git = "https://github.com/pop-os/libcosmic//" }

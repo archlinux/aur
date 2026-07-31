@@ -1,0 +1,37 @@
+pkgbase = cosmic-settings-daemon-application-volume
+	pkgdesc = Cosmic settings daemon
+	pkgver = 1.5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/pop-os/cosmic-settings-daemon
+	arch = x86_64
+	groups = cosmic
+	license = GPL-3.0-only
+	makedepends = clang
+	makedepends = cargo
+	makedepends = git
+	makedepends = libxkbcommon
+	makedepends = mold
+	depends = acpid
+	depends = adw-gtk-theme
+	depends = alsa-utils
+	depends = breeze-icons
+	depends = libgcc
+	depends = geoclue
+	depends = glibc
+	depends = libinput
+	depends = libpulse
+	depends = libpipewire
+	depends = playerctl
+	depends = cosmic-sound-theme
+	depends = qt6ct
+	depends = systemd-libs
+	depends = wireplumber
+	depends = xdg-utils
+	optdepends = pulseaudio-alsa: Media keys support
+	optdepends = qt5ct: Theming support for Qt5 apps
+	source = git+https://github.com/AdityaHebballe/cosmic-settings-daemon.git#branch=feat/application-volume-control
+	source = cosmic-settings-daemon-lto.patch
+	b2sums = SKIP
+
+pkgname = cosmic-settings-daemon-application-volume
