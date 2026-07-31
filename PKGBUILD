@@ -4,13 +4,16 @@
 
 pkgname=cosmic-settings-daemon-application-volume
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Cosmic settings daemon'
 arch=(x86_64)
 url=https://github.com/pop-os/cosmic-settings-daemon
 license=(GPL-3.0-only)
 groups=(cosmic)
+provides=(cosmic-settings-daemon)
+conflicts=(cosmic-settings-daemon)
+replaces=(cosmic-settings-daemon)
 depends=(
   acpid
   adw-gtk-theme

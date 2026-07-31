@@ -1,7 +1,7 @@
 pkgbase = cosmic-settings-daemon-application-volume
 	pkgdesc = Cosmic settings daemon
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/pop-os/cosmic-settings-daemon
 	arch = x86_64
@@ -30,6 +30,9 @@ pkgbase = cosmic-settings-daemon-application-volume
 	depends = xdg-utils
 	optdepends = pulseaudio-alsa: Media keys support
 	optdepends = qt5ct: Theming support for Qt5 apps
+	provides = cosmic-settings-daemon
+	conflicts = cosmic-settings-daemon
+	replaces = cosmic-settings-daemon
 	source = git+https://github.com/AdityaHebballe/cosmic-settings-daemon.git#branch=feat/application-volume-control
 	source = cosmic-settings-daemon-lto.patch
 	b2sums = SKIP
