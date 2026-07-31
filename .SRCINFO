@@ -1,7 +1,7 @@
 pkgbase = gd32-isp-console-bin
 	pkgdesc = GigaDevice MCU ISP Console for Linux
-	pkgver = 4.0.5.26748
-	pkgrel = 5
+	pkgver = 5.1.0.39154
+	pkgrel = 1
 	url = https://www.gd32mcu.com
 	install = gd32-isp-console-bin.install
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = gd32-isp-console-bin
 	depends = openssl
 	provides = gd32-isp-console
 	conflicts = gd32-isp-console
-	noextract = GD32_ISP_CLI_Linux_V4.0.5.26748.tar.gz
+	noextract = GD32_ISP_CLI_Linux_V5.1.0.39154.tar.gz
 	options = !strip
-	source = https://www.gd32mcu.com/data/documents/toolSoftware/GD32_ISP_CLI_Linux_V4.0.5.26748.tar.gz
+	source = https://www.gd32mcu.com/data/documents/toolSoftware/GD32_ISP_CLI_Linux_V5.1.0.39154.tar.gz
 	source = gd32-isp-console-bin.install
-	sha256sums = 5a393c9d62136ea14a522964bd7d64c74a56c025f6561f51a873f9a288118924
+	sha256sums = 340e492f28a474bca28aed57c49e086a2e44b19582c37efafe4d43b135eebd43
 	sha256sums = 741827e445890d9538d127fdee7c3aa0b20ad68ac6194692e9f19283c952f6c1
 
 pkgname = gd32-isp-console-bin
