@@ -5,7 +5,7 @@ _pkgname=thunar-z-jump
 # Do not pin a real commit here — it goes stale (and cannot point at the commit
 # that contains it anyway). Kept roughly current only so the AUR web frontend and
 # `paru`/`yay` search show a meaningful version instead of 0.r0.g0000000.
-pkgver=1.0.0.r0.g1bebf50
+pkgver=1.0.0.r6.g299c55b
 pkgrel=1
 pkgdesc="Thunar plugin to jump to frecency-ranked directories from z / zsh-z / zoxide"
 arch=('any')
@@ -32,9 +32,9 @@ makedepends=(
     'python-setuptools-scm'
     'python-wheel'
 )
-# python-gobject + gtk3 let check() also run the accelerator tests; the ones that
-# need a display skip themselves in the build chroot.
-checkdepends=('python-pytest' 'python-gobject' 'gtk3')
+# python-gobject + gtk3 let check() also run the accelerator and dump_async tests;
+# the dialog tests need a display and skip themselves in the build chroot.
+checkdepends=('python-pytest' 'python-pytest-timeout' 'python-gobject' 'gtk3')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url.git")
