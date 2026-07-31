@@ -1,0 +1,12 @@
+pkgbase = skerry-ssh-appimage
+	pkgdesc = Cross-platform SSH client with a single core
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/SeCherkasov/SkerrySSH
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fuse2
+	source = skerry-0.2.1-x86_64.AppImage::https://github.com/SeCherkasov/SkerrySSH/releases/download/v0.2.1/Skerry-0.2.1-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = skerry
