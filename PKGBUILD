@@ -1,6 +1,6 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis"
-pkgver="2.1.0"
+pkgver="2.2.0"
 pkgrel="2"
 pkgdesc="An easy to use Password Manager."
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("gtk4" "gtkmm-4.0" "gpgme")
 makedepends=("cmake" "git" "gcc" "make" "pkgconf")
 optdepends=("git: password store synchronization")
 conflicts=("clavis-git")
-source=("clavis::git+https://github.com/ManelCG/clavis.git#tag=v2.1.0-2")
+source=("clavis::git+https://github.com/ManelCG/clavis.git#tag=v2.2.0-2")
 sha256sums=("SKIP")
 
 build() {
