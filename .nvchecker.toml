@@ -1,5 +1,6 @@
 [shadow]
 source = "git"
-git = "https://github.com/shadow-maint/shadow"
-include_regex = "([\\d]+[.]+)()([\\d.]+)"
-exclude_regex = ".*(dev|rc|RC|alpha|beta|bp).*"
+git = "https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow"
+include_regex = '^[\d.]+-(arch[\d]+)$'
+from_pattern = '([\d.]+)-(arch[\d]+)'
+to_pattern = '\1.\2'

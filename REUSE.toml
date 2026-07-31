@@ -1,0 +1,25 @@
+version = 1
+
+[[annotations]]
+path = [
+    "*.desktop",
+    "*.hook",
+    "*.install",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.sysusers",
+    "*.timer",
+    "*.tmpfiles",
+    ".SRCINFO",
+    ".justfile",
+    ".mado.toml",
+    ".nvchecker.toml",
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    "useradd.defaults",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"

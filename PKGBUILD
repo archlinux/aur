@@ -10,12 +10,17 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=shadow-selinux
-pkgver=4.18.0
+pkgver=4.20.0.arch1
+_upstream_tag=${pkgver%.*}
+_dist_tag=${pkgver%.*}-arch${pkgver#*.arch}
 pkgrel=1
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=(x86_64 aarch64)
 url="https://github.com/shadow-maint/shadow"
-license=(BSD-3-Clause)
+license=(
+  0BSD
+  BSD-3-Clause
+)
 groups=(selinux)
 depends=(
   glibc
@@ -23,7 +28,6 @@ depends=(
 )
 makedepends=(
   acl
-  attr
   audit
   docbook-xsl
   git
@@ -37,7 +41,6 @@ backup=(
   etc/default/useradd
   etc/login.defs
   etc/pam.d/chpasswd
-  etc/pam.d/groupmems
   etc/pam.d/newusers
   etc/pam.d/passwd
 )
@@ -45,48 +48,45 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-# NOTE: distribution patches are taken from https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/-/commits/4.18.0.arch1
+# NOTE: distribution patches are taken from https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/
 source=(
-  git+$url.git?signed#tag=$pkgver
-  0001-Disable-replaced-tools-their-man-pages-and-PAM-integ.patch
-  0002-Adapt-login.defs-for-PAM-and-util-linux.patch
-  0003-Add-Arch-Linux-defaults-for-login.defs.patch
+  git+$url.git?signed#tag=${_upstream_tag}
+  https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/-/releases/${_dist_tag}/downloads/${pkgname/-selinux}-${_dist_tag}.patch.{sig,zst}
   shadow.{timer,service}
-  shadow.{sysusers,tmpfiles}
   useradd.defaults
+  LICENSE
 )
-sha512sums=('14275673ac2a7eecf13079cb8896eb49293d5bc5504f7900f359e0f21a107848d207aaf5c43d39cf96c0ee9e289929d1e53d2ecfbb39cfcc8175a86d85337eb8'
-            '127948d66a3be0874d7118e674afc7a15eb9047ea943f7feca81922376ca9bdf52000ad48dca7cb4c32b8f9bd4558eeff4f0701e4944aedc1b1779c35ef26c47'
-            '5e47fef33ccd0cf5ce92a049f8cedc7c8d720740f0407e3f281b294d9538edf17714769c990698320a8c27efc63dce56682d2857b8d7f2108909d66fd314974a'
-            '90f46612970f324f60ab5d997ec202b53a829f1c802ea10c16b8ebd075529f5193eee3aca842a03504a9a492d23e763208ad82904c05e274a02be1b5edd2bd12'
+sha512sums=('c21152c9aaf7bf817d87be9f8eb4b804a3ee6c5090829a44742099e48817d3da0a1a754f78a9842ef9284eaebc78b290ad4a6bcdc40511158a33c240c2f78add'
+            'SKIP'
+            '9e57ff88750c3e283232a9dd33db06b094009b8ce72b92a07be2eb81cd407402c747dbea8e1373c8421a28d46acffbb908d75e82fa84b2f233b580487de43183'
             'e4edf705dd04e088c6b561713eaa1afeb92f42ac13722bff037aede6ac5ad7d4d00828cfb677f7b1ff048db8b6788238c1ab6a71dfcfd3e02ef6cb78ae09a621'
             '2c8689b52029f6aa27d75b8b05b0b36e2fc322cab40fdfbb50cdbe331f61bc84e8db20f012cf9af3de8c4e7fdb10c2d5a4925ca1ba3b70eb5627772b94da84b3'
-            '5afac4a96b599b0b8ed7be751e7160037c3beb191629928c6520bfd3f2adcd1c55c31029c92c2ff8543e6cd9e37e2cd515ba4e1789c6d66f9c93b4e7f209ee7a'
-            '97a6a57c07502e02669dc1a91bffc447dba7d98d208b798d80e07de0d2fdf9d23264453978d2d3d1ba6652ca1f2e22cdadc4309c7b311e83fa71b00ad144f877'
-            '706ba6e7fa8298475f2605a28daffef421c9fa8d269cbd5cbcf7f7cb795b40a24d52c20e8d0b73e29e6cd35cd7226b3e9738dc513703e87dde04c1d24087a69c')
-b2sums=('cd75b95771cf630a8fc8492e871ce7f63ae13ffe756506fb2854eed641bb56c5d18c09bc1e69bc86c324f3940894a7ddc2f9c5ea2baeeae5d9df24ab4221ef69'
-        'c7c1c6d318e2338285bcaed1fb39edf1231e4753e0e2efd72658018fc8e672a8ac49d7d67fa9d760d3a6e1f4227fa248122d7ba535709eb4614ed7f16c1d7803'
-        '589426679cfd58cb6b318641b56bb6902bf0aceffb735dd606da4058af8a9bac24feece4710406cc648aa8cd69ccea22c1ac7ac662b7ee3286e27af2f99461b9'
-        '8b978c97640a87f8baa12a2b0b33370bb79edcc394a28801c8d7ebd304de8485370768b7fc5f7b4c64359b1018988d182dc4b33deecec93add48e636223dd6b7'
+            '706ba6e7fa8298475f2605a28daffef421c9fa8d269cbd5cbcf7f7cb795b40a24d52c20e8d0b73e29e6cd35cd7226b3e9738dc513703e87dde04c1d24087a69c'
+            'a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930')
+b2sums=('9539673cd7f8cfd43844171546001b9686a1f35e55489750b1e80c76317ba06ee0e35cdffeef5c5cce28099f4b53afb62763cff1ba3b680d3220c40dfe482577'
+        'SKIP'
+        '323d2ef8d92d73388b9013fbe620d7ebfa960bcdb871941325090f7f1005e07374853ae57ed1877e0d66b74f36551610c5e920091dea180c54df4006ebbab666'
         '5cfc936555aa2b2e15f8830ff83764dad6e11a80e2a102c5f2bd3b7c83db22a5457a3afdd182e3648c9d7d5bca90fa550f59576d0ac47a11a31dfb636cb18f2b'
         'a69191ab966f146c35e7e911e7e57c29fffd54436ea014aa8ffe0dd46aaf57c635d0a652b35916745c75d82b3fca7234366ea5f810b622e94730b45ec86f122c'
-        '511c4ad9f3be530dc17dd68f2a3387d748dcdb84192d35f296b88f82442224477e2a74b1841ec3f107b39a5c41c2d961480e396a48d0578f8fd5f65dbe8d9f04'
-        'd727923dc6ed02e90ef31f10b3427df50afbfe416bd03c6de0c341857d1bb33ab6168312bd4ba18d19d0653020fb332cbcfeeb24e668ae3916add9d01b89ccb4'
-        'f743922062494fe342036b3acb8b747429eb33b1a13aa150daa4bb71a84e9c570cfcc8527a5f846e3ea7020e6f23c0b10d78cf2ba8363eea0224e4c34ea10161')
+        'f743922062494fe342036b3acb8b747429eb33b1a13aa150daa4bb71a84e9c570cfcc8527a5f846e3ea7020e6f23c0b10d78cf2ba8363eea0224e4c34ea10161'
+        'a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101')
 validpgpkeys=(
   66D0387DB85D320F8408166DB175CFA98F192AF2  # Serge Hallyn <sergeh@kernel.org>
   A9348594CE31283A826FBDD8D57633D441E25BB5  # Alejandro Colomar <alx@kernel.org>
+  991F6E3F0765CF6295888586139B09DA5BF0D338  # David Runge <dvzrv@archlinux.org>
 )
 
 prepare() {
-  local filename
-
   cd "${pkgname/-selinux}"
-  for filename in "${source[@]}"; do
-    if [[ "$filename" =~ \.patch$ ]]; then
-      printf "Applying patch %s\n" "${filename##*/}"
-      patch -Np1 -i "$srcdir/${filename##*/}"
-    fi
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
   done
 
   autoreconf -fiv
@@ -105,7 +105,7 @@ build() {
     --with-audit
     --with-fcaps  # use capabilities instead of setuid for setuidmap and setgidmap
     --with-group-name-max-length=32
-    --with-libpam  # PAM integration for chpasswd, groupmems, newusers, passwd
+    --with-libpam  # PAM integration for chpasswd, newusers, passwd
     --with-yescrypt
     --without-bcrypt
     --without-libbsd  # shadow can use internal implementation for getting passphrase
@@ -127,7 +127,6 @@ build() {
 package() {
   depends+=(
     acl libacl.so
-    attr libattr.so
     audit libaudit.so
     libxcrypt libcrypt.so
     pam libpam.so libpam_misc.so
@@ -140,6 +139,7 @@ package() {
 
   # license
   install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/0BSD.txt"
 
   # custom useradd(8) defaults (not provided by upstream)
   install -vDm 600 ../useradd.defaults "$pkgdir/etc/default/useradd"
@@ -149,10 +149,4 @@ package() {
   install -vDm 644 ../shadow.service -t "$pkgdir/usr/lib/systemd/system/"
   install -vdm 755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
   ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/shadow.timer"
-
-  install -vDm 644 ../${pkgname/-selinux}.sysusers "$pkgdir/usr/lib/sysusers.d/${pkgname/-selinux}.conf"
-  install -vDm 644 ../${pkgname/-selinux}.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/${pkgname/-selinux}.conf"
-
-  # adapt executables to match the modes used by tmpfiles.d, so that pacman does not complain:
-  chmod 750 "$pkgdir/usr/bin/groupmems"
 }

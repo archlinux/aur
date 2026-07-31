@@ -1,0 +1,95 @@
+[lint]
+exclude = []
+output-format = "concise"
+quiet = false
+respect-gitignore = true
+respect-ignore = true
+rules = [
+    "MD001",
+    "MD002",
+    "MD003",
+    "MD004",
+    "MD005",
+    "MD006",
+    "MD007",
+    "MD009",
+    "MD010",
+    "MD012",
+    "MD013",
+    "MD014",
+    "MD018",
+    "MD019",
+    "MD020",
+    "MD021",
+    "MD022",
+    "MD023",
+    "MD024",
+    "MD026",
+    "MD027",
+    "MD028",
+    "MD029",
+    "MD030",
+    "MD031",
+    "MD032",
+    "MD033",
+    "MD034",
+    "MD035",
+    "MD036",
+    "MD037",
+    "MD038",
+    "MD039",
+    "MD040",
+    "MD041",
+    "MD046",
+    "MD047",
+]
+
+[lint.md002]
+level = 1
+
+[lint.md003]
+style = "consistent"
+
+[lint.md004]
+style = "consistent"
+
+[lint.md007]
+indent = 4
+
+[lint.md013]
+code-blocks = false
+line-length = 500
+tables = false
+
+[lint.md024]
+allow-different-nesting = true
+
+[lint.md025]
+level = 1
+
+[lint.md026]
+punctuation = ".,;:!?"
+
+[lint.md029]
+style = "one"
+
+[lint.md030]
+ol-multi = 1
+ol-single = 1
+ul-multi = 1
+ul-single = 1
+
+[lint.md033]
+allowed-elements = []
+
+[lint.md035]
+style = "consistent"
+
+[lint.md036]
+punctuation = ".,;:!?"
+
+[lint.md041]
+level = 1
+
+[lint.md046]
+style = "fenced"
