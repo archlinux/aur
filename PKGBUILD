@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=26.7.2
+pkgver=26.7.3
 _electronversion=42
 pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('eeda6f0a5f9433d8549b9ad4d9dd252cf53bc40bbdce48b71e92dd88503e952a')
-sha256sums_x86_64=('727ff90c219f2fec9754b3c7c36350747605510b63cff87a407e5f717bd20dfd')
+sha256sums_aarch64=('dcd600466147bfeafaa1090387855d6a88466c5e3bb81c95c5b5f46d16f05ec4')
+sha256sums_x86_64=('f5b97993ef669f2978e48e2dfbef81fe5aef4c65fac2ba2060b95f40254a11ca')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -81,7 +81,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
