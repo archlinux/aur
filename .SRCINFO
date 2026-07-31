@@ -1,0 +1,25 @@
+pkgbase = m2k-cli
+	pkgdesc = Command-line frontend for libm2k - control the ADALM2000 (M2k) oscilloscope, signal generator, logic analyzer, power supply and digital protocols
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/analogdevicesinc/libm2k
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	source = https://github.com/analogdevicesinc/libm2k/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 9d58c7d5c9d9f1300e392893b0eb76e24e8eed0834695d2a9368210c16297ff5
+
+pkgname = libm2k
+	pkgdesc = C++ library for interfacing with the ADALM2000 (M2k)
+	depends = libiio
+	depends = glibc
+	provides = libm2k
+	conflicts = libm2k
+	conflicts = libm2k-git
+
+pkgname = m2k-cli
+	depends = libm2k
+	depends = glibc
+	optdepends = socat: USB to serial UART adapter script (m2k_tty.sh)
