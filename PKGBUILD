@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Ausset <guillaume+arch@ausset.me>
 
 pkgname=bunny-cli-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Command-line interface for bunny.net"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source=(
 source_x86_64=("bunny-${pkgver}-linux-x64::https://github.com/BunnyWay/cli/releases/download/v${pkgver}/bunny-linux-x64")
 source_aarch64=("bunny-${pkgver}-linux-arm64::https://github.com/BunnyWay/cli/releases/download/v${pkgver}/bunny-linux-arm64")
 sha256sums=('c98e8e21fae7cfff76d54f2ceb3621d7bbd2b6d304882226ee492eaebff1cc0c'
-            '94fd216cf94c6fe943fa9c8075d664b53b3e5017eb99e540bd8c8d2985082714')
-sha256sums_x86_64=('172b3bea1c6651d4c3db45f97289f3fdae536a5b54f15e7b12291c090c2c335b')
-sha256sums_aarch64=('6cf8784f0b29a469d55d79b55e4920a57fc3662d36493b49d044309ee343f68f')
+            'c46284a81a68b940bdc79eb6359a3061c52e9ac78f194a555527f116c486ca7b')
+sha256sums_x86_64=('88962850d35fd8b8a9847433c6634aa2521f1b102515dc0ba0290593bb636b28')
+sha256sums_aarch64=('c5588854eeae6934f01e544f052e66fbdb37f3a9619e3e1a1e71b19d2d506638')
 
 _binary_name() {
   case "${CARCH}" in
