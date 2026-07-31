@@ -4,7 +4,7 @@
 
 pkgname=libclc-minimal-git
 pkgver=24.0.0_r589763.bb17e718bc41
-pkgrel=2
+pkgrel=1
 pkgdesc="OpenCL C library used by rusticl and including downstream patches by mesa"
 arch=('any')
 url="https://libclc.llvm.org/"
@@ -22,6 +22,7 @@ source=("git+https://github.com/llvm/llvm-project.git"
         "05-libclc:Revert-libclc:-Update-hypot-implementation-PR185873.patch::$_fork/-/commit/931f02ef3281fa7bcf14362a7f90edec40825aaf.patch"
         "06-libclc:Revert-libclc:-Update-remquo-PR187998.patch::$_fork/-/commit/9b54a3b2c09228b3c3269c5c62ca2f3128ec6501.patch"
         "07-libclc:Partly-revert-libclc:-Update-trigpi-functions-PR187579.patch::$_fork/-/commit/1e379e04c3fc1457a80d47e0da2a6e242237094c.patch"
+        "08-libclc:fix-tgamma-precision-issues-due-to-lack-of-fma.patch::$_fork/-/commit/298976d4ddad1c7e0472647bcb50e1336a1bfd1a.patch"
 )
 sha256sums=('SKIP'
             '4f215e748c4c1a59f621ae58d2685651c442e3e79fa77c4c0153bd201f02a4de'
@@ -31,7 +32,8 @@ sha256sums=('SKIP'
             '98e68305aa73e62348d2510fe8c91350b75201e56b272f3cae99e9bc91302394'
             'e4487f8224a4f0fe5353135d6ddd3e2c904abfc160ae6b0e5e85982df6eaa8c2'
             '299fe7d29f75a37703d85e75caf665349ed29bb971b6d59dbed32d96ee1612d4'
-            'dfa49da934bf7f7cd65be8610d386c7ee47ff89377774e6f5fc4d9497646bd73')
+            'dfa49da934bf7f7cd65be8610d386c7ee47ff89377774e6f5fc4d9497646bd73'
+            '8c42ab24d109a469d129e77cc2709c3099700f662061eb3e20faf6e66eb0ca07')
 options=(!lto !debug)
 
 # ninja tends to grab all available cores. the env var NINJAFLAGS is used to prevent this.
@@ -61,6 +63,7 @@ prepare() {
   patch -Np1 -i "$srcdir"/05-libclc:Revert-libclc:-Update-hypot-implementation-PR185873.patch
   patch -Np1 -i "$srcdir"/06-libclc:Revert-libclc:-Update-remquo-PR187998.patch
   patch -Np1 -i "$srcdir"/07-libclc:Partly-revert-libclc:-Update-trigpi-functions-PR187579.patch
+  patch -Np1 -i "$srcdir"/08-libclc:fix-tgamma-precision-issues-due-to-lack-of-fma.patch
   popd
 }
 

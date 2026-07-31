@@ -1,7 +1,7 @@
 pkgbase = libclc-minimal-git
 	pkgdesc = OpenCL C library used by rusticl and including downstream patches by mesa
 	pkgver = 24.0.0_r589763.bb17e718bc41
-	pkgrel = 2
+	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any
 	license = MIT
@@ -26,6 +26,7 @@ pkgbase = libclc-minimal-git
 	source = 05-libclc:Revert-libclc:-Update-hypot-implementation-PR185873.patch::https://gitlab.freedesktop.org/karolherbst/mesa-libclc//-/commit/931f02ef3281fa7bcf14362a7f90edec40825aaf.patch
 	source = 06-libclc:Revert-libclc:-Update-remquo-PR187998.patch::https://gitlab.freedesktop.org/karolherbst/mesa-libclc//-/commit/9b54a3b2c09228b3c3269c5c62ca2f3128ec6501.patch
 	source = 07-libclc:Partly-revert-libclc:-Update-trigpi-functions-PR187579.patch::https://gitlab.freedesktop.org/karolherbst/mesa-libclc//-/commit/1e379e04c3fc1457a80d47e0da2a6e242237094c.patch
+	source = 08-libclc:fix-tgamma-precision-issues-due-to-lack-of-fma.patch::https://gitlab.freedesktop.org/karolherbst/mesa-libclc//-/commit/298976d4ddad1c7e0472647bcb50e1336a1bfd1a.patch
 	sha256sums = SKIP
 	sha256sums = 4f215e748c4c1a59f621ae58d2685651c442e3e79fa77c4c0153bd201f02a4de
 	sha256sums = 92be6f10dcb269e2b2649c9614a1b58f228f5cad886d4b781f92c999bf25cf92
@@ -35,5 +36,6 @@ pkgbase = libclc-minimal-git
 	sha256sums = e4487f8224a4f0fe5353135d6ddd3e2c904abfc160ae6b0e5e85982df6eaa8c2
 	sha256sums = 299fe7d29f75a37703d85e75caf665349ed29bb971b6d59dbed32d96ee1612d4
 	sha256sums = dfa49da934bf7f7cd65be8610d386c7ee47ff89377774e6f5fc4d9497646bd73
+	sha256sums = 8c42ab24d109a469d129e77cc2709c3099700f662061eb3e20faf6e66eb0ca07
 
 pkgname = libclc-minimal-git
