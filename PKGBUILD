@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('stasis-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a63c700d6862a9dc9e8c7d2583b5f1fe9eb92c6d9f8f8518a8a85e0bb2b10622')
+sha256sums=('55c8c98af0a56df9f97a74cd986d0fa18a5c87eac0978a32fe73eb5d9ae3a91c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
