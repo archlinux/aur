@@ -1,16 +1,16 @@
 #!/bin/sh
 # PKGBUILD for release package (builds from tagged source)
 # This is used for the AUR system-bridge package
-# pkgver is set to 5.0.0 is replaced in the update-aur.sh script
+# pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.6.1
+pkgver=5.6.4
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.6.1.tar.gz")
-sha256sums=('2dd752d0032c20d9ee395ee8c0bf42021ea4b990b33af7a7a2e9d6cb3bf10c41')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.6.4.tar.gz")
+sha256sums=('0b0539f06a4a200e0bbf4393d8972f4c705609546f1e5f96a42ec1fe76be5e9f')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -18,6 +18,9 @@ url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
 keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
+optdepends=('pciutils: GPU model identification via lspci'
+            'lm_sensors: broader temperature and fan sensor coverage'
+            'nvidia-utils: NVIDIA GPU metrics via nvidia-smi')
 provides=('system-bridge')
 options=('!strip')
 
@@ -39,8 +42,13 @@ build() {
   mise trust -a
   mise install
   mise exec -C web-client -- bun install --frozen-lockfile
-  mise run build_web_client
-  mise run build_tui
+  if grep -q '^\[tasks\."build:web-client"\]$' mise.toml; then
+    mise run build:web-client
+    mise run build:tui
+  else
+    mise run build_web_client
+    mise run build_tui
+  fi
   mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
   ./system-bridge completions bash >system-bridge.bash
   ./system-bridge completions zsh >_system-bridge

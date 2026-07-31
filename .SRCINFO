@@ -1,6 +1,6 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems
-	pkgver = 5.6.1
+	pkgver = 5.6.4
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/timmo001/system-bridge
@@ -12,11 +12,14 @@ pkgbase = system-bridge
 	depends = libxtst
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	optdepends = pciutils: GPU model identification via lspci
+	optdepends = lm_sensors: broader temperature and fan sensor coverage
+	optdepends = nvidia-utils: NVIDIA GPU metrics via nvidia-smi
 	provides = system-bridge
 	conflicts = system-bridge-git
 	conflicts = system-bridge-git-debug
 	options = !strip
-	source = system-bridge-5.6.1.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.6.1.tar.gz
-	sha256sums = 2dd752d0032c20d9ee395ee8c0bf42021ea4b990b33af7a7a2e9d6cb3bf10c41
+	source = system-bridge-5.6.4.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.6.4.tar.gz
+	sha256sums = 0b0539f06a4a200e0bbf4393d8972f4c705609546f1e5f96a42ec1fe76be5e9f
 
 pkgname = system-bridge
