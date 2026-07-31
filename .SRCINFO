@@ -1,0 +1,17 @@
+pkgbase = iris-cli-bin
+	pkgdesc = A highly customizable, blazing fast and context-aware CLI autocomplete/navigation tool
+	pkgver = 0.4.18
+	pkgrel = 1
+	url = https://github.com/versenilvis/iris
+	license = MIT
+	conflicts = iris
+	conflicts = iris-bin
+	provides = iris
+	arch = aarch64
+	source_aarch64 = https://github.com/versenilvis/IRIS/releases/download/v0.4.18/iris_linux_arm64.tar.gz
+	sha256sums_aarch64 = c85b03ec85cbfbffa5ac08c0608e462e780680f82cc9f4e9b5f0e33a5a0f5b5a
+	arch = x86_64
+	source_x86_64 = https://github.com/versenilvis/IRIS/releases/download/v0.4.18/iris_linux_amd64.tar.gz
+	sha256sums_x86_64 = 53fc956a4558e9e930a64149bde22919c2b6d02f5777b531afa13b23c252b291
+	
+pkgname = iris-cli-bin
