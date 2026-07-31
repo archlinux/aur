@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=wl-proxy
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='proxy wayland connections and intercept and manipulate wayland messages'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mahkoh/wl-proxy/archive/v$pkgver.tar.gz")
-sha512sums=('02ad5d832e2673d86704150e0060dda58fb673c71406e7e2d2e545c08675b42a25dc6d8621cba18b4504d228f6d3cc4be9814cf230d6a1fa4c84baf25123349e')
+sha512sums=('ed2ef9797eb45d039e84afb660eaa18510f3de85c6aa4db70ea0baabf34dfd058ebadee91e0ce3dbb140aaa91c54014c949d15fde09171d34165cf1e513c3d2c')
 
 prepare() {
   cd $pkgname-$pkgver/
