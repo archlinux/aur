@@ -1,7 +1,7 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui-git
 pkgver=r0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)"
 arch=('x86_64')
 url="https://github.com/SaintFore/pomotui"
