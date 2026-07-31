@@ -1,0 +1,5 @@
+[larksuite-bin]
+source = "jq"
+url = "https://www.larksuite.com/api/package_info?platform=10"
+filter = ".data.version_number"
+prefix = "Linux-x64-deb@V"
