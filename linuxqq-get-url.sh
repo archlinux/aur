@@ -103,7 +103,7 @@ if [[ "${1:-}" == "--dlagent" ]]; then
     output="$3"
 
     signed_url=$(_sign_url "$url")
-    curl -fsSL -A "$USER_AGENT" -o "$output" "$signed_url"
+    curl -fSL -A "$USER_AGENT" -o "$output" "$signed_url"
     exit 0
 fi
 
