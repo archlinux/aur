@@ -1,31 +1,25 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=amneziawg-tools
-pkgdesc="AmneziaWG tools with AWG 3.0 (HeaderProtectionKey, padding, timing ranges)"
+pkgdesc="AmneziaWG userspace tools (AWG 3.0: HeaderProtectionKey, padding, timing ranges)"
 url="https://github.com/amnezia-vpn/amneziawg-tools"
 arch=("x86_64")
-pkgver=1.0.20260730.r535.c8aaf3d
+pkgver=3.0.20260730
 pkgrel=1
 license=('GPL-2.0')
 depends=('bash')
-makedepends=('git')
 optdepends=('amneziawg-go: go implementation of amneziawg'
             'amneziawg-dkms: kernel module with AWG 3.0 support'
-            'resolvconf: if you are controling DNS via AmneziaWG')
-source=("git+https://github.com/amnezia-vpn/amneziawg-tools.git#branch=feat/awg3")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd amneziawg-tools
-  printf "1.0.20260730.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+            'resolvconf: if you are controlling DNS via AmneziaWG')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-tools/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('25d5904cdf8021af22d8e45fb46df558fa5b0cf1813fe2101cf3d5e8482f697d')
 
 build() {
-  cd amneziawg-tools/src
+  cd "${pkgname}-${pkgver}/src"
   make
 }
 
 package() {
-  cd amneziawg-tools/src
+  cd "${pkgname}-${pkgver}/src"
   make DESTDIR="${pkgdir}/" install
 }
