@@ -3,7 +3,7 @@
 
 pkgname=battery-charge-limiter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform battery charge limiter — enforces 80% hardware cap on laptops where BIOS hides this feature. Arch Linux daemon using acpi_call."
 arch=('any')
 url="https://github.com/SarangRao20/battery-charge-limiter"
@@ -13,7 +13,7 @@ conflicts=()
 provides=("${pkgname}")
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/archive/v${pkgver}.tar.gz")
 install=battery-charge-limiter.install
-sha256sums=('07d17497f8f2575e75982e50d7641a9cae001767a10056e913a0f7711d7243e4')
+sha256sums=('c7df1b1ebb1d3d6bf39775b23e5a4e156ddc025ed46791bfbd91a2079f02a3c8')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,5 +31,5 @@ package() {
   install -Dm755 "arch/detect-ec.sh" "${pkgdir}/usr/bin/battery-charge-limiter-detect-ec"
 
   # Kernel module auto-load config
-  echo "acpi_call" > "${pkgdir}/etc/modules-load.d/acpi_call.conf"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/arch/acpi_call.conf" "${pkgdir}/etc/modules-load.d/acpi_call.conf"
 }
