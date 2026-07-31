@@ -1,8 +1,8 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=kvrt-aarch64
-pkgver=24.0.6.0.202607301720
-pkgrel=2
+pkgver=24.0.6.0.202607310344
+pkgrel=1
 pkgdesc='Kaspersky Virus Removal Tool - Runtime and Database Signature'
 arch=('aarch64')
 url='https://www.kaspersky.com/downloads/free-virus-removal-tool'
@@ -13,7 +13,7 @@ makedepends_aarch64=(
 )
 options=(!debug)
 source_aarch64=("$pkgname-$pkgver-$pkgrel.run::https://devbuilds.s.kaspersky-labs.com/kvrt_linux/latest/arm-64/kvrt.run")
-b2sums_aarch64=('f0eb1f3af602c399831caf45c5a1ac047c802e6b4c061521fb83bc973603dba8593c6268f67b2362d9095fea63e544e090cfb7e739db0af8d4514c050eed32c6')
+b2sums_aarch64=('0a2bf3090311bde9a3f18447da32810dc6389a243b66dedeb9643eae0e4c7e360ebc87d7251ad91ba2ccfa47cd96602eabcd96e890112cfa52465404b9ec23e4')
 
 prepare() {
   if [[ "$CARCH" != "aarch64" ]]; then
