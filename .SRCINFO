@@ -1,0 +1,20 @@
+pkgbase = keystone-osk
+	pkgdesc = Practical on-screen keyboard for Linux desktops
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/svan71/keystone-osk
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = ydotool
+	depends = hicolor-icon-theme
+	source = keystone-osk-0.9.0.tar.gz::https://github.com/svan71/keystone-osk/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = b11421aa51b56ce9c0bf5408b4906e8e49660224579826bbf364ce088c39bad6
+
+pkgname = keystone-osk
