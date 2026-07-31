@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="Silex website builder desktop application"
 arch=('x86_64')
 url="https://github.com/silexlabs/Silex"
-license=('AGPL-3.0-only')
+license=('AGPL-3.0-or-later')
 
 options=('!debug')
 
