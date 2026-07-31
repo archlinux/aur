@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
 _pkgname=Kiwix-JS-Electron
-pkgver=3.8.6
+pkgver=3.8.8
 _electronversion=43
 pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
@@ -17,15 +17,16 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-arm64.AppImage")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('9a8e53e0708845cd8437c1d216e2cdee08a21e22c1ad407f81d00c296429e585')
-sha256sums_i686=('b147b7ee24f6ba2f2a70318843895ba0011d475d0314ee3c7b2d73f02dc0c36f')
-sha256sums_x86_64=('7d7a66dafc51c0c0bf551e39e6b981210e3991bd3d1eb1769adfa60f36bccfaa')
+sha256sums_aarch64=('59e5485a28cb28443b2e500973d29c9290ffb97b590feed377306f526260d630')
+sha256sums_i686=('2205046d3343d7301372a734fa0c1f899de7168925d2ed8c024238153424d171')
+sha256sums_x86_64=('132676dcf8b851784f65bffe00eaea6f180132c1a579ea5b9fd1483522f9aefe')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -56,6 +57,8 @@ prepare() {
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    find "${_app_dir}/resources" -type d -name "android-*" -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
