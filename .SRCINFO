@@ -1,6 +1,6 @@
 pkgbase = photoqt-extensions
 	pkgdesc = Extensions for PhotoQt image viewer
-	pkgver = 5.4
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = http://photoqt.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = photoqt-extensions
 	provides = photoqt-extensions-debug
 	conflicts = photoqt-extensions-bin
 	conflicts = photoqt-extensions-bin-debug
-	source = https://photoqt.org/downloads/extensions/photoqt-extensions-5.4.tar.gz
-	sha256sums = a9719264066327d78a75573290f0b0489faf67c0bc1ad30c8c8ce406dfe275f4
+	source = https://photoqt.org/downloads/extensions/photoqt-extensions-5.4.1.tar.gz
+	sha256sums = 4b6bbd0b7abddfc3fb502317e8c2a9b881005ce2db6b866884e88fbba2e13491
 
 pkgname = photoqt-extensions
