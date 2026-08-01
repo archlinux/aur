@@ -1,0 +1,17 @@
+pkgbase = wharf-tui-bin
+	pkgdesc = Keyboard-driven terminal SSH client with a local-first encrypted vault
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://wharf.jannekeipert.de
+	license = MIT
+	optdepends = openssh: ssh-agent support and ~/.ssh/config import
+	conflicts = wharf
+	provides = wharf
+	arch = aarch64
+	source_aarch64 = https://github.com/Janne6565/wharf-tui/releases/download/v0.1.0/wharf_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d28ce16db0808d454338802ca9be4b45c4e9a59bbc3c3dbe9dfd3890e2bcc0de
+	arch = x86_64
+	source_x86_64 = https://github.com/Janne6565/wharf-tui/releases/download/v0.1.0/wharf_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 17a12cf626a96af2ef7ba3721e432c5c9f2c874e117169f824ab85a32b0454b1
+	
+pkgname = wharf-tui-bin
