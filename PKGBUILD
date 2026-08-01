@@ -1,6 +1,6 @@
 # Maintainer: Lumina <luminanao at duck.com>
 pkgname=limit-computer-time
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Daily desktop time budget daemon for KDE Plasma on Wayland with countdown overlay and TUI configurator — suitable for parental control"
 arch=(x86_64)
