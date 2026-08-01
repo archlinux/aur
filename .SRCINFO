@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-sans-kr
+	pkgdesc = IBM Plex Sans for Korean
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-sans-kr-1.1.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-kr%401.1.0/ibm-plex-sans-kr.zip
+	sha256sums = 9837800c8e5aedf4123775e1d767afa482c983321bd2fc606c985f405d24562e
+
+pkgname = ttf-ibm-plex-sans-kr
