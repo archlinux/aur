@@ -1,0 +1,5 @@
+[jetbrains-toolbox]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products?code=TBA&release.type=release'
+encoding = 'utf8'
+regex = 'jetbrains-toolbox-([\d.]+).tar.gz'
