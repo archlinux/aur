@@ -1,5 +1,5 @@
 pkgbase = epomaker-rt100-git
-	pkgver = 0.2.0.r25.g0cab073
+	pkgver = 0.2.0.r28.g2906438
 	pkgrel = 1
 	url = https://github.com/dwaycik/epomaker-rt100
 	arch = any
@@ -26,7 +26,7 @@ pkgname = epomaker-rt100-git
 	depends = python-textual
 	depends = python-click
 	depends = python-dateutil
-	provides = epomaker-rt100=0.2.0.r25.g0cab073
+	provides = epomaker-rt100=0.2.0.r28.g2906438
 	conflicts = epomaker-rt100
 	conflicts = python-epomakercontroller-git
 	conflicts = python-epomakercontroller
@@ -37,5 +37,5 @@ pkgname = epomaker-rt100-gtk-git
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	provides = epomaker-rt100-gtk=0.2.0.r25.g0cab073
+	provides = epomaker-rt100-gtk=0.2.0.r28.g2906438
 	conflicts = epomaker-rt100-gtk

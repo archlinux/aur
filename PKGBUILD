@@ -12,7 +12,7 @@
 pkgbase=epomaker-rt100-git
 pkgname=('epomaker-rt100-git' 'epomaker-rt100-gtk-git')
 _srcname=epomaker-rt100
-pkgver=0.2.0.r25.g0cab073
+pkgver=0.2.0.r28.g2906438
 pkgrel=1
 arch=('any')
 url="https://github.com/dwaycik/epomaker-rt100"
@@ -69,8 +69,11 @@ package_epomaker-rt100-git() {
 
   # The GTK entry point ships in the -gtk package instead, so this one does not
   # advertise a command that would fail without a desktop stack installed.
+  # The bytecode must go too: leaving __pycache__ behind makes both packages
+  # own the same .pyc files and pacman refuses the install.
   rm -f "${pkgdir}/usr/bin/epomaker-rt100-gtk"
   rm -f "${pkgdir}/usr/lib/python"*/site-packages/epomaker_rt100_gtk.py
+  rm -f "${pkgdir}/usr/lib/python"*/site-packages/__pycache__/epomaker_rt100_gtk.*
 
   # udev rule. Must sort before 73-seat-late.rules, which is what turns
   # TAG=="uaccess" into an ACL -- a 99- prefix is set too late and ignored.
@@ -107,6 +110,8 @@ package_epomaker-rt100-gtk-git() {
   find "${pkgdir}/usr/bin" -type f ! -name 'epomaker-rt100-gtk' -delete
   rm -rf "${pkgdir}/usr/lib/python"*/site-packages/epomaker_rt100
   rm -rf "${pkgdir}/usr/lib/python"*/site-packages/epomaker_rt100-*.dist-info
+  rm -rf "${pkgdir}/usr/lib/python"*/site-packages/epomakercontroller
+  rm -rf "${pkgdir}/usr/lib/python"*/site-packages/epomakercontroller-*.dist-info
 
   sed 's|@EXEC@|/usr/bin/epomaker-rt100-gtk|' \
     desktop/epomaker-rt100-gtk.desktop.in > epomaker-rt100-gtk.desktop
