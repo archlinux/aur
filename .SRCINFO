@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-mono-only
+	pkgdesc = IBM Plex Mono (no additional languages)
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-mono-only-2.5.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-mono%402.5.0/ibm-plex-mono.zip
+	sha256sums = fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200
+
+pkgname = ttf-ibm-plex-mono-only
