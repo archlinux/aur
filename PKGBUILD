@@ -1,10 +1,10 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 
 pkgname=pds-gatekeeper-git
-pkgver=r27.9605d15
+pkgver=r28.eef639e
 pkgrel=1
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'atproto-pds')
