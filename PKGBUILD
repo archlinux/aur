@@ -2,7 +2,7 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
@@ -27,7 +27,7 @@ source=(
 	"${_pkgname}-${pkgver}-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/icons/1024.png"
 	"${_pkgname}-${pkgver}-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/assets/voicefox.desktop"
 )
-sha512sums=('be621e00d8fb310ed86198988fc6421da3350c58b7b871d4cb7f7af90e5550a0921ef567434509037829bcc3e23c628b98b73bc505265b725ecd0ad0be0435a5'
+sha512sums=('2a90a1bf8328d65c3c5a3a9c37086eebe6561b8d51c429260bea1367d64045c6be81b5315500c99af2030fc0dc7a98df7e09b054123d32c69ac7b39e597cacb0'
             'e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814'
             '980a563b61ebd519a5346de26b67d6782830f6183ad2b4c42ac3e85d0ebd1b4341a1041976cb06c10d1eed346d9f4c009341753f560db63882a5df56e180471b'
             '4749d0f3d9cff9caec6c9dbd18f9ff571905e22d4669fb504e8c2b778dead770d2b5ddbbf0bdadc7b60ca9317f25579e97a016888f38c1b8ade6a476e09a3e6e'
