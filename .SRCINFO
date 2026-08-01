@@ -1,7 +1,7 @@
 pkgbase = forager
 	pkgdesc = Steam-like game launcher for your local game library
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foxinwinter/forager
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -15,8 +15,10 @@ pkgbase = forager
 	depends = python-keyring
 	depends = python-pillow
 	source = forager-v0.1.2.tar.gz::https://github.com/foxinwinter/forager/archive/v0.1.2.tar.gz
+	source = titlebar-signal-emit.patch
 	source = forager.desktop
 	sha256sums = ed1944f24f3bc467b79defdc4a7ec462d698586e42fc87c74accabab68e0f2ac
+	sha256sums = c816af3dad1cdc121fb56dda5555ca1040e279cc0cf536bbbfa1a037bef0b05a
 	sha256sums = f5b25b350334dd490da17325c2408bc51fffae28423ec20b4e60d44a965eddf5
 
 pkgname = forager
