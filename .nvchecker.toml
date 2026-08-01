@@ -1,0 +1,5 @@
+[hawkshaw-bin]
+source = "github"
+github = "stojanovic/hawkshaw"
+use_latest_release = true
+prefix = "v"
