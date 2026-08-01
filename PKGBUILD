@@ -5,7 +5,7 @@
 
 pkgname=forkgram-bin
 _pkgname=forkgram
-pkgver=7.0.6
+pkgver=7.0.7
 pkgrel=1
 pkgdesc="Forkgram is the fork of the official Telegram Desktop application - Static binary"
 arch=(x86_64)
@@ -39,7 +39,7 @@ source=(
 
 
 # Checksums
-sha256sums=('40cba8e1a01818e4220d48b7b12e60a6756020621f75c7a6fae631240434b748'
+sha256sums=('c5731d2ee62e1e130b90df8472dd33f687f3dad7e6467d8f17f090b38cbde122'
             '75ce3ba1386180543d56731803a1505b40b8205e2c09165f14c1b45c767d8f4b'
             '9fd7d8ce9c4246ed414ddf15c2a19f6df1a749c1e6cb23ac1aac2fc0e6152fe7'
             '13c5b79d31f123ba4da10d57f93e11bf9490c78476dc44758a9d58f6b4488f0a'
