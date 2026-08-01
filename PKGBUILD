@@ -7,7 +7,7 @@ _appexec=${_appname}-editor
 pkgname=${_appname}-bin
 pkgdesc="A lightweight TUI IDE for making quick in-the-moment edits"
 
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.zip")
-sha256sums=('f6afa6f75dec9d0242347885746e42c84688fcc08f96f57a561f4bb8d7af6ca9'
+sha256sums=('aaea8af0d0403d42018c4ad40c9483c32988a8fa8b06429fb730a20b5d8de573'
             '02f178c43c5b3f44530cb543f4cd8d0c68eb8bf3ff866ed27257df8528410dde')
-sha256sums_x86_64=('a120162b4e952acc8f8251d98a7f17064a22cb61c972dfd8a8234781fa249116')
+sha256sums_x86_64=('aebdd90c362ed3f2851fc7e994c832a2c89665c177d71ad1d470617f6eb5e009')
 
 
 case ${CARCH} in

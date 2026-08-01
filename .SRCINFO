@@ -1,6 +1,6 @@
 pkgbase = toast-bin
 	pkgdesc = A lightweight TUI IDE for making quick in-the-moment edits
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/paradise-runner/toast
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = toast-bin
 	provides = toast-editor
 	conflicts = toast
 	options = !strip
-	source = README-0.2.3.md::https://raw.githubusercontent.com/paradise-runner/toast/v0.2.3/README.md
-	source = LICENSE-0.2.3::https://raw.githubusercontent.com/paradise-runner/toast/v0.2.3/LICENSE
-	sha256sums = f6afa6f75dec9d0242347885746e42c84688fcc08f96f57a561f4bb8d7af6ca9
+	source = README-0.3.0.md::https://raw.githubusercontent.com/paradise-runner/toast/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/paradise-runner/toast/v0.3.0/LICENSE
+	sha256sums = aaea8af0d0403d42018c4ad40c9483c32988a8fa8b06429fb730a20b5d8de573
 	sha256sums = 02f178c43c5b3f44530cb543f4cd8d0c68eb8bf3ff866ed27257df8528410dde
-	source_x86_64 = toast-x86_64-0.2.3.zip::https://github.com/paradise-runner/toast/releases/download/v0.2.3/toast-linux-amd64.zip
-	sha256sums_x86_64 = a120162b4e952acc8f8251d98a7f17064a22cb61c972dfd8a8234781fa249116
+	source_x86_64 = toast-x86_64-0.3.0.zip::https://github.com/paradise-runner/toast/releases/download/v0.3.0/toast-linux-amd64.zip
+	sha256sums_x86_64 = aebdd90c362ed3f2851fc7e994c832a2c89665c177d71ad1d470617f6eb5e009
 
 pkgname = toast-bin
