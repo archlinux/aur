@@ -2,6 +2,7 @@
   "name": "rhythmgame-arch",
   "dependencies": [
     "foonathan-lexy",
+    "libremidi",
     "llfio",
     "stb"
   ]

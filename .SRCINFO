@@ -27,7 +27,6 @@ pkgbase = rhythmgame-git
 	depends = miniaudio
 	depends = magic_enum
 	depends = sqlitecpp
-	depends = libremidi
 	depends = zlib-ng
 	depends = openimageio
 	provides = rhythmgame
@@ -37,6 +36,6 @@ pkgbase = rhythmgame-git
 	source = vcpkg.json
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = bdf6cef84adb0bdb5c5b7a0cd4a10101f633eddab181bb95961ad00bb883bed9
+	sha256sums = dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6
 
 pkgname = rhythmgame-git

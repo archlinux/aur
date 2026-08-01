@@ -27,7 +27,6 @@ depends=(
   miniaudio
   magic_enum
   sqlitecpp
-  libremidi
   zlib-ng
   openimageio
 )
@@ -44,7 +43,7 @@ source=(
   "vcpkg::git+https://github.com/microsoft/vcpkg.git"
   "vcpkg.json"
 )
-sha256sums=('SKIP' 'SKIP' 'bdf6cef84adb0bdb5c5b7a0cd4a10101f633eddab181bb95961ad00bb883bed9')
+sha256sums=('SKIP' 'SKIP' 'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
