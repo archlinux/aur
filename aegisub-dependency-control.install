@@ -1,0 +1,11 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	echo "DependencyControl previously auto-updated itself into ~/.aegisub,"
+	echo "which conflicts with package-managed installs on UNIX systems."
+	echo "Run the following for every affected user to remove stale artifacts:"
+	echo "  rm -rf ~/.aegisub/automation/include/l0/DependencyControl*"
+	echo "  rm -rf ~/.aegisub/automation/tests/DepUnit/modules/l0/DependencyControl*"
+}

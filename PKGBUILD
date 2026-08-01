@@ -13,6 +13,7 @@ depends=(
     'libcrypto.so'
     'libcurl.so>=1.1'
 )
+install="${pkgname}.install"
 
 source=(
     "https://github.com/TypesettingTools/DependencyControl/releases/download/v${pkgver}/DependencyControl-v${pkgver}.zip"

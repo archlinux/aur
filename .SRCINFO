@@ -3,6 +3,7 @@ pkgbase = aegisub-dependency-control
 	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/TypesettingTools/DependencyControl
+	install = aegisub-dependency-control.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
