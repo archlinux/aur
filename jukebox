@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+source /usr/share/jukebox/jukebox.zsh
+jukebox "$@"
