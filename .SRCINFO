@@ -1,0 +1,19 @@
+pkgbase = hop-bin
+	pkgdesc = Hop from server to server without ever leaving your terminal
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/p-arndt/hop
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = hop
+	conflicts = hop
+	options = !strip
+	source = README-0.6.0.md::https://raw.githubusercontent.com/p-arndt/hop/v0.6.0/README.md
+	sha256sums = 5cd9ac3dea49a1b811e10f47b953c7205a3fa50fb73a877fbc071362f80cf004
+	source_x86_64 = hop-x86_64-0.6.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.6.0/hop_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0cd2cd0577d0a316747fef47fc757ff8545a1fe4688c23226364cd2152743f21
+	source_aarch64 = hop-aarch64-0.6.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.6.0/hop_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 283c289d02700fd4001c585133e3896c4221af4821de6eaf0eab29f46d927209
+
+pkgname = hop-bin

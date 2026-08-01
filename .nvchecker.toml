@@ -1,0 +1,5 @@
+[hop-bin]
+source = "github"
+github = "p-arndt/hop"
+use_latest_release = true
+prefix = "v"
