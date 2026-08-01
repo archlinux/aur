@@ -1,7 +1,7 @@
 pkgbase = simple-password
 	pkgdesc = A password generator without any unnecessary stuff
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/ESzPa/spass
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = simple-password
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
-	source = simple-password-0.1.1.tar.gz::https://github.com/ESzPa/spass/archive/refs/tags/v0.1.1.tar.gz
+	source = simple-password-0.1.2.tar.gz::https://github.com/ESzPa/spass/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = f941b45609361d6b7b78a23f8f16a942af7bca8012d48ddd9a4b4d473817e68a
 
 pkgname = simple-password
