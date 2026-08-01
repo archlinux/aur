@@ -1,7 +1,7 @@
 # Maintainer: lcaohoanq <hoangclw@gmail.com>
 
 pkgname=docklane-bin
-pkgver=0.1.0_alpha.2
+pkgver=0.1.0_alpha.3
 pkgrel=1
 pkgdesc='Local HTTPS gateway for Docker containers using Traefik'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=("docklane=${pkgver}")
 conflicts=('docklane')
 options=('!strip' '!debug')
 
-_upstream_version='0.1.0-alpha.2'
+_upstream_version='0.1.0-alpha.3'
 
 source_x86_64=(
   "${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${_upstream_version}/docklane_${_upstream_version}_linux_amd64.tar.gz"
@@ -22,10 +22,10 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-  'eae8062d2d3c24d55ebeb8520d19edb4f550b059413c6ac014138ac15dcc35a9'
+  'ff1fa95c99a2842f79bc933478724f0f19a1fcb8e2998d3507831fce09ffbcf7'
 )
 sha256sums_aarch64=(
-  '8465259efd1c4d035be05f86fd7c3b3d2ff48afed0f748ef5845c29bc672c53f'
+  '2d614690ea176a944d48ea4701b5047e6856670f7317cc2faffa544bb32668a0'
 )
 
 package() {
