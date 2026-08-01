@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo "==> cua-driver ${pkgver} installed"
+    echo "    Binary: /usr/bin/cua-driver (real: /usr/lib/cua-driver/cua-driver)"
+    echo ""
+    echo "==> Enable the desktop control daemon:"
+    echo "    systemctl --user enable --now cua-driver"
+    echo ""
+    echo "==> If you previously installed via the official installer"
+    echo "    (cua.ai/driver/install.sh), a stale copy may still be on PATH:"
+    echo "    rm -f ~/.local/bin/cua-driver && rm -rf ~/.cua-driver"
+    echo "    (check: which cua-driver should now show /usr/bin/cua-driver)"
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> cua-driver upgraded to ${pkgver}"
+    echo "    Restart the daemon: systemctl --user restart cua-driver"
+}

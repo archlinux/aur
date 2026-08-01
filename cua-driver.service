@@ -1,0 +1,22 @@
+[Unit]
+Description=CUA Driver - Desktop control service (cua-driver-rs)
+Documentation=https://github.com/trycua/cua/tree/main/libs/cua-driver/rust
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/cua-driver serve
+Restart=on-failure
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/usr/lib/cua-driver %h/.cache/cua-driver
+
+[Install]
+WantedBy=graphical-session.target
