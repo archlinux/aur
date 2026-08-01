@@ -1,0 +1,28 @@
+install_proxy_cert(){
+   mkdir -p etc/dane-proxy
+   cd etc/dane-proxy/
+   if [ ! -f dnssec.cer ] || [ ! -f dnssec.key ] || [ ! -s dnssec.key ] || [ ! -s dnssec.cer ]; then
+   openssl genrsa -out dnssec.key 4096
+   openssl req \
+       -x509 \
+       -new \
+       -nodes \
+       -key dnssec.key \
+       -sha512 \
+       -days 3650 \
+       -out dnssec.cer \
+       -subj "/CN=DNSSEC"
+   fi
+}
+
+post_install(){
+   install_proxy_cert
+}
+post_upgrade(){
+   install_proxy_cert
+}
+
+pre_remove(){
+   rm -f etc/dane-proxy/dnssec.key
+   rm -f etc/dane-proxy/dnssec.cer
+}
