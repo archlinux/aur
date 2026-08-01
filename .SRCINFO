@@ -1,6 +1,6 @@
 pkgbase = codex-desktop-git
 	pkgdesc = Unofficial ChatGPT desktop with built-in browser (ilysenko/codex-desktop-linux)
-	pkgver = 26.721.81911.r1792.g042adb7b
+	pkgver = 26.727.51351.r1808.g9825ca69
 	pkgrel = 1
 	url = https://github.com/ilysenko/codex-desktop-linux
 	install = codex-desktop-git.install
