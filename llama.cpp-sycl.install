@@ -1,0 +1,23 @@
+# llama.cpp-sycl.install
+
+pre_install() {
+    echo "========================================================================"
+    echo " NOTE: The installer may output a few error messages during installation."
+    echo " This is because Intel intended the oneAPI packages for Windows and Ubuntu,"
+    echo " not Arch Linux. Please just let it run and ignore these non-fatal errors."
+    echo "========================================================================"
+}
+
+post_install() {
+    echo "========================================================================"
+    echo " Installation successful!"
+    echo " Please read the GitHub README at:"
+    echo " https://github.com/cantosun99/llama.cpp-sycl"
+    echo " The use of llama.cpp with the SYCL backend has some unique quirks."
+    echo "========================================================================"
+}
+
+# Trigger the same success message on package upgrades
+post_upgrade() {
+    post_install
+}
