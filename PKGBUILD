@@ -1,9 +1,9 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 pkgname=obsidian2web-git
-pkgver=1.4.0.r39.gc59c144
+pkgver=1.4.0.r48.g4700798
 pkgrel=1
 pkgdesc="lun-4's obsidian publish knockoff that generates (largely static) websites (git version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/lun-4/obsidian2web"
 license=('MIT')
 provides=("obsidian2web=$pkgver-$pkgrel")
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    anyzig build -Dtarget=x86_64-linux-musl -Dcpu=baseline -Doptimize=ReleaseSafe
+    anyzig build -Dtarget="$CARCH-linux-musl" -Dcpu=baseline -Doptimize=ReleaseSafe
 }
 
 package() {
