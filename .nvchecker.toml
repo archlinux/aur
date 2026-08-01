@@ -1,0 +1,4 @@
+[xone-dkms]
+source = "git"
+git = "https://github.com/dlundqvist/xone.git"
+prefix = "v"
