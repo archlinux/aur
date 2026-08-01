@@ -1,7 +1,7 @@
 # Maintainer: Techcable <$USER at techcable dot net>
 # Based off janet-spork from amano.kenji
 pkgname=janet-spork-git
-pkgver=0.r645.5a5ddbe
+pkgver=1.2.0.r101+g1edd147
 pkgrel=1
 pkgdesc="Various Janet utility modules - the official "Contrib" library."
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,7 @@ source=('janet-spork::git+https://github.com/janet-lang/spork.git')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-    # TODO: This format will change if spork ever gets an official release
-	printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags --match '*.*' | sed -E 's/v([^-]+)-([^-]+)-(.*)/\1.r\2+\3/'
 }
 
 build() {

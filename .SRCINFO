@@ -1,6 +1,6 @@
 pkgbase = janet-spork-git
 	pkgdesc = Various Janet utility modules - the official Contrib library.
-	pkgver = 0.r645.5a5ddbe
+	pkgver = 1.2.0.r101+g1edd147
 	pkgrel = 1
 	url = https://github.com/janet-lang/spork
 	arch = x86_64
