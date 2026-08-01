@@ -1,14 +1,21 @@
 pkgbase = brother-hl6180dw-cups-bin
 	pkgdesc = CUPS wrapper for Brother HL-6180DW printer
 	pkgver = 3.0.0_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl6180dw_all
 	arch = i686
 	arch = x86_64
-	groups = base-devel
-	license = EULA
-	source = http://www.brother.com/pub/bsc/linux/dlf/hl6180dwcupswrapper-3.0.0-1.i386.deb
-	md5sums = 0683cb26b82a5f5e64012d135685e108
+	license = GPL-2.0-or-later
+	depends = cups
+	depends = brother-hl6180dw-lpr-bin=3.0.0_1
+	depends = sh
+	noextract = hl6180dwcupswrapper-3.0.0-1.i386.deb
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source = hl6180dwcupswrapper-3.0.0-1.i386.deb::https://download.brother.com/welcome/dlf006043/hl6180dwcupswrapper-3.0.0-1.i386.deb
+	sha256sums = 2c47d5903df23084d095f23cdbf3cb1ae0fd1700d3201368ab03730495d25b13
+	depends_i686 = glibc
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-hl6180dw-cups-bin
-
