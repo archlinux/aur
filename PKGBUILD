@@ -8,66 +8,41 @@ pkgdesc='AI-Powered SSH Client, SFTP Browser & Terminal Manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/binaricat/Netcatty'
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'fuse2')
+depends=(
+    'alsa-lib'
+    'cups'
+    'gtk3'
+    'libnotify'
+    'libsecret'
+    'libxkbcommon'
+    'libxss'
+    'nss'
+)
 optdepends=(
-    'libnotify: Desktop notification support'
-    'xdg-utils: XDG integration for opening URLs'
+    'libappindicator: system tray icon support'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-x86_64.AppImage")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-arm64.AppImage")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.pacman::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-x64.pacman")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.pacman::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-aarch64.pacman")
 
-sha256sums_x86_64=('1826853d4ec551ed661b77d541b269eea75e59a473f0eb7db9481ffd39d3db20')
-sha256sums_aarch64=('5161e9ec504dc8716f666096009411f067f0b8021f7b811c1cfefcfaef21227c')
-
-prepare() {
-    chmod +x "${_pkgname}-${pkgver}-"*.AppImage
-    "./${_pkgname}-${pkgver}-"*.AppImage --appimage-extract 'usr/share/icons/*' 2>/dev/null || true
-    "./${_pkgname}-${pkgver}-"*.AppImage --appimage-extract '*.png' 2>/dev/null || true
-}
+sha256sums_x86_64=('c1f63855dcb0814eac9821647145eefae40bdc28c53d7dfe05541afbb80fa3a8')
+sha256sums_aarch64=('d5198ab715dd21efa843c97e934ac33a085e365425bf3e172be0c7be5c577c37')
 
 package() {
-    install -Dm755 "${_pkgname}-${pkgver}-"*.AppImage \
-        "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+    bsdtar -xf "${_pkgname}-${pkgver}-"*.pacman -C "${pkgdir}" \
+        --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.MTREE'
 
     install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/${_pkgname}" << 'EOF'
-#!/bin/bash
-exec /opt/netcatty/netcatty.AppImage --no-sandbox "$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+    ln -sf /opt/Netcatty/netcatty "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
-[Desktop Entry]
-Name=Netcatty
-Comment=AI-Powered SSH Client, SFTP Browser & Terminal Manager
-Exec=/usr/bin/${_pkgname} %U
-Icon=${_pkgname}
-Type=Application
-Terminal=false
-Categories=Development;Network;System;TerminalEmulator;
-Keywords=SSH;SFTP;Terminal;AI;
-StartupNotify=true
-StartupWMClass=Netcatty
-MimeType=x-scheme-handler/ssh;
-EOF
+    chmod 4755 "${pkgdir}/opt/Netcatty/chrome-sandbox"
 
-    if [ -d squashfs-root/usr/share/icons ]; then
-        cp -r squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
-        find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
-        find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
-        install -dm755 "${pkgdir}/usr/share/pixmaps"
-        find "${pkgdir}/usr/share/icons" -name 'netcatty.png' -exec cp {} "${pkgdir}/usr/share/pixmaps/" \; 2>/dev/null || true
-    fi
-
-    if [ -z "$(find "${pkgdir}/usr/share/icons" -name '*.png' 2>/dev/null)" ]; then
-        if [ -f squashfs-root/netcatty.png ]; then
-            install -Dm644 squashfs-root/netcatty.png \
-                "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-        fi
-    fi
+    sed -i \
+        -e 's|^Categories=.*|Categories=Development;Network;System;TerminalEmulator;|' \
+        -e '/^StartupNotify=/d' \
+        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    printf 'StartupNotify=true\nKeywords=SSH;SFTP;Terminal;AI;\n' >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
