@@ -1,6 +1,6 @@
 # Maintainer: dougbug589 <180086805+dougbug589@users.noreply.github.com>
 pkgname=mak-attatch
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Attach TMDB cover art posters to video files"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pyqt6' 'python-requests' 'python-guessit' 'ffmpeg' 'mkvtoolnix-cli')
 optdepends=('python-textual: TUI interface' 'yazi: TUI file browser' 'chafa: TUI image preview')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9102f62337ee442a00ad923c4a7f28158375f41a5b844767a2e925b869097967')
+sha256sums=('2c6f9122722902c452d3d12579e880204f40cd3d3b3b209598452861790c189f')
 
 package() {
     cd "$srcdir/mak-attatch-$pkgver"
