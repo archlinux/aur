@@ -2,7 +2,7 @@
 
 pkgname=ttf-ibm-plex-sans-kr
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Plex Sans for Korean"
 arch=('any')
 url='https://github.com/IBM/plex'
