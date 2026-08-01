@@ -3,7 +3,7 @@
 pkgbase='zl-speceq-bin'
 pkgname=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin' 'zl-speceq-bin')
 pkgver='0.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic spectrum equalizer audio plugin.'
 arch=('x86_64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
@@ -46,7 +46,7 @@ package_zl-speceq-lv2-bin() {
 
 package_zl-speceq-bin() {
   pkgdesc+=' (metapackage that requires all lpugin formats)'
-  depends+=('zl-speceq-vst3' 'zl-speceq-lv2')
+  depends+=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin')
 }
 
 # vim:set ts=2 sw=2 et:
