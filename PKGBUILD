@@ -1,7 +1,7 @@
 #Maintainer: Robin van der Kuil <r.vanderkuil@gmail.com>
 
 pkgname=brother-dcpl2550dn
-pkgver=4.0.0_1
+pkgver=4.0.0_2
 pkgrel=1
 pkgdesc="Brother DCP-L2550DN lpr driver and CUPS wrapper"
 arch=('i686' 'x86_64')
@@ -12,9 +12,7 @@ optdepends=('brscan4: scanner support.')
 source=(
   "https://download.brother.com/welcome/dlf103519/dcpl2550dnpdrv-${pkgver/_/-}.i386.rpm"
 )
-sha256sums=(
-  '88a2aa9fa5e9b441166983a032cb5e63681d4956b3ee6b84a1f777f76065b575'
-)
+sha256sums=('47a99b11de31182b0127af30bbb01b37771856644431096f4baabc46f2e34138')
 
 prepare() {
   sed -i -e '75c\my $basedir = "/opt/brother/Printers/DCPL2550DN";' \
