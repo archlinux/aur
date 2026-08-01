@@ -1,4 +1,4 @@
-pkgname=hostapd-mana
+pkgname=hostapd-mana-bin
 pkgver=2.6.5.r31.ge167908
 pkgrel=1
 pkgdesc="SensePost's modified hostapd for rogue access point (evilAP) attacks (KARMA, EAP)"

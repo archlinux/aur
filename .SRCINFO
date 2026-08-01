@@ -1,4 +1,4 @@
-pkgbase = hostapd-mana
+pkgbase = hostapd-mana-bin
 	pkgdesc = SensePost's modified hostapd for rogue access point (evilAP) attacks (KARMA, EAP)
 	pkgver = 2.6.5.r31.ge167908
 	pkgrel = 1
@@ -11,7 +11,7 @@ pkgbase = hostapd-mana
 	makedepends = pkg-config
 	depends = openssl
 	depends = libnl
-	source = hostapd-mana::git+https://github.com/sensepost/hostapd-mana.git
+	source = hostapd-mana-bin::git+https://github.com/sensepost/hostapd-mana.git
 	sha256sums = SKIP
 
-pkgname = hostapd-mana
+pkgname = hostapd-mana-bin
