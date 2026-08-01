@@ -1,39 +1,42 @@
 # Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.10.1.r0.gb5a336e
+pkgver=0.12.2.r30.g973135f
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
-arch=('x86_64')
-license=('GPL-3.0-only')
+arch=(x86_64)
+license=(GPL-3.0-only)
 depends=(
-    'qt6-base'
-    'qt6-svg'
-    'qcoro'
-    'alsa-lib'
-    'taglib'
-    'ffmpeg'
-    'icu'
-    'kdsingleapplication'
-    'hicolor-icon-theme'
-    'glibc'
-    'gcc-libs'
+    glibc
+    icu
+    libstdc++
+    libgcc
+    qt6-base
+    alsa-lib
+    taglib
+    ffmpeg
+    kdsingleapplication
+    qcoro
+    hicolor-icon-theme
+    zlib
 )
 makedepends=(
-    'cmake'
-    'git'
-    'libpipewire'
-    'ninja'
-    'pkgconf'
-    'qt6-tools'
-    'libopenmpt'
-    'libgme'
-    'libsndfile'
-    'libarchive'
-    'libebur128'
-    'soundtouch'
-    'libsoxr'
+    git
+    qt6-svg
+    qt6-tools
+    ninja
+    cmake
+    sdl2-compat
+    libpipewire
+    libopenmpt
+    libgme
+    libsndfile
+    libarchive
+    libebur128
+    libprojectm
+    libsoxr
+    soundtouch
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -43,8 +46,9 @@ optdepends=(
     'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
     'libebur128: For the ReplayGain scanner plugin'
-    'soundtouch: For the SoundTouch DSP plugin'
-    'libsoxr: For the SoX resampler DSP plugin'
+    'libsoxr: For the SoX-based DSP plugin'
+    'libprojectm: For the ProjectM visualisation plugin'
+    'soundtouch: For the SoundTouch-based DSP plugin'
 )
 provides=('fooyin')
 conflicts=('fooyin')
@@ -60,15 +64,21 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "$pkgname" -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
-    -DBUILD_PCH=ON \
-    -DINSTALL_HEADERS=ON \
-    -Wno-dev
-  cmake --build build
+    local cmake_options=(
+        -B build
+        -S "$pkgname"
+        -W no-author
+        -G Ninja
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_PCH=ON
+        -D INSTALL_HEADERS=ON
+    )
+
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 }
