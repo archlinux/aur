@@ -4,18 +4,18 @@
 _name=NeuralRack
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst})
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='A neural model and impulse response file loader'
 arch=(aarch64 x86_64)
 url="https://github.com/brummer10/$_name"
 license=(BSD-3-Clause)
 groups=(pro-audio)
 depends=(glibc gcc-libs libx11)
-makedepends=(cairo jack libsndfile lv2 portaudio xxd)
+makedepends=(cairo jack libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('460e4eeba85d2985910d2e624149c1a77639e1c194f7c0556ce9d21efed79f21')
+sha256sums=('697b5c01ff2f37f18f55854b94d5afd394b8e03cc4826f636172bfb6d82f1a07')
 _plugin_uri="urn:brummer:$pkgbase"
 
 _pick() {
@@ -26,11 +26,6 @@ _pick() {
     mv "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
-}
-
-prepare() {
-  cd $_name-v$pkgver
-  sed -i 's/egrep/grep -E/' makefile
 }
 
 build() {
@@ -96,7 +91,7 @@ package_neuralrack-lv2() {
 
 package_neuralrack-standalone() {
   pkgdesc+=" – JACK standalone"
-  depends+=(libasound.so libcairo.so libjack.so libportaudio.so libsndfile.so)
+  depends+=(libasound.so libcairo.so libjack.so libsndfile.so)
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname

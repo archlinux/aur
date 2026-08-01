@@ -1,7 +1,7 @@
 pkgbase = neuralrack
 	pkgdesc = A neural model and impulse response file loader
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64
 	arch = x86_64
@@ -12,13 +12,12 @@ pkgbase = neuralrack
 	makedepends = jack
 	makedepends = libsndfile
 	makedepends = lv2
-	makedepends = portaudio
 	makedepends = xxd
 	depends = glibc
 	depends = gcc-libs
 	depends = libx11
-	source = https://github.com/brummer10/NeuralRack/releases/download/v0.3.3/NeuralRack-v0.3.3-src.tar.xz
-	sha256sums = 460e4eeba85d2985910d2e624149c1a77639e1c194f7c0556ce9d21efed79f21
+	source = https://github.com/brummer10/NeuralRack/releases/download/v0.4.0/NeuralRack-v0.4.0-src.tar.xz
+	sha256sums = 697b5c01ff2f37f18f55854b94d5afd394b8e03cc4826f636172bfb6d82f1a07
 
 pkgname = neuralrack
 	arch = any
@@ -60,7 +59,6 @@ pkgname = neuralrack-standalone
 	depends = libasound.so
 	depends = libcairo.so
 	depends = libjack.so
-	depends = libportaudio.so
 	depends = libsndfile.so
 
 pkgname = neuralrack-vst
