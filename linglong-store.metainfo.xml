@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>com.dongpl.linglong-store.v2</id>
-  <name>玲珑应用商店社区版 Nightly</name>
-  <summary>Linglong Store Community Edition Nightly</summary>
+  <name>Linyaps Store Community Edition Nightly</name>
+  <name xml:lang="en">Linyaps Store Community Edition Nightly</name>
+  <name xml:lang="es">Tienda de Aplicaciones Linyaps Edición Comunitaria Nightly</name>
+  <name xml:lang="ru">Магазин Linyaps — ночная версия сообщества</name>
+  <name xml:lang="zh-CN">玲珑应用商店社区版 Nightly</name>
+  <summary>Nightly build for browsing, installing, and managing Linyaps applications</summary>
+  <summary xml:lang="en">Nightly build for browsing, installing, and managing Linyaps applications</summary>
+  <summary xml:lang="es">Versión Nightly para explorar, instalar y gestionar aplicaciones Linyaps</summary>
+  <summary xml:lang="ru">Ночная сборка для поиска, установки и управления приложениями Linyaps</summary>
+  <summary xml:lang="zh-CN">用于浏览、安装和管理玲珑应用的 Nightly 构建</summary>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <launchable type="desktop-id">com.dongpl.linglong-store.v2.desktop</launchable>
   <description>
-    <p>Desktop store for browsing and installing Linglong applications.</p>
+    <p>A desktop store for browsing, installing, and managing Linyaps applications.</p>
+    <p xml:lang="en">A desktop store for browsing, installing, and managing Linyaps applications.</p>
+    <p xml:lang="es">Una tienda de escritorio para explorar, instalar y gestionar aplicaciones Linyaps.</p>
+    <p xml:lang="ru">Магазин для поиска, установки и управления приложениями Linyaps.</p>
+    <p xml:lang="zh-CN">用于浏览、安装和管理玲珑应用的桌面应用商店。</p>
   </description>
   <url type="homepage">https://github.com/HanHan666666/flutter-linglong-store</url>
   <categories>
