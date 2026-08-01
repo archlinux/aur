@@ -1,0 +1,19 @@
+# Maintainer: luynrs
+pkgname=justssh-bin
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="Minimal SSH launcher for the terminal"
+url="https://github.com/luynrs/justssh"
+arch=('x86_64' 'aarch64')
+license=('MIT')
+provides=('justssh')
+conflicts=('justssh')
+source_x86_64=("${pkgname}_${pkgver}.tar.gz::https://github.com/luynrs/justssh/releases/download/v${pkgver}/justssh_linux_amd64.tar.gz")
+sha256sums_x86_64=('e942b8b37aea6dc26407d2ae8c21c2a0a60a1660b777f506f7cf76dd893634ab')
+source_aarch64=("${pkgname}_${pkgver}.tar.gz::https://github.com/luynrs/justssh/releases/download/v${pkgver}/justssh_linux_arm64.tar.gz")
+sha256sums_aarch64=('dea78c527e590e23d516379d55dc7a0442c47dd5c3eed8f2fdc4b3ed9bcf635c')
+
+package() {
+	install -Dm755 "./jssh" "${pkgdir}/usr/bin/jssh"
+	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
