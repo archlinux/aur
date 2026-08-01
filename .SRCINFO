@@ -1,6 +1,6 @@
 pkgbase = clap-validator
 	pkgdesc = An automatic CLAP validation and testing tool
-	pkgver = 0.3.2
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/free-audio/clap-validator
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = clap-validator
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = clap-validator-0.3.2.tar.gz::https://github.com/free-audio/clap-validator/archive/refs/tags/0.3.2.tar.gz
-	sha256sums = 4738248c0112f338144eedfc0c4678e38feae094ff93139ebb37c73d278c9ea7
+	source = clap-validator-0.4.1.tar.gz::https://github.com/free-audio/clap-validator/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 21edbabfd92707a730ae93b98d850dfd61aceb3aa80f5b39e7eb2e7e9e9d77c7
 
 pkgname = clap-validator

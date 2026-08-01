@@ -1,0 +1,4 @@
+[clap-validator]
+source = "github"
+github = "free-audio/clap-validator"
+use_max_tag = true
