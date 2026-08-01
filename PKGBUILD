@@ -1,20 +1,19 @@
 # Maintainer: Lumina <luminanao at duck.com>
 pkgname=limit-computer-time
-pkgver=1.0.7
+pkgver=2
 pkgrel=1
 pkgdesc="Daily desktop time budget daemon for KDE Plasma on Wayland with countdown overlay and TUI configurator — suitable for parental control"
 arch=(x86_64)
 url="https://codeberg.org/LuminaNAO/limit-computer-time"
 license=(AGPL3)
-depends=(gtk3 gtk-layer-shell)
+depends=(gtk3 gtk-layer-shell qt6-tools)
 makedepends=(rust)
 optdepends=(
-    "pipewire-alsa: alarm sound playback via pw-play"
-    "pulseaudio-alsa: alarm sound playback fallback via paplay"
+    "pipewire: alarm sound playback via pw-play"
+    "libpulse: alarm sound playback fallback via paplay"
     "libcanberra: alarm sound fallback via canberra-gtk-play"
-    "qdbusqt6: KDE Plasma screen lock integration"
-    "qdbusqt5: KDE Plasma screen lock fallback"
-    "logind: session lock detection fallback"
+    "espeak-ng: spoken time-remaining alerts"
+    "speech-dispatcher: spoken alerts fallback via spd-say"
 )
 source=(git+https://codeberg.org/LuminaNAO/limit-computer-time.git#tag="v${pkgver}")
 sha256sums=(SKIP)
