@@ -1,8 +1,8 @@
 # Maintainer: foxinwinter <179904685+foxinwinter at users dot noreply dot github dot com>
 
 pkgname=forager
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Steam-like game launcher for your local game library"
 arch=('x86_64')
 url="https://github.com/foxinwinter/forager"
@@ -11,7 +11,7 @@ depends=('python' 'pyside6' 'python-evdev' 'python-keyring' 'python-pillow' 'ste
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("forager-v${pkgver}.tar.gz::https://github.com/foxinwinter/forager/archive/v${pkgver}.tar.gz"
         'forager.desktop')
-sha256sums=('556d0e2ee733c635dae089af61472c672b021f4c10e17ddb4c75dbb9c50c6ffd'
+sha256sums=('b0a8d69cdc05c602359d8daa161c40b9e8b97bea03557d8feca1ad5d712e9be2'
             'f5b25b350334dd490da17325c2408bc51fffae28423ec20b4e60d44a965eddf5')
 
 build() {
