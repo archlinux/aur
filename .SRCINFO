@@ -1,0 +1,18 @@
+pkgbase = sniplab-bin
+	pkgdesc = Filesystem-native snippet library and terminal CLI (prebuilt)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/gitkeniwo/snip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = sniplab
+	provides = snip
+	conflicts = sniplab
+	source_x86_64 = snip-x86_64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/snip-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4192f04fe63fca71f1f3f9d676eea6067b702a6ad21773b5fae37e7ce758e37f
+	source_aarch64 = snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/snip-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c44da0c99800b14671a4c41351d9d5f0dd9e7dd15b0a060f19a830c7f79f767c
+
+pkgname = sniplab-bin
