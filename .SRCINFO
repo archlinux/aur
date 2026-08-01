@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-sans-jp
+	pkgdesc = IBM Plex Sans for Japanese
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-sans-jp-3.0.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-jp%403.0.0/ttf-ibm-plex-sans-jp.zip
+	sha256sums = 7e4f80047782fe9eb74cd0b63019da283a15db98942da476fee46098633a083c
+
+pkgname = ttf-ibm-plex-sans-jp
