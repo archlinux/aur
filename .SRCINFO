@@ -1,0 +1,36 @@
+pkgbase = llavon-ime-fcitx5-preview-git
+	pkgdesc = Preview branch of the Fcitx5 frontend and local inference service for Llavon IME
+	pkgver = 0.2.2.r15.g7ee1e51
+	pkgrel = 1
+	url = https://github.com/llavon-ime/ime-fcitx5/tree/preview
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	license = MIT
+	license = Apache-2.0
+	license = BSL-1.0
+	license = CC-BY-NC-4.0
+	makedepends = cmake
+	makedepends = curl
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	makedepends = tar
+	makedepends = unzip
+	makedepends = zip
+	depends = fcitx5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = vulkan-icd-loader
+	optdepends = fcitx5-configtool: graphical configuration for fcitx5
+	optdepends = vulkan-driver: Vulkan GPU acceleration
+	provides = llavon-ime-fcitx5
+	conflicts = llavon-ime-fcitx5
+	conflicts = llavon-ime-fcitx5-git
+	source = ime-fcitx5::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=preview
+	source = llavon-ime-llama-250m-Q4_K_M.gguf::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/llavon-ime-llama-250m-Q4_K_M.gguf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = llavon-ime-fcitx5-preview-git
