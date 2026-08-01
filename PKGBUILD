@@ -5,7 +5,7 @@ pkgname=intel-sgx-sdk-bin
 pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
 pkgver=2.30
 _pkgver="${pkgver}.100.1"
-pkgrel=0
+pkgrel=1
 url='https://github.com/intel/confidential-computing.sgx'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
@@ -17,9 +17,9 @@ optdepends=(
 provides=("intel-sgx-sdk=${pkgver}")
 conflicts=('intel-sgx-sdk')
 options=(!strip !debug) # debug symbols already included from upstream, better not to strip them
-source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu26.04-server/sgx_linux_x64_sdk_${_pkgver}.bin"
+source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/Debian13/sgx_linux_x64_sdk_${_pkgver}.bin"
         'intel-sgx-sdk-skip-tmp.patch')
-b2sums=('9550831f21bb3237a2bc36ad24ccd34117e5b6447707b5cd6d9d7c4342e7eedd84d3b950fc63128f8bd29b2ad91ad28510d24e0f103b771b8916efa6f727bb89'
+b2sums=('ac0c159f896bdb50c3dcdb3848ec6b053817c8f7c69569ed64103d372cee2a27fd9f27ab39e7686e90d69dcbd506b9de0e1566f6f7807304f3d4f5485958d663'
         '7da757aae6410d927b3697a66608b84d10a4902fc522ed4af4453cf8dcece1a2f46a762a55455710433dc516f9a68f662ab32cebe3c5fe28639c1d13f661606c')
 
 ## Here you can change the installation directory.
