@@ -1,6 +1,6 @@
 pkgbase = ab-av1
 	pkgdesc = AV1 encoding tool with fast VMAF sampling.
-	pkgver = 0.11.4
+	pkgver = 0.11.5
 	pkgrel = 1
 	url = https://github.com/alexheretic/ab-av1
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ab-av1
 	depends = svt-av1
 	depends = ffmpeg
 	depends = vmaf
-	source = ab-av1-0.11.4.tar.gz::https://github.com/alexheretic/ab-av1/archive/v0.11.4.tar.gz
-	sha256sums = a495fca2aace428d385944b25e49c56b5db4b328a1543becb4c181f138293d7b
+	source = ab-av1-0.11.5.tar.gz::https://github.com/alexheretic/ab-av1/archive/v0.11.5.tar.gz
+	sha256sums = 12c835097c48216668f57f0517ed9b082553c05884cab4d1218bafc6e71cf003
 
 pkgname = ab-av1
