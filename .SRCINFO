@@ -1,6 +1,6 @@
 pkgbase = cosmic-comp-gaming
 	pkgdesc = Compositor for the COSMIC desktop environment with gaming patches that support pointer-constraints-v1, pointer-warp-v1, commit-timing-v1, fifo-v1 and respect fullscreen function
-	pkgver = 1.6.beta.r1.gf1e188e4
+	pkgver = 1.6.beta.r1.g
 	pkgrel = 1
 	url = https://github.com/skygrango/cosmic-comp
 	arch = x86_64
