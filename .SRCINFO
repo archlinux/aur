@@ -1,0 +1,19 @@
+pkgbase = kwin-scripts-karousel-git
+	pkgdesc = KWin tiling script with scrolling
+	pkgver = 0.17.r2.g28099b5
+	pkgrel = 1
+	url = https://github.com/peterfajdiga/karousel
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs
+	makedepends = typescript
+	depends = qt6-declarative
+	depends = knotifications
+	provides = kwin-scripts-karousel
+	conflicts = kwin-scripts-karousel
+	conflicts = kwin-karousel
+	source = karousel::git+https://github.com/peterfajdiga/karousel.git
+	sha256sums = SKIP
+
+pkgname = kwin-scripts-karousel-git
