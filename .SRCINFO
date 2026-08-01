@@ -1,6 +1,6 @@
 pkgbase = vcvrack-dbrack-modules
 	pkgdesc = dbRack VCV Rack modules
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/docb/dbRackModules
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = vcvrack-dbrack-modules
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/docb/dbRackModules#tag=v2.6.1
-	sha256sums = 774a9be79a6ce7902574b75e113562e7b8096207995d40b16f2b59fdab39f746
+	source = git+https://github.com/docb/dbRackModules#tag=v2.6.2
+	sha256sums = be0f7e295621af9edeaf52340bd93e9a6f7427325910483d3a030612c4da7af9
 
 pkgname = vcvrack-dbrack-modules
