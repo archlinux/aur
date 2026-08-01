@@ -4,7 +4,7 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r10.g2a7d9dc
+pkgver=0.2.2.r11.gfb35004
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
@@ -48,7 +48,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_srcname}/vcpkg/scripts/buildsystems/vcpkg.cmake" \
         -DVCPKG_MANIFEST_FEATURES=llama-vulkan \
-        -DIME_UNIX_SERVICE_REQUIRE_LLAMA=ON \
         -DIME_UNIX_SERVICE_BUILD_TESTS=ON
     cmake --build unix-service-build
     ctest --test-dir unix-service-build --output-on-failure
