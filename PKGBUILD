@@ -1,4 +1,4 @@
-# Maintainer: domovoy fleet <https://github.com/alexindigo/domovoy-bootstrap>
+# Maintainer: Alex Indigo <ai@aegis.one>
 #
 # t3-code-docker — headless T3 Code server in a Docker container.
 # One container per target user's opencode (or other AI provider) instance.
