@@ -5,7 +5,7 @@
 
 pkgname=cosmic-applets-application-volume
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Applets for COSMIC Panel'
 arch=(x86_64)
