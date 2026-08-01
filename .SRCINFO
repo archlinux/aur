@@ -1,0 +1,17 @@
+pkgbase = omarchy-seq-paste-niri
+	pkgdesc = Sequential copy/paste (FIFO clipboard) for niri, inspired by macOS Pastebot (niri port of omarchy-seq-paste)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emmgeede/omarchy-seq-paste
+	arch = any
+	license = MIT
+	depends = wl-clipboard
+	depends = inotify-tools
+	depends = ghostty
+	depends = libnotify
+	depends = jq
+	depends = wtype
+	provides = omarchy-seq-paste
+	conflicts = omarchy-seq-paste
+
+pkgname = omarchy-seq-paste-niri

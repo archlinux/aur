@@ -1,0 +1,12 @@
+// omarchy-seq-paste window rule (niri)
+// Add this inside your niri config (e.g. ~/.config/niri/cfg/rules.kdl).
+// niri has no direct equivalent of Hyprland's `pin` (always-on-top across
+// workspaces), so the panel is just floated and positioned near the
+// top-right corner instead.
+
+window-rule {
+    match title="^omarchy-seq-paste-panel$"
+    open-floating true
+    default-floating-position x=20 y=60 relative-to="top-right"
+    open-focused false
+}
