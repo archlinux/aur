@@ -1,0 +1,37 @@
+# Maintainer: Alad Wenter <https://github.com/AladW>
+# Co-Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Co-Maintainer: zoorat <zoorat [at] protonmail [dot] com>
+
+pkgname=aurutils-bin
+pkgver=20.5.8
+pkgrel=1
+pkgdesc='helper tools for the arch user repository'
+url='https://github.com/AladW/aurutils'
+arch=('any')
+license=('ISC')
+source=("aurutils-bin-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" 'migrator')
+changelog=aurutils.changelog
+install=aurutils.install
+sha256sums=('9a425508e59db73b1ae4644d15fc3c09e3cbd85788295455bd2d13fb6ceccee5')
+depends=('git' 'pacutils' 'curl' 'perl' 'perl-json-xs' 'bash')
+optdepends=('bash-completion: bash completion'
+            'zsh: zsh completion'
+            'devtools: aur-chroot'
+            'vifm: default pager'
+            'ninja: aur-sync ninja support'
+            'bat: view-delta example script'
+            'git-delta: view-delta example script'
+            'python-srcinfo: sync-rebuild example script'
+            'expect: non-interactive usage')
+
+build() {
+    sudo "$srcdir/migrator"
+    cd "aurutils-bin-$pkgver"
+    make AURUTILS_VERSION="$pkgver"
+}
+
+package() {
+    cd "aurutils-bin-$pkgver"
+    make AURUTILS_VERSION="$pkgver" PREFIX=/usr ETCDIR=/etc DESTDIR="$pkgdir" install
+}
+
