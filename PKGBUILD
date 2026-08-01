@@ -1,23 +1,24 @@
 # Maintainer: Shiro836
 #
-# clodex — Claude Code routed to your ChatGPT/Codex subscription.
+# clodex — Claude Code routed to Codex or DeepSeek.
 # Ships:
 #   * clodex-proxy : forked Anthropic<->Codex proxy that reuses the existing
 #                    ~/.codex/auth.json tokens (no separate login)
 #   * clodex       : launcher that auto-starts the proxy and execs the
 #                    unmodified Claude Code binary with scoped env vars
+#   * claudeep     : launcher for DeepSeek's Anthropic-compatible API
 #
 pkgname=clodex
-pkgver=r6.81a0977
+pkgver=r8.b1fff34
 pkgrel=1
-pkgdesc="claude-code-proxy wrapper using the Claude Code binary and Codex auth token"
+pkgdesc="Claude Code launchers for Codex subscriptions and the DeepSeek API"
 arch=('x86_64')
 url="https://github.com/Shiro836/clodex"
 license=('MIT')
 depends=('gcc-libs' 'bash' 'procps-ng')
 makedepends=('rust' 'cargo' 'git')
-optdepends=('codex: provides the ~/.codex login this reuses'
-            'claude-code: the Claude Code CLI that clodex launches')
+optdepends=('codex: provides the ~/.codex login that clodex reuses'
+            'claude-code: the Claude Code CLI that clodex and claudeep launch')
 options=('!lto')
 _gitsrc="clodex-src"
 source=("$_gitsrc::git+https://github.com/Shiro836/clodex.git")
@@ -46,5 +47,6 @@ package() {
     # an upstream claude-code-proxy install.
     install -Dm755 "target/release/claude-code-proxy" "$pkgdir/usr/bin/clodex-proxy"
     install -Dm755 "packaging/clodex" "$pkgdir/usr/bin/clodex"
+    install -Dm755 "packaging/claudeep" "$pkgdir/usr/bin/claudeep"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
