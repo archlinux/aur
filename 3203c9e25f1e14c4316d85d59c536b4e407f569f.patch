@@ -1,0 +1,22 @@
+From 3203c9e25f1e14c4316d85d59c536b4e407f569f Mon Sep 17 00:00:00 2001
+From: Jonathan spyreas <jspyreas@root-ai.com>
+Date: Thu, 16 Apr 2020 11:43:36 -0400
+Subject: [PATCH] fix for dumb bug around leds and docker
+
+---
+ inputs.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inputs.py b/inputs.py
+index b1f8fb1..36cc3e1 100644
+--- a/inputs.py
++++ b/inputs.py
+@@ -3134,7 +3134,7 @@ def __init__(self, manager, path, name):
+ 
+     def _post_init(self):
+         self._match_device()
+-        self._character_device_path = self.gamepad.get_char_device_path()
++        self._character_device_path = self.gamepad.get_char_device_path() if self.gamepad else None
+ 
+     def _match_device(self):
+         number = int(self.name.split('xpad')[1])
