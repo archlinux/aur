@@ -1,13 +1,16 @@
 pkgbase = zl-speceq
-	pkgdesc = Dynamic spectrum equalizer audio plugin.
+	pkgdesc = Dynamic spectrum equalizer audio plugin
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zl-audio.github.io/plugins/zlspeceq/
 	arch = x86_64
 	arch = aarch64
 	groups = pro-audio
 	groups = zl-audio
 	license = AGPL-3.0-only
+	makedepends = ninja
+	makedepends = clang
+	makedepends = cmake
 	depends = alsa-lib
 	depends = libx11
 	depends = libxcomposite
@@ -27,19 +30,19 @@ pkgbase = zl-speceq
 	sha256sums = 85c5b8f8c8f436ef2402a6bb53204f07d3f5b2bad2ec804fef44317465cfad98
 
 pkgname = zl-speceq-vst3
-	pkgdesc = Dynamic spectrum equalizer audio plugin. (VST3 version)
+	pkgdesc = Dynamic spectrum equalizer audio plugin (VST3 version)
 	groups = pro-audio
 	groups = zl-audio
 	groups = vst3-plugins
 
 pkgname = zl-speceq-lv2
-	pkgdesc = Dynamic spectrum equalizer audio plugin. (LV2 version)
+	pkgdesc = Dynamic spectrum equalizer audio plugin (LV2 version)
 	groups = pro-audio
 	groups = zl-audio
 	groups = lv2-plugins
 
 pkgname = zl-speceq
-	pkgdesc = Dynamic spectrum equalizer audio plugin. (metapackage that requires all plugin formats)
+	pkgdesc = Dynamic spectrum equalizer audio plugin (metapackage that requires all plugin formats)
 	depends = alsa-lib
 	depends = libx11
 	depends = libxcomposite

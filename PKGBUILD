@@ -3,8 +3,8 @@
 pkgbase='zl-speceq'
 pkgname=('zl-speceq-vst3' 'zl-speceq-lv2' 'zl-speceq')
 pkgver='0.0.1'
-pkgrel=1
-pkgdesc='Dynamic spectrum equalizer audio plugin.'
+pkgrel=2
+pkgdesc='Dynamic spectrum equalizer audio plugin'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
 license=('AGPL-3.0-only')
@@ -21,6 +21,11 @@ depends=(
   'freetype2'
   'fontconfig'
   'libxi'
+)
+makedepends=(
+  'ninja'
+  'clang'
+  'cmake'
 )
 
 _jucecommit=176e4108cd86190681e96af76bfbe0d62de898da
@@ -55,14 +60,13 @@ build() {
 
   local CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}"
 
-  cmake -B Builds \
+  cmake -B Builds -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
     -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" \
-    -DZL_HWY_STATIC_TARGET=AVX2 .
-
-  make -C Builds
+    -DZL_HWY_STATIC_TARGET="AVX2" -DCMAKE_BUILD_TYPE=Release .
+  cmake --build Builds --config Release
 }
 
 package_zl-speceq-vst3() {
@@ -71,14 +75,16 @@ package_zl-speceq-vst3() {
 
   cd "ZLSpectrumEqualizer-${pkgver}/"
   mkdir -p ${pkgdir}/usr/lib/vst3/
-  cp -r Builds/ZLSpectrumEqualizer_artefacts/VST3/* ${pkgdir}/usr/lib/vst3
+  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/VST3/* ${pkgdir}/usr/lib/vst3
 }
 
 package_zl-speceq-lv2() {
   groups+=('lv2-plugins')
   pkgdesc+=' (LV2 version)'
+
+  cd "ZLSpectrumEqualizer-${pkgver}/"
   mkdir -p ${pkgdir}/usr/lib/lv2/
-  cp -r Builds/ZLSpectrumEqualizer_artefacts/LV23/* ${pkgdir}/usr/lib/lv2
+  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/LV2/* ${pkgdir}/usr/lib/lv2
 }
 
 package_zl-speceq() {
