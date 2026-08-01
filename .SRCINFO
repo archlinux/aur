@@ -1,6 +1,6 @@
 pkgbase = tuack-ng-git
 	pkgdesc = 重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。
-	pkgver = 0.4.0
+	pkgver = 1.0.0.r3.g3c8e9f4
 	pkgrel = 1
 	url = https://github.com/tuack-ng/tuack-ng
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = tuack-ng-git
 	optdepends = git: Needed for lfs management
 	provides = tuack-ng
 	conflicts = tuack-ng
+	options = !lto
+	options = !debug
 	source = git+https://github.com/tuack-ng/tuack-ng.git
 	source = git+https://github.com/tuack-ng/templates.git
 	source = git+https://github.com/MikeMirzayanov/testlib.git

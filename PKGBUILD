@@ -1,7 +1,7 @@
 # Maintainer: Pulsar <Pulsar33550336@163.com>
 
 pkgname=tuack-ng-git
-pkgver=0.4.0.r0.g835dd86
+pkgver=1.0.0.r3.g3c8e9f4
 pkgrel=1
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
@@ -26,6 +26,8 @@ optdepends=(
     'typst: Needed for rendering PDF'
     'git: Needed for lfs management'
 )
+options=('!lto'     # to prevent compile error
+         '!debug')  # useless in Rust project
 
 pkgver() {
     cd tuack-ng
