@@ -1,0 +1,23 @@
+pkgbase = aur-scanner-bin
+	pkgdesc = Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/KiefStudioMA/ks-aur-scanner
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = aur-scan
+	conflicts = aur-scanner-git
+	conflicts = ks-aur-scanner
+	options = !debug
+	source = git+https://github.com/KiefStudioMA/ks-aur-scanner.git#tag=v2.0.0?signed
+	source = generator
+	validpgpkeys = 25631EAE3F43999050B7D7021132BF893C33FB51
+	sha256sums = SKIP
+
+pkgname = aur-scanner-bin
