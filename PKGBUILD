@@ -1,7 +1,7 @@
 # Maintainer: Sluicee <sluicee1@gmail.com>
 
 pkgname=memory-card-bin
-pkgver=1.3.7
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A desktop music player with a retro PS2/CRT aesthetic"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 provides=('memory-card')
 conflicts=('memory-card')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Memory.Card_${pkgver}_amd64.deb")
-sha256sums=('3596baf91fb00a8ba8521f190ac999ffce77c4ab1bfc1f42c7f0cd729191354b')
+sha256sums=('5308c8cbeb1145fd4c094344f895017128847e783119a31cd6a5f5661fc43299')
 package() {
   # Extract the payload data archive to the package directory
   if [ -f "$srcdir/data.tar.gz" ]; then
