@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('hwdata' 'dbus' 'systemd' 'upower')
 makedepends=('libbpf' 'rust' 'clang')
 source=("https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3c0a3dc7ed3f97943a399ec25dcf6c10e4ddc7a847213b8173f706399aa6e89')
+sha256sums=('46177bfa427bcb277c29718ee0eb421dcdb31dba33697019741ad56c4c1d7ba8')
 
 prepare(){
 	cd "${pkgbase}-${pkgver}"
