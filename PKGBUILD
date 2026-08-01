@@ -1,6 +1,6 @@
 # Maintainer: willcannotcode <william@moulder.com>
 pkgname=cetch
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A horizontally centered, modern fetch tool"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'coreutils' 'ncurses')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('700dcdd50b9fed9315162fc229b8811b0127e4523d39a322feaa5b3f5b9ee77f')
+sha256sums=('daf64bd8c09c7f296da7a07ea933886c59360e3133cb7929d0828a1bc7edb373')
 
 package() {
     cd "$pkgname-$pkgver"
