@@ -1,13 +1,13 @@
 pkgbase = iris-autocomplete-bin
 	pkgdesc = Shell auto-completion tool that works like code editors IntelliSense.
 	pkgver = 0.4.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/versenilvis/IRIS
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
 	depends = glibc
-	provides = iris
+	provides = iris-autocomplete
 	conflicts = iris-autocomplete
 	options = !strip
 	source = README-0.4.21.md::https://raw.githubusercontent.com/versenilvis/IRIS/v0.4.21/README.md

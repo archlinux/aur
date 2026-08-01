@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=versenilvis
 _gitname=IRIS
@@ -7,7 +8,7 @@ pkgname=${_appname}-autocomplete-bin
 pkgdesc="Shell auto-completion tool that works like code editors IntelliSense."
 
 pkgver=0.4.21
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -20,13 +21,13 @@ url=${_ghurl}
 license=('0BSD')
 
 depends=('glibc')
-provides=("${_appname}")
+provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+        "LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 sha256sums=('c0da915def8fc6c1d1685f073e7c3fcd410e8c8de0088e0f00080909869fdd66'
@@ -47,13 +48,13 @@ build() {
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" -t "${pkgdir}/usr/bin"
 
 	install -Dm644 "completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
 	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
 	install -Dm644 "completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
