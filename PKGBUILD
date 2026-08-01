@@ -12,9 +12,11 @@ license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-compatible-bin}" "${pkgname/-compatible}")
 provides=("${pkgname%-compatible-bin}=${pkgver}")
 depends=(
+    'gtk3'
     'libayatana-appindicator'
     'libkeybinder3'
 )
+optdepends=('polkit: for TUN authorization')
 options=('!debug')
 source=("restart-bettbox.hook")
 source_x86_64=(

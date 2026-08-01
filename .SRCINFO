@@ -5,8 +5,10 @@ pkgbase = bettbox-compatible-bin
 	url = https://github.com/appshubcc/Bettbox
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libkeybinder3
+	optdepends = polkit: for TUN authorization
 	provides = bettbox=1.18.8
 	conflicts = bettbox
 	conflicts = bettbox-bin
@@ -15,5 +17,5 @@ pkgbase = bettbox-compatible-bin
 	sha256sums = 916a8fc03c89efbde16d8b0462df32c16b50d6bfbce2be3645183f6ce1cb55f7
 	source_x86_64 = bettbox-1.18.8-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.18.8/Bettbox-1.18.8-linux-amd64-compatible.deb
 	sha256sums_x86_64 = fba6b8cc5f98bff9c4ab17c127202087b31c2e091c115faf697d27fbe4882e17
-pkgname = bettbox-compatible-bin
 
+pkgname = bettbox-compatible-bin
