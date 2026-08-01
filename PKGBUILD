@@ -3,7 +3,7 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=unofficial-homestuck-collection
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
@@ -44,7 +44,7 @@ depends=(
 )
 source=("git+https://github.com/GiovanH/${pkgname}.git#tag=v${pkgver}"
         node-engines.patch)
-sha512sums=('8b450f21bfa6f57269336c17047633dc5c951266e882c159d4730d138ae3a5a8941400c8c2e14ece5cefe9875d873d6a6cb073097238145c089f2364c9598b56'
+sha512sums=('66bfc33c0d0c76e66bd30c07429eabfd2f3207e47198ff08d6279cab30548c2735b163d51cec2b45bc523b46d321d3c86b38f1a2386fc56692162fe641999760'
             'd93caf075f89184fb88e39e5faa7aa136817737e90da063ed98a15b668efacbb5b25415933a49669d76bee27eb1f871225c59333828a398ed4044b05bee0758d')
 
 prepare() {
