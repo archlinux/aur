@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.17.0
-_ggml_sha256sum=49ed958226dd75ea13b3b493150181e3a3ca7dc28c20a3d1f00d23e94cbf7a47
+_ggml_version=0.18.0
+_ggml_sha256sum=8149ad1991260471db94e0656111416470a33c6948f02f36e23708f4347b42c9
 pkgname=ggml-cuda-backend
 pkgver=${_ggml_version}
 pkgrel=1
