@@ -1,7 +1,4 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# Co-Maintainer: ikozyris <ikozyris1337@gmail.com>
-
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: ikozyris <ikozyris1337@gmail.com>
 
 pkgname=kri
 pkgver=0.8.3
@@ -28,7 +25,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 "$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+#  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
