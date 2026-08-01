@@ -1,0 +1,20 @@
+pkgbase = qt5-websockets-bin
+	pkgdesc = Provides WebSocket communication compliant with RFC 6455
+	pkgver = 5.15.19+kde+r2
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = qt5-declarative
+	makedepends = git
+	depends = qt5-base
+	optdepends = qt5-declarative: QML bindings
+	source = kde-qtwebsockets-bin::git+https://invent.kde.org/qt/qt/qtwebsockets-bin#commit=10eb706b24aa05f4ee69c2f2fec99b21994dfe2b
+	source = bundler
+	sha256sums = 1aca4c4be2699a8bfb474525ec407bfbc579e7042664345d5c45ec8eb9cdca2f
+
+pkgname = qt5-websockets-bin
