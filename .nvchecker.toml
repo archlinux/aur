@@ -1,0 +1,5 @@
+[rmlint]
+source = 'github'
+github = 'sahib/rmlint'
+use_latest_tag = true
+prefix = 'v'
