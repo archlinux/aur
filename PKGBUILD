@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('zux-bin')
 makedepends=('cargo' 'git' 'file' 'nodejs' 'npm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05deee8e9c0748e99fc18900f28a993f90f7a587e568f09cb3477ac4a0f4f911')
+sha256sums=('bbb9fdb09d207ea9f104095956eb369e7e5ccdf4437a1cb832c3a5aa9becd701')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    jq '.version = "0.6.2"' src-tauri/tauri.conf.json > tmp.json
+    jq '.version = "0.6.3"' src-tauri/tauri.conf.json > tmp.json
     mv tmp.json src-tauri/tauri.conf.json
     npm ci
     cd src-tauri
@@ -41,4 +41,5 @@ package() {
     install -Dm644 usr/share/icons/hicolor/128x128/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/256x256@2/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/32x32/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zux.png
+    install -Dm644 usr/share/licenses/zux/LICENSE "$pkgdir"/usr/share/licenses/zux/LICENSE
 }
