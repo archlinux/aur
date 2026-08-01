@@ -1,8 +1,8 @@
 # Maintainer: Nakanomk <56832666+Nakanomk@users.noreply.github.com>
 
 pkgname=seekey-git
-pkgver=0.2.0.r20.g8c5f250
-pkgrel=2
+pkgver=0.2.1.r25.gd5b4753
+pkgrel=1
 pkgdesc='Wayland keyboard visualizer with floating key bubbles (git version)'
 arch=('x86_64')
 url='https://github.com/Nakanomk/Seekey'
