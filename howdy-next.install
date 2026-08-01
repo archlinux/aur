@@ -1,0 +1,12 @@
+pre_install() {
+	echo '[CAUTION] Keep a root shell open while configuring PAM: sudo -i'
+}
+
+post_install() {
+	echo '[SETUP] Download models: sudo howdy download-models'
+	echo '[SETUP] Configure camera: sudo howdy config'
+	echo '[SETUP] Test authentication: sudo howdy test'
+	echo '[SETUP] Add a face model: sudo howdy add'
+	echo '[SETUP] Add pam_howdy.so to the relevant service in /etc/pam.d/'
+	echo '[SETUP] Example: auth sufficient pam_howdy.so workaround=native'
+}
