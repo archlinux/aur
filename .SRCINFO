@@ -1,6 +1,6 @@
 pkgbase = sniplab
 	pkgdesc = Filesystem-native snippet library and terminal CLI
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/gitkeniwo/snip
 	arch = x86_64
@@ -8,10 +8,12 @@ pkgbase = sniplab
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = sniplab-0.4.0.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.0/sniplab-0.4.0.tar.gz
-	source = sniplab-0.4.0.tar.gz.asc::https://github.com/gitkeniwo/snip/releases/download/v0.4.0/sniplab-0.4.0.tar.gz.asc
+	provides = snip
+	conflicts = sniplab-bin
+	source = sniplab-0.4.1.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/sniplab-0.4.1.tar.gz
+	source = sniplab-0.4.1.tar.gz.asc::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/sniplab-0.4.1.tar.gz.asc
 	validpgpkeys = F5B9349D9BDA6EA3327F30BE1DB2F97660CA8B2D
-	sha256sums = 163d0edf5d80c0ef565dfcaf61d9f96facd855327b4339d92b2c59e48c1d021c
+	sha256sums = b460ee7e9aa3b26470446019e999832647a08216b9c0e3969ad608d8306f6159
 	sha256sums = SKIP
 
 pkgname = sniplab
