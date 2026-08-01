@@ -1,0 +1,49 @@
+post_install() {
+    echo ">>> Обновление кэша иконок и шрифтов..."
+    update-desktop-database -q 2>/dev/null || true
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || true
+    fc-cache -fs 2>/dev/null || true
+
+    echo ""
+    echo "========================================================================="
+    echo "  КОМПАС-3D v25 Home Edition успешно установлен!"
+    echo "========================================================================="
+    echo ""
+    echo "1. Активируйте службу защиты Guardant:"
+    echo "   sudo systemctl enable --now grdcontrol"
+    echo "   sudo udevadm control --reload-rules"
+    echo ""
+    echo "2. ВАЖНО: Убедитесь, что в системе сгенерирована локаль ru_RU.CP1251,"
+    echo "   иначе КОМПАС-3D завершится с ошибкой:"
+    echo "   'codecvt_byname failed to construct for ru_RU.CP1251'"
+    echo ""
+    echo "   Для проверки и генерации локали выполните:"
+    echo "   sudo nano /etc/locale.gen"
+    echo "   # Раскомментируйте или добавьте строку: ru_RU.CP1251 CP1251"
+    echo "   sudo locale-gen"
+    echo ""
+    echo "3. Активируйте лицензию перед первым запуском:"
+    echo "   kompas-kactivation-v25"
+    echo "   (Введите серийный номер Home-лицензии и Email)"
+    echo ""
+    echo "4. Запустите КОМПАС-3D:"
+    echo "   kompas3d-v25"
+    echo "   (или через меню приложений)"
+    echo ""
+    echo "5. При проблемах с активацией используйте 'Офлайн активацию'"
+    echo "   через kompas-kactivation-v25 или на support.ascon.ru"
+    echo "========================================================================="
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    update-desktop-database -q 2>/dev/null || true
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || true
+    fc-cache -fs 2>/dev/null || true
+
+    echo ">>> КОМПАС-3D v25 Home удален."
+    echo ">>> Для полного удаления лицензии используйте: grdadmin -del"
+}
