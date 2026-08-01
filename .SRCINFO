@@ -1,7 +1,7 @@
 pkgbase = elan-bin
 	pkgdesc = A video and audio annotation tool
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tla.mpi.nl/tools/tla-tools/elan/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,11 +17,16 @@ pkgbase = elan-bin
 	depends = libxrender
 	depends = libxtst
 	depends = zlib
+	optdepends = vlc: enable use of VLC as the media framework
+	optdepends = vlc-plugins-all: enable use of VLC as the media framework
 	provides = elan
 	conflicts = elan
+	options = !debug
 	source = https://www.mpi.nl/tools/elan/ELAN_7-1_linux.tar.gz
 	source = elan.desktop
+	source = elan_wrapper.sh
 	sha256sums = ab0095ccb4dca8439d76da6cb14d22613c446d6edf021729ca454f65d9c77b94
-	sha256sums = 918720769c986b0183b563596da1a8a9da039eb1196132b224b3b110d8233394
+	sha256sums = 29952b1c1cc51afec11e9aaf119e65656199b8eaa41972854fe0b1871dfd0dcb
+	sha256sums = 5b0b61111e94e09111c0eaff824d7c4fab04e462445e57197f9423c9371b7854
 
 pkgname = elan-bin

@@ -5,5 +5,6 @@
 !PKGBUILD
 !.SRCINFO
 !elan.desktop
+!elan_wrapper.sh
 
 !.gitignore
