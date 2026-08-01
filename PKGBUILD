@@ -6,7 +6,7 @@
 pkgname=kronisk
 pkgdesc='Runs a command quietly unless it fails. Python implementation of chronic(1).'
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 url='https://codeberg.org/kas/kronisk'
 arch=('any')
 license=('GPL-3.0-or-later')
