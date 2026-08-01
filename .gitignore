@@ -9,5 +9,5 @@
 !REUSE.toml
 # actual package
 !PKGBUILD
-!hunk.changelog
+!CHANGELOG.md
 !.SRCINFO

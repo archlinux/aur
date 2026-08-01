@@ -6,7 +6,7 @@ pkgdesc='Terminal diffs for humans and agents'
 pkgver=0.17.7
 pkgrel=2
 url='https://www.hunk.dev/'
-changelog=${pkgname}.changelog
+changelog=CHANGELOG.md
 arch=(aarch64 x86_64)
 license=('MIT')
 checkdepends=('jujutsu' 'nodejs')
@@ -42,7 +42,8 @@ package() {
   install -vD -t "${pkgdir}/usr/lib/hunkdiff/" -m755 dist/hunk
   install -vd "${pkgdir}/usr/bin"
   ln -v -ft "${pkgdir}/usr/bin/" -sr "${pkgdir}/usr/lib/hunkdiff/hunk"
-  install -vD -t "${pkgdir}/usr/lib/hunkdiff/skills/hunk-review/" -m644 skills/hunk-review/SKILL.md
+  find skills/ -type f -not -name '.*' -exec \
+    install -vD -m644 {} -T "${pkgdir}/usr/lib/hunkdiff/{}" \;
 
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
 }

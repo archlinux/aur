@@ -12,6 +12,6 @@ SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
-path = "hunk.changelog"
+path = "CHANGELOG.md"
 SPDX-FileCopyrightText = "Hunk contributors"
 SPDX-License-Identifier = "MIT"
