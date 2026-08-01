@@ -1,6 +1,6 @@
 pkgbase = vceenc
 	pkgdesc = AMD Video Codec based command line encoder
-	pkgver = 9.02
+	pkgver = 9.13
 	pkgrel = 1
 	url = https://github.com/rigaya/VCEEnc
 	arch = x86_64
@@ -11,26 +11,24 @@ pkgbase = vceenc
 	makedepends = amf-headers
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
+	makedepends = meson
+	makedepends = patch
+	makedepends = cmake
 	depends = ffmpeg
 	depends = libass
 	depends = vapoursynth
 	depends = libdovi
 	depends = libhdr10plus-rs
-	source = git+https://github.com/rigaya/VCEEnc.git#tag=9.02
+	depends = amf-amdgpu-pro
+	source = git+https://github.com/rigaya/VCEEnc.git#tag=9.13
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = git+https://github.com/clMathLibraries/clRNG.git
 	source = git+https://github.com/cubicdaiya/dtl
-	source = ldflags-adjustments.patch
-	source = fix-finding-hdr10plus.patch
-	source = use-system-AMF-headers.patch
-	source = fix-build-with-opencl-headers-2025.07.22.patch
-	sha256sums = a433908d59a80d2eda388450d194e064db7370fd1a550f0f86dc9b91b3ad5e5b
+	source = 0001-fix-Use-system-AMF-headers-instead-of-submodules.patch
+	sha256sums = 33327a5c5cb8820d3cf8396a294459e4b63c1c824b8eb345921dda9bec02c687
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4
-	sha256sums = 58d3b689ef7fa067d5023c44793774661bf12d65514e69136dfc79fc102bd771
-	sha256sums = 6a220c869f96750231b87c82faa485a38a715055b09a1de427e8b216e316390f
-	sha256sums = 70cdf3cc97e953ddda1010aceca52afeee4ae970b3b7c09f7275810e7ead8d93
+	sha256sums = a65ed291ab67be8bf43ec8d525023fa98f97ec74b26559db5ec9785c663d6a31
 
 pkgname = vceenc

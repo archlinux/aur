@@ -1,0 +1,46 @@
+From 401b9a94dabc404a790c4d94a6b7cb93f01f6afd Mon Sep 17 00:00:00 2001
+From: Stan Ionascu <s@stashed.xyz>
+Date: Sat, 1 Aug 2026 14:47:48 +0100
+Subject: [PATCH] fix: Use system AMF headers instead of submodules
+
+---
+ meson.build | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 0fe511f8..8cd73ef9 100644
+--- a/meson.build
++++ b/meson.build
+@@ -359,6 +359,8 @@ if not libhdr10plus_dep.found()
+   endif
+ endif
+ 
++amf_header_incdir = include_directories(['/usr/include/AMF', '/usr/include/AMF/core', '/usr/include/AMF/components'], is_system: true)
++
+ have_dtl_header = cpp.has_header('dtl/dtl.hpp', args: ['-I' + source_root / 'dtl'], required: false)
+ enable_dtl = enable_dtl_opt and have_dtl_header
+ 
+@@ -472,9 +474,6 @@ common_c_args = [
+ 
+ include_dirs_list = [
+   '.',
+-  'AMF/amf/public/include',
+-  'AMF/amf/public/include/core',
+-  'AMF/amf/public/include/components',
+   'VCECore',
+   'tinyxml2',
+   'cppcodec',
+@@ -484,7 +483,9 @@ if enable_dtl
+   include_dirs_list += ['dtl']
+ endif
+ 
+-common_include_dirs = include_directories(include_dirs_list)
++common_include_dirs = []
++common_include_dirs += include_directories(include_dirs_list)
++common_include_dirs += amf_header_incdir
+ 
+ vcecore_sources = files(
+   'VCECore/convert_csp.cpp',
+-- 
+2.55.0
+
