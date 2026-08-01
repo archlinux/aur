@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Select a screen region and copy recognized text to clipboard (like CleanShot X OCR).
+# niri port: no compositor IPC for window rects (niri's scrolling layout has no
+# fixed on-screen window geometry the way Hyprland does), so this uses plain
+# freeform slurp selection instead of hyprctl-derived preset rectangles.
+#
+# Usage: omarchy-cmd-ocr [compact]
+#   (default)  Keep original formatting
+#   compact    Join lines into a single line, collapse whitespace
+
+if ! command -v tesseract &>/dev/null; then
+  notify-send -t 3000 "OCR" "tesseract is not installed"
+  exit 1
+fi
+
+MODE="${1:-formatted}"
+
+pkill slurp && exit 0
+
+wayfreeze & PID=$!
+sleep .1
+SELECTION=$(slurp 2>/dev/null)
+kill $PID 2>/dev/null
+
+[ -z "$SELECTION" ] && exit 0
+
+TEXT=$(grim -g "$SELECTION" -t png - | tesseract -l eng stdin stdout 2>/dev/null)
+
+if [[ -z "$TEXT" || "$TEXT" =~ ^[[:space:]]*$ ]]; then
+  notify-send -t 2000 "OCR" "No text recognized"
+  exit 0
+fi
+
+# Trim leading/trailing whitespace
+TEXT=$(echo "$TEXT" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+if [[ "$MODE" == "compact" ]]; then
+  TEXT=$(echo "$TEXT" | tr '\n' ' ' | sed 's/  */ /g')
+fi
+
+echo -n "$TEXT" | wl-copy
+notify-send -t 2000 "OCR" "$(echo "$TEXT" | head -c 200)"

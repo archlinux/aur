@@ -1,0 +1,6 @@
+// omarchy-cmd-ocr keybindings (niri)
+// Add these lines inside your `binds { ... }` block, e.g. in
+// ~/.config/niri/cfg/keybinds.kdl
+
+    Mod+Alt+O                           hotkey-overlay-title="OCR text capture" { spawn "omarchy-cmd-ocr"; }
+    Mod+Alt+Shift+O                     hotkey-overlay-title="OCR text capture (compact)" { spawn "omarchy-cmd-ocr" "compact"; }

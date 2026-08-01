@@ -1,0 +1,18 @@
+pkgbase = omarchy-cmd-ocr-niri
+	pkgdesc = CleanShot X-style OCR text capture for niri — select a region, get text in clipboard (niri port of omarchy-cmd-ocr)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emmgeede/omarchy-cmd-ocr
+	arch = any
+	license = MIT
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = grim
+	depends = slurp
+	depends = wayfreeze
+	depends = wl-clipboard
+	depends = libnotify
+	provides = omarchy-cmd-ocr
+	conflicts = omarchy-cmd-ocr
+
+pkgname = omarchy-cmd-ocr-niri
