@@ -1,11 +1,12 @@
 pkgbase = oavif-git
 	pkgdesc = Target quality AVIF encoding (git)
 	pkgver = 0.2.1.r0.g4247db0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gianni-rosato/oavif
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = zig
 	depends = glibc
 	depends = libavif
 	provides = oavif

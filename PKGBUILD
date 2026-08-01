@@ -12,6 +12,7 @@ depends=(
 )
 makedepends=(
     'git'
+    'zig'
 )
 provides=('oavif')
 conflicts=('oavif')
