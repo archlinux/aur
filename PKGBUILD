@@ -1,6 +1,6 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
-pkgbase='zl-speceq'
+pkgbase='zl-speceq-bin'
 pkgname=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin' 'zl-speceq-bin')
 pkgver='0.0.1'
 pkgrel=1

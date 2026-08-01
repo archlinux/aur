@@ -1,4 +1,4 @@
-pkgbase = zl-speceq
+pkgbase = zl-speceq-bin
 	pkgdesc = Dynamic spectrum equalizer audio plugin.
 	pkgver = 0.0.1
 	pkgrel = 1
