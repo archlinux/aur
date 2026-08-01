@@ -1,0 +1,16 @@
+pkgbase = animfetch-bin
+	pkgdesc = Animated system fetch that stays pinned above your shell while you work
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Andrew-Velox/animfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = animfetch=0.1.1
+	conflicts = animfetch
+	source_x86_64 = animfetch-0.1.1-x86_64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.1/animfetch-v0.1.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 70374646a79fe9964afa590e079e5a3dd69b0f1a11ceaa32d02af9199e308705
+	source_aarch64 = animfetch-0.1.1-aarch64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.1/animfetch-v0.1.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = d12e7338c34f049ff411877f87bfc964a6b101add47723bf51014fe85184f62e
+
+pkgname = animfetch-bin
