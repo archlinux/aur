@@ -11,8 +11,8 @@ pkgbase = sniplab-bin
 	provides = snip
 	conflicts = sniplab
 	source_x86_64 = snip-x86_64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/snip-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 94b56807d2f5cf487db9ea3329ee398104721c466bd98e0e9fc6fef82da359e9
+	sha256sums_x86_64 = b83eaff492a64efffaadc678db94b0eb8c7b42f87d7cd247485e7edcec84cc85
 	source_aarch64 = snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.4.1/snip-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c79448be8f07684c4c3122f25cc29778b67cedbcab1f87f0c2bf14aaf466d20e
+	sha256sums_aarch64 = 1d6bfbf1083a54cd248fdaa90f00f707684682581216e349afa1b5f31857845d
 
 pkgname = sniplab-bin
