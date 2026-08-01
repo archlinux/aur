@@ -1,0 +1,13 @@
+pkgbase = asleap-bin
+	pkgdesc = Actively recover LEAP/PPTP passwords.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/Obsidian-Covenant/asleap
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = libpcap
+	source = https://github.com/Obsidian-Covenant/asleap/archive/refs/tags/2.3.tar.gz
+	sha512sums = 4cfe094c706397704da8811614d841975f1ce9217704aeb19f961793dd09a0960ea769345c92e27017791ec9bcbf93b8655fb0bfede521c25841e7e1f76c1c56
+
+pkgname = asleap-bin
