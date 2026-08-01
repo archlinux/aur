@@ -4,8 +4,8 @@
 # URL: https://github.com/wergosam/Pachul
 
 pkgname=pachul
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
 arch=('any')
 url="https://github.com/wergosam/Pachul"
@@ -28,7 +28,7 @@ source=(
     "io.github.wergosam.pachul.desktop"
     "io.github.wergosam.pachul-tray.desktop"
 )
-sha256sums=('e48ed00a43bd868d26d1ed8512e11de8cae1efbe9e2becf0a07900f078c4ba2b'
+sha256sums=('e058ee3c2eca858c0b583ad4e75566510b86f091e4d699aaa1117c66eccb20ef'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194')
 
