@@ -1,0 +1,16 @@
+pkgbase = oops-bin
+	pkgdesc = 🛡️ Undo daemon for destructive shell commands
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/oops
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = oops
+	conflicts = oops
+	options = !strip
+	source_x86_64 = oops-x86_64-0.1.0.tgz::https://github.com/programmersd21/oops/releases/download/v0.1.0/oops-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2bc60d7dc357e98068be8535047a5753733fdfabe0e8a7322dde544be47624cf
+
+pkgname = oops-bin
