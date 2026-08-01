@@ -1,7 +1,64 @@
 # pacman .install hook for t3-code-docker packages.
 #
-# post_install / post_upgrade: docker load the shipped image.
-# pre_remove              : leave user data alone; just remove files.
+# post_install / post_upgrade:
+#   1. docker load the shipped image.
+#   2. For each provider URL configured in /etc/<pkgname>/providers.env,
+#      parse the port and add a UFW rule allowing docker0 → that port
+#      (if UFW is running and the target host is localhost, 127.0.0.1, or
+#      host.docker.internal — i.e., the provider is on this machine).
+#
+# T3_CODE_DOCKER_SKIP_UFW=1 pacman -U <pkg> to suppress firewall touches.
+
+_skip_ufw() {
+  [ "${T3_CODE_DOCKER_SKIP_UFW:-0}" = "1" ] && return 0
+  command -v ufw >/dev/null 2>&1 || return 0
+  ufw status >/dev/null 2>&1 || return 0  # UFW installed but inactive
+  return 1
+}
+
+_is_local_target() {
+  local url="$1"
+  case "$url" in
+    http://localhost:*|http://127.0.0.1:*|http://host.docker.internal:*)
+      return 0 ;;
+    *)
+      return 1 ;;
+  esac
+}
+
+_url_to_port() {
+  echo "${1}" | sed -E 's|^.*://[^/:]+:([0-9]+)/?.*|\1|'
+}
+
+_ensure_ufw_rules() {
+  local pkgname="$1"
+  local providers_env="/etc/${pkgname}/providers.env"
+
+  _skip_ufw && return
+
+  [ -r "${providers_env}" ] || return
+
+  while IFS='=' read -r key value; do
+    [ -n "${key}" ] || continue
+    [ -n "${value}" ] || continue
+
+    _is_local_target "${value}" || continue
+
+    local port
+    port=$(_url_to_port "${value}")
+    [ -n "${port}" ] || continue
+
+    # Idempotent: don't add if rule already exists
+    if ufw status 2>/dev/null | grep -qE "^${port}/tcp.*docker0"; then
+      continue
+    fi
+
+    echo "==> Adding UFW rule: docker0 → :${port}/tcp for ${key}"
+    ufw allow in on docker0 to any port "${port}" proto tcp \
+      comment "${pkgname} bridge→host" >/dev/null || \
+      echo "    (ufw allow failed; add rule manually: ufw allow in on docker0 to any port ${port})"
+  done < "${providers_env}"
+}
 
 _load_image() {
   local pkgname="$1"
@@ -34,8 +91,7 @@ _print_next_steps() {
 
 Next steps (as the user who will run this instance):
 
-    # 1. Ensure your user is in the 'docker' group (docker CLI without sudo).
-    #    If not:
+    # 1. Ensure your user is in the 'docker' group:
     #      sudo usermod -aG docker \$USER    # then log out / back in
 
     # 2. Enable + start the service:
@@ -45,19 +101,14 @@ Next steps (as the user who will run this instance):
     # 3. Get a browser pairing URL:
     #      ${pkgname}-ctl pair
 
-    # 4. Open the URL in your browser, complete pairing.
-
-    # 5. In T3 Settings → OpenCode → serverUrl,
-    #    point at the opencode HTTP server this instance should drive
-    #    (e.g. http://127.0.0.1:4096 or http://127.0.0.1:8096).
+    # 4. Open the Desktop URL in your browser, complete pairing.
+    #    Provider serverUrls are already pre-configured.
 
 Docs: /usr/share/${pkgname}/README.md
 
 EOF
 }
 
-# Pacman calls with no args but the pkgname is in the environment;
-# fall back to detecting via file location.
 _detect_pkgname() {
   for candidate in /usr/share/t3-code-*/image.tar.zst; do
     [[ -e "$candidate" ]] || continue
@@ -66,11 +117,10 @@ _detect_pkgname() {
 }
 
 post_install() {
-  # Multiple t3-code-* packages may be installed; load each shipped image.
-  # docker load is idempotent on identical layers.
   local pkgname
   for pkgname in $(_detect_pkgname); do
     _load_image "${pkgname}"
+    _ensure_ufw_rules "${pkgname}"
     _print_next_steps "${pkgname}"
   done
 }
@@ -87,10 +137,10 @@ pre_remove() {
   done
   cat <<EOF
 
-Note: user data (bearer sessions, projects) lives in each user's
-      \$HOME/.t3/ directory and is NOT removed by this package.
-      Docker images tagged t3-code:* remain in the local docker cache
-      until you 'docker image prune'.
+Note: user data (bearer sessions, projects) stays under \$HOME/.t3/.
+      Docker images tagged t3-code:* remain cached until 'docker image prune'.
+      UFW rules are NOT auto-removed (operator may have other services using the port).
+      Remove manually if desired: sudo ufw delete allow in on docker0 to any port <port> proto tcp
 
 EOF
 }

@@ -4,7 +4,7 @@
 # All docker calls go through `sg docker -c ...` so the tool works even
 # when the invoking shell/systemd manager doesn't have `docker` in its
 # supplementary groups (e.g. right after `usermod -aG docker` without
-# a re-login). sg reads /etc/group at exec time.
+# a re-login).
 set -euo pipefail
 
 readonly PKGNAME='@PKGNAME@'
@@ -18,8 +18,6 @@ _docker() {
   sg docker -c "${cmdline# }"
 }
 
-# LAN IP for mobile pairing. Uses the source addr of the default-route
-# lookup; empty string on failure.
 _lan_ip() {
   ip -4 route get 1.1.1.1 2>/dev/null | \
     awk '{for (i=1; i<=NF; i++) if ($i=="src") {print $(i+1); exit}}'
@@ -37,11 +35,16 @@ Commands:
   status            Show container state + HTTP reachability.
   exec <cmd> ...    Run an arbitrary command inside the container.
   restart           Restart the systemd --user service.
+  reset-opencode    Remove the local settings.json and restart the service.
+                    Settings are re-seeded from the shipped defaults on
+                    next start — useful when you've set a wrong provider
+                    serverUrl in the T3 UI and want to start fresh.
 
 Examples:
   ${PKGNAME}-ctl pair              # get pairing URLs for desktop + mobile
   ${PKGNAME}-ctl logs -f           # tail the T3 server logs
   ${PKGNAME}-ctl exec t3 auth session list
+  ${PKGNAME}-ctl reset-opencode    # reset provider settings to defaults
 USAGE
 }
 
@@ -86,8 +89,6 @@ cmd_pair() {
   fi
   printf '\n'
   printf '  Open ONE of the URLs above to complete pairing (one-time).\n'
-  printf '  The mobile URL requires this device and your phone to be on\n'
-  printf '  the same LAN, and the LAN firewall to allow port %s.\n' "${T3_PORT}"
   printf '\n'
 }
 
@@ -127,6 +128,18 @@ cmd_restart() {
   echo "restarted ${PKGNAME}.service"
 }
 
+cmd_reset_opencode() {
+  local settings="${HOME}/.t3/userdata/settings.json"
+  if [[ -f "${settings}" ]]; then
+    rm -f "${settings}"
+    echo "removed ${settings}"
+  else
+    echo "no settings.json to remove"
+  fi
+  cmd_restart
+  echo "settings-seed.json will be re-deployed on service start."
+}
+
 main() {
   if [[ $# -eq 0 ]]; then
     usage
@@ -134,12 +147,13 @@ main() {
   fi
   local cmd="$1"; shift
   case "${cmd}" in
-    pair)    cmd_pair    "$@" ;;
-    logs)    cmd_logs    "$@" ;;
-    status)  cmd_status  "$@" ;;
-    exec)    cmd_exec    "$@" ;;
-    restart) cmd_restart "$@" ;;
-    -h|--help|help) usage ;;
+    pair)             cmd_pair           "$@" ;;
+    logs)             cmd_logs           "$@" ;;
+    status)           cmd_status         "$@" ;;
+    exec)             cmd_exec           "$@" ;;
+    restart)          cmd_restart        "$@" ;;
+    reset-opencode)   cmd_reset_opencode "$@" ;;
+    -h|--help|help)   usage ;;
     *) echo "error: unknown command '${cmd}'" >&2; usage; exit 1 ;;
   esac
 }

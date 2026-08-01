@@ -4,37 +4,21 @@ Documentation=file:///usr/share/@PKGNAME@/README.md
 After=network-online.target
 Wants=network-online.target
 
-# systemd --user cannot Require= a system service. If docker.service is
-# down, this unit fails cleanly; the .install post-install note tells the
-# operator docker must be running.
-
 [Service]
 Type=simple
 
-# Docker calls are wrapped in `sg docker -c "..."` because systemd --user
-# managers inherit their supplementary groups from PAM at login; adding
-# the user to the `docker` group later doesn't propagate into an already-
-# running user@ manager. `sg` switches the effective GID for its command
-# after checking /etc/group at exec time, so it works without re-login.
-#
-# Container run:
-#   --network host   : container shares host netns; localhost inside = host
-#                      loopback, so T3 reaches host's opencode server at
-#                      127.0.0.1:<opencode_port> without UFW gymnastics.
-#   --user %U:%G     : effective UID/GID matches the invoking systemd user.
-#                      Filesystem writes stay owned by that user on the
-#                      bind mount.
-#   -e HOME=%h       : T3 uses $HOME as the default `directory` it sends
-#                      to opencode. Setting HOME to the real user home
-#                      means opencode's per-project config lookup happens
-#                      against a path it owns.
-#   -v %h:%h:rw      : bind mount the user's home dir at the SAME path in
-#                      the container so paths reported to opencode-on-host
-#                      match reality on both sides.
-#   --rm             : container is stateless; state lives in %h/.t3/ on
-#                      the host via the bind mount.
+# Seed settings.json on first run (never overwrites existing).
+# `-e` in sh prevents the ExecStartPre from marking the unit as failed.
+ExecStartPre=-/bin/sh -c 'test -f %h/.t3/userdata/settings.json || (mkdir -p %h/.t3/userdata && cp /usr/share/@PKGNAME@/settings-seed.json %h/.t3/userdata/settings.json)'
+
+# Remove stale container from prior run.
 ExecStartPre=-/usr/bin/sg docker -c "docker rm -f @PKGNAME@"
-ExecStart=/usr/bin/sg docker -c "docker run --rm --name @PKGNAME@ --network host --user %U:%G -e HOME=%h -w %h -v %h:%h:rw @IMAGE_TAG@ t3 serve --host 0.0.0.0 --port @T3_PORT@ --no-browser"
+
+# Docker bridge networking. The container sees its own loopback; socat
+# inside routes 127.0.0.1:4096 → the real provider URL via host.docker.internal.
+# T3 serves on 0.0.0.0:3773 inside; docker -p maps that to @T3_PORT@ on the host.
+# Provider URLs are loaded from /etc/@PKGNAME@/providers.env (via EnvironmentFile=).
+ExecStart=/usr/bin/sg docker -c "docker run --rm --name @PKGNAME@ --network bridge -p @T3_PORT@:3773 --add-host=host.docker.internal:host-gateway --user %U:%G -e HOME=%h -w %h -v %h:%h:rw --env-file /etc/@PKGNAME@/providers.env @IMAGE_TAG@"
 ExecStop=/usr/bin/sg docker -c "docker stop -t 5 @PKGNAME@"
 
 Restart=on-failure

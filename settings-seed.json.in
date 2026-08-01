@@ -1,0 +1,47 @@
+{
+  "providerInstances": {
+    "opencode": {
+      "driver": "opencode",
+      "enabled": @OPENCODE_ENABLED@,
+      "config": {
+        "enabled": true,
+        "binaryPath": "opencode",
+@OPENCODE_URL@
+        "serverPassword": "",
+        "customModels": []
+      }
+    },
+    "codex": {
+      "driver": "codex",
+      "enabled": false,
+      "config": {
+        "enabled": true,
+        "binaryPath": "codex",
+        "homePath": "",
+        "shadowHomePath": "",
+        "launchArgs": "",
+        "customModels": []
+      }
+    },
+    "claudeAgent": {
+      "driver": "claudeAgent",
+      "enabled": false,
+      "config": {
+        "enabled": true,
+        "binaryPath": "claude",
+        "homePath": "",
+        "customModels": [],
+        "launchArgs": ""
+      }
+    },
+    "grok": {
+      "driver": "grok",
+      "enabled": false,
+      "config": {
+        "enabled": true,
+        "binaryPath": "grok",
+        "customModels": []
+      }
+    }
+  }
+}
