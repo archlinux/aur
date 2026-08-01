@@ -1,0 +1,25 @@
+pkgbase = codex-app-unofficial-bin
+	pkgdesc = Unofficial Linux build of Codex from OpenAI's Codex appcast feed.
+	pkgver = 26.727.51351_launcher.35
+	pkgrel = 1
+	url = https://github.com/better-slop/codex-app-linux
+	install = codex-app-unofficial.install
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = nss
+	depends = xdg-utils
+	provides = codex-app-linux-bin
+	conflicts = codex-app-linux-bin
+	replaces = codex-app-linux-bin
+	source = codex-app-linux-26.727.51351-launcher.35-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.727.51351-launcher.35/codex-app-linux-26.727.51351-launcher.35-x64-linux-unpacked.tar.gz
+	source = generator
+	source = codex-app-linux-26.727.51351-launcher.35-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.727.51351-launcher.35/codex-app-linux-26.727.51351-launcher.35-x64.png
+	sha256sums = c39fea63fe4a5b7320a277c67b419a423517e84f6e1eba4c34a1400889407ffe
+	sha256sums = 1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0
+
+pkgname = codex-app-unofficial-bin
