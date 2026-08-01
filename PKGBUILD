@@ -1,6 +1,6 @@
 pkgname=samba-util-bin
-pkgver=3.5.1
-pkgrel=4
+pkgver=4.0.1
+pkgrel=5
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
 license=('MIT')
@@ -21,7 +21,7 @@ optdepends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.5/SAMBA-Util.tar.gz")
+source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.0/SAMBA-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
