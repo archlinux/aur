@@ -1,7 +1,7 @@
 # Maintainer: Joel Eapen <joelpeapen@gmail.com>
 pkgname='pickled-git'
 _pkgname='pickled'
-pkgver=r2.3edefe3
+pkgver=r1.dae1e1a
 pkgrel=1
 pkgdesc="lightweight colorpicker"
 arch=("x86_64")

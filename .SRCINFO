@@ -1,6 +1,6 @@
 pkgbase = pickled-git
 	pkgdesc = lightweight colorpicker
-	pkgver = r2.3edefe3
+	pkgver = r1.dae1e1a
 	pkgrel = 1
 	url = https://codeberg.org/j_ole/pickled
 	arch = x86_64
