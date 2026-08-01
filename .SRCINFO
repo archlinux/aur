@@ -1,0 +1,23 @@
+pkgbase = asciicast2webp-git
+	pkgdesc = Render asciicast as WebP
+	pkgver = r1.5c56c50
+	pkgrel = 1
+	url = https://git.janouch.name/p/asciicast2webp
+	arch = i686
+	arch = x86_64
+	license = 0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = ncurses
+	depends = libwebp
+	depends = jq
+	depends = libvterm
+	depends = cairo
+	provides = asciicast2webp
+	conflicts = asciicast2webp
+	options = zipman
+	source = git+https://git.janouch.name/p/asciicast2webp.git
+	md5sums = SKIP
+
+pkgname = asciicast2webp-git
