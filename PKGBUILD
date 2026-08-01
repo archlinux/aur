@@ -1,0 +1,62 @@
+# Maintainer: w568w <w568w at outlook dot com>
+
+_corever=0.1.1
+
+pkgname=fvs2-bin
+pkgver=0.9.0
+pkgrel=2
+pkgdesc='Standalone CLI for FVS v2'
+arch=('x86_64' 'aarch64')
+url='https://github.com/fvs-lab/fvs2'
+license=('MIT')
+depends=('glibc')
+makedepends=('go')
+source=(
+  "fvs2-bin-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  'resolver'
+  "core-${_corever}.tar.gz::https://github.com/fvs-lab/core/archive/refs/tags/v${_corever}.tar.gz"
+)
+sha256sums=('74aa67ab731c7a25da4a7858cbebdd2a87f361568977b19653651bf2b1979815'
+            '91b417276815752ab7608659b33d09d8d4b3e4d03303c2314685440808a52eb6')
+
+prepare() {
+  local builddir="$srcdir/fvs2-bin-$pkgver"
+
+  # fvs2 depends on core, which is a separate repository. 
+  # We need to symlink it into the source tree to build.
+  rm -f "$srcdir/core"
+  ln -s "core-${_corever}" "$srcdir/core"
+  cd "$builddir"
+
+  export GOMODCACHE="$srcdir/pkg/mod"
+  go mod download -modcacherw
+  mkdir -p build
+}
+
+build() {
+  sudo "$srcdir/resolver"
+  cd "$srcdir/fvs2-bin-$pkgver"
+
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOMODCACHE="$srcdir/pkg/mod"
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+
+  go build -ldflags='-linkmode external' -o "build/fvs2-bin" "./cmd/fvs2-bin"
+}
+
+check() {
+  cd "$srcdir/fvs2-bin-$pkgver"
+  "./build/fvs2-bin" --help >/dev/null
+}
+
+package() {
+  cd "$srcdir/fvs2-bin-$pkgver"
+
+  install -Dm755 "build/fvs2-bin" "$pkgdir/usr/bin/fvs2-bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/fvs2-bin/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/fvs2-bin/README.md"
+}
+
