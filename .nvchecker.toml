@@ -1,0 +1,5 @@
+[pho-bin]
+source = "github"
+github = "utkarsh261/pho"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,18 @@
+pkgbase = pho-bin
+	pkgdesc = TUI for Github Pull Requests
+	pkgver = 0.1.43
+	pkgrel = 1
+	url = https://github.com/utkarsh261/pho
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = github-cli
+	provides = pho
+	conflicts = pho
+	options = !strip
+	source_x86_64 = pho-x86_64-0.1.43.tgz::https://github.com/utkarsh261/pho/releases/download/v0.1.43/pho_0.1.43_linux_.amd64.tar.gz
+	sha256sums_x86_64 = 5caeb50d3882892d1d8eaffeb1a0d449ef4b0387d5d85acb7ef587f52a8c51a5
+	source_aarch64 = pho-aarch64-0.1.43.tgz::https://github.com/utkarsh261/pho/releases/download/v0.1.43/pho_0.1.43_linux_.arm64.tar.gz
+	sha256sums_aarch64 = a4d97d69c714228b02620ff2556c644fed744e2476fa24d9de23b45c629d7d8e
+
+pkgname = pho-bin
