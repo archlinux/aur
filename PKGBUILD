@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=hjkl-bin
 _pkgname=hjkl
-pkgver=0.39.1
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Vim-modal terminal editor: standalone TUI built on the hjkl engine. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ depends=('libxcb')
 
 source_x86_64=("hjkl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v${pkgver}/hjkl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("hjkl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v${pkgver}/hjkl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e74043ea3fd2d8f2a20961cfefb1a7afde4bcb504de0300c02e15683980041a4')
-sha256sums_aarch64=('506291f1b613443d2689109bea09e7ce59ecbfcd5e0562927910bb210fc22ef2')
+sha256sums_x86_64=('9100bbe5ca5db5a14f9f5e448562a03bd5541f83b91bae9464f455e738565c1d')
+sha256sums_aarch64=('825e2fb003f3762207a5edcb52213d8e06b4aaaa4ba80fb878e8a362d3a6119c')
 
 package() {
     install -Dm755 "$srcdir/hjkl" "$pkgdir/usr/bin/hjkl"
