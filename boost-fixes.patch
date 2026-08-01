@@ -1,0 +1,134 @@
+--- src/lib/utils/socket/socket.cpp	2026-02-01 16:49:06.763198126 +0100
++++ src/lib/utils/socket/socket.cpp	2026-02-01 17:42:22.747659184 +0100
+@@ -48,19 +48,19 @@
+                   std::chrono::milliseconds timeout) :
+          m_timeout(timeout), m_timer(m_io), m_tcp(m_io)
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+          check_timeout();
+
+          boost::asio::ip::tcp::resolver resolver(m_io);
+-         boost::asio::ip::tcp::resolver::query query(hostname, service);
+-         boost::asio::ip::tcp::resolver::iterator dns_iter = resolver.resolve(query);
++         const boost::asio::ip::tcp::resolver::results_type dns_iter =
++            resolver.resolve(std::string{hostname}, std::string{service});
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+
+          auto connect_cb = [&ec](const boost::system::error_code& e,
+-                                 boost::asio::ip::tcp::resolver::iterator) { ec = e; };
++                                 const boost::asio::ip::basic_resolver_iterator<boost::asio::ip::tcp>&) { ec = e; };
+
+-         boost::asio::async_connect(m_tcp, dns_iter, connect_cb);
++         boost::asio::async_connect(m_tcp, dns_iter.begin(), dns_iter.end(), connect_cb);
+
+          while(ec == boost::asio::error::would_block)
+             {
+@@ -75,7 +75,7 @@
+
+       void write(const uint8_t buf[], size_t len) override
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+
+@@ -92,7 +92,7 @@
+
+       size_t read(uint8_t buf[], size_t len) override
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+          size_t got = 0;
+@@ -115,7 +115,7 @@
+    private:
+       void check_timeout()
+          {
+-         if(m_tcp.is_open() && m_timer.expires_at() < std::chrono::system_clock::now())
++         if(m_tcp.is_open() && m_timer.expiry() < std::chrono::system_clock::now())
+             {
+             boost::system::error_code err;
+             m_tcp.close(err);
+@@ -125,7 +125,7 @@
+          }
+
+       const std::chrono::milliseconds m_timeout;
+-      boost::asio::io_service m_io;
++      boost::asio::io_context m_io;
+       boost::asio::system_timer m_timer;
+       boost::asio::ip::tcp::socket m_tcp;
+    };
+--- src/lib/utils/socket/socket_udp.cpp	2026-02-01 17:48:22.755111643 +0100
++++ src/lib/utils/socket/socket_udp.cpp	2026-02-01 17:52:20.093134090 +0100
+@@ -48,19 +48,19 @@
+                      std::chrono::microseconds timeout) :
+          m_timeout(timeout), m_timer(m_io), m_udp(m_io)
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+          check_timeout();
+
+          boost::asio::ip::udp::resolver resolver(m_io);
+-         boost::asio::ip::udp::resolver::query query(hostname, service);
+-         boost::asio::ip::udp::resolver::iterator dns_iter = resolver.resolve(query);
++         const boost::asio::ip::udp::resolver::results_type dns_iter =
++            resolver.resolve(std::string{hostname}, std::string{service});
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+
+          auto connect_cb = [&ec](const boost::system::error_code& e,
+-         boost::asio::ip::udp::resolver::iterator) { ec = e; };
++                                 const boost::asio::ip::basic_resolver_iterator<boost::asio::ip::udp>&) { ec = e; };
+
+-         boost::asio::async_connect(m_udp, dns_iter, connect_cb);
++         boost::asio::async_connect(m_udp, dns_iter.begin(), dns_iter.end(), connect_cb);
+
+          while(ec == boost::asio::error::would_block)
+             {
+@@ -75,7 +75,7 @@
+
+       void write(const uint8_t buf[], size_t len) override
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+
+@@ -95,7 +95,7 @@
+
+       size_t read(uint8_t buf[], size_t len) override
+          {
+-         m_timer.expires_from_now(m_timeout);
++         m_timer.expires_after(m_timeout);
+
+          boost::system::error_code ec = boost::asio::error::would_block;
+          size_t got = 0;
+@@ -121,7 +121,7 @@
+    private:
+       void check_timeout()
+          {
+-         if(m_udp.is_open() && m_timer.expires_at() < std::chrono::system_clock::now())
++         if(m_udp.is_open() && m_timer.expiry() < std::chrono::system_clock::now())
+             {
+             boost::system::error_code err;
+             m_udp.close(err);
+@@ -131,7 +131,7 @@
+          }
+
+       const std::chrono::microseconds m_timeout;
+-      boost::asio::io_service m_io;
++      boost::asio::io_context m_io;
+       boost::asio::system_timer m_timer;
+       boost::asio::ip::udp::socket m_udp;
+    };
+--- src/lib/utils/boost/info.txt	2026-02-01 21:44:22.006365347 +0100
++++ src/lib/utils/boost/info.txt	2026-02-01 21:44:35.567098178 +0100
+@@ -5,5 +5,4 @@
+ load_on vendor
+
+ <libs>
+-all -> boost_system
+ </libs>
