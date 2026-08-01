@@ -1,0 +1,22 @@
+pkgbase = hyprkeys-git-bin
+	pkgdesc = GTK explorer and editor for Hyprland keyboard shortcuts
+	pkgver = r5.gd632813
+	pkgrel = 1
+	url = https://github.com/olalbns/HyprKeys
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	provides = hyprkeys
+	conflicts = hyprkeys
+	source = hyprkeys-git-bin::git+https://github.com/olalbns/HyprKeys.git
+	source = generator
+	sha256sums = SKIP
+
+pkgname = hyprkeys-git-bin
