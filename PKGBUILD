@@ -1,7 +1,7 @@
 # Maintainer: Gilwiljam <gillbilljam@gmail.com>
 pkgname=rmg-k-bin
 _pkgname=rmg-k 
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Rosalie's Mupen GUI with the Kaillera netplay protocol"
 arch=('x86_64') 
@@ -12,7 +12,7 @@ provides=('rmg-k')
 source=("RMG-K-Portable-Linux64-v${pkgver}.AppImage::${url}/releases/download/v${pkgver}/RMG-K-Portable-Linux64-v${pkgver}.AppImage" 
 	"README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 	"LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-sha512sums=('444c813c2bcc5b73dca29a673dfd1a52357c7c5324584820b4c7ea3c231d4b6b902a5184468250963659dc993264448afee0258083083cb63b9385d8d908f189'
+sha512sums=('655ed752295449bd3fb85536fe7df63ef9895fd122ae91176440fd8cf75fb8204be1d44783f9faa3aaed3bf7810eab721717eec0bcab69068f0a499747f1c83d'
             'SKIP'
             'SKIP')
 
