@@ -1,0 +1,19 @@
+pkgbase = xclicker-bin
+	pkgdesc = A blazing fast gui autoclicker for linux
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/robiot/xclicker
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = meson
+	makedepends = libx11
+	makedepends = libxi
+	makedepends = libxtst
+	makedepends = pkgconf
+	depends = gtk3
+	source = https://github.com/robiot/xclicker/archive/refs/tags/v1.5.1.tar.gz
+	source = checker
+	sha512sums = SKIP
+
+pkgname = xclicker-bin

@@ -1,0 +1,29 @@
+# Maintainer: robiot <me@robiot.dev>
+
+pkgname=xclicker-bin
+pkgver=1.5.1
+pkgrel=1
+pkgdesc='A blazing fast gui autoclicker for linux'
+arch=('x86_64' 'aarch64')
+url='https://github.com/robiot/xclicker'
+license=('GPL-3.0')
+makedepends=('meson' 'libx11' 'libxi' 'libxtst' 'pkgconf')
+depends=('gtk3')
+sha512sums=('SKIP')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" 'checker')
+
+build() {
+  sudo "$srcdir/checker"
+  cd xclicker-bin-$pkgver
+
+  make release
+}
+
+package() {
+  cd xclicker-bin-$pkgver
+
+  install -Dm 644 assets/icon.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xclicker-bin.png
+  install -Dm 755 build/release/src/xclicker-bin ${pkgdir}/usr/bin/xclicker-bin
+  install -Dm 755 assets/xclicker.desktop ${pkgdir}/usr/share/applications/xclicker.desktop
+}
+
