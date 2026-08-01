@@ -3,7 +3,7 @@ pkgname=elan-bin
 _pkgname=elan
 _pkgname_caps=ELAN
 pkgver="7.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="A video and audio annotation tool"
 arch=('x86_64')
 url="https://tla.mpi.nl/tools/tla-tools/elan/"
@@ -33,7 +33,7 @@ source=("https://www.mpi.nl/tools/${_pkgname}/${_pkgname_caps}_${pkgver//\./\-}_
         "${_pkgname}_wrapper.sh")
 sha256sums=('ab0095ccb4dca8439d76da6cb14d22613c446d6edf021729ca454f65d9c77b94'
             '29952b1c1cc51afec11e9aaf119e65656199b8eaa41972854fe0b1871dfd0dcb'
-            '5b0b61111e94e09111c0eaff824d7c4fab04e462445e57197f9423c9371b7854')
+            'baf3fc09376cc59df4db7239cda6c1f23999d3414aa644ef29c7a7ae09211a62')
 options=(!debug)
 
 package() {
