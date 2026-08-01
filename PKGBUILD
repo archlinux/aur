@@ -1,7 +1,6 @@
 pkgname=rteval
 pkgver=3.12
-pkgrel=1
-gitcommit=8f8c40d7be4635e72ac54d42651d4f0d19dc3efd
+pkgrel=2
 pkgdesc="Evaluate performance of realtime Linux kernel on a particular hardware platform"
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval"
@@ -9,7 +8,7 @@ license=('GPL2')
 groups=('realtime')
 depends=('rt-tests' 'python-lxml' 'bc' 'cpio' 'libtraceevent' 'libtracefs' 'python-requests')
 makedepends=('wget')
-source=("git+https://git.kernel.org/pub/scm/utils/rteval/rteval.git#commit=${gitcommit}")
+source=("git+https://git.kernel.org/pub/scm/utils/rteval/rteval.git#commit=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
