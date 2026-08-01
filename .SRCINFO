@@ -1,6 +1,6 @@
 pkgbase = podman-tui-rs
 	pkgdesc = Podman-native terminal management UI written in Rust
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Hanserwei/podman-tui
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = podman-tui-rs
 	depends = glibc
 	depends = libgcc
 	depends = podman
-	provides = podman-tui=0.1.1
+	provides = podman-tui=0.2.0
 	conflicts = podman-tui
-	source = podman-tui-0.1.1.tar.gz::https://github.com/Hanserwei/podman-tui/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 23c034c5db56165effd9d0c685e08b94e85a272e90d566175830a171b7b01440
+	source = podman-tui-0.2.0.tar.gz::https://github.com/Hanserwei/podman-tui/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 21ed30e6aaceaf147d3587ce29ca9ce507f6c9206155e086a09c2f956e383d4e
 
 pkgname = podman-tui-rs

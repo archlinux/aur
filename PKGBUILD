@@ -2,7 +2,7 @@
 
 pkgname=podman-tui-rs
 _pkgname=podman-tui
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Podman-native terminal management UI written in Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=("podman-tui=${pkgver}")
 conflicts=('podman-tui')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('23c034c5db56165effd9d0c685e08b94e85a272e90d566175830a171b7b01440')
+sha256sums=('21ed30e6aaceaf147d3587ce29ca9ce507f6c9206155e086a09c2f956e383d4e')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
