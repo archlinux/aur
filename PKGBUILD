@@ -3,7 +3,7 @@
 _name=iris
 pkgname=${_name}-autocomplete
 pkgver=0.4.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Shell auto-completion tool that works like code editor''s IntelliSense.'
 url="https://github.com/versenilvis/${_name}"
 license=('0BSD')
@@ -32,6 +32,12 @@ build() {
 		-X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" \
 		-o "${srcdir}/${_name}" \
 		"./cmd/${_name}"
+
+	cd "${srcdir}"
+	mkdir -p 'completions'
+	./"${_name}" completion zsh > "completions/${_name}.zsh"
+	./"${_name}" completion bash > "completions/${_name}.bash"
+	./"${_name}" completion fish > "completions/${_name}.fish"
 }
 
 #check() {
@@ -43,5 +49,11 @@ build() {
 package() {
 	optdepends+=('zsh' 'bash' 'fish')
 
-	install -Dm755 "${_name}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${_name}" -t "${pkgdir}/usr/bin"
+
+	install -Dm644 "${_srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+	install -Dm644 "completions/${_name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_name}"
+	install -Dm644 "completions/${_name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_name}"
+	install -Dm644 "completions/${_name}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_name}.fish"
 }
