@@ -4,8 +4,6 @@
 ## options
 : ${_build_level:=1}
 
-: ${_cksum:=a7a7e3d2ae9d95e74197223a8d4eb5f6be7aac21b6e6de27e9685d001c1f8cb0}
-
 _pkgtype="-vfio-lts"
 [[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
@@ -14,7 +12,7 @@ _pkgtype="-vfio-lts"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.39
+pkgver=6.18.41
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -68,7 +66,7 @@ source=(
   1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 sha256sums=(
-  "${_cksum:?}"
+  '17fc72f0f8d4a8a8633a5d20085f5d9c5a5ec51ee896a0b7ae1ec25da31273ea' # cksum
   'SKIP'
   'SKIP'
   '0bb3b4cda53db35c10e0a34defb5f52f3c91895d7b4a9f93b3f40f5401a71e02'
