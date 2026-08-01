@@ -4,7 +4,7 @@
 
 pkgname=lunar-client-bin
 _pkgname=lunarclient
-pkgver=3.7.12
+pkgver=3.7.13
 pkgrel=1
 pkgdesc="PvP modpack for all modern versions of Minecraft (upstream AppImage)"
 arch=('x86_64')
@@ -15,9 +15,9 @@ provides=('lunar-client' 'lunarclient')
 conflicts=('lunar-client' 'lunarclient')
 options=('!strip' '!debug')
 # maintained by CI together with pkgver (upstream varies the filename suffix)
-_appimage="Lunar%20Client-3.7.12-ow.AppImage"
+_appimage="Lunar%20Client-3.7.13-ow.AppImage"
 source=("${_pkgname}-${pkgver}.AppImage::https://launcherupdates.lunarclientcdn.com/${_appimage}")
-sha256sums=('7364e876a59291d8b0b7d6c0efdacb988617e35e054e9c21a5814d071710bf98')
+sha256sums=('bd818ee8b7893c79a6a6e642061148beb395af9c0c8614b93c908c784bab69af')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}.AppImage"
