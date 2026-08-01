@@ -1,14 +1,11 @@
 pkgbase = zl-speceq-bin
 	pkgdesc = Dynamic spectrum equalizer audio plugin.
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zl-audio.github.io/plugins/zlspeceq/
 	arch = x86_64
 	groups = pro-audio
 	license = AGPL-3.0-only
-	makedepends = cmake
-	makedepends = clang
-	makedepends = ninja
 	depends = alsa-lib
 	depends = libx11
 	depends = libxcomposite

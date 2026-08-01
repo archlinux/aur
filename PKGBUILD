@@ -3,7 +3,7 @@
 pkgbase='zl-speceq-bin'
 pkgname=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin' 'zl-speceq-bin')
 pkgver='0.0.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='Dynamic spectrum equalizer audio plugin.'
 arch=('x86_64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
@@ -21,11 +21,6 @@ depends=(
   'freetype2'
   'fontconfig'
   'libxi'
-)
-makedepends=(
-  'cmake'
-  'clang'
-  'ninja'
 )
 source=("https://github.com/ZL-Audio/ZLSpectrumEqualizer/releases/download/0.0.1/ZL.Spectrum.Equalizer-${pkgver}-Linux-x86-64-AVX2.zip")
 sha256sums=('79cca48c3de6fa5c0ae8b819b210b0342cc1700b1526d65d04d7dc885ad40e13')
