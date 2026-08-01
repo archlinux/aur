@@ -1,0 +1,13 @@
+pkgbase = http-parser-bin
+	pkgdesc = Parser for HTTP Request/Response written in C
+	pkgver = 2.9.4
+	pkgrel = 2
+	url = https://github.com/nodejs/http-parser
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/nodejs/http-parser/archive/v2.9.4/http-parser-bin-2.9.4.tar.gz
+	source = tagger
+	sha256sums = 467b9e30fd0979ee301065e70f637d525c28193449e1b13fbcb1b1fab3ad224f
+
+pkgname = http-parser-bin
