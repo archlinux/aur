@@ -1,0 +1,24 @@
+post_install() {
+  cat <<'EOF'
+rsdm installed.
+
+Before enabling the service, review:
+  /etc/rsdm.toml
+  /usr/lib/systemd/system/rsdm.service
+  /etc/pam.d/rsdm
+
+Enable only when the configured TTY and session command are correct:
+  sudo systemctl enable rsdm.service
+  sudo systemctl start rsdm.service
+
+Logs:
+  rsdm logs
+
+Optional idle locking (after setting [idle].enable = true):
+  systemctl --user enable --now rsdm-idle.service
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
