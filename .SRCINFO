@@ -1,6 +1,6 @@
 pkgbase = libplayerone
 	pkgdesc = INDI driver for products manufactured by playerone
-	pkgver = 2.2.3.1
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libplayerone
 	depends = systemd-libs
 	depends = gcc-libs
 	depends = libusb
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.3.1.tar.gz
-	sha256sums = bb2b25b09f57be7c1aaad6226802b9f0083b415b93046c7fcbde55237410134a
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.4.tar.gz
+	sha256sums = bb1efc5a6a7a00ce34dd5f3817c877d5537050550be8f8654aaa3d3ec08cc5ef
 
 pkgname = libplayerone
