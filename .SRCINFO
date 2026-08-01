@@ -1,0 +1,18 @@
+pkgbase = worktree-aid
+	pkgdesc = Conveniently add, remove, and change directories for git worktrees
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bulletmark/worktree-aid
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python>=3.10
+	depends = python-coolname
+	source = worktree-aid-1.0.tar.gz::https://github.com/bulletmark/worktree-aid/archive/1.0.tar.gz
+	sha1sums = 461bc8012dba7c529b98d613db39d2c31a1f9fd2
+
+pkgname = worktree-aid
