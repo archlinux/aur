@@ -2,7 +2,7 @@
 # Maintainer: Janne Keipert <jabbekeipert@gmail.com>
 
 pkgname='wharf-tui-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Keyboard-driven terminal SSH client with a local-first encrypted vault'
 url='https://wharf.jannekeipert.de'
@@ -13,10 +13,10 @@ conflicts=('wharf')
 optdepends=('openssh: ssh-agent support and ~/.ssh/config import')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Janne6565/wharf-tui/releases/download/v${pkgver}/wharf_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d28ce16db0808d454338802ca9be4b45c4e9a59bbc3c3dbe9dfd3890e2bcc0de')
+sha256sums_aarch64=('adbd60c6699ab27cabac1da86d5d8ab95e7bb446cd74854802cc6ccf1e285c06')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Janne6565/wharf-tui/releases/download/v${pkgver}/wharf_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('17a12cf626a96af2ef7ba3721e432c5c9f2c874e117169f824ab85a32b0454b1')
+sha256sums_x86_64=('bd23a29ee5b444ec175ccead06456a90808d5ce466e46b844372d91a000b590c')
 
 package() {
   install -Dm755 "./wharf" "${pkgdir}/usr/bin/wharf"
