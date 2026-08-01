@@ -1,0 +1,4 @@
+[libkolabxml]
+source = 'regex'
+url = 'https://git.kolab.org/diffusion/LKX/tags/master/'
+regex = 'libkolabxml-([\d.]+)'

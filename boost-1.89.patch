@@ -1,0 +1,11 @@
+--- LKX/CMakeLists.txt.orig	2025-10-15 18:58:56.760662382 +0200
++++ LKX/CMakeLists.txt	2025-10-15 18:59:08.915772329 +0200
+@@ -92,7 +92,7 @@
+ configure_file(libkolabxml-version.h.cmake "${CMAKE_BINARY_DIR}/libkolabxml-version.h" @ONLY)
+ 
+ set(Boost_USE_MULTITHREADED ON)
+-find_package(Boost REQUIRED COMPONENTS thread system)
++find_package(Boost REQUIRED COMPONENTS thread)
+ if (Boost_FOUND)
+     message("Found boost in ${Boost_INCLUDE_DIRS}")
+ endif (Boost_FOUND)

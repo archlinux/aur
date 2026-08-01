@@ -1,0 +1,13 @@
+diff --git a/src/shared_conversions.h b/src/shared_conversions.h
+index 5fee33e..d6f423a 100644
+--- a/src/shared_conversions.h
++++ b/src/shared_conversions.h
+@@ -29,7 +29,7 @@ namespace Kolab {
+ typedef boost::shared_ptr<cDateTime> cDateTimePtr;
+ 
+ typedef ::xsd::cxx::tree::type type;
+-#if (XSD_INT_VERSION >= 4000000L)
++#if (LIBXSD_VERSION >= 4000000L)
+ typedef ::xsd::cxx::tree::simple_type< char, type > simple_type;
+ #else
+ typedef ::xsd::cxx::tree::simple_type< type > simple_type;
