@@ -1,0 +1,31 @@
+pkgbase = pandoc
+	pkgdesc = Conversion between documentation formats
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://pandoc.org
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	optdepends = pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter
+	optdepends = texlive-context: for pdf output using context engine
+	optdepends = groff: for pdf output using pdfroff engine
+	optdepends = python-weasyprint: for pdf output using weasyprint engine
+	optdepends = typst: for pdf output using typst engine
+	optdepends = tectonic: for pdf output using tectonic engine
+	optdepends = texlive-fontsrecommended: for pdf output using latex or xelatex engines
+	optdepends = texlive-latex: for pdf output using pdflatex engine
+	optdepends = texlive-xetex: for pdf output using xelatex engine
+	provides = pandoc=3.10.1
+	provides = pandoc-cli=3.10.1
+	conflicts = pandoc-cli
+	options = !debug
+	options = !strip
+	source = pandoc-3.10.1.tar.gz::https://github.com/jgm/pandoc/archive/3.10.1.tar.gz
+	source = bundler
+	sha256sums = faee98f42ed1592b2feb8da7fdfa87a23b679ca27ff883e06030f89c25c91ba9
+	source_x86_64 = https://github.com/jgm/pandoc/releases/download/3.10.1/pandoc-3.10.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 72948bf5784f560d5ad1876709daca27e0667f262da727bb33f77b58e52df2f5
+	source_aarch64 = https://github.com/jgm/pandoc/releases/download/3.10.1/pandoc-3.10.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = cd3963da375793a4804c65ae538b4f7b9c23f87cac7f6c74a1cf5e2fff7e8d59
+
+pkgname = pandoc
