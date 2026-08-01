@@ -16,7 +16,7 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('MIT')
+license=('Apache-2.0')
 
 provides=("${_appname}")
 conflicts=("${_appname}"{-cpu,-gpu})
