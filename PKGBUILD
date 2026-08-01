@@ -16,9 +16,9 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz"
-        'perl-string-escape-0001-backlash.patch'
-        'perl-string-escape-0002-incorrect-escape.patch'
-        'perl-string-escape-0003-elide-size.patch')
+        '0001-backlash.patch'
+        '0002-incorrect-escape.patch'
+        '0003-elide-size.patch')
 b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14'
         '0aa130763b6c25bf6161ecef34265b13c3713ef4ac38a6ed90c4836f6292e1b3ac3f95eef525a4798d34af378ab5676e1cc80cb177be7acc8410c2639a6e97c4'
         '6d8689462423d22cb31ef2600c26489c225eb77f739ee291e6a9eab7d5bde8a9b42db8e5eae4b22757a388ab5f18fa25f1e68e5369e4fdf9ddb6bcdbe13e61dc'
@@ -27,9 +27,9 @@ b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1
 prepare() {
   cd "String-Escape-${pkgver}"
 
-  patch -t -Np1 -i ../perl-string-escape-0001-backlash.patch
-  patch -t -Np1 -i ../perl-string-escape-0002-incorrect-escape.patch
-  patch -t -Np1 -i ../perl-string-escape-0003-elide-size.patch
+  patch -t -Np1 -i ../0001-backlash.patch
+  patch -t -Np1 -i ../0002-incorrect-escape.patch
+  patch -t -Np1 -i ../0003-elide-size.patch
 }
 
 build() {
