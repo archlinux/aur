@@ -7,9 +7,9 @@ _tray_behavior_notice() {
 }
 
 post_install() {
-  [[ $1 == '26.727.40816-2' ]] && _tray_behavior_notice
+  [[ $1 == '26.727.51351-1' ]] && _tray_behavior_notice
 }
 
 post_upgrade() {
-  [[ $1 == '26.727.40816-2' ]] && _tray_behavior_notice
+  [[ $1 == '26.727.51351-1' ]] && _tray_behavior_notice
 }
