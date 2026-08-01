@@ -1,0 +1,5 @@
+[repofleet-bin]
+source = "github"
+github = "mehranzand/repofleet"
+use_latest_release = true
+prefix = "v"

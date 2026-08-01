@@ -1,0 +1,18 @@
+pkgbase = repofleet-bin
+	pkgdesc = An issue-centered CLI tool for organizing Git workflows
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/mehranzand/repofleet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = rf
+	conflicts = repofleet
+	options = !strip
+	source_x86_64 = repofleet-x86_64-0.7.2.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.2/repofleet_linux_amd64.tar.gz
+	sha256sums_x86_64 = cfae765d5ab567ad623edcf48b63e7a166f1242ca7bdff07a09bfb8645d6ce66
+	source_aarch64 = repofleet-aarch64-0.7.2.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.2/repofleet_linux_arm64.tar.gz
+	sha256sums_aarch64 = a20a1da77d6f07b6173ee47c3e08e821d15aa1a9237093ca5c512bcbe47c9412
+
+pkgname = repofleet-bin
