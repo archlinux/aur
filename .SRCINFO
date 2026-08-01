@@ -1,21 +1,21 @@
 pkgbase = qualcomm-software-center
 	pkgdesc = Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests
-	pkgver = 1.26.4
+	pkgver = 1.28.2
 	pkgrel = 1
 	url = https://www.qualcomm.com/developer/software/qualcomm-software-center
 	install = qualcomm-software-center.install
 	arch = x86_64
 	license = custom
-	depends = electron32
+	depends = electron41
 	depends = hicolor-icon-theme
 	provides = qualcomm-software-center
 	options = !strip
 	options = !emptydirs
-	source = https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/1.26.4/QualcommSoftwareCenter1.26.4.Linux-x86.deb
+	source = https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/1.28.2/QualcommSoftwareCenter1.28.2.Linux-x86.deb
 	source = qualcomm-software-center.sh
 	source = qualcomm-software-center.install
-	sha256sums = b10cb470c94b6e853725ff2f07ec6e194c7707dcc8523c6c0be59f93c752bc6e
-	sha256sums = f877241c7daeb0e8f8f21fe4fa858479d8aabdd88aaf1e8ba8a3e8e93e72a933
+	sha256sums = dbce860cd11ac3e190a5cacb3612a714e91198e97a737a2d146803cbb59a727d
+	sha256sums = e283d6b9e441b9ccefe986582201b1608180be379af7b519f8aca02fbf330076
 	sha256sums = 9b58edaa2f2afd61a52b8145facd4cb793481edaf5e4d9f9dd8093a099b5822b
 
 pkgname = qualcomm-software-center

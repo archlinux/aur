@@ -40,7 +40,7 @@ fi
 cd "${_APPDIR}"
 
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron32 "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@"
+    exec electron41 "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@"
 else
-    exec electron32 "${_RUNNAME}" "${_OPTIONS}"  "${flags[@]}" "$@"
+    exec electron41 "${_RUNNAME}" "${_OPTIONS}"  "${flags[@]}" "$@"
 fi
