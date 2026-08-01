@@ -2,11 +2,11 @@
 pkgname=colony-git
 _pkgname=colony
 pkgver=r0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Application launcher for the Project-Colony ecosystem (git HEAD)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
-license=('MIT')
+license=('GPL-3.0-or-later')
 # makepkg's `lto` option injects -flto=auto into CFLAGS; ring's C objects then
 # carry GCC LTO bitcode that rust-lld (default linker since Rust 1.90) cannot
 # read, and the final link dies with `undefined symbol: ring_core_*`.
