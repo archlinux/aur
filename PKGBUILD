@@ -6,7 +6,7 @@
 # Contributors: CodeImp
 
 pkgname=veeam
-pkgver=13.0.2.2
+pkgver=13.1.0.252
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=(x86_64)
@@ -16,8 +16,8 @@ license=(custom:veeam)
 depends=(ncurses lvm2 fuse mlocate veeamblksnap-dkms)
 source=("https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-$pkgver-1.el10.x86_64.rpm"
         "https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-libs-$pkgver-1.x86_64.rpm")
-sha256sums=('1259c6de3dd607e12eaf0288f88d5fb85d63087b44651c6fef38605b976454fa'
-            '353fbb3058ad4fed43894e7b8ecb9c0ab3ad720ab98706794160bea5de478245')
+sha256sums=('fcc8dbdcd1882b7dae0792a7731fb9b34b50d2463c50c20e590875260da3ba48'
+            'ed628e86d54f3cd5510db013940a39ad77c87ab285bd2f9591081e1281cd117b')
 noextract=("veeam-$pkgver-1.el10.x86_64.rpm"
            "veeam-libs-$pkgver-1.x86_64.rpm")
 backup=('etc/veeam/veeam.ini'
@@ -29,8 +29,8 @@ package() {
   bsdtar -xf "$pkgname-$pkgver-1.el10.x86_64.rpm" -C "$pkgdir" -s /sbin/bin/ -s '|lib/systemd|usr/lib/systemd|'
   bsdtar -xf "$pkgname-libs-$pkgver-1.x86_64.rpm" -C "$pkgdir" -s /sbin/bin/ -s '|lib/systemd|usr/lib/systemd|'
 
-  sed -i -e 's|# .include fipsmodule.cnf|.include /opt/veeam/veeamagentforlinux/openssl3/3.0.0/ssl/fipsmodule.cnf|' \
-      "$pkgdir"/opt/veeam/veeamagentforlinux/openssl3/3.0.0/ssl/openssl.cnf
+  sed -i -e 's|# .include fipsmodule.cnf|.include /opt/veeam/veeamagentforlinux/openssl_fips_redistributable/3.1.2/ssl/fipsmodule.cnf|' \
+      "$pkgdir"/opt/veeam/veeamagentforlinux/openssl_fips_redistributable/3.1.2/ssl/openssl.cnf
 
   sed -i -e 's|/var/run|/run|' -e 's|/sbin|/bin|' "$pkgdir"/usr/lib/systemd/system/veeamservice.service
 

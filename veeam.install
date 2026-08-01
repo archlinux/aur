@@ -1,3 +1,21 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+_install_veeam_fips_module() {
+    local _openssl_path=/opt/veeam/veeamagentforlinux/openssl_fips_redistributable/3.1.2
+
+    msg_blue "Installing OpenSSL FIPS module..."
+
+    "$_openssl_path/bin/openssl" fipsinstall \
+        -quiet \
+        -out "$_openssl_path/ssl/fipsmodule.cnf" \
+        -module "$_openssl_path/lib/ossl-modules/fips.so"
+}
+
 pre_install() {
     echo "pre install"
     if ! getent group veeam >/dev/null; then
@@ -11,9 +29,7 @@ pre_install() {
 
 post_install() {
     echo "post install"
-    openssl fipsinstall \
-        -out /opt/veeam/veeamagentforlinux/openssl3/3.0.0/ssl/fipsmodule.cnf \
-        -module /opt/veeam/veeamagentforlinux/openssl3/3.0.0/lib/ossl-modules/fips.so
+    _install_veeam_fips_module
     systemctl daemon-reload
     systemctl enable veeamservice.service
     systemctl restart veeamservice.service
@@ -22,9 +38,7 @@ post_install() {
 
 post_upgrade() {
     echo "post upgrade"
-    openssl fipsinstall \
-        -out /opt/veeam/veeamagentforlinux/openssl3/3.0.0/ssl/fipsmodule.cnf \
-        -module /opt/veeam/veeamagentforlinux/openssl3/3.0.0/lib/ossl-modules/fips.so
+    _install_veeam_fips_module
     systemctl daemon-reload
     systemctl restart veeamservice.service
     echo "."
