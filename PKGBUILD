@@ -3,12 +3,13 @@
 
 pkgname=chatgpt-desktop-bin
 pkgver=26.727.40816
-pkgrel=1
+pkgrel=2
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
 license=('custom')
 options=('!strip' '!debug')
+install="${pkgname}.install"
 provides=('openai-codex-desktop')
 conflicts=('openai-codex-desktop')
 replaces=('openai-codex-desktop')
@@ -36,10 +37,8 @@ source=(
   'chatgpt-desktop.sh'
   'ChatGPT.desktop'
   'asar-tools.mjs'
-  'patch-linux-desktop-name.mjs'
+  'patch-linux-runtime.mjs'
   'patch-linux-open-targets.mjs'
-  'patch-linux-opaque-bg.mjs'
-  'patch-linux-tooltip-placement.mjs'
   'patch-linux-window-chrome.mjs'
 )
 
@@ -54,14 +53,12 @@ sha256sums=('fdbede9b8a28b5bf3bbf1213fa04291724faa6ed2d1d61bb04853bbdfebce219'
             'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
             '821009f9c1830050d894aef9e61906cb0a537b2000b2d9bbed9985fff1d5e0d0'
-            '5f876f3ee21fd728dad487a79fc9c3e460b759515651a3ef16da1b18885b082c'
+            '04a5f786a2389eb408b2be71ce0fe1cb0052e4820e32462af9ccb19c76cdff6e'
             '5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d'
             '6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56'
-            'edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c'
+            'ec3657bd7e40acd1a267fb5b5b4328af91799e33f9242bc41cd970027ef04e38'
             '5808061449ca8026cc387e8efc2c79f26ffba746c9f326c92162bb573c1f6e43'
-            '49ca13daf940980a03179d7d12d45f950df4f033da2089a39d8e3fc4aadc99c7'
-            '2ca5f140a91e340266ea663b31cbd197d094a55973b413cb56dcdb88115a07c5'
-            'ffedd607ffdcc2432a905cd7e803f6c16598e581b2c8a0211194e73e15c48ab8')
+            '330b6e09ba8fa8d9cc02fc83b85ed300381a4c8c0341e1eca52adc4f5398de1b')
 
 prepare() {
   cd "${srcdir}"
@@ -151,15 +148,14 @@ prepare() {
     -delete
   find app-extracted -path '*/prebuilds/*' -type f -name '*musl*.node' -delete
 
-  node "${srcdir}/patch-linux-desktop-name.mjs" app-extracted
+  node "${srcdir}/patch-linux-runtime.mjs" app-extracted
   node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
-  node "${srcdir}/patch-linux-opaque-bg.mjs" app-extracted
-  node "${srcdir}/patch-linux-tooltip-placement.mjs" app-extracted
   node "${srcdir}/patch-linux-window-chrome.mjs" app-extracted
 
   node "${srcdir}/asar-tools.mjs" pack app-extracted app.asar app.asar.unpacked
 
-  magick "${resources_dir}/icon-chatgpt.png" -resize 512x512 icon/chatgpt-desktop.png
+  cp "${resources_dir}/icon-chatgpt.png" icon/icon-chatgpt.png
+  magick icon/icon-chatgpt.png -resize 512x512 icon/chatgpt-desktop.png
 }
 
 package() {
@@ -167,6 +163,9 @@ package() {
 
   install -Dm644 app.asar \
     "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
+
+  install -Dm644 icon/icon-chatgpt.png \
+    "${pkgdir}/usr/lib/${pkgname}/resources/icon-chatgpt.png"
 
   if [[ -d app.asar.unpacked ]]; then
     cp -a --no-preserve=ownership app.asar.unpacked \

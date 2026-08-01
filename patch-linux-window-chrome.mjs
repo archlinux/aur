@@ -2,7 +2,9 @@
 // SPDX-FileCopyrightText: 2026 Arch Linux Contributors
 // SPDX-License-Identifier: 0BSD
 //
-// Patches the Codex desktop app to integrate its window chrome on Linux.
+// Patches the Codex desktop app to integrate its complete window surface on
+// Linux: opaque backgrounds, custom chrome, native controls, menus, and
+// titlebar tooltip placement.
 //
 // The packaged app is built for macOS and Windows-style custom chrome. On KDE,
 // Electron's default Linux frame adds a native title bar above the app chrome,
@@ -17,6 +19,7 @@ import { join } from "node:path";
 const TAG = "patch-linux-window-chrome";
 const appRoot = process.argv[2] ?? "app-extracted";
 const buildRoot = join(appRoot, ".vite", "build");
+const webviewAssets = join(appRoot, "webview", "assets");
 
 function fail(message) {
   console.error(`${TAG}: ${message}`);
@@ -59,6 +62,82 @@ function replaceRegex(source, regex, replacement, alreadyMarker, description) {
   return { source: source.replace(regex, replacement), patched: true };
 }
 
+function replaceOptionalRegex(source, regex, replacement, alreadyRegex, description) {
+  const matches = [...source.matchAll(regex)];
+  if (matches.length === 0) {
+    if (alreadyRegex.test(source)) {
+      console.log(`${TAG}: ${description} already patched`);
+      return { source, matched: true, patched: false };
+    }
+    return { source, matched: false, patched: false };
+  }
+  if (matches.length !== 1) {
+    fail(`expected one ${description}, found ${matches.length}`);
+  }
+  console.log(`${TAG}: patched ${description}`);
+  return { source: source.replace(regex, replacement), matched: true, patched: true };
+}
+
+function patchLegacyBackgroundFunction(source) {
+  const backgroundFunction = new RegExp(
+    "function\\s+([A-Za-z_$][\\w$]*)\\(" +
+      "\\{platform:([A-Za-z_$][\\w$]*)," +
+      "appearance:([A-Za-z_$][\\w$]*)," +
+      "opaqueWindowsEnabled:([A-Za-z_$][\\w$]*)," +
+      "prefersDarkColors:([A-Za-z_$][\\w$]*)\\}\\)" +
+      "\\{return\\s*\\4&&!([A-Za-z_$][\\w$]*)\\(\\3\\)&&" +
+      "\\(\\2===`darwin`\\|\\|\\2===`win32`\\)" +
+      "\\?\\{backgroundColor:\\5\\?([A-Za-z_$][\\w$]*):([A-Za-z_$][\\w$]*)," +
+      "backgroundMaterial:\\2===`win32`\\?`none`:null\\}" +
+      ":(\\2===`win32`&&!\\6\\(\\3\\)\\?" +
+      "\\{backgroundColor:([A-Za-z_$][\\w$]*)," +
+      "backgroundMaterial:`mica`\\})" +
+      ":\\{backgroundColor:\\10,backgroundMaterial:null\\}\\}",
+  );
+  const match = source.match(backgroundFunction);
+  if (!match) {
+    return { source, matched: false };
+  }
+
+  const [fullMatch, , platform, appearance, , darkMode, predicate, dark, light, win32Branch] =
+    match;
+  const linuxBranch =
+    `${platform}===\`linux\`&&!${predicate}(${appearance})` +
+    `?{backgroundColor:${darkMode}?${dark}:${light},backgroundMaterial:null}:`;
+  return {
+    source: source.replace(fullMatch, fullMatch.replace(win32Branch, `${linuxBranch}${win32Branch}`)),
+    matched: true,
+  };
+}
+
+function patchOpaqueSurfacePredicates(source) {
+  let matchedAny = false;
+  let patchedAny = false;
+  let result = replaceOptionalRegex(
+    source,
+    /function ([A-Za-z_$][\w$]*)\(\{appearance:([A-Za-z_$][\w$]*),opaqueWindowsEnabled:([A-Za-z_$][\w$]*),platform:([A-Za-z_$][\w$]*)\}\)\{return \3&&!([A-Za-z_$][\w$]*)\(\2\)&&\(\4===`darwin`\|\|\4===`win32`\)\}/g,
+    "function $1({appearance:$2,opaqueWindowsEnabled:$3,platform:$4}){return $3&&!$5($2)&&($4===`darwin`||$4===`win32`||$4===`linux`)}",
+    /function [A-Za-z_$][\w$]*\(\{appearance:[A-Za-z_$][\w$]*,opaqueWindowsEnabled:[A-Za-z_$][\w$]*,platform:[A-Za-z_$][\w$]*\}\)\{return [A-Za-z_$][\w$]*&&![A-Za-z_$][\w$]*\([A-Za-z_$][\w$]*\)&&\([A-Za-z_$][\w$]*===`darwin`\|\|[A-Za-z_$][\w$]*===`win32`\|\|[A-Za-z_$][\w$]*===`linux`\)\}/,
+    "always-opaque Linux surface predicate",
+  );
+  source = result.source;
+  matchedAny ||= result.matched;
+  patchedAny ||= result.patched;
+
+  result = replaceOptionalRegex(
+    source,
+    /function ([A-Za-z_$][\w$]*)\(\{appearance:([A-Za-z_$][\w$]*),isFocused:([A-Za-z_$][\w$]*),platform:([A-Za-z_$][\w$]*)\}\)\{return!\3&&!([A-Za-z_$][\w$]*)\(\2\)&&\(\4===`darwin`\|\|\4===`win32`\)\}/g,
+    "function $1({appearance:$2,isFocused:$3,platform:$4}){return!$3&&!$5($2)&&($4===`darwin`||$4===`win32`||$4===`linux`)}",
+    /function [A-Za-z_$][\w$]*\(\{appearance:[A-Za-z_$][\w$]*,isFocused:[A-Za-z_$][\w$]*,platform:[A-Za-z_$][\w$]*\}\)\{return![A-Za-z_$][\w$]*&&![A-Za-z_$][\w$]*\([A-Za-z_$][\w$]*\)&&\([A-Za-z_$][\w$]*===`darwin`\|\|[A-Za-z_$][\w$]*===`win32`\|\|[A-Za-z_$][\w$]*===`linux`\)\}/,
+    "unfocused opaque Linux surface predicate",
+  );
+  source = result.source;
+  matchedAny ||= result.matched;
+  patchedAny ||= result.patched;
+
+  return { source, matched: matchedAny, patched: patchedAny };
+}
+
 if (!existsSync(buildRoot) || !statSync(buildRoot).isDirectory()) {
   fail(`could not find Vite build directory: ${buildRoot}`);
 }
@@ -75,7 +154,28 @@ const mainFile = mainFiles[0];
 let source = readFileSync(mainFile, "utf8");
 let patchedAny = false;
 
-// 1. Make the primary Linux app window use app-controlled chrome so KDE does
+// 1. Use opaque Linux surfaces. The macOS bundle otherwise supplies
+// transparent backgrounds intended for vibrancy and mica effects, which can
+// produce compositor artifacts on Wayland.
+{
+  const legacyResult = patchLegacyBackgroundFunction(source);
+  if (legacyResult.matched) {
+    source = legacyResult.source;
+    patchedAny = true;
+    console.log(`${TAG}: patched legacy Linux background function`);
+  } else if (source.includes("===`linux`&&!") && source.includes("backgroundMaterial:null}:")) {
+    console.log(`${TAG}: legacy Linux background function already patched`);
+  } else {
+    const surfaceResult = patchOpaqueSurfacePredicates(source);
+    if (!surfaceResult.matched) {
+      fail("could not find BrowserWindow background function or opaque surface predicates");
+    }
+    source = surfaceResult.source;
+    patchedAny ||= surfaceResult.patched;
+  }
+}
+
+// 2. Make the primary Linux app window use app-controlled chrome so KDE does
 // not add a native title bar above the app's own chrome. Older bundles need an
 // explicit frameless Linux branch; newer bundles already include Linux in the
 // hidden titlebar branch.
@@ -103,7 +203,7 @@ let patchedAny = false;
   }
 }
 
-// 2. Hide/remove per-window Electron menus for Linux windows created through
+// 3. Hide/remove per-window Electron menus for Linux windows created through
 // the shared window manager.
 {
   const result = replaceExact(
@@ -137,7 +237,7 @@ let patchedAny = false;
   }
 }
 
-// 3. Keep application menu refreshes from recreating a visible Linux menu bar.
+// 4. Keep application menu refreshes from recreating a visible Linux menu bar.
 // Do not remove the per-window menu here: Electron registers Linux menu-item
 // accelerators through that menu, even while its menu bar is hidden.
 {
@@ -168,7 +268,7 @@ let patchedAny = false;
   }
 }
 
-// 4. Browser comment popup windows already hide the menu bar; remove the menu
+// 5. Browser comment popup windows already hide the menu bar; remove the menu
 // itself on Linux too.
 {
   const result = replaceExact(
@@ -182,7 +282,7 @@ let patchedAny = false;
   patchedAny ||= result.patched;
 }
 
-// 5. Match the minimize, maximize, and close controls to the app chrome theme.
+// 6. Match the minimize, maximize, and close controls to the app chrome theme.
 // The upstream overlay uses a transparent background and derives only the
 // symbol color from nativeTheme. That leaves Linux compositors with controls
 // whose background does not match custom app themes. Read the active chrome
@@ -246,4 +346,102 @@ if (patchedAny) {
   console.log(`${TAG}: patched ${mainFile}`);
 } else {
   console.log(`${TAG}: ${mainFile} already patched`);
+}
+
+if (!existsSync(webviewAssets) || !statSync(webviewAssets).isDirectory()) {
+  fail(`could not find webview assets directory: ${webviewAssets}`);
+}
+
+const webviewJsFiles = readdirSync(webviewAssets, { withFileTypes: true })
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".js"))
+  .map((entry) => join(webviewAssets, entry.name));
+
+// 7. Keep the renderer theme opaque as well as the native BrowserWindow.
+{
+  const themeFiles = webviewJsFiles.filter((file) =>
+    readFileSync(file, "utf8").includes("opaqueWindows:!1"),
+  );
+  let themePatched = 0;
+  for (const file of themeFiles) {
+    const original = readFileSync(file, "utf8");
+    const updated = original.replaceAll("opaqueWindows:!1", "opaqueWindows:!0");
+    if (updated !== original) {
+      writeFileSync(file, updated);
+      themePatched++;
+      console.log(`${TAG}: patched opaque theme defaults in ${file}`);
+    }
+  }
+  if (themePatched === 0) {
+    console.log(`${TAG}: opaque theme defaults already patched`);
+  }
+}
+
+// 8. Keep titlebar tooltips below Electron's Window Controls Overlay. The
+// native controls sit above web contents and are invisible to Floating UI's
+// collision detection, so top-side tooltips otherwise overlap them.
+{
+  const placementMarker = "linuxTooltipOverlayBottom";
+  const nativeTitleMarker = ".removeAttribute(`title`)";
+  const tooltipFiles = webviewJsFiles.filter((file) => {
+    const fileSource = readFileSync(file, "utf8");
+    return (
+      fileSource.includes("--radix-tooltip-content-available-height") &&
+      fileSource.includes("referenceElementRef:") &&
+      fileSource.includes("positioningElement:")
+    );
+  });
+
+  if (tooltipFiles.length !== 1) {
+    fail(`expected one tooltip positioning bundle, found ${tooltipFiles.length}`);
+  }
+
+  const tooltipFile = tooltipFiles[0];
+  let tooltipSource = readFileSync(tooltipFile, "utf8");
+  let tooltipPatched = false;
+
+  if (tooltipSource.includes(placementMarker)) {
+    console.log(`${TAG}: titlebar tooltip placement already patched`);
+  } else {
+    const tooltipFunctionStart =
+      /(function [A-Za-z_$][\w$]*\(\{[^{}]{0,700}positioningElement:[A-Za-z_$][\w$]*,referenceElementRef:([A-Za-z_$][\w$]*),side:([A-Za-z_$][\w$]*),sideOffset:[A-Za-z_$][\w$]*,variant:[A-Za-z_$][\w$]*\}\)\{)let /g;
+    const matches = [...tooltipSource.matchAll(tooltipFunctionStart)];
+    if (matches.length !== 1) {
+      fail(`expected one tooltip positioning function, found ${matches.length}`);
+    }
+
+    const [match, functionStart, referenceRef, side] = matches[0];
+    const titlebarPlacement =
+      `let linuxTooltipReferenceTop=${referenceRef}.current?.getBoundingClientRect().top,` +
+      `linuxTooltipOverlayBottom=typeof navigator===\`undefined\`?64:` +
+      `Math.max(navigator.windowControlsOverlay?.getTitlebarAreaRect?.().bottom??0,64);` +
+      `${side}=${side}===\`top\`&&linuxTooltipReferenceTop!=null&&` +
+      `linuxTooltipReferenceTop<linuxTooltipOverlayBottom?\`bottom\`:${side};let `;
+    tooltipSource = tooltipSource.replace(match, `${functionStart}${titlebarPlacement}`);
+    tooltipPatched = true;
+  }
+
+  if (tooltipSource.includes(nativeTitleMarker)) {
+    console.log(`${TAG}: redundant native tooltip suppression already patched`);
+  } else {
+    const triggerRefCallback =
+      /([A-Za-z_$][\w$]*)=([A-Za-z_$][\w$]*)=>\{([A-Za-z_$][\w$]*)\(\2\),([A-Za-z_$][\w$]*)\(([A-Za-z_$][\w$]*),\2\)\},([A-Za-z_$][\w$]*);return \6=/g;
+    const matches = [...tooltipSource.matchAll(triggerRefCallback)];
+    if (matches.length !== 1) {
+      fail(`expected one tooltip trigger ref callback, found ${matches.length}`);
+    }
+
+    const [match, callback, element, setReference, mergeRef, externalRef, renderedTrigger] =
+      matches[0];
+    const replacement =
+      `${callback}=${element}=>{${element}?.removeAttribute(\`title\`),` +
+      `${setReference}(${element}),${mergeRef}(${externalRef},${element})},` +
+      `${renderedTrigger};return ${renderedTrigger}=`;
+    tooltipSource = tooltipSource.replace(match, replacement);
+    tooltipPatched = true;
+  }
+
+  if (tooltipPatched) {
+    writeFileSync(tooltipFile, tooltipSource);
+    console.log(`${TAG}: patched titlebar tooltip behavior in ${tooltipFile}`);
+  }
 }

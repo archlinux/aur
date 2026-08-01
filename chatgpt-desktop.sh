@@ -40,16 +40,35 @@ export NODE_ENV="${NODE_ENV:-production}"
 
 http_pid=""
 electron_pid=""
+electron_pgid=""
 tmpdir=""
+
+terminate_electron_group() {
+  local sig="${1:-TERM}"
+
+  [[ -n "${electron_pgid}" ]] || return 0
+  kill -"${sig}" -- "-${electron_pgid}" 2>/dev/null || true
+}
 
 cleanup() {
   local status=$?
 
   trap - EXIT HUP INT TERM
   [[ -n "${http_pid}" ]] && kill "${http_pid}" 2>/dev/null || true
-  [[ -n "${electron_pid}" ]] && kill "${electron_pid}" 2>/dev/null || true
+  terminate_electron_group TERM
   [[ -n "${http_pid}" ]] && wait "${http_pid}" 2>/dev/null || true
   [[ -n "${electron_pid}" ]] && wait "${electron_pid}" 2>/dev/null || true
+
+  if [[ -n "${electron_pgid}" ]]; then
+    for _ in {1..20}; do
+      kill -0 -- "-${electron_pgid}" 2>/dev/null || break
+      sleep 0.05
+    done
+    if kill -0 -- "-${electron_pgid}" 2>/dev/null; then
+      terminate_electron_group KILL
+    fi
+  fi
+
   [[ -n "${tmpdir}" ]] && rm -rf "${tmpdir}"
 
   return "${status}"
@@ -58,9 +77,7 @@ cleanup() {
 forward_signal() {
   local sig="$1"
 
-  if [[ -n "${electron_pid}" ]] && kill -0 "${electron_pid}" 2>/dev/null; then
-    kill -"${sig}" "${electron_pid}" 2>/dev/null || true
-  fi
+  terminate_electron_group "${sig}"
   if [[ -n "${http_pid}" ]] && kill -0 "${http_pid}" 2>/dev/null; then
     kill -"${sig}" "${http_pid}" 2>/dev/null || true
   fi
@@ -191,13 +208,14 @@ PY
   export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://127.0.0.1:${webview_port}/}"
 fi
 
-"${electron}" \
+setsid "${electron}" \
   --enable-sandbox \
   --class=ChatGPT \
   "${user_flags[@]}" \
   "${appdir}/resources/app.asar" \
   "$@" &
 electron_pid=$!
+electron_pgid="${electron_pid}"
 if [[ -n "${electron_pid_file:-}" ]]; then
   printf '%s\n' "${electron_pid}" >"${electron_pid_file}"
 fi
