@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.5.5.r2.g6875063
+	pkgver = 2.5.5.r156.g3cfdb3b
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -16,7 +16,6 @@ pkgbase = chatterino2-git
 	depends = boost-libs
 	depends = openssl
 	depends = qt6-imageformats
-	depends = qtkeychain-qt6
 	depends = qt6-svg
 	depends = libnotify
 	depends = hunspell

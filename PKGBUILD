@@ -1,13 +1,13 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.5.5.r2.g6875063
+pkgver=2.5.5.r156.g3cfdb3b
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('x86_64' 'aarch64')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-svg' 'libnotify' 'hunspell')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qt6-svg' 'libnotify' 'hunspell')
 makedepends=('git' 'boost' 'cmake' 'rapidjson')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
@@ -53,7 +53,6 @@ prepare () {
     git config submodule.lib/twitch-eventsub-ws/lib/date.update "none"
     git config submodule.lib/twitch-eventsub-ws/lib/fmt.update "none"
     git config submodule.lib/WinToast.update "none"
-    git config submodule.lib/qtkeychain.update "none"
     git submodule init
     git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
     git config submodule.lib/settings.url "$srcdir/settings"
@@ -78,7 +77,6 @@ build() {
     fi
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DUSE_PRECOMPILED_HEADERS=OFF \
         -DCHATTERINO_UPDATER=OFF \
         -DSKIP_JSON_GENERATION=ON \
