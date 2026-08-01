@@ -46,7 +46,7 @@ build() {
 		-DDESTDIR=$srcdir/BambuStudio_deps \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DDEP_WX_GTK3=1
-	make -j1
+	make
 
 	cd $srcdir/BambuStudio-$_raw_pkgver/build
 	cmake ../ \
@@ -56,7 +56,7 @@ build() {
 		-DCMAKE_PREFIX_PATH=$srcdir/BambuStudio_deps/usr/local \
 		-DCMAKE_INSTALL_PREFIX=/opt/BambuStudio \
 		-DCMAKE_BUILD_TYPE=Release
-	cmake --build . --config Release -j2
+	cmake --build . --config Release
 }
 
 package() {
