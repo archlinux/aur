@@ -2,7 +2,7 @@
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
 pkgver=1.3.0.r28.gc873fa74
-pkgrel=2
+pkgrel=3
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
@@ -35,6 +35,7 @@ makedepends=(
   cmake
   ninja
   pkgconf
+  autoconf-archive
 )
 provides=(rhythmgame)
 conflicts=(rhythmgame)
