@@ -9,7 +9,7 @@
 # shellcheck disable=SC2154 # Ignore "unassigned" references to $srcdir and $pkgdir
 
 pkgname=chef-workstation
-pkgver=25.13.7
+pkgver=25.14.2
 pkgrel=1
 pkgdesc="Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=()
 conflicts=(chef-dk chef chef-solo cinc)
 replaces=('chef-dk')
 source=("https://packages.chef.io/repos/apt/stable/ubuntu/22.04/chef-workstation_$pkgver-1_amd64.deb")
-sha256sums=('d4609acda0a5f1a19b1c4eda5a6b39a4af96ba150264bd8a471ebfd1bea4b627')
+sha256sums=('34344a6ed3ec71151b0a4b5774cc05d81f0f3792a4d4d659afda2f5a728d6417')
 
 package() {
   depends=('libxcrypt-compat')
