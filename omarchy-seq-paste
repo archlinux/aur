@@ -1,9 +1,15 @@
 #!/bin/bash
 # omarchy-seq-paste: Sequential copy/paste (FIFO) like macOS Pastebot
-# niri port: hyprctl has no niri equivalent, so the synthetic copy/paste
-# keystrokes are sent via wtype (Wayland virtual-keyboard protocol, works
-# under niri) and the panel window is closed via niri's own IPC instead
-# of `hyprctl dispatch closewindow`.
+# niri port: hyprctl has no niri equivalent, and synthesizing copy/paste
+# keystrokes via wtype turned out unreliable (depends on the focused app
+# binding Ctrl+Insert/Shift+Insert, which most don't) and could leave the
+# system clipboard in a stale/empty state. Instead:
+#   push  just grabs whatever is currently on the clipboard (copy normally
+#         first, then push)
+#   paste just puts the oldest queued item on the clipboard (then paste
+#         normally yourself)
+# The panel uses alacritty instead of ghostty: ghostty needs OpenGL 4.3,
+# which isn't available on all hardware, and fails to open a window there.
 # Usage: omarchy-seq-paste push|paste|clear|panel
 
 QUEUE_DIR="${XDG_RUNTIME_DIR:-/tmp}/omarchy-seq-paste-${UID}"
@@ -25,7 +31,7 @@ is_panel_open() {
 
 open_panel() {
   if ! is_panel_open; then
-    ghostty --title="$PANEL_TITLE" -e omarchy-seq-paste panel &
+    alacritty -T "$PANEL_TITLE" -e omarchy-seq-paste panel &
     echo $! > "$PIDFILE"
     disown
   fi
@@ -62,16 +68,11 @@ close_panel() {
 }
 
 push() {
-  # Simulate the app's alternate copy shortcut so whatever is currently
-  # selected in the focused window ends up on the clipboard.
-  wtype -M ctrl -k Insert -m ctrl 2>/dev/null
-  sleep 0.15
-
   local content
   content=$(wl-paste 2>/dev/null)
 
   if [[ -z "$content" ]]; then
-    notify-send -t 2000 "Seq Paste" "Clipboard is empty"
+    notify-send -t 2000 "Seq Paste" "Clipboard is empty — copy something first"
     return 1
   fi
 
@@ -92,13 +93,9 @@ paste() {
   wl-copy < "$QUEUE_DIR/$oldest"
   rm "$QUEUE_DIR/$oldest"
 
-  # Simulate the app's alternate paste shortcut.
-  wtype -M shift -k Insert -m shift 2>/dev/null
-
   local remaining
   remaining=$(ls -1 "$QUEUE_DIR" 2>/dev/null | wc -l)
   if [[ "$remaining" -eq 0 ]]; then
-    sleep 0.5
     close_panel
   fi
 }
@@ -138,7 +135,7 @@ panel() {
     fi
 
     echo ""
-    printf "  \033[2mC copy · V paste · X clear\033[0m\n"
+    printf "  \033[2mSuper+Shift+V to paste next · omarchy-seq-paste clear to empty\033[0m\n"
 
     inotifywait -qq -t 10 -e create,delete,moved_to "$QUEUE_DIR" 2>/dev/null
   done
