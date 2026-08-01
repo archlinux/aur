@@ -1,0 +1,50 @@
+# Maintainer: Posi<posi1981@gmail.com>
+pkgname=betterbird
+_pkgname=betterbird
+pkgver=140.13.0esr
+_build=bb25
+pkgrel=1
+pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
+arch=('x86_64')
+url="https://www.betterbird.eu/index.html"
+license=('MPL2')
+depends=('dbus-glib' 'hunspell')
+optdepends=('hunspell-en_US')
+provides=("betterbird=${pkgver}")
+conflicts=()
+source=(
+    "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-${pkgver}-${_build}.en-US.linux-x86_64.tar.xz"
+    "eu.betterbird.Betterbird.desktop"
+    'checker'
+    "vendor-prefs.js"
+)
+
+package() {
+    install -d "${pkgdir}/opt"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+
+    cp -r "${srcdir}/betterbird/" "${pkgdir}/opt/betterbird"
+    install -m644 "${srcdir}/eu.betterbird.Betterbird.desktop" "${pkgdir}/usr/share/applications/eu.betterbird.Betterbird.desktop"
+    install -m644 "${srcdir}/vendor-prefs.js" -t "${pkgdir}/opt/betterbird/defaults/pref"
+    ln -s /opt/betterbird/betterbird "$pkgdir"/usr/bin/betterbird
+    ln -s /usr/share/hunspell "${pkgdir}/opt/betterbird/dictionaries"
+
+    echo     "
+
+	  >>>>>    Please don't forget to cast a vote for this package. THANKS
+	  >>>>>    https://aur.archlinux.org/packages/betterbird-bin
+
+	  "
+
+    #icons
+    for i in 16 22 24 32 48 64 128 256; do
+        install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
+        ln -s /opt/betterbird/chrome/icons/default/default$i.png \
+            "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/betterbird.png
+    done
+}
+sha256sums=('d346c0c6c4f8dcde204f97f2d780d685530b9163d864bccd5c149456394ba1c0'
+            '60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2'
+            'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
+
