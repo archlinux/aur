@@ -70,7 +70,7 @@ build() {
     -DJPEGXL_ENABLE_JPEGLI=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -G Ninja
-  cmake --build $_plug/thirdparty/libjxl_build
+  cmake --build $_plug/thirdparty/libjxl_build -- $NINJAFLAGS
   cmake --install $_plug/thirdparty/libjxl_build
 
   cmake \
@@ -78,7 +78,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -G Ninja
-  cmake --build build
+  cmake --build build -- $NINJAFLAGS
 }
 
 package() {
