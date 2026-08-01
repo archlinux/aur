@@ -15,7 +15,7 @@ pkgbase = ttf-ibm-plex-meta
 	depends = ttf-ibm-plex-sans-kr
 	depends = ttf-ibm-plex-sans-sc
 	depends = ttf-ibm-plex-sans-tc
-	depends = ttf-ibm-pelx-sans-thai
+	depends = ttf-ibm-plex-sans-thai
 	optdepends = ttf-nerd-fonts-symbols: Nerd font symbols
 
 pkgname = ttf-ibm-plex-meta
