@@ -1,0 +1,15 @@
+pkgbase = nvtray
+	pkgdesc = NVIDIA GPU activity tray icon (StatusNotifierItem), like the classic Windows GPU Activity icon
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Vendetta1871/nvtray
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = nvidia-utils
+	source = nvtray-0.2.2.tar.gz::https://github.com/Vendetta1871/nvtray/archive/refs/tags/v0.2.2.tar.gz
+	source = nvtray.desktop
+	sha256sums = f82d71086e3dec6107f395fd6001021c3b7f991c418e68d2e1e8e814940c46ec
+	sha256sums = 7427c232b00876f6b5eb8ca5d26e4c2e2b7e4c09f5c8c4c66837836c85335dcd
+
+pkgname = nvtray

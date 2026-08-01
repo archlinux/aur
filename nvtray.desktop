@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=nvtray
+GenericName=GPU Activity Icon
+Comment=NVIDIA GPU activity tray icon
+Exec=nvtray
+Icon=nvidia-settings
+Terminal=false
+Categories=System;Monitor;
+Keywords=nvidia;gpu;tray;monitor;
