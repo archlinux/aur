@@ -1,115 +1,92 @@
 # t3-code-docker
 
-Headless [T3 Code](https://t3.codes/) server packaged as a Docker
-container plus a systemd `--user` unit, so multiple T3 instances can
-run side-by-side on one machine — each targeting a different opencode
-HTTP server — without fighting the Electron desktop app's single-instance
-guard or its hardcoded `~/.config/t3code/` state path.
+Headless [T3 Code](https://t3.codes/) server in a Docker container +
+systemd `--user` unit. One container per opencode server instance.
+Multi-instance by rebuilding with different env vars.
 
-## Motivation
+AUR slug: `t3-code-docker-bin`. Installed pkgname: `t3-code-docker`
+(default) or `t3-code-<user>` (per-user fleet builds).
 
-The Electron T3 Code desktop app:
+See [Domovoy fleet](https://github.com/alexindigo/domovoy-bootstrap) for
+context on the fleet convention.
 
-1. Ignores `--user-data-dir` and hardcodes Chromium userData to
-   `~/.config/t3code/`, so two profiles share a `SingletonLock` and the
-   second one silently self-quits (`before-quit received` ~8ms in).
-2. Has no multi-instance provider UI: the OpenCode row is singular.
-
-The container path sidesteps both: one image, N containers, each with:
-
-- Its own Docker/network namespace (so the singleton-lock issue is
-  scoped per container).
-- Its own bind-mounted `$HOME` (so T3's userdata / bearer session /
-  `directory` reported to opencode all cohere).
-- Its own systemd `--user` unit + name (so `systemctl --user enable`
-  and `docker ps` show it distinctly).
-
-## Building for the default instance
+## Default install
 
 ```bash
-makepkg -s
-sudo pacman -U t3-code-docker-<pkgver>-<pkgrel>-x86_64.pkg.tar.zst
+makepkg -si
 ```
 
-Installs a package named `t3-code-docker` binding port `3773`.
+Produces `t3-code-docker` bound to port 3773, targeting opencode at
+`http://localhost:4096/`.
 
-## Building custom-named instances (multi-instance)
-
-Set `T3_INSTANCE_NAME` and `T3_PORT` env vars at build time. Each build
-produces an independently-installable package. Example: one T3 for the
-domovoy opencode server on `:4096`, another for user's on `:8096`:
+## Fleet operator builds (per-user instances)
 
 ```bash
-# Instance 1
-T3_INSTANCE_NAME=t3-code-domovoy T3_PORT=3775 makepkg -s
-sudo pacman -U t3-code-domovoy-*.pkg.tar.zst
+# domovoy's instance
+T3_INSTANCE_USER=domovoy T3_PORT=3775 T3_OPENCODE_URL=http://localhost:4096/ makepkg -si
 
-# Instance 2
-T3_INSTANCE_NAME=t3-code-user    T3_PORT=3776 makepkg -s
-sudo pacman -U t3-code-user-*.pkg.tar.zst
+# user's instance
+T3_INSTANCE_USER=user    T3_PORT=3776 T3_OPENCODE_URL=http://localhost:8096/ makepkg -si
 ```
 
-Both packages share the docker image `t3-code:<pkgver>` (idempotent
-`docker load`), so there's no image duplication at runtime.
+Multiple `t3-code-<user>` packages coexist and remove independently.
+
+## Build-time env vars
+
+| Var | Default | Purpose |
+|---|---|---|
+| `T3_INSTANCE_USER` | `docker` | Drives pkgname; fleet builds set to `domovoy` / `user` / etc. |
+| `T3_PORT` | `3773` | Host-side port for T3 web UI ingress |
+| `T3_OPENCODE_URL` | `http://localhost:4096/` | Target opencode server URL (set to enable provider) |
+| `T3_CODEX_URL` | (unset) | Future provider (currently CLI-only) |
+| `T3_CLAUDE_URL` | (unset) | Future provider |
+| `T3_GROK_URL` | (unset) | Future provider |
 
 ## Runtime
 
-Each installed package ships:
-
-- `/usr/lib/systemd/user/<pkgname>.service`
-- `/usr/bin/<pkgname>-ctl`
-- `/usr/share/<pkgname>/image.tar.zst`
-- `/usr/share/<pkgname>/Dockerfile` (reference)
-
-As the target user:
-
 ```bash
-# One-time: ensure docker CLI works without sudo
-sudo usermod -aG docker "$USER"   # log out/in to apply
+# Pre-requisite (one-time)
+sudo usermod -aG docker "$USER"   # log out/in to take effect
 
 # Enable + start
 systemctl --user daemon-reload
 systemctl --user enable --now <pkgname>.service
 
-# Get a pairing URL for the browser
+# Pair browser
 <pkgname>-ctl pair
 ```
 
-Open the printed URL in a browser, complete pairing (one-time; the
-bearer session persists in `~/.t3/`). Then in T3's Settings → OpenCode
-→ `serverUrl`, point at whichever opencode HTTP server this instance
-should drive.
+Open the printed Desktop URL, complete one-time pairing. Settings →
+OpenCode → serverUrl is pre-filled from the packet seed. Run
+`<pkgname>-ctl pair` again for each additional device (phone, tablet).
 
-## Design notes
-
-- **`--network host`**: container shares the host network namespace so
-  `localhost:*` inside the container reaches the host's loopback,
-  including any opencode server on `127.0.0.1:<port>`. Sidesteps UFW
-  rules that would otherwise deny docker-bridge → host traffic.
-- **`--user %U:%G`** in the systemd unit: container's effective UID/GID
-  matches the invoking systemd user, so bind-mounted `$HOME` writes
-  stay owned by that user on the host.
-- **`-v %h:%h:rw`** at matching paths: T3 sends its `$HOME` as
-  `directory` to opencode; opencode-on-host then tries to
-  `access(<directory>/opencode.jsonc)` under its own UID. Matching-path
-  bind mount + matching UID means access always succeeds regardless of
-  whether the file exists.
-- **`t3 serve`** (not `t3 start`): headless subcommand that prints a
-  pairing URL and does not try to spawn a browser.
-
-## Docker image contents
-
-Base: `node:24-slim` + `python3 make g++` (for node-pty native module
-compilation if the shipped prebuild doesn't match) + `t3@<pkgver>`
-installed globally from a vendored tarball.
-
-## Uninstall
+## Removal
 
 ```bash
-sudo pacman -Rns <pkgname>
+sudo pacman -R <pkgname>
 ```
 
-Removes files + stops/removes any running container of the same name.
-User data under `~/.t3/` is left untouched. Docker image
-`t3-code:<pkgver>` remains in the local cache until you run
-`docker image prune`.
+Stops the container. Removes the shared docker image if this is the last
+`t3-code-*` package installed. User data (`~/.t3/`) is left untouched.
+UFW rules are not auto-removed — remove manually:
+
+```bash
+sudo ufw delete allow in on docker0 to any port <port> proto tcp
+```
+
+## Firewall
+
+The `.install` script auto-configures UFW for docker0 → provider ports
+when the target is on localhost (the default). Skip UFW touches:
+
+```bash
+T3_CODE_DOCKER_SKIP_UFW=1 pacman -U <pkg>
+```
+
+## Container design
+
+Bridge networking: `-p <host>:3773` for the T3 web UI. A socat proxy
+inside the container routes `127.0.0.1:4096` → the real opencode URL on
+the host (resolved via `host.docker.internal`). The T3 settings-seed
+is byte-identical across all instances — only the socat forward target
+varies per instance at runtime.

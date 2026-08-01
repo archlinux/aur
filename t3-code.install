@@ -6,6 +6,12 @@
 #      parse the port and add a UFW rule allowing docker0 → that port
 #      (if UFW is running and the target host is localhost, 127.0.0.1, or
 #      host.docker.internal — i.e., the provider is on this machine).
+#   3. Print next-steps instructions.
+#
+# pre_remove:
+#   Stop + remove the docker container.
+#   If this is the last t3-code-* package being removed, also prune the
+#   shared docker image.
 #
 # T3_CODE_DOCKER_SKIP_UFW=1 pacman -U <pkg> to suppress firewall touches.
 
@@ -130,11 +136,22 @@ post_upgrade() {
 }
 
 pre_remove() {
+  # Stop container(s) for the package being removed
   local pkgname
   for pkgname in $(_detect_pkgname); do
     echo "==> Removing ${pkgname} — stopping any running container"
     docker rm -f "${pkgname}" 2>/dev/null || true
   done
+
+  # Only prune the shared t3-code image if no other t3-code-* packages
+  # will remain after this removal transaction.
+  local remaining
+  remaining=$(pacman -Qq 2>/dev/null | grep -c '^t3-code-' || echo 0)
+  if [ "${remaining}" -le 1 ]; then
+    echo "==> Removing shared docker image (last t3-code-* instance)"
+    docker rmi "t3-code:${pkgver}" 2>/dev/null || true
+  fi
+
   cat <<EOF
 
 Note: user data (bearer sessions, projects) stays under \$HOME/.t3/.
