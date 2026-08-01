@@ -1,6 +1,6 @@
-From e156b9fffbfdddc6582cda65b2281c93a1ebc6d7 Mon Sep 17 00:00:00 2001
+From f0d8353ac557a344ad6952e56bcb9d6900f958ac Mon Sep 17 00:00:00 2001
 From: quietvoid <tcChlisop0@gmail.com>
-Date: Wed, 10 Dec 2025 07:25:02 -0500
+Date: Sat, 1 Aug 2026 09:33:28 -0400
 Subject: [PATCH] Support pyhgtmap v4
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH] Support pyhgtmap v4
  2 files changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/wahoomc/osm_maps_functions.py b/wahoomc/osm_maps_functions.py
-index 9eec9f1..1da1f31 100644
+index 9eec9f1..483ad7e 100644
 --- a/wahoomc/osm_maps_functions.py
 +++ b/wahoomc/osm_maps_functions.py
 @@ -344,18 +344,18 @@ class OsmMaps:
@@ -29,7 +29,7 @@ index 9eec9f1..1da1f31 100644
 -                cmd.append('--earthexplorer-user=' + username)
 -                cmd.append('--earthexplorer-password=' + password)
 +                cmd.append('--srtm-user=' + username)
-+                cmd.append('--srtm-user=' + password)
++                cmd.append('--srtm-password=' + password)
  
                  run_subprocess_and_log_output(
 -                    cmd, f'! Error in phyghtmap with tile: {tile["x"]},{tile["y"]}. Win_macOS/elevation')
@@ -54,5 +54,5 @@ index ad735ed..69612c4 100644
      username, password = read_earthexplorer_credentials()
  
 -- 
-2.52.0
+2.55.0
 
