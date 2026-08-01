@@ -4,7 +4,7 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-preview-git
-pkgver=0.2.2.r17.g6742f3a
+pkgver=0.2.2.r18.gff51241
 pkgrel=1
 pkgdesc='Preview branch of the Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
     'vulkan-driver: Vulkan GPU acceleration'
 )
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-git-debug")
 source=(
     "${_srcname}::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=preview"
     "${_model_file}::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/${_model_file}"
