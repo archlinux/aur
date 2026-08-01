@@ -4,7 +4,7 @@ _gitauthor=p-arndt
 _gitname=hop
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Hop from server to server without ever leaving your terminal"
+pkgdesc="Hop from server to server without ever leaving your terminal."
 
 pkgver=0.6.0
 pkgrel=1
