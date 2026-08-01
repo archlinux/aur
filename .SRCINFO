@@ -1,11 +1,11 @@
 pkgbase = ttf-ibm-plex-sans-thai
 	pkgdesc = IBM Plex Sans for Thai
-	pkgver = 3.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/IBM/plex
 	arch = any
 	license = custom:OFL
-	source = ttf-ibm-plex-sans-thai-3.0.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-thai%403.0.0/ibm-plex-sans-thai.zip
-	sha256sums = 4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f
+	source = ttf-ibm-plex-sans-thai-1.1.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-thai%401.1.0/ibm-plex-sans-thai.zip
+	sha256sums = d7203f43c20f9abd40487f845c48db4077d2056ea18632c8959591c6815d7fb9
 
 pkgname = ttf-ibm-plex-sans-thai
