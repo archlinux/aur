@@ -190,6 +190,6 @@ For packaging-only behavioral changes, keep `pkgver` and increment `pkgrel`.
 
 ## License
 
-UU Remote is proprietary software distributed under the upstream UU Remote EULA. The EULA is downloaded from the official website during the package build and installed under `/usr/share/licenses/uuyc-wine/`.
+UU Remote is proprietary software distributed under the upstream UU Remote EULA. During each build, `makepkg` downloads the [official EULA page](https://uuyc.163.com/contact/20240402/40294_1146065.html); `verify()` accepts only the reviewed agreement tags and attributes, preserves paragraphs, line breaks, and strong emphasis, and validates a fixed semantic SHA-256. Any agreement text, emphasis, tag, or semantic-style change fails closed for maintainer review. `prepare()` then produces self-contained HTML and plain-text copies under `/usr/share/licenses/uuyc-wine/`. Neither the upstream page nor the extracted agreement is stored in this repository or published to AUR.
 
 The AUR packaging files and the package-built `wevtapi.dll` compatibility layer are licensed under the [0BSD license](LICENSE), as declared by `REUSE.toml`. The package installs both the upstream EULA and the 0BSD license under `/usr/share/licenses/uuyc-wine/`.

@@ -2,16 +2,18 @@
 
 pkgname=uuyc-wine
 pkgver=4.33.0.8907
-pkgrel=8
+pkgrel=9
 pkgdesc='Wine compatibility package for NetEase UU Remote (网易UU远程)'
 arch=('x86_64')
 url='https://uuyc.163.com/'
 license=('LicenseRef-UU-Remote-EULA AND 0BSD')
 depends=('wine>=11.1' 'hicolor-icon-theme' 'procps-ng' 'util-linux' 'diffutils')
-makedepends=('7zip')
+makedepends=('7zip' 'python')
 optdepends=('libnotify: desktop notifications during first-run setup')
 options=('!strip' '!debug')
 install="$pkgname.install"
+_eula_semantic_sha256='5ac767dad456d304ed9be4a089b0bb26f6942544112a1842c720b1edcb7f44fd'
+
 source=(
   "$pkgname-${pkgver}.exe::https://a56.gdl.netease.com/UURemote_Setup_${pkgver}_0715193023_gwqd.exe"
   'uuyc-wine'
@@ -19,7 +21,8 @@ source=(
   'uuyc-wevtapi.def'
   'LICENSE'
   'uuyc-wine.desktop'
-  'UU-Remote-EULA.html::https://uuyc.163.com/contact/20240402/40294_1146065.html'
+  'extract-uuyc-eula.py'
+  "UU-Remote-EULA-${_eula_semantic_sha256}.source.html::https://uuyc.163.com/contact/20240402/40294_1146065.html"
 )
 noextract=("$pkgname-${pkgver}.exe")
 sha256sums=(
@@ -29,10 +32,28 @@ sha256sums=(
   'c56c72c159f47b1b812943cd2095a0f64d2c4972f3c7a1a7f75e994c7b52f691'
   'e91389eac5bc82c8398518cc7fd04ffbcc76ed009fcbec9f951015340a9ca2b3'
   'a55bf7d10211616967119ff57f4fe82bebf0b0ad12b93f6eafd3f2f2928fa840'
-  '3a2b28509a7c54bb701ae877af8312f2c366388c198427f483cf791c6eae0b65'
+  '0b9c3e2e9f99367fc6339b70704c97d4ae291806718e16400bfe479689b5b10d'
+  'SKIP'
 )
 
+verify() {
+  local eula_file="UU-Remote-EULA-${_eula_semantic_sha256}.source.html"
+  local eula_path="$startdir/$eula_file"
+  if [[ ! -f "$eula_path" ]]; then
+    eula_path="$SRCDEST/$eula_file"
+  fi
+
+  python "$startdir/extract-uuyc-eula.py" --verify-only \
+    "$eula_path" "$_eula_semantic_sha256"
+}
+
 prepare() {
+  python "$srcdir/extract-uuyc-eula.py" \
+    "$srcdir/UU-Remote-EULA-${_eula_semantic_sha256}.source.html" \
+    "$srcdir/UU-Remote-EULA.html" \
+    "$srcdir/UU-Remote-EULA.txt" \
+    "$_eula_semantic_sha256"
+
   rm -rf "$srcdir/$pkgname-icon"
   7z x -y -o"$srcdir/$pkgname-icon" \
     "$srcdir/$pkgname-${pkgver}.exe" '.rsrc/ICON/6'
@@ -61,6 +82,8 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
   install -Dm644 "$srcdir/UU-Remote-EULA.html" \
     "$pkgdir/usr/share/licenses/$pkgname/UU-Remote-EULA.html"
+  install -Dm644 "$srcdir/UU-Remote-EULA.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/UU-Remote-EULA.txt"
   install -Dm644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 

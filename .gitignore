@@ -2,6 +2,6 @@ src/
 pkg/
 *.pkg.tar.*
 *.exe
-UU-Remote-EULA.html
+UU-Remote-EULA-*.source.html
 *.log
 .cache/

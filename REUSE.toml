@@ -7,6 +7,7 @@ path = [
   ".SRCINFO",
   "LICENSE",
   "PKGBUILD",
+  "extract-uuyc-eula.py",
   "README.md",
   "REUSE.toml",
   "uuyc-wine",
