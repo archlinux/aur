@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Keyboard-first local service orchestrator with a focused terminal UI"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -21,14 +21,13 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc')
 
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('eccbaad3e369b9101b48d74cd4b0311d6aa1f819924e72cb2742f610ddb5464c')
-sha256sums_aarch64=('e577454d530c4dcf8c954c351af6fe28f1484461910886773ac3dc0410933ab7')
+sha256sums_x86_64=('e8745afd727a5e06906520346c1792a2f16cbf6808530dfa8dd7912fca23eab8')
+sha256sums_aarch64=('3899d62aee0a9d73889ff7293fa8c08e1a86f71722e914c3f57d58429bd8189b')
 
 
 package() {
