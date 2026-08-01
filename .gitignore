@@ -1,0 +1,6 @@
+pkg/
+src/
+
+*.tar*
+teamspeak.desktop
+teamspeak.svg
