@@ -12,9 +12,9 @@ license=('Apache-2.0')
 options=(!lto)
 _commit='e02e35f0254bb033fab73d1df99fc34123e31d56'
 source=("${url}/archive/${_commit}.tar.gz"
-        "https://www.openslr.org/resources/2/openfst-${pkgver}.tar.gz")
+        "https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-${pkgver}.tar.gz")
 sha256sums=('fd77fa31e8f21ccbc050bd0ee9ab80e3e0d83ad827b4e5a4d9a4cf7144ff62c1'
-            '529353f0c11544d8f93de36da75cf1be11c0dc012b4a819b60ac673a689d47ab')
+            'a8ebbb6f3d92d07e671500587472518cfc87cb79b9a654a5a8abb2d0eb298016')
 
 build () {
 	cd $srcdir/$_pkgname-$_commit/tools
