@@ -2,7 +2,7 @@
 
 pkgname=odm-bin
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Oryn Download Manager — aria2c-inspired CLI download manager with Connection Balancer, parallel download acceleration, pacman/ILoveCandy progress bar, JSON-RPC + WebSocket daemon, and resume support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Fahry-a/odm"
@@ -71,6 +71,9 @@ check() {
         armv7h) _bin="${pkgname}-${pkgver}-linux_arm" ;;
         aarch64) _bin="${pkgname}-${pkgver}-linux_arm64" ;;
     esac
+    # The downloaded binary is not executable on arrival (the download agent
+    # writes plain files), so grant +x before running it.
+    chmod +x "$srcdir/$_bin"
     "$srcdir/$_bin" --version | grep -qF "$pkgver"
 }
 
