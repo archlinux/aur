@@ -1,0 +1,18 @@
+pkgbase = python-openappx
+	pkgdesc = Build, sign, bundle and install Windows Appx/MSIX packages from Linux
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/gianlucamazza/openappx
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/o/openappx/openappx-0.6.2.tar.gz
+	sha256sums = 4aa8cb74cdee889d3af5f301b57b74d5cbb1deb5b410d5bfb3229636c4c1e2e1
+
+pkgname = python-openappx
