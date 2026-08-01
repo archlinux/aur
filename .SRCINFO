@@ -1,0 +1,25 @@
+pkgbase = display-modes-git-bin
+	pkgdesc = Quick GTK display mode switcher for Hyprland and X11
+	pkgver = r8.g5f149b5
+	pkgrel = 1
+	url = https://github.com/olalbns/display-modes
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = gettext
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	optdepends = hyprland: manage displays in a Hyprland Wayland session (provides hyprctl)
+	optdepends = xorg-xrandr: manage displays in an X11 session (provides xrandr)
+	provides = display-modes
+	conflicts = display-modes
+	source = git+https://github.com/olalbns/display-modes.git
+	source = converter
+	sha256sums = SKIP
+
+pkgname = display-modes-git-bin
