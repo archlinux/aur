@@ -16,7 +16,7 @@ source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v$
 sha256sums_x86_64=('f76ef62ab381931081f50f8ca8f13bc1cf27d3cd38b46d29b0c6fd7dd2dfa800')
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}-${arch}_linux"
+	cd "${srcdir}/${_pkgname}-${pkgver}-${arch}"
 
 	# Install binary and sidecar directories into /usr/lib/line-gtk/
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
