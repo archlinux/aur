@@ -1,6 +1,6 @@
 pkgbase = agent-manager-bin
 	pkgdesc = Terminal UI to manage AI coding-agent tmux sessions
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/YoanWai/agent-manager
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = agent-manager-bin
 	conflicts = agent-manager
 	provides = agent-manager
 	arch = aarch64
-	source_aarch64 = https://github.com/YoanWai/agent-manager/releases/download/v0.14.1/agent-manager_0.14.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0ffca6cb0d5fb44800e08c3b9119b978fb3f214205fed8efceb662e24222bac0
+	source_aarch64 = https://github.com/YoanWai/agent-manager/releases/download/v0.14.2/agent-manager_0.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4637fbd7fa08fa1a4afd38b41b1b57705893686ef83e3629aee9cffa73d20ff3
 	arch = x86_64
-	source_x86_64 = https://github.com/YoanWai/agent-manager/releases/download/v0.14.1/agent-manager_0.14.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = b35c45c48077faa408b9acaca57089e0bc02a5c687a65dcb72ca42f07e49df37
+	source_x86_64 = https://github.com/YoanWai/agent-manager/releases/download/v0.14.2/agent-manager_0.14.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 730f0867b25e0799204be84fc941685a1250432c9de566b251b6fb21cc143a8a
 	
 pkgname = agent-manager-bin
