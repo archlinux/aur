@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!launcher.sh
+!pam_limits.conf
+!PKGBUILD
+!pleasenote.install
+!proton-rtsp-bin.conf
+!user_settings.py
