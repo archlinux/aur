@@ -1,6 +1,6 @@
 pkgname=xdg-desktop-portal-luminous
-pkgver=0.1.20
-pkgrel=2
+pkgver=0.1.21
+pkgrel=1
 url='https://github.com/waycrate/xdg-desktop-portal-luminous'
 pkgdesc='xdg-desktop-portal backend for wlroots based compositors, providing screenshot and screencast'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ conflicts=("xdg-desktop-portal-luminous-git")
 makedepends=('git' 'ninja' 'meson' 'rust' 'clang')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/waycrate/xdg-desktop-portal-luminous/archive/refs/tags/v${pkgver}.tar.gz")
 options+=(!lto)
-sha256sums=('6e048d02cb543add8801fad8bd902db523172b0606e5a7351ddab2b99e953332')
+sha256sums=('d6df0ac024409de9e38f0890799b0ef3eaf71156692cc48fc0fe9059f79e8b58')
 
 build() {
   cd "${pkgname}-$pkgver"
