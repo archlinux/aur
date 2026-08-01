@@ -2,16 +2,16 @@
 # Contributor: Jiaxi Hu < sftrytry at gmail dot com >
 
 _pkgname=OpenBLAS
-_blasver=3.12.0
+_blasver=3.13.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc"
 
 pkgname=mingw-w64-openblas-lapack
-pkgver=0.3.33
+pkgver=0.3.34
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
-url="https://www.openblas.net/"
+url="https://www.openmathlib.org/OpenBLAS/"
 license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 makedepends=('perl'
@@ -28,7 +28,7 @@ conflicts=('mingw-w64-openblas'
            'mingw-w64-lapacke')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${_pkgname}-v${pkgver}.tar.gz::https://github.com/OpenMathLib/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6761af1d9f5d353ab4f0b7497be2643313b36c8f31caec0144bfef198e71e6ab')
+sha256sums=('cd7e129868320cc2d033afa920e31202dfe0b8066a5b66661900ccc0f197dfed')
 
 prepare() {
   cd ${srcdir}
