@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=procfile-util
-pkgver=0.20.7
+pkgver=0.20.8
 pkgrel=1
 pkgdesc='A tool for interacting with Procfiles'
 arch=('x86_64')
 url='https://github.com/dokku/procfile-util'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb7a4ffe6ce63d5507ef31719a2c08b33943a2eeb84fffc7c3b4770847cc696f')
+sha256sums=('5bb2ed30ce8c0d149a2534e4370165c934d46706beb0192af8b9ccf64f8bba32')
 makedepends=('go')
 
 build() {
