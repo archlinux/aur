@@ -1,6 +1,6 @@
 pkgbase = linux-devmgmt
 	pkgdesc = A faithful recreation of the Windows Device Manager
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/actuallyaridan/linux-devmgmt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = linux-devmgmt
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt6-base
-	source = linux-devmgmt-2.1.tar.gz::https://github.com/actuallyaridan/linux-devmgmt/archive/refs/tags/v2.1.tar.gz
-	sha256sums = a1b3057c5c5860bfc9b75e8ba6a2a7086432b908e31fc8117beb31228d76ae3c
+	source = linux-devmgmt-2.1.1.tar.gz::https://github.com/actuallyaridan/linux-devmgmt/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 217d95c60978fb650b9a422f12bb269c74c77e22d106efd758a3525d00b029e5
 
 pkgname = linux-devmgmt
