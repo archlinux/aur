@@ -1,0 +1,17 @@
+pkgbase = cbonsai-bin
+	pkgdesc = A bonsai tree generator, written in C using ncurses
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://gitlab.com/jallbrit/cbonsai-bin
+	arch = any
+	license = GPL3
+	makedepends = scdoc
+	depends = gcc
+	depends = ncurses
+	provides = cbonsai
+	conflicts = cbonsai
+	source = https://gitlab.com/jallbrit/cbonsai-bin/-/archive/v1.4.2/cbonsai-bin-v1.4.2.zip
+	source = merger
+	sha256sums = b14a26f2405575075b482ffa1b5698c479e100027c271fa44fa2e310279b6d4a
+
+pkgname = cbonsai-bin
