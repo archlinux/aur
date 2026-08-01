@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-julek
 	pkgdesc = Plugin for Vapoursynth: julek
 	pkgver = r3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dnjulek/vapoursynth-julek-plugin
 	arch = x86_64
 	license = MIT

@@ -1,9 +1,9 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _plug=julek
 pkgname=vapoursynth-plugin-$_plug
 pkgver=r3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=(x86_64)
 url=https://github.com/dnjulek/vapoursynth-julek-plugin
@@ -61,14 +61,14 @@ build() {
     -DJPEGXL_ENABLE_JPEGLI=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -G Ninja
-  cmake --build thirdparty/libjxl_build
+  cmake --build thirdparty/libjxl_build -- $NINJAFLAGS
   cmake --install thirdparty/libjxl_build
 
   cmake \
     -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -G Ninja
-  cmake --build build
+  cmake --build build -- $NINJAFLAGS
 }
 
 package() {
