@@ -3,7 +3,7 @@
 
 pkgname=qualcomm-software-center
 pkgver=1.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests"
 arch=('x86_64')
 url="https://www.qualcomm.com/developer/software/qualcomm-software-center"
@@ -20,7 +20,7 @@ source=("https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcom
         "qualcomm-software-center.install")
 sha256sums=('dbce860cd11ac3e190a5cacb3612a714e91198e97a737a2d146803cbb59a727d'
             'e283d6b9e441b9ccefe986582201b1608180be379af7b519f8aca02fbf330076'
-            '9b58edaa2f2afd61a52b8145facd4cb793481edaf5e4d9f9dd8093a099b5822b')
+            '10429b8404856be05897ab1b712f97ab6104cebefffc1661b6f1dcf34875479b')
 
 prepare() {
     # 解压deb包
@@ -55,6 +55,9 @@ package() {
 
     # 安装应用文件（排除原始electron二进制）
     find temp_extract/opt/qcom/softwarecenter/bin -mindepth 1 -maxdepth 1 ! -name "softwarecenter" -exec cp -r {} "${_lib_dir}/" \;
+
+    # 记录应用版本，安装脚本用它更新 QIK 组件数据库
+    echo "${pkgver}" > "${pkgdir}/opt/qcom/softwarecenter/bin/qsc-version"
 
     # 创建必要的目录并复制桌面文件
     install -d "${pkgdir}/usr/share/applications"

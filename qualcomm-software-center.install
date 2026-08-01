@@ -1,7 +1,28 @@
+QSC_COMPONENT_ID=abc31016-7831-11ee-b4ae-026b10d3716b
+QSC_COMPONENT_FILE="/var/lib/qcom/data/qik/components/qikcomponent_${QSC_COMPONENT_ID}.dat"
+
+_register_qsc_component() {
+    local _qsc_ver
+    _qsc_ver="$(cat /opt/qcom/softwarecenter/bin/qsc-version 2>/dev/null)"
+    [[ -n "${_qsc_ver}" ]] || return 0
+
+    install -d -m 0755 /var/lib/qcom/data/qik/components
+    local _install_date
+    _install_date="$(date '+%Y-%m-%d %H:%M:%S')"
+
+    cat > "${QSC_COMPONENT_FILE}" <<EOF
+{"Branch":null,"ComponentID":"abc31016-7831-11ee-b4ae-026b10d3716b","ComponentName":"Qualcomm_Software_Center.Core","ComponentType":"Core","DependsOn":null,"Description":"Qualcomm_Software_Center.Core","FeatureID":"ab64288f-7831-11ee-b4ae-026b10d3716b","FeatureName":"Core","GUID":"3b59d03c-d624-4c78-ad52-a516b8ec85b4","InstallLocation":"\/opt\/qcom\/softwarecenter\/bin","InstallLocationRoot":"\/opt\/qcom\/softwarecenter","InstallationDate":"${_install_date}","MultipleVersions":0,"Name":"Qualcomm Software Center","ProductID":"ab2423ae-7831-11ee-b4ae-026b10d3716b","ProductName":"Qualcomm_Software_Center","PublishedDate":"2024-02-23 13:31:44","Publisher":"Qualcomm Technologies, Inc.","ReferenceCounter":0,"RequiredBy":null,"SpaceReq":"","Subtitle":"Qualcomm Software Center","Version":"${_qsc_ver}","packageFile":""}
+EOF
+
+    chmod 0644 "${QSC_COMPONENT_FILE}"
+}
+
 post_install() {
     chmod 755 /opt/qcom || true
     install -d /opt/Qualcomm/PCAT/Logs/PCATCli || true
     install -d /opt/Qualcomm/QUTS/Logs || true
+
+    _register_qsc_component
 
     if command -v update-desktop-database >/dev/null 2>&1; then
         update-desktop-database -q usr/share/applications || true
@@ -18,6 +39,7 @@ post_upgrade() {
 
 post_remove() {
     rm -rf /opt/Qualcomm || true
+    rm -f "${QSC_COMPONENT_FILE}" || true
 
     if command -v update-desktop-database >/dev/null 2>&1; then
         update-desktop-database -q usr/share/applications || true
