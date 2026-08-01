@@ -12,7 +12,7 @@ conflicts=('velumvpn')
 options=('!strip')
 install="${pkgname}.install"
 
-source_x86_64=("${pkgname}-${pkgver}.pkg.tar.xz::https://github.com/Jidos86/VelumVPN/releases/download/v${pkgver}/VelumVPN_x64.pkg.tar.xz")
+source_x86_64=("${pkgname}-${pkgver}.pkg.tar.xz::https://github.com/Jidos86/VelumVPN/releases/download/${pkgver}/VelumVPN_x64.pkg.tar.xz")
 sha256sums_x86_64=('SKIP')
 
 package() {

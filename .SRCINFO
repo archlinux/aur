@@ -12,7 +12,7 @@ pkgbase = velumvpn-bin
 	provides = velumvpn
 	conflicts = velumvpn
 	options = !strip
-	source_x86_64 = velumvpn-bin-1.1.18.pkg.tar.xz::https://github.com/Jidos86/VelumVPN/releases/download/v1.1.18/VelumVPN_x64.pkg.tar.xz
+	source_x86_64 = velumvpn-bin-1.1.18.pkg.tar.xz::https://github.com/Jidos86/VelumVPN/releases/download/1.1.18/VelumVPN_x64.pkg.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = velumvpn-bin
