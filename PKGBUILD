@@ -19,17 +19,17 @@ provides=("esd=${pkgver}")
 conflicts=('esd')
 options=(!libtool)
 backup=('etc/esd.conf')
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
+source=("https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'esound-system.service'
         'esound-user.service'
-        'esound-0001-alsa-drain-hang.patch'
-        'esound-0002-undeclared-variable.patch'
-        'esound-0003-fix-audsp-crash.patch'
-        'esound-0004-link-to-libm.patch'
-        'esound-0005-missing-declaration-GCC-15.patch'
-        'esound-0006-revert-close-file-descriptors.patch'
-        'esound-0007-fix-wrong-micro-version.patch'
-        'esound-0008-move-nobeeps-option.patch')
+        '0001-alsa-drain-hang.patch'
+        '0002-undeclared-variable.patch'
+        '0003-fix-audsp-crash.patch'
+        '0004-link-to-libm.patch'
+        '0005-missing-declaration-GCC-15.patch'
+        '0006-revert-close-file-descriptors.patch'
+        '0007-fix-wrong-micro-version.patch'
+        '0008-move-nobeeps-option.patch')
 b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af519267ff1c8f4bd53604d82edbf682d07b16e98158ca39bbe8663bbaadd'
         '1b55880c8212f2e85312c632ab79f1ff36d527c7463aa16fb932f324c496a5a67d109372aff657b59812b9fabe8c5978434e078e7a91868298731ab11ea48f2d'
         'b84310149765ca3caa7b0b93298af758b0ffbb04b16c3946b3fc8e0ad4e559d7f6221a956dd30a8f01a5e60d85386431078619b683e0d6a447bc1c9363a00e27'
@@ -45,14 +45,14 @@ b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af51
 prepare() {
   cd "esound-${pkgver}"
 
-  patch -t -Np1 -i ../esound-0001-alsa-drain-hang.patch
-  patch -t -Np1 -i ../esound-0002-undeclared-variable.patch
-  patch -t -Np1 -i ../esound-0003-fix-audsp-crash.patch
-  patch -t -Np1 -i ../esound-0004-link-to-libm.patch
-  patch -t -Np1 -i ../esound-0005-missing-declaration-GCC-15.patch
-  patch -t -Np1 -i ../esound-0006-revert-close-file-descriptors.patch
-  patch -t -Np1 -i ../esound-0007-fix-wrong-micro-version.patch
-  patch -t -Np1 -i ../esound-0008-move-nobeeps-option.patch
+  patch -t -Np1 -i ../0001-alsa-drain-hang.patch
+  patch -t -Np1 -i ../0002-undeclared-variable.patch
+  patch -t -Np1 -i ../0003-fix-audsp-crash.patch
+  patch -t -Np1 -i ../0004-link-to-libm.patch
+  patch -t -Np1 -i ../0005-missing-declaration-GCC-15.patch
+  patch -t -Np1 -i ../0006-revert-close-file-descriptors.patch
+  patch -t -Np1 -i ../0007-fix-wrong-micro-version.patch
+  patch -t -Np1 -i ../0008-move-nobeeps-option.patch
 }
 
 build() {
