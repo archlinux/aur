@@ -1,0 +1,19 @@
+pkgbase = shenv-bin
+	pkgdesc = End-to-end encrypted .env sharing. Store anywhere, decrypt only with authorized teammates. No server needed.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/p-arndt/shenv
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = shenv
+	conflicts = shenv
+	options = !strip
+	source = README-0.7.0.md::https://raw.githubusercontent.com/p-arndt/shenv/v0.7.0/README.md
+	sha256sums = b16c27fdc76d1062864c37447f52634da16b1577233c31e7d4f4aac558e578ed
+	source_x86_64 = shenv-x86_64-0.7.0.tgz::https://github.com/p-arndt/shenv/releases/download/v0.7.0/shenv_0.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0581ffc2f0f2182be075b900f52edc8add623327a6295444a767b0222bc4d5f3
+	source_aarch64 = shenv-aarch64-0.7.0.tgz::https://github.com/p-arndt/shenv/releases/download/v0.7.0/shenv_0.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f07247cbba9c0230ce24088f7da828f0999fcfb133698279caaeb545fd2a7e34
+
+pkgname = shenv-bin

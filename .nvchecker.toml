@@ -1,0 +1,5 @@
+[shenv-bin]
+source = "github"
+github = "p-arndt/shenv"
+use_latest_release = true
+prefix = "v"
