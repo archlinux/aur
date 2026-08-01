@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-deep-learning-essentials
 pkgver=2026.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library"
 arch=('x86_64')
 url="https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html"
@@ -50,6 +50,21 @@ sha384sums=(
 )
 
 package() {
+    # Show warning during makepkg build time
+    echo "========================================================================"
+    echo " NOTE: The installer may output a few error messages during installation."
+    echo " This is because Intel intended the oneAPI packages for Windows and Ubuntu,"
+    echo " not Arch Linux. Please just let it run and ignore these non-fatal errors."
+    echo " "
+    echo " If the install fails, 99% of the time you need to delete the two folders"
+    echo " intel and .intel in your /home directory."
+    echo " You can use the following command:"
+    echo " rm -rf "$HOME/intel" "$HOME/.intel""
+    echo " "
+    echo " If you encounter further issues, please refer to:"
+    echo " https://github.com/cantosun99/intel-deep-learning-essentials"
+    echo "========================================================================"
+
     # Must run without fakeroot env so --install-dir is respected by the installer
     local _real_user="${SUDO_USER:-$USER}"
 
