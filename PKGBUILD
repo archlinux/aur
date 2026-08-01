@@ -2,7 +2,7 @@
 pkgname=obsidian2web-git
 pkgver=1.4.0.r48.g4700798
 pkgrel=1
-pkgdesc="lun-4's obsidian publish knockoff that generates (largely static) websites (git version)"
+pkgdesc="lun-4's obsidian publish knockoff that generates (largely static) websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lun-4/obsidian2web"
 license=('MIT')
