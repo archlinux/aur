@@ -1,6 +1,6 @@
 pkgbase = coyote-bin
 	pkgdesc = All-in-one, batteries-included LLM CLI Tool
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/Dark-Alex-17/coyote
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = coyote-bin
 	provides = coyote
 	conflicts = coyote
 	options = !strip
-	source = README-0.8.1.md::https://raw.githubusercontent.com/Dark-Alex-17/coyote/v0.8.1/README.md
-	source = LICENSE-0.8.1::https://raw.githubusercontent.com/Dark-Alex-17/coyote/v0.8.1/LICENSE
+	source = README-0.8.2.md::https://raw.githubusercontent.com/Dark-Alex-17/coyote/v0.8.2/README.md
+	source = LICENSE-0.8.2::https://raw.githubusercontent.com/Dark-Alex-17/coyote/v0.8.2/LICENSE
 	sha256sums = b7adb6effd180322a51c04b717b22f3b26e7735246909577cf8523c836acd69f
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = coyote-x86_64-0.8.1.tgz::https://github.com/Dark-Alex-17/coyote/releases/download/v0.8.1/coyote-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = ed06aa18e803a7220d3e047ccbf3951cc8c5b31be48a7cf7b972c14fc07cd4ad
-	source_aarch64 = coyote-aarch64-0.8.1.tgz::https://github.com/Dark-Alex-17/coyote/releases/download/v0.8.1/coyote-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 703e9509b01f73eaad8231f4448757f0a4bdcf47abd396dabcf01ae0e75b452b
+	source_x86_64 = coyote-x86_64-0.8.2.tgz::https://github.com/Dark-Alex-17/coyote/releases/download/v0.8.2/coyote-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = bd5e0d725bc06dea545258c692f4ce2ed3606b3082a8d3f68e4a89644ee7b819
+	source_aarch64 = coyote-aarch64-0.8.2.tgz::https://github.com/Dark-Alex-17/coyote/releases/download/v0.8.2/coyote-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = dfc94f33312e118db0e4bac4345a58e597a4c33a0d983a4c3eb3fa2d0d6a487b
 
 pkgname = coyote-bin
