@@ -1,7 +1,7 @@
 pkgname=simple-password
 _reponame=spass
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A password generator without any unnecessary stuff"
 arch=('x86_64')
 url="https://github.com/ESzPa/spass"
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'xxd')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d863ad4f0f26dc2e4f5c1bbea310f9df17fe08c1ed5dfb1fbc08afcf2a0a0a0')
+sha256sums=('f941b45609361d6b7b78a23f8f16a942af7bca8012d48ddd9a4b4d473817e68a')
 
 build() {
   cmake -B build -S "$_reponame-$pkgver" \
