@@ -1,0 +1,21 @@
+pkgbase = ttf-ibm-plex-meta
+	pkgdesc = Meta package to install IBM Plex fonts
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = any
+	license = None
+	depends = ttf-ibm-plex-sans-only
+	depends = ttf-ibm-plex-serif-only
+	depends = ttf-ibm-plex-mono-only
+	depends = ttf-ibm-plex-math
+	depends = ttf-ibm-plex-sans-arabic
+	depends = ttf-ibm-plex-sans-devanagari
+	depends = ttf-ibm-plex-sans-hebrew
+	depends = ttf-ibm-plex-sans-jp
+	depends = ttf-ibm-plex-sans-kr
+	depends = ttf-ibm-plex-sans-sc
+	depends = ttf-ibm-plex-sans-tc
+	depends = ttf-ibm-pelx-sans-thai
+	optdepends = ttf-nerd-fonts-symbols: Nerd font symbols
+
+pkgname = ttf-ibm-plex-meta
