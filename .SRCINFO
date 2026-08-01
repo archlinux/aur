@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-serif-only
+	pkgdesc = IBM Plex Serif (no additional languages)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-serif-only-2.0.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-serif%402.0.0/ibm-plex-serif.zip
+	sha256sums = fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200
+
+pkgname = ttf-ibm-plex-serif-only
