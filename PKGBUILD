@@ -2,12 +2,12 @@
 
 pkgname=forager
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam-like game launcher for your local game library"
 arch=('x86_64')
 url="https://github.com/foxinwinter/forager"
 license=('AGPL-3.0-only')
-depends=('python' 'pyside6' 'python-evdev' 'python-keyring' 'python-pillow')
+depends=('python' 'pyside6' 'python-evdev' 'python-keyring' 'python-pillow' 'steam')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("forager-v${pkgver}.tar.gz::https://github.com/foxinwinter/forager/archive/v${pkgver}.tar.gz"
         'forager.desktop')
