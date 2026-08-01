@@ -2,7 +2,7 @@
 
 _name=smithy-http
 pkgname=python-$_name
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='HTTP components for Smithy tooling.'
 arch=('any')
@@ -11,10 +11,10 @@ url="$_repo/tree/develop/packages/smithy-http"
 license=('Apache-2.0')
 depends=('python' 'python-smithy-core')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun' 'python-awscrt' 'python-yarl' 'python-smithy-json')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun' 'python-awscrt' 'python-yarl' 'python-smithy-json' 'python-aiohttp')
 optdepends=('python-awscrt: awscrt' 'python-aiohttp: aiohttp' 'python-yarl: aiohttp')
 source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('76f4b6eecc4ae8e10a0ae5622e1f25d459f11bede40cdd191473dfe82279aa9c')
+sha256sums=('d9f72e9668626581da6827d844bfd4da4355d3a56ec65fd10a27e9ed707b1417')
 
 build() {
   cd "$srcdir"/$_name/packages/$_name
