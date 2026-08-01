@@ -18,7 +18,7 @@ provides=("${_appname}")
 options=('!strip')
 source=("${_url}/releases/download/${_appname}-v${pkgver}/${_appname}-core-linux-${arch[0]}-v${pkgver}.zip"
   "${_rawurl}/LICENSE.txt")
-sha256sums=('924d2085c9e4b87ba4a3ff6d6632cff67327c262df915241989e5efaffa31eb4'
+sha256sums=('bd34d4be280c891df36927a8b08764aa2fad484709a10a7b11783e6f6dd87567'
             'cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d')
 
 package() {
