@@ -24,14 +24,16 @@ prepare() {
 
 build() {
   local desktop_file
-  desktop_file=$(find squashfs-root -maxdepth 2 -name "*.desktop" | head -1)
+  desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
 
   if [[ -n "$desktop_file" ]]; then
+    # Исправляем строку Exec и принудительно задаем категорию Network для KDE меню Интернет
     sed -i -E "s|Exec=AppRun.*|Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/${_pkgname}|" \
       "$desktop_file"
+    sed -i -E "s|Categories=.*|Categories=Network;InstantMessaging;|" "$desktop_file"
   fi
 
-  chmod -R a-x+rX squashfs-root/usr 2>/dev/null || true
+  chmod -R a-x+rX "${srcdir}/squashfs-root/usr" 2>/dev/null || true
 }
 
 package() {
@@ -53,6 +55,7 @@ EOF
   desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
 
   if [[ -n "$desktop_file" ]]; then
+    # Сохраняем имя ярлыка как у иконки (echoed.desktop), чтобы KDE их связал
     install -Dm644 "$desktop_file" \
       "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   fi
