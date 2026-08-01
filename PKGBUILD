@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=fotocx
-pkgver=26.6.1
+pkgver=26.7
 pkgrel=1
 pkgdesc='Image editing and collection management program'
 url=https://www.kornelix.net/fotocx/fotocx.html
 arch=(x86_64)
 license=(GPL-3.0-or-later)
-depends=(dcraw gtk3 libchamplain libjxl perl-image-exiftool xdg-utils xorg-xmessage)
+depends=(dcraw gtk3 libjxl perl-image-exiftool webkit2gtk-4.1 xdg-utils xorg-xmessage)
 optdepends=(
   'darktable: organize and develop raw images'
   'dvd+rw-tools: for burning CDs, DVDs and Blue-rays'
@@ -21,7 +21,7 @@ optdepends=(
   'vlc: for viewing video')
 replaces=(fotoxx)
 source=("https://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('47cc993eec17c43f2421c494029f6b8dd1e13ae26dd42a5f6366eb3b3401905e')
+sha256sums=('85f1258d1858e5de53793f1ef86f19a5143ff23a3193bb355289f21381587ace')
 
 build() {
   make -C $pkgname PREFIX=/usr

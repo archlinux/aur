@@ -1,15 +1,15 @@
 pkgbase = fotocx
 	pkgdesc = Image editing and collection management program
-	pkgver = 26.6.1
+	pkgver = 26.7
 	pkgrel = 1
 	url = https://www.kornelix.net/fotocx/fotocx.html
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = dcraw
 	depends = gtk3
-	depends = libchamplain
 	depends = libjxl
 	depends = perl-image-exiftool
+	depends = webkit2gtk-4.1
 	depends = xdg-utils
 	depends = xorg-xmessage
 	optdepends = darktable: organize and develop raw images
@@ -23,7 +23,7 @@ pkgbase = fotocx
 	optdepends = rawtherapee: for raw image processing
 	optdepends = vlc: for viewing video
 	replaces = fotoxx
-	source = https://www.kornelix.net/downloads/downloads/fotocx-26.6.1-source.tar.gz
-	sha256sums = 47cc993eec17c43f2421c494029f6b8dd1e13ae26dd42a5f6366eb3b3401905e
+	source = https://www.kornelix.net/downloads/downloads/fotocx-26.7-source.tar.gz
+	sha256sums = 85f1258d1858e5de53793f1ef86f19a5143ff23a3193bb355289f21381587ace
 
 pkgname = fotocx
