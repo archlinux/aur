@@ -1,0 +1,5 @@
+[python-steam]
+source = "git"
+git = "https://github.com/solsticegamestudios/steam.git"
+prefix = "v"
+#exclude_regex = ".*alpha.*"
