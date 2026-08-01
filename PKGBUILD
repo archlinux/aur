@@ -2,7 +2,7 @@
 
 _pkgbase=unofficial-homestuck-collection
 pkgname="${_pkgbase}-bin"
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
@@ -55,7 +55,7 @@ source=("https://github.com/GiovanH/${_pkgbase}/releases/download/v${pkgver}/${_
         "256x256.png"
         "512x512.png"
         "1024x1024.png")
-sha512sums=('58e431fe6b43b24feb820a0e212b1e69256ac2df344e4e2b79eabc16723d5a69f339d2a18ffa83388a3e287704b6f41f46b51f6e6b77bceb9e17325241bc320f'
+sha512sums=('23ef50204f27424fd8553c260b8ee5827da32ebd77a1da9f98c2214a8356585a24180e2c7ed751bc482ffe0f030c6939165484f476b343e02a5a83d329eb13fc'
             'c306002d6296c83272c6e030c7e8be8545380a4ef859bdb1a4edf865286cc0e1b585d85f6ac9bf23d31639e3cee02e0d87ff13ef7afd3c804617f5af2e936b31'
             'adecf88c02bad349a7e1fd175256cc8741ce22435172a067d7d8fddb20de0ee960ee99c20e215b9c4a5069eeba5dff1750f209b1beb9919b511803ba78aeb380'
             'e12fce5c7e457ba8c021ad9ff481d4af288351f04a0d6cb8b4a4bdd0f1e4f765efd0638b9edb9f2dae84463834d6f2494c09cdb155e16d9a36db408e54b49a74'
