@@ -1,0 +1,13 @@
+*-build.log
+*-check.log
+*-package*.log
+PKGBUILD-namcap.log
+*.pkg.tar
+*.pkg.tar.*
+*.pkg.tar.*-namcap.log
+*-pkgver.log
+*-prepare.log
+*.tar.gz
+*.tar.gz.asc
+/pkg
+/src
