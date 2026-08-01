@@ -27,25 +27,35 @@ build() {
   desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
 
   if [[ -n "$desktop_file" ]]; then
-    # Исправляем строку Exec и принудительно задаем категорию Network для KDE меню Интернет
-    sed -i -E "s|Exec=AppRun.*|Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/${_pkgname}|" \
+    # Исправляем Exec + добавляем LD_PRELOAD
+    sed -i -E "s|Exec=AppRun.*|Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/${_pkgname} %U|" \
       "$desktop_file"
-    sed -i -E "s|Categories=.*|Categories=Network;InstantMessaging;|" "$desktop_file"
+
+    # Ставим правильные категории для KDE
+    if grep -q '^Categories=' "$desktop_file"; then
+      sed -i -E 's|^Categories=.*|Categories=Network;InstantMessaging;|' "$desktop_file"
+    else
+      echo "Categories=Network;InstantMessaging;" >> "$desktop_file"
+    fi
+
+    # На всякий случай задаём имя приложения
+    sed -i -E "s|^Name=.*|Name=Echoed|" "$desktop_file" || true
   fi
 
+  # Чиним права
   chmod -R a-x+rX "${srcdir}/squashfs-root/usr" 2>/dev/null || true
 }
 
 package() {
-  # Ставим сам AppImage
+  # AppImage
   install -Dm755 "${srcdir}/${_appimage}" \
     "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
-  # Обёртка с LD_PRELOAD
+  # Обёртка
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/${_pkgname}" << 'EOF'
 #!/bin/bash
-export LD_PRELOAD=/usr/lib/libwayland-client.so
+export LD_PRELOAD=/usr/lib/libwayland-client.so${LD_PRELOAD:+:$LD_PRELOAD}
 exec /opt/echoed-appimage/echoed-appimage.AppImage "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
@@ -55,14 +65,12 @@ EOF
   desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
 
   if [[ -n "$desktop_file" ]]; then
-    # Сохраняем имя ярлыка как у иконки (echoed.desktop), чтобы KDE их связал
     install -Dm644 "$desktop_file" \
       "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   fi
 
   # Иконки
   if [[ -d "${srcdir}/squashfs-root/usr/share/icons" ]]; then
-    install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
   fi
 }
