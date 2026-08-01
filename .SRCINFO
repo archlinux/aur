@@ -1,0 +1,20 @@
+pkgbase = mbedtls2-bin
+	pkgdesc = An open source, portable, easy to use, readable and flexible TLS library
+	pkgver = 2.28.10
+	pkgrel = 1
+	url = https://tls.mbed.org
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	provides = libmbedcrypto.so
+	provides = libmbedtls.so
+	provides = libmbedx509.so
+	source = git+https://github.com/Mbed-TLS/mbedtls.git#tag=2fc8413bfcb51354c8e679141b17b3f1a5942561
+	source = resolver
+	b2sums = 5556a44b7df49fb6cabf046915218cdd3f1176b5e63febae3697d7d5e701d1e0d97d0cb107c5ad4f852d8f4296ff1fe1bbfd21fe822b2a153ceccaf9849290d1
+
+pkgname = mbedtls2-bin
