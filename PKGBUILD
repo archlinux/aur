@@ -1,6 +1,6 @@
 # Maintainer: Aarav Maloo <aaravmaloo06@gmail.com>
 pkgname=blob-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A minimal note manager that stays out of your way."
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('blob')
 source_x86_64=("https://github.com/aaravmaloo/blob/releases/download/v${pkgver}/blob-linux-amd64")
 source_aarch64=("https://github.com/aaravmaloo/blob/releases/download/v${pkgver}/blob-linux-arm64")
 
-sha256sums_x86_64=('50ad4e552f8d16cc7ad25ff9d1b27eed0562cbf701ea6d7a986d9ba2caa6f667')
-sha256sums_aarch64=('e3182e049fce4e2255066b928257d648dda2578a44009d3c0299334e2ff90049')
+sha256sums_x86_64=('e6acc86b1dc404934a32b287168d8be6dc839b53da069e2b9797e539a54f6521')
+sha256sums_aarch64=('14bf2168f2eb161417bceeae7546634b00e166c96d76d3eb67cb0927d5c751fd')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
