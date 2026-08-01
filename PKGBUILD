@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="mvw"
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="MoVie revieW inspired by fastfetch"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-rich-pixels' 'python-typer' 'python-rich' 'python-plat
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('edd947fd90d59d8325a25444696557eee6af68815cc7ca5915ab0854f1ed5ec4')
+sha256sums=('a0b5399b55af1a48e215cda4ca1e5cfc726cc3245d67ddc7ada17d90cea99da1')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
