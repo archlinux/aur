@@ -1,7 +1,7 @@
 pkgbase = tooi-git
 	pkgdesc = Text-based user interface for Mastodon, Pleroma and friends (development version)
-	pkgver = 0.21.2.r4.gd7a13e4
-	pkgrel = 3
+	pkgver = 0.27.0.r0.gba969ce
+	pkgrel = 1
 	url = https://codeberg.org/ihabunek/tooi
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = tooi-git
 	depends = python-aiodns
 	depends = python-aiohttp
 	depends = python-beautifulsoup4
+	depends = python-certifi
 	depends = python-click
 	depends = python-html2text
 	depends = python-platformdirs
@@ -26,6 +27,7 @@ pkgbase = tooi-git
 	depends = python-typing_extensions
 	provides = tooi
 	conflicts = tooi
+	options = !strip
 	source = tooi::git+https://codeberg.org/ihabunek/tooi.git
 	sha256sums = SKIP
 

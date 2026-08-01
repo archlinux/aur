@@ -7,11 +7,11 @@
 _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
-pkgver=0.21.2.r4.gd7a13e4
-pkgrel=3
+pkgver=0.27.0.r0.gba969ce
+pkgrel=1
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -25,6 +25,7 @@ depends=(
   'python-aiodns'   # For fast DNS resolving by aiohttp
   'python-aiohttp'
   'python-beautifulsoup4'
+  'python-certifi'
   'python-click'
   'python-html2text'
   'python-platformdirs'
@@ -37,6 +38,7 @@ depends=(
 )
 provides=('tooi')
 conflicts=("${provides[@]}")
+options=('!strip')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -44,7 +46,7 @@ pkgver() {
   cd "$_pkgname"
 
   git describe --long --tags \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -56,6 +58,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
