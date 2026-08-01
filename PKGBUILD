@@ -2,13 +2,13 @@
 
 pkgname=ima2-gen
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Local OAuth image generation studio for GPT Image 2 workflows'
 arch=('x86_64')
 url='https://lidge-jun.github.io/ima2-gen/'
 license=('MIT')
-depends=('nodejs>=20' 'gcc-libs' 'glibc')
-makedepends=('npm')
+depends=('nodejs>=20' 'gcc-libs' 'glibc' 'ncurses')
+makedepends=('npm' 'node-gyp' 'python')
 optdepends=(
   'python: ComfyUI bridge support'
   'python-numpy: ComfyUI bridge support'
@@ -33,6 +33,15 @@ package() {
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
   install -Dm644 "${node_root}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # npm 12 refuses to run install scripts unless the package is listed in
+  # allow-scripts, and only warns when it skips them, so better-sqlite3's
+  # native binding is silently absent. Build it here from the amalgamation
+  # shipped in the tarball, against the headers from the nodejs package.
+  local sqlite_dir="${node_root}/node_modules/better-sqlite3"
+  ( cd "${sqlite_dir}" && npm_config_nodedir=/usr node-gyp rebuild --release )
+  [[ -f "${sqlite_dir}/build/Release/better_sqlite3.node" ]] || return 1
+  rm -f "${sqlite_dir}/build/Release/test_extension.node"
 
   find "${node_root}" -type f -name '*.node' \
     \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*-musl*' \) \

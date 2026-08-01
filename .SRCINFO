@@ -1,14 +1,17 @@
 pkgbase = ima2-gen
 	pkgdesc = Local OAuth image generation studio for GPT Image 2 workflows
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lidge-jun.github.io/ima2-gen/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = node-gyp
+	makedepends = python
 	depends = nodejs>=20
 	depends = gcc-libs
 	depends = glibc
+	depends = ncurses
 	optdepends = python: ComfyUI bridge support
 	optdepends = python-numpy: ComfyUI bridge support
 	optdepends = python-pillow: ComfyUI bridge support
