@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodically update Mihomo subscription provider
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=6h
+RandomizedDelaySec=10min
+Persistent=true
+Unit=mihomo-subscription-update.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,1146 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import argparse
+import copy
+import fcntl
+import getpass
+import grp
+import ipaddress
+import json
+import os
+import re
+import secrets
+import shlex
+import shutil
+import socket
+import subprocess
+import sys
+import tempfile
+import urllib.parse
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+
+PROGRAM = "mihomo-subscription"
+DEFAULT_CONTROL_FILE = Path("/etc/mihomo-subscription/subscriptions.yaml")
+DEFAULT_SECRETS_FILE = Path("/etc/mihomo-subscription/secrets.env")
+SHARE_DIR = Path("/usr/share/mihomo-webui-config")
+LOCK_FILE = Path("/run/mihomo-subscription.lock")
+SOURCE_ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
+RAW_SCHEMES = (
+    "ss://",
+    "ssr://",
+    "vmess://",
+    "vless://",
+    "trojan://",
+    "hysteria://",
+    "hysteria2://",
+    "hy2://",
+    "tuic://",
+)
+
+
+class SubscriptionError(RuntimeError):
+    pass
+
+
+def log(message: str) -> None:
+    print(f"[{PROGRAM}] {message}", file=sys.stderr)
+
+
+def load_yaml(path: Path) -> Any:
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            return yaml.safe_load(file)
+    except FileNotFoundError as exc:
+        raise SubscriptionError(f"文件不存在：{path}") from exc
+    except yaml.YAMLError as exc:
+        raise SubscriptionError(f"YAML 解析失败：{path}: {exc}") from exc
+
+
+def dump_yaml(data: Any) -> bytes:
+    return yaml.safe_dump(
+        data,
+        allow_unicode=True,
+        sort_keys=False,
+        default_flow_style=False,
+    ).encode("utf-8")
+
+
+def atomic_write(path: Path, data: bytes, mode: int = 0o600) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    file_descriptor, temporary_name = tempfile.mkstemp(
+        prefix=f".{path.name}.",
+        dir=str(path.parent),
+    )
+    temporary_path = Path(temporary_name)
+
+    try:
+        os.fchmod(file_descriptor, mode)
+        with os.fdopen(file_descriptor, "wb", closefd=True) as file:
+            file.write(data)
+            file.flush()
+            os.fsync(file.fileno())
+
+        os.replace(temporary_path, path)
+
+        directory_fd = os.open(path.parent, os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+    except Exception:
+        temporary_path.unlink(missing_ok=True)
+        raise
+
+
+def ensure_inside(base: Path, candidate: Path) -> Path:
+    base_resolved = base.resolve()
+    candidate_resolved = candidate.resolve(strict=False)
+
+    try:
+        candidate_resolved.relative_to(base_resolved)
+    except ValueError as exc:
+        raise SubscriptionError(
+            f"拒绝访问 home_dir 之外的路径：{candidate_resolved}"
+        ) from exc
+
+    return candidate_resolved
+
+
+def apply_service_group(path: Path, group_name: str, mode: int) -> None:
+    """chgrp + chmod，让以独立用户运行的 mihomo.service 能读取文件。"""
+    if not group_name:
+        return
+
+    try:
+        gid = grp.getgrnam(group_name).gr_gid
+    except KeyError:
+        log(f"警告：用户组 {group_name} 不存在，{path} 保持原属组和权限")
+        return
+
+    try:
+        os.chown(path, -1, gid)
+        os.chmod(path, mode)
+    except PermissionError:
+        log(f"警告：无权将 {path} 的属组设为 {group_name}，请用 root 运行")
+
+
+def expand_environment(value: Any) -> Any:
+    if isinstance(value, str):
+        return os.path.expandvars(value)
+    if isinstance(value, list):
+        return [expand_environment(item) for item in value]
+    if isinstance(value, dict):
+        return {key: expand_environment(item) for key, item in value.items()}
+    return value
+
+
+def load_env_file(path: Path, *, override: bool = False) -> None:
+    if not path.exists():
+        return
+
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError as exc:
+        raise SubscriptionError(f"无法读取密钥文件：{path}: {exc}") from exc
+
+    for line_number, raw_line in enumerate(lines, 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        if line.startswith("export "):
+            line = line[7:].lstrip()
+
+        try:
+            parts = shlex.split(line, comments=True, posix=True)
+        except ValueError as exc:
+            raise SubscriptionError(
+                f"密钥文件语法错误：{path}:{line_number}: {exc}"
+            ) from exc
+
+        if len(parts) != 1 or "=" not in parts[0]:
+            raise SubscriptionError(
+                f"密钥文件仅支持 KEY=value 行：{path}:{line_number}"
+            )
+
+        key, value = parts[0].split("=", 1)
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+            raise SubscriptionError(
+                f"密钥文件变量名无效：{path}:{line_number}: {key}"
+            )
+
+        if override or key not in os.environ:
+            os.environ[key] = value
+
+
+def read_env_file_value(path: Path, key: str) -> str | None:
+    if not path.exists():
+        return None
+
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError as exc:
+        raise SubscriptionError(f"无法读取密钥文件：{path}: {exc}") from exc
+
+    for line_number, raw_line in enumerate(lines, 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        if line.startswith("export "):
+            line = line[7:].lstrip()
+
+        try:
+            parts = shlex.split(line, comments=True, posix=True)
+        except ValueError as exc:
+            raise SubscriptionError(
+                f"密钥文件语法错误：{path}:{line_number}: {exc}"
+            ) from exc
+
+        if len(parts) != 1 or "=" not in parts[0]:
+            continue
+
+        found_key, value = parts[0].split("=", 1)
+        if found_key == key:
+            return value
+
+    return None
+
+
+def set_env_file_value(path: Path, key: str, value: str) -> None:
+    if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+        raise SubscriptionError(f"变量名无效：{key}")
+
+    lines: list[str] = []
+    if path.exists():
+        lines = path.read_text(encoding="utf-8").splitlines()
+
+    assignment = f"{key}={shlex.quote(value)}"
+    pattern = re.compile(rf"^\s*(?:export\s+)?{re.escape(key)}=")
+    replaced = False
+    new_lines: list[str] = []
+
+    for line in lines:
+        if not line.lstrip().startswith("#") and pattern.match(line):
+            new_lines.append(assignment)
+            replaced = True
+        else:
+            new_lines.append(line)
+
+    if not replaced:
+        if new_lines and new_lines[-1].strip():
+            new_lines.append("")
+        new_lines.append(assignment)
+
+    atomic_write(path, ("\n".join(new_lines) + "\n").encode("utf-8"), 0o600)
+
+
+def enable_source_in_control_file(
+    path: Path,
+    *,
+    source_id: str,
+    url_env: str,
+    converter_type: str = "direct",
+) -> None:
+    if converter_type not in ("direct", "subconverter"):
+        raise SubscriptionError(f"不支持的 converter.type：{converter_type}")
+
+    control = load_yaml(path)
+    if not isinstance(control, dict) or not isinstance(control.get("sources"), list):
+        raise SubscriptionError("订阅控制文件格式无效，无法启用来源")
+
+    for source in control["sources"]:
+        if isinstance(source, dict) and source.get("id") == source_id:
+            source["enabled"] = True
+            source["url_env"] = url_env
+            source.pop("url", None)
+            if converter_type == "subconverter":
+                source["converter"] = {
+                    "type": "subconverter",
+                    "endpoint": "http://127.0.0.1:25500/sub",
+                    "target": "clash",
+                    "allow_remote": False,
+                }
+            else:
+                source["converter"] = {"type": "direct"}
+            atomic_write(path, dump_yaml(control), 0o600)
+            return
+
+    raise SubscriptionError(f"订阅控制文件中没有来源：{source_id}")
+
+
+def ask_yes_no(question: str, *, default: bool = False) -> bool:
+    suffix = "[Y/n]" if default else "[y/N]"
+    answer = input(f"{question} {suffix} ").strip().lower()
+    if not answer:
+        return default
+    return answer in ("y", "yes")
+
+
+def resolve_source_url(source: dict[str, Any]) -> str:
+    direct_url = source.get("url")
+    environment_name = source.get("url_env")
+
+    if direct_url and environment_name:
+        raise SubscriptionError(
+            f"来源 {source['id']} 不能同时设置 url 和 url_env"
+        )
+
+    if environment_name:
+        value = os.environ.get(str(environment_name), "").strip()
+        if not value:
+            raise SubscriptionError(
+                f"来源 {source['id']} 所需环境变量未设置：{environment_name}"
+            )
+        return value
+
+    if direct_url:
+        return str(direct_url).strip()
+
+    raise SubscriptionError(f"来源 {source['id']} 未设置 url 或 url_env")
+
+
+def read_limited(response: Any, limit: int) -> bytes:
+    data = response.read(limit + 1)
+    if len(data) > limit:
+        raise SubscriptionError(f"订阅响应超过大小限制：{limit} bytes")
+    return data
+
+
+def fetch_url(
+    url: str,
+    *,
+    headers: dict[str, str],
+    timeout: int,
+    max_bytes: int,
+) -> bytes:
+    request_headers = {
+        "User-Agent": "mihomo",
+        "Accept": "*/*",
+        "Accept-Encoding": "identity",
+    }
+    request_headers.update(headers)
+
+    request = urllib.request.Request(url, headers=request_headers, method="GET")
+
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            status = getattr(response, "status", 200)
+            if not 200 <= status < 300:
+                raise SubscriptionError(f"HTTP 状态异常：{status}")
+            return read_limited(response, max_bytes)
+    except SubscriptionError:
+        raise
+    except Exception as exc:
+        raise SubscriptionError(f"下载失败：{type(exc).__name__}: {exc}") from exc
+
+
+def endpoint_is_loopback(endpoint: str) -> bool:
+    parsed = urllib.parse.urlparse(endpoint)
+    hostname = parsed.hostname
+
+    if not hostname:
+        return False
+
+    if hostname == "localhost":
+        return True
+
+    try:
+        return ipaddress.ip_address(hostname).is_loopback
+    except ValueError:
+        pass
+
+    try:
+        addresses = socket.getaddrinfo(hostname, parsed.port or 80)
+    except socket.gaierror:
+        return False
+
+    for item in addresses:
+        address = item[4][0]
+        try:
+            if not ipaddress.ip_address(address).is_loopback:
+                return False
+        except ValueError:
+            return False
+
+    return bool(addresses)
+
+
+def convert_with_subconverter(
+    source_url: str,
+    converter: dict[str, Any],
+    *,
+    timeout: int,
+    max_bytes: int,
+) -> bytes:
+    endpoint = str(converter.get("endpoint", "http://127.0.0.1:25500/sub"))
+    allow_remote = bool(converter.get("allow_remote", False))
+
+    if not allow_remote and not endpoint_is_loopback(endpoint):
+        raise SubscriptionError(
+            "为防止订阅 token 泄露，默认只允许本机 subconverter；"
+            "确需远程转换时显式设置 allow_remote: true"
+        )
+
+    query = urllib.parse.urlencode(
+        {
+            "target": converter.get("target", "clash"),
+            "url": source_url,
+            "emoji": "false",
+            "append_info": "false",
+        }
+    )
+    separator = "&" if "?" in endpoint else "?"
+    converted_url = f"{endpoint}{separator}{query}"
+
+    return fetch_url(
+        converted_url,
+        headers={"User-Agent": "mihomo-webui-config"},
+        timeout=timeout,
+        max_bytes=max_bytes,
+    )
+
+
+def decode_text(data: bytes) -> str:
+    for encoding in ("utf-8-sig", "utf-8"):
+        try:
+            return data.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+
+    raise SubscriptionError("订阅内容不是有效 UTF-8 文本")
+
+
+def looks_like_raw_subscription(text: str) -> bool:
+    stripped = text.strip()
+
+    if any(scheme in stripped for scheme in RAW_SCHEMES):
+        return True
+
+    compact = "".join(stripped.split())
+    if len(compact) >= 16 and re.fullmatch(r"[A-Za-z0-9+/=_-]+", compact):
+        return True
+
+    return False
+
+
+def extract_proxies(text: str, source_id: str) -> list[dict[str, Any]]:
+    try:
+        document = yaml.safe_load(text)
+    except yaml.YAMLError as exc:
+        if looks_like_raw_subscription(text):
+            raise SubscriptionError(
+                f"来源 {source_id} 看起来是 URI/Base64 订阅；"
+                "请为该来源配置本地 subconverter"
+            ) from exc
+        raise SubscriptionError(f"来源 {source_id} 的 YAML 无法解析：{exc}") from exc
+
+    proxies: Any
+    if isinstance(document, dict) and isinstance(document.get("payload"), list):
+        proxies = document["payload"]
+    elif isinstance(document, dict) and isinstance(document.get("proxies"), list):
+        proxies = document["proxies"]
+    elif isinstance(document, list):
+        proxies = document
+    else:
+        if looks_like_raw_subscription(text):
+            raise SubscriptionError(
+                f"来源 {source_id} 是原始订阅格式；"
+                "请配置 converter.type: subconverter"
+            )
+        raise SubscriptionError(f"来源 {source_id} 不包含 proxies 或 payload 列表")
+
+    normalized: list[dict[str, Any]] = []
+    for index, item in enumerate(proxies):
+        if not isinstance(item, dict):
+            raise SubscriptionError(
+                f"来源 {source_id} 的第 {index + 1} 个节点不是映射对象"
+            )
+
+        node = copy.deepcopy(item)
+        name = node.get("name")
+        node_type = node.get("type")
+
+        if not isinstance(name, str) or not name.strip():
+            raise SubscriptionError(
+                f"来源 {source_id} 的第 {index + 1} 个节点缺少有效 name"
+            )
+
+        if not isinstance(node_type, str) or not node_type.strip():
+            raise SubscriptionError(f"来源 {source_id} 的节点 {name!r} 缺少有效 type")
+
+        normalized.append(node)
+
+    return normalized
+
+
+def apply_prefix_and_validate_names(
+    proxies: list[dict[str, Any]],
+    *,
+    source_id: str,
+    prefix: str,
+) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    names: set[str] = set()
+
+    for node in proxies:
+        new_node = copy.deepcopy(node)
+        new_name = f"{prefix}{str(node['name']).strip()}"
+
+        if new_name in names:
+            raise SubscriptionError(f"来源 {source_id} 中存在重名节点：{new_name}")
+
+        names.add(new_name)
+        new_node["name"] = new_name
+        result.append(new_node)
+
+    return result
+
+
+def normalize_source(
+    source: dict[str, Any],
+    *,
+    timeout: int,
+    max_bytes: int,
+) -> list[dict[str, Any]]:
+    source_id = str(source["id"])
+    source_url = resolve_source_url(source)
+    converter = source.get("converter") or {"type": "direct"}
+    converter_type = str(converter.get("type", "direct"))
+
+    if converter_type == "direct":
+        user_agent = str(source.get("user_agent", "mihomo"))
+        headers = expand_environment(source.get("headers") or {})
+        headers = {str(key): str(value) for key, value in headers.items()}
+        headers.setdefault("User-Agent", user_agent)
+
+        raw_data = fetch_url(
+            source_url,
+            headers=headers,
+            timeout=timeout,
+            max_bytes=max_bytes,
+        )
+    elif converter_type == "subconverter":
+        raw_data = convert_with_subconverter(
+            source_url,
+            converter,
+            timeout=timeout,
+            max_bytes=max_bytes,
+        )
+    else:
+        raise SubscriptionError(
+            f"来源 {source_id} 使用了未知 converter.type：{converter_type}"
+        )
+
+    text = decode_text(raw_data)
+    proxies = extract_proxies(text, source_id)
+    prefix = str(source.get("prefix", f"[{source_id}] "))
+    proxies = apply_prefix_and_validate_names(
+        proxies,
+        source_id=source_id,
+        prefix=prefix,
+    )
+
+    if not proxies and not bool(source.get("allow_empty", False)):
+        raise SubscriptionError(f"来源 {source_id} 没有节点；为防止清空配置，已拒绝更新")
+
+    return proxies
+
+
+def validate_control_file(control: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    if not isinstance(control, dict):
+        raise SubscriptionError("控制文件顶层必须是映射")
+
+    if control.get("version") != 1:
+        raise SubscriptionError("仅支持 version: 1")
+
+    settings = control.get("settings")
+    sources = control.get("sources")
+
+    if not isinstance(settings, dict):
+        raise SubscriptionError("缺少 settings 映射")
+
+    if not isinstance(sources, list):
+        raise SubscriptionError("缺少 sources 列表")
+
+    seen_ids: set[str] = set()
+    validated_sources: list[dict[str, Any]] = []
+
+    for source in sources:
+        if not isinstance(source, dict):
+            raise SubscriptionError("sources 中的每一项都必须是映射")
+
+        source_id = source.get("id")
+        if not isinstance(source_id, str) or not SOURCE_ID_RE.fullmatch(source_id):
+            raise SubscriptionError("source.id 只能包含字母、数字、点、下划线和连字符")
+
+        if source_id in seen_ids:
+            raise SubscriptionError(f"重复的 source.id：{source_id}")
+
+        seen_ids.add(source_id)
+
+        if bool(source.get("enabled", True)):
+            validated_sources.append(source)
+
+    if not validated_sources:
+        raise SubscriptionError("没有已启用的订阅来源")
+
+    return settings, validated_sources
+
+
+def load_cached_payload(cache_file: Path, source_id: str) -> list[dict[str, Any]]:
+    cached = load_yaml(cache_file)
+
+    if not isinstance(cached, dict) or not isinstance(cached.get("payload"), list):
+        raise SubscriptionError(f"来源 {source_id} 的缓存格式无效：{cache_file}")
+
+    return cached["payload"]
+
+
+def build_candidate(
+    settings: dict[str, Any],
+    sources: list[dict[str, Any]],
+    *,
+    strict: bool,
+) -> tuple[bytes, dict[str, bytes], list[str]]:
+    timeout = int(settings.get("timeout_seconds", 30))
+    max_bytes = int(settings.get("max_download_bytes", 8 * 1024 * 1024))
+    cache_dir = Path(str(settings.get("cache_dir", "/var/lib/mihomo-subscription/cache")))
+
+    all_nodes: list[dict[str, Any]] = []
+    cache_candidates: dict[str, bytes] = {}
+    fallback_sources: list[str] = []
+    global_names: set[str] = set()
+
+    for source in sources:
+        source_id = str(source["id"])
+        cache_file = cache_dir / f"{source_id}.yaml"
+
+        try:
+            nodes = normalize_source(source, timeout=timeout, max_bytes=max_bytes)
+            cache_candidates[source_id] = dump_yaml({"payload": nodes})
+            log(f"来源 {source_id}：获取到 {len(nodes)} 个节点")
+        except Exception as exc:
+            if strict or not cache_file.exists():
+                raise SubscriptionError(
+                    f"来源 {source_id} 更新失败，且无法使用缓存：{exc}"
+                ) from exc
+
+            nodes = load_cached_payload(cache_file, source_id)
+            fallback_sources.append(source_id)
+            log(
+                f"警告：来源 {source_id} 更新失败，"
+                f"继续使用上一份缓存（{len(nodes)} 个节点）"
+            )
+
+        for node in nodes:
+            name = str(node["name"])
+            if name in global_names:
+                raise SubscriptionError(f"聚合后出现重名节点：{name}")
+            global_names.add(name)
+            all_nodes.append(node)
+
+    if not all_nodes:
+        raise SubscriptionError("聚合结果为空，拒绝覆盖现有 provider")
+
+    # Mihomo 的 file 类型 proxy-provider 要求顶层字段为 proxies。
+    # payload 是 rule-provider 的格式，写成 payload 会被核心拒绝加载。
+    return dump_yaml({"proxies": all_nodes}), cache_candidates, fallback_sources
+
+
+def validate_with_mihomo(settings: dict[str, Any], provider_bytes: bytes) -> None:
+    binary = Path(str(settings.get("mihomo_binary", "/usr/bin/mihomo")))
+    home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+    config_file = Path(str(settings.get("config_file", home_dir / "config.yaml")))
+    provider_name = str(settings.get("provider_name", "subscriptions"))
+    provider_relative = Path(str(settings.get("provider_file", "providers/subscriptions.yaml")))
+
+    if provider_relative.is_absolute():
+        raise SubscriptionError("provider_file 必须是相对于 home_dir 的路径")
+
+    provider_absolute = ensure_inside(home_dir, home_dir / provider_relative)
+    candidate_relative = provider_relative.parent / f".{provider_relative.name}.candidate"
+    candidate_absolute = ensure_inside(home_dir, home_dir / candidate_relative)
+    test_config = ensure_inside(home_dir, home_dir / ".subscription-test.yaml")
+
+    main_config = load_yaml(config_file)
+    if not isinstance(main_config, dict):
+        raise SubscriptionError("Mihomo 主配置顶层必须是映射")
+
+    providers = main_config.get("proxy-providers")
+    if not isinstance(providers, dict):
+        raise SubscriptionError("主配置缺少 proxy-providers")
+
+    provider_config = providers.get(provider_name)
+    if not isinstance(provider_config, dict):
+        raise SubscriptionError(f"主配置缺少 proxy-providers.{provider_name}")
+
+    if provider_config.get("type") != "file":
+        raise SubscriptionError(f"proxy-providers.{provider_name}.type 必须是 file")
+
+    test_document = copy.deepcopy(main_config)
+    test_document["proxy-providers"][provider_name]["path"] = (
+        "./" + candidate_relative.as_posix()
+    )
+
+    validation_environment = os.environ.copy()
+    safe_paths: list[str] = []
+    existing_safe_paths = validation_environment.get("SAFE_PATHS", "")
+    if existing_safe_paths:
+        safe_paths.extend(existing_safe_paths.split(os.pathsep))
+
+    configured_safe_paths = settings.get("safe_paths", [])
+    if isinstance(configured_safe_paths, str):
+        safe_paths.append(configured_safe_paths)
+    elif isinstance(configured_safe_paths, list):
+        safe_paths.extend(str(path) for path in configured_safe_paths)
+
+    external_ui = test_document.get("external-ui")
+    if isinstance(external_ui, str) and Path(external_ui).is_absolute():
+        safe_paths.append(external_ui)
+
+    unique_safe_paths = list(dict.fromkeys(path for path in safe_paths if path))
+    if unique_safe_paths:
+        validation_environment["SAFE_PATHS"] = os.pathsep.join(unique_safe_paths)
+
+    atomic_write(candidate_absolute, provider_bytes, 0o600)
+    atomic_write(test_config, dump_yaml(test_document), 0o600)
+
+    try:
+        completed = subprocess.run(
+            [str(binary), "-t", "-d", str(home_dir), "-f", str(test_config)],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            timeout=45,
+            check=False,
+            env=validation_environment,
+        )
+
+        if completed.returncode != 0:
+            output = completed.stdout.strip()
+            raise SubscriptionError("Mihomo 配置校验失败：\n" + output[-4000:])
+    except subprocess.TimeoutExpired as exc:
+        raise SubscriptionError("Mihomo 配置校验超时") from exc
+    finally:
+        candidate_absolute.unlink(missing_ok=True)
+        test_config.unlink(missing_ok=True)
+
+    ensure_inside(home_dir, provider_absolute)
+
+
+def install_provider(
+    settings: dict[str, Any],
+    provider_bytes: bytes,
+    cache_candidates: dict[str, bytes],
+    *,
+    dry_run: bool,
+) -> Path:
+    home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+    provider_relative = Path(str(settings.get("provider_file", "providers/subscriptions.yaml")))
+    provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+    state_dir = Path(str(settings.get("state_dir", "/var/lib/mihomo-subscription")))
+    cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
+    provider_group = str(settings.get("provider_group", "mihomo"))
+
+    if dry_run:
+        return provider_file
+
+    state_dir.mkdir(parents=True, exist_ok=True)
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
+    if provider_file.exists():
+        previous_file = state_dir / "subscriptions.yaml.previous"
+        shutil.copy2(provider_file, previous_file)
+        os.chmod(previous_file, 0o600)
+
+    atomic_write(provider_file, provider_bytes, 0o600)
+    apply_service_group(provider_file, provider_group, 0o640)
+
+    for source_id, cache_bytes in cache_candidates.items():
+        atomic_write(cache_dir / f"{source_id}.yaml", cache_bytes, 0o600)
+
+    return provider_file
+
+
+def reload_mihomo(settings: dict[str, Any], *, no_reload: bool) -> None:
+    if no_reload:
+        log("已跳过 Mihomo 重载")
+        return
+
+    service_name = str(settings.get("service_name", "mihomo.service"))
+    active = subprocess.run(["systemctl", "is-active", "--quiet", service_name], check=False)
+
+    if active.returncode != 0:
+        log(f"{service_name} 当前未运行，不执行重载")
+        return
+
+    show = subprocess.run(
+        ["systemctl", "show", service_name, "-p", "CanReload", "--value"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=False,
+    )
+    action = "reload" if show.stdout.strip() == "yes" else "restart"
+    if action == "restart":
+        log(f"{service_name} 不支持 reload，改用 restart 使新节点生效")
+
+    completed = subprocess.run(["systemctl", action, service_name], check=False)
+    if completed.returncode != 0:
+        raise SubscriptionError(
+            f"provider 已更新，但 {action} {service_name} 失败；"
+            f"请手工执行 systemctl restart {service_name}"
+        )
+
+
+def acquire_lock() -> Any:
+    LOCK_FILE.parent.mkdir(parents=True, exist_ok=True)
+    lock_handle = LOCK_FILE.open("w", encoding="utf-8")
+
+    try:
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as exc:
+        lock_handle.close()
+        raise SubscriptionError("已有另一个更新进程正在运行") from exc
+
+    return lock_handle
+
+
+def command_update(args: argparse.Namespace) -> int:
+    lock_handle = acquire_lock()
+
+    try:
+        if args.secrets_file is not None:
+            load_env_file(args.secrets_file)
+
+        control = load_yaml(args.control_file)
+        settings, sources = validate_control_file(control)
+
+        provider_bytes, cache_candidates, fallback_sources = build_candidate(
+            settings,
+            sources,
+            strict=args.strict,
+        )
+
+        validate_with_mihomo(settings, provider_bytes)
+        provider_file = install_provider(
+            settings,
+            provider_bytes,
+            cache_candidates,
+            dry_run=args.dry_run,
+        )
+
+        if args.dry_run:
+            log("校验成功；dry-run 模式未写入文件")
+            return 0
+
+        reload_mihomo(settings, no_reload=args.no_reload)
+
+        if fallback_sources:
+            log("更新完成，但以下来源使用了旧缓存：" + ", ".join(fallback_sources))
+        else:
+            log("所有订阅来源更新成功")
+
+        log(f"provider 文件：{provider_file}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
+def replace_secret(template: str) -> str:
+    return template.replace("__MIHOMO_SECRET__", secrets.token_urlsafe(32))
+
+
+def validate_controller_listen(value: str) -> str:
+    if any(character in value for character in "\r\n"):
+        raise argparse.ArgumentTypeError("controller 地址不能包含换行")
+
+    parsed = urllib.parse.urlsplit("//" + value)
+    try:
+        port = parsed.port
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"controller 端口无效：{value}") from exc
+
+    if (
+        not parsed.hostname
+        or port is None
+        or port < 1
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.path
+        or parsed.query
+        or parsed.fragment
+    ):
+        raise argparse.ArgumentTypeError(
+            "controller 地址必须为 HOST:PORT，例如 127.0.0.1:9090"
+        )
+
+    return value
+
+
+def configure_mihomo_template(
+    template: str,
+    *,
+    controller_listen: str | None,
+    allow_proxy_lan: bool,
+) -> str:
+    if controller_listen is not None:
+        replacement = "external-controller: " + json.dumps(controller_listen)
+        template, count = re.subn(
+            r"(?m)^external-controller:\s*.*$",
+            replacement,
+            template,
+            count=1,
+        )
+        if count != 1:
+            raise SubscriptionError("配置模板缺少 external-controller")
+
+    if allow_proxy_lan:
+        template, count = re.subn(
+            r"(?m)^allow-lan:\s*false\s*$",
+            "allow-lan: true",
+            template,
+            count=1,
+        )
+        if count != 1:
+            raise SubscriptionError("配置模板缺少 allow-lan: false")
+
+    return template
+
+
+def command_init(args: argparse.Namespace) -> int:
+    if args.non_interactive and args.require_subscription:
+        raise SubscriptionError("--non-interactive 不能与 --require-subscription 同时使用")
+
+    mihomo_home = Path("/etc/mihomo")
+    control_dir = Path("/etc/mihomo-subscription")
+    provider_dir = mihomo_home / "providers"
+    state_dir = Path("/var/lib/mihomo-subscription")
+    cache_dir = state_dir / "cache"
+
+    for directory, mode in (
+        (mihomo_home, 0o755),
+        (provider_dir, 0o750),
+        (control_dir, 0o700),
+        (state_dir, 0o700),
+        (cache_dir, 0o700),
+    ):
+        directory.mkdir(parents=True, exist_ok=True)
+        os.chmod(directory, mode)
+
+    # mihomo.service 以 mihomo 用户运行，providers 目录需要该组可读
+    apply_service_group(provider_dir, "mihomo", 0o750)
+
+    config_file = mihomo_home / "config.yaml"
+    control_file = control_dir / "subscriptions.yaml"
+    secrets_file = control_dir / "secrets.env"
+    provider_file = provider_dir / "subscriptions.yaml"
+    cache_file = mihomo_home / "cache.db"
+
+    if config_file.exists() and (args.controller_listen or args.allow_proxy_lan):
+        raise SubscriptionError(
+            "--controller-listen 与 --allow-proxy-lan 仅用于新建 config.yaml；"
+            "现有配置请手工修改并执行 mihomo -t 校验"
+        )
+
+    def write_config_template() -> None:
+        template = (SHARE_DIR / "config.base.yaml").read_text(encoding="utf-8")
+        template = configure_mihomo_template(
+            template,
+            controller_listen=args.controller_listen,
+            allow_proxy_lan=args.allow_proxy_lan,
+        )
+        atomic_write(config_file, replace_secret(template).encode("utf-8"), 0o600)
+        apply_service_group(config_file, "mihomo", 0o640)
+        log(f"已创建主配置：{config_file}")
+
+    if not config_file.exists():
+        write_config_template()
+    else:
+        existing = load_yaml(config_file)
+        providers = existing.get("proxy-providers") if isinstance(existing, dict) else None
+        has_provider = isinstance(providers, dict) and "subscriptions" in providers
+
+        if has_provider:
+            log(f"保留已有主配置，不做修改：{config_file}")
+        elif not args.non_interactive and sys.stdin.isatty() and ask_yes_no(
+            f"已有 {config_file} 缺少 proxy-providers.subscriptions，"
+            "备份后用模板替换？",
+            default=True,
+        ):
+            backup = config_file.with_suffix(".yaml.bak")
+            shutil.copy2(config_file, backup)
+            log(f"已备份原配置：{backup}")
+            write_config_template()
+        else:
+            log(f"保留已有主配置，不做修改：{config_file}")
+            log(
+                "警告：该配置缺少 proxy-providers.subscriptions，"
+                "update 将无法通过校验；请手工合并模板 "
+                f"{SHARE_DIR / 'config.base.yaml'}"
+            )
+
+    if not control_file.exists():
+        shutil.copy2(SHARE_DIR / "subscriptions.example.yaml", control_file)
+        os.chmod(control_file, 0o600)
+        log(f"已创建订阅控制文件：{control_file}")
+
+    if not secrets_file.exists():
+        shutil.copy2(SHARE_DIR / "secrets.env.example", secrets_file)
+        os.chmod(secrets_file, 0o600)
+        log(f"已创建订阅密钥文件：{secrets_file}")
+
+    if not provider_file.exists():
+        atomic_write(provider_file, dump_yaml({"proxies": []}), 0o600)
+        apply_service_group(provider_file, "mihomo", 0o640)
+        log(f"已创建空 provider：{provider_file}")
+
+    if not cache_file.exists():
+        atomic_write(cache_file, b"", 0o600)
+        apply_service_group(cache_file, "mihomo", 0o660)
+        log(f"已创建 Mihomo 状态缓存：{cache_file}")
+
+    subscription_url = args.subscription_url
+    converter_type = args.converter
+    existing_url = read_env_file_value(secrets_file, "MIHOMO_SUB_MAIN")
+
+    if subscription_url is None and existing_url and converter_type != "direct":
+        subscription_url = existing_url
+        log("检测到已有 main 订阅 URL，将复用它更新 main 来源配置")
+    elif subscription_url is None and not args.non_interactive and sys.stdin.isatty():
+        if existing_url and ask_yes_no("检测到已有 main 订阅，是否复用它配置 main 来源？", default=True):
+            subscription_url = existing_url
+        elif args.require_subscription:
+            subscription_url = getpass.getpass("订阅 URL（输入不会回显）：").strip()
+            if not subscription_url:
+                raise SubscriptionError("订阅 URL 不能为空")
+        elif ask_yes_no("是否现在配置 main 订阅？", default=False):
+            subscription_url = getpass.getpass("订阅 URL（输入不会回显，留空跳过）：").strip()
+
+        if subscription_url and converter_type == "direct":
+            if ask_yes_no("这个订阅是否是原始 URI/Base64 格式，需要本地 subconverter 转换？", default=False):
+                converter_type = "subconverter"
+
+    if args.require_subscription and subscription_url is None:
+        raise SubscriptionError("必须在交互终端输入订阅 URL，或使用 --subscription-url")
+
+    if subscription_url:
+        set_env_file_value(secrets_file, "MIHOMO_SUB_MAIN", subscription_url.strip())
+        enable_source_in_control_file(
+            control_file,
+            source_id="main",
+            url_env="MIHOMO_SUB_MAIN",
+            converter_type=converter_type,
+        )
+        log("已写入 main 订阅 URL，并启用 main 来源")
+        if converter_type == "subconverter":
+            log("main 来源已配置为使用本机 subconverter：http://127.0.0.1:25500/sub")
+        log("然后执行：sudo mihomo-subscription update --strict")
+    else:
+        log("下一步：编辑 subscriptions.yaml 与 secrets.env")
+        log("然后执行：sudo mihomo-subscription update --strict")
+
+    log("确认成功后再启用 mihomo.service 与更新 timer")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog=PROGRAM,
+        description="Safely update Mihomo proxy provider from subscriptions.",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    init_parser = subparsers.add_parser("init", help="创建初始配置，但不覆盖已有 config.yaml")
+    init_parser.add_argument(
+        "--non-interactive",
+        action="store_true",
+        help="不询问订阅 URL，只创建模板文件",
+    )
+    init_parser.add_argument(
+        "--require-subscription",
+        action="store_true",
+        help="交互初始化时要求输入非空的 main 订阅 URL",
+    )
+    init_parser.add_argument(
+        "--subscription-url",
+        help="初始化时写入 main 订阅 URL；注意 shell 历史可能记录该值",
+    )
+    init_parser.add_argument(
+        "--converter",
+        choices=("direct", "subconverter"),
+        default="direct",
+        help="main 订阅格式：direct 为 Clash/Mihomo YAML，subconverter 为原始 URI/Base64",
+    )
+    init_parser.add_argument(
+        "--controller-listen",
+        type=validate_controller_listen,
+        metavar="HOST:PORT",
+        help="新建配置时设置 MetaCubeXD/API 监听地址；默认 127.0.0.1:9090",
+    )
+    init_parser.add_argument(
+        "--allow-proxy-lan",
+        action="store_true",
+        help="新建配置时允许局域网使用 mixed-port；不影响 controller 监听地址",
+    )
+    init_parser.set_defaults(func=command_init)
+
+    update_parser = subparsers.add_parser("update", help="下载、提取、校验并更新订阅 provider")
+    update_parser.add_argument(
+        "--control-file",
+        type=Path,
+        default=DEFAULT_CONTROL_FILE,
+    )
+    update_parser.add_argument(
+        "--secrets-file",
+        type=Path,
+        default=DEFAULT_SECRETS_FILE,
+        help="读取 KEY=value 格式密钥文件；传入空字符串可禁用",
+    )
+    update_parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="任一来源失败即终止，不使用旧缓存",
+    )
+    update_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="只下载和校验，不写入 provider",
+    )
+    update_parser.add_argument(
+        "--no-reload",
+        action="store_true",
+        help="更新成功后不重载 Mihomo",
+    )
+    update_parser.set_defaults(func=command_update)
+
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    if getattr(args, "secrets_file", None) == Path(""):
+        args.secrets_file = None
+
+    try:
+        return int(args.func(args))
+    except SubscriptionError as exc:
+        log(f"错误：{exc}")
+        return 1
+    except KeyboardInterrupt:
+        log("操作已取消")
+        return 130
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

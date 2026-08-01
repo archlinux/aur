@@ -1,0 +1,63 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: true
+
+unified-delay: true
+tcp-concurrent: true
+
+external-controller: 127.0.0.1:9090
+secret: "__MIHOMO_SECRET__"
+
+external-ui: /usr/share/metacubexd
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+proxy-providers:
+  subscriptions:
+    type: file
+    path: ./providers/subscriptions.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+      expected-status: 204
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - DIRECT
+    use:
+      - subscriptions
+
+  - name: AUTO
+    type: url-test
+    use:
+      - subscriptions
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    timeout: 5000
+    lazy: true
+    empty-fallback: DIRECT
+
+rules:
+  - GEOIP,LAN,DIRECT,no-resolve
+  - MATCH,PROXY
+
+# TUN is intentionally disabled by default. Verify mixed-port proxying first,
+# then enable and tune this block manually if full routing is required.
+#
+# tun:
+#   enable: true
+#   stack: mixed
+#   auto-route: true
+#   auto-detect-interface: true
+#   dns-hijack:
+#     - any:53

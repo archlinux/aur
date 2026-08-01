@@ -1,0 +1,23 @@
+[Unit]
+Description=Update Mihomo subscription provider
+Documentation=https://aur.archlinux.org/packages/mihomo-webui-config
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/mihomo-subscription/subscriptions.yaml
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/mihomo-subscription/secrets.env
+ExecStart=/usr/bin/mihomo-subscription update
+
+UMask=0077
+Nice=10
+IOSchedulingClass=idle
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/etc/mihomo /var/lib/mihomo-subscription /run
+
+# Subscription downloads require network access, so PrivateNetwork is not used.

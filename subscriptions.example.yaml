@@ -1,0 +1,23 @@
+version: 1
+
+settings:
+  mihomo_binary: /usr/bin/mihomo
+  home_dir: /etc/mihomo
+  config_file: /etc/mihomo/config.yaml
+  provider_name: subscriptions
+  provider_file: providers/subscriptions.yaml
+  provider_group: mihomo
+  service_name: mihomo.service
+  cache_dir: /var/lib/mihomo-subscription/cache
+  timeout_seconds: 30
+  max_download_bytes: 8388608
+
+sources:
+  - id: main
+    enabled: false
+    url_env: MIHOMO_SUB_MAIN
+    prefix: "[main] "
+    user_agent: "mihomo"
+    headers: {}
+    converter:
+      type: direct

@@ -1,0 +1,221 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+PROGRAM=mihomo-webui-setup
+SUBSCRIPTION_COMMAND=/usr/bin/mihomo-subscription
+CONTROL_FILE=/etc/mihomo-subscription/subscriptions.yaml
+SUBCONVERTER_UNIT=subconverter.service
+SUBCONVERTER_DIR=/opt/subconverter
+
+log() {
+  printf '[%s] %s\n' "$PROGRAM" "$*" >&2
+}
+
+die() {
+  log "错误：$*"
+  exit 1
+}
+
+show_help() {
+  cat <<'EOF'
+用法：
+  mihomo-webui-setup [setup] [mihomo-subscription init 参数]
+  mihomo-webui-setup update [mihomo-subscription update 参数]
+
+一次性初始化订阅、准备本地 subconverter、执行首次严格更新，
+并启用 mihomo.service 与 mihomo-subscription-update.timer。
+
+推荐不带参数运行，按隐藏式交互提示输入订阅 URL：
+  mihomo-webui-setup
+
+也可传递 init 参数，例如：
+  mihomo-webui-setup --subscription-url URL --converter direct
+  mihomo-webui-setup --controller-listen 192.168.1.10:9090
+  mihomo-webui-setup --controller-listen 0.0.0.0:9090 --allow-proxy-lan
+
+日常手工更新：
+  mihomo-webui-setup update
+  mihomo-webui-setup update --strict
+
+注意：在命令行传 URL 可能被 shell 历史和进程列表记录。
+controller 与 allow-proxy-lan 参数只在新建 config.yaml 时应用。
+EOF
+}
+
+source_uses_local_subconverter() {
+  python - "$CONTROL_FILE" <<'PY'
+import ipaddress
+import sys
+import urllib.parse
+
+import yaml
+
+with open(sys.argv[1], encoding="utf-8") as file:
+    control = yaml.safe_load(file)
+
+if not isinstance(control, dict):
+    raise SystemExit(1)
+
+for source in control.get("sources", []):
+    if not isinstance(source, dict) or not source.get("enabled", False):
+        continue
+    converter = source.get("converter") or {}
+    if converter.get("type", "direct") != "subconverter":
+        continue
+    endpoint = urllib.parse.urlparse(
+        str(converter.get("endpoint", "http://127.0.0.1:25500/sub"))
+    )
+    try:
+        is_loopback = endpoint.hostname == "localhost" or ipaddress.ip_address(
+            endpoint.hostname or ""
+        ).is_loopback
+    except ValueError:
+        is_loopback = False
+    if is_loopback and (endpoint.port or 80) == 25500:
+        raise SystemExit(0)
+
+raise SystemExit(1)
+PY
+}
+
+has_enabled_source() {
+  [[ -f "$CONTROL_FILE" ]] || return 1
+
+  python - "$CONTROL_FILE" <<'PY'
+import sys
+
+import yaml
+
+with open(sys.argv[1], encoding="utf-8") as file:
+    control = yaml.safe_load(file)
+
+if isinstance(control, dict) and any(
+    isinstance(source, dict) and source.get("enabled", False)
+    for source in control.get("sources", [])
+):
+    raise SystemExit(0)
+
+raise SystemExit(1)
+PY
+}
+
+wait_for_subconverter() {
+  local attempt=0
+
+  for (( attempt = 0; attempt < 40; attempt++ )); do
+    if python - <<'PY'
+import socket
+
+try:
+    connection = socket.create_connection(("127.0.0.1", 25500), timeout=0.25)
+except OSError:
+    raise SystemExit(1)
+else:
+    connection.close()
+PY
+    then
+      return 0
+    fi
+    sleep 0.25
+  done
+
+  systemctl status --no-pager --full "$SUBCONVERTER_UNIT" >&2 || true
+  die "subconverter 未在 127.0.0.1:25500 就绪"
+}
+
+prepare_subconverter() {
+  if ! systemctl cat "$SUBCONVERTER_UNIT" >/dev/null 2>&1; then
+    die "当前订阅需要本地 subconverter；请先安装可提供 subconverter.service 的 subconverter-bin"
+  fi
+
+  if [[ ! -e "$SUBCONVERTER_DIR/pref.ini" ]]; then
+    [[ -f "$SUBCONVERTER_DIR/pref.example.ini" ]] || \
+      die "缺少 $SUBCONVERTER_DIR/pref.example.ini"
+    install -m 0644 \
+      "$SUBCONVERTER_DIR/pref.example.ini" \
+      "$SUBCONVERTER_DIR/pref.ini"
+    sed -i \
+      -e 's/^listen=0\.0\.0\.0$/listen=127.0.0.1/' \
+      -e 's/^log_level=info$/log_level=warn/' \
+      "$SUBCONVERTER_DIR/pref.ini"
+    grep -Fqx 'listen=127.0.0.1' "$SUBCONVERTER_DIR/pref.ini" || \
+      die "无法将 subconverter 限制到 127.0.0.1"
+    log "已从示例创建 subconverter 配置：$SUBCONVERTER_DIR/pref.ini"
+  else
+    log "保留已有 subconverter 配置：$SUBCONVERTER_DIR/pref.ini"
+    if grep -Fqx 'listen=0.0.0.0' "$SUBCONVERTER_DIR/pref.ini"; then
+      log "警告：已有 subconverter 配置监听 0.0.0.0，请确认防火墙或改为 127.0.0.1"
+    fi
+  fi
+
+  systemctl enable "$SUBCONVERTER_UNIT"
+  # 即使服务此前已启动，也要重启以确保新创建的 pref.ini 被加载。
+  systemctl restart "$SUBCONVERTER_UNIT"
+  wait_for_subconverter
+  log "本地 subconverter 已就绪"
+}
+
+main() {
+  if [[ ${1-} == --help || ${1-} == -h ]]; then
+    show_help
+    return 0
+  fi
+
+  local command=setup
+  if [[ ${1-} == setup || ${1-} == update ]]; then
+    command=$1
+    shift
+  elif [[ -n ${1-} && ${1-} != -* ]]; then
+    die "未知子命令：$1（支持 setup、update）"
+  fi
+
+  if (( EUID != 0 )); then
+    exec sudo -- "$0" "$command" "$@"
+  fi
+
+  [[ -x "$SUBSCRIPTION_COMMAND" ]] || die "找不到 $SUBSCRIPTION_COMMAND"
+
+  if [[ $command == update ]]; then
+    log "更新订阅"
+    "$SUBSCRIPTION_COMMAND" update "$@"
+    return 0
+  fi
+
+  log "初始化 Mihomo 与订阅配置"
+  if (( $# == 0 )) && has_enabled_source; then
+    "$SUBSCRIPTION_COMMAND" init --non-interactive
+    log "检测到已有启用的订阅来源，保留现有来源配置"
+  else
+    log "首次运行时请按提示配置 main 订阅 URL 与格式"
+    "$SUBSCRIPTION_COMMAND" init --require-subscription "$@"
+  fi
+
+  if source_uses_local_subconverter; then
+    prepare_subconverter
+  fi
+
+  log "执行首次严格订阅更新与配置校验"
+  "$SUBSCRIPTION_COMMAND" update --strict --no-reload
+
+  systemctl enable --now mihomo.service
+  systemctl enable --now mihomo-subscription-update.timer
+
+  log "安装完成"
+  python - <<'PY'
+from pathlib import Path
+
+import yaml
+
+config = yaml.safe_load(Path("/etc/mihomo/config.yaml").read_text(encoding="utf-8"))
+controller = str(config.get("external-controller", "127.0.0.1:9090"))
+print(f"[mihomo-webui-setup] WebUI/API 监听：{controller}")
+if not controller.startswith(("0.0.0.0:", "[::]:")):
+    print(f"[mihomo-webui-setup] WebUI：http://{controller}/ui/")
+else:
+    print("[mihomo-webui-setup] WebUI：请用服务器实际 IP 与上述端口访问 /ui/")
+PY
+  log "API secret：/etc/mihomo/config.yaml"
+}
+
+main "$@"

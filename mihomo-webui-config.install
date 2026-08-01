@@ -1,0 +1,28 @@
+# shellcheck shell=bash
+
+post_install() {
+  cat <<'EOF'
+
+mihomo-webui-config 已安装。
+
+运行一次安装向导（会自行请求管理员权限）：
+  mihomo-webui-setup
+
+WebUI：
+  http://127.0.0.1:9090/ui/
+
+软件包不会自动启用任何 systemd 服务。
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+mihomo-webui-config 已升级。
+
+现有 /etc/mihomo/config.yaml 和订阅密钥不会被覆盖。
+可运行 mihomo-webui-setup 补齐服务配置并验证订阅。
+可查看新模板：
+  /usr/share/mihomo-webui-config/
+EOF
+}
