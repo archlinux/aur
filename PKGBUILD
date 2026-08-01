@@ -4,7 +4,7 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc="A GTK4 video transcoding GUI application"
 arch=('x86_64' 'aarch64')
-url="https://github.com/jeena/recoder"
+url="https://git.jeena.net/jeena/recoder"
 license=('GPL3')
 depends=(
     'gtk4' 
@@ -26,15 +26,12 @@ makedepends=(
     'glib2'
 )
 source=(
-	"https://github.com/jeena/recoder/archive/refs/tags/v${pkgver}.tar.gz"
-	"https://github.com/jeena/recoder/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
+	"https://git.jeena.net/api/v1/repos/jeena/recoder/archive/743b476d38f1bfbce0a512b705a1ab78fbd714f4.tar.gz"
 )
-sha256sums=('b831a657dfa9baf2e238a81cb8d6aeaff23933ac6207aa19ed9a576fcf9465aa'
-            'SKIP')
-validpgpkeys=('1DF6570C929E2C186685046F0D6A8E36B9EE6177')
+sha256sums=('281d67690315dc7c6e22166f88c925cf164daa14fc0cb414f8d7452da14e29aa')
 
 build() {
-    cd "$srcdir/recoder-${pkgver}"
+    cd "$srcdir/recoder"
 
     glib-compile-resources src/resources/resources.xml \
         --target=src/recoder/resources.gresource \
@@ -44,7 +41,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/recoder-${pkgver}"
+    cd "$srcdir/recoder"
     
     python -m installer --destdir="$pkgdir" dist/*.whl
 
