@@ -1,0 +1,66 @@
+# Maintainer: Morgan <morganamilo@archlinux.org>
+pkgname=paru-git-bin
+_pkgname=paru
+pkgver=2.1.0.r41.g789bead
+pkgrel=1
+pkgdesc='Feature packed AUR helper'
+url='https://github.com/morganamilo/paru'
+source=("git+https://github.com/morganamilo/paru" 'indexer')
+backup=("etc/paru.conf")
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+license=('GPL-3.0-or-later')
+makedepends=('cargo')
+depends=('git' 'pacman' 'libalpm.so>=14')
+optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
+conflicts=('paru')
+provides=('paru')
+sha256sums=(SKIP)
+
+prepare() {
+  cd "paru-git-bin"
+  cargo update alpm alpm-utils
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+}
+
+build () {
+  sudo "$srcdir/indexer"
+  cd "$srcdir/paru-git-bin"
+
+  if pacman -T pacman-git > /dev/null; then
+    _features+="git,"
+  fi
+
+  if [[ $(rustc -V) == *"nightly"* ]]; then
+    _features+="backtrace,"
+  fi
+
+  if [[ $CARCH != x86_64 ]]; then
+    export CARGO_PROFILE_RELEASE_LTO=off
+  fi
+
+  PARU_VERSION=$pkgver cargo build --frozen --features "${_features:-}" --release --target-dir target
+  ./scripts/mkmo locale/
+}
+
+package() {
+  cd "$srcdir/paru-git-bin"
+
+  install -Dm755 target/release/paru "${pkgdir}/usr/bin/paru"
+  install -Dm644 paru.conf "${pkgdir}/etc/paru.conf"
+
+  install -Dm644 man/paru.8 "$pkgdir/usr/share/man/man8/paru.8"
+  install -Dm644 man/paru.conf.5 "$pkgdir/usr/share/man/man5/paru.conf.5"
+
+  install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/paru.bash"
+  install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/paru.fish"
+  install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_paru"
+
+  install -d "$pkgdir/usr/share/"
+  cp -r locale "$pkgdir/usr/share/"
+}
+
+pkgver() {
+  cd "$srcdir/paru-git-bin"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
