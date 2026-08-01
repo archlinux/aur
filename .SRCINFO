@@ -1,6 +1,6 @@
 pkgbase = panafanpwr
 	pkgdesc = Panasonic CF-series laptop power and fan control
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://sr.ht/~szern/panafanpwr/
 	install = panafanpwr.install
@@ -11,7 +11,7 @@ pkgbase = panafanpwr
 	depends = power-profiles-daemon
 	depends = acpi_call
 	backup = etc/panafanpwrd.conf
-	source = panafanpwr-0.3.1.tar.gz::https://git.sr.ht/~szern/panafanpwr/archive/v0.3.1.tar.gz
-	sha256sums = eb90f29d3805b5c750ac851ba43988eba7cef79c24680fdeaa41b9f155f659ee
+	source = panafanpwr-0.3.2.tar.gz::https://git.sr.ht/~szern/panafanpwr/archive/v0.3.2.tar.gz
+	sha256sums = 50efa7a36223b1269a3e0ddd9447f26b3f5382280dc5c3abe8aede934ea7dee1
 
 pkgname = panafanpwr
