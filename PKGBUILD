@@ -18,6 +18,6 @@ depends=(
 	ttf-ibm-plex-sans-kr
 	ttf-ibm-plex-sans-sc
 	ttf-ibm-plex-sans-tc
-	ttf-ibm-pelx-sans-thai
+	ttf-ibm-plex-sans-thai
 )
 optdepends=('ttf-nerd-fonts-symbols: Nerd font symbols')
