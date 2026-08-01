@@ -1,6 +1,6 @@
 pkgbase = rd2qmd
 	pkgdesc = A fast Rd-to-Quarto Markdown converter with intelligent link resolution.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/eitsupi/rd2qmd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rd2qmd
 	conflicts = rd2qmd-bin
 	options = !lto
 	options = !debug
-	source = rd2qmd-0.5.0.tar.gz::https://github.com/eitsupi/rd2qmd/archive/v0.5.0.tar.gz
-	sha512sums = 21a632201f92b1b4290fd4f08bdcee118097293fe373d46d86e20ed939c3b2b5b36df3caf26307cda60a78bc70ef66a5d629bebbf1f114cd656af249dab4e3f4
+	source = rd2qmd-0.5.1.tar.gz::https://github.com/eitsupi/rd2qmd/archive/v0.5.1.tar.gz
+	sha512sums = 09390270aad51a7a5761ac11e57f500bc34680b043fb21f345d185682b1cbf1c97b6d7819d5eb2c01d1b734d5d568509fafcbb862652da0d923ca0d73862b320
 
 pkgname = rd2qmd
