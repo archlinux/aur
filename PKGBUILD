@@ -2,7 +2,7 @@
 # Contributor: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 
 pkgname=mpz
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=0
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
@@ -11,11 +11,11 @@ license=('GPL3')
 depends=('qt6-multimedia' 'qt6-svg' 'hicolor-icon-theme' 'yaml-cpp' 'taglib' 'libmpdclient' 'cpptrace')
 makedepends=('cmake')
 provides=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/acb3fc3fdf76564c04d68948b97ff8c11c494db7.zip")
-sha256sums=('86076985c78406be94abe2c6807b63405834c24b8a5392f02544ff7ebffbcaf3')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/41e5532873e339d72dc12a5218c80869b499c426.zip")
+sha256sums=('a59d7d14cf82c492a8424d614074d7acd1065697c51d5183aee76564ff19a26d')
 
 build() {
-    cd mpz-acb3fc3fdf76564c04d68948b97ff8c11c494db7
+    cd mpz-41e5532873e339d72dc12a5218c80869b499c426
 
     rm -rf build
     mkdir build
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-    cd mpz-acb3fc3fdf76564c04d68948b97ff8c11c494db7
+    cd mpz-41e5532873e339d72dc12a5218c80869b499c426
 
     cd build
     DESTDIR="$pkgdir" cmake --install .
