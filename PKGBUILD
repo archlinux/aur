@@ -16,5 +16,5 @@ package() {
     find -name "*.ttf" \
          -exec install -Dm644 {} -t "${pkgdir}/usr/share/fonts/TTF" \;
 
-    install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
