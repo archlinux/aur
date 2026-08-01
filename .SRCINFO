@@ -1,6 +1,6 @@
 pkgbase = clodex
 	pkgdesc = claude-code-proxy wrapper using the Claude Code binary and Codex auth token
-	pkgver = r0
+	pkgver = r6.81a0977
 	pkgrel = 1
 	url = https://github.com/Shiro836/clodex
 	arch = x86_64

@@ -8,7 +8,7 @@
 #                    unmodified Claude Code binary with scoped env vars
 #
 pkgname=clodex
-pkgver=r0
+pkgver=r6.81a0977
 pkgrel=1
 pkgdesc="claude-code-proxy wrapper using the Claude Code binary and Codex auth token"
 arch=('x86_64')
