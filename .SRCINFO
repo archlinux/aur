@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-sans-tc
+	pkgdesc = IBM Plex Sans for Traditional Chinese
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-sans-tc-3.0.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-tc%403.0.0/ibm-plex-sans-tc.zip
+	sha256sums = 4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f
+
+pkgname = ttf-ibm-plex-sans-tc
