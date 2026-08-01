@@ -1,0 +1,4 @@
+[arch-update]
+source = "git"
+git = "https://github.com/Antiz96/arch-update.git"
+prefix = "v"
