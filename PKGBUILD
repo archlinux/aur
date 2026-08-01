@@ -1,7 +1,7 @@
 # Maintainer: Jag_k <30597878+jag-k@users.noreply.github.com>
 
 pkgname=clipboard-transformer
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Rule-based clipboard transformer (built from source)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 conflicts=('clipboard-transformer-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e1d4ca2c07d032b682b160a340529657810656248b9d635b1b4aa04182897375')
+sha256sums=('834cf0d1e645a16d00f4f4f9ed3810047f1ffb486d5b5518d54c27937014c7d8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
