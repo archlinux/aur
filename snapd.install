@@ -1,0 +1,41 @@
+_set_snap_confine_caps() {
+  /usr/bin/setcap -q - /usr/lib/snapd/snap-confine < /usr/lib/snapd/snap-confine.v2-only.caps
+}
+
+post_install() {
+  _set_snap_confine_caps
+}
+
+pre_remove() {
+  /usr/lib/snapd/snap-mgmt --purge || :
+}
+
+post_upgrade() {
+  # since 2.39+ void permission bits are 111 instead of 000
+  chmod 111 /var/lib/snapd/void || true
+  # since 2.62, snapd generates cgroup device files under /var/lib/snapd/cgroup/
+  # which are needed in order to start any snaps, suggest to restart snapd if
+  # we're upgrading from a version older than 2.62
+  if (( $(vercmp "$2" '2.62-1') < 0)); then
+    echo
+    echo ">>> The snapd.service requires a restart for snaps to continue working. "
+    echo ">>> Run the following command after the update:"
+    echo ">>>    systemctl restart snapd.service"
+    echo
+  fi
+
+  _set_snap_confine_caps
+
+  if (( $(vercmp "$2" '2.70-1') < 0)); then
+    if aa-status --enabled > /dev/null 2>&1; then
+      echo
+      echo ">>> The AppArmor profiles of snapd-confine needs to be reloaded."
+      echo ">>> Run the following command after the update:"
+      echo ">>>    systemctl restart apparmor.service"
+      echo
+    fi
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
+
