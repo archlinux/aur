@@ -1,0 +1,17 @@
+[Unit]
+Description=dsearch - Fast filesystem search service
+Documentation=https://github.com/AvengeMedia/dsearch
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dsearch serve
+Restart=on-failure
+RestartSec=5s
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dsearch
+
+[Install]
+WantedBy=default.target
