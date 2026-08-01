@@ -16,6 +16,7 @@ optdepends=(
     'typst: Needed for rendering PDF'
     'git: Needed for lfs management'
 )
+options=('!debug')  # useless in Rust project
 
 package() {
     install -Dm755 tuack-ng -t "$pkgdir/usr/bin"

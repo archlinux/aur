@@ -11,6 +11,7 @@ pkgbase = tuack-ng-bin
 	optdepends = git: Needed for lfs management
 	provides = tuack-ng
 	conflicts = tuack-ng
+	options = !debug
 	source = https://github.com/tuack-ng/tuack-ng/releases/download/1.0.1/tuack-ng-linux-x86_64.zip
 	sha256sums = 46e5b07dfce80cad603d313ab7ff1bb94c8180c923d50b012f792c89a89db78b
 
