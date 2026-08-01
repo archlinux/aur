@@ -11,6 +11,11 @@ pkgdesc="Cross-platform Matrix chat client (latest git build)"
 arch=('x86_64')
 url="https://github.com/surakin/tesseract"
 license=('GPL3')
+# ring (pulled in via rustls/webrtc-sys) compiles its C/asm core through the
+# `cc` crate, which inherits Arch's default -flto=auto CFLAGS/LDFLAGS; the
+# resulting objects lack real machine code for symbols the Rust side needs
+# at link time, producing "undefined symbol: ring_core_*" errors.
+options=('!lto')
 provides=('tesseract-matrix')
 conflicts=('tesseract-matrix')
 # The binary is installed as `tesseract-matrix` (not `tesseract`) so this

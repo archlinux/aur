@@ -28,6 +28,7 @@ pkgbase = tesseract-matrix-git
 	depends = emoji-font
 	provides = tesseract-matrix
 	conflicts = tesseract-matrix
+	options = !lto
 	source = tesseract-matrix-git::git+https://github.com/surakin/tesseract.git#branch=development
 	sha256sums = SKIP
 
