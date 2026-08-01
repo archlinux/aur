@@ -1,13 +1,5 @@
 # llama.cpp-sycl.install
 
-pre_install() {
-    echo "========================================================================"
-    echo " NOTE: The installer may output a few error messages during installation."
-    echo " This is because Intel intended the oneAPI packages for Windows and Ubuntu,"
-    echo " not Arch Linux. Please just let it run and ignore these non-fatal errors."
-    echo "========================================================================"
-}
-
 post_install() {
     echo "========================================================================"
     echo " Installation successful!"

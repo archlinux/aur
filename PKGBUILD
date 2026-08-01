@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
 pkgver=b10217
-pkgrel=1
+pkgrel=2
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on GitHub before use."
 arch=('x86_64')
 url="https://github.com/ggml-org/llama.cpp"
@@ -59,6 +59,13 @@ prepare() {
 }
 
 build() {
+    # Show warning during makepkg build time
+    echo "========================================================================"
+    echo " NOTE: The installer may output a few error messages during installation."
+    echo " This is because Intel intended the oneAPI packages for Windows and Ubuntu,"
+    echo " not Arch Linux. Please just let it run and ignore these non-fatal errors."
+    echo "========================================================================"
+
     # Source oneAPI environment (provided by intel-deep-learning-essentials)
     set +u
     source /opt/intel/oneapi/setvars.sh --force
