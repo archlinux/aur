@@ -2,13 +2,14 @@
 
 pkgname=brother-dcpl2550dn
 pkgver=4.0.0_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother DCP-L2550DN lpr driver and CUPS wrapper"
 arch=('i686' 'x86_64')
 url="https://support.brother.com/g/b/downloadend.aspx?c=eu_ot&lang=en&prod=dcpl2550dn_eu&os=127&dlid=dlf103519_000&flang=4&type3=10282"
 license=('GPL2' 'custom:brother')
 depends=('cups')
 optdepends=('brscan4: scanner support.')
+options=('!debug')
 source=(
   "https://download.brother.com/welcome/dlf103519/dcpl2550dnpdrv-${pkgver/_/-}.i386.rpm"
 )
