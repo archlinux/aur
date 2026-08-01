@@ -3,12 +3,12 @@
 pkgbase='zl-speceq-bin'
 pkgname=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin' 'zl-speceq-bin')
 pkgver='0.0.1'
-pkgrel=4
+pkgrel=5
 pkgdesc='Dynamic spectrum equalizer audio plugin.'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
 license=('AGPL-3.0-only')
-groups=('pro-audio')
+groups=('pro-audio' 'zl-audio')
 depends=(
   'alsa-lib'
   'libx11'
