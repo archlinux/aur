@@ -3,7 +3,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-gpsd
-pkgver=2.2.3.1
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: GPSD"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -12,7 +12,7 @@ arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} gpsd)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" )
-sha256sums=("bb2b25b09f57be7c1aaad6226802b9f0083b415b93046c7fcbde55237410134a")
+sha256sums=("bb1efc5a6a7a00ce34dd5f3817c877d5537050550be8f8654aaa3d3ec08cc5ef")
 
 prepare() {
   mkdir -p build
