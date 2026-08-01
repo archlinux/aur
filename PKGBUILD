@@ -47,8 +47,12 @@ _build
 }
 #_build function - used in build variants
 _build() {
-_msg2 "go install -trimpath --ldflags=\"\" --ldflags \" -s -w -linkmode external -extldflags '-static' -buildid=\" github.com/skycoin/skywire/cmd/skywire@develop"
-go install -trimpath --ldflags="" --ldflags " -s -w -linkmode external -extldflags '-static' -buildid=" github.com/skycoin/skywire/cmd/skywire@v${pkgver}
+# _goref selects which module version `go install` fetches: the release
+# tag (v${pkgver}) by default; git.PKGBUILD overrides it to "develop" to
+# build the develop tip. Keep the log line and the command in sync.
+_ref="${_goref:-v${pkgver}}"
+_msg2 "go install -trimpath --ldflags=\"\" --ldflags \" -s -w -linkmode external -extldflags '-static' -buildid=\" github.com/skycoin/skywire/cmd/skywire@${_ref}"
+go install -trimpath --ldflags="" --ldflags " -s -w -linkmode external -extldflags '-static' -buildid=" github.com/skycoin/skywire/cmd/skywire@${_ref}
 _msg2 'creating launcher scripts'
 echo -e '#!/bin/bash\nexec /opt/skywire/bin/skywire cli "$@"' > "${GOBIN}/skywire-cli"
 echo -e '#!/bin/bash\nexec /opt/skywire/bin/skywire visor "$@"' > "${GOBIN}/skywire-visor"

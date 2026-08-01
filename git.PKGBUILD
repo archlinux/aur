@@ -36,5 +36,9 @@ export CGO_ENABLED=1  #default anyways
 export CC=musl-gcc
 rm -rf ${srcdir}/${pkgname}-${pkgver}${_rc}
 ln -fs ${srcdir}/${pkgname} ${srcdir}/${pkgname}-${pkgver}${_rc}
+# Build the develop tip, not the release tag. Without this the inherited
+# _build would `go install ...@v${pkgver}` and this "-git" package would
+# silently ship the last release instead of develop.
+_goref=develop
 _build
 }
