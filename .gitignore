@@ -1,0 +1,5 @@
+# Ignore files that result from building
+src/
+*.tar.gz
+pkg/
+*.pkg.tar*
