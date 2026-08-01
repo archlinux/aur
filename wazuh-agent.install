@@ -9,6 +9,13 @@ post_install() {
   getent passwd wazuh &>/dev/null || useradd -r -g wazuh -M -d /var/ossec -s /usr/sbin/nologin -c "Wazuh Agent" wazuh
   chown -R wazuh:wazuh /var/ossec
 
+  # El %post del RPM crea este fichero. Sin el, wazuh-logcollector arranca
+  # escupiendo "ERROR: (1103): Could not open file
+  # '/var/ossec/logs/active-responses.log'" en cada instalacion limpia.
+  touch /var/ossec/logs/active-responses.log
+  chown wazuh:wazuh /var/ossec/logs/active-responses.log
+  chmod 0660 /var/ossec/logs/active-responses.log
+
   echo "Done!"
   echo ""
   echo "A default ossec.conf has been installed."
@@ -52,6 +59,12 @@ post_upgrade() {
 
   # Restaurar permisos correctos después de una actualización
   chown -R wazuh:wazuh /var/ossec
+
+  # Red de seguridad para quien venga de una version que no lo creaba: sin este
+  # fichero wazuh-logcollector arranca con "ERROR: (1103): Could not open file".
+  touch /var/ossec/logs/active-responses.log
+  chown wazuh:wazuh /var/ossec/logs/active-responses.log
+  chmod 0660 /var/ossec/logs/active-responses.log
 
   # Asegurarse de que los archivos de configuración tengan los permisos correctos
   if [ -f "$_ossec_conf" ]; then
