@@ -3,8 +3,8 @@
 
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
-pkgver=2.29
-pkgrel=2
+pkgver=2.30
+pkgrel=0
 url='https://github.com/intel/confidential-computing.sgx'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
@@ -21,7 +21,7 @@ options=(!strip !debug) # debug symbols already included from upstream, better n
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu26.04-server/sgx_debian_local_repo.tgz"
        'intel-sgx-sysusers.conf')
-b2sums=('5832a7537c7bb0b50376bf6818e647bd738ba54da6263249ddf7c6a6483b60a0458bc7177c893ea7a364ddfa9c9ab9abcb5925ef12dd30c3f4ab61b9c0d62180'
+b2sums=('ae2166c872afd06179a84bae500b17314686a72802201b3cc28696dea0b4f019f7345a903cabe80a71a6d44b775134eb2dd3a03558ca499999573ca06baf772f'
         'f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff')
 
 package() {
