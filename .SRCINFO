@@ -22,6 +22,6 @@ pkgbase = memory-card-bin
 	conflicts = memory-card
 	options = !debug
 	source = memory-card-bin-1.4.0.deb::https://github.com/Sluicee/memory-card/releases/download/v1.4.0/Memory.Card_1.4.0_amd64.deb
-	sha256sums = 5308c8cbeb1145fd4c094344f895017128847e783119a31cd6a5f5661fc43299
+	sha256sums = 281b1662c3e741a0be9a97c54b203ec2e4b065f9f896cca29d84de3f4ba01205
 
 pkgname = memory-card-bin
