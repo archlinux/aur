@@ -1,7 +1,7 @@
 pkgbase = t3-code-docker
-	pkgdesc = T3 Code headless server in Docker (instance t3-code-docker on port 3773)
+	pkgdesc = T3 Code headless server in Docker (instance t3-code-docker on port 3773) Allows multiple instances
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://t3.codes
 	install = t3-code.install
 	arch = x86_64

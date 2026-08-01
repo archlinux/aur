@@ -5,10 +5,7 @@ systemd `--user` unit. One container per opencode server instance.
 Multi-instance by rebuilding with different env vars.
 
 AUR slug: `t3-code-docker` — installed pkgname `t3-code-docker`
-(default) or `t3-code-<user>` (per-user fleet builds).
-
-See [Domovoy fleet](https://github.com/alexindigo/domovoy-bootstrap) for
-context on the fleet convention.
+(default) or `t3-code-<user>` (per-user instances).
 
 ## Default install
 
@@ -19,14 +16,14 @@ makepkg -si
 Produces `t3-code-docker` bound to port 3773, targeting opencode at
 `http://localhost:4096/`.
 
-## Fleet operator builds (per-user instances)
+## Per-instance builds
 
 ```bash
-# domovoy's instance
-T3_INSTANCE_USER=domovoy T3_PORT=3775 T3_OPENCODE_URL=http://localhost:4096/ makepkg -si
+# first instance
+T3_INSTANCE_USER=user T3_PORT=3775 T3_OPENCODE_URL=http://localhost:4096/ makepkg -si
 
-# user's instance
-T3_INSTANCE_USER=user    T3_PORT=3776 T3_OPENCODE_URL=http://localhost:8096/ makepkg -si
+# second instance
+T3_INSTANCE_USER=other T3_PORT=3776 T3_OPENCODE_URL=http://localhost:8096/ makepkg -si
 ```
 
 Multiple `t3-code-<user>` packages coexist and remove independently.
@@ -35,7 +32,7 @@ Multiple `t3-code-<user>` packages coexist and remove independently.
 
 | Var | Default | Purpose |
 |---|---|---|
-| `T3_INSTANCE_USER` | `docker` | Drives pkgname; fleet builds set to `domovoy` / `user` / etc. |
+| `T3_INSTANCE_USER` | `docker` | Drives pkgname; per-user instances set to `user` / `other` / etc. |
 | `T3_PORT` | `3773` | Host-side port for T3 web UI ingress |
 | `T3_OPENCODE_URL` | `http://localhost:4096/` | Target opencode server URL (set to enable provider) |
 | `T3_CODEX_URL` | (unset) | Future provider (currently CLI-only) |

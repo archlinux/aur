@@ -1,10 +1,10 @@
-# Maintainer: Alex Indigo <ai@aegis.one>
+# Maintainer: Alex Indigo <ai at aegis dot one>
 #
 # t3-code-docker — headless T3 Code server in a Docker container.
 # One container per target user's opencode (or other AI provider) instance.
 #
 # AUR slug: t3-code-docker
-# Installed pkgname: t3-code-docker (default) or t3-code-<user> (fleet)
+# Installed pkgname: t3-code-docker (default) or t3-code-<user> (per-user instance)
 #
 # Container stores byte-identical settings.json across all instances.
 # Per-instance differentiation happens via runtime env vars (socat proxy
@@ -13,7 +13,7 @@
 # Build-time env vars:
 #   T3_INSTANCE_USER   — linux user this instance serves; drives pkgname
 #                         (default: none → pkgname=t3-code-docker).
-#                         Example: domovoy → pkgname=t3-code-domovoy
+#                         Example: user → pkgname=t3-code-user
 #   T3_PORT            — host-side port for T3's web UI ingress
 #                         (default: 3773).
 #   T3_OPENCODE_URL    — operator-visible opencode HTTP URL, e.g.
@@ -28,7 +28,7 @@
 #   T3_INSTANCE_USER unset → pkgname=t3-code-docker, port 3773,
 #   T3_OPENCODE_URL defaults to http://localhost:4096/.
 #
-# Fleet operator build (per-user instance):
+# Per-instance build:
 #   T3_INSTANCE_USER=domovoy T3_PORT=3775 T3_OPENCODE_URL=http://localhost:4096/ makepkg -s
 #   T3_INSTANCE_USER=user    T3_PORT=3776 T3_OPENCODE_URL=http://localhost:8096/ makepkg -s
 #
@@ -39,8 +39,8 @@ pkgname="t3-code-${T3_INSTANCE_USER:-docker}"
 provides=("${pkgname}")
 _t3port="${T3_PORT:-$_default_port}"
 pkgver=0.0.31
-pkgrel=1
-pkgdesc="T3 Code headless server in Docker (instance ${pkgname} on port ${_t3port})"
+pkgrel=2
+pkgdesc="T3 Code headless server in Docker (instance ${pkgname} on port ${_t3port}) Allows multiple instances"
 arch=('x86_64')
 url='https://t3.codes'
 license=('MIT')
