@@ -4,7 +4,7 @@
 
 pkgname=katago-cuda
 _pkgname=katago
-pkgver=1.16.4
+pkgver=1.17.2
 pkgrel=1
 pkgdesc='Baduk engine with no human-provided knowledge'
 arch=(x86_64)
@@ -16,22 +16,14 @@ depends=(libzip)
 makedepends=(cmake cuda cudnn ninja)
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
         # Strongest confidently-rated network
-        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-adam-s11165M-d5387M.bin.gz"
+        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-zhizi-b40c768nbt-s11272M-d5935M.bin.gz"
 )
-b2sums=('7356e1c71c4f9a6c3cfbb9e4bccc07b21ce1d84265fd4ade11be65e0eb3dbadb50e9e52bd64f1266023cc084bf52aadbd15d76495cab29eed61d398473d8e82f'
-        '4aa7a435dc5a9bcd1abc3d30baa17530382138d4975cfcedd43aa44e7273c1ae558627ba70e0c9ffe34159d00372c70566fc56a05538781d447fed4d0b7d2eef'
+b2sums=('1e6a000f4b79bc8896af090e2b8209ca3037e9e7cb6b9842b848c779800e066fe0835cbfe37c6012df23c7e65d3fbf4a44d7146c1afd05fed17949357367f832'
+        '47d4f059434fdd3a85fe590186513e24999d6ed23ad7d5d073ecd73f44672b15e0ff10d475b17950b1673b7f49137be9573f059e182afd389c4b8e20ff2db0b2'
 )
 _model_source=("${source[@]:1}")
 _model=("${_model_source[@]##*/}")
 noextract=("${_model[@]}")
-
-prepare() {
-  cd "KataGo-${pkgver}/cpp"
-  sed -i '/if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12\.8)/c\
-if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 13.0)\
-  set(CMAKE_CUDA_ARCHITECTURES 75 80 86 87 90 120)\
-elseif(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12.8)' CMakeLists.txt
-}
 
 build() {
   cmake \
