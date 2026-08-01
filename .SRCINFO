@@ -1,0 +1,25 @@
+pkgbase = hyprwrc-git
+	pkgdesc = Build Hyprland window rules by clicking the window
+	pkgver = 0.1.0.r5.ga7469c5
+	pkgrel = 1
+	url = https://github.com/rdannenbring/HyprWindowRuleCreator
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = hyprland
+	depends = slurp
+	optdepends = gtksourceview5: syntax highlighting in the generated-rule pane
+	provides = hyprwrc
+	conflicts = hyprwrc
+	source = hyprwrc::git+https://github.com/rdannenbring/HyprWindowRuleCreator.git
+	sha256sums = SKIP
+
+pkgname = hyprwrc-git
