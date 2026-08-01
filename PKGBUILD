@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
   "snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/snip-aarch64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('4192f04fe63fca71f1f3f9d676eea6067b702a6ad21773b5fae37e7ce758e37f')
-sha256sums_aarch64=('c44da0c99800b14671a4c41351d9d5f0dd9e7dd15b0a060f19a830c7f79f767c')
+sha256sums_x86_64=('94b56807d2f5cf487db9ea3329ee398104721c466bd98e0e9fc6fef82da359e9')
+sha256sums_aarch64=('c79448be8f07684c4c3122f25cc29778b67cedbcab1f87f0c2bf14aaf466d20e')
 
 package() {
   install -Dm755 snip "$pkgdir/usr/bin/snip"
