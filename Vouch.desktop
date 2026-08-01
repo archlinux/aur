@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Vouch
+Type=Application
+Exec=/usr/bin/vouch
+Icon=vouch
+Categories=Utility;
+Terminal=false

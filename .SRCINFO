@@ -1,0 +1,21 @@
+pkgbase = vouch
+	pkgdesc = Modern, cross-platform Steam authenticator for the desktop
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Monodesu/Vouch
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = fontconfig
+	options = !debug
+	options = !strip
+	source = vouch-0.1.4.tar.gz::https://github.com/Monodesu/Vouch/archive/refs/tags/v0.1.4.tar.gz
+	source = wrapper.sh
+	source = Vouch.desktop
+	sha256sums = 0c6affa2a98cd30a11fded3e93f6428d09d7d7ff2e4e29e9f4661384d656c874
+	sha256sums = d747228afbe83fcca2664e505a0ebe22c9f879cf1e0e90d9f9624ebdb605108f
+	sha256sums = 35a1d8b090de2659a74bc061a4c12e6eb7ed0658cc09e54044bf9fe5ffab50fa
+
+pkgname = vouch
