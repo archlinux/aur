@@ -1,0 +1,13 @@
+pkgbase = pigma-bin
+	pkgdesc = A netease cloud music client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/akirco/pigma.git
+	arch = x86_64
+	license = Apache-2.0
+	provides = pigma
+	conflicts = pigma
+	source = pigma-0.1.0.tar.gz::https://github.com/akirco/pigma.git/releases/download/v0.1.0/pigma-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = pigma-bin
