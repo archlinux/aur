@@ -3,7 +3,7 @@
 # t3-code-docker — headless T3 Code server in a Docker container.
 # One container per target user's opencode (or other AI provider) instance.
 #
-# AUR slug: t3-code-docker-bin
+# AUR slug: t3-code-docker
 # Installed pkgname: t3-code-docker (default) or t3-code-<user> (fleet)
 #
 # Container stores byte-identical settings.json across all instances.
@@ -151,6 +151,10 @@ build() {
 
 package() {
   cd "$srcdir"
+
+  # Upstream MIT license (extracted from the npm tarball)
+  install -Dm644 "${srcdir}/package/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Docker image tarball (loaded on install by t3-code.install)
   install -Dm644 image.tar.zst \

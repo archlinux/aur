@@ -4,7 +4,7 @@ Headless [T3 Code](https://t3.codes/) server in a Docker container +
 systemd `--user` unit. One container per opencode server instance.
 Multi-instance by rebuilding with different env vars.
 
-AUR slug: `t3-code-docker-bin`. Installed pkgname: `t3-code-docker`
+AUR slug: `t3-code-docker` — installed pkgname `t3-code-docker`
 (default) or `t3-code-<user>` (per-user fleet builds).
 
 See [Domovoy fleet](https://github.com/alexindigo/domovoy-bootstrap) for
