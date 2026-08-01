@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.23.15
+	pkgver = 0.23.16
 	pkgrel = 1
 	url = https://github.com/marimo-team/marimo
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = marimo
 	optdepends = python-duckdb: SQL cells support
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-sqlglot: SQL cells parsing
-	optdepends = python-mcp: MCP support
+	optdepends = python-mcp<2.0.0: MCP support
 	optdepends = python-pydantic: MCP support
 	optdepends = python-opentelemetry-api: For tracing debugging
 	optdepends = python-opentelemetry-sdk: For tracing debugging
@@ -44,7 +44,7 @@ pkgbase = marimo
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.23.15.tar.gz
-	b2sums = 8fb6904ea1725097cf601c28e3cdad05cea495d2359d1413ab215dbb0cf2db6ab2ea73a92891cb877955565eefadc7db5154b9d86f79f7efb879c205aef8f6c6
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.23.16.tar.gz
+	b2sums = e1f00ee75519ce6365b91c5be58fdc755f01604edd45f7412e6ac14e45d6c6e2005409acd46c92b0ac794c1e689c50ca13d82b81eb025f713b1f5951bae688e1
 
 pkgname = marimo

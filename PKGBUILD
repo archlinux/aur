@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.23.15
+pkgver=0.23.16
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -56,7 +56,7 @@ optdepends=(
     'python-sqlglot: SQL cells parsing'
 
     # MCP
-    'python-mcp: MCP support'
+    'python-mcp<2.0.0: MCP support'
     'python-pydantic: MCP support'
 
     # OpenTelemetry
@@ -79,7 +79,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('8fb6904ea1725097cf601c28e3cdad05cea495d2359d1413ab215dbb0cf2db6ab2ea73a92891cb877955565eefadc7db5154b9d86f79f7efb879c205aef8f6c6')
+b2sums=('e1f00ee75519ce6365b91c5be58fdc755f01604edd45f7412e6ac14e45d6c6e2005409acd46c92b0ac794c1e689c50ca13d82b81eb025f713b1f5951bae688e1')
 
 build() {
     cd $pkgname-$pkgver
