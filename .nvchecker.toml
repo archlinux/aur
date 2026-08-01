@@ -1,0 +1,5 @@
+[guarda-bin]
+source = "github"
+github = "guardaco/guarda-desktop-releases"
+use_latest_release = true
+prefix = "v"
