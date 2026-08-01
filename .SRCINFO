@@ -1,22 +1,17 @@
 pkgbase = aegisub-dependency-control
 	pkgdesc = Package manager for scripts for the Aegisub subtitle editor
-	pkgver = 0.6.4
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/TypesettingTools/DependencyControl
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	license = ISC
-	license = MIT
-	makedepends = moonscript
-	makedepends = meson
 	depends = aegisub
-	depends = libcurl.so
-	source = DependencyControl-0.6.4-alpha.tar.gz::https://github.com/TypesettingTools/DependencyControl/archive/v0.6.4-alpha.tar.gz
-	source = ffi-experiments-b8897ead55b84ec4148e900882bff8336b38f939.tar.gz::https://github.com/TypesettingTools/ffi-experiments/archive/b8897ead55b84ec4148e900882bff8336b38f939.tar.gz
-	source = luajson-1.3.3.tar.gz::https://github.com/harningt/luajson/archive/1.3.3.tar.gz
-	sha256sums = b4ba3da034be85d2394d4ec7de4192a76be45f900a60dd484a0d1af3d6671c71
-	sha256sums = ab7933a087260cd114a49f42ad553f63b32268e69f05ebcee3cfc91324370535
-	sha256sums = 6a986efa210a912a04c8e6cae8f3b5e72172c02f974152e14818af6598a5e2db
+	depends = libcrypto.so
+	depends = libcurl.so>=1.1
+	source = https://github.com/TypesettingTools/DependencyControl/releases/download/v0.8.1/DependencyControl-v0.8.1.zip
+	source = https://github.com/TypesettingTools/DependencyControl/raw/refs/tags/v0.8.1/LICENSE
+	sha256sums = 8531c938db293ab4cd44a74a428834ae6be5a4953d953af89b4a90a55b16ee5e
+	sha256sums = f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8
 
 pkgname = aegisub-dependency-control
