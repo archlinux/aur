@@ -3,7 +3,7 @@
 
 pkgname=anki-sync-server
 _name="anki"
-pkgver="26.05"
+pkgver="26.08"
 pkgrel=1
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
@@ -52,7 +52,7 @@ source=(
   "reproducible-sveltekit.patch"
 )
 
-b2sums=('eb3845c02014d408823a76e4316ff7c7bc6251f8b6f111e4dce2a850c0f2752b2a1370588545a7a6c0c4033cdd71007bd644bac7c1f67931cf97cb9d3624499e'
+b2sums=('08dc5de27d318cc804098740fe37c121e2d2b3c813716e60ded179e94ba33667c343648732017bbddf9bdb2ba3440ef1b6529a436023b2fbec08d211755b363c'
         'SKIP'
         'SKIP'
         'cff074619cd64cbccc74ed1c523213a3c591d14cd8d61b208576cfeee768e8b9b027bbb3d427751e6a25b234e7cd0552cf3eae256159e8cd8acec4152ac6689b'
