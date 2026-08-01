@@ -12,11 +12,11 @@ depends=('gtk4' 'libadwaita' 'deno' 'ffmpeg')
 optdepends=('poppler: PDF preview support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}_linux.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.tar.gz")
 sha256sums_x86_64=('f76ef62ab381931081f50f8ca8f13bc1cf27d3cd38b46d29b0c6fd7dd2dfa800')
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}-${arch}_linux"
+	cd "${srcdir}/${_pkgname}-${pkgver}-${arch}"
 
 	# Install executable binary
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
