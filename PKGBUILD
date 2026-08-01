@@ -1,4 +1,4 @@
-# Maintainer: EduHoff <ehcs.business@gmail.com>
+# Maintainer: EduHoff <ehcs.business@proton.me>
 pkgname=battle-cats-rolls-git
 pkgver=r1815.42885cd
 pkgrel=2
