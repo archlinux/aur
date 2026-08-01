@@ -1,0 +1,24 @@
+pkgbase = hyprclip-git-bin
+	pkgdesc = GTK clipboard history manager for Hyprland and Wayland
+	pkgver = r3.g44c3016
+	pkgrel = 1
+	url = https://github.com/olalbns/HyprClip
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = cliphist
+	depends = wl-clipboard
+	provides = hyprclip
+	conflicts = hyprclip
+	source = hyprclip-git-bin::git+https://github.com/olalbns/HyprClip.git
+	source = migrator
+	sha256sums = SKIP
+
+pkgname = hyprclip-git-bin
