@@ -1,7 +1,7 @@
 # Maintainer: Pulsar <Pulsar33550336@163.com>
 
 pkgname=tuack-ng-bin
-pkgver=0.4.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
@@ -11,7 +11,7 @@ provides=("tuack-ng")
 conflicts=("tuack-ng")
 depends=("gcc-libs" "glibc")
 source=("https://github.com/tuack-ng/tuack-ng/releases/download/$pkgver/tuack-ng-linux-x86_64.zip")
-sha256sums=('cc03df8eac5e36e4e0ce592764c554eba8c756e4a090bf29022b3ee67b0417b7')
+sha256sums=('46e5b07dfce80cad603d313ab7ff1bb94c8180c923d50b012f792c89a89db78b')
 optdepends=(
     'typst: Needed for rendering PDF'
     'git: Needed for lfs management'
