@@ -1,63 +1,32 @@
-diff --git a/Cargo.toml b/Cargo.toml
-index 0aec4ace93..681a4001ff 100644
+Link the natives against Arch's system libopus and libpcre2.
+
+audiopus_sys: Arch ships no libopus.a, so switch the crate to its `dynamic`
+feature and hand its build script LIBOPUS_LIB_DIR=/usr. find_installed_opus()
+then short-circuits build_opus(), so the vendored Opus tree is never
+cmake-built; upstream's own OPUS_NO_PKG=1 keeps pkg-config out of the loop.
+The remaining cmake/msvc env keys stay in place, inert.
+
+pcre2-sys: only offers pkg-config discovery, so flip upstream's
+PCRE2_SYS_STATIC from 1 to 0 (0 is an explicit "not static", not merely unset)
+and let it probe libpcre2-8 from /usr.
+
+Hunks are deliberately zero-context: MODULE.bazel's comments and neighbouring
+env keys churn on nearly every upstream release, while each anchor line below
+is unique in its file. patch locates a hunk by its replaced line alone, so
+unrelated edits around them cannot break this patch.
+
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -240,7 +240,7 @@ xxhash-rust = { version = "0.8", features = ["xxh64"] }
- # ──────────────────────────────────────────────────────────────────────────────
- # Audio & Realtime Media
- # ──────────────────────────────────────────────────────────────────────────────
+@@ -244 +244 @@
 -audiopus_sys = { version = "0.2.2", features = ["static"] }
 +audiopus_sys = { version = "0.2.2", features = ["dynamic"] }
- # Pregenerated bindings (crate default): keeps bindgen/libclang out of the
- # build graph so Bazel actions stay hermetic.
- maudio = "0.1.6"
-diff --git a/MODULE.bazel b/MODULE.bazel
-index 7846ae953b..31b86aaaa9 100644
 --- a/MODULE.bazel
 +++ b/MODULE.bazel
-@@ -110,41 +110,16 @@ crate.from_cargo(
-     manifests = ["//:Cargo.toml"],
- )
- 
--# audiopus_sys builds its vendored opus via the `cmake` crate: give the build
--# script a PATH that resolves cmake/make (runner image, GH runners, dev hosts)
--# and the policy override its old CMakeLists needs under CMake 4.x. The cmake
--# crate picks up CC/CFLAGS from the Bazel cc toolchain on its own.
-+# Link against Arch's shared libopus instead of building vendored source.
- crate.annotation(
-     crate = "audiopus_sys",
-     build_script_env = {
+@@ -163 +163,3 @@
 -        "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
--        # msvc cross only (cmake-rs reads VAR_<triple> before VAR; the key is
--        # inert for every other target): without a generator override cmake-rs
--        # insists on a Visual Studio generator for msvc targets, which cannot
--        # exist on linux/mac hosts. Ninja must be on the PATH below.
--        "CMAKE_GENERATOR_x86_64_pc_windows_msvc": "Ninja",
--        # msvc cross only: cmake's vs_link_exe insists on rc/mt tools for
--        # MSVC-ABI exe links (try_compile), which find_program can't locate on
--        # linux/mac PATH. @msvc_cc's toolchain.cmake pins compiler/linker/
--        # rc/mt to the wrapper dir (self-locating via CMAKE_CURRENT_LIST_DIR).
--        # $${pwd} → exec root in the rules_rust runner; the canonical repo
--        # path must track the repo rule/name in the msvc section below.
--        "CMAKE_TOOLCHAIN_FILE_x86_64_pc_windows_msvc": "$${pwd}/external/+msvc_cc_repository+msvc_cc/toolchain.cmake",
--        # zig cc enables UBSan by default; cmake's try-compile links a test
--        # exe with the raw wrapper (no toolchain features), which would demand
--        # the UBSan runtime. Opus shipped without sanitizers under
--        # cargo-zigbuild too.
--        "CFLAGS": "-fno-sanitize=undefined",
--        "PATH": "/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin",
++        "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
++        # Link Arch's shared /usr/lib/libopus.so instead of vendored Opus.
 +        "LIBOPUS_LIB_DIR": "/usr",
-+        "OPUS_NO_PKG": "1",
-     },
- )
- 
--# Release addons must never pick up a host libpcre2 (Homebrew paths leaked into
--# shipped dylibs before); always build the vendored static copy.
--crate.annotation(
--    crate = "pcre2-sys",
+@@ -192 +192 @@
 -    build_script_env = {"PCRE2_SYS_STATIC": "1"},
--)
-+# pcre2-sys discovers Arch's shared PCRE2 through pkg-config.
- 
- # tree-sitter-just's scanner.c hard-errors when NDEBUG is set (opt-mode cc
- # default). cc-rs appends env CFLAGS after its computed flags, so -UNDEBUG wins.
++    build_script_env = {"PCRE2_SYS_STATIC": "0"},
