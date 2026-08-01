@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r113.g474fbe7
+pkgver=0.17.0.r5.g65c9463
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 	'rapidjson'
 	'renderdoc'
 	'robin-map>=1.3'
-	'spirv-headers'
+	'spirv-headers' # sirit dependency
 	'stb'
 	'systemd-libs'
 	'toml11>=4.2'
@@ -44,6 +44,7 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
+	'zarchive>=0.1.2'
 	'zlib'
 	'zycore-c' # zydis dependency
 )
@@ -143,6 +144,7 @@ package() {
 		'libuuid.so'
 		'libxxhash.so'
 		'libz.so'
+		'libzarchive.so'
 	)
 
 	# shellcheck disable=SC2154
