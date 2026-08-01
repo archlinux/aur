@@ -1,0 +1,11 @@
+pkgbase = ttf-ibm-plex-math
+	pkgdesc = IBM Plex Math
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/IBM/plex
+	arch = any
+	license = custom:OFL
+	source = ttf-ibm-plex-math-1.1.0.zip::https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-math%401.1.0/ibm-plex-math.zip
+	sha256sums = f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013
+
+pkgname = ttf-ibm-plex-math

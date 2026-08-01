@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/IBM/plex'
 license=('custom:OFL')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/%40ibm%2Fplex-math%40${pkgver}/ibm-plex-math.zip")
-sha256sums=('f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013')
+sha256sums=('d85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a')
 
 package() {
 	cd ibm-plex-math/fonts/complete/ttf
