@@ -5,32 +5,23 @@
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r850.670da08
+pkgver=r950.63df210
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=('custom:unknown')
 arch=('x86_64')
 conflicts=(${_pkgbase})
-provides=('yafu' 'ysieve')
-makedepends=('git' 'subversion')
-depends=('gmp' 'gmp-ecm' 'zlib')
+provides=('yafu')
+makedepends=('git')
+depends=('gmp' 'gmp-ecm')
 optdepends=('ggnfs: NFS factorization for large numbers')
-source=(
-	"git+https://github.com/bbuhrow/yafu.git"
-	"git+https://github.com/bbuhrow/ytools.git"
-	"git+https://github.com/bbuhrow/ysieve.git"
-	msieve::"svn+svn://svn.code.sf.net/p/msieve/code/trunk"
-	)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+# upstream bundles ytools, ysieve and msieve, so no extra sources are needed
+source=("git+https://github.com/bbuhrow/yafu.git")
+sha256sums=('SKIP')
 
 prepare() {
 	cd "${srcdir}/yafu"
 	cp Makefile.gcc Makefile
-	sed -i "s%^LIBS += -lecm /users/buhrow/src%#LIBS += -lecm /users/buhrow/src%" Makefile
-	sed -i "s/^\#LIBS += -lecm -lgmp -lytools -lysieve/LIBS += -lecm -lgmp -lytools -lysieve/" Makefile
 }
 
 pkgver() {
@@ -42,20 +33,10 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/ytools"
-	make CC=gcc CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
-	cp libytools.a "${srcdir}/ysieve/"
-
-	cd "${srcdir}/ysieve"
-	make CC=gcc CFLAGS="$CFLAGS -g -O3 -fomit-frame-pointer -Wall  -I.  -I../ytools -Wno-error=incompatible-pointer-types"
-	cp libytools.a "${srcdir}/yafu/"
-	cp libysieve.a "${srcdir}/yafu/"
-
-	cd "${srcdir}/msieve"
-	make all
-
+	# yafu compiles its bundled ytools/ysieve/msieve sources itself, so the
+	# include paths must point at the bundled copies
 	cd "${srcdir}/yafu"
-	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -Wno-error=int-conversion -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
+	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -std=c11 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -Iytools -Iysieve -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -Wno-error=int-conversion -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
 }
 
 check() {
@@ -65,13 +46,10 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/ysieve"
-	install -Dm755 ysieve "${pkgdir}/usr/bin/ysieve"
-
 	cd "${srcdir}/yafu"
 	install -Dm755 yafu "${pkgdir}/usr/bin/yafu"
 	install -Dm644 yafu.ini -t "${pkgdir}/etc/yafu"
-	install -Dm644 README -t "${pkgdir}/usr/share/doc/yafu"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/yafu"
 	install -Dm644 CHANGES -t "${pkgdir}/usr/share/doc/yafu"
 	install -Dm644 docfile.txt -t "${pkgdir}/usr/share/doc/yafu"
 }

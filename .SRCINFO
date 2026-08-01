@@ -1,26 +1,17 @@
 pkgbase = yafu-git
 	pkgdesc = Automated integer factorization.
-	pkgver = r850.670da08
+	pkgver = r950.63df210
 	pkgrel = 1
 	url = https://github.com/bbuhrow/yafu
 	arch = x86_64
 	license = custom:unknown
 	makedepends = git
-	makedepends = subversion
 	depends = gmp
 	depends = gmp-ecm
-	depends = zlib
 	optdepends = ggnfs: NFS factorization for large numbers
 	provides = yafu
-	provides = ysieve
 	conflicts = yafu
 	source = git+https://github.com/bbuhrow/yafu.git
-	source = git+https://github.com/bbuhrow/ytools.git
-	source = git+https://github.com/bbuhrow/ysieve.git
-	source = msieve::svn+svn://svn.code.sf.net/p/msieve/code/trunk
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = yafu-git
