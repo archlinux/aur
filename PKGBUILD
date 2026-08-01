@@ -11,7 +11,7 @@ _pkgvername=v${pkgver}
 pkgdesc='Highly customizable GTK4 bar for Wayland written in Rust'
 
 arch=('x86_64')
-url="https://github.com/${_pkgauthor}/${_pkgname}"
+url="https://codeberg.org/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0')
 
 provides=("riftbar")
