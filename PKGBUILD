@@ -1,7 +1,7 @@
 pkgname=sdroxide
-pkgver=0.7.0
-pkgrel=2
-pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (CAT + USB-audio backend, no SoapySDR)"
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="PowerSDR/Thetis-style SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT backends, no SoapySDR)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
 license=('GPL-3.0-or-later')
@@ -26,7 +26,7 @@ options=('!lto')
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz")
-sha256sums=('b9599e1104bcb9ec4d212ea46c59f36e63160276149102b3a4836e18897a2125'
+sha256sums=('1109f61b2df741fa5bab915f38a9ccab836304183898addbcb713676456b8935'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd')
 
 prepare() {
@@ -83,6 +83,21 @@ package() {
     install -Dm644 "packaging/icons/sdroxide-$_s.png" \
       "$pkgdir/usr/share/icons/hicolor/${_s}x${_s}/apps/sdroxide.png"
   done
+  # The RTL-SDR and RX-888 backends are native (nusb, no libusb/SoapySDR) and
+  # are compiled into this build, so both rules belong here: without them
+  # opening either receiver as a normal user fails. TAG+="uaccess" gives the
+  # ACL to whoever is at the active seat, so there is no group to join and no
+  # re-login. The RX-888 rule covers two ids on purpose -- 04b4:00f3 is the
+  # bare Cypress FX3 bootloader it enumerates as on every plug-in, and the
+  # firmware upload that turns it into 04b4:00f1 goes through that first id.
+  install -Dm644 packaging/linux/60-sdroxide-rtlsdr.rules \
+    "$pkgdir/usr/lib/udev/rules.d/60-sdroxide-rtlsdr.rules"
+  install -Dm644 packaging/linux/60-sdroxide-rx888.rules \
+    "$pkgdir/usr/lib/udev/rules.d/60-sdroxide-rx888.rules"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # The binary embeds the RX-888's FX3 firmware image, which is MIT rather than
+  # GPL: its notice has to be installed alongside sdroxide's own licence.
+  install -Dm644 crates/sdroxide-rx888/firmware/LICENSE.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-rx888-firmware.txt"
 }
