@@ -1,6 +1,6 @@
 pkgbase = python-smithy-core
 	pkgdesc = Core components for implementing Smithy tooling in Python.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-core
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-smithy-core
 	makedepends = git
 	depends = python
 	optdepends = python-typing_extensions: typing
-	source = smithy-core::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-core/v0.6.0
-	sha256sums = 76f4b6eecc4ae8e10a0ae5622e1f25d459f11bede40cdd191473dfe82279aa9c
+	source = smithy-core::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-core/v0.7.0
+	sha256sums = d9f72e9668626581da6827d844bfd4da4355d3a56ec65fd10a27e9ed707b1417
 
 pkgname = python-smithy-core
