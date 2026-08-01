@@ -3,16 +3,17 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=6.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools-scm'
+makedepends=('python-setuptools-scm>=10.0.5'
+             'python-babel>=2.10'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-pytest-astropy-header'
+checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-dask'
               'python-photutils'
@@ -24,7 +25,7 @@ checkdepends=('python-pytest-astropy-header'
 #             zarr<3 needed
 #             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1e4f811a20c6d41b46efe4858d14fece')
+md5sums=('82bb633e5899daf927f2f09b51785428')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -45,14 +46,14 @@ check() {
 }
 
 package() {
-    depends=('python-astropy>=6.0.1'
+    depends=('python-astropy>=7.2'
              'python-qtpy>=2.4.1'
-             'python-pillow>=11.1.0'
+             'python-pillow>=12.3.0'
              'python-puremagic>=1.28'
              'python-yaml>=6.0'
              'python-packaging>=23.1'
              'hicolor-icon-theme')
-    optdepends=('python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image'
+    optdepends=('python-scipy>=1.16: required by Pick, some built-in auto cuts algorithms used when you load an image'
                 'python-matplotlib>=3.8: required by Pick, Cuts, Histogram, LineProfile'
                 'python-magic>=0.4.15: aids in identifying files when opening them'
                 'python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations'
@@ -60,7 +61,8 @@ package() {
                 'python-beautifulsoup4>=4.3.2'
                 'python-astroquery>=0.3.5: required by Catalogs'
                 'python-dateutil: to display help for plugins'
-                'python-photutils'
+                'python-photutils>=1.13'
+                'python-pyvo>=1.5'
                 'python-fitsio: for opening FITS files'
                 'python-astlib: for WCS resolution'
                 'python-starlink-pyast: for WCS resolution'

@@ -1,31 +1,32 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 6.0.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest
 	checkdepends = python-dask
 	checkdepends = python-photutils
 	checkdepends = python-puremagic
 	checkdepends = python-regions
 	checkdepends = python-astlib
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm>=10.0.5
+	makedepends = python-babel>=2.10
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-6.0.0.tar.gz
-	md5sums = 1e4f811a20c6d41b46efe4858d14fece
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-7.1.0.tar.gz
+	md5sums = 82bb633e5899daf927f2f09b51785428
 
 pkgname = python-ginga
-	depends = python-astropy>=6.0.1
+	depends = python-astropy>=7.2
 	depends = python-qtpy>=2.4.1
-	depends = python-pillow>=11.1.0
+	depends = python-pillow>=12.3.0
 	depends = python-puremagic>=1.28
 	depends = python-yaml>=6.0
 	depends = python-packaging>=23.1
 	depends = hicolor-icon-theme
-	optdepends = python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image
+	optdepends = python-scipy>=1.16: required by Pick, some built-in auto cuts algorithms used when you load an image
 	optdepends = python-matplotlib>=3.8: required by Pick, Cuts, Histogram, LineProfile
 	optdepends = python-magic>=0.4.15: aids in identifying files when opening them
 	optdepends = python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations
@@ -33,7 +34,8 @@ pkgname = python-ginga
 	optdepends = python-beautifulsoup4>=4.3.2
 	optdepends = python-astroquery>=0.3.5: required by Catalogs
 	optdepends = python-dateutil: to display help for plugins
-	optdepends = python-photutils
+	optdepends = python-photutils>=1.13
+	optdepends = python-pyvo>=1.5
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution
 	optdepends = python-starlink-pyast: for WCS resolution
