@@ -1,0 +1,5 @@
+[wallr-bin]
+source = "github"
+github = "programmersd21/wallr"
+use_latest_release = true
+prefix = "v"
