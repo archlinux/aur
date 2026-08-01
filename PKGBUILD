@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
   "$pkgname-$pkgver.tar.gz.asc::https://github.com/gitkeniwo/snip/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=('b460ee7e9aa3b26470446019e999832647a08216b9c0e3969ad608d8306f6159' 'SKIP')
+sha256sums=('524c038eec6125d8f4c06f004e567ed9258b048c3b020184f6067dd8255f1cf4' 'SKIP')
 validpgpkeys=('F5B9349D9BDA6EA3327F30BE1DB2F97660CA8B2D')
 
 build() {
