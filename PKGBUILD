@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=10103
-_llama_cpp_sha256sum=5ebd4bb0c5cb52e502d2611a5f3ac66f954b2f4d48e655701f8fd8046e77dd1b
+_llama_cpp_version=10219
+_llama_cpp_sha256sum=3cc20700e41497b871cd14848c1ae7fbf0a0ad07106265664a178cca38beaede
 pkgname=ggml-cpu-backend-llama.cpp
 pkgver=0.0.0.b${_llama_cpp_version}
 pkgrel=1
