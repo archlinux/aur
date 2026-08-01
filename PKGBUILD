@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.18.2
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -31,11 +31,11 @@ optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-vercel: vercel'
             'python-boto3: s3'
             'python-temporalio: temporal' 'python-textual: temporal')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9f418bb563eddff1e01f245ae8a4964b7649396f444b569b4113d105e41ca1d3')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a8b3dd9a7cdd3364402678f3796e7ac5d22272c177ab5cfdce510b4c987e6dde')
 
 build() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "$srcdir"/$_name-python-$pkgver
   python -m build --wheel --no-isolation
 }
 
@@ -44,11 +44,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "$srcdir"/$_name-python-$pkgver
   PYTHONPATH=$PWD/src OPENAI_API_KEY=fake-for-tests pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "$srcdir"/$_name-python-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
