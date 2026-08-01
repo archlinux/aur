@@ -1,7 +1,7 @@
 # Maintainer: emmgee
 pkgname=omarchy-seq-paste-niri
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sequential copy/paste (FIFO clipboard) for niri, inspired by macOS Pastebot (niri port of omarchy-seq-paste)"
 arch=(any)
 url="https://github.com/emmgeede/omarchy-seq-paste"

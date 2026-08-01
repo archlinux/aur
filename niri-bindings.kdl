@@ -2,5 +2,5 @@
 // Add these lines inside your `binds { ... }` block, e.g. in
 // ~/.config/niri/cfg/keybinds.kdl
 
-    Mod+CTRL+Insert                     hotkey-overlay-title="Seq Paste: push" { spawn "omarchy-seq-paste" "push"; }
-    Mod+Shift+Insert                    hotkey-overlay-title="Seq Paste: paste" { spawn "omarchy-seq-paste" "paste"; }
+    Mod+CTRL+V                          hotkey-overlay-title="Seq Paste: push" { spawn "omarchy-seq-paste" "push"; }
+    Mod+Shift+V                         hotkey-overlay-title="Seq Paste: paste" { spawn "omarchy-seq-paste" "paste"; }
