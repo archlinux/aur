@@ -5,12 +5,17 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure and how to bump pkgver for a new release.
 pkgname=tesseract-matrix
-pkgver=0.8.16
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client"
 arch=('x86_64')
 url="https://github.com/surakin/tesseract"
 license=('GPL3')
+# ring (pulled in via rustls/webrtc-sys) compiles its C/asm core through the
+# `cc` crate, which inherits Arch's default -flto=auto CFLAGS/LDFLAGS; the
+# resulting objects lack real machine code for symbols the Rust side needs
+# at link time, producing "undefined symbol: ring_core_*" errors.
+options=('!lto')
 # The binary is installed as `tesseract-matrix` (not `tesseract`) so this
 # package can coexist with the unrelated Tesseract OCR engine, which owns
 # /usr/bin/tesseract.
@@ -30,6 +35,7 @@ makedepends=(
     'rust'
     'go'
     'perl'
+    'git'                # Corrosion is fetched via FetchContent(GIT_REPOSITORY ...) at configure time
     'qt6-base'           # includes private headers (GuiPrivate)
     'qt6-multimedia'
     'wayland'            # xdg-activation Wayland window focus (find_library at configure time)
@@ -39,7 +45,7 @@ makedepends=(
     'ffmpeg'             # libavutil headers
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/surakin/tesseract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31cdb698c7bef1d2e3a68e96494f03b0fbc288d6f0e2dee6ddc76f1ab9dffb7c')
+sha256sums=('d19aa42ce3cf37007d54a88e9c51e802c98c0f7288dce868749ddbd1aedfb3a8')
 
 build() {
     cmake -S "tesseract-$pkgver" -B build -G Ninja \
