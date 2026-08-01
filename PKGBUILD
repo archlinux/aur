@@ -2,7 +2,7 @@
 
 pkgname=ommp
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Oh My Music Player — a standalone terminal music player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sqzer-x/ommp"
@@ -11,7 +11,6 @@ depends=('gcc-libs' 'glibc' 'alsa-lib')
 makedepends=('cargo')
 optdepends=(
   'ttf-nerd-fonts-symbols: interface icons'
-  'kitty: full-quality album art'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c17d075d59923985b8b3153ea1287627af817645dca3b804674fd39ad447b5ec')
