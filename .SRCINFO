@@ -1,0 +1,26 @@
+pkgbase = wallshift-git-bin
+	pkgdesc = GTK4 wallpaper manager with rotation and palette exports for Hyprland
+	pkgver = r6.gff423e3
+	pkgrel = 1
+	url = https://github.com/olalbns/WallShift
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-pillow
+	optdepends = awww: animated Wayland wallpaper backend (recommended)
+	optdepends = swww: animated Wayland wallpaper backend
+	optdepends = hyprpaper: Hyprland wallpaper backend
+	provides = wallshift
+	conflicts = wallshift
+	source = wallshift-git-bin::git+https://github.com/olalbns/WallShift.git
+	source = splitter
+	sha256sums = SKIP
+
+pkgname = wallshift-git-bin
