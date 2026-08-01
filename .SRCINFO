@@ -1,6 +1,6 @@
 pkgbase = icarus-launcher-bin
 	pkgdesc = Privacy-focused Minecraft launcher forked from the Modrinth App
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/fraa2a/Icarus-Launcher
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = icarus-launcher-bin
 	provides = icarus-launcher
 	conflicts = icarus-launcher
 	conflicts = icarus-launcher-git
-	source = Icarus_0.2.5_amd64.deb::https://github.com/fraa2a/Icarus-Launcher/releases/download/v0.2.5/Icarus_0.2.5_amd64.deb
-	sha256sums = 43ce7368fa33e69591db726d3ef5f92fb415ecc191e7bd6de3ef0abafbe392ac
+	source = Icarus_0.3.0_amd64.deb::https://github.com/fraa2a/Icarus-Launcher/releases/download/v0.3.0/Icarus_0.3.0_amd64.deb
+	sha256sums = 6157eba721b66ee4a310e4404e067d4ed13fe978b5f661156b2a66302e0c62cd
 
 pkgname = icarus-launcher-bin
