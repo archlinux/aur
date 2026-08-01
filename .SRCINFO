@@ -1,7 +1,7 @@
 pkgbase = ttf-ibm-plex-sans-kr
 	pkgdesc = IBM Plex Sans for Korean
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IBM/plex
 	arch = any
 	license = custom:OFL
