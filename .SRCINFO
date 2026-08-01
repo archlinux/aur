@@ -1,6 +1,6 @@
 pkgbase = signal-cli-native
 	pkgdesc = Provides a commandline for secure Signal messaging (graalvm native build).
-	pkgver = 0.14.6
+	pkgver = 0.14.7
 	pkgrel = 1
 	url = https://github.com/AsamK/signal-cli
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = signal-cli-native
 	depends = libsignal-client
 	provides = signal-cli
 	conflicts = signal-cli
-	source = https://github.com/AsamK/signal-cli/archive/v0.14.6.tar.gz
-	source = https://github.com/AsamK/signal-cli/releases/download/v0.14.6/v0.14.6.tar.gz.asc
+	source = https://github.com/AsamK/signal-cli/archive/v0.14.7.tar.gz
+	source = https://github.com/AsamK/signal-cli/releases/download/v0.14.7/v0.14.7.tar.gz.asc
 	validpgpkeys = FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570
-	sha512sums = fc8b0833e6dad18c9b578474d01a236fa02ff582b081858830cc769fc60ae0f72b9e9d5cf19581359fffd52987f465935d0b11f963e12c5e236cb46b32350b33
+	sha512sums = 80bcd2580b11b879d638a4bf2a4788a4fa8f8c918c6835279ed8407b7d8c0396d12e1ebb80018a133626e803b63bd5f69f70c79f176bb0af04998bf3314c21e0
 	sha512sums = SKIP
 
 pkgname = signal-cli-native
