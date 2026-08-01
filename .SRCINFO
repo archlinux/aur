@@ -1,0 +1,26 @@
+pkgbase = onedrive-abraunegg-bin
+	pkgdesc = Free OneDrive client written in D - abraunegg's fork. Follows the releases on https://github.com/abraunegg/onedrive/releases
+	pkgver = 2.5.11
+	pkgrel = 1
+	url = https://github.com/abraunegg/onedrive
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = d-compiler
+	depends = libnotify
+	depends = sqlite
+	depends = d-runtime
+	depends = dbus
+	provides = onedrive=2.5.11
+	conflicts = onedrive
+	conflicts = onedrive-abraunegg-git
+	conflicts = onedrive-bin
+	conflicts = onedrive-git
+	conflicts = onedrive-fork-git
+	source = https://github.com/abraunegg/onedrive/archive/refs/tags/v2.5.11.tar.gz
+	source = validator
+	md5sums = 977899c21f86a201bef6fb05b4bf8c46
+
+pkgname = onedrive-abraunegg-bin
