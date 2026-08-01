@@ -29,7 +29,7 @@ Usage: ${PKGNAME}-ctl <command>
 
 Commands:
   pair              Issue a fresh one-time pairing token and print BOTH
-                    the desktop URL (127.0.0.1) and the LAN URL (for
+                    the desktop URL (localhost) and the LAN URL (for
                     mobile devices on the same network).
   logs [-f]         Show container logs (add -f to follow).
   status            Show container state + HTTP reachability.
@@ -81,7 +81,7 @@ cmd_pair() {
   printf '  Token:    %s\n' "${token}"
   printf '  Expires:  %s\n' "${expires:-unknown}"
   printf '\n'
-  printf '  Desktop:  http://127.0.0.1:%s/pair#token=%s\n' "${T3_PORT}" "${token}"
+  printf '  Desktop:  http://localhost:%s/pair#token=%s\n' "${T3_PORT}" "${token}"
   if [[ -n "${lan}" ]]; then
     printf '  Mobile:   http://%s:%s/pair#token=%s\n' "${lan}" "${T3_PORT}" "${token}"
   else
@@ -109,8 +109,8 @@ cmd_status() {
   printf 'Image:     %s\n' "${IMAGE_TAG}"
   if [[ "${state}" == 'running' ]]; then
     local code
-    code=$(curl -sS -o /dev/null -w '%{http_code}' "http://127.0.0.1:${T3_PORT}/" 2>/dev/null || echo 'unreachable')
-    printf 'Desktop:   HTTP %s at http://127.0.0.1:%s/\n' "${code}" "${T3_PORT}"
+    code=$(curl -sS -o /dev/null -w '%{http_code}' "http://localhost:${T3_PORT}/" 2>/dev/null || echo 'unreachable')
+    printf 'Desktop:   HTTP %s at http://localhost:%s/\n' "${code}" "${T3_PORT}"
     if [[ -n "${lan}" ]]; then
       printf 'Mobile:    http://%s:%s/ (LAN reachable if firewall allows)\n' "${lan}" "${T3_PORT}"
     fi

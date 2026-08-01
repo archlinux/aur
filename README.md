@@ -4,7 +4,7 @@ Headless [T3 Code](https://t3.codes/) server in a Docker container +
 systemd `--user` unit. One container per opencode server instance.
 Multi-instance by rebuilding with different env vars.
 
-AUR slug: `t3-code-docker` — installed pkgname `t3-code-docker`
+AUR slug: `t3-code-docker-bin` — installed pkgname `t3-code-docker`
 (default) or `t3-code-<user>` (per-user instances).
 
 ## Default install
@@ -56,6 +56,22 @@ systemctl --user enable --now <pkgname>.service
 Open the printed Desktop URL, complete one-time pairing. Settings →
 OpenCode → serverUrl is pre-filled from the packet seed. Run
 `<pkgname>-ctl pair` again for each additional device (phone, tablet).
+
+### Browser note: `http://localhost` vs `http://127.0.0.1`
+
+Always open the **Desktop URL printed by `<pkgname>-ctl pair`** — it uses
+`http://localhost` deliberately. Do **not** replace `localhost` with
+`127.0.0.1` in your browser address bar.
+
+T3 Code stores its session token in the browser's `localStorage`.
+Chromium-based browsers (Brave, Chrome, Edge) treat `http://localhost` as
+a **secure context**, allowing persistent storage APIs to work. The
+equivalent `http://127.0.0.1` is **not** a secure context — `localStorage`
+may silently fail, causing the session to be lost on every page refresh.
+(Symptoms: T3 shows the pairing page again, as if you'd never paired.)
+
+If your browser's privacy settings clear site data for localhost, consider
+adding `localhost:*` to your browser's cookie/storage allow list.
 
 ## Removal
 
