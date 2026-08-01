@@ -5,9 +5,9 @@ pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
 pkgver=2.30
 pkgrel=1
-url='https://github.com/intel/confidential-computing.sgx'
+url='https://github.com/intel/confidential-computing.sgx.sdk'
 arch=(x86_64)
-license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
+license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx.sdk/blob/main/License.txt
 depends=('glibc' 'libstdc++' 'bash')
 optdepends=(
   'protobuf-21: required for the AESM service'
@@ -17,28 +17,12 @@ optdepends=(
 )
 provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
-options=(!strip !debug) # debug symbols already included from upstream, better not to strip them
+options=(!strip !debug)
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/Debian13/sgx_debian_local_repo.tgz"
        'intel-sgx-sysusers.conf')
 b2sums=('18d61906b851196a0f955b1cdbf86f2d36e8914d0fab0608c1c8b9e0c7857d7b3eb2e104d2bb765ff718d162c810db9762350e75672fb2c85b7d07c3db7cba44'
         'f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff')
-
-package() {
-  find sgx_debian_local_repo -name '*.deb' -print -exec \
-    sh -euc 'ar -p "$1" -O data.tar.xz | tar -x --xz -C "$2"' -- {} "${pkgdir}" \;
-
-  # required users and groups
-  install -vD -m644 intel-sgx-sysusers.conf \
-    -T "${pkgdir}/usr/lib/sysusers.d/intel-sgx.conf"
-
-  # composed license
-  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-    -m644 "${pkgdir}/usr/share/doc/libsgx-enclave-common/copyright"
-
-  _fix_debian_paths # namcap rule: directoryname
-  _fix_binary_symlinks # namcap rule: symlink
-}
 
 # Move files to standard Arch Linux folders.
 # See https://wiki.archlinux.org/title/Arch_package_guidelines#Directories
@@ -79,4 +63,20 @@ _fix_binary_symlinks() {
     ln -v -sr "${pkgdir}/usr/lib/$(basename "${symlink}")" \
       -fT "${symlink}"
   done
+}
+
+package() {
+  find sgx_debian_local_repo -name '*.deb' -print -exec \
+    sh -euc 'ar -p "$1" -O data.tar.xz | tar -x --xz -C "$2"' -- {} "${pkgdir}" \;
+
+  # required users and groups
+  install -vD -m644 intel-sgx-sysusers.conf \
+    -T "${pkgdir}/usr/lib/sysusers.d/intel-sgx.conf"
+
+  # composed license
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+    -m644 "${pkgdir}/usr/share/doc/libsgx-enclave-common/copyright"
+
+  _fix_debian_paths # namcap rule: directoryname
+  _fix_binary_symlinks # namcap rule: symlink
 }
