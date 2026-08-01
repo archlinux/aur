@@ -1,7 +1,7 @@
 # Maintainer: Ignacio Perez <ignacio@feuer.me>
 
 pkgname=dbflux
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
@@ -36,9 +36,9 @@ depends=(
 source_x86_64=("${url}/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz"{,.asc})
 source_aarch64=("${url}/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz"{,.asc})
 
-sha256sums_x86_64=('41bc8a2236c83dbb9d6fc2304bce9470ddb963b2dc1e08b6723c0ffc1cc277f0'
+sha256sums_x86_64=('f7ba3ea656ccdaa004fb4beaef3af3219a51151133990f9ee7e48015e65050f4'
                    'SKIP')
-sha256sums_aarch64=('135145b9dbbe91d6325473da8f14eebe70cfeb7fc985e98388c91ac46adcd554'
+sha256sums_aarch64=('7588530a3e20e97a1a3d0d6cadd712d8518050dab4ca4c267ea62197bb21468c'
                     'SKIP')
 
 validpgpkeys=('B39EB98E8860DAFB05670073A614B7D25134987A')
@@ -51,7 +51,7 @@ package() {
     sed -i 's|@EXEC_PATH@|/usr/bin/dbflux|g' \
         "${pkgdir}/usr/share/applications/dbflux.desktop"
 
-    install -Dm644 resources/icons/dbflux.svg \
+    install -Dm644 resources/branding/stable/mark.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dbflux.svg"
 
     install -Dm644 resources/mime/dbflux-sql.xml \
