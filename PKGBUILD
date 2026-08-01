@@ -1,4 +1,4 @@
-# Maintainer: EduHoff <ehcs.business@gmail.com>
+# Maintainer: EduHoff <ehcs.business@proton.me>
 pkgname=linuxtask-aur
 pkgver=r5229a74
 pkgrel=1
