@@ -1,0 +1,39 @@
+post_install() {
+  _setup
+}
+
+post_upgrade() {
+  pkill -f "velumvpn-mihomo" 2>/dev/null || true
+  pkill -f "mihomo-alpha" 2>/dev/null || true
+  _setup
+}
+
+pre_remove() {
+  pkill -f "velumvpn-mihomo" 2>/dev/null || true
+  pkill -f "mihomo-alpha" 2>/dev/null || true
+}
+
+post_remove() {
+  for dir in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
+    rm -f "/usr/share/icons/hicolor/${dir}/apps/velumvpn.png"
+  done
+  gtk-update-icon-cache -q -t /usr/share/icons/hicolor 2>/dev/null || true
+  kbuildsycoca6 --noincremental 2>/dev/null || kbuildsycoca5 --noincremental 2>/dev/null || true
+}
+
+_setup() {
+  chmod 4755 "/opt/VelumVPN/chrome-sandbox" 2>/dev/null || true
+  chmod +sx "/opt/VelumVPN/resources/sidecar/mihomo" || true
+  chmod +sx "/opt/VelumVPN/resources/sidecar/mihomo-alpha" 2>/dev/null || true
+
+  for dir in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
+    src="/opt/VelumVPN/resources/icons/${dir}.png"
+    if [ -f "$src" ]; then
+      install -Dm644 "$src" "/usr/share/icons/hicolor/${dir}/apps/velumvpn.png"
+    fi
+  done
+
+  gtk-update-icon-cache -q -t /usr/share/icons/hicolor 2>/dev/null || true
+  kbuildsycoca6 --noincremental 2>/dev/null || kbuildsycoca5 --noincremental 2>/dev/null || true
+  update-desktop-database /usr/share/applications 2>/dev/null || true
+}

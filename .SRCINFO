@@ -1,0 +1,18 @@
+pkgbase = velumvpn-bin
+	pkgdesc = VPN-клиент для обхода блокировок в России
+	pkgver = 1.1.18
+	pkgrel = 1
+	url = https://github.com/Jidos86/VelumVPN
+	install = velumvpn-bin.install
+	arch = x86_64
+	license = custom
+	depends = libappindicator-gtk3
+	depends = c-ares
+	depends = http-parser
+	provides = velumvpn
+	conflicts = velumvpn
+	options = !strip
+	source_x86_64 = velumvpn-bin-1.1.18.pkg.tar.xz::https://github.com/Jidos86/VelumVPN/releases/download/v1.1.18/VelumVPN_x64.pkg.tar.xz
+	sha256sums_x86_64 = SKIP
+
+pkgname = velumvpn-bin
