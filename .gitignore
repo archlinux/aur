@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!slack-desktop.patch
+!.SRCINFO
