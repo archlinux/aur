@@ -1,14 +1,20 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 1.0.0 ➙ 1.1.0
-              : 2026-07-27 ➙ 2026-07-28
+ Tags         : 1.0.2 ➙ 1.1.1
+              : 2026-07-27 ➙ 2026-08-02
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-28   : 1.1.0
+ 2026-08-02   : 1.1.1
+              - **1.1.1**
+            
+                * Fix for Python API reference doc.
+                  File name change caused it to be dropped from the PDF.
+
+ 2026-07-28   : 1.1.0, origin/master, origin/HEAD
               - Actually use 1.1.0 as the release tag instead of 1.0.4
 
- 2026-07-28   : 1.0.4, origin/master, origin/HEAD
+ 2026-07-28   : 1.0.4
               - **1.1.0**
             
                 * C-Code
@@ -27,6 +33,3 @@
 
  2026-07-27   : 1.0.2
               - Add options to uv build --wheel
-
- 2026-07-27   : 1.0.0
-              - Add pyproject.toml
