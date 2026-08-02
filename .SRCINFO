@@ -1,15 +1,13 @@
 pkgbase = subhunter
 	pkgdesc = Automatic subtitle downloader for movies and TV series (GUI)
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/Hyzokaaa/SubHunter
 	arch = any
 	license = MIT
 	depends = python
 	depends = tk
-	source = subhunter-1.1.0.tar.gz::https://github.com/Hyzokaaa/SubHunter/archive/refs/tags/v1.1.0.tar.gz
-	source = 0001-linux-icon-fix.patch
-	sha256sums = 336369eb830325ff1134a2bbf7eb054809f434e719e7cec6029ab275d366981c
-	sha256sums = 0c20f46d40ba330ed39baf7336de99a816e40f3c947a0c227e2a19cbb1b19f99
+	source = subhunter-1.4.0.tar.gz::https://github.com/Hyzokaaa/SubHunter/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 3e188238a1f3b4d29d922e165ff3af7f3af2f6c2b859df32561c3fd53b2b58ed
 
 pkgname = subhunter
