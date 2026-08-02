@@ -1,6 +1,6 @@
 pkgbase = music-ratatui-bin
 	pkgdesc = A terminal musicplayer build with Ratatui.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://gitlab.com/figr/music-ratatui
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = music-ratatui-bin
 	conflicts = music-ratatui
 	conflicts = music-ratatui-debug
 	options = !lto
-	source = https://gitlab.com/api/v4/projects/76572256/packages/generic/x86_64-linux/v0.4.3/music-ratatui-bin_0.4.3_linux
+	source = https://gitlab.com/api/v4/projects/76572256/packages/generic/x86_64-linux/v0.4.4/music-ratatui-bin_0.4.4_linux
 	source = https://gitlab.com/figr/music-ratatui/-/raw/main/LICENSE
-	sha256sums = c7a87347bbaa86ea4455c64a5912b6b4b553ee1f509bc9337986e5ced34842b3
+	sha256sums = 567576c1d0ec8b477b0721caa09263b0dfe65a60cec8e6bc385aef40a5e8bb06
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 
 pkgname = music-ratatui-bin
