@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=152.0.2_1
+pkgver=153.0.1_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -107,7 +107,6 @@ options=(
   !makeflags
 )
 
-install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
   $__pkgname.desktop
@@ -115,11 +114,11 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('2db000606af1acb50e857a57f744d2ae40325d0d81a6bb6ba648422b9114b625'
+sha256sums=('4c0c110b08b71375db967ebab583ad03d9d659fe1f4a42e14f9f4dbbf8e04c9d'
 			'SKIP'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            'acc2b8435f38685fae10c8c5519eecdca891fd7a734f95225aecc9438c7d6da2')
+            '716da9615afbb3f30b88df1b25e91cfa61a16bba8c847b1ad87f9345c1d3cc80')
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
 prepare() {

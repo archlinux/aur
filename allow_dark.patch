@@ -1,7 +1,7 @@
 diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/components/preferences/config/appearance.mjs
 --- a/browser/components/preferences/config/appearance.mjs
 +++ b/browser/components/preferences/config/appearance.mjs
-@@ -96,13 +96,13 @@
+@@ -107,13 +107,13 @@
  
  Preferences.addSetting({
    id: "librewolfRFPWarning",
@@ -18,7 +18,7 @@ diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/compon
            chooser.style.opacity = "0.3";
            chooser.style.pointerEvents = "none";
          } else {
-@@ -111,7 +111,7 @@
+@@ -122,7 +122,7 @@
          }
        }
      }, 100);
@@ -30,7 +30,7 @@ diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/compon
 diff -ru a/browser/components/preferences/librewolf.js b/browser/components/preferences/librewolf.js
 --- a/browser/components/preferences/librewolf.js
 +++ b/browser/components/preferences/librewolf.js
-@@ -130,6 +130,10 @@
+@@ -132,6 +132,10 @@
    pref: "privacy.resistFingerprinting",
  });
 +Preferences.addSetting({
@@ -44,7 +44,7 @@ diff -ru a/browser/components/preferences/librewolf.js b/browser/components/pref
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -20782,7 +20782,8 @@
+@@ -20802,7 +20802,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -57,7 +57,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -17109,6 +17109,12 @@
+@@ -17364,6 +17364,12 @@
    value: false
    mirror: always
  
