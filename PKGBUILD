@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords-puzzle-sets-gnome
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Additional official English puzzles for the app Crosswords'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('crosswords')
 makedepends=('meson')
 _srcdir="puzzle-sets-gnome-${pkgver}"
 source=("${url}/-/archive/${pkgver}/${_srcdir}.tar.gz")
-b2sums=('c8923fa9155ca81be00d637fbdb2d4f7115ec4e12484f2efe4e30e34cdb44bd5d54e1b11a40db40593c67b450fea5b5529977d645a48e959e146033a8deec5b3')
+b2sums=('21f84f685a727df82fb32980da6041337d19b1e0baa011c47bceae3b82fb29f8e3f0a9fb2bbbc183d43874512c5308d3787165ff2dcdc2a131e9170ff3a7ef16')
 
 build() {
 	arch-meson "${_srcdir}" build
