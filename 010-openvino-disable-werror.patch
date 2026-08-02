@@ -1,6 +1,6 @@
 --- a/src/plugins/intel_gpu/CMakeLists.txt
 +++ b/src/plugins/intel_gpu/CMakeLists.txt
-@@ -60,7 +60,7 @@ add_subdirectory(thirdparty)
+@@ -125,7 +125,7 @@ add_subdirectory(thirdparty)
  include(thirdparty/cmake/rapidjson.cmake)
  
  if(CMAKE_COMPILER_IS_GNUCXX)

@@ -1,6 +1,14 @@
+--- a/src/npu_interpreter_runtime/CMakeLists.txt
++++ b/src/npu_interpreter_runtime/CMakeLists.txt
+@@ -70,4 +70,4 @@ install(TARGETS ${TARGET_NAME}
+         RUNTIME DESTINATION ${OV_CPACK_RUNTIMEDIR} COMPONENT ${VPUX_INTERNAL_COMPONENT})
+ 
+ # Install npu_interpreter_runtime to the CID or CIP package selected by BUILD_COMPILER_FOR_DRIVER
+-install_target_with_debug_files(${TARGET_NAME} ${INSTALL_DESTINATION}/lib ${INSTALL_COMPONENT})
++install_target_with_debug_files(${TARGET_NAME} lib ${INSTALL_COMPONENT})
 --- a/src/vpux_compiler/CMakeLists.txt
 +++ b/src/vpux_compiler/CMakeLists.txt
-@@ -156,7 +156,7 @@ endif()
+@@ -150,7 +150,7 @@ endif()
  include(${PROJECT_SOURCE_DIR}/cmake/npu_compiler_version.cmake)
  npu_compiler_configure_version(${COMPILER_LIB})
  
@@ -11,7 +19,7 @@
          ARCHIVE DESTINATION ${OV_CPACK_RUNTIMEDIR} COMPONENT ${VPUX_INTERNAL_COMPONENT}
 --- a/src/vpux_driver_compiler/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/CMakeLists.txt
-@@ -30,7 +30,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+@@ -16,7 +16,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
  add_subdirectory(src)
  add_subdirectory(test)
  
@@ -20,7 +28,7 @@
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/CHANGES.txt"
      DESTINATION ${INSTALL_DESTINATION}
-@@ -40,4 +40,4 @@ install(
+@@ -26,4 +26,4 @@ install(
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/README.md"
      DESTINATION ${INSTALL_DESTINATION}
@@ -28,7 +36,7 @@
 +    COMPONENT ${INSTALL_COMPONENT})]]
 --- a/src/vpux_driver_compiler/cmake/build_manifest.cmake
 +++ b/src/vpux_driver_compiler/cmake/build_manifest.cmake
-@@ -48,5 +48,5 @@ configure_file(
+@@ -54,5 +54,5 @@ configure_file(
  
  install(
      FILES ${CMAKE_CURRENT_BINARY_DIR}/build_manifest.json
@@ -37,7 +45,7 @@
      COMPONENT ${INSTALL_COMPONENT})
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -63,13 +63,13 @@ add_dependencies(${TARGET_NAME} VPUXLoader)
+@@ -56,13 +56,13 @@ add_dependencies(${TARGET_NAME} VPUXLoader)
  ov_add_api_validator_post_build_step(TARGET ${TARGET_NAME})
  
  # Install library related files to component
@@ -64,13 +72,15 @@
  target_include_directories(${FUNCTIONAL_TARGET}
      SYSTEM PRIVATE
          $<BUILD_INTERFACE:${LLVM_SOURCE_DIR}/include>
-@@ -77,5 +77,5 @@ ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
+@@ -83,7 +83,7 @@ endif()
+ ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
  
- # Install functional test to CiD component
- if(BUILD_COMPILER_FOR_DRIVER)
--    install_target_with_debug_files(vpuxCompilerL0Test ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
-+    install(TARGETS ${FUNCTIONAL_TARGET} RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
- endif()
+ install(TARGETS ${FUNCTIONAL_TARGET}
+-        RUNTIME DESTINATION tests
++        RUNTIME DESTINATION bin
+         COMPONENT ${VPUX_TESTS_COMPONENT}
+         EXCLUDE_FROM_ALL
+ )
 --- a/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 @@ -12,6 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -80,16 +90,16 @@
 +set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
  target_link_libraries(compilerTest
      PRIVATE
-         ${COMPILER_LOADER_DLL} # VCL function
+         npu_compiler_loader_utils # VCL function
 @@ -23,6 +24,7 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
  
  # profilingTest to check profiling API
- add_executable(profilingTest profilingTest.c)
+ add_executable(profilingTest profilingTest.cpp)
 +set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
  target_link_libraries(profilingTest
      PRIVATE
-         ${COMPILER_LOADER_DLL})
-@@ -30,6 +32,7 @@ ov_add_api_validator_post_build_step(TARGET profilingTest)
+         npu_compiler_loader_utils # VCL function
+@@ -33,6 +35,7 @@ ov_add_api_validator_post_build_step(TARGET profilingTest)
  
  # loaderTest to check npu_elf
  add_executable(loaderTest loaderTest.cpp)
@@ -97,14 +107,24 @@
  target_link_libraries(loaderTest
      PRIVATE
          npu_elf
-@@ -39,7 +42,7 @@ ov_add_api_validator_post_build_step(TARGET loaderTest)
+@@ -41,17 +44,17 @@ target_link_libraries(loaderTest
+ ov_add_api_validator_post_build_step(TARGET loaderTest)
  
- # Install functional test to CiD component
- if(BUILD_COMPILER_FOR_DRIVER)
--    install_target_with_debug_files(compilerTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
--    install_target_with_debug_files(profilingTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
--    install_target_with_debug_files(loaderTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
-+    install_target_with_debug_files(compilerTest bin ${INSTALL_COMPONENT})
-+    install_target_with_debug_files(profilingTest bin ${INSTALL_COMPONENT})
-+    install_target_with_debug_files(loaderTest bin ${INSTALL_COMPONENT})
- endif()
+ install(TARGETS loaderTest
+-        RUNTIME DESTINATION tests
++        RUNTIME DESTINATION bin
+         COMPONENT ${VPUX_TESTS_COMPONENT}
+         EXCLUDE_FROM_ALL
+ )
+ install(TARGETS compilerTest
+-        RUNTIME DESTINATION tests
++        RUNTIME DESTINATION bin
+         COMPONENT ${VPUX_TESTS_COMPONENT}
+         EXCLUDE_FROM_ALL
+ )
+ install(TARGETS profilingTest
+-        RUNTIME DESTINATION tests
++        RUNTIME DESTINATION bin
+         COMPONENT ${VPUX_TESTS_COMPONENT}
+         EXCLUDE_FROM_ALL
+ )

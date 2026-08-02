@@ -1,11 +1,10 @@
 --- a/googletest/src/gtest-death-test.cc
 +++ b/googletest/src/gtest-death-test.cc
-@@ -31,7 +31,7 @@
- // This file implements death tests.
+@@ -34,6 +34,7 @@
  
- #include "gtest/gtest-death-test.h"
--
+ #include <stdlib.h>
+ 
 +#include <cstdint>
- #include <utility>
- 
- #include "gtest/internal/gtest-port.h"
+ #include <functional>
+ #include <memory>
+ #include <sstream>

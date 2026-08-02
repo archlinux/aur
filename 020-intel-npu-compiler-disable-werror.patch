@@ -1,6 +1,6 @@
 --- a/cmake/compile_options.cmake
 +++ b/cmake/compile_options.cmake
-@@ -114,7 +114,7 @@ function(enable_warnings_as_errors TARGET_NAME)
+@@ -120,7 +120,7 @@ function(enable_warnings_as_errors TARGET_NAME)
      else()
          target_compile_options(${TARGET_NAME}
              PRIVATE

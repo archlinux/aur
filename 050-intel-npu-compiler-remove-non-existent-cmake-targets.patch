@@ -1,0 +1,22 @@
+--- a/src/npu_interpreter_runtime/CMakeLists.txt
++++ b/src/npu_interpreter_runtime/CMakeLists.txt
+@@ -37,8 +37,8 @@ target_link_libraries(${TARGET_NAME}
+         npu_bytecode_utils
+     PRIVATE
+         openvino::ze_loader
+-        openvino::level-zero-ext
+-        openvino::npu_zero_utils
++        #openvino::level-zero-ext
++        #openvino::npu_zero_utils
+         openvino::runtime
+ )
+ 
+@@ -58,7 +58,7 @@ target_include_directories(${TARGET_NAME}
+     PUBLIC
+         ${CMAKE_CURRENT_SOURCE_DIR}/include
+         $<TARGET_PROPERTY:openvino::ze_loader,INTERFACE_INCLUDE_DIRECTORIES>
+-        $<TARGET_PROPERTY:openvino::level-zero-ext,INTERFACE_INCLUDE_DIRECTORIES>
++        #$<TARGET_PROPERTY:openvino::level-zero-ext,INTERFACE_INCLUDE_DIRECTORIES>
+ )
+ 
+ include(${PROJECT_SOURCE_DIR}/cmake/npu_compiler_version.cmake)
