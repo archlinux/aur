@@ -2,7 +2,7 @@
 # Contributor: arthurbpf <arthurbpfernandes@gmail.com>
 
 pkgname=turso-cli
-pkgver=1.0.30
+pkgver=1.0.31
 pkgrel=1
 pkgdesc="Command line interface to Turso."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/tursodatabase/turso-cli"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tursodatabase/turso-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b8b740572dd935ab06e02c53ebc332277ab308b141a040bfceb9db45af1d0c11')
+sha256sums=('e784a1591dd422106f9fa1b51d0c0050243971de09198fb59c6a0d9c73b20c82')
 
 
 build() {
