@@ -5,8 +5,8 @@
 
 _gemname=commander
 pkgname=ruby-$_gemname
-pkgver=5.0.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
 url='https://github.com/commander-rb/commander'
@@ -25,8 +25,8 @@ checkdepends=(
   ruby-simplecov
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('43ca5701a29ecaf9cc7c3b436da8cb31f6c3547806588979062fa394f501abf7')
-b2sums=('3561023e55bcdc9915523213e14654ccfc84375fcbba4aba5cff529c6a33a5be868787a48d5808ac4498def18104256aa26330a04a294a15e19ffe4c8e858bd9')
+sha256sums=('87d1f16c431b022d4b8a0968bcf3b021e373a30d494f42969467a21e80fe16b7')
+b2sums=('1afd4f4d3d9e67994294fcc4460162e25a37af0b4974f9aa3627c95bd94f9a9bc41c8f734d842577de51ef9341bfa1a57f4f74b4fce61720145badde376adb24')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
