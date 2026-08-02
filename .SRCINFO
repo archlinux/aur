@@ -1,7 +1,7 @@
 pkgbase = slimevr-beta-bin
 	pkgdesc = SlimeVR FBT software beta version
-	pkgver = 20.1.0
-	pkgrel = 3
+	pkgver = 21.0.0rc1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server/
 	install = slimevr-beta-bin.install
@@ -29,7 +29,7 @@ pkgbase = slimevr-beta-bin
 	optdepends = libappindicator
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = SlimeVR-amd64-20.1.0.deb::https://github.com/SlimeVR/SlimeVR-Server/releases/download/v20.1.0/SlimeVR-amd64.deb
+	source_x86_64 = SlimeVR-amd64-21.0.0rc1.deb::https://github.com/SlimeVR/SlimeVR-Server/releases/download/v21.0.0-rc.1/SlimeVR-amd64.deb
 	sha512sums_x86_64 = SKIP
 
 pkgname = slimevr-beta-bin
