@@ -1,29 +1,23 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='dc5712e3acf168512f4d81e5306b4769afce3aa1'
+_commit='b314a433b4cc66865ed7649b4bf7ae5e71f9c1b3'
 pkgname=alps
-pkgver=2026.06.19
+pkgver=2026.07.28
 pkgrel=1
 pkgdesc='A simple and extensible webmail'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://git.sr.ht/~migadu/alps'
+url='https://github.com/migadu/alps'
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
 options=('!lto')
 backup=("etc/${pkgname}.toml")
-source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~migadu/${pkgname}/archive/${_commit}.tar.gz"
+source=("${pkgname}-${_commit}::git+https://github.com/migadu/${pkgname}.git#commit=${_commit}"
         "${pkgname}-system.service"
-        "${pkgname}-user.service"
-        "${pkgname}-plugins-path.patch")
-b2sums=('de2090cae40ae7144ed6fd423e4edfea352b780166ea4e252f2344bd4e197dfabc364d0b42f91ecafdc980ec83c9588288766fa018d0237f5593b255a68e4712'
+        "${pkgname}-user.service")
+b2sums=('6937fb9c2bb7707ac86698b45d0428a5db6e202945dc1a373b95b6f8ac70bbaa8114fd70a3a7dbb62adf2e4c0858124cc3f303714d5d39f9e614b9d75ee3a2a5'
         'f8a965be3570f8094d76b8d4617d8d985cd6f6eef76ac35f8b5603d6af39f5e326afb51d507cd5b459d80ca20154df4fe1bb4aba18a7004bda1e0f6bccb719d5'
-        'f8b109b613bac65e8c707c94c2bd6e259e13cfb9e833c401a8546a0cb4507b9dc9a8d89091c3793ce602a280e22f5ae3dd66accf589710aaab388aa4546d0ff5'
-        '3560f4d24a8aff7e2b7b1c225e3df47b922ba370b7c1f492a5a41f28338860dbaa87a4c81ce8aebb90ae76da8702b5eee919083b4e05c571fab2521fc6aa6477')
-
-prepare(){
-  patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-plugins-path".patch
-}
+        'f8b109b613bac65e8c707c94c2bd6e259e13cfb9e833c401a8546a0cb4507b9dc9a8d89091c3793ce602a280e22f5ae3dd66accf589710aaab388aa4546d0ff5')
 
 build() {
   cd "${pkgname}-${_commit}"
@@ -45,14 +39,6 @@ package() {
   cd "${pkgname}-${_commit}"
   # binary
   install -D -m755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-  # plugin assets
-  install -d -m755 "${pkgdir}/usr/lib/${pkgname}/plugins"
-  for plugin in plugins/*; do
-    [ -d "${plugin}/public" ] && \
-      install -d -m755 "${pkgdir}/usr/lib/${pkgname}/${plugin}" && \
-      cp -a "${plugin}/public" \
-        "${pkgdir}/usr/lib/${pkgname}/${plugin}"
-  done
   # config
   install -D -m644 config.example.toml "${pkgdir}/etc/${pkgname}.toml"
   # docs
