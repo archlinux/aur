@@ -1,13 +1,13 @@
 # Maintainer: Laoyou2333 <laoyou2333@confidesk.com>
 pkgname=clamui
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ClamUI is a modern Linux desktop application that provides a graphical user interface for the ClamAV antivirus command-line tool."
 arch=('any')
 url="https://clamui.com"
 license=('MIT')
 provide=('clamui' 'python-clamui')
-depends=('python' 'python-gobject' 'python-cairo' 'gtk4' 'clamav' 'polkit' 'python-requests' 'python-urllib3' 'python-keyring' 'python-matplotlib' 'python-hatchling' 'python-psutil' 'python-pillow' 'libadwaita')
+depends=('python' 'python-build' 'python-installer' 'python-gobject' 'python-cairo' 'gtk4' 'clamav' 'polkit' 'python-requests' 'python-urllib3' 'python-keyring' 'python-matplotlib' 'python-hatchling' 'python-psutil' 'python-pillow' 'libadwaita')
 source=("git+https://github.com/linx-systems/clamui#tag=v${pkgver}")
 sha256sums=('SKIP')
 
