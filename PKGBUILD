@@ -12,7 +12,7 @@
 pkgbase=epomaker-rt100-git
 pkgname=('epomaker-rt100-git' 'epomaker-rt100-gtk-git')
 _srcname=epomaker-rt100
-pkgver=0.2.0.r28.g2906438
+pkgver=0.2.0.r33.gacff071
 pkgrel=1
 arch=('any')
 url="https://github.com/dwaycik/epomaker-rt100"
