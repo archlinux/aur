@@ -1,6 +1,6 @@
 pkgbase = screenshaver
-	pkgdesc = Next-generation Linux screensaver that renders ISF, ShaderToy and GLSL shaders
-	pkgver = 0.4.4
+	pkgdesc = Next-generation Linux screensaver and wallpaper manager that renders ISF, ShaderToy and GLSL shaders
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/bauclair/screenshaver
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = screenshaver
 	depends = sdl2_ttf
 	depends = libx11
 	depends = libxss
-	source = screenshaver-0.4.4.tar.gz::https://github.com/bauclair/screenshaver/archive/refs/tags/0.4.4.tar.gz
-	sha256sums = ca4779d202667738c25b24a3b2b62132b8e4e77dc3fa7813108556efabc8cc36
+	source = screenshaver-0.4.5.tar.gz::https://github.com/bauclair/screenshaver/archive/refs/tags/0.4.5.tar.gz
+	sha256sums = d426ef22abfaad5fe1caf6b4da545a499726d9168c5756b8dd943a31c2ecdd76
 
 pkgname = screenshaver
