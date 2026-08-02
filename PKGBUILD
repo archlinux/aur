@@ -1,7 +1,7 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=clangen-bin
 _pkgname=clangen
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Warrior Cats fan game (PyInstaller bundle)"
 arch=('x86_64')
@@ -13,9 +13,9 @@ conflicts=('clangen')
 source=("${pkgname}-${pkgver}.tar.xz::https://clangen.io/api/v1/Update/Channels/stable/Releases/v${pkgver}/Artifacts/linux2.35"
         "LICENSE.md::https://raw.githubusercontent.com/ClanGenOfficial/clangen/development/LICENSE.md"
         "clangen.desktop")
-sha256sums=('e74e4db9c3edf44290d08ab39758cf1e90cad12a0a4334bdf824e9919247a611'
-            'SKIP'
-            'SKIP')
+sha256sums=('17fbf081ba2cef240f91ecd8097dda1ec223d64987676299dba202090297fa0a'
+            'b99c9caaaecff974ad46d6aa0a6f2d7fa36afe34bd357d016f16b13ebcc8ad9c'
+            '278435315554de27e45cb590d7ed4d628da1e880057e40b2f62599d65ff69841')
 options=('!strip')
 
 package() {
