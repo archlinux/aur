@@ -1,0 +1,18 @@
+pkgbase = python-pytrash
+	pkgdesc = A high level api for handling recycle bins across platforms
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/NSPC911/pytrash
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pytrash/pytrash-0.4.0.tar.gz
+	sha256sums = 74557aa6f021e8ed11aea46b6489320cc8113a04a91fcbaaaf70f0473c524682
+
+pkgname = python-pytrash
