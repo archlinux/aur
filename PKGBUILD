@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -114,7 +114,8 @@ conflicts=('ffmpeg')
 _git_base="https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}"
 _git_mirror="https://github.com/FFmpeg/FFmpeg.git#tag=n${pkgver}"
 source=(
-  "$pkgname::git+${_git_base}"
+  "$pkgname::git+${_git_mirror}"
+  # "https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
 )
 b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
