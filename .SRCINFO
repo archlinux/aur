@@ -1,6 +1,6 @@
 pkgbase = qmplay2-git
 	pkgdesc = QMPlay2 is a video and audio player which can play most formats and codecs
-	pkgver = 26.06.27.r0.g4d4f0312
+	pkgver = 26.08.02.r0.g70e6b828
 	pkgrel = 1
 	url = https://github.com/zaps166/QMPlay2
 	arch = i686
@@ -41,6 +41,7 @@ pkgbase = qmplay2-git
 	provides = qmplay2
 	conflicts = qmplay2<=25.09.11-1
 	options = !lto
+	options = !debug
 	source = git+https://github.com/zaps166/QMPlay2.git
 	source = git+https://github.com/zaps166/QmVk.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git

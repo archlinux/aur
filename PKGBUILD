@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2-git
-pkgver=26.06.27.r0.g4d4f0312
+pkgver=26.08.02.r2.g31e0f2af
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 
 conflicts=('qmplay2<=25.09.11-1')
 provides=('qmplay2')
 makedepends=('ninja' 'clang' 'llvm' 'lld' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
-options=(!lto)
+options=(!lto !debug)
 source=(
     'git+https://github.com/zaps166/QMPlay2.git'
     'git+https://github.com/zaps166/QmVk.git'
@@ -48,7 +48,6 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DUSE_PCH=ON \
-        -DUSE_GLSLC=ON \
         -DUSE_GIT_VERSION=ON
     time ninja
 }
