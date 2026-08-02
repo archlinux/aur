@@ -13,7 +13,6 @@ pkgbase = line-gtk
 	optdepends = gst-plugins-good: extra video playback codecs
 	optdepends = gst-libav: extra video playback codecs
 	provides = line-gtk=0.1.2
-	conflicts = line-gtk
 	conflicts = line-gtk-git
 	source_x86_64 = line-gtk-0.1.2-x86_64.tar.gz::https://github.com/MidnightTale/Line-GTK/releases/download/v0.1.2/line-gtk-0.1.2-x86_64.tar.gz
 	sha256sums_x86_64 = 28575f4db2543079b034898c326f78623a6c679e5a6f6024f0abc9ae63e774ed

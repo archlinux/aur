@@ -16,7 +16,7 @@ optdepends=(
   'gst-libav: extra video playback codecs'
 )
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}" "${pkgname}-git")
+conflicts=("${pkgname}-git")
 source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${arch}.tar.gz")
 sha256sums_x86_64=('28575f4db2543079b034898c326f78623a6c679e5a6f6024f0abc9ae63e774ed')
 
