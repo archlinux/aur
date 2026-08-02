@@ -4,11 +4,11 @@
 # Official Documentation: https://actualbudget.org/docs/install/
 _npmscope=@actual-app
 _npmpkg=sync-server
-_npmver=26.7.0
+_npmver=26.8.0
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
 arch=(x86_64)
 url="https://actualbudget.org"
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-    '31650aa29319e53ecdd710c4050a17a84040f45a5d21189b6856f085c65c5f78' # tgz
+    '9b01d168e57c4f75e885f93cec43d24be824bbded6fde43bc6957f4dfa268bee' # tgz
     '7359980edd568ddbaaef2a2d8c60fab277cb7f5d09372f72f8f1e0ee61df62f7' # service
     '041744d6403aa2cdf18a09d0e82d005203d11d56795c6738fbc4f9b0cccb2c12' # sysusers
     '8112d19ee07f43c8cd100796bb4b995f45f4304d5c78cfa21b6750c04a82b194' # tmpfiles
@@ -34,7 +34,7 @@ sha256sums=(
 )
 
 package() {
-    npm install --no-fund -g --allow-scripts=bcrypt,better-sqlite3 --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+    npm install --no-fund -g --allow-scripts=argon2,bcrypt,better-sqlite3 --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
     install -D -m 0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m 0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
