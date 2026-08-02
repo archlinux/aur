@@ -43,6 +43,9 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
+    docdir="${pkgdir}/usr/share/doc/${pkgname%-vcs}"
+    install -Dm644 -t "$docdir" README.md doc/index.mdz
+    cp -r doc/api "$docdir/"
     modpath="$(janet -e '(print (dyn :syspath))')"
     mkdir -p "${pkgdir}/${modpath}"
 	jpm --dest-dir="$pkgdir" --modpath="$modpath" --binpath="/usr/bin" install
