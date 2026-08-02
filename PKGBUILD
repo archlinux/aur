@@ -2,7 +2,7 @@ pkgname=nusgmon-git
 pkgdesc="Lightweight CLI to record and analyze network usage per interface"
 depends=('python' 'python-psutil' 'systemd')
 makedepends=('git')
-pkgver=117
+pkgver=121
 pkgrel=1
 arch=('any')
 source=('git+https://github.com/LUCKYS1NGHH/nusgmon.git')
@@ -21,7 +21,6 @@ package() {
 
   grep -v "Requires=network.target" "$srcdir/nusgmon/nusgmon.service" > "$pkgdir/etc/systemd/system/nusgmon.service"
   sed -i "s|^ExecStart=.*|ExecStart=/usr/local/bin/nusgmon record -w 3|" "$pkgdir/etc/systemd/system/nusgmon.service"
-  sed -i "s|^#!/usr/bin/env.*|#!/usr/bin/python3|" "$pkgdir/usr/local/bin/nusgmon"
 }
 
 install=nusgmon.install
