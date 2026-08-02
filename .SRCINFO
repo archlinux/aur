@@ -1,6 +1,6 @@
 pkgbase = graphics-creator
 	pkgdesc = Create titles and other visual effects
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/chocolateimage/graphics-creator
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = graphics-creator
 	depends = glibc
 	depends = libstdc++
 	depends = hicolor-icon-theme
-	source = graphics-creator-0.2.0.tar.gz::https://github.com/chocolateimage/graphics-creator/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 11505cd8933126c613c1aba5642fd514904495aad123f552f368740a1bbc316b
+	source = graphics-creator-0.3.0.tar.gz::https://github.com/chocolateimage/graphics-creator/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = c24d000a49b604a9cc2d86812f73aeaba574104738dbc047ed1a1a396e47b0d3
 
 pkgname = graphics-creator

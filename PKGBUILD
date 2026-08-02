@@ -1,6 +1,6 @@
 # Maintainer: chocolateimage <chocolateimage@protonmail.com>
 pkgname=graphics-creator
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Create titles and other visual effects'
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(ffmpeg
          hicolor-icon-theme)
 makedepends=(extra-cmake-modules pkgconf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/chocolateimage/graphics-creator/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('11505cd8933126c613c1aba5642fd514904495aad123f552f368740a1bbc316b')
+sha256sums=('c24d000a49b604a9cc2d86812f73aeaba574104738dbc047ed1a1a396e47b0d3')
 
 build() {
   cmake -B build -S $pkgname-$pkgver -DCMAKE_INSTALL_PREFIX=/usr
