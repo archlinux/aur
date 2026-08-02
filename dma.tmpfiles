@@ -1,6 +1,9 @@
 # SPDX-FileCopyrightText: Arch Linux contributors
 # SPDX-License-Identifier: 0BSD
 
-f /etc/dma/dma.conf 0644 root root - -
-f /etc/dma/auth.conf 0640 root root - -
-d /var/spool/dma 2775 mail root - -
+d /var/spool/dma 2775 root mail - -
+z /etc/dma/dma.conf 0644 root mail - -
+z /etc/dma/auth.conf 0640 root mail - -
+
+z /usr/bin/dma 2755 root mail - -
+z /usr/lib/dma/dma-mbox-create 4754 root mail - -
