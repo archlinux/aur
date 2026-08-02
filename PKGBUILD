@@ -1,6 +1,6 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 epoch=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
@@ -10,23 +10,23 @@ license=('Apache-2.0')
 source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
         "git+https://github.com/nestybox/dockerfiles.git#commit=c05538c1e33baf9d49695a9007e87462115d31da"
-        "git+https://github.com/nestybox/sysbox-fs.git#commit=b70bd38bbf72bf0e759c5f7d8c38925d717068ae"
+        "git+https://github.com/nestybox/sysbox-fs.git#commit=c3d2ebc65102e32e74e383675f03b45556326888"
         "git+https://github.com/nestybox/fuse.git#commit=5ce319439091b08f33b149cb2482039f1b0a24fe"
         "git+https://github.com/nestybox/sysbox-ipc.git#commit=f05151f4b4c1df63d7fd241577ca032905c1bd0e"
-        "git+https://github.com/nestybox/sysbox-libs.git#commit=9b42cd43fad17198c93ff660d9bb269e7c74366d"
-        "git+https://github.com/nestybox/sysbox-mgr.git#commit=bff3721f86e737cfa129dfe9fe2e7933692aba26"
+        "git+https://github.com/nestybox/sysbox-libs.git#commit=cacac19395528afa42b467a980b05d8d1c6d646c"
+        "git+https://github.com/nestybox/sysbox-mgr.git#commit=2d45af01bcfd8641e6641f76104c6003bf501cd7"
         "git+https://github.com/nestybox/sysbox-pkgr.git#commit=b8403a90017795f42f02d5b2e1b6752d02ce4b57"
-        "git+https://github.com/nestybox/sysbox-runc.git#commit=a4dd414f7b9b7455c0fbf0d5e5db7bcfe30645bc"
+        "git+https://github.com/nestybox/sysbox-runc.git#commit=081856cc5d17e7095f066b08d0eca6bb0b515c47"
         Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
-sha256sums=(03894a8573f3c2b9db84072bc0c8e6d302e4257e9e1f8641f9fbf79fcbd08813
+sha256sums=(481aea0544efe8b3cb6dac6149e7ec15818e04bf147451e5c6a84dccc9761b2b
             b0de3f8c452d7bf4ea17368794a9db440bdc23a9a04e1f97e6c13ecf4c0c55c3
-            3af91046ff24b7b3b8d81d48ed05d2ad4f6b4a6a9502091a00af634d95c09284
+            67301826664d5e2005e177e918416a3386bea4710f4eafb4e98f24fcd1b48021
             b2070599fd5181520ca6069940de16938f54e8d554c2d88fed06214a75ba0bf2
             7f7e3e0f9acac2ea6ff2d9702fc4006f679cf005cf8abf2dbbb447c133b8455e
-            2c3a9be118fb8a704f5579bc0c5245e0d6e0a47a5f70a8b30cf8cc6a1bedb4ae
-            483c269bb1c6f9a36eaa599d45f85a4e9b9c30e7a8676176ee8eae3fb9245e94
+            d82f23514e8124cec708c668b8d032676d5dd084e96caa8bad297b54701b8e1c
+            95007069e2c73becac2401934de43e825f817a4fa190a5cdbeee7c320aeccf1e
             0ec269e7dd554fc94fd40af22ebb058c44fdc2fbff0ada72386d176cc89552d4
-            b3d9fdafcdaf7d00c17e1866fd3f2cc426695e9097bc85d25b1f05665fbb0963
+            9674f68d2f2f00816ed36fe4ace8fd0f41b65644b698175c829f058d78edafa8
             5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 depends=('rsync' 'fuse2')
