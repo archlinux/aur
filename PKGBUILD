@@ -31,7 +31,14 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-    jpm test
+	# The test suites `import` spork's own modules (e.g. spork/test,
+	# spork/temple) as if spork were already installed, so install it
+	# into a throwaway JANET_PATH before running the checks.
+	local checkpath="$srcdir/check-syspath"
+	rm -rf "$checkpath"
+	mkdir -p "$checkpath"
+	JANET_PATH="$checkpath" janet -e '(bundle/install ".")'
+	JANET_PATH="$checkpath" janet -l ./bundle -e "(check)"
 }
 
 package() {
