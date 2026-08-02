@@ -1,4 +1,4 @@
-# Maintainer: Jonas Bögle <aur@iwr.sh>
+# Maintainer: irgendwr <aur@iwr.sh>
 # Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
 pkgname=typora
