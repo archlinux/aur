@@ -1,0 +1,11 @@
+--- a/cmake/compiler_flags.cmake
++++ b/cmake/compiler_flags.cmake
+@@ -4,7 +4,7 @@
+ 
+ add_compile_options(
+   # Compiler warnings
+-  -Wall -Wextra -Werror -Wno-unused-parameter -Wvla -Wno-error=cpp
++  -Wall -Wextra -Wno-unused-parameter -Wvla -Wno-error=cpp
+   # Control flow integrity
+   $<$<CONFIG:Release>:-fcf-protection=full>
+   # Format string defence

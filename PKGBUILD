@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver-git
-pkgver=1.32.1.r0.g7b13873
+pkgver=1.35.0.r0.gfd49947
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
@@ -29,19 +29,17 @@ install=intel-npu-driver.install
 source=('git+https://github.com/intel/linux-npu-driver.git'
         'git+https://github.com/intel/level-zero-vpu-extensions.git'
         'git+https://github.com/openvinotoolkit/npu_compiler_elf.git'
-        'git+https://github.com/google/perfetto.git'
         '10-intel-npu.rules'
         '010-intel-npu-driver-rename-installed-binaries.patch'
-        '020-intel-npu-driver-disable-gtest-and-yaml.patch'
+        '020-intel-npu-driver-disable-werror.patch'
         '030-intel-npu-driver-fix-firmware-install-path.patch'
         '040-intel-npu-driver-use-system-level-zero.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
-            '9eaa858cb35f5320ae3bb89edc1e2c0e3131f73d34ac4e036fa3929173a3a076'
-            '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
+            '03783024bbb9051a2f8f780fbaab643681c8d20c7d285cde9af241082ea483bb'
+            '9eb32f61b0ea2ea991b621d7c9a15d93922d3f73516319625bb2ca63af0e9115'
             '958f5a8114e9ca51c3819ef26b9ace938a61b39da8da1b8627288c5a8910aaf6'
             'a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25')
 
@@ -52,11 +50,10 @@ prepare() {
     git -C linux-npu-driver config --local submodule.third_party/npu_compiler_elf.url "${srcdir}/npu_compiler_elf"
     git -C linux-npu-driver config --local submodule.third_party/googletest.update none
     git -C linux-npu-driver config --local submodule.third_party/yaml-cpp.update none
-    git -C linux-npu-driver config --local submodule.third_party/perfetto.url "${srcdir}/perfetto"
     git -C linux-npu-driver -c protocol.file.allow='always' submodule update
     
     patch -d linux-npu-driver -Np1 -i "${srcdir}/010-intel-npu-driver-rename-installed-binaries.patch"
-    patch -d linux-npu-driver -Np1 -i "${srcdir}/020-intel-npu-driver-disable-gtest-and-yaml.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/020-intel-npu-driver-disable-werror.patch"
     patch -d linux-npu-driver -Np1 -i "${srcdir}/030-intel-npu-driver-fix-firmware-install-path.patch"
     patch -d linux-npu-driver/third_party/level-zero-npu-extensions -Np1 -i "${srcdir}/040-intel-npu-driver-use-system-level-zero.patch"
 }
@@ -77,7 +74,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_NPU_COMPILER_BUILD:BOOL='OFF' \
         -DENABLE_SANITIZER:STRING='disabled' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
