@@ -2,7 +2,7 @@
 # Contributor: Ain Ruiz Dorado <maxain201 at gmail dot com>
 
 pkgname=tidal-hifi-tidaluna
-pkgver=8.0.0
+pkgver=8.1.0
 _tidalunaver=1.16.2-beta
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod)."
@@ -16,7 +16,7 @@ source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi
         "luna-${_tidalunaver}.zip::https://github.com/Inrixia/TidaLuna/releases/download/${_tidalunaver}/luna.zip"
         "tidal-hifi-tidaluna.desktop")
 noextract=("luna-${_tidalunaver}.zip")
-sha256sums=('c4372905477db3d87fd2be6dfbc5e8bfbc634d25e4554c8637b311c645a53416'
+sha256sums=('ea2d547032f023c7c55927a3d7bad85ee00e611d11fc13ee700e9f8e76dcbfaa'
             '6e66f0789f5b0b982b3192abacb815aae32d0a248c45a70aa2553ed1797f0019'
             '8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b')
 
