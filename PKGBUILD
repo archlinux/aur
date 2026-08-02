@@ -1,17 +1,19 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp
-pkgver=5.14.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
 license=('Apache-2.0')
-depends=('ghidra' 'python' 'python-requests' 'python-mcp')
-makedepends=('maven' 'jdk21-openjdk')
+# Pin to the stable Ghidra release (extra) that upstream targets (12.1.2).
+# ghidra-git provides 'ghidra' but would not satisfy the versioned constraint.
+depends=('ghidra=12.1.2' 'python' 'python-mcp')
+makedepends=('maven' 'jdk21-openjdk' 'python-build' 'python-installer' 'python-hatchling')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aa1e2a433de85b63c636e24e17c622dec93c3f99a2cb40bf83fb68fc1941c5c2')
+sha256sums=('2f62806b7a5e139d791c9d55e04893d68981be2fcc7fd987fa93a391a0956c0f')
 install=ghidra-mcp.install
 
 prepare() {
@@ -47,7 +49,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  # Ensure JDK 21 is used for the build (Ghidra 11+ requirement)
+  # Ensure JDK 21 is used for the build (Ghidra 12.1.2 release requirement)
   if [ -d "/usr/lib/jvm/java-21-openjdk" ]; then
     export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
   else
@@ -107,15 +109,16 @@ build() {
 
   msg2 "Building project..."
   mvn clean package assembly:single -DskipTests -Dmaven.repo.local="$srcdir/.m2"
+
+  msg2 "Building Python bridge wheel..."
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  # 1. Install MCP Bridge Script
-  local _bridge_dir="$pkgdir/opt/${pkgname}"
-  install -d "$_bridge_dir"
-  install -Dm755 bridge_mcp_ghidra.py "$_bridge_dir/bridge_mcp_ghidra.py"
+  # 1. Install Python MCP Bridge wheel (provides /usr/bin/bridge-mcp-ghidra)
+  python -m installer --destdir="$pkgdir" dist/ghidra_mcp_bridge-*.whl
 
   # 2. Install Ghidra Extension ZIP
   local _ext_zip
