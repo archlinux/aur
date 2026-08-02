@@ -1,10 +1,10 @@
 # Maintainer: Tengfei Bao <tfbao92@163.com>
 
 pkgname=fcitx5-sime
-pkgver=2026.04.29
-pkgrel=2
-_appver=0.15.3
-_enginever=2026.04.29
+pkgver=2026.08.02
+pkgrel=1
+_appver=0.15.4
+_enginever=2026.08.02
 pkgdesc="Sime Chinese input method for Fcitx5"
 arch=('x86_64')
 url="https://github.com/Ismantic/SimeApp"
@@ -17,9 +17,9 @@ source=(
   "sime-model-${_enginever}.tar.zst::https://github.com/Ismantic/Sime/releases/download/v${_enginever}/sime-model-${_enginever}.tar.zst"
 )
 sha256sums=(
-  '882d68bc82b36e4c388e059319be8a024f06284c67d92bfafbeb496f16ab83a6'
-  'd224e1ec2933c5186dd73d5fb1be0206e658d83b8bfa3ecec729ae4a48b22b60'
-  '840ac365d36b200f4e7ebdc168d9bfde5cd458eb71b16e0bf9ef1ef0fdd84333'
+  '0f32be757307d0c454be2e7b7ed0fd65d02b1b1a57a58c647e5d6a01d43b5a7a'
+  '99ada6fb8b3cebb6731412365f91f8cf7153cdd6f702a3b8c651d8bb73452ed7'
+  '61d3ab6e6f0be2e902b1fe10b54eacdead7baa70748bd2f30891eacb2e5d5fa6'
 )
 
 build() {
