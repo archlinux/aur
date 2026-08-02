@@ -1,12 +1,12 @@
 # Maintainer: VBen <devel@velmeden.info>
 pkgname=loxone-config-bin
 pkgver=17.1.7.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Loxone Config - home automation configuration software (Wine)"
 arch=('x86_64')
 url="https://www.loxone.com"
 license=('LicenseRef-Loxone-Proprietary')
-depends=('wine' 'wine-mono')
+depends=('wine' 'wine-mono' 'zenity')
 makedepends=('xorg-server-xvfb' 'icoutils')
 options=('!strip' 'emptydirs')
 
@@ -19,12 +19,16 @@ source=(
     "loxone-config.desktop"
     "loxone-monitor.sh"
     "loxone-monitor.desktop"
+    "loxone-config-dpi.sh"
+    "loxone-config-dpi.desktop"
 )
 sha256sums=('478b163c6883514d9faf83e4ce2fc1d4637bd0c5b3b8d05600b4eeade475949a'
             '3def05431934b75dbda853eef3ec62659249c0194f7337751946d08de8d5954b'
             '3ff9c4f99a924d74e3240dba49fbdce737113e1072f9f7aadf6d9fe6c76260b1'
             'bd0052ac963c24524d2ebe4c3e0955713a4b0faa08439f497f2bb536825d8217'
-            '243f3787f9f42a5136aacad473f7a805cd7e0a8b96016ba73124748328bd45e8')
+            '243f3787f9f42a5136aacad473f7a805cd7e0a8b96016ba73124748328bd45e8'
+            '6102feecaea9ac6bb7a005b3cec6bb5372f2693e84672cf4bb96c67c730198b3'
+            '80898cd754644840a821552eef63a6a55f1235c41523b216744c0f4da67a140d')
 
 build() {
     export WINEPREFIX="${srcdir}/wine-prefix"
@@ -111,8 +115,10 @@ package() {
     # Wrapper scripts
     install -Dm755 "${srcdir}/loxone-config.sh" "${pkgdir}/usr/bin/loxone-config"
     install -Dm755 "${srcdir}/loxone-monitor.sh" "${pkgdir}/usr/bin/loxone-monitor"
+    install -Dm755 "${srcdir}/loxone-config-dpi.sh" "${pkgdir}/usr/bin/loxone-config-dpi"
 
     # Desktop entries
     install -Dm644 "${srcdir}/loxone-config.desktop" "${pkgdir}/usr/share/applications/loxone-config.desktop"
     install -Dm644 "${srcdir}/loxone-monitor.desktop" "${pkgdir}/usr/share/applications/loxone-monitor.desktop"
+    install -Dm644 "${srcdir}/loxone-config-dpi.desktop" "${pkgdir}/usr/share/applications/loxone-config-dpi.desktop"
 }

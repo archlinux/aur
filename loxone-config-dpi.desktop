@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Loxone Config Scaling
+GenericName=HiDPI scaling for Loxone Config
+Comment=Adjust the display scaling used by Loxone Config
+Exec=loxone-config-dpi
+Icon=loxone-config-bin
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=false
