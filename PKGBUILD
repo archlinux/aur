@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.6.2.20
+pkgver=3.6.2.21
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -13,8 +13,8 @@ url='https://github.com/adventuregamestudio/ags'
 license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
 makedepends=('cmake' 'gtest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v$pkgver.tar.gz")
-sha256sums=('2fb7634343885aadf3f67190a914c1bad2ac4a06cb8bad05ba43ff3140e33431')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
+sha256sums=('19cc4bdf222c5bf1c412d11f19f3fee07b310e21a9b731f42f1f71d6faf0e1a0')
 
 _srcdir="$pkgname-$pkgver"
 
@@ -26,9 +26,9 @@ prepare() {
 	sed -i 's|add_subdirectory(Common/libsrc/freetype-2.1.3   EXCLUDE_FROM_ALL)|find_package(Freetype REQUIRED)|' 'CMakeLists.txt'
 	sed -i 's|set(FREETYPE_LIBRARIES FreeType::FreeType)|set(FREETYPE_LIBRARIES Freetype::Freetype)|' 'CMakeLists.txt'
 
-	sed -i '/<string.h>/a #include <strings.h>|' 'Common/util/string_compat.c'
+	sed -i '/<string.h>/a #include <strings.h>/' 'Common/util/string_compat.c'
 
-	find . -name 'CMakeLists.txt' -exec sed -i 's/CXX_STANDARD 11/CXX_STANDARD 20/' {} \;
+	find . -name 'CMakeLists.txt' -exec sed -i 's/CXX_STANDARD 11/CXX_STANDARD 23/' {} \;
 }
 
 build() {
