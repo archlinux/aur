@@ -1,53 +1,42 @@
+# Maintainer: Kritthapath Yaviraj <archlinux@toonshou.in>
+# Maintainer: MidnightTale <mntale@pm.me>
 # Based on helium-browser-bin (https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=helium-browser-bin)
 
-_pkgname=line-gtk
-pkgname="${_pkgname}"
-pkgver=0.1.1
+pkgname="line-gtk"
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Unofficial native LINE client for Linux. GTK4 / Libadwaita UI with a Deno protocol sidecar (linejs) - Prebuilt binary"
 arch=('x86_64')
 url="https://github.com/MidnightTale/Line-GTK"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'deno' 'ffmpeg')
-optdepends=('poppler: PDF preview support')
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}" "${_pkgname}-git")
-source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.tar.gz")
-sha256sums_x86_64=('f76ef62ab381931081f50f8ca8f13bc1cf27d3cd38b46d29b0c6fd7dd2dfa800')
+depends=('gtk4' 'libadwaita' 'ffmpeg' 'hicolor-icon-theme')
+optdepends=(
+  'poppler: PDF preview in media viewer'
+  'gst-plugins-good: extra video playback codecs'
+  'gst-libav: extra video playback codecs'
+)
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}" "${pkgname}-git")
+source_x86_64=("${pkgname}-${pkgver}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${arch}.tar.gz")
+sha256sums_x86_64=('28575f4db2543079b034898c326f78623a6c679e5a6f6024f0abc9ae63e774ed')
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}-${arch}"
+	cd "${srcdir}/${pkgname}-${pkgver}-${arch}"
 
-	# Install binary and sidecar directories into /usr/lib/line-gtk/
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
+	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -d "${pkgdir}/usr/share/${pkgname}"
+	cp -a protocol "${pkgdir}/usr/share/${pkgname}/protocol"
+	cp -a assets "${pkgdir}/usr/share/${pkgname}/assets"
 
-	if [[ -d "protocol" ]]; then
-		cp -dr --no-preserve=ownership protocol "${pkgdir}/usr/lib/${_pkgname}/"
-	fi
-
-	if [[ -d "assets" ]]; then
-		cp -dr --no-preserve=ownership assets "${pkgdir}/usr/lib/${_pkgname}/"
-	fi
-
-	# Symlink executable into /usr/bin/
-	install -d "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	# Install desktop entry
 	install -Dm644 "dev.linegtk.LineGtk.desktop" "${pkgdir}/usr/share/applications/dev.linegtk.LineGtk.desktop"
 
-	# Install system icons
-	if [[ -d "assets/icons/hicolor" ]]; then
-		install -d "${pkgdir}/usr/share/icons"
-		cp -dr --no-preserve=ownership assets/icons/hicolor "${pkgdir}/usr/share/icons/"
+	for size in 48x48 64x64 128x128 256x256; do
+		install -Dm644 "assets/icons/hicolor/${size}/apps/line-gtk.png" \
+		"$pkgdir/usr/share/icons/hicolor/${size}/apps/line-gtk.png"
+	done
+	install -Dm644 assets/icons/hicolor/scalable/apps/line-gtk.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/line-gtk.svg"
 
-		# Symlink dev.linegtk.LineGtk <-> line-gtk icon names so desktop themes recognize both
-		for icon in "${pkgdir}/usr/share/icons/hicolor/"*"/apps/line-gtk."*; do
-			if [[ -f "$icon" ]]; then
-				ext="${icon##*.}"
-				dir="$(dirname "$icon")"
-				ln -sf "line-gtk.${ext}" "${dir}/dev.linegtk.LineGtk.${ext}"
-			fi
-		done
-	fi
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

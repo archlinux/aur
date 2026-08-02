@@ -1,19 +1,21 @@
 pkgbase = line-gtk
 	pkgdesc = Unofficial native LINE client for Linux. GTK4 / Libadwaita UI with a Deno protocol sidecar (linejs) - Prebuilt binary
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MidnightTale/Line-GTK
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gtk4
 	depends = libadwaita
-	depends = deno
 	depends = ffmpeg
-	optdepends = poppler: PDF preview support
-	provides = line-gtk=0.1.1
+	depends = hicolor-icon-theme
+	optdepends = poppler: PDF preview in media viewer
+	optdepends = gst-plugins-good: extra video playback codecs
+	optdepends = gst-libav: extra video playback codecs
+	provides = line-gtk=0.1.2
 	conflicts = line-gtk
 	conflicts = line-gtk-git
-	source_x86_64 = line-gtk-0.1.1-x86_64.tar.gz::https://github.com/MidnightTale/Line-GTK/releases/download/v0.1.1/line-gtk-0.1.1-x86_64.tar.gz
-	sha256sums_x86_64 = f76ef62ab381931081f50f8ca8f13bc1cf27d3cd38b46d29b0c6fd7dd2dfa800
+	source_x86_64 = line-gtk-0.1.2-x86_64.tar.gz::https://github.com/MidnightTale/Line-GTK/releases/download/v0.1.2/line-gtk-0.1.2-x86_64.tar.gz
+	sha256sums_x86_64 = 28575f4db2543079b034898c326f78623a6c679e5a6f6024f0abc9ae63e774ed
 
 pkgname = line-gtk
