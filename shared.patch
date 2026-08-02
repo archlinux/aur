@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,13 +1,18 @@
+ cmake_minimum_required(VERSION 3.5.1)
++
+ project(libxaac C CXX)
++
+ enable_language(ASM)
+ 
+ option(BUILD64 "Build for 64 bit" OFF)
++
+ set(XAAC_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")
+ set(XAAC_CONFIG_DIR "${CMAKE_CURRENT_BINARY_DIR}")
++
+ find_package(Threads REQUIRED)
+ 
+-set(CMAKE_STATIC_LIBRARY_PREFIX "")
++set(BUILD_SHARED_LIBS ON)
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ include("${XAAC_ROOT}/cmake/utils.cmake")
+
+--- a/decoder/libxaacdec.cmake	2026-08-02 21:35:50.231079305 +0200
++++ b/decoder/libxaacdec.cmake	2026-08-02 21:38:03.964272496 +0200
+@@ -136,4 +136,4 @@
+   include("${XAAC_ROOT}/decoder/x86/libxaacdec_x86.cmake")
+ endif()
+ 
+-add_library(libxaacdec STATIC ${LIBXAAC_COMMON_SRCS} ${LIBXAACDEC_SRCS} ${LIBXAACCDEC_ASMS})
++add_library(libxaacdec SHARED ${LIBXAAC_COMMON_SRCS} ${LIBXAACDEC_SRCS} ${LIBXAACCDEC_ASMS})
+ 
+--- a/encoder/libxaacenc.cmake	2026-08-02 21:39:02.049365132 +0200
++++ b/encoder/libxaacenc.cmake	2026-08-02 21:43:20.073243071 +0200
+@@ -137,4 +137,5 @@
+
+ include("${XAAC_ROOT}/encoder/drc_src/libxaacenc_drc.cmake")
+
+-add_library(libxaacenc STATIC ${LIBXAACENC_SRCS} ${LIBXAAC_COMMON_SRCS})
+\ No newline at end of file
++add_library(libxaacenc SHARED ${LIBXAACENC_SRCS} ${LIBXAAC_COMMON_SRCS})
++
+

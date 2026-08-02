@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=libxaac-git
-pkgver=0.1.13.r8.gb919319
+pkgver=0.1.13.b919319
 pkgrel=1
 pkgdesc='Extended HE AAC Encoder and Decoder by Ittiam Systems (git version)'
 arch=('any')
@@ -9,21 +9,18 @@ url='https://github.com/ittiam-systems/libxaac'
 license=('Apache-2.0')
 makedepends=('git' 'make' 'cmake')
 provides=('libxaac' 'xaac' 'libxaacdec.so' 'libxaacenc.so' 'xaacdec' 'xaacenc')
-source=('git+https://github.com/ittiam-systems/libxaac')
-sha256sums=('SKIP')
+source=('git+https://github.com/ittiam-systems/libxaac' 'shared.patch')
+sha256sums=('SKIP' 'abb545bfbfce403a752783e47a6a10a90102cc418cd6a69d559d7c6adf5e422c')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --tags --long --dirty --always \
-        | sed -E 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
+    git describe --tags --long --always \
+        | sed -E 's/^v//; s/-[0-9]+-g/./'
 }
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
-
-    sed -i 's/add_library(\(.*\) STATIC/add_library(\1 SHARED/' \
-        decoder/libxaacdec.cmake \
-        encoder/libxaacenc.cmake
+    LC_ALL=C patch -Np1 -i "$srcdir/shared.patch"
 }
 
 build() {
@@ -63,7 +60,7 @@ build() {
         export LDFLAGS="$BASE_LDFLAGS"
     fi
 
-    cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_SHARED_LIBRARY_SUFFIX=".so" -DCMAKE_SHARED_LIBRARY_PREFIX="lib" -Wno-author .
+    cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_SHARED_LIBRARY_SUFFIX=".so" -Wno-author .
     make -j$(nproc)
 }
 
@@ -72,8 +69,8 @@ package() {
     cd "$srcdir/${pkgname%-git}"
 
     # Libraries
-    install -Dm755 libxaacdec.so "$pkgdir/usr/lib/libxaacdec.so"
-    install -Dm755 libxaacenc.so "$pkgdir/usr/lib/libxaacenc.so"
+    install -Dm755 liblibxaacdec.so "$pkgdir/usr/lib/libxaacdec.so"
+    install -Dm755 liblibxaacenc.so "$pkgdir/usr/lib/libxaacenc.so"
 
     # Executables
     install -Dm755 xaacdec "$pkgdir/usr/bin/xaacdec"
