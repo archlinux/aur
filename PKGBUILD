@@ -1,28 +1,31 @@
 # Maintainer: gambarim <gambarim@pm.me>
 
 pkgname=buzz-bin
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
-pkgdesc='A workspace where humans and agents build together, on a relay you own'
+pkgdesc='Self-hostable workspace where humans and AI agents build together, on a relay you own'
 arch=('x86_64')
-url='https://buzz.xyz'
-license=('Apache')
+url='https://github.com/block/buzz'
+license=('Apache-2.0')
 depends=(
+  'alsa-lib'
   'cairo'
   'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk3'
+  'hicolor-icon-theme'
   'libsoup3'
   'pango'
   'webkit2gtk-4.1'
+  'xdg-utils'
   'zlib'
 )
-provides=('buzz')
-conflicts=('buzz')
-source=("https://github.com/block/buzz/releases/download/v${pkgver}/Buzz_${pkgver}_amd64.deb")
-sha256sums=('9674cf098eca88333e8d895ec9d0a5c56c796fbc358fe1087b645890b8e2faca')
+options=('!strip' '!debug')
+conflicts=('buzz-appimage')
+source=("https://github.com/block/buzz/releases/download/desktop-v${pkgver}/Buzz_${pkgver}_amd64.deb")
+sha256sums=('ae20163ef481ccbf3531b9806996d7580a3a24f9258a54698c75fdcb8b16f14b')
 
 package() {
   cd "${srcdir}"
