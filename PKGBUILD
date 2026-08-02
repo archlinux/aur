@@ -2,13 +2,13 @@ pkgname=vigaphone-bin
 pkgver=1.6.2
 pkgrel=1
 options=('!strip' '!debug')
-groups=('pro-audio','vst3-plugins')
-pkgdesc="ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Instrument Piano Tuner, Sound and Timbre Analyzer,  and more..."
+groups=('pro-audio' 'vst3-plugins')
+pkgdesc="ViGAPhone Synth Lab: New Physical-Modeling Synthesizer, Instrument Piano Tuner, MIDI-MPE application, VST3 plugin, Sound and Timbre Spectral Analyzer and more..."
 arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('sha256:b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f')
+sha256sums=('b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f')
 
 depends=(
     'alsa-lib'
