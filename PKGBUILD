@@ -1,7 +1,7 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.34.r694.d618141
+pkgver=1.36.r711.23be0d4
 pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
@@ -21,9 +21,9 @@ depends=(
   'xdg-desktop-portal'
   'clang' 'uv' 'gtk4' 'libadwaita' 'libsoup3' 'libportal-gtk4' 'gobject-introspection' 'sassc' 'python-setproctitle' 'python-pywayland'
   'hyprshot' 'ksnip' 'wf-recorder' 'slurp' 'grim' 'tesseract' 'tesseract-data-eng'
-  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos-git' 'bluez-utils'
+  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos-git' 'bluez-utils' 'howdy-git'
   'fuzzel' 'nm-connection-editor' 'quickshell-git' 'swww' 'translate-shell' 'wlogout'
-  'sleex-user-config-git' 'sleex-artworks-git'
+  'sleex-user-config-git' 'sleex-artworks-git' 'sleex-ui-kit-git'
 )
 
 makedepends=('git' 'cmake')
@@ -51,7 +51,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.34.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.36.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
