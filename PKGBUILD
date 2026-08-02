@@ -48,6 +48,7 @@ package() {
     cp -r doc/api "$docdir/"
     modpath="$(janet -e '(print (dyn :syspath))')"
     mkdir -p "${pkgdir}/${modpath}"
+    mkdir -p "${pkgdir}/usr/share/man/man1"
 	jpm --dest-dir="$pkgdir" --modpath="$modpath" --binpath="/usr/bin" install
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/janet-spork-git/LICENSE"
 }
