@@ -1,12 +1,13 @@
 pkgbase = distrobuilder-git
 	pkgdesc = System container image builder for LXC and LXD
 	pkgver = 2.1.r34.g2ff2379
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxc/distrobuilder
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
+	makedepends = btrfs-progs
 	depends = rsync
 	depends = squashfs-tools
 	depends = gnupg
