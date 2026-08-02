@@ -1,7 +1,7 @@
 pkgbase = ascon-kompas3d-v25-home
 	pkgdesc = CAD software for mechanical engineering (Home Edition)
 	pkgver = 25.0.1.2738
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kompas.ru/
 	install = ascon-kompas3d-v25-home.install
 	arch = x86_64

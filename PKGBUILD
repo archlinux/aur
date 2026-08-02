@@ -1,7 +1,7 @@
 # Maintainer: Cetronix <trm.seven@gmail.com>
 pkgname=ascon-kompas3d-v25-home
 pkgver=25.0.1.2738
-pkgrel=1
+pkgrel=2
 pkgdesc="CAD software for mechanical engineering (Home Edition)"
 url="https://kompas.ru/"
 arch=("x86_64")
@@ -137,4 +137,10 @@ package() {
     fi
 
     find "$pkgdir/opt/ascon/kompas3d-v25/Bin" -type f -exec chmod +x {} \; 2>/dev/null || true
+
+    # Исправление .desktop файла для корректного отображения и запуска из меню
+    if [[ -f "$pkgdir/usr/share/applications/kompas-home-v25.desktop" ]]; then
+        msg2 "Исправление Exec в kompas-home-v25.desktop..."
+        sed -i 's|^Exec=.*|Exec=kompas3d-v25 %F|' "$pkgdir/usr/share/applications/kompas-home-v25.desktop"
+    fi
 }
