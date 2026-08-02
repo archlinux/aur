@@ -4,7 +4,7 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2026.1.2
+pkgver=2026.1.3
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -12,13 +12,15 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
+backup=('opt/teamcity/conf/server.xml')
+
 source=("https://download.jetbrains.com/teamcity/TeamCity-$pkgver.tar.gz"
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('d18975abdb49bd2460d9d24978e9a1422a320f2606cda1d264cead6cdb0a8bb5'
+sha256sums=('66b20672b8a7df92669695922f2bf217c9fcc4b8f606a5cd2f3d4e79c073a80f'
             'abe89ea6be4cb54750568f27c2173cd1b46b49b4aac0cc727d3604b1178cd8fb'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
