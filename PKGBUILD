@@ -1,7 +1,7 @@
 # Maintainer: crux <c-rrux@outlook.com>
 
 pkgname=kursor
-pkgver=1.0.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor -- glide-num & glide-alpha (navigation) & grid (progressive targeting)"
 arch=('x86_64')
