@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=litecoin-daemon
-pkgver=0.21.5.5
+pkgver=0.21.5.6
 pkgrel=1
 arch=('x86_64')
 url="https://www.litecoin.org/"
@@ -16,7 +16,7 @@ source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}
     0003-Fix-_FORTIFY_SOURCE-flag.patch
     0004-remove-boost-system.patch
 )
-sha256sums=('7d0754bc595a872644771c919ed65bc735a1c879b6830b842bb87eee4eaeb88e'
+sha256sums=('cebee52747bdd827d4716e6528a5ef76a57d4d73c4df78ecfb6a45eaf819972f'
             'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
             '8f4354356b66f92b52a85d91c19d576e7cb637957380c052404794a70d9f8383'
             '0ca550e3967ee880f8e24b77fc58ff22451f2966d056b4554184104c3ca5dbb5'
