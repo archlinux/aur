@@ -1,6 +1,6 @@
 pkgbase = abracadabra
 	pkgdesc = Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/KejPi/AbracaDABra
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = abracadabra
 	optdepends = soapysdrplay: Soapy SDR plugin for SDR Play
 	provides = abracadabra
 	conflicts = abracadabra
-	source = AbracaDABra-4.1.1.tar.gz::https://github.com/KejPi/AbracaDABra/archive/refs/tags/v4.1.1.tar.gz
-	sha256sums = e9a9e6c442072b28c50867fa44e1296c0b6ea2e7d32f2a9d5976a28bb9cc391f
+	source = AbracaDABra-4.2.0.tar.gz::https://github.com/KejPi/AbracaDABra/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = cdc10d360e7dbc4e15008d318b9092908cb283f3a2f5d3d015a9065dc8291e3b
 
 pkgname = abracadabra
