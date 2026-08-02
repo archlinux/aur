@@ -6,7 +6,7 @@ pkgdesc='A Modern, Feature-Rich Mumble Client'
 pkgver='0.3.0'
 pkgrel='1'
 arch=('x86_64')
-url='https://github.com/Map1en/VRCX-0'
+url='https://github.com/Fancy-Mumble/FancyMumble'
 license=(
   'MIT'
 )
