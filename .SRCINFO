@@ -1,6 +1,6 @@
 pkgbase = mxset
 	pkgdesc = An optimized hashset in GNU C89, using a SwissTable style open-addressing architecture.
-	pkgver = 1.8.1
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://codeberg.org/Muhamix/mxset
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mxset
 	license = LGPL-3.0-or-later
 	conflicts = mxset-cpp
 	options = staticlibs
-	source = mxset-1.8.1::https://codeberg.org/Muhamix/mxset/archive/v1.8.1.tar.gz
-	sha256sums = 23628abd3791b362fec60668424004055fd32143378d274e32a99e8b1924f017
+	source = mxset-1.9.4::https://codeberg.org/Muhamix/mxset/archive/v1.9.4.tar.gz
+	sha256sums = 4d95553dd465e4565d7cd8801cac7aae92de9b91d074fdfd10d375367f90ffef
 
 pkgname = mxset
