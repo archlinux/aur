@@ -1,0 +1,17 @@
+pkgbase = falabaac-git
+	pkgdesc = Another AAC encoder (git version)
+	pkgver = 2.1.1.r1.g3262e80.dirty
+	pkgrel = 1
+	url = https://github.com/Sound-Linux-More/falabaac
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = glibc
+	provides = falabaac
+	source = git+https://github.com/Sound-Linux-More/falabaac
+	source = C23.patch
+	sha256sums = SKIP
+	sha256sums = 4f7fddd72b9cd793e394f8879b05e50949e0aaa7b2d5fcce0fcc345d4855fc91
+
+pkgname = falabaac-git
