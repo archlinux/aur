@@ -2,8 +2,8 @@
 # Contributor: Jeremy MJ <jskier@gmail.com>
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 pkgname=motioneye
-pkgver=0.43.1
-pkgrel=3
+pkgver=0.44.0
+pkgrel=1
 pkgdesc="A web frontend for the motion daemon"
 arch=(any)
 url="https://github.com/motioneye-project/${pkgname}"
@@ -13,12 +13,13 @@ depends=(
   motion
   ffmpeg
   v4l-utils
-  python-tornado
+  'python-tornado>=6.5.7'
   python-jinja
   python-pillow
   python-pycurl
   python-babel
   python-boto3
+  python-argon2-cffi
 )
 makedepends=(
   python-setuptools
@@ -30,7 +31,7 @@ optdepends=('python-pytz: timezone support')
 backup=("etc/${pkgname}/${pkgname}.conf")
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('73b00ef211533a536f67995c6b38a89c7aa9894aa0df2abfa995c07f28929e6ece9549c6d7a178c9760c59970a352c74ebabace046eed4b85ddb8fce4d62c27c')
+sha512sums=('d083ebc475940437627e7bd92bc8ba99d9ae3cba8714e74cc30b5f6e071c28105a36698a7b6574ba3e20776ebe72e26ba2d81e5303220b910d0fbd45099d4ec0')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/etc/${pkgname}" "${pkgdir}/var/lib/${pkgname}"
+  install -d -m 0775 "${pkgdir}/etc/${pkgname}"
 
   install -Dm664 "${srcdir}/${pkgname}-${pkgver}/${pkgname}/extra/${pkgname}.conf.sample" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 

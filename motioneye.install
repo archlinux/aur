@@ -9,32 +9,32 @@ _setup_user_and_group() {
 }
 
 post_install() {
-  echo "If motion.service is installed, stop and disable it to ensure proper functionality."
-  echo "Execute 'systemctl disable --now motion' in a terminal."
-  echo "Then, reload the system daemon with 'systemctl daemon-reload'."
-  echo "Finally, enable and start motioneye with 'systemctl enable --now motioneye'."
-
   cat <<INFO
 
-  The default login credentials for the web interface are:
+If motion.service is installed, disable it:
 
-     username: admin
-     password:                               (no password)
+  systemctl disable --now motion
+
+Then reload systemd:
+
+  systemctl daemon-reload
+
+Finally enable motioneye:
+
+  systemctl enable --now motioneye
+
+Default web login:
+
+  username: admin
+  password: (empty)
 
 INFO
+
   _setup_user_and_group
 }
 
 post_upgrade() {
-  echo "To restart the motioneye service and apply the changes, run: 'systemctl restart motioneye'"
+  echo "Restart motioneye to apply changes:"
+  echo "  systemctl restart motioneye"
   _setup_user_and_group
-}
-
-post_remove() {
-  if getent passwd $username >/dev/null; then
-    userdel $username >/dev/null
-  fi
-  if getent group $groupname >/dev/null; then
-    groupdel $groupname >/dev/null
-  fi
 }
