@@ -1,3 +1,6 @@
 pkg
 src
 *.tar.xz
+*.tar.zst
+*.log
+
