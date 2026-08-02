@@ -1,0 +1,5 @@
+[gitr-bin]
+source = "github"
+github = "islandspan-solutions/gitr"
+use_latest_release = true
+prefix = "v"
