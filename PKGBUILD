@@ -1,10 +1,10 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_electron="electron35"
+# _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
-pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.34.0
+pkgname=("${pkgbase}-cli") # desktop已无法构建
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -15,28 +15,26 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-api.service"
         "${pkgbase}-api@.service"
         "${pkgbase}-web.service"
-        "${pkgbase}-web@.service"
-        "${pkgbase}-desktop.sh"
-        "${pkgbase}.desktop")
-sha256sums=('6da7ee4f20a74b7f3b3e1f724e56a2e358a5e128cf8195b69293bd9ead6e9447'
+        "${pkgbase}-web@.service")
+        # "${pkgbase}-desktop.sh"
+        # "${pkgbase}.desktop"
+sha256sums=('1ae2568f1e0d0b37dff274d85bca65175a2b8b231fcd56057200b686d4859076'
             'fa7f906b1ee598b988b8003dfa9f9d554d7d45d6220f3f56dffde9ae34e2fe6d'
             'b006b2086c9da9baf8bd17f369ec09164a9c356663930fae595cf2b5cafae490'
             '2cdf8e8924b9290bfa563d809eedb8ed3fc1910cba17fad31ffb46ddd6de0a33'
-            'f60141fbaea85fd842374455dd838950191907011ef8502c472317f6ebb1674c'
-            '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103'
-            '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0')
+            'f60141fbaea85fd842374455dd838950191907011ef8502c472317f6ebb1674c')
 
 prepare() {
-    sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}-desktop.sh"
+    # sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}-desktop.sh"
 
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electron"
+    # export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    # export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electron"
 
     cd "${_reponame}-${pkgver}"
     NODE_ENV="development" pnpm install
     find node_modules -type f -name "*.map" -delete
     npm pkg set version="${pkgver}" --prefix="apps/cli"
-    npm pkg set version="${pkgver}" --prefix="apps/desktop"
+    # npm pkg set version="${pkgver}" --prefix="apps/desktop"
 }
 
 build() {
@@ -48,9 +46,9 @@ build() {
     pnpm pack --pack-destination "${srcdir}"
 
     # build desktop
-    cd ../desktop
-    pnpm run build
-    pnpm exec electron-builder --linux dir --config electron-builder.yml --publish never
+    # cd ../desktop
+    # pnpm run build
+    # pnpm exec electron-builder --linux dir --config electron-builder.yml --publish never
 }
 
 package_chatlab-cli() {
@@ -70,25 +68,25 @@ package_chatlab-cli() {
     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
 
-package_chatlab-desktop() {
-    pkgdesc+=" (desktop app)"
-    depends=("bash" "${_electron}" "hicolor-icon-theme")
-    provides=("${pkgbase}")
-    conflicts=("${pkgbase}")
-    replaces=("${pkgbase}")
-    install="${pkgbase}.install"
+# package_chatlab-desktop() {
+#     pkgdesc+=" (desktop app)"
+#     depends=("bash" "${_electron}" "hicolor-icon-theme")
+#     provides=("${pkgbase}")
+#     conflicts=("${pkgbase}")
+#     replaces=("${pkgbase}")
+#     install="${pkgbase}.install"
 
-    install -Dm644 "${pkgbase}.desktop"   "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-    install -Dm755 "${pkgname}.sh"        "${pkgdir}/usr/bin/${pkgname}"
+#     install -Dm644 "${pkgbase}.desktop"   "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+#     install -Dm755 "${pkgname}.sh"        "${pkgdir}/usr/bin/${pkgname}"
 
-    cd "${_reponame}-${pkgver}"
-    install -Dm644 "README.md"            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+#     cd "${_reponame}-${pkgver}"
+#     install -Dm644 "README.md"            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    cd apps/desktop
-    install -Dm644 "build/icon.png"       "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-    install -dm755                        "${pkgdir}/usr/lib/${pkgbase}"
-    cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgbase}/desktop"
+#     cd apps/desktop
+#     install -Dm644 "build/icon.png"       "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+#     install -dm755                        "${pkgdir}/usr/lib/${pkgbase}"
+#     cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgbase}/desktop"
 
-    cd ../../docs
-    find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
-}
+#     cd ../../docs
+#     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
+# }
