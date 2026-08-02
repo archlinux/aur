@@ -25,7 +25,7 @@ WantedBy=default.target
 
 [Service]
 Type=exec
-ExecStart=/usr/bin/java -Dnogui=true -jar /usr/bin/JMusicBot.jar
+ExecStart=/usr/bin/java -Dfile.encoding=UTF-8 --enable-native-access=ALL-UNNAMED -Dnogui=true -jar /usr/bin/JMusicBot.jar
 WorkingDirectory=%h/jmusicbot
 Restart=always
 RestartSec=5

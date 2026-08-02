@@ -7,7 +7,7 @@ _appname='jmusicbot-arif'
 pkgname="$_appname"
 _pkgverUpstream="0.7.0"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Discord music bot with a clean interface (Arif's fork)"
 arch=('any')
 url='https://github.com/arif-banai/MusicBot'
@@ -21,8 +21,8 @@ source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/arif-banai/Musi
         "jmusicbot@.service"
         "jmusicbot.service")
 sha384sums=('43bba54f161ed648c055860db760651058f08eb390d41686073f6287be641a8166acb4d14396be5cfbed5bfdfc3317bc'
-            '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
-            'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
+            '2206fe907599447bef54936a16070d6de333d44a3bc4dc532a984662ac43ecb831c29998727f7b0c318fb9f13ed92d23'
+            '0626429a1fdf931b4e766ef207ea2a77df854ce509e75b4a8807c240ad7ffdbf7ddb259c8b3b365030bfad8cdc23ca97')
 
 # Build parameters
 # Uncomment and edit to build with a specific Java Development Kit
@@ -75,14 +75,14 @@ package() {
     # Create bash launcher: Default
     echo -n \
 "#!/bin/bash
-/usr/bin/java -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
+/usr/bin/java -Dfile.encoding=UTF-8 --enable-native-access=ALL-UNNAMED -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
 "       > "${pkgdir}/usr/bin/jmusicbot"
     chmod -- u=rwx,go=rx "${pkgdir}/usr/bin/jmusicbot"
 
     # Create bash launcher: Command line only
     echo -n \
 "#!/bin/bash
-/usr/bin/java -Dnogui=true -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
+/usr/bin/java -Dfile.encoding=UTF-8 --enable-native-access=ALL-UNNAMED -Dnogui=true -jar \"/usr/bin/${jarFileNameUnversioned}\" \"\$@\"
 "       > "${pkgdir}/usr/bin/jmusicbot-nogui"
     chmod -- u=rwx,go=rx "${pkgdir}/usr/bin/jmusicbot-nogui"
 

@@ -36,7 +36,7 @@ WantedBy=multi-user.target
 [Service]
 Type=exec
 User=jmusicbot-%I
-ExecStart=/usr/bin/java -Dnogui=true -jar /usr/bin/JMusicBot.jar
+ExecStart=/usr/bin/java -Dfile.encoding=UTF-8 --enable-native-access=ALL-UNNAMED -Dnogui=true -jar /usr/bin/JMusicBot.jar
 WorkingDirectory=/srv/jmusicbot-%I
 Restart=always
 RestartSec=5

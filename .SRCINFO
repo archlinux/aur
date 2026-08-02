@@ -1,7 +1,7 @@
 pkgbase = jmusicbot-arif
 	pkgdesc = A cross-platform Discord music bot with a clean interface (Arif's fork)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arif-banai/MusicBot
 	arch = any
 	license = Apache
@@ -17,7 +17,7 @@ pkgbase = jmusicbot-arif
 	source = jmusicbot@.service
 	source = jmusicbot.service
 	sha384sums = 43bba54f161ed648c055860db760651058f08eb390d41686073f6287be641a8166acb4d14396be5cfbed5bfdfc3317bc
-	sha384sums = 0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88
-	sha384sums = b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75
+	sha384sums = 2206fe907599447bef54936a16070d6de333d44a3bc4dc532a984662ac43ecb831c29998727f7b0c318fb9f13ed92d23
+	sha384sums = 0626429a1fdf931b4e766ef207ea2a77df854ce509e75b4a8807c240ad7ffdbf7ddb259c8b3b365030bfad8cdc23ca97
 
 pkgname = jmusicbot-arif
