@@ -1,8 +1,8 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=2.2.1
+pkgver=2.3.0
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
 url="https://github.com/nojhan/liquidprompt"
@@ -34,7 +34,7 @@ optdepends=("acpi: Battery and temperature status"
             "terraform: Show Terraform workspace status"
             "python-virtualenv: Show Python virtual environment status")
 source=("https://github.com/nojhan/liquidprompt/archive/refs/tags/v${_pkgver//_/-}.tar.gz")
-sha256sums=('56e9ee1c057638795eea31c7d91a81b8e0c4afd5b57c7dc3a5e3df98fd89b483')
+sha256sums=('47e4af3211cad2c775eb5520926466c37ffc0a50ce7990be5b16f7dd291ef720')
 
 build () {
   cd "${pkgname}-${_pkgver//_/-}"
