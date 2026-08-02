@@ -2,7 +2,7 @@
 # Contributor: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-beta-bin"
-_pkgver="1.14.0-beta.3"
+_pkgver="1.14.0-beta.4"
 pkgver="${_pkgver/-/\~}"
 pkgrel="1"
 pkgdesc="The universal proxy platform (beta binary version)."
@@ -16,9 +16,9 @@ backup=("etc/sing-box/config.json")
 source_x86_64=("sing-box_${_pkgver}_linux_x86_64.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_x86_64.pkg.tar.zst")
 source_armv7h=("sing-box_${_pkgver}_linux_armv7h.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_armv7hl.pkg.tar.zst")
 source_aarch64=("sing-box_${_pkgver}_linux_aarch64.pkg.tar.zst::$_git_url/releases/download/v$_pkgver/sing-box_${_pkgver}_linux_aarch64.pkg.tar.zst")
-sha256sums_x86_64=("517af24056fb7520ecb05c13a5d698a5a4becc850f22f5718a393cc10970a9df")
-sha256sums_armv7h=("254e2a1c37c495ae81fc87421040b58e17498dcf280721bfa1a987a124822024")
-sha256sums_aarch64=("ccba610c23b4e45fbabf43aa1c7bc2cda3474eb1e1324916f99a1fff5d5de3ef")
+sha256sums_x86_64=("ed9248ab3758d29b97302819c88a3baefeb9e36fd11c1de6bb0e0fed59e8cc2a")
+sha256sums_armv7h=("2587d47aefc7d22e276854294f153fe23077e642c942b84dd441371c1d637750")
+sha256sums_aarch64=("1f01b210a4cafcd8a03acbca09a9b5210ba5057007f5d2d305d6e19d1bb01719")
 noextract=("${source_x86_64[@]%%::*}" "${source_armv7h[@]%%::*}" "${source_aarch64[@]%%::*}")
 
 package() {
