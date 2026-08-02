@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=qodana-cli-bin
-pkgver=2026.1.3
+pkgver=2026.2.0
 pkgrel=1
 pkgdesc="JetBrains Qodana CLI - code quality tool for analyzing projects"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('qodana' 'qodana-cli')
 options=('!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v${pkgver}/qodana_linux_x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v${pkgver}/qodana_linux_arm64.tar.gz")
-sha256sums_x86_64=('fbe441019cb0696a40669a5e3ba606474696b355befd886c07d515b5b55c6d8d')
-sha256sums_aarch64=('e1645353d591cc0d33bafe43fd8cece7a23d8324dda62683272dd68e8843cc49')
+sha256sums_x86_64=('472da355b7546d800146671be8b62cf184dc2f21dbf07493c5bf5490f80fe089')
+sha256sums_aarch64=('1cdb86ceaf667360d90468ecc02940530d93a7cd2e675faa0d009fb178110f7e')
 
 package() {
     install -Dm755 "${srcdir}/qodana" "${pkgdir}/usr/bin/qodana"
