@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-experimental-git
 	pkgdesc = Btrfs filesystem utilities with experimental and unstable features enabled
-	pkgver = 7892_7.0_r40_gb5bf609c
+	pkgver = 7940_7.1_r13_ga0d7dfc1
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-experimental-git.install
@@ -12,6 +12,7 @@ pkgbase = btrfs-progs-experimental-git
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = libaio
 	depends = glibc
 	depends = lzo
 	depends = systemd-libs
