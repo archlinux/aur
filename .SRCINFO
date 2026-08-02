@@ -1,0 +1,10 @@
+pkgbase = keychron-r6-udev
+	pkgdesc = udev rule for the Keychron R6 Keyboard (USB abd DFU modes)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	source = 70-keychron-r6.rules
+	sha256sums = 972e2bd96a2495510f89e022791852d51a5fdd829a00d033140eb184d576ef73
+
+pkgname = keychron-r6-udev
