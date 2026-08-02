@@ -1,6 +1,6 @@
 pkgbase = incrementum-bin
 	pkgdesc = A Spaced Repetition System built with Tauri
-	pkgver = 1.96.1
+	pkgver = 1.97.0
 	pkgrel = 1
 	url = https://github.com/melpomenex/incrementum-tauri
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = incrementum-bin
 	options = !strip
 	options = !lto
 	options = !debug
-	source = https://github.com/melpomenex/incrementum-tauri/releases/download/v1.96.1/incrementum-1.96.1-1-x86_64.pkg.tar.zst
-	sha256sums = eedf91fe6ab05c7668a996eed7487fc955edd09fe8c1e0833bf88c39a1d48eba
+	source = https://github.com/melpomenex/incrementum-tauri/releases/download/v1.97.0/incrementum-1.97.0-1-x86_64.pkg.tar.zst
+	sha256sums = df43f3175f2f543efba28d1949f81cdda267803ce84066701f526465f262e776
 
 pkgname = incrementum-bin
