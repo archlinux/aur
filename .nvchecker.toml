@@ -1,0 +1,5 @@
+[libre-commander-bin]
+source = "github"
+github = "leszek3737/LibreCommander"
+use_latest_release = true
+prefix = "v"

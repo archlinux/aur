@@ -1,0 +1,23 @@
+pkgbase = libre-commander-bin
+	pkgdesc = Modern dual-panel MC for Norton/MC muscle memory in one offline Rust binary
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/leszek3737/LibreCommander
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = lc
+	conflicts = libre-commander
+	options = !strip
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/leszek3737/LibreCommander/v0.1.2/LICENSE
+	source = README-0.1.2.md::https://raw.githubusercontent.com/leszek3737/LibreCommander/v0.1.2/README.md
+	sha256sums = 758ef51e399148a8c10bdb09e0757eb79f0a5a3da2b1a4c2574eda8977ac14d4
+	sha256sums = 4f8dcf1d388f6f18322c286983f369eda68b2f8fa3abac97bf2418bc3c4aeed9
+	source_x86_64 = lc-x86_64-0.1.2.tgz::https://github.com/leszek3737/LibreCommander/releases/download/v0.1.2/lc-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0e8ef6c99854fc16c16876e22f112eb2bcc51376596b8f52038bad381b4dd5f9
+	source_aarch64 = lc-aarch64-0.1.2.tgz::https://github.com/leszek3737/LibreCommander/releases/download/v0.1.2/lc-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3be8a5ae6ef02102bb6a0ed7e4788e772ec5247052bc558270d3f41234b2fdce
+
+pkgname = libre-commander-bin
