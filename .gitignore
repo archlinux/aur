@@ -1,0 +1,6 @@
+# AUR Build Artifacts
+/src/
+/pkg/
+/*.pkg.tar.*
+/GTKCssLanguageServer/
+*.log
