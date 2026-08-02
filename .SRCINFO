@@ -1,16 +1,18 @@
 pkgbase = trc
 	pkgdesc = Yandex Tracker CLI
-	pkgver = 0.2
+	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/fgazat/trc
+	url = https://github.com/GoldenDeals/trc
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
-	makedepends = git
-	depends = glibc
-	options = !lto
-	source = trc-0.2.tar.gz::https://github.com/fgazat/trc/archive/refs/tags/v0.2.tar.gz
-	sha256sums = 95c06f8f1b6460f17d6ed3beacc1f92c2b80b5043950f29a9173c4839beb52aa
+	options = !strip
+	options = !debug
+	source = configexample-0.3.2.yaml::https://github.com/GoldenDeals/trc/raw/v0.3.2/config/configexample.yaml
+	sha256sums = 90a22d39e9644782cc03a35ea36720dc9602cd49bc8b85255d52f7fa6c7ed99c
+	source_x86_64 = trc-0.3.2-x86_64.tar.gz::https://github.com/GoldenDeals/trc/releases/download/v0.3.2/trc_0.3.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9ec39c4dfef30e5c69db136d2514d3ddc523939488679d4aa66eb685ae21c190
+	source_aarch64 = trc-0.3.2-aarch64.tar.gz::https://github.com/GoldenDeals/trc/releases/download/v0.3.2/trc_0.3.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8f488db0b932e5276e51aad652366de10abead637f06668fb4ac8f9db060ba43
 
 pkgname = trc

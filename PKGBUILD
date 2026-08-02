@@ -1,49 +1,35 @@
 # Maintainer: Ivan Nebotov <i.nebotov@gdllc.dev>
 
 pkgname=trc
-pkgver=0.2
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Yandex Tracker CLI'
 arch=('x86_64' 'aarch64')
-url='https://github.com/fgazat/trc'
+url='https://github.com/GoldenDeals/trc'
 license=('MIT')
-depends=('glibc')
-makedepends=('go' 'git')
-options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('95c06f8f1b6460f17d6ed3beacc1f92c2b80b5043950f29a9173c4839beb52aa')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	mkdir -p build completions
-	go mod download
-}
+options=('!strip' '!debug')
+source=("configexample-$pkgver.yaml::$url/raw/v$pkgver/config/configexample.yaml")
+sha256sums=('90a22d39e9644782cc03a35ea36720dc9602cd49bc8b85255d52f7fa6c7ed99c')
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('9ec39c4dfef30e5c69db136d2514d3ddc523939488679d4aa66eb685ae21c190')
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('8f488db0b932e5276e51aad652366de10abead637f06668fb4ac8f9db060ba43')
 
 build() {
-	cd "$pkgname-$pkgver"
-
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
-
-	go build -o build/$pkgname .
+	mkdir -p completions
 
 	local shell
 	for shell in bash zsh fish; do
 		TRACKER_TOKEN=x X_ORG_ID=x X_CLOUD_ORG_ID=x \
-			build/$pkgname completion "$shell" >"completions/$shell"
+			./$pkgname completion "$shell" >"completions/$shell"
 	done
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-
-	install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 config/configexample.yaml \
+	install -Dm644 "configexample-$pkgver.yaml" \
 		"$pkgdir/usr/share/doc/$pkgname/configexample.yaml"
 
 	install -Dm644 completions/bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
