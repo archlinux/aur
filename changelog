@@ -1,3 +1,13 @@
+2026-08-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.8.4-1:
+    Fixed recent Steam breaking change that caused loot offers to no longer work (@JustArchi).
+    Fixed recent Steam breaking change that caused fetching trade hold to no longer work (@JustArchi).
+    Fixed recent Steam breaking change that caused fetching 2FA confirmations to no longer work (@JustArchi).
+    Fixed extremely rare bug that could lead to incorrect matches and ASF crash during active matching process (@JustArchi).
+    Added Steam Summer Sale 2026 to built-in sales blacklist (@nolddor #3596).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-05-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.6.1-1:
     ASF will now automatically chmod IPC unix socket to 0666 upon creation (@JustArchi).
