@@ -7,6 +7,7 @@ pkgbase = simple-password
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = xxd
+	makedepends = argparse
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
