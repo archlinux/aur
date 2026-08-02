@@ -1,6 +1,6 @@
 pkgbase = arch-manwarn
 	pkgdesc = Rust-based pacman hook that blocks updates if unread Arch News posts require manual intervention
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/NLion74/arch-manwarn
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = arch-manwarn
 	depends = pacman
 	depends = curl
 	conflicts = informant
-	source = arch-manwarn-1.4.0.tar.gz::https://github.com/NLion74/arch-manwarn/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 5925dcecc3e918d57d2c57ae8b6f70bf13fe7982264825c7c57278dc48c1c4af
+	source = arch-manwarn-1.4.1.tar.gz::https://github.com/NLion74/arch-manwarn/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 3d74d544969231bb5c2ca2cee50eaf82cfcf307593bab4b7a88a33bb3b71f4df
 
 pkgname = arch-manwarn
