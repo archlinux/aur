@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=b10217
-pkgrel=2
+pkgver=b10227
+pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on GitHub before use."
 arch=('x86_64')
 url="https://github.com/ggml-org/llama.cpp"
@@ -52,7 +52,7 @@ options=(!strip !buildflags)
 source=(
     "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('35ef06b4a0ad61c0865152fe0faa7e1f33c52627e71815621ae522c7e1eda0c2')
+sha256sums=('d7b36a3890b813e778db5a74a65a104ebecbf005a61bacabb8b1f24d32dfc2da')
 
 prepare() {
     ln -sf "llama.cpp-${pkgver}" llama.cpp
