@@ -94,7 +94,8 @@ check() {
     tests/fsck-tests/057-seed-false-alerts \
     tests/fsck-tests/059-shrunk-device \
     tests/fsck-tests/060-degraded-check \
-    tests/fsck-tests/073-squota
+    tests/fsck-tests/073-squota \
+	tests/fsck-tests/074-raid56-read
 
   make test-fsck
 
