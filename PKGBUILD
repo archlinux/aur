@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=tidal-hifi
-pkgver=8.0.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine."
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(libxss nss gtk3 alsa-lib)
 makedepends=(nodejs npm libxcrypt-compat python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "tidal-hifi.desktop")
-sha256sums=('c4372905477db3d87fd2be6dfbc5e8bfbc634d25e4554c8637b311c645a53416'
+sha256sums=('ea2d547032f023c7c55927a3d7bad85ee00e611d11fc13ee700e9f8e76dcbfaa'
             '7e3b485443be639c8c13964b94ce20e7df3ba54463c3f0dcf5883a29297d21e3')
 
 build() {
