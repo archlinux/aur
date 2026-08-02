@@ -2,3 +2,4 @@ pkg/
 src/
 searxng/
 searxng-uwsgi*
+/*.log

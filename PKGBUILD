@@ -3,14 +3,14 @@
 
 pkgname=searxng-uwsgi-novenv-git
 _pkgname=searxng
-pkgver=r9209.b5bb27f
+pkgver=r9650.8892414
 pkgrel=1
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=('any')
 url='https://searxng.github.io/searxng/'
 license=('AGPL-3.0-or-later')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-depends=('uwsgi' 'uwsgi-plugin-python' 'valkey' 'python-certifi' 'python-babel' 'python-flask-babel' 'python-flask' 'python-lxml' 'python-pygments' 'python-dateutil' 'python-sniffio' 'valkey' 'python-markdown-it-py' 'python-tomli' 'python-msgspec' 'python-isodate' 'python-whitenoise' 'python-jinja' 'python-yaml' 'python-fasttext-predict' 'python-typer' 'python-typing_extensions' 'python-httpx' 'python-httpx-socks' 'python-valkey-git' 'python-h2' 'python-cloudscraper')
+depends=('uwsgi' 'uwsgi-plugin-python' 'valkey' 'python-certifi' 'python-babel' 'python-flask-babel' 'python-flask' 'python-jinja' 'python-lxml' 'python-pygments' 'python-dateutil' 'python-yaml' 'python-httpx' 'python-httpx-socks' 'python-sniffio' 'python-valkey-git' 'python-markdown-it-py' 'python-msgspec' 'python-typer' 'python-isodate' 'python-whitenoise' 'python-typing_extensions')
 provides=('searxng')
 conflicts=('searx' 'searx-git' 'searxng-git' 'searxng-uwsgi' 'searxng-uwsgi-git')
 backup=('etc/searxng/settings.yml' 'etc/searxng/limiter.toml' 'etc/uwsgi/searxng.ini')
