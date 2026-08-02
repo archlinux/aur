@@ -2,7 +2,7 @@
 
 pkgname=ikuai-cli
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for managing iKuai routers — network, VPN, firewall, users, QoS and more from the terminal."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/ikuaidev/${pkgname}"
@@ -38,7 +38,7 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}"      "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-    install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions/${pkgname}.fish"
+    install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
     install -Dm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
     install -Dm644 "LICENSE"         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     find docs scripts/smoke.sh skills *.md -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
