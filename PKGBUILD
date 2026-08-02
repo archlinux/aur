@@ -19,7 +19,7 @@ format_version() {
 
 pkgauthor="NSPC911"
 pkgname="rovr"
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A post-modern terminal file explorer"
 
@@ -37,11 +37,17 @@ provides=("${_pypi_package}")
 conflicts=("${pkgname}"{-bin,-git})
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
-depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive')
+depends=('python' 'python-textual' 'python-textual-autocomplete' 'python-textual-image' 'python-textual-drivers' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive' 'python-pytrash')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('ff1c5d68bd38b943295bdfbb119f5ba19518c467fb88a08b503404bde2ef54f2')
+sha256sums=('f8feb395d965ce7dcf50ea0f51d5f2ce86a912db0a6cc0e723e57cb3629da8e3')
+
+prepare() {
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
+}
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
