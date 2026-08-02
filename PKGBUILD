@@ -4,7 +4,7 @@ pkgbase=python-optimagic
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #   "python-${_pyname}-doc")
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Tools to solve difficult numerical optimization problems"
 arch=('any')
@@ -30,24 +30,24 @@ makedepends=('python-hatchling'
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-pandas'
-              'python-statsmodels'
               'python-annotated-types'
               'python-sqlalchemy'
               'python-cloudpickle'
               'python-pybaum'
               'python-joblib'
               'python-plotly'
+              'python-statsmodels'
               'python-yaml'
               'python-seaborn'
               'python-bokeh'
               'python-iminuit'
-              'python-altair') # typing_extensions <- sqlalchemy; jinja <- bokeh
+              'python-altair') # typing_extensions <- sqlalchemy; jinja <- bokeh; scipy <- statsmodels; matplotlib <- seaborn
 ##            'python-bayesian-optimization'
 ##            'python-colorama'
 ##)
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/optimagic-dev/optimagic/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('b7e138d22cdadfb7006733ecfa52b8a6')
+md5sums=('ba78918b0a95b80d31089362dd5e3d3a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -104,17 +104,17 @@ check() {
 }
 
 package_python-optimagic() {
-    depends=('python>=3.10'
-             'python-cloudpickle'
-             'python-joblib'
-             'python-numpy'
-             'python-pandas'
-             'python-plotly'
+    depends=('python>=3.12'
+             'python-cloudpickle>=2.2'
+             'python-joblib>=1.1'
+             'python-numpy>=1.26'
+             'python-pandas>=2.1'
+             'python-plotly>=5.14'
              'python-pybaum>=0.1.2'
-             'python-scipy>=1.2.1'
-             'python-sqlalchemy>=1.3'
-             'python-annotated-types'
-             'python-typing_extensions')
+             'python-scipy>=1.11'
+             'python-sqlalchemy>=2.0'
+             'python-annotated-types>=0.4'
+             'python-typing_extensions>=4.5')
 #   optdepends=('python-optimagic-doc: Documentation for optimagic')
     cd ${srcdir}/${_pyname}-${pkgver}
 
