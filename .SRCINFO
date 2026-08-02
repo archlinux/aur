@@ -1,0 +1,21 @@
+pkgbase = switchlet-bin
+	pkgdesc = A small terminal app for switching project configuration profiles safely
+	pkgver = 0.20.3
+	pkgrel = 1
+	url = https://github.com/jeppeklh/switchlet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = switchlet
+	conflicts = switchlet
+	options = !strip
+	source = README-0.20.3.md::https://raw.githubusercontent.com/jeppeklh/switchlet/v0.20.3/README.md
+	source = LICENSE-0.20.3::https://raw.githubusercontent.com/jeppeklh/switchlet/v0.20.3/LICENSE
+	sha256sums = c8c0a248a28bcec67d339d24786a9e22c5192cb274c02cf9fd8fb17a7129923f
+	sha256sums = 7169fd4fb7b754a22701ad3978931c994ad97c1ce46cba85cdb1cb69238f9bd1
+	source_x86_64 = switchlet-x86_64-0.20.3::https://github.com/jeppeklh/switchlet/releases/download/v0.20.3/switchlet_linux_amd64
+	sha256sums_x86_64 = 005c005b24d12e43c7d62e9ea8b16bc42aa5fab0ac68939cba485766cbb17f15
+	source_aarch64 = switchlet-aarch64-0.20.3::https://github.com/jeppeklh/switchlet/releases/download/v0.20.3/switchlet_linux_arm64
+	sha256sums_aarch64 = 13dde23545eacec01b0caeab48fdb87eee6d4e8242187cccd2857f2a35abaf1e
+
+pkgname = switchlet-bin

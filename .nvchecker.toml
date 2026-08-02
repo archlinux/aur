@@ -1,0 +1,5 @@
+[switchlet-bin]
+source = "github"
+github = "jeppeklh/switchlet"
+use_latest_release = true
+prefix = "v"
