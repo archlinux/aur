@@ -1,0 +1,39 @@
+post_install() {
+    setcap cap_sys_admin+ep /usr/bin/kursor
+
+    echo -e "\n\n"
+    echo -e "========================================"
+    echo -e ""
+#    echo -e "\033[33m:: Post-install — please also run:\033[0m"
+#    echo -e ""
+#    echo -e "\033[92m:: Join the input group:\033[0m"
+#    echo -e "    $ sudo usermod -aG input ${SUDO_USER:-YOUR_USERNAME}"
+#    echo -e "\033[90m    # log out and back in\033[0m"
+#    echo -e ""
+    echo -e "\033[92m:: To start the dual-mode service (glide + grid):\033[0m"
+    echo -e "    $ sudo systemctl start kursord"
+    echo -e "\033[90m    # NumLock+KPEnter = glide   Meta+CapsLock = grid\033[0m"
+    echo -e ""
+    echo -e "\033[1;31m:: WARN\033[0m: This package is optimized for Zen3+"
+    echo -e "\033[1;31m:: 警告\033[0m：此包已开启 Zen3 优化"
+    echo -e ""
+    echo -e "\033[33m:: May NOT run on Zen2 or older CPUs\033[0m"
+    echo -e "\033[33m:: 在 Zen2 及更早的 CPU 上可能无法运行\033[0m"
+    echo -e ""
+    echo -e "========================================"
+    echo -e "\n\n"
+}
+
+post_upgrade() {
+    setcap cap_sys_admin+ep /usr/bin/kursor
+
+    echo -e ":: Restarting kursord service after upgrade (if running)..."
+
+    systemctl try-restart kursord
+}
+
+pre_remove() {
+    echo -e ":: Stopping kursord service before removal..."
+
+    systemctl disable --now kursord
+}
