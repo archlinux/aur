@@ -1,6 +1,6 @@
 pkgbase = mipsel-linux-gnu-binutils
 	pkgdesc = Tools to assemble and manipulate binary and object files for the MIPSEL target (for the toolchain with GNU C library and multilib ABI)
-	pkgver = 2.46.1
+	pkgver = 2.47
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = mipsel-linux-gnu-binutils
 	options = !distcc
 	options = !emptydirs
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.46.1.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.46.1.tar.xz.sig
-	validpgpkeys = 5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2
-	sha256sums = e127a709cba24c76de8936cb7083dd768f28cd37eb010492e2f19b71eb1294e4
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.47.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.47.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = 154ab23b60070e8f27013c22977f1129425d67d1e8acd6e13010e617811e4cff
 	sha256sums = SKIP
 
 pkgname = mipsel-linux-gnu-binutils
