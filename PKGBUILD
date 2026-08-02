@@ -1,6 +1,6 @@
 pkgname=qobine
-pkgver="2026.07.21"
-_release_version="2026-07-21"
+pkgver="2026.07.31"
+_release_version="2026-07-31"
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz. Formaly known as qobuz-player"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'pango' 'gdk-pixbuf2' 'g
 makedepends=('protobuf' 'cargo' 'nodejs' 'npm' 'sqlx-cli')
 optdepends=('ttf-font-nerd: glyph support')
 source=("qobine-${_release_version}.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v${_release_version}.tar.gz")
-sha256sums=('8beda8cf9a78ef02f97f8ed2c3649cdc04bc551dc2d8db5552f9bba89c52fe7e')
+sha256sums=('702b0ceb99a4c5ceb702dc0ff79360d87e37a1ba5699b2af549d1be7649e80d2')
 options=('!lto')
 
 prepare() {
@@ -30,6 +30,7 @@ build() {
     #Build the webUI (thanks to moystard)
     cd web-module
     npm run build
+    npm run build-assets
     cd ..
     #Build the database
     export DATABASE_URL="sqlite:///tmp/qobuz-player.db"
