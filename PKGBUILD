@@ -1,13 +1,13 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=jgrep
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="grep for JSON with jq-style filter expressions (built from source)"
 arch=('x86_64')
 url="https://github.com/subnix-work/jgrep-tinox"
 license=('Apache-2.0')
 depends=('glibc' 'gc')
-makedepends=('tinox')
+makedepends=('tinox>=2.0.0')
 # jgrep and jgrep-bin install the same binary at /usr/bin/jgrep.
 # makepkg's auto-generated -debug subpackage is keyed by the installed
 # binary's path, not the source package name, so jgrep-debug and
@@ -17,7 +17,7 @@ makedepends=('tinox')
 # already work around for the same reason). Disable it here too.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('160e94f7bd6703e0779d0bf0fb2c189a93b637d6cfa62dd0c92cbeff8c9ecfc0')
+sha256sums=('cf57cc767727df18abeef1b35a7b12fa10462736ee36dacc9263075badd41b80')
 
 build() {
   cd "jgrep-tinox-$pkgver"
