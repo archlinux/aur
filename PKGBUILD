@@ -36,10 +36,6 @@ case ${CARCH} in
   ${arch[0]})
     _CARCH=${_barch[0]}
     ;;
-
-  ${arch[1]})
-    _CARCH=${_barch[1]}
-    ;;
 esac
 
 prepare() {
