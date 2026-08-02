@@ -7,7 +7,7 @@
 
 pkgname=btrfs-progs-experimental-git
 _gitname=btrfs-progs
-pkgver=7892_7.0_r40_gb5bf609c
+pkgver=7940_7.1_r13_ga0d7dfc1
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities with experimental and unstable features enabled"
 arch=("i686" "x86_64")
