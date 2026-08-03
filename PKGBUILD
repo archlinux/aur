@@ -10,8 +10,8 @@ pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
 url="https://zl-audio.github.io/plugins/zlcompressor/"
 license=('AGPL-3.0')
-depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli')
-makedepends=('git' 'cmake' 'kfr' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
+depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli' 'alsa-lib')
+makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
 source=("git+https://github.com/ZL-Audio/ZLCompressor#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=542dcc3"
@@ -30,7 +30,6 @@ prepare() {
 
 
     # Use system libraries
-    sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
     sed 's|add_subdirectory(highway)|find_package(hwy CONFIG REQUIRED)|' -i CMakeLists.txt
 }
 

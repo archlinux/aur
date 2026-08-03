@@ -9,7 +9,6 @@ pkgbase = zl-compressor
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cmake
-	makedepends = kfr
 	makedepends = at-spi2-core
 	makedepends = cairo
 	makedepends = gtk3
@@ -27,6 +26,7 @@ pkgbase = zl-compressor
 	depends = bzip2
 	depends = libpng
 	depends = brotli
+	depends = alsa-lib
 	source = git+https://github.com/ZL-Audio/ZLCompressor#tag=0.5.0
 	source = git+https://github.com/ZL-Audio/JUCE#tag=542dcc3
 	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=959ff31
@@ -57,5 +57,6 @@ pkgname = zl-compressor
 	depends = bzip2
 	depends = libpng
 	depends = brotli
+	depends = alsa-lib
 	depends = zl-compressor-vst3
 	depends = zl-compressor-lv2
