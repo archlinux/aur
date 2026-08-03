@@ -12,7 +12,6 @@ pkgbase = wuffs-git
 	arch = riscv64
 	license = MIT
 	license = Apache-2.0
-	makedepends = clang
 	makedepends = gcc
 	makedepends = gcc-libs
 	makedepends = glibc

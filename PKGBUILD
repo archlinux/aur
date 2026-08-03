@@ -35,7 +35,6 @@ license=(
   "Apache-2.0"
 )
 makedepends=(
-  'clang'
   'gcc'   # Yes, it needs both clang and GCC!
   'gcc-libs'
   'glibc'
