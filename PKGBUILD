@@ -88,7 +88,7 @@ b2sums=(
 prepare() {
   cd ${pkgname}-${pkgver}
 
-  for _patch in "${srcdir}"/transcode-{imagemagick7,transcode-subtitler-fix-freetype-includepath.patch,gcc10,glibc-2.32,transcode-libtc-cfgfile.c-remove-ISOC99_SOURCE.patch,configure-lame4}.patch ; do
+  for _patch in "${srcdir}"/transcode-{imagemagick7,transcode-subtitler-fix-freetype-includepath,gcc10,glibc-2.32,transcode-libtc-cfgfile.c-remove-ISOC99_SOURCE.patch,configure-lame4}.patch ; do
     printf '%s\n' "Applying patch '$(basename "${_patch}" ...)'"
     patch -Np1 --follow-symlinks -i "${_patch}"
   done
