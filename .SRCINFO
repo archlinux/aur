@@ -1,6 +1,6 @@
 pkgbase = musiclib
 	pkgdesc = KDE-based music library management. Integration with MPRIS2 players, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain.
-	pkgver = 1.71
+	pkgver = 1.72
 	pkgrel = 1
 	url = https://github.com/Harpo3/musiclib
 	install = musiclib.install
@@ -28,7 +28,7 @@ pkgbase = musiclib
 	optdepends = k3b: KDE CD Ripper and Burner Tool (CD ripping integration)
 	provides = musiclib-cli
 	conflicts = musiclib-cli
-	source = musiclib-1.71.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.71.tar.gz
-	sha256sums = 7094a0ba408776fd8e0a8f7089c289f9e4db6f00e680a2517a97d5d7bf497567
+	source = musiclib-1.72.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.72.tar.gz
+	sha256sums = 415ce76beb4bd2131e5b7ba02e67005c170a46cc8b0fe0a5bc5621c417d1d707
 
 pkgname = musiclib
