@@ -1,7 +1,7 @@
 pkgbase = vigaphone-bin
 	pkgdesc = ViGAPhone Synth Lab: New Physical-Modeling Synthesizer, Instrument Piano Tuner, MIDI-MPE application, VST3 plugin, Sound and Timbre Spectral Analyzer and more...
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone
 	arch = x86_64
 	groups = pro-audio
