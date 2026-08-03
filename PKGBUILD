@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
-pkgver=1.71
+pkgver=1.72
 pkgrel=1
 pkgdesc="Command line application for organizing and managing a music library. Requires Kid3 Audio Tagger and kdeconnect for mobile sync"
 arch=('x86_64')
@@ -33,21 +33,26 @@ conflicts=('musiclib')
 # After tagging on GitHub, compute the hash with: makepkg -g >> PKGBUILD
 # and replace SKIP below with the printed sha256sum line.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7094a0ba408776fd8e0a8f7089c289f9e4db6f00e680a2517a97d5d7bf497567')
+sha256sums=('415ce76beb4bd2131e5b7ba02e67005c170a46cc8b0fe0a5bc5621c417d1d707')
+
+prepare() {
+    rm -rf "${srcdir}/build"
+    mkdir -p "${srcdir}/build"
+}
 
 build() {
     # GitHub extracts the tarball as musiclib-<version>/, not musiclib-cli-<version>/
-    cmake -B build -S "musiclib-$pkgver" \
+    cmake -B "${srcdir}/build" -S "${srcdir}/musiclib-${pkgver}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_WARNINGS_AS_ERRORS=OFF \
         -DBUILD_GUI=OFF \
         -DENABLE_TESTING=OFF
-    cmake --build build
+    cmake --build "${srcdir}/build"
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install "${srcdir}/build"
 
     # Fallback: install the man page directly if cmake skipped it
     # (cmake does this only when gzip is in PATH; the chroot may not have it)
