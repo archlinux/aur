@@ -1,0 +1,8 @@
+diff -rU1 transcode-1.1.7.orig/configure.in transcode-1.1.7/configure.in
+--- transcode-1.1.7.orig/configure.in	2026-08-03 15:29:10.213232674 +0200
++++ transcode-1.1.7/configure.in	2026-08-03 15:30:56.953231085 +0200
+@@ -797,3 +797,3 @@
+   if(lv.alpha || lv.beta) lv.minor--;
+-  printf("%d%d\n", lv.major, lv.minor);
++  printf("%d\\n", lv.major * 100 + lv.minor);
+   return 0;

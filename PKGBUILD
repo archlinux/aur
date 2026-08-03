@@ -68,23 +68,29 @@ makedepends=(
 )
 source=(
   https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.bz2
-  transcode-imagemagick7.patch
-  transcode-gcc10.patch
-  transcode-glibc-2.32.patch
+  transcode-imagemagick7.patch     # Gentoo patch
+  transcode-gcc10.patch            # Fix build with GCC 10
+  transcode-glibc-2.32.patch       # Fix build with glibc 2.32
+  transcode-configure-lame4.patch  # Fix detection of LAME >= 4.0, see https://aur.archlinux.org/packages/transcode#comment-1080395
 )
 b2sums=(
-  '25001d4cae83d86e5295917bcd9e2e77dd61637e238394a2d603398baf810201dc61d8b0de5b54a7b8848ac3bcef5fb211e8f2b43ed7da4e56e335b8d4d2fbe1'
-  'fdf66bd56e8e87d029a27a057815be571e605e50c817b84a0a57c9696d69a5dc61421028f5526f6bf19ecab61c58811920e45ae2c59d4fc1ee6fb3f42950d43b'
-  'c564b28e99ef397694243e9411e10feec4fe9c1b5efb8f6ea4c76621a61116a6c0d643a3c21a9544960763e9ff68221e747be1b66598f31bf638edaf585131cd'
-  'cab8a1e553161ddf2e9ecd43e0307aa8cb0fdf9bf43a2df61a18404450eca47eaf9ff24c2bd9a3c73a5d92d63c19bb82d0be2263bee94ffca78ed1e9a96b6bb2'
+  '25001d4cae83d86e5295917bcd9e2e77dd61637e238394a2d603398baf810201dc61d8b0de5b54a7b8848ac3bcef5fb211e8f2b43ed7da4e56e335b8d4d2fbe1'  # ${pkgname}-${pkgver}.tar.bz2
+  'fdf66bd56e8e87d029a27a057815be571e605e50c817b84a0a57c9696d69a5dc61421028f5526f6bf19ecab61c58811920e45ae2c59d4fc1ee6fb3f42950d43b'  # transcode-imagemagick7.patch
+  'c564b28e99ef397694243e9411e10feec4fe9c1b5efb8f6ea4c76621a61116a6c0d643a3c21a9544960763e9ff68221e747be1b66598f31bf638edaf585131cd'  # transcode-gcc10.patch
+  'cab8a1e553161ddf2e9ecd43e0307aa8cb0fdf9bf43a2df61a18404450eca47eaf9ff24c2bd9a3c73a5d92d63c19bb82d0be2263bee94ffca78ed1e9a96b6bb2'  # transcode-glibc-2.32.patch
+  '23e1fc089fb945c9085f4def18f7bf0235bcc78ab8277be9484e401ad7555cf02118108f3df0febbd2f15db0dade9e72e58620982be51a0be09a6fe9b8434854'  # transcode-configure-lame4.patch
 )
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -p1 -i "${srcdir}"/transcode-imagemagick7.patch # Gentoo patch
+
+  for _patch in "${srcdir}"/transcode-{imagemagick7,gcc10,glibc-2.32,configure-lame4}.patch ; do
+    printf '%s\n' "Applying patch '$(basename "${_patch}" ...)'"
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+
   sed -e 's|freetype/ftglyph.h|freetype2/freetype/ftglyph.h|' -i filter/subtitler/load_font.c
-  patch -p1 -i "${srcdir}"/transcode-gcc10.patch # Fix build with GCC 10
-  patch -p1 -i "${srcdir}"/transcode-glibc-2.32.patch # Fix build with glibc 2.32
+
   sed -e 's|#define _ISOC99_SOURCE||' -i libtc/cfgfile.c
   autoreconf -vi
 }
