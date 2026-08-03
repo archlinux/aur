@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libstdc++,libtsan,libubsan,libvtv,lto-dump}-snapshot)
-pkgver=17.0.0.snapshot20260726
-_pkgver=17-20260726
+pkgver=17.0.0.snapshot20260802
+_pkgver=17-20260802
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -17,7 +17,7 @@ makedepends=(binutils doxygen gcc-d git python zstd)
 options=(!emptydirs !lto debug)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
 source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_pkgver}.tar.xz
-        git+https://repo.or.cz/isl.git#branch=maint
+        git+https://github.com/Meinersbur/isl.git#branch=master
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.xz{,.sig}
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
@@ -30,7 +30,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('c76523c5e5eddbefe801d4a5d01f0706d2f6605520f34e74609b9cde50a4851a'
+sha256sums=('ba87d77e06cf52307c753ad92b6d36a1543c443df135be618cf34d30ee88976e'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
