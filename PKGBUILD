@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
@@ -18,15 +18,11 @@ makedepends=(
   'pnpm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname.desktop"
-        'pnpm-workspace.yaml')
-sha256sums=('9252a19347fd9c31f453b5748e0c2a4a16185b0f18435c26c7adef868385c6a6'
-            '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a'
-            'ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353')
+        "$pkgname.desktop")
+sha256sums=('aac8e349e224faa198507e9a9ecdf9ee997baa78534b75c18e879635c216885a'
+            '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a')
 
 prepare() {
-  cp -f pnpm-workspace.yaml "$pkgname-III-$pkgver/"
-
   cd "$pkgname-III-$pkgver"
   export PNPM_HOME="$srcdir/pnpm-home"
   pnpm install --frozen-lockfile

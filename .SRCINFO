@@ -1,6 +1,6 @@
 pkgbase = searchmonkey
 	pkgdesc = Real-time search for real files. No index. No daemon. No stale results.
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://searchmonkey.dev
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = searchmonkey
 	depends = libsoup3
 	depends = ripgrep
 	depends = webkit2gtk-4.1
-	source = searchmonkey-0.3.1.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v0.3.1.tar.gz
+	source = searchmonkey-0.3.3.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v0.3.3.tar.gz
 	source = searchmonkey.desktop
-	source = pnpm-workspace.yaml
-	sha256sums = 9252a19347fd9c31f453b5748e0c2a4a16185b0f18435c26c7adef868385c6a6
+	sha256sums = aac8e349e224faa198507e9a9ecdf9ee997baa78534b75c18e879635c216885a
 	sha256sums = 0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a
-	sha256sums = ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353
 
 pkgname = searchmonkey
