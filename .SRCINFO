@@ -9,7 +9,6 @@ pkgbase = zl-equalizer
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cmake
-	makedepends = kfr
 	makedepends = at-spi2-core
 	makedepends = cairo
 	makedepends = gtk3
@@ -27,6 +26,7 @@ pkgbase = zl-equalizer
 	depends = bzip2
 	depends = libpng
 	depends = brotli
+	depends = alsa-lib
 	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.2.2
 	source = git+https://github.com/ZL-Audio/JUCE#tag=176e410
 	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=0215d7e
@@ -58,5 +58,6 @@ pkgname = zl-equalizer
 	depends = bzip2
 	depends = libpng
 	depends = brotli
+	depends = alsa-lib
 	depends = zl-equalizer-vst3
 	depends = zl-equalizer-lv2

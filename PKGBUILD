@@ -10,8 +10,8 @@ pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
 arch=('x86_64')
 url="https://zl-audio.github.io/plugins/zlequalizer2/"
 license=('AGPL-3.0')
-depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli')
-makedepends=('git' 'cmake' 'kfr' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
+depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli' 'alsa-lib')
+makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=176e410"
