@@ -1,6 +1,6 @@
 pkgbase = python-pyzx
 	pkgdesc = A library for quantum circuit rewriting and optimisation using the ZX-calculus
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/zxcalc/pyzx
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-pyzx
 	optdepends = python-qiskit: Qiskit support
 	optdepends = python-qiskit-qasm3-import: OpenQASM3 support
 	optdepends = python-quimb: tensor networks support
-	source = pyzx-0.10.4.tar.gz::https://github.com/zxcalc/pyzx/archive/refs/tags/v0.10.4.tar.gz
-	b2sums = f2f09033ab96ecc220baf50bb6bfc37408d23021da92589311d6587f4d8113887a47c6a151ddf1e4fa2f412d592b1ae60c83f86cabf904a4e2db2603d7f946ca
+	source = pyzx-0.10.5.tar.gz::https://github.com/zxcalc/pyzx/archive/refs/tags/v0.10.5.tar.gz
+	b2sums = 5c377f16789b401f1e5a029eec21d4c4e2be884b6cb2a9f5377e586c6a548b4a1354041de73f3b710138fccd411b3d241818ce60c72693174f13820e2c0e222e
 
 pkgname = python-pyzx
