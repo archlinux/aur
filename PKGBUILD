@@ -3,7 +3,7 @@
 # Maintainer: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums_x86_64=('e2cfb09173cce87cb68c42331a6d4e23f5fd6135980e17c2dd37bfd23432cea3')
+sha256sums_x86_64=('c11e522a309feee522cf3af22d1581a5a1ef338bb6a597fc0c1839b6f0142b42')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -27,7 +27,7 @@ build () {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	cd "$pkgname-$pkgver"
-	go build -o build -ldflags "-linkmode=external -X '${url#https://}/cmd.Version=v$pkgver'"
+	go build -o build -ldflags "-linkmode=external -X '${url#https://}/v${pkgver%%.*}/cmd.Version=v$pkgver'"
 }
 
 check () {
