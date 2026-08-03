@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.15.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -34,7 +34,8 @@ conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
 #source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/amagovpt/autenticacao.gov/archive/refs/tags/v${pkgver}.tar.gz"
-source=("${_pkgname}-${pkgver}::git+https://github.com/amagovpt/autenticacao.gov.git#branch=master"
+#source=("${_pkgname}-${pkgver}::git+https://github.com/amagovpt/autenticacao.gov.git#branch=master"
+source=("${_pkgname}-${pkgver}::git+https://github.com/amagovpt/autenticacao.gov.git#commit=1fbf0175e3a674325be285e6bffb947288b81c13"
         "autenticacao-gov-pt.install"
         "gcc15-fix.patch")
 
