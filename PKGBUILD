@@ -1,9 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.5.34189228
-pkgrel=2
-_commit=8044e898
+pkgver=5.3.8.34705286
+pkgrel=1
+_commit=e9991e2b
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
@@ -29,6 +29,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
+changelog="changelog.md"
 
 options=(!strip)
 prepare() {
