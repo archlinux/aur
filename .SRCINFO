@@ -1,12 +1,11 @@
 pkgbase = valgrind-codspeed
 	pkgdesc = Fork of Valgrind to be used in Codspeed
-	pkgver = 3.26.0_0codspeed4
+	pkgver = 3.26.0_0codspeed12
 	pkgrel = 1
 	url = https://github.com/CodSpeedHQ/valgrind-codspeed
 	arch = x86_64
 	license = GPL-2.0-or-later
 	checkdepends = procps-ng
-	makedepends = cmake
 	makedepends = docbook-xsl
 	makedepends = gdb
 	depends = glibc
@@ -18,9 +17,9 @@ pkgbase = valgrind-codspeed
 	options = !emptydirs
 	options = !strip
 	options = !lto
-	source = https://github.com/CodSpeedHQ/valgrind-codspeed/archive/refs/tags/3.26.0-0codspeed4.tar.gz
+	source = https://github.com/CodSpeedHQ/valgrind-codspeed/archive/refs/tags/3.26.0-0codspeed12.tar.gz
 	source = capstone-5.0.9.tar.gz::https://github.com/capstone-engine/capstone/archive/refs/tags/5.0.9.tar.gz
-	sha256sums = c1d3b2b7cd2d180647e7211b6d16c4b83cdc17039b085465e9d28739df815d71
+	sha256sums = 486bfcf880e5d6c084a2e55533026791511ab3be015b129e730931ec85ef17b0
 	sha256sums = 0619da31af08152600af95c481527ef6d756c0a8404fca7544a4fdf6dfc2c0f9
 
 pkgname = valgrind-codspeed

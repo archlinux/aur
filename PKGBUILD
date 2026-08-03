@@ -1,7 +1,7 @@
 # Maintainer: Thomas Pellissier-Tanon <thomas at pellissier-tanon dot fr>
 
 pkgname=valgrind-codspeed
-pkgver=3.26.0_0codspeed4
+pkgver=3.26.0_0codspeed12
 pkgrel=1
 _capstone_ver=5.0.9
 pkgdesc='Fork of Valgrind to be used in Codspeed'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL-2.0-or-later')
 url='https://github.com/CodSpeedHQ/valgrind-codspeed'
 depends=('glibc' 'perl' 'debuginfod')
-makedepends=('cmake' 'docbook-xsl' 'gdb')
+makedepends=('docbook-xsl' 'gdb')
 checkdepends=('procps-ng')
 provides=('valgrind')
 conflicts=('valgrind')
@@ -19,61 +19,52 @@ source=(
   https://github.com/CodSpeedHQ/valgrind-codspeed/archive/refs/tags/${pkgver//_/-}.tar.gz
   capstone-${_capstone_ver}.tar.gz::https://github.com/capstone-engine/capstone/archive/refs/tags/${_capstone_ver}.tar.gz
 )
-sha256sums=('c1d3b2b7cd2d180647e7211b6d16c4b83cdc17039b085465e9d28739df815d71'
+sha256sums=('486bfcf880e5d6c084a2e55533026791511ab3be015b129e730931ec85ef17b0'
             '0619da31af08152600af95c481527ef6d756c0a8404fca7544a4fdf6dfc2c0f9')
 
 prepare() {
   cd valgrind-codspeed-${pkgver//_/-}
-  sed -i '/#include <string.h>/a\
-#undef strchr\
-#undef strrchr\
-#undef strstr' callgrind/cycledecode_capstone.c
-  sed -i 's/AC_GCC_WARNING_SUBST_NO(\[alloc-size-larger-than=18446744073709551615\], \[FLAG_W_NO_ALLOC_SIZE_LARGER_THAN\])/AC_SUBST([FLAG_W_NO_ALLOC_SIZE_LARGER_THAN], [])/' configure.ac
-  sed -i '/XSL_MAN_STYLES = \\/a\
-    /usr/share/xml/docbook/xsl-stylesheets/manpages/docbook.xsl \\' docs/Makefile.am
+  cp -a "${srcdir}/capstone-${_capstone_ver}/." third_party/capstone/
+  # Preserve path mapping in the custom Capstone compile rule.
+  sed -i 's/$(CC) $(capstone_cppflags)/$(CC) $(filter -fcanon-prefix-map -ffile-prefix-map=%,$(CFLAGS)) $(capstone_cppflags)/' third_party/Makefile.am
+  sed -i '/^AC_GCC_WARNING_SUBST_NO(\[alloc-size-larger-than=/c\AC_SUBST([FLAG_W_NO_ALLOC_SIZE_LARGER_THAN], [])' configure.ac
+  # Callgrind's test libraries also need generated headers in separate builds.
+  sed -i 's|-I$(top_srcdir)/include|-I$(top_builddir)/include -I$(top_srcdir)/include|g' callgrind/tests/Makefile.am
+  # List suppression filenames without embedding the source directory.
+  sed -i 's/echo "# " $(DEFAULT_SUPP_FILES)/echo "# " $(notdir $(DEFAULT_SUPP_FILES))/' Makefile.am
   autoreconf -ifv
 }
 
 build() {
-  cmake -S capstone-${_capstone_ver} -B capstone-build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCAPSTONE_ARCHITECTURE_DEFAULT=OFF \
-    -DCAPSTONE_X86_SUPPORT=ON \
-    -DCAPSTONE_ARM64_SUPPORT=ON \
-    -DBUILD_SHARED_LIBS=OFF \
-    -DCAPSTONE_BUILD_CSTOOL=OFF \
-    -DCAPSTONE_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_PREFIX="${srcdir}/capstone-static" \
-    -DCMAKE_C_FLAGS="-fno-stack-protector -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -fPIC"
-  cmake --build capstone-build
-  cmake --install capstone-build
+  # Canonicalization must precede prefix maps to cover relative paths in LTO data.
+  CFLAGS="-fcanon-prefix-map ${CFLAGS}"
+  CXXFLAGS="-fcanon-prefix-map ${CXXFLAGS}"
 
-  cd valgrind-codspeed-${pkgver//_/-}
-  ./configure \
+  # A separate build directory makes source paths absolute for LTO prefix maps.
+  mkdir -p valgrind-build
+  cd valgrind-build
+  "${srcdir}/valgrind-codspeed-${pkgver//_/-}/configure" \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib \
-    --mandir=/usr/share/man \
-    --enable-lto=yes \
-    --with-capstone="${srcdir}/capstone-static"
+    --enable-lto=yes
   make
-  make -C docs man-pages
+  make -C docs man-pages XSL_MAN_STYLES=/usr/share/xml/docbook/xsl-stylesheets/manpages/docbook.xsl
 }
 
 check() {
-  cd valgrind-codspeed-${pkgver//_/-}
+  cd valgrind-build
 
-  ./vg-in-place --error-exitcode=1 /bin/true
+  VALGRIND_LIB="${PWD}/.in_place" ./coregrind/valgrind --error-exitcode=1 /bin/true
 
-  make check CPPFLAGS= CFLAGS= CXXFLAGS= LDFLAGS=
+  # Keep path mapping when check targets rebuild production objects.
+  local prefix_map="-fcanon-prefix-map -ffile-prefix-map=${srcdir}=/usr/src/debug/${pkgname}"
+  make check CPPFLAGS= CFLAGS="${prefix_map}" CXXFLAGS="${prefix_map}" LDFLAGS=
 }
 
 package() {
-  cd valgrind-codspeed-${pkgver//_/-}
+  cd valgrind-build
 
   make DESTDIR="${pkgdir}" install
-
-  install -Dm644 docs/*.1 -t "$pkgdir/usr/share/man/man1"
 }
