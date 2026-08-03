@@ -1,6 +1,6 @@
 pkgbase = python-click-extra
 	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
-	pkgver = 8.8.0
+	pkgver = 8.8.1
 	pkgrel = 1
 	url = https://github.com/kdeldycke/click-extra
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-click-extra
 	depends = python-myst-parser
 	depends = python-pymdown-extensions
 	depends = mkdocs
-	source = python-click-extra-8.8.0.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v8.8.0.tar.gz
-	sha512sums = 29bd0ccc70ef3345986fe18eeee4171e2fd3b52196aee23b0f286a20ea115426ad23e0059d3377fffbe7ff7872f0ffba6ca125d0e2cadd4b4fcaf4f88eb58ec5
+	source = python-click-extra-8.8.1.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v8.8.1.tar.gz
+	sha512sums = cadc3715afc2848ef33a7f451447d41fb3af5623e265ad06eb752b4560316d7fcfb5880981e7e40c05a05e68de33ab1f598d230b2f153eecb3318b075c4f0917
 
 pkgname = python-click-extra
