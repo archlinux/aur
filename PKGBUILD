@@ -4,7 +4,7 @@
 
 pkgname=theia-electron
 pkgver=1.74.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -72,10 +72,17 @@ build() {
   mv .yarnclean .yarnclean_
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache"
   HOME="$FAKEHOME" yarn build
+  # Backup postinstall artefacts that will be cleaned
+  echo "Backup electron"
+  cp -aT node_modules/electron electron.bak
   # Enable yarn autoclean
   mv .yarnclean_ .yarnclean
   # Remove dev dependencies
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
+  # Restore postinstall artefacts
+  echo "Restore electron"
+  rm -rf node_modules/electron
+  mv -T electron.bak node_modules/electron
 }
 
 package() {
