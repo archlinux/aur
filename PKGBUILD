@@ -1,8 +1,8 @@
 # Maintainer: futpib
 
 pkgname=buzz-desktop-git
-pkgver=0.5.0.r25.g90e058ebf
-pkgrel=4
+pkgver=0.5.2.r87.g2c0ac2467
+pkgrel=1
 pkgdesc='Workspace where humans and agents build together (desktop client, git version)'
 arch=('x86_64')
 url='https://buzz.xyz'
@@ -69,6 +69,7 @@ build() {
   cargo build --release --locked \
     -p buzz-acp \
     -p buzz-agent \
+    -p buzz-backend-kubernetes \
     -p buzz-dev-mcp \
     -p git-credential-nostr \
     -p buzz-cli
