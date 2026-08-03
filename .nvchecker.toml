@@ -1,4 +1,3 @@
 [perl-tree-rb-xs]
 source = "cpan"
 cpan = "Tree-RB-XS"
-prefix = "v"
