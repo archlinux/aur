@@ -655,7 +655,12 @@ def build_candidate(
     return dump_yaml({"proxies": all_nodes}), cache_candidates, fallback_sources
 
 
-def validate_with_mihomo(settings: dict[str, Any], provider_bytes: bytes) -> None:
+def validate_with_mihomo(
+    settings: dict[str, Any],
+    provider_bytes: bytes,
+    *,
+    config_document: dict[str, Any] | None = None,
+) -> None:
     binary = Path(str(settings.get("mihomo_binary", "/usr/bin/mihomo")))
     home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
     config_file = Path(str(settings.get("config_file", home_dir / "config.yaml")))
@@ -670,7 +675,10 @@ def validate_with_mihomo(settings: dict[str, Any], provider_bytes: bytes) -> Non
     candidate_absolute = ensure_inside(home_dir, home_dir / candidate_relative)
     test_config = ensure_inside(home_dir, home_dir / ".subscription-test.yaml")
 
-    main_config = load_yaml(config_file)
+    if config_document is None:
+        main_config = load_yaml(config_file)
+    else:
+        main_config = config_document
     if not isinstance(main_config, dict):
         raise SubscriptionError("Mihomo 主配置顶层必须是映射")
 
@@ -855,8 +863,164 @@ def command_update(args: argparse.Namespace) -> int:
         lock_handle.close()
 
 
+# reset 时从现有主配置保留的服务器参数白名单。
+# 白名单之外的 DNS、代理组、规则和 provider 定义一律按最新模板重建，
+# 避免把旧配置重新带入，同时自动获得模板新增的安全默认值。
+RESET_PRESERVED_KEYS = (
+    "mixed-port",
+    "port",
+    "socks-port",
+    "redir-port",
+    "tproxy-port",
+    "allow-lan",
+    "bind-address",
+    "lan-allowed-ips",
+    "lan-disallowed-ips",
+    "authentication",
+    "skip-auth-prefixes",
+    "external-controller",
+    "secret",
+    "tun",
+)
+
+SECRET_PLACEHOLDER = "__MIHOMO_SECRET__"
+
+
+def render_reset_config(
+    template: dict[str, Any],
+    existing: dict[str, Any],
+) -> tuple[dict[str, Any], list[str]]:
+    """以最新模板为基础，叠加现有配置中需要保留的服务器参数。"""
+    rendered = copy.deepcopy(template)
+    preserved: list[str] = []
+
+    for key in RESET_PRESERVED_KEYS:
+        if key in existing:
+            rendered[key] = copy.deepcopy(existing[key])
+            preserved.append(key)
+
+    secret = rendered.get("secret")
+    if not isinstance(secret, str) or not secret or secret == SECRET_PLACEHOLDER:
+        rendered["secret"] = secrets.token_urlsafe(32)
+
+    return rendered, preserved
+
+
+def command_reset(args: argparse.Namespace) -> int:
+    lock_handle = acquire_lock()
+
+    try:
+        if args.secrets_file is not None:
+            load_env_file(args.secrets_file)
+
+        control = load_yaml(args.control_file)
+        settings, sources = validate_control_file(control)
+
+        home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+        config_file = Path(str(settings.get("config_file", home_dir / "config.yaml")))
+
+        existing = load_yaml(config_file)
+        if not isinstance(existing, dict):
+            raise SubscriptionError("现有主配置顶层必须是映射")
+
+        template = load_yaml(args.template_file)
+        if not isinstance(template, dict):
+            raise SubscriptionError("配置模板顶层必须是映射")
+
+        rendered, preserved = render_reset_config(template, existing)
+        rendered_bytes = dump_yaml(rendered)
+
+        log("将保留的服务器参数：" + ("、".join(preserved) if preserved else "（无）"))
+        log("将按最新模板重新生成：DNS、代理组、规则和 provider 定义")
+        log(f"不会修改：{args.control_file} 与订阅 URL 密钥文件")
+
+        if not args.yes:
+            if not sys.stdin.isatty():
+                raise SubscriptionError("非交互环境必须使用 --yes 确认重置")
+            if not ask_yes_no("确认重置 Mihomo 主配置？", default=False):
+                log("已取消，未修改任何文件")
+                return 0
+
+        # 重置必须拿到全新节点；任一下载失败即终止，不使用旧缓存。
+        provider_bytes, cache_candidates, _ = build_candidate(
+            settings,
+            sources,
+            strict=True,
+        )
+
+        # 先完整校验候选主配置与候选 provider，成功前不触碰正式文件。
+        validate_with_mihomo(settings, provider_bytes, config_document=rendered)
+
+        if args.dry_run:
+            log("校验成功；dry-run 模式未写入文件")
+            return 0
+
+        backup = config_file.with_suffix(".yaml.bak")
+        original_config_bytes = config_file.read_bytes()
+        shutil.copy2(config_file, backup)
+        os.chmod(backup, 0o600)
+        log(f"已备份原配置：{backup}")
+
+        provider_relative = Path(str(settings.get("provider_file", "providers/subscriptions.yaml")))
+        provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+        original_provider_bytes = provider_file.read_bytes() if provider_file.exists() else None
+
+        # 替换阶段任一步失败都回滚到原配置与 provider，兑现"失败保留原配置"的承诺。
+        try:
+            atomic_write(config_file, rendered_bytes, 0o600)
+            apply_service_group(config_file, "mihomo", 0o640)
+
+            provider_file = install_provider(
+                settings,
+                provider_bytes,
+                cache_candidates,
+                dry_run=False,
+            )
+
+            reload_mihomo(settings, no_reload=args.no_reload)
+        except Exception as exc:
+            log(f"重置失败（{exc}），正在回滚到原配置……")
+            rollback_problems: list[str] = []
+
+            try:
+                atomic_write(config_file, original_config_bytes, 0o600)
+                apply_service_group(config_file, "mihomo", 0o640)
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {config_file} 失败：{rollback_exc}")
+
+            try:
+                if original_provider_bytes is not None:
+                    atomic_write(provider_file, original_provider_bytes, 0o600)
+                    apply_service_group(
+                        provider_file,
+                        str(settings.get("provider_group", "mihomo")),
+                        0o640,
+                    )
+                elif provider_file.exists():
+                    provider_file.unlink()
+            except Exception as rollback_exc:
+                rollback_problems.append(f"恢复 {provider_file} 失败：{rollback_exc}")
+
+            if rollback_problems:
+                raise SubscriptionError(
+                    "重置失败且回滚不完整："
+                    + "；".join(rollback_problems)
+                    + f"；可从备份手工恢复：{backup}"
+                ) from exc
+            raise SubscriptionError(
+                f"重置失败，已回滚到原配置（备份：{backup}）；"
+                f"如 Mihomo 已停止请手工重启。原因：{exc}"
+            ) from exc
+
+        log(f"主配置已重置：{config_file}")
+        log(f"provider 文件：{provider_file}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
 def replace_secret(template: str) -> str:
-    return template.replace("__MIHOMO_SECRET__", secrets.token_urlsafe(32))
+    return template.replace(SECRET_PLACEHOLDER, secrets.token_urlsafe(32))
 
 
 def validate_controller_listen(value: str) -> str:
@@ -1121,6 +1285,44 @@ def build_parser() -> argparse.ArgumentParser:
         help="更新成功后不重载 Mihomo",
     )
     update_parser.set_defaults(func=command_update)
+
+    reset_parser = subparsers.add_parser(
+        "reset",
+        help="按最新模板重建主配置，仅保留服务器参数，并严格更新 provider",
+    )
+    reset_parser.add_argument(
+        "--control-file",
+        type=Path,
+        default=DEFAULT_CONTROL_FILE,
+    )
+    reset_parser.add_argument(
+        "--secrets-file",
+        type=Path,
+        default=DEFAULT_SECRETS_FILE,
+        help="读取 KEY=value 格式密钥文件；传入空字符串可禁用",
+    )
+    reset_parser.add_argument(
+        "--template-file",
+        type=Path,
+        default=SHARE_DIR / "config.base.yaml",
+        help="重建主配置使用的模板",
+    )
+    reset_parser.add_argument(
+        "--yes",
+        action="store_true",
+        help="跳过交互确认，用于自动化",
+    )
+    reset_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="只渲染、下载和校验，不写入任何文件",
+    )
+    reset_parser.add_argument(
+        "--no-reload",
+        action="store_true",
+        help="重置成功后不重载 Mihomo",
+    )
+    reset_parser.set_defaults(func=command_reset)
 
     return parser
 

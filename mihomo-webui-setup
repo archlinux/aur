@@ -22,6 +22,7 @@ show_help() {
 用法：
   mihomo-webui-setup [setup] [mihomo-subscription init 参数]
   mihomo-webui-setup update [mihomo-subscription update 参数]
+  mihomo-webui-setup reset [--yes] [--dry-run]
 
 一次性初始化订阅、准备本地 subconverter、执行首次严格更新，
 并启用 mihomo.service 与 mihomo-subscription-update.timer。
@@ -37,6 +38,16 @@ show_help() {
 日常手工更新：
   mihomo-webui-setup update
   mihomo-webui-setup update --strict
+
+软件包升级后按最新模板重置主配置：
+  mihomo-webui-setup reset            # 显示保留与重置的项目并确认
+  mihomo-webui-setup reset --yes      # 跳过确认，用于自动化
+  mihomo-webui-setup reset --dry-run  # 只预览和校验，不修改文件
+
+reset 会保留订阅 URL、subscriptions.yaml、API secret、external-controller、
+allow-lan 及 bind-address/lan-allowed-ips/lan-disallowed-ips、认证与
+skip-auth-prefixes、代理监听端口和 tun 配置；DNS、代理组、规则和 provider
+定义按软件包最新模板重建，校验或替换失败时保留原配置。
 
 注意：在命令行传 URL 可能被 shell 历史和进程列表记录。
 controller 与 allow-proxy-lan 参数只在新建 config.yaml 时应用。
@@ -100,11 +111,8 @@ raise SystemExit(1)
 PY
 }
 
-wait_for_subconverter() {
-  local attempt=0
-
-  for (( attempt = 0; attempt < 40; attempt++ )); do
-    if python - <<'PY'
+subconverter_port_open() {
+  python - <<'PY'
 import socket
 
 try:
@@ -114,7 +122,13 @@ except OSError:
 else:
     connection.close()
 PY
-    then
+}
+
+wait_for_subconverter() {
+  local attempt=0
+
+  for (( attempt = 0; attempt < 40; attempt++ )); do
+    if subconverter_port_open; then
       return 0
     fi
     sleep 0.25
@@ -156,6 +170,19 @@ prepare_subconverter() {
   log "本地 subconverter 已就绪"
 }
 
+# 只读探活，供 reset --dry-run 与确认前流程使用：不创建配置、不 enable/restart 服务。
+check_subconverter_running() {
+  if ! systemctl cat "$SUBCONVERTER_UNIT" >/dev/null 2>&1; then
+    die "当前订阅需要本地 subconverter；请先安装可提供 subconverter.service 的 subconverter-bin"
+  fi
+
+  if systemctl is-active --quiet "$SUBCONVERTER_UNIT" && subconverter_port_open; then
+    return 0
+  fi
+
+  die "本地 subconverter 未在 127.0.0.1:25500 运行；当前流程不会修改系统，请先运行 mihomo-webui-setup setup 或 systemctl start $SUBCONVERTER_UNIT"
+}
+
 main() {
   if [[ ${1-} == --help || ${1-} == -h ]]; then
     show_help
@@ -163,11 +190,11 @@ main() {
   fi
 
   local command=setup
-  if [[ ${1-} == setup || ${1-} == update ]]; then
+  if [[ ${1-} == setup || ${1-} == update || ${1-} == reset ]]; then
     command=$1
     shift
   elif [[ -n ${1-} && ${1-} != -* ]]; then
-    die "未知子命令：$1（支持 setup、update）"
+    die "未知子命令：$1（支持 setup、update、reset）"
   fi
 
   if (( EUID != 0 )); then
@@ -179,6 +206,48 @@ main() {
   if [[ $command == update ]]; then
     log "更新订阅"
     "$SUBSCRIPTION_COMMAND" update "$@"
+    return 0
+  fi
+
+  if [[ $command == reset ]]; then
+    log "按最新模板重置 Mihomo 主配置"
+
+    local dry_run=false
+    local assume_yes=false
+    local arg
+    for arg in "$@"; do
+      case $arg in
+        --dry-run) dry_run=true ;;
+        --yes) assume_yes=true ;;
+      esac
+    done
+
+    if ! $dry_run && ! $assume_yes; then
+      # 确认必须发生在任何副作用（prepare_subconverter、下载、写文件）之前，
+      # 保证取消时系统零改动。
+      if [[ ! -t 0 ]]; then
+        die "非交互环境必须使用 --yes 确认重置"
+      fi
+      local reply
+      read -r -p "[mihomo-webui-setup] 确认重置 Mihomo 主配置？[y/N] " reply
+      case $reply in
+        y | Y | yes | YES | Yes) ;;
+        *)
+          log "已取消，未修改任何文件"
+          return 0
+          ;;
+      esac
+      set -- "$@" --yes
+    fi
+
+    if has_enabled_source && source_uses_local_subconverter; then
+      if $dry_run; then
+        check_subconverter_running
+      else
+        prepare_subconverter
+      fi
+    fi
+    "$SUBSCRIPTION_COMMAND" reset "$@"
     return 0
   fi
 
