@@ -20,7 +20,7 @@ prepare() {
   cd "funk-${_commit}"
 
   # disable bdist_wheel.universal: deprecated and not required
-  rm setup.cfg
+  rm -v setup.cfg
 }
 
 build() {
