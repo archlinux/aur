@@ -14,7 +14,7 @@ pkgver=15.0.1
 IFS=. read -r _major _minor _patch <<< "${pkgver}"
 _minor=${_minor:-0}
 pkgrel=1
-url='http://www.wolfram.com/mathematica/'
+url='https://www.wolfram.com/mathematica/'
 arch=(x86_64)
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'inetutils')
@@ -70,7 +70,7 @@ options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
 ## your startdir If you don't own the installer you can download a trial version
-## at http://www.wolfram.com/mathematica/trial
+## at https://www.wolfram.com/mathematica/trial
 
 ## The documentation takes up the majority of the disk space.  If you do not wish
 ## to keep it, uncomment the relevant lines at the bottom of this PKGBUILD, or
@@ -93,8 +93,8 @@ _installdir='/opt/Mathematica'
 
 prepare() {
   local available_space
-  available_space="$(df --output=avail -BG .)"
-  available_space="$(tail -n 1 <<< "${available_space}")"
+  available_space=$(df --output=avail -BG .)
+  available_space=$(tail -n 1 <<< "${available_space}")
 
   if [[ ${available_space/%G/} -lt 32 ]]; then
     warning "Mathematica takes around 29 GiB of space with 'makepkg'."
@@ -115,7 +115,7 @@ prepare() {
 
 package() {
   local installdir
-  installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+  installdir=$(realpath -m "${pkgdir}/${_installdir}")
 
   msg2 'Running Mathematica installer'
   # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
@@ -180,8 +180,6 @@ package() {
       if [[ -f ${icon} ]]; then
         install -vD -m644 "${icon}" \
           -T "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/${mimetype//\//-}.png"
-      else
-        printf 'Missing icon: %s\n' "${icon}"
       fi
     done
   done
