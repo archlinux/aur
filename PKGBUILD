@@ -7,7 +7,7 @@
 # https://vpn.mozilla.org
 
 pkgname=mozillavpn
-pkgver=2.38.0
+pkgver=2.39.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -40,7 +40,7 @@ install=mozillavpn.install
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://archive.mozilla.org/pub/vpn/releases/${pkgver}/source/mozillavpn-sources.tar.gz")
-sha256sums=('705aa47a3da5bfc6f652a237c8fa84b849944d8f27ce574105c04cc1a8755908')
+sha256sums=('4a634b695dacc11ef9cfa2f530fa17eabb2c9599dc26e9f234a34bb334fd5f99')
 
 prepare() {
   tar xf *.orig.tar.gz
