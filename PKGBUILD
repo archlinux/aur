@@ -22,7 +22,7 @@ depends=(
   libasound.so      # Provided by 'alsa-lib'.
   libdvdread
   libdv
-  libfaac.so        # Provided by 'faac'.
+  # libfaac.so        # Provided by 'faac'. # Does not build anymore with FAAC 2.x, see https://aur.archlinux.org/packages/transcode#comment-1080674
   libfreetype.so    # Provided by 'freetype2'.
   libjpeg.so        # Provided by 'libjpeg' or 'libjpeg-turbo'.
   libmp3lame.so
@@ -53,7 +53,7 @@ makedepends=(
   patch
 
   alsa-lib
-  faac
+  # faac     # Does not build anymore with FAAC 2.x, see https://aur.archlinux.org/packages/transcode#comment-1080674
   ffmpeg4.4  # Needed for 'libavcodec', 'libavformat', 'libpostproc' dependencies.
   freetype2
   lame
@@ -149,7 +149,7 @@ build() {
     --enable-libquicktime \
     --enable-lzo \
     --enable-a52 \
-    --enable-faac \
+    --disable-faac \
     --enable-libxml2 \
     --disable-ibp \
     --enable-mjpegtools \
