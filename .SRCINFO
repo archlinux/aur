@@ -1,0 +1,15 @@
+pkgbase = profilecli
+	pkgdesc = CLI for Grafana Pyroscope, the continuous profiling aggregation system
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/grafana/pyroscope
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	conflicts = profilecli-bin
+	source = profilecli-2.2.0.tar.gz::https://github.com/grafana/pyroscope/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 67779f2b5cf3e1f74a1863e8e2512d58d2cda723ecb8515919ca874d6c13f4c7
+
+pkgname = profilecli
