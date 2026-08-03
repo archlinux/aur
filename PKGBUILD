@@ -11,6 +11,25 @@ pkgrel=1
 url='https://github.com/Uberi/speech_recognition'
 arch=(any)
 license=('BSD-3-Clause')
+checkdepends=(
+  'python-pytest'
+  'python-pytest-randomly'
+  'python-respx'
+  'python-numpy'
+  'python-pytest-httpserver'
+  'python-pocketsphinx' # test_recognition.py
+  'python-httpx' # whisper_api/ tests
+  'python-openai' # test_openai.py
+  'python-groq' # test_groq.py
+  'python-google-cloud-speech' # test_google_cloud.py
+  'python-cryptography' # test_google_cloud.py
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 depends=(
   'flac'
   'python'
@@ -38,25 +57,6 @@ optdepends=(
   'python-botocore: required for Amazon Transcribe'
   'python-cohere: Cohere API backend'
 )
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
-)
-checkdepends=(
-  'python-pytest'
-  'python-pytest-randomly'
-  'python-respx'
-  'python-numpy'
-  'python-pytest-httpserver'
-  'python-pocketsphinx' # test_recognition.py
-  'python-httpx' # whisper_api/ tests
-  'python-openai' # test_openai.py
-  'python-groq' # test_groq.py
-  'python-google-cloud-speech' # test_google_cloud.py
-  'python-cryptography' # test_google_cloud.py
-)
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('ef71c2912045045ff2f84015359b137c668f1f30bd462dd149a3cc80363f0ab649e5a08d06f0e8dded5850243c38d30ced5cefb8f15e8759b9df88719fc4f995')
 
@@ -64,7 +64,7 @@ build() {
   cd "speech_recognition-${pkgver}"
 
   # Remove packaged FLAC binaries in favor of the Arch Linux package.
-  rm speech_recognition/flac-* LICENSE-FLAC.txt
+  rm -v speech_recognition/flac-* LICENSE-FLAC.txt
 
   python -m build --wheel --no-isolation
 }
