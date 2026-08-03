@@ -8,7 +8,7 @@
 readonly _pkgname="CLI11"
 
 pkgname="cli11-compiled"
-pkgver="2.7.1"
+pkgver="2.7.2"
 pkgrel="1"
 pkgdesc="Command line parser for C++."
 arch=("x86_64")
@@ -20,7 +20,7 @@ provides=("cli11")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=("!strip")
-sha512sums=("f59ee39d2bc1e9cc8c7ef587589f22fba78a7524774319fb951e975bf5963dd6acb87107226622cae0dc629decdb5ac2fd2dfed38a449ff1056d41188dcc506d")
+sha512sums=("437cd9d704c1b0de0516bdc8cb115befb2e7170417375a64845a2bc2385fa07948c4af724ec615d27fbc102dbe13a7117f33873d6776fe9b17f293d42fe64dd9")
 
 _compile()
 {
