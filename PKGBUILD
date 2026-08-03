@@ -1,6 +1,6 @@
 # Maintainer: komorebi <932556591@qq.com>
 # Contributor: b1ngggg <b1ngggg@users.noreply.github.com>
-pkgname=cloudmusicplayer
+pkgname=cloudmusicplayer-bin
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="CloudMusicPlayer 是面向网易云音乐的 Linux 音乐播放器，

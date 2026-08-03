@@ -1,4 +1,4 @@
-pkgbase = cloudmusicplayer
+pkgbase = cloudmusicplayer-bin
 	pkgdesc = CloudMusicPlayer 是面向网易云音乐的 Linux 音乐播放器， 基于 netease-cloud-music-gtk 进行界面UI、交互、视觉及动画效果设计重构， 评论区开放、互动等新功能，并包含播放队列、歌词页和列表性能优化等改动,体验更完善丝滑
 	pkgver = 1.0.4
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = cloudmusicplayer
 	source = cloudmusicplayer_1.0.4-1_amd64.deb::https://github.com/b1ngggg/CloudMusicPlayer/releases/download/v1.0.4/cloudmusicplayer_1.0.4-1_amd64.deb
 	sha256sums = 2a4cd18e1257ac66ebc505fcc0eb234c3e523e5e9f9ed73ec1102ff4a258f4b5
 
-pkgname = cloudmusicplayer
+pkgname = cloudmusicplayer-bin
