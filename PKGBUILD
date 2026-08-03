@@ -8,10 +8,10 @@ license=("LGPL2")
 provides=("libfprint" "libfprint-2.so=2-64")
 conflicts=("libfprint")
 source=("${pkgname}::git+https://github.com/TheWeirdDev/libfprint.git")
-pkgrel=2
-pkgver=r1802.6e4fdc0
+pkgrel=1
+pkgver=r1805.c1937b9
 md5sums=('SKIP')
-depends=('libgusb' 'openssl' 'pixman' 'nss' 'libgudev' 'opencv')
+depends=('libgusb' 'openssl' 'pixman' 'nss' 'libgudev' 'opencv4')
 optdepends=('fprintd: D-Bus daemon for managing readers')
 
 pkgver() {
