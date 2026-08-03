@@ -14,7 +14,7 @@ md5:
 release:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
-	git commit -m "fix: scikit-build-core"
+	git commit -m "update: 4.4.0"
 	git push
 
 .PHONY: test
