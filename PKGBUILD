@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgver=4.4.24
+pkgver=4.4.25
 pkgrel=1
 _flutter_ver=3.38.10
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
@@ -30,7 +30,7 @@ makedepends=(
 source=("git+https://github.com/ente/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'enteauth.desktop')
-sha256sums=('5d8cd43064e8d7b3ad936552608ce21a85eea48d5434a270c062af68343d8f23'
+sha256sums=('4886399408a9ac567522caa7c49c851eb2f8bc56f3780a33435286f32d85f1f4'
             'SKIP'
             'c06f6e30813bd035245e1fb79a8c1b6c5284d98cd98a70e46b18c5a39e7b9aee')
 
