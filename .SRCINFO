@@ -1,6 +1,6 @@
 pkgbase = chillpill-shell
 	pkgdesc = Lightweight and feature rich dynamic pill bar for Hyprland
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/ChillPill-Shell
 	install = chillpill-shell.install
@@ -21,7 +21,7 @@ pkgbase = chillpill-shell
 	optdepends = ttf-jetbrains-mono-nerd
 	optdepends = ttf-monocraft-nerd
 	options = !debug
-	source = chillpill-shell-0.1.0.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e295c9f8f5622ea3d7e1aa3a116b1d15ed492f212b7b629c620287312c8e35b7
+	source = chillpill-shell-0.1.1.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 32a49408be78f7abcb6f6a6b0f4e7472cb6c445e3a0972d1c000c3fe661e6d27
 
 pkgname = chillpill-shell
