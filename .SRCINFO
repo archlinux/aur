@@ -1,6 +1,6 @@
 pkgbase = shimmy
 	pkgdesc = Drop-in OpenAI API Replacement for Local LLMs
-	pkgver = 2.3.3
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Michael-A-Kuykendall/shimmy
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = shimmy
 	provides = shimmy
 	conflicts = shimmy-cpu
 	conflicts = shimmy-gpu
-	source = shimmy-2.3.3.tgz::https://github.com/Michael-A-Kuykendall/shimmy/archive/v2.3.3.tar.gz
-	sha256sums = e50a56eb696d5f3f472958fa4f8296be5d847faa5d12e6f88dc43b6226141601
+	source = shimmy-2.4.2.tgz::https://github.com/Michael-A-Kuykendall/shimmy/archive/v2.4.2.tar.gz
+	sha256sums = 0bb4f19f3d7a3fa6349b3334000539fb6dc52a90bd14106f4e91c39209028fbb
 
 pkgname = shimmy
