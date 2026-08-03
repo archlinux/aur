@@ -4,7 +4,7 @@
 
 pkgname=sgdboop-bin
 _pkgname=sgdboop
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="automatically applies assets from SteamGridDB directly to your Steam library"
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,11 @@ sha512sums=("35f57bab67171e96fbe2b2a11b7a4c95f06083f95af683286eb2014f61c0ad8bbc3
 
 # x86_64
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/SteamGridDB/SGDBoop/releases/download/v${pkgver}/sgdboop-linux-x86_64.tar.gz")
-sha512sums_x86_64=("1c256666182553fa4e021307279c2f810f16c15dd50f8e01b3e9df0a2560ba17df0669614a8668bed7a2c789e7f4c2342853940a0d346dc87b2f5a2e45f42d8e")
+sha512sums_x86_64=("83e547809ebd8d7c261d937e570a779d612b1b6bca8d11782216eca6f86123bcaa92334e9c3c8473fa86248d5c114198943ca279a79975d010484c50ec272544")
 
 # aarch64
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/SteamGridDB/SGDBoop/releases/download/v${pkgver}/sgdboop-linux-aarch64.tar.gz")
-sha512sums_aarch64=("844ba5ea381a6f71520ea7aa1ce5da151c961d46808e6236179ef690260426d0519670e6cb54918b9cee88da9758d9242fa42ff3797bda3a79a25e057e695195")
+sha512sums_aarch64=("07b2f783daae3aaf5be23190ed3c03c574da265e6d292e0db6a09b7c2e7efc2dcb798a3966e03f937c6c018f5559414b6bec0df41d51e7b8d08ea62ebd99d399")
 
 package() {
   install -Dm755 "$srcdir/SGDBoop" "$pkgdir/usr/bin/SGDBoop"
@@ -36,3 +36,4 @@ package() {
   echo "https://www.steamgriddb.com/boop"
 }
 # vim:set ts=2 sw=2 et:
+
