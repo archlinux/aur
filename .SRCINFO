@@ -1,7 +1,7 @@
 pkgbase = fcitx5-voice-input
 	pkgdesc = Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devcxl/fcitx5-voice-input
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -17,6 +17,8 @@ pkgbase = fcitx5-voice-input
 	depends = zlib
 	options = !debug
 	source = fcitx5-voice-input-0.3.1.tar.gz::https://github.com/devcxl/fcitx5-voice-input/archive/refs/tags/v0.3.1.tar.gz
+	source = silero_vad.onnx::https://raw.githubusercontent.com/snakers4/silero-vad/dbacf536adadf42210f37ae50fbaf75f6235b3cf/src/silero_vad/data/silero_vad.onnx
 	sha256sums = 159cc541069fca9ca75c936aecfd06d2612184358ffcaceaf432914acaba5e17
+	sha256sums = 1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3
 
 pkgname = fcitx5-voice-input
