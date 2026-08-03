@@ -1,6 +1,6 @@
 pkgbase = vdu_controls
 	pkgdesc = Visual Display Unit virtual control panel - a GUI front end to ddcutil
-	pkgver = 2.6.5
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = https://digitaltrails.github.io/vdu_controls
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = vdu_controls
 	optdepends = ddcutil-service: D-Bus Interface for up to 10x faster response times.
 	optdepends = python-pyserial: If you wish to use a serial-port lux metering device
 	optdepends = python-pyudev: Laptop panel support
-	source = vdu_controls-2.6.5.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v2.6.5.tar.gz
-	sha256sums = 64c615f669236a7bb3c1f049aa1af1dffabbfeffa197420c740fc0ff87d0f41b
+	source = vdu_controls-2.6.7.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v2.6.7.tar.gz
+	sha256sums = dff934ab4dd9e96a337cfbb78acd29c675c55bd55a737b8c01a86f3182cbcb05
 
 pkgname = vdu_controls
