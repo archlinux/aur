@@ -53,7 +53,7 @@ package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "static/img/normal_cat_ticket.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "static/img/normal-cat-ticket.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   cat <<'EOF' > "${pkgdir}/usr/bin/battle-cats-normal-rolls-run"
 #!/bin/bash
