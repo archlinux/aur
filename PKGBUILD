@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A compact git commit graph viewer"
 
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,7 +30,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('b7fcaf80ca80a9bfef3fbf6e4aa8e73a7ed03f0ab62824fdd3f70f4604e95acf'
             '1e04f95c77a24c83f64db09ff0ceec2cfe2eada73bd65bf5f205df013c79d99c')
-sha256sums_x86_64=('048d155afccd12a11c6a6f6620c5efcc6242439351b3ccbbdf6c4d9103447a9a')
+sha256sums_x86_64=('729b2cbdb627b36c8da21861ca52ae04904bcefbf9ce768e61fc02e613d2153c')
 
 
 package() {
