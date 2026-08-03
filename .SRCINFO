@@ -1,7 +1,7 @@
 pkgbase = battle-cats-normal-rolls-git
 	pkgdesc = Local Battle Cats normal seed tracking server with high-performance Rust seeker
-	pkgver = r22.e155d12
-	pkgrel = 1
+	pkgver = r34.ab31638
+	pkgrel = 2
 	url = https://github.com/EduHoff/battle-cats-normal-rolls
 	arch = x86_64
 	arch = aarch64
