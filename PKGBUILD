@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Tool for fetch everythin' in internet"
 
-pkgver=0.7.9
+pkgver=0.8.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ depends=('glibc' 'libgcc' 'xz')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('cee06495ebcdc4f9e59730397e475d6d58f710dc6d2422b0433ce949e447ea41')
+sha256sums=('4a75581888948b6530a07e08d678bfde10541388d9d762b0c7f0acfa507c0c99')
 
 
 prepare() {
