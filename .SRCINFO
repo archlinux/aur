@@ -1,13 +1,13 @@
 pkgbase = cargo-crap
 	pkgdesc = Change Risk Anti-Patterns (CRAP) metric for Rust projects
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/minikin/cargo-crap
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = cargo
-	source = cargo-crap-0.4.0.tar.gz::https://github.com/minikin/cargo-crap/archive/v0.4.0.tar.gz
-	sha256sums = c42edce396d3ddcd14fb4ac7452cbe00e2eeb8edc6a9c87e7f3f516e7e99b863
+	source = cargo-crap-0.4.1.tar.gz::https://github.com/minikin/cargo-crap/archive/v0.4.1.tar.gz
+	sha256sums = 31672ba191f136e478d45863dcd2f91702892cc0b833e75808af9ed1c5c23a75
 
 pkgname = cargo-crap
