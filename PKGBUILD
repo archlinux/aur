@@ -4,7 +4,7 @@
 
 pkgname=theia-electron
 pkgver=1.74.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -16,7 +16,8 @@ _license_files=(LICENSE-EPL LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION LICENSE-MIT
 license=("${_license_files[@]/#/LicenseRef-}")
 depends=('nodejs-lts-krypton' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
-             'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
+             'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools'
+             'unzip' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!debug !strip)
 
@@ -65,7 +66,6 @@ prepare() {
 
 build() {
   local FAKEHOME="$srcdir/.electron-gyp"
-  export PUPPETEER_SKIP_DOWNLOAD=1	# Avoid ERROR: Failed to set up chrome
   mkdir -p "$FAKEHOME"
 
   # Disable yarn autoclean
