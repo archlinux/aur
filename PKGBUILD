@@ -2,7 +2,7 @@
 # Contributor: MiMo Code Agent
 
 pkgname=bedrockboot
-pkgver=2.1.9.95
+pkgver=2.1.10.96
 pkgrel=1
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "CrashStackAnalyzer::git+https://github.com/Round-Studio/CrashStackAnalyzer.git"
     "disable-update-check.patch"
 )
-sha256sums=('23115d987a8324ac4bc4d63c9e336e62ea0ce8ed1fa9318774ab09761b6596c2'
+sha256sums=('9a713852bcab77f55f2ed44db1f6a2cc2ab72f9f03a7fee9683722e2f6bacd7c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,7 +41,7 @@ sha256sums=('23115d987a8324ac4bc4d63c9e336e62ea0ce8ed1fa9318774ab09761b6596c2'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c97bee82c52049c226f4cdc535482aca12f2117d36d0ef77900627843684174b')
+            'fad59f702150bfb3f325d0b4868e9461a2e35c36fa30a740737207f810420797')
 
 prepare() {
     cd "$pkgname"
@@ -98,7 +98,7 @@ Exec=/usr/bin/bedrockboot
 Icon=bedrockboot
 Terminal=false
 Type=Application
-Categories=Game;Java;
+Categories=Game;
 Keywords=minecraft;bedrock;launcher;
 EOF
 

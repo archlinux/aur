@@ -9,7 +9,7 @@
 +    /// </summary>
 +    private const bool DisableUpdateCheck = true;
 +
-     public static async Task<Release> Update()
+     public static async Task<Release?> Update()
      {
 +        if (DisableUpdateCheck)
 +            return null;
