@@ -7,7 +7,7 @@
 
 pkgname=alpaca-ai
 pkgdesc='Chat with local AI models or connect to third party AI providers'
-pkgver=9.2.4
+pkgver=9.2.5
 pkgrel=1
 url='https://github.com/Jeffser/Alpaca'
 arch=(any)
@@ -58,7 +58,7 @@ optdepends=(
   'python-openai: connect to OpenAI-compatible APIs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('0dee3cec699045cba285f1e637223a5b40e986ff5bca58d0fa7f02d39633e67e4c00ecdb73f521fdd35261a42a01050a4224d0d1d2b00471497d96b050ae8633')
+b2sums=('036309d37c7a4804c3b492e7abc08c51dd8ae15cf310b69ee519a91581f155ff53f15e0db8369dd7e5713ca6a696f7cbe07d02d8b196fcb37e338401c543a0a4')
 
 build() {
   arch-meson "Alpaca-${pkgver}" build
