@@ -35,6 +35,7 @@ depends=(
   'nspr'
   'bash'
   'python-pygit2'
+  'libxcrypt-compat'
 )
 makedepends=(
   'nodejs>=22'

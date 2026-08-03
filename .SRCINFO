@@ -37,6 +37,7 @@ pkgbase = comfy-desktop
 	depends = nspr
 	depends = bash
 	depends = python-pygit2
+	depends = libxcrypt-compat
 	conflicts = comfyui-desktop-2-beta
 	replaces = comfyui-desktop-2-beta
 	options = !strip
