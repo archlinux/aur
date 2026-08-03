@@ -1,6 +1,6 @@
 pkgbase = libz-rs-sys
 	pkgdesc = A zlib implementation in rust available as a C dynamic library
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://trifectatech.org/projects/zlib-rs/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libz-rs-sys
 	depends = glibc
 	depends = libgcc
 	options = staticlibs
-	source = libz-rs-sys-0.6.6-src.tar.gz::https://github.com/trifectatechfoundation/zlib-rs/archive/refs/tags/v0.6.6.tar.gz
-	sha256sums = e909a4fe6a67362e5a0db67114b69496a4572c0b99c26e7542638ec003fc11b2
+	source = libz-rs-sys-0.6.7-src.tar.gz::https://github.com/trifectatechfoundation/zlib-rs/archive/refs/tags/v0.6.7.tar.gz
+	sha256sums = a2dac1f1102f01a2da1ec5b708f8f3832cedad138a6732f241204fa0f3617b81
 
 pkgname = libz-rs-sys
