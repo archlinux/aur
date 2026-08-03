@@ -100,7 +100,7 @@ build() {
   cd ${pkgname}-${pkgver}
 
   CFLAGS+=" -std=gnu11" # Needed for newer GCC versions.
-  CFLAGS+=" -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-enum-int-mismatch -Wno-pointer-sign -Wno-unused-result" # Otherwise, leads to compile errors when using 'lame'. Also, we silence some other warnings.
+  CFLAGS+=" -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-enum-int-mismatch -Wno-pointer-sign -Wno-unused-result -Wno-misleading-indentation -Wno-sizeof-array-div -Wno-parentheses -Wno-bool-compare -Wno-logical-not-parentheses -Wno-address -Wno-switch -Wno-missing-prototypes" # Otherwise, leads to compile errors when using 'lame'. Also, we silence some other warnings.
   export CFLAGS
 
   ## Prefer ffmpeg4.4 libraries in beeing found -- needed for libavcodec, libavformat, libpostproc:
