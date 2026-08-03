@@ -1,6 +1,6 @@
 pkgbase = chest-backup
 	pkgdesc = Full-stack backup manager with web UI, system tray and scheduling
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/brankosimic/chest-backup
 	install = chest-backup.install
@@ -13,7 +13,7 @@ pkgbase = chest-backup
 	depends = bun
 	depends = libayatana-appindicator
 	optdepends = docker: container-based backup sources (sqlite-container, postgres-container)
-	source = chest-backup-0.1.9.tar.gz::https://github.com/brankosimic/chest-backup/archive/v0.1.9.tar.gz
-	sha256sums = 4e31ad69bab9b4b0eccb0af24d452c31dde25641e6158f58d6d39368f891ed6a
+	source = chest-backup-0.2.0.tar.gz::https://github.com/brankosimic/chest-backup/archive/v0.2.0.tar.gz
+	sha256sums = 751b12b0c599a64bf7d6928e944902f39b90ec0cd60635ddd117ba14025efa11
 
 pkgname = chest-backup

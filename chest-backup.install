@@ -26,38 +26,74 @@ seed_config() {
       install -m600 "${chown_flags[@]}" /usr/share/chest-backup/.env.default "$cfg_dir/.env"
     fi
   fi
+}
+
+enable_service() {
+  local target_user="$1" target_home="$2" unit="$3"
 
   if [ -n "$target_user" ]; then
+    local uid
     uid=$(id -u "$target_user")
     if runuser -u "$target_user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
-      systemctl --user daemon-reload && \
-      systemctl --user enable --now chest-backup 2>/dev/null; then
-      started=true
-    else
-      install -d "$target_home/.config/systemd/user/default.target.wants"
-      ln -sf /usr/lib/systemd/user/chest-backup.service \
-        "$target_home/.config/systemd/user/default.target.wants/chest-backup.service"
+      systemctl --user enable --now "$unit" 2>/dev/null; then
+      return 0
     fi
-
-    loginctl enable-linger "$target_user" 2>/dev/null || true
+    install -d "$target_home/.config/systemd/user/default.target.wants"
+    ln -sf "/usr/lib/systemd/user/$unit.service" \
+      "$target_home/.config/systemd/user/default.target.wants/$unit.service"
+    return 0
   fi
+
+  if systemctl --user enable --now "$unit" 2>/dev/null; then
+    return 0
+  fi
+  install -d "$target_home/.config/systemd/user/default.target.wants"
+  ln -sf "/usr/lib/systemd/user/$unit.service" \
+    "$target_home/.config/systemd/user/default.target.wants/$unit.service"
+  return 0
+}
+
+post_install() {
+  seed_config
+
+  local target_user="" target_home=""
+
+  if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+    target_user="$SUDO_USER"
+    target_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+  else
+    target_home=$(getent passwd "$(id -u)" | cut -d: -f6)
+  fi
+
+  local unit="chest-backup-headless"
+
+  if [ -t 1 ]; then
+    echo
+    echo "  Select mode:"
+    echo "    [1] Headless  — API server + daemon (servers, SSH)"
+    echo "    [2] Tray      — API server + daemon + system tray icon (desktop)"
+    echo -n "  Enter choice [1-2] (default 1): "
+    read -r choice
+    case "$choice" in
+      2) unit="chest-backup-tray" ;;
+      *) unit="chest-backup-headless" ;;
+    esac
+    echo
+  fi
+
+  enable_service "$target_user" "$target_home" "$unit"
 
   echo
-  if [ "$started" = true ]; then
-    echo "  chest-backup installed and running."
-  else
-    echo "  chest-backup installed. Start it with:"
-    echo "      systemctl --user start chest-backup"
-  fi
+  echo "  chest-backup installed with $unit."
   echo
   echo "  Web UI:              http://localhost:5199"
   echo "  Config:              ~/.config/chest-backup/chest-backup.json"
   echo "  Secrets:             ~/.config/chest-backup/.env"
   echo
-}
-
-post_install() {
-  seed_config
+  echo "  To switch to tray mode, run:"
+  echo "      systemctl --user disable --now $unit"
+  echo "      systemctl --user enable --now chest-backup-tray"
+  echo
 }
 
 post_upgrade() {
