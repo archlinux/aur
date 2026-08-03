@@ -1,7 +1,7 @@
 # Maintainer: loadept <hi at loadept dot com>
 
 pkgname=wirq-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A local MITM proxy for inspecting HTTP/HTTPS traffic"
 url="https://github.com/loadept/wirq"
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('webkit2gtk-4.1')
 
 source=(wirq-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/wirq-linux-amd64.tar.gz)
-sha256sums=('eb9744f464661da65daf6def322107abbed79aa136f8b54ce97c50cb958a7fb6')
+sha256sums=('2637eb74854ad97d8c20d4317a1a731cf160cf0b339f622d71f33de6682d722e')
 
 package() {
     install -Dm755 wirq "$pkgdir/opt/wirq/wirq"
