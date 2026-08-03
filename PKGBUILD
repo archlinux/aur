@@ -1,7 +1,7 @@
 # Maintainer: Thomas Pellissier-Tanon <thomas at pellissier-tanon dot fr>
 
 pkgname=codspeed-bin
-pkgver=4.18.1
+pkgver=5.6.3
 pkgrel=1
 pkgdesc="codspeed test runner"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/CodSpeedHQ/codspeed"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc' 'openssl' 'lsb-release' 'valgrind-codspeed')
 source=("codspeed-runner-x86_64-unknown-linux-musl.tar.gz::https://github.com/CodSpeedHQ/codspeed/releases/download/v${pkgver//_/-}/codspeed-runner-x86_64-unknown-linux-musl.tar.gz")
-sha512sums=('422270d03fc69fe599dd9ac048d869d31b5dd8da7c248fe466c161b9246761aadd0e71d10c7fae3d5c1be38d759eef6784317c73d3344c6031ac170587a2b062')
+sha512sums=('bbd802b6e657fc4f6cabf238be06de57781dd01b01874edef6aadd30abaa75511f89facbb66d3ae4071043345320e9798e5cecb8794f2859bb70dff13d87c593')
 
 package() {
     install -Dm755 "codspeed-runner-x86_64-unknown-linux-musl/codspeed" "$pkgdir/usr/bin/codspeed"
