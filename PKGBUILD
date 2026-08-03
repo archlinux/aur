@@ -1,12 +1,12 @@
 # Maintainer: Konstantin Martianov <k.s.martianov@yandex.com>
 pkgname=shader-desk-git
 _pkgname=shader-desk
-pkgver=r70.8b33e0e # Automatically updated by pkgver()
+pkgver=r73.941ab03 # Automatically updated by pkgver()
 pkgrel=1
 pkgdesc="Interactive Wayland wallpaper engine using OpenGL GLESv2 shaders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KMartianov/shader-desk"
-license=('MIT') 
+license=('MPL2' 'custom:CC-BY-NC-SA')
 
 # Runtime dependencies
 depends=(
