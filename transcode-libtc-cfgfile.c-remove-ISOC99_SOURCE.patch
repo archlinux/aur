@@ -1,0 +1,8 @@
+diff -rU1 transcode-1.1.7.orig/libtc/cfgfile.c transcode-1.1.7.new/libtc/cfgfile.c
+--- transcode-1.1.7.orig/libtc/cfgfile.c	2026-08-03 15:39:00.999890591 +0200
++++ transcode-1.1.7.new/libtc/cfgfile.c	2026-08-03 15:39:22.193223619 +0200
+@@ -10,4 +10,2 @@
+ 
+-#define _ISOC99_SOURCE  /* needed by glibc to declare strtof() */
+-
+ #include "transcode.h"

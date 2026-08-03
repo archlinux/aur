@@ -1,0 +1,8 @@
+diff -rU1 transcode-1.1.7.orig/filter/subtitler/load_font.c transcode-1.1.7.new/filter/subtitler/load_font.c
+--- transcode-1.1.7.orig/filter/subtitler/load_font.c	2026-08-03 15:39:00.979890592 +0200
++++ transcode-1.1.7.new/filter/subtitler/load_font.c	2026-08-03 15:41:53.993221383 +0200
+@@ -50,3 +50,3 @@
+ 
+-#include <freetype/ftglyph.h>
++#include <freetype2/freetype/ftglyph.h>
+ 
