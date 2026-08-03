@@ -5,6 +5,7 @@ pkgbase = echoed-appimage
 	url = https://echoed.gg
 	arch = x86_64
 	license = custom
+	makedepends = squashfs-tools
 	depends = fuse2
 	depends = hicolor-icon-theme
 	noextract = echoed-1.7.6-amd64.AppImage

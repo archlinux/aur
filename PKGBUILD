@@ -9,49 +9,54 @@ arch=('x86_64')
 url="https://echoed.gg"
 license=('custom')
 depends=('fuse2' 'hicolor-icon-theme')
+makedepends=('squashfs-tools')
 options=(!strip !debug)
 _appimage="${_pkgname}-${pkgver}-amd64.AppImage"
 source_x86_64=(
-  "${_appimage}::https://software.echoed.gg/v${pkgver}/Echoed_${pkgver}_amd64.AppImage"
+  "${_appimage}::https://software.echoed.gg/v1.7.6/Echoed_1.7.6_amd64.AppImage"
 )
 noextract=("${_appimage}")
 sha256sums_x86_64=('a7cbcaed616dd99f86d1433e6793711cdf2d1c3caf5bd550913ab6180f1de311')
 
 prepare() {
-  chmod +x "${_appimage}"
-  ./"${_appimage}" --appimage-extract
-}
+  # Clean old paths
+  rm -rf "${srcdir}/squashfs-root"
+
+  # Extract safely inside an isolated network sandbox
+  chmod +x "${srcdir}/${_appimage}"
+  unshare -n -r "${srcdir}/${_appimage}" --appimage-extract
+
+  }
+
 
 build() {
   local desktop_file
   desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
 
   if [[ -n "$desktop_file" ]]; then
-    # Исправляем Exec + добавляем LD_PRELOAD
-    sed -i -E "s|Exec=AppRun.*|Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/${_pkgname} %U|" \
-      "$desktop_file"
+    # Fix Exec
+    sed -i -E "s|Exec=AppRun.*|Exec=/usr/bin/${_pkgname} %U|" "$desktop_file"
 
-    # Ставим правильные категории для KDE
+    # Set categories
     if grep -q '^Categories=' "$desktop_file"; then
       sed -i -E 's|^Categories=.*|Categories=Network;InstantMessaging;|' "$desktop_file"
     else
       echo "Categories=Network;InstantMessaging;" >> "$desktop_file"
     fi
 
-    # На всякий случай задаём имя приложения
     sed -i -E "s|^Name=.*|Name=Echoed|" "$desktop_file" || true
   fi
 
-  # Чиним права
+  # Fix permissions
   chmod -R a-x+rX "${srcdir}/squashfs-root/usr" 2>/dev/null || true
 }
 
 package() {
-  # AppImage
+  # Install AppImage
   install -Dm755 "${srcdir}/${_appimage}" \
     "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
-  # Обёртка
+  # Install wrapper
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/${_pkgname}" << 'EOF'
 #!/bin/bash
@@ -60,17 +65,20 @@ exec /opt/echoed-appimage/echoed-appimage.AppImage "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 
-  # Desktop-файл
+  # Install desktop
   local desktop_file
   desktop_file=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.desktop" | head -1)
-
   if [[ -n "$desktop_file" ]]; then
     install -Dm644 "$desktop_file" \
       "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   fi
 
-  # Иконки
+  # Install icons
   if [[ -d "${srcdir}/squashfs-root/usr/share/icons" ]]; then
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
   fi
+
+  # Install license
+  install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || \
+  echo "Custom license. See upstream website." > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
