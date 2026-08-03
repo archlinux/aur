@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.72.3
+pkgver=1.74.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -20,7 +20,7 @@ makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!debug !strip)
 
-_tools_commit=9d62c805f48a53b9bd7aafc2304fbb6c1fea8a21
+_tools_commit=05e134eedb9c1dcad4206fb10e75fc5e604abb54
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
@@ -34,7 +34,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-vscode.txt"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
-            '590086824e60c5a7f6b8796f876b6a3ad0521ab252ed739206a46bc94543b762'
+            'c58129d148fe24e137a1e408a842ad192ff4772a83c7abf3ee01814148c75519'
             '82b7b2cf3b30aecf79b44cb5b5d3000f91e8610a4bcc019720b6ecfa6045529d'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
@@ -54,12 +54,13 @@ prepare() {
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base}).
   # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
-  # Manually add upstream URL of vscode-builtin-extensions (not an OpenVSX URL)
-  # Add postinstall script.
+  # Add dependencies on react as in eclipse-theia/theia-ide.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
-  jq '.theiaPlugins."vscode-builtin-extensions" = "https://github.com/eclipse-theia/vscode-builtin-extensions/releases/download/1.108.2/vscode-builtin-extensions-1.108.2.tar.gz" |
-      .scripts.postinstall = "theia-patch"' >package.json
+  jq '.dependencies."react" = "^18.3.1" |
+      .dependencies."react-dom" = "^18.3.1" |
+      .devDependencies."@types/react" = "^18.3.0" |
+      .devDependencies."@types/react-dom" = "^18.3.0"' >package.json
 }
 
 build() {
