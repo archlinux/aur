@@ -1,6 +1,6 @@
 # Maintainer: matheus-git <mathiew0@gmail.com>
 pkgname=systemd-manager-tui
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A TUI for managing systemd services"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=()
 license=('MIT')
 makedepends=('git' 'cargo')
 source=("https://github.com/matheus-git/systemd-manager-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cac6ed6697499e4488aa9c62caa25aae932795032128884752d4600f8f049366')
+sha256sums=('3d548c1e0b4d9be98225446a98cb80613914e6dfe54db51d1e4e0465b8cc52b3')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
