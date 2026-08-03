@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=26.0.0.r8992.6ff4bf0
+pkgver=26.2.1.r9078.25d21cc
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -15,6 +15,7 @@ provides=('ffdec')
 conflicts=('ffdec')
 depends=(
   'java-runtime>=8'
+  'bash'
 )
 makedepends=(
   'ant'
@@ -23,13 +24,11 @@ makedepends=(
 )
 source=(
   "ffdec::git+$url#branch=dev"
-  'ffdec.sh'
   'ffdec.desktop'
 )
 b2sums=(
   'SKIP'
-  '27677dbabd3cae97e88872c72d6f9f26a32026f4f05b895e0ce5ae9597d0298bbdb9cabf48d3d130500c5fb6a6a0c00aecd84896b04f03b1d105eeb234ee414e'
-  '2881f0e50d97e96119efe873a418232f3e2445d7540c3b07e635081b248812ebda31ea4cb76a7eabf57827e0530bf3b66fc358000651a5c108c732d8b4912f92'
+  '8219c7198174dfd0ee66904a40cd448d43389dde9310e018d07a919590b603579bc8a0baf19361111a29706289f5f51939897a3ef60295ba5c4a7dc656133723'
 )
 
 pkgver() {
@@ -56,19 +55,21 @@ check() {
 package() {
   cd ffdec
 
-  install -Dm644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/$pkgname"
+  install -Dm0644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/$pkgname"
   for f in lib/*.jar; do
-    install -Dm644 "$f" -t "$pkgdir/usr/share/java/$pkgname/lib"
+    install -Dm0644 "$f" -t "$pkgdir/usr/share/java/$pkgname/lib"
   done
 
-  install -Dm755 "../ffdec.sh" "$pkgdir/usr/bin/ffdec"
+  install -Dm0755 "dist/ffdec.sh" "$pkgdir/usr/bin/ffdec"
 
-  install -Dm644 "../ffdec.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm0644 "../ffdec.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/ffdec.png"
+  install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/icons/hiciolor/512x512/apps/ffdec.png"
 
   for f in lib/*.license.txt; do
-    install -Dm644 "$f" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm0644 "$f" -t "$pkgdir/usr/share/licenses/$pkgname"
   done
-  install -Dm644 "resources/license.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 "resources/license.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 "dist/com.jpexs.decompiler.flash.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 }
 # vim: ts=2 sw=2 et:
