@@ -1,0 +1,13 @@
+pkgbase = clog
+	pkgdesc = High-Visibility Caddy Log Viewer
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/hellotimking/clog
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = go
+	source = clog-0.6.4.tar.gz::https://github.com/hellotimking/clog/archive/refs/tags/v0.6.4.tar.gz
+	sha512sums = 07199d9d3ff37228822d29b84579c1fecb97a9001fcc8ca99bac15920f7cef3fd6375091352364cb0dd7823a40b8ed366d70de314fd7b2ed938df41112b7749d
+
+pkgname = clog
