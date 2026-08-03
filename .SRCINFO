@@ -1,6 +1,6 @@
 pkgbase = gitr-bin
 	pkgdesc = A compact git commit graph viewer
-	pkgver = 0.4.17
+	pkgver = 0.4.19
 	pkgrel = 1
 	url = https://github.com/islandspan-solutions/gitr
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = gitr-bin
 	provides = gitr
 	conflicts = gitr
 	options = !strip
-	source = README-0.4.17.md::https://raw.githubusercontent.com/islandspan-solutions/gitr/v0.4.17/README.md
-	source = LICENSE-0.4.17::https://raw.githubusercontent.com/islandspan-solutions/gitr/v0.4.17/LICENSE
+	source = README-0.4.19.md::https://raw.githubusercontent.com/islandspan-solutions/gitr/v0.4.19/README.md
+	source = LICENSE-0.4.19::https://raw.githubusercontent.com/islandspan-solutions/gitr/v0.4.19/LICENSE
 	sha256sums = b7fcaf80ca80a9bfef3fbf6e4aa8e73a7ed03f0ab62824fdd3f70f4604e95acf
 	sha256sums = 1e04f95c77a24c83f64db09ff0ceec2cfe2eada73bd65bf5f205df013c79d99c
-	source_x86_64 = gitr-x86_64-0.4.17.tgz::https://github.com/islandspan-solutions/gitr/releases/download/v0.4.17/gitr-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 729b2cbdb627b36c8da21861ca52ae04904bcefbf9ce768e61fc02e613d2153c
+	source_x86_64 = gitr-x86_64-0.4.19.tgz::https://github.com/islandspan-solutions/gitr/releases/download/v0.4.19/gitr-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 25655d662a62c9d2edee332eebd92cf33289629d9e60157f42502b6072dc9141
 
 pkgname = gitr-bin
