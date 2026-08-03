@@ -1,7 +1,7 @@
 # Maintainer: Tomas Runz Jensen <tomasrj@outlook.dk>
 
 pkgname=pyrite64-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
@@ -15,16 +15,15 @@ install=pyrite64-bin.install
 source=(
     "https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb"
     "git+https://github.com/DragonMinded/libdragon.git#branch=preview"
-    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-linux-${pkgver//./_}.AppImage"
+    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-linux_${pkgver//./-}.zip"
     "git+https://github.com/HailToDodongo/tiny3d.git"
 )
-noextract=("pyrite64-linux-${pkgver//./_}.AppImage")
 # The gcc-toolchain .deb is a continuous-prerelease asset: upstream CI rebuilds
 # it and overwrites it in place at a fixed URL/tag, so any pinned checksum goes
 # stale and breaks the build. SKIP it like the moving git sources.
 sha512sums=('SKIP'
             'SKIP'
-            'd714caffc163853b257c8a5fcfd853524af881e6b44502acda08bead440911475d87b5a0dd3b2e9536e128e227b2815d5a5f9b7567f5d9cab014d5b8e0d68734'
+            'f5f5845c8d4b7da6d4ba9d3c852608e6fb0e0ec4eeca8a4ee827e237eaab73fa7c57f844a6da20636739e1731cdef5fcb86d248fcc640e90d1af34154e13a8c6'
             'SKIP')
 options=('!strip')
 
@@ -54,7 +53,7 @@ prepare() {
 
     msg2 "Extracting Pyrite64 AppImage..."
     rm -rf squashfs-root
-    local appimage="pyrite64-linux-${pkgver//./_}.AppImage"
+    local appimage="Pyrite64-x86_64.AppImage"
     if [ -f "$appimage" ]; then
         chmod +x "$appimage"
         "./$appimage" --appimage-extract >/dev/null
