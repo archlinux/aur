@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=pineapple-notepad-bin
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative"
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
     "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
 sha256sums=(
-    '4e900ff332a7d87f7d7459cfed10f4ebcb19f567b47b5f8aa1e0186fcce984d7'
-    '40b849dfbda234f2b84d4bcbeaba00d51e2e8c5714fb2043b0b007d9bb4e0b07'
+    '9a8ee052f4d9799c5e29c837940cc78c49a9c6e2fb1b649ee954289bb4f8400a'
+    '74af71e40370d7eebf418b665180a68201f12d61ed9b9d04625b295320e37615'
     'SKIP'
 )
 
@@ -42,13 +42,13 @@ package() {
     cd "$srcdir"
 
     # Extract deepin .deb for main binary and common files
-    mkdir deepin && cd deepin
+    mkdir -p deepin && cd deepin
     ar x "$srcdir/${pkgname}-${pkgver}-deepin.deb"
     tar xzf data.tar.gz
     cd "$srcdir"
 
     # Extract debian .deb for bundled libs (compatible with Arch Qt6)
-    mkdir debian && cd debian
+    mkdir -p debian && cd debian
     ar x "$srcdir/${pkgname}-${pkgver}-debian.deb"
     tar xzf data.tar.gz
     cd "$srcdir"
