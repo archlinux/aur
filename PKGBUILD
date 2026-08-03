@@ -6,7 +6,7 @@
 _pkgname=transcode
 pkgname="${_pkgname}"
 pkgver=1.1.7
-pkgrel=50
+pkgrel=51
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(
   'x86_64'
@@ -22,7 +22,7 @@ depends=(
   libasound.so      # Provided by 'alsa-lib'.
   libdvdread
   libdv
-  libfaac.so
+  libfaac.so        # Provided by 'faac'.
   libfreetype.so    # Provided by 'freetype2'.
   libjpeg.so        # Provided by 'libjpeg' or 'libjpeg-turbo'.
   libmp3lame.so
