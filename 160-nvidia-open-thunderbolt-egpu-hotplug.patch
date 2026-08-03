@@ -522,10 +522,58 @@ index 0201b95c..3951204f 100644
      struct drm_property *nv_input_colorspace_property;
  
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-index 8c2cf374..2a2663ae 100644
+index 8c2cf374..721cbb69 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-@@ -1227,6 +1227,27 @@ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
+@@ -496,6 +496,9 @@ static inline unsigned long NVKMS_USECS_TO_JIFFIES(NvU64 usec)
+ 
+ static struct semaphore nvkms_lock;
+ 
++/* Set while surprise-removal teardown owns nvkms_lock. */
++static NvBool nvkms_gpu_loss_lock_held;
++
+ /*************************************************************************
+  * User clients of NVKMS may need to be synchronized with suspend/resume
+  * operations.  This depends on the state of the system when the NVKMS
+@@ -1215,6 +1218,25 @@ NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware)
+ }
+ 
+ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
++{
++    nvidia_modeset_stack_ptr stack = NULL;
++    const NvBool gpu_loss_lock_held = READ_ONCE(nvkms_gpu_loss_lock_held);
++
++    if (__rm_ops.alloc_stack(&stack) != 0) {
++        return;
++    }
++
++    __rm_ops.close_gpu(gpuId, stack, reset_aware);
++
++    if (gpu_loss_lock_held) {
++        WRITE_ONCE(nvkms_gpu_loss_lock_held, NV_FALSE);
++        up(&nvkms_lock);
++    }
++
++    __rm_ops.free_stack(stack);
++}
++
++void nvkms_close_gpu_for_surprise_removal(NvU32 gpuId, NvBool reset_aware)
+ {
+     nvidia_modeset_stack_ptr stack = NULL;
+ 
+@@ -1222,11 +1244,38 @@ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
+         return;
+     }
+ 
++    /*
++     * User-space NVKMS ioctls hold nvkms_lock while they access NVDevEvo.
++     * Keep the removal close under the same lock so nvFreeDevEvo() cannot
++     * free the device while an ioctl still has a pointer to it.
++     */
++    down(&nvkms_lock);
+     __rm_ops.close_gpu(gpuId, stack, reset_aware);
++    up(&nvkms_lock);
+ 
      __rm_ops.free_stack(stack);
  }
  
@@ -535,16 +583,15 @@ index 8c2cf374..2a2663ae 100644
 +     * Mark the GPU as lost in NVKMS. This prevents hardware access
 +     * and cancels pending timers that might try to access the removed GPU.
 +     *
-+     * NOTE: We intentionally do NOT take nvkms_lock here because this function
-+     * may be called from contexts that already hold the lock (e.g., during
-+     * module unload). The gpuLost flag is a simple boolean that can be safely
-+     * written without a lock - any racing operation will either:
-+     * 1. See gpuLost=TRUE and bail out early
-+     * 2. See gpuLost=FALSE but hit the 0xFFFFFFFF check when reading hardware
-+     *
-+     * A memory barrier ensures the write is visible to other CPUs promptly.
++     * Take nvkms_lock before changing the state. This drains any ioctl that
++     * is already using the device and keeps the lock held until the matching
++     * nvkms_close_gpu() has released the final device reference.
 +     */
++    down(&nvkms_lock);
 +    nvKmsGpuLost(gpuId);
++
++    /* Make the matching nvkms_close_gpu() release this lock. */
++    WRITE_ONCE(nvkms_gpu_loss_lock_held, NV_TRUE);
 +
 +    /* Ensure gpuLost write is visible to other CPUs */
 +    smp_wmb();
@@ -554,7 +601,7 @@ index 8c2cf374..2a2663ae 100644
  {
      return __rm_ops.enumerate_gpus(gpu_info);
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-index a634ec2b..d6709b46 100644
+index a634ec2b..e38ac479 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 @@ -317,6 +317,12 @@ void* nvkms_get_per_open_data(int fd);
@@ -570,6 +617,11 @@ index a634ec2b..d6709b46 100644
  
  /*!
   * Enumerate nvidia gpus.
+@@ -393,4 +399,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+ void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
+ 
+ #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
+-
 diff --git a/kernel-open/nvidia-modeset/nvkms.h b/kernel-open/nvidia-modeset/nvkms.h
 index d350ef75..668fa8c2 100644
 --- a/kernel-open/nvidia-modeset/nvkms.h
@@ -1674,7 +1726,7 @@ index 51178eee..29da3a8f 100644
      funcsTable->grabOwnership    = GrabOwnership;
      funcsTable->releaseOwnership = ReleaseOwnership;
 diff --git a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-index a634ec2b..d6709b46 100644
+index a634ec2b..e38ac479 100644
 --- a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 +++ b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 @@ -317,6 +317,12 @@ void* nvkms_get_per_open_data(int fd);
@@ -1690,6 +1742,11 @@ index a634ec2b..d6709b46 100644
  
  /*!
   * Enumerate nvidia gpus.
+@@ -393,4 +399,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+ void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
+ 
+ #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
+-
 diff --git a/src/nvidia-modeset/os-interface/include/nvkms.h b/src/nvidia-modeset/os-interface/include/nvkms.h
 index d350ef75..668fa8c2 100644
 --- a/src/nvidia-modeset/os-interface/include/nvkms.h
@@ -2159,11 +2216,48 @@ index eea1fce5..7967b0d5 100644
      if (pChannel) {
          NvU32 sd;
  
+diff --git a/src/nvidia-modeset/src/nvkms-vblank-sem-control.c b/src/nvidia-modeset/src/nvkms-vblank-sem-control.c
+index 6c521518..4021f5c1 100644
+--- a/src/nvidia-modeset/src/nvkms-vblank-sem-control.c
++++ b/src/nvidia-modeset/src/nvkms-vblank-sem-control.c
+@@ -231,6 +231,16 @@ void nvEvoDisableVblankSemControl(
+     NVDevEvoRec *pDevEvo,
+     NVVblankSemControl *pVblankSemControl)
+ {
++    if (pDevEvo == NULL || pVblankSemControl == NULL) {
++        return;
++    }
++
++    /* No display hardware or RM teardown is valid after surprise removal. */
++    if (pDevEvo->gpuLost) {
++        nvFree(pVblankSemControl);
++        return;
++    }
++
+     NVDispEvoPtr pDispEvo = pDevEvo->pDispEvo[pVblankSemControl->dispIndex];
+ 
+     DisableVblankSemControl(pDispEvo, pVblankSemControl);
 diff --git a/src/nvidia-modeset/src/nvkms.c b/src/nvidia-modeset/src/nvkms.c
-index 133c38ea..67192e3f 100644
+index 133c38ea..062ac441 100644
 --- a/src/nvidia-modeset/src/nvkms.c
 +++ b/src/nvidia-modeset/src/nvkms.c
-@@ -1395,6 +1395,34 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
+@@ -295,6 +295,15 @@ static NvBool GetPerOpenDevAndDisp(
+         return FALSE;
+     }
+ 
++    /*
++     * Surprise removal invalidates the underlying device before its open
++     * handles are torn down. Reject late display ioctls rather than allowing
++     * them to dereference stale display state.
++     */
++    if (pOpenDev->pDevEvo == NULL || pOpenDev->pDevEvo->gpuLost) {
++        return FALSE;
++    }
++
+     pOpenDisp = nvEvoGetPointerFromApiHandle(&pOpenDev->dispHandles,
+                                              dispHandle);
+ 
+@@ -1395,6 +1404,34 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
  
      pDevEvo = nvFindDevEvoByDeviceId(pParams->request.deviceId);
  
@@ -2198,7 +2292,7 @@ index 133c38ea..67192e3f 100644
      if (pDevEvo == NULL) {
          pDevEvo = nvAllocDevEvo(&pParams->request, &pParams->reply.status);
          if (pDevEvo == NULL) {
-@@ -1603,6 +1631,24 @@ static void DisableRemainingVblankSemControls(
+@@ -1603,6 +1640,24 @@ static void DisableRemainingVblankSemControls(
  static void FreeDeviceReference(struct NvKmsPerOpen *pOpen,
                                  struct NvKmsPerOpenDev *pOpenDev)
  {
@@ -2223,7 +2317,7 @@ index 133c38ea..67192e3f 100644
      /* Disable all client-owned vblank sync objects that still exist. */
      DisableRemainingVblankSyncObjects(pOpen, pOpenDev);
  
-@@ -5333,6 +5379,31 @@ void nvRevokeDevice(NVDevEvoPtr pDevEvo)
+@@ -5333,6 +5388,31 @@ void nvRevokeDevice(NVDevEvoPtr pDevEvo)
      }
  }
  
@@ -2255,7 +2349,7 @@ index 133c38ea..67192e3f 100644
  /*!
   * Open callback.
   *
-@@ -6345,6 +6416,40 @@ static void FreeGlobalState(void)
+@@ -6345,6 +6425,40 @@ static void FreeGlobalState(void)
      nvClearDpyOverrides();
  }
  
@@ -2296,7 +2390,7 @@ index 133c38ea..67192e3f 100644
  /*
   * Wrappers to help SMG access NvKmsKAPI's RM context.
   */
-@@ -6440,6 +6545,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
+@@ -6440,6 +6554,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
  {
      NVDevEvoPtr pDevEvo = dataPtr;
  
@@ -2308,7 +2402,7 @@ index 133c38ea..67192e3f 100644
      if (pDevEvo->modesetOwner == NULL && pDevEvo->handleConsoleHotplugs) {
          pDevEvo->skipConsoleRestore = FALSE;
          nvEvoRestoreConsole(pDevEvo, TRUE /* allowMST */);
-@@ -6932,6 +7042,43 @@ void nvKmsResume(NvU32 gpuId)
+@@ -6932,6 +7051,43 @@ void nvKmsResume(NvU32 gpuId)
      }
  }
  
@@ -2812,7 +2906,7 @@ index 0ee595fc..ada1acd6 100644
      status = kgspExecuteBooterUnloadIfNeeded_HAL(pGpu, pKernelGsp,
                                                   _kgspGetBooterUnloadArgs(pKernelGsp, unloadMode));
 diff --git a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
-index 4da1151c..b4e45e63 100644
+index 4da1151c..fb3a210b 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
 @@ -139,6 +139,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
@@ -2906,6 +3000,22 @@ index 4da1151c..b4e45e63 100644
      // Report any GSP-FMC errors if needed
      gpuReportGspFmcErrorCode_HAL(pGpu);
  
+@@ -6612,10 +6656,12 @@ _kgspInitGpuProperties(OBJGPU *pGpu)
+ {
+     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
+ 
++    NvBool bIsExternalGpu = pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_EXTERNAL_GPU);
++
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_MOBILE, pGSCI->bIsMobile);
+-    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GC6_SUPPORTED, pGSCI->bIsGc6Rtd3Allowed);
+-    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GC8_SUPPORTED, pGSCI->bIsGc8Rtd3Allowed);
+-    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GCOFF_SUPPORTED, pGSCI->bIsGcOffRtd3Allowed);
++    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GC6_SUPPORTED, pGSCI->bIsGc6Rtd3Allowed && !bIsExternalGpu);
++    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GC8_SUPPORTED, pGSCI->bIsGc8Rtd3Allowed && !bIsExternalGpu);
++    pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GCOFF_SUPPORTED, pGSCI->bIsGcOffRtd3Allowed && !bIsExternalGpu);
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_UEFI, pGSCI->bIsGpuUefi);
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_EFI_INIT, pGSCI->bIsEfiInit);
+     pGpu->setProperty(pGpu, PDB_PROP_GPU_LEGACY_GCOFF_SUPPORTED, pGSCI->bIsGcoffLegacyAllowed);
 diff --git a/src/nvidia/src/kernel/gpu/intr/intr.c b/src/nvidia/src/kernel/gpu/intr/intr.c
 index caf9791c..f6e52049 100644
 --- a/src/nvidia/src/kernel/gpu/intr/intr.c

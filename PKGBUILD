@@ -12,7 +12,7 @@ pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
 pkgver=610.43.03
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches'
 arch=('x86_64')
@@ -34,7 +34,7 @@ sha256sums=('7e118923c7a23edc36114d63273a46e3e04e9af98695a42203e7ac2dfe9fc1dc'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
-        '5abff3ebc5dd78de8b50f83df004ca1a3b3569ed3c4a76ce263d0c8a32d20c8b'
+        'c37c546c9ed3622d9ad72b1ba9f65edd1c0968657f03ccde589f1d104a857a11'
         'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
         'f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb'
         '31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb')
@@ -51,6 +51,15 @@ prepare() {
     
     # Substitute version placeholder in dkms.conf
     sed -i "s/@@PKGVER@@/${pkgver}/" "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"
+
+    # Kbuild emits LLVM bitcode objects for ThinLTO kernels. Select the
+    # matching linker for each DKMS target while retaining GNU ld for kernels
+    # that do not use LLD.
+    if ! grep -q '^MAKE\[0\].* LD=' "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"; then
+        sed -i \
+            's| KERNEL_UNAME=${kernelver} modules"| LD=$(if grep -qs ^CONFIG_LD_IS_LLD=y /lib/modules/${kernelver}/build/.config; then echo ld.lld; else echo ld; fi) KERNEL_UNAME=${kernelver} modules"|' \
+            "NVIDIA-kernel-module-source-${pkgver}/kernel-open/dkms.conf"
+    fi
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -a "NVIDIA-kernel-module-source-${pkgver}/kernel-open" dkms-src
@@ -58,6 +67,7 @@ prepare() {
 
 build() {
     local -x KERNEL_UNAME
+    local _ld
     
     # allow usage of custom kernel and building in a chroot
     if [ -d "/usr/lib/modules/$(uname -r)" ]
@@ -68,7 +78,15 @@ build() {
     fi
     
     unset -v SYSSRC
-    make -C "NVIDIA-kernel-module-source-${pkgver}" modules
+
+    # Fix build issues with kernels that use ThinLTO (cachyos)
+    if grep -qs '^CONFIG_LD_IS_LLD=y' "/usr/lib/modules/${KERNEL_UNAME}/build/.config"; then
+        _ld=ld.lld
+    else
+        _ld=ld
+    fi
+
+    make -C "NVIDIA-kernel-module-source-${pkgver}" modules LD="${_ld}"
 }
 
 package_nvidia-open-egpu() {

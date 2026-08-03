@@ -1,7 +1,7 @@
 pkgbase = nvidia-open-egpu
 	pkgdesc = NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches
 	pkgver = 610.43.03
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = nvidia-open-egpu
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
 	sha256sums = 5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501
 	sha256sums = b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916
-	sha256sums = 5abff3ebc5dd78de8b50f83df004ca1a3b3569ed3c4a76ce263d0c8a32d20c8b
+	sha256sums = c37c546c9ed3622d9ad72b1ba9f65edd1c0968657f03ccde589f1d104a857a11
 	sha256sums = fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42
 	sha256sums = f502e8062d6458792a08d54479eb82d16592e1981e46f3e9e3838cd7a3bd03eb
 	sha256sums = 31a057be4dce6e4e9587adf317cf2ed9df1dd2968e1e2866bad4e9fd7a6f47eb
