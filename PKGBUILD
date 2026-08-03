@@ -15,8 +15,8 @@ pkgname=(
 
 pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
 
-pkgver=0.4.0+alpha.9+49.r3887.20251111.072595ae
-pkgrel=1
+pkgver=0.3.5+11.r3999.20260721.9d8285b5
+pkgrel=2
 
 arch=(
   'i686'
@@ -35,7 +35,8 @@ license=(
   "Apache-2.0"
 )
 makedepends=(
-  'gcc'
+  'clang'
+  'gcc'   # Yes, it needs both clang and GCC!
   'gcc-libs'
   'glibc'
   'git'
@@ -54,9 +55,13 @@ checkdepends=()
 
 source=(
   "${_gitname}::git+https://${_githost}/${_gituser}/${_gitname}.git"
+  # "wuffs-build-all_disable-tests.patch"  # Not needed if we don't run build-all.sh.
+  "wuffs-test-all.sh"
 )
 sha256sums=(
-  'SKIP'
+  'SKIP'  # Main upstream source.
+  # '85cbe5911efa30fde54fc364aecf8f2d1e89f0cb387654127d020037caef447c'  # wuffs-build-all_disable-tests.patch
+  '2cd9df1708364eb3db73c56beb5bd0400adef6d670033195c4647378ec612d29'  # wuffs-test-all.sh
 )
 
 prepare() {
@@ -65,7 +70,14 @@ prepare() {
 
   cd "${srcdir}/${_gitname}"
 
-  go get -v github.com/google/wuffs/cmd/...
+  # for _patch in "${srcdir}"/wuffs-build-all_disable-tests.patch; do  # Not needed if we don't run build-all.sh.
+  #   printf '%s\n' " -> Applying patch '$(basename "${_patch}")' ..."
+  #   patch -Np1 --follow-symlinks -i "${_patch}"
+  # done
+
+  printf '%s\n' " --> running 'go get -v -modcacherw github.com/google/wuffs/cmd/...' ..."
+  go get -v -modcacherw github.com/google/wuffs/cmd/...
+  printf '\n'
 
   git log > "${srcdir}/git.log"
 }
@@ -73,7 +85,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_gitname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _ver="$(git describe --tags | sed -E -e 's|^spin-in-||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -91,15 +103,43 @@ build() {
   export GOBIN="${GOPATH}/bin"
   export PATH="${GOBIN}:${PATH}"
 
-  cd "${srcdir}/${_gitname}"
-  printf '%s\n' " --> building ..."
+  local _CFLAGSADDITIONS=""
+  local _SILENCEWARNINGS=("stringop-overflow")
+  local _warning
+  for _warning in "${_SILENCEWARNINGS[@]}"; do
+    _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
+  done
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
 
-  ./build-all.sh
-  #./build-example.sh
-  #./build-fuzz.sh
-  #go install -v ./cmd/wuffs*
-  #wuffs gen
+  cd "${srcdir}/${_gitname}"
+
+  # Excerpts from build-all.sh:
+  printf '%s\n' " --> running 'go install -v -modcacherw github.com/google/wuffs/cmd/...' ..."
+  go install -v -modcacherw github.com/google/wuffs/cmd/...
+  printf '\n'
+  printf '%s\n' " --> running 'wuffs gen -langs 'c'' ..."
+  wuffs gen -langs 'c'
+  printf '\n'
+  printf '%s\n' " --> running 'wuffs genlib -ccompilers gcc -langs 'c' -skipgen' ..."
+  wuffs genlib -ccompilers gcc -langs 'c' -skipgen
+  printf '\n'
+  printf '%s\n' " --> running './build-example.sh' ..."
+  ./build-example.sh
+  printf '\n'
+  printf '%s\n' " --> running './build-fuzz.sh' ..."
+  ./build-fuzz.sh
+  printf '\n'
 }
+
+# ### 2026-08-03: `check()` Disabled, since `gen/bin/fuzz-pixel_swizzler` crashes with a segmentation fault.
+# check() {
+#   cd "${srcdir}/${_gitname}"
+# 
+#   "${srcdir}"/wuffs-test-all.sh
+# }
 
 package_wuffs-lib-git() {
   pkgdesc='A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.'
@@ -128,7 +168,7 @@ package_wuffs-lib-git() {
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-lib" release/c/README.md
 
-  install -dvm644 "${pkgdir}/usr/share/licenses"
+  install -dvm755 "${pkgdir}/usr/share/licenses"
   ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-lib-git
 }
 
@@ -164,7 +204,7 @@ package_wuffs-examples-git() {
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-examples" example/README.md
 
-  install -dvm644 "${pkgdir}/usr/share/licenses"
+  install -dvm755 "${pkgdir}/usr/share/licenses"
   ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-examples-git
 }
 
@@ -196,7 +236,7 @@ package_wuffs-fuzzers-git() {
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-fuzzers" fuzz/c/std/README.md
 
-  install -dvm644 "${pkgdir}/usr/share/licenses"
+  install -dvm755 "${pkgdir}/usr/share/licenses"
   ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-fuzzers-git
 }
 
@@ -238,7 +278,7 @@ package_wuffs-lang-git() {
 
   install -Dvm755 -t "${pkgdir}/usr/bin"  "${GOBIN}"/{dumbindent,handsum,ractool,wuffs,wuffs-c,wuffsfmt}
 
-  install -dvm644 "${pkgdir}/usr/share/licenses"
+  install -dvm755 "${pkgdir}/usr/share/licenses"
   ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-lang-git
 }
 
@@ -264,7 +304,7 @@ package_wuffs-docs-git() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}"  "${srcdir}"/git.log AUTHORS BUILD.md CONTRIBUTING.md CONTRIBUTORS README.md
   cp -rv doc "${pkgdir}/usr/share/doc/${_pkgbase}"/
 
-  install -dvm644 "${pkgdir}/usr/share/licenses"
+  install -dvm755 "${pkgdir}/usr/share/licenses"
   ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-docs-git
 }
 

@@ -1,0 +1,100 @@
+diff -rU1 wuffs.orig/build-all.sh wuffs/build-all.sh
+--- wuffs.orig/build-all.sh	2026-08-03 16:29:30.273178914 +0200
++++ wuffs/build-all.sh	2026-08-03 16:31:59.733176698 +0200
+@@ -78,48 +78,50 @@
+ 
+-echo "Running  gen/bin/example-crc32"
+-JSON_THINGS_CRC32=$(gen/bin/example-crc32 < test/data/json-things.formatted.json)
+-if [ "$JSON_THINGS_CRC32" != "cdcc7e35" ]; then
+-  echo "example-crc32 failed on json-things data"
+-  exit 1
+-fi
+-
+-# ----
+-
+-echo "Running  gen/bin/example-jsonptr"
+-JSON_THINGS_CRC32=$(gen/bin/example-jsonptr < test/data/json-things.unformatted.json | gen/bin/example-crc32)
+-if [ "$JSON_THINGS_CRC32" != "cdcc7e35" ]; then
+-  echo "example-jsonptr failed on json-things data"
+-  exit 1
+-fi
+-
+-# ----
+-
+-echo "Running  gen/bin/example-convert-to-nia"
+-set +e
+-script/print-nia-checksums.sh | \
+-    diff --unified test/nia-checksums-of-data.txt /dev/stdin
+-if [ $? != 0 ]; then
+-  echo "Unexpected change in test/nia-checksums-of-data.txt"
+-  exit 1
+-fi
+-set -e
+-
+-# ----
+-
+-echo "Running  gen/bin/example-mzcat"
+-set +e
+-script/print-mzcat-checksums.sh | \
+-    diff --unified test/mzcat-checksums-of-data.txt /dev/stdin
+-if [ $? != 0 ]; then
+-  echo "Unexpected change in test/mzcat-checksums-of-data.txt"
+-  exit 1
+-fi
+-set -e
+-
+-# ----
+-
+-for f in gen/bin/fuzz-*; do
+-  echo "Running  $f"
+-  $f test/data > /dev/null
+-done
++# ### Disabled tests here to not run them within the build process.
++# 
++# echo "Running  gen/bin/example-crc32"
++# JSON_THINGS_CRC32=$(gen/bin/example-crc32 < test/data/json-things.formatted.json)
++# if [ "$JSON_THINGS_CRC32" != "cdcc7e35" ]; then
++#   echo "example-crc32 failed on json-things data"
++#   exit 1
++# fi
++# 
++# # ----
++# 
++# echo "Running  gen/bin/example-jsonptr"
++# JSON_THINGS_CRC32=$(gen/bin/example-jsonptr < test/data/json-things.unformatted.json | gen/bin/example-crc32)
++# if [ "$JSON_THINGS_CRC32" != "cdcc7e35" ]; then
++#   echo "example-jsonptr failed on json-things data"
++#   exit 1
++# fi
++# 
++# # ----
++# 
++# echo "Running  gen/bin/example-convert-to-nia"
++# set +e
++# script/print-nia-checksums.sh | \
++#     diff --unified test/nia-checksums-of-data.txt /dev/stdin
++# if [ $? != 0 ]; then
++#   echo "Unexpected change in test/nia-checksums-of-data.txt"
++#   exit 1
++# fi
++# set -e
++# 
++# # ----
++# 
++# echo "Running  gen/bin/example-mzcat"
++# set +e
++# script/print-mzcat-checksums.sh | \
++#     diff --unified test/mzcat-checksums-of-data.txt /dev/stdin
++# if [ $? != 0 ]; then
++#   echo "Unexpected change in test/mzcat-checksums-of-data.txt"
++#   exit 1
++# fi
++# set -e
++# 
++# # ----
++# 
++# for f in gen/bin/fuzz-*; do
++#   echo "Running  $f"
++#   $f test/data > /dev/null
++# done
+ 

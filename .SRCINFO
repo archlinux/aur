@@ -1,7 +1,7 @@
 pkgbase = wuffs-git
 	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
-	pkgver = 0.4.0+alpha.9+49.r3887.20251111.072595ae
-	pkgrel = 1
+	pkgver = 0.3.5+11.r3999.20260721.9d8285b5
+	pkgrel = 2
 	url = https://github.com/google/wuffs
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = wuffs-git
 	arch = riscv64
 	license = MIT
 	license = Apache-2.0
+	makedepends = clang
 	makedepends = gcc
 	makedepends = gcc-libs
 	makedepends = glibc
@@ -26,7 +27,9 @@ pkgbase = wuffs-git
 	makedepends = zlib
 	makedepends = zstd
 	source = wuffs::git+https://github.com/google/wuffs.git
+	source = wuffs-test-all.sh
 	sha256sums = SKIP
+	sha256sums = 2cd9df1708364eb3db73c56beb5bd0400adef6d670033195c4647378ec612d29
 
 pkgname = wuffs-lib-git
 	pkgdesc = A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
@@ -34,7 +37,7 @@ pkgname = wuffs-lib-git
 	depends = wuffs-license
 	optdepends = python-pywuffs: For python binding.
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-lib=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-lib=0.3.5+11.r3999.20260721.9d8285b5
 	provides = libwuffs.so
 	provides = libwuffs.a
 	conflicts = wuffs-lib
@@ -49,7 +52,7 @@ pkgname = wuffs-examples-git
 	depends = xcb-util-renderutil
 	depends = wuffs-license
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-examples=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-examples=0.3.5+11.r3999.20260721.9d8285b5
 	conflicts = wuffs-examples
 
 pkgname = wuffs-fuzzers-git
@@ -58,7 +61,7 @@ pkgname = wuffs-fuzzers-git
 	depends = glibc
 	depends = wuffs-license
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-fuzzers=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-fuzzers=0.3.5+11.r3999.20260721.9d8285b5
 	conflicts = wuffs-fuzzers
 
 pkgname = wuffs-lang-git
@@ -69,13 +72,13 @@ pkgname = wuffs-lang-git
 	optdepends = libz.so: For 'ractool'.
 	optdepends = libzstd.so: For 'ractool'.
 	optdepends = wuffs-docs: For the documentation of this software.
-	provides = wuffs-lang=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = dumbindent=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = handsum=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = ractool=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = wuffs=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = wuffs-c=0.4.0+alpha.9+49.r3887.20251111.072595ae
-	provides = wuffsfmt=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-lang=0.3.5+11.r3999.20260721.9d8285b5
+	provides = dumbindent=0.3.5+11.r3999.20260721.9d8285b5
+	provides = handsum=0.3.5+11.r3999.20260721.9d8285b5
+	provides = ractool=0.3.5+11.r3999.20260721.9d8285b5
+	provides = wuffs=0.3.5+11.r3999.20260721.9d8285b5
+	provides = wuffs-c=0.3.5+11.r3999.20260721.9d8285b5
+	provides = wuffsfmt=0.3.5+11.r3999.20260721.9d8285b5
 	conflicts = wuffs-lang
 	conflicts = dumbindent
 	conflicts = handsum
@@ -92,7 +95,7 @@ pkgname = wuffs-docs-git
 	optdepends = wuffs-lang: The programming language this documentation is for.
 	optdepends = wuffs-examples: The example programmes this documentation is for.
 	optdepends = wuffs-fuzzers: The fuzzer programmes this documentation is for.
-	provides = wuffs-docs=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-docs=0.3.5+11.r3999.20260721.9d8285b5
 	conflicts = wuffs-docs
 
 pkgname = wuffs-license-git
@@ -103,5 +106,5 @@ pkgname = wuffs-license-git
 	optdepends = wuffs-lang: The programming language this license is for.
 	optdepends = wuffs-examples: The example programmes this license is for.
 	optdepends = wuffs-fuzzers: The fuzzer programmes this license is for.
-	provides = wuffs-license=0.4.0+alpha.9+49.r3887.20251111.072595ae
+	provides = wuffs-license=0.3.5+11.r3999.20260721.9d8285b5
 	conflicts = wuffs-license
