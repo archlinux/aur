@@ -1,0 +1,16 @@
+pkgbase = photoslop-git
+	pkgdesc = Photoslop – a simple image editor written in Python (git version)
+	pkgver = 0.1.0.r154.g3cadf94
+	pkgrel = 1
+	url = https://github.com/CryptoJones/Photoslop
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = uv
+	makedepends = python-installer
+	depends = python
+	depends = pyside6
+	source = git+https://github.com/CryptoJones/Photoslop.git
+	sha256sums = SKIP
+
+pkgname = photoslop-git
