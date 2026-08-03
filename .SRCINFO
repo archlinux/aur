@@ -1,7 +1,7 @@
 pkgbase = soto-player-community-unofficial-bin
-	pkgdesc = 非官方 - Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示
-	pkgver = 2.3.8
-	pkgrel = 10
+	pkgdesc = Soto Player-Community - 现代化跨平台桌面音乐播放器，支持丰富的歌词显示
+	pkgver = 2.3.9
+	pkgrel = 2
 	url = https://github.com/Krits03/Soto-Player-Community
 	arch = x86_64
 	license = AGPL-3.0
@@ -11,9 +11,9 @@ pkgbase = soto-player-community-unofficial-bin
 	depends = libnotify
 	optdepends = pipewire: 音频后端
 	optdepends = pulseaudio: 音频后端
-	source = soto-player-community-2.3.8-x64.tar.gz::https://github.com/Krits03/Soto-Player-Community/releases/download/v2.3.8/soto-player-community-2.3.8-x64.tar.gz
-	source = soto-player-community.png::https://github.com/Krits03/Soto-Player-Community/raw/v2.3.8/public/icons/favicon.png
-	sha256sums = 18cff7785283af5a6243df37f9596b2c892a2af2ee4c7594e6a9b2dc702d0f21
+	source = soto-player-community-2.3.9-x64.tar.gz::https://github.com/Krits03/soto-player-community-unofficial-bin-aur/releases/download/v2.3.9/soto-player-community-2.3.9-x64.tar.gz
+	source = soto-player-community.png::https://github.com/Krits03/soto-player-community-unofficial-bin-aur/releases/download/v2.3.9/favicon.png
+	sha256sums = 8ccbed9707e780c5be2e9e6e4a0bbc7e4785f783b0c6b1dd7217eb4cc3f962eb
 	sha256sums = f3f4f3f17b9ced4d6258f5ece1f76693f33ee7d5d2629efb56e4a6e071b1cd83
 
 pkgname = soto-player-community-unofficial-bin
