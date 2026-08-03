@@ -1,6 +1,6 @@
 pkgbase = anitrack-bin
 	pkgdesc = CLI/TUI companion for ani-cli with watch-progress tracking (prebuilt binary)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/MiguelRegueiro/anitrack-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = anitrack-bin
 	depends = gcc-libs
 	provides = anitrack
 	conflicts = anitrack
-	source = anitrack-v0.1.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MiguelRegueiro/anitrack-cli/releases/download/v0.1.8/anitrack-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 26d794a0e9c158a6f9cb2448112f1e02670ece609a7d211194165601fb7b7494
+	source = anitrack-v0.1.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MiguelRegueiro/anitrack-cli/releases/download/v0.1.9/anitrack-v0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4a50901c8f7fabe2db9eef181bf39567718a4826f6b5afbcae9129884f4d313a
 
 pkgname = anitrack-bin
