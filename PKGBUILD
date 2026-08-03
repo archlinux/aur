@@ -2,12 +2,13 @@
 
 pkgname=qpress-git
 _gitname="qpress"
-pkgver=20230507.r41.f9252a0
-pkgrel=3
-pkgdesc="qpress is a portable high-speed file archiver using QuickLZ designed to utilize fast storage systems"
+pkgver=20260802.r65.a147e28
+pkgrel=1
+pkgdesc='Portable high-speed file archiver using QuickLZ'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/PierreLvx/qpress"
-license=('GPL')
+# Upstream: GPL 1, 2 and 3 (LICENSE.GPL-* / readme.md)
+license=('GPL-1.0-only' 'GPL-2.0-only' 'GPL-3.0-only')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -17,12 +18,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}" || exit
-  # Fix for isatty()
-  sed -i 's|#include <sys/types.h>|#include <sys/types.h>\n  #include <unistd.h> // for isatty()|' qpress.cpp
   make
 }
 
-package(){
-    install -d "${pkgdir}/usr/bin/"
-    install "${srcdir}/${_gitname}/qpress" "${pkgdir}/usr/bin/"
+package() {
+  cd "${srcdir}/${_gitname}" || exit
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  install -Dm644 LICENSE.GPL-1.0 LICENSE.GPL-2.0 LICENSE.GPL-3.0 \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
