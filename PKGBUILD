@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scopebuddy
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Manager script to make Gamescope easier to use on desktop"
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=(
   'libkscreen: Display detection via kscreen-doctor on Plasma'
   'libnotify: Last resort fallback error dialog'
   'wlr-randr: Display detection with wlroots compositors'
-  'xorg-xmessage: Fallback error dialog for basic X11 systems' 
+  'xorg-xmessage: Fallback error dialog for basic X11 systems'
   'zenity: Error dialog on GTK-based systems'
 )
 source=("ScopeBuddy-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('86462889f9fc90c0235c6e9d8950acc02b7ac15f2efbc4d37ac7c2e739c9f564')
+sha256sums=('151eaaee947aa3cdcd0cc8bc02269b127efee4be3cbcf8cbc395efb7678bee7b')
 
 package() {
   cd "ScopeBuddy-$pkgver"
