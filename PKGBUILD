@@ -4,30 +4,33 @@ pkgbase='zl-splitter'
 pkgname=('zl-splitter-vst3' 'zl-splitter-lv2' 'zl-splitter')
 groups=('zl-audio' 'pro-audio')
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 options=()
 pkgdesc="Sidechain and oversample capable splitter plugin by ZL Audio"
 arch=('x86_64')
 url="https://zl-audio.github.io/plugins/zlsplitter/"
 license=('AGPL-3.0')
 depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli')
-makedepends=('git' 'cmake' 'kfr' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
+makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
 source=("git+https://github.com/ZL-Audio/ZLSplitter#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/JUCE#tag=542dcc3")
+		"git+https://github.com/ZL-Audio/JUCE#tag=542dcc3"
+		"git+https://github.com/ZL-Audio/kfr#tag=9a35250")
 sha256sums=('04031f27982ab58b341a5beb496b52a4f905cb9cf8349904af18192256a795a9'
-            '9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659')
+            '9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659'
+            '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213')
 
 prepare() {
 	cd ZLSplitter
 	
 	git submodule init
 	git config submodule."JUCE".url "${srcdir}/JUCE"
+	git config submodule."kfr".url "${srcdir}/kfr"
 	git -c protocol.file.allow=always submodule update JUCE kfr
 
 
-    # Use system kfr
-    sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
+    # Use system kfr (currently broken)
+    #sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
 }
 
 build() {
@@ -37,6 +40,7 @@ build() {
 
 	cmake -B Builds \
 	     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
+	     -DKFR_ENABLE_MULTIARCH=ON -DKFR_ENABLE_DFT=ON \
 	     -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" .
 
 	make -C Builds
