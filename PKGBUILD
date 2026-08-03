@@ -3,7 +3,7 @@
 _pkgname=torchao
 pkgname=python-${_pkgname}-rocm
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Package for applying ao techniques to GPU models (with ROCm/HIP support)"
 arch=(x86_64)
 url="https://pytorch.org/ao/stable/index.html"
@@ -30,6 +30,8 @@ sha256sums=('f88bf64047098aff40512287a2574800c3dec19b3cfab23b42e1b192dfa96420')
 prepare() {
     cd "${_pkgname}-${pkgver}"
     git submodule update --init --recursive
+    # ROCm's host_defines.h defines __noinline__ as empty, breaking libstdc++ 16 <format> [[__gnu__::__noinline__]]
+    sed -i '/#include <hipblaslt\/hipblaslt-ext.hpp>/a #undef __noinline__' torchao/csrc/rocm/swizzle/swizzle.cpp
 }
 
 build() {
@@ -55,9 +57,8 @@ build() {
     export ROCM_PATH="$ROCM_HOME"
     export HIP_ROOT_DIR="$ROCM_HOME"
 
-    # Fix glog header conflict: directly satisfy the !defined(GLOG_EXPORT) check
-    # used by glog 0.7.0+ when not using CMake or when GLOG_USE_GLOG_EXPORT is missing.
-    export CXXFLAGS="${CXXFLAGS} -DGLOG_USE_GLOG_EXPORT -DGLOG_EXPORT= -DGLOG_NO_EXPORT="
+    # Fix glog header conflict and GCC 16 format header template-body error
+    export CXXFLAGS="${CXXFLAGS} -DGLOG_USE_GLOG_EXPORT -DGLOG_EXPORT= -DGLOG_NO_EXPORT= -Wno-template-body -Wno-error=template-body"
     export CFLAGS="${CFLAGS} -DGLOG_USE_GLOG_EXPORT -DGLOG_EXPORT= -DGLOG_NO_EXPORT="
     export LDFLAGS="${LDFLAGS}"
 
