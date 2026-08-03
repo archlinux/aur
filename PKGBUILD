@@ -15,7 +15,7 @@ makedepends=('git')
 depends=('hicolor-icon-theme')
 optdepends=('adwaita-icon-theme: for better GNOME integration'
             'breeze-icons: for better KDE integration')
-provides=(tela-circle-icon-theme)
+provides=('tela-circle-icon-theme')
 options=(!strip !debug)
 source=("git+${url}.git")
 b2sums=('SKIP')
@@ -29,7 +29,7 @@ pkgver() {
 package_tela-circle-icon-theme-all-git() {
   pkgdesc="${pkgdesc} (all variants)"
   depends=("${_pkgname[@]/%/-git}")
-  conflicts=(tela-circle-icon-theme-all)
+  conflicts=('tela-circle-icon-theme-all')
 }
 
 _package() (
