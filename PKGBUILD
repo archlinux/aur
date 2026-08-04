@@ -1,19 +1,18 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=bilihud-git
 _pkgname=bilihud
-pkgver=0.3.0.r0.gIT_REV_Here
+pkgver=0.5.2.r0.g0000000
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/locez/bilihud"
 license=('MIT')
 depends=(
-    'python>=3.10'
+    'python>=3.13'
     'python-pyqt6'
     'python-aiohttp'
     'python-qasync'
     'python-brotli'
-    'python-browser-cookie3' # AUR
     'python-pure-protobuf' # AUR
     'python-qrcode'
     'python-keyring'
@@ -26,9 +25,11 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
-    'python-hatchling'
-    'python-hatch-build-scripts' # Needed for custom build hook
-    'python-wheel'
+    'python-scikit-build-core'
+    'cmake'
+    'ninja'
+    'gcc'
+    'pkgconf'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -38,11 +39,8 @@ sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    # Extract version from pyproject.toml
     local _ver
-    _ver=$(grep -m1 'version =' pyproject.toml | cut -d '"' -f2)
-    # If fails, default to 0.0.0
-    if [ -z "$_ver" ]; then _ver=0.0.0; fi
+    _ver=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])') || return 1
     
     printf "%s.r%s.g%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -56,12 +54,19 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation -Ccmake.define.BILIHUD_LAYER_SHELL=ON
 }
 
 package() {
     cd "$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    local _bridge
+    _bridge=$(find "$pkgdir" -type f -name 'libbili-layer.so' -print -quit)
+    if [[ -z "$_bridge" ]]; then
+        error "Layer Shell bridge was not installed"
+        return 1
+    fi
 
     # Install desktop entry and icon if available
     if [ -f bilihud.desktop ]; then
