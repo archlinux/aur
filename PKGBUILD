@@ -2,7 +2,7 @@
 
 pkgname=hypr-kblayoutd-git
 _pkgname=hypr-kblayoutd
-pkgver=0.2.0.r0.g35f3e7f
+pkgver=0.3.0.r0.g0299bb9
 pkgrel=1
 pkgdesc="Small Hyprland daemon that remembers keyboard layout per window"
 arch=('x86_64' 'aarch64')
