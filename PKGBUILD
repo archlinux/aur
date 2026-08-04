@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=ixgo
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="The Go/XGo Interpreter"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('igop')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3e3902b9b43bdadcd53e6ce5a5158184e27efa315e35371ea2297226b5598d6f')
+sha256sums=('f9afaeba526e6de667087aabd8110653693a55cce9f8599c787b25c7a21c5858')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
