@@ -1,6 +1,6 @@
 # Maintainer: YOUNES-2-wq <YOUNES-2-wq@users.noreply.github.com>
 pkgname=cachymonitor
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Gaming-oriented system monitor: FPS, 1% low, frametime, CPU/GPU/RAM/VRAM via MangoHud"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('mangohud: in-game stats (FPS, 1% low, frametime)'
             'pciutils: GPU marketing name via lspci'
             'dmidecode: RAM type and speed (requires root)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7889700deff550585caa9714268ec95e4c8e6284e2e795452b4c42f2d68ccba9')
+sha256sums=('6634ba95ab6fd7a59469fcf4765b805da23061ef89143b6854a54a8f9c58d916')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
