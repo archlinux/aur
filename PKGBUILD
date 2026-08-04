@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=distroshelf
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A GUI for Distrobox Containers"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
   'meson'
 )
 source=("DistroShelf-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9053e0bb9db3d40cf8d4890091b17327bb336a60facbbe6ce642e209815e0a8')
+sha256sums=('d358762ddb6572209531d94d4350bc37a934e5f53752fac9c8f34dda03cc0a5e')
 
 prepare() {
   cd "DistroShelf-$pkgver"
