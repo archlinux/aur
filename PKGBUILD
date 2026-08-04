@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
