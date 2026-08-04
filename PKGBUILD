@@ -1,66 +1,156 @@
-# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
-# https://github.com/brokenpip3/my-pkgbuilds
+# Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
+# Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 # Contributor: Kris Nóva <kris@nivenly.com> R.I.P.
 
-pkgbase=falco
-pkgname=falco
-provides=(falco)
-conflicts=(falco-bin)
-backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
-pkgver=0.40.0
-pkgrel=1
-pkgdesc="Cloud native runtime security. Modern ebpf and config files"
-arch=(x86_64)
-license=(Apache)
-makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm nlohmann-json cpp-httplib cxxopts)
-optdepends=(
-    "falco-probe-ebpf: ebpf probe"
-    "falco-module-dkms: dkms module"
-    "falcoctl: administrative tooling for Falco"
-    "falcosidekick: connect Falco to your ecosystem"
-)
-url="https://github.com/falcosecurity/falco"
-_rules_tag="falco-rules-3.2.0"
-source_x86_64=(
-    "falco-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
-    "falco-modern-bpf.service"
-)
-sha256sums_x86_64=('8009dc87263ebd9c55811ef2f90f0a4c0faf494baef1edf1f91c83d701e751f1'
-                   'e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c'
-                   '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
+pkgname='falco'
+pkgver='0.44.1'
+_rules_ver='5.1.0'
+_libs_ver='0.25.4'
+_driver_ver='10.2.0'
+_ctl_ver='0.13.0'
+pkgrel='1'
+pkgdesc='Falco is a cloud native runtime security tool for Linux operating systems'
+arch=('x86_64' 'aarch64')
+url="https://${pkgname}.org/"
+_uri="github.com/${pkgname}security"
+license=('Apache2.0')
+depends=('curl' 'zlib' 'jsoncpp>=1.9.5' 'libssh2' 'e2fsprogs' 're2' 'onetbb>=2022.1.0' 'yaml-cpp>=0.9.0' 'libbpf' 'libelf' 'openssl' 'brotli')
+makedepends=('cmake' 'cxxopts>=3.3.1' 'clang' 'jemalloc' 'go>=1.25.7' 'git' 'bpf' 'gperftools' 'cpp-httplib>=0.23.1' 'nlohmann-json>=3.11.3' 'uthash>=1.9.8' 'valijson>=1.0.2')
+checkdepends=('cppcheck')
+backup=("etc/${pkgname}/${pkgname}.yaml"
+        "etc/${pkgname}/${pkgname}_rules.yaml")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/${pkgver}"
+	"rules-${_rules_ver}.tar.gz::https://codeload.${_uri}/rules/tar.gz/refs/tags/${pkgname}-rules-${_rules_ver}"
+	"libs-${_libs_ver}.tar.gz::https://codeload.${_uri}/libs/tar.gz/refs/tags/${_libs_ver}"
+	"libs-${_driver_ver}-driver.tar.gz::https://codeload.${_uri}/libs/tar.gz/refs/tags/${_driver_ver}+driver"
+	"${pkgname}ctl-${_ctl_ver}.tar.gz::https://codeload.${_uri}/${pkgname}ctl/tar.gz/refs/tags/v${_ctl_ver}"
+	"${pkgname}.service")
+sha256sums=('661d0dc62f0eb82352f8b176e423bd34fdc44ca4c98b3f329fd73d984f0c50f5'
+            '8b1a9e61030e88ca3e8727cfe20bab8f662d6e2e6b13178e2be57d38e025af24'
+            '272a5a0c05e7c10a658ed9649023e6179061a4ab29e012602893586ac64b5938'
+            '0e585f5fc2b76696ef2cb902f0901ea39a2f2df87e1f091f3348f968b9085f39'
+            '804a37e6372201ee21d3bc99ffea6079484b557ece0aa17719dbc6e8cb2b5fec'
+            '7b724de183e1eed74765f7926320e892642fcca2fce927ef65c405fa6d589454')
 
 prepare() {
-    cd "${srcdir}/falco-${pkgver}"
-    [[ -d build ]] || mkdir build
-    [[ -d skeleton ]] || mkdir skeleton
-    cd skeleton
-    cmake .. -DUSE_BUNDLED_DEPS=false \
-        -DBUILD_FALCO_MODERN_BPF=ON \
-        -DCREATE_TEST_TARGETS=Off \
-        -DFALCO_VERSION=${pkgver}
-    make ProbeSkeleton
+  export GOPATH="${srcdir}/gopath"
+  export GOBIN="${GOPATH}/bin"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
+  export GOTMPDIR="${GOPATH}/tmp"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
+  mkdir -p "${GOPATH}/src/${_uri}"
+  mkdir -p "${GOPATH}/tmp"
+  ln -snf "${srcdir}/${pkgname}ctl-${_ctl_ver}" "${GOPATH}/src/${_uri}/${pkgname}ctl"
+
+  # Use distro FORTIFY_SOURCE
+  sed --in-place \
+    --expression 's|-D_FORTIFY_SOURCE=2||g' \
+    "${pkgname}-${pkgver}/cmake/modules/CompilerFlags.cmake"
+
+  # Do not listen 0.0.0.0/0 by default!
+  sed --in-place \
+    --expression 's|listen_address: 0.0.0.0|listen_address: 127.0.0.1|g' \
+    "${pkgname}-${pkgver}/${pkgname}.yaml"
+
+  cmake -B "skeleton-build" -S "${pkgname}-${pkgver}" \
+    -Wno-author \
+    -D CMAKE_BUILD_TYPE="Release" \
+    -D FETCHCONTENT_FULLY_DISCONNECTED=On \
+    -D DRIVER_SOURCE_DIR="${srcdir}/libs-${_driver_ver}-driver/driver" \
+    -D DRIVER_VERSION="${_driver_ver}" \
+    -D FALCOSECURITY_LIBS_SOURCE_DIR="${srcdir}/libs-${_libs_ver}" \
+    -D FALCOSECURITY_LIBS_VERSION="${_libs_ver}" \
+    -D FALCOSECURITY_RULES_FALCO_PATH="${srcdir}/rules-${pkgname}-rules-${_rules_ver}/rules/${pkgname}_rules.yaml" \
+    -D USE_BUNDLED_DEPS=Off \
+    -D USE_BUNDLED_CPPHTTPLIB=Off \
+    -D USE_BUNDLED_DRIVER=Off \
+    -D USE_BUNDLED_JSONCPP=Off \
+    -D USE_BUNDLED_LIBBPF=Off \
+    -D USE_BUNDLED_LIBELF=Off \
+    -D USE_BUNDLED_MODERN_BPF=Off \
+    -D USE_BUNDLED_NLOHMANN_JSON=Off \
+    -D USE_BUNDLED_OPENSSL=Off \
+    -D USE_BUNDLED_RE2=Off \
+    -D USE_BUNDLED_TBB=Off \
+    -D USE_BUNDLED_UTHASH=Off \
+    -D USE_BUNDLED_VALIJSON=Off \
+    -D USE_BUNDLED_YAMLCPP=Off \
+    -D USE_BUNDLED_ZLIB=Off \
+    -D USE_BUNDLED_GTEST=Off \
+    -D USE_BUNDLED_JEMALLOC=Off \
+    -D BUILD_DRIVER=Off \
+    -D USE_JEMALLOC=Off \
+    -D BUILD_FALCO_MODERN_BPF=On \
+    -D FALCO_VERSION="${pkgver}"
+    cmake --build "skeleton-build" --target "ProbeSkeleton"
 }
 
 build() {
-    cd "${srcdir}/falco-${pkgver}/build"
-    cmake .. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_BUNDLED_DEPS=false \
-        -DBUILD_FALCO_MODERN_BPF=ON \
-        -DMODERN_BPF_SKEL_DIR=${srcdir}/falco-${pkgver}/skeleton/skel_dir \
-        -DBUILD_DRIVER=Off \
-        -DBUILD_BPF=Off \
-        -DFALCO_VERSION=${pkgver}
-    make falco -j6
+  cmake -B "build" -S "${pkgname}-${pkgver}" \
+    -Wno-author \
+    -D CMAKE_BUILD_TYPE="Release" \
+    -D FETCHCONTENT_FULLY_DISCONNECTED=On \
+    -D DRIVER_SOURCE_DIR="${srcdir}/libs-${_driver_ver}-driver/driver" \
+    -D DRIVER_VERSION="${_driver_ver}" \
+    -D FALCOSECURITY_LIBS_SOURCE_DIR="${srcdir}/libs-${_libs_ver}" \
+    -D FALCOSECURITY_LIBS_VERSION="${_libs_ver}" \
+    -D FALCOSECURITY_RULES_FALCO_PATH="${srcdir}/rules-${pkgname}-rules-${_rules_ver}/rules/${pkgname}_rules.yaml" \
+    -D USE_BUNDLED_DEPS=Off \
+    -D USE_BUNDLED_CPPHTTPLIB=Off \
+    -D USE_BUNDLED_DRIVER=Off \
+    -D USE_BUNDLED_JSONCPP=Off \
+    -D USE_BUNDLED_LIBBPF=Off \
+    -D USE_BUNDLED_LIBELF=Off \
+    -D USE_BUNDLED_MODERN_BPF=Off \
+    -D USE_BUNDLED_NLOHMANN_JSON=Off \
+    -D USE_BUNDLED_OPENSSL=Off \
+    -D USE_BUNDLED_RE2=Off \
+    -D USE_BUNDLED_TBB=Off \
+    -D USE_BUNDLED_UTHASH=Off \
+    -D USE_BUNDLED_VALIJSON=Off \
+    -D USE_BUNDLED_YAMLCPP=Off \
+    -D USE_BUNDLED_GPERFTOOLS=Off \
+    -D USE_BUNDLED_ZLIB=Off \
+    -D USE_BUNDLED_GTEST=Off \
+    -D USE_BUNDLED_JEMALLOC=Off \
+    -D CMAKE_INSTALL_PREFIX="/usr" \
+    -D CMAKE_INSTALL_LIBDIR="lib" \
+    -D MODERN_BPF_SKEL_DIR="${srcdir}/skeleton-build/skel_dir" \
+    -D BUILD_FALCO_UNIT_TESTS=Off \
+    -D ENABLE_BENCHMARKS=Off \
+    -D BUILD_DRIVER=Off \
+    -D USE_JEMALLOC=Off \
+    -D BUILD_FALCO_MODERN_BPF=On \
+    -D USE_GPERFTOOLS=On \
+    -D ADD_FALCOCTL_DEPENDENCY=Off \
+    -D FALCO_VERSION="${pkgver}"
+  cmake --build "build" --target "falco"
+
+  cd "${GOPATH}/src/${_uri}/${pkgname}ctl"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
+  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
+  go build \
+    -buildmode="pie" \
+    -trimpath \
+    -mod="readonly" \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+    -X ${_uri}/${pkgname}ctl/cmd/version.semVersion=${_ctl_ver} \
+    -X ${_uri}/${pkgname}ctl/cmd/version.gitCommit=$(git rev-parse HEAD) \
+    -X ${_uri}/${pkgname}ctl/cmd/version.buildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
+}
+
+check() {
+  cmake --build "build" --target "cppcheck"
+  cd "${GOPATH}/src/${_uri}/${pkgname}ctl"
+  TMPDIR="${GOPATH}/tmp" go test -modcacherw -cover ./...
 }
 
 package() {
-    install -Dm755 "${srcdir}/falco-${pkgver}/build/userspace/falco/falco" "${pkgdir}/usr/bin/falco"
-    install -Dm644 "${srcdir}/falco-${pkgver}/falco.yaml" "${pkgdir}/etc/falco/falco.yaml"
-    install -Dm644 "${srcdir}/rules/rules/falco_rules.yaml" "${pkgdir}/etc/falco/falco_rules.yaml"
-    install -d "${pkgdir}/etc/falco/rules.d"
-    sed -i 's#probe: ${HOME}/.falco/falco-bpf.o#probe: /usr/share/falco/falco-bpf.o#' "${pkgdir}/etc/falco/falco.yaml"
-    install -Dm644 "falco-modern-bpf.service" "${pkgdir}/usr/lib/systemd/system/falco-modern-bpf.service"
+  DESTDIR="${pkgdir}" cmake --install "build" --config "release"
+  install -Dm0644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+  # Some compiled stuff from Internet
+  rm -rf "${pkgdir}/usr/share/${pkgname}/plugins"
 }
