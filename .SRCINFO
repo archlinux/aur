@@ -1,0 +1,18 @@
+pkgbase = varac-bin
+	pkgdesc = VarAC - HF digital chat messenger for amateur radio (Wine)
+	pkgver = 15.0.18
+	pkgrel = 1
+	url = https://www.varac-hamradio.com
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = wine
+	optdepends = winetricks: additional Wine configuration tools
+	source = varac-bin-15.0.18.zip::https://varac-hamradio.com/download-varac-zip-package
+	source = varac.sh
+	source = varac.desktop
+	sha256sums = e8ea382a80bbea70ef9a03e16e949ebdf7da2906518479e14919b4b032e0dab0
+	sha256sums = 7a38c8789f2f6ebfff3744da6441c7af3ebc6683afb00172168814f8af7c795d
+	sha256sums = 7130bf3b7909806121827ec11eca6469c2d20e9e8773615f3bfff8e0502192b6
+
+pkgname = varac-bin

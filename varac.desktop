@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VarAC
+Comment=HF digital chat messenger for amateur radio
+Exec=varac %F
+Type=Application
+Terminal=false
+Icon=varac
+Categories=Network;HamRadio;
