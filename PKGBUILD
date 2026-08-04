@@ -12,9 +12,10 @@ pkgdesc="VarAC - HF digital chat messenger for amateur radio (Wine)"
 arch=('x86_64')
 url="https://www.varac-hamradio.com"
 license=('custom')
-depends=('wine')
+depends=('wine' 'wine-mono')
 makedepends=('unzip')
-optdepends=('winetricks: additional Wine configuration tools')
+optdepends=('winetricks: additional Wine configuration tools'
+            'vara-hf: VARA HF modem (must be installed separately and authorized)')
 source=("$pkgname-$pkgver.zip::https://varac-hamradio.com/download-varac-zip-package"
         "varac.sh"
         "varac.desktop")
