@@ -8,6 +8,7 @@ post_install() {
     echo '     systemctl disable getty@tty1.service'
     echo ':: Then enable the login manager:'
     echo '     systemctl enable velogin.service'
+    echo ' reboot afterwards or it wont work'
 }
 
 post_upgrade() {
