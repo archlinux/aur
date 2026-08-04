@@ -1,7 +1,7 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 # Maintainer: Michael Eischer <michael.eischer@inovex.de>
 pkgname=stackit-cli
-_pkgver=0.67.0
+_pkgver=0.68.0
 pkgver=$(tr -d '-' <<<${_pkgver})
 pkgrel=1
 epoch=
@@ -39,4 +39,4 @@ package() {
   ./stackit completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/stackit.fish"
 }
 
-sha256sums=('eeaa6400948f02180caf04470bdc0c700b7843e2365a71f5e51332f65e33bff9')
+sha256sums=('d0af3f753f2509c9ff25c11710bb5e1e01ffc325b87706a608c70ad4b86eed9d')
