@@ -5,7 +5,7 @@
 
 pkgname=openclaw
 pkgver=2026.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-channel AI gateway with extensible messaging integrations'
 arch=(x86_64 aarch64)
 url=https://github.com/openclaw/openclaw
@@ -25,8 +25,8 @@ optdepends=(
     'uv: nano-pdf skill'
     'go: for installing skill tools not packaged for Arch'
 )
-source=($pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver-1.tgz)
-sha256sums=(f18080a221d4e43e0426d60b2c9883a430fdb9bf17b0ba11edad2cb44c1eaade)
+source=($pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver-2.tgz)
+sha256sums=(5bb525f36f471a41239615d321c441778c7e1c007018ed6d84b795be77803276)
 options=(!debug !strip)
 install=$pkgname.install
 noextract=($pkgname-$pkgver.tgz)
