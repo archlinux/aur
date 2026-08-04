@@ -1,13 +1,13 @@
 pkgbase = r-renv
 	pkgdesc = A dependency management toolkit for R
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=renv
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = r>=3.1
-	source = https://cran.r-project.org/src/contrib/renv_1.2.3.tar.gz
-	sha256sums = f462b55ace5436b6bed18e01ac1267649fc196ad8505f55c8546704eda104bfb
+	source = https://cran.r-project.org/src/contrib/renv_1.2.4.tar.gz
+	sha256sums = e63c637dc785d55848d9dbc6c9599378103803efd47c1f3f1f82057c00575e8c
 
 pkgname = r-renv
