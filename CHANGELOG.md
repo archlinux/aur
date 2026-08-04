@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+If this project saves you or your company time, consider [sponsoring](https://github.com/sponsors/plrigaux) ongoing maintenance.
+
 ## [Unreleased]
+
+## [2.20.9] - 2026-08-04
+
+### Added
+- Mention __p-bo__  in the acknowledgements
+
+### Changed
+- CS translation
 
 ## [2.20.8] - 2026-08-01
 
