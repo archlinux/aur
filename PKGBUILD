@@ -1,6 +1,6 @@
-# Maintainer: acuteenvy
+# Maintainer: Lena Pastwa <aur@lnps.me>
 pkgname=shstatus
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A simple statusline generator for i3bar and swaybar"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'wireplumber: show pipewire volume'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('181b5c21194831e9c646d5fe8422bf4fe3a416cdc1215e0d16826809ff9b34ad2b6bc699bedb335231520a463bfbc357639051dd0aab3fec1c0a20731fa4f99e')
+b2sums=('b6f24a165a51cad5e28d8dfe0146451eec22bb14e0113fad55c7e2fbe34939d9fcc87e76dfefd3b1708185706cc2038a012f26b36b58c66167a70d7a54105085')
 
 package() {
     cd "$pkgname-$pkgver"
