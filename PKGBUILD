@@ -2,8 +2,8 @@
 # Contributor (former maintainer): David Runge <dvzrv@archlinux.org>
 
 pkgname=molecule-plugins
-pkgver=25.8.12
-pkgrel=3
+pkgver=26.7.15
+pkgrel=0
 pkgdesc="Collection of molecule plugins"
 arch=(any)
 url="https://github.com/ansible-community/molecule-plugins"
@@ -61,8 +61,8 @@ replaces=(
 source=(
   $url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
 )
-sha512sums=('c8cf15d9f0465fe58f62ec7df831fc5ede5b19e6dbf7f8abd740fae325b72de24d2ecafea6c092c49a6ee98e24fd1e162f3845db067eb3ac14c8f234743c6290')
-b2sums=('f84abc1b8b9ac9508d8a26b64a0f412a6eaac39bbda39500e812cebef30865454e3ae1c3b425d17bccadacf950cc8f23eaadf59f2b9c119f9e0b6e03d12eb9be')
+sha512sums=('3ee6741f4621f3b5d571aa9c655968e447d26a1805a5e5bc0e27bd0301a0b3980a2594cd3299e900512e44864081efdda8349096d7e8e2cec1302bc9184a6826')
+b2sums=('95c3aa2fe07e026bbb9bab962d92cdd052abdf57461770b9d615f2712926bbfe0d49df056be78062954854054d5f04a1e2169b23cd2f800661a5601f2cf82ae3')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
