@@ -44,9 +44,9 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 sha256sums=('f8feb395d965ce7dcf50ea0f51d5f2ce86a912db0a6cc0e723e57cb3629da8e3')
 
 prepare() {
-    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
-    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
 }
 
 build() {
