@@ -1,14 +1,14 @@
 pkgbase = cty
 	pkgdesc = The package represents databases of entities (countries), prefixes and callsigns that are used by amateur (ham) radio logging software - CONTESTING VERSION.
-	pkgver = 3604
+	pkgver = 3626
 	pkgrel = 1
 	url = http://www.country-files.com/cty
 	arch = any
 	license = GPL-3.0-only
 	provides = cty
 	conflicts = bigcty
-	source = http://www.country-files.com/cty/download/3604/cty-3604.zip
-	md5sums = 37896cfd9daf28b2fe0658966bf3152c
-	sha256sums = cea570ac09e77a8dce265c3c8b175c54feacb2e75841f4a5a876f953c1bed028
+	source = http://www.country-files.com/cty/download/3626/cty-3626.zip
+	md5sums = 5535dfa1751004e0e0f067c4173df402
+	sha256sums = 7f25ee65a3720bee9e22f37f22ffce11d286f5c1601c38a137a30fb2d01d1bc5
 
 pkgname = cty
