@@ -2,33 +2,54 @@
 
 pkgname=fleshfetch
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell."
 arch=('x86_64')
-url="https://github.com/xtexecute/fleshfetch-aur"
+url="https://github.com/xtexecute/fleshfetch"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'python-requests' 'python-pygame')
-source=("git+https://github.com/xtexecute/fleshfetch-aur.git#branch=main")
+
+depends=(
+    'python'
+    'python-gobject'
+    'gtk4'
+    'python-requests'
+    'python-pygame'
+)
+
+makedepends=('git')
+
+source=(
+    "$pkgname::git+https://github.com/xtexecute/fleshfetch.git#branch=main"
+)
+
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/fleshfetch-aur"
+    cd "$srcdir/$pkgname"
 
     # Main app
-    install -Dm644 fleshfetch.py "$pkgdir/usr/share/fleshfetch/fleshfetch.py"
-    install -Dm755 fleshfetch "$pkgdir/usr/bin/fleshfetch"
+    install -Dm644 fleshfetch.py \
+        "$pkgdir/usr/share/fleshfetch/fleshfetch.py"
 
-    # Default config
-    install -Dm644 default.conf "$pkgdir/usr/share/fleshfetch/default.conf"
+    install -Dm755 fleshfetch \
+        "$pkgdir/usr/bin/fleshfetch"
+
+    # Default configuration
+    install -Dm644 default.conf \
+        "$pkgdir/usr/share/fleshfetch/default.conf"
 
     # Assets
-    install -Dm644 flesh.png "$pkgdir/usr/share/fleshfetch/flesh.png"
-    install -Dm644 click.wav "$pkgdir/usr/share/fleshfetch/click.wav"
+    install -Dm644 flesh.png \
+        "$pkgdir/usr/share/fleshfetch/flesh.png"
+
+    install -Dm644 click.wav \
+        "$pkgdir/usr/share/fleshfetch/click.wav"
 
     # Desktop entry
     install -Dm644 dev.xtexecute.fleshfetch.desktop \
         "$pkgdir/usr/share/applications/dev.xtexecute.fleshfetch.desktop"
 
     # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
