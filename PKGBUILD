@@ -2,10 +2,10 @@
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 
 pkgname=lameta
-pkgver=3.0.20_beta
+pkgver=3.0.21_beta
 _upstream_pkgver="${pkgver//_/-}"
 _electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
-pkgrel=2
+pkgrel=1
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
 arch=('x86_64')
 url="https://github.com/onset/lameta"
@@ -30,7 +30,7 @@ source=(
   'no_node_pin.patch'
   'use_native_ffprobe.patch'
 )
-sha256sums=('e0b75760f218f5b670ac5be70128d079fbb4f52f86f66926549bc21ed5509632'
+sha256sums=('90d9a1ff58efd6e30474f03adcc6d8695a146c0b09d7eacd540dfc102bc0ae07'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
             '013659645d17441f98ed7a8bfcf3a1ef4385aeeb84ddc76e2a59afea42a2da44'
             '5eef4e9a817cb48edcadbb29d07e1158f1164ce1d043ca1836c2e9ad370f3584')
@@ -42,6 +42,9 @@ prepare() {
     patch --forward --strip=1 --input="${srcdir}/no_node_pin.patch"
     echo "Applying patch to use system ffprobe"
     patch --strip=1 --input="${srcdir}/use_native_ffprobe.patch"
+    echo "Fixing (stopgap) wrong version in package.json"
+    echo "  see https://github.com/onset/lameta/pull/71"
+    sed -i 's/3.0.9-alpha/'"$_upstream_pkgver"'/g' package.json
 }
 
 build() {
