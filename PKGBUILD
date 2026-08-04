@@ -1,7 +1,7 @@
 # Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=chunker-cli
-pkgver=1.18.1
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Convert Minecraft worlds between Java Edition and Bedrock Edition"
 arch=("any")
@@ -13,7 +13,7 @@ source=("https://github.com/HiveGamesOSS/Chunker/releases/download/${pkgver}/${p
   "${pkgname}-${pkgver}-license::https://github.com/HiveGamesOSS/Chunker/raw/refs/heads/main/LICENSE"
   "${pkgname}.sh")
 
-b2sums=("ca25cccb3caebeb151f4d0e442d1eed51c618ff7e18328814073c409cc1d3cc71eb36739a1b4c6e746a98eaa81302e2958ea49486ac24a6649c4885923d8f4cc"
+b2sums=("979142b66e2abe0b6718309d965787bf197a54d7a6d8911e7de141dac53816d46d84534d6710b341c340ea53b4d4cc7d793a40be48011ffee6d91557e9c44fe3"
   "da9186807f66a03130a5443cd3ae2b43e8945f0181495e15b4666167942860f67f73ff62324409f521823054573d604de64b28de832e6b6fd338c5544bed57d7"
   "45ea165133e4319a3dd20b0f5155817c2f00c5d17c4c702f3bb7233a2ae5573354d12721790bca096b58e795c3326c86d3cf8d607da37e30a23b62c46e683f55")
 
