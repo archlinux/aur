@@ -1,4 +1,4 @@
-# Maintainer: Your Name <email>
+# Maintainer: Fidel Ramos
 
 pkgname=firecrawl-cli
 pkgver=1.19.28
