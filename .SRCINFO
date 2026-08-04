@@ -1,0 +1,13 @@
+pkgbase = jtool2
+	pkgdesc = Mach-O binary inspection utility combining otool, nm, atos, dyldinfo, segedit, pagestuff and codesign functionality
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.newosxbook.com/tools/jtool.html
+	arch = x86_64
+	license = LicenseRef-jtool2
+	depends = glibc
+	options = !debug
+	source = jtool2-2.0.2::https://www.newosxbook.com/files/jtool2.ELF64
+	sha256sums = 29c48c21911c18dd8b91f5e07cac37b7f8c02dbbb1ee27da999497695ee3e3d1
+
+pkgname = jtool2
