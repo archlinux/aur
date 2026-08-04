@@ -1,8 +1,8 @@
 # Maintainer: kumen
 pkgname=kicad-interactive-html-bom-plugin
 _name=InteractiveHtmlBom
-pkgver=2.11.1
-pkgrel=2
+pkgver=2.11.2
+pkgrel=1
 pkgdesc="Interactive HTML BOM generation plugin for KiCAD"
 arch=('i686' 'x86_64')
 url="https://github.com/openscopeproject/InteractiveHtmlBom"
@@ -11,7 +11,7 @@ depends=('python-wxpython' 'python-jsonschema')
 optdepends=('kicad' 'eagle')
 source=("https://github.com/openscopeproject/${_name}/archive/v${pkgver}.tar.gz"
         "${pkgname}")
-sha256sums=('74905074c5ed31c53db1f1829da1c13232542242062f1ebb0f80af685664e574'
+sha256sums=('d1032212106a5744c84401d908019e8dd430ed6309a0531f82ef514907966607'
             'b2a2b614c0995d5508c09fe9e309ca1e756fed71af38ed222cde7215f8fd7171')
 
 package() {
