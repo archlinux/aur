@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # Query version information and update PKGBUILD for the AppImage release.
-# Google no longer permits public listing of the storage bucket. Discover the
-# current release from the official download page instead; checksums come from
-# the AppImage HTTP ETags (the hex MD5 for non-composite objects), so binaries
-# are not downloaded.
+# Release metadata comes from the Antigravity Hub updater API. AppImages are
+# composite Google Cloud Storage objects, so their ETags are not MD5 hashes;
+# download each changed release to calculate its package checksum.
 set -euo pipefail
 
-download_page_url='https://antigravity.google/download?platform=linux'
-site_url='https://antigravity.google'
+releases_url='https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases'
+storage_url='https://storage.googleapis.com/antigravity-public/antigravity-hub'
 
 pkgbuild_var() {
     grep "^$1=" PKGBUILD | cut -d= -f2- || { echo "error: $1 not found in PKGBUILD" >&2; exit 1; }
@@ -20,55 +19,34 @@ show_change() {
     fi
 }
 
-download_page=$( 
-    curl -fsSL "$download_page_url"
-) || { echo "error: failed to fetch the official download page" >&2; exit 1; }
+releases_json=$(curl -fsSL "$releases_url") \
+    || { echo "error: failed to fetch Antigravity Hub releases" >&2; exit 1; }
 
-main_bundle=$( 
-    grep -oE 'src="[^"]*main-[^"]*\.js"' <<<"$download_page" \
-        | sed -n '1p' \
-        | sed -e 's/^src="//' -e 's/"$//'
-)
-[[ -n $main_bundle ]] || { echo "error: could not find the download page bundle" >&2; exit 1; }
+release=$(sed -nE \
+    's/^[[:space:]]*\[[[:space:]]*\{[[:space:]]*"version"[[:space:]]*:[[:space:]]*"([0-9]+\.[0-9]+\.[0-9]+)"[[:space:]]*,[[:space:]]*"execution_id"[[:space:]]*:[[:space:]]*"([0-9]+)".*/\1-\2/p' \
+    <<<"$releases_json")
+[[ -n $release ]] \
+    || { echo "error: could not parse the latest Antigravity Hub release" >&2; exit 1; }
 
-case $main_bundle in
-    http://*|https://*) main_bundle_url=$main_bundle ;;
-    /*) main_bundle_url="$site_url$main_bundle" ;;
-    *) main_bundle_url="$site_url/$main_bundle" ;;
-esac
-
-download_bundle=$( 
-    curl --compressed -fsSL "$main_bundle_url"
-) || { echo "error: failed to fetch the download page bundle" >&2; exit 1; }
-
-release_url=$( 
-    grep -oE 'https://storage\.googleapis\.com/antigravity-public/antigravity-hub/[0-9]+\.[0-9]+\.[0-9]+-[0-9]+/linux-x64/Antigravity\.tar\.gz' <<<"$download_bundle" \
-        | sed -n '1p'
-)
-[[ -n $release_url ]] || { echo "error: could not find the current Linux release" >&2; exit 1; }
-
-release=${release_url%/linux-x64/Antigravity.tar.gz}
-release=${release##*/}
 version=${release%-*}
 execution_id=${release##*-}
 
 appimage_md5() {
-    local arch=$1 etag
-    etag=$(curl -fsSI "https://storage.googleapis.com/antigravity-public/antigravity-hub/$release/$arch/Antigravity.AppImage" \
-        | sed -n 's/^[Ee][Tt][Aa][Gg]: "\([0-9a-f]\{32\}\)".*/\1/p' \
-        | sed -n '1p')
-    [[ -n $etag ]] || { echo "error: could not fetch the $arch AppImage checksum" >&2; exit 1; }
-    printf '%s\n' "$etag"
+    local arch=$1 checksum
+    local url="$storage_url/$release/$arch/Antigravity.AppImage"
+
+    echo "downloading $arch AppImage to calculate its MD5 checksum..." >&2
+    if ! checksum=$(curl -fsSL --retry 3 "$url" | md5sum | cut -d' ' -f1); then
+        echo "error: failed to download or checksum the $arch AppImage" >&2
+        return 1
+    fi
+    [[ $checksum =~ ^[0-9a-f]{32}$ ]] \
+        || { echo "error: invalid $arch AppImage checksum" >&2; return 1; }
+    printf '%s\n' "$checksum"
 }
 
 current_pkgver=$(pkgbuild_var pkgver)
 current_execution_id=$(pkgbuild_var _execution_id)
-current_md5_x86_64=$(pkgbuild_var md5sums_x86_64 | sed "s/[^']*'\([^']*\)'.*/\1/")
-current_md5_aarch64=$(pkgbuild_var md5sums_aarch64 | sed "s/[^']*'\([^']*\)'.*/\1/")
-
-md5_x86_64=$(appimage_md5 linux-x64)
-md5_aarch64=$(appimage_md5 linux-arm)
-
 vcmp=$(vercmp "$version" "$current_pkgver")
 
 if (( vcmp < 0 )); then
@@ -76,13 +54,16 @@ if (( vcmp < 0 )); then
     exit 1
 fi
 
-if (( vcmp == 0 )) \
-   && [[ $current_execution_id == "$execution_id" \
-      && $current_md5_x86_64  == "$md5_x86_64" \
-      && $current_md5_aarch64 == "$md5_aarch64" ]]; then
+if (( vcmp == 0 )) && [[ $current_execution_id == "$execution_id" ]]; then
     echo "already up to date ($version)"
     exit 0
 fi
+
+current_md5_x86_64=$(pkgbuild_var md5sums_x86_64 | sed "s/[^']*'\([^']*\)'.*/\1/")
+current_md5_aarch64=$(pkgbuild_var md5sums_aarch64 | sed "s/[^']*'\([^']*\)'.*/\1/")
+
+md5_x86_64=$(appimage_md5 linux-x64)
+md5_aarch64=$(appimage_md5 linux-arm)
 
 if (( vcmp > 0 )); then
     printf '  %-22s %s -> %s\n' pkgver "$current_pkgver" "$version"
