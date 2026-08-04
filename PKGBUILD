@@ -28,7 +28,7 @@ sha256sums=('af0c3d92a663432b0d0f32e0fe9751d814211c7c3590f0ce8ce2394980c7b30e')
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
 }
 
 build() {
@@ -42,7 +42,7 @@ package() {
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    rm -rf "${pkgdir}/usr/lib/python3.14/site-packages/examples/"
+    rm -rf "${pkgdir}"/usr/lib/python*/site-packages/examples/
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
