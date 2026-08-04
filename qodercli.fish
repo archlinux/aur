@@ -6,7 +6,7 @@ complete -c qodercli -f
 function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback wiki
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status security feedback wiki
             return 1
         end
     end
@@ -16,7 +16,7 @@ end
 function __qodercli_using_top_command
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status feedback wiki
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update remote-control status security feedback wiki
             contains -- $word $argv
             return $status
         end
@@ -122,6 +122,7 @@ complete -c qodercli -n __qodercli_no_subcommand -a rollback -d 'Rollback to a p
 complete -c qodercli -n __qodercli_no_subcommand -a update -d 'Update to the latest version'
 complete -c qodercli -n __qodercli_no_subcommand -a remote-control -d 'Start the remote-control daemon'
 complete -c qodercli -n __qodercli_no_subcommand -a status -d 'Show session status'
+complete -c qodercli -n __qodercli_no_subcommand -a security -d 'Scan source code for security issues'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback'
 complete -c qodercli -n __qodercli_no_subcommand -a wiki -d 'Generate wiki documentation for projects'
 
@@ -294,6 +295,6 @@ complete -c qodercli -n '__qodercli_using_top_command commit' -s m -l message -r
 complete -c qodercli -n '__qodercli_using_top_command commit' -s w -l workspace -r -F -d 'Working directory'
 complete -c qodercli -n '__qodercli_using_top_command commit' -l hook -d 'Hook mode'
 
-for cmd in login commit rollback update remote-control status feedback wiki
+for cmd in login commit rollback update remote-control status security feedback wiki
     complete -c qodercli -n "__qodercli_using_top_command $cmd" -s h -l help -d 'Show help'
 end
