@@ -1,6 +1,6 @@
 pkgbase = cargo-lock
 	pkgdesc = Self-contained Cargo.lock parser
-	pkgver = 11.0.1
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://github.com/rustsec/rustsec/tree/main/cargo-lock
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-lock
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/rustsec/rustsec/archive/cargo-lock/v11.0.1/cargo-lock-11.0.1.tar.gz
-	b2sums = 7941beaf9ba356ea950b74feb2a4da6b73d8525f377c05695e2c1e003593abafb7cdcc1212987af0f401e610aee9338cbcd5410a7a527b29a26f935220fd24a0
+	source = https://github.com/rustsec/rustsec/archive/cargo-lock/v11.1.0/cargo-lock-11.1.0.tar.gz
+	b2sums = 7574658cb516e996c29cda356e43c28e052e6c18cf9e27df2e394cb80dd30f1447b76c446c6118e3937534f377728916ad7350295acaa4d6f72d4d3f5cf72871
 
 pkgname = cargo-lock
