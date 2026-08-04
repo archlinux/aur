@@ -28,7 +28,7 @@ sha256sums=('898751086c4244d348a01506baa30032526803844a3f6c09cf1c68b02c92e5e2')
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
 }
 
 build() {
