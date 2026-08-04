@@ -1,5 +1,5 @@
 pkgname=mpv-uosc
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("LGPL-2.1-or-later")
 optdepends=("mpv-thumbfast: for showing thumbnails on-the-fly on seek")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a84476d6826406f1eb0815c2ce0c1318858f18de8d77c47b4387175641a13ba9')
+sha256sums=('18fb38bd7d3ff3ca03f394b4d57daaa5a3f68051dcc31fdbfff3fbc874468913')
 
 prepare(){
     cd "${srcdir}/uosc-${pkgver}"
@@ -21,8 +21,8 @@ build(){
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o ./ziggy-linux ./src/ziggy/ziggy.go
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -ldflags "-s -w -linkmode=external" -o ./ziggy-linux ./src/ziggy/ziggy.go
 }
 package(){
     depends=("mpv")
