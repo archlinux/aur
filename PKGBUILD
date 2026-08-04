@@ -1,11 +1,12 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings"
 arch=('any')
 url="https://github.com/ind4skylivey/0ptiscaler4linux"
 license=('MIT')
+install=optiscaler-universal.install
 depends=('bash>=4.0' 'pciutils')
 optdepends=(
     'mesa-utils: for Mesa/AMD/Intel GPU detection'
@@ -27,8 +28,11 @@ package() {
     # Install core files
     cp -r config core lib profiles scripts src templates "$pkgdir/usr/share/$pkgname/"
 
-    # Set executable permissions on scripts
+    # Set executable permissions on all shell scripts (not just scripts/)
     chmod +x "$pkgdir/usr/share/$pkgname/scripts/"*.sh
+    chmod +x "$pkgdir/usr/share/$pkgname/core/"*.sh
+    chmod +x "$pkgdir/usr/share/$pkgname/lib/"*.sh
+    find "$pkgdir/usr/share/$pkgname/src" -name "*.sh" -exec chmod +x {} +
 
     # Install binaries directory structure
     install -dm755 "$pkgdir/usr/share/$pkgname/binaries"

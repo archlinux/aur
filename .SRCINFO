@@ -1,8 +1,9 @@
 pkgbase = optiscaler-universal
 	pkgdesc = Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ind4skylivey/0ptiscaler4linux
+	install = optiscaler-universal.install
 	arch = any
 	license = MIT
 	depends = bash>=4.0
