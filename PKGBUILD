@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.19.32
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="A program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -32,6 +32,7 @@ depends=(
     "python-click"
     "python-dateutil"
     "python-feedparser"
+    "python-feedparser-sgmllib"
     "python-flask"
     "python-flask-compress"
     "python-flask-cors"
@@ -72,7 +73,6 @@ depends=(
     "python-rpds-py"
     "python-rpyc"
     "python-setuptools"
-    "python-sgmllib3k"
     "python-shellingham"
     "python-six"
     "python-soupsieve"
@@ -115,7 +115,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('8787205c5204bfba3c44a1ef9b4c48572bbb2eb2060c95b5ac37c002ce4aca10'
+sha256sums=('f179b41ef719bdf4c467637937368a1baf6a7acfcd7b6c86cd8704bcd01db435'
             '8dc5035d934f9163509a7e2f085c45db11857cc7110ff4d096677d3a5622e833'
             'a79330c58603e606511164d9f033fc3b5758144b8df072aead87b70fe510d28d'
             'f9564d79e62b9e4d078e2695ebe062772c89b3f135b25abc6c73bdcd5124fdee'
