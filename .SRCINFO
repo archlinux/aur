@@ -1,8 +1,8 @@
 pkgbase = steamos-powerbuttond
 	pkgdesc = Power button daemon for SteamOS
-	pkgver = 3.3
+	pkgver = 4.2
 	pkgrel = 1
-	url = https://gitlab.steamos.cloud/holo/powerbuttond
+	url = https://github.com/evlav/powerbuttond
 	arch = x86_64
 	license = BSD
 	depends = libevdev
@@ -11,7 +11,7 @@ pkgbase = steamos-powerbuttond
 	provides = powerbuttond
 	conflicts = powerbuttond
 	replaces = powerbuttond
-	source = steamos-powerbuttond::git+https://gitlab.com/evlaV/powerbuttond.git#tag=v3.3
-	sha512sums = fb6c473d697ebd47932157aa1d2cff96f71df64beb0133b50e92987becd651c7b555046b38d472bf565cdba5a6ccbe80290b943638661ad45cda276a3706fefb
+	source = steamos-powerbuttond::git+https://github.com/evlav/powerbuttond.git#tag=v4.2
+	sha512sums = 95bd9ce60bfa8525558af47733cc9d4496477f3fe543629728dc1264a0da29b1577cc84dbd3182ddef436b20994d5a814ef80e05694fb96f9b94e7bd970471a7
 
 pkgname = steamos-powerbuttond

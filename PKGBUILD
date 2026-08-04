@@ -1,19 +1,19 @@
 # Maintainer: Vicki Pfau (vi@endrift.com)
 
 pkgname=steamos-powerbuttond
-_srctag=v3.3
+_srctag=v4.2
 pkgver=${_srctag##v}
 pkgrel=1
 arch=('x86_64')
-url="https://gitlab.steamos.cloud/holo/powerbuttond"
+url="https://github.com/evlav/powerbuttond"
 pkgdesc="Power button daemon for SteamOS"
 license=('BSD')
 depends=('libevdev' 'udev' 'gamescope')
-source=("steamos-powerbuttond::git+https://gitlab.com/evlaV/powerbuttond.git#tag=$_srctag")
+source=("steamos-powerbuttond::git+https://github.com/evlav/powerbuttond.git#tag=$_srctag")
 replaces=('powerbuttond')
 conflicts=('powerbuttond')
 provides=('powerbuttond')
-sha512sums=('fb6c473d697ebd47932157aa1d2cff96f71df64beb0133b50e92987becd651c7b555046b38d472bf565cdba5a6ccbe80290b943638661ad45cda276a3706fefb')
+sha512sums=('95bd9ce60bfa8525558af47733cc9d4496477f3fe543629728dc1264a0da29b1577cc84dbd3182ddef436b20994d5a814ef80e05694fb96f9b94e7bd970471a7')
 
 build() {
 	make -C "$srcdir/$pkgname"
