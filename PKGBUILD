@@ -2,7 +2,7 @@
 
 pkgname="python-katharos"
 pkgdesc="A functional programming and concurrency library for Python"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 
 _pypi_package=${pkgname##python-}
@@ -18,13 +18,13 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ef8db8b6280e93f0932b158574f3f4725b4290e9712c773ba03b0448c848bb4')
+sha256sums=('2478e63dfd279775c6b1fe1b75a615b43ca06f4bf4a510f96652a45b4075f8dd')
 
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
 }
 
 build() {
