@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Célestin Matte aur [at] ploudseeker dot com
+# Contributor (former maintainer): David Runge <dvzrv@archlinux.org>
 
 pkgname=molecule-plugins
 pkgver=25.8.12
