@@ -2,8 +2,8 @@
 # Maintainer: la .uetcis. <uetcis at fal dot moe>
 
 pkgname=euroscope-bin
-pkgver=3.2.9
-pkgrel=11
+pkgver=3.2.13
+pkgrel=1
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
@@ -17,7 +17,7 @@ source=("https://euroscope.hu/install/EuroScopeSetup.${pkgver}.msi"
         "euroscope.desktop"
         "euroscope.png"
 )
-sha512sums=('b40dc7fd50f29a2c699ca9cbb985fcd4c2d227ce88d233c9404b942bcdc961ddd0656f08c1064ec05c572a9268e4fd1222769a36241b565f1f3d2539829da362'
+sha512sums=('14224ff08112bd63df46306d784495cb302105d6f773baab40628fae236206bf0fa2228cba038767b39e2f09b6c12b2a48f6869987e0213cfd204ab3d2dead28'
             '6be78967a692ffb8b8c0363bf8a91db434ecc1c21fe374b01957d5701f6f75928bf47cd8f9ed065dae648960dd058db260409e6f580be726f837bb62eb63fddd'
             'ffa95249cf74e0401c165576a1a0efade2d4837df692fb8ed0c787563ef062afe8a4038f0704b8485c2ca1e8fa1835787c427f1f0faa4264c3481a61d8d6e544'
             'b7609ff79b2b6f5367979aefd567d9c7e34006adff59bb55004ba0c10da8929235bc2c043369bb7e8382900f21299357857435e3dfcf593e42d7eebe5e4a4e87')
