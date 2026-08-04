@@ -1,15 +1,15 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 pkgname=swtchr
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 arch=("x86_64")
 pkgdesc="Gnome-style window switcher for the Sway window manager"
 url="https://github.com/lostatc/swtchr"
 license=("MIT")
 depends=("gtk4" "gtk4-layer-shell" "sway")
-makedepends=("rust")
+makedepends=("rust" "pkg-config")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("48d40d68661b31638aca6c79b45ca1805720a7355116f238c0710843f47fc49ca7d5388f9167bbb5d8fe54f1771c9a7ed85d85c8964d5c55187473d8133dda23")
+b2sums=('aa6e0a0b3f2d79e577d0125e83f451ccb134b2e14198203610e6093ed9647aba0eaf7f5640f974fcc40e957c8fe91a025fcd4a953dd9fba45f706652a64ad455')
 
 build() {
     cd "$pkgname-$pkgver"
