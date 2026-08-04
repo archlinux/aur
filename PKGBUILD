@@ -2,7 +2,7 @@
 
 pkgname='gui.for.singbox-bin'
 _pkgname='GUI.for.SingBox'
-pkgver='1.25.4'
+pkgver='1.26.1'
 pkgrel=1
 pkgdesc='GUI for SingBox (Desktop optimized with user-space data isolation)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgve
         "gui-for-singbox.desktop"
         "gui-for-singbox-cap.hook")
 
-sha256sums=('cf2367cb5203c583b4683187cde597e5bd7f9f2e55b08f9f2ba98c422c5bb793'
+sha256sums=('4413dae481af1500e9576f61a14e9434aa42a8a1708a433b5a377dceaa3b7486'
             '08257d0d21c76a56e48e38105460927293a452ddc6b0b62db401bf5b5b9b7adf'
             'f261006fe1da5969b7afb22e76889ceb0ea6435a1cd3d0f68c0e6bc921f9e7ab'
             'fea47ff434d0dcb92973181e8b8db93c1e3339db1cf7f3db44c7e81e6e1ccf53'
