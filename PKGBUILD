@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.3.0_devel.226471.80e1e584d73.d41d8cd
+pkgver=26.3.0_devel.227323.b11bdf7d319.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -370,7 +370,7 @@ build () {
         -D zstd=enabled
         -D buildtype=release
         --wrap-mode=nofallback
-        --force-fallback-for=syn,paste,rustc-hash,bitflags,xml
+        --force-fallback-for=syn,paste,rustc-hash,bitflags,xml,venus-protocol
         -D prefix=/usr
         -D sysconfdir=/etc
 #        -D legacy-x11=dri2
