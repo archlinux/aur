@@ -1,8 +1,8 @@
 # Maintainer: EduHoff <ehcs.business@proton.me>
 pkgname=battle-cats-normal-rolls-git
 _pkgname=battle-cats-normal-rolls
-pkgver=r34.ab31638
-pkgrel=2
+pkgver=r38.0b3b9dd
+pkgrel=3
 pkgdesc="Local Battle Cats normal seed tracking server with high-performance Rust seeker"
 arch=('x86_64' 'aarch64')
 url="https://github.com/EduHoff/battle-cats-normal-rolls"
@@ -52,7 +52,7 @@ package() {
   cp -r static "${pkgdir}/usr/share/webapps/${_pkgname}/"
 
   cat <<'EOF' > "${pkgdir}/usr/share/webapps/${_pkgname}/.env"
-HOST=127.0.0.1
+HOST=0.0.0.0
 PORT=3000
 EOF
 
