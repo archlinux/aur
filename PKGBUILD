@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.6.0
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -14,7 +14,6 @@ depends=(
   'python-anyio'
   'python-flet'
   'python-msgspec'
-  'python-nvidia-ml-py'
   'python-packaging'
   'python-pefile'
   'python-pillow'
@@ -36,16 +35,17 @@ checkdepends=(
 )
 optdepends=(
   'python-niquests: Fallback for DLL downloads when aiohttp fails'
+  'python-nvidia-ml-py: NVIDIA specific features'
   'python-rapidfuzz: Fast fuzzy string matching for game search'
 )
 
 # Use commit of what tag should be
 # until upstream fixes CI pipeline
-_commit=2c73ef31527dc8fd8626d18c31e09feae5a12a52
+_commit=1e77caeb79d16397c608ec8ed7ba62edf3a70218
 
 source=("git+https://github.com/Recol/DLSS-Updater.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('a838a190ded735eb20cbc9d78adfb07e65efb5654b9dd217bfc2aeb5f1d3ca2e'
+sha256sums=('485e51b658ee6e212bc426b2256f92953bb7ba5392a618ac72ea0b00f246bb1c'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
