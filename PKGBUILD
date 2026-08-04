@@ -6,7 +6,7 @@ pkgname=(ruffle
         ruffle-selfhosted
         firefox-extension-ruffle
         chromium-extension-ruffle)
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 arch=("x86_64")
 pkgdesc="A Flash Player emulator written in Rust."
@@ -22,7 +22,7 @@ else
     makedepends+=("yq")
 fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=v$pkgver")
-sha256sums=('9198b03a2254207bbb4bf54d4e09e3e674d53defca451044084439a674822b5a')
+sha256sums=('7cdbf9bd0200721a73e68286c217325b893062037dd220fc7093f36e891fa71f')
 options=("!lto")
 
 _FIREFOX_EXTENSION_ID="ruffle@ruffle.rs"
