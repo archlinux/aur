@@ -16,8 +16,8 @@ conflicts=('gui.for.singbox' 'gui-for-singbox' 'gui-for-singbox-bin')
 
 install="gui.for.singbox-bin.install"
 
-source=("https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
-        "https://raw.githubusercontent.com/GUI-for-Cores/${_pkgname}/v${pkgver}/build/appicon.png"
+source=("${_pkgname}-${pkgver}-linux-amd64.zip::https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
+        "${_pkgname}-${pkgver}-appicon.png::https://raw.githubusercontent.com/GUI-for-Cores/${_pkgname}/v${pkgver}/build/appicon.png"
         "gui-for-singbox.sh"
         "gui-for-singbox.desktop"
         "gui-for-singbox-cap.hook")
@@ -31,7 +31,7 @@ sha256sums=('4413dae481af1500e9576f61a14e9434aa42a8a1708a433b5a377dceaa3b7486'
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" -t "${pkgdir}/usr/lib/gui-for-singbox/"
     install -Dm755 "${srcdir}/gui-for-singbox.sh" "${pkgdir}/usr/bin/gui-for-singbox"
-    install -Dm644 "${srcdir}/appicon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gui-for-singbox.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-appicon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gui-for-singbox.png"
     install -Dm644 "${srcdir}/gui-for-singbox.desktop" -t "${pkgdir}/usr/share/applications/"
     install -Dm644 "${srcdir}/gui-for-singbox-cap.hook" -t "${pkgdir}/usr/share/libalpm/hooks/"
 }
