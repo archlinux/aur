@@ -3,7 +3,7 @@
 
 pkgname=qt6-niriqml
 _projname=niriqml
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Typed QML bindings for niri IPC (windows, workspaces, events, actions)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 optdepends=('niri: the compositor niriqml is designed to talk to')
 conflicts=("qt6-niriqml-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9b9d3a3a27ea2ce3eec1f80d078baf22d99d953437b353317c47aa838e0c1ef3')
+sha256sums=('d4e866a28916ee87334bc7266f4ef5adaf0e558b853606ab975905bd18961852')
 
 build() {
     cmake -B build -S "${srcdir}/${_projname}-${pkgver}" \
