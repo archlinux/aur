@@ -1,12 +1,12 @@
 pkgbase = untitled-minecraft-launcher-bin
 	pkgdesc = A terminal-based Minecraft launcher for Linux, written in Rust
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uml.rs
 	install = untitled-minecraft-launcher-bin.install
 	arch = x86_64
 	license = Unlicense
-	depends = jre-openjdk
+	depends = java-runtime
 	provides = uml
 	conflicts = uml
 	source = untitled-minecraft-launcher-bin-0.3.0.tar.gz::https://gitea.owendeed.com/Toasterkitten/untitled-minecraft-launcher/releases/download/v0.3.0/uml-x86_64-linux.tar.gz

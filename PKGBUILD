@@ -2,13 +2,13 @@
 
 pkgname=untitled-minecraft-launcher-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 install=untitled-minecraft-launcher-bin.install
 pkgdesc="A terminal-based Minecraft launcher for Linux, written in Rust"
 arch=('x86_64')
 url="https://uml.rs"
 license=('Unlicense')
-depends=('jre-openjdk')
+depends=('java-runtime')
 provides=('uml')
 conflicts=('uml')
 source=("$pkgname-$pkgver.tar.gz::https://gitea.owendeed.com/Toasterkitten/untitled-minecraft-launcher/releases/download/v$pkgver/uml-x86_64-linux.tar.gz")
