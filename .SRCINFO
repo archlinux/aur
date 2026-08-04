@@ -1,6 +1,6 @@
 pkgbase = toast
 	pkgdesc = A lightweight TUI IDE for making quick in-the-moment edits
-	pkgver = 0.3.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/paradise-runner/toast
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = toast
 	depends = libstdc++
 	provides = toast-editor
 	options = !strip
-	source = toast-0.3.0.tgz::https://github.com/paradise-runner/toast/archive/v0.3.0.tar.gz
-	sha256sums = a58269e0349c65852f285370e87ec83b64bac61710acec3add7491a043a73597
+	source = toast-0.4.3.tgz::https://github.com/paradise-runner/toast/archive/v0.4.3.tar.gz
+	sha256sums = 0ec56c9084735f599990470488cdf761f303c34cab3e53a21e91b05719749847
 
 pkgname = toast
