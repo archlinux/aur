@@ -1,0 +1,31 @@
+post_install() {
+	cat <<-MSG
+	>>> wdm runs on VT 7 and leaves VT 1 a working text console — it
+	    switches to it only to hand you one when it gives up. Verify you can
+	    reach it before enabling the unit: if wdm fails to start you will
+	    have no graphical login.
+
+	>>> The DRM path has not yet run on real hardware. Development uses a
+	    nested backend that cannot exercise DRM, the seat, or the handoff
+	    to a session.
+
+	>>> Configuration is /etc/wdm/wdm.toml. Enable with:
+	        systemctl enable wdm.service
+	MSG
+}
+
+post_upgrade() {
+	# Moves the greeter's home off /var/lib/wdm on a machine that installed
+	# 0.1.x. Why, and why both guards, is written out once in
+	# packaging/deb/postinst.
+	if [ "$(getent passwd wdm | cut -d: -f6)" = /var/lib/wdm ]; then
+		if [ -d /var/empty ]; then
+			usermod -d /var/empty wdm \
+				|| echo "wdm: could not move the wdm account's home to /var/empty" >&2
+		else
+			echo "wdm: /var/empty does not exist; leaving the wdm account's home at /var/lib/wdm" >&2
+		fi
+	fi
+
+	post_install
+}
