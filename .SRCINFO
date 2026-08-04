@@ -1,11 +1,11 @@
 pkgbase = ttf-fanwunming
-	pkgdesc = A Simplified-Chinese-to-Traditional-Chinese font based on GenYoMin, which can handle the one-to-many problem
-	pkgver = 1.007
+	pkgdesc = A Simplified-Chinese-to-Traditional-Chinese font based on GenYoMin, which can handle context-sensitive cases
+	pkgver = 2.100
 	pkgrel = 1
 	url = https://github.com/ayaka14732/FanWunMing
 	arch = any
-	license = custom:OFL-1.1
-	source = FanWunMing-Both-1.007.zip::https://github.com/ayaka14732/FanWunMing/releases/download/v1.007/FanWunMing-Both.zip
-	sha256sums = 25d2679320a8bc500d368ea483d7fc180ff62973e7feb108fb2d54b1e7d6fdd6
+	license = OFL-1.1
+	source = FanWunMing-Both-2.100.zip::https://github.com/ayaka14732/FanWunMing/releases/download/v2.100/FanWunMing-Both.zip
+	sha256sums = 76e7980d21bd621a19c6c6747ed593e092a4efca97223e4216c97a1956567fc0
 
 pkgname = ttf-fanwunming
