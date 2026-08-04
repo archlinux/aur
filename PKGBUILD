@@ -2,7 +2,7 @@
 
 pkgname=aq-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Like jq, but for JSON, TOML & YAML'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=(
 )
 makedepends=('tar')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-b2sums=('e27b6ac6a0df0bb014889de379f5fbccdd07768c6719708cb637f0a65ca91044705a47ac3382915ef6cbf6bb1761e93077bd86926855e5789e43522ae467941c')
+b2sums=('c1ad1af9a6e944387fd39871eabd5b1db430aa2a7f693f4887e5052449dd24c4f0e8dcd55385c6bcc073e66d97964e10f0a3e4345925196069705cbf26f0ae7a')
 
 package() {
   # binary
