@@ -17,7 +17,7 @@ source=("git+$_ghurl"
         opentubex.desktop
         opentubex.sh)
 sha256sums=('SKIP'
-            '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
+            '03448152a98649991bc6a1f1c74fa20fb43d729f5aa7d2a17d0b2074b22a08f2'
             'aa19fec357ea16529f83e81f5097a46d61b1a8b0964f56961a794704d3208a80')
 
 pkgver() {
