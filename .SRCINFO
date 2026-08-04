@@ -6,6 +6,7 @@ pkgbase = varac-bin
 	arch = x86_64
 	license = custom
 	makedepends = unzip
+	makedepends = icoutils
 	depends = wine
 	depends = wine-mono
 	optdepends = winetricks: additional Wine configuration tools

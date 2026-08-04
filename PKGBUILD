@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://www.varac-hamradio.com"
 license=('custom')
 depends=('wine' 'wine-mono')
-makedepends=('unzip')
+makedepends=('unzip' 'icoutils')
 optdepends=('winetricks: additional Wine configuration tools'
             'vara-hf: VARA HF modem (must be installed separately and authorized)')
 source=("$pkgname-$pkgver.zip::https://varac-hamradio.com/download-varac-zip-package"
@@ -22,6 +22,12 @@ source=("$pkgname-$pkgver.zip::https://varac-hamradio.com/download-varac-zip-pac
 sha256sums=('e8ea382a80bbea70ef9a03e16e949ebdf7da2906518479e14919b4b032e0dab0'
             '7a38c8789f2f6ebfff3744da6441c7af3ebc6683afb00172168814f8af7c795d'
             '7130bf3b7909806121827ec11eca6469c2d20e9e8773615f3bfff8e0502192b6')
+
+build() {
+    cd "$srcdir"
+    wrestool -x --type=14 --name=32512 -o "varac.ico" VarAC.exe
+    icotool -x -i 5 -o "varac.png" "varac.ico"
+}
 
 package() {
     install -d "$pkgdir/usr/share/varac"
@@ -37,4 +43,6 @@ package() {
     install -Dm755 "$srcdir/varac.sh" "$pkgdir/usr/bin/varac"
     install -Dm644 "$srcdir/varac.desktop" \
         "$pkgdir/usr/share/applications/varac.desktop"
+    install -Dm644 "$srcdir/varac.png" \
+        "$pkgdir/usr/share/pixmaps/varac.png"
 }
