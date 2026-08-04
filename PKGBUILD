@@ -31,7 +31,7 @@ sha256sums=('5d959f195452e0b7d67c5cfaeccb377cca92e20c29c1a493ea999166e9c42faa'
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    sed -e 's/requires = \[.*\]/requires = \[\"uv_build\"]/g' -i "./pyproject.toml"
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
 
     sed -e '/chain/d' -i "src/rich_gradient_cli/__init__.py"
 }
