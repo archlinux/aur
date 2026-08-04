@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=orca-bambustudio-appimage
 _pkgname=OrcaStudio
-pkgver=02.08.01.55_p1
+pkgver=02.08.01.55_p3
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.) with changes from Pawel Jarczak for Bambu Cloud Support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
 depends=('libwebp' 'webkit2gtk-4.1')
 source=("${_pkgname}-${pkgver//_/-}.AppImage::https://github.com/jarczakpawel/OrcaStudio/releases/download/v${pkgver//_/-}/${_pkgname}_Linux_AppImage_ubuntu24.04_amd64_${pkgver//_/-}.AppImage")
-sha256sums=('e3f0e8a79e824e0343e8f58b90114597a3f5c45db0eb646f68b3b9af9a4d4a25')
+sha256sums=('508c5fc15ecba9ca7caf88963b53df95e57c3e3c6ffccc65ea8f0bf6d457cf95')
 
 package() {
 
