@@ -5,7 +5,7 @@ _pkgname=youtube-music-cli
 pkgname=${_pkgname}-bin
 pkgdesc="A powerful Terminal User Interface (TUI) music player for YouTube Music"
 
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -20,16 +20,14 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'mpv' 'yt-dlp')
 
-source=("FEATURE_STATUS-${pkgver}.md::${_urlraw}/FEATURE_STATUS.md"
-		"SUGGESTIONS-${pkgver}.md::${_urlraw}/SUGGESTIONS.md"
+source=("SUGGESTIONS-${pkgver}.md::${_urlraw}/SUGGESTIONS.md"
 		"README-${pkgver}.md::${_urlraw}/readme.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
-sha256sums=('2cfff77ae9e5e4e068f65a1b279e08d6b30cf450c3e6f5b260e18a0afd1b8d5b'
-            '86ea1bd9992e9a85cb32ef7e1e7c13fcad192bb07df2581213af3f2797258ee7'
-            '265b7a38831668c44ee038d27979558f49ed50e2e5413e75f4de8a6bc779c9f6'
+sha256sums=('42c249f4e638326ef4a139eaba2cab4d79b488d3699f4f7bb0d9814d9e20115f'
+            '15e86505fd184b9c7f020cbe47ddc3d9bd284afdba9a36da3d33fed00fa22d01'
             '8e0fa698e1e37adc44d567345a8db5e099f99c78e13123d631416a3813c6832e')
-sha256sums_x86_64=('114340363ef4c2c5c9e65662e33c8348966592a25da92b3e655daa7477e07461')
+sha256sums_x86_64=('ca615b9cca36eb2c6780f934f2697e82677374cd3850e09513fc149485516ead')
 
 
 package() {
@@ -37,7 +35,6 @@ package() {
 
 	install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "FEATURE_STATUS-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/FEATURE_STATUS.md"
 	install -Dm644 "SUGGESTIONS-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/SUGGESTIONS.md"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
