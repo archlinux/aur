@@ -20,6 +20,11 @@ get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
+#get_pyinfo() {
+#    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+#        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+#}
+
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
@@ -30,12 +35,14 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # ValueError: Pytest terminal summary report not found
-#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-#   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #--remote-data #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data
-    python -m venv --system-site-packages test-env
-    test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -m pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="${PWD}/build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # --remote-data #
+#   python -m installer --destdir=tmp_install dist/*.whl
+#   PYTHONPATH="${PWD}/tmp_install/$(get_pyinfo site)" pytest -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package() {
