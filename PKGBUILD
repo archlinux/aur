@@ -2,7 +2,7 @@
 
 pkgauthor="yurijmikhalevich"
 pkgname="rclip"
-pkgver=3.2.4
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="AI-Powered Semantic Photo Search for the Command Line"
 
@@ -25,16 +25,22 @@ optdepends=('python-coremltools')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e12f0a50fdd67bc26e01f9b0555a9730527a924e20cb4d9a7842eb3af7ec6242')
+sha256sums=('cebc3fd84ccbc65eb2670a44e9e93b2420b64bd8957a36afe56dc4960644e085')
+
+prepare() {
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
+
+    sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
+}
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 

@@ -1,6 +1,6 @@
 pkgbase = rclip
 	pkgdesc = AI-Powered Semantic Photo Search for the Command Line
-	pkgver = 3.2.4
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/yurijmikhalevich/rclip
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = rclip
 	optdepends = python-coremltools
 	provides = rclip
 	conflicts = python-rclip
-	source = rclip-3.2.4.tar.gz::https://github.com/yurijmikhalevich/rclip/archive/refs/tags/v3.2.4.tar.gz
-	sha256sums = e12f0a50fdd67bc26e01f9b0555a9730527a924e20cb4d9a7842eb3af7ec6242
+	source = rclip-3.3.0.tar.gz::https://github.com/yurijmikhalevich/rclip/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = cebc3fd84ccbc65eb2670a44e9e93b2420b64bd8957a36afe56dc4960644e085
 
 pkgname = rclip
