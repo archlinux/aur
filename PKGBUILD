@@ -1,30 +1,22 @@
 # Maintainer: @aardbol
 pkgname=ironclaw-bin
-_tagver=1.0.0-rc.1
-pkgver=1.0.0_rc1
-pkgrel=2
+_pkgname=ironclaw
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="IronClaw is an Agent OS focused on privacy, security and extensibility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nearai/ironclaw"
 license=('Apache-2.0')
 options=('!strip' '!debug')
 
-source_x86_64=(
-    "${url}/releases/download/ironclaw-v${_tagver}/ironclaw-x86_64-unknown-linux-gnu.tar.gz"
-)
-source_aarch64=(
-    "${url}/releases/download/ironclaw-v${_tagver}/ironclaw-aarch64-unknown-linux-gnu.tar.gz"
-)
+source_x86_64=("${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=(
-    'd2f341d27a30eb3b4c01351e7d95f1f67c96ee6f91ad2c69125b448a1aff3112'
-)
-sha256sums_aarch64=(
-    'c517e2ed5f86771a9c75c7844ae0b54d1172ff38b2f581606791d20ff3dff000'
-)
+sha256sums_x86_64=('9b79fa250faee13156043cdf79d09f9d1a2ffa566fa49bc18b564e2780c7f0b2')
+sha256sums_aarch64=('613285a1663d9138058abd1d684fc23a67ad95696c52b90716f8262fc4d2448d')
 
 package() {
-    local target="ironclaw-${CARCH}-unknown-linux-gnu"
+    local target="${_pkgname}-${CARCH}-unknown-linux-gnu"
     tar -xzf "$srcdir/${target}.tar.gz"
-    install -Dm755 "$srcdir/$target/ironclaw" "$pkgdir/usr/bin/ironclaw"
+    install -Dm755 "$srcdir/$target/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
