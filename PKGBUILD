@@ -6,11 +6,11 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A system-wide ASCII keyboard visualizer in the terminal"
 
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 _gitversion=v${pkgver}
 
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -26,7 +26,7 @@ provides=("${_appname}")
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('e793f9c33becc797b719dea3faae3018d612d1e7a0affe44dfd5c926b3c1c256')
+sha256sums=('670fb9ae2021b08c55e56735613003ea559a7b8e851c88eeaec2267da6269b4d')
 
 
 prepare() {
