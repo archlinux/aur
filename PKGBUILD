@@ -2,7 +2,7 @@
 
 pkgname=undr
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/caskstrength/undr"
@@ -16,7 +16,9 @@ sha512sums=('a361ca876f05999e5f1cb9ba32c8c3f8c964fda255737bb0399c8b25b7e7fa16518
 
 build() {
   cd "${pkgname}"
-  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC -lcrypto" libundr.so
+  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC" \ 
+       LDFLAGS="-lcrypto" \
+       libundr.so
 }
 
 package() {
@@ -27,7 +29,8 @@ package() {
 
   install -m644 include/undr/*.h "${pkgdir}/usr/include/undr/"
 
-  install -m755 libundr.so "${pkgdir}/usr/lib/"
+  install -m755 libundr.so "${pkgdir}/usr/lib/libundr.so.${pkgver}"
+  ln -s "libundr.so.${pkgver}" "${pkgdir}/usr/lib/libundr.so"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
