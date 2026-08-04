@@ -1,6 +1,6 @@
 # Maintainer: Michael Clayfield <asdf me asdf michaelclayfield asdf com asdf>
 pkgname=vikunja-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The Todo-app to organize your life"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,9 +18,9 @@ source_aarch64=("https://dl.vikunja.io/vikunja/v${pkgver}/vikunja-v${pkgver}-lin
 sha256sums=('c710d101f36b4838c0b20b09dbc53fdc351e252e65cee0e8a679d99058df0c46'
             'a6f42e19d1742c9c836edf641cbe095c358065dea210b4303357cfcfbbda5634'
             '77ae5d2215017969f561351a543f6777a0f55de20abb80094509188ba89e1f3e')
-sha256sums_x86_64=('eefc0e31587e0c9d7b18f38d4d50dd1fa03fd5fc6879eb9894ce9909620072ea')
-sha256sums_armv7h=('4c62a1480147b9f2d942b4d6b08ee6daceb6326fbd99b0e652ae43086d52ca3f')
-sha256sums_aarch64=('299c6f85890152457fa8b25cc064445e05c8b5c1a678d0deb8e281579532f38a')
+sha256sums_x86_64=('8843de18f5f297bac83db010a54064a45033f82cffdf53421f6ce39f12a8ad98')
+sha256sums_armv7h=('c98905c277baca10092c15ef65c1f0c02c0da4cdd63a2ac1ef04f2a3e7115151')
+sha256sums_aarch64=('299b90a2b9c5a54a2901f0c585f91cdc48042d59d2355ef5d058d6f27c5af45a')
 
 package(){
   case "${CARCH}" in
