@@ -5,7 +5,7 @@ _pkgname=github-copilot
 _binary=github
 
 pkgname="${_pkgname}-app-appimage"
-pkgver=1.0.25
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Agent-native desktop experience for finding, running, steering, and landing software work across your GitHub repositories"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 _desktop="GitHub Copilot.desktop"
 source_x86_64=("${_appimage}::https://github.com/github/app/releases/download/v${pkgver}/GitHub-Copilot-linux-x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('27b8f29ea20725847bad5a6926227c5ae1b824249fab5133cca5ccad34c53b04')
+sha256sums_x86_64=('fe8b26179806dc9938c5d6e6f2061a111033e9107fd7ca91a99ab29b75765c0d')
 
 prepare() {
   chmod +x "${_appimage}"

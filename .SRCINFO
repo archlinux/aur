@@ -1,6 +1,6 @@
 pkgbase = github-copilot-app-appimage
 	pkgdesc = Agent-native desktop experience for finding, running, steering, and landing software work across your GitHub repositories
-	pkgver = 1.0.25
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/github/app
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = github-copilot-app-appimage
 	depends = glibc
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = github-copilot-app-appimage-1.0.25.AppImage
+	noextract = github-copilot-app-appimage-1.1.3.AppImage
 	options = !strip
-	source_x86_64 = github-copilot-app-appimage-1.0.25.AppImage::https://github.com/github/app/releases/download/v1.0.25/GitHub-Copilot-linux-x64.AppImage
-	sha256sums_x86_64 = 27b8f29ea20725847bad5a6926227c5ae1b824249fab5133cca5ccad34c53b04
+	source_x86_64 = github-copilot-app-appimage-1.1.3.AppImage::https://github.com/github/app/releases/download/v1.1.3/GitHub-Copilot-linux-x64.AppImage
+	sha256sums_x86_64 = fe8b26179806dc9938c5d6e6f2061a111033e9107fd7ca91a99ab29b75765c0d
 
 pkgname = github-copilot-app-appimage
