@@ -1,6 +1,6 @@
 # Maintainer: JiiB <jiibbottou@gmail.com>
 pkgname=flatpak-enhanced
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A lightweight wrapper for the flatpak tool. Features aliases for apps & quick run.'
 url="https://github.com/JiiB1/flatpak-enhanced"
