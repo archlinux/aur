@@ -7,7 +7,7 @@
 
 pkgname=taomni-bin
 _pkgname=taomni
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="AI-native remote workspace for developers - terminal, SSH, SFTP, RDP/VNC, tunnels, database client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=(!strip)
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/Taomni_${pkgver}_amd64.deb")
-sha256sums_x86_64=('b255a3bb8d1bb39ca0c44f029c9954339b7cd9b625298dfbff63a31c624e4630')
+sha256sums_x86_64=('4b3c2a2121e18922d2651208ce208bdeaac6f4ec2e88ea6a1f666665558e7821')
 
 package() {
     cd "${srcdir}"
