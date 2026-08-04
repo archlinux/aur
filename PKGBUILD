@@ -1,7 +1,7 @@
 # Maintainer: Simon Pera <simon@nextmiracle.eu>
 # Contributor: Previous maintainer's Jonne Haß <me@jhass.eu>
 pkgname=workflowy
-pkgver=4.3.2607301322
+pkgver=4.3.2608041311
 pkgrel=1
 pkgdesc="Desktop app for workflowy.com, a note taking tool based on lists"
 arch=('x86_64')
@@ -31,4 +31,4 @@ package() {
 	cp -av squashfs-root/usr/share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
 	chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
 }
-sha256sums=('1da25653d99ae98a2d71f07ae783cae4d603c4a173de81835fc8d1d17ee89118')
+sha256sums=('04545dd7c0e8af314149c9fbc0678a4d2dae4a0ae3f73badfc9b6bc0de897ac4')
