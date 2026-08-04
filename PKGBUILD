@@ -171,12 +171,12 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.2
-#_minor=5
+#_minor=6
 #_minorc=$((_minor+1))
 _rcver=rc6
 pkgver=${_major}.${_rcver}
-_tagrel=1
-pkgrel=1
+_tagrel=2
+pkgrel=2
 _srcname=cachyos-${_major}-${_rcver}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
@@ -815,8 +815,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('f00e04442fb542d5147873bd95b825369cb60b5b8a5cf642c58c247b25595480be1668d71186e269b12f5c488c23beb2a1d29b2ab9bafa0e6a04186fcff39157'
-        '220ff34adf792798984302110b1f159e8eb3adbedc2f738cc1ae8f571654a40fce1d6f2604d007e1216d8565187a2d08f60c6396976893802043f90cf5faf643'
+b2sums=('59c8ddb550c8ae32995c01a3386a9e6e817e391eb7211f1be4772468f280d7b1bc1bd807b8bfd7ce98629a4b5cfd40f9926a0b508d2fcdc3e5d7d8a5d0ebc82a'
+        'db3f4b40190a41d873e6cbb31a5e1ea00f43e07de172f8c328cbdef28b4819110dc2bc35571308946d973dacbdee8f7d03d582873413866ad2af279f88dae635'
         '2b2377daa5bbadb6896839678a74adfc999e11cbcc9bb41e71a4445e7ed3d101c327ffa2c53b54e9c0a45fd61901fc860e518aafe552b357797c37bb33d91c84'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
