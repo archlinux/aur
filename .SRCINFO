@@ -1,6 +1,6 @@
 pkgbase = rset
 	pkgdesc = Remote Staging Execution Tool
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/eradman/rset
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rset
 	makedepends = git
 	makedepends = make
 	depends = curl
-	source = git+https://github.com/eradman/rset#tag=3.3
-	sha256sums = d6ce727847fd1d217397707dbb5255fea0fa8814a4a74a4041471c53d0a78fd8
+	source = git+https://github.com/eradman/rset#tag=3.4
+	sha256sums = bdedc83d6f5699db0a69bd8f806532a96bded08050ba636daf9f919bc520a486
 
 pkgname = rset
