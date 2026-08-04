@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=ggshield
-pkgver=1.45.0
+pkgver=1.53.0
 pkgrel=1
 pkgdesc="Protect your secrets with GitGuardian."
 arch=(any)
@@ -9,9 +9,8 @@ license=(MIT)
 depends=('python' 'git')
 makedepends=()
 options=('!debug')
-# source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 source=("https://github.com/GitGuardian/${pkgname}/releases/download/v${pkgver}/ggshield_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('1744db7f040264c2773d849965438cb7d8a5222ddbe4a11cbf5ab181034582a5')
+sha256sums=('a485e45606c91856144291072877506478939f730d10c81e26c95008f4684e17')
 
 
 package() {
