@@ -1,8 +1,8 @@
 pkgbase = jupiter-hw-support
 	pkgdesc = Jupiter HW support package
-	pkgver = 20250728.1
-	pkgrel = 8
-	url = https://gitlab.steamos.cloud/jupiter/jupiter-hw-support
+	pkgver = 20260630.2
+	pkgrel = 1
+	url = https://github.com/evlav/jupiter-hw-support
 	arch = any
 	license = MIT
 	makedepends = rsync
@@ -20,9 +20,11 @@ pkgbase = jupiter-hw-support
 	depends = parted
 	depends = e2fsprogs
 	depends = udisks2>=2.9.4-1.1
+	depends = holo-plymouth-themes
+	depends = plymouth
 	optdepends = grub-steamos
 	options = !strip
-	source = git+https://gitlab.com/evlaV/jupiter-hw-support.git#tag=jupiter-20250728.1
-	sha512sums = fcf30755d44bcc3b16614748d3680cc3f0be12b2e5452e9f7a37806bf5ec2d22733b28bcdbf6816e105311e5f04ea6a34436a1794f0eba61d2e380e1d4e95387
+	source = git+https://github.com/evlav/jupiter-hw-support.git#tag=jupiter-20260630.2
+	sha512sums = f8ceedddd16fefd60db88567ce0360985944a4414def887507f6b042b0cba6e09788b4ccad9dd9148b31f59a256200e90c4f4a8a3adab4acaaea17b44f76988f
 
 pkgname = jupiter-hw-support
