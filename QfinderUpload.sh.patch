@@ -1,0 +1,9 @@
+--- opt.old/QNAP/QfinderPro/QfinderUpload.sh	2026-08-04 08:07:45.000000000 -0400
++++ opt.new/QNAP/QfinderPro/QfinderUpload.sh	2026-08-04 08:15:59.891754618 -0400
+@@ -10,5 +10,5 @@
+ dirname=$PWD/$dirname
+ fi
+ LD_LIBRARY_PATH="$dirname/lib"
+-export LD_LIBRARY_PATH=/usr/local/lib/QNAP/QfinderPro
++export LD_LIBRARY_PATH=/opt/QNAP/QfinderPro
+ $dirname/$appname "$@"
