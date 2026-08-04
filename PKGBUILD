@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scopebuddy
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manager script to make Gamescope easier to use on desktop"
 arch=('any')
 url="https://github.com/OpenGamingCollective/ScopeBuddy"
 license=('Apache-2.0')
 depends=(
+  'awk'
   'bash'
   'gamescope'
   'jq'
