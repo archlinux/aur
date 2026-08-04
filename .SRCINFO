@@ -1,6 +1,6 @@
 pkgbase = smtty
 	pkgdesc = TTY "Steam Machine" launcher that runs Steam Gamepad UI inside gamescope
-	pkgver = 13.6
+	pkgver = 14.0
 	pkgrel = 1
 	url = https://github.com/dillacorn/smtty
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = smtty
 	optdepends = pciutils: lspci (GPU detection)
 	optdepends = curl: optional version check
 	optdepends = wget: optional version check
-	source = smtty-13.6.tar.gz::https://github.com/dillacorn/smtty/archive/refs/tags/13.6.tar.gz
-	sha256sums = 72f4ef919a60b2f3c9c8d764dcee50412c3b9845624be34b48445a808786d2da
+	source = smtty-14.0.tar.gz::https://github.com/dillacorn/smtty/archive/refs/tags/14.0.tar.gz
+	sha256sums = 58849569963f1433d278ffafaab0445266a110e469664ef67a41cf0129ca29d0
 
 pkgname = smtty
