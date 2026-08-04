@@ -7,8 +7,8 @@
 
 _gitname=cdesktopenv
 pkgname="${_gitname}"-git
-pkgver=2.5.3.82.gf911fd095
-pkgrel=2
+pkgver=2.5.3.108.ga128ceafc
+pkgrel=1
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('x86_64')
@@ -67,7 +67,6 @@ pkgver() {
 }
 
 build() {
-    export TIC="/usr/bin/tic -o${pkgdir}/usr/share/terminfo"
     cd "$srcdir/code/cde"
     ./autogen.sh
     ./configure --with-gnu-ld --prefix="/usr/dt"
@@ -101,7 +100,4 @@ package() {
     export LC_ALL=C 
     cd "$srcdir/code/cde"
     make install DESTDIR="$pkgdir"
-
-    # dtterm terminfo is provided by ncurses
-    rm "$pkgdir/usr/share/terminfo/d/dtterm"
 }
