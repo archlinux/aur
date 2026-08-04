@@ -1,7 +1,7 @@
 # Maintainer: Riderius <riderius.help@gmail.com>
 
 pkgname=today-journal
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="POSIX shell script for keeping a daily journal"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('sh' 'grep')
 makedepends=('make' 'scdoc')
 provides=('today')
 source=("${pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~sotirisp/today/archive/v${pkgver}.tar.gz")
-sha256sums=('168d814c636cb6e3521162d5ebaaa8dd51ff538e08d0ba345417d9194f727942')
+sha256sums=('83bc6ee87e31c78fd4355da13450507c59e938ff96d1c72ba881b44592ca0081')
 
 build() {
     cd today-v${pkgver}
