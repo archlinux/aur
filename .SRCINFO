@@ -1,0 +1,19 @@
+pkgbase = wdm-gtk-greeter
+	pkgdesc = GTK4 greeter for wdm
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/quinnjr/wdm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = libxkbcommon
+	makedepends = gtk4
+	makedepends = gtk4-layer-shell
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = wdm-greeter-implementation
+	source = wdm-0.3.0.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6bb8ce1ba62c87062ecd2d1e74c9fb1eb1b5b3bf4703efde60fee86fed6b545c
+
+pkgname = wdm-gtk-greeter
