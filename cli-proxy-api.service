@@ -11,7 +11,7 @@ Group=cli-proxy-api
 WorkingDirectory=/var/lib/cli-proxy-api
 Environment=WRITABLE_PATH=/var/lib/cli-proxy-api
 Environment=MANAGEMENT_STATIC_PATH=/var/lib/cli-proxy-api/static
-ExecStart=/usr/bin/cliproxyapi --config /etc/cli-proxy-api/config.yaml
+ExecStart=/usr/bin/cli-proxy-api --config /etc/cli-proxy-api/config.yaml
 Restart=on-failure
 RestartSec=5s
 
