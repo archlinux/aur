@@ -1,0 +1,5 @@
+[journal-tui-bin]
+source = "github"
+github = "Prathamesh0901/journal-tui"
+use_latest_release = true
+prefix = "v"
