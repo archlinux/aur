@@ -1,0 +1,5 @@
+[vi-sql-bin]
+source = "github"
+github = "kopecmaciej/vi-sql"
+use_latest_release = true
+prefix = "v"
