@@ -1,7 +1,7 @@
 # Maintainer: sekomi <sekomi at tuta.io>
 pkgname=makko-bin
-pkgver=2.1.2
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='A simple Static Site Generator written in Zig (stable version).'
 arch=('x86_64' 'aarch64')
 url='https://makko.starlightnet.work/'
@@ -14,8 +14,8 @@ source=("${_source_url}/raw/branch/main/LICENSE")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${_source_url}/releases/download/${pkgver}/makko-x86_64-linux")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::${_source_url}/releases/download/${pkgver}/makko-aarch64-linux")
 sha256sums=('SKIP')
-sha256sums_x86_64=('ef838bbcea1295a66a8315f6204d364d2bfa24a5570e4c86f426757b292b1e9c')
-sha256sums_aarch64=('5b8bea05120c43315b0a102f3b53010d80f113026445c328d938092ef9684600')
+sha256sums_x86_64=('4e5733fbc50b6620b4fcd53de74ade154be616f1ceecebf5acf59a0833ed1b28')
+sha256sums_aarch64=('8e97188952219485340b9e1b81d3ac05cfd33a13cd2534870a2562b4fb65af03')
 
 package() {
     # Install binary
