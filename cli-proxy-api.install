@@ -1,10 +1,15 @@
 post_install() {
   cat <<'EOF'
-==> CLIProxyAPI requires configuration before use.
-    EDIT /etc/cli-proxy-api/config.yaml.
-    Upstream provides no separate configuration documentation; see the comments in that file.
+==> Edit /etc/cli-proxy-api/config.yaml before starting the service.
+    Documentation:
+      https://help.router-for.me/
+      https://help.router-for.me/cn/
 
-    To use remote management, configure the remote-management section.
-    Before exposing the service, review and replace the api-keys values.
+    Start the service:
+      systemctl enable --now cli-proxy-api.service
+
+    WARNING: default configuration expose service to [::]:8317 !
+
+    Before exposing the service, review and replace the host,api-keys,remote-management values.
 EOF
 }

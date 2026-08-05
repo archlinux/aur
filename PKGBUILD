@@ -2,12 +2,12 @@
 
 pkgname=cli-proxy-api-systemd-bin
 pkgver=7.2.119
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs (systemd config)"
 arch=('x86_64')
 url="https://github.com/router-for-me/CLIProxyAPI"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'ca-certificates')
 conflicts=('cli-proxy-api')
 provides=('cli-proxy-api')
 backup=('etc/cli-proxy-api/config.yaml')
