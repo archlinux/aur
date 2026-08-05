@@ -16,6 +16,30 @@ makepkg -si
 paru -S bettbox-compatible-bin
 ```
 
+## 更新 pkgver
+
+仓库附带 `update-pkgver.sh` 脚本与 [nvchecker](https://github.com/archlinux/nvchecker) 配置。在包目录内运行：
+
+```sh
+./update-pkgver.sh
+```
+
+脚本会通过 nvchecker 检测最新版本（stable 或 pre-release，取较新者；`-test` 标签已被排除），若有新版本则更新 `pkgver`、重置 `pkgrel=1`、刷新校验和（`updpkgsums` 会重新下载 `.deb` 计算 SHA256）并重建 `.SRCINFO`，最后打印 `git diff`。需要 `nvchecker makepkg updpkgsums jq`（安装 `nvchecker` 与 `jq`）。
+
+仅查看而无需修改文件时：
+
+```sh
+nvchecker -c .nvchecker.toml
+```
+
+`.nvchecker.toml` 将标签限定为 stable + pre-release，并以 `pkgver` 形式输出：
+
+```
+bettbox-compatible: updated to 1.18.9pre1
+```
+
+> 注意：AUR 提交使用 stable 版本；pre-release 仅用于本地构建测试。
+
 ## 致谢
 
 [flclash-bin](https://aur.archlinux.org/packages/flclash-bin)
