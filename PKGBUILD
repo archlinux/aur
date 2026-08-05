@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=(!lto)
 source=(
 	"https://github.com/hgaiser/moonshine/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('60fc3636737e56adbb9cb652e2cfdd5f48cacccb980a46fa36833fce8183fb3b')
+sha256sums=('d84b9ca9cd5092c14786192945ff07254b3bfc7d4ba364fc1ab7b09ee04109d1')
 
 build() {
 	cd "$srcdir/moonshine-$pkgver"
