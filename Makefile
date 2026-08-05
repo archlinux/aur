@@ -4,9 +4,13 @@ MOUNT := -v "$(CURDIR)":/pkg -w /pkg
 
 ARTIFACT_DIR := /pkg/artifacts
 
-.PHONY: build install lint srcinfo shell clean
+.PHONY: build install lint srcinfo shell clean pull
 
-build:
+# a stale image means pacman -Syu fails on an outdated keyring
+pull:
+	$(DOCKER) pull $(IMAGE)
+
+build: pull
 	$(DOCKER) run --rm -it $(MOUNT) $(IMAGE) bash -lc '\
 	  set -euo pipefail; \
 	  pacman -Syu --noconfirm; \
