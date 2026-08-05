@@ -1,0 +1,24 @@
+pkgbase = quicktime-video-hack-git
+	pkgdesc = Record iOS device audio and video over USB without macOS/QuickTime (git version)
+	pkgver = r324.d81396e
+	pkgrel = 1
+	url = https://github.com/danielpaulus/quicktime_video_hack
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = pkg-config
+	depends = libusb
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	optdepends = gst-plugins-base: basic GStreamer pipeline support
+	optdepends = gst-plugins-good: standard transcoding codecs
+	optdepends = gst-plugins-bad: H.264 decode and advanced sinks
+	optdepends = gst-plugins-ugly: additional codecs for transcoding
+	provides = quicktime-video-hack
+	conflicts = quicktime-video-hack
+	source = quicktime-video-hack::git+https://github.com/danielpaulus/quicktime_video_hack.git
+	sha256sums = SKIP
+
+pkgname = quicktime-video-hack-git
