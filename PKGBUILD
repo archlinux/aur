@@ -1,14 +1,14 @@
 # Contributor: Andreas Baumann <mail@andreasbauman.cc>
 pkgname=corral-git
 _pkgname=corral
-pkgver=0.8.2.r9.g226c8c6
+pkgver=0.9.2.r45.gae805cb
 pkgrel=1
 pkgdesc="Pony dependency manager tool"
 arch=('x86_64')
 url="https://github.com/ponylang/corral"
 license=('BSD-2-Clause')
 depends=()
-makedepends=('ponyc' 'git')
+makedepends=('ponyc' 'git' 'compiler-rt')
 provides=(corrall)
 conflicts=(corral)
 source=("${_pkgname}::git+https://github.com/ponylang/corral.git")

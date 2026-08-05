@@ -1,12 +1,13 @@
 pkgbase = corral-git
 	pkgdesc = Pony dependency manager tool
 	pkgver = 0.8.2.r9.g226c8c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ponylang/corral
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = ponyc
 	makedepends = git
+	makedepends = compiler-rt
 	provides = corrall
 	conflicts = corral
 	source = corral::git+https://github.com/ponylang/corral.git
