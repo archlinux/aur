@@ -1,0 +1,22 @@
+pkgbase = ferronote-bin
+	pkgdesc = Notes at the speed of thought
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/tareqmy/ferronote
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = git
+	depends = openssh
+	provides = ferronote
+	provides = fn
+	conflicts = ferronote
+	options = !strip
+	source = README-1.2.7.md::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.7/README.md
+	source = LICENSE-1.2.7::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.7/LICENSE
+	sha256sums = 2311ce5cf2c09182e87131843cbb200546b4f9c4540a97e90d639adbe508b6ae
+	sha256sums = ba46e6aacd72ecd88d752f3633eaf283730e94c8f523847c432a91723a72cd0f
+	source_x86_64 = ferronote-x86_64-1.2.7.tgz::https://github.com/tareqmy/ferronote/releases/download/v1.2.7/ferronote-v1.2.7-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ed570a0e52db293ae449a2dedde287793f93aa3c2960be509d1151d0ab88844c
+
+pkgname = ferronote-bin

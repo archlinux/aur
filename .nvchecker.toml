@@ -1,0 +1,5 @@
+[ferronote-bin]
+source = "github"
+github = "tareqmy/ferronote"
+use_latest_release = true
+prefix = "v"
