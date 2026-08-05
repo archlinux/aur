@@ -8,8 +8,8 @@
 
 pkgbase=godot-double
 pkgname=(godot-double godot-double-mono)
-pkgver=4.7
-pkgrel=2
+pkgver=4.7.1
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -21,7 +21,7 @@ depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd li
 optdepends=('pipewire-alsa: for audio support'
             'pulse-native-provider: for audio support')
 source=("godot::git+https://github.com/godotengine/godot#tag=$pkgver-stable")
-b2sums=('d778a58d2d0b357bac463e7e4bbf0fd916a6688dd2516893dd7342e6a2bc368df356b4ab0087e786c173222246f6a5b33a540001aac0246d09b3f4be17f5d0d0')
+b2sums=('1b431d6aced84268b7a6461243c02dc04094f447e029437a2fd4c58ffc63c4d9e362f8839a68a166cf6fd81c726def650ef8224824f0ae35c5a9b9a3436ab08e')
 
 
 prepare() {
