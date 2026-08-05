@@ -1,0 +1,4 @@
+[anydoc]
+source = "git"
+git = "https://github.com/firecrawl/anydoc.git"
+prefix = "v"
