@@ -1,6 +1,6 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-cast
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Desktop mirroring for Omarchy/Hyprland to AirPlay receivers (experimental Google Cast support)"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1e03afd9fadda0d3bdc8ee7d6099202b1f36d19c333072266a0e62991fa13cfd')
+sha256sums=('4e3b93efddf8df304d317126125a0b52a24c72e9b1e28ac54714c0b97dc68a47')
 
 build() {
   cd "$pkgname-$pkgver"
