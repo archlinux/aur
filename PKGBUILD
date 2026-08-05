@@ -3,7 +3,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=badger
-pkgver=4.9.5
+pkgver=4.9.6
 pkgrel=1
 pkgdesc="An embeddable, persistent and fast key-value (KV) database written in pure Go"
 arch=('x86_64')
@@ -13,10 +13,12 @@ depends=('glibc')
 makedepends=('go')
 replaces=('badgerdb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/badger/archive/v${pkgver}.tar.gz")
-b2sums=('4a1ef147aeaf494de5cbdfdd59d64540982640eff207e8525cf3acd1b0355374cf7f0e49eef488b153a4cc6010137f7284b7981f3b6a665a5ca2de9908b725d2')
+b2sums=('523768f4dc49cdd15707b9791dfb1a2e20172b2c34f7bf3546cf1d7708410a0f0db1141bf39807dc904c5ad741c7817784735bf241717e03a836d3267faf7015')
 
 prepare() {
   cd "${pkgname}-${pkgver}/badger"
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
   mkdir -p build
 }
 
