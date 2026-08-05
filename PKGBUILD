@@ -1,3 +1,4 @@
+# Maintainer: Nastem <nastemwayne at gmail dot com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Ariel AxionL <i at axionl dot me>
 # Contributor: lilydjwg <lilydjwg at gmail dot com>
@@ -11,7 +12,7 @@ arch=('x86_64')
 url='https://pan.baidu.com'
 license=('LicenseRef-custom')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'libsecret' 'libxss' 'nss' 'hicolor-icon-theme'
-         'libappindicator-gtk3')
+  'libappindicator-gtk3')
 provides=('baidunetdisk')
 conflicts=('baidunetdisk')
 options=('!strip' '!debug')
@@ -27,7 +28,7 @@ source=(
   'https://deb.debian.org/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0v5_2.12.0-1_amd64.deb'
 )
 source_x86_64=(
-  "baidunetdisk-${pkgver}.${CARCH}.deb::http://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb"
+  "baidunetdisk-${pkgver}.${CARCH}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb"
 )
 
 sha256sums=(
@@ -46,11 +47,14 @@ _extract_deb() {
   local deb="$1" dest="$2" data
   data=$(ar t "$deb" | awk '/^data\.tar\./ { print; exit }')
   case "$data" in
-    *.xz)  ar p "$deb" "$data" | bsdtar -xJf - -C "$dest" ;;
-    *.bz2) ar p "$deb" "$data" | bsdtar -xjf - -C "$dest" ;;
-    *.zst) ar p "$deb" "$data" | bsdtar --zstd -xf - -C "$dest" ;;
-    *.gz)  ar p "$deb" "$data" | bsdtar -xzf - -C "$dest" ;;
-    *)     printf 'Unsupported Debian archive payload: %s\n' "$data" >&2; return 1 ;;
+  *.xz) ar p "$deb" "$data" | bsdtar -xJf - -C "$dest" ;;
+  *.bz2) ar p "$deb" "$data" | bsdtar -xjf - -C "$dest" ;;
+  *.zst) ar p "$deb" "$data" | bsdtar --zstd -xf - -C "$dest" ;;
+  *.gz) ar p "$deb" "$data" | bsdtar -xzf - -C "$dest" ;;
+  *)
+    printf 'Unsupported Debian archive payload: %s\n' "$data" >&2
+    return 1
+    ;;
   esac
 }
 

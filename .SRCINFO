@@ -33,7 +33,7 @@ pkgbase = baidunetdisk-bin
 	sha256sums = 028c21afe635dfcad591118049364f15bacc5dc0af18ea814f3bebb1e9c00afa
 	sha256sums = 3bcb2bb2c7dece7be81cd12f0c2eb25a0964642ba1e62e7a98264cb0ab4cde9e
 	sha256sums = 60d62e980e199094e37a09c5896f736fc64354c0b0b9dbefb1b588ec26bc0bf9
-	source_x86_64 = baidunetdisk-8.6.0.x86_64.deb::http://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/8.6.0/baidunetdisk_8.6.0_amd64.deb
+	source_x86_64 = baidunetdisk-8.6.0.x86_64.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/8.6.0/baidunetdisk_8.6.0_amd64.deb
 	sha256sums_x86_64 = 28f62882fe35469b4008c1324e43d2a9109395bcbdfc05207e048a8487759d56
 
 pkgname = baidunetdisk-bin
