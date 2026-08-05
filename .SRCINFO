@@ -1,0 +1,15 @@
+pkgbase = python-rdata
+	pkgdesc = A Python library for R datasets.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/vnmabus/rdata
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-xarray
+	depends = python-pandas
+	source = git+https://github.com/vnmabus/rdata.git
+	sha256sums = SKIP
+
+pkgname = python-rdata
