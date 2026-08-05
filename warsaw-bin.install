@@ -23,9 +23,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-    if systemctl is-inactive warsaw.service 1>/dev/null; then
-        systemctl enable --now warsaw.service
-    fi
+    systemctl enable --now warsaw.service
 }
 
 pre_remove() {
