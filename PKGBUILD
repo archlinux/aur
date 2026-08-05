@@ -7,7 +7,7 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.22.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="Lightweight system monitor for X with lua and nvidia enabled"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ optdepends=('nvidia: for NV11 and newer GPUs',
   'nvidia-390xx-dkms: for NVC0 and GF1XX (Fermi) GPUs'
   'nvidia-340xx-dkms: for NV40 and G70 (Curie) GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('fba75c66a87e7a06360dde013954f7e457f9d1c2')
+sha1sums=('3594f780f3aaeb0841ec548bf143e66e77d91fea')
 install='conky-lua-nv.install'
 
 prepare() {
@@ -45,6 +45,7 @@ build() {
     -B build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
+    -D CMAKE_INSTALL_DATAROOTDIR=/usr/share \
     -D MAINTAINER_MODE=OFF \
     -D BUILD_DOCS=ON \
     -D BUILD_IMLIB2=ON \
