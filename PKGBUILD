@@ -5,7 +5,7 @@
 
 pkgname=cosmic-applets-application-volume
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Applets for COSMIC Panel'
 arch=(x86_64)
@@ -34,7 +34,7 @@ makedepends=(
   just
   mold
 )
-source=(git+https://github.com/AdityaHebballe/cosmic-applets.git#branch=feat/application-volume-control)
+source=(git+https://github.com/AdityaHebballe/cosmic-applets.git#branch=feat/application-volume-stream-groups)
 b2sums=('SKIP')
 
 prepare() {

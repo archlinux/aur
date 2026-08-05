@@ -1,7 +1,7 @@
 pkgbase = cosmic-applets-application-volume
 	pkgdesc = Applets for COSMIC Panel
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/pop-os/cosmic-applets
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = cosmic-applets-application-volume
 	provides = cosmic-applets
 	conflicts = cosmic-applets
 	replaces = cosmic-applets
-	source = git+https://github.com/AdityaHebballe/cosmic-applets.git#branch=feat/application-volume-control
+	source = git+https://github.com/AdityaHebballe/cosmic-applets.git#branch=feat/application-volume-stream-groups
 	b2sums = SKIP
 
 pkgname = cosmic-applets-application-volume
