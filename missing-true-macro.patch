@@ -1,0 +1,15 @@
+diff --git a/linux/bfd.c b/linux/bfd.c
+index b18c8bbe..a2163c3d 100644
+--- a/linux/bfd.c
++++ b/linux/bfd.c
+@@ -45,6 +45,10 @@
+ #include "libhfcommon/log.h"
+ #include "libhfcommon/util.h"
+ 
++#ifndef TRUE
++  #define TRUE 1
++#endif
++
+ #if !defined(bfd_get_section_size)
+ #define bfd_get_section_size(section) bfd_section_size(section)
+ #endif /* !defined(bfd_get_section_size) */
