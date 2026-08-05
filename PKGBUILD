@@ -1,7 +1,7 @@
 # Maintainer: Jim Philip <jimphilip394 at gmail dot com>
 pkgname=vencord-hook
 pkgver=1
-pkgrel=22
+pkgrel=23
 pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://github.com/Vencord/Installer.git"
@@ -21,7 +21,7 @@ install="vencord-hook.install"
 
 package() {
 	hook_file="$srcdir/vencord-hook.hook"
-	if grep -qi CachyOS /etc/os-release; then
+	if pacman -Qi pacman | grep -qi CachyOS; then
 		hook_file="$srcdir/vencord-hook-cachyos.hook"
 	fi
 	install -Dm644 "$hook_file" "$pkgdir/etc/pacman.d/hooks/vencord-hook.hook"
