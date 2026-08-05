@@ -1,0 +1,5 @@
+[notse-bin]
+source = "github"
+github = "RahulSandhu/notse"
+use_latest_release = true
+prefix = "v"

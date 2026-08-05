@@ -1,0 +1,18 @@
+pkgbase = notse-bin
+	pkgdesc = TUI for taking notes inspired in clipse
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/RahulSandhu/notse
+	arch = x86_64
+	license = MIT
+	provides = notse
+	conflicts = notse
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/RahulSandhu/notse/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/RahulSandhu/notse/v0.2.0/LICENSE
+	sha256sums = 2b32d33a2bc22d5988d8b34b98b03b264bbb1cca2d6197e7b1a0c5efd57042e7
+	sha256sums = aecda32055fbe3f21152d13935a88aa23e6a7be2942779fd7752187da3e0045e
+	source_x86_64 = notse-x86_64-0.2.0::https://github.com/RahulSandhu/notse/releases/download/v0.2.0/notse
+	sha256sums_x86_64 = 47b7055a5c15114dff1426f68a5165692b7a9fb3b778ecaca09c4cdaaf7b57da
+
+pkgname = notse-bin
