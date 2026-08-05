@@ -1,6 +1,6 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
-pkgver=3.4.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
@@ -10,29 +10,29 @@ depends=()
 provides=(redis-insight)
 conflicts=(redis-insight-bin)
 makedepends=(
-gendesk
-nodejs
-yarn
-npm
-nvm
-jq
-make
-python-setuptools
-clang
-git
+  gendesk
+  nodejs
+  yarn
+  npm
+  nvm
+  jq
+  make
+  python-setuptools
+  clang
+  git
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
-sha256sums=('98991ea6920139e26b338abed48a8143405393de0e197728dbae4c47141dc6de')
+sha256sums=('92b57ba6eea092ac1a4fd5ce0dbb70e31bc22a0f6fdcb2a236dcd9a927c8a776')
 
 _ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="${srcdir}/.nvm"
 
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
 prepare() {
@@ -40,10 +40,10 @@ prepare() {
 
   # unable to build some plugins for some reason, disable them here
   sed -i -E '/^# Build ri-explain plugin/,$d' scripts/build-statics.sh
-  
+
   # bypass confirmation prompt for npx
-  sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/package.json
-  sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/api/package.json
+  sed -i -E 's/npx patch-package/npx --yes patch-package/' redisinsight/package.json
+  sed -i -E 's/npx patch-package/npx --yes patch-package/' redisinsight/api/package.json
 
   _ensure_local_nvm
   nvm install 24.4.1
@@ -56,7 +56,7 @@ build() {
   mkdir -p electron
   VERSION=$(jq -r ".version" redisinsight/package.json)
   cp ./redisinsight/package.json ./electron/package.json
-  echo "$VERSION" > electron/version
+  echo "$VERSION" >electron/version
 
   yarn --cwd redisinsight/api/ install --ignore-optional
   yarn --cwd redisinsight/ install --ignore-optional
@@ -70,12 +70,12 @@ package() {
   cd "$srcdir/RedisInsight-$pkgver/release/linux-unpacked"
   install -Dm644 resources/resources/icons/512x512.png "${pkgdir}/usr/share/pixmaps/redisinsight.png"
   gendesk -f -n --pkgname "${pkgname}" \
-          --pkgdesc "$pkgdesc" \
-          --name "RedisInsight" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname}" \
-          --categories 'Development' \
-          --icon "${pkgname}"
+    --pkgdesc "$pkgdesc" \
+    --name "RedisInsight" \
+    --comment "$pkgdesc" \
+    --exec "${pkgname}" \
+    --categories 'Development' \
+    --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 resources/LICENSE.redisinsight.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/bin"
