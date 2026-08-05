@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Service for enabling and controlling dmem cgroup limits for boosting foreground games"
 arch=('x86_64')
 url="https://gitlab.steamos.cloud/holo/dmemcg-booster"
-license=('custom:unknown')
+license=('MIT')
 depends=(
 	"glibc"
 	"libdrm"
@@ -32,6 +32,7 @@ build() {
 package() {
         cd "$srcdir/$pkgname"
 	install -Dm755 target/release/dmemcg-booster "$pkgdir/usr/bin/dmemcg-booster"
+	install -Dm644 {,"$pkgdir"/usr/share/licenses/$pkgname/}LICENSE
 
 	# Set up systemd services
  	install -Dm644 dmemcg-booster-system.service "$pkgdir/usr/lib/systemd/system/dmemcg-booster-system.service"
