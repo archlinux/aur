@@ -1,8 +1,9 @@
 pkgbase = icann-rdap-bin
 	pkgdesc = ICANN implementation of RDAP: the Registry Data Access Protocol (pre-compiled)
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/icann/icann-rdap
+	changelog = icann-rdap.changelog
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0 OR MIT
