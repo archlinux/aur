@@ -1,7 +1,7 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cli-proxy-api
-pkgver=7.2.116
+pkgver=7.2.119
 pkgrel=1
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs"
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=(
   'cli-proxy-api.sysusers'
   'cli-proxy-api.tmpfiles'
 )
-sha256sums=('ef0bd987d7982691f41572837a90ed2236c8d5910262ad46da6d4f068847bbfc'
+sha256sums=('621136f8020443a3414a25bf9e56efb4cd158b422be623c8541e4a88ff26bf39'
             '789be86c8b7ce964a0b7c78b07bd561a2263f9ada2c927b2dd789c88fb07494e'
             '216ce81546d176c915838a42d555cd144b2b15fb8cd50dc17f14572a9e6e469a'
-            '86cec862115e7d26bcc68668b7dfa181539aeb6ff32fb061cead8ed50627502e')
+            '9903cf5950cdc24f23eee53890393ad2ab9ac6daaf8aedf59df30721ca6357be')
 
 prepare() {
   cd "CLIProxyAPI-$pkgver"
@@ -61,10 +61,11 @@ package() {
   cd "CLIProxyAPI-$pkgver"
 
   install -Dm755 cli-proxy-api "$pkgdir/usr/bin/cliproxyapi"
-  install -Dm640 config.example.yaml "$pkgdir/etc/cli-proxy-api/config.yaml"
+
+  install -dm2775 "$pkgdir/etc/cli-proxy-api"
+  install -m660 config.example.yaml "$pkgdir/etc/cli-proxy-api/config.yaml"
   sed -i \
     -e 's|auth-dir: "~/.cli-proxy-api"|auth-dir: "/var/lib/cli-proxy-api/auths"|' \
-    -e 's|  dir: "plugins"|  dir: "/var/lib/cli-proxy-api/plugins"|' \
     "$pkgdir/etc/cli-proxy-api/config.yaml"
 
   install -Dm644 "$srcdir/cli-proxy-api.service" \

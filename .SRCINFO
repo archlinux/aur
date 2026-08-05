@@ -1,6 +1,6 @@
 pkgbase = cli-proxy-api
 	pkgdesc = Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs
-	pkgver = 7.2.116
+	pkgver = 7.2.119
 	pkgrel = 1
 	url = https://github.com/router-for-me/CLIProxyAPI
 	install = cli-proxy-api.install
@@ -10,13 +10,13 @@ pkgbase = cli-proxy-api
 	depends = glibc
 	conflicts = cli-proxy-api-bin
 	backup = etc/cli-proxy-api/config.yaml
-	source = cli-proxy-api-7.2.116.tar.gz::https://github.com/router-for-me/CLIProxyAPI/archive/refs/tags/v7.2.116.tar.gz
+	source = cli-proxy-api-7.2.119.tar.gz::https://github.com/router-for-me/CLIProxyAPI/archive/refs/tags/v7.2.119.tar.gz
 	source = cli-proxy-api.service
 	source = cli-proxy-api.sysusers
 	source = cli-proxy-api.tmpfiles
-	sha256sums = ef0bd987d7982691f41572837a90ed2236c8d5910262ad46da6d4f068847bbfc
+	sha256sums = 621136f8020443a3414a25bf9e56efb4cd158b422be623c8541e4a88ff26bf39
 	sha256sums = 789be86c8b7ce964a0b7c78b07bd561a2263f9ada2c927b2dd789c88fb07494e
 	sha256sums = 216ce81546d176c915838a42d555cd144b2b15fb8cd50dc17f14572a9e6e469a
-	sha256sums = 86cec862115e7d26bcc68668b7dfa181539aeb6ff32fb061cead8ed50627502e
+	sha256sums = 9903cf5950cdc24f23eee53890393ad2ab9ac6daaf8aedf59df30721ca6357be
 
 pkgname = cli-proxy-api

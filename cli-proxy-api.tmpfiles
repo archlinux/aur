@@ -1,5 +1,6 @@
 d /etc/cli-proxy-api 2775 root cli-proxy-api -
+z /etc/cli-proxy-api/config.yaml 0660 root cli-proxy-api
+
 d /var/lib/cli-proxy-api/auths 0700 cli-proxy-api cli-proxy-api -
 d /var/lib/cli-proxy-api/plugins 0700 cli-proxy-api cli-proxy-api -
 d /var/lib/cli-proxy-api/static 0700 cli-proxy-api cli-proxy-api -
-z /etc/cli-proxy-api/config.yaml 0660 root cli-proxy-api -
