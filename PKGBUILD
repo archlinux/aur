@@ -2,7 +2,7 @@ pkgname=qmarineplatformtheme6
 _conflictpkgname=qt6ct
 _pkguntar=qmarinetheme
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Another qt6ct for qt6, use toml as config"
 url="https://github.com/Decodetalkers/qmarinetheme"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/qmarinet
 build() {
   cd ${_pkguntar}-$pkgver
   cmake . -GNinja \
-        -DAS_KDE6_PLUGIN=ON \
+        -DAS_KDE6_PLUGIN=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
