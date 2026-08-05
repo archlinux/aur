@@ -24,3 +24,5 @@ Changes since 0.2.1
 13. Fixed a number of deprecation warnings
 14. src/Makefile.in: Added a patch from Rafael Laboissière to resolve
     an issue with building using `make --shuffle=reverse`
+15. Added CURLPROXY options, e.g., SOCKS5
+16. Do not define CURLPROXY_HTTPS2 for libcurl versions older than 8.2.0
