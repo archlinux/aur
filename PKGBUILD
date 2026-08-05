@@ -6,7 +6,7 @@
 # depends on the virtual this provides, so pacman offers this as one of the
 # choices when `wdm` is installed on its own.
 pkgname=wdm-webkit-greeter
-pkgver=0.3.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='WebKitGTK greeter for wdm, with themes written in HTML, CSS and JavaScript'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ makedepends=('cargo' 'libxkbcommon' 'gtk4' 'gtk4-layer-shell' 'webkitgtk-6.0')
 provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # See the note in the `wdm` package: this is the checksum of the tarball GitHub
-# published, and all three wdm packages build from the same one.
-sha256sums=('6bb8ce1ba62c87062ecd2d1e74c9fb1eb1b5b3bf4703efde60fee86fed6b545c')
+# published, and all four wdm packages build from the same one.
+sha256sums=('8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
@@ -58,6 +58,36 @@ package() {
     crates/wdm-webkit-greeter/themes/default/index.html \
     crates/wdm-webkit-greeter/themes/default/style.css \
     crates/wdm-webkit-greeter/themes/default/theme.js
+
+  # The arch theme brings its own Tailwind build and Font Awesome subset. They
+  # are vendored because the greeter's content policy is `default-src file:
+  # data:` and it runs before any network exists — a CDN <link> would not
+  # degrade, it would render the login screen unstyled with every icon a
+  # missing-glyph box.
+  #
+  # Named file by file rather than with a glob, and vendor/ listed separately,
+  # because the theme is the one thing here whose failure has no log: a missing
+  # stylesheet is a login screen that looks broken and says nothing.
+  install -Dm644 -t "$themes/arch" \
+    crates/wdm-webkit-greeter/themes/arch/index.html \
+    crates/wdm-webkit-greeter/themes/arch/style.css \
+    crates/wdm-webkit-greeter/themes/arch/theme.js
+
+  # src/ and build.sh are not installed: they regenerate vendor/ and nothing
+  # reads them at runtime. The licences are, and are not optional — Font
+  # Awesome's icons are CC BY 4.0 and its fonts SIL OFL 1.1, both of which
+  # require the licence to travel with the files.
+  install -Dm644 -t "$themes/arch/vendor" \
+    crates/wdm-webkit-greeter/themes/arch/vendor/*
+
+  # The React theme, as its built artefacts only. src/, package.json and the
+  # Vite config produce vendor/ and are read by nothing at runtime — and npm is
+  # deliberately not a build dependency of this package, because a build chroot
+  # has no network and vendor/ is checked into the tree for that reason.
+  install -Dm644 -t "$themes/react" \
+    crates/wdm-webkit-greeter/themes/react/index.html
+  install -Dm644 -t "$themes/react/vendor" \
+    crates/wdm-webkit-greeter/themes/react/vendor/*
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = wdm-webkit-greeter
 	pkgdesc = WebKitGTK greeter for wdm, with themes written in HTML, CSS and JavaScript
-	pkgver = 0.3.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/quinnjr/wdm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wdm-webkit-greeter
 	depends = gtk4-layer-shell
 	depends = webkitgtk-6.0
 	provides = wdm-greeter-implementation
-	source = wdm-0.3.0.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 6bb8ce1ba62c87062ecd2d1e74c9fb1eb1b5b3bf4703efde60fee86fed6b545c
+	source = wdm-0.8.0.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd
 
 pkgname = wdm-webkit-greeter
