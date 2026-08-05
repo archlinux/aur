@@ -1,0 +1,4 @@
+[cpa-usage-keeper-systemd-bin]
+source = "git"
+git = "https://github.com/Willxup/cpa-usage-keeper.git"
+prefix = "v"

@@ -1,0 +1,1 @@
+u cpa-usage-keeper - "CPA Usage Keeper service user" /var/lib/cpa-usage-keeper /usr/bin/nologin

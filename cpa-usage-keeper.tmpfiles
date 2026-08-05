@@ -1,0 +1,2 @@
+d /etc/cpa-usage-keeper 0750 root cpa-usage-keeper - -
+z /etc/cpa-usage-keeper/cpa-usage-keeper.env 0640 root cpa-usage-keeper - -

@@ -1,0 +1,13 @@
+post_install() {
+  cat <<'EOF'
+==> Configure /etc/cpa-usage-keeper/cpa-usage-keeper.env before starting.
+    Set CPA_BASE_URL, CPA_MANAGEMENT_KEY, and LOGIN_PASSWORD.
+    Set AUTH_ENABLED=false only when the service is reliably isolated.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> Persistent data remains in /var/lib/cpa-usage-keeper.
+EOF
+}
