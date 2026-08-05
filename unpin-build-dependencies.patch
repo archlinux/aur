@@ -1,0 +1,20 @@
+--- a/sgl-kernel/pyproject.toml
++++ b/sgl-kernel/pyproject.toml
+@@ -1,7 +1,7 @@
+ [build-system]
+ requires = [
+-  "scikit-build-core>=0.10",
+-  "torch>=2.8.0",
++  "scikit-build-core",
++  "torch",
+   "wheel",
+ ]
+ build-backend = "scikit_build_core.build"
+@@ -35,7 +35,6 @@
+ 
+ [tool.scikit-build]
+ cmake.build-type = "Release"
+-minimum-version = "build-system.requires"
+ 
+ wheel.py-api = "cp310"
+ wheel.license-files = []

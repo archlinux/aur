@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-sgl-kernel
 _pkgname=sgl-kernel
-_sglang_ver=0.5.10.post1
-pkgver=0.4.1
+_sglang_ver=0.5.16
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Compiled CUDA kernels for the SGLang serving framework'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang/tree/main/sgl-kernel'
 license=('Apache-2.0')
 depends=(
-  'python>=3.10'
+  'python'
   'python-pytorch'
   'cuda'
 )
@@ -22,30 +22,38 @@ makedepends=(
   'python-sympy'
   'cmake'
   'ninja'
-  'git'
+  'gcc15'
 )
 options=('!strip')
 source=("sglang-${_sglang_ver}.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v${_sglang_ver}.tar.gz"
-        'remove-thc-atomics.patch')
-sha256sums=('2080e7d8802094ae2b92dead1c6788b7aa2a2ccd06d8ba221bbc5b43d4cb7786'
-            'SKIP')
+        'remove-thc-atomics.patch'
+        'unpin-build-dependencies.patch')
+sha256sums=('28003e0c210319d06f783333a3c99770c47129fd064f0f057634737e3d5268b6'
+            '27955a907c7513ad4e9f18a0140bef1eb8d02d5d6c7e62a5b55a69e884492d5f'
+            '059217cc009ad22810cca7e359031daed565dd64e813ca010a66de8cdd1a2c6a')
 
 prepare() {
   cd "sglang-${_sglang_ver}"
   patch -p1 < "${srcdir}/remove-thc-atomics.patch"
+  patch -p1 < "${srcdir}/unpin-build-dependencies.patch"
 }
 
 build() {
   cd "sglang-${_sglang_ver}/${_pkgname}"
-  # Cap parallel nvcc processes via MAKEFLAGS (set in /etc/makepkg.conf).
-  # Each nvcc job peaks at several GB; uncapped builds OOM on small hosts.
-  [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] && _jobs="${BASH_REMATCH[1]}" || _jobs=1
+  # Four nvcc processes exhaust memory on large kernels; two fit this host.
+  _jobs=2
+  if [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] && (( BASH_REMATCH[1] < _jobs )); then
+    _jobs="${BASH_REMATCH[1]}"
+  fi
   export MAX_JOBS=$_jobs
   export CMAKE_BUILD_PARALLEL_LEVEL=$_jobs
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export CMAKE_ARGS="${CMAKE_ARGS:--DSGL_KERNEL_COMPILE_THREADS=1}"
-  python -m build --wheel --no-isolation --skip-dependency-check
+  export CUDAHOSTCXX=/usr/bin/g++-15
+  export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
+  python -m build --wheel --no-isolation --skip-dependency-check \
+    -C build-dir="${srcdir}/skbuild"
 }
 
 package() {

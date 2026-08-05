@@ -1,6 +1,6 @@
 pkgbase = python-sgl-kernel
 	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
-	pkgver = 0.4.1
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
@@ -13,14 +13,16 @@ pkgbase = python-sgl-kernel
 	makedepends = python-sympy
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
-	depends = python>=3.10
+	makedepends = gcc15
+	depends = python
 	depends = python-pytorch
 	depends = cuda
 	options = !strip
-	source = sglang-0.5.10.post1.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.10.post1.tar.gz
+	source = sglang-0.5.16.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.16.tar.gz
 	source = remove-thc-atomics.patch
-	sha256sums = 2080e7d8802094ae2b92dead1c6788b7aa2a2ccd06d8ba221bbc5b43d4cb7786
-	sha256sums = SKIP
+	source = unpin-build-dependencies.patch
+	sha256sums = 28003e0c210319d06f783333a3c99770c47129fd064f0f057634737e3d5268b6
+	sha256sums = 27955a907c7513ad4e9f18a0140bef1eb8d02d5d6c7e62a5b55a69e884492d5f
+	sha256sums = 059217cc009ad22810cca7e359031daed565dd64e813ca010a66de8cdd1a2c6a
 
 pkgname = python-sgl-kernel
