@@ -6,7 +6,7 @@
 # provides, so pacman offers this as one of the choices when `wdm` is installed
 # on its own.
 pkgname=wdm-gtk-greeter
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='GTK4 greeter for wdm'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # See the note in the `wdm` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one.
-sha256sums=('8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd')
+sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
