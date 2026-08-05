@@ -1,0 +1,17 @@
+pkgbase = codemark-bin
+	pkgdesc = A semantic code bookmarking system for humans and agents
+	pkgver = 0.7.28
+	pkgrel = 1
+	url = https://github.com/DanielCardonaRojas/codemark
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = zlib
+	provides = codemark
+	provides = codemark-tui
+	conflicts = codemark
+	options = !strip
+	source_x86_64 = codemark-x86_64-0.7.28.txz::https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.28/codemark-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 18022db41fd6a04b4ab823351a567423e4bea5be3af34597ed20866eeea4e24a
+
+pkgname = codemark-bin
