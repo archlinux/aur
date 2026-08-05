@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo at gmail dot com>
 
 pkgname=alacrium-browser
-pkgver=151.0.7922.71
+pkgver=151.0.7922.76
 pkgrel=1
 pkgdesc='Performance-focused Chromium browser tracking stable releases'
 arch=('x86_64')
@@ -47,7 +47,6 @@ makedepends=(
   'perl'
   'pkgconf'
   'python'
-  'rpm-tools'
   'rust'
   'unzip'
   'wget'
@@ -60,7 +59,7 @@ optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
 )
 options=('!debug' '!strip')
-_commit=028ee37e0da2eda3f069f380e40322faddf2a39b
+_commit=bc1e67bcc9e99bc12d3567ac9b556d79ce636df0
 _depot_tools_commit=7bd73dcd391b3f83437f2bd50724c04044806728
 source=(
   "alacrium::git+https://github.com/brauliobo/alacrium.git#commit=${_commit}"
@@ -94,12 +93,10 @@ build() {
 }
 
 package() {
-  local rpm_path="$srcdir/alacrium/chromium/src/out/alacrium/alacrium-browser_${pkgver}_AVX.rpm"
+  local deb_path="$srcdir/alacrium/chromium/src/out/alacrium/alacrium-browser_${pkgver}_AVX.deb"
 
-  rpm2cpio "$rpm_path" | bsdtar -xf - -C "$pkgdir"
+  bsdtar -xOf "$deb_path" data.tar.xz | bsdtar -xf - -C "$pkgdir"
   rm -rf "$pkgdir/etc/cron.daily"
-  ln -s /opt/alacrium-browser/alacrium-browser \
-    "$pkgdir/usr/bin/alacrium-browser"
   chmod 4755 "$pkgdir/opt/alacrium-browser/chrome-sandbox"
   install -Dm644 "$srcdir/alacrium/LICENSE.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
