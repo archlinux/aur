@@ -1,0 +1,17 @@
+pkgbase = deeptools
+	pkgdesc = Tools to process and analyze deep sequencing data (ChIP-seq, ATAC-seq, RNA-seq, etc.)
+	pkgver = 3.5.6
+	pkgrel = 1
+	url = https://github.com/deeptools/deepTools
+	arch = x86_64
+	license = GPL3
+	makedepends = uv
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-plotly
+	depends = python-numpydoc
+	options = !strip
+
+pkgname = deeptools
