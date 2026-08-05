@@ -2,14 +2,14 @@
 pkgname=adtpro-git
 _pkgname=adtpro
 pkgver=2.1.0.r17.g3580637
-pkgrel=1
+pkgrel=2
 pkgdesc="Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world."
 arch=('x86_64')
 url="https://adtpro.com/"
 license=('GPL2')
 depends=(java-runtime-common)
 optdepends=(java-environment)
-makedepends=('cc65' 'git')
+makedepends=('cc65' 'git' 'ant')
 source=(
   "${_pkgname}::git+https://github.com/ADTPro/adtpro.git"
   "adtpro-system-property-propertyfile.patch"
