@@ -1,6 +1,6 @@
 pkgbase = waywallen
 	pkgdesc = Wallpaper Manager for Linux.
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
@@ -30,22 +30,22 @@ pkgbase = waywallen
 	depends = zstd
 	optdepends = waywallen-display: Required for layer-shell based compositors
 	options = !lto
-	source = git+https://github.com/waywallen/waywallen.git#tag=v0.2.6
-	source = git+https://github.com/litocpp/rstd.git#commit=bf5f855ddb1b84390306e0913b89149ac72a3510
-	source = git+https://github.com/litocpp/vvk.git#commit=8fcfd34b43a13ade515f029b0b4209bd3684645f
-	source = git+https://github.com/hypengw/ncrequest.git#commit=37d3c588fb1307dd6c40fbc8681790b45eb5402a
+	source = git+https://github.com/waywallen/waywallen.git#tag=v0.3.0
+	source = git+https://github.com/litocpp/rstd.git#commit=c697a4b08cbb9183f78c18915f59c8f72dac5d14
+	source = git+https://github.com/litocpp/vvk.git#commit=b6b1cc66e3cce61307f71c5479b3a774555d3c13
+	source = git+https://github.com/hypengw/ncrequest.git#commit=8d703215bc9154618bc84d2c8517ff7b264c93f3
 	source = git+https://github.com/hypengw/wavsen.git#commit=e49fc62fdc1b57abeabb643daa6ebab96fb3821f
-	source = git+https://github.com/hypengw/QmlMaterial.git#commit=628f580b60f8e7195447ec9e27dae5cce5b0fcbc
-	source = git+https://github.com/hypengw/QExtra.git#commit=2106172c8c55693248661f5ddfc0623ff489285d
+	source = git+https://github.com/hypengw/QmlMaterial.git#commit=00cef02036d6de4b8d7017e786bbe970c09e8441
+	source = git+https://github.com/hypengw/QExtra.git#commit=37724d1fd44fc013e938652e2fcb25897be10e63
 	source = 0001-cmake-Use-system-VulkanMemoryAllocator.patch
 	source = 0002-cmake-Use-system-Corrosion.patch
-	sha256sums = ea8f6c36859ccda93572b186d3058845d303a505f3c16489ff550a11575276e2
-	sha256sums = a5ce0c3f766a5b75230cb05e5b9f49f52a8d10111e0391d418f27a239194e310
-	sha256sums = 1c2f9e285109a2024219212781202d19bbef56a68c6dff42a5622155b2d8276f
-	sha256sums = c3bc9687c54234441ec948d7f80aaf9ddbb0f39c5dfb90bea78bf9fddb985b09
+	sha256sums = 419bb2f191f660db2a6aaebf97b3e67cc74a9a43b6df491ee5a5a038a8bce29f
+	sha256sums = 9212c0d959a648801a005f8509699cc34dbb8fb2444a4eaedb0b922570ae77d5
+	sha256sums = 05648e073a4a4021c926505f1b7dcfd27a2e0f0b0cb4e4042f562b357234c7a1
+	sha256sums = b3f16f62ec17f40281c245b0ac91e74ca050c910d4c65cee7cab404a6317ac9b
 	sha256sums = d3bd59f908243f5e87f1c42e3340ee70eeaf6c86315c48726dc50fc07904791e
-	sha256sums = f0c92c0a8d9918ccd2a296ec67ab1b8e95e79fd17cd52af4e7f281f826a956b2
-	sha256sums = 7c8d8909c48c921b4bd00a1b710cf8563f37c46a1aaafff236060ee17a9bebfd
+	sha256sums = b8d38d646af4bb7ea4da93cfc8696ccab4f4dad5da4357260510bd6c28411da2
+	sha256sums = cedc39d7e9872da3b0a69f2666e0334f0fe26786b67cf259fa9702227685ae93
 	sha256sums = 2a8c44a7caa2f8424528cd69d0118268dd3e36015cc003f5b39a4fdac4fbdfe4
 	sha256sums = 7d45ef8daaec6e006a7f2514657079c9dd8f046bcb252a4227ad34cd34a02727
 
