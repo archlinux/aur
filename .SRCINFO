@@ -1,6 +1,6 @@
 pkgbase = omarchy-cast
 	pkgdesc = Desktop mirroring for Omarchy/Hyprland to AirPlay receivers (experimental Google Cast support)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mrCode/omarchy-cast
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = omarchy-cast
 	optdepends = waybar: status indicator
 	optdepends = libnotify: desktop notifications on failure
 	optdepends = gst-plugins-ugly: software x264 encoding fallback
-	source = omarchy-cast-0.1.0.tar.gz::https://github.com/mrCode/omarchy-cast/archive/v0.1.0.tar.gz
-	sha256sums = 47455b1f6f0cd87ba49d987b07ca431fa79481cae2fb8cbfb9c884d2f689fa4d
+	source = omarchy-cast-0.1.1.tar.gz::https://github.com/mrCode/omarchy-cast/archive/v0.1.1.tar.gz
+	sha256sums = 1e03afd9fadda0d3bdc8ee7d6099202b1f36d19c333072266a0e62991fa13cfd
 
 pkgname = omarchy-cast
