@@ -1,0 +1,6 @@
+[bettbox-compatible]
+source = 'git'
+git = 'https://github.com/appshubcc/Bettbox.git'
+include_regex = '^v\d+\.\d+\.\d+(-pre\d+)?$'
+from_pattern = 'v(.+?)(?:-(.+))?$'
+to_pattern = '\1\2'
