@@ -1,6 +1,6 @@
 pkgbase = makko-beta-bin
 	pkgdesc = A simple Static Site Generator written in Zig (prerelease version).
-	pkgver = 3.0.0_pre2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://makko.starlightnet.work/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = makko-beta-bin
 	options = !debug
 	source = https://forge.starlightnet.work/Team/Makko/raw/branch/main/LICENSE
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
-	source_x86_64 = makko-3.0.0_pre2-x86_64::https://forge.starlightnet.work/Team/Makko/releases/download/3.0.0-pre2/makko-x86_64-linux
-	sha256sums_x86_64 = 3c11979e602937d44200b25e674bd87624c39539595679a59728d2f69c0988b5
-	source_aarch64 = makko-3.0.0_pre2-aarch64::https://forge.starlightnet.work/Team/Makko/releases/download/3.0.0-pre2/makko-aarch64-linux
-	sha256sums_aarch64 = 98916f5e55e9b2a55a8d6695d81e0af9bfbeb18736d74c6279f8c26330af329e
+	source_x86_64 = makko-3.0.0-x86_64::https://forge.starlightnet.work/Team/Makko/releases/download/3.0.0/makko-x86_64-linux
+	sha256sums_x86_64 = 4e5733fbc50b6620b4fcd53de74ade154be616f1ceecebf5acf59a0833ed1b28
+	source_aarch64 = makko-3.0.0-aarch64::https://forge.starlightnet.work/Team/Makko/releases/download/3.0.0/makko-aarch64-linux
+	sha256sums_aarch64 = 8e97188952219485340b9e1b81d3ac05cfd33a13cd2534870a2562b4fb65af03
 
 pkgname = makko-beta-bin
