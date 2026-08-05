@@ -1,11 +1,61 @@
+_desktop_accounts() {
+    # Package scriptlets run as root, where USER=root and SUDO_USER is often
+    # unset (notably with paru). Read real login accounts from passwd instead.
+    getent passwd | awk -F: '$3 >= 1000 && $3 < 60000 && $6 ~ /^\// { print $1 ":" $3 ":" $6 }'
+}
+
+_active_desktop_user() {
+    if [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != "root" ]; then
+        printf '%s\n' "$SUDO_USER"
+        return
+    fi
+    local account name uid home
+    while IFS=: read -r name uid home; do
+        if [ -S "/run/user/${uid}/bus" ]; then
+            printf '%s\n' "$name"
+            return
+        fi
+    done < <(_desktop_accounts)
+}
+
+_remove_duplicate_nautilus_extensions() {
+    local system_ext local_ext name uid home user_ext
+
+    # Meson installs made with its default /usr/local prefix can coexist with
+    # the Arch package in /usr. Nautilus scans both prefixes and would create
+    # the same menu twice. The packaged /usr copy is authoritative.
+    system_ext="/usr/share/nautilus-python/extensions/pkgbuild_manager.py"
+    local_ext="/usr/local/share/nautilus-python/extensions/pkgbuild_manager.py"
+    if [ -f "$system_ext" ] && { [ -f "$local_ext" ] || [ -L "$local_ext" ]; }; then
+        rm -f -- "$local_ext"
+        echo ">>> Removed duplicate Nautilus extension: $local_ext"
+    fi
+
+    while IFS=: read -r name uid home; do
+        user_ext="$home/.local/share/nautilus-python/extensions/pkgbuild_manager.py"
+        if [ -f "$user_ext" ] || [ -L "$user_ext" ]; then
+            rm -f -- "$user_ext"
+            echo ">>> Removed duplicate Nautilus extension for $name: $user_ext"
+        fi
+    done < <(_desktop_accounts)
+}
+
 post_install() {
     echo ">>> PKGBUILD Manager installed."
     echo ">>> Right-click any PKGBUILD file to see the PKGBUILD submenu."
     echo ">>> Press Ctrl+Alt+P to open the menu settings panel."
 
+    # Nautilus scans both system and per-user extension directories. A stale
+    # user copy instantiates a second MenuProvider and duplicates the option.
+    # This package's system extension is authoritative when installed.
+    _remove_duplicate_nautilus_extensions
+
     # Register Ctrl+Alt+P shortcut (GNOME only, only if slot is free)
     if command -v gsettings &>/dev/null; then
-        _user="${SUDO_USER:-$USER}"
+        _user="$(_active_desktop_user)"
+        if [ -z "$_user" ]; then
+            echo ">>> No active desktop user found; skipping keyboard shortcut."
+        else
         _uid=$(id -u "$_user" 2>/dev/null)
         _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
         _gset="runuser -u $_user -- env $_env gsettings"
@@ -19,16 +69,20 @@ post_install() {
             _new=$(echo "$_current" | sed "s|]$|, '$_binding']|" | sed "s|\[\]|['$_binding']|")
             ${_gset} set org.gnome.settings-daemon.plugins.media-keys \
                 custom-keybindings "$_new" 2>/dev/null || true
-            ${_gset} set \
-                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
-                name "PKGBUILD Manager Settings" 2>/dev/null || true
-            ${_gset} set \
-                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
-                command "pkgbuild-manager-settings" 2>/dev/null || true
-            ${_gset} set \
-                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
-                binding "<Control><Alt>p" 2>/dev/null || true
-            echo ">>> Keyboard shortcut Ctrl+Alt+P registered."
+        fi
+
+        # Always refresh the keys. This migrates shortcuts created by older
+        # releases whose command was `pkgbuild-manager-settings`.
+        ${_gset} set \
+            org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+            name "PKGBUILD Manager Settings" 2>/dev/null || true
+        ${_gset} set \
+            org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+            command "pkgbuild-manager-gui settings" 2>/dev/null || true
+        ${_gset} set \
+            org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+            binding "<Control><Alt>p" 2>/dev/null || true
+        echo ">>> Keyboard shortcut Ctrl+Alt+P registered/updated."
         fi
     fi
 
@@ -37,7 +91,7 @@ post_install() {
     if command -v nautilus &>/dev/null; then
         _detected=1
         if ! pacman -Q python-nautilus &>/dev/null 2>&1; then
-            echo ">>> Nautilus detected — install python-nautilus for right-click support:"
+            echo ">>> Nautilus detected -- install python-nautilus for right-click support:"
             echo ">>>   sudo pacman -S python-nautilus"
             echo ">>> Then run: nautilus -q"
         else
@@ -47,7 +101,7 @@ post_install() {
     if command -v nemo &>/dev/null; then
         _detected=1
         if ! pacman -Q nemo-python &>/dev/null 2>&1; then
-            echo ">>> Nemo detected — install nemo-python for right-click support:"
+            echo ">>> Nemo detected -- install nemo-python for right-click support:"
             echo ">>>   sudo pacman -S nemo-python"
         else
             echo ">>> Nemo extension ready."
@@ -56,7 +110,7 @@ post_install() {
     if command -v caja &>/dev/null; then
         _detected=1
         if ! pacman -Q python-caja &>/dev/null 2>&1; then
-            echo ">>> Caja detected — install python-caja for right-click support:"
+            echo ">>> Caja detected -- install python-caja for right-click support:"
             echo ">>>   sudo pacman -S python-caja"
         else
             echo ">>> Caja extension ready."
@@ -64,7 +118,7 @@ post_install() {
     fi
     if command -v dolphin &>/dev/null; then
         _detected=1
-        echo ">>> Dolphin detected — right-click service menu installed automatically."
+        echo ">>> Dolphin detected -- right-click service menu installed automatically."
     fi
     if [ "$_detected" -eq 0 ]; then
         echo ">>> No supported file manager detected."
@@ -73,25 +127,70 @@ post_install() {
 }
 
 post_upgrade() {
-    _user="${SUDO_USER:-$USER}"
-    _scripts="$(eval echo ~$_user)/.local/share/nautilus/scripts"
-    if [ -d "$_scripts/PKGBUILD" ]; then
-        rm -rf "$_scripts/PKGBUILD"
-        echo ">>> Removed stale PKGBUILD symlink directory from previous version."
+    # FIX: clean up stale entries from previous versions for ALL supported
+    # file managers, not just Nautilus. Older versions could leave behind
+    # directories/symlinks in Nemo, Caja, and Dolphin that were never removed
+    # on upgrade.
+
+    while IFS=: read -r _user _uid _user_home; do
+    # Nautilus
+    _nautilus_scripts="$_user_home/.local/share/nautilus/scripts"
+    if [ -d "$_nautilus_scripts/PKGBUILD" ]; then
+        rm -rf "$_nautilus_scripts/PKGBUILD"
+        echo ">>> Removed stale PKGBUILD dir from Nautilus scripts."
     fi
+
+    # Nemo
+    _nemo_scripts="$_user_home/.local/share/nemo/scripts"
+    if [ -d "$_nemo_scripts/PKGBUILD" ]; then
+        rm -rf "$_nemo_scripts/PKGBUILD"
+        echo ">>> Removed stale PKGBUILD dir from Nemo scripts."
+    fi
+
+    # Caja
+    _caja_scripts="$_user_home/.local/share/caja/scripts"
+    if [ -d "$_caja_scripts/PKGBUILD" ]; then
+        rm -rf "$_caja_scripts/PKGBUILD"
+        echo ">>> Removed stale PKGBUILD dir from Caja scripts."
+    fi
+
+    # Dolphin service menus (old versions used ~/.local/share/kservices5)
+    _dolphin_old="$_user_home/.local/share/kservices5/pkgbuild-manager.desktop"
+    if [ -f "$_dolphin_old" ]; then
+        rm -f "$_dolphin_old"
+        echo ">>> Removed stale Dolphin service menu entry."
+    fi
+    done < <(_desktop_accounts)
+
     post_install
 }
 
 post_remove() {
     if command -v gsettings &>/dev/null; then
-        _user="${SUDO_USER:-$USER}"
+        _user="$(_active_desktop_user)"
+        [ -n "$_user" ] || return 0
         _uid=$(id -u "$_user" 2>/dev/null)
         _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
         _gset="runuser -u $_user -- env $_env gsettings"
         _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
         _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
             custom-keybindings 2>/dev/null || echo "[]")
-        _new=$(echo "$_current" | sed "s|, '$_binding'||" | sed "s|'$_binding', ||" | sed "s|'$_binding'||")
+
+        # FIX: the previous multi-sed approach left the list corrupted when the
+        # binding was the only element (resulting in '[, ]' or an invalid '[]').
+        # Now uses Python to safely parse and filter the GSettings list.
+        _new=$(python3 - "$_current" "$_binding" <<'PYEOF'
+import sys, ast
+current_str = sys.argv[1].strip()
+binding = sys.argv[2]
+try:
+    lst = ast.literal_eval(current_str)
+except Exception:
+    lst = []
+lst = [x for x in lst if x != binding]
+print(repr(lst).replace('"', "'"))
+PYEOF
+        )
         ${_gset} set org.gnome.settings-daemon.plugins.media-keys \
             custom-keybindings "$_new" 2>/dev/null || true
     fi
