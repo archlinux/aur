@@ -1,13 +1,12 @@
 pkgbase = autokey
 	pkgdesc = A desktop automation utility for Linux and X11
 	pkgver = 0.96.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/autokey/autokey
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pyqt5
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	source = autokey-0.96.0.tar.gz::https://github.com/autokey/autokey/archive/v0.96.0.tar.gz
@@ -40,12 +39,3 @@ pkgname = autokey-gtk
 	depends = python-gobject
 	depends = zenity
 	optdepends = python-atspi
-
-pkgname = autokey-qt
-	pkgdesc = A desktop automation utility for Linux and X11 - Qt frontend
-	depends = autokey-common
-	depends = kdialog
-	depends = python-pyqt5
-	depends = python-qscintilla-qt5
-	depends = qt5-svg
-	optdepends = qt-at-spi

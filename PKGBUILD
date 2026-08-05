@@ -4,11 +4,11 @@
 pkgname=(
   'autokey-common'
   'autokey-gtk'
-  'autokey-qt'
+  # 'autokey-qt'
 )
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=9
+pkgrel=10
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -16,7 +16,6 @@ license=('GPL-3.0-or-later')
 makedepends=(
   'python-build'
   'python-installer'
-  'python-pyqt5'
   'python-setuptools'
   'python-wheel'
 )
@@ -123,10 +122,10 @@ package_autokey-qt() {
     'autokey-common'
     'kdialog'
     'python-pyqt5'
-    'python-qscintilla-qt5'
+    'python-qscintilla-qt5'  ## no longer in repos
     'qt5-svg'
   )
-  optdepends=('qt-at-spi')
+  optdepends=('qt-at-spi')  ## no longer in repos
 
   cd "$pkgbase-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
