@@ -16,19 +16,12 @@ checkdepends=(gmock gtest python)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
-source=("git+$url.git"
-        0001-Fix-build-failure-missing-include-of-optional.patch)
-b2sums=('SKIP'
-        'eb2bc196cbd1c084ed81c4664bbffa2c57f5aa743a9928347003ed062479bb78cc9bfed6fd9346067f0e2fae062d9707f90662a70a93d6d6b9706380339c2f75')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd $_pkgname
-	patch -Np1 -i ../0001-Fix-build-failure-missing-include-of-optional.patch
 }
 
 build() {
