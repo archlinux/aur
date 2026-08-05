@@ -2,17 +2,17 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
-pkgver=1.10.59
+pkgver=1.10.60
 pkgrel=1
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
 url="https://carlh.net/libdcp"
 license=('GPL-2.0-or-later')
-depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'libharu>=2.4.5' 'openjpeg2>=2.5' 'libcxml>=0.17.17' 'libsigc++>=2.0' 'boost-libs>=1.91.0' 'xerces-c'  'libasdcp-cth>=1.0.9')
+depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'libharu>=2.4.5' 'openjpeg2>=2.5' 'libcxml>=0.17.17' 'libsigc++>=2.0' 'boost-libs>=1.91.0' 'xerces-c'  'libasdcp-cth>=1.0.10')
 makedepends=('git' 'python' 'boost>=1.91.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('9568a65beef074a99cc29ebaf76b80f73fbe40429eeafc54fff985259e77b966')
+sha256sums=('e016b2d3bb03f1f68115cc96d8ec2b2a18ca32683241491b1117f5be2070aad0')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
