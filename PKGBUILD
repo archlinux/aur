@@ -1,7 +1,7 @@
 appname=zen
 pkgname="${appname}-adblocker-git"
 _pkgname=Zen
-pkgver=0.24.1
+pkgver=0.24.1.r6.ge9451ef
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
@@ -14,7 +14,7 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     'networkmanager'
     'glib2'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'npm'
@@ -58,7 +58,7 @@ build() {
 		echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> frontend/.npmrc
     fi
     NODE_ENV=development npm install --prefix frontend
-    wails build -o "${pkgname%-git}" -platform "linux" -ldflags "-X ./internal/cfg.Version=${pkgver}" -m -skipbindings
+    wails build -tags "prod webkit2_41" -o "${pkgname%-git}" -platform "linux" -ldflags "-X ./internal/cfg.Version=${pkgver}" -m -skipbindings
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/build/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
