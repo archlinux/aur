@@ -1,7 +1,7 @@
 # Maintainer: Roland Plüss <roland@dragondreams.ch>
 pkgname=('democap')
 pkgbase=democap
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Drag[en]gine motion capture using VR hardware"
 arch=('any')
