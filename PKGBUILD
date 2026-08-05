@@ -5,7 +5,7 @@ pkgname=lameta
 pkgver=3.0.21_beta
 _upstream_pkgver="${pkgver//_/-}"
 _electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
-pkgrel=1
+pkgrel=2
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
 arch=('x86_64')
 url="https://github.com/onset/lameta"
@@ -20,15 +20,13 @@ depends=(
     nodejs
 )
 makedepends=(
-    asar
-#    npm
     yarn
 )
 source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${_upstream_pkgver}.tar.gz"
     "${pkgname}.desktop"
-  'no_node_pin.patch'
-  'use_native_ffprobe.patch'
+    'no_node_pin.patch'
+    'use_native_ffprobe.patch'
 )
 sha256sums=('90d9a1ff58efd6e30474f03adcc6d8695a146c0b09d7eacd540dfc102bc0ae07'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
@@ -42,14 +40,12 @@ prepare() {
     patch --forward --strip=1 --input="${srcdir}/no_node_pin.patch"
     echo "Applying patch to use system ffprobe"
     patch --strip=1 --input="${srcdir}/use_native_ffprobe.patch"
-    echo "Fixing (stopgap) wrong version in package.json"
-    echo "  see https://github.com/onset/lameta/pull/71"
+    echo "Fixing wrong version in package.json, see https://github.com/onset/lameta/pull/71"
     sed -i 's/3.0.9-alpha/'"$_upstream_pkgver"'/g' package.json
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${_upstream_pkgver}"
-    yarn
     yarn install --frozen-lockfile
     yarn build
     yarn strings:compile
@@ -70,7 +66,7 @@ package() {
             "$pkgdir/usr/share/icons/$pkgname/$pkgname.png"
     install -dm755 "${pkgdir}/var/log/lameta"
     install -d "$pkgdir/usr/lib/$pkgname/"
-    asar e "release/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
+    ./node_modules/.bin/asar e "release/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
     install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
     cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
 #! /usr/bin/sh

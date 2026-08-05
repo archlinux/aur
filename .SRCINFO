@@ -1,11 +1,10 @@
 pkgbase = lameta
 	pkgdesc = The Metadata Editor for Transparent Archiving of language document materials
 	pkgver = 3.0.21_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onset/lameta
 	arch = x86_64
 	license = MIT
-	makedepends = asar
 	makedepends = yarn
 	depends = bash
 	depends = electron39
