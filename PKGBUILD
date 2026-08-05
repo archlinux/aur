@@ -12,9 +12,10 @@
 # fail on every machine without Qt — so there is no `cargo fetch --locked` and no
 # RUSTUP_TOOLCHAIN here, and rust is not a build dependency at all.
 pkgname=wdm-plasma-greeter
-# v0.8.0 is the first release whose tarball contains greeters/plasma, so it is
-# the earliest this package can name. All four wdm packages are at it.
-pkgver=0.8.0
+# All four wdm packages share a pkgver, because they are built from one tarball
+# and share one checksum. v0.8.0 was the first release containing
+# greeters/plasma, so nothing earlier than that is installable here.
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Qt6/QML greeter for wdm, with themes written in QML'
 arch=('x86_64' 'aarch64')
@@ -50,7 +51,7 @@ source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # See the note in the `wdm` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one. Never SKIP —
 # for a source that is a URL, SKIP means makepkg builds whatever arrives.
-sha256sums=('8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd')
+sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
