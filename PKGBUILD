@@ -1,8 +1,8 @@
-# Maintainer: TexturedPolak <rafal200725@gmail.com>
+# Maintainer: TexturedPolak <texturedpolak@gmail.com>
 # Contributor: Felix Leblanc <felix.leblanc1305@gmail.com>
 _name=tinytag
 pkgname=python-$_name
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Read music meta data and length of MP3, OGG, FLAC and Wave files"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.7.0-1')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core>=3.2.0-1')
 checkdepends=('python-pytest')
 source=("https://github.com/devsnd/$_name/archive/$pkgver.tar.gz")
-sha256sums=('181743a8f98864a5da6abc1ccc7cd0a348c06893769cd6b31f04f3b1148c98b1')
+sha256sums=('4cca50f734a6e3b2cc2aaf96c904a9476ca73cdfc0f203f7c7477fa77761ea60')
 validpgpkeys=()
 
 prepare(){
