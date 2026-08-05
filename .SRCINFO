@@ -1,6 +1,6 @@
 pkgbase = python-nostalgiaforinfinity
 	pkgdesc = Trading strategy for the Freqtrade crypto bot.
-	pkgver = 17.4.379
+	pkgver = 17.4.503
 	pkgrel = 1
 	url = https://github.com/iterativv/NostalgiaForInfinity
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-nostalgiaforinfinity
 	depends = python-rapidjson
 	depends = python-ta-lib
 	depends = python-technical
-	source = python-nostalgiaforinfinity-v17.4.379.tar.gz::https://github.com/iterativv/NostalgiaForInfinity/archive/refs/tags/v17.4.379.tar.gz
-	sha512sums = 839caf6ba848c743dd4628aa8254da3dd31c6032b1b80c50d0d8b29c313feab43aef664b93ae6839118075d3620129af741ef0a5b91a13d6fcbc46be28ad98ea
+	source = python-nostalgiaforinfinity-v17.4.503.tar.gz::https://github.com/iterativv/NostalgiaForInfinity/archive/refs/tags/v17.4.503.tar.gz
+	sha512sums = 46969f40179d0a8bc565aee0a8c28ef711dfd0e8935eb01c7721d129b76ba74a4fb02f0a9a144526dfc4deb07bf757a5d7b6c5636b4a5d0c35cbcd4f5127360b
 
 pkgname = python-nostalgiaforinfinity
