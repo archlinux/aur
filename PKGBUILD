@@ -13,6 +13,7 @@ checkdepends=('python-pytest')
 options=(!makeflags)
 optdepends=('python-dbus: to communicate with external applications'
 	    'python-pyenchant: for spell checking functionality'
+	    'hunspell-dictionary: enchant compatible dictionaries'
 	    'languagetool: used by the check-grammar sieve'
 	    'apertium: used by the pomtrans script'
 	    'git: for processing files under version control'

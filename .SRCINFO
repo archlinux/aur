@@ -17,6 +17,7 @@ pkgbase = pology-git
 	depends = gettext
 	optdepends = python-dbus: to communicate with external applications
 	optdepends = python-pyenchant: for spell checking functionality
+	optdepends = hunspell-dictionary: enchant compatible dictionaries
 	optdepends = languagetool: used by the check-grammar sieve
 	optdepends = apertium: used by the pomtrans script
 	optdepends = git: for processing files under version control
