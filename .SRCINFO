@@ -1,0 +1,25 @@
+pkgbase = wdm-plasma-greeter
+	pkgdesc = Qt6/QML greeter for wdm, with themes written in QML
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/quinnjr/wdm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = wayland
+	makedepends = catch2
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = layer-shell-qt
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = layer-shell-qt
+	depends = wayland
+	provides = wdm-greeter-implementation
+	source = wdm-0.8.0.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd
+
+pkgname = wdm-plasma-greeter
