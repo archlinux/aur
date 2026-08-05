@@ -1,6 +1,6 @@
 pkgbase = passy
 	pkgdesc = Offline password manager with cross-platform synchronization
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://glitterware.github.io/Passy
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = passy
 	depends = libayatana-appindicator
 	depends = mpv
 	options = !strip
-	source = git+https://github.com/GlitterWare/Passy.git#commit=cb2c41e600b825b4c127497d27aa509c0df8be3a
+	source = git+https://github.com/GlitterWare/Passy.git#commit=82fe9fa25bbb909a4e45ca83ca14f2718c524ff1
 	sha256sums = SKIP
 
 pkgname = passy

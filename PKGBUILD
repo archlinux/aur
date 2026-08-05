@@ -1,7 +1,7 @@
 # https://aur.archlinux.org/packages/passy
 pkgname=passy
 _app_id=com.glitterware.passy
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Offline password manager with cross-platform synchronization"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://glitterware.github.io/Passy"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'libayatana-appindicator' 'mpv')
 makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja' 'unzip' 'llvm-libs' 'llvm18-libs' 'pkgconf' 'make' 'which')
-_commit=cb2c41e600b825b4c127497d27aa509c0df8be3a  # tags/1.10.1^0
+_commit=82fe9fa25bbb909a4e45ca83ca14f2718c524ff1  # tags/1.10.2^0
 source=("git+https://github.com/GlitterWare/Passy.git#commit=${_commit}")
 sha256sums=('SKIP')
 # Required for Passy CLI
