@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -10,16 +10,16 @@ makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd qt6-base qt6-declar
              gtk4 cargo)
 options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
-        "0001-install-kde-wallpaper-to-correct-path.diff"
-        "0002-install-gnome-extension-to-correct-path.diff")
-sha256sums=('da96113c81de98090f062881c291067d1b8534951f06e13501cb74c68405b8fa'
-            'bb766cd888b1f004c98127b6b74715958ac38a059c3a8c0c5827dc1fd4965e43'
-            '785c3e354f8922e12fbb15b655b0a7e3f8c834a1fbba0e18f19e4643329796fd')
+        "0001-cmake-Install-kde-wallpaper-to-correct-path.patch"
+        "0002-cmake-Install-gnome-extensions-separately.patch")
+sha256sums=('5a5f52ce0a8759d699783e453f1c94e7ccaac4faf94d434256084e98efbf7679'
+            '1cfbc0f7388e2be1e9a4385d5d0310fabf28e930ad4c0fc8ff17d82795e98140'
+            '5593469af684d71870cc6d41678ac2201879617f0538cc5c947fc990cb057c30')
 
 prepare() {
     cd "$pkgbase-$pkgver"
-    patch -Np1 -i ../0001-install-kde-wallpaper-to-correct-path.diff
-    patch -Np1 -i ../0002-install-gnome-extension-to-correct-path.diff
+    patch -Np1 -i ../0001-cmake-Install-kde-wallpaper-to-correct-path.patch
+    patch -Np1 -i ../0002-cmake-Install-gnome-extensions-separately.patch
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
 }
@@ -60,7 +60,6 @@ package_plasma-wallpaper-waywallen() {
     arch=(any)
     depends=(waywallen-display qt6-base qt6-declarative libplasma kirigami plasma-workspace)
     DESTDIR="$pkgdir" cmake --install build --component kde_extension
-    rm -r "$pkgdir/usr/share/plasma/wallpapers/org.waywallen.kde/contents/ui/WaywallenDisplayEmbed"
     install -Dm644 "$pkgbase-$pkgver/extensions/kde/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 

@@ -1,6 +1,6 @@
 *
-!0001-install-kde-wallpaper-to-correct-path.diff
-!0002-install-gnome-extension-to-correct-path.diff
+!0001-cmake-Install-kde-wallpaper-to-correct-path.patch
+!0002-cmake-Install-gnome-extensions-separately.patch
 !PKGBUILD
 !.SRCINFO
 !.gitignore
