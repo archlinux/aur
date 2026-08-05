@@ -7,7 +7,7 @@
 # itself never drags GTK4, WebKitGTK or Qt 6 into a build chroot.
 pkgbase=wdm
 pkgname=('wdm' 'wdm-greeter')
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A Wayland display manager that is its own compositor'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Never SKIP. SKIP would let makepkg accept whatever arrives, which for a source
 # that is a URL is the wrong failure — a tarball substituted upstream would be
 # built and installed without a word.
-sha256sums=('8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd')
+sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
