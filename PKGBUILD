@@ -2,12 +2,12 @@
 
 # The compositor and the reference greeter, which is the only one with no
 # toolkit dependency — so this package builds with nothing but the display
-# stack. The GTK and WebKitGTK greeters are separate AUR packages precisely so
-# that installing one does not make you build the other, and so that `wdm`
-# itself never drags GTK4 or WebKitGTK into a build chroot.
+# stack. The GTK, WebKitGTK and Qt greeters are separate AUR packages precisely
+# so that installing one does not make you build the others, and so that `wdm`
+# itself never drags GTK4, WebKitGTK or Qt 6 into a build chroot.
 pkgbase=wdm
 pkgname=('wdm' 'wdm-greeter')
-pkgver=0.3.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A Wayland display manager that is its own compositor'
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,14 @@ makedepends=('cargo' 'libinput' 'seatd' 'systemd-libs' 'mesa' 'libdrm'
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # The published tarball's checksum, not one computed from a local `git archive`:
 # GitHub's generated archives are not byte-reproducible from the repository, so
-# a locally derived value fails integrity checking for everyone else. Regenerate
+# a locally derived value fails integrity checking for everyone else. All four
+# wdm packages build from this one tarball and share this one value. Regenerate
 # with `updpkgsums` after each tag, before publishing.
-sha256sums=('6bb8ce1ba62c87062ecd2d1e74c9fb1eb1b5b3bf4703efde60fee86fed6b545c')
+#
+# Never SKIP. SKIP would let makepkg accept whatever arrives, which for a source
+# that is a URL is the wrong failure — a tarball substituted upstream would be
+# built and installed without a word.
+sha256sums=('8928a26d7b192fa739ed5e9f11013d88f6dcc604c9f58b88edee82c9682a39cd')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
@@ -59,8 +64,8 @@ check() {
 }
 
 package_wdm() {
-  # wdm needs *a* greeter, and each of the three provides the virtual, so pacman
-  # prompts for a choice when only `wdm` is requested. Two of the three now live
+  # wdm needs *a* greeter, and each of the four provides the virtual, so pacman
+  # prompts for a choice when only `wdm` is requested. Three of the four now live
   # in other AUR packages; pacman resolves a virtual regardless of which pkgbase
   # provides it, and `wdm-greeter` below satisfies it with no toolkit at all.
   # The greeters deliberately do not depend on wdm in return: that would make
@@ -80,7 +85,8 @@ package_wdm() {
   depends=('libinput' 'seatd' 'systemd-libs' 'mesa' 'libdrm' 'libxkbcommon'
            'pam' 'wdm-greeter-implementation')
   optdepends=('wdm-gtk-greeter: GTK4 greeter'
-              'wdm-webkit-greeter: WebKitGTK greeter, themed in HTML and CSS')
+              'wdm-webkit-greeter: WebKitGTK greeter, themed in HTML and CSS'
+              'wdm-plasma-greeter: Qt6/QML greeter, themed in QML')
   backup=('etc/pam.d/wdm' 'etc/wdm/wdm.toml')
   install=wdm.install
 
