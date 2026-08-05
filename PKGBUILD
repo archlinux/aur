@@ -1,7 +1,7 @@
 # Maintainer: Brightbites <brightbites667@gmail.com>
 pkgname=tagstudio-bin
 pkgver=9.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A User-Focused Photo & File Management System (pre-compiled)"
 arch=('x86_64')
 url="https://github.com/TagStudioDev/TagStudio"
@@ -31,12 +31,10 @@ package(){
 
     #install the application itself
     install -dm755 "$pkgdir/usr/share/tagstudio/"
-    cp -a "$srcdir/tagstudio"/* "$pkgdir/usr/share/tagstudio/"
+    cp -a * "$pkgdir/usr/share/tagstudio/"
+    rm "$pkgdir/usr/share/tagstudio/${pkgname}-${pkgver}.tar.gz"
+    rm "$pkgdir/usr/share/tagstudio//tagstudio.desktop"
 
     #install .desktop
     install -Dm644 "$srcdir/tagstudio.desktop" "$pkgdir/usr/share/applications/tagstudio.desktop"
-}
-
-post_install(){
-    alias tagstudio='/usr/share/tagstudio/tagstudio'
 }
