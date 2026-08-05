@@ -1,0 +1,43 @@
+[Unit]
+Description=CPA Usage Keeper
+Documentation=https://github.com/Willxup/cpa-usage-keeper
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=cpa-usage-keeper
+Group=cpa-usage-keeper
+WorkingDirectory=/var/lib/cpa-usage-keeper
+ExecStart=/usr/bin/cpa-usage-keeper --env /etc/cpa-usage-keeper/cpa-usage-keeper.env
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+
+StateDirectory=cpa-usage-keeper
+StateDirectoryMode=0750
+UMask=0077
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/cpa-usage-keeper
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallErrorNumber=EPERM
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

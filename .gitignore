@@ -1,0 +1,5 @@
+/pkg
+/src
+*.pkg.tar*
+/cpa-usage-keeper-*.tar.gz
+LICENSE-*
