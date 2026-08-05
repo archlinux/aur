@@ -8,13 +8,13 @@
 
 pkgname=niri-shorin-fork-git
 _pkgname=niri
-pkgver=26.04.r87.gad55ebb
-pkgrel=2
-pkgdesc="Niri fork with grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc."
+pkgver=26.04.r129.g8622b52
+pkgrel=1
+pkgdesc="Niri fork with built-in screencast portal, grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc."
 arch=(x86_64 aarch64)
 url="https://github.com/SHORiN-KiWATA/niri"
 license=(GPL-3.0-or-later)
-depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
+depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd xdg-desktop-portal)
 makedepends=(clang rust git)
 [[ -n "${_sccache}" ]] && makedepends+=(sccache)
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
@@ -23,8 +23,8 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'mako: notification daemon for Wayland'
             'swaybg: wallpaper tool for Wayland compositors'
             'swaylock: screen locker for Wayland'
-            'xdg-desktop-portal-gtk: implements most of the basic functionality'
-            'xdg-desktop-portal-gnome: screencasting support'
+            'pipewire: PipeWire daemon, required at runtime for screen casting'
+            'xdg-desktop-portal-gtk: file chooser and Access impl required by the screenshot portal'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-git=${pkgver}")
@@ -60,5 +60,6 @@ package() {
   install -Dm644 resources/default-config.kdl                       -t "${pkgdir}/usr/share/doc/niri"
   install -Dm644 "resources/${_pkgname}.desktop"                    -t "${pkgdir}/usr/share/wayland-sessions/"
   install -Dm644 "resources/${_pkgname}-portals.conf"               -t "${pkgdir}/usr/share/xdg-desktop-portal/"
+  install -Dm644 "resources/${_pkgname}.portal"                     -t "${pkgdir}/usr/share/xdg-desktop-portal/portals/"
   install -Dm644 "resources/${_pkgname}"{.service,-shutdown.target} -t "${pkgdir}/usr/lib/systemd/user/"
 }

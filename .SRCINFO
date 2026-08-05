@@ -1,7 +1,7 @@
 pkgbase = niri-shorin-fork-git
-	pkgdesc = Niri fork with grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc.
-	pkgver = 26.04.r87.gad55ebb
-	pkgrel = 2
+	pkgdesc = Niri fork with built-in screencast portal, grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc.
+	pkgver = 26.04.r129.g8622b52
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/niri
 	arch = x86_64
 	arch = aarch64
@@ -19,18 +19,19 @@ pkgbase = niri-shorin-fork-git
 	depends = pango
 	depends = pixman
 	depends = seatd
+	depends = xdg-desktop-portal
 	optdepends = fuzzel: application launcher similar to rofi drun mode
 	optdepends = waybar: highly customizable Wayland bar
 	optdepends = alacritty: a cross-platform OpenGL terminal emulator
 	optdepends = mako: notification daemon for Wayland
 	optdepends = swaybg: wallpaper tool for Wayland compositors
 	optdepends = swaylock: screen locker for Wayland
-	optdepends = xdg-desktop-portal-gtk: implements most of the basic functionality
-	optdepends = xdg-desktop-portal-gnome: screencasting support
+	optdepends = pipewire: PipeWire daemon, required at runtime for screen casting
+	optdepends = xdg-desktop-portal-gtk: file chooser and Access impl required by the screenshot portal
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
-	provides = niri=26.04.r87.gad55ebb
-	provides = niri-git=26.04.r87.gad55ebb
+	provides = niri=26.04.r129.g8622b52
+	provides = niri-git=26.04.r129.g8622b52
 	conflicts = niri
 	conflicts = niri-git
 	conflicts = niri-bin
