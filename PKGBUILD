@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="$_pkgname-git"
-pkgver=0.56.0.r1.g5b260fa
+pkgver=0.56.2.r55.gcab296c
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ depends=(
   hyprutils-git
   hyprwire-git
   lcms2
+  libcanberra
   libdisplay-info
   libdrm
   libglvnd
