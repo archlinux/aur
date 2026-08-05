@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'EOF'
+==> CLIProxyAPI requires configuration before use.
+    EDIT /etc/cli-proxy-api/config.yaml.
+    Upstream provides no separate configuration documentation; see the comments in that file.
+
+    To use remote management, configure the remote-management section.
+    Before exposing the service, review and replace the api-keys values.
+EOF
+}

@@ -1,0 +1,41 @@
+[Unit]
+Description=CLIProxyAPI server
+Documentation=https://github.com/router-for-me/CLIProxyAPI
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=cli-proxy-api
+Group=cli-proxy-api
+WorkingDirectory=/var/lib/cli-proxy-api
+Environment=WRITABLE_PATH=/var/lib/cli-proxy-api
+Environment=MANAGEMENT_STATIC_PATH=/var/lib/cli-proxy-api/static
+ExecStart=/usr/bin/cli-proxy-api --config /etc/cli-proxy-api/config.yaml
+Restart=on-failure
+RestartSec=5s
+
+StateDirectory=cli-proxy-api
+StateDirectoryMode=0750
+UMask=0077
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ReadWritePaths=/etc/cli-proxy-api /var/lib/cli-proxy-api
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
