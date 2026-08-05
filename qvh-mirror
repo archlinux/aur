@@ -1,0 +1,71 @@
+#!/bin/bash
+# qvh-mirror: run qvh on Linux with the usbmuxd/QuickTime-config dance handled.
+#
+# On Linux, qvh needs the device switched into its hidden QuickTime USB config
+# (bConfigurationValue != default), and that switch fails while usbmuxd or
+# ipheth hold interfaces in the default config. This wrapper:
+#   1. stops usbmuxd briefly (releases interface claims)
+#   2. switches the device into its QuickTime config
+#   3. runs qvh (skipping the now-redundant pair check the patch handles)
+#   4. restores the default config and restarts usbmuxd on exit
+#
+# Trust pairing is untouched: pairing records live in /var/lib/lockdown/ and
+# on-device protected storage; USB config switches never touch either.
+#
+# Usage:
+#   qvh-mirror                     # live screen mirror (qvh gstreamer)
+#   qvh-mirror record out.h264 out.wav
+#   qvh-mirror audio out.wav --wav
+#   QVH_UDID=00008020-... qvh-mirror   # pin a specific device
+
+set -euo pipefail
+
+QVH_UDID="${QVH_UDID:-}"
+SUBCMD="${1:-gstreamer}"
+[ "$#" -gt 0 ] && shift || true
+
+# Find the iPhone's sysfs path (first Apple device on USB)
+SYSFS=$(grep -l '^05ac$' /sys/bus/usb/devices/*/idVendor 2>/dev/null | head -1 | xargs -r dirname || true)
+if [ -z "$SYSFS" ]; then
+    echo "qvh-mirror: no Apple USB device found" >&2
+    exit 1
+fi
+[ -w "$SYSFS/bConfigurationValue" ] || SUDO=sudo || SUDO=
+
+# Detect the QuickTime config: the one whose interface has subclass 0x2a (decimal 42).
+# lsusb -v returns non-zero as non-root (can't read some descriptors); that's fine,
+# the data we need is still emitted. `|| true` prevents set -e from aborting here.
+QT_CONFIG=$(lsusb -v -d 05ac: 2>/dev/null | awk '
+    /bConfigurationValue/ { cfg=$2 }
+    /bInterfaceSubClass/  { if ($2 == "42" && cfg != "") { print cfg; exit } }
+' || true)
+if [ -z "$QT_CONFIG" ]; then
+    echo "qvh-mirror: device has no QuickTime config in its descriptor." >&2
+    echo "qvh-mirror: run 'qvh activate' once first to publish it." >&2
+    exit 1
+fi
+
+PREV_CONFIG=$(cat "$SYSFS/bConfigurationValue")
+echo "qvh-mirror: $SYSFS  config $PREV_CONFIG -> $QT_CONFIG (QuickTime)" >&2
+
+# Quiet sudo if possible; otherwise it will prompt once.
+$SUDO systemctl stop usbmuxd.service 2>/dev/null || true
+sleep 0.5
+echo "$QT_CONFIG" | $SUDO tee "$SYSFS/bConfigurationValue" >/dev/null
+sleep 0.5
+
+restore() {
+    rc=$?
+    echo "$PREV_CONFIG" | $SUDO tee "$SYSFS/bConfigurationValue" >/dev/null 2>&1 || true
+    $SUDO systemctl start usbmuxd.service 2>/dev/null || true
+    echo "qvh-mirror: restored config $PREV_CONFIG, restarted usbmuxd" >&2
+    exit $rc
+}
+trap restore EXIT INT TERM
+
+# Run qvh as a child (not exec) so the trap survives to restore state on exit.
+if [ -n "$QVH_UDID" ]; then
+    qvh "$SUBCMD" --udid="$QVH_UDID" "$@"
+else
+    qvh "$SUBCMD" "$@"
+fi

@@ -1,0 +1,18 @@
+--- a/main.go
++++ b/main.go
+@@ -449,12 +449,12 @@ func findDevice(udid string) (screencapture.IosDevice, error) {
+ func checkDeviceIsPaired(device screencapture.IosDevice) {
+ 	dev, err := ios.GetDevice(screencapture.Correct24CharacterSerial(device.SerialNumber))
+ 	if err != nil {
+ 		printErrJSON(err, "device not found, is it still connected?")
+-		os.Exit(1)
++		return
+ 	}
+ 	allValues, err := ios.GetValuesPlist(dev)
+ 	if err != nil {
+ 		printErrJSON(err, "failed getting deviceinfo, you need to pair the device before running qvh")
+-		os.Exit(1)
++		return
+ 	}
+ 	log.Infof("found %s %s for udid %s", allValues["DeviceName"], allValues["ProductVersion"], dev.Properties.SerialNumber)
+ }
