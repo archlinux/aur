@@ -7,22 +7,22 @@
 
 
 pkgname=opentelemetry-cpp
-pkgver="1.27.0"
-_proto_version="1.10.0"
-pkgrel=3
+pkgver="1.28.0"
+_proto_version="1.11.0"
+pkgrel=1
 pkgdesc="The C++ OpenTelemetry client."
 arch=("x86_64" "armv7h")
 url="https://github.com/open-telemetry/opentelemetry-cpp"
 license=("Apache-2.0")
-depends=("grpc" "nlohmann-json" "benchmark" "abseil-cpp" "protobuf" "curl" "prometheus-cpp")
-makedepends=("doxygen" "cmake")
+depends=("grpc" "abseil-cpp" "protobuf" "curl" "prometheus-cpp")
+makedepends=("doxygen" "cmake" "nlohmann-json" "benchmark" "gtest")
 source=(
-  "https://github.com/open-telemetry/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-  "https://github.com/open-telemetry/opentelemetry-proto/archive/refs/tags/v${_proto_version}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/open-telemetry/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+  "opentelemetry-proto-${_proto_version}.tar.gz::https://github.com/open-telemetry/opentelemetry-proto/archive/refs/tags/v${_proto_version}.tar.gz"
 )
 sha256sums=(
-  "d09c2e8dd95bbc1d6ee493a89f32a4736879948d0eb59ad58c855022d1f55cc1"
-  "52c85df79badc45da7e6a8735e8090b05a961b0208756187e1492a40db2d1f5f"
+  "8c359919175d77c502515f5a783907d031cc6a172e44426dbe9bee3c1532201e"
+  "cefb4cf0dee432bdd0eb25af73ed4c996b16e80baea7f98285c413184c1b92ad"
 )
 
 build() {
@@ -40,4 +40,7 @@ check() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
+
+  # cmake's install(DIRECTORY) recreates excluded subdirs; drop the leftovers
+  find "${pkgdir}" -type d -empty -delete
 }
