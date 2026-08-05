@@ -10,7 +10,7 @@ license=('GPL')
 # 核心依赖：桌面能够成功运行的底线包，以及脚本执行必须的工具
 depends=(
     'bash' 'curl'
-    'niri-shorin-fork-git' 'nirius' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
+    'niri-shorin-fork-git' 'nirius' 'mako' 'polkit-gnome' 'xwayland-satellite' 'swayidle'
     'fuzzel' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
     'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
 )
@@ -25,7 +25,7 @@ optdepends=(
     'gvfs-smb: SMB support' 'gvfs-mtp: MTP support' 'gvfs-gphoto2: PTP support'
     'nautilus-open-any-terminal: Nautilus terminal extension' 'gnome-keyring: Keyring service'
     'tumbler: Thumbnail service' 'poppler-glib: PDF rendering' 'ffmpegthumbnailer: Video thumbnails'
-    'webp-pixbuf-loader: WebP support' 'libgsf: File format support' 'xdg-desktop-portal-gtk: GTK portal'
+    'webp-pixbuf-loader: WebP support' 'libgsf: File format support' 'xdg-desktop-portal-gtk: GTK portal' 'xdg-desktop-portal-gnome: Gnome portal (legacy, not required for niri built-in screencast)'
     'gst-plugins-base: GStreamer' 'gst-plugins-good: GStreamer' 'gst-libav: GStreamer'
     'thunar-archive-plugin: Thunar plugin' 'thunar-volman: Thunar volume manager'
     'bat: Cat clone' 'bazaar: Version control' 'bluetui: Bluetooth TUI' 'clipnotify: Clipboard notify'
