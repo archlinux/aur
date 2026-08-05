@@ -1,6 +1,6 @@
 pkgbase = xgboost
 	pkgdesc = An optimized distributed gradient boosting library
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/dmlc/xgboost
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xgboost
 	makedepends = nccl
 	depends = gcc-libs
 	depends = glibc
-	source = xgboost.tar.gz::https://github.com/dmlc/xgboost/releases/download/v3.3.0/xgboost-src-3.3.0.tar.gz
+	source = xgboost.tar.gz::https://github.com/dmlc/xgboost/releases/download/v3.4.0/xgboost-src-3.4.0.tar.gz
 	b2sums = 6c8707b8e1f7dd6bb846ac1ba4996008c3e92abf62d12180123534b2b70f12b7e11b306e966958a6dc4f152b3fb60beaf026905f99e40078c39ff9fb18c3ee92
 
 pkgname = xgboost
