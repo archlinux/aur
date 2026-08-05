@@ -1,21 +1,21 @@
 # deps.json
 _spirv_reflect_tag=vulkan-sdk-1.4.321.0
-_rstd_commit=bf5f855ddb1b84390306e0913b89149ac72a3510
-_vvk_commit=8fcfd34b43a13ade515f029b0b4209bd3684645f
-_wavsen_commit=e49fc62fdc1b57abeabb643daa6ebab96fb3821f
+_rstd_commit=c697a4b08cbb9183f78c18915f59c8f72dac5d14
+_vvk_commit=27114b7e06cfb0c099ef38544d3f4c653f9e71a2
+_wavsen_commit=91817a146b3b386809ae89b65533f6a57f0dcdf7
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
-         "waywallen>=0.2.6" cef glslang fontconfig quickjs-ng glfw wayland)
-makedepends=(cmake ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
+         "waywallen>=0.3.0" cef glslang fontconfig quickjs-ng glfw wayland)
+makedepends=('cmake<4.4' ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
              vulkan-memory-allocator)
-source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver-fix"
+source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
         "git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=$_spirv_reflect_tag"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
@@ -26,11 +26,11 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "0004-cmake-Use-system-glslang.patch"
         "0005-cmake-Use-system-VulkanMemoryAllocator.patch"
         "0006-cmake-Install-weweb-to-bin.patch")
-sha256sums=('b5c66ceee52069befbeb43c368c060ef61def00698922c0ad4d747f2c5a5a424'
+sha256sums=('7dedf50605a9e16aec4277ace4ca407d25e1e5efd75e7e27a42dc2e9a553e74a'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
-            'a5ce0c3f766a5b75230cb05e5b9f49f52a8d10111e0391d418f27a239194e310'
-            '1c2f9e285109a2024219212781202d19bbef56a68c6dff42a5622155b2d8276f'
-            'd3bd59f908243f5e87f1c42e3340ee70eeaf6c86315c48726dc50fc07904791e'
+            '9212c0d959a648801a005f8509699cc34dbb8fb2444a4eaedb0b922570ae77d5'
+            '871387eda9ea0ac136c04feba3f5d409b388e9846de2b41f86cb271121f43855'
+            'cefc3330ffe73cae6c2300249f94b988d52e3272c88ed32786825888e41421eb'
             '74e3ee760d1e1d6b61e190f007a6e3b6b3743593a56b52fad60e978190f6dcdd'
             '8fd66d8e66a4ba536516945796985f9c780099128f79fb35f87ad2f6b393af5a'
             '70984f7a1e840bebb6ac67bb1f10083fc77227f85a5adbc063ebff2945bcd28f'
