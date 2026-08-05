@@ -1,7 +1,7 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.22.2
-pkgrel=2
+pkgver=3.23.0
+pkgrel=1
 pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/motorrin/arch-smart-update"
@@ -27,7 +27,7 @@ optdepends=(
     'snap-pac: for automatic Btrfs snapshots on update (if using snapper)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfca3535f5ff69c63cf5292e8a583f62288a389b715fefa9d0f6adcebbd7dd4b')
+sha256sums=('2199a8912232da670af9696de5ff6a6562e1ab0c5c843f085b1cfbd3ca9fdcfd')
 
 package() {
     cd "${pkgname}-${pkgver}"
