@@ -3,7 +3,7 @@
 
 _pkgname=sigtop
 pkgname=$_pkgname-git
-pkgver=0.23.0.r5.g12f3a3c
+pkgver=0.24.0.r1.gba5e721
 pkgrel=1
 pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
@@ -36,12 +36,12 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS//-flto*}"
   export CGO_LDFLAGS="${LDFLAGS//-flto*}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o $_pkgname .
+  go build -o $_pkgname ./cmd/$_pkgname
 }
 
 package() {
   cd $_pkgname
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-  install -Dm755 $_pkgname.1 "$pkgdir"/usr/share/man/man1/$_pkgname.1
+  install -Dm755 cmd/$_pkgname/$_pkgname.1 "$pkgdir"/usr/share/man/man1/$_pkgname.1
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.md"
 }
