@@ -1,0 +1,18 @@
+pkgbase = zsign-bin
+	pkgdesc = Fast cross-platform iOS code signing tool — codesign alternative without Xcode/macOS
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/zhlynn/zsign
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	depends = gcc-libs
+	provides = zsign
+	conflicts = zsign
+	options = !debug
+	source = zsign-1.1.1-linux-x86_64.tar.gz::https://github.com/zhlynn/zsign/releases/download/v1.1.1/zsign-linux-x86_64.tar.gz
+	source = LICENSE-v1.1.1::https://github.com/zhlynn/zsign/raw/refs/tags/v1.1.1/LICENSE
+	sha256sums = 65873b256b8902715cc81c8c467e9dddb315a2b484c6d0f5fb2031bad819d8ba
+	sha256sums = SKIP
+
+pkgname = zsign-bin
