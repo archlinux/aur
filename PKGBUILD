@@ -1,14 +1,19 @@
 # Maintainer: neko_ayaya
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=aionui-bin
-_pkgname=aionui
-pkgver=2.1.47
+_appname=aionui
+
+pkgname=${_appname}-bin
+pkgver=2.1.49
 pkgrel=1
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
-arch=('x86_64')
+
+arch=('x86_64' 'aarch64')
+_barch=('linux-amd64' 'linux-arm64')
+
 url="https://github.com/iOfficeAI/AionUi" # <-- 示例网址，请替换为官方项目地址
-license=('unknown')
+
+license=('Apache-2.0')
 
 depends=(
   'gtk3'
@@ -18,16 +23,18 @@ depends=(
   'alsa-lib'
 )
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_appname}")
+conflicts=("${_appname}")
 
-source_x86_64=("${_pkgname}_${pkgver}_linux_amd64.deb::${url}/releases/download/v${pkgver}-final/AionUi-${pkgver}-linux-amd64.deb")
+source_x86_64=("${_appname}_${pkgver}_${arch[0]}.deb::https://static.aionui.com/releases/${pkgver}/AionUi-${pkgver}-${_barch[0]}.deb")
+source_aarch64=("${_appname}_${pkgver}_${arch[1]}.deb::https://static.aionui.com/releases/${pkgver}/AionUi-${pkgver}-${_barch[1]}.deb")
 
-sha256sums_x86_64=('597809135fe8b2ff126621580844901c859eac39292bb7c459c63691bea38f03')
+sha256sums_x86_64=('3ec67d78227c1127c598e9ff7ec904e170fdd6b9d6c9454221787f1e6b20920b')
+sha256sums_aarch64=('4a46543d7f349f18246a2f77d84bd7460c733e6dd73cdd9067f3226077faa553')
 
 package() {
   # .deb 包本质是一个 ar 归档文件，先用 ar 命令解开
-  ar x "${srcdir}/${_pkgname}_${pkgver}_linux_amd64.deb"
+  ar x "${srcdir}/${_appname}_${pkgver}_${CARCH}.deb"
 
   # 将核心文件 data.tar.xz 解压到打包目录中
   # bsdtar 会自动保留正确的文件权限
