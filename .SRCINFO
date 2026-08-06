@@ -1,0 +1,22 @@
+pkgbase = duet-httpfs-git
+	pkgdesc = FUSE filesystem for the SD card of a Duet RepRapFirmware controller (git)
+	pkgver = 1.0.0.r0.g2fc92b5
+	pkgrel = 1
+	url = https://github.com/Remenod/duet3d-driver-fuse
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = nlohmann-json
+	depends = fuse3
+	depends = curl
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = duet-httpfs=1.0.0.r0.g2fc92b5
+	conflicts = duet-httpfs
+	source = duet-httpfs-git::git+https://github.com/Remenod/duet3d-driver-fuse.git
+	sha256sums = SKIP
+
+pkgname = duet-httpfs-git
