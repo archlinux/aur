@@ -1,0 +1,5 @@
+[zrk-bin]
+source = "github"
+github = "zoxy-io/zrk"
+use_latest_release = true
+prefix = "v"
