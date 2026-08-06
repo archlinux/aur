@@ -1,15 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
 pkgver=1.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
 url="https://github.com/Kesomannen/gale"
 license=('GPL-3.0-only')
 depends=(
+  'bzip2'
+  'dbus'
+  'fontconfig'
   'gtk3'
   'libsoup3'
+  'sqlite'
   'webkit2gtk-4.1'
+  'xz'
+  'zstd'
 )
 makedepends=(
   'cargo'
@@ -33,6 +39,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
