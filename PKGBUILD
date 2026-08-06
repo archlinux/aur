@@ -1,10 +1,10 @@
 # Maintainer: xtexecute <none@none>
 
 pkgname=fleshfetch
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/xtexecute/fleshfetch"
 license=('MIT')
 
@@ -14,6 +14,12 @@ depends=(
     'gtk4'
     'python-requests'
     'python-pygame'
+)
+
+optdepends=(
+    'python-pypresence: Discord Rich Presence support'
+    'libpulse: paplay fallback sound playback'
+    'alsa-utils: aplay fallback sound playback'
 )
 
 makedepends=('git')
@@ -27,23 +33,41 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/$pkgname"
 
-    # Main app
-    install -Dm644 fleshfetch.py \
-        "$pkgdir/usr/share/fleshfetch/fleshfetch.py"
+    # Main app modules
+    install -d "$pkgdir/usr/share/fleshfetch"
+    install -m644 \
+        bootstrap.py \
+        console_capture.py \
+        defaults.py \
+        fleshfetch.py \
+        leaderboard.py \
+        main.py \
+        mod_api.py \
+        paths.py \
+        rpc.py \
+        save_manager.py \
+        security.py \
+        ui.py \
+        "$pkgdir/usr/share/fleshfetch/"
 
-    install -Dm755 fleshfetch \
-        "$pkgdir/usr/bin/fleshfetch"
+    # System-wide mods folder
+    install -d "$pkgdir/usr/share/fleshfetch/mods"
 
-    # Default configuration
-    install -Dm644 default.conf \
-        "$pkgdir/usr/share/fleshfetch/default.conf"
+    # Launcher
+    install -d "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/fleshfetch" <<'EOF'
+#!/bin/sh
+exec /usr/bin/python /usr/share/fleshfetch/main.py "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/fleshfetch"
 
     # Assets
-    install -Dm644 flesh.png \
-        "$pkgdir/usr/share/fleshfetch/flesh.png"
+    install -d "$pkgdir/usr/share/fleshfetch/assets"
+    install -m644 flesh.png click.wav "$pkgdir/usr/share/fleshfetch/assets/"
 
-    install -Dm644 click.wav \
-        "$pkgdir/usr/share/fleshfetch/click.wav"
+    # App icon
+    install -Dm644 flesh.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.xtexecute.fleshfetch.png"
 
     # Desktop entry
     install -Dm644 dev.xtexecute.fleshfetch.desktop \
