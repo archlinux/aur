@@ -1,6 +1,6 @@
 # Maintainer: Kolonia333 <uiixexexe@gmail.com>
 pkgname=javanya
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Эзотерический язык программирования, транслирующийся в Java, с компилятором-кошкодевочкой"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('java-runtime>=17')
 makedepends=('java-environment>=17')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kolonia333/JavaNya/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b3582efa7c4ffc3d7c647308c5d251e615334415778810674cadfdd4e773e6f')
+sha256sums=('00c361e1e7a23b76ecc5f3b5f547007460277ede5b1ea8d82cd25fc0df0413e2')
 
 build() {
     cd "JavaNya-$pkgver"
