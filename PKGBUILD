@@ -1,8 +1,8 @@
 # Maintainer: Uncore <contactuncor3@gmail.com>
 pkgname=idescriptor-git
 _pkgname=iDescriptor
-pkgver=r1217.55aa371
-pkgrel=5
+pkgver=r1246.6913e98
+pkgrel=1
 pkgdesc="The iDevice management tool — free, open-source, and cross-platform."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
