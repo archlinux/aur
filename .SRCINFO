@@ -1,0 +1,17 @@
+pkgbase = kursor-bin
+	pkgdesc = Keyboard-driven mouse-cursor -- service (grid & glide-*) & cli (pos / click / move / moveto)
+	pkgver = 4.3.9
+	pkgrel = 1
+	url = https://github.com/rruxx/kursor https://gitee.com/rrux/kursor
+	install = kursor-bin.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	provides = kursor=4.3.9
+	conflicts = kursor
+	source = https://github.com/rruxx/kursor/releases/download/v4.3.9/kursor-v4.3.9-x86_64_v3-unknown-linux-gnu.tar.zst
+	source = https://gitee.com/rrux/kursor/releases/download/v4.3.9/kursor-v4.3.9-x86_64_v3-unknown-linux-gnu.tar.zst
+	sha256sums = 769850bede20b8f346d4deab1c3a56021bd332492dd8216a204eca0ef688115d
+	sha256sums = 769850bede20b8f346d4deab1c3a56021bd332492dd8216a204eca0ef688115d
+
+pkgname = kursor-bin

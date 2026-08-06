@@ -3,7 +3,7 @@
 _exec_name=kursor
 pkgname=${_exec_name}-bin
 
-pkgver=1.0.0
+pkgver=4.3.9
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor -- service (grid & glide-*) & cli (pos / click / move / moveto)"
 arch=(x86_64)
