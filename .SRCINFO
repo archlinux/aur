@@ -1,6 +1,6 @@
 pkgbase = python-scramp
 	pkgdesc = Python implementation of the SCRAM protocol
-	pkgver = 1.4.15
+	pkgver = 1.4.16
 	pkgrel = 1
 	url = https://codeberg.org/tlocke/scramp
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-scramp
 	makedepends = python-wheel
 	depends = python
 	depends = python-asn1crypto
-	source = git+https://codeberg.org/tlocke/scramp.git?signed#commit=a053453ecfe746a4dbe5520f571506754d980de7
+	source = git+https://codeberg.org/tlocke/scramp.git?signed#commit=d6de47e5648be4102606e87f5bc14e78b1eefa3e
 	validpgpkeys = D5681B7EC7292511C4CC1450892B00AB699851E8
-	sha256sums = 4af50580f9d1d52265b998d329747cd4da7167240383c55f9a002140c69f1587
+	sha256sums = 44c2d55b664a3d7770f091ffaf52e1a2211f6c5bf7d64e3e5a75ed250bff66bb
 
 pkgname = python-scramp
