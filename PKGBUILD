@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.2.3
+pkgver=17.2.10
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -15,13 +15,12 @@ source=(
     "tree-sitter-no-strict-aliasing.patch"
     "use-system-opus-pcre2.patch"
     "skip-native-embed-for-aur.patch"
-    "embed-header-generator-data.patch"
 )
 sha256sums=('SKIP'
             'a3af6b88fa05125f1ba0e9b25b0fad769446fdea9707a145385bd28429ffdd32'
             'ad7221fc63cf2a07e954a257daee92a8cd4e26a930dfbc9dfb6362593092f89d'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
-            '09317a262db1a314cbf2a7f4efcfbcead37d000e148c82512abd5f533d857b3e')
+)
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -29,7 +28,6 @@ prepare() {
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
     patch -p1 -i "${srcdir}/tree-sitter-no-strict-aliasing.patch"
-    patch -p1 -i "${srcdir}/embed-header-generator-data.patch"
     # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
     CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
 }
