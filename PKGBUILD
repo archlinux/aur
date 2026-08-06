@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emojimart
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern emoji picker popup for desktop"
 arch=('x86_64')
 url="https://github.com/vemonet/EmojiMart"
@@ -28,21 +28,19 @@ prepare() {
   export npm_config_cache="$srcdir/npm_cache"
   npm ci
 
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
+
   # Desktop file
   desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="$pkgname" \
     resources/EmojiMart.desktop
-
-  cd src-tauri
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "EmojiMart-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
   export RUSTUP_TOOLCHAIN=stable
-  npm run build
-  cargo tauri build --no-bundle
+  cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
