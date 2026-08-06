@@ -1,6 +1,6 @@
 pkgbase = karukan-git
 	pkgdesc = Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME
-	pkgver = 0.1.0.r26.g6746900
+	pkgver = 0.1.0.r54.g91d053c
 	pkgrel = 1
 	url = https://github.com/togatoga/karukan
 	arch = x86_64
