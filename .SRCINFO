@@ -1,0 +1,20 @@
+pkgbase = censor-git
+	pkgdesc = PDF document redaction for the GNOME desktop
+	pkgver = r369.762af2e
+	pkgrel = 1
+	url = https://codeberg.org/censor/Censor
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-pymupdf>=1.28.0
+	source = git+https://codeberg.org/censor/Censor.git
+	sha256sums = SKIP
+
+pkgname = censor-git
