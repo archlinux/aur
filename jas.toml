@@ -1,0 +1,21 @@
+[server]
+bind = "0.0.0.0:3000"
+log_level = "info"
+
+[storage]
+database_path = "/var/lib/jas/jas.db"
+ipa_dir = "/var/lib/jas/ipas"
+
+[scheduler]
+interval_hours = 2
+refresh_window_days = 3
+worker_threads = 2
+
+[security]
+# Set via JAS_SECRET_KEY env var in production.
+# Used to encrypt stored private keys and Apple account session tokens.
+secret_key = ""   # 32-byte hex string
+
+[discovery]
+mdns_enabled = true
+mdns_interface = ""   # empty = all interfaces

@@ -1,0 +1,14 @@
+post_install() {
+    cat <<'EOF'
+
+==> JAS has been installed.
+
+Edit the configuration:
+  /etc/jas/jas.toml
+
+Then enable and start the service:
+  sudo systemctl enable --now jas.service
+
+Tip: Use head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n'; echo to create your JAS_SECRET_KEY
+EOF
+}

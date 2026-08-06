@@ -1,0 +1,25 @@
+[Unit]
+Description=Jackson's App Sensei
+Documentation=https://github.com/jkcoxson/jas
+After=network.target
+Wants=network.target
+
+[Service]
+User=jas
+Group=jas
+StateDirectory=jas
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/jas
+
+ExecStart=/usr/bin/jas
+Restart=on-failure
+RestartSec=5
+
+# Security
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
