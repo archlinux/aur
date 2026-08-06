@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=aprstac-bin
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A modern APRS web client, digipeater, IGate, BBS, and fileshare (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
 url="https://aprstac.com/"
@@ -15,8 +15,8 @@ source_x86_64=("aprstac-${pkgver}-x86_64.deb::https://aprstac.com/downloads/aprs
 source_aarch64=("aprstac-${pkgver}-aarch64.deb::https://aprstac.com/downloads/aprstac_${pkgver}_arm64.deb")
 sha256sums=('d2309a72446dac53dbe391ec2e8972f2fccbc6a06ab144c9011d5bd419c998e7'
             '6c57b27e9502b24d45105c6bd64f4e692750f485611285a92a75a87c5ffd2a12')
-sha256sums_x86_64=('30394793fce1efcd89db745f7c6efecee4e62b7795fc02de0ccf11f129c9019a')
-sha256sums_aarch64=('219e4b5d4b518156b03890dce243af8b6dbed7c286eda26561c41e353aa5e209')
+sha256sums_x86_64=('d05ef7799bfff389628347e22d0a740675f23532760abd08ec00c4935dce24f3')
+sha256sums_aarch64=('b1f70bbaa4eea3aaf90058a7fed41764aed31a44b320c9cba9d48175ee27a03c')
 
 package() {
   # Extract data.tar.xz to the package root.
