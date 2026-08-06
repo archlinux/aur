@@ -1,17 +1,17 @@
 pkgbase = askalono
 	pkgdesc = A tool & library to detect open source licenses from texts
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jpeddicord/askalono
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
 	depends = libgcc
-	noextract = license-list-data-3.28.0.tar.gz
+	depends = zstd
 	source = git+https://github.com/jpeddicord/askalono.git#tag=0.5.0
-	source = license-list-data-3.28.0.tar.gz::https://github.com/spdx/license-list-data/archive/refs/tags/v3.28.0.tar.gz
+	source = git+https://github.com/spdx/license-list-data.git
 	sha256sums = 4abdd5ee637f84b8a5b59afcfaba2e52c0814cdafe500dc875f1792cf46ed6db
-	sha256sums = 52375a91b28b5f6f3142c4b3a555086482f1e09be68c4fa7fdbf377d37afa340
+	sha256sums = SKIP
 
 pkgname = askalono
