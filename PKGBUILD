@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.23.3
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -62,14 +62,17 @@ checkdepends=(
 )
 source=("git+${url}.git#tag=v${pkgver}"
         "lower_hatchling_version_requirements.patch"
-        "clear_multiplexer_env_in_theme_tests.patch")
-sha256sums=('e6eec96ca94c0b86119e9feb880859e29ca36afdd21f9e288b9dd74f91482999'
+        "clear_multiplexer_env_in_theme_tests.patch"
+        "stabilize_click_chain_timing_in_word_drag_tests.patch")
+sha256sums=('60d7a8f525963bdf623cfe47b0589c6a339051353cecfabeff6eee092561953c'
             'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
-            'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069')
+            'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
+            '635f8b81f8f884fd82a874372fe3aa466ec41380c48d4209b230afd34825bc3f')
 prepare() {
     cd "$pkgname"
     cat "$srcdir/lower_hatchling_version_requirements.patch" | patch -p1
     cat "$srcdir/clear_multiplexer_env_in_theme_tests.patch" | patch -p1
+    cat "$srcdir/stabilize_click_chain_timing_in_word_drag_tests.patch" | patch -p1
 }
 
 build() {
