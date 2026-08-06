@@ -51,7 +51,7 @@ package() {
 
   # Copy all necessary files for all packages except coding-agent
   local _pkg
-  for _pkg in ai agent tui; do
+  for _pkg in ai agent tui telemetry protocol client; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
