@@ -1,6 +1,6 @@
-# Maintainer: Efe Esen <halilefeesen@proton.me>
+# Maintainer: Efe Esen <sorashii@proton.me>
 
-_pkgauthor=BinaryHarbinger
+_pkgauthor=sorashii
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
