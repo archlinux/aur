@@ -2,7 +2,7 @@
 
 pkgname=dlx
 _binary=deeplx
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Self-hosted translation API server. Unofficial; not affiliated with DeepL SE"
 arch=('x86_64' 'aarch64' 'i686' 'mips')
@@ -17,7 +17,7 @@ conflicts=("${_binary}" "${_binary}-bin" "${_binary}-git"
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.install")
-b2sums=('7a1f96786da596495ef202bb7bab1384d2e88931247dea6b7a29d183ca5fe844943ea15a07a2921b15592fc9c33d0cbb8289ef7c23840db84886dd1b8b11d7b4'
+b2sums=('e8a1c4144a3540638b95439b97c0c3d0d724926ce2c32e824592cf54920c4581fb27c47bb59d70858698169330929bcc13cc4614a0aea9abb66139acbe3839f0'
         'd759538dd2271ce506dc146d22dbc60d79d34d35e24ddb7fe31029d1f61088f358a183d4eb140980a7f4ac2e707bd9c3c49449a2af03bffbca9f50a7863ae643')
 
 export CGO_CPPFLAGS="${CPPFLAGS}"

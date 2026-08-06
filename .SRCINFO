@@ -1,6 +1,6 @@
 pkgbase = dlx
 	pkgdesc = Self-hosted translation API server. Unofficial; not affiliated with DeepL SE
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/OwO-Network/DLX
 	install = dlx.install
@@ -18,9 +18,9 @@ pkgbase = dlx
 	conflicts = dlx-bin
 	conflicts = dlx-git
 	replaces = deeplx
-	source = dlx-1.2.3.tar.gz::https://github.com/OwO-Network/DLX/archive/refs/tags/v1.2.3.tar.gz
+	source = dlx-1.2.4.tar.gz::https://github.com/OwO-Network/DLX/archive/refs/tags/v1.2.4.tar.gz
 	source = dlx.install
-	b2sums = 7a1f96786da596495ef202bb7bab1384d2e88931247dea6b7a29d183ca5fe844943ea15a07a2921b15592fc9c33d0cbb8289ef7c23840db84886dd1b8b11d7b4
+	b2sums = e8a1c4144a3540638b95439b97c0c3d0d724926ce2c32e824592cf54920c4581fb27c47bb59d70858698169330929bcc13cc4614a0aea9abb66139acbe3839f0
 	b2sums = d759538dd2271ce506dc146d22dbc60d79d34d35e24ddb7fe31029d1f61088f358a183d4eb140980a7f4ac2e707bd9c3c49449a2af03bffbca9f50a7863ae643
 
 pkgname = dlx
