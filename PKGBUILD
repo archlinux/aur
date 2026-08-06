@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('770abf7f91b13aba86cc7bb7d548b8e07c812d5a109321905e7b7da0ad07d998')
+sha256sums=('9ebcea831d4d270e25ae1777bf15e24756abfbf8791ad27294754682838ed00b')
 
 package() {
     install -Dm755 "$srcdir/docker-sbx/sbx" \
@@ -24,6 +24,8 @@ package() {
 
     install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-v1" \
         "$pkgdir/usr/libexec/containerd-shim-nerdbox-v1"
+    install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-gpu-v1" \
+        "$pkgdir/usr/libexec/containerd-shim-nerdbox-gpu-v1"
     install -Dm755 "$srcdir/docker-sbx/mkfs.erofs" \
         "$pkgdir/usr/libexec/mkfs.erofs"
     install -Dm644 "$srcdir/docker-sbx/nerdbox-kernel-x86_64" \
