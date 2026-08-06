@@ -2,7 +2,7 @@
 pkgname=enroll
 _app_id="org.cosmic_utils.$pkgname"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for fingerprint management designed for COSMIC DE."
 arch=('x86_64' 'aarch64')
 url="https://cosmic-utils.org/enroll"
@@ -41,6 +41,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   just build-release --frozen
 }

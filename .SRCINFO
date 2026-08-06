@@ -1,7 +1,7 @@
 pkgbase = enroll
 	pkgdesc = GUI application for fingerprint management designed for COSMIC DE.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cosmic-utils.org/enroll
 	arch = x86_64
 	arch = aarch64
