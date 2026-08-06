@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=iconic
 pkgver=2026.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An application made for GNOME written in Rust to easily add images on top of folders"
 arch=('x86_64')
 url="https://github.com/youpie/Iconic"
@@ -32,6 +32,7 @@ prepare() {
 build() {
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "Iconic-$pkgver" build
   meson compile -C build
