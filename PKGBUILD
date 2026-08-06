@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A terminal-based Markdown journaling app"
 
-pkgver=2026.7.8
+pkgver=2026.8.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_barch[1]}.zip")
 sha256sums=('ab7cee085d596279a0a8684f21dbe5322c3f8c1446f0f21f5111e3cb4a239eff'
             '6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665')
-sha256sums_x86_64=('398adcb31ea3e8af28407802fa4ee40c7e00994a695c51a8fb2f99d6f44ad0b6')
-sha256sums_aarch64=('2a6a7b0e50869cc83b3ae266fbf584f3484d3093e364936d677a4cbbb2ae7999')
+sha256sums_x86_64=('9c4466c9b1186e7bcb06934b9d5ff7549af5c1318ce58a2526903713ed3c835c')
+sha256sums_aarch64=('257f62a8f4e82fe7b9a807f508281e413ca4905f959564bb5c7845b16e4f758e')
 
 
 package() {
