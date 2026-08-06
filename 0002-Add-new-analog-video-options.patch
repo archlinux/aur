@@ -1,4 +1,4 @@
-From a428ba77843fe0535d0eb9024557ed0e0e65049f Mon Sep 17 00:00:00 2001
+From 383b54b7dd78f8c48387cb151b68591e74d47ee2 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sat, 2 May 2026 15:34:15 +0200
 Subject: [PATCH] Add new analog video options.
@@ -663,7 +663,7 @@ index 3b8499cb1..c1b4b1443 100644
 + <connections/>
  </ui>
 diff --git a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
-index f9b544a58..47eb2cca5 100644
+index b6d8cf0e4..9c08cffb6 100644
 --- a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 +++ b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 @@ -259,6 +259,21 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,

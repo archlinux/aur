@@ -1,4 +1,4 @@
-From 989f69ad4fcc09ef9566a6d7ea2e5c05324d2a9b Mon Sep 17 00:00:00 2001
+From 8edd4f8cb2e6273de557878ab33e7f9f85721bfe Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sun, 23 Jun 2024 14:54:43 +0200
 Subject: [PATCH] Early integration of parallel-GS.
@@ -35,10 +35,10 @@ Subject: [PATCH] Early integration of parallel-GS.
  create mode 100644 pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
 
 diff --git a/.gitignore b/.gitignore
-index 930521825..2304f4356 100644
+index 7a52614bf..7d801d546 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -122,3 +122,5 @@ CMakeSettings.json
+@@ -125,3 +125,5 @@ CMakeSettings.json
  /ci-artifacts/
  /out/
  /.cache/
@@ -79,7 +79,7 @@ index de624db4e..c83a287ab 100644
  				else if (StringUtil::Strcasecmp(rname, "gl") == 0)
  					type = GSRendererType::OGL;
 diff --git a/pcsx2-qt/MainWindow.cpp b/pcsx2-qt/MainWindow.cpp
-index 15ab29b9e..f32080762 100644
+index 6d21628b4..77db5c894 100644
 --- a/pcsx2-qt/MainWindow.cpp
 +++ b/pcsx2-qt/MainWindow.cpp
 @@ -656,6 +656,9 @@ void MainWindow::createRendererSwitchMenu()
@@ -228,7 +228,7 @@ index 000000000..3b8499cb1
 + </widget>
 +</ui>
 diff --git a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
-index 09bfa1d8d..f9b544a58 100644
+index c037c110d..b6d8cf0e4 100644
 --- a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 +++ b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 @@ -21,6 +21,9 @@ struct RendererInfo
@@ -380,7 +380,7 @@ index 0ce39e740..50a2e1789 100644
  	QWidget* m_upscaling_fixes_tab = nullptr;
  	QWidget* m_texture_replacement_tab = nullptr;
 diff --git a/pcsx2-qt/pcsx2-qt.vcxproj b/pcsx2-qt/pcsx2-qt.vcxproj
-index 251ed822b..a4472feaf 100644
+index 6ac126657..6280c9878 100644
 --- a/pcsx2-qt/pcsx2-qt.vcxproj
 +++ b/pcsx2-qt/pcsx2-qt.vcxproj
 @@ -61,6 +61,7 @@
@@ -391,7 +391,7 @@ index 251ed822b..a4472feaf 100644
      </ClCompile>
      <Link>
        <AdditionalDependencies>$(QtEntryPointLib);%(AdditionalDependencies)</AdditionalDependencies>
-@@ -356,6 +357,7 @@
+@@ -357,6 +358,7 @@
      <QtUi Include="Settings\GraphicsPostProcessingSettingsTab.ui" />
      <QtUi Include="Settings\GraphicsSettingsHeader.ui" />
      <QtUi Include="Settings\GraphicsSoftwareRenderingSettingsTab.ui" />
@@ -462,7 +462,7 @@ index 93bbb89e6..bd7acefc2 100644
  		u16 SWExtraThreads = 2;
  		u16 SWExtraThreadsHeight = 4;
 diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
-index fec4df9f1..82236b771 100644
+index 8291c3bc2..31dda835c 100644
 --- a/pcsx2/GS/GS.cpp
 +++ b/pcsx2/GS/GS.cpp
 @@ -1,5 +1,10 @@
@@ -548,7 +548,7 @@ index fec4df9f1..82236b771 100644
 -	if (!g_gs_device->SetGPUTimingEnabled(true))
 +	if (!g_gs_device || !g_gs_device->SetGPUTimingEnabled(true))
  		GSConfig.OsdShowGPU = false;
- 	if (!g_gs_device->SetGPUPipelineStatisticsEnabled(true))
+ 	if (GSConfig.OsdShowGPUStats && !g_gs_device->SetGPUPipelineStatisticsEnabled(true))
  		GSConfig.OsdShowGPUStats = false;
  
  	Console.WriteLn(Color_StrongGreen, "%s Graphics Driver Info:", GSDevice::RenderAPIToString(new_api));
@@ -1164,7 +1164,7 @@ index 892f406a7..4b70ad003 100644
  {
  	/// Called when the GS is creating a render device.
 diff --git a/pcsx2/GS/GSState.cpp b/pcsx2/GS/GSState.cpp
-index 66fba5fa9..d4e943a2f 100644
+index 873621023..c297d2d3a 100644
 --- a/pcsx2/GS/GSState.cpp
 +++ b/pcsx2/GS/GSState.cpp
 @@ -28,7 +28,7 @@ static __fi bool IsAutoFlushEnabled()
@@ -1177,7 +1177,7 @@ index 66fba5fa9..d4e943a2f 100644
  	int size = 0;
  
 diff --git a/pcsx2/GS/GSState.h b/pcsx2/GS/GSState.h
-index b5448a668..fa0eee938 100644
+index 470686d74..2891fe805 100644
 --- a/pcsx2/GS/GSState.h
 +++ b/pcsx2/GS/GSState.h
 @@ -22,7 +22,7 @@ public:
@@ -2293,7 +2293,7 @@ index 000000000..0a4eb3558
 +	uint32_t dump_frames = 0;
 +};
 diff --git a/pcsx2/ImGui/ImGuiFullscreen.cpp b/pcsx2/ImGui/ImGuiFullscreen.cpp
-index d9d40795e..93d62b5d7 100644
+index 672e39c72..ca5f33cfa 100644
 --- a/pcsx2/ImGui/ImGuiFullscreen.cpp
 +++ b/pcsx2/ImGui/ImGuiFullscreen.cpp
 @@ -801,6 +801,8 @@ ImGuiFullscreen::FocusResetType ImGuiFullscreen::GetQueuedFocusResetType()

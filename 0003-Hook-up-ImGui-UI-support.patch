@@ -1,4 +1,4 @@
-From 0b0b7d9b94190d4ee4fff271cc42ba34fd7dc451 Mon Sep 17 00:00:00 2001
+From 35ecf01743d96b7c1df9517e8da8a0c69af4351f Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Fri, 29 May 2026 21:23:20 +0200
 Subject: [PATCH] Hook up ImGui UI support.
@@ -13,7 +13,7 @@ Subject: [PATCH] Hook up ImGui UI support.
  6 files changed, 496 insertions(+), 130 deletions(-)
 
 diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
-index 82236b771..912d91957 100644
+index 31dda835c..8a01f49c9 100644
 --- a/pcsx2/GS/GS.cpp
 +++ b/pcsx2/GS/GS.cpp
 @@ -3,6 +3,7 @@
@@ -920,7 +920,7 @@ index 0ad9a91c3..6d04913e8 100644
  		Console.Warning("GameDB: Manual GS hardware renderer fixes are enabled, not using automatic hardware renderer fixes from GameDB.");
  
 diff --git a/pcsx2/ImGui/ImGuiFullscreen.cpp b/pcsx2/ImGui/ImGuiFullscreen.cpp
-index 93d62b5d7..ffc7a6dde 100644
+index ca5f33cfa..1f288e43e 100644
 --- a/pcsx2/ImGui/ImGuiFullscreen.cpp
 +++ b/pcsx2/ImGui/ImGuiFullscreen.cpp
 @@ -1,6 +1,11 @@
@@ -967,7 +967,7 @@ index 93d62b5d7..ffc7a6dde 100644
  		Console.Error("Failed to upload %ux%u texture for resource", image.GetWidth(), image.GetHeight());
  		g_gs_device->Recycle(texture);
 diff --git a/pcsx2/ImGui/ImGuiManager.cpp b/pcsx2/ImGui/ImGuiManager.cpp
-index ae0d272ba..198f66800 100644
+index 6bf97103c..85fe119dd 100644
 --- a/pcsx2/ImGui/ImGuiManager.cpp
 +++ b/pcsx2/ImGui/ImGuiManager.cpp
 @@ -1,6 +1,12 @@
@@ -1075,7 +1075,7 @@ index ae0d272ba..198f66800 100644
  	const float scale = std::max(window_scale * (EmuConfig.GS.OsdScale / 100.0f), 0.5f);
  
  	if ((!ImGuiFullscreen::UpdateLayoutScale()) && scale == s_global_scale)
-@@ -1381,7 +1430,9 @@ void ImGuiManager::DestroySoftwareCursorTextures()
+@@ -1385,7 +1434,9 @@ void ImGuiManager::DestroySoftwareCursorTextures()
  void ImGuiManager::UpdateSoftwareCursorTexture(u32 index)
  {
  	SoftwareCursor& sc = s_software_cursors[index];
