@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=dory
-pkgver=6.7.6
+pkgver=6.7.7
 pkgrel=1
 pkgdesc="A standalone Nemo fork named Dory for file picking and portal integration"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   libgsf
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Twilight0/dory/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d74e45d3feff5e9465352af87c650e89c9eb03f89ba08c3447dbef018fce1345')
 
 build() {
   arch-meson "$pkgname-$pkgver" build \
