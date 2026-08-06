@@ -1,7 +1,7 @@
 # Maintainer: crux <c-rrux@outlook.com>
 
 pkgname=kursor
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor -- glide-num & glide-alpha (navigation) & grid (progressive targeting)"
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=('glibc' 'libcap')
 makedepends=('cargo')
 source=("${url% *}/archive/refs/tags/v$pkgver.tar.gz"   # github
         "${url#* }/archive/refs/tags/v$pkgver.tar.gz")  # gitee
-sha256sums=('fee8f96d8e9a26a7e8470c504b861519e5e114327ad7f1ecd1d59b4dbb7a701e'
-            'fee8f96d8e9a26a7e8470c504b861519e5e114327ad7f1ecd1d59b4dbb7a701e')
+sha256sums=('bed909db124319c4f92098123414b1a57d0069bf09cc5086f62a13793139c9e5'
+            'bed909db124319c4f92098123414b1a57d0069bf09cc5086f62a13793139c9e5')
 
 build() {
     cd "$pkgname-$pkgver"
