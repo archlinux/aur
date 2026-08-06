@@ -1,7 +1,7 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
-pkgver=5.14.2.r45.g60660e2
-pkgrel=2
+pkgver=6.0.0.r0.g8cd2078
+pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
@@ -46,6 +46,21 @@ prepare() {
   else
     error "Failed to detect Ghidra version from properties file."
     return 1
+  fi
+
+  # Upstream code calls dtm.remove(dataType, null), which requires
+  # DataTypeManager.remove(DataType, TaskMonitor). ghidra-git >= 12.2
+  # dropped that overload (it only forwarded to remove(DataType)), so the
+  # 3 call sites fail to compile against the installed Ghidra. Rewrite them
+  # to the single-arg form with identical semantics. Skip if the installed
+  # Ghidra still provides the old overload.
+  local _sm_jar
+  _sm_jar=$(find "${_ghidra_home}" -name "SoftwareModeling.jar" | head -n 1)
+  if [ -n "$_sm_jar" ] && ! javap -cp "$_sm_jar" ghidra.program.model.data.DataTypeManager 2>/dev/null \
+      | grep -q "remove(ghidra.program.model.data.DataType, ghidra.util.task.TaskMonitor)"; then
+    msg2 "Patching DataTypeService.java for removed remove(DataType, TaskMonitor) API"
+    sed -i 's/dtm\.remove(dataType, null)/dtm.remove(dataType)/g; s/dtm\.remove(existing, null)/dtm.remove(existing)/g' \
+      src/main/java/com/xebyte/core/DataTypeService.java
   fi
 }
 
