@@ -1,7 +1,7 @@
 pkgbase = firmware-manager
 	pkgdesc = Generic framework and GTK UI for firmware updates from system76-firmware and fwupd
 	pkgver = 0.1.5+15+ga45bdc7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/firmware-manager
 	install = firmware-manager.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = firmware-manager
 	depends = openssl
 	depends = polkit
 	optdepends = fwupd: Generic firmware updates
-	optdepends = system76-firmware-daemon: System76 firmware updates
+	optdepends = system76-firmware: System76 firmware updates
 	conflicts = libfirmware-manager
 	source = git+https://github.com/pop-os/firmware-manager.git#commit=a45bdc7ba6fe5a9ae640ebe72d81641eec4a8003
 	source = com.system76.FirmwareManager.policy

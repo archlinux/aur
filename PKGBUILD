@@ -3,7 +3,7 @@
 pkgname=firmware-manager
 _app_id=com.system76.FirmwareManager
 pkgver=0.1.5+15+ga45bdc7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
@@ -21,7 +21,7 @@ makedepends=(
 )
 optdepends=(
   'fwupd: Generic firmware updates'
-  'system76-firmware-daemon: System76 firmware updates'
+  'system76-firmware: System76 firmware updates'
 )
 conflicts=('libfirmware-manager')
 install="$pkgname.install"
@@ -47,6 +47,7 @@ prepare() {
 build() {
   cd "$pkgname"
   CFLAGS+=" -ffat-lto-objects"
+  export OPENSSL_NO_VENDOR=1
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
