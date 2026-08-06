@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=distroshelf
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for Distrobox Containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ranfdev/DistroShelf"
@@ -23,10 +23,11 @@ sha256sums=('d358762ddb6572209531d94d4350bc37a934e5f53752fac9c8f34dda03cc0a5e')
 prepare() {
   cd "DistroShelf-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "DistroShelf-$pkgver" build
   meson compile -C build
