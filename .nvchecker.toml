@@ -1,0 +1,5 @@
+[zoxy-bin]
+source = "github"
+github = "zoxy-io/zoxy"
+use_latest_release = true
+prefix = "v"
