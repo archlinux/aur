@@ -1,9 +1,9 @@
-# Maintainer: Sander Boom <sanderboom@gmail.com>
+# Maintainer: Sander Boom
 # Contributor: jarosz
 
 pkgname=php-codesniffer
 _pkgname=PHP_CodeSniffer
-pkgver=4.0.1
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards."
 arch=('any')
@@ -15,10 +15,10 @@ source=("phpcs-${pkgver}.phar::https://github.com/PHPCSStandards/${_pkgname}/rel
         "phpcbf-${pkgver}.phar::https://github.com/PHPCSStandards/${_pkgname}/releases/download/${pkgver}/phpcbf.phar"
         "phpcbf-${pkgver}.phar.asc::https://github.com/PHPCSStandards/${_pkgname}/releases/download/${pkgver}/phpcbf.phar.asc"
         "licence-${pkgver}.txt::https://raw.githubusercontent.com/PHPCSStandards/${_pkgname}/${pkgver}/licence.txt")
-validpgpkeys=('D91D86963AF3A29B6520462297B02DD8E5071466')
-sha256sums=('a211817baf28918b2cff8e80af5d53d7e7060f9761384c0d9df0f003afb51a40'
+validpgpkeys=('5CB4F778BF9BC4FB67AE511D96E91A992CF22FF4')
+sha256sums=('4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9'
             'SKIP'
-            '2b6c98c48eafc2e211cec397a0e9693010b09791760b93eef2606b38df5351af'
+            '0b3b8c5571543e94452f6edec0d7e924b287a64c13b73d8dcf3d25f0ee004948'
             'SKIP'
             'ad489e425c9a48b9fe97b8c11dd5f422606aa72e7726a438cd01ebee22d8ba80')
 
