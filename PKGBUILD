@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.32.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('4de0ac900688377746278261fd49cb2e4a90b2c864b1010968a57ef9f7aa90c0'
+sha256sums=('19abb5e247e7ef2aff89ef664ee8108d366116c1d620c5d8218c20ae1adfe192'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
@@ -33,33 +33,34 @@ sha256sums=('4de0ac900688377746278261fd49cb2e4a90b2c864b1010968a57ef9f7aa90c0'
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile '${pkgname}'..."
+
+    cd "${pkgname}-${pkgver}"
+    rm -rf apps/{browser-extension,cli,landing,mcp,mobile} packages/{benchmarks,e2e_tests} &>/dev/null || true
 }
 
 build() {
-    export COREPACK_ENABLE_STRICT=0
-    export SERVER_VERSION="$pkgver"
-    # export NODE_ENV="production"
     export NEXT_TELEMETRY_DISABLED=1
-    export PUPPETEER_SKIP_DOWNLOAD="true"
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+    export SERVER_VERSION="${pkgver}"
 
     # Build
     cd "${pkgname}-${pkgver}"
-    pnpm install
+    pnpm install --frozen-lockfile
 
     # Build the db migration script
     cd packages/db
-    pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
+    pnpm exec ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
 
     # Compile the web app
     cd ../../apps/web
-    pnpm exec next build --experimental-build-mode compile
+    pnpm build
 
     # Build the worker code
     cd ../..
     rm -rf workers &>/dev/null
-    pnpm --prefix="apps/workers" build
-    pnpm deploy --node-linker=isolated --filter "@${pkgname}/workers" --prod workers
+    pnpm --prefix="apps/workers" --config.verify-deps-before-run=false build
+    CI=true pnpm deploy --node-linker=isolated --legacy --filter "@${pkgname}/workers" --prod workers
 
     # delete musl files, macos/win/android files, map file
     find {apps/web/.next,workers} -type d -name "*musl*" | xargs rm -rf
