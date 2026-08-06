@@ -1,0 +1,5 @@
+# makepkg build products - never committed to an AUR repo.
+*.pkg.tar.zst
+*.tgz
+src/
+pkg/

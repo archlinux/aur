@@ -1,0 +1,12 @@
+pkgbase = diffstalker-grammars
+	pkgdesc = Tree-sitter grammars and outline queries for diffstalkerd's in-file symbol search
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/yogh-io/diffstalker
+	arch = any
+	license = MIT
+	optdepends = diffstalker-git: the daemon that reads these grammars
+	source = diffstalker-grammars-0.0.0.tgz::https://registry.npmjs.org/diffstalkerd-grammars/-/diffstalkerd-grammars-0.0.0.tgz
+	sha256sums = 132bc445be6e9291e4e3b72c6c07e90c28c1a4b4247c4c48b58b43c78f041ee6
+
+pkgname = diffstalker-grammars
