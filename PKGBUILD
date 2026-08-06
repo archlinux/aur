@@ -8,7 +8,10 @@ arch=('x86_64')
 url="https://github.com/bGVia3VjaGVu/cosmic-ext-applet-apps-menu"
 license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
-makedepends=('cargo' 'git')
+makedepends=(
+  'cargo'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=(
   "${pkgname%-git}"
@@ -26,15 +29,16 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 package() {
