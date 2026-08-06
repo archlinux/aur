@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=moonstone
-pkgver=0.3.51
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Modern, deterministic Lua project environments and package manager written in Zig'
 arch=(x86_64 aarch64 riscv64)
@@ -18,7 +18,7 @@ conflicts=(moon
 _archive="$pkgname-$pkgver"
 # _zigdeps=(https://github.com/sam701/zig-toml/archive/master.tar.gz)
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('a6bcadda6f999ed59d036f85c6236bf9a73cb887734ccb9fbe56e4a0282f47db')
+sha256sums=('4f4b4f239988d35c0e0a9314302e80a8793ca761d567394a19e48f33dada3b1f')
 
 prepare() {
 	cd "$_archive"
