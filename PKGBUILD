@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer: Radu Potop <radu at wooptoo com>
 
 pkgname=git-repo-manager
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="GRM helps you manage git repositories in a declarative way"
 arch=('x86_64')
@@ -11,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'rust')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac8574d59ed7dde804d0517faada3ba692778e5e1bb762f1a20d697c1f40cf17')
+sha256sums=('c993aecd09a2db45ad4b54d58222dbd50ff0d76fbb00ed5a33f20fc589278e20')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

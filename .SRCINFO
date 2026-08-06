@@ -1,6 +1,6 @@
 pkgbase = git-repo-manager
 	pkgdesc = GRM helps you manage git repositories in a declarative way
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/hakoerber/git-repo-manager
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = git-repo-manager
 	makedepends = cargo
 	depends = gcc-libs
 	depends = rust
-	source = https://github.com/hakoerber/git-repo-manager/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = ac8574d59ed7dde804d0517faada3ba692778e5e1bb762f1a20d697c1f40cf17
+	source = https://github.com/hakoerber/git-repo-manager/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = c993aecd09a2db45ad4b54d58222dbd50ff0d76fbb00ed5a33f20fc589278e20
 
 pkgname = git-repo-manager
