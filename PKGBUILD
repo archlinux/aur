@@ -1,25 +1,20 @@
 # Maintainer: Uncore <contactuncor3@gmail.com>
 pkgname=idescriptor-git
 _pkgname=iDescriptor
-pkgver=r263.6d86243
-pkgrel=4
-pkgdesc="A free, open-source, and cross-platform iDevice management tool."
+pkgver=r1217.55aa371
+pkgrel=5
+pkgdesc="The iDevice management tool — free, open-source, and cross-platform."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
 license=('AGPL3-or-later')
 provides=("$pkgname")
 depends=(
-    'libimobiledevice>=1.4.0'
-    'libtatsu>=1.0.5'
-    'libimobiledevice-glue'
     'libplist'
     'usbmuxd'
     'libusbmuxd'
     'openssl'
     'libssh'
     'libusb'
-    'pugixml'
-    'qrencode'
     'libheif'
     'libzip'
     'qt6-base'
@@ -28,24 +23,29 @@ depends=(
     'qt6-serialport'
     'qt6-positioning'
     'qt6-location'
-    'qtermwidget'
     'avahi'
     'libsecret'
     'gnome-keyring'
     'ffmpeg'
-    'ifuse'
-    'gstreamer'
-    'gst-plugins-base-libs'
+    'qt6-declarative'
+    'qt6-5compat'
+    'qt6-multimedia'
+    'qt6-svg'
+    'gst-plugin-qmlgl'
+    'gst-plugin-qml6'
     'gst-plugins-good'
     'gst-plugins-bad'
-    'gst-plugins-ugly'
     'gst-libav'
     'sqlite'
 )
+
+optdepends=(
+    'ifuse: use libimobiledevice `ifuse` instead of Rust implementation'
+)
+
 makedepends=(
     'git'
     'cmake'
-    'go'
     'cargo'
 )
 options=('!debug')
@@ -61,23 +61,28 @@ prepare() {
   cd "$_pkgname"
   git submodule update --init --recursive
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --manifest-path src/rust/Cargo.toml
+  cargo fetch --locked --manifest-path Cargo.toml
 }
 
 build() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   export CFLAGS+=" -ffat-lto-objects"
   export CXXFLAGS+=" -ffat-lto-objects"
-  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-  cmake -B build -S . \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPACKAGE_MANAGER_MANAGED=ON \
-    -DPACKAGE_MANAGER_HINT=yay/paru
-  cmake --build build
+  export IDESCRIPTOR_PACKAGE_MANAGER_MESSAGE="Please update iDescriptor using yay or paru."
+  cargo build --frozen --release --features package_manager
 }
 
 package() {
-  cd "$_pkgname/build"
-  DESTDIR="$pkgdir" cmake --install .
+  cd "$_pkgname"
+
+  install -Dm755 target/release/idescriptor "$pkgdir/usr/bin/iDescriptor"
+  install -Dm644 io.github.idescriptor.iDescriptor.desktop \
+    "$pkgdir/usr/share/applications/io.github.idescriptor.iDescriptor.desktop"
+
+  local size
+  for size in 16 32 256 512; do
+    install -Dm644 "packaging/shared/resources/app-icon/icon-$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.idescriptor.iDescriptor.png"
+  done
 }
