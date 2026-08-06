@@ -1,3 +1,4 @@
 [solitaire]
 source = "git"
 git = "https://gitlab.gnome.org/wwarner/Solitaire.git"
+exclude_regex = ".*(alpha|beta|rc).*"
