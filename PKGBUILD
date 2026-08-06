@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=32.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
