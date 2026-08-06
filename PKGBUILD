@@ -4,7 +4,7 @@
 
 pkgname=moonscript
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 _rockrel=1
 pkgdesc='A programmer friendly language that compiles to Lua'
 arch=(any)
@@ -38,5 +38,5 @@ package() {
 	cd "$_archive"
 	luarocks --tree "$pkgdir/usr" \
 		install --deps-mode none --no-manifest -- $_rock
-	sed -i -e "s!$pkgdir!!" "$pkgdir/usr/bin/"{moon,moonc}
+	sed -i -e "s!$pkgdir!!g" "$pkgdir/usr/bin/"{moon,moonc}
 }

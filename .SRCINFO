@@ -1,7 +1,7 @@
 pkgbase = moonscript
 	pkgdesc = A programmer friendly language that compiles to Lua
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://moonscript.org
 	arch = any
 	license = MIT
