@@ -1,6 +1,6 @@
 pkgbase = kranz-bin
 	pkgdesc = Keyboard-first local service orchestrator with a focused terminal UI
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/kranz-org/kranz
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kranz-bin
 	provides = kranz
 	conflicts = kranz
 	options = !strip
-	source_x86_64 = kranz-x86_64-0.4.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.4.0/kranz_0.4.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e8745afd727a5e06906520346c1792a2f16cbf6808530dfa8dd7912fca23eab8
-	source_aarch64 = kranz-aarch64-0.4.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.4.0/kranz_0.4.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 3899d62aee0a9d73889ff7293fa8c08e1a86f71722e914c3f57d58429bd8189b
+	source_x86_64 = kranz-x86_64-0.5.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.5.0/kranz_0.5.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c8afab166f7371c3ca239790cdd0dd5dcf9cd5c8d94aee53ba4f89f4193effb7
+	source_aarch64 = kranz-aarch64-0.5.0.tgz::https://github.com/kranz-org/kranz/releases/download/v0.5.0/kranz_0.5.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d28e11505e8b494ee535ad6293007756d351d92fe07147a50404730165580be8
 
 pkgname = kranz-bin
