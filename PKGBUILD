@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=2.62.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
 	x86_64
@@ -81,6 +81,15 @@ prepare() {
 
 build() {
 	cd "${_pkgname}-${pkgver}"
+
+	# Set all the Cargo-related environment variables the way they are proposed
+	# in RFC69.
+	# c.f. https://gitlab.archlinux.org/archlinux/rfcs/-/merge_requests/69
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export CARGO_PROFILE_RELEASE_STRIP=false
 
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
