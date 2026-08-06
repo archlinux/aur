@@ -1,16 +1,16 @@
 pkgbase = omikuji-bin
 	pkgdesc = Qt/QML based wine apps launcher for Linux
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/reakjra/omikuji
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = plasma-integration: KDE Plasma theme integration
-	provides = omikuji=0.8.2
+	provides = omikuji=0.8.3
 	conflicts = omikuji
-	noextract = Omikuji-v0.8.2-anylinux-x86_64.AppImage
+	noextract = Omikuji-v0.8.3-anylinux-x86_64.AppImage
 	options = !strip
-	source = Omikuji-v0.8.2-anylinux-x86_64.AppImage::https://github.com/reakjra/omikuji/releases/download/v0.8.2/Omikuji-v0.8.2-anylinux-x86_64.AppImage
-	sha256sums = bc4caa0e23086cbbdb5dfd219ec8fe0c87a40d59dc83635e7df2da16ae4f6195
+	source = Omikuji-v0.8.3-anylinux-x86_64.AppImage::https://github.com/reakjra/omikuji/releases/download/v0.8.3/Omikuji-v0.8.3-anylinux-x86_64.AppImage
+	sha256sums = 4b2e63a148d3329762437dd6860d0e2e415b8c1ebab2be796bd1cd9aa8c11942
 
 pkgname = omikuji-bin
