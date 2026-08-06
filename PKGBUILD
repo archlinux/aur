@@ -4,7 +4,7 @@
 _gemname=parlour
 pkgname=ruby-$_gemname
 pkgver=9.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A type information generator, merger and parser for Sorbet and Ruby 3/Steep'
 arch=(any)
 url='https://github.com/AaronC81/parlour'
@@ -38,6 +38,9 @@ prepare() {
   # We don't build from a git checkout, so replace git ls-files call.
   sed --in-place 's#`git ls-files -z`\.split("\\x0")#Dir["lib/**/*", "exe/*", "LICENSE.*", "README.*", "CHANGELOG.*"]#g' \
     "${_gemname}.gemspec"
+
+  # Arch ships commander 6, upstream still pins ~> 5.0.
+  sed --in-place 's#"commander", "~> 5.0"#"commander", ">= 5.0"#' "${_gemname}.gemspec"
 
   # Use bundler instead of bundler/setup, mark sorbet-dependent tests as pending.
   patch --strip=1 --input="../parlour-test-setup.patch"
