@@ -1,0 +1,19 @@
+pkgbase = davie-git
+	pkgdesc = Terminal contact manager backed by CardDAV, with a mutt query mode
+	pkgver = r91.a2e19e6
+	pkgrel = 1
+	url = https://github.com/aclindsa/davie
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = neomutt: address book queries via "davie query"
+	optdepends = mutt: address book queries via "davie query"
+	provides = davie=r91.a2e19e6
+	conflicts = davie
+	source = davie::git+https://github.com/aclindsa/davie.git
+	sha256sums = SKIP
+
+pkgname = davie-git
