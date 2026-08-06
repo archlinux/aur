@@ -2,10 +2,10 @@
 _spirv_reflect_tag=vulkan-sdk-1.4.321.0
 _rstd_commit=c697a4b08cbb9183f78c18915f59c8f72dac5d14
 _vvk_commit=27114b7e06cfb0c099ef38544d3f4c653f9e71a2
-_wavsen_commit=91817a146b3b386809ae89b65533f6a57f0dcdf7
+_wavsen_commit=610b135fafbdb817b28b5ca8c50ae61db70e290c
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -26,11 +26,11 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "0004-cmake-Use-system-glslang.patch"
         "0005-cmake-Use-system-VulkanMemoryAllocator.patch"
         "0006-cmake-Install-weweb-to-bin.patch")
-sha256sums=('7dedf50605a9e16aec4277ace4ca407d25e1e5efd75e7e27a42dc2e9a553e74a'
+sha256sums=('5ac24a38ca7ed10cb2f4dce7ad1a50632b4885c333ce40d336ecf40d04223a05'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
             '9212c0d959a648801a005f8509699cc34dbb8fb2444a4eaedb0b922570ae77d5'
             '871387eda9ea0ac136c04feba3f5d409b388e9846de2b41f86cb271121f43855'
-            'cefc3330ffe73cae6c2300249f94b988d52e3272c88ed32786825888e41421eb'
+            'a2bcc8609aa1c8464987c7f3a7a64da47b113cf426a81cdf0977881e4e0c66ca'
             '74e3ee760d1e1d6b61e190f007a6e3b6b3743593a56b52fad60e978190f6dcdd'
             '8fd66d8e66a4ba536516945796985f9c780099128f79fb35f87ad2f6b393af5a'
             '70984f7a1e840bebb6ac67bb1f10083fc77227f85a5adbc063ebff2945bcd28f'
