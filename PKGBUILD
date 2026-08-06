@@ -3,8 +3,8 @@
 _pkg="isbnlib"
 _name="python-${_pkg}"
 pkgname="${_name}2"
-pkgver=3.11.3
-pkgrel=2
+pkgver=3.11.21
+pkgrel=1
 pkgdesc='Extract, clean, transform, hyphenate and metadata for ISBNs'
 arch=(any)
 url="https://github.com/hans-fritz-pommes/isbnlib"
@@ -12,9 +12,9 @@ license=(LGPL-3.0-only)
 provides=("${_name}")
 conflicts=("${_name}")
 depends=(python)
-makedepends=(python-{build,installer} python-setuptools)
+makedepends=(python-{build,installer,setuptools,pytest,pytest-cov})
 source=("$_pkg-$pkgver.tar.gz::https://github.com/hans-fritz-pommes/${_pkg}/archive/v$pkgver/${_pkg}-$_pkgver.tar.gz")
-sha256sums=('08a8761476e7165c2e9cf72c9a797fb993c6ec457dee37226d78521db54697cd')
+sha256sums=('fc67d64fbb0f9286973429ede2f182d0781874c7dc3fb81b06872acc7a55678e')
 
 build() {
 	cd "${_pkg}-$pkgver"
@@ -23,7 +23,7 @@ build() {
 
 check() {
 	cd "${_pkg}-$pkgver"
-	python -m pytest -m 'not network'
+	python -B -m pytest -m 'not network'
 }
 
 package() {
