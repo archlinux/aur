@@ -1,4 +1,4 @@
-# Maintainer: Kolonia333 <ТВОЙ_EMAIL@example.com>
+# Maintainer: Kolonia333 <uiixexexe@gmail.com>
 pkgname=javanya
 pkgver=1.0.0
 pkgrel=1
