@@ -1,12 +1,12 @@
 pkgbase = bmk
 	pkgdesc = successor to make(1) with support for subdirectories
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/realchonk/bmk
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	source = bmk-0.2.tar.gz::https://github.com/realchonk/bmk/archive/refs/tags/0.2.tar.gz
-	sha256sums = 63fb5179edc749067dc2771fe8049b5abcdf28217d71f947d382cb32e4ba3f4e
+	source = bmk-0.3.tar.gz::https://github.com/realchonk/bmk/archive/refs/tags/0.3.tar.gz
+	sha256sums = 28b98c8a2fe73b5ffe3bac6b1a570b90f88ade5b79f88d992730179ec645c7f8
 
 pkgname = bmk
