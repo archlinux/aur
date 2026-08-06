@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-emoji-selector-git
 	pkgdesc = Emoji Selector for COSMIC™️ DE
 	pkgver = 0.1.5.r43.g4530c2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bGVia3VjaGVu/cosmic-ext-applet-emoji-selector
 	arch = x86_64
 	license = MPL-2.0 AND MIT

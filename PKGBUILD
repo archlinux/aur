@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-emoji-selector-git
 pkgver=0.1.5.r43.g4530c2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji Selector for COSMIC™️ DE"
 arch=('x86_64')
 url="https://github.com/bGVia3VjaGVu/cosmic-ext-applet-emoji-selector"
@@ -32,13 +32,13 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just build-release
+  just build-release --frozen
 }
 
 package() {
