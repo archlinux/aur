@@ -9,6 +9,7 @@ pkgbase = diffstalker-git
 	makedepends = git
 	depends = nodejs
 	depends = git
+	optdepends = diffstalker-grammars: in-file symbol outlines (the `o` key)
 	provides = diffstalker
 	provides = diffstalkerd
 	conflicts = diffstalker

@@ -9,6 +9,12 @@ url="https://github.com/yogh-io/diffstalker"
 license=('MIT')
 depends=('nodejs' 'git')
 makedepends=('bun' 'git')
+# In-file outlines are opt-in: diffstalkerd works without the grammars and
+# simply reports no outline capability, which the UI shows rather than guesses.
+# Never point Arch users at `npm i -g diffstalkerd-grammars` - npm's prefix here
+# is /usr, which is precisely the unowned-files problem _check_foreign_bins
+# below exists to warn about.
+optdepends=('diffstalker-grammars: in-file symbol outlines (the `o` key)')
 provides=('diffstalker' 'diffstalkerd')
 conflicts=('diffstalker' 'diffstalkerd')
 source=("${pkgname}::git+${url}.git")
