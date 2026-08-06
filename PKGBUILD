@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=smaragd
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Native desktop authoring tool for writers'
 arch=(x86_64)
@@ -14,7 +14,7 @@ checkdepends=(git)
 optdepends=('git: VCS integration')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('768f4442bda7a6dec88c556dc0ff93146b11c64c67cf0142a5030e7992be9b56')
+sha256sums=('c13e8671387670359ca600b9e562c79a6f76df8f180d35c16042cb6917345f5b')
 
 _srcenv() {
 	cd "$_archive"
