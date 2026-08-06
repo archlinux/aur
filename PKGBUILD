@@ -3,7 +3,7 @@
 
 pkgbase=jv
 pkgname=jsonschema
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc='json-schema compilation and validation'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('06465cc1c647b086f9b8d590c9de1608e5b335b58598d0eb84b9ee63a747e1d7')
+sha256sums=('f94a43d08c6b8f1f80069f44e996090ce89e2abb3b6dd997e8f1e61ac6d9fb9f')
 
 prepare(){
 	  cd "$_archive"
