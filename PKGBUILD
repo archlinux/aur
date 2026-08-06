@@ -3,7 +3,7 @@
 pkgname=ludusavi
 _app_id="com.mtkennerly.$pkgname"
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -13,6 +13,7 @@ depends=(
   'gtk3'
   'hicolor-icon-theme'
   'libgcc'
+  'zstd'
 )
 makedepends=(
   'cargo'
@@ -40,6 +41,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release
