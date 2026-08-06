@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-forecast-git
 	pkgdesc = Weather app written in rust and libcosmic
-	pkgver = r129.393ea6e
+	pkgver = r187.22a7de0
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/forecast
 	arch = x86_64
