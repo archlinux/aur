@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clipboard-manager-git
-pkgver=0.1.0.r49.g3b4d392
+pkgver=0.1.0.r91.g25e2dfd
 pkgrel=1
 pkgdesc="Clipboard manager for COSMIC™"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/clipboard-manager"
 license=('GPL-3.0-or-later')
-depends=('cosmic-applets')
+depends=(
+  'cosmic-applets'
+  'sqlite'
+)
 makedepends=(
   'cargo'
   'git'
@@ -15,7 +18,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-clipboard-manager-git')
-options=('!lto')  # sqlx crate fails with LTO enabled
 source=('git+https://github.com/cosmic-utils/clipboard-manager.git')
 sha256sums=('SKIP')
 
@@ -27,7 +29,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 
   git lfs install --local
   git remote add network-origin https://github.com/cosmic-utils/clipboard-manager
@@ -37,6 +39,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   just build-release --frozen
 }
