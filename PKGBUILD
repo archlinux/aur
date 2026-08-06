@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A small terminal app for switching project configuration profiles safely"
 
-pkgver=0.20.6
+pkgver=0.20.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
 sha256sums=('c8c0a248a28bcec67d339d24786a9e22c5192cb274c02cf9fd8fb17a7129923f'
             '7169fd4fb7b754a22701ad3978931c994ad97c1ce46cba85cdb1cb69238f9bd1')
-sha256sums_x86_64=('a1bade9290fb36ca521a2db95bbab2bc5169bed9dc88e54dd985801d05924b03')
-sha256sums_aarch64=('0b0b8c06c778f6b5c3ceb43f80884390e37563ff8e62e7c52e8eb9ad1fac5cde')
+sha256sums_x86_64=('3ca412ba4df7e7193aea2a7a950c7e46a2f1b3ab9f0e97f243f059baeb5ebd7f')
+sha256sums_aarch64=('6bfd7fb1e2dde592335d02c77a719c8c7e56e0884b608b4ecdca6ace47a163b7')
 
 
 package() {
