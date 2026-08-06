@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(            'python-deepl: DeepL translation backend'
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('051c52585782044fc0896fb04078127fa653feaeb13b80f74ce0c4636fabcd0b')
+sha256sums=('529ff690508d25b66e0cb7fe5233a74529d551ecd30db8e9c80e3b23048eef19')
 
 package() {
     cd "OSC-DreamChatbox-${_tag#v}"
@@ -44,6 +44,12 @@ package() {
     local app="${pkgdir}/usr/share/${pkgname}"
     install -Dm644 osc_dreamchatbox.py "${app}/osc_dreamchatbox.py"
     cp -r core ui "${app}/"
+    # config/plugins.json ist der Plugin-Store-Katalog, den die App neben
+    # sich erwartet (core/constants.py: STORE_SOURCES_FILE). Fehlt er, ist
+    # der Store beim ersten Oeffnen leer und meldet "No sources configured",
+    # bis der Nutzer einmal auf Refresh drueckt - AppImage und Windows-Build
+    # kopieren ihn laengst mit, nur hier fehlte er.
+    if [ -d config ]; then cp -r config "${app}/"; fi
     install -Dm644 assets/icon.png "${app}/assets/icon.png"
     # Python-Cache/Muell nicht paketieren
     find "${app}" -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
