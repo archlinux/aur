@@ -1,13 +1,13 @@
 pkgbase = pdfsam-bin
-	pkgdesc = PDFsam Basic: Merge, split, extract pages, rotate and mix your PDF files(without java dependency
-	pkgver = 6.0.4
+	pkgdesc = PDFsam Basic: Merge, split, extract pages, rotate and mix your PDF files(without java dependency)
+	pkgver = 6.0.5
 	pkgrel = 1
 	url = https://pdfsam.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = gtk3
 	provides = pdfsam
-	source_x86_64 = https://github.com/torakiki/pdfsam/releases/download/v6.0.4/pdfsam-basic_6.0.4-1_amd64.deb
-	sha256sums_x86_64 = 22cd0c780750170a1e40d3bd8286f4ba640771ec3bb8600878925666776f99cd
+	source_x86_64 = https://github.com/torakiki/pdfsam/releases/download/v6.0.5/pdfsam-basic_6.0.5-1_amd64.deb
+	sha256sums_x86_64 = 99cf8fc0ea49dadc3420e2b4989358b02089f762cd9f8d9ef17ea53da2779919
 
 pkgname = pdfsam-bin
