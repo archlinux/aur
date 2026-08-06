@@ -1,7 +1,7 @@
 pkgbase = ruby-sord
 	pkgdesc = Convert YARD docs to Sorbet RBI and Ruby 3/Steep RBS files
 	pkgver = 7.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AaronC81/sord
 	arch = any
 	license = MIT

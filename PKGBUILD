@@ -3,7 +3,7 @@
 _gemname=sord
 pkgname=ruby-$_gemname
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert YARD docs to Sorbet RBI and Ruby 3/Steep RBS files'
 arch=(any)
 url='https://github.com/AaronC81/sord'
@@ -36,6 +36,9 @@ prepare() {
   # We don't build from a git checkout, so replace git ls-files call.
   sed --in-place 's#`git ls-files -z`\.split("\\x0")#Dir["lib/**/*", "exe/*", "LICENSE.*", "README.*", "CHANGELOG.*"]#g' \
     "${_gemname}.gemspec"
+
+  # Arch ships commander 6, upstream still pins ~> 5.0.
+  sed --in-place "s#'commander', '~> 5.0'#'commander', '>= 5.0'#" "${_gemname}.gemspec"
 
   # Require bundler in resolver since it uses Bundler.load but doesn't require it.
   sed --in-place "/require 'rbs'/a require 'bundler'" lib/sord/resolver.rb
