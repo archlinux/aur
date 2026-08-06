@@ -1,0 +1,13 @@
+pkgbase = ytubic-9m2pju-bin
+	pkgdesc = A YouTube Music client built with Flutter
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/NUber-dev/YTubic
+	arch = x86_64
+	license = GPL3
+	provides = ytubic
+	conflicts = ytubic
+	source = YTubic-0.4.3.deb::https://github.com/NUber-dev/YTubic/releases/download/v0.4.3/YTubic_0.4.3_Linux_x86_64.deb
+	sha256sums = 17b5822d65b6090e6305c84257649bb5168084459ea1343e2cf9c10fde349be2
+
+pkgname = ytubic-9m2pju-bin
