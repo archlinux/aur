@@ -2,7 +2,7 @@
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -10,9 +10,12 @@ url="https://github.com/dongdongbh/Mindwtr"
 license=('AGPL-3.0-or-later')
 depends=(
   'alsa-lib'
+  'bzip2'
   'gtk3'
   'libayatana-appindicator'
   'libsoup3'
+  'openssl'
+  'sqlite'
   'webkit2gtk-4.1'
 )
 makedepends=(
@@ -43,12 +46,12 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "$srcdir/Mindwtr-$pkgver"
+  cd "Mindwtr-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
-  bun install
+  bun install --frozen-lockfile
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
@@ -56,9 +59,11 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/Mindwtr-$pkgver/apps/desktop"
+  cd "Mindwtr-$pkgver/apps/desktop"
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
+  export OPENSSL_NO_VENDOR=1
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -67,7 +72,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/Mindwtr-$pkgver/apps/desktop"
+  cd "Mindwtr-$pkgver/apps/desktop"
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
 
   # Run the desktop Vitest suite, but do not fail the package build on test failures.
@@ -75,7 +80,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/Mindwtr-$pkgver/apps/desktop/src-tauri"
+  cd "Mindwtr-$pkgver/apps/desktop/src-tauri"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
   for i in 32x32 64x64 128x128 128x128@2x; do
