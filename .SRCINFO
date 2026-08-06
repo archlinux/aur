@@ -1,6 +1,6 @@
 pkgbase = kursor
 	pkgdesc = Keyboard-driven mouse-cursor -- glide-num & glide-alpha (navigation) & grid (progressive targeting)
-	pkgver = 4.1.0
+	pkgver = 4.3.5
 	pkgrel = 1
 	url = https://github.com/rruxx/kursor https://gitee.com/rrux/kursor
 	install = kursor.install
@@ -9,11 +9,11 @@ pkgbase = kursor
 	makedepends = cargo
 	depends = glibc
 	depends = libcap
-	provides = kursor=4.1.0
+	provides = kursor=4.3.5
 	conflicts = kursor-bin
-	source = https://github.com/rruxx/kursor/archive/refs/tags/v4.1.0.tar.gz
-	source = https://gitee.com/rrux/kursor/archive/refs/tags/v4.1.0.tar.gz
-	sha256sums = d9cb498bb523117c3a22334770e3d051ab923012294ae05c83e926f822e537bf
-	sha256sums = d9cb498bb523117c3a22334770e3d051ab923012294ae05c83e926f822e537bf
+	source = https://github.com/rruxx/kursor/archive/refs/tags/v4.3.5.tar.gz
+	source = https://gitee.com/rrux/kursor/archive/refs/tags/v4.3.5.tar.gz
+	sha256sums = d530f14c96263bf1ad57609674587f1796e773a8c76c13bf68f9bb8248447da4
+	sha256sums = d530f14c96263bf1ad57609674587f1796e773a8c76c13bf68f9bb8248447da4
 
 pkgname = kursor
