@@ -1,0 +1,17 @@
+pkgbase = hermes-webui-git
+	pkgdesc = Hermes WebUI: The best way to use Hermes Agent from the web or from your phone!
+	pkgver = 0.52.106.r327.g5f3117f81
+	pkgrel = 1
+	url = https://github.com/nesquena/hermes-webui
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	depends = python-cryptography
+	optdepends = hermes-agent: Hermes agent runtime — 官方安装脚本或 AUR 安装皆可
+	optdepends = python-markdown-it-py: session HTML 导出的 Markdown 渲染
+	source = git+https://github.com/nesquena/hermes-webui.git
+	sha256sums = SKIP
+
+pkgname = hermes-webui-git
