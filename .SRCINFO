@@ -1,0 +1,19 @@
+pkgbase = git-explain-tui-bin
+	pkgdesc = Browse Git commits and diffs in the terminal, then use AI chat with selected commit, file, or range context
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/mmcs-work/git-explain-tui
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	provides = git-explain-tui
+	conflicts = git-explain-tui
+	options = !strip
+	source = README-0.1.7.md::https://raw.githubusercontent.com/mmcs-work/git-explain-tui/v0.1.7/README.md
+	source = LICENSE-0.1.7::https://raw.githubusercontent.com/mmcs-work/git-explain-tui/v0.1.7/LICENSE
+	sha256sums = 0479b9ee8addaccc38581c2bb2cbb68cc4f0ed729b7ad4173a0b0ca45c8a8c05
+	sha256sums = 19f664a83c416d17c1d662ccde538c2532326c5e6fcc1c4116d3991f2f588112
+	source_x86_64 = git-explain-tui-0.1.7-x86_64::https://github.com/mmcs-work/git-explain-tui/releases/download/v0.1.7/git-explain-tui-linux-x86_64
+	sha256sums_x86_64 = 82737232535b2d5ca3a879eb94bf8d057e058f81bf237b636918b79268c5acaa
+
+pkgname = git-explain-tui-bin

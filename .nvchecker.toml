@@ -1,0 +1,5 @@
+[git-explain-tui-bin]
+source = "github"
+github = "mmcs-work/git-explain-tui"
+use_latest_release = true
+prefix = "v"
