@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -53,8 +53,8 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('bc69f311755d9aff66459285be163b6ee07f8a1d50e4c4cbe15bde50ea6ec7ba'
-            '786a9c2490e91c3e69cbfa1994e34de255019f2b6e20f666cfe41b8fff2a7a8c'
+sha256sums=('f043b46fe75bdf286c65f8479702ef3972ad680be1782153f4b90722ca450b51'
+            '7ccce226c87df55010d3adce381578668e522cff7da8932a70fa13bc557a0d9b'
             '6f49111e3ea7d62dfbbad1f61edfd0e4b6aeb4acac51e512e4722e408869eaff'
             '55b2be2b11c1c2f1f2b50c7ac0190ef30d3b684c39689d236d25b119906d64a1'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
