@@ -1,4 +1,5 @@
-# Maintainer: detiam <dehe_tian@outlook.com>
+# Maintainer: Zen Wen <zen.8841@gmail.com>
+# Contributor: detiam <dehe_tian@outlook.com>
 # Contributor: Anthony Wang <a at exozy dot me>
 # Contributor: Yiyao Yu <yuydevel at protonmail dot com>
 # Contributor: Benjamin Maisonnas <ben at wainei dot net>
@@ -7,7 +8,7 @@
 _pkgname=zenpower3
 pkgname=zenpower3-dkms
 pkgver=0.2.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
 url='https://github.com/AliEmreSenel/zenpower3'
@@ -17,9 +18,9 @@ depends=('dkms')
 provides=("$_pkgname" "zenpower")
 conflicts=("$_pkgname" "zenpower")
 install=$_pkgname.install
-source=("$_pkgname::git+$url.git#commit=fe7a960afd896629007682fbe0836b97cd8f5a98"
+source=("$_pkgname::git+$url.git#commit=a05f47c704f550f0e94808b1d23d8eb1fbc77209"
         "$_pkgname.conf")
-sha256sums=('0b52ca55185e7a0ba1eb05b9608fbab02b9e41de532df6306ec79d96e5f4b258'
+sha256sums=('2e8e2a85e840095e29713532f678a49f6bb0a51605e81fd8e44269db9fa10cf8'
             '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
 
 prepare() {
