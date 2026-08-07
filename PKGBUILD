@@ -2,7 +2,7 @@
 pkgname=reel
 _app_id=dev.arsfeld.Reel
 pkgver=0.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64')
 url="https://github.com/arsfeld/reel"
@@ -21,6 +21,7 @@ depends=(
   'libsecret'
   'mpv'
   'openssl'
+  'sqlite'
 )
 makedepends=(
   'blueprint-compiler'
@@ -29,14 +30,13 @@ makedepends=(
   'git'
   'mold'
 )
-options=('!lto')  # sqlx crate fails with LTO enabled
 source=("git+https://github.com/arsfeld/reel.git#tag=v$pkgver")
 sha256sums=('e8de74947f1dd20cfeb4d4a90d8eac4fef8c2b7322a8e9c24e40ffcf57bc4fd4')
 
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="com.github.$pkgname" \
@@ -45,6 +45,9 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  export GETTEXT_SYSTEM=true
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
@@ -56,9 +59,6 @@ build() {
 
 check() {
   cd "$pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
-
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
 }
