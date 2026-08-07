@@ -3,14 +3,14 @@
 # Note: the source-code repository is tile-driller, but the compiled binary is tiledriller.
 
 pkgname=tile-driller-git
-pkgver=r10.a877795
+pkgver=r12.4f02616
 pkgrel=1
 pkgdesc="Yet another simple tile painting program for GTK 2"
 arch=('i686' 'x86_64')
 # Older homepage: https://www.villehelin.com/tiledriller.html
 url="https://github.com/vhelin/tile-driller"
 license=('GPL2')
-depends=('gtk2' 'libpng' 'libjpeg' 'zlib')
+depends=('gtk2' 'libpng' 'libjpeg-turbo' 'zlib')
 makedepends=('git')
 source=('git+https://github.com/vhelin/tile-driller.git#branch=master')
 sha256sums=('SKIP')
