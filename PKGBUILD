@@ -14,7 +14,7 @@ depends=(
   glibc
 )
 makedepends=(cargo git curl pkgconf openssl)
-sha256sums=('f6386640a4285c401e51e7a6b7fed6678bb3582c8fec9732cbd9e855ea898824')
+sha256sums=('47dee84f25f9957ae30f1553e5d7eca347c05e5b8b685cf1b405ca57ed4f89d1')
 source=("git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-${pkgver}")
 validpgpkeys=('FB798BFB115895C9C95900649C2B29DD4A62ED27')
 backup=(
