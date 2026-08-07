@@ -1,0 +1,18 @@
+pkgbase = pdn2ora-git
+	pkgdesc = Convert Paint.NET (.pdn) files to OpenRaster (.ora) format (bundles python-pypdn and python-pyora)
+	pkgver = 0.1.1.r0.g3a2888f
+	pkgrel = 1
+	url = https://codeberg.org/marvin1099/pdn2ora
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-defusedxml
+	depends = python-aenum
+	source = git+https://codeberg.org/marvin1099/pdn2ora.git
+	sha256sums = SKIP
+
+pkgname = pdn2ora-git
