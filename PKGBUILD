@@ -8,8 +8,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=sonic-pi
-pkgver=4.6.0
-pkgrel=6
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
@@ -18,26 +18,22 @@ groups=(pro-audio)
 depends=(
   'ruby-rugged>=1.9.0' 'ruby-i18n>=1.14.7' 'ruby-kramdown>=2.1.0' 'ruby-multi_json>=1.9.2' 'ruby-memoist>=0.16.2'
   'ruby-tomlrb>=2.0.0' 'ruby-wavefile>=0.8.1' # devendored
-  aubio ruby ruby-racc supercollider
+  aubio ruby ruby-racc
   qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
 )
 makedepends=(
-  'boost>=1.74.0' 'ruby-gettext>=3.4.4'  # devendored
-  erlang-asn1 erlang-public_key erlang-ssl erlang-parsetools erlang-sasl
+  'ruby-gettext>=3.4.4'  # devendored
   elixir git cmake gendesk chrpath qt6-tools
   ruby-prime ruby-erb ruby-rexml
 )
 #checkdepends=(ruby-rake)  # cannot run tests right now, see below
 optdepends=(
-  'sc3-plugins: additional synthesis UGens for SuperCollider'
   'sox: audio processing and sample manipulation'
 )
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/sonic-pi-net/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
   $pkgname-$pkgver-gui_paths.patch
   $pkgname-$pkgver-ruby_paths.patch
-  $pkgname-$pkgver-devendor_boost.patch
-  $pkgname-$pkgver-boost_deprecated_lib.patch
   $pkgname-$pkgver-devendor_qscintilla_qt6.patch
 )
 sha512sums=(
@@ -64,12 +60,6 @@ prepare() {
 
   printf "Apply patch to devendor qscintilla\n"
   patch -Np1 -i "../$pkgname-$pkgver-devendor_qscintilla_qt6.patch"
-
-  printf "Apply patch to devendor boost\n"
-  patch -Np1 -i "../$pkgname-$pkgver-devendor_boost.patch"
-
-  printf "Apply patch to remove reference to deprecated boost system lib\n"
-  patch -Np1 -i "../$pkgname-$pkgver-boost_deprecated_lib.patch"
 
   printf "Removing vendored test packages\n"
   sed -i '/add_subdirectory(api-tests)/d' app/CMakeLists.txt
@@ -124,17 +114,13 @@ prepare() {
   printf "Removing vendored rouge gem\n"
   rm -rf app/server/ruby/vendor/rouge
 
-  # Could not devendor:
-  #     'ruby-titleize>=1.4.1' - not on Arch/AUR?
-  #     'ruby-ruby-beautify2-git>=0.92.2' is an AUR package >_<, security?
+  # Not devendored:
+  #     'ruby-titleize>=1.4.1' - not on Arch/AUR - very old, not worth devendoring
+  #     'ruby-ruby-beautify2-git>=0.92.2' - not compatible with ruby-beautify2, ruby-beautify not on AUR
 
   # Devendor wavefile - use system ruby-wavefile package
   printf "Removing vendored wavefile gem\n"
   rm -rf app/server/ruby/vendor/wavefile-*
-
-  # Devendor titleize - use system ruby-titleize package
-  # printf "Removing vendored titleize gem\n"
-  # rm -rf app/server/ruby/vendor/titleize-*
 
   # printf "Removing vendored ruby-beautify gem\n"
   # rm -rf app/server/ruby/vendor/ruby-beautify
