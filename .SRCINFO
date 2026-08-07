@@ -1,11 +1,12 @@
 pkgbase = python-borgstore
 	pkgdesc = A key/value store implementation supporting multiple backends
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/borgbackup/borgstore
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
+	checkdepends = python-paramiko
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -16,8 +17,9 @@ pkgbase = python-borgstore
 	optdepends = python-requests: REST and rclone backends
 	optdepends = python-boto3: S3 backend
 	optdepends = python-paramiko: sftp backend
-	source = git+https://github.com/borgbackup/borgstore.git#tag=0.5.5?signed
+	optdepends = python-blake3: blake3 hash algorithm support
+	source = git+https://github.com/borgbackup/borgstore.git#tag=0.6.0?signed
 	validpgpkeys = 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-	b2sums = c261f53d8af2d2aaf09720c2137fd30ce8b7a338a861fc97d3edc49a73604b8bdadeccfaee8b876ecd1e16bbb330744f74986519017e14ed48efc34fb568b394
+	b2sums = 987824fd2336ed4e2e948e56fd84b8537f3db2db32da1a4ebe2f25785883c3e18314c918a14839b97af2c0feb627e2bc3c6563dd9428bd2ec3b0d389b7581f05
 
 pkgname = python-borgstore

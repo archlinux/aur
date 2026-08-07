@@ -2,11 +2,11 @@
 
 pkgname=python-borgstore
 _name=${pkgname#python-}
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A key/value store implementation supporting multiple backends'
 arch=(any)
-url="https://github.com/borgbackup/$_name"
+url=https://github.com/borgbackup/$_name
 license=(BSD-3-Clause)
 depends=(python)
 makedepends=(git
@@ -15,13 +15,15 @@ makedepends=(git
              python-setuptools
              python-setuptools-scm
              python-sphinx)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest
+              python-paramiko)
 optdepends=('python-requests: REST and rclone backends'
             'python-boto3: S3 backend'
-            'python-paramiko: sftp backend')
+            'python-paramiko: sftp backend'
+            'python-blake3: blake3 hash algorithm support')
 source=(git+$url.git#tag=$pkgver?signed)
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
-b2sums=('c261f53d8af2d2aaf09720c2137fd30ce8b7a338a861fc97d3edc49a73604b8bdadeccfaee8b876ecd1e16bbb330744f74986519017e14ed48efc34fb568b394')
+b2sums=('987824fd2336ed4e2e948e56fd84b8537f3db2db32da1a4ebe2f25785883c3e18314c918a14839b97af2c0feb627e2bc3c6563dd9428bd2ec3b0d389b7581f05')
 
 build() {
     cd $_name
