@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytubic
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, responsive YouTube Music desktop client"
 arch=('x86_64')
 #url="https://github.com/NUber-dev/YTubic
@@ -14,6 +14,7 @@ depends=(
   'gtk3'
   'libayatana-appindicator'
   'libsoup3'
+  'openssl'
   'webkit2gtk-4.1'
 )
 makedepends=(
@@ -39,6 +40,7 @@ build() {
   cd "YTubic-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
   export PNPM_HOME="$srcdir/pnpm-home"
+  export OPENSSL_NO_VENDOR=1
   export RUSTUP_TOOLCHAIN=stable
   cargo tauri build --no-bundle -- --frozen
 }
