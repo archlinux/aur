@@ -1,16 +1,16 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.74.0
+# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.75.0
 pkgname=mesh-llm-rocm
 pkgdesc="Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API."
-pkgver=0.74.0
-_pkgver=0.74.0
+pkgver=0.75.0
+_pkgver=0.75.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Mesh-LLM/mesh-llm'
 license=('Apache-2.0')
 makedepends=('just' 'cmake' 'lld' 'pnpm' 'cargo')
-depends=('rocm-hip-sdk')
+depends=('rocm-hip-sdk' 'patchelf')
 provides=('mesh-llm' 'mesh-llm-rocm')
 conflicts=('mesh-llm-cuda' 'mesh-llm-vulkan')
 options=('!lto')
@@ -20,11 +20,14 @@ source=(
 )
 
 sha256sums=(
-'f3468f976d436ccc5f43dc84adbe4ab79bdc90d02de9ef9a37f049d46c238c8e'
+'cc07b13daa8cb70827d33f20486745814ec65c9be132a741833a27f82ca358c4'
 )
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable  
+  # export ROCM_PATH=/opt/rocm/core
+  # export HIP_PATH=/opt/rocm/core
+  # export CMAKE_PREFIX_PATH=/opt/rocm/core
+  export RUSTUP_TOOLCHAIN=stable
   cd $srcdir/mesh-llm-${_pkgver}
   just build rocm
 }
