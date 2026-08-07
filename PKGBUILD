@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.0.r6402.6d81cc3
+pkgver=3.11.0.r6445.64bc83e
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner, git version"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -43,11 +43,25 @@ build() {
   ./docgen docs.md nuclei-jsonschema.json
 }
 
+check() {
+  cd nuclei
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOPATH="$srcdir"
+  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
+  _notest=(
+    'github.com/projectdiscovery/nuclei/v3/lib' # Connects to an external host and gets an unexpected result
+  )
+  go test $(go list ./... | grep -v "^${_notest[@]}$")
+}
+
 package() {
   cd nuclei
-  install -Dm0755 nuclei "$pkgdir/usr/bin/nuclei"
-  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 docs.md "$pkgdir/usr/share/doc/$pkgname/docs.md"
+  install -Dm0755 nuclei -t "$pkgdir/usr/bin/"
+  install -Dm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 docs.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
