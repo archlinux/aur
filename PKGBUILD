@@ -109,6 +109,10 @@ source=(
 
   # Always select lua 5.3 even if other versions exist
   'ceph-20.2.2-lua-5-3-exact.patch'
+
+  # Fix memory leak in ceph-mgr
+  # https://github.com/ceph/ceph/pull/70367
+  'ceph-20.2.3-fix-mgr-memory-leak.patch'
 )
 sha512sums=('1977f384d2af5fde2a795e2eed71c12f519f1a2036ceb2e383c8534feca509740d744e99e77b73488f8e13193a83c7134e407fb6b21c4ba4c1f9ac9752b16fbc'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -128,7 +132,8 @@ sha512sums=('1977f384d2af5fde2a795e2eed71c12f519f1a2036ceb2e383c8534feca509740d7
             '14212332af61a6d055acedc8f12be6f769b49568309d5b357c40b4263d087e83b3f71f2632385c5020d487f0420f978e53fe3c3dc7c3dead75216119412fd03d'
             '46866375f573505c04652b5679cecb138d8d53d772ace54e45a1e557bf0fe009e03d657b44cdbc33d8f96746760ae1c969ce2e30d0ea4a7933aa3ff28b9e2b4e'
             'be44fae301ce3dc2cba90d3ef33849d3e4d5c0878948c2b389200e0cde9eb2e118d8b694f3b6343f86686d4c60988dd43ebc3408317cd0cfcdadbf0ed1ac38d2'
-            'ce1c5ccfdc595ce87ecf164a99d4205f7e303f527a9e3528c8a2e54ef387cff34eb03cbd9b25e6ba09fbc7efed23536d1612f57d0f9671a62e1e9dce05fdec35')
+            'ce1c5ccfdc595ce87ecf164a99d4205f7e303f527a9e3528c8a2e54ef387cff34eb03cbd9b25e6ba09fbc7efed23536d1612f57d0f9671a62e1e9dce05fdec35'
+            '017cc958c671c454e002b9d46a424901722728b40113b5eda65926a62684e1e2dfc9371fbc28223efaaee46078ce81fb186f865e63e8bbbf0575f5e459b5e0cc')
 __version="${pkgver}-${pkgrel}"
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
