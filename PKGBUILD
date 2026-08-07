@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.16.r0.g211987d
+pkgver=1.5.0.r0.gf56cb48
 pkgrel=1
-pkgdesc="COSMIC Store"
+pkgdesc="COSMIC App Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-only')
@@ -14,6 +14,7 @@ depends=(
   'libxkbcommon'
   'openssl'
   'wayland'
+  'zstd'
 )
 makedepends=(
   'cargo'
@@ -45,6 +46,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
