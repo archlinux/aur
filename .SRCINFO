@@ -1,0 +1,24 @@
+pkgbase = caelestia-greeter-git
+	pkgdesc = A modern Material 3 Quickshell frontend for greetd matching the Caelestia design
+	pkgver = 1.0.0.r1.gf1e5b10
+	pkgrel = 1
+	url = https://github.com/dim-ghub/Caelestia-Greeter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = quickshell-git
+	depends = greetd
+	depends = wlr-randr
+	depends = qt6-m3shapes-git
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = cage: recommended lightweight kiosk Wayland compositor for greetd
+	provides = caelestia-greeter
+	conflicts = caelestia-greeter
+	source = caelestia-greeter-git::git+https://github.com/dim-ghub/Caelestia-Greeter.git
+	sha256sums = SKIP
+
+pkgname = caelestia-greeter-git
