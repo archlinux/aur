@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
 url="https://searchmonkey.dev"
@@ -10,6 +10,7 @@ depends=(
   'gtk3'
   'libsoup3'
   'ripgrep'
+  'sqlite'
   'webkit2gtk-4.1'
 )
 makedepends=(
@@ -35,6 +36,7 @@ build() {
   cd "$pkgname-III-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
   export PNPM_HOME="$srcdir/pnpm-home"
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 

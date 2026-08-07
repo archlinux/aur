@@ -1,7 +1,7 @@
 pkgbase = searchmonkey
 	pkgdesc = Real-time search for real files. No index. No daemon. No stale results.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://searchmonkey.dev
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = searchmonkey
 	depends = gtk3
 	depends = libsoup3
 	depends = ripgrep
+	depends = sqlite
 	depends = webkit2gtk-4.1
 	source = searchmonkey-0.3.3.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v0.3.3.tar.gz
 	source = searchmonkey.desktop
