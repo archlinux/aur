@@ -1,9 +1,20 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 5.2.0 ➙ 6.3.0
-              : 2026-01-04 ➙ 2026-04-05
+ Tags         : 5.2.1 ➙ 6.4.0
+              : 2026-01-04 ➙ 2026-08-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-08-07   : 6.4.0
+              - **6.4.0**
+            
+                * Update to track newer versions of *kea*
+            
+                  *control-socket* was changed to *control-sockets* and now holds a list.
+            
+                * Add .nvchecker.toml file
+ 2026-04-05   ⋯
+              - update Docs/Changelog
 
  2026-04-05   : 6.3.0
               - Version 6.3.0
@@ -61,13 +72,3 @@
  2026-01-04   : 5.2.1
               - Update arch PKGBUILD
               - update Docs/Changelog
-
- 2026-01-04   : 5.2.0
-              - ** 5.2.0**
-            
-                * Code Reorg
-                * Switch packaging from hatch to uv
-                * Testing to confirm all working on python 3.14.2
-                * License GPL-2.0-or-later
- 2025-07-20   ⋯
-              - update Docs/Changelog Docs/kea_config.pdf
