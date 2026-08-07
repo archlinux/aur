@@ -1,6 +1,6 @@
 pkgname=ferminal
 _repo=Ferminal
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Custom Wrapper CLI to make your work faster"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 
 depends=(
     'python'
-    'python-requests'
     'python-colorama'
+    'python-prompt_toolkit'
 )
 
 makedepends=(
@@ -24,7 +24,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/RangS-1/${_repo}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('d56819477a13f0c40858c59d9fb2d3ef492439a1c14c04aff56d91479d1f835a')
+sha256sums=('4d1242491a8bc47fd28e61a7b69fa0a9703a467f2e7f0b313b22865438aa8a5e')
 
 build() {
     cd "$srcdir/${_repo}-${pkgver}"
@@ -40,4 +40,9 @@ package() {
 
     install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    sudo install -Dm644 docs/ferminal.1 \
+    /usr/share/man/man1/ferminal.1
+
+    sudo gzip /usr/share/man/man1/ferminal.1
 }
