@@ -1,6 +1,6 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=nasher-bin
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A command-line utility for managing a Neverwinter Nights script or module repository"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('nwnsc-bin: alternative compiler')
 conflicts=('nasher')
 provides=('nasher')
 source=("https://github.com/squattingmonk/nasher/releases/download/$pkgver/nasher_linux.tar.gz")
-md5sums=('0cf9c4d7826f7fa10dd4e0a6fb13b66a')
+md5sums=('31f81c08cf84eca736015d8a7d636dff')
 
 package() {
     install -Dm 755 "nasher" -t "$pkgdir/usr/bin"
