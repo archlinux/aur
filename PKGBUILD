@@ -1,8 +1,8 @@
 # Maintainer: John Peter Sa <johnpetersa19@proton.me>
 pkgname=pkgbuild-manager
 _pkgname=PKGBUILD_Manager
-pkgver=2.5.2
-pkgrel=1
+pkgver=2.5.3
+pkgrel=2
 _builddir="build-${pkgver}"
 pkgdesc="Rust CLI + GTK4 settings panel and multi-file-manager context-menu integration for PKGBUILD management"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
   'gtk4'
   'libadwaita'
   'git'
+  'gettext'
 )
 makedepends=('meson' 'ninja' 'rust' 'cargo' 'gettext' 'blueprint-compiler')
 optdepends=(
@@ -35,7 +36,7 @@ install=pkgbuild-manager.install
 #   sha256sums=('PUT_REAL_SHA256_HASH_HERE')
 # To generate: makepkg -g
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53ac6a48f73db8faa2e8469e8f1ffb289166e7c3e3927d22d5731ae33450c258')
+sha256sums=('c97ed3414f0838d96694f270d2ab1014ddb6c986e60695deba130480c4f90ac0')
 
 build() {
   # Never reuse a Meson configuration created for another source tree or an

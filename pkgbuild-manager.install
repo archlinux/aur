@@ -1,3 +1,24 @@
+# shellcheck shell=bash
+
+_tr() {
+    if command -v gettext >/dev/null 2>&1; then
+        TEXTDOMAINDIR="${PKGBUILD_MANAGER_LOCALEDIR:-/usr/share/locale}" \
+            gettext -d pkgbuild_manager -- "$1"
+    else
+        printf '%s' "$1"
+    fi
+}
+
+_say() {
+    local format
+    format="$(_tr "$1")"
+    shift
+    printf '>>> '
+    # Translations preserve the printf placeholders from the English msgid.
+    # shellcheck disable=SC2059
+    printf "$format\n" "$@"
+}
+
 _desktop_accounts() {
     # Package scriptlets run as root, where USER=root and SUDO_USER is often
     # unset (notably with paru). Read real login accounts from passwd instead.
@@ -9,7 +30,7 @@ _active_desktop_user() {
         printf '%s\n' "$SUDO_USER"
         return
     fi
-    local account name uid home
+    local name uid home
     while IFS=: read -r name uid home; do
         if [ -S "/run/user/${uid}/bus" ]; then
             printf '%s\n' "$name"
@@ -28,33 +49,109 @@ _remove_duplicate_nautilus_extensions() {
     local_ext="/usr/local/share/nautilus-python/extensions/pkgbuild_manager.py"
     if [ -f "$system_ext" ] && { [ -f "$local_ext" ] || [ -L "$local_ext" ]; }; then
         rm -f -- "$local_ext"
-        echo ">>> Removed duplicate Nautilus extension: $local_ext"
+        _say "Removed duplicate Nautilus extension: %s" "$local_ext"
     fi
 
     while IFS=: read -r name uid home; do
         user_ext="$home/.local/share/nautilus-python/extensions/pkgbuild_manager.py"
         if [ -f "$user_ext" ] || [ -L "$user_ext" ]; then
             rm -f -- "$user_ext"
-            echo ">>> Removed duplicate Nautilus extension for $name: $user_ext"
+            _say "Removed duplicate Nautilus extension for %s: %s" "$name" "$user_ext"
+        fi
+    done < <(_desktop_accounts)
+}
+
+_sync_user_catalogs() {
+    local name uid home local_catalog locale system_catalog
+
+    # Older Flatpak releases copied catalogs into ~/.local. Keep those copies
+    # synchronized so they cannot override newer package translations.
+    while IFS=: read -r name uid home; do
+        for local_catalog in "$home"/.local/share/locale/*/LC_MESSAGES/pkgbuild_manager.mo; do
+            [ -f "$local_catalog" ] || continue
+            locale="${local_catalog#"$home/.local/share/locale/"}"
+            locale="${locale%%/*}"
+            system_catalog="/usr/share/locale/$locale/LC_MESSAGES/pkgbuild_manager.mo"
+            if [ -f "$system_catalog" ]; then
+                install -m 0644 -- "$system_catalog" "$local_catalog"
+                chown "$uid:$(id -g "$name")" "$local_catalog"
+                _say "Updated per-user %s translation for %s." "$locale" "$name"
+            fi
+        done
+    done < <(_desktop_accounts)
+}
+
+_refresh_desktop_integrations() {
+    local name uid home session_env was_running
+
+    while IFS=: read -r name uid home; do
+        [ -S "/run/user/${uid}/bus" ] || continue
+        session_env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus"
+
+        if command -v nautilus >/dev/null 2>&1; then
+            was_running=0
+            pgrep -u "$uid" -x nautilus >/dev/null 2>&1 && was_running=1
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                nautilus -q >/dev/null 2>&1 || true
+            if [ "$was_running" -eq 1 ]; then
+                runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                    setsid -f nautilus >/dev/null 2>&1 || true
+            fi
+            _say "Nautilus integration reloaded for %s." "$name"
+        fi
+
+        if command -v nemo >/dev/null 2>&1; then
+            was_running=0
+            pgrep -u "$uid" -x nemo >/dev/null 2>&1 && was_running=1
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                nemo --quit >/dev/null 2>&1 || true
+            if [ "$was_running" -eq 1 ]; then
+                runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                    setsid -f nemo --no-default-window >/dev/null 2>&1 || true
+            fi
+            _say "Nemo integration reloaded for %s." "$name"
+        fi
+
+        if command -v caja >/dev/null 2>&1; then
+            was_running=0
+            pgrep -u "$uid" -x caja >/dev/null 2>&1 && was_running=1
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                caja -q >/dev/null 2>&1 || true
+            if [ "$was_running" -eq 1 ]; then
+                runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                    setsid -f caja --no-default-window >/dev/null 2>&1 || true
+            fi
+            _say "Caja integration reloaded for %s." "$name"
+        fi
+
+        if command -v kbuildsycoca6 >/dev/null 2>&1; then
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                kbuildsycoca6 --noincremental >/dev/null 2>&1 || true
+            _say "Dolphin/KDE service cache refreshed for %s." "$name"
+        elif command -v kbuildsycoca5 >/dev/null 2>&1; then
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                kbuildsycoca5 --noincremental >/dev/null 2>&1 || true
+            _say "Dolphin/KDE service cache refreshed for %s." "$name"
         fi
     done < <(_desktop_accounts)
 }
 
 post_install() {
-    echo ">>> PKGBUILD Manager installed."
-    echo ">>> Right-click any PKGBUILD file to see the PKGBUILD submenu."
-    echo ">>> Press Ctrl+Alt+P to open the menu settings panel."
+    _say "PKGBUILD Manager installed."
+    _say "Right-click any PKGBUILD file to see the PKGBUILD submenu."
+    _say "Press Ctrl+Alt+P to open the menu settings panel."
 
     # Nautilus scans both system and per-user extension directories. A stale
     # user copy instantiates a second MenuProvider and duplicates the option.
     # This package's system extension is authoritative when installed.
     _remove_duplicate_nautilus_extensions
+    _sync_user_catalogs
 
     # Register Ctrl+Alt+P shortcut (GNOME only, only if slot is free)
     if command -v gsettings &>/dev/null; then
         _user="$(_active_desktop_user)"
         if [ -z "$_user" ]; then
-            echo ">>> No active desktop user found; skipping keyboard shortcut."
+            _say "No active desktop user found; skipping keyboard shortcut."
         else
         _uid=$(id -u "$_user" 2>/dev/null)
         _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
@@ -82,7 +179,7 @@ post_install() {
         ${_gset} set \
             org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
             binding "<Control><Alt>p" 2>/dev/null || true
-        echo ">>> Keyboard shortcut Ctrl+Alt+P registered/updated."
+        _say "Keyboard shortcut Ctrl+Alt+P registered/updated."
         fi
     fi
 
@@ -91,39 +188,43 @@ post_install() {
     if command -v nautilus &>/dev/null; then
         _detected=1
         if ! pacman -Q python-nautilus &>/dev/null 2>&1; then
-            echo ">>> Nautilus detected -- install python-nautilus for right-click support:"
+            _say "Nautilus detected -- install python-nautilus for right-click support:"
             echo ">>>   sudo pacman -S python-nautilus"
-            echo ">>> Then run: nautilus -q"
         else
-            echo ">>> Nautilus extension ready. Run: nautilus -q"
+            _say "Nautilus extension ready; it will be reloaded automatically."
         fi
     fi
     if command -v nemo &>/dev/null; then
         _detected=1
         if ! pacman -Q nemo-python &>/dev/null 2>&1; then
-            echo ">>> Nemo detected -- install nemo-python for right-click support:"
+            _say "Nemo detected -- install nemo-python for right-click support:"
             echo ">>>   sudo pacman -S nemo-python"
         else
-            echo ">>> Nemo extension ready."
+            _say "Nemo extension ready."
         fi
     fi
     if command -v caja &>/dev/null; then
         _detected=1
         if ! pacman -Q python-caja &>/dev/null 2>&1; then
-            echo ">>> Caja detected -- install python-caja for right-click support:"
+            _say "Caja detected -- install python-caja for right-click support:"
             echo ">>>   sudo pacman -S python-caja"
         else
-            echo ">>> Caja extension ready."
+            _say "Caja extension ready."
         fi
     fi
     if command -v dolphin &>/dev/null; then
         _detected=1
-        echo ">>> Dolphin detected -- right-click service menu installed automatically."
+        _say "Dolphin detected -- right-click service menu installed automatically."
     fi
     if [ "$_detected" -eq 0 ]; then
-        echo ">>> No supported file manager detected."
-        echo ">>> Supported: Nautilus, Nemo, Caja, Dolphin."
+        _say "No supported file manager detected."
+        _say "Supported: Nautilus, Nemo, Caja, Dolphin."
     fi
+
+    # Extension modules and service-menu caches live inside long-running file
+    # manager processes. Reload them now so upgrades become visible without a
+    # logout or a manual restart.
+    _refresh_desktop_integrations
 }
 
 post_upgrade() {
@@ -137,61 +238,97 @@ post_upgrade() {
     _nautilus_scripts="$_user_home/.local/share/nautilus/scripts"
     if [ -d "$_nautilus_scripts/PKGBUILD" ]; then
         rm -rf "$_nautilus_scripts/PKGBUILD"
-        echo ">>> Removed stale PKGBUILD dir from Nautilus scripts."
+        _say "Removed stale PKGBUILD dir from Nautilus scripts."
     fi
 
     # Nemo
     _nemo_scripts="$_user_home/.local/share/nemo/scripts"
     if [ -d "$_nemo_scripts/PKGBUILD" ]; then
         rm -rf "$_nemo_scripts/PKGBUILD"
-        echo ">>> Removed stale PKGBUILD dir from Nemo scripts."
+        _say "Removed stale PKGBUILD dir from Nemo scripts."
     fi
 
     # Caja
     _caja_scripts="$_user_home/.local/share/caja/scripts"
     if [ -d "$_caja_scripts/PKGBUILD" ]; then
         rm -rf "$_caja_scripts/PKGBUILD"
-        echo ">>> Removed stale PKGBUILD dir from Caja scripts."
+        _say "Removed stale PKGBUILD dir from Caja scripts."
     fi
 
     # Dolphin service menus (old versions used ~/.local/share/kservices5)
     _dolphin_old="$_user_home/.local/share/kservices5/pkgbuild-manager.desktop"
     if [ -f "$_dolphin_old" ]; then
         rm -f "$_dolphin_old"
-        echo ">>> Removed stale Dolphin service menu entry."
+        _say "Removed stale Dolphin service menu entry."
     fi
     done < <(_desktop_accounts)
 
     post_install
 }
 
-post_remove() {
-    if command -v gsettings &>/dev/null; then
-        _user="$(_active_desktop_user)"
-        [ -n "$_user" ] || return 0
-        _uid=$(id -u "$_user" 2>/dev/null)
-        _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
-        _gset="runuser -u $_user -- env $_env gsettings"
-        _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
-        _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
-            custom-keybindings 2>/dev/null || echo "[]")
+pre_remove() {
+    local name uid home session_env unregister
 
-        # FIX: the previous multi-sed approach left the list corrupted when the
-        # binding was the only element (resulting in '[, ]' or an invalid '[]').
-        # Now uses Python to safely parse and filter the GSettings list.
-        _new=$(python3 - "$_current" "$_binding" <<'PYEOF'
-import sys, ast
-current_str = sys.argv[1].strip()
-binding = sys.argv[2]
-try:
-    lst = ast.literal_eval(current_str)
-except Exception:
-    lst = []
-lst = [x for x in lst if x != binding]
-print(repr(lst).replace('"', "'"))
-PYEOF
-        )
-        ${_gset} set org.gnome.settings-daemon.plugins.media-keys \
-            custom-keybindings "$_new" 2>/dev/null || true
-    fi
+    unregister="/usr/share/pkgbuild-manager/unregister-shortcut"
+    [ -x "$unregister" ] || return 0
+
+    # Run before pacman removes the helper. Remove registrations for every
+    # supported desktop, not only the desktop currently detected.
+    while IFS=: read -r name uid home; do
+        if [ -S "/run/user/${uid}/bus" ]; then
+            session_env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus"
+            runuser -u "$name" -- env "$session_env" "XDG_RUNTIME_DIR=/run/user/${uid}" \
+                "$unregister" --all >/dev/null 2>&1 || true
+        elif command -v dbus-run-session >/dev/null 2>&1; then
+            runuser -u "$name" -- env "HOME=$home" \
+                dbus-run-session -- "$unregister" --all >/dev/null 2>&1 || true
+        fi
+    done < <(_desktop_accounts)
+}
+
+post_remove() {
+    local name uid home catalog
+
+    while IFS=: read -r name uid home; do
+        # Configuration, saved window state, Flatpak-exported scripts and logs.
+        rm -rf -- \
+            "$home/.config/pkgbuild-manager" \
+            "$home/.local/share/pkgbuild-manager" \
+            "$home/.local/share/pkgbuild_manager"
+
+        # Per-user extension copies created by older native/Flatpak releases.
+        rm -f -- \
+            "$home/.local/share/nautilus-python/extensions/pkgbuild_manager.py" \
+            "$home/.local/share/nemo-python/extensions/pkgbuild_manager_nemo.py" \
+            "$home/.local/share/caja-python/extensions/pkgbuild_manager_caja.py" \
+            "$home/.local/share/kio/servicemenus/pkgbuild-manager.desktop" \
+            "$home/.local/share/kservices5/pkgbuild-manager.desktop"
+        rm -f -- \
+            "$home"/.local/share/nautilus-python/extensions/__pycache__/pkgbuild_manager*.pyc \
+            "$home"/.local/share/nemo-python/extensions/__pycache__/pkgbuild_manager_nemo*.pyc \
+            "$home"/.local/share/caja-python/extensions/__pycache__/pkgbuild_manager_caja*.pyc
+        rmdir -- \
+            "$home/.local/share/nautilus-python/extensions/__pycache__" \
+            "$home/.local/share/nemo-python/extensions/__pycache__" \
+            "$home/.local/share/caja-python/extensions/__pycache__" \
+            2>/dev/null || true
+
+        # Remove only this application's catalogs; locale data from every
+        # other application remains untouched.
+        for catalog in "$home"/.local/share/locale/*/LC_MESSAGES/pkgbuild_manager.mo; do
+            [ -e "$catalog" ] || continue
+            rm -f -- "$catalog"
+        done
+
+        # Legacy script-menu directories from releases predating extensions.
+        rm -rf -- \
+            "$home/.local/share/nautilus/scripts/PKGBUILD" \
+            "$home/.local/share/nemo/scripts/PKGBUILD" \
+            "$home/.local/share/caja/scripts/PKGBUILD"
+
+        _say "Removed PKGBUILD Manager user data for %s." "$name"
+    done < <(_desktop_accounts)
+
+    # Drop extension modules and KDE service-menu caches from live processes.
+    _refresh_desktop_integrations
 }

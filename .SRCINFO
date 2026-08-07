@@ -1,7 +1,7 @@
 pkgbase = pkgbuild-manager
 	pkgdesc = Rust CLI + GTK4 settings panel and multi-file-manager context-menu integration for PKGBUILD management
-	pkgver = 2.5.2
-	pkgrel = 1
+	pkgver = 2.5.3
+	pkgrel = 2
 	url = https://github.com/johnpetersa19/PKGBUILD_Manager
 	install = pkgbuild-manager.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = pkgbuild-manager
 	depends = gtk4
 	depends = libadwaita
 	depends = git
+	depends = gettext
 	optdepends = namcap: for auditing package metadata and structure
 	optdepends = shellcheck: for linting PKGBUILD bash code
 	optdepends = python-nautilus: for Nautilus (GNOME) right-click menu support
@@ -28,7 +29,7 @@ pkgbase = pkgbuild-manager
 	optdepends = openssh: for accessing Git and AUR remotes over SSH
 	provides = pkgbuild-manager
 	conflicts = pkgbuild-manager-git
-	source = PKGBUILD_Manager-2.5.2.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v2.5.2.tar.gz
-	sha256sums = 53ac6a48f73db8faa2e8469e8f1ffb289166e7c3e3927d22d5731ae33450c258
+	source = PKGBUILD_Manager-2.5.3.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v2.5.3.tar.gz
+	sha256sums = c97ed3414f0838d96694f270d2ab1014ddb6c986e60695deba130480c4f90ac0
 
 pkgname = pkgbuild-manager
