@@ -1,6 +1,6 @@
 pkgbase = plattenalbum
 	pkgdesc = Connect to your music
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/plattenalbum
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = plattenalbum
 	makedepends = meson
 	makedepends = gettext
 	makedepends = glib2
-	depends = python-mpd2>=3.1.0
 	depends = gtk4>=4.20.0
 	depends = python-gobject
 	depends = libadwaita>=1.8.0
 	provides = mpdevil
-	source = plattenalbum-2.5.0.tar.gz::https://github.com/SoongNoonien/plattenalbum/archive/v2.5.0.tar.gz
-	sha256sums = 20e400a4b30edc5db9ee4942ffe386b4fede5695623b4af28f999317a473b1d5
+	source = plattenalbum-2.6.0.tar.gz::https://github.com/SoongNoonien/plattenalbum/archive/v2.6.0.tar.gz
+	sha256sums = 4139e766ef0607595617aef0502892452ea49f5b5815c668a0fed4c3f9f71609
 
 pkgname = plattenalbum
