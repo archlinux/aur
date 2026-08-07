@@ -1,9 +1,9 @@
 # Maintainer: Swâmi Petaramesh <swami AT petaramesh DOT org>
 
 pkgname=rudder-agent
-pkgver="9.1.3"
+pkgver="9.1.4"
 # pkgver="9.1.3~git202607090118"
-pkgrel=4
+pkgrel=1
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -24,7 +24,7 @@ source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-pack
 
 noextract=("rudder-sources-${pkgver}.tar.bz2")
 sha256sums=('SKIP'
-            '01428736e436d9e46b31f96e86a9045b3a335a52eb1aa48a97bef8c410b6c979')
+            '1fa5f3e9fee9bbdeba8903e709e6dd02cdf482481749d1a2d6e33bcd5342c0d2')
 
 prepare() {
   # Example using the souces tarball without further patching
