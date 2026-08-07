@@ -1,0 +1,35 @@
+# caelestia-greeter.install
+#
+# Sets up the greeter environment: the `greeter` system user, the state cache
+# directory, the Hyprland kiosk greetd configuration, and per-user data
+# (dynamic scheme + profile picture) synced from the invoking user's desktop.
+
+_greeter_setup() {
+    # Create the restricted system user greetd runs the greeter as
+    if ! getent passwd greeter >/dev/null; then
+        useradd -r -M -s /usr/bin/nologin -d /var/cache/caelestia-greeter greeter
+    fi
+    usermod -aG video,input greeter
+
+    # Setup the state cache directory for persistent settings & session memory
+    mkdir -p /var/cache/caelestia-greeter
+    chown -R greeter:greeter /var/cache/caelestia-greeter
+    chmod 755 /var/cache/caelestia-greeter
+
+    # Deploy the Hyprland kiosk greetd configuration
+    caelestia-greeter -k hyprland
+
+    # Sync the current user's active Caelestia scheme as the "dynamic" scheme
+    caelestia-greeter -s || echo "warning: caelestia scheme sync skipped"
+
+    # Set the profile picture from the default ~/.face path
+    caelestia-greeter --set-pfp '~/.face' || echo "warning: no ~/.face found, profile picture not set"
+}
+
+post_install() {
+    _greeter_setup
+}
+
+post_upgrade() {
+    _greeter_setup
+}
