@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=otf-bravura
-pkgver=1.480
+pkgver=1.481
 pkgrel=1
 pkgdesc='An SMuFL compliant music font designed by Daniel Spreadbury at Steinberg'
 arch=('any')
@@ -12,7 +12,7 @@ license=('OFL')
 _tag="${pkgname#otf-}-$pkgver"
 _archive="${pkgname#otf-}-$_tag"
 source=("$_url/archive/refs/tags/$_tag/$_archive.tar.gz")
-sha256sums=('cde984e19f20131b6cac95b114cb9fc1b22c6f79ba07e166812bf5051f0cb0df')
+sha256sums=('324611eac0af49b9c4b08a65c50d9844ea08dac3c89df4950d043b0ab5a26444')
 
 package() {
     cd "$_archive"
