@@ -1,6 +1,6 @@
 pkgbase = lareview-bin
 	pkgdesc = The code review workbench
-	pkgver = 0.0.38
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/puemos/lareview
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = lareview-bin
 	provides = lareview
 	conflicts = lareview
 	options = !strip
-	source = README-0.0.38.md::https://raw.githubusercontent.com/puemos/lareview/v0.0.38/README.md
+	source = README-0.1.4.md::https://raw.githubusercontent.com/puemos/lareview/v0.1.4/README.md
 	source = LICENSE-MIT
 	source = LICENSE-APACHE
-	sha256sums = 4d2aeefa296e3807ff06feb034207907dabc7281ddfcf2d97c97f4575cce05e4
+	sha256sums = ac124c5e504c6e91bf813c265d8d2829ba3e3efff38a5c851f8a3fb8064254b5
 	sha256sums = f07118dec05cd4d1b23459e754d7b8ccd948d3ef851aa558ddb46154a67594cd
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = lareview-x86_64-0.0.38.deb::https://github.com/puemos/lareview/releases/download/v0.0.38/lareview_0.0.38_amd64.deb
-	sha256sums_x86_64 = 1dd305d8e8b4ceb04bd31e13a7a6139efda0c267b343624fc0a5e081391ad19a
+	source_x86_64 = lareview-x86_64-0.1.4.deb::https://github.com/puemos/lareview/releases/download/v0.1.4/lareview_0.1.4_amd64.deb
+	sha256sums_x86_64 = 7262b7dc531648208e3b42a838735cdb93a850274742ac0695ec4f4cc3c1ecd3
 
 pkgname = lareview-bin
