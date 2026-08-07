@@ -2,7 +2,7 @@
 
 pkgname=lungo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A simple systray applet to prevent the system from going idle or suspending on demand (bin version)"
 url="https://github.com/Antiz96/lungo"
@@ -30,10 +30,10 @@ sha256sums=('9db933d7991c233f434f4f51a09b5fbbb92b1b6a7f880dbabfa30415e8898808'
             '629c04d6caee11a6783e9fd93c9b183edb1461164332abfd1bd16b5386ef53ca'
             '6cf4589aca0ffa81287f388202903c3005185ce41d660d68ec799f4c91cf8044'
             '3b313c2bf3138664a62c35453e2b11d4c06dae756ffb0d33a1efbb45feece39e'
-            '09561b75e8c300a09ce7f425d3588f8ff708317f65992d04dc335f8021cd6087'
+            'cb0639a10213d5ad458df1e28938389afec46afd9e342df94935306ac3c44d57'
             'e049c91bca7cdee19ba7b3cf74b4b8a814b69d72ba9723ee7e5de5291ca2c7aa'
             '6f93669e43d9119754763778626c08336841d9b2a7c66b8c332988ad5bb2cafe')
-sha256sums_x86_64=('2f80ecad5c84e4c9e8e352350c81094a51e76806e49fe01cc4c56f14112f9865')
+sha256sums_x86_64=('370c835f06e7bccca5e8a50709cdb7c888d13f499279ca18c0411f6b46c447a6')
 
 build() {
 	scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
