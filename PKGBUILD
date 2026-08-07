@@ -5,9 +5,11 @@
 # Contributor: Araragi Hokuto <kanseihonbucho@protonmail.com>
 # Contributor: Marc Boocha <marcboocha@gmail.com>
 
+export LC_ALL=C.UTF-8
+
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=16.1.0
+pkgver=16.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -19,63 +21,63 @@ options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79'
-            'SKIP')
+sha256sums=('e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e'
+        'SKIP')
 
 _basedir=gcc-$pkgver
 
 validpgpkeys=(
-    '13975A70E63C361C73AE69EF6EEB81F8981C74C7' # Richard Guenther <richard.guenther@gmail.com>
-    'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62' # Jakub Jelinek <jakub@redhat.com>
+        '13975A70E63C361C73AE69EF6EEB81F8981C74C7' # Richard Guenther <richard.guenther@gmail.com>
+        'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62' # Jakub Jelinek <jakub@redhat.com>
 )
 
 prepare() {
-    cd $_basedir
-    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-    mkdir -p $srcdir/build
+        cd $_basedir
+        sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+        mkdir -p $srcdir/build
 }
 
 build() {
-    cd build
+        cd build
 
-    # GCC build fails with format-security.
-    CFLAGS=${CFLAGS/-Werror=format-security/}
-    CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+        # GCC build fails with format-security.
+        CFLAGS=${CFLAGS/-Werror=format-security/}
+        CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-    $srcdir/$_basedir/configure \
-        --prefix=/usr \
-        --disable-nls \
-        --disable-plugin \
-        --target=$_target \
-        --libexecdir=/usr/lib \
-        --enable-languages=c,c++ \
-        --without-headers \
-        --with-bugurl=https://aur.archlinux.org/packages/x86_64-elf-gcc/
+        $srcdir/$_basedir/configure \
+                --prefix=/usr \
+                --disable-nls \
+                --disable-plugin \
+                --target=$_target \
+                --libexecdir=/usr/lib \
+                --enable-languages=c,c++ \
+                --without-headers \
+                --with-bugurl=https://aur.archlinux.org/packages/x86_64-elf-gcc/
 
-    make all-gcc
-    make all-target-libgcc
+        make all-gcc
+        make all-target-libgcc
 
 }
 
 check() {
-    cd build
+        cd build
 
-    # Increase stack size to prevent test failures.
-    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
-    ulimit -s 32768
+        # Increase stack size to prevent test failures.
+        # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
+        ulimit -s 32768
 
-    # Don't abort on error as some are "expected".
-    make -k check || true
-    $srcdir/$_basedir/contrib/test_summary
+        # Don't abort on error as some are "expected".
+        make -k check || true
+        $srcdir/$_basedir/contrib/test_summary
 }
 
 package() {
-    cd build
+        cd build
 
-    make DESTDIR="$pkgdir" install-gcc
-    make DESTDIR="$pkgdir" install-target-libgcc
+        make DESTDIR="$pkgdir" install-gcc
+        make DESTDIR="$pkgdir" install-target-libgcc
 
-    # Remove info and make since it expected already present by host compiler
-    rm -vr "$pkgdir"/usr/share/{info,man}
+        # Remove info and make since it expected already present by host compiler
+        rm -vr "$pkgdir"/usr/share/{info,man}
 
 }
