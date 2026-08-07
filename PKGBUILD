@@ -1,6 +1,6 @@
 # Maintainer: yogh-io <info@yogh.nl>
 pkgname=diffstalker-grammars
-pkgver=0.0.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Tree-sitter grammars and outline queries for diffstalkerd's in-file symbol search"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('diffstalker-git: the daemon that reads these grammars')
 # the checksum, which is the same guarantee upstream's vendor script provides,
 # expressed in the tool Arch already trusts.
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/diffstalkerd-grammars/-/diffstalkerd-grammars-$pkgver.tgz")
-sha256sums=('132bc445be6e9291e4e3b72c6c07e90c28c1a4b4247c4c48b58b43c78f041ee6')
+sha256sums=('1304e5e6a2aa20cbcc7e9b6d240cafa1805f8b6e4195ffb6f2012749e7285289')
 
 # Where diffstalkerd looks. The systemd unit sets
 # DIFFSTALKER_GRAMMARS_DIR to exactly this path; a pacman-owned install has no
