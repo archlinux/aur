@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-tweaks
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Plugin for Tuner that adds more ways to customize GNOME."
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   'vala'
 )
 source=("git+https://altlinux.space/alt-gnome/tunertweaks.git#tag=$pkgver")
-sha256sums=('7fe2a339f5971f96b7086dacdc40701bb7fa6ce513268aefe25f456fc22cce2f')
+sha256sums=('f5ae1c2d15e4eef4c5b2c26e366090c7c04986b9d4fb99ad60230706dbcbc9e2')
 
 build() {
   arch-meson tunertweaks build

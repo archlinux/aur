@@ -1,6 +1,6 @@
 pkgbase = gnome-tuner-tweaks
 	pkgdesc = Plugin for Tuner that adds more ways to customize GNOME.
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://altlinux.space/alt-gnome/tunertweaks
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gnome-tuner-tweaks
 	depends = libgee
 	depends = libpeas-2
 	depends = gnome-desktop-4
-	source = git+https://altlinux.space/alt-gnome/tunertweaks.git#tag=0.5.5
-	sha256sums = 7fe2a339f5971f96b7086dacdc40701bb7fa6ce513268aefe25f456fc22cce2f
+	source = git+https://altlinux.space/alt-gnome/tunertweaks.git#tag=0.5.6
+	sha256sums = f5ae1c2d15e4eef4c5b2c26e366090c7c04986b9d4fb99ad60230706dbcbc9e2
 
 pkgname = gnome-tuner-tweaks
