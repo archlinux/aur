@@ -1,0 +1,15 @@
+pkgbase = wlpdisplays-git
+	pkgdesc = Print connected Wayland monitor information as JSON by parsing wayland-info output
+	pkgver = 0.2.0.r0.ga70f6b5
+	pkgrel = 1
+	url = https://codeberg.org/marvin1099/wlpdisplays
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = wayland-utils
+	source = git+https://codeberg.org/marvin1099/wlpdisplays.git
+	sha256sums = SKIP
+
+pkgname = wlpdisplays-git
