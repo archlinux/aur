@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Reverse mode autodiff library, interior-point method, and NLP solver DSL"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 provides=('sleipnirgroup-sleipnir')
 conflicts=('sleipnirgroup-sleipnir')
 source=("git+https://github.com/SleipnirGroup/Sleipnir#tag=v${pkgver}")
-md5sums=('0d9146040bc14332fb0f8cd4552b075b')
+md5sums=('83e1bba39598441995a49d995f26fd99')
 
 prepare() {
   cd "$srcdir"/Sleipnir
@@ -36,8 +36,7 @@ check() {
   ctest --test-dir build
 
   cd "$srcdir"/Sleipnir
-  local glibc_version=$(pacman -Q glibc | cut -d ' ' -f 2 | cut -d '+' -f 1 | sed 's/\./_/')
-  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_sleipnir.abi3.so python/src/sleipnir
+  cp .py-build-cmake_cache/cp312-abi3-linux_x86_64/_sleipnir.abi3.so python/src/sleipnir
   PYTHONPATH=python/src pytest
 }
 
