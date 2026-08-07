@@ -47,10 +47,10 @@ sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
             'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
             'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '941feee7505bf2dd3fe30c8e755d1bc2b9ef8994b624c3ed236c41e769a3b0b9'
+            '1800fb7b95b3eede3c003ead6a5f8507f0bef982511b79da15b3ec11833bc0f8'
+            '0298bfcae9fe8563e7974a35c44f9dead0b1e598862e399e071deefe37d38d95'
+            '45442a8aaa6eca821490aa534f1d957de6ee46f1bd5d553b69bfb3d370d22d05')
 
 # Disable strip and debug to speed up repackaging
 options=('!strip' '!debug' 'emptydirs')
