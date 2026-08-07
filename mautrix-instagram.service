@@ -1,18 +1,18 @@
 [Unit]
-Description=Matrix-meta (Facebook, Instagram) puppeting bridge
+Description=Matrix-Instagram puppeting bridge
 After=network-online.target
 Requires=network-online.target
 
 [Service]
 Type=exec
-User=mautrix-meta
-Group=mautrix-meta
-WorkingDirectory=/var/lib/mautrix-meta
-ExecStart=/usr/bin/mautrix-meta -n -c /etc/mautrix-meta/mautrix-meta.yaml
+User=mautrix-instagram
+Group=mautrix-instagram
+WorkingDirectory=/var/lib/mautrix-instagram
+ExecStart=/usr/bin/mautrix-instagram -n -c /etc/mautrix-instagram/mautrix-instagram.yaml
 Restart=on-failure
 
-ReadWritePaths=/var/lib/mautrix-meta
-ReadWritePaths=/var/log/mautrix-meta
+ReadWritePaths=/var/lib/mautrix-instagram
+ReadWritePaths=/var/log/mautrix-instagram
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes

@@ -4,7 +4,7 @@ pkgname=mautrix-instagram
 _name=instagram
 _base_name=meta
 pkgver=0.2607.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Instagram puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
@@ -26,9 +26,9 @@ source=(
 )
 backup=("etc/${pkgname}/${pkgname}.yaml")
 sha256sums=('af40b554914698e3d68567b761be369e5b309934af5a7f97734b8bc49227e897'
-            '6888d152b7b6b0175160a452009b866eba53244ff844da9f6abeb02654e28be5'
-            '7dfa012f34ec7f940b1c4111de701b97273b1c2f4075b2f5e67a4c2327f8fb2f'
-            '9460950662be4d89a8f2f457922f0eaffbf43e9d30842b8aa3b3524dae48efae'
+            'd2b32fa5a94b95f2147e0fad47bc4ba0a8d9253cbf5e1db46c3ce8036b27ae5c'
+            'fe826cbf14546f131cdda250b2c959ca0854d1769287b86ef0c1ce64f1d46b20'
+            'b16101895a888cbaf89b1b73f91f67933996931cfdb2f223234b5f1ddfeb92a1'
             '2c4f89e9aff5a246590b62d6a350fad37b0ec76407773ff4c061eda8c4dfaadf')
 options=(!debug !strip)
 
