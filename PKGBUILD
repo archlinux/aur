@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-rs
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate the installation and update of Linux Gaming Compatibility tools"
 arch=('x86_64')
 url="https://github.com/auyer/Protonup-rs"
@@ -9,6 +9,7 @@ license=('Apache-2.0')
 depends=(
   'glibc'
   'xz'
+  'zstd'
 )
 makedepends=('cargo')
 source=("Protonup-rs-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -23,6 +24,7 @@ prepare() {
 build() {
   cd "Protonup-rs-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
