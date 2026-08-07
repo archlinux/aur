@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -40,11 +40,13 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'gwl-grouping-heuristics.patch'
         'inline-reply-notifications.patch'
         'zenity-session-quit.py'
-        'zenity-run-dialog.py')
+        'zenity-run-dialog.py'
+        'zenity-confirm-dialog.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
             'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
             'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -82,9 +84,9 @@ package() {
   rm -f "$pkgdir/usr/share/applications/nemo-autorun-software.desktop" 2>/dev/null || true
   rm -f "$pkgdir/etc/xdg/autostart/nemo-autostart.desktop" 2>/dev/null || true
 
-  # Disable GTK portal usage - use native file chooser (Dory) instead
-  install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-no-portal.sh" << 'EOF'
-export GTK_USE_PORTAL=0
+  # Route GTK3 native file choosers through the portal so Dory is used
+  install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-portal.sh" << 'EOF'
+export GTK_USE_PORTAL=1
 EOF
 
   # Patch cs_actions.py to use Dory layout editor instead of Nemo
@@ -106,6 +108,10 @@ EOF
   install -Dm755 "$srcdir/zenity-run-dialog.py" \
     "$pkgdir/usr/bin/zenity-run-dialog.py"
 
+  # Install zenity confirm dialog helper
+  install -Dm755 "$srcdir/zenity-confirm-dialog.py" \
+    "$pkgdir/usr/bin/zenity-confirm-dialog.py"
+
   # Patch main.js to route Alt+F2 runDialog, ShowEndSessionDialog, Polkit authentication, NetworkManager secrets, and Keyring prompts to GTK3 helpers
   if [ -f "$pkgdir/usr/share/cinnamon/js/ui/main.js" ]; then
     sed -i \
@@ -115,6 +121,18 @@ EOF
       -e 's|networkAgent = new NetworkAgent.NetworkAgent();|// networkAgent = new NetworkAgent.NetworkAgent();|' \
       -e 's|KeyringPrompt.init();|// KeyringPrompt.init();|' \
       "$pkgdir/usr/share/cinnamon/js/ui/main.js"
+  fi
+
+  # Patch applet.js to use zenity for remove applet confirmation
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/applet.js" ]; then
+    sed -i '/let dialog = new ModalDialog.ConfirmDialog/,/dialog.open();/{
+      /let dialog = new ModalDialog.ConfirmDialog/c\            let cmd = "/usr/bin/zenity-confirm-dialog.py --text=\\"Are you sure you want to remove %s?\\" --title=\\"Confirm\\"".format(this._meta.name);\
+            Util.spawnCommandLineAsync(cmd, () => AppletManager._removeAppletFromPanel(this._uuid, this.instance_id));
+      /_("%/d
+      /() => AppletManager._removeAppletFromPanel/d
+      /);/d
+      /dialog.open();/d
+    }' "$pkgdir/usr/share/cinnamon/js/ui/applet.js"
   fi
 
 
