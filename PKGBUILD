@@ -52,9 +52,10 @@ check() {
   export GOPATH="$srcdir"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
   _notest=(
-    'github.com/projectdiscovery/nuclei/v3/lib' # Connects to an external host and gets an unexpected result
+    'github\.com/projectdiscovery/nuclei/v3/lib' # Connects to an external host and gets an unexpected result
   )
-  go test $(go list ./... | grep -v "^${_notest[@]}$")
+  IFS='|' _grep="^(${_notest[*]})$"
+  go test $(go list ./... | grep -Pv "$_grep")
 }
 
 package() {
