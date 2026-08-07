@@ -1,7 +1,7 @@
 # Maintainer: Christian Kühn (damachine3 at proton dot me)
 # website: https://github.com/damachine/tkginstaller
 pkgname=tkginstaller-git
-pkgver=0.55.6
+pkgver=0.55.7
 pkgrel=1
 provides=('tkginstaller')
 conflicts=('tkginstaller')
