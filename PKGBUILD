@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.4.0.r1.g21a9692
+pkgver=1.5.0.r0.g21a9692
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ depends=(
   'cosmic-sound-theme-git'
   'geoclue'
   'libinput'
+  'libpipewire'
   'libpulse'
-  'openssl'
   'playerctl'
-  'systemd'
+  'systemd-libs'
   'wireplumber'
   'xdg-utils'
 )
