@@ -1,12 +1,11 @@
 pkgbase = flexconnect
 	pkgdesc = Flexible cross-platform AnyConnect client
-	pkgver = 1.0.3
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/2018wzh/FlexConnect
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	conflicts = flexconnect-git
 	makedepends = go
 	makedepends = git
 	makedepends = pkgconf
@@ -14,8 +13,8 @@ pkgbase = flexconnect
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libnotify
-	source = flexconnect-1.0.3.tar.gz::https://github.com/2018wzh/FlexConnect/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = SKIP
+	conflicts = flexconnect-git
+	source = flexconnect-1.2.1.tar.gz::https://github.com/2018wzh/FlexConnect/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 651217d394e08b4a4765f77492cd96962bb4343e8644c9ca05b2c0eb086e401a
 
 pkgname = flexconnect
-

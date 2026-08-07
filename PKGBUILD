@@ -1,7 +1,7 @@
 # Maintainer: Vincent Wang <wzh20070720@outlook.com>
 
 pkgname=flexconnect
-pkgver=1.0.3
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Flexible cross-platform AnyConnect client"
 arch=('x86_64' 'aarch64')
@@ -11,16 +11,17 @@ depends=('systemd' 'gtk3' 'libayatana-appindicator' 'libnotify')
 makedepends=('go' 'git' 'pkgconf')
 conflicts=('flexconnect-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/2018wzh/FlexConnect/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e03a065be2f9f310d3ee06a46a2649fdfdca7e351e27f0f132e69c3481d7d5a5')
+sha256sums=('651217d394e08b4a4765f77492cd96962bb4343e8644c9ca05b2c0eb086e401a')
 
 build() {
   cd "$srcdir/FlexConnect-$pkgver"
   export CGO_ENABLED=1
   export GOFLAGS="-buildvcs=false"
+  local ldflags="-s -w -X=flexconnect/internal/buildinfo.Version=$pkgver"
 
-  go build -trimpath -ldflags="-s -w" -o flexconnect ./cmd/flexconnect
-  go build -trimpath -ldflags="-s -w" -o flexconnectd ./cmd/flexconnectd
-  go build -trimpath -ldflags="-s -w" -o flextray ./cmd/flextray
+  go build -trimpath -ldflags="$ldflags" -o flexconnect ./cmd/flexconnect
+  go build -trimpath -ldflags="$ldflags" -o flexconnectd ./cmd/flexconnectd
+  go build -trimpath -ldflags="$ldflags" -o flextray ./cmd/flextray
 
   sed -i "s|/usr/sbin/flexconnectd|/usr/bin/flexconnectd|g" scripts/systemd/flexconnectd.service
 }
@@ -35,4 +36,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "assets/icons/app-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/flexconnect.png"
   install -Dm644 "release/dist/unixpkgs/files/flexconnect.desktop" "$pkgdir/usr/share/applications/flexconnect.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/flexconnect.conf" <<< "g flexconnect - -"
 }
