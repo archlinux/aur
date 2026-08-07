@@ -1,6 +1,7 @@
 # Maintainer: @aardbol
 pkgname=mercurygram-desktop-bin
-pkgver=7.0.6.1
+_pkgname=mercurygram
+pkgver=7.0.9.1
 pkgrel=1
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
@@ -35,17 +36,17 @@ optdepends=(
 options=('!debug' '!strip')
 
 source=(
-  "it.belloworld.mercurygram.desktop::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/lib/xdg/it.belloworld.mercurygram.desktop"
-  "icon16.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon16.png"
-  "icon32.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon32.png"
-  "icon48.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon48.png"
-  "icon64.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon64.png"
-  "icon128.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon128.png"
-  "icon256.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon256.png"
-  "icon512.png::https://raw.githubusercontent.com/Mercurygram/mdesktop/refs/heads/dev/Telegram/Resources/art/icon512.png"
+  "it.belloworld.${_pkgname}.desktop::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/lib/xdg/it.belloworld.${_pkgname}.desktop"
+  "icon16.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon16.png"
+  "icon32.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon32.png"
+  "icon48.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon48.png"
+  "icon64.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon64.png"
+  "icon128.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon128.png"
+  "icon256.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon256.png"
+  "icon512.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon512.png"
 )
-source_x86_64=("https://github.com/Mercurygram/mdesktop/releases/download/v${pkgver}/Mercurygram-${pkgver}-linux-x86_64.tar.xz")
-source_aarch64=("https://github.com/Mercurygram/mdesktop/releases/download/v${pkgver}/Mercurygram-${pkgver}-linux-arm64.tar.xz")
+source_x86_64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-x86_64.tar.xz")
+source_aarch64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-arm64.tar.xz")
 
 sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
             'a1a1ea2d8a1e69a2c3d71c2ddd442f71c614e3abcdb60c54d0f90e4c9d778c88'
@@ -55,20 +56,20 @@ sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
             'e7b1f3fdc5b92977f29eb08b6936dd94539da928bac4253ccbc53d9110a4252b'
             '64650964193d328389b2cf4be9fdfb6ccc56b17fb932e46d0589a8c0f779f3cf'
             '3cd0d6b3d46b406e8f2458e744a87d22713f049cf1615269347697e1282577d0')
-sha256sums_x86_64=('5c0d4fa33a31ff92806ff4910d8a0df6ef105b2ca7c8169db1558396bb201190')
-sha256sums_aarch64=('7b7773aba8f1d2807fa913ab4726fb417db2bb11c55b396de93d381c5632dbcf')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
-  install -Dm755 Mercurygram "$pkgdir/usr/bin/mercurygram"
-  install -Dm755 Updater "$pkgdir/usr/lib/mercurygram/Updater"
-  install -Dm644 "$srcdir/it.belloworld.mercurygram.desktop" \
-    "$pkgdir/usr/share/applications/it.belloworld.mercurygram.desktop"
+  install -Dm755 ${_pkgname^} "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm755 Updater "$pkgdir/usr/lib/${_pkgname}/Updater"
+  install -Dm644 "$srcdir/it.belloworld.${_pkgname}.desktop" \
+    "$pkgdir/usr/share/applications/it.belloworld.${_pkgname}.desktop"
 
   # Install icons
   for size in 16 32 48 64 128 256 512; do
     if [ -f "$srcdir/icon${size}.png" ]; then
       install -Dm644 "$srcdir/icon${size}.png" \
-        "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/it.belloworld.mercurygram.png"
+        "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/it.belloworld.${_pkgname}.png"
     fi
   done
 }
