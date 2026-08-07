@@ -24,7 +24,7 @@ conflicts=('livesplit-one-gtk')
 # GCC LTO objects produced by native Rust dependencies (such as mimalloc,
 # ring, and wasmtime) cannot be consumed by Cargo's final LLD link.
 options=('!lto')
-source=("${_pkgname}::git+${url}.git#branch=dev")
+source=("${_pkgname}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
