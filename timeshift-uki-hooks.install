@@ -1,3 +1,13 @@
+pre_install() {
+  rm -f /etc/timeshift/backup-hooks.d/90-backup-uki 2>/dev/null || true
+  rm -f /etc/timeshift/restore-hooks.d/90-restore-uki 2>/dev/null || true
+}
+
+pre_upgrade() {
+  rm -f /etc/timeshift/backup-hooks.d/90-backup-uki 2>/dev/null || true
+  rm -f /etc/timeshift/restore-hooks.d/90-restore-uki 2>/dev/null || true
+}
+
 post_install() {
   echo ""
   echo "==> timeshift-uki-hooks instalado correctamente."
