@@ -2,7 +2,7 @@
 
 _pkgname=dwproton
 pkgname=${_pkgname}-bin
-_srcver=11.0-10
+_srcver=11.0-11
 pkgver=${_srcver//-/_}
 pkgrel=1
 epoch=1
