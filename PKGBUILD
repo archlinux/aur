@@ -1,6 +1,6 @@
 # Maintainer: grootar nigredo1999@gmail.com
 
-_pkgname=twitch_drops_miner
+_pkgname=twitchdrops_miner
 pkgname="${_pkgname}"
 pkgver=dev.build.r0.gef22e41
 pkgrel=1
