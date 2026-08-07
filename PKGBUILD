@@ -41,11 +41,13 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'inline-reply-notifications.patch'
         'zenity-session-quit.py'
         'zenity-run-dialog.py'
-        'zenity-confirm-dialog.py')
+        'zenity-confirm-dialog.py'
+        'patch-dialogs.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
             'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
             'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -112,6 +114,10 @@ EOF
   install -Dm755 "$srcdir/zenity-confirm-dialog.py" \
     "$pkgdir/usr/bin/zenity-confirm-dialog.py"
 
+  # Install dialog patching script
+  install -Dm755 "$srcdir/patch-dialogs.py" \
+    "$pkgdir/usr/share/cinnamon/patch-dialogs.py"
+
   # Patch main.js to route Alt+F2 runDialog, ShowEndSessionDialog, Polkit authentication, NetworkManager secrets, and Keyring prompts to GTK3 helpers
   if [ -f "$pkgdir/usr/share/cinnamon/js/ui/main.js" ]; then
     sed -i \
@@ -134,6 +140,10 @@ EOF
       /dialog.open();/d
     }' "$pkgdir/usr/share/cinnamon/js/ui/applet.js"
   fi
+
+  # Patch remaining dialogs using Python script
+  python3 "$pkgdir/usr/share/cinnamon/patch-dialogs.py" "$pkgdir/usr/share/cinnamon/js/ui"
+  rm -f "$pkgdir/usr/share/cinnamon/patch-dialogs.py"
 
 
 }

@@ -5,6 +5,7 @@ import sys
 def main():
     message = ""
     title = "Confirm"
+    dialog_type = "question"  # default to question (Yes/No)
 
     # Parse arguments
     args = sys.argv[1:]
@@ -20,19 +21,30 @@ def main():
         elif args[i] == "--title" and i + 1 < len(args):
             title = args[i + 1]
             i += 1
+        elif args[i] == "--info":
+            dialog_type = "info"
         i += 1
 
     if not message:
         sys.exit(1)
 
-    cmd = [
-        "zenity", "--question",
-        f"--title={title}",
-        f"--text={message}",
-        "--ok-label=Yes",
-        "--cancel-label=No",
-        "--width=350"
-    ]
+    if dialog_type == "info":
+        cmd = [
+            "zenity", "--info",
+            f"--title={title}",
+            f"--text={message}",
+            "--ok-label=OK",
+            "--width=350"
+        ]
+    else:
+        cmd = [
+            "zenity", "--question",
+            f"--title={title}",
+            f"--text={message}",
+            "--ok-label=Yes",
+            "--cancel-label=No",
+            "--width=350"
+        ]
 
     res = subprocess.run(cmd)
     sys.exit(res.returncode)
