@@ -2,7 +2,7 @@
 
 pkgname=funsync-player-bin
 _pkgname=FunSync-Player
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Local desktop video player with device integration for synchronized funscript playback"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 source_x86_64=("${_pkgname}-${pkgver}.AppImage::https://github.com/DaveMakesWaves/funsync-player/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
               )
 noextract=("${_pkgname}-${pkgver}.AppImage")
-sha256sums_x86_64=('7b793faccb70663c9ae33b9953618f02e45443418cae64fb2233c9659f35c5f0')
+sha256sums_x86_64=('ee7301e213b96c57cb82ab64644f46ad21a81254f9e56d954a5b0ed09cf5a364')
 
 prepare() {
 	chmod +x "${srcdir}/${_pkgname}-${pkgver}.AppImage"

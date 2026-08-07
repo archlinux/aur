@@ -1,6 +1,6 @@
 pkgbase = funsync-player-bin
 	pkgdesc = Local desktop video player with device integration for synchronized funscript playback
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/DaveMakesWaves/funsync-player
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = funsync-player-bin
 	optdepends = nouveau: hardware video acceleration support for NVIDIA
 	optdepends = mesa: hardware video acceleration support for AMD
 	optdepends = libva-nvidia-driver: hardware video acceleration support for NVIDIA
-	noextract = FunSync-Player-0.8.0.AppImage
+	noextract = FunSync-Player-0.9.0.AppImage
 	options = !strip
-	source_x86_64 = FunSync-Player-0.8.0.AppImage::https://github.com/DaveMakesWaves/funsync-player/releases/download/v0.8.0/FunSync-Player-0.8.0.AppImage
-	sha256sums_x86_64 = 7b793faccb70663c9ae33b9953618f02e45443418cae64fb2233c9659f35c5f0
+	source_x86_64 = FunSync-Player-0.9.0.AppImage::https://github.com/DaveMakesWaves/funsync-player/releases/download/v0.9.0/FunSync-Player-0.9.0.AppImage
+	sha256sums_x86_64 = ee7301e213b96c57cb82ab64644f46ad21a81254f9e56d954a5b0ed09cf5a364
 
 pkgname = funsync-player-bin
