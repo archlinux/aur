@@ -9,7 +9,7 @@
 # Install `grantlee` from the AUR before `makepkg -s`, or build with an AUR helper.
 
 pkgname=texturepacker
-pkgver=8.0.3
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
     'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
     'qt5-quickcontrols')
 source=("https://www.codeandweb.com/download/$pkgname/${pkgver}/TexturePacker-${pkgver}.deb")
-sha256sums=('438efbb1bc7a7f22f5d7dd9205c83978891932551a8d3b6a72deaa2142624486')
+sha256sums=('363d3b53614ad769b1e982bfcc03be18f57134a34d38590731e148f84f5db5d6')
 options=('!debug')
 
 build() {
