@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
-	pkgver = 8.1.2
-	pkgrel = 3
+	pkgver = 9.0
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = ffmpeg-headless
 	makedepends = ladspa
 	makedepends = nasm
 	makedepends = opencl-headers
+	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	depends = aom
 	depends = bzip2
@@ -97,9 +98,9 @@ pkgbase = ffmpeg-headless
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = ffmpeg-headless::git+https://github.com/FFmpeg/FFmpeg.git#tag=n8.1.2
+	source = ffmpeg-headless::git+https://github.com/FFmpeg/FFmpeg.git#tag=n9.0
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce
+	b2sums = c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8
 
 pkgname = ffmpeg-headless
 	depends = aom
@@ -183,7 +184,6 @@ pkgname = ffmpeg-headless
 	depends = libvorbis.so
 	depends = libvpx.so
 	depends = libx264.so
-	depends = libx265.so
 	depends = libxvidcore.so
 	depends = libzimg.so
 	depends = libzmq.so

@@ -9,8 +9,8 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=ffmpeg-headless
-pkgver=8.1.2
-pkgrel=3
+pkgver=9.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -90,6 +90,7 @@ makedepends=(
   ladspa
   nasm
   opencl-headers
+  spirv-headers
   vulkan-headers
 )
 optdepends=(
@@ -117,7 +118,7 @@ source=(
   "$pkgname::git+${_git_mirror}"
   # "https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
 )
-b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce')
+b2sums=('c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 # prepare() {
@@ -153,7 +154,6 @@ build() {
     --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
-    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \
@@ -230,7 +230,7 @@ package() {
     libvorbis.so
     libvpx.so
     libx264.so
-    libx265.so
+    # libx265.so
     libxvidcore.so
     libzimg.so
     libzmq.so
