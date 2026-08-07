@@ -1,0 +1,21 @@
+REGEDIT4
+
+; Chromium asks DirectWrite for these Windows font families. None of them exist
+; in a Wine prefix, and Wine's DirectWrite does not fall back on its own, so
+; without these replacements the application renders with no text whatsoever.
+; The targets are provided by ttf-dejavu and ttf-liberation (package depends).
+
+[HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
+"Segoe UI"="DejaVu Sans"
+"Segoe UI Semibold"="DejaVu Sans"
+"Segoe UI Light"="DejaVu Sans"
+"Segoe UI Symbol"="DejaVu Sans"
+"Tahoma"="DejaVu Sans"
+"Arial"="Liberation Sans"
+"Helvetica"="Liberation Sans"
+"Times New Roman"="Liberation Serif"
+"Courier New"="Liberation Mono"
+"MS Shell Dlg"="DejaVu Sans"
+"MS Shell Dlg 2"="DejaVu Sans"
+"MS Sans Serif"="DejaVu Sans"
+"System"="DejaVu Sans"

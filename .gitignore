@@ -1,0 +1,5 @@
+# AUR repos track only the build recipe and the files it references.
+*.pkg.tar.*
+*.exe
+src/
+pkg/

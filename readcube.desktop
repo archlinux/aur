@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=ReadCube Papers
+GenericName=Reference Manager
+Comment=Reference and citation manager for academic research articles
+Exec=readcube %U
+Icon=readcube
+Terminal=false
+Categories=Office;Science;Literature;
+Keywords=reference;citation;bibliography;research;papers;readcube;pdf;
+StartupNotify=true
+StartupWMClass=papers.exe

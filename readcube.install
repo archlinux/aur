@@ -1,0 +1,34 @@
+post_install() {
+    cat <<'EOF'
+
+  readcube-wine installs the application on FIRST RUN, not now.
+
+  Papers' licence does not permit repackaging, so the upstream installer is
+  shipped verbatim and executed unmodified the first time you run `readcube`.
+  Expect a few minutes and roughly 1.5 GB under:
+
+      ~/.local/share/readcube/wineprefix
+
+  Papers is proprietary software from Digital Science. Your use of it is
+  governed by the ReadCube Terms of Use:
+
+      https://about.readcube.com/terms/
+
+  A ReadCube account is required to sign in.
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<'EOF'
+
+  The per-user Wine prefix was left in place. To remove it as well:
+
+      rm -rf ~/.local/share/readcube
+
+EOF
+}

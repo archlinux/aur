@@ -1,0 +1,18 @@
+version = 1
+SPDX-PackageName = "readcube-wine"
+SPDX-PackageSupplier = "Esteban Rodriguez <esarodriguezme@gmail.com>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/readcube-wine.git"
+
+[[annotations]]
+path = [
+    ".SRCINFO",
+    ".gitignore",
+    "PKGBUILD",
+    "readcube-fonts.reg",
+    "readcube.desktop",
+    "readcube.install",
+    "readcube.sh",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Esteban Rodriguez <esarodriguezme@gmail.com>"
+SPDX-License-Identifier = "0BSD"
