@@ -4,7 +4,7 @@
 
 pkgbase='ceph'
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
-pkgver=20.2.2
+pkgver=20.2.3
 pkgrel=1
 url='https://ceph.com/'
 arch=('x86_64')
@@ -118,7 +118,7 @@ source=(
   # https://github.com/ceph/ceph/pull/70225
   'ceph-20.2.3-fix-mgr-dashboard-progress.patch'
 )
-sha512sums=('1977f384d2af5fde2a795e2eed71c12f519f1a2036ceb2e383c8534feca509740d744e99e77b73488f8e13193a83c7134e407fb6b21c4ba4c1f9ac9752b16fbc'
+sha512sums=('c81fb4fea3bbd470a89e3784a86950280425b17ef6a4d606549e80b393d0dc178564245db49cfbde16f9f2ee107adcc7f4d380bcf3c7a46ec636bff53662d105'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             '41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5'
             'b12cabda7184721c494edd22250fd05019694d2bc445722d100cdefab5385bd25c2267a029d2f6053932fa6717e38c4314385afd986969ee2744d745b53c8b58'
