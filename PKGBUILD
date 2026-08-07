@@ -53,7 +53,7 @@ check() {
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
   # make test-community
-  go test -timeout=5m $(go list ./... | grep -v /vendor/ | grep -v pkg/sources | grep -v pkg/analyzer/analyzers)
+  go test -timeout=5m $(go list ./... | grep -v '/vendor/\|pkg/sources\|pkg/analyzer/analyzers')
 }
 
 package() {
