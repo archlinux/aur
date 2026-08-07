@@ -1,16 +1,16 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-pass-cli
-pkgver=2.2.3
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='A command-line interface for Proton Pass'
 arch=(aarch64 x86_64)
-url='https://protonpass.github.io/pass-cli/'
+url=https://protonpass.github.io/pass-cli
 license=(GPL-3.0-or-later)
-depends=(glibc libgcc openssl)
+depends=(glibc libgcc sqlcipher)
 makedepends=(cargo)
 source=(https://github.com/protonpass/pass-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('ed31acb9c8c7633e966e5ecd9a5e59a5ef1e4fc43cb160834650398146f49250d3e864fee5b01138e39f0aeaf917fa1bc7f5ca64a99e172099c4d764e8d04aef')
+b2sums=('bda843c285353eaf7c050af05350d2321d50bc088e0d42870fde1159b3aac98d677b9805c45278468ea9cdb20ff453d33a5afe9ca2f339db34680410f1720daa')
 
 prepare() {
     cd pass-cli-$pkgver
@@ -21,11 +21,10 @@ prepare() {
 build() {
     cd pass-cli-$pkgver
 
-    # Fix LTO incompatibility
-    export CFLAGS="${CFLAGS} -ffat-lto-objects"
-    export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
-    # Link to system OpenSSL
-    export OPENSSL_NO_VENDOR=1
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
+
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
