@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -134,7 +134,7 @@ EOF
     sed -i '/let dialog = new ModalDialog.ConfirmDialog/,/dialog.open();/{
       /let dialog = new ModalDialog.ConfirmDialog/c\            let cmd = "/usr/bin/zenity-confirm-dialog.py --text=\\"Are you sure you want to remove %s?\\" --title=\\"Confirm\\"".format(this._meta.name);\
             Util.spawnCommandLineAsync(cmd, () => AppletManager._removeAppletFromPanel(this._uuid, this.instance_id));
-      /_("%/d
+      /_("Are/d
       /() => AppletManager._removeAppletFromPanel/d
       /);/d
       /dialog.open();/d
