@@ -20,6 +20,7 @@ pkgbase = yurigram
 	makedepends = fmt
 	makedepends = glib2-devel
 	makedepends = gperf
+	makedepends = vulkan-headers
 	depends = abseil-cpp
 	depends = ada
 	depends = cmark-gfm

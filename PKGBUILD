@@ -53,7 +53,7 @@ depends=(
     'zlib'
 )
 makedepends=('cmake' 'boost' 'boost-libs' 'git' 'ninja' 'python' 'range-v3' 'microsoft-gsl' 'ccache'
-             'libtg_owt' 'gobject-introspection' 'fmt' 'glib2-devel' 'gperf')
+             'libtg_owt' 'gobject-introspection' 'fmt' 'glib2-devel' 'gperf' 'vulkan-headers')
 optdepends=('crow-translate: translation provider'
             'geoclue: geoinformation support'
             'geocode-glib-2: geocoding support'
