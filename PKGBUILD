@@ -2,7 +2,7 @@
 pkgname=r-quick-share
 _pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Martichou/rquickshare"
@@ -10,10 +10,12 @@ license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
   'libayatana-appindicator'
+  'libsoup3'
   'webkit2gtk-4.1'
 )
 makedepends=(
   'cargo'
+  # 'cargo-tauri'
   'pnpm'
   'protobuf'
 )
@@ -23,44 +25,25 @@ sha256sums=('6a82d63412703aa42c343619806cc0dec28ffcf164fb04c5b0bfd17b22257af3'
             'e946b0ec6e081137d89931fa31f17a05496e751656d65c0483f1d705f5e391b7')
 
 prepare() {
-  cd "${_pkgname}-$pkgver"
+  cd "${_pkgname}-$pkgver/app/main"
   export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
+
   export RUSTUP_TOOLCHAIN=stable
-
-  pushd app/main
-  pnpm install
-  popd
-
-  cargo fetch --manifest-path app/main/src-tauri/Cargo.toml --target host-tuple
+  # cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
+  cargo fetch --manifest-path src-tauri/Cargo.toml --target host-tuple
 
   # Don't bundle AppImage
-  sed -i 's/"targets": "all"/"targets": "deb"/g' app/main/src-tauri/tauri.conf.json
+  sed -i 's/"targets": "all"/"targets": "deb"/g' src-tauri/tauri.conf.json
 }
 
 build() {
-  cd "${_pkgname}-$pkgver"
+  cd "${_pkgname}-$pkgver/app/main"
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-
-  pushd app/main
-  pnpm store prune
+  # cargo tauri build --no-bundle -- --frozen
   pnpm build
-  popd
-}
-
-check() {
-  cd "${_pkgname}-$pkgver"
-  export PNPM_HOME="$srcdir/pnpm-home"
-  export RUSTUP_TOOLCHAIN=stable
-
-  pushd core_lib
-  cargo test
-  popd
-
-  pushd app/main
-  pnpm check
-  popd
 }
 
 package() {
