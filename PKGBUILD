@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.6.8
+pkgver=2.6.9
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   'python-pyudev: Laptop panel support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c52ff929fd02eda3e3c6e38439a58bb13afa818ff371f0bb2488f7a4d27cfb2')
+sha256sums=('483ed0f45c9296752bef7c5b6acc94ffcaf59c5f29ea0d00633d1503b61e84ea')
 
 build() {
   cd "$pkgname-$pkgver"
