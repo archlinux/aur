@@ -21,8 +21,8 @@ pkgbase = dane-without-root
 	depends = libgcc
 	depends = glibc
 	backup = etc/dane-proxy/dane-proxy.conf
-	source = git+https://git.sr.ht/~yukikoo/dane_without_root#tag=dane-0.1.29?signed
+	source = git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=89c631020d1a67cdbb67326a09b5ddbe33ebfc22
 	validpgpkeys = FB798BFB115895C9C95900649C2B29DD4A62ED27
-	sha256sums = 168cbc50b21ec2949c2885ea05dd48ab9710b07feaa9c79bac0a290b34cecea5
+	sha256sums = 0ef084bbc2408be4ed5c4f3f96ce00a39147e442aa55eb2353f984b59bf2ca96
 
 pkgname = dane-without-root
