@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
-pkgver=r272.6487f9b
+pkgver=r339.88b3425
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 	'qt6-tools'
 	'toml11>=4.2'
 	'vulkan-headers>=1:1.4.329'
+	'zarchive>=0.1.2'
 )
 optdepends=('shadps4: for emulation support')
 provides=("$_pkgname=$pkgver")
@@ -47,22 +48,24 @@ prepare() {
 	git config submodule.externals/spdlog.url ../spdlog
 	git config submodule.externals/volk.url ../volk
 	git -c protocol.file.allow=always submodule update
-	# remove hardcoded flag
+	# use makepkg.conf flags
 	sed -i '/-march=/d' CMakeLists.txt
 }
 
 build() {
 	local options=(
+		-B ../build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
 		-D ENABLE_UPDATER=OFF
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
-	cmake --build build
+	cd $_pkgname
+	cmake "${options[@]}"
+	cmake --build ../build
 }
 
 package() {
@@ -71,6 +74,7 @@ package() {
 		'libgcc_s.so'
 		'libopenal.so'
 		'libstdc++.so'
+		'libzarchive.so'
 		'qt6-base'
 		'qt6-multimedia'
 	)
