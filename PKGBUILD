@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.95.9.r19.g05a583290
+pkgver=3.96.0.r21.gd31c04eaf
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -42,6 +42,18 @@ build() {
   go build -ldflags "-compressdwarf=false -linkmode external"
   ./trufflehog --completion-script-bash > "$_name-c.bash"
   ./trufflehog --completion-script-zsh > "$_name-c.zsh"
+}
+
+check() {
+  cd "$_name"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+  # make test-community
+  go test -timeout=5m $(go list ./... | grep -v /vendor/ | grep -v pkg/sources | grep -v pkg/analyzer/analyzers)
 }
 
 package() {
