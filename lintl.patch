@@ -1,0 +1,118 @@
+diff --git i/configure.ac w/configure.ac
+index 99ae25d5..6d842e41 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -212,7 +212,7 @@ if test "$GETTEXT_ENABLE" != "no"; then
+   AC_MSG_CHECKING([gettext in ${GETTEXT_PREFIX}])
+ 
+   _save_cflags="$CFLAGS"
+-  CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++  CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+   AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <libintl.h>]
+              [int main() {char *cp = dgettext(NULL, "xx"); return 0; }]])],
+              [HAVE_GETTEXT=yes],
+@@ -226,7 +226,7 @@ if test "$GETTEXT_ENABLE" != "no"; then
+       AC_MSG_CHECKING([gettext in ${GETTEXT_PREFIX}])
+ 
+       _save_cflags="$CFLAGS"
+-      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+       AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <libintl.h>]
+                  [int main() {char *cp = dgettext(NULL, "xx"); return 0; }]])],
+                  [HAVE_GETTEXT=yes],
+@@ -241,7 +241,7 @@ if test "$GETTEXT_ENABLE" != "no"; then
+       AC_MSG_CHECKING([gettext in ${GETTEXT_PREFIX}])
+ 
+       _save_cflags="$CFLAGS"
+-      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+       AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <libintl.h>]
+                  [int main() {char *cp = dgettext(NULL, "xx"); return 0; }]])],
+                  [HAVE_GETTEXT=yes],
+@@ -255,7 +255,7 @@ fi
+ if test "$HAVE_GETTEXT" = "yes"; then
+     AC_DEFINE([HAVE_GETTEXT], [1], [gettext(3)])
+     GETTEXT_CFLAGS="-I${GETTEXT_PREFIX}/include"
+-    GETTEXT_LIBS="-L${GETTEXT_PREFIX}/lib -lintl"
++    GETTEXT_LIBS="-L${GETTEXT_PREFIX}/lib"
+ else
+     GETTEXT_PREFIX=none
+     GETTEXT_CFLAGS=
+diff --git i/filter/Makefile.am w/filter/Makefile.am
+index aa531378..38dff4bc 100644
+--- i/filter/Makefile.am
++++ w/filter/Makefile.am
+@@ -85,12 +85,12 @@ install-exec-hook:
+ 
+ xpath: all
+ 	${COMPILE} -DTEST_XPATH \
+-		.libs/libxo.a -L/opt/local/lib -lintl \
++		.libs/libxo.a -L/opt/local/lib \
+ 		-o xpath ${srcdir}/xo_xparse.c
+ 
+ filter: all
+ 	${COMPILE} -DTEST_FILTER \
+-		.libs/libxo.a -L/opt/local/lib -lintl \
++		.libs/libxo.a -L/opt/local/lib \
+ 		-o filter ${srcdir}/xo_filter.c
+
+
+diff --git i/configure w/configure
+index ea286f6..f28f269 100755
+--- i/configure
++++ w/configure
+@@ -15662,7 +15662,7 @@ if test "$GETTEXT_ENABLE" != "no"; then
+ printf %s "checking gettext in ${GETTEXT_PREFIX}... " >&6; }
+
+   _save_cflags="$CFLAGS"
+-  CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++  CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <libintl.h>
+@@ -15688,7 +15688,7 @@ printf '%s\n' "$HAVE_GETTEXT" >&6; }
+ printf %s "checking gettext in ${GETTEXT_PREFIX}... " >&6; }
+
+       _save_cflags="$CFLAGS"
+-      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+       cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <libintl.h>
+@@ -15715,7 +15715,7 @@ printf '%s\n' "$HAVE_GETTEXT" >&6; }
+ printf %s "checking gettext in ${GETTEXT_PREFIX}... " >&6; }
+
+       _save_cflags="$CFLAGS"
+-      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror -lintl"
++      CFLAGS="$CFLAGS -I${GETTEXT_PREFIX}/include -L${GETTEXT_PREFIX}/lib -Werror"
+       cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <libintl.h>
+@@ -15742,7 +15742,7 @@ if test "$HAVE_GETTEXT" = "yes"; then
+ printf '%s\n' "#define HAVE_GETTEXT 1" >>confdefs.h
+
+     GETTEXT_CFLAGS="-I${GETTEXT_PREFIX}/include"
+-    GETTEXT_LIBS="-L${GETTEXT_PREFIX}/lib -lintl"
++    GETTEXT_LIBS="-L${GETTEXT_PREFIX}/lib"
+ else
+     GETTEXT_PREFIX=none
+     GETTEXT_CFLAGS=
+diff --git i/filter/Makefile.in w/filter/Makefile.in
+index 5c1ae24..ce121bb 100644
+--- i/filter/Makefile.in
++++ w/filter/Makefile.in
+@@ -777,12 +777,12 @@ install-exec-hook:
+
+ xpath: all
+ 	${COMPILE} -DTEST_XPATH \
+-		.libs/libxo.a -L/opt/local/lib -lintl \
++		.libs/libxo.a -L/opt/local/lib \
+ 		-o xpath ${srcdir}/xo_xparse.c
+
+ filter: all
+ 	${COMPILE} -DTEST_FILTER \
+-		.libs/libxo.a -L/opt/local/lib -lintl \
++		.libs/libxo.a -L/opt/local/lib \
+ 		-o filter ${srcdir}/xo_filter.c
+
+
