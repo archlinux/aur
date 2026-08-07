@@ -2,8 +2,8 @@
 # Contributor: Ossi Saukko <osaukko at gmail dot com>
 
 _pkgbase=ocp
-pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.109.r11.c1069f5
+pkgname=('ocp-git' 'ocp-sdl3-git')
+pkgver=3.4.0.r5.6296817
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -17,12 +17,13 @@ optdepends=('libvorbis: Vorbis codec support'
         'libgme: Video game music emulation/playback support')
 makedepends=('alsa-lib'
         'cjson'
+        'gcc'
         'desktop-file-utils'
         'freetype2'
         'flac'
         'git'
         'ncurses'
-        'sdl2'
+        'sdl3'
         'xa'
         'libgme'
         'libancient'
@@ -30,7 +31,9 @@ makedepends=('alsa-lib'
         'libmad'
         'libjpeg-turbo'
         'libpng'
-        'libvorbis')
+        'libvorbis'
+        'speex'
+    )
 
 pkgver() {
         cd $_pkgbase
@@ -45,7 +48,7 @@ prepare() {
 
 build() {
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-update-desktop-database\
         --without-update-mime-database\
         --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
@@ -54,9 +57,10 @@ build() {
         make DESTDIR="$pkgdir" subdirs ocp ocp.hlp
 }
 
-package_ocp-sdl2-git() {
-    provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp' 'ocp-curses')
+package_ocp-sdl3-git() {
+        provides=(${_pkgbase}=${pkgver})
+        conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
+        replaces=('ocp-sdl2')
         install=${_pkgbase}.install
         depends=('alsa-lib'
                 'bzip2'
@@ -64,17 +68,20 @@ package_ocp-sdl2-git() {
                 'freetype2'
                 'hicolor-icon-theme'
                 'ncurses'
-                'sdl2'
+                'sdl3'
                 'shared-mime-info'
                 'zlib'
                 'libancient'
                 'libdiscid'
                 'libjpeg-turbo'
                 'libpng'
+                'speex'
                 'ttf-unifont')
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
-        --without-sdl --without-x11\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
+        --without-sdl\
+        --without-sdl2\
+        --without-x11\
         --without-update-desktop-database\
         --without-update-mime-database\
         --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
@@ -86,17 +93,21 @@ package_ocp-sdl2-git() {
 
 package_ocp-git() {
         provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp' 'ocp-curses')
+        conflicts=('ocp-sdl2' 'ocp-curses')
         depends=('alsa-lib'
                 'bzip2'
                 'cjson'
                 'ncurses'
                 'zlib'
                 'libancient'
-                'libdiscid')
+                'libdiscid'
+                'speex')
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
-        --without-x11 --without-sdl --without-sdl2\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
+        --without-x11\
+        --without-sdl\
+        --without-sdl2\
+        --without-sdl3\
         --without-update-desktop-database\
         --without-update-mime-database
         make DESTDIR="$pkgdir" libocp.so

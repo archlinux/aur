@@ -1,6 +1,6 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
-	pkgver = 0.2.109.r11.c1069f5
+	pkgver = 3.4.0.r5.6296817
 	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
@@ -8,12 +8,13 @@ pkgbase = ocp-git
 	license = GPL
 	makedepends = alsa-lib
 	makedepends = cjson
+	makedepends = gcc
 	makedepends = desktop-file-utils
 	makedepends = freetype2
 	makedepends = flac
 	makedepends = git
 	makedepends = ncurses
-	makedepends = sdl2
+	makedepends = sdl3
 	makedepends = xa
 	makedepends = libgme
 	makedepends = libancient
@@ -22,6 +23,7 @@ pkgbase = ocp-git
 	makedepends = libjpeg-turbo
 	makedepends = libpng
 	makedepends = libvorbis
+	makedepends = speex
 	optdepends = libvorbis: Vorbis codec support
 	optdepends = libmad: MPEG codec support
 	optdepends = flac: FLAC codec support
@@ -37,11 +39,12 @@ pkgname = ocp-git
 	depends = zlib
 	depends = libancient
 	depends = libdiscid
-	provides = ocp=0.2.109.r11.c1069f5
-	conflicts = ocp
+	depends = speex
+	provides = ocp=3.4.0.r5.6296817
+	conflicts = ocp-sdl2
 	conflicts = ocp-curses
 
-pkgname = ocp-sdl2-git
+pkgname = ocp-sdl3-git
 	install = ocp.install
 	depends = alsa-lib
 	depends = bzip2
@@ -49,14 +52,17 @@ pkgname = ocp-sdl2-git
 	depends = freetype2
 	depends = hicolor-icon-theme
 	depends = ncurses
-	depends = sdl2
+	depends = sdl3
 	depends = shared-mime-info
 	depends = zlib
 	depends = libancient
 	depends = libdiscid
 	depends = libjpeg-turbo
 	depends = libpng
+	depends = speex
 	depends = ttf-unifont
-	provides = ocp=0.2.109.r11.c1069f5
+	provides = ocp=3.4.0.r5.6296817
 	conflicts = ocp
+	conflicts = ocp-sdl2
 	conflicts = ocp-curses
+	replaces = ocp-sdl2
