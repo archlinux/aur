@@ -3,13 +3,13 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=1.0rc3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'libgcc' 'libstdc++' 'qt5-base' 'libusb' 'hidapi' 'mbedtls' 'hicolor-icon-theme')
-makedepends=('qt5-tools')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libusb' 'hidapi' 'mbedtls3' 'hicolor-icon-theme')
+makedepends=('qt6-tools')
 optdepends=('i2c-tools: mainboard & RAM access')
 source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_$pkgver/OpenRGB-release_candidate_${pkgver}.tar.gz"
         openrgb-modules-load.conf
@@ -20,6 +20,11 @@ sha256sums=('a7bfd20b4804f2c5e39f59d21d8ff69d71f4f76f2a82c030e5fe1cec040d81aa'
             'e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c'
             'f53328babef392393ee44086f8897174232e863280a84266630a3cd92facc190')
 
+prepare() {
+  # Build against mbedtls3
+  sed -e 's|/mbedtls/|/mbedtls3/|g' -i OpenRGB-release_candidate_$pkgver/OpenRGB.pro
+}
+
 build() {
   # Remove -pipe because their weird build process needs -save-temps.
   export CXXFLAGS=${CXXFLAGS/-pipe}
@@ -29,7 +34,7 @@ build() {
 
   cd "$srcdir/OpenRGB-release_candidate_$pkgver"
   sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
-  qmake OpenRGB.pro
+  qmake6 OpenRGB.pro
   make
 }
 
