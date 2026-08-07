@@ -3,17 +3,17 @@
 # Contributor: John N Bilbrey <beelzebud@gmail.com>
 
 pkgname=plug
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Software for the Fender Mustang series of guitar amplifiers."
 arch=('x86_64')
 url="https://github.com/offa/plug"
 license=('GPL3')
-depends=('qt5-base' 'libusb')
+depends=('qt6-base' 'libusb')
 makedepends=('cmake')
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('714ba2786de4e501b19285207ab43ecb6283a6a7f2816c1efb9ddcfca7579779')
+sha256sums=('932b4e3d70af59570dc493e95f9d52647c53e04dfc09efd9aca894cc9be90cbd')
 
 prepare() {
 	cd "$pkgname-$pkgver"
