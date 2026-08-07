@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.927.g33ffaffd66
+pkgver=v0.20.0.1040.g37e7e4f945
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -75,6 +75,10 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/base/shaders"  "$pkgdir/opt/OpenSpace/modules/base"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/cefwebgui/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/cefwebgui/shaders"  "$pkgdir/opt/OpenSpace/modules/cefwebgui"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/shaders"
+	cp -R "${srcdir}/${_pkgname}/modules/debugging/shaders"  "$pkgdir/opt/OpenSpace/modules/debugging"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/scripts"
+	cp -R "${srcdir}/${_pkgname}/modules/debugging/scripts/axes.lua"  "$pkgdir/opt/OpenSpace/modules/debugging/scripts/axes.lua"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/digitaluniverse/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/digitaluniverse/shaders"  "$pkgdir/opt/OpenSpace/modules/digitaluniverse"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/exoplanets/shaders"
@@ -101,10 +105,15 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/imgui/shaders"  "$pkgdir/opt/OpenSpace/modules/imgui"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/iswa/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/iswa/shaders"  "$pkgdir/opt/OpenSpace/modules/iswa"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/molecule/shaders"
+	cp -R "${srcdir}/${_pkgname}/modules/molecule/shaders"  "$pkgdir/opt/OpenSpace/modules/molecule"
+	cp -R "${srcdir}/${_pkgname}/modules/molecule/scripts"  "$pkgdir/opt/OpenSpace/modules/molecule"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/multiresvolume/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/multiresvolume/shaders"  "$pkgdir/opt/OpenSpace/modules/multiresvolume"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/skybrowser/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/skybrowser/shaders"  "$pkgdir/opt/OpenSpace/modules/skybrowser"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/solarbrowsing/shaders"
+	cp -R "${srcdir}/${_pkgname}/modules/solarbrowsing/shaders"  "$pkgdir/opt/OpenSpace/modules/solarbrowsing"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/space/scripts"
 	cp -R "${srcdir}/${_pkgname}/modules/space/scripts"  "$pkgdir/opt/OpenSpace/modules/space"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/space/shaders"
@@ -113,12 +122,10 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/spacecraftinstruments/shaders"  "$pkgdir/opt/OpenSpace/modules/spacecraftinstruments"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/volume/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/volume/shaders"  "$pkgdir/opt/OpenSpace/modules/volume"
-	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/scripts"
-	cp -R "${srcdir}/${_pkgname}/modules/debugging/scripts/axes.lua"  "$pkgdir/opt/OpenSpace/modules/debugging/scripts/axes.lua"
-	mkdir -p "$pkgdir/opt/OpenSpace/modules/webgui/ext/nodejs"
-	cp -R "${srcdir}/${_pkgname}/modules/webgui/ext/nodejs"  "$pkgdir/opt/OpenSpace/modules/webgui/ext"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
 	cp -R "${srcdir}/${_pkgname}/build/modules/webbrowser/ext/cef/cef_binary_127.3.5+g114ea2a+chromium-127.0.6533.120_linux64/Release"  "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/webgui/ext/nodejs"
+	cp -R "${srcdir}/${_pkgname}/modules/webgui/ext/nodejs"  "$pkgdir/opt/OpenSpace/modules/webgui/ext"
 	mkdir -p "$pkgdir/opt/OpenSpace/bin"
 	cp -R "${srcdir}/${_pkgname}/bin"  "$pkgdir/opt/OpenSpace"
 	install ${srcdir}/open-space "$pkgdir/opt/OpenSpace/bin/open-space"
