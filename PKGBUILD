@@ -1,10 +1,10 @@
 # Maintainer: rez <rez@ifwerez.ru>
 pkgname=cider-studio
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="run & control roblox studio advancedly on linux"
 arch=('x86_64')
-url="https://github.com/ifwerez/cider"
+url="https://ifwerez.ru/git/rez/cider"
 license=('MIT')
 depends=('sdl2' 'libgl' 'zlib' 'xz' 'curl' 'cabextract' 'wine')
 makedepends=('cmake' 'gcc' 'curl' 'git')
@@ -14,7 +14,7 @@ sha256sums=()
 
 build() {
     rm -rf src
-    git -c advice.detachedHead=false clone --branch "${pkgver}" --depth 1 "${url}.git" src
+    git -c advice.detachedHead=false clone --branch "${pkgver}" --depth 1 "https://ifwerez.ru/git/rez/cider.git" src
     cd src
     cmake -B build -DCMAKE_BUILD_TYPE=Release
     cmake --build build -j"$(nproc)"
