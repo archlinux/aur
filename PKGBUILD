@@ -1,7 +1,7 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.0.7
+pkgver=7.0.9
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
