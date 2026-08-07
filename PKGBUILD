@@ -2,7 +2,7 @@
 
 pkgname='sidef'
 _pkgname='Sidef'
-pkgver='26.07'
+pkgver='26.08'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
     'perl-forks: for better threading support'
 )
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('aca92cd44de5f9e0a702c02989e9547b8c3beb898ed7351342aad69ec10a0d8be45523f13d137625ec6c6af89ccc2c0ce56f1629f39076ead3d6326e8c09fe40')
+b2sums=('1552bc0fd84a2bc7152fe4858a069597cbc539569eba1d84999c6fad511aa5acfec604edd1aa77a37a5971e4b57ec8f5a47f82dd56daea6624f506f7a2ccc5ce')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
