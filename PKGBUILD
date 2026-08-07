@@ -3,7 +3,7 @@
 # Contributor: Julian <juliannfairfax@protonmail.com>
 pkgname=pipeline-gtk
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
@@ -34,6 +34,8 @@ prepare() {
 }
 
 build() {
+  export GETTEXT_SYSTEM=true
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
 	arch-meson pipeline-$pkgver build
 	meson compile -C build
