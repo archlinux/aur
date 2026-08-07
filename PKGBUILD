@@ -13,6 +13,7 @@ makedepends=('git')
 depends=(
   'noctalia-qs'
   'qt6-dbusqml'
+  'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
@@ -41,9 +42,14 @@ package() {
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
+  # Exclude dev tooling and temp files from the installed tree
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
-  # Install CLI scripts to PATH
-  install -Dm755 Scripts/bash/atmosphera-session.sh "$pkgdir/usr/local/bin/atmosphera-session"
-  install -Dm755 Scripts/bash/atmosphera-settings   "$pkgdir/usr/local/bin/atmosphera-settings"
-  install -Dm755 Scripts/bash/atmosphera-lock       "$pkgdir/usr/local/bin/atmosphera-lock"
+  # Install dispatcher to PATH (handlers resolved via SELF_DIR auto-detect)
+  install -Dm755 Scripts/bash/atmosphera "$pkgdir/usr/local/bin/atmosphera"
+  # Multi-call symlinks: invoke as atmoshera-session etc. for backward compat
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-session"
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
 }
