@@ -1,0 +1,26 @@
+pkgbase = hax
+	pkgdesc = Minimalist, terminal-native coding agent written in C
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/OleksandrChekhovskyi/hax
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = python
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = bash
+	depends = curl
+	depends = glibc
+	depends = jansson
+	optdepends = fzf: @file picker
+	optdepends = git: repository context and faster @file candidate listing
+	optdepends = less: default pager for the transcript view
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support and image paste on X11
+	optdepends = xsel: clipboard support on X11
+	source = hax-0.3.0.tar.xz::https://github.com/OleksandrChekhovskyi/hax/releases/download/v0.3.0/hax-0.3.0.tar.xz
+	sha256sums = 5fa25dcb71bb462436b33f0272346745973c0c33fc614ca8683627e97432b6aa
+
+pkgname = hax
