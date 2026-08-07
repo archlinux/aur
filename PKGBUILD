@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=8.5.6
+_basever=8.5.7
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -50,12 +50,12 @@ sha256sums=('b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '44de9aed72b8bc9156db354dcddfe0624f2fe4fc91e903fe64892913cae93e0f'
             'f32709894c0d2c105a4398dcaf027f1cbdee359a2a6747f43cac819e9df25517'
             '1c933198cd9b5611bd7d25f4f3501bd1b580bb35352f8d65bc1cef8588400d24')
-sha256sums_x86_64=('676768548416d4c36311a857f1f08abb18c4ee91b46d4160d4abdd52b3dc2344'
-                   'ae6c6374ba8d82731a2ac67ca88a3fbebd762c8502477599479c52fc4b604206'
-                   '024efbd6efc64ae811a8e25aeb27ac611664b685f93425d061846944d2654a9e')
-sha256sums_aarch64=('5ed24beac23af81b1e605468cd748288d5f19555adf5f61cdc2c33552f049737'
-                    '323b18912e82a9c1b6d054b46880632efd1d4ac5463d5da122fac810fe723de1'
-                    '65a6e027f78696101b9d62a4bb8613cc2611ea8e5662c839d3174a0b88690385')
+sha256sums_x86_64=('2bff9bad29fe8142cdf556f839dd99a07f51f205ade7662eb9431b2f359b0460'
+                   '87bb39d4ae3b0c966a1600f903525d4afe8dafca3ad179fc86610e1288a58591'
+                   '23a3601aa49a48d62156df1895f0af7089c5d602f70f0b6d659cfc4c0f26b845')
+sha256sums_aarch64=('0d14c986226bab1defba4d916b8a5c0e8842fe166a7faa3db2864f956ac85b3c'
+                    '4379cf3607ae2f4b163f4710b23f6e00f74e835e35d48c3a8afd7d1a80ab9e60'
+                    '2fa000801144cd65c91641fe3676fc45a6273a8deea8f776fc215c069748e589')
 
 _package() {
     provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
