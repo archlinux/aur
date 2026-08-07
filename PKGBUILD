@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl3')
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
@@ -30,7 +30,8 @@ makedepends=('alsa-lib'
         'libmad'
         'libjpeg-turbo'
         'libpng'
-        'libvorbis')
+        'libvorbis'
+        'speex')
 
 prepare() {
         cd $_pkgbase
@@ -40,7 +41,7 @@ prepare() {
 
 build() {
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-update-desktop-database\
         --without-update-mime-database\
         --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
@@ -67,9 +68,10 @@ package_ocp-sdl3() {
                 'libdiscid'
                 'libjpeg-turbo'
                 'libpng'
+                'speex'
                 'ttf-unifont')
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-sdl\
         --without-sdl2\
         --without-x11\
@@ -91,9 +93,10 @@ package_ocp() {
                 'ncurses'
                 'zlib'
                 'libancient'
-                'libdiscid')
+                'libdiscid'
+                'speex')
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-x11\
         --without-sdl\
         --without-sdl2\
