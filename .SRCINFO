@@ -1,6 +1,6 @@
 pkgbase = cosmic-files-git
 	pkgdesc = File manager for the COSMIC desktop environment
-	pkgver = 1.0.16.r11.g53a33db
+	pkgver = 1.5.0.r0.g24e34ea
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-files
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = cosmic-files-git
 	depends = gvfs
 	depends = libxkbcommon
 	depends = xdg-utils
+	depends = zstd
 	optdepends = evince: external document thumbnailer
 	provides = cosmic-files
 	conflicts = cosmic-files

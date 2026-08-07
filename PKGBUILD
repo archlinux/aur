@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.16.r11.g53a33db
+pkgver=1.5.0.r0.g24e34ea
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,7 @@ depends=(
   'gvfs'
   'libxkbcommon'
   'xdg-utils'
+  'zstd'
 )
 makedepends=(
   'cargo'
@@ -42,6 +43,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
