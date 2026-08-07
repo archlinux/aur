@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-initial-setup-git
-pkgver=1.0.16.r0.g8eabeaf
+pkgver=1.5.0.r0.gb5ac418
 pkgrel=1
 pkgdesc="COSMIC Initial Setup"
 arch=('x86_64' 'aarch64')
@@ -32,6 +32,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 
@@ -39,12 +40,14 @@ prepare() {
   git remote add network-origin https://github.com/pop-os/cosmic-initial-setup
   git lfs fetch network-origin
   git lfs checkout
+
+  sed -i 's/cargo build-release/cargo build-release --frozen/g' justfile
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just build-release --frozen
+  just build-release
 }
 
 package() {
