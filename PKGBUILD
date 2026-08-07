@@ -11,7 +11,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}
 pkgdesc="Terminal + API — a keyboard-driven TUI for exploring, testing, and automating REST and GraphQL APIs, without leaving your terminal"
 
-pkgver=0.10.9
+pkgver=0.10.15
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc' 'openssl')
 provides=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('7b06245211e577a9f92396fd8353eed903f05822be1fe0d35cefc4ec53318242')
+sha256sums=('1fb4f21042a34ee1ca1be29f33de1f8fb29e940960ffe163ae3c171dbb90d35c')
 
 prepare() {
 	cd "${_cratename}-${_pkgvername}" || exit

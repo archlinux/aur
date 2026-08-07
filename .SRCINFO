@@ -1,6 +1,6 @@
 pkgbase = terapi
 	pkgdesc = Terminal + API — a keyboard-driven TUI for exploring, testing, and automating REST and GraphQL APIs, without leaving your terminal
-	pkgver = 0.10.9
+	pkgver = 0.10.15
 	pkgrel = 1
 	url = https://github.com/TSODev/terapi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = terapi
 	depends = libgcc
 	depends = openssl
 	provides = terapi
-	source = terapi-0.10.9.crate::https://crates.io/api/v1/crates/terapi/0.10.9/download
-	sha256sums = 7b06245211e577a9f92396fd8353eed903f05822be1fe0d35cefc4ec53318242
+	source = terapi-0.10.15.crate::https://crates.io/api/v1/crates/terapi/0.10.15/download
+	sha256sums = 1fb4f21042a34ee1ca1be29f33de1f8fb29e940960ffe163ae3c171dbb90d35c
 
 pkgname = terapi
