@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=8.1.2
+pkgver=9.0
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -16,7 +16,6 @@ depends=(
   'mingw-w64-dav1d'
   'mingw-w64-fontconfig'
   'mingw-w64-fribidi'
-  'mingw-w64-glslang'
   'mingw-w64-gmp'
   'mingw-w64-gnutls'
   'mingw-w64-gsm'
@@ -49,7 +48,7 @@ depends=(
   'mingw-w64-sdl2'
   'mingw-w64-snappy'
   'mingw-w64-speex'
-  'mingw-w64-spirv-tools' # required by glslang
+  'mingw-w64-spirv-headers'
   'mingw-w64-srt'
   'mingw-w64-vulkan-icd-loader'
   'mingw-w64-x264'
@@ -71,7 +70,7 @@ source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   configure.patch)
-b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce'
+b2sums=('c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
         '7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -85,9 +84,6 @@ prepare() {
 
   # https://crbug.com/1251779
   git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
-  # Add library path for glslang static libs
-  sed -i "${srcdir}"/ffmpeg/configure -e 's|-lglslang|-L${prefix}/static/lib -lglslang|'
 }
 
 build() {
@@ -129,7 +125,6 @@ build() {
       --enable-libfreetype \
       --enable-frei0r \
       --enable-libfribidi \
-      --enable-libglslang \
       --enable-libgsm \
       --enable-libharfbuzz \
       --enable-libjxl \
