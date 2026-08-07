@@ -23,7 +23,7 @@ source=("https://github.com/tom-james-watson/$_pkgname/archive/refs/tags/v${pkgv
         "${pkgname}_154.patch::${url}/pull/154.patch"
         'emote_wayland_autopaste.patch')
 sha256sums=('171ddf7e216f12a9e0ed63cd0a97796fd63967df3b3aa5e452877b74aabd48c9'
-            '81c12d28657a988273f38b8070a463e6ac67d1a486d61badef33145335d7f470'
+            'c9d6aba2dd283b1ed311f5af69e9bddcf06f9369c392426c7c6d69d96703893d'
             'c4a32b3e4be22e0214012c46a20de8218dd77cf54f884a4dccc3c4ff2ca0a18f'
             'c8fab9cd79c7def484809158930df576de5a6a4c08232272b3f8eed9ae18c874'
             '386def90668191e0930f2773e9b756399a4b8ec402760391128956ec02a35893')
