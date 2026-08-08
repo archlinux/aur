@@ -9,7 +9,7 @@ url='https://github.com/ssj71/reMID.lv2'
 license=('GPL')
 groups=('lv2-plugins')
 depends=('glib2' 'jack' 'lv2' 'alsa-lib')
-makedepends=('cmake' 'pkgconfig')
+makedepends=('git' 'cmake' 'pkgconfig')
 provides=('remid.lv2' 'remid.lv2-git')
 conflicts=('remid.lv2' 'remid.lv2-git')
 replaces=()
@@ -32,7 +32,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   mkdir -p build
   cd build
-  cmake .. . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_C_FLAGS="$CFLAGS -D_DEFAULT_SOURCE -Wno-implicit-function-declaration"
 }
 
 build() {
