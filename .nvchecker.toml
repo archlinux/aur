@@ -1,0 +1,5 @@
+[jobman-bin]
+source = "github"
+github = "ryancswallace/Jobman"
+use_latest_release = true
+prefix = "v"
