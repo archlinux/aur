@@ -1,7 +1,7 @@
 pkgbase = wine-dwproton
 	pkgdesc = dwproton的wine版|dwproton's wine version
 	pkgver = 11.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://dawn.wine/dawn-winery/wine-dwproton
 	arch = x86_64
 	provides = wine=11.0
@@ -9,7 +9,7 @@ pkgbase = wine-dwproton
 	provides = wine-wow64=11.0
 	provides = wine-dwproton=11.0
 	conflicts = wine
-	source = git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/11.0-10
+	source = git+https://dawn.wine/dawn-winery/wine-dwproton#branch=dwproton/11.0-11
 	source = https://github.com/irtkll/wine-proton-patch/raw/main/恢复字体.patch
 	source = https://github.com/irtkll/wine-proton-patch/raw/main/还原部分wine功能.patch
 	source = https://github.com/irtkll/wine-proton-patch/raw/main/修复任务栏的图标问题.patch
