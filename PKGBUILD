@@ -23,13 +23,19 @@ b2sums=('a43f151c1660c38bd028f80742637a51d5108e6769161c88fb269ac03c827e49bd20e52
 build() {
   cd "physlock-${pkgver}"
 
-  make PREFIX=/usr
+  make
+}
+
+check() {
+  cd "physlock-${pkgver}"
+
+  ./physlock -h
 }
 
 package() {
   cd "physlock-${pkgver}"
 
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make PREFIX='/usr' DESTDIR="${pkgdir}" install
 
   install -vD -m644 ../physlock.pam -T "${pkgdir}/etc/pam.d/physlock"
 }
