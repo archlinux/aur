@@ -1,6 +1,6 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=sgdboop
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A program used for applying custom artwork to Steam, using SteamGridDB. Supports both Windows and Linux, written completely in C."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('make' 'gcc' 'libcurl-gnutls')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$_repo_url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e23fc9de3003bb5ded84420564e359e07fba8be0fd7d4a1927e0f489cf0893d')
+sha256sums=('b0ce531008a250cff0ddcade528b8b662eb06b6283c82bf649ed6f7d9d22b7b1')
 options=('!debug')
 
 _dir_name="SGDBoop-$pkgver"
