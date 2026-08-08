@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Keyboard-first TUI HTTP client"
 
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=('!strip')
 source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/usage.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('c0464b58d2703879b623debea18ab08cce35209768839f7884b4c637c2307522')
-sha256sums_x86_64=('f7fa5fc65cce7cad860c07aec8adb31737938475a672da7c3743c9e7e9d7ff54')
-sha256sums_aarch64=('70ec8bbeb56b768c20fd17f2d62f301e9baffbf367168a6951435208dfa48069')
+sha256sums=('ea65a66110414bd34ab53b03ec41b4da5d0c0c5880cce7ae42c970d5a1e5af58')
+sha256sums_x86_64=('c99c0cd4d14d5eca28c60cc6929e34d70a48c243e27b931bac06bf54f3949595')
+sha256sums_aarch64=('54fa01da0736c5e970e831180183c51813fce1512c467def9108ad94ff42ecac')
 
 
 package() {
