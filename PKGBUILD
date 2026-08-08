@@ -1,7 +1,7 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=easycrypt-bin
-pkgver=2026.02
+pkgver=2026.07
 pkgrel=1
 pkgdesc="Interactive framework for cryptographic proofs (EasyCrypt)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
   "${_pkgname}_${_debver}_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/${_pkgname}_${_debver}_amd64.deb"
 )
 
-sha256sums=('f4d9fa9b8a73d0d1d2fef3da242608654491c881fe9005a3f51f68b644f75bfd')
+sha256sums=('0a801ef86be76a6e46960c9f2a391e0915d88d53b46019c8a54f5717698c30cb')
 
 package() {
   cd "$srcdir"
