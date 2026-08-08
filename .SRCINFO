@@ -1,7 +1,7 @@
 pkgbase = en-croissant
 	pkgdesc = Modern chess GUI and analysis tool
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,7 +23,6 @@ pkgbase = en-croissant
 	optdepends = stockfish: chess engine that can be integrated via Engines » Add New » Local
 	conflicts = en-croissant-appimage
 	conflicts = en-croissant-bin
-	options = !lto
 	source = en-croissant-0.15.0.tar.gz::https://github.com/franciscoBSalgueiro/en-croissant/archive/v0.15.0.tar.gz
 	source = disable-updater.patch
 	source = en-croissant.desktop

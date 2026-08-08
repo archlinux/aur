@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=en-croissant
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
 url='https://github.com/franciscoBSalgueiro/en-croissant'
@@ -32,10 +32,6 @@ optdepends=(
 conflicts=(
   'en-croissant-appimage'
   'en-croissant-bin'
-)
-options=(
-  # Fixes `/usr/lib/libsqlite3.so.0: error adding symbols: DSO missing from command line`
-  '!lto'
 )
 
 source=(
@@ -73,7 +69,7 @@ prepare() {
   nvm install lts/krypton
 
   echo >&2 'Installing npm dependencies'
-  pnpm install --frozen-lockfile
+  pnpm install --frozen-lockfile --ignore-scripts
 }
 
 build() {
@@ -81,6 +77,14 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   _ensure_local_nvm
+
+  # Fixes `ld.lld: error: undefined symbol` and similar link-time
+  # errors related to some *-sys crates
+  # See also:
+  # - https://gitlab.archlinux.org/archlinux/rfcs/-/merge_requests/69
+  # - https://github.com/briansmith/ring/issues/1444#issuecomment-5217008291
+  CFLAGS+=' -ffat-lto-objects'
+
   pnpm build
 }
 
