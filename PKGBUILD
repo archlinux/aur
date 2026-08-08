@@ -2,8 +2,8 @@
 
 pkgname=rustfs
 pkgver=1.0.0_beta.12
-_console_ver=0.1.19
-pkgrel=3
+_console_ver=0.1.20
+pkgrel=4
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'a80b8eff2d9234ac6a0a507f41ec3fc4572422d43b38498ef06a95b389391fad'
-	'1b0929976c95c80204641d906eb66721b8a3f2b26eb5e2ee75f484cb4dbbf653'
+	'43e85bce5abae20022fe8af724b9642a442997296b279da1a878fde9ac51dc97'
 )
 
 prepare() {
