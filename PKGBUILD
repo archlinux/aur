@@ -3,7 +3,7 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ldraw-parts-library
-pkgver=20250731
+pkgver=20260731
 pkgrel=1
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
