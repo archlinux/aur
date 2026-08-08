@@ -1,0 +1,16 @@
+pkgbase = minhtml
+	pkgdesc = Extremely fast and smart HTML + JS + CSS minifier
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/wilsonzlin/minify-html
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = minhtml-0.18.1.tar.gz::https://github.com/wilsonzlin/minify-html/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 3c49722d797e8ffda4ee05a2a0ed31bb83f519e5cd1e5fd7d2a36dea65264cda
+
+pkgname = minhtml
