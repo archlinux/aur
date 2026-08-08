@@ -1,0 +1,5 @@
+[sshd-lite-bin]
+source = "github"
+github = "jpillora/sshd-lite"
+use_latest_release = true
+prefix = "v"
