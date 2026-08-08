@@ -1,6 +1,6 @@
 pkgbase = niri-focused-booster
 	pkgdesc = dmem cgroup boosting for focused windows on Niri
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/1Naim/niri-focused-booster
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = niri-focused-booster
 	depends = glibc
 	depends = libgcc
 	depends = systemd
-	source = niri-focused-booster::git+https://github.com/1Naim/niri-focused-booster.git#tag=0.2.2
-	sha256sums = cec536da1fcad79a63cee1bec0951a527d53de03735c83e37e09288dc93509c1
+	source = niri-focused-booster::git+https://github.com/1Naim/niri-focused-booster.git#tag=0.3.0
+	sha256sums = 5635ca55eaf8807ddb8a7bc49b947880ded5fb6389a434c5f420a91141921c32
 
 pkgname = niri-focused-booster
