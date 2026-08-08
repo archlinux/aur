@@ -5,11 +5,10 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=11.1.0.106
+pkgver=11.2.1.2
 _cudaver=13.3
-_protobuf_ver=3.20.3 # https://github.com/NVIDIA/TensorRT/blob/v11.1/CMakeLists.txt#L318
-_pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.6.1
+_protobuf_ver=3.20.3 # https://github.com/NVIDIA/TensorRT/blob/v11.2/CMakeLists.txt#L321
+_onnx_graphsurgeon_ver=0.6.2
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
@@ -28,6 +27,7 @@ makedepends=(
     'python-installer'
     'python-ml-dtypes'
     'python-onnx'
+    'python-pip'
     'python-setuptools'
     'python-typing_extensions'
     'python-wheel')
@@ -37,22 +37,22 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
         'git+https://github.com/onnx/onnx.git'
-        "git+https://github.com/pybind/pybind11.git#tag=v${_pybind11_ver}"
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
+        'git+https://github.com/pybind/pybind11.git'
         '010-tensorrt-use-local-protobuf-sources.patch'
-        '020-tensorrt-fix-python.patch'
+        '020-tensorrt-use-local-pybind11-sources.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('5751e82792aa69973a00f1f270f04889605abf682bcf6a924f5dbd9ed1149d1d'
-            'b2514a533fee302d8e533153688111b74676a707b9064e4345b756bc1e347f5b'
+sha256sums=('1db0fc9f3d04dae4b9262f4dfb10a19616d88577eec7f2535ac7be01a470e807'
+            '3cda5fcb6b1f7384506bc519d24e0c0ca6c4ad93bd0623e674a096cdfb366443'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'afa2fc2c854d49d63e70a4a15a7939ecbd3b6042b25d0b195a673a0c2823d781'
             'e51cc8fc496f893e2a48beb417730ab6cbcb251142ad8b2cd1951faa5c76fe3d'
+            'SKIP'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '1726e80937c5b4a62c8ca92c34db8d188d6ad29b58f5fd006a81bf08b9e46578'
+            '34e9eeb150e9682bd42bebd31aef8b66b1150b6a8774c488687ea38273a9b409'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -68,14 +68,12 @@ prepare() {
     git -C TensorRT/parsers/onnx config --local submodule.third_party/onnx.url "${srcdir}/onnx"
     git -C TensorRT/parsers/onnx -c protocol.file.allow='always' submodule update
     
-    git -C TensorRT restore --source='v10.15' python/packaging/bindings_wheel/setup.{cfg,py}
-    
     # protobuf
     mkdir -p build/third_party.protobuf/src
     cp -af "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
 
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
-    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-use-local-pybind11-sources.patch"
 }
 
 build() {
@@ -85,6 +83,7 @@ build() {
     export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S TensorRT \
         -G 'Unix Makefiles' \
+        -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_CUDA_ARCHITECTURES:STRING='75;80;86;87;89;90;100;103;110;120;121' \
@@ -94,30 +93,8 @@ build() {
         -DONNX_BUILD_PYTHON:BOOL='ON' \
         -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
         -DTRT_LIB_DIR:STRING="${srcdir}/TensorRT-${pkgver}/lib" \
-        -Wno-dev
+        -Wno-author
     cmake --build build
-    
-    # python bindings
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[:2])')"
-    local -x TENSORRT_MODULE='tensorrt'
-    local -x PYTHON_MAJOR_VERSION="${_pyver%%.*}"
-    local -x PYTHON_MINOR_VERSION="${_pyver#*.}"
-    local -x TARGET_ARCHITECTURE="$CARCH"
-    local -x TRT_OSSPATH="${srcdir}/TensorRT"
-    local -x CUDA_ROOT='/opt/cuda'
-    local -x ROOT_PATH="${srcdir}/TensorRT"
-    local -x EXT_PATH="$srcdir"
-    local -x TRT_LIBPATH="${srcdir}/TensorRT-${pkgver}/lib"
-    cd TensorRT/python
-    ../scripts/build_python_wheel.sh
-    mv build build_tensorrt
-    TENSORRT_MODULE='tensorrt_dispatch'
-    ../scripts/build_python_wheel.sh
-    mv build build_tensorrt_dispatch
-    TENSORRT_MODULE='tensorrt_lean'
-    ../scripts/build_python_wheel.sh
-    mv build build_tensorrt_lean
     
     # python tools
     local _dir
@@ -157,6 +134,8 @@ package_tensorrt() {
         ln -s "libnvinfer_builder_resource_${_arch}.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_${_arch}.so.${pkgver%%.*}"
         ln -s "libnvinfer_builder_resource_${_arch}.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_${_arch}.so"
     done
+    
+    mv -f "${pkgdir}/usr/python" "$srcdir"
     
     _package_license "$pkgdir" "$pkgname"
 }
@@ -205,12 +184,9 @@ package_python-tensorrt() {
         "python-polygraphy=${_polygraphy_ver}"
         "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
-    local _dir
-    for _dir in tensorrt{,_dispatch,_lean}
-    do
-        python -m installer --destdir="$pkgdir" "TensorRT/python/build_${_dir}/bindings_wheel/dist"/*.whl
-    done
+    python -m installer --destdir="$pkgdir" python/*.whl
     
+    local _dir
     for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
@@ -220,6 +196,6 @@ package_python-tensorrt() {
     
     local _sitepkgs
     _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
-    ln -sr "${pkgdir}${_sitepkgs}/tensorrt-${pkgver%.*}.dist-info/licenses/LICENSE.txt" \
+    ln -sr "${pkgdir}${_sitepkgs}/tensorrt-${pkgver}.dist-info/licenses/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/Python-TensorRT-LICENSE-AGREEMENT"
 }

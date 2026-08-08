@@ -1,0 +1,11 @@
+--- a/cmake/modules/FetchPyBind11.cmake
++++ b/cmake/modules/FetchPyBind11.cmake
+@@ -16,7 +16,7 @@
+ include_guard()
+ 
+ # This is set and immediately overwritten intentionally. It's here to document the public repo, and to provide the boilerplate we'd use if we ever ship it publicly:
+-set(_pybind11_default_repo "https://github.com/pybind/pybind11.git")
++set(_pybind11_default_repo "${CMAKE_SOURCE_DIR}/../pybind11")
+ 
+ 
+ set(PYBIND11_REPO ${_pybind11_default_repo} CACHE STRING "The base project URL to FetchContent_Declare for pybind11" )
