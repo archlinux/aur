@@ -1,5 +1,5 @@
 pkgname=python-jsrc
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Python library for bioinformatics and scientific computing"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('python>=3.10' 'python-numpy>=1.23' 'python-matplotlib>=3.5' 'python-op
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0' 'uv')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ad39417bb955aca991a02ea45b120ab440a60edf2ef887e709c235983caae53d')
+sha256sums=('a0fa796b7a6f378aedea2111c8aa5882a26cb4399de4d285e416dff567eff76f')
 
 build() {
     cd "jsrc-$pkgver"

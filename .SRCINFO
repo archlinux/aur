@@ -1,6 +1,6 @@
 pkgbase = python-jsrc
 	pkgdesc = Python library for bioinformatics and scientific computing
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/jsrc
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-jsrc
 	depends = python-opencv>=4.7
 	options = !strip
 	options = !debug
-	source = python-jsrc-0.3.0.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.3.0.tar.gz
-	sha256sums = ad39417bb955aca991a02ea45b120ab440a60edf2ef887e709c235983caae53d
+	source = python-jsrc-0.3.1.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.3.1.tar.gz
+	sha256sums = a0fa796b7a6f378aedea2111c8aa5882a26cb4399de4d285e416dff567eff76f
 
 pkgname = python-jsrc
