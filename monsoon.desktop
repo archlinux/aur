@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Monsoon Emulator
+GenericName=NES Emulator
+Comment=Cycle-accurate Nintendo Entertainment System emulator
+Exec=monsoon-frontend
+Categories=Game;Emulator;
+Keywords=NES;Nintendo;Emulator;Famicom;Retro;
+StartupNotify=true
+Icon=application-x-executable
