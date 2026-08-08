@@ -5,12 +5,12 @@ _pkgname=llama-cpp-python
 _verprefix=0.3.16
 pkgname=python-llama-cpp-cuda-git
 pkgrel=1
-pkgver=0.3.16.r2070.8dcdbd2
+pkgver=0.3.16.r2165.67014fdf
 pkgdesc="Python bindings for llama.cpp (git version with CUDA support)"
 arch=(x86_64)
 provides=(python-llama-cpp python-llama-cpp-cuda)
 conflicts=(python-llama-cpp python-llama-cpp-cuda)
-url="https://github.com/inference-sh/llama-cpp-python"
+url="https://github.com/abetlen/llama-cpp-python"
 license=(MIT)
 depends=(
   python-typing_extensions
@@ -38,7 +38,7 @@ makedepends=(
   python-build
   python-wheel
   python-scikit-build-core
-  gcc14
+  gcc15
 )
 checkdepends=(
   python-pytest
@@ -50,7 +50,7 @@ checkdepends=(
   #python-sse-starlette-context #missing but tests don't seem to require it
   python-pydantic-settings
 )
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git+https://github.com/abetlen/llama-cpp-python.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -69,7 +69,7 @@ build() {
 
   
   CMAKE_ARGS="-DGGML_CUDA=on -DCUDAToolkit_ROOT=/opt/cuda -DCMAKE_CUDA_ARCHITECTURES=native" \
-    NVCC_CCBIN='gcc-14' \
+    NVCC_CCBIN='gcc-15' \
     python -m build --wheel --no-isolation
 }
 
