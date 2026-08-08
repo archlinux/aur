@@ -1,12 +1,12 @@
 # Maintainer: AstralDesigns <ianomiruka@gmail.com>
-pkgname=hyprcandy-plus
-pkgver=1.1.43
+pkgname=hyprcandy-plus-git
+pkgver=1.1.44
 pkgrel=1
 pkgdesc="HyprCandy+ installer — a cohesive Hyprland desktop experience"
 arch=('any')
 url="https://github.com/AstralDesigns/candyinstall"
 license=('custom')
-depends=('bash' 'git' 'curl' 'kitty' 'hyprland' 'quickshell-git')
+depends=('bash' 'git' 'curl' 'kitty' 'hyprland' 'noctalia-qs')
 optdepends=(
     'hyprland-git: latest development build of Hyprland (replaces hyprland)'
 )
