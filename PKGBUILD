@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=cloud189
-pkgver=0.6.7
-pkgrel=3
+pkgver=0.6.8
+pkgrel=1
 pkgdesc="基于天翼云接口的go客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gowsp/cloud189"
