@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -128,7 +128,7 @@ elseif( UNIX OR MINGW )
+@@ -137,7 +137,7 @@ elseif( UNIX OR MINGW )
  
      set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPT_DBG} -${OPT_LV} -fomit-frame-pointer -pthread -std=c99")
      #TODO: fix suppressed problems
