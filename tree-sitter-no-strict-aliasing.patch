@@ -1,11 +1,9 @@
 diff --git a/MODULE.bazel b/MODULE.bazel
-index 7846ae953b..ff9537afb0 100644
+index a364a32b79..de7b19b8be 100644
 --- a/MODULE.bazel
 +++ b/MODULE.bazel
-@@ -153,6 +153,40 @@ crate.annotation(
-     build_script_env = {"CFLAGS": "-UNDEBUG"},
- )
- 
+@@ -202 +202,35 @@ crate.annotation(
+-use_repo(crate, "crates")
 +# tree-sitter's `array.h` type-puns every `Array(T) *` through `Array(void) *`;
 +# under -fstrict-aliasing (implied by -O2 and up) that miscompiles, e.g. the
 +# tree-sitter-haskell scanner segfaults:
@@ -40,6 +38,4 @@ index 7846ae953b..ff9537afb0 100644
 +    ]
 +]
 +
- # `generate-bindings` is enabled for darwin so miniaudio's Rust bindings match
- # its CoreAudio C layout. Build scripts execute for the host, however, so a
- # macOS-hosted Linux cross-build also sees that feature. Use Cargo's TARGET to
++use_repo(crate, "crates")

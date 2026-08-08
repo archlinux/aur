@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=17.2.10
+pkgver=17.2.11
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            'a3af6b88fa05125f1ba0e9b25b0fad769446fdea9707a145385bd28429ffdd32'
+            'fd863e12ad717327c79095f47ebcb47811fcc3845dd15bdec3ec6b12d4df5e7a'
             'ad7221fc63cf2a07e954a257daee92a8cd4e26a930dfbc9dfb6362593092f89d'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
 )
