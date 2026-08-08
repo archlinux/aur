@@ -8,10 +8,11 @@
 pkgname=esound
 pkgdesc='Enlightened Sound Daemon'
 pkgver=0.2.41
-pkgrel=7
+pkgrel=8
 url='https://gitlab.gnome.org/Archive/esound'
 arch=(i686 x86_64)
 license=('GPL-2.0-or-later AND LGPL-2.0-or-later')
+checkdepends=('psmisc' 'tcsh')
 makedepends=('autoconf' 'automake' 'libtool')
 depends=('audiofile' 'alsa-lib' 'glibc' 'sh')
 optdepends=('pipewire-alsa: User service for the PipeWire stack')
@@ -77,10 +78,22 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname}-ESOUND_${pkgver//./_}"
+
+  ESD_DEBUG=1 ./esd -d null &
+  local server_pid=$!
+
+  printf 'q\n%.0s' {1..10} | PATH="${PATH}:${PWD}" tcsh -e test-script
+
+  kill "${server_pid}"
+  wait "${server_pid}"
+}
+
 package() {
   cd "${pkgname}-ESOUND_${pkgver//./_}"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" LIBTOOLFLAGS='--no-warnings' install
 
   # daemon
   install -vD -m644 ../esound-system.service -T "${pkgdir}/usr/lib/systemd/system/esound.service"
