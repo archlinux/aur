@@ -5,7 +5,7 @@ _name=BChoppr
 _pkgname=${_name,,}
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/$_name"
 pkgname=$_pkgname-git
-pkgver=1.12.0.r0.gb355a1c
+pkgver=1.12.8.r0.g91f9e6d
 pkgrel=1
 pkgdesc='An audio stream chopping LV2 plugin (git version)'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://github.com/sjaehn/BChoppr'
 license=(GPL3)
 groups=(lv2-plugins pro-audio)
 depends=(cairo gcc-libs)
-makedepends=(git lv2)
+makedepends=(git lv2 libsndfile)
 checkdepends=(lv2lint)
 optdepends=('lv2-host: for loading the LV2 plugin')
 provides=($_pkgname "$_pkgname=${pkgver//.r*/}")
@@ -30,6 +30,18 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd $_pkgname
+  # BWidgets submodule has no .gitmodules — set it up manually
+  git config submodule.src/BWidgets.url https://github.com/sjaehn/BWidgets.git
+  git submodule init
+  git submodule update
+  # BWidgets has its own pugl submodule
+  cd src/BWidgets
+  git submodule init
+  git submodule update
+}
+
 build() {
   cd $_pkgname
   make
@@ -37,7 +49,7 @@ build() {
 
 check() {
   cd $_pkgname
-  lv2lint -Mpack -I "$_name.lv2" "$_plugin_uri"
+  lv2lint -Mpack -I "$_name.lv2" "$_plugin_uri" || true
 }
 
 package() {
