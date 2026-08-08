@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.32"
+pkgver="8.2.33"
 pkgbase_rc=""
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.32 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -207,20 +207,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "pam"
     "krb5"
     "c-client"
@@ -228,45 +228,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.32"
-    "php82-pdo=8.2.32"
-    "php82-openssl=8.2.32"
+    "php82=8.2.33"
+    "php82-pdo=8.2.33"
+    "php82-openssl=8.2.33"
 )
 _ext_depends_dba=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "unixodbc"
-    "php82-pdo=8.2.32"
+    "php82-pdo=8.2.33"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "postgresql-libs"
-    "php82-pdo=8.2.32"
+    "php82-pdo=8.2.33"
 )
 _ext_depends_firebird=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "libfbclient"
-    "php82-pdo=8.2.32"
+    "php82-pdo=8.2.33"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "sqlite"
-    "php82-pdo=8.2.32"
+    "php82-pdo=8.2.33"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.32"
+    "php82=8.2.33"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -449,7 +449,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -477,7 +477,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1387,7 +1387,6 @@ package_php82-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php82-opcache() {
     pkgdesc="opcache zend module for php82"
@@ -1478,7 +1477,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            'e02aa173c236c12791696254d607da680e6d5516f8f5c2339642de7c4f944bd2'
+            'fbdeace9b38220436a4c8fd79b900df92878151db145e641750743a283b514c1'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
