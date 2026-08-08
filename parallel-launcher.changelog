@@ -1,3 +1,7 @@
+### v9.0.6 (Sat Aug 8 2026)
+* Fixed a crash when using the SDL2 input driver if the gamepad sends an event for a button or axis whose number is higher than the number of buttons or axes it (incorrectly) claimed to have.
+* Fixed debug assertions being included in release builds
+
 ### v9.0.5 (Thu May 14 2026)
 * Fixed certain keys still being unable to be used as hotkeys on Windows
 * Fixed SD card mounting not working on newer versions of MacOS
