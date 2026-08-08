@@ -4,7 +4,7 @@
 _mayaver=2027
 
 pkgname=maya-bifrost
-pkgver=3.1.0.8
+pkgver=3.2.0.8
 pkgrel=1
 pkgdesc='Autodesk Maya Bifrost Plugin'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=("maya>=${_mayaver}" 'maya<2028.0')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://Bifrost_${pkgver}_Maya${_mayaver}_Linux.run")
-b2sums=('bdce7236f58db1db9e96f27190224b58dca4933ddc33b0704bd95db11ef86daaa5147dc189680d7eb82fdd132ee856f4fd0b922a2908d019b4c7e2670a847998')
+b2sums=('6200afee8063ed2e3273567daa52a673e7fed34ae2d8ab4a8cf12d8c191f2edf01563d0ee80e4d2a6ff52cca94356a32411379d6f33c3a4c03eb4ea813bbf437')
 
 options=(!strip)
 
