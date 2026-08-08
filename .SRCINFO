@@ -1,0 +1,24 @@
+pkgbase = swayclip-git
+	pkgdesc = Clipboard manager for Sway and other Wayland compositors
+	pkgver = 0.2.1.r11.gedce2e4
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = scdoc
+	makedepends = wayland
+	depends = json-c
+	depends = sqlite
+	depends = wayland
+	provides = swayclip
+	conflicts = swayclip
+	source = git+https://github.com/64-bitman/swayclip.git
+	source = git+https://github.com/64-bitman/xstructs.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = swayclip-git
