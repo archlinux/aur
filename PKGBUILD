@@ -1,12 +1,12 @@
 # Maintainer: termer <termer@termer.net>
 
 pkgname=friendnet-client-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Peer-to-peer file sharing client for the FriendNet protocol"
 arch=("x86_64")
 url="https://github.com/termermc/FriendNet"
-license=("AGPL-3.0")
+license=("GPL-3.0")
 depends=()
 makedepends=("binutils" "tar")
 provides=("friendnet-client")
@@ -14,10 +14,10 @@ conflicts=()
 options=(!debug)
 
 source=(
-  "friendnet-client-linux_amd64-$pkgver.deb::https://github.com/termermc/FriendNet/releases/download/v1.2.0/friendnet-client-linux_amd64.deb"
+  "friendnet-client-linux_amd64-$pkgver.deb::https://github.com/termermc/FriendNet/releases/download/v1.2.1/friendnet-client-linux_amd64.deb"
 )
 
-sha256sums=('7c183ac875a540cad7c18aeb4b339105514fae4a1a44f504b8deed113a704890')
+sha256sums=('62c07a6974f6afa80b7667e1575093b21464025978d315789bb71a759365c233')
 
 package() {
   cd "$srcdir"
