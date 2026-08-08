@@ -1,7 +1,7 @@
 # Maintainer: dmitrysvd
 
 pkgname=yandex-music
-pkgver=5.109.1
+pkgver=5.114.1
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
-sha256sums=('355b9d3fc4a2567774d75921f85ae95a5af6bf7ccb9206ed1f9762fe690c3cc7')
+sha256sums=('69befad3afb9e413000da0934fa821ef35a08457fcb20b2ea840720fd0c7dea7')
 
 package() {
     bsdtar -xf data.tar.* --directory "${pkgdir}"
@@ -34,6 +34,9 @@ package() {
 
     # Disable auto-updates
     rm "${pkgdir}/opt/yandex-music/resources/app-update.yml"
+    # Without package-type electron-updater falls back to AppImageUpdater,
+    # which reports itself inactive instead of erroring on every poll
+    rm "${pkgdir}/opt/yandex-music/resources/package-type"
 
     # Fix desktop file
     sed -i 's|/opt/Яндекс Музыка|/opt/yandex-music|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
