@@ -5,12 +5,13 @@
 pkgname=pam_mount-git
 pkgdesc='A PAM module that can mount volumes for a user session'
 pkgver=2.22.r7.g78787d2
-pkgrel=1
+pkgrel=2
 url='https://inai.de/projects/pam_mount/'
 arch=(x86_64)
 license=('LGPL-2.1-or-later AND GPL-2.0-or-later')
-depends=('cryptsetup' 'glibc' 'libhx' 'libxml2' 'openssl' 'pam' 'pcre2' 'util-linux-libs')
+checkdepends=('libxml2')
 makedepends=('git')
+depends=('cryptsetup' 'glibc' 'libhx' 'libxml2' 'openssl' 'pam' 'pcre2' 'util-linux-libs')
 provides=('pam_mount')
 conflicts=('pam_mount')
 options=(!emptydirs)
@@ -43,18 +44,24 @@ build() {
     --sbindir=/usr/bin \
     --with-slibdir=/usr/lib \
     --sysconfdir=/etc \
-    --localstatedir=/var
+    --localstatedir=/var \
+    --with-dtd
 
   make
 }
 
-check() {
+check() (
   cd pam_mount
 
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${PWD}/.libs"
   .libs/mount.crypt --help
   .libs/pmt-ehd --help
   .libs/pmvarrun -h
-}
+
+  xmllint --nonet --noout \
+    --valid config/pam_mount.conf.xml \
+    --strict-namespace
+)
 
 package() {
   cd pam_mount

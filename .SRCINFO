@@ -1,10 +1,11 @@
 pkgbase = pam_mount-git
 	pkgdesc = A PAM module that can mount volumes for a user session
 	pkgver = 2.22.r7.g78787d2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inai.de/projects/pam_mount/
 	arch = x86_64
 	license = LGPL-2.1-or-later AND GPL-2.0-or-later
+	checkdepends = libxml2
 	makedepends = git
 	depends = cryptsetup
 	depends = glibc
