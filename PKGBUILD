@@ -2,33 +2,28 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.92'
+pkgver='2.0.93'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://github.com/aargirakis/BZRPlayer"
 license=('GPL-3.0-only')
-depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
+depends=('hicolor-icon-theme' 'noto-fonts-cjk' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
 source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
-sha256sums=('ad658714a830f2012bec8798130597e05423b51bb856b64060b965c06e5a0657')
+sha256sums=('92221b57ff9ab46abffb5a48d82170b1ea3b44616de4951680fd74d3ae41a199')
 
 build() {
-  # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
-  CFLAGS=$(echo "$CFLAGS" | sed 's/-fno-plt//g')
-  CXXFLAGS=${CFLAGS}
-  LDFLAGS=$(echo "$LDFLAGS" | sed 's/-Wl,-z,now//g')
-
-  cmake -B cmake-build -S BZRPlayer -DCMAKE_PREFIX_PATH=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
+  cmake -B cmake-build -S BZRPlayer -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
   ninja -C cmake-build
 }
 
 package() {
-  mv cmake-build/output/usr "$pkgdir"
-  install -dm755 "$pkgdir/usr"
-  install -Dm644 cmake-build/output/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd "$srcdir"
+  DESTDIR="$pkgdir" ninja -C cmake-build install
+
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$pkgdir/usr/share/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
   for size in 16 32 48 64 128 256 512; do
     install -Dm644 "$pkgdir/usr/share/$pkgname/resources/icon.png" \
