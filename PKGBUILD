@@ -1,7 +1,7 @@
 # Maintainer: AstralDesigns <ianomiruka@gmail.com>
-pkgname=hyprcandy-plus-git
-pkgver=1.1.44
-pkgrel=1
+pkgname=hyprcandy-plus
+pkgver=1.1.45
+pkgrel=2
 pkgdesc="HyprCandy+ installer — a cohesive Hyprland desktop experience"
 arch=('any')
 url="https://github.com/AstralDesigns/candyinstall"
