@@ -37,12 +37,15 @@ pkgver() {
 prepare()
 {
   cd "$srcdir/mod-step-sequencer-lv2"
+  git config protocol.file.allow always
   git submodule update --init --recursive
-
+  # Patch: GCC 16 requires explicit #include <cstdint> for uint8_t
+  sed -i '/#include "velocityLFO.hpp"/a #include <cstdint>' plugins/sequencer/velocityhandler.hpp
 }
 
 build() {
   cd "$srcdir/mod-step-sequencer-lv2"
+  make
 }
 
 package() {
