@@ -45,14 +45,9 @@ if [[ -z "$FFMPEG_OBS_SVT" ]]; then
   FFMPEG_OBS_SVT=OFF
 fi
 
-## Add changes from ffmpeg-vulkan (now only enables libglslang since vulkan is enabled upstream)
-if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
-  FFMPEG_OBS_VULKAN=OFF
-fi
-
 pkgname=ffmpeg-obs
-pkgver=8.1.2
-pkgrel=3
+pkgver=9.0
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -62,7 +57,6 @@ license=(GPL-3.0-only)
 _aomver=3
 _dav1dver=1.3.0
 _ffnvcodecver=12.2
-_glslangver=1.4.350.1
 _libjxlver=0.12.0
 _libplacebover=7.360
 _libristver=0.2.7
@@ -77,7 +71,7 @@ _vidstabver=1.1.1
 _vmafver=3
 _vulkanver=1.3.279
 _x264ver=0.164
-_x265ver=4.2
+_x265ver=4.3
 depends=(
   "aom>=$_aomver"
   "srt>=$_srtver"
@@ -90,7 +84,6 @@ depends=(
   fribidi
   glib2
   glibc
-  "glslang>=$_glslangver"
   gmp
   gnutls
   gsm
@@ -163,6 +156,7 @@ makedepends=(
   mesa
   nasm
   opencl-headers
+  spirv-headers
   "vulkan-headers>=$_vulkanver"
 )
 optdepends=(
@@ -183,7 +177,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=38b88335f99e76ed89ff3c93f877fdefce736c13
+_tag=d32b387f2b0a484599d4587d651891f0c63c4238
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
@@ -200,7 +194,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   FFMPEG_OBS_DECKLINK=ON
   FFMPEG_OBS_LIBFDK_AAC=ON
   FFMPEG_OBS_SVT=ON
-  FFMPEG_OBS_VULKAN=ON
 fi
 
 ### Prepare configure and dependencies
@@ -228,7 +221,6 @@ _args=(
   --enable-libdvdread
   --enable-libfreetype
   --enable-libfribidi
-  --enable-libglslang
   --enable-libgsm
   --enable-libharfbuzz
   --enable-libiec61883
@@ -375,12 +367,6 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     --enable-libsvtjpegxs
   )
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
-fi
-
-if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
-  depends+=(spirv-tools)
-  _args+=(--disable-libshaderc)
-  provides+=(ffmpeg-vulkan)
 fi
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
