@@ -24,6 +24,10 @@ sha512sums=('db5770266d1cdcb1dc64c369fc8ea9580741a8d7d766e3c298fdf175db4cf5daf2a
 
 prepare() {
   cd "spectmorph-$pkgver"
+  # Patch: GCC 16 requires explicit #include <cstdint> for uint*_t
+  sed -i '/#include <vector>/a #include <cstdint>' lib/smutils.hh
+  sed -i '/#include <vector>/a #include <cstdint>' lib/smoutfile.hh
+  sed -i '/#include <assert.h>/a #include <cstdint>' lib/smoutfile.cc
   autoreconf -vfi
 }
 
