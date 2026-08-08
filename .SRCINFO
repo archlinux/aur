@@ -1,0 +1,17 @@
+pkgbase = taxonkit-bin
+	pkgdesc = A practical and efficient NCBI Taxonomy toolkit in Go
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/shenwei356/taxonkit
+	arch = x86_64
+	license = MIT
+	provides = taxonkit
+	conflicts = taxonkit
+	options = !strip
+	options = !debug
+	source = https://github.com/shenwei356/taxonkit/releases/download/v0.20.0/taxonkit_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/shenwei356/taxonkit/v0.20.0/LICENSE
+	sha256sums = d801ea82f9e516a9f0ccecf72a8212809677b8742fb9528d407fbfca8811a553
+	sha256sums = 9ecbcee798e1d29dcf6650d0a2cd3db40023d2c2d5d357b6b375e6f3ae3efd45
+
+pkgname = taxonkit-bin
