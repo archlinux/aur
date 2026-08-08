@@ -1,7 +1,7 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=libjasmin-easycrypt-bin
-pkgver=2026.03.0
+pkgver=2026.03.2
 pkgrel=1
 pkgdesc="EasyCrypt libraries used for verifying Jasmin implementations"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "${_pkgname}_${_debver}_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/j/jasmin-compiler/${_pkgname}_${_debver}_amd64.deb"
 )
 
-sha256sums=('2ba9378c3c4e3310732b72c9b7ff04ff73938196568ad2eaeae86b58a5d9adb0')
+sha256sums=('69259f903a31470d4f5f9f8b96af78ce3e24aea76b36b1e355e8dad6a5d0aa48')
 
 package() {
   cd "$srcdir"
