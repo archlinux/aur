@@ -8,7 +8,7 @@ _pkgauthor=CircleCI-Public
 _upstream_pkgname=circleci-cli
 _upstream_elfname=circleci
 pkgname=circleci-cli-bin
-pkgver=0.1.38646
+pkgver=1.0.47471
 pkgrel=1
 pkgdesc="CircleCI's new command-line application."
 arch=('x86_64')
@@ -22,11 +22,11 @@ license=("MIT")
 source=("${_upstream_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/refs/tags/v${pkgver}/LICENSE")
 sha256sums=(
-  "df17f70d4f98cfb0acf732818a3746649c4f2352be73f4af59fdf85388c051dd"
+  "0831fa38d0d51624f5a5720424351b85eaeec6ef0d0c589b3f0e9a84945e0fda"
   "89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9"
 )
 
 package() {
-  install -Dm755 "${srcdir}/${_upstream_pkgname}_${pkgver}_${_goos}_${_goarch}/${_upstream_elfname}" "${pkgdir}/usr/bin/${_upstream_elfname}"
+  install -Dm755 "${srcdir}/${_upstream_elfname}" "${pkgdir}/usr/bin/${_upstream_elfname}"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_upstream_pkgname}/LICENSE"
 }
