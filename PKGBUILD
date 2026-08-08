@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=sooperlooper.lv2-git
 pkgdesc="A LV2 version of the old LADSPA SooperLooper plugin."
-pkgver=r54.d3e8002
+pkgver=r61.edcc0d4
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/moddevices/sooperlooper-lv2-plugin"
 license=(GPL)
 groups=()
 depends=()
-makedepends=()
+makedepends=('git' 'lv2')
 checkdepends=()
 optdepends=()
 provides=()
@@ -44,5 +44,10 @@ build() {
 
 package() {
 	cd "$pkgname"
-	make DESTDIR="$pkgdir/" INSTALL_PATH=/usr/lib/lv2/ install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
+	# Makefile doesn't install TTL files — do it manually
+	for d in sooperlooper sooperlooper-2x2; do
+		install -Dm644 "$d/src/manifest.ttl" "$pkgdir/usr/lib/lv2/$d.lv2/manifest.ttl"
+		install -Dm644 "$d/src/sooperlooper.ttl" "$pkgdir/usr/lib/lv2/$d.lv2/sooperlooper.ttl"
+	done
 }
