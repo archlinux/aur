@@ -17,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
@@ -31,7 +31,7 @@ source=(
     "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx"
 )
 sha256sums=(
-    "2131cef01e8503c16a869e53c6accc154227572c7c92708278848f5e70fe15b8"
+    "b62c7dcf2f40781bcc23b4825e5a30a5a1140ac3aa8b62c5a5dd8024dc4ea57f"
     "e7015c7e682f63a4ce7fca971f46543a88233e8f8d3525e3a62e2534d0cfc762"
 )
 
