@@ -1,7 +1,7 @@
 #Maintainer : marshdeer <marshdeer97+aur -AT- gmail -DOT- com>
 
 pkgname="ploopy-headphones-toolbox-bin"
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="UI for configuring the Ploopy Headphones"
 arch=('x86_64')
@@ -15,7 +15,7 @@ _nameBinary="headphones-toolbox"
 
 source=("${url}/releases/download/app-v${pkgver}/${_nameSource}_${pkgver}_amd64.deb"
         "100-ploopy-headphones.rules")
-sha256sums=('dac3f219e348feffcc770bbda7499c978dbde083f09fc960105b1e08d5a993b1'
+sha256sums=('6228151b64a2b15cb73bb5edca281d2e7ff4ce3e08b8c80e1115b569e4dfa2c3'
             '6adcc8dc8cf6994480bf4553de7ce5b0151560ceb6bb8b67540cba906aeebecb')
 install="udev.install"
 options=(!debug)

@@ -1,6 +1,6 @@
 pkgbase = ploopy-headphones-toolbox-bin
 	pkgdesc = UI for configuring the Ploopy Headphones
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/george-norton/headphones-toolbox
 	install = udev.install
@@ -19,7 +19,7 @@ pkgbase = ploopy-headphones-toolbox-bin
 	depends = pango
 	depends = hicolor-icon-theme
 	options = !debug
-	source = https://github.com/george-norton/headphones-toolbox/releases/download/app-v0.0.8/Ploopy.Headphones.Toolbox_0.0.8_amd64.deb
+	source = https://github.com/george-norton/headphones-toolbox/releases/download/app-v0.0.9/Ploopy.Headphones.Toolbox_0.0.9_amd64.deb
 	source = 100-ploopy-headphones.rules
 	sha256sums = dac3f219e348feffcc770bbda7499c978dbde083f09fc960105b1e08d5a993b1
 	sha256sums = 6adcc8dc8cf6994480bf4553de7ce5b0151560ceb6bb8b67540cba906aeebecb
