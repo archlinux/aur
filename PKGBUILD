@@ -3,7 +3,7 @@
 # Contributor: Puru <east5330021@gmail.com>
 pkgname=cubic-bin
 pkgver=2026.07.107
-pkgrel=1
+pkgrel=2
 pkgdesc="Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions."
 arch=('any')
 url="https://github.com/PJ-Singh-001/Cubic"
@@ -14,7 +14,7 @@ install=cubic-bin.install
 source=("cubic_2026.07.107-release~202607260607~ubuntu22.04.1_all.deb"
 cubic_wizard.patch)
 sha512sums=('ddfe77d9e7b374a8b64a977dede432e4c56e600732e10af275ebd39623919bb2c193d22f0b48a9d221c5fb42f2249108b2d64a0bc01d7f83160b089b059fd51c'
-'5f2d73d5316caf90d5feba752ca056cad206c1c0040f12da7eb5aa4d900dbb94fbbe350f1652c6ab8cd385e48e1b5751e1463751bf0dfbc518563d2924822ab7')
+'9c2ca69958d57bc86ecfd47257d986448efd7032b0ae318a5a6d2438097f5b2ef00c2cb5612b98b4440314908672134a2decd1a63d536e0fc77fe998c39fa0f3')
 
 package(){
 

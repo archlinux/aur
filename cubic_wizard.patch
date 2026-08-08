@@ -1,12 +1,13 @@
---- cubic_wizard.py	2025-08-21 23:16:40.635113844 +0200
-+++ cubic_wizard_patched.py	2025-08-21 23:18:14.683009288 +0200
-@@ -117,9 +117,8 @@
+--- cubic_wizard.py	2026-07-26 08:07:37.000000000 +0200
++++ cubic_wizard_mod.py	2026-08-09 00:44:00.638151325 +0200
+@@ -129,10 +129,8 @@
+     # Get the user's home directory.
      model.application.user_home = os.path.expanduser('~')
  
-     # Get the running Cubic version.
+-    # Get the running Cubic version.
 -    model.application.cubic_version = constructor.get_package_version('cubic')
 -    ### TODO: FOR TESTING ONLY
--    ### model.application.cubic_version = '2024.08-87-release~202402210132~ubuntu23.10.1'
+-    # model.application.cubic_version = '2026.07.106-release~202607201745~ubuntu26.04.1'
 +    ### Lazy Band-aid Fix
 +    model.application.cubic_version = '2026.07.107-release~202607260607~ubuntu22.04.1'
  
