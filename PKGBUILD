@@ -19,7 +19,7 @@ provides=("esd=${pkgver}")
 conflicts=('esd')
 options=(!libtool)
 backup=('etc/esd.conf')
-source=("https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/ESOUND_${pkgver//./_}/${pkgname}-ESOUND_${pkgver//./_}.tar.bz2"
         'esound-system.service'
         'esound-user.service'
         '0001-alsa-drain-hang.patch'
@@ -30,7 +30,7 @@ source=("https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${pkgver%.*}/${pkgna
         '0006-revert-close-file-descriptors.patch'
         '0007-fix-wrong-micro-version.patch'
         '0008-move-nobeeps-option.patch')
-b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af519267ff1c8f4bd53604d82edbf682d07b16e98158ca39bbe8663bbaadd'
+b2sums=('db1945ee0b5514bb2d5b98e295e71bcf368124c607c7bf3b34189e36d8212da13eed819cc7aa15bf7c876677b6a48a1d1afa1312c6ab9cfb675a33e452acb13d'
         '1b55880c8212f2e85312c632ab79f1ff36d527c7463aa16fb932f324c496a5a67d109372aff657b59812b9fabe8c5978434e078e7a91868298731ab11ea48f2d'
         'b84310149765ca3caa7b0b93298af758b0ffbb04b16c3946b3fc8e0ad4e559d7f6221a956dd30a8f01a5e60d85386431078619b683e0d6a447bc1c9363a00e27'
         '9fdfe5d289261a8bd9df6cca99e996df5ad066e7d7c0a9027e6e3387162ed5651f947b24cd1fcb3803b27e49a187896511288efe6350a1fb620a60872a3c79a6'
@@ -43,7 +43,7 @@ b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af51
         '9c582773f7d754a54af4035c31edf504b78406048d2ef1cfea462f3e34dacbee9b67d10d2e028c58c5bd1765034534b7f61cc07d9e6692bbdfe0a3c7ed070f62')
 
 prepare() {
-  cd "esound-${pkgver}"
+  cd "${pkgname}-ESOUND_${pkgver//./_}"
 
   patch -t -Np1 -i ../0001-alsa-drain-hang.patch
   patch -t -Np1 -i ../0002-undeclared-variable.patch
@@ -53,10 +53,16 @@ prepare() {
   patch -t -Np1 -i ../0006-revert-close-file-descriptors.patch
   patch -t -Np1 -i ../0007-fix-wrong-micro-version.patch
   patch -t -Np1 -i ../0008-move-nobeeps-option.patch
+
+  aclocal
+  libtoolize --no-warnings
+  autoreconf --install
+  automake --add-missing
+  autoreconf
 }
 
 build() {
-  cd "esound-${pkgver}"
+  cd "${pkgname}-ESOUND_${pkgver//./_}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -68,11 +74,11 @@ build() {
     --disable-static \
     --disable-artstest
 
-  make CFLAGS="${CFLAGS} -lm"
+  make
 }
 
 package() {
-  cd "esound-${pkgver}"
+  cd "${pkgname}-ESOUND_${pkgver//./_}"
 
   make DESTDIR="${pkgdir}" install
 
