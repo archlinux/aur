@@ -4,7 +4,7 @@ _pkgauthor=jpillora
 _pkgname=meads
 _execname=md
 pkgname=${_pkgname}-bin
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='Task tracking in a single file — just TASKS.md and git'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -24,9 +24,9 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/v$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_execname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 
 sha256sums=('1a92d94f8eb94c93edd66675141c929d86b61aeab9387bbdc65ed6e7b9bb1e30'
-            'a3860be622a81b4c8ad5e479700e6c3899698ded2f164e6b82c5f48bca095431')
-sha256sums_x86_64=('7de4337263df053087d5313ad1a1b737cf5454482127def70dbd062a6163b553')
-sha256sums_aarch64=('f957a22219a69eff2bdc7d5188227cd31c12564c1ac1b0fb737c65acc8f0c06f')
+            '4da1c63d2a9d2802aa03890ba5a82d1d3d9bdf7ce360d618f78dafb90ac38bb7')
+sha256sums_x86_64=('6924d9db7549224d522f447afbcbfeff03a629402b2832d4cdbe8cc4fb902323')
+sha256sums_aarch64=('7adbe2b24fccc78326d86b3f9549e0c9e7c18040f0ce08412d92c447e89b534f')
 
 
 package() {
