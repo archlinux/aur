@@ -1,6 +1,6 @@
 # Maintainer: Qehbr <qehbr@yahoo.com>
 pkgname=m913-ctl
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Linux configuration tool for the Redragon M913 Impact Elite wireless mouse'
 arch=('x86_64')
@@ -10,12 +10,18 @@ depends=('libusb')
 makedepends=('cmake')
 install=m913-ctl.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f00d45741e8063b37615417f5bc63037ddec912a280109b742cdd2773e1853c')
+sha256sums=('ce14679eb45a6c1a870fd728bb0c562b78964f4b67897045738b919aaa31d54d')
 
 build() {
+    # Wipe any cache left by a previous version's build; reusing $srcdir
+    # otherwise fails with "does not match the source used to generate cache".
+    rm -rf build
+    # No .git in a release tarball, so pass the version in explicitly --
+    # without this the binary reports "dev" instead of $pkgver.
     cmake -B build -S "$pkgname-$pkgver" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DAPP_VERSION="$pkgver"
     cmake --build build
 }
 
