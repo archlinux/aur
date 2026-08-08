@@ -3,7 +3,7 @@
 
 _pkgname=stone-phaser
 pkgname="${_pkgname}.lv2-git"
-pkgver=0.1.2.r17.gda92961
+pkgver=0.1.2.r26.gf057ea5
 pkgrel=1
 pkgdesc="A classic analog phaser effect LV2 plugin (git version)"
 arch=('i686' 'x86_64')
@@ -29,9 +29,13 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
+  git config protocol.file.allow always
   git submodule init
   git config submodule.dpf.url "${srcdir}/dpf"
-  git submodule update
+  git -c protocol.file.allow=always submodule update --init --recursive
+
+  # Patch: GCC 16 requires explicit #include <cstdint> for uint8_t
+  sed -i '/#pragma once/a #include <cstdint>' plugins/stone-phaser/ui/Color.h
 
   cd dpf
   patch -N -r - -p 1 -i ../resources/patch/DPF-bypass.patch || return 0
