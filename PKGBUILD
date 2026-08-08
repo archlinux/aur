@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="sed and awk for tabular data — regex transforms over Excel-style ranges on CSV/DSV."
 
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('c57f0c746ed782050ad62ba3088c6663378b858987c1a2a5926579dfd789bb2a')
-sha256sums_aarch64=('46380de86f1601002b1f4ebf21fb48753023a9f5c6dc34e205e3efdba1ed226e')
+sha256sums_x86_64=('96e9deaa4d791840ac1ff0593a9b7af272170f09c14f88656f5bb90a43d9c6b1')
+sha256sums_aarch64=('c3b961156c8f24987f61ed48f06074c3a332d6ba0d7df5f4eb1f752d11dd46f7')
 
 
 case ${CARCH} in
