@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dot com>
 
 pkgname=onionshare-cli
-pkgver=2.6.3
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="Share files, host websites, and chat with friends using Tor (CLI version)"
 url="https://github.com/onionshare/onionshare/tree/main/cli"
@@ -31,7 +31,7 @@ depends=(
   'tor'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('077971cd227ff5fcc2080f7ae58aebb1fbfb3217313ab0e89f603e9b97459368')
+sha256sums=('6280e93307e5b8e78df5c23b346156d3cd3b8cb831e920ae33c3bb0edaf80ba2')
 
 build() {
   cd "${srcdir}/${pkgname//-/_}-${pkgver}"
