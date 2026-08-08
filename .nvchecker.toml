@@ -1,0 +1,3 @@
+[wayfreeze]
+source = "git"
+git = "https://github.com/Jappie3/wayfreeze"
