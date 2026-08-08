@@ -1,0 +1,5 @@
+[minhtml]
+source = "github"
+github = "wilsonzlin/minify-html"
+prefix = "v"
+use_latest_release = true
