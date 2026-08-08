@@ -23,8 +23,8 @@ changelog=
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=()
-sha256sums_x86_64=('f3041062cdfea3bcc31af1e86bfa69b74286233ccbf6ee1fb0d4d208ec49cc3e')
-sha256sums_aarch64=('e10de2e24b6ebefab53213526a1f5d6b0d3e64aca388d712ea5679481402b350')
+sha256sums_x86_64=('aef246a372344445f530ae0cc6b2a4f584c1ca94b5e854d53e9f85045f3e9d5e')
+sha256sums_aarch64=('f3041062cdfea3bcc31af1e86bfa69b74286233ccbf6ee1fb0d4d208ec49cc3e')
 validpgpkeys=()
 
 prepare() {
