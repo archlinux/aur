@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Interactive, persistent shell for HTTP requests"
 
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('60e786c0de4917430c7e2f76b3a1b843a709f81d0b7c8ba7db6c575df4c0512d'
+sha256sums=('8f31c874c0743e236c895b93532c4fa69598fd8b58c641e1d6a5aac806b1f3ae'
             '2d7124e8942793e458a12398becb960d5cc152e04b4e7b6977a1696c5e428f3c')
-sha256sums_x86_64=('3706aa7462e0d39a3aecd7c8bc9acde52da0ec8628d965773a9a90164b33fc6d')
+sha256sums_x86_64=('85b3bd2c3b81e376afcd009cec9c3ecc1f752d2ae27f6638c86a918c71f46d82')
 
 
 package() {
