@@ -1,6 +1,6 @@
 pkgbase = seristack-bin
 	pkgdesc = A lightweight automation engine designed to bridge the gap between local task execution and remote triggers
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/TechXploreLabs/seristack
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = seristack-bin
 	license = Apache-2.0
 	provides = seristack
 	conflicts = seristack
-	source_x86_64 = seristack-x86_64-0.3.5.tgz::https://github.com/TechXploreLabs/seristack/releases/download/v0.3.5/seristack_0.3.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 06661270780841074ce1170f97be57ebd8cb8aca9327dd4412184d3f0cca70fa
-	source_aarch64 = seristack-aarch64-0.3.5.tgz::https://github.com/TechXploreLabs/seristack/releases/download/v0.3.5/seristack_0.3.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 221224078303eb565f55def550bcf3624ecf1ff85b0acdc700fcf20ba5bb24c9
+	source_x86_64 = seristack-x86_64-0.4.0.tgz::https://github.com/TechXploreLabs/seristack/releases/download/v0.4.0/seristack_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1ecdc7bda06b1ec56d2538239fdff7e32564f441f963d996c5e3f191698f72f9
+	source_aarch64 = seristack-aarch64-0.4.0.tgz::https://github.com/TechXploreLabs/seristack/releases/download/v0.4.0/seristack_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e81e827c9655c26b6c7aa7f933c4f20eb3d6b3945fad421ba94c525427b73957
 
 pkgname = seristack-bin
