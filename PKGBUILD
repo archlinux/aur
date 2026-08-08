@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=raysession
 pkgname=${_pkgname}-git
-pkgver=r2542.c50b22ee
+pkgver=r2552.8f6657ab
 pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(x86_64)
@@ -37,14 +37,8 @@ build() {
 
 package() {
   cd "$srcdir/RaySession"
-  mkdir -p "$pkgdir/usr/share/raysession/locale"
-  mkdir -p "$pkgdir/usr/share/raysession/HoustonPatchbay/locale"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/icons"
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  make PREFIX=/usr DESTDIR="$pkgdir/" pure_install || true
-  # Skip translation files for now due to Makefile issue
-  # install -m 644 locale/*.qm "$pkgdir/usr/share/raysession/locale/"
-  # install -m 644 HoustonPatchbay/locale/*.qm "$pkgdir/usr/share/raysession/HoustonPatchbay/locale/"
+  # Create dummy .qm files so make install doesn't fail
+  mkdir -p locale HoustonPatchbay/locale
+  touch locale/raysession_en.qm HoustonPatchbay/locale/houstonpatchbay_en.qm
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
