@@ -9,35 +9,51 @@ url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
 arch=(aarch64 x86_64)
 license=('MIT')
-checkdepends=('jujutsu' 'nodejs')
-makedepends=('bun' 'git')
+checkdepends=('git')
+makedepends=('bun')
 depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
-source=("${pkgname}::git+https://github.com/modem-dev/hunk.git#tag=v${pkgver}")
-b2sums=('12e9a9884ecf112e5a4326c9cdae3f7d4e7b5b1c32522f8b5d307dcf704ef5fc6861b5a4c74ab67577e0bca2eaf533b0a82d6e9518784cfff231977f8755c04d')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('aa04a4b78c59a295a9a38abefd3ac4cf8e008f45033cafe19de2dc752d201f4511bc657b0313cef6c54afdbd5c985c9f3f7963717a8fc7023d7afafb9e2b10db')
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
 
   bun install --frozen-lockfile --ignore-scripts
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
 
   bun run ./scripts/build-bin.ts
 }
 
 check() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
 
+  export HUNK_RUN_TTY_SMOKE=1
   export HUNK_TEST_EXECUTABLE=dist/hunk
-  bun test
+  bun test ./test/smoke
+
+  # based on https://github.com/modem-dev/hunk/blob/main/scripts/smoke-prebuilt-install.ts
+  local help version skillPath
+
+  echo -n 'HELP = '
+  help=$(dist/hunk --help)
+  grep -oF 'Usage: hunk' <<< "${help}"
+
+  echo -n 'VERSION = '
+  version=$(dist/hunk --version)
+  grep -oF "${pkgver}" <<< "${version}"
+
+  echo -n 'SKILL = '
+  skillPath=$(dist/hunk skill path)
+  grep -oE 'skills/hunk-review/SKILL\.md$' <<< "${skillPath}"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
 
   install -vD -t "${pkgdir}/usr/lib/hunkdiff/" -m755 dist/hunk
   install -vd "${pkgdir}/usr/bin"

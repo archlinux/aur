@@ -7,16 +7,14 @@ pkgbase = hunk
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	checkdepends = jujutsu
-	checkdepends = nodejs
+	checkdepends = git
 	makedepends = bun
-	makedepends = git
 	depends = glibc
 	depends = icu
 	provides = hunkdiff
 	options = !strip
 	options = !debug
-	source = hunk::git+https://github.com/modem-dev/hunk.git#tag=v0.17.7
-	b2sums = 12e9a9884ecf112e5a4326c9cdae3f7d4e7b5b1c32522f8b5d307dcf704ef5fc6861b5a4c74ab67577e0bca2eaf533b0a82d6e9518784cfff231977f8755c04d
+	source = hunk-v0.17.7.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v0.17.7.tar.gz
+	b2sums = aa04a4b78c59a295a9a38abefd3ac4cf8e008f45033cafe19de2dc752d201f4511bc657b0313cef6c54afdbd5c985c9f3f7963717a8fc7023d7afafb9e2b10db
 
 pkgname = hunk
