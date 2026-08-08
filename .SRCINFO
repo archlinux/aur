@@ -1,0 +1,17 @@
+pkgbase = lexicmap-bin
+	pkgdesc = Efficient sequence alignment tool for querying nucleotide sequences against millions of prokaryotic genomes
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/shenwei356/LexicMap
+	arch = x86_64
+	license = MIT
+	provides = lexicmap
+	conflicts = lexicmap
+	options = !strip
+	options = !debug
+	source = https://github.com/shenwei356/LexicMap/releases/download/v0.9.0/lexicmap_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/shenwei356/LexicMap/v0.9.0/LICENSE
+	sha256sums = 54dea6a35e0c1a25025ad649da47d7cc7f6190ae69e44624db9685bf3c0dd662
+	sha256sums = 5e5e14f46e2a6dff0a8ad39f2ef48fc8c0a0535ff6c141393a2a4ed465e2abb3
+
+pkgname = lexicmap-bin
