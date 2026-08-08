@@ -10,7 +10,7 @@ url="https://github.com/rghvdberg/ninjas"
 license=('custom')
 groups=()
 depends=('mesa' 'xorg-server' 'libsndfile' 'libsamplerate')
-makedepends=()
+makedepends=('git' 'jack')
 optdepends=()
 provides=()
 conflicts=()
@@ -38,7 +38,9 @@ pkgver()
 prepare()
 {
   cd "$_pkgname"
-  git submodule init && git submodule update --recursive
+  git submodule init
+  git config submodule.dpf.url https://github.com/DISTRHO/DPF.git
+  git submodule update --recursive
   make
 }
 
