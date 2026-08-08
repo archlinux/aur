@@ -9,11 +9,10 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jang1972/folder-manager-py/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f32722f61a5cdcbfd2f7e01b54c82be75da783d35630686bef4b78dec632df6d')
+sha256sums=('4acbdec759c83dc2a6fc3dd4cbf62e4ecf1c6a8ee4dcc6a4a67484e2369cd22a')
 
 build() {
     cd "$srcdir/folder-manager-py-$pkgver"
-    # 이제 여기서 pyproject.toml이 보여야 합니다.
     python -m build --wheel --no-isolation
 }
 
