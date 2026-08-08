@@ -3,7 +3,7 @@
 _exec_name=kursor
 pkgname=${_exec_name}-bin
 
-pkgver=4.3.13
+pkgver=4.3.15
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor -- service (grid & glide-*) & cli (pos / click / move / moveto)"
 arch=(x86_64)
@@ -21,8 +21,8 @@ depends=('glibc')
 
 source=("${_github_url}/${_download_path}"  # github
         "${_gitee_url}/${_download_path}")  # gitee
-sha256sums=('1854edfb5a7cfeae8240f3abeac3a4779f0e744b006c9df856dce8cab980c394'
-            '1854edfb5a7cfeae8240f3abeac3a4779f0e744b006c9df856dce8cab980c394')
+sha256sums=('55760df8b1b0cedbe951810b195b27fbc04fa689ae1eaed63dfb076be9959a46'
+            '55760df8b1b0cedbe951810b195b27fbc04fa689ae1eaed63dfb076be9959a46')
 
 # Binary tarball — no build step needed, makepkg auto-extracts.
 
