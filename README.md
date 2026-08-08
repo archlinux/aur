@@ -1,34 +1,18 @@
-# atmosphera-git
+# aur-atmosphera-git
 
-AUR package for [Atmosphera](https://github.com/alexindigo/atmosphera) — git version tracking `main` branch.
+AUR for [Atmosphera](https://github.com/alexindigo/atmosphera) (git version).
 
-## Contents
+## Install
 
-- `PKGBUILD` — Arch Linux package build script.
-- `.SRCINFO` — AUR package metadata (auto-generated from PKGBUILD).
-
-## Dependencies
-
-- **Runtime**: `noctalia-qs`, `imagemagick`, `brightnessctl`, `ffmpeg`, `qt6-multimedia`, `python`, `wlr-randr`
-- **Build**: `git`
-
-## Building
-
-```
+```bash
+# Clone and build
+git clone https://github.com/alexindigo/aur-atmosphera-git.git
+cd aur-atmosphera-git
 makepkg -si
 ```
 
-## Maintenance
+When AUR is available, install via your AUR helper:
 
-### Update .SRCINFO after PKGBUILD changes
-
-```
-makepkg --printsrcinfo > .SRCINFO
-```
-
-### Push to AUR
-
-```
-git add -A && git commit -m "description of changes"
-git push origin master
+```bash
+yay -S atmosphera-git
 ```
