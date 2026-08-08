@@ -1,16 +1,18 @@
+#Maintainer:  Nick "Beelzebud" Bilbrey.  beelzebud (at) gmail (dot) com
+
 pkgname=hypseus-singe
-pkgver=2.12.1
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC."
+pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC. (SDL3)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/DirtBagXon/hypseus-singe"
 license=('GPL3')
-depends=('zlib' 'libzip' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libvorbis')
+depends=('zlib' 'libzip' 'sdl3' 'sdl3_image' 'sdl3_mixer' 'sdl3_ttf' 'libvorbis')
 makedepends=('cmake')
-conflicts=("daphne" "$pkgname-git")
+conflicts=("daphne" "$pkgname-git" "$pkgname-sdl3-git")
 replaces=("daphne" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4a1c5a7425c5957c15aaf3f78b1de4e45e4ba8f6208fbab3945b0d0b120d989')
+sha256sums=('c2054d86a2cd0e737751d659b57d70999c10ee02eb70945e889a9fd4d773e9e1')
 
 build()
 {
