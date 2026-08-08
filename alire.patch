@@ -1,7 +1,7 @@
-Index: alire/src/alire-2.1.0/alr_env.gpr
+Index: alire/src/alire-2.1.1/alr_env.gpr
 ===================================================================
---- src.orig/alire-2.1.0/alr_env.gpr
-+++ src/alire-2.1.0/alr_env.gpr
+--- src.orig/alire-2.1.1/alr_env.gpr
++++ src/alire-2.1.1/alr_env.gpr
 @@ -9,30 +9,30 @@ aggregate project Alr_Env is
     for Create_Missing_Dirs use "True";
  
