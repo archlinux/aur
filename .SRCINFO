@@ -1,6 +1,6 @@
 pkgbase = xeve
 	pkgdesc = MPEG-5 EVC (Essential Video Coding) encoder
-	pkgver = 0.5.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/mpeg5/xeve/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = xeve
 	makedepends = cmake
 	depends = glibc
 	options = !emptydirs
-	source = https://github.com/mpeg5/xeve/archive/v0.5.1/xeve-0.5.1.tar.gz
+	source = https://github.com/mpeg5/xeve/archive/v0.7.0/xeve-0.7.0.tar.gz
 	source = 010-xeve-disable-werror.patch
 	source = 020-xeve-fix-pkg-config.patch
-	sha256sums = 238c95ddd1a63105913d9354045eb329ad9002903a407b5cf1ab16bad324c245
-	sha256sums = 8c4b607f34a5d39e824f86d00ab101849595cb49a2f67eed131487d658ec7206
+	sha256sums = f60950d063f52adf11ed7196c0bbb0503fa107b0e43af06bdc81fecc24f2a62e
+	sha256sums = 0579f036b5f1543306c177054f749360740ac798bd2cbc20938d2717c8cd7ea2
 	sha256sums = 68ae77132ec2b3dd8de641d16f3d7cc0de819ddb116484809445666b4d215187
 
 pkgname = xeve
