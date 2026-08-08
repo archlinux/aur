@@ -26,6 +26,7 @@ optdepends=(
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
+  'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
 )
 provides=('atmosphera')
 conflicts=('atmosphera')
