@@ -41,6 +41,9 @@ check() {
 
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
+
+  # just check if the final binary works
+  FEATURE=pnpm_cmd target/release/pnpm-shell-completion test command
 }
 
 package() {
