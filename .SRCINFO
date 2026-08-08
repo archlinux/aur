@@ -1,7 +1,7 @@
 pkgbase = zl-speceq
 	pkgdesc = Dynamic spectrum equalizer audio plugin
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://zl-audio.github.io/plugins/zlspeceq/
 	arch = x86_64
 	arch = aarch64
@@ -22,12 +22,12 @@ pkgbase = zl-speceq
 	depends = freetype2
 	depends = fontconfig
 	depends = libxi
-	source = https://github.com/ZL-Audio/ZLSpectrumEqualizer/archive/refs/tags/0.0.1.zip
+	source = https://github.com/ZL-Audio/ZLSpectrumEqualizer/archive/refs/tags/0.0.2.zip
 	source = https://github.com/ZL-Audio/JUCE/archive/176e4108cd86190681e96af76bfbe0d62de898da.zip
-	source = https://github.com/ZL-Audio/zldsp_fft/archive/0215d7e7ee7a338ea3bda855d1bd1cec50aaa922.zip
-	sha256sums = 84029dd4f83f96f33d02a1b8d7d1c21e9bc9e90cffd3cf7544ac7857e8bac8a4
+	source = https://github.com/ZL-Audio/zldsp_fft/archive/515059f972572b684e51b6afe09f62636b767b22.zip
+	sha256sums = 64fbd914261701dd45e0d1431116b1ba02e3b93f2f5536de68b7d5e20e5f21c7
 	sha256sums = bb76b0a5401606c1db2e7f4907512ce2520c9a6334fa690b5cc71c2b26b983bf
-	sha256sums = 85c5b8f8c8f436ef2402a6bb53204f07d3f5b2bad2ec804fef44317465cfad98
+	sha256sums = 98e9b99ec4dbc758f88fbdb98dda210bbda2f4abd98fa61846c9e4a8c77867ec
 
 pkgname = zl-speceq-vst3
 	pkgdesc = Dynamic spectrum equalizer audio plugin (VST3 version)
