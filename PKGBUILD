@@ -2,7 +2,7 @@
 # and milk / milkii on Freenode
 _pkgname=zrythm
 pkgname=$_pkgname-debug-git
-pkgver=0.8.298.r32.g039d28f7
+pkgver=2.0.0.ralpha.2.4.g27952188b
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -14,12 +14,12 @@ depends=('git' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2-git')
+  'ladspa' 'lv2')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=()
 provides=()
-source=("$_pkgname::git+https://git.zrythm.org/git/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/zrythm/zrythm.git")
 md5sums=('SKIP')
 options=(debug !strip)
 
