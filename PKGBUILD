@@ -2,8 +2,8 @@
 # Contributor: 糯米狐 <nuomihu@archlinux>
 
 pkgname=hanako-bin
-pkgver=0.441.32
-pkgrel=2
+pkgver=0.444.1
+pkgrel=1
 pkgdesc="HanaAgent - a personal AI agent with memory and soul"
 arch=('x86_64')
 url="https://github.com/liliMozi/openhanako"
@@ -38,7 +38,7 @@ options=('!strip')
 provides=('hanako')
 conflicts=('hanako')
 source=("https://github.com/liliMozi/openhanako/releases/download/v${pkgver}/HanaAgent-${pkgver}-Linux-amd64.deb")
-sha512sums=('3d9f8ba31e9a104799d50193b679db184b1d79c085cb302ae8b0452cb75407501374604637a6da5bc6853c6616604bb51c77ea2f472e3fe5827c2cd25743612d')
+sha512sums=('d290082f1aaa5825d8f3ec81bf5a4e9d395393a38ad9f2b5298923ca340f5a4311d2ce203acfe7fabe48c7c54e5a69161aed61b2752e6971201fef46590e6a78')
 
 prepare() {
   cd "${srcdir}"
