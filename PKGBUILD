@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2026.2.1.r550.gd04123f36df
+pkgver=2026.3.0.r263.g0f453eb8dca
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -54,6 +54,8 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
+        'git+https://github.com/intel/ipf.git'
+        'git+https://github.com/axboe/liburing.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-ignore-system-onnx.patch'
@@ -82,9 +84,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
             '549cff4011c7cdec0ceca052b6d6f541e3c22fffd08a9316c4a7ec4f34a9c444'
             '74a11ff976c25cbd1fb231ee751411c0b60c228bc71da64d6d8c17fb7fa77767'
-            '7cc3e9bd78bcdecc9c317e68ea7aba2bdeb40edd2d561beb7d17b0db0b83f300'
+            'de646ab5b83cb25fbec891ef84663af52e5153061e4d6446113c0779fd214446'
             'e9ca24f135bf85606be18d0fb52f8a0702dc4ed82c10dd5de122e18be47df3c0')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -121,6 +125,8 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
+    git -C openvino config --local submodule.src/plugins/auto/thirdparty/ipf.url "${srcdir}/ipf"
+    git -C openvino config --local submodule.thirdparty/liburing/liburing.url "${srcdir}/liburing"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
@@ -177,7 +183,7 @@ build() {
         -DENABLE_TBBBIND_2_5:BOOL='OFF' \
         -DOpenCL_HPP:FILEPATH="${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include/CL/opencl.hpp" \
         -DOpenCL_INCLUDE_DIR:PATH="${srcdir}/openvino/thirdparty/ocl/cl_headers" \
-        -Wno-dev
+        -Wno-author
     cmake --build build
     
     cd openvino/tools/benchmark_tool
@@ -189,6 +195,7 @@ package_openvino-git() {
     depends=(
         'glibc'
         'libgcc'
+        'libstdc++'
         'onetbb'
         'pugixml'
         'snappy')
@@ -225,6 +232,7 @@ package_openvino-intel-gpu-plugin-git() {
         'glibc'
         'intel-compute-runtime'
         'libgcc'
+        'libstdc++'
         'ocl-icd'
         'onetbb'
         "openvino=${pkgver}"
@@ -243,6 +251,7 @@ package_openvino-intel-npu-plugin-git() {
         'intel-npu-compiler'
         'intel-npu-driver'
         'libgcc'
+        'libstdc++'
         'onetbb'
         'opencv'
         "openvino=${pkgver}"
@@ -259,6 +268,7 @@ package_python-openvino-git() {
     depends=(
         'glibc'
         'libgcc'
+        'libstdc++'
         "openvino=${pkgver}"
         'python'
         'python-numpy'
