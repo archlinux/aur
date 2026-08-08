@@ -4,20 +4,20 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=6.9.3
-_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+pkgver=7.0.9
+_td_commit=022d60202e446ad1287b9fb68e687c8a0760788b
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
-license=('GPL-3.0-or-later WITH OpenSSL-exception')
-options=('!debug')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
-
+options=('!debug')
+license=('GPL-3.0-or-later WITH OpenSSL-exception')
 depends=(
   'abseil-cpp'
   'ada'
+  'cmark-gfm'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -25,11 +25,13 @@ depends=(
   'hunspell'
   'kcoreaddons'
   'libavif'
+  'libfido2'
   'libgcc'
   'libheif'
   'libjpeg-turbo'
   'libjxl'
   'libpipewire'
+  'libsrtp'
   'libstdc++'
   'libxcb'
   'libxcomposite'
@@ -69,21 +71,22 @@ makedepends=(
   'python'
   'range-v3'
   'tl-expected'
+  'vulkan-headers'
 )
 optdepends=(
   'geoclue: geoinformation support'
   'crow-translate: translation provider'
-  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
-  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)'
+  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)'
   'xdg-desktop-portal: desktop integration'
 )
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
+  "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('b3a570cc997c479cd746188f79749f1a163109b5bfe9eac372e295c837619bc2baba2b371581892830b8f60f901b0ed9d2473c5014697b332c12562dc6e1ea0c'
-            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
+sha512sums=('c5e97a146c903b3398b53a7451d86efcbb5f87a989586d20753c83e2cb1452b964ab1175b88977eb590b04bcffc14fc678eb9f6a629b7f6f7af522a0da811780'
+            '45ef8f69708c46aef8e8d0301b8710467a208e43a9ebb5918152b49d24f9d6c8b69ca9a94f19c4e401f44e8d60706cd840832ce442ca1a839df942a7b88afde2'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
 prepare() {
@@ -113,6 +116,7 @@ build() {
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
   cmake --build build
 }
+
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
