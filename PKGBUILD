@@ -3,7 +3,7 @@
 
 pkgname=zl-compressor-bin
 _pkgname=ZL.Compressor
-pkgver=0.2.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Versatile dynamic range compressor audio plugin by ZL-Audio, featuring lookahead, sidechain"
 arch=('x86_64' 'aarch64')
@@ -33,13 +33,13 @@ source=(
     "LICENSE.md::https://raw.githubusercontent.com/ZL-Audio/ZLCompressor/main/LICENSE.md"
 )
 # Architecture-specific source files
-source_x86_64=("${_pkgname}-${pkgver}-Linux.zip::https://github.com/ZL-Audio/ZLCompressor/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux-x86.zip")
-source_aarch64=("${_pkgname}-${pkgver}-Linux-arm.zip::https://github.com/ZL-Audio/ZLCompressor/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux-arm.zip")
+source_x86_64=("${_pkgname}-${pkgver}-Linux.zip::https://github.com/ZL-Audio/ZLCompressor/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux-x86-64.zip")
+source_aarch64=("${_pkgname}-${pkgver}-Linux.zip::https://github.com/ZL-Audio/ZLCompressor/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux-arm64.zip")
 
 # SHA256 checksums for source integrity verification
 sha256sums=('a96fd9920a72e79720d41bcf32ccd58634194aa01ee82f246a72392015d626e9')
-sha256sums_x86_64=('f02bbb101c1d09eb708b2a17d8a0276b3a2871c66e76680f3afb44d18a06a82a')
-sha256sums_aarch64=('cb4c11b025c07e67fd045e0cc2ece0d6fb4972eaaab5f715c381afb41eb4ae04')
+sha256sums_x86_64=('07600e4f95272223c7405b3142778a89c59516e2b4912be281635aac8c793902')
+sha256sums_aarch64=('4ef0b09548e0dd62a49952202fac8b823d2f23f38e06a83fe546194d294b8270')
 
 # Architecture-specific checksums
 

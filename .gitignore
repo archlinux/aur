@@ -1,0 +1,11 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.zip
+*.log
+*.sig
+
+# Local downloaded source copies
+LICENSE.md
