@@ -1,7 +1,7 @@
 # Maintainer: Milk (milk / milkii on Freenode) 
 # Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-lv2-git
-pkgver=r5234.9580d04fb
+pkgver=r5585.fae324266
 scmver=1.6.1
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin (LV2, git head)"
@@ -13,7 +13,7 @@ depends=('cairo'  'fontconfig'          'freetype2'
          'libx11' 'xcb-util-cursor'     'xcb-util'
          'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
          'cmake' )
-makedepends=('premake-git' 'git')
+makedepends=('premake' 'git' 'libxrandr' 'libxinerama' 'libxcursor' 'alsa-lib' 'jack2')
 provides=('surge-synthesizer' 'surge-synthesizer-bin')
 conflicts=('surge-synthesizer' 'surge-synthesizer-bin')
 source=("git+https://github.com/surge-synthesizer/surge.git")
@@ -33,16 +33,13 @@ prepare() {
 
 build() {
 	cd "$srcdir/surge"
-  cmake --build build --config Release --target surge-staged-assets
+  cmake --build build --config Release
 }
 
 package() {
 	cd "$srcdir/surge"
-	export DEST_DIR="$pkgdir"
-	mkdir -p   "$DEST_DIR/usr/share"
-	mkdir -p   "$DEST_DIR/usr/lib/lv2"
-	./build-linux.sh -p lv2 install
-	mkdir -p   "$DEST_DIR/usr/share/Surge/doc"
-	cp LICENSE "$DEST_DIR/usr/share/Surge/doc"
+  DESTDIR="$pkgdir" cmake --install build
+	mkdir -p "$pkgdir/usr/share/Surge/doc"
+	cp LICENSE "$pkgdir/usr/share/Surge/doc"
 }
 
