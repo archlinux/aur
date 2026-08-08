@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A small REPL-flavored terminal text editor — print a range by line number, climb in, and edit in place."
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6ffa001087ffd43438eeb91942978d5de938b0f2bee2559d91c01edce9a09ee7')
-sha256sums_aarch64=('deaf8580844c23b7fda5fab50712d05c3012f525fd77e09223b79e80dfb390a7')
+sha256sums_x86_64=('b1af50d5235219c215c243897fe32b9195cb6186669c4e795369d62043bc25a4')
+sha256sums_aarch64=('c6c6f84966029c0677a0521bfd7799127d7b658dd0e7e0e2db237a0f5554062b')
 
 
 package() {
