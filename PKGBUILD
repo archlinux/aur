@@ -1,7 +1,7 @@
 # Maintainer: quest <quest at mac dot com>
 
 pkgname="celestial-gtk-theme"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='A modern, customizable GTK theme with multiple color variants.'
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=("${pkgname}-git")
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-b2sums=('39d1d801fdf30a3ebf7132f281e19d2891a6a48324ef58d162dee82c077ed415b0566f54e0b1cd37e1526b7cfe1bb40ceab870dcf03ab34a7c0d0cf7416bc49f')
+b2sums=('99fbfb812c44df6c3cbb2d1aeabe7493ba5ac7b3fca269bb85f7ec1f096c646adc4f227cedcc4f0a830e371b19658ca8079eb40315f6feb77270643b044bda7e')
 
 package() {
   cd "${pkgname}-${pkgver}"
