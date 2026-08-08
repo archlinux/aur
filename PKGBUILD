@@ -4,6 +4,7 @@ pkgrel=11
 pkgdesc="dwproton的wine版|dwproton's wine version"
 url="https://dawn.wine/dawn-winery/wine-dwproton"
 arch=("x86_64")
+makedepends=(mingw-w64-gcc make)
 provides=(
   "wine=$pkgver"
   "wine-staging=$pkgver"
