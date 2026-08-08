@@ -1,6 +1,6 @@
 pkgbase = xevd
 	pkgdesc = MPEG-5 EVC (Essential Video Coding) decoder
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/mpeg5/xevd/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = xevd
 	makedepends = cmake
 	depends = glibc
 	options = !emptydirs
-	source = https://github.com/mpeg5/xevd/archive/v0.5.0/xevd-0.5.0.tar.gz
+	source = https://github.com/mpeg5/xevd/archive/v0.7.0/xevd-0.7.0.tar.gz
 	source = 010-xevd-disable-werror.patch
 	source = 020-xevd-fix-pkg-config.patch
-	sha256sums = 8d55c7ec1a9ad4e70fe91fbe129a1d4dd288bce766f466cba07a29452b3cecd8
-	sha256sums = 2a7eff2690c0d4d441df97ad37fd7a0e3e0a03705665dad12201f8d8d997f191
+	sha256sums = febfdb532819bbf36b1b04e74d3ef328ad0f0f2db6224ddb7640fce6bd0014f4
+	sha256sums = a7a22d26772657046475b1e664cbab3331355aef847f51bbb74d0bede25462f2
 	sha256sums = 28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a
 
 pkgname = xevd

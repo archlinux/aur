@@ -1,20 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xevd
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='MPEG-5 EVC (Essential Video Coding) decoder'
 arch=('x86_64')
 url='https://github.com/mpeg5/xevd/'
 license=('BSD-3-Clause')
-depends=('glibc')
-makedepends=('cmake')
+depends=(
+    'glibc')
+makedepends=(
+    'cmake')
 options=('!emptydirs')
 source=("https://github.com/mpeg5/xevd/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-xevd-disable-werror.patch'
         '020-xevd-fix-pkg-config.patch')
-sha256sums=('8d55c7ec1a9ad4e70fe91fbe129a1d4dd288bce766f466cba07a29452b3cecd8'
-            '2a7eff2690c0d4d441df97ad37fd7a0e3e0a03705665dad12201f8d8d997f191'
+sha256sums=('febfdb532819bbf36b1b04e74d3ef328ad0f0f2db6224ddb7640fce6bd0014f4'
+            'a7a22d26772657046475b1e664cbab3331355aef847f51bbb74d0bede25462f2'
             '28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a')
 
 prepare() {
@@ -29,7 +31,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DXEVD_APP_STATIC_BUILD:BOOL='OFF' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
