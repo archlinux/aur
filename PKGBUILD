@@ -2,14 +2,14 @@
 # Creator: archlinux.info:tdy
 
 pkgname=konfyt-git
-pkgver=r181.81b5295
+pkgver=r472.1100c2b
 pkgrel=1
 pkgdesc="A digital keyboard workstation - search for SFZs/soundfonts, create layered patches on the fly, and more"
 arch=(i686 x86_64)
 url=https://github.com/noedigcode/konfyt
 license=(GPL3)
 depends=(carla liblscp)
-makedepends=(git)
+makedepends=(git qt5-declarative)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=($pkgname::git+https://github.com/noedigcode/${pkgname/-/.})
