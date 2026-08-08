@@ -2,7 +2,7 @@
 # Maintainer: Andres Rodriguez Michel <andresmichelrodriguez@gmail.com>
 _pkgname=@prisma/language-server
 pkgname=prisma-language-server
-pkgver=31.9.0
+pkgver=31.11.0
 pkgrel=1
 pkgdesc="Language Server Protocol (LSP) implementation for Prisma"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://www.npmjs.com/package/@prisma/language-server"
 makedepends=(npm)
 source=("https://registry.npmjs.org/${_pkgname}/-/language-server-${pkgver}.tgz")
 noextract=("language-server-${pkgver}.tgz")
-md5sums=("e15fc3140c94869611755637f10d6970")
+md5sums=("49429574f72019abfab788afc193d636")
 
 package() {
   cd $srcdir
