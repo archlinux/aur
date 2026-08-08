@@ -1,6 +1,6 @@
 pkgbase = gocurl-bin
 	pkgdesc = Simplified version of curl written in pure Go with additional features
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ameshkov/gocurl
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gocurl-bin
 	license = MIT
 	provides = gocurl
 	conflicts = gocurl
-	source_x86_64 = https://github.com/ameshkov/gocurl/releases/download/v1.5.2/gocurl-linux-amd64-v1.5.2.tar.gz
-	sha256sums_x86_64 = 59b3e2323fd88cd8959c7e82471bb6c1fdcc04504f44bbf1cf9d42de1152af47
-	source_i686 = https://github.com/ameshkov/gocurl/releases/download/v1.5.2/gocurl-linux-386-v1.5.2.tar.gz
-	sha256sums_i686 = 073954986738a879535dc0847c19db80a0a744033555f6e8cc44093589d8df96
-	source_aarch64 = https://github.com/ameshkov/gocurl/releases/download/v1.5.2/gocurl-linux-arm64-v1.5.2.tar.gz
-	sha256sums_aarch64 = 0200021420d0f1a258b2b0f7e66e68a77a2b2325d7ec4982d3237ca6fb659a55
+	source_x86_64 = https://github.com/ameshkov/gocurl/releases/download/v1.6.0/gocurl-linux-amd64-v1.6.0.tar.gz
+	sha256sums_x86_64 = 884eaa4efdf019aaaa049239f38ea6891299e2c964635089a5c6ce9e94495e41
+	source_i686 = https://github.com/ameshkov/gocurl/releases/download/v1.6.0/gocurl-linux-386-v1.6.0.tar.gz
+	sha256sums_i686 = cad2049b8d15e8505db69554a98d5ace2373d25c22861e8c5422e9ce43b44b48
+	source_aarch64 = https://github.com/ameshkov/gocurl/releases/download/v1.6.0/gocurl-linux-arm64-v1.6.0.tar.gz
+	sha256sums_aarch64 = 2e8985d3c77c5950c47a105c7fe8f8375487175ced87296151d2e878c8412e4c
 
 pkgname = gocurl-bin
