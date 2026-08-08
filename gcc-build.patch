@@ -1,0 +1,11 @@
+diff --git a/Meta/CMake/compile_options.cmake b/Meta/CMake/compile_options.cmake
+index 725e61fb4b7..297bd7638e4 100644
+--- a/Meta/CMake/compile_options.cmake
++++ b/Meta/CMake/compile_options.cmake
+@@ -81,6 +81,7 @@ add_cxx_compile_options(-Wno-shorten-64-to-32)
+ add_cxx_compile_options(-Wno-unknown-warning-option)
+ add_cxx_compile_options(-Wno-unused-command-line-argument)
+ add_cxx_compile_options(-Wno-user-defined-literals)
++add_cxx_compile_options(-Wno-restrict)
+ 
+ add_cxx_compile_options(-Werror)

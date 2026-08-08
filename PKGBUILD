@@ -4,26 +4,28 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260705
+pkgver=20260808
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD-2-Clause)
-depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-liberation)
+depends=(curl ffmpeg libgl qt6-base qt6-multimedia ttf-liberation)
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=f4d31df69ae1fa99d4e1ac148142c78107939d43" # 2026-07-05
-  "git+https://github.com/microsoft/vcpkg.git#commit=81de6771512413aaf89ea77add5ad1fda126b9d0" # 2026-06-19 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=8d225a329ee852510b4522e04d357c6fdd51d7f7" # 2026-08-08
+  "git+https://github.com/microsoft/vcpkg.git#commit=40f3c709db80acf154ac4b17a1f83c564ebd022e" # 2026-07-24 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
+  "gcc-build.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   '8d4c2c434fe2af69f4e7c868a8e1dac3f7c8d562c15f96030f71754d5e60d1fe'
   '6181578991719a46beaf1440385e3ae3a569d860a14b45570cda7650f061141c'
+  '067e5f7d4b47233cdb0fafcbee74d8668818e82fb67bffe90223607918c51625'
 )
 
 prepare() {
@@ -39,6 +41,7 @@ prepare() {
 
   patch ladybird/UI/Qt/CMakeLists.txt < hb-fc-whole-archive.patch
   patch ladybird/Base/res/ladybird/about-pages/newtab.html < new-tab.patch
+  patch ladybird/Meta/CMake/compile_options.cmake < gcc-build.patch
   sed -i -e "s/COMMIT_HASH/$(git -C ladybird show -s --format=%H)/" -e "s/COMMIT_DATE/$(git -C ladybird show -s --format=%ci)/" ladybird/Base/res/ladybird/about-pages/newtab.html
 
   cmake \
