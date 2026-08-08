@@ -2,8 +2,8 @@
 
 pkgbase='zl-speceq-bin'
 pkgname=('zl-speceq-vst3-bin' 'zl-speceq-lv2-bin' 'zl-speceq-bin')
-pkgver='0.0.1'
-pkgrel=6
+pkgver='0.0.2'
+pkgrel=1
 pkgdesc='Dynamic spectrum equalizer audio plugin'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
@@ -23,10 +23,10 @@ depends=(
   'libxi'
 )
 
-source_x86_64=("https://github.com/ZL-Audio/ZLSpectrumEqualizer/releases/download/0.0.1/ZL.Spectrum.Equalizer-${pkgver}-Linux-x86-64-AVX2.zip")
-source_aarch64=("https://github.com/ZL-Audio/ZLSpectrumEqualizer/releases/download/0.0.1/ZL.Spectrum.Equalizer-${pkgver}-Linux-arm64.zip")
-sha256sums_x86_64=('79cca48c3de6fa5c0ae8b819b210b0342cc1700b1526d65d04d7dc885ad40e13')
-sha256sums_aarch64=('c7acfe8beabb201ca947cfa1216349ccf373f0a83e0287283bd3b04a064a3f1f')
+source_x86_64=("https://github.com/ZL-Audio/ZLSpectrumEqualizer/releases/download/${pkgver}/ZL.Spectrum.Equalizer-${pkgver}-Linux-x86-64-AVX2.zip")
+source_aarch64=("https://github.com/ZL-Audio/ZLSpectrumEqualizer/releases/download/${pkgver}/ZL.Spectrum.Equalizer-${pkgver}-Linux-arm64.zip")
+sha256sums_x86_64=('1cf3b5d840950b2c660de19602a79ff425e819110423eea9751e63afad929717')
+sha256sums_aarch64=('ec478961913c2decddcc44cfdaf955e2dc27ae2a9d586d78c66953306870c12a')
 
 package_zl-speceq-vst3-bin() {
   groups+=('vst3-plugins')
