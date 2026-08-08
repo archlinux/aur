@@ -14,6 +14,6 @@ pkgbase = iso-commander
 	optdepends = parted: GPT partition layout for Windows live USB creation
 	conflicts = iso-commander-bin
 	source = iso-commander-7.4.3.tar.gz::https://github.com/siyia2/iso-commander/archive/v7.4.3.tar.gz
-	md5sums = c9a9ecf26fd98084eec2e32e190a95b2
+	md5sums = ffc6487b036d0e9b7c93dfa582983488
 
 pkgname = iso-commander
