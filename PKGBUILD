@@ -5,7 +5,7 @@ _pkgname=kata
 pkgname=${_pkgname}-bin
 pkgdesc="Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI."
 
-pkgver=0.13.0
+pkgver=0.14.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('38331f55a6381bbe5d290e95e459b771e0eb67e56d40e80836a5ee1db54e365b')
-sha256sums_aarch64=('71a5b0335921b8c4fbcc437eb638010e17abfae4b355b40e61c484d4ad0443a7')
+sha256sums_x86_64=('98e278033c18b3cdd9c566834b556f8fb20a87b2e5bfd5610fc8d64d51df14da')
+sha256sums_aarch64=('a383104ef1abec9b3aecfc7cd1721819b563b0a5803aa7e469516b6a928addfb')
 
 
 package() {
