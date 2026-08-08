@@ -3,8 +3,8 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.17.7
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('aa04a4b78c59a295a9a38abefd3ac4cf8e008f45033cafe19de2dc752d201f4511bc657b0313cef6c54afdbd5c985c9f3f7963717a8fc7023d7afafb9e2b10db')
+b2sums=('b6285206e2fe362505849b41db6fd98143fad23ce52c24b3a27ee7a66c0c18f4bd71974575770527736cc65b443898407d0f66a8c983dcc7ae375a91d6dbf40d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -41,15 +41,15 @@ check() {
 
   echo -n 'HELP = '
   help=$(dist/hunk --help)
-  grep -oF 'Usage: hunk' <<< "${help}"
+  grep -F 'Usage: hunk' <<< "${help}"
 
   echo -n 'VERSION = '
   version=$(dist/hunk --version)
-  grep -oF "${pkgver}" <<< "${version}"
+  grep -F "${pkgver}" <<< "${version}"
 
   echo -n 'SKILL = '
   skillPath=$(dist/hunk skill path)
-  grep -oE 'skills/hunk-review/SKILL\.md$' <<< "${skillPath}"
+  grep -E 'skills/hunk-review/SKILL\.md$' <<< "${skillPath}"
 }
 
 package() {
