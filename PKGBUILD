@@ -8,7 +8,7 @@ pkgver=2.22.r7.g78787d2
 pkgrel=1
 url='https://inai.de/projects/pam_mount/'
 arch=(x86_64)
-license=('LGPL-2.1-or-later')
+license=('LGPL-2.1-or-later AND GPL-2.0-or-later')
 depends=('cryptsetup' 'glibc' 'libhx' 'libxml2' 'openssl' 'pam' 'pcre2' 'util-linux-libs')
 makedepends=('git')
 provides=('pam_mount')
@@ -45,14 +45,19 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var
 
-  # Fix overlinking
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
   make
+}
+
+check() {
+  cd pam_mount
+
+  .libs/mount.crypt --help
+  .libs/pmt-ehd --help
+  .libs/pmvarrun -h
 }
 
 package() {
   cd pam_mount
 
-  make DESTDIR="${pkgdir}" LIBTOOLFLAGS=--no-warnings install
+  make DESTDIR="${pkgdir}" LIBTOOLFLAGS='--no-warnings' install
 }
