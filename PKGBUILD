@@ -4,7 +4,7 @@
 
 _pkgname="carla"
 pkgname="${_pkgname}-debug-git"
-pkgver=2.1.rc1.r26.ga511bb259
+pkgver=2.5.1.r571.g97a9e0740
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -23,16 +23,15 @@ depends=(
 )
 makedepends=(
     'git'
-    'gtk2'
     'gtk3'
 )
 optdepends=(
-    'gtk2: LV2 GTK2 UI support'
+    'gtk2: LV2 GTK2 UI support (needs AUR gtk2)'
     'gtk3: LV2 GTK3 UI support'
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
 )
-source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=develop")
+source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=main")
 md5sums=('SKIP')
 changelog='changelog.txt'
 options=(!strip debug)
