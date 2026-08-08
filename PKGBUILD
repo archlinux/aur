@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=155.0a1+20260731.1+h1c497fb70742
+pkgver=155.0a1+20260808.2+h0a80cb09a671
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.firefox.com/channel/desktop/#nightly"
@@ -54,6 +54,7 @@ makedepends=(
   mesa
   nasm
   nodejs
+  npm
   onnxruntime
   python
   rust

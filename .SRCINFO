@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Fast, Private & Safe Web Browser (Nightly version)
-	pkgver = 155.0a1+20260731.1+h1c497fb70742
+	pkgver = 155.0a1+20260808.2+h0a80cb09a671
 	pkgrel = 1
 	url = https://www.firefox.com/channel/desktop/#nightly
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = firefox-nightly
 	makedepends = mesa
 	makedepends = nasm
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = onnxruntime
 	makedepends = python
 	makedepends = rust
