@@ -1,7 +1,7 @@
 # Maintainer: Fidel Ramos
 
 pkgname=firecrawl-cli
-pkgver=1.19.29
+pkgver=1.19.30
 pkgrel=1
 pkgdesc="Command-line interface for Firecrawl - scrape, crawl, and extract data from any website"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('bun')
 # strip(1) removes, leaving a bare bun runtime behind
 options=('!strip' '!debug')
 source=("https://github.com/firecrawl/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c3c3dafc31af05a60a61df65d256d42338c131497873b6ad0e30b3d3ea7642fd')
+sha256sums=('4c59d05ef1881d829e51df1f92f49b4803b8e071831ee50e767b966cd7eda60e')
 
 build() {
 	cd "cli-${pkgver}"
