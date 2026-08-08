@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r79948.f4d31df69ae
+pkgver=r81775.8d225a329ee
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -65,6 +65,7 @@ prepare() {
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Libraries/LibGfx/ImageFormats/GIFLoader.cpp
   sed -e 's/mi_heap_get_default/mi_heap_main/' -i ladybird/AK/kmalloc.cpp
+  sed -e '79i add_cxx_compile_options(-Wno-restrict)' -i ladybird/Meta/CMake/compile_options.cmake
 }
 
 build() {
