@@ -13,10 +13,27 @@ AUR package for [niriqml](https://github.com/alexindigo/niriqml) — typed QML b
 - **Optional**: `niri` (the compositor niriqml is designed to talk to)
 - **Build**: `cmake`, `git`
 
-## Building
+## Install
 
-```
+```bash
+# Clone and build
+git clone https://github.com/alexindigo/aur-qt6-niriqml-git.git
+cd aur-qt6-niriqml-git
 makepkg -si
+```
+
+Or build without installing:
+
+```bash
+makepkg
+# Then install the built package:
+sudo pacman -U qt6-niriqml-git-*.pkg.tar.zst
+```
+
+When AUR is available, install via your AUR helper:
+
+```bash
+yay -S qt6-niriqml-git
 ```
 
 ## Maintenance
