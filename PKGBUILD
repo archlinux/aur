@@ -1,8 +1,8 @@
 # Maintainer: Pavel Dobiáš <git at paveldobias dot eu>
 
 pkgname=floating-sandbox
-pkgver=1.20.0
-pkgrel=4
+pkgver=1.21.0
+pkgrel=1
 pkgdesc="Mass-spring network in C++, simulating physical bodies floating in water and sinking"
 arch=('x86_64')
 url="https://github.com/GabrieleGiuseppini/Floating-Sandbox"
@@ -44,7 +44,7 @@ sha256sums=(
     'aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597'
     '15cc756fd0abb38d62058744422e60fce08d02377f34394d814ec72f08c8fbcb'
     '7f2d22ac951fd72fd6dbfd5ffad94abf32db82e4e4d907dbd1af7380ac06a657'
-    '5b8085c469c373854ab281d7c9b19eb7b30fac4aad5592aa6d3a5b2f21750889'
+    '8dd20c9553f09df9ac283db1ba51f99a62f585dce47007f4517e523dffbefd28'
     'SKIP'
     'SKIP'
     'SKIP'
