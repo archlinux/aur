@@ -1,7 +1,7 @@
 # Maintainer: crux <c-rrux@outlook.com>
 
 pkgname=kursor
-pkgver=4.3.13
+pkgver=4.3.15
 pkgrel=1
 pkgdesc="Keyboard-driven mouse-cursor -- service (grid & glide-*) & cli (pos / click / move / moveto)"
 arch=(x86_64)
@@ -19,8 +19,8 @@ makedepends=('cargo')
 
 source=("${_github_url}/archive/refs/tags/v$pkgver.tar.gz"  # github
         "${_gitee_url}/archive/refs/tags/v$pkgver.tar.gz")  # gitee
-sha256sums=('e4de659680e6454a852371c54d601c64299565c095284ecb1f1fd6ad64c3d07b'
-            'e4de659680e6454a852371c54d601c64299565c095284ecb1f1fd6ad64c3d07b')
+sha256sums=('038e78c61f0e965fadf3d286306c066da44b849e0422951c7a4b27073e7e3689'
+            '038e78c61f0e965fadf3d286306c066da44b849e0422951c7a4b27073e7e3689')
 
 build() {
     cd "$pkgname-$pkgver"
