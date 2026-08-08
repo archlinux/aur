@@ -1,14 +1,14 @@
 # Maintainer: Milk Brewster (milk/milkii on Freenode)
 # Contributor:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
-pkgver=continuous.master.r5.g23da149
+pkgver=continuous.master.r12.g78fb003
 pkgrel=1
 pkgdesc="Luppp is a live performance tool, created by OpenAV productions (unstable development package)"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
 license=('GPL3')
 groups=('openav')
-depends=('jack' 'liblo' 'ntk-git' 'libsndfile')
+depends=('jack' 'liblo' 'ntk' 'libsndfile')
 makedepends=('meson' 'git')
 provides=('openav-luppp-git' 'luppp')
 conflicts=('openav-luppp-git' 'luppp')
