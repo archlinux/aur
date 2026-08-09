@@ -15,12 +15,6 @@ checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('932b4e3d70af59570dc493e95f9d52647c53e04dfc09efd9aca894cc9be90cbd')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	sed -i '/Exec/d;s/Path/Exec/' cmake/plug.desktop
-	sed -i 's|/lib|/usr/lib|g;/plug-config/s|share/plug/cmake|lib/cmake/plug|' cmake/Install.cmake
-}
-
 build() {
 	cmake \
 		-B build \
