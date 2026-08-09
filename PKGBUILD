@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=7
+pkgrel=8
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -13,9 +13,9 @@ depends=('accountsservice' 'at-spi2-core' 'bash' 'cairo' 'cinnamon-control-cente
          'evolution-data-server' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-backgrounds' 'gnome-themes-extra' 'gsound' 'gstreamer' 'gtk3'
          'hicolor-icon-theme' 'libgcc' 'libgirepository' 'libglvnd' 'libibus'
-         'libical' 'libkeybinder3' 'libnm' 'libnotify' 'libsecret' 'libx11'
-         'libxfixes' 'libxml2' 'mate-polkit' 'muffin' 'network-manager-applet' 'pango'
-         'papirus-icon-theme' 'polkit' 'python' 'python-cairo' 'python-gobject'
+          'libical' 'libkeybinder3' 'libnm' 'libnotify' 'libsecret' 'libx11'
+          'libxfixes' 'libxml2' 'muffin' 'network-manager-applet' 'pango'
+          'papirus-icon-theme' 'polkit' 'python' 'python-cairo' 'python-gobject'
          'python-pam' 'python-pexpect' 'python-pillow' 'python-psutil'
          'python-pyinotify' 'python-pytz' 'python-requests'          'python-setproctitle'
          'python-tinycss2' 'python-xapp' 'sound-theme-freedesktop' 'timezonemap'
@@ -43,6 +43,11 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'zenity-run-dialog.py'
         'zenity-confirm-dialog.py'
         'zenity-question-dialog.py'
+        'zenity-audio-device-dialog.py'
+        'zenity-display-change-dialog.py'
+        'zenity-polkit-dialog.py'
+        'audioDeviceSelection.js'
+        'polkitAuthenticationAgent.js'
         'patch-dialogs.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
@@ -52,6 +57,11 @@ sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1800fb7b95b3eede3c003ead6a5f8507f0bef982511b79da15b3ec11833bc0f8'
             '0298bfcae9fe8563e7974a35c44f9dead0b1e598862e399e071deefe37d38d95'
             '57656be9f89f5e93e388705cacf36199e94a703f15424f6f2002a853ecdd4a9e'
+            '566c38d544d5ff71f6d32e64503af225539cc0a1e92a5a7dfed0058b891257c4'
+            '03645d19a6638ebb3be5da436776edbb6668ed6d3e8aa53f333755577fb9558d'
+            'a18319c4d9a3f17eba494bb08301d8907ac6604c3c1d55bbeef0f10f5742a98a'
+            'f3b2febe0c6a555c903ec9bc11e33dcebd267493a1c822305136d3ea2df9aeeb'
+            'b9be55ba9602d0338b9efa6fbe6e5dbbea8fbd67453a7fed6270ee7a770262aa'
             '64e6a318cb09597ce9453cd596cc993522176640ac9c835ae3d63567098b2185')
 
 # Disable strip and debug to speed up repackaging
@@ -126,6 +136,18 @@ EOF
   install -Dm755 "$srcdir/zenity-question-dialog.py" \
     "$pkgdir/usr/bin/zenity-question-dialog.py"
 
+  # Install zenity audio device selection dialog
+  install -Dm755 "$srcdir/zenity-audio-device-dialog.py" \
+    "$pkgdir/usr/bin/zenity-audio-device-dialog.py"
+
+  # Install zenity display change confirmation dialog
+  install -Dm755 "$srcdir/zenity-display-change-dialog.py" \
+    "$pkgdir/usr/bin/zenity-display-change-dialog.py"
+
+  # Install zenity polkit password dialog helper
+  install -Dm755 "$srcdir/zenity-polkit-dialog.py" \
+    "$pkgdir/usr/bin/zenity-polkit-dialog.py"
+
   # Install dialog patching script
   install -Dm755 "$srcdir/patch-dialogs.py" \
     "$pkgdir/usr/share/cinnamon/patch-dialogs.py"
@@ -136,6 +158,48 @@ EOF
       -e 's|runDialog = new RunDialog.RunDialog();|runDialog = { open: function() { Util.spawnCommandLine("/usr/bin/zenity-run-dialog.py"); return true; }, close: function() {}, destroy: function() {} };|' \
       -e 's|function showEndSessionDialog(mode) {.*|function showEndSessionDialog(mode) { Util.spawnCommandLine("/usr/bin/cinnamon-session-quit"); }|' \
       "$pkgdir/usr/share/cinnamon/js/ui/main.js"
+  fi
+
+  # Patch windowManager.js to use zenity for DisplayChangeDialog
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/windowManager.js" ]; then
+    PKGDIR="$pkgdir" python3 - << 'PYEOF'
+import os, re
+p = os.path.join(os.environ['PKGDIR'], "usr/share/cinnamon/js/ui/windowManager.js")
+s = open(p).read()
+# Add Util import if missing
+imp_old = "const Main = imports.ui.main;\nconst WindowMenu = imports.ui.windowMenu;"
+imp_new = "const Main = imports.ui.main;\nconst Util = imports.misc.util;\nconst WindowMenu = imports.ui.windowMenu;"
+if imp_old in s:
+    s = s.replace(imp_old, imp_new)
+old = re.compile(r'''_confirmDisplayChange\(\) \{\n(\s*).*?\n\s*\};''', re.DOTALL)
+new = '''_confirmDisplayChange() {
+        let wm = this._cinnamonwm;
+        let timeout = Meta.MonitorManager.get_display_configuration_timeout();
+        let cmd = "/usr/bin/zenity-display-change-dialog.py " + timeout;
+        Util.spawnCommandLineAsyncIO(cmd,
+            (stdout, stderr, exitCode) => {
+                if (exitCode === 0)
+                    wm.complete_display_change(true);
+                else
+                    wm.complete_display_change(false);
+            });
+    }
+};
+'''
+s, n = old.subn(new, s)
+assert n == 1, f"windowManager patch matched {n} times"
+open(p, 'w').write(s)
+PYEOF
+  fi
+
+  # Patch audioDeviceSelection.js to use zenity instead of Clutter/St ModalDialog
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/audioDeviceSelection.js" ]; then
+    cp "$srcdir/audioDeviceSelection.js" "$pkgdir/usr/share/cinnamon/js/ui/audioDeviceSelection.js"
+  fi
+
+  # Replace polkitAuthenticationAgent.js with GTK3 zenity-based agent
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/polkitAuthenticationAgent.js" ]; then
+    cp "$srcdir/polkitAuthenticationAgent.js" "$pkgdir/usr/share/cinnamon/js/ui/polkitAuthenticationAgent.js"
   fi
 
   # Patch applet.js to use zenity for remove applet confirmation
