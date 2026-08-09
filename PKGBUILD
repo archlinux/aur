@@ -1,7 +1,7 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=incrementum-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A Spaced Repetition System built with Tauri"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('incrementum')
 conflicts=('incrementum')
 
 source=("https://github.com/melpomenex/incrementum-tauri/releases/download/v${pkgver}/incrementum-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('2e0d6760d165708a8942f9f074bad9fb39a093b18a35d4dbd8f3cc81d7ade514')
+sha256sums=('34a3d29f9d967168f36949f629da7b21adcc4366f541c9d40ad41d47c95a74bf')
 
 package() {
     bsdtar -xf "${srcdir}/incrementum-${pkgver}-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO'
