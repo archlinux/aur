@@ -17,7 +17,7 @@
           "io.github.Bitpainter75.FerrumPix.desktop"
           "io.github.Bitpainter75.FerrumPix.png")
   noextract=("FerrumPix-${pkgver}-${pkgrel}-linux-x64-aur.zip")
-sha256sums=('a3f0124a76a77318f104e1c4006fdf56f6ddebea5516c9de3b7ef5ad40eb6d46'
+sha256sums=('61f8cd4a82b697c83fefc07d2ab1f285d88afbfa44f07d66fd54949b6daed4bf'
             '02a23d27b0ea478bc951de3baebc4b30ec303f679fb137322fdf56b957104321'
             'c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067')
 
