@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Zotero
-GenericName=A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
+GenericName=A free, easy-to-use tool to help you collect, organize, cite, and share your research sources
 Icon=zotero
 Exec=/usr/bin/zotero -url %U
 Categories=Office
