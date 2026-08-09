@@ -8,7 +8,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.8.0
+pkgver=5.8.1
 pkgrel=1
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
 UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
