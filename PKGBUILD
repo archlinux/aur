@@ -3,13 +3,13 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_version=2.3+295+g8d5c0037b
+_version=2.3+307+g4bb0aead1
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -67,7 +67,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('fbd8778653d494c3bcfa74f3eac03c3270d7a3ae1c488fa68cad9a1b06d6b7d2'
+sha256sums=('e629bd307f31c09307dcf925657fd3962eb8d479a6c55e9d7f98d67ec058c43a'
             '5dbd9e1fec28d8b6eda3ed38b514322dc1386507e0a653c7a73061cdc41d9982'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             'e433c840c4cac5663ed169e90899efc1d1210649bf828bb412295902985f9ee5'
