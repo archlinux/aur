@@ -1,6 +1,6 @@
 # Maintainer: l1a <634380+l1a@users.noreply.github.com>
 pkgname=retch
-pkgver=0.6.12
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="A fast, feature-rich system information fetcher written in Rust"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'mandown')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b8ed98857b958f955281b47292eb77a536c9ede316b21cd79bbdbc1506907b3')
+sha256sums=('d366e8217deb8adf0dd019c2621e9fdb852df1ceb8ab64a099d25a623d960c08')
 
 prepare() {
   cd "$pkgname-$pkgver"
