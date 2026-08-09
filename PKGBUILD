@@ -2,7 +2,7 @@
 
 _pkgname=wayvr
 pkgname=$_pkgname-git
-pkgver=26.7.1.r46.6b22e4a
+pkgver=26.8.0.r0.cb3aa42
 pkgrel=1
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/wayvr-org/wayvr"
@@ -20,6 +20,7 @@ depends=(glibc
          libgcc
          dbus
          libpipewire
+         libinput
          alsa-lib
          openxr
          openvr
