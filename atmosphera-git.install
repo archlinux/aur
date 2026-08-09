@@ -36,12 +36,7 @@ EOF
   fi
 
   echo "==> atmosphera: enable hardware remapping with: systemctl enable --now keyd"
-  echo "==>   (the atmosphera-keyd-reload path unit applies layer changes automatically)"
-
-  # Watcher: reload keyd whenever the user-owned layer changes.
-  # Inert when keyd isn't installed/running (service has ConditionPathExists).
-  systemctl enable atmosphera-keyd-reload.path 2>/dev/null || true
-  systemctl start atmosphera-keyd-reload.path 2>/dev/null || true
+  echo "==>   (keyd layer changes self-apply via the shell's systemd D-Bus trigger)"
 }
 
 post_upgrade() {

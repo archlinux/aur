@@ -56,7 +56,8 @@ package() {
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
 
-  # keyd reload watcher (path unit fires the reload service on layer change)
-  install -Dm644 Scripts/systemd/atmosphera-keyd-reload.path    "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.path"
+  # keyd reload service (triggered via systemd D-Bus StartUnit by the shell)
   install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
+  # polkit: allow active sessions/wheel to start that one service, no prompt
+  install -Dm644 Scripts/polkit/atmosphera-keyd.rules "$pkgdir/usr/share/polkit-1/rules.d/atmosphera-keyd.rules"
 }
