@@ -1,14 +1,14 @@
 # Maintainer: dim <mlrudasill@gmail.com>
 
 pkgname='caelestia-greeter'
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A modern Material 3 Quickshell frontend for greetd matching the Caelestia design'
 arch=('x86_64')
 url='https://github.com/dim-ghub/Caelestia-Greeter'
 license=('MIT')
 install=caelestia-greeter.install
-depends=('caelestia-cli' 'caelestia-shell' 'quickshell-git' 'greetd' 'qt6-base' 'qt6-declarative')
+depends=('caelestia-cli' 'caelestia-shell' 'greetd' 'qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'ninja' 'pkgconf')
 optdepends=('wlr-randr: multi-monitor configuration options'
             'cage: recommended lightweight kiosk Wayland compositor for greetd'
@@ -17,10 +17,10 @@ provides=('caelestia-greeter')
 conflicts=('caelestia-greeter-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'caelestia-greeter.install')
-sha256sums=('4b712f26f645f02e8bbb77a2fedf52e185f5df6bee066361461729a17373c35c'
-            'f0f052f9df9b229f043627c93d0e75e72f0d6afee654f6b692310cab6bed450b')
+sha256sums=('3ae367d9c020b6bfedb5ab653691968f8224da0a6c497ffb27c0a1ae905cfc5f'
+            '06b3a1381ce4595938ca6a353a051aac9b1f4d9e4283e48a701f5cf5db30a437')
 
-_builddir='Caelestia-Greeter-1.0.2'
+_builddir='Caelestia-Greeter-1.1.0'
 
 build() {
     cd "${srcdir}/${_builddir}"
