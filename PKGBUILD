@@ -6,7 +6,7 @@ _wavsen_commit=610b135fafbdb817b28b5ca8c50ae61db70e290c
 
 pkgname=open-wallpaper-engine
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
