@@ -1,0 +1,20 @@
+pkgbase = pcanview-ncurses-bin
+	pkgdesc = CAN/CAN FD monitor for PEAK-System CAN adapters
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://www.peak-system.com/fileadmin/media/linux/can-pcan-view.php
+	arch = x86_64
+	license = LicenseRef-PEAK-PCANView
+	license = MIT-open-group(libncurses6)
+	makedepends = patchelf
+	depends = ncurses
+	depends = peak-linux-driver-dkms
+	noextract = pcanview-ncurses_0.9.4-0_amd64.deb
+	noextract = libncurses6_6.5+20250216-2_amd64.deb
+	options = !debug
+	source = pcanview-ncurses_0.9.4-0_amd64.deb::https://www.peak-system.com/debian/dists/trixie/non-free/binary-amd64/pcanview-ncurses_0.9.4-0_amd64.deb
+	source = libncurses6_6.5+20250216-2_amd64.deb::https://deb.debian.org/debian/pool/main/n/ncurses/libncurses6_6.5+20250216-2_amd64.deb
+	sha256sums = 967e1334af486e145c99d760ffb9ee350006561dce2938ba61cb0c53b131530b
+	sha256sums = e00cbcc8c0826993f881f492c05f33ba8d79b5375dc5a2ab59c82e0c7b9179a9
+
+pkgname = pcanview-ncurses-bin
