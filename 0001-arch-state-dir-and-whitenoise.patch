@@ -1,6 +1,7 @@
 --- a/src/config/settings.py
 +++ b/src/config/settings.py
-@@ -26,6 +26,10 @@
+@@ -21,7 +21,11 @@
+ REDIS_PREFIX = config("REDIS_PREFIX", default=None)
  
  # Build paths inside the project like this: BASE_DIR / 'subdir'.
  BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,7 +12,7 @@
  
  
  def secret(key, default=undefined, **kwargs):
-@@ -136,6 +140,7 @@
+@@ -95,6 +99,7 @@
  MIDDLEWARE = [
      "debug_toolbar.middleware.DebugToolbarMiddleware",
      "django.middleware.security.SecurityMiddleware",
@@ -19,7 +20,7 @@
      "django.contrib.sessions.middleware.SessionMiddleware",
      "django.middleware.common.CommonMiddleware",
      "django.middleware.csrf.CsrfViewMiddleware",
-@@ -176,7 +181,7 @@
+@@ -136,7 +141,7 @@
  # https://docs.djangoproject.com/en/stable/ref/settings/#databases
  
  # create db folder if it doesn't exist
@@ -28,16 +29,17 @@
  
  if config("DB_HOST", default=None):
      DATABASES = {
-@@ -205,7 +210,7 @@
+@@ -162,8 +167,8 @@
+ else:
      DATABASES = {
          "default": {
              "ENGINE": "django.db.backends.sqlite3",
 -            "NAME": BASE_DIR / "db" / "db.sqlite3",
 +            "NAME": DATA_DIR / "db" / "db.sqlite3",
-         },
-     }
- 
-@@ -289,10 +294,23 @@
+             "OPTIONS": {
+                 "timeout": 10,
+                 "transaction_mode": "IMMEDIATE",
+@@ -239,10 +244,23 @@
  # Static files (CSS, JavaScript, Images)
  # https://docs.djangoproject.com/en/stable/howto/static-files/
  
@@ -47,7 +49,7 @@
 +STATIC_ROOT = DATA_DIR / "staticfiles"
  
  STATICFILES_DIRS = [BASE_DIR / "static"]
-+
+ 
 +# WhiteNoise: serve static files directly. Restoring 'default' is critical for health checks.
 +STORAGES = {
 +    "default": {
@@ -60,6 +62,6 @@
 +
 +MEDIA_ROOT = DATA_DIR / "media"
 +MEDIA_URL = "/media/"
- 
++
  if BASE_URL:
      STATIC_URL = f"{BASE_URL}/static/"

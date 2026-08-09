@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 
 pkgname=yamtrack
-pkgver=0.25.3
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Self-hosted media tracker"
 arch=('any')
@@ -29,8 +29,8 @@ source=(
   "yamtrack-manage"
 )
 
-sha256sums=('da50edba56cef0531f9387ec0d29bd99f1fd1a7f2adcd4423f46500771535488'
-            '491b49f33107a36727db4fd181b5f1da1d43a564737a3656d90d3acc22816a36'
+sha256sums=('2da28eb3d67de060132005d522d91e70dea4967f1238a2d42811b17fc9511165'
+            '46c31cdc79e0623f2e94b251a96e0d8c6b3a9cec6e8a29a685a553d57a5bbb15'
             'b802edf0f341b2ec008eedb79b1f4b4c7cec4b89428765a20fa6dd5db30e3a48'
             '1caecf3ac52fd3c0a9c2ada54d4130aba03ff454185c6b10f04f4cf514c4a3b7'
             'cf0f5da164ef6effe5f68db54ac6a2511dd48856106d34d5235ab04a13081ae3'
