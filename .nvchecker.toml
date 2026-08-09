@@ -1,0 +1,4 @@
+[nitrolaunch-cli]
+source = "github"
+github = "Nitrolaunch/nitrolaunch"
+use_latest_release=true
