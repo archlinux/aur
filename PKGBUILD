@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=8.1.2
+pkgver=9.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -20,7 +20,6 @@ depends=(
   fribidi
   glib2
   glibc
-  glslang
   gmp
   gnutls
   gsm
@@ -36,6 +35,7 @@ depends=(
   libdvdnav
   libdvdread
   libgcc
+  libgl
   libiec61883
   libjxl
   libmodplug
@@ -67,10 +67,12 @@ depends=(
   rubberband
   sdl2
   snappy
+  sndio
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
   vid.stab
   vmaf
   vulkan-icd-loader
@@ -89,10 +91,10 @@ makedepends=(
   ffnvcodec-headers
   frei0r-plugins
   ladspa
-  libgl
+  mesa
   nasm
   opencl-headers
-  vapoursynth
+  spirv-headers
   vulkan-headers)
 optdepends=(
   'avisynthplus: for AviSynthPlus support'
@@ -113,9 +115,9 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         'LICENSE')
-sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
+sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
             'SKIP'
-            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
+            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -126,9 +128,6 @@ prepare() {
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
-    # fix build with v4l2-utils 1.30 with gcc 14 and later
-    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     
     ./configure \
         --prefix='/usr' \
@@ -156,7 +155,6 @@ build() {
         --enable-libdvdread \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgsm \
         --enable-libharfbuzz \
         --enable-libiec61883 \
