@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonplus
-pkgver=0.5.22
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A modern compatibility tools manager"
 arch=('x86_64')
@@ -12,15 +12,23 @@ depends=(
   'libadwaita'
   'libarchive'
   'libgee'
+  'libnotify'
   'libsoup3'
+  'sdl3'
 )
 makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('appstream-glib')
+optdepends=(
+  'gamemode'
+  'gamescope'
+  'mangohud'
+  'protontricks'
+  'scopebuddy'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85c3af2bec31852b36b687c1f802404d9568250627c9fe5340f53ffbc49d5b1e')
+sha256sums=('95156880b041f3824567f9b50e76bbf1df081e5f6489033b571bc0ab02ba21d4')
 
 build() {
   arch-meson "ProtonPlus-$pkgver" build
