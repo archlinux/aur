@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Interactive, persistent shell for HTTP requests"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -23,23 +23,29 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 depends=('glibc' 'libgcc')
 
-options=(!strip)
+options=('!strip')
 
-source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('8f31c874c0743e236c895b93532c4fa69598fd8b58c641e1d6a5aac806b1f3ae'
-            '2d7124e8942793e458a12398becb960d5cc152e04b4e7b6977a1696c5e428f3c')
-sha256sums_x86_64=('85b3bd2c3b81e376afcd009cec9c3ecc1f752d2ae27f6638c86a918c71f46d82')
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
+sha256sums_x86_64=('3502915183caf5221a351423f064ce5591730e64178e181be0429889de4030fd')
 
+
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+
+  ${arch[1]})
+    _CARCH=${_barch[1]}
+    ;;
+esac
 
 package() {
-	cd "${srcdir}/" || exit
+	cd "${srcdir}/${_appname}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
