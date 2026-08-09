@@ -1,0 +1,45 @@
+# atmosphera-git install hooks
+# Sets up the keyd hook at install time (root), pointing at a user-owned
+# managed file so environment switching never needs sudo again.
+
+post_install() {
+  local keyd_dir=/etc/keyd
+  mkdir -p "$keyd_dir"
+
+  # The system hook: scoped device ids + include of the managed layer.
+  # Only written when absent — user edits are preserved.
+  if [ ! -f "$keyd_dir/default.conf" ]; then
+    cat > "$keyd_dir/default.conf" <<'EOF'
+# Written by atmosphera post_install. Extend by editing this file.
+# The 'atmosphera' include is managed by atmosphera-bindings-apply.
+# Ids: built-in PS/2 keyboard + built-in mouse (external keyboards unaffected).
+[ids]
+0001:0001
+0002:0006
+
+[main]
+include atmosphera
+EOF
+    chmod 0644 "$keyd_dir/default.conf"
+    echo "==> atmosphera: created $keyd_dir/default.conf (keyd hook)"
+  fi
+
+  # The managed layer: neutral no-op stub, owned by the installing user so
+  # `atmosphera bindings apply` can rewrite it without sudo.
+  if [ ! -f "$keyd_dir/atmosphera" ]; then
+    printf '# Atmosphera keyd layer (managed by atmosphera-bindings-apply).\n# Empty = no remapping.\n' > "$keyd_dir/atmosphera"
+    chmod 0644 "$keyd_dir/atmosphera"
+    if [ -n "${SUDO_USER:-}" ]; then
+      chown "$SUDO_USER" "$keyd_dir/atmosphera" 2>/dev/null || true
+    fi
+    echo "==> atmosphera: created $keyd_dir/atmosphera (user-managed layer)"
+  fi
+
+  echo "==> atmosphera: enable hardware remapping with: systemctl enable --now keyd"
+  echo "==> atmosphera: for passwordless 'keyd reload', add yourself to the keyd group:"
+  echo "==>   sudo usermod -aG keyd ${SUDO_USER:-$USER}"
+}
+
+post_upgrade() {
+  post_install
+}

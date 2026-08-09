@@ -5,6 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 pkgver=0.1.0.r0.g0000000
 pkgrel=4
+install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
@@ -27,6 +28,7 @@ optdepends=(
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
   'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'keyd: hardware-level keyboard remapping (bindings environments)'
 )
 provides=('atmosphera')
 conflicts=('atmosphera')
