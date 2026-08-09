@@ -31,13 +31,12 @@ source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
         https://github.com/h2o/h2o/pull/3553.patch
         
         # 404 error message
-        https://github.com/h2o/h2o/pull/3551.patch
+        #https://github.com/h2o/h2o/pull/3551.patch
 
         'h2o.service')
 sha256sums=('431f75c69e0d5538281bc701b82b55122de7aebd9bd61bf70100839d77b6fd90'
             '632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
             '930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8'
-            '99b8ae5a7e06af7a4308c60a204b903171bb357d61bf4ea8abb04b1bcc148174'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
@@ -64,7 +63,7 @@ prepare() {
     #patch -p1 -i ${srcdir}/3552.patch
 
     # 404 error message
-    patch -p1 -i ${srcdir}/3551.patch
+    #patch -p1 -i ${srcdir}/3551.patch
 
     # set CMake minimal version to 3.15 to set CMP0039 to new
     sed -i 's/VERSION 2.8.12/VERSION 3.15/g' CMakeLists.txt
