@@ -4,8 +4,8 @@
 
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=3.6.0.r0.gbee00e4
-pkgrel=2
+pkgver=3.6.3.r3.gcee1931
+pkgrel=1
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="https://clonekeenplus.sourceforge.io/"
@@ -22,9 +22,15 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  # Initialize and fetch submodules from inside the repo folder
+  git submodule update --init --recursive
+}
+
 build() {
   mkdir -p "$srcdir/$_pkgname-build"
-  
   cmake -S "$srcdir/$_pkgname" -B "$srcdir/$_pkgname-build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -32,15 +38,14 @@ build() {
     -DFULL_GAMES_SHAREDIR:PATH=/usr/share \
     -DGAMES_SHAREDIR:PATH=/usr/share \
     -DDOCDIR=/usr/share/doc/commandergenius \
+    -DBUILD_COSMOS=YES \
     -DUSE_BOOST=NO
 
-  make -C "$_pkgname-build"
+  cmake --build "$srcdir/$_pkgname-build"
 }
 
 package() {
-  cd "$srcdir/$_pkgname-build"
-  make DESTDIR="$pkgdir/" install
-
+  DESTDIR="$pkgdir" cmake --install "$srcdir/$_pkgname-build"
   # Icon needed for .desktop file
   mkdir -p "$pkgdir/usr/share/icons"
   ln -s /usr/share/commandergenius/CGLogo.svg "$pkgdir/usr/share/icons/cg.svg"
