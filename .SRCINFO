@@ -1,0 +1,18 @@
+pkgbase = peak-linux-driver-dkms
+	pkgdesc = Linux driver for PEAK-System CAN adapters
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://www.peak-system.com/fileadmin/media/linux/index.php
+	install = peak-linux-driver-dkms.install
+	arch = any
+	license = GPL-2.0-only
+	license = LGPL-2.1-only
+	depends = dkms
+	provides = peak-linux-driver
+	conflicts = peak-linux-driver
+	source = https://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-9.2.0.tar.gz
+	source = dkms.conf
+	sha256sums = adc7e9d2459848d506b7d948fc52b1afe73db476f58537492c94f70a960a7a9a
+	sha256sums = a277e6202f8ba761b3d0a1e1c5d4de0f5306a45fa14689aa1473e814e09ce36e
+
+pkgname = peak-linux-driver-dkms
