@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.17.8
+pkgver=1.17.10
 pkgrel=1
 _nodeversion=24
 _electronversion=43
@@ -18,7 +18,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('ef691a0020558f1b4c4d820f74379f92f92b6af21ba47d4266f45e7d2a8e4ed2'
+sha256sums=('6ff8a3156863ba83305ea6ff8e2143ec742731aec78cc44bbe20254f280e7897'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -75,6 +75,7 @@ check() {
 package() {
   cd "Materialious-$pkgver/$pkgname/electron"
   install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$pkgname/"
+  cp -a dist/linux-unpacked/resources/app.asar.unpacked -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 assets/appIcon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_app_id}.png"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${_app_id}.desktop"
