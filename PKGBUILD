@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=ftop
 pkgname=${_pkgname}-bin
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="Finformative top for finding fiery processes"
 
@@ -24,10 +24,10 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pk
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[1]}")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[2]}")
 sha256sums=('ed6eec81442ed76d295d2aaadb26efad64c0132c9a793f16bbfa8952583b05c1'
-            '3ad05fc69d54421bf089c0abd38fdd669fe362bdf6e3412f47641d63492c63c4')
-sha256sums_x86_64=('af3b18315accbeb93c5df51af61bb2b045d574c19325ed73f782d50e1a2320e5')
-sha256sums_i686=('af3b18315accbeb93c5df51af61bb2b045d574c19325ed73f782d50e1a2320e5')
-sha256sums_aarch64=('7ef2bd82d86c317aea08811ec386614866788ac08adc6d810326e431905fce72')
+            '2e1ab9140e5149d98da293596d1d664dab580bdb99bea2a4d64dfdde10c22c2d')
+sha256sums_x86_64=('5050e6be85369dea9c7bf4f6bd2f3a853b3f0b3026438bce72f98589800dd6cc')
+sha256sums_i686=('5050e6be85369dea9c7bf4f6bd2f3a853b3f0b3026438bce72f98589800dd6cc')
+sha256sums_aarch64=('bd1ebfb36b194af071e0c58a65b1bf1b2d64a2224c016230d67c637703e50bda')
 
 
 package() {
