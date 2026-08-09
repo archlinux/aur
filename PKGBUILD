@@ -55,4 +55,8 @@ package() {
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-session"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
+
+  # keyd reload watcher (path unit fires the reload service on layer change)
+  install -Dm644 Scripts/systemd/atmosphera-keyd-reload.path    "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.path"
+  install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
 }

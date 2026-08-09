@@ -36,8 +36,12 @@ EOF
   fi
 
   echo "==> atmosphera: enable hardware remapping with: systemctl enable --now keyd"
-  echo "==> atmosphera: for passwordless 'keyd reload', add yourself to the keyd group:"
-  echo "==>   sudo usermod -aG keyd ${SUDO_USER:-$USER}"
+  echo "==>   (the atmosphera-keyd-reload path unit applies layer changes automatically)"
+
+  # Watcher: reload keyd whenever the user-owned layer changes.
+  # Inert when keyd isn't installed/running (service has ConditionPathExists).
+  systemctl enable atmosphera-keyd-reload.path 2>/dev/null || true
+  systemctl start atmosphera-keyd-reload.path 2>/dev/null || true
 }
 
 post_upgrade() {
