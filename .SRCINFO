@@ -1,7 +1,7 @@
 pkgbase = forkme
 	pkgdesc = A tool for managing forks using a patch-based approach
 	pkgver = 0.2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tangled.org/me.webbeef.org/forkme
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -10,6 +10,6 @@ pkgbase = forkme
 	provides = forkme
 	options = !lto
 	source = forkme-0.2.0.2.tar.gz::https://tangled.org/me.webbeef.org/forkme/archive/cee4760e2c9cd377429e394772106a82bb4c3a76?format=tar.gz
-	sha256sums = e5926181160db2d3ddefb7642041e95aea3c7e894f406568faf6bc0e786098df
+	sha256sums = 449a8dac037c178f6206e43b51f812d09e3d9120f90b4c10bc0885b7842ec996
 
 pkgname = forkme
