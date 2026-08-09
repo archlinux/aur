@@ -5,7 +5,7 @@
 pkgname=python-loro
 _name=${pkgname#python-}
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Loro CRDT"
 arch=(any)
 url='https://github.com/loro-dev/loro-py'
@@ -29,7 +29,9 @@ b2sums=('d8a4551e4a87bf00ef90041756d8b1650d668f983b8794e218a215313936b41c2bfbb9e
 
 build() {
     cd "$_name-py-$pkgver" || exit
-    maturin build --find-interpreter --release -o dist
+
+    rm -rf ./dist # Delete old dist folder if exist
+    maturin build -i /usr/bin/python --release -o dist
 }
 
 check() {

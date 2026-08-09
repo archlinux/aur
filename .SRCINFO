@@ -1,7 +1,7 @@
 pkgbase = python-loro
 	pkgdesc = Python bindings for Loro CRDT
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loro-dev/loro-py
 	arch = any
 	license = MIT
