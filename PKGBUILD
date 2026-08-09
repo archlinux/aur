@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=5
+pkgrel=7
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -42,6 +42,7 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'zenity-session-quit.py'
         'zenity-run-dialog.py'
         'zenity-confirm-dialog.py'
+        'zenity-question-dialog.py'
         'patch-dialogs.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
@@ -50,7 +51,8 @@ sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '941feee7505bf2dd3fe30c8e755d1bc2b9ef8994b624c3ed236c41e769a3b0b9'
             '1800fb7b95b3eede3c003ead6a5f8507f0bef982511b79da15b3ec11833bc0f8'
             '0298bfcae9fe8563e7974a35c44f9dead0b1e598862e399e071deefe37d38d95'
-            '45442a8aaa6eca821490aa534f1d957de6ee46f1bd5d553b69bfb3d370d22d05')
+            '57656be9f89f5e93e388705cacf36199e94a703f15424f6f2002a853ecdd4a9e'
+            '64e6a318cb09597ce9453cd596cc993522176640ac9c835ae3d63567098b2185')
 
 # Disable strip and debug to speed up repackaging
 options=('!strip' '!debug' 'emptydirs')
@@ -86,6 +88,12 @@ package() {
   rm -f "$pkgdir/usr/share/applications/nemo-autorun-software.desktop" 2>/dev/null || true
   rm -f "$pkgdir/etc/xdg/autostart/nemo-autostart.desktop" 2>/dev/null || true
 
+  # Ensure dory-autostart.desktop is installed in /etc/xdg/autostart/
+  if [ -f "$pkgdir/usr/share/applications/dory-autostart.desktop" ]; then
+    install -Dm644 "$pkgdir/usr/share/applications/dory-autostart.desktop" \
+      "$pkgdir/etc/xdg/autostart/dory-autostart.desktop"
+  fi
+
   # Route GTK3 native file choosers through the portal so Dory is used
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-portal.sh" << 'EOF'
 export GTK_USE_PORTAL=1
@@ -114,18 +122,19 @@ EOF
   install -Dm755 "$srcdir/zenity-confirm-dialog.py" \
     "$pkgdir/usr/bin/zenity-confirm-dialog.py"
 
+  # Install zenity question dialog helper (3-button support)
+  install -Dm755 "$srcdir/zenity-question-dialog.py" \
+    "$pkgdir/usr/bin/zenity-question-dialog.py"
+
   # Install dialog patching script
   install -Dm755 "$srcdir/patch-dialogs.py" \
     "$pkgdir/usr/share/cinnamon/patch-dialogs.py"
 
-  # Patch main.js to route Alt+F2 runDialog, ShowEndSessionDialog, Polkit authentication, NetworkManager secrets, and Keyring prompts to GTK3 helpers
+  # Patch main.js to route Alt+F2 runDialog and ShowEndSessionDialog to GTK3 helpers
   if [ -f "$pkgdir/usr/share/cinnamon/js/ui/main.js" ]; then
     sed -i \
       -e 's|runDialog = new RunDialog.RunDialog();|runDialog = { open: function() { Util.spawnCommandLine("/usr/bin/zenity-run-dialog.py"); return true; }, close: function() {}, destroy: function() {} };|' \
-      -e 's|function showEndSessionDialog(mode) {|function showEndSessionDialog(mode) { Util.spawnCommandLine("/usr/bin/cinnamon-session-quit"); return;|' \
-      -e 's|PolkitAuthenticationAgent.init();|// PolkitAuthenticationAgent.init();|' \
-      -e 's|networkAgent = new NetworkAgent.NetworkAgent();|// networkAgent = new NetworkAgent.NetworkAgent();|' \
-      -e 's|KeyringPrompt.init();|// KeyringPrompt.init();|' \
+      -e 's|function showEndSessionDialog(mode) {.*|function showEndSessionDialog(mode) { Util.spawnCommandLine("/usr/bin/cinnamon-session-quit"); }|' \
       "$pkgdir/usr/share/cinnamon/js/ui/main.js"
   fi
 

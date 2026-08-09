@@ -18,6 +18,14 @@ def main():
         sys.exit(1)
     
     js_dir = sys.argv[1]
+
+    # Patch main.js - runDialog and showEndSessionDialog
+    patch_file(f"{js_dir}/main.js", [
+        (r'runDialog = new RunDialog\.RunDialog\(\);',
+         'runDialog = { open: function() { Util.spawnCommandLine("/usr/bin/zenity-run-dialog.py"); return true; }, close: function() {}, destroy: function() {} };'),
+        (r'function showEndSessionDialog\(mode\) \{.*?\n\}',
+         'function showEndSessionDialog(mode) {\n    Util.spawnCommandLine("/usr/bin/cinnamon-session-quit");\n}')
+    ])
     
     # Patch desklet.js - remove desklet confirmation
     patch_file(f"{js_dir}/desklet.js", [
@@ -85,6 +93,42 @@ def main():
     
     with open(f"{js_dir}/appletManager.js", 'w') as f:
         f.write(content)
+    
+    # Patch closeDialog.js - app not responding dialog
+    patch_file(f"{js_dir}/closeDialog.js", [
+        # Replace _initDialog to use zenity
+        (r'_initDialog\(\) \{.*?this\._dialog\.addButton\(\{.*?label: _\(\'Force Quit\'\).*?\}\);.*?\}',
+         '''_initDialog() {
+        if (this._dialog)
+            return;
+
+        let tracker = Cinnamon.WindowTracker.get_default();
+        let windowApp = tracker.get_window_app(this._window);
+        let name = windowApp ? windowApp.get_name() : this._window.get_title();
+        let cmd = "/usr/bin/zenity-question-dialog.py --text=\\"" + name + " is not responding.\\\\nYou may choose to wait a short while or force the app to quit.\\" --title=\\"Application Not Responding\\" --button1=\\"Wait\\" --button2=\\"Force Quit\\"";
+        
+        Util.spawnCommandLineAsync(cmd,
+            () => this._onWait(),
+            () => this._onClose()
+        );
+    }''')
+    ])
+    
+    # Patch appletManager.js - 3-button dialog for unsupported panel layout
+    patch_file(f"{js_dir}/appletManager.js", [
+        # Replace the 3-button ModalDialog
+        (r'let dialog = new ModalDialog\.ModalDialog\(\);.*?dialog\.open\(\);',
+         '''let cmd = "/usr/bin/zenity-question-dialog.py --text=\\"This applet does not support panels of that type. This can cause visual glitches in the panel. Would you like to continue using it anyway, remove it from the panel, or try to move it to a different panel?\\" --title=\\"Applet Layout\\" --button1=\\"Leave it\\" --button2=\\"Remove it\\" --button3=\\"Move to another panel\\"";
+            Util.spawnCommandLineAsync(cmd,
+                () => verticalPanelOverride(appletDefinition),
+                () => {
+                    Util.spawnCommandLineAsync("/usr/bin/zenity-question-dialog.py --text=\\"Remove or Move?\\" --title=\\"Choose\\" --button1=\\"Remove it\\" --button2=\\"Move to another panel\\"",
+                        () => removeApplet(appletDefinition),
+                        () => moveApplet(appletDefinition, allowedLayout)
+                    );
+                }
+            );''')
+    ])
     
     print("All dialogs patched successfully!")
 
