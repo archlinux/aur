@@ -1,0 +1,17 @@
+pkgbase = artix-launcher
+	pkgdesc = Artix Games Launcher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://artix.com/
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = artix-launcher
+	conflicts = artix-launcher
+	options = !strip
+	source = artix-launcher-1.0.0.AppImage::https://launch.artix.com/latest/Artix_Games_Launcher-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = artix-launcher
