@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=gliderlabs-sigil
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Standalone string interpolator and template processor'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 # a package with the same name exists and provides a binary with the same name
 conflicts=('sigil')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16deb2e044779d786343ce387b93d382418690a4ff6e766778725881c2b5235d')
+sha256sums=('d6d2669cbf218fe52f4a4a74cb977c260a47910eb11e4e8685961fc49996f963')
 makedepends=('go')
 
 build() {
