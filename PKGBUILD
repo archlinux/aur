@@ -1,6 +1,6 @@
 # Maintainer: Undercat037 <deltacatdeveloper@gmail.com>
 pkgname=aura-emerge
-pkgver=1.33.0
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="Portage-like wrapper for Arch Linux using Aura"
 arch=('x86_64')
@@ -17,7 +17,7 @@ backup=('etc/emerge/world.set')
 #git tag -a v1.27.0 -m "..." && git push origin v1.27.0
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
 #updpkgsums
-sha256sums=('91010ece9d468697d42a81d2cff0d9d55b969778eb84286b39c2afebd0c3ded8')
+sha256sums=('98be06687d03770e5c2c9fe080f887506e082d2fc09ebb9104e1314e68139ac5')
 build() {
   cd "$pkgname"
   cargo build --release
