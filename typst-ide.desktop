@@ -1,1 +1,11 @@
-../../coding/typst-ide/typst-ide.desktop
+[Desktop Entry]
+Type=Application
+Name=Typst IDE
+GenericName=Typst Editor
+Comment=A modern IDE for Typst
+Exec=typst-ide
+Icon=typst-ide
+Categories=Development;IDE;TextEditor;
+Terminal=false
+StartupWMClass=Typst IDE
+MimeType=text/typst;
