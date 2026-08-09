@@ -3,7 +3,7 @@
 _pkgauthor=goretk
 _pkgname=redress
 pkgname=${_pkgname}-bin
-pkgver=1.2.78
+pkgver=1.2.80
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A tool for analyzing stripped Go binaries"
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('b19394428720dc047513016fbb2c3a000a48569c70694fc718298e0db641eaca')
+sha256sums_x86_64=('f7636372fd79bc48a771843fa64b7c1c244eafbb64abfcc4c9c44b6a3639f7f5')
 
 
 package() {
