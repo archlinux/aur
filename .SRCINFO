@@ -1,7 +1,7 @@
 pkgbase = what-the-port
 	pkgdesc = Quickly lookup what a port is used for.
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyqsimon/what-the-port
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = what-the-port
 	license = AGPL-3.0-or-later
 	makedepends = cargo
 	depends = libgcc
-	options = !lto
 	source = what-the-port-0.5.6.tar.gz::https://static.crates.io/crates/what-the-port/what-the-port-0.5.6.crate
 	sha512sums = 83848080d667250d15874775e11afc65d1825a651b495571f09096c3057a45de249451e22ace8e3736375f70b1d9c975c2bcfa9e9108689844e414442e6e3bf6
 
