@@ -1,0 +1,24 @@
+# TODO See https://github.com/moneymanagerex/moneymanagerex/issues/8363
+
+diff --git a/src/util/mmImage.cpp b/src/util/mmImage.cpp
+index 0bb37ba1a..3c5aa44d1 100644
+--- a/src/util/mmImage.cpp
++++ b/src/util/mmImage.cpp
+@@ -694,7 +694,7 @@ wxVector<wxBitmapBundle> NavTreeIconImages::getList(const int size)
+                 if (fullPath.FileExists()) {
+                     if (fullPath.GetExt().Lower() == "svg") {
+                         wxBitmapBundle bundle = wxBitmapBundle::FromSVGFile(fullPath.GetFullPath(), bSize);
+-                        bitmaps.emplace_back(bundle);
++                        bitmaps.push_back(bundle);
+                         m_indexMap[bidx] = filename;
+                         m_indexReverseMap[filename] = bidx++;
+                     }
+@@ -702,7 +702,7 @@ wxVector<wxBitmapBundle> NavTreeIconImages::getList(const int size)
+                         wxImage image;
+                         if (image.LoadFile(fullPath.GetFullPath())) {
+                             wxImage img = image.Scale(x, x, wxIMAGE_QUALITY_HIGH);
+-                            bitmaps.emplace_back(wxBitmap(img));
++                            bitmaps.push_back(wxBitmap(img));
+                             m_indexMap[bidx] = filename;
+                             m_indexReverseMap[filename] = bidx++;
+                         }
