@@ -1,7 +1,7 @@
 pkgbase = neru-bin
 	pkgdesc = tool to navigate your entire screen without touching the mouse
-	pkgver = 1.46.1
-	pkgrel = 2
+	pkgver = 1.51.0
+	pkgrel = 1
 	url = https://github.com/y3owk1n/neru
 	arch = x86_64
 	license = MIT
@@ -19,9 +19,9 @@ pkgbase = neru-bin
 	provides = neru
 	conflicts = neru
 	options = !debug
-	source = neru-1.46.1.zip::https://github.com/y3owk1n/neru/releases/download/v1.46.1/neru-linux-amd64.zip
+	source = neru-1.50.0.zip::https://github.com/y3owk1n/neru/releases/download/v1.50.0/neru-linux-amd64.zip
 	source = neru_license::https://raw.githubusercontent.com/y3owk1n/neru/main/LICENSE
-	sha256sums = 979b6e39b4f531d1028d00045ee11bc899e7b045035a8923461d3b53735f0b77
+	sha256sums = a0855b6ddc3e671879b7c91462dcfc89e624b629dcab4fb5d7a7b0ef3b446283
 	sha256sums = SKIP
 
 pkgname = neru-bin
