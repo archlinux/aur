@@ -16,15 +16,14 @@ _greeter_setup() {
     chown -R greeter:greeter /var/cache/caelestia-greeter
     chmod 755 /var/cache/caelestia-greeter
 
-    # Setup /etc/pam.d/greetd with GNOME Keyring & KWallet auto-unlock
+    # Setup /etc/pam.d/greetd with GNOME Keyring auto-unlock
     cat << 'EOF' > /etc/pam.d/greetd
 #%PAM-1.0
 
 auth       required     pam_securetty.so
 auth       requisite    pam_nologin.so
-auth       optional     pam_gnome_keyring.so
-auth       optional     pam_kwallet5.so
 auth       include      system-local-login
+auth       optional     pam_gnome_keyring.so
 
 account    include      system-local-login
 
@@ -32,7 +31,6 @@ password   include      system-local-login
 
 session    include      system-local-login
 session    optional     pam_gnome_keyring.so auto_start
-session    optional     pam_kwallet5.so auto_start
 EOF
 
     # Deploy the Hyprland kiosk greetd configuration
