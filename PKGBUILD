@@ -1,7 +1,7 @@
 # Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 pkgname=eez-studio-bin
 _pkgname=eezstudio
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Cross-platform low-code GUI and automation (Prebuilt binary)"
 arch=("x86_64")
@@ -18,7 +18,7 @@ depends=(
     'python'
 )
 source=("https://github.com/eez-open/studio/releases/download/v$pkgver/$_pkgname-$pkgver.x86_64.rpm")
-sha256sums=("b89de893ec63938c122d3dc8dd84c5c31054615fa8288b6fe63a8761259f4968")
+sha256sums=("20e7f0bad7aa0aff434fb90b6c8d43a4943de43669616d21eb3ee93136034e4f")
 package() {
 		pkgname_pretty="EEZ Studio"
         install -d "$pkgdir/opt/$pkgname_pretty"
