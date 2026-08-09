@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=iconic
-pkgver=2026.4.1
-pkgrel=2
+pkgver=2026.8.1
+pkgrel=1
 pkgdesc="An application made for GNOME written in Rust to easily add images on top of folders"
 arch=('x86_64')
 url="https://github.com/youpie/Iconic"
@@ -17,7 +17,7 @@ makedepends=(
   'meson'
 )
 source=("Iconic-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef372467332f421d78e0615ceeeebe574396f25b27cf3a1a69028166155a81f1')
+sha256sums=('c64cddb64bfbfc73fce17caba7fb387de77c313e7efb031458f99a3ac777ccbf')
 
 prepare() {
   cd "Iconic-$pkgver"
