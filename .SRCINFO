@@ -1,0 +1,12 @@
+pkgbase = handle-client-bin
+	pkgdesc = HDL Client Library from the Handle.Net Registry
+	pkgver = 9.3.2
+	pkgrel = 1
+	url = https://handle.net/client_download.html
+	arch = any
+	license = custom:HNR-9-CL-Java-License AND Apache-2.0
+	depends = java-runtime>=8
+	source = https://www.handle.net/hnr-source/handle-client-9.3.2-distribution.tar.gz
+	sha256sums = 1fb414d97bc9e1eebc5b39dcec0d1a03c373e84500b740f4d7e2d34f170d5cd2
+
+pkgname = handle-client-bin
