@@ -1,7 +1,7 @@
 # Maintainer: Sayem Chowdhury <sayem314 at yandex dot com>
 pkgname=lunarr
 _pkgrepo=lunarr-go
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Self-hosted media streaming server and Plex alternative for movies and TV'
 arch=('x86_64' 'aarch64')
