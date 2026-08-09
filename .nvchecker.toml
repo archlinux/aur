@@ -1,0 +1,5 @@
+[zish-bin]
+source = "github"
+github = "rotkonetworks/zish"
+use_latest_release = true
+prefix = "v"
