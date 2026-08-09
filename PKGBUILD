@@ -3,7 +3,7 @@
 
 pkgbase=stm32cubemx
 pkgname=(stm32cubemx stm32cubemx-jre)
-pkgver=6.18.0
+pkgver=6.18.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
@@ -13,9 +13,9 @@ makedepends=('rsync')
 source=("https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${pkgver//./}-lin.zip"
   "stm32cubemx.desktop"
   "stm32cubemx.sh")
-sha512sums=('12f70dbd574509cf279188eed7f6f57a964afa5cdc76f172669aa85e538bd4378aca0cb9b3b2445dbb83a1d6871bd189fe7431fd337e4588d0c3c55f08c595c0'
-  '83c67bef3e8f8434903fe0c067442cc7473459386fdcb0225af1b3a75fd75e2be393f91f877c8410f1055ca4ec531b2df707fcab10663cae382a7f4066c8548b'
-  'c28bf62bef34ed5469eb5852907d1b52215705434bb9daa15dd11ba8cbf44e910bddcc1b6784397c32287dde9dde148f6485db3c0c3fb505e4f1c2e0bc58bf51')
+sha512sums=('15a950ff8ad188f5bbc6b716929bad6161ccb598aa4183dd5e3e9171061019eb9b70120672cd902efd3d17e3b4a7555707507b7b70190a36c5b00151b8c09f01'
+            '83c67bef3e8f8434903fe0c067442cc7473459386fdcb0225af1b3a75fd75e2be393f91f877c8410f1055ca4ec531b2df707fcab10663cae382a7f4066c8548b'
+            'c28bf62bef34ed5469eb5852907d1b52215705434bb9daa15dd11ba8cbf44e910bddcc1b6784397c32287dde9dde148f6485db3c0c3fb505e4f1c2e0bc58bf51')
 
 prepare() {
   cd "${srcdir}"
