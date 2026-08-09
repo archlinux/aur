@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
-pkgver=1.0.0.r0.gf0c24e7
+pkgver=1.1.0.r10.g0b00518
 pkgrel=1
 pkgdesc="A modern meme editor built with GTK 4 and Libadwaita (git version)"
 arch=('x86_64' 'aarch64')

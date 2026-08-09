@@ -1,6 +1,6 @@
 pkgbase = memerist-git
 	pkgdesc = A modern meme editor built with GTK 4 and Libadwaita (git version)
-	pkgver = 1.0.0.r0.gf0c24e7
+	pkgver = 1.1.0.r0.gf0c24e7
 	pkgrel = 1
 	url = https://github.com/vani-tty1/memerist
 	arch = x86_64
