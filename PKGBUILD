@@ -2,7 +2,7 @@
 # Maintainer: AnDee
 
 pkgname=asgardex-appimage
-pkgver=1.45.0
+pkgver=1.45.1
 pkgrel=1
 pkgdesc="Professional Multi-Chain Trading Platform"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=("$_appimage")
 options=('!strip')
 
 _msgurl="$url/download/v$pkgver/msg${pkgver//./}.asc"
-sha256sums=('6a435fe6a1c12c7edf6804e73f748f5c2edf055a9ac0d4a60ea020723c1a5236')
+sha256sums=('d537301dbded1ae17534fc6ab78e1a08edcc89b7a3185bb436cf8760eff198b6')
 
 verify() {
     curl -L -o signedmsg.txt $_msgurl
