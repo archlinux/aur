@@ -2,6 +2,19 @@
 
 AUR package for [dbusqml](https://github.com/alexindigo/dbusqml) — a standalone D-Bus binding for QML (Qt6, no KDE dependencies). Tracks tagged releases.
 
+## Install
+
+```bash
+git clone https://github.com/alexindigo/aur-qt6-dbusqml.git
+cd aur-qt6-dbusqml && makepkg -si
+```
+
+When AUR is available, install via your AUR helper:
+
+```bash
+yay -S qt6-dbusqml
+```
+
 ## Contents
 
 - `PKGBUILD` — Arch Linux package build script.
