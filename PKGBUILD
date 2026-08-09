@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=9268
-_version=1.0.9268
+_tag=9365
+_version=1.0.9365
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -73,4 +73,4 @@ package() {
         
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('34461058ee7756e2e9429b7fe55cc08a13e2d870c4475778c5c8eea5d2d27ae2')
+sha256sums=('2564f38c42524830bdf5405357792edcd661a3724d4b8f1c9627fdbc5b61f44e')
