@@ -1,18 +1,18 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
 license=(MIT)
 depends=(libgcc libstdc++ glibc)
 makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd qt6-base qt6-declarative glib2 gobject-introspection
-             gtk4 cargo)
+             gtk4 cargo glslang)
 options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-cmake-Install-kde-wallpaper-to-correct-path.patch"
         "0002-cmake-Install-gnome-extensions-separately.patch")
-sha256sums=('5a5f52ce0a8759d699783e453f1c94e7ccaac4faf94d434256084e98efbf7679'
+sha256sums=('08439e8990da002f2a6d781edfe6b16aabd2025e6e8fb39f32200f33a788efc9'
             '1cfbc0f7388e2be1e9a4385d5d0310fabf28e930ad4c0fc8ff17d82795e98140'
             '5593469af684d71870cc6d41678ac2201879617f0538cc5c947fc990cb057c30')
 
@@ -35,7 +35,7 @@ build() {
     cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features \
+    RUST_BACKTRACE=full cargo build --frozen --release --all-features \
         --package waywallen-display \
         --bin waywallen-layer-shell
 }
