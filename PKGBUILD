@@ -1,7 +1,7 @@
 # Maintainer: kezuwoo <kezu15@proton.me>
 
 pkgname=kitsune
-pkgver=0.8.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="AniLiberty player"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
 'python'
 'python-gobject'
 'python-cairo'
+'python-keyring'
 'libadwaita'
 'gtk4'
 'gstreamer'
@@ -19,7 +20,6 @@ depends=(
 'gst-plugins-good'
 'gst-plugins-bad'
 'gst-plugin-gtk4'
-'python-requests'
 )
 
 makedepends=('meson' 'ninja' 'git' 'blueprint-compiler')
