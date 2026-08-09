@@ -2,17 +2,14 @@
 
 pkgname=workbuddy
 pkgver=5.3.8.34705286
-pkgrel=1
+pkgrel=2
 _commit=e9991e2b
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
 license=('custom')
 depends=('electron')
-makedepends=('7zip'
-	'npm'
-	'libicns'
-	'asar'
+makedepends=('asar'
 )
 checkdepends=()
 optdepends=(
@@ -21,39 +18,51 @@ optdepends=(
 )
 provides=()
 conflicts=()
+_registry="https://registry.npmjs.org"
 source=(
-  "https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg"
+  "https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver}-${_commit}.zip"
   WorkBuddy.desktop
+  icon.svg
+  "${_registry}/better-sqlite3/-/better-sqlite3-13.0.3.tgz"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            '6566e616904b2e168886c0523fbea7432a03e14d2e79fcb7b80ae88912e396a9'
+            'f7cd6f79585b139f7686e79cdfbc6e64a39adf34370467874569e4e827dd1b00'
+            '77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb')
+source_x86_64=("node-pty-x86_64.gz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
+source_aarhc64=("node-pty-aarh64.gz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
+sha256sums_x86_64=('53bee2cd02265b118392f7d99a4c72337f4a5003c0d0f9ee01646c19af59fa1f')
+sha256sums_aarch64=('SKIP')
 changelog="changelog.md"
 
 options=(!strip)
+noextract=("node-pty-x86_64.gz" "node-pty-aarh64.gz")
 prepare() {
-    rm -rf WorkBuddy/WorkBuddy.app/Contents/Resources/
-    7z -snld x WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg
-    mkdir -p WorkBuddy.app/Contents/Resources/node_modules
+    tar xzf node-pty-${CARCH}.gz -C WorkBuddy.app/Contents/Resources/
 }
 
 build() {
 	cd WorkBuddy.app/Contents/Resources
-	icns2png -x icon.icns
+##	rm -rf app.asar.unpacked/node_modules/@tencent  # no Linux build
 	asar e app.asar app.asar.unpacked || continue
 	find app.asar.unpacked -type f -exec sed -i "s/process.resourcesPath/\'\/opt\/workbuddy\'/g" {} +
 	#npm install @tencent-ai/codebuddy-code --omit=dev
-	npm install @lydell/node-pty better-sqlite3@13 --omit=dev
-	cp -a node_modules/* app.asar.unpacked/node_modules
+	rm -rf app.asar.unpacked/node_modules/{better-sqlite3,@lydell/node-pty-linux*}
+	mv ${srcdir}/package app.asar.unpacked/node_modules/better-sqlite3
+	if [ $CARCH == "x86_64" ]; then
+		mv package app.asar.unpacked/node_modules/@lydell/node-pty-linux-x64
+	else
+		mv package app.asar.unpacked/node_modules/@lydell/node-pty-linux-arm64
+	fi
 }
 
 package() {
-    install -D WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
+    install -Dm644 WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
+    install -Dm644 icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/workbuddy.svg
     cd WorkBuddy.app/Contents/Resources
-    install -D icon_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/WorkBuddy.png
-    install -D icon_1024x1024x32.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/WorkBuddy.png
+    install -Dm644 app.asar.unpacked/resources/icon.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/workbuddy.png
     install -d ${pkgdir}/opt/workbuddy
+    #install -D app.asar ${pkgdir}/opt/workbuddy/app.asar
     cp -a app.asar.unpacked ${pkgdir}/opt/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
