@@ -2,8 +2,8 @@
 
 pkgname=stm32cubemx2
 _pkgname=stm32cubemx2
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 
 _installer="stm32cubemx2-${pkgver}-X64-Linux-installer"
 source=("local://${_installer}")
-sha256sums=('f0982469405c248226e3eca66c9723a91b1c644e65aad21c73a4f6c869b03c33')
+sha256sums=('8fc23d1960ca6bac0922ecd3bfab34d7881f2be6fb382d80430503d7a01a0f3d')
 
 if [ ! -f "${startdir}/${_installer}" ]; then
   echo ""
