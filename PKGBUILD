@@ -2,10 +2,10 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=8.1.2
-pkgrel=2
+pkgver=9.0
+pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.1'
+_whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -17,7 +17,6 @@ depends=(
     'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
-    'celt'
     'chromaprint-fftw'
     'codec2'
     'dav1d'
@@ -29,7 +28,6 @@ depends=(
     'fribidi'
     'glib2'
     'glibc'
-    'glslang'
     'gnutls'
     'gsm'
     'harfbuzz'
@@ -146,12 +144,13 @@ makedepends=(
     'decklink-sdk'
     'ffnvcodec-headers'
     'git'
+    'glslang'
     'gmp'
     'libgl'
-    'libomxil-bellagio'
     'lv2'
     'nasm'
     'opencl-headers'
+    'spirv-headers'
     'vulkan-headers')
 provides=(
     'ffmpeg'
@@ -173,15 +172,15 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
+sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
             'SKIP'
             'SKIP'
-            '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
-            'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
+            'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
+            'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
-            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
-            '1bbd783da8483e2cffe99715125dddbd88c81ae36f28eee5ae7df5705c448077'
+            'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
+            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
+            '4a9a672f67cc0e5dd63bd7659f5a5198cd981e60bbbc1b9a63277758be6a7fdf'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -206,7 +205,7 @@ build() {
         '-DBUILD_SHARED_LIBS:BOOL=OFF'
         '-DCMAKE_BUILD_TYPE:STRING=None'
         "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
-        '-Wno-dev')
+        '-Wno-author')
     
     # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
     # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
@@ -222,8 +221,8 @@ build() {
         -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
         -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
-    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
-    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
+    # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
@@ -272,7 +271,6 @@ build() {
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
-        --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
         --enable-libdav1d \
@@ -285,7 +283,6 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libharfbuzz \
@@ -322,7 +319,6 @@ build() {
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
-        --disable-libshaderc \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
@@ -390,7 +386,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --disable-ohcodec \
-        --enable-omx \
         --enable-opencl \
         --enable-opengl \
         --enable-rkmpp \
