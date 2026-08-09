@@ -3,12 +3,12 @@
 pkgbase=xsane-git
 pkgname=('xsane-git' 'xsane-gimp-git')
 _gitname=xsane
-pkgver=0.999.r321.gc5ac0d9
+pkgver=0.999.r324.g88b80bb
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/sane-project/frontend/xsane"
 license=('GPLv2')
-makedepends=('autoconf' 'automake' 'gtk3' 'lcms2' 'sane' 'zlib' 'libjpeg' 'gimp')
+makedepends=('autoconf' 'automake' 'gtk3' 'lcms2' 'sane' 'zlib' 'libjpeg-turbo' 'gimp')
 source=(git+https://gitlab.com/sane-project/frontend/$_gitname.git)
 sha512sums=('SKIP')
 

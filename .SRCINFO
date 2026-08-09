@@ -1,5 +1,5 @@
 pkgbase = xsane-git
-	pkgver = 0.999.r321.gc5ac0d9
+	pkgver = 0.999.r324.g88b80bb
 	pkgrel = 1
 	url = https://gitlab.com/sane-project/frontend/xsane
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xsane-git
 	makedepends = lcms2
 	makedepends = sane
 	makedepends = zlib
-	makedepends = libjpeg
+	makedepends = libjpeg-turbo
 	makedepends = gimp
 	source = git+https://gitlab.com/sane-project/frontend/xsane.git
 	sha512sums = SKIP
