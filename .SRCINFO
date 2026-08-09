@@ -1,0 +1,23 @@
+pkgbase = lucid-spell
+	pkgdesc = LLM-powered desktop translator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/l1ngus/lucid-spell
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = gtk3
+	depends = glib2
+	depends = libsoup3
+	depends = openssl
+	source = lucid-spell-0.1.0.tar.gz::https://github.com/l1ngus/lucid-spell/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 426aa459f4c27c94e542192dde12e4e7a1a3ca335c95b7e47867697101362421
+
+pkgname = lucid-spell
