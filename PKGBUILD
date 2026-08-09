@@ -1,7 +1,7 @@
 # Maintainer: Uri Ramirez <urirocky@no.email>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Supermicro fan control systemd service for Linux (home) servers"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('smartmontools: SAS/SCSI disk temperatures and standby guard feature
 backup=('etc/smfc/smfc.conf' 'etc/default/smfc')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f83dd9e45acb287be20c7e62f61eaf73338cf2b3b2a4fba4297aff5df27006e4')
+sha256sums=('5123d001638a5842cfd12a8513acf663c05d055f2ef390e45bd3fb5ac6e0f027')
 
 build() {
   cd "$pkgname-$pkgver"
