@@ -1,12 +1,12 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=moneymanagerex
-# HINT: ! ALSO UPDATE COMMIT HASHES IN source !
-pkgver=1.9.2
+# HINT: ! ALSO UPDATE COMMIT HASHES IN source and execute "updpkgsums"!
+pkgver=1.9.3
 pkgrel=1
-pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
+pkgdesc='MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.'
 arch=('x86_64')
-url="http://www.moneymanagerex.org/"
+url='http://www.moneymanagerex.org/'
 license=('GPL-2.0-or-later')
 depends=('wxwidgets-gtk3' 'webkit2gtk-4.1')
 makedepends=('appstream' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
@@ -15,66 +15,69 @@ replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex-git')
 source=("git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver}"
-              "git+https://github.com/FVANCOP/ChartNew.js.git#commit=b9e576fffa368873caed5c5dcdeb1de99637da5f"
-              "git+https://github.com/moneymanagerex/LuaGlue.git#commit=ccffa36799596cc2e9a179fe18d2bf6ce07ff09a"
-              "git+https://github.com/apexcharts/apexcharts.js.git#commit=2e3dcd08948d6d92517b7b9fec3aa2100ada3a57"
-              "git+https://github.com/moneymanagerex/html-template.git#commit=e43bec4c0e648a5311aaae4211834cdc085178a4"
-              "git+https://github.com/fmtlib/fmt.git#commit=e3ddede6c4ee818825c4e5a6dfa1d384860c27d9"
-              "git+https://github.com/lua/lua.git#commit=d71a548685eb3ac5ea598d6a9e7481389c558808"
-              "git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6"
-              "git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461"
-              "git+https://github.com/moneymanagerex/database.git#commit=5a77461d932541cbcd10f2c776dd33398b335964"
-              "git+https://github.com/moneymanagerex/general-reports.git#commit=4229e9c8a9b073d7565195d38a651ccdaec838c9"
-              "git+https://github.com/moneymanagerex/themes.git#commit=beef440deef32fa4b4c57bb10ec715a679697eaf")
-sha512sums=('SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP'
-                        'SKIP')
+              'git+https://github.com/FVANCOP/ChartNew.js.git#commit=b9e576fffa368873caed5c5dcdeb1de99637da5f'
+              'git+https://github.com/moneymanagerex/LuaGlue.git#commit=ccffa36799596cc2e9a179fe18d2bf6ce07ff09a'
+              'git+https://github.com/apexcharts/apexcharts.js.git#commit=2e3dcd08948d6d92517b7b9fec3aa2100ada3a57'
+              'git+https://github.com/moneymanagerex/html-template.git#commit=e43bec4c0e648a5311aaae4211834cdc085178a4'
+              'git+https://github.com/fmtlib/fmt.git#commit=e3ddede6c4ee818825c4e5a6dfa1d384860c27d9'
+              'git+https://github.com/lua/lua.git#commit=d71a548685eb3ac5ea598d6a9e7481389c558808'
+              'git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6'
+              'git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461'
+              'git+https://github.com/moneymanagerex/database.git#commit=5a77461d932541cbcd10f2c776dd33398b335964'
+              'git+https://github.com/moneymanagerex/general-reports.git#commit=f4596493c1d71227fbdd9e0fe8372d5ff24dccfd'
+              'git+https://github.com/moneymanagerex/themes.git#commit=beef440deef32fa4b4c57bb10ec715a679697eaf'
+              '8363.patch')
+sha512sums=('3bf7c56e31cedb4ea6e0367f11ab90968e31cefde389800ea25390275ab08eb76041a56bcead34655409a1df48be9aad8e7b24866ab047d5e12fa9694fda5258'
+            '12730f63c9f54d3c3c1e2d39c46d47077f33818b58d94a4984f1a20ed5819032ac84d07d5ddfb185fa33b01a401c4a87596d689d55ed5b2d5b3e2f9e3c1bb280'
+            '346d3ee681c4cd2325586682e31ebf6467a002b006cd8f3116460e3c3857e44287b35a26e3e190c95d23e3d4e26df83b540f72e76ee9dec8e375c1644575e59d'
+            '39c1bff410020ed34c36adf14f93003a64a8774d4cf4e45378c466b791c69d9273e5bd6b7dae5def0aa6eaf464c07a9938d7fd3fd1932620d2550a90c172f62c'
+            'c7a0e9eae4fb0baa75fa06794ab5fe52480d9112cf88b8a04029c2930407bff9296bd911114db55986d9db58d450ea4845b3859cf245ae80797428dac9e1c880'
+            'd21062620861fd00220ffde1b814ededa6a43a50dfc6480f8157eb84e6e4d13f7462400716af84abc37d49ac079e7154bc93ee04a8819326376b546141c9167e'
+            'f887ab682e17b8a88874220574383bc4135e72ab2e64af04dbd3622a0ff12dc264f21595d46fa04a42b991bab20301190a306a6e58b57ab0bcf24f8468d6ff7d'
+            '0ebb7793a854a431ab3eee31580bc40672a268c2d8d208eea5f52bef68fb5d7b146953c545a0c5fd06681d20e43d4a656ff724be6cbcd4495078b2704de64d25'
+            '98d912f0b7d577968d1ba7bec7e896635de5ae4ab9f1c59bac013cebcb93cd4e2e12a4175593c5e176478fabda470b2ceeadbd548eab736697baaa346095b3ed'
+            'f064f86ef80d5e0bf42c6d5a172081458867711078f3f45b35643cf5f2f749a8957904de64a843a14a04d4bb7e8379fc34428d3e4dcd67da6f20cb4df8e1ba44'
+            'a706a5a30ee02d23b2655d607de3c775727b56f75e11cf40cb15411f5981060a8e8eace1f8ead3d2b94ea13c24ea9f440753aa9aa74e4c8b29f8288cf901f868'
+            '043b2c7d96f0c0b5394652b60ab70beea2f9b01c8959b5168740410eef8662b84362e195b47b435cb464c1f097c4376855d4670213b57ef35bfd5f5c284e2f29'
+            '3860255020f9c39f3c80b9c9d5c9f6ee3cf5e1844a37a27031a135d07fe5b392dcf0a4ba38077d5ae20bf1d3c7c01fd10c77f86a79484a0620558fb5b6e412bf')
 
 prepare() {
-  cd "${srcdir}"/moneymanagerex
+  cd "${srcdir}/moneymanagerex"
+
+  # TODO Workaround needed for wxWidgets 3.2. See https://github.com/moneymanagerex/moneymanagerex/issues/8363
+  git apply "${srcdir}/8363.patch"
 
   git submodule init
-  git config submodule.3rd/ChartNew.js.url "$srcdir/ChartNew.js"
-  git config submodule.3rd/LuaGlue.url "$srcdir/LuaGlue"
-  git config submodule.3rd/apexcharts.js.url "$srcdir/apexcharts.js"
-  git config submodule.3rd/cgitemplate.url "$srcdir/html-template"
-  git config submodule.3rd/fmt.url "$srcdir/fmt"
-  git config submodule.3rd/lua.url "$srcdir/lua"
-  git config submodule.3rd/rapidjson.url "$srcdir/rapidjson"
-  git config submodule.3rd/wxsqlite3.url "$srcdir/wxsqlite3"
-  git config submodule.database.url "$srcdir/database"
-  git config submodule.general-reports.url "$srcdir/general-reports"
-  git config submodule.themes.url "$srcdir/themes"
+  git config submodule.3rd/ChartNew.js.url '$srcdir/ChartNew.js'
+  git config submodule.3rd/LuaGlue.url '$srcdir/LuaGlue'
+  git config submodule.3rd/apexcharts.js.url '$srcdir/apexcharts.js'
+  git config submodule.3rd/cgitemplate.url '$srcdir/html-template'
+  git config submodule.3rd/fmt.url '$srcdir/fmt'
+  git config submodule.3rd/lua.url '$srcdir/lua'
+  git config submodule.3rd/rapidjson.url '$srcdir/rapidjson'
+  git config submodule.3rd/wxsqlite3.url '$srcdir/wxsqlite3'
+  git config submodule.database.url '$srcdir/database'
+  git config submodule.general-reports.url '$srcdir/general-reports'
+  git config submodule.themes.url '$srcdir/themes'
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "${srcdir}"/moneymanagerex
+  cd "${srcdir}/moneymanagerex"
 
-  # Disable all warnings when building, then configure CMake
-  export CXXFLAGS=-w
-
-  cmake -DCMAKE_BUILD_TYPE=Release -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
+  # Disable all warnings when building, then configure CMake by using Parameter '-w'
+  cmake -DCMAKE_BUILD_TYPE=Release -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -w" .
 
   cmake --build .
 }
 
 package() {
-  cd "${srcdir}"/moneymanagerex
+  cd "${srcdir}/moneymanagerex"
 
   make DESTDIR="${pkgdir}" install
 
   # TODO Workaround for https://github.com/moneymanagerex/moneymanagerex/issues/7699
-  cd "${pkgdir}"/
+  cd "${pkgdir}/"
   rm -rf usr/include/fmt/
   rm -rf usr/lib/cmake/fmt/
   rm -f usr/lib/pkgconfig/fmt.pc
