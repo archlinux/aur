@@ -1,6 +1,6 @@
 pkgbase = kiro-ide
 	pkgdesc = An agentic AI IDE with spec-driven development from prototype to production
-	pkgver = 1.0.242
+	pkgver = 1.0.288
 	pkgrel = 1
 	epoch = 2
 	url = https://kiro.dev/
@@ -41,12 +41,12 @@ pkgbase = kiro-ide
 	conflicts = kiro
 	options = !debug
 	options = !strip
-	source = kiro-ide-1.0.242.deb::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.242/deb/kiro-ide-1.0.242-stable-linux-x64.deb
-	source = kiro-ide-1.0.242-deb-signature.bin::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.242/deb/signature.bin
-	source = kiro-ide-1.0.242-certificate.pem::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.242/deb/certificate.pem
+	source = kiro-ide-1.0.288.deb::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.288/deb/kiro-ide-1.0.288-stable-linux-x64.deb
+	source = kiro-ide-1.0.288-deb-signature.bin::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.288/deb/signature.bin
+	source = kiro-ide-1.0.288-certificate.pem::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.288/deb/certificate.pem
 	source = Kiro-LICENSE.txt
-	b2sums = dc285de5be42aabbb82803c501c542b7e44561c40ba494898d293120eed8283e4a3ed8412a92c19db29fa4e0862a24be57179e8632d0c82672c8cac9deef4bb1
-	b2sums = 63317a36a14a827bba58b226e31ccc633e032159b151f2101f5af069acb2b65702b5835894548583f2666f69f9be94739a4b9015d7cad0c817bb629aa40f4d81
+	b2sums = 605141798ece5407e232c3f6a2a869f78d58bd31ab02cb47f04b0ab1e7a6c6b84f10bf8cda17f6c84f76de0f563ed8d2c83459589ae08d397d468dcf1333ceba
+	b2sums = 864ebb126e7a01b7e74ccc401a6459a3602d011646ab41cdf7602323fbfd1c79a4d0ba8d0e0a723e4117af51b82b145e67a26bd4656ea28def083f899a29a335
 	b2sums = 4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8
 	b2sums = 4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01
 
