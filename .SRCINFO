@@ -1,9 +1,9 @@
 pkgbase = bahn-regio-entfernungsrechner-bin
 	pkgdesc = Calculates fare kilometres for subscription tickets for DB regio. Upstream name: 'Entfernungsrechner für Fahrvergünstigungen.'
 	pkgver = 3.2d_220106
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = https://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/
+	url = https://web.archive.org/web/20240627090817/https://www.evg-online.org/deine-vorteile/vorteile-und-serviceleistungen/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -16,9 +16,9 @@ pkgbase = bahn-regio-entfernungsrechner-bin
 	replaces = bahn-regio-entfernungsrechner<=1:3.2d_20210104
 	noextract = entfernungsrechner_220106.zip
 	options = emptydirs
-	source = entfernungsrechner_220106.zip::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/220106_Entfernungsrechner.zip
+	source = entfernungsrechner_220106.zip::https://web.archive.org/web/20250315174301/https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/220106_Entfernungsrechner.zip
 	source = entfernungsrechner.sh
-	source = Entfernungsrechner_Benutzerhandbuch.pdf::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf
+	source = Entfernungsrechner_Benutzerhandbuch.pdf::https://web.archive.org/web/20241111103724/https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf
 	source = license-dummy.txt
 	sha256sums = 6c5e9a44f9e9d9a4afa29b2c63f977f129ceb30a1a97881ec2f5ab26db9babc5
 	sha256sums = 8347288b3a402c8075e5ccc24d23f3ae123ebebedd4116ed5e2352cf1a7b24ac

@@ -7,13 +7,13 @@ pkgname="${_pkgname}-bin"
 epoch=0
 _programdate=220106
 pkgver="3.2d_${_programdate}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates fare kilometres for subscription tickets for DB regio. Upstream name: 'Entfernungsrechner für Fahrvergünstigungen.'"
 arch=(
   'i686'
   'x86_64'
 )
-url="https://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/"
+url="https://web.archive.org/web/20240627090817/https://www.evg-online.org/deine-vorteile/vorteile-und-serviceleistungen/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/"
 license=('custom')
 
 groups=()
@@ -38,9 +38,9 @@ replaces=(
 
 
 source=(
-  "entfernungsrechner_${_programdate}.zip::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/${_programdate}_Entfernungsrechner.zip"
+  "entfernungsrechner_${_programdate}.zip::https://web.archive.org/web/20250315174301/https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/${_programdate}_Entfernungsrechner.zip"
   "entfernungsrechner.sh"
-  "Entfernungsrechner_Benutzerhandbuch.pdf::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf"
+  "Entfernungsrechner_Benutzerhandbuch.pdf::https://web.archive.org/web/20241111103724/https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf"
   "license-dummy.txt"
 )
 
