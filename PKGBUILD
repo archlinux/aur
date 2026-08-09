@@ -1,13 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
-_fc_ver=0.2.2
+_fc_ver=0.1.1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64' 'aarch64')
 url="https://bytedz.com/products/pclink"
-license=('AGPL-3.0-or-later AND LicenseRef-custom')
+license=(
+  'AGPL-3.0-or-later'
+  'LicenseRef-custom'
+  'PolyForm-Noncommercial-1.0.0'
+)
 depends=(
   'gst-libav'
   'gst-plugin-pipewire'
@@ -26,29 +30,24 @@ depends=(
   'python-cryptography'
   'python-distro'
   'python-fastapi'
-  'python-getmac'
   'python-gobject'
   'python-jinja'
-  'python-keyboard'
   'python-mss'
   'python-multipart'
-  'python-packaging'
-  'python-pefile'
   'python-pillow'
   'python-prettytable'
   'python-psutil'
-  'python-pyautogui'
-  'python-pydantic'
   'python-qrcode'
   'python-questionary'
   'python-requests'
   'python-websockets'
-  'python-wsproto'
   'python-yaml'
   'sudo'
   'systemd'
   'uvicorn'
+  'which'
   'xdg-desktop-portal'
+  'xdg-utils'
 )
 makedepends=(
   'cargo'
@@ -63,7 +62,6 @@ makedepends=(
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
   'power-profiles-daemon: Required for Energy Pulse Pro Extension'
-  'python-aiofiles: Improves upload performance with async file I/O'
   'python-pynput: Fallback for input control, required for Media Master Pro Extension'
   'python-evdev: Input control on Wayland'
   'python-pyperclip: Fallback for clipboard support'
@@ -72,15 +70,14 @@ optdepends=(
   'speedtest-cli: Required for PC Speed Test Extension'
   'wl-clipboard: Clipboard support on Wayland'
 )
-_commit=a8798f26530933f3e41791d5c5304f6df83c90b2
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-        "FerrumCast-${_fc_ver}.tar.gz::https://github.com/BYTEDz/FerrumCast/archive/refs/tags/v${_fc_ver}.tar.gz")
-sha256sums=('fdbe4ec836df26a4c55f9d4324cfb5b6a5de52d7d1346d571d6b85ef2c632bc4'
-            '4852789895d408786a9220418435a7ce6fd239174f6b5e73bbe9e52d2c45b307')
+        "git+https://github.com/BYTEDz/FerrumCast.git#tag=v${_fc_ver}")
+sha256sums=('796e74f7bf5c9a4e1b19fe23aa868aa10e344301043e84b901355b0f9e614f60'
+            '4656592fed83256d0127454f0502b55c76e086ec235a9236a67716f84d449da0')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path="FerrumCast-${_fc_ver}/Cargo.toml" --locked --target host-tuple
+  cargo fetch --manifest-path FerrumCast/Cargo.toml --locked --target host-tuple
 
   cd "PCLink-$pkgver"
 
@@ -94,7 +91,7 @@ prepare() {
 }
 
 build() {
-  pushd "FerrumCast-${_fc_ver}"
+  pushd "FerrumCast"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -114,7 +111,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -Dm755 "$srcdir/FerrumCast-${_fc_ver}/target/release/ferrumcast" -t \
+  install -Dm755 "$srcdir/FerrumCast/target/release/ferrumcast" -t \
     "${pkgdir}${site_packages}/$pkgname/assets/bin/"
 
   install -Dm755 "scripts/linux/$pkgname-power-wrapper" -t "$pkgdir/usr/bin/"
@@ -128,5 +125,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "scripts/linux/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-PCLink"
+  install -Dm644 "$srcdir/FerrumCast/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-FerrumCast"
 }
