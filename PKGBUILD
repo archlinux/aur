@@ -1,27 +1,25 @@
 # Maintainer: Jay Man <jhollis.ga@gmail.com>
 
 pkgname=ffmpeg-cuda-full
-pkgver=8.1.1
-pkgrel=3
+pkgver=9.0
+pkgrel=1
 epoch=2
-pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
+pkgdesc='FFmpeg with CUDA/NVENC and all codecs including nonfree libfdk-aac'
 arch=('x86_64')
 url='https://ffmpeg.org/'
-license=('GPL-3.0-only' 'custom:nonfree')
+license=('GPL-3.0-only' 'LicenseRef-FFmpeg-nonfree')
 depends=(
     'alsa-lib'
     'aom'
     'aribb24'
     'bzip2'
     'cairo'
-    'cuda'
     'dav1d'
     'fontconfig'
     'freetype2'
     'fribidi'
     'glib2'
     'glibc'
-    'glslang'
     'gmp'
     'gnutls'
     'gsm'
@@ -34,12 +32,10 @@ depends=(
     'libavc1394'
     'libbluray'
     'libbs2b'
-    'libcdio'
     'libcdio-paranoia'
     'libdrm'
-    'libdvdnav'
-    'libdvdread'
     'libfdk-aac'
+    'libgcc'
     'libgl'
     'libiec61883'
     'libjxl'
@@ -64,6 +60,7 @@ depends=(
     'libxext'
     'libxml2'
     'libxv'
+    'lilv'
     'nvidia-utils'
     'ocl-icd'
     'onevpl'
@@ -96,6 +93,7 @@ makedepends=(
     'amf-headers'
     'avisynthplus'
     'clang'
+    'cuda'
     'ffnvcodec-headers'
     'git'
     'ladspa'
@@ -104,6 +102,7 @@ makedepends=(
     'opencl-headers'
     'perl'
     'python'
+    'spirv-headers'
     'vulkan-headers'
 )
 optdepends=(
@@ -116,51 +115,28 @@ optdepends=(
     'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
-    "ffmpeg=$pkgver"
-    'libavcodec.so=62-64'
-    'libavdevice.so=62-64'
-    'libavfilter.so=11-64'
-    'libavformat.so=62-64'
-    'libavutil.so=60-64'
-    'libswresample.so=6-64'
-    'libswscale.so=9-64'
+    "ffmpeg=${epoch}:${pkgver}"
+    'libavcodec.so'
+    'libavdevice.so'
+    'libavfilter.so'
+    'libavformat.so'
+    'libavutil.so'
+    'libswresample.so'
+    'libswscale.so'
 )
 conflicts=('ffmpeg')
-replaces=('ffmpeg')
 install=ffmpeg-cuda-full.install
 options=('!lto')
 source=(
-    "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git"
+    "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}"
     "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
 )
-b2sums=('SKIP'
+b2sums=('c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
-
-# Dynamically resolve the latest stable release tag from upstream.
-# This runs at build time so the package always tracks the newest FFmpeg.
-pkgver() {
-    cd ffmpeg
-    git fetch --tags --force >/dev/null 2>&1
-    # List all release tags (n<major>.<minor>[.<patch>]), exclude RC/dev,
-    # sort by version, and pick the highest.
-    local _tag
-    _tag=$(git tag -l 'n[0-9]*' |
-           grep -E '^n[0-9]+\.[0-9]+(\.[0-9]+)*$' |
-           sed 's/^n//' |
-           sort -rV |
-           head -n1)
-    if [[ -z "$_tag" ]]; then
-        # Fallback: use git describe
-        git describe --tags --long 2>/dev/null | sed 's/^n//;s/-/.r/;s/-/./g'
-        return
-    fi
-    printf '%s' "$_tag"
-}
+validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64') # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
     cd ffmpeg
-    # Checkout the exact release tag determined by pkgver()
-    git checkout "n${pkgver}" 2>/dev/null || true
 
     # Restore av_stream_get_first_dts for Chromium-derived consumers
     # (qt6-webengine, electron, chromium). https://crbug.com/1251779
@@ -232,7 +208,6 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgsm \
         --enable-libharfbuzz \
         --enable-libiec61883 \
@@ -264,6 +239,7 @@ build() {
         --enable-libv4l2 \
         --enable-libvidstab \
         --enable-libvmaf \
+        --enable-libvpl \
         --enable-libvorbis \
         --enable-libvpx \
         --enable-libwebp \
@@ -293,11 +269,31 @@ build() {
         --extra-cflags="-I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
-    make -j"$(nproc)"
-    make -j"$(nproc)" tools/qt-faststart
+    make
+    make tools/qt-faststart
 
     # pod2man lives in /usr/bin/core_perl which may not be on PATH
-    PATH="/usr/bin/core_perl:$PATH" make -j"$(nproc)" doc/ff{mpeg,play,probe}.1
+    PATH="/usr/bin/core_perl:$PATH" make doc/ff{mpeg,play,probe}.1
+}
+
+check() {
+    cd ffmpeg
+
+    local _component
+    for _component in avcodec avdevice avfilter avformat avutil swresample swscale; do
+        readelf -d "lib${_component}/lib${_component}.so" | grep -q '(SONAME)'
+    done
+
+    local _library_path
+    _library_path=$(printf '%s:' "$PWD"/lib{avcodec,avdevice,avfilter,avformat,avutil,swresample,swscale})
+
+    nm -D libavformat/libavformat.so | grep -Eq '[[:space:]]av_stream_get_first_dts(@@[^[:space:]]+)?$'
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -hwaccels | grep -Fxq cuda
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -encoders | grep -Eq '^[[:space:]]*V[^[:space:]]*[[:space:]]+av1_nvenc[[:space:]]'
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -encoders | grep -Eq '^[[:space:]]*V[^[:space:]]*[[:space:]]+h264_nvenc[[:space:]]'
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -encoders | grep -Eq '^[[:space:]]*V[^[:space:]]*[[:space:]]+hevc_nvenc[[:space:]]'
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -filters | grep -Eq '^[[:space:]]+[.A-Z|]+[[:space:]]+lv2[[:space:]]'
+    LD_LIBRARY_PATH="${_library_path%:}" ./ffmpeg -hide_banner -buildconf | grep -Fq -- '--enable-libfdk-aac'
 }
 
 package() {

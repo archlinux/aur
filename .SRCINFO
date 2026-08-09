@@ -1,16 +1,17 @@
 pkgbase = ffmpeg-cuda-full
-	pkgdesc = Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases
-	pkgver = 8.1.1
-	pkgrel = 3
+	pkgdesc = FFmpeg with CUDA/NVENC and all codecs including nonfree libfdk-aac
+	pkgver = 9.0
+	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
 	install = ffmpeg-cuda-full.install
 	arch = x86_64
 	license = GPL-3.0-only
-	license = custom:nonfree
+	license = LicenseRef-FFmpeg-nonfree
 	makedepends = amf-headers
 	makedepends = avisynthplus
 	makedepends = clang
+	makedepends = cuda
 	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = ladspa
@@ -19,20 +20,19 @@ pkgbase = ffmpeg-cuda-full
 	makedepends = opencl-headers
 	makedepends = perl
 	makedepends = python
+	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = aom
 	depends = aribb24
 	depends = bzip2
 	depends = cairo
-	depends = cuda
 	depends = dav1d
 	depends = fontconfig
 	depends = freetype2
 	depends = fribidi
 	depends = glib2
 	depends = glibc
-	depends = glslang
 	depends = gmp
 	depends = gnutls
 	depends = gsm
@@ -45,12 +45,10 @@ pkgbase = ffmpeg-cuda-full
 	depends = libavc1394
 	depends = libbluray
 	depends = libbs2b
-	depends = libcdio
 	depends = libcdio-paranoia
 	depends = libdrm
-	depends = libdvdnav
-	depends = libdvdread
 	depends = libfdk-aac
+	depends = libgcc
 	depends = libgl
 	depends = libiec61883
 	depends = libjxl
@@ -75,6 +73,7 @@ pkgbase = ffmpeg-cuda-full
 	depends = libxext
 	depends = libxml2
 	depends = libxv
+	depends = lilv
 	depends = nvidia-utils
 	depends = ocl-icd
 	depends = onevpl
@@ -109,20 +108,20 @@ pkgbase = ffmpeg-cuda-full
 	optdepends = libva-utils: VAAPI diagnostics including vainfo
 	optdepends = mesa: VAAPI driver for AMD/older Intel GPUs
 	optdepends = onevpl-intel-gpu: Intel QuickSync support
-	provides = ffmpeg=8.1.1
-	provides = libavcodec.so=62-64
-	provides = libavdevice.so=62-64
-	provides = libavfilter.so=11-64
-	provides = libavformat.so=62-64
-	provides = libavutil.so=60-64
-	provides = libswresample.so=6-64
-	provides = libswscale.so=9-64
+	provides = ffmpeg=2:9.0
+	provides = libavcodec.so
+	provides = libavdevice.so
+	provides = libavfilter.so
+	provides = libavformat.so
+	provides = libavutil.so
+	provides = libswresample.so
+	provides = libswscale.so
 	conflicts = ffmpeg
-	replaces = ffmpeg
 	options = !lto
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n9.0
 	source = 0001-Add-av_stream_get_first_dts-for-Chromium.patch
-	b2sums = SKIP
+	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
+	b2sums = c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8
 	b2sums = e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d
 
 pkgname = ffmpeg-cuda-full
