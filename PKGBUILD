@@ -1,6 +1,6 @@
 # Maintainer: sabuj <contact.sabuj@proton.me>
 pkgname=smol-snapper
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A standalone bootable btrfs snapshot creation tool"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'libnotify: notification functionality'
 )
 source=("$pkgname::https://github.com/sabuj66/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aef3133a2be7e0fa420783856f2a1944c4322c5e976c645c5f518b92bafb3a58')
+sha256sums=('0cd53d8ebb15dccb7a6c110e85f1652f6c47660fa02dad18f272849331b436e6')
 
 backup=('etc/smol-snapper.conf')
 package() {
