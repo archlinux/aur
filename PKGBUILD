@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/dim-ghub/Caelestia-Greeter'
 license=('MIT')
 install=caelestia-greeter.install
-depends=('caelestia-cli' 'caelestia-shell' 'quickshell-git' 'greetd' 'qt6-base' 'qt6-declarative')
+depends=('caelestia-cli' 'caelestia-shell' 'greetd' 'qt6-base' 'qt6-declarative')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf')
 optdepends=('wlr-randr: multi-monitor configuration options'
             'cage: recommended lightweight kiosk Wayland compositor for greetd'
@@ -21,8 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags --abbrev=7 --match 'v[0-9]*' \
-        | sed -E 's/^[^0-9]*//; s/([^-]*-g)/r\1/; s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

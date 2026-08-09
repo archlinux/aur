@@ -12,7 +12,6 @@ pkgbase = caelestia-greeter-git
 	makedepends = pkgconf
 	depends = caelestia-cli
 	depends = caelestia-shell
-	depends = quickshell-git
 	depends = greetd
 	depends = qt6-base
 	depends = qt6-declarative
