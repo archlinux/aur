@@ -1,7 +1,7 @@
 pkgbase = python-zxing-cpp
 	pkgdesc = Python bindings for zxing-cpp
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zxing-cpp/zxing-cpp
 	arch = x86_64
 	license = Apache-2.0
