@@ -1,7 +1,7 @@
 pkgbase = pacx
 	pkgdesc = A fast and visually appealing Pacman wrapper inspired by Powerpill and Nala.
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/abdurehmanimran/pacx
 	arch = x86_64
 	license = GPL-2.0
