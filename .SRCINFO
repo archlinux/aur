@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks
-	pkgver = 4.2.3
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = arch-update
 	optdepends = sudo: Privilege elevation
 	optdepends = sudo-rs: Privilege elevation
 	optdepends = opendoas: Privilege elavation
-	source = arch-update-4.2.3.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.2.3.tar.gz
-	sha256sums = e0efb4682a80712cc471ce98bc68849ba6cc82fd918da2744d72b46f75124b35
+	source = arch-update-4.3.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.3.0.tar.gz
+	sha256sums = 4d8934cb0c4c0f20dd3441f362f525bd69abc416d47e3e5aca6ae026b88894fb
 
 pkgname = arch-update
