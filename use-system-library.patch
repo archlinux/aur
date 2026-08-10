@@ -1,4 +1,4 @@
-Link the natives against Arch's system libopus and libpcre2.
+Link native dependencies against Arch's system shared libraries.
 
 audiopus_sys: Arch ships no libopus.a, so switch the crate to its `dynamic`
 feature and hand its build script LIBOPUS_LIB_DIR=/usr. find_installed_opus()
@@ -10,10 +10,12 @@ pcre2-sys: only offers pkg-config discovery, so flip upstream's
 PCRE2_SYS_STATIC from 1 to 0 (0 is an explicit "not static", not merely unset)
 and let it probe libpcre2-8 from /usr.
 
-Hunks are deliberately zero-context: MODULE.bazel's comments and neighbouring
-env keys churn on nearly every upstream release, while each anchor line below
-is unique in its file. patch locates a hunk by its replaced line alone, so
-unrelated edits around them cannot break this patch.
+onig_sys: RUSTONIG_SYSTEM_LIBONIG=1 requires pkg-config to locate
+Arch's `oniguruma` package and rejects a fallback to its vendored copy.
+
+Hunks deliberately replace unique lines: upstream frequently churns
+MODULE.bazel's comments and neighbouring env keys, while these anchors avoid
+unrelated edits making the patch fail.
 
 --- a/Cargo.toml
 +++ b/Cargo.toml
@@ -30,3 +32,12 @@ unrelated edits around them cannot break this patch.
 @@ -192 +192 @@
 -    build_script_env = {"PCRE2_SYS_STATIC": "1"},
 +    build_script_env = {"PCRE2_SYS_STATIC": "0"},
+@@ -202 +204,7 @@
+-use_repo(crate, "crates")
++# Link Arch's oniguruma through pkg-config.
++crate.annotation(
++    crate = "onig_sys",
++    build_script_env = {"RUSTONIG_SYSTEM_LIBONIG": "1"},
++)
++
++use_repo(crate, "crates")

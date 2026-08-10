@@ -2,23 +2,23 @@
 
 pkgname=oh-my-pi
 pkgver=17.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
-depends=('glibc' 'opus' 'pcre2')
+depends=('glibc' 'oniguruma' 'opus' 'pcre2')
 makedepends=('bazel' 'bun' 'git')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
     "tree-sitter-no-strict-aliasing.patch"
-    "use-system-opus-pcre2.patch"
+    "use-system-library.patch"
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
             'fd863e12ad717327c79095f47ebcb47811fcc3845dd15bdec3ec6b12d4df5e7a'
-            'ad7221fc63cf2a07e954a257daee92a8cd4e26a930dfbc9dfb6362593092f89d'
+            '774acdbafab195373b1dec1936091ffbd654f05e719a733e53883878f393947a'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
 )
 
@@ -26,7 +26,7 @@ prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    patch -p1 -i "${srcdir}/use-system-opus-pcre2.patch"
+    patch -p1 -i "${srcdir}/use-system-library.patch"
     patch -p1 -i "${srcdir}/tree-sitter-no-strict-aliasing.patch"
     # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
     CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
