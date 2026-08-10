@@ -1,5 +1,5 @@
 pkgname=wl-screenrec
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=2
 pkgdesc="High performance hardware accelerated wlroots screen recorder"
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo' 'clang' 'rust' 'vulkan-headers')
 depends=('ffmpeg' 'libva-driver' 'gcc-libs' 'glibc')
 conflicts=('wl-screenrec-git')
 source=("https://github.com/russelltg/wl-screenrec/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('214cbd9c74a57f980eacb6623743dea94f20b2f3fcea4705cec2b865b5f84fbb')
+sha256sums=('03547c9d3d49fef106c0e69531c757b0b8ef26ccd17ea95debcf73e6d37c7e72')
 
 prepare() {
   cd "$pkgname-$pkgver"
