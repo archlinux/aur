@@ -1,5 +1,5 @@
 [Unit]
-Description=BearDrive - resume folder sync
+Description=BearDrive — resume folder sync
 Documentation=https://docs.beardrive.ai/manual/hooks/
 
 [Service]
