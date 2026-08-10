@@ -2,7 +2,7 @@
 
 pkgname=manora
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files"
 url="https://github.com/Antiz96/manora"
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ build() {
 	cd "${pkgname}-${pkgver}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 	cargo build --frozen --release --all-features
 	scdoc < "doc/man/${pkgname}.1.scd" > "doc/man/${pkgname}.1"
 }
