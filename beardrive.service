@@ -4,6 +4,7 @@ Documentation=https://docs.beardrive.ai/manual/hooks/
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/bdrive resume --quiet
 
 [Install]

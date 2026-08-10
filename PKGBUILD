@@ -3,7 +3,7 @@
 pkgname=beardrive-bin
 _pkgname=beardrive
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Synced file system for AI agents to mount, sync, and track folders'
 arch=('x86_64' 'aarch64')
 url='https://github.com/runbear-io/beardrive'
@@ -17,8 +17,11 @@ optdepends=(
 )
 
 _base="${url}/releases/download/v${pkgver}"
-source=('beardrive.service')
-sha256sums=('fa140d9c166f1ade16df24a6d7c99336c6572f1c6eb1393474dc9c572fcca5b4')
+source=('beardrive.service' 'beardrive-remain-after-exit.conf')
+sha256sums=(
+    '7bd8a9e2991f8147876dee346ada1b2d995c2d2022a8b9819583f1e2d3e06402'
+    '6049595dbfb241227294395bdc5dda50082946ced6d60adba723fd639e1fd77b'
+)
 source_x86_64=("${_base}/beardrive_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_base}/beardrive_${pkgver}_linux_arm64.tar.gz")
 sha256sums_x86_64=('981c9c9c043db8060299adc37880cc8763f0333b1ce0c274976ec315a5d8ced0')
@@ -31,6 +34,8 @@ package() {
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
     install -Dm644 "${srcdir}/beardrive.service" \
         "${pkgdir}/usr/lib/systemd/user/beardrive.service"
+    install -Dm644 "${srcdir}/beardrive-remain-after-exit.conf" \
+        "${pkgdir}/usr/lib/systemd/user/beardrive.service.d/10-remain-after-exit.conf"
 
     "${srcdir}/bdrive" completion bash | install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/bash-completion/completions/bdrive"
