@@ -6,7 +6,7 @@
 # prebuilt binaries).
 
 pkgname=gabbro-bin
-pkgver=0.1.0_alpha.18
+pkgver=0.1.0_alpha.19
 pkgrel=1
 _pkgver=${pkgver//_/-}   # tag/filename form: 0.1.0-alpha.N
 pkgdesc="Quantum-resistant password manager"
@@ -21,7 +21,7 @@ conflicts=('gabbro')
 options=('!strip' '!debug')   # prebuilt bundle; don't strip or split debug symbols
 source=("gabbro-${_pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${_pkgver}/gabbro-${_pkgver}-linux-x86_64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LICENSE")
-sha256sums=('110945ecaece7dc0daaf466a61486a5181408b569dca388c9a5b06fa35975789'
+sha256sums=('e405153f2f4c97a90c39b466587963b27efd785d2dbe5b1d66b2cb59b6700827'
             '9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545')
 
 package() {
