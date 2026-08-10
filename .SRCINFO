@@ -1,0 +1,12 @@
+pkgbase = openscad-gridfinity-rebuilt
+	pkgdesc = Ground-up rebuild of the stock Gridfinity bins in OpenSCAD
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kennetek/gridfinity-rebuilt-openscad
+	arch = any
+	license = MIT
+	depends = openscad
+	source = openscad-gridfinity-rebuilt-2.0.0.tar.gz::https://github.com/kennetek/gridfinity-rebuilt-openscad/archive/2.0.0.tar.gz
+	sha512sums = 15cbe4aa7974a456ab08d55d86136b44086b2061eada51e53c9cb92d91fe0e33c6100cb9dc2db16ebd590714139d66604f2b2fea17693f70fec0ee3d84ffec58
+
+pkgname = openscad-gridfinity-rebuilt

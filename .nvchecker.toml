@@ -1,0 +1,4 @@
+[openscad-gridfinity-rebuilt]
+source = "github"
+github = "kennetek/gridfinity-rebuilt-openscad"
+use_latest_release = true
