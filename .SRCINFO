@@ -1,6 +1,6 @@
 pkgbase = akrata-icon-theme
 	pkgdesc = Line icon theme featuring soft pastel colors for dark themes
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Akr4ta/akrata-icon-theme
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = akrata-icon-theme
 	makedepends = git
 	depends = papirus-icon-theme
 	depends = adwaita-icon-theme
-	source = akrata-icon-theme-1.0.0.tar.gz::https://github.com/Akr4ta/akrata-icon-theme/archive/v1.0.0.tar.gz
-	sha256sums = e7f45fe4cee9a028bd80f948c02f02ffeb5f98b8742cc7c94cf33704f7ded93e
+	optdepends = papirus-icon-theme: for icons that might be missing
+	source = akrata-icon-theme-2.0.0.tar.gz::https://github.com/Akr4ta/akrata-icon-theme/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 0998ab35aba2f785608aefeabfd51ed22d14a50e285832b8d486cef489d483bd
 
 pkgname = akrata-icon-theme
