@@ -1,7 +1,7 @@
 # Maintainer: Rico Beier-Grunwald DL4LM <DL4LM AT DARC DOT DE>
 
 pkgname=js8call-bin
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Weak-signal messaging application for amateur radio (official AppImage)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   'js8call'
   'js8call.desktop'
 )
-sha256sums=('930f3032ce94330018f08213f593b99c3c3496c7842e72fe664921e3ae94c4f0'
+sha256sums=('3f89bd821f281c59a9384c08a3ad783ea3b9ac6abf319ce6c0d881c2ecc6e6cd'
             '5d9a946d3c013ca9223042818bbd9b90d1993b37dc45b6462320ec1e2d5b29d8'
             '3c6cab8281ee2803069f89e6fd7dad1ccbeb0c1180a2bba86ce5a51a3fe7740c'
             'f38262e1ac7679ef26095d246e788d76aa1b9a8b3cd84417d631a727b804562c')
