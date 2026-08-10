@@ -10,10 +10,7 @@ pkgdesc="The Unity Hub is a standalone application that streamlines the way you 
 url="https://unity.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'cpio' 'libxml2-legacy' '7zip' 'zip' 'unzip' 'tar')
-optdepends=(
-  'libappindicator-gtk3: The official deb says this an optional dependency'
-)
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'libdrm' 'xdg-utils' 'libxcb' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'zip' 'unzip' 'tar')
 source=(
   "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub_${pkgver}_amd64.deb"
   'license.txt'
@@ -29,9 +26,9 @@ options=(!strip)
 install='unityhub.install'
 
 package() {
-  tar -xf 'data.tar.bz2' -C "$pkgdir/"
+  tar -xf 'data.tar.zst' -C "$pkgdir/"
   mkdir -p "$pkgdir/usr/bin"
-  ln -sf '/opt/unityhub/unityhub' "$pkgdir/usr/bin/unityhub"
+  ln -sf "$pkgdir/usr/lib/unityhub/unityhub" "$pkgdir/usr/bin/unityhub"
 
   install -Dm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
   install -Dm644 "$srcdir/services-config.json" "$pkgdir/usr/share/unity3d/config/services-config.json"
