@@ -1,0 +1,7 @@
+post_install() {
+    printf '%s\n' 'Restart Fcitx 5 in your user session to load Input Counter: fcitx5 -r'
+}
+
+post_upgrade() {
+    post_install
+}
