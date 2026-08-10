@@ -1,11 +1,11 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
-license=('custom: YARG License')
+license=(LicenseRef-YARG-1.0)
 depends=(
 	cairo
 	gdk-pixbuf2
@@ -16,53 +16,59 @@ depends=(
 	openssl
 	webkit2gtk-4.1
 )
-makedepends=(cargo nodejs npm)
+makedepends=(
+	cargo
+	git
+	git-lfs
+	nodejs
+	npm
+)
 optdepends=(
-	'hidapi: support for HID devices (in-game)'
-	'pulseaudio-alsa: audio support (in-game)'
-	'systemd-libs: access to HID devices (in-game)'
+	'hidapi: access to HID devices (in-game)'
+	'pipewire-alsa: audio support (in-game)'
+	'systemd-libs: HID device detection (in-game)'
 )
 conflicts=($pkgname-bin)
 options=(!debug !lto)
 source=(
-	$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+	"$pkgname::git+$url.git#tag=v$pkgver"
+	69-hid.rules
+	99-yarg-libusb.rules
 	$pkgname.desktop
 )
 sha256sums=(
-	2a5e2111e12e28337369e3e2e0462bb5924aa3bbbbc7de1382270d10507f1cf5
+	60720ac369cbd62e04f844590a224743da225de174d7b97be0deb00f9bd19898
+	4aa703ca90992584b22ed553ae180e5cadf7223feb693b0cb367b32e56d27ed1
+	21387a52411c408243b757bf1ffe17c1f377dfe9f2174415f807c175da0d5227
 	9f1af65bb63ff67296aa41583d542850af1e146f9ede71818cb6a4bf3befb6c4
 )
 
 prepare() {
-	cd YARC-Launcher-$pkgver/
+	cd $pkgname
+
+	git lfs install --local
+	git remote add network-origin "$url.git" 2> /dev/null || true
+	git lfs pull network-origin
 
 	# Disable bundle
 	sed -i '9s/true/false/' src-tauri/tauri.conf.json5
 }
 
 build() {
-	cd YARC-Launcher-$pkgver/
+	cd $pkgname
 
 	npm install
 	npm run build
 }
 
 package() {
-	cd YARC-Launcher-$pkgver/
-
-	# udev rules (in-game)
-	install -dm755 $pkgdir/etc/udev/rules.d/
-	# - access to HID devices
-	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
-	# - improved compatibility of the XBOX 360 Wireless Adapter
-	printf "%s\n" \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0291", MODE="0666"' \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02a9", MODE="0666"' \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0719", MODE="0666"' \
-	> $pkgdir/etc/udev/rules.d/99-yarg-libusb.rules
+	cd $pkgname
 
 	# binary
 	install -Dm755 src-tauri/target/release/YARC\ Launcher $pkgdir/usr/bin/$pkgname
+
+	install -Dm644 "$srcdir/69-hid.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+	install -Dm644 "$srcdir/99-yarg-libusb.rules" -t "$pkgdir/usr/lib/udev/rules.d"
 
 	# desktop file
 	install -Dm644 $srcdir/$pkgname.desktop -t $pkgdir/usr/share/applications/
