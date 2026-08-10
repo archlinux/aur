@@ -10,3 +10,15 @@ r856.73673258 — initial working release
     200 -> /api/auth/login 200 -> protected endpoints 200
   - Recovery recipes verified: forgot-password (rm auth.json + restart),
     corrupt-DB (mv app.db + restart), upgrade (re-runs setup.py)
+
+r1894.cf4e240 — upstream refresh (2026-08-10)
+  - Bump to upstream main at cf4e240 (1894 commits)
+  - Fix broken build (cp: cannot stat 'node_modules'): bombadil is the only
+    JS dep and it's a devDep, so npm ci --omit=dev installed nothing; dropped
+    npm ci + node_modules shipping, removed npm from makedepends
+  - Regenerate requirements.lock (--upgrade): 60 adds / 73 changes vs stale
+    lock (fastapi 0.136.3 -> 0.141.1, mcp 1.27.2 -> 1.29.0, etc.)
+  - regen-lock.sh: add --upgrade --python-version 3.12 (plain uv pip compile
+    silently keeps existing pins)
+  - Replace the silent cp fallback in package() with an explicit error
+  - Verified: full makepkg build passes (patch applies, check() imports OK)

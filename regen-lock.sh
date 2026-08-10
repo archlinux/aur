@@ -6,7 +6,7 @@ set -euo pipefail
 SRC=$(mktemp -d)
 git clone --depth 1 --branch main https://github.com/pewdiepie-archdaemon/odysseus.git "$SRC"
 SRC_HASH=$(sha256sum "$SRC/requirements.txt" | cut -d' ' -f1)
-uv pip compile "$SRC/requirements.txt" -o requirements.lock
+uv pip compile --upgrade --python-version 3.12 "$SRC/requirements.txt" -o requirements.lock
 # Tag the lock with the upstream requirements.txt hash so the PKGBUILD
 # can warn if the lock is stale.
 sed -i "1i # generated from requirements.txt sha256: ${SRC_HASH}" requirements.lock
