@@ -1,6 +1,6 @@
 pkgbase = jupiter-hw-support
 	pkgdesc = Jupiter HW support package
-	pkgver = 20260630.2
+	pkgver = 20260807.1
 	pkgrel = 1
 	url = https://github.com/evlav/jupiter-hw-support
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jupiter-hw-support
 	makedepends = openssh
 	makedepends = xorg-xcursorgen
 	depends = python-evdev
-	depends = python>=3.13
+	depends = python>=3.14
 	depends = python-crcmod
 	depends = python-click
 	depends = python-progressbar
@@ -24,7 +24,7 @@ pkgbase = jupiter-hw-support
 	depends = plymouth
 	optdepends = grub-steamos
 	options = !strip
-	source = git+https://github.com/evlav/jupiter-hw-support.git#tag=jupiter-20260630.2
-	sha512sums = f8ceedddd16fefd60db88567ce0360985944a4414def887507f6b042b0cba6e09788b4ccad9dd9148b31f59a256200e90c4f4a8a3adab4acaaea17b44f76988f
+	source = git+https://github.com/evlav/jupiter-hw-support.git#tag=jupiter-20260807.1
+	sha512sums = 2007167cd4a0f159609fad06fc1ba760841ac2adc305b56692804d97c3b8eb6eca901f58b7c7adb9871fe57019996617908be02cc626c65990bb2a12c2042e83
 
 pkgname = jupiter-hw-support

@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Loup A. Griffais (pgriffais@valvesoftware.com)
 
 pkgname=jupiter-hw-support
-_srctag=jupiter-20260630.2
+_srctag=jupiter-20260807.1
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
 pkgrel=1
@@ -10,7 +10,7 @@ url="https://github.com/evlav/jupiter-hw-support"
 pkgdesc="Jupiter HW support package"
 license=('MIT')
 depends=('python-evdev'
-         'python>=3.13'
+         'python>=3.14'
          'python-crcmod' 'python-click' 'python-progressbar'
          'python-hid>=1.0.6-2' # for jupiter-controller-update
          'jq' # for jupiter-controller-update
@@ -23,7 +23,7 @@ depends=('python-evdev'
 optdepends=('grub-steamos')
 makedepends=('rsync' 'git' 'openssh' 'xorg-xcursorgen')
 source=("git+https://github.com/evlav/jupiter-hw-support.git#tag=$_srctag")
-sha512sums=('f8ceedddd16fefd60db88567ce0360985944a4414def887507f6b042b0cba6e09788b4ccad9dd9148b31f59a256200e90c4f4a8a3adab4acaaea17b44f76988f')
+sha512sums=('2007167cd4a0f159609fad06fc1ba760841ac2adc305b56692804d97c3b8eb6eca901f58b7c7adb9871fe57019996617908be02cc626c65990bb2a12c2042e83')
 # Some pre-compiled binaries such as `rfp-cli` break when touched by `strip` :-\
 options+=('!strip')
 
