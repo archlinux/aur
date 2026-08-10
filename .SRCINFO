@@ -1,6 +1,6 @@
 pkgbase = python-transmission-rpc
 	pkgdesc = Python module that implements the Transmission bittorent client JSON-RPC protocol
-	pkgver = 7.0.11
+	pkgver = 7.0.12
 	pkgrel = 1
 	url = https://github.com/trim21/transmission-rpc
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-transmission-rpc
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-typing_extensions
-	source = transmission-rpc-7.0.11.tar.gz::https://files.pythonhosted.org/packages/source/t/transmission-rpc/transmission_rpc-7.0.11.tar.gz
-	sha256sums = 5872322e60b42e368bc9c4724773aea4593113cb19bd2da589f0ffcdabe57963
+	source = transmission-rpc-7.0.12.tar.gz::https://github.com/trim21/transmission-rpc/archive/refs/tags/v7.0.12.tar.gz
+	sha256sums = 436cde595d3cd3fab834da67132538db3a41afed690bb7c6e79f5727f1a1d72c
 
 pkgname = python-transmission-rpc
