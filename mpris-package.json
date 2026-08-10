@@ -2,6 +2,6 @@
   "name": "deezer-mpris-vendor",
   "private": true,
   "dependencies": {
-    "@jellybrick/mpris-service": "file:./mpris-service-2.1.5.tgz"
+    "@jellybrick/mpris-service": "file:./mpris-service-2.2.3.tgz"
   }
 }
