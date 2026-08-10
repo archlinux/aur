@@ -47,7 +47,7 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "\
-      -s -w
+      -linkmode external
       -X github.com/open-policy-agent/regal/pkg/version.Version=${pkgver}
       -X github.com/open-policy-agent/regal/pkg/version.Commit=${pkgver}
       -X github.com/open-policy-agent/regal/pkg/version.Timestamp=$(date --iso-8601=seconds)
@@ -71,5 +71,5 @@ package() {
   install -D --mode 0644 "${_pkgname}-${pkgver}/${_pkgname}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
 
   # license
-  install -D --mode 0755 "${_pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D --mode 0644 "${_pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
