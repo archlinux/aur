@@ -3,7 +3,7 @@
 # Contributor: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=z.lua
-pkgver=1.8.25
+pkgver=1.8.26
 pkgrel=1
 pkgdesc='A command line tool which helps you navigate faster by learning your habits'
 arch=('any')
@@ -11,8 +11,8 @@ url='https://github.com/skywind3000/z.lua'
 license=('MIT')
 depends=('lua')
 provides=('z.lua')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('625197abaddb7c89367133260f8e39851377f21221a544b2a5f213af51cfa822')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('31c2eca2c1f679308dd8435e5c9e302b1f1596f201177a0ac2b37d031810df02')
 
 package() {
   cd "${pkgname}-${pkgver}"
