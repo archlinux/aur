@@ -1,6 +1,6 @@
 pkgbase = replaywebpage-bin
 	pkgdesc = Serverless Web Archive Replay
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://github.com/webrecorder/replayweb.page
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = replaywebpage-bin
 	provides = replaywebpage
 	conflicts = replaywebpage
 	options = !strip
-	source = https://github.com/webrecorder/replayweb.page/releases/download/v2.4.6/ReplayWeb.page-2.4.6.AppImage
-	sha512sums = b16d2a5d75e034d77792f3b725034ff4f32ef272aaa2fa50ca083c105b9385cc155d6eaed46125f0c8df7b39b784995454b0f48ecc97278a2cf1a131c982644f
+	source = https://github.com/webrecorder/replayweb.page/releases/download/v2.4.7/ReplayWeb.page-2.4.7.AppImage
+	sha512sums = 5fc218ffebf28869848aa26003239a49e2342a75490e5ba3c4e2e7310b33d9395c1bc6b4bc3d4ebe5ce680207ea9f9083b8ec589dacaf2fe1fd1c42b43fe1e07
 
 pkgname = replaywebpage-bin
