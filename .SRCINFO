@@ -1,6 +1,6 @@
 pkgbase = zen-adblocker-bin
 	pkgdesc = An open-source system-wide ad-blocker and privacy guard
-	pkgver = 0.24.1
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/irbis-sh/zen-desktop
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = zen-adblocker-bin
 	depends = webkit2gtk-4.1
 	provides = zen-adblocker
 	conflicts = zen-adblocker
-	source = Zen_linux_amd64_0.24.1.tar.gz::https://github.com/irbis-sh/zen-desktop/releases/download/v0.24.1/Zen_linux_amd64_noselfupdate.tar.gz
+	source = Zen_linux_amd64_0.25.0.tar.gz::https://github.com/irbis-sh/zen-desktop/releases/download/v0.25.0/Zen_linux_amd64_noselfupdate.tar.gz
 	source = zen-adblocker.desktop
-	source = appicon.png::https://github.com/irbis-sh/zen-desktop/blob/v0.24.1/assets/appicon.png?raw=true
-	source = LICENSE::https://github.com/irbis-sh/zen-desktop/blob/v0.24.1/LICENSE?raw=true
-	sha256sums = 3b6cf01f09c3de188b96968c4ec67c37179a1ab9c46b62bf0010e3feb125e4ff
+	source = appicon.png::https://github.com/irbis-sh/zen-desktop/blob/v0.25.0/assets/appicon.png?raw=true
+	source = LICENSE::https://github.com/irbis-sh/zen-desktop/blob/v0.25.0/LICENSE?raw=true
+	sha256sums = ed4929af685e6671e6626f29e46a60129eb5b138a71d30b9f85824ab10e54026
 	sha256sums = b8fd4a272875b236b953bbeca99459cfcd6d6e10a1d00cf50eaadf742db27fc2
 	sha256sums = 86c811ab545ee63d398ddc2da04a75d968d349102a4b73a087e01cebc346f1e2
 	sha256sums = 99c93a427534ef439924e7ed801092a7f3dea6b8029f2973e4238bca008e9d1e
