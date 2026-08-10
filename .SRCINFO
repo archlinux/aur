@@ -1,0 +1,18 @@
+pkgbase = python-modelscope-hub
+	pkgdesc = The official Python client to connect with ModelScope Hub.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.modelscope.cn/
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python
+	depends = python-filelock
+	depends = python-requests>=2.28
+	depends = python-setuptools
+	depends = python-tqdm>=4.64.0
+	depends = python-urllib3>=1.26
+	source = git+https://github.com/modelscope/modelscope_hub.git#tag=v0.2.0
+	sha512sums = SKIP
+
+pkgname = python-modelscope-hub
