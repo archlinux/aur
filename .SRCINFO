@@ -1,8 +1,8 @@
 pkgbase = zen-adblocker
 	pkgdesc = Simple, free and efficient ad-blocker and privacy guard
-	pkgver = 0.24.1
+	pkgver = 0.25.0
 	pkgrel = 1
-	url = https://zenprivacy.net
+	url = https://irbis.sh/zen
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -18,9 +18,9 @@ pkgbase = zen-adblocker
 	depends = p11-kit
 	depends = webkit2gtk-4.1
 	optdepends = libayatana-appindicator: tray icon
-	source = git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v0.24.1
+	source = git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v0.25.0
 	source = zen-adblocker.desktop
-	sha256sums = 20560e22ace21d7439147b6f6984a5a16b5790da731caa702995cf4b26af0bc6
-	sha256sums = 83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf
+	sha256sums = 6e303394b531051dce5b1e03402da02b558a2f3d7699c782547acf469c811832
+	sha256sums = ddbea3e9cd09c395c3c0056fad8b72d791be7f6f3ca0f07f9ced0020881b29d9
 
 pkgname = zen-adblocker

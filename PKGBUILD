@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 _nodeversion=24
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
 arch=('x86_64' 'aarch64')
-url="https://zenprivacy.net"
+url="https://irbis.sh/zen"
 license=('MIT')
 depends=(
   'ca-certificates-utils'
@@ -25,8 +25,8 @@ makedepends=(
 optdepends=('libayatana-appindicator: tray icon')
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('20560e22ace21d7439147b6f6984a5a16b5790da731caa702995cf4b26af0bc6'
-            '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
+sha256sums=('6e303394b531051dce5b1e03402da02b558a2f3d7699c782547acf469c811832'
+            'ddbea3e9cd09c395c3c0056fad8b72d791be7f6f3ca0f07f9ced0020881b29d9')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -75,7 +75,7 @@ build() {
 package() {
   cd zen-desktop
   install -Dm755 "build/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 assets/appicon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 assets/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

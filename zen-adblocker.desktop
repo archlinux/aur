@@ -1,9 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Zen
-Comment=Your Comprehensive Ad-Blocker and Privacy Guard
+Comment=System-wide ad-blocker and privacy guard
 Exec=zen-adblocker
 Icon=zen-adblocker
-Terminal=false
-StartupNotify=false
-Categories=Utility;
+Categories=Network;Security;Utility;
+Keywords=adblock;ad-block;privacy;proxy;
