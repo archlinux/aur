@@ -3,7 +3,7 @@ pkgbase=mesee-git
 _pkgname=mesee
 pkgname=('mesee-x11-git' 'mesee-wayland-git')
 pkgver=0.1.0.r0.geec16f5
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular screen-capture daemon and OCR translator client"
 arch=('x86_64')
 url="https://github.com/MatieBaal/mesee"
@@ -30,7 +30,7 @@ build() {
 
 package_mesee-x11-git() {
     pkgdesc="Modular screen-capture daemon and OCR translator client (X11 Backend)"
-    depends=('glibc' 'tesseract' 'libx11')
+    depends=('glibc' 'tesseract' 'libx11' 'tesseract-data-eng' 'tesseract-data-rus')
     provides=('mesee-git' 'mesee-backend')
     conflicts=('mesee-git' 'mesee-backend')
 
@@ -63,7 +63,7 @@ EOF
 
 package_mesee-wayland-git() {
     pkgdesc="Modular screen-capture daemon and OCR translator client (Wayland Backend)"
-    depends=('glibc' 'tesseract' 'wayland' 'libx11')
+    depends=('glibc' 'tesseract' 'wayland' 'libx11' 'tesseract-data-eng' 'tesseract-data-rus')
     provides=('mesee-git' 'mesee-backend')
     conflicts=('mesee-git' 'mesee-backend')
 
