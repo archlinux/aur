@@ -2,7 +2,7 @@
 # Contributor: Noah Heller <softwareenginer@pm.me>
 _emsdk=4.0.12
 pkgname=advantagescope-git
-pkgver=26.0.2.r67.g9747bc42
+pkgver=27.0.0.ralpha.5.9.g058f8f6e
 pkgrel=1
 epoch=
 pkgdesc="robot diagnostics, log review/analysis, and data visualization application tool"
@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/Mechanical-Advantage/AdvantageScope"
 license=("LicenseRef-BSD-3.0-Clause-Noninfringement")
 groups=()
-_electron=electron34
+_electron=electron39
 depends=("$_electron" at-spi2-core bash glibc gtk3 hicolor-icon-theme libgcc libnotify libsecret libstdc++ libxss libxtst nss python3 xdg-utils)
 makedepends=(emscripten git npm)
 checkdepends=()
@@ -45,7 +45,10 @@ prepare() {
     echo "Apply patch $src..."
     patch -Np1 < "../$src"
   done
-  npm ci
+  # allow git sources (they are depended on)
+  # need to do a scriptless fetch before a normal one to make `youtube-dl-exec` work
+  NPM_CONFIG_ALLOW_GIT=all npm ci --ignore-scripts
+  NPM_CONFIG_ALLOW_GIT=all npm install
 }
 
 pkgver() {
