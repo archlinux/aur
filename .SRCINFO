@@ -1,6 +1,6 @@
 pkgbase = leetcode-cli
 	pkgdesc = A command line tool to manage LeetCode challenges
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/clearloop/leetcode-cli
@@ -8,7 +8,7 @@ pkgbase = leetcode-cli
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = leetcode-cli-0.5.4.tar.gz::https://static.crates.io/crates/leetcode-cli/leetcode-cli-0.5.4.crate
-	sha512sums = bc0d761ed61b3dd312565ae76fe1ea3c4149520a7fe18657fd627b449be00c4bbdad4c3aaebb4f3d7a6cd84b583a926b889e95aedc3cf9506206edd08116ee08
+	source = leetcode-cli-0.5.5.tar.gz::https://static.crates.io/crates/leetcode-cli/leetcode-cli-0.5.5.crate
+	sha512sums = c4a2905b39f56618c12327d0a56fa72cc0128ab25798a944c1353f45723fc1ad3e0143e9a02a02a72778e0402657542bb129833bd64dd10c46e81af0446e01d2
 
 pkgname = leetcode-cli
