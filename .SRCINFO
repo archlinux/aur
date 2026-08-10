@@ -1,0 +1,36 @@
+pkgbase = chat2db-pro-bin
+	pkgdesc = AI-driven database tool and SQL client (Pro, bundled JRE)
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://chat2db.ai/
+	arch = aarch64
+	arch = x86_64
+	license = custom
+	depends = mesa
+	depends = at-spi2-core
+	depends = libxext
+	depends = libxi
+	depends = libxrandr
+	depends = libcups
+	depends = libxkbcommon
+	depends = nss
+	depends = nspr
+	depends = alsa-lib
+	depends = libxcomposite
+	depends = cairo
+	depends = pango
+	depends = libxdamage
+	depends = freetype2
+	depends = libxcursor
+	provides = chat2db-pro=5.3.0
+	conflicts = chat2db-pro
+	options = !emptydirs
+	options = !strip
+	source = chat2db-pro.sh
+	sha256sums = c7fd231e89bcd574e01084173ce3f59b292ff08fcf6fe7ef272b2c2636cc5a03
+	source_aarch64 = Chat2DB-Pro-arm64-latest.rpm::https://download.chat2db-ai.com/download/latest/Chat2DB-Pro-arm64-latest.rpm
+	sha256sums_aarch64 = 3d456049f7baddf37e74e80e2b39679374c9d63441e1e9c05017d4e7d68885a0
+	source_x86_64 = Chat2DB-Pro-latest.rpm::https://download.chat2db-ai.com/download/latest/Chat2DB-Pro-latest.rpm
+	sha256sums_x86_64 = a8ece8e1aabad533cbc197d7844b39643edb2eec920ac091a64ddd117f5684d8
+
+pkgname = chat2db-pro-bin
