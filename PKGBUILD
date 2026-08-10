@@ -1,6 +1,6 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=("x86_64")
@@ -15,8 +15,8 @@ source=("https://github.com/Flowseal/tg-ws-proxy/releases/download/v$pkgver/TgWs
         "tg-ws-proxy.desktop"
         "tg-ws-proxy.service")
 
-sha256sums=("15e6171a09246955ee4feb678badf75f5e66265e2852fe62ed4ed98976c08c00"
-            "0e228430885976ede0853c1cb22b93b21b4d0228acfdef31506161dba14fcf55"
+sha256sums=("e1624b7236add714de465116b4a604edb1965f5b3b878b39b7637efbeee96213"
+            "4b3108858a414b35d0a6fde2e304fb7ae18e5b2831e69e9e492cfdb1b048009d"
             "e06f5ca3f96bde84404610dbee8df3bdf1017fa350cd6e09831d30d820d21e93"
             "34263521bef49c289d3956fb513780950a6f319cb6d4b0222034d32ab929f05d")
 
@@ -28,7 +28,7 @@ package() {
   install -Dm755 "$_binname" "$pkgdir/usr/bin/tg-ws-proxy"
 
   install -d "$pkgdir/usr/share/icons/hicolor/64x64/apps"
-  magick "icon.ico" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
+  magick "icon.ico[5]" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
 
   install -Dm644 "tg-ws-proxy.desktop" "$pkgdir/usr/share/applications/tg-ws-proxy.desktop"
   install -Dm644 "tg-ws-proxy.service" "$pkgdir/usr/lib/systemd/system/tg-ws-proxy.service"
