@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=onvif-gui
-pkgver=3.3.4
+pkgver=3.3.7
 pkgrel=1
 pkgdesc='A client side implementation of the ONVIF specification - GUI app'
 url='https://github.com/sr99622/libonvif'
@@ -22,15 +22,15 @@ makedepends=('git'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-# _prjrel=3.3.4
-source=("git+${url}.git#commit=60372b0c15fc1843bc3f3030a1952355e5cb5cab"
+# _prjrel=3.3.7
+source=("git+${url}.git#commit=f42ca6c0177df8d495b42cf2ed578fe2163ff151"
         "${pkgname}.desktop")
-sha256sums=('42eb59cfd1d5df2a302126b8cc4fac02c23d9816c469c40f77213bc82339ab9e'
+sha256sums=('619f7fdf482917c55726e9eeec9a11d37b4cd44ad76ca7cad1509f12fb8201a5'
             'dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88')
 
 pkgver() {
 	cd ${srcdir}/libonvif/${pkgname}
-	sed -n -e '/version/p' pyproject.toml | sed -e 's/[^0-9,.]*//g'
+	sed -n -e '/version =/p' pyproject.toml | sed -e 's/[^0-9,.]*//g'
 }
 
 build() {
