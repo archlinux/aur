@@ -1,7 +1,7 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-git
 _pkgname=tg-ws-proxy
-pkgver=1.9.0.r0.g21aaeb3
+pkgver=1.9.1.r11.gb8a5634
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=("any")
@@ -47,7 +47,7 @@ package() {
   install -Dm755 "dist/TgWsProxy" "$pkgdir/usr/bin/$_binname"
 
   install -d "$pkgdir/usr/share/icons/hicolor/64x64/apps"
-  magick "icon.ico" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
+  magick "icon.ico[5]" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
 
   install -Dm644 ../tg-ws-proxy.desktop "$pkgdir/usr/share/applications/tg-ws-proxy.desktop"
   install -Dm644 ../tg-ws-proxy.service "$pkgdir/usr/lib/systemd/system/tg-ws-proxy.service"
