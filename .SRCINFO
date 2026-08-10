@@ -1,0 +1,21 @@
+pkgbase = wares-bin
+	pkgdesc = A declarative AppImage/binary package manager
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/indium114/wares
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = wares
+	conflicts = wares
+	options = !strip
+	source = README-0.9.3.md::https://raw.githubusercontent.com/indium114/wares/0.9.3/README.md
+	source = LICENSE-0.9.3::https://raw.githubusercontent.com/indium114/wares/0.9.3/LICENSE.md
+	sha256sums = 7170d4785755f503c7cbbc3719060263e025f57c377a50c94206b23504ae4b82
+	sha256sums = c1818149b60d0cc6e49438054e61c4d63e44aed0351d0680b39260271ce8b8e6
+	source_x86_64 = wares-x86_64-0.9.3::https://github.com/indium114/wares/releases/download/0.9.3/wares_Linux_x86_64
+	sha256sums_x86_64 = 8deba8c04a8583cb108150a91c20c6605ccba6fcb595eab5c19edb95eeafa221
+	source_aarch64 = wares-aarch64-0.9.3::https://github.com/indium114/wares/releases/download/0.9.3/wares_Linux_arm64
+	sha256sums_aarch64 = 8f92195db67c7916450c95f5e2debbeab0d0b8bbe1e11c2506a110c219df1db0
+
+pkgname = wares-bin

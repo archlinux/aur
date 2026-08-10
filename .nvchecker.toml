@@ -1,0 +1,5 @@
+[wares-bin]
+source = "github"
+github = "indium114/wares"
+use_latest_release = true
+prefix = ""
