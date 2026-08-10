@@ -1,7 +1,7 @@
 pkgbase = rustic-server
 	pkgdesc = A REST server built in rust for use with rustic/restic
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustic-rs/rustic_server
 	arch = arm
 	arch = armv6h
@@ -14,7 +14,7 @@ pkgbase = rustic-server
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
-	backup = etc/rustic-server/rustic-server.conf
+	backup = etc/rustic-server/rustic-server.toml
 	source = rustic-server::git+https://github.com/rustic-rs/rustic_server.git#tag=v0.4.4
 	source = rustic-server.service
 	source = rustic-server.sysusers

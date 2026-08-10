@@ -2,7 +2,7 @@
 
 pkgname=rustic-server
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A REST server built in rust for use with rustic/restic'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/rustic-rs/rustic_server'
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 options=('!lto')
-backup=("etc/${pkgname}/${pkgname}.conf")
+backup=("etc/${pkgname}/${pkgname}.toml")
 source=("${pkgname}::git+https://github.com/rustic-rs/${pkgname//-/_}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
