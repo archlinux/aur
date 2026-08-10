@@ -1,6 +1,6 @@
 pkgbase = gozen
 	pkgdesc = A minimalistic video editor
-	pkgver = 0.9.4
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = gozen
 	conflicts = gozen-git
 	conflicts = gozen-bin
 	options = !debug
-	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v0.9.4-alpha
-	source = godot-editor-4.6.1-stable.zip::https://github.com/godotengine/godot-builds/releases/download/4.6.1-stable/Godot_v4.6.1-stable_linux.x86_64.zip
-	source = godot-templates-4.6.1-stable.tpz::https://github.com/godotengine/godot-builds/releases/download/4.6.1-stable/Godot_v4.6.1-stable_export_templates.tpz
-	sha256sums = 0180208110f12c1deadced3aff0438d357209969083f5c1878864cfa5304d318
-	sha256sums = cecd0cb6b55e931318a9d7237dc4197d69ea914966787a454808523626e2789f
-	sha256sums = e6d372afd4fdfaae9571eb5e3568afcd96ce6db9a569244034154faf0ac69875
+	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v0.12-alpha
+	source = godot-editor-4.7.1-stable.zip::https://github.com/godotengine/godot-builds/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip
+	source = godot-templates-4.7.1-stable.tpz::https://github.com/godotengine/godot-builds/releases/download/4.7.1-stable/Godot_v4.7.1-stable_export_templates.tpz
+	sha256sums = 421037f2c362961fca2b12c49596eb2a3c4660a7757c1bb482b1b8c13ef4ea97
+	sha256sums = c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba
+	sha256sums = 86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72
 
 pkgname = gozen

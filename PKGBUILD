@@ -1,10 +1,10 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.6.1-stable"
+_godot_version="4.7.1-stable"
 
 pkgname=gozen
-pkgver=0.9.4
+pkgver=0.12
 pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
@@ -36,9 +36,9 @@ source=(
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
-sha256sums=('0180208110f12c1deadced3aff0438d357209969083f5c1878864cfa5304d318'
-            'cecd0cb6b55e931318a9d7237dc4197d69ea914966787a454808523626e2789f'
-            'e6d372afd4fdfaae9571eb5e3568afcd96ce6db9a569244034154faf0ac69875')
+sha256sums=('421037f2c362961fca2b12c49596eb2a3c4660a7757c1bb482b1b8c13ef4ea97'
+            'c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba'
+            '86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
