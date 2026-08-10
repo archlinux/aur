@@ -1,7 +1,7 @@
 # Maintainer: Nidal Jaafar <nidaljaafar.nj at gmail dot com>
 
 pkgname=harness-session-manager
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Terminal session manager for AI coding harnesses'
 arch=('x86_64')
@@ -18,10 +18,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'hsm-wrapper'
 )
-sha256sums=(
-  '79c6055d416ca05cedaea53f95fc22bbb28bbc96d7e8148a2f3277ace14ed78f'
-  '6473e9d742f7d970bf900c4f6de1e85570834bf62b6400571a585b14daeef60b'
-)
+sha256sums=('7db79ee03aacb352a43587d639192d44454552dfc6ce6979bbfe31f7a322e91f'
+            '6473e9d742f7d970bf900c4f6de1e85570834bf62b6400571a585b14daeef60b')
 
 build() {
   cd "$pkgname-$pkgver"
