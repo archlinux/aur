@@ -1,7 +1,7 @@
 # Maintainer: simplyyjessie <simplyyjessie@pm.me>
 # Contributor: xi-ve <zunavs@gmail.com> (original openvr-lighthouse-manager-linux)
 pkgname=simply-lighthouse-manager
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Manage SteamVR base station (lighthouse) power via Bluetooth LE - fork of openvr-lighthouse-manager-linux"
 arch=('x86_64')
@@ -18,7 +18,7 @@ _openvrver=2.5.1
 # _openvrver is bumped.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "openvr-${_openvrver}.tar.gz::https://github.com/ValveSoftware/openvr/archive/refs/tags/v${_openvrver}.tar.gz")
-sha256sums=('0a53e115e2464e53c030c36f41b52d592b5f9b83925e58592894218d708c7e20'
+sha256sums=('900b24a5a85df50851fd70511e7a2021696b380cd1991903694ccaa76e878d64'
             '54f654fce001682d8ac608f544a6c41e03a672b005c1deca3579fa36480a537c')
 
 build() {
