@@ -1,0 +1,5 @@
+[mandible-bin]
+source = "github"
+github = "AS-FOSS/mandible"
+use_latest_release = true
+prefix = "v"
