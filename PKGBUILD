@@ -32,9 +32,9 @@ _jucecommit=176e4108cd86190681e96af76bfbe0d62de898da
 _fftcommit=515059f972572b684e51b6afe09f62636b767b22
 
 source=(
-  "https://github.com/ZL-Audio/ZLSpectrumEqualizer/archive/refs/tags/${pkgver}.zip"
-  "https://github.com/ZL-Audio/JUCE/archive/${_jucecommit}.zip"
-  "https://github.com/ZL-Audio/zldsp_fft/archive/${_fftcommit}.zip"
+  "${pkgbase}_${pkgver}.zip::https://github.com/ZL-Audio/ZLSpectrumEqualizer/archive/refs/tags/${pkgver}.zip"
+  "juce_${_jucecommit}.zip::https://github.com/ZL-Audio/JUCE/archive/${_jucecommit}.zip"
+  "zldsp_fft_${_fftcommit}.zip::https://github.com/ZL-Audio/zldsp_fft/archive/${_fftcommit}.zip"
 )
 sha256sums=('64fbd914261701dd45e0d1431116b1ba02e3b93f2f5536de68b7d5e20e5f21c7'
             'bb76b0a5401606c1db2e7f4907512ce2520c9a6334fa690b5cc71c2b26b983bf'
@@ -77,8 +77,8 @@ package_zl-speceq-vst3() {
   pkgdesc+=' (VST3 version)'
 
   cd "ZLSpectrumEqualizer-${pkgver}/"
-  mkdir -p ${pkgdir}/usr/lib/vst3/
-  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/VST3/* ${pkgdir}/usr/lib/vst3
+  mkdir -p "${pkgdir}/usr/lib/vst3/"
+  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/VST3/* "${pkgdir}/usr/lib/vst3"
 }
 
 package_zl-speceq-lv2() {
@@ -86,8 +86,8 @@ package_zl-speceq-lv2() {
   pkgdesc+=' (LV2 version)'
 
   cd "ZLSpectrumEqualizer-${pkgver}/"
-  mkdir -p ${pkgdir}/usr/lib/lv2/
-  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/LV2/* ${pkgdir}/usr/lib/lv2
+  mkdir -p "${pkgdir}/usr/lib/lv2/"
+  cp -r Builds/ZLSpectrumEqualizer_artefacts/Release/LV2/* "${pkgdir}/usr/lib/lv2"
 }
 
 package_zl-speceq() {
