@@ -15,13 +15,13 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=2.1.3
+pkgver=2.1.4
 [[ $BUILD_BEFORE_TAGGING ]] && _pkgver=branch=master || _pkgver=tag=v$pkgver
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
 license=(GPL-2.0-or-later)
-depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-qtforkawesome' 'mingw-w64-openssl' 'mingw-w64-boost'
+depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-c++utilities' 'mingw-w64-qtutilities' 'mingw-w64-qtforkawesome' 'mingw-w64-openssl' 'mingw-w64-boost'
          'mingw-w64-sqlite')
 [[ $_webview_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
