@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cerulean
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 _rockrel=1
 pkgdesc='an opinionated code formatter for the Teal programming language'
@@ -19,8 +19,8 @@ _rock="$_archive-$_rockrel.all.rock"
 _rockspec="$_archive-$_rockrel.rockspec"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "https://luarocks.org/manifests/efredriksson/$_archive-1.rockspec")
-sha256sums=('6f591ab7b45ffcfcd3b0d7e942cf85abdbb1618792adaee2e592ef64a93ed4cc'
-            '8b0942f26b001d1b344906374b18cc7461944deb89cdc67d48412f7cde9459ab')
+sha256sums=('3125a1224e33fc4a83be3113f6aefac5f2bec7235f239b52318e991fca15986f'
+            '520a979e9d8657e74e3e887340484e08b7a8ed73f1051f3bbe65d952e7de1185')
 
 build() {
 	cd "$_archive"
