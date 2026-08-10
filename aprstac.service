@@ -1,0 +1,14 @@
+[Unit]
+Description=APRStac - APRS Web Client & Digipeater
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aprstac-server
+WorkingDirectory=/var/lib/aprstac
+StateDirectory=aprstac
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
