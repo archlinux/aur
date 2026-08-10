@@ -1,0 +1,10 @@
+[Unit]
+Description=BearDrive - resume folder sync
+Documentation=https://docs.beardrive.ai/manual/hooks/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bdrive resume --quiet
+
+[Install]
+WantedBy=default.target
