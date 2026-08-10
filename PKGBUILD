@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'wayland-protocols')
 provides=('wallrift')
 conflicts=('wallrift-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saber-88/wallrift/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee6825744e02cde2b5fbaf75b21f7837461e7b622bbb1cdb966ecec40181677a')
+sha256sums=('91915047bcaa7fc470b56b67a7c331721787f1d6b85cab597cf58c633d6f38fb')
 
 build() {
   cd "$srcdir/wallrift-$pkgver"
