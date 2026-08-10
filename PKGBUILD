@@ -66,6 +66,7 @@ source=(
   "odysseus-ai.logrotate"
   "odysseus-ai-git.svg"
   "setup.py.patch"
+  "agent_loop.py.patch"
   "odysseus-ai"
   "odysseus-ai-install-extra"
   "odysseus-ai-symlinks.sh"
@@ -82,6 +83,7 @@ sha256sums=('SKIP'
             'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
             'c8f0c2378fa72d90aa710765895be4ff47ee4160615a5066b9bc5311af6ea71f'
             '3c188d767f6117dd225be967c489c9331d3ee95b19b80a896b4b6a75ec8afde1'
+            '70a382cf9445591f59e30b411258fa405190c78a0a1b5446fe906f4044b76dde'
             'd43eb701dd137d95bca167c0c86f18692faea573fe7333840248297587f43cbe'
             '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
             'b7004f7af075cf27f88a015d1102af4aa1087e439f174b813b47f5c74aae1208'
@@ -107,6 +109,13 @@ prepare() {
 
   # ---- Patch setup.py to use CWD-relative paths (WorkingDirectory=) ----
   patch -p1 -i "$srcdir/setup.py.patch"
+
+  # ---- Patch upstream bug: agent_loop.py uses `Any` without importing it ----
+  # Upstream src/agent_loop.py defines
+  #   def _resolved_tool_event_name(event: dict[str, Any]) -> str:
+  # but the typing import lacks Any, crashing the app at import time
+  # (NameError). Fix the import until upstream merges the fix.
+  patch -p1 -i "$srcdir/agent_loop.py.patch"
 }
 
 build() {

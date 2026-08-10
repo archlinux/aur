@@ -22,3 +22,10 @@ r1894.cf4e240 — upstream refresh (2026-08-10)
     silently keeps existing pins)
   - Replace the silent cp fallback in package() with an explicit error
   - Verified: full makepkg build passes (patch applies, check() imports OK)
+
+r1894.cf4e240ad — runtime fix (2026-08-10)
+  - Ship agent_loop.py.patch: upstream uses `Any` in a type annotation in
+    src/agent_loop.py without importing it (NameError at app import time —
+    service failed to start). Fixed until upstream merges the fix.
+  - Verified end-to-end after patch: install -> service start -> /api/health
+    {"status":"healthy"} -> /api/auth/login 200 {"ok":true,"username":"admin"}
