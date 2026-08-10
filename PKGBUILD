@@ -4,7 +4,7 @@
 
 pkgbase=libavio
 pkgname=('python-avio')
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
@@ -21,9 +21,9 @@ makedepends=('cmake'
              'python-setuptools'
              'python-wheel'
              'sdl2')
-source=("git+${url}.git#commit=3d3c89c4722efa1cc7c05f528c296f2acba8e73e"
+source=("git+${url}.git#commit=e6fe9fcb9586d2bd7d890e7f23c0b39bd33633ef"
         'git+https://github.com/pybind/pybind11.git')
-sha256sums=('a8793e266b563c897ca84b3ee8ea4fd19ef40ab43c7115c2a6c38a1607eb3a91'
+sha256sums=('860aacb9ea395f480776799ae58d436295640ba2e34602c6dd78a090ebab8879'
             'SKIP')
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 
 pkgver() {
 	cd ${srcdir}/${pkgbase}
-	sed -n -e '/libavio VERSION/p' CMakeLists.txt | sed -e 's/[^0-9,.]*//g'
+	sed -n -e '/version =/p' pyproject.toml | sed -e 's/[^0-9,.]*//g'
 }
 
 build() {
