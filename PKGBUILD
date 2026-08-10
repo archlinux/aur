@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 pkgname=vicinae
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ source=(
   "vicinae.hook"
 )
 
-sha256sums=('8293ae0b62163931befe2bbefce879b708f6d6893b139dcf1fc5c7f19117f861'
+sha256sums=('facd3e8e99c88ed84ef2d9b84e28aa26a92d4c40336eebeb55486a76b2a3022d'
             '196fc6a6afea06fc94d6ca4ff45c422bdef02aa25b8f2a80579dce27e56a2ae1')
 
 prepare() {
