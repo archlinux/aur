@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=post.install
 changelog=
 source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip')
 noextract=()
-md5sums=('SKIP' '067c14911d4681b23ce3d3e658bf63c7')
+md5sums=('SKIP' '57c5bbb8ea28e09b71e0c6b426205988')
 validpgpkeys=()
 
 build() {
@@ -29,7 +29,7 @@ build() {
  	cp -R ../assets ./
  	sed -i 's/"boost_system",//g' ${srcdir}/shadow-of-the-wyrm/premake5.lua
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-	make config=release
+	make -j 10 config=release
 }
 
 package() {
