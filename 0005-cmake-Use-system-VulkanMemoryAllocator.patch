@@ -1,6 +1,6 @@
-From df31d25f465fb66a6bc4fb0c06b69cf6b5520383 Mon Sep 17 00:00:00 2001
+From 990c99e988609946e0fc44fd75c89b4755b92d9a Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Mon, 27 Jul 2026 11:33:56 +0800
+Date: Mon, 10 Aug 2026 21:14:31 +0800
 Subject: [PATCH 5/6] cmake: Use system VulkanMemoryAllocator
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 5/6] cmake: Use system VulkanMemoryAllocator
  2 files changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 22d7f4c..0fefdaa 100644
+index 46fc618..d65d0b3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -40,6 +40,7 @@ find_package(CEF 149.0.7827.156 REQUIRED)

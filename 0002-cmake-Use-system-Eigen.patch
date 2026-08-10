@@ -1,7 +1,7 @@
-From 592e3bf06fafab92794c56d96e17eb3e849741d8 Mon Sep 17 00:00:00 2001
+From 786a0cc5acf54fe114568f3dd0097915240be5b6 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Mon, 27 Jul 2026 11:29:17 +0800
-Subject: [PATCH 2/6] cmake: Use system Eigen3
+Date: Mon, 10 Aug 2026 21:08:08 +0800
+Subject: [PATCH 2/6] cmake: Use system Eigen
 
 ---
  CMakeLists.txt             | 1 +
@@ -9,7 +9,7 @@ Subject: [PATCH 2/6] cmake: Use system Eigen3
  2 files changed, 1 insertion(+), 6 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e83de12..6c9ee16 100644
+index 40d5a8a..ebc52d7 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -37,6 +37,7 @@ find_package(PkgConfig REQUIRED)

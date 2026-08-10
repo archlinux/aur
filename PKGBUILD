@@ -1,18 +1,18 @@
 # deps.json
 _spirv_reflect_tag=vulkan-sdk-1.4.321.0
-_rstd_commit=c697a4b08cbb9183f78c18915f59c8f72dac5d14
-_vvk_commit=27114b7e06cfb0c099ef38544d3f4c653f9e71a2
-_wavsen_commit=610b135fafbdb817b28b5ca8c50ae61db70e290c
+_rstd_commit=03b022f37aa414c22a47021d58e054d55927c6c1
+_vvk_commit=867852dea22504db27559df60b74fee4c66406c7
+_wavsen_commit=a76c68e55e24c7e87fc5dbae28ee5d3b24139724
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
-         "waywallen>=0.3.0" cef glslang fontconfig quickjs-ng glfw wayland)
+         "waywallen>=0.3.2" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=('cmake<4.4' ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
              vulkan-memory-allocator)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
@@ -26,17 +26,17 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "0004-cmake-Use-system-glslang.patch"
         "0005-cmake-Use-system-VulkanMemoryAllocator.patch"
         "0006-cmake-Install-weweb-to-bin.patch")
-sha256sums=('5ac24a38ca7ed10cb2f4dce7ad1a50632b4885c333ce40d336ecf40d04223a05'
+sha256sums=('fa8d8a53108015e7f796d372b673c5828639d9362297b9dab763f739e9a7e500'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
-            '9212c0d959a648801a005f8509699cc34dbb8fb2444a4eaedb0b922570ae77d5'
-            '871387eda9ea0ac136c04feba3f5d409b388e9846de2b41f86cb271121f43855'
-            'a2bcc8609aa1c8464987c7f3a7a64da47b113cf426a81cdf0977881e4e0c66ca'
-            '74e3ee760d1e1d6b61e190f007a6e3b6b3743593a56b52fad60e978190f6dcdd'
-            '8fd66d8e66a4ba536516945796985f9c780099128f79fb35f87ad2f6b393af5a'
-            '70984f7a1e840bebb6ac67bb1f10083fc77227f85a5adbc063ebff2945bcd28f'
-            '8a54c05c45ff5d625a175e5eebe57e937c04be61202447362bb4f07eec927635'
-            '43320c11ff9b15b0712b35b291177e9afd50bc88d59cfcc334588f8b2df7ad59'
-            'f9cff5b1745d3e4569cb3c8fd0b2bb3567054a64cc3694b0556dc194d847d787')
+            '89e9f424fe3719b8bda1380f0cc446fc96d9662668d012752de73cbc0d06a2ef'
+            '3b0c5ca0bbeb7c84df483bf098ba9105bb79316417a409bb6ef4b2b2513f6e06'
+            '3a7bcf987730ca3eab923ce1758538cc5ce26ec5f9787aa166fdd875936ba61e'
+            '8abc6ecd2993ce6eddf418a46fd088a0515b3ead9e2c99aeedfa223cf1b0eac9'
+            'e5fd3a65a6ec7e0a3ef03a82ff298ec0b1ace56b89f11ed2e94e4bcac7d9d074'
+            '444c3bd38a62d167f19e44cf71244230ba7aa538787117a20ba3e13e974b1dc1'
+            'e1bd31c20595c052578c5942acaebbcf750a4c3475d208ec4a0bd10db5fcb791'
+            'c4950f393f0130e00307bd7380b6ef6089ec504b6bc01af1c894ce660842ff88'
+            'f81b55b4bb30a2143cd3252aa14f0abb1ec4932261aef080121f4581987e5c7d')
 
 prepare() {
     cd "$srcdir/$pkgname"

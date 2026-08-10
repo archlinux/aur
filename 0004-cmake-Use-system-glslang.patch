@@ -1,17 +1,16 @@
-From cb9c60150b8b02cc97f0a8807f3504d394cd380c Mon Sep 17 00:00:00 2001
+From 0c2ea201e72c3454a3c367227b5fb557d783c469 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Mon, 27 Jul 2026 11:33:04 +0800
+Date: Mon, 10 Aug 2026 21:14:07 +0800
 Subject: [PATCH 4/6] cmake: Use system glslang
 
 ---
  CMakeLists.txt             | 1 +
  src/Vulkan/CMakeLists.txt  | 2 +-
- src/Vulkan/Shader.cpp      | 2 +-
  third_party/CMakeLists.txt | 1 -
- 4 files changed, 3 insertions(+), 3 deletions(-)
+ 3 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3c1b68c..22d7f4c 100644
+index 8e47818..46fc618 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -39,6 +39,7 @@ find_package(Threads REQUIRED)
@@ -35,19 +34,6 @@ index 9eab05e..1c6745d 100644
  target_include_directories(owe-shader-compile
    PUBLIC  .. ../Scene/Utils/include
    PRIVATE ../Scene/Utils ../Scene/Utils/include/Utils .)
-diff --git a/src/Vulkan/Shader.cpp b/src/Vulkan/Shader.cpp
-index 0905863..b377d04 100644
---- a/src/Vulkan/Shader.cpp
-+++ b/src/Vulkan/Shader.cpp
-@@ -5,7 +5,7 @@ module;
- 
- #include <glslang/Public/ShaderLang.h>
- #include <glslang/Public/ResourceLimits.h>
--#include <SPIRV/GlslangToSpv.h>
-+#include <glslang/SPIRV/GlslangToSpv.h>
- 
- #include "Utils/Sha.hpp"
- module wescene.shader_compile;
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
 index b995fa2..dbd7e0f 100644
 --- a/third_party/CMakeLists.txt

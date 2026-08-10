@@ -1,6 +1,6 @@
-From 2b51f5fb0f467a95ff079dbc93b080626827e835 Mon Sep 17 00:00:00 2001
+From cf2d112c820669cc616b026aba71b5e7746e0986 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Mon, 27 Jul 2026 11:31:52 +0800
+Date: Mon, 10 Aug 2026 21:08:27 +0800
 Subject: [PATCH 3/6] cmake: Use system quickjs-ng
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 3/6] cmake: Use system quickjs-ng
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6c9ee16..3c1b68c 100644
+index ebc52d7..8e47818 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -38,6 +38,7 @@ find_package(Threads REQUIRED)
