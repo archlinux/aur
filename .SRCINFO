@@ -17,6 +17,7 @@ pkgbase = mingw-w64-tageditor
 	makedepends = breeze-icons
 	makedepends = mingw-w64-qt5-declarative-static
 	depends = mingw-w64-crt
+	depends = mingw-w64-c++utilities
 	depends = mingw-w64-qtutilities
 	depends = mingw-w64-tagparser
 	depends = mingw-w64-qt5-declarative
