@@ -28,17 +28,19 @@ source_x86_64=(
     "https://archive.archlinux.org/packages/q/qt6-svg/qt6-svg-${qt6ver}-x86_64.pkg.tar.zst"
     "https://archive.archlinux.org/packages/q/qt6-declarative/qt6-declarative-${qt6ver}-x86_64.pkg.tar.zst"
     "https://archive.archlinux.org/packages/q/qt6-5compat/qt6-5compat-${qt6ver}-x86_64.pkg.tar.zst"
+    "https://archive.archlinux.org/packages/q/qt6-wayland/qt6-wayland-${qt6ver}-x86_64.pkg.tar.zst"
     "https://archive.archlinux.org/packages/i/icu/icu-72.1-2-x86_64.pkg.tar.zst"
     "masterpdfeditor" # wrapper
 )
 sha1sums_x86_64=(
-    "${_checksum% *}"                           # masterpdfeditor
-    "2aef848e417b78e5cc0e64961e1da0274748b2c3"  # qt6-base
-    "165e18c31f19eaefb0d2f25b64b5b58b6db637ed"  # qt6-svg
-    "e4891badad4b4c0d30f1b54d3f4e9ae1d18e6052"  # qt6-declarative
-    "89a13d359c959c98f17b5dd53e38efa4aa858216"  # qt6-5compat
-    "40ac37ae0659954c5dcaedfec8683339b3b3f3d7"  # icu
-    "a32196cd8736b5425a1952ce0d6a932ed058de9b"  # wrapper
+    "${_checksum% *}"                          # masterpdfeditor
+    '2aef848e417b78e5cc0e64961e1da0274748b2c3' # qt6-base
+    '165e18c31f19eaefb0d2f25b64b5b58b6db637ed' # qt6-svg
+    'e4891badad4b4c0d30f1b54d3f4e9ae1d18e6052' # qt6-declarative
+    '89a13d359c959c98f17b5dd53e38efa4aa858216' # qt6-5compat
+    '983857b378cd62c38c708de97a97e6d83cfff3ec' # qt6-wayland
+    '40ac37ae0659954c5dcaedfec8683339b3b3f3d7' # icu
+    'a32196cd8736b5425a1952ce0d6a932ed058de9b' # wrapper
 )
 # validpgpkeys=(
 #   '1519D5ABA65BF6FC2B73C7567A4E76095D8A52E4' # Arch Linux Developer Key

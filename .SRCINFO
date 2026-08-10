@@ -12,6 +12,7 @@ pkgbase = masterpdfeditor-qt6
 	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-svg/qt6-svg-6.4.2-1-x86_64.pkg.tar.zst
 	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-declarative/qt6-declarative-6.4.2-1-x86_64.pkg.tar.zst
 	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-5compat/qt6-5compat-6.4.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-wayland/qt6-wayland-6.4.2-1-x86_64.pkg.tar.zst
 	source_x86_64 = https://archive.archlinux.org/packages/i/icu/icu-72.1-2-x86_64.pkg.tar.zst
 	source_x86_64 = masterpdfeditor
 	sha1sums_x86_64 = 98ea265e06edc4b2d279bf45f3cb872aa31a6df1
@@ -19,6 +20,7 @@ pkgbase = masterpdfeditor-qt6
 	sha1sums_x86_64 = 165e18c31f19eaefb0d2f25b64b5b58b6db637ed
 	sha1sums_x86_64 = e4891badad4b4c0d30f1b54d3f4e9ae1d18e6052
 	sha1sums_x86_64 = 89a13d359c959c98f17b5dd53e38efa4aa858216
+	sha1sums_x86_64 = 983857b378cd62c38c708de97a97e6d83cfff3ec
 	sha1sums_x86_64 = 40ac37ae0659954c5dcaedfec8683339b3b3f3d7
 	sha1sums_x86_64 = a32196cd8736b5425a1952ce0d6a932ed058de9b
 
