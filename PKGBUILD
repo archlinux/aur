@@ -2,7 +2,7 @@
 
 pkgname=hypr-kblayoutd-bin
 _pkgname=hypr-kblayoutd
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Small Hyprland daemon that remembers keyboard layout per window (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 _url_base="$url/releases/download/v$pkgver"
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_url_base/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_url_base/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('f07535e32126aa4cc41f6963fca4ac0df65e1c36908101cdb7eb93f99c36707f')
-sha256sums_aarch64=('00b5e5552eb195d14e2c0563481e36c21d5797cbac806ab3c563c6b463af7ff0')
+sha256sums_x86_64=('688296712f97955d741ac31d2efbb198fa6acbf1c6d4fdfe0ec95708fd802cea')
+sha256sums_aarch64=('db744e15373ca5a199ff429241225ca0c2c254e26187730ccefe21b977c7e422')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH"
