@@ -3,8 +3,8 @@
 
 pkgname=intel-ipu6-camera-hal-git
 _pkgname=ipu6-camera-hal
-pkgver=r126.c933525
-pkgrel=2
+pkgver=r128.9899efa
+pkgrel=1
 pkgdesc="Intel IPU6 camera HAL (Tiger Lake / Alder Lake / Meteor Lake)"
 arch=('x86_64')
 url="https://github.com/intel/ipu6-camera-hal"
@@ -31,7 +31,9 @@ build() {
         -DBUILD_CAMHAL_PLUGIN=ON        \
 	-DIPU_VERSIONS="ipu6;ipu6ep;ipu6epmtl" \
         -DUSE_PG_LITE_PIPE=ON \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	-DCMAKE_C_FLAGS="-Wno-error=unused-but-set-variable" \
+	-DCMAKE_CXX_FLAGS="-Wno-error=unused-but-set-variable"
     cmake --build "$_pkgname/build"
 }
 
