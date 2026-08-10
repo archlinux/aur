@@ -1,7 +1,7 @@
 pkgbase = sotw-dev
 	pkgdesc = Shadow Of The Wyrm by Julian Day - Development branch.
 	pkgver = development
-	pkgrel = 17
+	pkgrel = 18
 	url = http://www.shadowofthewyrm.org/
 	install = post.install
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = sotw-dev
 	source = git+https://github.com/prolog/shadow-of-the-wyrm.git
 	source = https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip
 	md5sums = SKIP
-	md5sums = 067c14911d4681b23ce3d3e658bf63c7
+	md5sums = 57c5bbb8ea28e09b71e0c6b426205988
 
 pkgname = sotw-dev
