@@ -11,7 +11,7 @@ depends=('wxwidgets-gtk3')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('1d464b4ed9006501a498492646808b30')
+md5sums=('40dcd403c15297493ca82feed258a675')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

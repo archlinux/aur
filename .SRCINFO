@@ -10,6 +10,6 @@ pkgbase = dxtime
 	makedepends = cmake
 	depends = wxwidgets-gtk3
 	source = http://downloads.sourceforge.net/sourceforge/dxtime/dxtime-1.2.5.tar.gz
-	md5sums = 185d2a66bb50adc1d3b5c92e5ae423af
+	md5sums = 40dcd403c15297493ca82feed258a675
 
 pkgname = dxtime
