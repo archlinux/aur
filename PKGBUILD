@@ -3,11 +3,11 @@ pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
 pkgver=1.3.0
 _appimage=YARC.Launcher\_$pkgver\_amd64.AppImage
-pkgrel=1
+pkgrel=2
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
-license=('custom: YARG License')
+license=(LicenseRef-YARG-1.0)
 depends=(
 	cairo
 	gdk-pixbuf2
@@ -19,24 +19,28 @@ depends=(
 	webkit2gtk-4.1
 )
 optdepends=(
-	'hidapi: support for HID devices (in-game)'
-	'pulseaudio-alsa: audio support (in-game)'
-	'systemd-libs: access to HID devices (in-game)'
+	'hidapi: access to HID devices (in-game)'
+	'pipewire-alsa: audio support (in-game)'
+	'systemd-libs: HID device detection (in-game)'
 )
 provides=($_binname)
 conflicts=($_binname)
 options=(!debug)
 source=(
-	$url/releases/download/v$pkgver/$_appimage.tar.gz
+	"$url/releases/download/v$pkgver/$_appimage"
+	69-hid.rules
+	99-yarg-libusb.rules
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
 )
 sha256sums=(
-	cbb5f7bc790d268b1a15a4593334ffb6bebf31a9c27ad2f6654dae31bb4bd16c
+	40e6e72370ed81f899f4660139ba076ad99d131bcabdca76499a3dceebb5e556
+	4aa703ca90992584b22ed553ae180e5cadf7223feb693b0cb367b32e56d27ed1
+	21387a52411c408243b757bf1ffe17c1f377dfe9f2174415f807c175da0d5227
 	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 )
 
 prepare() {
-	./"$(echo $_appimage | sed "s/\./ /")" --appimage-extract
+	chmod +x $_appimage && "./$_appimage" --appimage-extract
 
 	cd squashfs-root/
 	mv YARC\ Launcher.desktop $_binname.desktop
@@ -48,19 +52,11 @@ prepare() {
 package() {
 	cd squashfs-root/
 
-	# udev rules (in-game)
-	install -dm755 $pkgdir/etc/udev/rules.d/
-	# - access to HID devices
-	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
-	# - improved compatibility of the XBOX 360 Wireless Adapter
-	printf "%s\n" \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0291", MODE="0666"' \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02a9", MODE="0666"' \
-	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0719", MODE="0666"' \
-	> $pkgdir/etc/udev/rules.d/99-yarg-libusb.rules
-
 	# binary
 	install -Dm755 usr/bin/$_binname -t $pkgdir/usr/bin/
+
+	install -Dm644 "$srcdir/69-hid.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+	install -Dm644 "$srcdir/99-yarg-libusb.rules" -t "$pkgdir/usr/lib/udev/rules.d"
 
 	# desktop file
 	install -Dm644 $_binname.desktop -t $pkgdir/usr/share/applications/
