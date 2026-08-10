@@ -2,7 +2,7 @@
 
 pkgname=acheron-git
 _pkgname=acheron
-pkgver=r192.5fcc437
+pkgver=r208.4410ae2
 pkgrel=1
 pkgdesc='Alternative Discord client made in C++ with Qt 6'
 arch=('x86_64')
@@ -53,7 +53,8 @@ build() {
   cmake -B build -S . -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTS=OFF \
-    -DUSE_VCPKG=OFF
+    -DUSE_VCPKG=OFF \
+    -DALLOW_PLAIN_CURL=ON
   cmake --build build
 }
 
