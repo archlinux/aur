@@ -1,0 +1,17 @@
+pkgbase = kizami-bin
+	pkgdesc = Tray-resident pomodoro timer with a mini window mode
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zabuton-app/kizami
+	arch = x86_64
+	license = MIT
+	provides = kizami
+	conflicts = kizami
+	noextract = kizami-0.1.0-linux-x86_64.AppImage
+	options = !strip
+	source = kizami-0.1.0-linux-x86_64.AppImage::https://github.com/zabuton-app/kizami/releases/download/v0.1.0/kizami-0.1.0-linux-x86_64.AppImage
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/zabuton-app/kizami/v0.1.0/LICENSE
+	sha256sums = 4a70ce74d29a8a3efa754257172398cebb7422f4e36bdb5fdc36aff74dac3a74
+	sha256sums = 34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178
+
+pkgname = kizami-bin
