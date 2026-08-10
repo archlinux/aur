@@ -37,6 +37,8 @@ EOF
 
   echo "==> atmosphera: enable hardware remapping with: systemctl enable --now keyd"
   echo "==>   (keyd layer changes self-apply via the shell's systemd D-Bus trigger)"
+  echo "==> atmosphera: xremap (session keymaps) needs the input group:"
+  echo "==>   sudo usermod -aG input ${SUDO_USER:-$USER}"
 }
 
 post_upgrade() {

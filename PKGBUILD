@@ -29,6 +29,7 @@ optdepends=(
   'ddcutil: For external display brightness control'
   'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
+  'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
 )
 provides=('atmosphera')
 conflicts=('atmosphera')
@@ -58,6 +59,10 @@ package() {
 
   # keyd reload service (triggered via systemd D-Bus StartUnit by the shell)
   install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
+  # xremap user unit (env-gated by the shell via the user manager)
+  install -Dm644 Scripts/systemd/xremap-atmosphera.service "$pkgdir/usr/lib/systemd/user/xremap-atmosphera.service"
+  # uinput access for the input group (xremap's virtual keyboard output)
+  install -Dm644 Scripts/udev/80-atmosphera-uinput.rules "$pkgdir/usr/lib/udev/rules.d/80-atmosphera-uinput.rules"
   # polkit: allow active sessions/wheel to start that one service, no prompt
   install -Dm644 Scripts/polkit/atmosphera-keyd.rules "$pkgdir/usr/share/polkit-1/rules.d/atmosphera-keyd.rules"
 }
