@@ -1,9 +1,9 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=xk-git
 _pkgname=xK
-pkgver=v2.2.0.r5.g67d044a
+pkgver=v2.3.0.r34.g959fb15
 pkgrel=1
-pkgdesc="IRC daemon, bot, TUI client"
+pkgdesc="IRC daemon, bot, TUI client, TUI/X11 frontend"
 url="https://git.janouch.name/p/xK"
 arch=('i686' 'x86_64')
 license=('custom:0BSD')
@@ -12,7 +12,13 @@ conflicts=('xk')
 provides=('xk')
 makedepends=('cmake' 'pkg-config' 'git')
 depends=('openssl' 'ncurses')
-optdepends=('lua: support for Lua plugins (5.3, 5.4, 5.5, possibly newer)')
+optdepends=(
+	'lua: support for Lua plugins (5.3, 5.4, 5.5, possibly newer)'
+	'libunistring: TUI/X11 frontend'
+	'libxft: X11 frontend'
+	'libpng: X11 frontend'
+	'libcanberra: X11 frontend'
+)
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 sha256sums=('SKIP')
 
