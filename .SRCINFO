@@ -1,11 +1,11 @@
 pkgbase = tidal-hifi
 	pkgdesc = The web version of Tidal running in electron with hifi support thanks to widevine.
 	pkgver = 8.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
 	license = custom:MIT
-	makedepends = nodejs
+	makedepends = nodejs>=24
 	makedepends = npm
 	makedepends = libxcrypt-compat
 	makedepends = python
