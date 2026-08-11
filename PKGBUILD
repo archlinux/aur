@@ -6,9 +6,9 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify
-pkgver='1.2.95.453'
+pkgver='1.2.96.518'
 epoch=1
-_commit=g0eeebbed
+_commit=g366879e1
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -34,13 +34,13 @@ source=("${pkgname}-${pkgver}-${_commit}-x86_64.deb::http://repository.spotify.c
         "${pkgname}-${pkgver}-${pkgrel}-Release::http://repository.spotify.com/dists/testing/Release"
         "${pkgname}-${pkgver}-${pkgrel}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
         "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages")
-sha512sums=('902d9b8200d67e10a19ce5e34316ea14ed05e935fe5493c21f7a8db31b2ffc91375dd18a68734e781b815d57ac9e3aff36da79bce9ff6882a1f247542caab451'
+sha512sums=('98d25bd748258ca8b8357313cd35c7188bb0b26ed2d4390b0208473aa9fa3491a095559762f8ba06ec0828d73e05ee8fb488f0f357340191da4c65dd1f93c519'
             'da48b628a4ea925dd8521133ebf364b261b11aed252d264dde6605d915cdb631919ffe672c58534bcdb60869e5d87a49a60a8198780b99517123f0031e83fdb1'
             '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            'b1a317c49c32ca63be65a85a92f486ecbb39ffc402c8c459f6c6542261584f740da318d1311fb71832e68a56754d547805de0cffb19dde6a79c4a14c1914aee6'
+            '18f27971697835df865d63465d86d1250b20b9d1c12bbf7df1eafeef5c66bf0b3134c25b08269f72d4b7a4287151336ee3fd0f70bc46da25f13e8c91c004f710'
             'SKIP'
-            'bd52856fb7531af4f7782fdd3b1d047e99dc00b02223035022f70112d2ecf9c80d7c2bf816eb78aeced8de577a9975fab5042c8e8ce4ca689ce3dbc46a9e4703')
+            '1fbb6f1f104b998265faafeb62cb3aff6d7048b2e689292049fbbe867ea4071af3b73fc5a023bff8d4c1e579e5d904c78179e3650ae4740602583db8e13bde8a')
 
 # Import key with:
 # curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.gpg | gpg --import -
