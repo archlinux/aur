@@ -2,7 +2,7 @@
 AppName=Player432Hz
 appid=player432hz
 pkgname=${appid}-appimage
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Plays music in 432hz"
 arch=('x86_64')
