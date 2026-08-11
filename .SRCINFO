@@ -1,19 +1,20 @@
 pkgbase = iw4x-launcher-git
-	pkgdesc = iw4x updater & launcher
-	pkgver = 0.10.10.r0.g799a8eb
+	pkgdesc = Launcher/Updater for the IW4x MW2 (2009) mod
+	pkgver = 1.1.8.b.18.r1.ge7995e4
 	pkgrel = 1
 	url = https://github.com/iw4x/launcher
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
-	makedepends = rust
-	makedepends = pkgconf
+	makedepends = build2>=0.18
 	makedepends = git
-	depends = openssl
+	makedepends = boost
+	makedepends = pkgconf
+	depends = glibc
 	depends = perl
 	provides = iw4x-launcher
+	conflicts = iw4x-launcher
 	options = !lto
-	source = iw4x-launcher::git+https://github.com/iw4x/launcher.git
+	source = launcher::git+https://github.com/iw4x/launcher.git
 	sha256sums = SKIP
 
 pkgname = iw4x-launcher-git
