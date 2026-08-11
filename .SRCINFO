@@ -1,6 +1,6 @@
 pkgbase = osu-gu-git
 	pkgdesc = A free-to-win rhythm game. GooGuTeam fork of osu!lazer.
-	pkgver = 2026.713.0.r0.g8175f87
+	pkgver = 2026.810.0.r1.g1fe523c
 	pkgrel = 1
 	url = https://github.com/GooGuTeam/osu
 	arch = x86_64

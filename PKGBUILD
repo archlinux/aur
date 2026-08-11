@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=osu-gu-git
-pkgver=2026.713.0.r0.g8175f87
+pkgver=2026.810.0.r1.g1fe523c
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. GooGuTeam fork of osu!lazer."
 arch=(x86_64)
