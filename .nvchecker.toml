@@ -1,0 +1,5 @@
+[comview-bin]
+source = "github"
+github = "rockorager/comview"
+use_latest_release = true
+prefix = "v"
