@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
-	pkgver = 17.2.13
+	pkgver = 17.2.14
 	pkgrel = 1
 	url = https://omp.sh/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oh-my-pi
 	depends = opus
 	depends = pcre2
 	options = !strip
-	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.2.13
+	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.2.14
 	source = tree-sitter-no-strict-aliasing.patch
 	source = use-system-library.patch
 	source = skip-native-embed-for-aur.patch
