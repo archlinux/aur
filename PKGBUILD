@@ -14,8 +14,10 @@ depends=(
   alsa-lib
   art_standalone
   bionic_translation
+  cairo
   ffmpeg
   fontconfig
+  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
@@ -31,6 +33,7 @@ depends=(
   pango
   sqlite
   vulkan-icd-loader
+  wayland
   webkitgtk-6.0
 )
 makedepends=(
