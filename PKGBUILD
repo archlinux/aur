@@ -4,7 +4,7 @@
 _basename=heidisql
 pkgname=${_basename}-gtk2-bin
 pkgver=12.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases. (GTK2)"
 arch=('x86_64')
 _barch=('amd64')
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 conflicts=("${_basename}" heidisql-client)
 provides=("${_basename}")
 replaces=("heidisql-bin")
-depends=('gtk2' 'mariadb-libs' 'postgresql-libs' 'sqlite' 'freetds')
+depends=('gtk2' 'mariadb-clients' 'postgresql-libs' 'sqlite' 'freetds')
 source=("${_basename}_${pkgver}_${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[0]}.deb"
 	"build-gtk2-v${pkgver}.tgz::${url}/releases/download/v${pkgver}/build-gtk2-v${pkgver}.tgz")
 noextract=("build-gtk2-v${pkgver}.tgz")
