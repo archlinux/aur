@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-cli-git
 	pkgdesc = nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (git master)
-	pkgver = 4.1.6.r3.gccdfbfc
+	pkgver = 4.1.7.r2.g838e680
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = nostr-vpn-cli-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	provides = nvpn=4.1.6
-	provides = nostr-vpn-cli=4.1.6
+	provides = nvpn=4.1.7
+	provides = nostr-vpn-cli=4.1.7
 	conflicts = nvpn
 	conflicts = nostr-vpn-cli
 	conflicts = nostr-vpn-cli-bin
