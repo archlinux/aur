@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Application
+Name=Hoppscotch
+GenericName=API Client
+Comment=Open source API development ecosystem
+Exec=hoppscotch-desktop %u
+Icon=hoppscotch-desktop
+Terminal=false
+StartupNotify=true
+# Wayland matches this window through the app_id, which equals this file's
+# basename; StartupWMClass is the X11 path, where the class is reported as
+# Hoppscotch-desktop and resolved case-insensitively.
+StartupWMClass=hoppscotch-desktop
+Categories=Development;WebDevelopment;
+Keywords=API;REST;GraphQL;HTTP;WebSocket;Postman;
+MimeType=x-scheme-handler/io.hoppscotch.desktop;
+Actions=x11;
+
+# Tauri forces client-side decorations (it calls gtk_window_set_titlebar(),
+# which makes GTK3 skip the compositor's server-side decoration offer), so on
+# Wayland the title bar is drawn by GTK with the GTK theme instead of by KWin
+# with Breeze. Running on X11 gets real server-side decorations back, at the
+# cost of XWayland scaling and input handling.
+[Desktop Action x11]
+Name=Open with X11 backend (native title bar)
+Name[zh_CN]=以 X11 后端打开（原生标题栏）
+Exec=env GDK_BACKEND=x11 hoppscotch-desktop %u
+Icon=hoppscotch-desktop
