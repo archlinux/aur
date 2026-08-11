@@ -1,6 +1,6 @@
 pkgbase = inlyne
 	pkgdesc = A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/Inlyne-Project/inlyne
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = inlyne
 	depends = libxi
 	depends = libxrandr
 	depends = oniguruma
-	source = inlyne-0.5.2.tar.gz::https://static.crates.io/crates/inlyne/inlyne-0.5.2.crate
-	b2sums = b9fca42df8b5b5120b8fe0945f9bb5433eabefe7719796f27ea71cb1fa426cb106d51db4e71020c837ed70a90e4632e84f902ba4f99dae714d93203f9f68a93a
+	source = inlyne-0.5.3.tar.gz::https://static.crates.io/crates/inlyne/inlyne-0.5.3.crate
+	b2sums = 95ab9792f80ac48a99b3ce4f18b7ceecac316bcf918ee0122c0212db448ac56621321b0879407798e9173c88656babb21a9f767aeb432d0ba3f3a96b2006464e
 
 pkgname = inlyne
