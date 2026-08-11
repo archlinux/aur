@@ -1,7 +1,7 @@
 # Maintainer: shyam (shyamganesh01@gmail.com)
 
 pkgname=ligolo
-pkgver=0.9
+pkgver=0.9.1
 _pkgver=20250111
 pkgrel=1
 pkgdesc="An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface."
