@@ -1,0 +1,11 @@
+pkgbase = cppreference-zh
+	pkgdesc = zh.cppreference.com 的离线中文文档（HTML）
+	pkgver = 20260502
+	pkgrel = 1
+	url = http://zh.cppreference.com/
+	arch = any
+	license = MIT
+	source = https://github.com/myfreeer/cppreference2mshelp/releases/download/2026.05/html-book-20260502.tar.xz
+	sha256sums = 8a0810d50fe7f2578dfa25cdf9c31225c4ba7061c18309626b1077fd58625af5
+
+pkgname = cppreference-zh
