@@ -1,0 +1,15 @@
+pkgbase = ocaml-crunch
+	pkgdesc = Convert a filesystem into an OCaml module
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/mirage/ocaml-crunch
+	arch = x86_64
+	license = ISC
+	makedepends = dune
+	makedepends = ocaml-cmdliner
+	depends = ocaml
+	depends = ocaml-ptime
+	source = ocaml-crunch-4.1.0.tar.gz::https://github.com/mirage/ocaml-crunch/archive/refs/tags/v4.1.0.tar.gz
+	sha512sums = 6590e53732748a753a16f1669aa61ae80e19c08b96ca7eb8fd429e3664917b022c4397831e51b9f55f84bbbd8207d7f3deb8ad52ecba87ff50cff2f738ed64b1
+
+pkgname = ocaml-crunch
