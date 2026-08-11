@@ -1,0 +1,15 @@
+post_install() {
+  echo ""
+  echo "==> proton-ge-git installed."
+  echo "    Restart Steam and enable 'GloriousEggroll' in"
+  echo "    Steam > Settings > Compatibility."
+  echo ""
+  echo "==> For esync/fsync support ensure your kernel has the ulimit patches"
+  echo "    and that /etc/security/limits.d/10-games.conf has taken effect"
+  echo "    (logout/login required)."
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
