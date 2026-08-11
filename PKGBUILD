@@ -3,7 +3,7 @@
 
 pkgname=tabook
 _pkgname=tabook
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('any')

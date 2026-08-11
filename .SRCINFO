@@ -1,6 +1,6 @@
 pkgbase = tabook
 	pkgdesc = Terminal-based e-book reader for FB2 and EPUB formats
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/zsh-ncursed/tabook
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = tabook
 	optdepends = kdialog: graphical file picker (KDE alternative to zenity)
 	options = !strip
 	options = !debug
-	source = tabook::git+https://github.com/zsh-ncursed/tabook.git#tag=v0.2.4
+	source = tabook::git+https://github.com/zsh-ncursed/tabook.git#tag=v0.2.5
 	sha256sums = SKIP
 
 pkgname = tabook
