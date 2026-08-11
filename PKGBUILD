@@ -59,12 +59,16 @@ build() {
   _build_time=$(git show -s --format=%cI HEAD)
 
   cd backend
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   CGO_ENABLED=1 \
   GOCACHE="$srcdir/go-cache" \
   GOMODCACHE="$srcdir/go-mod-cache" \
   GOFLAGS="-modcacherw" \
-  go build -buildvcs=false -trimpath \
-    -ldflags="-s -w -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.Version=${_version} -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.Commit=${_commit} -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.BuildTime=${_build_time}" \
+  go build -buildmode=pie -buildvcs=false -trimpath \
+    -ldflags="-linkmode=external -extldflags '${LDFLAGS}' -s -w -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.Version=${_version} -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.Commit=${_commit} -X github.com/DEEIX-AI/DEEIX-Chat/backend/internal/shared/buildinfo.BuildTime=${_build_time}" \
     -o ../build/deeix-chat-server ./cmd/server
   cd ..
 
