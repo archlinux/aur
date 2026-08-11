@@ -2,7 +2,7 @@
 AppName=YangDownloader
 appid=yangdownloader
 pkgname=${appid}-appimage
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Downloads best-quality audio and video from YouTube"
 arch=('x86_64')
