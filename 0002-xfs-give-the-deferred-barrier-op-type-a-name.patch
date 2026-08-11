@@ -1,0 +1,40 @@
+From 0ac3b084e367a454c9a8af494d5f2ae0f1d20ce8 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:32:12 -0600
+Subject: [PATCH 2/5] xfs: give the deferred barrier op type a name
+
+xfs_barrier_defer_type is the only xfs_defer_op_type with no .name.
+Every other one carries a short string used for tracing and reporting:
+attr, bmap, extent_free, agfl_free, rtextent_free, refcount,
+rtrefcount, rmap, rtrmap and exchmaps.
+
+That has been harmless because nothing dereferences the field, but it
+leaves a NULL in a table where every other entry is populated, so the
+first caller to print it gets "(null)" in the kernel and undefined
+behaviour in the userspace libxfs build of this file, where xfs_alert
+lands in fprintf.  xfs_defer_add() already treats a missing member of
+this table as worth shutting the filesystem down for, so an unpopulated
+one is out of step with how the file handles its own ops tables.
+
+Fill it in so the table is complete before anything reads it.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+---
+ fs/xfs/libxfs/xfs_defer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fs/xfs/libxfs/xfs_defer.c b/fs/xfs/libxfs/xfs_defer.c
+index 843c33304441..75f0d37914d5 100644
+--- a/fs/xfs/libxfs/xfs_defer.c
++++ b/fs/xfs/libxfs/xfs_defer.c
+@@ -229,6 +229,7 @@ xfs_defer_barrier_cancel_item(
+ }
+ 
+ static const struct xfs_defer_op_type xfs_barrier_defer_type = {
++	.name		= "barrier",
+ 	.max_items	= 1,
+ 	.create_intent	= xfs_defer_barrier_create_intent,
+ 	.abort_intent	= xfs_defer_barrier_abort_intent,
+-- 
+Javier Tia
+

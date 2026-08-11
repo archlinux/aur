@@ -1,0 +1,119 @@
+From c42d673fa638fa1ed23da980ec2d99c280e9b300 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:36:40 -0600
+Subject: [PATCH 5/5] xfs: initialise args->total for parent pointer updates
+
+xfs_parent_da_args_init() fills in every field of its xfs_da_args except
+total, and the containing struct xfs_parent_args is allocated with
+kmem_cache_zalloc() (xfs_parent.h:66), so runtime parent pointer updates
+reach the block allocator with args->total == 0.
+
+The log recovery path already gets this right, which is the clearest
+statement of the bug.  xfs_attri_recover_work() reconstructs the same
+operation from a recovered intent and does
+
+	args->total = xfs_attr_calc_size(args, &local);	/* xfs_attr_item.c:706 */
+
+for PPTR_SET and PPTR_REPLACE, and deliberately not for PPTR_REMOVE.  So
+replaying a parent pointer insert from the log runs with a correct total
+while performing the same insert at runtime runs with zero.
+
+That field is not a constant.  xfs_da_grow_inode_int() treats it as a
+running remainder:
+
+	args->total -= dp->i_nblocks - nblks;		/* xfs_da_btree.c:2388 */
+
+xfs_da_args.total is an xfs_extlen_t, i.e. uint32_t (xfs_types.h:14), so
+subtracting the first block the attr fork gains wraps it to 0xffffffff.
+It is passed down as xfs_bmapi_write()'s total argument
+(xfs_da_btree.c:2348), stored as xfs_bmalloca.total, copied to
+xfs_alloc_arg.total (xfs_bmap.c:3214, 3379) and finally reaches
+
+	if (available < (int)max(args->total, alloc_len))
+
+in xfs_alloc_space_available() (xfs_alloc.c:2525), where the cast turns
+~0U back into -1 and the minimum-free-space test can no longer fail.
+Parent pointer allocations therefore skip a check that every other xattr
+allocation observes.
+
+Growing the fork twice in one operation is ordinary, not a corner case:
+XFS_DAS_LEAF_ADD calls xfs_attr3_leaf_to_node(), which grows the fork
+(xfs_attr_leaf.c:1319), then sets XFS_DAS_NODE_ADD and returns -EAGAIN;
+the next cycle can reach xfs_attr3_leaf_split() (xfs_attr_leaf.c:1462),
+and a node split reaches xfs_da_grow_inode() again by way of
+xfs_da3_split() (xfs_da_btree.c:748, 866).  The xfs_da_args lives across
+that roll, so the later allocations are the ones that see the wrapped
+value.
+
+Set the field from xfs_attr_calc_size(), matching both the recovery path
+above and xfs_attr_set() (xfs_attr.c:1150), rather than clamping the
+subtraction, which would leave total meaningless for parent pointers and
+hide the omission.
+
+The initialiser is shared with five other callers and the value is inert
+on all of them.  Every reader of args->total in the attr code needs
+xfs_da_grow_inode(), whose only attr-fork callers are the three growth
+functions in xfs_attr_leaf.c and the two split functions in
+xfs_da_btree.c, and the state machine cannot reach any of them from a
+remove: each remove state completes with
+xfs_attr_complete_op(attr, xfs_attr_init_add_state(args)), and
+xfs_attr_complete_op() replaces that add state with XFS_DAS_DONE unless
+XFS_DA_OP_REPLACE is set (xfs_attr.c:497), which only the two replace
+helpers ever set.  xfs_parent_lookup() never allocates at all, and on
+xfs_parent_set() the assignment is immediately overwritten by
+xfs_attr.c:1150, so it is dead there rather than merely unused.  Setting
+it unconditionally is simpler than mirroring
+xfs_attri_recover_work()'s switch.
+
+This makes the allocator stricter for parent pointers rather than only
+more correct: where total was 0 the test reduced to
+available < alloc_len, and it now asks for the whole remaining
+reservation, 25 blocks on a 4k-block filesystem.  That changes which AG
+is chosen and can cost an extra allocator pass, but it does not
+introduce a new failure.  xfs_bmap_btalloc_low_space() retries with
+args->minlen and sweeps every AG before declaring ENOSPC
+(xfs_bmap.c:3511-3532), and a parent-pointer link never runs
+reservationless in the first place - xfs_link() refuses the resblks == 0
+fallback while pptrs are enabled, precisely because it cannot back out if
+the xattrs must grow (xfs_inode.c:948-954).
+
+Fixes: b7c62d90c12c ("xfs: parent pointer attribute creation")
+Signed-off-by: Javier Tia <floss@jetm.me>
+---
+ fs/xfs/libxfs/xfs_parent.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/fs/xfs/libxfs/xfs_parent.c b/fs/xfs/libxfs/xfs_parent.c
+index 3509cc4b2175..d6588d0a9286 100644
+--- a/fs/xfs/libxfs/xfs_parent.c
++++ b/fs/xfs/libxfs/xfs_parent.c
+@@ -156,6 +156,8 @@ xfs_parent_da_args_init(
+ 	xfs_ino_t		owner,
+ 	const struct xfs_name	*parent_name)
+ {
++	int			local;
++
+ 	args->geo = child->i_mount->m_attr_geo;
+ 	args->whichfork = XFS_ATTR_FORK;
+ 	args->attr_filter = XFS_ATTR_PARENT;
+@@ -168,6 +170,17 @@ xfs_parent_da_args_init(
+ 	args->value = rec;
+ 	args->valuelen = sizeof(struct xfs_parent_rec);
+ 	xfs_attr_sethash(args);
++
++	/*
++	 * xfs_da_grow_inode_int() subtracts every block it allocates from
++	 * args->total, which is unsigned, so the zero left here by
++	 * kmem_cache_zalloc() wraps to ~0U as soon as the attr fork grows once.
++	 * Derive it the way xfs_attr_set() does instead.  A parent pointer's
++	 * value is a struct xfs_parent_rec, so the entry is always local, which
++	 * is what the ASSERT records.
++	 */
++	args->total = xfs_attr_calc_size(args, &local);
++	ASSERT(local);
+ }
+ 
+ /* Make sure the incore state is ready for a parent pointer query/update. */
+-- 
+Javier Tia
+

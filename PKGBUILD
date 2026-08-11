@@ -234,7 +234,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.1
-_minor=5
+_minor=8
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -294,15 +294,54 @@ _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"{,.asc}
     "config"
-    # Local out-of-tree fix: XFS deferred-ops in-memory corruption shutdown.
-    # Backport of Yun Zhou's linux-xfs patch (posted 2026-07-20, not yet merged
-    # to any released tree). xfs_btree_split_worker() clobbers the shared
-    # transaction's t_pflags, clearing NOFS mid xfs_defer_finish; under
-    # reflink+rmap churn this can trip SHUTDOWN_CORRUPT_INCORE at xfs_defer.c:721.
-    # RE-APPLY CHECK: targets cachyos-${_major}.${_minor}-${_tagrel}. On any
-    # upstream bump of pkgver/_srcname, re-verify this still applies; drop it once
-    # the fix lands upstream in the shipped source tag.
-    "0001-xfs-fix-nofs-context-corruption-in-xfs_btree_split_worker.patch"
+    # XFS deferred-op diagnostics + the args->total fix, 2026-07-30.
+    #
+    # Patch 5 is the actual fix and it is evidence-backed, not inferred. A
+    # boot-mapped persistent ftrace instance captured the failing allocation in
+    # the crashing task 5.3 ms before the shutdown:
+    #
+    #   531.418881 xfs_alloc_vextent_loopfailed  minlen=1 maxlen=1
+    #   531.435265 xfs_alloc_size_nominleft      minlen=1 maxlen=0 total=0xffffffff
+    #   531.435266 xfs_alloc_vextent_badargs     minlen=1 maxlen=0
+    #   531.440550 xfs_force_shutdown            xfs_defer.c:721
+    #
+    # total=0xffffffff is the uninitialised args->total underflowing in
+    # xfs_da_grow_inode_int(). In xfs_alloc_space_available() the guard
+    # "available < (int)max(args->total, alloc_len)" then evaluates against
+    # (int)0xFFFFFFFF == -1, so it cannot fail; maxlen is clamped to available
+    # (0); and both ASSERTs guarding that clamp are no-ops because
+    # CONFIG_XFS_DEBUG is unset. xfs_alloc_vextent_check_args() then rejects
+    # minlen(1) > maxlen(0) with a bare -ENOSPC, which xfs_defer_finish_noroll()
+    # treats as fatal.
+    #
+    # With a correct total the guard demands available >= total, so maxlen can
+    # never be clamped to 0 - the failing state is unreachable. Patch 5 is
+    # therefore necessary AND sufficient for this crash.
+    #
+    # Patches 1-4 are diagnostics and one unrelated real bug (uninitialised
+    # error on the item-less barrier path); none of them fixes this crash.
+    "0001-xfs-initialise-error-in-xfs_defer_finish_one.patch"
+    "0002-xfs-give-the-deferred-barrier-op-type-a-name.patch"
+    "0003-xfs-report-the-error-that-made-deferred-work-shut-do.patch"
+    "0004-xfs-correct-the-parent-pointer-space-reservation-com.patch"
+    "0005-xfs-initialise-args-total-for-parent-pointer-updates.patch"
+    # Apart from those five, no out-of-tree patches: otherwise STOCK SOURCE +
+    # DWARF debuginfo, so a crash on it differs from the distro kernel only by
+    # the debug build and the patches listed above.
+    #
+    # REMOVED 2026-07-28:
+    # 0001-xfs-fix-nofs-context-corruption-in-xfs_btree_split_worker.patch
+    # (Yun Zhou, linux-xfs 2026-07-20). The patch is CORRECT - both a local
+    # source review and an independent cold review confirmed the cross-thread
+    # tp->t_pflags clobber is real and the fix is sound - but it does NOT fix the
+    # crash this machine has. The failure reproduced on the patched kernel on
+    # 2026-07-28 (build task 3393/4296, root XFS shut down, journald spewing EIO,
+    # no panic and therefore no vmcore). That matches the review's verdict: the
+    # patch addresses a latent deadlock risk, while the observed failure is
+    # in-memory corruption whose userspace half (RSVD-bit PTEs, zeroed code
+    # pages on unrelated processes) it cannot explain. Carrying it added a
+    # variable without buying a fix. Kept for reference in
+    # ~/cpu-rma-evidence/2026-07-26-xfs-nofs/.
 )
 validpgpkeys=(
   E18447AC260021D31F3FF6C4C8A2A4774B8B63C4  # Eric Naim <dnaim@cachyos.org>
@@ -925,8 +964,12 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d7f63f5c0926d98d27dd9f405dbdcdd0d8cbcf0d07185615edbe62b242a09f2f0074bedfc466e3a43d8e12b15d0d1860f5a6ff89a4b583b81ca677b33d3c0072'
+b2sums=('6a198c07f5b3ff24e35972c0c25a30f4ec72ec4b986a926ec57aa3fa045bd72dc15845a3651b134715a1cd5efb62a1bb8800a19dc80cef2e0de70d01245e5eb0'
         'SKIP'
         'a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2'
-        'c44afe8881f47aa2d086cac2da339a125039180258a3011f3e3802b36501c7b9370e60858f95e2c16afda3837f682395cc9547bc8db038f246232a34904dc3d0'
+        '121ca69c1fb7098b559890e51f8457b68baafd23e34a86bd88a1b0b152ccda9dde72fb4ee8b3c6657158a6bb42364b69e114eeb2523c48afef5391696f552cf8'
+        'a580a888c4809745d95052847ae7aba6f2f509285dedab2b7b9f05c8d3403b9242bfa8935c3bb5442c74779baf4b67952625087f8ec508c3e93f3d7efebed93c'
+        '7a4921a968cea2717125026794ec46ba82c272f5a732d788042e6888ec769aa7f0ee36c478c6c6addee0ed9e5ef43d182217825f57cc3643e60a0e71be67da6e'
+        'c17b8b6822a3ccbd573404b6c68122e71550dc84333f0a281c11936ac4013edac43aeac4103bfc22f5a3cb522b0549ad9071d51e5c2066a657c62f624c8b9073'
+        '6c63c28974d9570a620f72afae2665db4f9f0ad70d91574dbb519744740b884b17d8737bec2b7dca28ce8d55f50be63c6f92413e9ed791552666a614147ff540'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')

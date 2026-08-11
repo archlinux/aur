@@ -1,0 +1,66 @@
+From b7d3940c6a926f4a8fb73531de96ebbf812a5221 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:30:45 -0600
+Subject: [PATCH 1/5] xfs: initialise error in xfs_defer_finish_one()
+
+xfs_defer_finish_one() declares error without an initialiser and only
+assigns it inside the loop over dfp->dfp_work.  When that list is empty
+the loop body never runs, control falls through to the "Done with the
+dfp, free it" path, and the function returns an indeterminate value.
+
+An item-less pending item is not hypothetical.  Of the three
+xfs_defer_alloc() callers, xfs_defer_add() always follows with
+xfs_defer_add_item(), but the other two do not.
+xfs_defer_start_recovery() is harmless because it adds to a
+caller-supplied r_dfops list rather than to tp->t_dfops, so its items
+never enter this path at all, and they are driven by
+xfs_defer_finish_recovery() and ops->recover_work() rather than by
+xfs_defer_finish_one().  xfs_defer_add_barrier() is neither:
+xfs_defer_create_intents() walks tp->t_dfops without filtering
+item-less entries, so a barrier is spliced onto the pending list and is
+eligible to be picked by xfs_defer_finish_noroll().
+xfs_reap_ag_blocks() adds one every other extent, so online repair
+reaches this on any filesystem built with CONFIG_XFS_ONLINE_REPAIR.
+
+The consequence is a filesystem shutdown that depends on stack
+contents.  xfs_defer_finish_noroll() treats any non--EAGAIN return as
+fatal and calls xfs_force_shutdown(SHUTDOWN_CORRUPT_INCORE), so
+whenever the uninitialised value happens to be non-zero a successful
+barrier is reported as in-core corruption and the filesystem is taken
+down in the middle of a repair.  ops->finish_cleanup() also receives
+the same value where an op type provides one, though no op type that
+can reach the empty-list path defines one.
+
+Returning zero is the correct result rather than a papered-over error,
+and not only because the barrier type deliberately has no work items:
+reaching the free path at all means the item loop drained without a
+non-zero error, so zero is the truthful value for any op type.
+
+The uninitialised declaration is older than the Fixes: commit below,
+but that commit is where the bug became reachable - it added
+xfs_defer_add_barrier(), the barrier op type and the only caller of it
+in one go, and before it no item-less pending item could exist.
+
+Fixes: 3f3cec031099 ("xfs: force small EFIs for reaping btree extents")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Javier Tia <floss@jetm.me>
+---
+ fs/xfs/libxfs/xfs_defer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/xfs/libxfs/xfs_defer.c b/fs/xfs/libxfs/xfs_defer.c
+index 89501e8bd2f8..843c33304441 100644
+--- a/fs/xfs/libxfs/xfs_defer.c
++++ b/fs/xfs/libxfs/xfs_defer.c
+@@ -583,7 +583,7 @@ xfs_defer_finish_one(
+ 	const struct xfs_defer_op_type	*ops = dfp->dfp_ops;
+ 	struct xfs_btree_cur		*state = NULL;
+ 	struct list_head		*li, *n;
+-	int				error;
++	int				error = 0;
+ 
+ 	trace_xfs_defer_pending_finish(tp->t_mountp, dfp);
+ 
+-- 
+Javier Tia
+
