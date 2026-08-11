@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-git
-pkgver=v0.13.1.r549.geaf66e7a
+pkgver=v0.14.0.r1.g16329e0a
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
@@ -28,15 +28,15 @@ build() {
   cd tracy
 
   cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release
-  make -C capture/build
+  cmake --build capture/build
   cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release
-  make -C csvexport/build
+  cmake --build csvexport/build
   cmake -S import -B import/build -D CMAKE_BUILD_TYPE=Release
-  make -C import/build
+  cmake --build import/build
   cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release
-  make -C profiler/build
+  cmake --build profiler/build
   cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release
-  make -C update/build
+  cmake --build update/build
 }
 
 package() {
@@ -45,7 +45,7 @@ package() {
   install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
   install -Dm755 import/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
   install -Dm755 import/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
-  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy
+  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy-profiler
   install -Dm755 update/build/tracy-update $pkgdir/usr/bin/tracy-update
 
   mkdir -p $pkgdir/usr/include/Tracy/client
