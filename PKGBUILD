@@ -1,7 +1,8 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
+
 pkgname=linwood-butterfly-git
 pkgbase=linwood-butterfly-git
-pkgver=2.6.0_beta.3_189_git683f2b6b16
+pkgver=2.6.0_beta.5_193_git7416323837
 pkgrel=1
 pkgdesc="Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app"
 arch=('x86_64')
@@ -22,6 +23,7 @@ makedepends=(
   git
   flutter
   svgo
+  oxipng
 )
 
 source=('git+https://github.com/LinwoodDev/Butterfly.git')
@@ -40,20 +42,17 @@ pkgver() {
 }
 
 prepare(){
-  cd "$srcdir/Butterfly/app"
+  cd "$srcdir/Butterfly"
+  svgo . -r --multipass
+  oxipng -o max -r -p -s -v -t 4 --timeout 150 ./app/{images,lib,linux,templates,test}
 }
 
 build() {
   cd "$srcdir/Butterfly"
 
-  # Optimize images
-  svgo . -r --multipass
-  oxipng -o max -r -p -s -v -t 4 --timeout 150 ./app/{images,lib,linux,templates,test}
-
   # Build Flutter release
   cd app
   flutter clean
-  rm -rf .dart_tool
   flutter pub get
   flutter build linux --release
 }
