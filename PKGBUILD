@@ -1,11 +1,11 @@
-# Maintainer: mcpp-community <x.d2learn.org@gmail.com>
+# Maintainer: mcpp-community <speak-agent@users.noreply.github.com>
 #
 # mcpp-bin — prebuilt release binaries from GitHub, the same artifacts the
 # upstream `install.sh` one-liner downloads. See scripts/aur/README.md for
 # how this is published to the AUR and how to bump it (scripts/aur/update.sh).
 
 pkgname=mcpp-bin
-pkgver=2026.8.1.1
+pkgver=2026.8.11.3
 pkgrel=1
 pkgdesc="Modern C++ build & package management tool (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_aarch64=("mcpp-${pkgver}-linux-aarch64.tar.gz::${_relbase}/mcpp-${pkgver}
 source=("mcpp.sh")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('3ff4e68544dd1c2d11b9a25e69ba70852ceeef7fb8cb12302da8b6ddc2e3e42a')
-sha256sums_aarch64=('40a9cee0466d645d26820a47e065a8dd56768276ef01ff5289b6855580e32b78')
+sha256sums_x86_64=('b4754cf2a3e9542092ca4461c231de03a55f06a943d1040cbd6b2615a10deefb')
+sha256sums_aarch64=('0d393d531730db0f641bb89bc4b0e743b2348d8069a26496d07fb61822bc9c55')
 
 package() {
     local _src="${srcdir}/mcpp-${pkgver}-linux-${CARCH}"
