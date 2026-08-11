@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r125668.g70a5df6d27
+pkgver=9.1.r126056.gee498f5e82
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.1'
+_whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -18,6 +18,7 @@ depends=(
     'cairo'
     'chromaprint-fftw'
     'codec2'
+    'curl'
     'dav1d'
     'davs2'
     'flite1'
@@ -112,7 +113,7 @@ depends=(
     'svt-vp9'
     'tesseract'
     'twolame'
-    'uavs3d-git'
+    'uavs3d'
     'v4l-utils'
     'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
@@ -175,12 +176,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
-            'ae9cf2d3936a3288f468b254a83327c85dce2632cd3ab26347ddf50602328fbc'
+            'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
+            '4a4ae8f17065236ebb1c3606c1617e16f35ee451d8c1d5165d31b753da73f2df'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '80dd151073299c033d232a21dc422aebb71ec76c5d7aa8faf716867ee04c2750'
+            '32a0bef461482582673f35f101d96357f5e78ed0fd550ecdc2eefe8f7b3de090'
             '57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4'
-            '00b3e50ea9905c195bdc457ddc6028bba886291a67f6bf64c545578f9f92e51a'
+            '064d5a574a01e189027febff189d5b5681a986e41f8dbd15ec9258bfc4a3159d'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -226,8 +227,8 @@ build() {
         -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
         -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
-    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
-    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
+    # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
@@ -278,6 +279,7 @@ build() {
         --enable-libcaca \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libcurl \
         --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
