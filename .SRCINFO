@@ -1,7 +1,7 @@
 pkgbase = octopi
 	pkgdesc = A powerful Pacman frontend using Qt libs
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aarnt/octopi
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -18,18 +18,19 @@ pkgbase = octopi
 	optdepends = inxi: for SysInfo log
 	optdepends = lsb-release: for SysInfo log
 	optdepends = mhwd: for SysInfo log
-	optdepends = pacaur: for AUR support
+	optdepends = systemd: for SysInfo log
 	optdepends = pacmanlogviewer: to view pacman log files
+	optdepends = pacaur: for AUR support
 	optdepends = paru: for AUR support
 	optdepends = pikaur: for AUR support
-	optdepends = systemd: for SysInfo log
 	optdepends = trizen: for AUR support
 	optdepends = yay: for AUR support
 	conflicts = alpm_octopi_utils
+	options = !lto
 	source = octopi-0.19.0.tar.gz::https://github.com/aarnt/octopi/archive/refs/tags/v0.19.0.tar.gz
-	source = alpm_octopi_utils::git+https://github.com/aarnt/alpm_octopi_utils.git#commit=789ba9acc52b7b0624fb08de9f4756b5d51c10f1
+	source = alpm_octopi_utils::git+https://github.com/aarnt/alpm_octopi_utils.git#commit=0ed2a8bd6b869f40683cf7a79727dc64d7da274e
 	sha256sums = bf2f6e2ab6208a020fd34fa6d88eaad5268132c4e38369818fd74267c0c54525
-	sha256sums = SKIP
+	sha256sums = 25c8f9ce3f24f5f9bf271c1acbf4935ee3ed1ff12bd66e9f3115b9d40c53bebe
 
 pkgname = octopi
 	depends = qt6-base
