@@ -1,5 +1,5 @@
 pkgname=itarmykit-bin
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Desktop shell for BaseTool load-testing workflows"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('itarmykit')
 conflicts=('itarmykit')
 options=('!debug')
 source=("itarmykit-${pkgver}-amd64.deb::https://download.itarmy.com.ua/releases/${pkgver}/itarmykit-linux-amd64.deb")
-sha256sums=('c02edeed50fa9d5d11327b60fc59e690f14bd840c67acc3c3fe42b912fd3398b')
+sha256sums=('ee6061976c8cf3d7872cb5e27c260e8d2436d57211db3364911429f1ead514f3')
 
 latestver() {
   curl -fsSL https://download.itarmy.com.ua/index.html |
