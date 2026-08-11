@@ -3,7 +3,7 @@
 _pkgname='zvm'
 pkgname="$_pkgname-bin"
 pkgver='0.8.29'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Version manager for Zig compilers (binary version)'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -11,7 +11,7 @@ arch=('x86_64' 'aarch64' 'loong64' 'powerpc64le')
 url='https://github.com/tristanisham/zvm'
 license=('MIT')
 source=(
-  "LICENSE::$url/raw/refs/heads/master/LICENSE"
+  "LICENSE::$url/raw/refs/tags/v$pkgver/LICENSE"
   "zvm.bash"
   "path.install"
 )
@@ -30,7 +30,7 @@ source_powerpc64le=(
   "$pkgname-$pkgver-powerpc64le.tar::$url/releases/download/v$pkgver/zvm-linux-ppc64le.tar"
 )
 
-sha256sums=('6149c9a360f7fcde722b0d3c54a129737d10142857b26d1aaf1a5ec9737bb459'
+sha256sums=('0749f1e161cdf25dde3de06d35610453dbf94fc24a60e13e8c5cd7b3f460c277'
             '08cd47b1b748b3b5a6b29bd012a9d09bbd70717180debe7edcf2a2d230b2089d'
             '66da3559a9c3083f4e9dcbc288891974dac57bc4c2ed27bd4d434131ca6f65d2')
 sha256sums_x86_64=('8718ea4b3cdfe96463905e9146e19b7e110b39a9bdd3d6d6a4b156acf172b0f8')
