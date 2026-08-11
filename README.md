@@ -60,6 +60,16 @@ If the `PKGBUILD` itself changes without the version moving — a new dependency
   `${pkgname}-${pkgver}` directly. If the repo is ever renamed, that coupling breaks.
 - **`provides=('allium')`** is the binary name, not a package name — the package is
   `allium-tools`, the command it installs is `allium`.
+- **The submodule clones over HTTPS, which is read-only.** `.gitmodules` in the monorepo
+  uses `https://aur.archlinux.org/allium-tools.git` so `--recurse-submodules` works for
+  people without an AUR account. To push, set the SSH URL locally, once:
+
+  ```bash
+  git -C aur remote set-url --push origin ssh://aur@aur.archlinux.org/allium-tools.git
+  ```
+
+  `git submodule sync` re-derives `origin` from `.gitmodules`, so re-run this if a push
+  that used to work starts failing.
 - **Push access is per-maintainer**, keyed by the SSH key registered on your AUR account.
-  A push that fails with a permissions error means your key isn't on the account listed as
-  Maintainer in the `PKGBUILD`.
+  A push rejected for permissions means your key isn't on the account listed as Maintainer
+  in the `PKGBUILD`.
