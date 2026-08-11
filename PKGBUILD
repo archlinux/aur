@@ -3,7 +3,7 @@
 pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
-pkgver=r1318.e3c7bdb
+pkgver=r1322.6d0ad06
 pkgrel=1
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')

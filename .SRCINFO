@@ -1,6 +1,6 @@
 pkgbase = piped-backend-git
 	pkgdesc = An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata
-	pkgver = r1318.e3c7bdb
+	pkgver = r1322.6d0ad06
 	pkgrel = 1
 	url = https://github.com/TeamPiped/Piped-Backend
 	arch = x86_64
