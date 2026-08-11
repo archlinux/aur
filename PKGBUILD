@@ -14,7 +14,7 @@ options=(!strip emptydirs)
 provides=('proton' 'dwproton')
 _srcdir="${_pkgname}-${_srcver}-${CARCH}"
 source=("${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.tar.xz")
-sha512sums=('<a')
+sha512sums=('94e502e935e3d743e33647f580489ebd3b54b0789196d87b066f06456455a8dd7966f149dfcb73e64e9d345a6f2c20ac4b24a9095cad643577b34ae45dcefff5')
 depends=(
   bash
   coreutils
