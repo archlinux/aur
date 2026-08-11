@@ -3,7 +3,10 @@ post_install() {
 As each regular desktop user who will run Wispr Flow, execute:
   wispr-flow --setup
 Then run `wispr-flow --doctor`. If input devices are not accessible, reboot
-before trying again. Do not run Wispr Flow or its setup command as root.
+before trying again. If they still fail after reboot, use this explicit fallback
+as that regular user and then log out completely and back in:
+  sudo usermod -aG input "$USER"
+Do not run Wispr Flow or its setup command as root.
 EOF
 }
 
