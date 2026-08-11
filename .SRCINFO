@@ -1,6 +1,6 @@
 pkgbase = mesh-llm-cuda
 	pkgdesc = Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API.
-	pkgver = 0.75.0
+	pkgver = 0.75.1
 	pkgrel = 1
 	url = https://github.com/Mesh-LLM/mesh-llm
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mesh-llm-cuda
 	conflicts = mesh-llm-rocm
 	conflicts = mesh-llm-vulkan
 	options = !lto
-	source = mesh-llm-cuda-0.75.0.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.75.0.tar.gz
-	sha256sums = cc07b13daa8cb70827d33f20486745814ec65c9be132a741833a27f82ca358c4
+	source = mesh-llm-cuda-0.75.1.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.75.1.tar.gz
+	sha256sums = cf666e83b6c39bf9da7664614de577441a91c100305469dd6db1c7bae8191387
 
 pkgname = mesh-llm-cuda
