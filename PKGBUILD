@@ -1,6 +1,6 @@
 pkgname=bettbox-compatible
 _pkgname=Bettbox
-pkgver=1.18.8
+pkgver=1.18.9
 _pkgver="${pkgver/pre/-pre}"
 pkgrel=1
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
@@ -19,7 +19,7 @@ options=('!debug')
 source=("restart-bettbox.hook" "bettbox.desktop" "$_pkgname::git+$url.git#tag=v${_pkgver}")
 sha256sums=('581125ab3ab64cb8d2ad6285a197e10641d9ea7be6a92ec53180d36328b3955f'
             'f5c33a2c9ccfff7de67b89b74d23ca66fe7b125e269b5751f5a67aa18ffc35d5'
-            '31ded89b9a5a3078817bae9cda35bfcf7153544958f1f771a303110290549c24')
+            'ac9be0a0ee77a554c55ad02d2ec73e767410887b02dd7cb2222a3acd9c245dcb')
 
 prepare() {
 	cd "$_pkgname"
