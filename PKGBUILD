@@ -2,7 +2,7 @@
 
 _pkg=pyodoo
 pkgname=python-${_pkg}
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Interact with Odoo servers using XML-RPC"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-xlrd: Support for SqlExcelQuery'
             'python-awaitable: Support for asynchronous requests')
 options=(!emptydirs)
 source=("${_pkg}-${pkgver}.tar.gz"::"https://github.com/muflone/${_pkg}/archive/${pkgver}/${pkgver}.tar.gz")
-sha256sums=('b711519c02ecb4928de427f878fecda3c443dc1d6b0ea109f5e5d54c2add954e')
+sha256sums=('d08dc8b0cbaf9ee9292cd26d231ea111822f3aa944256dc49a0a33462bc629de')
 
 build() {
   cd "${_pkg}-${pkgver}"
