@@ -1,4 +1,5 @@
-# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
+# Maintainer:
+# Contributor: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=rusticon-git
 _name=${pkgname%-git}
