@@ -2,7 +2,7 @@
 # Maintainer: edaywalid <becharwalid9 at gmail dot com>
 
 pkgname='undo-cli-bin'
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Revert what the last shell command did to the filesystem'
 url='https://undo.edaywalid.com'
@@ -14,10 +14,10 @@ depends=('glibc')
 optdepends=('zsh: shell hook' 'bash: shell hook' 'fish: shell hook')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/edaywalid/undo/releases/download/v${pkgver}/undo_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7221a8d5027111dc9b5c22532b7856c41a47951ee87c50c16764d5ddaa8427da')
+sha256sums_aarch64=('902f345c86d38d3ec63d0b84fbb7ff191ddbcecdec08b48e4bcf0c14b197c62b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/edaywalid/undo/releases/download/v${pkgver}/undo_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2364fdc94ab19eb1d4223a4184b6ccc4f13f8879d74245f83d3a4341c783b0df')
+sha256sums_x86_64=('78e19c58a75241880eff38832dd3f0a63c346d10e6e7a9fdf4f82cdca585476d')
 
 package() {
   # every archive carries both shims, so pick the one for this arch

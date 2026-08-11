@@ -1,6 +1,6 @@
 pkgbase = undo-cli-bin
 	pkgdesc = Revert what the last shell command did to the filesystem
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://undo.edaywalid.com
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = undo-cli-bin
 	conflicts = undo-cli
 	provides = undo-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/edaywalid/undo/releases/download/v0.2.8/undo_0.2.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7221a8d5027111dc9b5c22532b7856c41a47951ee87c50c16764d5ddaa8427da
+	source_aarch64 = https://github.com/edaywalid/undo/releases/download/v0.3.0/undo_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 902f345c86d38d3ec63d0b84fbb7ff191ddbcecdec08b48e4bcf0c14b197c62b
 	arch = x86_64
-	source_x86_64 = https://github.com/edaywalid/undo/releases/download/v0.2.8/undo_0.2.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2364fdc94ab19eb1d4223a4184b6ccc4f13f8879d74245f83d3a4341c783b0df
+	source_x86_64 = https://github.com/edaywalid/undo/releases/download/v0.3.0/undo_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 78e19c58a75241880eff38832dd3f0a63c346d10e6e7a9fdf4f82cdca585476d
 	
 pkgname = undo-cli-bin
