@@ -1,8 +1,47 @@
-post_install() {
+configure_sing_box_capabilities() {
     setcap cap_net_admin,cap_net_raw+ep /usr/bin/sing-box || \
         echo "WARNING: setcap failed — run manually: sudo setcap cap_net_admin,cap_net_raw+ep /usr/bin/sing-box"
 }
 
+print_service_enable_notice() {
+    echo
+    echo "======================================================================"
+    echo "  ACTION REQUIRED: enable kvn-tui daemon autostart"
+    echo "======================================================================"
+    echo "Run as your regular user (without sudo):"
+    echo
+    echo "  systemctl --user enable --now kvn-tui.service"
+    echo
+    echo "======================================================================"
+    echo
+}
+
+print_upgrade_notice() {
+    echo
+    echo "======================================================================"
+    echo "  ACTION REQUIRED: migrate kvn-tui daemon autostart to systemd"
+    echo "======================================================================"
+    echo "Run as your regular user (without sudo):"
+    echo
+    echo "  systemctl --user enable --now kvn-tui.service"
+    echo
+    echo "If Omarchy previously started kvn-tui from Hyprland autostart, also run:"
+    echo
+    echo "  kvn-tui --install-omarchy"
+    echo
+    echo "======================================================================"
+    echo
+}
+
+post_install() {
+    configure_sing_box_capabilities
+    print_service_enable_notice
+}
+
 post_upgrade() {
-    post_install
+    configure_sing_box_capabilities
+
+    if (( $(vercmp "$2" 0.19.1) <= 0 )); then
+        print_upgrade_notice
+    fi
 }
