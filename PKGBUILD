@@ -19,6 +19,12 @@ sha256sums=('4558d2d3a8a7e0187fa3ab6b2cc0bfa0c1d7d840245d64fbe09060eba94a9fc8'
             '5061afc6ba9d8284c7e71207215a9c9a8d89929cf2e51848e7984d82b70c21c0'
             '368419e1e45392514a3b6fad3ef242bd602d98e49df474eb30cb6b25afce370d')
 
+prepare() {
+	cd "${_pyname//-/_}-${pkgver}"
+
+	sed -e 's|\(requires = \["uv_build\)[^"]*\("\]\)|\1\2|g' -i "./pyproject.toml"
+}
+
 build() {
 	cd "${_pyname//-/_}-${pkgver}"
 
