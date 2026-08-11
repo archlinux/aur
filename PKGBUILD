@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/kimwalisch/primesieve/archive/v$pkgver.tar.gz")
 sha256sums=('acaafd94cc30dbeef4808e682d0cb096c05d25f74eda5bacecefd323f697833f')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd "$srcdir/primesieve-${pkgver}"
