@@ -2,13 +2,18 @@
 # Binary package: downloads prebuilt pacman package from GitHub Release.
 # Source package mark-shot builds from source; mark-shot-bin installs prebuilt binary.
 pkgname=mark-shot-bin
-pkgver=0.1.44
+pkgver=0.1.47
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
 license=('MIT')
-depends=('qt6-base' 'qt6-wayland' 'pipewire' 'ffmpeg' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python')
+# FFmpeg 大版本升级时 soname 整体 +1（libavformat.so.62 -> .so.63），
+# 只写 'ffmpeg' 会让针对旧 FFmpeg 编译的预编译包通过依赖检查却无法加载库。
+# 这里列出 .so 名，makepkg 会扫描 package() 解压出的二进制并展开为
+# libavformat.so=62-64 形式，库代际不匹配时 pacman 直接拒绝安装。
+depends=('qt6-base' 'qt6-svg' 'qt6-wayland' 'pipewire' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python'
+         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libavfilter.so' 'libswresample.so' 'libswscale.so')
 # x86_64：Arch 容器编译，声明 layer-shell-qt
 # aarch64：当前 CI 在 Ubuntu 22.04-arm 预编译，so 代际可能与 Arch aarch64 不一致；
 #          aarch64 用户优先安装源码包 mark-shot 在本机构建
@@ -30,8 +35,8 @@ conflicts=('mark-shot')
 source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
 noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('1ca1b37b197ae100630e6c828e43cd58dd5a4a410b49cef4f72c9487c4cf4bd5')
-sha256sums_aarch64=('ab80f4b04e593e9b767b371b03d6d79eb9532d786f5b1591fe37730c25f0b978')
+sha256sums_x86_64=('782ed2d712eb6ff8ef58562d94b358be9010ae788d12325cbd0b87bd2649aed7')
+sha256sums_aarch64=('3f99b5f1e258182fa6719e21a876178f0b17a4a65bcf104124552424615deb30')
 options=('!strip')
 
 # 解压预编译 pacman 包到 pkgdir，排除包元数据文件
