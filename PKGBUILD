@@ -3,8 +3,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full-llvm
-pkgver=8.1.2
-pkgrel=5
+pkgver=9.0
+pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -18,7 +18,6 @@ depends=(
     'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
-    'celt'
     'chromaprint-fftw-llvm'
     'codec2'
     'dav1d'
@@ -30,7 +29,6 @@ depends=(
     'fribidi'
     'glib2'
     'glibc'
-    'glslang'
     'gnutls'
     'gsm'
     'harfbuzz'
@@ -143,6 +141,7 @@ makedepends=(
     'amf-headers'
     'clang'
     'cmake'
+    'glslang'
     'lld'
     'llvm'
     'cuda'
@@ -151,7 +150,6 @@ makedepends=(
     'git'
     'gmp'
     'libgl'
-    'libomxil-bellagio'
     'lv2'
     'nasm'
     'opencl-headers'
@@ -175,8 +173,9 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
+        '070-ffmpeg9-svt-codec-pixfmts.patch'
         'LICENSE')
-sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
+sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
             'SKIP'
             'SKIP'
             '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
@@ -186,6 +185,7 @@ sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
             '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
             '1bbd783da8483e2cffe99715125dddbd88c81ae36f28eee5ae7df5705c448077'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
+            '28003f6aabb89fcd262ae09e5e5a0679e8755b5e265bc1afa0079ed450eb7d91'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -197,6 +197,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg9-svt-codec-pixfmts.patch"
 
     # lld prunes these indirect flite1 dependencies under --as-needed, leaving
     # the voice libraries with unresolved symbols such as usenglish_init.
@@ -298,7 +299,6 @@ build() {
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
-        --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
         --enable-libdav1d \
@@ -311,7 +311,6 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libharfbuzz \
@@ -348,7 +347,6 @@ build() {
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
-        --disable-libshaderc \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
@@ -416,7 +414,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --disable-ohcodec \
-        --enable-omx \
         --enable-opencl \
         --enable-opengl \
         --enable-rkmpp \

@@ -1,0 +1,39 @@
+diff --git a/libavcodec/libsvt_hevc.c b/libavcodec/libsvt_hevc.c
+index 82e9f7dc3a..96e075d3e4 100644
+--- a/libavcodec/libsvt_hevc.c
++++ b/libavcodec/libsvt_hevc.c
+@@ -571,14 +571,13 @@ const FFCodec ff_libsvt_hevc_encoder = {
+     .init           = eb_enc_init,
+     FF_CODEC_ENCODE_CB(eb_encode_frame),
+     .close          = eb_enc_close,
+     .p.capabilities = AV_CODEC_CAP_DELAY,
+-    .p.pix_fmts     = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
+-                                                    AV_PIX_FMT_YUV420P10,
+-                                                    AV_PIX_FMT_YUV422P,
+-                                                    AV_PIX_FMT_YUV422P10,
+-                                                    AV_PIX_FMT_YUV444P,
+-                                                    AV_PIX_FMT_YUV444P10,
+-                                                    AV_PIX_FMT_NONE },
++    CODEC_PIXFMTS(AV_PIX_FMT_YUV420P,
++                  AV_PIX_FMT_YUV420P10,
++                  AV_PIX_FMT_YUV422P,
++                  AV_PIX_FMT_YUV422P10,
++                  AV_PIX_FMT_YUV444P,
++                  AV_PIX_FMT_YUV444P10),
+     .p.priv_class   = &class,
+     .defaults       = eb_enc_defaults,
+     .caps_internal  = FF_CODEC_CAP_INIT_CLEANUP,
+diff --git a/libavcodec/libsvt_vp9.c b/libavcodec/libsvt_vp9.c
+index 3ae06d0a92..686299520f 100644
+--- a/libavcodec/libsvt_vp9.c
++++ b/libavcodec/libsvt_vp9.c
+@@ -693,8 +693,7 @@ const FFCodec ff_libsvt_vp9_encoder = {
+     .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS,
+     .caps_internal    = FF_CODEC_CAP_NOT_INIT_THREADSAFE |
+                         FF_CODEC_CAP_AUTO_THREADS | FF_CODEC_CAP_INIT_CLEANUP,
+-    .p.pix_fmts       = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
+-                                                    AV_PIX_FMT_NONE },
++    CODEC_PIXFMTS(AV_PIX_FMT_YUV420P),
+     .p.priv_class     = &class,
+     .defaults         = eb_enc_defaults,
+     .p.wrapper_name   = "libsvt_vp9",
