@@ -1,0 +1,19 @@
+pkgbase = controlcenter
+	pkgdesc = ControlCenter Web Interface built with Nuxt (stable version)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://code.weexnes.dev/ControlCenter
+	install = controlcenter.install
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	provides = controlcenter
+	conflicts = controlcenter-git
+	options = !strip
+	source = controlcenter-1.9.0.tar.gz::https://code.weexnes.dev/~downloads/projects/73/archives?revision=1.9.0&format=tgz
+	source = controlcenter.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = controlcenter

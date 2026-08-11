@@ -1,0 +1,13 @@
+[Unit]
+Description=ControlCenter Web Interface
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/controlcenter
+Environment=PORT=4382
+ExecStart=/usr/bin/node /opt/controlcenter/server/index.mjs
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

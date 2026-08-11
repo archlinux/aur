@@ -1,0 +1,25 @@
+post_install() {
+  local user="${SUDO_USER:-$USER}"
+  if [ "$user" = "root" ]; then
+    user=$(find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | head -n 1)
+  fi
+
+  if [ -n "$user" ] && [ "$user" != "root" ]; then
+    echo "Configuring controlcenter service to run as user: $user"
+    mkdir -p /etc/systemd/system/controlcenter.service.d
+    cat <<EOF >/etc/systemd/system/controlcenter.service.d/override.conf
+[Service]
+User=$user
+EOF
+    systemctl daemon-reload
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm -rf /etc/systemd/system/controlcenter.service.d
+  systemctl daemon-reload
+}
