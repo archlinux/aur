@@ -3,8 +3,8 @@
 # scripts/gen-aur-pkgbuild.sh — edit the template, not AUR directly.
 
 pkgname=itgray-bin
-pkgver=0.1.0beta1
-_tagver=0.1.0-beta.1
+pkgver=0.1.1beta1
+_tagver=0.1.1-beta.1
 pkgrel=1
 pkgdesc="ITG Ray - VLESS/sing-box VPN client with a privileged TUN helper (prebuilt)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=itgray-bin.install
 # info to split out.
 options=('!strip' '!debug' '!lto')
 source=("https://github.com/IvanTopGaming/ITG_Ray/releases/download/v${_tagver}/ITGRay-${_tagver}-linux-x64.tar.gz")
-sha256sums=('81f731deff155a3ef389447bfe72c022c06b557ea20ba96e6cc68eb34796a963')
+sha256sums=('801fd6e23904ab15fc4956d8868f73d121668def4b6ab68c62841a710afae7f6')
 
 package() {
   local src="${srcdir}/ITGRay-${_tagver}-linux-x64"
