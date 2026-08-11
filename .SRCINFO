@@ -1,13 +1,13 @@
 pkgbase = gigot
 	pkgdesc = An easy gitconfig switcher
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hugoarnal/gigot
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = go
 	provides = gigot
-	source = gigot-0.1.1.tar.gz::https://github.com/hugoarnal/gigot/archive/v0.1.1.tar.gz
-	sha256sums = 510710cb7fc4d64b2f4fc50a7a569d74cb022efbcfe1427397fcfcf4a47b339f
+	source = gigot-0.2.0.tar.gz::https://github.com/hugoarnal/gigot/archive/v0.2.0.tar.gz
+	sha256sums = ea47b8f097073b1e3f93c88f69ebc8b8fa348394edb10382b3db495a33b3fc79
 
 pkgname = gigot
