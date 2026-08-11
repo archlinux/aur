@@ -1,0 +1,47 @@
+[Unit]
+Description=OxiRoute proxy server
+Documentation=https://github.com/brauliobo/oxiroute
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=oxiroute
+Group=oxiroute
+WorkingDirectory=/var/lib/oxiroute
+EnvironmentFile=-/etc/oxiroute/oxiroute.env
+ExecStart=/usr/bin/oxiroute serve /etc/oxiroute/oxiroute.kdl
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+KillMode=mixed
+KillSignal=SIGTERM
+LimitNOFILE=1048576
+UMask=0027
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+LockPersonality=true
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RemoveIPC=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+
+RuntimeDirectory=oxiroute
+RuntimeDirectoryMode=0750
+StateDirectory=oxiroute
+StateDirectoryMode=0750
+ProtectSystem=strict
+ReadWritePaths=/run/oxiroute /var/lib/oxiroute
+
+[Install]
+WantedBy=multi-user.target

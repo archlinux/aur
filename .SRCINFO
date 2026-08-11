@@ -1,0 +1,35 @@
+pkgbase = oxiroute
+	pkgdesc = Pingora-based HTTP, TCP, and RTMP proxy runtime
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://github.com/brauliobo/oxiroute
+	install = oxiroute.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust>=1.97
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	optdepends = certbot: provide certificate lineages consumed by configured Certbot sources
+	backup = etc/oxiroute/oxiroute.env
+	backup = etc/oxiroute/oxiroute.kdl
+	backup = etc/oxiroute/oxiroute.lua
+	source = oxiroute-0.4.1.tar.gz::https://github.com/brauliobo/oxiroute/releases/download/v0.4.1/oxiroute-0.4.1.tar.gz
+	source = oxiroute.service
+	source = oxiroute.sysusers
+	source = oxiroute.tmpfiles
+	source = oxiroute.env
+	source = oxiroute.kdl
+	source = oxiroute.lua
+	source = README.md::https://raw.githubusercontent.com/brauliobo/oxiroute/2d9c5fe66cd096d7a1d8e3bada8d5784b5f97f6c/packaging/arch/README.md
+	sha256sums = bc2b5a680a7aae181a4f5b8b9e6326043334247ab6355273d589078c5bfb0a54
+	sha256sums = 5d93df51ac5690a336e40f624c3b27ba3a1d4ab8a218dbaac72a05a92819ac54
+	sha256sums = ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72
+	sha256sums = 502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356
+	sha256sums = c87c9ef586bbb68f69f5abc1c4616de35783fe5d5d2b07b0b6b4011b2b892f44
+	sha256sums = 57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9
+	sha256sums = f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564
+	sha256sums = 64068182bca24ac7b569e766b16ee83675c5acf2f67e46c709fc31d6caf290d4
+
+pkgname = oxiroute
