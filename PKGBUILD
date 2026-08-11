@@ -3,6 +3,7 @@ pkgname=sandpaper-sudoku-gtk-git
 pkgver=1.1.3
 pkgrel=1
 pkgdesc="GTK4 Sudoku application for ePaper devices with stylus input"
+url='https://gitlab.com/sandpaper-project/sandpaper-sudoku/sandpaper-sudoku-gtk'
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('gtkmm-4.0' 'onnxruntime-cpu')
