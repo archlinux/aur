@@ -1,0 +1,21 @@
+post_install() {
+  if command -v aa-enabled >/dev/null 2>&1 &&
+    command -v apparmor_parser >/dev/null 2>&1 &&
+    aa-enabled --quiet &&
+    test ! -e /etc/apparmor.d/disable/chatgpt &&
+    test ! -L /etc/apparmor.d/disable/chatgpt; then
+    apparmor_parser -r -W -T /etc/apparmor.d/chatgpt
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if command -v aa-enabled >/dev/null 2>&1 &&
+    command -v apparmor_parser >/dev/null 2>&1 &&
+    aa-enabled --quiet; then
+    apparmor_parser -R /etc/apparmor.d/chatgpt || true
+  fi
+}
