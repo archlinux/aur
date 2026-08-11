@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=guiless-search
-pkgver=r10.20260501.bad5bd1
+pkgver=r16.20260812.368db8d
 pkgrel=1
 pkgdesc='Multi-backend headless web search proxy'
 arch=('any')
@@ -24,6 +24,11 @@ pkgver() {
 build() {
     cd "${pkgname}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}"
+    python -m unittest discover -s tests -v
 }
 
 package() {

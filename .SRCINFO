@@ -1,6 +1,6 @@
 pkgbase = guiless-search
 	pkgdesc = Multi-backend headless web search proxy
-	pkgver = r10.20260501.bad5bd1
+	pkgver = r16.20260812.368db8d
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/guiless-search
 	arch = any
