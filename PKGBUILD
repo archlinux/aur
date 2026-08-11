@@ -6,7 +6,7 @@
 
 pkgname=animfetch-bin
 _pkgname=animfetch
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Animated system fetch that stays pinned above your shell while you work'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=("$_pkgname")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 # Refresh with `updpkgsums` on every version bump.
-sha256sums_x86_64=('2768fdec6d3a29f1d2f65f462e71a4df6dbe2ab4220cd27f88c4ea8ba98fb7d9')
-sha256sums_aarch64=('267ac3e9f06eee3c2768721495e66ee1f64e95215a5c37fb3e85c6ecf36452bc')
+sha256sums_x86_64=('3b63bcae80349c62fa0694211ffa67f51833c34270cb4aa37499a6d6f5494de7')
+sha256sums_aarch64=('daa7d60df8ce946f1167c4d9b31a3b17d707659a2cb8118f9a2b9a6c1519b833')
 
 package() {
 	# $CARCH is the leading component of the target triple for both

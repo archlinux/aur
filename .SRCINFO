@@ -1,16 +1,16 @@
 pkgbase = animfetch-bin
 	pkgdesc = Animated system fetch that stays pinned above your shell while you work
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Andrew-Velox/animfetch
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = animfetch=0.1.2
+	provides = animfetch=0.1.3
 	conflicts = animfetch
-	source_x86_64 = animfetch-0.1.2-x86_64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.2/animfetch-v0.1.2-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 2768fdec6d3a29f1d2f65f462e71a4df6dbe2ab4220cd27f88c4ea8ba98fb7d9
-	source_aarch64 = animfetch-0.1.2-aarch64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.2/animfetch-v0.1.2-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 267ac3e9f06eee3c2768721495e66ee1f64e95215a5c37fb3e85c6ecf36452bc
+	source_x86_64 = animfetch-0.1.3-x86_64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.3/animfetch-v0.1.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3b63bcae80349c62fa0694211ffa67f51833c34270cb4aa37499a6d6f5494de7
+	source_aarch64 = animfetch-0.1.3-aarch64.tar.gz::https://github.com/Andrew-Velox/animfetch/releases/download/v0.1.3/animfetch-v0.1.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = daa7d60df8ce946f1167c4d9b31a3b17d707659a2cb8118f9a2b9a6c1519b833
 
 pkgname = animfetch-bin
