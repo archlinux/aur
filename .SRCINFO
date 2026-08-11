@@ -1,6 +1,6 @@
 pkgbase = crosshair-overlay
 	pkgdesc = Native Wayland crosshair overlay for gaming, with a graphical settings tool
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/m39d/crosshair-overlay
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = crosshair-overlay
 	depends = gtk4-layer-shell
 	depends = python-cairo
 	depends = gdk-pixbuf2
-	source = crosshair-overlay-0.2.0.tar.gz::https://github.com/m39d/crosshair-overlay/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = aa63979570d914543341edc84049a7880e174c47bf82d6bf10325f400be2fe5d
+	source = crosshair-overlay-0.3.0.tar.gz::https://github.com/m39d/crosshair-overlay/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = cee860448435c5f5250acb02507838ba9006ddec29e92cc43e237ddf7ff9fdf6
 
 pkgname = crosshair-overlay
