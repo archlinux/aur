@@ -5,37 +5,38 @@
 
 pkgname=python-spacy
 _pkg="${pkgname#python-}"
-pkgver=3.8.14
+pkgver=3.8.15
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=('x86_64' 'aarch64')
 url='https://github.com/explosion/spacy'
 license=('MIT')
 depends=(
-	'python-catalogue'
-	'python-cymem'
-	'python-jinja'
-	'python-langcodes'
-	'python-murmurhash'
-	'python-numpy'
-	'python-preshed'
+    'python-catalogue'
+    'python-click'
+    'python-cymem'
+    'python-jinja'
+    'python-langcodes'
+    'python-murmurhash'
+    'python-numpy'
+    'python-preshed'
     'python-pydantic'
-	'python-requests'
+    'python-requests'
     'python-spacy-loggers'
-	'python-srsly'
-	'python-thinc'
-	'python-tqdm'
-	'python-typer'
-	'python-wasabi'
+    'python-srsly'
+    'python-thinc'
+    'python-tqdm'
+    'python-typer'
+    'python-wasabi'
     'python-weasel')
 makedepends=(
-	'cython'
-	'python-build'
-	'python-installer'
-	'python-setuptools'
-	'python-wheel')
+    'cython'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/release-v${pkgver}.tar.gz")
-sha256sums=('ad0ea4e15153de6703a1a77f22c34bdbf105b9362ccde4f4789e02dc9abcb538')
+sha256sums=('07d237a3de7197b668bf953f3d8c001ece89f003356f8104322e7d2b7679906b')
 
 prepare() {
     _dirname=$(bsdtar -tf "${source[0]%%::*}" | awk -F / '{print $1; exit}')
