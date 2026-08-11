@@ -1,7 +1,7 @@
 # Maintainer: Evilleader evilleader91@gmail.com
 pkgname=optiscaler-client-bin
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Optiscaler-Client/Optiscaler-Client"
@@ -32,6 +32,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   bsdtar -xf optiscaler-client.zip -C "$pkgdir/opt/optiscaler-client"
+  chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
 exec /opt/optiscaler-client/OptiscalerClient "$@"
