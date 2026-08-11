@@ -9,7 +9,7 @@ pkgbase = dbschema
 	source = dbschema-10.4.1.tar.gz::https://dbschema.com/download/dbschema_linux_10_4_1.tar.gz
 	source = dbschema.desktop
 	source = https://dbschema.com/img/favicon/favicon.svg
-	md5sums = 419f18cff6f9acb3b1a6820d5b16765b
+	md5sums = a2ddfb33391f3569b2ae285fc428fe92
 	md5sums = fd70b65c057119c0290bf9f4b51be830
 	md5sums = f52f8d76f63ae513fda70b4ef53ebbc5
 
