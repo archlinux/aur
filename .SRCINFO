@@ -1,6 +1,6 @@
 pkgbase = protonplus
 	pkgdesc = A modern compatibility tools manager
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = protonplus
 	optdepends = mangohud
 	optdepends = protontricks
 	optdepends = scopebuddy
-	source = protonplus-0.6.2.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 1adfc7892510da0d017d1186b43e41ea0138ca164cf6b1e0468d71b223181b48
+	source = protonplus-0.6.3.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = 08b75f4609cedd359d55ed01f74d61be48a9c194282645ddb7656e64a0210493
 
 pkgname = protonplus
