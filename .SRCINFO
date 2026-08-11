@@ -1,7 +1,7 @@
 pkgbase = astral-bin
 	pkgdesc = Astral is a modern cross-platform web application built on EasyTier, designed to simplify the creation and management of P2P network connections and virtual private networks.
 	pkgver = 2.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://Astral.fan
 	arch = x86_64
 	license = CC-BY-NC-ND 4.0
@@ -13,6 +13,6 @@ pkgbase = astral-bin
 	source = Astral.desktop
 	sha256sums = 8e5a0a0f6dd1f855a9801d577e7e9eca77f41efed346c5e21f8188be9d347afa
 	sha256sums = d0e0314aa2aafc676ad7d3ddab38b173ed70cede661840d82756aaf85d3f36ca
-	sha256sums = f70785c00cc5e8f1ccda600e84c8972c9d64eca26ad7961555a8bf3058d6a54c
+	sha256sums = 44e13ca1fae1ce2e19c481923706b050fd39847ffae8033a8b382d740ef84131
 
 pkgname = astral-bin
