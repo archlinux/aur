@@ -1,7 +1,7 @@
 # Maintainer: Simpson474
 
 pkgname=evcc-git
-pkgver=r7390.g37fa5345f
+pkgver=0.313.2.r0.g5b4b4a3
 pkgrel=1
 pkgdesc="evcc is an extensible EV Charge Controller and home energy management system"
 arch=(any)
@@ -9,21 +9,19 @@ url="https://evcc.io/"
 license=('MIT')
 conflicts=('evcc-bin')
 provides=("evcc=${pkgver}")
-makedepends=('git' 'go' 'npm')
+makedepends=('git' 'go' 'npm' 'vite-plus')
 source=("git+https://github.com/evcc-io/evcc.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/evcc"
-
-  _rev=$(git rev-list --count --all)
-  _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  git describe --long --tags $(git rev-list --tags --max-count=1) --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/evcc"
-  npm install vite
+  make install-ui
+  make install
   make
 }
 

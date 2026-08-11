@@ -1,6 +1,6 @@
 pkgbase = evcc-git
 	pkgdesc = evcc is an extensible EV Charge Controller and home energy management system
-	pkgver = r7390.g37fa5345f
+	pkgver = 0.313.2.r0.g5b4b4a3
 	pkgrel = 1
 	url = https://evcc.io/
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = evcc-git
 	makedepends = git
 	makedepends = go
 	makedepends = npm
-	provides = evcc=r7390.g37fa5345f
+	makedepends = vite-plus
+	provides = evcc=0.313.2.r0.g5b4b4a3
 	conflicts = evcc-bin
 	source = git+https://github.com/evcc-io/evcc.git
 	sha256sums = SKIP
