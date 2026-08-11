@@ -1,6 +1,6 @@
 # Maintainer: J. Nathanael Philipp <jnathanael@philipp.land>
 pkgname=gnome-shell-extension-quick-lofi
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Play lofi music and other sounds, locally or online, on your GNOME desktop with just a click!'
 arch=('any')
@@ -13,13 +13,9 @@ source=(
     "https://raw.githubusercontent.com/EuCaue/gnome-shell-extension-quick-lofi/refs/heads/master/LICENSE"
 )
 sha256sums=(
-    "8f544d6ff53989811bae5c8e75cc29343853cd9b1e513f8ae20119f017eb08ee"
+    "513d1735b7c2d89cb21cbc7f3ea9f1fbd07ea8502eec3b229e4e9dbbbfe60951"
     "d9b35296af104bd3ee62939b8d80ab8db7fe0aa61b30d2fe14acb2704904d299"
 )
-
-prepare() {
-    patch -d $srcdir -Np1 -i ../gnome50.patch
-}
 
 package() {
     _uuid=$(jq -r .uuid "${srcdir}/metadata.json")

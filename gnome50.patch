@@ -1,9 +1,0 @@
---- src/metadata.json	2026-03-14 20:13:14.000000000 +0100
-+++ src/metadata.json	2026-04-14 14:36:50.175264209 +0200
-@@ -4,5 +4,5 @@
-   "uuid": "quick-lofi@eucaue",
-   "url": "https://github.com/eucaue/gnome-shell-extension-quick-lofi",
-   "settings-schema": "org.gnome.shell.extensions.quick-lofi",
--  "shell-version": ["46", "47", "48", "49"]
-+  "shell-version": ["46", "47", "48", "49", "50"]
- }
