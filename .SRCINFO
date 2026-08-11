@@ -1,0 +1,19 @@
+pkgbase = dfetch-bin
+	pkgdesc = Lightweight command-line tool for displaying system information
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/David17c/Dfetch
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = dfetch
+	conflicts = dfetch
+	options = !strip
+	source = README-1.7.0.md::https://raw.githubusercontent.com/David17c/Dfetch/v1.7.0/README.md
+	source = LICENSE-1.7.0::https://raw.githubusercontent.com/David17c/Dfetch/v1.7.0/LICENSE
+	sha256sums = f03c00cf472485b2e94868f74815e4d928e8240e8f46e020f8f4c0b2e4f8f4ca
+	sha256sums = e9cf82ba2e1f6aeed68a21e4e1e32407f9aefa621905ee71b88a6f226efd2d46
+	source_x86_64 = dfetch-x86_64-1.7.0::https://github.com/David17c/Dfetch/releases/download/v1.7.0/dfetch-1.7.0_linux-x86_64
+	sha256sums_x86_64 = 30fd08c50fd1f607ab6faf2dc3a4abebf4fe5c3363317948045a7d929d470381
+
+pkgname = dfetch-bin

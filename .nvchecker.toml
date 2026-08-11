@@ -1,0 +1,5 @@
+[dfetch-bin]
+source = "github"
+github = "David17c/Dfetch"
+use_latest_release = true
+prefix = "v"
