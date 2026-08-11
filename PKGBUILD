@@ -2,7 +2,7 @@
 # Contributor: loafer <davemogan353 at btinternet dot com>
 
 pkgname=xstdcmap
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A X standard colormap utility"
 arch=('i686' 'x86_64')
@@ -21,4 +21,4 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('86c9c5292a0810255cbd8767373b0f81')
+md5sums=('18219284060ebc23084452326c661630')
