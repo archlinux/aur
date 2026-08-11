@@ -1,6 +1,6 @@
 pkgbase = harness-session-manager
 	pkgdesc = Terminal session manager for AI coding harnesses
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/nidalJaafar/harness-session-manager
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = harness-session-manager
 	optdepends = git: project and worktree integration
 	optdepends = libnotify: desktop notifications
 	optdepends = xdg-utils: launching sessions in a new terminal window
-	source = harness-session-manager-1.2.1.tar.gz::https://github.com/nidalJaafar/harness-session-manager/archive/refs/tags/v1.2.1.tar.gz
+	source = harness-session-manager-1.2.2.tar.gz::https://github.com/nidalJaafar/harness-session-manager/archive/refs/tags/v1.2.2.tar.gz
 	source = hsm-wrapper
-	sha256sums = 7db79ee03aacb352a43587d639192d44454552dfc6ce6979bbfe31f7a322e91f
+	sha256sums = 2b1c896325ae5452d829dda15bb7c607cac71472c79436b183a7f8e7e648022d
 	sha256sums = 6473e9d742f7d970bf900c4f6de1e85570834bf62b6400571a585b14daeef60b
 
 pkgname = harness-session-manager
