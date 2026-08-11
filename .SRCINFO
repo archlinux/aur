@@ -1,7 +1,7 @@
 pkgbase = heidisql-gtk2
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)
 	pkgver = 12.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -13,7 +13,7 @@ pkgbase = heidisql-gtk2
 	makedepends = gtk2
 	depends = gtk2
 	depends = heidisql
-	depends = mariadb-libs
+	depends = mariadb-clients
 	depends = postgresql-libs
 	depends = sqlite
 	depends = freetds
