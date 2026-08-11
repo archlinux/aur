@@ -1,0 +1,29 @@
+# OpenShell install hooks (man 5 PKGBUILD)
+
+post_install() {
+	cat <<'EOF'
+
+To run the gateway locally:
+  systemctl --user enable --now openshell-gateway
+
+The gateway reads ~/.config/openshell/gateway.toml when present; to customize it, optionally copy the template there:
+  cp /usr/share/openshell-gateway/gateway.toml.default ~/.config/openshell/gateway.toml
+EOF
+}
+
+post_upgrade() {
+	cat <<'EOF'
+
+OpenShell upgraded. Restart any running local gateway:
+  systemctl --user restart openshell-gateway
+EOF
+}
+
+post_remove() {
+	cat <<'EOF'
+
+OpenShell removed. To clean up, remove:
+  ~/.config/openshell/
+  ~/.local/state/openshell/
+EOF
+}
