@@ -1,7 +1,9 @@
 # Maintainer: Emma CHRISTOPHE <jean.michel.lesatanique@gmail.com>
 pkgname=crcl-select-git
-pkgver=2.2.pre
-pkgrel=0
+pkgver=r26.e8054f0
+pkgrel=1
+conflicts=('crcl-select')
+provides=("crcl-select=${pkgver}")
 pkgdesc="Git version - may not work - Circle selection utility with Eww widgets"
 arch=('x86_64')
 url="https://github.com/Pat8998/crcl-select/"
@@ -11,9 +13,14 @@ backup=('etc/crcl-select/theme.json'
 		'etc/crcl-select/toolbox.json'
 		'etc/crcl-select/power_menu.json')
 depends=('eww' 'jq')
-makedepends=('jansson')
+makedepends=('jansson' 'git')
 source=('git+https://github.com/Pat8998/crcl-select.git')
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "crcl-select"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
 	cd "$srcdir/crcl-select"

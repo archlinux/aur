@@ -1,13 +1,16 @@
 pkgbase = crcl-select-git
 	pkgdesc = Git version - may not work - Circle selection utility with Eww widgets
-	pkgver = 2.2.pre
-	pkgrel = 0
+	pkgver = r26.e8054f0
+	pkgrel = 1
 	url = https://github.com/Pat8998/crcl-select/
 	arch = x86_64
 	license = unknown
 	makedepends = jansson
+	makedepends = git
 	depends = eww
 	depends = jq
+	provides = crcl-select=r26.e8054f0
+	conflicts = crcl-select
 	backup = etc/crcl-select/theme.json
 	backup = etc/crcl-select/toolbox.json
 	backup = etc/crcl-select/power_menu.json
