@@ -18,7 +18,7 @@ optdepends=('dialog: sendsms tool'
             'postgresql-libs: smsd postgresql backend')
 backup=('etc/gnokiirc')
 install=$pkgname.install
-source=("https://www.gnokii.org/download/$pkgname/$pkgname-$pkgver.tar.bz2"
+source=("https://download.samba.org/pub/$pkgname/$pkgname/$pkgname-$pkgver.tar.bz2"
         'gnokii-config.patch'
         'gnokii-lock.patch'
         'gnokii-gcc5.patch'
