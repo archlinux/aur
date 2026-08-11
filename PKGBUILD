@@ -1,7 +1,7 @@
 # Maintainer:  Marin Moulinier <https://github.com/p1-mmr>
 
 pkgname="hermes-dec"
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A reverse engineering tool for decompiling and disassembling the React Native Hermes bytecode"
 arch=(
@@ -18,7 +18,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools>=69'
-  'python-uv-build'
 )
 provides=(
   "python-${pkgname}=${pkgver}"
