@@ -1,0 +1,18 @@
+pkgbase = clicue
+	pkgdesc = Live, contextual command guidance for zsh — a daemon behind a generated shim
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/aaronsb/clicue
+	install = clicue.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = zsh
+	depends = gcc-libs
+	optdepends = man-db: glosses for system commands (whatis)
+	options = !debug
+	source = clicue-0.4.0.tar.gz::https://github.com/aaronsb/clicue/archive/v0.4.0.tar.gz
+	sha256sums = a8bb2137c29cb0098d43b30859b099fc32d9d841f33dc43b77b74c1170d92c06
+
+pkgname = clicue

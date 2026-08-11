@@ -1,0 +1,24 @@
+post_install() {
+  echo "clicue is inert until wired in: run 'clicue install' (doctor-gated,"
+  echo "shows the diff before touching your zshrc)."
+}
+
+post_upgrade() {
+  # Daemons from 0.4.0 on retire themselves when their binary is
+  # replaced (spec §9a); this covers daemons started by OLDER versions.
+  # Root reaches every user's daemon; each wired shell respawns a fresh
+  # one on its next keystroke. Known collateral: an in-flight clicue
+  # CLI invocation (same comm) also gets the SIGTERM — rare, and every
+  # write path is staged-rename, so nothing tears.
+  pkill -x clicue >/dev/null 2>&1 || :
+  echo "Running daemons were stopped; each shell respawns a fresh one on"
+  echo "its next keystroke. Re-run 'clicue install' to update unedited"
+  echo "theme files to this version's templates (edited files are never"
+  echo "touched)."
+}
+
+post_remove() {
+  echo "The rc line is guarded by 'command -v', so shells stay quiet. To"
+  echo "tidy up by hand: remove the clicue block from your .zshrc and"
+  echo "delete ~/.config/clicue/ and ~/.cache/clicue/ (all derived data)."
+}
