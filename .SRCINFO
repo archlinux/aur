@@ -1,6 +1,6 @@
 pkgbase = ytaudiobar-git
 	pkgdesc = A sleek YouTube audio player built with Tauri and React
-	pkgver = 2.2.2
+	pkgver = r1.0000000
 	pkgrel = 1
 	url = https://github.com/ilyassan/ytaudiobar
 	arch = x86_64

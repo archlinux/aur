@@ -1,6 +1,6 @@
 # Maintainer: A-007481D
 pkgname=ytaudiobar-git
-pkgver=2.2.2
+pkgver=r1.0000000
 pkgrel=1
 pkgdesc="A sleek YouTube audio player built with Tauri and React"
 arch=('x86_64')
@@ -13,6 +13,11 @@ conflicts=('ytaudiobar')
 source=("git+https://github.com/ilyassan/ytaudiobar.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/ytaudiobar"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd "$srcdir/ytaudiobar"
   npm install
@@ -20,20 +25,16 @@ prepare() {
 
 build() {
   cd "$srcdir/ytaudiobar"
-  # Build the tauri app (only the binary, we'll package it manually)
   npm run tauri build -- --no-bundle
 }
 
 package() {
   cd "$srcdir/ytaudiobar"
-  
-  # Install binary
+
   install -Dm755 "src-tauri/target/release/ytaudiobar" "$pkgdir/usr/bin/ytaudiobar"
-  
-  # Install icon
+
   install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/ytaudiobar.png"
-  
-  # Install .desktop file
+
   mkdir -p "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/ytaudiobar.desktop" <<EOF
 [Desktop Entry]
@@ -44,5 +45,6 @@ Icon=ytaudiobar
 Terminal=false
 Type=Application
 Categories=Audio;Music;Player;
+StartupWMClass=ytaudiobar
 EOF
 }
