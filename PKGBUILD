@@ -21,7 +21,7 @@ pkgname=(
 )
 _java_build_ver=25
 _java_run_ver=25
-_tag='28+2'
+_tag='28+3'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -67,7 +67,7 @@ source=(
   "${pkgbase}-profile"{.sh,.csh}
   "${pkgbase}-env.sh"
 )
-b2sums=('a9513ad80264ad3f32a5ba9e3c3cee3b810940e2f7430e338e73b567e1f22921da65af8a81f148db04f77ebc3115ea475e4d087ab48afea68b253c71120fbc88'
+b2sums=('d0f26a1faa231ddd37dc98a9878d39025d3a470ac966c8d7b01b799daaf435921b273daf9850f2ff8d2ee510de29152f5d0aee5f69594baf12c7a269da17bd7a'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3'
         '73cc0da90136a8a564599fb23c321bae64c35c4381e74d00f24604ed9a46dc2c7aa988077846160e8cb6a61e0eaa80d1e153d89a93fb4818d2589b067eff2522'
