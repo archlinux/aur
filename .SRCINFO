@@ -1,7 +1,7 @@
 pkgbase = mpvcut
 	pkgdesc = Turns mpv into a video cutter.
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/tuxnix/mpvcut
 	arch = any
 	license = GLPv2-only
