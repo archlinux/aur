@@ -1,6 +1,6 @@
 pkgbase = zeroclawlabs
 	pkgdesc = Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/zeroclaw-labs/zeroclaw
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = zeroclawlabs
 	provides = zerocode
 	conflicts = zeroclaw
 	conflicts = zerocode
-	source = zeroclawlabs-0.8.3.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v0.8.3.tar.gz
-	sha256sums = 9dd537164012bd122cdc4837b09a20146ea3311aa493cd642a870778871f0d27
+	source = zeroclawlabs-0.8.4.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v0.8.4.tar.gz
+	sha256sums = 683273de5e4765cdd77fe81bf68212c2eb9b1b2603cbfafb79d9a4f2c9dcd706
 
 pkgname = zeroclawlabs
