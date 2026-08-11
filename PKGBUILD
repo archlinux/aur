@@ -1,6 +1,6 @@
 # Maintainer: Boof2015 <contact@novaml.ai>
 pkgname=astra-music-bin
-pkgver=0.6.1.beta
+pkgver=0.7.0.beta
 pkgrel=1
 pkgdesc="Audiophile music player with advanced visualization"
 arch=('x86_64')
@@ -10,9 +10,9 @@ provides=('astra')
 conflicts=('astra')
 depends=('fuse2')
 options=(!strip !debug)
-source=("astra-0.6.1.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.6.1-beta/Astra-0.6.1-beta-Linux.AppImage")
+source=("astra-0.7.0.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.7.0-beta/Astra-0.7.0-beta-Linux.AppImage")
 noextract=("astra-${pkgver}.AppImage")
-sha256sums=('9e84e13841ce03bee4275961de6820caca4e91ba559aa3b19d91e6470264dc36')
+sha256sums=('68e9958251a0fbd1c546f337e168f1b84e43ae5aa72fb83e86a9567f39cf5a64')
 
 prepare() {
   cd "${srcdir}"
