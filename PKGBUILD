@@ -1,0 +1,66 @@
+# Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
+# vim: ft=sh:
+
+pkgname=tabook
+_pkgname=tabook
+pkgver=0.2.1
+pkgrel=1
+pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
+arch=('any')
+url='https://github.com/zsh-ncursed/tabook'
+license=('MIT')
+depends=('nodejs>=18')
+# better-sqlite3 ships prebuilt .node binaries for x86_64 and aarch64;
+# stripping/debug-packing them fails on cross-arch files and gains nothing.
+options=(!strip !debug)
+makedepends=('npm' 'git' 'python' 'gcc' 'make')
+optdepends=(
+  'ueberzugpp: display book cover images in supported terminals'
+  'zenity: graphical file picker for the `o` open-file dialog'
+  'kdialog: graphical file picker (KDE alternative to zenity)'
+)
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  npm ci
+  npm run build
+  npm prune --production
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+
+  # App directory
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+  cp -r dist node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
+
+  # Strip better-sqlite3 prebuilds for other OSes — keep both linux-x64 and
+  # linux-arm64 so the same package works on x86_64 and aarch64 (the runtime
+  # loader in lib/binding.js picks the .node file by process.platform+arch).
+  rm -f "${pkgdir}/usr/lib/${pkgname}/node_modules/better-sqlite3/prebuilds/"{darwin-*,win32-*,linuxmusl-*}*
+
+  # es-toolkit ships ~12MB of prebuilt bundles in dist/. The runtime only loads
+  # dist/compat — ink imports 'es-toolkit/compat', which resolves there (verified:
+  # nothing imports the root 'es-toolkit' package). compat pulls in its transitive
+  # deps (array/object/predicate/util/function/string/math/promise); the root
+  # dist/index.mjs is kept for safety even though its ./error/ import is pruned
+  # (dead until something imports the root entry). Drop the never-imported subdirs.
+  rm -rf "${pkgdir}/usr/lib/${pkgname}/node_modules/es-toolkit/dist/"{fp,server,error,map,set,types} "${pkgdir}/usr/lib/${pkgname}/node_modules/es-toolkit/dist/browser.global.js"
+
+  # better-sqlite3 bundles the SQLite C sources in deps/sqlite3; the prebuilt
+  # .node binaries above are what actually gets loaded, so drop the sources.
+  rm -rf "${pkgdir}/usr/lib/${pkgname}/node_modules/better-sqlite3/deps/sqlite3"
+
+  # Binary wrapper
+  install -dm755 "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/tabook" <<EOF
+#!/bin/bash
+exec node /usr/lib/${pkgname}/dist/cli/main.js "\$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/tabook"
+
+  # License
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
+}
