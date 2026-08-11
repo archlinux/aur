@@ -2,7 +2,7 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
@@ -10,7 +10,6 @@ url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
     # UI
-    'gtk3'
     'pyside6'
     'python-gobject'
     'python-pillow'
@@ -18,7 +17,6 @@ depends=(
     # Networking
     'python-certifi'
     'python-requests'
-    'python-websocket-client'
 
     # Secret store
     'python-keyring'
@@ -47,8 +45,11 @@ optdepends=(
     'zenity: fallback native dialog (prefer to use XDG portal instead)'
     'kdialog: fallback native dialog (prefer to use XDG portal instead)'
 )
+makedeps=(
+    'meson'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a9c636598ee5585dfe6a3f019cea628b0a2f4d50f7d7db10590a80e049a8cee7')
+sha256sums=('6feb8069101ff1be431c8631c88010870b1d0ce5f645677f4e0753df8f515267')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -56,33 +57,31 @@ prepare() {
     sed -i 's/import LOOT.loot as loot/import loot/' 'src/LOOT/loot_sorter.py'
 }
 
+build() {
+    arch-meson "${_pkgname}-${pkgver}" build
+    meson compile -C build
+}
+
 package() {
-    cd "${_pkgname}-${pkgver}"
+    meson install -C build --destdir "$pkgdir"
 
-    pushd src > /dev/null
-    find . -path "./appimage" -prune -o \
-        -not -name "requirements*.txt" \
-        -not -name "rebuild_libloot.sh" \
-        -not -name "run_qt.sh" \
-        -not -name "loot.cpython*.so" \
-        -type f \
-        -exec install -Dm 644 '{}' "$pkgdir/usr/share/${pkgname}/{}" \;
-    popd > /dev/null
+    # Fix meson.build dumping everything into `site-packages`
+    echo "Correcting install path..."
 
-    install -d "$pkgdir/usr/bin/"
+    local site_packages=$(python -c "import sysconfig; print(sysconfig.get_path('purelib'))")
+    local src_root="${pkgdir}${site_packages}"
+    local target_dir="${src_root}/${pkgname}"
 
+    mv "${src_root}" "${src_root}-temp"
+    mkdir -p "${src_root}"
+    mv "${src_root}-temp" "${target_dir}"
+
+    echo "${pkgname}" > "${src_root}/${pkgname}.pth"
+
+    # Amend launch scripts
     echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}"
-    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/run_qt.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
-    chmod +x "$pkgdir/usr/bin/${pkgname}"
+    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.run_qt "$@"' >> "$pkgdir/usr/bin/${pkgname}"
 
     echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}-cli"
-    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/cli.py "$@"' >> "$pkgdir/usr/bin/${pkgname}-cli"
-    chmod +x "$pkgdir/usr/bin/${pkgname}-cli"
-
-    install -Dm644 "flatpak/io.github.Amethyst.ModManager.desktop" "$pkgdir/usr/share/applications/io.github.Amethyst.ModManager.desktop"
-    install -Dm644 "src/appimage/mod-manager.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.Amethyst.ModManager.png"
-
-    install -Dm644 Changelog.txt "${pkgdir}/usr/share/${pkgname}/Changelog.txt"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.cli "$@"' >> "$pkgdir/usr/bin/${pkgname}-cli"
 }
