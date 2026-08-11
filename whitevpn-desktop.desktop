@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WhiteVPN Desktop
+Comment=WhiteDNS desktop client
+Exec=/usr/bin/whitevpn-desktop
+Icon=whitevpn-desktop
+Terminal=false
+Categories=Network;Utility;
+StartupNotify=true
+StartupWMClass=WhiteVPN Desktop
