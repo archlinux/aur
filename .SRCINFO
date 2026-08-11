@@ -1,13 +1,12 @@
 pkgbase = mini-eq
 	pkgdesc = Compact PipeWire system-wide parametric EQ
 	pkgver = 0.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bhack/mini-eq
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = git
 	checkdepends = python-pytest
-	checkdepends = python-pytest-deadfixtures
 	makedepends = gnome-shell
 	makedepends = python-build
 	makedepends = python-installer

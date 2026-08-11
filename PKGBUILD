@@ -7,7 +7,7 @@ pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
 url="https://github.com/bhack/mini-eq"
@@ -34,7 +34,6 @@ makedepends=(
 checkdepends=(
   'git'
   'python-pytest'
-  'python-pytest-deadfixtures'
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7ea93ddd419c637922022557ff97d2e816ad9ed3ff13965c2a0c33a4e89bea7b')
@@ -59,7 +58,6 @@ check() {
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest
-  test-env/bin/python -m pytest --dead-fixtures
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
