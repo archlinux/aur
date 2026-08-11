@@ -4,7 +4,7 @@
 
 pkgname=vmaware
 _pkgname=VMAware
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Advanced VM detection library and tool'
 url='https://github.com/NotRequiem/VMAware'
@@ -19,7 +19,7 @@ license=('MIT')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NotRequiem/VMAware/archive/refs/tags/v$pkgver.tar.gz")
 
-b2sums=('649bf224f6c5cf7d8017dcdf5cf62cc7e510cb26407debc1f5e62bbd607899e5cd1765a22a297b938aa3dbbd78aba72895fcb4d2723d4b7814eb6ffa06605aa7')
+b2sums=('9b4e9d078ce9b1698d820a64b6cae352556053e159ccfe3aa7bf09b4bec3f25a80939dd3f522b5364adc78354e41f0140493bdd91858b69c6efe9c31c56e10fe')
 
 build() {
 	local cmake_options=(
