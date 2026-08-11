@@ -1,7 +1,7 @@
 pkgbase = python-lesscpy
 	pkgdesc = Python LESS compiler
-	pkgver = 0.15.1
-	pkgrel = 2
+	pkgver = 0.15.2
+	pkgrel = 1
 	url = https://github.com/lesscpy/lesscpy
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-lesscpy
 	makedepends = python-wheel
 	depends = python-ply
 	depends = python-six
-	source = https://pypi.org/packages/source/l/lesscpy/lesscpy-0.15.1.tar.gz
-	sha512sums = 3a88c14d1e47a28d5e427e9cd0e1c2553dd3fc937085c54975c3e2612d623673e0a2fe05d7bb60dcdeda0f352b1be0354595ba9fac38483e7ab0a21529036e65
+	source = https://pypi.org/packages/source/l/lesscpy/lesscpy-0.15.2.tar.gz
+	sha512sums = 1e78151917878b73c5c847b3aa246f14dbe0ac753e51252e209a9776e2e7f22359656f7ceed3eb669ea386ef98864b1b7b41804c79e850315b6c43dd0d15fd11
 
 pkgname = python-lesscpy
