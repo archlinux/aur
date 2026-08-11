@@ -4,7 +4,7 @@
 
 pkgname=vmaware-git
 _pkgname=VMAware
-pkgver=2.8.0.r8.g3ddef56
+pkgver=2.8.1.r11.g11102e5
 pkgrel=1
 pkgdesc='Advanced VM detection library and tool'
 url='https://github.com/NotRequiem/VMAware'
