@@ -24,7 +24,7 @@ build() {
   bsdtar xvPf "SFMonoFonts.pkg/Payload"
   # patch fonts
   mkdir -p "$srcdir/patched"
-  printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
+  printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This can take a long time depending on your system...\n"
   # patch fonts quiet with complete single-width glyphs
   parallel -j$(nproc) python "$srcdir/font-patcher" -q -c -s {} -out "$srcdir/patched" &> /dev/null ::: "$srcdir/Library/Fonts"/*.otf
 }
