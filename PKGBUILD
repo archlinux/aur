@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.9.2
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3492ae84fd38ff6be61623ca768758d78c372a2570c77978bbd9833c01753744')
+sha256sums=('57957264204f5b7136d64cf62bd11c47de0d0ec0d7eca218902f07712eab1a47')
 
 prepare() {
     cd "CodeWhale-${pkgver}"
@@ -32,9 +32,11 @@ build() {
 
     # crates/cli ships codewhale; crates/tui ships codewhale-tui.
     # Upstream removed the deepseek/deepseek-tui legacy shims in v0.8.54.
+    # v0.9.5 narrowed workspace default-members to crates/cli, so codewhale-tui
+    # is no longer reachable by bare --bin; select each package explicitly.
     cargo build --frozen --release \
-        --bin codewhale     \
-        --bin codewhale-tui
+        -p codewhale-cli --bin codewhale \
+        -p codewhale-tui --bin codewhale-tui
 }
 
 package() {
