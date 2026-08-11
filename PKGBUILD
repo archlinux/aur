@@ -83,6 +83,8 @@ build() {
     export "$(_deobfuscate "B@A@L@T@I@G@_@T@E@R@C@E@S@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "2@d@1@0@8@c@d@a@4@4@1@c@6@9@8@a@1@b@2@9@b@5@b@a@0@c@6@a@1@c@c@8@1@c@6@c@0@2@6@c@4@8@c@6@7@7@b@3@2@f@6@e@e@6@6@6@a@b@a@8@b@f@2@3@-@s@a@o@l@g@")"
     export "$(_deobfuscate "G@R@E@B@E@D@O@C@_@D@I@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "2@4@b@b@4@2@5@b@9@d@b@3@-@3@1@2@8@-@4@d@0@4@-@e@4@4@d@-@9@e@7@7@e@4@d@4@")"
     export "$(_deobfuscate "G@R@E@B@E@D@O@C@_@T@E@R@C@E@S@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "q@u@j@c@h@i@y@y@c@w@x@d@n@x@s@l@l@c@s@h@5@p@c@a@y@l@a@t@y@5@p@d@f@a@2@e@t@7@k@d@r@k@i@2@d@d@i@x@i@w@5@u@_@o@t@g@")"
+    export "$(_deobfuscate "A@E@T@I@G@_@D@I@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "6@2@a@5@d@e@5@1@4@d@c@3@-@9@b@5@b@-@9@c@a@4@-@8@d@1@b@-@3@5@4@9@c@2@5@6@")"
+    export "$(_deobfuscate "A@E@T@I@G@_@T@E@R@C@E@S@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "a@6@6@k@y@t@a@7@3@3@4@d@6@y@7@v@3@q@5@h@7@y@s@z@p@e@n@j@g@w@a@u@h@l@5@h@y@n@l@j@p@b@j@b@l@k@i@5@3@c@2@i@_@o@t@g@")"
     xvfb-run yarn build:prod
 }
 
