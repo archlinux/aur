@@ -3,12 +3,12 @@
 
 pkgname=ghost-cli
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Tool for installing & updating Ghost"
 arch=(any)
 url="https://ghost.org"
 license=(MIT)
-depends=('nodejs' 'npm' 'pnpm')
+depends=('nodejs-lts-jod' 'npm' 'pnpm')
 optdepends=()
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
