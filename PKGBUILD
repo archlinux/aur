@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('python' 'i3-wm' 'python-i3ipc' 'python-pynput')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('83bc9523b53ba0fb624868ea47d21c12c8eb84ff619d7fdd02f084de0e8609ba')
+sha256sums=('03e419bd280f27e408478304ee44ca8519efa47fb5101d6e796d632f455552b3')
 
 build() {
     cd "$srcdir/$pkgname"

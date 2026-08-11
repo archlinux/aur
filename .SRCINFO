@@ -14,6 +14,6 @@ pkgbase = pi3-smart-workspace
 	depends = python-i3ipc
 	depends = python-pynput
 	source = pi3-smart-workspace-0.3.0.tar.gz::https://gitea.weircon.dk/agw/pi3-smart-workspace/archive/v0.3.0.tar.gz
-	sha256sums = 83bc9523b53ba0fb624868ea47d21c12c8eb84ff619d7fdd02f084de0e8609ba
+	sha256sums = 03e419bd280f27e408478304ee44ca8519efa47fb5101d6e796d632f455552b3
 
 pkgname = pi3-smart-workspace
