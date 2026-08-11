@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-hdf5
 	pkgdesc = General purpose library and file format for storing scientific data (mingw-w64)
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://www.hdfgroup.org/hdf5
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-hdf5
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/HDFGroup/hdf5/releases/download/2.1.1/hdf5-2.1.1.tar.gz
-	sha256sums = efff93b5a904d66e8f626d7da60b5eedc9faf544be27dbabbaa87967b8ad798b
+	source = https://github.com/HDFGroup/hdf5/releases/download/2.2.0/hdf5-2.2.0.tar.gz
+	sha256sums = 1a1ab8209b35586fbc1aa279ba76d102130b95badcb20ca329587219112d8c16
 
 pkgname = mingw-w64-hdf5
