@@ -1,0 +1,12 @@
+pkgbase = openscad-bosl2
+	pkgdesc = The Belfry OpenSCAD Library v2.0
+	pkgver = 2.0.750
+	pkgrel = 1
+	url = https://github.com/BelfrySCAD/BOSL2
+	arch = any
+	license = BSD-2-Clause
+	depends = openscad
+	source = openscad-bosl2-2.0.750.tar.gz::https://github.com/BelfrySCAD/BOSL2/archive/refs/tags/v2.0.750.tar.gz
+	sha256sums = 03813c013e15e6cd03fa38bd1feaec6ea2fcc33354f97a79d39b46e9add1f383
+
+pkgname = openscad-bosl2
