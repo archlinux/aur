@@ -2,7 +2,7 @@
 AppName=PowerliminalsPlayer
 appid=powerliminalsplayer
 pkgname=${appid}-appimage
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Plays multiple audios simultaneously at varying speeds"
 arch=('x86_64')
