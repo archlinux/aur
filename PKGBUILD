@@ -7,7 +7,7 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=localsend-bin
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
@@ -19,13 +19,13 @@ provides=('localsend')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-x86-64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-arm-64.deb")
-sha256sums_x86_64=('b0244b2c3eacb2a81d61b2662534d6036ab37ace10d6782da36b630c222fa04c')
-sha256sums_aarch64=('c2c792aadabeecf864f4105f8b1f8693941bc752fda582f0d2b3794765fcf803')
+sha256sums_x86_64=('dae68192ad43a59a68df06454eb5fa4e9a9f86a343fe430165efd8b18863d0f4')
+sha256sums_aarch64=('eb24e724fbdf830c8fb07dfc66b76b8a649923d083278305a63d5d539db4b606')
 _pkgdesktop="localsend_app.desktop"
 
 
 prepare() {
-	tar -xf data.tar.xz
+	tar -xf data.tar.zst
 }
 
 build() {
@@ -53,7 +53,7 @@ package() {
 
 	# Executable
 	install -dm755 "${pkgdir}/opt/${pkgname%-*}/"
-	cp -a "${srcdir}/usr/share/localsend_app/." "${pkgdir}/opt/${pkgname%-*}"
+	cp -a "${srcdir}/opt/localsend_app/." "${pkgdir}/opt/${pkgname%-*}"
 	# Same as icons - rename to localsend
 	mv "${pkgdir}/opt/${pkgname%-*}/localsend_app" "${pkgdir}/opt/${pkgname%-*}/localsend"
 
