@@ -1,6 +1,6 @@
 pkgbase = onionspray-git
-	pkgdesc = A tool to setup Onion Services for existing websites. Requires sudo to run. (git version)
-	pkgver = 1.7.0.r1376.gd73e1c3
+	pkgdesc = A tool to setup Onion Services for existing websites.
+	pkgver = 1.7.0.r1415.gfd7e69b
 	pkgrel = 1
 	url = https://gitlab.torproject.org/tpo/onion-services/onionspray
 	arch = any

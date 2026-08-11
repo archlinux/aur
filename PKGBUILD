@@ -1,9 +1,10 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
+# https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray-git
 
 pkgname=onionspray-git
-pkgver=1.7.0.r1376.gd73e1c3
+pkgver=1.7.0.r1415.gfd7e69b
 pkgrel=1
-pkgdesc="A tool to setup Onion Services for existing websites. Requires sudo to run. (git version)"
+pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
 license=('GPL3')
@@ -24,6 +25,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  # Prevent failure when non-root users run onionspray commands
+  sed -i 's/chmod 700 \$secrets_dir || exit 1/chmod 700 \$secrets_dir 2>\/dev\/null || true/' onionspray
   # Initialize git submodules
   git submodule sync --recursive
   git submodule update --init --recursive
