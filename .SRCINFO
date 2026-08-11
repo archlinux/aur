@@ -1,4 +1,4 @@
-pkgbase = dnssec_without_root
+pkgbase = dnssec-without-root
 	pkgdesc = DNSSEC keys without the '.' root
 	pkgver = 2026.08.12
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = dnssec_without_root
 	validpgpkeys = FB798BFB115895C9C95900649C2B29DD4A62ED27
 	sha256sums = 7d570a62521ccb9161dfb1a5d390a093f11df5ac8dd6da70eb5d22374e234c9e
 
-pkgname = dnssec_without_root
+pkgname = dnssec-without-root
