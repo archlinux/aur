@@ -1,0 +1,19 @@
+#!/bin/sh
+# Check if the Remote Access network port 3443 is actively listening
+if ! ss -ltn | grep -q :3443; then
+    echo "======================================================================="
+    echo " ⏳ AZEROTHCORE IS STILL BOOTING / INITIALIZING MAPS"
+    echo "======================================================================="
+    echo " The world server process is currently running, but it has not turned"
+    echo " on its Remote Access listener port yet."
+    echo ""
+    echo " To monitor the live database population or grid loading phase, run:"
+    echo "   sudo journalctl -u acore-world-server -n 50 -f"
+    echo ""
+    echo " Please re-run 'attach-world' in a moment once loading completes."
+    echo "======================================================================="
+    exit 1
+fi
+
+echo "Connecting to AzerothCore Live Admin Console..."
+exec nc -C 127.0.0.1 3443

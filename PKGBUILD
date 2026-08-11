@@ -12,7 +12,7 @@ _cmakeargs=''
 pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
-pkgver=r18961.bf8f6ebe5a
+pkgver=r19133.6b478c6711
 pkgrel=1
 arch=('x86_64')
 url="http://www.azerothcore.org"
@@ -21,11 +21,13 @@ license=('AGPL3')
 source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-auth-server.service"
 		"acore-world-server.service"
-		"acore_setup")
+		"acore_setup"
+		"attach-world")
 sha512sums=('SKIP'
             'b71132ace8a0710b22038716258ed4ecaba81074c7a9c69951440049b955d95e3dd1f8ca81305832ec8f2bea32672f06a19a3b5a569ca3152eb9a4e7a1f7d72c'
             '40fa719a7fc331210eb12266717e8cd8789390462f3cdd026a6917b0f15f177708dbf6e524b26dc0523381fa51901d21000c49132c27643a48cb9a592856adca'
-            'e2507661acdc8eef4dc733dc945e4e6bac188694f103dff2c165e8812a61a1196038cc31f602c5f89df2723d70c9fddbef0f35b4af698b17c74cab2d5a86cba9')
+            'e2507661acdc8eef4dc733dc945e4e6bac188694f103dff2c165e8812a61a1196038cc31f602c5f89df2723d70c9fddbef0f35b4af698b17c74cab2d5a86cba9'
+            'b284a274735c3d7217743753091a0fc2936b270bf80f9fd6909ccf6fe13d35329e13b768bd90b16ffd87a2cdd9c600b157593a6a7c117335fc0b945d8d7edce5')
 
 install='azerothcore-wotlk-git.install'
 #backup=('usr/share/azerothcore/acore.json')
@@ -146,28 +148,7 @@ package() {
   	DESTDIR="${pkgdir}" cmake --install build
 
 	install -d "${pkgdir}/usr/bin"
-
-	cat << 'EOF' > "${pkgdir}/usr/bin/attach-world"
-#!/bin/sh
-# Check if the Remote Access network port 3443 is actively listening
-if ! ss -ltn | grep -q :3443; then
-    echo "======================================================================="
-    echo " ⏳ AZEROTHCORE IS STILL BOOTING / INITIALIZING MAPS"
-    echo "======================================================================="
-    echo " The world server process is currently running, but it has not turned"
-    echo " on its Remote Access listener port yet."
-    echo ""
-    echo " To monitor the live database population or grid loading phase, run:"
-    echo "   sudo journalctl -u acore-world-server -n 50 -f"
-    echo ""
-    echo " Please re-run 'attach-world' in a moment once loading completes."
-    echo "======================================================================="
-    exit 1
-fi
-
-echo "Connecting to AzerothCore Live Admin Console..."
-exec nc -C 127.0.0.1 3443
-EOF
+	install -Dm644 "${srcdir}/attach-world" "${pkgdir}/usr/bin/attach-world"
 
 	install -m755 "${srcdir}/acore_setup" "${pkgdir}/usr/bin/acore_setup"
 	chmod +x "${pkgdir}/usr/bin/acore_setup"
