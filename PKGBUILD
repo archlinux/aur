@@ -1,6 +1,6 @@
 # Maintainer: Māris Vilks <kaaposc@gmail.com>
 pkgname=eparakstitajs3
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Application software to sign and validate documents in EDOC and PDF formats."
 arch=('x86_64')
@@ -11,12 +11,13 @@ depends=('gtk3' 'java-runtime' 'alsa-lib' 'libxtst')
 optdepends=('nautilus-python: Nautilus context menu integration'
   'eparaksts-token-signing: eParaksts browser plugins'
   'latvia-eid-middleware: libraries for Latvia eID cards')
-source=("https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/${pkgname}/${pkgname}_${pkgver}-jammy_amd64.deb"
+source=("https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/${pkgname}/${pkgname}_${pkgver}-noble_amd64.deb"
   'dpkg'
   'eparakstitajs3.patch')
-sha512sums=('11f0b9b0d52adc4532bffc04860d2cb3f724a6c9afd67758aef175a21f0841026c8e4ec4f0ecac02e44af0849ad957dbf92fc26147c22cffa423653182c3ad4b'
+sha512sums=('3f6e3b0dca396655b14075a3cf6b4fcbc7d8fa93f40092c00ca5defa08ba417ee20e009cd1d126faea3b8d14c871c08e6e4ff813b542348b1f41bdb97047ad5c'
             '2831607d41e6480620869264866711341917de093bdd0228c2b8efb041c9c9ae8861ca0564f1e9917dab888cad69eb81c97a7a5509b58adb2ce61eb7a95a3d4a'
-            '67d4f8f231de49a78a7903c6a8990df035ad3e02a9247ccf87d92760a864095540831fb32030ad9a66ae6daf0200417c575d191aa43224b16516a88d1a69a2d9')
+            '530e8ecef6e747d985e0b5ea8b52791dc511a036c459223f45afa4393e5483a50e19ea69f229da13a3ed73d0ecd3d1d69eaa89f82c52dc86c755984daaa7483e')
+options=(!debug)
 
 package() {
 
