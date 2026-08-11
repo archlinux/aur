@@ -10,7 +10,7 @@ pkgname=(
     "qt6-${_pkgname}"
 )
 pkgver=5.9.99
-# qt6ver="6.4.2-1"
+qt6ver="6.4.2-1"
 _patchver=''
 pkgrel=2
 pkgdesc='A complete solution for viewing, creating and editing PDF files.'
