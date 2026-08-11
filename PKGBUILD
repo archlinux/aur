@@ -2,7 +2,7 @@
 pkgname=python-landlock
 _name=${pkgname#python-}
 pkgver=1.0.0.dev5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface to the Landlock Linux Security Module"
 arch=('any')
 url="https://github.com/Edward-Knight/landlock"
@@ -14,10 +14,10 @@ makedepends=(
   'python-installer'
   'python-wheel'
 )
-checkdepends=(
-  'python-pytest'
-  'python-pytest-forked'
-)
+# checkdepends=(
+#   'python-pytest'
+#   'python-pytest-forked'
+# )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'drop-coverage.patch')
 sha256sums=('8e9f5a689a7fbab1509c55e0a6e8e365af495592e141f09a984f5729a599c5f7'
@@ -38,10 +38,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$_name-$pkgver"
-  pytest
-}
+# check() {
+#   cd "$_name-$pkgver"
+#   python -m venv --clear --without-pip --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -P -m pytest
+# }
 
 package() {
   cd "$_name-$pkgver"

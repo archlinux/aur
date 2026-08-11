@@ -1,12 +1,10 @@
 pkgbase = python-landlock
 	pkgdesc = Python interface to the Landlock Linux Security Module
 	pkgver = 1.0.0.dev5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Edward-Knight/landlock
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-forked
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
