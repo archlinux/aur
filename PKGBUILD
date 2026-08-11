@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet dot togay at gmail dot com>
 pkgname=auggie-bin
 pkgver=0.35.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
 url="https://github.com/augmentcode/auggie"
@@ -24,13 +24,18 @@ package() {
   npm install -g --prefix "${pkgdir}/usr" \
     --cache "${_npm_cache}" \
     --userconfig /dev/null \
+    --no-audit --no-fund \
     "${srcdir}/auggie-${pkgver}.tgz"
 
   # Fix permissions (npm race condition gives 777 to random directories)
   # See: https://github.com/npm/npm/issues/9359
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   find "${pkgdir}/usr/lib/node_modules" -type f -exec chmod 644 {} +
-  chmod +x "${pkgdir}/usr/bin/auggie"
+  # node-pty's spawn-helper is a native executable helper (used on macOS);
+  # restore its exec bit stripped by the chmod above
+  find "${pkgdir}/usr/lib/node_modules" -type f -name 'spawn-helper' -exec chmod 755 {} +
+  # Ensure the CLI entry point is executable (chmod the real file, not the bin symlink)
+  chmod +x "${pkgdir}/usr/lib/node_modules/@augmentcode/auggie/augment.mjs"
 
   # Install the proprietary software license
   install -Dm644 "${pkgdir}/usr/lib/node_modules/@augmentcode/auggie/LICENSE.md" \

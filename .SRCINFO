@@ -1,7 +1,7 @@
 pkgbase = auggie-bin
 	pkgdesc = Augment Code's agentic AI CLI for context-aware code analysis and automation
 	pkgver = 0.35.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/augmentcode/auggie
 	arch = any
 	license = LicenseRef-auggie
