@@ -95,7 +95,7 @@ post_remove() {
         export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
 
         # Stop services (best-effort — units may already be gone with the package)
-        for unit in arctis-manager.service arctis-video-router.service arctis-gui.service filter-chain.service; do
+        for unit in arctis-manager.service arctis-video-router.service arctis-stream-guard.service arctis-gui.service filter-chain.service; do
             systemctl --user disable --now \"\$unit\" >/dev/null 2>&1 || true
         done
 
@@ -107,6 +107,7 @@ post_remove() {
         # Stale user-level systemd unit copies left over from older installs
         rm -f \"\$HOME/.config/systemd/user/arctis-manager.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
+                rm -f \"\$HOME/.config/systemd/user/arctis-stream-guard.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
 
         # The user-level desktop entry asm-setup writes (it shadows the
@@ -118,7 +119,7 @@ post_remove() {
 
         # Disable dinit services if on a dinit system
         if command -v dinitctl >/dev/null 2>&1; then
-            for svc in arctis-manager arctis-video-router arctis-gui pipewire-filter-chain; do
+            for svc in arctis-manager arctis-video-router arctis-stream-guard arctis-gui pipewire-filter-chain; do
                 dinitctl disable "$svc" 2>/dev/null || true
             done
         fi

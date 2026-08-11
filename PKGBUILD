@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.2.19
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -32,21 +32,25 @@ depends=(
     # Arch base install ships curl, not wget.
     'curl'
     # LADSPA Steve Harris pack — provides plate_1423 used by the HeSuVi
-    # 7.1 surround filter-chain (issue #23). Promoted from optdepends
-    # to depends per the "no soft deps" mandate.
+    # 7.1 surround filter-chain (issue #23). In the official 'extra' repo,
+    # so pacman satisfies it directly.
     'swh-plugins'
-    # rnnoise LADSPA plugin used by the ClearCast / mic noise-suppression
-    # toggle in the Settings page. Lives in the AUR — pacman will refuse
-    # to satisfy this from the official repos, so users installing the
-    # AUR PKGBUILD via paru/yay will be prompted to build it as part of
-    # the same transaction. This is intentional — the alternative
-    # (optdepends) means the toggle silently does nothing.
-    'noise-suppression-for-voice'
+)
+optdepends=(
+    # rnnoise LADSPA plugin for the ClearCast / mic noise-suppression toggle.
+    # AUR-only, so it CANNOT be a hard depend: pacman can't satisfy it from the
+    # official repos, and `pacman -S arctis-sound-manager` from the signed repo
+    # would abort on an unresolvable dependency (#175, and the #96 rule that this
+    # must never be a Depends). It stays optional — the mic noise-cancel toggle
+    # degrades gracefully when it's missing (and DeepFilterNet is an alternative
+    # engine). The signed pacman repo ships a build of it, so it's one
+    # `pacman -S noise-suppression-for-voice` away; on the AUR, paru offers it.
+    'noise-suppression-for-voice: RNNoise mic noise cancellation (ClearCast)'
 )
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('992b4b30287caeedf0bbd45ed973e30cb7bcc9cbb4666f4e333a1b6fd43abf9b')
+sha256sums=('9278c18ce620b19a905ef5ef80464129000d27f7b982988539ba0a7ce10a660e')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -87,6 +91,8 @@ package() {
         "$pkgdir/usr/lib/systemd/user/arctis-manager.service"
     install -Dm644 systemd/arctis-video-router.service \
         "$pkgdir/usr/lib/systemd/user/arctis-video-router.service"
+    install -Dm644 systemd/arctis-stream-guard.service \
+        "$pkgdir/usr/lib/systemd/user/arctis-stream-guard.service"
     install -Dm644 systemd/arctis-gui.service \
         "$pkgdir/usr/lib/systemd/user/arctis-gui.service"
 
@@ -95,6 +101,8 @@ package() {
         "$pkgdir/usr/share/$pkgname/dinit/arctis-manager"
     install -Dm644 dinit/arctis-video-router \
         "$pkgdir/usr/share/$pkgname/dinit/arctis-video-router"
+    install -Dm644 dinit/arctis-stream-guard \
+        "$pkgdir/usr/share/$pkgname/dinit/arctis-stream-guard"
     install -Dm644 dinit/arctis-gui \
         "$pkgdir/usr/share/$pkgname/dinit/arctis-gui"
     install -Dm644 dinit/pipewire-filter-chain \
