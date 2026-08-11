@@ -1,8 +1,9 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
+# https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray
 pkgname=onionspray
 pkgver=1.8.1
 pkgrel=1
-pkgdesc="A tool to setup Onion Services for existing websites. Requires sudo to run."
+pkgdesc="A tool to setup Onion Services for existing websites.
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
 license=('GPL-3.0-or-later')
