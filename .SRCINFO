@@ -1,0 +1,17 @@
+pkgbase = git-vault-bin
+	pkgdesc = Transparent encryption for git that collapses everything it protects into one opaque file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/roman-16/git-vault
+	license = MIT
+	depends = git
+	conflicts = git-vault
+	provides = git-vault
+	arch = aarch64
+	source_aarch64 = https://github.com/roman-16/git-vault/releases/download/v1.0.0/git-vault_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a9035b575d87daefe442b776096d05efd33646a9aa78ce2c3691d8c579c4f150
+	arch = x86_64
+	source_x86_64 = https://github.com/roman-16/git-vault/releases/download/v1.0.0/git-vault_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 164659704a0683186a82307cece275d5ceca61db4a49b785cab65273cec372ab
+	
+pkgname = git-vault-bin
