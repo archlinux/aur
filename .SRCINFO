@@ -1,0 +1,17 @@
+pkgbase = dygma-uhid
+	pkgdesc = Expose Dygma Raise 2 battery levels via UHID so they show up in UPower/Plasma
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/janbuchar/dygma-uhid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	source = dygma-uhid-1.tar.gz::https://github.com/janbuchar/dygma-uhid/archive/refs/tags/release-1.tar.gz
+	sha256sums = 2acb0c8a440d4082a0b13aa6d899794711899d34b5fd2bc16b54ae3368b3d8af
+
+pkgname = dygma-uhid
