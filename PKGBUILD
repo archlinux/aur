@@ -1,9 +1,11 @@
+# Maintainer: VillagerTom <villager-tom at proton dot me>
+
 pkgname=bettbox
 _pkgname=Bettbox
 pkgver=1.18.9
 _pkgver="${pkgver/pre/-pre}"
 pkgrel=1
-pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
+pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
 arch=('x86_64' 'aarch64')
 case "$CARCH" in
 	x86_64)  _arch=amd64; _flutter_arch=x64  ;;
