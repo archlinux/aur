@@ -33,6 +33,7 @@ pkgbase = dim-caelestia-shell-git
 	depends = qt6-declarative
 	depends = qt6-imageformats
 	depends = qt6-multimedia
+	depends = protobuf
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	conflicts = caelestia-shell-git
