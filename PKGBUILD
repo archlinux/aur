@@ -1,4 +1,4 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
@@ -6,7 +6,7 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron43'
-pkgver=4.13.1
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'python' 'pnpm' 'nvm' 'desktop-file-utils')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('cede9edaf0e5fbce14bf625ee790036506d97df2eec122a0795be3dc77ebb14d84356b4c942a40fcc95fe617e97726101ad1985ee26fdc1d15a2ab4860f9ddc4'
+sha512sums=('9670e80e2d1241ca3fab39d876700c889b40edb4abf4cd953dda363f62ae61801ca756bcea716e5e018662775561456d851f627f0362cc86a1bb7c3905468dda'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
