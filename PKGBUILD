@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.45.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -75,11 +75,33 @@ package() {
   mkdir -p "$pkgdir/usr/lib/$pkgname"
   cp -r "ui/desktop/out/Goose-linux-x64/"* "$pkgdir/usr/lib/$pkgname/"
 
-  ln -s /usr/lib/$pkgname/Goose "$pkgdir/usr/bin/$pkgname"
+  # Provide a launcher script that respects user flags (e.g., ~/.config/goose-desktop-flags.conf for Wayland)
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/$pkgname" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+EXEC="/usr/lib/goose-desktop/Goose"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+FLAGS_FILE="$XDG_CONFIG_HOME/goose-desktop-flags.conf"
+if [[ -f "$FLAGS_FILE" ]]; then
+  GOOSE_USER_FLAGS="$(sed 's/#.*//' "$FLAGS_FILE" | tr '\n' ' ')"
+fi
+exec "$EXEC" "$@" ${GOOSE_USER_FLAGS:-}
+EOF
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
 
+  # Desktop entry: route via launcher script and set StartupWMClass for Wayland window matching
   install -Dm644 ui/desktop/forge.deb.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  sed -i "s|/usr/lib/goose/|/usr/lib/$pkgname/|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  sed -i "s|/usr/share/pixmaps/goose.png|/usr/share/pixmaps/$pkgname.png|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i \
+    -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
+    -e "s|/usr/share/pixmaps/goose.png|/usr/share/pixmaps/$pkgname.png|g" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  if ! grep -q '^StartupWMClass=' "$pkgdir/usr/share/applications/$pkgname.desktop"; then
+    echo "StartupWMClass=Goose" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+  else
+    sed -i 's|^StartupWMClass=.*|StartupWMClass=Goose|' "$pkgdir/usr/share/applications/$pkgname.desktop"
+  fi
 
   install -Dm644 ui/desktop/out/Goose-linux-x64/resources/images/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
