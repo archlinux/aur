@@ -1,6 +1,6 @@
 pkgbase = mark-shot
 	pkgdesc = Qt 6 Wayland screenshot selection and annotation tool
-	pkgver = 0.1.44
+	pkgver = 0.1.47
 	pkgrel = 1
 	url = https://github.com/jswysnemc/mark-shot
 	arch = x86_64
@@ -11,21 +11,27 @@ pkgbase = mark-shot
 	makedepends = pkgconf
 	makedepends = git
 	depends = qt6-base
+	depends = qt6-svg
 	depends = qt6-wayland
 	depends = layer-shell-qt
 	depends = pipewire
-	depends = ffmpeg
 	depends = grim
 	depends = wl-clipboard
 	depends = hicolor-icon-theme
 	depends = python
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libavfilter.so
+	depends = libswresample.so
+	depends = libswscale.so
 	optdepends = xdg-desktop-portal: portal-based screenshot and screencast backend
 	optdepends = xclip: X11 clipboard backend
 	optdepends = python-rapidocr: preferred OCR backend
 	optdepends = python-pillow: image processing for code scanning
 	optdepends = python-zxing-cpp: preferred QR/barcode scanning backend
 	optdepends = tesseract: fallback OCR backend
-	source = mark-shot-0.1.44::git+https://github.com/jswysnemc/mark-shot.git#tag=v0.1.44
+	source = mark-shot-0.1.47::git+https://github.com/jswysnemc/mark-shot.git#tag=v0.1.47
 	sha256sums = SKIP
 
 pkgname = mark-shot
