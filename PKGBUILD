@@ -1,7 +1,7 @@
 pkgname=greetd-dms-greeter-git
 _binname=dms-greeter
 epoch=1
-pkgver=0.0.0.r5.g399ff66
+pkgver=0.0.0.r23.gf353eaf
 pkgrel=1
 pkgdesc='Greetd login screen with the Dank Material aesthetic (git)'
 arch=('x86_64' 'aarch64')
@@ -82,7 +82,6 @@ package() {
 	install -Dm644 "core/bin/completions/_$_binname"     "$pkgdir/usr/share/zsh/site-functions/_$_binname"
 	install -Dm644 "core/bin/completions/$_binname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_binname.fish"
 
-	install -Dm644 assets/systemd/sysusers-dms-greeter.conf "$pkgdir/usr/lib/sysusers.d/dms-greeter.conf"
 	install -Dm644 assets/systemd/tmpfiles-dms-greeter.conf "$pkgdir/usr/lib/tmpfiles.d/dms-greeter.conf"
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname/examples"
