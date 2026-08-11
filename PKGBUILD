@@ -3,7 +3,7 @@
 
 pkgname=tabook
 _pkgname=tabook
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('any')
@@ -52,6 +52,19 @@ package() {
   # better-sqlite3 bundles the SQLite C sources in deps/sqlite3; the prebuilt
   # .node binaries above are what actually gets loaded, so drop the sources.
   rm -rf "${pkgdir}/usr/lib/${pkgname}/node_modules/better-sqlite3/deps/sqlite3"
+
+  # Dev-only artifacts across all deps, useless at runtime (~10MB): TypeScript
+  # declaration files and source maps. Node only loads .js/.mjs, so .d.ts/.d.mts
+  # are never resolved at runtime, and nothing in this dependency tree loads
+  # .map files at runtime (stack-utils parses stack strings, not maps).
+  find "${pkgdir}/usr/lib/${pkgname}/node_modules" -type f \( -name '*.d.ts' -o -name '*.d.mts' -o -name '*.map' \) -delete
+
+  # TypeScript sources of specific packages whose runtime lives in compiled
+  # output (main/module point to dist/ or lib/, NOT src/): smol-toml,
+  # es-toolkit, better-sqlite3. Do NOT blanket-delete src/ dirs: fast-xml-parser
+  # ships its runtime in src/ (main ./src/fxp.js) and yoga-layout in
+  # dist/src/, so those must be kept.
+  rm -rf "${pkgdir}/usr/lib/${pkgname}/node_modules/"{smol-toml,es-toolkit,better-sqlite3}/src
 
   # Binary wrapper
   install -dm755 "${pkgdir}/usr/bin"
