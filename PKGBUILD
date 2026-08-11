@@ -81,7 +81,9 @@ package() {
   done
 
   # Create ABI-safe symlink to silence ldconfig warning
-  ln -s libSvtAv1Enc.so.4 "$pkgdir/usr/lib/libSvtAv1Enc.so"
+  if [[ ! -e "$pkgdir/usr/lib/libSvtAv1Enc.so" ]]; then
+    ln -s libSvtAv1Enc.so.4 "$pkgdir/usr/lib/libSvtAv1Enc.so"
+  fi
 
   # Install headers (needed for FFmpeg)
   install -d "$pkgdir/usr/include/svt-av1"
