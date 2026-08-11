@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
 pkgver=85
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Very fast file searcher without indexing"
 arch=('any')
@@ -43,7 +43,9 @@ build() {
 
 check() {
   cd "Drill-release-$pkgver"
-  PYTHONPATH=drill/ pytest -k 'not test_window'
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PYTHONPATH=drill/ test-env/bin/python -P -m pytest -k 'not test_window'
 }
 
 package() {
