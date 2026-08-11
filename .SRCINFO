@@ -1,0 +1,17 @@
+pkgbase = drift-diff-bin
+	pkgdesc = A standalone git diff pager for the terminal.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/aymanbagabas/drift
+	license = MIT
+	depends = git
+	conflicts = drift
+	provides = drift
+	arch = aarch64
+	source_aarch64 = https://github.com/aymanbagabas/drift/releases/download/v0.0.5/drift_0.0.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 96af069d73a977a6ca50be7bdb95d0ff3d54d6eb5b13e956ffd579e119c39f91
+	arch = x86_64
+	source_x86_64 = https://github.com/aymanbagabas/drift/releases/download/v0.0.5/drift_0.0.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 140fb4e51344ea058db71349dff3e558a4fd40c57232da3005af96a249b7aff8
+	
+pkgname = drift-diff-bin
