@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal UI for SQL databases"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('fc2e7be51e7f156e1e56bf54a983e138844f12eda0b2d915e56d2bc10d523fc8')
-sha256sums_aarch64=('2e41414912e147374d4d6fe89f43a46c94f0fc8bd80ac7e636959ae1e09de019')
+sha256sums_x86_64=('7354a5188d9268b8d286088adbb65eb371b00d1b359b0a6498bb8e94fe920541')
+sha256sums_aarch64=('9629e27de591c117ca6b40b651c83cc8d65849be809815f4e20d7e0cd81fa7a3')
 
 
 package() {
