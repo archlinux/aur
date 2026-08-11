@@ -21,7 +21,7 @@ depends=(
 	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots-0.19.so"
+	"libwlroots-0.20.so"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
@@ -69,7 +69,7 @@ pkgver() {
 }
 
 build() {
-	export PKG_CONFIG_PATH='/usr/lib/wlroots0.19/pkgconfig'
+	export PKG_CONFIG_PATH='/usr/lib/wlroots0.20/pkgconfig'
 	arch-meson \
 		-D werror=false \
 		-D sd-bus-provider=libsystemd \
