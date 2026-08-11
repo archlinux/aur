@@ -1,0 +1,13 @@
+pkgbase = neet-girl-date-night
+	pkgdesc = A small visual novel of Kara Eklund
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://hitsujigoods.itch.io/ngdn
+	arch = any
+	license = custom:unknown
+	makedepends = itchio-dlagent
+	depends = renpy
+	source = neet-girl-date-night-1.1.zip::itch://hitsujigoods/ngdn/6693521
+	sha256sums = 93146d2f7ac2f15bc7acb81d826e337ebb4c8b5054cea4d4526dbbc2fe2aa543
+
+pkgname = neet-girl-date-night
