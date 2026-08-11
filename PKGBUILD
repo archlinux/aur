@@ -5,7 +5,7 @@
 # LICENSE file alongside it. The modulejail package it builds is licensed
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
@@ -40,7 +40,7 @@ _source_host='https://github.com/jnuyens/modulejail'
 source=("${pkgname}-${pkgver}.tar.gz::${_source_host}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tarball-signature::${_source_host}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
         'modulejail-signing-key.gpg')
-sha256sums=('ec2c20897cd759949d2afd92e3ce01c1a1d0f6e6812265073a6f49e79914b340'
+sha256sums=('5a4388b1c3a0068e5482e6e27694d30d77cccfa59487953b810e89f8529ed80e'
             'SKIP'
             '5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433')
 
