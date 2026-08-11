@@ -7,7 +7,7 @@
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
 pkgver=16.9
-pkgrel=10
+pkgrel=11
 url=https://github.com/aperezdc/termite
 license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
@@ -21,7 +21,7 @@ source=(
 )
 b2sums=('97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32'
         'SKIP'
-        '180e50f2650a3630b2148a5102bf1b793e3c4a2babdf8728cca29d4deed17419ba4b16c6c5be29d7c9628765ad367a969099533c22dd3d12ff5603c833818725')
+        '1c254b1d66f9ed874a1eeafcfe9d2293f8875bf0ec3cc55baa31b211a069ebf6082b508a25388d954e0708f3efbe287894dc7f7637eb484ddf02cb130813358b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
