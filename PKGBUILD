@@ -20,7 +20,7 @@
 
 pkgname=tennoworth-bin
 _pkgname=tennoworth
-pkgver=0.3.1
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now (prebuilt)"
 arch=('x86_64')
@@ -29,9 +29,13 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+# Same capability grant as the source package — see tennoworth.install there
+# for why. Both packages ship their own copy because each AUR package is its
+# own git repo and cannot reference a file outside itself.
+install=tennoworth-bin.install
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/desktop-v$pkgver/tennoworth-desktop-linux-x86_64.tar.gz")
-sha256sums=('baddba7ccfd9ff327c56cd882fc50e478a1a75b126d6d996e75e0e746b590df1')
+sha256sums=('9dd56d8be70f686eed80a8e7ab5a23383b032da8e3ba6f87d5bc3fa9bf01beb7')
 
 _dir="tennoworth-desktop-linux-x86_64"
 
@@ -42,7 +46,8 @@ package() {
 
   # Without the desktop entry the window and taskbar fall back to a generic WM
   # avatar — the app sets its own window icon, but the shell matches on the
-  # .desktop file (StartupWMClass=TennoWorth).
+  # .desktop file (StartupWMClass=tennoworth-desktop — the binary basename,
+  # which is what GTK reports as WM_CLASS).
   install -Dm644 tennoworth.desktop \
     "$pkgdir/usr/share/applications/tennoworth.desktop"
 
