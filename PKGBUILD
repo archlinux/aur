@@ -1,6 +1,6 @@
 # Maintainer: Kaiyasi <zengcode0315@gmail.com>
 pkgname=fcitx5-ari-ime-bin
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Ari IME: prebuilt Fcitx5 mixed Bopomofo/English input method"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=("fcitx5-ari-ime=$pkgver")
 conflicts=('fcitx5-ari-ime')
 options=('!debug' '!strip')
 source=("$pkgname-$pkgver-$arch.tar.zst::$url/releases/download/v$pkgver/$pkgname-$pkgver-$arch.tar.zst")
-sha256sums=('5ef5dbe816e4c17c45871f3f2058d54d8c156c8ff4c3fe68ece9122cdf367ef1')
+sha256sums=('519e38193a849b3b9ac58a4e23c342383a896ca11bc8ddb09edcac4b5807a605')
 
 package() {
     cp -dr --no-preserve=ownership usr "$pkgdir/"
