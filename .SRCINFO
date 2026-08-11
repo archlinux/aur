@@ -1,13 +1,13 @@
 pkgbase = codeburn
 	pkgdesc = See where your AI coding tokens go - interactive TUI dashboard for Claude Code, Codex, and Cursor cost observability
-	pkgver = 0.9.19
+	pkgver = 0.9.20
 	pkgrel = 1
 	url = https://github.com/getagentseal/codeburn
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = codeburn-0.9.19.tgz::https://registry.npmjs.org/codeburn/-/codeburn-0.9.19.tgz
-	sha256sums = e5314f2504c37e7e8079ab70d4d081c14eff4815e79fb20a8364cf815afe17e4
+	source = codeburn-0.9.20.tgz::https://registry.npmjs.org/codeburn/-/codeburn-0.9.20.tgz
+	sha256sums = 4416d3b074047dba22b909a34347dd0d388d06679c7ca6e4d2d98420bef21d1c
 
 pkgname = codeburn

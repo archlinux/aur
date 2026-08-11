@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codeburn
-pkgver=0.9.19
+pkgver=0.9.20
 pkgrel=1
 pkgdesc='See where your AI coding tokens go - interactive TUI dashboard for Claude Code, Codex, and Cursor cost observability'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('e5314f2504c37e7e8079ab70d4d081c14eff4815e79fb20a8364cf815afe17e4')
+sha256sums=('4416d3b074047dba22b909a34347dd0d388d06679c7ca6e4d2d98420bef21d1c')
 
 package() {
     cd "${srcdir}/package"
