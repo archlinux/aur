@@ -7,6 +7,7 @@ pkgbase = ocaml-odoc
 	license = custom
 	makedepends = dune
 	makedepends = cppo
+	makedepends = ocaml-crunch
 	depends = ocaml
 	depends = ocaml-tyxml
 	depends = ocaml-fpath

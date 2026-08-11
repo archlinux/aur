@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://ocaml.github.io/odoc/"
 license=(custom)
 depends=(ocaml ocaml-tyxml ocaml-fpath ocaml-fmt)
-makedepends=(dune cppo)
+makedepends=(dune cppo ocaml-crunch)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ocaml/odoc/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('d4e70455abbc3644f8b71839ac0abb3a4a70260b474b9dce6f11fa043e03896ee75ec7b101ac1b6d45bd78c4d8b1ddacd855f77f67e78524815f18725db1a712')
 
