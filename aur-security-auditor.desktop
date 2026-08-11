@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=AUR Security Auditor
+GenericName=AUR Package Security Auditor
+Comment=Audit AUR packages for malware, supply-chain risks and build integrity
+Exec=/usr/bin/aur-security-auditor-launcher
+Icon=aur-security-auditor
+Terminal=true
+Categories=System;Security;
+Keywords=AUR;Arch;CachyOS;Security;Malware;Supply Chain;Audit;PKGBUILD;
+StartupNotify=true

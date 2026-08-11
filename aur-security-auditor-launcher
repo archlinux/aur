@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP=/usr/bin/aur-security-auditor
+VERSION=1.4.7
+
+if [[ ${EUID:-$(id -u)} -eq 0 && "${AUR_SECURITY_AUDITOR_FORCE_UNPRIVILEGED:-0}" != "1" ]]; then
+  exec "$APP" "$@"
+fi
+
+# Terminal and CLI output intentionally remain English.
+is_tty=0
+[[ -t 1 ]] && is_tty=1
+use_color=0
+if (( is_tty )) && [[ -z "${NO_COLOR:-}" && "${TERM:-dumb}" != "dumb" ]]; then
+  use_color=1
+fi
+
+if (( use_color )); then
+  bold=$'\033[1m'
+  dim=$'\033[2m'
+  cyan=$'\033[36m'
+  green=$'\033[32m'
+  reset=$'\033[0m'
+else
+  bold=''; dim=''; cyan=''; green=''; reset=''
+fi
+
+printf '\n'
+printf '%s' "$cyan"
+printf '             .------------------------------------.\n'
+printf '            /                                      \\\n'
+printf '           /          AUR SECURITY AUDITOR          \\\n'
+printf '          |              version %-5s               |\n' "$VERSION"
+printf '           \\                                        /\n'
+printf '            \\______________________________________/\n'
+printf '                       \\          /\n'
+printf '                        \\        /\n'
+printf '                         \\______/\n'
+printf '%s\n' "$reset"
+
+if (( is_tty )) && [[ "${AUR_SECURITY_AUDITOR_NO_ANIMATION:-0}" != "1" ]]; then
+  status='Preparing secure audit session'
+  frames=('[-       ]' '[=-      ]' '[==-     ]' '[===-    ]' '[====-   ]' '[=====-  ]' '[======- ]' '[=======]')
+  for frame in "${frames[@]}"; do
+    printf '\r  %s%s%s  %s' "$dim" "$frame" "$reset" "$status"
+    sleep 0.07
+  done
+  printf '\r%*s\r' 78 ''
+fi
+
+printf '  %sAUR Security Auditor requires root privileges for complete analysis.%s\n\n' "$bold" "$reset"
+printf '  Root access is required to:\n'
+printf '    • inspect protected package and system metadata completely\n'
+printf '    • verify permissions, SUID/SGID, capabilities and package integrity\n'
+printf '    • analyze systemd, Pacman, Polkit and other privileged security surfaces\n'
+printf '    • run optional clean-chroot deep scans in isolation\n\n'
+printf '  %sSecurity boundary:%s The dashboard is served exclusively on local 127.0.0.1.\n' "$green" "$reset"
+printf '  Scanned packages are never installed automatically on the host by the auditor.\n\n'
+printf '  %sPacmanicS%s · pacmanics @ AUR\n\n' "$dim" "$reset"
+printf '  sudo authentication will be requested now. Press Ctrl+C to cancel.\n\n'
+
+if ! command -v sudo >/dev/null 2>&1; then
+  printf 'ERROR: sudo is not installed. Run %s as root.\n' "$APP" >&2
+  exit 1
+fi
+
+exec sudo -- "$APP" "$@"
