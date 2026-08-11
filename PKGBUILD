@@ -2,7 +2,7 @@
 # Created with assistance from DeepSeek V4 Flash.
 
 pkgname=whisp
-pkgver=1.3.8
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Anti-Note for GNOME — a fluid, gesture-driven scratchpad with WYSIWYG Markdown"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tanaybhomia/Whisp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b23f8ff4e5429a06d5c9ceac00d5a90f4c6ccdd5b4a79e71dcc2ef40c163606e')
+sha256sums=('e3a809ac35fd739a99dd6441842b5dad4ba4ec996b29386261b3a4e33d5f3b32')
 
 build() {
   cd "${srcdir}/Whisp-${pkgver}"
