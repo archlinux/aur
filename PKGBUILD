@@ -3,7 +3,7 @@
 
 pkgname=saleae-logic2
 pkgver=2.4.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-software/7"
@@ -34,24 +34,22 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mv "${pkgdir}/opt/${pkgname}/Logic.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	rm "${pkgdir}/opt/${pkgname}/Logic.png"
-	rm "${pkgdir}/opt/${pkgname}/.DirIcon"
 	rm "${pkgdir}/opt/${pkgname}/AppRun"
-	rm "${pkgdir}/opt/${pkgname}/version"
-	rm -rf "${pkgdir}/usr/lib/"
 
 	# Use intended program icon
-    rm -r "${pkgdir}/usr/share/icons"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    mv "${pkgdir}/opt/${pkgname}/resources/linux-x64/LogicIcon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/Logic.png"
+    mv "${pkgdir}/usr/lib/logic/resources/linux-x64/LogicIcon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/Logic.png"
 
-	install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux-x64/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
+	install -Dm644 "${pkgdir}/usr/lib/logic/resources/udev/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
 
-	# Fix permissions (example: 700->755, 640->644)
+	rm "${pkgdir}/usr/bin/Logic" # remove the symlink
+
+    # Fix permissions (example: 700->755, 640->644)
 	find "${pkgdir}"   -perm "/111" -exec chmod 755 \{\} \;
 	find "${pkgdir}" ! -perm "/111" -exec chmod 644 \{\} \;
-	chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+	chmod 4755 "${pkgdir}/usr/lib/logic/chrome-sandbox"
 
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/Logic" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/usr/lib/logic/Logic" "${pkgdir}/usr/bin/${pkgname}"
+
 }
