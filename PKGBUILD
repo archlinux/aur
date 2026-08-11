@@ -13,10 +13,10 @@ conflicts=('git-vault')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/roman-16/git-vault/releases/download/v${pkgver}/git-vault_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('a3f94f3c96a898858a7cf597971ef0bf8ebec3d8496b32b96c330191d78a3eb5')
+sha256sums_aarch64=('f43feb0fffbd6cdef97548d3c3e823edcb5b298e20739f46ff737b5826d11bd2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/roman-16/git-vault/releases/download/v${pkgver}/git-vault_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2535668e6cff2942b7fdfc3c891f5da232804e1bc9f35a710165490e6b2fb7d2')
+sha256sums_x86_64=('b9d48c4b276f71338efaa1c1c6916d6f39195733a43fd91e4c496043e3b1a383')
 
 package() {
   install -Dm755 "./git-vault" "${pkgdir}/usr/bin/git-vault"
