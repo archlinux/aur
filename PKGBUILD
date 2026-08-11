@@ -3,7 +3,7 @@
 
 pkgname=goose-desktop-bin
 pkgver=1.45.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
@@ -66,7 +66,7 @@ exec "$EXEC" "$@" ${GOOSE_USER_FLAGS:-}
 EOF
   chmod 755 "${pkgdir}/usr/bin/goose-desktop"
 
-  # 4) Fix the desktop entry to call goose-desktop and give it a unique filename
+  # 4) Fix the desktop entry to call goose-desktop and set StartupWMClass for Wayland window matching
   if [[ -f "${pkgdir}/usr/share/applications/goose.desktop" ]]; then
     mv "${pkgdir}/usr/share/applications/goose.desktop" \
        "${pkgdir}/usr/share/applications/goose-desktop.desktop"
@@ -74,6 +74,11 @@ EOF
       -e 's|^Exec=.*|Exec=/usr/bin/goose-desktop %U|' \
       -e 's|^Name=Goose$|Name=Goose Desktop|' \
       "${pkgdir}/usr/share/applications/goose-desktop.desktop"
+    if ! grep -q '^StartupWMClass=' "${pkgdir}/usr/share/applications/goose-desktop.desktop"; then
+      echo "StartupWMClass=Goose" >> "${pkgdir}/usr/share/applications/goose-desktop.desktop"
+    else
+      sed -i 's|^StartupWMClass=.*|StartupWMClass=Goose|' "${pkgdir}/usr/share/applications/goose-desktop.desktop"
+    fi
     # Keep Icon=goose (it refers to /usr/share/pixmaps/goose.png already shipped)
   fi
 
