@@ -1,7 +1,7 @@
 # Maintainer: Neowutran <aur at neowutran dot ovh>
 pkgname="dane-without-root"
 backup=(etc/dane-proxy/dane-proxy.conf)
-pkgver='0.1.32'
+pkgver='0.1.34'
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
 pkgdesc="Provide multiples DANE tools that does not use the root '.' DNS server for validation"
@@ -59,14 +59,14 @@ package() {
    install -vDm 0755 -t "$pkgdir/usr/bin/"             "../target/release/$pkgname-proxy"
    install -vDm 0755 -t "$pkgdir/usr/bin/"             "../target/release/$pkgname-client"
    install -vDm 0644 -t "$pkgdir/usr/include/"         ../target/release/usr/include/dane_without_root/dane_without_root.h
-   install -vDm 0644 -t "$pkgdir/usr/lib/"             ../target/release/usr/lib/libdane_without_root.so.0.1.32
+   install -vDm 0644 -t "$pkgdir/usr/lib/"             ../target/release/usr/lib/libdane_without_root.so.0.1.34
    install -vDm 0644 -t "$pkgdir/usr/lib/"             ../target/release/usr/lib/libdane_without_root.a
    install -vDm 0644 -t "$pkgdir/usr/lib/pkgconfig/"   ../target/release/usr/lib/pkgconfig/dane_without_root.pc
    install -vdm 0755 "$pkgdir"/etc/dane-proxy
    install -vDm 0644 dane-proxy.conf                   "$pkgdir"/etc/dane-proxy/dane-proxy.conf
    install -vDm 0644 valid_dane_domain.txt -t          "$pkgdir"/usr/share/dane-without-root
-   ln -sf "/usr/lib/libdane_without_root.so.0.1.32"    "$pkgdir/usr/lib/libdane_without_root.so.0.1"
-   ln -sf "/usr/lib/libdane_without_root.so.0.1.32"    "$pkgdir/usr/lib/libdane_without_root.so"
+   ln -sf "/usr/lib/libdane_without_root.so.0.1.34"    "$pkgdir/usr/lib/libdane_without_root.so.0.1"
+   ln -sf "/usr/lib/libdane_without_root.so.0.1.34"    "$pkgdir/usr/lib/libdane_without_root.so"
    touch "$pkgdir/etc/dane-proxy/valid_dane_domain.txt"
    touch "$pkgdir/etc/dane-proxy/known_hosts"
 }
