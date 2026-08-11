@@ -1,0 +1,22 @@
+pkgbase = poe2-price-check
+	pkgdesc = Path of Exile 2 price checker for Wayland: live trade listings and poe.ninja economy data
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Meliodas8/PoE2-PriceCheck
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = wl-clipboard: item copy from the game (Price Check tab)
+	options = !lto
+	source = poe2-price-check-0.1.0.tar.gz::https://github.com/Meliodas8/PoE2-PriceCheck/archive/refs/tags/v0.1.0.tar.gz
+	source = poe2-price-check.desktop
+	sha256sums = 6fbb3f6a4adcb93e192b6b8e7cd8af9f4663db56525355dfde401fadfd4691db
+	sha256sums = 8b193f7946318f58b2aecb63c0fff6d87a270b52245b21c84a50959c57da6b86
+
+pkgname = poe2-price-check
