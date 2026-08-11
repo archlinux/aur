@@ -1,14 +1,14 @@
 pkgbase = robocode
 	pkgdesc = Programming game, where the goal is to develop a robot battle tank to battle against other tanks in Java or .NET. The robot battles are running in real-time and on-screen.
-	pkgver = 1.10.1
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://robocode.sourceforge.net
 	arch = any
 	license = EPL
 	depends = java-environment
-	source = http://downloads.sourceforge.net/project/robocode/robocode/1.10.1/robocode-1.10.1-setup.jar
+	source = http://downloads.sourceforge.net/project/robocode/robocode/1.11.1/robocode-1.11.1-setup.jar
 	source = robocode.desktop
-	md5sums = b514db1cc6e847271f4c960142485d6b
+	md5sums = 885de2ed788dd0f26f3f080de8bb8f43
 	md5sums = 8a556209b3ffb39839f28f30479a8c8d
 
 pkgname = robocode
