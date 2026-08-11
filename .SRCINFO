@@ -1,6 +1,6 @@
 pkgbase = python-devito
 	pkgdesc = Finite Difference DSL for symbolic computation
-	pkgver = 4.8.22
+	pkgver = 4.8.23
 	pkgrel = 1
 	url = https://github.com/devitocodes/devito
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-devito
 	depends = python-packaging
 	optdepends = python-mpi4py: for parallel support
 	optdepends = python-ipyparallel: for parallel support
-	source = devito-4.8.22.tar.gz::https://github.com/devitocodes/devito/archive/v4.8.22.tar.gz
-	sha512sums = 29f4c9ba8a27d970ee271c7497203a754a2f9f8386f9e966b52d936d07243c2204af1c9b982b8560a5d75ec2a0cbf7698e83a2f5ddc32c894933dfdee0f874b6
+	source = devito-4.8.23.tar.gz::https://github.com/devitocodes/devito/archive/v4.8.23.tar.gz
+	sha512sums = 6f9acddce7e0b15f73642132b8fc7e380762e6d74575b25a7f60296d69a0e00581c6c7e0f27b871052b076929484557ae6d757deb1dca4428115c07fc68bcaf4
 
 pkgname = python-devito
