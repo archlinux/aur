@@ -1,7 +1,7 @@
 pkgbase = mercurygram-desktop-bin
 	pkgdesc = Mercurygram Desktop messaging app
 	pkgver = 7.0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mercurygram/mdesktop
 	arch = x86_64
 	arch = aarch64
@@ -47,8 +47,8 @@ pkgbase = mercurygram-desktop-bin
 	sha256sums = 64650964193d328389b2cf4be9fdfb6ccc56b17fb932e46d0589a8c0f779f3cf
 	sha256sums = 3cd0d6b3d46b406e8f2458e744a87d22713f049cf1615269347697e1282577d0
 	source_x86_64 = https://github.com/Mercurygram/mdesktop/releases/download/v7.0.9.1/Mercurygram-7.0.9.1-linux-x86_64.tar.xz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 97bd0cd6ae0a95eacf56506a6ea2087f7354f4cf3d8dd1585ed7bf4f05c9d614
 	source_aarch64 = https://github.com/Mercurygram/mdesktop/releases/download/v7.0.9.1/Mercurygram-7.0.9.1-linux-arm64.tar.xz
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 4c34ea393aa9a8ee6751a267e06c72957174a6797c66c20c3967a7b1b716975b
 
 pkgname = mercurygram-desktop-bin

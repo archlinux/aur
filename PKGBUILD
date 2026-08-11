@@ -2,7 +2,7 @@
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
 pkgver=7.0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mercurygram/mdesktop"
@@ -56,8 +56,8 @@ sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
             'e7b1f3fdc5b92977f29eb08b6936dd94539da928bac4253ccbc53d9110a4252b'
             '64650964193d328389b2cf4be9fdfb6ccc56b17fb932e46d0589a8c0f779f3cf'
             '3cd0d6b3d46b406e8f2458e744a87d22713f049cf1615269347697e1282577d0')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('97bd0cd6ae0a95eacf56506a6ea2087f7354f4cf3d8dd1585ed7bf4f05c9d614')
+sha256sums_aarch64=('4c34ea393aa9a8ee6751a267e06c72957174a6797c66c20c3967a7b1b716975b')
 
 package() {
   install -Dm755 ${_pkgname^} "$pkgdir/usr/bin/${_pkgname}"
