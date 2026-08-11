@@ -40,7 +40,7 @@ build() {
   cd "$pkgname/Build/linux"
 
   # Safe optimizations for video encoders
-CFLAGS="-O3 -march=native -mtune=native \
+  CFLAGS="-O3 -march=native -mtune=native \
         -funroll-loops \
         -falign-functions=32 -falign-loops=32 \
         -fomit-frame-pointer \
@@ -79,6 +79,9 @@ package() {
   for _lib in Bin/Release/*.so*; do
     install -Dm755 "$_lib" "$pkgdir/usr/lib/$(basename "$_lib")"
   done
+
+  # Create ABI-safe symlink to silence ldconfig warning
+  ln -s libSvtAv1Enc.so.4 "$pkgdir/usr/lib/libSvtAv1Enc.so"
 
   # Install headers (needed for FFmpeg)
   install -d "$pkgdir/usr/include/svt-av1"
