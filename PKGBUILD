@@ -40,6 +40,8 @@ prepare() {
 	sed -i 's|hibernate.connection.url:jdbc:postgresql://postgres:5432/piped|hibernate.connection.url:jdbc:postgresql:piped?socketFactory=org.newsclub.net.unix.AFUNIXSocketFactory$FactoryArg\&socketFactoryArg=/var/run/postgresql/.s.PGSQL.5432|' config.properties
 	sed -i 's|config.properties|/etc/webapps/piped/backend.properties|' src/main/java/me/kavin/piped/consts/Constants.java
 	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.0'|" build.gradle
+	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:c83884eb5d2e9f077348acec3a2d9e9dc920ae91'|implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.26.4'|" build.gradle
+	sed -i "s|implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'|implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'|" build.gradle
 }
 
 build() {

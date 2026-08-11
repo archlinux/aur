@@ -1,4 +1,5 @@
-Piped-Backend
-piped-backend-*.pkg.tar.zst
-src
-pkg
+/Piped-Backend/
+*.pkg.tar.zst
+/src/
+/pkg/
+/*.log
