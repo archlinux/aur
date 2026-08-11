@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r238.gc8edf1ea
+pkgver=B7.r649.g9469c087
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -21,9 +21,13 @@ source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "PureSpice::git+https://github.com/gnif/PureSpice.git"
         "cimgui::git+https://github.com/cimgui/cimgui.git"
         "imgui::git+https://github.com/ocornut/imgui.git"
+        "cimplot::git+https://github.com/cimgui/cimplot.git"
+        "implot::git+https://github.com/epezent/implot.git"
         "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
         "nanosvg::git+https://github.com/memononen/nanosvg.git")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,16 +44,31 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+	declare -rA submodules=(
+		["LGMP"]="repos/LGMP"
+		["PureSpice"]="repos/PureSpice"
+		["cimgui"]="repos/gui/cimgui"
+		["cimplot"]="repos/gui/cimplot"
+		["wayland-protocols"]="repos/wayland-protocols"
+		["nanosvg"]="repos/nanosvg"
+	)
 	git submodule init
-	for module in LGMP PureSpice cimgui wayland-protocols nanosvg; do
-		git submodule set-url -- "repos/${module}" "${srcdir}/${module}"
+	for submodule in "${!submodules[@]}"; do
+		git submodule set-url -- "${submodules["${submodule}"]}" "${srcdir}/${submodule}"
 	done
 	git -c protocol.file.allow=always submodule update
 
-	cd "repos/cimgui"
-	git submodule init
-	git submodule set-url -- imgui "${srcdir}/imgui"
-	git -c protocol.file.allow=always submodule update
+	declare -rA nestedmodules=(
+		["cimgui"]="imgui"
+		["cimplot"]="implot"
+	)
+	for submodule in "${!nestedmodules[@]}"; do
+		local nestedmodule="${nestedmodules["${submodule}"]}"
+		cd "${srcdir}/${_pkgname}/${submodules["${submodule}"]}"
+		git submodule init
+		git submodule set-url -- "${nestedmodule}" "${srcdir}/${nestedmodule}"
+		git -c protocol.file.allow=always submodule update
+	done
 }
 
 build() {
@@ -66,7 +85,7 @@ build() {
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
 	depends=('binutils' 'fontconfig' 'gcc-libs' 'glibc' 'gmp' 'hicolor-icon-theme'
-	         'libegl' 'libgl' 'libpipewire' 'libpulse' 'libsamplerate' 'libx11'
+	         'libegl' 'libgl' 'libpipewire' 'libpulse' 'libsamplerate' 'libunwind' 'libx11'
 	         'libxcursor' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxpresent'
 	         'libxss' 'nettle' 'wayland' 'zlib' 'zstd')
 	provides=("${_pkgname}")
@@ -75,6 +94,7 @@ package_looking-glass-git() {
 
 	cd "${srcdir}/${_pkgname}/client/build"
 	make DESTDIR="${pkgdir}" install
+	find "${pkgdir}" -name "*.debug*" -delete
 }
 
 package_looking-glass-module-dkms-git() {
@@ -92,8 +112,8 @@ package_looking-glass-module-dkms-git() {
 
 package_looking-glass-host-git() {
 	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('binutils' 'gcc-libs' 'glib2' 'glibc'
-	         'libpipewire' 'libxcb' 'zlib' 'zstd')
+	depends=('binutils' 'gcc-libs' 'glib2' 'glibc' 'libpipewire'
+	         'libunwind' 'libxcb' 'zlib' 'zstd')
 	provides=("${_pkgname}-host")
 	conflicts=("${_pkgname}-host")
 	install="host.install"
