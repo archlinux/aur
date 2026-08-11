@@ -35,7 +35,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.1.patch"
+  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.1.2.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 validpgpkeys=(
@@ -48,7 +48,7 @@ b2sums=('84b59e5572d91f5ea1bb603aa7691851bd9549e1bf18a6bec8e27eb8a6e2de2e33da2ad
         'e586e241d3e89764192c34176ef34c4ecd06c48a668723f2c6d233ab0b7e99768a8ee6c354de5c6be9d85e9e96d9fbcbb4ee576a4dc50dbc92663f54e5e316cb'
         'SKIP'
         '5663b9c6b80f1ce629ba9d3562bc308db67081cb10f504235ec915cc52a0830ac745cf4ffcda95ba3d1c46011dad94a7e66011fce66c7fea1c49c0d2af90ee6e'
-        '2b2377daa5bbadb6896839678a74adfc999e11cbcc9bb41e71a4445e7ed3d101c327ffa2c53b54e9c0a45fd61901fc860e518aafe552b357797c37bb33d91c84'
+        '88479d2c924535dc240edeb806198c542785f454578ba2cc14685b227452c01a01fd073e1ff726d8dc81e1fa60778a77505f1f400b89cd1cbfbe28d626c58939'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
 
@@ -81,6 +81,7 @@ prepare() {
   echo "Setting microarchitecture $Microarchitecture..."
   sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i ../config
   cp ../config .config
+  make localmodconfig
   make olddefconfig
   diff -u ../config .config || :
 
