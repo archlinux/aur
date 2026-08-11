@@ -2,13 +2,13 @@
 
 pkgname=python-transkribus_metagrapho_api
 _pkg="${pkgname#python-}"
-pkgver=0.1.5
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Python bindings for the Transkribus Metagrapho/Processing API."
 url="https://github.com/jnphilipp/transkribus_metagrapho_api"
 depends=('python-pillow' 'python-requests')
 makedepends=('python-build' 'python-installer')
-license=('GPL3+')
+license=('GPL-3.0-or-later')
 arch=(any)
 source=("git+https://github.com/jnphilipp/transkribus_metagrapho_api")
 sha256sums=(SKIP)
