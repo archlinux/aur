@@ -15,7 +15,6 @@ depends=(
 	'libkeybinder3'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
-options=('!debug')
 source=("restart-bettbox.hook" "bettbox.desktop" "$_pkgname::git+$url.git#tag=v${_pkgver}")
 sha256sums=('581125ab3ab64cb8d2ad6285a197e10641d9ea7be6a92ec53180d36328b3955f'
             'f5c33a2c9ccfff7de67b89b74d23ca66fe7b125e269b5751f5a67aa18ffc35d5'
