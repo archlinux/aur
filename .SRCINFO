@@ -1,24 +1,10 @@
 pkgbase = pipewire-controller
-	pkgdesc = GTK4/libadwaita control center for PipeWire — live level meters, parametric equalizer, microphone cleanup, patchbay, monitoring, virtual devices, effect inserts, filter chains, HRIR virtual surround, drop-in config management
-	pkgver = 0.3.6
+	pkgdesc = Transitional package — PipeWire Controller has been renamed to pipewire-control-center
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/knightinfected/PipeWireController
 	arch = any
 	license = GPL-3.0-or-later
-	depends = pipewire
-	depends = wireplumber
-	depends = pipewire-pulse
-	depends = gtk4
-	depends = libadwaita
-	depends = python
-	depends = python-gobject
-	depends = python-numpy
-	depends = python-soundfile
-	optdepends = noise-suppression-for-voice: RNNoise noise-cancelling mic template
-	optdepends = lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks
-	optdepends = lsp-plugins-lv2: extra LV2 plugins for effect racks
-	optdepends = carla: bridge VST3/CLAP plugins into the graph via the patchbay
-	source = pipewire-controller-0.3.6.tar.gz::https://github.com/knightinfected/PipeWireController/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = 1ad233dacf69f8ad0d9bc46e3636776de3ed4844de94c11c4f632587e1e8a06e
+	depends = pipewire-control-center
 
 pkgname = pipewire-controller

@@ -1,31 +1,39 @@
 # Maintainer: knightinfected <hmzmahmood5@gmail.com>
+
+# Transitional package. `pipewire-control-center` was published to the AUR
+# first (2026-08-11); this depends on it, so it is unbuildable before that.
+#
+# Kept deliberately as a transitional package rather than orphaning or deleting
+# `pipewire-controller`: the 2026-07-30 AUR upload freeze existed because
+# attackers adopt orphaned packages to inject malware, and this name has real
+# users. Holding it costs nothing and keeps it out of circulation.
+#
+# This commit is based directly on b5fa691 (0.3.6-1, the last published state),
+# NOT on the local 0.4.0 bump bb2a96b. That commit was never pushed and never
+# will be: it renames nothing and its pkgdesc is 275 characters, which the AUR
+# hook rejects outright ("pkgdesc field too long" — the 255-char cap, which
+# also bit the first push of pipewire-control-center). It is preserved out of
+# the branch under a tag:
+#   git checkout superseded-0.4.0-oldname -- PKGBUILD
+#
+# pkgver tracks the pipewire-control-center release that carries the rename
+# (v0.5.0).
+
 pkgname=pipewire-controller
-pkgver=0.3.6
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="GTK4/libadwaita control center for PipeWire — live level meters, parametric equalizer, microphone cleanup, patchbay, monitoring, virtual devices, effect inserts, filter chains, HRIR virtual surround, drop-in config management"
+pkgdesc="Transitional package — PipeWire Controller has been renamed to pipewire-control-center"
 arch=('any')
 url="https://github.com/knightinfected/PipeWireController"
 license=('GPL-3.0-or-later')
-depends=('pipewire' 'wireplumber' 'pipewire-pulse' 'gtk4' 'libadwaita'
-         'python' 'python-gobject' 'python-numpy' 'python-soundfile')
-optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
-            'lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks'
-            'lsp-plugins-lv2: extra LV2 plugins for effect racks'
-            'carla: bridge VST3/CLAP plugins into the graph via the patchbay')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ad233dacf69f8ad0d9bc46e3636776de3ed4844de94c11c4f632587e1e8a06e')
+depends=('pipewire-control-center')
+source=()
+sha256sums=()
 
 package() {
-  cd "PipeWireController-$pkgver"
-
-  install -d "$pkgdir/usr/share/$pkgname"
-  cp -r pwctl "$pkgdir/usr/share/$pkgname/"
-  install -Dm755 pipewire-controller "$pkgdir/usr/share/$pkgname/pipewire-controller"
-
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/share/$pkgname/pipewire-controller" "$pkgdir/usr/bin/pipewire-controller"
-
-  install -Dm644 pipewire-controller.desktop \
-    "$pkgdir/usr/share/applications/pipewire-controller.desktop"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Metapackage: the dependency does all the work. Installing this pulls in
+  # pipewire-control-center and removes the old /usr/bin/pipewire-controller,
+  # /usr/share/pipewire-controller/ and pipewire-controller.desktop that
+  # earlier versions of this package owned.
+  :
 }
