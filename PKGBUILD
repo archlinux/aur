@@ -2,7 +2,7 @@
 # Maintainer: AlexMa <i at fur dot im>
 
 pkgname='composia'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Self-hosted Docker Compose control plane and CLI.'
 url='https://composia.xyz'
@@ -12,7 +12,7 @@ provides=('composia')
 conflicts=('composia-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia-${pkgver}.tar.gz")
-sha256sums=('9f854c76031eef5df07ea6aae8e907c3c1aaa09c00901a939e0102efaf5c32d0')
+sha256sums=('95421060a4860f5d7c1e9d2bb171804a8a5f921ea15fdef4cd727d14134e03b7')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
@@ -27,6 +27,11 @@ package() {
   install -Dm755 composia "${pkgdir}/usr/bin/composia"
   install -Dm755 composia-controller "${pkgdir}/usr/bin/composia-controller"
   install -Dm755 composia-agent "${pkgdir}/usr/bin/composia-agent"
+  install -Dm644 packaging/systemd/composia-controller.service "${pkgdir}/usr/lib/systemd/system/composia-controller.service"
+  install -Dm644 packaging/systemd/composia-agent.service "${pkgdir}/usr/lib/systemd/system/composia-agent.service"
+  install -Dm644 <(./composia completion bash) "${pkgdir}/usr/share/bash-completion/completions/composia"
+  install -Dm644 <(./composia completion zsh) "${pkgdir}/usr/share/zsh/site-functions/_composia"
+  install -Dm644 <(./composia completion fish) "${pkgdir}/usr/share/fish/vendor_completions.d/composia.fish"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/composia/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/composia/README.md"
 }
