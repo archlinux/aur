@@ -1,7 +1,7 @@
 pkgbase = python-textual-image
 	pkgdesc = Render images in the terminal with Textual and Rich
 	pkgver = 0.13.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lnqs/textual-image
 	arch = any
 	license = LGPL-3.0-only

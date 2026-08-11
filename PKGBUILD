@@ -7,7 +7,7 @@
 pkgname=python-textual-image
 _pkgname=textual-image
 pkgver=0.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
 url="https://github.com/lnqs/textual-image"
@@ -43,7 +43,9 @@ build() {
 
 check() {
   cd "$_pkgname"
-  pytest 
+  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+  export PYTEST_PLUGINS="pytest_asyncio.plugin,syrupy"
+  pytest
 }
 
 package() {
