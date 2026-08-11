@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
 _pkgname=reasonix-desktop
-pkgver=1.18.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Reasonix desktop — a Wails shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,24 @@ makedepends=('go' 'pnpm' 'wails')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('4717e47056b331c33981144beca29a334c2717f41cd1b58cf5b944852d571be4')
+sha256sums=('85788c67fca01207e9e8397a6e114356ac235e7f0369c3200f85015636c23f3c')
+
+prepare() {
+    cd "DeepSeek-Reasonix-desktop-v$pkgver"
+
+    # Upstream pins engines.pnpm ">=10 <11" in the frontend manifest, and pnpm
+    # enforces its own engines range unconditionally (engine-strict=false does
+    # not disable it), so the `pnpm install` wails runs aborts against Arch's
+    # pnpm 11. Drop the pin — the lockfile is lockfileVersion 9, which pnpm 11
+    # reads natively. engines.node (">=24") is left in place and satisfied.
+    node -e '
+      const fs = require("fs");
+      const f = "desktop/frontend/package.json";
+      const p = JSON.parse(fs.readFileSync(f, "utf8"));
+      delete p.engines.pnpm;
+      fs.writeFileSync(f, JSON.stringify(p, null, 2) + "\n");
+    '
+}
 
 build() {
     cd "DeepSeek-Reasonix-desktop-v$pkgver/desktop"
