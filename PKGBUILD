@@ -15,10 +15,9 @@ source=(
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=('ff69f49954e8fea524787c617ac3fcfd'
-         '061ca3a558720d9fdcb000eaad394690'
-         '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d'
+sha256sum=('de599f5d4b97750984befd2f9731ca73b4dbccbee442107259b1 c5c0c48c1a8d'                 '552ba52371cdd47a4e47ab2e5e564ac58e1fbe1bcd530c3d388bc1464bdb9c07'
+'2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
+'9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67'
 )
 prepare() {
 #  do not install in '/usr/local'
