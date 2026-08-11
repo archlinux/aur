@@ -1,5 +1,4 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
-# Contributor: Christoph W <c w e g e n e r at gmail dot com>
+# Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=usql
 pkgver=0.21.4
