@@ -1,14 +1,14 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
-_gpuarch=gfx120X
+_gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.15.0a20260716
+pkgver=10.1.0a20260801
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (RDNA4) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
 license=('MIT' 'custom:LicenseRef-ROCm-EULA')
-depends=('glibc' 'gcc-libs' 'python-pyelftools' 'python')
+depends=('gcc-libs' 'python-pyelftools' 'python')
 
 # 官方源冲突列表：涵盖了 Core, Compilers, HIP, Math Libs, ML, Tools 等
 _rocm_packages=(
@@ -27,15 +27,15 @@ _rocm_packages=(
     'hipsparse' 'hipsparselt' 'rocsparse'
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
-    'hipfort' 'hipify-clang'
+    'hipify-clang'
     'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
 provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
-source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-all-${pkgver}.tar.gz")
-sha256sums=('86b912e706d39e7bd52f4bc47d72f7cf5d2290122b62ffcf591e7bc1d54df2fc')
+source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
+sha256sums=('25d2b2a463861b87810585918855c7f34b469b5b2e144d2c41128f8db3949858')
 
 noextract=("${source[@]##*/}")
 
@@ -44,7 +44,6 @@ package() {
     # 源码是 tarbomb 结构
     tar xzf "${source[0]##*/}" -C ${pkgdir}/opt/rocm
 
-    # 配置动态链接库路径 /etc/ld.so.conf.d/
     install -Dm644 /dev/null "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
     echo "/opt/rocm/lib" > "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
     echo "/opt/rocm/lib64" >> "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
@@ -63,9 +62,10 @@ EOF
     install -Dm644 /dev/stdin "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd" <<EOF
 /opt/rocm/lib/opencl/libamdocl64.so
 EOF
-    # 处理许可证
+
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     if [ -f "${pkgdir}/opt/rocm/share/doc/NOTICES.txt" ]; then
         ln -s "/opt/rocm/share/doc/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.txt"
     fi
 }
+
