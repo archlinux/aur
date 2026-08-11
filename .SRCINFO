@@ -1,14 +1,14 @@
 pkgbase = audacity4-bin
 	pkgdesc = Audacity 4 Beta (AppImage)
-	pkgver = 4.0.0_beta.1
+	pkgver = 4.0.0_beta.2
 	pkgrel = 1
 	url = https://github.com/audacity/audacity
 	arch = x86_64
 	license = GPL-3.0-or-later
 	options = !strip
-	source = Audacity-4.0.0-beta.1-x86_64.AppImage::https://updates.audacityteam.org/feed/Audacity-4.0.0-beta.1-x86_64.AppImage
+	source = Audacity-4.0.0-beta2-x86_64.AppImage::https://github.com/audacity/audacity/releases/download/Audacity-4.0.0-beta-2/Audacity-4.0.0-beta2-x86_64.AppImage
 	source = audacity4-bin.desktop
-	sha256sums = 5312efa1ee3b11cf200978cd1ee8b456cdaf25d594659c697394bdf16be12e76
+	sha256sums = 1cbe9ca78593ba3b2f29066f4cae5b85d871cfefb3cb3bae912b7d236a071ac4
 	sha256sums = 1ceef3dd89868978070bf2e111f3eb6734795cece147d72ec2739e86c5c7d996
 
 pkgname = audacity4-bin
