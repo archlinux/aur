@@ -54,7 +54,7 @@ conflicts=('zuno-bin')
 options=('!strip' '!emptydirs')
 
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Zuno_${pkgver}_amd64.deb")
-sha256sums=('1ca3810deb44a480ad95df0b6e61fc797f68a6a0f45275ea1eabbeb14f91c5c8')
+sha256sums=('17d8d265e0fcce684b4a0d406891918fb91d8d6361285f23de7ec803a0d285cd')
 
 package() {
   # bsdtar reads the ar archive and the inner tarball without needing dpkg installed.
