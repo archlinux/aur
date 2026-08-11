@@ -20,7 +20,7 @@ depends=(
   glib2
   glibc
   graphene
-  gtk4
+  'gtk4>=4.14'
   gtk4-layer-shell
   java-runtime
   libdrm
@@ -34,7 +34,6 @@ depends=(
   webkitgtk-6.0
 )
 makedepends=(
-  cmake
   git
   glib2-devel
   java-runtime-common
@@ -42,7 +41,7 @@ makedepends=(
   meson
   openxr
   vulkan-headers
-  wayland-protocols
+  'wayland-protocols>=1.12'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

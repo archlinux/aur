@@ -7,7 +7,6 @@ pkgbase = android_translation_layer-git
 	arch = aarch64
 	arch = armv7h
 	license = GPL-3.0-or-later
-	makedepends = cmake
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = java-runtime-common
@@ -15,7 +14,7 @@ pkgbase = android_translation_layer-git
 	makedepends = meson
 	makedepends = openxr
 	makedepends = vulkan-headers
-	makedepends = wayland-protocols
+	makedepends = wayland-protocols>=1.12
 	depends = alsa-lib
 	depends = art_standalone
 	depends = bionic_translation
@@ -25,7 +24,7 @@ pkgbase = android_translation_layer-git
 	depends = glib2
 	depends = glibc
 	depends = graphene
-	depends = gtk4
+	depends = gtk4>=4.14
 	depends = gtk4-layer-shell
 	depends = java-runtime
 	depends = libdrm
