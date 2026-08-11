@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus
 pkgname=('fcitx5-lotus' 'fcitx5-lotus-openrc' 'fcitx5-lotus-runit')
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
 )
 sha256sums=(
-    '6eac5e77704534abd6d899fb8f1120bc49d84dd632c07c875c3d79aecfe171ef'
+    'f6624c5013c89508ea1547b31e1d8edda4e6a20675f75f2f97c84d6d732bfda0'
     'SKIP'
 )
 
@@ -43,7 +43,7 @@ prepare_staging() {
 package_fcitx5-lotus() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
-    depends=('acl' 'fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    depends=('acl' 'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
     optdepends=(
         'fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus'
         'fcitx5-lotus-runit: Runit service for fcitx5-lotus'
