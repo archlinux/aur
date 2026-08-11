@@ -1,0 +1,22 @@
+pkgbase = uuu
+	pkgdesc = Universal Update Utility for deploying images to Freescale/NXP i.MX chips
+	pkgver = 1.5.243
+	pkgrel = 1
+	url = https://github.com/nxp-imx/mfgtools
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = bzip2
+	depends = libusb
+	depends = openssl
+	depends = tinyxml2
+	depends = zlib
+	depends = zstd
+	provides = mfgtools
+	conflicts = mfgtools
+	conflicts = mfgtools-git
+	conflicts = mfgtools-git-noproxy
+	source = uuu-1.5.243.tar.gz::https://github.com/nxp-imx/mfgtools/releases/download/uuu_1.5.243/uuu_source-uuu_1.5.243.tar.gz
+	sha256sums = dee3be0f337c631bf93232f5ea42440f07782ce005c9219a14731d66bbe83658
+
+pkgname = uuu
