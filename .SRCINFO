@@ -1,6 +1,6 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.15.0.r44.gabe9df3a
+	pkgver = 0.15.0.r136.g0f7c026a
 	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
@@ -46,7 +46,6 @@ pkgbase = papis-git
 	optdepends = git: integration with git
 	optdepends = papis-zotero: imports from zotero
 	optdepends = python-papis-scihub: imports from scihub
-	optdepends = python-isbnlib: imports by isbn
 	optdepends = python-chardet: improved encoding autodetection when scraping
 	optdepends = python-citeproc-py: exporting to CSL
 	optdepends = python-jinja: jinja formatting

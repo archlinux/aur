@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.15.0.r44.gabe9df3a
+pkgver=0.15.0.r136.g0f7c026a
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -38,7 +38,6 @@ optdepends=(
     'git: integration with git'
     'papis-zotero: imports from zotero'
     'python-papis-scihub: imports from scihub'
-    'python-isbnlib: imports by isbn'
 
     # Internally-optional features
     # papis doesn't make use of the system installation of pdfjs, instead
