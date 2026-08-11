@@ -1,4 +1,5 @@
-Piped
-piped-frontend-*.pkg.tar.zst
-src
-pkg
+/Piped/
+*.pkg.tar.zst
+/src/
+/pkg/
+/*.log
