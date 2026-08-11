@@ -1,10 +1,10 @@
-# Maintainer: Ismet Togay <ismet.togay@gmail.com>
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 # Contributor: Paramjit Singh <contact at paramjit dot org>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Mattias Andersson <contact@stablemate.se>
 
 pkgname=playwright
-pkgver=1.61.0
+pkgver=1.62.1
 pkgver() {
   npm view "$pkgname" version
 }
