@@ -1,14 +1,28 @@
 pkgbase = masterpdfeditor-qt6
 	pkgdesc = A complete solution for viewing, creating and editing PDF files.
 	pkgver = 5.9.99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
 	makedepends = curl
 	makedepends = patchelf
 	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.99-qt6.x86_64.tar.gz
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-base/qt6-base--x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-svg/qt6-svg--x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-declarative/qt6-declarative--x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-5compat/qt6-5compat--x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/q/qt6-wayland/qt6-wayland--x86_64.pkg.tar.zst
+	source_x86_64 = https://archive.archlinux.org/packages/i/icu/icu-72.1-2-x86_64.pkg.tar.zst
+	source_x86_64 = masterpdfeditor
 	sha1sums_x86_64 = bbb128f7f23594d11cabbb7865ea85510f0833db
+	sha1sums_x86_64 = 2aef848e417b78e5cc0e64961e1da0274748b2c3
+	sha1sums_x86_64 = 165e18c31f19eaefb0d2f25b64b5b58b6db637ed
+	sha1sums_x86_64 = e4891badad4b4c0d30f1b54d3f4e9ae1d18e6052
+	sha1sums_x86_64 = 89a13d359c959c98f17b5dd53e38efa4aa858216
+	sha1sums_x86_64 = 983857b378cd62c38c708de97a97e6d83cfff3ec
+	sha1sums_x86_64 = 40ac37ae0659954c5dcaedfec8683339b3b3f3d7
+	sha1sums_x86_64 = a32196cd8736b5425a1952ce0d6a932ed058de9b
 
 pkgname = masterpdfeditor-qt6
 	depends = libgl
@@ -19,6 +33,9 @@ pkgname = masterpdfeditor-qt6
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = glibc>=2.28
+	depends = qt6-masterpdfeditor
 	provides = masterpdfeditor=5.9.99
 	conflicts = masterpdfeditor-qt_include
 	conflicts = masterpdfeditor-qt5
+
+pkgname = qt6-masterpdfeditor
