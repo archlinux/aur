@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
-pkgver=r175.89f9a62
+pkgver=r209.c821453
 pkgrel=1
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
