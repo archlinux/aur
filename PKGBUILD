@@ -8,7 +8,7 @@ license=('GPL3')
 options=('!strip' '!debug')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
-pkgver=3.8.3
+pkgver=3.9.0
 pkgrel=1
 url="https://github.com/SabreTools/MPF"
 
@@ -16,7 +16,7 @@ source=("${url}/releases/download/${pkgver}/${_prgname}_${pkgver}_net10.0_linux-
 "https://raw.githubusercontent.com/SabreTools/MPF/master/README.md"
 "https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE")
 
-sha256sums=('c080a8e0bb1516809617b278bd13bc246414abe8c4a844d4450abc4f11022f4c'
+sha256sums=('37fbe9d210ef574a7040bf4e8a2c5032a0f8d0d6bc578c98d0c00bf01b708c57'
 'SKIP'
 'SKIP')
 
