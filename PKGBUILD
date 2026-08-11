@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
 pkgname=taste
-pkgver=0.5.1
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='CLI to manage CommandCode preferences'
 arch=('x86_64')
 url='https://commandcode.ai'
@@ -11,7 +11,7 @@ makedepends=('npm' 'jq')
 options=(!strip)
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('3d087827480cf7c9ea80648cec3f04d466a89bcabd47b4fe841d4b38f5173898')
+sha256sums=('f6d3f5d886ef4c56122ee66c1dbea9a771c2d4b5af94bac3121c38b05f0cdeea')
 
 package() {
     npm install -g \
