@@ -70,28 +70,29 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+    cd "$pkgname"
 
-  # Install binary
-  install -Dm755 "Bin/Release/SvtAv1EncApp" "$pkgdir/usr/bin/SvtAv1EncApp"
+    # Install binary
+    install -Dm755 \
+        "Bin/Release/SvtAv1EncApp" \
+        "$pkgdir/usr/bin/SvtAv1EncApp"
 
-  # Install shared libs
-  for _lib in Bin/Release/*.so*; do
-    install -Dm755 "$_lib" "$pkgdir/usr/lib/$(basename "$_lib")"
-  done
+    # Install shared libraries
+    install -d "$pkgdir/usr/lib"
+    cp -a Bin/Release/*.so* "$pkgdir/usr/lib/"
 
-  # Create ABI-safe symlink to silence ldconfig warning
-  if [[ ! -e "$pkgdir/usr/lib/libSvtAv1Enc.so" ]]; then
-    ln -s libSvtAv1Enc.so.4 "$pkgdir/usr/lib/libSvtAv1Enc.so"
-  fi
+    # Install headers (needed for FFmpeg)
+    install -d "$pkgdir/usr/include/svt-av1"
+    install -m644 Source/API/*.h \
+        "$pkgdir/usr/include/svt-av1/"
 
-  # Install headers (needed for FFmpeg)
-  install -d "$pkgdir/usr/include/svt-av1"
-  install -m644 Source/API/*.h "$pkgdir/usr/include/svt-av1/"
+    # Install pkg-config file
+    install -Dm644 \
+        "$srcdir/SvtAv1Enc.pc" \
+        "$pkgdir/usr/lib/pkgconfig/SvtAv1Enc.pc"
 
-  # Install pkg-config file (critical for FFmpeg detection)
-  install -Dm644 "$srcdir/SvtAv1Enc.pc" "$pkgdir/usr/lib/pkgconfig/SvtAv1Enc.pc"
-
-  # License
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # License
+    install -Dm644 \
+        LICENSE.md \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
