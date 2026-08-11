@@ -1,8 +1,8 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
 
 _pkgname=proto
 pkgname="${_pkgname}-bin"
-pkgver=0.59.0
+pkgver=0.60.2
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 license=('MIT')
@@ -14,8 +14,8 @@ depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('b4a1d2d907a521acddbe2719a012795463a59cc958b40e2ca8ba588fe2d0a902')
-sha256sums_aarch64=('60eb3d72f0070c5e5775b3b8c7c3638b452b608ef76035fa3ac81c89d1181442')
+sha256sums_x86_64=('fe96d99ede103639becd6ab624688efeacc91049574174b31e67d1affd1c295c')
+sha256sums_aarch64=('bf04fec624b76dcf935ac4753e1ced8fc6a105ec1eb5abd6690f5ece308748cc')
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
