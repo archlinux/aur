@@ -2,7 +2,7 @@
 
 pkgname=python-hatch-sbom
 _origpkgname=hatch_sbom
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Hatchling build hook plugin for generating Software Bill of Materials (SBOM)"
 arch=("x86_64")
@@ -21,7 +21,7 @@ makedepends=(
 	"python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/source/h/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('a431b6f141e726c0c6e4a102791eb906e90010bc5d2e17a333b8816862e09236')
+sha256sums=('d8704bb9edb79788a2b5a47d318d6dd55e85f4fff80fea0d57e4626855ee0d4a')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
