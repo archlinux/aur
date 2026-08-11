@@ -2,7 +2,7 @@
 
 pkgbase=apache-tvm-ffi
 pkgname=('tvm-ffi' 'python-tvm-ffi')
-pkgver=0.1.13.post0
+pkgver=0.1.13.post2
 pkgrel=1
 arch=('any')
 pkgdesc='Open ABI and FFI for Machine Learning Systems'
@@ -27,7 +27,7 @@ source=(
 	"${_pypi}/source/a/apache_tvm_ffi/apache_tvm_ffi-${pkgver}.tar.gz"
 	libbacktrace.patch
 )
-sha256sums=('46718a282bbeb8bf0458faedd9767da8eacfa35ef0d295072f960f246086d985'
+sha256sums=('7da4ede2392527c122afd36ac717d9a267627901881a38f5d66d214ff68f482e'
             'eb549f83265dd06550672f68daeb5f4bc20c20b41bcfd162710e639248b4e4cc')
 
 options=('!strip')
