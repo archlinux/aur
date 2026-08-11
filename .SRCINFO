@@ -1,6 +1,6 @@
 pkgbase = protonaut-git
 	pkgdesc = A desktop companion dashboard for your Steam/Proton library on Linux, built with Wails (Go + React)
-	pkgver = r4.4db1c4c
+	pkgver = r15.cfbb369
 	pkgrel = 1
 	url = https://github.com/Eloreden/protonaut
 	arch = x86_64
