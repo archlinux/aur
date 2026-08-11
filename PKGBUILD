@@ -31,15 +31,15 @@ sha256sums_aarch64=('ec478961913c2decddcc44cfdaf955e2dc27ae2a9d586d78c6695330687
 package_zl-speceq-vst3-bin() {
   groups+=('vst3-plugins')
   pkgdesc+=' (VST3 version)'
-  mkdir -p ${pkgdir}/usr/lib/vst3/
-  cp -r ${srcdir}/VST3/* ${pkgdir}/usr/lib/vst3
+  mkdir -p "${pkgdir}/usr/lib/vst3/"
+  cp -r "${srcdir}"/VST3/* "${pkgdir}/usr/lib/vst3"
 }
 
 package_zl-speceq-lv2-bin() {
   groups+=('lv2-plugins')
   pkgdesc+=' (LV2 version)'
-  mkdir -p ${pkgdir}/usr/lib/lv2/
-  cp -r ${srcdir}/LV2/* ${pkgdir}/usr/lib/lv2
+  mkdir -p "${pkgdir}/usr/lib/lv2/"
+  cp -r "${srcdir}"/LV2/* "${pkgdir}/usr/lib/lv2"
 }
 
 package_zl-speceq-bin() {
