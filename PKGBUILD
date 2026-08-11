@@ -1,9 +1,8 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.8.34705286
-pkgrel=2
-_commit=e9991e2b
+pkgver=5.3.11.35348084_45487630
+pkgrel=1
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
@@ -20,7 +19,7 @@ provides=()
 conflicts=()
 _registry="https://registry.npmjs.org"
 source=(
-  "https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver}-${_commit}.zip"
+  "v${pkgver}.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver//_/-}.zip"
   WorkBuddy.desktop
   icon.svg
   "${_registry}/better-sqlite3/-/better-sqlite3-13.0.3.tgz"
@@ -36,6 +35,12 @@ sha256sums_aarch64=('SKIP')
 changelog="changelog.md"
 
 options=(!strip)
+pkgver() {
+    upstream=$(curl 'https://copilot.tencent.com/v2/update?platform=workbuddy-darwin-x64')
+    _nfile=$(awk -F '"' '{for(i=1;i<=NF;i++){if($i=="url"){print $(i+2)}}}' <<<$upstream |cut -d'-' -f5,6)
+    sed 's/-/_/' <<<${_nfile%.*}
+}
+
 noextract=("node-pty-x86_64.gz" "node-pty-aarh64.gz")
 prepare() {
     tar xzf node-pty-${CARCH}.gz -C WorkBuddy.app/Contents/Resources/
