@@ -1,45 +1,35 @@
-# Contributor:  https://github.com/DirtBagXon @ github@pani.cx
-# Maintainer:  Nick Bilbrey (beelzebud) <beelzebud@gmail.com>
-
-_pkgname=hypseus-singe
-pkgname=$_pkgname-git
-pkgver=v2.11.7.r3.g8334d98
+pkgname=hypseus-singe
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC."
+pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC. (SDL3)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/DirtBagXon/hypseus-singe"
 license=('GPL3')
-depends=('zlib' 'libzip' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libvorbis')
-makedepends=('git' 'cmake')
-options=(!lto)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$_pkgname"
-	git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
-}
+depends=('zlib' 'libzip' 'sdl3' 'sdl3_image' 'sdl3_mixer' 'sdl3_ttf' 'libvorbis')
+makedepends=('cmake')
+conflicts=("daphne" "$pkgname-git" "$pkgname-sdl3-git")
+replaces=("daphne" "$pkgname-git")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c2054d86a2cd0e737751d659b57d70999c10ee02eb70945e889a9fd4d773e9e1')
 
 build()
 {
-	cd $_pkgname/src
+	cd $pkgname-$pkgver/src
 	cmake ../src
 	make
 }
 
 package() {
-	cd $srcdir
-	install -Dm755 $_pkgname/scripts/run.sh "$pkgdir"/usr/local/bin/hypseus
-	install -Dm755 $_pkgname/scripts/singe.sh "$pkgdir"/usr/local/bin/singe
-	install -Dm755 $_pkgname/src/hypseus "$pkgdir"/usr/local/bin/hypseus.bin
-	install -d "$pkgdir"/usr/local/$_pkgname/{pics,pics/obsolete,sound,fonts,roms/cputest,screenshots}
-	install -m644 $_pkgname/pics/*.* "$pkgdir"/usr/local/$_pkgname/pics/
-	install -m644 $_pkgname/roms/cputest/* "$pkgdir"/usr/local/$_pkgname/roms/cputest/
-	install -m644 $_pkgname/sound/* "$pkgdir"/usr/local/$_pkgname/sound/
-	install -m644 $_pkgname/fonts/* "$pkgdir"/usr/local/$_pkgname/fonts/
-	install -Dm644 $_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-	install -d "$pkgdir"/usr/share/doc/$_pkgname/
-	install -m644 $_pkgname/doc/*.* "$pkgdir"/usr/share/doc/$_pkgname/
+	cd $srcdir/$pkgname-$pkgver
+	install -Dm755 scripts/run.sh "$pkgdir"/usr/local/bin/hypseus
+	install -Dm755 scripts/singe.sh "$pkgdir"/usr/local/bin/singe
+	install -Dm755 src/hypseus "$pkgdir"/usr/local/bin/hypseus.bin
+	install -d "$pkgdir"/usr/local/$pkgname/{pics,pics/obsolete,sound,fonts,roms/cputest,screenshots}
+	install -m644 pics/*.* "$pkgdir"/usr/local/$pkgname/pics/
+	install -m644 roms/cputest/* "$pkgdir"/usr/local/$pkgname/roms/cputest/
+	install -m644 sound/* "$pkgdir"/usr/local/$pkgname/sound/
+	install -m644 fonts/* "$pkgdir"/usr/local/$pkgname/fonts/
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -d "$pkgdir"/usr/share/doc/$pkgname/
+	install -m644 doc/*.* "$pkgdir"/usr/share/doc/$pkgname/
 }
