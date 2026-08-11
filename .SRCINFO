@@ -1,10 +1,11 @@
 pkgbase = amethyst-mod-manager
 	pkgdesc = A Linux native mod manager for a variety of games
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChrisDKN/Amethyst-Mod-Manager
 	arch = any
 	license = GPL-3.0-only
+	makedepends = meson
 	depends = pyside6
 	depends = python-gobject
 	depends = python-pillow
