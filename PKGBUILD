@@ -1,12 +1,12 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.3.1.r0.g83bc272
+pkgver=3.3.1.r21.g7ec044c
 pkgrel=1
 pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(
 	'acl'
 	'curl>=7.85.0'
@@ -67,7 +67,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_INSTALL_LIBEXECDIR=lib
+		-DCMAKE_INSTALL_LIBEXECDIR=lib \
+		-DHOWDY_LICENSES_INSTALL_DIR="share/licenses/$pkgname"
 
 	cmake --build "$srcdir/build"
 }
@@ -81,8 +82,8 @@ check() {
 package() {
 	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 
-	install -Dm644 "$srcdir/howdy-next/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# Arch provides GPL-3.0-or-later through the licenses package.
+	rm "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# Workaround for polkit 127+ breaking Howdy (boltgolt/howdy#1077).
 	install -Dm644 "$srcdir/polkit-agent-helper-howdy.conf" \
