@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat at noreply dot codeberg dot org>
 
 pkgname=hyprmt
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 _tag=v${pkgver}
 pkgdesc="Hyprland monitor toggle utility inspired by the Windows + P display picker"
@@ -16,7 +16,7 @@ conflicts=("hyprmt-brightstay")
 replaces=("hyprmt-brightstay")
 install=hyprmt.install
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/nathawat/hyprmt/archive/${_tag}.tar.gz")
-b2sums=('579f7f3556efafc7dd3bd0fa72406bbf0f4d6f9b3894067d6aa4d650b86a6ec6153eaeae3683f27116158f079a85a1e3948611a97e8858716b55d1a7b5b83bca')
+b2sums=('3f5c2a31d6c13c4ceb3106dce6b7bed1669704344aebef9bac1307b63d9374e1a979a9f553ecee2ecbacfe42a38ed840aa1e7c334f5e836085ce6fc2586017cf')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
