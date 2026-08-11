@@ -30,6 +30,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = hyprutils-git
 	depends = hyprwire-git
 	depends = lcms2
+	depends = libcanberra
 	depends = libdisplay-info
 	depends = libdrm
 	depends = libglvnd

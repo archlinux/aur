@@ -30,6 +30,7 @@ depends=(
   hyprutils-git
   hyprwire-git
   lcms2
+  libcanberra
   libdisplay-info
   libdrm
   libglvnd
