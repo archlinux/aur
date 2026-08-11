@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=context7-mcp
 _npmname=@upstash/context7-mcp
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="MCP server providing up-to-date library documentation for LLMs and AI code editors"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 options=('!debug')
 
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz")
-sha256sums=('92e97eb3a7fb7807a64f00ff30053c831bd67f2230f4fa9c6a2b9dabad8217c9')
+sha256sums=('da9f9793678aa332cd9a74a9f118c638764ac69c34e95c1d139e7e7c15903071')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_npmname/latest" | jq -r '.version'
