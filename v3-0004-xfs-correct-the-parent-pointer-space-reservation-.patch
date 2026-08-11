@@ -1,0 +1,71 @@
+From 18e8c948a828ae3fb69986107e58aabbaeb090f2 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:32:48 -0600
+Subject: [PATCH v3 4/6] xfs: correct the parent pointer space reservation
+ comment
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2488; i=floss@jetm.me;
+ h=from:subject; bh=NNh5aG4w7LlGxuf1r7SXWUFUWOyJJe//FeT84ioNlzE=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBqelljTRG87aijZKn3RyqSuNdDpFcbWIcNNA3Fv
+ LL1n2VxtmaJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCanpZYwAKCRC17sMLqGd3
+ H97tDACNSkjSduKs7yBuGaO3TXyJA4JaR52PXs/TIUBjGAZfwm52F+FF8XJyZi4LHmlmVX/UXPq
+ LiCiqQ/NYQ83y3zySj5iL0TYzIqJDUhBTGreX5eOIr+ORJF4tt+jtG8WsHuamds0yH0N2keUidf
+ qfkLlPlAOk8FG3k1SBLiyRJ4DxFwP+IrKxtmFWVk4aX1yJ1ehjDjwvCFXpfJsAB6lD0idmfhtQE
+ S0b5W2YDd5LCRbOLTufCUTEiOGVVqhdJSzsHdrpGBpndbxqutS2yzMoaN8n3frzqVs6J4dpgodb
+ cIANkFdLugS2hY/xAVgWX/1OhTg+wFB2pa2PP+MzTKtZ1bs89+28HQNeOz7uv3Y2oYYDDsOT55T
+ /7hFnweiBvYTZ47CScUQnzRgUyuEhHHq7eymAsHQvHXAqs1D5Cu2sggPpHHnJe4/Zum+vbJBN9q
+ R0XbuTfcNO8Sitb1fYq0uBpIdeRX4/tpYCmaunqSy1mW7T1VadPpWUYqmUU2ykqBuNmOY=
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
+
+The comment on xfs_parent_calc_space_res() claims parent pointers are
+"always the first attr in an attr tree".  They are not: a parent pointer
+is recorded per dirent, so by the Nth hardlink the attr fork is already
+in leaf or node format.  The reservation is still correct, because
+XFS_DAENTER_SPACE_RES() covers a split at every level of a maximum-depth
+attr dabtree whatever format the fork is in, but anyone auditing a
+shortfall here is led by the comment to look for a bug that is not
+there.
+
+Rewrite the comment to state what actually bounds the result, and record
+why the double split allowance and the extent-add term differ from
+xfs_attr_calc_size().
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+Reviewed-by: "Darrick J. Wong" <djwong@kernel.org>
+---
+ fs/xfs/libxfs/xfs_trans_space.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/fs/xfs/libxfs/xfs_trans_space.c b/fs/xfs/libxfs/xfs_trans_space.c
+index 9b8f495c9049..c4cd547033e5 100644
+--- a/fs/xfs/libxfs/xfs_trans_space.c
++++ b/fs/xfs/libxfs/xfs_trans_space.c
+@@ -22,8 +22,23 @@ xfs_parent_calc_space_res(
+ 	unsigned int		namelen)
+ {
+ 	/*
+-	 * Parent pointers are always the first attr in an attr tree, and never
+-	 * larger than a block
++	 * A parent pointer is recorded per dirent, so an inode with N links
++	 * carries N of them and the attr fork can already be in leaf or node
++	 * format when one is added.  That does not affect the reservation:
++	 * XFS_DAENTER_SPACE_RES covers a split at every level of a
++	 * maximum-depth attr dabtree, whatever format the fork is in now.
++	 *
++	 * The name is a dirent name and the value is a struct xfs_parent_rec,
++	 * so the leaf entry is always local and never exceeds 272 bytes.
++	 * Parent pointers require V5, hence a 1k minimum block size, so the
++	 * entry always stays under half a block and this needs none of the
++	 * double split allowance that xfs_attr_calc_size() makes.
++	 *
++	 * The second term hands a byte count to a macro whose parameter counts
++	 * mappings, so it asks for more extent-add allowance than the single
++	 * mapping a parent pointer adds - how much more depends on the block
++	 * size.  It over-reserves either way, which is why it is left alone:
++	 * correcting the unit would shrink a reservation that is only generous.
+ 	 */
+ 	return XFS_DAENTER_SPACE_RES(mp, XFS_ATTR_FORK) +
+ 	       XFS_NEXTENTADD_SPACE_RES(mp, namelen, XFS_ATTR_FORK);
+-- 
+Javier Tia
+

@@ -1,0 +1,55 @@
+From f00682b99a871152498b6b51e22a31272d865d8d Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:30:45 -0600
+Subject: [PATCH v3 1/6] xfs: initialise error in xfs_defer_finish_one()
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1468; i=floss@jetm.me;
+ h=from:subject; bh=O7lAK9Itxu3BtFZebuGm+soxk8EufQFIVRqNLSr9Y0g=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBqelljdkIzN6Vm6qJyjzD8yEylWzJ49lYuL+7hF
+ mhBN6Hvjd+JAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCanpZYwAKCRC17sMLqGd3
+ H0h2C/9q1FfvCHZUTjpMqZgcixlBy6ktrW3R+ilbZX6SIJkKPmGNb0tgsfoS482naCCHoSppic0
+ uTZLgE4fjZZ6d4ScY4ADsthGb/BtRLZddGfZfeKjyV4o0bbcPuJR1OsMI88X4Z8iwOwGT8RSXTc
+ ku9S3RuuqFjXuHk2y6OZCTHgVyYvERsHRr3CXYwBfMs2lWqkrGy3B4R0AFi5gJjwKZDaBDsgp3i
+ ZUacCCJ/plSySYNri0ysQvG/PoeJtipZtQ5j+u2A2bj/99QYh8bjM/4bIjzXxlQ4Wtbna6q+0x9
+ Gmjne4hson+QfKQfrtNy2unywyTyAl8XZJ4GfyXmj+8HBVD+rbRoS9OZvow8y6ChHSjG265UWgi
+ AIQglW4YZECI6+gc662fccIAmFwtMphfJHb1yehOgXrl8bihT/OfDs0mwIVvJByQQbjjWu7KZUp
+ eRw/RUaqOTMmP82N6K7Z7nLmFGtTubaI4Ak2SNm1aT1df+BWtx5PX1IWC842WD2bwdj8A=
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
+
+xfs_defer_finish_one() declares error without an initialiser and only
+assigns it inside the loop over dfp->dfp_work.  When that list is empty
+the loop body never runs, control falls through to the "Done with the
+dfp, free it" path, and the function returns an indeterminate value.
+
+An item-less pending item reaches this through xfs_defer_add_barrier(),
+which xfs_reap_ag_blocks() uses on any CONFIG_XFS_ONLINE_REPAIR kernel.
+xfs_defer_finish_noroll() treats any non-EAGAIN return as fatal, so a
+non-zero stack value turns a successful barrier into a
+SHUTDOWN_CORRUPT_INCORE in the middle of a repair.  Zero is the correct
+result: reaching the free path means the item loop drained without a
+non-zero error.
+
+Fixes: 3f3cec031099 ("xfs: force small EFIs for reaping btree extents")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Reviewed-by: "Darrick J. Wong" <djwong@kernel.org>
+---
+ fs/xfs/libxfs/xfs_defer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/xfs/libxfs/xfs_defer.c b/fs/xfs/libxfs/xfs_defer.c
+index 89501e8bd2f8..843c33304441 100644
+--- a/fs/xfs/libxfs/xfs_defer.c
++++ b/fs/xfs/libxfs/xfs_defer.c
+@@ -583,7 +583,7 @@ xfs_defer_finish_one(
+ 	const struct xfs_defer_op_type	*ops = dfp->dfp_ops;
+ 	struct xfs_btree_cur		*state = NULL;
+ 	struct list_head		*li, *n;
+-	int				error;
++	int				error = 0;
+ 
+ 	trace_xfs_defer_pending_finish(tp->t_mountp, dfp);
+ 
+-- 
+Javier Tia
+

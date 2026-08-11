@@ -1,0 +1,83 @@
+From 162845d4ad132eee0bc0615ccd45657e67d42355 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:31:27 -0600
+Subject: [PATCH v3 3/6] xfs: report the error that made deferred work shut
+ down the fs
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2392; i=floss@jetm.me;
+ h=from:subject; bh=dvPmh2MX3lGbIaGJA+vnikpJaoUwi8NxpixIT/Mz2A0=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBqelljS1kfyPgZ2EcwoP6u3bIWL9e5ICDwP/7uA
+ KbgYNfEH0qJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCanpZYwAKCRC17sMLqGd3
+ H6kVDACM50ty0CdE4rXcPkIWvOe0rLriJDAU8v3i7ycm9G2Al2Yuv8NTzI1FlsCQkW6yOV3iuG8
+ elwybvxarjhiBrhesER3oglmO6TZ4MKLa+EtdLDA27aSVx3PTaz5L+Q59uMMo8NLU2MZnM55Hel
+ WADaeQqfPDoQTF0BT5GKSGxWtp4/QzEApyDv6GHRvQLPfo5ULBDXNoPCjjxXRExDa6drEd4mw0Z
+ a/Aa4Z4kcq2gSFJC/kGOy+LwzXg1ot7kh8g2POBwZgOH6nkwSb3Zt+Qht5TDaPobStbbCKeSu+9
+ QnJ9LZgw8V0SJcgHFqaZdhH3G8jBzn4XSfGaa95hDnVIoQHSCo/jAD8mBgVn6z8oSA3ZpO4xB0r
+ EMuRQJ2RBjd7MdPSbFfrwyMYpue3dL2T/L/x47H/tF1QXEWvvCv5h50XeTXehnCDRltRSI0OhkI
+ BW8+uLBX5gFRmVQaTSIHlDcZ7bQukY6Zytg7/4lG8LnQrMcwegssNA7tTcALO4XguarnM=
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
+
+When a deferred operation fails and shuts the filesystem down,
+xfs_defer_finish_noroll() reports neither the errno nor which operation
+originated it, so the log cannot tell a transient -ENOSPC from real
+corruption.  Report the operation type, errno and remaining reservation.
+
+trace_xfs_defer_finish_error() runs after xfs_force_shutdown(), which
+BUGs under fs.xfs.panic_mask and so never fires for the first failure;
+move it ahead of the shutdown and mirror it to xfs_alert() for systems
+without tracing armed.  Capture the op name while the item is live (dfp
+is freed once its work list drains) and suppress the alert once the fs is
+already down.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+---
+ fs/xfs/libxfs/xfs_defer.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/fs/xfs/libxfs/xfs_defer.c b/fs/xfs/libxfs/xfs_defer.c
+index 75f0d37914d5..3152acdc335d 100644
+--- a/fs/xfs/libxfs/xfs_defer.c
++++ b/fs/xfs/libxfs/xfs_defer.c
+@@ -656,6 +656,7 @@ xfs_defer_finish_noroll(
+ 	struct xfs_trans		**tp)
+ {
+ 	struct xfs_defer_pending	*dfp = NULL;
++	const char			*what = "chain";
+ 	int				error = 0;
+ 	LIST_HEAD(dop_pending);
+ 	LIST_HEAD(dop_paused);
+@@ -705,9 +706,17 @@ xfs_defer_finish_noroll(
+ 				struct xfs_defer_pending, dfp_list);
+ 		if (!dfp)
+ 			break;
++		what = dfp->dfp_ops->name;
+ 		error = xfs_defer_finish_one(*tp, dfp);
+ 		if (error && error != -EAGAIN)
+ 			goto out_shutdown;
++		/*
++		 * A finished item is no longer a candidate for a later
++		 * failure.  An -EAGAIN one is not finished, so it keeps the
++		 * attribution across the roll that completes it.
++		 */
++		if (!error)
++			what = "chain";
+ 	}
+ 
+ 	/* Requeue the paused items in the outgoing transaction. */
+@@ -719,8 +728,12 @@ xfs_defer_finish_noroll(
+ out_shutdown:
+ 	list_splice_tail_init(&dop_paused, &dop_pending);
+ 	xfs_defer_trans_abort(*tp, &dop_pending);
+-	xfs_force_shutdown((*tp)->t_mountp, SHUTDOWN_CORRUPT_INCORE);
+ 	trace_xfs_defer_finish_error(*tp, error);
++	if (!xfs_is_shutdown((*tp)->t_mountp))
++		xfs_alert((*tp)->t_mountp,
++			  "deferred %s work failed, error %d, %u blocks reserved",
++			  what, error, (*tp)->t_blk_res);
++	xfs_force_shutdown((*tp)->t_mountp, SHUTDOWN_CORRUPT_INCORE);
+ 	xfs_defer_cancel_list((*tp)->t_mountp, &dop_pending);
+ 	xfs_defer_cancel(*tp);
+ 	return error;
+-- 
+Javier Tia
+

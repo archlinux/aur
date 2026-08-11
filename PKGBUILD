@@ -294,7 +294,11 @@ _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"{,.asc}
     "config"
-    # XFS deferred-op diagnostics + the args->total fix, 2026-07-30.
+    # XFS deferred-op diagnostics + the args->total fix, v3 (2026-08-10).
+    # Carried at the revision posted to linux-xfs; patches 5 and 6 have
+    # Reviewed-by: Darrick J. Wong. Filenames keep the vN prefix so the packaged
+    # revision is answerable from ls - it matters when bisecting a filesystem
+    # bug against a series that is still in review.
     #
     # Patch 5 is the actual fix and it is evidence-backed, not inferred. A
     # boot-mapped persistent ftrace instance captured the failing allocation in
@@ -320,12 +324,20 @@ source=(
     #
     # Patches 1-4 are diagnostics and one unrelated real bug (uninitialised
     # error on the item-less barrier path); none of them fixes this crash.
-    "0001-xfs-initialise-error-in-xfs_defer_finish_one.patch"
-    "0002-xfs-give-the-deferred-barrier-op-type-a-name.patch"
-    "0003-xfs-report-the-error-that-made-deferred-work-shut-do.patch"
-    "0004-xfs-correct-the-parent-pointer-space-reservation-com.patch"
-    "0005-xfs-initialise-args-total-for-parent-pointer-updates.patch"
-    # Apart from those five, no out-of-tree patches: otherwise STOCK SOURCE +
+    #
+    # Patch 6 asserts in xfs_da_grow_inode_int() that the remaining reservation
+    # still covers each fork growth, so this underflow class trips loudly in a
+    # debug build instead of wrapping silently. It is a guard, not a second fix:
+    # CONFIG_XFS_DEBUG is unset here, so it compiles out and changes nothing on
+    # this machine. It is carried to keep the packaged series identical to the
+    # posted one.
+    "v3-0001-xfs-initialise-error-in-xfs_defer_finish_one.patch"
+    "v3-0002-xfs-give-the-deferred-barrier-op-type-a-name.patch"
+    "v3-0003-xfs-report-the-error-that-made-deferred-work-shut.patch"
+    "v3-0004-xfs-correct-the-parent-pointer-space-reservation-.patch"
+    "v3-0005-xfs-initialise-args-total-for-parent-pointer-upda.patch"
+    "v3-0006-xfs-assert-the-reservation-covers-each-da-fork-gr.patch"
+    # Apart from those six, no out-of-tree patches: otherwise STOCK SOURCE +
     # DWARF debuginfo, so a crash on it differs from the distro kernel only by
     # the debug build and the patches listed above.
     #
@@ -967,9 +979,10 @@ done
 b2sums=('6a198c07f5b3ff24e35972c0c25a30f4ec72ec4b986a926ec57aa3fa045bd72dc15845a3651b134715a1cd5efb62a1bb8800a19dc80cef2e0de70d01245e5eb0'
         'SKIP'
         'a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2'
-        '121ca69c1fb7098b559890e51f8457b68baafd23e34a86bd88a1b0b152ccda9dde72fb4ee8b3c6657158a6bb42364b69e114eeb2523c48afef5391696f552cf8'
-        'a580a888c4809745d95052847ae7aba6f2f509285dedab2b7b9f05c8d3403b9242bfa8935c3bb5442c74779baf4b67952625087f8ec508c3e93f3d7efebed93c'
-        '7a4921a968cea2717125026794ec46ba82c272f5a732d788042e6888ec769aa7f0ee36c478c6c6addee0ed9e5ef43d182217825f57cc3643e60a0e71be67da6e'
-        'c17b8b6822a3ccbd573404b6c68122e71550dc84333f0a281c11936ac4013edac43aeac4103bfc22f5a3cb522b0549ad9071d51e5c2066a657c62f624c8b9073'
-        '6c63c28974d9570a620f72afae2665db4f9f0ad70d91574dbb519744740b884b17d8737bec2b7dca28ce8d55f50be63c6f92413e9ed791552666a614147ff540'
+        '6ed7fa19aab0bba299d6b698b48768c15a9a786ff3da300d616288b0235e712f188ff5348013d2f0aaccc328b6e39cb7f570f9e1bfe11ef982fb3924e8c32b5a'
+        'b8e91621dcf7630a915d30b26fdcc6140f22702050f2d0568d043ab5b9172aa043f12d0f0c523716c71a7dd5932928a87b26f6205f5363e94a90e81f99c38145'
+        '81f724a1438c4509862e608119643cdba7bdd5065f7ce8c2818d16bb526710b8fe3c70ed8b3a84bc2d4a7ba35b59a5c840656114e13eeffb9276a5f2e0035aff'
+        '70109579c223fdc6700fe8854291f33d59d2557ebe96817fd0c0a417de75e3529bd5867bc10fa300bc81092cf0a264a1fd10a2b9cf2d29e7352976d8a3affc6b'
+        '9efad38775f139ec951a35c441c1bcd2ea3eac2b32011d170aaa4f566249e31e1e29643e95ee3ae2b53d98fed708594a8fcf4206b25823380b19daf6438f5b9b'
+        '9f0f692c2d18b487afabc23d290341bfec042ea0849d8aac94c164c41dc45f6ede459b276de1efd0e62408978d1e2f0cf4e0bd107665ba53ac38327cfc544e5c'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')

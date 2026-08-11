@@ -1,0 +1,48 @@
+From a46e04e8df0fff0757f06fcd7983fbdbe060d572 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Mon, 10 Aug 2026 07:14:11 -0600
+Subject: [PATCH v3 6/6] xfs: assert the reservation covers each da fork growth
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1124; i=floss@jetm.me;
+ h=from:subject; bh=ew41Ui+Mtu2XnI7H4myAGu1irg8mIu7VyIpeibPsk80=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBqelljtjemURn5LRpl6Wz+JZJUD6qD/0CqLlJto
+ HUOpnbw1W+JAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCanpZYwAKCRC17sMLqGd3
+ HzrZC/91IQKPbjMT3p8vIklGy/xQ9Lior9axlrMh3lEthy5Zpwiz/hCOKjP77kZyxs1zfZvwDW/
+ QnTfns3MnXxv4cmZLEC0gxgsAd6K9gsLXk7L65XuVWJRP4Z4AdlzhFHH8oJjrMP+3G6nJK4vQ6k
+ XtsJkN0AUHVuHVlgV3ze4erwUUCnjiT3Y3nli4U0KeuNE+ZubSx2kASv0br6X73MmvicSpubuTb
+ qm6sBFmpmULN1PyYIjD8Ov/FNipxbgL0OhGigtlKUOKFaHH1Kv6K4mpQN3vL4pU3Kb2Gx+Q/8lb
+ aKMID4915/N+dni9RIswOcT/E9XZgbKQAa9CibLrap6OR77zZr6ar3qAJlTM9hOCsSg0VSQ1zwa
+ Q56AxfCBd8lR+0EOAAFc/FCeTejqx+sj0E2BGicHHzS08ua1T5oNSG3pZmC6Yc+Hpbyq9qz52zT
+ UJvZPyt50o7olsvORStgAFX9wQ2NLHir6QerC4y6hHBVROutdCzHJ4tcB1ewMTpSRsATg=
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
+
+xfs_da_grow_inode_int() subtracts the blocks it just allocated from
+args->total, the caller's remaining block reservation.  The subtraction
+is unsigned, so a caller that reaches it with too small a total wraps
+the field instead of failing, and every allocation afterwards runs with
+a bogus reservation.  Assert the remaining reservation still covers the
+step, so an under-reserved or uninitialised total trips in debug builds
+instead of silently wrapping.
+
+Suggested-by: Darrick J. Wong <djwong@kernel.org>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Reviewed-by: "Darrick J. Wong" <djwong@kernel.org>
+---
+ fs/xfs/libxfs/xfs_da_btree.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fs/xfs/libxfs/xfs_da_btree.c b/fs/xfs/libxfs/xfs_da_btree.c
+index ad801b7bd2dd..9be407affc6e 100644
+--- a/fs/xfs/libxfs/xfs_da_btree.c
++++ b/fs/xfs/libxfs/xfs_da_btree.c
+@@ -2385,6 +2385,7 @@ xfs_da_grow_inode_int(
+ 	}
+ 
+ 	/* account for newly allocated blocks in reserved blocks total */
++	ASSERT(args->total >= dp->i_nblocks - nblks);
+ 	args->total -= dp->i_nblocks - nblks;
+ 
+ out_free_map:
+-- 
+Javier Tia
+

@@ -1,0 +1,88 @@
+From 136d8b4bb3446387bddcdcd0f60bb7fcda2349f4 Mon Sep 17 00:00:00 2001
+From: Javier Tia <floss@jetm.me>
+Date: Wed, 29 Jul 2026 18:36:40 -0600
+Subject: [PATCH v3 5/6] xfs: initialise args->total for parent pointer updates
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2528; i=floss@jetm.me;
+ h=from:subject; bh=IzuppipK1dEFr99+pMsDknXhyhKbvUSEG1CYeDnWIwY=;
+ b=kA0DAAoBte7DC6hndx8ByyZiAGp6WWOjlAjLdfWNwJr5dSRkdWEVI7PiFkDsDAdhGLXRGXpTc
+ IkBswQAAQoAHRYhBJsTsgvPDt4jRUqTybXuwwuoZ3cfBQJqelljAAoJELXuwwuoZ3cfko8L/R3Z
+ o++3z2kqlMstgJp+Ec++0Y7iqhb1w2c9ZmdbKVWnZ9D9kWzHFj2m2F8hEbKPq8eT5NfqHC5NYhf
+ EFA4aTZKN+Tq6I/yr9cba3d6AMxCAIv8fVUuPsRxYBx4AIN2hPOccIX02rGCkGHz/GrdZ3RVJkD
+ D7FGjoGSNqiPApdMJ7wXoaZAS4fFi97zLcECIPIklvwzODqEN9fSlz7j7FvjH7eeYkxw0hw47FI
+ sjX86gS7nAeC0Y7MyGgU6CRu9g3E3a90TMq2sdO4r7nzKdVlAxE4rTW9RJUz7D8x2XFo2WmuCB3
+ qli9e0sGKDkCnCzRHaS9Q7OoQLdSFbOLSdGMUw2zsOlfXyoPYZbRvFU2vLdFbJO17+p9T2yCIa3
+ gq3Ufr67312unu33K+qau5EvClnyxTGgNtmLUoJKzqf30b4bbZJpAla/OBVhxm4XrsYPLO0dPUk
+ eOjqgLMXbkI1SCadeEbL22MtYRJ2bbN96iesG8iOvgRwBuBM0YbJ4yYY91iw==
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
+
+xfs_parent_da_args_init() builds an xfs_da_args from a zeroed
+xfs_parent_args (kmem_cache_zalloc), leaving args->total == 0.
+xfs_da_grow_inode_int() treats that field as a running block reservation
+and subtracts from it; because it is an xfs_extlen_t (uint32_t), the
+first attr-fork growth wraps it to ~0U.  That defeats the free-space
+check in xfs_alloc_space_available(), and when it coincides with an AG
+that has exactly zero available blocks the allocation is clamped to
+maxlen 0 and returns -ENOSPC, which xfs_defer_finish_noroll() escalates
+to a filesystem shutdown.
+
+Set args->total the way the log recovery path does
+(xfs_attri_recover_work(), xfs_attr_item.c:706), in the add and replace
+paths that can grow the fork.  Removals and lookups never grow it, so
+they leave the field alone, matching that switch.
+
+Fixes: b7c62d90c12c ("xfs: parent pointer attribute creation")
+Cc: <stable@vger.kernel.org> # v6.10
+Signed-off-by: Javier Tia <floss@jetm.me>
+Reviewed-by: "Darrick J. Wong" <djwong@kernel.org>
+---
+ fs/xfs/libxfs/xfs_parent.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/fs/xfs/libxfs/xfs_parent.c b/fs/xfs/libxfs/xfs_parent.c
+index 3509cc4b2175..312f33086d53 100644
+--- a/fs/xfs/libxfs/xfs_parent.c
++++ b/fs/xfs/libxfs/xfs_parent.c
+@@ -194,7 +194,7 @@ xfs_parent_addname(
+ 	const struct xfs_name	*parent_name,
+ 	struct xfs_inode	*child)
+ {
+-	int			error;
++	int			error, local;
+ 
+ 	error = xfs_parent_iread_extents(tp, child);
+ 	if (error)
+@@ -204,6 +204,10 @@ xfs_parent_addname(
+ 	xfs_parent_da_args_init(&ppargs->args, tp, &ppargs->rec, child,
+ 			child->i_ino, parent_name);
+ 
++	/* Growing the attr fork needs a real reservation in args->total. */
++	ppargs->args.total = xfs_attr_calc_size(&ppargs->args, &local);
++	ASSERT(local);
++
+ 	return xfs_attr_setname(&ppargs->args, 0);
+ }
+ 
+@@ -240,7 +244,7 @@ xfs_parent_replacename(
+ 	const struct xfs_name	*new_name,
+ 	struct xfs_inode	*child)
+ {
+-	int			error;
++	int			error, local;
+ 
+ 	error = xfs_parent_iread_extents(tp, child);
+ 	if (error)
+@@ -250,6 +254,10 @@ xfs_parent_replacename(
+ 	xfs_parent_da_args_init(&ppargs->args, tp, &ppargs->rec, child,
+ 			child->i_ino, old_name);
+ 
++	/* Growing the attr fork needs a real reservation in args->total. */
++	ppargs->args.total = xfs_attr_calc_size(&ppargs->args, &local);
++	ASSERT(local);
++
+ 	xfs_inode_to_parent_rec(&ppargs->new_rec, new_dp);
+ 
+ 	ppargs->args.new_name = new_name->name;
+-- 
+Javier Tia
+
