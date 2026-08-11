@@ -3,8 +3,8 @@
 
 _pkgname=mpeghdec
 pkgname=mpeghdec-llvm
-pkgver=3.0.3
-pkgrel=3
+pkgver=4.0.0
+pkgrel=2
 pkgdesc='Fraunhofer MPEG-H audio decoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://mpegh.com/'
@@ -22,7 +22,7 @@ makedepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/Fraunhofer-IIS/mpeghdec/archive/r${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0198ebc824332926c0c39abf216df65606da896a4204c93be77b1581b5bf0b73')
+sha256sums=('62733df4f7bcd38c19c4eccafa12e789dec0c38e052a3dec46039d86d49ee17c')
 
 build() {
     export CC=clang
@@ -47,7 +47,7 @@ build() {
         -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
