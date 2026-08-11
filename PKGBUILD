@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-nanoflann')
-pkgver=1.10.1
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='a C++ header-only library for Nearest Neighbor (NN) search wih KD-trees (mingw-w64)'
 url='https://github.com/jlblancoc/nanoflann'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-eigen')
 source=("https://github.com/jlblancoc/nanoflann/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9ce16ab66c9d61a529c704a913dc41947a47e29928482105cd39f3436cdb92a1')
+sha256sums=('f4884bc47cdf175700ba1437293d4fadff1b8db5d968550899c63f7144f9034b')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
