@@ -1,3 +1,5 @@
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
+
 pkgname=innodb_space
 _gemname=innodb_ruby
 pkgver=0.14.0
