@@ -1,7 +1,7 @@
 pkgbase=eim-bin
 pkgname=('eim-cli' 'eim-gui')
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/espressif/idf-im-ui"
 license=('Apache-2.0')
@@ -53,7 +53,7 @@ package_eim-cli() {
     provides=('eim')
     conflicts=('eim')
 
-    unzip -p cli-*.zip 'eim_v*' > eim-cli
+    unzip -p cli-*.zip eim > eim-cli
     install -Dm755 eim-cli "${pkgdir}/usr/bin/eim"
     _install_completions eim
 }
@@ -65,7 +65,7 @@ package_eim-gui() {
     depends+=('webkit2gtk-4.1')
     arch=('x86_64' 'aarch64')
 
-    unzip -p gui-*.zip 'eim_v*' > eim-gui
+    unzip -p gui-*.zip eim > eim-gui
     install -Dm755 eim-gui "${pkgdir}/usr/bin/eim-gui"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/eim-gui.png"
     install -Dm644 "${srcdir}/eim-gui.desktop" "${pkgdir}/usr/share/applications/eim-gui.desktop"

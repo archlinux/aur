@@ -1,6 +1,6 @@
 pkgbase = eim-bin
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/idf-im-ui
 	arch = x86_64
 	arch = aarch64
