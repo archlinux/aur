@@ -1,0 +1,13 @@
+post_install() {
+  echo 'Splinterm public alpha installed for the documented Arch/Omarchy target.'
+  echo 'Active Omarchy Quattro themes are discovered and reloaded automatically; no theme hook is required.'
+  echo 'Add com.oldjobobo.splinterm.desktop to ~/.config/xdg-terminals.list when ready to make it preferred.'
+}
+
+post_upgrade() {
+  echo 'Restart running user splinterd services after protocol upgrades; the launcher does this when ping negotiation fails.'
+}
+
+post_remove() {
+  echo 'User-owned Splinterm configuration and runtime state were preserved.'
+}
