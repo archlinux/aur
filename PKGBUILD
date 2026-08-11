@@ -2,7 +2,7 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 _app_id="com.bktus.$pkgname"
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A modern OpenPGP tool with a unique dual-engine core"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   'hicolor-icon-theme'
   'icu'
   'libarchive'
+  'libsecret'
   'libsodium'
   'qt6-base'
 )
@@ -34,8 +35,8 @@ source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/gpg/libassuan.git'
         'git+https://github.com/gpg/libgpg-error.git'
         'git+https://github.com/corrosion-rs/corrosion.git'
-        'git+https://git.bktus.com/GpgFrontend/vmime.git')
-sha256sums=('ea33871fb7adf546402299e698e128ca807477a1f24207052d43ca6c2d0cf7f6'
+        'git+https://git.bktus.com/gpgfrontend/vmime.git')
+sha256sums=('4791349d0b9cbbd41c3da8ebb1383ea7e7d0807d8132985386813efc60b67a5f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,10 +62,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   popd
 
-  pushd rust
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target host-tuple
-  popd
+  cargo fetch --manifest-path rust/Cargo.toml --target host-tuple
 
   # Correct StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
@@ -80,6 +79,7 @@ build() {
     -W no-author
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
     -D CMAKE_INSTALL_PREFIX='/usr'
+    -D GPGFRONTEND_BUILD_STABLE='ON'
     -D GPGFRONTEND_BUILD_APP_FOR_PACKAGE='ON'
     -D GPGFRONTEND_BUILD_STRIP_RPATH='ON'
   )
