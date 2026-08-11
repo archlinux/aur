@@ -1,0 +1,19 @@
+pkgbase = nbted-git
+	pkgdesc = Command-line NBT editor
+	pkgver = 1.5.0.r39.g8ae6d08
+	pkgrel = 1
+	url = https://github.com/C4K3/nbted
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	checkdepends = cargo
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = nbted
+	conflicts = nbted
+	source = git+https://github.com/C4K3/nbted
+	sha256sums = SKIP
+
+pkgname = nbted-git

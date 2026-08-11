@@ -1,0 +1,7 @@
+# Ignore files that result from building
+src/
+nbted/
+*.tar.gz
+pkg/
+*.pkg.tar*
+LICENSE*
