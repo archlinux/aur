@@ -1,0 +1,20 @@
+pkgbase = rpx
+	pkgdesc = A performant package manager for R
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/scalerail-solutions/rpx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cmake
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	conflicts = rpx-bin
+	options = !lto
+	options = !debug
+	source = rpx-1.7.0.tar.gz::https://github.com/scalerail-solutions/rpx/archive/v1.7.0.tar.gz
+	sha512sums = 149239eb17eee90bcdd06cac6d35074d8faa394196ff6eb60856ccb5779a1d7f79b5169f7a17cebbaea51a09798bda3d786b31d0c4774cc260209757ef6ca92f
+
+pkgname = rpx
