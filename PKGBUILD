@@ -2,7 +2,7 @@
 _base=fuzzy-theory
 pkgname=python-${_base}
 pkgdesc="The fuzzy-theory library provides a PyTorch interface to fuzzy set theory and fuzzy logic operations"
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/johnHostetter/${_base}"
@@ -12,7 +12,7 @@ depends=(python-entmax python-optuna python-sympy python-torchquad
 makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5b57e265513b7deb081269771de35b15e2568408abcdbbe6e5bb02425036c977356e8dee236e7bc43bbe809ecaf08951c15ce80c25bc7a3d9c39ba4456427d43')
+sha512sums=('a02cf48a0003c5dcd672fc86934cd8ba871ae6584c6452cbb8e793c7480115a1cbf4ae81cd0b51d1db786d0581f9ebbab1296a8654a37fb967636fe653217563')
 
 build() {
   cd ${_base}-${pkgver}
