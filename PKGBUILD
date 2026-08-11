@@ -1,16 +1,13 @@
 # Maintainer: Ismet Togay <ismet dot togay at gmail dot com>
 pkgname=auggie-bin
 pkgver=0.35.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
 url="https://github.com/augmentcode/auggie"
 license=('LicenseRef-auggie')
 depends=('nodejs>=20')
 makedepends=('npm')
-optdepends=('bash: for bash completion'
-            'zsh: for zsh completion'
-            'fish: for fish completion')
 source=("https://registry.npmjs.org/@augmentcode/auggie/-/auggie-${pkgver}.tgz"
         "LICENSE")
 noextract=("auggie-${pkgver}.tgz")

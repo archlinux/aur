@@ -1,15 +1,12 @@
 pkgbase = auggie-bin
 	pkgdesc = Augment Code's agentic AI CLI for context-aware code analysis and automation
 	pkgver = 0.35.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/augmentcode/auggie
 	arch = any
 	license = LicenseRef-auggie
 	makedepends = npm
 	depends = nodejs>=20
-	optdepends = bash: for bash completion
-	optdepends = zsh: for zsh completion
-	optdepends = fish: for fish completion
 	noextract = auggie-0.35.0.tgz
 	source = https://registry.npmjs.org/@augmentcode/auggie/-/auggie-0.35.0.tgz
 	source = LICENSE
