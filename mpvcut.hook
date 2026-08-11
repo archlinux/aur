@@ -8,4 +8,4 @@ Target = etc/skel/.config/mpv/scripts/mpvcut/*
 [Action]
 Description = Istall/upgrade/remove mpvcut in ~/.config/mpv/scripts/
 When = PostTransaction
-Exec = /usr/local/bin/update-mpvcut.sh
+Exec = /usr/local/bin/update-mpvcut
