@@ -3,7 +3,7 @@
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag="v0.34" # NOTE: temporary workaround, should be "v${pkgver}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
