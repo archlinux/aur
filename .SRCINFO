@@ -1,6 +1,6 @@
 pkgbase = pg_background
 	pkgdesc = Execute arbitrary SQL in background worker processes for PostgreSQL
-	pkgver = 1.8
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/vibhorkum/pg_background
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pg_background
 	makedepends = clang
 	makedepends = llvm
 	depends = postgresql
-	source = pg_background-1.8.tar.gz::https://github.com/vibhorkum/pg_background/archive/refs/tags/v1.8.tar.gz
-	sha256sums = 84982716bf19efb3c4298222aa9287548499f79961f3eb389df847416b82456b
+	source = pg_background-2.0.2.tar.gz::https://github.com/vibhorkum/pg_background/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = b3bacb0f83b762ae92310d13f17e4e21f55cafb3a4f5a46f599de6a0a06cd8ee
 
 pkgname = pg_background

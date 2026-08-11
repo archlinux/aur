@@ -1,6 +1,6 @@
 # maintainer: luka null <lukadevnull@vivaldi.net>
 pkgname=pg_background
-pkgver=1.8
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Execute arbitrary SQL in background worker processes for PostgreSQL'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('PostgreSQL')
 depends=('postgresql')
 makedepends=('make' 'gcc' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('84982716bf19efb3c4298222aa9287548499f79961f3eb389df847416b82456b')
+sha256sums=('b3bacb0f83b762ae92310d13f17e4e21f55cafb3a4f5a46f599de6a0a06cd8ee')
 
 build() {
   cd "$pkgname-$pkgver"
