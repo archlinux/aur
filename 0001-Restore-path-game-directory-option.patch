@@ -1,0 +1,236 @@
+From 058775ada5a9d5e4f1d8598475172a1bf0374dd8 Mon Sep 17 00:00:00 2001
+From: xAsh <xash@riseup.net>
+Date: Tue, 11 Aug 2026 21:06:56 +0200
+Subject: [PATCH] Restore --path game directory option
+
+---
+ launcher/launcher/launcher.cli                |  7 +++
+ launcher/launcher/launcher.cxx                | 49 +++++++++++++++++--
+ .../launcher/launcher-options.cxx             | 17 +++++++
+ .../launcher/launcher-options.hxx             |  8 +++
+ .../launcher/launcher-options.ixx             | 12 +++++
+ 5 files changed, 90 insertions(+), 3 deletions(-)
+
+diff --git a/launcher/launcher/launcher.cli b/launcher/launcher/launcher.cli
+index 4101744..8021154 100644
+--- a/launcher/launcher/launcher.cli
++++ b/launcher/launcher/launcher.cli
+@@ -25,6 +25,13 @@ namespace launcher
+ 
+     // Common options.
+     //
++    std::string --path
++    {
++      "<dir>",
++      "The installation directory for the game files. If not specified, the
++       launcher executable's directory is used."
++    };
++
+     bool --prerelease
+     {
+       "Opt-in to pre-release (beta) updates. Use this to test upcoming
+diff --git a/launcher/launcher/launcher.cxx b/launcher/launcher/launcher.cxx
+index 386d351..d2f90dd 100644
+--- a/launcher/launcher/launcher.cxx
++++ b/launcher/launcher/launcher.cxx
+@@ -1011,8 +1011,47 @@ try
+     return 0;
+   }
+ 
++  // Resolve a relative --path from the directory in which the launcher was
++  // invoked, before reanchor_cwd() changes the working directory.
++  //
++  path requested_root;
++
++  if (opt.path_specified ())
++  {
++    requested_root = from_utf8 (opt.path ());
++
++    if (requested_root.empty ())
++      throw invalid_argument ("--path cannot be empty");
++
++    error_code ec;
++    requested_root = absolute (requested_root, ec);
++
++    if (ec)
++      throw system_error (ec,
++                          "failed to resolve installation root: " +
++                            to_utf8 (requested_root));
++  }
++
+   reanchor_cwd ();
+ 
++  if (!requested_root.empty ())
++  {
++    error_code ec;
++    requested_root = canonical (requested_root, ec);
++
++    if (ec)
++      throw system_error (ec,
++                          "failed to canonicalize installation root: " +
++                            to_utf8 (requested_root));
++
++    current_path (requested_root, ec);
++
++    if (ec)
++      throw system_error (ec,
++                          "failed to change to installation root: " +
++                            to_utf8 (requested_root));
++  }
++
+   {
+     error_code ec;
+     create_directories (path ("cache"), ec);
+@@ -1061,8 +1100,8 @@ try
+       return 0;
+   }
+ 
+-  // The installation root is the current working directory (which
+-  // reanchor_cwd() has already set to the launcher binary's directory).
++  // The installation root is the current working directory, set above from
++  // --path when specified or to the launcher binary's directory otherwise.
+   //
+   path root (current_path ());
+ 
+@@ -1156,7 +1195,11 @@ try
+       co_await sync_dlc (io, hc, dc, pc, cc, root);
+ 
+ #ifdef __linux__
+-      co_await sync_helper (io, gh, dc, pc, cc, root, true);
++      if (!opt.path_specified () || !opt.skip_launch ())
++        co_await sync_helper (io, gh, dc, pc, cc, root, true);
++      else
++        info ("skipping linux steam helper synchronization "
++              "(--path with --skip-launch)");
+ #endif
+     }(),
+       [&io, &sync_ex] (exception_ptr ep)
+diff --git a/launcher/launcher/pregenerated/launcher/launcher-options.cxx b/launcher/launcher/pregenerated/launcher/launcher-options.cxx
+index 41d32d8..6af2068 100644
+--- a/launcher/launcher/pregenerated/launcher/launcher-options.cxx
++++ b/launcher/launcher/pregenerated/launcher/launcher-options.cxx
+@@ -764,6 +764,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -790,6 +792,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -819,6 +823,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -848,6 +854,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -879,6 +887,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -906,6 +916,8 @@ namespace launcher
+   : help_ (),
+     version_ (),
+     build2_metadata_ (),
++    path_ (),
++    path_specified_ (false),
+     prerelease_ (),
+     jobs_ (99),
+     jobs_specified_ (false),
+@@ -938,6 +950,8 @@ namespace launcher
+ 
+     os << "--build2-metadata     Print the build2 metadata and exit." << ::std::endl;
+ 
++    os << "--path <dir>          The installation directory for the game files." << ::std::endl;
++
+     os << "--prerelease          Opt-in to pre-release (beta) updates." << ::std::endl;
+ 
+     os << "--jobs|-j <num>       The number of parallel download jobs to run." << ::std::endl;
+@@ -980,6 +994,9 @@ namespace launcher
+       &::launcher::cli::thunk< options, &options::version_ >;
+       _cli_options_map_["--build2-metadata"] =
+       &::launcher::cli::thunk< options, &options::build2_metadata_ >;
++      _cli_options_map_["--path"] =
++      &::launcher::cli::thunk< options, std::string, &options::path_,
++        &options::path_specified_ >;
+       _cli_options_map_["--prerelease"] =
+       &::launcher::cli::thunk< options, &options::prerelease_ >;
+       _cli_options_map_["--jobs"] =
+diff --git a/launcher/launcher/pregenerated/launcher/launcher-options.hxx b/launcher/launcher/pregenerated/launcher/launcher-options.hxx
+index 79cd007..9031c3d 100644
+--- a/launcher/launcher/pregenerated/launcher/launcher-options.hxx
++++ b/launcher/launcher/pregenerated/launcher/launcher-options.hxx
+@@ -483,6 +483,12 @@ namespace launcher
+     const bool&
+     build2_metadata () const;
+ 
++    const std::string&
++    path () const;
++
++    bool
++    path_specified () const;
++
+     const bool&
+     prerelease () const;
+ 
+@@ -547,6 +553,8 @@ namespace launcher
+     bool help_;
+     bool version_;
+     bool build2_metadata_;
++    std::string path_;
++    bool path_specified_;
+     bool prerelease_;
+     std::size_t jobs_;
+     bool jobs_specified_;
+diff --git a/launcher/launcher/pregenerated/launcher/launcher-options.ixx b/launcher/launcher/pregenerated/launcher/launcher-options.ixx
+index 988fb06..37904a2 100644
+--- a/launcher/launcher/pregenerated/launcher/launcher-options.ixx
++++ b/launcher/launcher/pregenerated/launcher/launcher-options.ixx
+@@ -299,6 +299,18 @@ namespace launcher
+     return this->build2_metadata_;
+   }
+ 
++  inline const std::string& options::
++  path () const
++  {
++    return this->path_;
++  }
++
++  inline bool options::
++  path_specified () const
++  {
++    return this->path_specified_;
++  }
++
+   inline const bool& options::
+   prerelease () const
+   {
+-- 
+2.55.0
+

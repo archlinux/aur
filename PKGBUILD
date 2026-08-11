@@ -14,8 +14,10 @@ makedepends=('build2>=0.18' 'git' 'boost' 'pkgconf')
 depends=('glibc' 'perl')
 options=('!lto')
 
-source=("$_upstream::git+https://github.com/iw4x/launcher.git")
-sha256sums=('SKIP')
+source=("$_upstream::git+https://github.com/iw4x/launcher.git"
+        '0001-Restore-path-game-directory-option.patch')
+sha256sums=('SKIP'
+            '84896d27e2e4bd798b62a0ee72ddd73eb4d727362df8a59ce38edcff2d2fdcde')
 
 pkgver() {
   cd "$srcdir/$_upstream"
@@ -24,6 +26,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_upstream"
+
+  local _path_patch="$srcdir/0001-Restore-path-game-directory-option.patch"
+
+  if git apply --check "$_path_patch" 2>/dev/null; then
+    git apply "$_path_patch"
+  elif ! git apply --reverse --check "$_path_patch" 2>/dev/null; then
+    echo "error: path option patch does not apply cleanly" >&2
+    return 1
+  fi
 
   local _config_marker="$srcdir/launcher-gcc/.iw4x-arch-static"
 

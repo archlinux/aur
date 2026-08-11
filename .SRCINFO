@@ -15,6 +15,8 @@ pkgbase = iw4x-launcher-git
 	conflicts = iw4x-launcher
 	options = !lto
 	source = launcher::git+https://github.com/iw4x/launcher.git
+	source = 0001-Restore-path-game-directory-option.patch
 	sha256sums = SKIP
+	sha256sums = 84896d27e2e4bd798b62a0ee72ddd73eb4d727362df8a59ce38edcff2d2fdcde
 
 pkgname = iw4x-launcher-git
