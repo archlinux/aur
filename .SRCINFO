@@ -1,7 +1,7 @@
 pkgbase = zournal-git
 	pkgdesc = A journal app for detective games
 	pkgver = r59.a3e0713
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SimoneFelici/Zournal
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,6 @@ pkgbase = zournal-git
 	provides = zournal
 	conflicts = zournal-bin
 	source = git+https://github.com/SimoneFelici/Zournal.git
-	source = https://sqlite.org/2026/sqlite-amalgamation-3530300.zip
 	sha256sums = SKIP
-	sha256sums = 646421e12aac110282ef8cc68f1a62d4bb15fc7b8f09da0b53e29ee690500431
 
 pkgname = zournal-git
