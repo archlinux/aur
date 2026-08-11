@@ -1,7 +1,7 @@
 pkgbase = oxiroute-bin
 	pkgdesc = Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt binary)
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/brauliobo/oxiroute
 	install = oxiroute.install
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = oxiroute-bin
 	depends = glibc
 	depends = openssl
 	optdepends = certbot: provide certificate lineages consumed by configured Certbot sources
-	provides = oxiroute=0.4.1
+	provides = oxiroute=0.5.0
 	conflicts = oxiroute
-	noextract = oxiroute-0.4.1-2-x86_64.pkg.tar.zst
+	noextract = oxiroute-0.5.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	backup = etc/oxiroute/oxiroute.env
 	backup = etc/oxiroute/oxiroute.kdl
 	backup = etc/oxiroute/oxiroute.lua
-	source = oxiroute-0.4.1-2-x86_64.pkg.tar.zst::https://github.com/brauliobo/oxiroute/releases/download/v0.4.1/oxiroute-0.4.1-2-x86_64.pkg.tar.zst
-	sha256sums = 5d4fceaf2b7423231acfa6046d0e22ae35040a1eac54eab7999660700f375805
+	source = oxiroute-0.5.0-1-x86_64.pkg.tar.zst::https://github.com/brauliobo/oxiroute/releases/download/v0.5.0/oxiroute-0.5.0-1-x86_64.pkg.tar.zst
+	sha256sums = 837b79316d1d81c8faa1fdd1f7f5727e3e722d152983d27252c5a734bd37529c
 
 pkgname = oxiroute-bin
