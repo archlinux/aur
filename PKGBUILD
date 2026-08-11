@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chrome-devtools-axi
-pkgver=0.1.28
+pkgver=0.1.29
 pkgrel=1
 pkgdesc="AXI-compliant chrome-devtools-mcp wrapper with contextual suggestions"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'chrome-devtools-mcp')
 makedepends=('npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha512sums=('8b7b82ee296ecf4dc3da4df103ccbdc14fb1bb1aa87d03c4e5b4b332ca7266eef3da521bdf18b9bfe7ba9e743327fddbafe3c3bbe985de7a9419498303eee09c')
+sha512sums=('20b9ea0d96c03f2944482e2d5ac00f64d8732f5a9716c39e44ee03e581328401c0ab7ba505f6f8dece198cb019fb291e2448bc5c6caa55c5ff3113a182eb80f7')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
