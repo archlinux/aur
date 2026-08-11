@@ -6,7 +6,7 @@ _pkgname=dredge-cargo
 pkgname=${_appname}-bin
 pkgdesc="Backed-up personal encrypted vault for the terminal"
 
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,8 +28,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[1]}")
 sha256sums=('e0354014149bb532a8ef4845b946f8cd937b626eb7ec63e561f818e2ff5354dd'
             'ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e')
-sha256sums_x86_64=('5baa961b50178309a0da669388e1e1b60e9c080acede6b3d4e47a11c3be5efef')
-sha256sums_aarch64=('2776f49df7352e946f1eafee55fc79cb4268e73ab1e91114eec1a1420216f51a')
+sha256sums_x86_64=('0e105a5ab561382037a46b478de72f8fd469046c513886751e975144c7712653')
+sha256sums_aarch64=('f4e57ee0967f714fa75b81d2a3f9a19516434126453c8ccedac2fd07aa1e5e57')
 
 
 package() {
