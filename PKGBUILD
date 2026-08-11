@@ -4,7 +4,7 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.7.6
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A tool for managing your ROMs and DATs for emulators"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	"$pkgname.desktop"
 	"$pkgname.png"
 	'tmpfiles.d.conf')
-sha256sums=('7dec2392b5b67b41f5480898491b8d0c2dfa8a01efdf726a4020ce5315ac4943'
+sha256sums=('048246d09cdfd7e8a9594af1c7afe6c7fe8fc90025edade7d03f7967d0a035c7'
             '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
             'ad758b4064853620e2e213cb2af8d05caa3d7b6e4096f3223bf7ebd48d5abef5'
             'e289bf838cf51eacfcee48bbe468139ea6b4df3fff97ac1618bb7ba0ac9afd7d'
@@ -27,7 +27,7 @@ sha256sums=('7dec2392b5b67b41f5480898491b8d0c2dfa8a01efdf726a4020ce5315ac4943'
             '4b5f470a64d44efea12d979340eba31225121100158b8c4409e1eca46c1cebd1')
 
 package() {
-	install -D ROMVault37.exe -t "$pkgdir/opt/$pkgname/"
+	install -D ROMVault38.exe -t "$pkgdir/opt/$pkgname/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -D "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
