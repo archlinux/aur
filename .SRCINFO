@@ -1,0 +1,18 @@
+pkgbase = cosmic-ext-tweaks
+	pkgdesc = A tweaking tool for the COSMIC desktop.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/tweaks
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	conflicts = cosmic-ext-tweaks-git
+	source = cosmic-ext-tweaks-0.2.5.tar.gz::https://github.com/cosmic-utils/tweaks/archive/refs/tags/0.2.5.tar.gz
+	sha256sums = adc3c335d7bc0f9bb9b2882a8e53e15e75676021a1ed192d1171cf3cbaf15bc0
+
+pkgname = cosmic-ext-tweaks
