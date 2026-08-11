@@ -15,6 +15,7 @@ depends=(
   art_standalone
   bionic_translation
   ffmpeg
+  fontconfig
   gdk-pixbuf2
   glib2
   glibc
@@ -22,6 +23,7 @@ depends=(
   gtk4
   gtk4-layer-shell
   java-runtime
+  libdrm
   libglvnd
   libgudev
   libopensles-standalone
