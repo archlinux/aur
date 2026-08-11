@@ -4,7 +4,7 @@ _pkgname=vial-keychron
 _Pkgname=Vial
 
 pkgname="${_pkgname}-bin"
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA. Keychron branch."
 arch=('x86_64')
@@ -19,7 +19,7 @@ _appimage="Vial-x86_64.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Tymon3310/vial-gui/releases/download/v${pkgver}/Vial-x86_64.AppImage"
   "59-vial.rules")
 noextract=("${_appimage}")
-sha256sums_x86_64=('b6ab2002e29e2f2ed3a861a62468ab6ad7d51a2f9b117d3c1d85422212fa3d9f'
+sha256sums_x86_64=('3792ed64400759b2d2a349371ea50150836834a8cf4b0c5d74724566dddd81c8'
                    'a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502')
 
 prepare() {
