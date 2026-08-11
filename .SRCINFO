@@ -1,7 +1,7 @@
 pkgbase = python-gevent-eventemitter
 	pkgdesc = EventEmitter using gevent
 	pkgver = 2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rossengeorgiev/gevent-eventemitter
 	arch = any
 	license = MIT
