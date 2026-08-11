@@ -1,5 +1,5 @@
 pkgbase = oh-my-pi-bin
-	pkgdesc = A coding agent with the IDE wired in
+	pkgdesc = A coding agent with the IDE wired in (release binary)
 	pkgver = 17.2.12
 	pkgrel = 1
 	url = https://omp.sh/
