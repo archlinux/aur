@@ -4,9 +4,9 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.803.81509
-pkgrel=7
+pkgrel=8
 pkgdesc="Official ChatGPT desktop app with Codex"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://chatgpt.com/codex/"
 license=('custom')
 
@@ -55,19 +55,27 @@ provides=('chatgpt')
 conflicts=('chatgpt')
 options=('!debug' '!strip')
 
-_deb="chatgpt_${pkgver}_amd64.deb"
-source=(
-  "${_deb}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb"
-  'chatgpt-launcher.sh'
+_deb_x86_64="chatgpt_${pkgver}_amd64.deb"
+_deb_aarch64="chatgpt_${pkgver}_arm64.deb"
+source=('chatgpt-launcher.sh')
+source_x86_64=(
+  "${_deb_x86_64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb"
 )
-noextract=("${_deb}")
-sha256sums=('a9bf91a368f9f7c4eea38082a9fb8fb46b8d005b719a6d7715d2e5a1982c38eb'
-            '4e3ca9302600bed268f8fd3ba2c9ac2f1ceb99da139ed71c50db0289b118d06f')
+source_aarch64=(
+  "${_deb_aarch64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_arm64.deb"
+)
+noextract=("${_deb_x86_64}" "${_deb_aarch64}")
+sha256sums=('4e3ca9302600bed268f8fd3ba2c9ac2f1ceb99da139ed71c50db0289b118d06f')
+sha256sums_x86_64=('a9bf91a368f9f7c4eea38082a9fb8fb46b8d005b719a6d7715d2e5a1982c38eb')
+sha256sums_aarch64=('f38fcc194eca9ab0327dc10c92340681eae77c5d75164df700384ce2adaccbc1')
 
 package() {
   cd "${srcdir}"
 
-  bsdtar -xOf "${_deb}" data.tar.xz |
+  local deb_var="_deb_${CARCH}"
+  local deb="${!deb_var}"
+
+  bsdtar -xOf "${deb}" data.tar.xz |
     bsdtar --no-same-owner -xf - -C "${pkgdir}"
 
   rm "${pkgdir}/usr/bin/chatgpt"
