@@ -4,12 +4,12 @@
 _rstd_commit=03b022f37aa414c22a47021d58e054d55927c6c1
 _vvk_commit=867852dea22504db27559df60b74fee4c66406c7
 _ncrequest_commit=8d703215bc9154618bc84d2c8517ff7b264c93f3
-_wavsen_commit=a76c68e55e24c7e87fc5dbae28ee5d3b24139724
+_wavsen_commit=11907e9d63d5961b9cbd1789933d172381b47265
 _qml_material_commit=c5892749856ea48ca0fe9dd9c2088bff94ddaf88
 _qextra_commit=37724d1fd44fc013e938652e2fcb25897be10e63
 
 pkgname=waywallen
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -30,11 +30,11 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-cmake-Use-system-VulkanMemoryAllocator.patch"
         "0002-cmake-Use-system-Corrosion.patch")
-sha256sums=('34fd4f49095d17f2448f10cf6c379be689e6028c3e3a66de0ec4649aa40e1f9e'
+sha256sums=('33a4eeea3077a6087a42b3164f992b5308cde545e6b197868e8ae5ff59841ef4'
             '89e9f424fe3719b8bda1380f0cc446fc96d9662668d012752de73cbc0d06a2ef'
             '3b0c5ca0bbeb7c84df483bf098ba9105bb79316417a409bb6ef4b2b2513f6e06'
             'b3f16f62ec17f40281c245b0ac91e74ca050c910d4c65cee7cab404a6317ac9b'
-            '3a7bcf987730ca3eab923ce1758538cc5ce26ec5f9787aa166fdd875936ba61e'
+            '0d133cbf326421176858324ee86fb145196571a4ef5bfc7febf9bf313e49c2d9'
             '0baa6494a50447b1b02fc50e94659a1fdd40bf9b40396978fd8f96b623e93c5e'
             'cedc39d7e9872da3b0a69f2666e0334f0fe26786b67cf259fa9702227685ae93'
             '2a8c44a7caa2f8424528cd69d0118268dd3e36015cc003f5b39a4fdac4fbdfe4'
