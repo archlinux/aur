@@ -11,7 +11,7 @@
 # Linux (see companion/tennoworth-desktop/src/update.rs).
 
 pkgname=tennoworth
-pkgver=0.3.1
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now"
 arch=('x86_64')
@@ -25,9 +25,13 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl')
 # install a second copy. bun builds the SPA; nodejs runs scripts/sync-csp.mjs,
 # which the frontend build shells out to.
 makedepends=('cargo' 'bun' 'nodejs')
+# Grants cap_sys_ptrace so the first inventory scan works without the user
+# hitting an error and being told to open a terminal. Re-runs on upgrade
+# because replacing the binary clears file capabilities.
+install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('f6709fa61f5d2b4dae12a2259cf47bf29d5b1eaff8a0483c48fb57498510e4af')
+sha256sums=('48dfdc45b58757acdf4f98baacc76738f8109b760708b51dd90cb82a2e7891b5')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
@@ -70,7 +74,8 @@ package() {
 
   # Without these the window and taskbar entry fall back to a generic WM
   # avatar — the app sets its own window icon, but the desktop entry is what
-  # the shell matches on (StartupWMClass=TennoWorth).
+  # the shell matches on (StartupWMClass=tennoworth-desktop — the binary
+  # basename, which is what GTK reports as WM_CLASS; see that file).
   install -Dm644 "packaging/aur/tennoworth/tennoworth.desktop" \
     "$pkgdir/usr/share/applications/tennoworth.desktop"
 

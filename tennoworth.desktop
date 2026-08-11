@@ -6,6 +6,13 @@ Comment=See what's worth selling in Warframe right now
 Exec=tennoworth-desktop
 Icon=tennoworth
 Terminal=false
-Categories=Game;Utility;
+Categories=Game;
 Keywords=warframe;market;trading;inventory;
-StartupWMClass=TennoWorth
+# Must match the window's real WM_CLASS, not the product name. Verified by
+# running the built binary and reading it:
+#   WM_CLASS(STRING) = "tennoworth-desktop", "Tennoworth-desktop"
+# GTK derives this from g_get_prgname() (the executable basename) because
+# Tauri's enable_gtk_app_id defaults to false, so no GTK app id is set.
+# This previously read "TennoWorth", which matches neither field — the
+# window then fails to bind to this launcher and shows a generic icon.
+StartupWMClass=tennoworth-desktop
