@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=playwright-mcp
-pkgver=0.0.78
+pkgver=0.0.79
 pkgrel=1
 pkgdesc="MCP server that provides browser automation capabilities using Playwright"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 )
 _npmname="@playwright/mcp"
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/${_npmname}/-/mcp-${pkgver}.tgz")
-sha256sums=('cfff0fd8eae3ac3bcb39827861298cb6b483a8d72e3c558e7991658ed3d22562')
+sha256sums=('c35077b88e070b57b15db0040991289eeaf19bccbd397a41898f28654a1d33ee')
 noextract=("$pkgname-$pkgver.tgz")
 
 latestver() {
