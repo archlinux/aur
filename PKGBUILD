@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gnome-shell-extension-rounded-window-corners-reborn
-pkgver=20260719.4329c20
+pkgver=20260806.db43c44
 pkgrel=1
 pkgdesc='A GNOME Shell extension that adds rounded corners for all windows'
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/GrzegorzKozub/rounded-window-corners
 license=(GPL-3.0-or-later)
 depends=(gnome-shell)
 source=("$pkgname-$pkgver.zip::https://github.com/GrzegorzKozub/rounded-window-corners/releases/download/v$pkgver/rounded-window-corners@fxgn.shell-extension.zip")
-sha256sums=('b73b8852ce250cedcd4cae6d621372f15a2433698a2a3090c67e72919e0e484d')
+sha256sums=('e9deee18c04b22f3fb49de9b2234611745b523b8fea56ec787c74d33f38b09d8')
 
 package() {
   local uuid=rounded-window-corners@fxgn
