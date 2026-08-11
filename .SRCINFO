@@ -1,7 +1,7 @@
 pkgbase = gascity-bin
 	pkgdesc = Orchestration-builder SDK for multi-agent coding workflows
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gastownhall/gascity
 	arch = x86_64
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = gascity-bin
 	depends = git
 	depends = jq
 	depends = lsof
+	depends = dolt
+	depends = beads
 	depends = procps-ng
 	depends = tmux
-	optdepends = beads>=1.0.4: default work-tracking backend
-	optdepends = dolt>=2.1.0: default work-tracking data plane
 	optdepends = github-cli: GitHub gate checks
 	optdepends = util-linux: flock for the default work-tracking backend
 	provides = gascity=1.4.0

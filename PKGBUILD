@@ -3,7 +3,7 @@
 
 pkgname=gascity-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Orchestration-builder SDK for multi-agent coding workflows'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gastownhall/gascity'
@@ -12,12 +12,12 @@ depends=(
   'git'
   'jq'
   'lsof'
+  'dolt'
+  'beads'
   'procps-ng'
   'tmux'
 )
 optdepends=(
-  'beads>=1.0.4: default work-tracking backend'
-  'dolt>=2.1.0: default work-tracking data plane'
   'github-cli: GitHub gate checks'
   'util-linux: flock for the default work-tracking backend'
 )
