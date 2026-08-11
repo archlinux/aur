@@ -2,23 +2,23 @@
 # Maintainer: snowdropQwQ <snowqwq.dev@gmail.com>
 
 pkgname=micyou-bin
-pkgver=1.3.5
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
-license=('GPL-3.0')
-depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+license=('GPL-3.0-only' 'MIT')
+depends=('alsa-lib' 'glibc' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme')
 optdepends=(
   'android-tools: USB connectivity support'
   'xdg-utils: Open URLs in default browser'
 )
 provides=('micyou')
-conflicts=('micyou')
+conflicts=('micyou' 'micyou-git')
 options=('!strip')
 source=("https://github.com/LanRhyme/MicYou/releases/download/v${pkgver}/MicYou-Linux-${pkgver}.deb"
   "https://raw.githubusercontent.com/LanRhyme/MicYou/refs/heads/master/LICENSE")
-sha256sums=('b5137f85bb5d1f134af0ec52015975160a16c9e24a24a42408b1a262a0e740f6'
+sha256sums=('8b80e5e13a8918a8a5975c98190ca203dc9e9388cbd2d62d08d932fdb6151b67'
   '6b7271e1f40a0346a6dfb0c14df538d56add7f26502ba23f5109db94eedd66e9')
 noextract=("MicYou-Linux-${pkgver}.deb")
 
@@ -27,18 +27,24 @@ package() {
 
   # Extract deb
   bsdtar -xf MicYou-Linux-${pkgver}.deb
-  bsdtar -xf data.tar.zst -C "$pkgdir"
+  bsdtar -xf data.tar.gz -C "$pkgdir"
 
   # Install desktop file
-  install -Dm644 "$pkgdir/opt/micyou/lib/micyou-MicYou.desktop" "$pkgdir/usr/share/applications/micyou.desktop"
+  sed -i -e 's/^Exec=.*/Exec=micyou/' -e 's/^Icon=.*/Icon=micyou/' \
+    "$pkgdir/usr/share/applications/MicYou.desktop"
+  mv "$pkgdir/usr/share/applications/MicYou.desktop" "$pkgdir/usr/share/applications/micyou.desktop"
 
   # Install icon
-  install -Dm644 "$pkgdir/opt/micyou/lib/MicYou.png" "$pkgdir/usr/share/pixmaps/micyou.png"
+  local _size
+  for _size in 32x32 128x128 256x256@2; do
+    mv "$pkgdir/usr/share/icons/hicolor/$_size/apps/micyou-app.png" "$pkgdir/usr/share/icons/hicolor/$_size/apps/micyou.png"
+  done
 
-  # Create Symlink for command line execution
-  install -d "$pkgdir/usr/bin"
-  ln -sf "/opt/micyou/bin/MicYou" "$pkgdir/usr/bin/micyou"
+  # Install binary
+  mv "$pkgdir/usr/bin/micyou-app" "$pkgdir/usr/bin/micyou"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/micyou/LICENSE"
+  install -Dm644 "$pkgdir/usr/lib/MicYou/resources/LICENSE-AEC7.txt" "$pkgdir/usr/share/licenses/micyou/LICENSE-AEC7.txt"
+  install -Dm644 "$pkgdir/usr/lib/MicYou/resources/LICENSE-PureVox.txt" "$pkgdir/usr/share/licenses/micyou/LICENSE-PureVox.txt"
 }
