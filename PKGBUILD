@@ -1,7 +1,7 @@
 # Maintainer: imsyy <imsyy1024@gmail.com>
 pkgname=splayer-next-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern cross-platform music player built with Electron, Vue 3, and TypeScript (unofficial build)"
 arch=('x86_64')
 url="https://splayer.imsyy.top"
@@ -23,7 +23,7 @@ depends=(
   'libappindicator-gtk3'
 )
 source=("https://github.com/K-Blaaaack/SPlayer-Next/releases/download/v${pkgver}/splayer-next-${pkgver}-x64.pacman")
-sha256sums=('7fda6ec459937e07f1b7e3346990e482a2d22809a37159a21f0b8971f8945a41')
+sha256sums=('4c6c757b6ae4730821303ee991b1fb77565d43cd68bd84102204ab9d01e2b16c')
 
 package() {
   bsdtar -xf "$srcdir/splayer-next-${pkgver}-x64.pacman" --exclude='.*' -C "$pkgdir" --no-same-permissions --no-same-owner
