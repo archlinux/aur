@@ -1,0 +1,19 @@
+pkgbase = ocaml-odoc
+	pkgdesc = Documentation compiler for OCaml
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://ocaml.github.io/odoc/
+	arch = x86_64
+	license = custom
+	makedepends = dune
+	makedepends = cppo
+	depends = ocaml
+	depends = ocaml-tyxml
+	depends = ocaml-fpath
+	depends = ocaml-fmt
+	source = ocaml-odoc-3.2.1.tar.gz::https://github.com/ocaml/odoc/archive/refs/tags/3.2.1.tar.gz
+	sha512sums = d4e70455abbc3644f8b71839ac0abb3a4a70260b474b9dce6f11fa043e03896ee75ec7b101ac1b6d45bd78c4d8b1ddacd855f77f67e78524815f18725db1a712
+
+pkgname = ocaml-odoc
+
+pkgname = ocaml-odoc-parser
