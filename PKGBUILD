@@ -15,7 +15,7 @@ pkgname=(
   "aspnet-targeting-pack${_suffix}-bin"
   "dotnet-sdk${_suffix}-bin"
 )
-pkgver=11.0.0.sdk100preview6.26359.118
+pkgver=11.0.0.sdk100preview7.26381.103
 _runtimever="$(sed -E 's/\.sdk[0-9]+([A-Za-z]+)/-\1./g; s/\.sdk.*//' <<< "${pkgver}")"
 _dotnetver="$(cut -d. -f1,2 <<< "${_runtimever%%-*}")"
 _sdkver="$(sed -E 's/([0-9]+)\.sdk([0-9]+)([A-Za-z]+)/\2-\3./g; s/[0-9]+\.sdk//g' <<< "${pkgver}")"
@@ -49,9 +49,9 @@ noextract+=(
 )"
 done
 sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
-sha512sums_aarch64=('7b0858ccb9ee55a696858015e5d5b7cc8f6e11b90634cdc71bd7663f9bf08a819f72c3ea1cd4199bd3a4781e99a9d3aee58cd204a9749fa6372e6b51f1478350')
-sha512sums_x86_64=('8c8fce87d5332dd6a7403c16bb124f65754e2afb2d8992ccc1d2959b31775fc43f70004f317cc7245b0b63ec74959f137a12efebd75fa0c6c586535de4eda8e0')
-sha512sums_armv7h=('257cd2ab269cfecd0ef7e3ece03c417287ff5633d24966283119f7ba4c3b802486fbe28dd76ccf22eef771ee39392a2150aac4d6f9ef2155bf599f5c7c5e9f82')
+sha512sums_aarch64=('213b5a48455402dbebb9bd74b576d9a7ec37f30d4c6ce1099de5f5a153f6013069757d4c659784ca07e45ac86529b95e9c2fef26cdce9578f77806b8757213a2')
+sha512sums_x86_64=('527f9dc8104a86214e37e81c7cea2c7d7fba31f6158a23e71458b85a0a2fba53fb2c606a2a3e53a2775fdae3e3d27cd644637b43039e573395ad1dee4b3968b1')
+sha512sums_armv7h=('4b6002582a9a93cf1cb92d62d12e616e67bc872a45425ce4dd31967c2fd575db10748fc3e7fc93bd446a7ec5c6dfcc93b414d9e40d7b4c732fdc030e4c5ea4ea')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
