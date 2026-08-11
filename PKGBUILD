@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=run0-sudo
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A tiny sudo-compatibility shim backed by run0'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('sudo')
 _repo='run0-sudo-shim'
 _tag="v${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-b2sums=('8260236446707f08e0d6f91afab0442aa9e6d832504d730bd2525bae4d093dd55429e640faeb4ba2a385e16eac2d4634e0e9f8ce7c1c0341032d19aa27dfe054')
+b2sums=('666c7f8c2b2cf910d95a197ce32ae2f45471e5704811eab03e29a67c25e0074ba1a70f53c1b932337195dfd61b2b48ff2fffea5c853b14d88948a6669557ee1e')
 
 build() {
 	cd "$srcdir/$_repo"
