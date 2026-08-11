@@ -7,8 +7,8 @@ pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, a
 arch=('x86_64')
 url="https://github.com/HakanSeven12/OpenCADStudio"
 license=('GPL-3.0-only')
-depends=('xdg-desktop-portal' 'glibc' 'libgcc' 'wayland' 'git')
-makedepends=('cargo')
+depends=('xdg-desktop-portal' 'glibc' 'libgcc' 'wayland')
+makedepends=('cargo' 'git')
 source=(
     "$url/archive/refs/tags/v${pkgver}.tar.gz"
     "logo.png"
