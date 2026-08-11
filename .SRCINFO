@@ -1,6 +1,6 @@
 pkgbase = rmcl
 	pkgdesc = Minecraft launcher TUI
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/objz/rmcl
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rmcl
 	replaces = mcl-launcher
 	replaces = mcl-launcher-bin
 	replaces = mcl-launcher-git
-	source = https://github.com/objz/rmcl/archive/v0.3.3.tar.gz
-	sha256sums = bcc5d56bd8144e953e13ed71915408eb08b51395e00d544b931f239ff67c7344
+	source = https://github.com/objz/rmcl/archive/v0.4.0.tar.gz
+	sha256sums = 6da268fc9136a1a34b31ae93dd3b951fae85283aba0283bb7b77be25bbb90af6
 
 pkgname = rmcl
