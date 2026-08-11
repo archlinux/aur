@@ -2,7 +2,7 @@
 
 pkgname=openshell
 pkgver=0.0.102 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
-pkgrel=1
+pkgrel=2
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/OpenShell'
@@ -17,8 +17,8 @@ makedepends=(
 )
 optdepends=(
 	'bash-completion: bash completions'
-	'docker: alternative compute driver'
-	'podman: default compute driver'
+	'docker: compute driver'
+	'podman: compute driver'
 )
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!lto')
@@ -38,9 +38,10 @@ build() {
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
 
-	cargo build --frozen --release \
-		--bin openshell \
-		--bin openshell-gateway
+	# --no-default-features disables telemetry
+	cargo build --frozen --release --no-default-features \
+		-p openshell-cli \
+		-p openshell-server
 
 	# man pages (markdown -> roff via pandoc, matching the RPM)
 	pandoc -s -t man deploy/man/openshell.1.md -o openshell.1
@@ -59,7 +60,9 @@ check() {
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
 
-	cargo test --frozen --workspace --lib
+	cargo test --frozen --lib \
+		-p openshell-cli \
+		-p openshell-server
 }
 
 package() {
