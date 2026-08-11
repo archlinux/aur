@@ -2,7 +2,7 @@
 
 pkgname=python-borghash
 _name=${pkgname#python-}
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A memory-efficient hashtable with serialization'
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(cython
 checkdepends=(python-pytest python-pytest-benchmark)
 source=(git+$url.git#tag=$pkgver?signed)
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
-b2sums=('b183e54c294f8f96aeda271815d7c17e2ae7367eb300e97bdb5ba65cfb6754a3c8cf914cac3c3a6f6b9de45462e1cb1611329b6e431f65e18f8f29a286d18b3d')
+b2sums=('8f6cf8b322cc7ad728b0cc33c57f580387a579e46584eac192c0cb203afc87b483fa529abf6c2581884f20348ab66da6ea98664b3c8cab37679ea44cecc17d2d')
 
 build() {
     cd $_name
