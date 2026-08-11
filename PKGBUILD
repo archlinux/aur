@@ -7,7 +7,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.4.5
+pkgver=4.4.6
 secp256k1ver=0.20.9
 electrum_locale_commit=89ce57ff1fa0fbd0135888014c854c142753a166
 pkgrel=1
@@ -64,7 +64,7 @@ conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Electron-Cash/secp256k1/archive/v${secp256k1ver}.tar.gz"
         "electrum-locale-${electrum_locale_commit}.tar.gz::https://github.com/Electron-Cash/electrum-locale/archive/${electrum_locale_commit}.tar.gz")
-sha256sums=('974ee896d2130981a4d00f364d53f2171086359c678196b5e141153bde817fef'
+sha256sums=('c46086677cacd95b3235f77e4f83937f0f5a7ad09745a85c6c1c1151ca099de6'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8'
             'd232f958cc3c048f8dd3d17333be0cf7ee6f0d5776300bff1da55f2397544c09')
 
