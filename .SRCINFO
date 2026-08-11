@@ -1,14 +1,14 @@
 pkgbase = toon-cli
 	pkgdesc = Convert JSON to/from TOON (Token-Oriented Object Notation), with token-savings analysis
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://toonformat.dev
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = toon-cli-4.1.0.tgz
-	source = toon-cli-4.1.0.tgz::https://registry.npmjs.org/@toon-format/cli/-/cli-4.1.0.tgz
-	sha256sums = 37c196454fcbf2eae26da5eb8ff11bd2f3e73ce7c01d8fd11008b5df07316fdb
+	noextract = toon-cli-4.1.1.tgz
+	source = toon-cli-4.1.1.tgz::https://registry.npmjs.org/@toon-format/cli/-/cli-4.1.1.tgz
+	sha256sums = 93ec1d3f44a608332d6f1fa811adda4237983841baec9b165e40252f20d83ca6
 
 pkgname = toon-cli
