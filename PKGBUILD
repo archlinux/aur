@@ -1,6 +1,6 @@
 # Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 pkgname=ttf-octicons
-pkgver=19.25.0
+pkgver=19.33.0
 pkgrel=1
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://octicons.github.com/"
 makedepends=('git' 'npm' 'nodejs>=16.0.0')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 source=("${pkgname}_v${pkgver}.tar.gz::https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
-sha256sums=('7a3c10f3bf9475d05c0ea8fb52c43fb60a88f42e3f46054c96eb65e6f23bb7c6')
+sha256sums=('f7886a6f46e73e53823421f4069183879849592df6c8085a68b924f10bac3256')
 install=$pkgname.install
 
 build() {
