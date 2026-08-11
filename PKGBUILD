@@ -2,7 +2,7 @@
 pkgname=python-color-parser-py
 _name=${pkgname#python-}
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for CSS color parser using PyO3. Parse and convert colors between different formats."
 arch=('x86_64')
 url="https://github.com/rusiaaman/color-parser-py"
@@ -34,7 +34,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  test-env/bin/python -P -m pytest
 }
 
 package() {
