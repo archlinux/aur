@@ -5,7 +5,7 @@
  #
  # Ricty Generator
 -ricty_version="4.1.1"
-+ricty_version="4.1.1; NF 3.4.0"
++ricty_version="4.1.1; NF 3.5.0"
  #
  
  #
@@ -151,7 +151,7 @@
  # r -> r of serif (Inconsolata's unused glyph)
  if (flag_r == "true")
 -    Select(65542);  Copy()
-+    Select("glyph23069");  Copy()
++    Select("glyph23435");  Copy()
      Select(0u0072); Paste()
  endif
  
