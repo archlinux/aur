@@ -1,0 +1,14 @@
+pkgbase = tf-summarize
+	pkgdesc = A command-line utility to print the summary of the terraform plan.
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://github.com/dineshba/tf-summarize
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = tf-summarize-0.3.20.tar.gz::https://github.com/dineshba/tf-summarize/archive/v0.3.20.tar.gz
+	sha256sums = e2e6d173581109e155e86690738a85780947d886c7c3236187467ff2174f62b1
+
+pkgname = tf-summarize
