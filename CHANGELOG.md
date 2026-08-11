@@ -10,6 +10,46 @@
 
 ### Dependencies:
 
+## [v15.6.0](https://github.com/fastly/cli/releases/tag/v15.6.0) (2026-08-07)
+
+### Bug Fixes:
+
+- fix(compute): add Python starter kit to the static config ([#1877](https://github.com/fastly/cli/pull/1877))
+
+### Enhancements:
+
+- feat(audit-log): add event-mapping command group ([#1875](https://github.com/fastly/cli/pull/1875))
+
+### Dependencies:
+
+- build(deps): `github.com/rogpeppe/go-internal` from 1.15.0 to 1.16.0 ([#1871](https://github.com/fastly/cli/pull/1871))
+
+## [v15.5.0](https://github.com/fastly/cli/releases/tag/v15.5.0) (2026-08-04)
+
+### Bug Fixes:
+
+- fix(service-version): support autoclone when staging a service version. ([#1850](https://github.com/fastly/cli/pull/1850))
+- fix(logging): the `placement` flag for all loggging commands can now be reset back to `null` by setting it's value to `""` when it was previously set to another value ([#1855](https://github.com/fastly/cli/pull/1855))
+- fix(profile): profiles can now be created and updated with service-limited tokens, which cannot access `/current_user` ([#1856](https://github.com/fastly/cli/pull/1856))
+
+### Enhancements:
+
+- feat(compute/init): add support for Python language ([#1811](https://github.com/fastly/cli/pull/1811))
+- feat(integrations): Add support for Notification Service Integrations ([#1868](https://github.com/fastly/cli/pull/1868))
+
+### Dependencies:
+
+- build(deps): `golang.org/x/crypto` from 0.53.0 to 0.54.0 ([#1847](https://github.com/fastly/cli/pull/1847))
+- build(deps): `github.com/bodgit/sevenzip` from 1.6.4 to 1.6.5 ([#1847](https://github.com/fastly/cli/pull/1847))
+- build(deps): `github.com/minio/minlz` from 1.1.1 to 1.2.0 ([#1847](https://github.com/fastly/cli/pull/1847))
+- build(deps): `github.com/coreos/go-oidc/v3` from 3.19.0 to 3.20.0 ([#1847](https://github.com/fastly/cli/pull/1847))
+- build(deps): `golang.org/x/net` from 0.56.0 to 0.57.0 ([#1847](https://github.com/fastly/cli/pull/1847))
+- build(deps): `github.com/fastly/go-fastly` from 16.0.1 to 17.0.0 ([#1855](https://github.com/fastly/cli/pull/1855))
+- build(deps): `github.com/mattn/go-isatty` from 0.0.23 to 0.0.24 ([#1857](https://github.com/fastly/cli/pull/1857))
+- build(deps): `github.com/nwaples/rardecode/v2` from 2.2.5 to 2.3.0 ([#1857](https://github.com/fastly/cli/pull/1857))
+- build(deps): `github.com/mattn/go-runewidth` from 0.0.24 to 0.0.27 ([#1857](https://github.com/fastly/cli/pull/1857))
+- build(deps): `github.com/fastly/go-fastly/v17` from 17.0.0 to 17.1.0 ([#1862](https://github.com/fastly/cli/pull/1862))
+
 ## [v15.4.0](https://github.com/fastly/cli/releases/tag/v15.4.0) (2026-07-08)
 
 ### Bug Fixes:
@@ -18,6 +58,7 @@
 - feat(compute): add `install-tools` command to pre-install the Viceroy binary ([#1833](https://github.com/fastly/cli/pull/1833))
 
 ### Enhancements:
+- build(docker): enable compute install-tools ([#1842](https://github.com/fastly/cli/pull/1842))
 - feat(ngwaf/timeseries): add support for account and workspace times series commands ([#1823](https://github.com/fastly/cli/pull/1823))
 
 ### Dependencies:
