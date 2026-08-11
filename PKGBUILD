@@ -7,7 +7,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=dbschema
-pkgver=10.2.1
+pkgver=10.4.1
 pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
@@ -19,11 +19,9 @@ source=(
     "https://dbschema.com/img/favicon/favicon.svg"
 )
 # verify here: https://dbschema.com/download/md5sums
-md5sums=(
-    'fffa0f7fac38ce4accf64e817c4b0efc'
-    'fd70b65c057119c0290bf9f4b51be830'
-    'f52f8d76f63ae513fda70b4ef53ebbc5'
-)
+md5sums=('419f18cff6f9acb3b1a6820d5b16765b'
+         'fd70b65c057119c0290bf9f4b51be830'
+         'f52f8d76f63ae513fda70b4ef53ebbc5')
 
 package() {
     install -dm755 "${pkgdir}/opt"
