@@ -3,7 +3,7 @@ pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
 pkgver=2.9.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
@@ -14,7 +14,7 @@ options=(!strip !debug)
 install="$pkgname.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "trim-executables.diff")
-sha512sums=('8853975f1d1591c8c252b23d80a22a9813d1cec16acc5f15104d4bd9d22e04171e53b830ccebfc5f3342cd55d8d2b5d6f64c605104ab6bd6018caf5ea7c11c8f'
+sha512sums=('166238237ac9b7f1c3347aba92cc7d2a7b771c7200900d0efb0246f2993830ca4a828e782215e9663aa339ca736566db52fa1ac4887c47b217a912029b8ff91b'
             'e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d')
 
 # Seems that trimming is not required, either because of newer .NET or project changes
