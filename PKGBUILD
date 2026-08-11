@@ -1,5 +1,5 @@
 pkgname=legionaura
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="RGB keyboard lighting controller for Lenovo LOQ, Legion, and IdeaPad Gaming laptops (CLI + Qt GUI)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('libusb' 'qt6-base')
 makedepends=('cmake' 'gcc')
 source=("https://github.com/nivedck/LegionAura/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4b62b46fa9a76f3d99bd5a3b2cab3e85cbd5b70634041a711faec6ec8b5050c')
+sha256sums=('600194257a6d6392302f6d5696add530c6de8014a25788316c830f981b2a3168')
 provides=('legion' 'legion-rgb' 'lenovo-legion' 'Lenovo' 'loq' 'lenovo-loq')
 conflicts=('legion' 'legion-rgb')
 
@@ -38,8 +38,8 @@ package() {
     "$pkgdir/usr/share/xdg/autostart/legionaura-autostart.desktop"
 
   # Install udev rules
-  install -Dm644 ../udev/10-legionaura.rules \
-    "$pkgdir/usr/lib/udev/rules.d/10-legionaura.rules"
+  install -Dm644 ../udev/60-legionaura.rules \
+    "$pkgdir/usr/lib/udev/rules.d/60-legionaura.rules"
 
   # Install desktop entry
   install -Dm644 ../legionaura.desktop \
