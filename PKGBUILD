@@ -7,11 +7,28 @@ url="https://www.amuletmc.com/"
 license=(LicenseRef-custom)
 
 arch=(any)
-pkgver=0.10.60
+pkgver=0.10.62
 pkgrel=1
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git python-packaging)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs python-amulet-rocksdb)
+depends=(
+	python
+	python-numpy
+	python-wxpython
+	python-opengl
+	python-amulet-nbt
+	python-amulet-fault-handler
+	python-pymctranslate
+	python-minecraft-model-reader
+	python-amulet-core
+	python-lz4
+	python-amulet-leveldb
+	python-pillow
+	glibc
+	hicolor-icon-theme
+	python-platformdirs
+	python-amulet-rocksdb
+)
 
 source=(
 	amulet.desktop
@@ -19,7 +36,7 @@ source=(
 )
 
 sha256sums=('724383fa0a28be2ab92785365b7a3695aae5ee7849fc7841b492da73ce60c829'
-            '1b1a80150d2676c3965bf6e43e2e16e6dad6a192a9d302de201e445c0513cf24')
+            '79f872ef91e1ba29371769734d9e4c2f2997b37f00e60df469c1d5604bef6beb')
 
 function prepare() {
 	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Map-Editor/pyproject.toml"
