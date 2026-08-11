@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.19.19
+pkgver=0.19.20
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -52,7 +52,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d98601c41d8ff380c89d4c7ea9cfb0a8483478a4a064698b30fbb7a383165a4d')
+sha256sums=('2666605341691ea59f9294109273cd474f495c68238a2e1243a9ed4a6da3121b')
 
 prepare() {
   cd "RustConn-$pkgver"
