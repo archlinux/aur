@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=ctx
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='Multi-environment context switcher for cloud, Kubernetes, VPN, and SSH tunnels'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8598dd6464686deb994d005ef59930473704baffbd411f8f964fe55952ed8635')
+sha256sums=('731cc6be9774975d1ee453e250c3664d993efb01b4968d8259ceb5f2828f805c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

@@ -1,13 +1,13 @@
 pkgbase = ctx
 	pkgdesc = Multi-environment context switcher for cloud, Kubernetes, VPN, and SSH tunnels
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/vlebo/ctx
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = ctx-0.1.15.tar.gz::https://github.com/vlebo/ctx/archive/v0.1.15.tar.gz
-	sha256sums = 8598dd6464686deb994d005ef59930473704baffbd411f8f964fe55952ed8635
+	source = ctx-0.1.16.tar.gz::https://github.com/vlebo/ctx/archive/v0.1.16.tar.gz
+	sha256sums = 731cc6be9774975d1ee453e250c3664d993efb01b4968d8259ceb5f2828f805c
 
 pkgname = ctx
