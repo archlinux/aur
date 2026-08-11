@@ -1,6 +1,7 @@
 pkg/
 src/
 *.deb
+*.rpm
 *.zst
 *.pkg.tar.*
 *.log

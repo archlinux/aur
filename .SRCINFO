@@ -1,6 +1,6 @@
 pkgbase = chromium-clang-avx2-bin
 	pkgdesc = Chromium unstable compiled w/ Clang, PGO, ThinLTO, AVX2 (No Sync, WebRTC, Widevine)
-	pkgver = 151.0.7874.0
+	pkgver = 153.0.7993.0
 	pkgrel = 1
 	url = https://github.com/RobRich999/Chromium_Clang
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = chromium-clang-avx2-bin
 	provides = chromium-browser-unstable
 	conflicts = chromium
 	conflicts = chromium-browser-unstable
-	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v151.0.7874.0-r1641382-linux64-rpm-avx2/chromium-browser-unstable-151.0.7874.0-1.x86_64.rpm
-	sha256sums = 4a858e17e0b08c207205f12132cc92fd2ffe9ce73a15faf103c7278804db842d
+	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v153.0.7993.0-r1673900-linux64-rpm-avx2/chromium-browser-unstable-153.0.7993.0-1.x86_64.rpm
+	sha256sums = e65171601fa1734b5c016333caef0be2c8e646064ca8a5381c59f4195dc3908e
 
 pkgname = chromium-clang-avx2-bin

@@ -1,15 +1,17 @@
-# Maintainer: s1mpleog
+# Submitter: s1mpleog
+# Maintainer: notyusufkhalifa
 #
 # Build Details:
-# Chromium 151.0.7874.0 (Official Build) unstable (Linux 64-bit)
+# Chromium 153.0.7993.0 (Official Build) unstable (Linux 64-bit)
 # Features: No Sync | WebRTC Enabled | Widevine Enabled
-# Revision: e01b725f7fe8e0890561f98cb3befb19ae6946d9-refs/heads/main@{#1639044} 
+# Revision: df39df7749996e7599eeda0a56c2dae56dc6c3ab-refs/heads/main@{#1673900} 
 # Compiler: clang (+lld_linker +thinlto +pgo +avx2 +fma +polly +compiler_optimizations +linker_optimizations)
 
 pkgname=chromium-clang-avx2-bin
 _upstream_name=chromium-browser-unstable
-pkgver=151.0.7874.0
-_commit=r1641382
+pkgver=153.0.7993.0
+_revision=r1673900
+_commit=
 pkgrel=1
 pkgdesc="Chromium unstable compiled w/ Clang, PGO, ThinLTO, AVX2 (No Sync, WebRTC, Widevine)"
 arch=('x86_64')
@@ -21,8 +23,8 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'expat' 'glib2' 'gtk3' 'libdrm'
 makedepends=('rpm-tools')
 provides=("chromium" "$_upstream_name")
 conflicts=("chromium" "$_upstream_name")
-source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('4a858e17e0b08c207205f12132cc92fd2ffe9ce73a15faf103c7278804db842d')
+source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_revision}${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('e65171601fa1734b5c016333caef0be2c8e646064ca8a5381c59f4195dc3908e')
 
 prepare() {
   cd "$srcdir"
