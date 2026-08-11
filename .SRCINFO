@@ -1,6 +1,6 @@
 pkgbase = hidapi-hotplug-git
 	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices with hotplug support
-	pkgver = r714.bc0a241
+	pkgver = r699.238df44
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/hidapi-hotplug
 	arch = x86_64

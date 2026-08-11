@@ -5,7 +5,7 @@
 # Contributor: Adam Honse <calcprogrammer1@gmail.com>
 
 pkgname=hidapi-hotplug-git
-pkgver=r714.bc0a241
+pkgver=r699.238df44
 pkgrel=1
 pkgdesc='Simple library for communicating with USB and Bluetooth HID devices with hotplug support'
 arch=(x86_64)
