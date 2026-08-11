@@ -3,9 +3,9 @@
 pkgname=oh-my-pi-bin
 pkgver=17.2.12
 pkgrel=1
-pkgdesc="AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
+pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64' 'aarch64')
-url="https://github.com/can1357/oh-my-pi"
+url="https://omp.sh/"
 license=('MIT')
 depends=('glibc')
 provides=("oh-my-pi")
