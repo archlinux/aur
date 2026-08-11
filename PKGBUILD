@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.24.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('acd31483555ce7fbc619a497e27931be624bf0243626ae55312b658fdbc03861')
+sha256sums=('2b2a3af31e8f5c1b45000ad7eeded832fdde5ddf5780d7e73753ef1d656d3a43')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -47,9 +47,19 @@ build() {
 package_logitech-trueforce-dkms() {
 	pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 	license=('GPL-2.0-only')
-	depends=('dkms')
-	optdepends=('logi-wheel: settings TUI, FFB proxy, simulated TrueForce and shim installer'
-	            'oversteer: GUI to configure wheel settings'
+	# No dependency on logi-wheel. This package installs udev rule 73, and
+	# that rule dispatches /usr/bin/logi-g923-modeswitch, so the two have
+	# to arrive together or the rule silently does nothing and a G923 Xbox
+	# edition stays in console mode looking like dead hardware. Depending
+	# on logi-wheel fixed that and created a cycle, since logi-wheel
+	# depends on this package: pacman can usually untangle one, but it
+	# breaks installing either package on its own.
+	#
+	# The helper ships here instead, beside the rule that calls it. It is
+	# driver infrastructure rather than a user tool, so this is where it
+	# belonged anyway.
+	depends=('dkms' 'usbutils')
+	optdepends=('oversteer: GUI to configure wheel settings'
 	            'usb_modeswitch: switch the G923 Xbox edition (c26d) into PC mode on plug-in')
 	provides=("$_dkmsname")
 	conflicts=("$_dkmsname")
@@ -93,6 +103,10 @@ package_logitech-trueforce-dkms() {
 	# (optdepends above), a no-op without it.
 	install -Dm644 "$_src/udev/73-logitech-g923-xbox-modeswitch.rules" \
 		"$pkgdir/usr/lib/udev/rules.d/73-logitech-g923-xbox-modeswitch.rules"
+	# The helper that rule dispatches. Same package, so the rule can never
+	# be installed without it.
+	install -Dm755 "$_src/tools/g923-xbox-modeswitch.sh" \
+		"$pkgdir/usr/bin/logi-g923-modeswitch"
 
 	# softdep ordering hint for the G923 PIDs, plus a narrow blacklist of
 	# the standalone new-lg4ff DKMS fork (see the file for why that one
@@ -114,7 +128,7 @@ package_logi-wheel() {
 	optdepends=('python: required by the TrueForce Proton shim installer'
 	            'wine: run Logitech SDK DLLs for TrueForce in Proton sims')
 	# Renamed from logi-dd (v0.20.0): "dd" meant direct-drive, but the app
-	# configures every supported wheel, including the belt-driven G923.
+	# configures every supported wheel, including the gear-driven G923.
 	# These let pacman/paru move an existing logi-dd install onto this
 	# package automatically instead of leaving it orphaned.
 	provides=('logi-dd')
@@ -138,6 +152,38 @@ package_logi-wheel() {
 	# $LOGITECH_TRUEFORCE_SDK_DIR / ~/.local/share/logitech-trueforce/sdk).
 	install -Dm755 "$_src/tools/install-tf-shim.sh" \
 		"$pkgdir/usr/bin/logi-shim"
+
+	# Rebinds a wheel that another driver claimed, which the settings apps'
+	# diagnostics offer as a fix. Kept as a script rather than a command in
+	# the app because a wheel presents several HID interfaces and all of them
+	# have to be moved.
+	install -Dm755 "$_src/tools/rebind-wheel.sh" \
+		"$pkgdir/usr/bin/logi-rebind-wheel"
+
+	# Steam launch-options wrapper: starts an in-prefix Windows helper
+	# (logi-tf-relay, or a telemetry bridge) after the game is up. Useless
+	# unless it is on PATH, because the whole point is that a user types
+	# `logi-launch %command%` and nothing else.
+	install -Dm755 "$_src/tools/logi-launch.sh" \
+		"$pkgdir/usr/bin/logi-launch"
+
+	# The rotation proxy the installer stages with --range-proxy. Shipped
+	# prebuilt because it is a Windows DLL and the people who need it are
+	# on Linux without a cross-compiler; without this, --range-proxy is
+	# unreachable for anyone who did not clone the repo.
+	install -Dm644 "$_src/tools/tf-range-proxy.dll" \
+		"$pkgdir/usr/share/logitech-trueforce/tf-range-proxy.dll"
+	# The truck sims load this from inside the game rather than from a
+	# Proton prefix, so it ships beside the proxy rather than in bin.
+	install -Dm644 "$_src/userspace/logi-wheel/target/release/liblogi_tf_scs.so" \
+		"$pkgdir/usr/share/logitech-trueforce/liblogi_tf_scs.so"
+	# A Windows executable: it runs inside the game's Proton prefix.
+	# Prebuilt because no distro builder ships a Rust Windows target.
+	install -Dm644 "$_src/tools/logi-tf-relay.exe" \
+		"$pkgdir/usr/share/logitech-trueforce/logi-tf-relay.exe"
+
+	# G923 Xbox mode-switch helper, dispatched by udev rule 73. Must not be
+	# run from the udev worker itself; see the rule's own comment.
 
 	# Transitional symlinks: scripts and habits built around the old
 	# `logi-dd` and `logitech-trueforce-install-shim` names keep working.
