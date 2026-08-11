@@ -1,7 +1,7 @@
 # Maintainer: Moritz Luedecke <moritz.luedecke@skweez.net>
 
 pkgname=gitflow-next-bin
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A modern reimplementation of git-flow in Go.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,20 +16,12 @@ source_i686=("${_baseurl}/git-flow-next-v${pkgver}-linux-386.tar.gz")
 source_x86_64=("${_baseurl}/git-flow-next-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_baseurl}/git-flow-next-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('SKIP' 'SKIP')
-sha256sums_i686=('1e4589781aafe325c510800261e803597ebc98aa88d0c31bf6492d593fbb17bf')
-sha256sums_x86_64=('04f8c66588751907a9149a107d97ef4fa190252799ffd644e711040c96209bc1')
-sha256sums_aarch64=('a80d3d68ea4797adbfd02687edaccb5d175a1df5ecbebace277bb6b75a0cd004')
+sha256sums_i686=('ea8a676ecf78fdde96ae19c6f38c98a43144557d0557b40f84049c9a536179b7')
+sha256sums_x86_64=('e0b8fa01168b2b8ac8a068cc346c345e4248ce84f4db9b52d3882f1f57eb1c65')
+sha256sums_aarch64=('991b71e5a1f73de2140ee01ad010505556d9017a15e1643210ed4d657dc7a050')
 
 package() {
-    if [ "${CARCH}" == "i686" ]; then
-        _arch='386'
-    elif [ "${CARCH}" == "x86_64" ]; then
-        _arch='amd64'
-    else
-        _arch='arm64'
-    fi
-
-    install -Dm755 "${srcdir}/git-flow-v${pkgver}-linux-${_arch}" "${pkgdir}/usr/bin/git-flow"
+    install -Dm755 "${srcdir}/git-flow" "${pkgdir}/usr/bin/git-flow"
 
     mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/"
