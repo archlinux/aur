@@ -4,8 +4,8 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=1.24012.9
-pkgrel=12
+pkgver=1.26832.0
+pkgrel=3
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -55,10 +55,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.24012.9-12/claude-desktop-1.24012.9-linux.tar.gz")
-sha256sums_x86_64=('9374de74ffbb604625add39231c61fdf3948449593ceee1c7c118ef7dd426d1a')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.24012.9-12/claude-desktop-1.24012.9-linux-aarch64.tar.gz")
-sha256sums_aarch64=('52c4e822f68246aaab8c432e3cba964fddd44dae28ea06ac20a7acfdd170782c')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.26832.0-3/claude-desktop-1.26832.0-linux.tar.gz")
+sha256sums_x86_64=('639158916ad2dcb88e77a31be4a225b1a33bf3e01067b3683d2f5d1352d3e82b')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.26832.0-3/claude-desktop-1.26832.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('82d415880f88a445be90d1c5ab6be210a8257ec83aa475aafa1394a2a4bb9526')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -125,10 +125,13 @@ Name=New Claude Code session
 Exec=claude-desktop claude://code/new
 EOF
 
-    # Install icon (included in tarball)
-    if [ -f "$srcdir/icons/claude-desktop.png" ]; then
-        install -Dm644 "$srcdir/icons/claude-desktop.png" \
-            "$pkgdir/usr/share/icons/hicolor/256x256/apps/claude-desktop.png"
+    # Install every icon size the tarball carries (mirrors the official .deb's
+    # usr/share/icons/hicolor/ tree).
+    if [ -d "$srcdir/icons/hicolor" ]; then
+        while IFS= read -r icon; do
+            install -Dm644 "$icon" \
+                "$pkgdir/usr/share/icons/hicolor/${icon#"$srcdir"/icons/hicolor/}"
+        done < <(find "$srcdir/icons/hicolor" -type f -name 'claude-desktop.png' | sort)
     fi
 
     # Upstream license notice (the official .deb's usr/share/doc copyright file,
