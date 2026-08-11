@@ -1,6 +1,6 @@
 # Maintainer: Francisco V. <fvasquez dot public at fvtronics dot com>
 pkgname=chillspot
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Fan curve control and temperature monitor for MSI laptops"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a1335b47d69cea2d8b95791dc2e695e200631e45d635f8781809d172463c017f')
+sha256sums=('17d3ca07cef586a757280890ac492624124e4fe32c09a44a770236be7c7e22a1')
 
 prepare() {
     cd "$pkgname"
