@@ -1,10 +1,10 @@
 # Maintainer: Jesse Pinkman <M-Igashi@users.noreply.github.com>
 pkgname=mp3rgui
-pkgver=2.11.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='GUI application for mp3rgain - lossless MP3 volume adjustment'
 arch=('x86_64' 'aarch64')
-url='https://github.com/M-Igashi/mp3rgain'
+url='https://mp3rgain.tyna.ninja/'
 license=('MIT')
 depends=('gcc-libs' 'gtk3')
 makedepends=('rust' 'cargo')
