@@ -1,12 +1,11 @@
 pkgbase = taste
 	pkgdesc = CLI to manage CommandCode preferences
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commandcode.ai
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
-	makedepends = jq
 	depends = nodejs
 	depends = command-code
 	noextract = taste-1.0.1.tgz
