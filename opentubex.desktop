@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=OpenTubeX
 GenericName=YouTube Player
-Comment=An open source desktop YouTube player based on FreeTube with extra features.
+Comment=A highly customizable, privacy-focused desktop YouTube client
 Exec=opentubex %U
 Terminal=false
 Type=Application
