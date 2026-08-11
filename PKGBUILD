@@ -3,7 +3,7 @@
 
 _pkgname=difit
 pkgname=difit-bin
-pkgver=5.0.8
+pkgver=5.0.11
 pkgrel=1
 pkgdesc="Lightweight CLI that serves Git commit diffs in a GitHub-like Files changed view"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('4465c9960282a260d4e317316569180fce2430ce5f475a0cd57b07869c82bc0d')
+sha256sums=('0a8e7ba5893531f0eff862f963a7e5152da5cd2969abccb2993fa13966414ce9')
 
 package() {
   # Keep npm's cache inside srcdir instead of littering the build user's $HOME.
