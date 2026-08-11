@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.0.1+1
+pkgver=3.0.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -12,8 +12,8 @@ source=(
     "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
 )
 
-sha256sums=('fe0f7ed05fa03e11a02d938a28670cea4d155fbac116ece98416baa5281d75d4'
-            'f886514e16a5dda7d878b5453878b850d3d1077421d35a73b2a3ae0256bdfb0d')
+sha256sums=('93710135d1e9de3fd4dc0f9cad1484a1833c7b4b2e3317d94c08fe78e1f4d957'
+            '2f25d64f9e0a2e88fe28a090de89a18fce7138d6421423d919ae631f957feef7')
 
 package_shelly-bin() {
   pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
