@@ -4,7 +4,7 @@
 pkgname=plasmazones-bin
 # pkgver/pkgrel are placeholders; CI overwrites them with the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.3.3
+pkgver=3.3.6
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
@@ -45,7 +45,7 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('7f4f8b9c091f49ac7b0a13cfba31ab0ef8c2bd435508e8763162e74e4515b2f6')
+sha256sums=('70b182e9ddebff6bd78f7aba3ed0f5db0310d9625e0ed0793fd53e5b1d5d1cff')
 install=plasmazones.install
 
 package() {
