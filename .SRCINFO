@@ -1,7 +1,7 @@
 pkgbase = wiiudownloader-bin
 	pkgdesc = Download encrypted Wii U files from Nintendo's official servers (upstream AppImage)
-	pkgver = 2.99
-	pkgrel = 2
+	pkgver = 2.100
+	pkgrel = 1
 	url = https://github.com/Xpl0itU/WiiUDownloader
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,10 +20,10 @@ pkgbase = wiiudownloader-bin
 	depends = hicolor-icon-theme
 	provides = wiiudownloader
 	conflicts = wiiudownloader
-	noextract = wiiudownloader-bin-2.99.AppImage
+	noextract = wiiudownloader-bin-2.100.AppImage
 	options = !strip
 	options = !debug
-	source = wiiudownloader-bin-2.99.AppImage::https://github.com/Xpl0itU/WiiUDownloader/releases/download/v2.99/WiiUDownloader-Linux-x86_64.AppImage
-	sha256sums = 3a2e8e7f34a288308666032d6834db00c515a0c897a66a2ae1012702d017f240
+	source = wiiudownloader-bin-2.100.AppImage::https://github.com/Xpl0itU/WiiUDownloader/releases/download/v2.100/WiiUDownloader-Linux-x86_64.AppImage
+	sha256sums = 4f3e5cf55bd6b43aace6da20d5c0d85fca4a62a79cbb6f5e77ddd9522f5348ae
 
 pkgname = wiiudownloader-bin
