@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('MIT')
 
-depends=('zlib')
+depends=('zlib' 'git')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
