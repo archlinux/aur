@@ -1,14 +1,14 @@
 pkgbase = sable-web
 	pkgdesc = A Matrix client built to enhance user experience, forked from cinny.
-	pkgver = 1.17.0
-	pkgrel = 2
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://github.com/SableClient/Sable
 	arch = any
 	license = AGPL-3.0
 	makedepends = pnpm
 	makedepends = nvm
-	source = sable-1.17.0.tar.gz::https://github.com/SableClient/Sable/archive/refs/tags/v1.17.0.tar.gz
-	sha512sums = 11ea0b57632d77bf1a8e3754ec0a4be6a014e039f303f6a8a00ab7e4b096b48184a8b487c13ffc2096af2c30942182fa35ff5acee3c6946cc8bd9d0be597bcc5
+	source = sable-1.20.0.tar.gz::https://github.com/SableClient/Sable/archive/refs/tags/v1.20.0.tar.gz
+	sha512sums = 5d89702e4a62086f33eb1961b47cf4aca2acd3e852604a02c730b1cdbe6d110c54b5b9f413312dfb6b7faee238e477fac22cb77e56d631966f7d45ac0f6ea4d4
 
 pkgname = sable-web
 	backup = etc/webapps/sable/config.json
