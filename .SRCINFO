@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-camera
 	pkgdesc = Camera application for the COSMIC™ desktop environment
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/cosmic-ext-camera
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = cosmic-ext-camera
 	depends = wayland
 	conflicts = cosmic-camera
 	conflicts = klikka
-	source = cosmic-ext-camera-1.2.0.tar.gz::https://github.com/cosmic-utils/cosmic-ext-camera/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = a402ba9dd87429aa0a1eb5ef3a0af2a4a0c53449001d284f3cf46390f6a4aeb8
+	source = cosmic-ext-camera-1.2.2.tar.gz::https://github.com/cosmic-utils/cosmic-ext-camera/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = b5f5efd6f7434f069514cb11073c9b9d8e69f43954cdfde57f8e9801fc3a315e
 
 pkgname = cosmic-ext-camera
