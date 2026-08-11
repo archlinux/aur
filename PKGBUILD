@@ -1,9 +1,9 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
 
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=nub
-pkgver=0.6.0
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
@@ -11,9 +11,8 @@ url="https://nubjs.com"
 arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
-options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nubjs/nub/archive/v${pkgver}.tar.gz")
-sha256sums=('eb3764a93a89b63e92f5eac57687501a26e720661abd1e7f7df7cf5b9565b78b')
+sha256sums=('8bc59656c1469103e8a5100558a41d84c357cecd258c312e6f1eb2b4bcb44539')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -23,7 +22,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
   cargo build --release --frozen
 }
 
