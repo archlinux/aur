@@ -1,11 +1,11 @@
-# Maintainer: Ismet Togay <ismet.togay@gmail.com>
+# Maintainer: Ismet Togay <ismet dot togay at gmail dot com>
 pkgname=auggie-bin
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
 url="https://github.com/augmentcode/auggie"
-license=('custom')
+license=('LicenseRef-auggie')
 depends=('nodejs>=20')
 makedepends=('npm')
 optdepends=('bash: for bash completion'
