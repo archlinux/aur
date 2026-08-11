@@ -2,15 +2,15 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=rufin-bin
-pkgver=0.11.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust'
 arch=('x86_64')
 url='https://github.com/screwys/Rufin'
-license=('GPL-3.0-or-later' 'NAIST-2003')
+license=('GPL-3.0-or-later')
 # Generated Linux package dependencies start.
 depends=(
-  'gcc-libs'
+  'libgcc_s.so'
   'glib2'
   'glibc'
   'gst-libav'
@@ -29,8 +29,8 @@ provides=("rufin=${pkgver}")
 conflicts=('rufin' 'rufin-git')
 replaces=('rufin')
 options=('!strip' '!debug')
-source_x86_64=("https://github.com/screwys/Rufin/releases/download/v0.11.1/rufin-0.11.1-archlinux-x86_64.tar.zst")
-sha256sums_x86_64=('e9f9c71e5c265e339aee527690de1de5e9919d7fec74a3d2d62c064b78a9576b')
+source_x86_64=("https://github.com/screwys/Rufin/releases/download/v0.13.0/rufin-0.13.0-archlinux-x86_64.tar.zst")
+sha256sums_x86_64=('f282fe0fdfd5fb9de8145bf3f9e36213beeafae74eee4914c450b7813f011693')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
