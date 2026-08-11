@@ -1,6 +1,6 @@
 pkgbase = aeosd
 	pkgdesc = An OSD for changing screen brightness
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.sr.ht/~aeldit/aeosd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = aeosd
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://git.sr.ht/~aeldit/aeosd/archive/0.2.0.tar.gz
-	sha256sums = 294ea7f62163e9ca96545c5fcc316c267210dcb23e1ffbd95b289a2a01a2b874
+	source = https://git.sr.ht/~aeldit/aeosd/archive/0.3.0.tar.gz
+	sha256sums = 8ecc7721779f22bc0b886009a415022212f2eca1d6580382a3ac932c986d7714
 
 pkgname = aeosd
