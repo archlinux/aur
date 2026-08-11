@@ -8,7 +8,7 @@ pkgdesc="GUI shell, app runner, command input (and output), status widgets, note
 arch=(i686 x86_64)
 url="https://github.com/luebking/qiq"
 license=(GPL)
-depends=(qt6-base)
+depends=(qt6-base layer-shell-qt)
 makedepends=(git)
 optdepends=('aha: Output colors'
             'ansifilter: (suggested) Output colors'

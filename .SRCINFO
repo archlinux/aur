@@ -8,6 +8,7 @@ pkgbase = qiq-git
 	license = GPL
 	makedepends = git
 	depends = qt6-base
+	depends = layer-shell-qt
 	optdepends = aha: Output colors
 	optdepends = ansifilter: (suggested) Output colors
 	optdepends = bc: Calculator
