@@ -2,7 +2,7 @@
 
 pkgname='jsinflator-vst3'
 pkgver='2.0.3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source copy of Sonox Inflator'
 arch=('x86_64')
 url='https://github.com/Kiriki-liszt/JS_Inflator'
@@ -14,6 +14,7 @@ makedepends=(
   'clang'
   'cmake'
   'vst3sdk'
+  'wayland-protocols'
 )
 
 _r8brainver='version-6.5'
@@ -33,9 +34,12 @@ prepare() {
 build() {
   cd "JS_Inflator-${pkgver}/"
 
+  local CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}"
+
   cmake -B Builds \
+    -DSMTG_LINUX=ON \
     -DSMTG_RUN_VST_VALIDATOR=OFF \
-    -DSMTG_ENABLE_WAYLAND_SUPPORT=OFF \
+    -DSMTG_ENABLE_WAYLAND_SUPPORT=ON \
     -DSMTG_CREATE_PLUGIN_LINK=OFF \
     -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF \
     -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF \
@@ -47,12 +51,7 @@ build() {
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
     -DCMAKE_BUILD_TYPE=Release .
 
-  # The build errors somewhere, but it does seem to actually build the file, so
-  # I assume something extra is being built that shouldn't be, but cmake sucks
-  # and I don't want to deal with figuring it out. Hopefully someone who knows
-  # about cmake can track it down later or when I'm not so furious at how
-  # idiotic this system is I'll do it.
-  cmake --build Builds --config Release || true
+  cmake --build Builds --config Release
 }
 
 package() {
