@@ -2,7 +2,7 @@
 AppName=Converter432Hz
 appid=converter432hz
 pkgname=${appid}-appimage
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Converts and re-encodes music to 432Hz"
 arch=('x86_64')
