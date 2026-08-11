@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-linux-shell
 epoch=1
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('stremio')
 conflicts=('stremio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     'stremio.sh')
-sha256sums=('9b4cd3288c3e961f87cfa84906f472cc31fb79d88ebddac2b2b4a6fffa8c87bb'
+sha256sums=('aff0e1486aabccb25d4165792b3ce6dcb741bc4b50af4601f66ac3d41fb70670'
             '2c92d0aa1d3d7297585e71ce49f92573682d9335190072df3d69d62777633434')
 
 prepare() {
