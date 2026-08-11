@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencie-pkcs11
-pkgver=1.0.10 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
+pkgver=1.0.12 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
 pkgrel=1
 _podofover=1.1.1 # renovate: datasource=github-tags depName=podofo/podofo
 pkgdesc="Native PKCS#11 library for the Italian Electronic Identity Card (CIE)"
@@ -11,11 +11,11 @@ license=('LGPL-3.0-or-later')
 # podofo is 0.10.x while the build needs >=1.1.0 — so it is not a runtime dep,
 # but its own deps (jpeg/tiff/freetype/...) end up linked into the library.
 depends=('openssl' 'pcsclite' 'curl' 'libxml2' 'fontconfig'
-         'freetype2' 'libpng' 'openjpeg2' 'libjpeg-turbo' 'libtiff' 'zlib')
+  'freetype2' 'libpng' 'openjpeg2' 'libjpeg-turbo' 'libtiff' 'zlib')
 makedepends=('meson' 'ninja' 'cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/$pkgver.tar.gz"
-        "podofo-$_podofover.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/$_podofover.tar.gz")
-sha256sums=('42def687657bc9b4b8d461cfb689825dc47a30c0f989c3dd052d4c9f9bb427c6'
+  "podofo-$_podofover.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/$_podofover.tar.gz")
+sha256sums=('0d2ccfcb19a0c8653391c3098c648e07fce6c31c61170d5abe74437770a1a9c5'
             '16943528b37798d8663ffedc97190803e525d0a1dcb021fdbf9d35242831890a')
 
 prepare() {
