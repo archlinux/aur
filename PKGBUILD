@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.2.5
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -26,13 +26,20 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('71edd6c0df146b60fcce27557ba9ae1db1c0dff6b5275055e3d4598e7c9f5af3'
+sha256sums=('a32e2c21f82f0703353e5fcaaddfc059d1e3d6f6df39a0924f6dbdc518e4ec39'
             '5f744a24a3605f78ee30348e1d705f47d803f915e58e076ea6e11f151d678407'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
-            '6be3fbd2634a77faa21fed02abe3d486680cdb880db97f5c1a9fe948a99e1865'
+            '9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa'
             '437a8ef0ad31411c6c96dc361718d6de32bb286cc1e0ed1d25c932080290c7d6')
+
+# Repo-relative path of the installed node-pty. npm hoists it to the root
+# node_modules in some releases and nests it under packages/server in others
+# (0.3.1 nests it), so resolve it instead of hardcoding either location.
+_node_pty_dir() {
+    node -p "const p=require('node:path');p.relative(process.cwd(),p.dirname(require.resolve('node-pty/package.json',{paths:['packages/server']})))"
+}
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -84,7 +91,7 @@ build() {
     # ABI-compatible with the Electron runtime). Compiled directly with
     # node-gyp: `npm rebuild` is skipped by npm 11's allowScripts gate and by
     # the npm-shipped prebuild.
-    (cd node_modules/node-pty && npx node-gyp rebuild)
+    (cd "$(_node_pty_dir)" && npx node-gyp rebuild)
 
     # Mirrors upstream nix/desktop-package.nix — tsc workspaces, Expo web
     # export for the renderer, then the desktop main process. No
@@ -99,8 +106,9 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     # Runtime closure by static module-graph tracing: upstream's daemon/CLI
-    # trace plus our desktop-main trace, instead of the 2 GB node_modules.
-    node scripts/trace-daemon.mjs > "${srcdir}/runtime-files.txt" \
+    # trace (PASEO_TRACE_DESKTOP=1 also pulls in the Electron main process and
+    # its preloads) plus our supplement, instead of the 2 GB node_modules.
+    PASEO_TRACE_DESKTOP=1 node scripts/trace-daemon.mjs > "${srcdir}/runtime-files.txt" \
         2> "${srcdir}/trace-stderr.log" \
         || { cat "${srcdir}/trace-stderr.log" >&2; return 1; }
     node "${srcdir}/trace-desktop.mjs" >> "${srcdir}/runtime-files.txt" \
@@ -128,7 +136,7 @@ package() {
     # path that already exists would nest instead of merge.
     # node-pty's npm-shipped prebuilds are dropped: its loader prefers the
     # build/Release addon we compile ourselves (lib/utils.js search order).
-    sort -u "${srcdir}/runtime-files.txt" | grep -v '^node_modules/node-pty/prebuilds/' | \
+    sort -u "${srcdir}/runtime-files.txt" | grep -v 'node_modules/node-pty/prebuilds/' | \
     while IFS= read -r f; do
         if [ ! -e "$f" ] && [ ! -L "$f" ]; then
             continue
@@ -189,6 +197,7 @@ package() {
         usr/lib/paseo/packages/cli/bin/paseo
         usr/lib/paseo/packages/desktop/dist/main.js
         usr/lib/paseo/packages/desktop/dist/preload.js
+        usr/lib/paseo/packages/desktop/dist/features/browser-keyboard/guest-preload.js
         usr/lib/paseo/packages/desktop/dist/daemon/node-entrypoint-runner.js
         usr/lib/paseo/packages/desktop/package.json
         usr/lib/paseo/packages/cli/dist/index.js
@@ -196,7 +205,7 @@ package() {
         usr/lib/paseo/packages/server/dist/scripts/supervisor-entrypoint.js
         usr/lib/paseo/node_modules/@getpaseo/cli
         usr/lib/paseo/node_modules/@getpaseo/server
-        usr/lib/paseo/node_modules/node-pty/build/Release/pty.node
+        "usr/lib/paseo/$(_node_pty_dir)/build/Release/pty.node"
         usr/lib/paseo/packages/app/dist/index.html
         usr/lib/paseo/skills
     )
