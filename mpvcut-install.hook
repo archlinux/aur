@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = etc/skel/.config/mpv/scripts/mpvcut/*
+
+[Action]
+Description = Install/upgrade mpvcut in ~/.config/mpv/scripts/
+When = PostTransaction
+Exec = /usr/local/bin/update-mpvcut
