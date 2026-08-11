@@ -1,0 +1,15 @@
+pkgbase = mochi-recorder-appimage
+	pkgdesc = A modern Linux screen recorder with smooth animations like Screen Studio (AppImage)
+	pkgver = 1.0.22
+	pkgrel = 1
+	url = https://github.com/4ndreello/mochi-recorder
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = mochi-recorder-appimage-1.0.22.AppImage::https://github.com/4ndreello/mochi-recorder/releases/download/v1.0.22/Mochi-1.0.22.AppImage
+	source = mochi-recorder.png::https://raw.githubusercontent.com/4ndreello/mochi-recorder/main/src/renderer/assets/icon.png
+	sha256sums = 76228675aae35065c09dc000b9a2e4654669fae0ae3ea2b811354147d42a22cd
+	sha256sums = dee91a144d48a379ec9e6864f3fa4d515f138fe0d33fa65cf2a1fbe2fe1decd7
+
+pkgname = mochi-recorder-appimage
