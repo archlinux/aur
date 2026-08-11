@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=litehtml0.9
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast and lightweight HTML/CSS rendering engine'
 url='http://www.litehtml.com/'
 arch=(x86_64)
