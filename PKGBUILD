@@ -1,12 +1,12 @@
 # Maintainer: Ángel Guzmán Maeso <angel@guzmanmaeso.com>
 pkgname=whatly
-pkgver=6.8.4
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Feature-rich WhatsApp Web desktop client based on Qt WebEngine"
 arch=('x86_64')
 url="https://github.com/shakaran/whatly"
 license=('MIT')
-depends=('qt6-webengine' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel')
+depends=('qt6-webengine' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel' 'noto-fonts')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'git')
 provides=('whatly')
 conflicts=('whatly-bin' 'whatly-git')
