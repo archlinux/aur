@@ -4,7 +4,7 @@
 # Contributor: Aron Young <aronyang505 at gmail dot com>
 
 pkgname=ast-grep-bin
-pkgver=0.45.0
+pkgver=0.45.1
 pkgrel=1
 pkgdesc="A fast and easy tool for code searching, linting, rewriting at large scale"
 arch=('x86_64' aarch64)
@@ -17,11 +17,11 @@ provides=(ast-grep)
 depends=(gcc-libs glibc)
 conflicts=(ast-grep)
 sha256sums=('81471889c77b2161a3e4dcdb1b2e6ca382e485766132d92d5fe1d7497e7dd2d9')
-sha256sums_x86_64=('78931ae35ebac33d9a72b3aecea3e3d62d6e5b0b718ac8bbedfbe69d68421e41')
-sha256sums_aarch64=('62b60892dafacfa76d6de87157659f880bbf85ff38bdab52db12f1f14ec60f94')
+sha256sums_x86_64=('76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63')
+sha256sums_aarch64=('9ee7ec49aada3dc05135d21977af089a33fc3154ada25bab102daca90b5098f2')
 b2sums=('84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c')
-b2sums_x86_64=('0e4044ba0ddc95adf848bbb3b42904542272588383c3390cd3bb5fab4d6f896a0a3240901997ccb7e5c8b7de3129a418e14b826c6c8cfa2cddf378dcc83ffd13')
-b2sums_aarch64=('9357fc57243e084dd8f11263bb8610f2d234b9a34e7b4ef28ff354b1c8fed9616cdace2aef84358659574e801cdee26590b85a580efc2874989862616030950c')
+b2sums_x86_64=('bf5d3ea4e062feccc194a737d84c39aaee94d3e6f2f3dfe490379f7beda60da20ca63724aca0a6be8c1774f4561f471c16af630f3046388d9354c7b4f1ca0187')
+b2sums_aarch64=('32f02bbee2e08842dd26876629c98e55f8aa5fb6a4c7dcc8171dba562aa09a791b065f2fffcd6092e4d059e87eb5a6c9551b2706821d4a3458f45bfbd349a8a4')
 
 package() {
   find $srcdir -name "ast-grep" -type f -print -exec install -vDm755 {} "$pkgdir/usr/bin/ast-grep" \;
