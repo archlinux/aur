@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
 pkgdesc="A multi format lossless image optimizer that uses external tools"
-pkgver=6.6.2
+pkgver=6.8.1
 pkgrel=1
 arch=(any)
 url="https://github.com/ajslater/${pkgname}"
@@ -15,7 +15,7 @@ optdepends=('gifsicle: for animated GIFs support'
   'pngout: for optimize PNG images'
   'mozjpeg: for optimize JPEG images')
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('57c6d60a6b955738f635732d6a95a853b94d3384037f559a1ec882b5248d7f17ecd6b778f2dc3867990256c78201b72e8410c45badc5fe86b7925f8e2ae41802')
+sha512sums=('b6f52fa0bf6e41a712514fc95f73950c23a433ed90a63279ed848624e1479670dd412e2a28551dfa157425a51598db4df2ed50c945ca19ef00820007bd6e6594')
 
 build() {
   cd ${pkgname}-${pkgver}
