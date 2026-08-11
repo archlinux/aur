@@ -1,6 +1,6 @@
 pkgbase = dim-caelestia-shell-git
 	pkgdesc = DiM's fork of Caelestia-Shell
-	pkgver = r2992.78a98a6
+	pkgver = r3078.7a98d03
 	pkgrel = 1
 	url = https://github.com/dim-ghub/caelestia-shell
 	arch = x86_64
@@ -37,6 +37,8 @@ pkgbase = dim-caelestia-shell-git
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	conflicts = caelestia-shell-git
+	conflicts = noctalia-qs
+	conflicts = noctalia-qs-git
 	source = dim-caelestia-shell-git::git+https://github.com/dim-ghub/caelestia-shell.git
 	sha256sums = SKIP
 
