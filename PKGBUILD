@@ -12,7 +12,7 @@ install=pulse-remote-bin.install
 options=(!debug)
 
 source=("pulse-remote-${pkgver}-Linux_x86_64.tar.gz::https://github.com/undg/pulse-remote/releases/download/v${pkgver}/pulse-remote_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('dee0d34a11bfb103269e8ad9d88eabbc50d65da8281272f7032e382ef50ef2cb')
 
 package() {
 	tar xf "pulse-remote-${pkgver}-Linux_x86_64.tar.gz" -C "$pkgdir"

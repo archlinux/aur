@@ -10,6 +10,6 @@ pkgbase = pulse-remote-bin
 	depends = electron
 	options = !debug
 	source = pulse-remote-1.0.1-Linux_x86_64.tar.gz::https://github.com/undg/pulse-remote/releases/download/v1.0.1/pulse-remote_1.0.1_Linux_x86_64.tar.gz
-	sha256sums = SKIP
+	sha256sums = dee0d34a11bfb103269e8ad9d88eabbc50d65da8281272f7032e382ef50ef2cb
 
 pkgname = pulse-remote-bin
