@@ -1,12 +1,12 @@
 pkgbase = frame-x-server
 	pkgdesc = X11 display server for the CHasm desktop written in x86_64 assembly
-	pkgver = 0.0.150
+	pkgver = 0.0.151
 	pkgrel = 1
 	url = https://github.com/isene/frame/
 	arch = x86_64
 	license = Unlicense
 	makedepends = nasm
-	source = https://github.com/isene/frame/archive/v0.0.150/frame-x-server-0.0.150.tar.gz
-	sha256sums = 717c51d6befff6d09e3f29fcefc59894075250a0b497e5cc67ddb2998bf76534
+	source = https://github.com/isene/frame/archive/v0.0.151/frame-x-server-0.0.151.tar.gz
+	sha256sums = bf17287ca324ede5a445c510fe6cd5b2c6f23861269b7ac8792a851723eb30cd
 
 pkgname = frame-x-server
