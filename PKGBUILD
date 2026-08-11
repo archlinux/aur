@@ -1,8 +1,8 @@
 # Maintainer: RK <rk at rkevin dot dev>
 
 pkgname=moonlight-cli
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='CLI to install moonlight, the Discord mod'
 url='https://github.com/moonlight-mod/moonlight-installer'
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4e13b2e121485497d6d4a697d8b1b20c9b37b58cfa71e2e67803112ff8c5be6f2f16bed4610dbec718ed575d6ad52b699be26a6bbd6fa0d0e14cd08299426270')
+sha512sums=('06183683c510d2a20804c334fb474e942a45aed14092881d97dc5b3137b64b4bf8714db4a39c9f1887858a9b05377fd832c7ae847ded803af377e69e9f778396')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
