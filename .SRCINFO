@@ -1,0 +1,15 @@
+pkgbase = kramer-vs44-remote-control
+	pkgdesc = Control a Kramer VS-44HN HDMI matrix switcher over TCP/IP or RS-232
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Piero-93/kramer-vs44-remote-control
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = tk
+	depends = hicolor-icon-theme
+	optdepends = python-pyserial: RS-232 support, for a serial cable instead of the network
+	source = kramer-vs44-remote-control-0.2.1.tar.gz::https://github.com/Piero-93/kramer-vs44-remote-control/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 392006f8288195e6fa39b21800bce9f893716fb4c279f5545af56c0105abb989
+
+pkgname = kramer-vs44-remote-control
