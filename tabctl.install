@@ -12,7 +12,7 @@ post_install() {
     echo "==> "
     echo "==> Rofi integration scripts are available in /usr/share/tabctl/scripts/"
     echo "==>   rofi-tabctl-wmctrl.sh - For X11 with wmctrl"
-    echo "==>   rofi-tabctl-niri.sh - For Niri/Wayland"
+    echo "==>   rofi-tabctl-hyprland.sh - For Hyprland/Wayland, with favicons"
     echo "==> You can symlink them to your PATH or use them directly"
 }
 

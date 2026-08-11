@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers"
 arch=('x86_64')
@@ -11,11 +11,10 @@ makedepends=('go' 'git')
 optdepends=(
     'rofi: rofi tab-switcher scripts'
     'wmctrl: X11 window focusing (rofi-tabctl-wmctrl.sh)'
-    'niri: Wayland window focusing (rofi-tabctl-niri.sh)'
     'hyprland: Wayland window focusing (rofi-tabctl-hyprland.sh)'
-    'jq: JSON parsing in the niri/hyprland rofi scripts'
-    'curl: favicon fetching in the niri/hyprland rofi scripts'
-    'imagemagick: favicon processing in the niri/hyprland rofi scripts'
+    'jq: JSON parsing in the hyprland rofi script'
+    'curl: favicon fetching in the hyprland rofi script'
+    'imagemagick: favicon processing in the hyprland rofi script'
     'firefox: Firefox browser support'
     'brave-bin: Brave browser support'
     'chromium: Chromium browser support'
@@ -23,7 +22,7 @@ optdepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('048dc6cf50a7ca9c9542dffd65d4b9fbd812836e78f66b9a2a6697cd024628e0')
+sha256sums=('cd28ea797e2703e5dc4a636633d2a7e307dcae91d8ff6686562099249ff6a561')
 install=tabctl.install
 
 build() {
@@ -54,7 +53,6 @@ package() {
 
     # Install rofi scripts
     install -Dm755 scripts/rofi-tabctl-wmctrl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-tabctl-wmctrl.sh"
-    install -Dm755 scripts/rofi-tabctl-niri.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-tabctl-niri.sh"
     install -Dm755 scripts/rofi-tabctl-hyprland.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-tabctl-hyprland.sh"
 
     # Install browser extensions
