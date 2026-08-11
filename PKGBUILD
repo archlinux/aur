@@ -1,7 +1,7 @@
 # Maintainer: Faizan Asad <m.faizanasad97@gmail.com>
 
 pkgname=zuno
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="YouTube Music as a focused desktop app — tabs, offline downloads, synced lyrics"
 arch=('x86_64')
@@ -27,6 +27,18 @@ depends+=(
   'gst-libav'
 )
 
+# The Rust audio engine bypasses WebKitGTK entirely: cpal opens ALSA directly, and libopus is
+# statically linked in rather than loaded, so only the ALSA runtime is needed here. The
+# GStreamer plugins above stay because the IFrame engine is still the default.
+depends+=(
+  'alsa-lib'
+)
+
+# Native MPRIS2 controls talk to the session bus directly via souvlaki.
+depends+=(
+  'dbus'
+)
+
 optdepends=(
   'gst-plugins-bad: extra container and codec support'
   'gst-plugins-ugly: extra codec support'
@@ -42,7 +54,7 @@ conflicts=('zuno-bin')
 options=('!strip' '!emptydirs')
 
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Zuno_${pkgver}_amd64.deb")
-sha256sums=('3abc57c1accaaf3ef68a0aa37d3b9e6e81ad9ae1a5a8216a739efeb8578c05da')
+sha256sums=('c2935241791f699a05d7384695815f424bb780f8656f2d1a8592444a7597ced8')
 
 package() {
   # bsdtar reads the ar archive and the inner tarball without needing dpkg installed.
