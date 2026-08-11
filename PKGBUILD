@@ -1,13 +1,13 @@
 # Maintainer: alba4k <blaskoazzolaaaron[at]gmail.com>
 pkgname=albafetch-git
-pkgver=4.2.1.r121.gef119272
+pkgver=4.3.r69.ge5af6ec8
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
-depends=(pciutils sqlite glib2)
-makedepends=(git make gcc meson ninja pkgconf)
+depends=(sqlite glib2 vulkan-driver)
+makedepends=(git make gcc meson ninja pkgconf vulkan-headers)
 conflicts=(albafetch albafetch-bin)
 provides=(albafetch)
 source=("git+$url")
