@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=falabaac-git
-pkgver=2.1.1.r1.g3262e80.dirty
+pkgver=2.1.1.r1.g3262e80
 pkgrel=1
 pkgdesc='Another AAC encoder (git version)'
 arch=('any')
@@ -14,8 +14,7 @@ sha256sums=('SKIP' '4f7fddd72b9cd793e394f8879b05e50949e0aaa7b2d5fcce0fcc345d4855
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --tags --long --dirty --always \
-        | sed -E 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
+    git describe --tags --long --always | sed -E 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 prepare() {
