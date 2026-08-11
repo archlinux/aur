@@ -2,7 +2,7 @@
 
 pkgbase=catppuccin-plasma-colorscheme
 pkgname=(${pkgbase}-{latte,frappe,macchiato,mocha})
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Soothing pastel theme for KDE Plasma"
 arch=('any')
@@ -20,10 +20,10 @@ source=(
 	"${url}/releases/download/v${pkgver}/Mocha-color-schemes.tar.gz"
 	"${url}/raw/refs/heads/main/LICENSE"
 )
-sha256sums=('ab9a5bdb599d10a476698b8e55e55c2b0b4762e65feca21fff2224a21c3fc000'
-            '5593983746de7e30d3554a6cf680c9378e409268812679f3189ccb0988c481f6'
-            '85bc96dd54ce7cc25ba656c5b44b8d86efd4ab6b0152c699abd00d2c6c8cb402'
-            'b569b33f1abd9549e4292f293b3f73d827126045f0fd7927a25e3598c8d25742'
+sha256sums=('8e263479d67917c2ba4cd5d2e8f1a8981c39a3ac366c3ad2d7c440cfa4761277'
+            'aba81e624d638501a76edf3ac63f87d003c0a02ec2781cead802d903f4e75c06'
+            'dffb1649fd6e9af4316d960efcfa236be021c281bbae7dc45110e5d57876d2a1'
+            'b40b21a06c5e5b59c4323582283141e635cfc7e15f01c0c6f9c9c2646d9f7aee'
             '814096d2c34cc216c624738a49356f32b7237733b4f7edb0685f4e50ef5074ba')
 
 package_catppuccin-plasma-colorscheme-latte() {
