@@ -1,6 +1,6 @@
 pkgbase = chain-lang-git
 	pkgdesc = Chain programming language interpreter (latest git version)
-	pkgver = 0.5.r0
+	pkgver = 0.5.1.r0
 	pkgrel = 1
 	url = https://github.com/Nebania/chain-lang
 	arch = x86_64
