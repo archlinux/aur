@@ -1,0 +1,17 @@
+pkgbase = pelton-bin
+	pkgdesc = Open-source cross-platform desktop email client
+	pkgver = 2026.3.4
+	pkgrel = 1
+	url = https://github.com/TRC-Loop/Pelton
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = pelton
+	conflicts = pelton
+	options = !strip
+	options = !debug
+	source = Pelton-v2026.3.4-linux-amd64.deb::https://github.com/TRC-Loop/Pelton/releases/download/v2026.3.4/Pelton-v2026.3.4-linux-amd64.deb
+	sha256sums = 14ff147a172cf9fe55ff9dcc97e8268d5fd43dfc6c0ca0a0b628fb3bb0fd33f7
+
+pkgname = pelton-bin
