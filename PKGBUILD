@@ -7,7 +7,7 @@ arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0-or-later')
 makedepends=(lazarus make fpc gettext binutils gtk2 git python)
-depends=(gtk2 heidisql mariadb-libs postgresql-libs libperconaserverclient sqlite freetds)
+depends=(gtk2 heidisql mariadb-libs postgresql-libs sqlite freetds)
 provides=("${pkgname%-git}" heidisql-client)
 conflicts=("${pkgname%-git}")
 

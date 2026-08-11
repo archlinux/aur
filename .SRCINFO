@@ -17,7 +17,6 @@ pkgbase = heidisql-gtk2-git
 	depends = heidisql
 	depends = mariadb-libs
 	depends = postgresql-libs
-	depends = libperconaserverclient
 	depends = sqlite
 	depends = freetds
 	provides = heidisql-gtk2
