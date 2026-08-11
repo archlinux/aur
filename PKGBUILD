@@ -1,13 +1,13 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-qt6
 pkgver=12.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0-or-later')
 makedepends=(lazarus make fpc gettext binutils qt6pas)
-depends=(qt6pas heidisql mariadb-libs postgresql-libs sqlite freetds)
+depends=(qt6pas heidisql mariadb-clients postgresql-libs sqlite freetds)
 provides=(heidisql-client)
 
 source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
