@@ -1,16 +1,18 @@
 pkgbase = python-aerokit
 	pkgdesc = Python tools for basic fluid mechanics computations
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/jgressier/aerokit
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-cov
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-numpy
-	source = aerokit-1.2.1.tar.gz::https://github.com/jgressier/aerokit/archive/v1.2.1.tar.gz
-	sha512sums = 7ad07102f0033c4552a1f08bbf3fd9fa7fa6b4d0f2fa52d910e7a03e0700a0fc0acbe29778501cc342b35a0a15766d898bd5771cbeb909a966d03a6d41fc1f1f
+	depends = python-matplotlib
+	depends = python-scipy
+	source = aerokit-1.3.0.tar.gz::https://github.com/jgressier/aerokit/archive/v1.3.0.tar.gz
+	sha512sums = 28a2ebc5a691054913f2bfef7d83169ff9a5270f9149c4b5d396f77b539a84f799b1776814283eaeb776f59edd1307daf1a16b2016f51cf0323bb0335c7c3552
 
 pkgname = python-aerokit

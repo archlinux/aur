@@ -2,7 +2,7 @@
 _base=aerokit
 pkgname=python-${_base}
 pkgdesc="Python tools for basic fluid mechanics computations"
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 arch=(any)
 url="https://github.com/jgressier/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7ad07102f0033c4552a1f08bbf3fd9fa7fa6b4d0f2fa52d910e7a03e0700a0fc0acbe29778501cc342b35a0a15766d898bd5771cbeb909a966d03a6d41fc1f1f')
+sha512sums=('28a2ebc5a691054913f2bfef7d83169ff9a5270f9149c4b5d396f77b539a84f799b1776814283eaeb776f59edd1307daf1a16b2016f51cf0323bb0335c7c3552')
 
 build() {
   cd ${_base}-${pkgver}
