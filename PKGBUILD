@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r1509.g26357692c8
+pkgver=0.13.0.r1829.gf238788601
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -56,7 +56,27 @@ source=(
     'uncrustify_zig.tar.gz::https://codeberg.org/allyourcodebase/uncrustify/archive/2cdf880e4ffbe438a7946368cd45fca2df9f0f7a.tar.gz'
     'uncrustify.tar.gz::https://github.com/uncrustify/uncrustify/releases/download/uncrustify-0.83.0/uncrustify-0.83.0.tar.gz'
     'zig-compile-commands.tar.gz::https://github.com/the-argus/zig-compile-commands/archive/9400cd1963ea6bb58fe47ba7d9700075b808cdd2.tar.gz'
-    'tree-sitter-diff.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-diff/archive/2520c3f934b3179bb540d23e0ef45f75304b5fed.tar.gz'
+    'tree-sitter-diff.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-diff/releases/download/v0.2.0/tree-sitter-diff.tar.gz'
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '49f8399e453103064a23c65534f266f3067cda716b6502f016bfafeed5799354'
+    '0881cf186965ac3d601c25866c7540f8d82064e7a84f5b644ca6a41b54c2c9a6'
+    '69794b783cb004ec9fe2bbe2d7ac347681701bbcb15304b0324d8ec95fbd6e81'
+
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '60e89c03d2f2883ca990089ff8cb641e89723164dc238e849d0350380cdce928'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '5b785143a58878602ea8110498fe41a8b8e5ec34445bd2bf5468b5d2aab369c0'
 )
 noextract=(
     'ziglua.tar.gz'
@@ -72,26 +92,6 @@ noextract=(
     'uncrustify.tar.gz'
     'zig-compile-commands.tar.gz'
     'tree-sitter-diff.tar.gz'
-)
-b2sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'b27aa3bb208cbb68bac8b7722fb48fc76c4b862d19d1bc7564596316a25623d727c4d8d2e520c0abe416dc78b33c6aacd4b28968206b356e4fe80691886ca48b'
-    'd31cf81659e238fada8092755eb9be16f77c00a466107eb5770c6c9c32e043c91e6efada7ddb51663716a0e38ffa6e3d0093b3e6833aa961d845c7451a95491e'
-    '26588b9da6459393076723bdfb8d2b16fed882070f2326bf7c35cd272dee9c18df603afb1ae2254cd0a59eff68189caf04828ef165d5de42c7a4222267604101'
-
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '65e10c2d4ca2c661b666629a4ff793b41454eaee5b6f2789526294b3a9903b682dd7fffe4f5de21a8a96069324e6e5ffacba97cf1c74a2b72fb0349abee13fb1'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
 )
 _zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr)
 
@@ -115,7 +115,7 @@ prepare() {
     ts_vim_hash='N-V-__8AAPWmVADyg5WrfQyap9wVnE7y5EYV7I3MNEocN96-'
     ts_vimdoc_hash='N-V-__8AAI7VCgBqRcQ-vIxB8DJJFhmLG42p6rfwCWIdypSJ'
     ts_query_hash='N-V-__8AAMR5AwAzZ5_8S2p2COTEf5usBeeT4ORzh-lBGkWy'
-    ts_diff_hash='N-V-__8AAAULEwDDBPj9cGOTHPT1iE6oZabnwo70bstgVEf_'
+    ts_diff_hash='N-V-__8AAPUcFACL4N4XTVUilDAwPIkX8066VSaipW5tYXDT'
     uncrustify_zig_hash='uncrustify-0.83.0-qkVd7cVCAADAg1kS3ctVBhY2gkxEIs-W8wgurLadbgC-'
     uncrustify_hash='N-V-__8AAHtpjADYwuwWGmuD_g-_sfCssv0hLN0zgXCSHeux'
     zig_cc_hash='zig_compile_commands-0.0.1-OZg5-e_JAAAGg1WHAePtq4l4Uvjs34BexnFFCZk63EaG'
@@ -147,7 +147,7 @@ prepare() {
     tar xf "${srcdir}/tree-sitter-vim.tar.gz" -C $ts_vim_hash --strip-components=1
     tar xf "${srcdir}/tree-sitter-vimdoc.tar.gz" -C $ts_vimdoc_hash --strip-components=1
     tar xf "${srcdir}/tree-sitter-query.tar.gz" -C $ts_query_hash
-    tar xf "${srcdir}/tree-sitter-diff.tar.gz" -C $ts_diff_hash --strip-components=1
+    tar xf "${srcdir}/tree-sitter-diff.tar.gz" -C $ts_diff_hash
     tar xf "${srcdir}/uncrustify_zig.tar.gz" -C $uncrustify_zig_hash --strip-components=1
     tar xf "${srcdir}/uncrustify.tar.gz" -C $uncrustify_hash --strip-components=1
     tar xf "${srcdir}/zig-compile-commands.tar.gz" -C $zig_cc_hash --strip-components=1
