@@ -9,7 +9,7 @@ readonly PREFIX="$DATA_HOME/prefix"
 readonly CONFIG_FILE="$CONFIG_HOME/config"
 readonly INSTALLER_URL='https://download.roonlabs.com/builds/RoonInstaller64.exe'
 readonly INSTALLER="$CACHE_HOME/RoonInstaller64.exe"
-readonly INSTALLER_SHA512='885b4a11d037d330a17b3418b388c7a59dce1a2b976ceac3d3151cf0d0339b3f917d97490b5512e46aefdd78743632fb2ecbd1021c35a7a72ae6bf2e95394de0'
+readonly INSTALLER_SHA512='b93fc7889fef7f4d5dc7e025fcb62815c9a62cbe5e562ab8ea51e2db7bb9901171ccdda42c7ca49206e17b31b38e685dfeb1b4c682e37205f86401d4c6d05add'
 readonly PROTON_VERSION='GE-Proton10-34'
 readonly PROTON_ARCHIVE="$CACHE_HOME/$PROTON_VERSION.tar.gz"
 readonly PROTON_HOME="$DATA_HOME/runtimes"
@@ -279,7 +279,7 @@ managed_launcher_pids() {
     [[ -r $proc ]] || continue
     pid=${proc#/proc/}
     pid=${pid%/cmdline}
-    [[ $pid != $$ ]] || continue
+    [[ $pid != "$$" ]] || continue
     while IFS= read -r -d '' argument; do
       if [[ $argument == "$exe" ]]; then
         printf '%s\n' "$pid"
