@@ -1,6 +1,6 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
-	pkgver = 1.10.4
+	pkgver = 1.11.0
 	pkgrel = 5
 	url = https://kanidm.com
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = kanidm-bin
 	license = MPL-2.0
 	options = !debug
 	options = !strip
-	source_x86_64 = kanidm-v1.10.4-x86_64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = a718397db19a558e8a70b961100343fbe7ffb89c72cfaf4eab85cea3d1712775
-	source_aarch64 = kanidm-v1.10.4-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = 1d2a158798e70847b0ee5cd8a6de168ef6803cc0b7e08d69079129fcb4b3b1e5
+	source_x86_64 = kanidm-v1.11.0-x86_64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.11.0-bin/kanidm-v1.11.0-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6a590557efc7e0182c4420f9562ad9da171cf072a6e72889363f820779a77eec
+	source_aarch64 = kanidm-v1.11.0-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.11.0-bin/kanidm-v1.11.0-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = aad0d39a59510bbb032b471eab05f29042ae9904b8a13a74ba9bac99012e74d3
 
 pkgname = kanidm-clients-bin
 	pkgdesc = Kanidm command-line client (prebuilt binaries)
@@ -20,7 +20,7 @@ pkgname = kanidm-clients-bin
 	depends = openssl
 	depends = sqlite
 	provides = kanidm-clients
-	provides = kanidm-clients=1.10.4
+	provides = kanidm-clients=1.11.0
 	conflicts = kanidm-clients
 
 pkgname = kanidm-unixd-clients-bin
@@ -35,7 +35,7 @@ pkgname = kanidm-unixd-clients-bin
 	depends = tpm2-tss
 	depends = systemd-libs
 	provides = kanidm-unixd-clients
-	provides = kanidm-unixd-clients=1.10.4
+	provides = kanidm-unixd-clients=1.11.0
 	conflicts = kanidm-unixd-clients
 
 pkgname = kanidm-server-bin
@@ -48,7 +48,7 @@ pkgname = kanidm-server-bin
 	depends = systemd-libs
 	depends = libcap
 	provides = kanidm-server
-	provides = kanidm-server=1.10.4
+	provides = kanidm-server=1.11.0
 	conflicts = kanidm-server
 
 pkgname = kanidm-bin
@@ -57,5 +57,5 @@ pkgname = kanidm-bin
 	depends = kanidm-unixd-clients-bin
 	depends = kanidm-server-bin
 	provides = kanidm
-	provides = kanidm=1.10.4
+	provides = kanidm=1.11.0
 	conflicts = kanidm
