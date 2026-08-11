@@ -1,6 +1,6 @@
 pkgbase = python-anyconfig
 	pkgdesc = Provides common APIs to load and dump configuration files in various formats
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ssato/python-anyconfig
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-anyconfig
 	optdepends = python-tomli-w: TOML support (writer)
 	optdepends = python-typing_extensions: type validation
 	optdepends = python-yaml: YAML support
-	source = https://files.pythonhosted.org/packages/source/a/anyconfig/anyconfig-0.15.1.tar.gz
-	b2sums = 2c60e412058bdbaed3d6f3ce9cd56e1001cc7c1f50c9b1f958cbafbbff24e3933f8a776d0ab4e99c2b2bb2e3bb3b8e997321536a5f69db50fc5ee09622b48c19
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig/anyconfig-0.16.0.tar.gz
+	b2sums = 6c98a0a0a5f53dfb5d4af88274e856f25f3f635b9fb2e02c6a6b6b0510f9d2b0dd3c1e7bf6704df3cae277309a079dec68cc48c0756f2365f985ee9442e92b56
 
 pkgname = python-anyconfig
