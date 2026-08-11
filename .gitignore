@@ -1,4 +1,5 @@
+/piped-html-proxy/
 *.pkg.tar.zst
-piped-html-proxy/
-pkg/
-src/
+/src/
+/pkg/
+/*.log
