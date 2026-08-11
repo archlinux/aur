@@ -1,6 +1,6 @@
 pkgbase = minnow
 	pkgdesc = A simple, lightweight file manager for KDE
-	pkgver = 0.1.5.3
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/minnowfm/minnow
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = minnow
 	depends = karchive
 	depends = knotifications
 	depends = kwindowsystem
-	source = minnow-0.1.5.3.tar.gz::https://github.com/minnowfm/minnow/archive/refs/tags/v0.1.5.3.tar.gz
-	sha256sums = 3abf7472bbf9981a1bc68713ad07504d7592a9a8d1ad18663ab6d38f803ffce6
+	source = minnow-0.1.6.tar.gz::https://github.com/minnowfm/minnow/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 51e55591111fc20cee75ead68bfbc215e8dc0db0a62f85629bb177bb2b679d34
 
 pkgname = minnow
