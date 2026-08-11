@@ -1,11 +1,11 @@
-# Maintainer: Devon T. Bautista <devonb@lanl.gov>
+# Maintainer: Devon T. Bautista <archlinux@synackd.org>
 _pkgname=ochami
 pkgname="${_pkgname}-git"
-pkgver=v0.0.7.r0.ca7625f
+pkgver=v0.10.2.r0.a536eb0
 pkgrel=1
 pkgdesc="Command line interface for OpenCHAMI services"
 arch=('aarch64' 'x86_64')
-url="https://github.com/OpenCHAMI/${_pkgname}"
+url="https://github.com/openchami/${_pkgname}"
 license=('MIT')
 groups=('openchami')
 makedepends=('git' 'go' 'inetutils' 'make' 'scdoc')

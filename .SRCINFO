@@ -1,8 +1,8 @@
 pkgbase = ochami-git
 	pkgdesc = Command line interface for OpenCHAMI services
-	pkgver = v0.0.7.r0.ca7625f
+	pkgver = v0.10.2.r0.a536eb0
 	pkgrel = 1
-	url = https://github.com/OpenCHAMI/ochami
+	url = https://github.com/openchami/ochami
 	arch = aarch64
 	arch = x86_64
 	groups = openchami
@@ -19,7 +19,7 @@ pkgbase = ochami-git
 	conflicts = ochami
 	conflicts = ochami-bin
 	backup = etc/ochami/config.yaml
-	source = git+https://github.com/OpenCHAMI/ochami
+	source = git+https://github.com/openchami/ochami
 	sha256sums = SKIP
 
 pkgname = ochami-git
