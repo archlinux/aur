@@ -3,7 +3,7 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r11907.1a8566182
+pkgver=r12153.af7cbc488
 pkgrel=1
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -26,6 +26,11 @@ pkgver() {
 }
 
 prepare() {
+  # About only shows the commit line for nightly versions; widen that check for
+  # -git builds so we can keep package.json as the base SemVer.
+  sed -i 's/NIGHTLY_VERSION_PATTERN.test(version) && commit.length > 0/commit.length > 0/' \
+    "$srcdir/$_pkgname/src/renderer/helpers/versionDisplay.js"
+
   sed -i "5i electronDist: '/usr/lib/electron43'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
@@ -33,7 +38,8 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   pnpm install --frozen-lockfile
-  pnpm build
+  # Webpack maps GITHUB_SHA -> BUILD_COMMIT for the About commit line.
+  GITHUB_SHA="$(git rev-parse HEAD)" pnpm build
 }
 
 package() {
