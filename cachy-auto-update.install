@@ -1,0 +1,37 @@
+_check_sudoers() {
+  # A malformed drop-in in /etc/sudoers.d takes sudo down for the whole
+  # machine, so say so loudly rather than leaving it to be discovered later.
+  if command -v visudo > /dev/null 2>&1; then
+    if ! visudo -cf /etc/sudoers.d/cachy-auto-update > /dev/null 2>&1; then
+      printf '\n  WARNING: /etc/sudoers.d/cachy-auto-update did not validate.\n' >&2
+      printf '  AUR updates will not work until this is resolved.\n\n' >&2
+    fi
+  fi
+}
+
+post_install() {
+  _check_sudoers
+
+  cat <<'EOF'
+
+  cachy-auto-update is installed but not active yet.
+
+    sudo cachy-auto-update          interactive setup
+    sudo cachy-auto-update enable   turn automatic updates on
+    sudo cachy-auto-update status   see what it would do right now
+
+  AUR packages are built by a locked system account that is allowed to call
+  pacman without a password (/etc/sudoers.d/cachy-auto-update). No user
+  password is stored anywhere. Set UpdateAUR=no in
+  /etc/cachy-auto-update/cachy-auto-update.conf to opt out of that entirely.
+
+EOF
+}
+
+post_upgrade() {
+  _check_sudoers
+}
+
+pre_remove() {
+  systemctl disable --now cachy-auto-update.timer > /dev/null 2>&1 || true
+}
