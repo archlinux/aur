@@ -1,6 +1,6 @@
 pkgbase = xremap-kde-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland (KDE Wayland Version)
-	pkgver = 0.15.9
+	pkgver = 0.15.10
 	pkgrel = 1
 	url = https://github.com/xremap/xremap
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = xremap-kde-bin
 	license = MIT
 	provides = xremap
 	options = !debug
-	source = LICENSE-0.15.9::https://raw.githubusercontent.com/xremap/xremap/v0.15.9/LICENSE
+	source = LICENSE-0.15.10::https://raw.githubusercontent.com/xremap/xremap/v0.15.10/LICENSE
 	sha256sums = 60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343
-	source_x86_64 = xremap-kde-bin-0.15.9-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.15.9/xremap-linux-x86_64-kde.zip
-	sha256sums_x86_64 = 572b70fc09fa45bec207cfb2374084a35250ed315957ac0c6d6ebe6e1851e9ca
-	source_aarch64 = xremap-kde-bin-0.15.9-aarch64.zip::https://github.com/xremap/xremap/releases/download/v0.15.9/xremap-linux-aarch64-kde.zip
-	sha256sums_aarch64 = 663e9bd79eabc9add4a392f4d83cb7a97fa48eff7f6d7f2f6e8599ee1bf77d1b
+	source_x86_64 = xremap-kde-bin-0.15.10-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.15.10/xremap-linux-x86_64-kde.zip
+	sha256sums_x86_64 = e21ad5597fa2a8b9e851d3cfb7a1b3745b3626cb00ff948807e3754ac2dd3d6b
+	source_aarch64 = xremap-kde-bin-0.15.10-aarch64.zip::https://github.com/xremap/xremap/releases/download/v0.15.10/xremap-linux-aarch64-kde.zip
+	sha256sums_aarch64 = 239a2ed2a1182c4e048e7bf82e43ead21f4ca9188b03763c028c2ed3f68d0767
 
 pkgname = xremap-kde-bin
