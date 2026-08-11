@@ -1,0 +1,4 @@
+[otf-bravura]
+source = "git"
+git = "https://github.com/steinbergmedia/bravura.git"
+prefix = "bravura-"
