@@ -5,7 +5,7 @@
 # - https://aur.archlinux.org/ollama-for-amd-git
 
 pkgname=ollama-for-amd
-pkgver=0.30.0
+pkgver=0.30.8 # renovate: datasource=github-releases depName=likelovewant/ollama-for-amd
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm, patched for AMD GPUs'
 arch=(x86_64 aarch64)
@@ -15,59 +15,58 @@ conflicts=(ollama ollama-rocm)
 provides=("ollama=${pkgver}")
 depends=(comgr gcc-libs "hip-runtime-amd>=6.3.2" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi' 'amdgpu_top: tool that shows AMD GPU utilization')
-makedepends=(cmake git gcc-libs "go>=1.24" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+makedepends=(cmake git "go>=1.24" hipblas-common rocm-hip-sdk rocm-opencl-sdk)
 options=(!distcc !debug strip lto)
-source=(${url}/archive/refs/tags/v${pkgver}.tar.gz
-    ollama.service
-    sysusers.conf
-    tmpfiles.conf)
-b2sums=(
-    '2f03953b5cb14daff0599c7243c96849759dba928ec068235bb1e5320c3225e00f8bf736d7529d6a010ed6312d721182a3636c27d083c3bf0f01e13f1907fb12'
-    '683efc624a883aeb653b0afe944c0ab1fb4b79ff838066d3050d5ec6f8d21770c8cf65cf6fbb2ade7daacb65e0b54caed93cce1f7b987991aec6a9b69464f1ee'
-    '68622ac2e20c1d4f9741c57d2567695ec7b5204ab43356d164483cd3bc9da79fad72489bb33c8a17c2e5cb3b142353ed5f466ce857b0f46965426d16fb388632'
-    'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	ollama.service
+	sysusers.conf
+	tmpfiles.conf)
+b2sums=('a59bba819f23370a453f01331266dcfbe7b6d1d5df9db787177fd44ca1af1bc9f0664555c36485b2e6cb150ce64c01151971cf55027f0724d42ab0d289fedf19'
+	'b2567ca9222da664aa52d290bfdea34bec7f03ea0553888a849aad582fc340c17176ede35abd366ca159615af32617fcc23279f3ce1566422ba22f0e46783cf8'
+	'68622ac2e20c1d4f9741c57d2567695ec7b5204ab43356d164483cd3bc9da79fad72489bb33c8a17c2e5cb3b142353ed5f466ce857b0f46965426d16fb388632'
+	'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
 prepare() {
-    cd ${pkgname}-${pkgver}
+	cd "${pkgname}-${pkgver}" || return
 
-    sed -i 's/check_language(CUDA)//g' CMakeLists.txt
+	sed -i 's/check_language(CUDA)//g' CMakeLists.txt
 }
 
 build() {
-    export CMAKE_HIP_COMPILER=/tmp
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -X=github.com/ollama/ollama/version.Version=${pkgver} -X=github.com/ollama/ollama/server.mode=release'"
+	export CMAKE_HIP_COMPILER=/tmp
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOPATH="${srcdir}"
+	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -X=github.com/ollama/ollama/version.Version=${pkgver} -X=github.com/ollama/ollama/server.mode=release'"
 
-    cd ${pkgname}-${pkgver}
+	cd "${pkgname}-${pkgver}" || return
 
-    # all possible targets are usually listed on the latest release: https://github.com/likelovewant/ollama-for-amd/releases
-    #   https://rocm.docs.amd.com/en/docs-6.4.0/reference/gpu-arch-specs.html
-    # this config is set to mainstream cards RX6000 - RX9000 (including workstation cards)
-    cmake \
-        -B build \
-        -DAMDGPU_TARGETS="gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1103;gfx1150;gfx1151;gfx1200;gfx1201" \
-        -Wno-dev
-    cmake --build build --config Release
-    go build .
+	# all possible targets are usually listed on the latest release: https://github.com/likelovewant/ollama-for-amd/releases
+	#   https://rocm.docs.amd.com/en/docs-6.4.0/reference/gpu-arch-specs.html
+	# this config is set to mainstream cards RX6000 - RX9000 (including workstation cards)
+	cmake \
+		-B build \
+		-DAMDGPU_TARGETS="gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1103;gfx1150;gfx1151;gfx1200;gfx1201" \
+		-Wno-dev
+	cmake --build build --config Release
+	go build .
 }
 
 package() {
-    install -dm755 ${pkgdir}/var/lib/ollama
-    install -dm755 ${pkgdir}/usr/{bin,lib/ollama}
-    install -Dm644 ${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/ollama/LICENSE
-    install -Dm755 ${pkgname}-${pkgver}/ollama ${pkgdir}/usr/bin/ollama
-    if [ "$CARCH" = "aarch64" ]; then
-        install -Dm755 ${pkgname}-${pkgver}/build/lib/ollama/*base* ${pkgdir}/usr/lib/ollama
-    else
-        install -Dm755 ${pkgname}-${pkgver}/build/lib/ollama/* ${pkgdir}/usr/lib/ollama
-    fi
-    install -Dm644 ollama.service ${pkgdir}/usr/lib/systemd/system/ollama.service
-    install -Dm644 sysusers.conf ${pkgdir}/usr/lib/sysusers.d/ollama.conf
-    install -Dm644 tmpfiles.conf ${pkgdir}/usr/lib/tmpfiles.d/ollama.conf
+	install -dm755 "${pkgdir}"/var/lib/ollama
+	install -dm755 "${pkgdir}"/usr/{bin,lib/ollama}
+	install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/ollama/LICENSE"
+	install -Dm755 "${pkgname}-${pkgver}/ollama" "${pkgdir}/usr/bin/ollama"
+	if [ "$CARCH" = "aarch64" ]; then
+		install -Dm755 "${pkgname}-${pkgver}"/build/lib/ollama/*base* "${pkgdir}/usr/lib/ollama"
+	else
+		install -Dm755 "${pkgname}-${pkgver}"/build/lib/ollama/* "${pkgdir}/usr/lib/ollama"
+	fi
+	install -Dm644 ollama.service "${pkgdir}/usr/lib/systemd/system/ollama.service"
+	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/ollama.conf"
+	install -Dm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/ollama.conf"
 
-    ln -s /var/lib/ollama ${pkgdir}/usr/share/ollama
+	ln -s /var/lib/ollama "${pkgdir}/usr/share/ollama"
 }
