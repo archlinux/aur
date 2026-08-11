@@ -1,7 +1,7 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=tinox-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/subnix-work/tinox"
@@ -13,7 +13,11 @@ optdepends=(
   'postgresql-libs: DB feature with driver = "postgres" in tinox.toml'
   'mariadb-libs: DB feature with driver = "mysql" in tinox.toml'
 )
-provides=('tinox')
+# Versioned (not bare "tinox") so a versioned makedepends on another
+# package (e.g. jgrep-tinox's makedepends=('tinox>=2.0.0')) can actually
+# resolve against this -- pacman only matches a "provides" against a
+# version constraint if the provides entry itself carries a version.
+provides=("tinox=$pkgver")
 conflicts=('tinox')
 source=("https://github.com/subnix-work/tinox/releases/download/v${pkgver}/tinox-${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('1ae4190a5bf4e3b2c92d534320dbdeff89025d158dc18b7de6f6ef05a36f638a')
