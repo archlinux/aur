@@ -2,13 +2,13 @@
 
 pkgname=audacious-discord-rpc-git
 pkgver=2.4.r1.g84a5f8e
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord Rich Presence plugin for Audacious (git version)'
 arch=('x86_64')
 url='https://github.com/onegen-dev/audacious-discord-rpc'
 license=('MIT')
 depends=(
-    'audacious>=4.6'
+    'audacious'
     'curl'
     'fmt'
     'glibc'
