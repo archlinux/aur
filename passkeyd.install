@@ -1,0 +1,59 @@
+post_install() {
+    exec > /dev/tty
+    echo -e "\e[1m==> \e[36mSelect your preferred passkeyd user interface:\e[0m"
+    echo -e "    \e[1m\e[34m1) ice\e[0m (Universal - works on any desktop)"
+    echo -e "    \e[1m\e[36m2) kde\e[0m (Native KDE Plasma)"
+    echo -e "    \e[1m\e[32m3) gtk\e[0m (Native GTK)"
+    printf "\e[1m==> \e[0mEnter your choice [1-3] (default: 1): "
+    read -r choice < /dev/tty
+
+    case "$choice" in
+        2) ui="kde" ;;
+        3) ui="gtk" ;;
+        *) ui="ice" ;;
+    esac
+
+    if [ -f /etc/passkeyd.conf ]; then
+        sed -i "s|FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
+        sed -i "s|FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
+        sed -i "s|FRONT_SELECTION=.*|FRONT_SELECTION=/usr/lib/passkeyd/passkeyd-${ui}-selection|" /etc/passkeyd.conf
+    fi
+
+    echo -e "\e[1m==> \e[32mConfigured passkeyd to use the '${ui}' user interface.\e[0m"
+    echo -e "\e[1m==> \e[0mThis user interface can be changed via config \e[1;31m/etc/passkeyd.conf\e[0m"
+}
+
+post_upgrade() {
+    exec > /dev/tty
+    echo -e "\e[1m==> \e[32mpasskeyd has been upgraded.\e[0m\n"
+    echo "==> Would you like to switch your user interface?"
+    echo -e "    \e[1m\e[34m1) ice\e[0m (Universal - works on any desktop)"
+    echo -e "    \e[1m\e[36m2) kde\e[0m (Native KDE Plasma)"
+    echo -e "    \e[1m\e[32m3) gtk\e[0m (Native GTK)"
+    echo "    4) Manually upgrade configuration"
+    printf "==> Enter your choice [1-4] (default: 4): "
+    read -r choice < /dev/tty
+
+    case "$choice" in
+        1) ui="ice" ;;
+        2) ui="kde" ;;
+        3) ui="gtk" ;;
+        *) ui="" ;;
+    esac
+
+    if [ -n "$ui" ]; then
+        if [ -f /etc/passkeyd.conf ]; then
+            sed -i "s|FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
+            sed -i "s|FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
+            sed -i "s|FRONT_SELECTION=.*|FRONT_SELECTION=/usr/lib/passkeyd/passkeyd-${ui}-selection|" /etc/passkeyd.conf
+        fi
+        echo -e "\e[1m==> \e[32mSwitched passkeyd user interface to '${ui}'.\e[0m"
+    else
+        echo -e "\e[1m==> \e[33mSkipping automatic configuration update.\e[0m"
+        echo -e "\e[1m==> \e[0mNote: Binary names have changed upstream:"
+        echo -e "    - \e[1;33mpasskeyd-select\e[0m is now \e[1;34mpasskeyd-ice-select\e[0m"
+        echo -e "    - \e[1;33mpasskeyd-enroll\e[0m is now \e[1;34mpasskeyd-ice-enroll\e[0m"
+        echo -e "    - \e[1;33mpasskeyd-selection\e[0m is now \e[1;34mpasskeyd-ice-selection\e[0m"
+        echo -e "\e[1m==> \e[0mUpdate \e[1;31m/etc/passkeyd.conf\e[0m manually if your configuration references the old binary names."
+    fi
+}
