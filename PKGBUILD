@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=modbustools-git
-pkgver=0.5.0.r3.gfe10734
+pkgver=0.5.0.r8.g167fa93
 pkgrel=1
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
@@ -11,9 +11,9 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    libgcc
-    libstdc++
     hicolor-icon-theme
+    libgcc_s.so
+    libstdc++.so
     qt5-base
     qt5-tools
     python
