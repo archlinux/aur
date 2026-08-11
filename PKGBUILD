@@ -1,4 +1,5 @@
 # Maintainer: Bartek Laskowski <bartek at undg dot dev>
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=pulse-remote-git
 pkgver=1.0.0
