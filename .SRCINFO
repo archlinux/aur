@@ -1,7 +1,7 @@
 pkgbase = openai-chatgpt
 	pkgdesc = OpenAI's ChatGPT desktop app for Linux (preview)
 	pkgver = 26.803.81509
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chatgpt.com/download/
 	install = openai-chatgpt.install
 	arch = x86_64
@@ -47,10 +47,7 @@ pkgbase = openai-chatgpt
 	optdepends = org.freedesktop.secrets: secure credential storage
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	provides = openai-chatgpt-bin=26.803.81509
-	provides = chatgpt-desktop=26.803.81509
 	conflicts = chatgpt
-	conflicts = chatgpt-desktop
-	conflicts = openai-codex-desktop
 	options = !strip
 	options = !debug
 	backup = etc/apparmor.d/chatgpt
