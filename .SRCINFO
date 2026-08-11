@@ -1,0 +1,25 @@
+pkgbase = grimripper
+	pkgdesc = Graphical audio CD ripper and encoder (based on Asunder)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Salamandar/GrimRipper
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gettext
+	makedepends = meson
+	depends = cdparanoia
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libcddb
+	optdepends = fdkaac: for mp3 support
+	optdepends = flac: for flac support
+	optdepends = lame: for mp3 support
+	optdepends = mac: for monkey audio support
+	optdepends = musepack-tools: for musepack support
+	optdepends = opus-tools: for opus support
+	optdepends = vorbis-tools: for ogg support
+	optdepends = wavpack: for wavpack support
+	source = grimripper-3.0.2.tar.gz::https://gitlab.gnome.org/Salamandar/GrimRipper/-/archive/v3.0.2/GrimRipper-v3.0.2.tar.gz
+	sha512sums = 693a6f9ebb3b4b751b23c23b04bb9e3885c3d9054b9b664a1b9776ab38bd60f7bb088b5cba5047556c3feb4edc80a29ee9f2fc1139f26df6cbd6c51de65bf667
+
+pkgname = grimripper
