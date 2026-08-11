@@ -1,8 +1,8 @@
 pkgbase = chain-lang
 	pkgdesc = Chain programming language interpreter
 	pkgver = 0.5.1
-	pkgrel = 1
-	url = https://github.com/Pilot0253/chain-lang
+	pkgrel = 2
+	url = https://github.com/Nebania/chain-lang
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = chain-lang
 	conflicts = link-lang-bin
 	conflicts = chain-lang-git
 	conflicts = chain-lang-bin
-	source = https://github.com/Pilot0253/chain-lang/archive/refs/tags/v0.5.1.tar.gz
+	source = https://github.com/Nebania/chain-lang/archive/refs/tags/v0.5.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = chain-lang
