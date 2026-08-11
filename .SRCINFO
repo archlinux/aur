@@ -1,0 +1,16 @@
+pkgbase = papirus-xapp-symbolic-icons-git
+	pkgdesc = Papirus-styled versions of the xapp symbolic icons (XSI) used by Linux Mint, Cinnamon, and XApps
+	pkgver = r10.abc7f3e
+	pkgrel = 1
+	url = https://github.com/zquestz/papirus-xapp-symbolic-icons
+	install = papirus-xapp-symbolic-icons-git.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = papirus-icon-theme
+	provides = papirus-xapp-symbolic-icons
+	conflicts = papirus-xapp-symbolic-icons
+	source = papirus-xapp-symbolic-icons::git+https://github.com/zquestz/papirus-xapp-symbolic-icons
+	sha256sums = SKIP
+
+pkgname = papirus-xapp-symbolic-icons-git

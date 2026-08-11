@@ -1,0 +1,24 @@
+# The pacman gtk-update-icon-cache hook only refreshes theme roots this
+# package writes into (Papirus). Papirus-Dark and Papirus-Light reach our
+# icons through directory symlinks into Papirus, so their own icon caches
+# go stale and mask the new icons until refreshed.
+
+refresh_variant_caches() {
+    for theme in Papirus-Dark Papirus-Light; do
+        if [ -f "/usr/share/icons/$theme/index.theme" ]; then
+            gtk-update-icon-cache -q -t -f "/usr/share/icons/$theme" || :
+        fi
+    done
+}
+
+post_install() {
+    refresh_variant_caches
+}
+
+post_upgrade() {
+    refresh_variant_caches
+}
+
+post_remove() {
+    refresh_variant_caches
+}
