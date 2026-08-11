@@ -1,7 +1,7 @@
 pkgbase = sonic-pi
 	pkgdesc = The Live Coding Music Synth for Everyone
-	pkgver = 4.6.0
-	pkgrel = 6
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://sonic-pi.net/
 	arch = x86_64
 	groups = pro-audio
@@ -15,52 +15,49 @@ pkgbase = sonic-pi
 	license = Ruby
 	license = Apache-2.0
 	license = BSD-3-Clause
+	license = ISC
 	license = custom:ISC
-	makedepends = boost>=1.74.0
+	checkdepends = ruby-rake
+	checkdepends = ruby-mocha
+	checkdepends = ruby-minitest
 	makedepends = ruby-gettext>=3.4.4
-	makedepends = erlang-asn1
-	makedepends = erlang-public_key
-	makedepends = erlang-ssl
-	makedepends = erlang-parsetools
-	makedepends = erlang-sasl
-	makedepends = elixir
-	makedepends = git
+	makedepends = asio
 	makedepends = cmake
 	makedepends = gendesk
 	makedepends = chrpath
+	makedepends = pkgconf
 	makedepends = qt6-tools
-	makedepends = ruby-prime
+	makedepends = rust
 	makedepends = ruby-erb
+	makedepends = ruby-prime
 	makedepends = ruby-rexml
-	depends = ruby-rugged>=1.9.0
-	depends = ruby-i18n>=1.14.7
-	depends = ruby-kramdown>=2.1.0
-	depends = ruby-multi_json>=1.9.2
-	depends = ruby-memoist>=0.16.2
-	depends = ruby-tomlrb>=2.0.0
-	depends = ruby-wavefile>=0.8.1
+	depends = alsa-lib
 	depends = aubio
+	depends = libsndfile
+	depends = systemd-libs
+	depends = which
 	depends = ruby
 	depends = ruby-racc
-	depends = supercollider
+	depends = ruby-concurrent>=1.3.5
+	depends = ruby-i18n>=1.14.7
+	depends = ruby-kramdown>=2.1.0
+	depends = ruby-memoist>=0.16.2
+	depends = ruby-multi_json>=1.9.2
+	depends = ruby-rugged>=1.9.0
+	depends = ruby-tomlrb>=2.0.0
+	depends = ruby-tzinfo>=2.0.6
+	depends = ruby-wavefile>=0.8.1
 	depends = qscintilla-qt6
 	depends = qt6-base
 	depends = qt6-svg
-	depends = qt6-wayland
-	depends = which
-	optdepends = sc3-plugins: additional synthesis UGens for SuperCollider
 	optdepends = sox: audio processing and sample manipulation
-	source = sonic-pi-4.6.0.tar.gz::https://github.com/sonic-pi-net/sonic-pi/archive/refs/tags/v4.6.0.tar.gz
-	source = sonic-pi-4.6.0-gui_paths.patch
-	source = sonic-pi-4.6.0-ruby_paths.patch
-	source = sonic-pi-4.6.0-devendor_boost.patch
-	source = sonic-pi-4.6.0-boost_deprecated_lib.patch
-	source = sonic-pi-4.6.0-devendor_qscintilla_qt6.patch
-	sha512sums = d99d25bbb2e8b556156252140484502ce5bf2869f846b7aff69dae549812d18769b8cd6d9c474be36819d7a831b170553690906d89ece74cd9df2f80289d5892
-	sha512sums = 625b08cd7b1bbe93f898e36183badafed5e056b18df8d923b2ddb964fe358060501fcf63b9c8a05b95a5d9ab8d6dfb0419a7ed519b511c8e1612a7698df3f44a
-	sha512sums = fa091666d493f302b507a8c8ccaf1992ee64214ec0f45b92198f724fce2b1cee718204afeba4de5ab6d2849a1e9a1933b623054fc459227a15529146d9937d7e
-	sha512sums = 841265559a7551d87750dffb4e224da4fdfd0657627ea8c7e61a996c2c854ee5773525b66cb1d750a5193e65f7e5f13cc5729f95d1d3d86b01d7a1a8be97226c
-	sha512sums = 5eacc305934bfb294f830f2ca8ed3cf4b51baef7b5ff98fd282e6f3636aadd34805fe7ce1574bb6d8b6c0dcb5309f6e1128acd226622c5a4c6da0d6fa474a077
-	sha512sums = 9a0aa447019a4fd11255bc1d7c9056934aaf3238e2e6b93c3fff8143ec5d06ed7721a712eb09895ed7daf23781d30bfa3a938352bdc404ac32b17eb5007c669e
+	optdepends = libpipewire: native PipeWire audio backend (must be installed before building if you want pipewire features)
+	optdepends = qt6-wayland: window decorations under wlr-based Wayland compositors
+	source = sonic-pi-5.0.0.tar.gz::https://github.com/sonic-pi-net/sonic-pi/archive/refs/tags/v5.0.0.tar.gz
+	source = supersonic-2652a28eb6cb51a4fb696fca2f04b3e073bd26c2.tar.gz::https://github.com/samaaron/supersonic/archive/2652a28eb6cb51a4fb696fca2f04b3e073bd26c2.tar.gz
+	source = ableton-link-Link-4.0.tar.gz::https://github.com/Ableton/link/archive/refs/tags/Link-4.0.tar.gz
+	sha512sums = f40614cc5b6373362f13eefb5b7155ef21e30818fa81ef3f0f76348f4abe71a33524ae79e192976f583ac325a6cc52e33703e18cd4922c9ab0996c90b40a9a7b
+	sha512sums = f65913049a86969af68afc70761a8f5a3fbd9c1a4034be1587f2765f4ca46039d48e308b1669a19d5234248c951ce3d5fc5477c6fc7d26379d37bb8281170264
+	sha512sums = 4fd4846f907afc94694922c1171ae7016541425dca6f74b43455c600ffc4d2513a06fb09f1d589af43a8b56d11129d93e42f37e9eeeca5b05734188256a24077
 
 pkgname = sonic-pi

@@ -13,225 +13,192 @@ pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
-license=(CC-BY-SA-4.0 LGPL-2.1-only GPL-2.0-only GPL-3.0-only MIT CC0-1.0 BSL-1.0 Ruby Apache-2.0 BSD-3-Clause custom:ISC)
+license=(CC-BY-SA-4.0 LGPL-2.1-only GPL-2.0-only GPL-3.0-only MIT CC0-1.0 BSL-1.0 Ruby Apache-2.0 BSD-3-Clause ISC custom:ISC)
 groups=(pro-audio)
+
+# SuperSonic lives in the git submodule app/external/supersonic. GitHub's tag tarball doesn't carry
+# submodule contents, so it is fetched separately and dropped into place in prepare().
+_supersonic_commit=2652a28eb6cb51a4fb696fca2f04b3e073bd26c2
+# SuperSonic pulls Ableton Link with FetchContent at configure time.
+# It's pinned here and handed to the build via FETCHCONTENT_SOURCE_DIR_ABLETONLINK
+# so that build() needs no network.
+# Cannot be devendored right now as Arch ships 3.1.2 and supersonic depends on LinkAudio from 4.0.
+_link_tag=Link-4.0
+
 depends=(
-  'ruby-rugged>=1.9.0' 'ruby-i18n>=1.14.7' 'ruby-kramdown>=2.1.0' 'ruby-multi_json>=1.9.2' 'ruby-memoist>=0.16.2'
-  'ruby-tomlrb>=2.0.0' 'ruby-wavefile>=0.8.1' # devendored
-  aubio ruby ruby-racc
-  qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
+  alsa-lib aubio libsndfile systemd-libs which
+  ruby ruby-racc
+  # devendored ruby gems
+  'ruby-concurrent>=1.3.5' 'ruby-i18n>=1.14.7' 'ruby-kramdown>=2.1.0'
+  'ruby-memoist>=0.16.2' 'ruby-multi_json>=1.9.2' 'ruby-rugged>=1.9.0'
+  'ruby-tomlrb>=2.0.0' 'ruby-tzinfo>=2.0.6' 'ruby-wavefile>=0.8.1'
+  # GUI
+  qscintilla-qt6 qt6-base qt6-svg
 )
 makedepends=(
-  'ruby-gettext>=3.4.4'  # devendored
-  elixir git cmake gendesk chrpath qt6-tools
-  ruby-prime ruby-erb ruby-rexml
+  'ruby-gettext>=3.4.4'  # devendored, build-time only
+  asio cmake gendesk chrpath pkgconf qt6-tools rust
+  ruby-erb ruby-prime ruby-rexml
 )
-#checkdepends=(ruby-rake)  # cannot run tests right now, see below
+checkdepends=(ruby-rake ruby-mocha ruby-minitest)
 optdepends=(
   'sox: audio processing and sample manipulation'
+  'libpipewire: native PipeWire audio backend (must be installed before building if you want pipewire features)'
+  'qt6-wayland: window decorations under wlr-based Wayland compositors'
 )
 source=(
-  $pkgname-$pkgver.tar.gz::https://github.com/sonic-pi-net/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
-  $pkgname-$pkgver-gui_paths.patch
-  $pkgname-$pkgver-ruby_paths.patch
-  $pkgname-$pkgver-devendor_qscintilla_qt6.patch
+  $pkgname-$pkgver.tar.gz::https://github.com/sonic-pi-net/$pkgname/archive/refs/tags/v$pkgver.tar.gz
+  supersonic-$_supersonic_commit.tar.gz::https://github.com/samaaron/supersonic/archive/$_supersonic_commit.tar.gz
+  ableton-link-$_link_tag.tar.gz::https://github.com/Ableton/link/archive/refs/tags/$_link_tag.tar.gz
 )
 sha512sums=(
-  'd99d25bbb2e8b556156252140484502ce5bf2869f846b7aff69dae549812d18769b8cd6d9c474be36819d7a831b170553690906d89ece74cd9df2f80289d5892'
-  '625b08cd7b1bbe93f898e36183badafed5e056b18df8d923b2ddb964fe358060501fcf63b9c8a05b95a5d9ab8d6dfb0419a7ed519b511c8e1612a7698df3f44a'
-  'fa091666d493f302b507a8c8ccaf1992ee64214ec0f45b92198f724fce2b1cee718204afeba4de5ab6d2849a1e9a1933b623054fc459227a15529146d9937d7e'
-  '9a0aa447019a4fd11255bc1d7c9056934aaf3238e2e6b93c3fff8143ec5d06ed7721a712eb09895ed7daf23781d30bfa3a938352bdc404ac32b17eb5007c669e'
+  'f40614cc5b6373362f13eefb5b7155ef21e30818fa81ef3f0f76348f4abe71a33524ae79e192976f583ac325a6cc52e33703e18cd4922c9ab0996c90b40a9a7b'
+  'f65913049a86969af68afc70761a8f5a3fbd9c1a4034be1587f2765f4ca46039d48e308b1669a19d5234248c951ce3d5fc5477c6fc7d26379d37bb8281170264'
+  '4fd4846f907afc94694922c1171ae7016541425dca6f74b43455c600ffc4d2513a06fb09f1d589af43a8b56d11129d93e42f37e9eeeca5b05734188256a24077'
 )
 
+# SonicPi::Paths resolves the root as app/server/ruby/../../.. and the GUI is told via
+# -DSONIC_PI_INSTALL_ROOT
+_installroot=/usr/lib/$pkgname
+
 prepare() {
+  export CARGO_HOME="$srcdir/cargo-home"
+
   cd $pkgname-$pkgver
+
   gendesk -f -n \
           --pkgname $pkgname \
           --pkgdesc "$pkgdesc" \
           --name "Sonic Pi" \
           --categories "AudioVideo;Audio"
 
-  # patch app/gui/qt/{model/sonicpitheme,mainwindow}.cpp to set path to
-  # external components in /usr/{lib,share}/sonic-pi
-  printf "Apply patch to set FHS compliant GUI paths\n"
-  patch -Np1 -i "../$pkgname-$pkgver-gui_paths.patch"
+  printf 'Placing the SuperSonic submodule\n'
+  rmdir app/external/supersonic
+  mv "$srcdir/supersonic-$_supersonic_commit" app/external/supersonic
 
-  printf "Apply patch to devendor qscintilla\n"
-  patch -Np1 -i "../$pkgname-$pkgver-devendor_qscintilla_qt6.patch"
+  printf 'Placing Ableton Link\n'
+  mv "$srcdir/link-$_link_tag" "$srcdir/link"
 
-  printf "Removing vendored test packages\n"
+  printf 'Using the system asio rather than Link asio-standalone submodule\n'
+  sed -i 's|${PATH_TO_LINK}/modules/asio-standalone/asio/include|/usr/include|' \
+    "$srcdir/link/cmake_include/ConfigureAsioStandalone.cmake"
+
+  # FETCHCONTENT_SOURCE_DIR_* makes FetchContent treat the directory as already
+  # populated, which also skips its PATCH_COMMAND. Apply SuperSonic's four Link
+  # patches here instead, reusing upstream's own idempotent apply script so the
+  # patch list stays single-sourced.
+  printf 'Applying SuperSonic Link patches\n'
+  local _ssext="$srcdir/$pkgname-$pkgver/app/external/supersonic/external"
+  cd "$srcdir/link"
+  cmake -DLINK_PATCH_DIR="$_ssext" -P "$_ssext/apply-link-patches.cmake"
+  cd "$srcdir/$pkgname-$pkgver"
+
+  printf 'Removing vendored test packages\n'
   sed -i '/add_subdirectory(api-tests)/d' app/CMakeLists.txt
 
-  printf "Removing vendored rugged gem\n"
-  rm -rf app/server/ruby/vendor/rugged-*
+  # Devendor the gems that Arch packages. What's left:
+  # ruby-beautify 0.92.2 - not packaged for arch
+  # titleize - ancient, not worth devendoring as it's effectively static
+  printf 'Removing devendored and test-only gems\n'
+  rm -rvf app/server/ruby/vendor/{concurrent-ruby,i18n,kramdown,memoist}-*
+  rm -rvf app/server/ruby/vendor/{rugged,tomlrb,tzinfo,wavefile}-*
+  rm -rvf app/server/ruby/vendor/multi_json
+  rm -rvf app/server/ruby/vendor/{gettext,locale,text}-*
+  rm -rvf app/server/ruby/vendor/blankslate
+  rm -rvf app/server/ruby/vendor/rouge
+  rm -rvf app/server/ruby/vendor/{minitest,mocha,metaclass}-*
 
-  # Remove rugged from compile-extensions.rb since we're using system version
-  sed -i '/rugged/d' app/server/ruby/bin/compile-extensions.rb
+  printf 'Translating tutorial\n'
+  ruby app/server/ruby/bin/i18n-tool.rb -t
 
-  # Devendor kramdown - use system ruby-kramdown package
-  printf "Removing vendored kramdown gem\n"
-  rm -rf app/server/ruby/vendor/kramdown-*
+  printf 'Generating docs for the Qt GUI\n'
+  cp app/gui/utils/ruby_help.tmpl app/gui/utils/ruby_help.h
+  ruby app/server/ruby/bin/qt-doc.rb
 
-  # Devendor i18n - use system ruby-i18n package
-  printf "Removing vendored i18n gem\n"
-  rm -rf app/server/ruby/vendor/i18n-*
-
-  # Remove concurrent-ruby (will be pulled in automatically by ruby-i18n)
-  rm -rf app/server/ruby/vendor/concurrent-ruby-*
-
-  # Devendor multi_json - use system ruby-multi_json package
-  printf "Removing vendored multi_json gem\n"
-  rm -rf app/server/ruby/vendor/multi_json
-
-  # Devendor memoist - use system ruby-memoist package
-  printf "Removing vendored memoist gem\n"
-  rm -rf app/server/ruby/vendor/memoist-*
-
-  # Devendor tomlrb - use system ruby-tomlrb package
-  printf "Removing vendored tomlrb gem\n"
-  rm -rf app/server/ruby/vendor/tomlrb-*
-
-  # Devendor gettext - use system ruby-gettext package (build-time only)
-  printf "Removing vendored gettext gem\n"
-  rm -rf app/server/ruby/vendor/gettext-*
-
-  # Remove locale (will be pulled in automatically by ruby-gettext)
-  rm -rf app/server/ruby/vendor/locale-*
-
-  # Remove test-only and unused gems
-  printf "Removing vendored minitest gem\n"
-  rm -rf app/server/ruby/vendor/minitest-*
-  printf "Removing vendored mocha gem\n"
-  rm -rf app/server/ruby/vendor/mocha-*
-  printf "Removing vendored metaclass gem\n"
-  rm -rf app/server/ruby/vendor/metaclass-*
-  printf "Removing vendored blankslate gem\n"
-  rm -rf app/server/ruby/vendor/blankslate
-  printf "Removing vendored text gem\n"
-  rm -rf app/server/ruby/vendor/text-*
-  printf "Removing vendored rouge gem\n"
-  rm -rf app/server/ruby/vendor/rouge
-
-  # Not devendored:
-  #     'ruby-titleize>=1.4.1' - not on Arch/AUR - very old, not worth devendoring
-  #     'ruby-ruby-beautify2-git>=0.92.2' - not compatible with ruby-beautify2, ruby-beautify2 seems to expose RubyBeautify instead of RBeautify causing error; ruby-beautify not on AUR
-
-  # Devendor wavefile - use system ruby-wavefile package
-  printf "Removing vendored wavefile gem\n"
-  rm -rf app/server/ruby/vendor/wavefile-*
-
-  # printf "Removing vendored ruby-beautify gem\n"
-  # rm -rf app/server/ruby/vendor/ruby-beautify
-
-  # printf "Removing all contents of vendor except .keep\n"
-  # find app/server/ruby/vendor -mindepth 1 ! -name .keep -exec rm -rf {} +
-  # touch app/server/ruby/vendor/.keep
-
-  # TODO: devendor ast-2.0.0
-  # TODO: devendor atomic (bin)
-  # TODO: devendor benchmark-ips-2.3.0
-  # TODO: devendor interception (bin)
-  # TODO: devendor rubame
-  # TODO: devendor ruby-beautify
-  # TODO: devendor ruby-prof-0.15.8
-  # TODO: devendor thread_safe
-  # TODO: devendor websocket-ruby-1.2.8
-
-  # devendor gems requiring compilation:
-  sed -i '/native_ext_dirs/,$c\return' app/server/ruby/bin/compile-extensions.rb  # remove unrequired gems, so we don't create any doc for them
-  rm -rvf app/server/ruby/vendor/{activesupport,ffi,gettext,i18n,kramdown,locale,minitest,mocha,multi_json,polyglot,rouge,rugged,sys-proctable,text,treetop}*
-  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof,rake-compiler}*
+  printf 'Fetching rust crates\n'
+  cd app/external/supersonic/rust
+  cargo fetch --locked
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./app/linux-build-all.sh
+  export CARGO_HOME="$srcdir/cargo-home"
+  # rustc bakes absolute crate paths into panic messages, which would otherwise
+  # leave references to $srcdir (the cargo cache) in the engine binary.
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/$pkgname"
 
-  # patch app/server/ruby/lib/sonicpi/util.rb to set proper paths to external components
-  # NOTE: this can only be done after the build system has created the necessary directories and files
-  # app/server/ruby/bin/compile-extensions.rb
-  patch -Np1 -i "../$pkgname-$pkgver-ruby_paths.patch"
+  cd $pkgname-$pkgver
+
+  cmake -S app -B app/build -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSONIC_PI_INSTALL_ROOT="$_installroot" \
+    -DQSCINTILLA_ROOT=/usr/include/qt6 \
+    -DKISSFFT_STATIC=ON \
+    -DSUPERSONIC_SYSTEM_SNDFILE=ON \
+    -DSUPERSONIC_CARGO_OFFLINE=ON \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DFETCHCONTENT_SOURCE_DIR_ABLETONLINK="$srcdir/link"
+
+  cmake --build app/build
 }
 
-# Tests fail because they require the package to be fully installed first
-# The test suite tries to load files from /usr/share/sonic-pi/ which don't exist during build
-# See: https://github.com/samaaron/sonic-pi/issues/1865
-#check() {
-# cd "$pkgname-$pkgver"
-# cd app/server/ruby/test
-# rake test
-#}
+check() {
+  cd "$pkgname-$pkgver"
+  cd app/server/ruby
+  rake test
+}
 
 package() {
-  cd "$pkgname-$pkgver"/app
+  cd $pkgname-$pkgver
 
-  # Install with correct prefix
-  DESTDIR="$pkgdir" cmake --install build --prefix /usr
+  local _root="$pkgdir$_installroot"
 
-  # Install GUI executable
-  install -vDm 755 build/gui/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -vDm755 app/build/gui/$pkgname "$pkgdir/usr/bin/$pkgname"
 
-  cd ..
+  install -vDm644 VERSION -t "$_root/"
 
-  # Install generated desktop file
-  install -vDm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  # book
-  install -vDm 644 app/gui/book/*.html -t "$pkgdir/usr/share/$pkgname/book/"
-  # i18n
-  install -vDm 644 app/gui/lang/*.qm -t "$pkgdir/usr/share/$pkgname/lang/"
-  # help
-  install -vDm 644 app/gui/help/*.html -t "$pkgdir/usr/share/$pkgname/help/"
-  # html
-  install -vDm 644 app/gui/html/*.html -t "$pkgdir/usr/share/$pkgname/html/"
-  # images
-  install -vDm 644 app/gui/images/*.png -t "$pkgdir/usr/share/$pkgname/images/"
-  install -vDm 644 app/gui/images/coreteam/*.png -t "$pkgdir/usr/share/$pkgname/images/coreteam/"
-  install -vDm 644 app/gui/images/toolbar/default/*.png -t "$pkgdir/usr/share/$pkgname/images/toolbar/default/"
-  install -vDm 644 app/gui/images/toolbar/pro/*.png -t "$pkgdir/usr/share/$pkgname/images/toolbar/pro/"
-  install -vDm 644 etc/doc/images/tutorial/*.png -t "$pkgdir/usr/share/$pkgname/images/tutorial/"
-  # theme
-  install -vDm 644 app/gui/theme/app.qss -t "$pkgdir/usr/share/$pkgname/theme/"
-  install -vDm 644 app/gui/theme/dark/doc-styles.css -t "$pkgdir/usr/share/$pkgname/theme/dark/"
-  install -vDm 644 app/gui/theme/light/doc-styles.css -t "$pkgdir/usr/share/$pkgname/theme/light/"
-  install -vDm 644 app/gui/theme/high_contrast/doc-styles.css -t "$pkgdir/usr/share/$pkgname/theme/high_contrast/"
-  # samples
-  install -vDm 644 etc/samples/*.{flac,md} -t "$pkgdir/usr/share/$pkgname/samples/"
-  # snippets
-  install -vDm 644 etc/snippets/fx/*.sps -t "$pkgdir/usr/share/$pkgname/snippets/fx/"
-  install -vDm 644 etc/snippets/live_loop/*.sps -t "$pkgdir/usr/share/$pkgname/snippets/live_loop/"
-  install -vDm 644 etc/snippets/syntax/*.sps -t "$pkgdir/usr/share/$pkgname/snippets/syntax/"
-  # synthdefs
-  install -vDm 644 etc/synthdefs/compiled/*.scsyndef -t "$pkgdir/usr/share/$pkgname/synthdefs/compiled/"
-  install -vDm 644 etc/synthdefs/designs/overtone/$pkgname/*.clj -t "$pkgdir/usr/share/$pkgname/synthdefs/designs/overtone/"
-  install -vDm 644 etc/synthdefs/designs/overtone/$pkgname/src/sonic_pi/*.clj -t "$pkgdir/usr/share/$pkgname/synthdefs/designs/overtone/sonic_pi/src/"
-  install -vDm 644 etc/synthdefs/designs/overtone/$pkgname/test/sonic_pi/*.clj -t "$pkgdir/usr/share/$pkgname/synthdefs/designs/overtone/sonic_pi/test/"
-  # buffers
-  install -vDm 644 etc/buffers/*.wav -t "$pkgdir/usr/share/$pkgname/buffers/"
+  install -vd "$_root/app/gui"
+  cp -av app/gui/theme "$_root/app/gui/"
+
+  # Ruby server
+  install -vd "$_root/app/server"
+  cp -av app/server/ruby "$_root/app/server/"
+
+  # Strip build-only files (Rakefile, extconf.rb, and any native-extension
+  # artifacts) that have no business in an installed tree
+  find "$_root/app/server/ruby" -type f \
+    \( -name '*.o' -o -name '*.so' -o -name '*.c' -o -name '*.h' \
+       -o -name 'Rakefile' -o -name 'Makefile' -o -name 'extconf.rb' \) -delete
+  find "$_root/app/server/ruby" -type d -empty -delete
+
+  # Native helpers built above
+  install -vDm755 app/server/native/sonic-pi-supersonic -t "$_root/app/server/native/"
+  install -vDm755 app/server/native/aubio_onset -t "$_root/app/server/native/"
+  install -vDm644 app/server/native/piano_wavetable.dat -t "$_root/app/server/native/"
+
+  # etc/ holds the samples, synthdefs, snippets, examples, quickstart cards and
+  # generated documentation the server and GUI read at runtime. Keep it in
+  # /usr/share and point the install root at it
+  install -vd "$pkgdir/usr/share/$pkgname"
+  cp -av etc/. "$pkgdir/usr/share/$pkgname/"
+  ln -svf ../../share/$pkgname "$_root/etc"
+
+  # xdg
+  install -vDm644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
+  install -vDm644 app/gui/images/icon-smaller.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  # man page
+  install -vDm644 packaging/debian/$pkgname.1 -t "$pkgdir/usr/share/man/man1/"
+
   # docs
-  install -vDm 644 etc/doc/cheatsheets/*.md -t "$pkgdir/usr/share/doc/$pkgname/cheatsheets/"
-  # pdfs
-  install -vDm 644 etc/synthdefs/graphviz/pdf/*.pdf -t "$pkgdir/usr/share/doc/$pkgname/synthdefs/"
-  # tutorial
-  install -vDm 644 etc/doc/tutorial/*.md -t "$pkgdir/usr/share/doc/$pkgname/tutorial/"
-  # examples
-  install -vDm 644 etc/examples/algomancer/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/algomancer/"
-  install -vDm 644 etc/examples/apprentice/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/apprentice/"
-  install -vDm 644 etc/examples/illusionist/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/illusionist/"
-  install -vDm 644 etc/examples/incubation/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/incubation/"
-  install -vDm 644 etc/examples/magician/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/magician/"
-  install -vDm 644 etc/examples/sorcerer/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/sorcerer/"
-  install -vDm 644 etc/examples/wizard/*.rb -t "$pkgdir/usr/share/doc/$pkgname/examples/wizard/"
-  # ruby
-  install -vdm 755 "$pkgdir/usr/lib/$pkgname"
-  cp -av app/server "$pkgdir/usr/lib/$pkgname/"
-  find "$pkgdir/usr/lib/$pkgname/server" -type f \( -iname "*.o" -or -iname "*.c" -or -iname "*Rakefile" \) -delete
-
-  # # xdg
-  install -vDm 644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
-  install -vDm 644 app/gui/images/icon-smaller.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  ln -svf ../../$pkgname/examples "$pkgdir/usr/share/doc/$pkgname/examples"
+  ln -svf ../../$pkgname/doc/tutorial "$pkgdir/usr/share/doc/$pkgname/tutorial"
+  ln -svf ../../$pkgname/doc/cheatsheets "$pkgdir/usr/share/doc/$pkgname/cheatsheets"
 
   # license
-  install -vDm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm644 app/external/supersonic/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.supersonic"
 
   # fix /build path vulnerability
   chrpath -d "$pkgdir/usr/bin/$pkgname"
