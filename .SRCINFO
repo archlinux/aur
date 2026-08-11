@@ -1,6 +1,6 @@
 pkgbase = fernflower-bin
 	pkgdesc = Analytical decompiler for Java bytecode by JetBrains
-	pkgver = 262.8665.337
+	pkgver = 262.9437.185
 	pkgrel = 1
 	url = https://github.com/JetBrains/fernflower
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = fernflower-bin
 	provides = fernflower
 	conflicts = fernflower
 	conflicts = fernflower-git
-	noextract = fernflower-bin-262.8665.337.jar
+	noextract = fernflower-bin-262.9437.185.jar
 	options = !debug
-	source = fernflower-bin-262.8665.337.jar::https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/java/java-decompiler-engine/262.8665.337/java-decompiler-engine-262.8665.337.jar
+	source = fernflower-bin-262.9437.185.jar::https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/java/java-decompiler-engine/262.9437.185/java-decompiler-engine-262.9437.185.jar
 	sha256sums = 2885f0ff6526eb5791367c21055f685b8f9010cb841666cccaec7fc248a6d5e7
 
 pkgname = fernflower-bin
