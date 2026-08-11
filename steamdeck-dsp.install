@@ -1,0 +1,19 @@
+post_install() {
+  # Enable filter-chain.service that loads the filters in a separate process from pipewire
+  systemctl --global enable filter-chain.service
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 0.70-2) < 0)); then
+    systemctl --global enable filter-chain.service
+  fi
+}
+
+pre_remove() {
+  # The filter-chain.service has `Also=pipewire.socket` in its `[Install]` section.
+  # Here we only want to disable the filter-chain, and not also the pipewire socket,
+  # because that's usually enabled in the post install of pipewire itself.
+  # For this reason we can't simply use `systemctl disable`. Instead we have to
+  # manually delete the symlink.
+  rm -f /etc/systemd/user/default.target.wants/filter-chain.service
+}
