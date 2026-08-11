@@ -1,12 +1,12 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
 license=('MIT')
-depends=('python-pyqt6' 'python-requests' 'qt6-svg' 'git' 'flatpak' 'nodejs' 'npm')
+depends=('python-pyqt6' 'python-requests' 'python-keyring' 'qt6-svg' 'git' 'flatpak' 'nodejs' 'npm')
 makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
