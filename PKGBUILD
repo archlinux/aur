@@ -5,20 +5,11 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.86.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache-2.0')
 depends=(
-	'python-repath'
-	'python-websocket-client'
-	'python-watchdog'
-	'python-oauthlib'
-	'python-websockets'
-	'python-httpx'
-	'python-packaging'
-	'python-poetry'
-	'python-copier'
 	'gtk3'
 	'gstreamer'
 	'gst-plugins-base-libs'
@@ -80,6 +71,21 @@ build() {
 }
 
 package() {
+	depends+=(
+		'python-repath'
+		'python-websocket-client'
+		'python-watchdog'
+		'python-oauthlib'
+		'python-websockets'
+		'python-httpx'
+		'python-packaging'
+		'python-poetry'
+		'python-copier'
+		'python-qrcode'
+		'python-cookiecutter'
+		'python-binaryornot'
+		'python-chardet'
+		'python-rich')
 	cd "${_srcdir}"
 
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
