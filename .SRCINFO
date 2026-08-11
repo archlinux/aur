@@ -1,0 +1,15 @@
+pkgbase = betteradbsync
+	pkgdesc = Better version of adb-sync for Python3
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/jb2170/better-adb-sync/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/9f/de/fa3cdea43143f65138ee83dc5636310e4c1b809db3933bd2fd3dffae60c3/BetterADBSync-1.4.0.tar.gz
+	sha256sums = cfa13c81ac88b451294fd1888bb2c0679c48a6d372507fc8063ea625f7e6ce82
+
+pkgname = betteradbsync
