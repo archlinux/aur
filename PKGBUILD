@@ -1,5 +1,5 @@
 # Maintainer: Neowutran <aur at neowutran dot ovh>
-pkgname="dane_without_root"
+pkgname="dane-without-root"
 backup=(etc/dane-proxy/dane-proxy.conf)
 pkgver='0.1.32'
 pkgrel=1
@@ -8,7 +8,7 @@ pkgdesc="Provide multiples DANE tools that does not use the root '.' DNS server 
 url='https://sr.ht/~yukikoo/dane_without_root/'
 license=(AGPL-3.0-or-later)
 depends=(
-  dnssec_without_root
+  dnssec-without-root
   openssl
   libgcc 
   glibc
