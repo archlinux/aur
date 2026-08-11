@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
-	pkgver = 1.4.341.0
+	pkgver = 1.4.357.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/KhronosGroup/glslang
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-glslang
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = glslang-vulkan-sdk-1.4.341.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/refs/tags/vulkan-sdk-1.4.341.0.tar.gz
-	sha256sums = 18cdf7d40a39001dde842c6a1338b2c9321ac5e487139b9d52b4b9c666da3c86
+	source = glslang-vulkan-sdk-1.4.357.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/refs/tags/vulkan-sdk-1.4.357.0.tar.gz
+	sha256sums = 81038794e20494556edbcc0fc70fa984d71d1b440f9c49adf2cbaaa60a519757
 
 pkgname = mingw-w64-glslang

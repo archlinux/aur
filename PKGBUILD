@@ -2,7 +2,7 @@
 
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.4.341.0
+pkgver=1.4.357.0
 pkgrel=1
 epoch=1
 _tag="vulkan-sdk-$pkgver"
@@ -15,7 +15,7 @@ makedepends=('mingw-w64-cmake' 'python' 'ninja')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('18cdf7d40a39001dde842c6a1338b2c9321ac5e487139b9d52b4b9c666da3c86')
+sha256sums=('81038794e20494556edbcc0fc70fa984d71d1b440f9c49adf2cbaaa60a519757')
 
 _srcdir="${_pkgname}-${_tag}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
