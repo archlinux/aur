@@ -30,7 +30,7 @@ source=(
   "NotoColorEmoji.LICENSE::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/LICENSE"
 )
 sha256sums=(
-  'fe8782755445050f0f46687dd004ccf1aba9d9c0c1a83683f68550a2f6f9026d'
+  'df3d4bb4e93781157e66874e06db4e27586089feebb80476b4df1d800da7c4f6'
   'b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a'
   '72a635cb3d2f3524c51620cdde406b217204e8a6a06c6a096ff8ed4b5fd6e27b'
   '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2'
