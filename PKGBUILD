@@ -7,8 +7,8 @@ pkgname=yocto-uninative-tarball
 # glibc the same build, so the uninative-vs-host version check below can never
 # be a judgement call. update-version.sh rewrites pkgver and _commit together
 # from Arch's packaging PKGBUILD; neither is hand-maintained.
-pkgver=2.44+r5+g7cba77790f32
-_commit=7cba77790f3279bec3ac20e9c7632b021cd53f95
+pkgver=2.44+r24+g16be1518495f
+_commit=16be1518495f1fa05481b0182c4e4c24927c62df
 pkgrel=1
 pkgdesc='Yocto uninative libc tarball built from the glibc commit Arch ships'
 arch=('x86_64')
@@ -18,10 +18,17 @@ url='https://git.openembedded.org/openembedded-core/tree/meta/classes-global/uni
 # (LGPL-2.1-or-later), libtirpc (BSD-3-Clause) and relocate_sdk.py (GPL-2.0-only).
 license=('LGPL-2.1-or-later' 'GPL-3.0-or-later WITH GCC-exception-3.1'
          'BSD-3-Clause' 'GPL-2.0-only')
-# libstdc++ and libgcc, not gcc-libs: Arch split those shared objects out of
-# gcc-libs, and build() copies the .so files directly rather than linking.
+# One entry per package providing a library build() copies out of /usr/lib -
+# the copies are plain file reads, so an absent provider fails the build rather
+# than degrading. libstdc++ and libgcc rather than gcc-libs, because Arch split
+# those shared objects out of it. libgomp and libatomic were missed when they
+# were added to the copy list; they happen to be present anyway as gcc-libs
+# dependencies, which is why CI never noticed, but relying on that leaves the
+# build dependent on something it does not declare.
+#
 makedepends=('git' 'python' 'bison' 'patchelf' 'linux-api-headers'
-             'libstdc++' 'libgcc' 'libxcrypt' 'libxcrypt-compat'
+             'libstdc++' 'libgcc' 'libgomp' 'libatomic'
+             'libxcrypt' 'libxcrypt-compat'
              'libtirpc' 'libnsl')
 # Only two of these do anything here, and it is worth being precise because the
 # other two look like they are protecting the payload and are not:
@@ -409,6 +416,28 @@ build() {
   #                     "gn: error while loading shared libraries:
   #                      libatomic.so.1" while gn's own DT_NEEDED never
   #                     mentions it.
+  # The test for belonging here is whether OE stages the library for native at
+  # all. libgomp and libatomic it does not - gcc-runtime is built for the
+  # TARGET only - so the payload is the only place they can come from. A
+  # library OE *does* stage does NOT belong here even when a binary fails to
+  # find it: rust-native's prebuilt snapshot could not load libz.so.1, but
+  # zlib-native was staged in that recipe's own recipe-sysroot-native all
+  # along and the fix is to point the loader at it (an rpath on the snapshot),
+  # not to ship the host's copy. Shipping it would have substituted the host's
+  # zlib - zlib-ng-compat on an Arch host - for the zlib OE built, silently,
+  # for every native binary without a RUNPATH. That is the contamination
+  # uninative exists to prevent.
+  #
+  # There is no host-library fallback that these "should" have hit. Patch 0003
+  # is named "Look for host system ld.so.cache as well", but it only reorders
+  # the search so the cache is consulted last; the cache PATH lives in
+  # .ldsocache and relocate_sdk.py rewrites it with the tree prefix, so the
+  # loader reads <tree>/usr/etc/ld.so.cache - never the host's /etc one. That
+  # file exists (glibc's make install runs ldconfig against DESTDIR) and is
+  # inert: every entry names an unrelocated build path. Verified on the
+  # shipped artifact - every path it names is an unrelocated build path that
+  # does not exist. So this list is the whole mechanism for the libraries that
+  # belong here, and there is no fallback quietly covering anything else.
   install -Dm755 -t "$_tree/usr/lib" \
     /usr/lib/libstdc++.so.6 \
     /usr/lib/libgcc_s.so.1 \
