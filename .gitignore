@@ -1,5 +1,6 @@
 *.zip
 *.tgz
+*.deb
 *.pkg.tar.zst
 pkg/
 src/
