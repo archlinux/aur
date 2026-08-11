@@ -6,14 +6,29 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=7426_6.12_r59_ge162294e
+pkgver=7954_7.1_r27_gdca08741
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license=('GPL-2.0-only')
-depends=('glibc' 'lzo' 'systemd-libs' 'util-linux-libs' 'zlib' 'zstd')
-makedepends=('e2fsprogs' 'git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+depends=(
+  'glibc'
+  'lzo'
+  'systemd-libs'
+  'util-linux-libs'
+  'zlib'
+  'zstd'
+)
+makedepends=(
+  'e2fsprogs'
+  'git'
+  'libaio'
+  'liburing'
+  'python-setuptools'
+  'python-sphinx'
+  'python-sphinx_rtd_theme'
+)
 optdepends=('e2fsprogs: btrfs-convert utility')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
@@ -92,7 +107,9 @@ check() {
     tests/fsck-tests/056-raid56-false-alerts \
     tests/fsck-tests/057-seed-false-alerts \
     tests/fsck-tests/059-shrunk-device \
-    tests/fsck-tests/060-degraded-check
+    tests/fsck-tests/060-degraded-check \
+    tests/fsck-tests/073-squota \
+    tests/fsck-tests/074-raid56-read
 
   make test-fsck
 

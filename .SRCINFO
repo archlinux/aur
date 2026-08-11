@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 7426_6.12_r59_ge162294e
+	pkgver = 7954_7.1_r27_gdca08741
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
@@ -9,6 +9,8 @@ pkgbase = btrfs-progs-git
 	license = GPL-2.0-only
 	makedepends = e2fsprogs
 	makedepends = git
+	makedepends = libaio
+	makedepends = liburing
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
