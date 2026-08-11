@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgbase=python-nab
 _name=${pkgbase#python-}
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="PubGrub-based dependency resolver for Python packages."
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${_name}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96ba274d2ea74832acb9fd94de8f601368c58c8f6a7c459db1e65a21ab734b21')
+sha256sums=('80ceb2371ab767dcab9902db55601e95f4efbd92f8303593b304dff26f8bf4e3')
 
 build() {
   cd "${_name}-$pkgver"
