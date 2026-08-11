@@ -1,7 +1,7 @@
 pkgbase = bedrock-on-linux-bin
 	pkgdesc = Run Minecraft Bedrock for Windows on Linux with native Microsoft identity and multiplayer
-	pkgver = 2.1.3
-	pkgrel = 2
+	pkgver = 2.1.4
+	pkgrel = 1
 	url = https://github.com/Wyze3306/BedrockOnLinux
 	arch = x86_64
 	license = MIT
@@ -20,10 +20,10 @@ pkgbase = bedrock-on-linux-bin
 	optdepends = xorg-xwayland: launcher and game support in Wayland sessions
 	provides = bedrock-on-linux
 	conflicts = bedrock-on-linux
-	noextract = BedrockOnLinux-2.1.3-x86_64.AppImage
+	noextract = BedrockOnLinux-2.1.4-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = BedrockOnLinux-2.1.3-x86_64.AppImage::https://github.com/Wyze3306/BedrockOnLinux/releases/download/v2.1.3/BedrockOnLinux-2.1.3-x86_64.AppImage
-	sha256sums = b740ca3f1d713606eaefb772f0fb139d773fd70b2695d563084f38b3c8ddc6bd
+	source = BedrockOnLinux-2.1.4-x86_64.AppImage::https://github.com/Wyze3306/BedrockOnLinux/releases/download/v2.1.4/BedrockOnLinux-2.1.4-x86_64.AppImage
+	sha256sums = 04f03cfcaf97a5aa50bc95155cd203723dd8f893a9fa7823ad4cfb1f9ec56d1c
 
 pkgname = bedrock-on-linux-bin
