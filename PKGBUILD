@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=0.7.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -9,16 +9,16 @@ url="https://github.com/hrzlgnm/zux"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 conflicts=('zux-bin')
-makedepends=('cargo' 'git' 'file' 'nodejs' 'npm' 'base-devel' 'rust' 'librsvg' 'patchelf')
+makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d201fb1709fbf5e63f8618d9f810d3d05f9c44a383165e4cd370513d0142693c')
+sha256sums=('9679b07ee362f10a99e54886346d3bcd372f4d1e612e8ae6e08509e79e653926')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    jq '.version = "0.7.0"' src-tauri/tauri.conf.json > tmp.json
+    jq '.version = "1.3.0"' src-tauri/tauri.conf.json > tmp.json
     mv tmp.json src-tauri/tauri.conf.json
-    npm ci
+    pnpm install --frozen-lockfile
     cd src-tauri
     cargo set-version "$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -26,12 +26,12 @@ prepare() {
 build() {
     cd "$srcdir/$_builddir" || exit 1
     export CFLAGS="${CFLAGS//-flto=auto//}"
-    npm run tauri -- build --no-bundle
-    npm run tauri -- build -b deb --no-sign
+    pnpm run tauri build --no-bundle
+    pnpm run tauri build -b deb --no-sign
 }
 check() {
     cd "$srcdir/$_builddir" || exit 1
-    npm run check
+    pnpm run check
 }
 package() {
     install -Dm755 "${srcdir}/${_builddir}/src-tauri/target/release/zux" "$pkgdir"/usr/bin/zux
@@ -41,5 +41,5 @@ package() {
     install -Dm644 usr/share/icons/hicolor/128x128/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/256x256@2/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/32x32/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zux.png
-    install -Dm644 usr/share/licenses/zux/LICENSE "$pkgdir"/usr/share/licenses/zux/LICENSE
+    install -Dm644 "${srcdir}/${_builddir}/LICENSE" "$pkgdir"/usr/share/licenses/zux/LICENSE
 }
