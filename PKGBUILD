@@ -5,7 +5,7 @@ pkgname="blaadpapers"
 pkgdesc="Fast & clean wallpaper manager"
 license=("GPL-3.0-only")
 pkgver="0.4.3"
-pkgrel=1
+pkgrel=2
 arch=("any")
 depends=(
     "qt6-base"
@@ -22,7 +22,7 @@ makedepends=(
     "ninja"
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_repoowner/$_reponame/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("b032c722281e2259c90cdfa59cb1a819aaf845b4651b7b0d87b513fdc68c147869b913ca6ecccfa31e8fd7e6d317afd1e0ee3de8406c08f3811d3922add72dcb")
+sha512sums=("09f3808c847cdd52a4a97c9e8ee33b84716f95d147151ae880ae338605ad09da9396ed73ac2613697c702a3fd269ff9cd4fd6e83731bf6e046403564502f4205")
 url="https://github.com/$_repoowner/$_reponame"
 
 build() {
