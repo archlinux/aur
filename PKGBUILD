@@ -1,7 +1,9 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
+
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=proto
-pkgver=0.59.0
+pkgver=0.60.2
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -10,19 +12,24 @@ license=('MIT')
 depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
-options=('!lto')
+#options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dbdd1b0a3b910e088a9f7fae5abef1f15aa3a7b7c4bef5c8cd3ceb22e6296c5e')
+sha256sums=('f78d203d292224603e831f0f03cc35e612bf48a1de1697ab34fea86ea97bfe21')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   mkdir -p completions
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
   cargo build --release --frozen
+
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
   "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
   "./target/release/${pkgname}" completions --shell fish >"completions/fish"
@@ -30,6 +37,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 755 "target/release/${pkgname}-shim" "${pkgdir}/usr/bin/${pkgname}-shim"
 
