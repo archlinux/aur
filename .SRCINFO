@@ -1,7 +1,7 @@
 pkgbase = cndrvcups-lb
-	pkgdesc = CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers
+	pkgdesc = OBSOLETE - DO NOT USE
 	pkgver = 3.70
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx
 	install = cndrvcups-lb.install
 	arch = i686

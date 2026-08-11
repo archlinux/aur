@@ -16,8 +16,8 @@ pkgname="${pkgbase}"
 _pkgver='3.70'; _commonver='4.10'; _dl='4/0100010264/01'
 
 pkgver="${_pkgver}"
-pkgrel='2'
-pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
+pkgrel='3'
+pkgdesc='OBSOLETE - DO NOT USE'
 arch=('i686' 'x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
