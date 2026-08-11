@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="brn2-git"
-pkgver=r3514.028543b
+pkgver=r3901.a4ca4d3
 pkgrel=1
 pkgdesc="fast bulk renamer with swapping"
 arch=(x86_64)
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh
+    ./build.sh build
 }
 
 check() {
