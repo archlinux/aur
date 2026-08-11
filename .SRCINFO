@@ -1,0 +1,26 @@
+pkgbase = drata-agent-bin
+	pkgdesc = Tray application reporting read-only machine state for compliance tracking
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://github.com/drata/drata-agent
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libcups
+	depends = mesa
+	depends = dbus
+	depends = libnotify
+	depends = libsecret
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	provides = drata-agent
+	conflicts = drata-agent
+	options = !strip
+	options = !emptydirs
+	options = !lto
+	source = drata-agent-bin-3.9.0.deb::https://github.com/drata/drata-agent/releases/download/3.9.0/Drata-Agent-linux.deb
+	sha512sums = e9dd8971435110646f3e85c35921b5ad85cf50d1d493bc1e41ba1f2813d9bf6eba09273b9ef26f191e73f992319a0049c14c8df5a25835a703194b85c87f7299
+
+pkgname = drata-agent-bin
