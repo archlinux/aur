@@ -7,8 +7,8 @@ pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whatkevr Qt/Kirigam
 arch=('x86_64' 'aarch64')
 url="https://github.com/codelif/whatevr"
 license=('BSD-3-Clause')
-depends=('qt6-base' 'qt6-declarative' 'qt6-grpc' 'qt6-shadertools'
-         'kcoreaddons' 'kdbusaddons' 'ki18n' 'kirigami' 'prison' 'kirigami-addons'
+depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools'
+         'kcoreaddons' 'kdbusaddons' 'ki18n' 'kirigami' 'prison' 'qqc2-desktop-style' 'kirigami-addons'
          'rlottie' 'sqlite' 'glibc'
          'desktop-file-utils' 'shared-mime-info' 'xdg-utils')
 makedepends=('git' 'go' 'gcc' 'just' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')

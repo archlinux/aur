@@ -20,6 +20,11 @@ EOF
 
 post_upgrade() {
     _update_databases
+    cat <<'EOF'
+==> Reload whatevrd's systemd user units and restart the active startup mode:
+==>   systemctl --user daemon-reload
+==>   systemctl --user try-restart whatevrd.socket whatevrd.service
+EOF
 }
 
 post_remove() {
