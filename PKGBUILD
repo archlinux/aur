@@ -5,7 +5,7 @@
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
 pkgver=5.1.0.r56.g673e594
-pkgrel=1
+pkgrel=2
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
@@ -37,6 +37,9 @@ prepare() {
 	#git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook-TolikPylypchuk"
 	#git -c 'protocol.file.allow=always' submodule update
 
+	rmdir 'deps/libuiohook' || rm 'deps/libuiohook'
+	ln -s "$srcdir/$pkgname-libuiohook-TolikPylypchuk" 'deps/libuiohook'
+
 	sed -i \
 		-e '/<QJsonDocument>/a #include <bit>/' \
 		-e 's/obj\["mask"\] = e->mask/obj["mask"] = std::bit_cast<int>(e->mask)/g' \
@@ -44,9 +47,7 @@ prepare() {
 	sed -i '/{0xE063, VC_WAKE},/d' 'src/util/overlay.cpp'
 
 	sed -i 's/set(CMAKE_CXX_STANDARD 17)/set(CMAKE_CXX_STANDARD 23)/' 'cmake/common/compiler_common.cmake'
-
-	rmdir 'deps/libuiohook' || rm 'deps/libuiohook'
-	ln -s "$srcdir/$pkgname-libuiohook-TolikPylypchuk" 'deps/libuiohook'
+	sed -i 's/pkg_check_modules(Libinput/pkg_check_modules(LIBINPUT/' 'deps/libuiohook/CMakeLists.txt'
 
 	# Need to make everything visible for libuiohook.
 	sed -i '/set(CMAKE_C_VISIBILITY_PRESET hidden)/d' 'cmake/common/compiler_common.cmake'
