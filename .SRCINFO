@@ -1,6 +1,6 @@
 pkgbase = vineflower-git
 	pkgdesc = Modern Java & JVM language decompiler focused on output quality & readability
-	pkgver = 1.12.0.r1909.218c109a
+	pkgver = 1.13.0.r1936.1123be5b
 	pkgrel = 1
 	url = https://vineflower.org
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = vineflower-git
 	makedepends = git
 	depends = java-runtime>=17
 	depends = sh
-	provides = vineflower=1.12.0
+	provides = vineflower=1.13.0
 	conflicts = vineflower
-	source = vineflower::git+https://github.com/Vineflower/vineflower#branch=develop/1.12.0
+	source = vineflower::git+https://github.com/Vineflower/vineflower#branch=develop/1.13.0
 	sha256sums = SKIP
 
 pkgname = vineflower-git

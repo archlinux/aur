@@ -1,8 +1,8 @@
 # Maintainer: IotaBread <iotabread at gmail dot com>
 _pkgname=vineflower
 pkgname=vineflower-git
-_version="1.12.0"
-pkgver=1.12.0.r1909.218c109a
+_version="1.13.0"
+pkgver=1.13.0.r1936.1123be5b
 pkgrel=1
 pkgdesc="Modern Java & JVM language decompiler focused on output quality & readability"
 arch=('any')
