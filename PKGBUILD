@@ -1,6 +1,6 @@
 # Maintainer: vMohammad <vmohammad@vmohammad.dev>
 pkgname=framr-bin
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Wayland screenshot, annotation and screen recording tool with ShareX-compatible uploads (pre-compiled binary)"
 arch=('x86_64')
@@ -12,8 +12,8 @@ options=('!lto')
 depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugin-rav1e' 'gst-plugin-pipewire')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/framr-v$pkgver-x86_64-linux.tar.gz"
     "framr-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8ce836d6200165d687620e5bfc87a60e2af5772d462775b4b40e98240eb88b95'
-            'bac04cf545873f0ff7402c3d00a4b626ff01463750a23bade0e9f107313ae10d')
+sha256sums=('003628acc946aebc2aca056b0d851d6d0653be394fea4ed9ab1acf8b8a6e3adc'
+            'e6a3f0a465719f72132c3080935bdead6d3b95fcfc7e889aa82fe1aba8d7d21f')
 
 package() {
     install -Dm755 "$srcdir/framr" "$pkgdir/usr/bin/framr"
