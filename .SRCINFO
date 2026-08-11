@@ -1,6 +1,6 @@
 pkgbase = rusticprofile
 	pkgdesc = A local, per-machine scheduler and orchestrator for rustic backups
-	pkgver = 0.2.14
+	pkgver = 0.2.17
 	pkgrel = 1
 	url = https://github.com/l1a/rusticprofile
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rusticprofile
 	makedepends = cargo
 	depends = gcc-libs
 	depends = rustic
-	source = rusticprofile-0.2.14.tar.gz::https://github.com/l1a/rusticprofile/archive/refs/tags/v0.2.14.tar.gz
-	sha256sums = aca3e41cc11389140f0b53b3e7804084ba9ae0ee2dbffcfd44b1f2e16fa2485c
+	source = rusticprofile-0.2.17.tar.gz::https://github.com/l1a/rusticprofile/archive/refs/tags/v0.2.17.tar.gz
+	sha256sums = 11d041139cdfefb18c85ef294378c772b4ef4a80b1689778c4f75b3e0ef54872
 
 pkgname = rusticprofile
