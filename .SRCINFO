@@ -1,6 +1,6 @@
 pkgbase = hyperledger-fabric-ca-bin
 	pkgdesc = Hyperledger Fabric CA binaries (fabric-ca-client and fabric-ca-server)
-	pkgver = 1.5.21
+	pkgver = 1.5.22
 	pkgrel = 1
 	url = https://www.hyperledger.org/use/fabric
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hyperledger-fabric-ca-bin
 	provides = hyperledger-fabric-ca
 	conflicts = hyperledger-fabric-ca
 	options = !strip
-	source = https://github.com/hyperledger/fabric-ca/releases/download/v1.5.21/hyperledger-fabric-ca-linux-amd64-1.5.21.tar.gz
-	sha256sums = a599e8e9d57aede74b9e1ba2bcdbb679957a877f2952c3ae3e2260df63240165
+	source = https://github.com/hyperledger/fabric-ca/releases/download/v1.5.22/hyperledger-fabric-ca-linux-amd64-1.5.22.tar.gz
+	sha256sums = 7f52ab98481ac0e4bfcf5b5aabfb403fa692ee100ae3b2ca3bf3f2152851573d
 
 pkgname = hyperledger-fabric-ca-bin
