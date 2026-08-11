@@ -2,7 +2,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=tweeny
-pkgver=3.2.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A modern C++ tweening library"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://mobius3.github.io/tweeny"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mobius3/tweeny/archive/v$pkgver.tar.gz")
-sha256sums=('76be17b39b234b4a7c12a5d9497ebb3d52b817eaf4c3748d1d21cf7df76835ed')
+sha256sums=('110903c6b5e2a68b28927c0ecf0c504d1b682fcd451f874880448857311a88b4')
 
 build() {
   cmake -Bbuild "$pkgname-$pkgver" \
