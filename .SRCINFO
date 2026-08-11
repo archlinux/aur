@@ -1,7 +1,11 @@
 pkgbase = brother-mfc-l2700dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-L2700DW
 	pkgver = 3.2.0
+<<<<<<< HEAD
 	pkgrel = 3
+=======
+	pkgrel = 2
+>>>>>>> cf592a4 (Update to new version, fix)
 	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcl2700dw_us_eu_as
 	install = brother-mfc-l2700dw.install
 	arch = i686
