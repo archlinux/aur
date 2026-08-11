@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=blip
-pkgver=1.2.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Sublime MySQL monitoring'
 url='https://github.com/block/blip'
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f717c197504dd8237682827ee8a611d4eadb48367ea4e46580c4a6ca9d733cc0')
+sha256sums=('cd5c932f86d3a50419e42fcfc24b0aa3418e73d5a46c77c01eb10bc655c751a8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
