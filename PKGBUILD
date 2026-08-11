@@ -4,7 +4,7 @@
 pkgname=python-croniter
 _name=${pkgname#python-}
 pkgver=6.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parses cron schedules to iterate over datetime objects."
 arch=('any')
 url="https://github.com/pallets-eco/croniter"
@@ -38,7 +38,9 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  pytest src
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -P -m pytest
 }
 
 package() {
