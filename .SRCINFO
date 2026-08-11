@@ -1,6 +1,6 @@
 pkgbase = grabit
 	pkgdesc = Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = grabit
 	optdepends = sox: play (alternative sound player)
 	conflicts = grabit-bin
 	conflicts = grabit-git
-	source = grabit-0.6.0::git+https://heliopolis.live/creations/grabit.git#tag=0.6.0
+	source = grabit-0.6.1::git+https://heliopolis.live/creations/grabit.git#tag=0.6.1
 	sha256sums = SKIP
 
 pkgname = grabit
