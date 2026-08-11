@@ -2,7 +2,7 @@
 # Created with assistance from Claude Sonnet 4.6.
 
 pkgname=b4-bin
-pkgver=1.73.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -28,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('f1cbac97786688b889a424bf6f5e4a36d11655fee03da47b6a61c8b2489eed74')
-sha256sums_i686=('94067762c3e9c3c39666a8dc8ee2233b295987218b3ad5ca30c95bd1b9b6fb17')
-sha256sums_aarch64=('fd21aafbfb8491ffe82df567627dd6ecaf216f5ed311ca05367e123d8a041a28')
-sha256sums_riscv64=('c18ce8bb04d0b22e707b2d93c9603ae806feb10dfbe95af34d15d8677aae28db')
-sha256sums_loong64=('c536b0057f00fa9a7b544eb1c0ffd5bd6fa616e986348038ef21e8a82dadf999')
-sha256sums_ppc64=('c63bfd0623b0a5daeeabdacc25296eee20913142a3f4c02cb8b26518462b230f')
-sha256sums_ppc64le=('4d71630a6f220eec01a423fd8ad623392b4e01fc76a976905cbb44202b3e807e')
-sha256sums_s390x=('f0b2df37aa07bde88a59b2ea7f21bfdf19eaf82bf79ce94160c704fcc95df5f5')
+sha256sums_x86_64=('f24da90af1f8aa9a40e0df07df743d0aad716c374204757c565ba37f67275022')
+sha256sums_i686=('c04a4f314fbb737c7e4e35ce20f240e62568bee9cb3b781dc2f230caa99dd6e7')
+sha256sums_aarch64=('c1a8b2d9f4b4d1cf05e685e8c9b73614771fee8fda7bb9eb2a76f60020d17135')
+sha256sums_riscv64=('d5b42e724429328cb5f27a9111954e1bfd2edadfa6674d29ff9317865c0eb7b7')
+sha256sums_loong64=('403e69e83c4ff014d9e8228b3a4be3a2f616e26e88a98d134454ebdb015ad462')
+sha256sums_ppc64=('3d221a0eb5aa4c447d66399c65df764ed58c6ac26e2f0f2336c1b9f01cc1b5f2')
+sha256sums_ppc64le=('72d0b955e80ada160a6c329f23bf61346cf8d8aeed9afc4fafafb74d9aefe595')
+sha256sums_s390x=('71e9873525d3f3c58e6b50a45bde71302050dd13008289d86755c05582c8132b')
 
 backup=('etc/b4/b4.json')
 
