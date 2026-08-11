@@ -1,6 +1,6 @@
 # Maintainer:  Score_Under <seejay.11@gmail.com>
 
-pkgname=(ocaml-odoc ocaml-odoc-parser)
+pkgname=(ocaml-odoc ocaml-odoc-parser3)
 pkgver=3.2.1
 pkgrel=1
 pkgdesc="Documentation compiler for OCaml"
@@ -23,7 +23,9 @@ package_ocaml-odoc(){
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_ocaml-odoc-parser(){
+package_ocaml-odoc-parser3(){
+  provides=("ocaml-odoc-parser=$pkgver")
+  conflicts=("ocaml-odoc-parser")
   cd "$srcdir/odoc-$pkgver"
   DESTDIR="$pkgdir" dune install -p odoc-parser --prefix=/usr --libdir=/usr/lib/ocaml
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

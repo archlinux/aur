@@ -16,4 +16,6 @@ pkgbase = ocaml-odoc
 
 pkgname = ocaml-odoc
 
-pkgname = ocaml-odoc-parser
+pkgname = ocaml-odoc-parser3
+	provides = ocaml-odoc-parser=3.2.1
+	conflicts = ocaml-odoc-parser
