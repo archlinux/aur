@@ -1,6 +1,6 @@
 pkgbase = fcitx5-input-counter
 	pkgdesc = Fcitx 5 addon that records character input statistics
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/awaae001/fcitx5-input-counter
 	install = fcitx5-input-counter.install
@@ -16,7 +16,7 @@ pkgbase = fcitx5-input-counter
 	depends = libstdc++
 	depends = qt6-base
 	depends = sqlite
-	source = fcitx5-input-counter-0.2.0.tar.gz::https://github.com/awaae001/fcitx5-input-counter/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = ce73e7deaddbc0f7e54c0d35aaface1f634934199fc5fb74d66575c2720266a4
+	source = fcitx5-input-counter-0.2.1.tar.gz::https://github.com/awaae001/fcitx5-input-counter/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = d192847786f2c7c514010a5cddbf1edce8bb1aecac3b1aa482f0591ce3da1161
 
 pkgname = fcitx5-input-counter
