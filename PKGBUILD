@@ -3,7 +3,7 @@
 
 pkgname=blockbench-git
 _pkgname="${pkgname%-git}"
-pkgver=5.0.7.r2.gc183c8e7
+pkgver=5.1.6.r1.g47e633e4
 pkgrel=1
 pkgdesc='A low-poly 3D model editor (git version)'
 arch=(x86_64 aarch64)
@@ -62,6 +62,4 @@ package() {
   install "${_pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install "${_pkgname}/dist-electron/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar"
-
-  cp -r "${_pkgname}/dist-electron/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar.unpacked"
 }
