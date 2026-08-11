@@ -1,7 +1,7 @@
-From 9d5b466b843c62e7bfb6b29fbff3d7bae800ff42 Mon Sep 17 00:00:00 2001
+From 3f339c41a96236818c6f0e6e6d854e76f8004568 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky AT proton DOT me>
 Date: Sun, 19 Apr 2026 10:26:33 -0400
-Subject: [PATCH] Expose whisper decode options
+Subject: [PATCH 2/3] Expose whisper decode options
 
 * temperature (float, default 0.0)
 * no_speech_thold (float, default 0.6)
@@ -12,10 +12,10 @@ Helps avoid model hallucinations
  1 file changed, 10 insertions(+)
 
 diff --git a/libavfilter/af_whisper.c b/libavfilter/af_whisper.c
-index 299a8bca7ab9..7ceabc422e33 100644
+index 75103ced0c41..baacdac2b63d 100644
 --- a/libavfilter/af_whisper.c
 +++ b/libavfilter/af_whisper.c
-@@ -53,6 +53,10 @@ typedef struct WhisperContext {
+@@ -55,6 +55,10 @@ typedef struct WhisperContext {
      char *destination;
      char *format;
      int max_len;
@@ -26,17 +26,17 @@ index 299a8bca7ab9..7ceabc422e33 100644
  
      struct whisper_context *ctx_wsp;
      struct whisper_vad_context *ctx_vad;
-@@ -207,6 +211,9 @@ static void run_transcription(AVFilterContext *ctx, AVFrame *frame, int samples)
-     params.print_timestamps = 0;
+@@ -224,6 +228,9 @@ static void run_transcription(AVFilterContext *ctx, AVFrame *frame, int samples)
      params.max_len = wctx->max_len;
      params.token_timestamps = (wctx->max_len > 0);
+     params.split_on_word = (wctx->max_len > 0);
 +    params.no_speech_thold = wctx->no_speech_thold;
 +    params.temperature = wctx->temperature;
 +    params.temperature_inc = wctx->temperature_inc;
  
      if (whisper_full(wctx->ctx_wsp, params, wctx->audio_buffer, samples) != 0) {
          av_log(ctx, AV_LOG_ERROR, "Failed to process audio with whisper.cpp\n");
-@@ -453,6 +460,9 @@ static const AVOption whisper_options[] = {
+@@ -471,6 +478,9 @@ static const AVOption whisper_options[] = {
      { "vad_threshold", "VAD threshold", OFFSET(vad_threshold), AV_OPT_TYPE_FLOAT, {.dbl = 0.5}, 0.0, 1.0, .flags = FLAGS },
      { "vad_min_speech_duration", "Minimum speech duration for VAD", OFFSET(vad_min_speech_duration), AV_OPT_TYPE_DURATION, {.i64 = 100000}, 20000, HOURS, .flags = FLAGS },
      { "vad_min_silence_duration", "Minimum silence duration for VAD", OFFSET(vad_min_silence_duration), AV_OPT_TYPE_DURATION, {.i64 = 500000}, 0, HOURS, .flags = FLAGS },
@@ -47,5 +47,5 @@ index 299a8bca7ab9..7ceabc422e33 100644
  };
  
 -- 
-2.53.0
+2.55.0
 

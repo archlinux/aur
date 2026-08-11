@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-whisper
-pkgver=8.1.2
+pkgver=9.0
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with vulkan whisper'
 arch=(x86_64)
@@ -38,6 +38,7 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
+  libgcc
   libgl
   libiec61883
   libjxl
@@ -91,6 +92,7 @@ makedepends=(
   amf-headers
   avisynthplus
   clang
+  ffnvcodec-headers
   frei0r-plugins
   git
   ladspa
@@ -107,8 +109,6 @@ optdepends=(
   'ladspa: LADSPA filters'
   'onevpl-intel-gpu: Intel QuickSync support'
 )
-_tag=1c2c67c0b9f7f66ab32c19dcf7f227bcd290aa4c
-
 provides=(
   ffmpeg
   libavcodec.so
@@ -121,13 +121,13 @@ provides=(
 )
 conflicts=(ffmpeg)
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   0002-Expose-whisper-decode-options.patch
 )
-b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce'
-        'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
-        '02bd31bf5c798247a4d68eb263b5c5ed5643e0d710aa0477a458af0a8ffa61749bc846ea5ceed7e455f09d11ef317efa62bff63810fd46ee20b88428bf5ae92e')
+b2sums=('c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8'
+        '6b39a957601825b40c1e80e4051abb7865c0b0e48b992d5268fa027676551a1354820a34308e4183ec6531a7801920b768931aaa5d89e89d8d759db892a2dcf0'
+        'c5987e6358b8312cd3787bba3a0bff778cfdf15baa134fbe85825974fec04c6ccbf3f5884099466bc6d504aa14361924b1fd8ba7f47ebcf60e5de5352564c20c')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -148,6 +148,7 @@ build() {
     --disable-stripping \
     --enable-amf \
     --enable-avisynth \
+    --disable-doc \
     --enable-cuda-llvm \
     --enable-lto \
     --enable-fontconfig \
@@ -167,7 +168,6 @@ build() {
     --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
-    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \
@@ -228,7 +228,7 @@ package() {
     libdav1d.so
     libfreetype.so
     libharfbuzz.so
-    libjxl.so
+#   libjxl.so
     libopenmpt.so
     libplacebo.so
     librav1e.so
@@ -242,7 +242,7 @@ package() {
     libvorbis.so
     libvpx.so
     libx264.so
-    libx265.so
+#   libx265.so
     libxvidcore.so
     libzimg.so
     libzmq.so
