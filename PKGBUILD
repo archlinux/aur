@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=26.2.1.r9078.25d21cc
+pkgver=26.2.1.r9104.b0002c6
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -64,7 +64,7 @@ package() {
 
   install -Dm0644 "../ffdec.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/ffdec.png"
-  install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/icons/hiciolor/512x512/apps/ffdec.png"
+  install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ffdec.png"
 
   for f in lib/*.license.txt; do
     install -Dm0644 "$f" -t "$pkgdir/usr/share/licenses/$pkgname"
