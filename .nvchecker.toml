@@ -1,5 +1,5 @@
 [python-pina-mathlab]
 source = "github"
-github = "mathLab/PINA"
-use_latest_release = "true"
+github = "PINA-org/PINA"
+use_max_tag = "true"
 prefix = "v"
