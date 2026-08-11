@@ -2,13 +2,13 @@
 
 pkgname='git-fame'
 pkgver='4.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty-print git repository collaborators sorted by contributions'
 arch=('any')
 url="https://github.com/casperdcl/$pkgname"
 license=('MPL-2.0')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
-depends=('python-argopt' 'python-tqdm' 'python-tabulate')
+depends=('python-argopt' 'python-tqdm' 'python-tabulate' 'python-shtab')
 optdepends=('python-yaml')
 provides=('git-fame')
 source=("$pkgname::git+$url#tag=v$pkgver")
