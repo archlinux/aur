@@ -1,7 +1,7 @@
 pkgbase = python-requirements-detector
 	pkgdesc = Python tool to find and list requirements of a Python project
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/prospector-dev/requirements-detector
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-requirements-detector
 	depends = python-astroid
 	depends = python-packaging
 	depends = python-semver
-	source = requirements-detector-1.5.0.tar.gz::https://github.com/prospector-dev/requirements-detector/archive/refs/tags/1.5.0.tar.gz
-	sha256sums = f110c5f3a7b84e6378a514b7a9e22832002ded696468be809f6dba2f4c5bafc3
+	source = requirements-detector-1.6.0.tar.gz::https://github.com/prospector-dev/requirements-detector/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = f874aa6113a9f7218329afc28caa49ff9842cdb4f3ea0a5d13723d0945ed92cb
 
 pkgname = python-requirements-detector
