@@ -2,7 +2,7 @@
 
 pkgname=harbor-stremio-git
 _pkgname=harbor
-pkgver=0.9.21.r464.gdc6320e
+pkgver=0.9.117.r770.g9cdf1d5c
 pkgrel=1
 pkgdesc='A Stremio client built for adventure'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 provides=('harbor-stremio' 'harbor')
 conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-bin')
 
-source=("$_pkgname::git+https://github.com/harborstremio/harbor.git")
+source=("$_pkgname::git+https://github.com/harborstremio/harbor.git#branch=beta-branch")
 sha256sums=('SKIP')
 
 pkgver() {
