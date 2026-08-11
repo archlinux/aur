@@ -2,12 +2,12 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-git
 pkgname=('shelly-git' 'shelly-flatpak-backend-git')
-pkgver=3.0.1+1r3798.g8d5bbe5
+pkgver=3.0.3r4052.g0fc410e
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
-makedepends=('git' 'pkgconf' 'gtk4' 'zig>=0.16' 'clang' 'gettext' 'vala' 'meson' 'ninja' 'flatpak')
+makedepends=('git' 'pkgconf' 'gtk4' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'ripgrep')
 
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.1+1r%s.g%s' \
+  printf '3.0.3r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -53,8 +53,13 @@ build() {
     -Dcpu=baseline \
     -Doptimize=ReleaseSmall)
 
-  meson setup --prefix=/usr build-notify Shelly.Notifications
-  meson compile -C build-notify
+    (cd Shelly.Notifications.Zig && zig build --verbose \
+    --prefix "${srcdir}/${pkgbase}/out-notifications" \
+    --cache-dir "${srcdir}/zig-cache" \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSmall)
+
 
   ./out-cli/bin/shelly utility --completions bash > shelly.bash
   ./out-cli/bin/shelly utility --completions fish > shelly.fish
@@ -66,11 +71,12 @@ build() {
     msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
   done
 
-  for po_file in Shelly.Notifications/po/*.po; do
+  for po_file in Shelly.Notifications.Zig/po/*.po; do
     [ -f "$po_file" ] || continue
     lang=$(basename "$po_file" .po)
     msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
   done
+
 }
 
 check() {
@@ -120,7 +126,7 @@ package_shelly-git() {
   )
 
   cd "$srcdir/${pkgname}"
-  install -Dm755 build-notify/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
+  install -Dm755 out-notifications/bin/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
   install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
   install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
