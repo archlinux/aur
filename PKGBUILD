@@ -4,7 +4,7 @@
 
 pkgname="mpvcut"
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Turns mpv into a video cutter.'
 url='https://codeberg.org/tuxnix/mpvcut'
 arch=('any')
@@ -13,8 +13,10 @@ depends=('mpv' 'ffmpeg')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/mpvcut'
         'mpvcut.hook'
-        'update-mpvcut.sh')
+        'update-mpvcut.sh'
+        'remove-mpvcut.sh')
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -26,5 +28,6 @@ package() {
     install -Dm605 ffpid "$pkgdir/usr/local/bin/ffpid"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 "$srcdir/update-mpvcut.sh" "$pkgdir/usr/local/bin/update-mpvcut"
+    install -Dm755 "$srcdir/remove-mpvcut.sh" "$pkgdir/usr/local/bin/remove-mpvcut"
     install -Dm644 "$srcdir/mpvcut.hook" "$pkgdir/etc/pacman.d/hooks/mpvcut.hook"
 }

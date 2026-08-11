@@ -1,27 +1,13 @@
 #!/bin/bash
 
-# For mpvcut.hook: Install/upgrade/remove mpvcut-for all user with /home directory.
+# For mpvcut.hook: Install/update mpvcut for all user.
 
-#Install/Upgrade
-if pacman -Q mpvcut >&/dev/null; then
-    for user_home in /home/*; do
-        if [ -d "$user_home" ]; then
-            username=$(basename "$user_home")
-            if id "$username" >&/dev/null; then
-                mkdir -p "$user_home/.config/mpv/scripts/"
-                cp -r /etc/skel/.config/mpv/scripts/mpvcut "$user_home/.config/mpv/scripts/"
-            fi
+for user_home in /home/*; do
+    if [ -d "$user_home" ]; then
+        username=$(basename "$user_home")
+        if id "$username" >/dev/null 2>&1; then
+            mkdir -p "$user_home/.config/mpv/scripts/"
+            cp -r /etc/skel/.config/mpv/scripts/mpvcut "$user_home/.config/mpv/scripts/"
         fi
-    done
-else
-    # Remove
-    for user_home in /home/*; do
-        if [ -d "$user_home" ]; then
-            username=$(basename "$user_home")
-            if id "$username" >&/dev/null; then
-                rm -rf "$user_home/.config/mpv/scripts/mpvcut"
-            fi
-        fi
-    done
-fi
-
+    fi
+done
