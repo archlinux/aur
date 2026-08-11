@@ -1,0 +1,20 @@
+pkgbase = controlcenter-daemon
+	pkgdesc = ControlCenter Daemon (standalone C# service)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://code.weexnes.dev/ControlCenter/ControlCenter.Daemon
+	install = controlcenter-daemon.install
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	depends = glibc
+	depends = zlib
+	provides = controlcenter-daemon
+	conflicts = controlcenter-daemon-git
+	options = !strip
+	source = controlcenter-daemon-1.0.0.tar.gz::https://code.weexnes.dev/~downloads/projects/74/archives?revision=1.0.0&format=tgz
+	source = controlcenter-daemon.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = controlcenter-daemon

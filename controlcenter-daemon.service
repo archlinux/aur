@@ -1,0 +1,12 @@
+[Unit]
+Description=ControlCenter Daemon Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/controlcenter-daemon
+ExecStart=/opt/controlcenter-daemon/ControlCenter.Daemon
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
