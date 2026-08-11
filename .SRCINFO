@@ -1,0 +1,25 @@
+pkgbase = poe2-price-check-git
+	pkgdesc = Path of Exile 2 price checker for Wayland: live trade listings and poe.ninja economy data (git)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Meliodas8/PoE2-PriceCheck
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = wl-clipboard: item copy from the game (Price Check tab)
+	provides = poe2-price-check
+	conflicts = poe2-price-check
+	options = !lto
+	source = poe2-price-check::git+https://github.com/Meliodas8/PoE2-PriceCheck.git
+	source = poe2-price-check.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = poe2-price-check-git

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PoE2 Price Check
+Comment=Live Path of Exile 2 trade listings and poe.ninja economy data
+Exec=poe2-price-check
+Icon=poe2-price-check
+Terminal=false
+Categories=Game;Utility;
+StartupWMClass=PoE2 Price Check
