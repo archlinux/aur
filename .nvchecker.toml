@@ -1,0 +1,5 @@
+[octave-strings]
+source = "github"
+github = "gnu-octave/octave-strings"
+use_max_tag = "true"
+prefix = "release-"
