@@ -1,6 +1,6 @@
 pkgbase = arity
 	pkgdesc = Language server, formatter, and linter for R
-	pkgver = 0.15.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/jolars/arity
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arity
 	conflicts = arity-bin
 	options = !lto
 	options = !debug
-	source = arity-0.15.0.tar.gz::https://github.com/jolars/arity/archive/v0.15.0.tar.gz
-	sha512sums = f18be6b4949874ecf5091eda252d12d9759a03225417834103c3190c86c1a87cc514a6df4d7fb7fff50cd0e223acd77018eb71dc3aeda103e5aa7923ba2e282f
+	source = arity-0.18.0.tar.gz::https://github.com/jolars/arity/archive/v0.18.0.tar.gz
+	sha512sums = c9ca50f8c0aece96639c4766bab4497402e454f73402b4780d2093f24f566d1f28bac58772858392639a384ccc2869460dada3377f5ce244eb0b86c060ec8201
 
 pkgname = arity
