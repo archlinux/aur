@@ -1,6 +1,6 @@
 pkgbase = liteparse-bin
 	pkgdesc = Fast local document parser for PDF, DOCX, XLSX, PPTX, and images with built-in OCR
-	pkgver = 2.10.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://developers.llamaindex.ai/liteparse/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = liteparse-bin
 	provides = liteparse
 	conflicts = liteparse
 	options = !debug
-	source_x86_64 = liteparse-bin-2.10.0-x86_64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.10.0/lit-linux-x64.tar.gz
-	sha256sums_x86_64 = 70f7f1300761c07d9f3be115d5cc1bfe95850107baed9d1d2efeb2c545c2152a
-	source_aarch64 = liteparse-bin-2.10.0-aarch64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.10.0/lit-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2c4cf0f60dc12dd4c90af8ec456b586fea14453eef9528a97693b0981cef3211
+	source_x86_64 = liteparse-bin-2.11.1-x86_64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.11.1/lit-linux-x64.tar.gz
+	sha256sums_x86_64 = 577f2385348ee4fbd01d197afa9eb2ac9098a198e4f78770798f3a46b593b61b
+	source_aarch64 = liteparse-bin-2.11.1-aarch64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.11.1/lit-linux-arm64.tar.gz
+	sha256sums_aarch64 = 285f588c87397aa9cc5b11b27255b2214d8659e50efab2e2b80be5b4c7cad261
 
 pkgname = liteparse-bin
