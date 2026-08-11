@@ -1,4 +1,3 @@
-
 # Maintainer: deeadly (DC only)
 
 pkgname='dim-caelestia-shell-git'
@@ -14,7 +13,7 @@ depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'libcava' 'n
          'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'protobuf')
 makedepends=('git' 'cmake' 'ninja' 'qt6-shadertools')
 provides=($_pkgname)
-conflicts=($_pkgname "$_pkgname-git")
+conflicts=($_pkgname "$_pkgname-git" 'noctalia-qs' 'noctalia-qs-git')
 source=("${pkgname}::git+https://github.com/dim-ghub/caelestia-shell.git")
 sha256sums=('SKIP')
 
