@@ -1,0 +1,21 @@
+pkgbase = leolink-git
+	pkgdesc = Native Linux client for Reolink cameras: live view, motion alerts, recording - git version
+	pkgver = 0.1.1.r7.g63952d7
+	pkgrel = 1
+	url = https://github.com/tombueng/leolink
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qt6-svg
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = mpv
+	depends = hicolor-icon-theme
+	provides = leolink
+	conflicts = leolink
+	source = leolink::git+https://github.com/tombueng/leolink.git
+	sha256sums = SKIP
+
+pkgname = leolink-git
