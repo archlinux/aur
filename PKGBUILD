@@ -1,7 +1,7 @@
 # Maintainer: pacmanics <pacman@altbox.de>
 
 pkgname=pentest-ghostwriter
-pkgver=7.2.4
+pkgver=7.2.6
 pkgrel=1
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
@@ -47,9 +47,10 @@ source=(
   '0066_alter_reporttemplate_document.py'
   '0068_merge_pacmanics_local_document_and_upstream_0067.py'
   '0071_merge_pacmanics_local_document_and_upstream_0070.py'
+  '0072_merge_pacmanics_local_document_and_upstream_0071.py'
   'README.native-port.md'
 )
-sha256sums=('1a446922d549280ac4f30785e62659b45b640a7313a3d86ccd100d4398653554'
+sha256sums=('3a76e351dc2c4c57542ff666d85e620d6d38ed79e34a8fe6a05c27295e75b603'
             '0dc916398fc88639481ec7156435b00864d2eb0d66154fe9a7a6fa63b8c452b0'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
@@ -73,6 +74,7 @@ sha256sums=('1a446922d549280ac4f30785e62659b45b640a7313a3d86ccd100d4398653554'
             '8afc13e41cf881eab51bec419ae7f5be97e9f66d421f0832543caebfa7bedadc'
             '796e89d970858a30946ede593f3fe35e5594fc59461f80932fae1ba3e99ae77e'
             '083a9a14687352f229b0cc10e2aca7d32d423f4eec95c27aa14abdad7f4f95cf'
+            'e44dba9f1aa1fb63bb2c902d5412e2a80f4fb1e9523547ae80912dacfc13f7e7'
             '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
@@ -274,6 +276,7 @@ package() {
   install -Dm644 "${srcdir}/0066_alter_reporttemplate_document.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0066_alter_reporttemplate_document.py"
   install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
   install -Dm644 "${srcdir}/0071_merge_pacmanics_local_document_and_upstream_0070.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0071_merge_pacmanics_local_document_and_upstream_0070.py"
+  install -Dm644 "${srcdir}/0072_merge_pacmanics_local_document_and_upstream_0071.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0072_merge_pacmanics_local_document_and_upstream_0071.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
