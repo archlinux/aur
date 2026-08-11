@@ -1,4 +1,5 @@
 # Maintainer: galak9 <alterk@qq.com>
+# finially aur is back!
 pkgname=qoder-cli-cn-bin
 pkgver=1.1.19
 pkgrel=1
