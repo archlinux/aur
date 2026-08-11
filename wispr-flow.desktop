@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Wispr Flow
+Comment=Voice dictation that types into the focused application
+GenericName=Voice Dictation
+Exec=wispr-flow %U
+TryExec=wispr-flow
+Icon=wispr-flow
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;
+StartupWMClass=wispr-flow
+MimeType=x-scheme-handler/wispr-flow;
+Keywords=voice;dictation;speech;transcription;

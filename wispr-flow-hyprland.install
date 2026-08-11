@@ -1,0 +1,28 @@
+post_install() {
+	cat <<'EOF'
+As each regular desktop user who will run Wispr Flow, execute:
+  wispr-flow --setup
+Then run `wispr-flow --doctor`. If input devices are not accessible, reboot
+before trying again. Do not run Wispr Flow or its setup command as root.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	cat <<'EOF'
+Per-user configuration is not removed automatically. Before removal, each
+regular desktop user can remove managed integration with:
+  wispr-flow --autostart off
+  wispr-flow --hyprland-rules off
+EOF
+}
+
+post_remove() {
+	cat <<'EOF'
+Wispr Flow account data, preferences, logs, and any remaining user-managed
+Hyprland configuration were preserved in the regular users' home directories.
+EOF
+}

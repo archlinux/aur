@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+  ".SRCINFO",
+  "PKGBUILD",
+  "wispr-flow-hyprland.install",
+  "wispr-flow.desktop",
+  "70-wispr-flow-input.rules",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Albert Alvarez Estelles <114157589+kukapu@users.noreply.github.com>"
+SPDX-License-Identifier = "0BSD"
