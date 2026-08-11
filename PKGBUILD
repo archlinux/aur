@@ -29,6 +29,7 @@ build() {
 
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
+  export GOFLAGS="-modcacherw"
   export CARGO_HOME="$srcdir/cargo-home"
 
   cargo clean
