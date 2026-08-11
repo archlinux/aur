@@ -1,7 +1,7 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0.29.6e2be60
+pkgrel=3
 pkgdesc="Arch Linux system tray update checker using yay (built from source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skint007/yay-sys-tray"
@@ -13,6 +13,11 @@ optdepends=('tailscale: remote server update checking via Tailscale'
 # explicitly — otherwise an older system Node fails mid-build with a cryptic
 # crash. Users who can't/won't bump Node should install yay-sys-tray-bin.
 makedepends=(git rust cargo 'nodejs>=22.13.0' pnpm)
+# ring (via reqwest/rustls, used for the AUR RPC check) compiles its C and
+# assembly through the cc crate, which picks up makepkg's CFLAGS. With Arch's
+# default `lto` option those objects become LLVM bitcode that the final Rust
+# link can't resolve, and the build dies on `undefined symbol: ring_core_*`.
+options=(!lto)
 provides=('yay-sys-tray')
 conflicts=('yay-sys-tray' 'yay-sys-tray-bin')
 install=yay-sys-tray-git.install
