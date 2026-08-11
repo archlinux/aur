@@ -17,7 +17,7 @@ build() {
   # patch fonts
   cd "$srcdir"
   mkdir -p "$srcdir/patched"
-  printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
+  printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This can take a long time depending on your system...\n"
   # patch fonts quiet with complete glyphs
   parallel -j$(nproc) python "$srcdir/font-patcher" --variable-width-glyphs -q -c {} -out "$srcdir/patched" &> /dev/null ::: "$srcdir/extras/otf"/*.otf
 }
