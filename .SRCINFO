@@ -1,13 +1,13 @@
 pkgbase = python-colored
 	pkgdesc = Simple python library for color and formatting to terminal
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dslackw.gitlab.io/colored
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-flit
+	makedepends = python-flit-core
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
