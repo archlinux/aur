@@ -2,7 +2,7 @@
 # Maintainer: Raj Nakarja <raj@siliconwitchery.com>
 
 pkgname='battui-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A tiny battery monitor for the terminal'
 url='https://github.com/siliconwitch/battui'
@@ -12,10 +12,10 @@ provides=('battui')
 conflicts=('battui')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/siliconwitch/battui/releases/download/v${pkgver}/battui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('e991cef75ab579b56821e5bbf3dcf888cf9d16fe42e61fcac8cb27572016f3b7')
+sha256sums_aarch64=('461ee9d256476507968b85af9cd984c20fde3a2f1848cf1a10e5c1012bdbe3ee')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/siliconwitch/battui/releases/download/v${pkgver}/battui_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('796a94d9aea50d14cdf03b06e79b3c9860721f7d9976d867316467911202366b')
+sha256sums_x86_64=('d6de965fc49875884c10fe24db4f4fb26b39c40eba7ab8fab7301b21b85621ef')
 
 package() {
   install -Dm755 "./battui" "${pkgdir}/usr/bin/battui"
@@ -24,4 +24,5 @@ package() {
   install -Dm644 "./contrib/systemd/battui-log.service" "${pkgdir}/usr/lib/systemd/user/battui-log.service"
   sed -i "s|/usr/local/bin/battui|/usr/bin/battui|g" "${pkgdir}/usr/lib/systemd/user/battui-log.service"
   grep -q "^ExecStart=/usr/bin/battui " "${pkgdir}/usr/lib/systemd/user/battui-log.service"
+  install -Dm644 "./contrib/desktop/battui.desktop" "${pkgdir}/usr/share/applications/battui.desktop"
 }

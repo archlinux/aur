@@ -1,16 +1,16 @@
 pkgbase = battui-bin
 	pkgdesc = A tiny battery monitor for the terminal
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/siliconwitch/battui
 	license = MIT
 	conflicts = battui
 	provides = battui
 	arch = aarch64
-	source_aarch64 = https://github.com/siliconwitch/battui/releases/download/v0.3.0/battui_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e991cef75ab579b56821e5bbf3dcf888cf9d16fe42e61fcac8cb27572016f3b7
+	source_aarch64 = https://github.com/siliconwitch/battui/releases/download/v0.3.1/battui_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 461ee9d256476507968b85af9cd984c20fde3a2f1848cf1a10e5c1012bdbe3ee
 	arch = x86_64
-	source_x86_64 = https://github.com/siliconwitch/battui/releases/download/v0.3.0/battui_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 796a94d9aea50d14cdf03b06e79b3c9860721f7d9976d867316467911202366b
+	source_x86_64 = https://github.com/siliconwitch/battui/releases/download/v0.3.1/battui_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d6de965fc49875884c10fe24db4f4fb26b39c40eba7ab8fab7301b21b85621ef
 	
 pkgname = battui-bin
