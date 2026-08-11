@@ -1,0 +1,25 @@
+pkgbase = audacious-discord-rpc-git
+	pkgdesc = Discord Rich Presence plugin for Audacious (git version)
+	pkgver = 2.4.r1.g84a5f8e
+	pkgrel = 1
+	url = https://github.com/onegen-dev/audacious-discord-rpc
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = audacious>=4.6
+	depends = curl
+	depends = fmt
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = audacious-discord-rpc
+	conflicts = audacious-discord-rpc
+	source = audacious-discord-rpc::git+https://github.com/onegen-dev/audacious-discord-rpc.git
+	source = glaze-7.8.1.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v7.8.1.tar.gz
+	source = discord-presence-3b50b0854ec24f9b2d4cc8e28f9145f276bb998e.tar.gz::https://github.com/onegen-dev/discord-presence/archive/3b50b0854ec24f9b2d4cc8e28f9145f276bb998e.tar.gz
+	sha256sums = SKIP
+	sha256sums = eaf6d9920edfa6a3d5005c25a3fdb8334d24b1d73401756f22da8106f84dedd1
+	sha256sums = eb7d8f3cf35590f3bfde855f7be916bd208fa97037dc7e6855e869bca844b6a6
+
+pkgname = audacious-discord-rpc-git

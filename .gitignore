@@ -1,0 +1,5 @@
+*.pkg.tar.*
+*.tar.gz
+/audacious-discord-rpc/
+pkg/
+src/
