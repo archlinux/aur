@@ -1,6 +1,6 @@
 pkgbase = usagenometer
 	pkgdesc = AI usage meters in the terminal (Codex, Cursor, Antigravity, Claude, Grok)
-	pkgver = 0.1.2_beta
+	pkgver = 0.1.4_beta
 	pkgrel = 1
 	url = https://github.com/horizzon3507/usagenometer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = usagenometer
 	depends = glibc
 	optdepends = libnotify: desktop notifications for usg --notify / --alert
 	options = !lto
-	source = usagenometer-0.1.2_beta.tar.gz::https://github.com/horizzon3507/usagenometer/archive/refs/tags/cli/v0.1.2-beta.tar.gz
-	sha256sums = dd5acb80e13c8f6d283d9c1b6e2bd2a7a15660b28bbb42cf239ce212f5c9ca9d
+	source = usagenometer-0.1.4_beta.tar.gz::https://github.com/horizzon3507/usagenometer/archive/refs/tags/cli/v0.1.4-beta.tar.gz
+	sha256sums = ef1fcbdbe12425134fccb07fe95f3c53c97a150c31564970fba6ce0a54ca8d37
 
 pkgname = usagenometer
