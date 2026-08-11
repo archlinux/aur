@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -127,7 +127,7 @@ elseif( UNIX OR MINGW )
+@@ -136,7 +136,7 @@ elseif( UNIX OR MINGW )
      endif()
  
      set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -${OPT_LV} ${OPT_DBG} -fomit-frame-pointer -pthread -std=c99")
