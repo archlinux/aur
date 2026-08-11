@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=KeeperFX (play directly)
+GenericName=Dungeon Keeper
+Comment=Start KeeperFX straight away, skipping the launcher
+Exec=keeperfx-tux
+Icon=keeperfx-tux
+Terminal=false
+Categories=Game;StrategyGame;
+Keywords=dungeon;keeper;keeperfx;strategy;
+StartupWMClass=keeperfx
