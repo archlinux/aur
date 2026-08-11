@@ -1,0 +1,12 @@
+pkgbase = super-sonico-plus-size-adventure
+	pkgver = 0.2c
+	pkgrel = 1
+	url = https://chocofl4n.itch.io/super-sonico-plus-size-adventure
+	arch = any
+	license = custom:unknown
+	makedepends = itchio-dlagent
+	depends = renpy
+	source = super-sonico-plus-size-adventure-0.2c.zip::itch://chocofl4n/super-sonico-plus-size-adventure/14967686
+	sha256sums = aec58ca52fcc7bb08cd770f5bd02210ab5f6e684a942273da93d0e624631a1e1
+
+pkgname = super-sonico-plus-size-adventure
