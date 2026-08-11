@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=garden-tools
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
@@ -9,19 +9,19 @@ license=('MIT')
 depends=('libgcc')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
-sha256sums=('7581743e2a622cebd1a554cec21980573fe357c5cc60ef2bf6b0fa1993314dec')
+sha256sums=('7c2215d6cf6bd6797aac4ad0a0145e2407f939fa2258248d67ba055b778dae03')
 
 prepare() {
   cd "garden-v${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target host-tuple
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "garden-v${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release
+  cargo build --frozen --release
 
   # completions
   for shell in bash fish zsh; do
