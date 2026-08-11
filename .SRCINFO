@@ -1,0 +1,25 @@
+pkgbase = solanum-enhanced-git
+	pkgdesc = Pomodoro timer app for GNOME with enhanced multi-monitor, auto-start, and window features
+	pkgver = 7.2.0.r0.g08f2ec6
+	pkgrel = 1
+	url = https://github.com/OhYash/Solanum-gnome
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = rust
+	makedepends = blueprint-compiler
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = solanum
+	conflicts = solanum
+	source = git+https://github.com/OhYash/Solanum-gnome.git
+	sha256sums = SKIP
+
+pkgname = solanum-enhanced-git
