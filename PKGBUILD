@@ -5,13 +5,13 @@
 
 _pkgname=mopidy
 pkgname=mopidy4
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="An extensible music server written in Python"
 arch=('any')
 url="https://www.mopidy.com"
 license=('Apache-2.0')
-depends=('python' 'python-cyclopts>=4.3.0' 'python-httpx' 'python-platformdirs' 'python-pydantic' 'python-gobject' 'python-pykka' 'python-rich'         'python-tornado' 'gstreamer' 'gst-python' 'gst-plugins-good' 'gst-plugins-ugly'
+depends=('python' 'python-cyclopts>=3.12' 'python-httpx' 'python-platformdirs' 'python-pydantic' 'python-gobject' 'python-pykka' 'python-rich'         'python-tornado>=6.4.2' 'gstreamer' 'gst-python' 'gst-plugins-good' 'gst-plugins-ugly'
          'gst-plugins-base' 'python-dbus')
 checkdepends=('python-polyfactory' 'python-dirty-equals' 'python-pytest' 'python-pytest-httpx' 'python-pytest-mock')
 makedepends=('python-sphinx' 'python-sphinx_rtd_theme' 'git' 'python-build'
@@ -23,7 +23,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/mopidy/mopidy/archive/v${p
         'logging.conf'
         'mopidy.sysusers'
         )
-sha512sums=('9fe097859603c8ad83030ac42dee14bc1adac293b69951de5364f4e13f90543eab2298a7673b88ca163ffbf591c23e85527dd24ea57c99b38ee6c2d0973368d2'
+sha512sums=('4bbca6cdc250a85f9baff10d0908df29fd9bf82c48caf2262f2b2c19d46996ca7d81e49f03fceefe667dff4ce7c6706700997698588d650fd89309281904dbf6'
             'eb66e8e826640a939b1ba51569ab7fab041b8b5e8823ea2d5f05596faf1de8882fd8c1c32bdb92534e759243fb5ff741bda0d2ebb3282af542d1287c8c68b5ea'
             '0c438058500ab7559baae21b03b10e2b80b10c77776b240b2100da1f4c84ea8efe24dc7a38a95034e75605eaf5d21604d13e5b8c7358778c555ddb6372a49388'
             'ff6c9f0406dfc1cc01ac6edcc6bae429342437397321ab9205ca273a63b28611d08005a0a5dba639b5ae2157a4f03a1d58c2199f7dbc6965864685b4b71f0b6f')
