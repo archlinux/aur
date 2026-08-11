@@ -1,10 +1,11 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
+Operation = Remove
 Type = Path
 Target = etc/skel/.config/mpv/scripts/mpvcut/*
 
 [Action]
-Description = Kopiere mpvcut-Konfiguration in Benutzerverzeichnisse
+Description = Istall/upgrade/remove mpvcut in ~/.config/mpv/scripts/
 When = PostTransaction
-Exec = /usr/local/bin/update-mpvcut
+Exec = /usr/local/bin/update-mpvcut.sh

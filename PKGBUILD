@@ -4,7 +4,7 @@
 
 pkgname="mpvcut"
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Turns mpv into a video cutter.'
 url='https://codeberg.org/tuxnix/mpvcut'
 arch=('any')
