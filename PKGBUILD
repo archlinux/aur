@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-git
-pkgver=1.2.0.r5.gd971176
+pkgver=1.5.0.r2.g209ea08
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -55,6 +55,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
