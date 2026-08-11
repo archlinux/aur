@@ -1,5 +1,5 @@
 pkgname=spoofer
-pkgver=1.4.13
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="client software for the spoofer internet research project on ip spoofing, BCP38 compliance"
 url="https://www.caida.org/projects/spoofer/"
@@ -13,7 +13,7 @@ source=("https://www.caida.org/projects/spoofer/downloads/spoofer-${pkgver}.tar.
         "spoofer.service"
         "Spoofer.conf"
         "spoofer.install")
-sha1sums=('c260710cb2c1f6ac589fbf0472b03aac631ac976'
+sha1sums=('124ad2be4c79433e7d82d4d64f46b47072d34a7b'
           'fe2779dcfaf0e401f3fa8d7226e7fe97a7af5b66'
           'ecbb2e4ee11288ca682e68ce5f76da4de42d4117'
           '20feb9ceffbb30d45a30d2c5e1908e4dabe2b17c'
