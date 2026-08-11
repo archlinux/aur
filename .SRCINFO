@@ -1,8 +1,9 @@
 pkgbase = surrealist-bin
-	pkgdesc = Surrealist is the ultimate way to visually manage your SurrealDB database
+	pkgdesc = [DISCONTINUED] Surrealist was the ultimate way to visually manage your SurrealDB database
 	pkgver = 3.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/surrealdb/surrealist
+	install = surrealist-bin.install
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1

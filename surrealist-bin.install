@@ -1,0 +1,22 @@
+note() {
+    printf "${RED}==>${ALL_OFF}${YELLOW} NOTE:${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+RED="${BOLD}$(tput setaf 1)"
+BLUE="${BOLD}$(tput setaf 4)"
+YELLOW="${BOLD}$(tput setaf 3)"
+
+post_install() {
+	echo ""
+    note "Surrealist has been deprecated in favor of SurrealDB Studio"
+    echo "    Please consider uninstalling ${BLUE}surrealist${ALL_OFF} and installing ${BLUE}surrealdb-studio-bin${ALL_OFF}"
+    echo '    More info can be found here:'
+    echo '    https://surrealdb.com/blog/introducing-surrealdb-studio'
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
