@@ -1,7 +1,7 @@
-# Maintainer: Ismet Togay <ismet.togay@gmail.com>
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 pkgname=taste
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI to manage CommandCode preferences'
 arch=('x86_64')
 url='https://commandcode.ai'
@@ -17,6 +17,7 @@ package() {
     npm install -g \
         --cache "${srcdir}/npm-cache" \
         --prefix "${pkgdir}/usr" \
+        --no-audit --no-fund --no-progress --loglevel=error \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
 
     # Replace npm-installed symlink with wrapper that sets npm_config_prefix
