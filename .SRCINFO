@@ -1,0 +1,25 @@
+pkgbase = tonepush
+	pkgdesc = Open-source editor for Line 6 Helix and HX pedals, with a GUI and a scriptable CLI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://tonepush.rocks
+	install = tonepush.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = libgl: for the GUI
+	optdepends = libxkbcommon: for the GUI
+	optdepends = wayland: for the GUI on Wayland
+	optdepends = libx11: for the GUI on X11
+	optdepends = p7zip: extract HX Edit model data from inside the app
+	conflicts = tonepush-git
+	conflicts = stompchain
+	replaces = stompchain
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/crmne/tonepush/releases/download/v0.4.0/tonepush-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = aba0ef03330522bb1f93f15cd522a5725b052494340a2d50fcfa01beafd52768
+	source_aarch64 = https://github.com/crmne/tonepush/releases/download/v0.4.0/tonepush-v0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 45e8c4033f5c315ef1732519e74dceb05478bd9fc6b434c490d4a7245abf7a3c
+
+pkgname = tonepush
