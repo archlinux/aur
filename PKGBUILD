@@ -2,14 +2,14 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-x11
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD-3-Clause')
 depends=('glfw-x11' 'freetype2' 'dbus' 'hicolor-icon-theme' 'pugixml')
-makedepends=('pkgconf' 'git' 'cmake')
+makedepends=('libxrandr' 'pkgconf' 'git' 'cmake')
 optdepends=('xdg-desktop-portal: file dialogs')
 options=('!lto')
 provides=('tracy')
@@ -21,15 +21,15 @@ build() {
   cd tracy
 
   cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release
-  make -C capture/build
+  cmake --build capture/build
   cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release
-  make -C csvexport/build
+  cmake --build csvexport/build
   cmake -S import -B import/build -D CMAKE_BUILD_TYPE=Release
-  make -C import/build
+  cmake --build import/build
   cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D LEGACY=ON
-  make -C profiler/build
+  cmake --build profiler/build
   cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release
-  make -C update/build
+  cmake --build update/build
 }
 
 package() {
@@ -38,7 +38,7 @@ package() {
   install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
   install -Dm755 import/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
   install -Dm755 import/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
-  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy
+  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy-profiler
   install -Dm755 update/build/tracy-update $pkgdir/usr/bin/tracy-update
 
   mkdir -p $pkgdir/usr/include/Tracy/client
