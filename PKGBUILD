@@ -1,3 +1,5 @@
+# Maintainer: VillagerTom <villager-tom at proton dot me>
+
 pkgname=bettbox-compatible
 _pkgname=Bettbox
 pkgver=1.18.9
