@@ -1,6 +1,6 @@
 pkgbase = iv-cli
 	pkgdesc = A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)
-	pkgver = 0.13.6
+	pkgver = 0.13.9
 	pkgrel = 1
 	url = https://github.com/kenshaw/iv
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = iv-cli
 	depends = openjpeg2
 	depends = poppler-glib
 	optdepends = libreoffice
-	source = iv-0.13.6.tar.gz::https://github.com/kenshaw/iv/archive/v0.13.6.tar.gz
-	sha256sums = 6af51f0f0890ff726c8def23d2e5d78569cdd197bc7da100d092589149e45281
+	source = iv-0.13.9.tar.gz::https://github.com/kenshaw/iv/archive/v0.13.9.tar.gz
+	sha256sums = 50e28fe8d9c7dee573a3d59aaedc8b5f57874a8f90b4e8ab248ed1ca3be98307
 
 pkgname = iv-cli
