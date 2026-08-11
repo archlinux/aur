@@ -1,6 +1,6 @@
 # Maintainer: shamrai-nazar <nazar.shamrai@gmail.com>
 pkgname=onvif-ptz-viewer-git
-pkgver=r20.44217e3
+pkgver=r21.7fade74
 pkgrel=1
 pkgdesc="Перегляд ONVIF/RTSP-камери з автопошуком і PTZ-керуванням через mpv"
 arch=('any')
