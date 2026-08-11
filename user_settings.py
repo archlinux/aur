@@ -2,6 +2,8 @@
 
 user_settings = {
     ###### Proton GE flags ######
+    # preserve ps4 dualsense layout and identity to show the correct symbols ingame.
+#    "PROTON_SONY_DUALSENSE_AS_DUALSHOCK4": "1",
 
     #Disables DX12.
 #    "PROTON_NO_D3D12": "1",
@@ -94,7 +96,13 @@ user_settings = {
 #    "PROTON_PREFER_SDL": "1",
 
     #Tells Proton to use the winegstreamer backend instead of winedmo. Winedmo was introduced in Proton 10. Useful for games that regressed from Proton 9 to Proton 10
-#   "PROTON_MEDIA_USE_GST"  "1",
+#   "PROTON_MEDIA_USE_GST":  "1",
+
+    # Enable Proton Discord Bridge
+#   "PROTON_DISCORD_BRIDGE": "1",
+
+    # Enable Translation Layer for DLSS to FSR
+#   "PROTON_USE_OPTISCALER": "1",
 
     ###### DXVK flags ######
 
@@ -145,4 +153,12 @@ user_settings = {
     #or, verbose converter logging (may impact playback performance):
 #    "GST_DEBUG": "4,WINE:7,protonaudioconverter:7,protonaudioconverterbin:7,protonvideoconverter:7",
 #    "GST_DEBUG_NO_COLOR": "1",
+
+    ###### Wine flags ######
+
+    # Enable spacial downmix override for winealsa.
+    #    "WINEALSA_SPACIAL": "1",
+
+    # Finetune the Audio Channels for winealsa (2 to disable spatial, 4 for 2 front 2 rear, 6 for 5.1 8 for 7.1).
+    #    "WINEALSA_CHANNELS": "2",
 }

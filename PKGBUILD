@@ -1,30 +1,28 @@
-## Maintainer:     Jaja <jaja@mailbox.org>
-## Co-Maintainer:  floriplum <floriplum@mailbox.org>
-## Co-Maintainer:  various people submitting to 'chaotic-aur' repo
-## Credits:        barfin (aka RogueGirl) <barfin@protonmail.com>
-
-## Linted using:
-##   $ shellcheck PKGBUILD -e SC2034,SC2148,SC2154
-## Formated using:
-##   $ shfmt -w PKGBUILD
+# Maintainer: Thomas Ludwig <business at tludwig dot dev>
+# Contributor:     Jaja <jaja@mailbox.org>
+# Contributor:  floriplum <floriplum@mailbox.org>
+# Contributor:  various people submitting to 'chaotic-aur' repo
+# Contributor:        barfin (aka RogueGirl) <barfin@protonmail.com>
 
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton10_34
+pkgver=GE_Proton11_5
 pkgrel=1
 epoch=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
 provides=('proton' "proton-ge-custom=${pkgver/_/.}")
-conflicts=('proton-ge-custom')
+conflicts=('proton-ge-custom' 'proton-ge-bin')
 
 ## dependencies
 depends=('python')
-optdepends=('vulkan-icd-loader'
+optdepends=(
+  'vulkan-icd-loader'
   'lib32-openal'
   'lib32-vkd3d'
+  'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
   # libav support #
   'lib32-libva'
   'lib32-speex'
@@ -47,11 +45,11 @@ optdepends=('vulkan-icd-loader'
   'zenity: GNOME splash dialog support'
   'python-kivy: splash dialog support (big picture mode)'
   'steam: use proton with steam like intended'
-  'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
   'vulkan-driver: driver to be used by dxvk'
   'winetricks: protonfixes backend - highly recommended'
   'wine: support for 32bit prefixes'
-  'xboxdrv: gamepad driver service')
+  'xboxdrv: gamepad driver service'
+)
 
 ## makepkg options
 options=(!strip emptydirs)
@@ -60,7 +58,7 @@ install=pleasenote.install
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
 _pkgver=${pkgver//_/-}
-_srcdir=${_pkgver}
+_srcdir="${_pkgver}-${CARCH}"
 
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
@@ -73,13 +71,13 @@ backup=("$_protoncfg")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-${CARCH}.tar.gz"
   'user_settings.py'
   'launcher.sh'
   'proton-ge-custom-bin.conf'
   'pam_limits.conf')
-sha512sums=('9fd0b2cfbd501c0b5c892239c392c7283a029b5e5d5a77d3f85b0ce190d555456241a18eebca16b53f094b403499201c13550a3f0b9b365e1a5eb5737cbb7303'
-  '09b6523516b07ec40b895867ef3cdb5dfb1eda6b188d0edf0acea9c3141583f43b2b5c1a396f4d52eb2ddb3ae6f111b4a7bc6409c003f09ff8c505b81f2a7297'
+sha512sums=('SKIP'
+  '5d1a841d3f8f65f9e62742f84eeccfb198a0292a97ba9109f377a550a4de0e2913d1e17b3d90ecd37ac09411dc67e54662dc1be301554ce05fd128d842252deb'
   '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
   'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f'
   '60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356')
