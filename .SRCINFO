@@ -1,16 +1,16 @@
 pkgbase = ripencli
 	pkgdesc = Update npm, pnpm, yarn, and bun dependencies interactively from your terminal.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://ripencli.vercel.app/
 	arch = any
-	license = MIT
+	license = LGPL-2.1-or-later
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
 	provides = nodejs-ripencli
 	conflicts = nodejs-ripencli
-	source = ripencli-1.4.2.tgz::https://registry.npmjs.org/ripencli/-/ripencli-1.4.2.tgz
-	sha256sums = 3c18fdb29a6694c09eee6eca08397be6d05972a08454dedc0be1a1e7ba524bca
+	source = ripencli-1.4.3.tgz::https://registry.npmjs.org/ripencli/-/ripencli-1.4.3.tgz
+	sha256sums = 193bb1776e7ec36044e05b53ea5ee6356e5452f4c6b3b4f2a841eeb9b2b61ef7
 
 pkgname = ripencli

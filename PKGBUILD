@@ -1,17 +1,17 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=ripencli
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Update npm, pnpm, yarn, and bun dependencies interactively from your terminal."
 arch=('any')
 url="https://ripencli.vercel.app/"
-license=('MIT')
+license=('LGPL-2.1-or-later')
 depends=(nodejs)
 makedepends=(npm jq)
 conflicts=('nodejs-ripencli')
 provides=('nodejs-ripencli')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('3c18fdb29a6694c09eee6eca08397be6d05972a08454dedc0be1a1e7ba524bca')
+sha256sums=('193bb1776e7ec36044e05b53ea5ee6356e5452f4c6b3b4f2a841eeb9b2b61ef7')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
@@ -23,6 +23,4 @@ package() {
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
-
-    install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
