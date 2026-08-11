@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=optionmusic
-pkgver=0.2.7
+pkgver=0.2.11
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('optmusic')
 replaces=('optmusic')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c02940960397218878c52d4d05a4e48dd85e393c3977866d7b8bec794181bbb')
+sha256sums=('e2218022b94625199f3e88a4aeb068d491d4c806535250262eb1451fffbadfbf')
 
 prepare() {
   cd "optionMusic-$pkgver"
@@ -29,8 +29,9 @@ build() {
 
 package() {
   cd "optionMusic-$pkgver"
-  install -Dm755 target/release/optmusic "$pkgdir/usr/bin/optmusic"
-  install -Dm755 target/release/msc      "$pkgdir/usr/bin/msc"
+  install -Dm755 target/release/optionmusic "$pkgdir/usr/bin/optionmusic"
+  install -Dm755 target/release/optmusic    "$pkgdir/usr/bin/optmusic"
+  install -Dm755 target/release/msc         "$pkgdir/usr/bin/msc"
   install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md               "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
