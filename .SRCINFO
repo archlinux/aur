@@ -1,0 +1,23 @@
+pkgbase = deepcool-lm-arkui
+	pkgdesc = Enhanced Deepcool LM LCD driver: AMD support, improved detection and Ark UI
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Nk-YMZ/deepcool-lm
+	install = deepcool-lm.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyusb
+	depends = python-psutil
+	depends = python-pillow
+	depends = lm_sensors
+	depends = ttf-dejavu
+	depends = pciutils
+	depends = usbutils
+	provides = deepcool-lm=1.3.0
+	conflicts = deepcool-lm
+	backup = etc/systemd/system/deepcool-lm.service
+	source = deepcool-lm-arkui-1.3.0.tar.gz::https://github.com/Nk-YMZ/deepcool-lm/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = f52430c19d7341c42ebbac42a7ec8938eba205ac2e887197fe8528989de3fbc5
+
+pkgname = deepcool-lm-arkui
