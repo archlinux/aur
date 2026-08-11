@@ -1,13 +1,14 @@
 pkgbase = openai-codex-desktop
 	pkgdesc = Official ChatGPT desktop app with Codex
 	pkgver = 26.803.81509
-	pkgrel = 1
+	pkgrel = 7
 	url = https://chatgpt.com/codex/
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
 	depends = alsa-lib
 	depends = at-spi2-core
+	depends = bash
 	depends = cairo
 	depends = dbus
 	depends = expat
@@ -45,6 +46,8 @@ pkgbase = openai-codex-desktop
 	options = !debug
 	options = !strip
 	source = chatgpt_26.803.81509_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb
+	source = chatgpt-launcher.sh
 	sha256sums = a9bf91a368f9f7c4eea38082a9fb8fb46b8d005b719a6d7715d2e5a1982c38eb
+	sha256sums = 4e3ca9302600bed268f8fd3ba2c9ac2f1ceb99da139ed71c50db0289b118d06f
 
 pkgname = openai-codex-desktop
