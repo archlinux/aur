@@ -2,12 +2,15 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.7
+pkgver=0.3.4
 pkgrel=1
+epoch=1
+_tag="v0.34" # NOTE: temporary workaround, should be "v${pkgver}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
+options=(!debug)
 depends=(
 	"glibc"
 	"hicolor-icon-theme"
@@ -21,20 +24,21 @@ optdepends=(
 provides=("voicefox=${pkgver}")
 conflicts=("voicefox" "voicefox-git")
 source=(
-	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.zip"
-	"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/LICENSE"
-	"${_pkgname}-${pkgver}-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/icons/512.png"
-	"${_pkgname}-${pkgver}-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/icons/1024.png"
-	"${_pkgname}-${pkgver}-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${pkgver}/assets/voicefox.desktop"
+	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${_pkgver}/${_tag}-linux-${CARCH}.zip"
+	"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/LICENSE"
+	"${_pkgname}-${pkgver}-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/icons/512.png"
+	"${_pkgname}-${pkgver}-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/icons/1024.png"
+	"${_pkgname}-${pkgver}-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/assets/voicefox.desktop"
 )
-sha512sums=('2a90a1bf8328d65c3c5a3a9c37086eebe6561b8d51c429260bea1367d64045c6be81b5315500c99af2030fc0dc7a98df7e09b054123d32c69ac7b39e597cacb0'
+sha512sums=('2ee4888b0d547c86e31fc1b17feee729aa6120001a367c3123195aee48c2cb76c146d85d559742a5d9e22c283900fcbeb6652e8af227fe35be8fe1b7ddaad18a'
             'e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814'
             '980a563b61ebd519a5346de26b67d6782830f6183ad2b4c42ac3e85d0ebd1b4341a1041976cb06c10d1eed346d9f4c009341753f560db63882a5df56e180471b'
             '4749d0f3d9cff9caec6c9dbd18f9ff571905e22d4669fb504e8c2b778dead770d2b5ddbbf0bdadc7b60ca9317f25579e97a016888f38c1b8ade6a476e09a3e6e'
             '61d35b8f99a6fe902dce9c46f6a6a793b826a61f7be5affd8d78ba255c4be90ab57e566296bc6ddda9109d7ac526ae4c726132e82ed9d7259b4e9caf38e3a55d')
 
 package() {
-	install -Dm755 -t "${pkgdir}/usr/bin" voicefox
+	install -Dm755 "${_pkgname}" \
+	    "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 "${_pkgname}-${pkgver}-LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${_pkgname}-${pkgver}-512.png" \
