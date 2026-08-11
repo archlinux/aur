@@ -1,7 +1,7 @@
 pkgbase = passkeyd
 	pkgdesc = Opinionated WebAuthn authenticator
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bjn7/passkeyd
 	install = passkeyd.install
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = passkeyd
 	backup = etc/passkeyd.conf
 	backup = usr/share/passkeyd/theme.conf
 	source = passkeyd-1.9.0.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v1.9.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = sha256:b0b900bd6e4da5fcb8bc9babc176da893e2ff9ba89eb72316ca5b5e06247e6b2
+	sha256sums = b0b900bd6e4da5fcb8bc9babc176da893e2ff9ba89eb72316ca5b5e06247e6b2
 
 pkgname = passkeyd
