@@ -3,7 +3,7 @@
 
 pkgname=atari800-git
 _pkgname=atari800
-pkgver=r3106.1929e6a8
+pkgver=r3116.bbe287d6
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="An emulator of the Atari 800/800XL/130XE/5200 with various extensions - git"
@@ -29,20 +29,7 @@ build() {
     cd "${_pkgname}"
 
     ./autogen.sh
-
-    # configure default - neccessary
-    COPTS="--prefix=/usr"
-
-    # The R: Network device
-    COPTS="${COPTS} --enable-riodevice"
-
-    # SIO Sound for true retro feeling
-    COPTS="${COPTS} --enable-seriosound"
-
-    # OnScreen Keyboard
-    COPTS="${COPTS} --enable-onscreenkeyboard"
-
-    ./configure ${COPTS}
+    ./configure --prefix=/usr --enable-linuxjoysticks
     make
 }
 
