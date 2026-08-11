@@ -1,5 +1,5 @@
 pkgname=cockatrice-client-beta
-pkgver=3.1.0.93
+pkgver=3.1.0.94
 pkgrel=1
 pkgdesc='Open-source multiplatform program for playing tabletop card games over a network (development beta release)'
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=('cockatrice-client-stable' 'cockatrice-client-git' 'cockatrice')
 provides=('cockatrice-client')
 
 source=(
-    "cockatrice-${pkgver}.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-06-27-Development-3.1.0-beta.3.tar.gz"
+    "cockatrice-${pkgver}.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-08-08-Development-3.1.0-beta.4.zip"
 )
 
 sha256sums=('SKIP')
