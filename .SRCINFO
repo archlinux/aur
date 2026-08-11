@@ -1,6 +1,6 @@
 pkgbase = dumpvdl2
 	pkgdesc = VDL Mode 2 message decoder and protocol analyzer
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/szpajder/dumpvdl2
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dumpvdl2
 	depends = soapysdr
 	depends = sqlite
 	depends = zeromq
-	source = dumpvdl2-2.6.0.tar.gz::https://github.com/szpajder/dumpvdl2/archive/v2.6.0.tar.gz
-	sha512sums = 2133c26a08247cf21a5cbf1f2b8c43985765e1048675db8eaf021c1edcb1f00d2cf896ac1f3f51fb6f665133b40564f3131fb30baf3ee7ae57310614fb52e88e
+	source = dumpvdl2-2.7.0.tar.gz::https://github.com/szpajder/dumpvdl2/archive/v2.7.0.tar.gz
+	sha512sums = ac29399c77c00c02249e32f75b0c171c8755a409adbc9166786cefdb7e80d9733af7cec9436ebbc27750c452fb3ae786811910dab8879fad62032f8afd1ee42a
 
 pkgname = dumpvdl2

@@ -4,7 +4,7 @@
 # vim:set ts=3 sw=3 et:
 
 pkgname=dumpvdl2
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="VDL Mode 2 message decoder and protocol analyzer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-only')
 depends=('glib2' 'libacars' 'protobuf-c' 'rtl-sdr' 'soapysdr' 'sqlite' 'zeromq')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2133c26a08247cf21a5cbf1f2b8c43985765e1048675db8eaf021c1edcb1f00d2cf896ac1f3f51fb6f665133b40564f3131fb30baf3ee7ae57310614fb52e88e')
+sha512sums=('ac29399c77c00c02249e32f75b0c171c8755a409adbc9166786cefdb7e80d9733af7cec9436ebbc27750c452fb3ae786811910dab8879fad62032f8afd1ee42a')
 
 build() {
    cmake -S "${pkgname}-${pkgver}" -B build \
