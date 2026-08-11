@@ -1,13 +1,13 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-gtk2-git
 pkgver=r474.71bb25b2
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0-or-later')
 makedepends=(lazarus make fpc gettext binutils gtk2 git python)
-depends=(gtk2 heidisql mariadb-libs postgresql-libs sqlite freetds)
+depends=(gtk2 heidisql mariadb-clients postgresql-libs sqlite freetds)
 provides=("${pkgname%-git}" heidisql-client)
 conflicts=("${pkgname%-git}")
 
