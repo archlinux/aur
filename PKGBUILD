@@ -1,6 +1,6 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13ctl-bin
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='CLI and daemon for ASUS ROG Flow Z13 hardware control'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 optdepends=('ryzen_smu-dkms-git: CPU undervolting via Curve Optimizer')
 install=z13ctl-bin.install
 source=("https://github.com/dahui/z13ctl/releases/download/v${pkgver}/z13ctl_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('5b1b90862833f4eb6ed931a87cc505f94067880c1b394e4ad3f9c87c9acc7fcd')
+sha256sums=('a10cfeb0be645305e9488a1a1683d29d0c95a6cf07b3415f616b391a3a302d0d')
 
 package() {
     # Fix hardcoded path from v1.0.0 tarball (no-op for future releases)
