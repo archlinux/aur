@@ -11,7 +11,7 @@ license=('Apache')
 source=(https://github.com/oneapi-src/oneTBB/archive/v$pkgver.tar.gz)
 sha256sums=('191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "$srcdir"/oneTBB-${pkgver}
