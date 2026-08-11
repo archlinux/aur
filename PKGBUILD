@@ -8,7 +8,7 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.3.0.alpha.1.r999.ge215cd0c3
+pkgver=1.3.0.alpha.1.r1024.g067c3ad41
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
@@ -47,7 +47,11 @@ prepare() {
 
 build() {
   cd "${_name}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT6=ON -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWANT_QT6=ON \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DTARGET_UARCH=native \
+        ..
   cmake --build .
 }
 
