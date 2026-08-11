@@ -1,0 +1,12 @@
+pkgbase = ttf-baskervville
+	pkgdesc = Elegant transitional serif font based on Jacobs Baskervville revival
+	pkgver = 1.102
+	pkgrel = 1
+	url = https://github.com/anrt-type/ANRT-Baskervville
+	arch = any
+	license = OFL-1.1
+	provides = ttf-font
+	source = https://github.com/anrt-type/ANRT-Baskervville/releases/download/v1.102/fonts.zip
+	sha256sums = 4ec852d163fc10903851e3b157d4db11ae7a92881093d4918debd20b58133492
+
+pkgname = ttf-baskervville
