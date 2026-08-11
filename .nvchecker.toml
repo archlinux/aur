@@ -1,4 +1,4 @@
 [asterisk]
-source = "regex"
-url = "https://www.asterisk.org/downloads/asterisk/all-asterisk-versions/"
-regex = 'Download Latest - (\d+\.\d+\.\d+)'
+source = 'regex'
+url = 'https://downloads.asterisk.org/pub/telephony/asterisk/'
+regex = 'asterisk-(\d+\.\d+\.\d+).tar.gz.asc'
