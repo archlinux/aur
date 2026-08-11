@@ -2,7 +2,7 @@
 
 pkgname=glhack
 pkgver=1.2
-pkgrel=11
+pkgrel=12
 pkgdesc="A port of Nethack, a single player dungeon exploration game in 2D"
 arch=('x86_64')
 url="http://glhack.sourceforge.net/"
@@ -12,15 +12,18 @@ makedepends=('mesa' 'systemd')
 install=glhack.install
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         glhack-libpng15.patch
-        glhack-printf.patch)
+        glhack-printf.patch
+        glhack-gcc15.patch)
 sha256sums=('cbde16bb03d3058cd1aa9341ee65b746976b35f92ff88a34ca58910114e287ad'
             '69d6f2916dff787f73a2b6eb1b2d9e12e435d11ad930133db3f9e58754bbdf28'
-            '973d8e9f10249f997dec8315742692c86de1ff83deb7bd7bc2b0f8ae79f1a18a')
+            '973d8e9f10249f997dec8315742692c86de1ff83deb7bd7bc2b0f8ae79f1a18a'
+            '4e6a13d327237c3ddd62f8106196e531a2e21ea28935aa862927449b74809ee4')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -p0 -i ../glhack-libpng15.patch
   patch -p1 -i ../glhack-printf.patch
+  patch -p1 -i ../glhack-gcc15.patch
   sed -i 's|/usr/lib/games|/usr/share|' include/config.h
   sed -i 's|/var/lib/games/glhack|/var/games/glhack|' include/unixconf.h
   sed -i -e 's|PREFIX	 = /usr|PREFIX	 = $(DESTDIR)/usr|' Makefile

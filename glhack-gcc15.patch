@@ -1,0 +1,39 @@
+From: Andreas Baumann <mail@andreasbaumann.cc>
+Subject: Fix FTBFS with GCC 15
+
+GCC 15 defaults to the C23 standard, under which an empty parameter
+list such as "void srand48();" or "unsigned sleep();" means a function
+taking no arguments, rather than "unspecified arguments" as under
+older C standards.  include/system.h declares srand48() and sleep()
+this way, which now conflicts with the real prototypes in glibc's
+stdlib.h/unistd.h and breaks the build.
+
+Build with -std=gnu17 to keep the old "unspecified arguments"
+semantics, matching the fix used by Debian bug #1096720.
+---
+ src/Makefile  | 2 +-
+ util/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -159,7 +159,7 @@
+ # flags for debugging:
+ # CFLAGS = -g -I../include
+
+-CFLAGS = -O -I../include
++CFLAGS = -O -I../include -std=gnu17
+ LFLAGS = 
+
+ # The Qt and Be window systems are written in C++, while the rest of
+--- a/util/Makefile
++++ b/util/Makefile
+@@ -94,7 +94,7 @@
+ # flags for debugging:
+ # CFLAGS = -g -I../include
+
+-CFLAGS = -O -I../include
++CFLAGS = -O -I../include -std=gnu17
+ LFLAGS =
+
+ LIBS =
