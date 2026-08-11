@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -113,7 +113,7 @@ depends=(
     'svt-vp9'
     'tesseract'
     'twolame'
-    'uavs3d-git'
+    'uavs3d'
     'v4l-utils'
     'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'

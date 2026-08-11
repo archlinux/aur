@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable
@@ -122,7 +122,7 @@ pkgbase = ffmpeg-full
 	depends = svt-vp9
 	depends = tesseract
 	depends = twolame
-	depends = uavs3d-git
+	depends = uavs3d
 	depends = v4l-utils
 	depends = vapoursynth
 	depends = vid.stab
