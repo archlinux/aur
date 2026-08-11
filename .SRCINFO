@@ -1,6 +1,6 @@
 pkgbase = remotepc-bin
 	pkgdesc = Access your remote computer from any Windows, Mac, or Linux computer, iOS or Android device, or via the web
-	pkgver = 6.12.1
+	pkgver = 6.12.2
 	pkgrel = 1
 	url = https://www.remotepc.com
 	install = services.install
@@ -8,7 +8,7 @@ pkgbase = remotepc-bin
 	license = custom
 	provides = remotepc
 	options = !debug
-	source = remotepc-6.12.1.deb::https://static.remotepc.com/downloads/rpc/310320/remotepc.deb
-	sha1sums = 37b280852bee6ff29520689b816de7c5ec321198
+	source = remotepc-6.12.2.deb::https://static.remotepc.com/downloads/rpc/310320/remotepc.deb
+	sha1sums = b9f7df2d0b4a9b082df7eee53486ab5eb76116e8
 
 pkgname = remotepc-bin
