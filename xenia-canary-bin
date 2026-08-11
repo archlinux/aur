@@ -1,23 +1,15 @@
 #!/bin/bash
 
-# Wrapper that runs xenia_canary from ~/.xenia-canary using a symlink
-
 set -e
 
 XENIA_DIR="$HOME/.xenia-canary"
-XENIA_BIN="$XENIA_DIR/xenia_canary"
-SYSTEM_BIN="/usr/bin/xenia_canary"
+SYSTEM_BIN="/opt/xenia_canary/bin/xenia_canary"
 
 mkdir -p "$XENIA_DIR"
-
-# Create or update the symlink
-if [ ! -L "$XENIA_BIN" ] || [ "$(readlink -- "$XENIA_BIN")" != "$SYSTEM_BIN" ]; then
-  ln -sfv "$SYSTEM_BIN" "$XENIA_BIN"
-fi
 
 cd "$XENIA_DIR" || {
   echo "Failed to cd into $XENIA_DIR" >&2
   exit 1
 }
 
-exec "$XENIA_BIN"
+exec "$SYSTEM_BIN" "$@"

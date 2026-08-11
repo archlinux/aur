@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!xenia-canary-bin
+!xenia-canary-bin.desktop
+!xenia-canary-bin.install
