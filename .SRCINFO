@@ -1,7 +1,7 @@
 pkgbase = libast
 	pkgdesc = The Library of Assorted Spiffy Things.
-	pkgver = 0.7
-	pkgrel = 7
+	pkgver = 0.8
+	pkgrel = 1
 	url = https://github.com/mej/libast
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = libast
 	depends = libsm
 	options = !libtool
 	options = !debug
-	source = https://github.com/mej/libast/archive/refs/tags/0.7.tar.gz
+	source = https://github.com/mej/libast/archive/refs/tags/0.8.tar.gz
 	source = LICENSE.txt
 	source = no-implicit-declarations.patch
-	md5sums = a3e13cc80ffeff4b345fd8aa73e44bda
+	md5sums = 0e625e406fe6ddd0e053baf719373f55
 	md5sums = 97071898559acc4f900ceb6cb9579492
 	md5sums = bff8084e2829e63a47b00d9e06366e24
 
