@@ -1,6 +1,6 @@
 # Maintainer: Ted W. <ted.l.wood@gmail.com>
 pkgname=tmux-claude-monitor
-pkgver=0.5.2
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="tmux status bar daemon displaying Claude Pro quota usage in real time"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,30 @@ provides=('claude-monitor')
 conflicts=('tmux-claude-monitor-bin')
 install=claude-monitor.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tedwardd/tmux-claude-monitor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0882b865c18f181037ba2f25011f0909a84374ddec99a07b5841deccbc1cc644')
+sha256sums=('c1709ff9b6bf89caf29c362baa211c95ef7ff41ddca04c17df4b71fa9c449710')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    export GOPATH="${srcdir}"
+    go mod download -modcacherw
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export CGO_ENABLED=0
-    go build -trimpath -o claude-monitor -ldflags="-s -w" .
+    export GOPATH="${srcdir}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -ldflags="-linkmode=external" -o claude-monitor .
+}
+
+check() {
+    cd "${pkgname}-${pkgver}"
+    export GOPATH="${srcdir}"
+    export GOFLAGS="-mod=readonly"
+    go test ./...
 }
 
 package() {
@@ -33,7 +51,7 @@ StartLimitIntervalSec=300
 StartLimitBurst=5
 
 [Service]
-ExecStart=claude-monitor daemon
+ExecStart=/usr/bin/claude-monitor daemon
 Restart=on-failure
 RestartSec=30
 
