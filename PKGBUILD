@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=ushift
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='CLI tool to manage CPU performance scaling and power profiles'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('ushift')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 #source=("$pkgname-$pkgver::git+file://${PWD}/../..")
-sha256sums=('d20816d29b65d6a2775dea5bb37ce8f3d01a3455aea7a27e48106f8c0262d030')
+sha256sums=('c4ab8386f085dcb40e82f5bcb6aa95ed38128f266dfc4b92c913d36c8330f277')
 backup=('etc/ushift/config.toml')
 _pkgdir="$pkgname-$pkgver"
 
