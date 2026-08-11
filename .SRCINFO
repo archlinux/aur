@@ -1,14 +1,15 @@
 pkgbase = ocaml-benchmark
 	pkgdesc = A benchmarking library for OCaml
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chris00/ocaml-benchmark
-	arch = i686
 	arch = x86_64
-	license = custom
+	license = LGPL-3.0-only
 	makedepends = dune
-	depends = ocaml>=5.5.0
-	source = ocaml-benchmark.tar.gz::https://github.com/Chris00/ocaml-benchmark/archive/refs/tags/v1.7.tar.gz
+	depends = ocaml
+	options = !strip
+	options = !debug
+	source = ocaml-benchmark-1.7.tar.gz::https://github.com/Chris00/ocaml-benchmark/archive/refs/tags/v1.7.tar.gz
 	sha512sums = a084fb433c83914f12db440c84a24cadae08ebbe6d4142e3812ac3ca34a0b4d59cca076f42c36e08782cd602ca6042c5a78500e437980ca988efa55b4d47a3c1
 
 pkgname = ocaml-benchmark
