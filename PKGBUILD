@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=26.1.1.r101.g08a0fb50
+pkgver=26.1.1.r141.g352e2bef
 pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
@@ -12,20 +12,19 @@ _qt=qt6
 groups=()
 depends=(
     sh
-    gcc-libs
     glibc
-    graphicsmagick
     hicolor-icon-theme
-    imagemagick
+    libgcc
+    libstdc++
     ngspice
     python
     python-numpy
     python-matplotlib
     #     python-parse
     $_qt-base
-    $_qt-charts
     $_qt-svg
-    octave)
+    octave
+)
 makedepends=(
     cmake
     dos2unix
@@ -41,6 +40,7 @@ makedepends=(
     mesa
     flex
     bison
+    $_qt-charts
     $_qt-tools
 )
 optdepends=(
