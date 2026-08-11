@@ -8,7 +8,7 @@
 : "${_system_zig:=no}"
 
 pkgname=pince
-pkgver=0.10
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "libmemscan::git+https://github.com/brkzlr/libmemscan.git#commit=a038194566187f5df282c5fd551bf60ed745b9d6"
         'pince.desktop'
         'pince.sh')
-sha256sums=('d9018e6d118bb019d4f638848245ddabe19b00aa36453fec37c612e6c06635dc'
+sha256sums=('4ecb2dc05bf1bf4f1ac50d0f9cd0f9541f9b9eb1f9bc34eaf43894fcb0f9c1a6'
             '3905aa15f197e6690db0205536055d669c69833e018d8a267d4c628013a992e4'
             'ce07383acea3a2b607e6328cc33390d76a5c76481ae8cff8080dc6eb6da274ab'
             'ce4e18550a4aecd48ce21ba7f4233b9acfdd70c9c163aff0d53a1d960fc2c5d7')
