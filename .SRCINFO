@@ -1,6 +1,6 @@
 pkgbase = hushmark
 	pkgdesc = Calm, minimalist Markdown reader
-	pkgver = 0.1.7
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/SoleSoul/hushmark
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hushmark
 	depends = libsoup3
 	depends = xdg-utils
 	depends = hicolor-icon-theme
-	source = hushmark-0.1.7.tar.gz::https://github.com/SoleSoul/hushmark/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 7374aab3c9cf028856e329da6e1cdba6d75c2eeb4bb83a60e60b6cfc700d3a60
+	source = hushmark-0.3.0.tar.gz::https://github.com/SoleSoul/hushmark/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = db984f37b796aff662d05273a11950ce587424952f359a71178724b4445cf78a
 
 pkgname = hushmark

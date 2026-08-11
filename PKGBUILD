@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lahav <j.lahav@gmail.com>
 
 pkgname=hushmark
-pkgver=0.1.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Calm, minimalist Markdown reader"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'xdg-utils' 'hicolor-icon-theme')
 makedepends=('rust' 'npm' 'pkgconf')
 checkdepends=('desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7374aab3c9cf028856e329da6e1cdba6d75c2eeb4bb83a60e60b6cfc700d3a60')
+sha256sums=('db984f37b796aff662d05273a11950ce587424952f359a71178724b4445cf78a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
