@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep-cli
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="Command Line Interface (CLI) for Karakeep"
 arch=("any")
@@ -12,7 +12,7 @@ replaces=("hoarder-cli")
 depends=("nodejs")
 makedepends=("npm")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@karakeep/cli/-/cli-${pkgver}.tgz")
-sha256sums=('dcd3add2372f5815a2b0a8586114fbcaa2b51b32cf4c7e9b20e5facf58a05314')
+sha256sums=('2fecaf6629923bdc26a98a5abf1e8a6d866432c3a08dd53de34f020c75472c53')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
