@@ -1,27 +1,17 @@
-# Maintainer: ForumPlayer <fp@forumplayer.dev>
+# Maintainer: leeteral <kneesdev@naver.com>
 
 pkgname=speedtest
-pkgver=1.1.1.28
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Official Ookla Speedtest CLI for personal, non-commercial use"
 arch=('x86_64')
 license=('custom')
+conflicts=('speedtest-cli')
 url="https://www.speedtest.net/"
-makedepends=('wget' 'tar' 'binutils')
-depends=('ca-certificates')
-conflicts=("speedtest-cli")
-sha256sums=('0a957d6cfc1915e143d1a11f9fb05d52d9015f0b196e52e6093af5e53bee446c')
+options=('!strip' '!debug')
 
-srcver=1.1.1.28-1.c732eb82cf
-source=("https://packagecloud.io/ookla/speedtest-cli/packages/debian/bullseye/speedtest_"$srcver"_amd64.deb/download.deb")
-
-build() {
-  cd $srcdir
-  mkdir -p data
-  cd data
-  tar -xvf ../data.tar.gz
-}
-
+source=("ookla-speedtest-${pkgver}-linux-x86_64.tgz::https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-x86_64.tgz")
+sha256sums=('5690596c54ff9bed63fa3732f818a05dbc2db19ad36ed68f21ca5f64d5cfeeb7')
 package() {
-  cp -arv "$srcdir/data/." "$pkgdir/"
+    install -Dm755 speedtest "${pkgdir}/usr/bin/speedtest"
 }
