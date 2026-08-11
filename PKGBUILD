@@ -1,17 +1,17 @@
-# Maintainer: Debba <debba@example.com>
+# Maintainer: Debba <andrea@tabularis.dev>
 pkgname=tabularis-bin
 _pkgname=tabularis
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
-pkgdesc="A lightweight, developer-focused database management tool"
+pkgdesc="Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server"
 arch=('x86_64')
 url="https://github.com/TabularisDB/tabularis"
-license=('custom')
+license=('Apache-2.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl')
+depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'libsecret')
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('6e9771a1df1b7518b77ecf1ca725eedade0a7d745a49e62a36f8cb5221b5f42d')
+sha256sums=('68eaa0598aece91c969a5fff7a26a6aeb700b21e5eb9c49607cc1e986b2a15bc')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"

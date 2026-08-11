@@ -1,17 +1,18 @@
 pkgbase = tabularis-bin
-	pkgdesc = A lightweight, developer-focused database management tool
-	pkgver = 0.17.0
+	pkgdesc = Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/TabularisDB/tabularis
 	arch = x86_64
-	license = custom
+	license = Apache-2.0
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = openssl
+	depends = libsecret
 	provides = tabularis
 	conflicts = tabularis
-	source = tabularis_0.17.0_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/v0.17.0/tabularis_0.17.0_amd64.deb
-	sha256sums = 6e9771a1df1b7518b77ecf1ca725eedade0a7d745a49e62a36f8cb5221b5f42d
+	source = tabularis_0.18.0_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/v0.18.0/tabularis_0.18.0_amd64.deb
+	sha256sums = 68eaa0598aece91c969a5fff7a26a6aeb700b21e5eb9c49607cc1e986b2a15bc
 
 pkgname = tabularis-bin
