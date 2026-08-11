@@ -3,7 +3,7 @@
 pkgname=android_translation_layer-git
 _pkgname="${pkgname%-git}"
 _pkgname="${_pkgname//-/_}"
-pkgver=r932.9de91586
+pkgver=r1227.cf2c759f
 pkgrel=1
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
@@ -27,7 +27,6 @@ depends=(
   libopensles-standalone
   libportal
   pango
-  skia-sharp-atl
   sqlite
   vulkan-icd-loader
   webkitgtk-6.0

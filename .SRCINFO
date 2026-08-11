@@ -1,6 +1,6 @@
 pkgbase = android_translation_layer-git
 	pkgdesc = A translation layer for running Android apps on a Linux system
-	pkgver = r932.9de91586
+	pkgver = r1227.cf2c759f
 	pkgrel = 1
 	url = https://gitlab.com/android_translation_layer/android_translation_layer
 	arch = x86_64
@@ -32,7 +32,6 @@ pkgbase = android_translation_layer-git
 	depends = libopensles-standalone
 	depends = libportal
 	depends = pango
-	depends = skia-sharp-atl
 	depends = sqlite
 	depends = vulkan-icd-loader
 	depends = webkitgtk-6.0
