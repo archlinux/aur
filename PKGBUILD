@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _app_id=org.nicotine_plus.Nicotine
-pkgver=3.3.10.r370.g8b1e752
+pkgver=3.3.10.r1049.gafdab98
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -12,7 +12,6 @@ url="https://nicotine-plus.org"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
-  'python-cairo'
   'python-gobject'
 )
 makedepends=(
@@ -23,7 +22,8 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'libadwaita: for Adwaita theme on GNOME'
+  'gspell: Spell checking in chat'
+  'libadwaita: Adwaita theme on GNOME'
 )
 checkdepends=(
   'appstream'
@@ -41,7 +41,8 @@ pkgver() {
 }
 
 prepare() {
-  git -C "${pkgname%-git}" clean -dfx
+  cd "${pkgname%-git}"
+  git clean -dfx
 }
 
 build() {
@@ -53,10 +54,12 @@ check() {
   cd "${pkgname%-git}"
 
   # Tests requiring an Internet connection are disabled
-  pytest --deselect=test/unit/test_version.py
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -P -m pytest --deselect=test/unit/test_version.py
 
   desktop-file-validate "data/${_app_id}.desktop"
-  appstreamcli validate --no-net "data/${_app_id}.appdata.xml"
+  appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
 }
 
 package() {
