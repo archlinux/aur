@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-extutils-makemaker-cpanfile'
-pkgver='0.09'
-pkgrel='3'
+pkgver='0.11'
+pkgrel='1'
 pkgdesc="cpanfile support for EUMM"
 arch=('any')
-license=(' Artistic-1.0-Perl'
-         ' GPL-1.0-only')
+license=('Artistic-1.0-Perl'
+         'GPL-1.0-only')
 options=('!emptydirs')
 depends=('perl-module-cpanfile>=0')
 url='https://metacpan.org/release/ExtUtils-MakeMaker-CPANfile'
-source=('http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/ExtUtils-MakeMaker-CPANfile-0.09.tar.gz')
-sha512sums=('ff5b9d81ce5d8204fcd84ee88a2b5d8fe037cf5cae7a7291d7ccdc411301979093ae66d90203c6c16fddad5173a663f20fef0504ae684a8e522ef4b21c9edc13')
-_distdir="ExtUtils-MakeMaker-CPANfile-0.09"
+source=("http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/ExtUtils-MakeMaker-CPANfile-${pkgver}.tar.gz")
+sha512sums=('59388b8e4e44e02b15eddff5e59047cd23326c4ae534cf02e3e4eb26d0df31ca9cbfadf1add3f0dc2e49f6f9da97bc66c3665f82cf4bb36bbcd00a272466fa79')
+_distdir="ExtUtils-MakeMaker-CPANfile-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
