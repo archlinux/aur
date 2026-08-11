@@ -1,7 +1,7 @@
 # Maintainer: Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=optionterm
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Sidebar-first GTK4 terminal with tiling splits and Adwaita preferences'
 arch=('x86_64')
@@ -21,17 +21,14 @@ depends=(
   'cairo'
   'pango'
   'vte4'
+  'webkitgtk-6.0'
 )
 makedepends=(
   'cargo'
   'pkgconf'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=(
-  '4a6822a073cded63f9799b56f6b058cfc36c9ae51351ead3b0d4b417a4421199'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2b3e0ee581b671d5e2b9b3c5fbe40e95ad99fa10b50ad7e85c009a134270081b')
 
 _srcdir="optionTerm-$pkgver"
 
