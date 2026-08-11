@@ -1,5 +1,5 @@
 pkgname=tabular
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="SQL and NoSQL database client"
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,8 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_HOME="$srcdir/cargo"
     export CARGO_TARGET_DIR="$srcdir/target"
-    # Force sqlx/libsqlite3-sys to prefer bundled static sqlite and avoid relying on possibly stripped system lib in macro loading.
-    export LIBSQLITE3_SYS_BUNDLED=1
-    # Ensure static link of bundled (alternative to old LIBSQLITE3_SYS_STATIC) for consistency.
-    export LIBSQLITE3_SYS_STATIC=1
-    # Optional: reduce risk of dynamic lookup by disabling dlopen (not provided by libsqlite3-sys, but keep flags minimal)
+    # Link system sqlite3 for proc-macros to prevent undefined symbol errors in rustc
+    export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed -C link-arg=-lsqlite3"
     cargo build --release --frozen
 }
 
