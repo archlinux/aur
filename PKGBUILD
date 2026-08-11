@@ -1,6 +1,6 @@
 pkgname=ferminal
 _repo=Ferminal
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Custom Wrapper CLI to make your work faster"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/RangS-1/${_repo}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('4d1242491a8bc47fd28e61a7b69fa0a9703a467f2e7f0b313b22865438aa8a5e')
+sha256sums=('956e92512b0673fa68524752e2e79e3d5b57d44d6007fc7a9113f8ebcd926f6c')
 
 build() {
     cd "$srcdir/${_repo}-${pkgver}"
