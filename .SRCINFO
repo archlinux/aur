@@ -1,6 +1,6 @@
 pkgbase = jennifer-bin
 	pkgdesc = Jennifer programming language interpreter (prebuilt binary)
-	pkgver = 0.22.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/jennifer-language/jennifer
 	install = jennifer.install
@@ -13,9 +13,9 @@ pkgbase = jennifer-bin
 	provides = jennifer
 	conflicts = jennifer
 	conflicts = jennifer-git
-	source_x86_64 = jennifer-0.22.0-linux-amd64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.22.0/jennifer-0.22.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = aaa3681ea645ebae6cd0c3605741cc741087166bf59c3a8f14a59ec263c23f74
-	source_aarch64 = jennifer-0.22.0-linux-arm64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.22.0/jennifer-0.22.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = b58c013a46a5f7ec095d3ed27bc3a96d1f07316e7c95f1dcf09584aea2fbe385
+	source_x86_64 = jennifer-0.24.0-linux-amd64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.24.0/jennifer-0.24.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = fe642f8aec93c9bcaaeac297c709e015356eb2bcb865ddebdc2d9bf1afe4fe66
+	source_aarch64 = jennifer-0.24.0-linux-arm64.tar.gz::https://github.com/jennifer-language/jennifer/releases/download/0.24.0/jennifer-0.24.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = abf184412b76a5124993ea10ea7951e9a20191928d6729aece33364751fd26ec
 
 pkgname = jennifer-bin

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Copyright (C) 2026 mplx <jennifer@mplx.dev>
+# SPDX-FileCopyrightText: Copyright (C) 2026 mplx <jennifer@mplx.dev>
 #
 # AUR PKGBUILD for `jennifer-bin`: downloads the prebuilt release
 # tarball and installs both binaries (`jennifer` standard Go +
@@ -10,7 +10,7 @@
 
 pkgname=jennifer-bin
 _realname=jennifer
-pkgver=0.22.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_aarch64=("$_realname-$pkgver-linux-arm64.tar.gz::$url/releases/download/$
 # update these on each release. AUR maintainer note: replace SKIP
 # with the real sums when you bump pkgver. CI publishes a
 # pre-filled PKGBUILD-bin as a release asset; copy from there.
-sha256sums_x86_64=('aaa3681ea645ebae6cd0c3605741cc741087166bf59c3a8f14a59ec263c23f74')
-sha256sums_aarch64=('b58c013a46a5f7ec095d3ed27bc3a96d1f07316e7c95f1dcf09584aea2fbe385')
+sha256sums_x86_64=('fe642f8aec93c9bcaaeac297c709e015356eb2bcb865ddebdc2d9bf1afe4fe66')
+sha256sums_aarch64=('abf184412b76a5124993ea10ea7951e9a20191928d6729aece33364751fd26ec')
 
 # The release tarball lays out as `jennifer-X.Y.Z-linux-ARCH/` with
 # both binaries at the top of that directory.
