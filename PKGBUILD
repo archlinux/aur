@@ -2,13 +2,13 @@
 _pkgname=GPU-T
 pkgname=${_pkgname,,}-git
 pkgdesc='GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU'
-pkgver=0.2.0.r1.g6139531
+pkgver=0.2.1.r10.g9b2f14e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/lseurttyuu/${_pkgname}"
 license=('MIT')
-makedepends=('git' 'dotnet-host' 'dotnet-sdk-9.0' 'clang' 'zlib')
-depends=('dotnet-runtime-9.0' 'vulkan-tools' 'clinfo' 'mesa' 'mesa-utils' 'libva-utils' 'pciutils' 'hicolor-icon-theme')
+makedepends=('git' 'dotnet-host' 'dotnet-sdk-10.0' 'clang' 'zlib')
+depends=('dotnet-runtime-10.0' 'vulkan-tools' 'clinfo' 'mesa' 'mesa-utils' 'libva-utils' 'pciutils' 'hicolor-icon-theme')
 optdepends=('rocm-opencl-runtime: OpenCL platform for clinfo to get details for AMD GPUs'
     'rocm-hip-runtime: HIP support detection for AMD GPUs'
     'intel-compute-runtime: OpenCL platform for clinfo to get details for Intel GPUs'
@@ -29,6 +29,7 @@ prepare() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
     export DOTNET_NOLOGO=1
+    export NUGET_PACKAGES="$srcdir/nuget"
 
     dotnet restore --runtime linux-x64
 }
@@ -39,8 +40,12 @@ build() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
     export DOTNET_NOLOGO=1
+    export NUGET_PACKAGES="$srcdir/nuget"
 
-    dotnet publish Nvapi/GPU-T.Nvapi.csproj --configuration Release --no-restore \
+    # this should use --no-restore too but there is a bug
+    # in the current arch version of dotnet 10 https://github.com/dotnet/sdk/issues/51766
+    # it's fixed in 10.0.200+ but arch is currently on 10.0.110
+    dotnet publish Nvapi/GPU-T.Nvapi.csproj --configuration Release \
         --runtime linux-x64 \
         --output ./publish_output \
         -p:DebugSymbols=false \
