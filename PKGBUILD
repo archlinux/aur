@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('SKIP'
             'fd863e12ad717327c79095f47ebcb47811fcc3845dd15bdec3ec6b12d4df5e7a'
-            '774acdbafab195373b1dec1936091ffbd654f05e719a733e53883878f393947a'
+            '6adbbf43c690b41aba5cd948abac74ccb498998b86b1738cbf80381b0ab26b46'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
 )
 
