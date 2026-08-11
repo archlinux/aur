@@ -1,14 +1,14 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-cast
-pkgver=0.1.3
+pkgver=0.2.9
 pkgrel=1
-pkgdesc="Desktop mirroring for Omarchy/Hyprland to AirPlay receivers (experimental Google Cast support)"
+pkgdesc="Mirror or extend your Omarchy/Hyprland desktop to an AirPlay receiver (Apple TV)"
 arch=('any')
 url="https://github.com/mrCode/omarchy-cast"
 license=('MIT')
 depends=(
   'python'
-  'python-pychromecast'
+  'avahi'
   'python-zeroconf'
   'python-gobject'
   'python-textual'
@@ -23,15 +23,16 @@ depends=(
   'pipewire'
 )
 optdepends=(
-  'doubletake-git: AirPlay mirroring support (the 0.4.0 release cannot capture on Hyprland)'
+  'doubletake-git: AirPlay mirroring and extend support (the 0.4.0 release cannot capture on Hyprland)'
   'walker: device picker menu'
   'waybar: status indicator'
   'libnotify: desktop notifications on failure'
   'gst-plugins-ugly: software x264 encoding fallback'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pychromecast')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e91cfa98b11ce96de64b5033d7058a87f7a3d5ede1d6f2824979de04037b5e6d')
+sha256sums=('6b777d569983412424953ed195411b9f72446a902aae8af6862e915658512d56')
 
 build() {
   cd "$pkgname-$pkgver"
