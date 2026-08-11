@@ -1,5 +1,5 @@
 # Maintainer: Neowutran <aur at neowutran dot ovh>
-pkgname="dnssec_without_root"
+pkgname="dnssec-without-root"
 pkgver="2026.08.12"
 pkgrel=1
 pkgdesc="DNSSEC keys without the '.' root"
