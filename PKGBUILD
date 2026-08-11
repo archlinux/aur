@@ -1,7 +1,7 @@
 # Maintainer: Simpson474
 
 pkgname=evcc-git
-pkgver=0.313.2.r0.g5b4b4a3
+pkgver=0.314.0.dev+fc6fe3dce
 pkgrel=1
 pkgdesc="evcc is an extensible EV Charge Controller and home energy management system"
 arch=(any)
@@ -15,7 +15,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/evcc"
-  git describe --long --tags $(git rev-list --tags --max-count=1) --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  VERSION=$(make --just-print)
+  if [[ $VERSION =~ Version:\ ([^ ]*) ]] ; then
+    echo ${BASH_REMATCH[1]} | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  fi
 }
 
 build() {
