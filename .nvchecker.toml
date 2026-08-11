@@ -1,0 +1,5 @@
+[tf-summarize]
+source = "github"
+github = "dineshba/tf-summarize"
+prefix = "v"
+use_latest_release = true
