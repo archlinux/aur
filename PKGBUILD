@@ -19,7 +19,7 @@ makedepends=(
 _r8brainver='version-6.5'
 
 source=(
-  "https://github.com/Kiriki-liszt/JS_Inflator/archive/refs/tags/v${pkgver}.zip"
+  "${pkgname}_${pkgver}.zip::https://github.com/Kiriki-liszt/JS_Inflator/archive/refs/tags/v${pkgver}.zip"
   "r8brain_${_r8brainver}.zip::https://github.com/avaneev/r8brain-free-src/archive/refs/tags/${_r8brainver}.zip"
 )
 sha256sums=('af8038547b45214314bd69cc7f48d6622592a43f52392cb8b18367e39fa6654f'
@@ -42,7 +42,7 @@ build() {
     -DSMTG_MDA_VST3_VST2_COMPATIBLE=OFF \
     -DSMTG_CREATE_BUNDLE_FOR_WINDOWS=OFF \
     -Dvst3sdk_SOURCE_DIR=/usr/src/vst3sdk \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
     -DCMAKE_BUILD_TYPE=Release .
@@ -58,8 +58,8 @@ build() {
 package() {
   cd "JS_Inflator-${pkgver}/"
 
-  mkdir -p ${pkgdir}/usr/lib/vst3/
-  cp -r Builds/VST3/Release/JS_Inflator.vst3 ${pkgdir}/usr/lib/vst3
+  mkdir -p "${pkgdir}/usr/lib/vst3/"
+  cp -r Builds/VST3/Release/JS_Inflator.vst3 "${pkgdir}/usr/lib/vst3"
 }
 
 # vim:set ts=2 sw=2 et:
