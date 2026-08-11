@@ -1,0 +1,4 @@
+[boring-bin]
+source = "git"
+git = "https://github.com/alebeck/boring.git"
+prefix = "v"

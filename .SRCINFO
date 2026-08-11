@@ -1,0 +1,19 @@
+pkgbase = boring-bin
+	pkgdesc = The boring SSH tunnel manager (prebuilt binary)
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/alebeck/boring
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = boring=0.16.1
+	conflicts = boring
+	options = !strip
+	options = !debug
+	source_x86_64 = boring-v0.16.1-linux-amd64.tar.gz::https://github.com/alebeck/boring/releases/download/v0.16.1/boring-v0.16.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 17428fc912685a642384408072a4fe9a1c6a0f6c14650ba4858f2212e1a1cfe1
+	source_aarch64 = boring-v0.16.1-linux-arm64.tar.gz::https://github.com/alebeck/boring/releases/download/v0.16.1/boring-v0.16.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 186021aec9df395caa5676bd34419516e20560c9becc8dd2194ec249c368cafd
+
+pkgname = boring-bin
