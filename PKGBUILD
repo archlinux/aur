@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
 pkgname='allium-tools'
-pkgver="3.5.0"
+pkgver="3.5.3"
 pkgrel=1
 pkgdesc='LLM-native language for specifying what systems should do'
 url='https://github.com/juxt/allium-tools'
@@ -15,7 +15,7 @@ source=(
 provides=(
  "allium"
 )
-sha512sums=('9e7918020644b61b24937b87f4e48b8b331f9518f3fb206078087f5dc785a39109243b09a8da9d7b66c7d0bf97c6b24a01404a551982569c0e1ee4103f612d85')
+sha512sums=('a8294550f8dff4310366bf26b1558d6863f7a9a14cdaa754f32fc6134b9c70d38fab27a34f168907e52437fb6f40e7178b3a701085f6a4799813240c164b100c')
 arch=(
  'x86_64'
  'i686'
