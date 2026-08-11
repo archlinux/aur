@@ -1,8 +1,8 @@
 pkgbase = flexisip
 	pkgdesc = A general purpose SIP proxy with media capabilities
-	pkgver = 2.5.3
+	pkgver = 2.6.1
 	pkgrel = 1
-	url = https://flexisip.org
+	url = https://www.linphone.org/en/flexisip-sip-server/
 	install = flexisip.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -32,7 +32,7 @@ pkgbase = flexisip
 	optdepends = python-google-auth: firebase_v1_get_access_token.py push notification helper
 	backup = etc/flexisip/flexisip.conf
 	backup = etc/logrotate.d/flexisip-logrotate
-	source = git+https://gitlab.linphone.org/BC/public/flexisip.git#tag=2.5.3
+	source = git+https://gitlab.linphone.org/BC/public/flexisip.git#tag=2.6.1
 	sha256sums = SKIP
 
 pkgname = flexisip

@@ -1,10 +1,10 @@
 # Maintainer: Tyrolyean <tyrolyean@escpe.net>
 pkgname=flexisip
-pkgver=2.5.3
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('x86_64')
-url="https://flexisip.org"
+url="https://www.linphone.org/en/flexisip-sip-server/"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=('gsm' 'hiredis' 'jsoncpp' 'libnghttp2' 'libvpx' 'libxml2' 'mariadb-libs'
@@ -29,7 +29,7 @@ prepare() {
     # gets through. The update is resumable, so retry until it completes.
     local try
     for try in {1..10}; do
-        git submodule update --init --recursive && return
+        git submodule update --init --recursive --force && return
         echo "submodule fetch failed (attempt $try/10), retrying in 15s..."
         sleep 15
     done
