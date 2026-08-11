@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm-git
-pkgver=1.0.0rc16.r0.g4eff269
+pkgver=1.0.0rc19.r1.g1675629
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations (git)'
 arch=('any')
@@ -33,5 +33,8 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/thpm/qml" assets/qml/*
     install -Dm755 assets/hooks/90-thpm "$pkgdir/usr/share/thpm/hooks/90-thpm"
     install -Dm644 assets/compat/theme-env.sh "$pkgdir/usr/share/thpm/compat/theme-env.sh"
+    install -Dm644 -t "$pkgdir/usr/share/thpm/vencord" assets/vencord/*
+    install -Dm644 -t "$pkgdir/usr/share/thpm/spicetify" assets/spicetify/*
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 assets/vencord/LICENSE.midnight "$pkgdir/usr/share/licenses/$pkgname/LICENSE.midnight"
 }
