@@ -19,4 +19,3 @@ pkgbase = brother-mfc-l2700dw
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-l2700dw
-
