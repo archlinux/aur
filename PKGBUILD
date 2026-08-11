@@ -1,7 +1,7 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
@@ -9,42 +9,12 @@ license=('Apache-2.0')
 # Pin to the stable Ghidra release (extra) that upstream targets (12.1.2).
 # ghidra-git provides 'ghidra' but would not satisfy the versioned constraint.
 depends=('ghidra=12.1.2' 'python' 'python-mcp')
-makedepends=('maven' 'jdk21-openjdk' 'python-build' 'python-installer' 'python-hatchling')
+makedepends=('maven' 'java-environment=21' 'python-build' 'python-installer' 'python-hatchling')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2f62806b7a5e139d791c9d55e04893d68981be2fcc7fd987fa93a391a0956c0f')
 install=ghidra-mcp.install
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  # Standard Arch Linux path for Ghidra
-  local _ghidra_home="/opt/ghidra"
-  
-  if [ -d "/usr/share/ghidra" ]; then
-    _ghidra_home="/usr/share/ghidra"
-  fi
-
-  msg2 "Using Ghidra installation at: ${_ghidra_home}"
-
-  if [ ! -f "${_ghidra_home}/Ghidra/application.properties" ]; then
-    error "Ghidra properties not found at ${_ghidra_home}/Ghidra/application.properties"
-    return 1
-  fi
-
-  local _detected_version
-  _detected_version=$(grep "application.version=" "${_ghidra_home}/Ghidra/application.properties" | cut -d= -f2 | tr -d '\r')
-  
-  if [ -n "$_detected_version" ]; then
-    msg2 "Found Ghidra version: ${_detected_version}"
-    # Patch pom.xml to target installed Ghidra version
-    sed -i "s|<ghidra.version>.*</ghidra.version>|<ghidra.version>${_detected_version}</ghidra.version>|g" pom.xml
-  else
-    error "Failed to detect Ghidra version from properties file."
-    return 1
-  fi
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -63,7 +33,7 @@ build() {
   fi
   export GHIDRA_INSTALL_DIR="${_ghidra_home}"
 
-  # Determine target version from pom.xml (which we patched in prepare)
+  # Determine target version from upstream pom.xml
   local _ghidra_ver
   _ghidra_ver=$(grep "<ghidra.version>" pom.xml | sed 's|.*<ghidra.version>\(.*\)</ghidra.version>.*|\1|')
 

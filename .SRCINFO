@@ -1,13 +1,13 @@
 pkgbase = ghidra-mcp
 	pkgdesc = Production-ready Model Context Protocol server for Ghidra reverse engineering platform
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bethington/ghidra-mcp
 	install = ghidra-mcp.install
 	arch = any
 	license = Apache-2.0
 	makedepends = maven
-	makedepends = jdk21-openjdk
+	makedepends = java-environment=21
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
