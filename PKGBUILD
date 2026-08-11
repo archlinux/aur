@@ -13,10 +13,12 @@ pkgdesc="GTK4 desktop icons extension fork for GNOME Shell 49, 50, with Desktop 
 arch=('any')
 url="https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding"
 license=('GPL3')
-depends=('gnome-shell' 'file-roller' 'nautilus')
+depends=('gnome-shell' 'nautilus')
 makedepends=('git' 'meson' 'glib2')
 optdepends=(
+  'file-roller: Work with compressed files'
   'webkitgtk-6.0: HTML widget support'
+  'libgtop: System monitor widget support'
 )
 
 conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
