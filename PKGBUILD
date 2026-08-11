@@ -1,6 +1,6 @@
 # Maintainer: NivekNK <79262770+NivekNK@users.noreply.github.com>
 pkgname=synk
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Generate OpenSSH config from Bitwarden profiles'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('bitwarden-cli' 'openssh')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('190fb8c79b2d509b65292cfa12967b87279b4c28b513a0db1b6ad0601aff0d86')
+sha256sums=('ce74a902f51b72872c86c4c87544ed8a0ff4385c67e36a3f330872781dd41b24')
 
 build() {
   cd "${pkgname}-${pkgver}"
