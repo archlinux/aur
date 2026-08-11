@@ -1,6 +1,6 @@
 pkgbase = nvc
 	pkgdesc = VHDL compiler and simulator
-	pkgver = 1.21.1
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://www.nickg.me.uk/nvc
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = nvc
 	depends = tcllib
 	optdepends = ruby: for the scripts to download and install VHDL libraries
 	conflicts = nvc-git
-	source = https://www.nickg.me.uk/files/nvc-1.21.1.tar.gz
-	b2sums = 0e5fc088db409a185b748db28d846b65dcdda70d9fb3bc44a533385cb51cae9e3d29d05a6df7da619cdc9079ea4b9720084ec2ee79d2467749eb0fed843bb469
+	source = https://www.nickg.me.uk/files/nvc-1.22.1.tar.gz
+	b2sums = ac406cccb56304be47cca48c7c5aa574c092088169bdf6f323aa0ddc0fa3412943af0eba3ef4a66117d8a78b8dcae96d67655189615e813cea3d1b701245d0e1
 
 pkgname = nvc
