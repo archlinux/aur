@@ -1,0 +1,48 @@
+post_install() {
+  cat <<'EOF'
+OxiRoute was installed with a safe, empty configuration.
+
+Edit /etc/oxiroute/oxiroute.kdl, then explicitly enable and start it with:
+  systemctl enable --now oxiroute.service
+
+The service is not enabled or started by this package. Operational notes and
+drop-in examples are installed at:
+  /usr/share/doc/oxiroute/arch-packaging.md
+
+The legacy restricted Lua example remains available at
+  /etc/oxiroute/oxiroute.lua
+EOF
+}
+
+post_upgrade() {
+  local default_kdl_sha='57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
+  local kdl='/etc/oxiroute/oxiroute.kdl'
+  local lua='/etc/oxiroute/oxiroute.lua'
+  local fallback='/etc/systemd/system/oxiroute.service.d/10-legacy-lua.conf'
+
+  if [ -f "$lua" ] && [ -f "$kdl" ] &&
+     [ "$(sha256sum "$kdl" | cut -d ' ' -f 1)" = "$default_kdl_sha" ]; then
+    local candidate
+    candidate="$(mktemp /etc/oxiroute/.oxiroute.kdl.XXXXXX)"
+    if /usr/bin/oxiroute config compose --format kdl "$lua" > "$candidate"; then
+      chmod 0644 "$candidate"
+      chown root:root "$candidate"
+      mv -f "$candidate" "$kdl"
+      rm -f "$fallback"
+      echo 'Migrated /etc/oxiroute/oxiroute.lua to the KDL service default.'
+    else
+      rm -f "$candidate"
+      install -d -m 0755 "$(dirname "$fallback")"
+      cat > "$fallback" <<'EOF'
+[Service]
+ExecStart=
+ExecStart=/usr/bin/oxiroute serve /etc/oxiroute/oxiroute.lua
+EOF
+      echo 'Lua-to-KDL migration failed; installed a legacy Lua service override.' >&2
+    fi
+  fi
+
+  cat <<'EOF'
+Review .pacnew files under /etc/oxiroute before restarting oxiroute.
+EOF
+}
