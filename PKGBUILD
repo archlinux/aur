@@ -24,7 +24,7 @@ optdepends=(
 provides=("voicefox=${pkgver}")
 conflicts=("voicefox" "voicefox-git")
 source=(
-	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${_pkgver}/${_tag}-linux-${CARCH}.zip"
+	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${_tag}/${_pkgname}-linux-${CARCH}.zip"
 	"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/LICENSE"
 	"${_pkgname}-${pkgver}-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/icons/512.png"
 	"${_pkgname}-${pkgver}-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/icons/1024.png"
