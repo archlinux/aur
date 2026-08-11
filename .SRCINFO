@@ -1,6 +1,6 @@
 pkgbase = codebase-memory-mcp
 	pkgdesc = High-performance code intelligence MCP server with persistent knowledge graph
-	pkgver = 0.9.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/DeusData/codebase-memory-mcp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = codebase-memory-mcp
 	conflicts = codebase-memory-mcp-git
 	options = !lto
 	options = !debug
-	source = codebase-memory-mcp-0.9.0.tar.gz::https://github.com/DeusData/codebase-memory-mcp/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 05fd0963b4c7c7ecccfa12f50a4a33130ad90019a62c0fc13808a524a8f86abe
+	source = codebase-memory-mcp-0.10.1.tar.gz::https://github.com/DeusData/codebase-memory-mcp/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = 3bcd3ef96390d8032b71c873e2f7413324e7876e351cc64d94d321a6c1aa5a8a
 
 pkgname = codebase-memory-mcp
