@@ -1,7 +1,7 @@
 # Maintainer: Zoddo <archlinux+aur@zoddo.fr>
 _pkgname=redisinsight
 pkgname=${_pkgname}-bin
-pkgver=3.6.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Redis Insight is an intuitive and efficient GUI for Redis, allowing you to interact with your databases and manage your data."
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _filename="Redis-Insight-linux-x86_64-${pkgver}.AppImage"
 source=("${_filename}::https://download.redisinsight.redis.com/releases/${pkgver}/Redis-Insight-linux-x86_64.AppImage")
-sha512sums=('5fc04e3c879b72d3ad17e8ddeb8363d8a8e5d6c010688fb7002f1542b269a84d1c366a09516382ba24b30d413f7b1986e778252556f40d0e1bda6e2cf566abd9')
+sha512sums=('142ffe07bb8a94600c8e003db2d00e94788a84aacf8df4c3317deae956c8ae219adcef9f773dc43627583bb0050ec1c4fb58cbfe2b80424ff0aaee8c6b785be8')
 
 prepare() {
 	chmod +x "${_filename}"
