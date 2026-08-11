@@ -1,6 +1,6 @@
 # Maintainer: Asger Geel Weirsoe <asger@weircon.dk>
 pkgname=pi3-smart-workspace
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Switch i3 workspaces based on which output your mouse cursor is on"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('python' 'i3-wm' 'python-i3ipc' 'python-pynput')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('932659cfb6b410d2eec720f742206278d6113686b23abfe297a1fd5c3f7d2079')
+sha256sums=('83bc9523b53ba0fb624868ea47d21c12c8eb84ff619d7fdd02f084de0e8609ba')
 
 build() {
     cd "$srcdir/$pkgname"
