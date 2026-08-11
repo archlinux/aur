@@ -5,18 +5,18 @@
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor
-pkgver=5.9.98
-pkgrel=2
+pkgver=5.9.99
+pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
 license=('custom')
 makedepends=('patchelf')
-source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-1-qt5.x86_64.tar.gz")
-sha1sums_x86_64=('aeffacb7beaa1ced1abd31b6d239dc4820cd760c')
+source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt6.x86_64.tar.gz")
+sha1sums_x86_64=('bbb128f7f23594d11cabbb7865ea85510f0833db')
 
 package() {
-  depends=('libgl' 'pkcs11-helper' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
+  depends=('libgl' 'pkcs11-helper' 'qt6-base' 'qt6-svg' 'qt6-declarative' 'sane')
 
   install -d "$pkgdir"{/opt/,/usr/bin/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
