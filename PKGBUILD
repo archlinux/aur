@@ -5,8 +5,9 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=2.21.0
-pkgrel=2
+pkgver=2.23.0
+_srcdir=minijinja-cli-${pkgver}
+pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
 arch=(x86_64)
@@ -21,16 +22,16 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=("$url/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mitsuhiko/minijinja/releases/download/${pkgver}/source.tar.gz")
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd $_srcdir
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $_srcdir
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features --package minijinja-cli
@@ -40,7 +41,7 @@ build() {
 }
 
 check() {
-  cd $pkgbase-$pkgver
+  cd $_srcdir
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 
@@ -59,8 +60,10 @@ package_minijinja-cli() {
     libgcc
   )
 
-  cd $pkgbase-$pkgver
+  cd $_srcdir
   install -vDm755 -t "$pkgdir/usr/bin" target/release/minijinja-cli
+
+  rm ./AGENTS.md # temporarily remove a dangling symlink
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
 
@@ -73,8 +76,8 @@ package_python-minijinja() {
     python-markupsafe
   )
 
-  cd $pkgbase-$pkgver/minijinja-py
+  cd $_srcdir/minijinja-py
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('4a0fee7c711484f224349669ddaaf8a9d2a98a9c4372f43e999df3069c8b45f8')
+sha256sums=('f6b9c1f946fc5f7e83431d4e5fac881971aa1bb9b7be36368b7c99ec6526f69f')
