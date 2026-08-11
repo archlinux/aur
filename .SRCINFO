@@ -1,13 +1,13 @@
 pkgbase = papr-bin
-  pkgdesc = A keyboard-first terminal workspace for academic papers
-  pkgver = 0.1.0
-  pkgrel = 1
-  url = https://github.com/AfrozSaqlain/Papr
-  arch = x86_64
-  license = MIT
-  provides = papr
-  conflicts = papr
-  source_x86_64 = https://github.com/AfrozSaqlain/Papr/releases/download/v0.1.0/papr-tui-x86_64-unknown-linux-gnu.tar.gz
-  sha256sums_x86_64 = f317c4f0c9549951fd1e33fb15567fdf2c7fe000895711956098370722d39b5b
+	pkgdesc = A keyboard-first terminal workspace for academic papers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/AfrozSaqlain/Papr
+	arch = x86_64
+	license = MIT
+	provides = papr
+	conflicts = papr
+	source_x86_64 = https://github.com/AfrozSaqlain/Papr/releases/download/v0.1.1/papr-tui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3213ed679a2356ac6896f0bd1a1d6ecb9b91015e226d55f1a5643d9865b634a4
 
 pkgname = papr-bin
