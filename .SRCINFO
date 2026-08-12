@@ -1,6 +1,6 @@
 pkgbase = hubble.md
 	pkgdesc = Local-first Markdown editor (Hubble desktop app)
-	pkgver = 0.1.23
+	pkgver = 0.1.26
 	pkgrel = 1
 	url = https://hubble.md
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = hubble.md
 	makedepends = npm
 	makedepends = git
 	depends = electron42
-	provides = hubble-md=0.1.23
+	provides = hubble-md=0.1.26
 	conflicts = hubble.md-bin
 	options = !strip
 	options = !debug
-	source = hubble.md-0.1.23.tar.gz::https://github.com/bholmesdev/hubble.md/archive/refs/tags/desktop-v0.1.23.tar.gz
-	sha256sums = f4e0c92ff3ab4f2559f278780c4d2a372f50281bad8b06b5f026f4bb01bc6597
+	source = hubble.md-0.1.26.tar.gz::https://github.com/bholmesdev/hubble.md/archive/refs/tags/desktop-v0.1.26.tar.gz
+	sha256sums = 676d93e1d7b6a5f5f8f4c6407057c0e66117d8e969445d624ad700b69a241c2d
 
 pkgname = hubble.md
