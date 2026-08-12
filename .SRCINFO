@@ -1,0 +1,27 @@
+pkgbase = unblockneteasemusic-git
+	pkgdesc = Revive unavailable songs for Netease Cloud Music
+	pkgver = r1396.39e21bf
+	pkgrel = 1
+	url = https://github.com/UnblockNeteaseMusic/server
+	arch = any
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	depends = nodejs>=21.3
+	optdepends = yt-dlp
+	provides = unblockneteasemusic
+	conflicts = nodejs-unblockneteasemusic
+	conflicts = netease-cloud-music-unblock-enhanced-git
+	conflicts = unblockneteasemusic
+	backup = etc/unblockneteasemusic/args.conf
+	source = unblockneteasemusic::git+https://github.com/UnblockNeteaseMusic/server.git#branch=enhanced
+	source = unblockneteasemusic.sh
+	source = unblockneteasemusic.service
+	source = unblockneteasemusic.sysusers
+	source = args.conf
+	sha256sums = SKIP
+	sha256sums = cf9427d8f15024143ba2b0d5992fd33f4817b1ff162a538e31da53c02e404935
+	sha256sums = a10419b2f0618e664c1663851b2cd627c4da7026287718619706d723d968ec72
+	sha256sums = 59dc25365cc6ea9e0f0e4e2b66b8b079eb74d542c5548c1c1b2722aef2f94270
+	sha256sums = 2eeb1f943cecb2eaea9fa4eaf3f3e0663e4ea754d1e9b0967abe590e6e2c8573
+
+pkgname = unblockneteasemusic-git
