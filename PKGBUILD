@@ -1,29 +1,25 @@
 # Maintainer: LazySeldi <197385604+LazySeldi@users.noreply.github.com>
 pkgname=lib-lazybios
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Lightweight SMBIOS/DMI parsing library"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/LazySeldi/lazybios"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('glibc')
 makedepends=('cmake')
-source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybios$pkgver.tar.gz")
-sha256sums=('cd519f1aad16c5a9c1e55a09564db36ee96fa75a8159f43ab8f9a2909b7b91bc')
+source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybios-$pkgver.tar.gz")
+sha256sums=('3183a51997c3866eafbbb52709d3a26130251fbfd973906fbc6b5be4e9cb26e7')
 
 build() {
-  cd "$srcdir/lazybios$pkgver"
-  mkdir -p build && cd build
-  cmake .. \
+  cmake -B build -S "$srcdir/lazybios-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  make
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/lazybios$pkgver/build"
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/lazybios-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
