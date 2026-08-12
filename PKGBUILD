@@ -1,7 +1,7 @@
 #Maintainer: Okabe Zero-Link (okbzl). Email: okabezerolink@gmail.com
 
 pkgname=xsystem35-sdl2
-pkgver=2.19.0
+pkgver=2.19.1
 pkgrel=1
 pkgdesc="This is a multi-platform port of xsystem35, a free implementation of AliceSoft's System 3.x game engine."
 arch=(x86_64)
