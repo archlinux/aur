@@ -1,7 +1,7 @@
 pkgbase = con-bin
 	pkgdesc = The Native Terminal Emulator with a builtin AI Harness
 	pkgver = 0.1.0.beta.83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://con.nowledge.co
 	arch = x86_64
 	license = MIT

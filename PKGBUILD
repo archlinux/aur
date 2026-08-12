@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=con-bin
 pkgver=0.1.0.beta.83
-pkgrel=1
+pkgrel=2
 pkgdesc="The Native Terminal Emulator with a builtin AI Harness"
 arch=('x86_64')
 url="https://con.nowledge.co"
