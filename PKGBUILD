@@ -10,7 +10,7 @@ _qextra_commit=37724d1fd44fc013e938652e2fcb25897be10e63
 
 pkgname=waywallen
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
@@ -45,6 +45,8 @@ prepare() {
     patch -Np1 -i ../0001-cmake-Use-system-VulkanMemoryAllocator.patch
     patch -Np1 -i ../0002-cmake-Use-system-Corrosion.patch
 
+    sed -i 's/sizeof(rstd::uint32_t)/sizeof(rstd::uint64_t)/' "$srcdir/wavsen/src/video/video_decoder.cpp"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target host-tuple
 
@@ -63,6 +65,9 @@ build() {
     
     # https://github.com/llvm/llvm-project/issues/121709
     CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}"
+
+    # --icf=safe not supported by ld
+    RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
 
     cmake -B build -S "$pkgname" -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
