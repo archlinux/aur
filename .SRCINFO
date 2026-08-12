@@ -1,6 +1,6 @@
 pkgbase = soundcloud-bin
 	pkgdesc = 🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS
-	pkgver = 8.4.8
+	pkgver = 8.4.9
 	pkgrel = 1
 	url = https://github.com/zxcloli666/SoundCloud-Desktop
 	arch = x86_64
@@ -9,19 +9,19 @@ pkgbase = soundcloud-bin
 	depends = gtk3
 	depends = libappindicator
 	depends = webkit2gtk-4.1
-	provides = soundcloud-desktop=8.4.8
+	provides = soundcloud-desktop=8.4.9
 	conflicts = soundcloud-desktop
-	noextract = soundcloud-8.4.8-x86_64.deb
-	noextract = soundcloud-8.4.8-aarch64.deb
+	noextract = soundcloud-8.4.9-x86_64.deb
+	noextract = soundcloud-8.4.9-aarch64.deb
 	options = !strip
 	options = !debug
-	source = LICENSE::https://github.com/zxcloli666/SoundCloud-Desktop/raw/8.4.8/LICENSE
+	source = LICENSE::https://github.com/zxcloli666/SoundCloud-Desktop/raw/8.4.9/LICENSE
 	source = soundcloud-desktop.desktop
 	sha256sums = 3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d
 	sha256sums = 123e9a1e84eec9b29106ee83de9f5d24be17659468731babe22cf1faeb89bb3b
-	source_x86_64 = soundcloud-8.4.8-x86_64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.4.8/soundcloud-desktop_8.4.8_amd64.deb
-	sha256sums_x86_64 = c4cb2df3c303625b3f2383220fb78bbd29d29bba87a87732b34a593725da8925
-	source_aarch64 = soundcloud-8.4.8-aarch64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.4.8/soundcloud-desktop_8.4.8_arm64.deb
-	sha256sums_aarch64 = 0e9c279ac774469ef9d7ed9bc698c7fa887517c328f1b3dc1e5016a32ada7756
+	source_x86_64 = soundcloud-8.4.9-x86_64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.4.9/soundcloud-desktop_8.4.9_amd64.deb
+	sha256sums_x86_64 = 98558018b783d7597f8b457b2ea824bbff4c4517400dcb9c5548ed9780cb2f06
+	source_aarch64 = soundcloud-8.4.9-aarch64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.4.9/soundcloud-desktop_8.4.9_arm64.deb
+	sha256sums_aarch64 = f40755979e6502ee600a4476536ba89f1b1a4c1735f36869c22987d2bc98c3c0
 
 pkgname = soundcloud-bin
