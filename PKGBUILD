@@ -1,4 +1,4 @@
-# Maintainer: jiaoyuan <imjiaoyuan@gmail.com>
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=lexicmap-bin
 _pkgname=lexicmap
