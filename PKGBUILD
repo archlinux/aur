@@ -3,7 +3,7 @@
 
 pkgname="deezer"
 pkgver=7.1.300
-pkgrel=1
+pkgrel=2
 
 # Keep this in sync with the formatter version used by aunetx/deezer-linux.
 # The upstream patches are easier to apply when the extracted Deezer JS/HTML
@@ -67,7 +67,7 @@ noextract=(
 
 sha256sums=('9bccf2bc2a08a778feadea0db03a4194a62b9c63d4517ae6e46bc94d8236467b'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
-            '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
+            '2712df28c1c061988ef75bfa543532ce16def27252b572d72ba3944a9788ac2c'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
             'fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1'
             '14841de7b71a93123d22997db22d088debb13976778d869e3622199108e85b4b'
