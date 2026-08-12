@@ -36,15 +36,9 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
-
     bun install --frozen-lockfile
-
-    # rules_rust fetches the pinned nightly rustc and cargo; no host rust toolchain.
     bun ./scripts/bazel-natives.ts linux-x64-baseline linux-x64-modern --dest packages/natives/native
-
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
-
-    # Release the server holding an output base under $srcdir.
     bazel shutdown
 }
 
