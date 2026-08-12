@@ -1,6 +1,6 @@
 pkgbase = balena-cli-bin
 	pkgdesc = balena.io command line interface
-	pkgver = 25.2.0
+	pkgver = 25.2.3
 	pkgrel = 1
 	url = https://balena.io/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = balena-cli-bin
 	provides = balena-cli
 	replaces = resin-cli
 	options = !strip
-	source = https://github.com/balena-io/balena-cli/releases/download/v25.2.0/balena-cli-v25.2.0-linux-x64-standalone.tar.gz
-	sha256sums = 7c652872fec5961b202cdd6c5a540d493cdb8e11b1c9c504db393348d7db56a8
+	source = https://github.com/balena-io/balena-cli/releases/download/v25.2.3/balena-cli-v25.2.3-linux-x64-standalone.tar.gz
+	sha256sums = 7a101374782d936da836df84f280622db550806fdb20fa91bf34ef6480db3522
 	optdepends_x86_64 = lib32-glibc: emulated builds
 
 pkgname = balena-cli-bin
