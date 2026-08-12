@@ -46,6 +46,8 @@ package() {
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
+  # Bake the real package version into the installed tree (About panel reads it)
+  echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
   # Exclude dev tooling and temp files from the installed tree
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
