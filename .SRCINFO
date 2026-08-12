@@ -1,18 +1,18 @@
 pkgbase = kube-burner-bin
 	pkgdesc = Kubernetes performance and scale test orchestration framework
-	pkgver = 2.7.3
+	pkgver = 2.8.1
 	pkgrel = 4
 	url = https://github.com/kube-burner/kube-burner
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = kube-burner=2.7.3
+	provides = kube-burner=2.8.1
 	conflicts = kube-burner
 	options = !strip
 	options = !debug
-	source_x86_64 = kube-burner-2.7.3-x86_64.tar.gz::https://github.com/kube-burner/kube-burner/releases/download/v2.7.3/kube-burner-V2.7.3-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 20407adc462529bbd61c906fe6cd9ab4fa8d550c5d5c437f80c4d6bc494feebe
-	source_aarch64 = kube-burner-2.7.3-aarch64.tar.gz::https://github.com/kube-burner/kube-burner/releases/download/v2.7.3/kube-burner-V2.7.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0c87745f4d2ce75467efbc6c7f7487689519340cbf4b6c4e07c162515bff6e21
+	source_x86_64 = kube-burner-2.8.1-x86_64.tar.gz::https://github.com/kube-burner/kube-burner/releases/download/v2.8.1/kube-burner-V2.8.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = afad64159f31dd6cdd8e8886eef2e4992b94ab526aa68d8729b75110a8289a19
+	source_aarch64 = kube-burner-2.8.1-aarch64.tar.gz::https://github.com/kube-burner/kube-burner/releases/download/v2.8.1/kube-burner-V2.8.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3bc1509980cd5a4512ee43820b4cd2dcf0dd452ec936fe7f90d0c973934c3091
 
 pkgname = kube-burner-bin
