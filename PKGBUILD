@@ -8,8 +8,8 @@
 # Repackages the official Apache-2.0 wheels from PyPI into the system site-packages.
 
 pkgname=openvino-genai-bin
-pkgver=2026.2.1.0
-_ov_ver=2026.2.1
+pkgver=2026.3.0.0
+_ov_ver=2026.3.0
 pkgrel=1
 pkgdesc="OpenVINO GenAI runtime (Python 3.14) — fast Intel NPU/GPU/CPU LLM inference, precompiled"
 arch=('x86_64')
@@ -24,19 +24,19 @@ optdepends=(
 # C++ runtime under site-packages, independent of the /opt openvino-bin package,
 # and claiming that virtual name would falsely conflict with it.
 makedepends=('python-installer')
-_ovwhl="openvino-${_ov_ver}-21919-cp314-cp314-manylinux_2_28_x86_64.whl"
-_tokwhl="openvino_tokenizers-${pkgver}-py3-none-manylinux_2_28_x86_64.whl"
-_genaiwhl="openvino_genai-${pkgver}-2351-cp314-cp314-manylinux_2_28_x86_64.whl"
+_ovwhl="openvino-2026.3.0-22451-cp314-cp314-manylinux_2_28_x86_64.whl"
+_tokwhl="openvino_tokenizers-2026.3.0.0-py3-none-manylinux_2_28_x86_64.whl"
+_genaiwhl="openvino_genai-2026.3.0.0-2495-cp314-cp314-manylinux_2_28_x86_64.whl"
 source=(
-  "https://files.pythonhosted.org/packages/43/65/b7f2a382e1da48c6cce109e7960714aa0a0608f2fb6b00388594b5d8edd2/${_ovwhl}"
-  "https://files.pythonhosted.org/packages/d5/a9/42364380e0561f5c4fe3a8df1ce91f1f052238a37c7a96793b7542620785/${_tokwhl}"
-  "https://files.pythonhosted.org/packages/9a/8d/d86c018e508e8c8985f41e99200843dd8f2ce7004656075aa33d9dc23645/${_genaiwhl}"
+  "https://files.pythonhosted.org/packages/d7/97/fdace942843da232ea06a5a67cc3a70d292873657dc933408fdb9bb796a8/openvino-2026.3.0-22451-cp314-cp314-manylinux_2_28_x86_64.whl"
+  "https://files.pythonhosted.org/packages/0b/68/c1ba2177f4ce1f455aae858548aece8b6491b862a6458b03c5d5dbf356ef/openvino_tokenizers-2026.3.0.0-py3-none-manylinux_2_28_x86_64.whl"
+  "https://files.pythonhosted.org/packages/ed/02/ed9f6773a40cc8b0fc166979abf6b56aed3a9f5840f9f0bf76fbf82cc349/openvino_genai-2026.3.0.0-2495-cp314-cp314-manylinux_2_28_x86_64.whl"
 )
 noextract=("${_ovwhl}" "${_tokwhl}" "${_genaiwhl}")
 sha256sums=(
-  '0ec716ddd84a63534613171d27c8657c8417734a1cccedeb40533e8673a12c6d'
-  '74a787920280c3287a120648dfb9863821ee63cf44aa9408dd140fd30cd82a5d'
-  'b3048efed6618ffe70c0b14b28464c21c85404a8255240bdbf31e2138598f7a7'
+  '81a64aebd1a80da93bc9413b3ba9c93846c7cac57161cd4d7b287b354d77ad19'
+  '9d35bb52d353a30d1194cd21c43d3949d0fac853b5bd3721994f70acfea051e4'
+  '2df610ec970b66b95cc4987d888c543e979bda515aed0c8ffda99954d10b4133'
 )
 
 package() {
