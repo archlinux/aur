@@ -11,6 +11,6 @@ pkgbase = folder-manager-py
 	makedepends = python-wheel
 	depends = python
 	source = folder-manager-py-0.3.8.tar.gz::https://github.com/jang1972/folder-manager-py/archive/refs/tags/v0.3.8.tar.gz
-	sha256sums = d71f8502051f8dac2cc8eb204627dd1f3c35450803c12f8eb107aa3d35115ee3
+	sha256sums = 9999872ca03fba9cdd9dcd1eee6e60dc96ca994c4d67bee6498ddab5ef607c2a
 
 pkgname = folder-manager-py

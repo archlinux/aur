@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jang1972/folder-manager-py/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d71f8502051f8dac2cc8eb204627dd1f3c35450803c12f8eb107aa3d35115ee3')
+sha256sums=('9999872ca03fba9cdd9dcd1eee6e60dc96ca994c4d67bee6498ddab5ef607c2a')
 
 build() {
     cd "$srcdir/folder-manager-py-$pkgver"
