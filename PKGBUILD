@@ -3,7 +3,7 @@
 pkgbase='zl-speceq'
 pkgname=('zl-speceq-vst3' 'zl-speceq-lv2' 'zl-speceq')
 pkgver='0.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic spectrum equalizer audio plugin'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zlspeceq/'
@@ -11,21 +11,22 @@ license=('AGPL-3.0-only')
 groups=('pro-audio' 'zl-audio')
 depends=(
   'alsa-lib'
+  'fontconfig'
+  'freetype2'
+  'highway'
   'libx11'
   'libxcomposite'
   'libxcursor'
   'libxext'
+  'libxi'
   'libxinerama'
   'libxrandr'
   'libxrender'
-  'freetype2'
-  'fontconfig'
-  'libxi'
 )
 makedepends=(
-  'ninja'
   'clang'
   'cmake'
+  'ninja'
 )
 
 _jucecommit=176e4108cd86190681e96af76bfbe0d62de898da
