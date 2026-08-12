@@ -1,13 +1,13 @@
 # Maintainer: Felix Mujkanovic <felix@cinecred.com>
 pkgname=cinecred
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Create beautiful film credits without the pain"
 arch=('x86_64')
 url="https://cinecred.com"
 license=('GPL3')
 source=("https://cinecred.com/dl/$pkgver/cinecred-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('1e90462778a33149f06db6796ae2dfa4ba856164813dda72addb5c063307ae21')
+sha256sums=('2889bb28982e3144acef99938a42529647faf3195ff9b5f107772e21d7b3eb1e')
 
 package() {
 	mkdir -p "$pkgdir/opt/"
