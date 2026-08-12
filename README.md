@@ -20,6 +20,11 @@ makepkg -si
 sudo refindplus-install --esp /boot
 ```
 
+Normal installs also create a Boot Loader Specification entry at
+`loader/entries/refindplus.conf` on the ESP, allowing BLS-compatible boot
+managers such as systemd-boot to launch RefindPlus. Use `--no-loader-entry` to
+skip it.
+
 For fallback/removable-media layout:
 
 ```sh

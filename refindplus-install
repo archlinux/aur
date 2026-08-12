@@ -7,6 +7,7 @@ esp=''
 target='refindplus'
 fallback=0
 register=0
+loader_entry=1
 label='RefindPlus'
 dry_run=0
 
@@ -19,6 +20,8 @@ Options:
   --target NAME    Directory under EFI/ for normal installs. Default: refindplus.
   --fallback       Install as EFI/BOOT/BOOTX64.EFI for fallback/removable booting.
   --register       Add a UEFI boot entry with efibootmgr. Not used with --fallback.
+  --no-loader-entry
+                   Do not add a Boot Loader Specification entry for RefindPlus.
   --label TEXT     Boot entry label for --register. Default: RefindPlus.
   --dry-run        Print actions without copying files.
   -h, --help       Show this help.
@@ -26,6 +29,8 @@ Options:
 The installer copies the complete package tree: config, icons, fonts, banners,
 keys, tools, and x64 filesystem drivers. An existing ESP config.conf is
 preserved; the packaged config is copied as config.conf-sample instead.
+Normal installs also add loader/entries/refindplus.conf for BLS-compatible
+boot managers such as systemd-boot.
 EOF
 }
 
@@ -76,6 +81,21 @@ register_boot_entry() {
   run efibootmgr -c -d "/dev/${parent}" -p "$part_num" -L "$label" -l "$(efi_loader_path "$loader_path")"
 }
 
+install_loader_entry() {
+  local loader_path=$1
+  local entry_dir="${esp%/}/loader/entries"
+  local entry_path="${entry_dir}/refindplus.conf"
+
+  run mkdir -p "$entry_dir"
+  if (( dry_run )); then
+    printf 'write Boot Loader Specification entry %s (efi /%s)\n' "$entry_path" "$loader_path"
+    return
+  fi
+
+  printf 'title   RefindPlus Boot Manager\nefi     /%s\n' "$loader_path" > "$entry_path"
+  chmod 0644 "$entry_path"
+}
+
 while (($#)); do
   case "$1" in
     --esp)
@@ -94,6 +114,10 @@ while (($#)); do
       ;;
     --register)
       register=1
+      shift
+      ;;
+    --no-loader-entry)
+      loader_entry=0
       shift
       ;;
     --label)
@@ -149,6 +173,10 @@ copy_dir_contents "${source_dir}/banners" "${dest}/banners"
 copy_dir_contents "${source_dir}/keys" "${dest}/keys"
 copy_dir_contents "${source_dir}/drivers_x64" "${dest}/drivers_x64"
 copy_dir_contents "${source_dir}/tools" "${dest}/tools"
+
+if (( loader_entry && ! fallback )); then
+  install_loader_entry "$loader_rel"
+fi
 
 if (( register )); then
   register_boot_entry "$esp" "$loader_rel"
