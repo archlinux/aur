@@ -1,0 +1,26 @@
+pkgbase = iocaine-nsoe
+	pkgdesc = Iocaine config - Nam Shub of Enki
+	pkgver = 20260802
+	pkgrel = 1
+	url = https://3.nam-shub-of-enki.iocaine.madhouse-project.org/
+	arch = any
+	license = MIT
+	depends = iocaine
+	backup = etc/iocaine/nam-shub-of-enki/init/pkg.roto
+	backup = etc/iocaine/nam-shub-of-enki/init/nam_shub_of_enki/mod.roto
+	backup = etc/iocaine/nam-shub-of-enki/init/nam_shub_of_enki/configuration.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/pkg.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/mod.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/configuration.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/responses.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/templates.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/verdicts.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/classify/mod.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/detect/mod.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/detect/bad_browser.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/tests/mod.roto
+	backup = etc/iocaine/nam-shub-of-enki/main/nam_shub_of_enki/tests/config/mod.roto
+	source = iocaine-nsoe-20260802.tar.zst::https://git.madhouse-project.org/api/packages/iocaine/generic/nam-shub-of-enki/latest/nam-shub-of-enki-latest.tar.zst
+	sha256sums = SKIP
+
+pkgname = iocaine-nsoe
