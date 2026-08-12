@@ -1,0 +1,24 @@
+pkgbase = signboard-appimage
+	pkgdesc = A local-first kanban app that writes Markdown files (AppImage)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/cdevroe/signboard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source_x86_64 = signboard-appimage-1.6.0-x86_64.AppImage::https://github.com/cdevroe/signboard/releases/download/1.6.0/signboard_1.6.0_linux_x86_64.AppImage
+	source_x86_64 = signboard.png::https://raw.githubusercontent.com/cdevroe/signboard/main/build/icons/512x512.png
+	source_x86_64 = signboard.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/signboard/signboard.desktop
+	sha256sums_x86_64 = d2ff89c11c4ebdb4d5d489ea5783e59cf2b2ff0b70bfaf7154a525333d2a6820
+	sha256sums_x86_64 = 798a7a47642b751b600bf50f20badf41eec6280b90fd1e16fb3924537f7c1836
+	sha256sums_x86_64 = c9c504cabbf47ad1c214d605890777be8399fef4f669c36d31b7e57a82dd9873
+	source_aarch64 = signboard-appimage-1.6.0-aarch64.AppImage::https://github.com/cdevroe/signboard/releases/download/1.6.0/signboard_1.6.0_linux_arm64.AppImage
+	source_aarch64 = signboard.png::https://raw.githubusercontent.com/cdevroe/signboard/main/build/icons/512x512.png
+	source_aarch64 = signboard.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/signboard/signboard.desktop
+	sha256sums_aarch64 = 83746c8a2d11ee23aac27b50497d68d0a318bd1c194c0b920504ffe2873bcfc4
+	sha256sums_aarch64 = 798a7a47642b751b600bf50f20badf41eec6280b90fd1e16fb3924537f7c1836
+	sha256sums_aarch64 = c9c504cabbf47ad1c214d605890777be8399fef4f669c36d31b7e57a82dd9873
+
+pkgname = signboard-appimage
