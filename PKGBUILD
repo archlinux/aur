@@ -7,8 +7,8 @@
 pkgname=wxwidgets-gtk3-unstable
 _pkgname=wxWidgets
 pkgver=3.3.3
-_pkgver=${pkgver}.1
-pkg_name_ver="${_pkgname}-v${_pkgver}"
+_pkgver=${pkgver}
+pkg_name_ver="${_pkgname}-${_pkgver}"
 pkgrel=1
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=()
 #provides=(wxwidgets-gtk3)
 conflicts=()
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0d55c1b9dadb31536c922b846194072aaf608641cd7e314a3b983996d1a30ccd')
+sha256sums=('81b09d6dd9f1ed9301f8c55a968a488d0491f264dc2bab19a7e407ac67009482')
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
