@@ -18,7 +18,7 @@ _cefver=cef_binary_6533_linux_x86_64_v6
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg>=8" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg>=9" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary

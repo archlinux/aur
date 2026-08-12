@@ -16,7 +16,7 @@ pkgbase = teb-obs
 	makedepends = websocketpp
 	depends = alsa-lib
 	depends = curl
-	depends = ffmpeg>=8
+	depends = ffmpeg>=9
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
