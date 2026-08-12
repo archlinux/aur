@@ -1,6 +1,6 @@
 pkgbase = awlib-git
 	pkgdesc = C++ helper library
-	pkgver = r2249.4d488895
+	pkgver = 2026.08.07.r47.g48dc12b2
 	pkgrel = 1
 	url = https://git.absurdworlds.org/awlib.git
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = awlib-git
 	makedepends = cmake
 	makedepends = gcc
 	depends = glfw
+	depends = libpng
 	provides = awlib
 	conflicts = awlib
 	options = !strip
