@@ -1,18 +1,19 @@
 pkgbase = creality-print-appimage
 	pkgdesc = Creality Print is a slicer dedicated to FDM printers.
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CrealityOfficial/CrealityPrint
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = fuse2
+	depends = hicolor-icon-theme
 	provides = creality-print
 	conflicts = creality-print
 	noextract = CrealityPrint-V7.2.1.5476-x86_64.AppImage
 	options = !strip
 	source_x86_64 = CrealityPrint-V7.2.1.5476-x86_64.AppImage::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v7.2.1/CrealityPrint-V7.2.1.5476-x86_64-Release.AppImage
 	source_x86_64 = CrealityPrint.desktop.patch
-	sha512sums_x86_64 = 6371ddf6bc11e74dc84e27e5c62a29c36bae0fc30eb2385aba9a1501e9ab563c2af4dc01cecc9dc224a6308bb011e830890921543cc8f07a80df5216cbaae145
-	sha512sums_x86_64 = 7e038ab385f767433de39e8686f29c096fe6d5967e74f185570d37786583554957e483f14489a512fa652048dfcffc10ccc1782d20645e04d2759d475f88b65a
+	b2sums_x86_64 = 1fb62716b501932c0d110c2d0651a735e65afeeb52e1124553056652710c2968fcaa3f7fe6db6467c7be09145857099b022f0fbfbac3421465e4c6ffda6f4130
+	b2sums_x86_64 = ae7b31dda7ca9b311e9781314dc5a552da3fd7161f8ed0bb260ceb88e26bdd9903b2ace17436fb5929daf3ba93faa067f627384cb116c346875fe2864ca41e35
 
 pkgname = creality-print-appimage
