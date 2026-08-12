@@ -1,70 +1,75 @@
-# Maintainer: envolution
+# Maintainer: colinjmatt
+# Contributor: envolution
 # Contributor: randomnobody <nobody "at" 420blaze "dot" it>
-# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
-# shellcheck shell=bash disable=SC2034,SC2154
 # Contributors: jdc, rayman2200, TheCycoONE
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname='corsix-th'
 _pkgname='CorsixTH'
-pkgver=0.69.1
+pkgver=0.70.0
 pkgrel=1
 pkgdesc='Reimplementation of the game engine of Theme Hospital'
 url='https://corsixth.com/'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64' 'armv7h')
 license=('MIT')
 depends=(
+  'curl'
   'ffmpeg'
+  'fluidsynth'
   'freetype2'
+  'gcc-libs'
+  'glibc'
   'hicolor-icon-theme'
+  'libpng'
   'lua'
   'lua-filesystem'
   'lua-lpeg'
+  'rtmidi'
+  'sdl2'
   'sdl2_mixer'
+  'soundfont-fluid'
+  'zlib'
 )
 makedepends=(
   'cmake'
-  'ninja'
-  'doxygen'
 )
 checkdepends=(
   'busted'
   'luacheck'
 )
 optdepends=(
-  'freepats-legacy: Soundfont for Midi playback'
-  'soundfont-fluid: Alternative soundfont for Midi playback'
+  'timidity++: Alternative ALSA MIDI sequencer daemon for RtMidi output'
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('01ed0c5a5ff6a7ce8ef8e4eeda2b5ab92a025789507d561be0efa97fc1cfeb80e37081a73a82c9c209ba8ce84f196ec3a939e5cb5559b7fcfde56a9086982304')
+b2sums=('dd81c8a36b4200b9ae12a033e2d0bdb79a9aceeccf2902868b176d534bb294132bf8e439bfd19b1741fc26a86cb7a5bd4183e4543e98547998d3e3b93ea80632')
 
 prepare() {
-  cmake -S "${_pkgname}-${pkgver}" \
-    -B 'build' \
-    -G 'Ninja' \
-    -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_UNIT_TESTS=OFF
+  cd "${_pkgname}-${pkgver}"
+  # Silence upstream CMake warning by forcing the pkg-config fallback
+  sed -i 's/find_package(RtMidi)/#find_package(RtMidi)/g' CMakeLists.txt
 }
 
 build() {
+  cmake -S "${_pkgname}-${pkgver}" \
+    -B 'build' \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_UNIT_TESTS=OFF
   cmake --build 'build'
 }
 
 check() {
-  cd "build"
-  luacheck --codes --ranges "CorsixTH"
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
+  luacheck --codes --ranges CorsixTH
   busted \
     --verbose \
-    --directory="CorsixTH/Luatest" \
+    --directory=CorsixTH/Luatest \
     --filter-out="Calculate simple VIP rating"
-
-  ctest --extra-verbose --build-config Release --output-on-failure
 }
 
 package() {
@@ -73,4 +78,3 @@ package() {
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-# vim:set ts=2 sw=2 et:
