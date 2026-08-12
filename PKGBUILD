@@ -13,7 +13,7 @@ provides=('whatly')
 conflicts=('whatly' 'whatly-git')
 options=('!strip')
 source=("Whatly-$pkgver-x86_64.AppImage::https://github.com/shakaran/whatly/releases/download/v$pkgver/Whatly-$pkgver-x86_64.AppImage")
-sha256sums=('a17ac7348c08f75d4fffbbc97964ffebb8768a702be1b4d232d89e9a3b2f911d')
+sha256sums=('0250f2fcc909472019792fbb944b1815d9904c511f9b1230e8ddcfc222d8acf8')
 
 package() {
   cd "$srcdir"
