@@ -7,7 +7,7 @@ pkgdesc='Cephadm deploys and manages a Ceph cluster by connection to hosts from 
 arch=('any')
 url="https://ceph.com/"
 license=('LGPL-2.0-or-later')
-depends=('lvm2' 'python>=3')
+depends=('lvm2' 'python')
 makedepends=('git')
 optdepends=('podman: container backend'
             'docker: container backend'
@@ -20,11 +20,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $srcdir/ceph
+
     git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
     cd $srcdir/ceph/src/cephadm/
+
     ./build.sh $srcdir/cephadm
     install -Dm0755 $srcdir/cephadm $pkgdir/usr/bin/cephadm
 }
