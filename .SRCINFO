@@ -1,6 +1,6 @@
 pkgbase = stow-cm-nightly-bin
 	pkgdesc = Config manager (gnu-stow like) — nightly build
-	pkgver = 0.25.0+nightly+20260812+g29c85aea
+	pkgver = 0.25.0+nightly+20260812+gfc18cbf2
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/stow-cm
 	arch = x86_64
