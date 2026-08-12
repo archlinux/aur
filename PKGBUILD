@@ -1,8 +1,9 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.8.1
+pkgver=2026.8.11_6
 pkgrel=1
+_npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
 arch=('x86_64' 'aarch64')
 url='https://github.com/code-yeongyu/senpi'
@@ -19,17 +20,17 @@ options=('!strip' '!debug')
 
 _clipboard_ver=0.3.9
 source=(
-  "$pkgname-$pkgver.tgz::https://registry.npmjs.org/@code-yeongyu/senpi/-/senpi-$pkgver.tgz"
-  "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$pkgver/LICENSE"
+  "$pkgname-$_npmver.tgz::https://registry.npmjs.org/@code-yeongyu/senpi/-/senpi-$_npmver.tgz"
+  "$pkgname-$_npmver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$_npmver/LICENSE"
 )
 source_x86_64=(
-  "$pkgname-$pkgver-clipboard-x64::https://registry.npmjs.org/@mariozechner/clipboard-linux-x64-gnu/-/clipboard-linux-x64-gnu-$_clipboard_ver.tgz"
+  "$pkgname-$_npmver-clipboard-x64::https://registry.npmjs.org/@mariozechner/clipboard-linux-x64-gnu/-/clipboard-linux-x64-gnu-$_clipboard_ver.tgz"
 )
 source_aarch64=(
-  "$pkgname-$pkgver-clipboard-arm64::https://registry.npmjs.org/@mariozechner/clipboard-linux-arm64-gnu/-/clipboard-linux-arm64-gnu-$_clipboard_ver.tgz"
+  "$pkgname-$_npmver-clipboard-arm64::https://registry.npmjs.org/@mariozechner/clipboard-linux-arm64-gnu/-/clipboard-linux-arm64-gnu-$_clipboard_ver.tgz"
 )
-noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('1c9faa9dd4fa7c00a5aab7bff701e64533bb8e0f6be0946cb4fea9848323c950'
+noextract=("$pkgname-$_npmver.tgz")
+sha256sums=('9178a8ce11d84a817412b7711c46eb0685d69cf77b6fed122a789449e4332c6f'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 sha256sums_x86_64=('106b4f4a9218991056912937dfc6b7a2311d5ddf360c9692a765559656beb05e')
 sha256sums_aarch64=('652eb7575ab534099a3698cb08722aa4b985b681c84e6e13dc8bcb57db94d42d')
@@ -43,14 +44,14 @@ package() {
   fi
 
   install -d "$(dirname "$_target")"
-  bsdtar -xf "$srcdir/$pkgname-$pkgver.tgz" -C "$(dirname "$_target")"
+  bsdtar -xf "$srcdir/$pkgname-$_npmver.tgz" -C "$(dirname "$_target")"
   mv "$(dirname "$_target")/package" "$_target"
 
   # The npm bundle contains the publisher host's optional clipboard addon.
   # Replace it with the matching Arch asset for this build.
   rm -rf "$_target/node_modules/@mariozechner"/clipboard-linux-*
   rm -f "$_target/node_modules/@mariozechner/clipboard"/clipboard.*.node
-  bsdtar -xf "$srcdir/$pkgname-$pkgver-clipboard-$_clipboard_arch" \
+  bsdtar -xf "$srcdir/$pkgname-$_npmver-clipboard-$_clipboard_arch" \
     -C "$_target/node_modules/@mariozechner"
   mv "$_target/node_modules/@mariozechner/package" \
     "$_target/node_modules/@mariozechner/clipboard-linux-$_clipboard_arch-gnu"
@@ -80,6 +81,6 @@ package() {
   ln -s "../lib/node_modules/@code-yeongyu/$pkgname/dist/cli.js" \
     "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 "$srcdir/$pkgname-$pkgver-LICENSE" \
+  install -Dm644 "$srcdir/$pkgname-$_npmver-LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
