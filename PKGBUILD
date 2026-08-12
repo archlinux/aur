@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
-pkgver=5.12.1
-_electronversion=35
+pkgver=6.0.14
+_electronversion=43
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=(
@@ -24,21 +24,31 @@ makedepends=(
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.zip")
-sha256sums_aarch64=('52a3981192dab12748eda8ac8d075e099eff1d1db3b9b1f2833e85fc32d86125')
-sha256sums_x86_64=('b7e7b87313e2d0554eda1c1d93e893c63f2457621fd6667b9a1f9bd2f580861a')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+sha256sums_aarch64=('54798586228f0b35dc4c14796cc1bcb7fa210f2c43b81bbd0cd443e7109d1de2')
+sha256sums_x86_64=('4a80924a361095bfc8ae08394e163115824f70f59a5fa8fc8826d84372776fab')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
-    _get_electron_version
+    _check_electron_version
+    local _app_dir=$(_get_app_dir)
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
         libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
     for _files in "${_file_list[@]}";do
-        rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/${_files}"
-        ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/usr/lib/${pkgname%-bin}/${_files}"
+        rm -rf "${_app_dir}/${_files}"
+        ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${_app_dir}/${_files}"
     done
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
@@ -46,18 +56,18 @@ prepare() {
         --categories="Utility" \
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} --no-sandbox %U"
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{android-*,darwin-*,win32-*}
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{android-*,darwin-*,win32-*}
     case "${CARCH}" in
         aarch64)
-            rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-ia32,linux-x64}
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-ia32,linux-x64}
             ;;
         x86_64)
-            rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm*,linux-ia32}
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm*,linux-ia32}
             ;;
     esac
 }
 package() {
-    cp -r "${srcdir}/usr" "${pkgdir}"
+    cp -a "${srcdir}/usr" "${pkgdir}"
     install -Dm755 -d "${pkgdir}/usr/bin"
     ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"

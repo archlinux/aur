@@ -1,6 +1,6 @@
 pkgbase = issie-bin
 	pkgdesc = An intuitive cross-platform hardware design application.
-	pkgver = 5.12.1
+	pkgver = 6.0.14
 	pkgrel = 1
 	url = https://tomcl.github.io/issie
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = issie-bin
 	depends = gtk3
 	depends = alsa-lib
 	depends = nss
-	depends = electron35
-	noextract = issie-5.12.1-x86_64.zip
-	source_aarch64 = issie-5.12.1-aarch64.zip::https://github.com/tomcl/issie/releases/download/v5.12.1/issie-5.12.1-linux-arm64.zip
-	sha256sums_aarch64 = 52a3981192dab12748eda8ac8d075e099eff1d1db3b9b1f2833e85fc32d86125
-	source_x86_64 = issie-5.12.1-x86_64.zip::https://github.com/tomcl/issie/releases/download/v5.12.1/issie-5.12.1-linux-x64.zip
-	sha256sums_x86_64 = b7e7b87313e2d0554eda1c1d93e893c63f2457621fd6667b9a1f9bd2f580861a
+	depends = electron43
+	noextract = issie-6.0.14-x86_64.zip
+	source_aarch64 = issie-6.0.14-aarch64.zip::https://github.com/tomcl/issie/releases/download/v6.0.14/issie-6.0.14-linux-arm64.zip
+	sha256sums_aarch64 = 54798586228f0b35dc4c14796cc1bcb7fa210f2c43b81bbd0cd443e7109d1de2
+	source_x86_64 = issie-6.0.14-x86_64.zip::https://github.com/tomcl/issie/releases/download/v6.0.14/issie-6.0.14-linux-x64.zip
+	sha256sums_x86_64 = 4a80924a361095bfc8ae08394e163115824f70f59a5fa8fc8826d84372776fab
 
 pkgname = issie-bin
