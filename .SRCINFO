@@ -1,0 +1,21 @@
+pkgbase = python-i3-workspace-names-daemon
+	pkgdesc = A daemon script to dynamically update workspace names in i3wm based on their content
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/cboddy/i3-workspace-names-daemon
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-i3ipc
+	depends = i3-wm
+	optdepends = otf-font-awesome
+	source = i3-workspace-names-daemon-0.15.0.tar.gz::https://files.pythonhosted.org/packages/source/i/i3-workspace-names-daemon/i3-workspace-names-daemon-0.15.0.tar.gz
+	source = LICENSE-0.15.0::https://raw.githubusercontent.com/cboddy/i3-workspace-names-daemon/87ad24722da0b85df54893ebac9cb8cbd53997ac/LICENSE
+	sha256sums = 25956d6864315e1b22a6732443d1f5db63fd0594cc43112e204f055aed1ba0df
+	sha256sums = 0ee73d556302f0cc3ee7564683e7f8c8cff1043533d749c130165e3372d1b941
+
+pkgname = python-i3-workspace-names-daemon
