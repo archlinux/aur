@@ -1,6 +1,6 @@
 pkgbase = apifox-appimage
 	pkgdesc = Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.8.41
+	pkgver = 2.8.42
 	pkgrel = 1
 	url = https://apifox.com
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = apifox-appimage
 	conflicts = apifox-bin
 	conflicts = apifox-appimage
 	options = !strip
-	source_x86_64 = apifox-2.8.41-linux.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v2.8.41/Apifox-linux-2.8.41.zip
-	sha256sums_x86_64 = cdd5b1efefebbd4c79d404cc7ab54d9372c3d5a9c19fee6e403b39a15e5e601b
-	source_aarch64 = apifox-2.8.41-linux-arm64.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v2.8.41/Apifox-linux-2.8.41-arm64.zip
-	sha256sums_aarch64 = c72a5bc171921369e767aa48785a7c0426c936c860e419d0a2bae335b99c01f3
+	source_x86_64 = apifox-2.8.42-linux.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v2.8.42/Apifox-linux-2.8.42.zip
+	sha256sums_x86_64 = 664e74b853912c27076e3207547d6e2639f4f145bde6b3fca1b473efa84bd300
+	source_aarch64 = apifox-2.8.42-linux-arm64.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v2.8.42/Apifox-linux-2.8.42-arm64.zip
+	sha256sums_aarch64 = b60fe8254d8f7e72230b35f9eb18b5974bd3debb448e6e4075d1ad3e928704db
 
 pkgname = apifox-appimage
