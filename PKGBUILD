@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=dtk-candle-git
-pkgver=r19.602608d
-pkgrel=1
-pkgdesc="An elegant automatic screen extinguishing stopper"
+pkgver=r28.acf33ab
+pkgrel=5
+pkgdesc="A DTK6/Qt6 desktop application for temporarily preventing automatic screen dimming, locking, and system sleep by simulating NumLock key presses"
 arch=($CARCH)
 url="https://github.com/HuanSoft-Open-Source-Community/candle"
 license=('GPL-3.0-only')
@@ -11,11 +11,13 @@ depends=(
 	dtk6core
 	dtk6log
 	dtk6widget
-	glibc
+	glib2
 	hicolor-icon-theme
-	libgcc
-	libstdc++
+	libgcc_s.so
+    libstdc++.so
+	libxcb
 	qt6-base
+	libwayland-client.so
 )
 makedepends=(
 	cmake
@@ -29,13 +31,11 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install=${pkgname%-git}.install
+install=
 source=(
     "${pkgname}::git+${url}.git"
-	${pkgname%-git}.install
 )
-sha256sums=('SKIP'
-            '2e19fa4604a34ad14b8db58b3e36927c2f4df945b112d256a1de96bdd4883a10')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -48,7 +48,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	sed -i 's|/opt/apps/org.yxzl.candle|/usr|g' config/numlockd.service
 	sed -i 's|/opt/apps/org.yxzl.candle|/usr|g' CMakeLists.txt
 }
 
@@ -72,12 +71,10 @@ build() {
 package() {
 	cd "${srcdir}"/${pkgname}/
 	DESTDIR="${pkgdir}" ninja -C build install
-	install -vdm755 ${pkgdir}/opt/apps/org.yxzl.candle/
-	mv ${pkgdir}/usr/bin ${pkgdir}/opt/apps/org.yxzl.candle/
 	install -vDm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -vDm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -vDm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-candle.rules" << EOF
-KERNEL=="uinput", MODE="0660", GROUP="input"
+KERNEL=="uinput", MODE="0660", GROUP="input", TAG+="uaccess"
 EOF
 	install -vDm644 /dev/stdin "${pkgdir}/usr/share/applications/org.yxzl.candle.desktop" << EOF
 [Desktop Entry]
@@ -85,7 +82,7 @@ Name=Candle
 Name[zh_CN]=秉烛
 Comment=Prevent screen dimming and system sleep
 Comment[zh_CN]=防止屏幕变暗和系统休眠
-Exec=/opt/apps/org.yxzl.candle/bin/candle
+Exec=candle
 Icon=org.yxzl.candle
 Type=Application
 Categories=Utility;System;
