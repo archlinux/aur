@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=scope-monitor
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A multi-platform serial monitor with user-extensible features"
 arch=($CARCH)
@@ -25,7 +25,7 @@ backup=()
 options=(!lto)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('d948dabb8807ed14a733aaeda8ebac4879fa7068a60f9b826dbf7d6fd3f557a3')
+sha256sums=('5819846536f4d3616ac19ea09d89972960f37a50b0d51d6b0fc151012959b493')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx

@@ -1,6 +1,6 @@
 pkgbase = scope-monitor
 	pkgdesc = A multi-platform serial monitor with user-extensible features
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/matheuswhite/scope-rs
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = scope-monitor
 	conflicts = scope-monitor
 	conflicts = scope
 	options = !lto
-	source = scope-monitor::git+https://github.com/matheuswhite/scope-rs.git#tag=v0.5.1
-	sha256sums = d948dabb8807ed14a733aaeda8ebac4879fa7068a60f9b826dbf7d6fd3f557a3
+	source = scope-monitor::git+https://github.com/matheuswhite/scope-rs.git#tag=v0.6.0
+	sha256sums = 5819846536f4d3616ac19ea09d89972960f37a50b0d51d6b0fc151012959b493
 
 pkgname = scope-monitor
