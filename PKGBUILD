@@ -3,9 +3,9 @@
 _name=tree-sitter-php
 pkgname=python-tree-sitter-php
 pkgver=0.24.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Php grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-php"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
@@ -15,7 +15,7 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-php/archive/refs/tags/v0.24.2.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-php/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0e73ad63dda67ac12c0e012726a4e1a9811c26b020a0a2dea3e889f8246d9cf4')
 
 
