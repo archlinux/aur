@@ -4,7 +4,7 @@
 pkgname=idescriptor
 _srcname=iDescriptor
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source, and cross-platform iDevice management tool"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${_srcname}/${_srcname}"
@@ -24,29 +24,31 @@ depends=(
 	'qt6-serialport'
 	'qt6-positioning'
 	'qt6-location'
+	'qt6-5compat'
+	'qt6-svg'
 	'avahi'
 	'libsecret'
 	'org.freedesktop.secrets'
 	'ffmpeg'
 	'gstreamer'
 	'gst-plugins-base-libs'
-	'qt6-declarative'
-	'qt6-5compat'
-	'qt6-multimedia'
-	'qt6-svg'
 	'gst-plugin-qmlgl'
 	'gst-plugin-qml6'
 	'gst-plugins-good'
 	'gst-plugins-bad'
 	'gst-libav'
 	'hicolor-icon-theme'
+	'libssh2'
 	'sqlite'
+	'zstd'
 )
 optdepends=('ifuse: use ifuse provided by libimobiledevice instead of Rust implementation')
 makedepends=('git' 'cargo' 'cmake')
-source=("git+${url}.git#tag=v${pkgver}"
-	"git+https://github.com/iDescriptor/uxplay.git"
-	"git+https://github.com/uncor3/idevice.git")
+source=(
+	"git+${url}.git#tag=v${pkgver}"
+	"git+https://github.com/${_srcname}/uxplay.git"
+	"git+https://github.com/uncor3/idevice.git"
+)
 sha256sums=('e3bacca4647f927a0f7772c51fe46b45dac9c5d321f95d459d6e6549dc1d539d'
             'SKIP'
             'SKIP')
@@ -67,7 +69,9 @@ build() {
 	cd "${_srcname}/"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	export CFLAGS+=" -ffat-lto-objects"
 	export CXXFLAGS+=" -ffat-lto-objects"
 	cargo build --release --features package_manager
