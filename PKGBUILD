@@ -9,14 +9,13 @@
 
 pkgname=noisetorch
 pkgver=0.12.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/noisetorch/NoiseTorch
 license=('GPL-3.0-or-later')
 depends=('pulse-native-provider' 'polkit' 'hicolor-icon-theme')
 makedepends=('go' 'cmake' 'git')
-provides=('noisetorch')
 install="${pkgname}.install"
 source=(
     "$pkgname::git+https://github.com/noisetorch/NoiseTorch.git#tag=v${pkgver}"
