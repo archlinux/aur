@@ -3,14 +3,13 @@
 conflicts=('crown')
 pkgname=crown-bin
 pkgver=0.64.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
 url="https://www.crownengine.org"
 license=('MIT' 'GPL3')
 depends=('glib2>=2.64.6'
          'gtk3>=3.24'
-         'libgee'
          'libgl'
          'libpulse'
          'libx11'
