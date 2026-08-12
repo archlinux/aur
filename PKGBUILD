@@ -3,11 +3,12 @@
 
 pkgname=opcda-bridge-client-bin
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='OPC DA cross-platform client'
 arch=('x86_64')
 url='https://github.com/bytehound-labs/opcda-bridge'
 license=('MIT')
+options=('!debug')
 provides=('opcda-bridge-client')
 conflicts=('opcda-bridge-client')
 
