@@ -4,7 +4,7 @@
 pkgname=whisparr-eros
 _pkgname=Whisparr
 __pkgname=Whisparr-Eros
-pkgver=3.3.3.683
+pkgver=3.3.7.979
 _pkgver=${pkgver%.*}-release.${pkgver##*.}
 pkgrel=1
 pkgdesc='Adult movie organizer/manager for usenet and torrent users'
@@ -46,7 +46,7 @@ source=(
   whisparr-eros.sysusers
   whisparr-eros.tmpfiles
 )
-sha256sums=('1cfe45b5102f4e73ac053e22aa5afd0c87a26e651b4eac2ccc48a19c197ceea3'
+sha256sums=('6a742ef4b4f771b586640100e4369430da86095dc77c6f30c84c31dc5af3e5b4'
             '928ba49a81e3eeec4385ecf7f23040ad16758bacd4e3abd41d552595e8876cc8'
             '3964160cb383c88c8d335da2ca37cf800a282b32f68b4093595694f4ac8fe99c'
             '050f751d01333298bccfa84dbe11550031075f595009c15d37b089eaf453b19c'
@@ -67,6 +67,9 @@ _branch='eros'
 prepare() {
   cd "${__pkgname}-${_pkgver}"
 
+  # Fix  CVE-2026-41319
+  sed 's/OpenApi" Version="2\.4\.1"/OpenApi" Version="2\.7\.5"/' -i src/**/*.csproj
+
   # Remove upstream dotnet version
   rm global.json
 
@@ -74,7 +77,7 @@ prepare() {
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   # Uncomment after dotnet-sdk reaches 10.0.101
-  # dotnet new globaljson --sdk-version 10.0.101 --force
+  dotnet new globaljson --sdk-version 10.0.101 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
