@@ -2,7 +2,7 @@
 
 _plugin=fftspectrum
 pkgname=vsview-${_plugin}
-pkgver=0.2.2.post1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A vsview plugin displaying the Fast Fourier transform spectrum of a video clip"
 arch=("x86_64")

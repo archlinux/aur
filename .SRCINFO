@@ -1,6 +1,6 @@
 pkgbase = vsview-fftspectrum
 	pkgdesc = A vsview plugin displaying the Fast Fourier transform spectrum of a video clip
-	pkgver = 0.2.2.post1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vsview-fftspectrum
 	makedepends = python-hatch-sbom
 	depends = vsview
 	depends = vapoursynth-plugin-fftspectrum-rs
-	source = vsview-fftspectrum::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=fftspectrum/v0.2.2.post1
+	source = vsview-fftspectrum::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=fftspectrum/v0.2.3
 	sha256sums = SKIP
 
 pkgname = vsview-fftspectrum
