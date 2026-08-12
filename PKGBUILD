@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.31.0.r217.g99b758f
+pkgver=0.32.0.r63.g9e9c51d
 pkgrel=1
-pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
+pkgdesc="A collection of on chip debugging tools to communicate with microchips."
 arch=($CARCH)
 url="https://github.com/probe-rs/probe-rs"
 license=('Apache-2.0 AND MIT')
