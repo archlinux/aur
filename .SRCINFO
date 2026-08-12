@@ -1,0 +1,23 @@
+pkgbase = enzo
+	pkgdesc = Terminal video player with a graphical interface
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/MiguelRegueiro/enzo
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = freetype2
+	depends = fribidi
+	depends = gcc-libs
+	depends = glibc
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libpulse
+	conflicts = enzo-bin
+	options = !lto
+	source = enzo-1.1.0.crate::https://static.crates.io/crates/enzo/enzo-1.1.0.crate
+	sha256sums = fe109ed30ddbc6158d9e4dc6b01d7dc50355b9cbc052dec7f0a398ef1953ae98
+
+pkgname = enzo
