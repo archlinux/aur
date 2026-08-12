@@ -1,13 +1,13 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon-bin
 _pkgname=skwd-daemon
-pkgver=r85.36f165a
+pkgver=r89.181965c
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled'
 arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
-depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'mesa')
+depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'mesa' 'qt6-tools')
 optdepends=(
   'ollama: local LLM for automated wallpaper tagging'
   'steamcmd: Steam Workshop Wallpaper Engine downloads when the Steam client is not running'
@@ -18,7 +18,7 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 options=('!debug' '!strip')
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('fc27da01b401aa6accc3a9853b956bc45cdcaa81fc72c4f4090857399b78fba1')
+sha256sums=('1e4bd2915e80be05705afc18e18e3d7ea70e1ff06bd37191c2b382c8b35ee00c')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64"
