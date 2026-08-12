@@ -2,8 +2,8 @@
 pkgname=imfile-git
 _pkgname=imFile
 _flathubname="io.github.${pkgname%-git}_io.${pkgname%-git}_desktop"
-pkgver=2.2.0.r11.g854628f
-_electronversion=42
+pkgver=2.3.2.r0.gc8ac3d2
+_electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Use system-wide electron)"
@@ -131,8 +131,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/flathub/${_flathubname}.desktop" \
