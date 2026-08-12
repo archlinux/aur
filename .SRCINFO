@@ -1,6 +1,6 @@
 pkgbase = i4tools-bin
 	pkgdesc = 爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。
-	pkgver = 9.01.003
+	pkgver = 9.02.007
 	pkgrel = 1
 	epoch = 1
 	url = https://www.i4.cn/pro_pc.html
@@ -25,9 +25,9 @@ pkgbase = i4tools-bin
 	depends = libusbmuxd
 	depends = libimobiledevice
 	depends = libimobiledevice-glue
-	source = cn.i4Tools_9.01.003_amd64.deb::https://d-updater.i4.cn/i4tools9/download/linux/x64/cn.i4Tools_9.01.003_amd64.deb
+	source = cn.i4Tools_9.02.007_amd64.deb::https://d-updater.i4.cn/i4tools9/download/linux/x64/cn.i4Tools_9.02.007_amd64.deb
 	source = https://www.i4.cn/copyright.html
-	sha256sums = aec5ceff17c09bb6ac8741684198702f451c0de14c7bbc250d42b7527bc8fa03
+	sha256sums = e500e0d6d29511325872617c56c429085d9687f925e32b01ca5186b2fe3d5360
 	sha256sums = 79bf7500e724fda34fb534fe2b1e84e16cf39bb1e661e5368534f004dab729a5
 
 pkgname = i4tools-bin
