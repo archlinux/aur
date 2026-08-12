@@ -10,7 +10,7 @@
 
 _pkgname="ayugram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.7.8.r12.gba8c1a6
+pkgver=7.0.9.r1.gdb3b989
 pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode"
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -19,16 +19,18 @@ arch=('x86_64' 'aarch64')
 
 depends=(
   ada
+  cmark-gfm
   ffmpeg
   hunspell
   kcoreaddons
   libavif
-  libdispatch
+  libfido2
   libheif
   libjxl
+  libsrtp
   libvpx
   libxdamage
-  minizip-ng
+  minizip
   openal
   openh264
   opus
@@ -38,7 +40,6 @@ depends=(
   qt6-svg
   qt6-wayland
   rnnoise
-  xcb-util-keysyms
   xxhash
 
   ## for libtg_owt
@@ -56,12 +57,14 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
-  gperf    # for tdlib
+  gperf    # for tde2e
   jemalloc # gio error when absent
   libtg_owt
   ninja
+  qt6-shadertools
   range-v3
   tl-expected
+  vulkan-headers
 )
 optdepends=(
   'webkit2gtk: embedded browser features'
@@ -86,11 +89,13 @@ sha256sums=(
 
 prepare() {
   cd "$_pkgsrc"
-  git rm -r 'Telegram/ThirdParty/dispatch'
+  git rm -r 'Telegram/ThirdParty/cmark-gfm'
   git rm -r 'Telegram/ThirdParty/hunspell'
   git rm -r 'Telegram/ThirdParty/kcoreaddons'
+  git rm -r 'Telegram/ThirdParty/libfido2'
   git rm -r 'Telegram/ThirdParty/lz4'
   git rm -r 'Telegram/ThirdParty/range-v3'
+  git rm -r 'Telegram/ThirdParty/xxHash'
   git submodule update --init --recursive --depth=1
 
   local src
@@ -100,19 +105,9 @@ prepare() {
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src" || true
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # force system minizip-ng
-  rm -rf "Telegram/ThirdParty/minizip"
-  sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
-
-  # add missing headers for gcc 16
-  sed -E -e '1i #include <cstdint>' -i \
-    "Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
 }
 
 pkgver() {
@@ -132,7 +127,7 @@ build() {
     -DTD_E2E_ONLY=ON
     -DBUILD_SHARED_LIBS=OFF
     -DBUILD_TESTING=OFF
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_tde2e[@]}"
@@ -151,7 +146,7 @@ build() {
     -DTDESKTOP_API_ID=611335
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"
@@ -166,6 +161,7 @@ package() {
       'libavformat.so'
       'libavutil.so'
       'libcrypto.so'
+      'libfido2.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -179,6 +175,7 @@ package() {
       'libopus.so'
       'libpipewire-0.3.so'
       'libprotobuf-lite.so'
+      'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
       'libswscale.so'
