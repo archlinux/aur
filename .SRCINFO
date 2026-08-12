@@ -1,6 +1,6 @@
 pkgbase = python-mkl-fft
 	pkgdesc = NumPy-based Python interface to Intel (R) MKL FFT functionality
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/IntelPython/mkl_fft
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-mkl-fft
 	makedepends = meson-python
 	depends = intel-oneapi-mkl
 	depends = python-numpy
-	source = git+https://github.com/IntelPython/mkl_fft#tag=2.3.1
-	md5sums = SKIP
+	source = git+https://github.com/IntelPython/mkl_fft#tag=2.3.2
+	md5sums = 09cf508fb22b7f779e8caee8d693efec
 
 pkgname = python-mkl-fft
