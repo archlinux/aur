@@ -6,7 +6,7 @@
 
 pkgname=ollama-for-amd
 pkgver=0.30.8 # renovate: datasource=github-releases depName=likelovewant/ollama-for-amd
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, run and share large language models (LLMs) with ROCm, patched for AMD GPUs'
 arch=(x86_64 aarch64)
 url='https://github.com/likelovewant/ollama-for-amd'
@@ -27,7 +27,7 @@ b2sums=('a59bba819f23370a453f01331266dcfbe7b6d1d5df9db787177fd44ca1af1bc9f066455
 	'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
 prepare() {
-	cd "${pkgname}-${pkgver}" || return
+	cd "${pkgname}-${pkgver}"
 
 	sed -i 's/check_language(CUDA)//g' CMakeLists.txt
 }
@@ -39,9 +39,9 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOPATH="${srcdir}"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -X=github.com/ollama/ollama/version.Version=${pkgver} -X=github.com/ollama/ollama/server.mode=release'"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw '-ldflags=-linkmode=external -X=github.com/ollama/ollama/version.Version=${pkgver} -X=github.com/ollama/ollama/server.mode=release'"
 
-	cd "${pkgname}-${pkgver}" || return
+	cd "${pkgname}-${pkgver}"
 
 	# all possible targets are usually listed on the latest release: https://github.com/likelovewant/ollama-for-amd/releases
 	#   https://rocm.docs.amd.com/en/docs-6.4.0/reference/gpu-arch-specs.html
