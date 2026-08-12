@@ -2,7 +2,7 @@
 
 pkgname=ownfoil
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
 url='https://github.com/a1ex4/ownfoil'
@@ -20,8 +20,7 @@ depends=(
   'python-watchdog'
   'python-werkzeug'
   'python-zstandard'
-  'nsz-git' # git version because #217 pull request is important
-            # latest 4.6.1 release does not include it
+  'nsz'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'ownfoil.service'

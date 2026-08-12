@@ -1,7 +1,7 @@
 pkgbase = ownfoil
 	pkgdesc = Switch library manager, with a self-hosted Tinfoil Shop
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/a1ex4/ownfoil
 	arch = any
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = ownfoil
 	depends = python-watchdog
 	depends = python-werkzeug
 	depends = python-zstandard
-	depends = nsz-git
+	depends = nsz
 	source = ownfoil-2.3.0.tar.gz::https://github.com/a1ex4/ownfoil/archive/2.3.0.tar.gz
 	source = ownfoil.service
 	source = ownfoil.sysusers
