@@ -3,12 +3,12 @@
 
 pkgname=micyou-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
 license=('GPL-3.0-only' 'MIT')
-depends=('alsa-lib' 'glibc' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme')
+depends=('alsa-lib' 'glibc' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'pipewire' 'wireplumber' 'pango')
 optdepends=(
   'android-tools: USB connectivity support'
   'xdg-utils: Open URLs in default browser'
