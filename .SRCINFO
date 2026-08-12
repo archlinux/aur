@@ -1,14 +1,14 @@
 pkgbase = hyprls
 	pkgdesc = A LSP server for Hyprland config files
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprland-community/hyprls
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = just
 	optdepends = hyprland
 	source = hyprls-0.14.0.tar.gz::https://github.com/hyprland-community/hyprls/archive/refs/tags/v0.14.0.tar.gz
-	sha512sums = e4daecfb583c958a02860afee723fa31b1b70015d2c285149d4fbdbb62a432ea75f3c055d5b22c9c6dd9b6c09da06da97e76bb45dbe4b26ab65e44e94d226cc8
+	b2sums = d159b0caa649b1599061f9e6d155ca43bd2303a25a9d59d887849e9c67fd84123c2a6a94910055ea97cdee6293925e8cf7fe07b88e880fd62f416d75c8babafa
 
 pkgname = hyprls
