@@ -1,6 +1,6 @@
 pkgbase = dnschanger-desktop
 	pkgdesc = DNS Changer for Windows, Mac and Linux operating systems
-	pkgver = 2.3.7
+	pkgver = 2.3.10
 	pkgrel = 1
 	url = https://dnschanger.github.io
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = dnschanger-desktop
 	makedepends = python-setuptools
 	depends = bash
 	depends = electron43
-	source = dnschanger-desktop-2.3.7.tar.gz::https://github.com/DnsChanger/dnsChanger-desktop/archive/v2.3.7.tar.gz
+	source = dnschanger-desktop-2.3.10.tar.gz::https://github.com/DnsChanger/dnsChanger-desktop/archive/v2.3.10.tar.gz
 	source = dnschanger.sh
-	sha256sums = d750e2838f33bed7ba2d238ecaf74b2207fb07e1137a5569696399fbc3e1be64
+	sha256sums = f80dc6d19a21c02b8365130ac025e132384c791bef4d8578eb5fe44b38a8c4c9
 	sha256sums = 98d8ee3e79aab28eaad39a4064dce1c5eaf946b7f437fd421b3bca30dd294810
 
 pkgname = dnschanger-desktop
