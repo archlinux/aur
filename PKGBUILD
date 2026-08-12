@@ -2,44 +2,79 @@
 
 pkgname=oh-my-pi
 pkgver=17.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
-depends=('glibc' 'oniguruma' 'opus' 'pcre2')
-makedepends=('bazel' 'bun' 'git')
-options=('!strip')
+depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2')
+makedepends=('bun' 'git' 'rust')
+options=('!lto' '!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
-    "tree-sitter-no-strict-aliasing.patch"
-    "use-system-library.patch"
+    "use-system-opus.patch"
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            'fd863e12ad717327c79095f47ebcb47811fcc3845dd15bdec3ec6b12d4df5e7a'
-            '6adbbf43c690b41aba5cd948abac74ccb498998b86b1738cbf80381b0ab26b46'
+            'd2e7b386c2655e053199113216023d128d6f1e8866547d84dfe1647d376e07a9'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
 )
+
+_variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    patch -p1 -i "${srcdir}/use-system-library.patch"
-    patch -p1 -i "${srcdir}/tree-sitter-no-strict-aliasing.patch"
-    # Crate annotations change the Bazel crate graph; Cargo.Bazel.lock needs a repin.
-    CARGO_BAZEL_REPIN=1 bazel fetch @crates//...
+    patch -p1 -i "${srcdir}/use-system-opus.patch"
+
+    # tree-sitter's vendored array.h type-puns every Array(T)* through a generic
+    # Array* whose contents member is void*. _array__grow may realloc and store
+    # the new contents through the punned type, so under -fstrict-aliasing
+    # (implied by -O2) GCC keeps the pre-realloc pointer in a register and the
+    # tree-sitter-haskell scanner writes into the freed block; glibc aborts with
+    # "corrupted size vs. prev_size" on the next allocation. Fixed upstream in
+    # tree-sitter 0.26.4 (tree-sitter/tree-sitter@ed6e42c), but the grammar
+    # crates vendor their own pre-fix copy of the header.
+    #
+    # cc-rs spawns the compiler from each crate's build script, so
+    # CARGO_PKG_NAME selects which crates get the flag.
+    local _cc
+    _cc=$(command -v "${CC:-cc}")
+    cat >"${srcdir}/cc-tree-sitter" <<EOF
+#!/bin/sh
+case \${CARGO_PKG_NAME-} in
+*tree-sitter*) set -- "\$@" -fno-strict-aliasing ;;
+esac
+exec ${_cc} "\$@"
+EOF
+    chmod +x "${srcdir}/cc-tree-sitter"
+}
+
+_build_native() {
+    local _variant="$1" _target_cpu="$2"
+
+    RUSTC_BOOTSTRAP=1 \
+    RUSTFLAGS="-Ctarget-cpu=${_target_cpu}" \
+    CC="${srcdir}/cc-tree-sitter" \
+    LIBOPUS_STATIC=0 \
+    PCRE2_SYS_STATIC=0 \
+    RUSTONIG_SYSTEM_LIBONIG=1 \
+        cargo build --locked --profile ci --package pi-natives
+
+    install -Dm755 target/ci/libpi_natives.so \
+        "packages/natives/native/pi_natives.linux-x64-${_variant}.node"
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-    unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
     bun install --frozen-lockfile
-    bun ./scripts/bazel-natives.ts linux-x64-baseline linux-x64-modern --dest packages/natives/native
+    local _variant
+    for _variant in "${_variants[@]}"; do
+        _build_native "${_variant%%:*}" "${_variant##*:}"
+    done
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
-    bazel shutdown
 }
 
 _install_completions() {
@@ -67,10 +102,11 @@ package() {
 
     install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" \
         "${pkgdir}/usr/lib/${pkgname}/omp"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" \
-        "${pkgdir}/usr/lib/${pkgname}/pi_natives.linux-x64-baseline.node"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" \
-        "${pkgdir}/usr/lib/${pkgname}/pi_natives.linux-x64-modern.node"
+    local _variant
+    for _variant in "${_variants[@]}"; do
+        install -Dm755 "packages/natives/native/pi_natives.linux-x64-${_variant%%:*}.node" \
+            "${pkgdir}/usr/lib/${pkgname}/pi_natives.linux-x64-${_variant%%:*}.node"
+    done
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "../lib/${pkgname}/omp" "${pkgdir}/usr/bin/omp"
     _install_completions "${pkgdir}/usr/bin/omp"

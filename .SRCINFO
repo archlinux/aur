@@ -1,25 +1,25 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
 	pkgver = 17.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
-	makedepends = bazel
 	makedepends = bun
 	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
 	depends = opus
 	depends = pcre2
+	options = !lto
 	options = !strip
 	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v17.2.15
-	source = tree-sitter-no-strict-aliasing.patch
-	source = use-system-library.patch
+	source = use-system-opus.patch
 	source = skip-native-embed-for-aur.patch
 	sha256sums = SKIP
-	sha256sums = fd863e12ad717327c79095f47ebcb47811fcc3845dd15bdec3ec6b12d4df5e7a
-	sha256sums = 6adbbf43c690b41aba5cd948abac74ccb498998b86b1738cbf80381b0ab26b46
+	sha256sums = d2e7b386c2655e053199113216023d128d6f1e8866547d84dfe1647d376e07a9
 	sha256sums = a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f
 
 pkgname = oh-my-pi
