@@ -38,8 +38,8 @@ pkgbase = zz-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = https://github.com/demfabris/zz/releases/download/v0.1.0/zz-0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c1f4b241b6b5694f082b6c3d3ecfd78b9fe4daef39b5bc30819a9ffdc8721e02
+	sha256sums_x86_64 = 0d1e5d68cebf49f3333affba39b4e0975c8521fb355f52c140852c4b32b16b51
 	source_aarch64 = https://github.com/demfabris/zz/releases/download/v0.1.0/zz-0.1.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = cfcaec828f5a745118685cbd4a773beffa2d2c477dfa3b1c65a9dde136ed002b
+	sha256sums_aarch64 = f530468f37f427ed6a5dcf7ef782e4f8d6ec808eea549f6b21b7b9e801474b05
 
 pkgname = zz-bin
