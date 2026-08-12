@@ -1,7 +1,7 @@
 pkgbase = vencord-hook
 	pkgdesc = Pacman hook to automatically install Vencord after Discord updates
 	pkgver = 1
-	pkgrel = 22
+	pkgrel = 23
 	url = https://github.com/Vencord/Installer.git
 	install = vencord-hook.install
 	arch = any
