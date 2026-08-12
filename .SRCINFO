@@ -1,6 +1,6 @@
 pkgbase = vsview-split-planes
 	pkgdesc = A vsview plugin displaying video clips' constituent planes
-	pkgver = 0.2.3.post1
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vsview-split-planes
 	makedepends = python-hatch-sbom
 	depends = vsview
 	depends = vapoursynth-plugin-vsakarin
-	source = vsview-split-planes::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=split-planes/v0.2.3.post1
+	source = vsview-split-planes::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=split-planes/v0.2.4
 	sha256sums = SKIP
 
 pkgname = vsview-split-planes

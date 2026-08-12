@@ -2,7 +2,7 @@
 
 _plugin=split-planes
 pkgname=vsview-${_plugin}
-pkgver=0.2.3.post1
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A vsview plugin displaying video clips' constituent planes"
 arch=("x86_64")
