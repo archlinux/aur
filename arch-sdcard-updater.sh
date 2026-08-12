@@ -290,6 +290,44 @@ run_group_with_timeout() {
     return $rc
 }
 
+# ── Group assembly ────────────────────────────────────────────────────────────
+
+# The blockers named in a single conflict report are not always the whole lock
+# set. qemu-system-x86 pins both qemu-common and qemu-system-x86-firmware, but
+# the firmware's report named only qemu-system-x86 — so a group built from that
+# one report still broke the qemu-common pin and failed. Each failed attempt
+# names more of the set, so expansion is iterative: bounded, and monotonic
+# (the group only grows; if an attempt names nothing new, an identical retry
+# would fail identically, so stop).
+GROUP_RETRY_MAX=4
+
+declare -a GROUP=()
+declare -A GROUP_SET=()
+GROUP_ADDED=0
+
+group_reset() {
+    GROUP=("$1")
+    unset GROUP_SET
+    declare -gA GROUP_SET=()
+    GROUP_SET["$1"]=1
+}
+
+# Add repo-only blockers named in $OUTPUT_CAP that are not already in the group.
+# Sets GROUP_ADDED. Never call this in a command substitution — the subshell
+# would discard the array mutations and the group would silently never grow.
+group_add_blockers() {
+    GROUP_ADDED=0
+    local b
+    while IFS= read -r b; do
+        [[ -z "$b" ]] && continue
+        [[ -n "${GROUP_SET[$b]+_}" ]] && continue
+        pacman -Si "$b" &>/dev/null || continue   # repo-only
+        GROUP+=("$b")
+        GROUP_SET["$b"]=1
+        GROUP_ADDED=$(( GROUP_ADDED + 1 ))
+    done < <(parse_conflict_blockers "$OUTPUT_CAP")
+}
+
 do_update() {
     local pkg="$1"
     if [[ -n "${GROUP_DONE[$pkg]+_}" ]]; then
@@ -338,27 +376,37 @@ do_update() {
             TIMED_OUT_PKGS+=("$pkg")
             TIMED_OUT_TYPES+=("repo")
         elif [[ $rc -eq 3 ]]; then
-            local -a group=("$pkg")
-            local b
-            for b in "${CONFLICT_BLOCKERS[@]}"; do
-                # repo-only: an AUR blocker can't join a pacman transaction
-                if pacman -Si "$b" &>/dev/null; then
-                    group+=("$b")
-                fi
-            done
-            if (( ${#group[@]} > 1 )); then
-                echo "    DEP-CONFLICT: version lock — retrying as one transaction: ${group[*]}"
-                local grc
-                run_group_with_timeout "${group[@]}" && grc=$? || grc=$?
-                if [[ $grc -eq 0 ]]; then
-                    log_success "OK [repo-group] ${group[*]}"
-                    for b in "${group[@]}"; do GROUP_DONE["$b"]=1; done
-                elif [[ $grc -eq 2 ]]; then
-                    log_fail "TIMEOUT [repo-group] ${group[*]}"
-                    TIMED_OUT_PKGS+=("${group[*]}")
+            group_reset "$pkg"
+            group_add_blockers
+            if (( ${#GROUP[@]} > 1 )); then
+                local grc=1 iter=0 g
+                while :; do
+                    iter=$(( iter + 1 ))
+                    echo "    DEP-CONFLICT: version lock — group retry ${iter}/${GROUP_RETRY_MAX}: ${GROUP[*]}"
+                    run_group_with_timeout "${GROUP[@]}" && grc=$? || grc=$?
+                    if (( grc == 0 )) || (( grc == 2 )); then
+                        break
+                    fi
+                    if (( iter >= GROUP_RETRY_MAX )); then
+                        echo "    group retry cap (${GROUP_RETRY_MAX}) reached — giving up"
+                        break
+                    fi
+                    group_add_blockers
+                    if (( GROUP_ADDED == 0 )); then
+                        echo "    no new blockers named — group cannot grow, giving up"
+                        break
+                    fi
+                    echo "    group expanded by ${GROUP_ADDED} — retrying"
+                done
+                if (( grc == 0 )); then
+                    log_success "OK [repo-group] ${GROUP[*]}"
+                    for g in "${GROUP[@]}"; do GROUP_DONE["$g"]=1; done
+                elif (( grc == 2 )); then
+                    log_fail "TIMEOUT [repo-group] ${GROUP[*]}"
+                    TIMED_OUT_PKGS+=("${GROUP[*]}")
                     TIMED_OUT_TYPES+=("repo-group")
                 else
-                    log_fail "ERR [repo-group] ${group[*]}"
+                    log_fail "ERR [repo-group] ${GROUP[*]}"
                 fi
             else
                 echo "    DEP-CONFLICT: $pkg skipped — no repo blockers parsed, will retry next run"
