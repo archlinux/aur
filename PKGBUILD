@@ -2,7 +2,7 @@
 
 pkgname=mocktail
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
 url='https://github.com/komaruworld/mocktail'
@@ -37,29 +37,24 @@ makedepends=(
   'ninja'
   'nlohmann-json'
   'pkgconf'
+  'vulkan-headers'
 )
 optdepends=('gamemode: Feral GameMode integration')
 conflicts=('mocktail-bin' 'mocktail-git')
 options=('!debug')
 source=(
   "mocktail::git+https://github.com/komaruworld/mocktail.git#tag=${pkgver}"
-  'libjnivm::git+https://github.com/ChristopherHX/libjnivm.git'
-  'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
   'SKIP'
 )
 
 prepare() {
   cd mocktail
 
-  git submodule init
-  git config submodule.third_party/libjnivm.url "${srcdir}/libjnivm"
-  git config submodule.third_party/Vulkan-Headers.url \
-    "${srcdir}/vulkan-headers"
-  git -c protocol.file.allow=always submodule update
+  sed -i \
+    's|add_subdirectory(third_party/Vulkan-Headers EXCLUDE_FROM_ALL)|find_package(VulkanHeaders CONFIG REQUIRED)|' \
+    CMakeLists.txt
 }
 
 build() {
@@ -69,6 +64,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DMOCKTAIL_DEFAULT_COMPATIBILITY_MANIFEST=/usr/share/mocktail/metadata/roblox_compatibility.json \
     -DMOCKTAIL_DEFAULT_SIGNING_TRUST_MANIFEST=/usr/share/mocktail/metadata/roblox_signing_certificates.json \
+    -DMOCKTAIL_ENABLE_UPSTREAM_JNIVM=OFF \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
