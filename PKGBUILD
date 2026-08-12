@@ -2,7 +2,7 @@
 
 _pkgname=everhour-cli
 pkgname=everhour-cli-git
-pkgver=0.1.0.r0.gbe2e191
+pkgver=0.1.1.r0.ge1fc564
 pkgrel=1
 pkgdesc="Everhour from the terminal — draft-first time tracking (CLI + TUI)"
 arch=('x86_64' 'aarch64')
