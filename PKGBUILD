@@ -1,19 +1,20 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-tui-browser
-pkgver=1.30.21
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="A terminal-based mDNS service browser"
 arch=('x86_64')
 url="https://github.com/hrzlgnm/mdns-tui-browser"
 license=('MIT')
-makedepends=('cargo' 'cargo-auditable' 'git' 'rust')
+makedepends=('cargo' 'cargo-auditable' 'cargo-edit' 'git' 'rust')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('269bb0a61773ae740df798d19b887f0bb4f9e22ad0c9063655d96fa22c3d55e3')
+sha256sums=('920e3bad453411e8752f8539139e7befff733ad2f62b072f46e74611f149de4b')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
+    cargo set-version -p "$pkgname" "$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 build() {
