@@ -1,8 +1,7 @@
+# Ignore everything
 *
 
+# But not these files...
 !PKGBUILD
 !.SRCINFO
-!*.patch
-!*.diff
-
 !.gitignore
