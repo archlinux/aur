@@ -1,19 +1,18 @@
 pkgbase = opengnb
 	pkgdesc = GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal.
-	pkgver = 1.6.6
-	pkgrel = 2
+	pkgver = 1.6.7
+	pkgrel = 5
 	url = https://github.com/gnbdev/opengnb
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = sed
-	depends = bash
-	depends = glibc
+	depends = sh
 	provides = opengnb
 	conflicts = opengnb
 	options = !makeflags
 	options = !debug
-	source = opengnb::git+https://github.com/gnbdev/opengnb.git#tag=1.6.6
-	sha256sums = acfa2f05186a903e95cf8a3e16303943b34c0c6e5e97d39b68abb9f6393b09eb
+	source = opengnb::git+https://github.com/gnbdev/opengnb.git#tag=1.6.7
+	sha256sums = 216160cb664d6efd9ea14a81cee2c54ce470fa7ec7289e17da2e85490aa46f78
 
 pkgname = opengnb
