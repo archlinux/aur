@@ -1,6 +1,5 @@
-src
-pkg
-*.zip
-*.pkg.tar.xz
-README.md
-*.log
+*
+!.gitignore
+!LICENSE
+!PKGBUILD
+!.SRCINFO

@@ -1,17 +1,19 @@
 pkgbase = jadx-bin
-	pkgdesc = Command line and GUI tools to produce Java source code from Android Dex and APK files
-	pkgver = 1.4.5
+	pkgdesc = Command line and GUI tools to produce Java source code from Android Dex and APK files (binary release)
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/skylot/jadx
 	arch = any
-	license = Apache
-	makedepends = unzip
-	makedepends = gendesk
-	depends = java-environment
-	depends = bash
-	provides = jadx
+	license = Apache-2.0
+	depends = java-runtime>=11
+	depends = sh
+	provides = jadx=1.5.6
+	provides = jadx-gui=1.5.6
 	conflicts = jadx
-	source = https://github.com/skylot/jadx/releases/download/v1.4.5/jadx-1.4.5.zip
-	sha256sums = f1d982d35fbea5ca64f2b1ab074841771e3990070016a3d2a3f936f3875fc0d2
+	conflicts = jadx-git
+	source = https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip
+	source = https://raw.githubusercontent.com/skylot/jadx/v1.5.6/contrib/jadx-gui.desktop
+	sha512sums = 4f556d2d9c2da120c898c928b84d2615f6199efdbbedd813bd84c5654a3f7e97dfab1e4be511121e1155e9b6a9355c6a4abe09bdbba9a58db1e79449f0cf4a26
+	sha512sums = 0e5a2cd618cbd2e058038650e6e8628c7ca810509a01ad6cbc8d9c7a4da2d9e290d7188ab4f45148120c2d4f3ea36c7dd916aa9b1ace54ff8e151ed2aad15967
 
 pkgname = jadx-bin
