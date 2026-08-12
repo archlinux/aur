@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ziade <guitaripod@gmail.com>
 pkgname=flaccy-bin
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Lossless music player with gapless playback and Last.fm scrobbling (GTK4/libadwaita)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('flaccy')
 conflicts=('flaccy')
 options=('!strip' '!debug')
 source=("https://github.com/guitaripod/flaccy/releases/download/linux-v${pkgver}/flaccy-linux-x86_64.tar.gz")
-sha256sums=('da39dec720f58a80dbb73aa3c82200cc1f2866f00cee5647f6293f7ded1016ae')
+sha256sums=('4c11b86111c32c29882fe3a233f34d0859b32d8878d8b9a96bb17e96db47e9e4')
 
 package() {
   cd "$srcdir/flaccy-linux-x86_64"
