@@ -2,6 +2,8 @@
 
 run_hook() (
   echo "Starting Tailscale"
+  # Written into the image by the install hook; not present at lint time.
+  # shellcheck source=/dev/null
   . /etc/default/tailscaled
 
   mkdir /dev/pts
@@ -9,6 +11,9 @@ run_hook() (
 
   # Launch tailscale agent in the background
   /usr/sbin/tailscaled --cleanup
+  # FLAGS holds extra tailscaled arguments from default.env and is meant to
+  # word-split; quoting it would pass the whole string as a single argument.
+  # shellcheck disable=SC2086
   /usr/sbin/tailscaled \
     --state=/var/lib/tailscale/tailscaled.state \
     --socket=/run/tailscale/tailscaled.sock \

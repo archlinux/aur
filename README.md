@@ -1,74 +1,101 @@
 # mkinitcpio-tailscale
 
-Provide a [mkinitcpio][1] hook to connect to a [Tailscale][2] network at boot,
-from within the initramfs also known as the early userspace environment, just
-before handing over control to the final rootfs.
+This project provides a [mkinitcpio][1] hook that lets you connect to your
+[Tailscale][2] network from inside the initramfs (the early userspace
+environment, before the system switches to the final root filesystem).
 
-This hook is extremely handy for remote unlocking systems with an encrypted root
-filesystem. Read the Archlinux Wiki on how to configure mkinitcpio to
-[decrypt the rootfs on boot][3] and how to add a ssh server to
-[remotely unlock it][4].
+It's particularly useful for remotely unlocking systems with encrypted root
+filesystems. For setup details on decrypting the rootfs and adding remote unlock
+support, see the Arch Linux Wiki pages linked below. If you use the built-in
+Tailscale SSH server you do not need an additional SSH server — see the section
+on the Tailscale SSH server for details.
 
-[1]: https://wiki.archlinux.org/title/Mkinitcpio
-[2]: https://tailscale.com
-[3]: https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_2
-[4]: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Remote_unlocking_of_root_(or_other)_partition
+- [Mkinitcpio][1]
+- [Tailscale][2]
+- ArchWiki: [dm-crypt / Encrypting an entire system — Configuring mkinitcpio][3]
+- ArchWiki: [Dm-crypt — Remote unlocking of root (or other) partition][4]
 
-Combine that with Tailscale and you get a secure VPN to access your locked
-server from anywhere, without having to open a firewall hole to ssh from outside
-your home.
+By combining mkinitcpio with Tailscale you get a secure VPN path to your locked
+server from anywhere — no need to expose SSH to the internet or open firewall
+ports.
 
 ## Installation
 
-Install
-[mkinitcpio-tailscale](https://aur.archlinux.org/packages/mkinitcpio-tailscale)
-package from AUR using your preferred helper, i.e.:
+You can install the package from the AUR:
 
-```
+```sh
 yay -S mkinitcpio-tailscale
 ```
 
 ## Configure
 
-Run `setup-initcpio-tailscale` and follow the instructions. It will register a
-Tailscale node with a hostname derived from the host system, let's say the host
-is named `homeserver`, the Tailscale node will be registered as
-`homeserver-initrd`; that makes it easier to later identify the node in
-Tailscale panel.
+Run the helper and follow the prompts:
 
-Edit /etc/mkinitcpio.conf and add `tailscale` to HOOKS array.
+```sh
+sudo setup-initcpio-tailscale
+```
 
-For systemd-based initramfs, the insertion order of the `tailscale` hook doesn't
-matter as long as it is after `systemd` hook itself.
+This will register a new Tailscale node using a hostname based on your system.
+For example, if your host is named `homeserver`, the node will appear as
+`homeserver-initrd` in the Tailscale admin panel, which makes it easy to
+identify.
 
-For busybox-based initramfs, it is recommended to place it after any network
-related hook and before any blocking hook like `encrypt` or `encryptssh`
+Next, edit `/etc/mkinitcpio.conf` and add `tailscale` to the `HOOKS` array.
+
+- For systemd-based initramfs, place the `tailscale` hook anywhere after the
+  `systemd` hook.
+- For busybox-based initramfs, add it after network-related hooks but before
+  blocking hooks like `encrypt` / `encryptssh`.
+
+Example (conceptual):
+
+```text
+HOOKS=(base systemd autodetect modconf block filesystems keyboard fsck tailscale)
+# or for busybox-based initramfs: ensure tailscale is before encrypt
+```
+
+After editing `mkinitcpio.conf`, regenerate your initramfs:
+
+```sh
+sudo mkinitcpio -P
+# or: sudo mkinitcpio -p linux
+```
+
+This updates your initramfs so the new hook and node key are included.
 
 ### Tailscale SSH server
 
-The Tailscale daemon can run a builtin SSH server. If enabled, installing
-_dropbear_ or _tinyssh_ isn't required to access the node remotely.
+Tailscale includes a built-in SSH server. If you enable it when running the
+setup helper, you don't need `dropbear`, `tinyssh`, or another SSH server inside
+initramfs.
 
-To enable it, pass the `--ssh` option like this:
-`setup-initcpio-tailscale --ssh`
+Enable it with:
 
-The main difference between the builtin SSH server and something like _dropbear_
-or _tinyssh_ is that the Tailscale SSH server is only accessible over the
-tailnet. The node won't respond to local connections unless the client is also
-connected to the tailscale network, which provides better security.
+```sh
+sudo setup-initcpio-tailscale --ssh
+```
 
-## Security Considerations
+Note: the Tailscale SSH server only accepts connections from within your
+tailnet. The node won’t accept local connections unless the client is also part
+of your Tailscale network — this reduces exposure compared to a traditional SSH
+server reachable from everywhere.
 
-The _Tailscale node key_ will be stored in plaintext inside the initramfs. Even
-if the root filesystem is encrypted, remember that the initramfs isn't. Someone
-with physical access to the node could steal the tailscale keys and attempt to
-log into the tailscale network impersonating the node the keys were created for.
+## Security considerations
 
-To minimize the attack surface, we can limit the initramfs tailscale node to
-only accept incoming connections by adding the following
-[Tailscale ACL](https://login.tailscale.com/admin/acls) and tag clients, servers
-and initrd nodes accordingly using the
-[Tailscale Machines](https://login.tailscale.com/admin/machines) panel.
+The Tailscale node key is stored in plaintext inside the initramfs. Initramfs is
+usually not encrypted, so physical access to the machine could allow an attacker
+to extract the node key and impersonate your initrd node on your tailnet.
+
+Mitigations:
+
+- Restrict what the initramfs node can access with Tailscale ACLs and tags. Tag
+  the initrd node in the Machines panel and limit its permissions.
+- Prefer granting the initrd node only the minimal access required (for example,
+  only allow SSH from a narrow set of client tags).
+- If a node is ever compromised, remove it from the Tailscale admin panel
+  immediately and recreate the initramfs/node key.
+
+Example ACL snippet to restrict initrd nodes (adapt to your tailnet):
 
 ```json
 {
@@ -81,27 +108,84 @@ and initrd nodes accordingly using the
   "acls": [
     { "action": "accept", "src": ["tag:client"], "dst": ["*:*"] },
     { "action": "accept", "src": ["tag:server"], "dst": ["tag:server:*"] }
+  ],
+
+  "ssh": [
+    {
+      "action": "accept",
+      "src": ["tag:client"],
+      "dst": ["tag:initrd"],
+      "users": ["autogroup:nonroot", "root"]
+    }
   ]
 }
 ```
 
-Even if the attacker manages to get the node keys, it won't be able to escalate
-into your tailscale network and all other nodes will be unreacheable.
+Even if an attacker obtains your initramfs node key, the ACLs above limit what
+that node can do and help protect the rest of your network.
+
+If you suspect compromise:
+
+- Remove the initrd device from the Tailscale admin console.
+- Re-run `setup-initcpio-tailscale` to register a fresh node and rebuild your
+  initramfs.
+
+## Development
+
+Run the test suite in a throwaway Arch container:
+
+```sh
+make test        # lint, packaging, initramfs image contents
+make test-all    # adds a QEMU boot test against a local headscale
+```
+
+### Releasing
+
+`PKGBUILD` in this repository is a **template, not a finished package
+definition**. `pkgver`, `pkgrel` and `sha256sums` are placeholders, and
+`.SRCINFO` is not tracked at all — they are generated at release time by
+`scripts/aur-stage.sh`. Running `makepkg` directly here produces a package
+labelled `0.0.0`; use `make build` instead, which stages a complete definition
+first.
+
+A release is cut by pushing a tag. The tag is the only source of truth for the
+version:
+
+| Tag        | Publishes    |
+| ---------- | ------------ |
+| `v1.2.0`   | `1.2.0-1`    |
+| `v1.2.0-2` | `1.2.0-2`    |
+
+```sh
+git tag v1.2.0 && git push origin v1.2.0
+```
+
+That runs the full test suite and, only if it passes, publishes to the AUR: a
+curated tree of packaging files only, never `tests/` or `.github/`. Use
+`v<version>-<rel>` for a packaging-only rebuild of a version already published.
+
+To rehearse without touching the AUR:
+
+```sh
+git init --bare /tmp/fake-aur.git
+AUR_REMOTE=/tmp/fake-aur.git ./scripts/aur-publish.sh --tag v1.2.0
+```
 
 ## Prior work and big thanks
 
-- [@tavianator][gh1] and his early work on
+- [@tavianator][gh1] — early work and inspiration:
   <https://gist.github.com/tavianator/6b00355cedae0b2ceb338e43ce8e5c1a>
-- [@karepker][gh2] for a very detailed rootfs unlocking on
-  [Raspeberry Pi + Archlinux](https://karepker.com/raspberry-pi/)
-- [@classabbyamp][gh3] for a similar
-  [mkinitcpio hook](https://github.com/classabbyamp/mkinitcpio-tailscale) for
-  non systemd initramfs on Void Linux. Also for the tailscale ACLs idea!
-- [@wolegis][gh4] for
-  [mkinitcpio-systemd-extras](https://github.com/wolegis/mkinitcpio-systemd-extras/)
-  that served as major inspiration for my systemd hook
+- [@karepker][gh2] — detailed rootfs unlocking guide for Raspberry Pi + Arch
+  Linux
+- [@classabbyamp][gh3] — a similar mkinitcpio hook for non-systemd initramfs on
+  Void Linux (and the idea to use ACLs)
+- [@wolegis][gh4] — mkinitcpio-systemd-extras, inspiration for the systemd hook
 
 [gh1]: https://github.com/tavianator
 [gh2]: https://github.com/karepker
 [gh3]: https://github.com/classabbyamp
 [gh4]: https://github.com/wolegis
+[1]: https://wiki.archlinux.org/title/Mkinitcpio
+[2]: https://tailscale.com
+[3]: https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_2
+[4]: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Remote_unlocking_of_root_(or_other)_partition

@@ -67,7 +67,7 @@ socket="${SETUPDIR}/tailscaled.sock"
 state="${SETUPDIR}/tailscaled.state"
 
 if [[ $FOUND_SSH_IN_ARGS == yes ]]; then
-  mkdir -p ${SETUPDIR}/etc/ssh
+  mkdir -p "${SETUPDIR}/etc/ssh"
   ssh-keygen -A -f "${SETUPDIR}"
 fi
 

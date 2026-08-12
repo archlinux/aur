@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 build() {
+	# mkinitcpio's run_build_hook discards build()'s return value, so returning
+	# 1 on its own reports the problem and still lets the image be generated.
+	# Bumping _builderrors is how a hook actually aborts the build; mkinitcpio
+	# declares and consumes it, and its own acpi_override hook does the same.
+	# shellcheck disable=SC2034
 	if ! pacman -Qi tailscale >/dev/null 2>&1; then
 		error "Package tailscale not installed"
+		builderrors=$((++_builderrors))
 		return 1
 	fi
 
@@ -10,6 +16,8 @@ build() {
 	for fn in tailscaled.state default.env; do
 		if ! [[ -r "${setupdir}/${fn}" && -s "${setupdir}/${fn}" ]]; then
 			error "Missing configuration file at ${setupdir}/${fn}. Have you run setup-initcpio-tailscale yet?"
+			# shellcheck disable=SC2034
+			builderrors=$((++_builderrors))
 			return 1
 		fi
 	done
@@ -18,8 +26,9 @@ build() {
 
 	# Copy ssh host keys if they exist
 	if [[ -d ${setupdir}/ssh ]]; then
-		for f in $(ls -A ${setupdir}/ssh); do
-			add_file ${setupdir}/ssh/${f} /var/lib/tailscale/ssh/
+		for f in "${setupdir}"/ssh/*; do
+			[[ -e $f ]] || continue
+			add_file "$f" /var/lib/tailscale/ssh/
 		done
 	fi
 
