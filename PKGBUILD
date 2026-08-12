@@ -4,7 +4,7 @@
 
 pkgname=shader-slang
 pkgver=2026.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
@@ -19,6 +19,7 @@ sha256sums=('2198fa78c65a97118b0b2d4ba63567fa420f02777c3e61a2cc43c4e24268d9e5'
             'SKIP')
 makedepends=(
 	cmake
+	fast_float
 	git
 	glm
 	python3
