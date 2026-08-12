@@ -5,7 +5,7 @@
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 
 pkgname=llama-hdd
-pkgver=7
+pkgver=9
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
