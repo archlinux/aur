@@ -1,5 +1,5 @@
 pkgname=pacterm-bin
-pkgver=1.3.2
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A terminal pacman game by Wael (pre-compiled binary)"
 arch=('x86_64')
