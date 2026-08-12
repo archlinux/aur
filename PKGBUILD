@@ -1,17 +1,17 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=2.4.4
+pkgver=2.5.12
 pkgrel=1
 pkgdesc="A feature-rich TUI client for Discord"
 arch=(x86_64 aarch64)
 url="https://github.com/chojs23/concord"
 license=(GPL-3.0-only)
-depends=(glibc libgcc alsa-lib opus)
+depends=(glibc libgcc libstdc++ alsa-lib libpipewire libva)
 optdepends=('mpv: video playback support')
-makedepends=(cargo)
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('24bbf2b2c725795387ee5bcc2fb5a49aafb2df58f79fe793ede5ed47eaf243ad')
+makedepends=(cargo clang cmake nasm)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6df8da04e80a97d222febf35a585756673251b58f464e520ccc8edfb4da85fc5')
 options=('!lto')
 
 prepare() {
@@ -26,6 +26,7 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
   cargo build --frozen --release
 }
 
