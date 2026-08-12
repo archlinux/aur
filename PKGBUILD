@@ -27,4 +27,29 @@ package() {
   # /opt symlink: that is the Electron layout and would clobber the
   # real /usr/bin/pollis with a dangling link.
   bsdtar -xf data.tar.* -C "${pkgdir}/"
+
+  # Tauri's .desktop template emits a bare `Exec=pollis`, which the launcher
+  # resolves through $PATH — so any binary named `pollis` ahead of /usr/bin
+  # hijacks the menu entry. That is not hypothetical for Arch specifically:
+  # website/install.sh picks .deb only when dpkg exists and .rpm only when
+  # dnf/yum exists, so on Arch it always falls through to the AppImage branch,
+  # which writes a launcher at ~/.local/bin/pollis and tells the user to put
+  # that directory on their PATH. Anyone who ran install.sh before switching to
+  # this package keeps launching the stale AppImage while pacman upgrades the
+  # real binary underneath — and it fails silently, because the AppImage still
+  # starts. Pin Exec to the path this package actually owns.
+  local desktop pinned=0
+  for desktop in "${pkgdir}"/usr/share/applications/*.desktop; do
+    [ -e "$desktop" ] || continue
+    sed -i -E 's|^Exec=pollis([[:space:]].*)?$|Exec=/usr/bin/pollis\1|' "$desktop"
+    if grep -q '^Exec=/usr/bin/pollis' "$desktop"; then
+      pinned=1
+    fi
+  done
+  # Never ship a launcher that can still be hijacked: if the .deb's layout
+  # changed under us, fail the build here rather than reintroduce the bug.
+  if [ "$pinned" -ne 1 ]; then
+    echo "No .desktop with an 'Exec=pollis' line under /usr/share/applications — refusing to package a hijackable launcher." >&2
+    return 1
+  fi
 }
