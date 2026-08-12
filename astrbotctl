@@ -39,17 +39,14 @@ cli)
 
 # ── init ─────────────────────────────────────────────────────────────────────
 init)
-    backup_file="" instance=""
+    instance=""
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
         -f | --backup)
-            [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing backup file after $1" >&2
-                exit 1
-            }
-            backup_file="$2"
-            shift 2
+            echo "❌ Error: Backup restore is no longer supported by astrbotctl." >&2
+            echo "   Use the authenticated Dashboard backup restore after initializing an instance." >&2
+            exit 2
             ;;
         -h | --help)
             print_help
@@ -76,11 +73,6 @@ init)
     conf_file="${CONFIG_DIR}/${instance}.conf"
     astrbot_root="${SYSTEM_ROOT}/${instance}"
 
-    [ -n "$backup_file" ] && [ ! -f "$backup_file" ] &&
-        {
-            echo "❌ Error: Backup file not found: $backup_file" >&2
-            exit 1
-        }
     [ -d "$astrbot_root" ] && {
         echo "⚠️  Instance data directory already exists: $astrbot_root" >&2
         exit 1
@@ -110,11 +102,8 @@ init)
         exit 1
     }
     venv_astrbot="$(venv_dir)/bin/astrbot"
-    run_astrbot_env_cmd bash -c 'printf "Y\nY\n" | "$1" init' bash "$venv_astrbot"
-    if [ -n "$backup_file" ]; then
-        run_astrbot_env_cmd "$venv_astrbot" bk import -y "$backup_file"
-    fi
-
+    run_astrbot_env_cmd --command-cwd "$ASTRBOT_ROOT" \
+        bash -c 'printf "Y\nY\n" | "$1" init' bash "$venv_astrbot"
     chown -R astrbot:astrbot "$astrbot_root"
     local_venv_dir="$(venv_dir)"
     [ -d "$local_venv_dir" ] && chown -R astrbot:astrbot "$local_venv_dir"
@@ -124,7 +113,10 @@ init)
     echo "   Configuration:  $conf_file"
     echo "   Port:           $ASTRBOT_PORT"
     echo ""
-    echo "To start the instance:"
+    echo "Set a dashboard password before starting the instance:"
+    echo "   sudo astrbotctl password $instance"
+    echo ""
+    echo "Then start the instance:"
     echo "   systemctl start astrbot@$instance"
     ;;
 
@@ -191,15 +183,22 @@ rm)
     instance="${1:-}"
     require_root
     require_instance
+    validate_instance_name "$instance" || exit 1
 
     conf_file="$(conf_file)"
-    venv_dir="$(venv_dir)"
+    exact_root="${SYSTEM_ROOT}/${instance}"
+    ASTRBOT_ROOT="$exact_root"
+    venv_dir="$exact_root/.venv"
 
     if [ -f "$conf_file" ]; then
         load_instance_config
         certbot_managed="${ASTRBOT_CERTBOT_MANAGED:-}"
         certbot_cert_name="${ASTRBOT_CERTBOT_CERT_NAME:-}"
     fi
+
+    # A malformed or missing config must never redirect removal outside this
+    # package's fixed per-instance data root.
+    ASTRBOT_ROOT="$exact_root"
 
     [ ! -d "$ASTRBOT_ROOT" ] && [ ! -f "$conf_file" ] &&
         {
@@ -398,30 +397,30 @@ start | stop | restart | enable | disable | status)
     systemctl "$cmd" "astrbot@$instance"
     ;;
 
-# ── admin ─────────────────────────────────────────────────────────────────────
+# ── retired credential compatibility tombstone ─────────────────────────────────
 admin)
-    username="" password="" instance=""
+    echo "❌ Error: astrbotctl admin is no longer supported." >&2
+    echo "   Use: sudo astrbotctl password [--username NAME] <instance>" >&2
+    exit 2
+    ;;
+
+# ── password ──────────────────────────────────────────────────────────────────
+password)
+    username="" instance=""
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
-        -u | --username)
+        --username)
             [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing value after $1" >&2
+                echo "❌ Error: Missing value after --username" >&2
                 exit 1
             }
             username="$2"
             shift 2
             ;;
-        -p | --password)
-            [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing value after $1" >&2
-                exit 1
-            }
-            password="$2"
-            shift 2
-            ;;
         -h | --help)
-            echo "Usage: astrbotctl admin [-u username] [-p password] <name>"
+            echo "Usage: astrbotctl password [--username NAME] <name>"
+            echo "Sets the dashboard password through a hidden terminal prompt."
             exit 0
             ;;
         -*)
@@ -440,153 +439,33 @@ admin)
     done
 
     require_instance
+    require_root
     load_instance_config
-    [ ! -d "$ASTRBOT_ROOT" ] && {
-        echo "❌ Error: Instance directory $ASTRBOT_ROOT does not exist." >&2
+    [ -d "$ASTRBOT_ROOT" ] && [ -f "$ASTRBOT_ROOT/.astrbot" ] || {
+        echo "❌ Error: Instance directory $ASTRBOT_ROOT is not initialized." >&2
+        exit 1
+    }
+    if [ ! -t 0 ]; then
+        echo "❌ Error: astrbotctl password requires a controlling terminal for hidden input." >&2
+        echo "   Run it directly from an interactive terminal." >&2
+        exit 1
+    fi
+    ensure_instance_env_synced || {
+        echo "❌ Error: Failed to prepare Python environment for instance '$instance'." >&2
         exit 1
     }
 
-    # conf is a top-level astrbot subcommand, not a subcommand of 'run'.
-    # We bypass run_astrbot and invoke astrbot directly.
-    setup_runtime_env
-    cd "$ASTRBOT_ROOT" || exit
-    if [ -n "$username" ]; then
-        "$UV_PROJECT_ENVIRONMENT/bin/astrbot" conf set dashboard.username "$username"
-    fi
-    if [ -n "$password" ]; then
-        "$UV_PROJECT_ENVIRONMENT/bin/astrbot" conf set dashboard.password "$password"
-    fi
-    if [ -z "$username" ] && [ -z "$password" ]; then
-        echo "❌ Error: Must provide at least one of -u/--username or -p/--password" >&2
-        exit 1
-    fi
+    venv_astrbot="$(venv_dir)/bin/astrbot"
+    password_args=("$venv_astrbot" password)
+    [ -z "$username" ] || password_args+=(--username "$username")
+    run_astrbot_env_cmd --command-cwd "$ASTRBOT_ROOT" "${password_args[@]}"
     ;;
 
-# ── export ─────────────────────────────────────────────────────────────────────
-export)
-    output_dir="" sign=0 encrypt="" symmetric=0 digest="" instance=""
-
-    while [ "$#" -gt 0 ]; do
-        case "$1" in
-        -o | --output)
-            [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing output dir after $1" >&2
-                exit 1
-            }
-            output_dir="$2"
-            shift 2
-            ;;
-        -E | --gpg-encrypt)
-            [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing recipient after $1" >&2
-                exit 1
-            }
-            encrypt="$2"
-            shift 2
-            ;;
-        -d | --digest)
-            [ -z "${2:-}" ] && {
-                echo "❌ Error: Missing algorithm after $1" >&2
-                exit 1
-            }
-            digest="$2"
-            shift 2
-            ;;
-        -S | --gpg-sign)
-            sign=1
-            shift
-            ;;
-        -C | --gpg-symmetric)
-            symmetric=1
-            shift
-            ;;
-        -h | --help)
-            echo "Usage: astrbotctl export [options] <name>"
-            exit 0
-            ;;
-        -*)
-            echo "❌ Error: Unknown option: $1" >&2
-            exit 1
-            ;;
-        *)
-            [ -n "$instance" ] && {
-                echo "❌ Error: Unexpected extra argument: $1" >&2
-                exit 1
-            }
-            instance="$1"
-            shift
-            ;;
-        esac
-    done
-
-    require_instance
-    load_instance_config
-    [ ! -d "$ASTRBOT_ROOT" ] && {
-        echo "❌ Error: Instance directory $ASTRBOT_ROOT does not exist." >&2
-        exit 1
-    }
-
-    # shellcheck disable=SC2206
-    cmd_args=(bk export)
-    [ -n "$output_dir" ] && cmd_args+=(-o "$output_dir")
-    [ "$sign" -eq 1 ] && cmd_args+=(-S)
-    [ -n "$encrypt" ] && cmd_args+=(-E "$encrypt")
-    [ "$symmetric" -eq 1 ] && cmd_args+=(-C)
-    [ -n "$digest" ] && cmd_args+=(-d "$digest")
-    run_astrbot "${cmd_args[@]}"
-    ;;
-
-# ── import ─────────────────────────────────────────────────────────────────────
-import)
-    backup_file="" yes=0 instance=""
-
-    while [ "$#" -gt 0 ]; do
-        case "$1" in
-        -y | --yes)
-            yes=1
-            shift
-            ;;
-        -h | --help)
-            echo "Usage: astrbotctl import [-y] <name> <backup_file>"
-            exit 0
-            ;;
-        -*)
-            echo "❌ Error: Unknown option: $1" >&2
-            exit 1
-            ;;
-        *)
-            [ -z "$instance" ] && {
-                instance="$backup_file"
-                shift
-                continue
-            }
-            [ -z "$backup_file" ] && {
-                backup_file="$1"
-                shift
-                continue
-            }
-            echo "❌ Error: Unexpected extra argument: $1" >&2
-            exit 1
-            ;;
-        esac
-    done
-
-    require_instance
-    [ -z "$backup_file" ] && {
-        echo "❌ Error: Missing backup file." >&2
-        exit 1
-    }
-    [ ! -f "$backup_file" ] && {
-        echo "❌ Error: Backup file not found: $backup_file" >&2
-        exit 1
-    }
-    load_instance_config
-    [ ! -d "$ASTRBOT_ROOT" ] && {
-        echo "❌ Error: Instance directory $ASTRBOT_ROOT does not exist." >&2
-        exit 1
-    }
-
-    run_astrbot bk import ${yes:+-y} "$backup_file"
+# ── retired backup compatibility tombstones ────────────────────────────────────
+export | import)
+    echo "❌ Error: astrbotctl $cmd is no longer supported." >&2
+    echo "   Use authenticated Dashboard backup and restore instead; restore is destructive." >&2
+    exit 2
     ;;
 
 # ── ls ────────────────────────────────────────────────────────────────────────
@@ -740,7 +619,7 @@ USAGE
 
     _sync_instance() {
         local inst="$1" was_active=0
-        local venv_dir_path venv_backup_path had_backup=0
+        local venv_dir_path venv_backup_path had_backup=0 sync_status rollback_ok=0
         instance="$inst"
         load_instance_config
 
@@ -752,34 +631,70 @@ USAGE
         venv_dir_path="$(venv_dir)"
         venv_backup_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
 
-        # Backup current venv before sync
-        if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$venv_dir_path" ]; then
-            echo ">>> Backing up current venv..."
-            rm -rf "$venv_backup_path" 2>/dev/null || true
-            mkdir -p "$(dirname "$venv_backup_path")"
-            cp -a "$venv_dir_path" "$venv_backup_path"
-            had_backup=1
-        fi
-
         if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
             was_active=1
             echo ">>> Stopping active service: $inst"
-            systemctl stop "astrbot@$inst"
+            systemctl stop "astrbot@$inst" || return 1
+            if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+                echo "❌ Error: Instance '$inst' remained active; no venv changes made." >&2
+                return 1
+            fi
         fi
 
-        if ! ensure_instance_env_synced 2>&1; then
-            echo "⚠️  Failed to sync environment for $inst"
-            if [ "$had_backup" -eq 1 ]; then
-                echo ">>> Restoring previous venv from backup..."
-                rm -rf "$venv_dir_path" 2>/dev/null || true
-                cp -a "$venv_backup_path" "$venv_dir_path"
+        if acquire_venv_maintenance_lock; then
+            :
+        else
+            sync_status=$?
+            return "$sync_status"
+        fi
+        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+            release_venv_maintenance_lock
+            echo "❌ Error: Instance '$inst' started concurrently; no venv changes made." >&2
+            return 75
+        fi
+
+        if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$venv_dir_path" ]; then
+            echo ">>> Backing up current venv..."
+            if ! create_venv_backup "$venv_dir_path" "$venv_backup_path"; then
+                release_venv_maintenance_lock
+                return 1
             fi
-            rm -rf "$venv_backup_path" 2>/dev/null || true
-            return 1
+            had_backup=1
+        fi
+
+        if ensure_instance_env_synced --force 2>&1; then
+            :
+        else
+            sync_status=$?
+            echo "⚠️  Failed to sync environment for $inst"
+            if [ "$had_backup" -eq 1 ] && [ -d "$venv_backup_path" ]; then
+                echo ">>> Restoring previous venv from backup..."
+                if restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" sync_failure; then
+                    rollback_ok=1
+                else
+                    echo "⚠️  Failed to restore the previous venv for $inst" >&2
+                fi
+            fi
+            release_venv_maintenance_lock
+            if [ "$was_active" -eq 1 ] && [ "$rollback_ok" -eq 1 ]; then
+                echo ">>> Restarting restored service: $inst"
+                if restart_restored_instance_healthy "$inst"; then
+                    cleanup_atomic_restore_after_healthy "$venv_backup_path"
+                else
+                    echo "⚠️  Failed to restart $inst after rollback" >&2
+                    report_atomic_restore_preserved "$venv_backup_path"
+                fi
+            elif [ "$was_active" -eq 1 ]; then
+                echo "⚠️  Keeping $inst stopped because no valid venv rollback is available." >&2
+            elif [ "$rollback_ok" -eq 1 ]; then
+                report_atomic_restore_preserved "$venv_backup_path"
+            fi
+            return "$sync_status"
         fi
 
         # Sync succeeded — discard backup
         rm -rf "$venv_backup_path" 2>/dev/null || true
+        release_venv_maintenance_lock
 
         if [ "$was_active" -eq 1 ]; then
             echo ">>> Restarting service: $inst"
@@ -794,9 +709,14 @@ USAGE
     }
 
     FAILED_INSTANCES=""
+    failed_status=0
     for inst in $instances; do
-        if ! _sync_instance "$inst"; then
+        if _sync_instance "$inst"; then
+            :
+        else
+            sync_status=$?
             FAILED_INSTANCES="$FAILED_INSTANCES $inst"
+            [ "$failed_status" -ne 0 ] || failed_status="$sync_status"
         fi
     done
 
@@ -804,7 +724,7 @@ USAGE
     if [ -n "$FAILED_INSTANCES" ]; then
         echo "=== ❌ Sync failed for some instances ==="
         echo "    Failed instances:$FAILED_INSTANCES"
-        exit 1
+        exit "$failed_status"
     else
         echo "=== ✅ Sync complete ==="
     fi
@@ -883,7 +803,7 @@ USAGE
     echo ""
     echo "[2/3] Rebuilding venv and restarting instances..."
     _update_instance() {
-        local inst="$1"
+        local inst="$1" was_active=0 update_status rollback_ok=0
         local venv_dir_path venv_backup_path had_backup=0
         instance="$inst"
         load_instance_config
@@ -897,12 +817,33 @@ USAGE
 
         echo ">>> Rebuilding venv for: $inst"
 
-        # Backup current venv before nuking it
+        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+            was_active=1
+            echo ">>> Stopping active service: $inst"
+            systemctl stop "astrbot@$inst" || return 1
+            if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+                echo "❌ Error: Instance '$inst' remained active; no venv changes made." >&2
+                return 1
+            fi
+        fi
+        if acquire_venv_maintenance_lock; then
+            :
+        else
+            update_status=$?
+            return "$update_status"
+        fi
+        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+            release_venv_maintenance_lock
+            echo "❌ Error: Instance '$inst' started concurrently; no venv changes made." >&2
+            return 75
+        fi
+
         if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$venv_dir_path" ]; then
             echo ">>> Backing up current venv..."
-            rm -rf "$venv_backup_path" 2>/dev/null || true
-            mkdir -p "$(dirname "$venv_backup_path")"
-            cp -a "$venv_dir_path" "$venv_backup_path"
+            if ! create_venv_backup "$venv_dir_path" "$venv_backup_path"; then
+                release_venv_maintenance_lock
+                return 1
+            fi
             had_backup=1
         fi
 
@@ -913,47 +854,90 @@ USAGE
             mkdir -p "/opt/astrbot/astrbot/dashboard/dist"
         fi
 
-        if ! ensure_instance_env_synced 2>&1; then
+        if ensure_instance_env_synced --force 2>&1; then
+            :
+        else
+            update_status=$?
             echo "⚠️  Failed to sync environment for $inst"
-            _restore_venv_backup "$venv_dir_path" "$venv_backup_path"
-            return 1
+            if [ "$had_backup" -eq 1 ] && restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" update_failure; then
+                rollback_ok=1
+            fi
+            release_venv_maintenance_lock
+            if [ "$was_active" -eq 1 ] && [ "$rollback_ok" -eq 1 ]; then
+                if restart_restored_instance_healthy "$inst"; then
+                    cleanup_atomic_restore_after_healthy "$venv_backup_path"
+                else
+                    report_atomic_restore_preserved "$venv_backup_path"
+                fi
+            elif [ "$rollback_ok" -eq 1 ]; then
+                report_atomic_restore_preserved "$venv_backup_path"
+            fi
+            return "$update_status"
         fi
 
-        echo ">>> Stopping: $inst"
-        systemctl stop "astrbot@$inst" 2>/dev/null || true
+        release_venv_maintenance_lock
+        if [ "$was_active" -eq 0 ]; then
+            rm -rf -- "$venv_backup_path"
+            return 0
+        fi
 
         echo ">>> Starting: $inst"
-        if ! systemctl start "astrbot@$inst"; then
+        if systemctl start "astrbot@$inst"; then
+            UPDATED_ACTIVE_INSTANCES="$UPDATED_ACTIVE_INSTANCES $inst"
+            return 0
+        else
+            update_status=$?
             echo "⚠️  Failed to start $inst"
-            _restore_venv_backup "$venv_dir_path" "$venv_backup_path"
-            return 1
+            if acquire_venv_maintenance_lock && restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" update_failure; then
+                rollback_ok=1
+            fi
+            release_venv_maintenance_lock
+            if [ "$rollback_ok" -eq 1 ] && restart_restored_instance_healthy "$inst"; then
+                cleanup_atomic_restore_after_healthy "$venv_backup_path"
+            else
+                report_atomic_restore_preserved "$venv_backup_path"
+            fi
+            return "$update_status"
         fi
-
-        # Keep backup around for stability monitoring; cleaned up after
-        return 0
     }
 
-    _restore_venv_backup() {
-        local dst="$1" src="$2"
-        if [ -d "$src" ]; then
-            echo ">>> Restoring previous venv from backup..."
-            rm -rf "$dst" 2>/dev/null || true
-            cp -a "$src" "$dst"
+    _rollback_after_stability_failure() {
+        local inst="$1" venv_dir_path venv_backup_path
+        instance="$inst"
+        load_instance_config
+        venv_dir_path="$(venv_dir)"
+        venv_backup_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
+        acquire_venv_maintenance_lock || return $?
+        if ! restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" stability_failure; then
+            release_venv_maintenance_lock
+            return 1
         fi
-        rm -rf "$src" 2>/dev/null || true
+        release_venv_maintenance_lock
+        if restart_restored_instance_healthy "$inst"; then
+            cleanup_atomic_restore_after_healthy "$venv_backup_path"
+            return 0
+        fi
+        report_atomic_restore_preserved "$venv_backup_path"
+        return 1
     }
 
     _cleanup_venv_backup() {
         local inst
         for inst in "$@"; do
-            rm -rf "${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup" 2>/dev/null || true
+            rm -rf -- "${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
         done
     }
 
     FAILED_INSTANCES=""
+    UPDATED_ACTIVE_INSTANCES=""
+    failed_status=0
     for inst in $instances; do
-        if ! _update_instance "$inst"; then
+        if _update_instance "$inst"; then
+            :
+        else
+            update_status=$?
             FAILED_INSTANCES="$FAILED_INSTANCES $inst"
+            [ "$failed_status" -ne 0 ] || failed_status="$update_status"
         fi
     done
 
@@ -963,47 +947,35 @@ USAGE
         echo ">>> Waiting ${stability_secs}s to ensure instances stay active..."
         for i in $(seq 1 "$stability_secs"); do
             sleep 1
-            for inst in $instances; do
+            for inst in $UPDATED_ACTIVE_INSTANCES; do
                 if echo "$FAILED_INSTANCES" | grep -qw "$inst"; then
                     continue
                 fi
                 if ! systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
                     echo "⚠️  Instance $inst crashed at ${i}s."
-                    # Rollback if backup exists
-                    bk_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
-                    if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$bk_path" ]; then
-                        echo ">>> Rolling back venv for $inst..."
-                        vp="${SYSTEM_ROOT}/${inst}/.venv"
-                        rm -rf "$vp" 2>/dev/null || true
-                        cp -a "$bk_path" "$vp"
-                        rm -rf "$bk_path"
-                        echo ">>> Restarting $inst with previous venv..."
-                        systemctl start "astrbot@$inst" 2>/dev/null || true
-                        sleep 5
-                        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
-                            echo ">>> Rollback succeeded — $inst is running on previous version."
-                            continue
-                        else
-                            echo "⚠️  Rollback also failed for $inst — manual intervention needed."
-                        fi
+                    [ "$failed_status" -ne 0 ] || failed_status=1
+                    if ! _rollback_after_stability_failure "$inst"; then
+                        echo "⚠️  Rollback also failed for $inst — manual intervention needed."
                     fi
                     FAILED_INSTANCES="$FAILED_INSTANCES $inst"
                 fi
             done
-            if [ -n "$FAILED_INSTANCES" ]; then
-                break
-            fi
+            [ -z "$FAILED_INSTANCES" ] || break
         done
     fi
 
-    # Clean up remaining backups for successful instances
-    _cleanup_venv_backup $instances
+    # A successfully monitored active instance has no remaining recovery use.
+    for inst in $UPDATED_ACTIVE_INSTANCES; do
+        if ! echo "$FAILED_INSTANCES" | grep -qw "$inst"; then
+            _cleanup_venv_backup "$inst"
+        fi
+    done
 
     echo ""
     if [ -n "$FAILED_INSTANCES" ]; then
         echo "=== ❌ Update failed for some instances ==="
         echo "    Failed instances:$FAILED_INSTANCES"
-        exit 1
+        exit "${failed_status:-1}"
     else
         echo "=== ✅ Update complete ==="
     fi

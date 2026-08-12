@@ -16,7 +16,9 @@ UPSTREAM_BRANCH="${UPSTREAM_BRANCH:-master}"
 # Update / rollback config (can be overridden in /etc/astrbot/update.conf)
 UPDATE_STABILITY_SECS="${UPDATE_STABILITY_SECS:-60}"
 UPDATE_AUTO_ROLLBACK="${UPDATE_AUTO_ROLLBACK:-1}"
+# shellcheck disable=SC2034 # Consumed by astrbotctl after this library is sourced.
 UPDATE_SNAPSHOT_DIR="${CACHE_DIR}/update-snapshots"
+ROLLBACK_HEALTH_SECS="${ROLLBACK_HEALTH_SECS:-5}"
 
 # ─── Path helpers ─────────────────────────────────────────────────────────────
 
@@ -30,6 +32,14 @@ venv_dir() {
 
 venv_sync_marker_file() {
     echo "$(venv_dir)/.astrbot-app-version"
+}
+
+venv_rollback_marker_file() {
+    echo "$(venv_dir)/.astrbot-rollback"
+}
+
+venv_maintenance_lock_file() {
+    echo "${ASTRBOT_ROOT:-$SYSTEM_ROOT/${instance?instance not set}}/.venv-maintenance.lock"
 }
 
 current_app_version() {
@@ -57,6 +67,17 @@ require_instance() {
     if [ -z "${instance:-}" ]; then
         echo "Usage: astrbotctl <command> <instance_name>" >&2
         exit 1
+    fi
+}
+
+# Instance names are also used in fixed filesystem and systemd unit paths.
+# Reject separators and dot-only forms before any lifecycle operation derives them.
+validate_instance_name() {
+    local candidate="${1:-}"
+
+    if [[ ! "$candidate" =~ ^[[:alnum:]][[:alnum:]_-]*$ ]]; then
+        echo "❌ Error: Invalid instance name: ${candidate:-<empty>}" >&2
+        return 1
     fi
 }
 
@@ -208,9 +229,8 @@ _runuser_with_env() {
     shift 2
 
     if [ "$(id -u)" -eq 0 ] && [ -z "$ASTRBOT_PRIVDROP_DONE" ] && id astrbot >/dev/null 2>&1; then
-        export ASTRBOT_PRIVDROP_DONE=1
         runuser -u astrbot -- env \
-            ASTRBOT_PRIVDROP_DONE="$ASTRBOT_PRIVDROP_DONE" \
+            ASTRBOT_PRIVDROP_DONE=1 \
             sh -c 'set -a && . "$1" && . /usr/bin/astrbotctl.functions && set +a && ensure_runtime_dirs && cd "$2" && exec "${@:3}"' \
             sh "$env_file" "$runtime_root" "$@"
     else
@@ -224,12 +244,30 @@ _runuser_with_env() {
 
 # Run an astrbot command (from the shared venv) with full runtime env.
 run_astrbot_env_cmd() {
+    local command_cwd
     setup_runtime_env
-    _runuser_with_env "$ASTRBOT_ROOT/.env" "$runtime_root" "$@"
+    command_cwd="$runtime_root"
+
+    if [ "${1:-}" = "--command-cwd" ]; then
+        command_cwd="${2?Missing directory after --command-cwd}"
+        shift 2
+    fi
+
+    _runuser_with_env "$ASTRBOT_ROOT/.env" "$command_cwd" "$@"
 }
 
 # Ensure the instance venv is present and synced with the packaged app.
+# shellcheck disable=SC2120 # Optional --force is intentionally supported.
 ensure_instance_env_synced() {
+    local force=0
+    if [ "${1:-}" = "--force" ]; then
+        force=1
+        shift
+    fi
+    [ "$#" -eq 0 ] || {
+        echo "❌ Error: Unknown ensure_instance_env_synced option." >&2
+        return 2
+    }
     setup_runtime_env
 
     # Self-heal app dir before syncing
@@ -238,18 +276,46 @@ ensure_instance_env_synced() {
     local env_file="$ASTRBOT_ROOT/.env"
     local venv_python="$UV_PROJECT_ENVIRONMENT/bin/python"
     local venv_astrbot="$UV_PROJECT_ENVIRONMENT/bin/astrbot"
-    local marker_file current_version last_synced_version needs_sync sync_reason
+    local marker_file rollback_marker current_version last_synced_version needs_sync sync_reason command_status
+    local venv_created=0
     marker_file="$(venv_sync_marker_file)"
+    rollback_marker="$(venv_rollback_marker_file)"
     current_version="$(current_app_version 2>/dev/null || true)"
     last_synced_version="$(cat "$marker_file" 2>/dev/null || true)"
     needs_sync=0
     sync_reason=""
 
-    if [ ! -x "$venv_python" ] || [ ! -x "$venv_astrbot" ]; then
-        needs_sync=1
-        sync_reason="missing virtualenv or astrbot entrypoint"
+    if [ -d "$UV_PROJECT_ENVIRONMENT" ] && [ ! -L "$UV_PROJECT_ENVIRONMENT" ] &&
+        [ -f "$UV_PROJECT_ENVIRONMENT/pyvenv.cfg" ] && [ ! -L "$UV_PROJECT_ENVIRONMENT/pyvenv.cfg" ] &&
+        [ -x "$venv_python" ] && [ -x "$venv_astrbot" ]; then
+        :
+    else
         echo ">>> Initializing virtual environment for instance: $instance"
-        run_astrbot_env_cmd uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12 --clear
+        if run_astrbot_env_cmd uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12 --clear; then
+            venv_created=1
+        else
+            command_status=$?
+            return "$command_status"
+        fi
+    fi
+
+    if [ -e "$rollback_marker" ] || [ -L "$rollback_marker" ]; then
+        if ! venv_rollback_marker_is_valid "$UV_PROJECT_ENVIRONMENT"; then
+            echo "❌ Error: Invalid rollback marker or virtualenv for instance '$instance'." >&2
+            return 1
+        fi
+        if [ "$force" -eq 0 ]; then
+            echo "⚠️  Using validated rollback virtualenv for instance '$instance'; run astrbotctl sync to retry." >&2
+            return 0
+        fi
+    fi
+
+    if [ "$venv_created" -eq 1 ]; then
+        needs_sync=1
+        sync_reason="missing or invalid virtualenv"
+    elif [ "$force" -eq 1 ]; then
+        needs_sync=1
+        sync_reason="explicit sync requested"
     elif [ -n "$current_version" ] && [ "$current_version" != "$last_synced_version" ]; then
         needs_sync=1
         sync_reason="app version changed (${last_synced_version:-none} -> $current_version)"
@@ -257,7 +323,7 @@ ensure_instance_env_synced() {
 
     if [ "$needs_sync" -eq 1 ]; then
         echo ">>> Syncing Python environment for instance: $instance${sync_reason:+ ($sync_reason)}"
-        run_astrbot_env_cmd env \
+        if run_astrbot_env_cmd env \
             VIRTUAL_ENV="$UV_PROJECT_ENVIRONMENT" \
             PATH="$UV_PROJECT_ENVIRONMENT/bin:$PATH" \
             UV_NO_CONFIG=1 \
@@ -265,14 +331,203 @@ ensure_instance_env_synced() {
             CARGO_HOME="/var/lib/astrbot/.cargo" \
             RUSTUP_HOME="/var/lib/astrbot/.rustup" \
             CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
-            uv pip install --reinstall "$APP_DIR"
+            uv pip install --reinstall "$APP_DIR"; then
+            :
+        else
+            command_status=$?
+            return "$command_status"
+        fi
 
         if [ -n "$current_version" ]; then
-            _runuser_with_env "$env_file" "$runtime_root" \
+            if _runuser_with_env "$env_file" "$runtime_root" \
                 sh -c 'printf "%s\n" "$1" > "$2"' \
-                sh "$current_version" "$marker_file"
+                sh "$current_version" "$marker_file"; then
+                :
+            else
+                command_status=$?
+                return "$command_status"
+            fi
+        fi
+        if [ -e "$rollback_marker" ] || [ -L "$rollback_marker" ]; then
+            [ -f "$rollback_marker" ] && [ ! -L "$rollback_marker" ] || {
+                echo "❌ Error: Refusing to remove invalid rollback marker." >&2
+                return 1
+            }
+            rm -f -- "$rollback_marker"
         fi
     fi
+}
+
+# A restored venv deliberately keeps its old application-version marker.  This
+# marker makes automatic service starts use that known-good environment until a
+# public forced sync succeeds.
+venv_rollback_marker_is_valid() {
+    local venv_path="$1" marker
+    marker="$venv_path/.astrbot-rollback"
+    [ -f "$marker" ] && [ ! -L "$marker" ] || return 1
+    venv_is_valid "$venv_path" || return 1
+    grep -Eq '^version=[^[:space:]]+$' "$marker" &&
+        grep -Eq '^reason=[[:alnum:]_-]+$' "$marker"
+}
+
+venv_is_valid() {
+    local venv_path="$1" owner
+    [ -d "$venv_path" ] && [ ! -L "$venv_path" ] || return 1
+    [ -f "$venv_path/pyvenv.cfg" ] && [ ! -L "$venv_path/pyvenv.cfg" ] || return 1
+    [ -x "$venv_path/bin/python" ] && [ -x "$venv_path/bin/astrbot" ] || return 1
+    [ -f "$venv_path/.astrbot-app-version" ] && [ ! -L "$venv_path/.astrbot-app-version" ] || return 1
+    grep -Eq '^[^[:space:]]+$' "$venv_path/.astrbot-app-version" || return 1
+    if id astrbot >/dev/null 2>&1; then
+        owner="$(stat -c '%U:%G' "$venv_path")"
+        [ "$owner" = 'astrbot:astrbot' ] || return 1
+    fi
+}
+
+ensure_venv_maintenance_lock_file() {
+    local lock_file
+    lock_file="$(venv_maintenance_lock_file)"
+    if [ -e "$lock_file" ] || [ -L "$lock_file" ]; then
+        [ -f "$lock_file" ] && [ ! -L "$lock_file" ] || {
+            echo "❌ Error: Refusing non-regular maintenance lock path: $lock_file" >&2
+            return 1
+        }
+    else
+        install -m 0644 -o astrbot -g astrbot /dev/null "$lock_file" || return 1
+    fi
+}
+
+acquire_venv_maintenance_lock() {
+    local lock_file
+    ensure_venv_maintenance_lock_file || return 1
+    lock_file="$(venv_maintenance_lock_file)"
+    exec {VENV_MAINTENANCE_LOCK_FD}>"$lock_file"
+    if ! flock -n "$VENV_MAINTENANCE_LOCK_FD"; then
+        exec {VENV_MAINTENANCE_LOCK_FD}>&-
+        unset VENV_MAINTENANCE_LOCK_FD
+        echo "⚠️  Instance '$instance' is being started or maintained; no changes made." >&2
+        return 75
+    fi
+}
+
+release_venv_maintenance_lock() {
+    [ -n "${VENV_MAINTENANCE_LOCK_FD:-}" ] || return 0
+    flock -u "$VENV_MAINTENANCE_LOCK_FD" || true
+    exec {VENV_MAINTENANCE_LOCK_FD}>&-
+    unset VENV_MAINTENANCE_LOCK_FD
+}
+
+create_venv_backup() {
+    local source_path="$1" backup_path="$2" backup_parent backup_stage
+    venv_is_valid "$source_path" || {
+        echo "❌ Error: Refusing to back up invalid virtualenv: $source_path" >&2
+        return 1
+    }
+    backup_parent="$(dirname "$backup_path")"
+    mkdir -p -- "$backup_parent" || return 1
+    backup_stage="$(mktemp -d "$backup_parent/.${instance}-venv-backup.XXXXXX")" || return 1
+    if ! cp -a --reflink=auto "$source_path/." "$backup_stage/" || ! venv_is_valid "$backup_stage"; then
+        rm -rf -- "$backup_stage"
+        echo "❌ Error: Failed to create a valid virtualenv backup." >&2
+        return 1
+    fi
+    rm -rf -- "$backup_path"
+    if ! mv --no-copy -T -- "$backup_stage" "$backup_path"; then
+        rm -rf -- "$backup_stage"
+        echo "❌ Error: Failed to publish virtualenv backup." >&2
+        return 1
+    fi
+}
+
+write_venv_rollback_marker() {
+    local staged_venv="$1" reason="$2" marker version
+    marker="$staged_venv/.astrbot-rollback"
+    version="$(cat "$staged_venv/.astrbot-app-version")"
+    case "$reason" in
+    sync_failure | update_failure | stability_failure) ;;
+    *) return 1 ;;
+    esac
+    umask 022
+    printf 'version=%s\nreason=%s\n' "$version" "$reason" >"$marker" || return 1
+    chown astrbot:astrbot "$marker" && chmod 0644 "$marker"
+}
+
+ATOMIC_RESTORE_CONTAINER=""
+ATOMIC_RESTORE_EXCHANGED_PATH=""
+
+restore_venv_backup_atomically() {
+    local destination="$1" backup_path="$2" reason="$3"
+    local parent base container stage parent_dev stage_dev container_prefix
+    ATOMIC_RESTORE_CONTAINER=""
+    ATOMIC_RESTORE_EXCHANGED_PATH=""
+    venv_is_valid "$backup_path" || {
+        echo "❌ Error: Refusing invalid virtualenv backup: $backup_path" >&2
+        return 1
+    }
+    parent="$(dirname "$destination")"
+    base="$(basename "$destination")"
+    [ -d "$parent" ] && [ ! -L "$parent" ] || return 1
+    # `.venv` is already hidden.  Strip only its leading dot before adding the
+    # rollback prefix so recovery artifacts have the stable, inspectable name
+    # `.venv.rollback.XXXXXX` rather than `..venv.rollback.XXXXXX`.
+    container_prefix="${base#.}"
+    container="$(mktemp -d "$parent/.${container_prefix}.rollback.XXXXXX")" || return 1
+    stage="$container/$base"
+    if ! cp -a --reflink=auto "$backup_path" "$stage" || ! venv_is_valid "$stage" ||
+        ! write_venv_rollback_marker "$stage" "$reason"; then
+        rm -rf -- "$container"
+        echo "❌ Error: Failed to stage a valid rollback virtualenv." >&2
+        return 1
+    fi
+    parent_dev="$(stat -c '%d' "$parent")"
+    stage_dev="$(stat -c '%d' "$stage")"
+    if [ "$parent_dev" != "$stage_dev" ]; then
+        rm -rf -- "$container"
+        echo "❌ Error: Rollback stage is not on the destination filesystem." >&2
+        return 1
+    fi
+    if [ -e "$destination" ] || [ -L "$destination" ]; then
+        if [ ! -d "$destination" ] || [ -L "$destination" ] ||
+            ! mv --exchange --no-copy -T -- "$stage" "$destination"; then
+            rm -rf -- "$container"
+            echo "❌ Error: Atomic rollback exchange failed; live venv was preserved." >&2
+            return 1
+        fi
+        ATOMIC_RESTORE_EXCHANGED_PATH="$stage"
+    elif ! mv --no-copy -T -- "$stage" "$destination"; then
+        rm -rf -- "$container"
+        echo "❌ Error: Atomic rollback publish failed." >&2
+        return 1
+    fi
+    ATOMIC_RESTORE_CONTAINER="$container"
+    venv_rollback_marker_is_valid "$destination" || {
+        echo "❌ Error: Rollback marker validation failed after publish." >&2
+        return 1
+    }
+}
+
+cleanup_atomic_restore_after_healthy() {
+    local backup_path="$1"
+    [ -n "${ATOMIC_RESTORE_CONTAINER:-}" ] && rm -rf -- "$ATOMIC_RESTORE_CONTAINER"
+    rm -rf -- "$backup_path"
+    ATOMIC_RESTORE_CONTAINER=""
+    ATOMIC_RESTORE_EXCHANGED_PATH=""
+}
+
+report_atomic_restore_preserved() {
+    local backup_path="$1"
+    echo "⚠️  Rollback recovery retained for inspection:" >&2
+    [ -z "${ATOMIC_RESTORE_CONTAINER:-}" ] || echo "    exchanged venv: $ATOMIC_RESTORE_CONTAINER" >&2
+    echo "    backup: $backup_path" >&2
+}
+
+restart_restored_instance_healthy() {
+    local unit="astrbot@$1" sample=0
+    systemctl start "$unit" || return 1
+    while [ "$sample" -lt "$ROLLBACK_HEALTH_SECS" ]; do
+        sleep 1
+        systemctl is-active --quiet "$unit" || return 1
+        sample=$((sample + 1))
+    done
 }
 
 # ─── Config rendering ────────────────────────────────────────────────────────
@@ -482,6 +737,35 @@ _ensure_app_dir() {
     return 1
 }
 
+# A server must never create an unrecoverable dashboard password during startup.
+# Keep this check deliberately narrow: CLI password provisioning is allowed before
+# the service starts, while `run` requires a persisted upstream PBKDF2 hash.
+dashboard_password_is_configured() {
+    local cmd_config="$ASTRBOT_ROOT/data/cmd_config.json"
+
+    [ -f "$cmd_config" ] || return 1
+    python - "$cmd_config" <<'PY'
+import json
+import sys
+
+try:
+    with open(sys.argv[1], encoding="utf-8-sig") as config_file:
+        password_hash = json.load(config_file).get("dashboard", {}).get("pbkdf2_password")
+except (OSError, ValueError, json.JSONDecodeError):
+    raise SystemExit(1)
+
+parts = password_hash.split("$") if isinstance(password_hash, str) else []
+is_valid = (
+    len(parts) == 4
+    and parts[0] == "pbkdf2_sha256"
+    and parts[1].isdigit()
+    and bool(parts[2])
+    and bool(parts[3])
+)
+raise SystemExit(0 if is_valid else 1)
+PY
+}
+
 # ─── Core run logic ──────────────────────────────────────────────────────────
 
 # Main entry point for running an AstrBot instance.
@@ -497,10 +781,19 @@ run_astrbot() {
     }
 
     local venv_astrbot="$UV_PROJECT_ENVIRONMENT/bin/astrbot"
+    # shellcheck disable=SC2119 # No arguments intentionally means automatic sync.
     ensure_instance_env_synced || {
         echo "❌ Error: Failed to prepare Python environment for instance '$instance'." >&2
         exit 1
     }
+
+    if [ "$#" -eq 0 ] || [ "${1:-}" = "run" ]; then
+        if ! dashboard_password_is_configured; then
+            echo "❌ Error: Dashboard password is not configured for instance '$instance'." >&2
+            echo "   Run: sudo astrbotctl password $instance" >&2
+            exit 1
+        fi
+    fi
 
     cd "$ASTRBOT_ROOT" || exit
 
@@ -547,7 +840,7 @@ print_help() {
 AstrBot Control Tool
 
 Usage:
-  sudo astrbotctl init [-f backup.zip] <name>      # Create a new instance
+  sudo astrbotctl init <name>                       # Create a new instance
   sudo astrbotctl cp <src> <dst>                   # Copy an instance
   sudo astrbotctl rm <name>                        # Remove an instance
   sudo astrbotctl reset <name>                     # Regenerate config from template
@@ -558,27 +851,18 @@ Usage:
   astrbotctl status <name>                         # Check status
   astrbotctl ls                                    # List instances
   astrbotctl paths <name>                          # Print instance-related paths
-  astrbotctl admin [options] <name>                # Change dashboard password
-  astrbotctl export [options] <name>               # Export instance backup
-  astrbotctl import [options] <name> <backup_file> # Import instance backup
+  sudo astrbotctl password [--username NAME] <name> # Set dashboard password interactively
+  astrbotctl admin ...                              # Retired; use password instead
   sudo astrbotctl update [instance|--all]                    # Sync installed package into venv(s), restart, monitor
 
-Init options:
-  -f, --backup <file>  Initialize the instance from a backup archive
+Credential migration:
+  astrbotctl admin is retired. Use `sudo astrbotctl password [--username NAME]
+  <name>` so the password is prompted for on the controlling terminal.
 
-admin options:
-  -u, --username <name>  Update dashboard username
-  -p, --password <pass>  Set dashboard password non-interactively
-
-Export options:
-  -o, --output <dir>             Output directory
-  -S, --gpg-sign                 Sign backup with GPG
-  -E, --gpg-encrypt <recipient> Encrypt for GPG recipient
-  -C, --gpg-symmetric            Symmetric encryption
-  -d, --digest <algo>            Generate digest
-
-Import options:
-  -y, --yes  Skip confirmation prompts
+Backup migration:
+  astrbotctl init -f, export, and import are retired because upstream removed
+  the backup CLI. Use the authenticated Dashboard backup and restore workflow;
+  restoring data is destructive.
 
 Debugging:
   astrbotctl run <name> [astrbot-run-args]  # Run in foreground

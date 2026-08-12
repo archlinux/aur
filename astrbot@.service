@@ -22,7 +22,7 @@ WorkingDirectory=/var/lib/astrbot/%i
 
 # astrbotctl run reads the config, sets up the full runtime environment,
 # then execs into the instance's Python/uv environment.
-ExecStart=/usr/bin/astrbotctl __run_astrbot %i
+ExecStart=/usr/bin/flock --shared --nonblock --no-fork /var/lib/astrbot/%i/.venv-maintenance.lock /usr/bin/astrbotctl __run_astrbot %i
 
 Restart=always
 RestartSec=10

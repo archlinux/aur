@@ -86,7 +86,6 @@ _print_banner() {
         echo ""
         echo "【创建实例】"
         echo "  sudo astrbotctl init <实例名>              # 初始化新实例"
-        echo "  sudo astrbotctl init -f <备份> <实例名>   # 从备份初始化"
         echo ""
         echo "【运行服务】"
         echo "  sudo astrbotctl start <实例名>             # 通过 systemd 启动实例"
@@ -99,8 +98,7 @@ _print_banner() {
         echo "  sudo astrbotctl reset <实例名>            # 重置配置"
         echo ""
         echo "【备份与恢复】"
-        echo "  astrbotctl export <实例名>              # 导出"
-        echo "  astrbotctl import <实例名> <备份文件>  # 导入"
+        echo "  请使用 Dashboard 中经认证的备份和恢复流程（恢复会覆盖现有数据）。"
         echo ""
         echo "【文件路径】"
         echo "  代码目录：     /opt/astrbot"
@@ -127,7 +125,8 @@ _print_banner() {
         echo "  sudo rm -f /var/lib/astrbot/<实例名>/astrbot.lock"
         echo ""
         echo "【账号管理】"
-        echo "  sudo astrbotctl admin -u admin -p '<新密码>' <实例名>"
+        echo "  首次启动前：sudo astrbotctl password <实例名>"
+        echo "  该命令在终端中隐藏输入密码并要求确认"
         echo "  若使用 HTTPS 证书：sudo astrbotctl certbot <实例名>"
         ;;
     esac
