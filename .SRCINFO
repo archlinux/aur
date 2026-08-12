@@ -1,6 +1,6 @@
 pkgbase = python-urllib3-future
 	pkgdesc = Inplace replacement for urllib3 capable of async with automatic HTTP/1, HTTP/2 and HTTP/3 transport.
-	pkgver = 2.22.901
+	pkgver = 2.24.900
 	pkgrel = 1
 	url = https://github.com/jawah/urllib3.future
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-urllib3-future
 	depends = python-wsproto
 	depends = python-zstandard
 	options = !debug
-	source = python-urllib3-future-2.22.901.tar.gz::https://github.com/jawah/urllib3.future/archive/refs/tags/2.22.901.tar.gz
-	sha256sums = 4b180f07281ab878584dca0c1eb581b62358155c0375c959a35da8ffabaddcc8
+	source = python-urllib3-future-2.24.900.tar.gz::https://github.com/jawah/urllib3.future/archive/refs/tags/2.24.900.tar.gz
+	sha256sums = 75334d15f51ebedd0d0f1084fbde7d36a7896c16be5a55a6ede19b14ff10d4e4
 
 pkgname = python-urllib3-future
