@@ -5,7 +5,7 @@
 # Anything changed here is lost on the next release.
 
 pkgname=liseur-desktop-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Snappy desktop EPUB reader, desktop counterpart of Liseur for Android"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("$_dl/liseur-desktop-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$_dl/liseur-desktop-$pkgver-linux-arm64.tar.gz")
 sha256sums=('81bd234328535b3fe013f50b3447ac82b56a73cd9fc520f54b6c11d78d0084a0'
             '49c3d9e5b1961666908e27a598558bbc66936018bdac70972883e469d20cb260')
-sha256sums_x86_64=('31c9ae073ef2f63d644a686ef449ed8092306f8742ea2becc2638a88835bfda4')
-sha256sums_aarch64=('a0f1c1596b92aea60b2b1d7f3a0a901af2756d253bafeb98bb9d15b44509f318')
+sha256sums_x86_64=('6c08ea3b84b6ceb34399c82c22eb529103d45bb5db84ef7e5f0f3fc4d9143da9')
+sha256sums_aarch64=('937dcf8ba7d6dbb7f96c45ec6a138b67d59ee2a40419a09651285ac0768ccba4')
 
 package() {
   local _arch=x64
