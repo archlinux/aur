@@ -4,9 +4,10 @@ pkgname=bettbox
 _pkgname=Bettbox
 pkgver=1.18.9
 _pkgver="${pkgver/pre/-pre}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash."
 arch=('x86_64' 'aarch64')
+options=('!lto')
 case "$CARCH" in
 	x86_64)  _arch=amd64; _flutter_arch=x64  ;;
 	aarch64) _arch=arm64; _flutter_arch=arm64 ;;
