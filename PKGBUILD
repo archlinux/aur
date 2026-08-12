@@ -1,8 +1,8 @@
 # Maintainer: pacmanics
 
 pkgname=aur-security-auditor
-pkgver=1.4.7
-pkgrel=3
+pkgver=1.4.8
+pkgrel=1
 pkgdesc="Explainable security auditor for AUR packages and supply-chain risks"
 arch=('any')
 url="https://github.com/pacmanics/aur-security-auditor"
@@ -31,7 +31,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pacmanics/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('9960eba1d92571d01b8b09d5b22ec12289fa36d544563fedbce87fa9a937de32')
+sha256sums=('0eae8e8b2a265dd3d828ddd9c5803157e3004a85b6db570bc779534b66710064')
 
 package() {
   local root="$srcdir/$pkgname-$pkgver"
