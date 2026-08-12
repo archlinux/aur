@@ -5,7 +5,7 @@
 # Contributor: kearneyBack <191615342 at qq dot com>
 
 pkgname=baidunetdisk-bin
-pkgver=8.6.0
+pkgver=8.7.0
 pkgrel=1
 pkgdesc='Baidu Netdisk - a cloud storage client (Linux Version)'
 arch=('x86_64')
@@ -28,20 +28,18 @@ source=(
   'https://deb.debian.org/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0-0v5_2.12.0-1_amd64.deb'
 )
 source_x86_64=(
-  "baidunetdisk-${pkgver}.${CARCH}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb"
+  "baidunetdisk-${pkgver}.${CARCH}.deb::https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb"
 )
 
-sha256sums=(
-  '3f6655276fe99fec31915e799e044e75853cb3bb180f013cc0e7f21910f9bf72'
+sha256sums=('3f6655276fe99fec31915e799e044e75853cb3bb180f013cc0e7f21910f9bf72'
   'f98c29a1962bb98d147c72e05a92eeba36f829ff1538eaaed550301a841fad95'
   '6cb05750d23a03c4a3161e023e44051240bb27458da06c316fbe0c31b9807a49'
   'a11c03dd8f9b454eaeae38ce782ceb45d9b52f5695d86d1d262c9062c678a2ba'
   'd1e9a26a5961748f220c5989c89516fead2a5054b80914f94c71c3fee6fdebe3'
   '028c21afe635dfcad591118049364f15bacc5dc0af18ea814f3bebb1e9c00afa'
   '3bcb2bb2c7dece7be81cd12f0c2eb25a0964642ba1e62e7a98264cb0ab4cde9e'
-  '60d62e980e199094e37a09c5896f736fc64354c0b0b9dbefb1b588ec26bc0bf9'
-)
-sha256sums_x86_64=('28f62882fe35469b4008c1324e43d2a9109395bcbdfc05207e048a8487759d56')
+  '60d62e980e199094e37a09c5896f736fc64354c0b0b9dbefb1b588ec26bc0bf9')
+sha256sums_x86_64=('ec71c2ad1151609fd0d8b86d95184c0b457d6db5aa18861e0b15fc23ccfe01f7')
 
 _extract_deb() {
   local deb="$1" dest="$2" data

@@ -1,6 +1,6 @@
 pkgbase = baidunetdisk-bin
 	pkgdesc = Baidu Netdisk - a cloud storage client (Linux Version)
-	pkgver = 8.6.0
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://pan.baidu.com
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = baidunetdisk-bin
 	sha256sums = 028c21afe635dfcad591118049364f15bacc5dc0af18ea814f3bebb1e9c00afa
 	sha256sums = 3bcb2bb2c7dece7be81cd12f0c2eb25a0964642ba1e62e7a98264cb0ab4cde9e
 	sha256sums = 60d62e980e199094e37a09c5896f736fc64354c0b0b9dbefb1b588ec26bc0bf9
-	source_x86_64 = baidunetdisk-8.6.0.x86_64.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/8.6.0/baidunetdisk_8.6.0_amd64.deb
-	sha256sums_x86_64 = 28f62882fe35469b4008c1324e43d2a9109395bcbdfc05207e048a8487759d56
+	source_x86_64 = baidunetdisk-8.7.0.x86_64.deb::https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/8.7.0/baidunetdisk_8.7.0_amd64.deb
+	sha256sums_x86_64 = ec71c2ad1151609fd0d8b86d95184c0b457d6db5aa18861e0b15fc23ccfe01f7
 
 pkgname = baidunetdisk-bin
