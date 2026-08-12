@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-lyrical-base
-pkgver=2026.06.23
+pkgver=2026.08.07
 pkgrel=1
 _rosdist="Lyrical Luth"
 _rosdist_short_upper=${_rosdist%% *}
@@ -44,7 +44,7 @@ source=(
     "ros2-variants-0.13.0.tar.gz::https://github.com/ros2/variants/archive/0.13.0.tar.gz"
     "colcon.meta"
 )
-sha256sums=('52a4ecffdabf951041342351768fa914a95aed3f3eebbbc7dbb495377ac8ba42'
+sha256sums=('6906704f349210d956babf13f12114f527ab525ae8f2d283ec834d6bea51617e'
             'd14cc0ec092511b26cb2be60200eaeb59ee1b1d21750b7d63fe98f476e6db89f'
             'b9de02644cd80ffee220401ca4b2c00290f4329d655fa06491e0f218700f61ad')
 
