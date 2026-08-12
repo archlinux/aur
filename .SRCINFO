@@ -1,14 +1,14 @@
 pkgbase = yamlresume
 	pkgdesc = Resumes as code in YAML
-	pkgver = 0.13.2
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/yamlresume/yamlresume
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = yamlresume-0.13.2.tgz
-	source = https://registry.npmjs.org/yamlresume/-/yamlresume-0.13.2.tgz
-	sha256sums = daae042b98995ddb38154c9300e7a114353a8e4862874cb33f2332bc6e7fa7d5
+	noextract = yamlresume-0.14.2.tgz
+	source = https://registry.npmjs.org/yamlresume/-/yamlresume-0.14.2.tgz
+	sha256sums = 126e778777e08ec31913a53be07d25026d986139df0ead0ed775b6d74bf60b3f
 
 pkgname = yamlresume
