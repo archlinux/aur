@@ -1,0 +1,9 @@
+post_install() {
+  echo "==> masterpdfeditor-qt6-bundled bundles patched copies of the system Qt6"
+  echo "    libraries. After upgrading qt6-base, qt6-svg, qt6-declarative or"
+  echo "    qt6-5compat, rebuild this package to refresh the bundled libraries."
+}
+
+post_upgrade() {
+  post_install
+}

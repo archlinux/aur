@@ -1,0 +1,27 @@
+pkgbase = masterpdfeditor-qt6-bundled
+	pkgdesc = A complete solution for viewing, creating and editing PDF files
+	pkgver = 5.9.99
+	pkgrel = 1
+	url = https://code-industry.net/free-pdf-editor/
+	install = masterpdfeditor-qt6-bundled.install
+	arch = x86_64
+	license = custom:MasterPDFEditor
+	makedepends = patchelf
+	makedepends = qt6-base
+	makedepends = qt6-svg
+	makedepends = qt6-declarative
+	makedepends = qt6-5compat
+	depends = libgl
+	depends = pkcs11-helper
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = sane
+	optdepends = qt6-wayland: Wayland platform plugin
+	provides = masterpdfeditor=5.9.99
+	conflicts = masterpdfeditor
+	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.99-qt6.x86_64.tar.gz
+	b2sums_x86_64 = 845888727b93b0f2b26200f408d966269d4277f1d9a2b6dafcc2278c956849e1ae11f80bfb1c3a7b6708c753a3f89c39a58a1281a5309a2278119881ce9f634d
+
+pkgname = masterpdfeditor-qt6-bundled
