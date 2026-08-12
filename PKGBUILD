@@ -10,7 +10,7 @@ url="https://github.com/vimlinuz/${_pkgname}"
 license=('MIT')
 depends=('libgcc')
 makedepends=('cargo')
-provides=("${_pkgname}")
+provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vimlinuz/${_pkgname}/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('5bf7a6ba2f6a2c22ba4a649e591b450c7fc2eb3581b47c1be267c47030413a8a')
