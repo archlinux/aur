@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=sqeel-bin
 _pkgname=sqeel
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Vim-modal SQL client: TUI front-end for sqlx-backed connections with LSP-aware editing. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ depends=('libxcb' 'gcc-libs')
 
 source_x86_64=("sqeel-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v${pkgver}/sqeel-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("sqeel-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v${pkgver}/sqeel-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('844397f265ac192b4c51abedab757b9d64ec394ff78ef4a890bcdf9b3e3629ac')
-sha256sums_aarch64=('89dd955243a0104be1c8ff6703f426a9b6c3003c8cd826ef1c1c02e66f8bc1f6')
+sha256sums_x86_64=('0c6da70688f47bb443fc7a2e3eed12010c4b2d1b634376733fe19426e6329e72')
+sha256sums_aarch64=('58947966af956a656e1e278f9e02bf7bb3305beb0db99c2b64fc7e3a6f1f4292')
 
 package() {
     install -Dm755 "$srcdir/sqeel" "$pkgdir/usr/bin/sqeel"
