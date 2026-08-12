@@ -2,7 +2,7 @@
 
 pkgname=aur-security-auditor
 pkgver=1.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Explainable security auditor for AUR packages and supply-chain risks"
 arch=('any')
 url="https://github.com/pacmanics/aur-security-auditor"
@@ -26,10 +26,6 @@ optdepends=(
   'zstd: inspect local .tar.zst package source archives'
 )
 
-conflicts=(
-  'aur-scanner'
-  'aur-malware-scanner'
-)
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pacmanics/$pkgname/archive/refs/tags/v$pkgver.tar.gz"

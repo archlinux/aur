@@ -1,7 +1,7 @@
 pkgbase = aur-security-auditor
 	pkgdesc = Explainable security auditor for AUR packages and supply-chain risks
 	pkgver = 1.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pacmanics/aur-security-auditor
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,8 +17,6 @@ pkgbase = aur-security-auditor
 	optdepends = namcap: inspect package quality during deep scans
 	optdepends = libarchive: inspect built package archives with bsdtar
 	optdepends = zstd: inspect local .tar.zst package source archives
-	conflicts = aur-scanner
-	conflicts = aur-malware-scanner
 	source = aur-security-auditor-1.4.7.tar.gz::https://github.com/pacmanics/aur-security-auditor/archive/refs/tags/v1.4.7.tar.gz
 	sha256sums = 9960eba1d92571d01b8b09d5b22ec12289fa36d544563fedbce87fa9a937de32
 
