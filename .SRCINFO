@@ -1,7 +1,7 @@
 pkgbase = hyper-headset-git
 	pkgdesc = A CLI and tray application for monitoring and managing HyperX headsets.
 	pkgver = 1.10.0.r0.g1ecb979
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LennardKittner/HyperHeadset
 	install = hyper-headset-git.install
 	arch = x86_64
@@ -16,10 +16,6 @@ pkgbase = hyper-headset-git
 	conflicts = hyperheadset-git
 	replaces = hyperheadset-git
 	source = git+https://github.com/LennardKittner/HyperHeadset.git#branch=main
-	source = git+https://github.com/ruabmbua/hidapi-rs.git
-	source = git+https://github.com/libusb/hidapi.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = hyper-headset-git

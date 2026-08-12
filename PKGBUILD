@@ -3,7 +3,7 @@ _sourceName="HyperHeadset"
 
 pkgname="hyper-headset-git"
 pkgver=1.10.0.r0.g1ecb979
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
 url="https://github.com/LennardKittner/HyperHeadset"
@@ -19,10 +19,8 @@ makedepends=(
 )
 source=(
     "git+${url}.git#branch=main"
-    "git+https://github.com/ruabmbua/hidapi-rs.git"
-    "git+https://github.com/libusb/hidapi.git"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 provides=("hyper-headset")
 conflicts=("hyper-headset" "hyper-headset-bin" "hyperheadset-git")
@@ -35,16 +33,6 @@ pkgver() {
 
 prepare() {
     cd "${_sourceName}"
-    git submodule init
-    git config submodule.vendor/hidapi.url "$srcdir/hidapi-rs"
-    git -c protocol.file.allow=always submodule update
-
-    cd "vendor/hidapi"
-    git submodule init
-    git config submodule.etc/hidapi.url "$srcdir/hidapi"
-    git -c protocol.file.allow=always submodule update
-
-    cd "../.."
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
