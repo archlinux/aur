@@ -1,0 +1,20 @@
+pkgbase = docker-credential-atcr-bin
+	pkgdesc = Docker credential helper for ATCR (AT Container Registry)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://atcr.io
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = docker-credential-atcr=0.1.4-1
+	conflicts = docker-credential-atcr
+	options = !strip
+	options = !debug
+	source = docker-credential-atcr-bin-0.1.4-LICENSE::https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry/raw/v0.1.4/license
+	sha256sums = aff5fbb8e2002841738321c8127c27e58f3228b319a54512f521ddba2e883cc7
+	source_x86_64 = docker-credential-atcr-bin-0.1.4-x86_64.tar.gz::https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry/tags/v0.1.4/download/docker-credential-atcr_0.1.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3037273abc84d1707d0c4746441337022d4dd23b4b94b5929439d6df42f407da
+	source_aarch64 = docker-credential-atcr-bin-0.1.4-aarch64.tar.gz::https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry/tags/v0.1.4/download/docker-credential-atcr_0.1.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 831a9b388f6eed6e5619922c71d82b090b65297f0980cb2b462c82dd129b299b
+
+pkgname = docker-credential-atcr-bin
