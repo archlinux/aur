@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sleepy-launcher
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=(
 	'gamescope: Micro-compositor'
 	'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8c7314acfa92564eaccbb982fae9b391241a388b0773bf6d0ce792ef6d55ccf4')
+sha256sums=('1291e31dc21e7e555a6fd64ce4510a546a5ae214f1eb86d8a78eff85c790c83b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
