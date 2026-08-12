@@ -2,16 +2,16 @@
 
 pkgbase=motorbridge
 pkgname=(motorbridge libmotorbridge python-motorbridge)
-pkgver=0.5.0
-pkgrel=1
+pkgver=0.5.1
+pkgrel=5
 pkgdesc='Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings'
 arch=($CARCH)
 url='https://github.com/tianrking/motorbridge'
 license=('MIT')
 replaces=()
 depends=(
-  libgcc
-  libstdc++
+  libgcc_s.so
+  libstdc++.so
   python
 )
 makedepends=(
@@ -29,7 +29,7 @@ checkdepends=()
 optdepends=()
 options=(!strip !debug staticlibs !lto)
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b760747983642f93f02ea7a2329c2c1a150d8eff0b30f8ea25906c3ebe9b0c4e')
+sha256sums=('5768101788fb8d908164320b7e4fdc9c3dc8b466b14e08cf7153d83da460a021')
 
 
 prepare() {
@@ -87,9 +87,8 @@ package_motorbridge() {
     ${pkgname}
   )
   depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     python
   )
   arch=($CARCH)
@@ -117,9 +116,8 @@ package_libmotorbridge() {
     ${pkgname}
   )
   depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
   )
   arch=($CARCH)
 
@@ -139,9 +137,8 @@ package_python-motorbridge() {
     ${pkgname}
   )
   depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     python
   )
   arch=($CARCH)
