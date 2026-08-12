@@ -1,0 +1,64 @@
+diff --git a/gdbuspp/object/path.cpp b/gdbuspp/object/path.cpp
+index 379fdbd..5d1dabf 100644
+--- a/gdbuspp/object/path.cpp
++++ b/gdbuspp/object/path.cpp
+@@ -42,7 +42,7 @@ Path::Path()
+ }
+ 
+ 
+-const std::string Path::process_str(const char *str) const
++std::string Path::process_str(const char *str) 
+ {
+     if (!str)
+     {
+diff --git a/gdbuspp/object/path.hpp b/gdbuspp/object/path.hpp
+index 8b3eedf..76bf4a4 100644
+--- a/gdbuspp/object/path.hpp
++++ b/gdbuspp/object/path.hpp
+@@ -59,7 +59,7 @@ class Path : public std::string
+      * @return const std::string of a valid D-Bus path to be stored in the object
+      * @throws DBus::Object::Exception() on invalid D-Bus object path strings
+      */
+-    const std::string process_str(const char *str) const;
++    static std::string process_str(const char *str);
+ };
+ 
+ } // namespace DBus::Object
+diff --git a/gdbuspp/proxy.cpp b/gdbuspp/proxy.cpp
+index a142bb4..50c33e1 100644
+--- a/gdbuspp/proxy.cpp
++++ b/gdbuspp/proxy.cpp
+@@ -459,10 +459,10 @@ Exception::Exception(const std::string &destination,
+ {
+ }
+ 
+-const std::string Exception::compose_error(const std::string &destination,
+-                                           const DBus::Object::Path &path,
+-                                           const std::string &interface,
+-                                           const std::string &method) const
++std::string Exception::compose_error(const std::string &destination,
++                                     const DBus::Object::Path &path,
++                                     const std::string &interface,
++                                     const std::string &method)
+ {
+     std::ostringstream err;
+     std::ostringstream method_info{};
+diff --git a/gdbuspp/proxy.hpp b/gdbuspp/proxy.hpp
+index 3e66573..2fe2da4 100644
+--- a/gdbuspp/proxy.hpp
++++ b/gdbuspp/proxy.hpp
+@@ -41,10 +41,10 @@ class Exception : public DBus::Exception
+               GError *gliberr = nullptr);
+ 
+   private:
+-    const std::string compose_error(const std::string &destination,
+-                                    const DBus::Object::Path &path,
+-                                    const std::string &interface,
+-                                    const std::string &method) const;
++    static std::string compose_error(const std::string &destination,
++                                     const DBus::Object::Path &path,
++                                     const std::string &interface,
++                                     const std::string &method);
+ };
+ 
+ 

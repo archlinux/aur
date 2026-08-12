@@ -3,7 +3,7 @@
 
 pkgname=gdbuspp
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc='GDBus++ - a glib2 D-Bus wrapper for C++ '
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/${pkgname}"
@@ -16,12 +16,15 @@ makedepends=(
 )
 source=(
   "https://swupdate.openvpn.net/community/releases/gdbuspp-${pkgver}.tar.xz"
+  'fedora-gcc-16-buildfixes.patch'
 )
 sha256sums=(
   'c7a053a13c4eb5811a542b747d5fcdb3a8e58a4a42c7237cc5e2e2ca72e0c94e'
+  '0aee04a062031621c47d5101849f74d7e39b7b17a96de1f032fae4188e532cb4'
 )
 
 prepare() {
+  patch -d "gdbuspp-${pkgver}" -Np1 -i "${srcdir}/fedora-gcc-16-buildfixes.patch"
   meson subprojects download --sourcedir="gdbuspp-${pkgver}"
 }
 
