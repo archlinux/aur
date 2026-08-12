@@ -1,12 +1,13 @@
 pkgbase = pilinara
 	pkgdesc = PiliPlus 的第三方Fork版本，做了一些自用改动
 	pkgver = 2.1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Starfallan/PiliNara
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = clang
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
 	makedepends = fvm
 	makedepends = patchelf
@@ -19,9 +20,7 @@ pkgbase = pilinara
 	conflicts = pilinara-git
 	options = !debug
 	options = !strip
-	source_x86_64 = PiliNara-2.1.0.2-beta1.tar.gz::https://github.com/Starfallan/PiliNara/archive/refs/tags/2.1.0.2-beta1.tar.gz
-	source_x86_64 = 0001-Fix-file-picker-git-dependency.patch
-	sha256sums_x86_64 = 79f992dd52d4d5d2ce61b91eb732612ad551264ad3211033e1e4ef5b08fe1484
-	sha256sums_x86_64 = SKIP
+	source_x86_64 = PiliNara-2.1.0.2-beta4.tar.gz::https://github.com/Starfallan/PiliNara/archive/refs/tags/2.1.0.2-beta4.tar.gz
+	sha256sums_x86_64 = b14142475545817f3fdaf86c212fe79419564672063ec788d8f776a49fe8e4b8
 
 pkgname = pilinara
