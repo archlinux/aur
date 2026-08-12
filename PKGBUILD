@@ -2,9 +2,9 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
-_pkgver_stable=1.13.15-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+_pkgver_stable=1.13.16-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_stable//-/\.}"
-pkgrel=3
+pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b'
             'ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f'
             '0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473')
-sha256sums_x86_64=('0e83bc9d2c644097450997aa60f2bf6a1161aa8524cc7fb2bd78b058e2afe753')
-sha256sums_aarch64=('0973cb01ba7221bc461630935e09c4cd470953655990310a20b9c46796b620e1')
+sha256sums_x86_64=('6577b86bf333e98e1713a1c28a8f3e571ab0ae6cadc25c6e5344d3b3c7c77069')
+sha256sums_aarch64=('dc3c0ac8c15dcc355d7e110bd923ccf3b9553da75df3e49b493fd049e5efc2bb')
 
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-beta-bin" "$_pkgname-ref1nd" "$_pkgname-ref1nd-git")
 
