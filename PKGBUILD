@@ -6,7 +6,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=lib32-fluidsynth
-_name=fluidsynth
+_name=${pkgname#lib32-}
 pkgver=2.5.7
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
