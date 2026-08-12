@@ -1,6 +1,6 @@
 pkgbase = ikuuu-vpn
 	pkgdesc = iKuuuVPN (repacked from .deb)
-	pkgver = 0.17.3
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://ikuuu.dev/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ikuuu-vpn
 	optdepends = libkeybinder3: for global hotkeys
 	options = !strip
 	options = !debug
-	source = ikuuu_vpn-0.17.3-5712bda6-linux-amd64.deb::https://client.files-2.eakpfo.cn/file/ikuuu-client-release/client/ikuuu_vpn-0.17.3-5712bda6/ikuuu_vpn-0.17.3-5712bda6-linux-amd64.deb
-	sha256sums = 804e779b924efbc9ccc475af88de116d29b297d0f20bccafaa0ce15872ab8ec0
+	source = ikuuu_vpn-0.17.5-22a756ce-linux-amd64.deb::https://client.files-2.eakpfo.cn/file/ikuuu-client-release/client/ikuuu_vpn-0.17.5-22a756ce/ikuuu_vpn-0.17.5-22a756ce-linux-amd64.deb
+	sha256sums = 63fa28b2fe68f30142034e7943fefc04c5764744546045df4dc486d3559c9693
 
 pkgname = ikuuu-vpn

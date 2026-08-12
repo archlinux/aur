@@ -3,8 +3,8 @@
 _pkgname="ikuuu_vpn"
 _binname="ikuuu-vpn"
 pkgname="${_binname}"
-pkgver="0.17.3"
-_buildid="5712bda6"
+pkgver="0.17.5"
+_buildid="22a756ce"
 pkgrel=1
 pkgdesc="iKuuuVPN (repacked from .deb)"
 arch=('x86_64')
@@ -15,11 +15,12 @@ depends=('gtk3' 'libsecret' 'libayatana-appindicator')
 optdepends=('libkeybinder3: for global hotkeys')
 # no provides/conflicts: keep only the canonical Arch package name
 
-_deb_file="${_pkgname}-${pkgver}-${_buildid}-linux-amd64.deb"
+_deb_pkg="${_pkgname}-${pkgver}-${_buildid}"
+_deb_file="${_deb_pkg}-linux-amd64.deb"
 
-source=("${_deb_file}::https://client.files-2.eakpfo.cn/file/ikuuu-client-release/client/ikuuu_vpn-0.17.3-5712bda6/ikuuu_vpn-0.17.3-5712bda6-linux-amd64.deb")
+source=("${_deb_file}::https://client.files-2.eakpfo.cn/file/ikuuu-client-release/client/${_deb_pkg}/${_deb_file}")
 
-sha256sums=('804e779b924efbc9ccc475af88de116d29b297d0f20bccafaa0ce15872ab8ec0')
+sha256sums=('63fa28b2fe68f30142034e7943fefc04c5764744546045df4dc486d3559c9693')
 
 prepare() {
 	bsdtar -xf "${_deb_file}"
