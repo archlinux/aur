@@ -1,10 +1,10 @@
 pkgbase = figma-linux-next-bin
 	pkgdesc = Unofficial Figma desktop app for Linux with bundled Electron — prebuilt binary
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/arximus88/figma-linux-next
 	arch = x86_64
-	license = MIT
+	license = GPL-2.0-only
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = gtk3
@@ -19,10 +19,10 @@ pkgbase = figma-linux-next-bin
 	optdepends = libappindicator-gtk3: for system tray icon support
 	provides = figma-linux-next
 	conflicts = figma-linux-next
-	noextract = figma-linux-next-0.15.0.zip
-	source = figma-linux-next-0.15.0.zip::https://github.com/arximus88/figma-linux-next/releases/download/v0.15.0/figma-linux-next_0.15.0_linux_x64.zip
+	noextract = figma-linux-next-0.16.0.zip
+	source = figma-linux-next-0.16.0.zip::https://github.com/arximus88/figma-linux-next/releases/download/v0.16.0/figma-linux-next_0.16.0_linux_x64.zip
 	source = figma-linux-next.desktop
-	sha256sums = ad0951f3117079bdc5baee97c1f553469168060e613ce4ef71120729e3d2a2f1
+	sha256sums = 9557520882adef98fa7d35eeabafa84bca7e9ce5d9a10a32915155cd66fad6dc
 	sha256sums = SKIP
 
 pkgname = figma-linux-next-bin
