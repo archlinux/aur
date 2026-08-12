@@ -1,7 +1,7 @@
 pkgbase = z-code-bin
 	pkgdesc = ZCode - AI Agents combined with existing toolchains for planning, coding, review and deployment
-	pkgver = 3.7.5
-	pkgrel = 2
+	pkgver = 3.7.6
+	pkgrel = 1
 	url = https://zcode.z.ai
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = z-code-bin
 	conflicts = zcode-desktop-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = z-code-bin-3.7.5-amd64::https://cdn-zcode.z.ai/zcode/electron/releases/3.7.5/linux-x64/ZCode-3.7.5-linux-x64.deb
-	sha256sums_x86_64 = d3a7a7a07a8512d01c2d4b242644ae673028038f614567a854b940bbdf8da43e
-	source_aarch64 = z-code-bin-3.7.5-arm64::https://cdn-zcode.z.ai/zcode/electron/releases/3.7.5/linux-arm64/ZCode-3.7.5-linux-arm64.deb
-	sha256sums_aarch64 = c8a165f2dab1a1ec1c03a92129474e67753507cb873cb17071231a53f22ea7ad
+	source_x86_64 = z-code-bin-3.7.6-amd64::https://cdn-zcode.z.ai/zcode/electron/releases/3.7.6/linux-x64/ZCode-3.7.6-linux-x64.deb
+	sha256sums_x86_64 = 7b960c18bdf87a799795dea3ce372e945df65414b164d9b7a41136bb5029eb86
+	source_aarch64 = z-code-bin-3.7.6-arm64::https://cdn-zcode.z.ai/zcode/electron/releases/3.7.6/linux-arm64/ZCode-3.7.6-linux-arm64.deb
+	sha256sums_aarch64 = d853d961827ee08bc329be9a11769b4eb4ff19b16cd1cf8ce601ad80a3dda02c
 
 pkgname = z-code-bin
