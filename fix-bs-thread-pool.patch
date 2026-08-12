@@ -1,0 +1,11 @@
+--- cpp/cmake/Modules/AddFragment.cmake.orig	2026-08-06 16:54:52.204716786 +0800
++++ cpp/cmake/Modules/AddFragment.cmake	2026-08-06 16:55:06.526192197 +0800
+@@ -70,7 +70,7 @@
+   )
+   target_link_libraries(
+     ${OBJECT_ID}
+-    PUBLIC CCCL::CCCL rapids_logger::rapids_logger rmm::rmm $<BUILD_LOCAL_INTERFACE:BS::thread_pool>
++    PUBLIC CCCL::CCCL rapids_logger::rapids_logger rmm::rmm
+     PRIVATE $<BUILD_LOCAL_INTERFACE:nvtx3::nvtx3-cpp> $<BUILD_LOCAL_INTERFACE:cuco::cuco>
+             ZLIB::ZLIB nvcomp::nvcomp kvikio::kvikio nanoarrow::nanoarrow zstd
+   )

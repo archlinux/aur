@@ -1,0 +1,10 @@
+--- embed.hpp.orig	2026-08-06 17:19:44.949403642 +0800
++++ embed.hpp	2026-08-06 17:19:54.114643781 +0800
+@@ -29,6 +29,7 @@
+ #include <string_view>
+ #include <utility>
+ #include <vector>
++#include <variant>
+ 
+ #define RTCX_EMBED_EXPECTS(condition, message)                                         \
+   do {                                                                                 \

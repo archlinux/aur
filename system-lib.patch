@@ -1,5 +1,5 @@
---- cpp/CMakeLists.txt	2026-06-04 06:04:30.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2026-06-05 19:04:04.696649834 +0800
+--- cpp/CMakeLists.txt.orig	2026-08-06 02:59:46.000000000 +0800
++++ cpp/CMakeLists.txt	2026-08-06 17:18:49.426953077 +0800
 @@ -12,6 +12,7 @@
  include(rapids-cpm)
  include(rapids-cuda)
@@ -8,13 +8,13 @@
  include(rapids-export)
  include(rapids-find)
  
-@@ -325,14 +326,13 @@
+@@ -349,14 +350,13 @@
  # add third party dependencies using CPM
  rapids_cpm_init()
  
 -include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
 +find_package(rapids_logger REQUIRED)
- set(_rapids_logger_args BUILD_EXPORT_SET cudf-exports)
+ set(_rapids_logger_args)
  if(NOT CUDF_BUILD_STATIC_DEPS STREQUAL "OFF")
    list(APPEND _rapids_logger_args ${CUDF_EXCLUDE_DEPS_FROM_ALL_FLAG} CPM_ARGS OPTIONS
         "BUILD_SHARED_LIBS OFF"
@@ -24,8 +24,8 @@
  
  # If dynamically linking to a preexisting rapids_logger library then find_dependency(rapids_logger)
  # must be in the installed config when CUDF_INSTALL_LIBRARY_DEPS is OFF. If it's ON then we always
-@@ -349,16 +349,16 @@
- include(cmake/thirdparty/get_jitify.cmake)
+@@ -374,16 +374,16 @@
+ create_logger_macros(CUDF "cudf::default_logger()" include/cudf)
  
  # find NVTX
 -include(cmake/thirdparty/get_nvtx.cmake)
@@ -43,9 +43,9 @@
 -include(cmake/thirdparty/get_rmm.cmake)
 +find_package(rmm REQUIRED)
  
- # find croaring
- include(cmake/thirdparty/get_croaring.cmake)
-@@ -367,10 +367,10 @@
+ # find croaring, needed by tests and benchmarks
+ if(CUDF_BUILD_TESTS OR CUDF_BUILD_BENCHMARKS)
+@@ -394,10 +394,10 @@
  include(cmake/thirdparty/get_flatbuffers.cmake)
  
  # find dlpack
@@ -58,8 +58,8 @@
  
  # find or install GoogleTest
  if(CUDF_BUILD_TESTUTIL)
-@@ -381,14 +381,11 @@
- include(cmake/Modules/JitifyPreprocessKernels.cmake)
+@@ -405,14 +405,11 @@
+ endif()
  
  # find KvikIO
 -include(cmake/thirdparty/get_kvikio.cmake)
@@ -71,18 +71,32 @@
 -# find thread_pool
 -include(cmake/thirdparty/get_thread_pool.cmake)
 -
- # find zstd
+ # find xxhash
+ include(cmake/thirdparty/get_xxhash.cmake)
+ 
+@@ -420,7 +417,8 @@
  include(cmake/thirdparty/get_zstd.cmake)
  
-@@ -1105,9 +1102,9 @@
- # Specify the target module library dependencies
+ # Fetch librtcx via CPM (zstd and nvtx3 are already available at this point)
+-include(cmake/thirdparty/get_rtcx.cmake)
++add_subdirectory(librtcx)
++include(librtcx/embed.cmake)
+ 
+ # Pre-compiled fragment management helper functions
+ include(cmake/Modules/AddFragment.cmake)
+@@ -1365,13 +1363,13 @@
+ # against any of these libraries ever adding a rapids_logger / rmm hidden dependency
  target_link_libraries(
    cudf
 -  PUBLIC CCCL::CCCL $<BUILD_LOCAL_INTERFACE:BS::thread_pool>
 +  PUBLIC CCCL::CCCL
    PRIVATE $<BUILD_LOCAL_INTERFACE:nvtx3::nvtx3-cpp> $<BUILD_LOCAL_INTERFACE:cuco::cuco> ZLIB::ZLIB
--          ${CUDF_nvcomp_TARGET} kvikio::kvikio ${CUDF_nanoarrow_TARGET} zstd
-+          nvcomp::nvcomp nvcomp::nvcomp_cpu kvikio::kvikio ${CUDF_nanoarrow_TARGET} zstd
+           kvikio::kvikio ${CUDF_nanoarrow_TARGET} zstd $<BUILD_LOCAL_INTERFACE:xxhash> rtcx::rtcx
  )
  
- # When building a shared libcudf with static deps, we absorb them via whole-archive linking so that
+ if(NOT _absorbed_nvcomp)
+-  target_link_libraries(cudf PRIVATE ${CUDF_nvcomp_TARGET})
++  target_link_libraries(cudf PRIVATE nvcomp::nvcomp nvcomp::nvcomp_cpu)
+   if(CUDF_nvcomp_TARGET STREQUAL "nvcomp::nvcomp_static")
+     set_property(
+       TARGET cudf

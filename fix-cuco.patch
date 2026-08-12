@@ -1,0 +1,22 @@
+--- cpp/include/cudf/reduction/bloom_filter.cuh.orig	2026-08-06 17:31:50.638018896 +0800
++++ cpp/include/cudf/reduction/bloom_filter.cuh	2026-08-06 17:32:38.267120631 +0800
+@@ -5,7 +5,7 @@
+ 
+ #pragma once
+ 
+-#include <cuco/bloom_filter_policies.cuh>
++#include <cuco/bloom_filter_policy.cuh>
+ 
+ #include <cstdint>
+ 
+--- cpp/src/join/mark_join.cuh.orig	2026-08-06 17:38:12.893054352 +0800
++++ cpp/src/join/mark_join.cuh	2026-08-06 17:39:04.179968560 +0800
+@@ -165,7 +165,7 @@
+   cuco::bucket_storage_ref<mark_key_type, mark_join_bucket_size, cuco::extent<std::size_t>>;
+ using right_key_type = cuco::pair<hash_value_type, rhs_index_type>;
+ 
+-using bloom_filter_policy_type    = cuco::default_filter_policy<hash_value_type>;
++using bloom_filter_policy_type    = cuco::bloom_filter_policy<hash_value_type>;
+ using bloom_filter_allocator_type = rmm::mr::polymorphic_allocator<cuda::std::byte>;
+ using bloom_filter_type           = cuco::bloom_filter<hash_value_type,
+                                                        cuco::extent<std::size_t>,

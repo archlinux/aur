@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=26.06.01
+pkgver=26.08.00
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -10,27 +10,36 @@ arch=('x86_64')
 license=('Apache-2.0')
 depends=('cuda' 'rmm' 'nvtx3' 'dlpack' 'kvikio' 'zstd' 'rapids-logger' 'nvcomp')
 makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython' 'cucollections')
+_rtcx_url=https://github.com/rapidsai/librtcx
+_rtcx_commit=efad266c1fd9de6d8486c6ba71bfa74df063eb1f
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$_rtcx_url/archive/$_rtcx_commit.tar.gz"
     "cuda-flags.patch"
     "system-lib.patch" 
     "missing-pkg.patch"
-    "missing-include.patch"
+    "fix-bs-thread-pool.patch"
+    "fix-cuco.patch"
+    "fix-rtcx-include.patch"
 )
-sha256sums=(
-    'f22f06286d9a332bc7b4e399bbd2b105471240c95297ad21daee17255bc2f0f6'
-    '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
-    'a4e305ca3c946240c215f7191134301a592af98c6d0fec70cd6a7d211fa1528c'
-    '496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea'
-    '9c5c21ce596e3ec7dc0831ae2c5ab71d733f4ddcb917ea8c4d55e7c02dd40baa'
-)
+sha256sums=('949b2821660bfdd68409c024ada47132776a14cdc09f642c9efc0b4ac0ea2998'
+            '8283d55fd07e2da87629709eb77fdbd78aceded6f289a7900799145587a1efc1'
+            '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
+            'e749ac2e0414c063e3fa2087413b4de16bd5d0407759bd0109d33e548f10b126'
+            '496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea'
+            '26e18df681c5e30aad6579350e829b68023bc2789a04c14b2afa31950563cad3'
+            'cc9ff917306eb372c12b0ab78bd8955bbe639662b1c2422701f1422403ec6320'
+            'd312f9f20483ef2643123bb7d095a192781fe907dbcdc8160ffc7941023d7c03')
 
 prepare() {
     cd "$srcdir/cudf-$pkgver"
+    ln -srfT "$srcdir/librtcx-$_rtcx_commit" cpp/librtcx
     #patch -p1 "cpp/cmake/Modules/ConfigureCUDA.cmake" < "$srcdir/cuda-flags.patch"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibcudf/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
-    patch -p1 "cpp/src/jit/row_ir.hpp" < "$srcdir/missing-include.patch"
+    patch -p1 "cpp/cmake/Modules/AddFragment.cmake" < "$srcdir/fix-bs-thread-pool.patch"
+    patch -p0 < "$srcdir/fix-cuco.patch"
+    patch -p1 "cpp/librtcx/embed.hpp" < "$srcdir/fix-rtcx-include.patch"
 }
 
 
@@ -61,6 +70,7 @@ package_libcudf() {
 
     cd "$srcdir/cudf-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
+    rm "$pkgdir/usr/lib/librtcx.a"
 }
 
 package_python-pylibcudf() {
