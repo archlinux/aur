@@ -1,0 +1,1186 @@
+--- a/src/ui/UploadDialog.cpp	2026-08-12 12:22:08.244170781 +0200
++++ b/src/ui/UploadDialog.cpp	2026-08-12 12:21:28.043424802 +0200
+@@ -52,7 +52,6 @@
+     m_authHelpLabel->setWordWrap(true);
+     m_authHelpLabel->setOpenExternalLinks(true);
+     m_authHelpLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+-    m_authHelpLabel->setStyleSheet(QStringLiteral("color: #9aa0a6; font-size: 11px;"));
+     m_saveAuthBtn = new QPushButton(TranslationManager::save(), this);
+     authForm->addRow(QString(), m_authEdit);
+     authForm->addRow(QString(), m_authHelpLabel);
+--- a/src/ui/SettingsDialog.cpp	2026-08-12 12:28:41.016780559 +0200
++++ b/src/ui/SettingsDialog.cpp	2026-08-12 12:28:53.714396957 +0200
+@@ -656,11 +656,6 @@
+ 
+     QPushButton *saveBtn = new QPushButton(TranslationManager::save());
+     saveBtn->setDefault(true);
+-    saveBtn->setStyleSheet(R"(
+-        QPushButton { background-color: #0078D4; color: white; border: none;
+-                      padding: 8px 24px; border-radius: 4px; font-weight: bold; }
+-        QPushButton:hover { background-color: #1a8cff; }
+-    )");
+     connect(saveBtn, &QPushButton::clicked, this, &SettingsDialog::onSave);
+ 
+     const QSize actionButtonSize = settingsDialogActionButtonSize(
+@@ -688,7 +683,6 @@
+     QVBoxLayout *updateLayout = new QVBoxLayout(m_updateGroup);
+     m_updateStatusLabel = new QLabel(TranslationManager::updateStatusIdle(), m_updateGroup);
+     m_updateStatusLabel->setWordWrap(true);
+-    m_updateStatusLabel->setStyleSheet("color: #aaa; font-size: 12px;");
+     m_updateButton = new QPushButton(TranslationManager::updateNow(), m_updateGroup);
+     connect(m_updateButton, &QPushButton::clicked, this, &SettingsDialog::updateRequested);
+     updateLayout->addWidget(m_updateStatusLabel);
+@@ -766,11 +760,10 @@
+     connect(m_filenamePatternEdit, &QLineEdit::textChanged, this, &SettingsDialog::onFilenamePatternChanged);
+     fnLayout->addWidget(m_filenamePatternEdit);
+     m_patternPreviewLabel = new QLabel();
+-    m_patternPreviewLabel->setStyleSheet("color: #888; font-style: italic;");
++    m_patternPreviewLabel->setStyleSheet("font-style: italic;");
+     fnLayout->addWidget(m_patternPreviewLabel);
+     QLabel *helpLabel = new QLabel(TranslationManager::patternVars());
+     helpLabel->setWordWrap(true);
+-    helpLabel->setStyleSheet("color: #999; font-size: 11px;");
+     fnLayout->addWidget(helpLabel);
+     layout->addWidget(fnGroup);
+ 
+@@ -788,11 +781,6 @@
+     genLayout->addWidget(m_autoStartCheck);
+     genLayout->addWidget(m_showNotificationsCheck);
+     m_notificationOptionsWidget = new QWidget(genGroup);
+-    m_notificationOptionsWidget->setStyleSheet(R"(
+-        QCheckBox { color: #cfcfcf; }
+-        QCheckBox:disabled { color: #777777; }
+-        QCheckBox::indicator:disabled { border: 1px solid #555555; background: #333333; }
+-    )");
+     QVBoxLayout *notifLayout = new QVBoxLayout(m_notificationOptionsWidget);
+     notifLayout->setContentsMargins(22, 0, 0, 0);
+     notifLayout->setSpacing(2);
+@@ -881,11 +869,9 @@
+                                QLabel **statusPtr, QPushButton **buttonPtr, const QObject *receiver, const char *slot) {
+         QLabel *nameLabel = new QLabel(name, componentsGroup);
+         QLabel *statusLabel = new QLabel(status, componentsGroup);
+-        statusLabel->setStyleSheet(status == TranslationManager::tr("packageInstalled") ? "color: #8bd17c;" : "color: #f0c36d;");
+         QPushButton *deleteButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-delete")), TranslationManager::tr("packageDelete"), componentsGroup);
+         deleteButton->setEnabled(canDelete);
+         deleteButton->setFixedWidth(82);
+-        deleteButton->setStyleSheet("color: #ff6b6b;");
+         connect(deleteButton, SIGNAL(clicked()), receiver, slot);
+         if (statusPtr) *statusPtr = statusLabel;
+         if (buttonPtr) *buttonPtr = deleteButton;
+@@ -909,24 +895,11 @@
+     QVBoxLayout *ocrLayout = new QVBoxLayout(ocrGroup);
+     QLabel *hint = new QLabel(TranslationManager::tr("ocrPackagesHint"), ocrGroup);
+     hint->setWordWrap(true);
+-    hint->setStyleSheet("color: #aaa; font-size: 12px;");
+     ocrLayout->addWidget(hint);
+ 
+     m_packageList = new QListWidget(ocrGroup);
+     m_packageList->setSelectionMode(QAbstractItemView::NoSelection);
+     m_packageList->setMinimumHeight(300);
+-    m_packageList->setStyleSheet(R"(
+-        QListWidget {
+-            background: #252525;
+-            border: 1px solid #3d3d3d;
+-            border-radius: 6px;
+-            padding: 6px;
+-        }
+-        QListWidget::item {
+-            min-height: 38px;
+-            border-radius: 4px;
+-        }
+-    )");
+     ocrLayout->addWidget(m_packageList);
+ 
+     QHBoxLayout *bulkLayout = new QHBoxLayout();
+@@ -942,7 +915,6 @@
+ 
+     m_packageStatusLabel = new QLabel(ocrGroup);
+     m_packageStatusLabel->setWordWrap(true);
+-    m_packageStatusLabel->setStyleSheet("color: #aaa; font-size: 12px;");
+     ocrLayout->addWidget(m_packageStatusLabel);
+ 
+     layout->addWidget(ocrGroup);
+@@ -1240,7 +1212,6 @@
+     visualSearchLayout->addRow(TranslationManager::visualSearchProvider(), m_visualSearchProviderCombo);
+     QLabel *visualSearchPrivacy = new QLabel(TranslationManager::tr("visualSearchPrivacy"), visualSearchGroup);
+     visualSearchPrivacy->setWordWrap(true);
+-    visualSearchPrivacy->setStyleSheet("color: #aaa; font-size: 12px;");
+     visualSearchLayout->addRow(visualSearchPrivacy);
+     layout->addWidget(visualSearchGroup);
+ 
+@@ -1251,7 +1222,6 @@
+ 
+     QLabel *infoLabel = new QLabel(TranslationManager::toolbarDesc());
+     infoLabel->setWordWrap(true);
+-    infoLabel->setStyleSheet("color: #aaa; font-size: 12px;");
+     toolsLayout->addWidget(infoLabel);
+ 
+     auto configureList = [](QListWidget *list) {
+@@ -1262,26 +1232,6 @@
+         list->setSpacing(1);
+         list->setMinimumHeight(300);
+         list->setMaximumHeight(330);
+-        list->setStyleSheet(R"(
+-        QListWidget {
+-            background: #252525;
+-            border: 1px solid #3d3d3d;
+-            border-radius: 6px;
+-            padding: 6px;
+-        }
+-        QListWidget::item {
+-            min-height: 24px;
+-            border-radius: 4px;
+-            padding: 2px 6px;
+-        }
+-        QListWidget::item:hover {
+-            background: #303030;
+-        }
+-        QListWidget::indicator {
+-            width: 16px;
+-            height: 16px;
+-        }
+-    )");
+     };
+ 
+     auto addOption = [](QListWidget *list, const QString &category, const QString &key, const QString &label, const QString &iconPath) {
+@@ -1336,7 +1286,6 @@
+         columnLayout->setSpacing(5);
+ 
+         QLabel *titleLabel = new QLabel(title, column);
+-        titleLabel->setStyleSheet("color: #8ab4f8; font-weight: 600; font-size: 12px;");
+         columnLayout->addWidget(titleLabel);
+ 
+         *listPtr = new QListWidget(column);
+@@ -1392,23 +1341,10 @@
+ 
+     QLabel *desc = new QLabel(TranslationManager::hotkeyDesc());
+     desc->setWordWrap(true);
+-    desc->setStyleSheet("color: #ccc; font-size: 12px;");
+     gl->addWidget(desc);
+ 
+     m_hotkeyEdit = new QKeySequenceEdit();
+     m_hotkeyEdit->setMinimumHeight(40);
+-    m_hotkeyEdit->setStyleSheet(R"(
+-        QKeySequenceEdit {
+-            font-size: 14px;
+-            font-weight: bold;
+-            padding: 6px 12px;
+-            border: 2px solid #0078D4;
+-            border-radius: 6px;
+-            background: #2a2a2a;
+-            color: #ffffff;
+-        }
+-        QKeySequenceEdit:focus { border-color: #1a8cff; }
+-    )");
+     connect(m_hotkeyEdit, &QKeySequenceEdit::keySequenceChanged,
+             this, &SettingsDialog::onHotkeyChanged);
+     gl->addWidget(m_hotkeyEdit);
+@@ -1419,10 +1355,6 @@
+ 
+     m_printScreenConflictLabel = new QLabel(printScreenConflictMessage());
+     m_printScreenConflictLabel->setWordWrap(true);
+-    m_printScreenConflictLabel->setStyleSheet(
+-        "background: rgba(255, 193, 7, 0.14); color: #ffd166; "
+-        "border: 1px solid rgba(255, 193, 7, 0.45); border-radius: 6px; "
+-        "padding: 8px; font-size: 12px;");
+     gl->addWidget(m_printScreenConflictLabel);
+ 
+     m_printScreenFixButton = new QPushButton(printScreenConflictFixText());
+@@ -1446,7 +1378,6 @@
+ #endif
+ 
+     QPushButton *resetHkBtn = new QPushButton(TranslationManager::hotkeyReset());
+-    resetHkBtn->setStyleSheet("color: #aaa;");
+     connect(resetHkBtn, &QPushButton::clicked, [this]() {
+         m_hotkeyEdit->setKeySequence(QKeySequence(Qt::Key_Print));
+     });
+@@ -1457,16 +1388,6 @@
+     auto makeRecordingHotkeyEdit = []() {
+         auto *edit = new QKeySequenceEdit();
+         edit->setMinimumHeight(32);
+-        edit->setStyleSheet(R"(
+-            QKeySequenceEdit {
+-                padding: 5px 10px;
+-                border: 1px solid #555;
+-                border-radius: 5px;
+-                background: #2a2a2a;
+-                color: #ffffff;
+-            }
+-            QKeySequenceEdit:focus { border-color: #1a8cff; }
+-        )");
+         return edit;
+     };
+     m_instantCaptureHotkeyEdit = makeRecordingHotkeyEdit();
+@@ -1508,7 +1429,6 @@
+         const int row = i / 2;
+         const int col = (i % 2) * 2;
+         QLabel *label = new QLabel(overlayDefs[i].label, overlayGroup);
+-        label->setStyleSheet(QStringLiteral("color: #d0d0d0; font-size: 12px;"));
+         auto *edit = makeRecordingHotkeyEdit();
+         edit->setMinimumHeight(28);
+         edit->setToolTip(uiLabel("Bu kisayol sadece ekran goruntusu secim/duzenleme ekraninda calisir.",
+@@ -1521,7 +1441,6 @@
+ 
+     QLabel *noteLabel = new QLabel(TranslationManager::hotkeyNote());
+     noteLabel->setWordWrap(true);
+-    noteLabel->setStyleSheet("color: #888; font-size: 11px;");
+     gl->addWidget(noteLabel);
+ 
+     layout->addWidget(group);
+@@ -1557,12 +1476,10 @@
+     auto setComponentStatus = [](QLabel *label, QPushButton *button, bool installed, bool canUse, bool downloadWhenMissing = false) {
+         if (label) {
+             label->setText(installed ? TranslationManager::tr("packageInstalled") : TranslationManager::tr("packageMissing"));
+-            label->setStyleSheet(installed ? "color: #8bd17c;" : "color: #f0c36d;");
+         }
+         if (button) {
+             button->setText(installed ? TranslationManager::tr("packageDelete") : TranslationManager::tr("packageDownload"));
+             button->setIcon(installed ? QIcon::fromTheme(QStringLiteral("edit-delete")) : QIcon());
+-            button->setStyleSheet(installed ? "color: #ff6b6b;" : QString());
+             button->setEnabled(canUse || (!installed && downloadWhenMissing));
+         }
+     };
+@@ -1601,14 +1518,12 @@
+         nameLabel->setFixedWidth(150);
+         nameLabel->setToolTip(QStringLiteral("%1 (%2)").arg(name, code));
+         QLabel *statusLabel = new QLabel(active ? TranslationManager::tr("packageDownloading") : packageStatusText(installed), row);
+-        statusLabel->setStyleSheet(installed ? "color: #8bd17c;" : "color: #f0c36d;");
+         statusLabel->setFixedWidth(128);
+ 
+         QPushButton *downloadButton = new QPushButton(TranslationManager::tr("packageDownload"), row);
+         QPushButton *deleteButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-delete")), TranslationManager::tr("packageDelete"), row);
+         downloadButton->setFixedWidth(78);
+         deleteButton->setFixedWidth(78);
+-        deleteButton->setStyleSheet("color: #ff6b6b;");
+         downloadButton->setEnabled(tesseractInstalled && !busy && !installed);
+         deleteButton->setEnabled(tesseractInstalled && !busy && installed);
+         downloadButton->setVisible(!installed);
+@@ -2226,10 +2141,8 @@
+     bool ok = keySequenceToWin32(seq, mod, vk);
+     if (!ok || seq.isEmpty()) {
+         m_hotkeyStatusLabel->setText(TranslationManager::hotkeyInvalid());
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+     } else {
+         m_hotkeyStatusLabel->setText(QString("OK: %1").arg(seq.toString(QKeySequence::NativeText)));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #4caf50; font-size: 12px;");
+     }
+     updatePrintScreenConflictUi();
+ }
+--- ./src/ui/OverlayPanelStyle.cpp.orig	2026-08-12 12:31:02.414960237 +0200
++++ ./src/ui/OverlayPanelStyle.cpp	2026-08-12 12:30:23.937207135 +0200
+@@ -28,217 +28,5 @@
+ 
+ QString overlayPanelStyleSheet()
+ {
+-    return QStringLiteral(R"(
+-        QWidget#toolSettingsDrawer,
+-        QWidget#recordingDrawer {
+-            background: rgba(37, 37, 37, 250);
+-            border: 1px solid rgba(255, 255, 255, 55);
+-            border-radius: 10px;
+-        }
+-        QWidget#toolSettingsDrawer {
+-            border-top-left-radius: 0px;
+-            border-bottom-left-radius: 0px;
+-            border-top-right-radius: 10px;
+-            border-bottom-right-radius: 10px;
+-        }
+-        QLabel {
+-            color: #d6d6d6;
+-            font-size: 11px;
+-            border: none;
+-            background: transparent;
+-        }
+-        QLabel[panelRole="title"] {
+-            color: #f5f5f5;
+-            font-size: 13px;
+-            font-weight: 700;
+-        }
+-        QLabel[panelRole="section"] {
+-            color: #eeeeee;
+-            font-size: 11px;
+-            font-weight: 700;
+-        }
+-        QLabel[panelRole="value"] {
+-            color: #f4f4f4;
+-            background: rgba(255, 255, 255, 18);
+-            border: 1px solid rgba(255, 255, 255, 38);
+-            border-radius: 4px;
+-            padding: 1px 5px;
+-            min-width: 24px;
+-            qproperty-alignment: AlignCenter;
+-            font-size: 10px;
+-            font-weight: 700;
+-        }
+-        QFrame[panelRole="separator"] {
+-            color: rgba(255, 255, 255, 38);
+-            background: rgba(255, 255, 255, 38);
+-            border: none;
+-            max-height: 1px;
+-        }
+-        QSpinBox,
+-        QComboBox {
+-            min-height: 32px;
+-            max-height: 32px;
+-            background: #303030;
+-            border: 1px solid #505050;
+-            border-radius: 6px;
+-            color: #f2f2f2;
+-            selection-background-color: #4a4a4a;
+-        }
+-        QComboBox {
+-            padding: 0 8px;
+-        }
+-        QSpinBox {
+-            padding: 0;
+-        }
+-        QSpinBox:hover,
+-        QComboBox:hover {
+-            border-color: #686868;
+-            background: #383838;
+-        }
+-        QSpinBox:focus,
+-        QComboBox:focus {
+-            border-color: #168de2;
+-        }
+-        QSpinBox:disabled,
+-        QComboBox:disabled {
+-            color: #858585;
+-            background: #2a2a2a;
+-            border-color: #414141;
+-        }
+-        QComboBox::drop-down {
+-            subcontrol-origin: padding;
+-            subcontrol-position: top right;
+-            width: 28px;
+-            border-left: 1px solid #4b4d52;
+-            border-top-right-radius: 6px;
+-            border-bottom-right-radius: 6px;
+-            background: #34363a;
+-        }
+-        QComboBox::drop-down:disabled {
+-            background: #2d2d2d;
+-            border-left-color: #3d3d3d;
+-        }
+-        QComboBox::down-arrow {
+-            image: url(:/icons/chevron_down.svg);
+-            width: 13px;
+-            height: 13px;
+-        }
+-        QSpinBox::up-button,
+-        QSpinBox::down-button {
+-            subcontrol-origin: border;
+-            width: 22px;
+-            background: #34363a;
+-            border-left: 1px solid #4b4d52;
+-        }
+-        QSpinBox::up-button {
+-            subcontrol-position: top right;
+-            border-top-right-radius: 6px;
+-        }
+-        QSpinBox::down-button {
+-            subcontrol-position: bottom right;
+-            border-bottom-right-radius: 6px;
+-        }
+-        QSpinBox::up-button:hover,
+-        QSpinBox::down-button:hover {
+-            background: #414141;
+-        }
+-        QSpinBox::up-arrow {
+-            image: url(:/icons/chevron_up.svg);
+-            width: 11px;
+-            height: 11px;
+-        }
+-        QSpinBox::down-arrow {
+-            image: url(:/icons/chevron_down.svg);
+-            width: 11px;
+-            height: 11px;
+-        }
+-        QCheckBox {
+-            color: #dedede;
+-            font-size: 11px;
+-            spacing: 7px;
+-            border: none;
+-            background: transparent;
+-        }
+-        QCheckBox:disabled {
+-            color: #858585;
+-        }
+-        QCheckBox::indicator {
+-            width: 14px;
+-            height: 14px;
+-            border-radius: 3px;
+-            border: 1px solid #606060;
+-            background: #303030;
+-        }
+-        QCheckBox::indicator:hover {
+-            border-color: #777777;
+-            background: #383838;
+-        }
+-        QCheckBox::indicator:checked {
+-            background: #0078d4;
+-            border-color: #2497eb;
+-            image: url(:/icons/check.svg);
+-        }
+-        QSlider::groove:horizontal {
+-            background: #484848;
+-            height: 4px;
+-            border-radius: 2px;
+-        }
+-        QSlider::handle:horizontal {
+-            background: #e8e8e8;
+-            border: 1px solid #9a9a9a;
+-            width: 14px;
+-            height: 14px;
+-            margin: -5px 0;
+-            border-radius: 7px;
+-        }
+-        QSlider::handle:horizontal:hover {
+-            background: #ffffff;
+-            border-color: #b5b5b5;
+-        }
+-        QPushButton[panelAction="primary"] {
+-            min-height: 32px;
+-            max-height: 32px;
+-            background: #0078d4;
+-            border: 1px solid #2497eb;
+-            border-radius: 8px;
+-            color: white;
+-            font-weight: 700;
+-        }
+-        QPushButton[panelAction="primary"]:hover {
+-            background: #1686dc;
+-        }
+-        QPushButton[panelAction="primary"]:pressed {
+-            background: #006cbe;
+-        }
+-        QPushButton[panelAction="primary"]:focus {
+-            border-color: #70bdff;
+-        }
+-        QPushButton[panelAction="primary"]:disabled {
+-            color: #8f8f8f;
+-            background: #3a3a3a;
+-            border-color: #484848;
+-        }
+-        QPushButton[panelAction="secondary"] {
+-            min-height: 30px;
+-            max-height: 30px;
+-            background: transparent;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-            color: #d6d6d6;
+-        }
+-        QPushButton[panelAction="secondary"]:hover {
+-            background: #343434;
+-            border-color: #686868;
+-        }
+-        QPushButton[panelAction="secondary"]:pressed {
+-            background: #2a2a2a;
+-        }
+-        QPushButton[panelAction="secondary"]:focus {
+-            border-color: #168de2;
+-        }
+-        QPushButton[panelAction="secondary"]:disabled {
+-            color: #777777;
+-            border-color: #404040;
+-        }
+-    )");
++    return QStringLiteral(R"({})");
+ }
+--- a/src/ui/FirstRunWizard.cpp	2026-08-12 12:33:54.475997993 +0200
++++ b/src/ui/FirstRunWizard.cpp	2026-08-12 12:33:41.657234367 +0200
+@@ -254,10 +254,6 @@
+ 
+     m_printScreenConflictLabel = new QLabel(TranslationManager::printScreenConflictMessage());
+     m_printScreenConflictLabel->setWordWrap(true);
+-    m_printScreenConflictLabel->setStyleSheet(
+-        "background: rgba(255, 193, 7, 0.14); color: #ffd166; "
+-        "border: 1px solid rgba(255, 193, 7, 0.45); border-radius: 6px; "
+-        "padding: 7px; font-size: 12px;");
+     hkLayout->addWidget(m_printScreenConflictLabel);
+ 
+     m_printScreenFixButton = new QPushButton(TranslationManager::printScreenConflictFix());
+@@ -329,11 +325,6 @@
+     m_finishButton = finishBtn;
+ #endif
+     finishBtn->setDefault(true);
+-    finishBtn->setStyleSheet(R"(
+-        QPushButton { background-color: #0078D4; color: white; border: none;
+-                      padding: 8px 24px; border-radius: 4px; font-weight: bold; }
+-        QPushButton:hover { background-color: #1a8cff; }
+-    )");
+     connect(finishBtn, &QPushButton::clicked, this, &FirstRunWizard::onFinish);
+     btnLayout->addWidget(finishBtn);
+     outerLayout->addLayout(btnLayout);
+@@ -396,10 +387,8 @@
+     const bool ok = keySequenceToWin32(m_hotkeyEdit->keySequence(), mod, vk);
+     if (ok) {
+         m_hotkeyStatusLabel->setText(QStringLiteral("OK: %1").arg(m_hotkeyEdit->keySequence().toString(QKeySequence::NativeText)));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #4caf50; font-size: 12px;");
+     } else {
+         m_hotkeyStatusLabel->setText(TranslationManager::hotkeyInvalid());
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+     }
+     updatePrintScreenConflictUi();
+ }
+@@ -436,7 +425,6 @@
+         qEnvironmentVariable("XDG_SESSION_DESKTOP"));
+     if (desktop == LinuxDesktopEnvironment::Other) {
+         m_hotkeyStatusLabel->setText(tr("Automatic Print Screen activation is currently available on KDE Plasma and GNOME."));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+         return;
+     }
+ 
+@@ -445,13 +433,11 @@
+         if (HotkeyManager::instance().linuxPortalShortcutsAvailable()) {
+             if (!HotkeyManager::instance().reRegisterCaptureHotkey(0, VK_SNAPSHOT)) {
+                 m_hotkeyStatusLabel->setText(tr("GNOME did not allow the Print Screen shortcut. Try again from Settings."));
+-                m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+                 return;
+             }
+             if (shouldOfferAppImageIntegration(qEnvironmentVariable("APPIMAGE")))
+                 m_linuxAppImageIntegrationCheck->setChecked(true);
+             m_hotkeyStatusLabel->setText(tr("Choose Print Screen in the GNOME shortcut permission window."));
+-            m_hotkeyStatusLabel->setStyleSheet("color: #4caf50; font-size: 12px;");
+             return;
+         }
+ 
+@@ -468,17 +454,14 @@
+             LinuxGnomeShortcutInstaller::captureCommand(executable));
+         if (!installed.success) {
+             m_hotkeyStatusLabel->setText(tr("Could not configure GNOME Print Screen: %1").arg(installed.error));
+-            m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+             return;
+         }
+         m_hotkeyStatusLabel->setText(tr("Print Screen activated for EShot in GNOME."));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #4caf50; font-size: 12px;");
+         return;
+     }
+ 
+     if (!HotkeyManager::instance().reRegisterCaptureHotkey(0, VK_SNAPSHOT)) {
+         m_hotkeyStatusLabel->setText(tr("EShot could not register Print Screen with KDE. Spectacle was not changed."));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+         return;
+     }
+ 
+@@ -497,7 +480,6 @@
+         QStringLiteral("shortcut"), spectacleLaunchId);
+     if (!globalAccel.isValid() || !currentReply.isValid()) {
+         m_hotkeyStatusLabel->setText(tr("Could not read KDE shortcuts. Open System Settings > Shortcuts and remove Print from Spectacle."));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+         return;
+     }
+ 
+@@ -508,14 +490,12 @@
+         QVariant::fromValue(remaining));
+     if (!setReply.isValid()) {
+         m_hotkeyStatusLabel->setText(tr("KDE did not allow the shortcut change. Use System Settings > Shortcuts instead."));
+-        m_hotkeyStatusLabel->setStyleSheet("color: #ff9800; font-size: 12px;");
+         return;
+     }
+ 
+     if (shouldOfferAppImageIntegration(qEnvironmentVariable("APPIMAGE")))
+         m_linuxAppImageIntegrationCheck->setChecked(true);
+     m_hotkeyStatusLabel->setText(tr("Print Screen activated for EShot. Spectacle's other shortcuts were kept."));
+-    m_hotkeyStatusLabel->setStyleSheet("color: #4caf50; font-size: 12px;");
+ }
+ #endif
+ 
+--- a/src/ui/ApplicationTheme.h	2026-08-12 12:38:17.948163428 +0200
++++ b/src/ui/ApplicationTheme.h	2026-08-12 12:37:44.080883276 +0200
+@@ -1,11 +1,10 @@
+ #ifndef APPLICATIONTHEME_H
+ #define APPLICATIONTHEME_H
+ 
+-#include <QPalette>
+-
+ class QApplication;
+ 
+-QPalette eshotApplicationPalette(bool dark, bool highContrast);
+-void applyEShotApplicationTheme(QApplication &application, bool dark, bool highContrast);
++void applyEShotApplicationTheme(QApplication &application,
++                                bool dark,
++                                bool highContrast);
+ 
+-#endif
++#endif // APPLICATIONTHEME_H
+--- a/src/ui/ApplicationTheme.cpp	2026-08-12 12:38:39.553643256 +0200
++++ b/src/ui/ApplicationTheme.cpp	2026-08-12 12:37:14.105258064 +0200
+@@ -1,58 +1,9 @@
+ #include "ApplicationTheme.h"
+ 
+ #include <QApplication>
+-#include <QColor>
+ 
+-QPalette eshotApplicationPalette(bool dark, bool highContrast)
++void applyEShotApplicationTheme(QApplication &, bool, bool)
+ {
+-    QPalette p;
+-    if (highContrast) {
+-        p.setColor(QPalette::Window, Qt::black);
+-        p.setColor(QPalette::WindowText, Qt::white);
+-        p.setColor(QPalette::Base, Qt::black);
+-        p.setColor(QPalette::AlternateBase, QColor(30, 30, 30));
+-        p.setColor(QPalette::ToolTipBase, Qt::black);
+-        p.setColor(QPalette::ToolTipText, Qt::yellow);
+-        p.setColor(QPalette::Text, Qt::white);
+-        p.setColor(QPalette::Button, Qt::black);
+-        p.setColor(QPalette::ButtonText, Qt::white);
+-        p.setColor(QPalette::BrightText, Qt::red);
+-        p.setColor(QPalette::Link, Qt::cyan);
+-        p.setColor(QPalette::Highlight, Qt::yellow);
+-        p.setColor(QPalette::HighlightedText, Qt::black);
+-    } else if (dark) {
+-        p.setColor(QPalette::Window, QColor(53, 53, 53));
+-        p.setColor(QPalette::WindowText, Qt::white);
+-        p.setColor(QPalette::Base, QColor(42, 42, 42));
+-        p.setColor(QPalette::AlternateBase, QColor(66, 66, 66));
+-        p.setColor(QPalette::ToolTipBase, QColor(53, 53, 53));
+-        p.setColor(QPalette::ToolTipText, Qt::white);
+-        p.setColor(QPalette::Text, Qt::white);
+-        p.setColor(QPalette::Button, QColor(53, 53, 53));
+-        p.setColor(QPalette::ButtonText, Qt::white);
+-        p.setColor(QPalette::BrightText, Qt::red);
+-        p.setColor(QPalette::Link, QColor(42, 130, 218));
+-        p.setColor(QPalette::Highlight, QColor(42, 130, 218));
+-        p.setColor(QPalette::HighlightedText, Qt::black);
+-    } else {
+-        p.setColor(QPalette::Window, QColor(240, 240, 240));
+-        p.setColor(QPalette::WindowText, Qt::black);
+-        p.setColor(QPalette::Base, Qt::white);
+-        p.setColor(QPalette::AlternateBase, QColor(233, 233, 233));
+-        p.setColor(QPalette::ToolTipBase, QColor(255, 255, 220));
+-        p.setColor(QPalette::ToolTipText, Qt::black);
+-        p.setColor(QPalette::Text, Qt::black);
+-        p.setColor(QPalette::Button, QColor(240, 240, 240));
+-        p.setColor(QPalette::ButtonText, Qt::black);
+-        p.setColor(QPalette::BrightText, Qt::red);
+-        p.setColor(QPalette::Link, QColor(0, 0, 255));
+-        p.setColor(QPalette::Highlight, QColor(0, 120, 215));
+-        p.setColor(QPalette::HighlightedText, Qt::white);
+-    }
+-    return p;
+-}
+-
+-void applyEShotApplicationTheme(QApplication &application, bool dark, bool highContrast)
+-{
+-    application.setPalette(eshotApplicationPalette(dark, highContrast));
++    // Intentionally empty.
++    // Let Qt use the system/KDE palette and application style.
+ }
+--- a/src/ui/AnnotationToolbar.cpp	2026-08-12 12:42:08.948278703 +0200
++++ b/src/ui/AnnotationToolbar.cpp	2026-08-12 12:41:25.736817117 +0200
+@@ -170,28 +170,6 @@
+ {
+     if (m_undoButton) {
+         m_undoButton->setEnabled(enabled);
+-        m_undoButton->setStyleSheet(enabled ?
+-            R"(
+-                QPushButton {
+-                    background-color: #3a3a3a;
+-                    border: 1px solid #505050;
+-                    border-radius: 8px;
+-                }
+-                QPushButton:hover {
+-                    background-color: #4a4a4a;
+-                    border-color: #606060;
+-                }
+-                QPushButton:pressed {
+-                    background-color: #333333;
+-                }
+-            )" :
+-            R"(
+-                QPushButton {
+-                    background-color: #2d2d2d;
+-                    border: 1px solid #353535;
+-                    border-radius: 8px;
+-                }
+-            )");
+     }
+ }
+ 
+@@ -199,28 +177,6 @@
+ {
+     if (m_redoButton) {
+         m_redoButton->setEnabled(enabled);
+-        m_redoButton->setStyleSheet(enabled ?
+-            R"(
+-                QPushButton {
+-                    background-color: #3a3a3a;
+-                    border: 1px solid #505050;
+-                    border-radius: 8px;
+-                }
+-                QPushButton:hover {
+-                    background-color: #4a4a4a;
+-                    border-color: #606060;
+-                }
+-                QPushButton:pressed {
+-                    background-color: #333333;
+-                }
+-            )" :
+-            R"(
+-                QPushButton {
+-                    background-color: #2d2d2d;
+-                    border: 1px solid #353535;
+-                    border-radius: 8px;
+-                }
+-            )");
+     }
+ }
+ 
+@@ -239,12 +195,6 @@
+ void AnnotationToolbar::setColor(const QColor &color)
+ {
+     m_currentColor = color;
+-    if (m_colorButton) {
+-        m_colorButton->setStyleSheet(QString(R"(
+-            QPushButton { background-color: %1; border: 2px solid #505050; border-radius: 8px; }
+-            QPushButton:hover { border-color: #707070; }
+-        )").arg(color.name()));
+-    }
+ }
+ 
+ QWidget* AnnotationToolbar::createSeparator()
+@@ -253,7 +203,6 @@
+     sep->setFrameShape(QFrame::VLine);
+     sep->setFixedWidth(13);
+     sep->setFixedHeight(26);
+-    sep->setStyleSheet("color: #505050; margin-left: 6px; margin-right: 6px;");
+     return sep;
+ }
+ 
+@@ -295,20 +244,6 @@
+     m_eyedropperButton->setFixedSize(34, 34);
+     m_eyedropperButton->setIcon(QIcon(":/icons/eyedropper.svg"));
+     m_eyedropperButton->setIconSize(QSize(18, 18));
+-    m_eyedropperButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-        QPushButton:pressed {
+-            background-color: #333333;
+-        }
+-    )");
+     connect(m_eyedropperButton, &QPushButton::clicked, this, &AnnotationToolbar::onEyedropperClicked);
+     m_optionalControls["Eyedropper"] = m_eyedropperButton;
+     m_layout->addWidget(m_eyedropperButton);
+@@ -321,24 +256,6 @@
+     m_lockButton->setIcon(QIcon(":/icons/lock_open.svg"));
+     m_lockButton->setIconSize(QSize(18, 18));
+     m_lockButton->setCheckable(true);
+-    m_lockButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-        QPushButton:pressed {
+-            background-color: #333333;
+-        }
+-        QPushButton:checked {
+-            background-color: #0078D4;
+-            border: 1px solid #1a8cff;
+-        }
+-    )");
+     connect(m_lockButton, &QPushButton::clicked, this, &AnnotationToolbar::onLockClicked);
+     m_optionalControls["Lock"] = m_lockButton;
+     m_layout->addWidget(m_lockButton);
+@@ -351,7 +268,6 @@
+     textLayout->setContentsMargins(0, 0, 0, 0);
+     textLayout->setSpacing(4);
+     m_textFontCombo = new QFontComboBox(m_textOptionsWidget);
+-    m_textFontCombo->setCurrentFont(QFont("Segoe UI"));
+     m_textFontCombo->setFixedWidth(118);
+     m_textFontCombo->setToolTip(TranslationManager::toolFont());
+     m_textSizeSpin = new QSpinBox(m_textOptionsWidget);
+@@ -376,30 +292,12 @@
+     blurLayout->setContentsMargins(0, 0, 0, 0);
+     blurLayout->setSpacing(4);
+     m_blurIntensityLabel = new QLabel("16", m_blurIntensityWidget);
+-    m_blurIntensityLabel->setStyleSheet("color: #aaa; font-size: 11px;");
+     m_blurIntensityLabel->setFixedWidth(20);
+     m_blurIntensitySlider = new QSlider(Qt::Horizontal, m_blurIntensityWidget);
+     m_blurIntensitySlider->setRange(4, 64);
+     m_blurIntensitySlider->setValue(16);
+     m_blurIntensitySlider->setFixedWidth(80);
+     m_blurIntensitySlider->setToolTip(TranslationManager::toolBlurIntensity());
+-    m_blurIntensitySlider->setStyleSheet(R"(
+-        QSlider::groove:horizontal {
+-            background: #404040;
+-            height: 4px;
+-            border-radius: 2px;
+-        }
+-        QSlider::handle:horizontal {
+-            background: #ff6b6b;
+-            width: 14px;
+-            height: 14px;
+-            margin: -5px 0;
+-            border-radius: 7px;
+-        }
+-        QSlider::handle:horizontal:hover {
+-            background: #ff8888;
+-        }
+-    )");
+     connect(m_blurIntensitySlider, &QSlider::valueChanged, this, &AnnotationToolbar::onBlurIntensityChanged);
+     blurLayout->addWidget(m_blurIntensitySlider);
+     blurLayout->addWidget(m_blurIntensityLabel);
+@@ -427,17 +325,6 @@
+     m_ocrButton->setToolTip(TranslationManager::actionOcr());
+     m_ocrButton->setCursor(Qt::PointingHandCursor);
+     m_ocrButton->setProperty("action", "ocr");
+-    m_ocrButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-    )");
+     connect(m_ocrButton, &QPushButton::clicked, this, &AnnotationToolbar::onActionButtonClicked);
+     m_actionButtons["ocr"] = m_ocrButton;
+     m_optionalControls["Ocr"] = m_ocrButton;
+@@ -450,17 +337,6 @@
+     m_uploadButton->setToolTip(TranslationManager::uploadToService());
+     m_uploadButton->setCursor(Qt::PointingHandCursor);
+     m_uploadButton->setProperty("action", "upload");
+-    m_uploadButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-    )");
+     connect(m_uploadButton, &QPushButton::clicked, this, &AnnotationToolbar::onActionButtonClicked);
+     m_actionButtons["upload"] = m_uploadButton;
+     m_optionalControls["Upload"] = m_uploadButton;
+@@ -485,17 +361,6 @@
+     m_gifButton->setToolTip(TranslationManager::recordingStartTitle());
+     m_gifButton->setCursor(Qt::PointingHandCursor);
+     m_gifButton->setProperty("action", "gif");
+-    m_gifButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-    )");
+     connect(m_gifButton, &QPushButton::clicked, this, &AnnotationToolbar::onActionButtonClicked);
+     m_actionButtons["gif"] = m_gifButton;
+     m_optionalControls["Gif"] = m_gifButton;
+@@ -508,17 +373,6 @@
+     m_videoButton->setToolTip(TranslationManager::videoRecordingTitle());
+     m_videoButton->setCursor(Qt::PointingHandCursor);
+     m_videoButton->setProperty("action", "video");
+-    m_videoButton->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-    )");
+     connect(m_videoButton, &QPushButton::clicked, this, &AnnotationToolbar::onActionButtonClicked);
+     m_actionButtons["video"] = m_videoButton;
+     m_optionalControls["Video"] = m_videoButton;
+@@ -530,21 +384,6 @@
+ 
+ void AnnotationToolbar::applyStyles()
+ {
+-    setStyleSheet(R"(
+-        AnnotationToolbar {
+-            background-color: #2d2d2d;
+-            border: 1px solid #404040;
+-            border-radius: 10px;
+-        }
+-        QToolTip {
+-            color: #ffffff;
+-            background-color: #3a3a3a;
+-            border: 1px solid #555555;
+-            padding: 4px 8px;
+-            font-size: 12px;
+-            border-radius: 4px;
+-        }
+-    )");
+ 
+     QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+     shadow->setBlurRadius(20);
+@@ -564,24 +403,6 @@
+     btn->setFixedSize(34, 34);
+     btn->setIcon(QIcon(iconPath));
+     btn->setIconSize(QSize(18, 18));
+-    btn->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-        QPushButton:pressed {
+-            background-color: #333333;
+-        }
+-        QPushButton[selected="true"] {
+-            background-color: #0078D4;
+-            border: 1px solid #1a8cff;
+-        }
+-    )");
+     connect(btn, &QPushButton::clicked, this, &AnnotationToolbar::onToolButtonClicked);
+     m_toolButtons[toolId] = btn;
+     return btn;
+@@ -598,21 +419,6 @@
+     btn->setIcon(QIcon(iconPath));
+     btn->setIconSize(QSize(18, 18));
+ 
+-    btn->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            border: 1px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            background-color: #4a4a4a;
+-            border-color: #606060;
+-        }
+-        QPushButton:pressed {
+-            background-color: #333333;
+-        }
+-    )");
+-
+     connect(btn, &QPushButton::clicked, this, &AnnotationToolbar::onActionButtonClicked);
+     m_actionButtons[action] = btn;
+     return btn;
+@@ -624,16 +430,6 @@
+     btn->setToolTip(TranslationManager::toolColor());
+     btn->setCursor(Qt::PointingHandCursor);
+     btn->setFixedSize(34, 34);
+-    btn->setStyleSheet(QString(R"(
+-        QPushButton {
+-            background-color: %1;
+-            border: 2px solid #505050;
+-            border-radius: 8px;
+-        }
+-        QPushButton:hover {
+-            border-color: #707070;
+-        }
+-    )").arg(color.name()));
+     connect(btn, &QPushButton::clicked, this, &AnnotationToolbar::onColorButtonClicked);
+     return btn;
+ }
+@@ -699,10 +495,6 @@
+         QColor c = dlg.selectedColor();
+         if (c.isValid()) {
+             m_currentColor = c;
+-            m_colorButton->setStyleSheet(QString(R"(
+-                QPushButton { background-color: %1; border: 2px solid #555; border-radius: 13px; }
+-                QPushButton:hover { border-color: #fff; }
+-            )").arg(c.name()));
+             emit colorChanged(c);
+         }
+     }
+--- a/src/ui/AboutDialog.cpp	2026-08-12 12:43:43.866755340 +0200
++++ b/src/ui/AboutDialog.cpp	2026-08-12 12:43:16.950142610 +0200
+@@ -51,29 +51,25 @@
+     nameFont.setBold(true);
+     nameLabel->setFont(nameFont);
+     nameLabel->setAlignment(Qt::AlignCenter);
+-    nameLabel->setStyleSheet("color: #ffffff;");
+     layout->addWidget(nameLabel);
+ 
+     // Version
+     QLabel *verLabel = new QLabel(QString("%1 %2").arg(TranslationManager::version(), QApplication::applicationVersion()));
+     verLabel->setAlignment(Qt::AlignCenter);
+-    verLabel->setStyleSheet("color: #999999; font-size: 11px; margin-bottom: 2px;");
+     layout->addWidget(verLabel);
+ 
+     // Description
+     QLabel *descLabel = new QLabel(TranslationManager::aboutDesc());
+     descLabel->setAlignment(Qt::AlignCenter);
+-    descLabel->setStyleSheet("color: #bbbbbb; font-size: 12px;");
+     layout->addWidget(descLabel);
+ 
+     // GitHub link
+     QLabel *linkLabel = new QLabel(
+-        "<a href='https://github.com/Benoks/EShot' style='color: #5B9BD5; text-decoration: none;'>"
++        "<a href='https://github.com/Benoks/EShot' style='text-decoration: none;'>"
+         "GitHub</a>"
+     );
+     linkLabel->setAlignment(Qt::AlignCenter);
+     linkLabel->setOpenExternalLinks(true);
+-    linkLabel->setStyleSheet("font-size: 11px; margin-top: 4px;");
+     layout->addWidget(linkLabel);
+ 
+     layout->addStretch();
+@@ -85,7 +81,6 @@
+             : QStringLiteral("Installed version: v%1").arg(QApplication::applicationVersion()));
+     m_updateStatusLabel->setAlignment(Qt::AlignCenter);
+     m_updateStatusLabel->setWordWrap(true);
+-    m_updateStatusLabel->setStyleSheet("color: #888888; font-size: 11px;");
+     m_updateStatusLabel->setMinimumHeight(34);
+     layout->addWidget(m_updateStatusLabel);
+ 
+@@ -93,19 +88,6 @@
+     m_checkUpdateBtn = new QPushButton(TranslationManager::checkForUpdates());
+     m_checkUpdateBtn->setCursor(Qt::PointingHandCursor);
+     m_checkUpdateBtn->setFixedHeight(32);
+-    m_checkUpdateBtn->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #0078D4;
+-            color: white;
+-            border: none;
+-            border-radius: 4px;
+-            padding: 6px 16px;
+-            font-weight: bold;
+-            font-size: 12px;
+-        }
+-        QPushButton:hover { background-color: #1a8cff; }
+-        QPushButton:disabled { background-color: #555; color: #aaa; }
+-    )");
+     connect(m_checkUpdateBtn, &QPushButton::clicked, this, &AboutDialog::onCheckForUpdates);
+     layout->addWidget(m_checkUpdateBtn);
+ 
+@@ -113,17 +95,6 @@
+     QPushButton *closeBtn = new QPushButton(TranslationManager::cancel());
+     closeBtn->setCursor(Qt::PointingHandCursor);
+     closeBtn->setFixedHeight(32);
+-    closeBtn->setStyleSheet(R"(
+-        QPushButton {
+-            background-color: #3a3a3a;
+-            color: white;
+-            border: 1px solid #505050;
+-            border-radius: 4px;
+-            padding: 6px 12px;
+-            font-size: 12px;
+-        }
+-        QPushButton:hover { background-color: #4a4a4a; border-color: #666; }
+-    )");
+     connect(closeBtn, &QPushButton::clicked, this, &QDialog::accept);
+     layout->addWidget(closeBtn);
+ }
+@@ -144,8 +115,6 @@
+         ? (available ? TranslationManager::updateStatusAvailable(version)
+                      : TranslationManager::updateStatusIdle())
+         : status;
+-    setUpdateStatus(visibleStatus,
+-                    available ? QStringLiteral("#ff9800") : QStringLiteral("#888888"));
+     if (!m_checkUpdateBtn) return;
+     m_checkUpdateBtn->setEnabled(!busy);
+     m_checkUpdateBtn->setText(available ? TranslationManager::updateNow()
+--- a/src/main.cpp	2026-08-12 12:20:33.326331913 +0200
++++ b/src/main.cpp	2026-08-12 12:19:47.281467673 +0200
+@@ -866,40 +866,44 @@
+         m_trayIcon = new QSystemTrayIcon(this);
+ 
+         setTrayIconNormal();
+-        m_trayIcon->setToolTip(QString("%1 v%2").arg(TranslationManager::appTitle(), QCoreApplication::applicationVersion()));
++
++        m_trayIcon->setToolTip(
++            QString("%1 v%2")
++            .arg(TranslationManager::appTitle(),
++                 QCoreApplication::applicationVersion()));
+ 
+         m_trayMenu = new QMenu();
+         m_trayMenu->setToolTipsVisible(true);
+-        m_trayMenu->setStyleSheet(QStringLiteral(
+-            "QMenu {"
+-            "  background: #2b2b2b;"
+-            "  color: #ffffff;"
+-            "  border: 1px solid #4a4a4a;"
+-            "  border-radius: 3px;"
+-            "  padding: 3px;"
+-            "}"
+-            "QMenu::item {"
+-            "  min-height: 22px;"
+-            "  padding: 3px 18px 3px 24px;"
+-            "  border-radius: 2px;"
+-            "}"
+-            "QMenu::item:selected { background: #3a3a3a; }"
+-            "QMenu::item:disabled { color: #8a8a8a; }"
+-            "QMenu::icon { width: 16px; height: 16px; left: 5px; }"
+-            "QMenu::separator { height: 1px; background: #424242; margin: 4px 5px; }"));
++
+         rebuildTrayMenu();
+ 
+         m_trayIcon->setContextMenu(m_trayMenu);
+-        connect(m_trayIcon, &QSystemTrayIcon::activated, this, &EShotApp::onTrayActivated);
+-        connect(m_trayIcon, &QSystemTrayIcon::messageClicked, this, &EShotApp::onNotificationClicked);
+-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
++
++        connect(
++            m_trayIcon,
++            &QSystemTrayIcon::activated,
++            this,
++            &EShotApp::onTrayActivated);
++
++        connect(
++            m_trayIcon,
++            &QSystemTrayIcon::messageClicked,
++            this,
++            &EShotApp::onNotificationClicked);
++
++        #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+         m_linuxNotification = new LinuxDesktopNotification(this);
+-        connect(m_linuxNotification, &LinuxDesktopNotification::pathActivated,
+-                this, [this](const QString &path) {
+-            m_lastNotificationPath = path;
+-            onNotificationClicked();
+-        });
+-#endif
++
++        connect(
++            m_linuxNotification,
++            &LinuxDesktopNotification::pathActivated,
++            this,
++            [this](const QString &path) {
++                m_lastNotificationPath = path;
++                onNotificationClicked();
++            });
++        #endif
++
+         m_trayIcon->show();
+     }
+ 
+@@ -1139,10 +1143,6 @@
+     pattern.setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
+     pattern.setText("EShot GIF TEST\nColor bars");
+     pattern.setAlignment(Qt::AlignCenter);
+-    pattern.setStyleSheet(
+-        "QLabel { color: white; font: bold 22px Segoe UI; "
+-        "background: qlineargradient(x1:0,y1:0,x2:1,y2:1, "
+-        "stop:0 #ff3355, stop:0.33 #1fa2ff, stop:0.66 #20c997, stop:1 #ffd43b); }");
+     pattern.resize(320, 180);
+     QScreen *screen = QGuiApplication::primaryScreen();
+     QRect sg = screen ? screen->geometry() : QRect(100, 100, 800, 600);
+@@ -1268,7 +1268,6 @@
+     LinuxPortalHostRegistry::registerApplication();
+ #endif
+     app.setQuitOnLastWindowClosed(false);
+-    app.setStyle("Fusion");
+     app.setWindowIcon(QIcon(":/icons/pen.svg"));
+ 
+     QPixmapCache::setCacheLimit(4096);
