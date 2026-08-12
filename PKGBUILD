@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=specify-cli
-pkgver=0.14.2
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,7 @@ conflicts=(
 )
 options=(!debug)
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('a8d989bce8b690e5988b3fcdb226acb19de63b7e18f90cdc34329ca4e74fe72f67c7221e89ca6d9347a309ec9fda7945cd4f1ea3c6039f8ea5ecffbd8ac64086')
+b2sums=('5f1ef732dd24b3edf039db8619285afb6925783a08ae597810153175fa2b9086bf5494b191c48b37bc69f7b29c8027f4b45fbf8eb04526f6d8f5f76407d94825')
 
 build() {
   cd spec-kit
@@ -64,5 +64,5 @@ package() {
   cd spec-kit
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/specify-cli/" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/specify-cli/" {AGENTS.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,DEVELOPMENT.md,README.md,SECURITY.md,SUPPORT.md,spec-driven.md}
+  install -Dm644 -t "$pkgdir/usr/share/doc/specify-cli/" {AGENTS.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,DEVELOPMENT.md,README.md,README.zh-CN.md,SECURITY.md,SUPPORT.md,spec-driven.md}
 }

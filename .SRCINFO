@@ -1,6 +1,6 @@
 pkgbase = specify-cli
 	pkgdesc = Bootstrap and manage Spec Kit projects
-	pkgver = 0.14.2
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/github/spec-kit
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = specify-cli
 	conflicts = spec-kit
 	conflicts = specify-cli-bin
 	options = !debug
-	source = git+https://github.com/github/spec-kit.git#tag=v0.14.2
-	b2sums = a8d989bce8b690e5988b3fcdb226acb19de63b7e18f90cdc34329ca4e74fe72f67c7221e89ca6d9347a309ec9fda7945cd4f1ea3c6039f8ea5ecffbd8ac64086
+	source = git+https://github.com/github/spec-kit.git#tag=v0.16.2
+	b2sums = 5f1ef732dd24b3edf039db8619285afb6925783a08ae597810153175fa2b9086bf5494b191c48b37bc69f7b29c8027f4b45fbf8eb04526f6d8f5f76407d94825
 
 pkgname = specify-cli
