@@ -1,7 +1,7 @@
-# Maintainer: fr0stb1rd - fr0stb1rd.gitlab.io
+# Maintainer: fr0stb1rd <fr0stb1rd at proton dot me>
 pkgname=pdf-metadata-editor-bin
 _pkgname=pdf-metadata-editor
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A simple, cross-platform desktop application for viewing and editing PDF metadata"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-1_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-1_arm64.deb")
 
-sha512sums_x86_64=('cfb2979621f486af95c455e6d6a7c5c6f78501377bd134a2aad113d00b66236763d596b151e1fd21fb289c56e265628d8a7d5c4011890d91676c6a74b21929f1')
-sha512sums_aarch64=('c5a4fc2fb814b6bdb462f856559ed44c4edc2a702d9d83c100fed55623a6f69acaf6f3115f70a9e79bc7e3927e68b09e9a9f8a257055ff5337f0a0c3a3c0126b')
+sha512sums_x86_64=('c9372628bcb060d4b65981c0f80db78175ab83aa133c346eee19519008b700c891735cbeff3aab7b53c87a4daead7e61feeb34025c6a6e944d8f49c02a208615')
+sha512sums_aarch64=('8cc26816fd21a0c5a049132124f0a7f258462b98fbfd99781b1a7b2cfb02723d3bfb7e993f747cf4eebbac1cb3a36dd96b1b8588b1ceb1dc594848374035d943')
 
 package() {
     # Extract data.tar.zst from .deb
@@ -32,7 +32,7 @@ package() {
     # Install icon
     install -d "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${pkgdir}/opt/${_pkgname}/lib/Pdf_Metadata_Editor.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    
+
     # Fix .desktop file Exec and Icon
     sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     sed -i "s|Icon=.*|Icon=${_pkgname}|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
