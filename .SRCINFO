@@ -1,0 +1,21 @@
+pkgbase = orffinder
+	pkgdesc = NCBI ORFfinder: finds Open Reading Frames (ORFs) in a query sequence
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://www.ncbi.nlm.nih.gov/orffinder/
+	arch = x86_64
+	license = Public Domain
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = zstd
+	depends = libuv
+	depends = libnghttp2
+	depends = elfutils
+	noextract = ORFfinder-0.4.3.gz
+	options = !strip
+	options = !debug
+	source = ORFfinder-0.4.3.gz::https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/ORFfinder/linux-i64/ORFfinder.gz
+	sha256sums = f30a0806b984931a967d8024066a53dbb811035ca14564f36f7f7045a6a509f2
+
+pkgname = orffinder
