@@ -1,0 +1,23 @@
+pkgbase = termark-bin
+	pkgdesc = One SSH client, for every device.Manage assets and credentials, connect hosts, transfer files, and use AI to handle daily operations more efficiently.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://www.termark.app
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = asar
+	depends = electron41
+	depends = nodejs
+	provides = termark=1.3.0
+	conflicts = termark
+	source = LICENSE.html::https://www.termark.app/privacy.html
+	source = termark.sh
+	sha256sums = ce2e251a5542df30cf43a6550c0502921a6e15bbd0b7b124575ea99854a101e8
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = termark-1.3.0-aarch64.AppImage::https://f.next-terminal.com/termark/Termark-1.3.0-arm64.AppImage
+	sha256sums_aarch64 = f600199fdef474aa1a77cd2af986c7689cfc6a5ff835aa141dc14ecdd98264ee
+	source_x86_64 = termark-1.3.0-x86_64.AppImage::https://f.next-terminal.com/termark/Termark-1.3.0.AppImage
+	sha256sums_x86_64 = 4b9a090884ac9d8e39096814974e1d453996c04e4cdf3689e151dbf147692c03
+
+pkgname = termark-bin
