@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Very fast file searcher without indexing
 	pkgver = 85
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://drill.software
 	arch = any
