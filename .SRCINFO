@@ -1,14 +1,12 @@
 pkgbase = steamdeck-dsp
 	pkgdesc = Steamdeck Audio Processing
 	pkgver = 0.99
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/evlav/valve-hardware-audio-processing
 	install = steamdeck-dsp.install
-	arch = any
-	license = Proprietary
+	arch = x86_64
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = openssh
-	makedepends = base-devel
-	makedepends = glibc
 	makedepends = faust
 	makedepends = ladspa
 	makedepends = lv2
@@ -19,6 +17,6 @@ pkgbase = steamdeck-dsp
 	depends = pipewire-audio
 	depends = noisetorch
 	source = git+https://github.com/evlav/valve-hardware-audio-processing.git#tag=0.99
-	sha512sums = 90eecbb45d5617adbb507d553e9095517d1541c888c1a0bad26d228cd7fcdd077d3e46506153cd9f3f371f44fdbe7d39a63a4faf43f731862601f15be23bddbc
+	sha512sums = SKIP
 
 pkgname = steamdeck-dsp

@@ -1,18 +1,19 @@
-# Maintainer Ethan Geller (ethang@valvesoftware.com)
+# Maintainer: L1bT0rch <L1bT0rch@proton.me>
+# Contributor: Ethan Geller (ethang@valvesoftware.com)
 
 pkgname=steamdeck-dsp
 _srctag=0.99
 pkgver=${_srctag#galileo-}
-pkgrel=2
-arch=('any')
-url=""
+pkgrel=3
+arch=(x86_64)
+url="https://github.com/evlav/valve-hardware-audio-processing"
 pkgdesc="Steamdeck Audio Processing"
-license=('Proprietary')
+license=('GPL-2.0-or-later')
 depends=('pipewire' 'pipewire-audio' 'noisetorch')
-makedepends=('git' 'openssh' 'base-devel' 'glibc' 'faust' 'ladspa' 'lv2' 'boost' 'linux-api-headers' 'qt5-base')
+makedepends=('git' 'faust' 'ladspa' 'lv2' 'boost' 'linux-api-headers' 'qt5-base')
 install="${pkgname}.install"
 source=("git+https://github.com/evlav/valve-hardware-audio-processing.git#tag=$_srctag")
-sha512sums=('90eecbb45d5617adbb507d553e9095517d1541c888c1a0bad26d228cd7fcdd077d3e46506153cd9f3f371f44fdbe7d39a63a4faf43f731862601f15be23bddbc')
+sha512sums=('SKIP')
 
 build() {
   cd valve-hardware-audio-processing
