@@ -11,7 +11,7 @@ pkgbase = zig-waybar-contrib-beta-bin
 	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.08.12/zig-waybar-contrib-release-26.08.12.zip
 	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/config.waybar.jsonc
 	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/LICENSE
-	sha256sums = ed37895ee8e16f3858950fbcc975d2c8d818c3324f4db180ca15fa73e74ddbc5
+	sha256sums = 69726b3e1e58dd375b6f9faaf77ca6bd3b20a3bc3db2981a9e4267a558070849
 	sha256sums = dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d
 	sha256sums = 4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6
 

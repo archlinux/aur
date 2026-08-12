@@ -18,7 +18,7 @@ source=(
   "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/config.waybar.jsonc"
   "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/LICENSE"
 )
-sha256sums=('ed37895ee8e16f3858950fbcc975d2c8d818c3324f4db180ca15fa73e74ddbc5'
+sha256sums=('69726b3e1e58dd375b6f9faaf77ca6bd3b20a3bc3db2981a9e4267a558070849'
             'dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d'
             '4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6')
 
@@ -33,9 +33,6 @@ package() {
   for bin in binaries/*; do
     install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$(basename "$bin")"
   done
-
-  # Patch the placeholder path in the bundled config
-  sed -i 's|{{EXECUTABLE_PATH}}|/usr/bin|g' config.waybar.jsonc
 
   install -Dm644 config.waybar.jsonc "$pkgdir/usr/share/$_pkgbase/config.jsonc"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
