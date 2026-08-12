@@ -1,0 +1,23 @@
+pkgbase = grok-bot
+	pkgdesc = Grok Bot desktop agent
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://cursor.com
+	arch = x86_64
+	license = custom
+	makedepends = dpkg
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: tray support
+	options = !strip
+	source = grok-bot_0.16.0.deb::https://downloads.cursor.com/sand/stable/076e9d4bf42abbfa576702aea18ddbc49d9d3ab5/linux/x64/Grok_Bot_0.16.0.deb
+	sha256sums = 99d8b396641941ba4b889a791e9306737b398c0c3934f63a9545430910192bcc
+
+pkgname = grok-bot
