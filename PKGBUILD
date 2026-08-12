@@ -1,15 +1,26 @@
 # Maintainer: Wael Amrani Zerrifi <waelaz1983@gmail.com>
+
 pkgname=pacterm
-pkgver=1.0.0
+pkgver=1.3.7
 pkgrel=1
-pkgdesc="A terminal pacman game by Wael"
-arch=('x86_64')
-url="https://wael.work.gd/arch/pacterm"
-license=('GPL3')
-source=("pacterm-${pkgver}::https://wael.work.gd/arch/pacterm/bin/${pkgver}/pacterm")
-sha256sums=('4ffee88263f63bfb2015faf06ce84cae314d6359d120a4f34c0b3766fef9ee9b')
-options=('!strip' '!debug')
+pkgdesc="A terminal-based Pac-Man game written in C++20"
+arch=('x86_64' 'aarch64')
+url="https://github.com/wa-el-az/pacterm"
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('gcc' 'make')
+provides=('pacterm')
+conflicts=('pacterm-bin' 'pacterm-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('fd96b0cde73679462869ac22c14439c4ee837771767c597558a810bcee29b982')
+
+build() {
+  cd "$pkgname-$pkgver"
+  make
+}
 
 package() {
-    install -Dm755 "${srcdir}/pacterm-${pkgver}" "${pkgdir}/usr/bin/pacterm"
+  cd "$pkgname-$pkgver"
+  make install DESTDIR="$pkgdir" PREFIX=/usr
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
