@@ -2,7 +2,7 @@
 
 pkgbase=nvforest
 pkgname=(nvforest python-nvforest)
-pkgver=26.06.00
+pkgver=26.08.00
 pkgrel=1
 pkgdesc="Highly optimized and lightweight library for decision tree inference on NVIDIA GPUs and CPUs"
 url="https://github.com/rapidsai/nvforest"
@@ -15,11 +15,9 @@ source=(
     "system-lib.patch"
     "missing-pkg.patch"
 )
-sha256sums=(
-    '8687aba83ae745ddfbea57b124721a52b93fed0a4bd333a97cfef45aad5ea3fc'
-    '40da5ccbfc63f26c38bdebf0b8d08d0fdaef3bccefb3b1d372d43e8918124e62'
-    '7c19730ce7fecf8570829f33815eeda7bf1d1f211fec48dd11ee0df9fb42cd8b'
-)
+sha256sums=('1029ba4b0e0c98fd00759cd44bb1420eaff5424aca9973107431eba8af0616a4'
+            '0fea440cf235ed8e0d3f52badc095b227b5bed42294f7b612765e2e316c4e854'
+            '7c19730ce7fecf8570829f33815eeda7bf1d1f211fec48dd11ee0df9fb42cd8b')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
