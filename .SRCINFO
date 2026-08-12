@@ -1,7 +1,7 @@
 pkgbase = opera-gx
 	pkgdesc = Opera GX The Gaming Browser
 	pkgver = 134.0.5954.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/gx
 	arch = x86_64
 	license = LicenseRef-opera
@@ -56,13 +56,13 @@ pkgbase = opera-gx
 	source = eula.html
 	source = terms.html
 	source = privacy.html
-	source = nwjs-ffmpeg-0.112.0-linux-x64.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.112.0/0.112.0-linux-x64.zip
+	source = nwjs-ffmpeg-0.113.0-linux-x64.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.113.0/0.113.0-linux-x64.zip
 	sha256sums = 6290f938f5dcca07dd1fb171f3326c2a91585707415fe72bdcc1477d10100fa7
 	sha256sums = baeb75b7d52f1f75ec46027b05f0df0f4a22d6c47ab5816562f6e183c3af4034
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
 	sha256sums = 3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea
 	sha256sums = d67656e82d68ab88841b3e16a24e60aabd9f242e42b7010f9613282df57d7003
 	sha256sums = cb50dfd6f03cafffbb0565f4cf6d8f943b2709dcdb30acc3d0a52c9c99af3e32
-	sha256sums = e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6
+	sha256sums = eccac785a61f552d7ce75a1aba990486d977d74cd6ac78091c21b3c807cf1b01
 
 pkgname = opera-gx

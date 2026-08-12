@@ -3,7 +3,7 @@
 
 pkgname=opera-gx
 pkgver=134.0.5954.44
-pkgrel=1
+pkgrel=2
 pkgdesc='Opera GX The Gaming Browser'
 arch=('x86_64')
 url='https://www.opera.com/gx'
@@ -54,7 +54,7 @@ optdepends=(
     'upower: battery save support'
 )
 
-_nwjs_ffmpeg_version=0.112.0
+_nwjs_ffmpeg_version=0.113.0
 
 _upstream_deb_pkg='opera-gx-stable'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
@@ -77,7 +77,7 @@ sha256sums=('6290f938f5dcca07dd1fb171f3326c2a91585707415fe72bdcc1477d10100fa7'
             '3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea'
             'd67656e82d68ab88841b3e16a24e60aabd9f242e42b7010f9613282df57d7003'
             'cb50dfd6f03cafffbb0565f4cf6d8f943b2709dcdb30acc3d0a52c9c99af3e32'
-            'e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6')
+            'eccac785a61f552d7ce75a1aba990486d977d74cd6ac78091c21b3c807cf1b01')
 
 prepare() {
     sed -e 's|%pkgname%|opera-gx|g' \
