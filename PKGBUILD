@@ -5,7 +5,7 @@
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
 license=('LicenseRef-Iriun')
@@ -51,8 +51,11 @@ package() {
   mv "$pkgdir/etc/modprobe.d" "$pkgdir/usr/lib/"
   mv "$pkgdir/etc/modules-load.d" "$pkgdir/usr/lib/"
 
-  # fixes
+  # fix path
   sed -E -e 's&/.*/&&' -i "$pkgdir/usr/share/applications/iriunwebcam.desktop"
+
+  # move broken config
+  mv "$pkgdir/usr/share/pipewire" "$pkgdir/usr/share/$_pkgname"
 
   # license
   install -Dm644 LICENSE.iriun.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
