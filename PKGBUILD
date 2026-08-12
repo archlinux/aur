@@ -4,7 +4,7 @@
 
 pkgname=shader-slang
 pkgver=2026.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
@@ -67,8 +67,10 @@ prepare() {
 	sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
 		-i source/slang-glslang/slang-glslang.cpp
 
-	# Use system stb
+	# Use system stb and fast float
 	sed -e 's#${CMAKE_CURRENT_LIST_DIR}/stb#/usr/include/stb#' \
+		-e 's#set(_fast_float_include "${CMAKE_CURRENT_LIST_DIR}/fast_float/include")#find_package(FastFloat REQUIRED)#' \
+		-e 's#INTERFACE "${_fast_float_include}"#INTERFACE FastFloat::fast_float#' \
 		-i external/CMakeLists.txt
 }
 
