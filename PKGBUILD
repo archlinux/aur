@@ -2,18 +2,49 @@
 # Contributor: jdn06 <jdn06.jdn06@outlook.fr>
 
 pkgname=aqualung-git
-pkgver=2.0.r0.g706be13
+pkgver=2.0.r7.gb2328bd
 pkgrel=1
 pkgdesc="High quality music player with gapless support"
 arch=(x86_64 i686)
 url="https://github.com/jeremyevans/aqualung"
 license=(GPL-2.0-only)
-depends=(gtk3 libxml2 alsa-lib sndio jack libpulse liboggz
-         ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
-         libmad flac liblrdf libmpcdec libsamplerate libcddb speex lame libmodplug
-
-         # namcap implicit depends
-         glibc gcc-libs glib2 bzip2 zlib libogg gdk-pixbuf2 cairo pango libcdio hicolor-icon-theme)
+depends=(
+    alsa-lib
+    bzip2
+    cairo
+    ffmpeg
+    flac
+    gdk-pixbuf2
+    glib2
+    glibc
+    gtk3
+    hicolor-icon-theme
+    jack
+    lame
+    libcddb
+    libcdio
+    libcdio-paranoia
+    liblrdf
+    libmad
+    libmodplug
+    libmpcdec
+    libogg
+    liboggz
+    libpulse
+    libsamplerate
+    libsndfile
+    libstdc++
+    libvorbis
+    libxml2
+    lua52
+    mac
+    #pango
+    sh
+    sndio
+    speex
+    wavpack
+    zlib
+    )
 makedepends=(git)
 provides=(aqualung)
 conflicts=(aqualung)
@@ -30,11 +61,15 @@ pkgver() {
 prepare() {
   cd "aqualung"
   # Enlarge MAX_SAMPLERATE
-  sed -i 's/MAX_SAMPLERATE 96000/MAX_SAMPLERATE 192000/g' src/core.h
+  #sed -i 's/MAX_SAMPLERATE 96000/MAX_SAMPLERATE 192000/g' src/core.h
   ./autogen.sh
 }
 
 build() {
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
   cd "aqualung"
   ./configure \
     --prefix=/usr \
