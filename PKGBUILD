@@ -1,33 +1,31 @@
 # Maintainer: storbake
 pkgname=wallpaper_splitter
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Split and span a single wallpaper across multiple screens on KDE Plasma"
-url="https://github.com/l0drex/wallpaper_splitter"
-license=('GPL3')
+url="https://github.com/kstorbakken/wallpaper_splitter"
+license=('GPL-3.0-only')
 arch=('x86_64')
 depends=(
   'kconfigwidgets'
+  'qt6-base'
 )
 makedepends=(
   'cmake'
+  'extra-cmake-modules'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/l0drex/wallpaper_splitter/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b1970b27ab4aafc16fd13de53299e7b07ae15f6ff96e40464f868af464e607ec')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('99e36136d98c039ddead1d01625971806653fb85dc557d3601eecf01247d7186')
 
 build() {
-  mkdir -p build
-  cd build
-
-  cmake "${srcdir}/${pkgname}-${pkgver}" \
+  cmake -S "${pkgname}-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF \
     -Wno-dev
-  cmake --build .
+  cmake --build build
 }
 
 package() {
-  cd build
-  DESTDIR="${pkgdir}" cmake --install .
+  DESTDIR="${pkgdir}" cmake --install build
 }
-

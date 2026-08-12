@@ -1,13 +1,15 @@
 pkgbase = wallpaper_splitter
 	pkgdesc = Split and span a single wallpaper across multiple screens on KDE Plasma
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/l0drex/wallpaper_splitter
+	url = https://github.com/kstorbakken/wallpaper_splitter
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = kconfigwidgets
-	source = wallpaper_splitter-1.1.3.tar.gz::https://github.com/l0drex/wallpaper_splitter/archive/refs/tags/v1.1.3.tar.gz
-	sha256sums = b1970b27ab4aafc16fd13de53299e7b07ae15f6ff96e40464f868af464e607ec
+	depends = qt6-base
+	source = wallpaper_splitter-1.2.0.tar.gz::https://github.com/kstorbakken/wallpaper_splitter/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 99e36136d98c039ddead1d01625971806653fb85dc557d3601eecf01247d7186
 
 pkgname = wallpaper_splitter
