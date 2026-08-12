@@ -1,6 +1,6 @@
 pkgbase = hyper-headset-git
 	pkgdesc = A CLI and tray application for monitoring and managing HyperX headsets.
-	pkgver = 1.9.1.r5.g025db24
+	pkgver = 1.10.0.r0.g1ecb979
 	pkgrel = 1
 	url = https://github.com/LennardKittner/HyperHeadset
 	install = hyper-headset-git.install
