@@ -2,33 +2,29 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio
-pkgver=1.2.3
+pkgver=1.4.3
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
 pkgdesc="ASIO driver for Wine that talks directly to PipeWire (no libjack dependency)"
 arch=('x86_64')
 url="https://github.com/M0n7y5/pipeasio"
-license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
-depends=(wine pipewire qt6-base hicolor-icon-theme)
+license=('GPL-3.0-or-later')
+# libpipewire carries the linked libpipewire-0.3.so.0; pipewire is the daemon
+# the driver connects to at runtime.
+depends=(wine libpipewire pipewire qt6-base hicolor-icon-theme)
 makedepends=(cmake ninja)
 # !lto: winebuild reads symbols from the .o files; LTO bytecode objects break it.
 options=('!strip' '!debug' '!lto')
 _pkgsrc="${pkgname}-${_pkgtag#v}"
-# Desktop entry + icon are local sources until the next upstream release;
-# master installs them via CMake (gui/pipeasio-settings.desktop, docs/icon.svg)
-# so they can be dropped from here at the next pkgver bump.
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz"
-        "pipeasio-settings.desktop"
-        "pipeasio.svg")
-b2sums=('98dd6418aab29281dd3ca949dcd159c5c0e2c63af7b8ce0e6336cbbc12276c08f0d709019154644beb1cc3a03d24e6d735e2505bfa4e481ea81e9e039dc0df35'
-        'f39b3eaaaf0dadb3920fb3133fcd6936ced4fa42a14962e32b3acf1c2f7fde61f1321bab86b1ff21595152c9369e5393c60f82e1a3b445fc7c20a1de47d08757'
-        'ca65da2d37c6a301e651b2acdf227afb549a13c1decc335c7dfd1103272824f4a87a50af736c2d94db2603bee86523ba5fcb2688e32f0a8d559fda30d023bee1')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
+b2sums=('9748d9c61360777b0ce443a1a41ac8acddcddaae801c823e71986d2dcda7d23b270896d8da989c3735aac01ac56e523e662a44a5859a26e062bc04b78d152e82')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SETTINGS_PANEL=ON \
     -DBUILD_TESTS=OFF
   cmake --build build
@@ -37,24 +33,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
 
-  # Wine arch layout; the unified-name symlinks satisfy Wine 10+ lookup.
-  install -Dm644 build/pipeasio64.dll -t "${pkgdir}/usr/lib/wine/x86_64-windows"
-  install -Dm755 build/pipeasio64.dll.so -t "${pkgdir}/usr/lib/wine/x86_64-unix"
-  ln -s pipeasio64.dll "${pkgdir}/usr/lib/wine/x86_64-windows/pipeasio.dll"
-  ln -s pipeasio64.dll.so "${pkgdir}/usr/lib/wine/x86_64-unix/pipeasio.dll.so"
+  # Upstream installs the Wine arch layout, both unified-name symlinks, the
+  # register helper, the panel, its desktop entry and icon.
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm755 pipeasio-register -t "${pkgdir}/usr/bin"
-  install -Dm755 build/gui/pipeasio-settings -t "${pkgdir}/usr/bin"
-
-  install -Dm644 "${srcdir}/pipeasio-settings.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/pipeasio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeasio.svg"
-
-  # rc1 ships COPYING.LIB/COPYING.GUI; master relicensed to GPL-3.0-or-later
-  # with a single COPYING. Install whichever exist so version bumps don't break.
-  local _license
-  for _license in COPYING COPYING.LIB COPYING.GUI; do
-    [[ -f "${_license}" ]] && install -Dm644 "${_license}" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  done
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
