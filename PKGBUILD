@@ -1,32 +1,42 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Jeremy MountainJohnson <jay@jskier.com>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
-_pkgname=streamlit-webrtc
-pkgname=python-streamlit-webrtc
-pkgver=0.43.4
+_name=streamlit-webrtc
+pkgname=python-$_name
+pkgver=0.77.0
 pkgrel=1
 pkgdesc='Real-time video and audio streams over the network, with Streamlit'
-arch=('any')
+arch=(any)
 url='https://github.com/whitphx/streamlit-webrtc'
-license=('MIT')
+license=(MIT)
 depends=(
+  python
+  python-aioice
   python-aiortc
+  python-av
+  python-packaging
   python-streamlit
 )
 makedepends=(
-  python-setuptools
+  python-build
+  python-hatch-vcs
+  python-hatchling
+  python-installer
+  python-wheel
 )
-
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('0167a76e5b8961594a3b54ee07c0fdfcb178559053cafe2d03404dfe80a1e2ce5c52489cf3b4d1a8d8ae60f0cfba11036623df1d91861448d6aa5b72394f2732')
+optdepends=('python-twilio: Twilio STUN/TURN server support')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
+sha256sums=('2cb90e8c4ab9c4190c21e7e7cd3ac510f9fc541b2fca4c783e134fc85ccc5ccd')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  cd ${_name//-/_}-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ${_name//-/_}-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
 # vim:set ts=2 sw=2 et:
