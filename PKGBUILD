@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=iqtree-bin
 pkgver=3.1.3
 pkgrel=1
