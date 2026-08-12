@@ -2,12 +2,12 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.31
+pkgver=0.9.40
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
-url="https://github.com/Graphify-Labs/graphify"
-license=('Apache-2.0')
+url="https://github.com/safishamsi/graphify"
+license=('Apache-2.0' 'MIT')
 
 depends=(
     'python'
@@ -24,7 +24,6 @@ depends=(
     'python-tree-sitter-groovy'
     'python-tree-sitter-c'
     'python-tree-sitter-cpp'
-    'python-tree-sitter-dm'
     'python-tree-sitter-ruby'
     'python-tree-sitter-c-sharp'
     'python-tree-sitter-kotlin'
@@ -68,6 +67,13 @@ optdepends=(
     'python-jieba: Chinese text segmentation for the MCP search server'
     'python-psycopg: PostgreSQL schema introspection backend'
     'python-yaml: APM manifest parsing support'
+    'python-starlette: HTTP server transport support'
+    'python-falkordb: FalkorDB export support'
+    'python-psycopg: PostgreSQL storage support'
+    'python-jieba: Chinese text segmentation support'
+    'python-tree-sitter-pascal: Pascal indexing support'
+    'python-tree-sitter-dm: DM language indexing support'
+    'python-tree-sitter-hcl: Terraform/HCL indexing support'
 )
 
 makedepends=(
@@ -81,7 +87,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('432bef870132cd3f1b648e128cdec4d1fe1d62ab0246b9d34c679782aaaaad2e')
+sha256sums=('2268955c1cf36e139577222666481c97d332c3c726314899a11a8696655c2a6a')
 
 build() {
     cd "${_name}-${pkgver}"
