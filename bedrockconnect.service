@@ -1,0 +1,18 @@
+[Unit]
+Description=BedrockConnect Server
+After=network.target
+
+[Service]
+Type=simple
+
+User=bedrockconnect
+Group=bedrockconnect
+
+WorkingDirectory=/var/lib/bedrockconnect
+ExecStart=/usr/bin/java -jar BedrockConnect.jar
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
