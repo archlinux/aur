@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=magicblast
 pkgver=1.7.2
 pkgrel=1
