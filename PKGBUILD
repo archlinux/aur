@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR"
 arch=('x86_64')
 url="https://github.com/devcxl/fcitx5-voice-input"
-license=('Apache')
+license=('LGPL-3.0-or-later')
 options=('!debug')
 depends=(
     'fcitx5'
