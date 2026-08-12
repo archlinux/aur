@@ -1,7 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 # Contributor: SummerElement <Dapugongying@foxmail.com>
 pkgname=scholaread-cn-bin
-pkgver=1.1.75
+pkgver=1.1.80
 pkgrel=1
 pkgdesc="Scholaread（靠岸学术）集论文PDF阅读、论文翻译、AI问答解析、文献多设备管理于一体"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('libnotify: desktop notifications support'
             'util-linux-libs: UUID generation support'
             'libappindicator: system tray icon support')
 source=("${pkgname}-${pkgver}.deb::https://cdn.scholaread.cn/assets/pc-releases/${pkgver}/cn/Scholaread-linux-amd64-${pkgver}.deb")
-sha256sums=('c2f288709d93c1ad03c40d3b584c67d84abb32fc3503ce480e1ce3299ac5b0c0')
+sha256sums=('f2fe1561f99de3e3c8de3e5089fa2aa7b57c822c6f281ad4abbc462083684123')
 
 package() {
     # unzip DEB
