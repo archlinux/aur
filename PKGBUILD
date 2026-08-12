@@ -1,8 +1,8 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=python-google-cloud-core
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.6.1
+pkgrel=1
 pkgdesc='Google Cloud API client core library'
 _pkgname=${pkgname#python-}
 _reponame=google-cloud-python
@@ -15,6 +15,7 @@ depends=(
   python-google-auth
 )
 makedepends=(
+  git
   python-build
   python-cryptography
   python-installer
@@ -24,11 +25,11 @@ makedepends=(
   python-wheel
 )
 optdepends=('python-grpcio: for grpc support')
-source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('18ecd6ce915a8dcb410397f68c39af50726422312ca028b087951015839ebd46ef4dc1feca0a78a53e2ac3f0eadc90bd1dfe629dfabc313d6eb5f27bc36b1e24')
+source=(${_reponame}::git+${url%/tree*}.git#tag=${_pkgname}-v${pkgver})
+b2sums=('9ac5bd4918b5b6bf5e82ac8bd7b836a159014f74d4a54d4eeade455756875a2d6a54fc445110d1a2320fd068d3161632db9968439dac94e043c143ffb83e401c')
 
 build() {
-  cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
+  cd ${_reponame}/packages/${_pkgname}
 
   python -m build \
     --wheel \
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-  cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
+  cd ${_reponame}/packages/${_pkgname}
 
   python -m installer \
     --destdir="${pkgdir}" \
