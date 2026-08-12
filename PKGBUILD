@@ -1,13 +1,11 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=flutterdec-bin
-pkgver=0.1.0_alpha.2
+pkgver=0.1.0_alpha.4
 pkgrel=1
 pkgdesc='Static Flutter AOT decompiler — emits pseudo-Dart from libapp.so (ARM64)'
 arch=('x86_64')
 url='https://github.com/caverav/flutterdec'
 license=('MIT')
-depends=('glibc' 'libgcc')
-makedepends=('patchelf')
 provides=('flutterdec')
 conflicts=('flutterdec')
 options=('!debug')
@@ -15,7 +13,7 @@ options=('!debug')
 _tag="v${pkgver//_/-}"
 source=("flutterdec-${pkgver}-Linux-X64.tar.gz::https://github.com/caverav/flutterdec/releases/download/${_tag}/flutterdec-${_tag}-Linux-X64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/caverav/flutterdec/${_tag}/LICENSE")
-sha256sums=('e831964bdc748e681ed8b68dd5adf24e8aa7552d1fab741e3bfa13be95da309c'
+sha256sums=('debfd6fe107603d47880e7201f59bd07077adb3f27d50ceee7e3064116c32007'
             'ecbfc79ff871cb1044de5dadf508288fbfabe92d25670f4a176117c20889150d')
 
 latestver() {
@@ -26,7 +24,6 @@ latestver() {
 }
 
 package() {
-    patchelf --set-interpreter /usr/lib/ld-linux-x86-64.so.2 flutterdec
     install -Dm755 flutterdec "${pkgdir}/usr/bin/flutterdec"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

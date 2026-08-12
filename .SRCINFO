@@ -1,19 +1,16 @@
 pkgbase = flutterdec-bin
 	pkgdesc = Static Flutter AOT decompiler — emits pseudo-Dart from libapp.so (ARM64)
-	pkgver = 0.1.0_alpha.2
+	pkgver = 0.1.0_alpha.4
 	pkgrel = 1
 	url = https://github.com/caverav/flutterdec
 	arch = x86_64
 	license = MIT
-	makedepends = patchelf
-	depends = glibc
-	depends = libgcc
 	provides = flutterdec
 	conflicts = flutterdec
 	options = !debug
-	source = flutterdec-0.1.0_alpha.2-Linux-X64.tar.gz::https://github.com/caverav/flutterdec/releases/download/v0.1.0-alpha.2/flutterdec-v0.1.0-alpha.2-Linux-X64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/caverav/flutterdec/v0.1.0-alpha.2/LICENSE
-	sha256sums = e831964bdc748e681ed8b68dd5adf24e8aa7552d1fab741e3bfa13be95da309c
+	source = flutterdec-0.1.0_alpha.4-Linux-X64.tar.gz::https://github.com/caverav/flutterdec/releases/download/v0.1.0-alpha.4/flutterdec-v0.1.0-alpha.4-Linux-X64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/caverav/flutterdec/v0.1.0-alpha.4/LICENSE
+	sha256sums = debfd6fe107603d47880e7201f59bd07077adb3f27d50ceee7e3064116c32007
 	sha256sums = ecbfc79ff871cb1044de5dadf508288fbfabe92d25670f4a176117c20889150d
 
 pkgname = flutterdec-bin
