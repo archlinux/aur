@@ -1,26 +1,22 @@
 pkgbase = playwright
 	pkgdesc = Node.js library to automate Chromium, Firefox and WebKit with a single API
 	pkgver = 1.62.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://playwright.dev
 	install = playwright.install
 	arch = any
 	license = Apache-2.0
 	makedepends = npm
-	makedepends = jq
-	depends = nodejs
+	depends = nodejs>=20
 	depends = bash
-	depends = icu
-	depends = libwebp
-	depends = pcre
-	depends = libffi
-	depends = flite
-	optdepends = chromium: for chromium support
-	optdepends = firefox: for firefox support
-	optdepends = webkit2gtk-4.1: system webkit (not used by Playwright's bundled webkit)
+	optdepends = flite-voices-extra: extra Flite voice libraries for bundled WebKit
+	optdepends = icu74: ICU 74 ABI required by the downloaded WebKit payload; system ICU 78 is not sufficient
 	conflicts = python-playwright
-	noextract = playwright-1.62.1.tar.gz
-	source = playwright-1.62.1.tar.gz::https://registry.npmjs.org/playwright/-/playwright-1.62.1.tgz
-	b2sums = SKIP
+	noextract = playwright-1.62.1.tgz
+	noextract = playwright-core-1.62.1.tgz
+	source = playwright-1.62.1.tgz::https://registry.npmjs.org/playwright/-/playwright-1.62.1.tgz
+	source = playwright-core-1.62.1.tgz::https://registry.npmjs.org/playwright-core/-/playwright-core-1.62.1.tgz
+	sha512sums = d0cf8bdcb003f3f9e6e79e0b3a56bd032c748f4b66159d0505ca10ec5d55b951e933f5e9882f11703cc1401f16e7e840f0bdb64c7c442f3785fb659c533bdc2e
+	sha512sums = c0f612c0404963d187ada2125eacaab71d276b42e93b75c45fb8cd0e19ed6dec7bb73512ee42e766c3a516bb85241e078bfae10cc8d71aa1dec0367af2761957
 
 pkgname = playwright

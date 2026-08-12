@@ -1,81 +1,77 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 # Contributor: Paramjit Singh <contact at paramjit dot org>
-# Contributor: George Rawlinson <george@rawlinson.net.nz>
-# Contributor: Mattias Andersson <contact@stablemate.se>
+# Contributor: George Rawlinson <george at rawlinson dot net dot nz>
+# Contributor: Mattias Andersson <contact at stablemate dot se>
 
 pkgname=playwright
 pkgver=1.62.1
-pkgver() {
-  npm view "$pkgname" version
-}
-pkgrel=1
-pkgdesc="Node.js library to automate Chromium, Firefox and WebKit with a single API"
-arch=("any")
-url="https://playwright.dev"
-license=("Apache-2.0")
-depends=(
-  "nodejs"
-  "bash"
-  "icu"
-  "libwebp"
-  "pcre"
-  "libffi"
-  "flite"
-)
-makedepends=("npm" "jq")
+pkgrel=2
+pkgdesc='Node.js library to automate Chromium, Firefox and WebKit with a single API'
+arch=('any')
+url='https://playwright.dev'
+license=('Apache-2.0')
+depends=('nodejs>=20' 'bash')
+makedepends=('npm')
 optdepends=(
-  "chromium: for chromium support"
-  "firefox: for firefox support"
-  "webkit2gtk-4.1: system webkit (not used by Playwright's bundled webkit)"
+  'flite-voices-extra: extra Flite voice libraries for bundled WebKit'
+  'icu74: ICU 74 ABI required by the downloaded WebKit payload; system ICU 78 is not sufficient'
 )
-conflicts=("python-playwright")
+conflicts=('python-playwright')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tar.gz")
-# b2sums=SKIP is required because pkgver() makes the tarball URL dynamic;
-# the hash cannot be known ahead of time.
-b2sums=("SKIP")
+source=(
+  "$pkgname-$pkgver.tgz::https://registry.npmjs.org/playwright/-/playwright-$pkgver.tgz"
+  "playwright-core-$pkgver.tgz::https://registry.npmjs.org/playwright-core/-/playwright-core-$pkgver.tgz"
+)
+noextract=(
+  "$pkgname-$pkgver.tgz"
+  "playwright-core-$pkgver.tgz"
+)
+sha512sums=(
+  'd0cf8bdcb003f3f9e6e79e0b3a56bd032c748f4b66159d0505ca10ec5d55b951e933f5e9882f11703cc1401f16e7e840f0bdb64c7c442f3785fb659c533bdc2e'
+  'c0f612c0404963d187ada2125eacaab71d276b42e93b75c45fb8cd0e19ed6dec7bb73512ee42e766c3a516bb85241e078bfae10cc8d71aa1dec0367af2761957'
+)
+
+check() {
+  local checkdir="$srcdir/check"
+  rm -rf "$checkdir"
+  mkdir -p "$checkdir"
+
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install \
+    --global \
+    --prefix "$checkdir/prefix" \
+    --cache "$checkdir/npm-cache" \
+    --offline \
+    --ignore-scripts \
+    --no-audit \
+    --no-fund \
+    "$srcdir/$pkgname-$pkgver.tgz" \
+    "$srcdir/playwright-core-$pkgver.tgz"
+
+  [[ "$($checkdir/prefix/bin/playwright --version)" == "Version $pkgver" ]]
+  [[ -f "$checkdir/prefix/lib/node_modules/$pkgname/package.json" ]]
+  [[ -f "$checkdir/prefix/lib/node_modules/playwright-core/package.json" ]]
+  ! find "$checkdir/prefix" -type d -name 'ms-playwright' -print -quit | grep -q .
+  ! find "$checkdir/prefix" -type f -exec file {} + | grep -q 'ELF '
+}
 
 package() {
-  # Skip the postinstall browser download; users run `playwright install`
-  # themselves after install.
-  # https://playwright.dev/docs/library#skip-browser-download
-  local npm_flags=(
-    --no-audit
-    --no-fund
-    --no-update-notifier
-    --omit=dev
-  )
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install \
     --global \
     --prefix "$pkgdir/usr" \
     --cache "$srcdir/npm-cache" \
-    "${npm_flags[@]}" \
-    "$srcdir/$pkgname-$pkgver.tar.gz"
+    --offline \
+    --ignore-scripts \
+    --no-audit \
+    --no-fund \
+    "$srcdir/$pkgname-$pkgver.tgz" \
+    "$srcdir/playwright-core-$pkgver.tgz"
 
-  # Strip references to $pkgdir and $srcdir from package.json files.
-  # npm records install paths; this is the upstream-recommended cleanup.
-  # https://wiki.archlinux.org/title/Node.js_package_guidelines
-  find "$pkgdir" -name package.json -print0 | xargs -0 -r sed -i '/_where/d'
+  find "$pkgdir" -name package.json -print0 |
+    xargs -0 -r sed -i '/_where/d'
 
-  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
-  if [[ -f "$pkgjson" ]]; then
-    local tmp
-    tmp=$(mktemp)
-    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmp"
-    mv "$tmp" "$pkgjson"
-    chmod 644 "$pkgjson"
-  fi
+  tar -xOf "$srcdir/$pkgname-$pkgver.tgz" package/LICENSE > "$srcdir/playwright-upstream-LICENSE"
+  install -Dm644 "$srcdir/playwright-upstream-LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  find "$pkgdir" -type f -name package.json -print0 | while IFS= read -r -d '' pkgjson; do
-    local tmp
-    tmp=$(mktemp)
-    jq 'del(.man)' "$pkgjson" > "$tmp"
-    mv "$tmp" "$pkgjson"
-    chmod 644 "$pkgjson"
-  done
-
-  # npm gives ownership of ALL FILES to build user.
-  # https://bugs.archlinux.org/task/63396
   chown -R root:root "$pkgdir"
 }

@@ -1,0 +1,9 @@
+version = 1
+SPDX-PackageName = "playwright-aur"
+SPDX-PackageSupplier = "Ismet Togay <ismet.togay at gmail dot com>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/playwright"
+
+[[annotations]]
+path = ["PKGBUILD", "playwright.install", ".SRCINFO", "LICENSE", "REUSE.toml", ".gitignore"]
+SPDX-FileCopyrightText = "Arch Linux Contributors"
+SPDX-License-Identifier = "0BSD"

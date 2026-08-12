@@ -1,41 +1,21 @@
 post_install() {
-  cat <<'EOF'
-==> Playwright has been installed.
-==>
-==> To install Playwright's bundled browsers (chromium, firefox, webkit):
-==>     playwright install
-==>
-==> Or, install per-project helper packages that download on `npm install`:
-==>     npm i -D @playwright/browser-chromium @playwright/browser-firefox @playwright/browser-webkit
-==>
-==> Note: the flite dependency is only used by the bundled WebKit;
-==> system browsers (chromium, firefox, webkit2gtk-4.1) don't need it.
-==>
-==> NOTE: Two types of warnings may appear during `playwright install`:
-==> 1. "BEWARE: your OS is not officially supported" — Arch isn't on
-==>    Playwright's official support list; it uses an Ubuntu 24.04
-==>    fallback build instead. Safe to ignore; install succeeds.
-==> 2. "Host system is missing dependencies" — heuristic check.
-==>    Safe to ignore for chromium and firefox (both work). The
-==>    bundled webkit has 4 hard ABI mismatches with current Arch
-==>    (libicu 74 vs 78, libxml2.so.2 vs .16, libflite cmu libs differ,
-==>    libjxl 0.8 vs 0.11) and is not functional. This is an upstream
-==>    Playwright issue (no official Arch support). For webkit on Arch,
-==>    run Playwright in a container or use another automation tool
-==>    that supports system webkit2gtk.
-==>
-==> To use system-installed browsers instead, set in your shell/service:
-==>     export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium
-==>     export PLAYWRIGHT_FIREFOX_EXECUTABLE_PATH=/usr/bin/firefox
-==>
-==> Recommended: configure executablePath in your playwright.config.ts.
-==>
-==> For the test runner, install it per-project (not globally):
-==>     npm i -D @playwright/test
-==>
-==> If a bundled browser fails to launch, you may also need:
-==>     pacman -S alsa-lib libxshmfence
-EOF
+  printf '%s\n' \
+    '==> Playwright is installed without browser payloads.' \
+    '==> Install matching browsers explicitly when needed:' \
+    '==>     playwright install chromium firefox' \
+    '==>' \
+    '==> Browser payloads are version-matched and may need reinstalling after upgrades.' \
+    '==> Playwright stores them in the user cache by default.' \
+    '==> Arch is not an officially supported Playwright Linux distribution.' \
+    '==>' \
+    '==> Optional WebKit setup (not guaranteed on Arch):' \
+    '==>   1. Install voices (AUR): paru -S flite-voices-extra' \
+    '==>   2. Install the ICU 74 ABI (AUR): paru -S icu74' \
+    '==>        (system ICU 78 is not sufficient)' \
+    '==>   3. Provide libxml2.so.2 (no Arch package ships it):' \
+    '==>        sudo ln -s libxml2.so.16 /usr/lib/libxml2.so.2' \
+    '==>        (may need re-pointing after upgrades)' \
+    '==>   4. Install the matching browser:  playwright install webkit'
 }
 
 post_upgrade() {
