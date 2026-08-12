@@ -1,6 +1,6 @@
 pkgbase = everhour-cli-bin
 	pkgdesc = Everhour from the terminal — draft-first time tracking (CLI + TUI) (prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Qu4tro/everhour-cli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = everhour-cli-bin
 	conflicts = everhour-cli
 	conflicts = everhour-cli-git
 	options = !debug
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Qu4tro/everhour-cli/v0.1.0/LICENSE
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/Qu4tro/everhour-cli/v0.1.1/LICENSE
 	sha256sums = 21ae215f0f15a7359db88be7707fac1c548a6499526ac08c07096bd0426711b2
-	source_x86_64 = everhour-cli-bin-0.1.0.tar.gz::https://github.com/Qu4tro/everhour-cli/releases/download/v0.1.0/everhour-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e29b7c717ede8402b4532817c9c5d696fe9bb2ad267aeedc0b8a03a0f9f60871
+	source_x86_64 = everhour-cli-bin-0.1.1.tar.gz::https://github.com/Qu4tro/everhour-cli/releases/download/v0.1.1/everhour-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bedeaaace57a32985b5e0765ce0d47b2ac9254151aeffd3438c799cb11bf0c1c
 
 pkgname = everhour-cli-bin

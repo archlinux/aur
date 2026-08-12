@@ -2,7 +2,7 @@
 
 pkgname=everhour-cli-bin
 _pkgname=everhour-cli
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Everhour from the terminal — draft-first time tracking (CLI + TUI) (prebuilt binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!debug')
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Qu4tro/$_pkgname/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/Qu4tro/$_pkgname/releases/download/v$pkgver/everhour-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
 sha256sums=('21ae215f0f15a7359db88be7707fac1c548a6499526ac08c07096bd0426711b2')
-sha256sums_x86_64=('e29b7c717ede8402b4532817c9c5d696fe9bb2ad267aeedc0b8a03a0f9f60871')
+sha256sums_x86_64=('bedeaaace57a32985b5e0765ce0d47b2ac9254151aeffd3438c799cb11bf0c1c')
 
 package() {
   install -Dm755 everhour "$pkgdir/usr/bin/everhour"
