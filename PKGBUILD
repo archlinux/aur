@@ -1,6 +1,6 @@
 # Maintainer: hitalin <https://github.com/hitalin>
 pkgname=misskey-notedeck-bin
-pkgver=1.36.1
+pkgver=1.47.0
 pkgrel=1
 pkgdesc='Misskey Pro — integrated deck environment (IDE) for Misskey power users'
 arch=('x86_64')
