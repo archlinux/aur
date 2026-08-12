@@ -1,6 +1,6 @@
 pkgname=openchamber-desktop-appimage
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop and web interface for OpenCode AI agent'
 arch=('x86_64')
 url='https://github.com/openchamber/openchamber'
@@ -24,5 +24,5 @@ prepare() {
 package() {
   install -Dm755 "OpenChamber-${pkgver}-linux-x86_64.AppImage" "${pkgdir}/${_installdir}/OpenChamber.AppImage"
   install -Dm644 "squashfs-root/usr/share/icons/hicolor/1024x1024/apps/openchamber.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/openchamber.png"
-  install -Dm644 "squashfs-root/openchamber.desktop" "${pkgdir}/usr/share/applications/MrRSS.desktop"
+  install -Dm644 "squashfs-root/openchamber.desktop" "${pkgdir}/usr/share/applications/openchamber.desktop"
 }
