@@ -1,6 +1,6 @@
 pkgbase = python-cudf
 	pkgdesc = cuDF - GPU DataFrame Library
-	pkgver = 26.06.01
+	pkgver = 26.08.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/cudf
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = python-cudf
 	depends = python-pyarrow
 	depends = python-cachetools
 	depends = python-numba-cuda
-	source = https://github.com/rapidsai/cudf/archive/refs/tags/v26.06.01.tar.gz
+	source = https://github.com/rapidsai/cudf/archive/refs/tags/v26.08.00.tar.gz
 	source = missing-pkg.patch
 	source = system-cccl.patch
-	sha256sums = f22f06286d9a332bc7b4e399bbd2b105471240c95297ad21daee17255bc2f0f6
+	sha256sums = 949b2821660bfdd68409c024ada47132776a14cdc09f642c9efc0b4ac0ea2998
 	sha256sums = 72618631b71f51c4d0773f6964bb9bfe3a92ba0ebe5351fd7baedb56f833fcfa
 	sha256sums = 1d05ed0fdd36bbf5d45017cab988dc43fd1016547c13948205d99d9f456aef03
 
