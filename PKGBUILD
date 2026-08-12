@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio-bin
-pkgver=1.2.3
+pkgver=1.4.3
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -10,7 +10,7 @@ pkgdesc="ASIO driver for Wine that talks directly to PipeWire (no libjack depend
 arch=('x86_64')
 url="https://github.com/M0n7y5/pipeasio"
 license=('GPL-3.0-or-later')
-depends=(wine pipewire qt6-base hicolor-icon-theme)
+depends=(wine libpipewire pipewire qt6-base hicolor-icon-theme)
 provides=("pipeasio=${pkgver}")
 conflicts=(pipeasio)
 # !strip: the PE halves are not ELF, and stripping the .so halves breaks the
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgtag}/pipeasio-${_pkgtag}-archlinux-x86_64.tar.gz"
         "${pkgname}-${pkgver}-COPYING::${url}/raw/${_pkgtag}/COPYING")
 noextract=()
-b2sums=('85fae3c793802e66cbb5f0815226abdbc00a008691ba6a1b9a7621f9941b0c2d049c0df774830866b371422308c1ea0bb031595a70540bc93cb6e6f4253d906f'
+b2sums=('422e60991e5fa765eab904c72e0d53d45fa49122e5e90146adb7527ba7d07ff92a07e4f8aafc5060a115c132e45963ad1c550f8e526110b9fff6abe5574aa0d0'
         '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
 
 package() {
