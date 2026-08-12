@@ -1,0 +1,24 @@
+pkgbase = pic32prog-bin
+	pkgdesc = Flash programming utility for Microchip PIC32 microcontrollers
+	pkgver = 2.1.56
+	pkgrel = 1
+	url = https://github.com/majenkotech/pic32prog-autotools
+	arch = x86
+	arch = x86_64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	depends = libusb
+	provides = pic32prog
+	conflicts = pic32prog
+	options = strip
+	options = !libtool
+	options = !staticlibs
+	options = !emptydirs
+	source_x86 = pic32prog_x86_2.1.56.tar.gz::https://github.com/majenkotech/pic32prog-autotools/releases/download/2.1.56/pic32prog-debian-32-2.1.56.tar.gz
+	sha256sums_x86 = 42f3f63bc22fee67ed9a1443e560279c5f3da14d8cc483458eb2579562952608
+	source_x86_64 = pic32prog_x86_64_2.1.56.tar.gz::https://github.com/majenkotech/pic32prog-autotools/releases/download/2.1.56/pic32prog-debian-64-2.1.56.tar.gz
+	sha256sums_x86_64 = a0c3053877d0034f7b42c439fe7f34c30a05f065bc54102b80c316ff0e217395
+	source_armv7h = pic32prog_aarch32_2.1.56.tar.gz::https://github.com/majenkotech/pic32prog-autotools/releases/download/2.1.56/pic32prog-debian-armhf-2.1.56.tar.gz
+	sha256sums_armv7h = b1d486a7f7dae16f3ca0b6672a5c2f2dee7610aaf024670ed91724a7151eedbe
+
+pkgname = pic32prog-bin
