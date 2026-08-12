@@ -1,6 +1,6 @@
 # Maintainer: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=ednovas-cloud
-pkgver=1.1.53
+pkgver=1.1.55
 pkgrel=1
 pkgdesc="EdNovas Cloud Proxy Client. Official desktop client for EdNovas Cloud services."
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ optdepends=('libappindicator')
 options=('!strip' '!debug')
 source_x86_64=("https://storage.ednovas.org/desktop/${pkgver}/EdNovas-Cloud-${pkgver}-Linux-amd64.deb")
 source_aarch64=("https://storage.ednovas.org/desktop/${pkgver}/EdNovas-Cloud-${pkgver}-Linux-arm64.deb")
-sha512sums_x86_64=('02976fce6bf98b7579e0142f06f54d01262a3627b5e0fd5611e40c207362c4f621014e780855fa0092c105caac25f9a3216e48b96082ff41c5b2d259e5a24174')
-sha512sums_aarch64=('e3ae2df2abc61ae47b63eefcc545a200e6b1d58605a4f661dc31d249cb836dc6ff439a33991a4234c1721744133b438e1bbc8df53a2a023ef1004a7f3d6011c0')
+sha512sums_x86_64=('c6efaddf349c0d61a7dc1c4ad5c1622e4b751b7454d2607de940768437d2a965ac987e914eaa1c23c8e5a69a4391873d3774c2b21f5338fd3774964cd5f5089f')
+sha512sums_aarch64=('2f71658c751c1fbd1c636b530d08cb14bea6c64fc7c6bb190f423316fd27de89c6cc49b36b5ac64311474095a2aa51074c5fddd34e5997879c5ffb28eb69c454')
 
 package(){
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
