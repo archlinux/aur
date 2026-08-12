@@ -1,15 +1,15 @@
 pkgbase = ipfetch-git
 	pkgdesc = Neofetch like tool that can lookup IPs
-	pkgver = r10.ef082d5
+	pkgver = r62.a9cf53c
 	pkgrel = 1
 	url = https://github.com/trakBan/ipfetch
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
-	depends = python
+	depends = wget
 	provides = ipfetch
 	conflicts = ipfetch
-	source = ipfetch::git+https://github.com/trakBan/ipfetch.git
+	source = ipfetch-git::git+https://github.com/trakBan/ipfetch
 	md5sums = SKIP
 
 pkgname = ipfetch-git
