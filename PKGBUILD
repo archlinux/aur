@@ -42,6 +42,7 @@ optdepends=(
   'python-gitpython: bonsaï'
   'python-networkx: bonsaï'
   'python-pyradiance: bonsaï'
+  'python-aiohttp: bonsaï'
 
 )
 
@@ -71,16 +72,20 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "003-fix-boost-export-config.patch::${_patch_url_prefix}/ba313e55ea96ce280a02c99a8e249c5d475311d2.patch"
   "004-use-spdx-license.patch::${_patch_url_prefix}/67cad605bbea4af0d086fddc2adf7b1bc143ebdb.patch"
   "005-fix-boost-explicit-optional.patch::${_patch_url_prefix}/f68094688ce7106597a656f8bc31295bc074decd.patch"
+  "006-fix-swig-45-compat.patch"
+  "007-fix-pyradiance-chmod.patch"
 
 )
 sha256sums=('07d1babebde5c8b53092ad54f7091de3bce0208b4af85ce514280a181c820441'
-  'SKIP'
-  'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-  '0fd9a6ae4ded60e438172699c8399fbe10e5ca2b00c69371a25d113bbda6406b'
-  'e3396fedc745d1fdc8428a9171376fc66bcbb0e834f5757f68ba715f020e7d22'
-  'afbec2fb625774c407c77151a17c9c47d328b5e6febd984f6d7a73e201bdd095'
-  'bade9878f7d916ff4669d29ed488d932a88218372854216754f90339a5491415'
-  'a1d3fc8e9e3e5c84f8736567fd90e50b4ff95c5e190ee908a388106b8e0910be')
+            'SKIP'
+            'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
+            '0fd9a6ae4ded60e438172699c8399fbe10e5ca2b00c69371a25d113bbda6406b'
+            'e3396fedc745d1fdc8428a9171376fc66bcbb0e834f5757f68ba715f020e7d22'
+            'afbec2fb625774c407c77151a17c9c47d328b5e6febd984f6d7a73e201bdd095'
+            'bade9878f7d916ff4669d29ed488d932a88218372854216754f90339a5491415'
+            'a1d3fc8e9e3e5c84f8736567fd90e50b4ff95c5e190ee908a388106b8e0910be'
+            'f0997e276e3e344184321a7a6682d6d20b1b1193fc53e91a45498ac76acd1fec'
+            '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7')
 options=("!lto")
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
@@ -173,6 +178,9 @@ package() {
   # provides blender extension
   install -d "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system"
   ln -s /usr/lib/python${_python_ver}/site-packages/${_vername} "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/${__vername}"
+
+  # replace the upstream "os-arch" manifest placeholder, mirroring upstream Makefile
+  sed -i "s/os-arch/linux-x64/" "${pkgdir}/usr/lib/python${_python_ver}/site-packages/${_vername}/blender_manifest.toml"
 
   # install desktop and wrappers
   cd "${srcdir}/${_iosdir}/src/${_vername}/${_vername}/libs/desktop"
