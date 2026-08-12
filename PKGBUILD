@@ -3,9 +3,9 @@
 _name=tree-sitter-powershell
 pkgname=python-tree-sitter-powershell
 pkgver=0.26.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Powershell grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/airbus-cert/tree-sitter-powershell"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
