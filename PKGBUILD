@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.3.0_devel.227793.61f62f590d0
+pkgver=26.3.0_devel.227796.c5138d5f2bf
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -33,6 +33,7 @@ conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver 
 url="https://www.mesa3d.org"
 license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
+        "venus-protocol-1.1::git+https://gitlab.freedesktop.org/virgl/venus-protocol.git"
 )
 
 # Rust crates for NVK, used as Meson subprojects
@@ -54,6 +55,7 @@ for _crate in "${!_crates[@]}"; do
 done
 
 sha512sums=('SKIP'
+            'SKIP'
             '87097d98d47f327d000041ab13acddc366f1500d9c3e5c82169c3358112c7a7c03701c9b3c2c81d9f9da65b7ebac1c479b179dfaf7c059cd0b929b4673e51084'
             '1cdb7e22a35ae231d880c9420784c9acf97bda2db258b3d34aae5061dc1858449defe19a49e12c6a4173906aa72a4115059ac2db0fc760205fd2ab8b5b414434'
             'bc1824e1e4452a40732fc69874d7e1a66f7803717a314790dcf48867eba34bc9441331ef031e386912e52c385645c25b6ed39d4f149973b5b97371b1b96b1920'
@@ -75,38 +77,39 @@ build() {
     export MESON_PACKAGE_CACHE_DIR="$srcdir"
     
     meson setup mesa _build \
-       -D b_ndebug=true \
-       -D b_lto=false \
-       -D b_pie=true \
-       -D buildtype=plain \
-       --wrap-mode=nofallback \
-       --force-fallback-for=syn,paste,rustc-hash \
-       -D rust_std=2021 \
-       -D prefix=/usr \
-       -D sysconfdir=/etc \
-       -D platforms=x11,wayland \
-       -D gallium-drivers=radeonsi,llvmpipe,zink,virgl,iris \
-       -D vulkan-drivers=amd,intel,nouveau,swrast \
-       -D egl=enabled \
-       -D gallium-extra-hud=true \
-       -D gallium-va=enabled \
-       -D gbm=enabled \
-       -D gles1=disabled \
-       -D gles2=enabled \
-       -D glvnd=enabled \
-       -D glx=dri \
-       -D libunwind=enabled \
-       -D llvm=enabled \
-       -D lmsensors=enabled \
-       -D valgrind=disabled \
-       -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit \
-       -D tools=[] \
-       -D zstd=enabled \
-       -D microsoft-clc=disabled \
-       -D video-codecs=all \
-       -D gallium-rusticl=true \
-       -D gallium-rusticl-enable-drivers=radeonsi \
-       -D rust_std=2021
+      -D b_ndebug=true \
+      -D b_lto=false \
+      -D b_pie=true \
+      -D buildtype=plain \
+      --wrap-mode=nofallback \
+      --force-fallback-for=syn,paste,rustc-hash,venus-protocol \
+      -D rust_std=2021 \
+      -D prefix=/usr \
+      -D sysconfdir=/etc \
+      -D platforms=x11,wayland \
+      -D gallium-drivers=radeonsi,llvmpipe,zink,virgl,iris \
+      -D gallium-extra-hud=true \
+      -D gallium-va=enabled \
+      -D egl=enabled \
+      -D gbm=enabled \
+      -D gles1=disabled \
+      -D gles2=enabled \
+      -D glvnd=enabled \
+      -D glx=dri \
+      -D libunwind=enabled \
+      -D valgrind=disabled \
+      -D llvm=enabled \
+      -D lmsensors=enabled \
+      -D vulkan-drivers=amd,intel,nouveau,virtio,swrast \
+      -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit \
+      -D vulkan-manifest-per-architecture=false \
+      -D zstd=enabled \
+      -D tools=[] \
+      -D microsoft-clc=disabled \
+      -D gallium-mediafoundation=disabled \
+      -D video-codecs=all \
+      -D gallium-rusticl=true \
+      -D gallium-rusticl-enable-drivers=radeonsi
 
     meson configure --no-pager _build
     meson compile -C _build

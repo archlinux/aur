@@ -1,6 +1,6 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 26.3.0_devel.227793.61f62f590d0
+	pkgver = 26.3.0_devel.227796.c5138d5f2bf
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -67,12 +67,14 @@ pkgbase = mesa-minimal-git
 	options = !lto
 	options = !debug
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
+	source = venus-protocol-1.1::git+https://gitlab.freedesktop.org/virgl/venus-protocol.git
 	source = rustc-hash-2.1.1.tar.gz::https://static.crates.io/crates/rustc-hash/2.1.1/download
 	source = proc-macro2-1.0.86.tar.gz::https://static.crates.io/crates/proc-macro2/1.0.86/download
 	source = unicode-ident-1.0.12.tar.gz::https://static.crates.io/crates/unicode-ident/1.0.12/download
 	source = quote-1.0.35.tar.gz::https://static.crates.io/crates/quote/1.0.35/download
 	source = paste-1.0.14.tar.gz::https://static.crates.io/crates/paste/1.0.14/download
 	source = syn-2.0.87.tar.gz::https://static.crates.io/crates/syn/2.0.87/download
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 87097d98d47f327d000041ab13acddc366f1500d9c3e5c82169c3358112c7a7c03701c9b3c2c81d9f9da65b7ebac1c479b179dfaf7c059cd0b929b4673e51084
 	sha512sums = 1cdb7e22a35ae231d880c9420784c9acf97bda2db258b3d34aae5061dc1858449defe19a49e12c6a4173906aa72a4115059ac2db0fc760205fd2ab8b5b414434
@@ -122,7 +124,7 @@ pkgname = mesa-minimal-git
 	conflicts = vulkan-gfxstream
 	conflicts = vulkan-dzn
 	conflicts = vulkan-mesa-implicit-layers
-	conflicts = opencl-mesa<26.3.0_devel.227793.61f62f590d0-1
+	conflicts = opencl-mesa<26.3.0_devel.227796.c5138d5f2bf-1
 
 pkgname = opencl-mesa-minimal-git
 	pkgdesc = OpenCL support in rust for mesa drivers (git version)
@@ -130,7 +132,7 @@ pkgname = opencl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools
-	depends = mesa-minimal-git=26.3.0_devel.227793.61f62f590d0-1
+	depends = mesa-minimal-git=26.3.0_devel.227796.c5138d5f2bf-1
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = expat
