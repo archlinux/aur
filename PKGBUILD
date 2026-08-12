@@ -22,7 +22,7 @@
 pkgname=masterpdfeditor-qt6-bundled
 pkgver=5.9.99
 pkgrel=1
-pkgdesc='A complete solution for viewing, creating and editing PDF files'
+pkgdesc='A complete solution for viewing, creating and editing PDF files (bundled with patched qt6 libs).'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
 license=('custom:MasterPDFEditor')
