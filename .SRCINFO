@@ -1,7 +1,7 @@
 pkgbase = opentubex-git
 	pkgdesc = A highly customizable, privacy-focused desktop YouTube client
 	pkgver = r12153.af7cbc488
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentubex.org
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = opentubex-git
 	makedepends = npm
 	makedepends = pnpm
 	depends = electron43
+	optdepends = ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings
+	optdepends = yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings
 	provides = opentubex
 	conflicts = opentubex
 	source = git+https://github.com/OpenTubeX/OpenTubeX
