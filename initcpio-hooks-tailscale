@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/ash
+# mkinitcpio reads this shebang to decide whether the interpreter is present in
+# the image, and /init is busybox ash -- claiming bash earns a "Possibly missing
+# 'bash'" warning on every build. There is no ash dialect available in the
+# linter, so the directive below points it at bash; tests/01-lint.sh parses this
+# file with busybox ash as well.
+# shellcheck shell=bash
 
 run_hook() (
   echo "Starting Tailscale"

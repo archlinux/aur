@@ -80,6 +80,34 @@ tailnet. The node won’t accept local connections unless the client is also par
 of your Tailscale network — this reduces exposure compared to a traditional SSH
 server reachable from everywhere.
 
+`setup-initcpio-tailscale --ssh` also generates OpenSSH host keys and stores them
+alongside the node key, so the initramfs presents the same host key every time
+and your client does not warn about a changed identity.
+
+Works on systemd- and busybox-based initramfs alike, though the second needs a
+hand: Tailscale's SSH server has to resolve the user you log in as, and of the
+hooks mkinitcpio ships only `systemd` writes a user database into the image. On
+a busybox-based initramfs this hook therefore writes a minimal one itself —
+`root`, with `/bin/sh` as the shell, since that is what such an image actually
+contains. Where a database already exists it is left untouched, so a
+systemd-based image keeps the richer one mkinitcpio built.
+
+That also fixes the same problem for other SSH servers in early userspace: the
+`mkinitcpio-dropbear` and `mkinitcpio-tinyssh` hooks do not ship a user database
+either, and without one both daemons start, accept the connection and then
+refuse every login with `Permission denied (publickey)`. With this hook in
+`HOOKS` they work as expected.
+
+**Run one SSH server, not two.** When Tailscale SSH is enabled, tailscaled
+answers port 22 on the tailnet itself, so a dropbear or tinyssh in the same
+initramfs never sees those connections — it still answers on other interfaces,
+but not on the address you would actually reach it at. Either register with
+`--ssh` and use Tailscale SSH, or leave `--ssh` off and use your own daemon.
+
+The test suite covers this end to end on both branches: it boots the image, logs
+in over Tailscale SSH from a second node on a throwaway tailnet, and checks the
+host key offered is the one `setup-initcpio-tailscale` generated.
+
 ## Security considerations
 
 The Tailscale node key is stored in plaintext inside the initramfs. Initramfs is
@@ -136,7 +164,18 @@ Run the test suite in a throwaway Arch container:
 
 ```sh
 make test        # lint, packaging, initramfs image contents
-make test-all    # adds a QEMU boot test against a local headscale
+make test-all    # adds the QEMU boot tests against a local headscale
+```
+
+`make test-all` boots two images against a throwaway headscale — one systemd,
+one busybox, both registered with `--ssh` — and checks each node comes online,
+then logs in over Tailscale SSH and compares the host key it is offered with the
+one `setup-initcpio-tailscale` generated. A single scenario can be run on its
+own:
+
+```sh
+./tests/container.sh 04     # both, the way CI runs them
+BOOT_SCENARIOS=busybox ./tests/container.sh 04
 ```
 
 ### Releasing

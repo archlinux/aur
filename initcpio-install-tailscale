@@ -50,6 +50,24 @@ build() {
 			/usr/lib/systemd/system/tailscaled.service
 	else
 		add_runscript
+
+		# tailscaled resolves the login user through the user database -- which
+		# is what the getent above is for -- and of the hooks mkinitcpio ships
+		# only 'systemd' writes one. Without it the Tailscale SSH server refuses
+		# every session, and so does a dropbear or tinyssh running alongside it,
+		# on an image that is otherwise perfectly reachable.
+		#
+		# Skipped when something has already provided a database, so a hook that
+		# knows more than this one always wins. The shell has to exist inside the
+		# image, hence /bin/sh (busybox) rather than whatever the host uses.
+		if [[ ! -e "$BUILDROOT/etc/passwd" ]]; then
+			printf 'root:x:0:0:root:/root:/bin/sh\n' | add_file - /etc/passwd 0644
+			printf 'root:*:::::::\n' | add_file - /etc/shadow 0400
+			printf 'root:x:0:\n' | add_file - /etc/group 0644
+			printf 'passwd: files\ngroup: files\nshadow: files\n' |
+				add_file - /etc/nsswitch.conf 0644
+			add_dir /root
+		fi
 	fi
 }
 
