@@ -3,7 +3,7 @@
 pkgname=neomod-bin
 _pkgname=${pkgname%-bin}
 pkgver=43.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Third-party McOsu fork, with additional features"
 arch=(x86_64)
 url="https://github.com/neomodnet/neomod"
@@ -12,14 +12,14 @@ depends=(acl libmd libglvnd glu libxrender libxrandr libx11 \
         libxfixes libxext libxi libxdmcp libxau libxcb util-linux-libs)
 options=(!strip)
 source=(
-  "$_pkgname-$pkgver.tar.gz::https://github.com/neomodnet/neomod/releases/download/v$pkgver/neomod-linux-x64.tar.gz"
+  "$_pkgname-$pkgver.tar.gz::https://neomod.net/releases/v$pkgver/neomod-linux-x64.tar.gz"
   "$_pkgname.png"
   "$_pkgname.desktop"
   "$_pkgname-bass.desktop"
   "$_pkgname.sh"
 )
 
-sha256sums=('87405b22cc808c3a7705b9bc550cb4eec7b896c4558330316e5c2932ff151770'
+sha256sums=('1c1406cbe8158b955eafaed43566cfa34183ce01725068f5275e849e2b270f11'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
             '5b4e71eecf4129c6acb1c0ef885b039e203e0cf517dc30ac8f2e9c33bca23544'
             '8ad58373f8f6298136c454c3b1af6819debfa5f94a9148829c3d5db67b6874d3'
