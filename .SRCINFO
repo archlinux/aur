@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-dm
 	pkgdesc = DreamMaker grammar for tree-sitter
 	pkgver = 0.25.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/feudeytf/tree-sitter-dm
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

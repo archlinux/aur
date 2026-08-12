@@ -3,9 +3,9 @@
 _name=tree-sitter-dm
 pkgname=python-tree-sitter-dm
 pkgver=0.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DreamMaker grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/feudeytf/tree-sitter-dm"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
