@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=orffinder
 pkgver=0.4.3
 pkgrel=1
