@@ -1,0 +1,19 @@
+pkgbase = log-for-linux
+	pkgdesc = Native GTK4/libadwaita ham radio logbook (ADIF, contests, Cabrillo, TCI, WSJT-X)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/OK1BR/log-for-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = desktop-file-utils
+	makedepends = gtk-update-icon-cache
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = sqlite
+	depends = libwebsockets
+	source = log-for-linux-0.2.0.tar.gz::https://github.com/OK1BR/log-for-linux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 7d31ec947257fd28bb0417979a21913e2c48f6a9d5fd89dba265a3f56c31d7f3
+
+pkgname = log-for-linux
