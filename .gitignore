@@ -1,0 +1,10 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tar.gz
+.SRCINFO.gen
+.PKGBUILD.pre-build
+.SRCINFO.pre-build
+.nvchecker.oldver.json
+.nvchecker.newver.json

@@ -1,0 +1,9 @@
+[__config__]
+oldver = ".nvchecker.oldver.json"
+newver = ".nvchecker.newver.json"
+
+[koan]
+source = "github"
+github = "radiosilence/koan"
+use_latest_release = true
+prefix = "v"
