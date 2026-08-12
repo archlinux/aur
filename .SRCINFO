@@ -1,0 +1,17 @@
+pkgbase = python-fastfingertips
+	pkgdesc = A Python library for Letterboxd data.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/fastfingertips/fastfingertips-pypi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-termcolo
+	source = https://files.pythonhosted.org/packages/source/f/fastfingertips/fastfingertips-0.1.4.tar.gz
+	sha512sums = 0b0a0bbb8d17743b7e323d506544a656c1300ead2dedf6dd52d6cf3d1e387bdaa4ec92db245458446803012b5f2cc3a83a9c4da9cb06f498b7c648883a944e8d
+
+pkgname = python-fastfingertips
