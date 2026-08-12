@@ -1,7 +1,7 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=ungoogled-chromium-widevine-bin
-pkgver=150.0.7871.186
+pkgver=151.0.7922.108
 pkgrel=1
 _upstream_rel=$pkgrel
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
@@ -10,18 +10,64 @@ url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 options=('!strip')
 depends=(
-  'alsa-lib' 'brotli' 'dbus' 'desktop-file-utils' 'flac' 'fontconfig'
-  'freetype2' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'icu' 'libcups'
-  'libffi' 'libgcrypt' 'libjpeg-turbo' 'libpng' 'libpulse' 'libva'
-  'libwebp' 'libxml2' 'libxslt' 'libxss' 'minizip' 'nss' 'opus'
-  'pciutils' 'systemd' 'ttf-liberation' 'xdg-utils'
+  'alsa-lib'
+  'at-spi2-core'
+  'brotli'
+  'cairo'
+  'dav1d'
+  'dbus'
+  'desktop-file-utils'
+  'expat'
+  'flac'
+  'fontconfig'
+  'freetype2'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'harfbuzz'
+  'hicolor-icon-theme'
+  'libcups'
+  'libdrm'
+  'libffi'
+  'libgcc'
+  'libgcrypt'
+  'libjpeg-turbo'
+  'libpulse'
+  'libstdc++'
+  'libva'
+  'libwebp'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxml2'
+  'libxrandr'
+  'libxslt'
+  'libxss'
+  'mesa'
+  'minizip'
+  'nspr'
+  'nss'
+  'openh264'
+  'opus'
+  'pango'
+  'pciutils'
+  'systemd'
+  'systemd-libs'
+  'ttf-liberation'
+  'xdg-utils'
+  'zlib'
+  'zstd'
 )
 optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
   'kdialog: support for native dialogs in Plasma'
   'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
-  'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-  'kwallet: support for storing passwords in KWallet on Plasma'
+  'qt6-base: Qt support'
+  'org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce'
   'upower: Battery Status API support'
 )
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
@@ -31,8 +77,8 @@ source=(
   "google-chrome-stable_${pkgver}-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb"
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('6dff50efad4c3320949d7d7c1ef25adb99891f6c1134dc74866a2822499e8742'
-  '4193e00b6d5d5969ee63f7a69596868f546aa0e8cb077b3e0bf9cc1e2c719d00')
+sha256sums=('3dff9c4ce6271ee1f87a6ddf1676644991b5ef42a5c5355a730463f0cfae7427'
+            'bfb6e6d345055eb481a50db423256fa2732ce010f785a56c327e213a638efdef')
 
 prepare() {
   mkdir -p "$srcdir/chrome_extract"
