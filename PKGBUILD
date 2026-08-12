@@ -3,16 +3,16 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron37'
-_electronpackage='electron37'
-pkgver=7.1.1.nightly.4
-pkgrel=1
+_electron='electron43'
+_electronpackage='electron43'
+pkgver='7.1.3.nightly.9'
+pkgrel=0
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
-apptag='v7.1.1-nightly.4'
+apptag='v7.1.3-nightly.9'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
 provides=(
@@ -156,7 +156,7 @@ build() {
 	# Run the electron build script,
 	# passing parameters "-l dir" to only build for Linux and the dir target (which we will use later in function package() to make the Arch package),
 	# and "--${_electronbuilderarch}" to only build for the current architecture, saving build time
-	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} -l dir --${_electronbuilderarch} -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
+	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} --publish never -l dir --${_electronbuilderarch} -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
 }
 
 package() {
