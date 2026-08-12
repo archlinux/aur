@@ -2,7 +2,7 @@
 
 pkgbase=cuml
 pkgname=(libcuml python-cuml)
-pkgver=26.06.00
+pkgver=26.08.00
 pkgrel=1
 pkgdesc="cuML - RAPIDS Machine Learning Library"
 url="https://github.com/rapidsai/cuml"
@@ -16,12 +16,10 @@ source=(
     "missing-include2.patch"
     "missing-pkg.patch"
 )
-sha256sums=(
-    'fd182c56dbff06dc7f1f67ebfb4fd512f0f8e3f1bdd30e98037a2d97cdf0c32b'
-    'ea994ead395af2537637e14e5945df3718d8d7189c03099d729aae8fde7da8ef'
-    'e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520'
-    'ead7d88d8efd5a4c54b62ff4cc3cac4bc438fae4b0fa10d998270dca8ad3b866'
-)
+sha256sums=('b8023c23c54e2f5c8cd104b736da8dc71d157ccb2d010767acbebcc8880cd945'
+            'ea994ead395af2537637e14e5945df3718d8d7189c03099d729aae8fde7da8ef'
+            'e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520'
+            'ead7d88d8efd5a4c54b62ff4cc3cac4bc438fae4b0fa10d998270dca8ad3b866')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
