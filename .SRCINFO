@@ -1,6 +1,6 @@
 pkgbase = pg_clickhouse
 	pkgdesc = PostgreSQL extension to query ClickHouse databases from PostgreSQL
-	pkgver = 0.3.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/ClickHouse/pg_clickhouse
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pg_clickhouse
 	depends = postgresql
 	depends = curl
 	depends = util-linux-libs
-	source = pg_clickhouse::git+https://github.com/ClickHouse/pg_clickhouse.git#tag=v0.3.2
+	source = pg_clickhouse::git+https://github.com/ClickHouse/pg_clickhouse.git#tag=v0.10.0
 	sha256sums = SKIP
 
 pkgname = pg_clickhouse

@@ -1,6 +1,6 @@
 # maintainer: luka null <lukadevnull@vivaldi.net>
 pkgname=pg_clickhouse
-pkgver=0.3.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='PostgreSQL extension to query ClickHouse databases from PostgreSQL'
 arch=('x86_64')
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  make
+  make WCLOBBERED=-Wno-error=clobbered
 }
 
 package() {
