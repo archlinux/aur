@@ -1,0 +1,12 @@
+[[maintainers]]
+name = "ShinKouyo"
+email = "i@0x0f.dev"
+
+vcs = "git"
+
+[collect]
+exclude = ["*-debug*"]
+
+[aur]
+name = "pins-git"
+submit = true
