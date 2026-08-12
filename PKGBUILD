@@ -3,9 +3,9 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-_electron='electron37'
-_electronpackage='electron37'
-pkgver=7.1.3.nightly.1.r7162.37499b97e
+_electron='electron43'
+_electronpackage='electron43'
+pkgver=7.1.3.nightly.10.r7192.21a359a6b
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -149,7 +149,7 @@ build() {
 	# Run the electron build script,
 	# passing parameters "-l dir" to only build for Linux and the dir target (which we will use later in function package() to make the Arch package),
 	# and "--${_electronbuilderarch}" to only build for the current architecture, saving build time
-	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} -l dir --${_electronbuilderarch} -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
+	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} --publish never -l dir --${_electronbuilderarch} -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
 }
 
 package() {
