@@ -1,6 +1,6 @@
 pkgbase = pins-git
 	pkgdesc = Create and edit app shortcuts
-	pkgver = 2.4.5.r3.ge59d0c5
+	pkgver = 2.4.6.r4.gd1b7bac
 	pkgrel = 1
 	url = https://github.com/fabrialberio/Pins
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = pins-git
 	depends = libadwaita
 	provides = pins
 	conflicts = pins
-	source = git+https://github.com/fabrialberio/Pins.git
+	options = !debug
+	source = Pins::git+https://github.com/fabrialberio/Pins.git
 	sha256sums = SKIP
 
 pkgname = pins-git
