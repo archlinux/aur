@@ -1,6 +1,6 @@
 # Maintainer: Icarus-Alpha <your-email@example.com>
 pkgname=readany-bin
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="An AI-powered e-book reader with semantic search, intelligent chat, and knowledge management"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     'gtk3'
     'hicolor-icon-theme'
     'libsoup3'
+    'nodejs'
     'pango'
     'webkit2gtk-4.1'
 )
@@ -21,8 +22,8 @@ makedepends=('binutils')
 options=('!strip' '!debug')
 provides=('readany')
 conflicts=('readany')
-source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/codedogQBY/ReadAny/releases/download/v1.3.4/ReadAny_1.3.4_amd64.deb")
-sha256sums_x86_64=('de956b25dd2f3d409fedb4a6c91d7291ce4f1feb26b6850b3bcbad6fdc25c030')
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/codedogQBY/ReadAny/releases/download/v1.3.5/ReadAny_1.3.5_amd64.deb")
+sha256sums_x86_64=('032028b17da76a9fa73843a5ac7288b31731f8bfb59061dc322e5d6b63990382')
 
 prepare() {
     ar x "${pkgname}-${pkgver}.deb"
@@ -31,6 +32,8 @@ prepare() {
 
 package() {
     install -Dm755 "${srcdir}/usr/bin/app" "${pkgdir}/usr/lib/readany"
+    install -d "${pkgdir}/usr/lib/ReadAny"
+    cp -a "${srcdir}/usr/lib/ReadAny/readany-cli" "${pkgdir}/usr/lib/ReadAny/"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/readany" <<'EOF'
 #!/bin/sh
