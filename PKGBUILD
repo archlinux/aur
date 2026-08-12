@@ -1,7 +1,7 @@
 # Maintaner: Giovanni Scafora <scafora.giovanni@gmail.com>
 
 pkgname=sle-suite-pro-git
-pkgver=0.0.3.r4.ge55939a
+pkgver=0.0.3+r4+ge55939a
 pkgrel=1
 pkgdesc="Advanced tool for SLE cards"
 arch=('any')
@@ -19,8 +19,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
+      printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 

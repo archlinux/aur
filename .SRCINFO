@@ -1,6 +1,6 @@
 pkgbase = sle-suite-pro-git
 	pkgdesc = Advanced tool for SLE cards
-	pkgver = 0.0.3.r4.ge55939a
+	pkgver = 0.0.3+r4+ge55939a
 	pkgrel = 1
 	url = https://github.com/wikilift/sle-suite-pro
 	arch = any
