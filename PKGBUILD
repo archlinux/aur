@@ -1,202 +1,89 @@
 # Maintainer: Akira <akira.uestc at gmail dot com>
-# Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
+# Releases: https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
 
 pkgname=chatgpt-desktop-bin
-pkgver=26.727.51351
+pkgver=26.803.81509
 pkgrel=1
-pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
+pkgdesc="Official ChatGPT desktop app for Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
 license=('custom')
 options=('!strip' '!debug')
-install="${pkgname}.install"
-provides=('openai-codex-desktop')
-conflicts=('openai-codex-desktop')
+provides=(
+  "chatgpt=${pkgver}"
+  "openai-codex-desktop=${pkgver}"
+)
+conflicts=(
+  'chatgpt'
+  'openai-codex-desktop'
+)
 replaces=('openai-codex-desktop')
 
 depends=(
-  'electron42'
-  'openai-codex'
-  'python'
-  'hicolor-icon-theme'
+  'alsa-lib'
+  'at-spi2-core'
+  'cairo'
+  'dbus'
+  'expat'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'graphite'
+  'gtk3'
+  'libcups'
+  'libdrm'
+  'libglvnd'
+  'libnotify'
+  'libusb'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+  'openssl'
+  'pango'
+  'systemd-libs'
+  'sh'
   'xdg-utils'
 )
 
-makedepends=(
-  'imagemagick'
-  'libarchive'
-  'node-gyp'
-  'nodejs'
+optdepends=(
+  'apparmor: support the bundled user-namespace profile'
+  'git: Git repository integration'
+  'gnome-keyring: Secret Service backend for credential storage'
+  'kde-cli-tools: file deletion support under KDE Plasma'
+  'libsecret: Secret Service credential storage support'
+  'pipewire: screen sharing under Wayland'
 )
 
-source=(
-  "ChatGPT-${pkgver}.zip::https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-${pkgver}.zip"
-  'better-sqlite3-12.11.1.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.11.1.tgz'
-  'node-pty-1.1.0.tgz::https://registry.npmjs.org/node-pty/-/node-pty-1.1.0.tgz'
-  'electron-v42.3.0-headers.tar.gz::https://electronjs.org/headers/v42.3.0/node-v42.3.0-headers.tar.gz'
-  'chatgpt-desktop.sh'
-  'ChatGPT.desktop'
-  'asar-tools.mjs'
-  'patch-linux-runtime.mjs'
-  'patch-linux-open-targets.mjs'
-  'patch-linux-window-chrome.mjs'
+backup=('etc/apparmor.d/chatgpt')
+
+source_x86_64=(
+  "chatgpt_${pkgver}_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_amd64.deb"
 )
-
-noextract=(
-  "ChatGPT-${pkgver}.zip"
-  'better-sqlite3-12.11.1.tgz'
-  'node-pty-1.1.0.tgz'
-  'electron-v42.3.0-headers.tar.gz'
-)
-
-sha256sums=('8f3fc87e634332fddc711e5221eb2af554f5f6ecb04e6a69b3d10e01f4f196c8'
-            'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
-            'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-            '821009f9c1830050d894aef9e61906cb0a537b2000b2d9bbed9985fff1d5e0d0'
-            '04a5f786a2389eb408b2be71ce0fe1cb0052e4820e32462af9ccb19c76cdff6e'
-            '5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d'
-            '6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56'
-            'ec3657bd7e40acd1a267fb5b5b4328af91799e33f9242bc41cd970027ef04e38'
-            '5808061449ca8026cc387e8efc2c79f26ffba746c9f326c92162bb573c1f6e43'
-            '330b6e09ba8fa8d9cc02fc83b85ed300381a4c8c0341e1eca52adc4f5398de1b')
-
-prepare() {
-  cd "${srcdir}"
-
-  rm -rf dmg app-extracted app.asar app.asar.unpacked icon native-build
-  mkdir -p dmg icon native-build
-
-  bsdtar -xf "ChatGPT-${pkgver}.zip" -C "${srcdir}/dmg"
-
-  local appdir
-  appdir="$(find dmg -maxdepth 4 -type d -name '*.app' ! -path '*/__MACOSX/*' -print -quit)"
-  [[ -n "${appdir}" ]] || {
-    echo "Could not find .app bundle in ChatGPT archive"
-    return 1
-  }
-
-  local resources_dir="${appdir}/Contents/Resources"
-  [[ -f "${resources_dir}/app.asar" ]] || {
-    echo "Could not find app.asar in ChatGPT archive"
-    return 1
-  }
-
-  node "${srcdir}/asar-tools.mjs" extract \
-    "${resources_dir}/app.asar" \
-    app-extracted \
-    "${resources_dir}/app.asar.unpacked"
-
-  tar -xzf "${srcdir}/electron-v42.3.0-headers.tar.gz" -C native-build
-  mkdir -p native-build/node_modules
-
-  tar -xzf "${srcdir}/better-sqlite3-12.11.1.tgz" -C native-build/node_modules
-  mv native-build/node_modules/package native-build/node_modules/better-sqlite3
-
-  tar -xzf "${srcdir}/node-pty-1.1.0.tgz" -C native-build/node_modules
-  mv native-build/node_modules/package native-build/node_modules/node-pty
-
-  cp -a --no-preserve=ownership app-extracted/node_modules/node-addon-api \
-    native-build/node_modules/
-
-  (
-    cd native-build/node_modules/better-sqlite3
-    node-gyp configure --release --nodedir="${srcdir}/native-build/node_headers"
-    mkdir -p \
-      build/Release/.deps/Release/obj.target/sqlite3/gen/sqlite3 \
-      build/Release/.deps/Release/obj.target/better_sqlite3/src \
-      build/Release/.deps/Release/obj.target/better_sqlite3/src/objects \
-      build/Release/.deps/Release/obj.target/better_sqlite3/src/util \
-      build/Release/.deps/Release/obj.target/test_extension/deps
-    node-gyp build --release
-  )
-
-  (
-    cd native-build/node_modules/node-pty
-    node-gyp configure --release --nodedir="${srcdir}/native-build/node_headers"
-    mkdir -p build/Release/.deps/Release/obj.target/pty/src/unix
-    node-gyp build --release
-  )
-
-  rm -rf app-extracted/node_modules/better-sqlite3/build
-  cp -a --no-preserve=ownership \
-    native-build/node_modules/better-sqlite3/LICENSE \
-    native-build/node_modules/better-sqlite3/README.md \
-    native-build/node_modules/better-sqlite3/binding.gyp \
-    native-build/node_modules/better-sqlite3/lib \
-    native-build/node_modules/better-sqlite3/package.json \
-    app-extracted/node_modules/better-sqlite3/
-  mkdir -p app-extracted/node_modules/better-sqlite3/build/Release
-  cp -a --no-preserve=ownership \
-    native-build/node_modules/better-sqlite3/build/Release/better_sqlite3.node \
-    native-build/node_modules/better-sqlite3/build/Release/test_extension.node \
-    app-extracted/node_modules/better-sqlite3/build/Release/
-
-  rm -rf app-extracted/node_modules/node-pty/build
-  mkdir -p app-extracted/node_modules/node-pty/build/Release
-  cp -a --no-preserve=ownership \
-    native-build/node_modules/node-pty/build/Release/pty.node \
-    app-extracted/node_modules/node-pty/build/Release/
-
-  rm -f app-extracted/node_modules/better-sqlite3/.codex-native-module-build.json
-  rm -f app-extracted/node_modules/node-pty/.codex-native-module-build.json
-  rm -rf app-extracted/node_modules/node-mac-permissions
-  rm -rf app-extracted/node_modules/objc-js/prebuilds
-  find app-extracted -type f \( -name '*.dylib' -o -name 'sparkle.node' \) -delete
-  find app-extracted -type d -name '*.dSYM' -prune -exec rm -rf {} +
-  find app-extracted -path '*/prebuilds/*' -type f -name '*.node' \
-    ! \( -path '*/linux-x64/*' -o -path '*/HID-linux-x64/*' -o -path '*/HID_hidraw-linux-x64/*' \) \
-    -delete
-  find app-extracted -path '*/prebuilds/*' -type f -name '*musl*.node' -delete
-
-  node "${srcdir}/patch-linux-runtime.mjs" app-extracted
-  node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
-  node "${srcdir}/patch-linux-window-chrome.mjs" app-extracted
-
-  node "${srcdir}/asar-tools.mjs" pack app-extracted app.asar app.asar.unpacked
-
-  cp "${resources_dir}/icon-chatgpt.png" icon/icon-chatgpt.png
-  magick icon/icon-chatgpt.png -resize 512x512 icon/chatgpt-desktop.png
-}
+source=('chatgpt-launcher.sh')
+noextract=("chatgpt_${pkgver}_amd64.deb")
+sha256sums_x86_64=('a9bf91a368f9f7c4eea38082a9fb8fb46b8d005b719a6d7715d2e5a1982c38eb')
+sha256sums=('aab6b1105d7273443234e77412fbaa35ff9e04098ac63c2f73ae8e87afb43bd2')
 
 package() {
-  cd "${srcdir}"
+  bsdtar -xOf "${srcdir}/chatgpt_${pkgver}_amd64.deb" data.tar.xz |
+    bsdtar --no-same-owner -xJf - -C "${pkgdir}"
 
-  install -Dm644 app.asar \
-    "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
+  install -Dm755 "${srcdir}/chatgpt-launcher.sh" \
+    "${pkgdir}/usr/lib/chatgpt/codex-launcher"
 
-  install -Dm644 icon/icon-chatgpt.png \
-    "${pkgdir}/usr/lib/${pkgname}/resources/icon-chatgpt.png"
+  install -Dm644 "${pkgdir}/usr/share/doc/chatgpt/copyright" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  ln -s /usr/lib/chatgpt/LICENSES.chromium.html \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 
-  if [[ -d app.asar.unpacked ]]; then
-    cp -a --no-preserve=ownership app.asar.unpacked \
-      "${pkgdir}/usr/lib/${pkgname}/resources/"
-  fi
-
-  if [[ -d app-extracted/webview ]]; then
-    mkdir -p "${pkgdir}/usr/lib/${pkgname}/content"
-    cp -a --no-preserve=ownership app-extracted/webview \
-      "${pkgdir}/usr/lib/${pkgname}/content/"
-  fi
-
-  ln -s /usr/lib/electron42/electron \
-    "${pkgdir}/usr/lib/${pkgname}/chatgpt"
-
-  install -Dm755 chatgpt-desktop.sh \
-    "${pkgdir}/usr/bin/chatgpt-desktop"
-
-  install -Dm644 icon/chatgpt-desktop.png \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/chatgpt-desktop.png"
-
-  install -Dm644 ChatGPT.desktop \
-    "${pkgdir}/usr/share/applications/ChatGPT.desktop"
-
-  local notices
-  notices="$(find dmg -path '*/Contents/Resources/THIRD_PARTY_NOTICES.txt' ! -path '*/__MACOSX/*' -print -quit)"
-  [[ -n "${notices}" ]] || {
-    echo "Could not find THIRD_PARTY_NOTICES.txt"
-    return 1
-  }
-
-  install -Dm644 "${notices}" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.txt"
+  rm -rf "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/lintian"
 }

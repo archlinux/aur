@@ -5,6 +5,7 @@
 *.msi
 *.zip
 *.tgz
+*.deb
 *.log
 *.log.*
 *.sig
