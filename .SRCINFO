@@ -1,6 +1,6 @@
 pkgbase = antiphon
 	pkgdesc = A modern mail client for the terminal
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://git.sr.ht/~donquinleone/antiphon
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = antiphon
 	makedepends = scdoc
 	depends = notmuch
 	optdepends = gnupg: OpenPGP signing and decryption via gpg-agent
-	source = antiphon-1.4.0.tar.gz::https://git.sr.ht/~donquinleone/antiphon/archive/v1.4.0.tar.gz
-	sha256sums = e8558995c1c94f279d918d5a14daa8330e87b7bf7702a0566138fc5c8143e672
+	source = antiphon-1.5.0.tar.gz::https://git.sr.ht/~donquinleone/antiphon/archive/v1.5.0.tar.gz
+	sha256sums = e1c9e385cd2ae640f401941c1e750471799c63d4cac465db0b4d0d4d364e892c
 
 pkgname = antiphon
