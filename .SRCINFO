@@ -1,7 +1,7 @@
 pkgbase = kwin-osd-bottom
 	pkgdesc = An easy to use, but flexible, Wayland compositor
 	pkgver = 6.7.4
-	pkgrel = 3
+	pkgrel = 5
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
