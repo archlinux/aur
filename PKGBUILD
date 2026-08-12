@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=drand-client
 _name=go-clients
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="The drand (go) client and gossipsub relay"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('Apache-2.0 OR MIT')
 depends=(glibc)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::https://github.com/drand/$_name/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('d0bb7b1c5b7ff7cc329c9492f60c3d6b29c14ee6b162f0e0a90f0ae3ef64f0186e366345319df61069d599ff16782db719d8dc7c7da41062c084d7bd6c29175b')
+b2sums=('f53e3ef32118a111d95c9c44034ddac8d03eb9396ef5388db4633a85486099546a6efddcbde51a727f8b493565efca1b7100cb46d9a659ad096feda223ff762a')
 
 build() {
     cd $_name-$pkgver

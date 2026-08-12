@@ -1,13 +1,13 @@
 pkgbase = drand-client
 	pkgdesc = The drand (go) client and gossipsub relay
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/drand/go-clients
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = go
 	depends = glibc
-	source = drand-client-0.2.3.tar.gz::https://github.com/drand/go-clients/archive/refs/tags/v0.2.3.tar.gz
-	b2sums = d0bb7b1c5b7ff7cc329c9492f60c3d6b29c14ee6b162f0e0a90f0ae3ef64f0186e366345319df61069d599ff16782db719d8dc7c7da41062c084d7bd6c29175b
+	source = drand-client-0.3.0.tar.gz::https://github.com/drand/go-clients/archive/refs/tags/v0.3.0.tar.gz
+	b2sums = f53e3ef32118a111d95c9c44034ddac8d03eb9396ef5388db4633a85486099546a6efddcbde51a727f8b493565efca1b7100cb46d9a659ad096feda223ff762a
 
 pkgname = drand-client
