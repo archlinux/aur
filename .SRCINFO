@@ -10,7 +10,6 @@ pkgbase = linn
 	depends = libadwaita
 	depends = gst-plugins-base
 	depends = gst-plugins-good
-	depends = gst-plugins-gtk4
 	depends = gst-libav
 	depends = gstreamer
 	optdepends = gst-plugins-bad: extra media codecs
