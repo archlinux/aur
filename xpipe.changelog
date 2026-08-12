@@ -1,7 +1,9 @@
-- Fix VNC rendering issues when server did not support resize
-- Fix git sync error about missing HEAD on first commit
-- Fix Windows updater breaking when XPipe is run as admin once
-- Fix netbird auth links sometimes not being opened on Linux when connecting to a system
-- Fix RealVNC v8 app on macOS not being detected
-- Fix batch mode state not resetting properly on toggle
-- Fix various NullPointers
+- The public key field is now always automatically generated if possible when selecting a private SSH key file
+- The key passphrase field is now automatically set to none if possible when selecting a private SSH key file
+- Fix hetzner cloud integration being broken with latest version of the hcloud CLI
+- The ForceHiDpiOptimizations RDP setting is now not always overridden if it is already specified via addtional options
+- Fix init scripts being run multiple times when they are part of a shell environment and enabled at the same time
+- Fix init script with dependencies running dependent scripts multiple times
+- Fix local dev build not properly finding installed CLI and version
+- Fix Windows auto-updater leaving a console window open when running in powershell
+
