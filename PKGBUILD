@@ -2,13 +2,13 @@
 
 pkgname=oh-my-pi
 pkgver=17.2.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2')
-makedepends=('bun' 'git' 'rust')
+makedepends=('bun' 'cargo' 'git')
 options=('!lto' '!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
@@ -27,6 +27,8 @@ prepare() {
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     patch -p1 -i "${srcdir}/use-system-opus.patch"
+
+    RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
     # tree-sitter's vendored array.h type-puns every Array(T)* through a generic
     # Array* whose contents member is void*. _array__grow may realloc and store
@@ -60,7 +62,7 @@ _build_native() {
     LIBOPUS_STATIC=0 \
     PCRE2_SYS_STATIC=0 \
     RUSTONIG_SYSTEM_LIBONIG=1 \
-        cargo build --locked --profile ci --package pi-natives
+        cargo build --frozen --profile ci --package pi-natives
 
     install -Dm755 target/ci/libpi_natives.so \
         "packages/natives/native/pi_natives.linux-x64-${_variant}.node"
@@ -68,6 +70,9 @@ _build_native() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+
+    export CARGO_TARGET_DIR=target
+    export RUSTUP_TOOLCHAIN=stable
 
     bun install --frozen-lockfile
     local _variant

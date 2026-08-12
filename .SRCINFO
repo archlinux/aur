@@ -1,13 +1,13 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
 	pkgver = 17.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
 	makedepends = bun
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
