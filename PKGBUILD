@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=python-jsrc
 pkgver=0.3.1
 pkgrel=2
