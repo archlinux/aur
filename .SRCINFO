@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-elixir
 	pkgdesc = Elixir grammar for tree-sitter
 	pkgver = 0.3.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/elixir-lang/tree-sitter-elixir
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
