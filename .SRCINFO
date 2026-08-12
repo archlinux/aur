@@ -1,6 +1,6 @@
 pkgbase = terabox-bin
 	pkgdesc = Baidu netdisc international version
-	pkgver = 1.46.1
+	pkgver = 1.47.0
 	pkgrel = 1
 	url = https://www.terabox.com/chinese/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = terabox-bin
 	depends = nss
 	optdepends = libappindicator-gtk3
 	options = !strip
-	source = https://data.nephobox.com/issue/terabox/Linux/1.46.1/TeraBox_1.46.1_amd64.deb
-	sha256sums = c11639ff8d17f12888b049373987bc6e87d0718df4b11cb6178004ae5c45048b
+	source = https://data.nephobox.com/issue/terabox/Linux/1.47.0/TeraBox_1.47.0_amd64.deb
+	sha256sums = f08433982bb1de139028e41f004518d18e31e2b93d6cfcf72f801d0546899f7d
 
 pkgname = terabox-bin
