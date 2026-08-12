@@ -1,7 +1,7 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous single-process Wayland compositor
-	pkgver = 0.4.5
-	pkgrel = 3
+	pkgver = 0.4.8
+	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = aqueous
 	makedepends = curl
 	makedepends = patch
 	makedepends = scdoc
-	makedepends = wayland-protocols
+	makedepends = wayland-protocols>=1.49
 	makedepends = pkgconf
 	makedepends = meson
 	makedepends = ninja
@@ -25,7 +25,7 @@ pkgbase = aqueous
 	makedepends = hwdata
 	makedepends = zig>=0.16
 	depends = wayland
-	depends = wayland-protocols
+	depends = wayland-protocols>=1.49
 	depends = libxkbcommon
 	depends = libinput
 	depends = pixman
@@ -60,9 +60,9 @@ pkgbase = aqueous
 	optdepends = wireplumber: volume/media key bindings (wpctl)
 	conflicts = aqueous-git
 	conflicts = aqueous-bin
-	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git#tag=v0.4.5
+	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git#tag=v0.4.8
 	source = wlroots-0.20.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.20.2/wlroots-0.20.2.tar.gz
-	sha256sums = 1656ba0ac2a6811988fa78ebad9884d3ece169ec99b5c97f37f5848b1549b31d
+	sha256sums = 7263e6df2a922cbb07ad2a6da3cdff56bf85290bdd5671c57cdbd4c29af206a5
 	sha256sums = 972c7ac44b17828f4702bfae7cd8347346a3fb5b2c1076cfa2c3fcedac5ec343
 
 pkgname = aqueous

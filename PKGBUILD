@@ -2,13 +2,13 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.5
-pkgrel=3
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
-depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
+depends=('wayland' 'wayland-protocols>=1.49' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev'
          'noctalia' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
          'xdg-desktop-portal-wlr' 'wl-clipboard'
@@ -19,7 +19,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'mesa' 'systemd-libs' 'seatd' 'libdisplay-info' 'libliftoff'
          'lcms2' 'vulkan-icd-loader' 'libxcb' 'xcb-util-errors' 'xcb-util-wm' 'xcb-util-renderutil')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'curl' 'patch' 'scdoc' 'wayland-protocols' 'pkgconf'
+             'git' 'curl' 'patch' 'scdoc' 'wayland-protocols>=1.49' 'pkgconf'
              'meson' 'ninja' 'glslang' 'vulkan-headers' 'hwdata' 'zig>=0.16')
 checkdepends=('jq' 'ripgrep')
 optdepends=('noctalia-greeter: recommended display manager / login greeter'
@@ -34,7 +34,7 @@ source=(
     "aqueous::git+${url}.git#tag=v${pkgver}"
     "wlroots-0.20.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.20.2/wlroots-0.20.2.tar.gz"
 )
-sha256sums=('1656ba0ac2a6811988fa78ebad9884d3ece169ec99b5c97f37f5848b1549b31d'
+sha256sums=('7263e6df2a922cbb07ad2a6da3cdff56bf85290bdd5671c57cdbd4c29af206a5'
             '972c7ac44b17828f4702bfae7cd8347346a3fb5b2c1076cfa2c3fcedac5ec343')
 
 build() {
@@ -78,7 +78,7 @@ build() {
     msg2 "Building Aqueous Settings helper..."
     cd "$srcdir/aqueous/plugin/helper"
     ZIG_GLOBAL_CACHE_DIR="$srcdir/aqueous-plugin-zig-global" \
-    ZIG_LOCAL_CACHE_DIR="$srcdir/aqueous-plugin-zig-local" \
+    ZIG_LOCAL_CACHE_DIR="$srcdir/aqueous-plugin-zig-local-v2" \
     zig build -Dcpu=baseline -Doptimize=ReleaseSafe \
         --prefix "$srcdir/aqueous-plugin-dist" install
 }
@@ -139,12 +139,13 @@ package() {
     install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" "$pkgdir/usr/bin/aqueous-wm"
     install -Dm644 "$srcdir/aqueous/aqueous.desktop" "$pkgdir/usr/share/wayland-sessions/aqueous.desktop"
 
-    # uwsm environment file. uwsm sources /etc/uwsm/env-aqueous (the -aqueous
-    # suffix matches DesktopNames=Aqueous) before launching the compositor and
-    # exports the static toolkit/backend hints into the systemd --user / D-Bus
-    # environment, so user-unit-launched apps inherit them too.
+    # uwsm environment file. uwsm's env preloader scans the XDG config
+    # hierarchy (NOT /etc/uwsm/) for uwsm/env-aqueous (the -aqueous suffix
+    # matches DesktopNames=Aqueous), sources it before launching the compositor
+    # and exports the static toolkit/backend hints into the systemd --user /
+    # D-Bus environment, so user-unit-launched apps inherit them too.
     install -Dm644 "$srcdir/aqueous/packaging/uwsm/env-aqueous" \
-        "$pkgdir/etc/uwsm/env-aqueous"
+        "$pkgdir/etc/xdg/uwsm/env-aqueous"
 
     # xdg-desktop-portal routing config. Pins ScreenCast/Screenshot to the
     # wlroots backend (xdg-desktop-portal-wlr) so screen sharing works out of
@@ -155,6 +156,8 @@ package() {
         "$pkgdir/usr/share/xdg-desktop-portal/aqueous-portals.conf"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/etc/xdg/aqueous/wm.toml"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/usr/share/aqueous/wm.toml"
+    install -Dm644 "$srcdir/aqueous/outputs.toml" "$pkgdir/etc/xdg/aqueous/outputs.toml"
+    install -Dm644 "$srcdir/aqueous/outputs.toml" "$pkgdir/usr/share/aqueous/outputs.toml"
 
     # Session wrapper target. graphical-session.target is static
     # (RefuseManualStart) and xdg-desktop-portal.service has

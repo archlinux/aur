@@ -1,88 +1,84 @@
-post_install() {
+print_session_information() {
     cat <<'EOF'
-==> Aqueous installed (single-process Zig build).
 
-    Select 'Aqueous' from your display manager's session list. 'ly' is the
-    recommended greeter (enable it with 'systemctl enable ly.service'); sddm
-    and tuigreet/greetd also work. greetd users can install
-    'aqueous-greetd-config' (or apply packaging/greetd/config.toml.example).
+    Select "Aqueous" from your display manager's Wayland session list.
+    The session runs through uwsm, which manages the compositor lifecycle,
+    exports the live Wayland/XWayland environment, starts graphical-session
+    services, and stops them cleanly at logout. No Aqueous user unit needs to
+    be enabled manually.
 
-    The session is now managed by uwsm (Universal Wayland Session Manager):
-    the 'Aqueous' wayland-session entry runs 'uwsm start -- aqueous-wm', which
-    wraps the compositor as a systemd user unit, exports a FRESH Wayland
-    environment on every start, activates graphical-session.target, and tears
-    the whole session down cleanly on exit. This fixes the stale-WAYLAND_DISPLAY
-    reconnect loop that could leave the bar chasing a dead socket across a
-    compositor restart. Static
-    toolkit/backend hints live in /etc/uwsm/env-aqueous.
+    User configuration lives in ~/.config/aqueous/. On first login, wm.toml
+    and the inert outputs.toml template are copied there only when missing.
+    Aqueous also supports separate layout.toml, input.toml, and rules.toml
+    files and hot-reloads valid changes without restarting the compositor.
 
-    Output modes, scale, transform, position, adaptive sync, profiles,
-    persistence, and hotplug are handled directly by the compositor. The
-    outputd protocol remains available at
-    $XDG_RUNTIME_DIR/aqueous/outputd.sock for display-panel compatibility;
-    no output daemon or wlr-randr package is required.
+    Useful commands:
+        aqueousctl windows
+        aqueousctl outputs
+        aqueousctl layout --output <name> --json
 
-    The graphical session is brought up by uwsm (it activates the static
-    graphical-session.target itself), so that xdg-desktop-portal.service --
-    which has Requisite=graphical-session.target -- can start. This is what
-    makes flameshot/screencast/screenshots work. When uwsm is unavailable,
-    aqueous-init falls back to the bundled aqueous-session.target wrapper.
-    Run 'systemctl --user daemon-reload' once so the units are picked up
-    without a relogin.
+    Session log:
+        $XDG_RUNTIME_DIR/aqueous-wm.log
 
-    The Noctalia bar/shell is started as a systemd user unit
-    (noctalia.service), wanted by graphical-session.target and ordered
-    Before=xdg-desktop-autostart.target. It runs the Noctalia v5 native shell
-    via 'noctalia --daemon', which forks the shell and returns once it is up;
-    Type=forking makes systemd wait for that return before marking the unit
-    active (a real readiness barrier). This makes its system-tray watcher
-    (org.kde.StatusNotifierWatcher) come up BEFORE autostarted tray apps
-    (nm-applet, blueman-applet, ...), so their icons populate reliably -- the
-    old [[exec]] launch raced the autostart target and dropped icons. It is
-    enabled automatically via a graphical-session.target.wants symlink; no
-    per-user 'systemctl --user enable' is needed.
-
-    On first login aqueous-init seeds a default Noctalia config to
-    ~/.config/noctalia/config.toml (bundled wallpapers + idle/lock defaults)
-    only when you have no config yet; an existing config is never overwritten.
-    GUI changes Noctalia makes itself land in
-    ~/.local/state/noctalia/settings.toml and are independent of this seed.
-
-    If tray icons are still missing after login, check that no KDE tray daemon
-    (kded6) is squatting the watcher:
-        busctl --user list | grep -i StatusNotifier
-        pkill kded6   # then restart noctalia.service
-
-    Per-user state/cache/config directories will be created at first
-    login by systemd-tmpfiles --user.
-
-    Logs:
-        tail -f ~/.local/state/river/river.log
+    The optional noctalia-greeter is the recommended display-manager frontend.
+    SDDM and other Wayland-capable display managers also work.
 EOF
-    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
+
+    if [ -e /usr/lib/systemd/user/noctalia.service ]; then
+        cat <<'EOF'
+
+    Noctalia starts automatically with the Aqueous graphical session. The
+    packaged Aqueous Settings source is registered and enabled once per user;
+    add its widget from Noctalia's bar widget picker. An intentional later
+    disable is preserved.
+EOF
+    elif [ -e /usr/lib/systemd/user/aqueous-dms.service ]; then
+        cat <<'EOF'
+
+    DankMaterialShell starts automatically with the Aqueous graphical session.
+    The packaged default configuration uses DMS Spotlight for the launcher
+    action. No DMS user unit needs to be enabled manually.
+EOF
+    fi
+
+    if command -v aqueous-welcome >/dev/null 2>&1; then
+        cat <<'EOF'
+
+    "Welcome to Aqueous" opens automatically once for new users and remains
+    available as aqueous-welcome or from the application menu.
+EOF
+    fi
+}
+
+post_install() {
+    printf '==> Aqueous %s installed.\n' "${1:-unknown}"
+    print_session_information
 }
 
 post_upgrade() {
-    local old_ver="$2"
-    echo "==> Aqueous upgraded from ${old_ver:-unknown}."
-    echo "    The session is now launched via uwsm (uwsm start -- aqueous-wm)"
-    echo "    and exits cleanly on compositor disconnect. Reload user units"
-    echo "    and restart the graphical session:"
-    echo "        systemctl --user daemon-reload"
-    echo "    The session target takes effect on your next login."
-    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
+    printf '==> Aqueous upgraded from %s to %s.\n' "${2:-unknown}" "${1:-unknown}"
+    cat <<'EOF'
+
+    Restart the Aqueous session to load the new compositor, bundled wlroots,
+    environment, and user units. Existing files in ~/.config/aqueous are not
+    overwritten by the session launcher. Review any pacnew files created for
+    system-wide configuration before merging them.
+
+    If upgrading while logged in, refresh the user-unit cache first:
+        systemctl --user daemon-reload
+EOF
+    print_session_information
 }
 
 post_remove() {
     cat <<'EOF'
 ==> Aqueous removed.
 
-    Per-user state was left in place:
-        ~/.cache/aqueous
+    Per-user configuration, cache, and state were retained:
         ~/.config/aqueous
+        ~/.cache/aqueous
         ~/.local/state/aqueous
-        ~/.local/state/river
 
-    Delete manually if no longer wanted.
+    Remove those directories manually if they are no longer wanted.
 EOF
 }
