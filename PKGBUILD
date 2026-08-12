@@ -1,6 +1,6 @@
 # Maintainer: elParaguayo <elparaguayocode at gmail dot com>
 pkgname=qtile-extras
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -23,7 +23,7 @@ optdepends=(
   "python-dbus-next: various widgets"
 )
 source=(git+https://github.com/elparaguayo/qtile-extras#tag=v$pkgver?signed)
-md5sums=("SKIP")
+md5sums=('0a0450602b276e58f7c206a7e659968b')
 validpgpkeys=(
   'A6BAA1E17D2664ADB97B2C6F58A9AA7C86727DF7' # elParaguayo <elparaguayocode at gmail dot com>
 )
