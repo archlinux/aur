@@ -1,11 +1,11 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=linear-cli-schpet-bin
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Linear without leaving the command line: list, start, and create PRs for linear issues. Agent friendly."
 arch=('x86_64' 'aarch64')
 url="https://github.com/schpet/linear-cli"
-license=('MIT')
+license=('ISC')
 depends=('glibc' 'gcc-libs')
 options=('!strip')
 provides=('linear-cli')
@@ -14,8 +14,8 @@ conflicts=('linear-cli' 'linear-cli-schpet')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v${pkgver}/linear-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v${pkgver}/linear-aarch64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('b30ce3d01920d74911c92e02a7241cd5faaf30d2a8bce343b9a1e4e422dbc4f2')
-sha256sums_aarch64=('a9bc2d733d15e57e9bcc62930f0a7bf79d7035f00771a1b16624fa2a9f7336c2')
+sha256sums_x86_64=('62accf1eb36c31e897f8490e826182f012b9a4b3a2c0d3bf8c8dde906039c3ea')
+sha256sums_aarch64=('c8ddd7fb478ff23cd752026eb609f25ef91cc36cb1b55900db9f182f4aeb47b5')
 
 package() {
     cd "${srcdir}/linear-${CARCH}-unknown-linux-gnu"
