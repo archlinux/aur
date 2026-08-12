@@ -69,4 +69,6 @@ package() {
   install -Dm644 "${srcdir}/textmaker-2026.desktop" "${pkgdir}/usr/share/applications/textmaker-2026.desktop"
 
   install -Dm644 "${pkgdir}/usr/share/office2026/mime/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  bsdtar xOf "${pkgdir}/usr/share/office2026/inst/docs_overwrite_us.zip" license.rtf |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/license.rtf"
 }
