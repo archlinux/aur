@@ -1,0 +1,18 @@
+pkgbase = docker-credential-atcr-git
+	pkgdesc = Docker credential helper for ATCR (AT Container Registry)
+	pkgver = 0.1.4.r46.g5aa13ab
+	pkgrel = 1
+	url = https://atcr.io
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = docker-credential-atcr=0.1.4.r46.g5aa13ab-1
+	conflicts = docker-credential-atcr
+	options = !debug
+	source = docker-credential-atcr-git::git+https://tangled.org/did:plc:pddp4xt5lgnv2qsegbzzs4xg/at-container-registry.git
+	sha256sums = SKIP
+
+pkgname = docker-credential-atcr-git
