@@ -10,10 +10,10 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.18.1
+pkgver=1.3.18.2
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=3
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -46,7 +46,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # forgive me, I couldn't figure out linker errors.
         # update commit with skia
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=417074f649f359f98511fc87a707c276d87f5739
+		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=b43be33343efa40c1c4bda00f985b8cd83bddf2a
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -63,10 +63,10 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         fmt-12.2.0-include-format.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('438e7a1571990383beca761eca829402f14f225e164730eb2edc71b2e9566e58'
+sha256sums=('5729921c1b22f5ad0577a558c8ebf3f3d00a088d82972c45905954eda9c68ab1'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
-            '883d1b25014deded64c3baa8e680dc3e2e486ca7b9c9116015c3cc557c2af781'
+            '80471354d55d785291bb719596d37ec785e01e94a322f127c0f91d2d8b01be0f'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274'
@@ -157,7 +157,6 @@ build() {
 -DENABLE_UPDATER=OFF -DENABLE_{SCRIPTING,WEBSOCKET}=ON \
 -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" \
--DCMAKE_AR=$(command -v ar) -DCMAKE_RANLIB=$(command -v ranlib) \
 -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,LIBJPEG_TURBO,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=ON \
 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # workaround
 	cmake --build build

@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.3.18.1
-	pkgrel = 3
+	pkgver = 1.3.18.2
+	pkgrel = 1
 	url = https://www.aseprite.org/
 	arch = x86_64
 	license = LicenseRef-Aseprite-EULA
@@ -32,12 +32,12 @@ pkgbase = aseprite
 	depends = fontconfig
 	depends = libxcursor
 	depends = libxrandr
-	noextract = Aseprite-v1.3.18.1-Source.zip
+	noextract = Aseprite-v1.3.18.2-Source.zip
 	noextract = skia-m124.tar.gz
-	source = https://github.com/aseprite/aseprite/releases/download/v1.3.18.1/Aseprite-v1.3.18.1-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.3.18.2/Aseprite-v1.3.18.2-Source.zip
 	source = skia-m124.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m124-08a5439a6b.tar.gz
 	source = skia-m124-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=417074f649f359f98511fc87a707c276d87f5739
+	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=b43be33343efa40c1c4bda00f985b8cd83bddf2a
 	source = desktop.patch
 	source = shared-fmt.patch
 	source = shared-libarchive.patch
@@ -50,10 +50,10 @@ pkgbase = aseprite
 	source = shared_libjpeg-turbo.patch
 	source = change_use_of_removed_intrinsic.patch
 	source = fmt-12.2.0-include-format.patch
-	sha256sums = 438e7a1571990383beca761eca829402f14f225e164730eb2edc71b2e9566e58
+	sha256sums = 5729921c1b22f5ad0577a558c8ebf3f3d00a088d82972c45905954eda9c68ab1
 	sha256sums = c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba
 	sha256sums = b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1
-	sha256sums = 883d1b25014deded64c3baa8e680dc3e2e486ca7b9c9116015c3cc557c2af781
+	sha256sums = 80471354d55d785291bb719596d37ec785e01e94a322f127c0f91d2d8b01be0f
 	sha256sums = 8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9
 	sha256sums = c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3
 	sha256sums = 96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274
