@@ -2,7 +2,7 @@
 
 pkgname=cephadm-git
 pkgver=21.3.0.r1963.g5995d21863b
-pkgrel=2
+pkgrel=1
 pkgdesc='Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers'
 arch=('any')
 url="https://ceph.com/"
