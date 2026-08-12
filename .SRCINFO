@@ -1,6 +1,6 @@
 pkgbase = buf-cli
 	pkgdesc = A fast, safe bootable USB image flasher
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/brysonak/buf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = buf-cli
 	makedepends = rust
 	makedepends = cargo
 	optdepends = ntfs-3g: NTFS fallback for ISOs that disrespect the FAT32 4GB limit for individual files
-	source = buf-0.2.2.tar.gz::https://github.com/brysonak/buf/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 1b301f2005426950e84a19a845d4d075daddfb02f3031ce96dd8cb4e1e8e54b1
+	source = buf-0.2.3.tar.gz::https://github.com/brysonak/buf/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 972bad967471bea696773b2242d891a6d35c9bc51ca56545b0ed3ca72cb74519
 
 pkgname = buf-cli
