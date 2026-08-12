@@ -1,0 +1,7 @@
+diff --git a/scripts/dist/package.sh b/scripts/dist/package.sh
+--- a/scripts/dist/package.sh
++++ b/scripts/dist/package.sh
+@@ -110 +109,0 @@
+-	make linux-development32 MAKE_JOBS="${BUILD_JOBS}"
+@@ -113 +111,0 @@
+-		make linux-debug32 MAKE_JOBS="${BUILD_JOBS}"

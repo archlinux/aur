@@ -1,11 +1,13 @@
 pkgbase = crown
 	pkgdesc = A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations.
-	pkgver = 0.64.0
+	pkgver = 0.64.1
 	pkgrel = 1
 	url = https://www.crownengine.org
 	arch = x86_64
 	license = MIT
 	license = GPL3
+	makedepends = python-sphinx
+	makedepends = vala
 	depends = glib2>=2.64.6
 	depends = gtk3>=3.24
 	depends = libgee
@@ -13,11 +15,14 @@ pkgbase = crown
 	depends = libpulse
 	depends = libx11
 	depends = libxrandr
+	conflicts = crown-bin
 	replaces = pepper
 	options = !strip
-	source = https://github.com/crownengine/crown/releases/download/v0.64.0/crown-0.64.0-linux-x64.tar.gz
+	source = crown-0.64.1.tar.gz::https://github.com/crownengine/crown/archive/refs/tags/v0.64.1.tar.gz
+	source = package-linux-x64-only.patch
 	source = crown.sh
-	sha256sums = 90e3cc220786f91de5bac8ac8d9cd41391eb5ae40438e4717d518a1236c06e66
+	sha256sums = 9f976dc855f6337857f8881fa81412d8d4c2e57d51c89b5aa04ef11f5a1b74a7
+	sha256sums = 1736b28950909295e2ccec3fee5e737e1cd4d260c9d46f03f3c8bc7b24f57638
 	sha256sums = 5f643f83399cfc0fb51b73e26e9080dd31b954db300868a2a2ca2734574b7113
 
 pkgname = crown
