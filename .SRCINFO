@@ -1,4 +1,4 @@
-pkgbase = awlib-git
+pkgbase = awlib
 	pkgdesc = C++ helper library
 	pkgver = 2026.08.07.r47.g48dc12b2
 	pkgrel = 1
@@ -11,11 +11,9 @@ pkgbase = awlib-git
 	makedepends = gcc
 	depends = glfw
 	depends = libpng
-	provides = awlib
-	conflicts = awlib
 	options = !strip
 	options = debug
 	source = git+https://github.com/absurdworlds/awlib.git
 	sha256sums = SKIP
 
-pkgname = awlib-git
+pkgname = awlib

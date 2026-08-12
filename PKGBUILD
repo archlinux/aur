@@ -1,4 +1,4 @@
-pkgname=awlib-git
+pkgname=awlib
 pkgver=2026.08.07.r47.g48dc12b2
 pkgrel=1
 pkgdesc="C++ helper library"
@@ -8,13 +8,11 @@ makedepends=('git' 'cmake' 'gcc')
 url="https://git.absurdworlds.org/awlib.git"
 license=('LGPLv3')
 source=('git+https://github.com/absurdworlds/awlib.git')
-provides=('awlib')
-conflicts=('awlib')
 sha256sums=('SKIP')
 options+=('!strip' 'debug')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd ${pkgname}
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -22,12 +20,12 @@ pkgver() {
 }
 
 #prepare() {
-# cd "${srcdir}"/${pkgname%-git}
+# cd "${srcdir}"/${pkgname}
 # cp Config.mk{.in,}
 #}
 
 build() {
- cmake -B build -S "${srcdir}/${pkgname%-git}" \
+ cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DAW_ENABLE_GRAPHICS:BOOL=ON \
