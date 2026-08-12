@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
 : ${_pkgver:=924984::10.13.1-2026-07-28}
