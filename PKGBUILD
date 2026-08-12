@@ -3,7 +3,7 @@
 # Maintainer: mcck < m.ckk at tuta dot io >
 
 pkgname=appflowy-bin
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="AppFlowy is the open-source alternative to Notion. You are in charge of your data and customizations."
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
 	"$_src/raw/$pkgver/LICENSE"
 	"$_src/releases/download/$pkgver/AppFlowy-$pkgver-linux-$arch.deb")
 b2sums=('6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237'
-        '4909589d51d34c32bd0df6deab0b5844e7112b51f4429bf1477a63cbd1f59d146e454813a8f8f349033b393024212c9b6bff6e15c67bf8ec7d12baa9faff99e3')
+        'feb0d6b5e8837b02601814ded9d957d227c9978acc7acea88264c36321ddbd45f580e94e27588202d6ef9af612ea5ad8afaaa6152984a713fa3f00f1e90f4137')
 
 package(){
 	cd "$pkgdir"
