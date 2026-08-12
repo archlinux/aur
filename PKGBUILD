@@ -1,30 +1,26 @@
-# Maintainer: alienzj <alienchuj@gmail.com>
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+# Contributor: alienzj <alienchuj@gmail.com>
 
 pkgname=seqtk
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 pkgdesc="Toolkit for processing sequences in FASTA/Q formats"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/lh3/seqtk"
 license=('MIT')
-makedepends=('zlib' 'make')
+depends=('zlib')
 provides=('seqtk')
 conflicts=('seqtk')
-source=("https://github.com/lh3/seqtk/archive/v1.3.tar.gz")
-md5sums=('39a499431a10fe2412925a53ecfbab2b')
-
-pkgver() {
-  cd $srcdir/seqtk-1.3
-  echo 1.3
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('384aa1e3cecf4f70403839d586cbb29d469b7c6f773a64bc5af48a6e4b8220a6')
 
 build() {
-  cd $srcdir/seqtk-1.3
+  cd "$srcdir/$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd $srcdir/seqtk-1.3
-  install -Dm755 seqtk $pkgdir/usr/bin/seqtk
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/seqtk/LICENSE
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 seqtk "$pkgdir/usr/bin/seqtk"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

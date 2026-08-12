@@ -1,17 +1,14 @@
 pkgbase = seqtk
 	pkgdesc = Toolkit for processing sequences in FASTA/Q formats
-	pkgver = 1.3
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/lh3/seqtk
-	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = zlib
-	makedepends = make
+	depends = zlib
 	provides = seqtk
 	conflicts = seqtk
-	source = https://github.com/lh3/seqtk/archive/v1.3.tar.gz
-	md5sums = 39a499431a10fe2412925a53ecfbab2b
+	source = seqtk-1.5.tar.gz::https://github.com/lh3/seqtk/archive/v1.5.tar.gz
+	sha256sums = 384aa1e3cecf4f70403839d586cbb29d469b7c6f773a64bc5af48a6e4b8220a6
 
 pkgname = seqtk
-
