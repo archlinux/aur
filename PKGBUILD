@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libefex-git
-pkgver=r89.83819c6
-pkgrel=2
+pkgver=r113.2ec2afb
+pkgrel=1
 pkgdesc="library and cli for embedded firmware exchange protocol, support fel and fes protocol"
 arch=($CARCH)
 url="https://github.com/YuzukiTsuru/libefex"
@@ -10,7 +10,6 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
-    glibc
     libusb
     systemd-libs
 )

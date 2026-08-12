@@ -1,14 +1,13 @@
 pkgbase = libefex-git
 	pkgdesc = library and cli for embedded firmware exchange protocol, support fel and fes protocol
-	pkgver = r89.83819c6
-	pkgrel = 2
+	pkgver = r113.2ec2afb
+	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/libefex
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = pkgconf
-	depends = glibc
 	depends = libusb
 	depends = systemd-libs
 	optdepends = openixcard: Open Source Version of Allwinner PhoenixCard on Linux
