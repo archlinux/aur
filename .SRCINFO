@@ -1,6 +1,6 @@
 pkgbase = idescriptor
 	pkgdesc = A free, open-source, and cross-platform iDevice management tool
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/iDescriptor/iDescriptor
 	arch = x86_64
@@ -10,19 +10,12 @@ pkgbase = idescriptor
 	makedepends = git
 	makedepends = cargo
 	makedepends = cmake
-	makedepends = go
-	depends = libimobiledevice>=1.4.0
-	depends = libtatsu>=1.0.5
-	depends = libimobiledevice-glue
-	depends = libirecovery
 	depends = libplist
 	depends = usbmuxd
 	depends = libusbmuxd
 	depends = openssl
 	depends = libssh
 	depends = libusb
-	depends = pugixml
-	depends = qrencode
 	depends = libheif
 	depends = libzip
 	depends = qt6-base
@@ -31,27 +24,28 @@ pkgbase = idescriptor
 	depends = qt6-serialport
 	depends = qt6-positioning
 	depends = qt6-location
-	depends = qtermwidget
 	depends = avahi
 	depends = libsecret
 	depends = org.freedesktop.secrets
 	depends = ffmpeg
-	depends = ifuse
 	depends = gstreamer
 	depends = gst-plugins-base-libs
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = qt6-multimedia
+	depends = qt6-svg
+	depends = gst-plugin-qmlgl
+	depends = gst-plugin-qml6
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
-	depends = gst-plugins-ugly
 	depends = gst-libav
+	depends = hicolor-icon-theme
 	depends = sqlite
-	source = git+https://github.com/iDescriptor/iDescriptor.git#tag=v0.5.0
+	optdepends = ifuse: use ifuse provided by libimobiledevice instead of Rust implementation
+	source = git+https://github.com/iDescriptor/iDescriptor.git#tag=v0.6.1
 	source = git+https://github.com/iDescriptor/uxplay.git
-	source = git+https://github.com/uncor3/libipatool-go.git
 	source = git+https://github.com/uncor3/idevice.git
-	source = git+https://github.com/libZQT/ZUpdater.git
-	sha256sums = 32c780ac4d8667f24d8b73eac2d00fca55c445b838ac96efa105bcf732f79929
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = e3bacca4647f927a0f7772c51fe46b45dac9c5d321f95d459d6e6549dc1d539d
 	sha256sums = SKIP
 	sha256sums = SKIP
 

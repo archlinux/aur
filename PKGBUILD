@@ -3,25 +3,19 @@
 
 pkgname=idescriptor
 _srcname=iDescriptor
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A free, open-source, and cross-platform iDevice management tool"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${_srcname}/${_srcname}"
 license=('AGPL-3.0-or-later')
 depends=(
-	'libimobiledevice>=1.4.0'
-	'libtatsu>=1.0.5'
-	'libimobiledevice-glue'
-	'libirecovery'
 	'libplist'
 	'usbmuxd'
 	'libusbmuxd'
 	'openssl'
 	'libssh'
 	'libusb'
-	'pugixml'
-	'qrencode'
 	'libheif'
 	'libzip'
 	'qt6-base'
@@ -30,70 +24,65 @@ depends=(
 	'qt6-serialport'
 	'qt6-positioning'
 	'qt6-location'
-	'qtermwidget'
 	'avahi'
 	'libsecret'
 	'org.freedesktop.secrets'
 	'ffmpeg'
-	'ifuse'
 	'gstreamer'
 	'gst-plugins-base-libs'
+	'qt6-declarative'
+	'qt6-5compat'
+	'qt6-multimedia'
+	'qt6-svg'
+	'gst-plugin-qmlgl'
+	'gst-plugin-qml6'
 	'gst-plugins-good'
 	'gst-plugins-bad'
-	'gst-plugins-ugly'
 	'gst-libav'
+	'hicolor-icon-theme'
 	'sqlite'
 )
-makedepends=('git' 'cargo' 'cmake' 'go')
+optdepends=('ifuse: use ifuse provided by libimobiledevice instead of Rust implementation')
+makedepends=('git' 'cargo' 'cmake')
 source=("git+${url}.git#tag=v${pkgver}"
 	"git+https://github.com/iDescriptor/uxplay.git"
-	"git+https://github.com/uncor3/libipatool-go.git"
-	"git+https://github.com/uncor3/idevice.git"
-	"git+https://github.com/libZQT/ZUpdater.git")
-sha256sums=('32c780ac4d8667f24d8b73eac2d00fca55c445b838ac96efa105bcf732f79929'
-            'SKIP'
-            'SKIP'
+	"git+https://github.com/uncor3/idevice.git")
+sha256sums=('e3bacca4647f927a0f7772c51fe46b45dac9c5d321f95d459d6e6549dc1d539d'
             'SKIP'
             'SKIP')
 
 prepare() {
 	cd "${_srcname}/"
-	git rm lib/win-ifuse
 
 	git submodule init
 	git config submodule.lib/uxplay.url "${srcdir}/uxplay"
-	git config submodule.lib/ipatool-go.url "${srcdir}/libipatool-go"
 	git config submodule.lib/idevice-rs.url "${srcdir}/idevice"
-	git config submodule.lib/zupdater.url "${srcdir}/ZUpdater"
 	git -c protocol.file.allow=always submodule update
 
-	pushd src/rust
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target host-tuple
-	popd
-
-	cd lib/ipatool-go
-	export GOPATH="${srcdir}"
-	go mod download -modcacherw -x
 }
 
 build() {
+	cd "${_srcname}/"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export CFLAGS+=" -ffat-lto-objects"
 	export CXXFLAGS+=" -ffat-lto-objects"
-	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-	local cmake_options=(
-		-B build
-		-S "${_srcname}"
-		-D CMAKE_BUILD_TYPE=None
-		-D CMAKE_INSTALL_PREFIX=/usr
-		-D PACKAGE_MANAGER_MANAGED=ON
-		-D ENABLE_RECOVERY_DEVICE_SUPPORT=ON
-		-D NO_MARCH_NATIVE=ON
-	)
-
-	cmake "${cmake_options[@]}"
-	cmake --build build
+	cargo build --release --features package_manager
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
+	cd "${_srcname}/"
+	local _app_id="io.github.${pkgname}.${_srcname}"
+
+	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 "${_app_id}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 "${_app_id}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo/"
+
+	for r in 16 32 256 512; do
+		install -Dm644 "packaging/shared/resources/app-icon/icon-${r}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/${_app_id}.png"
+	done
 }
