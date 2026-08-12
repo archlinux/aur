@@ -10,7 +10,7 @@ pkgbase = python-fastfingertips
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-requests
-	depends = python-termcolo
+	depends = python-termcolor
 	source = https://files.pythonhosted.org/packages/source/f/fastfingertips/fastfingertips-0.1.4.tar.gz
 	sha512sums = 0b0a0bbb8d17743b7e323d506544a656c1300ead2dedf6dd52d6cf3d1e387bdaa4ec92db245458446803012b5f2cc3a83a9c4da9cb06f498b7c648883a944e8d
 
