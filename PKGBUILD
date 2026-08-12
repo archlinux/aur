@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -69,7 +69,7 @@ source=(
   'no_unsafe_perm.patch'
 )
 sha256sums=(
-  'a8bcc22782638cf3e06c744a7194917498645e8f60f622fc28f4a42e0360085a'
+  'bc52e5101310b5a32541a902bc5145f7f64115e4144f038078dbe2229d8d035b'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
   'aa14808598dc85435527c024be3afd2c6ea66526cd5380bc0413a2bab2a93137'
