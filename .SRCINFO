@@ -1,6 +1,6 @@
 pkgbase = jennifer-git
 	pkgdesc = Jennifer programming language interpreter (built from source)
-	pkgver = 0.24.0.r1.gfb71b6a
+	pkgver = 0.24.0.r4.g595b462
 	pkgrel = 1
 	url = https://github.com/jennifer-language/jennifer
 	install = jennifer.install
