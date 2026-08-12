@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.3.0_devel.227796.c5138d5f2bf
+pkgver=26.3.0_devel.227797.5ece56a815c
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -100,6 +100,8 @@ build() {
       -D valgrind=disabled \
       -D llvm=enabled \
       -D lmsensors=enabled \
+      -D amdgpu-virtio=true \
+      -D intel-virtio-experimental=true \
       -D vulkan-drivers=amd,intel,nouveau,virtio,swrast \
       -D vulkan-layers=device-select,overlay,screenshot,anti-lag,vram-report-limit \
       -D vulkan-manifest-per-architecture=false \
