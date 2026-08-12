@@ -1,7 +1,7 @@
 pkgbase = kwin-scripts-dynamic-workspaces
 	pkgdesc = A kwin script that creates and deletes desktops as you move windows on the last one
-	pkgver = 3.2
-	pkgrel = 1
+	pkgver = 3.2.0
+	pkgrel = 2
 	url = https://github.com/maurges/dynamic_workspaces
 	arch = any
 	license = BSD-3-Clause
