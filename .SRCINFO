@@ -1,6 +1,6 @@
 pkgbase = netwatch-tui-bin
 	pkgdesc = Real-time network diagnostics TUI — like htop for your network
-	pkgver = 0.28.1
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/matthart1983/netwatch
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = netwatch-tui-bin
 	provides = netwatch
 	conflicts = netwatch-tui
 	options = !strip
-	source = README-0.28.1.md::https://raw.githubusercontent.com/matthart1983/netwatch/v0.14.0-rc.3/README.md
-	source = LICENSE-0.28.1::https://raw.githubusercontent.com/matthart1983/netwatch/v0.14.0-rc.3/LICENSE
+	source = README-0.29.0.md::https://raw.githubusercontent.com/matthart1983/netwatch/v0.14.0-rc.3/README.md
+	source = LICENSE-0.29.0::https://raw.githubusercontent.com/matthart1983/netwatch/v0.14.0-rc.3/LICENSE
 	sha256sums = 457276f3c24bad36cd46f3dea6cd1f9f43ed45ee6eb8c5e6b67a82fd34b8ae0f
 	sha256sums = 25f1837fb575f27ff0b53bea961fb5e3a6282cec74646aa7cc638ebd0f725545
-	source_x86_64 = netwatch-x86_64-0.28.1.tgz::https://github.com/matthart1983/netwatch/releases/download/v0.14.0-rc.3/netwatch-linux-x86_64-static.tar.gz
+	source_x86_64 = netwatch-x86_64-0.29.0.tgz::https://github.com/matthart1983/netwatch/releases/download/v0.14.0-rc.3/netwatch-linux-x86_64-static.tar.gz
 	sha256sums_x86_64 = 52d444dc006f4b95150934dc106a1bc289a5a32adb985042c255b891d169a7ca
-	source_aarch64 = netwatch-aarch64-0.28.1.tgz::https://github.com/matthart1983/netwatch/releases/download/v0.14.0-rc.3/netwatch-linux-aarch64-static.tar.gz
+	source_aarch64 = netwatch-aarch64-0.29.0.tgz::https://github.com/matthart1983/netwatch/releases/download/v0.14.0-rc.3/netwatch-linux-aarch64-static.tar.gz
 	sha256sums_aarch64 = 9cc7c7c1ad6819b984d72c008ea104d20def5e8cf742fa518fe42be5f37b49ae
 
 pkgname = netwatch-tui-bin
