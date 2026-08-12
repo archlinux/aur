@@ -1,6 +1,6 @@
 pkgbase = mocktail-git
 	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux
-	pkgver = 0.1.0.r3.gcb7d35d
+	pkgver = 0.1.0.r7.g36733cf
 	pkgrel = 1
 	url = https://github.com/komaruworld/mocktail
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mocktail-git
 	makedepends = ninja
 	makedepends = nlohmann-json
 	makedepends = pkgconf
+	makedepends = vulkan-headers
 	depends = capstone
 	depends = curl
 	depends = fontconfig
@@ -38,10 +39,6 @@ pkgbase = mocktail-git
 	conflicts = mocktail-bin
 	options = !debug
 	source = mocktail::git+https://github.com/komaruworld/mocktail.git#branch=main
-	source = libjnivm::git+https://github.com/ChristopherHX/libjnivm.git
-	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mocktail-git
