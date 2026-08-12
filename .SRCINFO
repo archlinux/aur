@@ -1,6 +1,6 @@
 pkgbase = jukebox
-	pkgdesc = Terminal music player with local FLAC and Jellyfin streaming support
-	pkgver = 0.1.2
+	pkgdesc = Terminal music player with local FLAC/MP3 and Jellyfin streaming support
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/gustarmartins/jukebox
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = jukebox
 	depends = python
 	optdepends = sox: create Nightcore remixes
 	optdepends = inotify-tools: refresh the local library automatically
-	source = jukebox-0.1.2.tar.gz::https://github.com/gustarmartins/jukebox/archive/refs/tags/v0.1.2.tar.gz
+	source = jukebox-0.1.3.tar.gz::https://github.com/gustarmartins/jukebox/archive/refs/tags/v0.1.3.tar.gz
 	source = jukebox
 	source = nightcore
-	b2sums = cd9f2ab72a15725063ab5daeacef18dc49d4b331a85746e8ba4b771233a015a1167d0d79152832e92261a9f98f1eba8083b36e37706560cf86cf4ec5134680d2
+	b2sums = f8a4199fa75cc85fb7e32400c87fdf061fef1387063b746ce215f3daec96f3ed29035fd36277552475f08ba8f253efdb32ab9f8b853ac5d159e66bf124776c41
 	b2sums = 99f2a576eeff2454ad61c2d0a037ed6a49c78d6c902bed270c79f5fb0fdb0f7e93dcd2a2148d2ca6410718b5c63bc456684ecddd0100693ac8a0d4bf8d21d33d
 	b2sums = 9b5617920181139b3aa6762ea9e8de5cf3e7b65b5d0b949c68cf2dc6c40724959861bcbe8af4060cfa884c38de578c74c9ec7b4bd8026d0009736c9a99c9a008
 
