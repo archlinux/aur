@@ -1,7 +1,7 @@
 pkgbase = linear-cli-finesssee
 	pkgdesc = A powerful CLI for Linear.app built with Rust (by Finesssee)
 	pkgver = 0.3.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Finesssee/linear-cli
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = linear-cli-finesssee
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	options = !lto
 	source = linear-cli-finesssee-0.3.27.tar.gz::https://github.com/Finesssee/linear-cli/archive/refs/tags/v0.3.27.tar.gz
 	sha256sums = a2714aaf85c18460ca006985984af77d7474dcfd9591569a9d8751a2e34e8f64
 
