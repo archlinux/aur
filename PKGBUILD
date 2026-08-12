@@ -2,8 +2,8 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=beammp-launcher
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive"
 url="https://github.com/BeamMP/BeamMP-Launcher"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("cmake" "vcpkg" "ninja")
 license=("LGPL3")
 
 source=("beammp-launcher-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" "vcpkg::git+https://github.com/microsoft/vcpkg.git")
-sha256sums=('351e5b8d159126f3369bde3dac4a881c4b7ceea52255fdf3093ba912450b65bc'
+sha256sums=('fb49ee9ab310927805ac448d2ddf47a25c9893a9deced0c8bdd7f5f33409d649'
             'SKIP')
 
 prepare() {
