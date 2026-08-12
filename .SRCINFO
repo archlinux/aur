@@ -10,6 +10,7 @@ pkgbase = riptide
 	makedepends = pkg-config
 	depends = mpv
 	depends = openssl
+	depends = chafa
 	source = riptide-0.13.0.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v0.13.0.tar.gz
 	sha256sums = d7341dce2383a08a299ca514cb43adaec8a7e11c29e69a5ed1191776a9de0def
 
