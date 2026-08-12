@@ -7,6 +7,15 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260810
+
+### Added:
+
+- AC_Secretaria_da_Receita_Federal_do_Brasil_v5.crt
+- AC_SyngularID_Multipla_v12.crt
+- AC_SyngularID_v12.crt
+- AC_VALID-JUS_v6.crt
+
 ## 20260714
 
 ### Added
