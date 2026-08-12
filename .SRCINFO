@@ -1,0 +1,13 @@
+pkgbase = hackmd-cli
+	pkgdesc = The HackMD Command Line Tool
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/hackmdio/hackmd-cli
+	arch = any
+	license = MIT
+	makedepends = pnpm
+	depends = nodejs>=24
+	source = hackmd-cli-2.5.0.tar.gz::https://github.com/hackmdio/hackmd-cli/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 21b32e3bc1bf2ed839454f0cf14472da7284c91783422c27b62ac5963b4b29fe
+
+pkgname = hackmd-cli
