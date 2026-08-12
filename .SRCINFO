@@ -1,6 +1,6 @@
 pkgbase = python-nx-cugraph
 	pkgdesc = GPU Accelerated Backend for NetworkX
-	pkgver = 26.06.00
+	pkgver = 26.08.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/nx-cugraph
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-nx-cugraph
 	depends = python-cupy
 	depends = python-numpy
 	depends = python-networkx
-	source = https://github.com/rapidsai/nx-cugraph/archive/refs/tags/v26.06.00.tar.gz
-	sha256sums = 18fe45ffed0e71285dc4fb63a0a1784ba6d56f2481457537a25ca2fbb1bd04ac
+	source = https://github.com/rapidsai/nx-cugraph/archive/refs/tags/v26.08.00.tar.gz
+	sha256sums = 004c10fdea6b9b824f5f5769cd915ae31c4c921a67dd6554c49446a48b1479a2
 
 pkgname = python-nx-cugraph
