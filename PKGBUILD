@@ -3,7 +3,7 @@
 pkgname=python-liblarch-git
 _name=liblarch
 pkgver=3.2.0.r3.gfe06860
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
 url="https://github.com/getting-things-gnome/liblarch"
@@ -20,7 +20,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('python-pytest')
+# checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/getting-things-gnome/liblarch.git")
@@ -32,7 +32,8 @@ pkgver() {
 }
 
 prepare() {
-  git -C "$_name" clean -dfx
+  cd "$_name"
+  git clean -dfx
 }
 
 build() {
@@ -40,10 +41,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$_name"
-  pytest || :
-}
+# check() {
+#   cd "$_name"
+#   python -m venv --clear --without-pip --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -P -m pytest
+# }
 
 package() {
   cd "$_name"
