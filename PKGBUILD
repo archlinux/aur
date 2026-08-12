@@ -3,7 +3,7 @@
 _pkgname=PD2MM
 pkgname=pd2mm
 pkgdesc="A desktop application for installing and managing PAYDAY 2 mods with a fast, modern workflow."
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://github.com/CloodDev/PD2MM"
@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/CloodDev/PD2MM/archive/v${
         "pd2mm.desktop"
         "pd2mm.sh"
         0001-export-dir.patch)
-sha256sums=('1802ab1663e208a5b2dc9482a06e0bce215294f7d8f8cfe815547bf72dbbf6da'
+sha256sums=('9166ed5ad48b266a00ea033848a7f2dedd8821079cecf830502bb5875ba7cbd4'
             'c50e7bba55b94f177118250d20acb5b185b5b70c5b93b61a35a215e15a35ac68'
             '42645db318289b1db1c2fae07b0dbd5c8416259b7bc97202aec73ef235ad5152'
             '3bba3d88bdc151a68937b9f4b2173bb29c07cbfbe5f29b984471eb2899f1455a')
