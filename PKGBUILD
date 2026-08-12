@@ -1,15 +1,15 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=nvcomp
-pkgver=5.2.0.10
-pkgrel=2
+pkgver=5.3.0.16
+pkgrel=1
 pkgdesc="NVIDIA nvCOMP is a high-speed data compression and decompression library optimized for NVIDIA GPUs."
 url="https://developer.nvidia.com/nvcomp"
 arch=('x86_64')
 license=('custom')
 depends=('libgcc' 'libstdc++' 'cuda')
 source=("https://developer.download.nvidia.com/compute/nvcomp/redist/nvcomp/linux-x86_64/nvcomp-linux-x86_64-${pkgver}_cuda13-archive.tar.xz")
-sha256sums=('2dd6c184c79fa5402c9b63a274e778d4b52e8d736ee927da81f07c1f8bed12ff')
+sha256sums=('2c36f5af63c37e4afe13d14f912e84130e6a05f07b066547b3e028c4ca54c866')
 
 
 package() {
