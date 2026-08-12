@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0_r589852.d610744c92b1
+pkgver=24.0.0_r592113.4869aae02ba8
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
@@ -38,6 +38,7 @@ provides=(
   clang-tools-extra=$pkgver
   clang-analyzer=$pkgver
   clangd=$pkgver
+  lld=$pkgver
   compiler-rt=$pkgver
   libc++=$pkgver
   libc++abi=$pkgver
@@ -49,6 +50,7 @@ conflicts=(
   clang-tools-extra
   clang-analyzer
   clangd
+  lld
   compiler-rt
   libc++
   libc++abi
@@ -82,6 +84,7 @@ _get_distribution_components() {
       case $target in
       clang-libraries | distribution) continue ;;
       clang | clangd | clang-* | \
+        lld | lld-* | ld.lld | \
         compiler-rt | compiler-rt-* | clang_rt* | \
         builtins | runtimes | scan-build | scan-view | \
         cxx | cxx-* | cxxabi | cxxabi-*) ;;
@@ -102,8 +105,9 @@ build() {
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_INSTALL_DOCDIR=share/doc
-    -D LLVM_ENABLE_PROJECTS='clang;clang-tools-extra'
+    -D LLVM_ENABLE_PROJECTS='clang;lld;clang-tools-extra'
     -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi;libunwind'
+    -D LLVM_BINUTILS_INCDIR=/usr/include
     -D CLANG_DEFAULT_CXX_STDLIB=libstdc++
     -D CLANG_DEFAULT_RTLIB=libgcc
     -D LLVM_BUILD_LLVM_DYLIB=OFF
@@ -111,6 +115,7 @@ build() {
     -D LLVM_INCLUDE_TESTS=ON
     -D LLVM_INCLUDE_BENCHMARKS=OFF
     -D CLANG_DEFAULT_PIE_ON_LINUX=ON
+    -D LLVM_INSTALL_TOOLCHAIN_ONLY=ON
     -Wno-dev
   )
 
@@ -133,7 +138,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C _build install-distribution
+  DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install-distribution
 
   # Remove files that conflict with the llvm package
   rm -f "$pkgdir"/usr/bin/clang-offload-packager
