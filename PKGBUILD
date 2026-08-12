@@ -1,7 +1,9 @@
 # Maintainer: Akrata
 pkgname=ttf-ms-aptos-core
-pkgver=4.40
-pkgrel=1
+pkgver=20260812
+#aptos=4.40
+#webfonts=1.0
+pkgrel=2
 pkgdesc="Microsoft TTF: Aptos (new Office default), Arial, Times New Roman and other core fonts"
 arch=('any')
 url="https://learn.microsoft.com/en-us/typography/font-list/"
