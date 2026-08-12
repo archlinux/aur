@@ -1,0 +1,17 @@
+pkgbase = otterly-appimage
+	pkgdesc = Local-first, privacy-focused WYSIWYG Markdown vault with full-text search, wiki-links, and a rich editor (AppImage)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ajkdrag/otterly
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = otterly-appimage-0.3.0.AppImage::https://github.com/ajkdrag/otterly/releases/download/v0.3.0/otterly_0.3.0_amd64.AppImage
+	source = otterly.png::https://raw.githubusercontent.com/ajkdrag/otterly/main/src-tauri/icons/128x128@2x.png
+	source = otterly.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/otterly/otterly.desktop
+	sha256sums = d69efce38eb4e37d89c51110b8e0afc27100c2c4250347c7299ff03b29c76601
+	sha256sums = 00ada879ef2bce9a4cda5af2e1991ee0629d80633cedcc5a4192c504824263be
+	sha256sums = a5511166a03249bd60b86e95277073bdd0fb9143fad9308352a4786d8dfab416
+
+pkgname = otterly-appimage
