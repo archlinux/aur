@@ -8,8 +8,8 @@
 
 _name=svix
 pkgname=python-${_name}
-pkgver=1.95.2
-pkgrel=2
+pkgver=1.99.1
+pkgrel=1
 pkgdesc="Svix webhooks API client and webhook verification library"
 url="https://github.com/svix/svix-webhooks/tree/main/python"
 license=('MIT')
@@ -34,7 +34,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz"
     LICENSE::https://github.com/svix/svix-webhooks/raw/refs/heads/main/LICENSE
 )
-sha256sums=('8b3ef2a0ce27056fd4467addfccce8c642d71cb4e3cbd9be9164f82a0dc3acbe'
+sha256sums=('70374aeb3cc19fcff384e9e22a35fce16c57bf1c95a325b940dc0b5b765c7047'
             '5962c28427cb0c49b4782932eeeb9dfd3fcd14002755a68155bd6bb306717ced')
 
 build() {
