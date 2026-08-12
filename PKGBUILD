@@ -1,36 +1,36 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Doubao AI Assistant - web app wrapper (ByteDance)"
-arch=('any')
-url="https://www.doubao.com/chat/"
-license=('custom')
-depends=('xdg-utils')
-optdepends=(
-    'chromium: best app-mode experience'
-    'google-chrome: app-mode support'
-    'firefox: works but no app-mode'
-)
+pkgrel=2
+pkgdesc="Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)"
+arch=('x86_64')
+url="https://github.com/gonwe/doubao-desktop"
+license=('MIT')
+depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'glib2' 'libgl' 'hicolor-icon-theme')
+makedepends=()
+optdepends=()
+provides=("doubao-desktop=${pkgver}")
+conflicts=('doubao-desktop')
 
-source=("${pkgname}.sh"
+_dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
+source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('SKIP'
+sha256sums=('d75c0e09d71175f47de16d735967db7ffbf2ec310bf96b4795a72d56ba250f8f'
             'SKIP')
 
 package() {
     cd "$srcdir"
 
-    # Wrapper script — tries chromium app-mode first, falls back to xdg-open
-    install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/doubao-desktop"
+    # Tauri binary
+    install -Dm755 "doubao-desktop-${pkgver}-x86_64/doubao-desktop" \
+        "$pkgdir/usr/bin/doubao-desktop"
 
     # Desktop entry
     install -Dm644 "${pkgname}.desktop" \
         "$pkgdir/usr/share/applications/doubao-desktop.desktop"
 
-    # SVG icon (simple "豆" text icon)
-    install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-    cat > "$pkgdir/usr/share/icons/hicolor/scalable/apps/doubao-desktop.svg" << 'SVG'
+    # SVG icon
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/icons/hicolor/scalable/apps/doubao-desktop.svg" << 'SVG'
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#4F46E5"/>
   <text x="32" y="46" text-anchor="middle" font-size="36" font-family="sans-serif"

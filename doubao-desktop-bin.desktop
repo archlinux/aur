@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=Doubao
+Name=豆包
 GenericName=AI Assistant
-Comment=ByteDance AI intelligent assistant (web app)
+Comment=ByteDance AI intelligent assistant (Tauri native client)
 Exec=doubao-desktop
 Icon=doubao-desktop
 Terminal=false
 Type=Application
 Categories=Network;Chat;ArtificialIntelligence;
-Keywords=doubao;豆包;AI;bytedance;chat;
-StartupWMClass=Doubao
+Keywords=doubao;豆包;AI;bytedance;chat;tauri;
+StartupWMClass=doubao-desktop

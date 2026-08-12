@@ -1,17 +1,21 @@
 pkgbase = doubao-desktop-bin
-	pkgdesc = Doubao AI Assistant - web app wrapper (ByteDance)
+	pkgdesc = Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://www.doubao.com/chat/
-	arch = any
-	license = custom
-	depends = xdg-utils
-	optdepends = chromium: best app-mode experience
-	optdepends = google-chrome: app-mode support
-	optdepends = firefox: works but no app-mode
-	source = doubao-desktop-bin.sh
+	pkgrel = 2
+	url = https://github.com/gonwe/doubao-desktop
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = glib2
+	depends = libgl
+	depends = hicolor-icon-theme
+	provides = doubao-desktop=1.0.0
+	conflicts = doubao-desktop
+	source = doubao-desktop-1.0.0-x86_64.tar.gz::https://github.com/gonwe/doubao-desktop/releases/download/v1.0.0/doubao-desktop-1.0.0-x86_64.tar.gz
 	source = doubao-desktop-bin.desktop
-	sha256sums = SKIP
+	sha256sums = d75c0e09d71175f47de16d735967db7ffbf2ec310bf96b4795a72d56ba250f8f
 	sha256sums = SKIP
 
 pkgname = doubao-desktop-bin
