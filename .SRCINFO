@@ -1,6 +1,6 @@
 pkgbase = funkin-git
 	pkgdesc = A rhythm game made with HaxeFlixel
-	pkgver = 0.7.5.r1.g6686812
+	pkgver = 0.8.6.r0.gee9d492
 	pkgrel = 1
 	url = https://github.com/FunkinCrew/Funkin
 	arch = x86_64

@@ -1,10 +1,9 @@
 # Maintainer: nubz4lif <nubz4lif@proton.me>
 # Contributer: Syazmi <mrcorpzpro@gmail.com>
 # Contributer: Harrison <contact@htv04.com>
-# Contributor: Elijah Bansley <elijahbansley@gmail.com>
 
 pkgname=funkin-git
-pkgver=0.7.5.r1.g6686812
+pkgver=0.8.6.r0.gee9d492
 pkgrel=1
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
@@ -30,6 +29,7 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 prepare() {
   cd "$srcdir/Funkin"
 
@@ -47,11 +47,12 @@ build() {
   haxelib newrepo &&
 
   # Download required Haxe libraries via HMM
-  haxelib install hmm
-  echo n | haxelib run hmm install
+  haxelib git hmm https://github.com/FunkinCrew/hmm.git
+  haxelib git haxelib https://github.com/FunkinCrew/haxelib.git
   echo n | haxelib run hmm reinstall
 
   # Set up Lime
+  echo y | haxelib run lime rebuild cpp # FunkinCrew's Lime fork doesn't come with lime.ndll on Linux for whatever reason
   echo n | haxelib run lime setup # Decline prompt to add "lime" command
 
   # Get lime libraries
