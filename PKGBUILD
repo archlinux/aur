@@ -12,7 +12,7 @@ optdepends=('xclip: clipboard support on X11'
   'wl-clipboard: clipboard support on Wayland')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('cd1c13a6a7931eaa45e4f889cbcd32ec8c91795e7fbf054d8592f6f3dac1f237afcc37eacbad029c38823c28e35115d7e9c3f9fdbd84d557f5b34274a587018c')
+b2sums=('d9a6c580f2541e572cef2facef8ac040eaeca5d9e1572cc27152360d99f554b7480e756add32da17cce88fd98b0a32f85bfc449b551e730fef3dbe043b949fc0')
 
 prepare() {
   cd "youtui-player-$pkgver"
