@@ -1,0 +1,22 @@
+pkgbase = clickr-git
+	pkgdesc = Fast, lightweight autoclicker for Linux Wayland with TUI interface
+	pkgver = r1.64a09c7
+	pkgrel = 1
+	url = https://github.com/Wavefire5201/clickr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	optdepends = dunst: desktop notifications
+	optdepends = mako: desktop notifications
+	optdepends = swaync: desktop notifications
+	optdepends = libnotify: desktop notifications
+	provides = clickr
+	conflicts = clickr
+	source = clickr-git::git+https://github.com/Wavefire5201/clickr.git
+	sha256sums = SKIP
+
+pkgname = clickr-git
