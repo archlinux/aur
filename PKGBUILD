@@ -1,23 +1,32 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=psy-ex-metrics
 pkgname=$_pkgname-git
-pkgver=c44.f4b9886
+pkgver=0.r61.45b63c7
 pkgrel=1
 pkgdesc='Perceptual video metrics toolkit'
-arch=(x86_64)
+arch=(any)
 url=https://github.com/psy-ex/metrics
 license=(Apache-2.0)
 depends=(
-  uv
   ffmpeg
-  vapoursynth
-  ffms2
-  vapoursynth-plugin-vszip
-  vapoursynth-plugin-julek
+  python
+  python-matplotlib
+  python-numpy
+  python-scipy
+  python-tqdm
+  uv
 )
 makedepends=(
   git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+optdepends=(
+  ffvship
+  svt-av1
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -25,16 +34,23 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
+  printf "0.r%s.%s" \
+    "$(git -C $_pkgname rev-list --count HEAD)" \
+    "$(git -C $_pkgname rev-parse --short HEAD)"
+}
+
+build() {
   cd $_pkgname
-  echo c$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_pkgname
-  install -Dm644 scripts/metrics.py "$pkgdir/usr/bin/metrics.py"
-  install -Dvm755 scripts/encode.py "$pkgdir/usr/bin/psy-ex-encode.py"
-  install -Dvm755 scripts/plot.py "$pkgdir/usr/bin/psy-ex-plot.py"
-  install -Dvm755 scripts/scores.py "$pkgdir/usr/bin/psy-ex-scores.py"
-  install -Dvm755 scripts/stats.py "$pkgdir/usr/bin/psy-ex-stats.py"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  for _script in encode plot scores stats; do
+    ln -s "$_script" "$pkgdir/usr/bin/psy-ex-$_script"
+  done
+
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
