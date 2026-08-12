@@ -1,7 +1,7 @@
 pkgbase = pterodactyl-panel
 	pkgdesc = An open-source game server management panel
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pterodactyl.io/
 	arch = any
 	license = MIT

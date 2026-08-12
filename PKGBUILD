@@ -6,7 +6,7 @@
 
 pkgname="pterodactyl-panel"
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
 license=("MIT")
@@ -63,6 +63,8 @@ package(){
  ln -s "/var/lib/pterodactyl" "$pkgdir/usr/share/webapps/pterodactyl/storage"
  chown -R http: "$pkgdir/var/lib/pterodactyl"
  chmod 750 "$pkgdir/var/lib/pterodactyl"
+ # license
+ install -D -m 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  # systemd files
  install -D -m 644 "$srcdir/pterodactyl-queue.service" "$pkgdir/usr/lib/systemd/system/pterodactyl-queue.service"
  install -D -m 644 "$srcdir/pterodactyl-scheduler.service" "$pkgdir/usr/lib/systemd/system/pterodactyl-scheduler.service"
