@@ -1,7 +1,8 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-zimg
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library (mingw-w64)"
 arch=('any')
@@ -11,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("zimg-${pkgver}.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-${pkgver}.tar.gz")
-sha256sums=('a9a0226bf85e0d83c41a8ebe4e3e690e1348682f6a2a7838f1b8cbff1b799bcf')
+sha256sums=('be89390f13a5c9b2388ce0f44a5e89364a20c1c57ce46d382b1fcc3967057577')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,8 +26,8 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-    --enable-x86simd \
-    ..
+      --enable-x86simd \
+      ..
     make
     popd
   done
