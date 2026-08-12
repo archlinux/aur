@@ -2,7 +2,7 @@
 
 pkgbase=jetbrains-air
 pkgname=(jetbrains-air jetbrains-air-jre)
-pkgver=262.132.34
+pkgver=262.132.35
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://air.dev/'
@@ -14,7 +14,7 @@ source=(
   jetbrains-air.desktop
   LICENSE
 )
-b2sums=('6d265d984b26eb85edb640b0f565cd8c21acacea56df0c3e99f56dcedcbdc9146c821592653bb0f4e8d02e307e400f3c408ee90cd3d7ad25a75110374fa090a6'
+b2sums=('d289b5afd862157b111e171b0ee3243c4d282f17173470a43c3fd2edf91a8c6c912e249daf63bf2bfee4213fd507bca1aa99c2a252c40922bb29c7e1a074b008'
         'f9b91c558db8c82ac97ceb66219f1f9dae86834843b2a5fcc1f1029c217a91877dafc81e73b0fa8e6b86f485d75611fbfe252adb275fe055c129cdbf0c392424'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
