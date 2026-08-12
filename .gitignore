@@ -1,0 +1,5 @@
+*.rpm
+*.pkg.tar.zst
+src/
+pkg/
+*.part
