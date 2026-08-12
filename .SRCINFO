@@ -4,9 +4,7 @@ pkgbase = cephadm
 	pkgrel = 1
 	url = https://ceph.com/
 	arch = any
-	license = GPL2
-	license = LGPL2.1
-	license = LGPL3
+	license = LGPL-2.0-or-later
 	depends = lvm2
 	depends = python>=3
 	optdepends = podman: container backend
