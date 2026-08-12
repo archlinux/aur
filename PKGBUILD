@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=jcvi
 pkgver=1.6.6
 pkgrel=1
