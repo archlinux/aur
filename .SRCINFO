@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-julia
 	pkgdesc = Julia grammar for tree-sitter
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-julia
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

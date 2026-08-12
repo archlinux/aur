@@ -3,9 +3,9 @@
 _name=tree-sitter-julia
 pkgname=python-tree-sitter-julia
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Julia grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-julia"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
