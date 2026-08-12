@@ -1,18 +1,19 @@
 pkgbase = sqlark-bin
 	pkgdesc = SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis.
-	pkgver = 3.10
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.sqlark.com/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
-	depends = electron32
+	depends = electron40
 	depends = python
-	provides = sqlark=3.10
+	depends = libxml2-legacy
+	provides = sqlark=4.0.1
 	conflicts = sqlark
-	source_aarch64 = sqlark-3.10-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/408830/SQLark_V3.10_linux_arm64.rpm
-	sha256sums_aarch64 = 380c94126d46d35e2f3b520937a1400bfad83ba9b04df2dc3d2687977ba9ad72
-	source_x86_64 = sqlark-3.10-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/408830/SQLark_V3.10_linux_x86_64.rpm
-	sha256sums_x86_64 = c16a28044fd56e2d0576ae31a37e16499c93217d5f15969de59961891ba45b84
+	source_aarch64 = sqlark-4.0.1-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/226481/SQLark_V4.0.1_linux_arm64.rpm
+	sha256sums_aarch64 = 51899593dcf632434c623aa545c339f2a68b5d6123027fe28f2336991f769832
+	source_x86_64 = sqlark-4.0.1-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/226481/SQLark_V4.0.1_linux_x86_64.rpm
+	sha256sums_x86_64 = 7a5b8638b9847759c27396c5ecd53bc9d7b727d15b702def8a438bea0a60a432
 
 pkgname = sqlark-bin
