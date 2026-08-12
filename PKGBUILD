@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
-: ${_pkgver:=915934::10.8.0-2026-03-15}
+: ${_pkgver:=924984::10.13.1-2026-07-28}
 
 _pkgname="intel-sde"
 pkgname="$_pkgname"
@@ -29,7 +29,7 @@ options=('!debug' '!strip')
 _pkgsrc="sde-external-${_pkgver##*::}-lin"
 _pkgext="tar.xz"
 source=("https://downloadmirror.intel.com/${_pkgver%%::*}/$_pkgsrc.$_pkgext")
-sha256sums=('50b320cd226acef7a491f5b321fc1be3c3c7984f9e27a456e64894b5b0979dd3')
+sha256sums=('94e97d623fec54385686e1e7ba65ebc9941748c05ee451423948334892bf2b50')
 
 package() {
   mkdir -pm755 "$pkgdir/opt/$_pkgname"
