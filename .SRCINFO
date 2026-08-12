@@ -1,7 +1,7 @@
 pkgbase = bedrock-connect-git
 	pkgdesc = BedrockConnect as an AUR package (Not affiliated with the Developer)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pugmatt/BedrockConnect
 	arch = any
 	license = GPL-3.0

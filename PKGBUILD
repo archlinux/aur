@@ -2,7 +2,7 @@
 
 pkgname=bedrock-connect-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BedrockConnect as an AUR package (Not affiliated with the Developer)"
 arch=('any')
 url="https://github.com/Pugmatt/BedrockConnect"
@@ -30,4 +30,5 @@ package() {
     install -Dm644 "target/BedrockConnect-$version.jar" "$pkgdir/var/lib/bedrockconnect/BedrockConnect.jar"
     install -Dm644 "$srcdir/bedrockconnect.service" "$pkgdir/usr/lib/systemd/system/bedrockconnect.service"
     install -Dm644 "$srcdir/bedrockconnect.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    chown -R bedrockconnect "$pkgdir/var/lib/bedrockconnect"
 }
