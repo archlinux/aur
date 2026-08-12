@@ -1,7 +1,7 @@
 pkgbase = ppsspp-bin
 	pkgdesc = A PSP emulator for Android, Windows, Mac and Linux, written in C++
 	pkgver = 1.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ppsspp.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
