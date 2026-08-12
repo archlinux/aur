@@ -2,7 +2,7 @@
 _pkgauthor=manuelschipper
 _pkgname=nah
 pkgname=nah-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Safety guard that blocks catastrophic coding-agent tool calls before they run'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('nah')
 provides=('nah')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('f650e5d40dc519ccc9216926bac96f9d2710200a13d863582a96a362d1d902b3')
-sha256sums_aarch64=('15c1a439ff9675956d0d74addd06ef448a76982565817e670e181208e1b4823b')
+sha256sums_x86_64=('355218c285b3b08c0ca8103b7e2beae5b7a3074e6e76d6304994f1ab9e2b1365')
+sha256sums_aarch64=('5d6aa0148598bb76ab9c59798bd974350f99ddba3126df3ce067b54f1957fd46')
 
 package() {
   cd "${srcdir}" || exit
