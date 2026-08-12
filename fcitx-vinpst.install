@@ -1,0 +1,48 @@
+# shellcheck shell=bash
+
+post_install() {
+  printf '%s\n' \
+    ':: fcitx-vinpst installed.' \
+    ':: For each desktop user, start the daemon with:' \
+    '   systemctl --user enable --now vinpst-daemon.service' \
+    ':: Reload Fcitx5 so the new addon is discovered:' \
+    '   fcitx5 -r'
+}
+
+post_upgrade() {
+  local helper="${VINPST_PACKAGE_UPGRADE_HANDOFF:-/usr/lib/fcitx-vinpst/package-upgrade-handoff}"
+  local helper_status=0
+
+  if [[ -x "${helper}" ]]; then
+    "${helper}" || helper_status=$?
+  fi
+  printf '%s\n' \
+    ':: fcitx-vinpst upgraded.' \
+    ':: Live user sessions with an existing daemon owner were checked automatically.' \
+    ':: Current owners are unchanged; stale owners use the guarded daemon handoff.' \
+    ':: If a session was unavailable, that desktop user can retry:' \
+    '   vinpst daemon handoff' \
+    ':: Reload Fcitx5 if the addon binary changed:' \
+    '   fcitx5 -r'
+  if ((helper_status != 0)); then
+    printf '%s\n' \
+      ':: Automatic vinpst daemon handoff failed for at least one live session.' >&2
+    return "${helper_status}"
+  fi
+}
+
+pre_remove() {
+  local helper="${VINPST_PACKAGE_REMOVE_HANDOFF:-/usr/lib/fcitx-vinpst/package-remove-handoff}"
+  if [[ -x "${helper}" ]]; then
+    "${helper}"
+  fi
+}
+
+post_remove() {
+  printf '%s\n' \
+    ':: fcitx-vinpst removed.' \
+    ':: Active daemon owners were stopped by the guarded pre-remove handoff.' \
+    ':: User config, models, and cache were intentionally preserved.' \
+    ':: Reload Fcitx5 to unload the removed addon:' \
+    '   fcitx5 -r'
+}
