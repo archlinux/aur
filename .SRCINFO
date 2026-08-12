@@ -1,0 +1,12 @@
+pkgbase = tracklist
+	pkgdesc = Create text tracklists from Musicbrainz releases using templates
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/SamWhited/tracklist
+	arch = x86_64
+	license = custom
+	makedepends = go
+	source = tracklist_0.0.1.zip::https://codeberg.org/SamWhited/tracklist/archive/v0.0.1.zip
+	sha256sums = 220e3782b6f50486e60230c0820b728e542cd2db3c19ab895de9ef6ed4affa72
+
+pkgname = tracklist
