@@ -22,6 +22,7 @@ pkgbase = softmaker-office-2026-bin
 	depends = libxrandr
 	depends = libxrender
 	depends = zlib
+	options = !debug
 	source = planmaker-2026.desktop
 	source = presentations-2026.desktop
 	source = textmaker-2026.desktop

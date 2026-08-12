@@ -10,6 +10,7 @@ arch=('x86_64')
 license=('LicenseRef-custom')
 depends=('bash' 'curl' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'hicolor-icon-theme' 'libgcc'
          'libgl' 'libstdc++' 'libx11' 'libxext' 'libxmu' 'libxmu' 'libxrandr' 'libxrender' 'zlib')
+options=('!debug')
 source=('planmaker-2026.desktop'
         'presentations-2026.desktop'
         'textmaker-2026.desktop'
