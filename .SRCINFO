@@ -1,7 +1,7 @@
 pkgbase = opencode-desktop
 	pkgdesc = OpenCode desktop app (built from source, runs on system electron42)
 	pkgver = 1.18.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = opencode-desktop
 	makedepends = bun
 	makedepends = git
 	makedepends = libxcrypt-compat
+	makedepends = node-gyp
 	depends = electron42
 	depends = hicolor-icon-theme
 	optdepends = opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)
