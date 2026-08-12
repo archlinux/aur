@@ -1,0 +1,20 @@
+pkgbase = battle-cats-normal-rolls-git
+	pkgdesc = Local Battle Cats normal seed tracking server with high-performance Rust seeker
+	pkgver = r38.0b3b9dd
+	pkgrel = 3
+	url = https://github.com/EduHoff/battle-cats-normal-rolls
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = curl
+	optdepends = zenity
+	provides = battle-cats-normal-rolls
+	conflicts = battle-cats-normal-rolls
+	source = git+https://github.com/EduHoff/battle-cats-normal-rolls.git
+	b2sums = SKIP
+
+pkgname = battle-cats-normal-rolls-git
