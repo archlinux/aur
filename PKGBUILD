@@ -2,7 +2,7 @@
 pkgname=duckstation-preview-latest-bin
 _pkgname="duckstation-qt"
 _pkgid=org.duckstation.DuckStation
-pkgver=0.1.11484
+pkgver=0.1.11752
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gmp' 'e2fsprogs' 'libgpg-error' 'libstdc++' 'libgcc')
 makedepends=('yq')
 provides=("$_pkgname" 'duckstation')
 conflicts=("$_pkgname" 'duckstation')
-options=('!strip' '!emptydirs')
+options=('!strip' '!emptydirs' '!debug')
 _appimage="DuckStation-x64.AppImage"
 noextract=("${_appimage}")
 source=("https://github.com/stenzek/duckstation/releases/download/preview/${_appimage}")

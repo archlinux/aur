@@ -1,6 +1,6 @@
 pkgbase = duckstation-preview-latest-bin
 	pkgdesc = Fast PlayStation 1 emulator for PC and Android
-	pkgver = 0.1.11484
+	pkgver = 0.1.11752
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = duckstation-preview-latest-bin
 	noextract = DuckStation-x64.AppImage
 	options = !strip
 	options = !emptydirs
+	options = !debug
 	source = https://github.com/stenzek/duckstation/releases/download/preview/DuckStation-x64.AppImage
 	sha256sums = SKIP
 
