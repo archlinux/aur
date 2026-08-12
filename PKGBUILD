@@ -2,7 +2,7 @@
 
 pkgname=sfp-master-git
 _pkgname=SFP-Master
-pkgver=1.0.7.r5.gcb5c158
+pkgver=1.1.1+r4+g63dffe2
 pkgrel=1
 pkgdesc="SFP-module programmer for CH341a devices"
 arch=('x86_64')
@@ -21,8 +21,8 @@ pkgver() {
   cd "$srcdir/${_pkgname}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
+      printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 

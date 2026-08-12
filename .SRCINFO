@@ -1,6 +1,6 @@
 pkgbase = sfp-master-git
 	pkgdesc = SFP-module programmer for CH341a devices
-	pkgver = 1.0.7.r5.gcb5c158
+	pkgver = 1.1.1+r4+g63dffe2
 	pkgrel = 1
 	url = https://github.com/bigbigmdm/SFP-Master
 	arch = x86_64
