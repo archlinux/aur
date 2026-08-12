@@ -1,6 +1,6 @@
 pkgbase = python-deepspeed
 	pkgdesc = DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
-	pkgver = 0.19.0
+	pkgver = 0.19.5
 	pkgrel = 1
 	url = https://github.com/deepspeedai/DeepSpeed
 	arch = x86_64
@@ -32,7 +32,8 @@ pkgbase = python-deepspeed
 	depends = python-transformers
 	depends = python-diffusers
 	depends = python-triton
-	source = https://github.com/deepspeedai/DeepSpeed/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = 7863e55196ace8793fb78fc746dcb19d1a27de4658c120fa1645163521e2c618
+	optdepends = python-torchembed>=0.3.0: Optional fused RoPE backend
+	source = https://github.com/deepspeedai/DeepSpeed/archive/refs/tags/v0.19.5.tar.gz
+	sha384sums = d7ab69aed734b1b1843c99c37b4a69ab460f55ad6017c8f290a666fd09e4d667019149382dcf035c5c60e3fd486c7ca1
 
 pkgname = python-deepspeed
