@@ -107,6 +107,23 @@ LOG_ORPHAN="$LOG_DIR/orphaned.log"
 
 mkdir -p "$LOG_DIR"
 
+# Per-invocation output capture. pacman aborts a conflicted transaction before
+# it starts, so /var/log/pacman.log only ever gets the "[PACMAN] Running ..."
+# line — never the conflict text. That text is split across both streams:
+#   stderr: error: failed to prepare transaction (could not satisfy dependencies)
+#   stdout: :: installing systemd-libs (261.1-1) breaks dependency '...' required by systemd
+# The blocker names are only on stdout, so both streams must be captured.
+# Scoping to one invocation also keeps a conflict from one package from
+# leaking into the verdict for every package after it.
+OUTPUT_CAP="$LOG_DIR/.output-$$"
+: > "$OUTPUT_CAP"
+
+# Blocking package names parsed out of the last conflict — see parse_conflict_blockers
+declare -a CONFLICT_BLOCKERS=()
+
+# Packages already installed as part of a group retry; skipped when reached in queue
+declare -A GROUP_DONE=()
+
 # Packages that timed out — tracked for end-of-run advice
 TIMED_OUT_PKGS=()
 TIMED_OUT_TYPES=()
@@ -147,6 +164,25 @@ check_space() {
 is_orphan() { ! pacman -Si "$1" &>/dev/null && ! yay -Si "$1" &>/dev/null; }
 is_aur()    { ! pacman -Si "$1" &>/dev/null; }
 
+# ── Conflict parsing ──────────────────────────────────────────────────────────
+
+CONFLICT_PATTERN='could not satisfy dependencies|breaks dependency|conflicting dependencies|are in conflict'
+
+# Pull the blocking package names out of captured pacman output. Handles the
+# three shapes pacman emits when a version-locked group is updated piecemeal:
+#   :: installing gstreamer (1.26.0-1) breaks dependency 'gstreamer=1.24.10' required by gst-plugins-base-libs
+#   :: removing x265 breaks dependency 'libx265.so' required by ffmpeg
+#   :: gstreamer and gstreamer-git are in conflict
+parse_conflict_blockers() {
+    local f="$1"
+    {
+        sed -nE "s/.*required by ([A-Za-z0-9@._+-]+).*/\1/p"                     "$f"
+        sed -nE "s/.*removing ([A-Za-z0-9@._+-]+) breaks dependency.*/\1/p"      "$f"
+        sed -nE "s/.*installing ([A-Za-z0-9@._+-]+) .*breaks dependency.*/\1/p"  "$f"
+        sed -nE "s/.*:: ([A-Za-z0-9@._+-]+) and ([A-Za-z0-9@._+-]+) are in conflict.*/\1\n\2/p" "$f"
+    } | sed '/^$/d' | sort -u
+}
+
 # ── Timed installer ───────────────────────────────────────────────────────────
 
 run_with_timeout() {
@@ -155,6 +191,12 @@ run_with_timeout() {
     local is_aur_pkg="$3"
     local is_heavy="${4:-false}"
     local timeout_sec=$(( timeout_min * 60 ))
+    # Fresh capture per invocation so a previous package's conflict can't be
+    # attributed to this one. AUR builds keep streaming output live (a 2h
+    # compile shouldn't have its progress swallowed), so the capture stays
+    # empty for them and group retry stays repo-only.
+    : > "$OUTPUT_CAP"
+    CONFLICT_BLOCKERS=()
     if [[ "$is_aur_pkg" == "true" ]]; then
         if [[ "$NO_PROTECTION" == "true" ]]; then
             nice -n 19 yay -S --noconfirm --needed \
@@ -191,7 +233,7 @@ run_with_timeout() {
             fi
         fi
     else
-        sudo pacman -S --noconfirm --needed "$pkg" &
+        sudo pacman -S --noconfirm --needed "$pkg" >"$OUTPUT_CAP" 2>&1 &
     fi
 
     local child_pid=$!
@@ -211,15 +253,53 @@ run_with_timeout() {
 
     wait "$child_pid"
     local rc=$?
-    if grep -q 'could not satisfy dependencies\|breaks dependency' /var/log/pacman.log 2>/dev/null; then
-        grep 'could not satisfy\|breaks dependency' /var/log/pacman.log | tail -5
+    # Surface the captured output — it was redirected away from the terminal
+    [[ -s "$OUTPUT_CAP" ]] && cat "$OUTPUT_CAP" >&2
+    if grep -qE "$CONFLICT_PATTERN" "$OUTPUT_CAP" 2>/dev/null; then
+        mapfile -t CONFLICT_BLOCKERS < <(parse_conflict_blockers "$OUTPUT_CAP" | grep -vxF "$pkg")
         return 3
     fi
     return $rc
 }
 
+# ── Group retry ───────────────────────────────────────────────────────────────
+
+# Install a version-locked group in one transaction, under the repo timeout.
+# Mirrors run_with_timeout's kill-on-timeout flow rather than reusing it, so the
+# single-package path keeps its exact rc semantics.
+run_group_with_timeout() {
+    local timeout_sec=$(( TIMEOUT_REPO_MIN * 60 ))
+    : > "$OUTPUT_CAP"
+    sudo pacman -S --noconfirm --needed "$@" >"$OUTPUT_CAP" 2>&1 &
+    local child_pid=$!
+    local elapsed=0
+    while kill -0 "$child_pid" 2>/dev/null; do
+        sleep 10
+        elapsed=$(( elapsed + 10 ))
+        if (( elapsed >= timeout_sec )); then
+            echo ""
+            echo "    TIMEOUT: group exceeded ${TIMEOUT_REPO_MIN}min — killing"
+            kill "$child_pid" 2>/dev/null
+            wait "$child_pid" 2>/dev/null || true
+            return 2
+        fi
+    done
+    wait "$child_pid"
+    local rc=$?
+    [[ -s "$OUTPUT_CAP" ]] && cat "$OUTPUT_CAP" >&2
+    return $rc
+}
+
 do_update() {
     local pkg="$1"
+    if [[ -n "${GROUP_DONE[$pkg]+_}" ]]; then
+        echo ""
+        echo "==> Already updated in a group retry: $pkg — skipping"
+        DONE_COUNT=$(( DONE_COUNT + 1 ))
+        DONE_BYTES=$(( DONE_BYTES + ${QUEUE_SIZES[$pkg]:-0} ))
+        print_progress
+        return
+    fi
     echo ""
     echo "==> [$( free_mb )MB free] Updating: $pkg"
     check_space
@@ -258,8 +338,32 @@ do_update() {
             TIMED_OUT_PKGS+=("$pkg")
             TIMED_OUT_TYPES+=("repo")
         elif [[ $rc -eq 3 ]]; then
-            echo "    DEP-CONFLICT: $pkg skipped — dependency version lock, will retry next run"
-            log_skip "DEP-CONFLICT [repo] $pkg"
+            local -a group=("$pkg")
+            local b
+            for b in "${CONFLICT_BLOCKERS[@]}"; do
+                # repo-only: an AUR blocker can't join a pacman transaction
+                if pacman -Si "$b" &>/dev/null; then
+                    group+=("$b")
+                fi
+            done
+            if (( ${#group[@]} > 1 )); then
+                echo "    DEP-CONFLICT: version lock — retrying as one transaction: ${group[*]}"
+                local grc
+                run_group_with_timeout "${group[@]}" && grc=$? || grc=$?
+                if [[ $grc -eq 0 ]]; then
+                    log_success "OK [repo-group] ${group[*]}"
+                    for b in "${group[@]}"; do GROUP_DONE["$b"]=1; done
+                elif [[ $grc -eq 2 ]]; then
+                    log_fail "TIMEOUT [repo-group] ${group[*]}"
+                    TIMED_OUT_PKGS+=("${group[*]}")
+                    TIMED_OUT_TYPES+=("repo-group")
+                else
+                    log_fail "ERR [repo-group] ${group[*]}"
+                fi
+            else
+                echo "    DEP-CONFLICT: $pkg skipped — no repo blockers parsed, will retry next run"
+                log_skip "DEP-CONFLICT [repo] $pkg"
+            fi
         elif [[ $rc -eq 0 ]]; then
             log_success "OK [repo] $pkg"
         else
