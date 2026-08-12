@@ -1,6 +1,6 @@
 pkgbase = beammp
 	pkgdesc = Since the other packages i tried didnt want to work
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/BeamMP/BeamMP-Launcher
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = beammp
 	provides = beammp-launcher
 	conflicts = beammp-launcher
 	conflicts = beammp-launcher-git
-	source = BeamMP-Launcher-2.8.0.tar.gz::https://github.com/BeamMP/BeamMP-Launcher/archive/refs/tags/v2.8.0.tar.gz
+	source = BeamMP-Launcher-2.8.1.tar.gz::https://github.com/BeamMP/BeamMP-Launcher/archive/refs/tags/v2.8.1.tar.gz
 	source = vcpkg::git+https://github.com/microsoft/vcpkg.git
 	source = beammp.desktop
-	sha256sums = 351e5b8d159126f3369bde3dac4a881c4b7ceea52255fdf3093ba912450b65bc
+	sha256sums = fb49ee9ab310927805ac448d2ddf47a25c9893a9deced0c8bdd7f5f33409d649
 	sha256sums = SKIP
 	sha256sums = d9212a9430e35d7f62918e706f2e6a786e61429db9a2f4ccb6a7effa8b51f32e
 

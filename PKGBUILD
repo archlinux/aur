@@ -1,6 +1,6 @@
 # Maintainer: BrewCity <rickybrewing@gmail.com>
 pkgname=beammp
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Since the other packages i tried didnt want to work"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
     'beammp.desktop'
 )
 
-sha256sums=('351e5b8d159126f3369bde3dac4a881c4b7ceea52255fdf3093ba912450b65bc'
+sha256sums=('fb49ee9ab310927805ac448d2ddf47a25c9893a9deced0c8bdd7f5f33409d649'
             'SKIP'
             'd9212a9430e35d7f62918e706f2e6a786e61429db9a2f4ccb6a7effa8b51f32e')
 
