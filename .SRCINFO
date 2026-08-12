@@ -1,0 +1,16 @@
+pkgbase = paml-bin
+	pkgdesc = Phylogenetic analysis by maximum likelihood (precompiled binary) https://doi.org/10.1093/molbev/msm088
+	pkgver = 4.10.10
+	pkgrel = 1
+	url = https://github.com/abacus-gene/paml
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = paml=4.10.10
+	conflicts = paml
+	options = !strip
+	options = !debug
+	source = https://github.com/abacus-gene/paml/releases/download/v4.10.10/paml-4.10.10-linux-x86_64.tar.gz
+	sha256sums = c164971eba80df95bf59bb95dec50046b492b03fa9c0d9860b6c35f23417308a
+
+pkgname = paml-bin
