@@ -1,10 +1,12 @@
 pkgbase = virtualfish
 	pkgdesc = Fish shell tool for managing Python virtual environments
 	pkgver = 2.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justinmayer/virtualfish
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
