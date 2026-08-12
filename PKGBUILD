@@ -1,7 +1,7 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
 pkgname=specter-desktop-appimage
-pkgver=2.1.8
+pkgver=2.1.11
 _upkgname=Specter
 _lpkgname=specter
 _pkgname="${_lpkgname}_desktop"
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=("https://github.com/cryptoadvance/$__pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-$arch-linux-gnu.tar.gz"
         "specter.png"
         "https://raw.githubusercontent.com/cryptoadvance/specter-desktop/refs/heads/master/LICENSE")
-sha256sums=('7813b2d8d8d4824375bd4b850ff8002d20373252627c93ffc9afed3620c6d7f2'
+sha256sums=('524a5fe7042365e4db39eacfbdd21cea73ffb72fddaaf7d9da4f0efaae818644'
             'ad1bd497b7fb631cbc161bd559596e0f47df926caa4698190197c127b756900f'
             'a230039985e2c4a8b522399e82b3ff6d74b1d0ff9629ec4c56aad7a5a68f0af5')
 
