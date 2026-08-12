@@ -1,13 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='qc-git'
 pkgdesc='C frontend for the QBE C compiler backend'
-pkgver=r263.f25f9d3
-pkgrel=3
+pkgver=r265.5a5982d
+pkgrel=1
 url='https://github.com/andrewchambers/qc'
 arch=('x86_64')
-depends=('qbe-git')
-license=('custom:MIT')
-makedepends=('myrddin>=0.2.0')
+depends=(qbe)
+license=(MIT)
+makedepends=(git 'myrddin>=0.2.0')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
