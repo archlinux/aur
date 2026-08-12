@@ -2,16 +2,15 @@
 # Contributor: Novadragon <me@novadragon.space>
 # Contributor: DragonWoven
 
-: ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname=godots-git
-pkgver=1.4.stable.r1.g72d4df0
+pkgver=1.4.2.stable.r0.g8e4eb2b
 pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=('MIT')
 arch=('x86_64')
 provides=("godots=$pkgver-$pkgrel")
-conflicts=('godots' 'godots-bin')
+conflicts=('godots')
 depends=('unzip')
 source=("git+https://github.com/MakovWait/godots.git")
 makedepends=('git' 'godot' 'godot-export-templates-linux')
@@ -20,11 +19,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --match='*stable*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    sed -i "s|custom_template/release=\"\"|custom_template/release=\"/usr/share/godot/export_templates/${_godot_version}/linux_release.x86_64\"|" godots/export_presets.cfg
+    local _template=(/usr/share/godot/export_templates/*/linux_release.x86_64)
+    [[ -f ${_template[-1]} ]] || return 1
+    sed -i "s|custom_template/release=\"\"|custom_template/release=\"${_template[-1]}\"|" "${pkgname%-git}/export_presets.cfg"
     cd "${pkgname%-git}"
 
     mkdir build
