@@ -2,18 +2,19 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
+makedepends=('go-md2man')
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
     "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
 )
 
-sha256sums=('93710135d1e9de3fd4dc0f9cad1484a1833c7b4b2e3317d94c08fe78e1f4d957'
-            '2f25d64f9e0a2e88fe28a090de89a18fce7138d6421423d919ae631f957feef7')
+sha256sums=('6a9734092de36d766ef0f2b0280f7cfbecd812b79ead4d826ead2b5b38bb8e15'
+            'af03681b9876ede3dbcbe73b5352e2e4663077a6588c046cae8d2339fc8dc4f2')
 
 package_shelly-bin() {
   pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
@@ -137,6 +138,12 @@ EOF
 
   # Install zsh shell completions
   install -Dm644 "$srcdir/_shelly" "$pkgdir/usr/share/zsh/site-functions/_shelly"
+
+  # Install man page
+  "$srcdir/shelly" utility --docs | go-md2man > "$srcdir/shelly.1"
+  sed -i "s|^\\.TH .*|.TH \"SHELLY\" \"1\" \"\" \"Shelly ${pkgver}\" \"Shelly CLI Manual\"|" "$srcdir/shelly.1"
+  printf '\n.SH AUTHORS\nSeafoam Labs.\n' >> "$srcdir/shelly.1"
+  install -Dm644 "$srcdir/shelly.1" "$pkgdir/usr/share/man/man1/shelly.1"
 
   # Install translations
 if [ -d "$srcdir/locale" ] && [ -n "$(ls -A "$srcdir/locale" 2>/dev/null)" ]; then
